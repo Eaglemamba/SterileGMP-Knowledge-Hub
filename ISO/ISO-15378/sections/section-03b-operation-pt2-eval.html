@@ -1,0 +1,2242 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISO 15378 - Section 3B: Operation Part 2 + Performance Evaluation</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box,
+.warning-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4,
+.warning-box h3, .warning-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p,
+.warning-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol,
+.warning-box ul, .warning-box ol {
+    margin: 0.5rem 0 0.5rem 0 !important;
+    padding-left: 1.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li,
+.warning-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== WARNING BOX (Red) ===== */
+.warning-box {
+    background: #fff5f5 !important;
+    border-left: 4px solid #e53e3e !important;
+}
+
+.warning-box h3, .warning-box h4 {
+    color: #c53030 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.badge.purple {
+    background: #e9d8fd;
+    color: #553c9a;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== SOURCE BADGE (ISO purple) ===== */
+.source-badge {
+    display: inline-block;
+    background: #7c3aed;
+    color: #ffffff;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.5rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="source-badge">ISO 15378:2017</div>
+    <h1>Section 8 (Part 2) + Sections 9&ndash;10: Production Cont., Evaluation &amp; Improvement</h1>
+    <div class="subtitle">第8節後半及第9-10節：生產續、績效評估與改善</div>
+    <div class="page-info">ISO 15378:2017 Primary Packaging Materials for Medicinal Products | p37 &ndash; p51</div>
+</div>
+
+<div class="main-content">
+
+    <!-- Learning Objectives -->
+    <div class="learning-objectives">
+        <h3>本節學習目標 / Learning Objectives</h3>
+        <ul>
+            <li>理解 ISO 15378 中「ISO 9001 基礎條文 + GMP 附加要求」的雙層結構，並能辨識兩者差異</li>
+            <li>掌握 8.5.1.3 潔淨室污染控制要求，了解包材製造商為何需要比一般包裝廠承擔更高的 GMP 標準</li>
+            <li>理解 8.5.1.4 無菌包材滅菌驗證的程序要求（ISO 11135、ISO 11137）</li>
+            <li>掌握 8.5.2 識別與追溯性的批次記錄、交叉污染防控系統設計原則</li>
+            <li>了解 8.5.4–8.5.6 保存、交付後活動及變更控制的 GMP 特殊要求</li>
+            <li>掌握 8.6 產品放行中批次文件審查（Batch Documentation Review）的關鍵角色</li>
+            <li>理解 8.7 不合格品管制：隔離、特許、處置三種路徑</li>
+            <li>掌握 Section 9 績效評估：OOS 調查（9.1.3.2）、進料檢驗、製程中控制、批次放行、保留樣品</li>
+            <li>理解內部稽核（9.2）及管理審查（9.3）的 ISO 標準要求</li>
+            <li>掌握 Section 10 持續改善：CAPA 程序、客戶投訴處理、預防性行動的 GMP 強化要求</li>
+        </ul>
+    </div>
+
+    <!-- TOC -->
+    <div class="toc">
+        <h3>本節內容索引 / Section Contents</h3>
+        <div class="toc-grid">
+            <a href="#s851c">8.5.1.3 Line Clearance</a>
+            <a href="#s851d">8.5.1.4 Sterile Packaging</a>
+            <a href="#s852">8.5.2 Traceability</a>
+            <a href="#s853">8.5.3 Customer Property</a>
+            <a href="#s854">8.5.4 Preservation</a>
+            <a href="#s855">8.5.5 Post-Delivery</a>
+            <a href="#s856">8.5.6 Change Control</a>
+            <a href="#s86">8.6 Product Release</a>
+            <a href="#s87">8.7 Nonconforming Outputs</a>
+            <a href="#s913">9.1.3 OOS &amp; Testing</a>
+            <a href="#s914">9.1.3 Batch Release</a>
+            <a href="#s92">9.2 Internal Audit</a>
+            <a href="#s93">9.3 Management Review</a>
+            <a href="#s10">10 Improvement &amp; CAPA</a>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 8.5.1.3 CONTINUED: Line Clearance & Contamination Control   -->
+    <!-- ============================================================ -->
+    <div id="s851c" class="chapter-section">
+        <div class="chapter-divider" style="background: linear-gradient(135deg, #6d28d9 0%, #7c3aed 100%);">
+            <div class="chapter-badge">8.5</div>
+            <div class="chapter-info">
+                <h2>8.5.1.3 Cleanliness &amp; Contamination Control (continued)</h2>
+                <p>清潔度與污染控制（續）— Line Clearance, Regrind, Pallet Controls</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">ISO 15378:2017 — Original Text (p37)</div>
+
+                    <h3>8.5.1.3.13 — Partial Line Clearance / Automated Changeover</h3>
+                    <p>Partially reduced line clearances or automated changeover systems that are designed to reduce make-ready time and do not permit a total line clearance shall be subject to a <span class="key-term">documented risk assessment</span> and operated with controls to ensure product quality.</p>
+
+                    <h3>8.5.1.3.14 — Pallet Materials</h3>
+                    <p>Pallets shall be constructed of materials appropriate to the product being handled, sourced and controlled to reduce the risk of contamination.</p>
+                    <div class="quote-box">
+                        NOTE: Wooden pallets could be contaminated through migration of any chemicals used in other pallet treatments.
+                    </div>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">教育解說 / Commentary</div>
+
+                    <div class="concept-box">
+                        <h4>Line Clearance 是什麼？為什麼重要？</h4>
+                        <p><strong>換線清場（Line Clearance）</strong>是指在一個批次生產結束、下一個批次開始之前，對生產線進行全面確認，確保前一批次的任何材料、標籤、文件都已完全清除。</p>
+                        <p>在包材廠，這包含：確認所有模具/工具已清除；確認標籤已移除；確認前批材料無殘留；完成清場記錄並由 QC 確認。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：餐廳換桌</h4>
+                        <p>換線清場就像餐廳服務生在客人離開後必須重新整理桌子——確認前一桌的碗碟、餐具、剩食全部清除，才能讓下一桌入座。若只做一半（半清場），就必須有明確規則保證「不會把前一桌的東西遺留給下一桌」。</p>
+                        <p>在製藥包材中，「前批次殘留」可能導致藥品被錯誤包裝、標籤混淆，是嚴重的 GMP 違規。</p>
+                    </div>
+
+                    <div class="warning-box">
+                        <h4>GMP 重點：自動換線不能免除風險評估</h4>
+                        <p>某些現代生產線採用自動化換線系統，號稱可縮短換線時間且不需全清場——但 ISO 15378 明確要求這類系統仍需經過<strong>書面風險評估</strong>，並建立控制措施。「自動化」不等於「不需驗證」。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>木棧板的隱藏風險</h4>
+                        <p>8.5.1.3.14 特別提醒木棧板的污染風險：木材可能吸附化學品（例如防蟲劑、防腐劑），並在儲存或運輸過程中遷移至包材表面。許多高規格包材廠已改用塑膠棧板，或對木棧板實施嚴格的來源管控與檢驗。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 8.5.1.3 vs. General Packaging Manufacturers Comparison      -->
+    <!-- ============================================================ -->
+    <div class="chapter-section">
+        <div class="chapter-divider" style="background: linear-gradient(135deg, #6d28d9 0%, #7c3aed 100%);">
+            <div class="chapter-badge">GMP</div>
+            <div class="chapter-info">
+                <h2>Why Pharma Packaging Manufacturers Face Higher GMP Standards</h2>
+                <p>為什麼藥品包材廠要承擔比一般包裝廠更高的 GMP 要求</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">The Unique Position of Primary Packaging Manufacturers</div>
+
+                    <h3>What Sets Pharma Packaging Apart</h3>
+                    <p>ISO 15378 exists because <span class="key-term">primary packaging materials</span> come into direct contact with the medicinal product — they are the final barrier between the drug and the patient. Unlike secondary or tertiary packaging, primary packaging can directly affect:</p>
+                    <ul>
+                        <li>Drug purity (contamination migration)</li>
+                        <li>Drug stability (moisture, oxygen permeation)</li>
+                        <li>Drug identity (label mix-ups)</li>
+                        <li>Drug sterility (particulate contamination)</li>
+                    </ul>
+
+                    <h3>The ISO 15378 Layered Structure</h3>
+                    <p>Throughout this standard, every clause follows a predictable architecture:</p>
+                    <ol>
+                        <li><strong>ISO 9001:2015 base text</strong> — the generic quality management requirement applicable to any manufacturing organization</li>
+                        <li><strong>Additional GMP-related requirements</strong> — pharmaceutical-specific overlays that go beyond ISO 9001</li>
+                    </ol>
+                    <p>Reading only the ISO 9001 base text gives an incomplete picture. The GMP additions are where the pharmaceutical regulatory requirements live.</p>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">教育解說 / Commentary</div>
+
+                    <div class="concept-box">
+                        <h4>ISO 15378 的雙層架構邏輯</h4>
+                        <p>ISO 15378 刻意採用「ISO 9001 基礎條文 + GMP 附加要求」的結構，原因在於：</p>
+                        <ul>
+                            <li>讓已持有 ISO 9001 認證的製造商能清楚看到「升級差距」</li>
+                            <li>方便稽核員比對 ISO 9001 基礎合規 vs. 藥品特定要求</li>
+                            <li>使標準可隨 ISO 9001 改版同步更新（2017 版即對應 ISO 9001:2015）</li>
+                        </ul>
+                        <p>實務上，一般包裝廠只需符合 ISO 9001；而藥品包材廠則必須同時滿足 ISO 9001 基礎條文 <strong>加上</strong> 所有附加 GMP 要求。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：一般廚師 vs. 手術室備餐人員</h4>
+                        <p>一般包裝廠就像普通餐廳廚師——遵守食品衛生法規即可。但藥品包材廠更像為手術室備餐的人員——除了食品衛生，還必須符合無菌操作規範、穿著潔淨服、在受控環境中工作。</p>
+                        <p>產品的最終用途（接觸患者的藥品）決定了製造環境必須達到的標準。</p>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>面向</th>
+                                <th>一般包裝廠（ISO 9001）</th>
+                                <th>藥品包材廠（ISO 15378）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>換線清場</td>
+                                <td>非強制文件記錄</td>
+                                <td>書面程序 + 完整記錄</td>
+                            </tr>
+                            <tr>
+                                <td>潔淨室</td>
+                                <td>通常不需要</td>
+                                <td>特定產品需要 ISO 7/8 潔淨室</td>
+                            </tr>
+                            <tr>
+                                <td>批次記錄</td>
+                                <td>可選</td>
+                                <td>強制，含唯一批號</td>
+                            </tr>
+                            <tr>
+                                <td>OOS 調查</td>
+                                <td>通常無此要求</td>
+                                <td>書面程序強制要求</td>
+                            </tr>
+                            <tr>
+                                <td>客戶投訴</td>
+                                <td>基本記錄</td>
+                                <td>強制調查 + CAPA + 時限回應</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 8.5.1.4 Sterile Primary Packaging Materials                 -->
+    <!-- ============================================================ -->
+    <div id="s851d" class="chapter-section">
+        <div class="chapter-divider" style="background: linear-gradient(135deg, #6d28d9 0%, #7c3aed 100%);">
+            <div class="chapter-badge">8.5</div>
+            <div class="chapter-info">
+                <h2>8.5.1.4 Particular Requirements for Sterile Primary Packaging Materials</h2>
+                <p>無菌一次包材的特殊要求 — 滅菌驗證、記錄與外包管控</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">ISO 15378:2017 — Original Text (p40)</div>
+
+                    <h3>8.5.1.4.1 — Sterilization Records</h3>
+                    <p>The organization shall maintain <span class="key-term">records</span> (see 7.5.3) of the process parameters for the sterilization process, which was used for each sterilization batch. <span class="key-term">Sterilization records shall be traceable to each batch</span> of primary packaging material.</p>
+
+                    <h3>8.5.1.4.2 — Validation of Sterilization Processes</h3>
+                    <p>If sterilization is a requirement, the organization shall establish documented procedures for the <span class="key-term">validation of sterilization processes</span>. Sterilization processes shall be validated prior to initial use and revalidated periodically. Records of the results of sterilization process validation shall be maintained (see 7.5.3).</p>
+                    <div class="quote-box">
+                        See ISO 11135, ISO 11137-1 or ISO 11137-2.
+                    </div>
+
+                    <h3>8.5.1.4.3 — Validated Sterilization Process &amp; Outsourcing</h3>
+                    <p>Where sterilization is a requirement, the organization shall subject the primary packaging materials to a <span class="key-term">validated sterilization process</span> and record all the control parameters of the sterilization process. If the sterilization process is outsourced, the organization shall ensure that the process complies with the appropriate requirements of this document.</p>
+                    <div class="quote-box">
+                        See ISO 14937.
+                    </div>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">教育解說 / Commentary</div>
+
+                    <div class="concept-box">
+                        <h4>哪些包材需要滅菌？</h4>
+                        <p>需要滅菌的一次包材主要包括：用於無菌注射劑的橡膠塞（Rubber Stoppers）、用於無菌粉末的管制玻璃瓶（Vials）組件、預充填注射器（Pre-filled Syringes）用注射器筒、以及某些醫療級袋子（IV Bags）等。</p>
+                        <p>關鍵點：這些包材在出廠後會直接接觸無菌藥品，所以包材廠自身也必須確保包材達到規定的無菌保障水準（SAL, Sterility Assurance Level）。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>滅菌驗證的三大參考標準</h4>
+                        <ul>
+                            <li><strong>ISO 11135</strong>：環氧乙烷（EO）滅菌的驗證與常規控制</li>
+                            <li><strong>ISO 11137-1/-2</strong>：放射線滅菌（Gamma、E-beam）的驗證要求</li>
+                            <li><strong>ISO 14937</strong>：其他滅菌方法（例如蒸汽、乾熱）的驗證通用要求</li>
+                        </ul>
+                        <p>每種滅菌方法都需要獨立的 IQ/OQ/PQ 驗證，並根據滅菌劑量、暴露時間、溫度/濕度等關鍵參數建立操作範圍。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：醫院滅菌鍋的使用記錄</h4>
+                        <p>就像醫院高壓滅菌鍋（Autoclave）每次使用都必須記錄溫度、壓力、時間，並將記錄與特定批次的手術器械掛勾——ISO 15378 要求包材廠的滅菌過程記錄也必須與每批包材「一對一」可追溯。若日後發現某批藥品有污染問題，稽查人員可以回溯至對應的滅菌批次記錄。</p>
+                    </div>
+
+                    <div class="warning-box">
+                        <h4>外包滅菌：責任不能外包</h4>
+                        <p>8.5.1.4.3 特別規定：即使組織將滅菌程序外包給第三方滅菌服務商，<strong>組織仍需確保外包商的程序符合 ISO 15378 要求</strong>。這意味著包材廠必須：</p>
+                        <ul>
+                            <li>審核外包滅菌商的資格與驗證文件</li>
+                            <li>在合約中明確規定合規要求</li>
+                            <li>定期稽核外包商</li>
+                            <li>確保獲得每批次的滅菌記錄</li>
+                        </ul>
+                        <p>「外包」不等於「免責」——這是 GMP 的基本原則。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 8.5.2 Identification and Traceability                        -->
+    <!-- ============================================================ -->
+    <div id="s852" class="chapter-section">
+        <div class="chapter-divider" style="background: linear-gradient(135deg, #6d28d9 0%, #7c3aed 100%);">
+            <div class="chapter-badge">8.5</div>
+            <div class="chapter-info">
+                <h2>8.5.2 Identification and Traceability</h2>
+                <p>識別與追溯性 — 批次記錄、交叉污染防控與退回材料管理</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">ISO 15378:2017 — Original Text (p41)</div>
+
+                    <h3>8.5.2.1 General (ISO 9001:2015 base)</h3>
+                    <p>The organization shall use suitable means to identify outputs when it is necessary to ensure the conformity of products and services.</p>
+                    <p>The organization shall identify the status of outputs with respect to monitoring and measurement requirements throughout production and service provision.</p>
+                    <p>The organization shall control the <span class="key-term">unique identification</span> of the outputs when traceability is a requirement, and shall retain the documented information necessary to enable traceability.</p>
+
+                    <h3>8.5.2.2 Additional GMP-related Requirements</h3>
+                    <p><strong>8.5.2.2.1</strong> — The organization shall establish and maintain a system to <span class="key-term">trace all production materials from source to product realization</span>, defining the extent and the records required based on risk assessment (see 7.5.3, 10.2.3 and 10.3).</p>
+                    <p><strong>8.5.2.2.2</strong> — <span class="key-term">Batch production records</span> shall be identified with a unique batch or identification reference.</p>
+                    <p><strong>8.5.2.2.3</strong> — Records of the use of quality critical equipment shall be retained (see 7.5.3). These records shall also include cleaning and maintenance activities in sequence with the manufacturing operations. Maintenance activities shall be documented and traceable to a particular manufacturing operation or piece of equipment.</p>
+                    <p><strong>8.5.2.2.4</strong> — The organization shall establish and maintain documented procedures to ensure that primary packaging materials returned to the organization for e.g. reprocessing to specified requirements are identified and distinguished from normal production at all times.</p>
+                    <p><strong>8.5.2.2.5</strong> — In order to reduce the risk of <span class="key-term">cross-contamination</span> of materials, intermediates and finished products, they shall be segregated by suitable means based on a risk assessment e.g. physical segregation, labelling, barcoding, electronic locations.</p>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">教育解說 / Commentary</div>
+
+                    <div class="concept-box">
+                        <h4>追溯性（Traceability）在包材廠的實踐</h4>
+                        <p>ISO 15378 要求從「原料來源」到「產品實現」的全鏈追溯。對包材廠而言，這表示：</p>
+                        <ul>
+                            <li><strong>向上追溯</strong>：每批包材使用的原材料（樹脂、玻璃料、橡膠配方）批號</li>
+                            <li><strong>生產追溯</strong>：使用的設備（含校正狀態）、操作員、時間戳</li>
+                            <li><strong>向下追溯</strong>：該批包材出貨至哪家製藥廠、哪個批次</li>
+                        </ul>
+                        <p>這種雙向追溯系統讓藥品召回時，可在數小時內確定受影響的包材批次範圍。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>唯一批號（Unique Batch Reference）的重要性</h4>
+                        <p>8.5.2.2.2 要求每批生產記錄必須有唯一識別碼。這不僅是文件管理的便利性問題，而是法規要求。當製藥廠客戶對某批包材進行調查（例如懷疑是包材導致藥品不合格），包材廠必須能快速調出完整的批次生產記錄，包括：原料批號、設備狀態、操作員、環境監控數據等。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>8.5.2.2.3：設備使用記錄的「時序性」要求</h4>
+                        <p>這個條款特別要求設備使用記錄必須包含「清潔和維護活動的時序」——即按照實際發生的時間順序記錄。這是因為：</p>
+                        <p>若設備在某次生產後進行了緊急維修，然後立即投入下一批次生產，這個時序必須被記錄清楚。維修過程中是否可能引入污染物？維修後是否需要額外的清潔驗證？這些都需要追溯。</p>
+                    </div>
+
+                    <div class="warning-box">
+                        <h4>退回材料管理（8.5.2.2.4）</h4>
+                        <p>客戶退回的包材（例如品質問題退貨、調貨退回）必須與正常生產材料在物理上或系統上完全隔離，且必須有明確標識。這是防止「退回的不合格品被誤用於正常生產」的關鍵控制點。常見做法：設置專用退回材料暫存區（貼紅色「HOLD」標籤）+ ERP 系統隔離封存。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：超市的 RFID 追蹤系統</h4>
+                        <p>現代超市用條碼/RFID 追蹤每個商品從供應商到貨架到收銀台的全過程——一旦發現問題食品，可在幾分鐘內確定哪些門店、哪些貨架有問題商品。ISO 15378 對包材的追溯要求原理相同，差別在於後果更嚴重：追蹤不到的包材批次可能導致藥品召回，甚至傷害患者。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 8.5.3 Customer Property + 8.5.4 Preservation                -->
+    <!-- ============================================================ -->
+    <div id="s853" class="chapter-section">
+        <div class="chapter-divider" style="background: linear-gradient(135deg, #6d28d9 0%, #7c3aed 100%);">
+            <div class="chapter-badge">8.5</div>
+            <div class="chapter-info">
+                <h2>8.5.3 Customer Property &amp; 8.5.4 Preservation / Storage</h2>
+                <p>客戶財產管理 &amp; 產品保存與儲存的 GMP 特殊要求</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">ISO 15378:2017 — Original Text (p42)</div>
+
+                    <h3>8.5.3 Property Belonging to Customers or External Providers (ISO 9001:2015 base)</h3>
+                    <p>The organization shall exercise care with property belonging to customers or external providers while it is under the organization's control or being used by the organization.</p>
+                    <p>The organization shall identify, verify, protect and safeguard customers' or external providers' property provided for use or incorporation into the products and services.</p>
+                    <p>When the property of a customer or external provider is lost, damaged or otherwise found to be unsuitable for use, the organization shall report this to the customer or external provider and retain documented information on what has occurred.</p>
+                    <div class="quote-box">
+                        NOTE: A customer's or external provider's property can include materials, components, tools and equipment, premises, intellectual property and personal data.
+                    </div>
+
+                    <h3>8.5.4 Preservation</h3>
+                    <p><strong>8.5.4.1 General (ISO 9001:2015 base)</strong> — The organization shall preserve the outputs during production and service provision, to the extent necessary to ensure conformity to requirements.</p>
+                    <p><strong>8.5.4.2.1</strong> — The organization shall establish and maintain a system for the <span class="key-term">control of product with a limited shelf-life</span> or requiring special storage conditions. Such special storage conditions shall be controlled and recorded (see 7.5.3). Shelf-lives shall be justified.</p>
+                    <p><strong>8.5.4.2.2</strong> — The product shall be clearly identified, segregated and securely stored, and protected from extraneous matter or contamination. Packaging used to produce and contain the product shall be clean and suitable. Deliveries shall be accompanied by appropriate documentation. The <span class="key-term">delivery documentation shall be batch-specific</span>.</p>
+                    <p><strong>8.5.4.2.3</strong> — If packaging containers are reused, previous labels shall be removed or defaced. The containers shall be cleaned or verified as clean, in accordance with a documented procedure.</p>
+                    <p><strong>8.5.4.2.4</strong> — If required, any special transport or storage conditions for primary packaging materials shall be stated on the label and complied with.</p>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">教育解說 / Commentary</div>
+
+                    <div class="concept-box">
+                        <h4>8.5.3 客戶財產：包材廠常見的應用場景</h4>
+                        <p>在藥品包材業務中，「客戶財產」最常見的形式包括：</p>
+                        <ul>
+                            <li><strong>客供模具</strong>：製藥廠提供的專屬包材模具，包材廠使用後必須妥善保管</li>
+                            <li><strong>客供原材料</strong>：製藥廠提供特定配方橡膠或樹脂讓包材廠加工</li>
+                            <li><strong>知識產權</strong>：客戶的包材設計圖紙、技術規格（保密義務）</li>
+                            <li><strong>測試樣品</strong>：客戶送來用於相容性測試的藥品或藥液</li>
+                        </ul>
+                        <p>任何客戶財產若發生損壞或遺失，必須立即通知客戶並保留書面記錄。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>保存系統（8.5.4.2.1）：有效期管理</h4>
+                        <p>許多包材（尤其是橡膠密封件、預滅菌包材）有明確的保質期——例如滅菌有效期（Shelf Life of Sterile Products）通常為 12–24 個月。ISO 15378 要求：</p>
+                        <ul>
+                            <li>必須有書面程序追蹤有效期</li>
+                            <li>超期材料必須隔離並處置</li>
+                            <li>保質期限必須有數據支持（穩定性研究）</li>
+                        </ul>
+                    </div>
+
+                    <div class="warning-box">
+                        <h4>交貨文件必須批次對應（8.5.4.2.2）</h4>
+                        <p>「交貨文件必須批次特定（batch-specific）」是 GMP 中的關鍵要求。每次出貨的送貨單必須對應到具體批號，而非僅列出產品名稱和數量。這確保制藥廠在進料收貨時能將實物與批次記錄匹配，是端到端追溯鏈的一環。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>重複使用包裝容器（8.5.4.2.3）</h4>
+                        <p>某些包材在配送時使用的週轉箱/容器可能被重複使用。ISO 15378 要求：若容器重複使用，舊標籤必須完全移除或塗銷（防止識別混淆），並按書面程序確認容器清潔。這看似微小的要求，實際上是防止「容器殘餘污染物」或「舊標籤引起識別錯誤」的重要控制。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 8.5.5 Post-Delivery + 8.5.6 Change Control                  -->
+    <!-- ============================================================ -->
+    <div id="s855" class="chapter-section">
+        <div class="chapter-divider" style="background: linear-gradient(135deg, #6d28d9 0%, #7c3aed 100%);">
+            <div class="chapter-badge">8.5</div>
+            <div class="chapter-info">
+                <h2>8.5.5 Post-Delivery Activities &amp; 8.5.6 Control of Changes</h2>
+                <p>交付後活動 &amp; 變更控制 — GMP 的四項強化要求</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">ISO 15378:2017 — Original Text (p43)</div>
+
+                    <h3>8.5.5 Post-Delivery Activities (ISO 9001:2015 base)</h3>
+                    <p>The organization shall meet requirements for post-delivery activities associated with the products and services.</p>
+                    <p>In determining the extent of post-delivery activities that are required, the organization shall consider:</p>
+                    <ul>
+                        <li>a) statutory and regulatory requirements;</li>
+                        <li>b) the potential undesired consequences associated with its products and services;</li>
+                        <li>c) the nature, use and intended lifetime of its products and services;</li>
+                        <li>d) customer requirements;</li>
+                        <li>e) customer feedback.</li>
+                    </ul>
+
+                    <h3>8.5.6 Control of Changes</h3>
+                    <p><strong>8.5.6.1 General (ISO 9001:2015 base)</strong> — The organization shall review and control changes for production or service provision, to the extent necessary to ensure continuing conformity with requirements. The organization shall retain documented information describing the results of the review of changes, the person(s) authorizing the change, and any necessary actions arising from the review.</p>
+
+                    <h3>8.5.6.2 Additional GMP-related Requirements</h3>
+                    <p><strong>8.5.6.2.1</strong> — The organization shall establish and operate a documented procedure for an effective <span class="key-term">change control system</span>, incorporating the evaluation of risk(s) associated with all proposed changes that can have potential impact on the quality of supplied product.</p>
+                    <p><strong>8.5.6.2.2</strong> — The evaluation of the change on the quality of the product shall determine if <span class="key-term">validation or revalidation</span> is required.</p>
+                    <p><strong>8.5.6.2.3</strong> — The organization's change control procedure shall ensure supporting data are generated to demonstrate that the change will result in a product of desired quality and safety, consistent with the approved specifications.</p>
+                    <p><strong>8.5.6.2.4</strong> — Defined functions shall have the responsibility and authority for approval of changes. Approved changes shall be implemented in a controlled manner.</p>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">教育解說 / Commentary</div>
+
+                    <div class="concept-box">
+                        <h4>8.5.5 交付後活動：包材廠的義務範圍</h4>
+                        <p>「交付後活動」在包材廠情境中主要指：處理客戶投訴（交貨後發現品質問題）、提供技術支援（例如包材在客戶灌裝線的相容性問題）、保留樣品的長期管理、以及配合客戶進行已交付包材的法規調查或藥品召回。</p>
+                        <p>ISO 15378 要求在設計這些活動範圍時，必須考慮「潛在的不良後果」——也就是包材問題可能對患者造成的影響，這是風險導向思維的體現。</p>
+                    </div>
+
+                    <div class="warning-box">
+                        <h4>變更控制（Change Control）：GMP 中最重要的系統之一</h4>
+                        <p>8.5.6.2 的四項 GMP 附加要求勾勒出一個完整的變更控制系統架構：</p>
+                        <ul>
+                            <li><strong>觸發</strong>：任何可能影響產品品質的變更（原料供應商、設備、製程參數、廠房）</li>
+                            <li><strong>評估</strong>：風險評估 + 判斷是否需要驗證/再驗證</li>
+                            <li><strong>數據支持</strong>：需要生成支持性數據（如相容性測試、工程批次）</li>
+                            <li><strong>批准</strong>：需要有授權職能（通常是 QA 部門）正式批准</li>
+                            <li><strong>實施</strong>：在受控方式下執行，並通知客戶（若適用）</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：藥品製造商角度看包材變更</h4>
+                        <p>想像你是製藥廠的 QA 主管。你的橡膠塞供應商突然通知說他們更換了橡膠配方。這個變更會影響：橡膠的提取物/浸出物（Extractables/Leachables）、密封力、與藥液的相容性。</p>
+                        <p>ISO 15378 要求包材廠在做這個變更前，必須先完成風險評估和必要的支持性數據，<strong>並通知客戶（製藥廠）</strong>。這就是為什麼許多藥品製造合同中要求「供應商未經批准不得擅自變更」。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>8.5.6.2.4：誰有權批准變更？</h4>
+                        <p>「Defined functions（指定職能）」通常指 Quality Assurance（QA）部門。這確保了變更批准不會僅由工程或生產部門主導——品質部門必須參與並有最終批准權。實務上，許多公司建立了「變更控制委員會（Change Control Board）」跨部門審查重大變更。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 8.6 Release of Products + 8.7 Nonconforming Outputs         -->
+    <!-- ============================================================ -->
+    <div id="s86" class="chapter-section">
+        <div class="chapter-divider" style="background: linear-gradient(135deg, #6d28d9 0%, #7c3aed 100%);">
+            <div class="chapter-badge">8.6</div>
+            <div class="chapter-info">
+                <h2>8.6 Release of Products and Services</h2>
+                <p>產品放行 — 批次文件審查與放行授權</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">ISO 15378:2017 — Original Text (p43)</div>
+
+                    <h3>8.6 Release of Products and Services (ISO 9001:2015 base)</h3>
+                    <p>The organization shall implement planned arrangements, at appropriate stages, to verify that the product and service requirements have been met.</p>
+                    <p>The release of products and services to the customer shall not proceed until the planned arrangements have been satisfactorily completed, unless otherwise approved by a relevant authority and, as applicable, by the customer.</p>
+                    <p>The organization shall retain documented information on the release of products and services. The documented information shall include:</p>
+                    <ul>
+                        <li>a) evidence of conformity with the acceptance criteria;</li>
+                        <li>b) traceability to the person(s) authorizing the release.</li>
+                    </ul>
+
+                    <div class="quote-box">
+                        <strong>GMP Addition (from 9.1.3.5):</strong> A review of <span class="key-term">batch documentation</span> shall be performed in order to release the batch. Shipment prior to batch release can occur in accordance with a customer agreement.
+                    </div>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">教育解說 / Commentary</div>
+
+                    <div class="concept-box">
+                        <h4>批次放行（Batch Release）：包材廠的 QP 等效功能</h4>
+                        <p>在製藥廠，批次放行由合格人（Qualified Person, QP）授權。ISO 15378 為包材廠建立了類似機制——批次必須通過文件審查後才能放行。這個審查通常包括：</p>
+                        <ul>
+                            <li>批次生產記錄（Batch Production Record）完整性確認</li>
+                            <li>所有進料材料已通過進料檢驗</li>
+                            <li>製程中控制（In-Process Controls）數據在規格內</li>
+                            <li>最終檢驗（Final Inspection）結果符合規格</li>
+                            <li>偏差（Deviations）已調查並關閉或已評估影響</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>「放行前出貨」的允許條件</h4>
+                        <p>ISO 15378（透過 9.1.3.5）允許在「客戶協議」下進行批次放行前出貨（Shipment Prior to Batch Release）。這種安排在業界常稱為 <strong>Preliminary Release</strong> 或 <strong>Ship-to-Test</strong>，常用於緊急供貨場景。但這需要書面的客戶合約條款支持，且最終批次放行結論必須補完。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：銀行的雙簽制度</h4>
+                        <p>批次放行就像銀行的大額轉帳需要雙重授權——即使所有文件都準備好了，也必須有授權人員的簽名確認，才能讓貨物「出閘」進入客戶手中。這個授權記錄（誰在何時批准了哪個批次）是事後稽查的關鍵證據。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8.7 Nonconforming Outputs -->
+    <div id="s87" class="chapter-section">
+        <div class="chapter-divider" style="background: linear-gradient(135deg, #6d28d9 0%, #7c3aed 100%);">
+            <div class="chapter-badge">8.7</div>
+            <div class="chapter-info">
+                <h2>8.7 Control of Nonconforming Outputs</h2>
+                <p>不合格品管制 — 隔離、特許放行、處置三條路徑</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">ISO 15378:2017 — Original Text (p44)</div>
+
+                    <h3>8.7.1 (ISO 9001:2015 base)</h3>
+                    <p>The organization shall ensure that outputs that do not conform to their requirements are identified and controlled to prevent their unintended use or delivery.</p>
+                    <p>The organization shall take appropriate action based on the nature of the nonconformity and its effect on the conformity of products and services. This shall also apply to nonconforming products and services detected after delivery of products, during or after the provision of services.</p>
+                    <p>The organization shall deal with nonconforming outputs in one or more of the following ways:</p>
+                    <ul>
+                        <li>a) correction;</li>
+                        <li>b) segregation, containment, return or suspension of provision of products and services;</li>
+                        <li>c) informing the customer;</li>
+                        <li>d) obtaining authorization for <span class="key-term">acceptance under concession</span>.</li>
+                    </ul>
+                    <p>Conformity to the requirements shall be verified when nonconforming outputs are corrected.</p>
+
+                    <h3>8.7.2 (Documented Information)</h3>
+                    <p>The organization shall retain documented information that:</p>
+                    <ul>
+                        <li>a) describes the nonconformity;</li>
+                        <li>b) describes the actions taken;</li>
+                        <li>c) describes any concessions obtained;</li>
+                        <li>d) identifies the authority deciding the action in respect of the nonconformity.</li>
+                    </ul>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">教育解說 / Commentary</div>
+
+                    <div class="concept-box">
+                        <h4>不合格品的三條路徑</h4>
+                        <p>發現不合格品後，ISO 15378 提供三種處理選項：</p>
+                        <ul>
+                            <li><strong>矯正/返工（Correction/Rework）</strong>：修復後重新驗證是否符合規格（最常見）</li>
+                            <li><strong>特許放行（Concession/Waiver）</strong>：在客戶書面授權下，接受不完全符合規格的材料（需記錄）</li>
+                            <li><strong>銷毀/處置（Disposal/Destruction）</strong>：當無法矯正且客戶不接受特許時，按書面程序銷毀</li>
+                        </ul>
+                    </div>
+
+                    <div class="warning-box">
+                        <h4>特許放行（Concession）：必須客戶授權</h4>
+                        <p>特許放行是 GMP 中一個受嚴格管制的概念。ISO 15378 明確要求：任何不合格品的特許放行，必須<strong>由客戶書面授權</strong>，不能由包材廠單方面決定。</p>
+                        <p>這反映了一個重要的責任分配原則：不合格品能否被接受使用，最終使用者（製藥廠）必須知情並同意，因為使用不合格包材的風險由製藥廠的最終產品承擔。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>交付後發現的不合格品</h4>
+                        <p>8.7.1 特別涵蓋「交付後發現的不合格品」——即包材已到達客戶手中，甚至已用於藥品生產後，才發現問題。這種情況下，包材廠必須：迅速通知客戶、保留調查記錄、配合客戶評估影響範圍，並採取 CAPA。這直接連接到 Section 10 的客戶投訴處理程序。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：汽車零件的召回流程</h4>
+                        <p>汽車零件供應商發現已交付的零件有缺陷時，不能自行決定「沒事」繼續出貨——必須立即通知汽車廠（客戶），並由汽車廠決定如何處置已安裝到車輛上的零件。ISO 15378 對包材的要求遵循相同邏輯。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 9: Performance Evaluation                            -->
+    <!-- ============================================================ -->
+    <div class="chapter-section">
+        <div class="chapter-divider" style="background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);">
+            <div class="chapter-badge">9</div>
+            <div class="chapter-info">
+                <h2>Section 9: Performance Evaluation — Overview</h2>
+                <p>第9節概覽：監測、測量、分析與評估的完整框架</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">ISO 15378:2017 — Original Text (p44–45)</div>
+
+                    <h3>9.1.1 General (ISO 9001:2015 base)</h3>
+                    <p>The organization shall determine:</p>
+                    <ul>
+                        <li>a) what needs to be monitored and measured;</li>
+                        <li>b) the methods for monitoring, measurement, analysis and evaluation needed to ensure valid results;</li>
+                        <li>c) when the monitoring and measuring shall be performed;</li>
+                        <li>d) when the results from monitoring and measurement shall be analysed and evaluated.</li>
+                    </ul>
+                    <p>The organization shall evaluate the performance and the effectiveness of the quality management system. The organization shall retain appropriate documented information as evidence of the results.</p>
+
+                    <h3>9.1.2 Customer Satisfaction (ISO 9001:2015 base)</h3>
+                    <p>The organization shall monitor customers' perceptions of the degree to which their needs and expectations have been fulfilled. The organization shall determine the methods for obtaining, monitoring and reviewing this information.</p>
+                    <div class="quote-box">
+                        NOTE: Examples of monitoring customer perceptions can include customer surveys, customer feedback on delivered products and services, meetings with customers, market-share analysis, compliments, warranty claims and dealer reports.
+                    </div>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">教育解說 / Commentary</div>
+
+                    <div class="concept-box">
+                        <h4>Section 9 的三大支柱</h4>
+                        <p>ISO 15378 第 9 節建立了績效評估的完整架構，分三個主要層面：</p>
+                        <ul>
+                            <li><strong>9.1 監測與評估</strong>：日常數據收集、OOS 調查、進料/製程/批次控制</li>
+                            <li><strong>9.2 內部稽核</strong>：系統性定期稽核 QMS 合規性</li>
+                            <li><strong>9.3 管理審查</strong>：高層定期評估 QMS 整體有效性</li>
+                        </ul>
+                        <p>這三個層面形成一個由下而上的品質監控體系：日常數據 → 稽核發現 → 管理層決策。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>客戶滿意度監測（9.1.2）在包材業務的實踐</h4>
+                        <p>對包材廠而言，客戶滿意度的關鍵指標通常包括：批次拒收率（Batch Rejection Rate）、客戶投訴數量與嚴重性、交期達成率（On-Time Delivery Rate）、品質偏差通知（Quality Notifications）的回應時間。</p>
+                        <p>許多大型製藥廠客戶對供應商有定期的「Supplier Scorecard」評分系統，這些分數直接回饋到包材廠的客戶滿意度監測數據。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 9.1.3 Analysis & Evaluation: OOS, Incoming, In-Process      -->
+    <!-- ============================================================ -->
+    <div id="s913" class="chapter-section">
+        <div class="chapter-divider" style="background: linear-gradient(135deg, #6d28d9 0%, #7c3aed 100%);">
+            <div class="chapter-badge">9.1</div>
+            <div class="chapter-info">
+                <h2>9.1.3 Analysis and Evaluation — OOS, Incoming Inspection &amp; In-Process Controls</h2>
+                <p>分析與評估 — 超規結果調查（OOS）、進料檢驗、製程中控制</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">ISO 15378:2017 — Original Text (p45–46)</div>
+
+                    <h3>9.1.3.1 General</h3>
+                    <p>The organization shall analyse and evaluate appropriate data and information arising from monitoring and measurement. The results of analysis shall be used to evaluate: conformity of products and services; degree of customer satisfaction; performance and effectiveness of the QMS; whether planning has been implemented effectively; effectiveness of actions taken to address risks and opportunities; performance of external providers; the need for improvements.</p>
+                    <div class="quote-box">
+                        The quality unit(s) shall ensure that <span class="key-term">quality critical deviations</span> are investigated, resolved and documented. The organization shall establish and maintain documented procedures, including requirements for the analysis of data, to identify existing or potential causes of nonconforming product or other quality problems.
+                    </div>
+
+                    <h3>9.1.3.2 Investigation of OOS Results</h3>
+                    <div class="quote-box">
+                        Any <span class="key-term">out-of-specification (OOS) result</span> shall be investigated according to a documented procedure and the outcome recorded (see 7.5.3).
+                    </div>
+
+                    <h3>9.1.3.3 Incoming Inspection and Testing</h3>
+                    <p>Requirements shall be established and maintained for all materials used. Incoming materials shall be inspected or otherwise verified as conforming to specified requirements.</p>
+
+                    <h3>9.1.3.4 In-Process Controls</h3>
+                    <p><strong>9.1.3.4.1</strong> — The organization shall, as required by documented procedures, inspect and test the product during processing.</p>
+                    <p><strong>9.1.3.4.2</strong> — Sampling procedures shall be defined to ensure that samples are <span class="key-term">representative of the process</span> being assessed. Samples shall not be returned to the production area if removed to a separate testing location.</p>
+                    <p><strong>9.1.3.4.3</strong> — Additional in-process controls shall be carried out after an <span class="key-term">equipment breakdown</span> or an unscheduled interruption which stops the process.</p>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">教育解說 / Commentary</div>
+
+                    <div class="warning-box">
+                        <h4>OOS 調查（9.1.3.2）：GMP 的強制要求</h4>
+                        <p>「超規結果（Out-of-Specification, OOS）調查」是美國 FDA 21 CFR Part 211 和 EU GMP 中的核心要求，ISO 15378 將其納入包材廠的義務範圍。OOS 調查的基本程序：</p>
+                        <ul>
+                            <li><strong>第一步（實驗室調查）</strong>：確認是否為計算錯誤、儀器故障、操作員失誤等可辨識的實驗室錯誤</li>
+                            <li><strong>第二步（製造調查）</strong>：若無法排除實驗室原因，擴大至生產過程調查</li>
+                            <li><strong>結論</strong>：確認 OOS 有效性，採取 CAPA，決定批次處置</li>
+                        </ul>
+                        <p>關鍵：OOS 調查必須有書面程序，且每次調查結果必須記錄歸檔。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>進料檢驗（9.1.3.3）：包材廠的兩種方式</h4>
+                        <p>ISO 15378 要求對「所有使用材料」建立進料要求，並進行「檢驗或其他方式的符合性確認」。「其他方式」通常指：</p>
+                        <ul>
+                            <li><strong>供應商釋放憑證（Certificate of Analysis, CoA）</strong>：對經批准的合格供應商，接受 CoA 代替每批檢驗（需有定期稽核做後盾）</li>
+                            <li><strong>跳批抽樣（Skip-Lot Testing）</strong>：對歷史記錄良好的供應商，降低抽樣頻率（需書面驗證）</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>製程中控制的三個關鍵點</h4>
+                        <p><strong>代表性樣品（9.1.3.4.2）</strong>：抽樣必須代表整個製程——例如在注塑成型中，每個模腔都可能有不同的製程特性，抽樣計劃必須覆蓋所有模腔。</p>
+                        <p><strong>樣品不得返回（9.1.3.4.2）</strong>：移出生產區的樣品不得送回——因為樣品可能在測試過程中受到污染或破損。</p>
+                        <p><strong>設備故障後的額外控制（9.1.3.4.3）</strong>：設備故障或非計劃停機後，必須進行額外的製程中控制，確認恢復生產後的品質穩定性。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：品質管控層次金字塔</h4>
+                        <p>進料檢驗（9.1.3.3）是第一道防線；製程中控制（9.1.3.4）是製造過程中的即時監測；最終檢驗（9.1.3.5）是出貨前的最後確認。OOS 調查貫穿所有層次——任何一個層次發現超規，都必須觸發系統性調查，而不僅僅是「重測一次」。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 9.1.3.5 Batch Release + 9.1.3.6 Retained Samples           -->
+    <!-- ============================================================ -->
+    <div id="s914" class="chapter-section">
+        <div class="chapter-divider" style="background: linear-gradient(135deg, #6d28d9 0%, #7c3aed 100%);">
+            <div class="chapter-badge">9.1</div>
+            <div class="chapter-info">
+                <h2>9.1.3.5–9.1.3.7: Batch Release, Retained Samples &amp; Process Data</h2>
+                <p>批次放行、保留樣品與製程數據的開放原則</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">ISO 15378:2017 — Original Text (p47)</div>
+
+                    <h3>9.1.3.5 Batch Release</h3>
+                    <p>The organization shall implement an approval process for the <span class="key-term">batch release of products</span> from the organization.</p>
+                    <div class="quote-box">
+                        NOTE 1: Shipment prior to batch release can occur in accordance with a customer agreement.
+                    </div>
+                    <p>If final inspection is a requirement, it shall be completed prior to batch release. Sampling procedures shall be defined to ensure that samples are representative of the batch being assessed. Samples shall not be returned to the production area if removed to a separate testing location.</p>
+                    <p>A review of <span class="key-term">batch documentation</span> shall be performed in order to release the batch.</p>
+                    <div class="quote-box">
+                        NOTE 2: Final inspection might not include all specification parameters on basis of the control system and control strategy.
+                    </div>
+
+                    <h3>9.1.3.6 Retained Samples</h3>
+                    <p><span class="key-term">Retained samples</span> shall be taken in accordance with the organization's and/or customer's requirements.</p>
+
+                    <h3>9.1.3.7 Process Data</h3>
+                    <p>When required by the customer or their representative, production and control data related to the product (excluding the organization's confidential intellectual property) shall be made available for verification that the production process, in-process and final control and test equipment meet the requirements.</p>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">教育解說 / Commentary</div>
+
+                    <div class="concept-box">
+                        <h4>批次放行：文件審查的核心</h4>
+                        <p>ISO 15378 強調批次放行必須包含<strong>批次文件審查（Review of Batch Documentation）</strong>。這不僅僅是確認最終檢驗通過，而是全面審查整個批次的生產歷史：</p>
+                        <ul>
+                            <li>原料進料記錄 + CoA</li>
+                            <li>生產批次記錄（設備、參數、操作員）</li>
+                            <li>製程中控制數據</li>
+                            <li>偏差記錄（若有）及其評估</li>
+                            <li>最終檢驗報告</li>
+                            <li>環境監控數據（若適用）</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>Note 2 的重要性：風險導向放行（RTRT）</h4>
+                        <p>9.1.3.5 的 NOTE 2 暗示了現代 GMP 中「即時放行測試（Real-Time Release Testing, RTRT）」的概念——最終檢驗不必測試所有規格參數，只要控制系統和控制策略可以保證品質。這與 ICH Q8/Q10 的製程分析技術（PAT）和 QbD 方法論一致。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>保留樣品（Retained Samples）的用途</h4>
+                        <p>保留樣品是出貨批次的「時間膠囊」。在客戶日後提出投訴或出現問題時，保留樣品可用於：</p>
+                        <ul>
+                            <li>重新測試原批次品質（確認出廠時是否合格）</li>
+                            <li>進行客戶報告中描述問題的還原試驗</li>
+                            <li>藥品召回調查的參考依據</li>
+                        </ul>
+                        <p>保留樣品的數量、儲存條件、保存期限通常由客戶合約或內部規程規定（通常為產品有效期限後至少 1 年）。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>9.1.3.7 製程數據開放原則</h4>
+                        <p>客戶有權要求查閱生產和控制數據以驗證製程合規性——但「不包括組織的機密知識產權」。這在實務上需要仔細界定：哪些數據可以共享（如生產記錄、檢驗數據），哪些屬於商業機密（如配方配比、特殊製程技術）。供應商協議（Quality Technical Agreement）通常會事先約定數據共享範圍。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 9.2 Internal Audit                                           -->
+    <!-- ============================================================ -->
+    <div id="s92" class="chapter-section">
+        <div class="chapter-divider" style="background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);">
+            <div class="chapter-badge">9.2</div>
+            <div class="chapter-info">
+                <h2>9.2 Internal Audit</h2>
+                <p>內部稽核 — 頻率、方法、客觀性與後續行動</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">ISO 15378:2017 — Original Text (p47–48)</div>
+
+                    <h3>9.2.1 (ISO 9001:2015 base)</h3>
+                    <p>The organization shall conduct internal audits at planned intervals to provide information on whether the quality management system:</p>
+                    <ul>
+                        <li>a) conforms to:
+                            <ul>
+                                <li>1) the organization's own requirements for its quality management system;</li>
+                                <li>2) the requirements of this International Standard;</li>
+                            </ul>
+                        </li>
+                        <li>b) is effectively implemented and maintained.</li>
+                    </ul>
+
+                    <h3>9.2.2 (ISO 9001:2015 base)</h3>
+                    <p>The organization shall:</p>
+                    <ul>
+                        <li>a) plan, establish, implement and maintain an <span class="key-term">audit programme</span>(s) including the frequency, methods, responsibilities, planning requirements and reporting, which shall take into consideration the importance of the processes concerned, changes affecting the organization, and the results of previous audits;</li>
+                        <li>b) define the audit criteria and scope for each audit;</li>
+                        <li>c) select auditors and conduct audits to ensure <span class="key-term">objectivity and impartiality</span> of the audit process;</li>
+                        <li>d) ensure that the results of the audits are reported to relevant management;</li>
+                        <li>e) take appropriate correction and corrective actions without undue delay;</li>
+                        <li>f) retain documented information as evidence of the implementation of the audit programme and the audit results.</li>
+                    </ul>
+                    <div class="quote-box">
+                        NOTE: See ISO 19011 for guidance.
+                    </div>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">教育解說 / Commentary</div>
+
+                    <div class="concept-box">
+                        <h4>ISO 15378 內部稽核的雙重目的</h4>
+                        <p>9.2.1 清楚列出內部稽核的兩個目的：確認符合 ISO 15378 要求（合規確認），以及確認 QMS 是否有效實施和維持（有效性評估）。</p>
+                        <p>許多組織的內部稽核只關注「有沒有這個程序」，而忽略「這個程序是否真正有效運作」。ISO 15378 要求兩者並重。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>稽核程序計劃的四個考量維度（9.2.2.a）</h4>
+                        <p>制定年度內部稽核計劃時，必須考量：</p>
+                        <ul>
+                            <li><strong>製程重要性</strong>：高風險製程（如滅菌、潔淨室生產）稽核頻率應更高</li>
+                            <li><strong>組織變化</strong>：新廠房、新設備、人員異動後需要優先稽核</li>
+                            <li><strong>歷史稽核結果</strong>：上次發現重大不合格的領域需要加強追蹤</li>
+                            <li><strong>客戶稽核/法規檢查結果</strong>：外部稽核發現應納入內部稽核重點</li>
+                        </ul>
+                    </div>
+
+                    <div class="warning-box">
+                        <h4>客觀性與公正性（9.2.2.c）</h4>
+                        <p>稽核員不能稽核自己負責的工作領域——這是最基本的獨立性要求。在人數較少的組織中，這往往是一個挑戰，常見解決方法包括：交叉稽核（不同部門互相稽核）、聘請外部稽核員補充內部稽核、建立稽核員資格要求確保專業能力。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：財務年度審計</h4>
+                        <p>內部稽核就像企業的內部財務審計——不是等到外部稽查才發現問題，而是主動、定期地自我檢查。差別在於：財務審計關注金流合規，GMP 內部稽核關注品質系統合規。兩者都需要獨立性，結果都需要報告給管理層，發現問題都需要在合理時間內糾正。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 9.3 Management Review                                        -->
+    <!-- ============================================================ -->
+    <div id="s93" class="chapter-section">
+        <div class="chapter-divider" style="background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);">
+            <div class="chapter-badge">9.3</div>
+            <div class="chapter-info">
+                <h2>9.3 Management Review</h2>
+                <p>管理審查 — 輸入項目、輸出決策與高層責任</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">ISO 15378:2017 — Original Text (p48–49)</div>
+
+                    <h3>9.3.1 General (ISO 9001:2015 base)</h3>
+                    <p>Top management shall review the organization's quality management system, at planned intervals, to ensure its continuing suitability, adequacy, effectiveness and alignment with the strategic direction of the organization.</p>
+
+                    <h3>9.3.2 Management Review Inputs</h3>
+                    <p>The management review shall be planned and carried out taking into consideration:</p>
+                    <ul>
+                        <li>a) the status of actions from previous management reviews;</li>
+                        <li>b) changes in external and internal issues relevant to the QMS;</li>
+                        <li>c) information on the performance and effectiveness of the QMS, including trends in:
+                            <ul>
+                                <li>1) customer satisfaction and feedback;</li>
+                                <li>2) the extent to which quality objectives have been met;</li>
+                                <li>3) process performance and conformity;</li>
+                                <li>4) nonconformities and corrective actions;</li>
+                                <li>5) monitoring and measurement results;</li>
+                                <li>6) audit results;</li>
+                                <li>7) the performance of external providers;</li>
+                            </ul>
+                        </li>
+                        <li>d) the adequacy of resources;</li>
+                        <li>e) the effectiveness of actions taken to address risks and opportunities (see 6.1);</li>
+                        <li>f) opportunities for improvement;</li>
+                        <li>g) effectiveness of training.</li>
+                    </ul>
+
+                    <h3>9.3.3 Management Review Outputs</h3>
+                    <p>The outputs of the management review shall include decisions and actions related to:</p>
+                    <ul>
+                        <li>a) opportunities for improvement;</li>
+                        <li>b) any need for changes to the quality management system;</li>
+                        <li>c) resource needs;</li>
+                        <li>d) training needs.</li>
+                    </ul>
+                    <p>The organization shall retain documented information as evidence of the results of management reviews.</p>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">教育解說 / Commentary</div>
+
+                    <div class="concept-box">
+                        <h4>管理審查：高層的 QMS 年度健康檢查</h4>
+                        <p>管理審查（Management Review）是高層管理者定期評估整個 QMS 是否仍然適合、充分且有效的正式機制。注意：這不是品質部門的事——<strong>「Top management（最高管理層）」</strong>必須親自參與。</p>
+                        <p>對包材廠而言，管理審查通常每年至少進行一次（大型或複雜組織可能半年一次），並產生書面的管理審查記錄和行動計劃。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>9.3.2(g) 訓練有效性：ISO 15378 的附加項目</h4>
+                        <p>值得注意的是，ISO 15378 在管理審查輸入中加入了 g) 「訓練有效性（effectiveness of training）」——這是比 ISO 9001:2015 基礎版本多的一個輸入項目，反映了 GMP 對人員能力和訓練的高度重視。管理層需要評估：訓練計劃是否真的提升了員工能力，而不只是紙面上的訓練時數達標。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>輸入 vs. 輸出：管理審查的邏輯閉環</h4>
+                        <p>ISO 15378 對管理審查採用 PDCA 邏輯：</p>
+                        <ul>
+                            <li><strong>輸入（9.3.2）</strong>：收集過去一年的品質績效數據</li>
+                            <li><strong>審查（9.3.1）</strong>：最高管理層評估數據、識別問題和機會</li>
+                            <li><strong>輸出（9.3.3）</strong>：做出決策——需要哪些改善？需要什麼資源？需要哪些 QMS 變更？</li>
+                        </ul>
+                        <p>輸出必須包含具體決策和行動，不能只是「討論了一下，沒什麼大問題」。下次管理審查的第一個輸入項目（9.3.2.a）就是追蹤上次決議的執行狀況。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：董事會年度報告</h4>
+                        <p>管理審查的結構與企業董事會年度報告類似——回顧上一年的表現（財務指標 → 品質指標），評估內外部環境變化，決定來年的資源投入和戰略調整。差別在於：管理審查的「指標」是品質績效數據（不合格率、客訴數量、稽核發現），而「戰略調整」是 QMS 改善計劃。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 10: Improvement                                      -->
+    <!-- ============================================================ -->
+    <div id="s10" class="chapter-section">
+        <div class="chapter-divider" style="background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);">
+            <div class="chapter-badge">10</div>
+            <div class="chapter-info">
+                <h2>Section 10: Improvement — Nonconformity, CAPA &amp; Continual Improvement</h2>
+                <p>第10節：改善 — 不符合項、矯正預防行動（CAPA）與持續改善</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">ISO 15378:2017 — Original Text (p50–51)</div>
+
+                    <h3>10.1 General (ISO 9001:2015 base)</h3>
+                    <p>The organization shall determine and select opportunities for improvement and implement any necessary actions to meet customer requirements and enhance customer satisfaction. These shall include:</p>
+                    <ul>
+                        <li>a) improving products and services to meet requirements as well as to address future needs and expectations;</li>
+                        <li>b) correcting, preventing or reducing undesired effects;</li>
+                        <li>c) improving the performance and effectiveness of the quality management system.</li>
+                    </ul>
+
+                    <h3>10.2 Nonconformity and Corrective Action</h3>
+                    <p><strong>10.2.1 (ISO 9001:2015 base)</strong> — When a nonconformity occurs, including any arising from complaints, the organization shall:</p>
+                    <ul>
+                        <li>a) react to the nonconformity: 1) take action to control and correct it; 2) deal with the consequences;</li>
+                        <li>b) evaluate the need for action to eliminate the cause(s): 1) reviewing and analysing the nonconformity; 2) determining the causes; 3) determining if similar nonconformities exist, or could potentially occur;</li>
+                        <li>c) implement any action needed;</li>
+                        <li>d) review the effectiveness of any corrective action taken;</li>
+                        <li>e) update risks and opportunities determined during planning, if necessary;</li>
+                        <li>f) make changes to the quality management system, if necessary.</li>
+                    </ul>
+                    <p>Corrective actions shall be appropriate to the effects of the nonconformities encountered.</p>
+                    <p><strong>10.2.2</strong> — The organization shall retain documented information as evidence of: the nature of the nonconformities and any subsequent actions taken; the results of any corrective action.</p>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">教育解說 / Commentary</div>
+
+                    <div class="concept-box">
+                        <h4>Section 10 的三個層次</h4>
+                        <p>ISO 15378 第 10 節的改善框架有三個遞進層次：</p>
+                        <ul>
+                            <li><strong>矯正（Correction）</strong>：針對已發生問題的即時修復（治標）</li>
+                            <li><strong>矯正行動（Corrective Action）</strong>：消除不符合的根本原因，防止再發（治本）</li>
+                            <li><strong>持續改善（Continual Improvement）</strong>：主動識別並實施提升機會，即使目前沒有問題（超越合規）</li>
+                        </ul>
+                        <p>GMP 要求的是三個層次都必須有，而不是只有矯正。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>CAPA 的六步驟閉環（10.2.1）</h4>
+                        <p>10.2.1 實際上描述了完整的 CAPA 閉環流程：</p>
+                        <ol>
+                            <li><strong>即時反應</strong>：控制並矯正不符合，處理後果</li>
+                            <li><strong>根本原因分析</strong>：不只是「發生了什麼」，要找到「為什麼發生」</li>
+                            <li><strong>橫向延伸</strong>：確認類似問題是否在其他地方存在或可能發生</li>
+                            <li><strong>實施行動</strong>：執行根本原因消除措施</li>
+                            <li><strong>有效性確認</strong>：驗證矯正行動真的有效（最常被忽略的步驟）</li>
+                            <li><strong>更新 QMS</strong>：若必要，更新風險評估、程序文件或 QMS</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 10.2.3 GMP Additional Requirements - Full Width -->
+            <div style="margin-top: 1.5rem;">
+                <div class="section-title">10.2.3 — Additional GMP-Related Requirements (p51)</div>
+                <div class="two-column">
+                    <div class="left-column">
+                        <div class="column-header">ISO 15378:2017 — Original Text</div>
+                        <p>The following additional GMP-related requirements apply to nonconformity and corrective action:</p>
+                        <ul>
+                            <li><strong>a)</strong> Nonconforming material or products shall be <span class="key-term">quarantined</span> pending determination of corrective or other actions. When considering correction via rework or reconditioning, a risk assessment of any adverse effect of the reworking on the products shall be performed and recorded.</li>
+                            <li><strong>b)</strong> Rework and/or reconditioning shall be in accordance with a documented procedure that has been approved by the quality unit(s). The rework procedure shall be agreed with the customer, where this is a specified requirement.</li>
+                            <li><strong>c)</strong> If primary packaging material has been produced under <span class="key-term">cleanroom conditions</span>, any rework shall be carried out under the same conditions.</li>
+                            <li><strong>d)</strong> Any proposal to release nonconforming product shall be via a documented <span class="key-term">concession, authorized by the customer</span>.</li>
+                            <li><strong>e)</strong> Following rejection, primary packaging materials shall be disposed of or destroyed in accordance with a documented procedure.</li>
+                            <li><strong>f)</strong> The organization shall establish and maintain documented procedures for the analysis of data, to identify existing or potential causes of nonconforming product or other quality problems.</li>
+                            <li><strong>g)</strong> The organization shall investigate all customer complaints in a timely manner and communicate identified corrective action to all production and production-related sites. Action(s) shall be implemented as soon as practical and to an agreed timetable; records of investigation shall be maintained.</li>
+                            <li><strong>h)</strong> Customer complaints not followed by corrective and/or preventive action shall be <span class="key-term">justified and also recorded</span>.</li>
+                        </ul>
+                    </div>
+                    <div class="right-column">
+                        <div class="column-header">教育解說 / Commentary</div>
+
+                        <div class="warning-box">
+                            <h4>10.2.3(c)：潔淨室返工的強制要求</h4>
+                            <p>這是 ISO 15378 中一個非常具體且嚴格的要求：如果包材是在潔淨室環境下生產的，返工也<strong>必須</strong>在相同的潔淨室條件下進行。</p>
+                            <p>這是因為：潔淨室生產的包材（例如預滅菌器具）的品質保證依賴於潔淨環境。若在普通環境下返工，即使包材外觀修復，潔淨度可能已受損，不能作為替代。</p>
+                        </div>
+
+                        <div class="warning-box">
+                            <h4>10.2.3(d)：特許放行必須客戶書面授權</h4>
+                            <p>此條款與 8.7.1(d) 呼應，再次強調：不合格品的特許放行（Concession）必須由客戶書面授權。「我們內部評估認為可以接受」不夠——客戶必須知情並授權。</p>
+                            <p>這在供應鏈中具有重要意義：客戶（製藥廠）有義務在接受特許放行後，將此資訊反映在其自身的批次記錄中，並評估對最終藥品品質的影響。</p>
+                        </div>
+
+                        <div class="note-box">
+                            <h4>10.2.3(g)：客戶投訴處理的時效要求</h4>
+                            <p>「及時（timely manner）」和「盡快可行（as soon as practical）」是 ISO 15378 的措辭。雖然沒有硬性規定具體天數，但 GMP 行業慣例通常是：初步確認回覆 24–48 小時內；初步調查報告 5–10 個工作日；最終 CAPA 報告 30 天內。這些時限通常會在客戶與供應商的品質技術協議（QTA）中明確規定。</p>
+                        </div>
+
+                        <div class="note-box">
+                            <h4>10.2.3(h)：「不行動」也需要理由</h4>
+                            <p>這是一個常被忽略的要求：即使組織判斷某個客戶投訴<strong>不需要</strong>採取矯正或預防行動，這個判斷本身也必須<strong>書面記錄並說明理由</strong>。不能簡單地「關閉投訴記錄」而不留下處置決定的依據。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 10.3 Continual Improvement                                   -->
+    <!-- ============================================================ -->
+    <div class="chapter-section">
+        <div class="chapter-divider" style="background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);">
+            <div class="chapter-badge">10.3</div>
+            <div class="chapter-info">
+                <h2>10.3 Continual Improvement</h2>
+                <p>持續改善 — 超越合規，建立品質文化</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">ISO 15378:2017 — Original Text (p51)</div>
+
+                    <h3>10.3 Continual Improvement (ISO 9001:2015 base)</h3>
+                    <p>The organization shall continually improve the suitability, adequacy and effectiveness of the quality management system.</p>
+                    <p>The organization shall consider the results of analysis and evaluation, and the outputs from management review, to determine if there are needs or opportunities that shall be addressed as part of continual improvement.</p>
+                    <div class="quote-box">
+                        Changes proposed as part of continual improvement shall be subject to <span class="key-term">risk management</span>.
+                    </div>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">教育解說 / Commentary</div>
+
+                    <div class="concept-box">
+                        <h4>持續改善 vs. 矯正行動的本質差異</h4>
+                        <p>許多組織混淆了「矯正行動（Corrective Action）」和「持續改善（Continual Improvement）」：</p>
+                        <ul>
+                            <li><strong>矯正行動</strong>：由已發生的不符合觸發，目的是消除根本原因，防止再發——這是被動的</li>
+                            <li><strong>持續改善</strong>：主動識別提升機會，即使目前沒有問題——這是主動的</li>
+                        </ul>
+                        <p>ISO 15378 要求組織建立的是持續改善文化，而不只是「有問題才修」。</p>
+                    </div>
+
+                    <div class="warning-box">
+                        <h4>持續改善的變更也需要風險管理</h4>
+                        <p>10.3 最後一句非常重要：「持續改善所提出的變更必須接受風險管理（risk management）。」</p>
+                        <p>這意味著：即使是「出於好意的改善」，也可能引入未預見的風險。例如，為了提高生產效率而修改生產流程，可能在無意中影響包材品質。每一個改善提案都必須經過風險評估，並連接到 8.5.6 的變更控制程序。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：精益生產（Lean）+ 品質管理的結合</h4>
+                        <p>持續改善的概念源自日本的「改善（Kaizen）」文化——每天都在尋找小的改進機會。在製藥包材業，這意味著：不只等到客戶投訴才改變，而是主動分析製程數據（SPC 統計製程管制）、找出正在漂移但仍在規格內的趨勢，在問題爆發前就採取預防行動。</p>
+                        <p>這就是 <strong>CAPA 中的 PA（Preventive Action）</strong> 的本質——預防，而非僅矯正。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- Summary: Complete Section Overview                           -->
+    <!-- ============================================================ -->
+    <div class="chapter-section">
+        <div class="chapter-divider" style="background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);">
+            <div class="chapter-badge">∑</div>
+            <div class="chapter-info">
+                <h2>Section 3B Summary: Key Takeaways</h2>
+                <p>本節重點總結 — ISO 15378 生產後半段、績效評估與改善的核心要點</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Key Requirements by Clause</div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Clause</th>
+                                <th>Key GMP Requirement</th>
+                                <th>Criticality</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>8.5.1.3.13</td>
+                                <td>Partial line clearance requires documented risk assessment</td>
+                                <td><span class="badge yellow">Medium</span></td>
+                            </tr>
+                            <tr>
+                                <td>8.5.1.4</td>
+                                <td>Sterilization validation + batch-traceable records</td>
+                                <td><span class="badge red">High</span></td>
+                            </tr>
+                            <tr>
+                                <td>8.5.2.2</td>
+                                <td>Full traceability source-to-realization + unique batch IDs</td>
+                                <td><span class="badge red">High</span></td>
+                            </tr>
+                            <tr>
+                                <td>8.5.4.2.2</td>
+                                <td>Delivery documentation must be batch-specific</td>
+                                <td><span class="badge yellow">Medium</span></td>
+                            </tr>
+                            <tr>
+                                <td>8.5.6.2</td>
+                                <td>Change control: risk assessment + validation trigger + QA approval</td>
+                                <td><span class="badge red">High</span></td>
+                            </tr>
+                            <tr>
+                                <td>8.6 / 9.1.3.5</td>
+                                <td>Batch documentation review before release</td>
+                                <td><span class="badge red">High</span></td>
+                            </tr>
+                            <tr>
+                                <td>9.1.3.2</td>
+                                <td>OOS investigation: documented procedure, recorded outcome</td>
+                                <td><span class="badge red">High</span></td>
+                            </tr>
+                            <tr>
+                                <td>9.1.3.4.3</td>
+                                <td>Additional IPC after equipment breakdown</td>
+                                <td><span class="badge yellow">Medium</span></td>
+                            </tr>
+                            <tr>
+                                <td>10.2.3(c)</td>
+                                <td>Rework in cleanroom = same cleanroom conditions required</td>
+                                <td><span class="badge red">High</span></td>
+                            </tr>
+                            <tr>
+                                <td>10.2.3(d)</td>
+                                <td>Concession for nonconforming product requires customer authorization</td>
+                                <td><span class="badge red">High</span></td>
+                            </tr>
+                            <tr>
+                                <td>10.2.3(g)</td>
+                                <td>Customer complaints: timely investigation + communicate CAPA to all sites</td>
+                                <td><span class="badge red">High</span></td>
+                            </tr>
+                            <tr>
+                                <td>10.3</td>
+                                <td>Continual improvement changes subject to risk management</td>
+                                <td><span class="badge blue">Standard</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">本節核心洞見 / Core Insights</div>
+
+                    <div class="concept-box">
+                        <h4>洞見 1：責任不可外包</h4>
+                        <p>貫穿本節的一個主題是：無論滅菌驗證、特許放行、還是返工——責任永遠在組織本身，不會因為外包或客戶授權而消失。包材廠是品質鏈上的一個關鍵節點，其品質決策對下游製藥廠和最終患者都有直接影響。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>洞見 2：ISO 15378 的 GMP 附加要求都指向同一件事</h4>
+                        <p>仔細審視 Section 8–10 的所有 GMP 附加要求，可以發現它們都指向同一目標：<strong>確保每一批交到製藥廠手中的包材，都有完整、可追溯的品質保證記錄，讓製藥廠可以相信這批材料不會危害患者。</strong></p>
+                        <p>這就是為什麼 ISO 15378 比普通的 ISO 9001 難以通過認證——它要求的不只是「有程序」，而是「有效執行的、有記錄的、可稽查的品質保證系統」。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>洞見 3：Section 9 和 10 形成閉環</h4>
+                        <p>Section 9（績效評估）收集數據 → Section 10（改善）利用數據驅動行動。這個閉環是 ISO 管理體系 PDCA 邏輯的體現：</p>
+                        <ul>
+                            <li>P（計劃）：Sections 6–8 建立策略和流程</li>
+                            <li>D（執行）：Section 8 的操作要求</li>
+                            <li>C（檢查）：Section 9 的績效評估</li>
+                            <li>A（行動）：Section 10 的改善措施</li>
+                        </ul>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>實務思考題</h4>
+                        <p>假設你是一家為製藥廠供應預充填注射器筒的包材廠 QA 主管：</p>
+                        <ul>
+                            <li>你的年度內部稽核計劃如何設計才符合 9.2 要求？</li>
+                            <li>客戶通知某批注射器筒的矽油（Silicone）分布不均，觸發了你的什麼程序？</li>
+                            <li>你的下游製藥廠要求你提供某批次的全部生產數據，哪些可以提供？哪些是機密知識產權？</li>
+                            <li>你的供應商要更換玻璃管供應商，這觸發了哪些 8.5.6 變更控制要求？</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end main-content -->
+
+<div class="main-footer">
+    <p>ISO 15378:2017 Primary Packaging Materials for Medicinal Products</p>
+    <p>Section 3B: Production (Cont.), Performance Evaluation &amp; Improvement | p37–p51</p>
+    <p>SterileGMP Knowledge Hub — Educational Material</p>
+</div>
+
+<button class="back-to-top" id="backToTop" title="Back to top">&#8679;</button>
+
+<script>
+    // Back to top button
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    });
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script>
+
+</body>
+</html>
