@@ -573,6 +573,12 @@ Terms: quality culture, root cause analysis (RCA), human error, skill-based erro
 
 | Topic (English / 中文 / common lay terms) | Look in... |
 |---|---|
+| Sterility test method Ph.Eur., European Pharmacopoeia 2.6.1, membrane filtration sterility / 歐洲藥典無菌試驗、Ph.Eur.膜過濾法 | PhEur-261 |
+| Fluid thioglycollate medium FTM composition, SCDM formula, culture media preparation for sterility / FTM培養基配方、SCDM大豆酪蛋白培養基 | PhEur-261 |
+| Growth promotion test microorganism strains, Clostridium sporogenes ATCC, Aspergillus brasiliensis sterility / 生長促進測試菌株、無菌試驗標準菌 | PhEur-261 |
+| Method suitability test antimicrobial activity, bacteriostasis fungistasis validation Ph.Eur. / 方法適用性測試、抑菌活性消除 | PhEur-261 + USP-71 |
+| Minimum quantity sterility test Table 2.6.1-2, minimum number containers Table 2.6.1-3, sample size sterility / 無菌試驗最低取樣量、最低樣品數、注射劑批量計算 | PhEur-261 |
+| Invalid sterility test four conditions, test invalidation negative control fault / 無菌試驗無效判定、四個無效條件 | PhEur-261 + USP-71 |
 | Sterilizing filtration, filter sterilization, 0.22 µm filter, 0.2 µm membrane filtration / 滅菌過濾、過濾除菌、0.22微米過濾器 | ISO-13408-2 + TR26 |
 | Bacterial challenge test BCT, microbial retention validation, Brevundimonas diminuta / 細菌挑戰測試、微生物截留驗證、微小短波單胞菌 | ISO-13408-2 + TR26 |
 | Filter integrity test acceptance criteria, correlation to BCT, diffusive flow bubble point / 過濾器完整性測試接受標準、細菌截留相關性 | ISO-13408-2 + TR26 |
@@ -1919,7 +1925,7 @@ Key terms: leachables, analytical evaluation threshold (AET), leachables specifi
 ## USP Quick Topic Routing Guide
 
 **Sterility Testing (無菌試驗)**
-→ USP/USP-71 ★★★ (primary: membrane filtration, direct inoculation, 14-day incubation, bacteriostasis/fungistasis validation) | PICS-Annex1 ★★ (regulatory sterility testing requirements, parametric release) | FDA-Aseptic ★★ (sterility test context, aseptic fill requirements)
+→ USP/USP-71 ★★★ (primary USP: membrane filtration, direct inoculation, 14-day incubation, bacteriostasis/fungistasis validation) | PHEUR/PhEur-261 ★★★ (primary Ph.Eur.: FTM/SCDM formulas, 6 standard strains with ATCC/CIP/NCTC strain numbers, method suitability test, Table 2.6.1-2 minimum quantities, Table 2.6.1-3 minimum sample sizes, 4 invalid test conditions) | PICS-Annex1 ★★ (regulatory sterility testing requirements, parametric release) | FDA-Aseptic ★★ (sterility test context, aseptic fill requirements)
 
 **Bacterial Endotoxins / Pyrogen Testing (細菌內毒素/熱原試驗)**
 → USP/USP-85 ★★★ (primary: gel-clot, turbidimetric, chromogenic methods; MVD calculation; inhibition/enhancement testing; rFC) | USP/USP-151 ★★ (rabbit pyrogen test, MAT for non-endotoxin pyrogens) | USP/USP-1228 ★★★ (depyrogenation strategies and 3-log reduction standard) | FDA-Aseptic ★★ (endotoxin limits context) | PICS-Annex1 ★★ (depyrogenation requirements)
@@ -2035,3 +2041,29 @@ Key terms: leachables, analytical evaluation threshold (AET), leachables specifi
 
 **CCI — Seal Quality Testing (CCI密封品質測試)**
 → USP/USP-1207-3 ★★★ (primary: torque, burst, peel strength, RSF, airborne ultrasound — 5 seal quality technologies, distinction from leak testing) | PDA/TR86 ★★ (seal quality in broader CCI context)
+
+---
+
+## PHEUR/PhEur-261-Complete.md
+**Report:** European Pharmacopoeia 11.0 — Chapter 2.6.1: Sterility (Biological Tests)
+**Pages:** p1–p4 (4 pages) | **Sections:** 2
+
+**Covers questions about:**
+- Scope and limitation of the sterility test: what a "satisfactory result" means and does NOT mean regarding batch sterility assurance
+- Precautions for aseptic testing conditions: test environment, monitoring, and contamination prevention without suppressing target organisms
+- Culture media selection: FTM (Fluid Thioglycollate Medium, 30–35°C, anaerobes + aerobes) vs SCDM (Soya-bean Casein Digest Medium, 20–25°C, fungi + aerobes) — composition, preparation, pH control, storage
+- Resazurin indicator in FTM: color interpretation (pink = oxidized), one-time restoration rule, and its regulatory significance
+- Growth promotion test: 6 standard strains (Clostridium sporogenes, Pseudomonas aeruginosa, Staphylococcus aureus for FTM; Aspergillus brasiliensis, Bacillus subtilis, Candida albicans for SCDM), ≤100 CFU inoculation, ≤5 passage rule, seed-lot system
+- Method suitability test: purpose (detecting antimicrobial activity), trigger conditions (new product, changed conditions), simultaneous execution option, and remediation when test fails
+- Membrane filtration method: pore size (≤0.45 µm), membrane material selection (cellulose nitrate vs acetate), washing limits (5×100 mL max), incubation ≥14 days, application to aqueous/soluble/oily/ointment products
+- Direct inoculation method: ≤10% product volume rule, concentrated medium use, oily product emulsification, anaerobic FTM shaking restriction
+- Table 2.6.1-2: minimum quantity per medium for liquids (1–40 mL: half each), semi-solids (200 mg), solids (by weight range), antibiotic liquids (1 mL fixed), sutures (3×30 cm)
+- Table 2.6.1-3: minimum number of containers to test per batch — parenteral preparations (≤100: 4 or 10%; 101–500: 10; >500: 20 or 2%, LVP max 10)
+- Interpretation of results: negative = complies; positive = does not comply unless 4 specific invalid test conditions are met (EM fault, procedure fault, negative control failure, confirmed cross-contamination); repeat test procedure
+- Application to parenteral preparations, ophthalmic preparations, and surgical sutures — practical implementation guidance
+
+**Key terms:** sterility test, aseptic conditions, fluid thioglycollate medium (FTM), soya-bean casein digest medium (SCDM), resazurin indicator, growth promotion test, seed-lot system, 5 passages, method suitability test, antimicrobial activity, membrane filtration, direct inoculation, 0.45 µm filter, cellulose nitrate, cellulose acetate, isopropyl myristate, polysorbate 80, 14-day incubation, negative control, invalid test, repeat test, minimum quantity, minimum number, parenteral preparations, Clostridium sporogenes, Pseudomonas aeruginosa, Staphylococcus aureus, Aspergillus brasiliensis, Bacillus subtilis, Candida albicans, ATCC 6538, ATCC 19404, ATCC 16404, Ph.Eur. 2.6.1, European Pharmacopoeia, ICH harmonisation
+
+**Sections:**
+- Section 1 (p1–p2): Overview & Scope, Precautions Against Microbial Contamination, Culture Media & Incubation Temperatures (FTM + SCDM formulas), Growth Promotion Test + Table 2.6.1-1 (6 standard strains with strain numbers)
+- Section 2 (p2–p4): Method Suitability Test, Membrane Filtration Method (aqueous/soluble/oils/ointments), Direct Inoculation Method, Table 2.6.1-2 (min. quantities), Table 2.6.1-3 (min. items), Observation & Interpretation of Results, Application to Parenteral Preparations
