@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISO 10993-1 - Annex B &amp; C: Evaluation Framework &amp; Literature Review</title>
+    <style>
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif; line-height: 1.75; color: var(--text-dark); background: #f0f2f5; }
+.header { background: linear-gradient(135deg, #4c1d95 0%, #6d28d9 100%); color: white; padding: 2rem; text-align: center; }
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.source-badge { display: inline-block; background: #7c3aed; color: white; font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 4px; letter-spacing: 0.05em; margin-top: 0.4rem; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+.left-column { background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; }
+.left-column h2 { color: var(--primary-blue); border-bottom: 2px solid #6d28d9; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.left-column h3 { color: var(--primary-blue); margin: 1rem 0 0.5rem; font-size: 1rem; }
+.left-column h4 { color: var(--primary-blue); margin: 0.75rem 0 0.4rem; font-size: 0.95rem; }
+.left-column p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li { margin-bottom: 0.5rem; }
+.right-column { background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #c4b5fd; }
+.right-column h2 { color: #4c1d95; border-bottom: 2px solid #7c3aed; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.right-column p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.section-title { font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
+.key-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
+.quote-box { background: linear-gradient(to right, #e7f3ff, #d6e9ff); border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem; }
+.concept-box { background: var(--green-bg); border-left: 4px solid var(--green-border); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 0.92rem; line-height: 1.7; }
+.concept-box h4 { color: #2e7d32; margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600; }
+.concept-box p, .concept-box ul { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.concept-box ul { margin-left: 1.25rem; }
+.analogy-box { background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%); border-left: 4px solid #f6ad55; border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 0.92rem; line-height: 1.7; }
+.analogy-box h4 { color: #856404; margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600; }
+.analogy-box p { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.note-box { background: var(--orange-bg); border-left: 4px solid var(--orange-border); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 0.92rem; line-height: 1.7; }
+.note-box h4 { color: #c65102; margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600; }
+.note-box p, .note-box ul { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.note-box ul { margin-left: 1.25rem; }
+.practice-box { background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%); border: 2px dashed #3182ce; border-radius: 10px; padding: 1.25rem; margin: 1.25rem 0; font-size: 0.92rem; }
+.practice-box h4 { color: #2c5282; margin-bottom: 0.75rem; font-size: 0.95rem; font-weight: 600; }
+.practice-box ol { margin-left: 1.25rem; }
+.practice-box li { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.learning-objectives { background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+.main-footer { background: var(--primary-blue); color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+@media (max-width: 900px) { .two-column { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Annex B &amp; C: Biological Evaluation Framework &amp; Literature Review + Bibliography</h1>
+    <div class="subtitle">生物評估框架、文獻審查程序與參考書目</div>
+    <div class="page-info">ISO 10993-1:2018 — Biological Evaluation of Medical Devices | p25–p41</div>
+    <span class="source-badge">ISO</span>
+</div>
+
+<div class="main-content">
+
+    <!-- Learning Objectives -->
+    <div class="learning-objectives">
+        <h3>Learning Objectives 學習目標</h3>
+        <ul>
+            <li>Understand Annex B as the operational "how-to" guide that translates the ISO 10993-1 framework into a step-by-step risk management workflow 理解 Annex B 如何將 ISO 10993-1 框架轉化為逐步風險管理作業流程</li>
+            <li>Apply the 7-step biological evaluation process: hazard ID → risk estimation → risk evaluation → risk control → residual risk → benefit-risk → monitoring 應用七步驟生物評估流程</li>
+            <li>Understand the role of material characterization, extractables/leachables, and clinical history data in risk estimation 理解材料表徵、E&amp;L 數據與臨床歷史在風險估算中的角色</li>
+            <li>Know how to design and document a systematic literature review per Annex C 依 Annex C 設計並記錄系統性文獻審查</li>
+            <li>Recognize the ICH Q3 series as cross-referencing pillars alongside ISO 10993 認識 ICH Q3 系列與 ISO 10993 的交叉引用關係</li>
+        </ul>
+    </div>
+
+    <!-- ===== ANNEX B.1 — BACKGROUND ===== -->
+    <div class="two-column">
+        <div class="left-column">
+            <h2>Annex B (Informative) — Guidance on the Conduct of Biological Evaluation within a Risk Management Process</h2>
+
+            <h3>B.1 Background Information</h3>
+            <h4>B.1.1 General</h4>
+            <p>This annex provides guidance on conduct of biological evaluation of medical devices according to the requirements of this document. Although this document provides a general framework for biological evaluation of medical devices, more detailed guidance can be helpful in the practical application of this document. As a result, this Annex was developed to provide such guidance to users.</p>
+            <p>Biological evaluation is a design verification activity which is set in the context of broader risk management processes. Therefore this annex includes guidance on the application of this document in the context of risk management processes conducted according to the requirements of ISO 14971.</p>
+            <p>As scientific knowledge advances our understanding of the basic mechanisms of tissue responses, the way biological evaluation is carried out can also change, moving towards an evaluation based upon review of relevant established scientific data and upon physical and chemical characterization and testing, with testing only being carried out where these are required to fill gaps in our understanding.</p>
+            <p>This document specifies a framework in which to plan a biological evaluation which minimizes the number and exposure of test animals by giving preference to identifying chemical constituent testing and in vitro models in situations where these methods yield equally relevant information to that obtained from in vivo models.</p>
+            <p>When judging the applicability of the guidance in this annex, applicable regulatory requirements and regulatory guidance should be considered. An organization can voluntarily incorporate guidance from this annex, wholly or in part, into its risk management process.</p>
+
+            <h4>B.1.2 Relationship with Other Standards and Regulatory Requirements</h4>
+            <p>The relationship between this document, this annex and the standards for biological evaluation of medical devices and general risk management is summarized as follows:</p>
+            <ul>
+                <li>This annex provides guidance on the application of this document;</li>
+                <li>Biological evaluation is a component of risk management and this Annex includes guidance on the application of ISO 14971 to the conduct of biological evaluation.</li>
+            </ul>
+            <p>This annex does not add to, or otherwise change, the requirements of this document. This annex does not include requirements to be used as the basis of regulatory inspection or certification assessment activities.</p>
+        </div>
+
+        <div class="right-column">
+            <h2>中文解析 — Annex B 總覽與定位</h2>
+
+            <div class="concept-box">
+                <h4>Annex B 是什麼？</h4>
+                <p>如果說 ISO 10993-1 本文是「What（要做什麼）」，那 Annex B 就是「How（怎麼做）」。它把整份標準的框架翻譯成一套可操作的風險管理作業流程，是整個 ISO 10993-1 最有實務價值的章節。</p>
+                <p>關鍵定位：Annex B 是 <span class="key-term">informative（資訊性）</span>，不是 normative（規範性）。也就是說，它不能被用來作為法規稽核或認證評估的直接依據，但卻是理解整套系統最重要的參考文件。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>類比：設計驗證活動 vs. 品質管制</h4>
+                <p>生物評估是「設計驗證活動」（design verification activity）。這個定位非常重要 —— 它意味著生物安全性的評估應該在產品設計階段就開始，而不是等到生產後才做。</p>
+                <p>類比：就像結構工程師在設計建築時就要算承重，而不是蓋好之後再去測試它會不會塌。CDMO 的角色就是在 tech transfer 的起點，就要問客戶：「你的生物風險評估做到哪一步了？」</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>科學進化趨勢：減少動物實驗</h4>
+                <p>Annex B 明確指出一個重要趨勢：生物評估正在朝向「以化學表徵與文獻審查為主、動物實驗為輔」的方向演進。當 in vitro 方法能提供同等相關資訊時，應優先採用。</p>
+                <p>這對 CDMO 的實務意義：建立完整的材料表徵資料庫，有機會減少高成本、長週期的動物測試，加速開發時程。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>與 ISO 14971 的關係</h4>
+                <p>Annex B 的整個架構都建立在 ISO 14971（醫療器材風險管理）之上。生物評估不是獨立存在的 —— 它是整體風險管理計劃（Risk Management Plan, RMP）的一個子集。</p>
+                <p>換言之：Biological Evaluation Plan = RMP 的一部分，而不是一份獨立文件。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== ANNEX B.2 — BIOLOGICAL EVALUATION AS RISK MANAGEMENT ===== -->
+    <div class="two-column">
+        <div class="left-column">
+            <h2>B.2 Biological Evaluation as a Risk Management Practice</h2>
+
+            <h3>B.2.1 General</h3>
+            <p>B.2 and B.3 describe a continuous process by which a manufacturer can identify the biological hazards associated with medical devices, estimate and evaluate the risks, control these risks, and monitor the effectiveness of the control. Appropriate protection of the patient should be achieved by implementing a biological evaluation plan which includes, as an essential element, the weighing of the risks and benefits of medical devices.</p>
+            <p>Consideration of biological risk is only one aspect of the risk assessment of a medical device, which should consider all aspects of risk. For example, it can be possible that the most biologically safe material available can have unacceptable mechanical strength, in which case it would be necessary to consider if an alternate stronger material is of acceptable biological safety.</p>
+            <p>Material selection and risk analysis are integral components of the design process for medical devices. In line with ISO 13485 and ISO 14971, criteria to define the acceptable biological risk should be established at the start of the design process.</p>
+            <p>Because starting material, formulation and processing variations including packaging, transportation and aging could impact final product biocompatibility, these considerations should also be incorporated into the risk assessment.</p>
+
+            <h4>Key steps in hazard identification (material characterization):</h4>
+            <ul>
+                <li>Define and characterize each material, including suitable alternative materials;</li>
+                <li>Identify hazards in materials, additives, processing aids, etc.;</li>
+                <li>Identify the potential effect of downstream processing (e.g. chemical interactions, final product sterilization) on chemicals present in final product;</li>
+                <li>Identify the chemicals that could be released during product use (e.g. intermediate or final degradation products);</li>
+                <li>Estimate exposure (total or clinically available amounts);</li>
+                <li>Review toxicology and other biological safety data (published/available).</li>
+            </ul>
+
+            <h4>Information on biological safety to be reviewed includes:</h4>
+            <ul>
+                <li>Toxicology data on relevant component materials/compounds;</li>
+                <li>Information on prior use of relevant component materials/compounds;</li>
+                <li>Data from biological tests.</li>
+            </ul>
+
+            <p>If it can be concluded from existing data that risks are acceptable, then no additional testing is needed to support biological safety. When existing data are insufficient, additional information should be obtained. The purpose of testing is to obtain additional data which can assist in reaching a conclusion.</p>
+            <p>The evaluation should be documented in a report that indicates the identity and significance of all relevant evidence and highlights the scientific basis of the overall conclusions in an accurate, clear and transparent manner.</p>
+
+            <h3>B.2.2 The Biological Evaluation Plan</h3>
+            <p>ISO 14971:2007, 3.4, requires that risk management activities be planned in advance. Since biological evaluation is a risk management activity, a Biological Evaluation Plan is required, and this forms part of the Risk Management Plan.</p>
+            <p>It is emphasized that simply planning to conduct testing against all of the aspects of biocompatibility identified in Annex A does not meet the requirements of ISO 14971 or this document.</p>
+            <p>The biological evaluation plan should be drawn up by a knowledgeable and experienced team and include as a minimum:</p>
+            <ul>
+                <li>Arrangements for gathering of applicable information from the published literature (including information sources and search strategies), in-house and supplier data and other sources in order to conduct risk analysis;</li>
+                <li>Arrangements for conducting the evaluation, including the requirement for any specific technical competencies relevant to the specific medical device application;</li>
+                <li>Arrangements for review and approval of the plan as part of the overall design control process;</li>
+                <li>Arrangements for review of the final conclusions of the evaluation and the approval of any additional testing required;</li>
+                <li>Arrangements for the final review and approval of the outcomes of the biological risk assessment, including the risk control measures applied and the documentation of any residual risks and the disclosure of residual risks through means such as product labelling.</li>
+            </ul>
+        </div>
+
+        <div class="right-column">
+            <h2>中文解析 — 生物評估作為風險管理實踐</h2>
+
+            <div class="concept-box">
+                <h4>核心概念：風險效益平衡</h4>
+                <p>B.2 開宗明義指出生物評估的本質是「持續性風險管理流程」，而不是一次性的測試活動。最重要的原則是：患者使用醫療器材本身就接受了某種程度的風險，關鍵是這個風險是否被預期效益所抵消。</p>
+                <p>這就是為什麼不存在「零風險」的醫療器材 —— 評估的是「可接受風險」，而非「無風險」。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>CDMO 實戰情境：Tech Transfer 起點</h4>
+                <p>當一個新藥廠客戶把注射劑產品委託給你的 CDMO 進行 tech transfer 時，你應該在技術交接文件清單上加入一項：「請提供 Biological Risk Assessment（BRA）」。</p>
+                <p>Annex B 定義的就是這份 BRA 應該包含什麼。如果客戶說「我們還沒做」，你需要協助他們評估哪些材料需要生物相容性數據。</p>
+                <p><strong>具體場景</strong>：你們使用的矽膠管（silicone tubing）換了供應商。這不只是一個材料採購問題 —— 按照 B.2 的邏輯，換供應商就意味著需要重新評估材料的生物安全性，起碼要比對新舊供應商的 CoA 與 extractables 數據。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>材料表徵（Material Characterization）是起點</h4>
+                <p>整個風險管理流程的起點是材料表徵。這包括：</p>
+                <ul>
+                    <li><strong>供應商 CoA</strong>（Certificate of Analysis）</li>
+                    <li><strong>毒理學數據包</strong>（Toxicological Data Package）</li>
+                    <li><strong>Extractables &amp; Leachables（E&amp;L）數據</strong></li>
+                    <li><strong>歷史臨床使用資料</strong>（History of Safe Use）</li>
+                </ul>
+                <p>關鍵原則：「同材料、同應用」——如果一種橡膠塞子在注射製劑上有 20 年安全使用歷史，這是非常有力的證據，可以大幅減少需要進行的新測試。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>不能只列出要做哪些測試！</h4>
+                <p>B.2.2 有一個非常重要的警示：Biological Evaluation Plan 不能只是列出「我要做 cytotoxicity、sensitization、genotoxicity...」這樣的測試清單。</p>
+                <p>ISO 14971 的要求是：每一項測試都必須有其風險分析依據。換言之，你的計劃要解釋「為什麼要做這些測試」以及「為什麼不需要做其他測試」。</p>
+                <p>監管稽查員最常發現的問題之一：廠商的 BEP 只是 Annex A 的複製貼上，沒有任何風險分析邏輯支撐。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>實作框架：Biological Evaluation Plan 最低要求</h4>
+                <ol>
+                    <li>文獻收集策略（資料庫、搜尋關鍵字、納入/排除標準）</li>
+                    <li>評估執行安排（誰負責？需要什麼專業能力？）</li>
+                    <li>審查與批准流程（與 design control 整合）</li>
+                    <li>額外測試的決策邏輯與批准機制</li>
+                    <li>殘餘風險揭露方式（標籤、警語、使用說明）</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== ANNEX B.3 — RISK MANAGEMENT GUIDANCE ===== -->
+    <div class="two-column">
+        <div class="left-column">
+            <h2>B.3 Guidance on Risk Management</h2>
+
+            <h3>B.3.1 Risk Assessment</h3>
+            <h4>B.3.1.1 Introduction</h4>
+            <p>Risk assessment is the combination of the processes of risk analysis in which risks are identified and estimated, and risk evaluation in which risks are evaluated to identify those which require mitigation (risk control).</p>
+
+            <h4>B.3.1.2 Risk Analysis</h4>
+            <p>Risk analysis is the process of identifying the specific hazards and assessing their significance. In a biological evaluation, one important consideration is the potential toxicity of materials components and their route of exposure. Another important consideration is how physical properties could affect the biological response.</p>
+            <p>Risk analysis begins with identification and characterization of the indirect and direct tissue-contacting materials and components of the medical device. This should be done based on the final form of the medical device in its manufactured state, taking into account the presence of any manufacturing additives, processing aids or other potential contaminants such as sterilant residues.</p>
+            <p>Physical and chemical material properties relevant to biological safety include:</p>
+            <ul>
+                <li>Wear, load, fatigue (especially in load-bearing devices such as total joint prostheses — associated production of particulates or materials degradation);</li>
+                <li>Friction and associated irritation (e.g. in applications such as catheters);</li>
+                <li>Interactions between material combinations (chemical interactions), e.g. galvanic corrosion, abrasion;</li>
+                <li>Heat (e.g. thermal degradation or thermally induced material changes);</li>
+                <li>Manufacturing processes (e.g. internal stresses promoting environmental stress cracking, morphological changes, or degradation);</li>
+                <li>Environmental interactions (e.g. endoscope in stomach acids, dressings in external environment, UV-light, detergents, decontamination and sterilization);</li>
+                <li>Electricity (e.g. short circuits, degradation, heating, muscle stimulation);</li>
+                <li>Potential interactions between components;</li>
+                <li>Effect of physical form, e.g. particulates, including nanomaterials;</li>
+                <li>Processing; transportation and aging.</li>
+            </ul>
+            <p>Materials information can be obtained through review of literature, vendor data, in-house data or comparison with existing products on the market where the manufacturing processes and formulations are known and the same as in the medical device under evaluation.</p>
+
+            <h4>B.3.1.3 Risk Estimation</h4>
+            <p>From a chemical toxicity perspective, risk estimation includes consideration of the anticipated exposure, e.g. the bioavailability of leachable or soluble components (see ISO 10993-17). From a material property perspective, risk estimation also includes exposure that might be anticipated due to the use of the medical device.</p>
+            <p>Risk is typically estimated by assigning values to the probability of occurrence of harm and the severity of that harm. In general toxicological terms, likelihood can be estimated from knowledge of the actual availability of toxic components and the known dose response in relevant tissue(s).</p>
+            <p>If insufficient information is available from published literature, in-house data and documented clinical history, risk estimation can require conduct of chemical or physical characterization or biological testing to estimate or quantify the hazards which cannot be satisfactorily determined from prior knowledge.</p>
+            <p>The amount of data required for risk analysis and the depth of the analysis will vary with the intended use and are dependent upon the nature and duration of tissue contact. Data requirements are usually less stringent for materials with indirect patient contact.</p>
+
+            <h4>B.3.1.4 Risk Evaluation</h4>
+            <p>Risk evaluation builds upon the risk analysis, taking the next step of evaluating the risks defined in the risk analysis for their significance and identifying requirements and opportunities for mitigation (risk control). It should be realized that for a full evaluation the whole medical device should be taken into consideration including all its components.</p>
+            <p>Biocompatibility can only be demonstrated for a particular material in relation to a defined set of circumstances, which include the purpose for which it is used and the tissues with which it comes into contact.</p>
+            <p>Of particular importance is consideration of any history of clinical use or human exposure data from relevant similar applications. For example, clinical studies showing a final product is a non-irritant might be useful in justifying omission of animal irritation studies.</p>
+            <p>It is critical for the integrity of a biological risk evaluation that it should be conducted by assessors with the necessary knowledge and expertise to determine the appropriate strategy for the evaluation.</p>
+
+            <h3>B.3.2 Risk Control</h3>
+            <p>Risk control is the process of identifying and implementing measures to reduce risks. Examples of possible strategies include:</p>
+            <ul>
+                <li>Design changes to avoid more hazardous exposure routes or reduce exposure time;</li>
+                <li>Design changes to optimize geometric surface properties to minimize areas where low blood flow could result in thrombus formation;</li>
+                <li>Design changes to avoid medical device failures (e.g. particulation, or coating delamination) that could result in adverse biological responses;</li>
+                <li>Reduction of toxicity by means of reformulation or materials change;</li>
+                <li>Changes to production processes to reduce or eliminate hazardous residues or process additives.</li>
+            </ul>
+            <p>It is emphasized that conducting animal testing for risk reduction should only be considered after all alternative courses of action (review of prior knowledge, chemical or physical characterization, in vitro evaluation or alternatives means of risk mitigation) have been exhausted.</p>
+
+            <h3>B.3.3 Evaluation of Residual Risk Acceptability</h3>
+            <p>Following risk analysis and evaluation and the implementation of risk controls, it is necessary to review the findings of these preceding activities and to document the residual risk and to decide on any further disclosure of such residual risks, for example through appropriate labelling, cautions or warnings.</p>
+
+            <h3>B.3.4 Post-Production Monitoring</h3>
+            <p>The processes of risk assessment are based upon human judgement using the available information, supplemented by biological testing where required. This assessment should be updated as needed with new information that becomes available from post market monitoring of medical device performance and safety in actual clinical use. Monitoring should include both trends in adverse events associated with the specific medical device, plus new information which arises in relation to other relevant similar medical devices or materials. Monitoring should also include ongoing review of relevant scientific literature.</p>
+        </div>
+
+        <div class="right-column">
+            <h2>中文解析 — 風險管理七步驟詳解</h2>
+
+            <div class="concept-box">
+                <h4>ISO 14971 vs. ISO 10993-1：風險管理映射</h4>
+                <p>Annex B 的架構完全對應 ISO 14971 的風險管理流程。以下是映射關係：</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ISO 14971 步驟</th>
+                            <th>ISO 10993-1 對應</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Hazard identification</td>
+                            <td>Material characterization (B.3.1.2)</td>
+                        </tr>
+                        <tr>
+                            <td>Risk estimation</td>
+                            <td>E&amp;L exposure assessment (B.3.1.3)</td>
+                        </tr>
+                        <tr>
+                            <td>Risk evaluation</td>
+                            <td>Acceptability judgment (B.3.1.4)</td>
+                        </tr>
+                        <tr>
+                            <td>Risk control</td>
+                            <td>Design change/reformulation (B.3.2)</td>
+                        </tr>
+                        <tr>
+                            <td>Residual risk</td>
+                            <td>Labeling &amp; warnings (B.3.3)</td>
+                        </tr>
+                        <tr>
+                            <td>Post-market surveillance</td>
+                            <td>Adverse event monitoring (B.3.4)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="analogy-box">
+                <h4>風險分析起點：最終製造態（Final Form）</h4>
+                <p>B.3.1.2 強調一個關鍵細節：風險分析必須基於「醫療器材在製造完成狀態下的最終形式」，不是材料原料的狀態。</p>
+                <p>CDMO 類比：你不是在評估空瓶子的安全性，而是評估裝有藥液、經過滅菌、在包裝材料保護下、歷經運輸老化之後的完整產品。這意味著滅菌殘留物（sterilant residues）、包裝材料的 extractables，都必須納入考量。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>B.3.1.3 風險估算：E&amp;L 的核心地位</h4>
+                <p>風險估算中最關鍵的化學毒性評估路徑是：</p>
+                <ul>
+                    <li><strong>Extractables</strong>：在最嚴苛萃取條件下，材料能釋放什麼？（潛在上限）</li>
+                    <li><strong>Leachables</strong>：在實際使用條件下，材料真正釋放多少？（臨床實際暴露量）</li>
+                    <li><strong>Bioavailability</strong>：釋放的物質有多少被患者吸收進入全身循環？</li>
+                </ul>
+                <p>這三個數字串聯起來，就是 <span class="key-term">Dose（劑量）</span>，然後才能與 Tolerable Intake (TI) 比較，得出風險估算結論。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>CDMO 關鍵連結：容器密封系統資格確認</h4>
+                <p>你的容器密封系統（Container-Closure System）資格確認研究 —— 包括 E&amp;L 測試、相容性測試 —— 直接為 B.3.1.3 的風險估算步驟提供輸入資料。</p>
+                <p>換言之：CCS 驗證不是獨立的品管活動，它是生物風險評估的數據來源之一。未來向客戶解釋為什麼要做 E&amp;L 研究時，可以用這個框架說明其法規必要性。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>生物相容性的「情境依賴性」</h4>
+                <p>B.3.1.4 說得很清楚：生物相容性只能在「特定情境下」對特定材料加以論證，這個情境包括用途和接觸組織。</p>
+                <p>類比：同一種矽膠，用在皮膚接觸的醫療貼片上，和用在長期植入的骨科器材上，需要的生物安全性數據完全不同。不能拿皮膚接觸的數據去支持長期植入的應用。</p>
+                <p>對 CDMO 來說，這意味著：客戶提供的材料安全數據是否「情境相符」，必須仔細審查。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>風險控制的優先順序（3R 精神）</h4>
+                <p>B.3.2 明確規定風險控制的優先順序：</p>
+                <ol>
+                    <li>設計變更（Design change）—— 最優先</li>
+                    <li>重新配方 / 材料替換（Reformulation / Material substitution）</li>
+                    <li>in vitro 測試提供更準確的風險估算</li>
+                    <li>警語 / 禁忌症標示（Warnings / Contraindications）</li>
+                    <li>動物測試 —— 最後手段，且只在其他方法都窮盡後才考慮</li>
+                </ol>
+                <p>這個順序體現了 3R 原則（Replace / Reduce / Refine）的精神。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>上市後監測：生物評估不是一次性活動</h4>
+                <p>B.3.4 強調：生物評估是持續性的。上市後必須持續監測：</p>
+                <ol>
+                    <li>本產品的不良事件趨勢</li>
+                    <li>同類材料或類似器材的相關新資訊</li>
+                    <li>最新科學文獻的持續回顧</li>
+                </ol>
+                <p>這個要求與 MDR/IVDR 的 Post-Market Clinical Follow-up (PMCF) 要求直接對應，也是 FDA 510(k) 上市後要求的一部分。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== ANNEX B.4 — SPECIFIC ASPECTS ===== -->
+    <div class="two-column">
+        <div class="left-column">
+            <h2>B.4 Guidance on Specific Aspects of Biological Evaluation</h2>
+
+            <h3>B.4.1 Material Characterization</h3>
+            <h4>B.4.1.1 Chemical Characterization</h4>
+            <p>From a practical perspective, chemical characterization data are most useful in a biological assessment when:</p>
+            <ul>
+                <li>Issues of a proprietary nature can be resolved;</li>
+                <li>Only one or a small number of chemical constituents are changed in a medical device;</li>
+                <li>Toxicity data are readily available for the chemical constituent(s);</li>
+                <li>Extraction/analytical chemistry studies are easily conducted.</li>
+            </ul>
+
+            <h4>B.4.1.2 Use of Chemical Characterization Data in a Biological Evaluation</h4>
+            <p>There are several clauses in this document that ask the user to conduct a chemical characterization of the medical device undergoing the biological evaluation. From a hazard identification standpoint, information on the compounds released from the medical device can be useful in selecting appropriate biological evaluation tests. Chemical characterization data can also be useful for risk estimation — if data are available on the rate at which a compound is released from the medical device under conditions that simulate the in-use environment, and if sufficient data are available to derive a relevant toxicological threshold, then it is possible to compare the dose received to the relevant threshold or limit in assessing likelihood of adverse effects.</p>
+
+            <h4>B.4.1.3 Proprietary Materials Formulations</h4>
+            <p>Where the necessary data (e.g. complete formulation data) are not available to a manufacturer because of confidentiality of proprietary information, enquiries should be made with the materials supplier as to the availability of materials biological evaluations which can be relevant to the proposed application. In some cases it is possible to manage confidentiality of proprietary formulations by means of separate lodgement by the manufacturer of biological evaluation data with an independent assessor or regulatory agency (known as a "Master File" in some jurisdictions).</p>
+
+            <h4>B.4.1.4 Physical Characterization</h4>
+            <p>For particulates and nanomaterials physical characterization is necessary, as described for nanomaterials in ISO/TR 10993-22. In addition, physical form (e.g. geometry, particle size, porosity, surface texture) can have a substantial effect on biological interactions with the medical device and can impact safety. Examples include:</p>
+            <ul>
+                <li>Evaluation of geometry on blood flow and haemocompatibility;</li>
+                <li>Evaluation of porosity on tissue ingrowth;</li>
+                <li>Evaluation of release of wear particles on local and distant tissue responses;</li>
+                <li>Evaluation of surface texture (topography) on cell adhesion, phenotypic expression and growth.</li>
+            </ul>
+
+            <h4>B.4.1.5 Effects of Manufacturing Processes</h4>
+            <p>It is important to consider the effect of manufacturing conditions on materials as well as the use of additives or presence of contaminants. Materials testing should have been carried out on materials test samples which have been processed (including sterilization if applicable) in equivalent ways to the materials included in the final medical device. Particular aspects which should be considered include:</p>
+            <ul>
+                <li>Processes which can cause either bulk or surface changes in materials properties (e.g. moulding, surface treatment, welding or machining);</li>
+                <li>Intended additives or processing aids, such as catalysts, antioxidants, pigments, surface treatments;</li>
+                <li>Potential process contaminants (e.g. cleaning/disinfection/sterilization agents, mould release agents, cutting fluids and particles, lubricants);</li>
+                <li>Degradation during manufacturing and processing, clinical use and storage;</li>
+                <li>Potential process residuals of chemicals and additives.</li>
+            </ul>
+
+            <h3>B.4.2 Collection of Existing Data</h3>
+            <p>Before a data gap analysis can be conducted, the extent of relevant data should be determined, including:</p>
+            <ul>
+                <li>Toxicology data on component materials or constituent or other relevant compounds (Annex C);</li>
+                <li>Existing biological safety data on component materials or products;</li>
+                <li>Data on history of clinical use or human exposure.</li>
+            </ul>
+
+            <h3>B.4.3 Device Testing Considerations</h3>
+            <h4>B.4.3.1 Tiered Approaches to Biological Testing</h4>
+            <p>When it is found to be necessary to conduct additional testing to gather further data, a tiered approach should be taken. Testing should begin with chemical and physical characterization and in vitro screens. The results of the characterization and testing should be reviewed before proceeding to animal testing.</p>
+
+            <h4>B.4.3.2 When to Do Long-Term Testing</h4>
+            <p>The need to conduct long-term testing requires specific consideration and justification. Factors that can contribute to a justification for <em>not</em> carrying out long-term testing:</p>
+            <ul>
+                <li>Exposure quantity (i.e. total device/material mass per patient);</li>
+                <li>Time;</li>
+                <li>Bioavailability.</li>
+            </ul>
+            <p>Situations likely to indicate a need for long-term testing:</p>
+            <ul>
+                <li>The quantity of material present and the length of exposure indicate that long-term toxicological effects could be of concern;</li>
+                <li>Constituent compounds are known to be, or considered likely to be, toxic;</li>
+                <li>There are insufficient prior data for the material concerned in equivalent long-term applications;</li>
+                <li>There are specific chemical reasons (e.g. particular molecular structures of concern) indicating particular chronic toxicological concerns;</li>
+                <li>Shorter term screens (e.g. genotoxicity screens) indicate potential for concern;</li>
+                <li>There are known concerns regarding biostability for the particular class of material of interest.</li>
+            </ul>
+
+            <h4>B.4.3.3 In Vitro System pH and Osmolality Compensation for Absorbable Materials</h4>
+            <p>Polymeric, metallic, or ceramic materials that are intended to be absorbed will release soluble components or degradation products. If the release rate is sufficiently rapid, elevated concentrations of released products could alter the pH and/or osmolality of an in vitro test system. It is possible that adjustment of the pH and/or osmolality of an in vitro test system will be necessary to maintain physiologically relevant conditions. Results from both the standard assay and adjusted assay should be compared, as some modifications can mask important considerations.</p>
+        </div>
+
+        <div class="right-column">
+            <h2>中文解析 — 材料表徵與測試策略</h2>
+
+            <div class="concept-box">
+                <h4>化學表徵的戰略價值</h4>
+                <p>B.4.1.1 列出化學表徵最「物超所值」的使用情境。對 CDMO 而言，最常見的場景是：客戶改了一個原料成分，此時化學表徵可以幫助我們「聚焦」——只需評估那個被改變的成分的生物安全性，而不需要重做所有測試。</p>
+                <p>這大幅降低了變更管理（Change Control）的成本和時間。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>專有配方的解法：Master File</h4>
+                <p>B.4.1.3 提到一個很實用的機制：當供應商的配方是機密時，可以讓供應商把生物評估數據直接提交給主管機關（以 Master File 形式），由 CDMO 或藥廠在法規申請中引用，監管機關可以保密審查。</p>
+                <p>這個機制在 FDA 稱為 Drug Master File（DMF），在歐盟稱為 European Pharmacopoeia Master File（EDMF）。雖然 ISO 10993-1 講的是醫療器材語境，但概念是相通的。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>製造製程對生物相容性的影響：CDMO 必須重視</h4>
+                <p>B.4.1.5 是對 CDMO 最直接相關的條款之一。它說：測試樣品的處理方式必須與最終產品的材料處理方式「等效」，包括滅菌。</p>
+                <p>實務含義：</p>
+                <ul>
+                    <li>如果你用 EtO 滅菌，生物相容性測試的樣品也必須經過 EtO 滅菌後再測</li>
+                    <li>如果換了滅菌方式（如從 EtO 改為 gamma），需要重新評估</li>
+                    <li>清潔劑殘留、模具脫模劑殘留都是潛在污染物，必須納入考量</li>
+                </ul>
+            </div>
+
+            <div class="note-box">
+                <h4>奈米材料的特殊注意事項</h4>
+                <p>B.4.1.4 指出奈米材料（nanomaterials）需要特別的物理表徵，因為次微米尺寸的材料可能表現出與大尺寸相同材料截然不同的生物行為。這意味著不能直接外推大尺寸材料的安全數據到奈米材料。</p>
+                <p>對 CDMO：如果你的製程涉及奈米粒子藥物製劑（如 LNP for mRNA vaccines），這個條款直接適用。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>分層測試策略（Tiered Approach）</h4>
+                <p>B.4.3.1 規定了測試的正確順序，必須遵守這個優先級：</p>
+                <ol>
+                    <li>物理與化學表徵（Physical &amp; Chemical Characterization）</li>
+                    <li>體外測試 / in vitro 篩選</li>
+                    <li>動物測試（必須先完成前兩步並評估結果，才能進行）</li>
+                </ol>
+                <p>直接跳到動物測試是不符合 ISO 10993-1 要求的，也違反 3R 原則。監管機關越來越嚴格審查這個順序的遵從性。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>長期測試的決策邏輯</h4>
+                <p>B.4.3.2 給出了「不需要」做長期測試的理由框架：如果你能證明暴露量極低（低於毒理學閾值），暴露時間短，且生物利用度低，就可以有理由豁免長期測試。</p>
+                <p>這個邏輯就是所謂的 <span class="key-term">Risk-based Justification</span> —— 用數據論證為什麼不需要測試，而不是隨意跳過測試。</p>
+                <p>反之，如果材料有已知的毒性結構特徵（如特定的 genotoxic 官能基），或 genotoxicity 篩選顯示有問題，就必須做長期測試。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== ANNEX B.4.4 / B.4.5 ===== -->
+    <div class="two-column">
+        <div class="left-column">
+            <h2>B.4.4 Biological Safety Assessment Methods</h2>
+
+            <h4>B.4.4.1 Use of Clinically Relevant Data for a Risk Assessment</h4>
+            <p>A judgement on whether there are sufficient clinically relevant data for a risk assessment can be based on several factors, including whether all materials used in the medical device have a long history of safe use in the same application. Where the materials in the final medical device are chemically identical (taking into consideration both formulation and processing) to those used in existing medical devices, the nature of exposure is the same, and clinical information from targeted analyses is available for relevant biocompatibility endpoints, then a materials characterization-based approach to risk assessment can be justified to assess biological safety.</p>
+
+            <h4>B.4.4.2 What Constitutes "Sufficient Toxicology Data"</h4>
+            <p>Although it is possible to identify a number of chemical compounds released from a medical device in a chemical characterization scheme, it is likely that toxicity data will not be available for some compounds by the clinically relevant route of exposure. Methods are available to conduct a route-to-route extrapolation of dose, including PBPK modelling, but these approaches should be used with caution and portal-of-entry effects should be taken into consideration.</p>
+            <p>Caution is required in interpreting effects observed in in vitro tests at very high dose levels relative to the actual exposure in clinical use.</p>
+
+            <h4>B.4.4.3 Determining the Acceptability of the Level of Leachable (Allowable Limit) According to ISO 10993-17</h4>
+            <p>Risk characterization involves a comparison of the dose of the compound received by the patient or clinician to the "safe" dose or Tolerable Intake (TI) value for that compound. If dose/TI ratio is &gt; 1, then there is an increased likelihood for adverse effects to occur. However, the dose/TI ratio should not be thought of as a "bright line" value — the greater the value of the dose/TI ratio, the greater the likelihood of adverse effects; however it is important to also take into consideration such factors as severity of adverse effects, the pharmacokinetics of the compound, and whether default or conservative assumptions were used to derive the TI.</p>
+
+            <h4>B.4.4.4 Thresholds of Toxicological Concern (TTC)</h4>
+            <p>When considering the presence in a material of potentially toxic components which are present at low concentrations and a tolerable intake (TI) cannot be derived from the literature, consideration should be given to the concept of a "threshold of toxicological concern". It is possible to establish by reference to the known toxic effects of the substance in question that the substance is present in sufficiently low amounts to not present a significant risk.</p>
+
+            <h4>B.4.4.5 Guidance on Mixtures in Risk Assessment</h4>
+            <p>ISO 10993-17 notes that patients or clinicians are rarely exposed to only one residue at a time. It is more likely that exposure occurs to multiple compounds released from the medical device. This co-exposure to multiple compounds has the potential to increase or decrease the toxicity of a constituent of the mixture. If compounds are structurally similar, they could result in an additive toxicological effect. For compounds that are structurally dissimilar, it is unknown whether chemicals might have an additive or inhibitory toxicological effect.</p>
+
+            <h3>B.4.5 General Guidance on Changes and Documentation</h3>
+            <h4>B.4.5.1 Changes Which Can Require Re-evaluation of Biological Safety</h4>
+            <p>Conventional medical device design practices require that a risk assessment be revisited when a design change occurs. Typical changes that could alter the biological performance of a material or final medical device include:</p>
+            <ul>
+                <li>Processing (e.g. sterilization, cleaning, surface treatment, welding, injection moulding, primary packaging);</li>
+                <li>Material source (e.g. new vendor, new facility);</li>
+                <li>Material specification (e.g. wider tolerances, new specification);</li>
+                <li>Formulation (e.g. new materials, new additives, change in tolerances);</li>
+                <li>Storage conditions (e.g. longer shelf-life, wider tolerances, new transportation conditions);</li>
+                <li>Biological environment (i.e. change in clinical use).</li>
+            </ul>
+            <p>The scope of re-evaluation should be appropriate to the nature of the change and should focus on the specific materials changed, the nature and use of the medical device and the potential interactions.</p>
+
+            <h4>B.4.5.2 Good Laboratory Practice</h4>
+            <p>Any testing to support a biological evaluation is expected to be an integral part of a manufacturer's quality management system and is therefore subject to the same requirements for validation and traceability as any quality control test. Quality systems controls applicable to non-clinical testing are known as Good Laboratory Practice (GLP). GLP studies are carried out to defined quality standards in laboratories that are accredited in line with an internationally implemented governmental scheme, typically compliant to ISO/IEC 17025 or an equivalent standard.</p>
+
+            <h4>B.4.5.3 Biocompatibility Evaluation Documentation</h4>
+            <p>Documentation for a biocompatibility evaluation should include, to the extent feasible and necessary:</p>
+            <ul>
+                <li>A general description or drawing of the medical device;</li>
+                <li>Quantitative information on the material composition/formulations for all device components with direct or indirect contact;</li>
+                <li>Description of processing conditions that could introduce manufacturing contaminants;</li>
+                <li>A review of available toxicity and prior use data relevant to each medical device component;</li>
+                <li>Reports of biological tests;</li>
+                <li>An assessment of the data;</li>
+                <li>A statement confirming the risk analysis and risk controls have been completed.</li>
+            </ul>
+            <p>The information collected should be incorporated in the medical device design documentation as part of the process of design control (ISO 13485:2016, Clause 7) and should also form part of the risk management file (ISO 14971:2007).</p>
+        </div>
+
+        <div class="right-column">
+            <h2>中文解析 — 安全評估方法與變更管理</h2>
+
+            <div class="concept-box">
+                <h4>「足夠的臨床數據」怎麼判斷？</h4>
+                <p>B.4.4.1 提供了一個強有力的工具：如果一種材料在相同的應用中有長期安全使用歷史（且配方和製程完全相同），這就可以作為風險評估的充分依據，不需要重新做大量測試。</p>
+                <p>這就是 <span class="key-term">History of Safe Use</span> 論證策略。對 CDMO 特別有價值的場景：客戶使用了業界已有幾十年使用歷史的標準輔料（如 polysorbate 80），可以援引文獻和臨床記錄來支持生物安全性，而無需做全套新測試。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>Dose/TI 比值：不是硬性截止線</h4>
+                <p>B.4.4.3 澄清了一個常見誤解：Dose/TI &gt; 1 並不自動意味著「不合格」——它只是表示「風險升高的可能性」。評估人員必須同時考量：</p>
+                <ul>
+                    <li>毒性反應的嚴重程度</li>
+                    <li>化合物的藥動學特性</li>
+                    <li>萃取條件是否保守（worst case）</li>
+                    <li>TI 計算中使用的假設是否過於保守</li>
+                </ul>
+                <p>這個彈性空間是有意設計的 —— 監管邏輯不是「有就不行」，而是「超出閾值需要更詳細的論證」。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>混合物毒性：現實比模型複雜</h4>
+                <p>B.4.4.5 承認了生物評估中最棘手的問題之一：患者同時暴露於多種 leachables，而不是單一化合物。</p>
+                <p>現實情況：目前業界主要採用 <strong>additive toxicity（加成毒性）</strong> 假設來處理混合物，即假設各化合物的效應可以直接加總。這是保守但務實的方法。ISO 10993-17 Annex B 有更詳細的混合物評估方法指引。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>什麼樣的「變更」需要重做生物評估？</h4>
+                <p>B.4.5.1 的變更清單對 CDMO 的 Change Control 程序直接相關：</p>
+                <ul>
+                    <li><strong>換供應商</strong> → 需要重評</li>
+                    <li><strong>換滅菌方式</strong> → 需要重評</li>
+                    <li><strong>改包裝材料</strong> → 需要重評</li>
+                    <li><strong>延長保質期</strong> → 可能需要重評（更長的老化時間可能改變 leachables 量）</li>
+                    <li><strong>臨床使用方式改變</strong> → 需要重評</li>
+                </ul>
+                <p>重評的範圍不需要是全套 —— 只需聚焦在「被改變的部分」以及「可能受影響的生物安全性端點」。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>GLP 要求：什麼情況下必須用 GLP 實驗室？</h4>
+                <p>B.4.5.2 要求生物評估測試必須符合 GLP，實驗室應通過 ISO/IEC 17025 認證。</p>
+                <p>實務含義：</p>
+                <ol>
+                    <li>委外測試時，必須確認 CRO 有適當的 GLP/GCP 認證</li>
+                    <li>測試報告必須包含驗證和可追溯性記錄</li>
+                    <li>數據的完整性（Data Integrity）要求同樣適用於生物評估</li>
+                </ol>
+            </div>
+
+            <div class="concept-box">
+                <h4>生物相容性評估文件：完整的文件包</h4>
+                <p>B.4.5.3 列出的文件清單，就是監管機關在審查技術文件（Technical File）或 510(k) 時會查的內容。缺少任何一項都可能導致資訊補充要求（Deficiency Letter）。</p>
+                <p>最容易被忽略的項目：「確認風險分析和風險控制已完成的聲明」—— 這是一份正式的結案聲明，必須由具備資質的評估人員簽署。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== ANNEX C ===== -->
+    <div class="two-column">
+        <div class="left-column">
+            <h2>Annex C (Informative) — Suggested Procedure for Literature Review</h2>
+
+            <h3>C.1 Introduction</h3>
+            <p>A review and evaluation of the literature is essential for justification and planning of any biological evaluation of a material or a medical device. The aim of such a review is to determine scientific background for the biological evaluation. It also provides essential information for assessing risks/benefits and achieving the ethical conduct of the planned evaluation as required by ISO 10993-2.</p>
+            <p>Such a literature review can be helpful to assess whether the relevant data available in the literature are sufficient to demonstrate biological safety of the medical device in question without the need to generate further data from actual testing, or to conclude that the available data are not sufficient.</p>
+            <p>Performing a literature review is a scientific activity that should be done with rigour and objectivity, and should allow verification by third parties.</p>
+
+            <h3>C.2 Methodology</h3>
+            <h4>C.2.1 General</h4>
+            <p>Prior to performing the literature review, a plan should be established for the identification, selection, collation and review of all available studies/data. This plan should be documented and based on recognized practices for systematic review of the scientific literature.</p>
+
+            <h4>C.2.2 Objectives</h4>
+            <p>The objective(s) of the literature review should be clearly defined. The types of study that are relevant to these objectives should be specified, taking into account any already well-established knowledge of the material or medical device.</p>
+
+            <h4>C.2.3 Selection Criteria for Documents</h4>
+            <p>The criteria for selecting or excluding data should be defined with an appropriate rationale. Published data should be taken from recognized scientific publications. Preference may be given to GLP over non-GLP data. All available unpublished relevant data should also be taken into account in order to avoid publication bias. All data should be referenced.</p>
+            <p>The literature review should state the sources of literature and data, and the extent of the searches of databases or other compilation of information.</p>
+
+            <h4>C.2.4 Assessment of Documents</h4>
+            <p>A literature review should clearly assess the quality of the documents and the extent to which the literature relates to the specific characteristics and features of the material or medical device under consideration, taking into account the intended use of the medical device.</p>
+            <p>The following should be considered:</p>
+            <ul>
+                <li>Similarity of the material or medical device in the selected documents to the medical device under consideration based on technology, critical performance, design and principles of operation;</li>
+                <li>The relevance of the particular experimental animals used in the selected studies for the biological evaluation of the material or medical device under consideration;</li>
+                <li>Conditions of use of the material or medical device in the selected documents and the intended use of the medical device in question.</li>
+            </ul>
+
+            <h4>C.2.5 Critical Evaluation of the Literature</h4>
+            <p>The literature review should make an assessment of the significance and weight of studies of different designs and between published and unpublished data. Factors include:</p>
+            <ul>
+                <li>Whether the author's conclusions are substantiated by the available data;</li>
+                <li>Whether the literature reflects the current medical practice and state of the art technologies;</li>
+                <li>Whether references are taken from recognized scientific publications reported in peer reviewed journals;</li>
+                <li>The extent to which the published literature is the outcome of a study/studies that have followed scientific principles.</li>
+            </ul>
+            <p>The literature review should contain a critical evaluation of the literature. A review is then completed as it relates to the medical device in question, and a structured report of the review should be written, consisting of:</p>
+            <ul>
+                <li>A short description of the material or medical device including its intended use;</li>
+                <li>An analysis of all the selected literature and data, both favourable and unfavourable;</li>
+                <li>A critical evaluation of the hazards, associated risks and appropriate safety measures;</li>
+                <li>A description of the methods of weighting the different papers (particular attention to repeated publications by the same authors to avoid over-weighting);</li>
+                <li>A list of publications appropriately cross-referenced in the evaluation;</li>
+                <li>A conclusion with a justification, making it clear how the objectives of the literature review have been met and how any gaps in the evidence have been identified;</li>
+                <li>The signature(s) of the reviewer(s) and date.</li>
+            </ul>
+        </div>
+
+        <div class="right-column">
+            <h2>中文解析 — 系統性文獻審查程序</h2>
+
+            <div class="concept-box">
+                <h4>文獻審查的雙重功能</h4>
+                <p>Annex C 強調文獻審查有兩個核心目的：</p>
+                <ul>
+                    <li><strong>替代測試</strong>：如果現有文獻已足以支持生物安全性論證，就不需要再做新的動物或體外測試</li>
+                    <li><strong>識別數據缺口</strong>：如果文獻不足，則指出哪些缺口需要通過新測試來填補</li>
+                </ul>
+                <p>對 CDMO 的實務價值：一份好的文獻審查報告可以省下大量時間和成本，因為它可能讓你有理由跳過某些測試，同時向監管機關展示你做了嚴謹的科學評估。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>文獻審查是「科學活動」，不是「搜尋練習」</h4>
+                <p>C.1 特別強調：文獻審查必須以「嚴謹性和客觀性」進行，且必須能夠被第三方驗證。</p>
+                <p>類比：就像一篇 systematic review 論文，需要有預先定義的搜尋策略、納入/排除標準、數據萃取方法，最終結論必須由數據支持，而不是研究者的主觀印象。</p>
+                <p>常見錯誤：把 Google Scholar 的隨機搜尋結果彙整成「文獻審查」。監管機關現在對這份文件的要求越來越接近 clinical evidence systematic review 的標準。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>文獻審查計劃：事前定義，事後記錄</h4>
+                <p>C.2.1 要求在執行前就建立計劃，必須文件化：</p>
+                <ol>
+                    <li>搜尋資料庫（PubMed、EMBASE、Cochrane、監管數據庫）</li>
+                    <li>搜尋關鍵字和策略（MeSH terms + free text）</li>
+                    <li>時間範圍（通常近 10 年為主）</li>
+                    <li>語言限制（英文為主，重要的可包含其他語言）</li>
+                    <li>納入標準（Study type? Sample size? Relevance?）</li>
+                    <li>排除標準（與排除理由）</li>
+                </ol>
+            </div>
+
+            <div class="concept-box">
+                <h4>關鍵資料庫清單（來自 Bibliography）</h4>
+                <p>ISO 10993-1 的 Bibliography 直接引用了以下數據庫，說明這些是業界認可的文獻來源：</p>
+                <ul>
+                    <li><strong>PubMed</strong> — US National Library of Medicine（最廣泛使用）</li>
+                    <li><strong>EMBASE</strong> — Elsevier（歐洲藥學/毒理學文獻強項）</li>
+                    <li><strong>BIOSIS Previews</strong> — 生命科學文獻</li>
+                    <li><strong>SciFinder</strong> — 化學結構搜尋（美國化學學會）</li>
+                    <li><strong>IPCS (WHO)</strong> — 國際化學品安全規範</li>
+                    <li><strong>IRIS (EPA)</strong> — 美國環保署毒理學數據庫</li>
+                    <li><strong>ATSDR ToxGuides</strong> — 有毒物質與疾病登錄署</li>
+                </ul>
+            </div>
+
+            <div class="note-box">
+                <h4>數據品質加權：GLP &gt; Non-GLP</h4>
+                <p>C.2.3 指出可以優先採用 GLP 數據，但不排除 non-GLP 數據 —— 後者必須說明你如何評估其可靠性。</p>
+                <p>C.2.5 提出的加權方法特別提醒：同一作者的重複發表可能造成過度加權（over-weighting）。這在某些材料的文獻中很常見 —— 某個研究組可能發表了多篇基於同一數據集的論文。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>文獻審查報告必備要素（C.2.5）</h4>
+                <ol>
+                    <li>器材/材料簡要描述（含預期用途）</li>
+                    <li>所有選入文獻的分析（包括不利數據，不能只選對自己有利的）</li>
+                    <li>危害、風險與安全措施的批判性評估</li>
+                    <li>不同論文的加權方法說明</li>
+                    <li>文獻引用清單（可交叉引用）</li>
+                    <li>結論與論證（說明目標如何達成、哪些缺口已識別）</li>
+                    <li><strong>審查者簽名 + 日期</strong>（不可缺少！）</li>
+                </ol>
+                <p>第 2 點「包括不利數據」至關重要：監管機關會看你有沒有刻意忽略不支持你結論的文獻。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== BIBLIOGRAPHY ===== -->
+    <div class="two-column">
+        <div class="left-column">
+            <h2>Bibliography — Selected Key References</h2>
+            <p class="section-title">ISO Standards</p>
+            <ul>
+                <li>[1] ISO 7405 — Dentistry: Evaluation of biocompatibility of medical devices used in dentistry</li>
+                <li>[2] ISO 9000 — Quality management systems: Fundamentals and vocabulary</li>
+                <li>[3] ISO 9001 — Quality management systems: Requirements</li>
+                <li>[4] ISO 9004 — Quality management: Guidance to achieve sustained success</li>
+                <li>[5] ISO/TR 10993-22 — Biological evaluation of medical devices: Part 22: Guidance on nanomaterials</li>
+                <li>[6] ISO/TR 10993-33 — Biological evaluation of medical devices: Part 33: Guidance on tests to evaluate genotoxicity</li>
+                <li>[7] ISO 13485:2016 — Medical devices: Quality management systems: Requirements for regulatory purposes</li>
+                <li>[8] ISO/IEC 17025 — General requirements for the competence of testing and calibration laboratories</li>
+                <li>[9] ISO 18562 (all parts) — Biocompatibility evaluation of breathing gas pathways in healthcare applications</li>
+                <li>[36] ISO/TR 10993-19 — Biological evaluation of medical devices: Physical-chemical, morphological and topographical characterization of materials (under preparation)</li>
+            </ul>
+
+            <p class="section-title">Regulatory Guidance</p>
+            <ul>
+                <li>[11] EMA — Guideline on the limits of genotoxic impurities (European Medicines Agency)</li>
+                <li>[27] Japan — Good Laboratory Practice for Preclinical Biological Tests of Medical Devices; MHLW Ordinance No. 37 and No. 115</li>
+                <li>[29] USA — Code of Federal Regulations Title 21 Part 58: Good Laboratory Practice for Nonclinical Laboratory Studies</li>
+                <li>[30] FDA — Use of International Standard ISO 10993-1, "Biological evaluation of medical devices — Part 1: Evaluation and testing within a risk management process — Guidance for Industry and FDA Staff, June 16, 2016</li>
+            </ul>
+
+            <p class="section-title">ICH Guidelines</p>
+            <ul>
+                <li>[31] ICH Q3A — Impurities in New Drug Substances</li>
+                <li>[32] ICH Q3B — Impurities in New Drug Products</li>
+                <li>[33] ICH Q3C — Impurities: Guideline for Residual Solvents</li>
+                <li>[34] ICH Q3D — Impurities: Guidelines for Elemental Impurities</li>
+                <li>[35] ICH M7 — Assessment and Control of DNA Reactive (Mutagenic) Impurities in Pharmaceuticals to Limit Potential Carcinogenic Risk</li>
+            </ul>
+
+            <p class="section-title">Literature Databases</p>
+            <ul>
+                <li>[10] BIOSIS Previews — Ovid Technologies</li>
+                <li>[18] EMBASE — Elsevier B.V.</li>
+                <li>[19] IPCS — World Health Organization Chemical Safety</li>
+                <li>[20] IRIS — U.S. Environmental Protection Agency</li>
+                <li>[21] PubMed — U.S. National Library of Medicine</li>
+                <li>[22] SciFinder — American Chemical Society</li>
+                <li>[24] Toxnet — U.S. National Library of Medicine</li>
+                <li>[25] ToxGuides — Agency for Toxic Substances &amp; Disease Registry (ATSDR)</li>
+                <li>[26] OECD Guidelines for the Testing of Chemicals — Section 4: Health Effects</li>
+            </ul>
+
+            <p class="section-title">Key Textbooks</p>
+            <ul>
+                <li>[12] Black, J. — Biological Performance of Materials: Fundamentals of Biocompatibility, CRC Press, 2006</li>
+                <li>[13] Boutrand J. (ed.) — Biocompatibility and Performance of Medical Devices. Woodhead Publishing, 2012</li>
+                <li>[16] Williams D.F. — Fundamental aspects of biocompatibility. Biocompatibility. 1 CRC. 1980</li>
+                <li>[17] Williams D.F. — Definitions in Biomaterials. Progress in Biomedical Engineering. 1987</li>
+            </ul>
+        </div>
+
+        <div class="right-column">
+            <h2>中文解析 — 參考書目的戰略意涵</h2>
+
+            <div class="concept-box">
+                <h4>ICH Q3 系列 × ISO 10993：雙軌知識體系</h4>
+                <p>Bibliography 中引用了 ICH Q3A/Q3B/Q3C/Q3D/M7 這五個核心指引，這個事實說明了一個重要的知識融合趨勢：醫療器材的生物安全評估與藥品雜質/殘留物評估正在越來越多地使用共同的毒理學工具和閾值標準。</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ICH 指引</th>
+                            <th>內容</th>
+                            <th>在 ISO 10993 中的應用</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Q3A</td>
+                            <td>原料藥中的雜質</td>
+                            <td>化學表徵的毒理學閾值參考</td>
+                        </tr>
+                        <tr>
+                            <td>Q3B</td>
+                            <td>藥品中的雜質</td>
+                            <td>藥品 E&amp;L 的限度設定</td>
+                        </tr>
+                        <tr>
+                            <td>Q3C</td>
+                            <td>殘留溶媒</td>
+                            <td>製程殘留物的 PDE 計算</td>
+                        </tr>
+                        <tr>
+                            <td>Q3D</td>
+                            <td>元素雜質</td>
+                            <td>金屬浸出物的 PDE 對照</td>
+                        </tr>
+                        <tr>
+                            <td>M7</td>
+                            <td>DNA 反應性基因毒性雜質</td>
+                            <td>genotoxicity 評估的毒理學依據</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="analogy-box">
+                <h4>CDMO 的雙軌專業需求</h4>
+                <p>ICH Q3 系列傳統上屬於藥品（pharmaceutical）領域，而 ISO 10993 屬於醫療器材（medical device）領域。但在 CDMO 的實際工作中，這兩個世界的交叉越來越普遍：</p>
+                <ul>
+                    <li>藥品包裝材料（如注射劑的橡膠塞、玻璃瓶）既是「藥品輔料」也是「接觸患者的器材」</li>
+                    <li>組合產品（Combination Products）同時受藥品法規和器材法規管轄</li>
+                    <li>E&amp;L 研究同時服務於 ICH Q3 的雜質控制和 ISO 10993 的生物安全評估</li>
+                </ul>
+                <p>這就是為什麼 CDMO 的法規事務團隊必須同時熟悉兩套體系，而不能只懂其中一個。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>FDA Guidance [30] 的重要性</h4>
+                <p>Bibliography [30] 引用了 FDA 2016 年發布的 ISO 10993-1 使用指引（"Use of International Standard ISO 10993-1 — Guidance for Industry and FDA Staff"）。這份文件非常重要，因為它告訴你 FDA 如何解讀和應用 ISO 10993-1 —— 而 FDA 的解讀有時與 ISO 標準本身有微妙差異。</p>
+                <p>例如：FDA 在某些測試要求上比 ISO 10993-1 更嚴格，需要額外的毒理學論證。在向 FDA 提交 510(k) 或 PMA 前，必須同時參照這份 FDA 指引。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>OECD 毒理學測試指南 [26]</h4>
+                <p>OECD Guidelines for the Testing of Chemicals Section 4（健康效應）是業界進行毒理學測試時最廣泛引用的方法學標準。當 ISO 10993-x 系列指定某個測試「應按照 OECD 指南進行」，指的就是這套文件。</p>
+                <p>對 CRO 選擇：委外測試時，確認 CRO 的測試方法符合 OECD 相關指南，是品質保證的基本要求。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>知識體系建議：CDMO 法規團隊必讀清單</h4>
+                <ol>
+                    <li>ISO 10993-1:2018 本文 + Annex B + Annex C（本文件）</li>
+                    <li>ISO 10993-17（毒理學風險評估方法）</li>
+                    <li>ISO 10993-18（化學表徵）</li>
+                    <li>ISO 14971:2019（醫療器材風險管理）</li>
+                    <li>ICH Q3D（元素雜質 — 注射劑最相關）</li>
+                    <li>ICH Q3C（殘留溶媒）</li>
+                    <li>FDA 2016 ISO 10993-1 使用指引</li>
+                    <li>PQRI Leachables &amp; Extractables Working Group guidance（藥品包裝 E&amp;L 最重要的業界指引）</li>
+                </ol>
+            </div>
+
+            <div class="analogy-box">
+                <h4>總結：Annex B + C 的核心價值</h4>
+                <p>如果整本 ISO 10993-1 只能讀兩個附錄，就讀 Annex B 和 Annex C。</p>
+                <p>Annex B 告訴你怎麼把風險管理框架落地成可操作的評估流程；Annex C 告訴你怎麼把文獻審查做到符合監管要求的科學水準。這兩份附錄加在一起，就是一份完整的「生物評估作業手冊」。</p>
+                <p>對 CDMO 的最終啟示：生物評估不是一個「一次性的測試清單」，而是一個貫穿產品生命週期的持續性風險管理活動。從 tech transfer 的第一天，到上市後的持續監測，每一個環節都在 Annex B 的框架之內。</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="main-footer">
+    <p>ISO 10993-1:2018 — Biological Evaluation of Medical Devices</p>
+    <p>SterileGMP Knowledge Hub &copy; 2026</p>
+</div>
+
+</body>
+</html>

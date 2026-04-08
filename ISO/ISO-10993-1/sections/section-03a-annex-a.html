@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISO 10993-1 - Annex A: Biological Endpoints</title>
+    <style>
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif; line-height: 1.75; color: var(--text-dark); background: #f0f2f5; }
+.header { background: linear-gradient(135deg, #4c1d95 0%, #6d28d9 100%); color: white; padding: 2rem; text-align: center; }
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.source-badge { display: inline-block; background: #7c3aed; color: white; font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 4px; letter-spacing: 0.05em; margin-top: 0.4rem; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+.left-column { background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; }
+.left-column h2 { color: var(--primary-blue); border-bottom: 2px solid #6d28d9; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.left-column h3 { color: var(--primary-blue); margin: 1rem 0 0.5rem; font-size: 1rem; }
+.left-column h4 { color: var(--primary-blue); margin: 0.75rem 0 0.4rem; font-size: 0.95rem; }
+.left-column p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li { margin-bottom: 0.5rem; }
+.right-column { background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #c4b5fd; }
+.right-column h2 { color: #4c1d95; border-bottom: 2px solid #7c3aed; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.right-column p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.right-column h3 { color: #4c1d95; margin: 1rem 0 0.5rem; font-size: 1rem; }
+.section-title { font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
+.key-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
+.quote-box { background: linear-gradient(to right, #e7f3ff, #d6e9ff); border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem; }
+.concept-box { background: var(--green-bg); border-left: 4px solid var(--green-border); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 0.92rem; line-height: 1.7; }
+.concept-box h4 { color: #2e7d32; margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600; }
+.concept-box p, .concept-box ul { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.concept-box ul { margin-left: 1.25rem; }
+.analogy-box { background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%); border-left: 4px solid #f6ad55; border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 0.92rem; line-height: 1.7; }
+.analogy-box h4 { color: #856404; margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600; }
+.analogy-box p { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.note-box { background: var(--orange-bg); border-left: 4px solid var(--orange-border); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 0.92rem; line-height: 1.7; }
+.note-box h4 { color: #c65102; margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600; }
+.note-box p, .note-box ul { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.note-box ul { margin-left: 1.25rem; }
+.practice-box { background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%); border: 2px dashed #3182ce; border-radius: 10px; padding: 1.25rem; margin: 1.25rem 0; font-size: 0.92rem; }
+.practice-box h4 { color: #2c5282; margin-bottom: 0.75rem; font-size: 0.95rem; font-weight: 600; }
+.practice-box ol { margin-left: 1.25rem; }
+.practice-box li { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.learning-objectives { background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+/* Table A.1 styles */
+.table-wrapper { overflow-x: auto; margin: 1rem 0; }
+.bio-table { width: 100%; border-collapse: collapse; font-size: 0.75rem; min-width: 1100px; }
+.bio-table th, .bio-table td { padding: 0.35rem 0.3rem; border: 1px solid #c0c0c0; text-align: center; vertical-align: middle; }
+.bio-table thead tr:first-child th { background: linear-gradient(135deg, #4c1d95 0%, #6d28d9 100%); color: white; font-weight: 700; font-size: 0.72rem; }
+.bio-table thead tr:nth-child(2) th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.7rem; writing-mode: vertical-rl; text-orientation: mixed; transform: rotate(180deg); height: 120px; white-space: nowrap; padding: 0.5rem 0.2rem; }
+.bio-table thead tr:nth-child(2) th.no-rotate { writing-mode: horizontal-tb; transform: none; height: auto; font-size: 0.72rem; }
+.bio-table .cat-header { background: linear-gradient(135deg, #1e3a5f 0%, #2d5282 100%); color: white; font-weight: 700; text-align: left; padding: 0.4rem 0.5rem; font-size: 0.78rem; }
+.bio-table .subcat-header { background: #e8edf2; font-weight: 600; text-align: left; padding: 0.35rem 0.5rem; color: #2d3748; font-size: 0.75rem; }
+.bio-table .duration-cell { font-size: 0.7rem; color: #555; white-space: nowrap; text-align: left; padding-left: 0.4rem; }
+.bio-table td.e-cell { background: #e8f5e9; color: #155724; font-weight: 700; font-size: 0.8rem; }
+.bio-table td.x-cell { background: #fff3cd; color: #856404; font-weight: 700; font-size: 0.8rem; }
+.bio-table td.blank-cell { background: #fafafa; color: #ccc; }
+.bio-table tr:hover td { filter: brightness(0.96); }
+.table-legend { display: flex; gap: 1.5rem; margin: 0.75rem 0; font-size: 0.82rem; flex-wrap: wrap; }
+.legend-item { display: flex; align-items: center; gap: 0.4rem; }
+.legend-dot { width: 18px; height: 18px; border-radius: 3px; display: inline-block; font-weight: 700; font-size: 0.75rem; line-height: 18px; text-align: center; }
+.legend-e { background: #e8f5e9; color: #155724; border: 1px solid #4caf50; }
+.legend-x { background: #fff3cd; color: #856404; border: 1px solid #f6c23e; }
+.legend-blank { background: #fafafa; color: #999; border: 1px solid #ddd; }
+
+.footnote-block { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.75rem 1rem; margin-top: 0.75rem; font-size: 0.8rem; color: #4a5568; }
+.footnote-block p { margin-bottom: 0.4rem; font-size: 0.8rem; }
+
+.rationale-item { background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 0.85rem; }
+.rationale-item h4 { color: #4c1d95; font-size: 0.9rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+.rationale-item h4 .tag { background: #7c3aed; color: white; font-size: 0.68rem; padding: 0.1rem 0.4rem; border-radius: 3px; font-weight: 600; white-space: nowrap; }
+.rationale-item p { font-size: 0.88rem; color: #4a5568; margin-bottom: 0; }
+
+.main-footer { background: var(--primary-blue); color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+@media (max-width: 900px) { .two-column { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Annex A (Informative): Endpoints to be Addressed in a Biological Risk Assessment</h1>
+    <div class="subtitle">生物風險評估應涵蓋的評估端點</div>
+    <div class="page-info">ISO 10993-1:2018 — Biological Evaluation of Medical Devices | p20–p24</div>
+    <span class="source-badge">ISO</span>
+</div>
+
+<div class="main-content">
+
+    <!-- Learning Objectives -->
+    <div class="learning-objectives">
+        <h3>Learning Objectives — 本節學習目標</h3>
+        <ul>
+            <li>Understand Table A.1 as a <strong>framework for endpoint evaluation</strong>, not a mandatory test checklist.</li>
+            <li>Distinguish between <strong>X</strong> (prerequisite physical/chemical information) and <strong>E</strong> (endpoint to be evaluated) in the table.</li>
+            <li>Map common medical device categories (vials, syringes, IV sets) to their rows in Table A.1.</li>
+            <li>Understand the 2018 rationale for newly added endpoints including material-mediated pyrogenicity, acute systemic toxicity, and carcinogenicity.</li>
+            <li>Apply Table A.1 logic to CDMO combination product advisory scenarios.</li>
+        </ul>
+    </div>
+
+    <!-- Section A.1 -->
+    <div class="two-column">
+        <!-- Left: English source -->
+        <div class="left-column">
+            <h2>A.1 General</h2>
+
+            <p>The following is a framework for the development of a biocompatibility evaluation and is <strong>not a checklist for testing</strong>. Where Table A.1 indicates that an endpoint is relevant for assessment, the existing data sets relevant to that endpoint should be evaluated to determine if any additional data sets are needed.</p>
+
+            <p>For particular medical devices, there is a possibility that it will be appropriate to include additional or fewer endpoints than indicated.</p>
+
+            <div class="quote-box">
+                In Table A.1: <strong>X</strong> means prerequisite information needed for a risk assessment; <strong>E</strong> means endpoints to be evaluated in the risk assessment (either through the use of existing data, additional endpoint-specific testing, or a rationale for why assessment of the endpoint does not require an additional data set assessment).
+            </div>
+
+            <p>Any variation should be justified in the biological risk assessment. If there are device-specific standards that include specific recommendations regarding biocompatibility, these should be considered.</p>
+
+            <p>If a medical device is manufactured from novel materials, not previously used in medical device applications, and no toxicology data exists in the literature, additional endpoints beyond those marked "E" in this table may be indicated.</p>
+
+            <p>For gas pathway devices or components with only indirect tissue contact, see device-specific biocompatibility standards relevant to those medical devices.</p>
+
+            <h3>Table A.1 Legend</h3>
+            <div class="table-legend">
+                <div class="legend-item"><span class="legend-dot legend-e">E</span> Endpoint to be evaluated (through existing data, testing, or justified rationale)</div>
+                <div class="legend-item"><span class="legend-dot legend-x">X</span> Prerequisite information needed (physical/chemical characterization)</div>
+                <div class="legend-item"><span class="legend-dot legend-blank">&nbsp;</span> Not typically required for this category/duration</div>
+            </div>
+        </div>
+
+        <!-- Right: Chinese commentary on A.1 -->
+        <div class="right-column">
+            <h2>A.1 解讀：框架 vs. 清單</h2>
+
+            <div class="concept-box">
+                <h4>核心概念：評估框架，不是測試清單</h4>
+                <p>Table A.1 最常被誤用的方式是：把它當作「必做測試的勾選表」。ISO 10993-1:2018 的立場恰恰相反——它是一份<strong>端點評估框架（endpoint evaluation framework）</strong>。</p>
+                <p>意思是：看到 E，你需要評估這個端點，但評估的方式可以是：</p>
+                <ul>
+                    <li>查閱現有文獻或毒理資料庫</li>
+                    <li>引用同材質已核准器械的安全資料</li>
+                    <li>做新的測試（當既有資料不足時）</li>
+                    <li>撰寫正當理由說明為何不需新測試</li>
+                </ul>
+                <p>這是一個重大的哲學轉變——從「規定測試」到「風險推理」。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻：健康檢查的「項目選單」</h4>
+                <p>把 Table A.1 想像成一家診所的健康檢查項目選單。醫生會根據你的年齡、性別、病史，勾選哪些項目「應該評估」（E）。但不是每個人都要做每一項檢查——有些人已有近期的血液報告（既有資料），就不需要再抽血。</p>
+                <p>X 則像是「基本資料」（血壓、身高體重）——每次看診都需要，是所有後續評估的前提條件。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>X 與 E 的本質差異</h4>
+                <ul>
+                    <li><strong>X（物理/化學資訊）</strong>：永遠需要，是所有生物評估的先決條件。你必須先知道材料是什麼，才能評估它對人體有什麼影響。這包含材料組成、分子量、可萃取物（extractables）、可滲出物（leachables）資料。</li>
+                    <li><strong>E（待評估端點）</strong>：需要評估，但不代表需要做體外或體內試驗。評估者必須主動說明「此端點我已評估完畢，結論是……」，而非沉默略過。</li>
+                    <li><strong>空白欄位</strong>：對於特定分類與接觸時間，該端點通常不需要評估。但如有特殊情況（如器械材料含已知致癌物），仍需在風險評估中說明。</li>
+                </ul>
+            </div>
+
+            <div class="note-box">
+                <h4>新穎材料的特殊規則</h4>
+                <p>若器械使用<strong>全新材料</strong>（novel materials）——即從未用於醫療器械、無毒理文獻可查——則 Table A.1 標記 E 的端點只是<strong>最低要求</strong>，評估者可能需要增加額外端點。</p>
+                <p>這是標準對創新材料的謹慎立場：資料空白不等於安全，要主動設計評估方案。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Table A.1 Full Width -->
+    <div style="background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; margin-bottom: 1.5rem;">
+        <h2 class="section-title" style="border-bottom: 2px solid #6d28d9; color: #4c1d95;">Table A.1 — Biological Endpoints by Medical Device Category (ISO 10993-1:2018, p21–p22)</h2>
+        <p style="font-size: 0.88rem; color: #4a5568; margin-bottom: 1rem;">This table is the centerpiece of Annex A. Read each row by device category and contact duration; read each column by biological endpoint. Cells marked E must be evaluated; X is a prerequisite for all rows.</p>
+
+        <div class="table-wrapper">
+            <table class="bio-table">
+                <thead>
+                    <tr>
+                        <th colspan="3" style="text-align:left; font-size:0.8rem;">Nature of body contact &amp; Duration</th>
+                        <th>Cyto-toxicity<br>細胞毒性</th>
+                        <th>Sensiti-zation<br>致敏性</th>
+                        <th>Irritation / Intracutaneous Reactivity<br>刺激/皮內反應</th>
+                        <th>Material-mediated Pyrogenicity<br>材料致熱原性</th>
+                        <th>Acute Systemic Toxicity<br>急性全身毒性</th>
+                        <th>Subacute / Subchronic Toxicity<br>亞急性/亞慢性毒性</th>
+                        <th>Genotoxicity<br>基因毒性</th>
+                        <th>Implantation Effects<br>植入效應</th>
+                        <th>Hemo-compatibility<br>血液相容性</th>
+                        <th>Chronic Toxicity<br>慢性毒性</th>
+                        <th>Carcino-genicity<br>致癌性</th>
+                        <th>Reproductive / Developmental Toxicity<br>生殖/發育毒性</th>
+                        <th>Degradation<br>降解</th>
+                        <th>Physical &amp; Chemical Information<br>物理/化學資訊</th>
+                    </tr>
+                    <tr>
+                        <th colspan="3" class="no-rotate" style="text-align:left; font-size:0.72rem; background:#e9ecef; color:#2d3748;">Contact Duration: A = Limited (&lt;24 h) &nbsp;|&nbsp; B = Prolonged (24 h – 30 d) &nbsp;|&nbsp; C = Long Term (&gt;30 d)</th>
+                        <th class="no-rotate" style="font-size:0.65rem; font-weight:600; color:#666;">1</th>
+                        <th class="no-rotate" style="font-size:0.65rem; font-weight:600; color:#666;">2</th>
+                        <th class="no-rotate" style="font-size:0.65rem; font-weight:600; color:#666;">3</th>
+                        <th class="no-rotate" style="font-size:0.65rem; font-weight:600; color:#666;">4</th>
+                        <th class="no-rotate" style="font-size:0.65rem; font-weight:600; color:#666;">5</th>
+                        <th class="no-rotate" style="font-size:0.65rem; font-weight:600; color:#666;">6</th>
+                        <th class="no-rotate" style="font-size:0.65rem; font-weight:600; color:#666;">7</th>
+                        <th class="no-rotate" style="font-size:0.65rem; font-weight:600; color:#666;">8</th>
+                        <th class="no-rotate" style="font-size:0.65rem; font-weight:600; color:#666;">9</th>
+                        <th class="no-rotate" style="font-size:0.65rem; font-weight:600; color:#666;">10</th>
+                        <th class="no-rotate" style="font-size:0.65rem; font-weight:600; color:#666;">11</th>
+                        <th class="no-rotate" style="font-size:0.65rem; font-weight:600; color:#666;">12</th>
+                        <th class="no-rotate" style="font-size:0.65rem; font-weight:600; color:#666;">13</th>
+                        <th class="no-rotate" style="font-size:0.65rem; font-weight:600; color:#666;">14</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- SURFACE CONTACTING DEVICES -->
+                    <tr>
+                        <td colspan="17" class="cat-header">SURFACE CONTACTING DEVICES &nbsp;｜&nbsp; 表面接觸型器械</td>
+                    </tr>
+
+                    <!-- Intact Skin -->
+                    <tr>
+                        <td rowspan="3" class="subcat-header" style="width:80px;">Intact Skin<br><span style="font-size:0.68rem; color:#555;">完整皮膚</span></td>
+                        <td class="duration-cell">A (&lt;24 h)</td>
+                        <td></td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="x-cell">X</td>
+                    </tr>
+                    <tr>
+                        <td class="duration-cell">B (24 h–30 d)</td>
+                        <td></td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="x-cell">X</td>
+                    </tr>
+                    <tr>
+                        <td class="duration-cell">C (&gt;30 d)</td>
+                        <td></td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="x-cell">X</td>
+                    </tr>
+
+                    <!-- Mucosal Membrane -->
+                    <tr>
+                        <td rowspan="3" class="subcat-header">Mucosal Membrane<br><span style="font-size:0.68rem; color:#555;">黏膜</span></td>
+                        <td class="duration-cell">A (&lt;24 h)</td>
+                        <td></td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="x-cell">X</td>
+                    </tr>
+                    <tr>
+                        <td class="duration-cell">B (24 h–30 d)</td>
+                        <td></td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="blank-cell">–</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="x-cell">X</td>
+                    </tr>
+                    <tr>
+                        <td class="duration-cell">C (&gt;30 d)</td>
+                        <td></td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="blank-cell">–</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="blank-cell">–</td>
+                        <td class="x-cell">X</td>
+                    </tr>
+
+                    <!-- Breached/Compromised Surface -->
+                    <tr>
+                        <td rowspan="3" class="subcat-header">Breached / Compromised Surface<br><span style="font-size:0.68rem; color:#555;">破損/受損皮膚</span></td>
+                        <td class="duration-cell">A (&lt;24 h)</td>
+                        <td></td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="blank-cell">–</td>
+                        <td class="e-cell">E</td>
+                        <td class="blank-cell">–</td>
+                        <td class="e-cell">E</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="x-cell">X</td>
+                    </tr>
+                    <tr>
+                        <td class="duration-cell">B (24 h–30 d)</td>
+                        <td></td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="e-cell">E</td>
+                        <td class="x-cell">X</td>
+                    </tr>
+                    <tr>
+                        <td class="duration-cell">C (&gt;30 d)</td>
+                        <td></td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="blank-cell">–</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="x-cell">X</td>
+                    </tr>
+
+                    <!-- EXTERNALLY COMMUNICATING DEVICES -->
+                    <tr>
+                        <td colspan="17" class="cat-header">EXTERNALLY COMMUNICATING DEVICES &nbsp;｜&nbsp; 外部連通型器械</td>
+                    </tr>
+
+                    <!-- Indirect Blood Path Contact -->
+                    <tr>
+                        <td rowspan="3" class="subcat-header">Indirect Blood Path Contact<br><span style="font-size:0.68rem; color:#555;">間接血液接觸路徑</span></td>
+                        <td class="duration-cell">A (&lt;24 h)</td>
+                        <td></td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="e-cell">E</td>
+                        <td class="blank-cell">–</td>
+                        <td class="e-cell">E</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="x-cell">X</td>
+                    </tr>
+                    <tr>
+                        <td class="duration-cell">B (24 h–30 d)</td>
+                        <td></td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="e-cell">E</td>
+                        <td class="x-cell">X</td>
+                    </tr>
+                    <tr>
+                        <td class="duration-cell">C (&gt;30 d)</td>
+                        <td></td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="x-cell">X</td>
+                    </tr>
+
+                    <!-- Tissue/Bone/Dentin Contact -->
+                    <tr>
+                        <td rowspan="3" class="subcat-header">Tissue / Bone / Dentin Contact<br><span style="font-size:0.68rem; color:#555;">組織/骨骼/牙本質接觸</span></td>
+                        <td class="duration-cell">A (&lt;24 h)</td>
+                        <td></td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="blank-cell">–</td>
+                        <td class="e-cell">E</td>
+                        <td class="blank-cell">–</td>
+                        <td class="e-cell">E</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="x-cell">X</td>
+                    </tr>
+                    <tr>
+                        <td class="duration-cell">B (24 h–30 d)</td>
+                        <td></td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="blank-cell">–</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="e-cell">E</td>
+                        <td class="x-cell">X</td>
+                    </tr>
+                    <tr>
+                        <td class="duration-cell">C (&gt;30 d)</td>
+                        <td></td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="blank-cell">–</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="blank-cell">–</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="x-cell">X</td>
+                    </tr>
+
+                    <!-- Circulating Blood Contact -->
+                    <tr>
+                        <td rowspan="3" class="subcat-header">Circulating Blood Contact<br><span style="font-size:0.68rem; color:#555;">循環血液直接接觸</span></td>
+                        <td class="duration-cell">A (&lt;24 h)</td>
+                        <td></td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="e-cell">E</td>
+                        <td class="x-cell">X</td>
+                    </tr>
+                    <tr>
+                        <td class="duration-cell">B (24 h–30 d)</td>
+                        <td></td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="e-cell">E</td>
+                        <td class="x-cell">X</td>
+                    </tr>
+                    <tr>
+                        <td class="duration-cell">C (&gt;30 d)</td>
+                        <td></td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="x-cell">X</td>
+                    </tr>
+
+                    <!-- IMPLANT DEVICES -->
+                    <tr>
+                        <td colspan="17" class="cat-header">IMPLANT DEVICES &nbsp;｜&nbsp; 植入型器械</td>
+                    </tr>
+
+                    <!-- Tissue/Bone Contact (Implant) -->
+                    <tr>
+                        <td rowspan="3" class="subcat-header">Tissue / Bone Contact<br><span style="font-size:0.68rem; color:#555;">組織/骨骼接觸（植入）</span></td>
+                        <td class="duration-cell">A (&lt;24 h)</td>
+                        <td></td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="blank-cell">–</td>
+                        <td class="e-cell">E</td>
+                        <td class="blank-cell">–</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="x-cell">X</td>
+                    </tr>
+                    <tr>
+                        <td class="duration-cell">B (24 h–30 d)</td>
+                        <td></td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="blank-cell">–</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="e-cell">E</td>
+                        <td class="x-cell">X</td>
+                    </tr>
+                    <tr>
+                        <td class="duration-cell">C (&gt;30 d)</td>
+                        <td></td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="blank-cell">–</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="blank-cell">–</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="x-cell">X</td>
+                    </tr>
+
+                    <!-- Blood Contact (Implant) -->
+                    <tr>
+                        <td rowspan="3" class="subcat-header">Blood Contact<br><span style="font-size:0.68rem; color:#555;">血液接觸（植入）</span></td>
+                        <td class="duration-cell">A (&lt;24 h)</td>
+                        <td></td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="blank-cell">–</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="x-cell">X</td>
+                    </tr>
+                    <tr>
+                        <td class="duration-cell">B (24 h–30 d)</td>
+                        <td></td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="blank-cell">–</td>
+                        <td class="e-cell">E</td>
+                        <td class="x-cell">X</td>
+                    </tr>
+                    <tr>
+                        <td class="duration-cell">C (&gt;30 d)</td>
+                        <td></td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="e-cell">E</td>
+                        <td class="x-cell">X</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Footnotes -->
+        <div class="footnote-block">
+            <p><strong>Footnote a:</strong> Refer to ISO 10993-11:2017, Annex F.</p>
+            <p><strong>Footnote b:</strong> Information obtained from comprehensive implantation assessments that include acute systemic toxicity, subacute toxicity, subchronic toxicity, and chronic toxicity may be appropriate if sufficient animals and timepoints are included and assessed. It is not always necessary to perform separate studies for acute, subacute, subchronic, and chronic toxicity.</p>
+            <p><strong>Footnote c:</strong> For instance, medical devices in contact with intact mucosal membranes should ideally be studied/considered in contact with intact mucosal membranes. Relevant implantation sites should be considered.</p>
+            <p><strong>Footnote d:</strong> If the medical device can contain substances known to be carcinogenic, mutagenic, or toxic to reproduction, this should be considered in the risk assessment.</p>
+            <p><strong>Footnote e:</strong> Reproductive and developmental toxicity should be addressed for novel materials, materials with a known reproductive or developmental toxicant, medical devices with relevant target populations (e.g. pregnant women), and medical devices where there is potential for local presence of device materials in the reproductive organs.</p>
+            <p><strong>Footnote f:</strong> Degradation information should be provided for any medical device, medical device components or materials remaining within the patient, and materials that have the potential for degradation.</p>
+            <p><strong>Footnote g:</strong> X means prerequisite information needed for a risk assessment.</p>
+            <p><strong>Footnote h:</strong> E means endpoints to be evaluated in the risk assessment (either through the use of existing data, additional endpoint-specific testing, or a rationale for why assessment of the endpoint does not require an additional data set assessment).</p>
+            <p><strong>Footnote i:</strong> For gas pathway devices or components with only indirect tissue contact, see device-specific biocompatibility standards relevant to those medical devices.</p>
+            <p><strong>Footnote j:</strong> Tissue includes subcutaneous spaces and tissue fluids. For all medical devices used in extracorporeal circuits.</p>
+        </div>
+    </div>
+
+    <!-- Table interpretation + A.2 -->
+    <div class="two-column">
+        <!-- Left: A.2 Rationale -->
+        <div class="left-column">
+            <h2>A.2 Rationale for Endpoints in Table A.1</h2>
+
+            <p>The following endpoints were not included in the fourth edition (2009) of this document. The rationale for inclusion of each endpoint within this revision is addressed below.</p>
+
+            <div class="rationale-item">
+                <h4><span class="tag">Physical &amp; Chemical Information</span> All device categories, all contact types, all durations</h4>
+                <p>This information is used for all medical device types to determine whether further biological testing is needed.</p>
+            </div>
+
+            <div class="rationale-item">
+                <h4><span class="tag">Irritation / Intracutaneous Reactivity</span> Externally communicating devices — indirect blood path, long-term duration</h4>
+                <p>Components with long-term indirect contact with blood (e.g. infusion systems) can introduce irritants into the body/systemic circulation that should be addressed as part of the biological risk assessment.</p>
+            </div>
+
+            <div class="rationale-item">
+                <h4><span class="tag">Material-mediated Pyrogenicity</span> Breached/compromised surface contact — all durations</h4>
+                <p>Extractables/leachables can be introduced to the systemic circulation through breached or compromised surfaces, and therefore both material-mediated pyrogenicity and acute systemic toxicity should be considered.</p>
+            </div>
+
+            <div class="rationale-item">
+                <h4><span class="tag">Material-mediated Pyrogenicity</span> Externally communicating &amp; implant devices — all contact types, all durations</h4>
+                <p>Extractables/leachables can be introduced to the systemic circulation, lymphatic system, and/or cerebrospinal fluid, and therefore material-mediated pyrogenicity should be considered.</p>
+            </div>
+
+            <div class="rationale-item">
+                <h4><span class="tag">Acute Systemic Toxicity</span> Mucosal membrane contact — prolonged and long-term contact; tissue/bone/dentin — limited duration; implant tissue/bone — limited duration</h4>
+                <p>Extractables/leachables can be introduced via mucosal membranes and to the systemic circulation, lymphatic system, and/or cerebrospinal fluid, and therefore acute systemic toxicity should be considered.</p>
+            </div>
+
+            <div class="rationale-item">
+                <h4><span class="tag">Subacute Toxicity</span> All medical device types with prolonged and long-term contact</h4>
+                <p>For medical devices/components with more than 24 hours use, extractables/leachables can be introduced to the systemic circulation, lymphatic system, and/or cerebrospinal fluid, and therefore subacute toxicity should be considered.</p>
+            </div>
+
+            <div class="rationale-item">
+                <h4><span class="tag">Subchronic &amp; Chronic Toxicity</span> All medical device types with long-term contact (&gt;30 days)</h4>
+                <p>For medical devices/components with at least 30 day use, extractables/leachables can be introduced to the systemic circulation, lymphatic system, and/or cerebrospinal fluid, and therefore subchronic and chronic toxicity should be considered.</p>
+            </div>
+
+            <div class="rationale-item">
+                <h4><span class="tag">Implantation Effects</span> Mucosal membrane &amp; breached/compromised surface — prolonged and long-term contact</h4>
+                <p>For medical devices/components with this type of contact, local and systemic effects from implantation should be considered. For medical devices/components where repeat use could change the category from limited to prolonged or long-term duration, information on potential for accumulation of chemicals in the tissue can be used to inform whether implantation testing should be considered.</p>
+            </div>
+
+            <div class="rationale-item">
+                <h4><span class="tag">Implantation Effects</span> Externally communicating devices — indirect blood path, long-term duration</h4>
+                <p>Components with long-term indirect contact with blood (e.g. infusion systems) can introduce extractables/leachables into the blood stream that could impact the inflammatory response to direct contacting components of the medical device (if applicable). If literature is available to address systemic toxicity of all extractables/leachables, and there is no direct contacting component, it is possible that implantation assessment will not be needed for this category.</p>
+            </div>
+
+            <div class="rationale-item">
+                <h4><span class="tag">Genotoxicity</span> Externally communicating devices — circulating blood, limited duration; implant devices — blood contact, limited duration</h4>
+                <p>For medical devices/components used in extracorporeal circuits, extractables/leachables can be introduced into the blood stream and remain after the medical device is removed, and therefore genotoxicity should be considered.</p>
+            </div>
+
+            <div class="rationale-item">
+                <h4><span class="tag">Carcinogenicity</span> Surface medical devices — breached/compromised surface, long-term; all externally communicating &amp; implant devices — long-term duration</h4>
+                <p>Extractables/leachables can be introduced into systemic circulation, lymphatic system, and/or cerebrospinal fluid, and therefore carcinogenicity should be addressed as part of the biological risk assessment.</p>
+            </div>
+        </div>
+
+        <!-- Right: Chinese commentary on table + A.2 -->
+        <div class="right-column">
+            <h2>Table A.1 在 CDMO 的應用解讀</h2>
+
+            <div class="analogy-box">
+                <h4>比喻：Table A.1 是「端點菜單」，不是「強制點餐」</h4>
+                <p>想像你是餐廳客人，Table A.1 給你一張菜單，標注哪些菜「建議點」（E）。但你不需要每道菜都點——如果你已經吃過某道菜（有現成資料），就不用再點。重點是你要<strong>說明你為什麼沒點</strong>，而不是沉默跳過。</p>
+                <p>X 欄則是「進門前必須結帳」——是前提條件，不是選擇。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>CDMO 實務：常見器械分類對照</h4>
+                <ol>
+                    <li><strong>玻璃瓶（vials）+ 橡膠塞</strong>：藥液從不直接接觸血液，而是通過護士/患者注射進入體內。分類視藥品類型而定：靜脈注射藥品 → 間接血液路徑接觸（Indirect blood path）；注射用水 → 同上；外用製劑 → 表面接觸（完整皮膚或黏膜）。</li>
+                    <li><strong>預充注射器（prefilled syringes）</strong>：針頭直接接觸血管 → 循環血液直接接觸（Circulating blood contact）。接觸時間通常 &lt;24 h（A 類）。這意味著需要評估血液相容性（Hemocompatibility）端點。</li>
+                    <li><strong>輸液袋 + 輸液管</strong>：液體流經管路後進入靜脈 → 間接血液路徑（Indirect blood path）。接觸時間可能達數小時到數天（B 類）。需評估材料致熱原性（Material-mediated pyrogenicity）。</li>
+                    <li><strong>組合產品（combination products）</strong>：藥品+器械一體，器械部分的生物相容性仍須依 ISO 10993-1 評估。CDMO 有責任協助客戶判斷分類。</li>
+                </ol>
+            </div>
+
+            <div class="concept-box">
+                <h4>A.2 的深層意義：2018 版本的哲學轉變</h4>
+                <p>2009 版 (第四版) 的 Table A.1 端點較少，且隱含「E = 需要做測試」的思維。2018 版做了三項重大轉變：</p>
+                <ul>
+                    <li><strong>新增端點</strong>：物理/化學資訊、材料致熱原性、急性全身毒性等成為明確要求，反映對 E&amp;L（可萃取物/可滲出物）全身毒性風險的更深認識。</li>
+                    <li><strong>語言轉變</strong>：「X = 需要測試」改為「E = 需要評估端點」，明確區分「評估」與「測試」。</li>
+                    <li><strong>路徑多元化</strong>：評估可透過現有資料、文獻、或正當理由達成，不必每次都做新的動物實驗或體外試驗。</li>
+                </ul>
+            </div>
+
+            <div class="note-box">
+                <h4>材料致熱原性（Material-mediated Pyrogenicity）：為何重要？</h4>
+                <p>傳統的 LAL 試驗（Limulus Amebocyte Lysate）針對的是<strong>細菌內毒素</strong>（endotoxins），無法偵測到來自材料本身的非細菌熱原物質。</p>
+                <p>2018 版 ISO 10993-1 特別新增此端點，要求評估器械材料（如橡膠塞、塑膠管、矽膠）本身是否會在體內引發發熱反應。這對 CDMO 特別重要：客戶若使用新供應商的包材，即使批批通過 LAL 試驗，仍可能有材料致熱原性風險。</p>
+                <p>評估方式：可使用<strong>MAT（Monocyte Activation Test）</strong>或進行萃取物熱原試驗。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>累積毒性 → 慢性毒性 + 致癌性的邏輯鏈</h4>
+                <p>A.2 的核心邏輯：接觸時間越長 → 可滲出物進入全身循環越多 → 累積風險越高 → 需要評估更多端點。</p>
+                <ul>
+                    <li>&lt;24 h：關注直接局部反應（細胞毒性、致敏性、刺激性）</li>
+                    <li>24 h–30 d：新增急性全身毒性、亞急性毒性</li>
+                    <li>&gt;30 d：追加慢性毒性、致癌性、生殖毒性、降解評估</li>
+                </ul>
+                <p>這個邏輯鏈解釋了為什麼長期植入物（如人工關節、心臟瓣膜）需要最完整的生物相容性評估包。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>風險評估實務：如何對應 E 欄位？</h4>
+                <ol>
+                    <li>確認器械分類（表面/外部連通/植入）及接觸部位。</li>
+                    <li>確認接觸時間（A/B/C）。</li>
+                    <li>找出 Table A.1 對應行的所有 E 欄位。</li>
+                    <li>對每個 E 端點，搜尋現有材料資料（如供應商 CoA、REACH SVHC 清單、同類器械上市資料）。</li>
+                    <li>若現有資料充足 → 撰寫端點評估結論，不需新測試。</li>
+                    <li>若資料不足 → 設計測試方案（參閱 ISO 10993 系列對應部分）。</li>
+                    <li>所有判斷（評估或豁免）都需記錄在<strong>生物風險評估報告</strong>中。</li>
+                </ol>
+            </div>
+
+            <h3>A.2 各端點新增的核心理由（速查）</h3>
+
+            <div class="concept-box">
+                <h4>核心原則：E&amp;L 進入人體後怎麼走？</h4>
+                <p>A.2 的每條理由都遵循同一邏輯：可萃取物/可滲出物（Extractables/Leachables, E&amp;L）可以透過以下途徑進入人體——</p>
+                <ul>
+                    <li>黏膜（mucosal membranes）→ 全身循環</li>
+                    <li>受損皮膚（breached surface）→ 全身循環</li>
+                    <li>血液路徑（indirect/circulating blood）→ 全身循環</li>
+                    <li>淋巴系統、脊髓液（lymphatic / cerebrospinal fluid）</li>
+                </ul>
+                <p>一旦進入全身循環，就可能造成：急性毒性、亞慢性毒性、基因毒性、致癌性……端點清單隨接觸時間與途徑逐步擴大。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>外部迴路（Extracorporeal Circuits）的特殊風險</h4>
+                <p>血液透析機、ECMO（體外膜氧合）、體外循環機（CPB）等器械屬於「循環血液直接接觸」類別，且在移除器械後 E&amp;L 仍殘留在血液中。</p>
+                <p>因此即使是「短期（&lt;24 h）使用」的體外迴路設備，仍需評估基因毒性（Genotoxicity），因為可滲出物移除器械後仍在體內持續作用。這是 2018 版的重要新增要求。</p>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end main-content -->
+
+<div class="main-footer">
+    <p>ISO 10993-1:2018 — Biological Evaluation of Medical Devices, Part 1: Evaluation and Testing within a Risk Management Process</p>
+    <p>Annex A (Informative) — Endpoints to be Addressed in a Biological Risk Assessment | p20–p24</p>
+    <p style="opacity:0.6; font-size:0.8rem;">SterileGMP Knowledge Hub — Bilingual Educational Series</p>
+</div>
+
+</body>
+</html>
