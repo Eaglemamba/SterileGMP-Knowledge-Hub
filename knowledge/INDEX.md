@@ -871,7 +871,13 @@ Terms: quality culture, root cause analysis (RCA), human error, skill-based erro
 | Big Data, IoT in pharma, continuous manufacturing data / 大數據、製藥物聯網 | TR84 |
 | DI worked examples: API, FDF, sterility, packaging / 資料完整性案例：原料藥、製劑、無菌、包裝 | TR84 |
 | Sterile facility design, cleanroom layout, facility architecture / 無菌設施設計、潔淨室佈局 | ISPE-Vol3 |
-| Cleanroom classification, Grade A/B/C/D, ISO 14644 / 潔淨室分級、A/B/C/D級 | ISPE-Vol3 |
+| Cleanroom classification, Grade A/B/C/D, ISO 14644 / 潔淨室分級、A/B/C/D級 | ISO-14644 + ISPE-Vol3 |
+| ISO Class number, ISO 1-9 particle limits, Table 1, LSAPC measurement / ISO等級數字、微粒濃度限值、光散射粒子計數器 | ISO-14644 |
+| Sampling location selection, minimum number of samples, hypergeometric model / 採樣點選擇、最少採樣數、超幾何模型 | ISO-14644 |
+| ISO 14644-5 cleanroom operations, gowning requirements, 16-step gowning sequence / 無塵室操作規範、更衣要求 | ISO-14644 |
+| Separative device, isolator, glovebox, mini-environment, separation continuum / 隔離設備、隔離器、手套箱、分離連續譜 | ISO-14644 |
+| Rapid transfer port RTP alpha-beta port, double-door transfer, pass-through / 快速轉移接口、雙門轉移、傳遞艙 | ISO-14644 |
+| Hourly leak rate Rh, pressure integrity, glove breach test / 每小時洩漏率、壓力完整性、手套破損測試 | ISO-14644 |
 | HVAC for sterile manufacturing, air change rate, HEPA filter / 無菌製造HVAC、換氣次數、HEPA過濾器 | ISPE-Vol3 + ISPE-HVAC |
 | Pressure cascade, differential pressure, airlock design / 壓力梯度、壓差、氣閘設計 | ISPE-Vol3 + ISPE-HVAC |
 | oRABS vs cRABS vs isolator, barrier technology comparison / 開放式vs封閉式RABS vs隔離器 | ISPE-Vol3 + PtC-12 |
@@ -962,10 +968,10 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR73 ★★★ (prefilled syringe CCI methods) | TR43 ★★★ (glass defects that compromise CCI: Critical classification, seal integrity risks) | ISO-11040 ★★★ (Part 8: CCI as mandatory test — probabilistic/deterministic methods per USP <1207>; tub-and-nest sterile barrier system integrity per ISO 11607-1) | TR90 ★★ (CCS containers) | Guide-No1 ★★ (vial/syringe filling line)
 
 **Isolator Systems / VHP Bio-decontamination (隔離器系統 / VHP生物去污)**
-→ ISO-13408-6 ★★★ (primary ISO standard for isolator systems: complete requirements — design, qualification DQ/IQ/OQ/PQ, VHP bio-decontamination validation, BI strategy, aeration validation, residue limits, glove integrity testing, Amendment 1:2013 changes) | PtC-Isolators ★★★ (PDA guidance: isolator design Q&A, pressure differential, RTP, EM, material transfer, VHP cycle development) | ISO-13408 ★★★ (Part 6 overview in series context) | PtC-12 ★★ (RABS comparison) | TR90 ★★ (CCS isolator context) | PICS-Annex1 ★★★ (regulatory requirement: isolator as preferred technology, Annex 1 §4.20-4.24) | TR62 ★★ (manual processes in isolator context)
+→ ISO-13408-6 ★★★ (primary ISO standard for isolator systems: complete requirements — design, qualification DQ/IQ/OQ/PQ, VHP bio-decontamination validation, BI strategy, aeration validation, residue limits, glove integrity testing, Amendment 1:2013 changes) | ISO-14644 ★★★ (Part 7: separative device design/construction/testing requirements, separation continuum concept, separation descriptor [Aa:Bb], access/transfer device specifications, hourly leak rate Rh, glove breach test, Parjo leak test method) | PtC-Isolators ★★★ (PDA guidance: isolator design Q&A, pressure differential, RTP, EM, material transfer, VHP cycle development) | ISO-13408 ★★★ (Part 6 overview in series context) | PtC-12 ★★ (RABS comparison) | TR90 ★★ (CCS isolator context) | PICS-Annex1 ★★★ (regulatory requirement: isolator as preferred technology, Annex 1 §4.20-4.24) | TR62 ★★ (manual processes in isolator context)
 
 **Contamination Control (污染控制)**
-→ ISO-13408 ★★★ (Part 1: normative contamination control requirements — APA zone classification, cleanroom design, HVAC, EM, barrier systems, personnel control; Part 6: isolator VHP decontamination as contamination control barrier) | ISO-13408-6 ★★★ (isolator as highest-assurance barrier technology: design requirements, VHP bio-decontamination, glove integrity, indirect support zone) | TR90 ★★★ (CCS strategy) | ISPE-Vol3 ★★★ (facility-level contamination control: HVAC, classification, pressure cascades, barriers) | ISPE-HVAC ★★★ (HVAC engineering: AHU, filtration, pressure control, air change rates, risk assessment) | ISPE-Vol6 ★★★ (biopharmaceutical-specific: process closure layers, biological waste, containment vs classification) | PtC-12 ★★★ (RABS barrier) | PtC-Isolators ★★★ (isolator barrier & decontamination) | TR70 ★★★ (cleaning & disinfection program) | TR13 ★★ (EM as contamination detection tool) | TR22 ★★ (APS contamination) | PtC-14 ★★ (ATMP segregation) | TR26 ★★ (bioburden before filtration)
+→ ISO-13408 ★★★ (Part 1: normative contamination control requirements — APA zone classification, cleanroom design, HVAC, EM, barrier systems, personnel control; Part 6: isolator VHP decontamination as contamination control barrier) | ISO-14644 ★★★ (Part 1: classification method — airborne particle limits as contamination criteria; Part 5: operational contamination control — gowning, personnel behavior, equipment entry, cleaning; Part 7: separative device barriers as contamination control means) | ISO-13408-6 ★★★ (isolator as highest-assurance barrier technology: design requirements, VHP bio-decontamination, glove integrity, indirect support zone) | TR90 ★★★ (CCS strategy) | ISPE-Vol3 ★★★ (facility-level contamination control: HVAC, classification, pressure cascades, barriers) | ISPE-HVAC ★★★ (HVAC engineering: AHU, filtration, pressure control, air change rates, risk assessment) | ISPE-Vol6 ★★★ (biopharmaceutical-specific: process closure layers, biological waste, containment vs classification) | PtC-12 ★★★ (RABS barrier) | PtC-Isolators ★★★ (isolator barrier & decontamination) | TR70 ★★★ (cleaning & disinfection program) | TR13 ★★ (EM as contamination detection tool) | TR22 ★★ (APS contamination) | PtC-14 ★★ (ATMP segregation) | TR26 ★★ (bioburden before filtration)
 
 **Cleaning & Disinfection Programs (清潔與消毒程序)**
 → TR70 ★★★ (full C&D framework for aseptic facilities) | PtC-Isolators ★★★ (isolator cleaning, VHP/peracetic acid decontamination cycle) | PtC-12 ★★ (RABS-specific C&D) | TR90 ★★ (C&D as CCS element)
@@ -1279,6 +1285,40 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 **Key terms:** sterilized subassembled syringe, ready for filling, RTF, polymer barrel, COC cyclo-olefin copolymer, COP cyclo-olefin polymer, PP polypropylene, staked needle, Luer cone, Luer lock, LLA Luer lock adaptor, tip cap, needle shield, SAL 10⁻⁶, sub-visible particles, endotoxin EU/ml, siliconization, glide force, flange breakage, Luer cone breakage, container closure integrity CCI, dye tightness test, tub-and-nest, ISO 80369-7, ISO 8871-1, ISO 10993-1, sterile barrier system, dead space
 
 **Sections:** Foreword & Introduction → Scope/References/Terms → General Requirements (QMS/Testing/Documentation) → Dimensions (Table 1, 10 sizes, 4 head designs) → Requirements (Material/Physical/Chemical/Biological) → Graduation/Packaging/Labelling → Annex A–C (types, head designs, barrel test methods) → Annex D–G (sample prep, lubrication, needle penetration, closure tests) → Annex H–I & Bibliography (dye test, materials guidance, references)
+
+---
+
+## ISO/ISO-14644-Complete.md
+**Report:** ISO 14644 (Parts 1, 5, 7) — Cleanrooms and Associated Controlled Environments: Classification, Operations, and Separative Devices
+**Pages:** p1–p156 (across 3 parts) | **Sections:** 3
+
+**Covers questions about:**
+- ISO cleanroom classification: ISO Class 1–9, particle concentration limits by particle size (0.1–5 µm), Table 1 maximum allowable concentrations
+- Mapping ISO classes to EU GMP grades: Grade A/B ≈ ISO Class 5, Grade C ≈ ISO Class 7/8, Grade D ≈ ISO Class 8
+- Occupancy states: as-built, at-rest, operational — when each state applies and regulatory expectations
+- Sampling location selection: minimum number per Table A.1, hypergeometric model, 95% confidence/90% area compliance, Annex A normative method
+- Sample volume calculation: Formula A.2 (Vs = 20 L/Cn,m × 1000), minimum 2 L per location, concentration considerations
+- Statistical evaluation per location: per-location mean vs. limit (no averaging across locations), zero count rule, out-of-specification handling
+- M descriptor for macroparticles: ISO M(a;b);c notation, EU GMP Grade A/B ≥5 µm limits (20 and 29 particles/m³)
+- Sequential sampling: pass/fail boundaries (C_pass, C_fail formulas), when to apply to Class 1–3 low-count situations
+- Cleanroom operational requirements (Part 5): documentation framework, gowning/clothing requirements, personnel hygiene and training, equipment entry and maintenance, material handling, cleaning schedules and validation
+- Gowning procedures: 16-step ISO 14644-5 Annex C gowning sequence; fabric selection criteria; laundry and sterility requirements; change frequency rules
+- Cleanroom cleaning: three cleaning categories, surface-specific procedures, disinfection rotation, 10-stage construction cleaning programme (Table F.1)
+- Separative devices (Part 7): clean air hoods, gloveboxes, isolators, mini-environments — scope and classification
+- Separation continuum concept: Annex A table (open → semi-open → closed) from open LAF hood to fully enclosed rigid-walled isolator with VHP
+- Separation descriptor [Aa:Bb]: format, meaning, and how to specify separation requirements between inside/outside
+- Isolator requirements: design qualification capability, material compatibility (VHP, inert gas), pressure integrity, leak testing
+- Access devices: glove types comparison (latex/neoprene/nitrile/CSM/butyl), glove port replacement, half-suit construction, robotic handling
+- Transfer devices: RTP/alpha-beta rapid transfer ports, pass-through chambers, decontamination tunnels, fail-safe design principle
+- Isolator testing: glove breach test (0.5 m/s breach velocity), operating differential pressure, hourly leak rate (Rh = q/V), periodic testing schedule
+- Parjo leak test method: principle, formula, worked examples
+
+**Key terms:** ISO Class number, particle concentration, airborne particle counter (LSAPC), macroparticle, M descriptor, occupancy state (as-built/at-rest/operational), cleanroom, clean zone, unidirectional airflow, hypergeometric sampling model, sequential sampling, separation descriptor [Aa:Bb], separative device, isolator, RABS (restricted access barrier system), glovebox, mini-environment, access device, glove port, glove sleeve system, half-suit, transfer device, rapid transfer port (RTP), alpha-beta port, hourly leak rate (Rh), breach velocity, pressure integrity, VHP (vaporized hydrogen peroxide), bio-decontamination, biocleanroom, cross-over bench, disinfection rotation, cleanroom clothing, gowning qualification
+
+**Sections:**
+- Section 1 (Part 1): Classification — ISO Classes 1–9, Table 1, Annexes A–F (sampling method, calculations, M descriptor, sequential sampling, test instruments)
+- Section 2 (Part 5): Operations — Normative requirements (4.1–4.6) + Informative Annexes A–F (operational systems, clothing, personnel, equipment, materials, cleaning)
+- Section 3 (Part 7): Separative Devices — Design/Construction/Testing requirements + Annexes A–F (separation continuum, air systems, access devices, transfer devices, leak testing, Parjo method)
 
 ---
 
