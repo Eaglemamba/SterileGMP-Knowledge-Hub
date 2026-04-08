@@ -2320,3 +2320,27 @@ Key terms: leachables, analytical evaluation threshold (AET), leachables specifi
 
 **Sections:**
 - Section 1 (p384–p385): Scope & Definition, Equipment (4-component viewing station with illumination specs), Method (dual-panel procedure, air bubble prevention, label removal, transfer option), Interpretation (individual monograph criteria, essentially free principle), Regulatory context (vs 2.9.19, vs USP <790>/<1790>)
+
+---
+
+## PHEUR/PhEur-321-Complete.md
+**Report:** European Pharmacopoeia 11.0 — Chapter 3.2.1: Glass Containers for Pharmaceutical Use
+**Pages:** p479–p484 (7 pages) | **Sections:** 3
+
+**Covers questions about:**
+- Glass definitions: colourless vs coloured glass; neutral (borosilicate) vs soda-lime-silica glass — composition and hydrolytic resistance comparison
+- Three-type classification: Type I (borosilicate, high resistance from composition), Type II (soda-lime with inner surface treatment), Type III (soda-lime, moderate resistance) — and which preparations can use each type
+- Delamination mechanism and risk factors: citrate/phosphate buffers, ionic strength, terminal sterilisation, container manufacturing process, inner surface treatments; flaking may appear months after filling; accelerated degradation testing as a predictive tool
+- Test A (Surface test): determining filling volume (90% brimful for vials/syringes; shoulder for ampoules); cleaning protocol; filling with water R1; autoclaving at 121±1°C for 60±1 min (detailed thermal cycle); titration with 0.01 M HCl using methyl red; Table 3.2.1-2 (volumes and titrations); Table 3.2.1-3 (limits by filling volume: Type I/II vs Type III)
+- Test B (Glass grains test): crushing glass to 300–425 µm; iron removal with magnet; acetone + ultrasonic cleaning; drying at 140°C; autoclaving at 121°C for 30 min (not 60 min); titration with 0.02 M HCl; conversion factor 620 µg Na₂O per mL; limits: Type I ≤0.1 mL/g, Type II/III ≤0.85 mL/g; 20% repeatability rule
+- Test C (Etching test): HF/HCl 1:9 treatment for 10 min; re-run Test A on etched container; 5–10× increase → surface-treated (Type II); similar values → Type I; Table 3.2.1-4 interpretation; note on tubing glass (ampoules, syringes) not normally surface-treated
+- Arsenic test: applies to aqueous parenteral containers (Type I and II); uses Test A extraction solution; hydride generation AAS at 193.7 nm; limit ≤0.1 ppm As
+- Spectral transmission: UV-Vis 290–450 nm with integrating sphere; non-parenteral ≤10% at all wavelengths; parenteral limits by container type (flame-sealed vs with closures) and nominal volume — Table 3.2.1-5 (up to 50% for small flame-sealed, down to 10% for large with-closure containers)
+- Annex: flame spectrometry alternative to titrimetry — Na₂O/K₂O/CaO by AES/AAS; spectrochemical buffer (CsCl); advantages for small individual container testing; NOT equivalent to titrimetric reference method
+
+**Key terms:** glass containers, Type I glass, Type II glass, Type III glass, borosilicate glass, soda-lime-silica glass, neutral glass, hydrolytic resistance, delamination, lamellae, flakes, surface treatment, filling volume, brimful capacity, water R1, autoclaving, 121°C, 60 minutes, methyl red, 0.01 M HCl, titrimetry, Test A, Test B, Test C, glass grains, mortar pestle, sieve 300–425 µm, acetone, 0.02 M HCl, sodium oxide, etching, hydrofluoric acid, arsenic, hydride generation AAS, 193.7 nm, spectral transmission, 290–450 nm, integrating sphere, flame spectrometry, Ph.Eur. 3.2.1, USP <660>
+
+**Sections:**
+- Section 1 (p479–481): Glass Definitions (colourless/coloured, neutral/soda-lime), Type I/II/III Classification & Suitability Matrix, Preparation/Suitability Recommendations, Production — Delamination (risk factors, accelerated testing), Tests Overview, Table 3.2.1-1 (test selection matrix), Equipment for Tests A/B/C, Filling Volume Determination (vials/ampoules/syringes)
+- Section 2 (p481–483): Test A — Cleaning, Filling, Autoclaving Thermal Cycle, Calibration & Routine Runs, Titration Method, Table 3.2.1-2 (volumes), Table 3.2.1-3 (limits); Test B — Equipment, Crushing/Sieving/Cleaning/Drying, Autoclaving 30 min, Titration, Limits, Repeatability
+- Section 3 (p483–484): Test C — Etching procedure (HF/HCl 1:9), Table 3.2.1-4 (Type I vs II interpretation); Arsenic Test (HG-AAS, 193.7 nm, ≤0.1 ppm); Spectral Transmission (UV-Vis 290–450 nm, Table 3.2.1-5, non-parenteral vs parenteral limits); Annex (flame spectrometry alternative)
