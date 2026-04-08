@@ -892,6 +892,12 @@ Terms: quality culture, root cause analysis (RCA), human error, skill-based erro
 | Complaint handling 8.2.2, vigilance reporting 8.2.3, regulatory authority reporting / 投訴處理、警戒報告、法規主管機關通報 | ISO-13485 |
 | CAPA corrective action preventive action ISO 13485 7-step effectiveness review / 矯正預防措施、七步驟流程、有效性審查 | ISO-13485 |
 | ISO 13485 vs ISO 9001 differences, no continual improvement, regulatory QMS / ISO 13485與ISO 9001差異、無持續改善要求 | ISO-13485 |
+| Biocompatibility evaluation, biological evaluation of medical devices, ISO 10993 framework / 生物相容性評估、醫療器材生物評估、ISO 10993框架 | ISO-10993-1 |
+| Biological risk assessment, BER biological evaluation report, BEP biological evaluation plan / 生物風險評估、生物評估報告、生物評估計畫 | ISO-10993-1 |
+| Device contact categorization, transitory prolonged long-term, surface externally communicating implant / 器材接觸分類、短暫延長長期接觸、表面外部溝通植入 | ISO-10993-1 |
+| Biological endpoints Table A.1, cytotoxicity sensitization genotoxicity hemocompatibility pyrogenicity / 生物端點表格、細胞毒性致敏性基因毒性血液相容性致熱原性 | ISO-10993-1 |
+| Material-mediated pyrogenicity, non-endotoxin pyrogen, material characterization, gap analysis / 材料致熱原性、非內毒素致熱原、材料表徵、缺口分析 | ISO-10993-1 |
+| Container closure biocompatibility, rubber stopper vial syringe bag E&L biological evaluation / 容器密封系統生物相容性、橡膠塞小瓶注射器袋可萃取物生物評估 | ISO-10993-1 |
 | HVAC for sterile manufacturing, air change rate, HEPA filter / 無菌製造HVAC、換氣次數、HEPA過濾器 | ISPE-Vol3 + ISPE-HVAC |
 | Pressure cascade, differential pressure, airlock design / 壓力梯度、壓差、氣閘設計 | ISPE-Vol3 + ISPE-HVAC |
 | oRABS vs cRABS vs isolator, barrier technology comparison / 開放式vs封閉式RABS vs隔離器 | ISPE-Vol3 + PtC-12 |
@@ -970,7 +976,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → ISO-13408-2 ★★★ (primary ISO standard: complete requirements framework — filter characterization, process definition, BCT validation requirements, integrity test correlation, gas filter validation, routine monitoring, change assessment) | TR26 ★★★ (detailed practical guidance: filter sizing, flux calculations, integrity test procedures, PUPSIT step-by-step, E&L methodology) | PICS-Annex1 ★★★ (regulatory requirements: PUPSIT mandatory for EU, filtration as part of Annex 1 Section 8c) | TR26 ★★★ (PDA TR26 revised 2025: comprehensive filter validation) | ISO-13408-5 ★★ (SIP validation of filter assembly — overlapping filter sterilization requirements)
 
 **Extractables & Leachables / E&L (可萃取物與可滲出物)**
-→ ISPE-SUT ★★★ (PQRI framework for SUT: AET calculation, SCT, leachables testing methodology, stability interaction testing) | TR26 ★★★ (filter E&L) | TR66 ★★★ (SUS E&L) | TR73 ★★ (syringe components) | ISO-13408-2 ★★ (filter E&L requirements: Sections 5.3, 8.2.2; use of process fluid for leachables study)
+→ ISPE-SUT ★★★ (PQRI framework for SUT: AET calculation, SCT, leachables testing methodology, stability interaction testing) | TR26 ★★★ (filter E&L) | TR66 ★★★ (SUS E&L) | TR73 ★★ (syringe components) | ISO-13408-2 ★★ (filter E&L requirements: Sections 5.3, 8.2.2; use of process fluid for leachables study) | ISO-10993-1 ★★★ (biological evaluation framework: E&L feeds into gap analysis and risk estimation under Annex B; AET/TTC/dose-response concepts for container-closure systems)
 
 **Environmental Monitoring / EM (環境監控)**
 → ISO-13408 ★★★ (Part 1: normative EM requirements — viable/non-viable monitoring methods, APA zone classification, alert/action limits, monitoring frequency) | TR13 ★★★ (EM program fundamentals: limits, alert levels, qualification, RMM, investigations) | TR13-2 ★★★ (EM for low bioburden/biologics: risk assessment methodology, worked examples) | PICS-Annex1 ★★★ (regulatory EM limits: Tables 5 & 6, continuous monitoring Grade A/B, APS monitoring, viable/non-viable methods) | TR90 ★★★ (CCS framework) | PtC-12 ★★★ (RABS EM) | PtC-Isolators ★★★ (isolator EM: risk-based frequency, surface sampling, plate transfer) | TR88 ★★★ (EM deviation investigation: Phase I/II framework) | TR22 ★★ (APS EM) | TR70 ★★ (disinfection impact on EM) | PtC-14 ★ (ATMP context)
@@ -1396,6 +1402,32 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 - Section 3: Resource Management (Clause 6) & Design Controls (Clause 7.1–7.3) — contamination control 6.4.2, product realization planning, D&D 7.3.1–7.3.10 including DHF
 - Section 4: Purchasing, Production & Sterile Device Requirements (Clause 7.4–7.6) — tiered supplier qualification, 7.5.5 sterile device requirements, 7.5.7 sterilization/sterile barrier validation, traceability
 - Section 5: Measurement, Analysis & Improvement (Clause 8) + Annexes A & B — complaint handling, vigilance reporting, CAPA 7-step process, 2016 change summary, ISO 9001 correspondence
+
+---
+
+## ISO/ISO-10993-1-Complete.md
+**Report:** ISO 10993-1:2018 — Biological Evaluation of Medical Devices — Part 1: Evaluation and Testing within a Risk Management Process
+**Pages:** p1–p48 | **Sections:** 4
+
+**Covers questions about:**
+- Scope and framework: risk-based biological evaluation as part of medical device development and risk management process — not a fixed test list
+- Device categorization by nature of contact: non-contacting, surface (intact skin/mucosal membrane/breached or compromised), externally communicating (indirect blood path/tissue-bone-dentin/circulating blood), implant (tissue-bone/blood)
+- Contact duration categories: transitory (≤24h, Category A), prolonged (>24h to 30d, Category B), long-term (>30d, Category C)
+- General principles (Section 4): material characterization, final product state testing, re-evaluation triggers (material change, design change, sterilization change, clinical change)
+- Biological evaluation process (Section 6): physical/chemical characterization → gap analysis → biological endpoint selection → testing or existing data review → biological evaluation report
+- Biological endpoints: cytotoxicity, sensitization, skin reactivity, material-mediated pyrogenicity, acute/subacute/subchronic/chronic systemic toxicity, genotoxicity, implantation effects, hemocompatibility, carcinogenicity, reproductive/developmental toxicity, degradation
+- Table A.1 (Annex A): endpoint matrix by device category and contact duration — X = prerequisite physical/chemical info; E = endpoint to evaluate
+- Annex B: complete biological evaluation workflow mapped to ISO 14971 — biological evaluation plan (BEP), risk analysis/estimation/evaluation/control, biological evaluation report (BER)
+- Annex C: literature review procedure — systematic search strategy, source selection, critical evaluation, documentation for biological evaluation
+- CDMO application: container-closure qualification, E&L study context, combination product customer BER review, drug contact categorization for vials/syringes/bags
+
+**Key terms:** biocompatibility, biological risk assessment, biological evaluation report (BER), biological evaluation plan (BEP), material characterization, physical and chemical information, gap analysis, cytotoxicity, sensitization, material-mediated pyrogenicity, hemocompatibility, genotoxicity, carcinogenicity, extractables, leachables, analytical evaluation threshold (AET), threshold of toxicological concern (TTC), transitory contact, prolonged contact, long-term contact, surface contacting device, externally communicating device, implant, ISO 14971, risk management, risk analysis, risk estimation, risk evaluation, risk control, Biological Evaluation Report
+
+**Sections:**
+- Section 1: Scope, Normative References & Terms — Foreword, Introduction, Scope (6 specified areas), 18 normative ISO standards, 26 defined terms (3.1 biocompatibility through 3.26 transitory contact)
+- Section 2: General Principles (Section 4), Categorization (Section 5), Biological Evaluation Process (Section 6), Interpretation & Risk Assessment (Section 7)
+- Section 3A: Annex A — Table A.1 biological endpoints by device category/duration matrix; A.2 rationale for 2018 additions (material-mediated pyrogenicity, acute/subacute/subchronic/chronic toxicity, genotoxicity, carcinogenicity, reproductive toxicity, degradation, implantation effects, hemocompatibility)
+- Section 3B: Annex B — complete biological evaluation within risk management (B.1–B.8: BEP, risk analysis, risk estimation, risk evaluation, risk control, BER, post-production); Annex C — literature review methodology; Bibliography with ICH Q3A/B/C/D cross-references
 
 ---
 
