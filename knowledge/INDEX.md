@@ -589,6 +589,9 @@ Terms: quality culture, root cause analysis (RCA), human error, skill-based erro
 | LVP SVP particulate limit 25/mL 6000/container, Test 1.A Test 1.B acceptance criteria injection infusion / 大容量注射劑25個/mL限度、小容量6000個/容器、輸液微粒接受標準 | PhEur-2919 + USP-788 |
 | Circular diameter graticule GFOV transparent black reference circles particle sizing microscope / 圓形直徑量尺視野微粒量測、透明黑色參考圓、顯微鏡計數尺 | PhEur-2919 |
 | Environmental suitability blank test particle-free water LO method precaution laminar flow cabinet / 環境適用性空白確認、無粒子水本底測試、層流台潔淨條件 | PhEur-2919 |
+| Visible particle test Ph.Eur. 2.9.20, visual inspection viewing station black white panel / 可見異物試驗Ph.Eur.、目視檢查觀測站、黑白背景板 | PhEur-2920 |
+| Viewing illumination 2000-3750 lux visible particles, light diffuser fluorescent LED / 可見異物照度2000-3750 lux、擴散光源白光燈管LED | PhEur-2920 |
+| Essentially free from visible particles injection parenteral qualitative visual test / 注射劑基本上不含可見異物、定性目視判定標準 | PhEur-2920 + USP-790 |
 | Sterilizing filtration, filter sterilization, 0.22 µm filter, 0.2 µm membrane filtration / 滅菌過濾、過濾除菌、0.22微米過濾器 | ISO-13408-2 + TR26 |
 | Bacterial challenge test BCT, microbial retention validation, Brevundimonas diminuta / 細菌挑戰測試、微生物截留驗證、微小短波單胞菌 | ISO-13408-2 + TR26 |
 | Filter integrity test acceptance criteria, correlation to BCT, diffusive flow bubble point / 過濾器完整性測試接受標準、細菌截留相關性 | ISO-13408-2 + TR26 |
@@ -938,6 +941,12 @@ Terms: quality culture, root cause analysis (RCA), human error, skill-based erro
 | Normal tightened reduced inspection switching rules, 2-of-5 rejection trigger / 正常加嚴放寬檢驗轉換規則、五中取二拒收觸發 | ISO-2859-1 |
 | OC curve operating characteristic, producer risk consumer risk alpha beta / 操作特性曲線、生產者風險、消費者風險 | ISO-2859-1 |
 | Critical major minor defect AQL classification, pharma incoming inspection / 嚴重主要次要缺陷AQL分類、製藥入料檢驗 | ISO-2859-1 |
+| ISO 9000 vocabulary fundamentals, QMS terms definitions, quality management principles / ISO 9000詞彙基礎、品質管理系統術語、品質管理原則 | ISO-9000 |
+| 7 quality management principles customer focus leadership PDCA evidence-based / 七大品質管理原則、顧客導向、領導力、PDCA循環 | ISO-9000 |
+| QA vs QC distinction quality assurance quality control difference / 品質保證與品質管制差異、QA vs QC區別 | ISO-9000 |
+| Documented information replaces documents procedures quality manual records ISO 2015 / 文件化資訊取代文件程序品質手冊記錄 | ISO-9000 |
+| Audit terminology auditee auditor criteria evidence findings mapped FDA inspection / 稽核術語被稽核方稽核員準則證據發現對應FDA查廠 | ISO-9000 |
+| Traceability definition pharma material equipment process ISO 9000 / 可追溯性定義製藥材料設備製程ISO 9000 | ISO-9000 |
 | HVAC for sterile manufacturing, air change rate, HEPA filter / 無菌製造HVAC、換氣次數、HEPA過濾器 | ISPE-Vol3 + ISPE-HVAC |
 | Pressure cascade, differential pressure, airlock design / 壓力梯度、壓差、氣閘設計 | ISPE-Vol3 + ISPE-HVAC |
 | oRABS vs cRABS vs isolator, barrier technology comparison / 開放式vs封閉式RABS vs隔離器 | ISPE-Vol3 + PtC-12 |
@@ -1593,6 +1602,34 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 
 ---
 
+## ISO/ISO-9000-Complete.md
+**Report:** ISO 9000:2015 — Quality Management Systems: Fundamentals and Vocabulary
+**Pages:** p1–p58 (58 pages) | **Sections:** 3
+
+**Covers questions about:**
+- ISO 9000 as the vocabulary foundation for ISO 9001, ISO 13485, ISO 15378, and the entire ISO 9000 family
+- 7 Quality Management Principles: Customer Focus, Leadership, Engagement of People, Process Approach, Improvement, Evidence-Based Decision Making, Relationship Management — rationale, benefits, actions for each
+- PDCA cycle connection to ISO 9001 clauses — Plan (Cl.4-6), Do (Cl.8), Check (Cl.9), Act (Cl.10)
+- Fundamental concepts: quality, context of organization, interested parties, process approach, risk-based thinking
+- QA vs. QC distinction — quality assurance (systematic activities, prevention-focused) vs. quality control (operational testing techniques)
+- All ~200 terms organized in 13 categories (3.1-3.13): person, organization, activity, process, system, requirement, result, data/information/document, customer, characteristic, determination, action, audit
+- "Documented information" — how it replaces "documents" + "procedures" + "quality manual" + "records" from 2008
+- Traceability definition and its pharmaceutical applications (material, equipment, process)
+- Monitoring vs. measurement vs. inspection vs. test — subtle distinctions with pharma QC mapping
+- Corrective action vs. preventive action — why "preventive action" is still defined but absorbed into risk-based thinking in ISO 9001:2015
+- Complete audit terminology (ISO 9000) mapped to FDA inspection vocabulary
+- ISO 9000 → pharma mapping: terms in ISO 9000 vs. equivalents in ICH Q9, ICH Q10, EU GMP, FDA regulations
+- Master glossary of 70 key terms with pharma relevance ratings
+
+**Key terms:** quality management system (QMS), quality management principles, customer focus, leadership, engagement of people, process approach, improvement, evidence-based decision making, relationship management, PDCA, quality (definition), quality assurance (QA), quality control (QC), continual improvement, risk (effect of uncertainty), opportunity, interested party, stakeholder, documented information, maintain vs. retain, record, specification, document, data, information, traceability, monitoring, measurement, inspection, test, corrective action, preventive action, nonconformity, defect, concession, release, product, service, output, process, procedure, top management, quality policy, quality objective, audit, auditee, auditor, audit criteria, audit evidence, audit findings
+
+**Sections:**
+- Section 1 (p1–p20): Foreword & Introduction (ISO 9000 family overview) + Clause 1 Scope + Clause 2: Fundamental Concepts (2.2 quality/requirements/management systems/context/interested parties/support; 2.3 process approach/PDCA/risk-based thinking; 2.4 all 7 QM principles with statement/rationale/benefits/actions; 2.5 QMS development)
+- Section 2 (p21–p38): Clause 3.1–3.7: Terms — person (3.1), organization (3.2), activity (3.3: QA/QC/CI), process (3.4), system (3.5), requirement (3.6), result (3.7: risk/opportunity/efficiency/effectiveness) + 52-term bilingual glossary + cross-standard comparison table
+- Section 3 (p39–p58): Clause 3.8–3.13: Terms — data/information/document (3.8: documented information), customer (3.9), characteristic (3.10: traceability/CQA), determination (3.11: monitoring/measurement/inspection/test), action (3.12: CAPA/preventive action), audit (3.13: complete audit vocabulary) + Bibliography + 70-term master glossary with pharma relevance ratings
+
+---
+
 ## ICH Quality Guidelines Knowledge Base
 
 ### ICH Q9(R1) - Quality Risk Management
@@ -2021,7 +2058,7 @@ Key terms: leachables, analytical evaluation threshold (AET), leachables specifi
 → PHEUR/PhEur-2919 ★★★ (Ph.Eur. 2.9.19 primary: Method 1 LO apparatus, calibration, blank check 5×5 mL, LVP/SVP procedure with 4 portions; alternative method for biologics; Test 1.A/1.B acceptance limits; Method 2 microscopic — circular diameter graticule, dual illuminators, black membrane filter, Test 2.A/2.B limits at half of Method 1; particle sizing rules for transparent vs dark particles) | USP/USP-788 ★★★ (USP counterpart: LO and microscopic methods, LVP/SVP limits — ICH harmonised, same numerical limits) | USP/USP-787 ★★★ (therapeutic proteins: protein aggregation, silicone oil, special considerations) | USP/USP-789 ★★★ (ophthalmic solutions: ≥50 µm limit) | USP/USP-790 ★★ (visible particulates, 100% inspection) | USP/USP-1788 ★★★ (comprehensive methods reference: LO, microscopic, flow imaging, RMM) | USP/USP-729 ★★★ (lipid emulsions: PFAT5 ≤ 0.05%)
 
 **Visual Inspection of Injections (注射劑目視檢查)**
-→ USP/USP-1790 ★★★ (comprehensive guide: MVI, AVI, Knapp study, PoD, inspector qualification, AQL) | USP/USP-790 ★★ (visible particulates test requirements) | PDA/TR85 ★★★ (enhanced particle detection, ECIM) | PICS-Annex1 ★★ (visual inspection regulatory requirements)
+→ PHEUR/PhEur-2920 ★★★ (Ph.Eur. 2.9.20 primary: viewing station equipment A/B/C/D, 2000–3750 lux illumination, 5s no magnification, black+white dual-panel method, essentially free from visible particles principle; qualitative pass/fail with limits in individual monographs) | USP/USP-1790 ★★★ (comprehensive guide: MVI, AVI, Knapp study, PoD, inspector qualification, AQL) | USP/USP-790 ★★ (visible particulates test requirements) | PDA/TR85 ★★★ (enhanced particle detection, ECIM) | PICS-Annex1 ★★ (visual inspection regulatory requirements)
 
 **Container Closure Systems — Testing & Materials (容器密封系統試驗/材料)**
 → USP/USP-660 ★★★ (glass containers: Type I/II/III, chemical resistance tests) | USP/USP-661 ★★★ (plastic packaging: materials, physicochemical tests, biological reactivity) | USP/USP-381 ★★★ (elastomeric components: stoppers, plungers, physicochemical & biological tests) | USP/USP-670 ★★★ (auxiliary components: desiccants, coils, odor adsorbents) | USP/USP-671 ★★★ (container performance: light transmission, moisture permeation, classification) | PDA/TR27 ★★★ (CCI integrity testing methodology) | USP/USP-1207 ★★★ (package integrity evaluation: deterministic vs probabilistic methods)
