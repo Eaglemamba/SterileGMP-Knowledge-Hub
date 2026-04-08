@@ -910,6 +910,13 @@ Terms: quality culture, root cause analysis (RCA), human error, skill-based erro
 | ALARP as low as reasonably practicable, risk acceptability criteria three-zone model / 合理可行最低風險、風險可接受準則三區模型 | ISO-TR-24971 |
 | Legacy device retrospective risk management, cybersecurity security risk CIA triad / 舊型器材回溯風險管理、資安風險CIA三角 | ISO-TR-24971 |
 | IVD in vitro diagnostic risk management, false positive false negative analytical performance / 體外診斷器材風險管理、偽陽性偽陰性分析性能 | ISO-TR-24971 |
+| ISO 9001 QMS requirements, quality management system standard, ISO 9001:2015 / ISO 9001品質管理系統要求、第五版2015 | ISO-9001 |
+| PDCA cycle Plan Do Check Act, quality management principles, risk-based thinking / PDCA循環、品質管理原則、風險導向思維 | ISO-9001 |
+| Context of organization PESTLE, interested parties, QMS scope applicability / 組織情境PESTLE分析、利害關係方、QMS範圍適用性 | ISO-9001 |
+| Design and development review verification validation 8.3, special processes / 設計開發審查驗證確認、特殊製程 | ISO-9001 |
+| Documented information replacing documents procedures records quality manual / 文件化資訊取代文件程序記錄品質手冊 | ISO-9001 |
+| Organizational knowledge 7.1.6, knowledge retention, tacit knowledge loss / 組織知識7.1.6、知識保留、隱性知識流失 | ISO-9001 |
+| ISO 9001 vs ISO 13485 vs ISO 15378 comparison, QMS for pharma medical device packaging / ISO 9001 vs ISO 13485 vs ISO 15378比較 | ISO-9001 |
 | Primary packaging materials QMS, ISO 15378 requirements, GMP for packaging manufacturers / 一次包材品質管理系統、製藥用包材製造商GMP | ISO-15378 |
 | Printed primary packaging, gang printing risk, admixture contamination, artwork origination control / 印刷一次包材、聯排印刷風險、混料污染、版原管制 | ISO-15378 |
 | Print plate cylinder control, digital printing security, barcode verification, reel splice control / 印版滾筒管制、數位印刷安全、條碼查驗、捲料接頭控制 | ISO-15378 |
@@ -1512,6 +1519,34 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 - Section 3B (p37–p51): Clause 8 Part 2: Production Controls (validation/qualification, cleanroom, line clearance, sterilization), Traceability, Change Control, Product Release, OOS Investigation, Batch Release, CAPA, Internal Audit, Management Review, Continual Improvement
 - Section 4 (p52–p59): Annex A (ISO 9001:2008→2015 terminology changes, risk-based thinking, documented information, applicability vs. exclusions), Annex B (ISO 9000 family map, Table B.1 cross-reference)
 - Section 5 (p60–p92): Annex C (normative: printed packaging GMP — artwork control, plate management, gang printing, digital printing, barcode scanning), Annex D (informative: VMP, IQ/OQ/PQ, performance qualification, bracketing/matrix, software validation), Bibliography, Alphabetical Term Index
+
+---
+
+## ISO/ISO-9001-Complete.md
+**Report:** ISO 9001:2015 — Quality Management Systems: Requirements
+**Pages:** p1–p40 (40 pages) | **Sections:** 3
+
+**Covers questions about:**
+- ISO 9001:2015 QMS requirements — who applies, what is required, what changed from 2008
+- PDCA cycle as QMS framework — Cl.4-6 = Plan, Cl.8 = Do, Cl.9 = Check, Cl.10 = Act
+- Risk-based thinking — replaced preventive action clause; comparison with ICH Q9 and ISO 14971
+- Context of organization — PESTLE, interested parties, QMS scope and applicability
+- Leadership — 10 specific top management actions, quality policy, no management representative required (2015 change)
+- Planning — quality objectives (SMART), actions to address risks/opportunities, planning of changes
+- Support — organizational knowledge (7.1.6 new in 2015), competence, documented information (replacing documents/procedures/records/quality manual)
+- Operation — customer communication, design & development (8.3), external provider control, production controls, special processes validation, release, nonconforming outputs
+- Performance evaluation — monitoring/measurement, customer satisfaction, 7 analysis outcomes, internal audit, management review (8 inputs, 3 outputs)
+- CAPA — correction vs. corrective action distinction, 6-step process mapped to pharma CAPA
+- Continual improvement — using analysis/evaluation and management review outputs
+- ISO 9001 vs. ISO 13485 vs. ISO 15378 — comparison table across 10 dimensions
+- Terminology mapping ISO 9001:2008 → 2015 — Table A.1 (products/services, external provider, documented information)
+
+**Key terms:** QMS quality management system, ISO 9001, PDCA cycle, risk-based thinking, preventive action, context of organization, interested parties, quality policy, quality objectives, documented information, maintain vs. retain, organizational knowledge 7.1.6, competence, process approach, design and development review verification validation, external provider, supplier, special processes, traceability, nonconformity, corrective action CAPA, correction, continual improvement, management review, internal audit, customer satisfaction, Annex SL High Level Structure, ISO 9000, ISO 13485, ISO 15378
+
+**Sections:**
+- Section 1 (p1–p24): Foreword & Introduction (PDCA diagram, 8 QM principles, risk-based thinking, Annex SL ecosystem) + Clauses 1–7: Scope, Terms, Context (4.1-4.4), Leadership (5.1-5.3), Planning (6.1-6.3), Support (7.1-7.5 including 7.1.6 organizational knowledge, documented information ALCOA mapping)
+- Section 2 (p25–p36): Clauses 8–10: Operation (design & development, external provider, production, special processes, release, nonconforming outputs), Performance Evaluation (monitoring, customer satisfaction, analysis, internal audit, management review), Improvement (CAPA 6-step, continual improvement)
+- Section 3 (p37–p40): Annex A (Table A.1 terminology 2008→2015, risk-based thinking, applicability vs. exclusions, documented information) + Annex B (ISO/TC 176 ecosystem, Table B.1) + Bibliography + ISO 9001 vs. ISO 13485 vs. ISO 15378 comparison
 
 ---
 
