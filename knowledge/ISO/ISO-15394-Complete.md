@@ -1,0 +1,2712 @@
+# ISO 15394:2017 — Packaging: Bar Code and Two-Dimensional Symbols for Shipping, Transport and Receiving Labels: Bar code and 2D symbols for shipping and transport labels — Third edition
+
+ISO
+15394
+INTERNATIONAL
+STANDARD
+Third edition
+2017-11
+Packaging — Bar code and two-
+dimensional symbols for shipping,
+transport and receiving labels
+Emballage — Codes à barres et symboles bidimensionnels pour
+l'expédition, le transport et les étiquettes de réception
+Reference number
+ISO 15394:2017(E)
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:27:51 MDT ©
+ISO 2017
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 15394:2017(E)
+COPYRIGHT PROTECTED DOCUMENT
+© ISO 2017, Published in Switzerland
+All rights reserved. Unless otherwise specified, no part of this publication may be reproduced or utilized otherwise in any form
+or by any means, electronic or mechanical, including photocopying, or posting on the internet or an intranet, without prior
+written permission. Permission can be requested from either ISO at the address below or ISO’s member body in the country of
+the requester.
+ISO copyright office
+Ch. de Blandonnet 8 • CP 401
+CH-1214 Vernier, Geneva, Switzerland
+Tel. +41 22 749 01 11
+Fax +41 22 749 09 47
+copyright@iso.org
+www.iso.org
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reprodu i ct i ion or networking permitted without license from IHS Not for Resale, 10/14/2019 19:27:51 MDT © ISO 2017 – All rights reserved
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 15394:2017(E)
+Contents
+Page
+Foreword v
+Introduction vi
+..........................................................................................................................................................................................................................................
+1 Scope 1
+................................................................................................................................................................................................................................
+2 Normative references 1
+.................................................................................................................................................................................................................................
+3 Terms and definitions 2
+......................................................................................................................................................................................
+4 Concepts 2
+.....................................................................................................................................................................................
+........................................................................................................................................................................................................................
+4.1 Principles .....................................................................................................................................................................................................2
+4.2 Transport package, unit load and transport unit ......................................................................................................3
+4.2.1 Transport package ..........................................................................................................................................................3
+4.2.2 Unit load ..................................................................................................................................................................................3
+4.2.3 Transport unit ....................................................................................................................................................................3
+4.3 Unique transport unit identifier ..............................................................................................................................................3
+4.4 Label formats ............................................................................................................................................................................................3
+4.4.1 Base shipping/transport/receiving label ...................................................................................................3
+5 Data content 4
+4.4.2 Extended shipping/transport/receiving label .......................................................................................3
+..............................................................................................................................................................................................................
+5.1 Data representation ............................................................................................................................................................................4
+5.1.1 Data in linear bar code symbols .........................................................................................................................4
+5.1.2 Data in two-dimensional (2D) symbols .......................................................................................................4
+5.1.3 Data in human-readable form ..............................................................................................................................4
+5.2 Data elements ..........................................................................................................................................................................................4
+5.2.1 Unique transport unit identifier .........................................................................................................................4
+5.2.2 Ship to........................................................................................................................................................................................5
+5.2.3 Ship from ................................................................................................................................................................................5
+5.2.4 Key to carrier's database ..........................................................................................................................................5
+5.2.5 Key to customer's database ....................................................................................................................................5
+5.2.6 Other data elements ......................................................................................................................................................6
+5.3 Concatenating data fields in linear bar code symbols ..........................................................................................6
+5.3.1 Using GS1 Application Identifiers (AI) ..........................................................................................................6
+5.3.2 Using ANSI MH10.8.2 Data Identifiers (DI) ..............................................................................................6
+5.4 Structured data files ...........................................................................................................................................................................6
+5.4.1 General......................................................................................................................................................................................6
+5.4.2 Shipping and receiving data ...................................................................................................................................6
+5.4.3 Supporting documentation application .......................................................................................................6
+5.4.4 Carrier sorting and tracking applications ..................................................................................................7
+6 Data carriers 7
+5.5 Data area identification ...................................................................................................................................................................7
+.............................................................................................................................................................................................................
+6.1 Linear bar code symbols .................................................................................................................................................................7
+6.2 Two-dimensional symbols ............................................................................................................................................................7
+6.3 Human-readable information ....................................................................................................................................................8
+6.3.1 Human-readable interpretation .........................................................................................................................8
+6.3.2 Human translation .........................................................................................................................................................8
+6.3.3 Data area titles ...................................................................................................................................................................8
+6.3.4 Free text and data ............................................................................................................................................................8
+7 Label design 8
+6.3.5 Choice of language ..........................................................................................................................................................8
+...............................................................................................................................................................................................................
+7.1 General considerations ....................................................................................................................................................................8
+7.2 Layout .............................................................................................................................................................................................................9
+7.2.1 Base label layout ..............................................................................................................................................................9
+7.2.2 Extended label layout ..................................................................................................................................................9
+7.2.3 Other data ...........................................................................................................................................................................10
+7.3 Label dimensions .................................................. .............................................................................................................................10
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:27:51 MDT iii
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 15394:2017(E)
+7.3.1 General considerations ............................................................................................................................................10
+7.3.2 Label height .......................................................................................................................................................................10
+7.3.3 Label width ........................................................................................................................................................................10
+7.3.4 Data limits ...........................................................................................................................................................................10
+7.4 Text size ......................................................................................................................................................................................................11
+7.4.1 General considerations ............................................................................................................................................11
+7.4.2 Specific text dimensions .........................................................................................................................................12
+8 Label placement 13
+7.5 Material ......................................................................................................................................................................................................12
+.................................................................................................................................................................................................
+8.1 General considerations .................................................................................................................................................................13
+8.2 Unit loads (pallets) ...........................................................................................................................................................................13
+8.3 Transport packages ..........................................................................................................................................................................13
+Annex A Guidelines for using linear bar code symbols 15
+8.4 Other transport units......................................................................................................................................................................14
+Annex B Guidelines for using 2D symbols 18
+(normative) ...............................................................................
+Annex C Designing compliant labels using a building block approach 37
+(normative) .................................................................................................................
+Annex D Issues to consider in the drafting of application guidelines or
+(informative) ...................................
+standards conforming to this document 41
+(informative)
+Annex E Label examples 44
+..................................................................................................................................
+Annex F Recommended label locations on various containers 61
+(informative) ............................................................................................................................................................
+Annex G The impact of systems confronted with multiple symbologies
+(informative) .......................................................
+and formats 64
+(informative)
+Bibliography 68
+.............................................................................................................................................................................................................
+.............................................................................................................................................................................................................................
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reprodu i ct v ion or networking permitted without license from IHS Not for Resale, 10/14/2019 19:27:51 MDT © ISO 2017 – All rights reserved
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 15394:2017(E)
+Foreword
+ISO (the International Organization for Standardization) is a worldwide federation of national standards
+bodies (ISO member bodies). The work of preparing International Standards is normally carried out
+through ISO technical committees. Each member body interested in a subject for which a technical
+committee has been established has the right to be represented on that committee. International
+organizations, governmental and non-governmental, in liaison with ISO, also take part in the work.
+ISO collaborates closely with the International Electrotechnical Commission (IEC) on all matters of
+electrotechnical standardization.
+The procedures used to develop this document and those intended for its further maintenance are
+described in the ISO/IEC Directives, Part 1. In particular, the different approval criteria needed for the
+different types of ISO documents should be noted. This document was drafted in accordance with the
+editorial rules of the ISO/IEC Directives, Part 2 (see www.iso.org/directives).
+Attention is drawn to the possibility that some of the elements of this document may be the subject of
+patent rights. ISO shall not be held responsible for identifying any or all such patent rights. Details of
+any patent rights identified during the development of the document will be in the Introduction and/or
+on the ISO list of patent declarations received (see www.iso.org/patents).
+Any trade name used in this document is information given for the convenience of users and does not
+constitute an endorsement.
+For an explanation on the voluntary nature of standards, the meaning of ISO specific terms and
+expressions related to conformity assessment, as well as information about ISO's adherence to the
+World Trade Organization (WTO) principles in the Technical Barriers to Trade (TBT), see the following
+URL: www.iso.org/iso/foreword.html. Packaging
+This document was prepared by Technical Committee ISO/TC 122, .
+This third edition cancels and replaces the second edition (ISO 15394:2009), which has been technically
+revised.
+The main changes compared to the previous edition are as follows:
+— 5.4 has been restructured;
+— 5.5 has been added;
+— additional information on label design has been added in 7.1;
+— a new Figure E.7 has been added and succeeding figures have been renumbered accordingly;
+— E.3 has been added;
+— Figures E.11, E.12, and E.13 have been added;
+— Tables E.1 and E.2 have been added.
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:27:51 MDT v
+ISO 15394:2017(E)
+Introduction
+The use of electronic data interchange (EDI) in association with the physical transport and handling of
+packages and when traceability is appropriate, such as that described in ISO 9000, requires a clear and
+unique identifier linking the electronic data and the transport unit.
+Bar code-marked transport labels are in widespread use in global industries. Several different
+standards exist, each designed to meet the requirements of the specific industry sector. For effective
+and economic use within and between industry sectors, one common multi-industry standard is a
+necessity.
+A bar code-marked transport label is designed to facilitate the automation of shipping and handling
+of administrative operations. The bar code information on the transport label may be used as a key to
+access the appropriate database that contains detailed information about the transport unit, including
+information transmitted using EDI. In addition, a transport label may contain other information as
+agreed between the trading partners.
+Two-dimensional symbols may be included to assist in moving large amounts of shipping label or EDI
+data from sender to recipient and to assist the transportation carrier automated sortation and tracking
+systems.
+This document incorporates the technology, data structure and conformance standards of
+ISO/IEC JTC 1/SC 31 with the user requirements for shipping labels into a single application standard.
+While this document provides an international shipping label standard, ISO 22742 provides guidance
+for product packaging. This document and ISO 22742 are complementary.
+On the other hand, ISO 17365 covers the use of RF tags on shipping/transport units and was prepared
+by ISO/TC 122.
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reprodu v ctio i n or networking permitted without license from IHS Not for Resale, 10/14/2019 19:27:51 MDT © ISO 2017 – All rights reserved
+INTERNATIONAL STANDARD ISO 15394:2017(E)
+Packaging — Bar code and two-dimensional symbols for
+shipping, transport and receiving labels
+1 Scope
+This document:
+— specifies the minimum requirements for the design of labels containing linear bar code and two-
+dimensional symbols on transport units to convey data between trading partners;
+— provides for traceability of transported units using a unique transport unit identifier (licence plate);
+— provides guidance on the formatting on the label of data presented in linear bar code, two-
+dimensional symbol or human-readable form;
+— provides specific recommendations regarding the choice of bar code symbologies, and specifies
+quality requirements;
+— provides recommendations as to label placement, size and the inclusion of free text and any
+appropriate graphics;
+— provides guidance on the selection of the label material.
+This document is not applicable to the direct printing on to kraft coloured corrugated surfaces.
+The Fibre Box Handbook
+NOTE Guidance on the direct printing of bar code symbols on to kraft coloured corrugated surfaces are
+[10]
+provided in references such as .
+2 Normative references
+The following documents are referred to in the text in such a way that some or all of their content
+constitutes requirements of this document. For dated references, only the edition cited applies. For
+undated referenIcnefso, rtmhea tliaotne stte ecdhnitoiolong oyf —th eA ruetfoemreanticce did denotciufimcaetniot n( inancldu ddiantga acnayp taumree ntedcmhneniqtus)e sa p—pl iBeasr.
+code symbol print quality test specification — Two-dimensional symbols
+ISO/IEC 15415,
+Automatic identification and data capture techniques — Bar code print quality test
+specification — Linear symbols
+ISO/IEC 15416,
+Information technology — Automatic identification and data capture techniques — Code
+128 bar code symbology specification
+ISO/IEC 15417,
+Information technology — Automatic identification and data capture techniques — Syntax
+for high-capacity ADC media
+ISO/IEC 15434,
+Information technology — Automatic identification and data capture techniques —
+PDF417 bar code symbology specification
+ISO/IEC 15438:2015,
+Information technology — Automatic identification and data capture techniques —
+Unique identification— Part 1: Individual transport units
+ISO/IEC 15459-1,
+Information technology — Automatic identification and data capture techniques —
+Unique identification— Part 2: Registration procedures
+ISO/IEC 15459-2,
+Information technology — International symbology specification — MaxiCode
+ISO/IEC 16023:2000,
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:27:51 MDT
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 15394:2017(E)
+Information technology — Automatic identification and data capture techniques — Code
+39 bar code symbology specification
+ISO/IEC 16388,
+Information technology — Automatic identification and data capture techniques — QR
+Code bar code symbology specification
+ISO/IEC 18004,
+Information technology — Automatic identification and data capture (AIDC) techniques —
+Harmonized vocabulary
+ISO/IEC 19762,
+Supply chain applications of RFID — Transport units
+ISO 17365, Packaging — Vocabulary
+ISO 21067, Data Identifier and Application Identifier Standard
+ANSI MH10.8.2,
+GS1 General Specifications.
+3 Terms and definitions
+For the purposes of this document, the terms and definitions given in ISO/IEC 19762 and ISO 21067 apply.
+ISO and IEC maintain terminological databases for use in standardization at the following addresses:
+— ISO Online browsing platform: available at https://www.iso.org/obp
+— IEC Electropedia: available at http://www.electropedia.org/
+4 Concepts
+
+### 4.1 Principles
+
+The purpose of a bar code label is to facilitate the automatic exchange of data among all members
+within a channel of distribution, i.e., supplier, carrier, purchaser and other intermediaries. The amount
+of data, in linear bar code, two-dimensional symbols and in human-readable form, is dependent on the
+requirements of the trading partners. Where a bar code label is used in conjunction with electronic
+databases and/or electronic data interchange (EDI) systems, the amount of data may be significantly
+reduced and may consist of only one piece of data, the unique identifier for the transport unit. If
+radio frequency identification (RFID)-enabled labels or tags are used in conjunction with labels in
+conformance with this document, ISO 17365 shall be used for RFID usage with transport units. Human
+and optically readable data for the representation of RFID applications should be in accordance with
+ISO/IEC/TR 24729-1.
+Trading partners have different information requirements. Some information may be common to two or
+more trading partners, while other information may be specific to a single trading partner. Information
+for various trading partners becomes available at different times, for instance:
+— product-specific information at the point of manufacture or packaging;
+— order processing information at the time of processing the order;
+— transport information at the time of shipment.
+Trading partners may find it necessary to include significant data elements dealing with the above that
+may be presented both in linear bar code and two-dimensional symbols (see Annexes A and B) and
+human-readable form.
+This document shall be used in conjunction with application guidelines defining the parameters chosen
+by the trading partners concerned. Annex D gives guidance in the definition of these parameters.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:27:51 MDT © ISO 2017 – All rights reserved
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 15394:2017(E)
+
+### 4.2 Transport package, unit load and transport unit
+
+#### 4.2.1 Transport package
+
+For the purposes of this document, a transport package is considered to be a package intended for the
+transportation and handling of one or more articles, smaller packages or bulk material.
+
+#### 4.2.2 Unit load
+
+For the purposes of this document, a unit load is considered to be one or more transport packages or
+other items held together by means such as pallet, slip sheet, strapping, interlocking, glue, shrink wrap
+or net wrap, making them suitable for transport, stacking and storage as a unit.
+
+#### 4.2.3 Transport unit
+
+Both unit loads and transport packages are referred to as transport units in this document.
+
+### 4.3 Unique transport unit identifier
+
+One unique transport unit identifier shall be assigned and applied to each transport unit prior to
+shipment. The unique transport unit identifier shall be associated with the highest level of packaging
+intended to be conveyed as a single physical entity by the shipper (e.g., a transport package within
+an unbreakable unit load does not require a unique transport unit identifier). This is a common
+requirement for all label formats specified by this document. The identifier or “licence plate” is the key,
+providing access to information stored in computer files and which may be transmitted electronically.
+The identifier may be used by all of the trading partners to retrieve information about the transport
+unit itself or about the status of the physical movement of the transport unit along the supply chain. It
+enables systems to track and trace individual transport units.
+
+### 4.4 Label formats
+
+#### 4.4.1 Base shipping/transport/receiving label
+
+The base label defined by this document includes the minimum set of data that fulfils the requirements
+of all trading partners in a supply chain when data is exchanged electronically between the parties
+involved.
+A unique transport unit identifier shall be, and a “Ship to” name and address should be, included on the
+base label.
+In addition to the unique transport unit identifier (“licence plate”) and the “Ship to” name and address
+(for shipment delivery), the following information should be included on the base label:
+— “Ship from” name and address (to be able to return the shipment in the event that delivery is not
+possible);
+— key to carrier’s database (if the licence plate is not this data element);
+— key to customer’s database (if the licence plate is not this data element).
+
+#### 4.4.2 Extended shipping/transport/receiving label
+
+The extended label is used when the data available from the base label does not satisfy the requirements
+of all trading partners. In practice, fully automated communication channels which make it possible
+to rely exclusively on electronic files for retrieving information on the movements of the transport
+units are not always available. For this reason, there is a need to indicate relevant information on the
+transport units themselves, in addition to their identification.
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:27:51 MDT
+ISO 15394:2017(E)
+In order to facilitate the processing and interpretation by trading partners, information provided in the
+extended label is organized in three segments:
+— carrier segment: in addition to the key to the carrier’s database, this segment may contain additional
+data, such as shipment identification and delivery instructions;
+— customer segment: in addition to the key to the customer’s database, this segment may contain
+additional data such as the customer part number;
+— supplier segment: additional data may be generated by the supplier, such as product identification,
+batch number, dimensions.
+5 Data content
+
+### 5.1 Data representation
+
+#### 5.1.1 Data in linear bar code symbols
+
+Such data shall be represented in one of the three permissible combinations of data and bar code
+symbology (also see Annex A):
+a) GS1 Application Identifiers (AIs) in accordance with ISO/IEC 15418 shall only be used in conjunction
+with GS1-128 (being a subset of Code 128 compliant with ISO/IEC 15417);
+b) ASC MH10 Data Identifiers (DIs) in accordance with ISO/IEC 15418 shall be used in conjunction
+with Code 39 symbols compliant with ISO/IEC 16388;
+c) ASC MH10 Data Identifiers (DIs) in accordance with ISO/IEC 15418 shall be used in conjunction
+with Code 128 symbols compliant with ISO/IEC 15417.
+Refer to Annex D for information on the use of the options and the issues for users encountering them.
+
+#### 5.1.2 Data in two-dimensional (2D) symbols
+
+Information may also be provided in two-dimensional symbols as mutually agreed upon between
+trading partners (see Annex B). Data syntax in two-dimensional symbols shall be in accordance with
+ISO/IEC 15434.
+
+#### 5.1.3 Data in human-readable form
+
+The human-readable interpretation of information presented in linear bar code form should be
+provided. Some information may be presented in human-readable form only (see 6.3).
+
+### 5.2 Data elements
+
+#### 5.2.1 Unique transport unit identifier
+
+The unique transport unit identifier assigned by the labeller shall be encoded in a linear bar code
+symbol, preceded by the appropriate GS1 Application Identifier or ANSI MH10.8.2 Data Identifier.
+The structure of the unique transport unit identifier is defined in ISO/IEC 15459-1. The unique transport
+unit identifier
+a) starts with the issuing agency code (IAC), assigned to the issuing agency by the registration
+authority,
+b) conforms to a format specified by the issuing agency,
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:27:51 MDT © ISO 2017 – All rights reserved
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 15394:2017(E)
+c) is unique in the sense that no issuer re-issues a number until a sufficient period of time has passed
+that the first number has ceased to be of significance to any user of this document,
+d) contains only numeric and upper case alphabetic characters (not including lower case characters or
+punctuation marks),
+e) does not contain more than 20 characters, including the ANSI MH10.8.2 Data Identifier or GS1
+Application Identifier, and
+f) does not contain more characters than specified in Table 1.
+The unique transport unit identifier shall be assigned to each individual transport unit.
+The unique transport unit identifier shall be either
+— the serial shipping container code (SSCC) that uses AI “00”, represented in GS1-128, or
+— the unique transport unit identifier using the ANSI MH10.8.2 Category 10 Data Identifiers for Licence
+Plates (J-999J) represented in either Code 39 or Code 128 symbologies.
+
+#### 5.2.2 Ship to
+
+The “Ship to” data element refers to the address of the party to which transport units are to be delivered.
+When used, it shall be represented in a maximum of five lines of human-readable characters comprised
+of no more than 35 alphanumeric (an..35) characters each. It may also be represented by a number
+identifying the party in human-readable or in bar code format.
+
+#### 5.2.3 Ship from
+
+The “Ship from” data element refers to the address of the party to which transport units are to
+be returned, in case the shipment was unable to be delivered. When used, it shall be represented in
+a maximum of five lines of human-readable characters comprised of no more than 35 alphanumeric
+(an1...35) characters each. It may also be represented by a number identifying the party in human-
+readable or in bar code format. The “Ship from” information shall be located in the left, upper-most area
+or building block of the label (see Annex C for building block information).
+
+#### 5.2.4 Key to carrier's database
+
+The key to the carrier's database should be mutually agreed upon with the carrier. If the unique
+transport unit identifier described in 5.2.1 does not provide the key to the carrier’s database, one or
+more of the following keys may be used:
+— the carrier tracking number that includes class of service;
+— the carrier code to identify the shipment;
+— the carrier code to identify the transport unit.
+This data element may be included within a two-dimensional symbol, a linear bar code symbol or both.
+
+#### 5.2.5 Key to customer's database
+
+The key to the customer’s database should be mutually agreed upon with the customer. If the unique
+transport unit identifier described in 5.2.1 does not provide the key to the customer's database, one or
+more of the following keys may be used:
+— customer’s purchase order number;
+— part number;
+— KANBAN/pull signal number;
+--``,,,,`,,,,,`,`,`,,,,,```,`- `-`,,`,,`,`,,`--- 5
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:27:51 MDT
+ISO 15394:2017(E)
+— shipment ID.
+This data element may be included within a two-dimensional symbol, a linear bar code symbol or both.
+
+#### 5.2.6 Other data elements
+
+As much additional data as required may be included in the extended label to fulfil the needs of the
+supplier, carrier and customer.
+
+### 5.3 Concatenating data fields in linear bar code symbols
+
+5.3.1 Using GS1 Application Identifiers (AI)
+When several Application Identifiers (AIs) and their data are concatenated into one GS1-128 symbol,
+each variable length field shall be followed by the FNC1 (Function 1) character, unless it is the last
+G
+field encoded in the symbol. The FNC1 character used for this purpose assumes a value of S when
+transmitted by the decoder.
+5.3.2 Using ANSI MH10.8.2 Data Identifiers (DI)
+When several DIs and their data are concatenated into one Code 39 or Code 128 symbol, each field shall
+be followed by a plus symbol, “+”, unless it is the last field encoded in the symbol.
+Care should be exercised when concatenating data fields in linear symbols since some ANSI MH10.8.2
+Data Identifiers prescribe the use of the “+” as an internal data structure syntax. Examples include the
+ANSI MH10.8.2 Data Identifiers “14K”, “19S”, and “3W”.
+
+### 5.4 Structured data files
+
+#### 5.4.1 General
+
+Structured data files, such as documentation supporting the handling of the transport units or
+complete EDI messages, e.g., delivery note, quality certificate and insurance certificate, may be
+included. High-capacity two-dimensional symbols shall be used to represent this data. Structured data
+files shall comply with the syntax described in ISO/IEC 15434, or when appropriate, the GS1 General
+Specifications.
+
+#### 5.4.2 Shipping and receiving data
+
+It is possible to combine all the data from the linear bar codes on the multi-industry transport label
+into one single two-dimensional symbol to facilitate more efficient data capture. This symbol may also
+incorporate additional data not represented in the linear bar codes on the transport label (e.g., data
+represented in text).
+The structure and syntax of the encoded message shall conform to ISO/IEC 15434.
+
+#### 5.4.3 Supporting documentation application
+
+The transport of goods often requires supporting documentation to be provided, such as a bill of lading,
+manifest, packing slip, customs data or information that might be transmitted in EDI or other message
+formats. Supporting documentation incorporated as an item-attendant two-dimensional symbol
+on the transport label facilitates more efficient processing of a transport unit because the relevant
+“documentation” can be scanned.
+The structure and syntax of the encoded message shall conform to ISO/IEC 15434.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:27:51 MDT © ISO 2017 – All rights reserved
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 15394:2017(E)
+
+#### 5.4.4 Carrier sorting and tracking applications
+
+Sortation data to be encoded include any data that are required to route transport units between
+multiple points, locate transport units and other supporting data which is relevant to sorting and/or
+tracking for internal and external processing.
+The structure and syntax of the encoded message shall conform to ISO/IEC 15434.
+
+### 5.5 Data area identification
+
+In practice, fully automated communication channels that make it possible to rely exclusively on
+electronic files for retrieving information on the movements of the transport units are not always
+available. For this reason, in addition to their identification, there is a need to indicate relevant
+information on the transport labels themselves.
+The various fields can be placed in relevant data areas.
+These data areas, whether they contain bar code or human-readable information, shall be identified
+with the corresponding data area title. The data area title may include the relevant application identifier
+or data identifier.
+EXAMPLES:
+CUST:
+CUST PART NO:
+(400) CUST P O:
+GLN:
+(J) LICENCE PLATE:
+SHIP FROM:
+SHIP TO:
+SSCC:
+(12K) SCAC and PRO #:
+(Q) QTY:
+6 Data carriers
+
+### 6.1 Linear bar code symbols
+
+Guidelines for using linear bar code symbols are found in Annex A. The linear bar code symbologies
+shall be one of the following:
+— “Code 39” in accordance with ISO/IEC 16388;
+— “Code 128” in accordance with ISO/IEC 15417.
+NOTE “GS1-128” is a subset of “Code 128”.
+
+### 6.2 Two-dimensional symbols
+
+If more data than can be accommodated with a linear bar code is required to be encoded on the label
+in optically readable symbol(s), 2D symbols may be used. This document specifies the use of MaxiCode,
+PDF417 and QR Code 2D symbologies. This document recommends the use of MaxiCode, PDF417 or QR
+Code for carrier sortation and tracking applications and PDF417 or QR Code for shipping and receiving
+applications and for supporting documentation applications. The specific two-dimensional symbol to
+be used shall be mutually agreed upon between trading partners.
+For further information and guidance in the use of 2D symbols, see Annex B.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:27:51 MDT
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 15394:2017(E)
+
+### 6.3 Human-readable information
+
+#### 6.3.1 Human-readable interpretation
+
+In order to provide a fall-back key entry and diagnostic, a human-readable interpretation of each linear
+bar code symbol shall be provided adjacent to the bar code. Such human-readable interpretation shall
+represent the encoded data. See Figure E.9.
+
+#### 6.3.2 Human translation
+
+In addition to the human-readable interpretation, human translation of linear bar code information
+may be provided in a separate section of the label. See Figure E.9.
+
+#### 6.3.3 Data area titles
+
+Data areas comprise information in bar code or human-readable form. Data areas shall be identified
+with the corresponding data area title in human-readable text, which may be prefixed, if relevant, by
+the appropriate AI or DI (see Figures E.1 and E.2). A data area title is not required when a data area
+contains
+— a single linear bar code symbol concatenating multiple data elements, or
+— multiple linear bar code symbols that are intended to be scanned in a single data capture operation, or
+— two-dimensional symbols.
+
+#### 6.3.4 Free text and data
+
+Human-readable information that is not a translation of the bar code information may be provided
+according to the requirements of the trading partners.
+
+#### 6.3.5 Choice of language
+
+##### 6.3.5.1 Applicability
+
+Choice of language is applicable to human translation, data area titles and free text.
+
+##### 6.3.5.2 Domestic shipments
+
+Human-readable information within a single country should be in the national language of that country. 6.3.5.3 Export shipments
+Shipments for export should have human-readable information in the language(s) mutually agreed
+upon between trading partners.
+
+##### 6.3.5.4 Multiple languages
+
+Regulations may require multiple languages on the shipping label.
+7 Label design
+
+### 7.1 General considerations
+
+The linear bar code representing the unique transport unit identifier (“licence plate”), a mandatory
+element for this document, shall be printed in the lowest area of the label.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:27:51 MDT © ISO 2017 – All rights reserved
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 15394:2017(E)
+Label segments are logical groupings of information based on the data needs of the trading partners
+within the distribution channel. Three segments are defined: carrier segment, customer segment and
+supplier segment. Label segments may or may not be printed at the same time on a single physical label.
+When the size and structure of the transport unit permits, segments shall be stacked vertically, from
+top to bottom, in the following order:
+— carrier segment;
+— customer segment;
+— supplier segment.
+The design of the label is the responsibility of the industry or trading partners concerned and should
+take account of the following when defining the label segments:
+— the size and number of linear bar codes and two-dimensional symbols;
+— the size and number of human-readable items of information;
+— free text;
+— graphics, e.g., safety, hazard, quality signs;
+— logos, e.g., supplier logo.
+Examples of labels are provided in Annex E. The labels shown in Annex E are for illustration only and do
+not represent all of the possible choices of label designs. Separate segments of the label may be applied
+at different stages to form the complete label.
+
+### 7.2 Layout
+
+#### 7.2.1 Base label layout
+
+In addition to the unique transport unit identifier, a typical base label may include the following
+data areas:
+— “Ship from” address, human-readable;
+— “Ship to” address, human-readable;
+— “Ship to” postal code or location number, linear bar code;
+— carrier shipment tracking number (if required), linear bar code;
+— customer purchase order number (if required), linear bar code.
+Only linear bar codes shall be used to represent data in a machine-readable form on a base label.
+The “Ship to” address shall be located below or to the right of the “Ship from” address. “Ship from”
+characters shall be noticeably smaller than the “Ship to” characters and the fields shall be easily
+distinguishable. All international shipments shall conform to this requirement.
+For shipments within a single country and where that country has a national standard recommending
+an alternative label layout, e.g., where “Ship from” address and “Ship to” address are reversed, such
+alternative label layout may be used with the agreement of the trading partners.
+
+#### 7.2.2 Extended label layout
+
+The extended label comprises more information than the base label. In addition to the information
+contained in the base label, the extended label may include
+— linear bar codes representing other discrete data elements,
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`--- 9
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:27:51 MDT
+ISO 15394:2017(E)
+— linear bar codes representing concatenated data elements,
+— two-dimensional symbols,
+— human translation of linear bar code information,
+— human-readable-only information, and
+— graphics.
+
+#### 7.2.3 Other data
+
+This document does not supersede or replace any applicable safety or regulatory marking or labelling
+requirements. This document is to be applied in addition to any other mandated labelling requirements.
+Free areas or certain graphics, such as safety, hazard, quality signs or logos could be required.
+
+### 7.3 Label dimensions
+
+#### 7.3.1 General considerations
+
+The size of the label shall be consistent with the data requirements of all trading partners in the supply
+chain with the only constraint being the size of the transport unit.
+The label format described does not dictate a fixed size for the total label. The physical dimensions of
+the label shall be determined by the labeller. Considerations for label size selection may include the
+amount of data to be printed, the physical characteristics of the printing equipment used or the size of
+the transport unit. See Annex C for information on designing compliant labels using a building block
+approach.
+
+#### 7.3.2 Label height
+
+The height of the label shall be determined by the labeller.
+
+#### 7.3.3 Label width
+
+x
+The width of the labelx shall be determined by the labeller. Label wxidth is determined by the -dimension
+of the printed bar code symbol and the maximum bar code message length. Table 2 shows the
+correlation between -dimension and label width for selected -dimensions, using the data limits set
+forth in Table 1.
+Some existing industry xstandards have other data limits. If a trading partner needs a single Code 39 bar
+code data field that contains more characters than specified in Table 1, the labeller may choose to use a
+wider label stock or an -dimension at the lower limits of this document.
+
+#### 7.3.4 Data limits
+
+Limits on the number of characters which can be required of the labeller for a single bar code symbol
+are shown in Table 1.
+10 --``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`- --
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:27:51 MDT © ISO 2017 – All rights reserved
+ISO 15394:2017(E)
+Table 1 — Maximum character limits for linear symbols
+Symbology and format Character limits
+Code 128 (numeric) 50 digits (after a single-character DI)
+Code 128 (alphanumeric) 27
+GS1-128 (all numeric) 48
+GS1-128 (alphanumeric) 26
+Code 39 19
+NOTE 1 For GS1-128, the character count includes all characters between the Function 1 (FNC1)
+character and the symbology check character.
+NOTE 2 For Code 39, character count includes all characters between the start and stop characters.
+Table 2 — Recommended label widths for symbol, maximum characters and x-dimension
+Code 128 Code 128 GS1-128 GS1-128 GS1-128
+Code 39 Dimensions in millimetres
+all numeric alphanumeric SSCC all numeric alphanumeric
+x-dimension
+50 20
+19 27 48 26
+(single DI) exactly
+0,25 105 105 105 105 105
+0,33 148 148 148 Not 148 148
+0,38 148 148 148 recommended 148 148
+0,43 over 148 148 over 148 over 148 over 148
+0,50 105 over 148 over 148
+0,66 Not 148 over 148 over 148
+0,76 recommended 148 over 148 over 148
+0,81 over 148 over 148 over 148
+NOTE 1 This table is intended to provide guidance to the printer/applier of a label on the size of label stock needed to
+accommodate the maximum character limits as stated in Table 1.
+NOTE 2 This label width guidance is based on only two label sizes, 105 mm and 148 mm.
+NOTE 3 Included in the minimum label width calculations in this table are the following:
+x
+— symbology start and stop characters, 2,54 mm print registration and quiet zones of 6,4 mm or 10 times the bar
+code symbol -dimension, whichever is greater;
+x
+— for GS1-128 symbols, Function 1 character (FNC1) and symbology check character;
+— for Code 39 symbols, a 3:1 wide to narrow ratio and one -intercharacter gap;
+x
+— for Code 128 symbols, the symbology check character.
+x
+NOTE 4 GS1-128 SSCC bar code symbols have minimum -dimensions greater than 0,432 mm. In order to fit
+on a label size of 102 mm, this symbol should be printed at the smallest -dimension specified in the GS1 specifications.
+
+### 7.4 Text size
+
+#### 7.4.1 General considerations
+
+The height of the text characters is associated with the number of characters that can be required on a
+single line.
+Nine sizes may be specified for text. The exact character heights corresponding to the nine text sizes
+shall be chosen by the labeller based on the capabilities of the printing process.
+The characters shall be clearly legible.
+Table 3 shows the maximum number of text characters per line that can be required of a labeller.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:27:51 MDT
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 15394:2017(E)
+Table 3 — Character heights and character limits
+Approximate character
+Character limits for full-width label
+height
+a
+(number of characters)
+(mm)
+25,4 8
+12,7 18
+8,4 28
+6,4 34
+5,1 42
+4,3 48
+3,6 59
+3,2 68
+2,5 77
+a
+Calculations for the text character count limits are based on the following
+assumptions: a 102 mm wide label segment, clear distinction between the character
+sizes used, and fixed-width characters.
+
+#### 7.4.2 Specific text dimensions
+
+The specific heights of the text characters shall be as follows:
+— the data area titles shall be no smaller than 2,5 mm;
+— the “Ship from” address shall be no smaller than 2,5 mm and in any case shall be smaller than the
+“Ship to” address text;
+— the “Ship to” address shall be no smaller than 4,3 mm and in any case shall be larger than the “Ship
+from” address text;
+— the literal translation of the associated linear bar code symbol [also known as human-readable
+interpretation (HRI)] shall be no smaller than 2,5 mm;
+— the primary human-readable information (also known as human translation) shall be no smaller
+than 5,1 mm;
+— the secondary human-readable information (also known as text or descriptive information) shall be
+no smaller than 2,5 mm.
+
+### 7.5 Material
+
+Label material and the method of attaching the label to the transport unit shall be selected such as to
+ensure that the label
+— remains attached to the transport unit for the intended life of the label,
+— remains readable for the life of the label,
+— survives the environments for the life of the label, for example contamination, heat, light,
+moisture, and
+— meets disposability requirements.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:27:51 MDT © ISO 2017 – All rights reserved
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 15394:2017(E)
+8 Label placement
+
+### 8.1 General considerations
+
+Labels should be affixed at a suitable location where there is a minimum risk of damage. Labels should
+be placed on the side of the transport unit with the human-readable information parallel to the natural
+bottom of the transport unit. The edge of the label(s) should be a minimum of 32 mm from any transport
+unit edge.
+Transport units should carry at least one bar code label. Parcel carriers may require the placement of
+carrier information on the top of a transport unit, in addition to customer and supplier information
+which would continue to be placed in accordance with the preceding paragraph.
+8.2 Unit loads (pallets)
+The label shall be placed right of centre on a vertical face, allowing a minimum of 50 mm from either
+edge. The label should not be placed over a seam nor should sealing tape or bands be placed over the
+label in a manner that interferes with the scanning of the label. The bottom edge of the unique transport
+unit identifier symbol should be within the range of 400 mm to 800 mm from the bottom of the pallet. If
+the pallet is less than 500 mm in height, the label should be placed as high as possible on the pallet. See
+Figure 1.
+Dimensions in millimetres
+>50
+004≥
+05>
+008≤
+Key
+1 unique transport unit identifier
+
+*[Figure 1 — Pallet label location]*
+
+### 8.3 Transport packages
+
+For transport packages up to 1 m in height, the target placement for the unique transport unit identifier
+symbol is 32 mm from the natural bottom of the package. Transport packages greater than 1 m in
+height should follow the recommendations of 8.2.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:27:51 MDT
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 15394:2017(E)
+
+### 8.4 Other transport units
+
+Annex F provides labelling examples of various transport units. Label placement requirements should
+be developed in conjunction with specific application guidelines.
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:27:51 MDT © ISO 2017 – All rights reserved
+ISO 15394:2017(E)
+Annex A
+Guidelines for us(innogr lminaetiavre )b ar code symbols
+A.1 General considerations
+Open systems, such as those identified in this document, encourage the free movement of products
+between any supplier and customer. Organizations scanning the bar code label for shipping and
+receiving may be presented with symbols which do not conform to their specific requirements but
+are useful elsewhere in the supply chain. This annex addresses issues that are associated with this
+situation which can affect any organization, as well as issues that need to be considered in a planned
+migration between options.
+This annex describes the use of symbology identifiers as identified in ISO/IEC 15424. The symbology
+identifier is a prefix to the data transmitted by a decoder but is not encoded in the symbol.
+The available options are:
+a) Application Identifiers with GS1-128 symbology;
+b) ANSI MH10.8.2 Data Identifiers with Code 39 symbology;
+c) ANSI MH10.8.2 Data Identifiers with Code 128 symbology.
+Although it may be intended that only one of these combinations be in a system, it is important for
+all users to be aware that any of the other combinations can appear in a scanning system. Given this
+fact, organizations may choose to support a single option or support other options as well. These are
+discussed below.
+A.2 Systems where a single option is intended to be scanned
+For users selecting to operate in a single-option environment, there are three procedures to consider.
+— For single use of option a), users may be able to switch off all other symbologies in a decoder,
+including Code 128, as described in option c). If the decoder supports symbology identifiers, the
+host system shall validate the appropriate symbology identifier, specifically “]C1”, that signifies a
+GS1-128 symbol having a FNC1 character in the first position after the start code.
+— For single use of option b), users switch off all other symbologies in any decoder. If the decoder
+supports symbology identifiers, the host computer system shall validate the appropriate symbology
+identifier, specifically “]A0”.
+— For single use of option c), users will need to implement fully the symbology identifier capability.
+For decoders that do not support symbology identifiers, host computer systems will be unable to
+automatically distinguish between option a) and option c). By using the symbology identifier, the
+host computer can distinguish between the different options and filter out the unwanted options.
+The host computer shall validate the appropriate symbology identifier, specifically “]C0”.
+A.3 Systems where multiple options are intended to be scanned
+Users who choose to provide their systems with information scanned from labels using two or all of
+the options, shall fully implement symbology identifier capabilities. For decoders that do not support
+symbology identifie-r-``s,,,,, `,h,,,o,`,`s,`t,, ,,,c```o,`-m`-`,,p`,,u`,`t,,`e---r systems will be unable to automatically distinguish between
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:27:51 MDT
+ISO 15394:2017(E)
+option a), option b), and option c). By using the symbology identifier, the host applications can be coded
+to distinguish between the different options and filter out the unwanted options. The combination
+of the symbology identifier and the ANSI MH10.8.2 Data Identifier or GS1 Application Identifier will
+provide the user with reliable input.
+A.4 Symbology
+The linear bar code symbologies shall be one of the following:
+— Code 39 in accordance with ISO/IEC 16388;
+— Code 128 in accordance with ISO/IEC 15417.
+NOTE GS1-128 is a subset of Code 128.
+A.5 Symbol height
+The minimum bar height of a linear bar code symbol shall be 12,7 mm and should be at least 15 % of the
+length of the symbol including quiet zones.
+A.6 Narrow element dimension
+x- x-
+The minimum narrow element dimension ( dimension) shaxll- not be less than 0,25 mm. The dimension
+for Code 39 and Code 128 symbols should be in the range of 0,25 mm to 0,43 mm, as determined by the
+printing capabxi-lity of the supplier/printer of the label. The dimension for GS1-128 symbols should be
+in the range of 0,25 mm to 0,81 mm, as determined by the printing capability of the supplier/printer of
+the label. The dimension for GS1-128 SSCC symbols should be in the range of 0,50 mm to 0,81 mm, as
+determined by the printing capability of the supplier/printer of the label. x-
+In the case that fewer characters than specified in Table 1 are required, a larger dimension may be used,
+as long as the bar code print quality requirements specified in A.11 and label width recommendations
+of Table 2 are met. x-
+NOTE Symbols with the dimension at the lower end of this range, specifically 0,25 mm to 0,33 mm, may
+require special care in order to meet the quality requirements.
+A.7 Wide to narrow ratio for Code 39 symbols
+The wide to narrow ratio of elements of Code 39 symbols should be 3,0:1. The measured ratio shall be
+between 2,4:1 and 3,2:1.
+A.8 Quiet zones
+x-
+Lx-inear bar code symbols should be printed with leading and trailing quiet zones not less than 6,4 mm.
+Where the dimension is greater than 0,64 mm, the quiet zones shall not be less than 10 times the
+dimension. The label registration parameters of the printer being used should be taken into
+consideration in order to ensure the minimum quiet zones.
+A.9 Orientation
+Linear bar code symbols should be presented on transport units with the bars vertical (picket fence
+orientation) when marked on a flat or slightly curved surface. Subject to agreement between trading
+partners, bars may be presented horizontally (ladder orientation).
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:27:51 MDT © ISO 2017 – All rights reserved
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 15394:2017(E)
+Linear bar code symbols should be presented on transport units with the bars perpendicular to the
+longitudinal axis (ladder orientation) when marked on a tightly curved surface (tubes, rods and
+cylinders).
+A.10 Placement
+Linear bar code symbols should be placed to ensure that they do not interfere with each other when
+scanned.
+No more than two linear symbols should appear side by side on a label. If two linear symbols are placed
+side by side, the symbols should be placed so that they will not be in the same horizontal scan path to
+reduce the possibility of interference with successful bar code scanning.
+A.11 Linear bar code symbol print quality
+ISO/IEC 15416 shall be used to determine the print quality of the linear bar code. The grade is expressed
+in the format grade/aperture/wavelength. The minimum symbol grade shall be 1,5/10/660 which is:
+— an overall symbol grade greater than or equal to 1,5 (C) at point of production;
+— a measurement aperture equal to 0,250 mm diameter (reference number 10);
+— a light source wavelength equal to 660 nm ± 10 nm.
+It is important that the linear bar code be decodable throughout the system of use. Numerous
+environmental effects can lead to the degrading of the bar code symbol, substrate, adhesive, or laminate.
+These changes may affect one or more quality parameters of the label, whether they are optical or
+physical. The net effect of such changes can be to render the label unusable. It is therefore important to
+consider these effects when producing and applying bar code labels.
+Labellers should not be held responsible for damage to the label incurred by shipping or handling
+subsequent to leaving the supplier’s facilities. Every effort should be made by the labeller to reasonably
+protect and place the label so it is not damaged in shipment and handling.
+It may not be possible to meet the print quality requirements of this document when printing directly
+onto kraft coloured corrugated surfaces. Users considering the printing of bar code symbols directly
+onto kraft coloured corrugated surfaces should consider the scanning capabilities of their entire
+trading channel.
+Unattended scanning may require a higher print quality grade than identified above. Consequently,
+those implementing this document for unattended scanning applications should discuss print quality
+requirements with trading partners.
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:27:51 MDT
+ISO 15394:2017(E)
+Annex B
+Guidelines( fnoorr musaitnivge 2) D symbols
+B.1 General
+This annex defines the rules for using 2D symbols. These rules apply to the following three applications:
+— shipping and receiving (B.2);
+— supporting documentation (B.3);
+— carrier sortation and tracking (B.4).
+B.2 Shipping and receiving applications
+B.2.1 General
+The shipping and receiving data facilitates staging, transportation and receipt of goods and materials.
+This data shall be printed on the label as defined by this document. This symbol is intended to be
+scanned in the same environment as other symbols on the label. The structure and syntax of the PDF417
+or QR Code symbols for shipping and receiving applications shall conform to the structure and syntax
+dBe.2sc.2ri beSdy min bISoOl/oIgEyC r1e5c4o3m4.mendation
+This document recommends the use of the PDF417 symbology (see ISO/IEC 15438) or QR Code
+(see Annex I and ISO/IEC 18004) for shipping and receiving applications.
+For the shipping and receiving applications, the Macro PDF417 symbol which is defined in the
+ISO/IEC 15438, shall not be used.
+For the shipping and receiving applications, the Micro PDF417 symbol, which is defined in ISO/IEC 24728,
+shall not be used.
+FBo.2r .t3h e sPhDipFp4in1g7 a fnodr rsehceipivpining ga papnldic arteiocnesiv, QinRg C aopdep lMicoadteilo 2n sshould be used.
+B.2.3.1 PDF417 error correction level
+For shipping and receiving applications using PDF417, the minimum symbol error correction level shall
+be level 5.
+B.2.3.2 PDF417 narrow element dimension
+x-
+For shipping and receiving applications, the narrow element dimension ( dimension) range should be
+from 0,254 mm to 0,432 mm as determined by the printing capability of the supplier/printer of the
+label. Symbols with narrow elements at the lower end of this range, i.e., 0,254 mm to 0,330 mm may
+require special care to meet the print quality requirements of B.2.3.6. Conformance to the print quality
+requirements shall be determined according to B.2.3.6.
+18 --``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`, `,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:27:51 MDT © ISO 2017 – All rights reserved
+ISO 15394:2017(E)
+B.2.3.3 PDF417 row height
+x-
+The PDF417 symbol shall have a minimum row height (height of the symbol element) of three (3)
+times the width of the narrow element ( dimension). Increasing the row height may improve scanning
+performance but will reduce the number of characters that can be encoded in a given space.
+B.2.3.4 PDF417 quiet zone
+For shipping and receiving applications, the 2D symbol shall have a minimum quiet zone of 1 mm above,
+below, to the left and to the right. The quiet zone is included within the calculation of the size of the symbol.
+B.2.3.5 PDF417 symbol size
+For shipping and receiving applications using PDF417 symbols shall not exceed a height of 61 mm.
+Table B.2 to Table B.8 are provided as guidance in planning for the incorporation of PDF417 symbols
+into the design of the labels described in this document. Actual achieved size of a PDF417 symbol may
+vary, based on data content and printing process. The sizes listed should accommodate most situations.
+A PDF417 symbol for shipping and receiving applications should be printed with no more than 12 data
+columns in width (see Figure B.2). This will ensure readability by the broadest range of reading devices.
+In no case shall the number of data columns excxe-ed 18 columns. The use of 13 to 18 columns is allowed
+with the agreement of trading partners. Table B.1 shows the width of PDF417 symbols (including
+quiet zones) with 12 data columns at different dimensions. For further information on data columns,
+symbol widths, character counts and print densities, see B.2.4.8.2 and B.2.4.8.3.
+Table B.1 — Maximum PDF417 symbol width using 12 data columns
+Maximum width
+x-dimension
+(including quiet zones)
+0,25 mm 71,37 mm
+0,33 mm 92,20 mm
+0,38 mm 106,17 mm
+0,43 mm 119,89 mm
+B.2.3.6 PDF417 print quality
+ISO/IEC 15438 shall be used with reference to ISO/IEC 15415 to determine the print quality of the
+PDF417 symbology. The grade is expressed in the format grade/aperture/wavelength. For shipping and
+receiving applications, the minimum symbol grade should be 2,5/10/660 which is:
+— an overall symbol grade greater than or equal to 2,5 (B) at point of production;
+— a measurement aperture equal to 0,250 mm diameter (reference number 10);
+— a light source wavelength equal to 660 nm ± 10 nm.
+The above symbol quality and measurement parameters ensure scannability over a broad range of
+scanning environments. The print quality requirement at the point of production should be higher than
+the requirement at the point of use.
+It may not be possible to meet the print quality requirements of this document when printing directly
+onto kraft coloured corrugated surfaces. Users considering the printing of 2D symbols directly onto
+kraft coloured corrugated surfaces should consider the scanning capabilities of their entire trading
+channel.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:27:51 MDT
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 15394:2017(E)
+B.2.3.7 PDF417 orientation and placement
+B.2.3.7.1 PDF417 symbol orientation
+The bars of the symbol shall be perpendicular to the natural bottom of the label (see Figure B.1).
+B.2.3.7.2 PDF417 label placement
+Labels shallS HbIPe placTEeXTd TE XoT TnEX Tp TEaXTc TkEXTa TgEXTe TsEX Ta TEsXT specified in Clause 8.
+FROM:: TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
+TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
+SHIP TEXT TEXT TEXT TEXT TEXT
+TO: TEXT TEXT TEXT TEXT TEXT
+TEXT TEXT TEXT TEXT TEXT
+TEXT TEXT TEXT TEXT TEXT
+a
+CUST
+Key
+a
+Points to natural bottom of container.
+NOTE This figure is not to scale.
+Figure B.1 — PDF417 symbol orientation on label
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:27:51 MDT © ISO 2017 – All rights reserved
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 15394:2017(E)
+B.2.3.8 Printing PDF417 symbols
+B.2.3.8.1 General
+When printing PDF417 symbols compliant with this document, several factors should be considered. All
+of these factors shall be used to determine what PDF417 symbol options to use. These considerations
+include:
+— data requirements;
+— scanner technologies;
+— label area requirements;
+— printer technologies.
+Developers and users of PDF417 symbol printing software should follow the guidelines provided in
+this document when determining what PDF417 symbol options should be used to ensure that valid
+symbols are printed. Since no one solution is optimal, trade-offs are sometimes made. In addition, these
+guidelines ensure that a user's scanning and printing requirements have been considered. The following
+considerations should be used with following Tables B.3 to B.8 to determine approximate symbol size.
+B.2.3.8.2 Plan for the maximum amount of data
+Determine the fields that will be required in the message and the maximum anticipated length of each
+field. Add the additional characters needed for formatting.
+B.2.3.8.3 Plan for scanning equipment likely to be used
+When choosing a space in which to encode a PDF417 symbol, it is important to consider the capabilities
+of the scanning equipment likely to be used. For example, if the equipment has a maximum field of view
+of 76 mm it would be impossible to read a symbol that is 100 mm wide, but the same data could fit in a
+taller configuration that is only 66 mm wide.
+B.2.3.8.4 Plan for the maximum x-dimension(s) and data columns
+x-
+When planning for the space required in which a PDF417 symbol will be placed on the label, the designer
+should plan for the largest dimension and the number of data columns that might be used in printing.
+These two factors essentially determine the width of the symbol.x-
+Since the suppxli-er/printer of the label ultimately determines the dimension at which the symbol will
+be printed, it is possible that a PDF417 symbxo-l printed for a shipping and receiving application could be
+printed at any dimension from 0,254 mm to 0,432 mm. The capability of the printing equipment being
+used will determine the possible choices of dimension.
+This document recommends that PDF417 symbols for shipping and receiving applications be printed
+with no more than 12 xd-ata columns (see Figure B.2), unless otherwise agreed by all trading partners
+involved. This limitation, combined with the amount of space allocated for the symbol on the label, may
+influence the choice of dimension for printing the symbol.
+The encoded data is shown below, contained within the data columns.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:27:51 MDT
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 15394:2017(E)
+1 2 3
+4 5
+Key
+1 left row indicator column
+2 data columns
+3 right row indicator column
+4 start pattern
+5 stop pattern
+Figure B.2 — Anatomy of a PDF417 symbol
+B.2.3.8.5 Determine the appropriate label size
+B.2.3.8.5.1 General
+Tables B.3 to B.8 show the approximate number of characters that can be accommodated by a PDF417
+symbol. Within each table, use the height and approximate width combinations to determine the actual
+width, number of data columns, and the estimated number of characters that can be accommodated. The
+sizes are an approximation; actual sizes may vary based on factors including the compaction algorithm
+and the nature of the data to be encoded. Error correction levels are defined as Error Correction Level
+5. For all tables, the approximate width in the top row of each table includes symbol quiet zones.
+B.2.3.8.5.2 Symbols for labels having a width of at least 102 mm
+x-
+Tables B.3 to B.6 illustrate at given dimensions, at various symbol widths, the number of data columns
+and the number of alphanumeric characters which can be encoded in PDF417 symbols where the
+symbols are assumed to be either 25 mm or 50 mm high.
+Table B.3 — PDF417 symbols
+x-dimension = 0,25 mm
+Approximate alphanumeric capacity
+Width 39 mm Width 52 mm Width 65 mm Width 78 mm Width 96 mm
+Actual Data Actual Data Actual Data Actual Data Actual Data
+Symbo l height
+mm columns mm columns mm columns mm columns mm columns
+25 mm
+36,8 4 49,8 7 62,7 10 75,7 13 93,0 17
+50 mm
+56 characters 185 characters 315 characters 445 characters 617 characters
+293 characters 601 characters 909 characters 1 217 characters 1 535 characters
+NOTE The shaded columns are not recommended for use by this document.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:27:51 MDT © ISO 2017 – All rights reserved
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 15394:2017(E)
+Table B.4 — PDF417 symbols
+x-dimension = 0,33 mm
+Approximate alphanumeric capacity
+Width 39 mm Width 52 mm Width 65 mm Width 78 mm Width 96 mm
+Data Data Data Data Data
+Actual Actual Actual Actual Actual
+col- col- col- col- col-
+Symbol height mm mm mm mm mm
+umns umns umns umns umns
+25 mm
+36,1 2 47,2 4 55,8 6 75,4 9 92,2 12
+50 mm
+N/A 13 characters 77 characters 175 characters 272 characters
+41 characters 200 characters 358 characters 596 characters 833 characters
+NOTE Where N/A (not applicable) appears, this means that for the associated label width and error correction level 5, no
+data can be encoded.
+Table B.5 — PDF417 symbols
+x-dimension = 0,38 mm
+Approximate alphanumeric capacity
+Width 39 mm Width 52 mm Width 65 mm Width 78 mm Width 96 mm
+Data Data Data Data Data
+Actual Actual Actual Actual Actual
+col- col- col- col- col-
+Symbol height mm mm mm mm mm
+umns umns umns umns umns
+25 mm
+34,8 1 47,8 3 60,7 5 73,7 7 93,2 10
+50 mm
+N/A N/A 27 characters 85 characters 171 characters
+N/A 88 characters 225 characters 362 characters 567 characters
+NOTE Where N/A (not applicable) appears, this means that for the associated label width and error correction level 5, no
+data can be encoded.
+Table B.6 — PDF417 symbols
+x-dimension = 0,43 mm
+Approximate alphanumeric capacity
+Width 39 mm Width 52 mm Width 65 mm Width 78 mm Width 96 mm
+Data Data Data Data Data
+Actual Actual Actual Actual Actual
+col- col- col- col- col-
+Symbol height mm mm mm mm mm
+umns umns umns umns umns
+25 mm
+31,8 0 46,5 2 61,2 4 75,9 6 90,7 8
+50 mm
+N/A N/A N/A 34 characters 85 characters
+N/A N/A 121 characters 239 characters 358 characters
+NOTE Where N/A (not applicable) appears, this means that for the associated label width and error correction level 5, no
+data can be encoded.
+B.2.3.8.5.3 Symbols for labels having a width of greater 102 mm
+x-
+Tables B.7 and B.8 illustrate at given dimensions, at various symbol widths, the number of data
+columns and the number of alphanumeric characters which can be encoded in PDF417 symbols where
+the symbols are assumed to be either 25 mm or 50 mm high. Tables B.7 and B.8 are not recommended
+by this document.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:27:51 MDT
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 15394:2017(E)
+Table B.7 — PDF417 symbols
+x-dimension = 0,38 mm
+Approximate alphanumeric capacity
+Width 122 mm Width 137 mm Width 147 mm
+Actual Data Actual Data Actual Data
+Symbo l height
+mm columns mm columns mm columns
+25 mm
+119 14 132 16 145 18
+50 mm
+286 characters 344 characters 401 characters
+841 characters 891 characters 920 characters
+Table B.8 — PDF417 symbols
+x-dimension = 0,43 mm
+Approximate alphanumeric capacity
+Width 122 mm Width 137 mm Width 147 mm Width 159 mm
+Actual Data Actual Data Actual Data Actual Data
+Symbo l height
+mm columns mm columns mm columns mm columns
+25 mm
+120 12 135 14 142 15 157 17
+50 mm
+185 characters 236 characters 261 characters 311 characters
+596 characters 715 characters 747 characters 770 characters
+B.2.4 QR Code for shipping and receiving applications
+B.2.4.1 General
+For shipping and receipt applications, this document recommends the use of the QR Code model 2
+symbols stipulated in ISO/IEC 18004. The coupling structure defined in ISO/IEC 18004 should not be
+used in this application for the shipping and receipt application.
+B.2.4.2 QR Code error correction level
+For shipping and receipt applications, an error correction level M (approximately 15 %) should be used.
+B.2.4.3 QR Code module dimensions
+x-
+Module dimensions ( dimensions) should be within a range of between 0,33 mm to 0,42 mm and it is
+desirable to define dimensions according to the printing performances of label suppliers and/or of label
+issuers.
+B.2.4.4 QR Code quiet zone
+For shipping and receipt applications, the QR Code symbol should incorporate a minimum quiet zone of
+4X, both vertically and horizontally. The 4X quiet zone is accordingly included within the calculation of
+the size of the symbol.
+B.2.4.5 QR Code symbol size
+The symbol size should be 5 cm or smaller.
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:27:51 MDT © ISO 2017 – All rights reserved
+ISO 15394:2017(E)
+B.2.4.6 QR Code symbol print quality
+The print quality of the QR Code symbol should be determined in accordance with ISO/IEC 18004. For
+classification of carriers and tracking of transportation, applications, the symbol grade should satisfy
+the following minimum requirements:
+— print quality grade at the point of symbol printing should be 3,0 (B) or higher;
+— light source wavelength should be equal to 660 nm ± 10 nm.
+The above quality and measurement parameters ensure scannability over a broad range of scanning
+environments. Labellers should not be required to guarantee the print quality of a label at the stage
+where a customer receives goods. Therefore, it is desirable that the print quality requirement at the
+point of production be set at a level higher than for the requirement at the point of use.
+B.2.4.7 QR Code orientation and positioning
+B.2.4.7.1 Orientation
+The properties of a QR Code symbol do not in particular specify orientation of the symbol.
+B.2.4.7.2 Label positioning
+To include a QR Code symbol in a label of this document, a QR Code symbol shall be positioned within
+the customer segment. See Figure B.F3ro mf:o Terxt Taexnt T eext Txexat Tmext pTleext Toexft positioning.
+Text Text Text Text Text Text Text
+Text Text Text Text Text Text Text
+TO: Text Text Text Text Text
+Text Text Text Text Text
+NOTE This figure is not to scale.
+Figure B.3 — Positioning of QR Code symbol on label
+B.2.4.8 Considerations when printing QR Code symbols
+B.2.4.8.1 General
+When QR Code symbols are printed, a number of factors should be taken into consideration. All of these
+factors should be used in determining what module dimensions are to be used. These considerations
+include:
+— data requirements;
+— scanner technologies;
+— label area requirements;
+— printer technologies. 25
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:27:51 MDT
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 15394:2017(E)
+When determining what module dimensions should be used, it is preferable that developers and users
+of the QR Code printing software should follow the guidelines provided in this document to ensure
+that valid symbols are printed. In addition, these guidelines should ensure that a user's scanning
+and printing requirements are being taken into consideration. To these ends, it is preferable that the
+following considerations be used in conjunction with the contents of Table B.9.
+B.2.4.8.2 Designing of the label layout
+B.2.4.8.2.1 Design of the maximum module dimension(s) that can be used
+When designing the space required for positioning a QR Code symbol on a label of this document, it is
+desirable that the designer consider the largest module dimension that may be used in printing. Since
+a supplier and/or a printer of the label ultimately determines the module dimension at which a symbol
+shall be printed, for a shipping/receiving application a QR Code symbol may be printed at any module
+dimension within a range of from 0,42 mm and 0,33 mm.
+B.2.4.8.2.2 Design of the maximum amount of data
+It is essential to determine the fields required for the message, and the maximum anticipated length of
+each field. Additional characters required for formatting also need to be added.
+B.2.4.8.2.3 Design of scanning equipment likely to be used
+When choosing a space in which to encode a QR Code symbol, it is important to consider the capabilities
+of the scanning equipment likely to be used.
+Table B.9 — Approximations of symbol width and character count for QR Code symbol
+(including error correction level M and quiet zones)
+Number of characters Module dimension
+Alphanumeric Kanji
+0,42 mm 0,33 mm
+50 25 15,91 mm 12,21 mm
+100 50 19,35 mm 14,85 mm
+150 65 21,07 mm 16,17 mm
+200 90 24,51 mm 18,81 mm
+250 110 26,23 mm 20,13 mm
+300 130 27,95 mm 21,45 mm
+400 170 31,39 mm 24,09 mm
+500 220 34,83 mm 26,73 mm
+750 345 41,71 mm 32,01 mm
+1 000 435 46,87 mm 35,97 mm
+1 250 560 N/A 39,93 mm
+1 500 650 N/A 42,57 mm
+1 750 770 N/A 46,53 mm
+2 000 890 N/A 49,17 mm
+NOTE N/A means “not applicable.”
+B.2.4.8.2.4 Selecting appropriate sizes in the tables
+Table B.9 provides approximate widths of symbols for QR Code symbol in circumstances where error
+correction level is M (approximately 15 %), module dimensions are 0,42 mm and 0,33 mm and the
+maximum alphanumeric character is 2 000. In Table B.9, select the maximum module dimension that
+is anticipated for the application and on this basis, determin--e``, ,t,,h`,,,e,,` ,n`,`u,,,,m,```,b`-`e-`,r,`, ,o`,`f,, `-c--haracters that represents
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:27:51 MDT © ISO 2017 – All rights reserved
+ISO 15394:2017(E)
+the maximum size. The sizes are an approximation and actual sizes may vary, depending on factors
+such as the compaction algorithm and the nature of the data to be encoded.
+If the space available is not capable of accommodating the initial character count, one option is to
+consider reduction in the character count.
+B.2.4.8.3 Printing of the symbol on the label
+When printing a QR Code symbol defined in this document, the supplier and/or printer should take into
+consideration the amount of space allocated to the symbol.
+For reference purposes, when two types of modules have different dimensions, Table B.10 provides
+approximations of the number of alphanumeric characters that can be encoded in QR Code symbols where
+the QR Code symbol sizes are 3 cm and 5 cm and the error correction level is M (approximately 15 %).
+Table B.10 — Approximate alphanumeric capacity of QR Code symbols in two sizes
+(incorporating on error correction level of M and quiet zones)
+Module size
+Character type
+0,42 mm 0,33 mm
+Symbol size
+Alphanumeric Kanji Alphanumeric Kanji
+3 cm
+Symbol size 366 characters 155 characters 656 characters 277 characters
+5 cm
+1 248 characters 528 characters 2 113 characters 894 characters
+B.3 Supporting documentation applications
+B.3.1 General
+The shipping, transportation and receiving of transport units often require supporting documentation
+data such as a bill of lading, manifest, packing slip, customs data or information that might also be
+transmitted by EDI. These data are not intended to be printed on a label nor to be scanned in the same
+environment as data on a label. The application considered in this category involves the encoding of
+data in 2D symbols in support of the shipping, receiving and transportation sortation and tracking. See
+Figure E.8.
+B.3.2 Symbology recommendation
+This document recommends the use of PDF417 symbology (see ISO/IEC 15438) or QR Code (see
+ISO/IEC 18004) for supporting documentation applications. The structure and syntax of the PDF417
+symbols for supporting documentation applications shall conform to the structure and syntax
+described in ISO/IEC 15434.
+For supporting documentation applications, a Macro PDF417 symbol, which is defined in ISO/IEC 15438,
+may be used.
+For supporting documentation applications, a MicroPDF417 symbol, which is defined in ISO/IEC 24728,
+shall not be used.
+For supporting documentation applications, QR Code Model 2 shall be used.
+B.3.3 Using PDF417 in supporting documentation applications
+B.3.3.1 PDF417 error correction levels
+For supporting documentation applications, the minimum PDF417 symbol error correction level shall
+be as identified in Table B.11. Level 5 is the preferred correction level.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:27:51 MDT
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 15394:2017(E)
+Table B.11 — PDF417 error correction level
+Number of data characters PDF417 error correction level
+under 100 3
+100 to 399 4
+400 or more 5
+B.3.3.2 PDF417 narrow element dimension
+x-
+For supporting documentation applications, the PDF417 symbol dimension should be 0,254 mm.
+B.3.3.3 PDF417 row height
+x-
+For supporting documentation applications, the PDF417 symbol should have a row height (height of the
+symbol element) three (3) times the width of the narrow element ( dimension).
+B.3.3.4 PDF417 quiet zones
+For supporting documentation applications, the PDF417 symbol shall have a minimum quiet zone of
+1 mm above, below, to the left and to the right.
+B.3.3.5 PDF417 print quality
+ISO/IEC 15438 shall be used with reference to ISO/IEC 15416 to determine the print quality of the
+PDF417 symbol. The grade is expressed in the form of: grade/aperture/wavelength. For supporting
+documentation applications, the minimum symbol grade shall be 2,5/10/660 which is:
+— an overall symbol grade greater than or equal to 2,5 (B) at point of production;
+— a measurement aperture equal to 0,250 mm diameter (reference number 10);
+— a light source wavelength equal to 660 nm ± 10 nm.
+B.3.3.6 PDF417 orientation and placement
+B.3.3.6.1 Orientation
+All PDF417 symbols shall have the same orientation. The bars of the PDF417 symbol shall be oriented
+such that they are perpendicular to the natural bottom of the page. For supporting documentation
+applications, symbol skew shall not be more than ±5°.
+B.3.3.6.2 Placement
+All PDF417 symbols for supporting documentation applications shall be placed so that they are clear of
+any folds or creases in the document itself.
+As the document is likely to be folded after printing, tests should be carried out to select appropriate
+symbol locations.
+B.3.3.7 Concatenation of PDF417 symbols
+For supporting documentation applications, the Macro PDF417 symbol version of the PDF417 symbology,
+as defined in ISO/IEC 15438, shall be used to encode data messages that are greater in length than the
+maximum amount of data that can be encoded in a single PDF417 symbol. Application programmers
+should become familiar with the technical specifications for Macro PDF417 symbology to understand
+how the concatenated data will be transmitted to the application software.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:27:51 MDT © ISO 2017 – All rights reserved
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 15394:2017(E)
+B.3.3.7.1 Planning for large messages using PDF417
+When designing an application that will encode large amounts of data, consideration should be given
+to the amount of data to be encoded in a single message. If it is anticipated that a single data message,
+including formatting characters, could exceed approximately 1 200 alphanumeric characters, planning
+should be done to ensure that all the concatenated symbols that constitute the entire Macro PDF417
+symbol message be read in a single scanning sequence. Scanning an intervening symbol, either linear or
+2D, will break the scanning sequence and may give unpredictable results.
+B.3.3.7.2 Printing concatenated PDF417 symbols
+Printing systems should be configured in such a manner that when the amount of data encoded in a
+single message for a supporting documentation application exceeds the capacity of a single symbol, the
+printing system should either automatically use or be configurable to use Macro PDF417 symbology.
+The Macro PDF417 symbol control block should include the optional segment count field in addition
+to the mandatory fields to enable the Macro PDF417 symbols to be scanned in either a buffered or
+unbuffered mode.
+B.3.3.7.3 Reading Macro PDF417 symbols
+To read Macro PDF417 symbols properly, the transmission protocol of the decoder shall comply with
+Macro PDF417 symbology as defined in ISO/IEC 15438:2015, Annex H. The symbols may be transmitted
+in buffered or unbuffered mode.
+The decoder shall be capable of fully supporting the symbology identifier options for a PDF417 symbol.
+The decoder will transmit the symbology identifier, “]L1”. This header signifies that escape and
+sequence characters have been inserted into the message by the reader, and shall be handled by the
+application program. The application program shall then recognize the symbology identifier, interpret
+escape characters, and reassemble the original message. The exact content of the escape and sequence
+characters, their usage, and the structure of a Macro PDF417 symbol is defined in ISO/IEC 15438.
+B.3.4 Using QR Code in supporting documentation applications
+B.3.4.1 General
+For the supporting documentation applications, this document recommends the use of the QR
+Code model 2 symbols defined in ISO/IEC 18004. The structure and syntax of the QR Code symbol
+for supporting documentation applications should conform to the structure and syntax set out in
+ISO/IEC 18004.
+B.3.4.2 QR Code error correction levels
+For supporting documentation applications, an error correction level M (approximately 15 %) is
+recommended.
+B.3.4.3 QR Code module dimensions
+x-
+A module dimension ( dimension) of 0,33 mm is recommended.
+B.3.4.4 QR Code quiet zones
+A QR Code symbol includes a minimum quiet zone of 4X, both vertically and horizontally. A symbol size
+is accordingly calculated with quiet zones as 4X.
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:27:51 MDT
+ISO 15394:2017(E)
+B.3.4.5 QR Code symbol print quality
+ISO/IEC 18004 should be used to determine the print quality of the QR Code symbol. For the supporting
+documentation applications, the symbol grade should be, at a minimum, the following:
+— recommended print quality grade of 3,0 (B) or higher at the point of printing the symbol;
+— light source wavelength equal to 660 nm ± 10 nm.
+B.3.4.6 QR Code orientation and positioning
+B.3.4.6.1 Orientation
+The properties of a QR Code symbol do not, in particular, specify the orientation of the symbol.
+B.3.4.6.2 Positioning
+Any QR Code symbol shall be positioned so as not to impinge on the folds of the document pages.
+Because a document may be folded after printing, it is recommended that a test be conducted to select
+an appropriate position for the symbol.
+B.3.4.7 Concatenation of QR Code symbols
+B.3.4.7.1 General
+For supporting documentation applications, use of the concatenation QR Code symbol defined in
+ISO/IEC 18004 is recommended to encode data messages that are greater in length than the maximum
+amount of data that can be encoded in a single QR Code symbol. A maximum of 16 QR Code symbols can
+be concatenated in a single QR Code symbol.
+B.3.4.7.2 Designing for large messages
+When designing an application that encodes large amounts of data, consideration should be given to the
+amount of data that can be encoded in a single message. If it is anticipated that a single data message
+may exceed a total of 22 characters in the QR Code number (refer to ISO/IEC 18004), use of concatenated
+QR Code symbols is desirable.
+B.3.4.8 Printing of concatenated symbols
+The printing system should be configured in such a manner that when the amount of data encoded in a
+single message for a supporting documentation application exceeds the capacity of a single symbol, the
+printing system should either automatically use, or be configured so as to be able to be concatenated
+QR Code symbols.
+B.3.4.9 Reading of concatenated symbols
+To read QR Code symbols properly, the transmission protocol of the decoder should comply with the
+concatenated QR Code symbols defined in ISO/IEC 18004. The decoder should be capable of fully
+sBu.4pp ortCinagr trhiee rs ysmorbtoalotigoyn id aenndti ftirear cokpitniogn sa pofp tlhice aQtRio Cnosdes.
+B.4.1 General
+Carrier sortation is the process in which transport units are routed between two or more points.
+Carrier tracking is the process by which the location of transport units being transported by a carrier is
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+updated in the carrier's database.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:27:51 MDT © ISO 2017 – All rights reserved
+ISO 15394:2017(E)
+Data to be included comprises that which is required to route transport units between multiple points,
+locate transport units, and other supporting data which is relevant to sortation and/or tracking for
+internal and external processing.
+When a 2D symbol is used for carrier sortation and tracking applications, either the MaxiCode
+symbology (see ISO/IEC 16023), the PDF417 symbology (ISO/IEC 15438) or the QR Code symbology
+(ISO/IEC 18004) are capable of being read in a high-speed scanning environment. The structure and
+syntax of the 2D symbols for carrier sortation and tracking applications shall conform to the structure
+and syntax described in ISO/IEC 15434.
+B.4.2 Symbology usage guidance
+Use of MaxiCode in carrier sortation and tracking applications is defined in B.4.3.
+Use of QR Code in carrier sortation and tracking applications is defined in B.4.4.
+Use of PDF417 in carrier sortation and tracking applications is defined in B.4.5.
+B.4.3 MaxiCode for carrier sortation and tracking applications
+B.4.3.1 MaxiCode code set
+When encoding information in the MaxiCode symbol, it is recommended that character selection be
+limited to Code Set A where possible (see ISO/IEC 16023).
+B.4.3.2 MaxiCode mode
+The MaxiCode symbol incorporates one mode per symbol. This document recommends the use of
+MaxiCode Mode 2 or Mode 3 to ensure that the sortation system can decode the “Ship to” Postal Code,
+“Ship to” Country Code and Class of Service in the event of symbol damage (see ISO/IEC 16023).
+The determination of which mode to use is established by the data characteristics of the “Ship to” Postal
+Code and Class of Service. Table B.12 determines the appropriate mode.
+Table B.12 — Determining which MaxiCode mode to use
+If the “Ship to” Postal Code is and the Class of Service is then use
+numeric-only
+numeric-only Mode 2
+maximum of 9 digits
+alphanumeric
+numeric-only Mode 3
+maximum of 6 characters
+other than above numeric-only Mode 4
+any of the above alphanumeric Mode 4
+B.4.3.3 MaxiCode error correction levels
+The MaxiCode symbol has fixed levels of error correction. The MaxiCode symbol should use the
+Standard error correction level identified within ISO/IEC 16023.
+B.4.3.4 MaxiCode narrow element dimension
+x-
+x-
+MaxiCode is not a scalable symbol (supporting different dimensions). The MaxiCode symbol shall have
+an dimension (the width of a symbol module) and all other dimensions consistent with ISO/IEC 16023.
+Each symbol, including the quiet zone, is of a fixed physical size, which nominally is 28,14 mm or
+26,91 mm high.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:27:51 MDT
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 15394:2017(E)
+B.4.3.5 MaxiCode quiet zones
+For carrier sortation and tracking applications, the MaxiCode symbol shall have a minimum quiet zone
+of 1 mm above, below, to the left and to the right.
+B.4.3.6 MaxiCode symbol print quality
+ISO/IEC 15415 shall be used to determine the print quality of the MaxiCode symbol. For carrier
+sortation and tracking applications, the minimum symbol grade shall be 2,5/10/W, which means:
+— an overall symbol grade greater than or equal to 2,5 (B) at point of production;
+— a measurement aperture equal to 0,250 mm diameter (reference number 10);
+— a broad band light source.
+The above symbol quality and measurement parameters ensure scannability over a broad range of
+scanning environments. Labellers may not be able to guarantee the print quality of a label when it is
+received by the customer. Therefore, the print quality requirement at the point of production should be
+higher than the requirement at the point of use.
+It may not be possible to meet the print quality requirements of this document when printing directly
+onto kraft coloured corrugated surfaces. Users considering the printing of bar code symbols directly
+onto kraft coloured corrugated surfaces should consider the scanning capabilities of their entire
+trading channel.
+B.4.3.7 MaxiCode orientation and placement
+B.4.3.7.1 Symbol orientation
+Due to the nature of the MaxiCode symbology, specific symbol orientation is not required.
+B.4.3.7.2 Symbol placement
+If the symbol is included in the Extended Label described in this document, the MaxiCode symbol shall
+be placed in the carrieSHrIP segmTEXTe TnEXTt T.E XST eTEXeT TFEXiT g TEuXT rTEeXT TBEX.T4 for example of placement.
+FROM: TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
+TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
+SHIP TEXT TEXT TEXT TEXT TEXT
+TO: TEXT TEXT TEXT TEXT TEXT
+TEXT TEXT TEXT TEXT TEXT
+TEXT TEXT TEXT TEXT TEXT
+NOTE This figure is not to scale.
+Figure B.4 — MaxiCode symbol placement on a label
+B.4.3.7.3 Label placement
+Labels shall be placed on the top of the transport units.
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:27:51 MDT © ISO 2017 – All rights reserved
+ISO 15394:2017(E)
+B.4.3.8 Concatenation
+If the data message is greater in length than the maximum amount of data that can be encoded in a
+single MaxiCode symbol, two Structured Append symbols shall be used as follows. As this document
+recommends the use of Modes 2 and 3, Structured Append shall be as defined in ISO/IEC 16023, and
+particularly:
+— the primary message shall be repeated in both symbols;
+— the Structured Append indicator sequence shall be placed in the first two data symbol characters in
+the secondary message;
+— the continuation of the data message shall be in the secondary message of the second symbol.
+B.4.3.8.1 Printing Structured Append MaxiCode symbols
+Printing systems should be configured in such a manner that when the amount of data to be encoded in
+a single message for a carrier sortation and tracking application exceeds the capacity of a single symbol,
+the printing system will automatically use the Structure Append sequence.
+The symbols shall be printed side by side.
+B.4.3.8.2 Reading Structured Append MaxiCode symbols
+When Structured Append is used with Modes 2 and 3 symbols, the primary message may be decoded
+from any of the symbols in the Structured Append sequence.
+The entire message shall be reconstructed as defined ISO/IEC 16023:2000, Annex B.
+B.4.4 QR Code for carrier sortation and tracking applications
+B.4.4.1 QR Code set
+When encoding information in a QR Code symbol, it is recommended that the bit string length be
+optimized.
+B.4.4.2 QR Code symbology
+It is recommended that QR Code Model 2 symbology be used for the carrier sortation and tracking
+applications, when QR Code is used. The concatenation structure, which is specified in, shall not be
+used for these applications.
+B.4.4.3 QR Code error correction levels
+The error correction level shall be M (approximately 15 %), Q (approximately 25 %) or H
+(approximately 30 %).
+B.4.4.4 QR Code module dimension
+The module dimension shall be within the range of 0,85 mm to 1,5 mm. It is recommended that the
+dimension be determined according to the print qualities of the label supplier and/or producer.
+B.4.4.5 QR Code quiet zones
+The QR Code symbol shall have a minimum quiet zone of four modules on the left, right, top and bottom.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:27:51 MDT
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 15394:2017(E)
+B.4.4.6 QR Code print quality
+ISO/IEC 18004 shall be used to determine the print quality of the QR Code symbol. For carrier sortation
+and tracking applications the minimum symbol grade shall be one that has:
+a) a print quality grade of greater than or equal to 3,0 (B) at the point of printing the symbol;
+b) a light source wavelength equal to 660 nm ± 10 nm.
+The above symbol quality and measurement parameters ensure scannability over a broad range of
+scanning environments. Labellers may not be able to guarantee the print quality of a label when it is
+received by the customer. Therefore, the print quality requirement at the point of production should be
+set higher than the requirement at the point of use.
+B.4.4.7 QR Code orientation and placement
+B.4.4.7.1 Orientation
+Due to the nature of the QR Code symbology, specific symbol orientation is not required.
+B.4.4.7.2 Symbol placement
+If the QR Code symbol is included in an ISO label, this symbol shall be placed in the carrier segment. See
+Figure B.5 for example of placement.
+B.4.4.7.3 Label placement
+Labels shall be placed on the top of the transport units.
+SHIP TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
+FROM: TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
+TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
+SHIP TEXT TEXT TEXT TEXT TEXT
+TO: TEXT TEXT TEXT TEXT TEXT
+TEXT TEXT TEXT TEXT TEXT
+TEXT TEXT TEXT TEXT TEXT
+NOTE This figure is not to scale.
+Figure B.5 — Positioning of QR Code symbol on label
+B.4.5 PDF417 for carrier sortation and tracking applications
+B.4.5.1 PDF417 code set
+When encoding information in a PDF417 symbol for carrier sortation and tracking applications, the
+Byte Compaction Mode, as defined in ISO/IEC 15438, shall be utilized to enable the use of the full ASCII
+character set.
+B.4.5.2 PDF417 symbology
+The technical specifications for carrier sortation and tracking applications shall be as defined in
+ISO/IEC 15438. The options available in MicroPDF417, Compact PDF417 and Composite PDF417 shall
+not be used.
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:27:51 MDT © ISO 2017 – All rights reserved
+ISO 15394:2017(E)
+B.4.5.3 PDF417 security correction levels
+The error correction level for the use of PDF417 in carrier sortation and tracking applications shall be 5
+(see ISO/IEC 15438).
+B.4.5.4 PDF417 x-dimension
+x- x-
+x-
+The dimension should be 0,254 mm. The dimension shall be no smaller than 0,254 mm. Any larger
+dimension should be agreed upon between trading partner.
+B.4.5.5 PDF417 Module aspect ratio
+The module aspect ratio of the height of a module (“Y Dimension”) to the width of a module (“X
+Dimension) shall be 5:1.
+B.4.5.6 PDF417 data columns
+To facilitate both high speed over-the-belt scanning and hand-held scanning the PDF417 symbol shall
+contain 12 data columns.
+B.4.5.7 PDF417 quiet zones
+The top and bottom quiet zones shall be no smaller than 1,016 mm and the zones to the left and right of
+the symbol shall be no smaller than 2,54 mm.
+B.4.5.8 PDF417 print quality
+ISO/IEC 15417 shall be used to determine the print quality of the PDF417 symbol. For carrier sortation
+and tracking applications the minimum symbol grade shall be one that has:
+a) a print quality grade of greater than or equal to 3,0 (B) at the point of printing the symbol;
+b) a light source wavelength equal to 660 nm ± 10 nm.
+The above symbol quality and measurement parameters ensure scannability over a broad range of
+scanning environments. Labellers may not be able to guarantee the print quality of a label when it is
+received by the customer. Therefore, the print quality requirement at the point of production should be
+set higher than the requirement at the point of use.
+B.4.5.9 PDF417 orientation and placement
+B.4.5.9.1 Orientation
+The PDF417 symbol shall be oriented parallel to the linear bar code symbols on the label.
+B.4.5.9.2 Symbol placement
+If the PDF417 symbol is included in an MH10.8.1 label, this symbol shall be placed in the carrier segment.
+See Figure B.6.
+B.4.5.9.3 Label placement
+Labels shall be placed on the top of the transport units.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:27:51 MDT
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 15394:2017(E)
+SHIP FROM:
+US Motors ShipDate: 15FEB2012
+ARIES ASSEMBLY PLANT Account: 123456789
+LAKEARIES, MI48888
+ExFed
+SHIP TO:
+Tom Marcus-06 E
+ExFed Corporate
+60 ExFed Parkway, Bldg 60, 1stFlrVertical
+Phone: (901)263-5171
+PRIORITY OVERNIGHT THU
+TRK: 123456789012 DeliverBy:
+38017 XC N1Q6FEBA12A
+-TN-US
+NOTE This figure is not to scale
+Figure B.6 — Positioning of PDF417 symbol on label
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:27:51 MDT © ISO 2017 – All rights reserved
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 15394:2017(E)
+Annex C
+Designing compliant lab(einlsfo ursminatgi vae b) uilding block approach
+C.1 Label definition
+The general term “label” means the printed area on the package that includes the text and/or bar code
+data (including linear bar code, composite or 2D symbols), as covered in this document. The label is
+constructed by the use of indirect marking (e.g., pressure-sensitive labels, tags, etc.). Separate sections
+of the label may be applied at different stages to form the complete label.
+Direct marking (e.g., inkjet, letterpress and flexograph directly printed onto the package) may also be
+used if it meets the quality requirements in Annexes A and B. The label layout and principles still apply.
+C.2 Building blocks
+To simplify label formatting, a modular building block structure is provided (see Figure C.1). The
+building block is the basic standard unit of the label format. An individual building block or sub-block
+may contain one of the following:
+— text or graphics;
+— bar code symbol (2D symbol or linear bar code symbol with human-readable interpretation);
+— a blank.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:27:51 MDT
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 15394:2017(E)
+Key
+1 width 5 vertical separator line
+2 height 6 sub-block
+3 building block 7 label edges
+4 separator line 8 building block height
+Figure C.1 — Modular label structure
+Each building block may be physically produced separately or in combination with other building
+blocks. This provides the option of printing data as it becomes known. Generally, building blocks should
+be stacked vertically.
+C.3 Text lines-per-block
+The height of text characters is defined using a unit of measure called lines-per-block (LPB), rather than
+inches, millimetres or points. This enables the printer of the label to determine the actual height and
+font of a text for a given LPB requirement. See C.6.3.
+C.4 Segments
+Segments are logical groupings of information based on the data needs of the trading partners within
+the distribution channel. Three segments are defined below: carrier segment, customer segment and
+supplier segment.
+When the size and structure of the package permits, segments shall be stacked vertically, from top to
+bottom, in the following order:
+— carrier segment;
+— consignee segment;
+— shipper segment.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:27:51 MDT © ISO 2017 – All rights reserved
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 15394:2017(E)
+When stacked vertically, information required by carriers shall be placed at the top-most part of the label.
+C.5 Label dimensions
+The size of the label should be consistent with the data requirements of all trading partners in the
+supply chain, with the size of the unit load or transport package as the only constraint.
+The label format described does not dictate a fixed size for the total label. The physical dimensions of
+the label shall be determined by the labeller. Considerations for label size selection may include: the
+amount of data to be printed, the physical characteristics of the printing equipment used or the size of
+the transport units.
+The full label height will be determined by the number of building blocks included on the label.
+The width of the label shall be determined by the labeller.
+C.6 Label format
+C.6.1 General
+TCh.6is.2 s ubBculaiuldsei ndge fbinleosc ak sstandardized format for shipping labels.
+C.6.2.1 General
+Building blocks are stacked vertically to construct the label. Building blocks should be separated from
+each other by a horizontal line.
+C.6.2.2 Building block size
+Building block height shall be 25 mm ± 5 mm, as determined by the printing capability of the labeller.
+The width of a building block is the width of the label.
+One double-height bar code block per segment may be used to satisfy special scanning requirements
+(e.g., automated conveyor scanning, long range planning, etc.). Double-height building blocks shall be
+51 mm ± 10,2 mm.
+One half-height text building block per segment may be used at the discretion of the labeller. Half-height
+building blocks shall be 13 mm ± 2 mm.
+C.6.2.3 Sub-blocks
+Building blocks can be divided into no more than four sub-blocks. The minimum width of a sub-block
+shall be determined by the amount of data that will be printed in that sub-block. A sub-block shall be
+tCh.6e .f3u ll hTeeixgth tb olof tchke building block. Vertical lines should be used between sub-blocks.
+A text building block or sub-block may contain text or graphics or both. A text building block or sub-
+block shall not contain a bar code symbol.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:27:51 MDT
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 15394:2017(E)
+Table C.1 — Lines-per-block (LPB) alternatives and measurements calculated
+Lines-per-block Character height Character height
+1 LPB 72 pts 25,4 mm
+2 LPB 36 pts 12,7 mm
+3 LPB 24 pts 8,4 mm
+4 LPB 18 pts 6,4 mm
+5 LPB 14 pts 5,1 mm
+6 LPB 12 pts 4,3 mm
+7 LPB 10 pts 3,6 mm
+8 LPB 8 pts 3,2 mm
+10 LPB 7 pts 2,5 mm
+NOTE The character height includes ascenders, descenders and leading.
+Nine LPB sizes may be specified for text, ranging from one to eight and 10 LPB. The exact character
+heights corresponding to the nine LPB sizes shall be chosen by the labeller based on the capabilities of
+the printing process.
+Labellers shall choose a single height for each of the nine LPB sizes so that clear distinctions shall be
+evident between character heights (i.e., an 8 LPB text shall be smaller than a 7 LPB text, etc.). Table C.1
+provides dimensional considerations for 1, 2, 3, 4, 5, 6, 7, 8 and 10 LPB printing.
+The characters shall be clearly legible. For maximum legibility, the ratio of the height to width of a
+character should not exceed 2:1 (measured on an “M” character).
+Character heights for double-height and half-height building blocks shall be the same as specified for a
+single-height block.
+C.6.4 Text building block and sub-block title line(s)
+A title should be used. When a title is used, it should be printed in the upper left corner of the text
+building block or sub-block. The title should be printed in upper case characters at a height of 6 LPB,
+two lines maximum, left justified.
+C.6.5 Bar code symbol block
+A bar code symbol may be specified for either a building block or sub-block.
+A title should be used for a bar code symbol building block. When a title is used, it should be printed in the
+upper left corner of the bar code symbol building block or sub-block. In the case when two linear symbols
+appear in the same building block, the right-hand symbol may have the title printed in the lower left corner
+of the machine-readable building block or sub-block. The title should be printed in upper case characters
+at a height of 6 LPB, two lines maximum, left justified. The title should consist of a description of the
+data type. The title should also identify the respective ANSI MH10.8.2 Data Identifier or GS1 Application
+Identifier if not part of the printed human-readable interpretation of the bar code symbol.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:27:51 MDT © ISO 2017 – All rights reserved
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 15394:2017(E)
+Annex D
+Issues to consider in the( dinrfaofrtminagt iovfe a) pplication guidelines or
+standards conforming to this document
+D.1 General
+This document is a framework to which various industry application standards for a bar code shipping
+and receiving label should conform. This document defines the minimum and common elements and
+specifies the symbology options. The application guideline should, within the overall constraint of
+complying with this document, be more specific. This annex describes the features which need to be
+defined in the application guideline.
+D.2 Domain
+Define the domain of the application guideline or standard in terms of
+— the responsible agent (typically, a trade association, federation, or similar body) publishing and
+maintaining the application guideline,
+— the industry sector,
+— the geographic domain, and
+— the classes of trading partners covered by the application guideline.
+D.3 Data presentation
+Define which method(s) of data presentation (see Annex A and Annex B) to be used:
+— Code 39 and Code 128 linear bar code symbols;
+— QR Code, PDF417 or MaxiCode 2D symbols.
+D.4 Label
+The document should make it clear whether the base label and/or extended label are acceptable to
+trading partners.
+D.5 Data elements
+Specify the set of data elements together with a definition of whether they are required or optional.
+— The required data element of the unique transport unit identifier (see D.6) shall be fully defined per
+ISO/IEC 15459-1.
+— If GS1 Application Identifiers are used, then those suppliers shall comply with the rules of the GS1
+General Specifications.
+— If ANSI MH10.8.2 Data Identifiers are used, then those labellers shall comply with the rules for
+ISO/IEC 15459-1.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:27:51 MDT
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 15394:2017(E)
+— The information needs of the carrier shall be considered, particularly for the key to carrier
+information.
+— The information needs of the customer shall be considered, particularly for the key to customer
+information.
+— Other data shall be considered by mutual agreement between the supplier, carrier, and customer.
+D.6 Unique transport unit identifier
+When the unique transport unit identifier is encoded with the ANSI MH10.8.2 Data Identifiers:
+— a single international registration authority is designated in accordance with ISO/IEC 15459-2;
+— the registration authority assigns a unique Issuing Agency Code (IAC);
+— the issuing agency then controls and assigns identifiers to individual organizations or persons,
+ensuring that those identifiers are unique within the system of the issuing agency;
+— the organizations or persons then use the IAC and their own issuing agency-assigned identifier to
+create a licence plate number for the transport unit, using the ANSI MH10.8.2 Data Identifier “J”. The
+data following the “J” identifier starts with the Issuing Agency Code (IAC) and then conforms to a
+format specified by the issuing agency, which will ensure that the data will be unique in a sense that
+no issuer re-issues a number until a sufficient period of time has passed so that the first number has
+ceased to be of significance to any user of data.
+D.7 Linear bar code
+Specify which linear symbology shall be used. If migrating from Code 39, see Annex G.
+D.8 2D symbol
+If 2D symbol(s) are incorporated, specify the selected ISO/IEC 15434 formats. The precise rules of
+Annex B shall be incorporated.
+D.9 x-dimension
+x-
+Specify the narrow element dimension (see A.6, B.2.3.2, B.2.4.3, B.3.3.2, B.3.4.3, B.4.3.4, B.4.4.4, and
+B.4.5.4). Ideally, this should offer the full range of 0,25 mm to 0,43 mm in accordance with this document.
+However, there can be industry-specific reasons for being more restrictive within this range.
+D.10 Symbol quality
+Specify the symbol quality (see A.11, B.2.3.6, B.2.4.6, B.3.3.5, B.3.4.5, B.4.3.6, B.4.4.6, and B.4.5.8). Ideally,
+this should be identical to that of this document. However, there can be industry-specific requirements
+which call for a higher print quality. In drafting the application guideline, consideration needs to be
+given to the crossover effect both for
+— labels from suppliers covered by the application guideline going to customers outside the domain of
+the industry, and
+— labels coming from suppliers outside the domain of the industry.
+In both these cases, the expectation of trading partners will be to conform to the print quality as
+specified in this document.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:27:51 MDT © ISO 2017 – All rights reserved
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 15394:2017(E)
+D.11 Label design
+Specify, in as much detail as is appropriate for the application, the label design (see B.2.3.8 and B.2.4.8)
+taking into consideration the size of label and any special label materials.
+D.12 Label placement
+Specify the label placement appropriate for the application (see A.10, B.2.3.7, B.2.4.7, B.3.3.6, B.3.4.6,
+B.4.3.7, B.4.4.7, and B.4.5.9).
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:27:51 MDT
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 15394:2017(E)
+Annex E
+La(ibnefol remxaamtivpel)e s
+E.1 Base label examples
+E.1.1 Minimum data examples
+At a minimum, one of the two following formats shown in Figures E.1 or E.2 is required.
+Key
+1 GS1 Area Data Title
+2 machine-readable symbol (GS1-128 Serial Shipping Container Code)
+3 human-readable interpretation
+NOTE This figure is not to scale.
+Figure E.1 — Base label using GS1-128 licence plate
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:27:51 MDT © ISO 2017 – All rights reserved
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 15394:2017(E)
+Key
+1 MH10 Area Data Title (ANSI MH10.8.2 Data Identifier “J” for “Licence Plate”
+2 ISO/IEC 15459 Issuing Agency Code — IAC (“J” for UPU)
+3 national prefix
+4 company prefix
+5 serial number for unique ID
+NOTE This figure is not to scale.
+Figure E.2 — Base label using “J” ANSI MH10.8.2 Data Identifier licence plate
+E.1.2 Bar code symbols as pointers to a trading partner's databases
+When, with mutual agreement of the trading partner, pointers to the carrier's or customer's databases
+are needed, the formats shown in either Figure E.3 or Figure E.4 are recommended.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:27:51 MDT
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 15394:2017(E)
+SHIP FROM:
+GOOD SUPPLIER
+3693 LOWLANDER
+PINEY RAPIDS, IA, 52403 USA
+SHIP TO: GOOD CUSTOMER
+2 RUE ROYAL 92
+1000 BRUSSELS BELGIUM
+SHIP TO LOC.
+(410) 5412345000167
+ORDER NUMBER:
+(400) M166312
+SSCC:
+Key
+1 sender
+2 recipient
+3 pointer to carrier’s database
+4 pointer to recipients or customer’s database
+5 GS1-128 licence plate
+NOTE This figure is not to scale.
+Figure E.3 — Label using GS1-128 licence plate with pointers to carrier's and customer's
+databases
+46 --``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:27:51 MDT © ISO 2017 – All rights reserved
+ISO 15394:2017(E)
+SHIP FROM:
+GOOD SUPPLIER
+1 3693 LOWLANDER
+PINEY RAPIDS, IA 52403 USA
+SHIP TO: TELEFONAKTLEBOLAGET
+OLAFSSON - PHYSICAL DISTRIBUTION
+STOCKHOLM S-131 89 SWEDEN
+(12K) SCAC & SCAC110780
+PRO #:
+(14K) P.O. + M166312+04
+LINE #
+LICENSE PLATE (J) KFR572219672 1234567
+Key
+1 sender
+2 recipient
+3 pointer to carrier’s database
+4 pointer to recipients or customer’s database
+5 Code 39 DI “J” licence plate
+NOTE This figure is not to scale.
+Figure E.4 — Label using “J” ANSI MH10.8.2 Data Identifier licence plate with pointers to
+carrier's and customer's databases
+E.2 Extended label examples
+E.2.1 Bar code symbols as pointers to trading partner's databases
+When, with the mutual agreement of the trading partners, pointers to the carrier's or customer's
+databases and additional information are needed, the formats shown in either Figure E.5 or Figure E.6
+are recommended.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:27:51 MDT
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 15394:2017(E)
+SHIP TO:
+GOOD CUSTOMER
+GOOD SUPPLIER
+3693 LOWLANDER RUE ROYALE 92 2
+1 PINEY RAPIDS, IA 52403
+1000 BRUSSELS BELGIUM
+USA
+SHIP TO LOC.
+(410) 5412345000167
+ORDER NUMBER:
+(400) M166312
+CUST
+PART NO:
+(241) AA00211211
+GTIN & QTY:
+(01) 90098756100016 (30) 0500
+SSCC:
+Key
+1 sender 4 pointer to recipients or customer’s database
+2 recipient 5, 6 optional data
+3 pointer to carrier’s database 7 GS1-128 licence plate
+NOTE This figure is not to scale.
+Figure E.5 — Label using GS1-128 licence plate with pointers to carrier's and customer's
+databases
+48 --``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:27:51 MDT © ISO 2017 – All rights reserved
+ISO 15394:2017(E)
+SHIP FROM:
+GOOD SUPPLIER
+1 3693 LOWLANDER
+PINEY RAPIDS, IA 52403 USA
+SHIP TO: TELEFONAKTLEBOLAGET
+OLAFSSON - PHYSICAL DISTRIBUTION
+STOCKHOLM S-131 89 SWEDEN
+(12K) SCAC & SCAC110780
+PRO #:
+M166312+04
+(14K) P.O. +
+LINE #
+(1P) PART # MH80312
+SPLR
+5 P.O. NUMBER: M166312
+P.O. LINE NUMBER: 04
+(Q) QTY 16
+PART NUMBER: MH80312
+6 QUANTITY: 16
+UN0433257110000001
+(J) LICENSE PLATE
+Key
+1 sender 4 pointer to recipients or customer’s database
+2 recipient 5, 6 optional data
+3 pointer to carrier’s database 7 Code 39 “J” licence plate
+NOTE This figure is not to scale.
+Figure E.6 — Label using “J” ANSI MH10.8.2 Data Identifier licence plate with pointers to
+carrier's and customer's databases
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:27:51 MDT
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 15394:2017(E)
+Key
+1 sender 5 mutually agreed additional data
+2 recipient 6 sender (coded)
+3 pointer to carrier’s database 7 data identifier “J” for unique transport unit identifier
+4 pointer to recipients or customer’s database 8 mutually agreed additional data
+Figure E.7 — Steel industry label conforming to EN 606, with data identifier “J”, pointers to
+customer’s databases and additional mutually agreed data
+E.2.2 Using licence plate and 2D symbols for trading partner data
+When, with mutual agreement of the trading partner, data in 2D symbols are needed, the formats
+shown in Figure E.8, Figure E.9 or Figure E.10 are recommended. The 2D symbol examples in Figure E.8,
+Figure E.9, and Figure E.10 are encoded in accordance with ISO 15434 data formats identified as
+Format 01 through Format 06.
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:27:51 MDT © ISO 2017 – All rights reserved
+ISO 15394:2017(E)
+SHIP FROM: SHIP TO:
+GOOD CUSTOMER
+1 GOOD SUPPLIER 2
+3693 LOWLANDER 2020 VALLEYDALE ROAD
+PINEY RAPIDS, IA BIRMINGHAM, AL 35244
+52403
+SHIPMENT ID: 480546160
+PO#: 123456789
+PO LINE #: 1
+COUNTRY OF ORIGIN: US
+CARTON 1 OF 3 CARTONS
+CUSTOMER PRODUCT ID: 098756100013
+SUPPLIER ID: 098756
+TRACEABILITY CODE: MJH110780
+QUANTITY: 500 EACH
+SHIPMENT WEIGHT: 263.2 KG
+SHIPMENT VOLUME: 1.65 CR
+SSCC:
+Key
+1 sender 4 recipient's or customer's data 2D symbol
+2 recipient 5 GS1-128 licence plate
+3 carrier sortation/tracking 2D symbol
+NOTE This figure is not to scale.
+Figure E.8 — Label using GS1-128 licence plate and additional trading partner data in 2D symbols
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:27:51 MDT
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 15394:2017(E)
+The data encoded in the MaxiCode symbol in Figure E.8 is as follows:
+R
+Compliance indicator [) > S
+G
+Format 01 sortation/tracking header 01 S96
+G G G
+Carrier data 352440000 S840 S001 S
+G G
+9631415926535984147098 SSCAC S
+G G G G R
+5215716587 S S480546160 S S580 S
+G
+Format 05 application identifier header 05 S
+R E
+Supplier’s transport unit ID 00000987560000000115 S OT
+The data encoded in the PDF417 symbol in Figure E.8 is as follows:
+R
+Header [) > S
+F G U
+Format 03 header 03003030 S S S
+G G F
+“Ship from” name N1 SSF SGOOD SUPPLIER S
+G F
+“Ship from” street address N3 SANY STREET S
+G G G F
+“Ship from” city, state and postal code N4 SANY CITY SANY STATE SPOSTAL CODE S
+G G F
+“Ship to” name N1 SST SGOOD CUSTOMER S
+G F
+“Ship to” street address N3 SANY ROAD S
+G G G R
+“Ship to” city, state and postal code N4 SANY CITY SANY STATE SPOSTAL CODE S
+G
+Format 05 application identifier header 05 S
+G
+Shipment ID 902S480546160 S
+G
+Transport unit ID (container licence plate) 00000987560000000115 S
+G
+Carrier shipment number 9631415926535984147098 S
+G
+Customer PO # and Line item # 400123456789+001 S
+G
+SCC 14 (Item code) and Quantity (each) 019009875610001630500 S
+G
+Customer product ID 241AA00211211 S
+G
+Country of origin 904LUS S
+G
+Lot/Batch number 10MJH110780 S
+G
+Carton “n of x” 9013Q1/3 S
+G
+Shipment weight 3301263 S
+R
+Shipment volume 3362165CR S
+E
+Trailer OT
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:27:51 MDT © ISO 2017 – All rights reserved
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 15394:2017(E)
+SHIP FROM: SHIP TO:
+GOOD SUPPLIER TELEFONAKTLEBOLAGET
+185 MONMOUTH PKWY OLAFSSON - PHYSICAL DISTRIBUTION
+1 2
+E. SHORT BRANCH, NJ
+STOCKHOLM S-131 89
+07764-1394
+SWEDEN
+CARR
+DESPATCH ADVICE #: 9305678ML
+PO#: PO505054
+COUNTRY OF ORIGIN: US
+CARTON 1 OF 3 CARTONS
+CUST
+CUSTOMER PRODUCT ID: AA00211211
+SUPPLIER ID: 0662742
+TRACEABILITY CODE: MJH110780
+QUANTITY: 500 EACH
+SHIPMENT WEIGHT: 263.2 KG
+SHIPMENT VOLUME: 1.65 CR
+(J) LICENSE PLATE UN0433257110000001
+Key
+1 sender 4 recipient's or customer's data 2D symbol
+2 recipient 5 Code 39 “J” licence plate
+3 carrier sortation/tracking 2D symbol
+NOTE This figure is not to scale.
+Figure E.9 — Label using “J” ANSI MH10.8.2 Data Identifier licence plate and additional trading
+partner data in 2D symbols
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:27:51 MDT
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 15394:2017(E)
+The carrier data encoded in the MaxiCode symbol in Figure E.9 is as follows:
+R
+Header [) > S
+G
+Format 01 sortation/tracking header 01 S96
+G G G G G
+Carrier data S-13189 S752 S006 SMH80312 SSCAC S
+G G G G R E
+5215716587 S S1JEABCXXXA S S580 S OT
+The customer data encoded in the PDF417 symbol in Figure E.9 is as follows:
+R
+Header [) > S
+F G U
+Format 04 header 04092001 S S S
+G G G G G G-
+“Ship from” name and address NAD SSF S S SGOOD SUPPLIER SANY STREET
+SANY
+G G G F
+“Ship to” name and address CITY SANY STATE SANY STATE SPOSTAL CODE S
+G G G G G G G
+NAD SST S S SGOOD CUSTOMER S S SANY
+G G F
+Despatch advice number CITY SANY STATE SPOSTAL CODE S
+G G G R
+Format 06 data identifier header BGM S351 S93-5678ML S9 S
+G
+Transport unit ID (Container licence plate) 06 S
+G
+Carrier shipment number JUN0433257110000001 S
+G
+Customer PO # 12KS CACMH80312 S
+G
+Quantity (each implied) KPO505054 S
+G
+Supplier ID Q500 S
+G
+Customer product ID 3V0662742 S
+G
+Country of origin PAA00211211 S
+G
+Lot/Batch number 4LUS S
+G
+Carton “n of x” 1TMJH110780 S
+G
+Shipment weight 13Q1/3 S
+G
+Shipment volume 7Q263,2KG S
+R
+Trailer 7Q1,65CR S
+E
+OT
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:27:51 MDT © ISO 2017 – All rights reserved
+ISO 15394:2017(E)
+GOOD SUPPLIER
+SHIP FROM:
+185 MONMOUTH PKWY
+E. SHORT BRANCH, NJ
+07764-1394
+SHIP TO:
+GOOD CUSTOMER
+2020 VALLEYDALE ROAD 3
+BIRMINGHAM, AL 35244
+4 PEANUT BUTTER 5
+GTIN: 00098756100013
+BATCH NUMBER: 110780
+SSCC: 000987560000000115
+GTIN &
+BATCH/LOT:
+(01)00098756100013(10)110780
+SSCC:
+Key
+1 sender 6 human-readable translation
+2 recipient 7 GS1 GTIN and batch number
+3 carrier sortation/tracking 2D symbol 8 GS1-128 licence plate
+4 product description 9 human-readable interpretation
+5 logo
+NOTE 1 This figure is not to scale.
+NOTE 2 The top label is a carrier label; the bottom label is a supplier label.
+Figure E.10 — Two labels
+E.3 Example of a modularized label
+Current supply and distribution chains frequently involve several parties and several sequential
+handling steps during the life cycle of a transport unit. This modularized label is created to support
+complex supply and distribution chains. The following requirements have been taken into consideration
+when the modularized multi-industry transport label is created:
+— full traceability of the transport handling unit from the point of creation (manufacturing or
+packaging) to consumption through several handling parties;
+— referring to different underlying orders.
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:27:51 MDT
+ISO 15394:2017(E)
+The modularized label consists of three information modules, see Figure E.11. Each module gathers
+information that is available and requested at different steps, according to 4.1. The purpose and
+information content of the different modules are the following.
+a) Packaging label module — contains information available at the manufacturing or packaging stage,
+e.g., product and packaging information and the unique licence plate.
+b) Delivery label module — contains unique order and delivery information, e.g., ship from- and ship
+to-related information and additional data keys to the customer’s database.
+c) Transport label module — contains information related to the transport service, e.g., the “Ship to”
+name and address for the specific transport assignment, data keys to the carrier’s database and
+other transport related information.
+The packaging label (a) should not be replaced during the life cycle of the package (transport handling
+unit). The other two modules are updated by replacement label(s) pasted over the former.
+This label layout utilizes both human-readable translation/interpretation, as well as linear and 2D bar
+code symbols.
+Modularized labels are formatted according to industry requirements. Since printing devices can
+be available in different print widths and/or usage of label holders, A5 format with horizontal
+(see Figure E.11) or with vertical orientation (see Figure E.12) are the two preferred options.
+Figure E.13 provides an example of a completed modular label. Tables E.1 and E.2 provide information
+on the application of both horizontal and vertical modular labels.
+Key
+1 packaging label module, size: 210 mm × 74 mm
+2 delivery label module, size: 105 mm × 74 mm
+3 transport label module, size: 105 mm × 74 mm
+4 corner marks for transport label guidance
+5 unique transport unit identifier in bar code format
+Figure E.11 — Overview of the modularized multi-industry transport label in A5 format,
+horizontal orientation
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:27:51 MDT © ISO 2017 – All rights reserved
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 15394:2017(E)
+Key
+1 packaging label module, size: 105 mm × 148 mm
+2 delivery label module, size: 105 mm × 74 mm
+3 transport label module, size: 105 mm × 74 mm
+4 corner marks for transport label guidance
+5 unique transport unit identifier in bar code format
+Figure E.12 — Overview of two variants of the modularized multi industry transport label
+modules in A5 format, horizontal orientation
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:27:51 MDT
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 15394:2017(E)
+Key
+1 packaging label module, size: 210 mm × 74 mm
+2 delivery label module, size: 105 mm × 74 mm
+3 transport label module, size: 105 mm × 74 mm
+a
+Product and packaging related information in human-readable format.
+b
+Product and packaging related information in 2D symbol format.
+c
+Unique transport unit identifier in bar code format.
+d
+Recipient in human-readable format.
+e
+Delivery related information (e.g., order no., delivery note no., logistics references) in 2D symbol format.
+f
+Sender in human-readable format.
+g
+Delivery related information (e.g., order no., delivery note no., logistics references) in human-readable format.
+h
+Destination of the transport service in human-readable format.
+i
+Transport related information in human-readable and bar code format.
+Figure E.13 — Example of the modularized multi-industry transport label with three label
+modules in A5 format, horizontal orientation
+58 --``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:27:51 MDT © ISO 2017 – All rights reserved
+ISO 15394:2017(E)
+Table E.1 — Example of application of the modularized multi-industry transport label with
+horizontal orientation
+Process step Labelling scenario
+Creation of the package (in the manufacturing or
+Packaging label (a)
+packing stage):
+Printing and attaching the to
+the package (transport unit) before despatch.
+Delivery label (b)
+At dispatch:
+Transport label (c)
+Printing and attaching the and
+the .
+Cross docking (e.g., shifting transport service
+Transport
+provider):
+label (c)
+If needed: Re-labelling with a new
+.
+Delivery label (b)
+At despatch from the second party:
+Transport label (c)
+Printing and attaching a new
+and a new .
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:27:51 MDT
+ISO 15394:2017(E)
+Table E.2 — Example of application of the modularized multi-industry transport label with
+vertical orientation
+Process step Labelling scenario
+Creation of the package (in manufacturing or
+Packaging label (a)
+packing):
+Printing and attaching the to
+the package (transport unit) before despatch.
+Delivery and
+At despatch:
+transport label (b + c)
+Printing and attaching a combined
+.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:27:51 MDT © ISO 2017 – All rights reserved
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 15394:2017(E)
+Annex F
+Recommended label( ilnofcoartmioantisv eo)n various containers
+a) Box or carton with transport package label b) Pallet with two unit load labels
+c) Drum, barrel or cylindrical container d) Bale
+e) Basket, wire mesh container f) Metal bin or tub
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:27:51 MDT
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 15394:2017(E)
+g) Pallet box h) Rack
+i) Bundle j) Bag
+k) Roll or coil l) Reel or cable
+Figure F.1 — Examples of label locations
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:27:51 MDT © ISO 2017 – All rights reserved
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 15394:2017(E)
+Figure F.2 shows the possible locations for the transportation MaxiCode sortation/tracking label and
+for the customer’s label.
+— Users may choose one label combining the needs of both transportation and customer.
+— Also see above for additional label placement examples.
+LABEL
+4A
+LABEL
+4B
+NOTE This figure is not to scale.
+Figure F.2 — Location of transportation (4A) and customer labels (4B)
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:27:51 MDT
+ISO 15394:2017(E)
+Annex G
+The impact of systems co(ninffroornmteatdiv we)i th multiple symbologies
+and formats
+G.1 General considerations
+Open systems, such as those identified in this document, encourage the free movement of transport
+units between any supplier and customer through any carrier. Organizations scanning the bar code
+label for shipping and receiving may be presented with symbols which do not conform to their
+specific requirements but are useful elsewhere in the supply chain. This annex addresses issues that
+are associated with this situation which can affect any organization, as well as issues that need to be
+considered in a planned migration between options.
+This annex describes the use of data carrier/symbology identifiers as identified in ISO/IEC 15424. The
+symbology identifier is a prefix to the data transmitted by a decoder. Data carrier/symbology identifiers
+are not encoded in the symbol.
+The options, as defined in 5.1.1, are as follows:
+a) AIs with GS1-128 symbology;
+b) DIs with Code 39 symbology;
+c) DIs with Code 128 symbology.
+Although it may be intended that only one of these combinations should be in a system, it is important
+for all users to be aware that any of the other combinations can appear in a scanning system. Given this
+fact, organizations may choose to support a single option or support other options as well. These are
+discussed below.
+G.2 Systems where a single option is intended to be scanned
+For users selecting to operate in a single-option environment, the following procedures should be
+considered.
+— For single use of option a), users may be able to switch off all other symbologies in a decoder,
+including Code 128, described in option c). If the decoder supports symbology identifiers, the host
+system shall validate the appropriate symbology identifier, specifically ]C1, which signifies a GS1-
+128 symbol with a FNC1 character in the first position after the start code.
+— For single use of option b), users shall switch off all other symbologies in any decoder. If the decoder
+supports symbology identifiers, the host computer system shall validate the appropriate symbology
+identifier, specifically ]A0.
+— For single use of option c), users need to implement fully the symbology identifier capability.
+For decoders that do not support symbology identifiers, host computer systems are unable to
+automatically distinguish between option a) and option c). By using the symbology identifier, the
+host computer can distinguish between the different options and filter out the unwanted options.
+The host computer system shall validate the appropriate symbology identifier, specifically ]C0.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:27:51 MDT © ISO 2017 – All rights reserved
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 15394:2017(E)
+G.3 Systems where multiple options are intended to be scanned
+Users, who choose to provide their systems with information scanned from labels using two or all of
+the options, shall fully implement symbology identifier capabilities. For decoders that do not support
+symbology identifiers, host computer systems are unable to automatically distinguish between
+option a), option b) and option c). By using the symbology identifier, the host computer can distinguish
+between the different options and filter out the unwanted options. The combination of the symbology
+identifier and the ASC MH10 Data Identifier or Application Identifier shall provide the user with reliable
+input. Users should consider adopting additional reliability features described in B.4.4 as appropriate.
+G.4 Migration choices — Considerations
+G.4.1 General
+It is feasible to migrate from one option to another. The realistic migrations are as follows:
+a) Code 39 with ASC MH10 DIs to GS1-128;
+b) Code 39 with ASC MH10 DIs to Code 128 with ASC MH10 DIs;
+c) Code 128 with ASC MH10 DIs to GS1-128.
+Migration paths require a (usually considerable) period of parallel operation. This has implications for
+bGo.4th.2 s ysStyesmtse m(sese G.4.2) and equipment (see G.4.3).
+Industry bodies and individual suppliers migrating between any two options need be aware of their
+responsibilities to customers. While it is relatively easy for a company or industry body to assume that
+its bar code label standards affect all customers equally, this is an over-simplification.
+If there is a change between ASC MH10 DIs and GS1 AIs [for example migration choices a) and c)], the
+computer systems supporting label production and the carriers’ and customers’ computer systems
+should be upgraded to handle GS1 Application Identifiers prior to any switch.
+Each of the migration choices requires the host computer system software to be able to recognize
+symbology identifiers (see G.4.3), which provide the only reliable means of distinguishing between the
+symbologies and some of their optional features.
+Such migrations involve significant changes that have to be mutually agreed by supplier, carrier and
+customer groups. Failure to do so can result in problems with well-established systems and even in the
+cGo.4rr.u3p tiEoqnu oifp dmatean. t
+G.4.3.1 Printing
+Printing hardware, printing software and users implementing printing hardware and software shall be
+capable of producing the new format symbols by including the ASC MH10 Data Identifiers and/or GS1-
+128 Application Identifiers correctly and generating the correct symbology.
+G.4.3.2 Decoder
+In order to avoid errors in automatic data capture, bar code readers that can automatically read more
+than one symbology should be configured to read only those symbologies required by the application.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:27:51 MDT
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 15394:2017(E)
+Decoders should be configured to read and transmit data from both the old and the new symbology and
+to transmit the relevant symbology identifier.
+NOTE Migration choice c) requires a different decoder setting between the old and new standards.
+Not all decoders are capable of transmitting symbology identifiers. The use of non-conforming
+equipment in a system with the old and new symbologies can result in the inability to correctly
+distinguish between them. Some decoders may be upgraded, while others are not upgradeable and
+should be replaced.
+SGc.5an nerRs eacreo munmlikeenlyd teod b aec atfifoenctse dto. M moadnelas gteh amt higavrea tiniotengrated decoders may be affected.
+G.5.1 Responsible industry body
+The industry body responsible for initiating the migration needs to identify any potential transition
+problems likely to be experienced by suppliers, carriers and customers. Liaison should take place
+with bodies representing carriers’ and customers’ interests as soon as the supplying industry is
+contemplating a migration. In particular, it should
+— identify and carefully consider the migration issues,
+— survey suppliers, carriers and customers to assess the extent to which equipment will be made
+obsolete,
+— survey these groups to assess the extent as to which databases should be upgraded,
+— allow for an upgrade path for the enhancement of equipment and computer systems, bearing in
+mind that users required to scan symbols consistent with the new standard need to have systems
+in place before the new label formats are introduced, and
+NOTE This is a completely different implementation strategy to that commonly adopted when initially
+implementing bar code systems, where a number of labels usually precede the implementation of scanning.
+— plan for a phase-out of the old label format.
+G.5.2 Organizations producing the label
+Suppliers implementing a change of identifier standard and/or symbology should
+— if changing to GS1 AIs, ensure that the mapping software between the internal database and the AIs
+is correct,
+NOTE The format of data can be different between ASC MH10 DIs and GS1 AIs for the nominal data; for
+example, the way dates or units of measure are encoded.
+— if changing to GS1-128, ensure that printing software and/or hardware fully supports the options in
+that symbology, including FNC1 in the first position after the start code and in other positions, and
+— carry out print quality tests of Code 128 and GS1-128 prior to a live launch of the new format label.
+These systems tests can identify the need to upgrade or replace existing systems and hardware.
+G.5.3 Organizations scanning the label
+Organizations needing to scan the new format label should take the following actions prior to the live
+introduction of the label:
+— ensure that decoders are fully compliant with the ISO/IEC 15424 data carrier/symbology identifier
+specification with respect to Code 39 and Code 128;
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:27:51 MDT © ISO 2017 – All rights reserved
+ISO 15394:2017(E)
+— implement software that checks on the validity of both ASC MH10 Data Identifiers and GS1
+Application Identifiers;
+— implement software that parses the data for format and length;
+— if changing to GS1 AIs, implement software to convert the data from the AI format to the format
+requirements of the host computer.
+NOTE This is required because the format of some data fields is different between ASC MH10 DIs and GS1 AIs.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:27:51 MDT
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 15394:2017(E)
+Bibliography
+Information technology — Automatic identification and data capture techniques —
+GS1 Application Identifiers and ASC MH10 Data Identifiers and maintenance
+[1] ISO/IEC 15418,
+Information technology — Automatic identification and data capture techniques —
+Bar code digital imaging and printing performance testing
+[2] ISO/IEC 15419,
+Information technology — Automatic identification and data capture techniques —
+Bar code master test specifications
+[3] ISO/IEC 15421,
+Information technology — Automatic identification and data capture techniques —
+Data Carrier Identifiers (including Symbology Identifiers)
+[4] ISO/IEC 15424,
+Packaging — Linear bar code and two-dimensional symbols for product packaging
+[5] ISO 22742, Information technology — Automatic identification and data capture techniques —
+MicroPDF417 bar code symbology specification
+[6] ISO/IEC 24728,
+Information technology – ISO 7-bit coded character set for information interchange
+[7] ISO 646, Quality management systems — Fundamentals and vocabulary
+[8] ISO 9000, Information technology — Radio frequency identification for item
+management — Implementation guidelines — Part 1: RFID-enabled labels and packaging supporting
+[9] IISSOO//IIEECC /1T80R0 02-467C29-1,
+The Fibre Box Handbook
+[10] , Fibre Box Association, 25 Northwest Point Blvd. Suite 510, Elk Grove
+VDi-lUla-Nge-S, ®IL N60u0m0b7e, rU SA, hUtstepr:/s'/ wGuwidwe.fibrebox.org/
+[11] , Available from Dun & Bradstreet, 1 Diamond Hill Road,
+MGSu1r rSatay,n dards NJ, 07974
+[12] , GS1 AISBL, Blue Tower, Avenue Louise, 326 BE 1050 Brussels Belgium (V): +32 2
+788 7800 (F): +32 2 788 7899
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:27:51 MDT © ISO 2017 – All rights reserved
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:27:51 MDT
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 15394:2017(E)
+ICS 55.020; 35.040.50
+Price based on 68 pages
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reprodu©ctio nI oSr One t2wo0rk1ing7 p e–rm Aittelld wriithgohutt lisce rnsees freomr vIHeSd Not for Resale, 10/14/2019 19:27:51 MDT
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---

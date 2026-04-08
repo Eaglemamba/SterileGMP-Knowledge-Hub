@@ -2,7 +2,7 @@
 
 This document summarizes the current coverage status, gap analysis, and expansion roadmap for building a comprehensive sterile pharmaceutical manufacturing knowledge hub suitable for COO-level operational decision-making.
 
-Last updated: 2026-04-09 — 160 documents complete (PDA 41, USP 76, ISPE 14, FDA 5, ICH 3, PIC/S 1, ISO 14, Ph.Eur. 6); Ph.Eur. 3.2.1 Glass Containers complete; next: Ph.Eur. 3.3.8 Sterile Syringes
+Last updated: 2026-04-09 — 158 documents complete (PDA 41, USP 76, ISPE 14, FDA 5, ICH 3, PIC/S 1, ISO 13, Ph.Eur. 5); corrected count — removed placeholder entries (ISO-14971 blocked, ISO-15394 in progress, PhEur-338 scaffold); next: ISO 15394 Barcodes + Ph.Eur. 3.3.8
 
 ---
 
@@ -65,12 +65,12 @@ Layer 3: Site-Specific Documents             ~/Amaran-Site-Knowledge/
 | **FDA** | 5 | Aseptic Processing, Process Validation, Process Inspection, Combination Products CGMP, HF for Combo Products | ✅ Complete |
 | **ICH** | 3 | Q8(R2), Q9(R1), Q10 | ✅ Complete |
 | **PIC/S** | 1 | Annex 1 (2022) | ✅ Complete |
-| **ISO** | 14 | ISO 11040 (Prefilled Syringes Parts 1–8), ISO 13408 (Aseptic Processing Parts 1–7), ISO 14644 (Cleanrooms Parts 1/5/7), ISO 11608-1 (NIS), ISO 13485 (Medical Device QMS), ISO 10993-1 (Biological Evaluation), ISO TR 24971 (Risk Management Guidance), ISO 15378 (Primary Packaging GMP), ISO 9001, ISO 2859-1, ISO 9000, ISO 15223-1, ISO 15223-2 — ISO 14971 blocked (scanned PDF) | 🔄 In progress |
-| **Ph.Eur.** | 6 | 2.6.1 Sterility ✅, 2.6.14 Bacterial Endotoxins ✅, 2.9.19 Sub-visible Particles ✅, 2.9.20 Visible Particles ✅, 3.2.1 Glass Containers ✅ — remaining: 3.3.8 Sterile Syringes, 5.1.1 Methods of Preparation | 🔄 In progress |
+| **ISO** | 13 | ISO 11040 (Prefilled Syringes Parts 1–8), ISO 13408 (Aseptic Processing Parts 1–7), ISO 14644 (Cleanrooms Parts 1/5/7), ISO 11608-1 (NIS), ISO 13485 (Medical Device QMS), ISO 10993-1 (Biological Evaluation), ISO TR 24971 (Risk Management Guidance), ISO 15378 (Primary Packaging GMP), ISO 9001, ISO 2859-1, ISO 9000, ISO 15223-1, ISO 15223-2 — ISO 14971 blocked (scanned PDF); ISO 15394 in progress | 🔄 In progress |
+| **Ph.Eur.** | 5 | 2.6.1 Sterility ✅, 2.6.14 Bacterial Endotoxins ✅, 2.9.19 Sub-visible Particles ✅, 2.9.20 Visible Particles ✅, 3.2.1 Glass Containers ✅ — remaining: 3.3.8 Sterile Syringes (scaffold ready), 5.1.1 Methods of Preparation | 🔄 In progress |
 | **IEC** | 0 | 62366-1 (usability engineering) | ⬜ Not started |
 | **EU GMP** | 0 | Annex 15, Annex 2, Annex 20 | ⬜ Future (Phase 6) |
 | **WHO GMP** | 0 | TRS 961 Annex 6, TRS 1010 | ⬜ Future (Phase 6) |
-| **Total** | **160** | | |
+| **Total** | **158** | | |
 
 ### USP Batch History
 
