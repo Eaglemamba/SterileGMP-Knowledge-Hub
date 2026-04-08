@@ -959,6 +959,10 @@ Terms: quality culture, root cause analysis (RCA), human error, skill-based erro
 | Caution IFU instructions for use biohazard latex Rx only precaution symbols / 注意使用說明生物危害乳膠處方專用警示符號 | ISO-15223-1 |
 | Symbol validation comprehension test 67% threshold target group usability / 符號驗證理解測試67%接受標準目標族群可用性 | ISO-15223-2 |
 | Develop new medical device symbol ISO 14971 IEC 62366 risk management usability engineering / 開發新醫療器材符號風險管理可用性工程 | ISO-15223-2 |
+| Shipping label barcodes GS1-128 DataMatrix PDF417 transport receiving ISO 15394 / 出貨標籤條碼GS1-128 DataMatrix PDF417運輸收貨 | ISO-15394 |
+| GS1 Application Identifier AI SSCC GTIN lot expiry serial number barcode encoding / GS1應用識別碼SSCC GTIN批號到期日序號條碼編碼 | ISO-15394 |
+| DSCSA EU FMD drug serialization label requirement AI 00 01 10 17 21 / DSCSA EU FMD藥品序列化標籤要求批號到期日序號 | ISO-15394 |
+| Pallet label placement 4-side visibility shipping carton primary secondary tertiary packaging / 棧板標籤四面能見度出貨紙箱一二三級包裝 | ISO-15394 |
 | HVAC for sterile manufacturing, air change rate, HEPA filter / 無菌製造HVAC、換氣次數、HEPA過濾器 | ISPE-Vol3 + ISPE-HVAC |
 | Pressure cascade, differential pressure, airlock design / 壓力梯度、壓差、氣閘設計 | ISPE-Vol3 + ISPE-HVAC |
 | oRABS vs cRABS vs isolator, barrier technology comparison / 開放式vs封閉式RABS vs隔離器 | ISPE-Vol3 + PtC-12 |
@@ -1687,6 +1691,31 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 
 **Sections:**
 - Section 1 (p1–p24): Introduction + Clause 1 Scope + Clause 2 Normative References + Clause 3 Terms & Definitions + Clause 4 Symbol Development (need establishment, design brief) + Clause 5 Symbol Selection (database search, option 1 vs 2) + Clause 6 Symbol Development Process (4-method flow) + Clause 7 Database Search Requirements + Clause 8 Validation Process (pre-test, methods, context effects) + Clause 9 Acceptance Criteria (67% threshold, pre-specification requirement) + Annexes A–C + Bibliography + "Do Not Freeze" case study
+
+---
+
+## ISO/ISO-15394-Complete.md
+**Report:** ISO 15394:2017 — Packaging: Bar Code and Two-Dimensional Symbols for Shipping, Transport and Receiving Labels (Third edition)
+**Pages:** p1–p76 (76 pages) | **Sections:** 3
+
+**Covers questions about:**
+- Which bar code symbologies to use on shipping labels: GS1-128 (primary), DataMatrix, PDF417, QR Code selection criteria
+- GS1 Application Identifiers (AIs): AI(00) SSCC, AI(01) GTIN, AI(10) Batch/Lot, AI(11) Production Date, AI(17) Expiry, AI(21) Serial Number — the foundation of drug serialization
+- SSCC (Serial Shipping Container Code) — 18-digit logistics unit identifier vs GTIN (product identifier)
+- Label design requirements: mandatory zones, X-dimension vs scanning distance, HRI format, bearer bars, quiet zone (10×)
+- Label placement: primary/secondary/tertiary packaging, 4-side pallet visibility at 400–800 mm height
+- Building a DSCSA-compliant pharma label step-by-step using the building block approach
+- Annexes E and F: real label examples (pharma carton, medical device pack, pallet, cold chain) and container placement guide
+- Global drug serialization regulation comparison: DSCSA (US), EU FMD, China NMPA, Japan PMDA, Brazil ANVISA, South Korea, Saudi Arabia, Turkey
+- DataMatrix ECC200 minimum module size (0.381 mm), 25% damage recovery, DPM applications
+- GS1 Digital Link in QR Code — emerging standard replacing traditional barcodes on retail/pharma labels
+
+**Key terms:** GS1-128, GS1 Application Identifier (AI), SSCC Serial Shipping Container Code, GTIN Global Trade Item Number, SGTIN, batch code AI(10), expiry date AI(17) YYMMDD, serial number AI(21), HRI human-readable interpretation, quiet zone, X-dimension, bearer bars, DataMatrix ECC200, PDF417, MaxiCode, QR Code, GS1 Digital Link, DSCSA, EU FMD, serialization, UDI, EDI, FNC1, symbology identifier, label zones, pallet labelling, building block approach
+
+**Sections:**
+- Section 1 (p1–p25): Foreword + Introduction + Clause 1 Scope + Clause 2 Normative References (14 standards) + Clause 3 Terms & Definitions (SSCC/GTIN/AI/HRI/quiet zone) + Clause 4 Concepts (two-layer framework: data content + data carrier) + Clause 5 Data Content (GS1 AIs: 00/01/10/11/17/21/30/400; SSCC structure; DSCSA/EU FMD AI mapping)
+- Section 2 (p26–p50): Clause 6 Data Carriers (GS1-128 mandatory, supplementary 2D selection) + Clause 7 Label Design (4 mandatory zones, HRI AI parentheses, bearer bars, color contrast) + Clause 8 Label Placement (primary/secondary/tertiary, 4-side pallet) + Annex A (linear bar code specs: X-dimension, quiet zone 10×, print quality 1.5/10/660) + Annex B (PDF417, QR Code, MaxiCode, GS1 Digital Link specifications)
+- Section 3 (p51–p76): Annex C (building block label design, LPB table) + Annex D (application guidelines checklist) + Annex E (label examples: pharma carton, medical device, pallet, cold chain) + Annex F (12 container placement types) + Annex G (multi-symbology: symbology identifiers, migration paths) + Bibliography + Global serialization comparison table + CDMO shipping label compliance checklist
 
 ---
 
