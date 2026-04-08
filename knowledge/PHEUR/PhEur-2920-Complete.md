@@ -1,0 +1,49 @@
+# European Pharmacopoeia 11.0 — Chapter 2.9.20: Particulate Contamination: Visible Particles
+
+01/2020:20920
+2.9.20. PARTICULATE
+CONTAMINATION: VISIBLE
+PARTICLES
+Particulate contamination consists of mobile undissolved
+substances, other than gas bubbles, unintentionally present
+in liquid preparations.
+The test is intended to provide a simple procedure for the
+visual assessment of the quality of liquid preparations, if
+applicable after reconstitution, as regards visible particles.
+EQUIPMENT
+The equipment (see Figure 2.9.20.-1) consists of a viewing
+station comprising:
+– a matt black panel (A) of appropriate size held in a vertical
+position;
+– a non-glare white panel (B) of appropriate size held in a
+vertical position next to the black panel;
+– a non-glare white panel (C) of appropriate size held in a
+horizontal position next to (A) and (B);
+– a lampholder (D) ﬁtted with a suitable, shaded, white-light
+source and with a suitable light diffuser (e.g. a viewing
+illuminator containing two 13 W ﬂuorescent tubes, each
+525 mm in length, or an appropriate light-emitting diode
+(LED) light source). The intensity of illumination at
+the viewing point is maintained between 2000 lux and
+3750 lux, although higher values may be required for
+coloured glass or plastic containers and for coloured or
+turbid preparations.
+A
+B
+C
+D
+Figure 2.9.20.-1. – Equipment for visible particles
+METHOD
+Adequate visual inspection of the container and contents is
+necessary, which may require the removal of any adherent
+labels from the container. Gently swirl or invert the container,
+ensuring that air bubbles are not introduced, and observe
+without magniﬁcation for about 5 s in front of the white
+panel (B), although longer observation times may be required
+for coloured glass or plastic containers and for coloured
+or turbid preparations. Where inspection in the primary
+container is not possible, the contents may be transferred for
+inspection into a sample container that is free from visible
+particles, taking precautions to prevent contamination during
+transfer. Repeat the inspection in front of the black panel (A).
+Record the presence of any visible particles.

@@ -2239,3 +2239,24 @@ Key terms: leachables, analytical evaluation threshold (AET), leachables specifi
 **Sections:**
 - Section 1 (p382–p383): Introduction & Scope (two methods, applicability exceptions, sampling representativeness), Method 1 Apparatus & Calibration, General Precautions (LAF, glassware cleaning, blank check 5×5 mL), Method 1 Procedure (standard and alternative/biologics), Evaluation Test 1.A/1.B acceptance limits with Method 1 vs 2 comparison table
 - Section 2 (p383–p385): Method 2 Apparatus (microscope specs, graticule, dual illuminators, membrane filter), Environmental Blank (50 mL check), Method 2 Procedure (vacuum filtration, air-dry, full scan), Particle Sizing with Graticule (transparent vs dark particles, no superimposition), Excluded materials (amorphous/film-like), Alternative method for biologics, Evaluation Test 2.A/2.B with complete decision flowchart and Ph.Eur./USP comparison
+
+---
+
+## PHEUR/PhEur-2920-Complete.md
+**Report:** European Pharmacopoeia 11.0 — Chapter 2.9.20: Particulate Contamination: Visible Particles
+**Pages:** p384–p385 (1 page) | **Sections:** 1
+
+**Covers questions about:**
+- Scope: definition of visible particles (mobile undissolved substances, excluding gas bubbles) and purpose of the test as qualitative visual assessment
+- Equipment specification: the 4-component viewing station — (A) matt black vertical panel, (B) non-glare white vertical panel, (C) non-glare white horizontal panel, (D) shaded white-light lampholder with diffuser (2 × 13 W fluorescent tubes or LED); illumination maintained at 2000–3750 lux; higher illuminance for coloured containers or turbid preparations
+- Why dual-panel design: black panel reveals white/transparent/bright particles; white panel reveals dark/coloured particles — both panels required to detect all particle types
+- Method procedure: adequate inspection may require label removal; gently swirl or invert the container ensuring no air bubbles; observe without magnification for about 5 seconds; inspect in front of white panel B, then repeat in front of black panel A; record presence of any visible particles
+- When to transfer to a separate container: if inspection in the primary container is not possible, transfer to a particle-free sample container with precautions
+- Interpretation principle: acceptance criteria ("essentially free from visible particles", "practically free from particles") are defined in individual product monographs, not in this chapter itself
+- Relationship to Ph.Eur. 2.9.19: 2.9.20 covers visible particles (qualitative, >100 µm, unaided eye) while 2.9.19 covers sub-visible particles (quantitative, ≥10/25 µm, instrument-based); both are required for complete particulate compliance of parenterals
+- Regulatory alignment: Ph.Eur. 2.9.20 ≡ USP <790> framework (both specify black/white panel, 2000–3750 lux); USP <1790> provides extended guidance on MVI/AVI validation, PoD, Knapp study, and inspector qualification
+
+**Key terms:** visible particles, particulate contamination, viewing station, black panel, white panel, matt black panel, non-glare white panel, 2000 lux, 3750 lux, white-light diffuser, fluorescent tube, LED, visual inspection, unaided eye, 5 seconds, swirl, invert, air bubbles, essentially free, practically free, individual monograph, Ph.Eur. 2.9.20, USP <790>, MVI, AVI
+
+**Sections:**
+- Section 1 (p384–p385): Scope & Definition, Equipment (4-component viewing station with illumination specs), Method (dual-panel procedure, air bubble prevention, label removal, transfer option), Interpretation (individual monograph criteria, essentially free principle), Regulatory context (vs 2.9.19, vs USP <790>/<1790>)
