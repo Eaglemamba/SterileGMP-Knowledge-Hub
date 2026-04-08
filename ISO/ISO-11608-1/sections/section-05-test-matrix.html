@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISO 11608-1 — Section 5: Test Matrix & Test Procedures</title>
+    <style>
+:root { --primary-blue: #1e3a5f; --accent-blue: #3498db; --light-gray: #fafafa; --light-blue: #f0f7ff; --yellow-start: #fff9e6; --yellow-end: #fff3cd; --green-bg: #e8f5e9; --green-border: #4caf50; --orange-bg: #fff3e0; --orange-border: #ff9800; --purple-bg: #f3e5f5; --purple-border: #9c27b0; --text-dark: #2d3748; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif; line-height: 1.75; color: var(--text-dark); background: #f0f2f5; }
+.header { background: linear-gradient(135deg, #4c1d95 0%, #6d28d9 100%); color: white; padding: 2rem; text-align: center; }
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+.left-column { background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; }
+.left-column h2 { color: var(--primary-blue); border-bottom: 2px solid #6d28d9; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.left-column h3 { color: var(--primary-blue); margin: 1rem 0 0.5rem; font-size: 1rem; }
+.left-column p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.92rem; }
+.left-column li { margin-bottom: 0.4rem; }
+.right-column { background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #c4b5fd; }
+.right-column h2 { color: #4c1d95; border-bottom: 2px solid #7c3aed; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.right-column p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.section-title { font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
+.key-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
+.concept-box { background: var(--green-bg); border-left: 4px solid var(--green-border); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 0.92rem; line-height: 1.7; }
+.concept-box h4 { color: #2e7d32; margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600; }
+.concept-box p, .concept-box ul, .concept-box li { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.concept-box ul { margin-left: 1.25rem; }
+.analogy-box { background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%); border-left: 4px solid #f6ad55; border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 0.92rem; line-height: 1.7; }
+.analogy-box h4 { color: #856404; margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600; }
+.analogy-box p, .analogy-box ul { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.analogy-box ul { margin-left: 1.25rem; }
+.note-box { background: var(--orange-bg); border-left: 4px solid var(--orange-border); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 0.92rem; line-height: 1.7; }
+.note-box h4 { color: #c65102; margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600; }
+.note-box p, .note-box ul { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.note-box ul { margin-left: 1.25rem; }
+.practice-box { background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%); border: 2px dashed #3182ce; border-radius: 10px; padding: 1.25rem; margin: 1.25rem 0; font-size: 0.92rem; }
+.practice-box h4 { color: #2c5282; margin-bottom: 0.75rem; font-size: 0.95rem; font-weight: 600; }
+.practice-box ol { margin-left: 1.25rem; }
+.practice-box li { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.learning-objectives { background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.85rem; }
+th, td { padding: 0.5rem 0.6rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.82rem; }
+tr:nth-child(even) { background: #f7fafc; }
+.test-badge { display: inline-block; padding: 2px 7px; border-radius: 4px; font-size: 0.78rem; font-weight: 700; }
+.badge-a { background: #e0e7ff; color: #3730a3; }
+.badge-c { background: #fce7f3; color: #9d174d; }
+.badge-both { background: #d1fae5; color: #065f46; }
+.main-footer { background: var(--primary-blue); color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+@media (max-width: 900px) { .two-column { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Section 5: Test Matrix & Test Procedures</h1>
+    <div class="subtitle">測試矩陣與試驗程序 — 從環境測試到 EMC 驗證</div>
+    <div class="page-info">ISO 11608-1:2014 | Sections 8–10 | p.12–p.21</div>
+</div>
+
+<div class="main-content">
+
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>掌握 Table 3 測試矩陣結構：了解哪些測試適用於哪些 System Designation，以及各測試的樣本數（Y）和統計要求</li>
+        <li>理解「預處理（Pre-conditioning）+ 劑量準確性測試」的測試邏輯——測試設備的韌性</li>
+        <li>能夠評估 D1 autoinjector 設計驗證報告中所需的測試項目完整性</li>
+        <li>了解 EMC 要求對含電子元件 NIS（如電動 pen injector）的影響</li>
+    </ul>
+</div>
+
+<!-- ====== TEST MATRIX ====== -->
+<div class="section-title">Section 9: Test Matrix — Table 3 完整解析</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>Table 3 — Test Matrix (Summary)</h3>
+        <table>
+            <tr><th>Test</th><th>Systems</th><th>Description</th><th>p</th><th>n</th><th>k (2-sided)</th></tr>
+            <tr><td><strong>Cool/Standard/<br>Warm (10.2)</strong></td><td>A, B, C, D</td><td>DA at 5°C, 23°C, 40°C</td><td>0.975</td><td>60</td><td>2.670</td></tr>
+            <tr><td><strong>Last-dose (10.3)</strong></td><td>A, C only</td><td>DA at last-dose indication</td><td>0.975</td><td>60</td><td>2.670</td></tr>
+            <tr><td><strong>Life-cycle (10.4)</strong></td><td>A, B only</td><td>1.5× expected life → DA</td><td>0.95</td><td>20</td><td>2.760</td></tr>
+            <tr><td><strong>Free-fall (10.5)</strong></td><td>A, B, C, D</td><td>1 m drop × 3 orientations → DA</td><td>0.95</td><td>20–21</td><td>2.731–2.760</td></tr>
+            <tr><td><strong>Dry heat/Cold<br>storage (10.6)</strong></td><td>A, B, C, D</td><td>70°C and −40°C → DA</td><td>0.975</td><td>60</td><td>2.670</td></tr>
+            <tr><td><strong>Damp heat (10.7)</strong></td><td>A, B only</td><td>40°C, 93% RH → DA</td><td>0.95</td><td>20</td><td>2.760</td></tr>
+            <tr><td><strong>Cyclical (10.8)</strong></td><td>A, B only</td><td>Temperature cycling → DA</td><td>0.95</td><td>20</td><td>2.760</td></tr>
+            <tr><td><strong>Vibration (10.9)</strong></td><td>A, B, C, D</td><td>Sinusoidal vibration → DA</td><td>0.95</td><td>20</td><td>2.760</td></tr>
+            <tr><td><strong>EMC (10.10)</strong></td><td>Electronics only</td><td>ESD + RF → visual inspection</td><td>—</td><td>20</td><td>—</td></tr>
+        </table>
+
+        <h3>Section 8: Preparation and Operation of NISs</h3>
+        <p>Before testing, NISs shall be prepared according to the manufacturer's instructions for use. Pre-conditioning conditions must be documented. All dose accuracy testing shall be performed at <span class="key-term">standard atmosphere</span> (23 ± 3°C, 50 ± 15% RH) unless otherwise specified.</p>
+
+        <h3>10.2 Cool, Standard and Warm Atmosphere (Sections 10.2.1–10.2.2)</h3>
+        <ul>
+            <li><strong>Pre-conditioning</strong>: 5°C ± 2°C for ≥ 3h, then test immediately; 23°C ± 3°C standard; 40°C ± 2°C for ≥ 3h, then test immediately</li>
+            <li><strong>Sample size</strong>: 20 NISs per temperature condition (total 60 measurements per V<sub>set</sub>)</li>
+            <li>Rationale: Simulates storage (refrigerator) and high-ambient-temperature conditions that affect dose accuracy</li>
+        </ul>
+
+        <h3>10.5 Free-Fall Testing (1 m Drop)</h3>
+        <ul>
+            <li>Drop height: 1.0 m ± 0.02 m onto specified steel/wood surface</li>
+            <li>3 orientations: each orientation perpendicular to the others</li>
+            <li>After free-fall: visual inspection + standard DA testing</li>
+            <li>For C and D1/D2: use fresh NISs (cannot reuse same samples post-drop for DA due to container damage risk)</li>
+        </ul>
+
+        <h3>10.6 Dry Heat / Cold Storage</h3>
+        <ul>
+            <li><strong>Dry heat</strong>: 70°C ± 2°C for 1h (min)</li>
+            <li><strong>Cold storage</strong>: −40°C ± 3°C for 1h (min)</li>
+            <li>Then condition at 23°C ± 3°C and test standard DA</li>
+        </ul>
+
+        <h3>10.10 EMC Testing (Electronics Only)</h3>
+        <ul>
+            <li><strong>ESD (10.10.2)</strong>: Pre-condition NISs with electrostatic discharge per IEC 61000-4-2</li>
+            <li><strong>Radiated RF (10.10.3)</strong>: RF sweep per IEC 60601-1-2</li>
+            <li><strong>Compliance (10.10.4/10.10.5)</strong>: 20 NISs; no erroneous indications; no functional defects after RF sweep</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>測試矩陣的核心邏輯：「壓力 + 劑量準確性」</h4>
+            <p>Table 3 中大多數測試都遵循同一個邏輯：</p>
+            <p><strong>施加環境壓力（Pre-conditioning）→ 恢復到標準條件 → 測量劑量準確性</strong></p>
+            <p>這個設計背後的問題是：「NIS 在各種現實環境條件（冷藏、熱帶氣候、墜落、運輸振動）後，是否仍能準確遞送藥物？」</p>
+            <p>特別值得注意的是溫度測試（10.2）：在5°C（冷藏後立即使用）和40°C（高溫環境）下分別測試，直接對應患者的實際使用場景。</p>
+        </div>
+        <div class="note-box">
+            <h4>D1 Autoinjector 的必測項目</h4>
+            <p>Designation D1（最常見的 autoinjector）在 Table 3 中需完成的測試：</p>
+            <ul>
+                <li>✅ 溫度測試（Cool/Standard/Warm）：60 支，p=0.975</li>
+                <li>✅ 自由跌落：21 支（C/D 版本），p=0.95</li>
+                <li>✅ 乾熱/冷儲存：60 支，p=0.975</li>
+                <li>✅ 振動測試：20 支，p=0.95</li>
+                <li>❌ 最後劑量測試（Last-dose）：僅 A/C 系統（多劑量）</li>
+                <li>❌ 壽命週期測試（Life-cycle）：僅 A/B 系統（可替換容器）</li>
+                <li>❌ 潮濕熱/循環測試：僅 A/B 系統</li>
+                <li>EMC：僅含電子元件時</li>
+            </ul>
+            <p>完整 D1 DV 計劃需要的 NIS 數量：最多 ~200 支（各測試的 20-60 支加上備品）。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>自由跌落測試的現實意義</h4>
+            <p>1 m 的跌落高度並非隨意設定：大約是成人坐著時手持注射器到地面的高度。這代表了「患者不小心把注射器從手中掉落」的最常見場景。</p>
+            <p>3 個方向（前/後、左/右、頂/底）確保測試覆蓋最脆弱的衝擊方向。</p>
+            <p>對 CDMO：若客戶更改了 PFS 的初級包材（如從 BD Hypak 換到不同廠商），需要重新評估自由跌落測試結果——因為容器材質和內容物重量會影響衝擊結果。</p>
+        </div>
+        <div class="note-box">
+            <h4>溫度條件說明：2014 年第三版修訂</h4>
+            <p>本版重要修訂：循環測試（10.8）的溫度從原本 25°C ± 3°C 改為 <strong>5°C ± 3°C</strong>。</p>
+            <p>理由：冷藏藥品（2–8°C 儲存）的使用者通常在冷藏後直接使用，5°C 更能代表實際最低使用溫度。25°C 過於保守（室溫），無法測試冷藏後的性能。</p>
+            <p>如果客戶的 DV 報告是基於舊版（2012 年第二版），此測試條件差異需要特別注意，可能需要補充測試。</p>
+        </div>
+        <div class="concept-box">
+            <h4>EMC 測試：何時需要？</h4>
+            <p>EMC 測試（10.10）僅適用於含電子/電機元件的 NIS，包括：</p>
+            <ul>
+                <li>電子劑量計算器的筆型注射器</li>
+                <li>有電子感應器的自動注射器（感應注射完成）</li>
+                <li>Connectivity pen injector（藍牙配對型）</li>
+                <li>電驅動大容量穿戴式注射器</li>
+            </ul>
+            <p>純機械式 autoinjector（D1，無電子元件）不需要 EMC 測試。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>某客戶提供 DV 報告，自由跌落測試使用 20 支 D1 autoinjector，結果全部通過視覺檢查和劑量準確性測試。CDMO 審查時發現 n=20（p=0.95，k<sub>tar</sub>=2.760）。如果 k<sub>act</sub> = 2.50，是否應接受此 DV 結果？</li>
+                <li>客戶計劃更換 autoinjector 的彈簧規格（提高驅動力以適應高黏度新配方）。根據 Table 3，哪些 DV 測試需要重新執行？</li>
+                <li>新型 smart pen injector 配有藍牙連接功能，用於記錄注射時間和劑量。根據 Section 10.10，需要額外的哪些 EMC 測試？相關的 IEC 標準是哪些？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>測試邏輯：預處理 + DA</strong>：大多數測試 = 施加環境壓力 → 恢復標準條件 → 量測劑量準確性；核心驗證 NIS 在真實使用環境後是否維持性能</li>
+        <li><strong>D1 必測項目</strong>：溫度（60支，p=0.975）、自由跌落（21支）、乾熱/冷儲（60支）、振動（20支）；壽命週期和潮濕熱僅適用 A/B 系統</li>
+        <li><strong>第三版修訂重點</strong>：循環測試溫度從 25°C 改為 5°C（冷藏後使用場景）；EMC 樣本數從 5 支增至 20 支</li>
+        <li><strong>EMC 限於電子元件</strong>：純機械式 autoinjector 不需 EMC；含感測器、藍牙、電機驅動的 NIS 需 ESD + RF 測試</li>
+    </ul>
+</div>
+
+</div>
+
+<div class="main-footer">
+    <p>ISO 11608-1:2014 — Needle-Based Injection Systems for Medical Use (Part 1)</p>
+    <p>SterileGMP Knowledge Hub | Section 5: Test Matrix &amp; Test Procedures</p>
+</div>
+
+</body>
+</html>

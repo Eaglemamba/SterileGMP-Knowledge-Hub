@@ -2,7 +2,7 @@
 
 This document summarizes the current coverage status, gap analysis, and expansion roadmap for building a comprehensive sterile pharmaceutical manufacturing knowledge hub suitable for COO-level operational decision-making.
 
-Last updated: 2026-04-07 — 142 documents complete (PDA 41, USP 76, ISPE 14, FDA 5, ICH 3, PIC/S 1, ISO 2); Expert Knowledge Base layer added (9 files planned, not started)
+Last updated: 2026-04-08 — 144 documents complete (PDA 41, USP 76, ISPE 14, FDA 5, ICH 3, PIC/S 1, ISO 4); ISO 14644 complete (Parts 1/5/7); ISO 11608-1 complete; ISO 14971, 13485 next
 
 ---
 
@@ -36,7 +36,7 @@ Layer 3: Site-Specific Documents             ~/Amaran-Site-Knowledge/
 
 | Component | Status | Count |
 |-----------|--------|-------|
-| Layer 1 — Regulatory Reference | ✅ Complete | 142 documents |
+| Layer 1 — Regulatory Reference | ✅ Complete | 144 documents |
 | Expert Knowledge Base | ⬜ Not started | 9 files planned |
 | Layer 2 — Operational Frameworks | ⬜ Not started | ~27 files planned |
 | Layer 2 — Skills System | ⬜ Not started | 26 slash commands planned |
@@ -53,7 +53,7 @@ Layer 3: Site-Specific Documents             ~/Amaran-Site-Knowledge/
 
 ---
 
-## Layer 1: Regulatory Reference — ✅ COMPLETE (142 documents)
+## Layer 1: Regulatory Reference — ✅ COMPLETE (143 documents)
 
 ### Completion Summary
 
@@ -65,12 +65,12 @@ Layer 3: Site-Specific Documents             ~/Amaran-Site-Knowledge/
 | **FDA** | 5 | Aseptic Processing, Process Validation, Process Inspection, Combination Products CGMP, HF for Combo Products | ✅ Complete |
 | **ICH** | 3 | Q8(R2), Q9(R1), Q10 | ✅ Complete |
 | **PIC/S** | 1 | Annex 1 (2022) | ✅ Complete |
-| **ISO** | 2 | ISO 11040 (Prefilled Syringes Parts 1–8), ISO 13408 (Aseptic Processing Parts 1–7) — 14644, 17665, 11608, 14971, 13485 pending | 🔄 In progress |
+| **ISO** | 4 | ISO 11040 (Prefilled Syringes Parts 1–8), ISO 13408 (Aseptic Processing Parts 1–7), ISO 14644 (Cleanrooms Parts 1/5/7), ISO 11608-1 (Needle-Based Injection Systems) — 14971, 13485, 17665 next | 🔄 In progress |
 | **IEC** | 0 | 62366-1 (usability engineering) | ⬜ Not started |
 | **EU GMP** | 0 | Annex 15, Annex 2, Annex 20 | ⬜ Future (Phase 6) |
 | **Ph. Eur.** | 0 | 5.1.1, 2.6.1, 2.6.14, 2.9.19/20 | ⬜ Future (Phase 6) |
 | **WHO GMP** | 0 | TRS 961 Annex 6, TRS 1010 | ⬜ Future (Phase 6) |
-| **Total** | **142** | | |
+| **Total** | **144** | | |
 
 ### USP Batch History
 
@@ -89,7 +89,7 @@ Layer 3: Site-Specific Documents             ~/Amaran-Site-Knowledge/
 | ISO 17665 — Steam sterilization | Phase 4 | Medium | Medium |
 | FDA — Container Closure Guidance, Terminal Sterilization Guidance | Phase 4 | Medium | Medium |
 | ISO 14971 — Risk Management for Medical Devices | Phase 5 | High | Medium |
-| ISO 11608-1 — Needle-Based Injection Systems | Phase 5 | High | Medium |
+| ~~ISO 11608-1 — Needle-Based Injection Systems~~ | ✅ Done 2026-04-08 | — | — |
 | ISO 11608-3 — Finished containers for injection systems | Phase 5 | Medium | Small |
 | ISO 13485 — Medical Devices QMS | Phase 5 | High | Medium |
 | IEC 62366-1 — Usability Engineering / Human Factors | Phase 5 | Medium | Medium |
