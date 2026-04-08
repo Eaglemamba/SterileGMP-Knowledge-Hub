@@ -923,6 +923,11 @@ Terms: quality culture, root cause analysis (RCA), human error, skill-based erro
 | Qualification validation packaging equipment, VMP, IQ OQ PQ primary packaging, bracketing matrix / 包材設備確效、驗證主計畫、初級包材IQ/OQ/PQ、矩陣法 | ISO-15378 |
 | Supplier approval external provider packaging, CoA CoC periodic verification, outsourcing packaging / 包材供應商核准、外部提供者、CoA定期查驗、外包管制 | ISO-15378 |
 | Change control packaging manufacturer, DMF drug master file, regulatory notification packaging changes / 包材製造商變更管制、藥物主文件、法規通報 | ISO-15378 |
+| AQL acceptance quality limit, sampling by attributes, incoming inspection / AQL接受品質界限、計數值抽樣、入料檢驗 | ISO-2859-1 |
+| Sample size code letter, lot size inspection level, Table I Table II-A / 樣本大小代碼字母、批量與檢驗水準、查表 | ISO-2859-1 |
+| Normal tightened reduced inspection switching rules, 2-of-5 rejection trigger / 正常加嚴放寬檢驗轉換規則、五中取二拒收觸發 | ISO-2859-1 |
+| OC curve operating characteristic, producer risk consumer risk alpha beta / 操作特性曲線、生產者風險、消費者風險 | ISO-2859-1 |
+| Critical major minor defect AQL classification, pharma incoming inspection / 嚴重主要次要缺陷AQL分類、製藥入料檢驗 | ISO-2859-1 |
 | HVAC for sterile manufacturing, air change rate, HEPA filter / 無菌製造HVAC、換氣次數、HEPA過濾器 | ISPE-Vol3 + ISPE-HVAC |
 | Pressure cascade, differential pressure, airlock design / 壓力梯度、壓差、氣閘設計 | ISPE-Vol3 + ISPE-HVAC |
 | oRABS vs cRABS vs isolator, barrier technology comparison / 開放式vs封閉式RABS vs隔離器 | ISPE-Vol3 + PtC-12 |
@@ -1547,6 +1552,34 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 - Section 1 (p1–p24): Foreword & Introduction (PDCA diagram, 8 QM principles, risk-based thinking, Annex SL ecosystem) + Clauses 1–7: Scope, Terms, Context (4.1-4.4), Leadership (5.1-5.3), Planning (6.1-6.3), Support (7.1-7.5 including 7.1.6 organizational knowledge, documented information ALCOA mapping)
 - Section 2 (p25–p36): Clauses 8–10: Operation (design & development, external provider, production, special processes, release, nonconforming outputs), Performance Evaluation (monitoring, customer satisfaction, analysis, internal audit, management review), Improvement (CAPA 6-step, continual improvement)
 - Section 3 (p37–p40): Annex A (Table A.1 terminology 2008→2015, risk-based thinking, applicability vs. exclusions, documented information) + Annex B (ISO/TC 176 ecosystem, Table B.1) + Bibliography + ISO 9001 vs. ISO 13485 vs. ISO 15378 comparison
+
+---
+
+## ISO/ISO-2859-1-Complete.md
+**Report:** ISO 2859-1:1999 — Sampling Procedures for Inspection by Attributes: Part 1: Sampling Schemes Indexed by Acceptance Quality Limit (AQL) for Lot-by-Lot Inspection
+**Pages:** p1–p94 (94 pages) | **Sections:** 2
+
+**Covers questions about:**
+- AQL (Acceptance Quality Limit) — what it means, how to set AQL levels for pharmaceutical incoming inspection
+- Lot-by-lot attribute sampling — how to select sample sizes and acceptance numbers from ISO 2859-1 tables
+- Code letter system — how lot size + inspection level → code letter → sample size (Table I)
+- Single, double, and multiple sampling plans — when to use each type, how to read Tables II-A/III-A
+- Normal, tightened and reduced inspection — switching rules, state transition logic (2-of-5 rejection trigger, 5-consecutive switch back, 10-lot discontinuation)
+- Critical, major, and minor defect classification — typical pharma AQL assignments (critical 0.065%, major 0.65%, minor 2.5%)
+- OC curves (Operating Characteristic curves) — how to interpret producer's risk (α=5% at AQL) and consumer's risk (β=10% at LTPD/RQL)
+- AOQL (Average Outgoing Quality Limit) and LTPD — supplementary information for evaluating sampling plan strength
+- Fractional acceptance number plans (Clause 13) — for very low AQLs using cumulative lot scoring
+- General vs. Special inspection levels (I, II, III, S-1 to S-4) — pharma typically uses General II
+- ISO 2859-1 vs. ANSI/ASQ Z1.4 — equivalent standards, US vs. international
+- Why AQL is NOT appropriate for sterility testing or endotoxin testing — fundamental distinction
+- Worked examples: incoming inspection of glass vials (lot 5,000, Code J, n=80) with simultaneous Critical/Major/Minor AQL plans
+- Supplier quality history and switching rules as a feedback loop — escalation to tightened then discontinuation
+
+**Key terms:** AQL (acceptance quality limit), sampling by attributes, lot-by-lot inspection, code letter, sample size, inspection level (General I/II/III, Special S-1 to S-4), normal inspection, tightened inspection, reduced inspection, discontinuation, switching rules, acceptance number (Ac), rejection number (Re), lot sentencing, OC curve (operating characteristic), producer's risk (α Type I error), consumer's risk (β Type II error), AOQL, LTPD (lot tolerance percent defective), RQL, fractional acceptance number, single sampling plan, double sampling plan, multiple sampling plan, percent nonconforming, nonconformities per hundred units, critical defect, major defect, minor defect, ANSI/ASQ Z1.4, ISO 3534-2, incoming inspection, receiving inspection, visual inspection, AQL table, Table I, Table II-A
+
+**Sections:**
+- Section 1 (p1–p51): Foreword & Introduction (ISO 2859 series, attribute vs. variable inspection), Clauses 1–9: Scope, Normative References, Terms (AQL, OC curve, switching rules vocabulary), Expression of Nonconformity, AQL preferred series, Lot Submission, Acceptance/Non-acceptance, Sampling Methods, Normal/Tightened/Reduced Inspection switching rules with state diagram and worked example
+- Section 2 (p52–p94): Clauses 10–13: Sampling Plans (single/double/multiple, code letter system), Table I (sample size code letters, all lot size ranges and inspection levels), Table II-A (representative single sampling normal inspection), Table III-A (double sampling), Clause 11 (acceptability determination), Clause 12 (OC curves, AOQL, LTPD, ASN), Clause 13 (fractional acceptance number plans), Tightened/Reduced comparison, 3 worked examples (vial incoming, tightened trigger, reduced inspection), Pharma CDMO guidance
 
 ---
 

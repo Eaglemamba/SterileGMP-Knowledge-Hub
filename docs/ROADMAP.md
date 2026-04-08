@@ -2,7 +2,7 @@
 
 This document summarizes the current coverage status, gap analysis, and expansion roadmap for building a comprehensive sterile pharmaceutical manufacturing knowledge hub suitable for COO-level operational decision-making.
 
-Last updated: 2026-04-09 — 152 documents complete (PDA 41, USP 76, ISPE 14, FDA 5, ICH 3, PIC/S 1, ISO 10, Ph.Eur. 2); ISO 9001:2015 complete; next: ISO 2859-1
+Last updated: 2026-04-09 — 153 documents complete (PDA 41, USP 76, ISPE 14, FDA 5, ICH 3, PIC/S 1, ISO 11, Ph.Eur. 2); ISO 2859-1 AQL sampling complete; ISO pipeline largely complete; next: remaining ISO (9000, 15223, etc.) or Ph.Eur. expansion
 
 ---
 
@@ -70,7 +70,7 @@ Layer 3: Site-Specific Documents             ~/Amaran-Site-Knowledge/
 | **IEC** | 0 | 62366-1 (usability engineering) | ⬜ Not started |
 | **EU GMP** | 0 | Annex 15, Annex 2, Annex 20 | ⬜ Future (Phase 6) |
 | **WHO GMP** | 0 | TRS 961 Annex 6, TRS 1010 | ⬜ Future (Phase 6) |
-| **Total** | **152** | | |
+| **Total** | **153** | | |
 
 ### USP Batch History
 
