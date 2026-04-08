@@ -878,6 +878,12 @@ Terms: quality culture, root cause analysis (RCA), human error, skill-based erro
 | Separative device, isolator, glovebox, mini-environment, separation continuum / 隔離設備、隔離器、手套箱、分離連續譜 | ISO-14644 |
 | Rapid transfer port RTP alpha-beta port, double-door transfer, pass-through / 快速轉移接口、雙門轉移、傳遞艙 | ISO-14644 |
 | Hourly leak rate Rh, pressure integrity, glove breach test / 每小時洩漏率、壓力完整性、手套破損測試 | ISO-14644 |
+| Needle-based injection system NIS, autoinjector pen injector system designation / 針式注射系統、自動注射器、筆型注射器、系統標識 | ISO-11608-1 |
+| System designation A B1 B2 C D1 D2, replaceable integrated container, full partial expulsion / 系統標識A/B1/B2/C/D1/D2、可換式整合式容器、完全部分排出 | ISO-11608-1 |
+| Dose accuracy testing, gravimetric measurement, V_meas G_meas density rho / 劑量準確性測試、重量法、V=G/ρ密度計算 | ISO-11608-1 |
+| Statistical tolerance interval k-value k_act k_tar, one-sided two-sided, probability content p / 統計容差區間k值、單側雙側、機率含量p | ISO-11608-1 |
+| NIS design requirements 23 requirements risk analysis ISO 14971, measurement uncertainty / NIS設計要求23項、風險分析、測量不確定度 | ISO-11608-1 |
+| Test matrix Table 3, extreme condition testing temperature humidity drop / 試驗矩陣表3、極端條件試驗、溫度濕度跌落 | ISO-11608-1 |
 | HVAC for sterile manufacturing, air change rate, HEPA filter / 無菌製造HVAC、換氣次數、HEPA過濾器 | ISPE-Vol3 + ISPE-HVAC |
 | Pressure cascade, differential pressure, airlock design / 壓力梯度、壓差、氣閘設計 | ISPE-Vol3 + ISPE-HVAC |
 | oRABS vs cRABS vs isolator, barrier technology comparison / 開放式vs封閉式RABS vs隔離器 | ISPE-Vol3 + PtC-12 |
@@ -1055,6 +1061,9 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 
 **Medical Devices & Combination Products — Aseptic Processing (醫療器材與組合產品無菌製程)**
 → ISO-13408-7 ★★★ (primary standard: complete alternative aseptic process framework for products that cannot use standard media fill — surrogate product selection, FMEA risk assessment, RPN threshold, small batch rule, FIH/clinical/PPQ lifecycle, viable-cell product sterility testing via RMM, Annex A FMEA case study, Annex B/C testing option matrix) | ISO-11040-6 ★★ (plastic polymer barrel prefilled syringe — a common combination product format: COC/COP/PP materials, RTF subassembled syringe, SAL 10⁻⁶, particles/endotoxin requirements) | TR73-2 ★★ (EU MDR regulatory requirements for combination products with staked needles, Annex I GSPR) | ISO-13408 ★★ (Part 7 overview in series context; Part 1 baseline framework that Part 7 extends)
+
+**Needle-Based Injection Systems / Drug Delivery Device Standards (針式注射系統/藥物遞送裝置標準)**
+→ ISO-11608-1 ★★★ (primary standard: system designations A/B1/B2/C/D1/D2, 23 design requirements 5.5a–w, dose accuracy test methods gravimetric/volumetric, statistical tolerance interval k-value method, test matrix Table 3 by designation, extreme condition testing Table 4, labeling requirements, Annex B k-value tables n=5 to 1000) | ISO-11040 ★★★ (prefilled syringe as delivery platform: glass/plastic barrel, plunger stopper, tub-and-nest packaging, RTF format — physical container side) | FDA-ComboProd-CGMP ★★★ (CGMP compliance for combination products including autoinjectors: 21 CFR Part 4 streamlined approach, QMSR alignment) | FDA-ComboProd-HF ★★★ (human factors for delivery devices: critical tasks, formative/validation study, FDA HF guidance application to autoinjectors) | TR73 ★★ (PDA perspective on PFS CCI and drug compatibility) | TR73-2 ★★ (EU MDR requirements for staked needle combination products)
 
 **TSE/BSE / Animal-Derived Materials (TSE/BSE/動物源材料)**
 → PtC-13 ★★★ (safety requirements, regulatory overview Table 3.2-1, human/animal-derived classification) — single primary source
@@ -1319,6 +1328,34 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 - Section 1 (Part 1): Classification — ISO Classes 1–9, Table 1, Annexes A–F (sampling method, calculations, M descriptor, sequential sampling, test instruments)
 - Section 2 (Part 5): Operations — Normative requirements (4.1–4.6) + Informative Annexes A–F (operational systems, clothing, personnel, equipment, materials, cleaning)
 - Section 3 (Part 7): Separative Devices — Design/Construction/Testing requirements + Annexes A–F (separation continuum, air systems, access devices, transfer devices, leak testing, Parjo method)
+
+---
+
+## ISO/ISO-11608-1-Complete.md
+**Report:** ISO 11608-1:2014 — Needle-Based Injection Systems for Medical Use — Requirements and Test Methods — Part 1: Needle-Based Injection Systems
+**Pages:** p5–p50 | **Sections:** 6
+
+**Covers questions about:**
+- System Designations: A (replaceable multi-dose variable volume), B1 (replaceable single-dose full expulsion), B2 (replaceable single-dose partial expulsion), C (integrated multi-dose variable volume), D1 (integrated single-dose full expulsion), D2 (integrated single-dose partial expulsion)
+- Design requirements for needle-based injection systems: 23 specific requirements (5.5 a–w) covering materials, biocompatibility, breakage, needle engagement, firing mechanism, dose selection, lockout, needle retraction, and labeling
+- Risk analysis and measurement uncertainty: ISO 14971 risk management integration, Type A/B uncertainty evaluation, expanded uncertainty U at 95% confidence level
+- Dose accuracy testing: gravimetric vs. volumetric methods — V_meas = G_meas / ρ at test temperature; when each applies
+- Statistical tolerance intervals: one-sided (for B1, D1 full-expulsion systems), two-sided (for A, B2, C, D2 variable/partial-expulsion systems); k_act ≥ k_tar acceptance condition
+- k-value lookup: Annex B table structure, k_tar based on n (sample size) and p (probability content)
+- Test matrix (Table 3): required tests by system designation — which of the 23 tests apply to A/B1/B2/C/D1/D2
+- Extreme condition testing: Table 4 environmental stress conditions (temperature 5°C/40°C, humidity 85%, drop test), when required
+- Labeling requirements (Sec 13): mandatory declarations including system designation letter, dose setting range, drug compatibility statement
+- Annex B: statistical k-value tables — one-sided k₁ and two-sided k₂ values for p=0.90/0.95/0.99 across n=5 to 1000
+
+**Key terms:** needle-based injection system (NIS), system designation A/B1/B2/C/D1/D2, replaceable container system, integrated container system, full expulsion, partial expulsion, dose accuracy, nominal dose, delivered dose, tolerance interval (one-sided/two-sided), k-value (k_act/k_tar), probability content (p), statistical confidence level, gravimetric measurement, delivered volume (V_meas), density (ρ), measurement uncertainty, expanded uncertainty (U), Type A/B uncertainty, extreme condition testing, glide force, activation force, dose selection mechanism, needle engagement, lockout mechanism, needle retraction, autoinjector, pen injector, ISO 14971
+
+**Sections:**
+- Section 1: Foreword, Introduction & Scope — document structure, referenced standards, normative references, scope boundaries
+- Section 2: Terms, Definitions & Symbols — System Designations A/B1/B2/C/D1/D2, key measurement terms, statistical symbols (k, p, n, U, u_c)
+- Section 3: Requirements — Risk Analysis (5.3), Measurement Uncertainty (5.4), 23 Design Requirements (5.5 a–w)
+- Section 4: Reagents & Dose Accuracy Testing — test reagents (Sec 6), gravimetric/volumetric methods (Sec 7), Table 2 dose accuracy method matrix by designation
+- Section 5: Test Matrix & Test Procedures — test preparation (Sec 8), Table 3 test matrix (Sec 9), test procedures 10.1–10.21
+- Section 6: Inspection, Labeling & Annexes — visual/functional inspection (Sec 11), test report (Sec 12), labeling (Sec 13), Annex A worked examples, Annex B k-value tables
 
 ---
 
