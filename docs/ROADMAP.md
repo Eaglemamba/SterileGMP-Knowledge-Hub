@@ -2,7 +2,7 @@
 
 This document summarizes the current coverage status, gap analysis, and expansion roadmap for building a comprehensive sterile pharmaceutical manufacturing knowledge hub suitable for COO-level operational decision-making.
 
-Last updated: 2026-04-08 — 144 documents complete (PDA 41, USP 76, ISPE 14, FDA 5, ICH 3, PIC/S 1, ISO 4); ISO 14644 complete (Parts 1/5/7); ISO 11608-1 complete; ISO 14971, 13485 next
+Last updated: 2026-04-08 — 145 documents complete (PDA 41, USP 76, ISPE 14, FDA 5, ICH 3, PIC/S 1, ISO 5); ISO 14644, 11608-1, 13485 complete; ISO 14971, 10993-1, TR 24971 next
 
 ---
 
@@ -36,7 +36,7 @@ Layer 3: Site-Specific Documents             ~/Amaran-Site-Knowledge/
 
 | Component | Status | Count |
 |-----------|--------|-------|
-| Layer 1 — Regulatory Reference | ✅ Complete | 144 documents |
+| Layer 1 — Regulatory Reference | ✅ Complete | 145 documents |
 | Expert Knowledge Base | ⬜ Not started | 9 files planned |
 | Layer 2 — Operational Frameworks | ⬜ Not started | ~27 files planned |
 | Layer 2 — Skills System | ⬜ Not started | 26 slash commands planned |
@@ -65,12 +65,12 @@ Layer 3: Site-Specific Documents             ~/Amaran-Site-Knowledge/
 | **FDA** | 5 | Aseptic Processing, Process Validation, Process Inspection, Combination Products CGMP, HF for Combo Products | ✅ Complete |
 | **ICH** | 3 | Q8(R2), Q9(R1), Q10 | ✅ Complete |
 | **PIC/S** | 1 | Annex 1 (2022) | ✅ Complete |
-| **ISO** | 4 | ISO 11040 (Prefilled Syringes Parts 1–8), ISO 13408 (Aseptic Processing Parts 1–7), ISO 14644 (Cleanrooms Parts 1/5/7), ISO 11608-1 (Needle-Based Injection Systems) — 14971, 13485, 17665 next | 🔄 In progress |
+| **ISO** | 5 | ISO 11040 (Prefilled Syringes Parts 1–8), ISO 13408 (Aseptic Processing Parts 1–7), ISO 14644 (Cleanrooms Parts 1/5/7), ISO 11608-1 (NIS), ISO 13485 (Medical Device QMS) — 14971, 10993-1, TR 24971, 17665 next | 🔄 In progress |
 | **IEC** | 0 | 62366-1 (usability engineering) | ⬜ Not started |
 | **EU GMP** | 0 | Annex 15, Annex 2, Annex 20 | ⬜ Future (Phase 6) |
 | **Ph. Eur.** | 0 | 5.1.1, 2.6.1, 2.6.14, 2.9.19/20 | ⬜ Future (Phase 6) |
 | **WHO GMP** | 0 | TRS 961 Annex 6, TRS 1010 | ⬜ Future (Phase 6) |
-| **Total** | **144** | | |
+| **Total** | **145** | | |
 
 ### USP Batch History
 
@@ -91,7 +91,7 @@ Layer 3: Site-Specific Documents             ~/Amaran-Site-Knowledge/
 | ISO 14971 — Risk Management for Medical Devices | Phase 5 | High | Medium |
 | ~~ISO 11608-1 — Needle-Based Injection Systems~~ | ✅ Done 2026-04-08 | — | — |
 | ISO 11608-3 — Finished containers for injection systems | Phase 5 | Medium | Small |
-| ISO 13485 — Medical Devices QMS | Phase 5 | High | Medium |
+| ~~ISO 13485 — Medical Devices QMS~~ | ✅ Done 2026-04-08 | — | — |
 | IEC 62366-1 — Usability Engineering / Human Factors | Phase 5 | Medium | Medium |
 | FDA — Design Considerations for Combination Products (2019 Draft) | Phase 5 | Medium | Small |
 | PDA TR76 — CCI Testing Technology | Phase 5 | Medium | Medium |
