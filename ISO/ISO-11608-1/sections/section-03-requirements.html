@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISO 11608-1 — Section 3: Requirements — Design & Risk</title>
+    <style>
+:root { --primary-blue: #1e3a5f; --accent-blue: #3498db; --light-gray: #fafafa; --light-blue: #f0f7ff; --yellow-start: #fff9e6; --yellow-end: #fff3cd; --green-bg: #e8f5e9; --green-border: #4caf50; --orange-bg: #fff3e0; --orange-border: #ff9800; --purple-bg: #f3e5f5; --purple-border: #9c27b0; --text-dark: #2d3748; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif; line-height: 1.75; color: var(--text-dark); background: #f0f2f5; }
+.header { background: linear-gradient(135deg, #4c1d95 0%, #6d28d9 100%); color: white; padding: 2rem; text-align: center; }
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+.left-column { background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; }
+.left-column h2 { color: var(--primary-blue); border-bottom: 2px solid #6d28d9; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.left-column h3 { color: var(--primary-blue); margin: 1rem 0 0.5rem; font-size: 1rem; }
+.left-column p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.92rem; }
+.left-column li { margin-bottom: 0.4rem; }
+.right-column { background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #c4b5fd; }
+.right-column h2 { color: #4c1d95; border-bottom: 2px solid #7c3aed; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.right-column p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.section-title { font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
+.key-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
+.concept-box { background: var(--green-bg); border-left: 4px solid var(--green-border); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 0.92rem; line-height: 1.7; }
+.concept-box h4 { color: #2e7d32; margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600; }
+.concept-box p, .concept-box ul, .concept-box li { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.concept-box ul { margin-left: 1.25rem; }
+.analogy-box { background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%); border-left: 4px solid #f6ad55; border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 0.92rem; line-height: 1.7; }
+.analogy-box h4 { color: #856404; margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600; }
+.analogy-box p, .analogy-box ul { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.analogy-box ul { margin-left: 1.25rem; }
+.note-box { background: var(--orange-bg); border-left: 4px solid var(--orange-border); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 0.92rem; line-height: 1.7; }
+.note-box h4 { color: #c65102; margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600; }
+.note-box p, .note-box ul { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.note-box ul { margin-left: 1.25rem; }
+.practice-box { background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%); border: 2px dashed #3182ce; border-radius: 10px; padding: 1.25rem; margin: 1.25rem 0; font-size: 0.92rem; }
+.practice-box h4 { color: #2c5282; margin-bottom: 0.75rem; font-size: 0.95rem; font-weight: 600; }
+.practice-box ol { margin-left: 1.25rem; }
+.practice-box li { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.learning-objectives { background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+.req-item { display: flex; gap: 0.75rem; margin-bottom: 0.6rem; align-items: flex-start; }
+.req-label { background: #4c1d95; color: white; border-radius: 4px; padding: 2px 8px; font-size: 0.8rem; font-weight: 700; flex-shrink: 0; margin-top: 0.15rem; }
+.req-text { font-size: 0.92rem; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+.main-footer { background: var(--primary-blue); color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+@media (max-width: 900px) { .two-column { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Section 3: Requirements — Design & Risk Analysis</h1>
+    <div class="subtitle">設計要求與風險分析 — 23 項 NIS 設計規定詳解</div>
+    <div class="page-info">ISO 11608-1:2014 | Section 5.3–5.5 | p.5–p.7</div>
+</div>
+
+<div class="main-content">
+
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 ISO 14971 風險分析如何整合進 ISO 11608-1 設計要求（5.3 的強制性規定）</li>
+        <li>掌握 5.5 節 23 項設計要求的核心，辨別哪些與 CDMO 充填製程直接相關</li>
+        <li>了解量測不確定度（Measurement Uncertainty）要求對 CDMO QC 測試設備的影響</li>
+        <li>能在審查客戶 Design Verification 報告時，識別關鍵設計要求是否已被驗證</li>
+    </ul>
+</div>
+
+<!-- ====== RISK ANALYSIS + MEASUREMENT UNCERTAINTY ====== -->
+<div class="section-title">Section 5.3–5.4: 風險分析要求與量測不確定度</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>5.3 Risk Analysis Requirements</h3>
+        <p>The manufacturer shall conduct <span class="key-term">risk assessments in accordance with ISO 14971</span>. These risk assessments shall consider all aspects of the development, manufacture and intended use of the NIS for medical use.</p>
+        <p>The NIS shall conform to the <span class="key-term">usability requirements</span> specified in <strong>IEC 62366</strong>.</p>
+
+        <h3>5.4 Uncertainty of Measurement and Conformance with Specifications</h3>
+        <p><span class="key-term">Measurement uncertainty</span> shall be evaluated and expressed by the laboratory performing the test in accordance with <strong>ISO/IEC Guide 98-3 (GUM)</strong>.</p>
+        <p>Conformance with specifications is established in accordance with <strong>ISO 14253-1</strong>.</p>
+        <p>Note: ISO 14253-1 defines decision rules for proving conformity (or nonconformity) when measurement uncertainty is considered. When the measured value ± uncertainty does not overlap the specification limit, a clear pass/fail can be declared.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>ISO 14971 + IEC 62366：雙軌風險管理</h4>
+            <p>Section 5.3 要求兩個平行但互補的風險工具：</p>
+            <table style="font-size:0.85rem;">
+                <tr><th>標準</th><th>聚焦</th><th>主要輸出</th></tr>
+                <tr><td>ISO 14971</td><td>設備性能風險（功能失效、有害輸出）</td><td>Risk Management File (RMF)</td></tr>
+                <tr><td>IEC 62366</td><td>使用者操作風險（人為錯誤、可用性）</td><td>Usability Engineering File (UEF)</td></tr>
+            </table>
+            <p>例如：自動注射器的「針頭未完全縮回」是 ISO 14971 的風險（傷害患者）；「使用者不知道藥已打完」是 IEC 62366 的可用性問題（劑量不足）。兩者在設計驗證中都需要被驗證。</p>
+        </div>
+        <div class="note-box">
+            <h4>量測不確定度：影響 CDMO 合規判定</h4>
+            <p>ISO 14253-1 的「符合性判定規則」在實務上意味著：</p>
+            <ul>
+                <li><strong>保守判定</strong>：如果測量值 ± 不確定度跨越規格限，就不能宣告合格，需要更精確的測試或更保守的規格</li>
+                <li>這直接影響 CDMO 在充填製程驗證中設定 <strong>Internal Acceptance Criteria（內部接受標準）</strong>的方式</li>
+                <li>通常 CDMO 的 IAC 會比客戶 Release Criteria 更嚴格，以留下量測不確定度的緩衝</li>
+            </ul>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明：測量不確定度的符合性影響</h4>
+            <p>體重計顯示 99.5 kg，規格上限是 100 kg。如果體重計的量測不確定度是 ±1 kg，真實值可能在 98.5–100.5 kg 之間。</p>
+            <p>ISO 14253-1 的保守判定會說：<strong>不能宣告合格</strong>，因為不確定度範圍超過了規格限。</p>
+            <p>在 NIS 劑量準確性測試中，這意味著 k<sub>act</sub> 必須明顯大於 k<sub>tar</sub>，而非剛好等於。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ====== GENERAL DESIGN REQUIREMENTS ====== -->
+<div class="section-title">Section 5.5: General Design Requirements — 23 項設計規定</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>5.5 General Design Requirements (a–w)</h3>
+
+        <div class="req-item"><span class="req-label">a</span><span class="req-text">Container holder shall allow <strong>visibility of the deliverable volume</strong>. Risk analysis determines if a residual scale is required.</span></div>
+        <div class="req-item"><span class="req-label">b</span><span class="req-text">Except for B2 and D2, NISs shall deliver the <strong>entire labelled volume</strong> from the container.</span></div>
+        <div class="req-item"><span class="req-label">c</span><span class="req-text">B1 user-filled systems shall deliver the <strong>maximum volume needed to fill the container</strong> as specified in labelling.</span></div>
+        <div class="req-item"><span class="req-label">d</span><span class="req-text">When user pre-sets dose, injector shall provide <strong>dose indication</strong> (mL, mg, IU, or physician-specified units).</span></div>
+        <div class="req-item"><span class="req-label">e</span><span class="req-text">Dose pre-setting shall be indicated by <strong>visual AND (tactile and/or audible)</strong> means.</span></div>
+        <div class="req-item"><span class="req-label">f</span><span class="req-text">NIS shall indicate, at least by <strong>visual means</strong>, that it is ready for injection.</span></div>
+        <div class="req-item"><span class="req-label">g</span><span class="req-text">The state when ready to deliver shall be <strong>visibly different</strong> from the state after dose delivered.</span></div>
+        <div class="req-item"><span class="req-label">h</span><span class="req-text">NIS shall indicate injection stroke completion by <strong>visual, audible, or tactile means</strong> (or combination).</span></div>
+        <div class="req-item"><span class="req-label">i</span><span class="req-text">D2 systems: impossible to deliver remaining volume after actuation; <strong>impossible to reactivate</strong>.</span></div>
+        <div class="req-item"><span class="req-label">j</span><span class="req-text">Variable multi-dose NISs (A, C): shall prevent over-setting OR block delivery if pre-set exceeds remaining volume, OR indicate delivered/undelivered amount.</span></div>
+        <div class="req-item"><span class="req-label">k</span><span class="req-text">Fixed multi-dose NISs: shall not allow pre-setting if insufficient volume remains for a full fixed dose.</span></div>
+        <div class="req-item"><span class="req-label">l</span><span class="req-text">NIS shall be designed to function with its <strong>specified needles</strong> (see ISO 11608-2).</span></div>
+        <div class="req-item"><span class="req-label">m</span><span class="req-text">NIS shall be designed to function with its <strong>specified containers</strong> (see ISO 11608-3).</span></div>
+        <div class="req-item"><span class="req-label">n</span><span class="req-text">If NIS has automated functions: fulfil <strong>ISO 11608-5</strong> requirements.</span></div>
+        <div class="req-item"><span class="req-label">o</span><span class="req-text">If NIS contains electronic/electromechanical components and/or software: fulfil <strong>ISO 11608-4</strong> requirements.</span></div>
+        <div class="req-item"><span class="req-label">p</span><span class="req-text">Replaceable battery devices: removing batteries shall require <strong>two independent movements</strong>.</span></div>
+        <div class="req-item"><span class="req-label">q</span><span class="req-text">If small parts can be swallowed: labelling shall include <strong>warnings preventing access by children under 3</strong>.</span></div>
+        <div class="req-item"><span class="req-label">r</span><span class="req-text">Battery-containing NIS: shall allow user to determine <strong>power supply state</strong>.</span></div>
+        <div class="req-item"><span class="req-label">s</span><span class="req-text">Software-containing NIS: software designed based on <strong>life-cycle model per IEC 62304</strong>.</span></div>
+        <div class="req-item"><span class="req-label">t</span><span class="req-text">Risk analysis shall consider use of <strong>alarms</strong> as appropriate (per IEC 60601-1-11).</span></div>
+        <div class="req-item"><span class="req-label">u</span><span class="req-text">Adverse effects of <strong>medicinal product contact</strong> with NIS shall be assessed and mitigated through risk assessment.</span></div>
+        <div class="req-item"><span class="req-label">v</span><span class="req-text"><strong>Biological requirements</strong> established in accordance with ISO 10993-1.</span></div>
+        <div class="req-item"><span class="req-label">w</span><span class="req-text">Where test methods are given without acceptance criteria, the manufacturer shall establish <strong>specifications using risk-based approach</strong> (ISO 14971 + IEC 62366).</span></div>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>23 項設計要求的分類解讀</h4>
+            <p>5.5 節的 23 項要求（a-w）可分為五大類：</p>
+            <table style="font-size:0.85rem;">
+                <tr><th>類別</th><th>要求項目</th><th>核心目的</th></tr>
+                <tr><td>劑量可視性</td><td>a, b, c, d</td><td>用戶知道要打多少、還剩多少</td></tr>
+                <tr><td>狀態指示</td><td>e, f, g, h</td><td>視覺/觸覺/聽覺反饋：設定了、準備好了、打完了</td></tr>
+                <tr><td>過量保護</td><td>i, j, k</td><td>防止過量注射或設備被重複使用</td></tr>
+                <tr><td>系統整合</td><td>l, m, n, o</td><td>與針頭、容器、電子元件的連結標準</td></tr>
+                <tr><td>安全性</td><td>p-w</td><td>電池、軟體、生物相容性、兒童安全</td></tr>
+            </table>
+        </div>
+        <div class="note-box">
+            <h4>CDMO 最需關注的要求：u 和 v</h4>
+            <p><strong>要求 u — 藥品與裝置接觸的不良影響</strong>：</p>
+            <ul>
+                <li>這是 Extractables &amp; Leachables（E&amp;L）研究的法規依據</li>
+                <li>CDMO 的藥品直接接觸 PFS 的矽化塗層、橡膠活塞、不鏽鋼針頭</li>
+                <li>客戶的 Risk Assessment 應覆蓋所有接觸面，並符合 ISO 10993-1（要求 v）</li>
+                <li>CDMO 在技術轉移時需確認：客戶是否已完成 E&amp;L 研究，且研究涵蓋 CDMO 使用的相同供應商/批號的初級包材</li>
+            </ul>
+        </div>
+        <div class="note-box">
+            <h4>要求 w：CDMO 有機會發揮的空間</h4>
+            <p>要求 w 說：「沒有接受標準的測試，製造商自行建立規格。」</p>
+            <p>這意味著某些測試（如自由跌落測試的外觀檢查標準）由客戶根據風險分析自定。</p>
+            <p>對 CDMO 而言：<strong>技術轉移 protocol 必須清楚定義哪些測試的 Acceptance Criteria 由客戶提供，哪些是 ISO 強制規定的</strong>。若客戶 AC 過於寬鬆，CDMO 有責任提出風險評估質疑。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明：狀態指示要求（e-h）的設計哲學</h4>
+            <p>要求 e-h 本質上是「操作反饋設計」：使用者在每個步驟都需要確認：</p>
+            <ul>
+                <li><strong>e：設定了</strong>（我選了 1 mL，按鍵有聲音）</li>
+                <li><strong>f：準備好了</strong>（蓋子已移除，準備注射）</li>
+                <li><strong>g：狀態改變了</strong>（注射前後外觀不同，避免重複注射）</li>
+                <li><strong>h：打完了</strong>（聽到「咔」或感覺到設備縮回）</li>
+            </ul>
+            <p>這些要求正是 IEC 62366 可用性工程的精髓：「任何步驟的操作失誤都不能導致危害」。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>客戶的 autoinjector（D1 系統）沒有剩餘藥量視窗，只有「已打完」指示燈。哪個設計要求（a-w）可能受到挑戰？應如何進行風險評估？</li>
+                <li>CDMO 發現客戶的 E&amp;L 研究使用的是不同供應商的矽化 PFS，而 CDMO 採購的 PFS 來自另一家供應商。依據要求 u，CDMO 應如何處理？</li>
+                <li>要求 w 說「製造商自行建立接受標準」，但 CDMO 認為客戶的跌落測試標準過於寬鬆。CDMO 在技術轉移協議中應如何記錄此分歧？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>雙軌風險管理強制要求</strong>：ISO 14971（性能風險）+ IEC 62366（可用性風險）均為 Section 5.3 強制要求，缺一不可；CDMO 技術轉移應要求客戶提供 Risk Management File + Usability Engineering File</li>
+        <li><strong>量測不確定度影響合規判定</strong>：ISO 14253-1 的保守判定原則要求 CDMO 設定比客戶 Release Criteria 更嚴格的 Internal Acceptance Criteria，以留下測量誤差緩衝</li>
+        <li><strong>23 項設計要求的優先順序</strong>：對 CDMO 最直接相關的是 a-d（劑量可視性）、u（E&amp;L 相容性）、v（ISO 10993-1 生物評估）和 w（製造商自定 AC 的義務）</li>
+        <li><strong>系統整合要求（l, m, n, o）</strong>：確認 NIS 設計已針對特定針頭、容器、電子元件進行過整體系統測試，這是 Type A 被廢除後的核心精神</li>
+    </ul>
+</div>
+
+</div>
+
+<div class="main-footer">
+    <p>ISO 11608-1:2014 — Needle-Based Injection Systems for Medical Use (Part 1)</p>
+    <p>SterileGMP Knowledge Hub | Section 3: Requirements — Design &amp; Risk Analysis</p>
+</div>
+
+</body>
+</html>
