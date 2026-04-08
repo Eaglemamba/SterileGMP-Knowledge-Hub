@@ -592,6 +592,11 @@ Terms: quality culture, root cause analysis (RCA), human error, skill-based erro
 | Visible particle test Ph.Eur. 2.9.20, visual inspection viewing station black white panel / 可見異物試驗Ph.Eur.、目視檢查觀測站、黑白背景板 | PhEur-2920 |
 | Viewing illumination 2000-3750 lux visible particles, light diffuser fluorescent LED / 可見異物照度2000-3750 lux、擴散光源白光燈管LED | PhEur-2920 |
 | Essentially free from visible particles injection parenteral qualitative visual test / 注射劑基本上不含可見異物、定性目視判定標準 | PhEur-2920 + USP-790 |
+| Glass containers pharmaceutical use Type I Type II Type III borosilicate soda-lime / 藥用玻璃容器Type I硼矽酸鹽Type II表面處理Type III鈉鈣玻璃分類 | PhEur-321 + USP-660 |
+| Hydrolytic resistance glass Test A surface water attack Test B glass grains titration / 玻璃耐水解性Test A內表面水蝕試驗Test B玻璃顆粒試驗鹽酸滴定 | PhEur-321 |
+| Test C etching test distinguish Type I Type II surface treatment HF HCl etching / Test C蝕刻試驗區分Type I Type II玻璃是否表面處理HF鹽酸蝕刻 | PhEur-321 |
+| Glass delamination flakes lamellae pharmaceutical vial risk factors citrate phosphate / 玻璃脫層薄片脫落注射劑風險因素磷酸鹽檸檬酸鹽緩衝液 | PhEur-321 + USP-1660 |
+| Spectral transmission coloured glass containers UV 290-450 nm parenteral amber brown / 有色玻璃光譜透射率290-450 nm注射劑棕色琥珀色玻璃限度 | PhEur-321 |
 | Sterilizing filtration, filter sterilization, 0.22 µm filter, 0.2 µm membrane filtration / 滅菌過濾、過濾除菌、0.22微米過濾器 | ISO-13408-2 + TR26 |
 | Bacterial challenge test BCT, microbial retention validation, Brevundimonas diminuta / 細菌挑戰測試、微生物截留驗證、微小短波單胞菌 | ISO-13408-2 + TR26 |
 | Filter integrity test acceptance criteria, correlation to BCT, diffusive flow bubble point / 過濾器完整性測試接受標準、細菌截留相關性 | ISO-13408-2 + TR26 |
@@ -947,6 +952,13 @@ Terms: quality culture, root cause analysis (RCA), human error, skill-based erro
 | Documented information replaces documents procedures quality manual records ISO 2015 / 文件化資訊取代文件程序品質手冊記錄 | ISO-9000 |
 | Audit terminology auditee auditor criteria evidence findings mapped FDA inspection / 稽核術語被稽核方稽核員準則證據發現對應FDA查廠 | ISO-9000 |
 | Traceability definition pharma material equipment process ISO 9000 / 可追溯性定義製藥材料設備製程ISO 9000 | ISO-9000 |
+| Medical device label symbols ISO 15223-1, standardized graphical symbols, labelling requirements / 醫療器材標籤符號、標準化圖形符號、標示要求 | ISO-15223-1 |
+| Manufacturer authorized representative importer distributor symbols EU MDR / 製造商授權代表進口商經銷商符號EU MDR | ISO-15223-1 |
+| Sterile non-sterile symbol single use EO radiation steam sterilization labelling / 無菌非無菌符號單次使用EO輻射蒸汽滅菌標示 | ISO-15223-1 |
+| REF LOT SN serial number batch code reference number UDI GS1 barcode / 參考編號批號序號UDI GS1條碼醫療器材識別 | ISO-15223-1 |
+| Caution IFU instructions for use biohazard latex Rx only precaution symbols / 注意使用說明生物危害乳膠處方專用警示符號 | ISO-15223-1 |
+| Symbol validation comprehension test 67% threshold target group usability / 符號驗證理解測試67%接受標準目標族群可用性 | ISO-15223-2 |
+| Develop new medical device symbol ISO 14971 IEC 62366 risk management usability engineering / 開發新醫療器材符號風險管理可用性工程 | ISO-15223-2 |
 | HVAC for sterile manufacturing, air change rate, HEPA filter / 無菌製造HVAC、換氣次數、HEPA過濾器 | ISPE-Vol3 + ISPE-HVAC |
 | Pressure cascade, differential pressure, airlock design / 壓力梯度、壓差、氣閘設計 | ISPE-Vol3 + ISPE-HVAC |
 | oRABS vs cRABS vs isolator, barrier technology comparison / 開放式vs封閉式RABS vs隔離器 | ISPE-Vol3 + PtC-12 |
@@ -1630,6 +1642,54 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 
 ---
 
+## ISO/ISO-15223-1-Complete.md
+**Report:** ISO 15223-1:2016 — Medical Devices: Symbols for Labels and Labelling (Part 1: General requirements)
+**Pages:** p1–p32 (32 pages) | **Sections:** 3
+
+**Covers questions about:**
+- ~80 standardized graphical symbols for medical device labels — what each symbol looks like, means, and when to use it
+- Why symbols replace text on global medical device labels (language barriers, EU MDR / FDA / PMDA multilingual requirements)
+- Symbol Category 5.1 (Manufacturer, Authorized Representative, Importer, Distributor, Date of Manufacture)
+- Symbol Category 5.2–5.3: Date information (use-by, manufacture date) and sterility symbols (STERILE, NON-STERILE, EO, radiation, steam, single-use, do not resterilize)
+- Symbol Category 5.4: Storage and handling (temperature range, humidity, keep dry, fragile, sunlight, damaged package)
+- Symbol Category 5.5–5.6: Precaution symbols (Caution, IFU, biohazard, latex, Rx only) and identification symbols (REF, LOT, SN) — UDI triad
+- How to construct compound symbols using negation and prohibition overlays (Annex B)
+- Regulatory requirements: EU MDR 2017/745, FDA 21 CFR Part 801, GHTF SG1, ISO 8601 date format
+- CDMO labelling compliance checklist: which symbols are mandatory on prefilled syringes, vials, ampoules, IVD kits
+- ISO 15223-1 vs ANSI/AAMI ST93 comparison; GS1 AI mapping for LOT/SN/REF barcodes; UDI compliance
+
+**Key terms:** manufacturer symbol, authorized representative, importer, distributor, date of manufacture, use by date, expiry date, sterile, non-sterile, single use only, do not resterilize, EO sterilization, radiation sterilization, steam sterilization, temperature limitation, humidity limitation, keep dry, fragile, caution, instructions for use (IFU), biohazard, latex, Rx only, REF reference number, LOT batch code, SN serial number, catalogue number, GMDN, IVD, UDI, GS1 barcode, prohibition symbol, negation symbol
+
+**Sections:**
+- Section 1 (p1–p10): Foreword & Introduction + Clause 1 Scope + Clause 2 Normative References + Clause 3 Terms & Definitions (3.1–3.6) + Clause 4 General Requirements (4.1–4.3) + Symbol Category 5.1 (Manufacturer, Authorized Representative EC, Importer, Distributor, Date of Manufacture)
+- Section 2 (p11–p20): Symbol Categories 5.2 (Date: use-by, manufacture, do not use after) + 5.3 (Sterility: STERILE, NON-STERILE, EO/EOG, radiation, steam/moist heat, do not resterilize, single use) + 5.4 (Storage: temperature, humidity, keep dry, fragile, sunlight, damaged package)
+- Section 3 (p21–p32): Symbol Categories 5.5 (Precaution: caution, IFU, biohazard, latex, non-pyrogenic, Rx only) + 5.6 (ID: REF, LOT, SN, catalogue, GMDN, QTY, IVD) + Annex A (label examples) + Annex B (negation/prohibition compounds) + Bibliography + CDMO compliance checklist
+
+---
+
+## ISO/ISO-15223-2-Complete.md
+**Report:** ISO 15223-2:2010 — Medical Devices: Symbol Development, Selection and Validation (Part 2)
+**Pages:** p1–p24 (24 pages) | **Sections:** 1
+
+**Covers questions about:**
+- How to develop a new medical device label symbol from concept to ISO 15223-1 adoption
+- Symbol validation process: comprehension test methodology, sample size (n≥25), 67% acceptance threshold
+- When manufacturers need to run their own symbol validation (non-standard symbols not in ISO 15223-1)
+- Relationship between ISO 15223-2 and ISO 14971 (risk management) and IEC 62366 (usability engineering)
+- Symbol selection process: searching ISO 7000/IEC 60417 database before creating new symbols
+- How to submit a new symbol for inclusion in ISO 15223-1
+- Three symbol maturity levels: concept → original symbol → labelling symbol
+- Pre-test preparation, target group definition, open-ended labelling test vs. multiple-choice test
+- Why 67% comprehension threshold (risk-based reasoning per ISO 14971)
+- Complete case study: validating a "Do Not Freeze" symbol for biologic prefilled syringe (step-by-step)
+
+**Key terms:** symbol validation, comprehension test, target group, usability study, candidate symbol, labelling symbol, original symbol, 67% threshold, open-ended labelling test, multiple-choice test, ISO 14971 risk management, IEC 62366 usability engineering, ISO 7000 database, IEC 60417, symbol development, symbol selection, symbol submission, CDMO labelling validation
+
+**Sections:**
+- Section 1 (p1–p24): Introduction + Clause 1 Scope + Clause 2 Normative References + Clause 3 Terms & Definitions + Clause 4 Symbol Development (need establishment, design brief) + Clause 5 Symbol Selection (database search, option 1 vs 2) + Clause 6 Symbol Development Process (4-method flow) + Clause 7 Database Search Requirements + Clause 8 Validation Process (pre-test, methods, context effects) + Clause 9 Acceptance Criteria (67% threshold, pre-specification requirement) + Annexes A–C + Bibliography + "Do Not Freeze" case study
+
+---
+
 ## ICH Quality Guidelines Knowledge Base
 
 ### ICH Q9(R1) - Quality Risk Management
@@ -2061,7 +2121,7 @@ Key terms: leachables, analytical evaluation threshold (AET), leachables specifi
 → PHEUR/PhEur-2920 ★★★ (Ph.Eur. 2.9.20 primary: viewing station equipment A/B/C/D, 2000–3750 lux illumination, 5s no magnification, black+white dual-panel method, essentially free from visible particles principle; qualitative pass/fail with limits in individual monographs) | USP/USP-1790 ★★★ (comprehensive guide: MVI, AVI, Knapp study, PoD, inspector qualification, AQL) | USP/USP-790 ★★ (visible particulates test requirements) | PDA/TR85 ★★★ (enhanced particle detection, ECIM) | PICS-Annex1 ★★ (visual inspection regulatory requirements)
 
 **Container Closure Systems — Testing & Materials (容器密封系統試驗/材料)**
-→ USP/USP-660 ★★★ (glass containers: Type I/II/III, chemical resistance tests) | USP/USP-661 ★★★ (plastic packaging: materials, physicochemical tests, biological reactivity) | USP/USP-381 ★★★ (elastomeric components: stoppers, plungers, physicochemical & biological tests) | USP/USP-670 ★★★ (auxiliary components: desiccants, coils, odor adsorbents) | USP/USP-671 ★★★ (container performance: light transmission, moisture permeation, classification) | PDA/TR27 ★★★ (CCI integrity testing methodology) | USP/USP-1207 ★★★ (package integrity evaluation: deterministic vs probabilistic methods)
+→ PHEUR/PhEur-321 ★★★ (Ph.Eur. 3.2.1 primary: glass classification Type I/II/III; delamination risk factors (citrate/phosphate, terminal sterilisation); Test A inner surface water attack (121°C×60 min, 0.01 M HCl titration, Table 3.2.1-3); Test B glass grains (300–425 µm, 121°C×30 min, 0.02 M HCl, Type I ≤0.1 mL/g); Test C etching (HF/HCl 1:9, 5–10× increase = surface-treated); arsenic ≤0.1 ppm; spectral transmission 290–450 nm Table 3.2.1-5) | USP/USP-660 ★★★ (glass containers: Type I/II/III, chemical resistance tests) | USP/USP-661 ★★★ (plastic packaging: materials, physicochemical tests, biological reactivity) | USP/USP-381 ★★★ (elastomeric components: stoppers, plungers, physicochemical & biological tests) | USP/USP-670 ★★★ (auxiliary components: desiccants, coils, odor adsorbents) | USP/USP-671 ★★★ (container performance: light transmission, moisture permeation, classification) | PDA/TR27 ★★★ (CCI integrity testing methodology) | USP/USP-1207 ★★★ (package integrity evaluation: deterministic vs probabilistic methods)
 
 **Glass Container Inner Surface Durability / Delamination (玻璃容器內表面耐久性/脫層)**
 → USP/USP-1660 ★★★ (primary: delamination mechanism, risk factors, ICP-MS/SEM-EDX, mitigation) | USP/USP-660 ★★ (glass chemical resistance testing) | PDA/TR87 ★★ (glass vial handling and processing best practices)
