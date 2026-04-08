@@ -1,0 +1,368 @@
+# ISO 13926-2:2017 — Pen Systems: Plunger Stoppers for Pen-Injectors for Medical Use: Part 2: Plunger stoppers for pen-injectors — Third edition
+
+ISO
+13926-2
+INTERNATIONAL
+STANDARD
+Third edition
+2017-11
+Pen systems —
+Plunger stoppers for pen-injectors for
+Pmaerdt 2ic:a l use
+Systèmes de stylos-injecteurs —
+Partie 2: Bouchons-pistons pour stylos-injecteurs à usage médical
+Reference number
+ISO 13926-2:2017(E)
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:22:29 MDT ©
+ISO 2017
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 13926-2:2017(E)
+COPYRIGHT PROTECTED DOCUMENT
+© ISO 2017, Published in Switzerland
+All rights reserved. Unless otherwise specified, no part of this publication may be reproduced or utilized otherwise in any form
+or by any means, electronic or mechanical, including photocopying, or posting on the internet or an intranet, without prior
+written permission. Permission can be requested from either ISO at the address below or ISO’s member body in the country of
+the requester.
+ISO copyright office
+Ch. de Blandonnet 8 • CP 401
+CH-1214 Vernier, Geneva, Switzerland
+Tel. +41 22 749 01 11
+Fax +41 22 749 09 47
+copyright@iso.org
+www.iso.org
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reprodu i ct i ion or networking permitted without license from IHS Not for Resale, 10/14/2019 19:22:29 MDT © ISO 2017 – All rights reserved
+ISO 13926-2:2017(E)
+Contents
+Page
+Foreword iv
+Introduction v
+........................................................................................................................................................................................................................................
+1 Scope 1
+..................................................................................................................................................................................................................................
+2 Normative references 1
+.................................................................................................................................................................................................................................
+3 Terms and definitions 1
+......................................................................................................................................................................................
+4 Classification 1
+.....................................................................................................................................................................................
+5 Shape and dimensions 2
+............................................................................................................................................................................................................
+6 Designation 3
+....................................................................................................................................................................................
+7 Material 3
+................................................................................................................................................................................................................
+8 Requirements 3
+..........................................................................................................................................................................................................................
+..........................................................................................................................................................................................................
+8.1 General ...........................................................................................................................................................................................................3
+8.2 Physical requirements ......................................................................................................................................................................3
+8.2.1 Hardness .................................................................................................................................................................................3
+8.2.2 Freedom from leakage ................................................................................................................................................3
+8.2.3 Initiating and sustaining forces ...........................................................................................................................4
+8.2.4 Resistance to ageing ......................................................................................................................................................4
+8.3 Chemical requirements....................................................................................................................................................................4
+9 Labelling 4
+8.4 Biological requirements ..................................................................................................................................................................4
+Annex A Leakage test 5
+........................................................................................................................................................................................................................
+Bibliography 7
+(normative) ..........................................................................................................................................................................
+................................................................................................................................................................................................................................
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:22:29 MDT iii
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 13926-2:2017(E)
+Foreword
+ISO (the International Organization for Standardization) is a worldwide federation of national standards
+bodies (ISO member bodies). The work of preparing International Standards is normally carried out
+through ISO technical committees. Each member body interested in a subject for which a technical
+committee has been established has the right to be represented on that committee. International
+organizations, governmental and non-governmental, in liaison with ISO, also take part in the work.
+ISO collaborates closely with the International Electrotechnical Commission (IEC) on all matters of
+electrotechnical standardization.
+The procedures used to develop this document and those intended for its further maintenance are
+described in the ISO/IEC Directives, Part 1. In particular the different approval criteria needed for the
+different types of ISO documents should be noted. This document was drafted in accordance with the
+editorial rules of the ISO/IEC Directives, Part 2 (see www.iso.org/directives).
+Attention is drawn to the possibility that some of the elements of this document may be the subject of
+patent rights. ISO shall not be held responsible for identifying any or all such patent rights. Details of
+any patent rights identified during the development of the document will be in the Introduction and/or
+on the ISO list of patent declarations received (see www.iso.org/patents).
+Any trade name used in this document is information given for the convenience of users and does not
+constitute an endorsement.
+For an explanation on the voluntary nature of standards, the meaning of ISO specific terms and
+expressions related to conformity assessment, as well as information about ISO's adherence to the
+World Trade Organization (WTO) principles in the Technical Barriers to Trade (TBT) see the following
+URL: www.iso.org/iso/foreword.html. Transfusion, infusion and injection, and
+blood processing equipment for medical and pharmaceutical use
+This document was prepared by Technical Committee ISO/TC 76,
+.
+This third edition cancels and replaces the second edition (ISO 13926-2:2011), which has been
+technically revised. It also incorporates the Amendment ISO 13926-2:2011/Amd. 1:2015.
+The main changes codmpdared to dthe previous edition are as follows: d
+— the dimensions 1, 2 and 3 in Table 1 have been changed from normative to informative; 2 is
+required to align with ISO 13926-1;
+— Formula (A.1) has been corrected.
+A list of all parts in the ISO 13926 series can be found on the ISO website.
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reprodu i ct v ion or networking permitted without license from IHS Not for Resale, 10/14/2019 19:22:29 MDT © ISO 2017 – All rights reserved
+ISO 13926-2:2017(E)
+Introduction
+Primary packaging components made of elastomeric materials are an integral part of medicinal
+products and thus, the principles of current Good Manufacturing Practices (cGMP) apply to the
+manufacturing of these components.
+Principles of cGMP are described in, for example, ISO 15378 or GMP Guidelines as published by the
+European Community and the United States of America.
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:22:29 MDT v
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:22:29 MDT
+INTERNATIONAL STANDARD ISO 13926-2:2017(E)
+Pen systems —
+Plunger stoppers for pen-injectors for medical use
+Part 2:
+1 Scope
+This document specifies the material, performance requirements and labelling and gives
+recommendations for shape and dimensions of plunger stoppers for pen-injectors for medical use.
+NOTE The potency, purity, stability and safety of a medicinal product during its manufacture and storage
+can strongly be affected by the nature and performance of the primary packaging.
+2 Normative references
+The following documents are referred to in the text in such a way that some or all of their content
+constitutes requirements of this document. For dated references, only the edition cited applies. For
+undated refeRruebnbceers —, th Teo llaetreasntc eeds iftoior np roofd tuhcet sr e—fe rPeanrcte 1d: Ddoimcuenmseionnt a(li ntoclleurdainncge asny amendments) applies.
+ISO 3302-1, Rubber, vulcanized or thermoplastic — Determination of indentation hardness — Part 1:
+Durometer method (Shore hardness)
+ISO 7619-1,
+Elastomeric parts for parenterals and for devices for pharmaceutical use — Part 1: Extractables
+in aqueous autoclavates
+ISO 8871-1,
+Elastomeric parts for parenterals and for devices for pharmaceutical use — Part 4: Biological
+requirements and test methods
+ISO 8871-4,
+Needle-based injection systems for medical use — Requirements and test methods — Part 3:
+Finished containers
+ISO 11608-3,
+Pen systems — Part 1: Glass cylinders for pen-injectors for medical use
+ISO 13926-1, Pen systems — Part 3: Seals for pen-injectors for medical use
+ISO 13926-3,
+3 Terms and definitions
+No terms and definitions are listed in this document.
+ISO and IEC maintain terminological databases for use in standardization at the following addresses:
+— IEC Electropedia: available at http://www.electropedia.org/
+— ISO Online browsing platform: available at http://www.iso.org/obp
+4 Classification
+Plunger stoppers shall be classified as follows:
+— Type A1: plunger stoppers with ribs;
+— Type A2: plunger stoppers without ribs;
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:22:29 MDT
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 13926-2:2017(E)
+— Type A3: plunger stoppers with ribs and dome.
+5 Shape and dimensions
+5.1
+The shapeds and dimensions of plunger stoppers as shown in Figure 1 are as given in Table 1.
+The dimension 1 shall be specified by using the selected cartridges according to ISO 13926-1 and the
+selected seal as per ISO 13926-3. The system can then be validdatded ads described in ISO 11608-3.
+The dimensions that refer to the plunger stopper diameters ( 1, 2, 3) are informative.
+Dimensions in millimetres
+a) Type A1 b) Type A2 c) Type A3
+Key
+d d d
+h
+1, 2, 3 diameters of plunger stoppers
+height of plunger stoppers
+a
+The height shall be agreed between the manufacturer and the user.
+
+*[Figure 1 — Shape and dimensions of plunger stoppers for pen-injectors for medical use]*
+
+Table 1 — Typical examples for dimensions of plunger stoppers for pen-injectors for medical use
+Diameter
+Dimensions in millimetres
+Nominal inner diameter
+d d d
+of the glass cylinder
+a 1 3 2
+min. min. max.
+6,85 7,1 7,0 6,6
+8,65 8,9 8,8 8,4
+9,25 9,5 9,4 9,0
+9,65 9,9 9,8 9,4
+a
+Values in accordance with ISO 13926-1.
+The height shall be agreed between the manufacturer and the user.
+Corresponding glass barrels are recommended in ISO 13926-1 and the corresponding seals in
+ISO 13926-3.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:22:29 MDT © ISO 2017 – All rights reserved
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 13926-2:2017(E)
+The compatibility of the components glass barrel and rubber plunger and seals shall be thoroughly
+validated as described in ISO 11608-3.
+5.2
+In order to avoid adhesion of the plunger stoppers to each other, there shall be spacers. The height
+of the spacers shall not exceed 0,3 mm.
+The shape of the spacers should be agreed between the manufacturer and the cartridge assembler.
+5.3
+If not otherwise specified, general dimensional tolerances shall be in accordance with ISO 3302-1.
+6 Designation
+Plunger stoppers can be designated adccording to their type (see Clause 4 and Figure 1). The designation
+shall be expressed as the word "plunger", followed by a reference to this document, followed by the
+inner diameter of the glass cylinder, 2, followed by the type letter.
+EXAMPLE Designation of a plunger stopper Type A1 complying with the requirements of this document for a
+glass cylinder with an inner diameter Pofl u6n,8g5e mr mIS:O 13926-2 – 6,85 – A1
+7 Material
+Plunger stoppers shall be made from the elastomeric formulation originally tested and approved by the
+end-user. The manufacturer of the plunger stoppers shall ensure the conformance of each delivery with
+the type sample and the compliance with previously agreed functional and compendial requirements.
+The elastomeric material shall withstand two sterilization cycles when autoclaving in saturated steam
+at (121 ± 2) °C for 30 min without impairment of its function under the conditions of normal use. In case
+of other sterilization methods, e.g. irradiation, the suitability of the material has to be evaluated.
+8 Requirements
+
+### 8.1 General
+
+The requirements specified in 8.2 to 8.4 represent minimum requirements which refer to the condition
+of the elastomeric plunger stoppers on receipt by the user.
+
+### 8.2 Physical requirements
+
+#### 8.2.1 Hardness
+
+The hardness agreed between the manufacturer and the user shall not differ from the nominal value by
+more than ±5 Shore A when tested in accordance with ISO 7619-1 on special test specimen. Alternatively,
+the hardness can be tested on the plunger stoppers according to ISO 48. If tested according to ISO 48,
+the microhardness shall not differ by more than ±5 IRHD from the type sample.
+The manufacturer should provide suitable test specimen upon requests.
+
+#### 8.2.2 Freedom from leakage
+
+The cartridges shall be free from leakage at the plunger when tested in accordance with the method
+given in Annex A.
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:22:29 MDT
+ISO 13926-2:2017(E)
+
+#### 8.2.3 Initiating and sustaining forces
+
+The initiating and sustaining forces are influenced by all components of the container closure systems
+and process parameters, e.g. siliconization. The testing of complete systems is described in ISO 11608-3.
+The results depend on the configuration and the pre-treatment (dry, kind of liquid, storage time, etc.).
+
+#### 8.2.4 Resistance to ageing
+
+The maximum time between the date of manufacture and the pharmaceutical use should be agreed
+upon between the manufacturer of the plunger stoppers and the user.
+The plunger stoppers shall maintain their performance characteristics throughout the entire shelf life
+of the medicinal product which is tested as part of the stability test by the user.
+NOTE Ageing depends upon the storage and handling conditions. A guide to storage of vulcanized rubber is
+given in ISO 2230.
+
+### 8.3 Chemical requirements
+
+The requirements in ISO 8871-1 shall apply.
+
+### 8.4 Biological requirements
+
+The requirements in ISO 8871-4 shall apply.
+9 Labelling
+Packed plunger stoppers which meet the requirements of this document can be marked with the
+designation given in Clause 6.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:22:29 MDT © ISO 2017 – All rights reserved
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 13926-2:2017(E)
+Annex A
+L(enaokrmagaet itvees)t
+A.1 Principle
+Water-filled cartridges are prepared using the plunger stoppers to be tested. By means of a suitable
+device, a force is applied to the plunger stopper during a defined time interval. Any observed leakage is
+recorded.
+The leakage test of the plunger stoppers and the seals (see ISO 13926-3) can be combined.
+A.2 Apparatus
+A.2.1 Cartridge cylinders
+, with a silicone-treated inner surface in accordance with ISO 13926-1.
+A.2.2 Seals
+, in accordance with ISO 13926-3.
+A.2.3 Plungers
+, in accordance with this document.
+A.2.4 Suitable equipment
+, to prepare water-filled cartridges.
+A.2.5 Cartridge holder
+, for example, as specified in ISO 11608-3.
+A.2.6 Device
+, capable to apply a force as calculated in accordance with A.3.2.
+A.3 Procedure
+A.3.1
+Take 10 cartridges and fill them with water practically air-free using the plunger stoppers to
+be tested.
+The water may be replaced by a coloured solution in order to improve the visibility of the leakage.
+A.3.2
+F
+Place the first cartridge, mounted in the cartridge holder (A.2.5), into the pressurizing device
+(A.2.6), and appNly a f(or2ce), , as calculated in accordance with Formula A.1, for 1 min.
+F =0,64 × d
+mm
+(A.1)
+wherFe
+d is the force to be applied in newton (N);
+d
+is the inner diameter of the glass cylinder in millimetres (mm) in accordance with
+ISO 13926-1 (in ISO 13926-1, the inner diameter of the glass cylinder is designated );
+0,64 is a correction factor in newton/square millimetres (N/mm ).
+Check for leakage at the plunger stopper.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:22:29 MDT
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 13926-2:2017(E)
+SAFETY PRECAUTIONS — Adequate safety measures should be in place to protect the operator.
+A.3.3
+Repeat the operation described in A.3.2 on the remaining cartridges.
+A.4 Expression of results
+Report the number of leakages observed at the plunger stoppers.
+Report if the testing of the plunger stoppers and the seals (see ISO 13926-3) has been combined.
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:22:29 MDT © ISO 2017 – All rights reserved
+ISO 13926-2:2017(E)
+Bibliography
+Rubber, vulcanized or thermoplastic — Determination of hardness (hardness between 10
+IRHD and 100 IRHD)
+[1] ISO 48,
+Rubber products — Guidelines for storage
+[2] ISO 2230, Primary packaging materials for medicinal products — Particular requirements for the
+application of ISO 9001:2015, with reference to good manufacturing practice (GMP)
+[3] ISO 15378,
+[4] EC Guide to Good Manufacturing Practice for Medicinal Products, III/2244/87, rev. 3 — January
+1998 as amended
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`--- 7
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith7ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:22:29 MDT
+ISO 13926-2:2017(E)
+ICS 11.040.25
+Price based on 7 pages
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reprodu©ctio nI oSr One t2wo0rk1ing7 p e–rm Aittelld wriithgohutt lisce rnsees freomr vIHeSd Not for Resale, 10/14/2019 19:22:29 MDT
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---

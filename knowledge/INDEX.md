@@ -963,6 +963,10 @@ Terms: quality culture, root cause analysis (RCA), human error, skill-based erro
 | GS1 Application Identifier AI SSCC GTIN lot expiry serial number barcode encoding / GS1應用識別碼SSCC GTIN批號到期日序號條碼編碼 | ISO-15394 |
 | DSCSA EU FMD drug serialization label requirement AI 00 01 10 17 21 / DSCSA EU FMD藥品序列化標籤要求批號到期日序號 | ISO-15394 |
 | Pallet label placement 4-side visibility shipping carton primary secondary tertiary packaging / 棧板標籤四面能見度出貨紙箱一二三級包裝 | ISO-15394 |
+| Pen-injector glass cylinder cartridge dimensions Type I borosilicate siliconization / 筆型注射器玻璃筒尺寸一型硼矽酸鹽玻璃矽化處理 | ISO-13926-1 |
+| Pen-injector plunger stopper rubber gliding force BIIR CIIR extractables leachables / 筆型注射器活塞塞橡膠滑動力可萃取物浸出物 | ISO-13926-2 |
+| Pen-injector seal septum resealability penetration force coring fragmentation / 筆型注射器密封件自密封性穿刺力碎屑 | ISO-13926-3 |
+| GLP-1 pen insulin pen cartridge container closure system ISO 13926 pen system / GLP-1筆胰島素筆筒型容器密封系統筆型系統 | ISO-13926-1 + ISO-13926-2 + ISO-13926-3 |
 | HVAC for sterile manufacturing, air change rate, HEPA filter / 無菌製造HVAC、換氣次數、HEPA過濾器 | ISPE-Vol3 + ISPE-HVAC |
 | Pressure cascade, differential pressure, airlock design / 壓力梯度、壓差、氣閘設計 | ISPE-Vol3 + ISPE-HVAC |
 | oRABS vs cRABS vs isolator, barrier technology comparison / 開放式vs封閉式RABS vs隔離器 | ISPE-Vol3 + PtC-12 |
@@ -1716,6 +1720,73 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 - Section 1 (p1–p25): Foreword + Introduction + Clause 1 Scope + Clause 2 Normative References (14 standards) + Clause 3 Terms & Definitions (SSCC/GTIN/AI/HRI/quiet zone) + Clause 4 Concepts (two-layer framework: data content + data carrier) + Clause 5 Data Content (GS1 AIs: 00/01/10/11/17/21/30/400; SSCC structure; DSCSA/EU FMD AI mapping)
 - Section 2 (p26–p50): Clause 6 Data Carriers (GS1-128 mandatory, supplementary 2D selection) + Clause 7 Label Design (4 mandatory zones, HRI AI parentheses, bearer bars, color contrast) + Clause 8 Label Placement (primary/secondary/tertiary, 4-side pallet) + Annex A (linear bar code specs: X-dimension, quiet zone 10×, print quality 1.5/10/660) + Annex B (PDF417, QR Code, MaxiCode, GS1 Digital Link specifications)
 - Section 3 (p51–p76): Annex C (building block label design, LPB table) + Annex D (application guidelines checklist) + Annex E (label examples: pharma carton, medical device, pallet, cold chain) + Annex F (12 container placement types) + Annex G (multi-symbology: symbology identifiers, migration paths) + Bibliography + Global serialization comparison table + CDMO shipping label compliance checklist
+
+---
+
+## ISO/ISO-13926-1-Complete.md
+**Report:** ISO 13926-1:2018 — Pen Systems: Glass Cylinders for Pen-Injectors for Medical Use (Part 1, Fourth edition)
+**Pages:** p1–p12 (12 pages) | **Sections:** 1
+
+**Covers questions about:**
+- Dimensional requirements for glass cylinders (cartridges) used in pen-injectors (insulin pens, GLP-1 pens, growth hormone pens)
+- Four standard d1 diameter variants and all 8 key dimensions (d1–d6, h1, h2) with tolerances
+- Glass material: Type I borosilicate (ISO 720 HGA1 / ISO 4802 HC1) — why and how tested
+- Siliconization of glass cylinders: purpose, amount control, impact on plunger gliding force
+- Bore geometry: conical bore tolerance (≤0.3 mm over h1 length), surface quality requirements
+- Connection to ISO 13926-2 (plunger stopper) and ISO 13926-3 (seal) — three-part pen system integration
+- ISO 13926-1 vs ISO 11040-4 (prefilled syringe glass cylinders) comparison
+- CDMO selection criteria for glass cartridges for GLP-1 biologics (Ozempic/Wegovy type products)
+- Annealing requirement (residual stress ≤40 nm/mm), 9-month change notification to end-user
+
+**Key terms:** pen-injector, glass cylinder, cartridge, d1 diameter, borosilicate glass, Type I glass, siliconization, gliding force, bore geometry, conical bore, annealing, pen needle, plunger stopper, needle seal, ISO 720, ISO 4802, ISO 11608, GLP-1 pen, insulin pen, container closure system
+
+**Sections:**
+- Section 1 (p1–p12): Foreword + Introduction + Scope + Normative References + Terms + Dimensional Specifications (Table 1 all variants) + Material Requirements + Bore Geometry + Designation Format + CDMO Context
+
+---
+
+## ISO/ISO-13926-2-Complete.md
+**Report:** ISO 13926-2:2017 — Pen Systems: Plunger Stoppers for Pen-Injectors for Medical Use (Part 2, Third edition)
+**Pages:** p1–p14 (14 pages) | **Sections:** 1
+
+**Covers questions about:**
+- Dimensional requirements for rubber plunger stoppers in pen-injector cartridges (Type A1/A2/A3)
+- Rubber compound selection: BIIR (bromobutyl) vs CIIR (chlorobutyl) for protein drug compatibility
+- Gliding force requirements — initiating force vs. sustaining force, acceptable ranges
+- Leakage test procedure (Annex A): F = formula, n=10 sample, worked calculations for all cartridge sizes
+- Siliconization of plunger stoppers: particle generation risk vs. gliding force optimization
+- ISO 8871 extractables/leachables compliance for rubber closures
+- Biological safety testing (ISO 8871-4) and chemical characterization (ISO 8871-1)
+- Ageing requirements and end-user approval for rubber compound changes
+- Integration with ISO 13926-1 (cartridge) and ISO 13926-3 (seal) for full pen container system
+
+**Key terms:** plunger stopper, pen-injector, gliding force, initiating force, sustaining force, BIIR bromobutyl rubber, CIIR chlorobutyl rubber, extractables leachables, ISO 8871, leakage test, siliconization, rubber compound, ageing, Type A1 A2 A3, Shore A hardness, interference fit, spacer
+
+**Sections:**
+- Section 1 (p1–p14): Scope + References + Classification (Type A1/A2/A3) + Dimensions (Table 1) + Material Requirements + Requirements (hardness, leakage, gliding force, ageing, E&L) + Annex A Leakage Test + CDMO Decision Framework
+
+---
+
+## ISO/ISO-13926-3-Complete.md
+**Report:** ISO 13926-3:2019 — Pen Systems: Seals for Pen-Injectors for Medical Use (Part 3, Second edition)
+**Pages:** p1–p14 (14 pages) | **Sections:** 1
+
+**Covers questions about:**
+- Dimensional requirements for seals (septums/needle seals) at the front of pen-injector cartridges
+- Type A (mono-layer) vs. Type B (double-layer) seals — when to use which
+- Resealability after multiple needle punctures — critical for multi-injection pen devices
+- Penetration and withdrawal force requirements — impact on patient user experience
+- Fragmentation/coring risk: 29G needle test per ISO 8871-5
+- Aluminum cap anodizing requirement (second edition change)
+- Leakage test (Annex A): F = 0.64 × d² formula with worked examples
+- ISO 8871 extractables/leachables + biological safety for rubber seal material
+- Steam sterilization compatibility (121°C/30 min, 2 cycles) and irradiation evaluation
+- Integration: ISO 13926-3 seal + ISO 13926-1 cartridge + ISO 13926-2 plunger = complete pen container
+
+**Key terms:** seal, septum, needle seal, pen-injector, resealability, penetration force, withdrawal force, coring, fragmentation, Type A mono-layer, Type B double-layer, aluminum cap, anodizing, ISO 8871, ISO 11608-3, ISO 23908, leakage test, extractables, 29G needle
+
+**Sections:**
+- Section 1 (p1–p14): Scope + References + Classification (Type A/B) + Dimensions + Material Requirements + Requirements (hardness, fragmentation, leakage, resealability, ageing, E&L) + Annex A Leakage Test + System compatibility table
 
 ---
 
