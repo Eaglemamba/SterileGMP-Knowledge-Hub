@@ -1,0 +1,1848 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISO 15378 - Section 3A: Section 8 Part 1 Operation</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 0 !important;
+    padding-left: 1.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== SOURCE BADGE (ISO Purple) ===== */
+.source-badge {
+    display: inline-block;
+    background: #7c3aed;
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+}
+
+/* ===== GMP ADDITIONAL REQUIREMENTS BLOCK ===== */
+.gmp-block {
+    background: #faf5ff;
+    border: 1px solid #d8b4fe;
+    border-left: 4px solid #7c3aed;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin: 0.75rem 0;
+    font-size: 0.93rem;
+}
+
+.gmp-block h4 {
+    color: #6d28d9;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.gmp-block p {
+    margin-bottom: 0.5rem;
+    font-size: 0.92rem;
+}
+
+.gmp-block ul {
+    padding-left: 1.4rem;
+    margin: 0.4rem 0;
+}
+
+.gmp-block li {
+    margin-bottom: 0.3rem;
+    font-size: 0.92rem;
+}
+
+/* ===== WARNING BOX (Red) ===== */
+.warning-box {
+    background: #fff5f5 !important;
+    border-left: 4px solid #e53e3e !important;
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.warning-box h3, .warning-box h4 {
+    color: #c53030 !important;
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.warning-box p, .warning-box li {
+    font-size: 0.92rem !important;
+    margin-bottom: 0.4rem !important;
+}
+
+.warning-box ul {
+    padding-left: 1.4rem !important;
+}
+
+/* ===== SUMMARY SECTION ===== */
+.summary-section {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+    color: white;
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.summary-section h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    padding-bottom: 0.5rem;
+}
+
+.summary-section ul {
+    margin-left: 1.25rem;
+}
+
+.summary-section li {
+    margin-bottom: 0.5rem;
+    font-size: 0.93rem;
+    line-height: 1.7;
+    opacity: 0.95;
+}
+
+.summary-section .key-insight {
+    background: rgba(255,255,255,0.12);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    margin-top: 1rem;
+    font-size: 0.92rem;
+    line-height: 1.7;
+}
+    </style>
+</head>
+<body>
+
+<div class="header" style="background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);">
+    <div class="source-badge">ISO 15378</div>
+    <h1>Section 8 (Part 1): Operation &#8212; Design, Purchasing &amp; Production</h1>
+    <div class="subtitle">第8節前半：運作 &#8212; 設計、採購與生產</div>
+    <div class="page-info">ISO 15378:2017 Primary Packaging Materials for Medicinal Products | p29 &ndash; p36</div>
+</div>
+
+<div class="main-content">
+
+    <div class="learning-objectives">
+        <h3>本節學習目標 Learning Objectives</h3>
+        <ul>
+            <li>理解 ISO 15378 第8節的雙層架構：ISO 9001:2015 基礎條款 + 額外 GMP 要求，以及為何藥用包材需要比一般製造更嚴格的管控。</li>
+            <li>掌握運作規劃（8.1）中風險管理流程如何貫穿整個產品實現過程，以及樣品保留的 GMP 意義。</li>
+            <li>了解客戶溝通（8.2.1）中的回饋系統、變更通知機制，以及 DMF/CoS 等法規申請文件的作用。</li>
+            <li>理解廢棄主包材（含樣品、印刷品、標籤）的管控要求，防止未授權使用。</li>
+            <li>掌握設計與開發（8.3）的規劃、輸入、控制、輸出與變更管理，特別是 GMP 增加的風險評估與驗證要求。</li>
+            <li>了解外部提供者控制（8.4）：供應商核准、品質關鍵材料的 CoA/CoC 驗證、外包製程的管控，以及實驗室能力評估要求。</li>
+        </ul>
+    </div>
+
+    <div class="toc">
+        <h3>本節內容架構 Section Structure</h3>
+        <div class="toc-grid">
+            <a href="#s81">8.1 運作規劃與控制</a>
+            <a href="#s821">8.2.1 客戶溝通</a>
+            <a href="#s822">8.2.2 產品要求確認</a>
+            <a href="#s823">8.2.3 要求審查</a>
+            <a href="#s824">8.2.4 要求變更</a>
+            <a href="#s831">8.3.1-2 設計與開發總則</a>
+            <a href="#s833">8.3.3 設計輸入</a>
+            <a href="#s834">8.3.4 設計控制</a>
+            <a href="#s835">8.3.5 設計輸出</a>
+            <a href="#s836">8.3.6 設計變更</a>
+            <a href="#s841">8.4.1 外部提供者總則</a>
+            <a href="#s842">8.4.2 控制類型與範圍</a>
+            <a href="#s843">8.4.3 外部提供者資訊</a>
+            <a href="#summary">總結</a>
+        </div>
+    </div>
+
+    <!-- ===================== 8.1 ===================== -->
+    <div class="section-title" id="s81">8.1 Operational Planning and Control / 運作規劃與控制</div>
+    <div class="two-column">
+        <div class="left-column">
+            <h2>原文內容 Original Text</h2>
+            <p><em>ISO 9001:2015 base text:</em></p>
+            <p>The organization shall <span class="key-term">plan, implement and control</span> the processes needed to meet the requirements for the provision of products and services, and to implement the actions determined in Clause 6, by:</p>
+            <ol type="a">
+                <li>determining the requirements for the products and services;</li>
+                <li>establishing criteria for:
+                    <ol>
+                        <li>the processes;</li>
+                        <li>the acceptance of products and services;</li>
+                    </ol>
+                </li>
+                <li>determining the resources needed to achieve conformity to the product and service requirements;</li>
+                <li>implementing control of the processes in accordance with the criteria;</li>
+                <li>determining, maintaining and retaining <span class="key-term">documented information</span> to the extent necessary:
+                    <ol>
+                        <li>to have confidence that the processes have been carried out as planned;</li>
+                        <li>to demonstrate the conformity of products and services to their requirements.</li>
+                    </ol>
+                </li>
+            </ol>
+            <p>The output of this planning shall be suitable for the organization's operations.</p>
+            <p>The organization shall control <span class="key-term">planned changes</span> and review the consequences of unintended changes, taking action to mitigate any adverse effects, as necessary.</p>
+            <p>The organization shall ensure that <span class="key-term">outsourced processes</span> are controlled (see 8.4).</p>
+
+            <div class="gmp-block">
+                <h4>Additional GMP-Related Requirements</h4>
+                <p><span class="key-term">Product realization planning</span> shall consider the requirement for consistent processing of primary packaging materials. Planning shall also take account of the need for taking and <span class="key-term">retaining samples</span> in appropriate conditions.</p>
+                <p>The organization shall ensure that <span class="key-term">risk management processes</span> are included in the planning and implemented throughout product realization; records shall be maintained (see 7.5.3.4).</p>
+            </div>
+        </div>
+        <div class="right-column">
+            <h2>教學解說 Educational Commentary</h2>
+
+            <div class="concept-box">
+                <h4>核心概念：雙層架構 (Layered Structure)</h4>
+                <p>ISO 15378 的結構設計非常獨特：每個條款先引用 <strong>ISO 9001:2015 的原文</strong>，然後追加<strong>額外 GMP 要求（Additional GMP-related requirements）</strong>。</p>
+                <p>這意味著製造藥用主包材的企業，必須同時滿足：</p>
+                <ul>
+                    <li>ISO 9001 的品質管理系統基礎 — 通用製造要求</li>
+                    <li>ISO 15378 的 GMP 附加條款 — 因藥品安全而增加的特殊要求</li>
+                </ul>
+                <p>就像「駕照 + 職業司機執照」— 後者涵蓋前者，但有更嚴格的標準。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>運作規劃的五個關鍵動作</h4>
+                <p>8.1 要求組織對每個產品實現製程做到：</p>
+                <ul>
+                    <li><strong>確認要求</strong>：產品規格、法規要求是什麼？</li>
+                    <li><strong>建立標準</strong>：製程接受準則 + 產品驗收標準</li>
+                    <li><strong>確保資源</strong>：人員、設備、環境</li>
+                    <li><strong>執行控制</strong>：按標準操作</li>
+                    <li><strong>保存記錄</strong>：證明製程依計畫執行且產品符合要求</li>
+                </ul>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻：如何製造一批玻璃瓶？</h4>
+                <p>想像你接到一張訂單，要生產 10 mL 的注射用玻璃瓶。8.1 要求你在動手前就規劃好：玻璃熔融溫度範圍、成型尺寸允差、退火曲線、清洗條件，以及何時取樣、如何保存留樣。</p>
+                <p>如果中途發現烤箱溫度偏高（非計畫變更），必須評估對產品的影響，採取緩解行動，並留下記錄。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>GMP 附加要求的重點：樣品保留 &amp; 風險管理</h4>
+                <p><strong>樣品保留（Sample Retention）</strong>：主包材的留樣不只是品質記錄，更是當市場出現問題時的調查依據。ISO 15378 要求在「適當條件」下保存，意味著需要考慮儲存溫度、濕度、光線等因素。</p>
+                <p><strong>風險管理貫穿全程</strong>：不是只在設計階段做一次風險評估就結束；整個產品實現過程（從原料進廠到成品出廠）都需要持續的風險管理，且記錄必須保存（7.5.3.4）。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== 8.2.1 ===================== -->
+    <div class="section-title" id="s821">8.2.1 Customer Communication / 客戶溝通</div>
+    <div class="two-column">
+        <div class="left-column">
+            <h2>原文內容 Original Text</h2>
+            <p><em>ISO 9001:2015 base text — 8.2.1 General:</em></p>
+            <p>Communication with customers shall include:</p>
+            <ol type="a">
+                <li>providing information relating to products and services;</li>
+                <li>handling enquiries, contracts or orders, including changes;</li>
+                <li>obtaining <span class="key-term">customer feedback</span> relating to products and services, including customer complaints;</li>
+                <li>handling or controlling <span class="key-term">customer property</span>;</li>
+                <li>establishing specific requirements for contingency actions, when relevant.</li>
+            </ol>
+
+            <div class="gmp-block">
+                <h4>8.2.1.2 Additional GMP-Related Requirements</h4>
+                <p><strong>8.2.1.2.1</strong> — The organization shall establish and maintain a <span class="key-term">documented feedback system</span> to provide early warning of potential and actual quality problems and to facilitate customer input into the corrective and preventive action system.</p>
+
+                <p><strong>8.2.1.2.2</strong> — When required by the customer, the organization shall agree with the customer which changes require <span class="key-term">written confirmation</span> prior to approval and which changes require notification only. Proposed changes shall be communicated in a timely manner and the process for introducing changes agreed (see 8.2.2).</p>
+                <p>It is recommended that, between the organization and the customer, there is a documented <span class="key-term">technical/quality assurance agreement</span> that includes the action to be taken for nonconformities.</p>
+
+                <p><strong>8.2.1.2.3</strong> — If specified by the customer, samples and <span class="key-term">certification documents</span> provided for evaluation, stability testing or clinical trials for <span class="key-term">marketing authorization applications</span>, shall be compliant with the appropriate GMP procedures and controls.</p>
+                <p>As part of a marketing authorization application, the customer can require the organization to provide specified information (composition, test data, specifications, control methods and processing conditions). An appropriately qualified individual within the organization shall approve such information.</p>
+                <p>Changes that affect any of the data supplied by the organization should be communicated to the customer or the regulatory authority, as appropriate.</p>
+
+                <div class="quote-box">NOTE: To facilitate organization confidentiality, scientific and technical information can be supplied as a dossier directly to the global authorities, for example in the form of a <strong>Drug Master File (DMF)</strong>, or <strong>European Pharmacopoeia Certificate of Suitability (CoS)</strong>, in connection with the application for a marketing authorization.</div>
+
+                <p><strong>8.2.1.2.4</strong> — For GMP requirements for <span class="key-term">printed primary packaging materials</span>, Annex C shall apply.</p>
+            </div>
+        </div>
+        <div class="right-column">
+            <h2>教學解說 Educational Commentary</h2>
+
+            <div class="concept-box">
+                <h4>為何藥用包材需要更嚴格的客戶溝通機制？</h4>
+                <p>一般製造業的客戶溝通多半是商業往來（訂單、報價、投訴處理）。但藥用主包材的客戶（製藥廠）把這些包材直接用在藥品上，若包材品質出問題，最終影響的是患者安全。</p>
+                <p>因此 ISO 15378 在 ISO 9001 基礎上新增三項 GMP 要求：<strong>回饋系統、變更確認機制、法規申請文件支援</strong>。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>8.2.1.2.1 — 文件化回饋系統</h4>
+                <p>這不只是「收客訴就處理」的被動做法。ISO 15378 要求的是<strong>主動式早期預警系統</strong>，要能：</p>
+                <ul>
+                    <li>及早發現潛在品質問題（不只是已發生的）</li>
+                    <li>將客戶的意見回饋納入 CAPA（糾正和預防措施）系統</li>
+                    <li>形成閉環：問題 → 分析 → 改善 → 確認效果</li>
+                </ul>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻：DMF 和 CoS 是什麼？</h4>
+                <p>想像製藥廠要申請一款新藥上市許可，其中需要說明所用玻璃瓶的詳細製造資訊（原料成分、測試方法、製程條件）。</p>
+                <p><strong>DMF（Drug Master File）</strong>：包材商直接向美國 FDA 提交技術檔案，藥廠申請時引用此 DMF 號碼。包材商的機密資訊不對藥廠公開，FDA 可直接審查。</p>
+                <p><strong>CoS（Certificate of Suitability）</strong>：歐洲藥典（Ph.Eur.）頒發的適用性證書，證明某材料符合 Ph.Eur. 專論標準，可在歐洲上市申請中引用。</p>
+                <p>這兩種機制讓包材商在保護商業機密的同時，仍能支援客戶的法規申請。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>變更通知的分類管理</h4>
+                <p>8.2.1.2.2 要求雙方事先<strong>協議</strong>哪些變更需要「書面確認後才能實施」，哪些只需「通知即可」。這應寫入技術/品保協議（Quality Agreement）中。</p>
+                <p>實務常見分類：</p>
+                <ul>
+                    <li><strong>需書面批准</strong>：原料供應商替換、製程參數重大變更、設備型號更換</li>
+                    <li><strong>通知即可</strong>：輕微的製程優化、非關鍵輔助材料的替換</li>
+                </ul>
+            </div>
+
+            <div class="note-box">
+                <h4>印刷主包材 — Annex C 適用</h4>
+                <p>8.2.1.2.4 特別指出：有印刷文字的主包材（如印刷瓶身標籤、直接印刷在包材上的劑量資訊）需遵循 Annex C 的 GMP 規定，包括版本控制、防止過期版本使用、印刷品核對等。這是因為印刷錯誤可能直接導致用藥錯誤（wrong dose, wrong drug）。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== 8.2.2 ===================== -->
+    <div class="section-title" id="s822">8.2.2 Determining the Requirements for Products and Services / 確認產品與服務要求</div>
+    <div class="two-column">
+        <div class="left-column">
+            <h2>原文內容 Original Text</h2>
+            <p>When determining the requirements for the products and services to be offered to customers, the organization shall ensure that:</p>
+            <ol type="a">
+                <li>the requirements for the products and services are defined, including:
+                    <ol>
+                        <li>any applicable <span class="key-term">statutory and regulatory requirements</span>;</li>
+                        <li>those considered necessary by the organization;</li>
+                    </ol>
+                </li>
+                <li>the organization can meet the claims for the products and services it offers.</li>
+            </ol>
+
+            <div class="gmp-block">
+                <h4>Additional GMP-Related Requirements</h4>
+                <p>Requirements related to the product, including <span class="key-term">changes requiring notification</span>, shall be determined and documented.</p>
+                <p>Customer requirements to avoid <span class="key-term">unauthorized use of waste primary packaging material</span> (including samples, print media, labels) shall be determined and documented.</p>
+            </div>
+        </div>
+        <div class="right-column">
+            <h2>教學解說 Educational Commentary</h2>
+
+            <div class="concept-box">
+                <h4>廢棄包材的安全銷毀要求</h4>
+                <p>這個 GMP 附加要求乍看不起眼，卻非常重要。「禁止未授權使用廢棄主包材」的典型情境：</p>
+                <ul>
+                    <li>不合格品（Rejects）的玻璃瓶流入市場，被非法填充藥品</li>
+                    <li>廢棄的印刷標籤被回收用於偽造藥品</li>
+                    <li>試作樣品（Samples）在未授權情況下被轉售</li>
+                </ul>
+                <p>因此，組織需要與客戶明確界定廢棄包材的處理方式（例如：銷毀記錄、第三方認證銷毀），並形成文件要求。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>法規要求的識別</h4>
+                <p>「適用的法規要求」對藥用包材而言可能包括：</p>
+                <ul>
+                    <li>各國藥典（USP、Ph.Eur.、JP）中的包材專論</li>
+                    <li>FDA 21 CFR（例如用於製藥的塑料容器相關規定）</li>
+                    <li>EU GMP 附錄中對包材的要求</li>
+                    <li>客戶所在市場的特定法規</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== 8.2.3 ===================== -->
+    <div class="section-title" id="s823">8.2.3 Review of Requirements / 要求審查</div>
+    <div class="two-column">
+        <div class="left-column">
+            <h2>原文內容 Original Text</h2>
+            <p>The organization shall ensure that it has the ability to meet the requirements for products and services to be offered to customers. The organization shall conduct a <span class="key-term">review before committing</span> to supply products and services to a customer, to include:</p>
+            <ol type="a">
+                <li>requirements specified by the customer, including the requirements for delivery and post-delivery activities;</li>
+                <li>requirements not stated by the customer, but necessary for the specified or intended use, when known;</li>
+                <li>requirements specified by the organization;</li>
+                <li>statutory and regulatory requirements applicable to the products and services;</li>
+                <li>contract or order requirements differing from those previously expressed.</li>
+            </ol>
+            <p>The organization shall ensure that contract or order requirements differing from those previously defined are resolved.</p>
+            <p>The customer's requirements shall be confirmed by the organization before acceptance, when the customer does not provide a documented statement of their requirements.</p>
+            <p>The organization shall retain documented information:</p>
+            <ol type="a">
+                <li>on the results of the review;</li>
+                <li>on any new requirements for the products and services.</li>
+            </ol>
+        </div>
+        <div class="right-column">
+            <h2>教學解說 Educational Commentary</h2>
+
+            <div class="concept-box">
+                <h4>承接訂單前的可行性審查</h4>
+                <p>這條款的核心精神是：在承諾供應前，先確認自己做得到。對藥用包材廠商而言，審查的關鍵問題包括：</p>
+                <ul>
+                    <li>我們的製程能達到客戶要求的粒子規格嗎？</li>
+                    <li>潔淨室等級符合要求嗎？</li>
+                    <li>我們已取得生產此規格產品所需的驗證嗎？</li>
+                    <li>客戶要求的測試項目，我們有能力執行嗎？</li>
+                </ul>
+            </div>
+
+            <div class="analogy-box">
+                <h4>「未明示但必要」的要求</h4>
+                <p>客戶說「我要一批 2 mL 安瓶，需符合 Ph.Eur. 3.2.1」，但沒提「耐熱冲擊測試」。然而玻璃安瓶用於最終滅菌製程時，耐熱冲擊是必要特性。</p>
+                <p>依 8.2.3(b)，即使客戶沒提，組織應主動識別並確認此要求。這正是包材商作為「專業夥伴」的價值所在。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== 8.2.4 ===================== -->
+    <div class="section-title" id="s824">8.2.4 Changes to Requirements / 要求變更</div>
+    <div class="two-column">
+        <div class="left-column">
+            <h2>原文內容 Original Text</h2>
+            <p>The organization shall ensure that <span class="key-term">relevant documented information is amended</span>, and that relevant persons are made aware of the changed requirements, when the requirements for products and services are changed.</p>
+        </div>
+        <div class="right-column">
+            <h2>教學解說 Educational Commentary</h2>
+
+            <div class="note-box">
+                <h4>變更傳達的實務重點</h4>
+                <p>這條款看似簡單，但在實務中常出現「修改了規格書，但現場操作人員不知道」的問題。組織需要建立有效的變更傳達機制，確保：</p>
+                <ul>
+                    <li>相關文件（SOP、規格書、品管計畫）同步更新</li>
+                    <li>相關人員（生產、QC、業務）都收到通知並理解變更內容</li>
+                    <li>訓練記錄更新（如有需要）</li>
+                    <li>變更的追溯性記錄保存</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== 8.3.1-2 ===================== -->
+    <div class="section-title" id="s831">8.3.1 &amp; 8.3.2 Design and Development — General &amp; Planning / 設計與開發 — 總則與規劃</div>
+    <div class="two-column">
+        <div class="left-column">
+            <h2>原文內容 Original Text</h2>
+            <p><strong>8.3.1 General:</strong> The organization shall establish, implement and maintain a <span class="key-term">design and development process</span> that is appropriate to ensure the subsequent provision of products and services.</p>
+
+            <p><strong>8.3.2 Design and development planning:</strong> In determining the stages and controls for design and development, the organization shall consider:</p>
+            <ol type="a">
+                <li>the nature, duration and complexity of the design and development activities;</li>
+                <li>the required process stages, including applicable design and development reviews;</li>
+                <li>the required design and development <span class="key-term">verification and validation</span> activities;</li>
+                <li>the responsibilities and authorities involved in the design and development process;</li>
+                <li>the internal and external resource needs;</li>
+                <li>the need to control interfaces between persons involved;</li>
+                <li>the need for involvement of customers and users;</li>
+                <li>the requirements for subsequent provision of products and services;</li>
+                <li>the level of control expected by customers and other relevant interested parties;</li>
+                <li>the documented information needed to demonstrate that design and development requirements have been met.</li>
+            </ol>
+
+            <div class="gmp-block">
+                <h4>Additional GMP-Related Requirements</h4>
+                <p>The organization shall implement documented procedures for design and development. These procedures shall include <span class="key-term">risk assessment</span>, determination of relevant aspects of GMP and any potential impact on the customer and ultimately the <span class="key-term">patient</span>.</p>
+                <p>The responsibility for design and risk assessment should be agreed between the customer and the organization.</p>
+            </div>
+        </div>
+        <div class="right-column">
+            <h2>教學解說 Educational Commentary</h2>
+
+            <div class="concept-box">
+                <h4>藥用包材的設計開發 — 為何需要正式流程？</h4>
+                <p>開發一款新的 PFS（預填充注射器）或新型藥用瓶，不是單純的工程設計問題。必須考慮：</p>
+                <ul>
+                    <li>包材與藥品的相容性（E&amp;L 測試）</li>
+                    <li>滅菌方式的耐受性</li>
+                    <li>臨床使用時的操作性（患者/護士能正確使用嗎？）</li>
+                    <li>生產製程的可行性和一致性</li>
+                    <li>法規申請所需的文件支持</li>
+                </ul>
+                <p>缺乏正式 D&amp;D 流程，很容易出現「設計出來的產品生產不了」或「上市後發現相容性問題」。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>GMP 附加要求的核心：患者影響評估</h4>
+                <p>ISO 9001 的設計規劃只要求考慮客戶要求和資源。ISO 15378 額外要求將「對患者的潛在影響」納入設計流程的文件化程序。</p>
+                <p>實例：開發一款新型橡膠塞。ISO 9001 視角只需確保尺寸符合規格、機械性能合格。ISO 15378 還要求評估：橡膠塞的可萃取物（Extractables）會不會遷移到藥液中？對患者是否有毒性風險？</p>
+                <p>這個「從患者角度出發」的思維，是 GMP 相較於一般品質管理的核心差異。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>設計責任的客戶-供應商協議</h4>
+                <p>條款建議雙方事先協議設計和風險評估的責任分工。實務上，這通常寫入 Quality Agreement 或 Technical Agreement 中。</p>
+                <p>典型分工案例：藥廠提供功能需求和相容性要求，包材廠負責材料設計和製程驗證，共同負責最終的風險評估文件。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== 8.3.3 ===================== -->
+    <div class="section-title" id="s833">8.3.3 Design and Development Inputs / 設計與開發輸入</div>
+    <div class="two-column">
+        <div class="left-column">
+            <h2>原文內容 Original Text</h2>
+            <p>The organization shall determine the requirements essential for the specific types of products and services to be designed and developed. The organization shall consider:</p>
+            <ol type="a">
+                <li><span class="key-term">functional and performance requirements</span>;</li>
+                <li>information derived from previous similar design and development activities;</li>
+                <li>statutory and regulatory requirements;</li>
+                <li>standards or codes of practice that the organization has committed to implement;</li>
+                <li>potential consequences of failure due to the nature of the products and services.</li>
+            </ol>
+            <p>Inputs shall be adequate for design and development purposes, <span class="key-term">complete and unambiguous</span>.</p>
+            <p><span class="key-term">Conflicting design and development inputs</span> shall be resolved.</p>
+            <p>The organization shall retain documented information on design and development inputs.</p>
+        </div>
+        <div class="right-column">
+            <h2>教學解說 Educational Commentary</h2>
+
+            <div class="concept-box">
+                <h4>設計輸入的品質決定設計成敗</h4>
+                <p>「垃圾進，垃圾出（Garbage in, garbage out）」在設計開發中同樣適用。設計輸入的關鍵要求是：</p>
+                <ul>
+                    <li><strong>完整（Complete）</strong>：不能缺項，特別是安全相關要求</li>
+                    <li><strong>明確（Unambiguous）</strong>：不能含糊，例如「足夠強度」要轉化為具體數值</li>
+                    <li><strong>無矛盾（Conflict-resolved）</strong>：若客戶要求「儘量輕薄」但法規要求最低厚度，必須解決這個矛盾</li>
+                </ul>
+            </div>
+
+            <div class="note-box">
+                <h4>(e) 失效後果評估 — GMP 的核心思維</h4>
+                <p>要求在設計輸入階段就考慮「若失效，後果是什麼？」這是 FMEA（失效模式與效應分析）的起點。</p>
+                <p>以藥瓶密封為例：若密封失效，可能導致無菌性失效 → 藥品污染 → 患者感染。這個嚴重性評估會直接影響設計的安全係數和驗收標準。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== 8.3.4 ===================== -->
+    <div class="section-title" id="s834">8.3.4 Design and Development Controls / 設計與開發控制</div>
+    <div class="two-column">
+        <div class="left-column">
+            <h2>原文內容 Original Text</h2>
+            <p>The organization shall apply controls to the design and development process to ensure that:</p>
+            <ol type="a">
+                <li>the results to be achieved are defined;</li>
+                <li><span class="key-term">reviews</span> are conducted to evaluate the ability of the results to meet requirements;</li>
+                <li><span class="key-term">verification</span> activities are conducted to ensure that outputs meet the input requirements;</li>
+                <li><span class="key-term">validation</span> activities are conducted to ensure that the resulting products meet the requirements for the specified application or intended use;</li>
+                <li>any necessary actions are taken on problems determined during reviews or V&amp;V activities;</li>
+                <li>documented information of these activities is retained.</li>
+            </ol>
+            <div class="quote-box">
+                NOTE: Design and development reviews, verification and validation have distinct purposes. They can be conducted separately or in any combination, as is suitable for the products and services of the organization. Verification and validation in this context is limited to design and development. For verification and validation of production and service provision, see 8.5.
+            </div>
+        </div>
+        <div class="right-column">
+            <h2>教學解說 Educational Commentary</h2>
+
+            <div class="concept-box">
+                <h4>Review / Verification / Validation 的區別</h4>
+                <p>這三個活動常被混淆，但目的不同：</p>
+                <ul>
+                    <li><strong>Review（設計審查）</strong>：評估設計結果能否滿足要求。可在設計各階段進行，通常為跨部門會議評審。問：「設計方向對嗎？」</li>
+                    <li><strong>Verification（驗證）</strong>：確認輸出符合輸入規格。通常是文件/計算/測試層面的核對。問：「做出來的東西符合設計規格嗎？」</li>
+                    <li><strong>Validation（確效）</strong>：確認產品在實際應用條件下能滿足預期用途。問：「這個包材在實際使用條件下能保護藥品嗎？」</li>
+                </ul>
+            </div>
+
+            <div class="analogy-box">
+                <h4>以藥用橡膠塞開發為例</h4>
+                <p>設計一款用於凍乾粉針的橡膠塞：</p>
+                <ul>
+                    <li><strong>Review</strong>：設計審查會議確認配方、尺寸設計符合客戶需求規格</li>
+                    <li><strong>Verification</strong>：測試橡膠塞尺寸是否符合設計圖面公差（例如內徑 ±0.1mm）</li>
+                    <li><strong>Validation</strong>：將橡膠塞裝入實際藥瓶並通過凍乾循環，確認密封性、抽真空後恢復性、與藥品的相容性符合預期用途</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== 8.3.5 ===================== -->
+    <div class="section-title" id="s835">8.3.5 Design and Development Outputs / 設計與開發輸出</div>
+    <div class="two-column">
+        <div class="left-column">
+            <h2>原文內容 Original Text</h2>
+            <p>The organization shall ensure that design and development outputs:</p>
+            <ol type="a">
+                <li>meet the input requirements;</li>
+                <li>are adequate for the subsequent processes for the provision of products and services;</li>
+                <li>include or reference <span class="key-term">monitoring and measuring requirements</span>, as appropriate, and acceptance criteria;</li>
+                <li>specify the characteristics of the products and services that are <span class="key-term">essential for their intended purpose</span> and their safe and proper provision.</li>
+                <li>are verified as suitable before finalizing product specifications.</li>
+            </ol>
+            <p>The organization shall retain documented information on design and development outputs.</p>
+            <div class="quote-box">
+                NOTE 1: The organization and customer are encouraged to work together to verify the appropriateness of the primary packaging materials for their intended use.<br><br>
+                NOTE 2: Design and development outputs can include records (specifications, manufacturing procedures, engineering drawings, engineering or research logbooks) and samples.
+            </div>
+        </div>
+        <div class="right-column">
+            <h2>教學解說 Educational Commentary</h2>
+
+            <div class="concept-box">
+                <h4>設計輸出是什麼？</h4>
+                <p>設計輸出是設計過程的「交付物」，通常包括：</p>
+                <ul>
+                    <li>產品規格書（Specification）</li>
+                    <li>製造程序（Manufacturing Procedure / SOP）</li>
+                    <li>工程圖面（Engineering Drawings）</li>
+                    <li>品管計畫（Control Plan / Inspection Plan）</li>
+                    <li>驗收標準（Acceptance Criteria）</li>
+                    <li>確認用樣品（Validation Samples）</li>
+                </ul>
+            </div>
+
+            <div class="note-box">
+                <h4>(e) 規格確定前的適宜性驗證 — GMP 增加的要求</h4>
+                <p>這是 ISO 15378 相較 ISO 9001 的額外要求。產品規格不能僅憑設計計算確定，必須在「最終確定」前，通過實際驗證（測試或試產）確認其適宜性。</p>
+                <p>實務意義：不能直接把設計圖紙變成正式規格書；必須先有試作樣品驗證的結果支持。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>NOTE 1 的實踐：供應商-客戶協同驗證</h4>
+                <p>包材廠開發出新的 PFS 筒管（Cartridge），客戶需在自己的灌裝線上進行相容性測試（填充、冷凍、運輸振動）。這種「聯合驗證」是業界的最佳實踐，可提前發現生產應用中的問題，避免上市後才出現系統性不符合。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== 8.3.6 ===================== -->
+    <div class="section-title" id="s836">8.3.6 Design and Development Changes / 設計與開發變更</div>
+    <div class="two-column">
+        <div class="left-column">
+            <h2>原文內容 Original Text</h2>
+            <p>The organization shall identify, review and control <span class="key-term">changes made during, or subsequent to, the design and development</span> of products and services, to the extent necessary to ensure that there is no adverse impact on conformity to requirements.</p>
+            <p>The organization shall retain documented information on:</p>
+            <ol type="a">
+                <li>design and development changes;</li>
+                <li>the results of reviews;</li>
+                <li>the authorization of the changes;</li>
+                <li>the actions taken to prevent adverse impacts.</li>
+            </ol>
+
+            <div class="gmp-block">
+                <h4>Additional GMP-Related Requirements</h4>
+                <p>Changes that affect any of the data supplied shall be reported to the <span class="key-term">customer</span> and, if a technical dossier/master file has been supplied by the organization, directly to the <span class="key-term">regulatory authorities</span>.</p>
+                <p>When implementing change, the existing <span class="key-term">validation</span> and documents affected by the change shall be reviewed and revised; personnel shall be <span class="key-term">retrained</span> as appropriate.</p>
+                <div class="quote-box">NOTE: Confidential scientific and technical information can be supplied as a dossier directly to the regulatory authorities (e.g. technical dossier and/or master file).</div>
+            </div>
+        </div>
+        <div class="right-column">
+            <h2>教學解說 Educational Commentary</h2>
+
+            <div class="concept-box">
+                <h4>設計變更控制的四大要素</h4>
+                <p>任何設計或開發後期的變更，必須透過正式的<strong>變更控制（Change Control）</strong>流程處理：</p>
+                <ol>
+                    <li><strong>識別（Identify）</strong>：誰、何時、改了什麼</li>
+                    <li><strong>審查（Review）</strong>：評估對產品品質、法規合規性的影響</li>
+                    <li><strong>授權（Authorize）</strong>：有權限的人員批准</li>
+                    <li><strong>行動（Act）</strong>：更新文件、重新訓練、必要時重新驗證</li>
+                </ol>
+            </div>
+
+            <div class="warning-box">
+                <h4>GMP 關鍵要求：法規通報義務</h4>
+                <p>這是 ISO 15378 最重要的 GMP 附加要求之一。若你向客戶提供了 DMF 或技術檔案，任何影響這些資料的變更，<strong>必須直接通報監管機構</strong>。</p>
+                <p>典型違規案例：原料供應商悄悄更換，包材廠沒有通知客戶也沒有更新 DMF，導致藥廠的上市許可技術要求與實際情況不符，引發 FDA Warning Letter。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>「驗證影響評估」是實施變更的前提</h4>
+                <p>當變更可能影響已驗證的製程或設備時，必須：</p>
+                <ul>
+                    <li>評估現有驗證文件是否仍然有效</li>
+                    <li>決定是否需要重新驗證（全部或部分）</li>
+                    <li>更新受影響的所有相關文件（SOP、規格書、驗證報告）</li>
+                    <li>對相關人員進行再培訓並記錄</li>
+                </ul>
+                <p>這就是為什麼變更控制需要跨職能（設計、生產、QA、RA）共同評估。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== 8.4.1 ===================== -->
+    <div class="section-title" id="s841">8.4.1 Control of Externally Provided Processes — General / 外部提供製程的控制 — 總則</div>
+    <div class="two-column">
+        <div class="left-column">
+            <h2>原文內容 Original Text</h2>
+            <p><em>ISO 9001:2015 base text:</em></p>
+            <p>The organization shall ensure that <span class="key-term">externally provided processes, products and services conform to requirements</span>.</p>
+            <p>The organization shall determine the controls to be applied when:</p>
+            <ol type="a">
+                <li>products and services from external providers are intended for incorporation into the organization's own products and services;</li>
+                <li>products and services are provided directly to the customer(s) by external providers on behalf of the organization;</li>
+                <li>a process, or part of a process, is provided by an external provider as a result of a decision by the organization.</li>
+            </ol>
+            <p>The organization shall determine and apply criteria for the <span class="key-term">evaluation, selection, monitoring of performance, and re-evaluation</span> of external providers, based on their ability to provide processes or products and services in accordance with requirements. The organization shall retain documented information of these activities and any necessary actions arising from the evaluations.</p>
+            <p>The organization shall maintain relevant purchasing information to the extent required for traceability.</p>
+
+            <div class="gmp-block">
+                <h4>Additional GMP-Related Requirements</h4>
+                <p>If any <span class="key-term">quality critical process</span> is outsourced, the organization shall ensure that the process complies with the requirements of this document.</p>
+            </div>
+        </div>
+        <div class="right-column">
+            <h2>教學解說 Educational Commentary</h2>
+
+            <div class="concept-box">
+                <h4>外部提供者的三種類型</h4>
+                <p>8.4 涵蓋所有形式的「向外採購或委外」：</p>
+                <ul>
+                    <li><strong>原材料供應商</strong>：玻璃砂、橡膠配方、聚合物原料</li>
+                    <li><strong>服務供應商</strong>：滅菌服務、檢測實驗室、校驗服務</li>
+                    <li><strong>委外製造</strong>：某製程步驟由另一廠商代工（例如表面處理）</li>
+                </ul>
+            </div>
+
+            <div class="concept-box">
+                <h4>供應商管理的四步驟循環</h4>
+                <ul>
+                    <li><strong>評估（Evaluation）</strong>：新供應商進入前的資格審查（稽核、樣品測試）</li>
+                    <li><strong>選擇（Selection）</strong>：依評估結果決定是否核准</li>
+                    <li><strong>績效監控（Performance Monitoring）</strong>：持續追蹤 CoA 合格率、交期、異常記錄</li>
+                    <li><strong>再評估（Re-evaluation）</strong>：定期重新審查（例如每年一次稽核或表現評分）</li>
+                </ul>
+            </div>
+
+            <div class="warning-box">
+                <h4>GMP 附加要求：品質關鍵製程外包的管控</h4>
+                <p>「品質關鍵製程（Quality Critical Process）」若外包，整個流程仍須符合 ISO 15378 的要求，責任不因外包而轉移。</p>
+                <p>例如：將玻璃瓶的最終清洗外包，但清洗是影響微粒污染的關鍵步驟，外包商的清洗程序、設備、環境、記錄，都必須符合 ISO 15378 的標準。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== 8.4.2 ===================== -->
+    <div class="section-title" id="s842">8.4.2 Type and Extent of Control / 控制類型與範圍</div>
+    <div class="two-column">
+        <div class="left-column">
+            <h2>原文內容 Original Text</h2>
+            <p><em>8.4.2.1 General (ISO 9001:2015 base):</em></p>
+            <p>The organization shall ensure that externally provided processes, products and services do not adversely affect the organization's ability to consistently deliver conforming products and services. The organization shall:</p>
+            <ol type="a">
+                <li>ensure that externally provided processes remain within the control of its quality management system;</li>
+                <li>define both the controls that it intends to apply to an external provider and those it intends to apply to the resulting output;</li>
+                <li>take into consideration:
+                    <ol>
+                        <li>the potential impact on the organization's ability to consistently meet requirements;</li>
+                        <li>the effectiveness of the controls applied by the external provider;</li>
+                    </ol>
+                </li>
+                <li>determine the verification, or other activities, necessary to ensure requirements are met.</li>
+            </ol>
+
+            <div class="gmp-block">
+                <h4>8.4.2.2 Additional GMP-Related Requirements</h4>
+                <p><strong>8.4.2.2.1</strong> — The organization shall <span class="key-term">approve suppliers</span> of (a) starting materials, (b) quality critical process aids, and (c) packaging materials for use in cleanrooms.</p>
+                <p><strong>8.4.2.2.2</strong> — The organization shall <span class="key-term">notify the customer</span> prior to outsourcing any part of the production process.</p>
+                <p><strong>8.4.2.2.3</strong> — All outsourced services that can affect product quality shall be controlled, including origination (artwork), laboratory services, <span class="key-term">sterilization</span>, calibration services and qualification services, maintenance, cleaning, haulage, pest control and waste contractors, depending on the risks involved.</p>
+                <p><strong>8.4.2.2.4</strong> — <span class="key-term">Consultants</span> advising on the production and control of primary packaging materials shall be considered as suppliers.</p>
+                <p><strong>8.4.2.2.5</strong> — Suppliers of quality critical materials and services shall be <span class="key-term">approved by the quality unit(s)</span> or a person assigned by the quality unit(s).</p>
+                <p><strong>8.4.2.2.6</strong> — The organization shall evaluate and record the <span class="key-term">competence of laboratories</span> to perform quality critical activities. The organization shall only use laboratories that it has accepted as being competent.</p>
+                <p><strong>8.4.2.2.7</strong> — If the sterilization process is outsourced, the organization shall ensure that the process complies with the requirements of 8.5.1.2, 8.5.1.3 and 8.5.1.4.</p>
+                <p><strong>8.4.2.2.8</strong> — Changing the source of <span class="key-term">quality critical raw materials</span> shall be subject to <span class="key-term">change control</span>.</p>
+                <p><strong>8.4.2.2.9</strong> — Incoming materials shall be physically or administratively <span class="key-term">quarantined</span> until they have been approved and released for use.</p>
+                <div class="quote-box">NOTE: In exceptional circumstances, material under test can be used, provided there are fail-safe procedures in place to prevent the release of primary packaging material, until the status of those materials has been confirmed.</div>
+                <p><strong>8.4.2.2.10</strong> — For quality critical materials, the organization shall periodically verify the relevant and/or critical information received from their suppliers on a <span class="key-term">certificate of analysis (CoA)</span>, <span class="key-term">certificate of conformity (CoC)</span>, or certificate of testing (CoT).</p>
+                <div class="quote-box">NOTE 1: This can mean performing similar testing on site, by an independent contractor, or routine audit of the facilities.<br><br>NOTE 2: In lieu of such testing, a report of analysis (CoA/CoC/CoT) can be accepted from the supplier, provided that <strong>at least one specific identity test</strong> is conducted on the material by the organization.</div>
+                <p><strong>8.4.2.2.11</strong> — Records of the verification shall be maintained.</p>
+                <p><strong>8.4.2.2.12</strong> — Sampling activities shall be conducted using procedures, facilities and equipment designed to <span class="key-term">avoid contamination</span>.</p>
+            </div>
+        </div>
+        <div class="right-column">
+            <h2>教學解說 Educational Commentary</h2>
+
+            <div class="concept-box">
+                <h4>8.4.2.2.1 — 三類必須核准的供應商</h4>
+                <p>這條款明確列出三類必須通過正式核准程序的供應商：</p>
+                <ul>
+                    <li><strong>起始材料（Starting Materials）</strong>：構成最終包材的原料，如玻璃原料、橡膠配方原料、聚合物顆粒</li>
+                    <li><strong>品質關鍵製程輔助品（Quality Critical Process Aids）</strong>：例如模具潤滑劑、清潔劑、矽油（若用於注射器塗層）</li>
+                    <li><strong>潔淨室用包裝材料</strong>：在潔淨室中使用的包材本身，例如包裝袋、托盤、運輸容器</li>
+                </ul>
+                <p>「核准」通常包含：供應商稽核、樣品測試、風險評估、核准委員會批准，並列入合格供應商清單（AVL）。</p>
+            </div>
+
+            <div class="warning-box">
+                <h4>8.4.2.2.2 — 外包前必須通知客戶</h4>
+                <p>這是許多包材廠容易忽略的要求。在開始外包任何生產製程的任何部分之前，必須事先通知客戶。</p>
+                <p>典型場景：為提升產能，決定將某個加工步驟分包給另一家廠商。此舉需要先知會客戶，因為客戶的藥品上市許可可能指定了生產地點或製程描述。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>8.4.2.2.3 — 廣泛的服務供應商管控範圍</h4>
+                <p>8.4.2.2.3 列出的服務涵蓋範圍相當廣，強調「任何可能影響產品品質的外包服務」都需要管控：</p>
+                <table>
+                    <tr><th>服務類別</th><th>品質影響風險</th></tr>
+                    <tr><td>版面設計（Artwork Origination）</td><td>印刷錯誤 → 用藥錯誤</td></tr>
+                    <tr><td>委外實驗室服務</td><td>測試結果不可靠 → 放行錯誤</td></tr>
+                    <tr><td>滅菌服務</td><td>無菌失效 → 患者感染</td></tr>
+                    <tr><td>校驗服務</td><td>量測設備失效 → 規格偏差未被發現</td></tr>
+                    <tr><td>害蟲防治</td><td>污染 → 產品污染</td></tr>
+                    <tr><td>廢棄物承包商</td><td>廢包材流出 → 被非法使用</td></tr>
+                </table>
+            </div>
+
+            <div class="analogy-box">
+                <h4>8.4.2.2.4 — 顧問也是供應商！</h4>
+                <p>這是一個常被忽視的要求。若你聘請外部顧問協助生產或品質管控，這位顧問在 ISO 15378 框架下屬於「供應商」，需要被評估和管理。</p>
+                <p>實務上，顧問的資格（學歷、專業執照、相關經驗）應被評估和記錄，其提供的建議和報告也應納入品質管理體系。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>8.4.2.2.6 — 實驗室能力評估</h4>
+                <p>委外實驗室（如 CRO、第三方測試機構）必須通過能力評估，常見方法包括：</p>
+                <ul>
+                    <li><strong>認證資質</strong>：ISO/IEC 17025 認可（最佳方式）</li>
+                    <li><strong>能力比對（Proficiency Testing）</strong>：與已知結果的樣品比對</li>
+                    <li><strong>稽核</strong>：現場審查實驗室的 SOP、設備、人員資格</li>
+                    <li><strong>方法確認（Method Validation）</strong>：確認其使用的測試方法適合目的</li>
+                </ul>
+            </div>
+
+            <div class="note-box">
+                <h4>8.4.2.2.9 — 進料隔離（Quarantine）的實務</h4>
+                <p>「物理或行政隔離」意味著：</p>
+                <ul>
+                    <li><strong>物理隔離</strong>：設置隔離倉庫區域，貼上「隔離中 — 待驗」標籤，未放行前無法進入生產區</li>
+                    <li><strong>行政隔離</strong>：在 ERP/倉儲系統中鎖定庫存狀態，庫管人員無法撿貨除非系統放行</li>
+                </ul>
+                <p>NOTE 中的「例外情況使用」必須有嚴格的防錯機制，例如批次追溯系統確保若測試不合格時，使用了此材料的所有半成品可被快速識別和處置。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>8.4.2.2.10 — CoA/CoC 的定期驗證</h4>
+                <p>單純接受供應商的 CoA 不夠，還需要「定期驗證」。兩種可接受方式：</p>
+                <ul>
+                    <li><strong>方式一（完整測試）</strong>：定期自行或委託第三方對供應商材料進行完整測試，與 CoA 比對</li>
+                    <li><strong>方式二（最低要求）</strong>：接受 CoA，但每批必須自行做<strong>至少一項專屬鑑別試驗（Identity Test）</strong>。例如橡膠配方的 FTIR 鑑別，確認材料是宣稱的那個。</li>
+                </ul>
+                <p>「定期」的頻率應基於風險評估：新供應商或有問題記錄的供應商需要更高頻率驗證。</p>
+            </div>
+
+            <div class="warning-box">
+                <h4>8.4.2.2.8 — 原料供應商變更 = 觸發變更控制</h4>
+                <p>更換品質關鍵原材料的供應商，必須走完整的變更控制流程，包括：重新核准新供應商、比對新舊材料規格、評估對下游製程和產品品質的影響、必要時重新驗證，以及通知客戶和監管機構（若適用）。</p>
+                <p>這個要求的背景是歷史上多起因供應商悄悄換料導致的品質問題，例如配方微小調整改變了可萃取物（Extractables）特性。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== 8.4.3 ===================== -->
+    <div class="section-title" id="s843">8.4.3 Information for External Providers / 對外部提供者的資訊</div>
+    <div class="two-column">
+        <div class="left-column">
+            <h2>原文內容 Original Text</h2>
+            <p>The organization shall ensure the <span class="key-term">adequacy of requirements</span> prior to their communication to the external provider.</p>
+            <p>The organization shall communicate to external providers its requirements for:</p>
+            <ol type="a">
+                <li>the processes, products and services to be provided;</li>
+                <li>the approval of:
+                    <ol>
+                        <li>products and services;</li>
+                        <li>methods, processes and equipment;</li>
+                        <li>the release of products and services;</li>
+                    </ol>
+                </li>
+                <li>competence, including any required <span class="key-term">qualification of persons</span>;</li>
+                <li>the external providers' interactions with the organization;</li>
+                <li>control and monitoring of the external providers' performance to be applied by the organization;</li>
+                <li>verification or validation activities that the organization, or its customer, intends to perform at the <span class="key-term">external providers' premises</span>.</li>
+            </ol>
+        </div>
+        <div class="right-column">
+            <h2>教學解說 Educational Commentary</h2>
+
+            <div class="concept-box">
+                <h4>採購資訊的完整性要求</h4>
+                <p>「先確認要求的充分性，再傳達給供應商」— 這條款要求先做內部評估，確保採購規格是正確的和完整的，然後才發給供應商。常見缺失：</p>
+                <ul>
+                    <li>規格書版本不是最新版</li>
+                    <li>遺漏了特定測試方法的說明</li>
+                    <li>沒有說明人員資格的最低要求</li>
+                    <li>沒有明確稽核權（客戶是否可到供應商廠稽核）</li>
+                </ul>
+            </div>
+
+            <div class="note-box">
+                <h4>(f) 在供應商廠進行的驗證/確效</h4>
+                <p>這條款特別重要：若計畫到供應商廠進行驗收測試、工廠驗收測試（FAT）或其他確效活動，必須事先在採購要求中明確告知供應商。</p>
+                <p>例如：委外實驗室的方法轉移確認（Method Transfer Validation），組織自己的 QC 人員到供應商廠進行現場確認。這個安排必須在合約/採購規格中事先說明。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>採購資訊就像「施工說明書」</h4>
+                <p>好的採購規格應讓供應商清楚知道：做什麼（產品/服務規格）、用什麼方法（核准的方法或設備）、誰來做（人員資格要求）、如何證明做好了（驗收標準和測試要求）、我會怎麼監督（績效監控方式）。模糊的採購規格是供應商品質問題的源頭之一。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== SUMMARY ===================== -->
+    <div class="summary-section" id="summary">
+        <h2>本節總結 Section Summary</h2>
+        <ul>
+            <li><strong>雙層架構理解</strong>：ISO 15378 第8節每個條款都建立在 ISO 9001:2015 基礎上，再加入藥用包材專屬的 GMP 要求。理解「為何需要這些額外要求」（因為最終影響患者安全）是學習本標準的核心思維。</li>
+            <li><strong>風險管理貫穿全程（8.1）</strong>：從規劃階段開始，風險管理必須融入整個產品實現過程，且須保存記錄。樣品保留需在適當條件下進行。</li>
+            <li><strong>文件化回饋系統（8.2.1）</strong>：要建立主動式早期預警機制，而非被動等待投訴。DMF 和 CoS 是保護商業機密同時支持法規申請的重要工具。廢棄包材的管控是防止藥品偽造的重要環節。</li>
+            <li><strong>設計開發需評估患者影響（8.3）</strong>：Review / Verification / Validation 三者目的不同但相互補充。設計變更必須評估對法規申請文件的影響，必要時需直接通報監管機構。</li>
+            <li><strong>供應商管控的 GMP 強化要求（8.4）</strong>：品質關鍵材料/服務的供應商必須由品質單位核准；委外任何生產製程需事先通知客戶；顧問也屬於供應商；委外實驗室需評估能力；進料需隔離至放行；CoA 接受時至少需做一項鑑別試驗；更換原料供應商需走變更控制。</li>
+            <li><strong>供應鏈責任不因外包而轉移</strong>：無論外包哪個環節，最終品質責任仍在組織。外包的品質關鍵製程必須符合 ISO 15378 全部要求。</li>
+        </ul>
+        <div class="key-insight">
+            <strong>核心洞察：</strong>ISO 15378 將藥品 GMP 的供應鏈管控思維前移到包材廠。包材廠不再只是「做好產品就好」，而是需要像藥廠一樣管理整個供應鏈、建立完整的文件系統、主動評估對患者安全的影響。這種思維轉變，是理解和實施 ISO 15378 的關鍵。
+        </div>
+    </div>
+
+</div><!-- end main-content -->
+
+<div class="main-footer">
+    <p>ISO 15378:2017 — Primary Packaging Materials for Medicinal Products</p>
+    <p>Section 8 Part 1: Operation — Design, Purchasing &amp; Production | p29&ndash;p36</p>
+    <p>SterileGMP Knowledge Hub &copy; 2026</p>
+</div>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+    window.addEventListener('scroll', function() {
+        var btn = document.getElementById('backToTop');
+        if (window.scrollY > 300) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+</script>
+
+</body>
+</html>

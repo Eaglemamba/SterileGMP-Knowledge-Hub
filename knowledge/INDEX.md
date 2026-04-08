@@ -904,6 +904,12 @@ Terms: quality culture, root cause analysis (RCA), human error, skill-based erro
 | ALARP as low as reasonably practicable, risk acceptability criteria three-zone model / 合理可行最低風險、風險可接受準則三區模型 | ISO-TR-24971 |
 | Legacy device retrospective risk management, cybersecurity security risk CIA triad / 舊型器材回溯風險管理、資安風險CIA三角 | ISO-TR-24971 |
 | IVD in vitro diagnostic risk management, false positive false negative analytical performance / 體外診斷器材風險管理、偽陽性偽陰性分析性能 | ISO-TR-24971 |
+| Primary packaging materials QMS, ISO 15378 requirements, GMP for packaging manufacturers / 一次包材品質管理系統、製藥用包材製造商GMP | ISO-15378 |
+| Printed primary packaging, gang printing risk, admixture contamination, artwork origination control / 印刷一次包材、聯排印刷風險、混料污染、版原管制 | ISO-15378 |
+| Print plate cylinder control, digital printing security, barcode verification, reel splice control / 印版滾筒管制、數位印刷安全、條碼查驗、捲料接頭控制 | ISO-15378 |
+| Qualification validation packaging equipment, VMP, IQ OQ PQ primary packaging, bracketing matrix / 包材設備確效、驗證主計畫、初級包材IQ/OQ/PQ、矩陣法 | ISO-15378 |
+| Supplier approval external provider packaging, CoA CoC periodic verification, outsourcing packaging / 包材供應商核准、外部提供者、CoA定期查驗、外包管制 | ISO-15378 |
+| Change control packaging manufacturer, DMF drug master file, regulatory notification packaging changes / 包材製造商變更管制、藥物主文件、法規通報 | ISO-15378 |
 | HVAC for sterile manufacturing, air change rate, HEPA filter / 無菌製造HVAC、換氣次數、HEPA過濾器 | ISPE-Vol3 + ISPE-HVAC |
 | Pressure cascade, differential pressure, airlock design / 壓力梯度、壓差、氣閘設計 | ISPE-Vol3 + ISPE-HVAC |
 | oRABS vs cRABS vs isolator, barrier technology comparison / 開放式vs封閉式RABS vs隔離器 | ISPE-Vol3 + PtC-12 |
@@ -1468,6 +1474,38 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 - Section 4B: Annex C (risk acceptability policy chain, three-zone model) + Annex D (safety information hierarchy) + Annex E (international standards role, presumption of conformity)
 - Section 4C: Annex F (security risks, CIA triad) + Annex G (legacy devices) + Annex H Part 1 (IVD: indirect harm, dual-user framework, performance characteristics)
 - Section 4D: Annex H Part 2 (IVD: P1×P2 for IVD, risk control tiers, benefit-risk, post-production) + Bibliography (40 references including ISO 14971, ISO 13485, IEC 62443, ISO 10993-1)
+
+---
+
+## ISO/ISO-15378-Complete.md
+**Report:** ISO 15378:2017 — Primary Packaging Materials for Medicinal Products: Particular Requirements for the Application of ISO 9001:2015 with Reference to Good Manufacturing Practice (GMP)
+**Pages:** p1–p92 (92 pages) | **Sections:** 6
+
+**Covers questions about:**
+- QMS requirements for manufacturers of primary packaging materials (glass vials, ampoules, stoppers, syringes, blister foil, labels, printed packaging) supplying pharmaceutical companies
+- How ISO 15378 layers GMP requirements on top of ISO 9001:2015 — layered dual-standard structure, "additional GMP-related requirements" sub-clauses
+- Customer-supplier relationship: written confirmation of changes, DMF/CoS drug master files, marketing authorization data requirements
+- Design and development controls for packaging: risk assessment in D&D, design transfer, regulatory notification of changes to dossier/master file
+- Supplier approval and external provider controls: CoA/CoC periodic verification, identity testing minimum, laboratory competence evaluation, outsourcing notification, consultant-as-supplier concept
+- Cleanroom requirements for packaging manufacturers: clean zone/controlled area, line clearance, cross-contamination prevention, reprocessing restrictions
+- Sterilization requirements for sterile packaging: sterilization process validation (ISO 11135, ISO 11137), outsourced sterilization responsibility
+- Batch traceability and identification: unique batch IDs, equipment use logs, quarantine system, cross-contamination segregation
+- Change control in packaging manufacture: risk evaluation, validation/revalidation trigger, regulatory authority notification, DMF updates
+- Product release: batch documentation review, OOS investigation requirements, retained samples
+- GMP requirements for printed packaging (Annex C): artwork/origination control, plate/cylinder management, gang printing risk, digital printing controls, barcode/security code verification
+- Validation Master Plan (VMP) for packaging: prospective/concurrent/retrospective, bracketing/matrix approach, IQ/OQ/PQ qualification stages, performance qualification, quality critical equipment criteria
+- Terminology mapping ISO 9001:2008 → 2015: "supplier" → "external provider", "records/documents/procedures" → "documented information", "preventive action" → "risk-based thinking"
+- ISO 9000 family ecosystem: related standards (ISO 9000, 9004, 10002, 10005, 10019, 19011) and their clause mapping to ISO 15378
+
+**Key terms:** primary packaging materials, ISO 15378, GMP for packaging, printed packaging, artwork origination, gang printing, admixture contamination, plate cylinder control, digital printing, barcode verification, reel splice, security code, validation master plan (VMP), IQ OQ PQ, performance qualification (PQ), bracketing matrix approach, quality critical equipment, quality critical process, prospective validation, concurrent validation, retrospective validation, CoA (certificate of analysis), CoC (certificate of conformity), identity test, laboratory competence, line clearance, cleanroom packaging, sterile packaging, sterilization validation, outsourced sterilization, batch release, OOS investigation, change control, DMF (drug master file), CoS (certificate of suitability), risk-based thinking, documented information, external provider, interested parties, organizational knowledge
+
+**Sections:**
+- Section 1 (p1–p12): Foreword, Introduction (GMP+QMS dual-track, PDCA, risk-based thinking), Scope, Normative References, Terms & Definitions (40+ terms: quality critical, batch, cleanroom, origination, validation, URS)
+- Section 2 (p12–p28): Clauses 4–7: Context & Interested Parties, Leadership & Customer Focus, Planning & Risk Management, Support (infrastructure, cleanroom environments, calibration, competence, documented information / ALCOA)
+- Section 3A (p29–p36): Clause 8 Part 1: Operational Planning, Customer Communication (DMF/CoS, feedback system), Design & Development (risk assessment, dossier notifications), External Provider Control (supplier approval, CoA verification, lab competence)
+- Section 3B (p37–p51): Clause 8 Part 2: Production Controls (validation/qualification, cleanroom, line clearance, sterilization), Traceability, Change Control, Product Release, OOS Investigation, Batch Release, CAPA, Internal Audit, Management Review, Continual Improvement
+- Section 4 (p52–p59): Annex A (ISO 9001:2008→2015 terminology changes, risk-based thinking, documented information, applicability vs. exclusions), Annex B (ISO 9000 family map, Table B.1 cross-reference)
+- Section 5 (p60–p92): Annex C (normative: printed packaging GMP — artwork control, plate management, gang printing, digital printing, barcode scanning), Annex D (informative: VMP, IQ/OQ/PQ, performance qualification, bracketing/matrix, software validation), Bibliography, Alphabetical Term Index
 
 ---
 
