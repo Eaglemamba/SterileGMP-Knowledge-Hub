@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISO 13485 — Section 3: Resources, Product Realization &amp; Design Control</title>
+    <style>
+:root { --primary-blue: #1e3a5f; --accent-blue: #3498db; --light-gray: #fafafa; --light-blue: #f0f7ff; --yellow-start: #fff9e6; --yellow-end: #fff3cd; --green-bg: #e8f5e9; --green-border: #4caf50; --orange-bg: #fff3e0; --orange-border: #ff9800; --purple-bg: #f3e5f5; --purple-border: #9c27b0; --text-dark: #2d3748; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif; line-height: 1.75; color: var(--text-dark); background: #f0f2f5; }
+.header { background: linear-gradient(135deg, #4c1d95 0%, #6d28d9 100%); color: white; padding: 2rem; text-align: center; }
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+.left-column { background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; }
+.left-column h2 { color: var(--primary-blue); border-bottom: 2px solid #6d28d9; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.left-column h3 { color: var(--primary-blue); margin: 1rem 0 0.5rem; font-size: 1rem; }
+.left-column p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.92rem; }
+.left-column li { margin-bottom: 0.4rem; }
+.right-column { background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #c4b5fd; }
+.right-column h2 { color: #4c1d95; border-bottom: 2px solid #7c3aed; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.right-column p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.section-title { font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
+.key-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
+.concept-box { background: var(--green-bg); border-left: 4px solid var(--green-border); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 0.92rem; line-height: 1.7; }
+.concept-box h4 { color: #2e7d32; margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600; }
+.concept-box p, .concept-box ul, .concept-box li { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.concept-box ul { margin-left: 1.25rem; }
+.analogy-box { background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%); border-left: 4px solid #f6ad55; border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 0.92rem; line-height: 1.7; }
+.analogy-box h4 { color: #856404; margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600; }
+.analogy-box p, .analogy-box ul { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.analogy-box ul { margin-left: 1.25rem; }
+.note-box { background: var(--orange-bg); border-left: 4px solid var(--orange-border); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 0.92rem; line-height: 1.7; }
+.note-box h4 { color: #c65102; margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600; }
+.note-box p, .note-box ul { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.note-box ul { margin-left: 1.25rem; }
+.practice-box { background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%); border: 2px dashed #3182ce; border-radius: 10px; padding: 1.25rem; margin: 1.25rem 0; font-size: 0.92rem; }
+.practice-box h4 { color: #2c5282; margin-bottom: 0.75rem; font-size: 0.95rem; font-weight: 600; }
+.practice-box ol { margin-left: 1.25rem; }
+.practice-box li { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.learning-objectives { background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+.main-footer { background: var(--primary-blue); color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+@media (max-width: 900px) { .two-column { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Section 3: Resource Management, Product Realization &amp; Design Control</h1>
+    <div class="subtitle">資源管理、產品實現規劃與設計開發管制</div>
+    <div class="page-info">ISO 13485:2016 | Clause 6 &amp; 7.1–7.3 | p.11–p.16</div>
+</div>
+
+<div class="main-content">
+
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 6.4.2 污染管制條款的獨特性：ISO 13485 特有，明確要求無菌醫療器材在組裝與包裝過程中維持所需潔淨度</li>
+        <li>掌握 7.3 設計開發十個子條款的邏輯脈絡，識別哪些要求超越 ISO 9001 的範疇</li>
+        <li>理解 Design and Development File（7.3.10）即設計歷史文件（DHF）的概念與完整性要求</li>
+        <li>區分設計驗證（Verification：我們做對了嗎？）與設計確認（Validation：我們做的是對的東西嗎？）的本質差異</li>
+        <li>了解 7.3.8 設計轉移（Design Transfer）對 CDMO 承接製造的關鍵意義</li>
+    </ul>
+</div>
+
+<!-- ====== CLAUSE 6: RESOURCE MANAGEMENT ====== -->
+<div class="section-title">Clause 6: Resource Management — 資源管理</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>6.1 Provision of Resources</h3>
+        <p>The organization shall determine and provide the resources needed to:</p>
+        <ul>
+            <li>implement the quality management system and to maintain its effectiveness;</li>
+            <li>meet applicable regulatory and customer requirements.</li>
+        </ul>
+
+        <h3>6.2 Human Resources</h3>
+        <p>Personnel performing work affecting product quality shall be <span class="key-term">competent on the basis of appropriate education, training, skills and experience</span>.</p>
+        <p>The organization shall document the process(es) for establishing competence, providing needed training, and ensuring awareness of personnel. The organization shall:</p>
+        <ul>
+            <li>determine the necessary competence for personnel performing work affecting product quality;</li>
+            <li>provide training or take other actions to achieve or maintain the necessary competence;</li>
+            <li>evaluate the effectiveness of the actions taken;</li>
+            <li>ensure that its personnel are aware of the relevance and importance of their activities and how they contribute to the achievement of the quality objectives;</li>
+            <li>maintain appropriate records of education, training, skills and experience (see 4.2.5).</li>
+        </ul>
+        <p><em>NOTE: The methodology used to check effectiveness is proportionate to the risk associated with the work for which the training or other action is being provided.</em></p>
+
+        <h3>6.3 Infrastructure</h3>
+        <p>The organization shall <span class="key-term">document the requirements for the infrastructure</span> needed to achieve conformity to product requirements, prevent product mix-up and ensure orderly handling of product. Infrastructure includes, as appropriate:</p>
+        <ul>
+            <li>buildings, workspace and associated utilities;</li>
+            <li>process equipment (both hardware and software);</li>
+            <li>supporting services (such as transport, communication, or information systems).</li>
+        </ul>
+        <p>The organization shall document requirements for the maintenance activities, including the interval of performing the maintenance activities, when such maintenance activities, or lack thereof, can affect product quality. Records of such maintenance shall be maintained.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>概念解析：6.2 的「勝任能力」要求 vs. ISO 9001</h4>
+            <p>ISO 13485 的 6.2 在文字上與 ISO 9001 相近，但實務要求更嚴格：</p>
+            <table style="font-size:0.85rem;">
+                <tr><th>面向</th><th>ISO 9001</th><th>ISO 13485</th></tr>
+                <tr><td>培訓有效性評估</td><td>要求但方法彈性</td><td>明確要求與風險成比例的評估方法</td></tr>
+                <tr><td>記錄範圍</td><td>相關記錄</td><td>教育、培訓、技能、經驗記錄均需維護</td></tr>
+                <tr><td>法規連結</td><td>一般品質目標</td><td>符合法規要求是明確目的之一</td></tr>
+            </table>
+            <p>對無菌 CDMO：潔淨室操作員、滅菌驗證工程師、QC 分析員的培訓記錄必須包含初始鑑定、定期重新培訓、有效性評估三個層次。</p>
+        </div>
+        <div class="note-box">
+            <h4>6.3 Infrastructure：CDMO 的重要細節</h4>
+            <p>「防止產品混淆（prevent product mix-up）」是 ISO 13485 6.3 特別提及的要求，在 ISO 9001 中沒有此明確措辭。</p>
+            <p>對 CDMO 意涵：</p>
+            <ul>
+                <li>設施設計必須包含物理或程序性隔離措施，防止不同客戶產品在同一設施內交叉</li>
+                <li>維護計劃必須文件化頻率，且特別說明「維護缺失」對產品品質的影響 — 這是支持 Preventive Maintenance 計劃的法規依據</li>
+                <li>製程設備軟體（如充填機的 recipe 系統）也屬於 Infrastructure，需要受到文件化管控</li>
+            </ul>
+        </div>
+        <div class="analogy-box">
+            <h4>類比說明：基礎設施要求的範圍</h4>
+            <p>6.3 把「基礎設施」定義為三層：廠房設施、製程設備、支援服務。這就像一家餐廳的基礎條件：廚房空間（廠房）、爐具與刀具（設備）、水電網路供應（支援服務）——三者缺一不可，且都需要定期維護以確保食品安全。醫療器材製造同理，任何一層的疏漏都可能導致產品品質問題。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ====== 6.4 WORK ENVIRONMENT & CONTAMINATION CONTROL ====== -->
+<div class="section-title">Clause 6.4: Work Environment and Contamination Control — 工作環境與污染管制</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>6.4.1 Work Environment</h3>
+        <p>The organization shall document the requirements for the work environment needed to achieve conformity to product requirements.</p>
+        <p>If the conditions for the work environment can have an adverse effect on product quality, the organization shall document the requirements for the work environment and the procedures to monitor and control the work environment.</p>
+        <p>The organization shall:</p>
+        <ul>
+            <li>document requirements for health, cleanliness and clothing of personnel if contact between such personnel and the product or work environment could affect medical device safety or performance;</li>
+            <li>ensure that all personnel who are required to work temporarily under special environmental conditions within the work environment are competent or supervised by a competent person.</li>
+        </ul>
+        <p><em>NOTE: Further information can be found in ISO 14644 and ISO 14698.</em></p>
+
+        <h3>6.4.2 Contamination Control</h3>
+        <p>As appropriate, the organization shall <span class="key-term">plan and document arrangements for the control of contaminated or potentially contaminated product</span> in order to prevent contamination of the work environment, personnel, or product.</p>
+        <p>For <span class="key-term">sterile medical devices</span>, the organization shall document requirements for <span class="key-term">control of contamination with microorganisms or particulate matter</span> and maintain the required cleanliness during assembly or packaging processes.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>概念解析：6.4.2 — ISO 13485 獨有的污染管制條款</h4>
+            <p>6.4.2 是 ISO 13485 特有的條款，ISO 9001 中不存在。它有兩個層次的要求：</p>
+            <table style="font-size:0.85rem;">
+                <tr><th>適用情境</th><th>要求</th></tr>
+                <tr><td>已污染或可能污染的產品</td><td>文件化管制安排，防止污染工作環境、人員或其他產品</td></tr>
+                <tr><td>無菌醫療器材（強制）</td><td>文件化微生物與微粒污染管制要求；組裝或包裝過程中維持所需潔淨度</td></tr>
+            </table>
+            <p>實務涵義：無菌醫療器材製造商必須書面定義：在哪些製程步驟、需要維持哪個潔淨等級（如 ISO 5 / ISO 7 / ISO 8），以及如何監控（如 EM 計劃、微粒監測）。</p>
+        </div>
+        <div class="note-box">
+            <h4>CDMO 關鍵：6.4.2 連結至整個無菌作業體系</h4>
+            <p>對無菌充填 CDMO，6.4.2 是最直接相關的資源管理條款：</p>
+            <ul>
+                <li><strong>硬體層面</strong>：潔淨室設計（ISO 14644）、隔離器或 RABS 作業</li>
+                <li><strong>人員層面</strong>：更衣程序、無菌操作培訓（與 6.4.1 人員要求銜接）</li>
+                <li><strong>監控層面</strong>：EM 計劃（與 7.5.1 生產管制銜接）</li>
+                <li><strong>文件層面</strong>：清潔確認報告、潔淨室鑑定報告（與 7.3.8 設計轉移銜接）</li>
+            </ul>
+            <p>稽核時，稽核員會要求看到：文件化的潔淨等級要求 → 監控程序 → 監控記錄 → 趨勢分析，形成完整的管制閉環。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>類比說明：6.4.2 的雙重防線思維</h4>
+            <p>6.4.2 的結構是「先防外患，再護核心」：第一層是防止已污染產品（外患）擴散到環境或人員；第二層是無菌製程（核心）必須主動維持潔淨度。就像醫院的感染管制：隔離病房（防止擴散）+ 手術室的嚴格無菌規程（主動防護），兩套措施同時存在，目的不同。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>客戶送來的設備已知表面有微生物污染，需要在您的 CDMO 潔淨室清洗後再組裝。依據 6.4.2 第一段，CDMO 應建立哪些書面管制安排？</li>
+                <li>您的 ISO 7 潔淨室用於無菌填充的最後目視檢驗。6.4.2 要求您文件化哪些具體的潔淨度要求？稽核員最可能要求看到哪份記錄？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ====== 7.1 PRODUCT REALIZATION PLANNING ====== -->
+<div class="section-title">Clause 7.1–7.2: Product Realization Planning &amp; Customer-Related Processes — 產品實現規劃與客戶相關流程</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>7.1 Planning of Product Realization</h3>
+        <p>The organization shall plan and develop the processes needed for product realization. Planning shall be consistent with the requirements of the other processes of the quality management system.</p>
+        <p>The organization shall document one or more processes for <span class="key-term">risk management in product realization</span>. Records of risk management activities shall be maintained.</p>
+        <p>In planning product realization, the organization shall determine the following, as appropriate:</p>
+        <ul>
+            <li>quality objectives and requirements for the product;</li>
+            <li>the need to establish processes and documents and to provide resources specific to the product, including infrastructure and work environment;</li>
+            <li>required verification, validation, monitoring, measurement, inspection and test, handling, storage, distribution and traceability activities specific to the product together with the criteria for product acceptance;</li>
+            <li>records needed to provide evidence that the realization processes and resulting product meet requirements.</li>
+        </ul>
+        <p>The output of this planning shall be <span class="key-term">documented in a form suitable for the organization's method of operations</span>.</p>
+        <p><em>NOTE: Further information can be found in ISO 14971.</em></p>
+
+        <h3>7.2.1 Determination of Requirements Related to Product</h3>
+        <p>The organization shall determine:</p>
+        <ul>
+            <li>requirements specified by the customer, including the requirements for delivery and post-delivery activities;</li>
+            <li>requirements not stated by the customer but necessary for specified or intended use, as known;</li>
+            <li>applicable regulatory requirements related to the product;</li>
+            <li>any user training needed to ensure specified performance and safe use of the medical device;</li>
+            <li>any additional requirements determined by the organization.</li>
+        </ul>
+
+        <h3>7.2.2 Review of Requirements Related to Product</h3>
+        <p>The organization shall review the requirements related to product prior to commitment to supply. The review shall ensure that:</p>
+        <ul>
+            <li>product requirements are defined and documented;</li>
+            <li>contract or order requirements differing from those previously expressed are resolved;</li>
+            <li>applicable regulatory requirements are met;</li>
+            <li>any user training identified in 7.2.1 is available or planned;</li>
+            <li>the organization has the ability to meet the defined requirements.</li>
+        </ul>
+        <p>Records of the results of the review and actions arising from the review shall be maintained.</p>
+
+        <h3>7.2.3 Communication</h3>
+        <p>The organization shall plan and document arrangements for communicating with customers in relation to: product information; enquiries, contracts or order handling, including amendments; customer feedback, including complaints; advisory notices.</p>
+        <p>The organization shall communicate with regulatory authorities in accordance with applicable regulatory requirements.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>概念解析：7.1 的輸出 = 品質計劃（Quality Plan）</h4>
+            <p>7.1 要求「以適合組織操作方式的書面形式」記錄規劃輸出。這個輸出在實務中就是<strong>品質計劃（Quality Plan）</strong>，也稱為 Device-specific Quality Plan 或 Master Validation Plan。</p>
+            <p>一份完整的 7.1 品質計劃應包含：</p>
+            <ul>
+                <li>產品專屬品質目標與 CQAs（關鍵品質屬性）</li>
+                <li>適用的法規與標準清單</li>
+                <li>各實現階段的 V&amp;V 活動、測試方法與接受標準</li>
+                <li>可追溯性要求與記錄保存規定</li>
+                <li>適用的風險管理活動（對應 ISO 14971 Risk Management Plan）</li>
+            </ul>
+            <p>對 CDMO：技術轉移啟動時，客戶提供的 DDP（Device Design Package）+ CDMO 建立的 Site Master Plan 共同構成 7.1 的規劃輸出。</p>
+        </div>
+        <div class="note-box">
+            <h4>7.2.1 的「法規要求」項目：CDMO 不能忽略的</h4>
+            <p>7.2.1(c) 要求確定「與產品相關的適用法規要求」。這意味著在接受客戶訂單前，CDMO 必須確認：</p>
+            <ul>
+                <li>目標市場的醫療器材法規（如 EU MDR 2017/745、FDA 21 CFR Part 820、TW TFDA）</li>
+                <li>產品適用的特定標準（如 ISO 11135 滅菌、ISO 11607 無菌包裝）</li>
+                <li>CDMO 的 QMS 認證範疇是否涵蓋該產品類別</li>
+            </ul>
+            <p>7.2.2 的合約審查記錄（Contract Review Record）是稽核員最常要求查閱的文件之一——必須能證明「在承接合約前已確認具備能力」。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>類比說明：7.2 合約審查的重要性</h4>
+            <p>7.2.2 要求在「承諾供應前」完成審查，這就像工程公司在簽署承包合同前必須確認：有設計圖（需求明確）、有施工隊（有能力執行）、法規允許（符合建築法規）。若合同簽了之後才發現沒有執行能力，就已違反 7.2.2 的精神。CDMO 在技術轉移評估階段所做的「可行性評估（Feasibility Assessment）」就是 7.2.2 的實踐。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ====== 7.3 DESIGN AND DEVELOPMENT ====== -->
+<div class="section-title">Clause 7.3: Design and Development — 設計開發管制</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>7.3.1 General</h3>
+        <p>The organization shall <span class="key-term">document procedures for design and development</span>.</p>
+
+        <h3>7.3.2 Design and Development Planning</h3>
+        <p>The organization shall plan and control the design and development of product. Planning documents shall be maintained and updated as design and development progresses. During planning, the organization shall document:</p>
+        <ul>
+            <li>the design and development stages;</li>
+            <li>the review(s) needed at each stage;</li>
+            <li>the verification, validation, and design transfer activities appropriate at each stage;</li>
+            <li>the responsibilities and authorities for design and development;</li>
+            <li>the methods to ensure traceability of D&amp;D outputs to D&amp;D inputs;</li>
+            <li>the resources needed, including necessary competence of personnel.</li>
+        </ul>
+
+        <h3>7.3.3 Design and Development Inputs</h3>
+        <p>Inputs relating to product requirements shall be determined and records maintained. These inputs shall include:</p>
+        <ul>
+            <li>functional, performance, usability and safety requirements, according to the intended use;</li>
+            <li>applicable regulatory requirements and standards;</li>
+            <li>applicable output(s) of risk management;</li>
+            <li>as appropriate, information derived from previous similar designs;</li>
+            <li>other requirements essential for design and development of the product and processes.</li>
+        </ul>
+        <p>These inputs shall be reviewed for adequacy and approved. Requirements shall be complete, unambiguous, able to be verified or validated, and not in conflict with each other.</p>
+
+        <h3>7.3.4 Design and Development Outputs</h3>
+        <p>Design and development outputs shall:</p>
+        <ul>
+            <li>meet the input requirements for design and development;</li>
+            <li>provide appropriate information for purchasing, production and service provision;</li>
+            <li>contain or reference product acceptance criteria;</li>
+            <li>specify the characteristics of the product that are essential for its safe and proper use.</li>
+        </ul>
+        <p>The outputs shall be in a form suitable for verification against the inputs and shall be approved prior to release. Records of the design and development outputs shall be maintained.</p>
+
+        <h3>7.3.5 Design and Development Review</h3>
+        <p>At suitable stages, systematic reviews of design and development shall be performed to:</p>
+        <ul>
+            <li>evaluate the ability of the results to meet requirements;</li>
+            <li>identify and propose necessary actions.</li>
+        </ul>
+        <p>Participants shall include representatives of functions concerned with the stage being reviewed, as well as other specialist personnel. Records shall include the identification of the design under review, participants, and date.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>概念解析：ISO 13485 的 7.3 為何是所有 ISO 標準中最嚴格的設計管制？</h4>
+            <p>ISO 13485 的 7.3 共有 10 個子條款，遠超 ISO 9001（僅 7.3.1–7.3.7 共 7 項）。額外要求包括：</p>
+            <table style="font-size:0.85rem;">
+                <tr><th>條款</th><th>ISO 9001 有？</th><th>ISO 13485 增加了什麼</th></tr>
+                <tr><td>7.3.1</td><td>無此要求</td><td>明確要求設計開發<strong>程序文件</strong></td></tr>
+                <tr><td>7.3.8</td><td>無</td><td><strong>設計轉移（Design Transfer）</strong>：輸出須驗證可重現製造</td></tr>
+                <tr><td>7.3.10</td><td>無</td><td><strong>設計開發文件（DHF）</strong>：每種醫療器材型號均須維護</td></tr>
+            </table>
+            <p>7.3.2 的規劃文件必須隨設計進展持續更新，意味著 D&amp;D Plan 不是靜態文件，而是動態管理工具。</p>
+        </div>
+        <div class="note-box">
+            <h4>7.3.3 輸入 vs. 7.3.4 輸出：可追溯矩陣的重要性</h4>
+            <p>7.3.3 輸入（設計需求）必須能在 7.3.4 輸出（規格/圖面/程序）中一一對應。業界用<strong>設計追溯矩陣（Design Traceability Matrix / RTM）</strong>記錄此對應關係：</p>
+            <ul>
+                <li>每一條用戶需求（User Requirement）→ 對應設計輸入（Design Input）→ 對應設計輸出（Design Output）→ 對應驗證測試項目</li>
+                <li>7.3.2(e) 明確要求此種追溯方法</li>
+                <li>稽核員在 DHF 審查時必然追蹤 RTM 的完整性</li>
+            </ul>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>客戶提供的 Design Input 文件中有一項要求：「容器密封性符合 ASTM F2096」。這是否滿足 7.3.3 的「可驗證或確認」要求？若客戶改寫為「密封性良好」，有何問題？</li>
+                <li>設計審查（7.3.5）要求有「相關功能的代表」參與。對一個無菌充填 CDMO 承接的新產品，設計審查應包含哪些功能代表？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ====== 7.3.6 to 7.3.10 ====== -->
+<div class="section-title">Clause 7.3.6–7.3.10: Verification, Validation, Transfer, Change Control &amp; D&amp;D File</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>7.3.6 Design and Development Verification</h3>
+        <p>Verification shall be performed to ensure that the <span class="key-term">design and development outputs have met the design and development input requirements</span>.</p>
+        <p>The organization shall document verification plans that include methods, acceptance criteria and, as appropriate, statistical techniques with rationale for sample size.</p>
+        <p>If the intended use requires that the medical device be connected to, or have an interface with, other medical device(s), verification shall include confirmation that the design outputs meet design inputs when so connected or interfaced.</p>
+
+        <h3>7.3.7 Design and Development Validation</h3>
+        <p>Validation shall be performed to ensure that the <span class="key-term">resulting product is capable of meeting the requirements for the specified application or intended use</span>.</p>
+        <p>The organization shall document validation plans that include methods, acceptance criteria and, as appropriate, statistical techniques with rationale for sample size.</p>
+        <p><span class="key-term">Design validation shall be conducted on representative product</span>. Representative product includes initial production units, batches or their equivalents. The rationale for the choice of product used for validation shall be recorded.</p>
+        <p>As part of design and development validation, the organization shall perform clinical evaluations or performance evaluations of the medical device in accordance with applicable regulatory requirements.</p>
+        <p>Validation shall be completed prior to release for use of the product to the customer.</p>
+
+        <h3>7.3.8 Design and Development Transfer</h3>
+        <p>The organization shall document procedures for <span class="key-term">transfer of design and development outputs to manufacturing</span>. These procedures shall ensure that design and development outputs are verified as <span class="key-term">suitable for manufacturing before becoming final production specifications</span> and that <span class="key-term">production capability can meet product requirements</span>.</p>
+        <p>Results and conclusions of the transfer shall be recorded.</p>
+
+        <h3>7.3.9 Control of Design and Development Changes</h3>
+        <p>The organization shall document procedures to control design and development changes. The organization shall determine the significance of the change to function, performance, usability, safety and applicable regulatory requirements.</p>
+        <p>Before implementation, changes shall be: reviewed; verified; validated, as appropriate; approved.</p>
+        <p>The review of design and development changes shall include <span class="key-term">evaluation of the effect of the changes on constituent parts and product in process or already delivered</span>, inputs or outputs of risk management and product realization processes.</p>
+
+        <h3>7.3.10 Design and Development Files</h3>
+        <p>The organization shall <span class="key-term">maintain a design and development file for each medical device type or medical device family</span>. This file shall include or reference records generated to demonstrate conformity to the requirements for design and development and records for design and development changes.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>概念解析：驗證（Verification）vs. 確認（Validation）的本質區別</h4>
+            <p>這是醫療器材法規中最常被混淆的兩個概念：</p>
+            <table style="font-size:0.85rem;">
+                <tr><th>面向</th><th>Verification 驗證</th><th>Validation 確認</th></tr>
+                <tr><td>核心問題</td><td>我們做對了嗎？<br>(Did we build it right?)</td><td>我們做的是對的東西嗎？<br>(Did we build the right thing?)</td></tr>
+                <tr><td>對照基準</td><td>設計輸出 vs. 設計輸入</td><td>產品 vs. 用戶需求/預期用途</td></tr>
+                <tr><td>測試對象</td><td>可為原型或工程樣品</td><td>必須使用代表性產品（初期生產批次）</td></tr>
+                <tr><td>典型活動</td><td>尺寸量測、功能測試、分析計算</td><td>臨床評估、使用者測試、性能評估</td></tr>
+            </table>
+            <p>7.3.7 明確規定：確認必須使用「代表性產品，包括初期生產批次或相當品」。這意味著不能用手工樣品做設計確認——必須是接近最終生產條件的批次。</p>
+        </div>
+        <div class="note-box">
+            <h4>7.3.8 設計轉移：CDMO 最直接的相關條款</h4>
+            <p>對 CDMO 而言，7.3.8 是整個 7.3 最直接相關的條款：</p>
+            <ul>
+                <li><strong>設計轉移程序</strong>：CDMO 必須有書面程序，定義如何接收客戶的設計輸出（規格、圖面、BOM）並轉化為 CDMO 的生產規範</li>
+                <li><strong>可製造性驗證</strong>：在成為最終生產規格之前，CDMO 必須確認設計輸出在其設施中「可重現製造」——這就是 Process Qualification（PQ）的前置步驟</li>
+                <li><strong>生產能力確認</strong>：設備、人員、環境必須能滿足產品需求——對應設備 IQ/OQ/PQ 的概念</li>
+            </ul>
+            <p>實務文件：技術轉移報告（Technology Transfer Report）即是 7.3.8 的記錄輸出。</p>
+        </div>
+        <div class="note-box">
+            <h4>7.3.9 設計變更管制：「在製或已交付」的影響評估</h4>
+            <p>ISO 13485 的設計變更管制比 ISO 9001 多了一項關鍵要求：必須評估變更對<strong>已在製造中或已交付的相同或類似產品</strong>的影響。</p>
+            <p>這意味著：</p>
+            <ul>
+                <li>客戶變更設計 → CDMO 必須評估現有庫存、在製品、已出貨產品是否受影響</li>
+                <li>若已出貨產品受影響且可能危及安全 → 可能觸發 Field Safety Corrective Action（FSCA）</li>
+                <li>此評估必須包含風險管理輸出的重新審查（即 ISO 14971 流程）</li>
+            </ul>
+        </div>
+        <div class="concept-box">
+            <h4>概念解析：7.3.10 設計開發文件（DHF）——FDA 設計歷史文件的 ISO 對應</h4>
+            <p>7.3.10 要求每種醫療器材型號（或產品族）維護一份<strong>設計開發文件（Design and Development File）</strong>，這等同於 FDA 21 CFR Part 820 中的<strong>Design History File（DHF）</strong>。</p>
+            <p>DHF/D&amp;D File 必須包含或引用：</p>
+            <ul>
+                <li>D&amp;D 計劃（7.3.2 輸出）</li>
+                <li>設計輸入記錄（7.3.3）</li>
+                <li>設計輸出記錄（7.3.4）</li>
+                <li>設計審查記錄（7.3.5）</li>
+                <li>驗證記錄（7.3.6）</li>
+                <li>確認記錄（7.3.7）</li>
+                <li>設計轉移記錄（7.3.8）</li>
+                <li>設計變更記錄（7.3.9）</li>
+            </ul>
+            <p>DHF 是稽核時最重要的設計管制文件——它串連整個 7.3 的所有活動，形成完整的設計管制歷史。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>客戶完成了使用工程樣品的設計驗證，現在要進行設計確認。依據 7.3.7，這份確認應使用什麼樣的產品？若客戶堅持使用工程樣品，風險何在？</li>
+                <li>客戶決定將注射器的針頭材質從 316L 不鏽鋼改為新型合金。依據 7.3.9，CDMO 應要求客戶在變更實施前完成哪些評估？若 CDMO 倉庫中已有 10,000 支使用舊材質的在製品，應如何處置？</li>
+                <li>稽核員要求查閱某型號醫療器材的 Design and Development File（7.3.10）。CDMO 表示「設計是客戶的責任，我們只負責生產」。從 ISO 13485 的角度，這個回答是否正確？CDMO 應保存 DHF 的哪些部分？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>6.4.2 污染管制是 ISO 13485 獨有條款</strong>：無菌醫療器材製造商必須文件化微生物與微粒管制要求，並在組裝/包裝過程中維持潔淨度——這是無菌 CDMO 潔淨室管理的法規基礎</li>
+        <li><strong>7.1 品質計劃 = 產品實現規劃的輸出</strong>：包含 CQAs、測試方法、接受標準及適用程序的參引；對 CDMO 而言即技術轉移後的 Device-specific Quality Plan</li>
+        <li><strong>7.3 是所有 ISO 標準中最嚴格的設計管制</strong>：10 個子條款，特別增加了程序文件要求（7.3.1）、設計轉移（7.3.8）和 DHF（7.3.10）——這三項是 ISO 9001 沒有的</li>
+        <li><strong>驗證 vs. 確認的核心區別</strong>：Verification（輸出 vs. 輸入）可用原型；Validation（產品 vs. 預期用途）必須用代表性生產批次，且須在產品交付客戶前完成</li>
+        <li><strong>7.3.8 設計轉移是 CDMO 最直接相關的條款</strong>：技術轉移報告是 7.3.8 的記錄輸出，必須證明設計輸出在 CDMO 設施中可重現製造</li>
+        <li><strong>DHF（7.3.10）是設計管制的總索引</strong>：串連所有 7.3 活動的記錄，稽核時必查文件；CDMO 即使不主導設計，也應持有與製造相關的 DHF 部分</li>
+    </ul>
+</div>
+
+</div>
+
+<div class="main-footer">
+    <p>ISO 13485:2016 — Medical Devices — Quality Management Systems</p>
+    <p>SterileGMP Knowledge Hub | Section 3: Resource Management, Product Realization &amp; Design Control</p>
+</div>
+
+</body>
+</html>

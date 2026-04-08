@@ -884,6 +884,14 @@ Terms: quality culture, root cause analysis (RCA), human error, skill-based erro
 | Statistical tolerance interval k-value k_act k_tar, one-sided two-sided, probability content p / 統計容差區間k值、單側雙側、機率含量p | ISO-11608-1 |
 | NIS design requirements 23 requirements risk analysis ISO 14971, measurement uncertainty / NIS設計要求23項、風險分析、測量不確定度 | ISO-11608-1 |
 | Test matrix Table 3, extreme condition testing temperature humidity drop / 試驗矩陣表3、極端條件試驗、溫度濕度跌落 | ISO-11608-1 |
+| ISO 13485 medical device QMS, quality management system regulatory purposes / 醫療器材品質管理系統、法規目的要求 | ISO-13485 |
+| Medical device file MDF, design history file DHF, device master record DMR / 醫療器材文件、設計歷史文件、器材主記錄 | ISO-13485 |
+| Design and development controls D&D, design verification validation transfer 7.3 / 設計與開發管制、設計驗證確認、設計轉移 | ISO-13485 |
+| Sterile medical device requirements 7.5.5, sterilization validation 7.5.7, sterile barrier / 無菌醫療器材要求、滅菌確效、無菌屏障系統確效 | ISO-13485 |
+| Contamination control 6.4.2, clean room aseptic cleanroom ISO 13485 requirement / 污染管制、潔淨室、無菌環境、ISO 13485獨有要求 | ISO-13485 |
+| Complaint handling 8.2.2, vigilance reporting 8.2.3, regulatory authority reporting / 投訴處理、警戒報告、法規主管機關通報 | ISO-13485 |
+| CAPA corrective action preventive action ISO 13485 7-step effectiveness review / 矯正預防措施、七步驟流程、有效性審查 | ISO-13485 |
+| ISO 13485 vs ISO 9001 differences, no continual improvement, regulatory QMS / ISO 13485與ISO 9001差異、無持續改善要求 | ISO-13485 |
 | HVAC for sterile manufacturing, air change rate, HEPA filter / 無菌製造HVAC、換氣次數、HEPA過濾器 | ISPE-Vol3 + ISPE-HVAC |
 | Pressure cascade, differential pressure, airlock design / 壓力梯度、壓差、氣閘設計 | ISPE-Vol3 + ISPE-HVAC |
 | oRABS vs cRABS vs isolator, barrier technology comparison / 開放式vs封閉式RABS vs隔離器 | ISPE-Vol3 + PtC-12 |
@@ -1060,10 +1068,13 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → PtC-13 ★★★ (complete material strategy: categories, risk-based qualification, supplier, lifecycle) — single primary source
 
 **Medical Devices & Combination Products — Aseptic Processing (醫療器材與組合產品無菌製程)**
-→ ISO-13408-7 ★★★ (primary standard: complete alternative aseptic process framework for products that cannot use standard media fill — surrogate product selection, FMEA risk assessment, RPN threshold, small batch rule, FIH/clinical/PPQ lifecycle, viable-cell product sterility testing via RMM, Annex A FMEA case study, Annex B/C testing option matrix) | ISO-11040-6 ★★ (plastic polymer barrel prefilled syringe — a common combination product format: COC/COP/PP materials, RTF subassembled syringe, SAL 10⁻⁶, particles/endotoxin requirements) | TR73-2 ★★ (EU MDR regulatory requirements for combination products with staked needles, Annex I GSPR) | ISO-13408 ★★ (Part 7 overview in series context; Part 1 baseline framework that Part 7 extends)
+→ ISO-13408-7 ★★★ (primary standard: complete alternative aseptic process framework for products that cannot use standard media fill — surrogate product selection, FMEA risk assessment, RPN threshold, small batch rule, FIH/clinical/PPQ lifecycle, viable-cell product sterility testing via RMM, Annex A FMEA case study, Annex B/C testing option matrix) | ISO-13485 ★★★ (QMS framework underlying all medical device aseptic processing: design controls 7.3, sterile device requirements 7.5.5, sterilization/sterile barrier validation 7.5.7, contamination control 6.4.2, complaint handling/vigilance 8.2.2/8.2.3) | ISO-11040-6 ★★ (plastic polymer barrel prefilled syringe — a common combination product format: COC/COP/PP materials, RTF subassembled syringe, SAL 10⁻⁶, particles/endotoxin requirements) | TR73-2 ★★ (EU MDR regulatory requirements for combination products with staked needles, Annex I GSPR) | ISO-13408 ★★ (Part 7 overview in series context; Part 1 baseline framework that Part 7 extends)
 
 **Needle-Based Injection Systems / Drug Delivery Device Standards (針式注射系統/藥物遞送裝置標準)**
-→ ISO-11608-1 ★★★ (primary standard: system designations A/B1/B2/C/D1/D2, 23 design requirements 5.5a–w, dose accuracy test methods gravimetric/volumetric, statistical tolerance interval k-value method, test matrix Table 3 by designation, extreme condition testing Table 4, labeling requirements, Annex B k-value tables n=5 to 1000) | ISO-11040 ★★★ (prefilled syringe as delivery platform: glass/plastic barrel, plunger stopper, tub-and-nest packaging, RTF format — physical container side) | FDA-ComboProd-CGMP ★★★ (CGMP compliance for combination products including autoinjectors: 21 CFR Part 4 streamlined approach, QMSR alignment) | FDA-ComboProd-HF ★★★ (human factors for delivery devices: critical tasks, formative/validation study, FDA HF guidance application to autoinjectors) | TR73 ★★ (PDA perspective on PFS CCI and drug compatibility) | TR73-2 ★★ (EU MDR requirements for staked needle combination products)
+→ ISO-11608-1 ★★★ (primary standard: system designations A/B1/B2/C/D1/D2, 23 design requirements 5.5a–w, dose accuracy test methods gravimetric/volumetric, statistical tolerance interval k-value method, test matrix Table 3 by designation, extreme condition testing Table 4, labeling requirements, Annex B k-value tables n=5 to 1000) | ISO-13485 ★★★ (QMS backbone for NIS manufacturers: design controls 7.3, sterile device requirements 7.5.5, sterilization validation 7.5.7, complaint/vigilance 8.2.2/8.2.3) | ISO-11040 ★★★ (prefilled syringe as delivery platform: glass/plastic barrel, plunger stopper, tub-and-nest packaging, RTF format — physical container side) | FDA-ComboProd-CGMP ★★★ (CGMP compliance for combination products including autoinjectors: 21 CFR Part 4 streamlined approach, QMSR alignment) | FDA-ComboProd-HF ★★★ (human factors for delivery devices: critical tasks, formative/validation study, FDA HF guidance application to autoinjectors) | TR73 ★★ (PDA perspective on PFS CCI and drug compatibility) | TR73-2 ★★ (EU MDR requirements for staked needle combination products)
+
+**Medical Device Quality Management System (醫療器材品質管理系統)**
+→ ISO-13485 ★★★ (primary standard: complete QMS requirements for medical device lifecycle — scope, MDF, design controls 7.3, contamination control 6.4.2, sterile device requirements 7.5.5, sterilization/sterile barrier validation 7.5.7, complaint handling 8.2.2, vigilance reporting 8.2.3, CAPA 8.5.2; 2016 vs. 2003 changes summary; ISO 9001 correspondence) | FDA-ComboProd-CGMP ★★★ (QMSR = 21 CFR Part 820 aligned to ISO 13485:2016, effective Feb 2026: combination product manufacturers must meet QMSR requirements) | ISO-11608-1 ★★★ (design requirements 5.5a–w + risk analysis per ISO 14971 — directly implemented under ISO 13485 design controls framework) | TR73-2 ★★ (EU MDR Annex I GSPR requirements: essential requirements as design outputs under ISO 13485 7.3.4) | FDA-ComboProd-HF ★★ (usability engineering as part of design V&V under 7.3.6/7.3.7)
 
 **TSE/BSE / Animal-Derived Materials (TSE/BSE/動物源材料)**
 → PtC-13 ★★★ (safety requirements, regulatory overview Table 3.2-1, human/animal-derived classification) — single primary source
@@ -1356,6 +1367,35 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 - Section 4: Reagents & Dose Accuracy Testing — test reagents (Sec 6), gravimetric/volumetric methods (Sec 7), Table 2 dose accuracy method matrix by designation
 - Section 5: Test Matrix & Test Procedures — test preparation (Sec 8), Table 3 test matrix (Sec 9), test procedures 10.1–10.21
 - Section 6: Inspection, Labeling & Annexes — visual/functional inspection (Sec 11), test report (Sec 12), labeling (Sec 13), Annex A worked examples, Annex B k-value tables
+
+---
+
+## ISO/ISO-13485-Complete.md
+**Report:** ISO 13485:2016 — Medical Devices — Quality Management Systems — Requirements for Regulatory Purposes
+**Pages:** p1–p44 | **Sections:** 5
+
+**Covers questions about:**
+- QMS scope and applicability: organizations involved in any lifecycle stage — design, production, storage/distribution, installation, servicing, disposal of medical devices
+- Medical Device File (MDF) requirement (4.2.3): not a single document — a collection for each device or device family; maps to FDA DMR/DHR and EU MDR Technical Documentation
+- Contamination control (6.4.2): unique to ISO 13485 vs ISO 9001; documented requirements for controlling contamination for sterile/clean devices — direct link to aseptic processing and cleanroom standards
+- Design & Development controls (7.3.1–7.3.10): design inputs/outputs, V&V distinction, design transfer (7.3.8), design and development file, change control — the backbone of combination product DHF
+- Sterile medical device special requirements (7.5.5): maintain sterility through production, document packaging process requirements, link to 7.5.7 validation
+- Sterilization and sterile barrier validation (7.5.7): must validate before implementation AND after changes; continuously monitor process performance; revalidation triggers
+- Supplier evaluation and purchasing controls (7.4.1): criteria-based evaluation/re-evaluation; risk-proportionate controls; quality agreements for outsourced processes
+- Complaint handling (8.2.2): broad definition — any alleged deficiency in identity/quality/safety/effectiveness; near-miss inclusion; written procedure + timely investigation required
+- Vigilance reporting (8.2.3): determining reportability to regulatory authorities; timeframes by jurisdiction (EU MDR 15/30 days; FDA MDR); CDMO vs. legal manufacturer boundary
+- CAPA (8.5.2): 7-step process (determination→investigation→root cause→evaluation→implementation→records→effectiveness review); re-entry rule for ineffective CAPA
+- ISO 13485:2016 vs. 2003 key changes: 4.1.5 outsourcing quality agreements, 4.1.6 QMS software validation, 4.2.3 MDF, 6.4.2 contamination control, 7.5.7 sterile barrier, strengthened 8.2.3
+- ISO 13485 vs. ISO 9001:2015 differences: 13485 omits continual improvement and risk-based thinking (beyond regulatory); 13485 adds sterile device requirements, vigilance reporting, complaint-driven PMS
+
+**Key terms:** quality management system (QMS), medical device file (MDF), quality manual, design and development (D&D), design history file (DHF), device master record (DMR), design transfer, design verification, design validation, contamination control, sterile medical device, sterilization validation, sterile barrier system, traceability, complaint, advisory notice, vigilance reporting, regulatory authority, corrective action (CA), preventive action (PA), CAPA, nonconforming product, rework, concession, post-market surveillance (PMS), authorized representative, manufacturer, life-cycle, outsourcing quality agreement, QMS software validation, risk, ISO 9001, ISO 14971, ISO 11607, EU MDR, 21 CFR Part 820, QMSR
+
+**Sections:**
+- Section 1: Foreword, Introduction (0.1–0.5) & Terms — scope clarifications, shall/should distinction, process approach, 20 device-specific terms (3.1–3.22)
+- Section 2: QMS Requirements (Clause 4) & Management Responsibility (Clause 5) — MDF, outsourcing agreements, QMS software validation, document hierarchy, management review 12 mandatory inputs
+- Section 3: Resource Management (Clause 6) & Design Controls (Clause 7.1–7.3) — contamination control 6.4.2, product realization planning, D&D 7.3.1–7.3.10 including DHF
+- Section 4: Purchasing, Production & Sterile Device Requirements (Clause 7.4–7.6) — tiered supplier qualification, 7.5.5 sterile device requirements, 7.5.7 sterilization/sterile barrier validation, traceability
+- Section 5: Measurement, Analysis & Improvement (Clause 8) + Annexes A & B — complaint handling, vigilance reporting, CAPA 7-step process, 2016 change summary, ISO 9001 correspondence
 
 ---
 
