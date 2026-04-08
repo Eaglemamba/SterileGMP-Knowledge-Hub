@@ -585,6 +585,10 @@ Terms: quality culture, root cause analysis (RCA), human error, skill-based erro
 | Lysate sensitivity confirmation geometric mean λ, four dilutions four replicates gel-clot / 溶胞物靈敏度確認、幾何平均值計算、四個稀釋度四個複本 | PhEur-2614 |
 | Interfering factors BET spike recovery 50-200%, inhibition enhancement test / BET干擾因素試驗、回收率50-200%、抑制增強試驗 | PhEur-2614 + USP-85 |
 | Kinetic turbidimetric chromogenic method correlation coefficient r≥0.980, standard curve / 動態比濁法動態顯色法、標準曲線相關係數r≥0.980 | PhEur-2614 |
+| Sub-visible particle test Ph.Eur. 2.9.19, light obscuration LO Method 1, microscopic particle count Method 2 / 次可見微粒試驗Ph.Eur.光阻法方法一、顯微鏡計數法方法二 | PhEur-2919 |
+| LVP SVP particulate limit 25/mL 6000/container, Test 1.A Test 1.B acceptance criteria injection infusion / 大容量注射劑25個/mL限度、小容量6000個/容器、輸液微粒接受標準 | PhEur-2919 + USP-788 |
+| Circular diameter graticule GFOV transparent black reference circles particle sizing microscope / 圓形直徑量尺視野微粒量測、透明黑色參考圓、顯微鏡計數尺 | PhEur-2919 |
+| Environmental suitability blank test particle-free water LO method precaution laminar flow cabinet / 環境適用性空白確認、無粒子水本底測試、層流台潔淨條件 | PhEur-2919 |
 | Sterilizing filtration, filter sterilization, 0.22 µm filter, 0.2 µm membrane filtration / 滅菌過濾、過濾除菌、0.22微米過濾器 | ISO-13408-2 + TR26 |
 | Bacterial challenge test BCT, microbial retention validation, Brevundimonas diminuta / 細菌挑戰測試、微生物截留驗證、微小短波單胞菌 | ISO-13408-2 + TR26 |
 | Filter integrity test acceptance criteria, correlation to BCT, diffusive flow bubble point / 過濾器完整性測試接受標準、細菌截留相關性 | ISO-13408-2 + TR26 |
@@ -2014,7 +2018,7 @@ Key terms: leachables, analytical evaluation threshold (AET), leachables specifi
 → USP/USP-55 ★★★ (BI resistance performance tests: D-value, survivor curve, BIER vessel, calculation methods) | USP/USP-1228-5 ★★★ (endotoxin indicators for depyrogenation validation) | PDA/TR1 ★★ (BI in moist heat sterilization)
 
 **Particulate Matter in Injectables (注射劑微粒)**
-→ USP/USP-788 ★★★ (primary test: LO and microscopic methods, LVP/SVP limits) | USP/USP-787 ★★★ (therapeutic proteins: protein aggregation, silicone oil, special considerations) | USP/USP-789 ★★★ (ophthalmic solutions: ≥50 µm limit) | USP/USP-790 ★★ (visible particulates, 100% inspection) | USP/USP-1788 ★★★ (comprehensive methods reference: LO, microscopic, flow imaging, RMM) | USP/USP-729 ★★★ (lipid emulsions: PFAT5 ≤ 0.05%)
+→ PHEUR/PhEur-2919 ★★★ (Ph.Eur. 2.9.19 primary: Method 1 LO apparatus, calibration, blank check 5×5 mL, LVP/SVP procedure with 4 portions; alternative method for biologics; Test 1.A/1.B acceptance limits; Method 2 microscopic — circular diameter graticule, dual illuminators, black membrane filter, Test 2.A/2.B limits at half of Method 1; particle sizing rules for transparent vs dark particles) | USP/USP-788 ★★★ (USP counterpart: LO and microscopic methods, LVP/SVP limits — ICH harmonised, same numerical limits) | USP/USP-787 ★★★ (therapeutic proteins: protein aggregation, silicone oil, special considerations) | USP/USP-789 ★★★ (ophthalmic solutions: ≥50 µm limit) | USP/USP-790 ★★ (visible particulates, 100% inspection) | USP/USP-1788 ★★★ (comprehensive methods reference: LO, microscopic, flow imaging, RMM) | USP/USP-729 ★★★ (lipid emulsions: PFAT5 ≤ 0.05%)
 
 **Visual Inspection of Injections (注射劑目視檢查)**
 → USP/USP-1790 ★★★ (comprehensive guide: MVI, AVI, Knapp study, PoD, inspector qualification, AQL) | USP/USP-790 ★★ (visible particulates test requirements) | PDA/TR85 ★★★ (enhanced particle detection, ECIM) | PICS-Annex1 ★★ (visual inspection regulatory requirements)
@@ -2170,3 +2174,31 @@ Key terms: leachables, analytical evaluation threshold (AET), leachables specifi
 - Section 1 (p1–p2): BET Overview (3 techniques, 6 methods classification table), LAL/TAL Biology & Beta-Glucan Interference, Apparatus (depyrogenation 250°C), Reagents (LAL/BET water/standard endotoxin), pH Requirement, MVD Formula with Worked Examples
 - Section 2 (p2–p4): Gel-Clot Mechanism, Lysate Sensitivity Confirmation (4×4 design, geometric mean, worked example), Method A (Table 2.6.14-2: limit test interpretation, discordant result handling), Method B (end-point titration, calculation with worked example), Interfering Factors (Table 2.6.14-1: ABCD solutions, 50–200% recovery)
 - Section 3 (p4–p5): Photometric Method Classification (turbidimetric C/F vs chromogenic D/E × kinetic vs end-point), Standard Curve Requirements (|r| ≥ 0.980, log₁₀ range rules), Preparatory Testing (Table 2.6.14-4: ABCD solutions), Validity Criteria (3 conditions), Final Calculation with Correction Factors, Interpretation Against Endotoxin Limit
+
+---
+
+## PHEUR/PhEur-2919-Complete.md
+**Report:** European Pharmacopoeia 11.0 — Chapter 2.9.19: Particulate Contamination: Sub-Visible Particles
+**Pages:** p382–p385 (4 pages) | **Sections:** 2 | ICH Harmonised Chapter (5.8)
+
+**Covers questions about:**
+- Scope and applicability: when Method 1 (LO) is preferred vs when Method 2 (microscopic) is required — emulsions, colloids, liposomes, high viscosity, gas-bubble products
+- Limitation of extrapolation: why statistically sound sampling plans are needed (particulate results cannot be extended to untested units)
+- Method 1 apparatus: light obscuration principle, calibration with certified 10–25 µm spherical particles in particle-free water, aggregation prevention
+- Method 1 environmental suitability blank check: 5 × 5 mL particle-free water, ≤25 particles ≥10 µm in combined 25 mL, LAF requirement
+- Method 1 procedure: 20 inversions, 2 min rest or sonication for gas bubble removal; LVP single unit vs SVP pool ≥10 units to ≥25 mL; 4 portions ≥5 mL each, discard first portion; mean of last 3
+- Method 1 alternative method for biologics: in-use conditions (e.g. expelled syringe), individual unit preferred if volume sufficient, no sonication for proteins
+- Method 1 acceptance criteria: Test 1.A (LVP >100 mL) ≤25/mL ≥10µm and ≤3/mL ≥25µm; Test 1.B (SVP <100 mL) ≤6000/container ≥10µm and ≤600/container ≥25µm
+- Method 2 apparatus: binocular microscope at 100±10×, circular diameter graticule (GFOV) with 10 µm and 25 µm reference circles, ±2% calibration tolerance; two illuminators (internal episcopic brightfield + external oblique 10–20°); black/dark grey 1.0 µm membrane filter; mechanical stage traversing full filtration area
+- Method 2 environmental blank: 50 mL particle-free water filtered → ≤20 particles ≥10µm and ≤5 particles ≥25µm on filtration area
+- Method 2 procedure: same pooling rules as Method 1; vacuum filtration total volume; rinse filter walls; air-dry with Petri dish slightly ajar; scan full membrane; partial count + calculation option
+- Particle sizing rule: mental transformation to circle; transparent circles for white/transparent particles (inner diameter), black circles for dark particles (outer diameter); particles NOT superimposed on reference circles
+- What not to count: amorphous, gelatinous, film-like stains — these are excluded from particle count; LO may help characterise such samples
+- Method 2 acceptance criteria: Test 2.A (LVP) ≤12/mL ≥10µm and ≤2/mL ≥25µm; Test 2.B (SVP) ≤3000/container ≥10µm and ≤300/container ≥25µm (all exactly half of Method 1 limits)
+- Method selection decision flow: Method 1 → if exceeds limits → Method 2 for confirmation; Method 1 not applicable → direct Method 2; both not applicable → justified dilution
+
+**Key terms:** sub-visible particles, light obscuration (LO), Method 1, Method 2, microscopic particle count, LVP (large-volume parenteral), SVP (small-volume parenteral), particle-free water, particle-free water R, 10 µm, 25 µm, Test 1.A, Test 1.B, Test 2.A, Test 2.B, circular diameter graticule, GFOV (graticule field of view), episcopic illumination, oblique illumination, black membrane filter, environmental suitability, blank test, 20 inversions, 4 portions, in-use conditions, alternative method, ICH harmonisation, Ph.Eur. 2.9.19, USP <788>, pharmacopoeial harmonisation
+
+**Sections:**
+- Section 1 (p382–p383): Introduction & Scope (two methods, applicability exceptions, sampling representativeness), Method 1 Apparatus & Calibration, General Precautions (LAF, glassware cleaning, blank check 5×5 mL), Method 1 Procedure (standard and alternative/biologics), Evaluation Test 1.A/1.B acceptance limits with Method 1 vs 2 comparison table
+- Section 2 (p383–p385): Method 2 Apparatus (microscope specs, graticule, dual illuminators, membrane filter), Environmental Blank (50 mL check), Method 2 Procedure (vacuum filtration, air-dry, full scan), Particle Sizing with Graticule (transparent vs dark particles, no superimposition), Excluded materials (amorphous/film-like), Alternative method for biologics, Evaluation Test 2.A/2.B with complete decision flowchart and Ph.Eur./USP comparison
