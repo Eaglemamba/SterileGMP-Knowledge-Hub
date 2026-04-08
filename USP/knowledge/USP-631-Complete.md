@@ -1,4 +1,4 @@
-# USP General Chapter 〰631〱: Color and Achromicity
+# USP General Chapter ⟨631⟩: Color and Achromicity
 
 ## Section 0: Complete Chapter (all)
 

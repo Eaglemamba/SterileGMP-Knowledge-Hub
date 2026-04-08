@@ -1,4 +1,4 @@
-# USP General Chapter 〰87〱: Biological Reactivity Tests, In Vitro
+# USP General Chapter ⟨87⟩: Biological Reactivity Tests, In Vitro
 
 USP GENERAL CHAPTER <87> BIOLOGICAL REACTIVITY TESTS, IN VITRO
 Status: Currently Official on 12-Feb-2025

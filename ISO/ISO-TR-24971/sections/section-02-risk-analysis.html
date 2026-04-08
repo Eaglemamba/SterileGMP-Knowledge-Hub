@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISO/TR 24971 - Section 5: Risk Analysis</title>
+    <style>
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif; line-height: 1.75; color: var(--text-dark); background: #f0f2f5; }
+.header { background: linear-gradient(135deg, #4c1d95 0%, #6d28d9 100%); color: white; padding: 2rem; text-align: center; }
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.source-badge { display: inline-block; background: #7c3aed; color: white; font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 4px; letter-spacing: 0.05em; margin-top: 0.4rem; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+.left-column { background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; }
+.left-column h2 { color: var(--primary-blue); border-bottom: 2px solid #6d28d9; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.left-column h3 { color: var(--primary-blue); margin: 1rem 0 0.5rem; font-size: 1rem; }
+.left-column h4 { color: var(--primary-blue); margin: 0.75rem 0 0.4rem; font-size: 0.95rem; }
+.left-column p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li { margin-bottom: 0.5rem; }
+.right-column { background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #c4b5fd; }
+.right-column h2 { color: #4c1d95; border-bottom: 2px solid #7c3aed; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.right-column p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.section-title { font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
+.key-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
+.quote-box { background: linear-gradient(to right, #e7f3ff, #d6e9ff); border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem; }
+.concept-box { background: var(--green-bg); border-left: 4px solid var(--green-border); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 0.92rem; line-height: 1.7; }
+.concept-box h4 { color: #2e7d32; margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600; }
+.concept-box p, .concept-box ul { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.concept-box ul { margin-left: 1.25rem; }
+.analogy-box { background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%); border-left: 4px solid #f6ad55; border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 0.92rem; line-height: 1.7; }
+.analogy-box h4 { color: #856404; margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600; }
+.analogy-box p { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.note-box { background: var(--orange-bg); border-left: 4px solid var(--orange-border); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 0.92rem; line-height: 1.7; }
+.note-box h4 { color: #c65102; margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600; }
+.note-box p, .note-box ul { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.note-box ul { margin-left: 1.25rem; }
+.practice-box { background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%); border: 2px dashed #3182ce; border-radius: 10px; padding: 1.25rem; margin: 1.25rem 0; font-size: 0.92rem; }
+.practice-box h4 { color: #2c5282; margin-bottom: 0.75rem; font-size: 0.95rem; font-weight: 600; }
+.practice-box ol { margin-left: 1.25rem; }
+.practice-box li { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.learning-objectives { background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+.main-footer { background: var(--primary-blue); color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+@media (max-width: 900px) { .two-column { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Section 5: Risk Analysis</h1>
+    <div class="subtitle">風險分析 — 危害識別、危險情境與風險估計</div>
+    <div class="page-info">ISO/TR 24971:2020 — Guidance on the Application of ISO 14971 | p6–p15</div>
+    <span class="source-badge">ISO</span>
+</div>
+
+<div class="main-content">
+
+    <!-- Learning Objectives -->
+    <div class="learning-objectives">
+        <h3>學習目標 Learning Objectives</h3>
+        <ul>
+            <li>理解風險分析四步驟流程：預期用途 → 安全特性識別 → 危害/危險情境識別 → 風險估計</li>
+            <li>區分「預期用途」與「合理可預見的誤用」，並能舉出 CDMO 填充製程的實際案例</li>
+            <li>掌握危害（Hazard）→ 危險情境（Hazardous Situation）→ 損害（Harm）三步鏈的邏輯</li>
+            <li>理解隨機故障與系統性故障的本質差異，以及對風險估計策略的影響</li>
+            <li>應用風險矩陣（3×3 或 5×5）進行風險等級分類，並理解嚴重性與發生機率的獨立分析原則</li>
+            <li>Apply the hazard → hazardous situation → harm chain to CDMO fill-finish operations (CCI, leachables, particulates)</li>
+        </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5.1: RISK ANALYSIS PROCESS OVERVIEW -->
+    <!-- ============================================================ -->
+    <div class="two-column">
+        <div class="left-column">
+            <h2>5.1 Risk Analysis Process</h2>
+            <p>The risk analysis process consists of the following steps, which are explained in further detail in the next subclauses:</p>
+            <ul>
+                <li>description of the <span class="key-term">intended use</span> of the medical device and identification of the <span class="key-term">reasonably foreseeable misuse</span> associated with safety;</li>
+                <li>identification of the <span class="key-term">characteristics</span> of the medical device that are related to safety;</li>
+                <li>identification of <span class="key-term">hazards</span> and <span class="key-term">hazardous situations</span> associated with the medical device;</li>
+                <li><span class="key-term">risk estimation</span> for each identified hazardous situation.</li>
+            </ul>
+        </div>
+        <div class="right-column">
+            <h2>導師解析：風險分析流程概覽</h2>
+
+            <div class="concept-box">
+                <h4>核心概念：風險分析是 ISO 14971 的骨幹</h4>
+                <p>整個 ISO 14971 風險管理框架的核心邏輯，是先搞清楚「這個器材要做什麼、給誰用、在哪裡用」，再系統性地問「什麼可能出錯」，最後量化「出錯了有多嚴重、機率多高」。</p>
+                <p>這四個步驟是有先後順序的：你必須先清楚地定義預期用途，才能識別相關危害；必須先識別危害，才能估計風險。跳步驟是法規審查失敗的常見原因。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5.2: INTENDED USE AND REASONABLY FORESEEABLE MISUSE -->
+    <!-- ============================================================ -->
+    <div class="two-column">
+        <div class="left-column">
+            <h2>5.2 Intended Use and Reasonably Foreseeable Misuse</h2>
+
+            <p>The <span class="key-term">intended use</span> should take into account information such as:</p>
+            <ul>
+                <li>the intended medical indication, e.g. treatment or diagnosis of type 2 diabetes mellitus, cardiovascular disease, bone fracture, infertility;</li>
+                <li>patient population, e.g. age groups (adults, children, adolescent, elderly), gender (male, female), or disease state;</li>
+                <li>part of the body or type of tissue interacted with, e.g. leg or arm;</li>
+                <li>user profile, e.g. patient, lay person, health care provider;</li>
+                <li>use environment, e.g. home, hospital, intensive care unit; and</li>
+                <li>operating principle, e.g. mechanical piston driven syringe, X-ray imaging, MR imaging, subcutaneous drug delivery.</li>
+            </ul>
+
+            <p><span class="key-term">Reasonably foreseeable misuse</span> — use error is defined as use of the medical device in a way not intended by the manufacturer, but which can result from readily predictable human behaviour. This can relate to reasonably foreseeable misuse (slip, lapse or mistake), intentional acts of misuse, and intentional use of the medical device for other (medical) applications than intended by the manufacturer. Cases of reasonably foreseeable misuse can be identified during design and development by an analysis of simulated use, for example by applying a usability engineering process, or during the manufacturer's post-production phase by an analysis of actual use. Reasonably foreseeable misuse can be identified throughout the life cycle of a medical device, including iterations of design activities, during which the ability to anticipate potential misuse progressively increases.</p>
+
+            <p>The usability engineering process can help to determine whether a particular misuse is reasonably foreseeable or not, for example by observation during usability testing. The usability test might reveal that users could routinely use the medical device in a manner that is not according to the manufacturer's instructions. This misuse can occur due to poor working culture, inadequate perception, limited knowledge of the consequences, or because operating instructions are not clear.</p>
+
+            <div class="quote-box">
+                <strong>EXAMPLE:</strong> A single-use medical device is designed to be used only once, but it is reasonably foreseeable that some users might attempt to reuse the medical device. Therefore, warnings against reuse and indications of the possible harm resulting from reuse were included in the accompanying documentation. Application of usability engineering according to IEC 62366-1 demonstrated that this information for safety would be effective, i.e. users would know the correct use and understand the risks of reusing the medical device. However, the usability evaluation also showed that some users are likely to disregard this information and intentionally reuse the medical device. Intentional reuse can be considered abnormal use, which is beyond the scope of the usability engineering process, because the risks associated with this misuse cannot be controlled in the user interface (see 3.1 and 3.26 of IEC 62366-1:2015). Since this behaviour can be considered a risk control measure, the risks from such reuse are analysed in the risk management process and evaluated against the criteria for acceptability according to ISO 14971:2019. It could be necessary to implement risk control measures outside the user interface.
+            </div>
+        </div>
+        <div class="right-column">
+            <h2>導師解析：預期用途與合理可預見的誤用</h2>
+
+            <div class="concept-box">
+                <h4>核心概念：「預期用途」必須被明確文件化</h4>
+                <p>ISO 14971 要求製造商必須書面記錄預期用途，包含六個面向：醫療適應症、病患族群、接觸部位、使用者類型、使用環境、操作原理。</p>
+                <p>這不是形式主義——每一個面向都會影響後續的危害識別。例如，同樣是注射器：</p>
+                <ul>
+                    <li>「由醫護人員操作」vs.「病患自行注射」→ 使用錯誤的類型完全不同</li>
+                    <li>「兒科用途」→ 劑量誤差的嚴重性更高</li>
+                    <li>「居家使用」vs.「ICU 使用」→ 環境條件和監督程度不同</li>
+                </ul>
+            </div>
+
+            <div class="analogy-box">
+                <h4>生活類比：剪刀的預期用途與合理誤用</h4>
+                <p>設計一把剪刀的預期用途是剪紙，但必須考慮有人可能用來剪電線（合理誤用）。</p>
+                <p>「合理可預見的誤用」的關鍵字是「可預見」——不是故意破壞（sabotage），而是日常生活中真實可能發生的使用偏差。一個人剪紙時手指不小心被割到，這是可預見的；有人故意用剪刀攻擊他人，這超出可預見誤用的範疇。</p>
+                <p>對醫療器材而言：錯誤病人、錯誤劑量、錯誤給藥途徑——這些都是必須分析的合理誤用情境。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>CDMO 實務關聯：填充製程對預期用途的影響</h4>
+                <p>CDMO 的核心責任是「不改變客戶產品的預期用途與安全性」。然而，製程變更可能在不知不覺中影響安全特性：</p>
+                <ul>
+                    <li><strong>滅菌方式改變</strong>（如從濕熱滅菌改為輻射滅菌）→ 可能改變容器材料的浸出物（leachables）特性 → 影響預期用途場景下的安全性</li>
+                    <li><strong>橡膠塞供應商更換</strong> → 新批次的生物相容性數據可能不同 → 需要重新評估風險</li>
+                    <li><strong>充填量調整</strong> → 濃度變化 → 可能超出原始預期用途的安全範圍</li>
+                </ul>
+                <p>任何製程變更都應觸發風險管理的重新審視，確認不影響原始預期用途的安全保證。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>法規重點：IEC 62366-1 使用性工程</h4>
+                <p>ISO/TR 24971 引用 IEC 62366-1（使用性工程標準），表示風險分析不能只是紙上作業——必須透過使用性測試（simulated use testing）來驗證「合理可預見的誤用」清單是否完整。</p>
+                <p>在法規審查中，FDA 和 EU MDR 都會要求提供使用性測試報告，作為風險分析的支持證據。若 CDMO 代工的是組合產品（combination product），這點尤為重要。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5.3: CHARACTERISTICS RELATED TO SAFETY -->
+    <!-- ============================================================ -->
+    <div class="two-column">
+        <div class="left-column">
+            <h2>5.3 Identification of Characteristics Related to Safety</h2>
+
+            <p>It is important to identify the characteristics of the medical device that could affect <span class="key-term">safety</span>. These characteristics can be qualitative or quantitative and can be bound by certain limits. The questions in Annex A cover many aspects of hazards and can assist in identifying the characteristics related to safety. For every question, it is indicated which factors should be considered in further detail, with the ultimate goal of identifying all hazards and hazardous situations associated with the medical device.</p>
+
+            <p>The list of questions in Annex A should not be used as a checklist. It can also be helpful to review available information and literature, including adverse event reports, for similar medical devices.</p>
+
+            <p>A manufacturer can identify the performance or the functions of the medical device that are necessary to achieve its intended use or that could affect safety, and consider whether any hazardous situations could occur, if any of these functions did not perform properly.</p>
+
+            <p>Examples of characteristics related to safety that the questions in Annex A address include:</p>
+            <ul>
+                <li>energy outputs (electrical, thermal, radiation, mechanical)</li>
+                <li>substances or materials that come into contact with patients or users</li>
+                <li>sterility and biocompatibility requirements</li>
+                <li>software and electronic control characteristics</li>
+                <li>human factors and ergonomic characteristics</li>
+                <li>environmental conditions of use</li>
+                <li>performance and reliability characteristics</li>
+            </ul>
+        </div>
+        <div class="right-column">
+            <h2>導師解析：安全相關特性識別</h2>
+
+            <div class="concept-box">
+                <h4>核心概念：Annex A 是問題清單，不是勾選清單</h4>
+                <p>ISO/TR 24971 特別強調：Annex A 的問題清單「不應作為勾選清單使用」（should not be used as a checklist）。這是一個重要的思維提醒——答案是「YES/NO」的勾選作業，會讓人停止深入思考。</p>
+                <p>正確的使用方式是：對每個問題，思考「如果這個特性出現問題，會導致什麼危害？危害在什麼情境下轉變為危險情境？損害的嚴重性和發生機率如何？」</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>CDMO 製程中的三大安全特性</h4>
+                <p><strong>1. 容器密封完整性（Container-Closure Integrity, CCI）</strong></p>
+                <p>玻璃瓶、注射器、安瓿的密封性是藥品無菌性保障的核心安全特性。任何密封失效都可能導致微生物污染，危害病患。</p>
+                <p><strong>2. 浸出物（Leachables from rubber stoppers / closures）</strong></p>
+                <p>橡膠塞、隔膜、柱塞中的化學物質遷移到藥液中，是典型的化學危害。不同的橡膠配方、不同的藥液 pH 值、不同的儲存溫度都會影響浸出物的種類與濃度。</p>
+                <p><strong>3. 微粒污染（Particulate contamination）</strong></p>
+                <p>可見微粒和不可見微粒（次可見微粒）都是安全特性——靜脈注射藥品中的微粒可能導致血管栓塞、肉芽腫炎症等嚴重損害。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>思考框架：功能與安全的雙重視角</h4>
+                <p>ISO/TR 24971 建議從兩個方向識別安全特性：</p>
+                <ul>
+                    <li><strong>正面識別</strong>：哪些功能是達成預期用途所必要的？（如果這些功能失效，會怎樣？）</li>
+                    <li><strong>負面識別</strong>：哪些特性可能在正常功能運作時仍產生危害？（如 AED 的電擊本身就是危害源，但也是治療的必要手段）</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5.4: HAZARDS AND HAZARDOUS SITUATIONS -->
+    <!-- ============================================================ -->
+    <div class="two-column">
+        <div class="left-column">
+            <h2>5.4 Identification of Hazards and Hazardous Situations</h2>
+
+            <h3>5.4.1 Hazards</h3>
+            <p>A <span class="key-term">hazard</span> is a potential source of harm. Depending on the specific situation, hazards can have different origins/natures. Examples of hazards are electricity, moving parts, infectious bacteria, chemicals, gases, sharp edges, high currents, temperature, and ionising radiation.</p>
+            <p>Hazards associated with the intended use can be deduced from the reasonably foreseeable misuse and safety characteristics as determined in 5.2 and 5.3.</p>
+            <p>Annex C of ISO 14971:2019 provides guidance that can help in identifying hazards and sequences of events that can lead to hazardous situations. Annex H provides similar guidance for IVD medical devices, where incorrect diagnostic information can lead to indirect harm to patients.</p>
+
+            <h3>5.4.2 Hazardous Situations in General</h3>
+            <p>Medical devices only cause harm if a sequence of events occurs that results in a <span class="key-term">hazardous situation</span>, which then causes or leads to <span class="key-term">harm</span>. Sequences of events can include a chronological series of causes and effects, as well as combinations of concurrent events. A hazardous situation occurs when people, property or the environment are exposed to one or more hazards.</p>
+            <p>Hazardous situations can arise even when there are no faults, i.e. in the normal condition for the medical device when it is performing as intended. Hazardous situations can be intrinsic aspects of certain therapies. For example, an automated external defibrillator (AED) delivers an electric shock to the patient as part of its normal operation. Similarly, wound cauterization involves the application of high energy to a wound site, and a scalpel has a sharp blade intended to make incisions.</p>
+            <p>Annex A provides guidance in the form of questions on the characteristics of a medical device that could affect safety. Those characteristics can help in identifying hazards and hazardous situations. Annex B provides guidance on several techniques that can support a risk analysis. Annex H provides specific guidance on identifying hazards and hazardous situations for IVD medical devices.</p>
+
+            <h3>5.4.3 Hazardous Situations Resulting from Faults</h3>
+            <p>In cases where a hazardous situation only occurs due to a fault, the probability of a fault occurring is not the same as the probability of the occurrence of harm. A fault can initiate a sequence of events but does not necessarily result in a hazardous situation. A hazardous situation does not always result in harm.</p>
+            <p>It is important to understand that there are generally two types of fault that can lead to a hazardous situation: <span class="key-term">random faults</span> and <span class="key-term">systematic faults</span>.</p>
+
+            <h3>5.4.4 Hazardous Situations Resulting from Random Faults</h3>
+            <p>Random faults are typically due to physical or chemical causes such as corrosion, contamination, thermal stress, and wear-out. For many random faults, a numerical value can be given for the probability that the fault will occur. Some examples of random faults are:</p>
+            <ul>
+                <li>the failure of a part such as an integrated circuit in an electronic assembly;</li>
+                <li>the contamination of an IVD reagent leading to incorrect results;</li>
+                <li>the presence of an infectious or toxic substance in or on a medical device.</li>
+            </ul>
+            <p><strong>NOTE:</strong> A quantitative estimate can only be applied to biological hazards if sufficient information is known about the hazard and the circumstances affecting the probability of the hazardous situation occurring, for example in the use of sterility assurance levels.</p>
+
+            <h3>5.4.5 Hazardous Situations Resulting from Systematic Faults</h3>
+            <p>A systematic fault can be caused by an error in any activity. It will systematically give rise to a failure when some particular combination of inputs or environmental conditions arises, but will otherwise remain latent.</p>
+            <p>Errors leading to systematic faults can occur in any part of the medical device such as hardware and software in electro-mechanical medical devices. Systematic faults in labelling can lead to use errors for any medical device. These systematic faults can be introduced at any time during a medical device's development, manufacture or maintenance. Some examples of systematic faults are:</p>
+            <ul>
+                <li>an incorrectly rated fuse fails to prevent a hazardous situation: the fuse rating could have been incorrectly specified during design;</li>
+                <li>a software database does not provide for the condition of full database: if the database is full, it is not clear what the software will do, with possible consequence that the system will simply replace existing data with new data;</li>
+                <li>a fluid, used during the production of a medical device, has a boiling point lower than body temperature: residues of the fluid can, in certain circumstances, be introduced into the blood, possibly leading to an embolism;</li>
+                <li>the antibody in a hepatitis assay does not detect some variants of the virus;</li>
+                <li>inadequately designed environmental control leads to contamination with a toxic substance or an infectious agent;</li>
+                <li>the user's manual is written so that if a maintenance routine is performed according to the instructions, the user could be injured (e.g. by a sharp probe).</li>
+            </ul>
+            <p>The accurate estimation of the probability of occurrence of systematic faults is difficult. This is primarily for the following reasons.</p>
+            <ul>
+                <li>The frequency of systematic faults is laborious to measure. Achieving a reasonable level of confidence in the result will not be possible without extensive data on systematic faults or parameters relevant to risk.</li>
+                <li>Consensus does not exist for a method to quantitatively estimate the probability of occurrence of systematic faults.</li>
+            </ul>
+            <p>Because risk estimation is difficult in these circumstances, the manufacturer should not focus on estimating the probability of systematic faults but rather on implementing robust systems to prevent systematic faults which could lead to hazardous situations or harm.</p>
+
+            <h3>5.4.6 Hazardous Situations Arising from Security Vulnerabilities</h3>
+            <p>Security in this document includes cybersecurity and data and systems security. Security vulnerabilities can lead to loss of data, disclosure of personal health information, unauthorized access to patient harm, etc. Such situations can initiate sequences of events, which can ultimately lead to harm (patient injury or damage to property). For example:</p>
+            <ul>
+                <li>loss of confidentiality can lead to the disclosure of personal health information;</li>
+                <li>loss of integrity can lead to incorrectly represented lab results or malfunction of the medical device;</li>
+                <li>loss of availability can prevent the use of critical functionality of a medical device or can stop the use of a medical device altogether.</li>
+            </ul>
+            <p>See Annex F for further guidance on security.</p>
+        </div>
+        <div class="right-column">
+            <h2>導師解析：危害與危險情境識別</h2>
+
+            <div class="concept-box">
+                <h4>核心概念：三步鏈邏輯 — 危害 → 危險情境 → 損害</h4>
+                <p>ISO 14971 的最關鍵概念之一是這條三步鏈：</p>
+                <ul>
+                    <li><strong>危害（Hazard）</strong>：潛在的損害來源，本身可能不造成任何問題。例如：橡膠塞中含有某種化學物質</li>
+                    <li><strong>危險情境（Hazardous Situation）</strong>：人員、財產或環境暴露於危害的情境。例如：橡膠塞浸出物進入藥液，病患注射後體內達到有害濃度</li>
+                    <li><strong>損害（Harm）</strong>：實際發生的損害。例如：病患發生肝毒性</li>
+                </ul>
+                <p>重要認知：危害存在不等於危險情境發生；危險情境發生不等於損害一定出現。這三步之間的「連結機率」是風險估計的核心。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>FMEA 與三步鏈的對應關係</h4>
+                <p>對熟悉失效模式與影響分析（FMEA）的工程師而言，這個對應關係很有幫助：</p>
+                <table>
+                    <tr><th>FMEA 術語</th><th>ISO 14971 對應</th><th>填充製程舉例</th></tr>
+                    <tr><td>失效原因（Cause）</td><td>危害來源（Hazard source）</td><td>橡膠塞原料中的多環芳烴（PAH）</td></tr>
+                    <tr><td>失效模式（Failure Mode）</td><td>危害（Hazard）</td><td>浸出物遷移至藥液</td></tr>
+                    <tr><td>失效影響（Effect）</td><td>危險情境 → 損害</td><td>病患注射後 PAH 引發突變 → 致癌風險</td></tr>
+                </table>
+            </div>
+
+            <div class="analogy-box">
+                <h4>生活類比：廚房刀具的三步鏈</h4>
+                <p><strong>危害</strong>：廚房刀具有鋒利的刀刃（本身只是一個潛在傷害源）</p>
+                <p><strong>危險情境</strong>：孩童在無人監督的廚房中拿起刀具（人員暴露於危害）</p>
+                <p><strong>損害</strong>：孩童手指被割傷（實際損害發生）</p>
+                <p>如果刀具鎖在刀架上（風險控制），危險情境的發生機率降低；如果廚房有大人在場（另一個風險控制），就算孩童拿起刀，也可能及時阻止損害。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>隨機故障 vs. 系統性故障：策略完全不同</h4>
+                <p><strong>隨機故障（Random Faults）</strong>：由物理/化學原因引起，可用統計數據估計機率。例如：零件的 MTBF（平均故障間隔時間）。對策：可靠性設計、冗餘設計。</p>
+                <p><strong>系統性故障（Systematic Faults）</strong>：由設計錯誤、製造錯誤或維護錯誤引起，在特定條件下必然重現，但難以用數字估計機率。對策：不應著重估計機率，而應著重預防——通過嚴格的設計控制、驗證、確認活動來消除。</p>
+                <p>ISO/TR 24971 特別強調：系統性故障的機率估計不可靠，因此製造商應聚焦於「預防系統性故障的根本原因」，而非試圖量化機率。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>網絡安全危害：現代醫療器材的新風險維度</h4>
+                <p>5.4.6 新增的網絡安全段落，反映 ISO 14971 對現代數位醫療器材的重要更新。CIA 三角（機密性 Confidentiality、完整性 Integrity、可用性 Availability）的任何一項失效，都可能間接導致病患傷害。</p>
+                <p>CDMO 關聯：具有嵌入式軟體的自動化填充機（如具備 MES/SCADA 連接的設備），其網絡安全漏洞必須納入風險分析——特別是在 EU MDR 及 FDA 指引日益重視網絡安全的背景下。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5.4.7: SEQUENCES OF EVENTS (standalone block) -->
+    <!-- ============================================================ -->
+    <div class="two-column">
+        <div class="left-column">
+            <h3>5.4.7 Sequences or Combinations of Events</h3>
+            <p>The hazardous situation can be the result of a sequence or combinations of independent events. The probability of the hazardous situation occurring is then given by the product of the probabilities of occurrence of the independent events. A sequence of events can have branches leading to different hazardous situations, and different events can lead to the same hazardous situation.</p>
+            <p>The example below is for an electricity hazard related to an insulated wire inside a medical electrical device. There is a small probability that the insulation material is degraded and becomes damaged by cracks, and that the cracks lead to an exposed wire. The next possible events are that the user connects and turns on the medical device, and that (depending on choices in the user interface) the exposed wire now has line voltage. When the user subsequently opens the protective cover, the hazardous situation occurs, namely that the user is exposed to the line voltage of 220 V.</p>
+
+            <div class="quote-box">
+                <strong>Figure 1 — Pictorial example (summarised):</strong><br>
+                Hazard: electricity — line voltage (220 V) of insulated wire beneath a cover<br><br>
+                Events:<br>
+                A. Insulation material damaged by cracks (P<sub>A</sub> = 0.01)<br>
+                B. Insulation falls off the wire (P<sub>B</sub> = 0.10)<br>
+                C. User connects and turns on the device (P<sub>C</sub> = 0.10)<br>
+                D. User removes cover (P<sub>D</sub> = 0.10)<br><br>
+                <strong>Hazardous situation:</strong> User exposed to line voltage<br>
+                P<sub>1</sub> = P<sub>A</sub> × P<sub>B</sub> × P<sub>C</sub> × P<sub>D</sub> = 1 × 10<sup>−5</sup><br><br>
+                Probability that user touches wire and experiences:<br>
+                — discomfort (P<sub>2</sub> = 0.10)<br>
+                — burn (P<sub>2</sub> = 0.01)<br>
+                — death (P<sub>2</sub> = 0.001)
+            </div>
+
+            <p>It is emphasized that several scenarios can be relevant, not only those with the highest severity of harm or with the highest probability of occurrence of hazardous situations. Other scenarios can also be relevant. The manufacturer should consider what the best manner is to document the harm, describing one or more sequences of events that can lead to this harm and the different kinds of harm that can occur.</p>
+
+            <p>Information about medical devices on the market can be useful in estimating risk. Several approaches are commonly employed to estimate probabilities:</p>
+            <ul>
+                <li>use of historical design and development data;</li>
+                <li>prediction of probabilities using analytical or simulation techniques;</li>
+                <li>use of experimental data;</li>
+                <li>reliability estimation;</li>
+                <li>post-production and production information;</li>
+                <li>use of expert judgment (an expert in this context can be a person competent on the basis of appropriate education, training, skills and experience; see ISO 13485).</li>
+            </ul>
+            <p>Each of these approaches has strengths and weaknesses. Complementary approaches should be used to increase confidence in the results. Expert judgment should be supplemented with one or more of the other approaches wherever possible. When the other approaches cannot be used or are not sufficient, it might be necessary to rely solely on expert judgment.</p>
+        </div>
+        <div class="right-column">
+            <h2>導師解析：事件序列與機率乘積</h2>
+
+            <div class="concept-box">
+                <h4>核心概念：P₁ × P₂ = 損害發生總機率</h4>
+                <p>ISO 14971 把損害的總機率分解為兩部分：</p>
+                <ul>
+                    <li><strong>P₁</strong>：危險情境發生的機率（從初始事件到人員暴露）</li>
+                    <li><strong>P₂</strong>：暴露於危險情境後，實際發生損害的機率</li>
+                </ul>
+                <p>這個分解的實用價值在於：有時候其中一個機率很容易估計，另一個很難——可以先估計容易的那個，對難以估計的那個保守地設為 1，再判斷最終風險是否可接受。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>電線例子的深度解析</h4>
+                <p>這個例子示範了事件鏈的核心邏輯：四個獨立事件必須全部發生，危險情境才出現。</p>
+                <p>P₁ = 0.01 × 0.10 × 0.10 × 0.10 = 1 × 10⁻⁵（十萬分之一）</p>
+                <p>這說明了：即使每個單獨事件的機率都不低（1%~10%），透過多重獨立保護層（Defense in Depth），整體危險情境的機率可以降到非常低的水準。</p>
+                <p>這也是 CDMO 無菌製程中「多重屏障策略」的邏輯基礎——ISO 8、ISO 7、RABS/隔離器、培養基模擬試驗，每一層都是獨立降低危險情境機率的手段。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>機率估計的六種方法：各有優缺點</h4>
+                <p>標準建議綜合使用多種方法，不要單獨依賴一種。在新產品開發初期，數據少，必須大量依賴專家判斷；在產品上市後，應以真實的上市後監測數據修正機率估計。</p>
+                <p>CDMO 在接受新客戶委託時的實務應用：客戶通常會要求 CDMO 對製程進行初步風險評估。若該藥物的劑型已有類似品種的歷史數據（如同類注射劑的微粒不合格率），應優先引用；若為全新劑型（如新型脂質奈米粒），則必須依賴專家判斷加上模擬試驗數據。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5.5: RISK ESTIMATION -->
+    <!-- ============================================================ -->
+    <div class="two-column">
+        <div class="left-column">
+            <h2>5.5 Risk Estimation</h2>
+
+            <h3>5.5.1 General</h3>
+            <p>ISO 14971:2019 requires the manufacturer to perform risk estimation. Various methods can be used to estimate risk. Those methods should examine, for example:</p>
+            <ul>
+                <li>the circumstances in which a hazard is present;</li>
+                <li>the sequence of events leading to a hazardous situation;</li>
+                <li>the probability of a hazardous situation occurring;</li>
+                <li>the probability of a hazardous situation leading to harm;</li>
+                <li>the nature of the harm that could result.</li>
+            </ul>
+            <p>Risk should be expressed in terms that facilitate decision making on acceptability and the need for risk control, for example, using severity and probability scales. In order to analyse risks, their components, i.e. probability and severity, should be analysed separately.</p>
+            <p>A risk chart such as that shown in Figure 2 shows the distribution of the estimated risks, which can be useful for later decision making. The risks (R₁, R₂, R₃, …) would be plotted on the chart as they are estimated. Risk matrices developed from this figure will be used in examples throughout this clause.</p>
+            <p>This does not imply that this method has general applicability to all risks; however, it can be useful in many instances. If a risk chart or matrix is used for ranking risks, the particular chart or matrix and the interpretation used should be justified for that application.</p>
+
+            <div class="quote-box">
+                <strong>Figure 2 — Example of a risk chart:</strong><br>
+                X-axis: probability of occurrence of harm<br>
+                Y-axis: severity of harm<br>
+                Each estimated risk (R₁, R₂, R₃…) is plotted as a point, showing its distribution across the severity-probability space.
+            </div>
+
+            <h3>5.5.2 Probability</h3>
+            <p>When sufficient data are available to estimate the probability of occurrence of harm with adequate confidence, a quantitative method should be used. Otherwise, a qualitative method based on expert judgment is preferable to a quantitative estimate with high uncertainty. An example of this situation is a new medical device where suitable quantitative data are not available until design validation or later when data become available. For a qualitative method, the manufacturer can describe a series of probability levels with descriptors appropriate for the medical device.</p>
+            <p>Although probability is a continuous variable, a number of discrete levels can be used in practice to simplify the analysis. The manufacturer decides how many probability levels are appropriate, based on the expected confidence in the estimates. A larger number of probability levels can be used when estimates are made with greater confidence. At least three levels should be identified to facilitate decision making. The levels can be descriptive and qualitative (e.g. not expected to occur during the lifetime of the medical device, likely to occur a few times, likely to occur frequently, etc.) or quantitative. Manufacturers should define the levels explicitly, so that there will be no confusion over what falls within each level. A particularly effective way is to assign ranges of non-overlapping numerical values to the discrete levels.</p>
+            <p>The definitions of the probability ranges can be the same or different for different product families. Scales for probability can include probability of occurrence per use, per device, per hour of use, or within a population, etc.</p>
+            <p>It is required to document the chosen probability levels or ranges and their descriptors in the risk management file for the particular medical device.</p>
+
+            <p>There are several factors that are important for estimating the probability of occurrence of harm. These include, but are not limited to, the following.</p>
+            <ul>
+                <li>How often is a particular medical device used?</li>
+                <li>What is the lifetime of the medical device?</li>
+                <li>Who makes up the user and patient populations?</li>
+                <li>What is the number of users/patients?</li>
+                <li>How long and under what circumstances is the user/patient exposed?</li>
+            </ul>
+
+            <p>Probability estimation encompasses the circumstances and the sequence of events from the occurrence of the initiating event through to the occurrence of the hazardous situation. The probability of occurrence of harm can be decomposed into a probability P₁ that a hazardous situation occurs (i.e. that persons are exposed to the hazard) and a probability P₂ that the hazardous situation leads to harm. See Figure C.1 in ISO 14971:2019. A decomposition into P₁ and P₂ can be useful to estimate the probability of occurrence of harm, but such decomposition is not mandatory.</p>
+
+            <p>When the probability of occurrence of harm is decomposed into P₁ and P₂, it could be the case that one of them can be estimated and the other not. In such cases, a conservative approach can be used by setting the unknown probability equal to 1. Such an approach can be useful when the estimated probability is either so low that the resulting risk becomes clearly insignificant or negligible, or so high that it is clear the resulting risk should be reduced.</p>
+
+            <h3>5.5.3 Risks for Which Probability Cannot Be Estimated</h3>
+            <p>Confidence in a risk estimate can be enhanced when a quantitative estimate of the probability of occurrence of harm is made on the basis of accurate and reliable data, or when a reasonable qualitative estimate is based on a consensus by qualified experts. However, this is not always achievable. For example, the probabilities of systematic faults, such as those discussed in 5.4.5, are difficult to estimate.</p>
+            <p>When the accuracy of the probability estimate is in doubt, it is often necessary to establish a broad range for the probability or to determine that it is no worse than some particular value.</p>
+            <p>Examples where probabilities are difficult to estimate include:</p>
+            <ul>
+                <li>software failure;</li>
+                <li>exceptional misuse situations, such as sabotage or tampering with a medical device;</li>
+                <li>novel hazards that are poorly understood, e.g. imprecise knowledge of the infectivity of the causative agent of Bovine Spongiform Encephalopathy (BSE) prevents quantification of the risk of transmission;</li>
+                <li>certain toxicological hazards, such as genotoxic carcinogens and sensitizing agents, where it might not be possible to determine a threshold of exposure below which toxic effects do not occur.</li>
+            </ul>
+            <p>When the probability of occurrence of harm cannot be estimated, it is necessary to evaluate the risk on the basis of the severity of harm alone. The risk control measures should focus on preventing the hazardous situation entirely or on preventing that the hazardous situation leads to harm. If this is not possible, the risk control measures should focus on reducing the severity of harm.</p>
+            <p>An inverse relationship can be presumed between the rigor of the processes used in design, development, manufacturing and maintenance and the probability of some systematic faults being introduced or remaining undetected. The required rigor of these risk control processes can be determined by taking account of the severity of the consequences of systematic faults and the effectiveness of risk control measures external to the medical device. The more severe the consequences are and the less effective the external measures, the more rigorous these processes should be.</p>
+
+            <h3>5.5.4 Severity</h3>
+            <p>To categorize the <span class="key-term">severity</span> of the potential harm, the manufacturer should use descriptors appropriate for the medical device. Severity is, in reality, a continuum; however, in practice, the use of a discrete number of levels simplifies the analysis. In such cases, the manufacturer decides how many categories are appropriate and how they are to be defined. The severity levels should be descriptive and should not include any element of probability. See the examples in Table 2 and Table 4.</p>
+            <p>Severity levels are chosen and justified by the manufacturer based on the harm that could result for a particular medical device. The levels should be defined with sufficient specificity, so that the correct level of severity can be assigned to each harm identified in the risk analysis.</p>
+            <p>It is required to document the chosen severity levels or ranges and their descriptors in the risk management file for the particular medical device.</p>
+            <p><strong>NOTE:</strong> Terminology used by regulators can be useful in describing the severity levels of harm.</p>
+        </div>
+        <div class="right-column">
+            <h2>導師解析：風險估計</h2>
+
+            <div class="concept-box">
+                <h4>核心概念：風險 = 嚴重性 × 發生機率</h4>
+                <p>風險估計的公式看似簡單：</p>
+                <p style="text-align:center; font-weight: bold; font-size: 1.05rem; margin: 0.5rem 0;">Risk = Severity of Harm × Probability of Harm</p>
+                <p>但實際應用時有兩個重要原則：</p>
+                <ul>
+                    <li><strong>分開分析</strong>：嚴重性和發生機率必須獨立評估，不能混淆——嚴重性描述的是「如果損害發生了，有多嚴重」，不含機率成分</li>
+                    <li><strong>文件化定義</strong>：所有的等級定義必須寫進風險管理檔案（Risk Management File），並對每個產品保持一致</li>
+                </ul>
+            </div>
+
+            <div class="concept-box">
+                <h4>CDMO 實務：新項目報價時的初步風險估計</h4>
+                <p>當 CDMO 接受一個新客戶委託時，初步風險估計決定了哪些研究是必要的：</p>
+                <ul>
+                    <li><strong>高風險（嚴重性高 × 機率不低）</strong>：直接接觸藥液的橡膠塞必須進行完整的 E&amp;L（萃取物與浸出物）研究；靜脈注射製劑需要全套微粒測試</li>
+                    <li><strong>中風險</strong>：外包裝材料的化學物質僅間接接觸，可能只需要文獻審查和供應商 CoA</li>
+                    <li><strong>低風險</strong>：非接觸材料（如外箱紙板）通常不需要生物相容性測試</li>
+                </ul>
+                <p>這個初步風險估計也是 CDMO 與客戶在技術轉移階段達成共識的基礎，避免後期因安全特性遺漏而需要重新驗證。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>保守設定未知機率為 1 的邏輯</h4>
+                <p>想像你不知道某種新型藥物包裝材料的浸出物遷移速率（P₁ 未知），但你知道這種浸出物如果進入藥液、被靜脈注射的病患接受的話，發生嚴重副作用的機率（P₂）大約是 0.1%。</p>
+                <p>保守做法：設 P₁ = 1（假設遷移一定發生），計算最壞情況下的風險。如果最壞情況下的風險已在可接受範圍內，你就不需要花時間精確測量 P₁；如果最壞情況下的風險不可接受，那你就必須先測量 P₁，或者直接採取風險控制措施降低 P₂。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>無法估計機率時的策略轉向</h4>
+                <p>基因毒性致癌物（genotoxic carcinogens）是典型案例：科學界至今無法確定「安全暴露閾值」（threshold），因此無法用機率估計的方式處理風險。</p>
+                <p>ISO/TR 24971 指出，此時應改變策略：</p>
+                <ol style="margin-left: 1.25rem; font-size: 0.92rem;">
+                    <li>第一優先：完全防止危險情境發生（如更換無基因毒性的材料）</li>
+                    <li>第二優先：防止危險情境導致損害（如確保濃度遠低於 ICH Q3C/M7 的 TTC 限值）</li>
+                    <li>最後手段：降低損害的嚴重性（如限制病患暴露頻率）</li>
+                </ol>
+                <p>這個邏輯與 CDMO 的 E&amp;L 合規策略高度一致——先選擇符合規範的原材料，再用分析測試確認殘留量在限值以內。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5.5.5: EXAMPLES (RISK MATRICES) -->
+    <!-- ============================================================ -->
+    <div class="two-column">
+        <div class="left-column">
+            <h2>5.5.5 Examples — Risk Matrices</h2>
+
+            <p>Several approaches can be used for qualitative analysis. A typical approach is to use an N-by-M matrix to describe the severities and probabilities of occurrence of harm associated with each hazardous situation. One carefully defines N levels of probability and M levels of severity. Each cell of the matrix represents a subset of the full set of possible risks.</p>
+
+            <h3>Table 2 — Example of Three Qualitative Severity Levels</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Common Terms</th>
+                        <th>Possible Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Significant</strong></td>
+                        <td>Death or loss of function or structure</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Moderate</strong></td>
+                        <td>Reversible or minor injury</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Negligible</strong></td>
+                        <td>No injury or slight injury</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Table 3 — Example of Three Qualitative Probability Levels</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Common Terms</th>
+                        <th>Possible Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>High</strong></td>
+                        <td>Likely to happen often, frequently, always; likely to occur frequently during the lifetime of the medical device</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Medium</strong></td>
+                        <td>Can happen, but not frequently; likely to occur a few times during the lifetime of the medical device</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Low</strong></td>
+                        <td>Unlikely to happen, rare, remote; not likely to occur during the lifetime of the medical device</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>A simple example is a 3 × 3 matrix constructed by using the three levels of Table 2 as columns and the three qualitative probability levels of Table 3 as rows. The estimated risks (R₁, R₂, R₃, …) are entered into the appropriate cells.</p>
+
+            <h3>Table 4 — Example of Five Qualitative Severity Levels</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Common Terms</th>
+                        <th>Possible Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Catastrophic / Fatal</strong></td>
+                        <td>Results in death</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Critical</strong></td>
+                        <td>Results in permanent impairment or irreversible injury</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Serious / Major</strong></td>
+                        <td>Results in injury or impairment requiring medical or surgical intervention</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Minor</strong></td>
+                        <td>Results in temporary injury or impairment not requiring medical or surgical intervention</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Negligible</strong></td>
+                        <td>Results in inconvenience or temporary discomfort</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Table 5 — Example of Five Semi-Quantitative Probability Levels</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Common Terms</th>
+                        <th>Examples of Probability Range</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Frequent</strong></td>
+                        <td>≥ 10<sup>−3</sup></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Probable</strong></td>
+                        <td>&lt; 10<sup>−3</sup> and ≥ 10<sup>−4</sup></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Occasional</strong></td>
+                        <td>&lt; 10<sup>−4</sup> and ≥ 10<sup>−5</sup></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Remote</strong></td>
+                        <td>&lt; 10<sup>−5</sup> and ≥ 10<sup>−6</sup></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Improbable</strong></td>
+                        <td>&lt; 10<sup>−6</sup></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>A more elaborate example is a 5 × 5 matrix constructed by using the five severity levels of Table 4 as columns and the five semi-quantitative probability levels of Table 5 as rows. The estimated risks (R₁, R₂, R₃, …) are entered into the appropriate cells.</p>
+
+            <p>Other sizes than 3 × 3 or 5 × 5 matrices can be employed. However, matrices with more than five levels can require significantly more data to be able to distinguish between the various levels and to avoid overlap of the levels. Rationales for the selection of matrices and their outcome scores should be documented. Note that matrices with three levels might not always be sufficiently accurate for adequate decision making. While the above examples were 3 × 3 and 5 × 5, there is no need that these matrices be balanced. For example, a 4 × 5 matrix could be appropriate for a given application.</p>
+        </div>
+        <div class="right-column">
+            <h2>導師解析：風險矩陣的實務應用</h2>
+
+            <div class="concept-box">
+                <h4>核心概念：風險矩陣的兩個維度必須獨立定義</h4>
+                <p>風險矩陣的橫軸是嚴重性（Severity），縱軸是發生機率（Probability）。兩個維度的等級定義必須：</p>
+                <ul>
+                    <li><strong>不含機率成分的嚴重性描述</strong>：「死亡」是嚴重性描述；「很可能導致死亡」就混入了機率，是錯誤寫法</li>
+                    <li><strong>不重疊的機率區間</strong>：每個機率等級的數值範圍不能有交集，以確保分類的一致性和可重現性</li>
+                    <li><strong>有明確書面定義</strong>：不能讓評估者自行解讀「中等嚴重性」的含義</li>
+                </ul>
+            </div>
+
+            <div class="concept-box">
+                <h4>3×3 vs. 5×5 矩陣：如何選擇？</h4>
+                <table>
+                    <tr>
+                        <th>矩陣尺寸</th>
+                        <th>適用場景</th>
+                        <th>優缺點</th>
+                    </tr>
+                    <tr>
+                        <td>3×3</td>
+                        <td>初期開發、低複雜度產品、快速篩選</td>
+                        <td>簡單易用；但粒度不足，可能無法區分需要不同處理的風險</td>
+                    </tr>
+                    <tr>
+                        <td>5×5</td>
+                        <td>複雜器材、監管要求嚴格的器材（如 Class III）</td>
+                        <td>區分度高；但需要更多數據支持等級分配，評估者需要更多培訓</td>
+                    </tr>
+                    <tr>
+                        <td>非對稱（如 4×5）</td>
+                        <td>特定應用場景</td>
+                        <td>靈活但需要充分理由文件化</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="analogy-box">
+                <h4>CDMO 風險矩陣實作範例</h4>
+                <p>以 CDMO 無菌充填製程的橡膠塞浸出物風險為例，應用 5×5 矩陣：</p>
+                <ul>
+                    <li><strong>危害</strong>：橡膠塞中含有 NDMA（亞硝胺類基因毒性物質）</li>
+                    <li><strong>危險情境</strong>：NDMA 遷移至靜脈注射藥液，每劑暴露量超過 ICH M7 TTC（96 ng/day）</li>
+                    <li><strong>嚴重性評估</strong>：NDMA 是基因毒性致癌物 → Catastrophic（可能增加癌症風險）</li>
+                    <li><strong>機率評估</strong>：依據 E&amp;L 研究數據，遷移量遠低於 TTC → Remote（&lt;10⁻⁵）</li>
+                    <li><strong>初步風險等級</strong>：嚴重 + 罕見 → 需要深入評估，但可能在 ALARP 範圍內可接受</li>
+                </ul>
+            </div>
+
+            <div class="practice-box">
+                <h4>思考練習</h4>
+                <ol>
+                    <li>一個預期用途是「兒科靜脈注射」的藥品容器，其預期用途描述需要特別強調哪些面向？</li>
+                    <li>橡膠塞的化學物質遷移屬於隨機故障還是系統性故障？對風險估計策略有何影響？</li>
+                    <li>如果 P₁（浸出物達到危害濃度的機率）無法精確估計，ISO/TR 24971 建議如何處理？</li>
+                    <li>為什麼嚴重性等級的描述「不應包含任何機率成分」？如果混入了會有什麼問題？</li>
+                    <li>一個 CDMO 決定為新承接的無菌注射液製程使用 3×3 風險矩陣。這個決定是否合適？請提出理由。</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end main-content -->
+
+<div class="main-footer">
+    <p>ISO/TR 24971:2020 — Guidance on the Application of ISO 14971</p>
+    <p>Section 5: Risk Analysis | p6–p15</p>
+    <p>SterileGMP Knowledge Hub — Bilingual Educational Series</p>
+</div>
+
+</body>
+</html>

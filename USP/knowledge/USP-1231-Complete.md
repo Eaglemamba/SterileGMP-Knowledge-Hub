@@ -1,4 +1,4 @@
-# USP General Chapter 〰1231〱: Water for Pharmaceutical Purposes
+# USP General Chapter ⟨1231⟩: Water for Pharmaceutical Purposes
 
 ## Section 0a: Introduction & Water Types (p1-p12)
 

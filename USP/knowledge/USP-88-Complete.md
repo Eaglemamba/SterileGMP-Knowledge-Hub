@@ -1,4 +1,4 @@
-# USP General Chapter 〰88〱: Biological Reactivity Tests, In Vivo
+# USP General Chapter ⟨88⟩: Biological Reactivity Tests, In Vivo
 
 ## Section 0: Complete Chapter (all)
 

@@ -1,4 +1,4 @@
-# USP General Chapter 〰643〱: Total Organic Carbon
+# USP General Chapter ⟨643⟩: Total Organic Carbon
 
 ## Section 0: Complete Chapter (all)
 

@@ -1,4 +1,4 @@
-# USP General Chapter 〰631〱: Color and Achromicity
+# USP General Chapter ⟨631⟩: Color and Achromicity
 
 USP General Chapter <631> COLOR AND ACHROMICITY
 Status: Currently Official on 12-Feb-2025

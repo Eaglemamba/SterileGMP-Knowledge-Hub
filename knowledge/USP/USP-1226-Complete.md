@@ -1,4 +1,4 @@
-# USP General Chapter 〰1226〱: Verification of Compendial Procedures
+# USP General Chapter ⟨1226⟩: Verification of Compendial Procedures
 
 USP General Chapter <1226>
 VERIFICATION OF COMPENDIAL PROCEDURES

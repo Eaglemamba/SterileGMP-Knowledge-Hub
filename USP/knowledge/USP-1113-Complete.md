@@ -1,4 +1,4 @@
-# USP General Chapter 〰1113〱: Microbial Characterization, Identification, and Strain Typing
+# USP General Chapter ⟨1113⟩: Microbial Characterization, Identification, and Strain Typing
 
 ## Section 0: Complete Chapter (all)
 

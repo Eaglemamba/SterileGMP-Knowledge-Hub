@@ -1,4 +1,4 @@
-# USP General Chapter 〰645〱: Water Conductivity
+# USP General Chapter ⟨645⟩: Water Conductivity
 
 USP General Chapter <645> WATER CONDUCTIVITY
 Status: Currently Official on 12-Feb-2025

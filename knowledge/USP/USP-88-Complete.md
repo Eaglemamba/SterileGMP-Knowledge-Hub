@@ -1,4 +1,4 @@
-# USP General Chapter 〰88〱: Biological Reactivity Tests, In Vivo
+# USP General Chapter ⟨88⟩: Biological Reactivity Tests, In Vivo
 
 USP GENERAL CHAPTER <88> BIOLOGICAL REACTIVITY TESTS, IN VIVO
 Status: Currently Official on 12-Feb-2025

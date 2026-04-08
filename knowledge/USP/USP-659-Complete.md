@@ -1,4 +1,4 @@
-# USP General Chapter 〰659〱: Packaging and Storage Requirements
+# USP General Chapter ⟨659⟩: Packaging and Storage Requirements
 
 USP General Chapter 〈659〉 PACKAGING AND STORAGE REQUIREMENTS
 Status: Currently Official on 12-Feb-2025 | Official Date: Official as of 01-Apr-2021
