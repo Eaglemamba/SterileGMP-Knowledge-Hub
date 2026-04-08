@@ -2,7 +2,7 @@
 
 This document summarizes the current coverage status, gap analysis, and expansion roadmap for building a comprehensive sterile pharmaceutical manufacturing knowledge hub suitable for COO-level operational decision-making.
 
-Last updated: 2026-04-09 — 153 documents complete (PDA 41, USP 76, ISPE 14, FDA 5, ICH 3, PIC/S 1, ISO 11, Ph.Eur. 2); ISO 2859-1 AQL sampling complete; ISO pipeline largely complete; next: remaining ISO (9000, 15223, etc.) or Ph.Eur. expansion
+Last updated: 2026-04-09 — 154 documents complete (PDA 41, USP 76, ISPE 14, FDA 5, ICH 3, PIC/S 1, ISO 11, Ph.Eur. 3); Ph.Eur. 2.6.14 Bacterial Endotoxins complete; next: Ph.Eur. 2.9.19 Particulate Contamination (sub-visible)
 
 ---
 
@@ -36,7 +36,7 @@ Layer 3: Site-Specific Documents             ~/Amaran-Site-Knowledge/
 
 | Component | Status | Count |
 |-----------|--------|-------|
-| Layer 1 — Regulatory Reference | ✅ Complete | 150 documents |
+| Layer 1 — Regulatory Reference | ✅ Complete | 154 documents |
 | Expert Knowledge Base | ⬜ Not started | 9 files planned |
 | Layer 2 — Operational Frameworks | ⬜ Not started | ~27 files planned |
 | Layer 2 — Skills System | ⬜ Not started | 26 slash commands planned |
@@ -66,7 +66,7 @@ Layer 3: Site-Specific Documents             ~/Amaran-Site-Knowledge/
 | **ICH** | 3 | Q8(R2), Q9(R1), Q10 | ✅ Complete |
 | **PIC/S** | 1 | Annex 1 (2022) | ✅ Complete |
 | **ISO** | 10 | ISO 11040 (Prefilled Syringes Parts 1–8), ISO 13408 (Aseptic Processing Parts 1–7), ISO 14644 (Cleanrooms Parts 1/5/7), ISO 11608-1 (NIS), ISO 13485 (Medical Device QMS), ISO 10993-1 (Biological Evaluation), ISO TR 24971 (Risk Management Guidance), ISO 15378 (Primary Packaging GMP), ISO 9001, ISO 2859-1 — ISO 14971 blocked (scanned PDF) | 🔄 In progress |
-| **Ph.Eur.** | 1 | 2.6.1 Sterility ✅ — remaining: 2.6.14 Bacterial Endotoxins, 2.9.19/20 Particulate Contamination, 3.2.1 Glass Containers, 3.3.8 Sterile Syringes, 5.1.1 Methods of Preparation | 🔄 In progress |
+| **Ph.Eur.** | 3 | 2.6.1 Sterility ✅, 2.6.14 Bacterial Endotoxins ✅ — remaining: 2.9.19/20 Particulate Contamination, 3.2.1 Glass Containers, 3.3.8 Sterile Syringes, 5.1.1 Methods of Preparation | 🔄 In progress |
 | **IEC** | 0 | 62366-1 (usability engineering) | ⬜ Not started |
 | **EU GMP** | 0 | Annex 15, Annex 2, Annex 20 | ⬜ Future (Phase 6) |
 | **WHO GMP** | 0 | TRS 961 Annex 6, TRS 1010 | ⬜ Future (Phase 6) |

@@ -579,6 +579,12 @@ Terms: quality culture, root cause analysis (RCA), human error, skill-based erro
 | Method suitability test antimicrobial activity, bacteriostasis fungistasis validation Ph.Eur. / 方法適用性測試、抑菌活性消除 | PhEur-261 + USP-71 |
 | Minimum quantity sterility test Table 2.6.1-2, minimum number containers Table 2.6.1-3, sample size sterility / 無菌試驗最低取樣量、最低樣品數、注射劑批量計算 | PhEur-261 |
 | Invalid sterility test four conditions, test invalidation negative control fault / 無菌試驗無效判定、四個無效條件 | PhEur-261 + USP-71 |
+| Bacterial endotoxin test BET Ph.Eur. 2.6.14, LAL test methods ABCDEF, endotoxin limit European Pharmacopoeia / 細菌內毒素試驗Ph.Eur.方法、LAL試驗六種方法ABCDEF | PhEur-2614 |
+| MVD maximum valid dilution calculation, endotoxin limit K concentration M / MVD最大有效稀釋倍數計算公式、K值M值內毒素限度 | PhEur-2614 + USP-85 |
+| Gel-clot method Method A limit test, Method B semi-quantitative BET / 凝膠法限度試驗Method A、定量法Method B、半定量BET | PhEur-2614 |
+| Lysate sensitivity confirmation geometric mean λ, four dilutions four replicates gel-clot / 溶胞物靈敏度確認、幾何平均值計算、四個稀釋度四個複本 | PhEur-2614 |
+| Interfering factors BET spike recovery 50-200%, inhibition enhancement test / BET干擾因素試驗、回收率50-200%、抑制增強試驗 | PhEur-2614 + USP-85 |
+| Kinetic turbidimetric chromogenic method correlation coefficient r≥0.980, standard curve / 動態比濁法動態顯色法、標準曲線相關係數r≥0.980 | PhEur-2614 |
 | Sterilizing filtration, filter sterilization, 0.22 µm filter, 0.2 µm membrane filtration / 滅菌過濾、過濾除菌、0.22微米過濾器 | ISO-13408-2 + TR26 |
 | Bacterial challenge test BCT, microbial retention validation, Brevundimonas diminuta / 細菌挑戰測試、微生物截留驗證、微小短波單胞菌 | ISO-13408-2 + TR26 |
 | Filter integrity test acceptance criteria, correlation to BCT, diffusive flow bubble point / 過濾器完整性測試接受標準、細菌截留相關性 | ISO-13408-2 + TR26 |
@@ -1996,7 +2002,7 @@ Key terms: leachables, analytical evaluation threshold (AET), leachables specifi
 → USP/USP-71 ★★★ (primary USP: membrane filtration, direct inoculation, 14-day incubation, bacteriostasis/fungistasis validation) | PHEUR/PhEur-261 ★★★ (primary Ph.Eur.: FTM/SCDM formulas, 6 standard strains with ATCC/CIP/NCTC strain numbers, method suitability test, Table 2.6.1-2 minimum quantities, Table 2.6.1-3 minimum sample sizes, 4 invalid test conditions) | PICS-Annex1 ★★ (regulatory sterility testing requirements, parametric release) | FDA-Aseptic ★★ (sterility test context, aseptic fill requirements)
 
 **Bacterial Endotoxins / Pyrogen Testing (細菌內毒素/熱原試驗)**
-→ USP/USP-85 ★★★ (primary: gel-clot, turbidimetric, chromogenic methods; MVD calculation; inhibition/enhancement testing; rFC) | USP/USP-151 ★★ (rabbit pyrogen test, MAT for non-endotoxin pyrogens) | USP/USP-1228 ★★★ (depyrogenation strategies and 3-log reduction standard) | FDA-Aseptic ★★ (endotoxin limits context) | PICS-Annex1 ★★ (depyrogenation requirements)
+→ PHEUR/PhEur-2614 ★★★ (Ph.Eur. 2.6.14 primary: all 6 methods A–F, gel-clot limit/semi-quantitative, kinetic/end-point turbidimetric and chromogenic; MVD formula; lysate sensitivity confirmation; interfering factors 50–200% recovery; |r| ≥ 0.980 for photometric methods) | USP/USP-85 ★★★ (USP counterpart: gel-clot, turbidimetric, chromogenic methods; MVD calculation; inhibition/enhancement testing; rFC) | USP/USP-151 ★★ (rabbit pyrogen test, MAT for non-endotoxin pyrogens) | USP/USP-1228 ★★★ (depyrogenation strategies and 3-log reduction standard) | FDA-Aseptic ★★ (endotoxin limits context) | PICS-Annex1 ★★ (depyrogenation requirements)
 
 **Depyrogenation Methods (除熱原方法)**
 → USP/USP-1228 ★★★ (overview: endotoxin biology, control strategies, method selection) | USP/USP-1228-1 ★★★ (dry heat: Fh value, tunnel/oven, load mapping) | USP/USP-1228-3 ★★★ (filtration: RO/UF/activated carbon, LRV) | USP/USP-1228-4 ★★★ (rinsing: WFI volume, temperature, validation) | USP/USP-1228-5 ★★★ (endotoxin indicators: preparation, validation, LRV calculation)
@@ -2135,3 +2141,32 @@ Key terms: leachables, analytical evaluation threshold (AET), leachables specifi
 **Sections:**
 - Section 1 (p1–p2): Overview & Scope, Precautions Against Microbial Contamination, Culture Media & Incubation Temperatures (FTM + SCDM formulas), Growth Promotion Test + Table 2.6.1-1 (6 standard strains with strain numbers)
 - Section 2 (p2–p4): Method Suitability Test, Membrane Filtration Method (aqueous/soluble/oils/ointments), Direct Inoculation Method, Table 2.6.1-2 (min. quantities), Table 2.6.1-3 (min. items), Observation & Interpretation of Results, Application to Parenteral Preparations
+
+---
+
+## PHEUR/PhEur-2614-Complete.md
+**Report:** European Pharmacopoeia 11.0 — Chapter 2.6.14: Bacterial Endotoxins (Biological Tests)
+**Pages:** p1–p5 (5 pages) | **Sections:** 3
+
+**Covers questions about:**
+- Overview of BET technique families: gel-clot (Methods A & B) vs photometric (C, D, E, F) — and which is the arbitration method
+- LAL/TAL biology: Limulus amoebocyte lysate clotting cascade, horseshoe crab origin, beta-glucan interference and masking approach
+- Apparatus depyrogenation requirements: 250°C × ≥30 min, validated test, and why glassware prep is critical
+- Reagents: LAL reagent, BET water specification, CSE/RSE standard endotoxin, pH 6.0–8.0 requirement for all solutions
+- MVD formula: MVD = (endotoxin limit × concentration) / λ — with worked examples for mg/mL products and units/mL injectables
+- Method A (gel-clot limit test): 4×2 design, lysate confirmation procedure (4 dilutions × 4 replicates, geometric mean λ calculation with worked example), 37±1°C × 60±2 min, no vibration, Table 2.6.14-2 result interpretation including discordant case
+- Method B (gel-clot semi-quantitative end-point titration): serial dilution to last positive gel endpoint, calculation formula with worked example (geometric mean of four endpoints)
+- Table 2.6.14-1: interfering factors test solutions A/B/C/D for gel-clot methods — endotoxin spike recovery 50–200% criterion
+- Methods C & F (turbidimetric): kinetic (onset time or turbidity rate) vs end-point (absorbance at fixed time); incubation 37±1°C
+- Methods D & E (chromogenic): kinetic vs end-point chromophore release measurement; same temperature requirements
+- Standard curve requirements for photometric methods: ≥3 concentrations, ≥3 replicates, |r| ≥ 0.980; additional standards for ranges >2 log₁₀
+- Table 2.6.14-4: photometric method test solutions A/B/C/D — parallel to gel-clot Table 2.6.14-1 but for quantitative read
+- Validity criteria for photometric test: 3 simultaneous requirements — |r| ≥ 0.980, 50–200% recovery in solution B, solution D below blank limit
+- Final result calculation: mean endotoxin concentration of solution A replicates, corrected for dilution and concentration, compared to product endotoxin limit
+
+**Key terms:** bacterial endotoxin test (BET), LAL (Limulus amoebocyte lysate), TAL (Tachypleus amoebocyte lysate), gel-clot method, Method A, Method B, turbidimetric method, Method C, Method F, chromogenic method, Method D, Method E, endotoxin unit (EU), IU, endotoxin limit, MVD (maximum valid dilution), lambda (λ), lysate sensitivity, geometric mean, standard endotoxin, CSE, RSE, BET water, pH 6.0–8.0, 250°C depyrogenation, 37±1°C incubation, interfering factors, inhibition, enhancement, spike recovery, 50–200%, test solution A B C D, standard curve, correlation coefficient |r| ≥ 0.980, kinetic method, end-point method, onset time, solution D blank limit, Ph.Eur. 2.6.14, European Pharmacopoeia
+
+**Sections:**
+- Section 1 (p1–p2): BET Overview (3 techniques, 6 methods classification table), LAL/TAL Biology & Beta-Glucan Interference, Apparatus (depyrogenation 250°C), Reagents (LAL/BET water/standard endotoxin), pH Requirement, MVD Formula with Worked Examples
+- Section 2 (p2–p4): Gel-Clot Mechanism, Lysate Sensitivity Confirmation (4×4 design, geometric mean, worked example), Method A (Table 2.6.14-2: limit test interpretation, discordant result handling), Method B (end-point titration, calculation with worked example), Interfering Factors (Table 2.6.14-1: ABCD solutions, 50–200% recovery)
+- Section 3 (p4–p5): Photometric Method Classification (turbidimetric C/F vs chromogenic D/E × kinetic vs end-point), Standard Curve Requirements (|r| ≥ 0.980, log₁₀ range rules), Preparatory Testing (Table 2.6.14-4: ABCD solutions), Validity Criteria (3 conditions), Final Calculation with Correction Factors, Interpretation Against Endotoxin Limit
