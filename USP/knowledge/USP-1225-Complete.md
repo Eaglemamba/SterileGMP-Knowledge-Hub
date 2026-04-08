@@ -1,4 +1,4 @@
-# USP General Chapter 〰1225〱: Validation of Compendial Procedures
+# USP General Chapter ⟨1225⟩: Validation of Compendial Procedures
 
 ## Section 0: Complete Chapter (all)
 

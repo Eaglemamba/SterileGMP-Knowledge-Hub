@@ -1,4 +1,4 @@
-# USP General Chapter 〰87〱: Biological Reactivity Tests, In Vitro
+# USP General Chapter ⟨87⟩: Biological Reactivity Tests, In Vitro
 
 ## Section 0: Complete Chapter (all)
 

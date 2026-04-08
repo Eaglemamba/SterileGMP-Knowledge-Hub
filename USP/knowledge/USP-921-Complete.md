@@ -1,4 +1,4 @@
-# USP General Chapter 〰921〱: Water Determination
+# USP General Chapter ⟨921⟩: Water Determination
 
 ## Section 0: Complete Chapter (all)
 

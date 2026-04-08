@@ -1,4 +1,4 @@
-# USP General Chapter 〰643〱: Total Organic Carbon
+# USP General Chapter ⟨643⟩: Total Organic Carbon
 
 USP General Chapter <643> TOTAL ORGANIC CARBON
 Status: Currently Official on 12-Feb-2025

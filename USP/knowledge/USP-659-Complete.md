@@ -1,4 +1,4 @@
-# USP General Chapter 〰659〱: Packaging and Storage Requirements
+# USP General Chapter ⟨659⟩: Packaging and Storage Requirements
 
 ## Section 0: Complete Chapter (all)
 

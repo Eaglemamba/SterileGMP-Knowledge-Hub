@@ -1,4 +1,4 @@
-# USP General Chapter 〰698〱: Deliverable Volume
+# USP General Chapter ⟨698⟩: Deliverable Volume
 
 ## Section 0: Complete Chapter (all)
 
