@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISO 15223-1 — Section 1: Introduction, Scope, Terms &amp; Definitions, General Requirements, Symbol Category 5.1</title>
+    <style>
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --iso-purple: #7c3aed;
+    --iso-purple-dark: #5b21b6;
+    --iso-purple-light: #ede9fe;
+    --iso-purple-border: #c4b5fd;
+}
+
+/* ===== RESET & BASE ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+    color: #ffffff;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN ===== */
+.left-column {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+.left-column h2 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid var(--iso-purple);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+.left-column h3 {
+    color: var(--primary-blue);
+    margin: 1.1rem 0 0.5rem;
+    font-size: 1rem;
+}
+.left-column h4 {
+    color: var(--iso-purple-dark);
+    margin: 0.9rem 0 0.4rem;
+    font-size: 0.95rem;
+}
+.left-column p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li { margin-bottom: 0.5rem; }
+
+/* ===== RIGHT COLUMN ===== */
+.right-column {
+    background: var(--iso-purple-light);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid var(--iso-purple-border);
+}
+.right-column h2 {
+    color: var(--iso-purple-dark);
+    border-bottom: 2px solid var(--iso-purple);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+.right-column h3 {
+    color: var(--iso-purple-dark);
+    margin: 1.1rem 0 0.5rem;
+    font-size: 1rem;
+}
+.right-column p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.right-column ul, .right-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.right-column li { margin-bottom: 0.5rem; }
+
+/* ===== SECTION TITLE ===== */
+.section-title {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+/* ===== KEY TERM ===== */
+.key-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== CONCEPT BOX (green) ===== */
+.concept-box {
+    background: var(--green-bg);
+    border-left: 4px solid var(--green-border);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+    font-size: 0.92rem;
+    line-height: 1.7;
+}
+.concept-box h4 { color: #2e7d32; margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600; }
+.concept-box p { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.concept-box ul { margin-left: 1.25rem; margin-top: 0.4rem; }
+.concept-box li { margin-bottom: 0.35rem; font-size: 0.92rem; }
+
+/* ===== ANALOGY BOX (yellow) ===== */
+.analogy-box {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%);
+    border-left: 4px solid #f6ad55;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+    font-size: 0.92rem;
+    line-height: 1.7;
+}
+.analogy-box h4 { color: #856404; margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600; }
+.analogy-box p { margin-bottom: 0.5rem; font-size: 0.92rem; }
+
+/* ===== NOTE BOX (orange) ===== */
+.note-box {
+    background: var(--orange-bg);
+    border-left: 4px solid var(--orange-border);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+    font-size: 0.92rem;
+    line-height: 1.7;
+}
+.note-box h4 { color: #c65102; margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600; }
+.note-box p, .note-box ul { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.note-box ul { margin-left: 1.25rem; }
+.note-box li { margin-bottom: 0.35rem; font-size: 0.92rem; }
+
+/* ===== FORMULA BOX (purple) ===== */
+.formula-box {
+    background: var(--purple-bg);
+    border-left: 4px solid var(--purple-border);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+    font-size: 0.92rem;
+    line-height: 1.7;
+}
+.formula-box h4 { color: #7b1fa2; margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600; }
+.formula-box p { margin-bottom: 0.5rem; font-size: 0.92rem; }
+
+/* ===== PRACTICE BOX (blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%);
+    border: 2px dashed #3182ce;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin: 1.25rem 0;
+    font-size: 0.92rem;
+}
+.practice-box h4 { color: #2c5282; margin-bottom: 0.75rem; font-size: 0.95rem; font-weight: 600; }
+.practice-box ol { margin-left: 1.25rem; }
+.practice-box li { margin-bottom: 0.5rem; font-size: 0.92rem; }
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+/* ===== SYMBOL CARD ===== */
+.symbol-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.1rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid #e2e8f0;
+    border-left: 5px solid var(--iso-purple);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+.symbol-card .symbol-header {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    margin-bottom: 0.7rem;
+}
+.symbol-icon {
+    width: 54px;
+    height: 54px;
+    border-radius: 8px;
+    background: #f5f3ff;
+    border: 2px solid #c4b5fd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.5rem;
+}
+.symbol-meta h4 { color: var(--iso-purple-dark); font-size: 0.97rem; font-weight: 700; margin-bottom: 0.1rem; }
+.symbol-meta .symbol-ref { font-size: 0.78rem; color: var(--text-medium); font-family: monospace; }
+.symbol-card p { font-size: 0.91rem; margin-bottom: 0.45rem; text-align: justify; }
+.symbol-card ul { margin-left: 1.2rem; font-size: 0.91rem; }
+.symbol-card li { margin-bottom: 0.3rem; }
+
+/* ===== TABLES ===== */
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+
+/* ===== QUOTE BOX ===== */
+.quote-box {
+    background: linear-gradient(to right, #f5f3ff, #ede9fe);
+    border-left: 4px solid #7c3aed;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--iso-purple);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(124,58,237,0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #5b21b6; transform: scale(1.1); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+    .two-column { grid-template-columns: 1fr; }
+    .header h1 { font-size: 1.1rem; }
+    .main-content { padding: 1rem; }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .back-to-top { display: none !important; }
+    .two-column { grid-template-columns: 1fr 1fr; }
+    .main-content { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Section 1: Introduction, Scope, Terms &amp; Definitions, General Requirements &amp; Symbol Category 5.1</h1>
+    <div class="subtitle">前言、適用範圍、術語定義、一般要求與符號類別 5.1（製造商）</div>
+    <div class="page-info">ISO 15223-1:2016 (Corrected 2017-03) | Medical Device Symbols for Labels &amp; Labelling | p.1–p.10</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標 Learning Objectives</h3>
+    <ul>
+        <li>理解 ISO 15223-1 的立法背景：語言障礙、全球市場與標準化圖形符號的驅動力</li>
+        <li>掌握六大核心術語定義（characteristic、description、label、labelling、symbol、title）</li>
+        <li>熟悉第 4 條一般要求：風險管理驅動符號使用、ISO 7000 合規、日期格式（ISO 8601）</li>
+        <li>識別符號類別 5.1（製造商）的五個子條款：Manufacturer、Authorized Representative、Importer、Distributor、Date of Manufacture</li>
+        <li>連結 FDA 21 CFR Part 801 及 EU MDR 2017/745 對等標示義務，理解符號在 CDMO 充填製程中的實際應用</li>
+    </ul>
+</div>
+
+<!-- ======================================================
+     BLOCK 1: FOREWORD & INTRODUCTION
+     ====================================================== -->
+<h2 class="section-title" id="foreword">Foreword &amp; Introduction — 前言與導論</h2>
+
+<div class="two-column">
+    <!-- LEFT: English content -->
+    <div class="left-column">
+        <h2>Foreword</h2>
+        <p>ISO (the International Organization for Standardization) is a worldwide federation of national standards bodies. The work of preparing International Standards is normally carried out through ISO technical committees. The committee responsible for this document is ISO/TC 210, Quality management and corresponding general aspects for medical devices.</p>
+
+        <p>This third edition (ISO 15223-1:2016) cancels and replaces the second edition (ISO 15223-1:2012), which has been technically revised with the following principal changes:</p>
+        <ul>
+            <li>Clause 2 updated the title of ISO 7000 and added the "date of release" for each registered symbol to Table 1.</li>
+            <li>Symbol 5.1.1: modified requirement related to placement of the manufacturer's name and address on IVD labels.</li>
+            <li>Symbol 5.1.2: modified requirement related to placement of the authorized representative's name and address on IVD labels.</li>
+            <li>Symbol 5.4.3: added information for electronic instructions for use (eIFU) indicator.</li>
+            <li>Symbol 5.4.5: added reference to ISO 7000 symbol 2725, "Contains or presence of."</li>
+            <li>Symbol 5.5.5: modified the description and requirement regarding use with IVD.</li>
+            <li>A.15: added examples for placement of the eIFU indicator.</li>
+        </ul>
+        <p>A corrected version (2017-03) incorporates: in A.9, the graphical symbol of NOTE 2 has been corrected.</p>
+
+        <h2 style="margin-top:1.5rem;">Introduction</h2>
+        <p>This document addresses the presentation of certain items of information that are considered by regulatory authorities to be essential for the safe and proper use of medical devices. As such, the items are required to appear with the medical device in most regulatory domains. The information can be required to appear on the medical device itself, as part of the label, or provided with the medical device.</p>
+
+        <p>Many countries require that their own language be used to display textual information with medical devices. At the same time, manufacturers seek to take costs out of labelling by reducing or rationalizing variants. This can cause problems in relation to translation, design and logistics when multiple languages are included on a single label or piece of documentation. For example, users of medical devices labelled in a number of different languages can experience confusion and delay in locating the appropriate language.</p>
+
+        <p>This document proposes solutions to these problems through the use of internationally recognized symbols with precisely defined descriptions.</p>
+
+        <p>While compiling symbols to be included in this document, ISO/TC 210 recognized the need for systematic methodology for the selection, development and validation of symbols proposed for adoption. This is the subject of ISO 15223-2.</p>
+
+        <p>This document is primarily intended to be used by manufacturers of medical devices who market identical products in countries where there are different language requirements for medical device labelling. It can also be of assistance to:</p>
+        <ul>
+            <li>Distributors of medical devices or other representatives of manufacturers</li>
+            <li>Healthcare providers responsible for training, as well as those being trained</li>
+            <li>Those responsible for post-market vigilance</li>
+            <li>Healthcare regulatory authorities, testing organizations, certification bodies and other organizations responsible for implementing regulations affecting medical devices and which have responsibility for post-market surveillance</li>
+            <li>Consumers or end users of medical devices who draw their supplies from a number of sources and can have varied language capabilities</li>
+        </ul>
+    </div>
+
+    <!-- RIGHT: Chinese commentary -->
+    <div class="right-column">
+        <h2>中文解析 — 為何需要標準化符號？</h2>
+
+        <div class="concept-box">
+            <h4>核心驅動力：語言障礙 vs. 全球市場</h4>
+            <p>ISO 15223-1 的根本問題很實際：一支預充式注射器（prefilled syringe）如果要在 60 個國家上市，標籤就需要 60 種語言版本嗎？</p>
+            <p>這不僅成本驚人，還會造成設計混亂、物流複雜度爆炸。標準化圖形符號（graphical symbols）是唯一可行的解法——任何語言的使用者都看得懂一個通用圖示。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻：國際道路標誌的醫療器材版</h4>
+            <p>就像全球通用的道路標誌（禁止進入的紅圈、停車標誌）——無論你在日本還是巴西開車，都看得懂。ISO 15223-1 要做的，就是為醫療器材標籤建立同樣的視覺語言系統。</p>
+            <p>一個工廠圖示代表「製造商」，一個沙漏代表「有效期限」，全球通用，不需翻譯。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>第三版（2016）主要更新亮點</h4>
+            <ul>
+                <li><strong>IVD 標籤特別規定</strong>：體外診斷器材（IVD）的製造商地址放置位置有專屬要求</li>
+                <li><strong>eIFU 電子說明書</strong>：新增 5.4.3 符號，代表「請參閱電子版說明書」，對應 EU MDR 的 eIFU 規定（EU 207/2012）</li>
+                <li><strong>ISO 7000 日期更新</strong>：Table 1 每個符號新增「登錄日期」欄位，方便追溯符號版本</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>CDMO 實務關聯</h4>
+            <p>作為受託製造商（CDMO），你負責代客戶生產、充填和標籤。ISO 15223-1 符號的正確使用，是你在以下環節的責任：</p>
+            <ul>
+                <li><strong>標籤審查（Label Review）</strong>：確認客戶提供的標籤設計符合 ISO 15223-1</li>
+                <li><strong>批次記錄（Batch Record）</strong>：產品標籤版本號必須對應當前有效的符號版本</li>
+                <li><strong>變更控制（Change Control）</strong>：ISO 15223-1 版本更新時，需評估現有標籤是否需同步修訂</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>標準版本對照</h4>
+            <p><strong>第一版（2000）</strong>→ <strong>第二版（2012）</strong>→ <strong>第三版（2016）</strong>→ <strong>修訂版（2017-03）</strong></p>
+            <p>目前有效版本：ISO 15223-1:2016，含 2017 年 3 月修訂（A.9 圖形更正）。</p>
+            <p>注意：部分法規引用的是 2012 版，需確認客戶合約與法規要求所指向的版本。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ======================================================
+     BLOCK 2: SCOPE & NORMATIVE REFERENCES
+     ====================================================== -->
+<h2 class="section-title" id="scope">Clause 1 &amp; 2 — Scope &amp; Normative References</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>1 Scope</h2>
+        <p>This document identifies requirements for symbols used in medical device labelling that convey information on the safe and effective use of medical devices. It also lists symbols that satisfy the requirements of this document.</p>
+        <p>This document is applicable to symbols used in a broad spectrum of medical devices, which are marketed globally and therefore need to meet different regulatory requirements.</p>
+        <p>These symbols may be used on the medical device itself, on its packaging or in the associated documentation. The requirements of this document are not intended to apply to symbols specified in other standards.</p>
+
+        <h2 style="margin-top:1.5rem;">2 Normative References</h2>
+        <p>The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition applies.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Standard</th>
+                    <th>Title / Relevance</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>ISO 7000</strong></td>
+                    <td>Graphical symbols for use on equipment — Registered symbols. The master registry of ISO graphical symbols, including those adopted in Table 1 of ISO 15223-1.</td>
+                </tr>
+                <tr>
+                    <td><strong>IEC 80416-1</strong></td>
+                    <td>Basic principles for graphical symbols for use on equipment — Creation of graphical symbols for registration. Provides the structural framework for defining symbol descriptions and titles.</td>
+                </tr>
+                <tr>
+                    <td><strong>ISO 14971</strong></td>
+                    <td>Medical devices — Application of risk management to medical devices. Risk management process underpins when and how symbols must be applied (referenced in Clause 4.2).</td>
+                </tr>
+                <tr>
+                    <td><strong>ISO 8601</strong></td>
+                    <td>Data elements and interchange formats — Information interchange — Representation of dates and times. All dates displayed with symbols shall follow ISO 8601 format (e.g., YYYY-MM-DD).</td>
+                </tr>
+                <tr>
+                    <td><strong>ISO 15223-2</strong></td>
+                    <td>Symbol development, selection and validation. Any new symbol proposed for adoption in Part 1 must be validated per Part 2.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="right-column">
+        <h2>中文解析 — 範圍與規範性引用</h2>
+
+        <div class="concept-box">
+            <h4>適用範圍三層解讀</h4>
+            <ul>
+                <li><strong>「識別要求」</strong>：本標準不只是符號圖庫，它同時定義了何時應使用符號的義務性要求</li>
+                <li><strong>「廣泛醫療器材」</strong>：從注射器、導管、植入物，到 IVD 試劑、眼科器材，全部涵蓋在內</li>
+                <li><strong>「不適用於其他標準規定的符號」</strong>：例如 EN 60601 系列（電氣安全）有自己的符號體系，不混用</li>
+            </ul>
+        </div>
+
+        <div class="concept-box">
+            <h4>四個規範性引用標準詳解</h4>
+            <p><strong>ISO 7000</strong> — 符號的「身份證字號」來源。ISO 15223-1 Table 1 中每個符號都標有 ISO 7000 的登錄號碼（如 ISO 7000-3082 代表製造商符號）。這個號碼讓你能追溯圖形的官方版本。</p>
+            <p><strong>IEC 80416-1</strong> — 定義什麼叫做 "title"、"description"、"characteristic information"（下一條款的術語都源自此標準）。</p>
+            <p><strong>ISO 14971</strong> — 風險管理是符號使用的觸發條件。不是所有資訊都必須用符號，而是當風險評估顯示「有必要」時才使用。</p>
+            <p><strong>ISO 8601</strong> — 日期格式標準化。製造日期、有效期限，必須用 YYYY-MM-DD 格式，而非各國習慣的 DD/MM/YYYY 或 MM/DD/YYYY。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>FDA 21 CFR Part 801 對應</h4>
+            <p>FDA 21 CFR Part 801 要求醫療器材標籤必須包含足夠資訊供安全使用。雖然 FDA 不強制要求使用 ISO 15223-1 符號，但 FDA 於 2016 年發布指引 "Use of International Standard ISO 10993-1"，並在標籤指引中認可使用 ISO 15223-1 符號，條件是：</p>
+            <ul>
+                <li>符號旁邊有英文說明文字（伴隨文字），或</li>
+                <li>製造商能提供符號含義的書面說明給最終使用者</li>
+            </ul>
+            <p>實務上：在美國市場銷售的器材，建議在符號旁保留英文 title（如 "Manufacturer"），以符合 FDA 的理解性要求。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>EU MDR 2017/745 對應</h4>
+            <p>EU MDR Annex I（基本安全和性能要求）第 23 條規定標籤必須清晰可讀，Annex I 第 23.2(d) 明確允許使用符號。EU MDR 2017/745 直接引用 ISO 15223-1 作為符合性標準（harmonized standard）。</p>
+            <p>這意味著在歐盟市場上正確使用 ISO 15223-1 符號，可作為符合 EU MDR 標籤要求的技術文件依據。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>思考練習</h4>
+            <ol>
+                <li>你的客戶要求在一個胰島素預充注射器上只用符號（不加文字）標示製造日期。ISO 15223-1 第 4.2 條允許這樣做嗎？FDA 呢？EU MDR 呢？</li>
+                <li>如果一個符號在 ISO 7000 有登錄，但未被 ISO 15223-1 Table 1 收錄，你的客戶可以直接使用它嗎？</li>
+                <li>ISO 8601 格式的「2026年4月9日」應如何書寫在標籤上？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ======================================================
+     BLOCK 3: TERMS & DEFINITIONS
+     ====================================================== -->
+<h2 class="section-title" id="terms">Clause 3 — Terms &amp; Definitions</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>3 Terms and Definitions</h2>
+        <p>For the purposes of this document, the terms and definitions given in ISO 14971 and the following apply.</p>
+
+        <h3>3.1 Characteristic Information</h3>
+        <p>Information that represents the property or properties of a symbol.</p>
+
+        <h3>3.2 Description</h3>
+        <p>Normative text which defines the purpose, application and use of the symbol.</p>
+        <p>[SOURCE: IEC 80416-1:2008, 3.2]</p>
+
+        <h3>3.3 Label</h3>
+        <p>Written, printed or graphic information provided upon the medical device itself.</p>
+        <p>[SOURCE: GHTF/SG1/N43:2005]</p>
+
+        <h3>3.4 Labelling</h3>
+        <p>Information supplied by the manufacturer that is provided for, associated with, or affixed to, a medical device or any of its containers or wrappers.</p>
+        <p><em>Note 1 to entry:</em> This information relates to the identification, technical description (3.2) and use of the medical device, but excludes shipping documents.</p>
+        <p><em>Note 2 to entry:</em> Some regional and national regulations refer to "labelling" as "information supplied by the manufacturer."</p>
+
+        <h3>3.5 Symbol Used in Medical Device Labelling</h3>
+        <p>Graphical representation appearing on the label (3.3) and/or associated documentation of a medical device that communicates characteristic information (3.1) without the need for the supplier or receiver of the information to have knowledge of the language of a particular nation or people.</p>
+        <p><em>Note 1 to entry:</em> The symbol can be an abstract pictorial or a graphical representation, or one that uses familiar objects, including alphanumeric characters.</p>
+
+        <h3>3.6 Title</h3>
+        <p>Unique name by which a graphical symbol is identified and spoken of.</p>
+        <p>[SOURCE: IEC 80416-1:2008, 3.9]</p>
+    </div>
+
+    <div class="right-column">
+        <h2>中文解析 — 六大術語詳解</h2>
+
+        <div class="concept-box">
+            <h4>3.1 Characteristic Information（特性資訊）</h4>
+            <p>這是符號所傳遞的「訊息本質」。例如工廠圖示（製造商符號）的 characteristic information 就是「這是製造這個器材的實體」。</p>
+            <p>CDMO 應用：在你的標籤審查 SOP 中，審查人員需要確認每個符號所傳遞的 characteristic information 與產品實際情況一致（例如確認工廠圖示旁的公司名稱確實是 MAH 而非 CMO）。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>3.2 Description（描述）vs. 3.6 Title（標題）</h4>
+            <p><strong>Title</strong> = 符號的「名字」，用於識別和引用。例如：「Manufacturer」是 5.1.1 符號的 title。</p>
+            <p><strong>Description</strong> = 符號的「規範性文字」，定義用途、適用情境和使用方式。這是 Table 1 中最重要的欄位，因為它具有規範性（normative）效力。</p>
+            <p>區別重要性：當法規或合約引用 ISO 15223-1 符號時，你必須遵守 description，而不只是「形狀看起來像就好」。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>3.3 Label（標籤）vs. 3.4 Labelling（標示）</h4>
+            <p><strong>Label</strong>（標籤）= 直接貼在產品本體上的實體標籤。例如貼在玻璃瓶身上的紙質標籤。</p>
+            <p><strong>Labelling</strong>（標示）= 更廣義的概念，包含標籤、包裝上的印刷資訊、說明書（IFU）、甚至產品網站上的資訊。排除：出貨文件（shipping documents）。</p>
+            <p>FDA 21 CFR Part 801 的 "labeling"（注意美式拼法只有一個 l）對應 ISO 的 "labelling"，兩者定義非常接近。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻：Label vs. Labelling</h4>
+            <p>把一個預充式注射器想像成一本書：</p>
+            <ul>
+                <li><strong>Label</strong> = 書的封面（直接貼在產品上的那張貼紙）</li>
+                <li><strong>Labelling</strong> = 整個出版資訊系統（封面 + 封底 + 版權頁 + 附冊說明書），但不含書商的送貨單</li>
+            </ul>
+        </div>
+
+        <div class="concept-box">
+            <h4>3.5 Symbol（符號）— 最核心的定義</h4>
+            <p>關鍵詞：<strong>"without the need for... knowledge of the language"</strong>——這就是符號存在的根本理由。符號必須跨越語言障礙，做到真正的視覺溝通。</p>
+            <p>Note 1 很重要：符號可以是抽象圖形（如波浪代表非滅菌），也可以是熟悉物件（如工廠建築代表製造商），甚至可以包含英數字符（如"2°C–8°C"配合雪花圖示）。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>術語應用練習</h4>
+            <ol>
+                <li>一份充填製造廠的 SOP 寫道：「標籤上必須印有製造商名稱」。這裡的「標籤」是 3.3 label 還是 3.4 labelling 的範疇？</li>
+                <li>一個產品說明書（IFU）上印有 ISO 15223-1 符號。這屬於 label 還是 labelling？</li>
+                <li>Title 和 Description 都在 Table 1 中——如果兩者有細微衝突，以哪個為準？（提示：想想 normative vs. informative 的概念）</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ======================================================
+     BLOCK 4: GENERAL REQUIREMENTS
+     ====================================================== -->
+<h2 class="section-title" id="general-req">Clause 4 — General Requirements</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>4 General Requirements</h2>
+
+        <h3>4.1 Proposal of Symbols for Adoption</h3>
+        <p>Symbols proposed for adoption in this document shall be validated in accordance with ISO 15223-2.</p>
+        <p>Any symbol proposed for adoption in this document shall be applicable to a range of medical devices and have global or regional applicability.</p>
+
+        <h3>4.2 Requirements for Usage</h3>
+        <p>When risk management shows it to be appropriate for symbols to be used to convey information essential for proper use on the medical device, its packaging or in associated documentation, the symbols given in Table 1 may be used.</p>
+
+        <p>Symbols that are registered in ISO 7000 shall comply with the graphical representation in ISO 7000, especially with respect to:</p>
+        <ul>
+            <li>Relative dimensions</li>
+            <li>Relative line thickness</li>
+            <li>Orientation</li>
+            <li>Absence or presence of filled or shaded areas</li>
+        </ul>
+
+        <div class="quote-box">
+            NOTE 1: ISO and IEC jointly maintain an online database of graphical symbols for use on equipment at https://www.iso.org/obp/ui/#search. This online collection shows each graphical symbol and identifies it by a reference number and a title (in English and French).
+        </div>
+
+        <p>As part of risk management, the manufacturer should determine the appropriate size for the symbol to be legible for its intended function.</p>
+
+        <div class="quote-box">
+            NOTE 2: This document does not specify colours or minimum size for the symbols in Table 1, nor does it specify the relative size of symbols and that of indicated information.
+        </div>
+
+        <p>It is important that symbols be used properly. Guidance on appropriate use of the general prohibition symbol and the negation symbol is given in Annex B.</p>
+
+        <p>Before symbols are used, the manufacturer shall carry out a risk assessment that indicates that the use of the symbol does not introduce an unacceptable risk.</p>
+
+        <div class="quote-box">
+            NOTE 3: Additional information regarding risk assessment can be found in ISO 14971.
+        </div>
+
+        <p>Symbols may be used without accompanying text. Where regulations require accompanying text, the title of the symbol given in this document should be considered sufficient. All dates and times presented in association with symbols shall use the conventions set out in ISO 8601.</p>
+
+        <h3>4.3 Other Symbols</h3>
+        <p>Other standards specify additional symbols that are applicable to particular kinds or groups of medical devices or to particular situations. Examples of sources for such symbols are identified in the Bibliography. This listing is not exhaustive.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>中文解析 — 一般要求五大核心</h2>
+
+        <div class="concept-box">
+            <h4>核心一：風險管理驅動符號使用（4.2）</h4>
+            <p>關鍵句：<em>"When risk management shows it to be appropriate..."</em></p>
+            <p>這意味著符號不是強制貼滿標籤的裝飾，而是<strong>風險管理（ISO 14971）的輸出結果</strong>。你的 Risk Management File 應記錄：</p>
+            <ul>
+                <li>哪些資訊對安全使用至關重要</li>
+                <li>為什麼選擇使用符號（而非純文字）來傳遞這些資訊</li>
+                <li>符號使用是否可能引入新風險（例如使用者誤解）</li>
+            </ul>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心二：ISO 7000 圖形合規性</h4>
+            <p>不能「看起來像」就好——ISO 7000 登錄符號有嚴格的圖形規格要求：</p>
+            <ul>
+                <li><strong>相對尺寸比例</strong>：工廠圖示的屋頂高度、煙囪寬度都有規定比例</li>
+                <li><strong>線條粗細</strong>：細線和粗線的相對比例需一致</li>
+                <li><strong>方向（Orientation）</strong>：符號不能隨意旋轉（某些符號有方向性意義）</li>
+                <li><strong>填色 / 陰影</strong>：有些符號要求實心，有些要求空心，不能互換</li>
+            </ul>
+            <p>CDMO 實務：你的美工設計師在重繪符號時，必須參照 ISO OBP 線上資料庫的官方圖形（可下載 AI、DWG、EPS 格式），不能自行「美化」或縮放比例。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心三：使用前必須做風險評估</h4>
+            <p><em>"the manufacturer shall carry out a risk assessment that indicates that the use of the symbol does not introduce an unacceptable risk."</em></p>
+            <p>這是 <strong>shall</strong>（強制性）要求。你需要在技術文件（Technical File / Design History File）中留下使用者理解性測試（usability testing）或等效評估記錄，證明目標使用者群體能正確理解每個符號。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心四：伴隨文字（Accompanying Text）</h4>
+            <p>符號<strong>可以</strong>單獨使用（不加文字），但有條件：</p>
+            <ul>
+                <li>如法規要求伴隨文字（如 FDA 對美國市場的要求），則應加上符號的 title</li>
+                <li>Title（如"Manufacturer"）被視為「足夠」的伴隨文字</li>
+                <li>不需要加完整的 description 文字</li>
+            </ul>
+            <p>EU MDR Annex I 第 23.4(ab) 允許使用符號，但需確保在使用者群體中能被正確理解。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心五：日期格式 ISO 8601</h4>
+            <p>所有與符號搭配的日期<strong>必須</strong>（shall）使用 ISO 8601：</p>
+            <table>
+                <thead><tr><th>格式</th><th>範例</th><th>說明</th></tr></thead>
+                <tbody>
+                    <tr><td>完整日期</td><td>2026-04-09</td><td>YYYY-MM-DD（優先使用）</td></tr>
+                    <tr><td>年月</td><td>2026-04</td><td>當日期只知道到月份</td></tr>
+                    <tr><td>年份</td><td>2026</td><td>製造年份（植入物常用）</td></tr>
+                </tbody>
+            </table>
+            <p>常見錯誤：使用 "04/09/26" 或 "09 APR 2026"，在不同國家可能被解讀為不同日期，違反 ISO 8601。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>4.3 其他符號 — 重要排除條款</h4>
+            <p>ISO 15223-1 不是唯一的醫療器材符號標準。其他標準的符號（如 EN 60601 電氣設備符號、IEC 60417 電氣符號）各自有其適用範圍，不受 ISO 15223-1 的管轄，也不需要滿足本標準的要求。</p>
+            <p>實務：一個電氣輸注泵的標籤可能同時包含 ISO 15223-1 符號（如有效期限、製造商）和 EN 60601 電氣安全符號（如 II 類電氣設備），兩個符號系統並存但各自遵守自己的標準。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>一般要求應用練習</h4>
+            <ol>
+                <li>你的客戶要在注射器標籤上使用「在歐洲共同體的授權代理人」符號（5.1.2），但想讓符號的線條更粗一些，使印刷更清晰。這樣可以嗎？</li>
+                <li>美國 FDA 審查員問你：「你們的有效期限符號旁邊為什麼沒有英文 'Use by' 文字？」請引用 ISO 15223-1 第 4.2 條的哪一段來回應？</li>
+                <li>製造日期在標籤上寫成 "MFG: 03-2026"。這符合 ISO 8601 嗎？應改為什麼格式？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ======================================================
+     BLOCK 5: SYMBOL CATEGORY 5.1 — MANUFACTURER
+     ====================================================== -->
+<h2 class="section-title" id="symbols-5-1">Clause 5 &amp; Table 1 — Symbol Category 5.1: Manufacturer</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>5 Symbols — Table 1 (Category 5.1: Manufacturer)</h2>
+        <p>When appropriate, information essential for proper use shall be indicated on the medical device, its packaging, or in the associated documentation by using the corresponding symbols given in Table 1. A manufacturer may use any appropriate symbol regardless of category.</p>
+
+        <div class="quote-box">
+            NOTE: Table 1 has been organized into symbol categories for ease of use. The category into which a symbol is grouped does not have any significance as far as usage is concerned. The order of appearance of symbols and the categories in which they are placed are not prioritized. Examples of the use of symbols can be found in Annex A.
+        </div>
+
+        <!-- 5.1.1 Manufacturer -->
+        <div class="symbol-card">
+            <div class="symbol-header">
+                <div class="symbol-icon">&#127981;</div>
+                <div class="symbol-meta">
+                    <h4>5.1.1 Manufacturer</h4>
+                    <span class="symbol-ref">ISO 7000-3082 | Registration date: 2011-10-02</span>
+                </div>
+            </div>
+            <p><strong>Title:</strong> Manufacturer</p>
+            <p><strong>Description:</strong> Indicates the medical device manufacturer, as defined in the applicable EU Directives and Regulations, identified by name and address.</p>
+            <p><strong>Graphical form:</strong> A stylized factory/industrial building icon — typically showing a building with a triangular roofline and one or more smokestacks or chimneys, representing a manufacturing facility.</p>
+            <p><strong>Usage requirements:</strong></p>
+            <ul>
+                <li>This symbol shall be accompanied by the name and address of the manufacturer.</li>
+                <li>Required on labels per EU Directives 90/385/EEC, 93/42/EEC, and 98/79/EC (and by EU MDR 2017/745 / EU IVDR 2017/746 for new devices).</li>
+                <li>NOTE 1: This symbol is used to indicate information that is required in Europe.</li>
+                <li>NOTE 2: The full definition of "manufacturer" is given in EU Directives 90/385/EEC, 93/42/EEC, and 98/79/EC.</li>
+                <li>NOTE 3: Guidance on EU Directive requirements for 90/385/EEC and 93/42/EEC is given in EN 1041.</li>
+                <li>NOTE 4: Guidance on EU Directive 98/79/EC requirements is given in ISO 18113-1, ISO 18113-2, ISO 18113-3, ISO 18113-4, and ISO 18113-5.</li>
+                <li>NOTE 5: The date of manufacture, as well as the name and address of the manufacturer, can be combined in one symbol.</li>
+                <li>NOTE 6: The relative size of the symbol and the size of the name and address are not specified.</li>
+            </ul>
+        </div>
+
+        <!-- 5.1.2 Authorized Representative -->
+        <div class="symbol-card">
+            <div class="symbol-header">
+                <div class="symbol-icon" style="font-size:1.2rem;">&#9711;EC</div>
+                <div class="symbol-meta">
+                    <h4>5.1.2 Authorized Representative in the European Community</h4>
+                    <span class="symbol-ref">No ISO 7000 registration (N/A) | Registration date: N/A</span>
+                </div>
+            </div>
+            <p><strong>Title:</strong> Authorized Representative in the European Community</p>
+            <p><strong>Description:</strong> Indicates the authorized representative in the European Community (EU), identified by the name and address of the authorized representative in the European Community.</p>
+            <p><strong>Graphical form:</strong> A stylized human figure (person silhouette) standing inside or beside a circle with "EC" lettering, representing a designated person acting on behalf of the manufacturer within the European Community.</p>
+            <p><strong>Usage requirements:</strong></p>
+            <ul>
+                <li>This symbol shall be accompanied by the name and address of the authorized representative in the European Community.</li>
+                <li>NOTE 1: This symbol is used to indicate information required in the European Community.</li>
+                <li>NOTE 2: Guidance on EU Directive requirements for 90/385/EEC and 93/42/EEC is given in EN 1041.</li>
+                <li>NOTE 3: Guidance on EU Directive 98/79/EC requirements is given in ISO 18113-1, ISO 18113-2, ISO 18113-3, ISO 18113-4, and ISO 18113-5.</li>
+                <li>NOTE 4: The relative size of the symbol and the size of the name and address are not specified.</li>
+            </ul>
+        </div>
+
+        <!-- 5.1.3 Importer -->
+        <div class="symbol-card">
+            <div class="symbol-header">
+                <div class="symbol-icon" style="font-size:1.2rem;">&#8596;&#127981;</div>
+                <div class="symbol-meta">
+                    <h4>5.1.3 Importer</h4>
+                    <span class="symbol-ref">ISO 7000-2947 | Registration date: 2004-01-15</span>
+                </div>
+            </div>
+            <p><strong>Title:</strong> Importer</p>
+            <p><strong>Description:</strong> Indicates the date when the medical device was manufactured. Indicates the entity that places the medical device on the market after it has been manufactured outside the jurisdiction where it is sold.</p>
+            <p><strong>Graphical form:</strong> A stylized symbol showing an arrow pointing into a building or territory, representing an entity bringing goods across a border into a market. Often depicted as a factory-like building with an inward-pointing arrow.</p>
+            <p><strong>Usage requirements:</strong></p>
+            <ul>
+                <li>This symbol shall be accompanied by the name and address of the importer.</li>
+                <li>Introduced under EU MDR 2017/745 and EU IVDR 2017/746, which established "Importer" as a distinct economic operator role with defined labelling obligations.</li>
+                <li>In Europe: required when a non-EU manufacturer places a device on the EU market through an EU-based importer.</li>
+            </ul>
+        </div>
+
+        <!-- 5.1.4 Distributor -->
+        <div class="symbol-card">
+            <div class="symbol-header">
+                <div class="symbol-icon" style="font-size:1.2rem;">&#128230;</div>
+                <div class="symbol-meta">
+                    <h4>5.1.4 Distributor</h4>
+                    <span class="symbol-ref">ISO 7000-2946 | Registration date: 2004-01-15</span>
+                </div>
+            </div>
+            <p><strong>Title:</strong> Distributor</p>
+            <p><strong>Description:</strong> Indicates the entity in the supply chain that makes the medical device available on the market after it has been placed on the market.</p>
+            <p><strong>Graphical form:</strong> A stylized symbol showing multiple arrows or pathways radiating from a central point or building, representing distribution of a product to multiple downstream points.</p>
+            <p><strong>Usage requirements:</strong></p>
+            <ul>
+                <li>This symbol shall be accompanied by the name and address of the distributor.</li>
+                <li>Introduced alongside the Importer symbol under EU MDR 2017/745 economic operator framework.</li>
+                <li>Note that the Distributor role is distinct from the Importer: distributors do not place devices on the market for the first time (that is the importer's role), but make available devices already on the market.</li>
+            </ul>
+        </div>
+
+        <!-- 5.1.3 Date of Manufacture (in source text listed as 5.1.3) -->
+        <div class="symbol-card">
+            <div class="symbol-header">
+                <div class="symbol-icon" style="font-size:1.1rem;">&#127981;&#128197;</div>
+                <div class="symbol-meta">
+                    <h4>5.1.3 Date of Manufacture</h4>
+                    <span class="symbol-ref">ISO 7000-2497 | Registration date: 2004-01-15</span>
+                </div>
+            </div>
+            <p><strong>Title:</strong> Date of manufacture</p>
+            <p><strong>Description:</strong> Indicates the date when the medical device was manufactured.</p>
+            <p><strong>Graphical form:</strong> The factory/building icon (same as Manufacturer, 5.1.1) combined with a calendar or date indicator symbol beneath or beside it, signifying the date on which manufacture occurred.</p>
+            <p><strong>Usage requirements:</strong></p>
+            <ul>
+                <li>This symbol shall be accompanied by a date expressed as year, or year and month, or year, month and day, as applicable.</li>
+                <li>The date shall be expressed as required in ISO 8601, with four digits for the year; and, where appropriate, two digits for the month and two digits for the day.</li>
+                <li>This symbol may be used to identify the year and month of manufacture for active implantable medical devices, or the year of manufacture for active implantable medical devices where no use-by date is given, as required by the applicable EU Directive.</li>
+                <li>The date shall be located adjacent to the symbol.</li>
+                <li>NOTE: The date of manufacture, as well as the name and address of the manufacturer, can be combined in one symbol.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>中文解析 — 符號類別 5.1 製造商組</h2>
+
+        <div class="concept-box">
+            <h4>5.1.1 製造商符號（Manufacturer）— 最重要的標籤符號</h4>
+            <p>這個工廠圖示是醫療器材標籤上最基本的必要元素。每一個符合 EU MDR 2017/745 和 EU IVDR 2017/746 要求的器材標籤，都必須出現這個符號加上製造商全名和地址。</p>
+            <p><strong>CDMO 重要辨別</strong>：標籤上的製造商（Manufacturer）不一定是受託製造商（CMO/CDMO）。EU MDR 第 2(30) 條定義「製造商」為負責設計、製造、包裝和標籤器材，並以自己名義上市的自然人或法人。如果你的客戶（MAH）是 EU MDR 定義下的製造商，則工廠符號旁應填寫客戶的公司名稱和地址，而非你的 CDMO 廠址。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻：標籤上的角色架構</h4>
+            <p>想象一瓶生物製劑的標籤上的四個角色：</p>
+            <ul>
+                <li>&#127981; <strong>製造商</strong>（5.1.1）= 你的 CDMO 客戶（MAH，Brand Owner）</li>
+                <li>&#9711;EC <strong>EU 授權代理人</strong>（5.1.2）= 如果品牌商是美國公司，在歐盟指定的代理人</li>
+                <li>&#8596;&#127981; <strong>進口商</strong>（5.1.3）= 把產品從美國（製造地）帶進歐盟市場的公司</li>
+                <li>&#128230; <strong>經銷商</strong>（5.1.4）= 在歐盟市場內配送到各藥局/醫院的公司</li>
+            </ul>
+            <p>EU MDR 2017/745 的重要改變：相較於舊 MDD，MDR 明確要求標籤上標示進口商和經銷商的身份，這是 5.1.3 和 5.1.4 符號被廣泛採用的原因。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>5.1.2 授權代理人（Authorized Representative）</h4>
+            <p>EU MDR 第 11 條規定：在歐盟境外設立的製造商，在歐盟市場上市器材前，必須在歐盟境內指定至少一位授權代理人（AR）。AR 需：</p>
+            <ul>
+                <li>在 EUDAMED（歐盟器材資料庫）登錄</li>
+                <li>與製造商建立書面授權協議</li>
+                <li>對歐盟主管機關負有義務（如不合格品通知、市場上市申報）</li>
+            </ul>
+            <p>標籤要求：AR 的名稱和歐盟境內地址必須清楚標示在標籤上，放在 5.1.2 符號旁邊。</p>
+            <p>注意：5.1.2 符號沒有 ISO 7000 登錄號碼（N/A），是 ISO 15223-1 專屬定義的符號，不在 ISO 7000 通用圖形庫中。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>製造日期 vs. 有效期限：不同符號，不同含義</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>符號</th>
+                        <th>含義</th>
+                        <th>必填？（EU MDR）</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>5.1.3 製造日期</td>
+                        <td>器材「何時被製造」</td>
+                        <td>植入物必填；其他器材視情況</td>
+                    </tr>
+                    <tr>
+                        <td>5.1.4 有效期限（Use By）</td>
+                        <td>器材「最晚何時使用」</td>
+                        <td>有滅菌或有效期要求的器材必填</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>ISO 8601 格式強制要求：製造日期必須使用 YYYY-MM-DD 或 YYYY-MM 或 YYYY 格式，不能用斜線或其他分隔符號。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>進口商與經銷商（5.1.3 &amp; 5.1.4）— EU MDR 新義務</h4>
+            <p>EU MDR 2017/745 在供應鏈監管上比舊 MDD 嚴格許多。進口商（Importer）和經銷商（Distributor）現在各有獨立的合規義務：</p>
+            <ul>
+                <li><strong>進口商</strong>：必須確認器材有 CE 標誌、技術文件完整、製造商已完成 EU MDR 要求。進口商名稱、地址必須標示於標籤或包裝。</li>
+                <li><strong>經銷商</strong>：必須確認標籤完整、器材在有效期內、儲存條件符合要求。如重新包裝或重新標籤，可能需承擔製造商責任。</li>
+            </ul>
+            <p>對 CDMO 的影響：如果你的客戶將生產自你廠的器材出口至歐盟，你的客戶（或其歐盟指定進口商）必須確保 5.1.3 進口商符號及資訊正確標示於包裝上。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>FDA 21 CFR Part 801 對應比較</h4>
+            <p>FDA 對製造商標示的要求（21 CFR 801.1）與 ISO 15223-1 的主要差異：</p>
+            <ul>
+                <li>FDA <strong>不強制</strong>使用 ISO 15223-1 工廠符號，可直接以文字標示 "Manufactured by: [Company Name and Address]"</li>
+                <li>FDA 要求資訊以「英文」呈現，符號需有英文說明</li>
+                <li>FDA 510(k)/PMA 申請中，如使用 ISO 15223-1 符號，需在技術文件中提交符號清單（Symbol Glossary）說明每個符號的含義</li>
+                <li>FDA 2016 年發布「Use of Symbols in Labeling」最終指引，正式認可 ISO 15223-1:2012 符號（2016 版已被廣泛接受）</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>符號在 CDMO 充填線上的實際應用場景</h4>
+            <p><strong>無菌藥品充填（Aseptic Fill-Finish）</strong>：</p>
+            <ul>
+                <li>西林瓶標籤：工廠符號（5.1.1）+ 客戶公司名/地址 + 製造日期符號 + YYYY-MM 格式日期</li>
+                <li>外包裝：增加授權代理人符號（5.1.2）（若客戶為非歐盟製造商）</li>
+                <li>批次標籤文件：每個符號須對應 ISO 15223-1:2016 Table 1 版本記錄</li>
+            </ul>
+            <p><strong>預充式注射器（PFS）</strong>：</p>
+            <ul>
+                <li>器材本體標籤空間有限，通常只放核心符號（製造商、有效期限、批號、劑量）</li>
+                <li>詳細的製造商/AR/進口商資訊通常放在外盒/小盒（secondary packaging）</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>符號類別 5.1 綜合練習</h4>
+            <ol>
+                <li>一個由美國生技公司（BioTech Inc.）委託台灣 CDMO（TW Pharma）生產的胰島素筆型注射器，在歐盟市場由德國 MedImport GmbH 進口。請列出這個器材標籤上需要的所有 5.1 系列符號，並說明每個符號旁應填寫哪個公司的資訊。</li>
+                <li>客戶提供的標籤草案上，製造日期寫為 "DOM: 2025/11"。根據 ISO 8601 要求，這應該改為什麼格式？</li>
+                <li>根據 EU MDR 第 2(30) 條，你的 CDMO 廠在什麼情況下會變成 EU MDR 定義下的「製造商」，需要在標籤上列自己的公司名稱？</li>
+                <li>客戶問你：ISO 15223-1 有規定製造商符號（5.1.1）的最小印刷尺寸嗎？請引用標準條文回答。</li>
+                <li>一個日本製造商在歐盟市場上市一個 CE 標誌眼科器材，他問你是否需要同時顯示 5.1.1（製造商）和 5.1.2（授權代理人）兩個符號。你如何回答？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+</div><!-- end main-content -->
+
+<div class="main-footer">
+    <p>ISO 15223-1:2016 (Corrected 2017-03) — Medical Devices: Symbols for Labels &amp; Labelling | Section 1 of [N]</p>
+    <p>SterileGMP Knowledge Hub &copy; 2026 | Educational Use Only | Not a substitute for official ISO standards</p>
+</div>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+(function(){
+    var btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', function(){
+        if(window.scrollY > 300){ btn.classList.add('visible'); }
+        else { btn.classList.remove('visible'); }
+    });
+})();
+</script>
+
+</body>
+</html>
