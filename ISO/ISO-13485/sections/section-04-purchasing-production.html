@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISO 13485 — Section 4: Purchasing, Production &amp; Measurement Control</title>
+    <style>
+:root { --primary-blue: #1e3a5f; --accent-blue: #3498db; --light-gray: #fafafa; --light-blue: #f0f7ff; --yellow-start: #fff9e6; --yellow-end: #fff3cd; --green-bg: #e8f5e9; --green-border: #4caf50; --orange-bg: #fff3e0; --orange-border: #ff9800; --purple-bg: #f3e5f5; --purple-border: #9c27b0; --text-dark: #2d3748; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif; line-height: 1.75; color: var(--text-dark); background: #f0f2f5; }
+.header { background: linear-gradient(135deg, #4c1d95 0%, #6d28d9 100%); color: white; padding: 2rem; text-align: center; }
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+.left-column { background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; }
+.left-column h2 { color: var(--primary-blue); border-bottom: 2px solid #6d28d9; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.left-column h3 { color: var(--primary-blue); margin: 1rem 0 0.5rem; font-size: 1rem; }
+.left-column p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.92rem; }
+.left-column li { margin-bottom: 0.4rem; }
+.right-column { background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #c4b5fd; }
+.right-column h2 { color: #4c1d95; border-bottom: 2px solid #7c3aed; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.right-column p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.section-title { font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
+.key-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
+.concept-box { background: var(--green-bg); border-left: 4px solid var(--green-border); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 0.92rem; line-height: 1.7; }
+.concept-box h4 { color: #2e7d32; margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600; }
+.concept-box p, .concept-box ul, .concept-box li { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.concept-box ul { margin-left: 1.25rem; }
+.analogy-box { background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%); border-left: 4px solid #f6ad55; border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 0.92rem; line-height: 1.7; }
+.analogy-box h4 { color: #856404; margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600; }
+.analogy-box p, .analogy-box ul { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.analogy-box ul { margin-left: 1.25rem; }
+.note-box { background: var(--orange-bg); border-left: 4px solid var(--orange-border); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 0.92rem; line-height: 1.7; }
+.note-box h4 { color: #c65102; margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600; }
+.note-box p, .note-box ul { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.note-box ul { margin-left: 1.25rem; }
+.practice-box { background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%); border: 2px dashed #3182ce; border-radius: 10px; padding: 1.25rem; margin: 1.25rem 0; font-size: 0.92rem; }
+.practice-box h4 { color: #2c5282; margin-bottom: 0.75rem; font-size: 0.95rem; font-weight: 600; }
+.practice-box ol { margin-left: 1.25rem; }
+.practice-box li { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.learning-objectives { background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+.main-footer { background: var(--primary-blue); color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+@media (max-width: 900px) { .two-column { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Section 4: Purchasing, Production, Traceability &amp; Measurement Control</h1>
+    <div class="subtitle">採購管制、生產管制、可追溯性與量測設備管制</div>
+    <div class="page-info">ISO 13485:2016 | Clause 7.4–7.6 | p.17–p.21</div>
+</div>
+
+<div class="main-content">
+
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 7.4.1 供應商評鑑的「風險比例」原則：不同風險等級的採購品需要不同的供應商管制強度</li>
+        <li>掌握 7.5.5 無菌醫療器材的特定要求：連結至滅菌製程驗證（7.5.7）及相關外部標準（ISO 11607、ISO 17665 等）</li>
+        <li>理解 7.5.6 特殊製程驗證的範疇：哪些製程被視為「特殊製程」，需要額外的驗證義務</li>
+        <li>掌握 7.5.7 滅菌及無菌屏障系統驗證的再驗證觸發條件</li>
+        <li>理解 7.5.9 可追溯性要求：植入式器材的強化追溯義務與 CDMO 記錄保存實務</li>
+        <li>了解 7.6 量測設備管制：校正失效時的回溯評估義務，以及監控軟體的驗證要求</li>
+    </ul>
+</div>
+
+<!-- ====== CLAUSE 7.4: PURCHASING ====== -->
+<div class="section-title">Clause 7.4: Purchasing — 採購管制</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>7.4.1 Purchasing Process</h3>
+        <p>The organization shall document procedures to ensure that purchased product conforms to specified purchasing information.</p>
+        <p>The organization shall establish <span class="key-term">criteria for the evaluation and selection of suppliers</span>. The criteria shall be:</p>
+        <ul>
+            <li>based on the supplier's ability to provide product that meets the organization's requirements;</li>
+            <li>based on the performance of the supplier;</li>
+            <li>based on the effect of the purchased product on the quality of the medical device;</li>
+            <li>proportionate to the risk associated with the medical device.</li>
+        </ul>
+        <p>The organization shall plan the monitoring and re-evaluation of suppliers. Supplier performance in meeting requirements for the purchased product shall be monitored. The results of the monitoring shall provide an input into the supplier re-evaluation process.</p>
+        <p>Non-fulfilment of purchasing requirements shall be addressed with the supplier <span class="key-term">proportionate to the risk</span> associated with the purchased product and compliance with applicable regulatory requirements.</p>
+        <p>Records of the results of evaluation, selection, monitoring and re-evaluation of supplier capability or performance and any necessary actions shall be maintained.</p>
+
+        <h3>7.4.2 Purchasing Information</h3>
+        <p>Purchasing information shall describe or reference the product to be purchased, including as appropriate:</p>
+        <ul>
+            <li>product specifications;</li>
+            <li>requirements for product acceptance, procedures, processes and equipment;</li>
+            <li>requirements for qualification of supplier personnel;</li>
+            <li>quality management system requirements.</li>
+        </ul>
+        <p>The organization shall ensure the adequacy of specified purchasing requirements prior to their communication to the supplier.</p>
+        <p>Purchasing information shall include, as applicable, a <span class="key-term">written agreement that the supplier notify the organization of changes</span> in the purchased product prior to implementation of any changes that affect the ability of the purchased product to meet specified purchase requirements.</p>
+
+        <h3>7.4.3 Verification of Purchased Product</h3>
+        <p>The organization shall establish and implement the inspection or other activities necessary for ensuring that purchased product meets specified purchasing requirements. The <span class="key-term">extent of verification activities shall be based on the supplier evaluation results and proportionate to the risks</span> associated with the purchased product.</p>
+        <p>When the organization becomes aware of any changes to the purchased product, the organization shall determine whether these changes affect the product realization process or the medical device.</p>
+        <p>When the organization or its customer intends to perform verification at the supplier's premises, the organization shall state the intended verification activities and method of product release in the purchasing information. Records of the verification shall be maintained.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>概念解析：7.4.1 的「風險比例」原則 — 分級供應商管理的法規依據</h4>
+            <p>ISO 13485 在 7.4.1 明確要求評鑑標準「與醫療器材相關風險成比例」，這直接支持業界廣泛採用的<strong>分級供應商管理（Tiered Supplier Management）</strong>體系：</p>
+            <table style="font-size:0.85rem;">
+                <tr><th>供應商等級</th><th>供應品示例</th><th>管制強度</th></tr>
+                <tr><td>關鍵供應商 (Critical)</td><td>初級包材（針頭、活塞）、API</td><td>現場稽核、QTA、全面檢驗或跳批抽驗</td></tr>
+                <tr><td>主要供應商 (Major)</td><td>二次包材、直接接觸輔料</td><td>問卷評估、文件審查、定期重評</td></tr>
+                <tr><td>一般供應商 (Minor)</td><td>辦公室耗材、非接觸設備零件</td><td>採購記錄審查即可</td></tr>
+            </table>
+            <p>7.4.1 同時要求「非履行採購要求」的處理也需與風險成比例——對關鍵供應商的重大不符合，可能觸發供應商暫停或取消資格。</p>
+        </div>
+        <div class="note-box">
+            <h4>7.4.2 的「變更通知協議」：供應商管理的關鍵保障</h4>
+            <p>7.4.2 要求採購文件中包含<strong>供應商變更通知書面協議（Change Notification Agreement）</strong>，這在實務中通常以<strong>品質技術協議（Quality Technical Agreement, QTA）</strong>的形式落實。</p>
+            <p>QTA 應明確規定：</p>
+            <ul>
+                <li>哪些類型的變更需要提前通知（原材料、製程、設施、人員、檢測方法等）</li>
+                <li>通知時間窗口（通常 30–90 天前）</li>
+                <li>CDMO/客戶的評估與核准流程</li>
+                <li>未通知變更的後果（拒收、CAPA 要求）</li>
+            </ul>
+            <p>若供應商未依協議通知變更而導致產品不符合，7.4.2 提供了 CDMO 追溯責任的法規基礎。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>類比說明：7.4.3 進貨驗收的風險比例邏輯</h4>
+            <p>進貨驗收強度應與風險成比例，就像機場安全管制：商務旅客（低風險）使用快速通道；初次旅客（未知風險）接受標準安檢；被標記旅客（已知風險）接受加強檢查。對績效良好的關鍵供應商，可適當減少進貨抽驗頻率；對新供應商或有歷史問題的供應商，則應加強每批驗收，這正是 ISO 13485 7.4.3 所授權的風險比例方法。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>CDMO 的玻璃注射器供應商通知將更換玻璃管材原料供應商，但未更改尺寸規格。依據 7.4.2 和 7.4.3，CDMO 應採取哪些行動？是否需要重新進行 E&amp;L 研究？</li>
+                <li>您的供應商評估程序中，如何定義「關鍵供應商」？請列出三項判定標準，並說明與 7.4.1(c) 和 (d) 的對應關係。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ====== 7.5.1 to 7.5.5 ====== -->
+<div class="section-title">Clause 7.5.1–7.5.5: Production Control &amp; Sterile Medical Device Requirements — 生產管制與無菌器材要求</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>7.5.1 Control of Production and Service Provision</h3>
+        <p>Production and service provision shall be planned, carried out, monitored and controlled to ensure that product conforms to specification. As appropriate, production controls shall include but are not limited to:</p>
+        <ul>
+            <li>documentation of procedures and methods for the control of production;</li>
+            <li>qualification of infrastructure;</li>
+            <li>implementation of monitoring and measurement of process parameters and product characteristics;</li>
+            <li>availability and use of monitoring and measuring equipment;</li>
+            <li>implementation of defined operations for labelling and packaging;</li>
+            <li>implementation of product release, delivery and post-delivery activities.</li>
+        </ul>
+        <p>The organization shall establish and maintain a record for each <span class="key-term">medical device or batch of medical devices</span> that provides traceability to the extent specified in 7.5.9 and identifies the amount manufactured and amount approved for distribution. The record shall be verified and approved.</p>
+
+        <h3>7.5.2 Cleanliness of Product</h3>
+        <p>The organization shall document requirements for cleanliness of product or contamination control of product if:</p>
+        <ul>
+            <li>product is cleaned by the organization prior to sterilization or its use;</li>
+            <li>product is supplied non-sterile and is to be subjected to a cleaning process prior to sterilization or its use;</li>
+            <li>product cannot be cleaned prior to sterilization or its use, and its cleanliness is of significance in use;</li>
+            <li>product is supplied to be used non-sterile, and its cleanliness is of significance in use;</li>
+            <li>process agents are to be removed from product during manufacture.</li>
+        </ul>
+
+        <h3>7.5.3 Installation Activities</h3>
+        <p>The organization shall document requirements for medical device installation and acceptance criteria for verification of installation, as appropriate. If installation is performed by an external party, the organization shall provide documented requirements for medical device installation and verification of installation.</p>
+
+        <h3>7.5.4 Servicing Activities</h3>
+        <p>If servicing of the medical device is a specified requirement, the organization shall document servicing procedures, reference materials, and reference measurements. The organization shall analyse records of servicing activities:</p>
+        <ul>
+            <li>to determine if the information is to be handled as a complaint;</li>
+            <li>as appropriate, for input to the improvement process.</li>
+        </ul>
+
+        <h3>7.5.5 Particular Requirements for Sterile Medical Devices</h3>
+        <p>The organization shall <span class="key-term">maintain records of the sterilization process parameters</span> used for each sterilization batch. <span class="key-term">Sterilization records shall be traceable to each production batch of medical devices.</span></p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>概念解析：7.5.1 批次記錄（Batch Record）的法規定義</h4>
+            <p>7.5.1 要求每個醫療器材或批次都必須有記錄，提供：</p>
+            <ul>
+                <li>可追溯性（至 7.5.9 定義的範圍）</li>
+                <li>生產數量識別</li>
+                <li>核准放行數量識別</li>
+                <li>已驗證並核准的狀態</li>
+            </ul>
+            <p>這就是 Device History Record（DHR）的法規依據——FDA 21 CFR 820.184 對此有完全相同的要求。DHR 是生產歷史的完整記錄，包含所有批次相關的製造、測試、放行記錄。</p>
+        </div>
+        <div class="note-box">
+            <h4>7.5.5 無菌醫療器材特定要求：CDMO 最核心的條款</h4>
+            <p>7.5.5 雖然文字簡短，卻是無菌 CDMO 最關鍵的條款：</p>
+            <ul>
+                <li><strong>每批滅菌記錄</strong>：必須保存每次滅菌批次的製程參數（溫度、時間、壓力、F₀ 值等）</li>
+                <li><strong>雙向可追溯性</strong>：滅菌記錄必須能追溯到對應的醫療器材生產批次（由滅菌記錄找到哪些產品批次被滅菌；由產品批次找到對應的滅菌記錄）</li>
+                <li><strong>與 7.5.7 的連結</strong>：製程參數記錄需與已驗證的製程參數範圍比對——這是滅菌放行的法規依據</li>
+            </ul>
+            <p>對使用 EO（環氧乙烷）或 Steam（蒸汽）滅菌的 CDMO：批次記錄必須連結 ISO 11135（EO）或 ISO 17665（Steam/Moist Heat）驗證的已核准製程參數範圍。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>類比說明：7.5.2 產品潔淨度要求的觸發條件</h4>
+            <p>7.5.2 的五個觸發條件覆蓋了所有「潔淨度有意義」的情境：想像一家外科器械 CDMO——(a) 器械製造後由 CDMO 清洗再滅菌；(b) 客戶提供未清洗的零件由 CDMO 清洗後滅菌；(c) 某零件無法清洗但其微粒污染水平影響最終使用（如某些精密光學元件）；(d) 非無菌器材的清潔狀態仍有臨床意義（如牙科器械）；(e) 製程中使用切削液需在成品前去除。每種情境都需要書面的潔淨度要求文件。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ====== 7.5.6 to 7.5.7 ====== -->
+<div class="section-title">Clause 7.5.6–7.5.7: Validation of Special Processes &amp; Sterilization — 特殊製程驗證與滅菌確效</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>7.5.6 Validation of Processes for Production and Service Provision</h3>
+        <p>The organization shall validate any processes for production and service provision where <span class="key-term">the resulting output cannot be or is not verified by subsequent monitoring or measurement</span> and, as a consequence, deficiencies become apparent only after the product is in use or the service has been delivered.</p>
+        <p>Validation shall demonstrate the ability of these processes to achieve planned results consistently. The organization shall document procedures for validation of processes, including:</p>
+        <ul>
+            <li>defined criteria for review and approval of the processes;</li>
+            <li>equipment qualification and qualification of personnel;</li>
+            <li>use of specific methods, procedures and acceptance criteria;</li>
+            <li>as appropriate, statistical techniques with rationale for sample sizes;</li>
+            <li>requirements for records;</li>
+            <li>revalidation, including criteria for revalidation;</li>
+            <li>approval of changes to the processes.</li>
+        </ul>
+        <p>The organization shall document procedures for the <span class="key-term">validation of the application of computer software used in production and service provision</span>. Such software applications shall be validated prior to initial use and, as appropriate, after changes. The specific approach and activities associated with software validation and revalidation shall be proportionate to the risk associated with the use of the software.</p>
+
+        <h3>7.5.7 Particular Requirements for Validation of Processes for Sterilization and Sterile Barrier Systems</h3>
+        <p>The organization shall document procedures for the <span class="key-term">validation of processes for sterilization and sterile barrier systems</span>.</p>
+        <p>Processes for sterilization and sterile barrier systems shall be <span class="key-term">validated prior to implementation and following product or process changes, as appropriate</span>.</p>
+        <p>Records of the results and, conclusion of validation and necessary actions from the validation shall be maintained.</p>
+        <p><em>NOTE: Further information can be found in ISO 11607-1 and ISO 11607-2.</em></p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>概念解析：7.5.6 特殊製程 — 哪些製程必須驗證？</h4>
+            <p>7.5.6 的核心定義：「輸出無法或未以後續監控或量測驗證」的製程即為特殊製程（Special Process），必須進行製程驗證。無菌醫療器材製造中的特殊製程包括：</p>
+            <table style="font-size:0.85rem;">
+                <tr><th>特殊製程</th><th>原因：後續檢驗為何不足？</th></tr>
+                <tr><td>滅菌製程（EO/Steam/Radiation）</td><td>微生物滅殺程度無法逐批全面破壞性測試</td></tr>
+                <tr><td>無菌灌裝（Aseptic Processing）</td><td>無菌性無法 100% 非破壞性驗證</td></tr>
+                <tr><td>潔淨室操作</td><td>空氣微生物污染在製程中無法即時100%偵測</td></tr>
+                <tr><td>塑膠焊接（Welding）</td><td>焊接強度僅能抽樣破壞性測試</td></tr>
+                <tr><td>密封製程</td><td>密封完整性難以逐件完全非破壞性驗證</td></tr>
+            </table>
+            <p>7.5.6 的驗證文件體系（IQ → OQ → PQ）是對應要求 (b)（設備鑑定）+ (c)（方法與接受標準）+ (f)（再驗證準則）的直接實踐。</p>
+        </div>
+        <div class="note-box">
+            <h4>7.5.7 滅菌及無菌屏障驗證的再驗證觸發條件</h4>
+            <p>7.5.7 要求「實施前」及「產品或製程變更後（適當情況下）」進行驗證。業界根據此要求定義再驗證觸發事件（Revalidation Triggers）：</p>
+            <ul>
+                <li><strong>產品變更</strong>：包材尺寸/材質改變、產品密度/負荷改變、初始生物負荷基準變化</li>
+                <li><strong>製程變更</strong>：滅菌週期參數修改、負荷配置改變、設備重大修繕後</li>
+                <li><strong>設備變更</strong>：滅菌設備更換、腔室重大零件更換</li>
+                <li><strong>設施變更</strong>：滅菌間遷移、倉儲條件改變影響無菌屏障完整性</li>
+                <li><strong>定期再驗證</strong>：通常每年一次，確認製程仍在已驗證狀態</li>
+            </ul>
+            <p>無菌屏障系統驗證（ISO 11607-2）與滅菌製程驗證並列要求，意味著包材的密封完整性驗證也是 7.5.7 的範疇。</p>
+        </div>
+        <div class="note-box">
+            <h4>7.5.6 製程電腦軟體驗證：被低估的要求</h4>
+            <p>7.5.6 最後兩段對「生產和服務提供中使用的電腦軟體」有明確的驗證要求：</p>
+            <ul>
+                <li>初次使用前必須驗證</li>
+                <li>軟體或應用方式變更後適當情況下再驗證</li>
+                <li>驗證範圍與風險成比例</li>
+            </ul>
+            <p>涵蓋範圍：充填機 PLC/SCADA 系統、環境監控軟體（EM 系統）、檢驗設備軟體（顆粒計數器、TOC 分析儀）、ERP/MES 中影響批次記錄的模組。這些不是「IT 系統」問題，而是直接的 GMP 合規要求。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>CDMO 的主要客戶將其注射器從 1mL 改為 2.25mL 規格（同材質，但容積更大）。依據 7.5.7，CDMO 的 EO 滅菌製程是否需要重新驗證？哪些參數最可能需要重新評估（提示：考慮包裝尺寸與氣體穿透）？</li>
+                <li>您的無菌灌裝線更新了 SCADA 系統的一個模組，該模組負責記錄灌裝重量數據並生成批次報告。依據 7.5.6，這是否需要軟體再驗證？應驗證哪些功能？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ====== 7.5.8 to 7.5.11 ====== -->
+<div class="section-title">Clause 7.5.8–7.5.11: Identification, Traceability, Customer Property &amp; Preservation</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>7.5.8 Identification</h3>
+        <p>The organization shall document procedures for product identification and identify product by suitable means throughout product realization.</p>
+        <p>The organization shall identify product status with respect to monitoring and measurement requirements throughout product realization. Identification of product status shall be maintained throughout production, storage, installation and servicing to ensure that only product that has <span class="key-term">passed the required inspections and tests or released under an authorized concession</span> is dispatched, used or installed.</p>
+        <p>If required by applicable regulatory requirements, the organization shall document a system to assign <span class="key-term">unique device identification</span> to the medical device.</p>
+        <p>The organization shall document procedures to ensure that medical devices returned to the organization are identified and distinguished from conforming product.</p>
+
+        <h3>7.5.9 Traceability</h3>
+        <p><strong>7.5.9.1 General:</strong> The organization shall document procedures for traceability. These procedures shall define the extent of traceability in accordance with applicable regulatory requirements and the records to be maintained.</p>
+        <p><strong>7.5.9.2 Particular requirements for implantable medical devices:</strong> The records required for traceability shall include <span class="key-term">records of components, materials, and conditions for the work environment</span> used, if these could cause the medical device not to satisfy its specified safety and performance requirements.</p>
+        <p>The organization shall require that suppliers of distribution services or distributors <span class="key-term">maintain records of the distribution of medical devices to allow traceability</span> and that these records are available for inspection.</p>
+        <p>Records of the name and address of the shipping package consignee shall be maintained.</p>
+
+        <h3>7.5.10 Customer Property</h3>
+        <p>The organization shall identify, verify, protect, and safeguard <span class="key-term">customer property</span> provided for use or incorporation into the product while it is under the organization's control or being used by the organization. If any customer property is lost, damaged or otherwise found to be unsuitable for use, the organization shall report this to the customer and maintain records.</p>
+
+        <h3>7.5.11 Preservation of Product</h3>
+        <p>The organization shall document procedures for preserving the conformity of product to requirements during processing, storage, handling, and distribution. Preservation shall apply to the <span class="key-term">constituent parts of a medical device</span>.</p>
+        <p>The organization shall protect product from alteration, contamination or damage by:</p>
+        <ul>
+            <li>designing and constructing suitable packaging and shipping containers;</li>
+            <li>documenting requirements for special conditions needed if packaging alone cannot provide preservation.</li>
+        </ul>
+        <p>If special conditions are required, they shall be controlled and recorded.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>概念解析：7.5.9 可追溯性要求 — ISO 13485 vs. ISO 9001 的關鍵差異</h4>
+            <p>ISO 13485 的追溯性要求明顯強於 ISO 9001：</p>
+            <table style="font-size:0.85rem;">
+                <tr><th>面向</th><th>ISO 9001</th><th>ISO 13485</th></tr>
+                <tr><td>追溯性義務</td><td>若有追溯要求時才適用</td><td>明確要求，範圍依法規確定</td></tr>
+                <tr><td>植入式器材</td><td>無特定要求</td><td>強制要求組件、材料、環境條件記錄</td></tr>
+                <tr><td>配送鏈</td><td>通常不延伸至配送商</td><td>要求配送服務供應商維護配送記錄</td></tr>
+                <tr><td>收貨人記錄</td><td>無規定</td><td>強制保存包裝收件人姓名與地址</td></tr>
+            </table>
+            <p>對植入式醫療器材（如骨科植入物、心臟支架等）：CDMO 的批次記錄必須包含每個組件的批號、每種材料的規格與批號、生產時的環境條件（溫度、濕度、潔淨度記錄）。</p>
+        </div>
+        <div class="note-box">
+            <h4>7.5.8 UDI（唯一設備識別碼）的合規要求</h4>
+            <p>7.5.8 提到「如法規要求，應建立 UDI 系統」。目前主要法規要求：</p>
+            <ul>
+                <li><strong>EU MDR 2017/745</strong>：所有 Class I 以上的醫療器材均需 UDI，已階段性強制實施</li>
+                <li><strong>FDA 21 CFR Part 830</strong>：已強制實施，Class III 最先，向下延伸至 Class I</li>
+                <li><strong>中國 NMPA</strong>：已實施醫療器材唯一標識制度</li>
+            </ul>
+            <p>CDMO 的合規義務：確認每件產品的標籤包含正確的 UDI（Device Identifier + Production Identifier），並將 UDI 資訊納入 DHR 批次記錄。</p>
+        </div>
+        <div class="note-box">
+            <h4>7.5.10 客戶財產：CDMO 的重要責任條款</h4>
+            <p>對 CDMO 而言，「客戶財產（Customer Property）」通常包括：</p>
+            <ul>
+                <li>客戶提供的初級包材（如客戶採購的預填充注射器）</li>
+                <li>客戶提供的標籤設計文件與電子檔案</li>
+                <li>客戶的技術秘密（如配方、製程參數）</li>
+                <li>客戶提供的設備或模具</li>
+            </ul>
+            <p>7.5.10 要求：識別、驗收確認、保護、防護，若損失或損壞則立即通知並記錄。這是 CDMO 服務合約中「客戶財產管理條款」的法規基礎。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>類比說明：7.5.11 保存要求延伸至「構成部件」的意義</h4>
+            <p>7.5.11 特別規定保存要求適用於醫療器材的「構成部件（Constituent Parts）」，不只是成品。這就像一個精密機械錶的製造：不僅錶本身需要防潮儲存，製造過程中等待組裝的齒輪、彈片、水晶玻璃都需要在適當條件下保存。對無菌充填 CDMO，這意味著：等待充填的無菌初級包材、已充填未滅菌的產品、已滅菌但未最終包裝的產品，每個階段都有其保存要求，且必須被文件化和監控。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>客戶委託 CDMO 生產一批植入式骨釘（植入式器材）。依據 7.5.9.2，CDMO 的批次記錄中必須包含哪些環境條件記錄？若加工時潔淨室 EM 記錄顯示有一筆超標數據，應如何處理？</li>
+                <li>CDMO 倉庫中客戶提供的 500 個玻璃瓶在搬運時有 10 個破損。依據 7.5.10，CDMO 的正確做法是什麼？應保存哪些記錄？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ====== 7.6 MONITORING AND MEASURING EQUIPMENT ====== -->
+<div class="section-title">Clause 7.6: Control of Monitoring and Measuring Equipment — 監控與量測設備管制</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>7.6 Control of Monitoring and Measuring Equipment</h3>
+        <p>The organization shall determine the monitoring and measurement to be undertaken and the monitoring and measuring equipment needed to provide evidence of conformity of product to determined requirements.</p>
+        <p>The organization shall document procedures to ensure that monitoring and measurement can be carried out in a manner consistent with the monitoring and measurement requirements.</p>
+        <p>As necessary to ensure valid results, measuring equipment shall:</p>
+        <ul>
+            <li>be <span class="key-term">calibrated or verified, or both, at specified intervals</span>, or prior to use, against measurement standards traceable to international or national measurement standards: when no such standards exist, the basis used for calibration or verification shall be recorded;</li>
+            <li>be adjusted or re-adjusted as necessary: such adjustments or re-adjustments shall be recorded;</li>
+            <li>have identification in order to determine its calibration status;</li>
+            <li>be safeguarded from adjustments that would invalidate the measurement result;</li>
+            <li>be protected from damage and deterioration during handling, maintenance and storage.</li>
+        </ul>
+        <p>The organization shall perform calibration or verification in accordance with documented procedures.</p>
+        <p>In addition, the organization shall <span class="key-term">assess and record the validity of the previous measuring results when the equipment is found not to conform to requirements</span>. The organization shall take appropriate action in regard to the equipment and any product affected.</p>
+        <p>Records of the results of calibration and verification shall be maintained.</p>
+        <p>The organization shall document procedures for the <span class="key-term">validation of the application of computer software used for the monitoring and measurement of requirements</span>. Such software applications shall be validated prior to initial use and, as appropriate, after changes. The specific approach and activities associated with software validation and revalidation shall be proportionate to the risk associated with the use of the software, including the effect on the ability of the product to conform to specifications.</p>
+        <p>Records of the results and conclusion of validation and necessary actions from the validation shall be maintained.</p>
+        <p><em>NOTE: Further information can be found in ISO 10012.</em></p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>概念解析：校正失效時的「回溯評估」義務</h4>
+            <p>7.6 中最具法規影響力的要求是：<strong>當量測設備被發現不符合要求時，必須評估並記錄先前量測結果的有效性。</strong></p>
+            <p>這意味著：若一台充填重量秤的最近一次校正發現已超出容許誤差，CDMO 必須：</p>
+            <ul>
+                <li>確定上次校正合格的時間點</li>
+                <li>評估兩次校正間隔期間所有使用該設備的批次</li>
+                <li>判定受影響批次的量測結果是否仍可信</li>
+                <li>若量測結果失效 → 可能觸發批次調查、額外測試、甚至召回評估</li>
+            </ul>
+            <p>這是 GMP 中「設備可疑狀態（Equipment Out-of-Tolerance）」事件處理的法規依據，必須以 CAPA 或偏差調查文件化。</p>
+        </div>
+        <div class="note-box">
+            <h4>7.6 量測軟體驗證：與 7.5.6 的區別</h4>
+            <p>7.5.6 要求驗證「生產製程用軟體」；7.6 要求驗證「監控與量測用軟體」。兩者範疇不同：</p>
+            <table style="font-size:0.85rem;">
+                <tr><th>條款</th><th>適用軟體類型</th><th>示例</th></tr>
+                <tr><td>7.5.6</td><td>生產製程控制軟體</td><td>充填機 PLC、滅菌器 SCADA、包裝機控制</td></tr>
+                <tr><td>7.6</td><td>量測與監控軟體</td><td>LIMS、粒子計數器軟體、溫度記錄系統、天平校正軟體</td></tr>
+            </table>
+            <p>7.6 的軟體驗證重點是：確保軟體輸出的量測數據是準確、完整且不可偽造的。LIMS（實驗室資訊管理系統）是最典型的 7.6 驗證對象。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>類比說明：校正追溯與「可疑批次」評估</h4>
+            <p>想像一家每天使用體重秤測量食品重量的工廠。如果某天發現秤少稱了 5%（超出容許誤差），必須追問：「這台秤上次合格校正是什麼時候？上次合格到發現失效之間，有多少批產品用這台秤放行了？」這些產品的重量記錄現在需要被質疑。醫療器材的量測設備失效處理完全相同——而且後果更嚴重，因為量測結果直接關係到患者安全。7.6 要求的「回溯評估」正是確保品質系統能發現並糾正這類漏網之魚。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>CDMO 的 TOC（總有機碳）分析儀在季度校正中被發現超出規格。這台設備過去三個月用於放行清潔驗證樣本。依據 7.6，CDMO 應採取哪些步驟？哪些批次記錄需要被審查？</li>
+                <li>您的 EM（環境監控）系統軟體供應商發布了一個更新，修正了數據顯示的 bug（顯示邏輯變更，但數據採集功能未變）。依據 7.6，是否需要再驗證？驗證範圍應包含哪些測試？</li>
+                <li>新採購的粒子計數器附帶製造商的出廠校正證書，校正可追溯至 NIST 標準。CDMO 是否可以直接使用，還是需要在使用前進行額外的設備鑑定？請說明依據。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>7.4.1 分級供應商管理有法規依據</strong>：「與風險成比例」的評鑑標準明確授權分級管理；QTA 中的供應商變更通知義務（7.4.2）是防止未申報變更損害產品品質的關鍵保障</li>
+        <li><strong>7.5.5 是無菌 CDMO 的核心義務</strong>：每批滅菌記錄必須保存，且可雙向追溯至對應的醫療器材生產批次——這是滅菌批次放行的直接法規依據</li>
+        <li><strong>7.5.6 特殊製程驗證範圍廣泛</strong>：涵蓋滅菌、無菌灌裝、焊接、密封等輸出無法完全驗證的製程；製程電腦軟體也在此要求範圍內</li>
+        <li><strong>7.5.7 滅菌驗證有明確的再驗證觸發條件</strong>：產品、製程、設備、設施任何相關變更均可能觸發，CDMO 的變更管制程序必須包含滅菌影響評估步驟</li>
+        <li><strong>7.5.9 植入式器材的追溯要求遠強於一般產品</strong>：環境條件記錄、配送商記錄、收件人記錄均需保存；UDI 已成為主要市場的強制要求</li>
+        <li><strong>7.6 校正失效的回溯評估是高風險義務</strong>：設備超出容許誤差必須觸發受影響批次調查；監控用軟體（LIMS、EM 系統）需要在使用前及變更後驗證</li>
+    </ul>
+</div>
+
+</div>
+
+<div class="main-footer">
+    <p>ISO 13485:2016 — Medical Devices — Quality Management Systems</p>
+    <p>SterileGMP Knowledge Hub | Section 4: Purchasing, Production, Traceability &amp; Measurement Control</p>
+</div>
+
+</body>
+</html>
