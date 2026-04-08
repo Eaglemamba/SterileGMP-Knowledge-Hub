@@ -1,0 +1,2028 @@
+# ISO 9000:2015: Quality Management Systems — Fundamentals and Vocabulary
+
+Foreword
+ISO (the International Organization for Standardization) is a worldwide federation of national standards
+bodies (ISO member bodies). The work of preparing International Standards is normally carried out
+through ISO technical committees. Each member body interested in a subject for which a technical
+committee has been established has the right to be represented on that committee. International
+organizations, governmental and non-governmental, in liaison with ISO, also take part in the work.
+ISO collaborates closely with the International Electrotechnical Commission (IEC) on all matters of
+electrotechnical standardization.
+The procedures used to develop this document and those intended for its further maintenance are
+described in the ISO/IEC Directives, Part 1. In particular the different approval criteria needed for the
+different types of ISO documents should be noted. This document was drafted in accordance with the
+editorial rules of the ISO/IEC Directives, Part 2 (see www.iso.org/directives).
+Attention is drawn to the possibility that some of the elements of this document may be the subject of
+patent rights. ISO shall not be held responsible for identifying any or all such patent rights. Details of
+any patent rights identified during the development of the document will be in the Introduction and/or
+on the ISO list of patent declarations received (see www.iso.org/patents).
+Any trade name used in this document is information given for the convenience of users and does not
+constitute an endorsement.
+For an explanation on the meaning of ISO specific terms and expressions related to conformity
+assessment, as well as information about ISO’s adherence to World Trade Organization (WTO) principles
+in the Technical Barriers to Trade (TBT) see the following URL: www.iso.org/iso/foQrueawliotryd m.hatnmalg.ement
+and quality assurance Concepts and terminology
+The committee responsible for this document is Technical Committee ISO/TC 176,
+, Subcommittee SC 1, .
+This fourth edition cancels and replaces the third edition (ISO 9000:2005), which has been
+technically revised.
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reprodu i ct v ion or networking permitted without license from IHS Not for Resale, 10/14/2019 19:06:05 MDT © ISO 2015 – All rights reserved
+ISO 9000:2015(E)
+Introduction
+This International Standard provides the fundamental concepts, principles and vocabulary for quality
+management systems (QMS) and provides the foundation for other QMS standards. This International
+Standard is intended to help the user to understand the fundamental concepts, principles and
+vocabulary of quality management, in order to be able to effectively and efficiently implement a QMS
+and realize value from other QMS standards.
+This International Standard proposes a well-defined QMS, based on a framework that integrates
+established fundamental concepts, principles, processes and resources related to quality, in order
+to help organizations realize their objectives. It is applicable to all organizations, regardless of size,
+complexity or business model. Its aim is to increase an organization’s awareness of its duties and
+commitment in fulfilling the needs and expectations of its customers and interested parties, and in
+achieving satisfaction with its products and services.
+This International Standard contains seven quality management principles supporting the fundamental
+concepts described in 2.2. In 2.3, for each quality management principle, there is a “statement”
+describing each principle, a “rationale” explaining why the organization would address the principle,
+“key benefits” that are attributed to the principles, and “possible actions” that an organization can take
+in applying the principle.
+This International Standard contains the terms and definitions that apply to all quality management
+and QMS standards developed by ISO/TC 176, and other sector-specific QMS standards based on those
+standards, at the time of publication. The terms and definitions are arranged in conceptual order, with
+an alphabetical index provided at the end of the document. Annex A includes a set of diagrams of the
+concept systems that form the concept ordering.
+NOTE Guidance on some additional frequently-used words in the QMS standards developed by ISO/TC 176,
+and which have an identified dictionary meaning, is provided in a glossary available at: http://www.iso.
+org/iso/03_terminology_used_in_iso_9000_family.pdf
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith5ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:06:05 MDT v
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:06:05 MDT
+INTERNATIONAL STANDARD ISO 9000:2015(E)
+Quality management systems — Fundamentals and
+vocabulary
+1 Scope
+This International Standard describes the fundamental concepts and principles of quality management
+which are universally applicable to the following:
+— organizations seeking sustained success through the implementation of a quality management system;
+— customers seeking confidence in an organization’s ability to consistently provide products and
+services conforming to their requirements;
+— organizations seeking confidence in their supply chain that product and service requirements will
+be met;
+— organizations and interested parties seeking to improve communication through a common
+understanding of the vocabulary used in quality management;
+— organizations performing conformity assessments against the requirements of ISO 9001;
+— providers of training, assessment or advice in quality management;
+— developers of related standards.
+This International Standard specifies the terms and definitions that apply to all quality management
+and quality management system standards developed by ISO/TC 176.
+2 Fundamental concepts and quality management principles
+
+### 2.1 General
+
+The quality management concepts and principles described in this International Standard give
+the organization the capacity to meet challenges presented by an environment that is profoundly
+different from recent decades. The context in which an organization works today is characterized by
+accelerated change, globalization of markets and the emergence of knowledge as a principal resource.
+The impact of quality extends beyond customer satisfaction: it can also have a direct impact on the
+organization’s reputation.
+Society has become better educated and more demanding, making interested parties increasingly
+more influential. By providing fundamental concepts and principles to be used in the development of
+a quality management system (QMS), this International Standard provides a way of thinking about the
+organization more broadly.
+All concepts, principles and their interrelationships should be seen as a whole and not in isolation of
+each other. No individual concept or principle is more important than another. At any one time, finding
+the right balance in application is critical.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith5ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:06:05 MDT
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 9000:2015(E)
+
+### 2.2 Fundamental concepts
+
+#### 2.2.1 Quality
+
+An organization focused on quality promotes a culture that results in the behaviour, attitudes, activities
+and processes that deliver value through fulfilling the needs and expectations of customers and other
+relevant interested parties.
+The quality of an organization’s products and services is determined by the ability to satisfy customers
+and the intended and unintended impact on relevant interested parties.
+The quality of products and services includes not only their intended function and performance, but
+also their perceived value and benefit to the customer.
+
+#### 2.2.2 Quality management system
+
+A QMS comprises activities by which the organization identifies its objectives and determines the
+processes and resources required to achieve desired results.
+The QMS manages the interacting processes and resources required to provide value and realize results
+for relevant interested parties.
+The QMS enables top management to optimize the use of resources considering the long and short term
+consequences of their decision.
+A QMS provides the means to identify actions to address intended and unintended consequences in
+providing products and services.
+
+#### 2.2.3 Context of an organization
+
+Understanding the context of the organization is a process. This process determines factors which
+influence the organization’s purpose, objectives and sustainability. It considers internal factors such as
+values, culture, knowledge and performance of the organization. It also considers external factors such
+as legal, technological, competitive, market, cultural, social and economic environments.
+Examples of the ways in which an organization’s purpose can be expressed include its vision, mission,
+policies and objectives.
+
+#### 2.2.4 Interested parties
+
+The concept of interested parties extends beyond a focus solely on the customer. It is important to
+consider all relevant interested parties.
+Part of the process for understanding the context of the organization is to identify its interested parties.
+The relevant interested parties are those that provide significant risk to organizational sustainability if
+their needs and expectations are not met. Organizations define what results are necessary to deliver to
+those relevant interested parties to reduce that risk.
+Organizations attract, capture and retain the support of the relevant interested parties they depend
+upon for their success.
+
+#### 2.2.5 Support
+
+##### 2.2.5.1 General
+
+Top management support of the QMS and engagement of people enables:
+— provision of adequate human and other resources;
+—
+moni--t``o,,,r,`,i,,n,,`g,`, `,p,,,r,``o`,`c-`-e`,,s`,s,`,e`,,s`-- -and results;
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:06:05 MDT © ISO 2015 – All rights reserved
+ISO 9000:2015(E)
+— determining and evaluating of risks and opportunities;
+— implementing appropriate actions.
+Responsible acquisition, deployment, maintenance, enhancement and disposal of resources support the
+organization in achieving its objectives.
+
+##### 2.2.5.2 People
+
+People are essential resources within the organization. The performance of the organization is
+dependent upon how people behave within the system in which they work.
+Within an organization, people become engaged and aligned through a common understanding of the
+quality policy and the organization’s desired results.
+
+##### 2.2.5.3 Competence
+
+A QMS is most effective when all employees understand and apply the skills, training, education and
+experience needed to perform their roles and responsibilities. It is the responsibility of top management
+to provide opportunities for people to develop these necessary competencies.
+
+##### 2.2.5.4 Awareness
+
+Awareness is attained when people understand their responsibilities and how their actions contribute
+to the achievement of the organization’s objectives.
+
+##### 2.2.5.5 Communication
+
+Planned and effective internal (i.e. throughout the organization) and external (i.e. with relevant
+interested parties) communication enhances people’s engagement and increased understanding of:
+— the context of the organization;
+— the needs and expectations of customers and other relevant interested parties;
+— the QMS.
+
+### 2.3 Quality management principles
+
+#### 2.3.1 Customer focus
+
+##### 2.3.1.1 Statement
+
+The primary focus of quality management is to meet customer requirements and to strive to exceed
+customer expectations.
+
+##### 2.3.1.2 Rationale
+
+Sustained success is achieved when an organization attracts and retains the confidence of customers
+and other relevant interested parties. Every aspect of customer interaction provides an opportunity to
+create more value for the customer. Understanding current and future needs of customers and other
+interested parties contributes to the sustained success of the organization.
+
+##### 2.3.1.3 Key benefits
+
+Some potential key benefits are:
+— increased customer value;
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith5ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:06:05 MDT
+ISO 9000:2015(E)
+— increased customer satisfaction;
+— improved customer loyalty;
+— enhanced repeat business;
+— enhanced reputation of the organization;
+— expanded customer base;
+— increased revenue and market share.
+
+##### 2.3.1.4 Possible actions
+
+Possible actions include:
+— recognize direct and indirect customers as those who receive value from the organization;
+— understand customers’ current and future needs and expectations;
+— link the organization’s objectives to customer needs and expectations;
+— communicate customer needs and expectations throughout the organization;
+— plan, design, develop, produce, deliver and support products and services to meet customer needs
+and expectations;
+— measure and monitor customer satisfaction and take appropriate actions;
+— determine and take action on relevant interested parties’ needs and appropriate expectations that
+can affect customer satisfaction;
+— actively manage relationships with customers to achieve sustained success.
+
+#### 2.3.2 Leadership
+
+##### 2.3.2.1 Statement
+
+Leaders at all levels establish unity of purpose and direction and create conditions in which people are
+engaged in achieving the organization’s quality objectives.
+
+##### 2.3.2.2 Rationale
+
+Creation of unity of purpose and the direction and engagement of people enable an organization to
+align its strategies, policies, processes and resources to achieve its objectives.
+
+##### 2.3.2.3 Key benefits
+
+Some potential key benefits are:
+— increased effectiveness and efficiency in meeting the organization’s quality objectives;
+— better coordination of the organization’s processes;
+— improved communication between levels and functions of the organization;
+— development and improvement of the capability of the organization and its people to deliver
+desired results.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:06:05 MDT © ISO 2015 – All rights reserved
+ISO 9000:2015(E)
+
+##### 2.3.2.4 Possible actions
+
+Possible actions include:
+— communicate the organization’s mission, vision, strategy, policies and processes throughout the
+organization;
+— create and sustain shared values, fairness and ethical models for behaviour at all levels of the
+organization;
+— establish a culture of trust and integrity;
+— encourage an organization-wide commitment to quality;
+— ensure that leaders at all levels are positive examples to people in the organization;
+— provide people with the required resources, training and authority to act with accountability;
+— inspire, encourage and recognize the contribution of people.
+
+#### 2.3.3 Engagement of people
+
+##### 2.3.3.1 Statement
+
+Competent, empowered and engaged people at all levels throughout the organization are essential to
+enhance the organization’s capability to create and deliver value.
+
+##### 2.3.3.2 Rationale
+
+In order to manage an organization effectively and efficiently, it is important to respect and involve
+all people at all levels. Recognition, empowerment and enhancement of competence facilitate the
+engagement of people in achieving the organization’s quality objectives.
+
+##### 2.3.3.3 Key benefits
+
+Some potential key benefits are:
+— improved understanding of the organization’s quality objectives by people in the organization and
+increased motivation to achieve them;
+— enhanced involvement of people in improvement activities;
+— enhanced personal development, initiatives and creativity;
+— enhanced people satisfaction;
+— enhanced trust and collaboration throughout the organization;
+— increased attention to shared values and culture throughout the organization.
+
+##### 2.3.3.4 Possible actions
+
+Possible actions include:
+— communicate with people to promote understanding of the importance of their individual
+contribution;
+— promote collaboration throughout the organization;
+— facilitate open discussion and sharing of knowledge and experience;
+— empower--` `p,,,,e`,,o,,,p`,`l,`e,,, ,t,`o``, `-d`-`e,,`t,,e`,`r,,`m--- ine constraints to performance and to take initiatives without fear;
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith5ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:06:05 MDT
+ISO 9000:2015(E)
+— recognize and acknowledge people’s contribution, learning and improvement;
+— enable self-evaluation of performance against personal objectives;
+— conduct surveys to assess people’s satisfaction, communicate the results and take appropriate actions.
+
+#### 2.3.4 Process approach
+
+##### 2.3.4.1 Statement
+
+Consistent and predictable results are achieved more effectively and efficiently when activities are
+understood and managed as interrelated processes that function as a coherent system.
+
+##### 2.3.4.2 Rationale
+
+The QMS consists of interrelated processes. Understanding how results are produced by this system
+enables an organization to optimize the system and its performance.
+
+##### 2.3.4.3 Key benefits
+
+Some potential key benefits are:
+— enhanced ability to focus effort on key processes and opportunities for improvement;
+— consistent and predictable outcomes through a system of aligned processes;
+— optimized performance through effective process management, efficient use of resources and
+reduced cross-functional barriers;
+— enabling the organization to provide confidence to interested parties related to its consistency,
+effectiveness and efficiency.
+
+##### 2.3.4.4 Possible actions
+
+Possible actions include:
+— define objectives of the system and processes necessary to achieve them;
+— establish authority, responsibility and accountability for managing processes;
+— understand the organization’s capabilities and determine resource constraints prior to action;
+— determine process interdependencies and analyse the effect of modifications to individual processes
+on the system as a whole;
+— manage processes and their interrelations as a system to achieve the organization’s quality
+objectives effectively and efficiently;
+— ensure the necessary information is available to operate and improve the processes and to monitor,
+analyse and evaluate the performance of the overall system;
+— manage risks which can affect outputs of the processes and overall outcomes of the QMS.
+
+#### 2.3.5 Improvement
+
+##### 2.3.5.1 Statement
+
+Successful organizations have an ongoing focus on improvement.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:06:05 MDT © ISO 2015 – All rights reserved
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 9000:2015(E)
+
+##### 2.3.5.2 Rationale
+
+Improvement is essential for an organization to maintain current levels of performance, to react to
+changes in its internal and external conditions and to create new opportunities.
+
+##### 2.3.5.3 Key benefits
+
+Some potential key benefits are:
+— improved process performance, organizational capability and customer satisfaction;
+— enhanced focus on root cause investigation and determination, followed by prevention and
+corrective actions;
+— enhanced ability to anticipate and react to internal and external risks and opportunities;
+— enhanced consideration of both incremental and breakthrough improvement;
+— improved use of learning for improvement;
+— enhanced drive for innovation.
+
+##### 2.3.5.4 Possible actions
+
+Possible actions include:
+— promote establishment of improvement objectives at all levels of the organization;
+— educate and train people at all levels on how to apply basic tools and methodologies to achieve
+improvement objectives;
+— ensure people are competent to successfully promote and complete improvement projects;
+— develop and deploy processes to implement improvement projects throughout the organization;
+— track, review and audit the planning, implementation, completion and results of improvement projects;
+— integrate improvement consideration into development of new or modified products and services
+and processes;
+— recognize and acknowledge improvement.
+
+#### 2.3.6 Evidence-based decision making
+
+##### 2.3.6.1 Statement
+
+Decisions based on the analysis and evaluation of data and information are more likely to produce
+desired results.
+
+##### 2.3.6.2 Rationale
+
+Decision-making can be a complex process and it always involves some uncertainty. It often involves
+multiple types and sources of inputs, as well as their interpretation, which can be subjective. It is
+important to understand cause and effect relationships and potential unintended consequences. Facts,
+evidence and data analysis lead to greater objectivity and confidence in decision making.
+
+##### 2.3.6.3 Key benefits
+
+Some potential key benefits are:
+— improved decision making processes;
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith5ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:06:05 MDT
+ISO 9000:2015(E)
+— improved assessment of process performance and ability to achieve objectives;
+— improved operational effectiveness and efficiency;
+— increased ability to review, challenge and change opinions and decisions;
+— increased ability to demonstrate the effectiveness of past decisions.
+
+##### 2.3.6.4 Possible actions
+
+Possible actions include:
+— determine, measure and monitor key indicators to demonstrate the organization’s performance;
+— make all data needed available to the relevant people;
+— ensure that data and information are sufficiently accurate, reliable and secure;
+— analyse and evaluate data and information using suitable methods;
+— ensure people are competent to analyse and evaluate data as needed;
+— make decisions and take actions based on evidence, balanced with experience and intuition.
+
+#### 2.3.7 Relationship management
+
+##### 2.3.7.1 Statement
+
+For sustained success, organizations manage their relationships with relevant interested parties, such
+as providers.
+
+##### 2.3.7.2 Rationale
+
+Relevant interested parties influence the performance of an organization. Sustained success is more
+likely to be achieved when the organization manages relationships with all of its interested parties
+to optimize their impact on its performance. Relationship management with its provider and partner
+networks is of particular importance.
+
+##### 2.3.7.3 Key benefits
+
+Some potential key benefits are:
+— enhanced performance of the organization and its relevant interested parties through responding
+to the opportunities and constraints related to each interested party;
+— common understanding of objectives and values among interested parties;
+— increased capability to create value for interested parties by sharing resources and competence and
+managing quality related risks;
+— a well-managed supply chain that provides a stable flow of products and services.
+
+##### 2.3.7.4 Possible actions
+
+Possible actions include:
+— determine relevant interested parties (such as providers, partners, customers, investors, employees
+or society as a whole) and their relationship with the organization;
+— determine and prioritize interested party relationships that need to be managed;
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:06:05 MDT © ISO 2015 – All rights reserved
+ISO 9000:2015(E)
+— establish relationships that balance short-term gains with long-term considerations;
+— gather and share information, expertise and resources with relevant interested parties;
+— measure performance and provide performance feedback to interested parties, as appropriate, to
+enhance improvement initiatives;
+— establish collaborative development and improvement activities with providers, partners and other
+interested parties;
+— encourage and recognize improvements and achievements by providers and partners.
+
+### 2.4 Developing the QMS using fundamental concepts and principles
+
+#### 2.4.1 QMS model
+
+##### 2.4.1.1 General
+
+Organizations share many characteristics with humans as a living and learning social organism. Both
+are adaptive and comprise interacting systems, processes and activities. In order to adapt to their
+varying context, each needs the ability to change. Organizations often innovate to achieve breakthrough
+improvements. An organization’s QMS model recognizes that not all systems, processes and activities
+can be predetermined; therefore it needs to be flexible and adaptable within the complexities of the
+organizational context.
+
+##### 2.4.1.2 System
+
+Organizations seek to understand the internal and external context to identify the needs and
+expectations of relevant interested parties. This information is used in the development of the QMS
+to achieve organizational sustainability. The outputs from one process can be the inputs into other
+processes and are interlinked into the overall network. Although often appearing to be comprised of
+similar processes, each organization and its QMS is unique.
+
+##### 2.4.1.3 Processes
+
+The organization has processes that can be defined, measured and improved. These processes interact
+to deliver results consistent with the organization’s objectives and cross functional boundaries. Some
+processes can be critical while others are not. Processes have interrelated activities with inputs to
+deliver outputs.
+
+##### 2.4.1.4 Activity
+
+People collaborate within a process to carry out their daily activities. Some activities are prescribed
+and depend on an understanding of the objectives of the organization, while others are not and react to
+external stimuli to determine their nature and execution.
+
+#### 2.4.2 Development of a QMS
+
+A QMS is a dynamic system that evolves over time through periods of improvement. Every organization
+has quality management activities, whether they have been formally planned or not. This International
+Standard provides guidance on how to develop a formal system to manage these activities. It is
+necessary to determine activities which already exist in the organization and their suitability regarding
+the context of the organization. This International Standard, along with ISO 9004 and ISO 9001, can
+then be used to assist the organization to develop a cohesive QMS.
+A formal QMS provides a framework for planning, executing, monitoring and improving the performance
+of quality management activities. The QMS does not need to be complicated; rather it needs to accurately
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-` ,,`,,`,`,,`--- 9
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith5ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:06:05 MDT
+ISO 9000:2015(E)
+reflect the needs of the organization. In developing the QMS, the fundamental concepts and principles
+given in this International Standard can provide valuable guidance.
+QMS planning is not a singular event, rather it is an ongoing process. Plans evolve as the organization
+learns and circumstances change. A plan takes into account all quality activities of the organization and
+ensures that it covers all guidance of this International Standard and requirements of ISO 9001. The
+plan is implemented upon approval.
+It is important for an organization to regularly monitor and evaluate both the implementation of the
+plan and the performance of the QMS. Carefully considered indicators facilitate these monitoring and
+evaluation activities.
+Auditing is a means of evaluating the effectiveness of the QMS, in order to identify risks and to
+determine the fulfilment of requirements. In order for audits to be effective, tangible and intangible
+evidence needs to be collected. Actions are taken for correction and improvement based upon analysis
+of the evidence gathered. The knowledge gained could lead to innovation, taking QMS performance to
+higher levels.
+
+#### 2.4.3 QMS standards, other management systems and excellence models
+
+The approaches to a QMS described in QMS standards developed by ISO/TC 176, in other management
+system standards and in organizational excellence models are based on common principles. They all
+enable an organization to identify risks and opportunities and contain guidance for improvement. In
+the current context, many issues such as innovation, ethics, trust and reputation could be regarded as
+parameters within the QMS. Standards related to quality management (e.g. ISO 9001), environmental
+management (e.g. ISO 14001) and energy management (e.g. ISO 50001), as well as other management
+standards and organizational excellence models, have addressed this.
+The QMS standards developed by ISO/TC 176 provide a comprehensive set of requirements and
+guidelines for a QMS. ISO 9001 specifies requirements for a QMS. ISO 9004 provides guidance on a
+wide range of objectives of a QMS for sustainable success and improved performance. Guidelines for
+components of a QMS include ISO 10001, ISO 10002, ISO 10003, ISO 10004, ISO 10008, ISO 10012
+and ISO 19011. Guidelines for technical subjects in support of a QMS include ISO 10005, ISO 10006,
+ISO 10007, ISO 10014, ISO 10015, ISO 10018 and ISO 10019. Technical reports in support of a QMS
+include ISO/TR 10013 and ISO/TR 10017. Requirements for a QMS are also provided in sector-specific
+standards, such as ISO/TS 16949.
+The various parts of an organization’s management system, including its QMS, can be integrated as a
+single management system. The objectives, processes and resources related to quality, growth, funding,
+profitability, environment, occupational health and safety, energy, security and other aspects of the
+organization can be more effectively and efficiently achieved and used when the QMS is integrated
+with other management systems. The organization can perform an integrated audit of its management
+system against the requirements of multiple International Standards, such as ISO 9001, ISO 14001,
+ISO/IEC 27001 and ISO 50001.
+NOTE The ISO handbook “The integrated use of management system standards” can provide useful guidance.
+3 Terms and definitions
+
+### 3.1 Terms related to person or people
+
+3.1.1
+top management
+organization
+person or group of people who directs and controls an (3.2.1) at the highest level
+Note 1 to entry: Top management has the power to delegate authority and provide resources within the
+organization.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:06:05 MDT © ISO 2015 – All rights reserved
+ISO 9000:2015(E)
+management system
+Note 2 to entry: If the scope of the (3.5.3) covers only part of an organization, then top
+management refers to those who direct and control that part of the organization.
+Note 3 to entry: This constitutes one of the common terms and core definitions for ISO management system
+s3t.a1n.2dards given in Annex SL of the Consolidated ISO Supplement to the ISO/IEC Directives, Part 1.
+quality management system consultant
+organization quality management system realization
+information
+person who assists the (3.2.1) on (3.4.3), giving
+advice or (3.8.2) quality
+management system
+Note 1 to entry: The quality management system consultant can also assist in realizing parts of a
+(3.5.4).
+Note 2 to entry: ISO 10019:2005 provides guidance on how to distinguish a competent quality management
+system consultant from one who is not competent.
+[3S.1O.U3RCE: ISO 10019:2005, 3.2, modified]
+involvement
+t3a.1k.i4ng part in an activity, event or situation
+engagement
+involvement objectives
+3.1.5 (3.1.3) in, and contribution to, activities to achieve shared (3.7.1)
+configuration authority
+configuration control board
+dcoisnpfiogsuirtiaotnioinng authority
+person or a group of persons with assigned responsibility and authority to make decisions on the
+(3.10.6) interested parties organization
+Note 1 to entry: Relevant (3.2.3) within and outside the (3.2.1) should be
+represented on the configuration authority.
+[3S.1O.U6RCE: ISO 10007:2003, 3.8, modified]
+dispute resolver
+DRP-provider
+dispute
+<customer satisfaction> individual person assigned by a (3.2.7) to assist the parties in
+contract
+resolving a (3.9.6)
+EXAMPLE Staff, volunteer, (3.4.7) personnel.
+[SOURCE: ISO 10003:2007, 3.7, modified]
+
+### 3.2 Terms related to organization
+
+3.2.1
+organization
+objectives
+person or group of people that has its own functions with responsibilities, authorities and relationships
+to achieve its (3.7.1)
+association
+Note 1 to entry: The concept of organization includes, but is not limited to, sole-trader, company, corporation,
+firm, enterprise, authority, partnership, (3.2.8), charity or institution, or part or combination thereof,
+whether incorporated or not, public or private.
+Note 2 to entry: This constitutes one of the common terms and core definitions for ISO management system
+standards given in Annex SL of the Consolidated ISO Supplement to the ISO/IEC Directives, Part 1. The original
+definition has been mo--d``,i,,f,`i,e,,,d,`, `b,`,,y,, ,`m``,`o-`-d`,,i`,f,`y,`,i,`n---g Note 1 to entry.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith5ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:06:05 MDT
+ISO 9000:2015(E)
+3.2.2
+context of the organization
+organization’s
+objectives
+combination of internal and external issues that can have an effect on an (3.2.1) approach
+to developing and achieving its (3.7.1) products services
+interested parties
+Note 1 to entry: The organization’s objectives can be related to its (3.7.6) and (3.7.7), investments
+and behaviour towards its (3.2.3).
+Note 2 to entry: The concept of context of the organization is equally applicable to not-for-profit or public service
+organizations as it is to those seeking profits.
+Note 3 to entry: In English, this concept is often referred to by other terms such as “business environment”,
+“organizational environment” or “ecinofsryassttermuc otuf raen organization”.
+3N.o2te.3 4 to entry: Understanding the (3.5.2) can help to define the context of the organization.
+interested party
+organization
+stakeholder
+person or (3.2.1) that can affect, be affected by, or perceive itself to be affected by a
+Customers providers
+decision or activity
+EXAMPLE (3.2.4), owners, people in an organization, (3.2.5), bankers, regulators,
+unions, partners or society that can include competitors or opposing pressure groups.
+Note 1 to entry: This constitutes one of the common terms and core definitions for ISO management system
+standards given in Annex SL of the Consolidated ISO Supplement to the ISO/IEC Directives, Part 1. The original
+d3e.2fi.n4ition has been modified by adding the Example.
+customer
+organization product service
+person or (3.2.1) that could or does receive a (3.7.6) or a (3.7.7) that is
+process
+intended for or required by this person or organization
+EXAMPLE Consumer, client, end-user, retailer, receiver of product or service from an internal (3.4.1),
+beneficiary and purchaser.
+N3.o2te.5 1 to entry: A customer can be internal or external to the organization.
+provider
+organization product service
+supplier
+(3.2.1) that provides a (3.7.6) or a (3.7.7)
+EXAMPLE Producer, distributor, retailer or vendor of a product or a service.
+Note 1 to entry: A provider can be internal or external to the organization.
+3N.o2te.6 2 to entry: In a contractual situation, a provider is sometimes called “contractor”.
+external provider
+provider organization
+external supplier
+product service
+(3.2.5) that is not part of the (3.2.1)
+EXAMPLE Producer, distributor, retailer or vendor of a (3.7.6) or a (3.7.7)
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:06:05 MDT © ISO 2015 – All rights reserved
+ISO 9000:2015(E)
+
+#### 3.2.7 DRP-provider
+
+organization dispute
+pdrisopcuestes resolution process provider
+person or (3.2.1) that supplies and operates an external (3.9.6) resolution
+(3.4.1)
+Note 1 to entry: Generally, a DRP-provider is a legal entity, separate from the orgacnoimzaptliaoinn tosr person as an
+individual and the complainant. In this way, the attributes of independence and fairness are emphasized. In some
+situations, a separate unit is establishecdon wtriathcitns the organization to handle unresolved (3.9.3).
+performance dispute resolvers
+Note 2 to entry: The DRP-provider (3.4.7) with the parties to provide dispute resolution, and is
+accountable for (3.7.8). The DRP-provider supplies (3.1.6). The DRP-provider also
+utilizes support, executive and other managerial staff to supply financial resources, clerical support, scheduling
+assistance, training, meeting rooms, supervision and similar functions.
+association
+Note 3 to entry: DRP-providers can take many forms including not-for-profit, for-profit and public entities. An
+(3.2.8) can also be a DRP-provider.
+Note 4 to entry: In ISO 10003:2007 instead of the term DRP-provider, the term “provider” is used.
+[3S.O2.U8RCE: ISO 10003:2007, 3.9, modified]
+association
+organization
+<customer satisfaction> (3.2.1) consisting of member organizations or persons
+[3S.O2.U9RCE: ISO 10003:2007, 3.1]
+metrological function
+measurement management system
+functional unit with administrative and technical responsibility for defining and implementing the
+(3.5.7)
+[SOURCE: ISO 10012:2003, 3.6, modified]
+
+### 3.3 Terms related to activity
+
+3.3.1
+improvement
+performance
+activity to enhance (3.7.8)
+N3.o3te.2 1 to entry: The activity can be recurring or singular.
+continual improvement
+performance
+recurring activity top reonchesasnce (3.7.8o)bjectives improvement
+audit findings audit conclusions
+dNaottae 1 to entmrayn: aTgheem ent (3.4r.1e)v ioefw esstablishing (3.7.1) and finding opporctuornrieticetsiv feo ar ction
+(3.p3r.1e)v eisn tai vceo natcitniounal process through the use of (3.13.9) and (3.13.10), analysis of
+(3.8.1), (3.3.3) (3.11.2) or other means and generally leads to (3.12.2)
+or (3.12.1).
+Note 2 to entry: This constitutes one of the common terms and core definitions for ISO management system
+standards given in Annex SL of the Consolidated ISO Supplement to the ISO/IEC Directives, Part 1. The original
+d3e.3fi.n3ition has been modified by adding Note 1 to entry.
+management
+organization
+coordinated activities to direct and control an policies (3.2.1) objectives processes
+Note 1 to entry: Management can include establishing (3.5.8) and (3.7.1), and (3.4.1)
+to achieve these objectives.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith5ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:06:05 MDT
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 9000:2015(E)
+Note 2 to entry: The word “management” sometimes refers to people, i.e. a person or group of people with
+authority and responsibility for the conduct and control of an organization. When “managementto” pis m uasneadg ienm tehnist
+sense, it should always be used with some form of qualifier to avoid confusion with the concept of “management”
+as a set of activities defined above. For example, “management shall…” is deprecated whereas “
+(3.1.1) shall…” is acceptable. Otherwise different words should be adopted to convey the concept when related to
+p3e.3o.p4le, e.g. managerial or managers.
+quality management
+management quality
+(3.3.3) with regard to (3.6.2) quality policies quality objectives
+processes quality planning quality assurance
+qNuoatlei t1y tcoo nentrtorly: Quality maqnuaagleitmy eimntp craonve imncelnutde establishing (3.5.9) and (3.7.2),
+and (3.4.1) to achieve these quality objectives through (3.3.5), (3.3.6),
+3.3.5 (3.3.7), and (3.3.8).
+quality planning
+quality management quality objectives
+processes
+part of (3.3.4) focused on setting (3.7.2) and specifying necessary
+operational (3.4.1q)u, aalnitdy prelalnasted resources to achieve the quality objectives
+N3.o3te.6 1 to entry: Establishing (3.8.9) can be part of quality planning.
+quality assurance
+quality management quality requirements
+part of (3.3.4) focused on providing confidence that (3.6.5)
+w3.i3ll.7 be fulfilled
+quality control
+quality management quality requirements
+3pa.3r.t8 of (3.3.4) focused on fulfilling (3.6.5)
+quality improvement
+quality management quality requirements
+part of (3.3.4) focused on increasing the ability to fulfile ffectiveness ef f(i3ci.6en.5cy)
+traceability
+Note 1 to entry: The quality requirements can be related to any aspect such as (3.7.11),
+(33.3.7..910) or (3.6.13).
+configuration management
+configuration
+coordinated activities to direct and control (3.10.6)
+product service product configuration information
+Note 1 to entry: Configuration management generally concentrates on technical and organizational activities
+that establish and maintain control of a (3.7.6) or (3.7.7) and its
+(3.6.8) throughout the life cycle of the product.
+3[S.O3.U1R0CE: ISO 10007:2003, 3.6, modified — Note 1 to entry has been modified]
+change control
+output
+product configuration information
+<configuration management> activities for control of the (3.7.5) after formal approval of its
+(3.6.8)
+3[S.O3.U1R1CE: ISO 10007:2003, 3.1, modified]
+activity
+project
+<project management> smallest identified object of work in a (3.4.2)
+[SOURCE: ISO 10006:2003, 3.1, modified]
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:06:05 MDT © ISO 2015 – All rights reserved
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 9000:2015(E)
+3.3.12
+project management
+monitoring project
+planning, organizing, (3.11.3), controlling and reporting of all aspects of a (3.4.2),
+and the motivation of all those involved in it to achieve the project objectives
+3[S.O3.U1R3CE: ISO 10006:2003, 3.6]
+configuration object
+object configuration
+(3.6.1) within a (3.10.6) that satisfies an end-use function
+[SOURCE: ISO 10007:2003, 3.5, modified]
+
+### 3.4 Terms related to process
+
+3.4.1
+process
+set of interrelated or interacting activities that use inputs to deliveoru atpnu itntendedp rreosduulctt service
+Note 1 to entry: Whether the “intended result” of a process is called (3.7.5), (3.7.6) or
+(3.7.7) depends on the context of the reference.
+Note 2 to entry: Inputs to a process are generally the outputs of other processes and outputs of a process are
+generally the inputs to other processes.
+Note 3 to entry: Two or more interroerlgaatendiz aantido ninteracting processes in series can also be referred to as a process.
+Note 4 to entry: Processes in an (3.2.1) are generally planned and carried out under controlled
+conditions to add value. conformity
+Note 5 to entry: A process where the (3.6.11) of the resulting output cannot be readily or economically
+validated is frequently referred to as a “special process”.
+Note 6 to entry: This constitutes one of the common terms and core definitions for ISO management system
+standards given in Annex SL of the Consolidated ISO Supplement to the ISO/IEC Directives, Part 1. The original
+definition has been modified to prevent circularity between process and output, and Notes 1 to 5 to entry
+h3a.4v.e2 been added.
+project
+process
+objective requirements
+unique (3.4.1), consisting of a set of coordinated and controlled activities with start and finish
+dates, undertaken to achieve an (3.7.1) conforming to specific (3.6.4), including
+the constraints of time, cost and resources
+Note 1 to entry: An individual project can form part of a larger project structure and generally has a defined start
+and finish date. product service
+characteristics
+Note 2 to entry: In some projects the objectives and scope are updated and the (3.7.6) or (3.7.7)
+(3.10.1o)u tdpeuftined progressively as the project proceeds.
+Note 3 to entry: The (3.7o.r5g)a onfi zaa ptrioonject can be one or several units of product or service.
+Note 4 to entry: The project’s (3.2.1) is normally temporary and established for the lifetime of the
+project.
+Note 5 to entry: The complexity of the interactions among project activities is not necessarily related to the
+project size.
+[SOURCE: ISO 10006:2003, 3.5, modified — Notes 1 to 3 have been modified]
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`--- 15
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith5ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:06:05 MDT
+ISO 9000:2015(E)
+3.4.3
+quality management system realization
+process
+quality management system
+(3.4.1) of establishing, documenting, implementing, maintaining and continually improving a
+(3.5.4)
+[3S.4O.U4RCE: ISO 10019:2005, 3.1, modified — Notes have been deleted]
+competence acquisition
+process competence
+(3.4.1) of attaining (3.10.4)
+[3S.4O.U5RCE: ISO 10018:2012, 3.2, modified]
+procedure
+process
+specified way to carry out an activity or a (3.4.1)
+N3.o4t.e6 1 to entry: Procedures can be documented or not.
+outsource
+organization
+(pvreorcbe)ss
+make an arrangement where an external (3.2.1) performs part of an organization’s
+function or (3.4.1) management system
+Note 1 to entry: An external organization is outside the scope of the (3.5.3), although the
+outsourced function or process is within the scope.
+Note 2 to entry: This constitutes one of the common terms and core definitions for ISO management system
+s3t.a4n.7dards given in Annex SL of the Consolidated ISO Supplement to the ISO/IEC Directives, Part 1.
+contract
+b3i.4nd.8ing agreement
+design and development
+processes requirements object
+set of (3.4.1) that transform (3.6.4) for an (3.6.1) into more detailed
+requirements for that object
+output
+Note 1 to entry: The requirements forming input to design and developcmhaernatc aterrei sotfitcesn the result ofp rreosjeecatrch and
+can be expressed in a broader, more general sense than the requirements forming the (3.7.5) of design
+and development. The requirements are generally defined in terms of (3.10.1). In a (3.4.2)
+there can be several design and development stages.
+Note 2 to entry: In English the words “design” and “development” and the term “design and development” are
+sometimes used synonymously and sometimes used to define different stages of the overall design and development.
+In French the words “conception” and “développement” and the term “conception et développement” are sometimes
+used synonymously and sometimes used to define different stages of the overall design and development.
+product service
+Note 3 to entry: A qualifier can be applied to indicate the nature of what is being designed and developed
+(e.g. (3.7.6) design and development, (3.7.7) design and development or process design and
+development).
+
+### 3.5 Terms related to system
+
+3.5.1
+system
+set of interrelated or interacting elements
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:06:05 MDT © ISO 2015 – All rights reserved
+ISO 9000:2015(E)
+3.5.2
+infrastructure
+system services
+organization
+<organization> (3.5.1) of facilities, equipment and (3.7.7) needed for the operation of an
+3.5.3 (3.2.1)
+management system
+organization policies
+objectives processes
+set of interrelated or interacting elements of an (3.2.1) to establish (3.5.8) and
+(3.7.1), and (3.4.1) to achieve those objectives quality
+management
+Note 1 to entry: A management system can address a single discipline or several disciplines, e.g.
+(3.3.4), financial management or environmental management.
+Note 2 to entry: The management system elements establish the organization’s structure, roles and responsibilities,
+planning, operation, policies, practices, rules, beliefs, objectives and processes to achieve those objectives.
+Note 3 to entry: The scope of a management system can include the whole of the organization, specific and
+identified functions of the organization, specific and identified sections of the organization, or one or more
+functions across a group of organizations.
+Note 4 to entry: This constitutes one of the common terms and core definitions for ISO management system
+standards given in Annex SL of the Consolidated ISO Supplement to the ISO/IEC Directives, Part 1. The original
+3de.5fi.n4ition has been modified by modifying Notes 1 to 3 to entry.
+quality management system
+management system quality
+p3a.5r.t5 of a (3.5.3) with regard to (3.6.2)
+work environment
+set of conditions under which work is performed
+Note 1 to entry: Conditions can include physical, social, psychological and environmental factors (such as
+t3e.m5.p6erature, lighting, recognition schemes, occupational stress, ergonomics and atmospheric composition).
+metrological confirmation
+measuring equipment requirements
+set of operations required to ensure that (3.11.6) conforms to the
+(3.6.4) for its intended use verification
+repair
+Note 1 to entry: Metrological confirmation generally includes calibration or (3.8.12), any necessary
+adjustment or (3.12.9), and subsequent recalibration, comparison with the metrological requirements for
+the intended use of the equipment, as well as any required sealing and labelling.
+Note 2 to entry: Metrological confirmation is not achieved until and unless the fitness of the measuring equipment
+for the intended use has been demonstrated and documented.
+Note 3 to entry: The requirements for intended use include such considerations as range, resolution and
+maximum permissible errors. product
+Note 4 to entry: Metrological requirements are usually distinct from, and are not specified in, (3.7.6)
+requirements.
+3[S.O5.U7RCE: ISO 10012:2003, 3.5, modified — Note 1 to entry has been modified]
+measurement management system
+metrological confirmation
+measurement processes
+set of interrelated or interacting elements necessary to achieve (3.5.6) and
+control of (3.11.5)
+[SOURCE: ISO 10012:2003, 3.1, modified]
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith5ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:06:05 MDT
+ISO 9000:2015(E)
+3.5.8
+policy
+organization top
+management
+<organization> intentions and direction of an (3.2.1) as formally expressed by its
+(3.1.1)
+Note 1 to entry: This constitutes one of the common terms and core definitions for ISO management system
+s3t.a5n.9dards given in Annex SL of the Consolidated ISO Supplement to the ISO/IEC Directives, Part 1.
+quality policy
+policy quality
+(3.5.8) related to (3.6.2) organization
+vision mission
+Nquoatlei t1y toob jeencttrivye:s Generally the quality policy is consistent with the overall policy of the (3.2.1), can
+be aligned with the organization’s (3.5.10) and (3.5.11) and provides a framework for the setting of
+(3.7.2).
+Note 2 to entry: Quality management principles presented in this International Standard can form a basis for the
+e3s.5ta.1bl0ishment of a quality policy.
+vision
+organization top
+management
+<organization> aspiration of what an (3.2.1) would like to become as expressed by
+3.5.11 (3.1.1)
+mission
+> organization’s top management
+<3o.5r.g1a2nization (3.2.1) purpose for existing as expressed by (3.1.1)
+strategy
+objective
+plan to achieve a long-term or overall (3.7.1)
+
+### 3.6 Terms related to requirement
+
+3.6.1
+object
+entity
+item
+Product service process organization system
+anything perceivable or conceivable
+EXAMPLE (3.7.6), (3.7.7), (3.4.1), person, (3.2.1), (3.5.1), resource.
+Note 1 to entry: Objects can be material (e.g. an engine, a sheet of paper, a diamond), non-material (e.g. conversion
+ratio, a project plan) or imagined (e.g. the future state of the organization).
+[3S.6O.U2RCE: ISO 1087-1:2000, 3.1.1, modified]
+quality
+characteristics object requirements
+degree to which a set of inherent (3.10.1) of an (3.6.1) fulfils (3.6.4)
+Note 1 to entry: The term “quality” can be used with adjectives such as pooro, bgjoeoctd or excellent.
+3N.o6te.3 2 to entry: “Inherent”, as opposed to “assigned”, means existing in the (3.6.1).
+grade
+requirements object
+category or rank given to different (3.6.4) for an (3.6.1) having the same functional use
+EXAMPLE Class of airline ticket aqnuda lcitayt ergeqouryir eomf heonttel in a hotel brochure.
+Note 1 to entry: When establishing a (3.6.5), the grade is generally specified.
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:06:05 MDT © ISO 2015 – All rights reserved
+ISO 9000:2015(E)
+3.6.4
+requirement
+need or expectation that is stated, generally implied or obligatory organization
+interested parties
+Note 1 to entry: “Generally implied” means that it is custom or common practice for the (3.2.1) and
+(3.2.3) that the need or expectation under consideration is dimocpulmieedn.ted information
+Note 2 to entry: A specified requirement is one that is stated, for example in product (3.8.6).
+quality management customer quality requirement
+Note 3 to entry: A qualifier can be used to denote a specific type of requirement, e.g. (3.7.6) requirement,
+(3.3.4) requirement, (3.2.4) requirement, (3.6.5).
+Note 4 to entry: Requirements can be generated by diffecruenstto imnteerr esasttiesdfa pcatirotnies or by the organization itself.
+Note 5 to entry: It can be necessary for achieving high (3.9.2) to fulfil an expectation of a
+customer even if it is neither stated nor generally implied or obligatory.
+Note 6 to entry: This constitutes one of the common terms and core definitions for ISO management system
+standards given in Annex SL of the Consolidated ISO Supplement to the ISO/IEC Directives, Part 1. The original
+3de.6fi.n5ition has been modified by adding Notes 3 to 5 to entry.
+quality requirement
+requirement quality
+3.6.6 (3.6.4) related to (3.6.2)
+statutory requirement
+requirement
+o3b.6li.g7atory (3.6.4) specified by a legislative body
+regulatory requirement
+requirement
+o3b.6li.g8atory (3.6.4) specified by an authority mandated by a legislative body
+product configuration information
+requirement product verification
+(3.6.4) or other information for (3.7.6) design, realization, (3.8.12),
+operation and support
+[3S.6O.U9RCE: ISO 10007:2003, 3.9, modified]
+nonconformity
+requirement
+non-fulfilment of a (3.6.4)
+Note 1 to entry: This constitutes one of the common terms and core definitions for ISO management system
+s3t.a6n.1d0ards given in Annex SL of the Consolidated ISO Supplement to the ISO/IEC Directives, Part 1.
+defect
+nonconformity
+(3.6.9) related to an intended or specified use
+product service
+Note 1 to entry: The distinction between the concepts defect and nonconformity is important as it has legal
+connotations, particularly those associated with c(3u.s7t.o6m) aernd (3.7.7) liability issues.
+information provider
+Note 2 to entry: The intended use as intended by the (3.2.4) can be affected by the nature of the
+3.6.11 (3.8.2), such as operating or maintenance instructions, provided by the (3.2.5).
+conformity
+requirement
+fulfilment of a (3.6.4)
+Note 1 to entry: In English the word “conformance” is synonymous but deprecated. In French the word
+“compliance” is synonymous but deprecated.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith5ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:06:05 MDT
+ISO 9000:2015(E)
+Note 2 to entry: This constitutes one of the common terms and core definitions for ISO management system
+standards given in Annex SL of the Consolidated ISO Supplement to the ISO/IEC Directives, Part 1. The original
+d3e.6fi.n1i2tion has been modified by adding Note 1 to entry.
+capability
+object output requirements
+ability of an Pro c(e3s.6s.1) to realize an (3.7.5) that will fulfil the (3.6.4) for that output
+N3.o6te.1 13 to entry: (3.4.1) capability terms in the field of statistics are defined in ISO 3534-2.
+traceability
+object
+ability to trace the history, applicaptrioodnu octr location osf earnv ice (3.6.1)
+Note 1 to entry: When considering a (3.7.6) or a (3.7.7), traceability can relate to:
+— the origin of materials and parts;
+— the processing history;
+— the distribution and location of the product or service after delivery.
+3N.o6te.1 24 to entry: In the field of metrology, the definition in ISO/IEC Guide 99 is the accepted definition.
+dependability
+ability to perform as and when required
+[3S.6O.U1R5CE: IEC 60050-192, modified — Notes have been deleted]
+innovation
+object
+new or changed (3.6.1) realizing or redistributing value
+Note 1 to entry: Activities resulting in innovation are generally managed.
+Note 2 to entry: Innovation is generally significant in its effect.
+
+### 3.7 Terms related to result
+
+3.7.1
+objective
+result to be achieved
+Note 1 to entry: An objective can be strategic, tactical, or operational.
+organization project
+Note 2 ptroo deuncttry: Objectivperso cceasns relate to different disciplines (such as financial, health and safety, and
+environmental objectives) and can apply at different levels (such as strategic, (3.2.1)-wide,
+(3.4.2), (3.7.6) and (3.4.1)).
+quality objective
+Note 3 to entry: An objective can be expressed in other ways, e.g. as an intended outcome, a purpose, an
+operational criterion, as a (3.7.2) or by the use of other words with similar meaning (e.g. aim,
+goal, or target). quality management systems quality objectives
+organization quality policy
+Note 4 to entry: In the context of (3.5.4) (3.7.2) are set by the
+(3.2.1), consistent with the (3.5.9), to achieve specific results.
+Note 5 to entry: This constitutes one of the common terms and core definitions for ISO management system
+standards given in Annex SL of the Consolidated ISO Supplement to the ISO/IEC Directives, Part 1. The original
+definition has been modified by modifying Note 2 to entry.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:06:05 MDT © ISO 2015 – All rights reserved
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 9000:2015(E)
+3.7.2
+quality objective
+objective quality
+(3.7.1) related to (3.6.2) organization’s quality policy
+Note 1 to entry: Quality objectives are generally based on the (3.2.1) pro (c3e.s5s.e9s).
+organization
+Note 2 to entry: Quality objectives are generally specified for relevant functions, levels and (3.4.1) in
+3th.7e .3 (3.2.1).
+success
+objective
+<organization> achievement of an organiz a(t3io.7n.1)
+interested parties customers
+Note 1 to entry: The success of an (3.2.1) empprhoavsidizeerss the need for a balance between its
+economic or financial interests and the needs of its (3.2.3), such as (3.2.4), users,
+investors/shareholders (owners), people in the organization, (3.2.5), partners, interest groups and
+3co.7m.4munities.
+sustained success
+success
+<organization> (3.7.3) over a period of time
+organization
+Note 1 to entry: Sustained success emphasizes the need for a balance between economic-financial interests of an
+(3.2.1) and those of the social and ecoinlotegriceastle edn pvairrotniemsent. customers
+providers
+Note 2 to entry: Sustained success relates to the (3.2.3) of an organization, such as
+3(3.7.2.5.4), owners, people in an organization, (3.2.5), bankers, unions, partners or society.
+output
+process
+result of a (3.4.1) organization product service
+characteristics
+Note 1 to entry: Whether an output of the (3.2.1) is a (3.7.6) or a (3.7.7) depends
+on the preponderance of the (3.10.1) involved, e.g. a painting for sale in a gallery is a product
+whereas supply of a commissioned painting is a service, a hamburger bought in a retail store is a product whereas
+3re.7ce.6iving an order and serving a hamburger ordered in a restaurant is part of a service.
+product
+output organization
+customer
+(3.7.5) of an (3.2.1) that can be produced without any transaction taking place
+between the organization and the (3.2.4)
+provider service
+Note 1 to entry: Production of a product is achieved without any transaction necessarily taking place between
+(3.2.5) and customer, but can often involve this (3.7.7) element upon its delivery to the customer.
+Note 2 to entry: The dominant element of a product is that it is genercahllayr atacntegriibslteic.
+Note 3 to entry: Hardware is tangible and its amount is a countable inf o(r3m.1a0t.1io)n (e.g. tyres). Processed
+materials are tangible and their amount is a continuous characteristic (e.g. fuel and soft drinks). Hardware
+and processed materials are often referred to as goods. Software consists of (3.8.2) regardless of
+delivery medium (e.g. computer programme, mobile phone app, instruction manual, dictionary content, musical
+c3o.7m.7position copyright, driver’s license).
+service
+output organization
+customer
+(3.7.5) of an (3.2.1) with at least one activity necessarily performed between the
+organization and the (3.2.4)
+Note 1 to entry: The dominant elements of a service are generally intangible.
+requirements
+Note 2 to entry: Service often involves activities at the interface with the customer to establish customer
+(3.6.4) as well as upon delivery of the service and can involve a continuing relationship such as
+banks, accountancies or public organizations, e.g. schools or hospitals.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith5ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:06:05 MDT
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 9000:2015(E)
+Note 3 to entry: Provision of a service can involve, for exampprloed, tuhcet following:
+— an activity performed on a customer-supplied tangible (3.7.6) (e.g. a car to be repaired);
+— an activity performed on a customer-supplied intangible product (e.g. the income statement needed to
+prepare a tax return); information
+— the delivery of an intangible product (e.g. the delivery of (3.8.2) in the context of knowledge
+transmission);
+— the creation of ambience for the customer (e.g. in hotels and restaurants);
+N3.o7t.e8 4 to entry: A service is generally experienced by the customer.
+performance
+measurable result
+Note 1 to entry: Performance can relate eitherm toa nqaugaenmtietanttive or qualaitcattivivitei efsindings. processes products
+services systems organizations
+Note 2 to entry: Performance can relate to the (3.3.3) of (3.3.11), (3.4.1),
+(3.7.6), (3.7.7), (3.5.1) or (3.2.1).
+Note 3 to entry: This constitutes one of the common terms and core definitions for ISO management system
+standards given in Annex SL of the Consolidated ISO Supplement to the ISO/IEC Directives, Part 1. The original
+3de.7fi.9nition has been modified by modifying Note 2 to entry.
+risk
+effect of uncertainty
+Note 1 to entry: An effect is a deviation from the expected — positivien oforr nmeagtaitoinve.
+Note 2 to entry: Uncertainty is the state, even partial, of deficiency of (3.8.2) related to, understanding
+or knowledge of, an event, its consequence, or likelihood.
+Note 3 to entry: Risk is often characterized by reference to potential events (as defined in ISO Guide 73:2009,
+3.5.1.3) and consequences (as defined in ISO Guide 73:2009, 3.6.1.3), or a combination of these.
+Note 4 to entry: Risk is often expressed in terms of a combination of the consequences of an event (including
+changes in circumstances) and the associated likelihood (as defined in ISO Guide 73:2009, 3.6.1.1) of occurrence.
+Note 5 to entry: The word “risk” is sometimes used when there is the possibility of only negative consequences.
+Note 6 to entry: This constitutes one of the common terms and core definitions for ISO management system
+standards given in Annex SL of the Consolidated ISO Supplement to the ISO/IEC Directives, Part 1. The original
+d3e.7fi.1ni0tion has been modified by adding Note 5 to entry.
+efficiency
+r3e.7la.1ti1onship between the result achieved and the resources used
+effectiveness
+extent to which planned activities are realized and planned results are achieved
+Note 1 to entry: This constitutes one of the common terms and core definitions for ISO management system
+standards given in Annex SL of the Consolidated ISO Supplement to the ISO/IEC Directives, Part 1. The original
+definition has been modified by adding “are” before “achieved”.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:06:05 MDT © ISO 2015 – All rights reserved
+ISO 9000:2015(E)
+
+### 3.8 Terms related to data, information and document
+
+3.8.1
+data
+object
+3fa.c8t.s2 about an (3.6.1)
+information
+data
+m3.e8a.3ningful (3.8.1)
+objective evidence
+data
+(3.8.1) supporting the existence or verity of something measurement test
+Note 1 to entry: Objective evidence can be obtained through observation, (3.11.4), (3.11.8), or
+by other means. audit records
+information audit criteria
+Note 2 to entry: Objective evidence for the purpose of (3.13.1) generally consists of (3.8.10),
+3st.a8t.e4ments of fact or other (3.8.2) which are relevant to the (3.13.7) and verifiable.
+information system
+organization
+<3q.8u.a5lity management system> network of communication channels used within an (3.2.1)
+document
+information
+Record specification
+(3.8.2) and the medium on which it is contained
+EXAMPLE (3.8.10), (3.8.7), procedure document, drawing, report, standard.
+Note 1 to entry: The medium can be paper, magnetic, electronic or optical computer disc, photograph or master
+sample, or combination thereof.
+Note 2 to entry: A set orf edqouciuremmeennttss, for example specifications and records, is frequently called “documentation”.
+Note 3 to entry: Some (3.6.4) (e.g. the requirement to be readable) relate to all types of documents.
+However there can be different requirements for specifications (e.g. the requirement to be revision controlled)
+3an.8d. f6or records (e.g. the requirement to be retrievable).
+documented information
+information organization
+(3.8.2) required to be controlled and maintained by an (3.2.1) and the medium
+on which it is contained
+Note 1 to entry: Documented information can be in any format and media and from any source.
+Note 2 tmo aennatrgye:m Deonctu smysetnemted information can refer top:rocesses
+— the (3.5.3), including related (3.4.1);
+— information created in order froerc othrdes organization to operate (documentation);
+— evidence of results achieved ( (3.8.10)).
+Note 3 to entry: This constitutes one of the common terms and core definitions for ISO management system
+3st.a8n.7dards given in Annex SL of the Consolidated ISO Supplement to the ISO/IEC Directives, Part 1.
+specification
+document requirements
+Quality manual quality plan
+(3.8.5) stating (3.6.4)
+EXAMPLE (3.8.8), (3.8.9), technical drawing, procedure document, work
+instruction.
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith5ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:06:05 MDT
+ISO 9000:2015(E)
+process
+test products performance
+Note 1 to entry: A specification can be related to activities (e.g. procedure document, (3.4.1) specification
+and (3.11.8) specification), or (3.7.6) (e.g. product specification, (3.7.8) specification
+and drawing).
+design and development record
+Note 2 to entry: It can be that, by stating requirements, a specification additionally is stating results achieved by
+3.8.8 (3.4.8) and thus in some cases can be used as a (3.8.10).
+quality manual
+specification quality management system organization
+(3.8.7) for the (3.5.4) of an (3.2.1)
+organization
+Note 1 to entry: Quality manuals can vary in detail and format to suit the size and complexity of an individual
+3.8.9 (3.2.1).
+quality plan
+specification procedures
+object
+(3.8.7) of the (3.4.5) and associated resources to be applied when and by whom
+to a specific (3.6.1) quality management processes
+product service
+Note 1 to entry: These procedures generally include those referring to (3.3.4)
+(3.4.1) and to (3.7.6) and (3.7.7) realization processes. quality manual
+documents
+Note 2 to entry: A quality plan often makes reference to parts of the (3.8.8) or to procedure
+(3.8.5). quality planning
+3N.o8te.1 30 to entry: A quality plan is generally one of the results of (3.3.5).
+record
+document
+(3.8.5) stating results achieved or providing evidetnraccee oafb ialicttyivities performed
+verification preventive action corrective action
+Note 1 to entry: Records can be used, for example, to formalize (3.6.13) and to provide evidence of
+(3.8.12), (3.12.1) and (3.12.2).
+3N.o8te.1 21 to entry: Generally records need not be under revision control.
+project management plan
+document objective(s) project
+(3.8.5) specifying what is necessary to meet the (3.7.1)q oufa ltihtye plan (3.4.2)
+Note 1 to entry: A project management plan should include or refer to the project’s (3.8.9).
+risk management
+Note 2 to entry: The project management plan also includes or references such other plans as those relating
+to organizational structures, resources, schedule, budget, (3.7.9) (3.3.3), environmental
+management, health and safety management, and security management, as appropriate.
+[3S.O8.U1R2CE: ISO 10006:2003, 3.7]
+verification
+objective evidence requirements
+confirmation, through the provision of (3.8.3), that specified (3.6.4)
+have been fulfilled inspection
+determination documents
+Note 1 to entry: The objective evidence needed for a verification can be the result of an (3.11.7) or of
+other forms of (3.11.1) such as performing alternative calculations or reviewing process (3.8.5).
+Note 2 to entry: The activities carried out for verification are sometimes called a qualification (3.4.1).
+Note 3 to entry: The word “verified” is used to designate the corresponding status.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:06:05 MDT © ISO 2015 – All rights reserved
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 9000:2015(E)
+3.8.13
+validation
+objective evidence requirements
+confirmation, through the provision of (3.8.3), that the (3.6.4) for a
+specific intended use or application have been fulfilled test
+determination documents
+Note 1 to entry: The objective evidence needed for a validation is the result of a (3.11.8) or other form of
+(3.11.1) such as performing alternative calculations or reviewing (3.8.5).
+Note 2 to entry: The word “validated” is used to designate the corresponding status.
+3N.o8te.1 34 to entry: The use conditions for validation can be real or simulated.
+configuration status accounting
+product configuration information
+formalized recording and reporting of (3.6.8), the status of proposed
+changes and the status of the implementation of approved changes
+[3S.O8.U1R5CE: ISO 10007:2003, 3.7]
+specific case
+quality plan
+<quality plan> subject of the (3.8.9) process product project contract
+Note 1 to entry: This term is used to avoid repetition of “ (3.4.1), (3.7.6), (3.4.2) or
+(3.4.7)” within ISO 10005.
+[SOURCE: ISO 10005:2005, 3.10, modified — Note 1 to entry has been modified]
+
+### 3.9 Terms related to customer
+
+3.9.1
+feedback
+product service
+process
+<customer satisfaction> opinions, comments and expressions of interest in a (3.7.6), a
+(3.7.7) or a complaints-handling (3.4.1)
+[3S.9O.U2RCE: ISO 10002:2014, 3.6, modified — The term “service” has been included in the definition]
+customer satisfaction
+customer’s
+(3.2.4) perception of the degree to which the customer’s expeocrtgaatniioznatsi ohnave been fulfilled
+product service
+Note 1 to entry: It can be that the customer’s expectation is not known to the (3.2.1), or even to the
+customer in question, until the (3.7.6) or (3.7.7) is delivered. It can be necessary for achieving
+high customer satisfaction to fulfil an expectation of a customer even if it is neither stated nor generally implied
+or obligatory. Complaints
+Note 2 to entry: (3.9.3) are a common indicator of low customer satisfaction but their absence does
+not necessarily imply high customer sraetqisufiarcetmioenn.ts
+Note 3 to entry: Even when customer (3.6.4) have been agreed with the customer and fulfilled, this
+does not necessarily ensure high customer satisfaction.
+[3S.9O.U3RCE: ISO 10004:2012, 3.3, modified — Notes have been modified]
+complaint
+organization
+product service process
+<customer satisfaction> expression of dissatisfaction made to an (3.2.1), related to its
+(3.7.6) or (3.7.7), or the complaints-handling (3.4.1) itself, where a response or
+resolution is explicitly or implicitly expected
+[SOURCE: ISO 10002:2014, 3.2, modified — The term “service” has been included in the definition]
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith5ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:06:05 MDT
+ISO 9000:2015(E)
+3.9.4
+customer service
+organization customer product
+service
+interaction of the (3.2.1) with the (3.2.4) throughout the life cycle of a
+(3.7.6) or a (3.7.7)
+3[S.9O.U5RCE: ISO 10002:2014, 3.5, modified — The term “service” has been included in the definition]
+customer satisfaction code of conduct
+customers organization
+customer satisfaction
+promises, made to (3.2.4) by an (3.2.1) concerning its behaviour, that are aimed
+at enhanced (3.9.2) and roeblajetcetdiv pesrovisions information
+complaints procedures
+Note 1 to entry: Related provisions can include (3.7.1), conditions, limitations, contact
+(3.8.2), and (3.9.3) handling (3.4.5).
+Note 2 to entry: In ISO 10001:2007, the term “code” is used instead of “customer satisfaction code of conduct”.
+[SOURCE: ISO 10001:2007, 3.1, modified — The term “code” has been removed as an admitted term, and
+N3.o9t.e6 2 to entry has been modified]
+dispute
+complaint DRP provider
+<customer satisfaction> disagreement, arising from a (3.9.3), submitted to a -
+(3.2.7) organizations customers
+Note 1 to entry: Some (3.2.1) allow their (3.2.4) to express their dissatisfaction to a DRP-
+provider in the first instance. In this situation, the expression of dissatisfaction becomes a complaint when sent to
+the organization for a response, and becomes a dispute if not resolved by the organization without DRP-provider
+intervention. Many organizations prefer their customers to first express any dissatisfaction to the organization
+before utilizing dispute resolution external to the organization.
+[SOURCE: ISO 10003:2007, 3.6, modified]
+
+### 3.10 Terms related to characteristic
+
+3.10.1
+characteristic
+distinguishing feature
+Note 1 to entry: A characteristic can be inherent or assigned.
+Note 2 to entry: A characteristic can be qualitative or quantitative.
+Note 3 to entry: There are various classes of characteristic, such as the following:
+a) physical (e.g. mechanical, electrical, chemical or biological characteristics);
+b) sensory (e.g. related to smell, touch, taste, sight, hearing);
+c) behavioural (e.g. courtesy, honesty, veracity);
+d) temporal (e.g. punctuality, reliability, availability, continuity);
+e) ergonomic (e.g. physiological characteristic, or related to human safety);
+f3). 1 f0u.n2ctional (e.g. maximum speed of an aircraft).
+quality characteristic
+characteristic object requirement
+inherent (3.10.1) of an (3.6.1) related to a (3.6.4)
+Note 1 to entry: Inherent means existing in something, especially as a permanent characteristic.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:06:05 MDT © ISO 2015 – All rights reserved
+ISO 9000:2015(E)
+Note 2 to entry: A characteristic assigned to an object (e.g. the price of an object) is not a quality characteristic
+o3f. 1th0a.3t object.
+human factor
+characteristic object
+(3.10.1) of a person having an impact on an (3.6.1) under consideration
+Note 1 to entry: Characteristics can be physical, cognitive or sociaml.anagement system
+3N.o1t0e .24 to entry: Human factors can have a significant impact on a (3.5.3).
+competence
+ability to apply knowledge and skills to achieve intended results
+Note 1 to entry: Demonstrated competence is sometimes referred to as qualification.
+Note 2 to entry: This constitutes one of the common terms and core definitions for ISO management system
+standards given in Annex SL of the Consolidated ISO Supplement to the ISO/IEC Directives, Part 1. The original
+d3e.1fi0n.i5tion has been modified by adding Note 1 to entry.
+metrological characteristic
+characteristic measurement
+(M3.e1a0s.u1r)i nwgh eiqcuhi pcmane nitnfluence the results of (3.11.4)
+Note 1 to entry: (3.11.6) usually has several metrological characteristics.
+3N.o1t0e .26 to entry: Metrological characteristics can be the subject of calibration.
+configuration
+characteristics product service
+product configuration information
+interrelated functional and physical (3.10.1) of a (3.7.6) or (3.7.7) defined
+in (3.6.8)
+3[S.1O0U.7RCE: ISO 10007:2003, 3.3, modified — The term “service” has been included in the definition]
+configuration baseline
+product configuration information characteristics
+product service
+approved (3.6.8) that establishes the (3.10.1) of a
+(3.7.6) or (3.7.7) at a point in time that serves as reference for activities throughout the
+life cycle of the product or service
+[SOURCE: ISO 10007:2003, 3.4, modified — The term “service” has been included in the definition]
+
+### 3.11 Terms related to determination
+
+3.11.1
+determination
+characteristics
+a3c.1ti1v.i2ty to find out one or more (3.10.1) and their characteristic values
+review
+determination ffectiveness object
+objectives
+(3.11.1) of the suitability, adequacy or e (3.7.11) of an (3.6.1) to achieve
+design and development customer
+established (3.7.1)
+requirements corrective action
+EXAMPLE Management review, (3.4.8) review, review of (3.2.4)
+(3.6.4), review of (3.12.2) and peefefric rieenvcieyw.
+Note 1 to entry: Review can also include the determination of (3.7.10).
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith5ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:06:05 MDT
+ISO 9000:2015(E)
+3.11.3
+monitoring
+determining system process product service
+(3.11.1) the status of a (3.5.1), a (3.4.1), a (3.7.6), a (3.7.7),
+or an activity
+Note 1 to entry: For the determination of the status there can be a need to choebcjekc, tsupervise or critically observe.
+Note 2 to entry: Monitoring is generally a determination of the status of an (3.6.1), carried out at different
+stages or at different times.
+Note 3 to entry: This constitutes one of the common terms and core definitions for ISO management system
+standards given in Annex SL of the Consolidated ISO Supplement to the ISO/IEC Directives, Part 1. The original
+d3e.1fi1n.i4tion and Note 1 to entry have been modified, and Note 2 to entry has been added.
+measurement
+process
+(3.4.1) to determine a value
+Note 1 to entry: According to ISO 3534-2, the value determined is generally the value of a quantity.
+Note 2 to entry: This constitutes one of the common terms and core definitions for ISO management system
+standards given in Annex SL of the Consolidated ISO Supplement to the ISO/IEC Directives, Part 1. The original
+d3e.1fi1n.i5tion has been modified by adding Note 1 to entry.
+measurement process
+s3e.1t 1o.f6 operations to determine the value of a quantity
+measuring equipment
+measurement process
+measuring instrument, software, measurement standard, reference material or auxiliary apparatus or
+3co.1m1b.7ination thereof necessary to realize a (3.11.5)
+inspection
+determination conformity requirements
+(3.11.1) of (3.6.11) to specified (3.6.4) verification
+Note 1 to entry: If the result of an inspection shows conformity, it cnaonn bceo nufsoerdm fiotry purposes of (3.8.12).
+3N.o1t1e .28 to entry: The result of an inspection can show conformity or (3.6.9) or a degree of conformity.
+test
+determination requirements
+(3.11.1) according to conformit y(3.6.4) for a specific intended use or avaplpidliactaiotnion
+N3.o1t1e .19 to entry: If the result of a test shows (3.6.11), it can be used for purposes of (3.8.13).
+progress evaluation
+project objectives
+<project management> assessment of progress made on achievement of the (3.4.2)
+(3.7.1)
+processes product service
+Note 1 to entry: This assessment should be carried out at appropriate points in the project life cycle across project
+(3.4.1), based on criteria for project processes and (3.7.6) or project (m3a.7n.7a)g.ement plan
+Note 2 to entry: The results of progress evaluations can lead to revision of the (3.8.11).
+[SOURCE: ISO 10006:2003, 3.4, modified — Notes to entry have been modified]
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:06:05 MDT © ISO 2015 – All rights reserved
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 9000:2015(E)
+
+### 3.12 Terms related to action
+
+3.12.1
+preventive action
+nonconformity
+action to eliminate the cause of a potential (3.6.9) or other potential undesirable situation
+Note 1 to entry: There can be more than one cause for a potential nonconformcoirtrye.ctive action
+Note 2 to entry: Preventive action is taken to prevent occurrence whereas (3.12.2) is taken to
+p3r.1ev2e.n2t recurrence.
+corrective action
+nonconformity
+action to eliminate the cause of a (3.6.9) and to prevent recurrence
+Note 1 to entry: There can be more than one cause for a nonconformity. preventive action
+Note 2 to entry: Corrective action is taken to prevent recurrence whereas (3.12.1) is taken to
+prevent occurrence.
+Note 3 to entry: This constitutes one of the common terms and core definitions for ISO management system
+standards given in Annex SL of the Consolidated ISO Supplement to the ISO/IEC Directives, Part 1. The original
+d3e.1fi2n.i3tion has been modified by adding Notes 1 and 2 to entry.
+correction
+nonconformity
+action to eliminate a detected (3.6.9) corrective action
+Note 1 to entry: A correction can be made in advanrecwe oorfk, in conjunctiroeng wraidthe or after a (3.12.2).
+3N.o1t2e .24 to entry: A correction can be, for example, (3.12.8) or (3.12.4).
+regrade
+grade nonconforming product service
+requirements
+alteration of the (3.6.3) of a (3.6.9) (3.7.6) or (3.7.7) in order to
+m3.1ak2e.5 it conform to (3.6.4) differing from the initial requirements
+concession
+release product service
+requirements
+permission to use or (3.12.7) a (3.7.6) or (3.7.7) that does not conform to specified
+(3.6.4) nonconforming
+characteristics
+Note 1 to entry: A concession is generally limited to the delivery of products and services that have
+(3.6.9) (3.10.1) within specified limits and is generally given for a limited quantity of products and
+s3e.1rv2ic.6es or period of time, and for a specific use.
+deviation permit
+requirements product service
+permission to depart from the originally specified (3.6.4) of a (3.7.6) or
+(3.7.7) prior to its realization
+Note 1 to entry: A deviation permit is generally given for a limited quantity of products and services or period of
+t3i.m1e2, .7and for a specific use.
+release
+process
+permission to proceed to the next stage of a (3.4d.1o)c uomr etnhtes next process
+Note 1 to entry: In English, in the context of software and (3.8.5), the word “release” is frequently
+used to refer to a version of the software or the document itself.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith5ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:06:05 MDT
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 9000:2015(E)
+3.12.8
+rework
+nonconforming product service
+requirements
+action on a (3.6.9) (3.7.6) or (3.7.7) to make it conform to the
+(3.6.4)
+N3.o1t2e .19 to entry: Rework can affect or change parts of the nonconforming product or service.
+repair
+nonconforming product service
+action on a (3.6.9) (3.7.6) or (3.7.7) to make it acceptable for the intended
+use
+requirements concession
+Note 1 to entry: A successful repair of a nonconforming product or service does not necessarily make the
+product or service conform to the (3.6.4). It can be that in conjunction with a repair a
+(3.12.5) is required.
+Note 2 to entry: Repair includes remedial action taken on a previously conforming product or service to restore it
+for use, for example as part of maintenance.
+N3.o1t2e .31 0to entry: Repair can affect or change parts of the nonconforming product or service.
+scrap
+nonconforming product service
+action on a (3.6.9) (3.7.6) or (3.7.7) to preclude its originally intended use
+EXAMPLE Recycling, destruction.
+Note 1 to entry: In a nonconforming service situation, use is precluded by discontinuing the service.
+
+### 3.13 Terms related to audit
+
+3.13.1
+audit
+process objective evidence
+audit criteria
+systematic, independent and documented (3.4.1) for obtaining (3.8.3) and
+evaluating it objectively to determine the extent to which the determina t(i3on.13.7) are fulfillecdonformity
+object procedure
+Note 1 to entry: The fundamental elements of an audit include the (3.11.1) of the
+(3.6.11) of an (3.6.1) according to a (3.4.5) carried out by personnel not being responsible for
+the object audited.
+combined audit joint audit
+Note 2 to entry: An audit can be an internal audit (first party), or an external audit (second party or third party),
+and it can be a (3.13.2) or a (3.13.3).
+organization management review
+Note 3 to entry: Internal audits, sometimes called first-party audits, are conducted by, or on behalf of, the
+(3.2.1) itself for (3.3.3) (3.11.2) and other internal purposes, and can form the
+basis for an organization’s declaration of conformity. Independence can be demonstrated by the freedom from
+responsibility for the activity being audited.
+customers
+Note 4 to entry: External audits include those generally called second and third-party audits. Second party audits
+are conducted by parties having an interest in the organization, such as (3.2.4), or by other persons
+on their behalf. Third-party audits are conducted by external, independent auditing organizations such as those
+providing certification/registration of conformity or governmental agencies.
+Note 5 to entry: This constitutes one of the common terms and core definitions for ISO management system
+standards given in Annex SL of the Consolidated ISO Supplement to the ISO/IEC Directives, Part 1. The original
+definition and Notes to entry have been modified to remove effect of circularity between audit criteria and audit
+evidence term entries, and Notes 3 and 4 to entry have been added.
+30 --``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:06:05 MDT © ISO 2015 – All rights reserved
+ISO 9000:2015(E)
+3.13.2
+combined audit
+audit auditee management systems
+(3.13.1) carried out together at a single (3.13.12) on two or more (3.5.3)
+Note 1 to entryo:r Tghaen ipzaartitosn of a management system that can be involved in a combined audit can be identified by
+the relevant management system standards, product standards, service standards or process standards being
+a3p.1p3lie.3d by the (3.2.1).
+joint audit
+audit auditee organizations
+3.13. 4(3.13.1) carried out at a single (3.13.12) by two or more auditing (3.2.1)
+audit programme
+audits
+set of one or more (3.13.1) planned for a specific time frame and directed towards a specific purpose
+3[S.1O3U.R5CE: ISO 19011:2011, 3.13, modified]
+audit scope
+audit
+extent and boundaries of an (3.13.1)
+processes
+Note 1 to entry: The audit scope generally includes a description of the physical locations, organizational units,
+activities and (3.4.1).
+[3S.1O3U.R6CE: ISO 19011:2011, 3.14, modified — Note to entry has been modified]
+audit plan
+audit
+description of the activities and arrangements for an (3.13.1)
+[3S.1O3U.R7CE: ISO 19011:2011, 3.15]
+audit criteria
+policies procedures requirements
+objective evidence
+set of (3.5.8), (3.4.5) or (3.6.4) used as a reference against which
+(3.8.3) is compared
+[SOURCE: ISO 19011:2011, 3.2, modified — The term “audit evidence” has been replaced by
+“3o.1b3je.8ctive evidence”]
+audit evidence
+audit criteria
+records, statements of fact or other information, which are relevant to the (3.13.7)
+and verifiable
+[3S.1O3U.R9CE: ISO 19011:2011, 3.3, modified — Note to entry has been deleted]
+audit findings
+audit evidence audit criteria
+results of the evaluation of the collecctoendfo rmity (3n.1on3c.8on) faogrmaiintyst (3.13.7)
+Note 1 to entry: Audit findings indicate (3.6.11) or (3.6im.9)p.rovement
+Note 2 to entry: Audit findings can lead to the identification of opportunities for (3.3.1) or recording
+good practices. audit criteria statutory requirements
+regulatory requirements
+Note 3 to entry: In English, if the (3.13.7) are selected from (3.6.6) or
+(3.6.7), the audit finding can be called compliance or non-compliance.
+[SOURCE: ISO 19011:2011, 3.4, modified — Note 3 to entry has been modified]
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith5ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:06:05 MDT
+ISO 9000:2015(E)
+3.13.10
+audit conclusion
+audit audit findings
+outcome of an (3.13.1), after consideration of the audit objectives and all (3.13.9)
+[3S.1O3U.R1C1E: ISO 19011:2011, 3.5]
+audit client
+organization audit
+(3.2.1) or person requesting an (3.13.1)
+[3S.1O3U.R1C2E: ISO 19011:2011, 3.6, modified — Note to entry has been deleted]
+auditee
+organization
+(3.2.1) being audited
+[3S.1O3U.R1C3E: ISO 19011:2011, 3.7]
+guide
+auditee audit team
+<audit> person appointed by the (3.13.12) to assist the (3.13.14)
+[3S.1O3U.R14CE: ISO 19011:2011, 3.12]
+audit team
+audit technical experts
+one or more personasu cdoitnodructing an (3.13.1), supported if needed by (3.13.16)
+Note 1 to entry: One (3.13.15) of the audit team is appointed as the audit team leader.
+Note 2 to entry: The audit team can include auditors-in-training.
+[3S.1O3U.R1C5E: ISO 19011:2011, 3.9, modified]
+auditor
+audit
+person who conducts an (3.13.1)
+[3S.1O3U.R16CE: ISO 19011:2011, 3.8]
+technical expert
+audit team
+<audit> person who provides specific knowledge or experotrigsean tioz atthioen (p3r.o1c3e.s1s4)
+Note 1 to entry: Specific knowledge or expertise relates to the (3.2.1), the (3.4.1) or activity
+to be audited, or language or culture. auditor audit team
+Note 2 to entry: A technical expert does not act as an (3.13.15) in the (3.13.14).
+3[S.1O3U.R17CE: ISO 19011:2011, 3.10, modified — Note 1 to entry has been modified]
+observer
+audit team auditor
+<audit> person who accompanies the a u(3di.1te3e.14) but does not act as an intere s(t3ed.1 p3a.1rt5y)
+audit
+Note 1 to entry: An observer can be a member of the (3.13.12), a regulator or other (3.2.3)
+who witnesses the (3.13.1).
+[SOURCE: ISO 19011:2011, 3.11, modified — The verb “audit” has been removed from the definition;
+Note to entry has been modified]
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:06:05 MDT © ISO 2015 – All rights reserved
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 9000:2015(E)
+Annex A
+Concept relationships (ainndfo trhmeaitri vger)a phical representation
+A.1 General
+In terminology work, the relationships between concepts are based on the hierarchical formation of the
+characteristics of a species so that the most economical description of a concept is formed by naming its
+species and describing the characteristics that distinguish it from its parent or sibling concepts.
+There are three primary forms of concept relationships indicated in this annex: generic (see Clause A.2),
+partitive (see Clause A.3) and associative (see Clause A.4).
+A.2 Generic relation
+Subordinate concepts within the hierarchy inherit all the characteristics of the superordinate concept
+and contain descriptions of these characteristics which distinguish them from the superordinate (parent)
+and coordinate (sibling) concepts, e.g. the relation of spring, summer, autumn and winter to season.
+Generic relations are depicted by a fan or tree diagram without arrows (see Figure A.1).
+Example adapted from ISO 704:2009, (5.5.2.2.1)
+Figure A.1 — Graphical representation of a generic relation
+A.3 Partitive relation
+Subordinate concepts within the hierarchy form constituent parts of the superordinate concept, e.g.
+spring, summer, autumn and winter can be defined as parts of the concept year. In comparison, it is
+inappropriate to define sunny weather (one possible characteristic of summer) as part of a year.
+Partitive relations are depicted by a rake without arrows (see Figure A.2).
+Example adapted from ISO 704:2009, (5.5.2.3.1)
+Figure A.2 — Graphical representation of a partitive relation
+A.4 Associative relation
+Associative relations cannot provide the economies in description that are present in generic and
+partitive relations but are helpful in identifying the nature of the relationship between one concept and
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith5ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:06:05 MDT
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 9000:2015(E)
+another within a concept system, e.g. cause and effect, activity and location, activity and result, tool and
+function, material and product.
+Associative relations are depicted by a line with arrowheads at each end (see Figure A.3).
+Example adapted from ISO 704:2009, (5.6.2)
+Figure A.3 — Graphical representation of an associative relation
+A.5 Concept diagrams
+Figures A.4 to A.16 show the concept diagrams on which the thematic groupings of Clause 3 are based.
+Since the definitions of the terms are repeated without any related notes, it is recommended to refer to
+Clause 3 to consult any such notes.
+Figure A.4 — 3.1 Concepts of the class “person or people” and related concepts
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:06:05 MDT © ISO 2015 – All rights reserved
+ISO 9000:2015(E)
+Figure A.5 — 3.2 Concepts of the class “organization” and related concepts
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith5ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:06:05 MDT
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 9000:2015(E)
+Figure A.6 — 3.3 Concepts of the class “activity” and related concepts
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:06:05 MDT © ISO 2015 – All rights reserved
+ISO 9000:2015(E)
+Figure A.7 — 3.4 Concepts of the class “process” and related concepts
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith5ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:06:05 MDT
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 9000:2015(E)
+Figure A.8 — 3.5 Concepts of the class “system” and related concepts
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:06:05 MDT © ISO 2015 – All rights reserved
+ISO 9000:2015(E)
+Figure A.9 — 3.6 Concepts of the class “requirement” and related concepts
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith5ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:06:05 MDT
+ISO 9000:2015(E)
+Figure A.10 — 3.7 Concepts of the class “result” and related concepts
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:06:05 MDT © ISO 2015 – All rights reserved
+ISO 9000:2015(E)
+Figure A.11 — 3.8 Concepts of the class “data, information and document” and related concepts
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith5ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:06:05 MDT
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 9000:2015(E)
+Figure A.12 — 3.9 Concepts of the class “customer” and related concepts
+42 --``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:06:05 MDT © ISO 2015 – All rights reserved
+ISO 9000:2015(E)
+Figure A.13 — 3.10 Concepts of the class “characteristic” and related concepts
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith5ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:06:05 MDT
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 9000:2015(E)
+Figure A.14 — 3.11 Concepts of the class “determination” and related concepts
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:06:05 MDT © ISO 2015 – All rights reserved
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 9000:2015(E)
+Figure A.15 — 3.12 Concepts of the class “action” and related concepts
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith5ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:06:05 MDT
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 9000:2015(E)
+Figure A.16 — 3.13 Concepts of the class “audit” and related concepts
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:06:05 MDT © ISO 2015 – All rights reserved
+ISO 9000:2015(E)
+Bibliography
+Terminology work — Principles and methods
+[1] ISO 704:2009, Terminology work — Vocabulary — Part 1: Theory and application
+[2] ISO 1087-1:2S0t0a0ti,s tics — Vocabulary and symbols — Part 2: Applied statistics
+[3] ISO 3534-2Q,u ality management systems — Requirements
+[4] ISO 9001, Managing for the sustained success of an organization — A quality management approach
+[5] ISO 9004, Quality management — Customer satisfaction — Guidelines for codes of conduct
+for organizations
+[6] ISO 10001:2007,
+Quality management — Customer satisfaction — Guidelines for complaints
+handling in organizations
+[7] ISO 10002:2014,
+Quality management — Customer satisfaction — Guidelines for dispute resolution
+external to organizations
+[8] ISO 10003:2007,
+Quality management — Customer satisfaction — Guidelines for monitoring
+and measuring
+[9] ISO 10004:2012,
+Quality management systems — Guidelines for quality plans
+[10] ISO 10005:2005, Quality management systems — Guidelines for quality management in projects
+[11] ISO 10006:2003, Quality management systems — Guidelines for configuration management
+[12] ISO 10007:2Q0u0a3l,i ty management — Customer satisfaction — Guidelines for business-to-consumer
+electronic commerce transactions
+[13] ISO 10008,
+Measurement management systems — Requirements for measurement processes
+and measuring equipment
+[14] ISO 10012:2003,
+Guidelines for quality management system documentation
+[15] ISO/TR 100Q1u3a, lity management — Guidelines for realizing financial and economic benefits
+[16] ISO 10014, Quality management — Guidelines for training
+[17] ISO 10015, Guidance on statistical techniques for ISO 9001:2000
+[18] ISO/TR 10017, Quality management — Guidelines on people involvement and competence
+[19] ISO 10018:2012, Guidelines for the selection of quality management system consultants and use of
+their services
+[20] ISO 10019:2005,
+Terminological entries in standards — Part 1: General requirements and examples
+of presentation
+[21] ISO 10241-1,
+Terminological entries in standards — Part 2: Adoption of standardized
+terminological entries
+[22] ISO 10241-2,
+Environmental management systems — Requirements with guidance for use
+[23] ISO 14001, Quality management systems — Particular requirements for the application of
+ISO 9001:2008 for automotive production and relevant service part organizations
+[24] ISO/TS 16949,
+Conformity assessment — Vocabulary and general principles
+[25] ISO/IEC 17000,
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith5ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:06:05 MDT
+ISO 9000:2015(E)
+Guidelines for auditing management systems
+[26] ISO 19011:2011I,n formation technology — Security techniques — Information security management
+systems — Requirements
+[27] ISO/IEC 27001,
+Risk management — Principles and guidelines
+[28] ISO 31000, Energy management systems — Requirements with guidance for use
+[29] ISO 50001, International electrotechnical vocabulary — Part 192: Dependability
+[30] IEC 60050-192, Standardization and related activities — General vocabulary
+[31] ISO/IEC GuideR 2is, k management — Vocabulary
+[32] ISO Guide 73, International vocabulary of metrology — Basic and general concepts and
+associated terms (VIM)
+[33] ISO/IEC Guide 99,
+1)
+[34] Quality management principles
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+14)8 Available from website: http://www.iso.org
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:06:05 MDT © ISO 2015 – All rights reserved
+ISO 9000:2015(E)
+Alphabetical index of terms
+activity 3.3.11 context of the organization 3.2.2
+association 3.2.8 continual improvement 3.3.2
+audit 3.13.1 contract 3.4.7
+audit client 3.13.11 correction 3.12.3
+audit conclusion 3.13.10 corrective action 3.12.2
+audit criteria 3.13.7 customer 3.2.4
+auditee 3.13.12 customer satisfaction 3.9.2
+audit evidence 3.13.8 customer satisfaction code of conduct 3.9.5
+audit findings 3.13.9 customer service 3.9.4
+auditor 3.13.15 data 3.8.1
+audit plan 3.13.6 defect 3.6.10
+audit programme 3.13.4 dependability 3.6.14
+audit scope 3.13.5 design and development 3.4.8
+audit team 3.13.14 determination 3.11.1
+capability 3.6.12 deviation permit 3.12.6
+change control 3.3.10 dispositioning authority (admitted term for
+configuration authority) 3.1.5
+characteristic 3.10.1
+dispute 3.9.6
+combined audit 3.13.2
+dispute resolution process provider (admitted
+competence 3.10.4 term for DRP-provider) 3.2.7
+competence acquisition 3.4.4 dispute resolver 3.1.6
+complaint 3.9.3 document 3.8.5
+concession 3.12.5 documented information 3.8.6
+configuration 3.10.6 DRP-provider 3.2.7
+configuration authority 3.1.5 effectiveness 3.7.11
+configuration baseline 3.10.7 efficiency 3.7.10
+configuration control board (admitted term for engagement 3.1.4
+configuration authority) 3.1.5
+entity (admitted term for object) 3.6.1
+configuration object 3.3.13
+external provider 3.2.6
+configuration management 3.3.9
+external supplier (admitted term for external
+configuration status accounting 3.8.14 provider) 3.2.6
+conformity 3.6.11 feedback 3.9.1
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith5ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:06:05 MDT
+ISO 9000:2015(E)
+grade 3.6.3 policy 3.5.8
+guide 3.13.13 preventive action 3.12.1
+human factor 3.10.3 procedure 3.4.5
+improvement 3.3.1 process 3.4.1
+information 3.8.2 product 3.7.6
+information system 3.8.4 product configuration information 3.6.8
+infrastructure 3.5.2 progress evaluation 3.11.9
+innovation 3.6.15 project 3.4.2
+inspection 3.11.7 project management 3.3.12
+interested party 3.2.3 project management plan 3.8.11
+involvement 3.1.3 provider 3.2.5
+item (admitted term for object) 3.6.1 quality 3.6.2
+joint audit 3.13.3 quality assurance 3.3.6
+management 3.3.3 quality characteristic 3.10.2
+management system 3.5.3 quality control 3.3.7
+measurement 3.11.4 quality improvement 3.3.8
+measurement management system 3.5.7 quality management 3.3.4
+measurement process 3.11.5 quality management system 3.5.4
+measuring equipment 3.11.6 quality management system consultant 3.1.2
+metrological characteristic 3.10.5 quality management system realization 3.4.3
+metrological confirmation 3.5.6 quality manual 3.8.8
+metrological function 3.2.9 quality objective 3.7.2
+mission 3.5.11 quality plan 3.8.9
+monitoring 3.11.3 quality planning 3.3.5
+nonconformity 3.6.9 quality policy 3.5.9
+object 3.6.1 quality requirement 3.6.5
+objective 3.7.1 record 3.8.10
+objective evidence 3.8.3 regrade 3.12.4
+observer 3.13.17 regulatory requirement 3.6.7
+organization 3.2.1 release 3.12.7
+output 3.7.5 repair 3.12.9
+outsource (verb) 3.4.6 requirement 3.6.4
+performance 3.7.8 review 3.11.2
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:06:05 MDT © ISO 2015 – All rights reserved
+ISO 9000:2015(E)
+rework 3.12.8 supplier (admitted term for provider) 3.2.5
+risk 3.7.9 sustained success 3.7.4
+scrap 3.12.10 system 3.5.1
+service 3.7.7 technical expert 3.13.16
+specific case 3.8.15 test 3.11.8
+specification 3.8.7 top management 3.1.1
+stakeholder (admitted term for interested party) traceability 3.6.13
+3.2.3
+validation 3.8.13
+statutory requirement 3.6.6
+verification 3.8.12
+strategy 3.5.12
+vision 3.5.10
+success 3.7.3
+work environment 3.5.5
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith5ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:06:05 MDT
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 9000:2015(E)
+ICS 03.120.10; 01.040.03
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Price group A
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reprodu©ctio nI oSr One t2wo0rk1ing5 p e–rm Aittelld wriithgohutt lisce rnsees freomr vIHeSd Not for Resale, 10/14/2019 19:06:05 MDT
