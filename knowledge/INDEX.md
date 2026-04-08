@@ -898,6 +898,12 @@ Terms: quality culture, root cause analysis (RCA), human error, skill-based erro
 | Biological endpoints Table A.1, cytotoxicity sensitization genotoxicity hemocompatibility pyrogenicity / 生物端點表格、細胞毒性致敏性基因毒性血液相容性致熱原性 | ISO-10993-1 |
 | Material-mediated pyrogenicity, non-endotoxin pyrogen, material characterization, gap analysis / 材料致熱原性、非內毒素致熱原、材料表徵、缺口分析 | ISO-10993-1 |
 | Container closure biocompatibility, rubber stopper vial syringe bag E&L biological evaluation / 容器密封系統生物相容性、橡膠塞小瓶注射器袋可萃取物生物評估 | ISO-10993-1 |
+| Risk management application guidance, ISO 14971 how-to, risk management file / ISO 14971應用指引、風險管理文件實作 | ISO-TR-24971 |
+| FMEA failure mode effects analysis, FTA fault tree, HAZOP risk analysis techniques / 失效模式效應分析、故障樹分析、危害可操作性研究 | ISO-TR-24971 |
+| Hazard hazardous situation harm chain, risk estimation probability severity matrix / 危害危險情境損害鏈、風險估計機率嚴重性矩陣 | ISO-TR-24971 |
+| ALARP as low as reasonably practicable, risk acceptability criteria three-zone model / 合理可行最低風險、風險可接受準則三區模型 | ISO-TR-24971 |
+| Legacy device retrospective risk management, cybersecurity security risk CIA triad / 舊型器材回溯風險管理、資安風險CIA三角 | ISO-TR-24971 |
+| IVD in vitro diagnostic risk management, false positive false negative analytical performance / 體外診斷器材風險管理、偽陽性偽陰性分析性能 | ISO-TR-24971 |
 | HVAC for sterile manufacturing, air change rate, HEPA filter / 無菌製造HVAC、換氣次數、HEPA過濾器 | ISPE-Vol3 + ISPE-HVAC |
 | Pressure cascade, differential pressure, airlock design / 壓力梯度、壓差、氣閘設計 | ISPE-Vol3 + ISPE-HVAC |
 | oRABS vs cRABS vs isolator, barrier technology comparison / 開放式vs封閉式RABS vs隔離器 | ISPE-Vol3 + PtC-12 |
@@ -1428,6 +1434,40 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 - Section 2: General Principles (Section 4), Categorization (Section 5), Biological Evaluation Process (Section 6), Interpretation & Risk Assessment (Section 7)
 - Section 3A: Annex A — Table A.1 biological endpoints by device category/duration matrix; A.2 rationale for 2018 additions (material-mediated pyrogenicity, acute/subacute/subchronic/chronic toxicity, genotoxicity, carcinogenicity, reproductive toxicity, degradation, implantation effects, hemocompatibility)
 - Section 3B: Annex B — complete biological evaluation within risk management (B.1–B.8: BEP, risk analysis, risk estimation, risk evaluation, risk control, BER, post-production); Annex C — literature review methodology; Bibliography with ICH Q3A/B/C/D cross-references
+
+---
+
+## ISO/ISO-TR-24971-Complete.md
+**Report:** ISO/TR 24971:2020 — Medical Devices — Guidance on the Application of ISO 14971
+**Pages:** p1–p94 | **Sections:** 7
+
+**Covers questions about:**
+- Scope and relationship to ISO 14971:2019: this TR is the "how-to" companion; ISO 14971 = normative requirements; ISO TR 24971 = informative guidance on implementation
+- General risk management system requirements (Section 4): risk policy, risk management plan, competent personnel, risk management file as a logical construct — not a single document
+- Risk analysis — intended use and foreseeable misuse (5.1), characteristics related to safety (5.2), hazard and hazardous situation identification (5.3), risk estimation using probability × severity matrix including P1×P2 decomposition (5.4)
+- Risk evaluation (Section 6): comparing estimated risk to pre-defined acceptability criteria; two-outcome framing; criteria must be set before evaluation
+- Risk control hierarchy (Section 7): inherent safe design → protective measures → information for safety (last resort); ALARP; implementation verification vs. effectiveness verification
+- Overall residual risk evaluation (Section 8): sum of individual residual risks may be unacceptable even if each is individually acceptable
+- Risk management review (Section 9) and post-production activities (Section 10): PMS, PMCF, complaint data, APR/PQR as inputs
+- Annex A: structured hazard identification checklist (energy, biological, environmental, software, human factors) — 37 questions organized by category
+- Annex B: six risk analysis techniques — PHA, FTA, ETA, FMEA (S×O×D), HAZOP (guide-word), HACCP — when to use each and comparison
+- Annex C: risk acceptability policy chain (policy → criteria → estimation → evaluation); three-zone model (unacceptable/ALARP/broadly acceptable); ALARP practicability assessment
+- Annex D: information for safety as last-resort risk control; residual risk disclosure requirements; instructive vs. descriptive labeling distinction
+- Annex E: role of international standards — presumption of conformity, harmonized standards, state of the art, divergence justification
+- Annex F: security risks — CIA triad (confidentiality/integrity/availability) mapped to ISO 14971 hazard framework; cybersecurity as patient safety issue
+- Annex G: legacy devices without ISO 14971 history — retrospective risk management file; seven mandatory plan elements
+- Annex H: IVD-specific guidance — indirect harm pathway, dual-user framework (analytical vs. clinical), false positive/negative asymmetry, pre/analytical/post-analytical phases, performance characteristics as safety characteristics
+
+**Key terms:** risk management file, risk management plan, risk policy, risk acceptability criteria, hazard, hazardous situation, harm, risk estimation, risk evaluation, risk control, residual risk, overall residual risk, ALARP (as low as reasonably practicable), inherent safe design, information for safety, FMEA (failure mode and effects analysis), FTA (fault tree analysis), HAZOP, HACCP, PHA, intended use, reasonably foreseeable misuse, cybersecurity, legacy device, IVD (in vitro diagnostic), false positive, false negative, sensitivity, specificity, P1×P2, post-market surveillance (PMS), post-market clinical follow-up (PMCF)
+
+**Sections:**
+- Section 1: Scope, Normative References, Terms & General Requirements — risk management system 4-element structure, Risk Management File as logical construct, competent personnel Table 1
+- Section 2: Risk Analysis (Section 5) — intended use/misuse, safety characteristics, hazard identification, risk estimation with probability tables and 3×3/5×5 matrices
+- Section 3: Risk Evaluation (Sec 6) + Risk Control (Sec 7) + Overall Residual Risk (Sec 8) + Review (Sec 9) + Post-Production (Sec 10)
+- Section 4A: Annex A (37-question hazard checklist) + Annex B (6 risk analysis techniques: PHA, FTA, ETA, FMEA, HAZOP, HACCP)
+- Section 4B: Annex C (risk acceptability policy chain, three-zone model) + Annex D (safety information hierarchy) + Annex E (international standards role, presumption of conformity)
+- Section 4C: Annex F (security risks, CIA triad) + Annex G (legacy devices) + Annex H Part 1 (IVD: indirect harm, dual-user framework, performance characteristics)
+- Section 4D: Annex H Part 2 (IVD: P1×P2 for IVD, risk control tiers, benefit-risk, post-production) + Bibliography (40 references including ISO 14971, ISO 13485, IEC 62443, ISO 10993-1)
 
 ---
 

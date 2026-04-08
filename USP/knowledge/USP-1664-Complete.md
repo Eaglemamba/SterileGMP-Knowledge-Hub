@@ -1,4 +1,4 @@
-# USP General Chapter 〰1664〱: Assessment of Drug Product Leachables Associated with Pharmaceutical Packaging/Delivery Systems
+# USP General Chapter ⟨1664⟩: Assessment of Drug Product Leachables Associated with Pharmaceutical Packaging/Delivery Systems
 
 ## Section 0: Complete Chapter (all)
 

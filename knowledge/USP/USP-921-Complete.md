@@ -1,4 +1,4 @@
-# USP General Chapter 〰921〱: Water Determination
+# USP General Chapter ⟨921⟩: Water Determination
 
 USP General Chapter 〈921〉 WATER DETERMINATION
 Status: Currently Official on 13-Feb-2025 | Official Date: Official as of 01-May-2022

@@ -1,4 +1,4 @@
-# USP General Chapter 〰645〱: Water Conductivity
+# USP General Chapter ⟨645⟩: Water Conductivity
 
 ## Section 0: Complete Chapter (all)
 

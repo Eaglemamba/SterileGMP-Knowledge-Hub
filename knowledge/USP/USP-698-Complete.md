@@ -1,4 +1,4 @@
-# USP General Chapter 〰698〱: Deliverable Volume
+# USP General Chapter ⟨698⟩: Deliverable Volume
 
 USP General Chapter 〈698〉 DELIVERABLE VOLUME
 Status: Currently Official on 12-Feb-2025 | Official Date: Official as of 01-Dec-2020

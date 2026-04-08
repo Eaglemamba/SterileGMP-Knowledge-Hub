@@ -2,7 +2,7 @@
 
 This document summarizes the current coverage status, gap analysis, and expansion roadmap for building a comprehensive sterile pharmaceutical manufacturing knowledge hub suitable for COO-level operational decision-making.
 
-Last updated: 2026-04-09 — 146 documents complete (PDA 41, USP 76, ISPE 14, FDA 5, ICH 3, PIC/S 1, ISO 6); ISO 10993-1 complete; ISO 14971 (scanned PDF, needs OCR/text version), ISO TR 24971 next
+Last updated: 2026-04-09 — 147 documents complete (PDA 41, USP 76, ISPE 14, FDA 5, ICH 3, PIC/S 1, ISO 7); ISO TR 24971 complete; ISO 14971 blocked (scanned PDF); CSS bullet-point fix applied to all documents via template.css re-merge
 
 ---
 
@@ -36,7 +36,7 @@ Layer 3: Site-Specific Documents             ~/Amaran-Site-Knowledge/
 
 | Component | Status | Count |
 |-----------|--------|-------|
-| Layer 1 — Regulatory Reference | ✅ Complete | 146 documents |
+| Layer 1 — Regulatory Reference | ✅ Complete | 147 documents |
 | Expert Knowledge Base | ⬜ Not started | 9 files planned |
 | Layer 2 — Operational Frameworks | ⬜ Not started | ~27 files planned |
 | Layer 2 — Skills System | ⬜ Not started | 26 slash commands planned |
@@ -65,7 +65,7 @@ Layer 3: Site-Specific Documents             ~/Amaran-Site-Knowledge/
 | **FDA** | 5 | Aseptic Processing, Process Validation, Process Inspection, Combination Products CGMP, HF for Combo Products | ✅ Complete |
 | **ICH** | 3 | Q8(R2), Q9(R1), Q10 | ✅ Complete |
 | **PIC/S** | 1 | Annex 1 (2022) | ✅ Complete |
-| **ISO** | 6 | ISO 11040 (Prefilled Syringes Parts 1–8), ISO 13408 (Aseptic Processing Parts 1–7), ISO 14644 (Cleanrooms Parts 1/5/7), ISO 11608-1 (NIS), ISO 13485 (Medical Device QMS), ISO 10993-1 (Biological Evaluation) — 14971 (scanned PDF blocked), TR 24971, 17665 next | 🔄 In progress |
+| **ISO** | 7 | ISO 11040 (Prefilled Syringes Parts 1–8), ISO 13408 (Aseptic Processing Parts 1–7), ISO 14644 (Cleanrooms Parts 1/5/7), ISO 11608-1 (NIS), ISO 13485 (Medical Device QMS), ISO 10993-1 (Biological Evaluation), ISO TR 24971 (Risk Management Guidance) — ISO 14971 blocked (scanned PDF), ISO 15378, ISO 9001, ISO 2859-1 next | 🔄 In progress |
 | **IEC** | 0 | 62366-1 (usability engineering) | ⬜ Not started |
 | **EU GMP** | 0 | Annex 15, Annex 2, Annex 20 | ⬜ Future (Phase 6) |
 | **Ph. Eur.** | 0 | 5.1.1, 2.6.1, 2.6.14, 2.9.19/20 | ⬜ Future (Phase 6) |

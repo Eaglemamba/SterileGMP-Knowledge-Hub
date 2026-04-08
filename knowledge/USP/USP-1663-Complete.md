@@ -1,4 +1,4 @@
-# USP General Chapter 〰1663〱: Assessment of Extractables Associated with Pharmaceutical Packaging/Delivery Systems
+# USP General Chapter ⟨1663⟩: Assessment of Extractables Associated with Pharmaceutical Packaging/Delivery Systems
 
 USP General Chapter <1663>
 ASSESSMENT OF EXTRACTABLES ASSOCIATED WITH PHARMACEUTICAL PACKAGING/DELIVERY SYSTEMS
