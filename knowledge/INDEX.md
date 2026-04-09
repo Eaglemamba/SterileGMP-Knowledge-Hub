@@ -598,6 +598,13 @@ Terms: quality culture, root cause analysis (RCA), human error, skill-based erro
 | Glass delamination flakes lamellae pharmaceutical vial risk factors citrate phosphate / 玻璃脫層薄片脫落注射劑風險因素磷酸鹽檸檬酸鹽緩衝液 | PhEur-321 + USP-1660 |
 | Spectral transmission coloured glass containers UV 290-450 nm parenteral amber brown / 有色玻璃光譜透射率290-450 nm注射劑棕色琥珀色玻璃限度 | PhEur-321 |
 | Sterile single-use plastic syringes definition materials PP PE polypropylene polyethylene syringe barrel piston / 無菌一次性塑膠注射器定義材料聚丙烯聚乙烯針筒活塞 | PhEur-338 |
+| Methods preparation sterile products sterilisation SAL sterility assurance level terminal aseptic / 無菌製品製備方法滅菌SAL無菌保證水準終端無菌無菌加工 | PhEur-511 |
+| Steam sterilisation reference cycle 121 degrees 15 minutes F0 concept autoclave saturated steam / 蒸汽滅菌參考周期121度15分鐘F0概念滅菌釜飽和蒸汽 | PhEur-511 + PhEur-2614 |
+| Dry heat sterilisation 160 degrees 2 hours depyrogenation 220 degrees 3 log endotoxin reduction / 乾熱滅菌160度2小時去熱原220度3對數內毒素下降 | PhEur-511 |
+| Ionising radiation sterilisation gamma cobalt-60 electron beam X-ray 25 kGy absorbed dose / 游離輻射滅菌伽馬射線鈷-60電子束X射線25 kGy吸收劑量 | PhEur-511 |
+| Gas sterilisation vapour phase ethylene oxide EtO alkylating hydrogen peroxide peracetic acid / 氣體滅菌蒸汽相環氧乙烷烷化劑過氧化氫過氧乙酸 | PhEur-511 |
+| Membrane filtration 0.22 micron sterilisation removal mechanism integrity test bubble point / 膜過濾0.22微米滅菌去除機制完整性測試起泡點 | PhEur-511 + ISO-13408-2 |
+| Aseptic assembly media fill process simulation test critical surfaces hold time / 無菌組裝培養基灌裝過程模擬測試關鍵表面保持時間 | PhEur-511 + PICS-Annex1 |
 | Ethylene oxide EtO residual testing GC-MS head-space syringe plastic packaging 10 ppm limit / 環氧乙烷EtO殘留測試頭空間氣相色譜質譜塑膠注射器10 ppm限度 | PhEur-338 + ISO-11135 |
 | Silicone oil lubricant syringe barrel extractable 0.25 mg per cm2 methylene chloride / 矽油潤滑劑注射器桶壁可萃取量0.25 mg每平方公分二氯甲烷 | PhEur-338 + USP-381 |
 | Bacterial endotoxins syringe BET LAL 0.5 IU per mL container closure integrity / 細菌內毒素注射器LAL 0.5 IU毫升限度容器密封完整性 | PhEur-338 + USP-661 |
@@ -2473,3 +2480,24 @@ Key terms: leachables, analytical evaluation threshold (AET), leachables specifi
 
 **Sections:**
 - Section 1 (p503–p504): Definition & Materials (barrel/piston/needle/packaging, PP/PE, silicone oil, ink migration), Solution S Preparation (37°C×24 h, 50 mL, borosilicate glass), Appearance/Acidity/Absorbance tests, Ethylene Oxide by GC-MS (full method with reference solutions a–j, column specs, MS parameters, system suitability, ≤10 ppm limit), Silicone Oil extraction (DCM gravimetric + IR, ≤0.25 mg/cm²), Reducing Substances (KMnO₄ back-titration, ≤3.0 mL), Transparency (opalescent suspension visual test), Sterility 2.6.1 (3 scenarios), Bacterial Endotoxins 2.6.14 (≤0.5 IU/mL, 40 mL BET), Pyrogens 2.6.8 (rabbit test), Labelling (EtO statement)
+
+---
+
+## PHEUR/PhEur-511-Complete.md
+**Report:** European Pharmacopoeia 11.0 — Chapter 5.1.1: Methods of Preparation of Sterile Products
+**Pages:** p649–p652 (4 pages) | **Sections:** 1 | **Monograph:** 07/2017:50101
+
+**Covers questions about:**
+- Sterility definition (SAL ≤10⁻⁶) and why it cannot be demonstrated per individual item (exponential kill kinetics)
+- Sterilisation preference hierarchy: terminal sterilisation (steam/dry heat/radiation) preferred → parametric release → aseptic assembly when terminal not possible
+- Steam sterilisation: principle (condensation + hydrating effect), reference cycle (121°C/15 min), minimum temperature (110°C), minimum F₀ (≥8 min), F₀ concept and F_bio = D₁₂₁ × (log₁₀ N₀ − log₁₀ N), air removal (gravity vs vacuum-pulse), closed-container considerations, routine monitoring
+- Dry heat sterilisation: reference conditions (160°C/≥2 h), depyrogenation at >220°C (3 log₁₀ endotoxin reduction, no BI required), oven vs tunnel equipment, temperature mapping validation
+- Ionising radiation sterilisation: gamma (Co-60), electron beam, X-rays, low-energy electrons; reference absorbed dose 25 kGy; dosimetry traceable to national standards
+- Gas sterilisation (vapour phase): alkylating agents (EtO — cytotoxic/carcinogenic/mutagenic) vs oxidising agents (H₂O₂, PAA); 3 phases (conditioning/sterilisation/aeration); critical parameters (concentration, temperature, humidity, time, load configuration)
+- Membrane filtration: removal mechanism (sieving + surface interaction, NOT inactivation); nominal pore size ≤0.22 µm; integrity tests (diffusive flow, bubble point, water intrusion); sterilising filter = closest to filling point; 7 routine monitoring parameters
+- Aseptic assembly: maintaining sterility of pre-sterilised components; aseptic filling, lyophilisation, blending; critical factors (environment, personnel, critical surfaces, container/closure transfer, hold time); media fill (process simulation) validation
+
+**Key terms:** sterility, sterility assurance level SAL, 10⁻⁶, terminal sterilisation, parametric release, aseptic processing, steam sterilisation, autoclave, 121°C, 15 min, F₀, F-value, D-value, z-value, saturated steam, air removal, vacuum pulse, closed container, dry heat, 160°C, 2 hours, depyrogenation, 220°C, 3 log reduction, endotoxin, biological indicator BI, ionising radiation, gamma rays, cobalt-60, electron beam, X-rays, 25 kGy, absorbed dose, dosimetry, gas sterilisation, ethylene oxide EtO, alkylating agent, hydrogen peroxide H₂O₂, peracetic acid PAA, VHP, vapour hydrogen peroxide, aeration, membrane filtration, 0.22 µm, sieving, surface interaction, diffusive flow, bubble point, water intrusion, sterilising filter, filling point, aseptic assembly, aseptic filling, lyophilisation, media fill, process simulation, hold time, Ph.Eur. 5.1.1, 5.1.2, 5.1.5, 5.1.7
+
+**Sections:**
+- Section 1 (p649–p652): General Introduction (SAL definition, sterility as CQA, hierarchy of methods, parametric release, bioburden factors), Steam Sterilisation (principle/equipment/cycle/F₀/F_bio/routine control), Dry Heat (160°C/2h, depyrogenation >220°C, 3-log endotoxin), Ionising Radiation (gamma/e-beam/X-ray, 25 kGy, dosimetry), Gas Sterilisation (EtO vs H₂O₂/PAA, 3 phases, critical parameters), Membrane Filtration (removal mechanism, ≤0.22 µm, integrity tests, routine monitoring), Aseptic Assembly (principle, critical factors, media fill, batch sterility testing)
