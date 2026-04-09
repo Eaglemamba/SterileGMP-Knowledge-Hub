@@ -49,7 +49,7 @@ Read the section assignment. Each section has:
 - Left column: complete original English content
 - Right column: Traditional Chinese commentary with educational elements
 - Embed any figures as base64 images
-- Copy the full CSS from `template.css` into each file's `<style>` tag
+- Use `<link rel="stylesheet" href="../../../template.css">` — do NOT paste CSS inline
 
 ### Step 4: Save and Verify
 - Save to `/sections/section-XX-name.html`
@@ -69,9 +69,7 @@ Every section file MUST follow this exact structure:
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PDA Guide - Section X.X: [Title]</title>
-    <style>
-    /* PASTE FULL template.css CONTENT HERE */
-    </style>
+    <link rel="stylesheet" href="../../../template.css">
 </head>
 <body>
 
@@ -272,43 +270,10 @@ Prioritize highlighting:
 
 ## SECTION ASSIGNMENT MAP
 
-Update this checklist as sections are completed.
+Each document's section checklist is stored in its own folder:
+`<SOURCE>/<REPORT_ID>/SECTIONS.md`
 
-```
-[ ] Section 0   - Introduction & Glossary           | p1-p7
-[ ] Section 1   - Design Elements                   | p8-p25
-    [ ] 1.0 - Overview
-    [ ] 1.1 - Product Considerations                 | Figure 1.1-1
-    [ ] 1.2 - Container-Closure Characteristics
-    [ ] 1.3 - Filling Line Speed/Volume
-[ ] Section 2   - Liquid Filling Technologies        | p26-p68
-    [ ] 2.0 - Overview
-    [ ] 2.1 - Peristaltic Pump (PP)                  | Figures 2.1.x
-    [ ] 2.2 - Rotary Piston Pump (RPP)              | Figures 2.2.x
-    [ ] 2.3 - Time Pressure (TP)                     | Figures 2.3.x
-    [ ] 2.4 - Rolling Diaphragm Pump (DP)           | Figures 2.4.x
-[ ] Section 3   - Needle Design                      | p69-p70
-[ ] Section 4   - Functionality                      | p70-p100
-    [ ] 4.0-4.10 subsections
-[ ] Section 5   - Dose Control                       | p101-p114
-[ ] Section 6   - Container-Closure Systems          | p114-p118
-[ ] Section 7   - Closures & Closing System Design   | p118-p133
-[ ] Section 8   - Operational Considerations         | p134-p152
-[ ] Section 9   - Component Introduction             | p152-p161
-[ ] Section 10  - Sterilization & Preparation        | p161-p167
-[ ] Section 11  - Sterile Fluid Pathway              | p167-p181
-[ ] Section 12  - Batch Setup & Discard              | p181-p189
-[ ] Section 13  - Aseptic Process Simulation         | p189-p195
-[ ] Section 14  - Powder Filling Overview            | p196-p198
-[ ] Section 15  - Auger Filling                      | p198-p205
-[ ] Section 16  - Vacuum Filling                     | p205-p210
-[ ] Section 17  - Powder Functionality               | p210-p216
-[ ] Section 18  - Powder Dose Control                | p216-p220
-[ ] Section 19  - Powder Operational                 | p220-p221
-[ ] Section 20  - References                         | p222-p224
-[ ] Section 21  - Case Studies & Vendor Resources    | p225+
-[ ] Section 22  - Appendices
-```
+Create this file when scaffolding a new report. Do not put document-specific section maps here.
 
 ---
 
