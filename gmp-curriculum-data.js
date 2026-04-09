@@ -13,7 +13,7 @@ const departments = [
     nameZh: '品質保證部',
     icon: '🛡️',
     color: '#2563eb',
-    description: 'GMP foundations, quality systems, risk management, validation lifecycle, and regulatory compliance.',
+    description: 'GMP foundations, quality systems, risk management, contamination control strategy, validation lifecycle, and regulatory compliance.',
     tiers: [
       {
         level: 1, label: 'Foundation', labelZh: '基礎必讀',
@@ -30,8 +30,10 @@ const departments = [
         docs: [
           { key: 'ICH-Q8R2',    required: true,  why: 'QbD / Design Space — understanding process design rationale' },
           { key: 'TR44',         required: true,  why: 'Quality Risk Management for Aseptic Processes' },
+          { key: 'TR90',         required: true,  why: 'Contamination Control Strategy — QA owns CCS per Annex 1' },
           { key: 'PICS-Annex20', required: true,  why: 'PIC/S Annex 20 — QRM regulatory perspective' },
           { key: 'ISPE-Vol5',    required: true,  why: 'Commissioning & Qualification — IQ/OQ/PQ lifecycle' },
+          { key: 'TR13',         required: false, why: 'EM Program Fundamentals — QA oversees EM trending & review' },
           { key: 'TR22',         required: false, why: 'Process Simulation / Media Fills — APS oversight' },
           { key: 'ISPE-GAMP5',   required: false, why: 'Computerized System Validation & data integrity' },
         ]
@@ -39,11 +41,10 @@ const departments = [
       {
         level: 3, label: 'Advanced', labelZh: '進階專業',
         docs: [
-          { key: 'TR65',         required: false, why: 'Technology Transfer — QA role in site transfers' },
-          { key: 'TR88',         required: false, why: 'AI/ML in Pharma Manufacturing — emerging QA considerations' },
-          { key: 'PICS-Annex2',  required: false, why: 'ATMPs & Biologics — QA for advanced therapies' },
-          { key: 'TR86',         required: false, why: 'Blockchain in Supply Chain — traceability & integrity' },
           { key: 'FDA-ProcessInspection', required: false, why: 'FDA Process Inspection Guide — preparing for regulatory audits' },
+          { key: 'TR65',         required: false, why: 'Technology Transfer — QA role in site transfers' },
+          { key: 'PICS-Annex2',  required: false, why: 'ATMPs & Biologics — QA for advanced therapies' },
+          { key: 'TR91',         required: false, why: 'Post-Approval Change Management — lifecycle change control' },
         ]
       }
     ]
@@ -54,7 +55,7 @@ const departments = [
     nameZh: '品質控制部',
     icon: '🔬',
     color: '#7c3aed',
-    description: 'Laboratory testing methods, pharmacopoeial chapters, microbiology, endotoxin, particulates, and EM programs.',
+    description: 'Laboratory testing methods, pharmacopoeial chapters, microbiology, endotoxin, particulates, EM programs, water testing, and deviation investigations.',
     tiers: [
       {
         level: 1, label: 'Foundation', labelZh: '基礎必讀',
@@ -63,7 +64,9 @@ const departments = [
           { key: 'USP-85',      required: true,  why: 'Bacterial Endotoxin Test (BET) — LAL/rFC methods' },
           { key: 'USP-788',     required: true,  why: 'Particulate Matter in Injections — sub-visible particles' },
           { key: 'USP-1116',    required: true,  why: 'Microbiological Control of Aseptic Environments' },
+          { key: 'USP-1117',    required: true,  why: 'Microbiology Lab Best Practices — general QC micro lab guide' },
           { key: 'USP-1225',    required: true,  why: 'Validation of Compendial Procedures' },
+          { key: 'TR13',        required: true,  why: 'EM Program Fundamentals — sampling strategy, trending, limits' },
         ]
       },
       {
@@ -73,6 +76,13 @@ const departments = [
           { key: 'USP-62',      required: true,  why: 'Tests for Specified Microorganisms' },
           { key: 'USP-790',     required: true,  why: 'Visible Particulates in Injections' },
           { key: 'USP-1211',    required: true,  why: 'Sterilization and Sterility Assurance' },
+          { key: 'USP-1115',    required: true,  why: 'Bioburden Control — pre-sterilization testing' },
+          { key: 'USP-1085',    required: true,  why: 'Endotoxin Test Guidelines — deeper BET validation guidance' },
+          { key: 'USP-63',      required: false, why: 'Mycoplasma Tests — essential for biologics QC' },
+          { key: 'TR88',        required: false, why: 'Microbial Data Deviation Investigations — OOS/OOT root cause' },
+          { key: 'ISO-2859-1',  required: false, why: 'AQL Sampling — statistical acceptance sampling for inspections' },
+          { key: 'USP-643',     required: false, why: 'Total Organic Carbon — water system QC' },
+          { key: 'USP-645',     required: false, why: 'Water Conductivity — water system QC' },
           { key: 'USP-1058',    required: false, why: 'Analytical Instrument Qualification' },
           { key: 'USP-1226',    required: false, why: 'Verification of Compendial Procedures' },
           { key: 'TR39',        required: false, why: 'Bioburden Recovery Validation' },
@@ -83,10 +93,15 @@ const departments = [
       {
         level: 3, label: 'Advanced', labelZh: '進階專業',
         docs: [
+          { key: 'USP-1071',    required: false, why: 'Rapid Microbial Tests — modern RMM replacing traditional methods' },
+          { key: 'USP-1072',    required: false, why: 'Disinfectants & Antiseptics — QC validates efficacy studies' },
+          { key: 'TR85',        required: false, why: 'Enhanced Visible Particle Detection — advanced ECIM methods' },
+          { key: 'TR70',        required: false, why: 'Cleaning & Disinfection — QC validates C&D programs' },
+          { key: 'USP-151',     required: false, why: 'Pyrogen Test (Rabbit) — alternative pyrogen method' },
+          { key: 'USP-787',     required: false, why: 'Sub-visible Particles in Biologics — protein product QC' },
           { key: 'USP-1231',    required: false, why: 'Water for Pharmaceutical Purposes — testing & specs' },
           { key: 'USP-1113',    required: false, why: 'Microbial Characterization, Identification, Strain Typing' },
           { key: 'USP-1029',    required: false, why: 'Good Documentation Practices' },
-          { key: 'USP-1079',    required: false, why: 'Good Storage and Distribution Practices' },
           { key: 'USP-1228',    required: false, why: 'Depyrogenation — methods overview' },
           { key: 'USP-1788',    required: false, why: 'Methods for the Determination of Sub-visible Particulates' },
           { key: 'USP-1790',    required: false, why: 'Visual Inspection of Injections — advanced methods' },
@@ -119,7 +134,7 @@ const departments = [
           { key: 'TR13-2',        required: true,  why: 'Fundamentals of Sterilization (moist heat, dry heat, radiation)' },
           { key: 'TR84',          required: true,  why: 'PUPSIT — Pre-Use/Post-Sterilization Integrity Testing' },
           { key: 'TR43',          required: false, why: 'Dry Heat Sterilization & Depyrogenation' },
-          { key: 'TR13',          required: false, why: 'EtO Sterilization Technology' },
+          { key: 'TR13',          required: false, why: 'EM Program Fundamentals — production floor monitoring' },
           { key: 'PtC-1',         required: false, why: 'Isolator Technology for Aseptic Processing' },
           { key: 'TR85',          required: false, why: 'Single-Use Systems — integration in aseptic manufacturing' },
         ]
@@ -212,89 +227,91 @@ const departments = [
         docs: [
           { key: 'ISO-13485',      required: false, why: 'ISO 13485 — Medical Device QMS (combo product context)' },
           { key: 'ISO-14971',      required: false, why: 'ISO 14971 — Risk Management for Medical Devices' },
-          { key: 'TR88',           required: false, why: 'AI/ML in Pharma — emerging regulatory landscape' },
-          { key: 'TR86',           required: false, why: 'Blockchain in Supply Chain — regulatory implications' },
+          { key: 'ISO-15378',      required: false, why: 'ISO 15378 — Primary Packaging GMP (regulatory submission)' },
+          { key: 'TR91',           required: false, why: 'Post-Approval Change Management — ICH Q12 & PACMP' },
           { key: 'ISPE-TechTransfer', required: false, why: 'Technology Transfer — regulatory submission support' },
         ]
       }
     ]
   },
   {
-    id: 'scm',
-    name: 'Supply Chain & Procurement',
-    nameZh: '供應鏈與採購部',
-    icon: '📦',
+    id: 'warehouse',
+    name: 'Warehouse',
+    nameZh: '倉儲部',
+    icon: '🏗️',
     color: '#0891b2',
-    description: 'Component qualification, supplier management, container closure systems, cold chain, and supply chain integrity.',
+    description: 'Material storage & handling, GDP, cold chain management, container closure integrity, and inventory management.',
     tiers: [
       {
         level: 1, label: 'Foundation', labelZh: '基礎必讀',
         docs: [
-          { key: 'TR27',          required: true,  why: 'Pharmaceutical Package Integrity — CCS fundamentals' },
-          { key: 'USP-1207',      required: true,  why: 'USP <1207> Package Integrity Evaluation' },
-          { key: 'TR73',          required: true,  why: 'Prefilled Syringe System — component lifecycle' },
-          { key: 'USP-661',       required: true,  why: 'Plastic Packaging Systems — E&L testing' },
-          { key: 'USP-660',       required: true,  why: 'Glass Containers — specifications & testing' },
+          { key: 'USP-1079',      required: true,  why: 'Good Storage & Distribution Practices — the warehouse bible' },
+          { key: 'TR52',          required: true,  why: 'Good Distribution Practices — GDP for supply chain' },
+          { key: 'TR39',          required: true,  why: 'Temperature-Controlled Medicinal Products — cold chain fundamentals' },
+          { key: 'TR27',          required: true,  why: 'Pharmaceutical Package Integrity — handling & storage impact on CCS' },
+          { key: 'TR46',          required: true,  why: 'Last Mile Distribution — from warehouse to end user' },
         ]
       },
       {
         level: 2, label: 'Core Competency', labelZh: '核心能力',
         docs: [
-          { key: 'TR73-2',        required: true,  why: 'Prefilled Syringe Materials & Performance' },
-          { key: 'USP-381',       required: false, why: 'Elastomeric Closures for Injections' },
-          { key: 'TR85',          required: false, why: 'Single-Use Systems — procurement & vendor management' },
-          { key: 'TR66',          required: false, why: 'Cold Chain Distribution — temperature-sensitive supply' },
-          { key: 'ISO-15378',     required: false, why: 'Primary Packaging for Medicinal Products — GMP' },
-          { key: 'USP-1079',      required: false, why: 'Good Storage & Distribution Practices' },
+          { key: 'TR66',          required: true,  why: 'Cold Chain handling — temperature excursion management' },
+          { key: 'USP-1207',      required: true,  why: 'USP <1207> Package Integrity — storage conditions impact' },
+          { key: 'TR87',          required: false, why: 'Glass Vial Handling & Processing — damage prevention during storage' },
+          { key: 'USP-660',       required: false, why: 'Glass Containers — specifications & handling precautions' },
+          { key: 'USP-661',       required: false, why: 'Plastic Packaging Systems — storage compatibility' },
+          { key: 'USP-1231',      required: false, why: 'Water for Pharmaceutical Purposes — storage requirements' },
         ]
       },
       {
         level: 3, label: 'Advanced', labelZh: '進階專業',
         docs: [
-          { key: 'TR86',          required: false, why: 'Blockchain for Pharma Supply Chain — traceability' },
-          { key: 'TR91',          required: false, why: 'Mobile Manufacturing Units — decentralized supply' },
-          { key: 'ISPE-SUT',      required: false, why: 'ISPE Single-Use Technology — supply chain considerations' },
-          { key: 'ISO-11040',     required: false, why: 'ISO 11040 — Prefilled Syringe Standards (procurement specs)' },
+          { key: 'TR54-6',        required: false, why: 'Excipient Risk Assessment — incoming material management' },
+          { key: 'ISO-15378',     required: false, why: 'ISO 15378 — Primary Packaging GMP (receiving & storage)' },
+          { key: 'PtC-9',         required: false, why: 'COVID-19 Lessons — supply chain disruption & BCP' },
+          { key: 'TR86',          required: false, why: 'Blockchain in Supply Chain — traceability & serialization' },
         ]
       }
     ]
   },
   {
-    id: 'rd',
-    name: 'R&D / Process Development',
-    nameZh: '研發與製程開發部',
-    icon: '🧪',
+    id: 'techservice',
+    name: 'Technical Service',
+    nameZh: '技術服務部',
+    icon: '🛠️',
     color: '#8b5cf6',
-    description: 'Process design, QbD, scale-up, technology transfer, and development of sterile manufacturing processes.',
+    description: 'Process support, troubleshooting, technology transfer (receiving site), validation execution, and continuous process improvement.',
     tiers: [
       {
         level: 1, label: 'Foundation', labelZh: '基礎必讀',
         docs: [
-          { key: 'ICH-Q8R2',        required: true,  why: 'Pharmaceutical Development — QbD, design space, CQAs' },
-          { key: 'ICH-Q9R1',        required: true,  why: 'Quality Risk Management — risk-based process design' },
-          { key: 'FDA-ProcessVal',   required: true,  why: 'Process Validation — Stage 1 Process Design' },
-          { key: 'pda-guide-no1',    required: true,  why: 'Aseptic Filling — process design fundamentals' },
-          { key: 'TR26',             required: true,  why: 'Sterilizing Filtration — process design & validation' },
+          { key: 'pda-guide-no1',    required: true,  why: 'Aseptic Filling — process understanding for troubleshooting' },
+          { key: 'FDA-ProcessVal',   required: true,  why: 'Process Validation — Stage 2 PPQ & Stage 3 CPV execution' },
+          { key: 'TR60',            required: true,  why: 'Process Validation Lifecycle — PPQ design, SPC, CPV monitoring' },
+          { key: 'TR26',            required: true,  why: 'Sterilizing Filtration — process support & troubleshooting' },
+          { key: 'ICH-Q8R2',        required: true,  why: 'Pharmaceutical Development — understanding CQAs & design space' },
         ]
       },
       {
         level: 2, label: 'Core Competency', labelZh: '核心能力',
         docs: [
-          { key: 'TR65',            required: true,  why: 'Technology Transfer — sending site responsibilities' },
+          { key: 'TR65',            required: true,  why: 'Technology Transfer — receiving site responsibilities' },
           { key: 'ISPE-TechTransfer', required: true, why: 'ISPE Technology Transfer — structured methodology' },
-          { key: 'TR62',            required: false, why: 'Lyophilization — process development & cycle design' },
-          { key: 'TR22',            required: false, why: 'Media Fills — process simulation design' },
-          { key: 'TR84',            required: false, why: 'PUPSIT — integrity testing for process design' },
+          { key: 'TR22',            required: true,  why: 'Media Fills / APS — process simulation execution' },
+          { key: 'TR84',            required: false, why: 'PUPSIT — integrity testing support' },
+          { key: 'TR62',            required: false, why: 'Lyophilization — cycle optimization & troubleshooting' },
+          { key: 'TR90',            required: false, why: 'Contamination Control Strategy — process-side CCS elements' },
+          { key: 'TR29',            required: false, why: 'Cleaning Validation — process equipment cleaning support' },
         ]
       },
       {
         level: 3, label: 'Advanced', labelZh: '進階專業',
         docs: [
-          { key: 'PtC-14',          required: false, why: 'ATMP Manufacturing — process development for cell/gene therapy' },
-          { key: 'PICS-Annex2',      required: false, why: 'Biologics GMP — development to commercial' },
+          { key: 'PtC-14',          required: false, why: 'ATMP Manufacturing — specialized process support' },
+          { key: 'PICS-Annex2',      required: false, why: 'Biologics GMP — process-specific requirements' },
           { key: 'TR88',            required: false, why: 'AI/ML — process optimization & predictive modeling' },
-          { key: 'TR91',            required: false, why: 'Mobile Manufacturing — agile process design' },
-          { key: 'ISPE-Vol6',       required: false, why: 'Biopharma Facility design for process development' },
+          { key: 'TR91',            required: false, why: 'Mobile Manufacturing — agile process support' },
+          { key: 'ISPE-Vol6',       required: false, why: 'Biopharma Facility — process fit considerations' },
         ]
       }
     ]

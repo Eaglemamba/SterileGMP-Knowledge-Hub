@@ -110,6 +110,16 @@ Layer 3: Site-Specific Documents             ~/Amaran-Site-Knowledge/
 | ~~Ph. Eur. 3.2.1 Glass Containers~~ | ✅ Done | — | — |
 | ~~Ph. Eur. 3.3.8 Sterile Single-Use Syringes~~ | ✅ Done 2026-04-09 | — | — |
 | WHO TRS 961 Annex 6, TRS 1010 | Phase 6 | Medium | Small each |
+| **PDA TR33 (Rev 2013)** — Alternative & Rapid Microbiological Methods | Phase 5 | **High** | Medium |
+| **PDA TR80 (2019)** — Data Integrity for Pharmaceutical Laboratories | Phase 5 | **High** | Medium |
+| **PDA TR57** — Analytical Method Validation & Transfer | Phase 5 | Medium | Medium |
+| **PDA TR69 (2014)** — Bioburden & Biofilm in Pharma Water Systems | Phase 5 | Medium | Medium |
+| **PDA TR36** — Current Practices for Lyophilization Validation | Phase 5 | Medium | Medium |
+| **ISO 11737-1** — Sterilization: Bioburden Determination | Phase 6 | Medium | Small |
+| **ISO 11737-2** — Sterilization: Sterility Testing | Phase 6 | Medium | Small |
+| **PDA TR81 (2020)** — Cell-Based Potency Assays for Biologics | Phase 6 | Low | Medium |
+| **PDA TR47** — Preparation of Biological Indicators | Phase 6 | Low | Small |
+| **EP 5.1.6** — Alternative Methods for Microbiological Quality | Phase 6 | Low | Small |
 
 ---
 
