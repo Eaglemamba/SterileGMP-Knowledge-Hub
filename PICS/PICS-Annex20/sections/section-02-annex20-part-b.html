@@ -1,0 +1,1725 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIC/S Annex 20 — QRM Part B: Methods, Tools &amp; Applications</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 0 !important;
+    padding-left: 1.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+.learning-objectives.summary {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%);
+}
+
+.learning-objectives.summary h3 {
+    color: #856404;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== TABLE OVERFLOW WRAPPER ===== */
+.table-wrapper {
+    overflow-x: auto;
+    margin: 1rem 0;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<div class="header">
+    <h1>Annex 20 — QRM (Part B: Methods, Tools &amp; Applications)</h1>
+    <div class="subtitle">附錄 20 品質風險管理 — 第 B 部分：方法、工具與應用範例</div>
+    <div class="page-info">PIC/S PE 009-17 | Annex 20 | Part B: Methods &amp; Tools</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- Learning Objectives -->
+    <div class="learning-objectives">
+        <h3>學習目標 Learning Objectives</h3>
+        <ul>
+            <li>掌握七種主要 QRM 工具（FMEA、FMECA、FTA、HACCP、HAZOP、PHA、風險排序）的原理、輸出與使用場景</li>
+            <li>理解輔助統計工具（管制圖、製程能力分析、DOE）如何支持品質風險管理決策</li>
+            <li>能夠依照 GMP 活動類型（開發、生產、設施、物料、包裝）選擇適當的 QRM 工具組合</li>
+            <li>在 CDMO 無菌製劑稽查背景下，辨識最常被查核的 QRM 應用場景，並準備合規回應</li>
+        </ul>
+    </div>
+
+    <!-- ===== PART I: RISK MANAGEMENT METHODS & TOOLS ===== -->
+    <h2 class="section-title">Annex I — Risk Management Methods and Tools 風險管理方法與工具</h2>
+
+    <!-- I.1 Basic Facilitation Methods -->
+    <h3 class="section-title" style="font-size:1rem; border-bottom-color:#63b3ed;">I.1 Basic Risk Management Facilitation Methods — 基礎風險管理輔助方法</h3>
+    <div class="two-column">
+        <div class="left-column">
+            <h3>I.1 Basic Risk Management Facilitation Methods</h3>
+            <p>Some of the simple techniques that are commonly used to structure risk management by organizing data and facilitating decision-making are:</p>
+            <ul>
+                <li><span class="key-term">Flowcharts</span></li>
+                <li><span class="key-term">Check Sheets</span></li>
+                <li><span class="key-term">Process Mapping</span></li>
+                <li><span class="key-term">Cause and Effect Diagrams</span> (also called an Ishikawa diagram or fish bone diagram)</li>
+            </ul>
+        </div>
+        <div class="right-column">
+            <h3>中文解析 — 基礎輔助工具</h3>
+            <div class="term-box">
+                <h4>這些工具做什麼？</h4>
+                <p>這類工具本身不是「風險評估工具」，而是用來<strong>組織資料、結構化思考</strong>，為後續更深度的風險分析（如 FMEA、HAZOP）打好基礎。</p>
+                <ul>
+                    <li><strong>流程圖（Flowchart）</strong>：視覺化整個製程，讓每個步驟、決策點都清楚可見</li>
+                    <li><strong>查核表（Check Sheet）</strong>：系統性地記錄數據或異常事件的頻率</li>
+                    <li><strong>製程圖（Process Mapping）</strong>：比流程圖更詳細，標出物料流、資訊流與人員流</li>
+                    <li><strong>魚骨圖（Ishikawa / Cause &amp; Effect）</strong>：用來集體腦力激盪，識別一個問題的所有可能原因</li>
+                </ul>
+            </div>
+            <div class="analogy-box">
+                <h4>CDMO 實務類比</h4>
+                <p>在處理一個灌裝缺陷的 CAPA 時，QA 團隊通常先用魚骨圖腦力激盪所有可能原因（設備、人員、物料、環境、方法），再選擇 FMEA 或 FTA 做深度分析。兩步走，不走彎路。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- I.2 FMEA -->
+    <h3 class="section-title" style="font-size:1rem; border-bottom-color:#63b3ed;">I.2 Failure Mode Effects Analysis (FMEA) — 失效模式與影響分析</h3>
+    <div class="two-column">
+        <div class="left-column">
+            <h3>I.2 Failure Mode Effects Analysis (FMEA)</h3>
+            <p><span class="key-term">FMEA</span> (see IEC 60812) provides for an evaluation of potential <span class="key-term">failure modes</span> for processes and their likely effect on outcomes and/or product performance. Once failure modes are established, risk reduction can be used to eliminate, contain, reduce or control the potential failures.</p>
+            <p>FMEA relies on product and process understanding. FMEA methodically breaks down the analysis of complex processes into manageable steps. It is a powerful tool for summarizing the important modes of failure, factors causing these failures and the likely effects of these failures.</p>
+            <h4 style="color: var(--primary-blue); margin: 1rem 0 0.5rem;">Potential Areas of Use</h4>
+            <p>FMEA can be used to <span class="key-term">prioritize risks</span> and monitor the effectiveness of risk control activities.</p>
+            <p>FMEA can be applied to equipment and facilities and might be used to analyze a manufacturing operation and its effect on product or process. It identifies elements/operations within the system that render it vulnerable. The output/results of FMEA can be used as a basis for design or further analysis or to guide resource deployment.</p>
+        </div>
+        <div class="right-column">
+            <h3>中文解析 — FMEA</h3>
+            <div class="term-box">
+                <h4>FMEA 核心邏輯：三問</h4>
+                <p>每一個製程步驟或設備功能，都問三個問題：</p>
+                <ol style="padding-left:1.5rem; margin-top:0.5rem;">
+                    <li><strong>什麼會失效？（Failure Mode）</strong> — 例如：過濾器堵塞、注射針頭偏移</li>
+                    <li><strong>失效後影響什麼？（Effect）</strong> — 例如：批次報廢、污染風險</li>
+                    <li><strong>為什麼失效？（Cause）</strong> — 例如：濾材老化、機械磨損</li>
+                </ol>
+            </div>
+            <div class="formula-box">
+                <h4>FMECA 延伸：RPN 公式</h4>
+                <pre>RPN = Severity (S) × Occurrence (O) × Detection (D)
+      嚴重度 ×  發生頻率  ×   可偵測性
+
+RPN 越高 → 風險越大 → 優先列入 CAPA</pre>
+                <p style="margin-top:0.5rem; font-size:0.88rem;">注意：FMECA 是 FMEA 的延伸版本，加入了嚴重度等級（Criticality）的量化評分，產出相對風險分數，用於排序優先改善項目。</p>
+            </div>
+            <div class="note-box">
+                <h4>FMEA 的輸出</h4>
+                <ul>
+                    <li>失效模式清單（含優先排序）</li>
+                    <li>每個失效的建議控制措施</li>
+                    <li>CAPA 優先序（依 RPN 排列）</li>
+                    <li>可作為設計檢討或製程驗證的依據文件</li>
+                </ul>
+            </div>
+            <div class="practice-box">
+                <h4>CDMO 思考題</h4>
+                <p>當 CDMO QA 團隊接到客戶的新劑型技術轉移案，他們通常如何決定是用 FMEA 還是 HAZOP？</p>
+                <p>一般原則：<strong>FMEA 適合元件層級的系統性分析</strong>（例如灌裝機各個機構），而 <strong>HAZOP 適合製程流程中的偏差識別</strong>（例如 WFI 系統操作條件偏離）。新設備導入或製程設計早期常見 FMEA；現有製程改變參數時常用 HAZOP。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- I.3 FMECA -->
+    <h3 class="section-title" style="font-size:1rem; border-bottom-color:#63b3ed;">I.3 Failure Mode, Effects and Criticality Analysis (FMECA) — 失效模式、影響與嚴重度分析</h3>
+    <div class="two-column">
+        <div class="left-column">
+            <h3>I.3 Failure Mode, Effects and Criticality Analysis (FMECA)</h3>
+            <p><span class="key-term">FMEA</span> might be extended to incorporate an investigation of the degree of <span class="key-term">severity</span> of the consequences, their respective <span class="key-term">probabilities of occurrence</span>, and their <span class="key-term">detectability</span>, thereby becoming a <span class="key-term">Failure Mode Effect and Criticality Analysis (FMECA)</span> (see IEC 60812).</p>
+            <p>In order for such an analysis to be performed, the product or process specifications should be established. FMECA can identify places where additional preventive actions might be appropriate to minimize risks.</p>
+            <h4 style="color: var(--primary-blue); margin: 1rem 0 0.5rem;">Potential Areas of Use</h4>
+            <p>FMECA application in the pharmaceutical industry should mostly be utilized for failures and risks associated with <span class="key-term">manufacturing processes</span>; however, it is not limited to this application. The output of an FMECA is a relative <span class="key-term">risk "score"</span> for each failure mode, which is used to rank the modes on a relative risk basis.</p>
+        </div>
+        <div class="right-column">
+            <h3>中文解析 — FMECA</h3>
+            <div class="term-box">
+                <h4>FMEA vs. FMECA：差在哪裡？</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>面向</th>
+                            <th>FMEA</th>
+                            <th>FMECA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>分析深度</td>
+                            <td>質性識別失效模式與影響</td>
+                            <td>加入量化：S × O × D = RPN</td>
+                        </tr>
+                        <tr>
+                            <td>輸出</td>
+                            <td>失效清單 + 改善建議</td>
+                            <td>相對風險分數 + 排序</td>
+                        </tr>
+                        <tr>
+                            <td>前提條件</td>
+                            <td>製程理解即可</td>
+                            <td>需要已建立的規格與評分標準</td>
+                        </tr>
+                        <tr>
+                            <td>常見用途</td>
+                            <td>早期設計評估</td>
+                            <td>製造製程成熟期的優先序決定</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="note-box">
+                <h4>實務提醒</h4>
+                <p>在 CDMO 環境中，客戶合約常要求對灌裝線的 CCP（關鍵控制點）進行 FMECA。稽查員可能要求查看 RPN 評分紀錄，並確認評分標準（scoring criteria）已書面化且一致應用。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- I.4 FTA -->
+    <h3 class="section-title" style="font-size:1rem; border-bottom-color:#63b3ed;">I.4 Fault Tree Analysis (FTA) — 故障樹分析</h3>
+    <div class="two-column">
+        <div class="left-column">
+            <h3>I.4 Fault Tree Analysis (FTA)</h3>
+            <p>The <span class="key-term">FTA</span> tool (see IEC 61025) is an approach that assumes <span class="key-term">failure of the functionality</span> of a product or process. This tool evaluates system (or subsystem) failures one at a time but can combine multiple causes of failure by identifying <span class="key-term">causal chains</span>.</p>
+            <p>The results are represented pictorially in the form of a <span class="key-term">tree of fault modes</span>. At each level in the tree, combinations of fault modes are described with <span class="key-term">logical operators</span> (AND, OR, etc.). FTA relies on the experts' process understanding to identify causal factors.</p>
+            <h4 style="color: var(--primary-blue); margin: 1rem 0 0.5rem;">Potential Areas of Use</h4>
+            <p>FTA can be used to establish the pathway to the <span class="key-term">root cause</span> of the failure. FTA can be used to investigate complaints or deviations in order to fully understand their root cause and to ensure that intended improvements will fully resolve the issue and not lead to other issues.</p>
+            <p>Fault Tree Analysis is an effective tool for evaluating how <span class="key-term">multiple factors</span> affect a given issue. The output of an FTA includes a visual representation of failure modes. It is useful both for risk assessment and in developing monitoring programs.</p>
+        </div>
+        <div class="right-column">
+            <h3>中文解析 — FTA</h3>
+            <div class="term-box">
+                <h4>FTA 的「由上而下」邏輯</h4>
+                <p>FTA 與 FMEA 方向相反：</p>
+                <ul>
+                    <li><strong>FMEA</strong>：由下而上 — 從個別失效模式 → 推算對系統的影響</li>
+                    <li><strong>FTA</strong>：由上而下 — 從一個已知的「頂部事件（Top Event）」（如：批次污染）→ 往下拆解所有可能導致此結果的原因鏈</li>
+                </ul>
+            </div>
+            <div class="analogy-box">
+                <h4>比喻：故障樹像一棵倒置的樹</h4>
+                <p>頂端是「問題結果」（例如：培養基灌裝汙染），分支往下是各種原因（AND / OR 邏輯）。AND 閘代表兩個條件<em>同時發生</em>才會導致問題；OR 閘代表任一條件即可。這讓分析人員清楚看到哪些「多因共存」路徑風險最高。</p>
+            </div>
+            <div class="note-box">
+                <h4>FTA 在 CDMO 偏差調查中的應用</h4>
+                <p>當一個無菌測試失敗（Sterility Test Failure, STF）事件發生，FTA 可系統性地追溯到根本原因，並確認改善措施能真正斷開故障路徑，而非只解決一個表面症狀卻讓另一個問題浮現。稽查員特別欣賞用 FTA 記錄的偏差調查報告，因為它直觀且具說服力。</p>
+            </div>
+            <div class="practice-box">
+                <h4>CDMO 思考題</h4>
+                <p>一條新的 RTU 預充填針劑灌裝線正在做設備確認（IQ/OQ），何時適合用 FMEA，何時適合用 FTA？</p>
+                <p><strong>建議答案</strong>：IQ/OQ 設計階段用 FMEA（預防性，識別各元件潛在失效）；若 OQ 期間發生 OOS 異常，則用 FTA 做根因調查（反應性，從問題回溯原因）。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- I.5 HACCP -->
+    <h3 class="section-title" style="font-size:1rem; border-bottom-color:#63b3ed;">I.5 Hazard Analysis and Critical Control Points (HACCP) — 危害分析與關鍵控制點</h3>
+    <div class="two-column">
+        <div class="left-column">
+            <h3>I.5 Hazard Analysis and Critical Control Points (HACCP)</h3>
+            <p><span class="key-term">HACCP</span> is a systematic, proactive, and preventive tool for assuring product quality, reliability, and safety (see WHO Technical Report Series No 908, 2003 Annex 7). It is a structured approach that applies technical and scientific principles to analyze, evaluate, prevent, and control the risk or adverse consequence(s) of hazard(s) due to the design, development, production, and use of products.</p>
+            <p>HACCP consists of the following seven steps:</p>
+            <ol>
+                <li>conduct a hazard analysis and identify preventive measures for each step of the process;</li>
+                <li>determine the <span class="key-term">critical control points</span> (CCPs);</li>
+                <li>establish <span class="key-term">critical limits</span>;</li>
+                <li>establish a system to monitor the critical control points;</li>
+                <li>establish the corrective action to be taken when monitoring indicates that the critical control points are not in a state of control;</li>
+                <li>establish system to verify that the HACCP system is working effectively;</li>
+                <li>establish a <span class="key-term">record-keeping system</span>.</li>
+            </ol>
+            <h4 style="color: var(--primary-blue); margin: 1rem 0 0.5rem;">Potential Areas of Use</h4>
+            <p>HACCP might be used to identify and manage risks associated with physical, chemical and biological hazards (including microbiological contamination). HACCP is most useful when product and process understanding is sufficiently comprehensive to support identification of <span class="key-term">critical control points</span>. The output of a HACCP analysis is risk management information that facilitates monitoring of critical points not only in the manufacturing process but also in other life cycle phases.</p>
+        </div>
+        <div class="right-column">
+            <h3>中文解析 — HACCP</h3>
+            <div class="term-box">
+                <h4>HACCP 起源與製藥應用</h4>
+                <p>HACCP 最初由食品業（NASA 太空食品計畫）發展，後被製藥業採用。其核心是<strong>預防性控制</strong>而非事後測試——在製程關鍵點建立可量化的限制，並即時監控。</p>
+                <p><strong>CCP（Critical Control Point）</strong>：製程中一個可以施加控制措施的環節，若失控則直接危害產品安全或品質。</p>
+                <p><strong>Critical Limit（關鍵限制值）</strong>：CCP 的量化邊界，例如：滅菌溫度 ≥ 121°C 維持 15 分鐘。</p>
+            </div>
+            <div class="analogy-box">
+                <h4>HACCP 七步驟 — 無菌灌裝場景類比</h4>
+                <table>
+                    <thead>
+                        <tr><th>步驟</th><th>填充無菌製劑中的例子</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1. 危害分析</td><td>識別：微生物污染、玻璃異物、充填量偏差</td></tr>
+                        <tr><td>2. 確定 CCP</td><td>無菌過濾、容器滅菌、環境監控</td></tr>
+                        <tr><td>3. 關鍵限值</td><td>過濾後微生物數 = 0 CFU/mL</td></tr>
+                        <tr><td>4. 監控系統</td><td>線上粒子計數器、沉降碟採樣頻率</td></tr>
+                        <tr><td>5. 矯正措施</td><td>超標即停機、隔離批次、啟動偏差調查</td></tr>
+                        <tr><td>6. 驗證</td><td>媒介灌裝試驗（Media Fill / APS）</td></tr>
+                        <tr><td>7. 記錄系統</td><td>批次記錄（BPR）、環境監控趨勢報告</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="practice-box">
+                <h4>CDMO 思考題</h4>
+                <p>HACCP 和 FMEA 都能用於無菌灌裝風險管理，那 CDMO QA 如何選擇？</p>
+                <p><strong>建議答案</strong>：HACCP 著重<em>預防性監控與即時控制</em>（適合定義 CCP 並建立警戒 / 行動限值體系）；FMEA 著重<em>系統性失效識別與優先排序</em>（適合設備設計或製程開發階段）。兩者可互補使用。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- I.6 HAZOP -->
+    <h3 class="section-title" style="font-size:1rem; border-bottom-color:#63b3ed;">I.6 Hazard and Operability Study (HAZOP) — 危害與操作性分析</h3>
+    <div class="two-column">
+        <div class="left-column">
+            <h3>I.6 Hazard Operability Analysis (HAZOP)</h3>
+            <p><span class="key-term">HAZOP</span> (see IEC 61882) is based on a theory that assumes that risk events are caused by <span class="key-term">deviations from the design or operating intentions</span>. It is a systematic brainstorming technique for identifying hazards using so-called <span class="key-term">"guide-words"</span>.</p>
+            <p>"Guide-words" (e.g., <em>No, More, Other Than, Part of,</em> etc.) are applied to relevant parameters (e.g., contamination, temperature) to help identify potential deviations from normal use or design intentions. It often uses a team of people with expertise covering the design of the process or product and its application.</p>
+            <h4 style="color: var(--primary-blue); margin: 1rem 0 0.5rem;">Potential Areas of Use</h4>
+            <p>HAZOP can be applied to manufacturing processes, including outsourced production and formulation as well as the upstream suppliers, equipment and facilities for drug substances and drug (medicinal) products. It has also been used primarily in the pharmaceutical industry for evaluating <span class="key-term">process safety hazards</span>.</p>
+            <p>As is the case with HACCP, the output of a HAZOP analysis is a list of <span class="key-term">critical operations for risk management</span>. This facilitates regular monitoring of critical points in the manufacturing process.</p>
+        </div>
+        <div class="right-column">
+            <h3>中文解析 — HAZOP</h3>
+            <div class="term-box">
+                <h4>HAZOP 的核心：引導詞（Guide Words）</h4>
+                <p>HAZOP 的精髓是用「引導詞」系統性地質疑每個製程參數，看看「如果這個參數偏離了設計意圖，會發生什麼？」</p>
+                <table>
+                    <thead>
+                        <tr><th>引導詞</th><th>含義</th><th>製程應用範例（溫度）</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>No / None</td><td>完全沒有</td><td>加熱失效，溫度為零</td></tr>
+                        <tr><td>More</td><td>數量增加</td><td>溫度過高，超過設定值</td></tr>
+                        <tr><td>Less</td><td>數量減少</td><td>溫度不足，低於殺菌要求</td></tr>
+                        <tr><td>Other Than</td><td>完全不同</td><td>加錯溶液，非水注射用水</td></tr>
+                        <tr><td>Part of</td><td>部分缺失</td><td>循環系統只有部分管路加熱</td></tr>
+                        <tr><td>As Well As</td><td>額外增加</td><td>意外加入第二種成分</td></tr>
+                        <tr><td>Reverse</td><td>方向相反</td><td>蒸汽流向逆轉造成污染</td></tr>
+                        <tr><td>Early / Late</td><td>時序偏差</td><td>提前或延遲加熱</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="note-box">
+                <h4>HAZOP 需要跨部門團隊</h4>
+                <p>HAZOP 不是一個人能做的分析。理想的 HAZOP 團隊包括：製程工程師、QA、設備維護、操作員代表，有時還有客戶（在 CDMO 場景下）。多元觀點是識別「設計者沒想到的偏差」的關鍵。</p>
+            </div>
+            <div class="practice-box">
+                <h4>CDMO 思考題</h4>
+                <p>一個 CDMO 準備對新建的 WFI 配製系統做風險評估，應選 HAZOP 還是 FMEA？</p>
+                <p><strong>建議答案</strong>：兩者都可，但 HAZOP 更適合「操作條件偏差」的系統性識別（如流量、壓力、溫度偏離），尤其是當設計圖（P&amp;ID）已完成時。FMEA 則更適合在設計圖完成前，對個別元件（泵、過濾器、閥門）做失效分析。實務上常先做 HAZOP 找出危害，再用 FMEA 評估各失效模式的 RPN。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- I.7 PHA -->
+    <h3 class="section-title" style="font-size:1rem; border-bottom-color:#63b3ed;">I.7 Preliminary Hazard Analysis (PHA) — 初步危害分析</h3>
+    <div class="two-column">
+        <div class="left-column">
+            <h3>I.7 Preliminary Hazard Analysis (PHA)</h3>
+            <p><span class="key-term">PHA</span> is a tool of analysis based on applying prior experience or knowledge of a hazard or failure to identify future hazards, hazardous situations and events that might cause harm, as well as to estimate their probability of occurrence for a given activity, facility, product or system.</p>
+            <p>The tool consists of:</p>
+            <ol>
+                <li>the identification of the possibilities that the risk event happens,</li>
+                <li>the qualitative evaluation of the extent of possible injury or damage to health that could result, and</li>
+                <li>a relative ranking of the hazard using a combination of <span class="key-term">severity and likelihood of occurrence</span>, and</li>
+                <li>the identification of possible <span class="key-term">remedial measures</span>.</li>
+            </ol>
+            <h4 style="color: var(--primary-blue); margin: 1rem 0 0.5rem;">Potential Areas of Use</h4>
+            <p>PHA might be useful when analyzing existing systems or prioritizing hazards where circumstances prevent a more extensive technique from being used. It can be used for product, process and facility design as well as to evaluate the types of hazards for the general product type, then the product class, and finally the specific product.</p>
+            <p>PHA is most commonly used <span class="key-term">early in the development of a project</span> when there is little information on design details or operating procedures; thus, it will often be a precursor to further studies. Typically, hazards identified in the PHA are further assessed with other risk management tools such as those in this section.</p>
+        </div>
+        <div class="right-column">
+            <h3>中文解析 — PHA</h3>
+            <div class="term-box">
+                <h4>PHA：最早期的風險快照</h4>
+                <p>PHA 是在「還沒有完整設計細節」時使用的工具。它的目標不是深度分析，而是<strong>快速識別主要危害，讓後續更精細的工具有焦點可以深入</strong>。</p>
+                <p>適用時機：</p>
+                <ul>
+                    <li>新設施 / 新生產線的概念設計階段</li>
+                    <li>新製程引進評估（可行性研究）</li>
+                    <li>當時間或資源不足以做完整 HAZOP / FMEA 時的快速初篩</li>
+                </ul>
+            </div>
+            <div class="analogy-box">
+                <h4>PHA 四步驟比喻</h4>
+                <p>想像你在評估一棟新廠房是否適合做高活性原料藥（HAPI）處理：</p>
+                <ol style="padding-left:1.5rem;">
+                    <li>識別危害：暴露風險、洩漏風險、交叉污染風險</li>
+                    <li>質性評估：如果洩漏，人員傷害嚴重度是高 / 中 / 低？</li>
+                    <li>相對排序：用 2×2 矩陣（嚴重度 × 可能性）快速排出優先項</li>
+                    <li>初步對策：獨立廠房、負壓設計、PPE 要求</li>
+                </ol>
+                <p>這個快速評估結果，之後再交給 HAZOP 或 FMEA 做深度分析。</p>
+            </div>
+            <div class="note-box">
+                <h4>PHA 是「前驅工具」</h4>
+                <p>PHA 識別出的危害，通常會進一步使用 FMEA、HAZOP 或 HACCP 做更精細的評估。PHA 本身不替代這些工具，而是讓後續分析更有效率、更聚焦。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- I.8 Risk Ranking and Filtering -->
+    <h3 class="section-title" style="font-size:1rem; border-bottom-color:#63b3ed;">I.8 Risk Ranking and Filtering — 風險排序與篩選</h3>
+    <div class="two-column">
+        <div class="left-column">
+            <h3>I.8 Risk Ranking and Filtering</h3>
+            <p><span class="key-term">Risk ranking and filtering</span> is a tool for comparing and ranking risks. Risk ranking of complex systems typically requires evaluation of multiple diverse <span class="key-term">quantitative and qualitative factors</span> for each risk.</p>
+            <p>The tool involves breaking down a basic risk question into as many components as needed to capture factors involved in the risk. These factors are combined into a single relative <span class="key-term">risk score</span> that can then be used for ranking risks. "Filters," in the form of <span class="key-term">weighting factors or cut-offs</span> for risk scores, can be used to scale or fit the risk ranking to management or policy objectives.</p>
+            <h4 style="color: var(--primary-blue); margin: 1rem 0 0.5rem;">Potential Areas of Use</h4>
+            <p>Risk ranking and filtering can be used to prioritize manufacturing sites for inspection/audit by regulators or industry. Risk ranking methods are particularly helpful in situations in which the portfolio of risks and the underlying consequences to be managed are <span class="key-term">diverse and difficult to compare</span> using a single tool.</p>
+            <p>Risk ranking is useful when management needs to evaluate both <span class="key-term">quantitatively-assessed and qualitatively-assessed risks</span> within the same organizational framework.</p>
+        </div>
+        <div class="right-column">
+            <h3>中文解析 — 風險排序與篩選</h3>
+            <div class="term-box">
+                <h4>什麼是風險篩選（Filtering）？</h4>
+                <p>「篩選」是指設定一個門檻（cut-off）或加權方式，讓組織可以依照政策目標決定哪些風險必須優先處理，哪些可以接受現狀管理。</p>
+                <p>例如：在 CDMO 的年度供應商審核計畫中，可以對每個供應商打分數（分數由多個維度加權而來），再依分數高低決定稽查頻率——高風險供應商每年稽查，中風險兩年一次，低風險只做書面評估。</p>
+            </div>
+            <div class="note-box">
+                <h4>風險矩陣（Risk Matrix）的局限</h4>
+                <p>最常見的風險排序工具是 2×2 或 3×3 風險矩陣（嚴重度 × 發生頻率）。但矩陣只考慮兩個維度，適合初步篩選。對於複雜場景（如多產品 CDMO 的交叉污染評估），需要引入更多維度（如可偵測性、暴露時間、控制措施有效性），這就是「多因子風險分數」的用武之地。</p>
+            </div>
+            <div class="practice-box">
+                <h4>CDMO 思考題</h4>
+                <p>一家 CDMO 有 150 個原物料供應商，QA 主管如何用風險排序決定今年哪 20 家優先現場稽查？</p>
+                <p><strong>建議答案</strong>：建立多維度評分模型（例如：物料類別嚴重性 × 供應商稽查歷史 × 前次 OOS 頻率 × 市場唯一性 × 交貨準時率），每個維度給予不同權重，加總後排序。分數最高的 20 家列入當年度現場稽查名單，其餘以問卷或書面審查取代。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- I.9 Supporting Statistical Tools -->
+    <h3 class="section-title" style="font-size:1rem; border-bottom-color:#63b3ed;">I.9 Supporting Statistical Tools — 輔助統計工具</h3>
+    <div class="two-column">
+        <div class="left-column">
+            <h3>I.9 Supporting Statistical Tools</h3>
+            <p>Statistical tools can support and facilitate quality risk management. They can enable effective <span class="key-term">data assessment</span>, aid in determining the significance of the data set(s), and facilitate more reliable decision making.</p>
+            <p>A listing of some of the principal statistical tools commonly used in the pharmaceutical industry is provided:</p>
+            <p><strong>(i) Control Charts</strong>, for example:</p>
+            <ul>
+                <li>Acceptance Control Charts (see ISO 7966)</li>
+                <li><span class="key-term">Control Charts</span> with Arithmetic Average and Warning Limits (see ISO 7873)</li>
+                <li>Cumulative Sum Charts (CUSUM) (see ISO 7871)</li>
+                <li><span class="key-term">Shewhart Control Charts</span> (see ISO 8258)</li>
+                <li>Weighted Moving Average</li>
+            </ul>
+            <p><strong>(ii)</strong> <span class="key-term">Design of Experiments (DOE)</span></p>
+            <p><strong>(iii)</strong> Histograms</p>
+            <p><strong>(iv)</strong> Pareto Charts</p>
+            <p><strong>(v)</strong> <span class="key-term">Process Capability Analysis</span></p>
+        </div>
+        <div class="right-column">
+            <h3>中文解析 — 統計輔助工具</h3>
+            <div class="term-box">
+                <h4>統計工具在 QRM 中的角色</h4>
+                <p>統計工具本身不是風險評估工具，但它們提供<strong>客觀數據基礎</strong>，讓 FMEA / HAZOP 等工具的判斷更可靠、更可辯護。</p>
+            </div>
+            <div class="formula-box">
+                <h4>製程能力指標（Cpk）</h4>
+                <pre>Cpk = min[ (USL - μ) / (3σ),  (μ - LSL) / (3σ) ]
+
+USL = 規格上限  LSL = 規格下限
+μ = 製程平均值  σ = 製程標準差
+
+Cpk ≥ 1.33  → 製程能力良好（業界一般要求）
+Cpk ≥ 1.67  → 優良（Six Sigma 場景）
+Cpk &lt; 1.00  → 製程失控，需立即改善</pre>
+                <p style="font-size:0.88rem; margin-top:0.5rem;">在 CDMO 無菌灌裝線，常以 Cpk 評估充填量、容器密封性等關鍵參數的製程穩定性，並作為持續工藝確認（CPV）的核心指標。</p>
+            </div>
+            <div class="note-box">
+                <h4>管制圖（Control Chart）在風險管理的作用</h4>
+                <p>Shewhart 管制圖（X-bar, R chart）能即時顯示製程是否「統計失控（out of statistical control）」。當數據點出現連串偏移趨勢（如 Nelson Rules / Western Electric Rules），QA 在批次仍在生產中就可介入，遠優於依賴事後批次測試。</p>
+            </div>
+            <div class="analogy-box">
+                <h4>Pareto 圖 — 找出 80/20</h4>
+                <p>Pareto 圖（帕雷托圖）依照頻率從高到低排列各類問題，幫助團隊聚焦在「20% 的原因造成 80% 的問題」上。在偏差趨勢分析或客訴分類中非常實用，讓 CAPA 資源投入最有效率的位置。</p>
+            </div>
+            <div class="practice-box">
+                <h4>CDMO 思考題</h4>
+                <p>稽查員詢問你們的持續工藝確認（CPV）程序是否使用統計工具？應如何回應？</p>
+                <p><strong>建議答案</strong>：展示 CPV 報告，說明使用 Shewhart 管制圖追蹤關鍵品質屬性（CQA），並定期計算 Cpk 確認製程能力。若有趨勢警示（如連續 7 點同側偏移），說明觸發的通知流程與評估程序。DOE 數據可用來支持 Design Space 的建立。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== PART II: POTENTIAL APPLICATIONS ===== -->
+    <h2 class="section-title" style="margin-top:2.5rem;">Appendix II — Potential Applications for Quality Risk Management 品質風險管理的潛在應用範例</h2>
+
+    <div class="note-box" style="margin-bottom:1.5rem;">
+        <h4>適用範圍說明（Annex 原文）</h4>
+        <p>This Appendix identifies potential uses of QRM principles and tools by industry and regulators. However, the <strong>selection of particular risk management tools is completely dependent upon specific facts and circumstances</strong>. These examples are provided for illustrative purposes only and are not intended to create any new expectations beyond current regulatory requirements.</p>
+        <p style="margin-top:0.5rem;">本附錄所列僅為應用示例，工具選擇完全取決於具體情境，並不創設額外法規期望。</p>
+    </div>
+
+    <!-- Applications Table + Commentary -->
+    <div class="two-column">
+        <div class="left-column">
+            <h3>Applications Overview Table — QRM Across GMP Activities</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>GMP Activity Area</th>
+                            <th>Key QRM Applications</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>II.1 Integrated Quality Management</strong></td>
+                            <td>
+                                <ul style="margin:0; padding-left:1.2rem;">
+                                    <li>Documentation review: interpret regulatory expectations</li>
+                                    <li>Training: assess appropriateness of initial &amp; ongoing training</li>
+                                    <li>Quality defects: evaluate &amp; communicate potential impact</li>
+                                    <li>Auditing/Inspection: define frequency &amp; scope</li>
+                                    <li>Periodic review: select and interpret trend data</li>
+                                    <li>Change management: evaluate impact of changes</li>
+                                    <li>Continual improvement throughout product lifecycle</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>II.2 Regulatory Operations</strong></td>
+                            <td>
+                                <ul style="margin:0; padding-left:1.2rem;">
+                                    <li>Inspection resource allocation &amp; planning</li>
+                                    <li>Evaluate significance of quality defects, recalls, findings</li>
+                                    <li>Determine post-inspection regulatory follow-up</li>
+                                    <li>Evaluate pharmaceutical development submissions</li>
+                                    <li>Evaluate proposed variations or changes</li>
+                                    <li>Communicate risks between inspectors and assessors (PAT, parametric release)</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>II.3 Development</strong></td>
+                            <td>
+                                <ul style="margin:0; padding-left:1.2rem;">
+                                    <li>Design quality product &amp; manufacturing process (ICH Q8)</li>
+                                    <li>Enhance knowledge of product performance over material attributes</li>
+                                    <li>Assess critical attributes of raw materials, APIs, excipients, packaging</li>
+                                    <li>Establish specifications &amp; identify critical process parameters (CPPs)</li>
+                                    <li>Decrease variability of quality attributes</li>
+                                    <li>Assess need for additional studies (bioequivalence, stability)</li>
+                                    <li>Apply design space concept (ICH Q8)</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>II.4 Facilities, Equipment &amp; Utilities</strong></td>
+                            <td>
+                                <ul style="margin:0; padding-left:1.2rem;">
+                                    <li>Facility/equipment design: material flow, contamination prevention, cleanroom vs. isolator</li>
+                                    <li>Product contact material selection (stainless steel grade, gaskets, lubricants)</li>
+                                    <li>Utility design (HVAC, WFI, compressed gases)</li>
+                                    <li>Preventive maintenance planning</li>
+                                    <li>Hygiene: gowning, cross-contamination prevention</li>
+                                    <li>Qualification scope &amp; extent (IQ/OQ/PQ)</li>
+                                    <li>Cleaning validation limits</li>
+                                    <li>Calibration &amp; maintenance schedules</li>
+                                    <li>Computer system validation extent</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>II.5 Materials Management</strong></td>
+                            <td>
+                                <ul style="margin:0; padding-left:1.2rem;">
+                                    <li>Supplier &amp; contract manufacturer evaluation (audits, quality agreements)</li>
+                                    <li>Starting material variability assessment (age, route of synthesis)</li>
+                                    <li>Use of quarantined material</li>
+                                    <li>Reprocessing, reworking, returned goods</li>
+                                    <li>Storage &amp; distribution conditions (cold chain, temperature, humidity)</li>
+                                    <li>Supply chain risk ranking</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>II.6 Production</strong></td>
+                            <td>
+                                <ul style="margin:0; padding-left:1.2rem;">
+                                    <li>Validation scope: analytical methods, processes, equipment, cleaning</li>
+                                    <li>Follow-up activities: sampling, monitoring, revalidation</li>
+                                    <li>Distinguish critical vs. non-critical process steps</li>
+                                    <li>In-process control: frequency &amp; extent</li>
+                                    <li>PAT &amp; parametric/real-time release</li>
+                                    <li>Production planning (dedicated, campaign, concurrent)</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>II.7 Laboratory Control &amp; Stability</strong></td>
+                            <td>
+                                <ul style="margin:0; padding-left:1.2rem;">
+                                    <li>OOS investigation: root causes &amp; corrective actions</li>
+                                    <li>Retest period / expiration date assessment</li>
+                                    <li>Storage &amp; testing of intermediates, excipients, starting materials</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>II.8 Packaging &amp; Labelling</strong></td>
+                            <td>
+                                <ul style="margin:0; padding-left:1.2rem;">
+                                    <li>Secondary package design (authenticity, label legibility)</li>
+                                    <li>Container closure system: critical parameters</li>
+                                    <li>Label control procedures (mix-up prevention)</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="right-column">
+            <h3>中文解析 — 應用範例總覽</h3>
+            <div class="note-box">
+                <h4>無菌填充 CDMO 稽查最常被查核的 QRM 應用</h4>
+                <p>根據 PIC/S / FDA / EMA 的稽查重點，以下是在無菌製劑 CDMO 稽查中最常被詢問的 QRM 應用場景：</p>
+                <ol style="padding-left:1.5rem; margin-top:0.5rem;">
+                    <li><strong>培養基灌裝風險評估（II.6）</strong>：APS / Media Fill 的頻率如何用風險評估決定？失敗後的 CAPA 是否有 FMEA 支持？</li>
+                    <li><strong>環境監控程序（II.4 + II.6）</strong>：EM 採樣點位、頻率、警戒 / 行動限值的設定，是否有書面的風險評估依據？</li>
+                    <li><strong>供應商管理（II.5）</strong>：供應商稽查頻率是否基於風險排序？關鍵原料的 CQA 變異性評估是否有文件？</li>
+                    <li><strong>變更管理（II.1）</strong>：每一個製程 / 設備 / 人員重大變更，是否有書面風險評估？如何決定驗證再確認的範圍？</li>
+                    <li><strong>OOS 調查（II.7）</strong>：根因分析使用了哪些工具（FTA、魚骨圖）？CAPA 的有效性如何驗證？</li>
+                </ol>
+            </div>
+
+            <div class="term-box">
+                <h4>II.3 開發：設計空間（Design Space）</h4>
+                <p>ICH Q8 引入的 Design Space 概念，需要透過 QRM 識別哪些製程參數是關鍵（CPP），並確定這些參數在何範圍內操作才能確保 CQA 達標。</p>
+                <p>在 CDMO 技術轉移場景：客戶的 DS（Design Space）文件 + CDMO 自己的 FMEA / HAZOP = 完整的 QRM 知識體系，這正是稽查員希望看到的「科學與風險驅動的製程理解」。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>II.4 設施與設備：最常見的 FMEA 應用場景</h4>
+                <p>在無菌填充 CDMO，以下設施 / 設備項目最常見到 FMEA 或 HAZOP 文件：</p>
+                <ul>
+                    <li><strong>隔離器（Isolator）系統</strong>：手套完整性、VHP 滅菌週期</li>
+                    <li><strong>HVAC 系統</strong>：壓差梯度、換氣次數設定依據</li>
+                    <li><strong>WFI 系統</strong>：配水溫度、TOC / 內毒素監控頻率</li>
+                    <li><strong>自動化灌裝機</strong>：充填量精準性、西林瓶 / 安瓿完整性</li>
+                    <li><strong>冷鏈倉儲</strong>：溫度偏差發生時的產品影響評估</li>
+                </ul>
+            </div>
+
+            <div class="term-box">
+                <h4>II.5 物料管理：供應鏈風險排序示例</h4>
+                <p>典型 CDMO 供應商風險評分維度：</p>
+                <table>
+                    <thead>
+                        <tr><th>評分維度</th><th>權重</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>物料對患者的潛在影響（嚴重度）</td><td>30%</td></tr>
+                        <tr><td>替代供應商可得性</td><td>20%</td></tr>
+                        <tr><td>前次稽查結果 / 偏差歷史</td><td>25%</td></tr>
+                        <tr><td>GMP 合規認證狀態</td><td>15%</td></tr>
+                        <tr><td>交貨穩定性 / 供應中斷風險</td><td>10%</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="term-box">
+                <h4>II.6 生產：PAT 與即時放行</h4>
+                <p>PAT（製程分析技術）在 ICH Q8 / Q9 / Q10 三角框架下，需要用 QRM 評估：</p>
+                <ul>
+                    <li>PAT 感測器失效時的備援機制風險</li>
+                    <li>即時放行（RTRT）的接受標準是否有足夠的統計基礎</li>
+                    <li>參數放行（Parametric Release）與無菌保證的風險連結</li>
+                </ul>
+                <p>稽查員會要求查看 PAT 系統的驗證文件與風險評估報告。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Detailed Application Sections -->
+    <h3 class="section-title" style="font-size:1rem;">II.1 — Integrated Quality Management 整合品質管理</h3>
+    <div class="two-column">
+        <div class="left-column">
+            <h3>II.1 Quality Risk Management as Part of Integrated Quality Management</h3>
+            <p><strong>Documentation:</strong> To review current interpretations and application of regulatory expectations; to determine the desirability of and/or develop the content for SOPs, guidelines, etc.</p>
+            <p><strong>Training and education:</strong> To determine the appropriateness of initial and/or ongoing training sessions based on education, experience and working habits of staff, as well as on a periodic assessment of previous training (e.g., its effectiveness). To identify the training, experience, qualifications and physical abilities that allow personnel to perform an operation reliably and with no adverse impact on the quality of the product.</p>
+            <p><strong>Quality defects:</strong> To provide the basis for identifying, evaluating, and communicating the potential quality impact of a suspected quality defect, complaint, trend, deviation, investigation, out of specification result, etc. To facilitate risk communications and determine appropriate action to address significant product defects, in conjunction with regulatory authorities (e.g., recall).</p>
+            <p><strong>Auditing/Inspection:</strong> To define the frequency and scope of audits, both internal and external, taking into account factors such as:</p>
+            <ul>
+                <li>Existing legal requirements</li>
+                <li>Overall compliance status and history of the company or facility</li>
+                <li>Robustness of a company's quality risk management activities</li>
+                <li>Complexity of the site, manufacturing process, and product</li>
+                <li>Number and significance of quality defects (e.g. recall)</li>
+                <li>Results of previous audits/inspections</li>
+                <li>Major changes of building, equipment, processes, key personnel</li>
+                <li>Experience with manufacturing of a product (frequency, volume, number of batches)</li>
+                <li>Test results of official control laboratories</li>
+            </ul>
+            <p><strong>Periodic review:</strong> To select, evaluate and interpret trend results of data within the product quality review; to interpret monitoring data (e.g., to support an assessment of the appropriateness of revalidation or changes in sampling).</p>
+            <p><strong>Change management / change control:</strong> To manage changes based on knowledge and information accumulated in pharmaceutical development and during manufacturing; to evaluate the impact of changes on product availability, facility, equipment, material, or technical transfers; to determine appropriate actions preceding implementation (e.g., additional testing, (re)qualification, (re)validation, communication with regulators).</p>
+            <p><strong>Continual improvement:</strong> To facilitate continual improvement in processes throughout the product lifecycle.</p>
+        </div>
+        <div class="right-column">
+            <h3>中文解析 — 整合品質管理中的 QRM</h3>
+            <div class="term-box">
+                <h4>稽查頻率的風險依據</h4>
+                <p>PIC/S 明確列出決定稽查頻率的風險因子，這意味著監管機構<strong>自己也在用風險排序決定如何分配稽查資源</strong>。了解這個邏輯，可以幫助 CDMO 主動管理稽查風險：</p>
+                <ul>
+                    <li>過去有重大缺失 → 預期更頻繁稽查</li>
+                    <li>產品治療重要性高（如抗癌針劑）→ 稽查強度更高</li>
+                    <li>QRM 活動強健有文件 → 可能獲得較寬鬆的稽查間隔</li>
+                </ul>
+            </div>
+            <div class="note-box">
+                <h4>變更管理中的 QRM 文件化</h4>
+                <p>每次提出 Change Control，QA 必須回答：「這個變更對哪些 CQA 有潛在影響？影響程度如何？需要哪些驗證活動？」這些問題的答案，必須有書面的 Risk Assessment 支持，而不是口頭判斷。稽查員常要求查閱近兩年所有主要變更的風險評估報告。</p>
+            </div>
+            <div class="analogy-box">
+                <h4>訓練有效性的風險思維</h4>
+                <p>無菌灌裝操作員的訓練不只是「上課考試通過」。QRM 要求問：</p>
+                <ul>
+                    <li>這個人的操作習慣是否真的能防止污染？</li>
+                    <li>gowning 失誤的頻率是否在可接受範圍？</li>
+                    <li>APS 失敗率是否和特定操作員有相關性？</li>
+                </ul>
+                <p>這種「基於風險的訓練評估」，就是 ICH Q10 PQS（製藥品質系統）的精神所在。</p>
+            </div>
+        </div>
+    </div>
+
+    <h3 class="section-title" style="font-size:1rem;">II.2 — Regulatory Operations 法規作業</h3>
+    <div class="two-column">
+        <div class="left-column">
+            <h3>II.2 Quality Risk Management as Part of Regulatory Operations</h3>
+            <p><strong>Inspection and assessment activities:</strong> To assist with resource allocation including inspection planning and frequency, and inspection and assessment intensity. To evaluate the significance of quality defects, potential recalls and inspectional findings. To determine the appropriateness and type of post-inspection regulatory follow-up. To evaluate information submitted by industry including pharmaceutical development information. To evaluate impact of proposed variations or changes.</p>
+            <p>To identify risks which should be communicated between inspectors and assessors to facilitate better understanding of how risks can be or are controlled (e.g. <span class="key-term">parametric release</span>, <span class="key-term">Process Analytical Technology (PAT)</span>).</p>
+        </div>
+        <div class="right-column">
+            <h3>中文解析 — 法規作業中的 QRM</h3>
+            <div class="term-box">
+                <h4>從監管機構角度看 QRM</h4>
+                <p>這一節的視角是「監管機構如何使用 QRM」——不是廠商，而是稽查員和審查員。理解這個視角，可以幫助 CDMO 更準確地預測稽查員的關注點。</p>
+                <p>稽查員依風險決定：</p>
+                <ul>
+                    <li>這家廠要稽查幾天、查哪些部門</li>
+                    <li>發現缺失後，是警告函還是要求限期改善</li>
+                    <li>技術審查員（Assessor）和稽查員如何分享風險資訊</li>
+                </ul>
+            </div>
+            <div class="note-box">
+                <h4>PAT 與參數放行：風險溝通的橋梁</h4>
+                <p>Parametric Release（參數放行）和 PAT 都需要稽查員和審查員之間的風險資訊共享。如果廠商在申請參數放行，必須能清楚說明：哪些參數替代了最終產品放行測試、這些參數的控制如何確保品質、風險評估如何支持這個決策。</p>
+            </div>
+        </div>
+    </div>
+
+    <h3 class="section-title" style="font-size:1rem;">II.3–II.8 — Production, Materials &amp; Beyond 生產、物料及其他領域</h3>
+    <div class="two-column">
+        <div class="left-column">
+            <h3>II.3 Development | II.4 Facilities, Equipment &amp; Utilities | II.5 Materials Management | II.6 Production | II.7 Laboratory Control | II.8 Packaging &amp; Labelling</h3>
+            <p><strong>II.3 Development:</strong> Design a quality product and manufacturing process to consistently deliver intended performance (ICH Q8). Assess critical attributes of raw materials, solvents, API starting materials, APIs, excipients, or packaging materials. Establish appropriate specifications, identify critical process parameters and establish manufacturing controls. Decrease variability of quality attributes. Apply the "design space" concept.</p>
+            <p><strong>II.4 Facilities:</strong> Determine appropriate zones (material/personnel flow, contamination minimization, pest control, mix-up prevention, open vs. closed equipment, clean rooms vs. isolator technologies, dedicated/segregated facilities). Select appropriate product contact materials. Determine utilities (steam, gases, power, compressed air, HVAC, water). Plan preventive maintenance. Protect product from chemical, microbiological, physical hazards. Determine scope of qualification (IQ/OQ/PQ). Determine acceptable cleaning validation limits. Set calibration and maintenance schedules. Determine computer system validation extent.</p>
+            <p><strong>II.5 Materials Management:</strong> Comprehensive evaluation of suppliers and contract manufacturers. Assess differences and possible quality risks with starting material variability. Determine appropriateness of using material under quarantine, reprocessing, reworking, or returned goods. Assess adequacy of storage and transport conditions (cold chain). Provide information ensuring pharmaceutical availability (supply chain risk ranking).</p>
+            <p><strong>II.6 Production:</strong> Identify the scope and extent of verification, qualification and validation activities. Determine follow-up activities (sampling, monitoring, revalidation). Distinguish critical vs. non-critical process steps for validation design. Evaluate frequency and extent of in-process control testing. Evaluate and justify use of <span class="key-term">PAT</span> in conjunction with parametric and real-time release. Determine appropriate production planning (dedicated, campaign, concurrent).</p>
+            <p><strong>II.7 Laboratory Control &amp; Stability:</strong> Identify potential root causes and corrective actions during OOS investigations. Evaluate adequacy of storage and testing of intermediates, excipients and starting materials.</p>
+            <p><strong>II.8 Packaging &amp; Labelling:</strong> Design secondary package for protection of primary packaged product (authenticity, legibility). Determine critical parameters of the container closure system. Design label control procedures based on potential for mix-ups involving different product labels.</p>
+        </div>
+        <div class="right-column">
+            <h3>中文解析 — 生產到包裝的 QRM 全景</h3>
+            <div class="term-box">
+                <h4>II.4：設施設計是 QRM 的最前線</h4>
+                <p>無菌製劑 CDMO 在廠房設計階段就必須做 QRM。「隔離器 vs. RABS vs. 傳統潔淨室」的選擇，不能只靠成本考量，必須有書面的污染風險評估支持。這正是 Annex 1 (2022) 強調的精神：污染控制策略（CCS）必須有科學與風險基礎。</p>
+            </div>
+            <div class="term-box">
+                <h4>II.6：製程驗證中的「關鍵 vs. 非關鍵」判定</h4>
+                <p>ICH Q11 和 Annex 15 都要求廠商能清楚說明，哪些製程步驟是「關鍵的」——這個判定必須有 QRM 依據（通常是 FMEA 或 HAZOP 的輸出）。驗證範圍因此不再是「全部都驗」，而是「風險驅動地聚焦在關鍵步驟上」。</p>
+            </div>
+            <div class="note-box">
+                <h4>II.8：包裝標籤的 QRM — 容易被低估</h4>
+                <p>標籤混淆（Label Mix-up）是歷史上導致重大藥品事故的常見原因。QRM 要求對每一張標籤設計、每一個列印流程、每一個存放位置都評估「混淆的可能性」，並建立相對應的防錯措施（如條碼掃描、視覺確認）。稽查員常在這個不起眼的環節發現系統性缺失。</p>
+            </div>
+            <div class="analogy-box">
+                <h4>容器密封系統（CCS）的 QRM</h4>
+                <p>容器密封完整性（Container Closure Integrity, CCI）是無菌保證的最後防線。CCS 的 QRM 應包括：</p>
+                <ul>
+                    <li>密封機構失效的 FMEA（如旋蓋扭力不足、鋁蓋翻邊不完全）</li>
+                    <li>選材風險評估（相容性、脫落顆粒）</li>
+                    <li>CCI 測試方法的驗證範圍（HVLD、藍色染料法等）</li>
+                </ul>
+            </div>
+            <div class="practice-box">
+                <h4>CDMO 綜合思考題</h4>
+                <p>一家 CDMO 正在接手一個多成分凍乾製劑的技術轉移，在從 II.3（開發）到 II.8（包裝）的全鏈條中，你會建議在哪幾個節點一定要做書面風險評估，並使用什麼工具？</p>
+                <p><strong>建議框架</strong>：</p>
+                <ul style="font-size:0.88rem;">
+                    <li>II.3 開發確認：PHA 識別關鍵危害 → FMEA 評估製程 CPP</li>
+                    <li>II.4 設施確認：HAZOP 評估凍乾機操作偏差風險</li>
+                    <li>II.5 物料：供應商風險排序 + 賦形劑相容性 FMEA</li>
+                    <li>II.6 生產：HACCP 建立 CCP 監控（如冷凍曲線關鍵點）</li>
+                    <li>II.7 QC：OOS 觸發 FTA 調查</li>
+                    <li>II.8 包裝：標籤混淆 FMEA + CCI 風險評估</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SUMMARY LEARNING OBJECTIVES ===== -->
+    <div class="learning-objectives summary">
+        <h3>本節學習總結 — Part B Key Takeaways</h3>
+        <ul>
+            <li><strong>工具選擇邏輯</strong>：PHA（早期快篩）→ HAZOP（製程偏差識別）/ FMEA（元件失效分析）→ HACCP（CCP 監控建立）→ Risk Ranking（跨類風險排序）→ 統計工具（數據驅動決策）</li>
+            <li><strong>FMEA vs. FTA</strong>：FMEA 由下而上（預防性），FTA 由上而下（反應性）——兩者互補，在完整的 QRM 程序中都有位置</li>
+            <li><strong>HACCP 的七步驟</strong>在無菌填充場景直接對應到 CCP 清單、警戒/行動限值、環境監控計畫和 Media Fill 驗證體系</li>
+            <li><strong>應用範例（Annex II）</strong>提醒我們：QRM 不只是一個單一稽查項目，而是貫穿整個 GMP 體系——從廠房設計到標籤控制，每個環節都有其風險評估的責任</li>
+            <li><strong>對 CDMO 稽查的實務意義</strong>：稽查員期望看到的不只是「有做風險評估」，而是「風險評估驅動了決策」——選擇工具、設定標準、決定驗證範圍，都要能回溯到書面的風險依據</li>
+        </ul>
+    </div>
+
+</div><!-- end main-content -->
+
+<!-- ===== FOOTER ===== -->
+<div class="main-footer">
+    <p>SterileGMP Knowledge Hub — PIC/S PE 009-17 Annex 20 Quality Risk Management</p>
+    <p>Part B: Risk Management Methods, Tools &amp; Potential Applications | Section 02</p>
+    <p style="opacity:0.6; font-size:0.8rem;">Educational use only. Always refer to the official PIC/S PE 009-17 document for regulatory compliance.</p>
+</div>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0, behavior:'smooth'})">&#8679;</button>
+
+<script>
+    // Back to top visibility
+    window.addEventListener('scroll', function() {
+        const btn = document.getElementById('backToTop');
+        if (window.scrollY > 400) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+</script>
+
+</body>
+</html>

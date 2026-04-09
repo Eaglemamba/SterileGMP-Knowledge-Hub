@@ -1,0 +1,1774 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIC/S Annex 20 — Quality Risk Management (Part A)</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 0 !important;
+    padding-left: 1.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== QRM PROCESS DIAGRAM ===== */
+.qrm-diagram {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.qrm-box {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin: 0.3rem;
+}
+
+.qrm-box.initiate  { background: #e3f2fd; border: 2px solid #1976d2; color: #1565c0; }
+.qrm-box.assess    { background: #e8f5e9; border: 2px solid #388e3c; color: #2e7d32; }
+.qrm-box.control   { background: #fff3e0; border: 2px solid #f57c00; color: #e65100; }
+.qrm-box.review    { background: #f3e5f5; border: 2px solid #7b1fa2; color: #6a1b9a; }
+.qrm-box.output    { background: #fce4ec; border: 2px solid #c62828; color: #b71c1c; }
+.qrm-box.sub       { background: #f5f5f5; border: 1px solid #9e9e9e; color: #424242; font-weight: 400; }
+
+.qrm-arrow { font-size: 1.1rem; color: #718096; margin: 0.15rem 0; display: block; }
+
+/* ===== SUMMARY BOX ===== */
+.summary-box {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%);
+    border: 2px solid #f6ad55;
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    margin-top: 2rem;
+}
+
+.summary-box h3 {
+    color: #92400e;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #f6ad55;
+    padding-bottom: 0.5rem;
+}
+
+.summary-box ul {
+    margin-left: 1.25rem;
+}
+
+.summary-box li {
+    margin-bottom: 0.5rem;
+    font-size: 0.93rem;
+    color: #78350f;
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<div class="header">
+    <h1>Annex 20 — Quality Risk Management (Part A)</h1>
+    <div class="subtitle">品質風險管理 — 前言、範圍、原則與流程</div>
+    <div class="page-info">PIC/S PE 009-17 | Annex 20 | Part A</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- ===== LEARNING OBJECTIVES ===== -->
+    <div class="learning-objectives">
+        <h3>學習目標 Learning Objectives</h3>
+        <ol>
+            <li>了解 PIC/S Annex 20 與 ICH Q9 的對應關係，以及其在 GMP 品質系統中的定位與自願性質。</li>
+            <li>掌握 <span class="key-term">quality risk management</span> 的兩大核心原則：科學為基礎、努力程度與風險相稱。</li>
+            <li>能描述 QRM 標準流程的四個主要環節：<span class="key-term">risk assessment</span>、<span class="key-term">risk control</span>、<span class="key-term">risk communication</span>、<span class="key-term">risk review</span>。</li>
+            <li>理解各主要工具（FMEA、FTA、HACCP、HAZOP 等）的應用場景，以及正式與非正式 QRM 方法的差異。</li>
+        </ol>
+    </div>
+
+    <!-- ===== SECTION 1: FOREWORD AND SCOPE ===== -->
+    <h2 class="section-title">1. Foreword and Scope of Application — 前言與適用範圍 (¶1–6)</h2>
+
+    <div class="two-column">
+        <div class="left-column">
+            <h3>Foreword and Scope of Application</h3>
+            <p><strong>1.</strong> The new GMP Annex 20 corresponds to the ICH Q9 guideline on <span class="key-term">Quality Risk Management</span>. It provides guidance on a <span class="key-term">systematic approach</span> to quality risk management facilitating compliance with GMP and other quality requirements. It includes principles to be used and options for processes, methods and tools which may be used when applying a formal <span class="key-term">quality risk management</span> approach.</p>
+            <p><strong>2.</strong> To ensure coherence, GMP Part I, Chapter 1 on Quality Management, has been revised to include aspects of quality risk management within the quality system framework. A similar revision is planned for Part II of the Guide. Other sections of the GMP Guide may be adjusted to include aspects of quality risk management in future broader revisions of those sections.</p>
+            <p><strong>3.</strong> With the revision of the chapters on quality management in GMP Parts I and II, <span class="key-term">quality risk management</span> becomes an integral part of a manufacturer's quality system. Annex 20 itself is not intended, however, to create any new regulatory expectations; it provides an inventory of internationally acknowledged risk management methods and tools together with a list of potential applications at the discretion of manufacturers.</p>
+            <p><strong>4.</strong> It is understood that the ICH Q9 guideline was primarily developed for quality risk management of medicinal products for human use. With the implementation in Annex 20, benefits of the guideline — such as processes, methods and tools for <span class="key-term">quality risk management</span> — are also made available to the veterinary sector.</p>
+            <p><strong>5.</strong> While the GMP guide is primarily addressed to manufacturers, the ICH Q9 guideline has relevance for other quality guidelines and includes specific sections for regulatory agencies.</p>
+            <p><strong>6.</strong> For reasons of coherence and completeness, the ICH Q9 guideline has been transferred completely into GMP Annex 20.</p>
+            <p><em>* This Annex is voluntary.</em></p>
+        </div>
+        <div class="right-column">
+            <h3>中文解說</h3>
+
+            <div class="concept-box">
+                <h4>Annex 20 的身份定位</h4>
+                <p>Annex 20 是 ICH Q9 的直接移植版本，供 PIC/S 成員國使用。這讓全球製藥廠無需同時維護兩套風險管理文件：GMP Annex 20 與 ICH Q9 內容高度一致。</p>
+                <p>重點：Annex 20 不創造任何「新的法規要求」，它是將國際公認的工具庫整理成 GMP 體系內可用的參考清單。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>自願性質 (Voluntary)</h4>
+                <p>Annex 20 明確標示為<strong>自願性</strong>（Voluntary）。但請注意：GMP Part I Chapter 1 已被修訂，QRM 概念已被嵌入強制性品質系統框架中。實務上「自願採用 Annex 20 的工具」，不代表「可以不做風險管理」。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻：ICH Q9 與 Annex 20 的關係</h4>
+                <p>就像 WHO 發布一套手術安全核查表，而各國衛生部將其收入本國醫院管理規範。核查表內容相同，但掛在本國規章下，讓本地醫院有明確的法源依據遵循。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>獸藥產業的納入</h4>
+                <p>ICH Q9 原本以人用藥為主。Annex 20 明確將範圍延伸至獸藥（veterinary sector），使 CDMO 服務獸藥客戶時同樣有明確的 QRM 框架可遵循。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 2: INTRODUCTION ===== -->
+    <h2 class="section-title">2. Introduction — 導論 (¶7–12)</h2>
+
+    <div class="two-column">
+        <div class="left-column">
+            <h3>Introduction</h3>
+            <p><strong>7.</strong> Risk management principles are effectively utilized in many areas of business and government including finance, insurance, occupational safety, public health, pharmacovigilance, and by agencies regulating these industries. Although there are some examples of the use of <span class="key-term">quality risk management</span> in the pharmaceutical industry today, they are limited and do not represent the full contributions that risk management has to offer. The importance of quality systems has been recognized in the pharmaceutical industry and it is becoming evident that <span class="key-term">quality risk management</span> is a valuable component of an effective quality system.</p>
+            <p><strong>8.</strong> It is commonly understood that risk is defined as the combination of the probability of occurrence of harm and the severity of that harm. However, achieving a shared understanding of the application of risk management among diverse stakeholders is difficult because each stakeholder might perceive different potential harms, place a different probability on each harm occurring and attribute different severities to each harm. In relation to pharmaceuticals, although there are a variety of stakeholders, including patients and medical practitioners as well as government and industry, the protection of the patient by managing the risk to quality should be considered of prime importance.</p>
+            <p><strong>9.</strong> The manufacturing and use of a drug (medicinal) product, including its components, necessarily entail some degree of risk. The risk to its quality is just one component of the overall risk. Product quality should be maintained throughout the product lifecycle such that the attributes that are important to the quality of the drug (medicinal) product remain consistent with those used in the clinical studies. An effective <span class="key-term">quality risk management</span> approach can further ensure the high quality of the drug (medicinal) product to the patient by providing a proactive means to identify and control potential quality issues during development and manufacturing. Additionally, use of <span class="key-term">quality risk management</span> can improve the decision making if a quality problem arises.</p>
+            <p><strong>10.</strong> The purpose of this document is to offer a <span class="key-term">systematic approach</span> to <span class="key-term">quality risk management</span>. It serves as a foundation or resource document that is independent of, yet supports, other ICH Quality documents and complements existing quality practices, requirements, standards, and guidelines within the pharmaceutical industry and regulatory environment.</p>
+            <p><strong>11.</strong> It is neither always appropriate nor always necessary to use a formal risk management process (using recognized tools and/or internal procedures, e.g. standard operating procedures). The use of informal risk management processes (using empirical tools and/or internal procedures) can also be considered acceptable.</p>
+            <p><strong>12.</strong> Appropriate use of <span class="key-term">quality risk management</span> can facilitate but does not obviate industry's obligation to comply with regulatory requirements and does not replace appropriate communications between industry and regulators.</p>
+        </div>
+        <div class="right-column">
+            <h3>中文解說</h3>
+
+            <div class="concept-box">
+                <h4>風險的基本定義</h4>
+                <p>¶8 給出了風險的正式定義：</p>
+                <p style="text-align:center; font-weight:600; margin: 0.5rem 0;">風險 = 危害發生的機率 × 危害的嚴重程度</p>
+                <p>這個定義來自 ISO/IEC Guide 51，是全行業的共同語言。不同利害關係人（患者、醫師、監管機構、廠商）對「哪種危害最嚴重」可能有不同觀點，但最終的核心原則是：<strong>患者保護優先</strong>。</p>
+            </div>
+
+            <div class="formula-box">
+                <h4>風險估算的量化關係</h4>
+                <pre>風險 (Risk) = P(危害發生) × S(危害嚴重度)
+
+進階版（FMEA/FMECA）：
+RPN = Severity × Probability × Detectability
+(Risk Priority Number = 嚴重度 × 發生機率 × 可偵測性)</pre>
+                <p>Detectability（可偵測性）越低，代表問題越難被發現，RPN 越高，優先處理的必要性越大。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻：QRM 就像工廠的保險精算師</h4>
+                <p>保險公司在承保前會系統性地評估每一個風險因子，而不是等災難發生後才補救。QRM 的核心邏輯相同：<strong>主動識別潛在問題，在問題發生前採取控制措施</strong>，而不是每次偏差後再做事後分析。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>正式 vs. 非正式 QRM（¶11）</h4>
+                <p>Annex 20 明確允許<span class="key-term">非正式的風險管理方法</span>（informal risk management processes）。這意味著：</p>
+                <ul>
+                    <li>小型變更評估可以用 SOP 內建的簡單矩陣</li>
+                    <li>複雜製程驗證則適合採用 FMEA 或 HAZOP 等正式工具</li>
+                    <li>工具選擇應與風險的複雜度相稱（<span class="key-term">proportionality</span>）</li>
+                </ul>
+            </div>
+
+            <div class="note-box">
+                <h4>QRM 不能取代法規合規（¶12）</h4>
+                <p>使用 QRM 工具可以協助決策、提升監管機構的信心，但<strong>不能免除廠商的法規遵從義務</strong>。QRM 是法規合規的補充工具，而非替代品。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>實務思考</h4>
+                <p>在您的工廠中，哪些決策目前是「憑經驗」而非「系統性風險評估」做出的？列舉 2–3 個例子，思考引入 QRM 工具能帶來什麼改變。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 3: SCOPE ===== -->
+    <h2 class="section-title">3. Scope — 適用範圍 (¶13)</h2>
+
+    <div class="two-column">
+        <div class="left-column">
+            <h3>Scope</h3>
+            <p><strong>13.</strong> This guideline provides principles and examples of tools for <span class="key-term">quality risk management</span> that can be applied to different aspects of pharmaceutical quality. These aspects include development, manufacturing, distribution, and the inspection and submission/review processes throughout the lifecycle of drug substances, drug (medicinal) products, biological and biotechnological products (including the use of raw materials, solvents, excipients, packaging and labeling materials in drug (medicinal) products, biological and biotechnological products).</p>
+        </div>
+        <div class="right-column">
+            <h3>中文解說</h3>
+
+            <div class="concept-box">
+                <h4>QRM 的全生命週期覆蓋範圍</h4>
+                <p>Annex 20 的適用範圍涵蓋產品的完整生命週期（<span class="key-term">product lifecycle</span>）：</p>
+                <ul>
+                    <li><strong>研發（Development）</strong>：配方設計、製程開發、臨床試驗材料</li>
+                    <li><strong>製造（Manufacturing）</strong>：商業化生產、製程驗證</li>
+                    <li><strong>配送（Distribution）</strong>：冷鏈管理、物流風險</li>
+                    <li><strong>查核與申請（Inspection/Submission）</strong>：法規審查、稽核應對</li>
+                </ul>
+                <p>材料範圍包括：原料藥、賦形劑、溶劑、包裝材料、標籤，以及生物製劑與生技產品。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻：從農場到餐桌</h4>
+                <p>就像食品安全管理從原料農場開始，涵蓋加工、包裝、運輸到消費者使用全程。製藥品質風險管理同樣從原料採購開始，一路延伸到患者用藥後的藥物警戒（pharmacovigilance），不存在「只管生產環節」的做法。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 4: PRINCIPLES ===== -->
+    <h2 class="section-title">4. Principles of Quality Risk Management — QRM 核心原則 (¶14)</h2>
+
+    <div class="two-column">
+        <div class="left-column">
+            <h3>Principles of Quality Risk Management</h3>
+            <p><strong>14.</strong> Two primary principles of <span class="key-term">quality risk management</span> are:</p>
+            <ul>
+                <li>The evaluation of the risk to quality should be based on scientific knowledge and ultimately link to the protection of the patient; and</li>
+                <li>The level of effort, formality and documentation of the <span class="key-term">quality risk management</span> process should be commensurate with the level of risk.</li>
+            </ul>
+        </div>
+        <div class="right-column">
+            <h3>中文解說</h3>
+
+            <div class="concept-box">
+                <h4>兩大核心原則</h4>
+                <p><strong>原則一：科學為基礎，患者保護為終極目標</strong></p>
+                <p>風險評估必須立基於科學知識（scientific knowledge），而非單憑直覺或行政慣例。所有風險評估的終點都指向同一個方向：確保患者用藥安全。</p>
+                <p><strong>原則二：<span class="key-term">proportionality</span>（相稱性）</strong></p>
+                <p>QRM 的努力程度、正式程度、文件化程度，必須與風險的大小相稱。高風險操作（如無菌填充）需要嚴謹的正式評估；低風險的標籤格式調整則可使用簡單的內部核查。</p>
+            </div>
+
+            <div class="formula-box">
+                <h4>相稱性原則的實務應用</h4>
+                <pre>低風險變更  → 簡單矩陣 / SOP 核查表
+中等風險   → 結構化 FMEA / 風險矩陣
+高風險製程 → HAZOP / HACCP / 定量 PRA
+關鍵設施   → FTA + FMECA 組合使用</pre>
+                <p>「相稱」不代表「越多越好」，過度的文件化本身也可能成為品質系統的風險。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻：消防安全分級</h4>
+                <p>一般辦公室配備滅火器即可；化工廠需要自動噴水系統和消防演練。兩者都在「管理火災風險」，但配置的資源與正式程度與風險等級相稱。製藥 QRM 邏輯相同。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>考試重點提示</h4>
+                <p>Annex 20 ¶14 的兩大原則是最常被法規查核員提問的基礎知識。在稽核中，查核員可能會問：「您如何確保風險評估基於科學知識？」以及「您如何決定 QRM 的正式程度？」</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 5: QRM PROCESS ===== -->
+    <h2 class="section-title">5. General Quality Risk Management Process — QRM 標準流程 (¶15–32)</h2>
+
+    <div class="two-column">
+        <div class="left-column">
+            <h3>General Quality Risk Management Process</h3>
+            <p><strong>15.</strong> <span class="key-term">Quality risk management</span> is a systematic process for the assessment, control, communication and review of risks to the quality of the drug (medicinal) product across the product lifecycle. A model for <span class="key-term">quality risk management</span> is outlined in Figure 1. Other models could be used. The emphasis on each component of the framework might differ from case to case but a robust process will incorporate consideration of all the elements at a level of detail that is commensurate with the specific risk.</p>
+
+            <div class="qrm-diagram">
+                <div class="qrm-box initiate">Initiate Quality Risk Management Process</div>
+                <span class="qrm-arrow">▼</span>
+                <div class="qrm-box assess">Risk Assessment</div>
+                <div style="margin: 0.3rem 0;">
+                    <span class="qrm-box sub">Risk Identification</span>
+                    <span class="qrm-box sub">Risk Analysis</span>
+                    <span class="qrm-box sub">Risk Evaluation</span>
+                </div>
+                <span class="qrm-arrow">▼ (if unacceptable)</span>
+                <div class="qrm-box control">Risk Control</div>
+                <div style="margin: 0.3rem 0;">
+                    <span class="qrm-box sub">Risk Reduction</span>
+                    <span class="qrm-box sub">Risk Acceptance</span>
+                </div>
+                <span class="qrm-arrow">▼</span>
+                <div class="qrm-box output">Output / Result of QRM Process</div>
+                <span class="qrm-arrow">▼</span>
+                <div class="qrm-box review">Risk Review</div>
+                <div style="margin-top: 0.5rem; font-size: 0.8rem; color: #718096;">
+                    Risk Communication (throughout all stages — dashed arrows)
+                </div>
+            </div>
+
+            <p><strong>16.</strong> Decision nodes are not shown in the diagram above because decisions can occur at any point in the process. These decisions might be to return to the previous step and seek further information, to adjust the risk models or even to terminate the risk management process based upon information that supports such a decision. Note: "unacceptable" in the flowchart does not only refer to statutory, legislative or regulatory requirements, but also to the need to revisit the risk assessment process.</p>
+
+            <h3>Responsibilities</h3>
+            <p><strong>17.</strong> <span class="key-term">Quality risk management</span> activities are usually, but not always, undertaken by interdisciplinary teams. When teams are formed, they should include experts from the appropriate areas (e.g. quality unit, business development, engineering, regulatory affairs, production operations, sales and marketing, legal, statistics and clinical) in addition to individuals who are knowledgeable about the quality risk management process.</p>
+            <p><strong>18.</strong> Decision makers should:</p>
+            <ul>
+                <li>take responsibility for coordinating <span class="key-term">quality risk management</span> across various functions and departments of their organization; and</li>
+                <li>assure that a <span class="key-term">quality risk management</span> process is defined, deployed and reviewed and that adequate resources are available.</li>
+            </ul>
+
+            <h3>Initiating a Quality Risk Management Process</h3>
+            <p><strong>19.</strong> <span class="key-term">Quality risk management</span> should include systematic processes designed to coordinate, facilitate and improve science-based decision making with respect to risk. Possible steps used to initiate and plan a QRM process might include the following:</p>
+            <ul>
+                <li>Define the problem and/or risk question, including pertinent assumptions identifying the potential for risk</li>
+                <li>Assemble background information and/or data on the potential hazard, harm or human health impact relevant to the risk assessment</li>
+                <li>Identify a leader and necessary resources</li>
+                <li>Specify a timeline, deliverables and appropriate level of decision making for the risk management process</li>
+            </ul>
+        </div>
+        <div class="right-column">
+            <h3>中文解說</h3>
+
+            <div class="concept-box">
+                <h4>QRM 流程的四個主要環節</h4>
+                <p>Annex 20 的 QRM 模型包含四個環節，圍繞「風險溝通」貫穿全程：</p>
+                <ul>
+                    <li><strong><span class="key-term">Risk Assessment</span>（風險評估）</strong>：識別、分析、評估</li>
+                    <li><strong><span class="key-term">Risk Control</span>（風險控制）</strong>：降低或接受殘餘風險</li>
+                    <li><strong><span class="key-term">Risk Communication</span>（風險溝通）</strong>：全程貫穿，用虛線箭頭表示</li>
+                    <li><strong><span class="key-term">Risk Review</span>（風險審查）</strong>：持續監控、更新評估</li>
+                </ul>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻：QRM 流程如同飛行安全管理</h4>
+                <p>飛行前機師進行風險評估（天氣、機況）→ 決定是否起飛或改航線（風險控制）→ 飛行中持續溝通（塔台通訊）→ 飛行後進行紀錄與回顧（風險審查）。每一次飛行都是一個 QRM 循環。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>決策節點的靈活性（¶16）</h4>
+                <p>流程圖中未畫出決策節點，因為<strong>決策可在任何階段發生</strong>。「unacceptable」不僅指法規不符合，也包括需要重新評估的情況。QRM 是一個迭代循環（iterative cycle），而非線性單行道。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>跨職能團隊的重要性（¶17）</h4>
+                <p>QRM 通常由跨職能團隊執行，成員可能包括：</p>
+                <ul>
+                    <li>品質保證（QA）</li>
+                    <li>生產操作（Production）</li>
+                    <li>工程/設施（Engineering）</li>
+                    <li>法規事務（Regulatory Affairs）</li>
+                    <li>統計學家（Statistics）</li>
+                    <li>臨床/醫學（Clinical）</li>
+                </ul>
+                <p>多元視角可以減少單一部門的偏見，提升風險評估的完整性。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>QRM 啟動的四個步驟（¶19）</h4>
+                <ol>
+                    <li><strong>定義問題</strong>：清楚描述風險問題或風險假設</li>
+                    <li><strong>蒐集資料</strong>：收集相關危害、歷史數據、文獻</li>
+                    <li><strong>確定負責人與資源</strong>：指定 QRM 領導者與所需人力</li>
+                    <li><strong>設定時程與決策層級</strong>：明確交付物與升級機制</li>
+                </ol>
+            </div>
+
+            <div class="practice-box">
+                <h4>實務思考</h4>
+                <p>在您上一次執行 CAPA 或變更控制時，是否正式「啟動」了一個 QRM 流程？對照¶19的四個步驟，哪些步驟被遺漏了？</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 5b: RISK ASSESSMENT ===== -->
+    <h2 class="section-title">5.1 Risk Assessment — 風險評估 (¶20–25)</h2>
+
+    <div class="two-column">
+        <div class="left-column">
+            <h3>Risk Assessment</h3>
+            <p><strong>20.</strong> <span class="key-term">Risk assessment</span> consists of the identification of hazards and the analysis and evaluation of risks associated with exposure to those hazards. Quality risk assessments begin with a well-defined problem description or risk question. When the risk in question is well defined, an appropriate risk management tool and the types of information needed to address the risk question will be more readily identifiable. As an aid to clearly defining the risk(s), three fundamental questions are often helpful:</p>
+            <ol>
+                <li>What might go wrong?</li>
+                <li>What is the likelihood (probability) it will go wrong?</li>
+                <li>What are the consequences (severity)?</li>
+            </ol>
+            <p><strong>Risk identification</strong> is a systematic use of information to identify hazards referring to the risk question or problem description. Information can include historical data, theoretical analysis, informed opinions, and the concerns of stakeholders. Risk identification addresses the "What might go wrong?" question, including identifying the possible consequences. This provides the basis for further steps in the quality risk management process.</p>
+            <p><strong>22.</strong> <span class="key-term">Risk analysis</span> is the estimation of the risk associated with the identified hazards. It is the qualitative or quantitative process of linking the likelihood of occurrence and severity of harms. In some risk management tools, the ability to detect the harm (detectability) also factors in the estimation of risk.</p>
+            <p><strong>23.</strong> <span class="key-term">Risk evaluation</span> compares the identified and analyzed risk against given risk criteria. Risk evaluations consider the strength of evidence for all three of the fundamental questions.</p>
+            <p><strong>24.</strong> In doing an effective risk assessment, the robustness of the data set is important because it determines the quality of the output. Revealing assumptions and reasonable sources of uncertainty will enhance confidence in this output and/or help identify its limitations. Uncertainty is due to combination of incomplete knowledge about a process and its expected or unexpected variability. Typical sources of uncertainty include gaps in pharmaceutical science and process understanding, sources of harm (e.g., failure modes of a process, sources of variability), and probability of detection of problems.</p>
+            <p><strong>25.</strong> The output of a risk assessment is either a quantitative estimate of risk or a qualitative description of a range of risk. When risk is expressed quantitatively, a numerical probability is used. Alternatively, risk can be expressed using qualitative descriptors, such as "high", "medium", or "low", which should be defined in as much detail as possible. Sometimes a "risk score" is used to further define descriptors in risk ranking.</p>
+        </div>
+        <div class="right-column">
+            <h3>中文解說</h3>
+
+            <div class="concept-box">
+                <h4>風險評估的三個子步驟</h4>
+                <p><span class="key-term">Risk assessment</span> 包含三個層層遞進的子步驟：</p>
+                <ul>
+                    <li><strong>Risk Identification（風險識別）</strong>：「什麼可能出錯？」— 用歷史數據、腦力激盪、FMEA 等方式列出所有潛在失效模式。</li>
+                    <li><strong>Risk Analysis（風險分析）</strong>：「機率與嚴重度各是多少？」— 定性或定量估算，某些工具（如 FMECA）還加入可偵測性。</li>
+                    <li><strong>Risk Evaluation（風險評估）</strong>：「這個風險是否可接受？」— 與預設的風險準則比較，決定是否需要進入風險控制。</li>
+                </ul>
+            </div>
+
+            <div class="formula-box">
+                <h4>三個基本問題 → QRM 的起點</h4>
+                <pre>問題 1：What might go wrong?
+         → 失效模式識別 (Risk Identification)
+
+問題 2：What is the likelihood (probability)?
+         → 機率估算 (Risk Analysis - P)
+
+問題 3：What are the consequences (severity)?
+         → 嚴重度估算 (Risk Analysis - S)
+
+三個問題答案的組合 → 風險估算輸出</pre>
+            </div>
+
+            <div class="note-box">
+                <h4>不確定性的坦誠揭露（¶24）</h4>
+                <p>¶24 強調：有效的風險評估必須坦誠說明假設條件與不確定性來源。隱藏不確定性反而會降低評估的可信度。常見不確定性來源：</p>
+                <ul>
+                    <li>製程理解的知識缺口</li>
+                    <li>製程固有的變異性（expected / unexpected）</li>
+                    <li>問題偵測機率的不確定性</li>
+                </ul>
+            </div>
+
+            <div class="concept-box">
+                <h4>定量 vs. 定性輸出（¶25）</h4>
+                <table>
+                    <thead>
+                        <tr><th>輸出類型</th><th>表達方式</th><th>適用情境</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>定量（Quantitative）</td><td>數值機率，如 1×10⁻⁶</td><td>數據充足的成熟製程</td></tr>
+                        <tr><td>定性（Qualitative）</td><td>High / Medium / Low</td><td>早期開發、資料有限</td></tr>
+                        <tr><td>半定量（Risk Score）</td><td>RPN 分數排序</td><td>FMEA/FMECA 標準輸出</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻：醫師的診斷流程</h4>
+                <p>醫師先問「哪裡不舒服？」（識別）→ 做檢查估算病情嚴重度（分析）→ 對照醫學標準判斷是否需要手術（評估）。QRM 風險評估的三步驟與此完全平行。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 5c: RISK CONTROL ===== -->
+    <h2 class="section-title">5.2 Risk Control — 風險控制 (¶26–29)</h2>
+
+    <div class="two-column">
+        <div class="left-column">
+            <h3>Risk Control</h3>
+            <p><strong>26.</strong> <span class="key-term">Risk control</span> includes decision making to reduce and/or accept risks. The purpose of risk control is to reduce the risk to an acceptable level. The amount of effort used for risk control should be proportional to the significance of the risk. Decision makers might use different processes, including benefit-cost analysis, for understanding the optimal level of risk control.</p>
+            <p><strong>27.</strong> <span class="key-term">Risk control</span> might focus on the following questions:</p>
+            <ul>
+                <li>Is the risk above an acceptable level?</li>
+                <li>What can be done to reduce or eliminate risks?</li>
+                <li>What is the appropriate balance among benefits, risks and resources?</li>
+                <li>Are new risks introduced as a result of the identified risks being controlled?</li>
+            </ul>
+            <p><strong>28.</strong> Risk reduction focuses on processes for mitigation or avoidance of quality risk when it exceeds a specified (acceptable) level. Risk reduction might include actions taken to mitigate the severity and probability of harm. Processes that improve the detectability of hazards and quality risks might also be used as part of a risk control strategy. The implementation of risk reduction measures can introduce new risks into the system or increase the significance of other existing risks. Hence, it might be appropriate to revisit the risk assessment to identify and evaluate any possible change in risk after implementing a risk reduction process.</p>
+            <p><strong>29.</strong> <span class="key-term">Risk acceptance</span> is a decision to accept risk. <span class="key-term">Risk acceptance</span> can be a formal decision to accept the residual risk or it can be a passive decision in which residual risks are not specified. For some types of harms, even the best quality risk management practices might not entirely eliminate risk. In these circumstances, it might be agreed that an appropriate quality risk management strategy has been applied and that quality risk is reduced to a specified (acceptable) level. This (specified) acceptable level will depend on many parameters and should be decided on a case-by-case basis.</p>
+        </div>
+        <div class="right-column">
+            <h3>中文解說</h3>
+
+            <div class="concept-box">
+                <h4>風險控制的兩個出口</h4>
+                <p><span class="key-term">Risk control</span> 面對評估結果有兩個選擇：</p>
+                <ul>
+                    <li><strong>Risk Reduction（風險降低）</strong>：採取行動降低嚴重度或機率，例如增加過濾步驟、改善偵測方法、修改 SOP。</li>
+                    <li><strong><span class="key-term">Risk acceptance</span>（風險接受）</strong>：當殘餘風險已降至可接受水準，或進一步降低風險的代價不合比例時，正式記錄接受殘餘風險的決定。</li>
+                </ul>
+            </div>
+
+            <div class="note-box">
+                <h4>控制措施可能引入新風險（¶28）</h4>
+                <p>這是製藥 QRM 最常被忽略的陷阱之一。¶28 明確警示：</p>
+                <p>採取風險降低措施後，<strong>必須重新評估是否引入新風險</strong>（revisit the risk assessment）。</p>
+                <p>例如：為了防止交叉污染而增加清潔步驟 → 可能引入清潔劑殘留的新風險。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻：安全帶 vs. 駕駛行為</h4>
+                <p>強制繫安全帶（風險降低措施）確實減少了碰撞傷亡，但某些研究顯示有人因此駕駛更冒險（新引入的行為風險）。這就是「控制措施引入新風險」的現實體現，製藥 QRM 同樣必須評估這種「反彈效應」。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>風險接受的正式與非正式形式（¶29）</h4>
+                <table>
+                    <thead>
+                        <tr><th>形式</th><th>說明</th><th>實務建議</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>正式接受</td>
+                            <td>明確記錄殘餘風險及接受理由</td>
+                            <td>高風險情境必須採用</td>
+                        </tr>
+                        <tr>
+                            <td>被動接受</td>
+                            <td>未明確說明殘餘風險即繼續進行</td>
+                            <td>低風險情境可接受，但仍建議記錄</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>可接受的殘餘風險水準須<strong>逐案決定（case-by-case）</strong>，不可一刀切。</p>
+            </div>
+
+            <div class="formula-box">
+                <h4>風險控制決策框架</h4>
+                <pre>步驟 1：風險 > 可接受水準？
+   → 是：進行 Risk Reduction
+   → 否：進行 Risk Acceptance
+
+步驟 2（Risk Reduction後）：
+   評估新措施是否引入新風險
+   → 是：返回 Risk Assessment 重新評估
+   → 否：輸出結果，進入 Risk Communication
+
+步驟 3：Risk Acceptance
+   → 正式記錄殘餘風險 + 接受理由</pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 5d: RISK COMMUNICATION & REVIEW ===== -->
+    <h2 class="section-title">5.3 Risk Communication &amp; Risk Review — 風險溝通與風險審查 (¶30–32)</h2>
+
+    <div class="two-column">
+        <div class="left-column">
+            <h3>Risk Communication</h3>
+            <p><strong>30.</strong> <span class="key-term">Risk communication</span> is the sharing of information about risk and risk management between the decision makers and others. Parties can communicate at any stage of the risk management process. The output/result of the quality risk management process should be appropriately communicated and documented. Communications might include those among interested parties; e.g., regulators and industry, industry and the patient, within a company, industry or regulatory authority, etc. The included information might relate to the existence, nature, form, probability, severity, acceptability, control, treatment, detectability or other aspects of risks to quality. Communication need not be carried out for each and every risk acceptance. Between the industry and regulatory authorities, communication concerning quality risk management decisions might be effected through existing channels as specified in regulations and guidances.</p>
+
+            <h3>Risk Review</h3>
+            <p><strong>31.</strong> Risk management should be an ongoing part of the quality management process. A mechanism to review or monitor events should be implemented.</p>
+            <p><strong>32.</strong> The output/results of the risk management process should be reviewed to take into account new knowledge and experience. Once a <span class="key-term">quality risk management</span> process has been initiated, that process should continue to be utilized for events that might impact the original quality risk management decision, whether these events are planned (e.g. results of product review, inspections, audits, change control) or unplanned (e.g. root cause from failure investigations, recall). The frequency of any review should be based upon the level of risk. <span class="key-term">Risk review</span> might include reconsideration of risk acceptance decisions.</p>
+        </div>
+        <div class="right-column">
+            <h3>中文解說</h3>
+
+            <div class="concept-box">
+                <h4>風險溝通的全方位性（¶30）</h4>
+                <p><span class="key-term">Risk communication</span> 在 QRM 流程圖中以「虛線箭頭」表示，代表它貫穿所有階段，而非只在最後才發生。溝通對象可以是：</p>
+                <ul>
+                    <li>監管機構（法規申請、查核應對）</li>
+                    <li>患者與醫療專業人員</li>
+                    <li>公司內部各部門</li>
+                    <li>供應鏈夥伴</li>
+                </ul>
+                <p>重點：並非每次風險接受都需要對外溝通，但決策過程與依據必須被適當文件化。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>風險審查的觸發時機（¶32）</h4>
+                <p><span class="key-term">Risk review</span> 應在以下事件發生時啟動：</p>
+                <ul>
+                    <li><strong>計畫性事件</strong>：年度產品回顧、稽核、變更控制</li>
+                    <li><strong>非計畫性事件</strong>：偏差根本原因分析、客訴、產品召回</li>
+                </ul>
+                <p>審查頻率應與風險等級相稱：高風險製程需更頻繁的審查週期。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻：風險管理如同投資組合管理</h4>
+                <p>成熟的投資人不只是「買進並持有」，而是定期審視市場變化、重新評估各項資產的風險。製藥廠的 QRM 同理：一次風險評估不是永久有效的文件，它必須隨著新知識和新事件持續更新。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>QRM 的持續性循環</h4>
+                <div class="hierarchy-diagram">
+                    <div class="hierarchy-level">
+                        <span class="hierarchy-box level-1">啟動 QRM 流程</span>
+                    </div>
+                    <div class="arrow-down">▼</div>
+                    <div class="hierarchy-level">
+                        <span class="hierarchy-box level-2">風險評估 → 風險控制</span>
+                    </div>
+                    <div class="arrow-down">▼</div>
+                    <div class="hierarchy-level">
+                        <span class="hierarchy-box level-3">輸出結果 → 文件化</span>
+                    </div>
+                    <div class="arrow-down">▼</div>
+                    <div class="hierarchy-level">
+                        <span class="hierarchy-box level-1">風險審查（計畫性 / 非計畫性事件）</span>
+                    </div>
+                    <div class="arrow-down">↩ 循環回到風險評估</div>
+                </div>
+            </div>
+
+            <div class="practice-box">
+                <h4>實務思考</h4>
+                <p>在您的工廠中，風險評估報告通常在完成後就「封存」了嗎？下一次重大偏差或審計時，是否會主動取出重新審查？思考如何將 Risk Review 機制嵌入現有的年度產品品質回顧（APR）流程中。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 6: METHODOLOGY ===== -->
+    <h2 class="section-title">6. Risk Management Methodology — 風險管理方法論 (¶33–37)</h2>
+
+    <div class="two-column">
+        <div class="left-column">
+            <h3>Risk Management Methodology</h3>
+            <p><strong>33.</strong> <span class="key-term">Quality risk management</span> supports a scientific and practical approach to decision-making. It provides documented, transparent and reproducible methods to accomplish steps of the quality risk management process based on current knowledge about assessing the probability, severity and sometimes detectability of the risk.</p>
+            <p><strong>34.</strong> Traditionally, risks to quality have been assessed and managed in a variety of informal ways (empirical and/or internal procedures) based on, for example, compilation of observations, trends and other information. Such approaches continue to provide useful information that might support topics such as handling of complaints, quality defects, deviations and allocation of resources.</p>
+            <p><strong>35.</strong> Additionally, the pharmaceutical industry and regulators can assess and manage risk using recognized risk management tools and/or internal procedures (e.g., standard operating procedures). A non-exhaustive list of some of these tools includes:</p>
+            <ul>
+                <li>Basic risk management facilitation methods (flowcharts, check sheets, etc.)</li>
+                <li>Failure Mode Effects Analysis (FMEA)</li>
+                <li>Failure Mode, Effects and Criticality Analysis (FMECA)</li>
+                <li>Fault Tree Analysis (FTA)</li>
+                <li>Hazard Analysis and Critical Control Points (HACCP)</li>
+                <li>Hazard Operability Analysis (HAZOP)</li>
+                <li>Preliminary Hazard Analysis (PHA)</li>
+                <li>Risk ranking and filtering</li>
+                <li>Supporting statistical tools</li>
+            </ul>
+            <p><strong>36.</strong> It might be appropriate to adapt these tools for use in specific areas pertaining to drug substance and drug (medicinal) product quality. Quality risk management methods and the supporting statistical tools can be used in combination (e.g. Probabilistic Risk Assessment). Combined use provides flexibility that can facilitate the application of quality risk management principles.</p>
+            <p><strong>37.</strong> The degree of rigor and formality of quality risk management should reflect available knowledge and be commensurate with the complexity and/or criticality of the issue to be addressed.</p>
+        </div>
+        <div class="right-column">
+            <h3>中文解說</h3>
+
+            <div class="concept-box">
+                <h4>方法論的三個要求（¶33）</h4>
+                <p>QRM 方法必須具備：</p>
+                <ul>
+                    <li><strong>Documented（文件化）</strong>：可供審計與回溯</li>
+                    <li><strong>Transparent（透明）</strong>：假設、邏輯和數據來源清晰</li>
+                    <li><strong>Reproducible（可重現）</strong>：不同分析師按同樣流程應得到一致的結論</li>
+                </ul>
+            </div>
+
+            <div class="concept-box">
+                <h4>主要 QRM 工具一覽</h4>
+                <table>
+                    <thead>
+                        <tr><th>工具</th><th>全名</th><th>主要應用</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>FMEA</td><td>Failure Mode Effects Analysis</td><td>製程失效模式分析，識別優先風險</td></tr>
+                        <tr><td>FMECA</td><td>Failure Mode, Effects and Criticality Analysis</td><td>FMEA + 嚴重度/機率/可偵測性 → RPN</td></tr>
+                        <tr><td>FTA</td><td>Fault Tree Analysis</td><td>找出失效的根本原因路徑</td></tr>
+                        <tr><td>HACCP</td><td>Hazard Analysis and Critical Control Points</td><td>食品安全邏輯移植至藥廠，識別 CCP</td></tr>
+                        <tr><td>HAZOP</td><td>Hazard Operability Analysis</td><td>系統性危害分析，適用設施設計階段</td></tr>
+                        <tr><td>PHA</td><td>Preliminary Hazard Analysis</td><td>早期危害篩查，資料有限時使用</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻：工具箱的選擇</h4>
+                <p>木工師傅不會用鐵鎚去擰螺絲——他會根據任務選擇合適的工具。QRM 工具的選擇邏輯相同：新廠設計階段用 HAZOP，製程偏差分析用 FTA，設備驗證用 FMEA，無菌製造關鍵控制點用 HACCP。工具可以組合使用，彈性最大。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>正式度與複雜度相稱（¶37）</h4>
+                <p>¶37 再次強調<span class="key-term">proportionality</span>原則：QRM 的嚴謹程度和正式程度必須反映現有知識水準，並與議題的複雜度和關鍵性相稱。過度繁複的工具用於低風險決策，是對資源的浪費，也可能讓 QRM 文化在組織內窒礙難行。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 7: INTEGRATION ===== -->
+    <h2 class="section-title">7. Integration into Industry and Regulatory Operations — 整合至工業與法規運作 (¶38–44)</h2>
+
+    <div class="two-column">
+        <div class="left-column">
+            <h3>Integration of Quality Risk Management</h3>
+            <p><strong>38.</strong> <span class="key-term">Quality risk management</span> is a process that supports science-based and practical decisions when integrated into quality systems. Appropriate use of quality risk management does not obviate industry's obligation to comply with regulatory requirements. However, effective quality risk management can facilitate better and more informed decisions, can provide regulators with greater assurance of a company's ability to deal with potential risks, and might affect the extent and level of direct regulatory oversight. In addition, quality risk management can facilitate better use of resources by all parties.</p>
+            <p><strong>39.</strong> Training of both industry and regulatory personnel in quality risk management processes provides for greater understanding of decision-making processes and builds confidence in quality risk management outcomes.</p>
+            <p><strong>40.</strong> <span class="key-term">Quality risk management</span> should be integrated into existing operations and documented appropriately. The use of the QRM process might provide information that could then be used in a variety of pharmaceutical operations. These examples are provided for illustrative purposes only and should not be considered a definitive or exhaustive list. These examples are not intended to create any new expectations beyond the requirements laid out in the current regulations.</p>
+            <p><strong>41.</strong> Examples for industry and regulatory operations:</p>
+            <ul>
+                <li>Quality management</li>
+            </ul>
+            <p><strong>42.</strong> Examples for industry operations and activities:</p>
+            <ul>
+                <li>Development</li>
+                <li>Facility, equipment and utilities</li>
+                <li>Materials management</li>
+                <li>Production</li>
+                <li>Laboratory control and stability testing</li>
+                <li>Packaging and labelling</li>
+            </ul>
+            <p><strong>43.</strong> Examples for regulatory operations:</p>
+            <ul>
+                <li>Inspection and assessment activities</li>
+            </ul>
+            <p><strong>44.</strong> While regulatory decisions will continue to be taken on a regional basis, a common understanding and application of quality risk management principles could facilitate mutual confidence and promote more consistent decisions among regulators on the basis of the same information. This collaboration could be important in the development of policies and guidelines that integrate and support quality risk management practices.</p>
+        </div>
+        <div class="right-column">
+            <h3>中文解說</h3>
+
+            <div class="concept-box">
+                <h4>QRM 整合的三大效益（¶38）</h4>
+                <ol>
+                    <li><strong>更好的決策</strong>：基於科學和數據，而非經驗直覺</li>
+                    <li><strong>監管信心提升</strong>：讓查核員相信公司有能力自主管理風險，可能減少直接監管干預的頻率與強度</li>
+                    <li><strong>資源優化</strong>：把資源集中在真正高風險的領域，避免在低風險區域的過度投入</li>
+                </ol>
+            </div>
+
+            <div class="note-box">
+                <h4>訓練的重要性（¶39）</h4>
+                <p>¶39 特別提到：不只是廠商人員，<strong>監管人員也需要接受 QRM 培訓</strong>。這反映了監管機構對 QRM 採取「協作夥伴」而非「純查核者」的定位。當查核員和廠商使用相同的 QRM 語言時，審查效率和結果一致性都會提升。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>QRM 在各業務領域的應用範圍</h4>
+                <table>
+                    <thead>
+                        <tr><th>類別</th><th>應用領域</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>工業 + 法規共同</td><td>品質管理系統</td></tr>
+                        <tr>
+                            <td rowspan="6">工業操作</td>
+                            <td>研發（配方、製程設計）</td>
+                        </tr>
+                        <tr><td>廠房、設備與公用系統</td></tr>
+                        <tr><td>物料管理（採購、供應商評估）</td></tr>
+                        <tr><td>生產操作</td></tr>
+                        <tr><td>實驗室管控與穩定性測試</td></tr>
+                        <tr><td>包裝與標籤</td></tr>
+                        <tr><td>法規操作</td><td>查核與評估活動</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻：全球法規的「共同語言」</h4>
+                <p>¶44 指出，QRM 的共同理解可以促進各地監管機構之間的互信與決策一致性。這就像全球航空業採用共同的飛行安全標準（ICAO）——雖然各國仍有自己的民航局，但使用相同框架讓跨境運作更流暢，監管決策更具一致性。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>實務思考</h4>
+                <p>在您的工廠，QRM 目前主要應用在哪個領域（例如：變更控制、設備確效、供應商管理）？¶42 列出的六個工業領域中，哪些目前的 QRM 整合程度最弱？如何優先強化？</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 8: KEY DEFINITIONS ===== -->
+    <h2 class="section-title">8. Key Definitions — 重要定義</h2>
+
+    <div class="two-column">
+        <div class="left-column">
+            <h3>Key Definitions (Annex 20)</h3>
+            <p><strong>Decision maker(s)</strong> — Person(s) with the competence and authority to make appropriate and timely quality risk management decisions.</p>
+            <p><strong>Detectability</strong> — the ability to discover or determine the existence, presence, or fact of a hazard.</p>
+            <p><strong>Harm</strong> — damage to health, including the damage that can occur from loss of product quality or availability.</p>
+            <p><strong>Hazard</strong> — the potential source of harm (ISO/IEC Guide 51).</p>
+            <p><strong>Product Lifecycle</strong> — all phases in the life of the product from the initial development through marketing until the product's discontinuation.</p>
+            <p><strong>Quality</strong> — the degree to which a set of inherent properties of a product, system or process fulfils requirements.</p>
+            <p><strong><span class="key-term">Quality risk management</span></strong> — a systematic process for the assessment, control, communication and review of risks to the quality of the drug (medicinal) product across the product lifecycle.</p>
+            <p><strong>Quality system</strong> — the sum of all aspects of a system that implements quality policy and ensures that quality objectives are met.</p>
+            <p><strong>Requirements</strong> — the explicit or implicit needs or expectations of the patients or their surrogates. In this document, "requirements" refers not only to statutory, legislative, or regulatory requirements, but also to such needs and expectations.</p>
+            <p><strong>Risk</strong> — the combination of the probability of occurrence of harm and the severity of that harm (ISO/IEC Guide 51).</p>
+            <p><strong><span class="key-term">Risk acceptance</span></strong> — the decision to accept risk (ISO Guide 73).</p>
+            <p><strong><span class="key-term">Risk analysis</span></strong> — the estimation of the risk associated with the identified hazards.</p>
+            <p><strong><span class="key-term">Risk assessment</span></strong> — a systematic process of organizing information to support a risk decision to be made within a risk management process.</p>
+            <p><strong><span class="key-term">Risk communication</span></strong> — the sharing of information about risk and risk management between the decision maker and other stakeholders.</p>
+            <p><strong><span class="key-term">Risk control</span></strong> — actions implementing risk management decisions (ISO Guide 73).</p>
+            <p><strong>Risk evaluation</strong> — the comparison of the estimated risk to given risk criteria using a quantitative or qualitative scale to determine the significance of the risk.</p>
+            <p><strong>Risk identification</strong> — the systematic use of information to identify potential sources of harm (hazards).</p>
+            <p><strong>Risk management</strong> — the systematic application of quality management policies, procedures, and practices to the tasks of assessing, controlling, communicating and reviewing risk.</p>
+            <p><strong>Risk reduction</strong> — actions taken to lessen the probability of occurrence of harm and the severity of that harm.</p>
+            <p><strong><span class="key-term">Risk review</span></strong> — review or monitoring of output/results of the risk management process considering (if appropriate) new knowledge and experience about the risk.</p>
+            <p><strong>Severity</strong> — a measure of the possible consequences of a hazard.</p>
+            <p><strong>Stakeholder</strong> — any individual, group or organization that can affect, be affected by, or perceive itself to be affected by a risk.</p>
+        </div>
+        <div class="right-column">
+            <h3>中文解說</h3>
+
+            <div class="concept-box">
+                <h4>Hazard vs. Risk — 常見混淆釐清</h4>
+                <p>這兩個詞在日常中文語境中經常混用，但在 QRM 框架中有精確區別：</p>
+                <table>
+                    <thead>
+                        <tr><th>術語</th><th>英文定義</th><th>製藥實例</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Hazard（危害源）</strong></td>
+                            <td>潛在的危害來源</td>
+                            <td>無菌室內的微生物存在</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Harm（危害）</strong></td>
+                            <td>健康損害（含品質或可獲性損失）</td>
+                            <td>患者感染、產品召回</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Risk（風險）</strong></td>
+                            <td>危害發生機率 × 嚴重度</td>
+                            <td>微生物污染導致感染的綜合機率與嚴重程度</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="concept-box">
+                <h4>QRM 定義的完整系統</h4>
+                <p><span class="key-term">Quality risk management</span> 的官方定義明確包含四個動詞：</p>
+                <ul>
+                    <li><strong>Assessment（評估）</strong></li>
+                    <li><strong>Control（控制）</strong></li>
+                    <li><strong>Communication（溝通）</strong></li>
+                    <li><strong>Review（審查）</strong></li>
+                </ul>
+                <p>這四個詞對應 QRM 流程的四個主要環節，是定義與流程高度一致的設計。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>"Requirements" 的擴展定義</h4>
+                <p>Annex 20 對「要求（Requirements）」的定義超越了法規文本：它明確涵蓋患者的隱性需求與期望。這意味著：即使法規未明確禁止某項做法，只要它可能傷害患者，就違背了 QRM 的核心精神。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>Detectability（可偵測性）的角色</h4>
+                <p>Detectability 是 FMEA/FMECA 計算 RPN 的第三個維度。低可偵測性意味著問題發生了也難以被發現，因此本身就是一種需要控制的風險。提升偵測能力（如增加取樣頻率、改善在線監測）是 Risk Control 的合法手段之一。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SUMMARY BOX ===== -->
+    <div class="summary-box">
+        <h3>Part A 核心要點總結 — Key Takeaways</h3>
+        <ul>
+            <li><strong>Annex 20 的定位</strong>：ICH Q9 的直接移植版本，自願性質，但 QRM 概念已嵌入強制性 GMP Part I Ch.1，不做 QRM 實質上等同不合規。</li>
+            <li><strong>兩大原則</strong>：（1）<span class="key-term">risk assessment</span> 必須基於科學知識並以患者保護為終極目標；（2）QRM 的努力程度須與風險水準相稱（<span class="key-term">proportionality</span>）。</li>
+            <li><strong>QRM 標準流程</strong>：啟動 → <span class="key-term">Risk Assessment</span>（識別/分析/評估）→ <span class="key-term">Risk Control</span>（降低/接受）→ 輸出 → <span class="key-term">Risk Review</span>；<span class="key-term">Risk Communication</span> 貫穿全程。</li>
+            <li><strong>風險控制的陷阱</strong>：降低措施可能引入新風險，必須重新回到 Risk Assessment 重新評估。</li>
+            <li><strong>風險審查是持續性義務</strong>：計畫性（APR、變更控制）和非計畫性（偏差、召回）事件均應觸發 Risk Review。</li>
+            <li><strong>工具選擇</strong>：FMEA/FMECA（製程失效分析）、FTA（根本原因追蹤）、HACCP（關鍵控制點）、HAZOP（危害操作分析）可單獨或組合使用，選擇應與風險的複雜度和關鍵性相稱。</li>
+            <li><strong>三個關鍵術語區別</strong>：Hazard（危害源）≠ Harm（危害）≠ Risk（風險）；Risk = P(Harm) × Severity(Harm)。</li>
+        </ul>
+    </div>
+
+</div><!-- /main-content -->
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>
