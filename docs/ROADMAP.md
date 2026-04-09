@@ -2,7 +2,7 @@
 
 This document summarizes the current coverage status, gap analysis, and expansion roadmap for building a comprehensive sterile pharmaceutical manufacturing knowledge hub suitable for COO-level operational decision-making.
 
-Last updated: 2026-04-09 — 164 documents complete (PDA 41, USP 76, ISPE 14, FDA 5, ICH 3, PIC/S 1, ISO 17, Ph.Eur. 7); Ph.Eur. 5.1.1 Methods of Preparation of Sterile Products complete; next: USP 〈381〉 Elastomeric Components, CEN EN ISO 15225
+Last updated: 2026-04-09 — 164 documents complete (PDA 41, USP 76, ISPE 14, FDA 5, ICH 3, PIC/S 1, ISO 17, Ph.Eur. 7); Raw PDFs queue empty — all available PDFs processed or blocked; next priority: Expert Knowledge Base or Layer 2 Operational Frameworks
 
 ---
 
@@ -48,12 +48,14 @@ Layer 3: Site-Specific Documents             ~/Amaran-Site-Knowledge/
 
 1. **Expert Knowledge Base** — start with SA25 lifecycle (`#1`) or Lyo ANDA end-to-end (`#2`); see full plan below
 2. **Layer 2 Operational Frameworks** — P0 skills first (`/deviation`, `/change-control`) with supporting templates
-3. **Layer 1 additions** — ISO 14644-1/2/3 (cleanrooms), ISPE GEP (OCR required), remaining USP `<1229>` sub-series
+3. **Layer 1 additions** — ISO 14644-2/3 (monitoring/test methods; have Parts 1/5/7), ISO 17665 (steam sterilisation), PDA TR36 (lyophilisation), ISPE GEP (OCR required), remaining USP `<1229>` sub-series
 4. **Layer 3** — resume SOP desensitization via `~/Amaran-AI-SOP/`; human review required per document
+
+> **Raw PDFs queue status (2026-04-09):** All uploaded PDFs have been processed or marked blocked. No unprocessed PDFs remain. Blocked: ISPE-GEP (OCR required), ISO-14971 (scanned), ISO-15225 (font encoding failure).
 
 ---
 
-## Layer 1: Regulatory Reference — ✅ COMPLETE (143 documents)
+## Layer 1: Regulatory Reference — ✅ COMPLETE (164 documents)
 
 ### Completion Summary
 
@@ -65,8 +67,8 @@ Layer 3: Site-Specific Documents             ~/Amaran-Site-Knowledge/
 | **FDA** | 5 | Aseptic Processing, Process Validation, Process Inspection, Combination Products CGMP, HF for Combo Products | ✅ Complete |
 | **ICH** | 3 | Q8(R2), Q9(R1), Q10 | ✅ Complete |
 | **PIC/S** | 1 | Annex 1 (2022) | ✅ Complete |
-| **ISO** | 17 | ISO 11040 (Prefilled Syringes Parts 1–8), ISO 13408 (Aseptic Processing Parts 1–7), ISO 14644 (Cleanrooms Parts 1/5/7), ISO 11608-1 (NIS), ISO 13485 (Medical Device QMS), ISO 10993-1 (Biological Evaluation), ISO TR 24971 (Risk Management Guidance), ISO 15378 (Primary Packaging GMP), ISO 9001, ISO 2859-1, ISO 9000, ISO 15223-1, ISO 15223-2, ISO 15394, ISO 13926-1, ISO 13926-2, ISO 13926-3 — ISO 14971 blocked (scanned PDF) | 🔄 In progress |
-| **Ph.Eur.** | 7 | 2.6.1 Sterility ✅, 2.6.14 Bacterial Endotoxins ✅, 2.9.19 Sub-visible Particles ✅, 2.9.20 Visible Particles ✅, 3.2.1 Glass Containers ✅, 3.3.8 Sterile Single-Use Syringes ✅, 5.1.1 Methods of Preparation ✅ | ✅ Complete |
+| **ISO** | 17 | ISO 11040 (Prefilled Syringes Parts 1–8), ISO 13408 (Aseptic Processing Parts 1–7), ISO 14644 (Cleanrooms Parts 1/5/7), ISO 11608-1 (NIS), ISO 13485 (Medical Device QMS), ISO 10993-1 (Biological Evaluation), ISO TR 24971 (Risk Management Guidance), ISO 15378 (Primary Packaging GMP), ISO 9001, ISO 2859-1, ISO 9000, ISO 15223-1, ISO 15223-2, ISO 15394, ISO 13926-1/2/3 — ISO 14971 ❌ blocked (scanned PDF); ISO 15225 ❌ blocked (font encoding) | ✅ Complete (available PDFs) |
+| **Ph.Eur.** | 7 | 2.6.1 Sterility ✅, 2.6.14 Bacterial Endotoxins ✅, 2.9.19 Sub-visible Particles ✅, 2.9.20 Visible Particles ✅, 3.2.1 Glass Containers ✅, 3.3.8 Sterile Single-Use Syringes ✅, 5.1.1 Methods of Preparation ✅ | ✅ Complete (planned scope) |
 | **IEC** | 0 | 62366-1 (usability engineering) | ⬜ Not started |
 | **EU GMP** | 0 | Annex 15, Annex 2, Annex 20 | ⬜ Future (Phase 6) |
 | **WHO GMP** | 0 | TRS 961 Annex 6, TRS 1010 | ⬜ Future (Phase 6) |
@@ -82,16 +84,17 @@ Layer 3: Site-Specific Documents             ~/Amaran-Site-Knowledge/
 
 | Document | Phase | Priority | Effort |
 |----------|-------|----------|--------|
-| ISO 14644-1/2/3 — Cleanroom classification | Phase 4 | High | Medium |
-| ISPE GEP — Good Engineering Practice (scanned, OCR required) | Phase 4 | Low | Medium |
+| ISO 14644-2 (monitoring), ISO 14644-3 (test methods) — have Parts 1/5/7 | Phase 4 | High | Medium |
+| ISPE GEP — Good Engineering Practice (❌ OCR required, blocked) | Phase 4 | Low | — |
 | USP `<1229>` sub-series (16 entries), `<151>`, `<790>` | Phase 4 | Medium | Small |
 | PDA TR36 — Lyophilization | Phase 4 | Medium | Medium |
 | ISO 17665 — Steam sterilization | Phase 4 | Medium | Medium |
 | FDA — Container Closure Guidance, Terminal Sterilization Guidance | Phase 4 | Medium | Medium |
-| ISO 14971 — Risk Management for Medical Devices | Phase 5 | High | Medium |
+| ISO 14971 — Risk Management for Medical Devices (❌ blocked: scanned PDF) | Phase 5 | High | — |
 | ~~ISO 11608-1 — Needle-Based Injection Systems~~ | ✅ Done 2026-04-08 | — | — |
 | ISO 11608-3 — Finished containers for injection systems | Phase 5 | Medium | Small |
 | ~~ISO 13485 — Medical Devices QMS~~ | ✅ Done 2026-04-08 | — | — |
+| ISO 15225 — GMDN Nomenclature Data Structure (❌ blocked: font encoding) | Phase 5 | Low | — |
 | IEC 62366-1 — Usability Engineering / Human Factors | Phase 5 | Medium | Medium |
 | FDA — Design Considerations for Combination Products (2019 Draft) | Phase 5 | Medium | Small |
 | PDA TR76 — CCI Testing Technology | Phase 5 | Medium | Medium |
@@ -99,7 +102,13 @@ Layer 3: Site-Specific Documents             ~/Amaran-Site-Knowledge/
 | EU GMP Annex 15 — Qualification and Validation | Phase 6 | High | Small |
 | EU GMP Annex 2 — Biological Medicinal Products | Phase 6 | Medium | Small |
 | EU GMP Annex 20 — Quality Risk Management | Phase 6 | Medium | Small |
-| Ph. Eur. 5.1.1, 2.6.1, 2.6.14, 2.9.19/20 | Phase 6 | Medium | Small each |
+| ~~Ph. Eur. 5.1.1~~ | ✅ Done 2026-04-09 | — | — |
+| ~~Ph. Eur. 2.6.1 Sterility~~ | ✅ Done | — | — |
+| ~~Ph. Eur. 2.6.14 Bacterial Endotoxins~~ | ✅ Done | — | — |
+| ~~Ph. Eur. 2.9.19 Sub-visible Particles~~ | ✅ Done | — | — |
+| ~~Ph. Eur. 2.9.20 Visible Particles~~ | ✅ Done | — | — |
+| ~~Ph. Eur. 3.2.1 Glass Containers~~ | ✅ Done | — | — |
+| ~~Ph. Eur. 3.3.8 Sterile Single-Use Syringes~~ | ✅ Done 2026-04-09 | — | — |
 | WHO TRS 961 Annex 6, TRS 1010 | Phase 6 | Medium | Small each |
 
 ---
@@ -239,12 +248,12 @@ Layer 3 is fed by the Amaran AI SOP project (`~/Amaran-AI-SOP/`), which already 
 
 | Domain | Key Documents | Assessment |
 |--------|--------------|------------|
-| Aseptic Processing | TR22, TR62, PtC-1, PtC-12, PtC-Isolators, Guide No.1 | Excellent |
+| Aseptic Processing | TR22, TR62, PtC-1, PtC-12, PtC-Isolators, Guide No.1, Ph.Eur. 5.1.1 | Excellent |
 | Environmental Monitoring | TR13, TR13-2, TR88 | Excellent |
 | Contamination Control (CCS) | TR90, TR70 | Excellent |
-| Container/Closure & Packaging | TR73, TR73-2, TR85, TR87, TR43 | Excellent |
+| Container/Closure & Packaging | TR73, TR73-2, TR85, TR87, TR43, ISO 11040 (×8) | Excellent |
 | Container Closure Integrity (CCI) | TR27, USP 〈1207〉 trilogy | Excellent |
-| Sterilizing Filtration | TR26 | Good |
+| Sterilizing Filtration | TR26, ISO 13408-2 | Good |
 | Process Validation | TR60, FDA Process Val | Good |
 | Single-Use Systems | TR66 | Good |
 | Facility Design | ISPE Vol.3, PtC-14 | Good |
@@ -253,21 +262,25 @@ Layer 3 is fed by the Amaran AI SOP project (`~/Amaran-AI-SOP/`), which already 
 | Data Integrity | TR84 | Covered |
 | Technology Transfer | TR65, ISPE TechTransfer | Good |
 | Quality Culture | ISPE-QC | Covered |
-| Combination Products (drug side) | TR73, TR73-2, TR27, TR85, TR87, FDA CGMP Combo | Good |
-| E&L / Container Materials | USP 〈661〉 〈660〉 〈1663〉 〈1664〉 | Good |
-| Regulatory QMS Framework | ICH Q8/Q9/Q10 | Excellent |
+| Combination Products (drug+device) | TR73, TR73-2, TR27, FDA CGMP Combo, ISO 11608-1, ISO 13485, ISO 13926-1/2/3, ISO 10993-1, ISO TR 24971 | Good |
+| E&L / Container Materials | USP 〈661〉 〈660〉 〈1663〉 〈1664〉, ISO 15378 | Good |
+| Regulatory QMS Framework | ICH Q8/Q9/Q10, ISO 9001, ISO 13485 | Excellent |
+| Sterility & Bioburden Testing | Ph.Eur. 2.6.1, Ph.Eur. 2.6.14, USP 〈71〉 〈85〉 | Excellent |
+| Particulate Testing | Ph.Eur. 2.9.19, Ph.Eur. 2.9.20, USP 〈788〉 〈790〉 | Excellent |
+| Glass & Container Materials | Ph.Eur. 3.2.1, USP 〈660〉, ISO 11040 | Excellent |
+| Labelling & Symbols | ISO 15223-1, ISO 15223-2, ISO 15394 | Good |
 | Supply Chain & GDP | TR39, TR46, TR52, TR68 | Good (over-represented) |
 
 ### Remaining Gaps
 
 | Gap | Why It Matters | Target |
 |-----|---------------|--------|
-| **Cleanroom Standards** | Referenced by every facility document | ISO 14644-1/2/3 — Phase 4 |
+| **Cleanroom Standards (Parts 2/3)** | Have Parts 1/5/7; Parts 2 (monitoring) and 3 (test methods) still needed | ISO 14644-2/3 — Phase 4 |
 | **Lyophilization** | Major sterile dosage form | PDA TR36 — Phase 4 |
-| **Steam sterilization** | Terminal sterilization method | ISO 17665 — Phase 4 |
-| **Combination Products — device side** | Autoinjectors, PFS — device constituent standards | ISO 14971, 11608-1, 13485, IEC 62366-1 — Phase 5 |
+| **Steam sterilization validation** | Terminal sterilization method with F₀ detail | ISO 17665 — Phase 4 |
+| **Combination Products — device side (remaining)** | IEC 62366-1 (usability) and ISO 14971 still absent | IEC 62366-1 — Phase 5; ISO 14971 ❌ blocked |
 | **EU regulatory anchor** | Binding EU GMP law; required for EU-MAA clients | EU GMP Annex 15, Annex 2, Annex 20 — Phase 6 |
-| **European Pharmacopoeia** | EU batch release test methods | Ph. Eur. 5.1.1, 2.6.1, 2.6.14, 2.9.19/20 — Phase 6 |
+| **~~European Pharmacopoeia~~** | ~~EU batch release test methods~~ | ~~✅ Complete — all 7 planned chapters done~~ |
 | **WHO GMP** | WHO prequalification supply chains | TRS 961 Annex 6, TRS 1010 — Phase 6 |
 
 ### COO-Specific Decision Gaps
@@ -289,44 +302,45 @@ All PDA TRs (41), top ISPE guides (14), PIC/S Annex 1, FDA Aseptic/Process Val/P
 
 ### Phase 4: Active — Topic Gap-Fillers + ISO
 
-**Goal:** Fill remaining Layer 1 content gaps.
+**Goal:** Fill remaining Layer 1 content gaps. Requires sourcing new PDFs.
 
-| Task | Document | Effort |
-|------|----------|--------|
-| **New source: ISO** | ISO 14644-1/2/3 — Cleanroom classification | Medium |
-| PDA addition | TR36 — Lyophilization | Medium |
-| ISO addition | ISO 17665 — Steam sterilization | Medium |
-| ISPE completion | GEP — Good Engineering Practice (OCR required) | Medium |
-| FDA additions | Container Closure Guidance, Terminal Sterilization Guidance | Medium |
-| USP completion | `<1229>` sub-series (pending entries), `<151>`, `<790>` | Small |
+| Task | Document | Effort | Status |
+|------|----------|--------|--------|
+| ISO addition | ISO 14644-2 (monitoring), ISO 14644-3 (test methods) — Parts 1/5/7 already done | Medium | ⬜ Need PDF |
+| PDA addition | TR36 — Lyophilization | Medium | ⬜ Need PDF |
+| ISO addition | ISO 17665 — Steam sterilization | Medium | ⬜ Need PDF |
+| ISPE completion | GEP — Good Engineering Practice | Medium | ❌ Blocked (OCR) |
+| FDA additions | Container Closure Guidance, Terminal Sterilization Guidance | Medium | ⬜ Need PDF |
+| USP completion | `<1229>` sub-series (pending entries), `<151>`, `<790>` | Small | ⬜ Need PDF |
 
 ### Phase 5: Active — Combination Products Device Layer
 
 **Goal:** Add device-side standards for PFS, autoinjector, pen injector clients.
 
-| Task | Document | Effort |
-|------|----------|--------|
-| New source: ISO | ISO 14971 — Risk Management for Medical Devices | Medium |
-| New source: ISO | ISO 11608-1 — Needle-Based Injection Systems | Medium |
-| New source: ISO | ISO 11608-3 — Finished containers | Small |
-| New source: ISO | ISO 13485 — Medical Devices QMS | Medium |
-| New source: IEC | IEC 62366-1 — Usability Engineering / Human Factors | Medium |
-| FDA addition | Design Considerations for Combination Products (2019 Draft) | Small |
-| PDA addition | TR76 — CCI Testing Technology | Medium |
-| PDA addition | TR74 — Prefilled Syringe User Requirement Specifications | Medium |
+| Task | Document | Effort | Status |
+|------|----------|--------|--------|
+| ~~New source: ISO~~ | ~~ISO 11608-1 — Needle-Based Injection Systems~~ | — | ✅ Done 2026-04-08 |
+| ~~New source: ISO~~ | ~~ISO 13485 — Medical Devices QMS~~ | — | ✅ Done 2026-04-08 |
+| ~~New source: ISO~~ | ~~ISO 13926-1/2/3 — Pen Systems (glass cylinders, stoppers, seals)~~ | — | ✅ Done 2026-04-09 |
+| ISO addition | ISO 14971 — Risk Management for Medical Devices | Medium | ❌ Blocked (scanned PDF) |
+| ISO addition | ISO 11608-3 — Finished containers | Small | ⬜ Need PDF |
+| IEC addition | IEC 62366-1 — Usability Engineering / Human Factors | Medium | ⬜ Need PDF |
+| FDA addition | Design Considerations for Combination Products (2019 Draft) | Small | ⬜ Need PDF |
+| PDA addition | TR76 — CCI Testing Technology | Medium | ⬜ Need PDF |
+| PDA addition | TR74 — Prefilled Syringe User Requirement Specifications | Medium | ⬜ Need PDF |
 
 ### Phase 6: Future — EU + Global Market Expansion
 
 **Trigger:** Add when EU-client volume justifies the effort, or when an EU inspection is scheduled.
 
-| Task | Document | Effort |
-|------|----------|--------|
-| New source: EU GMP | Annex 15 — Qualification and Validation (2015) | Small |
-| New source: EU GMP | Annex 2 — Biological Medicinal Products (2012) | Small |
-| New source: EU GMP | Annex 20 — Quality Risk Management | Small |
-| New source: Ph. Eur. | 5.1.1 / 2.6.1 / 2.6.14 / 2.9.19+20 | Small each |
-| New source: WHO | TRS 961 Annex 6 — Sterile Products | Small |
-| New source: WHO | TRS 1010 — Biological Products | Small |
+| Task | Document | Effort | Status |
+|------|----------|--------|--------|
+| New source: EU GMP | Annex 15 — Qualification and Validation (2015) | Small | ⬜ Future |
+| New source: EU GMP | Annex 2 — Biological Medicinal Products (2012) | Small | ⬜ Future |
+| New source: EU GMP | Annex 20 — Quality Risk Management | Small | ⬜ Future |
+| ~~New source: Ph. Eur.~~ | ~~5.1.1 / 2.6.1 / 2.6.14 / 2.9.19+20 / 3.2.1 / 3.3.8~~ | — | ✅ All 7 planned chapters done 2026-04-09 |
+| New source: WHO | TRS 961 Annex 6 — Sterile Products | Small | ⬜ Future |
+| New source: WHO | TRS 1010 — Biological Products | Small | ⬜ Future |
 
 ### Phase 7: Future — COO Decision Support Layer
 
@@ -409,10 +423,23 @@ Add only when client mix justifies:
 │   ├── USP-71/
 │   ├── USP-85/
 │   └── ...
-├── ISO/                    # Phase 4–5: cleanrooms + device standards
+├── ISO/                    # 17 complete; Phase 4–5 additions pending
 │   ├── ISO-11040/          # ✅ Complete — Prefilled Syringes Parts 1–8
 │   ├── ISO-13408/          # ✅ Complete — Aseptic Processing Parts 1–7
-│   └── ISO-14644/          # Phase 4: Cleanroom classification (pending)
+│   ├── ISO-14644/          # ✅ Parts 1/5/7 complete; Parts 2/3 Phase 4 (need PDF)
+│   ├── ISO-11608-1/        # ✅ Complete — Needle-Based Injection Systems
+│   ├── ISO-13485/          # ✅ Complete — Medical Devices QMS
+│   ├── ISO-13926-{1,2,3}/  # ✅ Complete — Pen System Components (2026-04-09)
+│   ├── ISO-15223-{1,2}/    # ✅ Complete — Medical Device Symbols
+│   ├── ISO-15394/          # ✅ Complete — Packaging Barcodes
+│   ├── ISO-10993-1/        # ✅ Complete — Biological Evaluation
+│   ├── ISO-TR-24971/       # ✅ Complete — Risk Management Guidance
+│   ├── ISO-15378/          # ✅ Complete — Primary Packaging GMP
+│   ├── ISO-9001/           # ✅ Complete
+│   ├── ISO-9000/           # ✅ Complete
+│   ├── ISO-2859-1/         # ✅ Complete
+│   ├── ISO-14971/          # ❌ Blocked (scanned PDF)
+│   └── ISO-15225/          # ❌ Blocked (font encoding failure)
 ├── knowledge/              # Chatbot knowledge base (English-only)
 │   ├── INDEX.md
 │   ├── PDA/
@@ -433,21 +460,21 @@ Add only when client mix justifies:
 
 ---
 
-## Estimated Target: ~148–157 Documents (full scope)
+## Estimated Target: ~175–185 Documents (full scope)
 
 | Source | Current | Phase 4–5 Target | Phase 6 Target | Notes |
 |--------|---------|-----------------|----------------|-------|
 | PDA | ✅ 41 | ~44 | — | Add TR36, TR74, TR76 |
-| ISPE | ✅ 14 | 15 | — | GEP pending OCR |
+| ISPE | ✅ 14 | 15 | — | GEP ❌ blocked (OCR) |
 | PIC/S | ✅ 1 | 1 | — | Complete |
 | FDA | ✅ 5 | 7–8 | — | Container Closure, Terminal Sterilization, Design Considerations |
 | ICH | ✅ 3 | 3 | 5–7 | Q11, Q12 + Q5A-E if client mix warrants |
 | USP | ✅ 76 | 79 | — | `<1229>` sub-series + `<151>` + `<790>` |
-| ISO | 0 | 5–6 | — | 14644-1/2/3, 17665 (Phase 4) + 14971, 11608-1, 13485 (Phase 5) |
+| ISO | ✅ 17 | 19–20 | — | 14644-2/3, 17665 (Phase 4); 11608-3, IEC 62366-1 (Phase 5); ISO 14971 ❌ blocked; ISO 15225 ❌ blocked |
 | IEC | 0 | 1 | — | 62366-1 (Phase 5) |
 | EU GMP | 0 | — | 3 | Annex 15, Annex 2, Annex 20 |
-| Ph. Eur. | 0 | — | 4–5 | 5.1.1, 2.6.1, 2.6.14, 2.9.19/20 |
+| Ph. Eur. | ✅ 7 | 7 | — | All 7 planned chapters complete |
 | WHO GMP | 0 | — | 2 | TRS 961 Annex 6, TRS 1010 |
-| **Total** | **140** | **~156** | **~166** | |
+| **Total** | **164** | **~177** | **~182** | |
 
-The infrastructure (tooling, workflow, dashboard, chatbot) is built and serving 140 documents. All remaining Layer 1 work is content processing. Active focus shifts to Expert Knowledge Base and Layer 2 Operational Frameworks.
+The infrastructure (tooling, workflow, dashboard, chatbot) is built and serving 164 documents. All uploaded Raw PDFs have been processed or marked blocked. Active focus shifts to Expert Knowledge Base and Layer 2 Operational Frameworks, with Phase 4 content additions when new PDFs are sourced.
