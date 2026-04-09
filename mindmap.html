@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SterileGMP Mind Map — 知識心智圖</title>
+<style>
+:root {
+  --c-primary: #1d1d1f; --c-secondary: #6e6e73; --c-tertiary: #aeaeb2;
+  --c-bg: #f5f5f7; --c-surface: #ffffff; --c-border: rgba(0,0,0,0.08);
+  --c-blue: #0071e3;
+}
+body { margin: 0; padding: 0; font-family: 'Noto Sans TC', -apple-system, sans-serif; background: var(--c-bg); }
+#mindmap { width: 100vw; height: 100vh; }
+
+.nav-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+  display: flex; align-items: center; gap: 8px; padding: 10px 16px;
+  background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--c-border); box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+.nav-link {
+  padding: 6px 14px; border-radius: 8px; text-decoration: none;
+  font-size: 12px; font-weight: 600; transition: all 0.15s;
+}
+.nav-link-primary { background: #1e3a5f; color: white; }
+.nav-link-primary:hover { background: #2a4f7f; }
+.nav-link-secondary { background: #f1f5f9; color: #475569; }
+.nav-link-secondary:hover { background: #e2e8f0; }
+.nav-separator { color: #cbd5e1; font-size: 14px; }
+
+.view-toggle {
+  margin-left: auto; display: flex; gap: 3px;
+  background: #e5e5ea; border-radius: 10px; padding: 3px;
+}
+.view-btn {
+  padding: 5px 12px; border-radius: 8px; border: none; cursor: pointer;
+  font-size: 11px; font-weight: 600; font-family: 'Noto Sans TC', sans-serif;
+  background: transparent; color: #64748b; transition: all 0.15s;
+}
+.view-btn.active { background: white; color: var(--c-primary); box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+
+.stats-bar {
+  position: fixed; bottom: 12px; right: 16px; z-index: 999;
+  font-size: 11px; color: var(--c-secondary); background: rgba(255,255,255,0.92);
+  padding: 6px 14px; border-radius: 8px; backdrop-filter: blur(8px);
+  border: 1px solid var(--c-border); font-weight: 500;
+}
+
+.legend {
+  position: fixed; bottom: 12px; left: 16px; z-index: 999;
+  background: rgba(255,255,255,0.92); backdrop-filter: blur(8px);
+  border: 1px solid var(--c-border); border-radius: 12px; padding: 12px 16px;
+  font-size: 11px; line-height: 1.9; max-height: 50vh; overflow-y: auto;
+}
+.legend-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+.legend-title { font-weight: 700; font-size: 11px; color: var(--c-primary); margin-bottom: 4px; }
+
+.loading-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 998;
+  background: var(--c-bg); display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 12px;
+}
+.loading-spinner {
+  width: 32px; height: 32px; border: 3px solid #e5e5ea; border-top-color: var(--c-blue);
+  border-radius: 50%; animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="loading-spinner"></div>
+  <div style="font-size:13px;color:var(--c-secondary)">Loading knowledge map...</div>
+</div>
+
+<div class="nav-bar">
+  <a class="nav-link nav-link-primary" href="index.html">← Dashboard</a>
+  <span class="nav-separator">|</span>
+  <a class="nav-link nav-link-secondary" href="learning-path.html">📚 Learning Path</a>
+  <div class="view-toggle">
+    <button class="view-btn active" onclick="switchView('dept')" id="btn-dept">By Department</button>
+    <button class="view-btn" onclick="switchView('topic')" id="btn-topic">By Topic</button>
+    <button class="view-btn" onclick="switchView('source')" id="btn-source">By Source</button>
+  </div>
+</div>
+
+<div class="legend" id="legend"></div>
+<div class="stats-bar" id="stats-bar"></div>
+<svg id="mindmap"></svg>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-view@0.15"></script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.15"></script>
+<script src="gmp-curriculum-data.js"></script>
+<script>
+let reportsData = {};
+let currentView = 'dept';
+let currentMM = null;
+
+const viewColors = {
+  dept:   ['#1e3a5f', '#2563eb', '#7c3aed', '#059669', '#d97706', '#dc2626', '#0891b2', '#8b5cf6'],
+  topic:  ['#1e3a5f', '#2563eb', '#7c3aed', '#059669', '#d97706', '#dc2626', '#0891b2', '#8b5cf6', '#ec4899', '#f97316', '#14b8a6'],
+  source: ['#1e3a5f', '#166534', '#991b1b', '#0f766e', '#c2410c', '#854d0e', '#6b21a8', '#be185d']
+};
+
+function createMarkmap(md, colors) {
+  const svg = document.getElementById('mindmap');
+  svg.innerHTML = '';
+  const { Transformer } = markmap;
+  const transformer = new Transformer();
+  const { root } = transformer.transform(md);
+  const { Markmap } = markmap;
+  currentMM = Markmap.create('#mindmap', {
+    autoFit: true,
+    color: (node) => colors[node.state?.depth % colors.length] || colors[0],
+    paddingX: 16,
+    initialExpandLevel: 2,
+  }, root);
+}
+
+function updateLegend(view) {
+  const legend = document.getElementById('legend');
+  if (view === 'dept') {
+    legend.innerHTML = `
+      <div class="legend-title">Department Tracks</div>
+      ${departments.map(d =>
+        `<div><span class="legend-dot" style="background:${d.color}"></span>${d.icon} ${d.name}</div>`
+      ).join('')}
+      <div style="margin-top:6px;color:var(--c-tertiary);font-size:10px">
+        ★ Required · ○ Optional
+      </div>`;
+  } else if (view === 'topic') {
+    legend.innerHTML = `
+      <div class="legend-title">Topic Clusters</div>
+      ${topicClusters.map(c =>
+        `<div><span class="legend-dot" style="background:${c.color}"></span>${c.name}</div>`
+      ).join('')}`;
+  } else {
+    legend.innerHTML = `
+      <div class="legend-title">Source Organizations</div>
+      ${Object.entries(sourceOrgs).map(([, meta]) =>
+        `<div><span class="legend-dot" style="background:${meta.color}"></span>${meta.label}</div>`
+      ).join('')}`;
+  }
+}
+
+function updateStats(view) {
+  const stats = document.getElementById('stats-bar');
+  const total = Object.values(reportsData).filter(r => r.section_map && r.section_map.length).length;
+  if (view === 'dept') {
+    const totalCurriculum = departments.reduce((s, d) => s + d.tiers.reduce((s2, t) => s2 + t.docs.length, 0), 0);
+    stats.textContent = `${totalCurriculum} curated readings · ${departments.length} departments · ${total} total documents`;
+  } else if (view === 'topic') {
+    stats.textContent = `${topicClusters.length} topic clusters · ${total} documents`;
+  } else {
+    stats.textContent = `${Object.keys(sourceOrgs).length} source organizations · ${total} documents`;
+  }
+}
+
+function switchView(view) {
+  currentView = view;
+  ['dept', 'topic', 'source'].forEach(v => {
+    document.getElementById(`btn-${v}`).classList.toggle('active', v === view);
+  });
+  updateLegend(view);
+  updateStats(view);
+
+  let md;
+  if (view === 'dept') {
+    md = generateDeptMarkdown(reportsData);
+  } else if (view === 'topic') {
+    md = generateTopicMarkdown(reportsData);
+  } else {
+    md = generateSourceMarkdown(reportsData);
+  }
+  createMarkmap(md, viewColors[view]);
+}
+
+/* ── Init ── */
+fetch('reports.json')
+  .then(r => r.json())
+  .then(data => {
+    reportsData = data.reports || {};
+    document.getElementById('loadingOverlay').style.display = 'none';
+    switchView('dept');
+  })
+  .catch(err => {
+    console.error('Failed to load reports.json:', err);
+    document.getElementById('loadingOverlay').innerHTML =
+      `<div style="color:#dc2626;font-size:14px">Failed to load data. Please check reports.json.</div>`;
+  });
+</script>
+</body>
+</html>
