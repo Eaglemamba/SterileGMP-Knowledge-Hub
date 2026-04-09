@@ -11,6 +11,11 @@ Last updated: 2026-04-09 — 166 documents complete (PDA 41, USP 76, ISPE 14, FD
 The hub is designed as a layered knowledge system. Skills (slash commands) read from all layers to produce site-grounded, regulation-backed outputs.
 
 ```
+Education Layer: Document Discovery & Learning   index.html / learning-path.html / mindmap.html
+  Bilingual dashboard, department curriculum,    ← This repo (public)  ✅ COMPLETE
+  interactive mind map — powered by reports.json
+  + gmp-curriculum-data.js
+
 Layer 1: Regulatory / Technical Reference    knowledge/
   PDA, ISPE, PIC/S, FDA, ICH, USP, ISO      ← This repo (public)  ✅ COMPLETE
 
@@ -36,6 +41,8 @@ Layer 3: Site-Specific Documents             ~/Amaran-Site-Knowledge/
 
 | Component | Status | Count |
 |-----------|--------|-------|
+| Education Layer — Dashboard & Learning UI | ✅ Complete | 3 tools (index.html, learning-path.html, mindmap.html) |
+| Education Layer — Curriculum Data | ✅ Complete | 8 departments × 3 tiers (gmp-curriculum-data.js) |
 | Layer 1 — Regulatory Reference | ✅ Complete | 166 documents |
 | Expert Knowledge Base | ⬜ Not started | 9 files planned |
 | Layer 2 — Operational Frameworks | ⬜ Not started | ~27 files planned |
@@ -52,6 +59,59 @@ Layer 3: Site-Specific Documents             ~/Amaran-Site-Knowledge/
 4. **Layer 3** — resume SOP desensitization via `~/Amaran-AI-SOP/`; human review required per document
 
 > **Raw PDFs queue status (2026-04-09):** All uploaded PDFs have been processed or marked blocked. No unprocessed PDFs remain. Blocked: ISPE-GEP (OCR required), ISO-14971 (scanned), ISO-15225 (font encoding failure).
+
+---
+
+## Education Layer — Document Discovery & Learning Tools ✅ COMPLETE
+
+Three browser-based tools provide document discovery, role-based learning, and knowledge visualization. All data is driven by `reports.json` and `gmp-curriculum-data.js` — no hardcoded content.
+
+### index.html — Document Index Dashboard
+
+Bilingual (EN/ZH-TW) searchable document index with deep search across titles, summaries, and section content.
+
+- Source-based filtering (PDA, ISPE, FDA, ICH, PIC/S, USP, ISO, Ph.Eur.)
+- Tag-based filtering with color-coded topic pills
+- Reading history with localStorage persistence
+- Relevance scoring with per-field match badges
+- Sort by relevance, date, or source
+- Links to: `learning-path.html`, `mindmap.html`
+
+### learning-path.html — Department Curriculum Tracker
+
+Role-based reading tracker powered by `gmp-curriculum-data.js`. Covers 7 departments × 3 tiers.
+
+| Department | Icon | Tier 1 Foundation | Tier 2 Core | Tier 3 Advanced |
+|-----------|------|-------------------|-------------|-----------------|
+| Quality Assurance | 🛡️ | 5 docs | 8 docs | 4 docs |
+| Quality Control | 🔬 | 7 docs | 16 docs | 12 docs |
+| Manufacturing / Production | ⚙️ | 5 docs | 7 docs | 6 docs |
+| Engineering & Maintenance | 🔧 | 5 docs | 6 docs | 5 docs |
+| Regulatory Affairs | 📋 | 5 docs | 6 docs | 5 docs |
+| Warehouse | 🏗️ | 5 docs | 6 docs | 4 docs |
+| Technical Service | 🛠️ | 5 docs | 7 docs | 5 docs |
+| Biotechnology IT (BT) | 💻 | 5 docs | 6 docs | 5 docs |
+
+Features: checkbox progress tracking, Required/Optional badges, per-department progress rings, overall completion percentage — all persisted in localStorage.
+
+### mindmap.html — Knowledge Mind Map
+
+Interactive D3.js + Markmap-powered visualization of the entire knowledge base. Three view modes:
+
+| View | Description |
+|------|-------------|
+| By Department | Shows 7 department tracks with Foundation → Core → Advanced hierarchy |
+| By Topic | Groups documents into 10 thematic clusters (Aseptic Processing, Sterilization & Filtration, Container Closure, Quality Systems, Environmental Monitoring, Testing Methods, Facilities & Utilities, Advanced Therapies, Regulatory & Compliance, Emerging Technologies) |
+| By Source | Organizes all 166 documents by issuing organization (PDA, ISPE, FDA, ICH, PIC/S, USP, ISO, Ph.Eur.) |
+
+### gmp-curriculum-data.js — Curriculum Data File
+
+Single source of truth for learning path structure. Consumed by `learning-path.html` and `mindmap.html`.
+
+- `departments[]` — 7 department objects, each with `tiers[]` containing curated `docs[]` (key + required flag + rationale)
+- `topicClusters[]` — 10 topic clusters with tag-based matching for mind-map "By Topic" view
+- `sourceOrgs{}` — 8 source organization labels and brand colors
+- Helper functions: `generateDeptMarkdown()`, `generateTopicMarkdown()`, `generateSourceMarkdown()` (used by Markmap renderer)
 
 ---
 
@@ -460,8 +520,12 @@ Add only when client mix justifies:
 │   ├── USP/
 │   ├── ISO/                # Phase 4
 │   └── EXPERT/             # Practitioner knowledge base (Phase active)
-├── reports.json            # Single source of truth
-├── index.html              # Dashboard
+├── reports.json            # Single source of truth for all document metadata
+├── gmp-curriculum-data.js  # Department curriculum structure (7 depts × 3 tiers)
+├── index.html              # Document index dashboard (reads reports.json)
+├── learning-path.html      # Department learning tracker (reads gmp-curriculum-data.js)
+├── mindmap.html            # Knowledge mind map — 3 views (reads both)
+├── index-v2.html           # Alternate dashboard layout (experimental)
 └── docs/
     ├── ROADMAP.md          # This file
     ├── SKILLS.md           # Skills list
