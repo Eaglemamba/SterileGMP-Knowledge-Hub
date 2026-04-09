@@ -657,7 +657,16 @@ Terms: quality culture, root cause analysis (RCA), human error, skill-based erro
 | Reverse logistics, drug take-back, packaging waste, sustainability / 逆向物流、藥品回收、包裝廢棄物 | TR46 |
 | Lane qualification, OQ, PQ, passive shipper, PCM, stability budget / 運輸路線確效、被動式保溫箱、穩定性預算 | TR39 |
 | Temperature excursion, nonconformance, OPV, cold chain KPI / 溫度偏差、持續製程驗證、冷鏈KPI | TR39 |
-| Process validation, PPQ, CPV, lifecycle / 製程驗證、持續製程驗證 | TR60 |
+| Process validation, PPQ, CPV, lifecycle / 製程驗證、持續製程驗證 | TR60 + PICS-Annex15 |
+| Qualification validation DQ IQ OQ PQ, GMP qualification lifecycle, PIC/S Annex 15 / 確認驗證DQ IQ OQ PQ、GMP確認生命週期、PIC/S附錄15 | PICS-Annex15 |
+| Validation Master Plan VMP, site validation programme, qualification policy / 驗證主計畫VMP、場址驗證計畫、確認政策 | PICS-Annex15 |
+| Cleaning validation carryover limits acceptance criteria GMP / 清潔驗證殘留攜帶限度驗收標準GMP | PICS-Annex15 + TR49 |
+| Requalification established equipment change control validated status / 再確認既有設備變更管制已驗證狀態 | PICS-Annex15 |
+| Quality risk management QRM GMP, ICH Q9 PIC/S Annex 20, FMEA HAZOP HACCP GMP tools / 品質風險管理GMP、ICH Q9 PIC/S附錄20 | PICS-Annex20 |
+| FMEA failure mode effects analysis RPN severity occurrence detection / 失效模式效應分析RPN嚴重性發生率偵測 | PICS-Annex20 + ISO-TR-24971 |
+| HAZOP hazard operability study guide words process deviation / 危害可操作性研究引導詞製程偏差 | PICS-Annex20 |
+| HACCP hazard analysis critical control points pharmaceutical / 危害分析關鍵控制點製藥應用 | PICS-Annex20 |
+| FTA fault tree analysis Boolean top-down root cause / 故障樹分析布林邏輯由上而下根本原因 | PICS-Annex20 + ISO-TR-24971 |
 | FDA process validation guidance 2011, FDA PV lifecycle, three-stage model Stage 1 2 3 / FDA製程驗證指引2011、生命週期方法、三階段模型 | FDA-ProcessVal |
 | Stage 1 process design, QTPP CQA CPP, NOR PAR design space, DOE, PDR / 第一階段製程設計、品質目標產品概況、關鍵品質屬性、關鍵製程參數、正常操作範圍、設計空間、實驗設計 | FDA-ProcessVal |
 | Stage 2 PPQ process performance qualification, PPQ protocol, enhanced sampling, concurrent release / 第二階段製程效能確效、PPQ協議書、強化取樣、並行放行 | FDA-ProcessVal |
@@ -827,7 +836,12 @@ Terms: quality culture, root cause analysis (RCA), human error, skill-based erro
 | Post-approval change PAC expedited review, ICH Q12, regulatory flexibility, gCP / 法規變更申請、ICH Q12、法規彈性 | TR68 |
 | Medically necessary drug, critical medicine, life sustaining product / 醫療必需品、關鍵藥品、維生藥品 | TR68 |
 | MAH accountability supply chain, CDMO contract manufacturer shortage / MAH供應鏈責任、CDMO合約製造商短缺責任 | TR68 |
-| ATMP, cell therapy, gene therapy, CAR-T / 先進療法、細胞治療、基因治療 | PtC-14 |
+| ATMP, cell therapy, gene therapy, CAR-T / 先進療法、細胞治療、基因治療 | PtC-14 + PICS-Annex2 |
+| ATMP GMP requirements, PIC/S Annex 2A, ATMP manufacturing site, hospital exemption / ATMP GMP要求、PIC/S附錄2A、ATMP製造場地 | PICS-Annex2 |
+| Biological medicinal products, biologics GMP, vaccine manufacture, blood-derived, fermentation GMP / 生物藥品GMP、疫苗製造、血液衍生產品、發酵GMP | PICS-Annex2 |
+| Viral vector manufacturing, gene therapy vector, AAV lentivirus GMP, replication-competent vector / 病毒載體製造、基因治療載體、AAV慢病毒GMP | PICS-Annex2 |
+| Cell bank system, MCB WCB master working cell bank, seed lot bank GMP / 細胞庫系統、主細胞庫工作細胞庫、種子批細胞庫GMP | PICS-Annex2 |
+| ATMP autologous allogeneic xenogeneic one-patient-one-batch GMP / ATMP自體異體異種一病患一批次GMP | PICS-Annex2 |
 | Mobile manufacturing, modular facility / 行動式製造、模組化設施 | PtC-15 |
 | ATMP plasmid classification, viral vector starting material vs drug substance / ATMP質體分類、病毒載體起始原料vs藥品原料 | PtC-11 |
 | AAV lentivirus filtration, aseptic processing when filtration not possible / AAV慢病毒過濾、無法過濾時無菌加工 | PtC-11 |
@@ -2501,3 +2515,57 @@ Key terms: leachables, analytical evaluation threshold (AET), leachables specifi
 
 **Sections:**
 - Section 1 (p649–p652): General Introduction (SAL definition, sterility as CQA, hierarchy of methods, parametric release, bioburden factors), Steam Sterilisation (principle/equipment/cycle/F₀/F_bio/routine control), Dry Heat (160°C/2h, depyrogenation >220°C, 3-log endotoxin), Ionising Radiation (gamma/e-beam/X-ray, 25 kGy, dosimetry), Gas Sterilisation (EtO vs H₂O₂/PAA, 3 phases, critical parameters), Membrane Filtration (removal mechanism, ≤0.22 µm, integrity tests, routine monitoring), Aseptic Assembly (principle, critical factors, media fill, batch sterility testing)
+
+---
+
+## PICS/PICS-Annex2-Complete.md
+**Report:** PIC/S GMP Annex 2 — Manufacture of Biological & ATMPs (Annex 2A + 2B)
+**Pages:** p108–p171 | **Sections:** 3 | **Source:** PIC/S PE 009-17 (25 August 2023)
+
+**Covers questions about:**
+- ATMP definition and scope: gene therapy (viral/non-viral vectors, mRNA), somatic cell therapy (autologous/allogeneic/xenogeneic), tissue engineered products, combined ATMPs — where Annex 2A applies vs. Part I/II
+- Regulatory hierarchy for ATMPs: when Annex 2A takes precedence; CTA/MA documentation of GMP approach; national law variations for human tissues/blood starting materials
+- Table 1 scope matrix: GMP applicability by product type (mRNA template, plasmid, in vivo viral/non-viral vectors, ex vivo gene therapy, somatic cell, tissue engineered) from early manufacturing to formulation/filling
+- Premises and environmental control for ATMPs: segregation decisions, 100% exhaust requirement for viral vectors, pressure cascade design, Grade C/D allowance for closed systems, hospital-setting manufacturing (3.14 framework)
+- Personnel bidirectional protection: ATMP operators protected from product AND product protected from operators; movement restriction requirements, gowning for dual-purpose clean rooms
+- Starting materials for ATMPs: QRM-based Procurement Risk Profile (PRP), RP for blood/tissue establishments, technical agreements for human-origin material, vendor qualification gradients
+- Cell bank/seed lot system: MCB/WCB two-tier hierarchy; when GMP applies (from Master Bank establishment); continuous liquid nitrogen monitoring; split-stock and no-return rules
+- Documentation and traceability: one-patient-one-batch definition, bidirectional tracking (patient to donation, donation to patient), 30-year retention requirement
+- QC for ATMPs: in-process controls primacy, autologous product sampling limitations, two-stage AP certification for short-shelf-life products, decentralised/hospital manufacturing governance
+- Outsourcing: non-GMP licensed labs for specialised testing (karyotype, exome sequencing) with appropriate oversight
+- Annex 2B biological products scope: Table 1 GMP gradient from early fermentation to final product; applicability to vaccines, immunosera, blood-derived, recombinant, allergen extracts
+- Seed lot and cell bank for biologics (BCB): virus seed lots, continuous monitoring, vapour-phase nitrogen, split-stock, non-reintroduction rule
+- Operating principles for biologics: aerosol containment, virus inactivation/removal segregation, chromatography column lifecycle, two-stage release for short shelf-life biologics
+- Part B specific types: animal-sourced products (OIE surveillance, abattoir-equivalent QMS), vaccines (pandemic strain containment, live/inactivated segregation), immunosera, recombinant products (mAb, ADC), transgenic animals/plants
+
+**Key terms:** ATMP, advanced therapy medicinal product, gene therapy, somatic cell therapy, tissue engineered product, combined ATMP, viral vector, non-viral vector, mRNA, AAV, lentivirus, plasmid, ex vivo, in vivo, autologous, allogeneic, xenogeneic, Responsible Person RP, MCB, WCB, working cell bank, master cell bank, BCB, seed lot, SPF specified pathogen free, biological safety level BSL, GMO, bidirectional traceability, one-patient-one-batch, 30-year retention, Procurement Risk Profile PRP, QTPP, in-process controls IPC, two-stage release, Authorised Person AP, hospital manufacturing, decentralised manufacturing, vaccine, immunosera, blood-derived, allergen extract, TSE, BSE, CJD, mAb, ADC, HCP, virus inactivation, virus removal, chromatography column lifecycle
+
+**Sections:**
+- Section 1 (p108–p128): Annex 2A Part A — Scope, Application, Table 1 scope matrix, Principle (ATMP vs small molecule), QMS chapter (AP dual obligations, QRM lifecycle), Personnel (bidirectional protection, movement restrictions), Premises (segregation, 100% exhaust, pressure cascade, hospital manufacturing), Equipment (SUS E&L, bioinformatics qualification), Documentation (one-patient-one-batch, 30-year retention, bidirectional traceability)
+- Section 2 (p128–p146): Annex 2A Part B — Starting materials (PRP, RP, technical agreements, cell bank GMP from MCB onward), QC (IPC primacy, autologous sampling, two-stage release), Outsourcing (non-GMP specialised labs), Look-back and recall alternatives, Part B1 animal-sourced, B2 GTMPs (viral vector vs GMP Principles, BSL), B3 somatic cell/tissue engineered/combined ATMPs, Full Glossary (30+ terms)
+- Section 3 (p147–p171): Annex 2B — Scope + Table 1 (7 product types × GMP gradient), Principle (inherent variability, QRM, TSE), Personnel/Premises (multi-product criteria, CIP/SIP, air cascades), Animals/Documentation/Production, Starting materials (use-before-test, RP for human tissue), Seed lots/cell banks (MCB/WCB hierarchy, vapour-phase N₂), Operating principles (aerosol containment, virus segregation, chromatography lifecycle), Part B (animal-sourced, allergens, immunosera, vaccines, recombinant, mAb, transgenic)
+
+---
+
+## PICS/PICS-Annex20-Complete.md
+**Report:** PIC/S GMP Annex 20 — Quality Risk Management
+**Pages:** p250–p263 | **Sections:** 2 | **Source:** PIC/S PE 009-17 (25 August 2023) — corresponds to ICH Q9
+
+**Covers questions about:**
+- QRM principles: science-based, systematic, proportionate to level of risk; protecting the patient is the primary objective; formal vs. informal risk management processes
+- QRM process cycle: Risk Assessment (identification, analysis, evaluation) → Risk Control (reduction, acceptance) → Risk Communication → Risk Review — iterative loop
+- Risk concepts: risk = probability × severity; detectability as third dimension; hazard vs. harm distinction; acceptable risk definition; residual risk
+- FMEA (Failure Mode and Effects Analysis): failure mode/effect/cause logic, severity/occurrence/detection scoring, RPN = S × O × D calculation, FMECA extension with criticality
+- FTA (Fault Tree Analysis): top-down Boolean logic (AND/OR gates), root cause identification from a single top-level undesired event
+- HAZOP (Hazard and Operability Study): full guide word method (No/More/Less/Reverse/Other Than/Part of/Early/Late), systematic process deviation identification, team-based facilitated sessions
+- HACCP (Hazard Analysis and Critical Control Points): 7-step framework, CCP identification, critical limits, monitoring, corrective actions; pharmaceutical application vs. food origin
+- Preliminary Hazard Analysis (PHA): early-stage tool before full process design; input to FMEA/HAZOP; hazard identification without quantification
+- Risk Ranking and Filtering: multi-factor weighted scoring matrices, visual risk maps, supplier audit prioritisation, regulatory inspection priority
+- Statistical tools for QRM: Shewhart control charts, Cpk process capability, DOE (design of experiments), Pareto analysis, applied to pharmaceutical manufacturing data
+- Applications table (Annex II): how QRM tools map to 8 GMP activity areas — product/process development, manufacturing, laboratory, distribution, inspection, regulatory submissions, post-approval changes, product discontinuation
+
+**Key terms:** quality risk management QRM, risk assessment, risk identification, risk analysis, risk evaluation, risk control, risk reduction, risk acceptance, risk communication, risk review, residual risk, hazard, harm, probability, severity, detectability, FMEA, failure mode, effects analysis, RPN, FMECA, criticality, FTA fault tree analysis, Boolean AND OR, HAZOP, guide word, HACCP, critical control point CCP, critical limit, preliminary hazard analysis PHA, risk ranking, risk filtering, risk matrix, control chart, Cpk, DOE, Pareto, ICH Q9, proportionality principle, science-based, systematic approach, formal risk management, informal risk management
+
+**Sections:**
+- Section 1 (p250–p256): Part A — Foreword/Scope (ICH Q9 alignment, voluntary for PIC/S, veterinary extension), Introduction (risk definition probability×severity, patient protection, proactive quality, formal vs informal), Principles (science-based + proportionality), Full QRM Process Cycle (risk assessment → control → communication → review), Definitions table (hazard/harm/risk distinctions, all 20+ key terms), Overview of methods and tools, Integration with GMP quality system
+- Section 2 (p256–p263): Part B — Risk Management Methods: I.1 Basic Facilitation (flowcharts, check sheets, Ishikawa), I.2 FMEA (full scoring method, RPN formula), I.3 FMECA, I.4 FTA (Boolean tree logic), I.5 HACCP (7 steps, CCP/critical limits), I.6 HAZOP (full guide-word table), I.7 PHA, I.8 Risk Ranking & Filtering, I.9 Statistical Tools (control charts, Cpk, DOE, Pareto); Applications Appendix II.1–II.8 (HTML table: QRM tools × 8 GMP activity domains)
