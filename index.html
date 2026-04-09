@@ -35,15 +35,10 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 .mono { font-family: 'JetBrains Mono', 'SF Mono', ui-monospace, monospace; }
-.site-header { background: linear-gradient(135deg, #1e3a5f 0%, #3182ce 100%); color: white; }
-.stat-tile { background: rgba(255,255,255,0.12); backdrop-filter: blur(8px); border-radius: 14px; padding: 14px 18px; border: 1px solid rgba(255,255,255,0.2); text-align: center; transition: border-color 0.15s ease; }
-.stat-tile:hover { border-color: rgba(255,255,255,0.4); }
-.stat-num { font-size: 26px; font-weight: 700; letter-spacing: -0.03em; color: white; line-height: 1; }
-.stat-label { font-size: 11px; color: rgba(255,255,255,0.7); margin-top: 4px; font-weight: 500; }
-.category-bar { display: flex; height: 8px; border-radius: 4px; overflow: hidden; background: #e5e5ea; }
-.category-legend { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
-.category-legend-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--c-secondary); }
-.category-legend-dot { width: 8px; height: 8px; border-radius: 3px; flex-shrink: 0; }
+.site-header { background: var(--c-surface); border-bottom: 1px solid var(--c-border); }
+.stat-tile { background: var(--c-surface); border-radius: 14px; padding: 14px 18px; box-shadow: var(--shadow-1) !important; text-align: center; }
+.stat-num { font-size: 26px; font-weight: 700; letter-spacing: -0.03em; color: var(--c-primary); line-height: 1; }
+.stat-label { font-size: 11px; color: var(--c-secondary); margin-top: 4px; font-weight: 500; }
 .search-wrap { background: var(--c-surface); border-radius: var(--r-btn); border: 1.5px solid #d2d2d7; display: flex; align-items: center; padding: 0 16px; gap: 8px; transition: all 0.15s var(--ease); height: 42px; }
 .search-wrap:focus-within { border-color: var(--c-blue); box-shadow: 0 0 0 4px rgba(0,113,227,0.12); }
 .search-wrap input { flex: 1; background: transparent; border: none; outline: none; font-size: 14px; color: var(--c-primary); }
@@ -85,36 +80,27 @@ body {
 .fade-up:nth-child(2) { animation-delay: 0.04s; }
 .fade-up:nth-child(3) { animation-delay: 0.08s; }
 .fade-up:nth-child(4) { animation-delay: 0.12s; }
-body.search-active #statsRow,
-body.search-active #categoryBar,
-body.search-active #categoryLegend { display: none; }
+body.search-active #statsRow { display: none; }
 body.search-active .site-header { padding-bottom: 20px !important; }
 </style>
 </head>
 <body class="min-h-screen">
 
     <!-- HEADER -->
-    <div class="site-header px-6 py-8">
+    <div class="site-header px-6 py-10">
         <div class="max-w-6xl mx-auto">
             <div class="text-center">
-                <h1 class="text-3xl font-bold tracking-tight">SterileGMP Knowledge Hub</h1>
-                <p style="font-size:15px;color:rgba(255,255,255,0.7);margin-top:6px">Sterile Manufacturing GMP — Bilingual Educational Document Index</p>
-                <p style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:6px">
-                    Updated <span id="lastUpdated"></span>
-                    <span style="margin:0 4px">|</span>
-                    <a href="learning-path.html" class="text-white underline underline-offset-2 hover:text-blue-200">📚 Learning Path</a>
-                    <span style="margin:0 4px">|</span>
-                    <a href="mindmap.html" class="text-white underline underline-offset-2 hover:text-blue-200">🗺 Mind Map</a>
+                <h1 style="font-size:34px;font-weight:700;letter-spacing:-0.02em;color:#1d1d1f;line-height:1.1">SterileGMP Knowledge Hub</h1>
+                <p style="font-size:17px;color:#6e6e73;margin-top:8px">Sterile Manufacturing GMP — Bilingual Educational Document Index</p>
+                <p style="font-size:12px;color:#aeaeb2;margin-top:6px">Updated <span id="lastUpdated"></span></p>
+                <p style="font-size:12px;margin-top:8px">
+                    <a href="learning-path.html" style="color:#0071e3;text-decoration:none;font-weight:500">📚 Learning Path</a>
+                    <span style="color:#aeaeb2;margin:0 6px">·</span>
+                    <a href="mindmap.html" style="color:#0071e3;text-decoration:none;font-weight:500">🗺 Mind Map</a>
                 </p>
             </div>
-            <div class="grid grid-cols-3 sm:grid-cols-5 gap-3 mt-6" id="statsRow"></div>
+            <div class="grid grid-cols-3 sm:grid-cols-5 gap-3 mt-8" id="statsRow"></div>
         </div>
-    </div>
-
-    <!-- CATEGORY DISTRIBUTION BAR -->
-    <div class="max-w-6xl mx-auto px-6 mt-4">
-        <div class="category-bar" id="categoryBar"></div>
-        <div class="category-legend" id="categoryLegend"></div>
     </div>
 
     <!-- DOCUMENT TYPE FILTERS -->
@@ -505,16 +491,6 @@ function renderStats(){
     const stats=[{v:t,l:'Documents'},{v:srcCount,l:'Sources'},{v:tp+'p',l:'Pages'},{v:allTags.length,l:'Topics'},{v:readCount,l:'已讀'}];
     document.getElementById('statsRow').innerHTML=stats.map(s=>`<div class="stat-tile"><div class="stat-num">${s.v}</div><div class="stat-label">${s.l}</div></div>`).join('');
     document.getElementById('lastUpdated').textContent=latest.date;
-
-    // Category distribution bar
-    const orgCounts={};
-    documents.forEach(d=>{const org=getSourceOrg(d.source);orgCounts[org]=(orgCounts[org]||0)+1;});
-    const sorted=Object.entries(orgCounts).sort((a,b)=>b[1]-a[1]);
-    const total=documents.length;
-    const barEl=document.getElementById('categoryBar');
-    const legEl=document.getElementById('categoryLegend');
-    if(barEl){barEl.innerHTML=sorted.map(([org,c])=>{const oc=sourceOrgColors[org]||{};return`<div style="width:${c/total*100}%;background:${oc.border||'#6b7280'}"></div>`;}).join('');}
-    if(legEl){legEl.innerHTML=sorted.map(([org,c])=>{const oc=sourceOrgColors[org]||{};return`<div class="category-legend-item"><div class="category-legend-dot" style="background:${oc.border||'#6b7280'}"></div>${org} (${c})</div>`;}).join('');}
 }
 
 // Source org helpers
