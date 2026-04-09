@@ -1,0 +1,190 @@
+# Ph.Eur. 3.3.8 — Sterile Single-Use Plastic Syringes for Human Use: European Pharmacopoeia Chapter 3.3.8
+
+EUROPEANPHARMACOPOEIA11.0 3.3.8. Sterilesingle-useplasticsyringes
+Sterility(2.6.1). Thesetscomplywiththetestforsterility. If Appearanceofsolution. Solution Sisclear(2.2.1)and
+thesetsarestatedtobesterileonlyinternally,pass50 mLof colourless(2.2.2,Method II)andispracticallyfreefrom
+bufferedsodiumchloride-peptonesolutionpH 7.0(2.6.12) foreignsolidparticles.
+throughthesetandusethesolutiontocarryoutthetestby
+Acidityoralkalinity. To20 mLofsolution Sadd0.1 mL
+themembranefiltrationmethod.
+ofbromothymolbluesolution R1. Notmorethan0.3 mL
+Ifthesetsarestatedtobesterilebothinternallyandexternally, of0.01 Msodiumhydroxideor0.01 Mhydrochloricacidis
+openthepackagewiththenecessaryasepticprecautionsand: requiredtochangethecolouroftheindicator.
+– forthedirectinoculationmethod,placethesetorits Absorbance(2.2.25):maximum0.40,determinedbetween
+componentsinasuitablecontainercontainingasufficient wavelengthsof220 nmand360 nmonsolution S.
+quantityoftheculturemediumtoensurecomplete
+Ethyleneoxide. Head-space gaschromatography(2.2.28)
+immersion;
+coupledwithmassspectrometry(2.2.43). Preparethereference
+– forthemembranefiltrationmethod,placethesetorits solutionsimmediatelybeforeuse.
+componentsinasuitablecontainercontainingasufficient
+Testsample. Crushthesampleintofineparticles. Weigh
+quantityofbufferedsodiumchloride-peptonesolution
+0.10-3.00 gofthesample,dependingontheamountof
+pH 7.0(2.6.12)toallowtotalrinsingfor10 min.
+ethyleneoxideresidueexpected,intoa20 mLinjectionvial
+Pyrogens(2.6.8). Connecttogether5 setsandpassthrough andclosethevial. Forlowethylene-oxide-releasingplastic
+theassembly,ataflowratenotexceeding10 mL/min,250 mL materials(e.g. cyclo-olefinpolymersandcopolymers),heat
+ofasterile,pyrogen-free,9 g/Lsolutionofsodiumchloride R. thevialinanovenat120 °Cforatleast15 h(pre-thermal
+Collectthesolutionasepticallyinapyrogen-freecontainer. extractionstep)beforethe1stinjection.
+Thesolutioncomplieswiththetestforpyrogens. Injectper Referencesolution (a). Dilute1.0 mLofethyleneoxidestock
+kilogramoftherabbit’smass10 mLofthesolution. solution R1to50.0 mLwithanhydrousethanol R(1000 μgof
+ethyleneoxidepermillilitre). Ifthesolutionispreparedusing
+LABELLING
+commercialethyleneoxidestandardfromapreviouslyopened
+Thelabelstates,whereapplicable,thatthesethasbeen container,itshouldbenotedthatsomeethyleneoxidemayhave
+sterilisedusingethyleneoxide. beenlostowingtoitshighvolatility.
+Referencesolution (b). Dilute10 mLofreferencesolution (a)
+to20 mLwithanhydrousethanol R(500 μgofethyleneoxide
+permillilitre).
+01/2021:30308
+Referencesolution (c). Dilute8.0 mLofreferencesolution (a)
+to20.0 mLwithanhydrousethanol R(400 μgofethyleneoxide
+permillilitre). Transfer20 μLofreferencesolution (c)intoan
+injectionvialandcloseimmediately.
+Referencesolution (d). Dilute6.0 mLofreferencesolution (a)
+3.3.8. STERILE SINGLE-USE PLASTIC
+to20.0 mLwithanhydrousethanol R(300 μgofethyleneoxide
+SYRINGES permillilitre). Transfer20 μLofreferencesolution (d)intoan
+injectionvialandcloseimmediately.
+Thisgeneralchapterispublishedforinformation. Referencesolution (e). Dilute4.0 mLofreferencesolution (a)
+to20.0 mLwithanhydrousethanol R(200 μgofethyleneoxide
+DEFINITION
+permillilitre). Transfer20 μLofreferencesolution (e)intoan
+Sterilesingle-useplasticsyringesaremedicaldevices injectionvialandcloseimmediately.
+intendedforimmediateusefortheadministrationof
+Referencesolution (f). Dilute2.0 mLofreferencesolution (a)
+injectablepreparations. Theyaresuppliedsterileandbacterial
+to20.0 mLwithanhydrousethanol R(100 μgofethyleneoxide
+endotoxin-freeandarenottobere-sterilisedorre-used.
+permillilitre). Transfer20 μLofreferencesolution (f)intoan
+Theyconsistofasyringebarrelandapistonthatmayhave
+injectionvialandcloseimmediately.
+anelastomersealingring;theymaybefittedwithaneedle
+Referencesolution (g). Dilute1.0 mLofreferencesolution (a)
+thatmaybenon-detachable. Eachsyringeispresentedwith
+to20.0 mLwithanhydrousethanol R(50 μgofethyleneoxide
+individualprotectionformaintainingsterility.
+permillilitre). Transfer20 μLofreferencesolution (g)intoan
+Thebarrelofthesyringeissufficientlytransparenttopermit
+injectionvialandcloseimmediately.
+dosagestobereadwithoutdifficultyandallowairbubblesand
+Referencesolution (h). Dilute0.5 mLofreferencesolution (a)
+foreignparticlestobediscerned.
+to20.0 mLwithanhydrousethanol R(25 μgofethyleneoxide
+Theplasticsandelastomermaterialsofwhichthebarreland permillilitre). Transfer20 μLofreferencesolution (h)intoan
+pistonaremadecomplywithappropriatespecificationsor injectionvialandcloseimmediately.
+withrequirementsofthecompetentauthority. Themost
+Referencesolution(i). Dilute100 mgofacetaldehyde Rto
+commonlyusedmaterialsarepolypropyleneandpolyethylene.
+100 mLwithanhydrousethanol R(1000 μgofacetaldehyde
+Thesyringescomplywithcurrentstandardsregarding
+permillilitre).
+dimensionsandperformance.
+Referencesolution(j). Transfer10 μLofreferencesolution(i)
+Siliconeoil(3.1.8)maybeappliedtotheinternalwallof
+and20 μLofreferencesolution (b)intoaninjectionvial,mix
+thebarrel,inwhichcasethereremainsnoexcesscapable
+andcloseimmediately.
+ofcontaminatingthecontentsatthetimeofuse. Theinks,
+Column:
+gluesandadhesivesforthemarkingonthesyringeoronthe
+packageand,wherenecessary,theassemblyofthesyringeand – material:fusedsilica;
+itspackage,donotmigrateacrossthewalls. – size:l = 30 m,Ø = 0.32 mm;
+– stationaryphase:poroussilicaforchromatography R(film
+TESTS
+thickness4 μm).
+Solution S.Preparethesolutioninamannerthatavoids
+Aparticletrapmaybeusedtopreventparticlesthatare
+contaminationbyforeignparticles. Usingasufficientnumber
+dislodgedfromthecolumnfromdamagingthedetector.
+ofsyringestoproduce50 mLofsolution,fillthesyringesto
+Carriergas:heliumforchromatography R.
+theirnominalvolumewithwater Randmaintainat37 °C
+for24 h. Combinethecontentsofthesyringesinasuitable Flowrate:1.0 mL/min.
+borosilicate-glasscontainer. Splitratio:1:50.
+GeneralNotices(1)applytoallmonographsandothertexts 503
+3.3.8. Sterilesingle-useplasticsyringes EUROPEANPHARMACOPOEIA11.0
+Statichead-spaceconditionsthatmaybeused: Limit:ifthelabelstatesthatethyleneoxidehasbeenusedfor
+sterilisation:
+– equilibrationtemperature:80 °Cforplasticisedpoly(vinyl
+chloride);120 °Cforcyclo-olefinpolymersandcopolymers, – ethyleneoxide:maximum10 ppm.
+andpolyurethane;160 °Cforsilicone; Siliconeoil. Calculatetheinternalsurfaceareaofasyringein
+– equilibrationtime:60 min; squarecentimetresusingthefollowingexpression:
+– transfer-linetemperature:130 °C; 2 V·π·h
+– pressurisationtime:0.5 min;
+V = nominalvolumeofthesyringe,incubic
+– injectiontime:3 min; centimetres;
+– shakingmode:highagitation. h = heightofthegraduation,incentimetres.
+Temperature: Takeasufficientnumberofsyringestogiveaninternal
+surfaceareaof100 cm2to200 cm2. Aspirateintoeachsyringe
+Time Temperature
+avolumeofmethylenechloride Requaltohalfthenominal
+(min) (°C)
+volumeandmakeuptothenominalvolumewithair. Rinse
+Column 0-2 100 theinternalsurfacecorrespondingtothenominalvolume
+withthesolventbyinvertingthesyringe10 timesinsuccession
+2-8.25 100→225
+withtheneedlefittingclosedbyafingercoveredbyaplastic
+8.25-13.25 225 filminerttomethylenechloride. Expeltheextractsintoa
+tareddishandrepeattheoperation. Evaporatethecombined
+Injectionport 160
+extractstodrynessonawater-bath. Dryat100-105 °Cfor
+Detector: transferline 260 1 h. Theresidueweighsnotmorethan0.25 mgpersquare
+centimetreofinternalsurfacearea.
+source 230
+Examinetheresiduebyinfraredabsorptionspectrophotometry
+analyser 150 (2.2.24).
+Comparison:siliconeoil CRS.
+Detection:massspectrometer;thefollowingsettingshave
+beenfoundtobesuitable: Reducingsubstances. To20.0 mLofsolution Sadd1 mL
+ofdilutesulfuricacid Rand20.0 mLof0.002 Mpotassium
+– quadrupolemassspectrometerequippedwithanelectron
+permanganate. Boilunderarefluxcondenserfor3 minand
+impactionisationmode(70eV);
+coolimmediately. Add1 gofpotassiumiodide Randtitrate
+– acquisitionsystem:single-ionmonitoring(SIM)for immediatelywith0.01 Msodiumthiosulfateusing0.25 mLof
+ethyleneoxidequantificationandcompletespectrummode starchsolution Rasindicator. Carryoutablanktitrationusing
+(m/z = 10-350)forethyleneoxideidentification; 20.0 mLofwater R.Thedifferencebetweenthe2titration
+– massspectrometerparametersforthefragmentometric volumesisnotgreaterthan3.0 mL.
+mode(SIM)setasfollows:m/z = 44asethyleneoxide Transparency. Fillasyringewithwater R(blank)and
+quantitationion;m/z = 29andm/z=15asethyleneoxide fillanotherwitha10-folddilutionofprimaryopalescent
+qualificationions. suspension(2.2.1). Useprimaryopalescentsuspensionthat
+hasbeenallowedtostandat20 ± 2 °Cfor24 hbeforeuse.
+Injection:1 mLofthetestsampleandreferencesolutions (c),
+Comparewiththenakedeyeindiffusedlightagainstadark
+(d),(e),(f),(g),(h)and(j).
+background. Theopalescenceofthesuspensionisdetectable
+Afterinjectionofthetestsample,removethecapfromthe whencomparedwiththeblank.
+vialinafumecupboard,andpurgethevialwithdrynitrogen
+Sterility(2.6.1). Syringesstatedtobesterilecomplywiththe
+for30 s. Closethevialwiththecapandanewseptumand
+testforsterilitycarriedoutasfollows. Usingaseptictechnique,
+repeattheheatingandinjectiontoexhaustion. Exhaustionis
+openthepackage,withdrawthesyringe,separatethe
+achievedwhentheamountofethyleneoxideextractedisless
+componentsandplaceeachinasuitablecontainercontaining
+than10 percentofthe1stextractionorwhennoanalytically
+sufficientculturemediatocoverthepartcompletely. Useboth
+significantincreaseinthecumulativeresiduelevelsisdetected.
+therecommendedmedia(2.6.1).
+Systemsuitability:
+Syringesstatedtobesterileonlyinternallycomplywiththetest
+– resolution:minimum1.5betweenthepeaksduetoethylene forsterilitycarriedoutasfollows. Use50 mLofinoculation
+oxideandacetaldehydeinthechromatogramobtainedwith mediumforeachtestsyringe. Usingaseptictechnique,
+referencesolution (j); removetheneedleprotectorandsubmergetheneedleinthe
+culturemedium. Flushthesyringe5 timesbywithdrawingthe
+– signal-to-noiseratio:minimum10forthepeakdue
+plungertoitsfullestextent.
+toethyleneoxideinthechromatogramobtainedwith
+referencesolution (h). Bacterialendotoxins(2.6.14):lessthan0.5 IU/mL,
+determinedon10 syringesfilledwithanextractionvolume
+Verifytheabsenceofpeaksinterferingwiththepeakdueto
+of40 mLofwaterforBET,unlessotherwisejustifiedand
+ethyleneoxidebycarryingoutthetestonanunsterilised
+authorised.
+sample.
+Calculationofcontent. Establishacalibrationcurvewith LABELLING
+themassofethyleneoxideineachreferencesolutionasthe Thelabelstates,whereapplicable,thatthesyringehasbeen
+abscissaandthecorrespondingpeakareasastheordinate. sterilisedusingethyleneoxide.
+504 Seetheinformationsectionongeneralmonographs(coverpages)
