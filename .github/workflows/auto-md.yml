@@ -3,7 +3,10 @@ name: Generate Knowledge MD
 on:
   push:
     paths:
-      - '**/source/**'   # 任何 source/ 資料夾有新 txt 就觸發
+      - 'Raw pdfs/**'    # 新 PDF 推上來就觸發
+      - 'gmp_engine.py'  # engine 更新時也重新生成
+  schedule:
+    - cron: '0 23 * * *' # 每天台灣時間早上 7 點（UTC 23:00）
   workflow_dispatch:      # 也可手動觸發
 
 jobs:
