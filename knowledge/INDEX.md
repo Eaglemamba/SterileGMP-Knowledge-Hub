@@ -597,6 +597,10 @@ Terms: quality culture, root cause analysis (RCA), human error, skill-based erro
 | Test C etching test distinguish Type I Type II surface treatment HF HCl etching / Test C蝕刻試驗區分Type I Type II玻璃是否表面處理HF鹽酸蝕刻 | PhEur-321 |
 | Glass delamination flakes lamellae pharmaceutical vial risk factors citrate phosphate / 玻璃脫層薄片脫落注射劑風險因素磷酸鹽檸檬酸鹽緩衝液 | PhEur-321 + USP-1660 |
 | Spectral transmission coloured glass containers UV 290-450 nm parenteral amber brown / 有色玻璃光譜透射率290-450 nm注射劑棕色琥珀色玻璃限度 | PhEur-321 |
+| Sterile single-use plastic syringes definition materials PP PE polypropylene polyethylene syringe barrel piston / 無菌一次性塑膠注射器定義材料聚丙烯聚乙烯針筒活塞 | PhEur-338 |
+| Ethylene oxide EtO residual testing GC-MS head-space syringe plastic packaging 10 ppm limit / 環氧乙烷EtO殘留測試頭空間氣相色譜質譜塑膠注射器10 ppm限度 | PhEur-338 + ISO-11135 |
+| Silicone oil lubricant syringe barrel extractable 0.25 mg per cm2 methylene chloride / 矽油潤滑劑注射器桶壁可萃取量0.25 mg每平方公分二氯甲烷 | PhEur-338 + USP-381 |
+| Bacterial endotoxins syringe BET LAL 0.5 IU per mL container closure integrity / 細菌內毒素注射器LAL 0.5 IU毫升限度容器密封完整性 | PhEur-338 + USP-661 |
 | Sterilizing filtration, filter sterilization, 0.22 µm filter, 0.2 µm membrane filtration / 滅菌過濾、過濾除菌、0.22微米過濾器 | ISO-13408-2 + TR26 |
 | Bacterial challenge test BCT, microbial retention validation, Brevundimonas diminuta / 細菌挑戰測試、微生物截留驗證、微小短波單胞菌 | ISO-13408-2 + TR26 |
 | Filter integrity test acceptance criteria, correlation to BCT, diffusive flow bubble point / 過濾器完整性測試接受標準、細菌截留相關性 | ISO-13408-2 + TR26 |
@@ -2444,3 +2448,28 @@ Key terms: leachables, analytical evaluation threshold (AET), leachables specifi
 - Section 1 (p479–481): Glass Definitions (colourless/coloured, neutral/soda-lime), Type I/II/III Classification & Suitability Matrix, Preparation/Suitability Recommendations, Production — Delamination (risk factors, accelerated testing), Tests Overview, Table 3.2.1-1 (test selection matrix), Equipment for Tests A/B/C, Filling Volume Determination (vials/ampoules/syringes)
 - Section 2 (p481–483): Test A — Cleaning, Filling, Autoclaving Thermal Cycle, Calibration & Routine Runs, Titration Method, Table 3.2.1-2 (volumes), Table 3.2.1-3 (limits); Test B — Equipment, Crushing/Sieving/Cleaning/Drying, Autoclaving 30 min, Titration, Limits, Repeatability
 - Section 3 (p483–484): Test C — Etching procedure (HF/HCl 1:9), Table 3.2.1-4 (Type I vs II interpretation); Arsenic Test (HG-AAS, 193.7 nm, ≤0.1 ppm); Spectral Transmission (UV-Vis 290–450 nm, Table 3.2.1-5, non-parenteral vs parenteral limits); Annex (flame spectrometry alternative)
+
+---
+
+## PHEUR/PhEur-338-Complete.md
+**Report:** European Pharmacopoeia 11.0 — Chapter 3.3.8: Sterile Single-Use Plastic Syringes
+**Pages:** p503–p504 (2 pages) | **Sections:** 1 | **Monograph:** 01/2021:30308
+
+**Covers questions about:**
+- Definition and material requirements for sterile single-use plastic syringes: barrel (PP/PE), piston with elastomer sealing ring, optional non-detachable needle, individual sterile packaging
+- Why syringes must be sufficiently transparent: to read dosage markings and detect air bubbles and foreign particles — a visual inspection requirement, not just cosmetic
+- Solution S preparation: 37°C × 24 h leaching test in water R (50 mL from multiple syringes combined in borosilicate glass) — the basis for all extractables testing
+- Appearance, acidity/alkalinity (bromothymol blue, ≤0.3 mL 0.01 M acid/base), and absorbance (UV 220–360 nm, ≤0.40) tests on Solution S
+- Ethylene oxide (EtO) residual testing: full head-space GC-MS method (2.2.28 + 2.2.43); SIM mode m/z=44 (quantitation), 29 and 15 (qualification); pre-thermal extraction for low-EtO materials (COC/COP, polyurethane, silicone) at 120°C ≥15 h; limit ≤10 ppm
+- Silicone oil extractable: methylene chloride extraction, evaporation, gravimetric determination; limit ≤0.25 mg/cm² internal surface area; IR confirmation vs silicone oil CRS
+- Reducing substances: 0.002 M KMnO₄ back-titration with 0.01 M Na₂S₂O₃; ≤3.0 mL difference vs blank
+- Transparency test: 10-fold diluted primary opalescent suspension (2.2.1) must be visually detectable vs water blank under dark background
+- Sterility testing (2.6.1): three scenarios — externally + internally sterile (membrane filtration or direct inoculation); stated sterile (full component immersion); stated sterile internally only (50 mL flush method, 5 plunger strokes)
+- Bacterial endotoxins (2.6.14): ≤0.5 IU/mL on 10 syringes using 40 mL water for BET; LAL or recombinant method
+- Pyrogens (2.6.8): rabbit pyrogen test, 5 sets in series, 250 mL NaCl 9 g/L, 10 mL/kg injection
+- Labelling: EtO sterilisation label trigger and ISO 15223-1 symbol usage
+
+**Key terms:** sterile single-use syringes, plastic syringes, polypropylene PP, polyethylene PE, elastomer piston, syringe barrel, silicone oil, Solution S, 37°C leaching, water R, extractables, ethylene oxide EtO, head-space GC-MS, SIM mode, m/z 44, pre-thermal extraction, COC COP cyclo-olefin, 10 ppm EtO limit, silicone oil extraction, methylene chloride, 0.25 mg per cm², IR spectrophotometry, silicone oil CRS, reducing substances, KMnO₄, back-titration, transparency, opalescent suspension, sterility 2.6.1, membrane filtration, direct inoculation, bacterial endotoxins 2.6.14, 0.5 IU/mL, BET, LAL, pyrogens 2.6.8, rabbit test, labelling, Ph.Eur. 3.3.8
+
+**Sections:**
+- Section 1 (p503–p504): Definition & Materials (barrel/piston/needle/packaging, PP/PE, silicone oil, ink migration), Solution S Preparation (37°C×24 h, 50 mL, borosilicate glass), Appearance/Acidity/Absorbance tests, Ethylene Oxide by GC-MS (full method with reference solutions a–j, column specs, MS parameters, system suitability, ≤10 ppm limit), Silicone Oil extraction (DCM gravimetric + IR, ≤0.25 mg/cm²), Reducing Substances (KMnO₄ back-titration, ≤3.0 mL), Transparency (opalescent suspension visual test), Sterility 2.6.1 (3 scenarios), Bacterial Endotoxins 2.6.14 (≤0.5 IU/mL, 40 mL BET), Pyrogens 2.6.8 (rabbit test), Labelling (EtO statement)
