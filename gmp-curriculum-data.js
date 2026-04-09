@@ -309,9 +309,50 @@ const departments = [
         docs: [
           { key: 'PtC-14',          required: false, why: 'ATMP Manufacturing — specialized process support' },
           { key: 'PICS-Annex2',      required: false, why: 'Biologics GMP — process-specific requirements' },
-          { key: 'TR88',            required: false, why: 'AI/ML — process optimization & predictive modeling' },
-          { key: 'TR91',            required: false, why: 'Mobile Manufacturing — agile process support' },
+          { key: 'TR88',            required: false, why: 'Microbial Data Deviation Investigation — root cause methodology' },
+          { key: 'TR91',            required: false, why: 'Post-Approval Change Management — ICH Q12 & PACMP support' },
           { key: 'ISPE-Vol6',       required: false, why: 'Biopharma Facility — process fit considerations' },
+        ]
+      }
+    ]
+  },
+  {
+    id: 'bt',
+    name: 'Biotechnology IT (BT)',
+    nameZh: '資訊技術部',
+    icon: '💻',
+    color: '#0f766e',
+    description: 'Computerized system validation (CSV/GAMP), data integrity, GxP IT infrastructure qualification, analytical instrument qualification, and emerging digital technologies in pharmaceutical manufacturing.',
+    tiers: [
+      {
+        level: 1, label: 'Foundation', labelZh: '基礎必讀',
+        docs: [
+          { key: 'ISPE-GAMP5',  required: true,  why: 'GAMP 5 — definitive CSV standard; risk-based system categorization (Cat 1–5)' },
+          { key: 'ICH-Q9R1',    required: true,  why: 'Quality Risk Management — risk-based approach underpins all system validation decisions' },
+          { key: 'ICH-Q10',     required: true,  why: 'Pharmaceutical Quality System — IT systems support all four PQS elements (PPQMS, CAPA, change control, management review)' },
+          { key: 'USP-1029',    required: true,  why: 'Good Documentation Practices — ALCOA+ data integrity requirements for all GxP systems' },
+          { key: 'PICS-Annex1', required: false, why: 'PIC/S Annex 1 (2022) — environmental monitoring and process control system requirements' },
+        ]
+      },
+      {
+        level: 2, label: 'Core Competency', labelZh: '核心能力',
+        docs: [
+          { key: 'ISPE-IT',     required: true,  why: 'ISPE IT Infrastructure — GxP network, server, cloud, and virtualization qualification' },
+          { key: 'USP-1058',    required: true,  why: 'Analytical Instrument Qualification (AIQ) — DQ/IQ/OQ/PQ for lab instruments and software' },
+          { key: 'ISPE-Vol5',   required: true,  why: 'Commissioning & Qualification — IQ/OQ/PQ lifecycle methodology for systems and equipment' },
+          { key: 'FDA-ProcessInspection', required: false, why: 'FDA Process Inspection — what inspectors examine for computerized systems and data integrity' },
+          { key: 'ICH-Q8R2',    required: false, why: 'Pharmaceutical Development — understanding QbD and process control system design rationale' },
+          { key: 'TR90',        required: false, why: 'Contamination Control Strategy — environmental monitoring system requirements and data review' },
+        ]
+      },
+      {
+        level: 3, label: 'Advanced', labelZh: '進階專業',
+        docs: [
+          { key: 'TR86',        required: false, why: 'Blockchain in Supply Chain — serialization, traceability, and decentralized data integrity' },
+          { key: 'TR60',        required: false, why: 'Process Validation Lifecycle — Stage 3 CPV statistical tools, SPC, and digital systems integration' },
+          { key: 'TR91',        required: false, why: 'Post-Approval Change Management — IT system changes within PACMP regulatory framework' },
+          { key: 'ISO-13485',   required: false, why: 'ISO 13485 — QMS for medical device software (combination product IT systems)' },
+          { key: 'TR65',        required: false, why: 'Technology Transfer — IT system readiness assessment and data migration at receiving site' },
         ]
       }
     ]
