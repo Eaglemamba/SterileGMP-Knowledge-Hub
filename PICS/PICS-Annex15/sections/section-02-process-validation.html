@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIC/S Annex 15 - Section 2: Re-qualification &amp; Process Validation</title>
+    <style>
+:root {
+    --primary-blue: #1e3a5f; --accent-blue: #3498db; --light-gray: #fafafa;
+    --light-blue: #f0f7ff; --yellow-start: #fff9e6; --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9; --green-border: #4caf50; --orange-bg: #fff3e0;
+    --orange-border: #ff9800; --purple-bg: #f3e5f5; --purple-border: #9c27b0;
+    --text-dark: #2d3748; --text-medium: #4a5568; --header-height: 60px; --nav-height: 50px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif; line-height: 1.75; color: var(--text-dark); background: #f0f2f5; }
+.header { background: linear-gradient(135deg, #1a2c3a 0%, #2d4a5e 100%); color: white; padding: 2rem; text-align: center; }
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; color: #f97316; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; color: #fb923c; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.top-header { background: linear-gradient(135deg, #1a2c3a 0%, #2d4a5e 100%); color: white; padding: 1rem 2rem; text-align: center; }
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+.top-nav { background: #2d3748; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.15); display: flex; align-items: stretch; }
+.nav-container { display: flex; justify-content: flex-start; align-items: center; flex: 1; padding: 0 0.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn { background: #2d3748; border: none; color: rgba(255,255,255,0.7); padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; line-height: 1; flex-shrink: 0; transition: background 0.2s, color 0.2s, opacity 0.2s; }
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1rem; color: rgba(255,255,255,0.85); text-decoration: none; white-space: nowrap; border-bottom: 3px solid transparent; transition: all 0.2s ease; }
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: var(--accent-blue); background: rgba(255,255,255,0.05); }
+.nav-num { width: 24px; height: 24px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; }
+.nav-item.active .nav-num { background: var(--accent-blue); }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.chapter-section { background: white; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden; scroll-margin-top: calc(var(--nav-height) + 1rem); }
+.chapter-divider { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem; background: linear-gradient(135deg, #1a2c3a 0%, #2d4a5e 100%); color: white; }
+.chapter-badge { width: 45px; height: 45px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 700; flex-shrink: 0; }
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+.two-column, .content-grid, .side-by-side { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+.left-column, .original-content { background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; }
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 { color: var(--primary-blue); border-bottom: 2px solid #3182ce; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.left-column h4, .original-content h4 { color: var(--primary-blue); margin: 1rem 0 0.5rem; font-size: 1rem; }
+.left-column p, .original-content p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol, .original-content ul, .original-content ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+.right-column, .commentary { background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #bee3f8; }
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 { color: #2c5282; border-bottom: 2px solid #63b3ed; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.right-column h4, .commentary h4 { color: #2c5282; margin: 1rem 0 0.5rem; font-size: 1rem; }
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.right-column ul, .right-column ol, .commentary ul, .commentary ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.right-column li, .commentary li { margin-bottom: 0.5rem; }
+.column-header { font-weight: 600; color: var(--primary-blue); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem; }
+.right-column .column-header, .commentary .column-header { color: #2c5282; }
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+.key-term, .highlight-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
+.quote-box, .important-quote { background: linear-gradient(to right, #e7f3ff, #d6e9ff); border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem; }
+.concept-box, .analogy-box, .note-box, .key-note, .term-box, .formula-box, .key-term-box, .key-point-box, .highlight-box { border-radius: 8px !important; padding: 1rem 1.25rem !important; margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important; }
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4, .note-box h3, .note-box h4, .key-note h3, .key-note h4, .term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.analogy-box { background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important; border-left: 4px solid #f6ad55 !important; }
+.analogy-box h3, .analogy-box h4 { color: #856404 !important; }
+.term-box, .key-term-box { background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important; }
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+.note-box, .key-note, .key-point-box { background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important; }
+.note-box h3, .note-box h4, .key-note h3, .key-note h4, .key-point-box h3, .key-point-box h4 { color: #e65100 !important; }
+.highlight-box { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.highlight-box h3, .highlight-box h4 { color: #6a1b9a !important; }
+.learning-objectives { background: linear-gradient(135deg, #1e3a5f 0%, #2d5a8e 100%); color: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
+.learning-objectives h3 { color: #fbbf24; margin-bottom: 0.75rem; font-size: 1.05rem; }
+.learning-objectives ul { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; opacity: 0.95; }
+.param-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.88rem; }
+.param-table th { background: var(--primary-blue); color: white; padding: 0.6rem 0.9rem; text-align: left; font-weight: 600; }
+.param-table td { padding: 0.55rem 0.9rem; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+.param-table tr:nth-child(even) { background: #f7fafc; }
+.param-table tr:hover { background: #edf2f7; }
+.section-title, .section-divider { font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
+.main-footer { background: #1a2c3a; color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+.back-to-top { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 45px; height: 45px; background: #f97316; color: white; border: none; border-radius: 50%; cursor: pointer; font-size: 1.3rem; box-shadow: 0 3px 12px rgba(249,115,22,0.4); z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #ea6c0a; transform: scale(1.1); }
+@media (max-width: 900px) { .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; } .main-content, .main-container { padding: 1rem; } .chapter-body { padding: 1rem; } }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Section 2: Re-qualification &amp; Process Validation</h1>
+    <div class="subtitle">第二節：再確效與製程確效</div>
+    <div class="page-info">PIC/S GMP Annex 15 (2023) — Qualification and Validation | p215–p220</div>
+</div>
+
+<div class="main-content">
+
+<div class="learning-objectives">
+    <h3>本節學習目標</h3>
+    <ul>
+        <li>理解再確效（Re-qualification）的觸發時機與週期評估方法</li>
+        <li>掌握製程確效三種方法：傳統（Traditional）、持續性（Continuous）、混合（Hybrid）的適用情境</li>
+        <li>了解同步確效（Concurrent Validation）的特殊情況要求與限制條件</li>
+        <li>理解持續性製程查驗（Ongoing Process Verification, OPV）在生命週期中的角色</li>
+        <li>熟悉運輸確效（Transport Verification）與包裝確效（Packaging Validation）的核心要求</li>
+    </ul>
+</div>
+
+<!-- SECTION 4 — RE-QUALIFICATION -->
+<div class="chapter-section" id="sec4">
+    <div class="chapter-divider">
+        <div class="chapter-badge">4</div>
+        <div class="chapter-info">
+            <h2>4. Re-qualification</h2>
+            <p>再確效 — Periodic evaluation to maintain state of control</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <h3>4.1 – 4.2 Re-qualification Requirements</h3>
+                <p><strong>4.1</strong> Equipment, facilities, utilities and systems should be evaluated at an appropriate frequency to confirm that they remain in a state of control.</p>
+                <p><strong>4.2</strong> Where re-qualification is necessary and performed at a specific time period, the period should be justified and the criteria for evaluation defined. Furthermore, the possibility of small changes over time should be assessed.</p>
+            </div>
+            <div class="right-column">
+                <h3>再確效解析</h3>
+                <div class="term-box">
+                    <h4>再確效的觸發方式</h4>
+                    <p>再確效可以由以下情況觸發：</p>
+                    <ul>
+                        <li><strong>週期性評估</strong>：依風險評估定義的固定週期（如每年、每3年）</li>
+                        <li><strong>事件驅動</strong>：維修、改造、重大偏差、設備移動後</li>
+                        <li><strong>持續性監控數據</strong>：趨勢異常時觸發</li>
+                    </ul>
+                </div>
+                <div class="note-box">
+                    <h4>§4.2 重點：漸進性變化的評估</h4>
+                    <p>長期使用的設備可能因磨損、老化等因素發生細微累積性變化。再確效週期的設計需考量此類「小量長期變化」（small changes over time），週期設定需有風險評估支撐。</p>
+                </div>
+                <p>再確效範圍可以是完整的 IQ/OQ/PQ 重新執行，也可以是針對特定關鍵參數的簡化評估，視風險評估結果而定。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 5 — PROCESS VALIDATION -->
+<div class="chapter-section" id="sec5">
+    <div class="chapter-divider">
+        <div class="chapter-badge">5</div>
+        <div class="chapter-info">
+            <h2>5. Process Validation</h2>
+            <p>製程確效 — Traditional, Continuous, Hybrid approaches &amp; Ongoing Verification</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+
+        <!-- General -->
+        <div class="two-column">
+            <div class="left-column">
+                <h3>5.1 – 5.15 General Principles</h3>
+                <p><strong>5.1</strong> The requirements and principles outlined in this section are applicable to the manufacture of all pharmaceutical dosage forms. They cover the initial validation of new processes, subsequent validation of modified processes, site transfers and ongoing process verification.</p>
+                <p><strong>5.3</strong> Manufacturing processes may be developed using a traditional approach or a continuous verification approach. However, irrespective of the approach used, <strong>processes must be shown to be robust and ensure consistent product quality before any product is released to the market.</strong> Retrospective validation is no longer an acceptable approach.</p>
+                <p><strong>5.4</strong> Process validation of new products should cover all intended marketed strengths and sites of manufacture. Bracketing could be justified for new products based on extensive process knowledge.</p>
+                <p><strong>5.5</strong> For process validation of products transferred between sites, the number of validation batches could be reduced by the use of a bracketing approach. Existing product knowledge, including the content of the previous validation, should be available.</p>
+                <p><strong>5.7</strong> Process validation should establish whether all quality attributes and process parameters, which are considered important for ensuring the validated state and acceptable product quality, can be consistently met by the process.</p>
+                <p><strong>5.8</strong> Normally batches manufactured for process validation should be the same size as the intended commercial scale batches.</p>
+                <p><strong>5.9</strong> Equipment, facilities, utilities and systems used for process validation should be qualified. Test methods should be validated for their intended use.</p>
+                <p><strong>5.11</strong> Production personnel are expected to be involved in the manufacture of validation batches to facilitate product understanding.</p>
+                <p><strong>5.12</strong> The suppliers of critical starting and packaging materials should be qualified prior to the manufacture of validation batches.</p>
+                <p><strong>5.14</strong> Where validation batches are released to the market this should be pre-defined. The conditions under which they are produced should fully comply with GMP, with the validation acceptance criteria.</p>
+            </div>
+            <div class="right-column">
+                <h3>製程確效一般原則解析</h3>
+                <div class="term-box">
+                    <h4>適用範圍廣泛</h4>
+                    <p>§5.1 明確涵蓋：新製程初始確效、修改後製程的再確效、廠址移轉（site transfer）確效、以及持續性製程查驗。幾乎涉及藥品生命週期的所有階段。</p>
+                </div>
+                <div class="highlight-box">
+                    <h4>批次規模要求（§5.8）</h4>
+                    <p>確效批次通常應與商業規模批次相同大小。使用非商業規模批次需要額外科學依據。這確保確效結果真正代表商業生產條件。</p>
+                </div>
+                <div class="analogy-box">
+                    <h4>括弧法（Bracketing）的應用</h4>
+                    <p>Bracketing 是一種科學化減少批次數量的策略：只驗證極端情況（最高/最低規格），中間規格視為已被涵蓋。例如：驗證 100mg 和 500mg 片劑，中間的 200mg 和 300mg 視為已確效。需要充足的科學依據和知識基礎。</p>
+                </div>
+                <div class="note-box">
+                    <h4>確效批次的先決條件</h4>
+                    <p>在執行製程確效批次前，需確認：</p>
+                    <ul>
+                        <li>設備/系統已完成 IQ/OQ/PQ（§5.9）</li>
+                        <li>分析方法已確效（§5.9）</li>
+                        <li>關鍵起始物料和包材供應商已完成資格確認（§5.12）</li>
+                        <li>生產人員完成訓練（§5.11）</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Concurrent Validation -->
+        <div class="two-column">
+            <div class="left-column">
+                <h3>5.16 – 5.17 Concurrent Validation</h3>
+                <p><strong>5.16</strong> In exceptional circumstances, where there is a strong benefit-risk ratio for the patient, it may be acceptable not to complete a validation programme before routine production starts and concurrent validation could be used. However, the decision to carry out concurrent validation must be justified, documented in the VMP for visibility and approved by authorised personnel.</p>
+                <p><strong>5.17</strong> Where a concurrent validation approach has been adopted, there should be sufficient data to support a conclusion that any given batch of product is uniform and meets the defined acceptance criteria. The results and conclusion should be formally documented and available to the Authorised Person prior to certification of the batch.</p>
+            </div>
+            <div class="right-column">
+                <h3>同步確效解析</h3>
+                <div class="note-box">
+                    <h4>同步確效的嚴格限制</h4>
+                    <p>Concurrent Validation（同步確效）是例外，不是常規。觸發條件：</p>
+                    <ul>
+                        <li>對病患有<strong>強烈的效益-風險比</strong>（例如孤兒藥、緊急藥物短缺）</li>
+                        <li>必須記錄在 VMP 中，透明可查</li>
+                        <li>需獲得授權人員批准</li>
+                    </ul>
+                    <p>每批產品在放行前，授權人（Authorised Person, AP）必須獲得足夠數據，確認該批次均勻且符合 AC。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Traditional Process Validation -->
+        <div class="two-column">
+            <div class="left-column">
+                <h3>5.18 – 5.22 Traditional Process Validation</h3>
+                <p><strong>5.18</strong> In the traditional approach, a number of batches of the finished product are manufactured under routine conditions to confirm reproducibility.</p>
+                <p><strong>5.19</strong> The number of batches manufactured and the number of samples taken should be based on quality risk management principles, allow the normal range of variation and trends to be established and provide sufficient data for evaluation.</p>
+                <p><strong>5.20</strong> Without prejudice to 5.19, it is generally considered acceptable that a minimum of three consecutive batches manufactured under routine conditions could constitute a validation of the process. An alternative number of batches may be justified.</p>
+                <p><strong>5.21</strong> A process validation protocol should be prepared which defines the critical process parameters (CPP), critical quality attributes (CQA) and the associated acceptance criteria which should be based on development data or documented process knowledge.</p>
+                <p><strong>5.22</strong> Process validation protocols should include, but are not limited to the following:</p>
+                <ol>
+                    <li>A short description of the process and a reference to the Master Batch Record;</li>
+                    <li>Functions and responsibilities;</li>
+                    <li>Summary of the CQAs to be investigated;</li>
+                    <li>Summary of CPPs and their associated limits;</li>
+                    <li>Summary of other (non-critical) attributes and parameters to be monitored;</li>
+                    <li>List of equipment/facilities and calibration status;</li>
+                    <li>List of analytical methods and method validation;</li>
+                    <li>Proposed in-process controls with acceptance criteria;</li>
+                    <li>Additional testing with acceptance criteria;</li>
+                    <li>Sampling plan and rationale;</li>
+                    <li>Methods for recording and evaluating results;</li>
+                    <li>Process for release and certification of batches (if applicable).</li>
+                </ol>
+            </div>
+            <div class="right-column">
+                <h3>傳統製程確效解析</h3>
+                <div class="term-box">
+                    <h4>「最少3批」的正確理解</h4>
+                    <p>§5.20 規定「一般可接受最少3批連續批次」，但這是<strong>最低門檻，而非最終答案</strong>。每個廠商必須基於品質風險管理，自行決定並論証需要多少批次才能展現足夠的保證。若製程複雜性高、理解程度低，3批可能不夠。</p>
+                </div>
+                <div class="highlight-box">
+                    <h4>製程確效協議的 12 項必要內容（§5.22）</h4>
+                    <p>這是稽核常見查核點。協議必須在執行確效批次<strong>前</strong>完成核准。特別注意：</p>
+                    <ul>
+                        <li>CQA 和 CPP 必須有開發數據或文件化的製程知識支撐</li>
+                        <li>取樣計畫需要<strong>科學依據</strong>（sampling plan with rationale）</li>
+                        <li>非關鍵參數（non-critical parameters）也需要監控計畫</li>
+                    </ul>
+                </div>
+                <div class="analogy-box">
+                    <h4>CPP vs. CQA 的區別</h4>
+                    <p><strong>CQA（關鍵品質屬性）</strong>：產品的輸出特性，如含量均勻度、溶出度、無菌性（定義「好產品」的標準）</p>
+                    <p><strong>CPP（關鍵製程參數）</strong>：製程的輸入變數，如混合時間、溫度、壓縮力（影響 CQA 的開關）</p>
+                    <p>製程確效就是證明：在所定義的 CPP 範圍內操作，能穩定產出符合所有 CQA 的產品。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Continuous & Hybrid & OPV -->
+        <div class="two-column">
+            <div class="left-column">
+                <h3>5.23 – 5.27 Continuous Process Verification &amp; Hybrid Approach</h3>
+                <p><strong>5.23</strong> For products developed by a quality by design approach, where it has been scientifically established during development that the established control strategy provides a high degree of assurance of product quality, then continuous process verification can be used as an alternative to traditional process validation.</p>
+                <p><strong>5.24</strong> The method by which the process will be verified should be defined. There should be a science based control strategy for the required attributes for incoming materials, CQAs and CPPs to confirm product realisation. Process Analytical Technology and multivariate statistical process control may be used as tools.</p>
+                <p><strong>5.25</strong> The general principles laid down in 5.1 – 5.14 above still apply.</p>
+                <p><strong>5.26</strong> A hybrid of the traditional approach and continuous process verification could be used where there is a substantial amount of product and process knowledge and understanding gained from manufacturing experience and historical batch data.</p>
+                <p><strong>5.27</strong> This approach may also be used for any validation activities after changes or during ongoing process verification even though the product was initially validated using a traditional approach.</p>
+
+                <h3>5.28 – 5.32 Ongoing Process Verification during Lifecycle</h3>
+                <p><strong>5.28</strong> Paragraphs 5.28-5.32 are applicable to all three approaches to process validation mentioned above.</p>
+                <p><strong>5.29</strong> Manufacturers should monitor product quality to ensure that a state of control is maintained throughout the product lifecycle with the relevant process trends evaluated.</p>
+                <p><strong>5.30</strong> The extent and frequency of ongoing process verification should be reviewed periodically. At any point throughout the product lifecycle, it may be appropriate to modify the requirements.</p>
+                <p><strong>5.31</strong> Ongoing process verification should be conducted under an approved protocol or equivalent documents and a corresponding report should be prepared. Statistical tools should be used, where appropriate, to support conclusions with regard to the variability and capability of a given process.</p>
+                <p><strong>5.32</strong> Ongoing process verification should be used throughout the product lifecycle to support the validated status of the product as documented in the Product Quality Review. Incremental changes over time should also be considered.</p>
+            </div>
+            <div class="right-column">
+                <h3>持續性確效、混合法與 OPV 解析</h3>
+                <div class="term-box">
+                    <h4>三種製程確效方法比較</h4>
+                    <table class="param-table">
+                        <thead><tr><th>方法</th><th>適用情境</th><th>關鍵工具</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>Traditional</strong></td><td>多數藥品；製程知識有限時</td><td>≥3批連續確效批次</td></tr>
+                            <tr><td><strong>Continuous (CPV)</strong></td><td>QbD 開發；control strategy 科學成熟</td><td>PAT、多變量 SPC</td></tr>
+                            <tr><td><strong>Hybrid</strong></td><td>有豐富歷史數據；製程理解深入</td><td>兩種方法的組合</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="highlight-box">
+                    <h4>持續性製程查驗（OPV）— 確效不是終點</h4>
+                    <p>OPV（§5.28-5.32）是製程確效的<strong>生命週期維護機制</strong>。適用於所有三種確效方法。關鍵要求：</p>
+                    <ul>
+                        <li>有核准的協議和報告</li>
+                        <li>使用統計工具（製程能力指數 Cpk、SPC 管制圖）</li>
+                        <li>與產品品質回顧（PQR）整合</li>
+                        <li>考慮累積性漸進變化（incremental changes over time）</li>
+                    </ul>
+                </div>
+                <div class="analogy-box">
+                    <h4>比喻：OPV 如同年度體檢</h4>
+                    <p>製程確效（初始）= 新車出廠前的全面品質檢驗（確認符合規格）；OPV = 車輛每年的例行保養檢查（確認仍在良好狀態）。兩者都不可缺少：前者建立基準，後者維持狀態。</p>
+                </div>
+                <div class="note-box">
+                    <h4>PAT 在持續性確效中的角色</h4>
+                    <p>製程分析技術（Process Analytical Technology, PAT）允許即時監控 CQA，取代終點測試。例如：NIR（近紅外線光譜）即時監測混合均勻度，可替代傳統的取樣分析。PAT 是 CPV 方法的關鍵使能技術。</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- SECTION 6 — TRANSPORT VERIFICATION -->
+<div class="chapter-section" id="sec6">
+    <div class="chapter-divider">
+        <div class="chapter-badge">6</div>
+        <div class="chapter-info">
+            <h2>6. Verification of Transportation</h2>
+            <p>運輸確效 — Route definition, risk assessment &amp; environmental monitoring</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <h3>6.1 – 6.4 Transportation Verification Requirements</h3>
+                <p><strong>6.1</strong> Finished medicinal products, investigational medicinal products, bulk product and samples should be transported from manufacturing sites in accordance with the conditions defined in the marketing authorisation, the approved label, product specification file or as justified by the manufacturer.</p>
+                <p><strong>6.2</strong> It is recognised that verification of transportation may be challenging due to the variable factors involved however, <strong>transportation routes should be clearly defined.</strong> Seasonal and other variations should also be considered during verification of transport.</p>
+                <p><strong>6.3</strong> A risk assessment should be performed to consider the impact of variables in the transportation process other than those conditions which are continuously controlled or monitored, e.g. delays during transportation, failure of monitoring devices, topping up liquid nitrogen, product susceptibility and any other relevant factors.</p>
+                <p><strong>6.4</strong> Due to the variable conditions expected during transportation, <strong>continuous monitoring and recording of any critical environmental conditions</strong> to which the product may be subjected should be performed, unless otherwise justified.</p>
+            </div>
+            <div class="right-column">
+                <h3>運輸確效解析</h3>
+                <div class="term-box">
+                    <h4>運輸確效的挑戰性</h4>
+                    <p>運輸確效比一般設備確效更複雜，因為涉及大量不可控因素：天氣、交通延誤、不同運輸商、季節變化。§6.2 明確承認此挑戰，但要求路線必須明確定義。</p>
+                </div>
+                <div class="note-box">
+                    <h4>風險評估的必要項目（§6.3）</h4>
+                    <p>運輸風險評估需考慮：</p>
+                    <ul>
+                        <li>運輸延誤（delays）的溫度影響</li>
+                        <li>溫度監測設備失效</li>
+                        <li>液態氮補充（低溫產品）</li>
+                        <li>產品對溫度/振動/光的敏感性</li>
+                        <li>季節性溫度變化（夏/冬最壞情況）</li>
+                    </ul>
+                </div>
+                <p><strong>§6.4 持續監測</strong>：除非有充分科學依據，否則運輸全程必須對關鍵環境條件（溫度、濕度等）進行持續監測和記錄。數據記錄器（data logger）是標準工具。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 7 — PACKAGING VALIDATION -->
+<div class="chapter-section" id="sec7">
+    <div class="chapter-divider">
+        <div class="chapter-badge">7</div>
+        <div class="chapter-info">
+            <h2>7. Validation of Packaging</h2>
+            <p>包裝確效 — Primary &amp; secondary packaging equipment qualification</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <h3>7.1 – 7.2 Packaging Validation Requirements</h3>
+                <p><strong>7.1</strong> Variation in equipment processing parameters especially during primary packaging may have a significant impact on the integrity and correct functioning of the pack, e.g. blister strips, sachets and sterile components; therefore primary and secondary packaging equipment for finished and bulk products should be qualified.</p>
+                <p><strong>7.2</strong> Qualification of the equipment used for primary packing should be carried out at the <strong>minimum and maximum operating ranges</strong> defined for the critical process parameters such as temperature, machine speed and sealing pressure or for any other factors.</p>
+            </div>
+            <div class="right-column">
+                <h3>包裝確效解析</h3>
+                <div class="term-box">
+                    <h4>初級包裝確效的重要性</h4>
+                    <p>初級包裝（primary packaging，直接接觸產品）的完整性直接影響產品品質和患者安全。鋁塑泡罩（blister）的密封強度、小袋（sachet）的完整性、無菌包裝的完整性——任何密封失效都可能導致污染或降解。</p>
+                </div>
+                <div class="note-box">
+                    <h4>最小-最大操作範圍測試（§7.2）</h4>
+                    <p>與 OQ 的「最壞情況」概念一致：包裝確效需在關鍵製程參數（溫度、機器速度、封口壓力）的最低和最高設定值下進行，確認整個操作範圍內的包裝完整性均符合要求。</p>
+                </div>
+                <p>次級包裝（secondary packaging，如外盒）也需確效，但側重點不同：主要確認標籤正確性、條碼識別、產品防護功能。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div><!-- end main-content -->
+
+<div class="main-footer">
+    <p>PIC/S GMP Annex 15 (2023): Qualification and Validation</p>
+    <p style="opacity:0.6;font-size:0.8rem;">Section 2 of 3 — p215–p220 | SterileGMP Knowledge Hub</p>
+</div>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) { btn.classList.add('visible'); }
+    else { btn.classList.remove('visible'); }
+});
+</script>
+</body>
+</html>
