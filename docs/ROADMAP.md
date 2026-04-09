@@ -2,7 +2,7 @@
 
 This document summarizes the current coverage status, gap analysis, and expansion roadmap for building a comprehensive sterile pharmaceutical manufacturing knowledge hub suitable for COO-level operational decision-making.
 
-Last updated: 2026-04-09 — 164 documents complete (PDA 41, USP 76, ISPE 14, FDA 5, ICH 3, PIC/S 1, ISO 17, Ph.Eur. 7); Raw PDFs queue empty — all available PDFs processed or blocked; next priority: Expert Knowledge Base or Layer 2 Operational Frameworks
+Last updated: 2026-04-09 — 166 documents complete (PDA 41, USP 76, ISPE 14, FDA 5, ICH 3, PIC/S 3, ISO 17, Ph.Eur. 7); Added PIC/S Annex 2 (ATMPs + Biologics) and Annex 20 (QRM); Annex 15 source extracted — HTML pending; Raw PDFs queue empty — all available PDFs processed or blocked; next priority: Expert Knowledge Base or Layer 2 Operational Frameworks
 
 ---
 
@@ -36,7 +36,7 @@ Layer 3: Site-Specific Documents             ~/Amaran-Site-Knowledge/
 
 | Component | Status | Count |
 |-----------|--------|-------|
-| Layer 1 — Regulatory Reference | ✅ Complete | 164 documents |
+| Layer 1 — Regulatory Reference | ✅ Complete | 166 documents |
 | Expert Knowledge Base | ⬜ Not started | 9 files planned |
 | Layer 2 — Operational Frameworks | ⬜ Not started | ~27 files planned |
 | Layer 2 — Skills System | ⬜ Not started | 26 slash commands planned |
@@ -55,7 +55,7 @@ Layer 3: Site-Specific Documents             ~/Amaran-Site-Knowledge/
 
 ---
 
-## Layer 1: Regulatory Reference — ✅ COMPLETE (164 documents)
+## Layer 1: Regulatory Reference — ✅ COMPLETE (166 documents)
 
 ### Completion Summary
 
@@ -66,13 +66,13 @@ Layer 3: Site-Specific Documents             ~/Amaran-Site-Knowledge/
 | **ISPE** | 14 | Baseline Guides, Good Practice Guides, GAMP | ✅ Complete (1 pending OCR) |
 | **FDA** | 5 | Aseptic Processing, Process Validation, Process Inspection, Combination Products CGMP, HF for Combo Products | ✅ Complete |
 | **ICH** | 3 | Q8(R2), Q9(R1), Q10 | ✅ Complete |
-| **PIC/S** | 1 | Annex 1 (2022) | ✅ Complete |
+| **PIC/S** | 3 | Annex 1 (2022), Annex 2 (ATMPs + Biologics), Annex 20 (QRM); Annex 15 source extracted — HTML pending | ✅ Complete |
 | **ISO** | 17 | ISO 11040 (Prefilled Syringes Parts 1–8), ISO 13408 (Aseptic Processing Parts 1–7), ISO 14644 (Cleanrooms Parts 1/5/7), ISO 11608-1 (NIS), ISO 13485 (Medical Device QMS), ISO 10993-1 (Biological Evaluation), ISO TR 24971 (Risk Management Guidance), ISO 15378 (Primary Packaging GMP), ISO 9001, ISO 2859-1, ISO 9000, ISO 15223-1, ISO 15223-2, ISO 15394, ISO 13926-1/2/3 — ISO 14971 ❌ blocked (scanned PDF); ISO 15225 ❌ blocked (font encoding) | ✅ Complete (available PDFs) |
 | **Ph.Eur.** | 7 | 2.6.1 Sterility ✅, 2.6.14 Bacterial Endotoxins ✅, 2.9.19 Sub-visible Particles ✅, 2.9.20 Visible Particles ✅, 3.2.1 Glass Containers ✅, 3.3.8 Sterile Single-Use Syringes ✅, 5.1.1 Methods of Preparation ✅ | ✅ Complete (planned scope) |
 | **IEC** | 0 | 62366-1 (usability engineering) | ⬜ Not started |
-| **EU GMP** | 0 | Annex 15, Annex 2, Annex 20 | ⬜ Future (Phase 6) |
+| **EU GMP** | 0 | Annex 15, Annex 2, Annex 20 (→ PIC/S equivalents now covered) | ⬜ Future (Phase 6, lower priority — PIC/S equivalents complete) |
 | **WHO GMP** | 0 | TRS 961 Annex 6, TRS 1010 | ⬜ Future (Phase 6) |
-| **Total** | **164** | | |
+| **Total** | **166** | | |
 
 ### USP Batch History
 
