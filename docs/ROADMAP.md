@@ -2,7 +2,7 @@
 
 This document summarizes the current coverage status, gap analysis, and expansion roadmap for building a comprehensive sterile pharmaceutical manufacturing knowledge hub suitable for COO-level operational decision-making.
 
-Last updated: 2026-04-09 — 166 documents complete (PDA 41, USP 76, ISPE 14, FDA 5, ICH 3, PIC/S 3, ISO 17, Ph.Eur. 7); Added PIC/S Annex 2 (ATMPs + Biologics) and Annex 20 (QRM); Annex 15 source extracted — HTML pending; Raw PDFs queue empty — all available PDFs processed or blocked; next priority: Expert Knowledge Base or Layer 2 Operational Frameworks
+Last updated: 2026-04-09 — 166 documents complete (PDA 41, USP 76, ISPE 14, FDA 5, ICH 3, PIC/S 3, ISO 17, Ph.Eur. 7); Added BT (IT) dept to Education Layer curriculum (8 depts total); updated INDEX-router.md with Ph.Eur./ISO/PICS/FDA routing rows; fixed learning-path & mindmap grid for 8 depts; PICS-Annex15 source extracted — HTML sections pending (next immediate task); Raw PDFs queue: 1 actionable (Annex15 ready), 3 permanently blocked, 1 to-do (21 CFR 600-680)
 
 ---
 
@@ -53,12 +53,18 @@ Layer 3: Site-Specific Documents             ~/Amaran-Site-Knowledge/
 
 **In order:**
 
-1. **Expert Knowledge Base** — start with SA25 lifecycle (`#1`) or Lyo ANDA end-to-end (`#2`); see full plan below
-2. **Layer 2 Operational Frameworks** — P0 skills first (`/deviation`, `/change-control`) with supporting templates
-3. **Layer 1 additions** — ISO 14644-2/3 (monitoring/test methods; have Parts 1/5/7), ISO 17665 (steam sterilisation), PDA TR36 (lyophilisation), ISPE GEP (OCR required), remaining USP `<1229>` sub-series
-4. **Layer 3** — resume SOP desensitization via `~/Amaran-AI-SOP/`; human review required per document
+1. **PICS-Annex15** — source text ready (`PICS/PICS-Annex15/source/section-01-full-document.txt`), scaffold exists, HTML sections not yet generated. Completes the PIC/S set. (~2 hrs)
+2. **Expert Knowledge Base** — start with SA25 lifecycle (`#1`) or Lyo ANDA end-to-end (`#2`); see full plan below
+3. **Layer 2 Operational Frameworks** — P0 skills first (`/deviation`, `/change-control`) with supporting templates
+4. **Layer 1 additions requiring new PDFs** — ISO 14644-2/3, ISO 17665, PDA TR36, FDA Container Closure / Terminal Sterilization, USP `<1229>` sub-series, 21 CFR 600-680 (biological products — To-Do item)
+5. **Layer 3** — resume SOP desensitization via `~/Amaran-AI-SOP/`; human review required per document
 
-> **Raw PDFs queue status (2026-04-09):** All uploaded PDFs have been processed or marked blocked. No unprocessed PDFs remain. Blocked: ISPE-GEP (OCR required), ISO-14971 (scanned), ISO-15225 (font encoding failure).
+> **Raw PDFs queue status (2026-04-09):**
+> - 🔄 **Actionable:** `pe-009-17-gmp-guide-annexes.pdf` — source already extracted into PICS-Annex15/source/; PDF can be moved to processed after Annex15 HTML is generated
+> - ❌ **Blocked — OCR required:** `ISPE-Good Engineering Practice.pdf`
+> - ❌ **Blocked — scanned PDF:** `N. BS EN ISO14971_2019.pdf`
+> - ❌ **Blocked — font encoding failure:** `CEN EN ISO 15225.pdf`
+> - 📋 **To-Do (no PDF yet):** 21 CFR 600-680 — Biological Products regulations
 
 ---
 
@@ -79,7 +85,7 @@ Bilingual (EN/ZH-TW) searchable document index with deep search across titles, s
 
 ### learning-path.html — Department Curriculum Tracker
 
-Role-based reading tracker powered by `gmp-curriculum-data.js`. Covers 7 departments × 3 tiers.
+Role-based reading tracker powered by `gmp-curriculum-data.js`. Covers 8 departments × 3 tiers.
 
 | Department | Icon | Tier 1 Foundation | Tier 2 Core | Tier 3 Advanced |
 |-----------|------|-------------------|-------------|-----------------|
@@ -100,7 +106,7 @@ Interactive D3.js + Markmap-powered visualization of the entire knowledge base. 
 
 | View | Description |
 |------|-------------|
-| By Department | Shows 7 department tracks with Foundation → Core → Advanced hierarchy |
+| By Department | Shows 8 department tracks with Foundation → Core → Advanced hierarchy |
 | By Topic | Groups documents into 10 thematic clusters (Aseptic Processing, Sterilization & Filtration, Container Closure, Quality Systems, Environmental Monitoring, Testing Methods, Facilities & Utilities, Advanced Therapies, Regulatory & Compliance, Emerging Technologies) |
 | By Source | Organizes all 166 documents by issuing organization (PDA, ISPE, FDA, ICH, PIC/S, USP, ISO, Ph.Eur.) |
 
@@ -108,7 +114,7 @@ Interactive D3.js + Markmap-powered visualization of the entire knowledge base. 
 
 Single source of truth for learning path structure. Consumed by `learning-path.html` and `mindmap.html`.
 
-- `departments[]` — 7 department objects, each with `tiers[]` containing curated `docs[]` (key + required flag + rationale)
+- `departments[]` — 8 department objects (QA, QC, Production, Engineering, RA, Warehouse, Technical Service, BT/IT), each with `tiers[]` containing curated `docs[]` (key + required flag + rationale)
 - `topicClusters[]` — 10 topic clusters with tag-based matching for mind-map "By Topic" view
 - `sourceOrgs{}` — 8 source organization labels and brand colors
 - Helper functions: `generateDeptMarkdown()`, `generateTopicMarkdown()`, `generateSourceMarkdown()` (used by Markmap renderer)
@@ -126,7 +132,7 @@ Single source of truth for learning path structure. Consumed by `learning-path.h
 | **ISPE** | 14 | Baseline Guides, Good Practice Guides, GAMP | ✅ Complete (1 pending OCR) |
 | **FDA** | 5 | Aseptic Processing, Process Validation, Process Inspection, Combination Products CGMP, HF for Combo Products | ✅ Complete |
 | **ICH** | 3 | Q8(R2), Q9(R1), Q10 | ✅ Complete |
-| **PIC/S** | 3 | Annex 1 (2022), Annex 2 (ATMPs + Biologics), Annex 20 (QRM); Annex 15 source extracted — HTML pending | ✅ Complete |
+| **PIC/S** | 3 | Annex 1 (2022), Annex 2 (ATMPs + Biologics), Annex 20 (QRM) — complete; Annex 15 scaffold + source text ready, HTML sections not yet generated | 🔄 Annex 15 pending |
 | **ISO** | 17 | ISO 11040 (Prefilled Syringes Parts 1–8), ISO 13408 (Aseptic Processing Parts 1–7), ISO 14644 (Cleanrooms Parts 1/5/7), ISO 11608-1 (NIS), ISO 13485 (Medical Device QMS), ISO 10993-1 (Biological Evaluation), ISO TR 24971 (Risk Management Guidance), ISO 15378 (Primary Packaging GMP), ISO 9001, ISO 2859-1, ISO 9000, ISO 15223-1, ISO 15223-2, ISO 15394, ISO 13926-1/2/3 — ISO 14971 ❌ blocked (scanned PDF); ISO 15225 ❌ blocked (font encoding) | ✅ Complete (available PDFs) |
 | **Ph.Eur.** | 7 | 2.6.1 Sterility ✅, 2.6.14 Bacterial Endotoxins ✅, 2.9.19 Sub-visible Particles ✅, 2.9.20 Visible Particles ✅, 3.2.1 Glass Containers ✅, 3.3.8 Sterile Single-Use Syringes ✅, 5.1.1 Methods of Preparation ✅ | ✅ Complete (planned scope) |
 | **IEC** | 0 | 62366-1 (usability engineering) | ⬜ Not started |
@@ -376,12 +382,14 @@ All PDA TRs (41), top ISPE guides (14), PIC/S Annex 1, FDA Aseptic/Process Val/P
 
 | Task | Document | Effort | Status |
 |------|----------|--------|--------|
+| **PIC/S completion** | **PICS-Annex15 — Qualification and Validation** | **Small** | **🔄 Source ready — generate HTML** |
 | ISO addition | ISO 14644-2 (monitoring), ISO 14644-3 (test methods) — Parts 1/5/7 already done | Medium | ⬜ Need PDF |
 | PDA addition | TR36 — Lyophilization | Medium | ⬜ Need PDF |
 | ISO addition | ISO 17665 — Steam sterilization | Medium | ⬜ Need PDF |
 | ISPE completion | GEP — Good Engineering Practice | Medium | ❌ Blocked (OCR) |
 | FDA additions | Container Closure Guidance, Terminal Sterilization Guidance | Medium | ⬜ Need PDF |
 | USP completion | `<1229>` sub-series (pending entries), `<151>`, `<790>` | Small | ⬜ Need PDF |
+| FDA / CFR | 21 CFR 600-680 — Biological Products | Medium | ⬜ Need PDF |
 
 ### Phase 5: Active — Combination Products Device Layer
 
