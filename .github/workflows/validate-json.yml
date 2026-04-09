@@ -1,0 +1,19 @@
+name: Validate JSON
+
+on:
+  push:
+    paths:
+      - 'reports.json'
+      - 'tag-classes.json'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate reports.json
+        run: python -m json.tool reports.json > /dev/null && echo "reports.json OK"
+
+      - name: Validate tag-classes.json
+        run: python -m json.tool tag-classes.json > /dev/null && echo "tag-classes.json OK"
