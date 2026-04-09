@@ -116,13 +116,18 @@ Use these mappings to translate user questions before routing:
 
 | Topic | ★★★ Primary (section hint) | ★★ Secondary |
 |---|---|---|
-| Process validation / 製程驗證 | FDA-ProcessVal (§III-§V Stages 1-3) · TR60 (§1-§3 Lifecycle) | TR22, TR26, TR90 |
+| Process validation / 製程驗證 | FDA-ProcessVal (§III-§V Stages 1-3) · TR60 (§1-§3 Lifecycle) · PICS-Annex15 (§2 Traditional/CPV/Hybrid/OPV) | TR22, TR26, TR90 |
+| VMP / Validation Master Plan | PICS-Annex15 (§1 §1.4-§1.5 VMP elements) | ISPE-Vol5 §2 |
 | C&Q / commissioning & qualification | ISPE-Vol5 (§1-§6 Framework, §7a-§7b Testing) | TR60 |
-| FAT / SAT | ISPE-Vol5 §6-§7a | ISPE-CTC §1, Guide-No1 |
+| URS → DQ → FAT/SAT → IQ → OQ → PQ | PICS-Annex15 (§1 §3 Qualification Stages) · ISPE-Vol5 §5-§7a | TR60, ISPE-CTC |
+| FAT / SAT | ISPE-Vol5 §6-§7a · PICS-Annex15 (§1 §3.4-§3.7) | ISPE-CTC §1, Guide-No1 |
 | System risk assessment / CDE | ISPE-Vol5 §4 | ISPE-HVAC §9 |
-| CPV / continued process verification | FDA-ProcessVal §V · TR60 §3 | TR1 §6 |
+| CPV / continued process verification | FDA-ProcessVal §V · TR60 §3 · PICS-Annex15 (§2 §5.23-§5.25) | TR1 §6 |
 | Statistical methods / SPC | TR60 §A1b · FDA-ProcessVal §V · TR13 §5a | ISPE-Sampling |
 | Equipment qualification IQ/OQ/PQ | TR60 · ISPE-CTC (§2-§3 CTC-specific) · ISPE-HVAC §4 | TR26, Guide-No1 |
+| Cleaning validation / 清潔確效 | PICS-Annex15 (§3 §10 Full framework — HBEL/ADE limits, DHT/CHT, worst case) | TR49, ISPE-Vol5 |
+| Transport qualification / 運輸確效 | PICS-Annex15 (§2 §6 Route, risk assessment, monitoring) | TR39 |
+| Utilities qualification / 公用系統確效 | PICS-Annex15 (§3 §8 Steam/WFI/air/gases) | ISPE-Vol4, ISPE-HVAC |
 | CTC / thermal mapping | ISPE-CTC (§0 URS, §2 Strategy, §3 Qualification) | — |
 
 ### Containers & Packaging

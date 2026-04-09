@@ -1,4 +1,4 @@
-# PIC/S GMP Annex 15 — Qualification and Validation: Lifecycle approach to qualification of facilities, equipment, utilities, and processes
+# PIC/S GMP Annex 15 (2023): Qualification and Validation
 
 Annex 15 Qualification and validation
 ANNEX 15

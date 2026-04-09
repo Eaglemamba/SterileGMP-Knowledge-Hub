@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIC/S Annex 15 - Section 1: Principle, Planning & Qualification Stages</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template v2.0
+   ============================================================= */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75; color: var(--text-dark); background: #f0f2f5;
+}
+.header {
+    background: linear-gradient(135deg, #1a2c3a 0%, #2d4a5e 100%);
+    color: white; padding: 2rem; text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; color: #f97316; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; color: #fb923c; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.top-header {
+    background: linear-gradient(135deg, #1a2c3a 0%, #2d4a5e 100%);
+    color: white; padding: 1rem 2rem; text-align: center;
+}
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+.top-nav {
+    background: #2d3748; position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15); display: flex; align-items: stretch;
+}
+.nav-container {
+    display: flex; justify-content: flex-start; align-items: center;
+    flex: 1; padding: 0 0.5rem; overflow-x: auto;
+    -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn {
+    background: #2d3748; border: none; color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; line-height: 1;
+    flex-shrink: 0; transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item {
+    display: flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85); text-decoration: none; white-space: nowrap;
+    border-bottom: 3px solid transparent; transition: all 0.2s ease;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: var(--accent-blue); background: rgba(255,255,255,0.05); }
+.nav-num {
+    width: 24px; height: 24px; background: rgba(255,255,255,0.15); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 600;
+}
+.nav-item.active .nav-num { background: var(--accent-blue); }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.chapter-section {
+    background: white; border-radius: 12px; margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+.chapter-divider {
+    display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #1a2c3a 0%, #2d4a5e 100%); color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px; background: rgba(255,255,255,0.2);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+.two-column, .content-grid, .side-by-side {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+.left-column, .original-content {
+    background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: var(--primary-blue); border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column h4, .original-content h4 { color: var(--primary-blue); margin: 1rem 0 0.5rem; font-size: 1rem; }
+.left-column p, .original-content p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+.right-column, .commentary {
+    background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #bee3f8;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #2c5282; border-bottom: 2px solid #63b3ed; padding-bottom: 0.5rem;
+    margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column h4, .commentary h4 { color: #2c5282; margin: 1rem 0 0.5rem; font-size: 1rem; }
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.right-column ul, .right-column ol, .commentary ul, .commentary ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.right-column li, .commentary li { margin-bottom: 0.5rem; }
+.column-header { font-weight: 600; color: var(--primary-blue); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem; }
+.right-column .column-header, .commentary .column-header { color: #2c5282; }
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em;
+}
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem;
+}
+.concept-box, .analogy-box, .note-box, .key-note, .term-box, .formula-box,
+.key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.analogy-box {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4 { color: #856404 !important; }
+.term-box, .key-term-box {
+    background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important;
+}
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+.note-box, .key-note, .key-point-box {
+    background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4 { color: #e65100 !important; }
+.highlight-box {
+    background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important;
+}
+.highlight-box h3, .highlight-box h4 { color: #6a1b9a !important; }
+.learning-objectives {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2d5a8e 100%);
+    color: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #fbbf24; margin-bottom: 0.75rem; font-size: 1.05rem; }
+.learning-objectives ul { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; opacity: 0.95; }
+.param-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.88rem; }
+.param-table th {
+    background: var(--primary-blue); color: white; padding: 0.6rem 0.9rem;
+    text-align: left; font-weight: 600;
+}
+.param-table td { padding: 0.55rem 0.9rem; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+.param-table tr:nth-child(even) { background: #f7fafc; }
+.param-table tr:hover { background: #edf2f7; }
+.section-title, .section-divider {
+    font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0;
+}
+.main-footer {
+    background: #1a2c3a; color: white; padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem; width: 45px; height: 45px;
+    background: #f97316; color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem; box-shadow: 0 3px 12px rgba(249,115,22,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #ea6c0a; transform: scale(1.1); }
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 1: Principle, Planning & Qualification Stages</h1>
+    <div class="subtitle">第一節：原則、規劃與確效階段</div>
+    <div class="page-info">PIC/S GMP Annex 15 (2023) — Qualification and Validation | p211–p215</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本節學習目標</h3>
+    <ul>
+        <li>理解 PIC/S Annex 15 的適用範圍及品質風險管理在確效生命週期中的核心地位</li>
+        <li>掌握驗證主計畫（VMP）的構成要素及其組織管理功能</li>
+        <li>熟悉文件管理要求：協議、偏差、報告核准的流程規範</li>
+        <li>了解確效階段（URS → DQ → FAT/SAT → IQ → OQ → PQ）的邏輯順序與各階段測試要點</li>
+        <li>理解條件性放行的適用情境與風險評估文件要求</li>
+    </ul>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     PRINCIPLE & GENERAL
+     ═══════════════════════════════════════════════ -->
+<div class="chapter-section" id="principle">
+    <div class="chapter-divider">
+        <div class="chapter-badge">P</div>
+        <div class="chapter-info">
+            <h2>Principle &amp; General</h2>
+            <p>原則與一般規定 — Lifecycle approach &amp; risk-based qualification</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <h3>Principle</h3>
+                <p>This Annex describes the principles of qualification and validation which are applicable to the facilities, equipment, utilities and processes used for the manufacture of medicinal products and may also be used as supplementary optional guidance for active substances without introduction of additional requirements to Part II.</p>
+                <p>It is a GMP requirement that manufacturers control the critical aspects of their particular operations through qualification and validation over the life cycle of the product and process. Any planned changes to the facilities, equipment, utilities and processes, which may affect the quality of the product, should be formally documented and the impact on the validated status or control strategy assessed.</p>
+                <p>Computerised systems used for the manufacture of medicinal products should also be validated according to the requirements of Annex 11. The relevant concepts and guidance presented in ICH Q8, Q9, Q10 and Q11 should also be taken into account.</p>
+                <h3>General</h3>
+                <p>A quality risk management approach should be applied throughout the lifecycle of a medicinal product. As part of a quality risk management system, decisions on the scope and extent of qualification and validation should be based on a justified and documented risk assessment of the facilities, equipment, utilities and processes. <strong>Retrospective validation is no longer considered an acceptable approach.</strong></p>
+                <p>Data supporting qualification and/or validation studies which were obtained from sources outside of the manufacturers own programmes may be used provided that this approach has been justified and that there is adequate assurance that controls were in place throughout the acquisition of such data.</p>
+            </div>
+            <div class="right-column">
+                <h3>原則與適用範圍解析</h3>
+                <div class="term-box">
+                    <h4>適用對象</h4>
+                    <p>本附錄適用於所有用於藥品製造的廠房、設備、公用系統（水、蒸汽、空氣等）及製程。亦可作為原料藥（Part II）的補充指引，但不增加額外要求。</p>
+                </div>
+                <div class="note-box">
+                    <h4>回顧性確效已不被接受</h4>
+                    <p>2023年版明確廢除回顧性確效（Retrospective Validation）。所有製程必須採用前瞻性或持續性確效方法。這是與舊版的重要差異。</p>
+                </div>
+                <div class="analogy-box">
+                    <h4>比喻：建築藍圖的邏輯</h4>
+                    <p>確效就如蓋房子：先畫設計圖（URS/DQ）→ 驗收建材安裝（IQ）→ 測試所有系統運作（OQ）→ 確認住人後功能正常（PQ）。每一步都有文件存證，品質從設計端就被建入，而非最後才驗收。</p>
+                </div>
+                <p><strong>電腦化系統</strong>同樣需依 Annex 11 規定進行確效，並應參考 ICH Q8（藥品開發）、Q9（品質風險管理）、Q10（藥品品質系統）、Q11（原料藥開發）。</p>
+                <p>若引用外部機構（如供應商、CRO）的確效數據，需有充分文件證明數據的完整性與管控措施在資料取得期間均有效執行。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 1 — ORGANISING AND PLANNING
+     ═══════════════════════════════════════════════ -->
+<div class="chapter-section" id="sec1">
+    <div class="chapter-divider">
+        <div class="chapter-badge">1</div>
+        <div class="chapter-info">
+            <h2>1. Organising and Planning for Qualification and Validation</h2>
+            <p>組織與規劃 — Validation Master Plan (VMP)</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <h3>1.1 – 1.8 Planning Requirements</h3>
+                <p><strong>1.1</strong> All qualification and validation activities should be planned and take the life cycle of facilities, equipment, utilities, process and product into consideration.</p>
+                <p><strong>1.2</strong> Qualification and validation activities should only be performed by suitably trained personnel who follow approved procedures.</p>
+                <p><strong>1.3</strong> Qualification/validation personnel should report as defined in the pharmaceutical quality system although this may not necessarily be to a quality management or a quality assurance function. However, there should be appropriate quality oversight over the whole validation life cycle.</p>
+                <p><strong>1.4</strong> The key elements of the site qualification and validation programme should be clearly defined and documented in a <strong>validation master plan (VMP)</strong> or equivalent document.</p>
+                <p><strong>1.5</strong> The VMP or equivalent document should define the qualification/validation system and include or reference information on at least the following:</p>
+                <ol>
+                    <li>Qualification and Validation policy;</li>
+                    <li>The organisational structure including roles and responsibilities;</li>
+                    <li>Summary of facilities, equipment, systems, processes and their Q&amp;V status;</li>
+                    <li>Change control and deviation management for qualification and validation;</li>
+                    <li>Guidance on developing acceptance criteria;</li>
+                    <li>References to existing documents;</li>
+                    <li>The qualification and validation strategy, including requalification, where applicable.</li>
+                </ol>
+                <p><strong>1.6</strong> For large and complex projects, planning takes on added importance and separate validation plans may enhance clarity.</p>
+                <p><strong>1.7</strong> A quality risk management approach should be used for qualification and validation activities. Risk assessments should be repeated, as required, in light of increased knowledge and understanding from any changes.</p>
+                <p><strong>1.8</strong> Appropriate checks should be incorporated into qualification and validation work to ensure the integrity of all data obtained.</p>
+            </div>
+            <div class="right-column">
+                <h3>VMP 規劃要點解析</h3>
+                <div class="term-box">
+                    <h4>驗證主計畫（VMP）的功能</h4>
+                    <p>VMP 是整個廠址確效體系的「總綱文件」，等同於確效的憲法。它不需要逐一描述每個設備，而是定義系統、政策、責任與策略的框架。具體確效細節在個別確效計畫（VP）中展開。</p>
+                </div>
+                <div class="note-box">
+                    <h4>人員資格與品質監督</h4>
+                    <p>確效人員不一定要隸屬於 QA 部門（如工程部門可主導設備 IQ/OQ），但整個確效生命週期必須有適當的品質監督（quality oversight）。這允許彈性的組織設計，同時維持 GMP 要求。</p>
+                </div>
+                <div class="analogy-box">
+                    <h4>VMP vs. VP 的層次關係</h4>
+                    <p>VMP = 城市規劃藍圖（定義道路系統、分區原則）；VP（個別驗證計畫）= 個別建築的施工圖。VMP 讓稽核員可以快速了解廠址整體確效狀態，VP 則提供每個設備/製程的技術細節。</p>
+                </div>
+                <table class="param-table">
+                    <thead>
+                        <tr><th>VMP 必要內容（§1.5）</th><th>說明</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>確效政策</td><td>廠址整體確效策略聲明</td></tr>
+                        <tr><td>組織架構與責任</td><td>誰負責哪類確效活動</td></tr>
+                        <tr><td>設施/設備/製程現況</td><td>廠址確效狀態總表</td></tr>
+                        <tr><td>變更控制與偏差管理</td><td>確效活動中的偏差處理程序</td></tr>
+                        <tr><td>驗收標準制定指引</td><td>AC 設定的科學依據方法</td></tr>
+                        <tr><td>現有文件參考</td><td>SOPs、協議等的索引</td></tr>
+                        <tr><td>確效策略（含再確效）</td><td>生命週期維護計畫</td></tr>
+                    </tbody>
+                </table>
+                <p><strong>數據完整性（§1.8）</strong>：確效過程中的所有數據獲取均需有適當的管控機制，確保 ALCOA+ 原則（可歸因、清晰、同步、原始、準確）的落實。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 2 — DOCUMENTATION
+     ═══════════════════════════════════════════════ -->
+<div class="chapter-section" id="sec2">
+    <div class="chapter-divider">
+        <div class="chapter-badge">2</div>
+        <div class="chapter-info">
+            <h2>2. Documentation, Including VMP</h2>
+            <p>文件管理，包含 VMP — Protocols, deviations &amp; reports</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <h3>2.1 – 2.10 Documentation Requirements</h3>
+                <p><strong>2.1</strong> Good documentation practices are important to support knowledge management throughout the product lifecycle.</p>
+                <p><strong>2.2</strong> All documents generated during qualification and validation should be approved and authorised by appropriate personnel as defined in the pharmaceutical quality system.</p>
+                <p><strong>2.3</strong> The inter-relationship between documents in complex validation projects should be clearly defined.</p>
+                <p><strong>2.4</strong> Validation protocols should be prepared which defines the critical systems, attributes and parameters and the associated acceptance criteria.</p>
+                <p><strong>2.5</strong> Qualification documents may be combined together, where appropriate, e.g. installation qualification (IQ) and operational qualification (OQ).</p>
+                <p><strong>2.6</strong> Where validation protocols and other documentation are supplied by a third party providing validation services, appropriate personnel at the manufacturing site should confirm suitability and compliance with internal procedures before approval. Vendor protocols may be supplemented by additional documentation/test protocols before use.</p>
+                <p><strong>2.7</strong> Any significant changes to the approved protocol during execution, e.g. acceptance criteria, operating parameters etc., should be documented as a deviation and be scientifically justified.</p>
+                <p><strong>2.8</strong> Results which fail to meet the pre-defined acceptance criteria should be recorded as a deviation, and be fully investigated according to local procedures. Any implications for the validation should be discussed in the report.</p>
+                <p><strong>2.9</strong> The review and conclusions of the validation should be reported and the results obtained summarised against the acceptance criteria. Any subsequent changes to acceptance criteria should be scientifically justified and a final recommendation made as to the outcome of the validation.</p>
+                <p><strong>2.10</strong> A formal release for the next stage in the qualification and validation process should be authorised by the relevant responsible personnel either as part of the validation report approval or as a separate summary document. Conditional approval to proceed to the next qualification stage can be given where certain acceptance criteria or deviations have not been fully addressed and there is a documented assessment that there is no significant impact on the next activity.</p>
+            </div>
+            <div class="right-column">
+                <h3>確效文件管理解析</h3>
+                <div class="term-box">
+                    <h4>確效文件的三層結構</h4>
+                    <ul>
+                        <li><strong>計畫（Protocol）</strong>：確效前制定，定義 CPP、CQA、驗收標準、測試步驟</li>
+                        <li><strong>執行記錄</strong>：測試期間填寫的原始數據與觀察</li>
+                        <li><strong>報告（Report）</strong>：總結所有結果，對照 AC 得出結論，含異常分析</li>
+                    </ul>
+                </div>
+                <div class="note-box">
+                    <h4>供應商協議使用注意事項（§2.6）</h4>
+                    <p>廠商提供的確效協議可以使用，但製造商必須先審查其適用性並確認符合內部程序。不能直接簽署執行而未審閱內容。必要時可補充額外測試協議。</p>
+                </div>
+                <div class="highlight-box">
+                    <h4>條件性放行（§2.10）Conditional Approval</h4>
+                    <p>這是重要的靈活性條款。當部分 AC 未完全達成或偏差尚未完全結案時，可以有條件地進入下一確效階段，前提是：</p>
+                    <ul>
+                        <li>有書面的風險評估，說明未解決事項對下一階段無重大影響</li>
+                        <li>條件必須明確記錄在報告或獨立摘要文件中</li>
+                        <li>需由負責人員正式授權</li>
+                    </ul>
+                </div>
+                <div class="analogy-box">
+                    <h4>偏差 vs. 計畫變更的區別</h4>
+                    <p><strong>偏差</strong>（§2.7-2.8）：執行過程中發現的不預期事件（測試失敗、AC 未達成）或對已核准協議的重大修改。必須調查根本原因並評估對確效結論的影響。</p>
+                    <p><strong>計畫變更</strong>：協議核准前的修訂，走正常文件審查流程，不需要開偏差。</p>
+                </div>
+                <p><strong>IQ+OQ 合併（§2.5）</strong>：對於簡單設備，可將 IQ 和 OQ 合併為一份文件（IOQ），減少文件負擔，同時仍需涵蓋兩個階段的所有測試要求。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 3 — QUALIFICATION STAGES
+     ═══════════════════════════════════════════════ -->
+<div class="chapter-section" id="sec3">
+    <div class="chapter-divider">
+        <div class="chapter-badge">3</div>
+        <div class="chapter-info">
+            <h2>3. Qualification Stages for Equipment, Facilities, Utilities and Systems</h2>
+            <p>確效階段：URS → DQ → FAT/SAT → IQ → OQ → PQ</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+
+        <!-- Overview flow -->
+        <div class="note-box" style="margin-bottom:1.5rem;">
+            <h4>確效階段總覽</h4>
+            <p>§3.1 指出確效活動應考慮從使用者需求規格（URS）到設備生命週期結束的所有階段。以下各子節說明每個階段的主要內容與建議測試項目（實際階段可依個別專案情況調整）。</p>
+        </div>
+
+        <div class="two-column">
+            <div class="left-column">
+                <h3>3.2 User Requirements Specification (URS)</h3>
+                <p>The specification for equipment, facilities, utilities or systems should be defined in a URS and/or a functional specification. The essential elements of quality need to be built in at this stage and any GMP risks mitigated to an acceptable level. The URS should be a point of reference throughout the validation life cycle.</p>
+
+                <h3>3.3 Design Qualification (DQ)</h3>
+                <p>The next element in the qualification of equipment, facilities, utilities, or systems is DQ where the compliance of the design with GMP should be demonstrated and documented. The requirements of the user requirements specification should be verified during the design qualification.</p>
+
+                <h3>3.4 – 3.7 Factory Acceptance Testing (FAT) / Site Acceptance Testing (SAT)</h3>
+                <p><strong>3.4</strong> Equipment, especially if incorporating novel or complex technology, may be evaluated, if applicable, at the vendor prior to delivery.</p>
+                <p><strong>3.5</strong> Prior to installation, equipment should be confirmed to comply with the URS/functional specification at the vendor site, if applicable.</p>
+                <p><strong>3.6</strong> Where appropriate and justified, documentation review and some tests could be performed at the FAT or other stages without the need to repeat on site at IQ/OQ if it can be shown that the functionality is not affected by the transport and installation.</p>
+                <p><strong>3.7</strong> FAT may be supplemented by the execution of a SAT following the receipt of equipment at the manufacturing site.</p>
+            </div>
+            <div class="right-column">
+                <h3>URS、DQ、FAT/SAT 解析</h3>
+                <div class="term-box">
+                    <h4>URS — 品質的源頭</h4>
+                    <p>URS 是確效生命週期中最重要的文件之一。它定義了設備/系統必須做到什麼，而不是如何做到。URS 應在採購前完成，並作為後續所有確效活動的參照基準（point of reference）。</p>
+                    <ul>
+                        <li>功能需求（能力、產量、精度）</li>
+                        <li>GMP 合規性要求（材質、清潔性、GAMP 軟體類別）</li>
+                        <li>安全性要求</li>
+                        <li>環境需求（溫濕度、潔淨等級）</li>
+                    </ul>
+                </div>
+                <div class="analogy-box">
+                    <h4>FAT vs. SAT 的差異</h4>
+                    <p><strong>FAT（出廠驗收）</strong>：在供應商廠內執行，確認設備符合 URS 設計規格。設備尚未安裝於生產環境。</p>
+                    <p><strong>SAT（到廠驗收）</strong>：設備送達製造廠後執行，確認運輸過程未損壞且廠內整合正常。</p>
+                    <p>§3.6 允許在 FAT 中完成的測試不需要在 IQ/OQ 中重複，前提是能證明功能不受運輸與安裝影響。這是重要的效率優化條款。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="two-column">
+            <div class="left-column">
+                <h3>3.8 – 3.9 Installation Qualification (IQ)</h3>
+                <p><strong>3.8</strong> IQ should be performed on equipment, facilities, utilities, or systems.</p>
+                <p><strong>3.9</strong> IQ should include, but is not limited to the following:</p>
+                <ol>
+                    <li>Verification of the correct installation of components, instrumentation, equipment, pipe work and services against the engineering drawings and specifications;</li>
+                    <li>Verification of the correct installation against pre-defined criteria;</li>
+                    <li>Collection and collation of supplier operating and working instructions and maintenance requirements;</li>
+                    <li>Calibration of instrumentation;</li>
+                    <li>Verification of the materials of construction.</li>
+                </ol>
+
+                <h3>3.10 – 3.12 Operational Qualification (OQ)</h3>
+                <p><strong>3.10</strong> OQ normally follows IQ but depending on the complexity of the equipment, it may be performed as a combined Installation/Operation Qualification (IOQ).</p>
+                <p><strong>3.11</strong> OQ should include but is not limited to the following:</p>
+                <ol>
+                    <li>Tests that have been developed from the knowledge of processes, systems and equipment to ensure the system is operating as designed;</li>
+                    <li>Tests to confirm upper and lower operating limits, and/or "worst case" conditions.</li>
+                </ol>
+                <p><strong>3.12</strong> The completion of a successful OQ should allow the finalisation of standard operating and cleaning procedures, operator training and preventative maintenance requirements.</p>
+
+                <h3>3.13 – 3.14 Performance Qualification (PQ)</h3>
+                <p><strong>3.13</strong> PQ should normally follow the successful completion of IQ and OQ. However, it may in some cases be appropriate to perform it in conjunction with OQ or Process Validation.</p>
+                <p><strong>3.14</strong> PQ should include, but is not limited to the following:</p>
+                <ol>
+                    <li>Tests, using production materials, qualified substitutes or simulated product proven to have equivalent behaviour under normal operating conditions with worst case batch sizes. The frequency of sampling used to confirm process control should be justified;</li>
+                    <li>Tests should cover the operating range of the intended process, unless documented evidence from the development phases confirming the operational ranges is available.</li>
+                </ol>
+            </div>
+            <div class="right-column">
+                <h3>IQ / OQ / PQ 詳解</h3>
+                <table class="param-table">
+                    <thead>
+                        <tr><th>階段</th><th>核心問題</th><th>使用材料</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>IQ</strong></td><td>是否正確安裝？</td><td>工程圖、規格書、校準記錄</td></tr>
+                        <tr><td><strong>OQ</strong></td><td>是否在設計範圍內運作？</td><td>最壞情況測試條件、上下限</td></tr>
+                        <tr><td><strong>PQ</strong></td><td>是否能穩定產出合格產品？</td><td>實際生產材料或等效替代品</td></tr>
+                    </tbody>
+                </table>
+                <div class="term-box">
+                    <h4>IQ 重點：校準與材質確認</h4>
+                    <p>IQ 不僅確認「裝好了」，還需收集所有供應商的操作/維護文件，並完成儀器校準。材質確認（Materials of Construction）對無菌製造特別重要——接觸表面必須符合 316L 不鏽鋼等規格。</p>
+                </div>
+                <div class="note-box">
+                    <h4>OQ 重點：最壞情況測試</h4>
+                    <p>OQ 必須測試操作範圍的上限與下限（worst case conditions），而非只在正常中間值測試。例如：滅菌器 OQ 需在最小裝載量（最難冷凝）和最大裝載量（最難穿透）兩個條件下測試。</p>
+                </div>
+                <div class="highlight-box">
+                    <h4>PQ 完成後解鎖的能力</h4>
+                    <p>成功的 OQ 完成後，才能正式確定 SOPs、清潔程序和操作員訓練課程（§3.12）。PQ 是使用實際生產材料或有科學依據的替代品進行，確認設備在真實使用條件下的表現。</p>
+                </div>
+                <div class="analogy-box">
+                    <h4>比喻：汽車交付的類比</h4>
+                    <p><strong>IQ</strong> = 交車前確認所有零件安裝正確、里程表已歸零；<strong>OQ</strong> = 在封閉跑道上測試各種速度、轉彎、剎車極限；<strong>PQ</strong> = 在真實路況下帶著乘客跑完特定里程，確認舒適、油耗、穩定性均符合承諾規格。</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</div><!-- end main-content -->
+
+<div class="main-footer">
+    <p>PIC/S GMP Annex 15 (2023): Qualification and Validation</p>
+    <p style="opacity:0.6;font-size:0.8rem;">Section 1 of 3 — p211–p215 | SterileGMP Knowledge Hub</p>
+</div>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) { btn.classList.add('visible'); }
+    else { btn.classList.remove('visible'); }
+});
+</script>
+</body>
+</html>
