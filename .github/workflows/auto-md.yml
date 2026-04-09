@@ -25,10 +25,38 @@ jobs:
       - name: Generate all knowledge markdown
         run: python gmp_engine.py md --all
 
-      - name: Commit generated markdown
+      - name: Move processed PDFs to processed/
+        run: |
+          python - <<'EOF'
+          import sys, shutil
+          from pathlib import Path
+
+          sys.path.insert(0, '.')
+          import gmp_engine
+
+          processed_dir = Path("Raw pdfs/processed")
+          processed_dir.mkdir(exist_ok=True)
+
+          for report_id, pdf_filename in gmp_engine.PDF_FILES.items():
+              pdf_path = Path("Raw pdfs") / pdf_filename
+              if not pdf_path.exists():
+                  continue  # 已移動過或不在此 repo
+              try:
+                  config = gmp_engine.load_config(report_id)
+                  knowledge_subdir = gmp_engine._knowledge_subdir(config)
+                  folder_id = config.get('folder', report_id).split('/')[-1]
+                  md_path = knowledge_subdir / f"{folder_id}-Complete.md"
+                  if md_path.exists():
+                      shutil.move(str(pdf_path), str(processed_dir / pdf_filename))
+                      print(f"  Moved: {pdf_filename} → processed/")
+              except SystemExit:
+                  pass  # report 不在 reports.json，跳過
+          EOF
+
+      - name: Commit generated markdown and moved PDFs
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add knowledge/
-          git diff --staged --quiet || git commit -m "auto: regenerate knowledge markdown"
+          git add knowledge/ "Raw pdfs/"
+          git diff --staged --quiet || git commit -m "auto: regenerate MD, move processed PDFs"
           git push
