@@ -206,7 +206,7 @@ git add PDA/TRXX/ reports.json knowledge/ "Raw pdfs/processed/" && git commit -m
 
 The fastest path: just run `/project-sync` — it audits all files automatically and makes edits where needed.
 
-> **Note:** `/project-sync` covers items 1, 2, and 5 automatically (ROADMAP dates/counts, INDEX.md entries, folder integrity). It does **not** cover items 3 and 4 — after running it, manually verify whether `CLAUDE.md` or `docs/PROMPT.md` need updating.
+> **Note:** `/project-sync` covers items 1, 2, and 5 automatically (ROADMAP dates/counts, INDEX.md entries, folder integrity). It does **not** cover items 2b, 3, or 4 — after running it, manually verify `INDEX-router.md` for new router rows, and whether `CLAUDE.md` or `docs/PROMPT.md` need updating.
 
 ### Manual checklist (if not using /project-sync)
 
@@ -236,6 +236,19 @@ print('Total:', sum(src.values()))
 - [ ] New report block added (file name, covers questions about, key terms, sections)
 - [ ] Quick Topic Routing Guide table has new row
 - [ ] Cross-Report Topics updated if new report overlaps existing topics
+
+#### 2b. knowledge/INDEX-router.md — update when new knowledge MDs added
+`INDEX-router.md` is a compact topic router (★★★/★★ ratings + section hints) read first by every `/gmp-ask` query. It is **not** auto-updated when INDEX.md is updated — add the new report to the router manually.
+
+- [ ] Identify which Topic Router category the new report belongs to (Aseptic, Barriers, EM, Contamination, Facility, Validation, Containers, Risk/Data, Regulatory, Supply Chain, ATMP, etc.)
+- [ ] Add a new row (or update existing rows) in that category table:
+  `| Topic description | NewReport (§section hint) | Secondary reports |`
+- [ ] If the new report is a primary source (★★★) for an existing topic that previously had no primary → promote it and demote old primary to ★★
+- [ ] Add any new synonyms to the Synonym Table at the top if the new report introduces new terminology
+
+**Do NOT add a row to INDEX-router.md for every document** — only add rows for topics where this document is the definitive (★★★) or strong secondary (★★) source. Documents that are ★ (mentioned only) don't need router entries.
+
+> Note: `INDEX-verbose.md` is a legacy file predating the current INDEX.md structure. It is not referenced by any skill or workflow. Do NOT update it — it will be removed in a future cleanup.
 
 #### 3. CLAUDE.md (this file) — update when workflow changes
 - [ ] New source org added → add to Naming Conventions + source color note

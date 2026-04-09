@@ -96,7 +96,7 @@ Use these mappings to translate user questions before routing:
 |---|---|---|
 | Sterile facility design / 無菌設施 | ISPE-Vol3 (§1a-§1b Regulatory, §3a-§3c Architecture) | PtC-12, PtC-14, TR90 |
 | HVAC / air handling / 暖通空調 | ISPE-HVAC (§1 Design Process, §2 Considerations, §6 Fundamentals) · ISPE-Vol3 §4a-§4c | TR90 |
-| Cleanroom classification | ISPE-Vol3 §1b · PICS-Annex1 §4 · FDA-Aseptic §02 | — |
+| Cleanroom classification / ISO 14644 | ISO-14644 (§1 Classification, §5 Operations, §7 Separative devices) · ISPE-Vol3 §1b · PICS-Annex1 §4 | FDA-Aseptic §02 |
 | Pressure cascade / differential pressure | ISPE-Vol3 §4a · ISPE-HVAC §2 | PtC-12 §2 |
 | Smoke study / airflow visualization | ISPE-Vol3 §4b · PtC-Isolators §2 | PtC-1 §1a, ISPE-HVAC |
 | Biopharmaceutical facility | ISPE-Vol6 (§4A-§4B Process closure, §6A-§6B Layout) | PtC-14 |
@@ -131,6 +131,8 @@ Use these mappings to translate user questions before routing:
 |---|---|---|
 | CCI / container closure integrity | TR86 (§1-§2 Challenges, §3 Methods) · TR27 (§1-§3 Methods) | TR73 §12, TR43, TR90 |
 | Prefilled syringe / 預充填注射器 | TR73 (§12-§15) · TR73-2 (EU MDR) | TR43 §4 (syringe defects), Guide-No1 |
+| Needle-based injection systems / 針筒系統 | ISO-11608-1 (§3 Requirements, §4 Dose accuracy, §5 Test matrix) | TR73, TR73-2 |
+| Primary packaging GMP / 一次包材 GMP | ISO-15378 (§2 Context, §3a-§3b Operations, §4 Annex) | USP-660, USP-661, USP-381 |
 | Glass defects / 玻璃缺陷 | TR43 (§0-§5 All five lexicons) | TR87, TR85 |
 | Glass vial handling / breakage | TR87 (§3 Best practices, §4 Risk, §5 Process) | TR43, TR85 |
 | Visible particle inspection | TR85 (§3-§5 Methods) | TR90, PtC-12 |
@@ -167,6 +169,11 @@ Use these mappings to translate user questions before routing:
 | Post-approval changes / PAC | TR91 (§2-§4 Framework) | TR68, PtC-9, TR60 |
 | ICH Q8/Q9/Q10 framework | ICH-Q8R2 · ICH-Q9R1 · ICH-Q10 | TR60 |
 | Remote/hybrid inspection | PtC-Remote (§1-§3 Planning to closing) | PtC-9 |
+| Biologics GMP / ATMP GMP / PIC/S Annex 2 | PICS-Annex2 (§1 Scope, §2 Principles, §3 Manufacturing) | PtC-14, ISPE-Vol6 |
+| QRM regulatory perspective / PIC/S Annex 20 | PICS-Annex20 (§1-§3 QRM process, risk tools) | ICH-Q9R1, TR60 |
+| Combination products CGMP / 組合產品 | FDA-ComboProd-CGMP (§1-§3 CGMP requirements) | FDA-ComboProd-HF |
+| Human factors / combination products | FDA-ComboProd-HF (§1-§2 HF process, clinical) | FDA-ComboProd-CGMP |
+| Medical device QMS / ISO 13485 | ISO-13485 (§2 QMS, §3 Resources/Design, §4 Purchasing) | ICH-Q10 |
 
 ### Personnel & Training
 
@@ -199,10 +206,10 @@ Use these mappings to translate user questions before routing:
 
 | Topic | ★★★ Primary (section hint) | ★★ Secondary |
 |---|---|---|
-| ATMP facility / 先進療法設施 | PtC-14 (§1-§4 Risk, Facilities, Utilities, Equipment) | PtC-15 |
-| ATMP raw materials | PtC-13 (§1 Categories, §3a-§3b Qualification) | — |
+| ATMP facility / 先進療法設施 | PtC-14 (§1-§4 Risk, Facilities, Utilities, Equipment) | PtC-15, PICS-Annex2 |
+| ATMP raw materials | PtC-13 (§1 Categories, §3a-§3b Qualification) | PICS-Annex2 |
 | Plasmid / viral vector | PtC-11 (§1 Categorization, §3 Control, §4 Filtration) | PtC-14 |
-| TSE/BSE / animal-derived | PtC-13 §1 | — |
+| TSE/BSE / animal-derived | PtC-13 §1 | PICS-Annex2 |
 | Mobile manufacturing | PtC-15 (§1 Technology, §2-§3 Regulatory) | — |
 
 ### Change Control & Lifecycle
@@ -211,6 +218,20 @@ Use these mappings to translate user questions before routing:
 |---|---|---|
 | Change control / 變更管制 | TR91 §3-§4 · TR60 | TR66, TR90, TR68, PtC-9 |
 | Post-approval change management | TR91 (§3 Tools: ECs, PACMP, PLCM) | TR68, ICH-Q10 §3 |
+
+### Ph.Eur. European Pharmacopoeia
+
+> Use Ph.Eur. chapters when the question specifically involves EU batch release methods or European compendial requirements. For US-centric questions, prefer USP equivalents.
+
+| Topic | ★★★ Primary (section hint) | ★★ Secondary (USP equivalent) |
+|---|---|---|
+| Sterility test (EU) / 無菌試驗 (歐) | PhEur-261 (§0 Methods, §1 Membrane filtration, §2 Direct inoculation) | USP-71 |
+| Bacterial endotoxin (EU) / BET (歐) | PhEur-2614 (§0 Methods, §1 Validation, §2 Limits) | USP-85 |
+| Sub-visible particulates (EU) / 不可見微粒 (歐) | PhEur-2919 (§0-§1 LO + microscopic, limits) | USP-788, USP-1788 |
+| Visible particulates (EU) / 可見微粒 (歐) | PhEur-2920 (§0 AVI + MVI criteria) | USP-790, USP-1790 |
+| Glass containers (EU) | PhEur-321 (§0 Classification, §1 Chemical tests) | USP-660 |
+| Sterile single-use syringes (EU) | PhEur-338 (§0 Design, §1 Physical & biological tests) | TR73, ISO-11608-1 |
+| Preparation of sterile products (EU) / 無菌製備方法 | PhEur-511 (§0-§1 Sterilization methods, SAL decision tree) | USP-1211, USP-1229 |
 
 ---
 
