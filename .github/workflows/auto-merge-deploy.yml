@@ -4,6 +4,8 @@ on:
   push:
     paths:
       - '**/sections/**'   # Claude 生成的 HTML sections push 後觸發
+  schedule:
+    - cron: '0 23 * * *' # 每天台灣時間早上 7 點（UTC 23:00）
   workflow_dispatch:
     inputs:
       report_id:
@@ -27,11 +29,14 @@ jobs:
 
       - name: Detect changed report IDs and merge
         run: |
-          if [ -n "${{ github.event.inputs.report_id }}" ]; then
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            # 定時執行：merge 全部
+            python gmp_engine.py merge --all
+          elif [ -n "${{ github.event.inputs.report_id }}" ]; then
             # 手動指定 report ID
             python gmp_engine.py merge ${{ github.event.inputs.report_id }}
           else
-            # 自動偵測哪個 sections/ 資料夾有變更
+            # push 觸發：自動偵測哪個 sections/ 資料夾有變更
             CHANGED=$(git diff --name-only HEAD~1 HEAD | grep '/sections/' | sed 's|.*/\([^/]*\)/sections/.*|\1|' | sort -u)
             if [ -z "$CHANGED" ]; then
               echo "No sections changed, skipping merge."
