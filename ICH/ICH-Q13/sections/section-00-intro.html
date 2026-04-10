@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICH Q13 - Section 0: Introduction &amp; CM Concepts</title>
+    <style>
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif; line-height: 1.75; color: var(--text-dark); background: #f0f2f5; }
+.header { background: linear-gradient(135deg, #0f5446 0%, #0f766e 100%); color: white; padding: 2rem; text-align: center; }
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.learning-objectives { background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+.section-title { font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; font-weight: 600; }
+.two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+.left-column { background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; }
+.left-column h2 { color: var(--primary-blue); border-bottom: 2px solid #3182ce; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.left-column h3 { color: var(--primary-blue); margin: 1.2rem 0 0.5rem; font-size: 1rem; }
+.left-column h4 { color: #4a5568; margin: 1rem 0 0.4rem; font-size: 0.95rem; font-weight: 600; }
+.left-column p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li { margin-bottom: 0.5rem; }
+.right-column { background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #bee3f8; }
+.right-column h2 { color: #2c5282; border-bottom: 2px solid #63b3ed; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.key-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
+.quote-box { background: linear-gradient(to right, #e7f3ff, #d6e9ff); border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem; }
+.concept-box, .analogy-box, .note-box, .formula-box { border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 0.92rem; line-height: 1.7; }
+.concept-box h4, .analogy-box h4, .note-box h4, .formula-box h4 { margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600; }
+.concept-box p, .analogy-box p, .note-box p, .formula-box p { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.concept-box ul, .analogy-box ul, .note-box ul, .formula-box ul { margin: 0.5rem 0 0.5rem 1.25rem; font-size: 0.92rem; }
+.concept-box li, .analogy-box li, .note-box li, .formula-box li { margin-bottom: 0.35rem; }
+.concept-box { background: var(--green-bg); border-left: 4px solid var(--green-border); }
+.concept-box h4 { color: #2e7d32; }
+.analogy-box { background: linear-gradient(135deg, var(--yellow-start), var(--yellow-end)); border-left: 4px solid #f6ad55; }
+.analogy-box h4 { color: #856404; }
+.note-box { background: var(--orange-bg); border-left: 4px solid var(--orange-border); }
+.note-box h4 { color: #c65102; }
+.formula-box { background: var(--purple-bg); border-left: 4px solid var(--purple-border); }
+.formula-box h4 { color: #7b1fa2; }
+.practice-box { background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%); border: 2px dashed #3182ce; border-radius: 10px; padding: 1.25rem; margin: 1.25rem 0; font-size: 0.92rem; }
+.practice-box h4 { color: #2c5282; margin-bottom: 0.75rem; font-size: 0.95rem; font-weight: 600; }
+.practice-box ol, .practice-box ul { margin-left: 1.25rem; }
+.practice-box li { margin-bottom: 0.5rem; }
+.summary-box { background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-radius: 10px; padding: 1.25rem; margin-top: 1.5rem; }
+.summary-box h3 { color: #92400e; margin-bottom: 0.75rem; }
+.summary-box ul { margin-left: 1.25rem; }
+.summary-box li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+.main-footer { background: var(--primary-blue); color: white; padding: 1.5rem; text-align: center; margin-top: 2rem; }
+.main-footer p { opacity: 0.9; font-size: 0.9rem; }
+@media (max-width: 900px) { .two-column { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>ICH Q13 — Continuous Manufacturing of Drug Substances and Drug Products</h1>
+    <div class="subtitle">Section 0: Introduction &amp; CM Concepts｜導論與連續製造概念</div>
+    <div class="page-info">ICH Harmonised Guideline Q13 (2022) | pp. 1–6</div>
+</div>
+
+<div class="main-content">
+
+    <div class="learning-objectives">
+        <h3>本章學習目標 Learning Objectives</h3>
+        <ul>
+            <li>能夠定義 <strong>連續製造（Continuous Manufacturing, CM）</strong> 的核心特徵，並解釋為何 Q13 聚焦於「兩個或以上單元操作的整合系統」</li>
+            <li>掌握 CM 的 <strong>三種模式</strong>：部分連續、全程連續、跨 DS/DP 邊界整合，以及各模式的適用場景</li>
+            <li>理解 <strong>批次定義</strong> 在 CM 中的特殊性：三種 Q13 認可的批次大小定義方式（輸出量、輸入量、運行時間）</li>
+            <li>了解 Q13 的 <strong>適用範圍</strong>：化學藥品、治療蛋白、新藥/學名藥/生物相似藥，以及批次製程轉換</li>
+            <li>清楚 Q13 與現有 ICH Quality Guidelines（Q7/Q8/Q9/Q10/Q11）的關係——Q13 是這些指南在 CM 場景中的「應用層」</li>
+        </ul>
+    </div>
+
+    <!-- ==================== SECTION 1 Introduction ==================== -->
+    <div class="section-title">1. Introduction｜導論</div>
+
+    <div class="two-column">
+        <div class="left-column">
+            <h2>原文內容 Original Text</h2>
+
+            <h3>PART I: CONTINUOUS MANUFACTURING OF DRUG SUBSTANCES AND DRUG PRODUCTS</h3>
+            <h3>1. INTRODUCTION</h3>
+            <h4>1.1. Objective</h4>
+
+            <p>This guideline describes scientific and regulatory considerations for the <span class="key-term">development, implementation, operation, and lifecycle management</span> of continuous manufacturing (CM). Building on existing ICH Quality guidelines, this guideline provides clarification on CM concepts and describes scientific approaches and regulatory considerations specific to CM of drug substances and drug products.</p>
+
+            <h4>1.2. Scope</h4>
+
+            <p>This guideline applies to CM of drug substances and drug products for <span class="key-term">chemical entities and therapeutic proteins</span>. It is applicable to CM for new products (e.g., new drugs, generic drugs, biosimilars) and the <span class="key-term">conversion of batch manufacturing to CM</span> for existing products. The principles described in this guideline may also apply to other biological/biotechnological entities.</p>
+
+            <p><span class="key-term">CM</span> involves the continuous feeding of input materials into, the transformation of in-process materials within, and the concomitant removal of output materials from a manufacturing process. While this description may apply to an individual unit operation (e.g., process chromatography, tableting, perfusion cell culture), this guideline focuses on the <span class="key-term">integrated aspects of a CM system</span> in which two or more unit operations are directly connected. In this context, any changes made in a unit operation of a CM system may have impact on downstream and upstream unit operations (e.g., back pressure resulting in forward mixing) and output material quality.</p>
+
+            <p>Fundamental aspects of CM that are generally not specific to technology, dosage form, or molecule type are described within the main body of this guideline. Annexes are provided to augment the main guideline by providing illustrative examples and considerations specific to certain modalities (e.g., chemical entities, therapeutic proteins), technologies, and production methods (e.g., integration of drug substance and drug product manufacturing). The examples and approaches described in these annexes are illustrative, and alternative approaches can be used. Topics that are broadly applicable to both CM and batch manufacturing are not in the scope of this guideline, and other existing ICH guidelines should be used as appropriate.</p>
+        </div>
+
+        <div class="right-column">
+            <h2>導師解析 Tutorial Commentary</h2>
+
+            <div class="concept-box">
+                <h4>核心概念：Q13 在 ICH 架構中的定位</h4>
+                <p>Q13（2022）是 ICH Q 系列的最新成員，專門針對連續製造（CM）的科學與法規框架。其在 ICH 架構中的關係：</p>
+                <table>
+                    <thead>
+                        <tr><th>ICH 指南</th><th>與 Q13 的關係</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Q7（API GMP）</td><td>Q13 採用 Q7 的批次定義；DS 的 CM 在 Q7 基礎上擴展</td></tr>
+                        <tr><td>Q8（製劑開發）</td><td>設計空間、PAT、RTRT 的科學基礎——CM 大量應用這些概念</td></tr>
+                        <tr><td>Q9（風險管理）</td><td>CM 控制策略開發的風險評估方法論</td></tr>
+                        <tr><td>Q10（PQS）</td><td>CM 的 Pharmaceutical Quality System 框架；「受控狀態（State of Control）」概念</td></tr>
+                        <tr><td>Q11（DS 開發）</td><td>DS 的 CM 在 Q11 的 DS 製程開發基礎上擴展</td></tr>
+                        <tr><td><strong>Q13</strong></td><td><strong>上述指南在 CM 整合系統中的具體應用；提供 CM 專屬的法規申報框架</strong></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="note-box">
+                <h4>重點提示｜Q13 聚焦「整合系統」而非單一單元操作</h4>
+                <p>Q13 的範疇是「兩個或以上單元操作直接連接的 CM 系統」——這個看似技術性的定義有深刻的法規意涵：</p>
+                <ul>
+                    <li>單一連續單元操作（如灌流細胞培養、連續層析）不是 Q13 的主要焦點</li>
+                    <li>真正的 CM 是「整合系統」——各單元操作的上下游之間存在直接的材料流動和相互影響</li>
+                    <li>這種整合性帶來獨特的挑戰：一個單元操作的擾動（disturbance）可能通過物料流影響整個系統的輸出品質</li>
+                </ul>
+                <p>因此，Q13 的控制策略必須從「系統整合」的視角設計，而不是把各單元操作的控制策略簡單加總。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻說明｜CM vs. 批次製造，就像「流水線」vs.「訂製工坊」</h4>
+                <p>傳統批次製造就像「訂製工坊」——每個「批次」是一個獨立的產品，做完一批再做下一批，每次都是全新的開始。連續製造就像「汽車流水線」——原材料不斷投入，產品不斷產出，整個系統是一個持續運作的整體。在流水線上，若某個工位（單元操作）出了問題，不只影響那個工位的產品，還會影響整條流水線的狀態——上游的材料積壓、下游的供料中斷。這種「牽一髮動全身」的特性，正是 Q13 需要特別規範的原因。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>練習思考 Practice Questions</h4>
+                <ol>
+                    <li>為什麼 Q13 說「治療蛋白的 CM 也適用」？治療蛋白的 CM（如灌流式單抗生產）與化學藥品的 CM（如固體口服製劑連續製造）在挑戰上有什麼本質差異？</li>
+                    <li>「批次製程轉換為 CM」為什麼被單獨提及為 Q13 的適用場景？轉換過程中最大的科學和法規挑戰是什麼？</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SECTION 2 CM Concepts ==================== -->
+    <div class="section-title">2. CM Concepts｜連續製造概念</div>
+
+    <div class="two-column">
+        <div class="left-column">
+            <h2>原文內容 Original Text</h2>
+
+            <h3>2. CM CONCEPTS</h3>
+            <h4>2.1. Different Modes of CM</h4>
+
+            <p>CM can be applied to some or all unit operations in a manufacturing process. Examples of CM modes include:</p>
+            <ul>
+                <li>A manufacturing approach in which some unit operations operate in a batch mode while others are integrated and operate in a continuous mode</li>
+                <li>A manufacturing approach in which all unit operations of a drug substance or drug product manufacturing process are integrated and operate in a continuous mode</li>
+                <li>A manufacturing approach in which drug substance and drug product unit operations are integrated across the boundary between drug substance and drug product to form a <span class="key-term">single CM process</span> (i.e., the drug substance is continuously formed and processed into the drug product through integrated unit operations)</li>
+            </ul>
+
+            <p>A manufacturing approach may incorporate <span class="key-term">surge lines or tanks</span> to maintain a constant flow of material inputs and outputs in any mode of CM described above.</p>
+
+            <h4>2.2. Batch definition</h4>
+
+            <p>The ICH Q7 definition of a batch is applicable to all modes of CM, for both drug substances and drug products. Based on this definition, the size of a batch produced by CM can be defined in terms of one of the following:</p>
+            <ul>
+                <li>Quantity of output material</li>
+                <li>Quantity of input material</li>
+                <li>Run time at a defined mass flow rate</li>
+            </ul>
+
+            <p>Other approaches to define batch size are possible, if scientifically justified based on the characteristics of the CM process and Good Manufacturing Practice.</p>
+
+            <p>A batch size can also be defined as a range. For example, a batch size range can be established by defining a minimum and maximum run time.</p>
+        </div>
+
+        <div class="right-column">
+            <h2>導師解析 Tutorial Commentary</h2>
+
+            <div class="concept-box">
+                <h4>CM 的三種模式詳解</h4>
+                <table>
+                    <thead>
+                        <tr><th>模式</th><th>描述</th><th>典型應用</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>混合模式（部分連續）</strong></td>
+                            <td>部分單元操作批次，部分連續，之間有緩衝儲存</td>
+                            <td>固體口服劑：連續混合 + 批次壓片；或連續發酵 + 批次純化</td>
+                        </tr>
+                        <tr>
+                            <td><strong>全程連續</strong></td>
+                            <td>所有 DS 或 DP 的單元操作均整合為連續模式</td>
+                            <td>全連續固體劑型線（進料→混合→壓片→包衣一氣呵成）</td>
+                        </tr>
+                        <tr>
+                            <td><strong>跨 DS/DP 整合</strong></td>
+                            <td>原料藥合成與製劑成型整合為單一連續製程</td>
+                            <td>化學合成 API 直接連續製備成片劑，無獨立的 DS 隔離步驟</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><strong>Surge tanks/lines（緩衝槽/管線）</strong>：在各模式中，緩衝槽用於平衡上下游質量流速差異，防止因短暫流量不匹配導致系統中斷。這是 CM 系統設計的重要元素，直接影響系統的整合穩定性。</p>
+            </div>
+
+            <div class="formula-box">
+                <h4>CM 批次大小定義的三種方式及其含義</h4>
+                <pre>
+方式 1：輸出物料量（Output Quantity）
+  例：每次運行生產 500 kg 的製劑
+  優點：直觀，與傳統批次概念最接近
+  挑戰：CM 系統輸出量可能變動（運行時間、良率波動）
+
+方式 2：輸入物料量（Input Quantity）
+  例：每次運行投入 10 kg API + 90 kg 賦形劑
+  優點：成本控制明確
+  挑戰：輸入量 ≠ 輸出量（損耗、物料分流）
+
+方式 3：定質量流速下的運行時間（Run Time）
+  例：在 1 kg/min 的質量流速下運行 8 小時 = 一個批次
+  優點：最直接反映 CM 的「時間-空間」特性
+  常見：多以此方式定義最小/最大批次大小（Run Time Range）
+
+批次大小定義為範圍：
+  最小運行時間（min run time）→ 最小批次
+  最大運行時間（max run time）→ 最大批次
+  → 靈活應對市場需求波動，無需每次提交新的批次大小變更申請
+                </pre>
+            </div>
+
+            <div class="note-box">
+                <h4>重點提示｜批次大小「範圍」的法規優勢</h4>
+                <p>將批次大小定義為範圍（如「最小 4 小時，最大 12 小時的運行時間」）是 CM 的重要法規優勢：</p>
+                <ul>
+                    <li>傳統批次製造若需要改變批量（如放量生產），通常需要提交 Prior Approval 或 Notification</li>
+                    <li>CM 系統若事先在申請中定義了批次大小範圍，在範圍內調整不構成 EC 變更</li>
+                    <li>這允許製造商根據市場需求彈性調整每次運行的時長，同時維持同一套已驗證的製程和控制策略</li>
+                </ul>
+                <p>這是 CM 相對於批次製造的重大監管效率優勢之一。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻說明｜CM 批次定義就像「排班制服裝廠」</h4>
+                <p>一條 24 小時運轉的服裝流水線，可以按不同方式定義「一個生產批次」：</p>
+                <ul>
+                    <li><strong>按輸出量</strong>：「生產完 1000 件」就是一批——但每批耗時可能不同</li>
+                    <li><strong>按輸入量</strong>：「投入 50 匹布」就是一批——但可能裁剪出多少件不確定</li>
+                    <li><strong>按運行時間（最常見）</strong>：「一個班次（8小時）」就是一批——最清楚、可追蹤、GMP 記錄最完整</li>
+                    <li><strong>時間範圍</strong>：「4-12 小時都算一批，視訂單量調整」——最靈活，允許生產計畫彈性</li>
+                </ul>
+            </div>
+
+            <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+                <h4>實務應用｜CDMO 導入 CM 的策略起點</h4>
+                <p>對 CDMO 而言，從批次製造轉向 CM 的策略應考慮：</p>
+                <ul>
+                    <li><strong>選擇混合模式作為入門點</strong>：先在高週轉、相對簡單的單元操作（如混合、制粒）導入連續模式，積累 CM 操作經驗</li>
+                    <li><strong>批次大小定義策略</strong>：建議採用「運行時間範圍」定義，在 MAA 申請中預先設定最小/最大運行時間，以最大化未來的生產靈活性</li>
+                    <li><strong>投資 PAT 基礎設施</strong>：CM 系統有效運作的前提是即時監控，PAT 工具的投資是 CM 轉型的必要前提，也是申請文件的重要支撐元素</li>
+                </ul>
+            </div>
+
+            <div class="practice-box">
+                <h4>練習思考 Practice Questions</h4>
+                <ol>
+                    <li>在「部分連續 + 部分批次」的混合模式中，批次大小應如何定義？跨模式邊界的材料追蹤如何實現？</li>
+                    <li>Q13 說「其他批次大小定義方式也是可能的，只要有科學依據」——請提出一個在現有三種方式之外的合理定義，並說明其適用場景和潛在挑戰。</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- 本節重點回顧 -->
+    <div class="summary-box">
+        <h3>本節重點回顧 Section Summary</h3>
+        <ul>
+            <li><strong>Q13 的定位</strong>：ICH Q7/Q8/Q9/Q10/Q11 在連續製造整合系統中的應用層；聚焦兩個或以上直接連接的單元操作</li>
+            <li><strong>CM 的定義特徵</strong>：連續進料 + 連續製程轉化 + 連續出料；Q13 強調「整合系統」的視角，非個別單元操作</li>
+            <li><strong>適用範圍</strong>：化學藥品和治療蛋白的 DS 和 DP；新藥/學名藥/生物相似藥；以及批次製程的 CM 轉換</li>
+            <li><strong>三種 CM 模式</strong>：部分連續（混合模式）→ 全程連續 → 跨 DS/DP 整合，複雜度依次升高，控制策略挑戰也越大</li>
+            <li><strong>批次大小定義</strong>：Q7 的批次定義適用；三種方式（輸出量/輸入量/運行時間）；強烈建議採用「時間範圍」定義以獲得最大生產靈活性</li>
+            <li><strong>Surge tank</strong>：緩衝各單元操作間的質量流速差異，維持系統整合穩定性的關鍵硬體元素</li>
+        </ul>
+    </div>
+
+</div>
+
+<div class="main-footer">
+    <p>ICH Q13 (2022): Continuous Manufacturing of Drug Substances and Drug Products | Section 0: Introduction &amp; CM Concepts | pp. 1–6</p>
+</div>
+
+</body>
+</html>
