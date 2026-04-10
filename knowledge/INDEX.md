@@ -891,9 +891,19 @@ Terms: quality culture, root cause analysis (RCA), human error, skill-based erro
 | Sterility test invalidation, BET investigation, mycoplasma OOS / 無菌試驗失效判定、內毒素調查、黴漿菌OOS | TR88 |
 | Phase I lab investigation, Phase II manufacturing investigation / 第一階段實驗室調查、第二階段製造調查 | TR88 |
 | Water system microbiology, pharmaceutical water OOS trending / 製藥用水微生物、水系統OOS趨勢分析 | TR88 + TR13 |
-| Post-approval change, PAC, established conditions, ICH Q12 / 上市後變更、已確立條件、ICH Q12 | TR91 |
-| PACMP, comparability protocol, product lifecycle management / 上市後變更管理方案、比較性方案、產品生命週期管理 | TR91 |
+| Post-approval change, PAC, established conditions, ICH Q12 / 上市後變更、已確立條件、ICH Q12 | TR91 + ICH-Q12 |
+| PACMP, comparability protocol, product lifecycle management / 上市後變更管理方案、比較性方案、產品生命週期管理 | TR91 + ICH-Q12 |
 | Regulatory harmonization, global change categories, non-ICH filing / 法規協調、全球變更分類、非ICH區域申報 | TR91 |
+| ICH Q12 established conditions EC identification categorization reporting / ICH Q12已確立條件識別分類申報類別 | ICH-Q12 |
+| Product lifecycle management document PLCM post-approval change management protocol PACMP / 產品生命週期管理文件、上市後變更管理方案、法規申報類別 | ICH-Q12 |
+| Continuous manufacturing CM drug substance drug product ICH Q13 / 連續製造藥品原料藥製劑ICH Q13 | ICH-Q13 |
+| State of control vs steady state continuous manufacturing material traceability diversion / 受控狀態vs穩定狀態、連續製造物料追蹤、物料轉向策略 | ICH-Q13 |
+| Batch definition continuous manufacturing four methods RTD real-time dispensation / 批次定義連續製造四種方法即時分配 | ICH-Q13 |
+| Continuous process verification CPV continuous manufacturing active process controls disturbances / 持續製程驗證、連續製造主動製程控制、干擾事件vs暫態事件 | ICH-Q13 |
+| Analytical target profile ATP analytical procedure development ICH Q14 / 分析目標概況、分析程序開發ICH Q14 | ICH-Q14 |
+| MODR method operable design region PAR proven acceptable range analytical procedure / 方法可操作設計區域、已驗證可接受範圍、分析方法多參數 | ICH-Q14 |
+| Analytical control strategy ACS system suitability test SST established conditions analytical procedure / 分析控制策略、系統適用性測試、分析程序已確立條件 | ICH-Q14 |
+| RTRT real-time release testing analytical procedure multivariate model / 即時放行測試、多變量分析程序、潛在變數校正模型 | ICH-Q14 |
 | PCR mycoplasma detection, NAT replacement, adventitious agent / PCR黴漿菌檢測、核酸檢測替代 | TR91 (Appendix 1) |
 | Data integrity, ALCOA+, data lifecycle, data governance / 資料完整性、ALCOA+、資料生命週期 | TR84 |
 | Audit trail review, ATRA tool, audit trail risk assessment / 稽核軌跡審查、ATRA工具 | TR84 |
@@ -1050,7 +1060,7 @@ If the user asks about these topics, say so clearly and suggest alternatives:
 
 - **Specific drug formulation or chemistry** — not covered; these reports focus on manufacturing processes and equipment
 - **PDA reports not in this library** (e.g., TR14, TR28, TR44, TR83) — not available; suggest the user consult the official PDA website
-- **ICH guidelines in full** (Q8, Q9, Q10, Q13) — referenced in TR60 and TR26, but not fully reproduced
+- **ICH guidelines not yet in this library** (Q1, Q3, Q4, Q5 series, Q6, Q7, Q11) — consult the official ICH website; Q8(R2), Q9(R1), Q10, Q12, Q13, Q14 are fully covered in this knowledge base
 - **FDA CFR Part 211 / EU GMP Part I/II text** — referenced but not reproduced in full
 - **Clinical trial manufacturing (Phase I/II early stage)** — partially covered in PtC-14 (ATMP), otherwise limited
 - **API (active pharmaceutical ingredient) manufacturing** — these reports focus on drug product manufacturing, not API synthesis
@@ -1094,13 +1104,13 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR1 ★★★ (primary reference: F0/D-value/z-value science, overkill vs bioburden approaches, cycle types, temperature mapping, PPQ, parametric release, bracketing) | PICS-Annex1 ★★★ (regulatory requirements: terminal sterilization F0≥8, overkill F0≥12, sterilisation principles, EU GMP context) | TR60 ★★ (lifecycle validation framework applied to sterilization) | TR22 ★ (sterilization as prerequisite for aseptic processing)
 
 **Cleaning Validation (清潔驗證)**
-→ TR29 ★★★ (pharma/sterile: 10 ppm limit, dose-based limits, HBEL/ADE/PDE limits, MAC/MACO, swab/rinse sampling, MSA, dirty/clean hold times, cleaning agent limits, grouping/bracketing, dedicated equipment, packaging/tubing, full regulatory alignment) | TR49 ★★★ (biotech-specific: MAC/MSSR limits, swab/rinse sampling, TOC/protein methods, design space, hold times, SUS, viral boundaries, master plan, risk assessment, carryover calculation appendix) | ISPE-Vol7 ★★★ (HBEL/ADE/PDE-based limits, MACO, multi-product cross-contamination, Risk-MaPP) | TR70 ★★ (C&D program underpinning cleaning validation) | TR60 ★★ (lifecycle validation framework applied to cleaning)
+→ TR29 ★★★ (pharma/sterile: 10 ppm limit, dose-based limits, HBEL/ADE/PDE limits, MAC/MACO, swab/rinse sampling, MSA, dirty/clean hold times, cleaning agent limits, grouping/bracketing, dedicated equipment, packaging/tubing, full regulatory alignment) | TR49 ★★★ (biotech-specific: MAC/MSSR limits, swab/rinse sampling, TOC/protein methods, design space, hold times, SUS, viral boundaries, master plan, risk assessment, carryover calculation appendix) | ISPE-Vol7 ★★★ (HBEL/ADE/PDE-based limits, MACO, multi-product cross-contamination, Risk-MaPP) | PICS-Annex15 ★★★ (§10 complete GMP framework: HBEL/ADE toxicological limits, macromolecule exception §10.6.1, TOC as surrogate §10.6.2, no repeat-until-pass rule, DHT/CHT, swab/rinse recovery, worst-case product, campaign length) | TR70 ★★ (C&D program underpinning cleaning validation) | TR60 ★★ (lifecycle validation framework applied to cleaning)
 
 **Single-Use Systems / SUS (一次性系統 / 拋棄式系統)**
 → ISPE-SUT ★★★ (complete SUT guide: component/assembly/system hierarchy, equipment design, E&L, environmental classification, supplier qualification, program management, 2000L case study) | TR66 ★★★ (full SUS guidance: design principles, E&L, qualification, supply chain) | ISPE-Vol6 ★★★ (SUS impact on facility design: footprint reduction, CIP/SIP elimination, changeover, supply chain risk, TCO) | PtC-15 ★★ (SUS in mobile manufacturing) | PtC-14 ★★ (SUS for ATMPs) | TR26 ★ (single-use filter assemblies)
 
 **Process Validation (製程驗證)**
-→ ISO-13408 ★★★ (complete validation frameworks across all 7 parts: Part 1 APS/media fill design; Part 2 filter BCT 3-lot/3-run; Part 3 lyophilizer PQ; Part 4 CIP 3-run worst-case PQ; Part 5 SIP BI-confirmed PQ; Part 6 isolator VHP bio-decontamination validation; Part 7 alternative simulation strategy) | ISO-13408-7 ★★★ (alternative APS validation lifecycle: FIH before clinical trial, iterative updates at each clinical phase, commercial PPQ three-run program; FMEA output drives simulation count — 20 units clinical vs. 300 units × 3 commercial in case study) | TR60 ★★★ (lifecycle PV framework) | TR22 ★★ (APS as validation tool) | ISO-13408-2 ★★★ (filter validation: BCT 3-lot/3-run framework, integrity test correlation, gas filter validation) | TR26 ★★ (filter validation practical guidance) | TR90 ★★ (CCS validation) | Guide-No1 ★ (filling line qualification)
+→ ISO-13408 ★★★ (complete validation frameworks across all 7 parts: Part 1 APS/media fill design; Part 2 filter BCT 3-lot/3-run; Part 3 lyophilizer PQ; Part 4 CIP 3-run worst-case PQ; Part 5 SIP BI-confirmed PQ; Part 6 isolator VHP bio-decontamination validation; Part 7 alternative simulation strategy) | ISO-13408-7 ★★★ (alternative APS validation lifecycle: FIH before clinical trial, iterative updates at each clinical phase, commercial PPQ three-run program; FMEA output drives simulation count — 20 units clinical vs. 300 units × 3 commercial in case study) | TR60 ★★★ (lifecycle PV framework) | PICS-Annex15 ★★★ (§2 complete GMP process validation framework: traditional ≥3 batch rationale, concurrent validation, CPV, hybrid, OPV §5.28-5.32 with statistical tools; plus §1 VMP structure and qualification stage lifecycle URS→DQ→FAT/SAT→IQ→OQ→PQ) | TR22 ★★ (APS as validation tool) | ISO-13408-2 ★★★ (filter validation: BCT 3-lot/3-run framework, integrity test correlation, gas filter validation) | TR26 ★★ (filter validation practical guidance) | TR90 ★★ (CCS validation) | Guide-No1 ★ (filling line qualification)
 
 **Risk Assessment (風險評估)**
 → TR54 ★★★ (excipient risk assessment: ERPN, SCRPN, OverallRPN, supply chain risk, 6 case studies) | TR84 ★★★ (DI risk: 9-Box vulnerability grid, FMEA for data processes, ATRA tool) | TR60 ★★★ (ICH Q9, design space) | TR22 ★★★ (APS risk-based design) | TR13-2 ★★★ (EM risk assessment for low bioburden: criticality factors, worked examples) | TR68 ★★★ (drug shortage risk triage: Risk Level A/B/C, Priority Level 1/2/3, PHA approach) | ISO-13408-7 ★★★ (FMEA for aseptic process: RPN method applied to alternative APS for medical devices/combination products — full case study Annex A with risk acceptance threshold and RABS risk reduction) | TR26 ★★ (filter risk) | PtC-14 ★★ (ATMP risk) | TR90 ★★ (CCS risk) | TR66 ★★ (SUS risk)
@@ -1136,7 +1146,13 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → PtC-13 ★★★ (ATMP material supplier qualification: tiering, audit, SQA, RUO suppliers) | TR66 ★★★ (SUS supplier qualification) | TR65 ★★ (vendor/CDMO assessment in TT: facility fit, quality system evaluation) | TR52 ★★ (3PL qualification) | TR39 ★★ (LSP/carrier qualification, quality agreements) | TR90 ★★ (raw material suppliers)
 
 **Change Control (變更管制)**
-→ TR91 ★★★ (post-approval change management: ECs, PACMP, PLCM, ICH Q12, global harmonization) | TR60 ★★★ (lifecycle change control) | TR66 ★★ (SUS change notification) | TR90 ★★ (CCS change control) | TR68 ★★ (PAC expediting for shortage prevention: ICH Q12, gCP framework) | PtC-9 ★★ (pandemic change prioritization, ICH Q12 tools)
+→ ICH-Q12 ★★★ (EC-based change management: established conditions identify what triggers regulatory submissions; PACMP enables pre-approved changes; Enhanced Change Management Approach for low-risk changes) | TR91 ★★★ (post-approval change management: ECs, PACMP, PLCM, ICH Q12, global harmonization) | TR60 ★★★ (lifecycle change control) | TR66 ★★ (SUS change notification) | TR90 ★★ (CCS change control) | TR68 ★★ (PAC expediting for shortage prevention: ICH Q12, gCP framework) | PtC-9 ★★ (pandemic change prioritization, ICH Q12 tools)
+
+**Continuous Manufacturing (連續製造)**
+→ ICH-Q13 ★★★ (primary regulatory guideline: scientific considerations — State of Control vs Steady State, material traceability and diversion strategy, Active Process Controls, disturbances vs transient events; regulatory considerations — batch definition 4 methods, CPV framework, CTD Table 1 submission mapping, batch-to-CM conversion requirements; lifecycle — Q12 integration, PQS for CM planned/unplanned events; Annexes I–V with disturbance management examples and Funnel Plot) | FDA-ProcessVal ★★ (Stage 3 CPV framework applicable to CM) | PICS-Annex15 ★★ (process validation and CPV regulatory framework)
+
+**Analytical Procedure Development & Lifecycle (分析程序開發與生命週期)**
+→ ICH-Q14 ★★★ (primary regulatory guideline: Analytical Target Profile ATP — 3 elements and 4 lifecycle functions; minimal vs enhanced development approaches; PAR for single-parameter ranges, MODR for multi-parameter Design Space analogue; Analytical Control Strategy 4 elements; SST and sample suitability; Established Conditions for analytical procedures; Q12 tools applied to analytical methods; Table 1 knowledge×risk matrix for change requirements; Table 2 three change types evaluation; multivariate model development and maintenance; RTRT validation requirements; CTD §10 submission mapping) | ICH-Q2 ★★★ (method validation: 8 performance characteristics, Category I–IV framework, terminology alignment with Q14) | ISPE-TechTransfer ★★ (analytical method transfer as part of technology transfer: co-validation, equivalence, partial transfer strategies)
 
 **Remote/Hybrid GMP Inspections:** | **PtC-Remote ★★★** (complete remote inspection guide: desktop/virtual/hybrid types, planning, hardware, document sharing, system access, closing, reinspection frequency, 2021 global survey) | PtC-9 ★★ (pandemic inspection experiences, hybrid models, FDA/EMA/PMDA approaches)
 
@@ -1243,7 +1259,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR88 ★★★ (Phase I/II investigation framework: sterility, BET, EM, APS, water system) | TR13 ★★★ (EM investigation and trending) | TR70 ★★ (EM excursion linked to cleaning failure) | TR22 ★★ (APS failure investigation)
 
 **Post-Approval Changes / Regulatory Filing (上市後變更/法規申報)**
-→ TR91 ★★★ (global PAC management: ECs, PACMP, PLCM, ICH Q12, harmonization) | TR68 ★★ (PAC expediting for shortage prevention) | PtC-9 ★★ (pandemic change prioritization, ICH Q12 tools) | TR60 ★★ (lifecycle PV change control)
+→ ICH-Q12 ★★★ (primary regulatory guideline: EC identification and categorization framework, PACMP design and regulatory status, PLCM document structure, stability data requirements for approved changes, Annex I EC examples for small molecule and biologics, Annex II PACMP examples) | TR91 ★★★ (global PAC management: ECs, PACMP, PLCM, ICH Q12, harmonization) | TR68 ★★ (PAC expediting for shortage prevention) | PtC-9 ★★ (pandemic change prioritization, ICH Q12 tools) | TR60 ★★ (lifecycle PV change control)
 
 **Commissioning & Qualification / IQ/OQ/PQ / 系統確效**
 → ISPE/ISPE-Vol5 ★★★ (complete C&Q framework, replaces V-model with risk-based approach) | PDA/TR60 ★★ (validation lifecycle) | PDA/TR22 ★ (APS qualification)
@@ -1853,15 +1869,62 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 
 ---
 
+### ICH Q12 - Technical and Regulatory Considerations for Pharmaceutical Product Lifecycle Management
+- **Source**: ICH Q12 Guideline (2019)
+- **Topics**: Post-Approval Change Management, Established Conditions (ECs), PACMP, Product Lifecycle Management (PLCM), ICH Q10 integration, regulatory flexibility
+- **Key Sections**:
+  - Introduction & Principles (ECs concept, regulatory flexibility goals, relationship to Q8/Q9/Q10)
+  - Established Conditions — identification, categorization, Enhanced Change Management approach
+  - Reporting Categories — Prior Approval, Notification, Annual Report; regional variation considerations
+  - PACMP (Post-Approval Change Management Protocol) — design, regulatory review, implementation
+  - Product Lifecycle Management Document (PLCM) — structure, contents, maintenance
+  - Stability Data for Post-Approval Changes
+  - Annex I: EC Examples for small molecule and biological drug substances/products
+  - Annex II: PACMP Examples
+  - Annex III: Working Examples of the PLCM Document
+
+---
+
+### ICH Q13 - Continuous Manufacturing for Drug Substances and Drug Products
+- **Source**: ICH Q13 Guideline (2022)
+- **Topics**: Continuous Manufacturing (CM), State of Control, Steady State, Real-Time Dispensation (RTD), Continuous Process Verification (CPV), Batch Definition, Material Traceability
+- **Key Sections**:
+  - Introduction & Scope (CM definition, process formats: fully continuous, semicontinuous, integrated)
+  - Scientific Considerations — State of Control vs Steady State distinction, material traceability and diversion, Active Process Controls, disturbances vs transient events
+  - Regulatory Considerations §4.1–4.5 — control strategy 5-element framework, batch definition (4 methods, 4 output increase modes), process description, CTD Table 1 mapping (3.2.S.2.2–3.2.R)
+  - Regulatory Considerations §4.6–4.10 — batch-to-CM conversion, CPV replacing traditional PV, PQS for CM, Q12 synergy, lifecycle management
+  - Annexes I–V — CM for DS/DP, coupled/semicontinuous approaches, material diversion strategy, RTRT for CM, disturbance management (Funnel Plot example)
+
+---
+
+### ICH Q14 - Analytical Procedure Development
+- **Source**: ICH Q14 Guideline (2023)
+- **Topics**: Analytical Target Profile (ATP), Analytical Control Strategy (ACS), PAR (Proven Acceptable Range), MODR (Method Operable Design Region), Robustness, System Suitability Test (SST), Established Conditions (ECs), Multivariate Analytical Procedures, RTRT
+- **Key Sections**:
+  - Introduction, Scope & General Considerations (minimal vs enhanced approach, QbD applied to analytical procedures, lifecycle overview)
+  - Analytical Target Profile (ATP) — 3 elements, 4 lifecycle functions, analogous to QTPP
+  - Knowledge & Risk Management — prior knowledge use, Ishikawa diagram for analytical methods, dynamic risk assessment
+  - Robustness & PAR/MODR Development — PAR (single parameter) vs MODR (multi-parameter), analogous to Design Space
+  - Analytical Control Strategy (ACS) — 4 ACS elements, SST design, sample suitability for biologics/multivariate, Established Conditions
+  - Lifecycle Management — Q12 tools (ECs, PACMP, PLCM) applied to analytical procedures; Figure 2 risk framework; Table 1 (knowledge × risk matrix); Table 2 change evaluation (3 change types)
+  - Multivariate Analytical Procedures — latent variable model development, calibration set sample selection, model maintenance and revalidation
+  - RTRT (Real-Time Release Testing) — definition, validation requirements, CTD placement
+  - Regulatory Submissions §10 — CTD section mapping (S.4.2/P.5.2, S.4.3/P.5.3, S.2.6/P.2)
+  - Glossary §11 — AP Attribute vs Performance Characteristic, ATP vs QTPP, MODR vs Design Space terminology
+
+---
+
 ### Cross-Reference: ICH Guidelines in Manufacturing Context
 
-| Topic | Q8(R2) | Q9(R1) | Q10 |
-|-------|--------|--------|-----|
-| Design Space | ✓ Core | Applies | Maintains |
-| Risk Management | Strategy | Framework | Application |
-| Process Validation | Approach | Supports | Implementation |
-| Change Management | Design Phase | Assessment | Control & Approval |
-| Knowledge Management | Development | Documentation | Lifecycle |
+| Topic | Q8(R2) | Q9(R1) | Q10 | Q12 | Q13 | Q14 |
+|-------|--------|--------|-----|-----|-----|-----|
+| Design Space | ✓ Core | Applies | Maintains | — | CM Design Space | MODR (AP) |
+| Risk Management | Strategy | Framework | Application | EC identification | CM control strategy | AP risk assessment |
+| Process Validation | Approach | Supports | Implementation | PACMP | CPV (replaces PV) | Method validation lifecycle |
+| Change Management | Design Phase | Assessment | Control & Approval | ECs + PACMP ✓ Core | Lifecycle management | Table 2 change evaluation |
+| Knowledge Management | Development | Documentation | Lifecycle | PLCM ✓ Core | Material traceability | ATP knowledge accumulation |
+| Analytical Methods | Development context | Risk to method | Lifecycle oversight | EC for test procedures | CM analytical strategy | ✓ Core |
+| Continuous Manufacturing | Design inputs | CM risk assessment | CM quality system | CM post-approval changes | ✓ Core | CM analytical procedures |
 
 ---
 
@@ -2569,3 +2632,33 @@ Key terms: leachables, analytical evaluation threshold (AET), leachables specifi
 **Sections:**
 - Section 1 (p250–p256): Part A — Foreword/Scope (ICH Q9 alignment, voluntary for PIC/S, veterinary extension), Introduction (risk definition probability×severity, patient protection, proactive quality, formal vs informal), Principles (science-based + proportionality), Full QRM Process Cycle (risk assessment → control → communication → review), Definitions table (hazard/harm/risk distinctions, all 20+ key terms), Overview of methods and tools, Integration with GMP quality system
 - Section 2 (p256–p263): Part B — Risk Management Methods: I.1 Basic Facilitation (flowcharts, check sheets, Ishikawa), I.2 FMEA (full scoring method, RPN formula), I.3 FMECA, I.4 FTA (Boolean tree logic), I.5 HACCP (7 steps, CCP/critical limits), I.6 HAZOP (full guide-word table), I.7 PHA, I.8 Risk Ranking & Filtering, I.9 Statistical Tools (control charts, Cpk, DOE, Pareto); Applications Appendix II.1–II.8 (HTML table: QRM tools × 8 GMP activity domains)
+
+---
+
+## PICS/PICS-Annex15-Complete.md
+**Report:** PIC/S GMP Annex 15 (2023) — Qualification and Validation
+**Pages:** p211–p226 | **Sections:** 3 | **Source:** PIC/S PE 009-17 (25 August 2023)
+
+**Covers questions about:**
+- VMP (Validation Master Plan) structure: 7 mandatory elements including QV policy, org structure, site status summary, change control/deviation management, AC development guidance, document references, requalification strategy
+- Qualification stages lifecycle: URS → DQ → FAT/SAT → IQ → OQ → PQ — sequential logic, FAT test leverage at IQ/OQ, conditional approval for stage progression
+- Documentation requirements: protocol preparation, handling deviations mid-execution, third-party vendor protocols, report conclusions vs. acceptance criteria, conditional release to next stage
+- Re-qualification: event-triggered vs. periodic; accumulated small changes over time assessment
+- Traditional process validation: minimum 3 consecutive batches rationale, bracketing approach for multiple strengths/sites/batch sizes, 12 required protocol elements including CPP/CQA/sampling plan
+- Concurrent validation: exceptional patient benefit-risk rationale, VMP documentation, AP certification requirements
+- Continuous process verification (CPV): QbD-based, PAT tools, multivariate SPC, science-based control strategy
+- Hybrid validation approach: combining traditional + CPV, applicable after changes or during OPV
+- Ongoing process verification (OPV): all three approaches, statistical tools, Cpk, PQR integration, incremental change assessment
+- Transport qualification: route definition, seasonal variation, risk assessment for delays/device failure/liquid nitrogen topping, continuous monitoring requirement
+- Packaging validation: primary/secondary packaging equipment qualification, min/max operating range testing for temperature/speed/sealing pressure
+- Utilities qualification: steam/WFI/compressed air/HVAC/gases using §3 stages, seasonal variation, direct/indirect product contact risk assessment
+- Test method validation: LOD/LOQ requirements, product interference with microbial recovery (§9.2), sanitising agent interference with surface microbial monitoring (§9.3)
+- Cleaning validation: HBEL/ADE-based residue limits, no repeated cleaning until passing, swab vs. rinse sampling with recovery confirmation, DHT/CHT hold times, worst-case product selection, campaign manufacturing limits, macromolecule/peptide special case
+- Change control: QRM-based impact assessment across validation status/regulatory/calibration/maintenance, design space regulatory boundary evaluation, post-change effectiveness verification
+
+**Key terms:** VMP validation master plan, URS user requirements specification, DQ design qualification, FAT factory acceptance testing, SAT site acceptance testing, IQ installation qualification, OQ operational qualification, PQ performance qualification, IOQ combined qualification, re-qualification, process validation, CPP critical process parameter, CQA critical quality attribute, concurrent validation, continuous process verification CPV, hybrid approach, ongoing process verification OPV, bracketing approach, design space, QbD quality by design, PAT process analytical technology, SPC statistical process control, cleaning validation, HBEL health-based exposure limit, ADE acceptable daily exposure, PDE permitted daily exposure, TOC total organic carbon, dirty hold time DHT, clean hold time CHT, carryover limit, worst case product, campaign manufacture, swab sampling, rinse sampling, transport qualification, packaging validation, utilities qualification, test method validation, change control, knowledge management, ICH Q8 Q9 Q10 Q11, retrospective validation
+
+**Sections:**
+- Section 1 (p211–p215): Principle (lifecycle QRM approach, retrospective validation abolished, external data use), General (risk-based scope/extent decisions), §1 Organisation & Planning (VMP 7 elements, data integrity checks), §2 Documentation (protocol/report framework, conditional approval, vendor protocols, deviation handling), §3 Qualification Stages (URS, DQ, FAT/SAT, IQ 5 elements, OQ worst-case testing, PQ with production materials)
+- Section 2 (p215–p220): §4 Re-qualification (periodic + event-triggered, incremental change assessment), §5 Process Validation — General (all dosage forms, commercial scale batches, pre-validation prerequisites), Concurrent Validation (exceptional circumstances only, AP certification), Traditional (≥3 batches, 12-element protocol, CPP/CQA documentation), Continuous Process Verification (QbD/PAT/SPC), Hybrid approach, OPV lifecycle (§5.28–5.32 statistical tools, PQR integration), §6 Transport Verification (route definition, risk assessment, continuous monitoring), §7 Packaging Validation (primary/secondary equipment, min/max range testing)
+- Section 3 (p220–p226): §8 Utilities Qualification (IQ/OQ/PQ for steam/water/air, seasonal variation, contact risk assessment), §9 Test Method Validation (LOD/LOQ, product microbial interference, sanitising agent interference), §10 Cleaning Validation (HBEL/ADE residue limits, macromolecule exception, TOC as surrogate, no repeat-until-pass, DHT/CHT, swab/rinse recovery, worst-case product, campaign length), §11 Change Control (QRM impact assessment, design space regulatory boundary, effectiveness evaluation), §12 Glossary (22 official definitions: Bracketing, Change Control, Cleaning Validation/Verification, Concurrent/Continuous/Prospective/Traditional validation, Control Strategy, CPP, CQA, Design Qualification, Design Space, IQ, Knowledge Management, Lifecycle, OPV, OQ, PQ, Process Validation, QbD, QRM, State of Control, URS, Worst Case)
