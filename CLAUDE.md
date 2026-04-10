@@ -94,6 +94,10 @@ mv "Raw pdfs/PDA_TRXX_....pdf" "Raw pdfs/processed/"
 │   ├── INDEX.md            # Master routing index — update manually per new document
 │   ├── exams/              # Pre-written question banks (JSON) for /quiz skill
 │   │   └── topics-APS-filling-isolator.json
+│   ├── topics/             # Cross-document topic synthesis MDs (for /quiz & /gmp-ask)
+│   │   ├── APS-filling-isolator.md
+│   │   ├── disinfectant-efficacy-study.md
+│   │   └── VPHP-cycle-development.md  # + opus/sonnet variants
 │   ├── PDA/                # PDA Technical Reports & Points to Consider
 │   │   ├── TR26-Complete.md    # One .md per document (auto-generated, English only)
 │   │   └── ...

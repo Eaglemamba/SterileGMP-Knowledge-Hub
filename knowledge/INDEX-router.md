@@ -347,3 +347,15 @@ Use these mappings to translate user questions before routing:
 | 滲透壓 / osmolality | osmolality, osmolarity, mOsmol, freezing point depression |
 | 膠塞 / 橡膠封蓋 | elastomeric stopper, rubber closure, penetrability, fragmentation |
 
+---
+
+## Topic Summaries (`knowledge/topics/`)
+
+Cross-document synthesized summaries. Use instead of grepping individual report MDs when the question spans multiple sources on a focused workflow topic.
+
+| Topic | File | Covers |
+|-------|------|--------|
+| APS in filling isolator | `topics/APS-filling-isolator.md` | Isolator-specific APS design, personnel workflow, BI placement, batch size, acceptance criteria — synthesized from TR22, PtC-Isolators, PtC-12 |
+| Disinfectant efficacy study | `topics/disinfectant-efficacy-study.md` | Carrier tests, suspension tests, in-situ field studies, log-reduction targets, documentation — synthesized from TR70, USP-1072 |
+| VPHP cycle development | `topics/VPHP-cycle-development.md` | Cycle parameter rationale, BI placement, H₂O₂ concentration decay, validation phases — synthesized from TR70, PtC-Isolators |
+
