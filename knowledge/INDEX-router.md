@@ -182,6 +182,12 @@ Use these mappings to translate user questions before routing:
 | ICH Q14 analytical procedure development | ICH-Q14 (§0-§4 + §10 CTD) | ICH-Q2 |
 | Remote/hybrid inspection | PtC-Remote (§1-§3 Planning to closing) | PtC-9 |
 | Biologics GMP / ATMP GMP / PIC/S Annex 2 | PICS-Annex2 (§1 Scope, §2 Principles, §3 Manufacturing) | PtC-14, ISPE-Vol6 |
+| Biological product definition / BLA requirements / Subchapter F scope | FDA-21CFR-Biologics (§0 Overview, §2 Part 601) | FDA-Aseptic |
+| Biological product deviation reporting 600.14 / 45-day timeline / FDA-3486 | FDA-21CFR-Biologics (§1 Part 600) | — |
+| Lot release: sterility 610.12 / purity 610.13 / potency 610.10 / identity 610.14 | FDA-21CFR-Biologics (§3 Part 610 release) | USP-71, PhEur-261 |
+| BLA manufacturing change management / PAS / CBE-30 | FDA-21CFR-Biologics (§2 Part 601 §601.12) | TR91, ICH-Q12 |
+| Biologics container label / Part 610 labeling / expiration dating | FDA-21CFR-Biologics (§4 Part 610 labeling) | — |
+| CDMO quality agreement biologics / responsibility allocation Subchapter F | FDA-21CFR-Biologics (§5 CDMO compliance matrix) | FDA-Aseptic |
 | QRM regulatory perspective / PIC/S Annex 20 | PICS-Annex20 (§1-§3 QRM process, risk tools) | ICH-Q9R1, TR60 |
 | Combination products CGMP / 組合產品 | FDA-ComboProd-CGMP (§1-§3 CGMP requirements) | FDA-ComboProd-HF |
 | Human factors / combination products | FDA-ComboProd-HF (§1-§2 HF process, clinical) | FDA-ComboProd-CGMP |
