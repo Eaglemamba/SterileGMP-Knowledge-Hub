@@ -2,7 +2,7 @@
 
 A multi-source GMP knowledge base for sterile pharmaceutical manufacturing — combining human-readable HTML educational guides with a chatbot-ready Markdown knowledge base and a Claude Code skill for conversational access.
 
-Covers **PDA Technical Reports**, **ISPE Guidelines**, **FDA Guidance**, **PIC/S Annex 1**, **ICH Guidelines**, **USP Chapters**, and **ISO Standards** — all focused on sterile/injectable pharmaceutical manufacturing.
+Covers **PDA Technical Reports**, **ISPE Guidelines**, **FDA Guidance**, **PIC/S Annexes**, **ICH Guidelines**, **USP Chapters**, **ISO Standards**, and **European Pharmacopoeia (Ph.Eur.)** — all focused on sterile/injectable pharmaceutical manufacturing. **167 documents** across 8 source organizations.
 
 ## What's in Here
 
@@ -16,7 +16,7 @@ Covers **PDA Technical Reports**, **ISPE Guidelines**, **FDA Guidance**, **PIC/S
 
 ## Documents Covered
 
-### PDA Technical Reports & Points to Consider (39 complete)
+### PDA Technical Reports & Points to Consider (41 complete)
 
 | Document | Topic |
 |----------|-------|
@@ -58,6 +58,8 @@ Covers **PDA Technical Reports**, **ISPE Guidelines**, **FDA Guidance**, **PIC/S
 | PDA PtC-14 | Manufacturing of ATMPs — Facility Design |
 | PDA PtC-15 | Mobile Manufacturing |
 | PDA PtC-Isolators | Aseptic Processing in Isolators |
+| PDA PtC-11 | Points to Consider for Plasmid DNA and Viral Vectors in ATMP Manufacturing (2025) |
+| PDA PtC-Remote | Points to Consider for Remote and Hybrid GMP Inspections (2021) |
 
 ### ISPE Guidelines (14 complete, 1 pending)
 
@@ -81,18 +83,65 @@ Covers **PDA Technical Reports**, **ISPE Guidelines**, **FDA Guidance**, **PIC/S
 
 ### Regulatory & Standards
 
-| Document | Body | Status | Topic |
-|----------|------|--------|-------|
-| Aseptic Processing Guidance (2004) | FDA | ✅ Complete | Sterile drug products by aseptic processing |
-| Process Validation Guidance (2011) | FDA | ✅ Complete | Lifecycle approach to process validation |
-| Process Inspection CPGM 7356.002A | FDA | ✅ Complete | Drug process inspection procedures |
-| Annex 1 (2022) | PIC/S | ✅ Complete | Manufacture of sterile medicinal products |
-| Q8(R2) Pharmaceutical Development | ICH | ✅ Complete | Design space and quality by design |
-| Q9(R1) Quality Risk Management | ICH | ✅ Complete | Risk management methodology framework |
-| Q10 Pharmaceutical Quality System | ICH | ✅ Complete | Pharmaceutical quality system framework |
-| 14644-1/2/3 Cleanroom Classification | ISO | ⏳ Planned | Cleanroom standards and monitoring |
+**FDA Guidance (5 complete)**
 
-### USP General Chapters (38 complete, 18 skeleton)
+| Document | Status | Topic |
+|----------|--------|-------|
+| Aseptic Processing Guidance (2004) | ✅ Complete | Sterile drug products by aseptic processing |
+| Process Validation Guidance (2011) | ✅ Complete | Lifecycle approach to process validation |
+| Process Inspection CPGM 7356.002A | ✅ Complete | Drug process inspection procedures |
+| Combination Products CGMP (21 CFR 4) | ✅ Complete | CGMP framework for combination products |
+| Combination Products Human Factors | ✅ Complete | HF engineering and usability for combo products |
+
+**PIC/S Annexes (4 complete)**
+
+| Document | Status | Topic |
+|----------|--------|-------|
+| Annex 1 (2022) | ✅ Complete | Manufacture of sterile medicinal products |
+| Annex 2 | ✅ Complete | Manufacture of biological medicinal substances and products |
+| Annex 15 (2023) | ✅ Complete | Qualification and validation |
+| Annex 20 | ✅ Complete | Quality risk management |
+
+**ICH Guidelines (3 complete)**
+
+| Document | Status | Topic |
+|----------|--------|-------|
+| Q8(R2) Pharmaceutical Development | ✅ Complete | Design space and quality by design |
+| Q9(R1) Quality Risk Management | ✅ Complete | Risk management methodology framework |
+| Q10 Pharmaceutical Quality System | ✅ Complete | Pharmaceutical quality system framework |
+
+**ISO Standards (17 complete)**
+
+| Document | Topic |
+|----------|-------|
+| ISO 10993-1 | Biological evaluation of medical devices |
+| ISO 11040 | Prefilled syringes |
+| ISO 11608-1 | Needle injection systems for medical use |
+| ISO 13408 | Aseptic processing of health care products |
+| ISO 13485 | Medical devices QMS requirements |
+| ISO 13926-1/2/3 | Pen injector components (glass cylinders, stoppers, seals) |
+| ISO 14644 | Cleanrooms and associated controlled environments |
+| ISO 14971 | Risk management for medical devices |
+| ISO 15223-1/2 | Medical device symbols for labels |
+| ISO 15378 | Primary packaging materials for medicinal products |
+| ISO 15394 | Packaging barcodes and bar codes for shipping |
+| ISO 2859-1 | AQL sampling procedures |
+| ISO 9000 / 9001 | QMS fundamentals and requirements |
+| ISO TR 24971 | Application guidance for ISO 14971 risk management |
+
+**European Pharmacopoeia (Ph.Eur.) (7 complete)**
+
+| Chapter | Topic |
+|---------|-------|
+| 2.6.1 | Sterility |
+| 2.6.14 | Bacterial endotoxins |
+| 2.9.19 | Particulate contamination — sub-visible particles |
+| 2.9.20 | Particulate contamination — visible particles |
+| 3.2.1 | Glass containers for pharmaceutical use |
+| 3.3.8 | Sterile single-use assemblies for intravenous infusion |
+| 5.1.1 | Methods of preparation of sterile products |
+
+### USP General Chapters (76 complete)
 
 | Chapter | Topic | Status |
 |---------|-------|--------|
@@ -131,10 +180,34 @@ Covers **PDA Technical Reports**, **ISPE Guidelines**, **FDA Guidance**, **PIC/S
 | 〈1228.4〉 | Depyrogenation by Rinsing | ✅ Complete |
 | 〈1228.5〉 | Endotoxin Indicators for Depyrogenation | ✅ Complete |
 | 〈1229〉 | Sterilization of Compendial Articles | ✅ Complete |
-| 〈1229.1〉–〈1229.15〉 | Sterilization sub-series (15 chapters) | ⏳ Skeleton |
+| 〈1229.1〉–〈1229.15〉 | Sterilization sub-series (15 chapters) | ✅ Complete |
 | 〈1660〉 | Evaluation of Inner Surface Durability of Glass Containers | ✅ Complete |
+| 〈1663〉 | Assessment of Extractables Associated with Pharmaceutical Packaging | ✅ Complete |
+| 〈1664〉 | Assessment of Drug Product Leachables Associated with Pharmaceutical Packaging | ✅ Complete |
 | 〈1788〉 | Methods for the Determination of Subvisible Particulate Matter | ✅ Complete |
 | 〈1790〉 | Visual Inspection of Injections | ✅ Complete |
+| 〈55〉 | Biological Indicators—Resistance Performance Tests | ✅ Complete |
+| 〈61〉 | Microbial Enumeration Tests | ✅ Complete |
+| 〈62〉 | Tests for Specified Microorganisms | ✅ Complete |
+| 〈63〉 | Mycoplasma Tests | ✅ Complete |
+| 〈87〉 | Biological Reactivity Tests, In Vitro | ✅ Complete |
+| 〈88〉 | Biological Reactivity Tests, In Vivo | ✅ Complete |
+| 〈631〉 | Color and Achromicity | ✅ Complete |
+| 〈643〉 | Total Organic Carbon | ✅ Complete |
+| 〈645〉 | Water Conductivity | ✅ Complete |
+| 〈659〉 | Packaging and Storage Requirements | ✅ Complete |
+| 〈698〉 | Deliverable Volume | ✅ Complete |
+| 〈921〉 | Water Determination | ✅ Complete |
+| 〈1029〉 | Good Documentation Guidelines | ✅ Complete |
+| 〈1058〉 | Analytical Instrument Qualification | ✅ Complete |
+| 〈1079〉 | Drug Product Storage and Transportation Risks | ✅ Complete |
+| 〈1113〉 | Microbial Characterization, Identification, and Strain Typing | ✅ Complete |
+| 〈1207.1〉 | Package Integrity Testing — Test Method Selection and Validation | ✅ Complete |
+| 〈1207.2〉 | Package Integrity Testing — Physical Leak Test Technologies | ✅ Complete |
+| 〈1207.3〉 | Package Integrity Testing — Seal Quality Test Technologies | ✅ Complete |
+| 〈1225〉 | Validation of Compendial Procedures | ✅ Complete |
+| 〈1226〉 | Verification of Compendial Procedures | ✅ Complete |
+| 〈1231〉 | Water for Pharmaceutical Purposes | ✅ Complete |
 
 > **Note:** USP chapters < 1000 are legally enforceable in the US; chapters ≥ 1000 are informational. See [SOURCES.md](SOURCES.md) for details on each source organization.
 
@@ -142,12 +215,11 @@ Covers **PDA Technical Reports**, **ISPE Guidelines**, **FDA Guidance**, **PIC/S
 
 | Document | Body | Priority | Fills This Gap |
 |----------|------|----------|----------------|
-| Annex 15 — Qualification & Validation | EU GMP | High | EU inspection standard for IQ/OQ/PQ; pairs with ISPE Vol.5 |
-| Annex 2 — Biological Products | EU GMP | Medium | EU regulatory GMP for biologics/ATMPs |
-| 5.1.1 / 2.6.1 / 2.6.14 key chapters | Ph. Eur. | Medium | EU pharmacopeial equivalents to USP sterility/endotoxin chapters |
 | TRS 961 Annex 6 — Sterile Products | WHO GMP | Medium | WHO prequalification standard; required for global health supply chains |
-| 14644-1/2/3 Cleanroom Classification | ISO | High | Cleanroom class definitions cited by Annex 1 §4 and FDA aseptic guidance |
 | Q11 Drug Substance Development | ICH | Low | Biological/chemical API development; extends Q8 framework |
+| ISO 14644-2/3 — Monitoring & Test Methods | ISO | Medium | Cleanroom monitoring and performance test methods |
+| ISO 17665 — Moist Heat Sterilization | ISO | Medium | Moist heat sterilization of healthcare products |
+| 21 CFR 600-680 — Biological Products | FDA | Medium | US regulatory requirements for biologics |
 
 ## Using the Chatbot Skill
 
@@ -206,7 +278,7 @@ Each guideline body has a distinct color in the dashboard:
 | PIC/S | Orange | Active |
 | ICH | Teal | Active |
 | USP | Gold | Active |
-| ISO | Purple | Planned |
-| EU GMP | Indigo | Planned |
-| Ph. Eur. | Rose | Planned |
+| ISO | Purple | Active |
+| EU GMP / PIC/S | Indigo | Active |
+| Ph. Eur. | Rose | Active |
 | WHO | Slate | Planned |

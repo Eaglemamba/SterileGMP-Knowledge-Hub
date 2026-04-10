@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SterileGMP Learning Path — 部門學習路徑</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { theme: { extend: { colors: {
+  'gmp': { 'dark': '#1e3a5f', 'mid': '#3182ce', 'light': '#ebf5ff' }
+}}}}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --c-primary: #1d1d1f; --c-secondary: #6e6e73; --c-tertiary: #aeaeb2;
+  --c-bg: #f5f5f7; --c-surface: #ffffff; --c-border: rgba(0,0,0,0.08);
+  --c-blue: #0071e3; --ease: cubic-bezier(0.25,0.46,0.45,0.94);
+}
+body { font-family: 'Noto Sans TC', -apple-system, sans-serif; background: var(--c-bg); color: var(--c-primary); -webkit-font-smoothing: antialiased; }
+.mono { font-family: 'JetBrains Mono', monospace; }
+
+/* Progress ring */
+.progress-ring { transform: rotate(-90deg); }
+.progress-ring__circle { transition: stroke-dashoffset 0.5s ease; }
+
+/* Department card */
+.dept-card { background: var(--c-surface); border-radius: 18px; box-shadow: 0 1px 3px rgba(0,0,0,0.07); overflow: hidden; transition: all 0.2s var(--ease); }
+.dept-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.09); }
+
+/* Department selector */
+.dept-tab { padding: 8px 16px; border-radius: 12px; font-size: 13px; font-weight: 500; border: 1.5px solid #d2d2d7; background: var(--c-surface); color: var(--c-secondary); cursor: pointer; white-space: nowrap; transition: all 0.15s var(--ease); display: flex; align-items: center; gap: 6px; }
+.dept-tab:hover { border-color: #8e8e93; color: var(--c-primary); }
+.dept-tab.active { border-color: var(--dept-color, #1e3a5f); background: var(--dept-color, #1e3a5f); color: white; font-weight: 600; }
+
+/* Tier section */
+.tier-section { border-left: 3px solid var(--tier-color, #e2e8f0); padding-left: 20px; margin-left: 12px; }
+
+/* Doc item */
+.doc-item { display: flex; align-items: flex-start; gap: 12px; background: var(--c-surface); border-radius: 12px; border: 1.5px solid var(--c-border); padding: 14px 16px; transition: all 0.2s var(--ease); }
+.doc-item:hover { transform: translateX(4px); box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.doc-item.completed { opacity: 0.65; }
+.doc-item.completed .doc-title { text-decoration: line-through; color: var(--c-tertiary); }
+
+/* Checkbox */
+.check-box { cursor: pointer; width: 20px; height: 20px; min-width: 20px; border-radius: 6px; border: 2px solid #d2d2d7; display: flex; align-items: center; justify-content: center; transition: all 0.2s; margin-top: 1px; }
+.check-box:hover { transform: scale(1.15); border-color: #8e8e93; }
+.check-box.checked { border-color: var(--dept-color, #2563eb); background: var(--dept-color, #2563eb); }
+.check-box.checked::after { content: '✓'; color: white; font-size: 12px; font-weight: 700; }
+
+/* Badges */
+.required-badge { font-size: 10px; padding: 2px 8px; border-radius: 980px; font-weight: 600; background: #fee2e2; color: #991b1b; white-space: nowrap; }
+.optional-badge { font-size: 10px; padding: 2px 8px; border-radius: 980px; font-weight: 600; background: #f0fdf4; color: #166534; white-space: nowrap; }
+.source-badge { font-size: 10px; padding: 2px 7px; border-radius: 6px; font-weight: 600; white-space: nowrap; }
+.quiz-badge { font-size: 10px; padding: 2px 7px; border-radius: 6px; font-weight: 600; white-space: nowrap; cursor: pointer; text-decoration: none; }
+
+/* Progress bar */
+.progress-bar { height: 6px; border-radius: 3px; transition: width 0.6s ease; }
+
+/* Tier badge */
+.tier-badge { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: white; flex-shrink: 0; }
+
+/* Overview cards */
+.overview-card { background: var(--c-surface); border-radius: 14px; padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.07); text-align: center; transition: all 0.2s var(--ease); cursor: pointer; border: 2px solid transparent; }
+.overview-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.09); }
+.overview-card.active { border-color: var(--dept-color, #2563eb); }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+.fade-up { animation: fadeUp 0.3s var(--ease) forwards; opacity: 0; }
+</style>
+</head>
+<body class="min-h-screen">
+
+<!-- Header -->
+<div style="background:var(--c-surface);border-bottom:1px solid var(--c-border)" class="px-6 py-8">
+  <div class="max-w-5xl mx-auto text-center">
+    <h1 style="font-size:30px;font-weight:700;letter-spacing:-0.02em;color:var(--c-primary)">SterileGMP Learning Path</h1>
+    <p style="font-size:15px;color:var(--c-secondary);margin-top:6px">Department-Based Curriculum — 部門學習路徑</p>
+    <p style="font-size:12px;color:var(--c-tertiary);margin-top:8px">
+      <a href="index.html" style="color:var(--c-blue);text-decoration:none;font-weight:500">Dashboard</a>
+      <span style="color:var(--c-tertiary);margin:0 6px">·</span>
+      <a href="mindmap.html" style="color:var(--c-blue);text-decoration:none;font-weight:500">Mind Map</a>
+      <span style="color:var(--c-tertiary);margin:0 6px">·</span>
+      <span id="totalDocsLabel" style="color:var(--c-tertiary)"></span>
+    </p>
+
+    <!-- Overall progress -->
+    <div style="background:var(--c-bg);border-radius:14px;padding:14px 20px;max-width:400px;margin:20px auto 0" class="flex items-center justify-between gap-4">
+      <div class="text-left">
+        <div style="font-size:11px;color:var(--c-secondary)">Overall Progress</div>
+        <div class="mono" style="font-size:24px;font-weight:700" id="overallPct">0%</div>
+      </div>
+      <svg class="progress-ring" width="56" height="56">
+        <circle stroke="#e5e5ea" stroke-width="5" fill="transparent" r="24" cx="28" cy="28"/>
+        <circle class="progress-ring__circle" id="progressCircle" stroke="var(--c-blue)" stroke-width="5" fill="transparent"
+          r="24" cx="28" cy="28" stroke-dasharray="150.8" stroke-dashoffset="150.8" stroke-linecap="round"/>
+      </svg>
+      <div class="text-right">
+        <div class="mono" style="font-size:13px;font-weight:600" id="overallCount">0 / 0</div>
+        <div style="font-size:10px;color:var(--c-tertiary)">documents read</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Department overview cards -->
+<div class="max-w-5xl mx-auto px-6 mt-6">
+  <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3" id="deptOverview"></div>
+</div>
+
+<!-- Instruction -->
+<div class="max-w-5xl mx-auto px-6 mt-4">
+  <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:12px 16px;font-size:12px;color:#92400e">
+    <strong>How to use:</strong> Select a department above, then follow the tiers (Foundation → Core → Advanced).
+    Check off documents as you read them — progress is saved in your browser.
+    <span class="required-badge">Required</span> marks are essential for the role;
+    <span class="optional-badge">Optional</span> deepens expertise.
+  </div>
+</div>
+
+<!-- Department detail -->
+<div class="max-w-5xl mx-auto px-6 py-6" id="deptDetail"></div>
+
+<!-- Reset -->
+<div class="max-w-5xl mx-auto px-6 pb-8 text-center">
+  <button onclick="resetProgress()" style="font-size:11px;color:var(--c-tertiary);background:none;border:none;cursor:pointer;padding:4px 12px">Reset all progress</button>
+</div>
+
+<!-- Footer -->
+<div class="max-w-5xl mx-auto px-6 py-6 text-center border-t" style="border-color:var(--c-border);font-size:11px;color:var(--c-tertiary)">
+  SterileGMP Knowledge Hub · Sterile Manufacturing GMP Educational Resource
+</div>
+
+<script src="gmp-curriculum-data.js"></script>
+<script>
+/* ── State ── */
+const STORAGE_KEY = 'gmp-learning-progress';
+let reportsData = {};
+let activeDept = departments[0].id;
+
+function loadProgress() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch { return {}; }
+}
+function saveProgress(p) { localStorage.setItem(STORAGE_KEY, JSON.stringify(p)); }
+
+function toggleDoc(deptId, key) {
+  const p = loadProgress();
+  const id = `${deptId}::${key}`;
+  p[id] = !p[id];
+  if (!p[id]) delete p[id];
+  saveProgress(p);
+  render();
+}
+
+function resetProgress() {
+  if (confirm('Reset all reading progress? 確定要重置所有閱讀進度嗎？')) {
+    localStorage.removeItem(STORAGE_KEY);
+    render();
+  }
+}
+
+function selectDept(id) {
+  activeDept = id;
+  render();
+}
+
+/* ── Quiz results helpers ── */
+function loadQuizResults() {
+  try { return JSON.parse(localStorage.getItem('gmp-quiz-results')) || []; } catch { return []; }
+}
+function bestQuizScore(docKey) {
+  const results = loadQuizResults();
+  const attempts = results.filter(r => r.doc_key === docKey);
+  if (!attempts.length) return null;
+  const best = Math.max(...attempts.map(r => Math.round((r.score / r.total) * 100)));
+  return best;
+}
+
+/* ── Render ── */
+function render() {
+  const progress = loadProgress();
+
+  // Compute overall stats
+  let totalDocs = 0, completedDocs = 0;
+  departments.forEach(dept => {
+    dept.tiers.forEach(tier => {
+      tier.docs.forEach(d => {
+        totalDocs++;
+        if (progress[`${dept.id}::${d.key}`]) completedDocs++;
+      });
+    });
+  });
+  const pct = totalDocs > 0 ? Math.round(completedDocs / totalDocs * 100) : 0;
+
+  document.getElementById('overallPct').textContent = pct + '%';
+  document.getElementById('overallCount').textContent = `${completedDocs} / ${totalDocs}`;
+  document.getElementById('totalDocsLabel').textContent = `${Object.keys(reportsData).length} reference documents available`;
+  const circumference = 2 * Math.PI * 24;
+  document.getElementById('progressCircle').style.strokeDashoffset = circumference - (pct / 100) * circumference;
+
+  // Department overview cards
+  const overview = document.getElementById('deptOverview');
+  overview.innerHTML = departments.map(dept => {
+    let dDone = 0, dTotal = 0;
+    dept.tiers.forEach(t => { t.docs.forEach(d => { dTotal++; if (progress[`${dept.id}::${d.key}`]) dDone++; }); });
+    const dPct = dTotal > 0 ? Math.round(dDone / dTotal * 100) : 0;
+    const isActive = dept.id === activeDept;
+    return `
+    <div class="overview-card ${isActive ? 'active' : ''}" style="--dept-color:${dept.color}" onclick="selectDept('${dept.id}')">
+      <div style="font-size:24px">${dept.icon}</div>
+      <div style="font-size:11px;font-weight:600;color:${isActive ? dept.color : 'var(--c-primary)'};margin-top:4px;line-height:1.3">${dept.name}</div>
+      <div style="font-size:10px;color:var(--c-secondary);margin-top:2px">${dept.nameZh}</div>
+      <div style="margin-top:8px;background:#e5e5ea;border-radius:3px;height:4px;overflow:hidden">
+        <div class="progress-bar" style="width:${dPct}%;background:${dept.color}"></div>
+      </div>
+      <div class="mono" style="font-size:10px;color:var(--c-tertiary);margin-top:4px">${dDone}/${dTotal}</div>
+    </div>`;
+  }).join('');
+
+  // Department detail
+  const dept = departments.find(d => d.id === activeDept);
+  if (!dept) return;
+
+  const detail = document.getElementById('deptDetail');
+  let deptDone = 0, deptTotal = 0;
+  dept.tiers.forEach(t => { t.docs.forEach(d => { deptTotal++; if (progress[`${dept.id}::${d.key}`]) deptDone++; }); });
+  const deptPct = deptTotal > 0 ? Math.round(deptDone / deptTotal * 100) : 0;
+
+  detail.innerHTML = `
+  <div class="dept-card fade-up" style="--dept-color:${dept.color}">
+    <div style="height:4px;background:${dept.color}"></div>
+    <div style="padding:24px">
+      <!-- Dept header -->
+      <div class="flex items-center gap-4 flex-wrap">
+        <div style="font-size:36px">${dept.icon}</div>
+        <div class="flex-1">
+          <h2 style="font-size:22px;font-weight:700">${dept.name}</h2>
+          <p style="font-size:13px;color:var(--c-secondary)">${dept.nameZh}</p>
+        </div>
+        <div class="text-right">
+          <div class="mono" style="font-size:20px;font-weight:700;color:${dept.color}">${deptPct}%</div>
+          <div class="mono" style="font-size:11px;color:var(--c-secondary)">${deptDone}/${deptTotal} completed</div>
+        </div>
+      </div>
+      <p style="font-size:13px;color:var(--c-secondary);margin-top:12px;line-height:1.6">${dept.description}</p>
+      <div style="margin-top:12px;background:#e5e5ea;border-radius:3px;height:6px;overflow:hidden">
+        <div class="progress-bar" style="width:${deptPct}%;background:${dept.color}"></div>
+      </div>
+
+      <!-- Tiers -->
+      <div style="margin-top:24px;display:flex;flex-direction:column;gap:28px">
+        ${dept.tiers.map(tier => {
+          const tierDone = tier.docs.filter(d => progress[`${dept.id}::${d.key}`]).length;
+          const tierTotal = tier.docs.length;
+          const tierPct = tierTotal > 0 ? Math.round(tierDone / tierTotal * 100) : 0;
+          const tierRequired = tier.docs.filter(d => d.required);
+          const tierReqDone = tierRequired.filter(d => progress[`${dept.id}::${d.key}`]).length;
+          const allReqDone = tierRequired.length > 0 && tierReqDone === tierRequired.length;
+          // tier color: darker at higher level
+          const opacity = [1, 0.7, 0.45][tier.level - 1] || 0.5;
+
+          return `
+          <div>
+            <!-- Tier header -->
+            <div class="flex items-center gap-3 mb-3">
+              <div class="tier-badge" style="background:${dept.color};opacity:${opacity}">
+                ${tier.level}
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-2">
+                  <span style="font-size:15px;font-weight:700">${tier.label}</span>
+                  <span style="font-size:13px;color:var(--c-secondary)">${tier.labelZh}</span>
+                  ${allReqDone ? '<span style="font-size:10px;padding:2px 8px;border-radius:980px;background:#d1fae5;color:#065f46;font-weight:600">✓ Required complete</span>' : ''}
+                </div>
+              </div>
+              <span class="mono" style="font-size:11px;color:var(--c-secondary)">${tierDone}/${tierTotal}</span>
+            </div>
+
+            <!-- Tier docs -->
+            <div class="tier-section" style="--tier-color:${dept.color};display:flex;flex-direction:column;gap:8px">
+              ${tier.docs.map((doc, di) => {
+                const r = reportsData[doc.key];
+                const done = progress[`${dept.id}::${doc.key}`];
+                const title = r ? (r.title || doc.key) : doc.key;
+                const titleZh = r ? (r.titleZh || '') : '';
+                const src = r ? (r.source || '').split(' ')[0] : '';
+                const srcColor = sourceOrgs[src] ? sourceOrgs[src].color : '#6e6e73';
+                const folder = r ? r.folder : null;
+                const outFile = r ? r.output_filename : null;
+                const href = (folder && outFile) ? `${folder}/output/${outFile}` : '#';
+                const hasContent = r && r.section_map && r.section_map.length > 0;
+                const sections = r ? (r.section_map || []).length : 0;
+                const pages = r ? (r.pages || '') : '';
+
+                return `
+                <div class="doc-item ${done ? 'completed' : ''}">
+                  <div class="check-box ${done ? 'checked' : ''}" style="--dept-color:${dept.color}"
+                    onclick="toggleDoc('${dept.id}','${doc.key}')"></div>
+                  <div style="flex:1;min-width:0">
+                    <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+                      ${hasContent
+                        ? `<a href="${href}" target="_blank" class="doc-title" style="font-size:13px;font-weight:600;color:${done ? 'var(--c-tertiary)' : 'var(--c-primary)'};text-decoration:${done ? 'line-through' : 'none'};transition:color 0.15s"
+                            onmouseover="this.style.color='${dept.color}'" onmouseout="this.style.color='${done ? 'var(--c-tertiary)' : 'var(--c-primary)'}'">${title}</a>`
+                        : `<span style="font-size:13px;font-weight:600;color:${done ? 'var(--c-tertiary)' : 'var(--c-primary)'};text-decoration:${done ? 'line-through' : 'none'}">${title}</span>`
+                      }
+                      ${doc.required ? '<span class="required-badge">Required</span>' : '<span class="optional-badge">Optional</span>'}
+                      ${src ? `<span class="source-badge" style="background:${srcColor}15;color:${srcColor}">${src}</span>` : ''}
+                      ${(() => { const pct = bestQuizScore(doc.key); if (pct === null) return ''; const bg = pct >= 80 ? '#d1fae5' : pct >= 60 ? '#fef9c3' : '#fee2e2'; const fg = pct >= 80 ? '#065f46' : pct >= 60 ? '#854d0e' : '#991b1b'; return `<a href="quiz.html" class="quiz-badge" style="background:${bg};color:${fg}" title="Best quiz score">🎯 ${pct}%</a>`; })()}
+                    </div>
+                    ${titleZh ? `<div style="font-size:11px;color:var(--c-tertiary);margin-top:2px">${titleZh}</div>` : ''}
+                    <div style="font-size:11px;color:var(--c-secondary);margin-top:4px;line-height:1.5">${doc.why}</div>
+                    ${pages || sections ? `<div style="font-size:10px;color:var(--c-tertiary);margin-top:3px">${pages ? pages : ''}${pages && sections ? ' · ' : ''}${sections ? sections + ' sections' : ''}</div>` : ''}
+                  </div>
+                </div>`;
+              }).join('')}
+            </div>
+          </div>`;
+        }).join('')}
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ── Load reports.json and init ── */
+fetch('reports.json')
+  .then(r => r.json())
+  .then(data => {
+    reportsData = data.reports || {};
+    render();
+  })
+  .catch(err => {
+    console.error('Failed to load reports.json:', err);
+    render();
+  });
+</script>
+</body>
+</html>

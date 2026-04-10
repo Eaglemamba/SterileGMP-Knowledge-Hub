@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SterileGMP Quiz Tracker — 知識測驗追蹤</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { theme: { extend: { colors: {
+  'gmp': { 'dark': '#1e3a5f', 'mid': '#3182ce', 'light': '#ebf5ff' }
+}}}}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --c-primary: #1d1d1f; --c-secondary: #6e6e73; --c-tertiary: #aeaeb2;
+  --c-bg: #f5f5f7; --c-surface: #ffffff; --c-border: rgba(0,0,0,0.08);
+  --c-blue: #0071e3; --ease: cubic-bezier(0.25,0.46,0.45,0.94);
+  --c-green: #34c759; --c-yellow: #ff9f0a; --c-red: #ff3b30;
+}
+body { font-family: 'Noto Sans TC', -apple-system, sans-serif; background: var(--c-bg); color: var(--c-primary); -webkit-font-smoothing: antialiased; }
+.mono { font-family: 'JetBrains Mono', monospace; }
+
+.card { background: var(--c-surface); border-radius: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.07); padding: 20px; }
+.score-bar-wrap { height: 8px; background: #e5e5ea; border-radius: 4px; overflow: hidden; }
+.score-bar { height: 100%; border-radius: 4px; transition: width 0.6s ease; }
+
+.attempt-row { background: var(--c-bg); border-radius: 10px; padding: 12px 14px; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; }
+.attempt-row:hover { background: #ebebed; }
+
+.score-pill { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; padding: 4px 12px; border-radius: 980px; white-space: nowrap; }
+.score-pill.great { background: #d1fae5; color: #065f46; }
+.score-pill.good  { background: #fef3c7; color: #92400e; }
+.score-pill.poor  { background: #fee2e2; color: #991b1b; }
+
+.doc-group { background: var(--c-surface); border-radius: 14px; box-shadow: 0 1px 3px rgba(0,0,0,0.07); overflow: hidden; margin-bottom: 12px; }
+.doc-group-header { padding: 14px 18px; display: flex; align-items: center; gap: 12px; cursor: pointer; }
+.doc-group-header:hover { background: var(--c-bg); }
+.doc-group-body { padding: 0 18px 14px; display: none; }
+.doc-group-body.open { display: block; }
+
+.q-row { display: flex; align-items: center; gap: 8px; padding: 5px 0; font-size: 12px; border-bottom: 1px solid var(--c-border); }
+.q-row:last-child { border-bottom: none; }
+
+textarea { font-family: 'JetBrains Mono', monospace; font-size: 12px; resize: vertical; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+.fade-up { animation: fadeUp 0.25s var(--ease) forwards; }
+
+.tab-btn { padding: 7px 18px; border-radius: 10px; font-size: 13px; font-weight: 500; cursor: pointer; border: 1.5px solid #d2d2d7; background: var(--c-surface); color: var(--c-secondary); transition: all 0.15s; }
+.tab-btn.active { border-color: var(--c-blue); background: var(--c-blue); color: white; font-weight: 600; }
+</style>
+</head>
+<body class="min-h-screen">
+
+<!-- Header -->
+<div style="background:var(--c-surface);border-bottom:1px solid var(--c-border)" class="px-6 py-8">
+  <div class="max-w-4xl mx-auto text-center">
+    <h1 style="font-size:28px;font-weight:700;letter-spacing:-0.02em">SterileGMP Quiz Tracker</h1>
+    <p style="font-size:14px;color:var(--c-secondary);margin-top:6px">知識測驗追蹤 — Powered by <code style="font-size:12px;background:#f5f5f7;padding:1px 6px;border-radius:4px">/quiz</code> Claude Code skill</p>
+    <p style="font-size:12px;margin-top:8px">
+      <a href="index.html" style="color:var(--c-blue);text-decoration:none;font-weight:500">Dashboard</a>
+      <span style="color:var(--c-tertiary);margin:0 6px">·</span>
+      <a href="learning-path.html" style="color:var(--c-blue);text-decoration:none;font-weight:500">Learning Path</a>
+      <span style="color:var(--c-tertiary);margin:0 6px">·</span>
+      <a href="mindmap.html" style="color:var(--c-blue);text-decoration:none;font-weight:500">Mind Map</a>
+    </p>
+  </div>
+</div>
+
+<!-- Stats row -->
+<div class="max-w-4xl mx-auto px-6 mt-6">
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3" id="statsRow"></div>
+</div>
+
+<!-- Tab bar -->
+<div class="max-w-4xl mx-auto px-6 mt-5 flex gap-2 flex-wrap">
+  <button class="tab-btn active" onclick="switchTab('history')" id="tab-history">📊 Quiz History</button>
+  <button class="tab-btn" onclick="switchTab('record')" id="tab-record">➕ Record Result</button>
+  <button class="tab-btn" onclick="switchTab('how')" id="tab-how">❓ How to Use</button>
+</div>
+
+<!-- Tabs -->
+<div class="max-w-4xl mx-auto px-6 mt-4 pb-12">
+
+  <!-- History tab -->
+  <div id="panel-history">
+    <div id="emptyState" style="display:none" class="card text-center py-12">
+      <div style="font-size:48px;margin-bottom:12px">🎯</div>
+      <div style="font-size:18px;font-weight:600;margin-bottom:8px">No quizzes recorded yet</div>
+      <div style="font-size:13px;color:var(--c-secondary);max-width:360px;margin:0 auto;line-height:1.6">
+        Run <code style="background:#f5f5f7;padding:1px 6px;border-radius:4px">/quiz [document-key]</code> in Claude Code,
+        then use the <strong>Record Result</strong> tab to save your score here.
+      </div>
+      <div style="margin-top:20px">
+        <button class="tab-btn" onclick="switchTab('how')">How to Use</button>
+      </div>
+    </div>
+    <div id="historyList"></div>
+  </div>
+
+  <!-- Record tab -->
+  <div id="panel-record" style="display:none">
+    <div class="card">
+      <h2 style="font-size:17px;font-weight:700;margin-bottom:4px">Record a Quiz Result</h2>
+      <p style="font-size:13px;color:var(--c-secondary);margin-bottom:16px">
+        After running <code style="background:#f5f5f7;padding:1px 6px;border-radius:4px">/quiz</code> in Claude Code,
+        copy the JSON output block and paste it below.
+      </p>
+
+      <label style="font-size:12px;font-weight:600;color:var(--c-secondary);display:block;margin-bottom:6px">JSON RESULT FROM CLAUDE</label>
+      <textarea id="jsonInput" rows="12" class="w-full border border-gray-200 rounded-xl p-3 text-xs outline-none focus:border-blue-400"
+        placeholder='{
+  "doc_key": "PICS-Annex15",
+  "title": "PIC/S Annex 15: Qualification and Validation",
+  "date": "2026-04-10",
+  "score": 95,
+  "total": 100,
+  "questions": [
+    { "q": 1, "type": "open", "topic": "VHP pre-validation", "score": 7, "max": 10 },
+    ...
+  ]
+}'></textarea>
+
+      <div id="jsonError" style="display:none;color:#dc2626;font-size:12px;margin-top:8px;padding:8px 12px;background:#fee2e2;border-radius:8px"></div>
+      <div id="jsonSuccess" style="display:none;color:#065f46;font-size:12px;margin-top:8px;padding:8px 12px;background:#d1fae5;border-radius:8px"></div>
+
+      <div class="flex gap-3 mt-4">
+        <button onclick="saveResult()" style="background:var(--c-blue);color:white;border:none;padding:10px 22px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer">
+          Save Result
+        </button>
+        <button onclick="document.getElementById('jsonInput').value=''" style="background:var(--c-bg);color:var(--c-secondary);border:1.5px solid #d2d2d7;padding:10px 18px;border-radius:10px;font-size:14px;cursor:pointer">
+          Clear
+        </button>
+      </div>
+    </div>
+
+    <!-- Quick command reference -->
+    <div class="card mt-4">
+      <h3 style="font-size:14px;font-weight:700;margin-bottom:10px">Quick Reference — Document Keys</h3>
+      <div id="docKeyList" style="font-size:12px;color:var(--c-secondary);display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:4px 16px"></div>
+    </div>
+  </div>
+
+  <!-- How-to tab -->
+  <div id="panel-how" style="display:none">
+    <div class="card">
+      <h2 style="font-size:17px;font-weight:700;margin-bottom:16px">How to Use the Quiz System</h2>
+
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div style="width:32px;height:32px;background:#1e3a5f;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px;flex-shrink:0">1</div>
+          <div>
+            <div style="font-size:14px;font-weight:600;margin-bottom:4px">Open Claude Code and run /quiz</div>
+            <code style="font-size:12px;background:#f5f5f7;padding:6px 12px;border-radius:8px;display:block;margin-top:4px">/quiz PICS-Annex15</code>
+            <code style="font-size:12px;background:#f5f5f7;padding:6px 12px;border-radius:8px;display:block;margin-top:4px">/quiz topics/APS-filling-isolator</code>
+            <p style="font-size:12px;color:var(--c-secondary);margin-top:6px;line-height:1.6">Claude will read the knowledge MD for that document and generate 10 questions. Questions are asked one at a time — answer each before the next appears.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div style="width:32px;height:32px;background:#1e3a5f;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px;flex-shrink:0">2</div>
+          <div>
+            <div style="font-size:14px;font-weight:600;margin-bottom:4px">Complete the exam</div>
+            <p style="font-size:12px;color:var(--c-secondary);line-height:1.6">For each question, Claude provides immediate feedback and a score. After question 10, a summary table and <strong>JSON result block</strong> are shown.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div style="width:32px;height:32px;background:#1e3a5f;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px;flex-shrink:0">3</div>
+          <div>
+            <div style="font-size:14px;font-weight:600;margin-bottom:4px">Copy the JSON and record here</div>
+            <p style="font-size:12px;color:var(--c-secondary);line-height:1.6">Copy the JSON block from Claude's output, click the <strong>Record Result</strong> tab, paste, and click Save. Your score is saved to browser localStorage — no server required.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div style="width:32px;height:32px;background:#34c759;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px;flex-shrink:0">✓</div>
+          <div>
+            <div style="font-size:14px;font-weight:600;margin-bottom:4px">Track progress in Learning Path</div>
+            <p style="font-size:12px;color:var(--c-secondary);line-height:1.6">After saving, quiz scores appear as <span style="background:#d1fae5;color:#065f46;padding:1px 6px;border-radius:4px;font-size:11px;font-weight:600">🎯 95%</span> badges in the Learning Path page next to each document.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:20px;padding:14px;background:#f0f7ff;border-radius:10px;border:1px solid #bee3f8">
+        <div style="font-size:12px;font-weight:600;color:#1e3a5f;margin-bottom:6px">Score interpretation</div>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;font-size:12px">
+          <span><span class="score-pill great">≥ 80%</span> Strong understanding</span>
+          <span><span class="score-pill good">60–79%</span> Review recommended</span>
+          <span><span class="score-pill poor">&lt; 60%</span> Re-read required</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<div class="max-w-4xl mx-auto px-6 py-6 text-center border-t" style="border-color:var(--c-border);font-size:11px;color:var(--c-tertiary)">
+  SterileGMP Knowledge Hub · Quiz data stored locally in your browser
+  <span style="margin:0 6px">·</span>
+  <button onclick="clearAll()" style="font-size:11px;color:var(--c-tertiary);background:none;border:none;cursor:pointer">Clear all quiz history</button>
+</div>
+
+<script>
+/* ═══════════════════════════════
+   Storage
+═══════════════════════════════ */
+const QUIZ_KEY = 'gmp-quiz-results';
+
+function loadResults() {
+  try { return JSON.parse(localStorage.getItem(QUIZ_KEY)) || []; } catch { return []; }
+}
+function saveResults(arr) { localStorage.setItem(QUIZ_KEY, JSON.stringify(arr)); }
+
+/* ═══════════════════════════════
+   Helpers
+═══════════════════════════════ */
+function scoreClass(pct) {
+  if (pct >= 80) return 'great';
+  if (pct >= 60) return 'good';
+  return 'poor';
+}
+
+function scoreColor(pct) {
+  if (pct >= 80) return '#34c759';
+  if (pct >= 60) return '#ff9f0a';
+  return '#ff3b30';
+}
+
+function formatDate(str) {
+  if (!str) return '';
+  try {
+    const d = new Date(str);
+    return d.toLocaleDateString('zh-TW', { year: 'numeric', month: 'short', day: 'numeric' });
+  } catch { return str; }
+}
+
+/* ═══════════════════════════════
+   Tabs
+═══════════════════════════════ */
+function switchTab(name) {
+  ['history','record','how'].forEach(t => {
+    document.getElementById('panel-' + t).style.display = t === name ? 'block' : 'none';
+    const btn = document.getElementById('tab-' + t);
+    if (btn) btn.classList.toggle('active', t === name);
+  });
+}
+
+/* ═══════════════════════════════
+   Save result
+═══════════════════════════════ */
+function saveResult() {
+  const raw = document.getElementById('jsonInput').value.trim();
+  const errEl = document.getElementById('jsonError');
+  const okEl  = document.getElementById('jsonSuccess');
+  errEl.style.display = 'none';
+  okEl.style.display  = 'none';
+
+  // Strip markdown code fences if present
+  const clean = raw.replace(/^```[a-z]*\n?/, '').replace(/\n?```$/, '').trim();
+
+  let obj;
+  try { obj = JSON.parse(clean); }
+  catch (e) {
+    errEl.textContent = 'Invalid JSON: ' + e.message;
+    errEl.style.display = 'block';
+    return;
+  }
+
+  if (!obj.doc_key || !obj.score === undefined || !obj.total) {
+    errEl.textContent = 'Missing required fields: doc_key, score, total';
+    errEl.style.display = 'block';
+    return;
+  }
+
+  // Add timestamp if missing
+  if (!obj.date) obj.date = new Date().toISOString().slice(0, 10);
+  if (!obj.recorded_at) obj.recorded_at = new Date().toISOString();
+
+  const results = loadResults();
+  results.unshift(obj);
+  saveResults(results);
+
+  document.getElementById('jsonInput').value = '';
+  okEl.textContent = `✓ Saved: ${obj.title || obj.doc_key} — ${obj.score}/${obj.total} (${Math.round(obj.score/obj.total*100)}%)`;
+  okEl.style.display = 'block';
+
+  render();
+  setTimeout(() => switchTab('history'), 1200);
+}
+
+/* ═══════════════════════════════
+   Clear
+═══════════════════════════════ */
+function clearAll() {
+  if (confirm('Clear all quiz history? 確定要清除所有測驗記錄嗎？')) {
+    localStorage.removeItem(QUIZ_KEY);
+    render();
+  }
+}
+
+/* ═══════════════════════════════
+   Render
+═══════════════════════════════ */
+function render() {
+  const results = loadResults();
+
+  // Stats
+  const statsEl = document.getElementById('statsRow');
+  if (results.length === 0) {
+    statsEl.innerHTML = '';
+  } else {
+    const docKeys = [...new Set(results.map(r => r.doc_key))];
+    const avgScore = Math.round(results.reduce((s, r) => s + Math.round(r.score / r.total * 100), 0) / results.length);
+    const best = results.reduce((b, r) => Math.round(r.score/r.total*100) > Math.round(b.score/b.total*100) ? r : b, results[0]);
+    const recent = results[0];
+
+    const statCards = [
+      { label: 'Total Attempts', value: results.length, mono: true },
+      { label: 'Docs Quizzed', value: docKeys.length, mono: true },
+      { label: 'Avg Score', value: avgScore + '%', mono: true, color: scoreColor(avgScore) },
+      { label: 'Last Quiz', value: formatDate(recent.date), mono: false }
+    ];
+
+    statsEl.innerHTML = statCards.map(s => `
+      <div style="background:var(--c-surface);border-radius:12px;padding:14px;box-shadow:0 1px 3px rgba(0,0,0,0.07);text-align:center">
+        <div style="font-size:11px;color:var(--c-secondary);margin-bottom:4px">${s.label}</div>
+        <div class="${s.mono ? 'mono' : ''}" style="font-size:20px;font-weight:700;color:${s.color || 'var(--c-primary)'}">${s.value}</div>
+      </div>`).join('');
+  }
+
+  // History
+  const histEl = document.getElementById('historyList');
+  const emptyEl = document.getElementById('emptyState');
+
+  if (results.length === 0) {
+    emptyEl.style.display = 'block';
+    histEl.innerHTML = '';
+    return;
+  }
+  emptyEl.style.display = 'none';
+
+  // Group by doc_key
+  const grouped = {};
+  results.forEach(r => {
+    if (!grouped[r.doc_key]) grouped[r.doc_key] = { title: r.title, attempts: [] };
+    grouped[r.doc_key].attempts.push(r);
+  });
+
+  histEl.innerHTML = Object.entries(grouped).map(([key, g]) => {
+    const best = Math.max(...g.attempts.map(a => Math.round(a.score / a.total * 100)));
+    const latest = g.attempts[0];
+    const latestPct = Math.round(latest.score / latest.total * 100);
+
+    const attemptsHtml = g.attempts.map((a, i) => {
+      const pct = Math.round(a.score / a.total * 100);
+      const qRows = (a.questions || []).map(q =>
+        `<div class="q-row">
+          <span style="width:24px;color:var(--c-tertiary);flex-shrink:0">Q${q.q}</span>
+          <span style="flex:1;color:var(--c-secondary)">${q.topic || '—'}</span>
+          <span class="mono" style="font-size:11px;color:${q.score >= q.max ? '#34c759' : q.score >= q.max*0.6 ? '#ff9f0a' : '#ff3b30'}">${q.score}/${q.max}</span>
+        </div>`
+      ).join('');
+
+      return `
+      <div class="attempt-row">
+        <div style="flex:1">
+          <div style="font-size:12px;font-weight:600">Attempt ${g.attempts.length - i}
+            <span style="font-weight:400;color:var(--c-secondary);margin-left:6px">${formatDate(a.date)}</span>
+          </div>
+          ${qRows ? `<div style="margin-top:8px">${qRows}</div>` : ''}
+        </div>
+        <div style="text-align:right;flex-shrink:0">
+          <span class="score-pill ${scoreClass(pct)}">${pct}%</span>
+          <div class="mono" style="font-size:10px;color:var(--c-tertiary);margin-top:3px">${a.score}/${a.total}</div>
+        </div>
+      </div>`;
+    }).join('');
+
+    return `
+    <div class="doc-group fade-up">
+      <div class="doc-group-header" onclick="toggleGroup('${key.replace(/[^a-z0-9]/gi,'_')}')">
+        <div style="flex:1">
+          <div style="font-size:14px;font-weight:700">${g.title || key}</div>
+          <div style="font-size:11px;color:var(--c-secondary);margin-top:2px">${key} · ${g.attempts.length} attempt${g.attempts.length > 1 ? 's' : ''} · Best: ${best}%</div>
+        </div>
+        <div class="flex items-center gap-3">
+          <div>
+            <div style="width:80px" class="score-bar-wrap">
+              <div class="score-bar" style="width:${latestPct}%;background:${scoreColor(latestPct)}"></div>
+            </div>
+          </div>
+          <span class="score-pill ${scoreClass(latestPct)}">${latestPct}%</span>
+          <span style="color:var(--c-tertiary);font-size:16px" id="chevron-${key.replace(/[^a-z0-9]/gi,'_')}">›</span>
+        </div>
+      </div>
+      <div class="doc-group-body" id="body-${key.replace(/[^a-z0-9]/gi,'_')}">
+        ${attemptsHtml}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function toggleGroup(id) {
+  const body = document.getElementById('body-' + id);
+  const chev = document.getElementById('chevron-' + id);
+  if (body) {
+    const open = body.classList.toggle('open');
+    if (chev) chev.textContent = open ? '⌄' : '›';
+  }
+}
+
+/* ═══════════════════════════════
+   Load doc keys from reports.json
+═══════════════════════════════ */
+fetch('reports.json')
+  .then(r => r.json())
+  .then(data => {
+    const docs = data.reports || {};
+    const el = document.getElementById('docKeyList');
+    if (el) {
+      el.innerHTML = Object.entries(docs)
+        .filter(([k, v]) => v.section_map && v.section_map.length > 0)
+        .sort(([a],[b]) => a.localeCompare(b))
+        .map(([k, v]) => `<div><code style="background:#f5f5f7;padding:1px 5px;border-radius:4px">${k}</code></div>`)
+        .join('');
+    }
+  })
+  .catch(() => {});
+
+/* Init */
+render();
+</script>
+</body>
+</html>

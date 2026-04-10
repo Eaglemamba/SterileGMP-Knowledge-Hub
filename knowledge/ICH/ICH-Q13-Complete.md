@@ -1,0 +1,1802 @@
+# ICH Harmonised Guideline Q13 (2022): Continuous Manufacturing of Drug Substances and Drug Products
+
+INTERNATIONAL COUNCIL FOR HARMONISATION OF TECHNICAL
+REQUIREMENTS FOR PHARMACEUTICALS FOR HUMAN USE
+
+ICH HARMONISED GUIDELINE
+
+CONTINUOUS MANUFACTURING OF
+DRUG SUBSTANCES AND DRUG PRODUCTS
+Q13
+
+Final version
+Adopted on 16 November 2022
+
+This Guideline has been developed by the appropriate ICH Expert Working Group and has been
+subject to consultation by the regulatory parties, in accordance with the ICH Process. At Step 4
+of the Process the final draft is recommended for adoption to the regulatory bodies of ICH regions
+
+Q13
+Document History
+
+Code
+History
+Date
+Q13
+Endorsement by the Members of the ICH
+Assembly under Step 2 and release for public
+consultation.
+27 July 2021
+Q13
+Adoption by the Regulatory Members of the ICH
+Assembly under Step 4.
+16 November 2022
+
+Legal notice: This document is protected by copyright and may, with the exception of the ICH logo, be
+used, reproduced, incorporated into other works, adapted, modified, translated or distributed under a
+public license provided that ICH's copyright in the document is acknowledged at all times.  In case of any
+adaption, modification or translation of the document, reasonable steps must be taken to clearly label,
+demarcate or otherwise identify that changes were made to or based on the original document. Any
+impression that the adaption, modification or translation of the original document is endorsed or sponsored
+by the ICH must be avoided.
+The document is provided "as is" without warranty of any kind.  In no event shall the ICH or the authors of
+the original document be liable for any claim, damages or other liability arising from the use of the
+document.
+The above-mentioned permissions do not apply to content supplied by third parties. Therefore, for
+documents where the copyright vests in a third party, permission for reproduction must be obtained from
+this copyright holder.
+i
+
+ICH HARMONISED GUIDELINE
+CONTINUOUS MANUFACTURING OF DRUG SUBSTANCES AND
+DRUG PRODUCTS
+Q13
+ICH Consensus Guideline
+
+TABLE OF CONTENTS
+
+PART I: CONTINUOUS MANUFACTURING OF DRUG SUBSTANCES AND DRUG
+PRODUCTS................................................................................................................................... 1
+1.
+INTRODUCTION ................................................................................................................. 1
+1.1. Objective .................................................................................................................................. 1
+1.2. Scope ........................................................................................................................................ 1
+2.
+CM CONCEPTS .................................................................................................................... 1
+2.1. Different Modes of CM ........................................................................................................... 1
+2.2. Batch definition........................................................................................................................ 2
+3.
+SCIENTIFIC APPROACHES ............................................................................................. 2
+3.1. Control Strategy ....................................................................................................................... 2
+3.2. Changes in Production Output ................................................................................................. 6
+3.3. Continuous Process Verification ............................................................................................. 7
+4.
+REGULATORY CONSIDERATIONS ............................................................................... 7
+4.1. Description of Manufacturing Process and Process Controls .................................................. 8
+4.2. Control Strategy ....................................................................................................................... 8
+4.3. Batch Description and Batch Size ......................................................................................... 10
+4.4. Process Models ...................................................................................................................... 10
+4.5. Drug Substance and Drug Product Stability .......................................................................... 10
+4.6. Conversion of a Batch Process to CM ................................................................................... 11
+4.7. Process Validation ................................................................................................................. 11
+4.8. Pharmaceutical Quality System ............................................................................................. 12
+4.9. Lifecycle Management .......................................................................................................... 12
+4.10. Submission of CM-Specific Information in the CTD .......................................................... 12
+ii
+
+5.
+GLOSSARY ......................................................................................................................... 15
+6.
+REFERENCES .................................................................................................................... 16
+PART II: ANNEXES .................................................................................................................. 18
+ANNEX I: CONTINUOUS MANUFACTURING OF DRUG SUBSTANCES (CHEMICAL
+ENTITIES) .................................................................................................................................. 18
+1.
+INTRODUCTION AND EXAMPLE SYSTEM OVERVIEW ....................................... 18
+2.
+CONTROL STRATEGY AND OTHER TECHNICAL CONSIDERATIONS ............ 19
+2.1. Equipment Design and Integration ........................................................................................ 19
+2.2. Process Control and Monitoring ............................................................................................ 19
+2.3. Consideration of Other Controls ............................................................................................ 21
+2.4. Process Validation ................................................................................................................. 21
+3.
+REGULATORY CONSIDERATIONS ............................................................................. 22
+ANNEX II: CONTINUOUS MANUFACTURING OF DRUG PRODUCTS (CHEMICAL
+ENTITIES) .................................................................................................................................. 23
+1.
+INTRODUCTION AND EXAMPLE SYSTEM OVERVIEW ....................................... 23
+2.
+CONTROL STRATEGY AND OTHER TECHNICAL CONSIDERATIONS ............ 23
+2.1. Material Characterisation and Control ................................................................................... 23
+2.2. Equipment Design and Integration ........................................................................................ 24
+2.3. Process Controls and Monitoring .......................................................................................... 25
+2.4. Process Validation ................................................................................................................. 25
+3.
+REGULATORY CONSIDERATIONS ............................................................................. 26
+ANNEX
+III:
+CONTINUOUS
+MANUFACTURING
+OF
+DRUG
+SUBSTANCES
+(THERAPEUTIC PROTEINS) ................................................................................................. 27
+1.
+INTRODUCTION AND EXAMPLE SYSTEM OVERVIEW ....................................... 27
+2.
+CONTROL STRATEGY .................................................................................................... 28
+2.1. Adventitious Agent Control ................................................................................................... 28
+2.2. Equipment Design and System Integration ........................................................................... 28
+2.3. Process Monitoring and Real-Time Release Testing ............................................................. 29
+3.
+PROCESS VALIDATION .................................................................................................. 29
+3.1. Approaches to Process Validation ......................................................................................... 29
+3.2. Run Time Considerations ...................................................................................................... 30
+3.3. Viral Clearance Validation .................................................................................................... 30
+iii
+
+ANNEX
+IV:
+INTEGRATED
+DRUG
+SUBSTANCE
+AND
+DRUG
+PRODUCT
+CONTINUOUS MANUFACTURING ...................................................................................... 31
+1.
+INTRODUCTION ............................................................................................................... 31
+2.
+INTEGRATED SMALL MOLECULE DRUG SUBSTANCE/DRUG PRODUCT
+PROCESSES ............................................................................................................................... 31
+2.1. Characteristics of Drug Substance and Drug Product Process Steps..................................... 31
+2.2. Example of an Integrated Process .......................................................................................... 31
+2.3. Process Design, Monitoring and Control ............................................................................... 33
+2.4. Start-up and Shutdown........................................................................................................... 33
+2.5. RTD Characterisation for System Dynamics and Material Traceability ............................... 33
+3.
+SPECIFICATION AND BATCH DATA .......................................................................... 33
+3.1. Drug Substance Specification ................................................................................................ 33
+3.2. Drug Product Specification .................................................................................................... 34
+3.3. Example of a Drug Substance and Drug Product Specification ............................................ 34
+3.4. Batch Data.............................................................................................................................. 35
+4.
+STABILITY REQUIREMENTS........................................................................................ 35
+4.1. Drug Substance Stability ....................................................................................................... 35
+4.2. Drug Product Stability ........................................................................................................... 36
+5.
+LOCATION OF DRUG SUBSTANCE AND DRUG PRODUCT INFORMATION IN
+THE CTD ..................................................................................................................................... 36
+ANNEX V: PERSPECTIVES ON MANAGING DISTURBANCES .................................... 37
+1.
+INTRODUCTION ............................................................................................................... 37
+2.
+BACKGROUND .................................................................................................................. 37
+3.
+MANAGEMENT OF DISTURBANCES .......................................................................... 38
+3.1. Disturbance Example 1 .......................................................................................................... 38
+3.2. Disturbance Example 2 .......................................................................................................... 39
+3.3. Disturbance Example 3 .......................................................................................................... 40
+ICH Q13 Guideline
+
+PART I: CONTINUOUS MANUFACTURING OF DRUG SUBSTANCES AND DRUG
+PRODUCTS
+
+1. INTRODUCTION
+1.1. Objective
+This guideline describes scientific and regulatory considerations for the development,
+implementation, operation, and lifecycle management of continuous manufacturing (CM).
+Building on existing ICH Quality guidelines, this guideline provides clarification on CM concepts
+and describes scientific approaches and regulatory considerations specific to CM of drug
+substances and drug products.
+1.2. Scope
+This guideline applies to CM of drug substances and drug products for chemical entities and
+therapeutic proteins. It is applicable to CM for new products (e.g., new drugs, generic drugs,
+biosimilars) and the conversion of batch manufacturing to CM for existing products. The principles
+described in this guideline may also apply to other biological/biotechnological entities.
+
+CM involves the continuous feeding of input materials into, the transformation of in-process
+materials within, and the concomitant removal of output materials from a manufacturing process.
+While this description may apply to an individual unit operation (e.g., process chromatography,
+tableting, perfusion cell culture), this guideline focuses on the integrated aspects of a CM system
+in which two or more unit operations are directly connected. In this context, any changes made in
+a unit operation of a CM system may have impact on downstream and upstream unit operations
+(e.g., back pressure resulting in forward mixing) and output material quality.
+
+Fundamental aspects of CM that are generally not specific to technology, dosage form, or molecule
+type are described within the main body of this guideline. Annexes are provided to augment the
+main guideline by providing illustrative examples and considerations specific to certain modalities
+(e.g., chemical entities, therapeutic proteins), technologies, and production methods (e.g.,
+integration of drug substance and drug product manufacturing). The examples and approaches
+described in these annexes are illustrative, and alternative approaches can be used. Topics that are
+broadly applicable to both CM and batch manufacturing are not in the scope of this guideline, and
+other existing ICH guidelines should be used as appropriate.
+
+2. CM CONCEPTS
+2.1. Different Modes of CM
+CM can be applied to some or all unit operations in a manufacturing process. Examples of CM
+modes include:
+
+• A manufacturing approach in which some unit operations operate in a batch mode while
+others are integrated and operate in a continuous mode
+
+ICH Q13 Guideline
+
+• A manufacturing approach in which all unit operations of a drug substance or drug product
+manufacturing process are integrated and operate in a continuous mode
+
+• A manufacturing approach in which drug substance and drug product unit operations are
+integrated across the boundary between drug substance and drug product to form a single
+CM process (i.e., the drug substance is continuously formed and processed into the drug
+product through integrated unit operations)
+
+A manufacturing approach may incorporate surge lines or tanks to maintain a constant flow of
+material inputs and outputs in any mode of CM described above.
+2.2. Batch definition
+The ICH Q7 definition of a batch is applicable to all modes of CM, for both drug substances and
+drug products. Based on this definition, the size of a batch produced by CM can be defined in
+terms of one of the following:
+
+• Quantity of output material
+• Quantity of input material
+• Run time at a defined mass flow rate
+
+Other approaches to define batch size are possible, if scientifically justified based on the
+characteristics of the CM process and Good Manufacturing Practice.
+
+A batch size can also be defined as a range. For example, a batch size range can be established
+by defining a minimum and maximum run time.
+
+3. SCIENTIFIC APPROACHES
+3.1. Control Strategy
+The development of a control strategy for CM is enabled by a holistic approach, considering
+aspects specific to CM (discussed below), principles outlined in ICH Q7, Q8, Q10 and Q11, and
+quality risk management described in ICH Q9.
+3.1.1.  State of Control
+A state of control (ICH Q10) is a condition that provides assurance of continued process
+performance and product quality. The condition may vary, depending on the mode of CM and the
+specific process steps. For example, a state of control can be demonstrated for CM processes when
+a set of parameters (e.g., process parameters, quality attributes) are changing within specified
+ranges, but the processes are not necessarily in a steady state. Elements of the control strategy
+monitor the state of control and, when necessary, take appropriate actions to maintain control of
+the process. It is important to have mechanisms in place to evaluate the consistency of unit
+operations and the system, and to identify when parameters drift or trend within the specified
+range. In addition, the root cause of drift or trend, such as variation of inputs, equipment fatigue,
+or aging of materials, should be identified. For example, in a therapeutic protein process, a change
+in the elution profile may be due to resin aging.
+ICH Q13 Guideline
+
+3.1.2.  Process Dynamics
+Knowledge of process dynamics is important to maintain a state of control in CM. Specifically,
+understanding the impact of transient events helps to identify risks to material quality and to
+develop an appropriate control strategy (see Section 3.1.5 for process monitoring and control
+considerations). Transient events that occur during CM operation may be planned (e.g., process
+start-up, shutdown and pause) or unplanned (e.g., disturbances) and can be described through time,
+process parameter and quality attribute values.
+
+Process dynamics should be characterised to understand how output material quality is impacted
+by transient events. This characterisation could be done by determining properties such as
+residence time distribution (RTD). RTD characterises the time available for material transport and
+transformation, and is specific to the process, composition/formulation, material properties,
+equipment design and configuration, etc. Additionally, understanding RTD and process dynamics
+enables the tracking of material and supports the development of sampling and diversion strategies,
+where applicable. Furthermore, such understanding is of importance from a process performance
+perspective. For example, changes in process dynamics or RTD may impact process
+characteristics, such as conversion/yield and impurity formation in the manufacture of drug
+substances.
+
+Process dynamics should be characterised over the planned operating ranges and anticipated input
+material variability using scientifically justified approaches. Appropriate methodologies (e.g.,
+RTD studies, in silico modeling with experimental confirmation) should be used to understand the
+impact of process dynamics and its variation on material transport and transformation. These
+methodologies should not interfere with the process dynamics, and the characterisation should be
+relevant to the commercial process. For example, when conducting RTD studies, the tracer used
+to replace a constituent of the solid or liquid stream should have highly similar flow properties as
+those of the constituent replaced, be inert to the other components of the process, and not alter how
+processed materials interact with equipment surfaces. Step testing by making changes to the
+quantitative composition of the process stream (e.g., increments of a constituent) is another useful
+technique to determine the RTD and avoid the addition of an external tracer to the process. Other
+approaches can be used; the approach taken should be justified.
+3.1.3.  Material Characterisation and Control
+Material attributes can impact various aspects of CM operation and performance, such as material
+feeding, process dynamics, and output material quality. Understanding the impact of material
+attributes and their variability on process performance and product quality is important for the
+development of the control strategy. Input materials may require evaluation and control of
+attributes beyond those typically considered for a material specification used in batch
+manufacturing. For example:
+
+• In a solid dosage form process, particle size, cohesiveness, adhesiveness, hygroscopicity,
+static charge, or specific surface area of drug substances and excipients may impact the
+feeding of powders and material flow through the system.
+
+• In a chemically synthesised drug substance process, viscosity, concentration, or the
+multiphase nature of the feed may impact flow properties or conversion.
+ICH Q13 Guideline
+
+• In a therapeutic protein (e.g., monoclonal antibody) process, lot-to-lot variability of cell
+culture media or feed components may impact cell culture performance, process
+performance, or process consistency.
+3.1.4. Equipment Design and System Integration
+The design of equipment and their integration to form a CM system affect process dynamics,
+material transport and transformation, output material quality, etc. When developing a CM process
+and its control strategy, it is important to consider the characteristics of the integrated systems in
+addition to the individual equipment that can affect process performance. These include the
+system’s ability to maintain an integrated flow, manage potential disruption to CM operations, and
+complete the intended transformation of the material stream within the respective planned
+operational ranges of the equipment. In addition, transfer steps should also be evaluated, including
+RTD, for the purposes of integration.  Examples of design considerations are given below:
+
+• Design and configuration of equipment (e.g., compatibility and integrity of equipment
+components for the maximum run time or cycles; geometry of constituent parts to promote
+the desired transformation; spatial arrangement of equipment to facilitate material flow,
+maintenance, and avoid build-up or fouling)
+
+• Physical connections and digital control interfaces between equipment (e.g., use of a surge
+tank between two unit operations to mitigate temporary differences in mass flow rates)
+
+• Locations of material diversion and sampling points (e.g., selection of locations for a
+diverter valve and sampling probe without disturbing material flow and transformation)
+
+Furthermore, appropriate design or selection of equipment for a CM process may enable process
+simplification (e.g., through a reduction in the number of unit operations), facilitate process
+monitoring and material diversion, and improve process capability and performance. For example,
+in a drug substance process, reactor design can effectively reduce formation and build-up of
+impurities, resulting in fewer purification steps. Similarly, for therapeutic protein drug substance
+manufacturing, system design can enable process intensification and reduce cycle times.
+3.1.5.  Process Monitoring and Control
+Process monitoring and control support the maintenance of a state of control during production
+and allow real-time evaluation of system performance. Common approaches to process monitoring
+and control—including establishment of target setpoints and control limits, design space, and
+specifications for attributes being measured—are applicable to CM.
+
+Process analytical technology (PAT) (ICH Q8) is well-suited for CM. Example applications
+include in-line UV flow cells to monitor therapeutic protein concentration, in-line near-infrared
+spectroscopy to assess blend uniformity or water content, and on-line HPLC to monitor conversion
+of a chemical reaction. The use of PAT enables disturbances to be detected in real time. Therefore,
+CM is readily amenable to automated process control strategies based on, for example, active
+process control such as feedforward or feedback process control. Principles of control strategy as
+described in ICH Q8 and ICH Q11 are applicable to CM processes.
+
+ICH Q13 Guideline
+
+An appropriate sampling strategy is an important aspect of process monitoring and control. The
+variables monitored, monitoring method and frequency, amount of material sampled (either
+physical sampling or data sampling using in-line measurement), sampling location, statistical
+method, and acceptance criteria depend on the intended use of the data and process dynamics. The
+intended use of data may include detection of rapid changes such as disturbances, assessment of
+quality of a batch when real-time release testing (RTRT) (ICH Q8) is used, or analysis of process
+trends or drifts. Further important considerations are the avoidance of measurement interference
+with the process as well as the impact of physical sampling on the material stream potentially
+affecting state of control. Assessment of risks associated with data gaps (e.g., PAT recalibration,
+refill of a feeding system, failure of system components) should inform whether contingency
+methods are warranted.
+3.1.6. Material Traceability and Diversion
+CM processes may include periods when non-conforming materials are produced, for example,
+during system start-up and shutdown or when disturbances are not appropriately managed and
+mitigated. The ability to detect and divert potential non-conforming material from the product
+stream during production is an important characteristic of CM and should be considered when
+developing the control strategy.
+
+Understanding the RTD and process dynamics of individual unit operations and integrated systems
+over planned operating conditions enables tracking of the distribution of materials over time. This
+allows input materials to be traced throughout production. Material traceability, understanding
+how disturbances affect material quality, and the use of appropriate measurements (e.g., PAT)
+allow for real-time determination of when to start and stop material collection or diversion. The
+amount of material diverted can be influenced by several factors, such as process dynamics, RTD,
+control strategy, severity (e.g., magnitude, duration, frequency) of the disturbances, and location
+of the sampling and diversion points. Additionally, it is important that the diversion strategy
+accounts for the impact on material flow and process dynamics when material is diverted. Criteria
+should be established to trigger the start and end of the diversion period and restart of product
+collection.
+3.1.7.  Process Models
+Process models can be used for development of a CM process or as part of a control strategy for
+commercial production, including the diversion strategy. Process models may also be used to
+predict quality attributes in real time, enabling timely process adjustments to maintain a state of
+control. During development, process models can support the establishment of a design space by
+explaining how inputs (e.g., process parameters, material attributes) and outputs (e.g., product
+quality attributes) are related. Process models can enhance process understanding and reduce the
+number of experimental studies.
+
+For general considerations regarding models (including implications of model impact to validation
+requirements), refer to Points to Consider: ICH-Endorsed Guide for ICH Q8/Q9/Q10
+Implementation. For CM applications, additional considerations are discussed below.
+
+• A process model is specific to system design and configuration and relevant material
+properties.
+
+ICH Q13 Guideline
+
+• Model development requires an understanding of the underlying model assumptions (e.g.,
+plug flow versus mixed flow systems) and when these assumptions remain valid. Risk
+assessments, sound scientific rationales, and relevant data inform the selection of model
+inputs and model formulation. It is important to determine the relevant inputs that affect
+the model performance, based on appropriate approaches such as sensitivity analysis.
+
+• Model performance depends on factors such as mathematical constructs and the quality of
+model inputs (e.g., noise, variability of data). When setting acceptance criteria for model
+performance, the model’s intended use and the statistical approaches that account for
+uncertainty in the experimental measurement and model prediction should be considered.
+
+• Model validation assesses the fitness of the model for its intended use based on
+predetermined acceptance criteria using statistically sound approaches. Model validation
+activities are primarily concerned with demonstrating the appropriateness of the underlying
+model assumptions and the degree to which sensitivity and uncertainty of the model and
+the reference methods are understood.
+
+• During commercial manufacture, model maintenance and monitoring of model
+performance should occur on a routine and ongoing basis considering variability that could
+impact the model and/or when a process change (e.g., input material, process parameter
+change) is implemented. Effective and efficient lifecycle management of models is enabled
+by risk assessment of the impact of a model change (e.g., optimisation of model
+performance, change of the model’s intended use, change of underlying model
+assumptions), considering the scope of model development and model validation criteria.
+Depending on the extent of a change and its impact on model performance, a model may
+need to be redeveloped and validated.
+3.2. Changes in Production Output
+Several approaches to changing production output are discussed below; other approaches are also
+possible. For already approved products manufactured using a CM process, it is important to
+justify the selected approach, assess risk and understand its impact on the overall control strategy
+and process performance, and as needed, update the control strategy to ensure risk control. Some
+changes may require process modification and process validation.
+
+• Change in run time with no change to mass flow rates and equipment: Issues not
+observed over shorter run times may become visible as run time increases. Additional risks
+and constraints should be considered and may include, for example, process drift, increased
+equipment temperatures, material build-up, exceeding the performance limit of
+components (e.g., validated in vitro cell age, resin cycle number), material degradation,
+membrane or sensor fouling, and microbial contamination. Decreasing production output
+(below the longest run time previously validated) generally would not imply additional
+risks, given the same equipment, process and control strategy are used.
+
+• Increase mass flow rates with no change to overall run time and equipment: The risks
+associated with this approach may impact output material quality and are related to changes
+in process dynamics and system capability to handle increased mass flow rates. Therefore,
+ICH Q13 Guideline
+
+this approach may require re-evaluation and modification of the control strategy, including
+process parameters and controls, material traceability, RTD, sampling, and diversion
+strategies to reduce risk.
+
+• Increase output through duplication of equipment (i.e., scale-out): Considerations for
+two commonly used scale-out approaches are provided below.
+
+o Replication of production lines (like-for-like): Replicating the integrated CM
+production line (i.e., same equipment and setup as the original CM system) can be
+used to increase production output. The replicate production lines follow the same
+control strategy.
+
+o Parallel unit operations on the same production line: When only some unit
+operations are replicated on the same line, risks are associated with maintaining
+control across parallel unit operations. Aspects to consider are maintenance of
+uniform flow distribution among the parallel operations, synchronisation and re-
+integration of parallel flow streams, changes to process dynamics, increasing the
+rate of other unit operations to handle the increased capacity, and material
+traceability.
+
+• Scale-up by increasing equipment size/capacity: Depending on the process and
+equipment design, increasing production by increasing equipment size may be possible.
+General principles of equipment scale-up apply, as in the case of batch manufacturing. As
+elements such as RTD, process dynamics, and system integration may change, various
+aspects of the control strategy may be impacted. The risks of scale-up and applicability of
+the original control strategy should be assessed at the new scale and the control strategy
+should be modified where needed.
+3.3. Continuous Process Verification
+In CM, frequent process monitoring and control can be achieved through use of process
+parameters, PAT tools such as in-line/online/at-line monitoring and control, soft sensors, and
+process models. These tools allow real-time data collection for parameters relevant to process
+dynamics and material quality, and hence ensure the state of control for every batch. Additionally,
+since CM can facilitate changes to production output without increasing equipment size, there is
+an opportunity to generate development knowledge at the same scale intended for commercial
+manufacturing. These tools, together with the system design and the control strategy, facilitate
+early execution of process validation activities and the adoption of continuous process verification
+(ICH Q8) as an alternative approach to process validation.
+
+4. REGULATORY CONSIDERATIONS
+The dossier for a CM process should be in accordance with ICH M4Q. Some CM-specific
+considerations are provided below.
+ICH Q13 Guideline
+
+4.1. Description of Manufacturing Process and Process Controls
+In line with ICH M4Q, a sequential narrative description of the manufacturing process and process
+controls should be included in sections 3.2.S.2.2 and 3.2.P.3.3 of the Common Technical
+Document (CTD) and supported by pharmaceutical development data provided in CTD sections
+3.2.S.2.6 or 3.2.P.2. In the case of CM, the information provided in sections 3.2.S.2.2 and 3.2.P.3.3
+should be supplemented by the following, when applicable:
+
+• A summary of start-up, shutdown, pause and restart procedures, as applicable, to describe
+how the integrated CM process functions
+
+• The strategy for material collection and diversion including the criteria that should be met
+for product collection during routine manufacturing
+
+• Process parameters related to continuous flow (e.g., mass flow rate(s) or flow rate range)
+
+• When appropriate (e.g., movement of solid materials), a description of how the material is
+transported from one piece of equipment to another
+
+• A flow diagram with the following aspects identified, when applicable:
+
+o
+Points of material entry into the process and material exit from the process
+(including material diversion and collection points)
+
+o
+Sequence of unit operations, including any surge lines or tanks
+
+o
+Direction of material movement through each process step
+
+o
+Clear indication of the continuous and batch process steps
+
+o
+Critical steps and location points at which process controls, intermediate tests, or
+final product controls are conducted (e.g., PAT measurement, feedforward or
+feedback process control)
+
+• A suitably detailed description of any aspects of equipment design, configuration and
+system integration that were shown during development to be critical to process control or
+to impact product quality
+4.2. Control Strategy
+The control strategy of a CM process is designed to ensure that output materials made over time
+are of the desired quality. The control strategy should consider the elements discussed in Section
+3 of this guideline. The dossier should describe the relevant controls and operational aspects (e.g.,
+material diversion) used during manufacturing. Some aspects of the control strategy are discussed
+below.
+
+ICH Q13 Guideline
+
+• Input material attributes: Impact of input material attributes and their variability (e.g.,
+inter-batch, different suppliers) on continuous processing and product quality should be
+assessed and proposed material attribute acceptable ranges should be justified when
+establishing the material specification. For input materials for which pharmacopoeial
+requirements exist, characterisation and control may extend beyond those requirements.
+
+• Process monitoring and control: An appropriate description should be provided in the
+dossier to show a robust approach to process monitoring and maintaining a state of control.
+How the control system uses process parameters, in-process material attribute
+measurements, etc., to make process- and quality-related decisions (e.g., to pause the
+process or divert material) should be described. Other important aspects should be defined,
+such as the sampling strategy (e.g., location, sample size, frequency, statistical approach
+and criteria, and their relevance to the intended use), summary of the models if used (e.g.,
+type of model used, strategies for model evaluation and performance monitoring), and the
+use of data in making in-process control decisions (e.g., to trigger material diversion).
+
+The data analysis method used should appropriately detect the disturbances or variability
+in the CM process. For example, when data averaging is used, averaging across appropriate
+time intervals should be considered rather than data averaging across the entire CM run
+time. The time intervals should consider the relevancy of PAT measurement frequency to
+the RTD and process dynamics (i.e., process response time). Therefore, statistical sampling
+plans and data analysis should be described and justified.
+
+• System operation: Procedures should be established and maintained on site for managing
+system start-up, shutdown, and pauses and for handling disturbances (see Annex V).
+Relevant approaches for these operations (e.g., handling disturbances) should also be
+described at an adequate level of detail in the dossier. The disposition of material impacted
+by transient and pause events should be justified, considering potential risks to output
+material quality (e.g., the impact of a disturbance as it propagates downstream).
+
+• Material diversion and collection: The material diversion and collection strategy should
+be summarised and justified in the dossier. The strategy described should include the
+criteria for triggering material diversion, the basis for determining the extent of diverted
+materials, the conditions for resuming material collection, etc. Factors such as sampling
+frequency, RTD, and amplitude, duration and propagation of disturbances should be
+considered in developing the diversion strategy. The extent of diverted material should
+appropriately incorporate justified safety margins, considering the uncertainty of RTD and
+other measurements. Procedures for managing material collection, diversion, and
+disposition (e.g., quarantine, offline testing, investigations) do not need to be included in
+the dossier but should be maintained within the pharmaceutical quality system (PQS) (ICH
+Q10).
+
+• RTRT: RTRT as described in ICH Q8 can be applied to an output material quality
+attribute(s). RTRT is not a regulatory requirement for CM implementation. When RTRT
+is proposed, the associated reference test method should be described. Development of the
+data collection approach for RTRT implementation should include a risk assessment of
+ICH Q13 Guideline
+
+how any lapses in data collection (e.g., recalibrating a near infrared (NIR) probe) may
+affect decisions relating to product quality. The proposed control strategy should include
+alternative or additional quality controls to mitigate any risks posed by data lapses. If the
+results from RTRT fail or are trending towards failure, appropriate investigations should
+be conducted. Refer to Points to Consider: ICH-Endorsed Guide for ICH Q8/Q9/Q10
+Implementation for discussion of models used as surrogates for traditional release testing
+methods.
+
+• Equipment and system integration: Aspects of equipment design and system integration
+that are shown to be critical to output material quality and its control should be described
+and justified in the context of the overall control strategy.
+
+A summary of the control strategy should be provided in CTD section 3.2.S.2.6 or 3.2.P.2.3 with
+links or references to the CTD sections that contain the detailed information to enable the
+understanding and evaluation of the manufacturing process and how it is controlled.
+4.3. Batch Description and Batch Size
+The approach to define batch size (see examples in Section 2.2) and the proposed commercial
+batch size or range should be described in the dossier.
+
+If a range is proposed, it should be justified, and the approach for achieving the range should be
+described (see Section 2.2). Changes in batch size within the approved batch size range can be
+managed within the PQS. Any post-approval change beyond the approved range should be
+supported by data (Section 3.2) and appropriately managed (i.e., prior approval or notification).
+
+A suitable quantitative metric with acceptance criteria should be defined within the PQS to
+establish batch-to-batch consistency and system robustness. For example, when a batch size is
+defined by the amount of collected material, the amount of diverted materials relative to that of
+collected materials for each batch should be considered.
+
+The actual intended size of a given batch should be defined before manufacturing begins.
+4.4. Process Models
+The level of detail provided in the dossier regarding model development, validation, and
+maintenance over the lifecycle should be commensurate with the model type and impact category.
+The process model should be specific for the defined system (e.g., equipment, layout, connections).
+Information to support models used as part of commercial manufacturing should be available
+during site inspection and maintained at or be accessible to the manufacturing site. Refer to Points
+to Consider: ICH-Endorsed Guide for ICH Q8/Q9/Q10 Implementation for regulatory
+expectations on process models.
+4.5. Drug Substance and Drug Product Stability
+Regulatory expectations for the stability data package generally do not differ between CM and
+batch manufacturing modes (refer to ICH Q1A, ICH Q5C). Batches used to generate primary
+stability data should be manufactured using a manufacturing process and equipment representative
+ICH Q13 Guideline
+
+of the commercial process. Primary stability batches should incorporate the variability described
+in the ICH stability guidelines (e.g., different drug substance batches).
+
+Additionally, for chemical drug substances or drug products:
+
+• Stability batches could be obtained with a single start-up/shutdown sequence provided the
+aforementioned variability is incorporated into the batches (e.g., by introducing different
+batches of drug substances in a sequential manner).
+
+• Stability batches may be produced from shorter manufacturing runs, provided that (1) the
+control strategy, mass flow rate(s), and equipment used to generate stability batches are
+representative of the commercial process, and (2) it is demonstrated that a state of control
+is established and maintained when the process operates over the longer commercial run
+times. The concept of pilot scale batch for stability studies (e.g., at a minimum, one-tenth
+of a full production scale), as defined in other guidelines (e.g., ICH Q1A), may not be
+necessarily applicable in this scenario.
+
+• If modes of increasing production output discussed in Section 3.2 other than increasing run
+time are being used (e.g., increasing equipment size), applicants should justify their
+approach for defining primary stability batches. Applicants are encouraged to discuss their
+scale-up and primary stability batches approach with regulatory authorities.
+4.6. Conversion of a Batch Process to CM
+Changing the manufacturing mode from batch to continuous necessitates the development of an
+appropriate control strategy, considering factors identified in Section 3. The output materials from
+the batch and continuous processes should have comparable quality. A science and risk-based
+approach should be used for establishing product comparability and assessing the need for
+additional bioequivalence, non-clinical and/or clinical studies, and stability data. Additional details
+regarding how to establish product comparability for therapeutic proteins can be found in ICH
+Q5E.
+
+Manufacturers should seek regulatory approval before implementing a conversion of an approved
+batch process to a CM process. Manufacturers can seek advice from the regulatory authority to
+gain clarification on the regulatory expectations and acceptability of their strategy and data
+package for the proposed changes (e.g., when potential changes in formulation are necessary to
+enable conversion to CM and the impact of these changes on product registration).
+4.7. Process Validation
+The requirements for process validation as established by region are similar for CM and batch
+manufacturing processes. Approaches such as traditional process validation that uses a fixed
+number of validation batches or continuous process verification can be used.
+
+When continuous process verification is used, the CM system performance and output material
+quality is continuously monitored, such that the real-time data collected demonstrate the
+maintenance of a state of control and production of output material with the desired quality for the
+run time duration. The use of continuous process verification should be justified based on the
+ICH Q13 Guideline
+
+product and process understanding, system design, and overall control strategy. This justification
+should be provided in the dossier (see Table 1 below).
+
+When a continuous process verification approach is used to support initial product launch,
+applicants should justify the appropriateness of the validation activities to provide confidence in
+the commercial manufacturing process.
+4.8. Pharmaceutical Quality System
+PQS expectations are the same for batch and CM processes and should follow pertinent ICH
+guidelines. One important operational aspect of CM is that non-conforming materials can be
+diverted from the rest of the batch when material traceability, process monitoring, and material
+diversion strategies are well established. Procedures for material diversion, when required, should
+be established under the PQS (see Section 4.2). An overarching plan or decision tree that describes
+how disturbances are managed for various types of material diversion should be maintained under
+the PQS. Diverted materials resulting from planned events (e.g., system start-up and shutdown)
+generally do not require investigation when the events meet established process performance
+criteria. Examples of approaches for managing disturbances are provided in Annex V. As
+described therein, when unexpected and/or frequent disturbances occur, appropriate investigation,
+root cause analysis, and corrective action and preventive action (CAPA) should be instituted.
+4.9. Lifecycle Management
+The principles and approaches described in ICH Q12 are applicable to the lifecycle management
+of CM.
+4.10.
+Submission of CM-Specific Information in the CTD
+The dossier should include information as outlined in ICH M4Q. Additional elements relevant to
+CM should also be provided in the dossier when applicable. Examples of these elements are listed
+in Table 1. In the case of integrated drug substance and drug product CM processes, some
+information and data, such as an integrated flow diagram, may be presented in CTD section 3.2.P
+with a cross reference in 3.2.S (see Annex IV for additional details).
+
+Table 1: Recommended CM-Related Information in the CTD
+CTD section
+Information and Data
+3.2.S.2.6
+3.2.P.2.3
+Manufacturing Process Development
+• Summary of the overall process development
+• Summary and justification of the control strategy, with links or
+references to the CTD sections that contain comprehensive
+information on the control strategy elements, for example:
+o
+Strategy for system start-up, shutdown and pause
+o
+RTD and material traceability information
+o
+Disturbance management (e.g., material diversion and
+collection strategy)
+o
+Sampling strategy, including sampling frequency
+ICH Q13 Guideline
+
+o
+Equipment design and system integration aspects that are
+shown to be critical to output material quality
+o
+Process controls such as feedforward and feedback process
+control based on a measured attribute, if used
+o
+Development and justification of models# where used in the
+control strategy (e.g., process model used for feedforward
+control, model associated with a PAT analytical method used
+for in-process testing and/or real-time release)
+o
+Justification for range of batch sizes, where claimed
+3.2.S.2.2
+3.2.P.3.2
+Batch Definition
+• Batch size or range, and approach to achieving the intended batch
+size or range
+3.2.S.2.2
+3.2.P.3.3
+Description of Manufacturing Process and Process Controls
+• Narrative description of the commercial manufacturing process and
+flow diagram as described in ICH M4Q, clearly indicating which
+portion of the manufacturing process is continuous
+• Examples of CM-specific aspects of the commercial manufacturing
+process to be described are:
+o Equipment design and system integration aspects when critical
+to the output material quality
+o CM-related process parameters, controls and criteria (e.g.,
+input rates/mass flow rates, relevant feeder operating ranges),
+and location points at which process controls or testing is
+conducted
+o Location of active process controls if used
+o Criteria for product collection, including strategy for diversion
+3.2.S.2.4
+3.2.P.3.4
+Controls of Critical Steps and Intermediates
+• Critical process parameters
+• In-process testing (e.g., sampling frequency, sample size, analytical
+method)
+• Relevant information, parameters, and criteria associated with
+ensuring correct application of process models used as part of the
+control strategy# including contingency plan when the model is not
+available
+• Relevant information on active process controls, when applicable
+(e.g., limits of acceptability for controls that ensure monitored
+ICH Q13 Guideline
+
+critical process parameters and critical quality attributes stay within
+desired ranges)
+3.2.S.4
+3.2.P.5
+Control of Drug Substance or Drug Product
+• When models are associated with the analytical procedures for
+release testing of the drug substance or the drug product (e.g., NIR
+model, dissolution model):
+o Summary and justification of the model and the sampling
+strategy
+o Contingency testing and monitoring plans instituted for when
+the model is not available (e.g., when gaps in PAT data occur
+or in case of PAT equipment failure)
+o Analytical model validation information
+3.2.R
+ Regional Information
+• Validation data for high impact process models, if used.
+• Continuous process verification scheme, if applicable.
+# The purpose of a model may vary (e.g., testing the quality of in-process material, drug substance intermediate, drug
+substance or drug product, real-time release testing, process control). Not all categories are covered in this table;
+information relating to the models should be submitted in the appropriate CTD sections identified in ICH M4Q
+guideline for these categories. For example:
+•
+Models used for drug substance release testing in 3.2.S.4;
+•
+Models used for in-process testing in 3.2.S.2.4 or 3.2.P.3.4;
+•
+Model used for both in-process testing and real-time release testing in relevant 3.2.S.4 or 3.2.P.5 sections,
+and incorporated by reference into the applicable Control of Critical Steps and Intermediates section;
+•
+Models used only for process development in 3.2.S.2.6 and 3.2.P.2.3.
+
+ICH Q13 Guideline
+
+5. GLOSSARY
+Active Process Controls:
+A system consisting of hardware and software architecture, mechanisms, and algorithms
+that automatically adjust a process to maintain the process output within a desired range.
+Examples include feedforward and feedback process controls.
+
+Disturbances:
+Unplanned changes to process inputs beyond normal operating range or conditions (e.g.,
+process parameter, material property, equipment condition, or environment) that are
+introduced into a system.
+
+Diversion:
+Procedure in which materials are isolated and separated from the product stream in the
+manufacturing process.
+
+Material Traceability:
+The ability to track materials throughout the manufacturing process.
+
+Model Maintenance:
+A set of planned activities over the product lifecycle to monitor and sustain the model’s
+performance to continually ensure its suitability for the intended and approved purpose.
+
+Multivariate Statistical Process Control:
+The application of multivariate statistical techniques to analyse complex process data with
+potentially correlated variables. (Ph. Eur.)
+
+Process Dynamics:
+The response of a manufacturing process to changing inputs or conditions or transient
+events.
+
+Residence Time Distribution (RTD):
+A measure of the range of residence times experienced by material passing through a
+specific process environment/vessel/unit operation.
+
+Run Time:
+The time interval used to produce a quantity of output material.
+
+Soft Sensors:
+A model that is used in lieu of physical measurement to estimate a variable or attribute
+(e.g., a quality attribute of material) based on measured data (e.g., process data). The model
+development, including selection of such data variables, is driven by comprehensive
+product and process understanding.
+ICH Q13 Guideline
+
+Steady State:
+A stable condition that does not change over time.
+
+System:
+A manufacturing architecture that, in the context of CM, consists of individual pieces of
+equipment, their connections to one another, monitoring and control systems, and spatial
+layout.
+
+Transient Events:
+A temporary condition in which a process goes through a dynamic change. This change
+may be due to a disturbance or an intentional alteration in the selected operating conditions
+(e.g., start-up, shutdown, changes from one operating condition to another).
+
+Unit Operation:
+A basic step in a process. Unit operations involve a physical, chemical or biological
+transformation such as: reaction, crystallisation, filtration, blending, granulation, tableting,
+cell culture, purification or virus inactivation.
+
+6. REFERENCES
+ICH M4Q: The Common Technical Document for The Registration of Pharmaceuticals for Human
+Use: Quality
+
+ICH Q1A: Stability Testing of New Drug Substances and Products
+
+ICH Q5C: Quality of Biotechnological Products: Stability Testing of Biotechnological/ Biological
+Products
+
+ICH Q5E: Comparability of Biotechnological/Biological Products Subject to Changes in Their
+Manufacturing Process
+
+ICH Q6A: Specifications: Test Procedures and Acceptance Criteria for New Drug Substances and
+New Drug Products: Chemical Substances
+
+ICH Q7: Good Manufacturing Practice Guide for Active Pharmaceutical Ingredients
+
+ICH Q8: Pharmaceutical Development
+
+ICH Q9: Quality Risk Management
+
+ICH Q10: Pharmaceutical Quality System
+
+ICH Q13 Guideline
+
+ICH Q11: Development and Manufacture of Drug Substances (Chemical Entities and
+Biotechnological/Biological Entities)
+
+ICH Q12: Technical and Regulatory Considerations for Pharmaceutical Product Lifecycle
+Management
+
+Ph. Eur.: European Pharmacopoeia
+
+Points to Consider: ICH-Endorsed Guide for ICH Q8/Q9/Q10 Implementation
+
+ICH Q13 Guideline
+
+PART II: ANNEXES
+
+ANNEX I: CONTINUOUS MANUFACTURING OF DRUG SUBSTANCES (CHEMICAL
+ENTITIES)
+
+1. INTRODUCTION AND EXAMPLE SYSTEM OVERVIEW
+This annex exemplifies one approach to implement CM of drug substances for chemical entities
+based on the scientific principles described in the main guideline. The examples and approaches
+in this annex are illustrative, and alternative approaches can be used.
+
+*[Figure 1 illustrates a drug substance manufacturing process containing both continuous and batch]*
+
+operations. It is not intended to represent a regulatory flow diagram. The continuous process
+segment consists of unit operations that can be characterised as having two plug-flow reactors
+(PFRs), two liquid phase extraction operations, continuous crystallisation, and two agitated filter
+dryers. Manufacture of Intermediate 2 is performed in batch mode, as is final processing including
+milling and packaging. This annex focuses on the continuous elements of this process.
+
+*[Figure 1: Example of a drug substance CM system for chemical entities]*
+
+ICH Q13 Guideline
+
+2. CONTROL STRATEGY AND OTHER TECHNICAL CONSIDERATIONS
+The CM system and its control strategy were designed to control parameters that impact the
+manufacture and quality of the drug substance, including impurity profile and physicochemical
+properties. The overall control strategy was developed in accordance with the main guideline and
+ICH Q7–Q11.
+2.1. Equipment Design and Integration
+Within the continuous process segment in Figure 1, the following processes occur:
+
+• Reaction 1: Starting materials 1 and 2 are coupled in a PFR to produce Intermediate 1.
+Diversion Point D1 is located after the PFR to permit material diversion when PFR
+conditions are outside predefined acceptance criteria. The reaction is quenched as an
+integrated operation after the PFR, and unwanted by-products are removed by liquid-liquid
+extraction. The resultant solution (Intermediate 1) is used as an input for the second
+reaction without isolation.
+
+• Reaction 2: Intermediate 1 and Intermediate 2 (prepared upstream through separate batch
+unit operations) are coupled in a second PFR to form the crude drug substance. The online
+PAT near the reactor exit (T1) monitors conversion of Intermediate 1 to the crude drug
+substance. Diversion Point D2 located after PAT is used to divert non-conforming material.
+
+• Drug Substance Isolation: The crude drug substance is purified by liquid-liquid extraction
+and continuous two-stage crystallisation. Distillation prior to crystallisation provides
+desired concentration of the crude drug substance solution. Diversion Point D3 allows for
+material diversion at the crystalliser. The crystal slurry is filtered using two agitated filter
+dryers operating in an alternating fashion to enable continuous operation. The isolated drug
+substance is then milled using batch operations to achieve the desired particle size
+distribution prior to packaging.
+
+Two surge points (each containing multiple surge tanks) are used: one before Reaction 2 and
+another before continuous crystallisation. These are important components of the system design
+and control strategy, as they improve process robustness and mitigate temporary differences in
+mass flow rates by decoupling upstream and downstream operations.
+
+The design of the overall system and each unit operation, along with the control strategy, optimise
+material quality. For example, PFR design elements (i.e., dimension and configuration) allow
+control of temperature, heat and mass transfer rates, and reaction time. These parameters were
+shown during development to be important to the drug substance impurity profile.
+2.2. Process Control and Monitoring
+Holistic controls used across Reactions 1 and 2 ensure consistent operations and quality of the
+resulting crude drug substance. The stoichiometry of Reaction 1 is controlled via control of
+concentrations and flow rates of the feeds. Conversion of starting materials to Intermediate 1 with
+minimal impurity formation is ensured through control of the reaction temperature and flowrate
+(i.e., reaction time). Reaction 2 is controlled through feedback control of the addition rate of
+Intermediate 2 based on the PAT measurement of residual Intermediate 1 levels. This ensures
+ICH Q13 Guideline
+
+correct stoichiometry for that reaction and minimises the impact of variability of the Intermediate
+1 feed solution on drug substance purity. The PAT also measures levels of crude drug substance
+and impurities, which confirm successful operation of all preceding steps and consistent product
+quality.  Liquid/Liquid extraction ensures appropriate purity control after Reaction 2.
+
+RTD was used to develop a suitable strategy for disturbance detection, corrective actions, and
+material diversion. RTD characterisation was based on mathematical modeling of all unit
+operations and surge points across the entire CM process over planned mass flow rates. The RTD
+was then confirmed through experimental tracer studies for appropriate segments of the
+commercial equipment. Decisions for triggering material diversion are based on comparing
+process parameters and PAT measurements to predefined acceptance criteria with timing and
+duration of diversion informed by the RTD. Importantly, the RTD is also used for material
+traceability purposes.
+
+Understanding of process dynamics and its impact on quality attributes of material produced
+throughout the entire process was also used to guide start-up and shutdown strategies. For example,
+during start-up of Reactions 1 and 2, a small amount of Intermediate 1 or crude drug substance is
+diverted at Diversion Points 1 or 2, respectively, to allow those materials to reach the target
+concentrations before processing into subsequent operations. The criteria for diversion were
+established based on time considering the RTD. This approach was supported by development
+studies and appropriately confirmed in commercial process equipment. PAT monitoring after
+Reaction 2 provides additional verification that appropriate criteria have been met during start-up.
+Collection of material proceeds to the end of the process as subsequently described.
+
+Sampling and process measurement needs were evaluated, considering relevant factors such as
+residence times (i.e., surge points, process dynamics, and the type and purpose of the
+measurement). The measurement frequency of the PAT at Reaction 2 enables detection of certain
+disturbances, informs process adjustments, and ensures timely diversion of material based on
+predefined criteria. The criteria for material diversion are based on the magnitude and duration of
+the disturbance, an understanding of RTD and process dynamics of downstream unit operations
+and surge points, and the impurity purging capability of the crystallisation operation. As a result
+of this control strategy, all crude drug substance solution that enters continuous crystallisation
+meets acceptable quality criteria and can be processed through the crystalliser.
+
+Appropriate controls and monitoring requirements for the continuous crystallisation were
+extensively investigated during development in similar, but smaller scale equipment and
+appropriately verified using commercial equipment. Process development included spiking studies
+using impurity-enriched feed solutions and intentional perturbations in process parameters (i.e.,
+feed flow rates, their ratios, and temperatures). An evaluation of the encrusted solids in the
+crystalliser over extended run times demonstrated the solids were the same form and purity as the
+free-flowing drug substance slurry. The set of process parameters and ranges identified by these
+studies were appropriately scaled up. Implementation of these controls along with post-
+crystallisation material tests (e.g., crystal form, purity) ensure consistent quality of the resulting
+drug substance throughout continuous crystallisation and subsequent filtration.
+
+ICH Q13 Guideline
+
+The resulting material is milled using a batch operation to provide a drug substance of the
+appropriate particle size for use in drug product manufacturing. Procedures were developed to
+allow diversion of material at Diversion Point D3 in the event desired process conditions or
+material attributes are not met. Diversion of the drug substance from the crystalliser was found to
+be unnecessary either during start-up or shutdown.
+2.3. Consideration of Other Controls
+Process robustness and performance over time are important considerations. A risk assessment
+was performed to ensure that adequate controls are in place to support the proposed run time
+(which can be up to several months). It identified a number of considerations and corresponding
+controls/measures. Examples are summarised in Table 2.
+
+Table 2: Examples of other controls for consideration
+Consideration
+Controls/Measures
+Cleaning and
+fouling potential
+• Establishment of a risk-based cleaning strategy, including
+understanding of the impact of build-up on drug substance quality
+• Additional monitoring to assess fouling and cleanliness (e.g., pressure
+sensors at the discharge of feed pumps, periodic visual checks for the
+continuous crystalliser)
+• Reduction of other risk factors (e.g., filtering feed streams to further
+reduce fouling risk)
+Stability of in-
+process materials
+• Hold times at key points in the process (e.g., feed streams;
+accumulated material at the surge points, reactors, and crystalliser)
+managed through batch record and process automation
+• Risk assessment of microbiological growth (i.e., negligible risk based
+on the nature of the process materials and conditions)
+Calibration and
+potential for
+changes/drift in
+instrumentation
+• Periodic checks at selected points (e.g., process parameter
+measurements for the PFR, system suitability for the PAT analyser)
+• Dual sensors at selected locations (e.g., temperature probes for the
+PFR) so that appropriate corrective actions can be taken
+Equipment
+maintenance
+•
+Maintenance requirements for target run time
+•
+Use of redundant equipment (e.g., backup pumps) at key locations
+
+Additionally, specifications for input materials were evaluated during process development. There
+were no differences between batch and continuous processing for this example.
+
+Collectively, the process understanding developed along with implementation of the various
+controls described provide a robust and reliable control strategy. This ensures consistent quality of
+the resulting drug substance including the impurity profile, physicochemical properties, and ability
+of the system to identify and appropriately react to unexpected events.
+2.4. Process Validation
+The combination of process controls, online PAT measurements, comprehensive monitoring of
+process parameters and material attributes, and end-product testing results in a data-rich
+environment for this process. Together with system understanding generated during development,
+ICH Q13 Guideline
+
+this enabled the use of a traditional process validation for commercial product launch and
+continuous process verification to validate process changes over the product lifecycle.
+
+A range of batch sizes was initially established based on material demands and the quantities of
+material necessary to match input needs of the final batch unit operations. The process was
+validated using a fixed number of batches. A single planned start-up and shutdown of the
+commercial CM system was used to manufacture the process validation batches. This approach
+was supported by the totality of evidence demonstrating the start-up and shutdown capabilities of
+the system. This included development work on smaller equipment (with appropriate technical
+justification for being representative), commercial equipment and system qualification data, results
+of a pre-validation demonstration run, and extensive process monitoring of the CM system that
+can verify success of each start-up and shutdown in real time.
+
+Subsequently, a continuous process verification approach was adopted after product approval to
+validate increases in batch size with extension of run time. The batch size increase was possible
+without impact to the equipment scale for downstream batch operations.  This approach used a risk
+assessment for the longer run time, which concluded that process performance and material quality
+would not be impacted. Under the continuous process verification approach, data generated during
+the manufacture of each batch was used to support successful validation of that batch with the
+extended run time. This included information such as system performance monitoring and data
+logs, along with other controls that ensure material quality with appropriate detection and
+corrective action. Additionally, appropriate regulatory actions were taken to communicate this
+batch size increase with run time change and use of the continuous process verification approach.
+3. REGULATORY CONSIDERATIONS
+Refer to Section 4 of the main guideline. In consideration of the specific CM process design,
+additional elements may need to be included in a dossier. For instance, in this example, the
+influence of surge points on the material diversion and collection strategy, including the fate of
+materials, was described.
+
+ICH Q13 Guideline
+
+ANNEX II: CONTINUOUS MANUFACTURING OF DRUG PRODUCTS (CHEMICAL
+ENTITIES)
+
+1. INTRODUCTION AND EXAMPLE SYSTEM OVERVIEW
+This annex exemplifies one approach to implement CM for a tablet drug product based on the
+scientific principles described in the main guideline. The examples and approaches in this annex
+are illustrative, and alternative approaches can be used. Specific considerations relating to the
+implementation of a continuous direct compression process for a chemical entity are presented.
+
+*[Figure 2 illustrates a continuous direct compression process that consists of continuous feeding,]*
+
+blending, and tablet compression unit operations, with batch mode film coating. It is not intended
+to represent a regulatory flow diagram.
+
+*[Figure 2: Example of a tablet drug product CM system]*
+
+A PAT tool using an NIR method monitors blend uniformity and triggers tablet diversion. Run
+time at a predefined mass flow rate is used to define the batch size range; in this case, the overall
+marketing demand requires batch sizes between 360 and 1080 kg of the drug product.
+2. CONTROL STRATEGY AND OTHER TECHNICAL CONSIDERATIONS
+The CM system and its control strategy were designed to mitigate the impact of disturbances to
+ensure output material quality. The overall control strategy was developed in accordance with the
+main guideline and ICH Q8–Q10.
+2.1. Material Characterisation and Control
+ICH Q13 Guideline
+
+During process design and development, a quality-by-design approach was adopted that identified
+equipment and process parameters critical to control of the process. Furthermore, the relationships
+between material quality attributes and their impact on unit operations (particularly the loss-in-
+weight feeders (LIWFs) and blender) and product critical quality attributes (CQAs) were
+evaluated. Bulk density of the primary excipient and particle size distribution (PSD) of the drug
+substance were identified as critical to blend and content uniformity. A defined bulk density range
+and three-tier (d10, d50, d90) PSD specification were implemented for the excipient and drug
+substance, respectively.
+2.2. Equipment Design and Integration
+Unit operations and system components (e.g., NIR probe) were designed or selected to mitigate
+the impact of disturbances on final product quality. The overall design principle is, where possible,
+to use gravity to move material. During system integration, the material flow was coordinated
+across all unit operations to avoid material accumulation or emptying. System mass balance was
+obtained through understanding of material flow (i.e., RTD) at the intended operating conditions
+of each unit operation. The impact of equipment design and operation on process dynamics was
+characterised by the RTD of individual unit operations, as well as the RTD of process segments
+between individual unit operations and the diversion point. The RTDs were determined by
+replacing the drug substance in the formulation with a tracer that has highly similar flow properties
+to those of the drug substance.
+
+The following aspects of equipment design and integration were emphasised:
+
+• LIWF: Feeder mass flow rates and their variability were characterised. LIWFs are
+controlled to deliver the theoretical amount of each input material per the formulation; it
+was demonstrated that the risks of minor variations to product composition were mitigated
+by blender mixing capability. Feeder mass flow rates were evaluated using design of
+experiment (DOE) studies and the proven acceptable ranges of target flow rates were
+defined. Modelling and statistical approaches were used to help determine the limits for
+the magnitude and duration of disturbances in mass flow rates, for which material
+diversion, operator investigation, or process stop are needed. These limits were visualized
+(e.g., funnel plots) to aid understanding. LIWFs operate in gravimetric mode unless they
+are refilling (volumetric mode). Refill aspects (e.g., duration and mass of refill) were
+evaluated to minimise the impact on feeding.
+
+• Blender: A horizontal blender was selected for the CM system and the blender design was
+evaluated (e.g., paddle versus ribbon, number and orientation of paddles in the blender,
+rotation speed). It was determined that a paddle blender is critical to ensure desired blend
+uniformity. Rotation speed, number and orientation of the paddles were evaluated for their
+impact on blend uniformity over the ranges studied, and the corresponding design space
+for the blending process was defined. RTD characterisation provided information on the
+degree of forward and back mixing and disturbance propagation, and the RTD was used to
+define the material traceability and diversion strategy.
+
+• NIR probe: The NIR probe was placed in the tablet press feed frame. The chosen NIR
+equipment met the PAT application requirements (e.g., analysis speed, sampling method,
+ICH Q13 Guideline
+
+mass flow rate). Probe location and height are fixed; the impact of material build-up was
+evaluated and found not significant. The system intended for commercial production was
+used to generate data for the development, calibration, and validation of the NIR method.
+
+• Diversion point: The RTD between the NIR probe and the diversion point was
+characterised using a tracer. The material diversion strategy links LIWF and NIR limits to
+the RTD between the LIWF and NIR as well as the RTD between the probe and diversion
+point, respectively.
+
+• Coater: The mass in the coater corresponds to 1 hour of production. Coating was designed
+to be complete in 45 minutes; whilst coating, the next aliquot of tablet cores is filled into
+the tablet hopper.
+2.3. Process Controls and Monitoring
+In this system, the LIWFs may introduce fast dynamic disturbances. These may also occur during
+changes in operating conditions (e.g., during start-up or process pauses). Therefore, monitoring
+and control of these events are important elements of the control strategy. The control strategy
+includes NIR measurements, in-process controls (e.g., individual and total flow rates), process
+parameters including critical process parameters (e.g., blender rotation speed), and active process
+controls (e.g., feedback control of tablet weight). The sampling strategy for monitoring and control
+reflects the observed process dynamics, therefore ensuring adequate detectability of all relevant
+disturbances. Together, these aspects enable proactive control of the system and ensure continuous
+operation in a state of control and accurate material diversion to waste based on the predefined
+criteria. Unique codes are assigned to predefined batch segments to ensure material traceability
+and identification of conforming and non-conforming materials. Start-up/restart, pause/stop, and
+shutdown strategies for this example are defined in Table 3.
+
+Table 3: Start-up/restart, pause/stop, and shutdown strategies
+Action
+Activity
+Start-up/Restart
+Material tracking and data collection begins; manufactured material is
+diverted until it meets the predefined acceptance criteria for material
+collection.
+Pause/Stop
+A process pause or stop is executed either manually or automatically,
+according to predefined criteria.
+Shutdown
+Material collection continues until manufactured material fails the
+predefined acceptance criteria, and then manufacturing ends.
+
+2.4. Process Validation
+In this example, a continuous process verification approach was adopted, considering elements
+such as prior facility experience in implementing a similar CM process and control system (i.e.,
+platform approach), availability of product-specific data arising from late-stage product
+development using the commercial equipment, the scale independence of the commercial process
+(i.e., batch size varies by run time), a comprehensive control strategy with high-frequency data
+collection, and the use of real-time data from every manufacturing run to further support
+continuous process verification. The control strategy provides real-time monitoring, trending, and
+ICH Q13 Guideline
+
+prediction analysis through the use of NIR measurements, LIWF data, and other data sources
+arising from monitoring process parameters (e.g., blender torque), thus providing a high degree of
+assurance of real-time CM system stability and performance and output material quality. The
+continuous process verification approach, coupled with appropriate regulatory action for reporting
+manufacturing changes, was used to validate run time extensions beyond current experience.
+3. REGULATORY CONSIDERATIONS
+Refer to Section 4 of the main guideline. In consideration of the specific CM process design,
+additional elements may need to be included in a dossier. For instance, in this example, elements
+that can significantly impact process dynamics and homogeneity (e.g., design space, number of
+paddles and their orientation in the horizontal paddle blender) were described.
+
+ICH Q13 Guideline
+
+ANNEX III: CONTINUOUS MANUFACTURING OF DRUG SUBSTANCES
+(THERAPEUTIC PROTEINS)
+
+1. INTRODUCTION AND EXAMPLE SYSTEM OVERVIEW
+Annex III supplements the main guideline by providing additional regulatory and scientific
+considerations that are relevant to CM processes for therapeutic protein drug substances and
+recombinant proteins used as intermediates for subsequent conjugation. It describes aspects that
+could be applied in fully or partially integrated CM systems. The discussion points and examples
+presented in the annex are provided for illustrative purposes and are not exhaustive. Alternative
+approaches can be used.
+
+*[Figure 3 illustrates a continuous manufacturing process for therapeutic proteins that consists of]*
+
+unit operations characterised by a bioreactor compatible with a perfusion culture system,
+continuous capture chromatography, virus inactivation, and polishing purification chromatography
+columns, virus filtration, and buffer exchange and concentration through tangential flow filtration.
+It is not intended to represent a regulatory flow diagram.
+
+This process integrates a perfusion cell culture with continuous downstream chromatography and
+other purification steps to continuously capture and purify the target protein. Each individual unit
+operation is integrated with adjacent unit operations or with a surge line or tank that connects unit
+operations. Diversion point D1 and PAT (T1) are located after chromatography (Chrom) #1. Using
+a surge line or tank allows continuous operations to accommodate differences in mass flow rates
+or process dynamics. Other examples of CM systems may use integrated unit operations for
+selected steps.
+
+In CM processes, a single thaw of one or multiple vials from the same cell bank may result in
+either a single harvest or multiple harvests. The number or range of cell bank vials used to produce
+the specified number of drug substance batches should be defined. The cell bank vials used should
+be traceable to the output drug substance batches.
+
+ICH Q13 Guideline
+
+*[Figure 3: Example of a drug substance CM system for therapeutic proteins]*
+
+2. CONTROL STRATEGY
+2.1. Adventitious Agent Control
+In general, all principles used to ensure safety in batch manufacturing are applicable to CM. Safety
+is demonstrated by a threefold approach based on the principles outlined in ICH Q5A. Control of
+adventitious agents (e.g., bacteria, viruses, fungi, mycoplasma) should be based on a risk
+assessment of all potential sources of contamination (e.g., starting and raw materials,
+manufacturing operations), the ability of the process to remove and inactivate adventitious agents,
+and the testing capability to ensure the absence of adventitious agents. Based on this assessment,
+a strategy should be developed to include the type and frequency of adventitious agent testing
+undertaken to demonstrate that the process remains free of contamination during cell culture and
+other downstream steps. An aspect unique to CM is extended cell culture duration and continuous
+processing of harvested cell culture material to obtain drug substances. This means that design
+measures should be in place to demonstrate the acceptability of all cell culture material used to
+generate a given drug substance batch. New technologies for real-time decision making, such as
+rapid testing for adventitious agents, may be used to mitigate the impact of contamination events
+by earlier detection and appropriate responses during continuous operation.
+2.2. Equipment Design and System Integration
+The integrity of single-use equipment during use should be ensured to prevent contamination.
+Single-use connections (e.g., tube welds, connectors) and components may experience long
+ICH Q13 Guideline
+
+durations or high change-out frequencies and should be evaluated as potential contamination risks.
+Filtration steps in CM may be subject to longer filtration periods and potentially increased
+throughput per unit area or a greater number of filter changes than those under batch
+manufacturing. Given these factors, a control strategy and a clearly defined scheme should be put
+in place to allow for filter changes and pre- and post-use integrity testing, as appropriate, without
+interrupting the process. In the event of a filter failure, a clear strategy for material diversion and
+refiltration (reprocessing) should be defined.
+
+The CM system should contain appropriate sampling locations based on risk assessment to enable
+detection of contamination, while avoiding unnecessary contamination risk introduced through the
+sampling procedure. The sampling locations and frequency may be adjusted based on improved
+product and process understanding.
+
+Integrated systems may use surge tanks for flow rate adjustments or other purposes between
+processing steps. When surge tanks are used, the relevant RTD, uniformity and microbial risks to
+the product in these surge tanks should be evaluated and defined in advance.
+2.3. Process Monitoring and Real-Time Release Testing
+CM lends itself to various monitoring schemes with different levels of automation. Examples
+include in-line sensors placed directly in a process vessel or flowing material stream and online
+analysers that conduct automatic sampling. Regardless of the approach used, appropriate
+monitoring at suitable stages of the CM process enables timely data analysis to ensure operations
+are in a state of control. In certain cases, relevant process parameters may be adjusted to ensure
+the quality of in-process or output materials. Enhancing in-line/online PAT capabilities and
+development of automation systems for process monitoring enable a continuous monitoring
+scheme in support of a release testing strategy that may include RTRT for some quality attributes.
+For example, drug substance in-line release tests for pH, osmolality, protein concentration and
+online release tests for purity, charge heterogeneity, aggregation, and low-molecular weight
+impurities can be performed at specific points in the drug substance manufacturing process shown
+to be critical for control of the product quality attributes.
+
+An in-process test that is demonstrated to be representative of a release test performed on the
+output material may be used as a surrogate for a traditional release testing method. Conventional
+offline testing for product release is necessary for quality attributes for which analytical
+technologies are not available for online or in-line measurements (e.g., potency). Likewise,
+conventional tests for monitoring and control (e.g., microbiological analytical methods and other
+tests that require long processing times) might also be needed.
+3. PROCESS VALIDATION
+3.1. Approaches to Process Validation
+Process validation approaches used for batch processes are also applicable to CM processes with
+additional considerations for equipment performance over extended run times, integration of
+automation systems, and material flow throughout a CM system. Therefore, the scope of validation
+continues to demonstrate the ability of the CM system to consistently manufacture a product with
+the desired quality.
+
+ICH Q13 Guideline
+
+For therapeutic protein CM, any approach chosen to demonstrate the consistency of process
+performance and product quality should also consider sources of variability that may have a
+potential impact on product quality. This may include variability between batches purified from
+harvest materials collected up to the limit of in vitro cell age from a single cell bank thaw, as well
+as the potential variability between different batches purified from harvests of multiple cell bank
+thaws. Variability may be evaluated either as part of process validation or through alternative
+studies, if justified.
+
+Alternative process validation approaches (e.g., continuous process verification) may be
+considered when justified. Elements such as risk assessment, applicability of development data,
+control strategy, and prior knowledge may be considered in determining the suitability of an
+alternative process validation approach.
+3.2. Run Time Considerations
+Bioreactors for CM may operate for significantly longer periods of time than bioreactors for batch
+manufacturing. The approach to establish a limit of in vitro cell age for production cells does not
+differ, regardless of the mode of bioreactor operation. Previously established limits of in vitro cell
+age for a bioreactor operating in a batch mode run may not be applicable to a bioreactor operating
+in a continuous mode under different culture conditions. The limit of in vitro cell age used for
+production should be based on data derived from production cells expanded under pilot-plant scale
+or commercial-scale conditions to the proposed in vitro cell age or beyond as outlined in ICH Q5A,
+Q5B and Q5D.
+
+Run time considerations should include factors such as the control of all adventitious agents (e.g.,
+viruses, bacteria, fungi, mycoplasma) and resin and membrane lifetimes. Viral testing should be
+conducted as outlined by ICH Q5A, and an appropriate microbial control strategy should be
+established.
+3.3. Viral Clearance Validation
+The general recommendations outlined in ICH Q5A for viral safety and clearance remain
+applicable for CM. Where recommendations may not be applicable to a CM system, scientifically
+justified alternatives may be proposed.
+
+ICH Q13 Guideline
+
+ANNEX IV: INTEGRATED DRUG SUBSTANCE AND DRUG PRODUCT
+CONTINUOUS MANUFACTURING
+
+1. INTRODUCTION
+Annex IV supplements the main guideline by providing additional regulatory and scientific
+considerations that are relevant for the development and implementation of integrated drug
+substance and drug product CM processes (referred to as integrated process(es) hereafter).
+
+This annex also provides an example of an integrated process for a small molecule tablet dosage
+form. The example and approaches described in this annex are not exhaustive. Alternative
+approaches can be used.
+2. INTEGRATED SMALL MOLECULE DRUG SUBSTANCE/DRUG PRODUCT
+PROCESSES
+2.1. Characteristics of Drug Substance and Drug Product Process Steps
+Considering the differences between the drug substance and drug product process steps enables
+appropriate design of an integrated process. For example, process steps for drug substance and
+drug product manufacturing can have different RTDs, and a prevalence for liquid or solid input
+material addition can lead to a different frequency of in-process measurements. These differences
+are expected to influence the selection of equipment, equipment connections, surge lines or tanks,
+and the locations of in-process measurements and material diversion.
+2.2. Example of an Integrated Process
+Figure 4, which is not intended to represent a regulatory flow diagram, illustrates a fully continuous
+integrated drug substance and drug product process. It shows the following elements:
+
+• Material addition points for liquids and solids
+
+• Each process step used for drug substance and drug product manufacturing
+
+• Process design for the interface between the drug substance and drug product
+
+• Sampling locations for all in-line/at-line/offline measurements, including PAT (shown by
+T1–T5)
+
+• All diversion points (shown by D1–D4)
+
+In this example, chemical reaction using flow reactors, continuous crystallisation, and crossflow
+filtration are used to obtain the drug substance as a highly concentrated crystal slurry. A wet
+granulation process consisting of blending, granulation, drying, milling, compression and coating
+unit operations is used to obtain a tablet drug product. The selection of a wet granulation process
+for the manufacture of the drug product permits the drug substance and drug product processes to
+be integrated through the continuous filtration line. The concentrated crystal slurry functions as
+both the drug substance source and the granulation fluid. No surge lines or tanks are used.
+
+ICH Q13 Guideline
+
+Other process schemes—including, for example, different purification methods, surge tanks, mix
+of batch and continuous unit operations—could also be used in the design of an integrated process.
+Details should be provided on how drug substance purity is ensured.
+
+*[Figure 4: Example of an integrated drug substance and drug product CM system]*
+
+ICH Q13 Guideline
+
+2.3. Process Design, Monitoring and Control
+Monitoring points create several process segments, as illustrated in Figure 4 (i.e., from the first
+drug substance reactor up to location T1, process steps from T1 to T2, etc.). The sampling strategy
+could be based on RTD characterisation of individual steps, process segments, or the entire
+process. In this example, the RTD of the drug substance process segment provides a suitable time
+frame to monitor drug substance quality in real time, considering an appropriate sampling
+frequency, test method, time needed for measurement, and instrument capability. Location T1/D1
+is used for sampling drug substance for offline testing or for diversion of drug substance, as
+necessary. Diversion of material impacts mass flow and may require a compensation strategy in
+the downstream operations considering the RTD.
+
+Allowable variations (including minor disturbances) identified through DOE or other suitable
+studies are incorporated into the process control strategy. In this example, the process parameter
+ranges for material additions and reactors, as well as the magnitude and duration of an allowable
+disturbance, are based on the variations shown to be within the purification capability of the
+crystallisation step, so there would be no adverse impact on the drug substance purity and impurity
+profile. An additional risk-based safety margin is included in the established thresholds to ensure
+all non-conforming material is diverted. Variations outside these thresholds result in material
+diversion using a suitable method for material traceability (e.g., RTD model).
+
+Ongoing assessment of equipment performance helps predict and prevent potential problems and
+ensures the ability of a CM process to operate as intended over time. Two such examples are: (1)
+during continuous filtration, monitoring filter back pressure to evaluate filter saturation (maximum
+pressure) and prevent filter failure; and (2) during material feeding using LIWFs, monitoring the
+feeder screw speed in relation to its maximum capacity to inform low feeder fill-level. Monitoring
+of equipment performance could be used to support how process control will be ensured, especially
+during long run times.
+2.4. Start-up and Shutdown
+Individual unit operations of an integrated drug substance and drug product process could achieve
+desired operating conditions at different times due to differences in the type of transformation (e.g.,
+chemical versus physical transformation) and the residence time in the equipment. When such
+differences occur, careful planning of start-up and shutdown sequences reduces waste.
+2.5. RTD Characterisation for System Dynamics and Material Traceability
+Refer to the main guideline for RTD characterisation. As an integrated process has liquid and solid
+process streams, different approaches or tracers may be used to characterise various process
+segments considering the physical state of material in the flow stream (e.g., solution, slurry, solid).
+3. SPECIFICATION AND BATCH DATA
+3.1. Drug Substance Specification
+Even though the drug substance is not isolated in an integrated drug substance and drug product
+process, a drug substance specification should be defined and justified in accordance with ICH
+Q6A and other relevant ICH guidelines. Institution of a drug substance specification defines the
+quality of the drug substance, as well as facilitates the management of lifecycle activities (e.g.,
+ICH Q13 Guideline
+
+facility changes), investigation of adverse events and product recalls, development of
+pharmacopeial monographs, and the establishment of a reference standard.
+
+Although a drug substance specification should be instituted, drug substance testing may not be
+required on a routine basis when the integrated process is appropriately controlled. A set of process
+performance criteria may be defined such that the drug substance could be considered “conforms
+to specification, if tested” when those process performance criteria are met. To ensure there is a
+comprehensive monitoring of the quality of the drug substance during the lifecycle of the product,
+conformance to the drug substance specification should be verified on a periodic and event-driven
+basis by testing the purified drug substance at an appropriate location using a relevant sampling
+plan. The frequency of the periodic verification should be defined and justified. Drug substance
+periodic verification can be based on pre-selected batches and/or at predetermined time intervals
+(e.g., every 5th batch or if manufactured infrequently, annually). Event-based verifications could
+be triggered by a change in supplier, starting material, synthesis conditions, or other factors
+considering risk. Refer to ICH Q6A for additional details on periodic testing.
+
+Appropriate sampling locations should be incorporated into the process design to enable testing of
+the drug substance (e.g., location T1 in Figure 4). Any modifications made to the sample to enable
+the test (e.g., drying of the crystal slurry for testing crystalline form) should be incorporated into
+the test methodology. Sampling locations should be identified in the drug substance specification.
+
+Although the drug substance is not isolated, the origin and fate of potential impurities (e.g., related
+substances, residual solvents, catalysts), robustness of impurity clearance, and impurity carryover
+from the drug substance into the drug product should be provided in the dossier. The control of
+impurities formation and clearance should be integrated into the overall control strategy.
+3.2. Drug Product Specification
+In integrated processes, attributes typically associated with the drug substance quality are generally
+included in the drug product specification unless justified per ICH Q6A. Therefore, the drug
+product specification in an integrated process should include drug substance-related substances,
+residual solvents (used in drug substance synthesis), elemental impurities, etc., when appropriate.
+The specified impurities in the drug product specification may differ from the specified impurities
+in the drug substance specification.
+
+Sampling location should be appropriately identified in the drug product specification table, as
+some testing (e.g., testing for drug substance periodic verification as described above) may need
+to be performed following the drug substance purification step (before drug product formation).
+3.3. Example of a Drug Substance and Drug Product Specification
+An example of a drug substance and drug product testing approach for an integrated process based
+on Figure 4 is shown in Table 4. The test attributes listed are considered relevant for this example.
+The specific details of each integrated process should be considered in the selection of the
+appropriate test attributes and testing plan.
+
+ICH Q13 Guideline
+
+Table 4: Example of a testing approach for an integrated CM
+Test Attribute1
+
+Drug Substance Specification
+for Periodic Testing
+Drug Product Specification
+for Routine Testing of Every Batch
+Test
+Sampling Location
+Test
+Sampling Location
+Description
+N/A
+N/A
+
+Coated tablets
+Identity
+
+Use drug product test result
+
+PAT at tablet feed frame (T4)
+Crystalline Form2
+
+Sampling Location T1
+N/A
+Not tested when justified
+Chirality3
+
+Sampling Location T1
+N/A
+Not tested when justified
+Particle Size
+
+Sampling Location T1
+N/A
+Not tested
+Purity
+
+Sampling Location T1
+N/A
+Not tested
+Assay
+N/A
+N/A
+
+Core tablets, Sampling Location
+combination of T4 (blend
+uniformity) and T5 (tablet weight)
+Impurities4
+Impurity specification for drug substances and drug products may differ
+Related
+Substance
+
+Sampling Location T1 (at-line high
+performance liquid
+chromatography (HPLC))4
+
+
+Sampling Location T1 (at-line
+HPLC)4
+or
+Coated Tablets (offline HPLC
+testing), as appropriate
+Residual
+Solvents
+
+
+Elemental
+Impurities
+
+
+Mutagenic
+Impurities
+
+
+Dissolution
+N/A
+N/A
+
+Coated Tablets
+Uniformity of
+dosage units
+N/A
+N/A
+
+Uncoated Tablets
+Water content
+N/A
+N/A
+
+Coated Tablets
+Microbial limits
+N/A
+N/A
+
+Coated Tablets
+1 Include tests that are necessary to ensure the identity, strength, quality and purity of the drug substance and
+bioavailability of the drug product as per ICH Q6A.
+2 In this example, crystalline form is considered a critical quality attribute for the drug substance and hence tested
+periodically. Crystalline form is not tested in the drug product as lack of form change during drug product
+processing has been demonstrated.
+3 In this example, chirality is considered a critical quality attribute for the drug substance.
+4 Tests that are common to both drug substance and drug product specification need to be tested only at one location;
+the same test result can be used for the drug substance and drug product.
+
+3.4. Batch Data
+Although the drug substance is not isolated, small, planned diversions during process development
+should be used to obtain batch data that is representative of commercial drug substance.
+4.
+STABILITY REQUIREMENTS
+4.1. Drug Substance Stability
+Drug substance stability data to define a re-test period is not applicable as the drug substance is
+not isolated and stored in an integrated process. Drug substance stability data may be appropriate
+ICH Q13 Guideline
+
+for other aspects, such as to support the storage of in-house reference standards and to gain an
+understanding of product stability profiles. Institution of a hold time enables temporary storage of
+drug substance during an interruption in production.
+4.2. Drug Product Stability
+The ICH stability guidelines and Section 4.5 of the main guideline are applicable to drug product
+made by an integrated process.
+5. LOCATION OF DRUG SUBSTANCE AND DRUG PRODUCT INFORMATION IN
+THE CTD
+Drug substance and drug product information could be provided in the respective CTD sections
+3.2.S and 3.2.P of the dossier. A description of the process step that integrates the drug substance
+and drug product could be based on its relevancy to the respective section. For example, in the
+process example provided in this annex, the continuous filtration process could be described in
+CTD section 3.2.S as it is related to concentration of the drug substance. The integrated flow
+diagram can be provided in CTD section 3.2.P and referenced in section 3.2.S.
+
+ICH Q13 Guideline
+
+ANNEX V: PERSPECTIVES ON MANAGING DISTURBANCES
+
+1. INTRODUCTION
+This annex describes examples of approaches for managing transient disturbances (hereafter
+referred to as disturbances in this annex) that may occur during CM. The discussion points
+presented here are not exhaustive. Alternative approaches can be used.
+2. BACKGROUND
+Disturbances may result in a variation in material quality. The impact of some variations on
+material quality in an earlier process step may be resolved by downstream process steps. The extent
+of variations and the ability to resolve them in subsequent steps are impacted by the amplitude,
+duration, and frequency of the disturbance. Identification of tolerable ranges for these parameters
+and establishing appropriate acceptance criteria will enable the development of an effective
+strategy for managing disturbances.
+
+Manufacturers may use various methodologies (e.g., DOE, RTD studies, a combination of both)
+to understand the impact of disturbances. Funnel plot predictions based on an RTD model can be
+a useful tool to understand the qualitative and quantitative impact of the amplitude and duration of
+a disturbance on material quality. Figure 5 shows a funnel plot for drug substance feeding in a drug
+product CM process (similar to the example in Annex II). Funnel plots are specific to the
+formulation, process conditions, and system configuration used in RTD model development.
+Information from the funnel plot helps to inform the selection of appropriate acceptance criteria
+for disturbances. For example, the dotted lines in the following funnel plot show that a disturbance
+of +/- 20% lasting less than 90 seconds would not cause the drug concentration in the blend to
+exceed the 90–110% label claim (LC).
+
+*[Figure 5: Example of a funnel plot for the feeding of a drug substance]*
+
+ICH Q13 Guideline
+
+3. MANAGEMENT OF DISTURBANCES
+Manufacturers may develop various approaches to manage disturbances considering the specific
+details of the CM system and the risk to material quality from disturbances. Three examples
+considering different risks of a disturbance are provided below:
+
+• Example 1: The amplitude and duration of the disturbance meet predefined acceptance
+criteria for the disturbance, and the occurrence of such disturbances is infrequent.
+
+• Example 2: The amplitude or duration of the disturbance exceeds the predefined
+acceptance criteria for the disturbance, and the occurrence of such disturbances is
+infrequent.
+
+• Example 3: The amplitude and duration of each disturbance meet predefined acceptance
+criteria for the disturbance, but multiple, frequent disturbances are observed.
+
+These examples focus on the impact of disturbance from a loss-in-weight feeder (LIWF) on the
+drug concentration in the blend for a CM process similar to that described in Annex II, given that
+all other parameters being monitored meet the predefined acceptance criteria. These examples use
+the information in the funnel plot (Figure 5) and, for the purpose of discussion, assume that the
+acceptance criteria for the magnitude and duration of an LIWF disturbance is +/- 20% lasting for
+80 seconds. These examples help illustrate the important considerations in management of
+disturbances under selected scenarios, which may also be applicable to drug substances and other
+CM processes.
+3.1. Disturbance Example 1
+
+*[Figure 6: Example of an infrequent disturbance that is within the acceptance criteria for]*
+
+disturbances
+
+ICH Q13 Guideline
+
+Description: Figure 6 illustrates a drug substance LIWF with an infrequent transient +20% flow
+spike lasting 40 seconds, which is within the predefined acceptance criteria for disturbances. This
+disturbance causes an increase in the amount of the drug substance fed into the blender, before
+returning to normal operating condition. The funnel plot (Figure 5) shows that following this
+disturbance, the drug substance concentration in the blend remains within the 90–110% acceptance
+criteria, due to back mixing. An additional quality check, such as measurement of the drug
+substance concentration at a suitable location (e.g., NIR measurements at the tablet press feed
+frame) could be considered, to confirm the blend is within 90–110%.
+
+Impact: Although this disturbance represents an excursion from normal operation, the quality of
+the output material is not affected as the magnitude/amplitude of the disturbance and product
+quality meet their predefined acceptance criteria.
+
+Action: No material is diverted. Collection of the output material continues, and the process
+continues to operate. No investigation is needed, because such a disturbance has been evaluated
+during development and impact on material quality is understood.
+3.2. Disturbance Example 2
+
+*[Figure 7: Example of an unexpected disturbance that is outside the acceptance criteria for]*
+
+disturbances
+
+Description: Figure 7 illustrates a drug substance LIWF with an unexpected transient +20% flow
+spike lasting 300 seconds. The disturbance is outside the predefined acceptance criteria for
+disturbances. This disturbance causes an increase in the amount of the drug substance fed into the
+blender before returning to normal operating condition. The funnel plot (Figure 5) shows that
+following this disturbance, the drug substance concentration in the blend exceeds the 90–110%
+ICH Q13 Guideline
+
+acceptance criterion. An additional quality check, such as measurement of the drug substance
+concentration at a suitable location (e.g., NIR measurements at the tablet press feed frame),
+confirms the blend exceeds 110%.
+
+Impact: The quality of the output material is adversely impacted as the disturbance duration
+exceeds the predefined acceptance criteria.
+
+Action: The process continues to operate while the non-conforming material is diverted according
+to a pre-established procedure, and the time to start and end diversion is controlled by the
+automation system. The system returns to normal material collection mode when the non-
+conforming material is completely diverted. If needed, a concurrent investigation is initiated to
+determine root cause.
+
+Diverted Amount: The amount of material diverted depends on the control strategy used (including
+specific triggers for material diversion) and on the process dynamics from the point of disturbance
+detection and the point at which material diversion ends. Inclusion of confidence intervals in the
+RTD provides a safety margin to ensure all non-conforming material is diverted from the batch.
+Additional factors, such as the sampling strategy and the ability to trace and remove materials, are
+considered in establishing the criteria for material diversion.
+3.3. Disturbance Example 3
+
+*[Figure 8: Example of disturbances that are within the acceptance criteria for disturbances,]*
+
+but occur frequently
+
+Description: Figure 8 illustrates a drug substance LIWF with multiple frequent transient +20%
+flow spikes, each lasting 40 seconds, resulting in variability in the amount of material fed into the
+blender.
+ICH Q13 Guideline
+
+Impact: Although each disturbance meets the predefined acceptance criteria for disturbances, it
+occurs with a high frequency over a short time period. In this example, the system cannot dampen
+these multiple disturbances sufficiently, thus resulting in non-conforming materials.
+
+Action: The impact of these disturbances on system performance and output material quality is
+monitored closely (e.g., NIR method, other elements of the control strategy). Process operation
+and product collection continue until one or more elements of the control strategy do not meet the
+predefined acceptance criteria. When a criterion is no longer met, the material is diverted according
+to a pre-established procedure. If high-frequency disturbances persist, process operation may be
+paused. An investigation is conducted to understand the root cause for these frequent disturbances.
+Such investigations enable preventative actions to be taken to avoid equipment failure and adverse
+impact on critical quality attributes, ensure process performance (e.g., robustness), etc. Assessment
+of process capability or other evaluations may also be warranted. Setting acceptance criteria for
+the frequency of disturbances could also be considered to aid the management of disturbances.
+
+Diverted Amount: The amount diverted is the same as described in Section 3.2 of this annex. The
+disposition of the diverted material and the entire batch is assessed upon completion of the
+investigation.

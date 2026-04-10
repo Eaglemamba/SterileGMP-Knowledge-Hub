@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ICH Q14 — Section 2: Robustness &amp; Analytical Control Strategy | 穩健性與分析程序控制策略</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 15px; background: #f4f6f8; color: #1a1a2e; }
+
+  .section-header {
+    background: linear-gradient(135deg, #0f5446 0%, #0f766e 100%);
+    color: white; padding: 28px 36px; margin-bottom: 0;
+  }
+  .section-header h1 { font-size: 1.6rem; font-weight: 700; letter-spacing: 0.5px; }
+  .section-header p { margin-top: 6px; font-size: 0.95rem; opacity: 0.88; }
+  .section-badge {
+    display: inline-block; background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.4); border-radius: 20px;
+    padding: 3px 14px; font-size: 0.82rem; margin-bottom: 10px;
+  }
+
+  .two-col {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0; min-height: 100px;
+    border-bottom: 1px solid #dde2ea;
+  }
+  .two-col:last-child { border-bottom: none; }
+
+  .col-en {
+    padding: 26px 28px; background: #ffffff;
+    border-right: 3px solid #0f766e;
+    font-size: 0.92rem; line-height: 1.75; color: #1e293b;
+  }
+  .col-zh {
+    padding: 26px 28px; background: #f7faf9;
+    font-size: 0.91rem; line-height: 1.8; color: #1e293b;
+  }
+
+  .col-en h2 {
+    font-size: 1.08rem; font-weight: 700; color: #0f5446;
+    margin-bottom: 14px; padding-bottom: 6px;
+    border-bottom: 2px solid #0f766e;
+  }
+  .col-en h3 {
+    font-size: 0.97rem; font-weight: 700; color: #0f766e;
+    margin: 16px 0 8px 0;
+  }
+  .col-en p { margin-bottom: 10px; }
+  .col-en ul { margin: 8px 0 10px 20px; }
+  .col-en ul li { margin-bottom: 5px; }
+  .col-en ol { margin: 8px 0 10px 20px; }
+  .col-en ol li { margin-bottom: 5px; }
+
+  .col-zh h2 {
+    font-size: 1.05rem; font-weight: 700; color: #0f5446;
+    margin-bottom: 14px; padding-bottom: 6px;
+    border-bottom: 2px solid #0f766e;
+  }
+  .col-zh h3 {
+    font-size: 0.95rem; font-weight: 700; color: #0f766e;
+    margin: 14px 0 7px 0;
+  }
+  .col-zh p { margin-bottom: 10px; }
+  .col-zh ul { margin: 8px 0 10px 20px; }
+  .col-zh ul li { margin-bottom: 5px; }
+
+  /* Key term highlights */
+  .kw  { background: #d1fae5; color: #065f46; padding: 1px 5px; border-radius: 3px; font-weight: 600; }
+  .kw2 { background: #fef3c7; color: #92400e; padding: 1px 5px; border-radius: 3px; font-weight: 600; }
+  .kw3 { background: #ede9fe; color: #5b21b6; padding: 1px 5px; border-radius: 3px; font-weight: 600; }
+
+  /* Commentary boxes */
+  .concept-box {
+    background: #ecfdf5; border-left: 4px solid #10b981;
+    border-radius: 0 6px 6px 0; padding: 12px 14px; margin: 12px 0;
+  }
+  .concept-box .box-title {
+    font-weight: 700; color: #065f46; font-size: 0.88rem;
+    margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .analogy-box {
+    background: #fffbeb; border-left: 4px solid #f59e0b;
+    border-radius: 0 6px 6px 0; padding: 12px 14px; margin: 12px 0;
+  }
+  .analogy-box .box-title {
+    font-weight: 700; color: #92400e; font-size: 0.88rem;
+    margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .note-box {
+    background: #fff7ed; border-left: 4px solid #f97316;
+    border-radius: 0 6px 6px 0; padding: 12px 14px; margin: 12px 0;
+  }
+  .note-box .box-title {
+    font-weight: 700; color: #9a3412; font-size: 0.88rem;
+    margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .formula-box {
+    background: #f5f3ff; border-left: 4px solid #7c3aed;
+    border-radius: 0 6px 6px 0; padding: 12px 14px; margin: 12px 0;
+    font-family: monospace;
+  }
+  .formula-box .box-title {
+    font-weight: 700; color: #4c1d95; font-size: 0.88rem;
+    margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  .practice-box-q {
+    background: #f0f9ff; border: 2px dashed #3b82f6;
+    border-radius: 6px; padding: 12px 14px; margin: 12px 0;
+  }
+  .practice-box-q .box-title {
+    font-weight: 700; color: #1e40af; font-size: 0.88rem;
+    margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .practice-box-a {
+    background: #f0fdf4; border: 2px solid #22c55e;
+    border-radius: 6px; padding: 12px 14px; margin: 12px 0;
+  }
+  .practice-box-a .box-title {
+    font-weight: 700; color: #14532d; font-size: 0.88rem;
+    margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px;
+  }
+
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.86rem; }
+  th {
+    background: #0f5446; color: white; padding: 8px 10px;
+    text-align: left; font-size: 0.85rem;
+  }
+  td { padding: 7px 10px; border: 1px solid #d1d5db; vertical-align: top; }
+  tr:nth-child(even) td { background: #f1f5f9; }
+  tr:nth-child(odd) td { background: #ffffff; }
+
+  .page-ref {
+    font-size: 0.78rem; color: #64748b; font-style: italic;
+    background: #f1f5f9; padding: 1px 6px; border-radius: 3px;
+    border: 1px solid #e2e8f0; white-space: nowrap;
+  }
+</style>
+</head>
+<body>
+
+<div class="section-header">
+  <div class="section-badge">ICH Q14 — Section 2 of 4</div>
+  <h1>Section 2: Robustness &amp; Analytical Control Strategy｜穩健性與分析程序控制策略</h1>
+  <p>Covers §5 (Robustness &amp; Parameter Ranges), §6 (Analytical Procedure Control Strategy), §6.1 (ECs for Analytical Procedures) &nbsp;·&nbsp; Pages 12–17</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     ROW 1: §5.1 Robustness — definition and evaluation principles
+     ═══════════════════════════════════════════════════════════════════ -->
+<div class="two-col">
+  <div class="col-en">
+    <h2>§5.1 Robustness <span class="page-ref">pp 12–13</span></h2>
+
+    <p><span class="kw">Robustness</span> is a measure of the capacity of an analytical procedure to meet the expected performance criteria during normal use when subjected to <span class="kw2">deliberate variations</span> of analytical procedure parameters.</p>
+
+    <p>Robustness evaluation should consider the <span class="kw2">duration of analysis</span>, including the stability of sample preparations and reagents.</p>
+
+    <p><span class="kw">Prior knowledge</span> and <span class="kw">risk assessment</span> inform the selection of parameters to investigate. Parameters likely to influence procedure performance over the intended period of use should be studied.</p>
+
+    <p>For most analytical procedures, <span class="kw2">robustness evaluation is conducted during development</span> and does not need to be repeated during validation (per <span class="kw3">ICH Q2</span>). Data from validation studies (e.g., intermediate precision) can complement robustness evaluation.</p>
+
+    <p>For procedures with <span class="kw2">inherent high parameter variability</span> (e.g., those requiring biological reagents), wider parameter ranges may need to be investigated.</p>
+
+    <p>Robustness of <span class="kw">multivariate procedures</span> may require additional considerations (see Chapter 8).</p>
+
+    <p>The outcome of robustness evaluation should be documented and <span class="kw">reflected in the analytical procedure control strategy</span>.</p>
+  </div>
+
+  <div class="col-zh">
+    <h2>§5.1 穩健性（Robustness）</h2>
+
+    <div class="concept-box">
+      <div class="box-title">核心定義：什麼是「穩健性」？</div>
+      <p><span class="kw">穩健性</span>衡量的是：當分析程序參數發生<strong>刻意的小幅變動</strong>時，分析程序仍能符合預期性能標準的能力。</p>
+      <p>重點在於「deliberate variations」——這是<strong>主動設計的實驗</strong>，不是意外誤差。目的是找出程序的邊界，確保在正常使用條件下，微小偏差不會導致失敗。</p>
+    </div>
+
+    <p><strong>評估時機：</strong>穩健性測試應在<span class="kw2">開發階段</span>進行，<strong>不需要</strong>在驗證時重複（ICH Q2規範）。驗證階段的中間精密度數據可作為補充。</p>
+
+    <p><strong>參數選擇依據：</strong></p>
+    <ul>
+      <li>先驗知識（Prior knowledge）</li>
+      <li>風險評估（Risk assessment）</li>
+      <li>預期使用期間內最可能影響性能的參數</li>
+    </ul>
+
+    <div class="note-box">
+      <div class="box-title">特別注意：生物試劑的高可變性</div>
+      <p>使用生物試劑（如抗體、酶）的分析程序，由於批次間固有的高可變性，需要調查<strong>更寬的參數範圍</strong>。這在生物製藥的效價分析（potency assay）中尤為重要。</p>
+    </div>
+
+    <p><strong>穩健性評估結果必須記錄</strong>，並反映在分析程序控制策略中——這是§6的直接輸入。</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     ROW 2: §5.2 Parameter Ranges — PAR, MODR, univariate vs multivariate
+     ═══════════════════════════════════════════════════════════════════ -->
+<div class="two-col">
+  <div class="col-en">
+    <h2>§5.2 Analytical Procedure Parameter Ranges <span class="page-ref">pp 13–14</span></h2>
+
+    <p>Experiments to investigate parameter ranges generate additional knowledge about procedure performance. Analytical procedure attributes and associated criteria could be derived from the <span class="kw3">ATP</span>.</p>
+
+    <h3>Univariate Examination</h3>
+    <p>Examining a <span class="kw2">single parameter</span> in isolation establishes a <span class="kw">Proven Acceptable Range (PAR)</span> for the analytical procedure — the range within which a parameter can be varied while the procedure continues to meet its performance criteria.</p>
+
+    <h3>Enhanced Approach (Multivariate)</h3>
+    <p>Ranges <strong>and interactions</strong> are investigated in <span class="kw">multivariate experiments (DoE)</span>. Risk assessment and prior knowledge identify parameters, attributes, and ranges for investigation. <span class="kw2">Categorical variables</span> (e.g., different instruments, different analysts) can also be included in the experimental design.</p>
+
+    <p><strong>Outcomes from development studies</strong> — understanding of relationships between AP parameters (inputs) and analytical responses (outputs). Based on results:</p>
+    <ul>
+      <li>Fixed <span class="kw">set-points</span> defined for some parameters</li>
+      <li><span class="kw">PARs</span> defined for individual parameters that can vary within an acceptable range</li>
+      <li><span class="kw">MODRs</span> (Method Operable Design Regions) for combined ranges of two or more parameters within which the AP is shown fit for intended purpose</li>
+    </ul>
+
+    <p><strong>Key regulatory rule:</strong> <span class="kw2">Moving within an approved PAR or MODR does NOT require regulatory notification.</span></p>
+
+    <p>AP validation for PAR/MODR is required only for performance characteristics not already covered by development data. The part of a PAR or MODR intended for routine use (typically the intended operational conditions or set point) <span class="kw">must be covered by validation data</span>.</p>
+
+    <p>For future changes <em>within</em> a PAR or MODR: an assessment of the need and extent of additional validation tests is required. A validation strategy (e.g., as part of a validation protocol) can define the necessary scope.</p>
+  </div>
+
+  <div class="col-zh">
+    <h2>§5.2 分析程序參數範圍</h2>
+
+    <div class="concept-box">
+      <div class="box-title">三種範圍概念對比：Set-Point vs PAR vs MODR</div>
+      <table>
+        <tr>
+          <th>概念</th>
+          <th>定義</th>
+          <th>適用情況</th>
+          <th>法規意涵</th>
+        </tr>
+        <tr>
+          <td><strong>Set-Point（設定點）</strong></td>
+          <td>固定的單一操作值，不允許偏差</td>
+          <td>對結果高度敏感、不宜變動的參數</td>
+          <td>任何偏差均需評估（可能需申報）</td>
+        </tr>
+        <tr>
+          <td><strong>PAR（已驗證可接受範圍）</strong></td>
+          <td>單一參數可接受的最大變動範圍，在此範圍內程序符合性能標準</td>
+          <td>單變量研究確定的個別參數範圍（如流速 1.0–1.2 mL/min）</td>
+          <td>在核准PAR內移動：<span class="kw">無需法規申報</span>，於PQS管理</td>
+        </tr>
+        <tr>
+          <td><strong>MODR（方法可操作設計空間）</strong></td>
+          <td>兩個或多個參數的組合可接受範圍；在此多維空間內，程序被證明適合預期用途</td>
+          <td>多變量DoE研究，參數間存在交互作用時（如溫度 × 流動相比例）</td>
+          <td>在核准MODR內移動：<span class="kw">無需法規申報</span>，於PQS管理</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="note-box">
+      <div class="box-title">重要規則：PAR/MODR 內部變更的管理方式</div>
+      <p>在已核准的 PAR 或 MODR 範圍內進行的操作變更，<strong>不需要</strong>向法規主管機關申報，可在公司內部品質管理系統（PQS）框架下管理。</p>
+      <p>但仍需進行內部評估：是否需要額外的驗證測試？這應在驗證協議或變更控制程序中預先定義。</p>
+    </div>
+
+    <p><strong>單變量 vs 多變量方法比較：</strong></p>
+    <table>
+      <tr><th>方法</th><th>工具</th><th>輸出</th><th>優勢</th></tr>
+      <tr>
+        <td>單變量（Univariate）</td>
+        <td>One-factor-at-a-time（OFAT）</td>
+        <td>各自獨立的PAR</td>
+        <td>簡單、直接</td>
+      </tr>
+      <tr>
+        <td>多變量（Multivariate / Enhanced）</td>
+        <td>設計實驗（DoE）</td>
+        <td>MODR（多維設計空間）</td>
+        <td>揭示交互作用；更高靈活性；可納入類別變數（不同儀器、分析員）</td>
+      </tr>
+    </table>
+
+    <div class="formula-box">
+      <div class="box-title">驗證覆蓋要求</div>
+      <p style="font-family: 'Segoe UI', sans-serif; font-size: 0.89rem;">驗證數據必須覆蓋：PAR 或 MODR 中<strong>預定用於日常使用的部分</strong>（通常是預期操作條件或設定點）。開發數據已涵蓋的性能特性，驗證時不需重複。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     ROW 3: §6 Analytical Procedure Control Strategy — overview and SST
+     ═══════════════════════════════════════════════════════════════════ -->
+<div class="two-col">
+  <div class="col-en">
+    <h2>§6 Analytical Procedure Control Strategy <span class="page-ref">pp 14–16</span></h2>
+
+    <p>The <span class="kw">AP control strategy</span> ensures that the analytical procedure is fit for its intended purpose during routine use throughout its lifecycle. It consists of controls derived from the current understanding of the AP, including development data, risk assessment, robustness evaluation, and prior knowledge.</p>
+
+    <p>The AP control strategy should be <span class="kw2">defined before validation</span> and <span class="kw2">confirmed after validation is finalised</span>.</p>
+
+    <h3>AP Control Strategy Includes:</h3>
+    <ul>
+      <li>AP parameters that need to be controlled</li>
+      <li><span class="kw">System Suitability Test (SST)</span> — an integral part of the analytical procedure</li>
+    </ul>
+
+    <p>The AP should describe steps necessary to perform each analytical test: sample, reference materials, reagents, sample/control preparations, apparatus use, calibration curve generation, number of replicates, and formulae for calculating reportable results. The <span class="kw2">level of detail should enable a skilled analyst</span> to perform the analysis.</p>
+
+    <h3>System Suitability Test (SST)</h3>
+    <p>The SST depends on the type and intent of the AP. It is typically conducted with one or more <span class="kw2">predefined materials</span> (positive/negative controls). The SST verifies selected AP attributes, with acceptance criteria based on AP performance criteria. Components are selected using risk assessment, knowledge, and development data.</p>
+
+    <p>The SST verifies that the <span class="kw">measurement system and analytical operations are fit for intended purpose</span>. <span class="kw2">Validity of results depends on the outcome of the SST.</span></p>
+
+    <p>In the enhanced approach, well-designed SST parameters and criteria represent an important aspect of <span class="kw">risk mitigation</span>.</p>
+
+    <p>For multivariate APs: data quality is verified using suitable software tools.</p>
+  </div>
+
+  <div class="col-zh">
+    <h2>§6 分析程序控制策略</h2>
+
+    <div class="concept-box">
+      <div class="box-title">AP 控制策略的四大組成要素</div>
+      <table>
+        <tr><th>要素</th><th>說明</th><th>來源</th></tr>
+        <tr>
+          <td><strong>AP 參數控制</strong></td>
+          <td>需要控制的程序參數（set-point、PAR 或 MODR）</td>
+          <td>§5 穩健性研究、開發數據</td>
+        </tr>
+        <tr>
+          <td><strong>系統適用性試驗（SST）</strong></td>
+          <td>每次分析前驗證量測系統是否適用</td>
+          <td>風險評估 + 開發數據</td>
+        </tr>
+        <tr>
+          <td><strong>樣品適用性評估</strong></td>
+          <td>確認樣品/樣品制備是否符合預設接受標準</td>
+          <td>生物製品常需此項</td>
+        </tr>
+        <tr>
+          <td><strong>持續監控</strong></td>
+          <td>趨勢分析，支持生命週期管理與主動干預</td>
+          <td>例行分析數據積累</td>
+        </tr>
+      </table>
+    </div>
+
+    <p><strong>時序要求：</strong>控制策略應在<span class="kw2">驗證前定義</span>，並在<span class="kw2">驗證完成後確認</span>——這確保了驗證設計與控制策略目標一致。</p>
+
+    <div class="analogy-box">
+      <div class="box-title">類比：SST 就像飛行前的「起飛前檢查清單」</div>
+      <p>每次飛機起飛前，機長必須完成一份標準的起飛前檢查清單——引擎狀態、燃油、儀表等——確認所有系統正常運作，才能允許起飛。</p>
+      <p>SST 的邏輯完全相同：<strong>每次分析運行前</strong>，用預定義的材料（如系統適用性標準品）驗證儀器、試劑和操作系統是否正常運作，才能讓正式樣品的結果具有效力。</p>
+      <p><strong>關鍵：結果有效性取決於 SST 是否通過。</strong>如同飛機不得跳過起飛前檢查，分析員不得在 SST 未通過的情況下報告結果。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     ROW 4: §6 Sample Suitability Assessment & Ongoing Monitoring
+     ═══════════════════════════════════════════════════════════════════ -->
+<div class="two-col">
+  <div class="col-en">
+    <h3>Sample Suitability Assessment <span class="page-ref">p 15</span></h3>
+
+    <p>Often used for biologics: a sample or sample preparation is considered suitable if the measurement response satisfies <span class="kw2">predefined acceptance criteria</span>. Along with SST, this is a prerequisite for the validity of the result.</p>
+
+    <p>Sample suitability assessment may include:</p>
+    <ul>
+      <li>Assessment of the similarity of response between the <span class="kw">reference material</span> and the test sample</li>
+      <li>Assessment of <span class="kw2">interfering signals</span></li>
+      <li>For multivariate APs: a <span class="kw">data quality check</span> using software to verify the sample fits within the model space</li>
+    </ul>
+
+    <h3>Ongoing Monitoring</h3>
+    <p>Ongoing monitoring is <span class="kw">recommended</span> to look for trends. It facilitates <span class="kw2">lifecycle management</span> and enables proactive intervention before the AP performance degrades.</p>
+  </div>
+
+  <div class="col-zh">
+    <h3>樣品適用性評估 vs 系統適用性試驗（SST）</h3>
+
+    <div class="concept-box">
+      <div class="box-title">辨析：SST 與樣品適用性評估 — 各自驗證什麼？</div>
+      <table>
+        <tr>
+          <th>比較點</th>
+          <th>系統適用性試驗（SST）</th>
+          <th>樣品適用性評估</th>
+        </tr>
+        <tr>
+          <td><strong>驗證對象</strong></td>
+          <td>量測系統本身（儀器、試劑、操作）</td>
+          <td>被測樣品及其制備</td>
+        </tr>
+        <tr>
+          <td><strong>使用材料</strong></td>
+          <td>預定義的 SST 標準品（正/負控制品）</td>
+          <td>參考材料 vs 測試樣品的響應比較</td>
+        </tr>
+        <tr>
+          <td><strong>核心問題</strong></td>
+          <td>「儀器和操作今天是否正常？」</td>
+          <td>「這個樣品是否適合用此方法測定？」</td>
+        </tr>
+        <tr>
+          <td><strong>常見應用</strong></td>
+          <td>所有分析程序均適用</td>
+          <td>主要用於<strong>生物製品</strong>（biologics）效價分析</td>
+        </tr>
+        <tr>
+          <td><strong>法規地位</strong></td>
+          <td>結果有效性的必要前提</td>
+          <td>與 SST 並列，均為結果有效性的必要前提</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="note-box">
+      <div class="box-title">持續監控的重要性</div>
+      <p>Q14 <strong>推薦</strong>（非強制）持續監控，目的是：</p>
+      <ul>
+        <li>偵測趨勢（如儀器性能緩慢退化）</li>
+        <li>支持生命週期管理</li>
+        <li>在分析程序性能實際下降前，主動介入改善</li>
+      </ul>
+      <p>這是分析程序的「預防維護」，而非等待失敗後再補救。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     ROW 5: §6.1 ECs for Analytical Procedures — concept and application
+     ═══════════════════════════════════════════════════════════════════ -->
+<div class="two-col">
+  <div class="col-en">
+    <h2>§6.1 Established Conditions (ECs) for Analytical Procedures <span class="page-ref">pp 16–17</span></h2>
+
+    <p>In line with <span class="kw3">ICH Q12</span>, applicants may propose <span class="kw">Established Conditions (ECs)</span> for an analytical procedure. ECs are identified using risk assessment, prior knowledge, and uni-/multi-variate experimentation.</p>
+
+    <h3>Minimal vs Enhanced Approach to ECs</h3>
+    <p>With a <span class="kw2">minimal approach</span>: the number of ECs may be <span class="kw2">extensive</span>, with fixed parameters and set points described in detail.</p>
+
+    <p>With an <span class="kw">enhanced approach</span>: increased understanding facilitates identification of an <span class="kw">appropriate, reduced set of ECs</span> focused on AP performance (e.g., acceptable ranges) when justified by AP understanding and risk management.</p>
+
+    <h3>What ECs Could Consist of:</h3>
+    <ul>
+      <li>Performance characteristics and associated criteria (e.g., as described in the ATP)</li>
+      <li>Analytical procedure principle (physicochemical basis or specific technology)</li>
+      <li>SST and sample suitability assessment criteria</li>
+      <li>Set points and/or ranges for one or more AP parameters</li>
+    </ul>
+
+    <p>Parameters that <span class="kw2">need control</span>, or where the need for control cannot reasonably be excluded, should be identified as ECs. If SST or performance criteria demonstrate that a parameter is under control, that parameter <span class="kw">may not need to be defined as an EC</span> (or may be assigned a lower reporting category).</p>
+
+    <p>ECs and reporting categories are <span class="kw2">proposed by the applicant</span> and assessed by regulatory authorities.</p>
+
+    <p><strong>Important:</strong> Use of the enhanced approach should <span class="kw2">NOT lead to a less detailed description</span> of the AP in the regulatory submission. Module 3 AP descriptions must still be suitably detailed, including ECs <em>and</em> supportive information.</p>
+  </div>
+
+  <div class="col-zh">
+    <h2>§6.1 分析程序的既定條件（ECs）</h2>
+
+    <div class="concept-box">
+      <div class="box-title">概念連結：ICH Q12 的 EC 概念如何應用於分析程序？</div>
+      <p>ICH Q12 引入的<span class="kw">既定條件（Established Conditions, ECs）</span>概念原本針對製造工藝——EC 是法規批准文件中被納入監管的條件，變更EC需走法規申報程序。</p>
+      <p>Q14 將這個框架<strong>擴展到分析程序領域</strong>：</p>
+      <ul>
+        <li>AP 的哪些參數或條件需要作為 EC？</li>
+        <li>EC 的變更需要什麼層級的申報？</li>
+        <li>申請人如何設計 EC 集合，使日常操作靈活性最大化？</li>
+      </ul>
+    </div>
+
+    <div class="concept-box">
+      <div class="box-title">最小化方法 vs 增強方法 — EC 策略對比</div>
+      <table>
+        <tr>
+          <th>比較點</th>
+          <th>最小化方法（Minimal Approach）</th>
+          <th>增強方法（Enhanced Approach）</th>
+        </tr>
+        <tr>
+          <td><strong>EC 數量</strong></td>
+          <td>多且廣泛，幾乎所有參數均固定</td>
+          <td>精簡，聚焦於真正影響性能的關鍵參數</td>
+        </tr>
+        <tr>
+          <td><strong>EC 形式</strong></td>
+          <td>固定設定點（fixed set-points）為主</td>
+          <td>性能可接受範圍（PAR/MODR）為主</td>
+        </tr>
+        <tr>
+          <td><strong>EC 依據</strong></td>
+          <td>慣例描述，無充分風險依據</td>
+          <td>風險評估 + DoE + 先驗知識充分支持</td>
+        </tr>
+        <tr>
+          <td><strong>變更靈活性</strong></td>
+          <td>低（頻繁觸發法規申報）</td>
+          <td>高（在 PAR/MODR 內移動不需申報）</td>
+        </tr>
+        <tr>
+          <td><strong>申報文件細節</strong></td>
+          <td>詳細的固定參數清單</td>
+          <td>同樣詳細，但側重<strong>性能標準</strong>而非固定參數</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="note-box">
+      <div class="box-title">常見誤解：增強方法 ≠ 減少申報文件細節</div>
+      <p>許多人誤以為「增強方法」意味著可以在法規申報中提交更少的資訊。這是<strong>錯誤的</strong>。</p>
+      <p>Q14 明確指出：增強方法不應導致 Module 3 中分析程序描述的細節<strong>減少</strong>。差別在於細節的<strong>性質</strong>：</p>
+      <ul>
+        <li><strong>最小化方法：</strong>固定參數清單</li>
+        <li><strong>增強方法：</strong>性能標準 + 可接受範圍 + 支持性開發數據</li>
+      </ul>
+      <p>兩者都需要充分的細節，只是描述的框架不同。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     ROW 6: Practice Question & Answer
+     ═══════════════════════════════════════════════════════════════════ -->
+<div class="two-col">
+  <div class="col-en">
+    <h2>Application Example <span class="page-ref">pp 13–14</span></h2>
+
+    <p>The following scenario illustrates the regulatory implications of a MODR in the context of routine analytical operations and change management.</p>
+
+    <p>Key principle: once an analytical procedure parameter range (PAR or MODR) has been approved as part of the regulatory submission, the applicant has the flexibility to operate anywhere within that space without further regulatory notification.</p>
+
+    <p>This flexibility is predicated on the <span class="kw">control strategy</span> — including SST and ongoing monitoring — remaining effective to confirm the procedure is operating as intended.</p>
+
+    <p>For any change within a PAR or MODR, an <span class="kw2">internal assessment</span> of whether additional validation tests are needed remains a requirement, even if no regulatory notification is triggered.</p>
+  </div>
+
+  <div class="col-zh">
+    <h2>應用練習</h2>
+
+    <div class="practice-box-q">
+      <div class="box-title">練習題</div>
+      <p>某公司使用一種 HPLC 方法用於原料藥含量測定（assay），並已在法規申報中定義了一個 MODR，涵蓋：</p>
+      <ul>
+        <li>管柱溫度：30–40°C</li>
+        <li>流動相比例：在定義範圍內可調整</li>
+      </ul>
+      <p>現在，該公司希望將常規操作的管柱溫度從 35°C 調整至 38°C（仍在 MODR 核准範圍內）。</p>
+      <p><strong>問題：他們是否需要向法規主管機關申報此變更？需要採取哪些措施？</strong></p>
+    </div>
+
+    <div class="practice-box-a">
+      <div class="box-title">解答</div>
+      <p><strong>不需要法規申報。</strong></p>
+      <p>理由：38°C 在已核准的 MODR（30–40°C）範圍內。根據 ICH Q14 §5.2，在核准的 PAR 或 MODR 內進行的操作變更，可在公司內部品質管理系統（PQS）框架下管理，<strong>無需</strong>向法規主管機關申報。</p>
+      <p><strong>但應採取的內部措施：</strong></p>
+      <ul>
+        <li><strong>內部變更評估：</strong>評估是否需要進行額外的驗證測試（如果 38°C 已在開發/驗證數據覆蓋範圍內，通常不需要）。</li>
+        <li><strong>PQS 記錄：</strong>按照公司變更控制程序記錄此變更。</li>
+        <li><strong>SST 確認：</strong>確保現有的系統適用性試驗標準在新操作條件下仍然有效。</li>
+        <li><strong>驗證覆蓋確認：</strong>確認 38°C 包含在驗證數據的覆蓋範圍內（依 Q14 §5.2 要求，MODR 中預定用於日常使用的部分必須有驗證數據支持）。</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

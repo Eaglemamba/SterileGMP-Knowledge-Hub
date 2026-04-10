@@ -2,7 +2,7 @@
 
 This document summarizes the current coverage status, gap analysis, and expansion roadmap for building a comprehensive sterile pharmaceutical manufacturing knowledge hub suitable for COO-level operational decision-making.
 
-Last updated: 2026-04-09 — 166 documents complete (PDA 41, USP 76, ISPE 14, FDA 5, ICH 3, PIC/S 3, ISO 17, Ph.Eur. 7); Added PIC/S Annex 2 (ATMPs + Biologics) and Annex 20 (QRM); Annex 15 source extracted — HTML pending; Raw PDFs queue empty — all available PDFs processed or blocked; next priority: Expert Knowledge Base or Layer 2 Operational Frameworks
+Last updated: 2026-04-10 — 170 documents complete (PDA 41, USP 76, ISPE 14, FDA 5, ICH 6, PIC/S 4, ISO 17, Ph.Eur. 7); Completed ICH Q12 (Lifecycle Management, 6 sections), ICH Q13 (Continuous Manufacturing, 5 sections), ICH Q14 (Analytical Procedure Development, 5 sections) — all merged, knowledge MDs regenerated, INDEX.md + INDEX-router.md updated; Raw PDFs queue: 3 permanently blocked (OCR/encoding), 1 to-do (21 CFR 600-680); Education Layer complete at 8 depts
 
 ---
 
@@ -11,6 +11,11 @@ Last updated: 2026-04-09 — 166 documents complete (PDA 41, USP 76, ISPE 14, FD
 The hub is designed as a layered knowledge system. Skills (slash commands) read from all layers to produce site-grounded, regulation-backed outputs.
 
 ```
+Education Layer: Document Discovery & Learning   index.html / learning-path.html / mindmap.html
+  Bilingual dashboard, department curriculum,    ← This repo (public)  ✅ COMPLETE
+  interactive mind map — powered by reports.json
+  + gmp-curriculum-data.js
+
 Layer 1: Regulatory / Technical Reference    knowledge/
   PDA, ISPE, PIC/S, FDA, ICH, USP, ISO      ← This repo (public)  ✅ COMPLETE
 
@@ -36,7 +41,10 @@ Layer 3: Site-Specific Documents             ~/Amaran-Site-Knowledge/
 
 | Component | Status | Count |
 |-----------|--------|-------|
-| Layer 1 — Regulatory Reference | ✅ Complete | 166 documents |
+| Education Layer — Dashboard & Learning UI | ✅ Complete | 4 tools (index.html, learning-path.html, mindmap.html, quiz.html) |
+| Education Layer — Curriculum Data | ✅ Complete | 8 departments × 3 tiers (gmp-curriculum-data.js) |
+| Education Layer — Quiz System | ✅ Complete | /quiz skill + quiz.html tracker + knowledge/exams/ bank |
+| Layer 1 — Regulatory Reference | ✅ Complete | 170 documents |
 | Expert Knowledge Base | ⬜ Not started | 9 files planned |
 | Layer 2 — Operational Frameworks | ⬜ Not started | ~27 files planned |
 | Layer 2 — Skills System | ⬜ Not started | 26 slash commands planned |
@@ -46,16 +54,102 @@ Layer 3: Site-Specific Documents             ~/Amaran-Site-Knowledge/
 
 **In order:**
 
-1. **Expert Knowledge Base** — start with SA25 lifecycle (`#1`) or Lyo ANDA end-to-end (`#2`); see full plan below
-2. **Layer 2 Operational Frameworks** — P0 skills first (`/deviation`, `/change-control`) with supporting templates
-3. **Layer 1 additions** — ISO 14644-2/3 (monitoring/test methods; have Parts 1/5/7), ISO 17665 (steam sterilisation), PDA TR36 (lyophilisation), ISPE GEP (OCR required), remaining USP `<1229>` sub-series
-4. **Layer 3** — resume SOP desensitization via `~/Amaran-AI-SOP/`; human review required per document
+1. ~~**PICS-Annex15**~~ ✅ **Done 2026-04-09** — 3 sections generated (p211-p226), merged, reports.json + INDEX.md + INDEX-router.md updated. PIC/S set complete at 4 documents.
+2. ~~**ICH Q12/Q13/Q14**~~ ✅ **Done 2026-04-10** — ICH Q12 (6 sections, lifecycle management/ECs/PACMP), ICH Q13 (5 sections, continuous manufacturing/CPV/RTD), ICH Q14 (5 sections, analytical procedure development/ATP/MODR/RTRT) — all merged, knowledge MDs regenerated, INDEX.md + INDEX-router.md updated. ICH set now at 6 documents (170 total).
+3. **Expert Knowledge Base** — start with SA25 lifecycle (`#1`) or Lyo ANDA end-to-end (`#2`); see full plan below
+3. **Layer 2 Operational Frameworks** — P0 skills first (`/deviation`, `/change-control`) with supporting templates
+4. **Layer 1 additions requiring new PDFs** — ISO 14644-2/3, ISO 17665, PDA TR36, FDA Container Closure / Terminal Sterilization, 21 CFR 600-680 (biological products — To-Do item) *(USP `<1229>` sub-series: ✅ complete as of 2026-04-09)*
+5. **Layer 3** — resume SOP desensitization via `~/Amaran-AI-SOP/`; human review required per document
 
-> **Raw PDFs queue status (2026-04-09):** All uploaded PDFs have been processed or marked blocked. No unprocessed PDFs remain. Blocked: ISPE-GEP (OCR required), ISO-14971 (scanned), ISO-15225 (font encoding failure).
+> **Raw PDFs queue status (2026-04-09):**
+> - ✅ **Done:** `pe-009-17-gmp-guide-annexes.pdf` — PICS-Annex15 complete; PDF moved to `Raw pdfs/processed/`
+> - ❌ **Blocked — OCR required:** `ISPE-Good Engineering Practice.pdf`
+> - ❌ **Blocked — scanned PDF:** `N. BS EN ISO14971_2019.pdf`
+> - ❌ **Blocked — font encoding failure:** `CEN EN ISO 15225.pdf`
+> - 📋 **To-Do (no PDF yet):** 21 CFR 600-680 — Biological Products regulations
 
 ---
 
-## Layer 1: Regulatory Reference — ✅ COMPLETE (166 documents)
+## Education Layer — Document Discovery & Learning Tools ✅ COMPLETE
+
+Three browser-based tools provide document discovery, role-based learning, and knowledge visualization. All data is driven by `reports.json` and `gmp-curriculum-data.js` — no hardcoded content.
+
+### index.html — Document Index Dashboard
+
+Bilingual (EN/ZH-TW) searchable document index with deep search across titles, summaries, and section content.
+
+- Source-based filtering (PDA, ISPE, FDA, ICH, PIC/S, USP, ISO, Ph.Eur.)
+- Tag-based filtering with color-coded topic pills
+- Reading history with localStorage persistence
+- Relevance scoring with per-field match badges
+- Sort by relevance, date, or source
+- Links to: `learning-path.html`, `mindmap.html`, `quiz.html`
+
+### learning-path.html — Department Curriculum Tracker
+
+Role-based reading tracker powered by `gmp-curriculum-data.js`. Covers 8 departments × 3 tiers.
+
+| Department | Icon | Tier 1 Foundation | Tier 2 Core | Tier 3 Advanced |
+|-----------|------|-------------------|-------------|-----------------|
+| Quality Assurance | 🛡️ | 5 docs | 8 docs | 4 docs |
+| Quality Control | 🔬 | 7 docs | 16 docs | 12 docs |
+| Manufacturing / Production | ⚙️ | 5 docs | 7 docs | 6 docs |
+| Engineering & Maintenance | 🔧 | 5 docs | 6 docs | 5 docs |
+| Regulatory Affairs | 📋 | 5 docs | 6 docs | 5 docs |
+| Warehouse | 🏗️ | 5 docs | 6 docs | 4 docs |
+| Technical Service | 🛠️ | 5 docs | 7 docs | 5 docs |
+| Biotechnology IT (BT) | 💻 | 5 docs | 6 docs | 5 docs |
+
+Features: checkbox progress tracking, Required/Optional badges, per-department progress rings, overall completion percentage — all persisted in localStorage. Quiz score badges (🎯 95%) appear on each doc row when a quiz has been attempted.
+
+### quiz.html — Quiz Score Tracker
+
+Browser-based quiz history dashboard. Stores exam results in localStorage (`gmp-quiz-results`). Receives results via paste-JSON workflow from Claude Code `/quiz` skill.
+
+| Tab | Function |
+|-----|----------|
+| Quiz History | All attempts grouped by doc_key, with per-question breakdown and color-coded score pills |
+| Record Result | Paste JSON output from Claude → validate → save to localStorage |
+| How to Use | Step-by-step instructions |
+
+Score tiers: ≥80% = green, 60–79% = yellow, <60% = red.
+
+### /quiz Skill — Interactive Exam Conductor
+
+Claude Code slash command (`.claude/commands/quiz.md`). Accepts a doc key or topic path:
+
+```
+/quiz TR22
+/quiz topics/APS-filling-isolator
+/quiz PICS-Annex15
+```
+
+Workflow: resolve doc → read knowledge MD (or exam bank JSON from `knowledge/exams/`) → silently design 10 questions → ask one at a time → score each answer immediately → output final JSON block for pasting into `quiz.html`.
+
+Question bank directory: `knowledge/exams/` — pre-written questions in JSON format for repeatability. First bank: `topics-APS-filling-isolator.json` (10 questions, derived from live exam 2026-04-10, score 95/100).
+
+### mindmap.html — Knowledge Mind Map
+
+Interactive D3.js + Markmap-powered visualization of the entire knowledge base. Three view modes:
+
+| View | Description |
+|------|-------------|
+| By Department | Shows 8 department tracks with Foundation → Core → Advanced hierarchy |
+| By Topic | Groups documents into 10 thematic clusters (Aseptic Processing, Sterilization & Filtration, Container Closure, Quality Systems, Environmental Monitoring, Testing Methods, Facilities & Utilities, Advanced Therapies, Regulatory & Compliance, Emerging Technologies) |
+| By Source | Organizes all 167 documents by issuing organization (PDA, ISPE, FDA, ICH, PIC/S, USP, ISO, Ph.Eur.) |
+
+### gmp-curriculum-data.js — Curriculum Data File
+
+Single source of truth for learning path structure. Consumed by `learning-path.html` and `mindmap.html`.
+
+- `departments[]` — 8 department objects (QA, QC, Production, Engineering, RA, Warehouse, Technical Service, BT/IT), each with `tiers[]` containing curated `docs[]` (key + required flag + rationale)
+- `topicClusters[]` — 10 topic clusters with tag-based matching for mind-map "By Topic" view
+- `sourceOrgs{}` — 8 source organization labels and brand colors
+- Helper functions: `generateDeptMarkdown()`, `generateTopicMarkdown()`, `generateSourceMarkdown()` (used by Markmap renderer)
+
+---
+
+## Layer 1: Regulatory Reference — ✅ COMPLETE (167 documents)
 
 ### Completion Summary
 
@@ -65,14 +159,14 @@ Layer 3: Site-Specific Documents             ~/Amaran-Site-Knowledge/
 | **USP** | 76 | General Chapters — sterility, endotoxin, particulates, microbial, CCI, E&L, water, validation, analytical | ✅ Complete |
 | **ISPE** | 14 | Baseline Guides, Good Practice Guides, GAMP | ✅ Complete (1 pending OCR) |
 | **FDA** | 5 | Aseptic Processing, Process Validation, Process Inspection, Combination Products CGMP, HF for Combo Products | ✅ Complete |
-| **ICH** | 3 | Q8(R2), Q9(R1), Q10 | ✅ Complete |
-| **PIC/S** | 3 | Annex 1 (2022), Annex 2 (ATMPs + Biologics), Annex 20 (QRM); Annex 15 source extracted — HTML pending | ✅ Complete |
+| **ICH** | 6 | Q8(R2), Q9(R1), Q10, Q12 (Lifecycle Mgmt), Q13 (Continuous Mfg), Q14 (Analytical Procedure Dev) | ✅ Complete |
+| **PIC/S** | 4 | Annex 1 (2022), Annex 2 (ATMPs + Biologics), Annex 20 (QRM), Annex 15 (Qualification and Validation 2023) | ✅ Complete |
 | **ISO** | 17 | ISO 11040 (Prefilled Syringes Parts 1–8), ISO 13408 (Aseptic Processing Parts 1–7), ISO 14644 (Cleanrooms Parts 1/5/7), ISO 11608-1 (NIS), ISO 13485 (Medical Device QMS), ISO 10993-1 (Biological Evaluation), ISO TR 24971 (Risk Management Guidance), ISO 15378 (Primary Packaging GMP), ISO 9001, ISO 2859-1, ISO 9000, ISO 15223-1, ISO 15223-2, ISO 15394, ISO 13926-1/2/3 — ISO 14971 ❌ blocked (scanned PDF); ISO 15225 ❌ blocked (font encoding) | ✅ Complete (available PDFs) |
 | **Ph.Eur.** | 7 | 2.6.1 Sterility ✅, 2.6.14 Bacterial Endotoxins ✅, 2.9.19 Sub-visible Particles ✅, 2.9.20 Visible Particles ✅, 3.2.1 Glass Containers ✅, 3.3.8 Sterile Single-Use Syringes ✅, 5.1.1 Methods of Preparation ✅ | ✅ Complete (planned scope) |
 | **IEC** | 0 | 62366-1 (usability engineering) | ⬜ Not started |
 | **EU GMP** | 0 | Annex 15, Annex 2, Annex 20 (→ PIC/S equivalents now covered) | ⬜ Future (Phase 6, lower priority — PIC/S equivalents complete) |
 | **WHO GMP** | 0 | TRS 961 Annex 6, TRS 1010 | ⬜ Future (Phase 6) |
-| **Total** | **166** | | |
+| **Total** | **170** | | |
 
 ### USP Batch History
 
@@ -110,6 +204,16 @@ Layer 3: Site-Specific Documents             ~/Amaran-Site-Knowledge/
 | ~~Ph. Eur. 3.2.1 Glass Containers~~ | ✅ Done | — | — |
 | ~~Ph. Eur. 3.3.8 Sterile Single-Use Syringes~~ | ✅ Done 2026-04-09 | — | — |
 | WHO TRS 961 Annex 6, TRS 1010 | Phase 6 | Medium | Small each |
+| **PDA TR33 (Rev 2013)** — Alternative & Rapid Microbiological Methods | Phase 5 | **High** | Medium |
+| **PDA TR80 (2019)** — Data Integrity for Pharmaceutical Laboratories | Phase 5 | **High** | Medium |
+| **PDA TR57** — Analytical Method Validation & Transfer | Phase 5 | Medium | Medium |
+| **PDA TR69 (2014)** — Bioburden & Biofilm in Pharma Water Systems | Phase 5 | Medium | Medium |
+| **PDA TR36** — Current Practices for Lyophilization Validation | Phase 5 | Medium | Medium |
+| **ISO 11737-1** — Sterilization: Bioburden Determination | Phase 6 | Medium | Small |
+| **ISO 11737-2** — Sterilization: Sterility Testing | Phase 6 | Medium | Small |
+| **PDA TR81 (2020)** — Cell-Based Potency Assays for Biologics | Phase 6 | Low | Medium |
+| **PDA TR47** — Preparation of Biological Indicators | Phase 6 | Low | Small |
+| **EP 5.1.6** — Alternative Methods for Microbiological Quality | Phase 6 | Low | Small |
 
 ---
 
@@ -306,12 +410,14 @@ All PDA TRs (41), top ISPE guides (14), PIC/S Annex 1, FDA Aseptic/Process Val/P
 
 | Task | Document | Effort | Status |
 |------|----------|--------|--------|
+| ~~PIC/S completion~~ | ~~PICS-Annex15 — Qualification and Validation~~ | — | ✅ Done 2026-04-09 |
 | ISO addition | ISO 14644-2 (monitoring), ISO 14644-3 (test methods) — Parts 1/5/7 already done | Medium | ⬜ Need PDF |
 | PDA addition | TR36 — Lyophilization | Medium | ⬜ Need PDF |
 | ISO addition | ISO 17665 — Steam sterilization | Medium | ⬜ Need PDF |
 | ISPE completion | GEP — Good Engineering Practice | Medium | ❌ Blocked (OCR) |
 | FDA additions | Container Closure Guidance, Terminal Sterilization Guidance | Medium | ⬜ Need PDF |
 | USP completion | `<1229>` sub-series (pending entries), `<151>`, `<790>` | Small | ⬜ Need PDF |
+| FDA / CFR | 21 CFR 600-680 — Biological Products | Medium | ⬜ Need PDF |
 
 ### Phase 5: Active — Combination Products Device Layer
 
@@ -450,8 +556,13 @@ Add only when client mix justifies:
 │   ├── USP/
 │   ├── ISO/                # Phase 4
 │   └── EXPERT/             # Practitioner knowledge base (Phase active)
-├── reports.json            # Single source of truth
-├── index.html              # Dashboard
+├── reports.json            # Single source of truth for all document metadata
+├── gmp-curriculum-data.js  # Department curriculum structure (7 depts × 3 tiers)
+├── index.html              # Document index dashboard (reads reports.json)
+├── learning-path.html      # Department learning tracker (reads gmp-curriculum-data.js)
+├── mindmap.html            # Knowledge mind map — 3 views (reads both)
+├── quiz.html               # Quiz score tracker — paste JSON from /quiz skill to record
+├── index-v2.html           # Alternate dashboard layout (experimental)
 └── docs/
     ├── ROADMAP.md          # This file
     ├── SKILLS.md           # Skills list

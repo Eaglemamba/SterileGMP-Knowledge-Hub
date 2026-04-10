@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIC/S Annex 15 - Section 3: Utilities, Cleaning Validation, Change Control &amp; Glossary</title>
+    <style>
+:root {
+    --primary-blue: #1e3a5f; --accent-blue: #3498db; --light-gray: #fafafa;
+    --light-blue: #f0f7ff; --yellow-start: #fff9e6; --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9; --green-border: #4caf50; --orange-bg: #fff3e0;
+    --orange-border: #ff9800; --purple-bg: #f3e5f5; --purple-border: #9c27b0;
+    --text-dark: #2d3748; --text-medium: #4a5568; --header-height: 60px; --nav-height: 50px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif; line-height: 1.75; color: var(--text-dark); background: #f0f2f5; }
+.header { background: linear-gradient(135deg, #1a2c3a 0%, #2d4a5e 100%); color: white; padding: 2rem; text-align: center; }
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; color: #f97316; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; color: #fb923c; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.top-header { background: linear-gradient(135deg, #1a2c3a 0%, #2d4a5e 100%); color: white; padding: 1rem 2rem; text-align: center; }
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+.top-nav { background: #2d3748; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.15); display: flex; align-items: stretch; }
+.nav-container { display: flex; justify-content: flex-start; align-items: center; flex: 1; padding: 0 0.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn { background: #2d3748; border: none; color: rgba(255,255,255,0.7); padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; line-height: 1; flex-shrink: 0; }
+.nav-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1rem; color: rgba(255,255,255,0.85); text-decoration: none; white-space: nowrap; border-bottom: 3px solid transparent; transition: all 0.2s ease; }
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: var(--accent-blue); background: rgba(255,255,255,0.05); }
+.nav-num { width: 24px; height: 24px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; }
+.nav-item.active .nav-num { background: var(--accent-blue); }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.chapter-section { background: white; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden; scroll-margin-top: calc(var(--nav-height) + 1rem); }
+.chapter-divider { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem; background: linear-gradient(135deg, #1a2c3a 0%, #2d4a5e 100%); color: white; }
+.chapter-badge { width: 45px; height: 45px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 700; flex-shrink: 0; }
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+.two-column, .content-grid, .side-by-side { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+.left-column, .original-content { background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; }
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 { color: var(--primary-blue); border-bottom: 2px solid #3182ce; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.left-column h4, .original-content h4 { color: var(--primary-blue); margin: 1rem 0 0.5rem; font-size: 1rem; }
+.left-column p, .original-content p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol, .original-content ul, .original-content ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+.right-column, .commentary { background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #bee3f8; }
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 { color: #2c5282; border-bottom: 2px solid #63b3ed; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.right-column h4, .commentary h4 { color: #2c5282; margin: 1rem 0 0.5rem; font-size: 1rem; }
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.right-column ul, .right-column ol, .commentary ul, .commentary ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.right-column li, .commentary li { margin-bottom: 0.5rem; }
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+.key-term, .highlight-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
+.concept-box, .analogy-box, .note-box, .key-note, .term-box, .formula-box, .key-term-box, .key-point-box, .highlight-box { border-radius: 8px !important; padding: 1rem 1.25rem !important; margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important; }
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4, .note-box h3, .note-box h4, .key-note h3, .key-note h4, .term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.analogy-box { background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important; border-left: 4px solid #f6ad55 !important; }
+.analogy-box h3, .analogy-box h4 { color: #856404 !important; }
+.term-box, .key-term-box { background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important; }
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+.note-box, .key-note, .key-point-box { background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important; }
+.note-box h3, .note-box h4, .key-note h3, .key-note h4, .key-point-box h3, .key-point-box h4 { color: #e65100 !important; }
+.highlight-box { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.highlight-box h3, .highlight-box h4 { color: #6a1b9a !important; }
+.learning-objectives { background: linear-gradient(135deg, #1e3a5f 0%, #2d5a8e 100%); color: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
+.learning-objectives h3 { color: #fbbf24; margin-bottom: 0.75rem; font-size: 1.05rem; }
+.learning-objectives ul { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; opacity: 0.95; }
+.param-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.88rem; }
+.param-table th { background: var(--primary-blue); color: white; padding: 0.6rem 0.9rem; text-align: left; font-weight: 600; }
+.param-table td { padding: 0.55rem 0.9rem; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+.param-table tr:nth-child(even) { background: #f7fafc; }
+.param-table tr:hover { background: #edf2f7; }
+.glossary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.5rem; }
+.glossary-item { background: white; border-radius: 8px; padding: 1rem 1.25rem; border: 1px solid #e2e8f0; border-left: 4px solid var(--accent-blue); }
+.glossary-item h4 { color: var(--primary-blue); font-size: 0.95rem; margin-bottom: 0.4rem; }
+.glossary-item p { font-size: 0.88rem; color: var(--text-medium); margin: 0; }
+.main-footer { background: #1a2c3a; color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+.back-to-top { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 45px; height: 45px; background: #f97316; color: white; border: none; border-radius: 50%; cursor: pointer; font-size: 1.3rem; box-shadow: 0 3px 12px rgba(249,115,22,0.4); z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #ea6c0a; transform: scale(1.1); }
+@media (max-width: 900px) { .two-column, .content-grid, .side-by-side, .glossary-grid { grid-template-columns: 1fr; } .main-content, .main-container { padding: 1rem; } .chapter-body { padding: 1rem; } }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Section 3: Utilities, Cleaning Validation, Change Control &amp; Glossary</h1>
+    <div class="subtitle">第三節：公用系統、清潔確效、變更管控與術語表</div>
+    <div class="page-info">PIC/S GMP Annex 15 (2023) — Qualification and Validation | p220–p226</div>
+</div>
+
+<div class="main-content">
+
+<div class="learning-objectives">
+    <h3>本節學習目標</h3>
+    <ul>
+        <li>理解公用系統確效（§8）的階段性方法及季節性變化考量</li>
+        <li>掌握測試方法確效（§9）對分析回收率與微生物方法的特殊要求</li>
+        <li>深入理解清潔確效（§10）的完整框架：殘留限度計算、取樣方法、最壞情況選擇</li>
+        <li>熟悉變更管控（§11）與 Annex 15 確效狀態的整合方式</li>
+        <li>掌握本附錄所有關鍵術語的正式定義，以確保法規溝通精準性</li>
+    </ul>
+</div>
+
+<!-- SECTION 8 — UTILITIES -->
+<div class="chapter-section" id="sec8">
+    <div class="chapter-divider">
+        <div class="chapter-badge">8</div>
+        <div class="chapter-info">
+            <h2>8. Qualification of Utilities</h2>
+            <p>公用系統確效 — Steam, water, air, gases</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <h3>8.1 – 8.3 Utilities Qualification Requirements</h3>
+                <p><strong>8.1</strong> The quality of steam, water, air, other gases etc. should be confirmed following installation using the qualification steps described in section 3 above.</p>
+                <p><strong>8.2</strong> The period and extent of qualification should reflect any seasonal variations, if applicable, and the intended use of the utility.</p>
+                <p><strong>8.3</strong> A risk assessment should be carried out where there may be direct contact with the product, e.g. heating, ventilation and air-conditioning (HVAC) systems, or indirect contact such as through heat exchangers to mitigate any risks of failure.</p>
+            </div>
+            <div class="right-column">
+                <h3>公用系統確效解析</h3>
+                <div class="term-box">
+                    <h4>公用系統的 IQ/OQ/PQ 應用</h4>
+                    <p>§8.1 指明公用系統的確效使用第3節描述的相同架構（URS → DQ → IQ → OQ → PQ）。常見公用系統：</p>
+                    <ul>
+                        <li><strong>PW/WFI</strong>：注射用水/純化水（最嚴格）</li>
+                        <li><strong>Pure Steam</strong>：純蒸汽（直接接觸產品）</li>
+                        <li><strong>Compressed Air</strong>：壓縮空氣（油分/微粒/微生物）</li>
+                        <li><strong>HVAC</strong>：暖通空調（環境控制）</li>
+                        <li><strong>Nitrogen/CO₂</strong>：惰性氣體（保護填充）</li>
+                    </ul>
+                </div>
+                <div class="note-box">
+                    <h4>季節性變化（§8.2）</h4>
+                    <p>某些公用系統的性能受季節影響：夏季冷卻水溫度升高影響 WFI 系統；冬季外氣條件影響 HVAC 除濕能力。確效計畫需涵蓋最嚴苛的季節條件，或說明全年均已測試。</p>
+                </div>
+                <div class="highlight-box">
+                    <h4>直接/間接接觸的風險評估（§8.3）</h4>
+                    <p><strong>直接接觸</strong>：HVAC（空氣直接接觸開放產品）→ 最高風險，需確認微粒和微生物符合潔淨等級要求</p>
+                    <p><strong>間接接觸</strong>：熱交換器（冷卻水通過金屬壁加熱/冷卻產品）→ 需確認無滲漏風險</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 9 — TEST METHOD VALIDATION -->
+<div class="chapter-section" id="sec9">
+    <div class="chapter-divider">
+        <div class="chapter-badge">9</div>
+        <div class="chapter-info">
+            <h2>9. Validation of Test Methods</h2>
+            <p>測試方法確效 — Detection limits, microbial methods &amp; recovery</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <h3>9.1 – 9.3 Test Method Validation Requirements</h3>
+                <p><strong>9.1</strong> All analytical test methods used in qualification, validation or cleaning exercises should be validated with an appropriate detection and quantification limit, where necessary, as defined in Chapter 6 of the PIC/S GMP guide Part I.</p>
+                <p><strong>9.2</strong> Where microbial testing of product is carried out, the method should be validated to confirm that the product does not influence the recovery of microorganisms.</p>
+                <p><strong>9.3</strong> Where microbial testing of surfaces in clean rooms is carried out, validation should be performed on the test method to confirm that sanitising agents do not influence the recovery of microorganisms.</p>
+            </div>
+            <div class="right-column">
+                <h3>測試方法確效解析</h3>
+                <div class="term-box">
+                    <h4>方法確效的基準：PIC/S GMP Part I Chapter 6</h4>
+                    <p>所有用於確效/清潔確效的分析方法，需依據 Part I 第6章（品質控制）進行確效，需確立：</p>
+                    <ul>
+                        <li><strong>偵測極限（LOD）</strong>：最小可偵測量</li>
+                        <li><strong>定量極限（LOQ）</strong>：可準確定量的最小量</li>
+                        <li>線性、專一性、準確性、精密性、耐用性</li>
+                    </ul>
+                </div>
+                <div class="note-box">
+                    <h4>微生物方法的特殊要求（§9.2-9.3）</h4>
+                    <p><strong>產品抑制測試（§9.2）</strong>：某些藥品成分（防腐劑、抗菌成分）可能抑制微生物生長，導致無菌測試假陰性。需通過「適用性測試」確認產品基質不影響回收率。</p>
+                    <p><strong>消毒劑干擾（§9.3）</strong>：環境監測時，表面殘留的消毒劑可能抑制接觸平板（contact plate）上的微生物生長。需確認取樣方法能有效中和殘留消毒劑（使用中和劑如卵磷脂+吐溫）。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 10 — CLEANING VALIDATION -->
+<div class="chapter-section" id="sec10">
+    <div class="chapter-divider">
+        <div class="chapter-badge">10</div>
+        <div class="chapter-info">
+            <h2>10. Cleaning Validation</h2>
+            <p>清潔確效 — Residue limits, sampling, worst case &amp; hold times</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <h3>10.1 – 10.8 Core Requirements</h3>
+                <p><strong>10.1</strong> Cleaning validation should be performed in order to confirm the effectiveness of any cleaning procedure for all product contact equipment. Simulating agents may be used with appropriate scientific justification. Where similar types of equipment are grouped together, a justification of the specific equipment selected for cleaning validation is expected.</p>
+                <p><strong>10.2</strong> A visual check for cleanliness is an important part of the acceptance criteria for cleaning validation. It is not generally acceptable for this criterion alone to be used. Repeated cleaning and retesting until acceptable residue results are obtained is not considered an acceptable approach.</p>
+                <p><strong>10.3</strong> It is recognised that a cleaning validation programme may take some time to complete and validation with verification after each batch may be required for some products e.g. investigational medicinal products.</p>
+                <p><strong>10.4</strong> Validation should consider the level of automation in the cleaning process. Where an automatic process is used, the specified normal operating range of the utilities and equipment should be validated.</p>
+                <p><strong>10.5</strong> For all cleaning processes an assessment should be performed to determine the variable factors which influence cleaning effectiveness and performance, e.g. operators, the level of detail in procedures such as rinsing times etc. If variable factors have been identified, the worst case situations should be used as the basis for cleaning validation studies.</p>
+                <p><strong>10.6</strong> Limits for the carryover of product residues should be based on a <strong>toxicological evaluation</strong>. The justification for the selected limits should be documented in a risk assessment which includes all the supporting references. Limits should be established for the removal of any cleaning agents used. Acceptance criteria should consider the potential cumulative effect of multiple items of equipment in the process equipment train.</p>
+                <p><strong>10.6.1</strong> Therapeutic macromolecules and peptides are known to degrade and denature when exposed to pH extremes and/or heat, and may become pharmacologically inactive. A toxicological evaluation may therefore not be applicable in these circumstances.</p>
+                <p><strong>10.6.2</strong> If it is not feasible to test for specific product residues, other representative parameters may be selected, e.g. total organic carbon (TOC) and conductivity.</p>
+                <p><strong>10.7</strong> The risk presented by microbial and endotoxin contamination should be considered during the development of cleaning validation protocols.</p>
+                <p><strong>10.8</strong> The influence of the time between manufacture and cleaning and the time between cleaning and use should be taken into account to define dirty and clean hold times for the cleaning process.</p>
+            </div>
+            <div class="right-column">
+                <h3>清潔確效核心要求解析</h3>
+                <div class="term-box">
+                    <h4>HBEL/ADE 為殘留限度設定依據（§10.6）</h4>
+                    <p>產品殘留限度（carryover limits）必須基於毒理學評估（toxicological evaluation），即：</p>
+                    <ul>
+                        <li><strong>ADE（Acceptable Daily Exposure）</strong>：可接受日暴露量</li>
+                        <li><strong>HBEL（Health-Based Exposure Limit）</strong>：基於健康的暴露限值（EU EMA 指南用語）</li>
+                        <li><strong>PDE（Permitted Daily Exposure）</strong>：ICH Q3C 用語，同概念</li>
+                    </ul>
+                    <p>傳統的 1/1000 劑量法（1/1000 dose criterion）已不符合現行要求，必須採用 HBEL/ADE。</p>
+                </div>
+                <div class="highlight-box">
+                    <h4>§10.6.1 大分子/多肽的特例</h4>
+                    <p>治療性蛋白質和多肽（如單株抗體、胰島素）在 pH 極端或高溫下會降解失活，因此傳統毒理學計算（基於藥理活性）可能不適用。此情況下，可採用替代評估方法，如過敏原性評估或更保守的一般蛋白質殘留限度。</p>
+                </div>
+                <div class="note-box">
+                    <h4>目視檢查不夠（§10.2）</h4>
+                    <p>目視清潔度檢查雖然是 AC 的一部分，但不能作為清潔確效的唯一驗收標準。必須搭配化學殘留分析（HPLC/UV/TOC）和/或微生物限度測試。</p>
+                    <p><strong>重要禁止條款</strong>：「反覆清潔和重新測試直至達到可接受殘留結果」的做法是<strong>不可接受</strong>的。清潔確效必須基於預先定義的清潔程序，而非靠重複嘗試達標。</p>
+                </div>
+                <div class="analogy-box">
+                    <h4>比喻：TOC 作為替代指標</h4>
+                    <p>當產品殘留難以直接測量（如複雜天然產物或混合物），TOC（總有機碳）是常用替代指標：所有有機殘留都含碳，TOC 提供非專一性的「有機污染總量」指標。但需確認 TOC 方法對目標殘留的靈敏度。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="two-column">
+            <div class="left-column">
+                <h3>10.9 – 10.15 Advanced Cleaning Validation Topics</h3>
+                <p><strong>10.9</strong> Where campaign manufacture is carried out, the impact on the ease of cleaning at the end of the campaign should be considered and the maximum length of a campaign (in time and/or number of batches) should be the basis for cleaning validation exercises.</p>
+                <p><strong>10.10</strong> Where a worst case product approach is used as a cleaning validation model, a scientific rationale should be provided for the selection of the worst case product and the impact of new products to the site assessed. Criteria for determining the worst case may include solubility, cleanability, toxicity, and potency.</p>
+                <p><strong>10.11</strong> Cleaning validation protocols should specify or reference the locations to be sampled, the rationale for the selection of these locations and define the acceptance criteria.</p>
+                <p><strong>10.12</strong> Sampling should be carried out by swabbing and/or rinsing or by other means depending on the production equipment. The sampling materials and method should not influence the result. Recovery should be shown to be possible from all product contact materials sampled in the equipment with all the sampling methods used.</p>
+                <p><strong>10.13</strong> The cleaning procedure should be performed an appropriate number of times based on a risk assessment and meet the acceptance criteria in order to prove that the cleaning method is validated.</p>
+                <p><strong>10.14</strong> Where a cleaning process is ineffective or is not appropriate for some equipment, dedicated equipment or other appropriate measures should be used for each product as indicated in chapters 3 and 5 of the PIC/S GMP Guide.</p>
+                <p><strong>10.15</strong> Where manual cleaning of equipment is performed, it is especially important that the effectiveness of the manual process should be confirmed at a justified frequency.</p>
+            </div>
+            <div class="right-column">
+                <h3>進階清潔確效主題解析</h3>
+                <div class="term-box">
+                    <h4>最壞情況產品選擇（§10.10）</h4>
+                    <p>Worst Case Product 策略允許用一個（或幾個）代表性產品的清潔確效，涵蓋多個類似設備或製程。選擇最壞情況產品的標準：</p>
+                    <ul>
+                        <li><strong>低溶解度</strong>（難以沖洗清除）</li>
+                        <li><strong>低清潔性</strong>（如油脂類物質）</li>
+                        <li><strong>高毒性/高效力</strong>（允許殘留量極低）</li>
+                        <li><strong>高劑量</strong>（分母大，限度相對低）</li>
+                    </ul>
+                </div>
+                <div class="highlight-box">
+                    <h4>髒保留時間與潔淨保留時間（§10.8）</h4>
+                    <p><strong>Dirty Hold Time（DHT）</strong>：從最後一批生產結束到開始清潔的最長允許時間。需確認產品殘留在此期間不會形成更難清潔的狀態（如乾燥結垢）。</p>
+                    <p><strong>Clean Hold Time（CHT）</strong>：清潔完成後到設備被使用前的最長允許存放時間。需確認清潔後的設備不會在存放期間被微生物污染。</p>
+                </div>
+                <div class="note-box">
+                    <h4>取樣回收率確認（§10.12）</h4>
+                    <p>無論使用棉棒取樣（swab）還是沖洗取樣（rinse），都必須確認取樣方法的回收率（recovery），即：從設備表面材質中能回收多少比例的殘留物。殘留限度計算必須校正回收率，例如回收率 70%，則分析得出的殘留量需除以 0.7 得到真實殘留量。</p>
+                </div>
+                <div class="analogy-box">
+                    <h4>活動批次（Campaign）清潔的挑戰（§10.9）</h4>
+                    <p>連續生產同一產品多批次（campaign manufacture）後，殘留物可能更難清潔（長時間接觸、乾燥累積）。清潔確效應基於活動的<strong>最大長度</strong>（最多批次數或最長時間），以確保在最難清潔的情況下仍能達到清潔標準。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 11 — CHANGE CONTROL -->
+<div class="chapter-section" id="sec11">
+    <div class="chapter-divider">
+        <div class="chapter-badge">11</div>
+        <div class="chapter-info">
+            <h2>11. Change Control</h2>
+            <p>變更管控 — Knowledge management &amp; validation impact assessment</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <h3>11.1 – 11.7 Change Control Requirements</h3>
+                <p><strong>11.1</strong> The control of change is an important part of knowledge management and should be handled within the pharmaceutical quality system.</p>
+                <p><strong>11.2</strong> Written procedures should be in place to describe the actions to be taken if a planned change is proposed to a starting material, product component, process, equipment, premises, product range, method of production or testing, batch size, design space or any other change during the lifecycle that may affect product quality or reproducibility.</p>
+                <p><strong>11.3</strong> Where design space is used, the impact on changes to the design space should be considered against the registered design space within the marketing authorisation and the need for any regulatory actions assessed.</p>
+                <p><strong>11.4</strong> Quality risk management should be used to evaluate planned changes to determine the potential impact on product quality, pharmaceutical quality systems, documentation, validation, regulatory status, calibration, maintenance and on any other system to avoid unintended consequences and to plan for any necessary process validation, verification or requalification efforts.</p>
+                <p><strong>11.5</strong> Changes should be authorised and approved by the responsible persons or relevant functional personnel in accordance with the pharmaceutical quality system.</p>
+                <p><strong>11.6</strong> Supporting data, e.g. copies of documents, should be reviewed to confirm that the impact of the change has been demonstrated prior to final approval.</p>
+                <p><strong>11.7</strong> Following implementation, and where appropriate, an evaluation of the effectiveness of change should be carried out to confirm that the change has been successful.</p>
+            </div>
+            <div class="right-column">
+                <h3>變更管控與確效的整合</h3>
+                <div class="term-box">
+                    <h4>變更管控的廣泛觸發範圍（§11.2）</h4>
+                    <p>以下任何變更都可能觸發確效影響評估：</p>
+                    <ul>
+                        <li>起始物料或包材（供應商、規格）</li>
+                        <li>製程（參數、設備、廠房）</li>
+                        <li>批次規模</li>
+                        <li>設計空間（Design Space）</li>
+                        <li>生產或測試方法</li>
+                        <li>任何影響產品品質或重現性的變更</li>
+                    </ul>
+                </div>
+                <div class="note-box">
+                    <h4>設計空間變更的雙軌評估（§11.3）</h4>
+                    <p>若使用了 Design Space（ICH Q8），變更需進行兩層評估：</p>
+                    <ol>
+                        <li><strong>科學評估</strong>：變更是否超出已確立的設計空間？</li>
+                        <li><strong>法規評估</strong>：是否超出已向法規機構登記/批准的設計空間？</li>
+                    </ol>
+                    <p>在已批准的設計空間內移動不算法規層面的變更，但若超出則需申報。</p>
+                </div>
+                <div class="highlight-box">
+                    <h4>變更有效性評估（§11.7）</h4>
+                    <p>變更實施後，需評估變更是否達到預期效果。例如：若設備升級是為了改善清潔效果，則需確認實際清潔殘留數據確實改善。這形成 PDCA（計畫-執行-確認-行動）的閉環管理。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 12 — GLOSSARY -->
+<div class="chapter-section" id="sec12">
+    <div class="chapter-divider">
+        <div class="chapter-badge">12</div>
+        <div class="chapter-info">
+            <h2>12. Glossary</h2>
+            <p>術語表 — Official definitions for key qualification &amp; validation terms</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+
+        <div class="note-box" style="margin-bottom:1.5rem;">
+            <h4>術語表使用說明</h4>
+            <p>本節定義了 Annex 15 中使用但在 PIC/S GMP 指南其他部分未定義的術語。標有 <em>(ICH Q8)</em>、<em>(ICH Q9)</em>、<em>(ICH Q10)</em> 的定義直接來源於對應 ICH 指南，確保與國際法規標準保持一致。</p>
+        </div>
+
+        <div class="glossary-grid">
+            <div class="glossary-item">
+                <h4>Bracketing Approach（括弧法）</h4>
+                <p>科學與風險基礎的確效方法：僅測試某些預定設計因子（如規格、批次大小、包裝規格）的極端值，假設任何中間值均由極端值的確效所代表。</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Change Control（變更管控）</h4>
+                <p>由相關部門合格代表審查可能影響設施、系統、設備或製程確效狀態的擬議或實際變更的正式系統。目的是確定是否需要採取行動，以確保系統維持在確效狀態並加以記錄。</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Cleaning Validation（清潔確效）</h4>
+                <p>有文件記錄的証據，証明已核准的清潔程序可重複性地將設備中前一產品或清潔劑的殘留量減少至科學設定的最大允許攜帶量以下。</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Cleaning Verification（清潔查驗）</h4>
+                <p>在每批/每活動批次後通過化學分析收集証據，以証明前一產品或清潔劑的殘留量已減少至科學設定的最大允許攜帶量以下。（注意：不同於清潔「確效」）</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Concurrent Validation（同步確效）</h4>
+                <p>在例外情況下，基於患者重大受益的理由，在確效批次商業化的同時執行確效協議的確效。</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Continuous Process Verification（持續性製程查驗）</h4>
+                <p>傳統製程確效的替代方法，持續監測和評估製造製程性能。(ICH Q8)</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Control Strategy（管控策略）</h4>
+                <p>來自目前產品和製程理解、確保製程性能和產品品質的計畫性管控集合。管控可包括起始物料和藥品材料與組件的相關參數和屬性、設施設備操作條件、製程中管控、成品規格以及相關監測與管控方法和頻率。(ICH Q10)</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Critical Process Parameter — CPP（關鍵製程參數）</h4>
+                <p>其可變性對關鍵品質屬性有影響，因此應被監測或管控以確保製程產生所需品質的製程參數。(ICH Q8)</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Critical Quality Attribute — CQA（關鍵品質屬性）</h4>
+                <p>應在核准的限度、範圍或分佈內，以確保所需產品品質的物理、化學、生物或微生物性質或特性。(ICH Q8)</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Design Qualification — DQ（設計確效）</h4>
+                <p>有文件記錄的驗證，証明設施、系統和設備的擬議設計適合預定目的。</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Design Space（設計空間）</h4>
+                <p>已被証明能提供品質保證的輸入變數（如物料屬性）和製程參數的多維組合與交互作用。在設計空間內的操作不被視為變更；移出設計空間則被視為變更，通常會啟動法規批准後變更程序。(ICH Q8)</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Installation Qualification — IQ（安裝確效）</h4>
+                <p>有文件記錄的驗證，証明已安裝或修改的設施、系統和設備符合核准的設計和製造商的建議。</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Knowledge Management（知識管理）</h4>
+                <p>獲取、分析、儲存和傳播資訊的系統方法。(ICH Q10)</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Lifecycle（生命週期）</h4>
+                <p>產品、設備或設施從初始開發或使用到停止使用的所有階段。</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Ongoing Process Verification — OPV（持續性製程查驗）</h4>
+                <p>記錄製程在商業生產期間維持在管控狀態的証據（亦稱 continued process verification）。</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Operational Qualification — OQ（操作確效）</h4>
+                <p>有文件記錄的驗證，証明已安裝或修改的設施、系統和設備在預期操作範圍內如設計般運作。</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Performance Qualification — PQ（性能確效）</h4>
+                <p>有文件記錄的驗證，証明系統和設備能根據核准的製程方法和產品規格有效且可重複地執行。</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Process Validation（製程確效）</h4>
+                <p>有文件記錄的証據，証明在已確立的參數內操作的製程，能有效且可重複地生產符合其預定規格和品質屬性的藥品。</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Quality by Design — QbD（品質源自設計）</h4>
+                <p>從預定義目標出發，強調以健全的科學和品質風險管理為基礎的產品和製程理解與製程管控的系統方法。</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Quality Risk Management（品質風險管理）</h4>
+                <p>跨生命週期評估、管控、溝通和審查品質風險的系統化過程。(ICH Q9)</p>
+            </div>
+            <div class="glossary-item">
+                <h4>State of Control（管控狀態）</h4>
+                <p>一組管控措施持續提供可接受製程性能和產品品質保證的條件。</p>
+            </div>
+            <div class="glossary-item">
+                <h4>User Requirements Specification — URS（使用者需求規格）</h4>
+                <p>創建符合系統預定目的之可行設計所必要且足夠的業主、使用者和工程需求集合。</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Worst Case（最壞情況）</h4>
+                <p>在標準操作程序範圍內，包含上下處理限度和情況的條件或一組條件，與理想條件相比，最有可能導致產品或製程失敗的情況。此類條件不一定會實際引起產品或製程失敗。</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</div><!-- end main-content -->
+
+<div class="main-footer">
+    <p>PIC/S GMP Annex 15 (2023): Qualification and Validation</p>
+    <p style="opacity:0.6;font-size:0.8rem;">Section 3 of 3 — p220–p226 | SterileGMP Knowledge Hub</p>
+</div>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) { btn.classList.add('visible'); }
+    else { btn.classList.remove('visible'); }
+});
+</script>
+</body>
+</html>
