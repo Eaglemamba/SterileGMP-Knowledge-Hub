@@ -329,6 +329,14 @@ Sections: Introduction & Background | Human Factors Studies | Process & Clinical
 
 ---
 
+## FDA/FDA-21CFR-Biologics-Complete.md
+21 CFR Subchapter F — Biologics (Parts 600–680): FDA Regulatory Framework for Biological Products | eCFR current April 2026 | 6 sections
+Covers questions about: What is a biological product under FDA law? What are the GMP establishment standards for biological product manufacturers (personnel, records, retention samples)? How does biological product deviation reporting (600.14) differ from drug deviation reporting? What are the sterility testing requirements for biological products under 610.12? How do sterility, purity, potency, and identity testing requirements apply to each lot? What is the biologics license application (BLA) process? How does Part 601.12 classify manufacturing changes (PAS, CBE-30, annual report)? What labeling elements are required on biological product containers and packages? How do Parts 606-680 (blood, diagnostics, allergenics) relate to CDMO operations? What are CDMO responsibilities vs BLA holder responsibilities under Subchapter F?
+Terms: biological product, BLA (Biologics License Application), CBER, CDER, PHS Act section 351, potency (610.10), sterility (610.12), purity (610.13), identity (610.14), lot, filling, distributed, dating period, expiration date, Prior Approval Supplement (PAS), CBE-30, Annual Report, Form FDA-3486, biological product deviation, 15-day alert report, ICSR (Individual Case Safety Report), container label, package label, Rx only, proper name, lot number, seed bank, Master Cell Bank, Working Cell Bank, growth promotion, bacteriostasis fungistasis, repeat test, equivalent methods (610.9), accelerated approval, Animal Rule, postmarketing studies
+Sections: Overview & Scope of Subchapter F | Part 600 — Establishment Standards & General Requirements | Part 601 — Biologics Licensing (BLA) | Part 610 — Lot Release Standards: Sterility, Purity, Potency & Identity | Part 610 — Labeling, Dating & Transfusion Testing | Parts 606–680 — Blood, Diagnostics & Specialty Products
+
+---
+
 ## ISPE/ISPE-CTC-Complete.md
 ISPE Good Practice Guide: Controlled Temperature Chamber Mapping and Monitoring (2016) | p1–p116 | 9
 Terms: CTC (Controlled Temperature Chamber), thermal mapping, temperature mapping, URS (User Requirements Specification), IQ/OQ/PQ, commissioning, FAT (Factory Acceptance Testing), SAT (Site Acceptance Testing), guard-banding, measurement uncertainty, Alert Level, Alarm Level, setpoint, worst-case location, sensor placement, data logger, BMS (Building Management System), 21 CFR Part 11, periodic evaluation, re-mapping trigger, excursion assessment, stability chamber, ICH Q1A, WHO TRS 961, EU GDP, USP <659>, USP <1079>
@@ -573,6 +581,20 @@ Terms: quality culture, root cause analysis (RCA), human error, skill-based erro
 
 | Topic (English / 中文 / common lay terms) | Look in... |
 |---|---|
+| Biological product definition, 40 amino acid protein threshold, BLA vs NDA, CBER CDER, PHS Act 351 / 生物製品定義、40胺基酸蛋白質門檻、BLA vs NDA | FDA-21CFR-Biologics |
+| Biologics license application BLA requirements, manufacturing site in BLA, CDMO facility inspection / 生物製品許可申請BLA、製造廠址列入BLA、CDMO廠房查廠 | FDA-21CFR-Biologics |
+| BLA manufacturing change Prior Approval Supplement PAS, CBE-30, annual report, CDMO process change / BLA製程變更PAS事前批准補充申請、CBE-30、年度報告 | FDA-21CFR-Biologics |
+| Biological product deviation reporting 600.14, Form FDA-3486, 45-day timeline, distributed product / 生物製品偏差報告600.14、Form FDA-3486、45天時限、已配送產品 | FDA-21CFR-Biologics |
+| Potency testing 610.10, in vitro in vivo biological assay, product-specific potency / 效力測試610.10、in vitro in vivo生物活性測試、產品特異性效力 | FDA-21CFR-Biologics |
+| Sterility testing 610.12, test validation bacteriostasis fungistasis, repeat test laboratory error / 無菌性測試610.12驗證、抑菌性消除驗證、重複測試實驗室錯誤 | FDA-21CFR-Biologics + PhEur-261 + USP-71 |
+| Purity biological product 610.13, residual moisture dried product, pyrogenic substances rabbit test / 生物製品純度610.13、凍乾殘留水分、熱原兔試驗 | FDA-21CFR-Biologics |
+| Identity testing 610.14, after labeling, distinguish products same laboratory, immunological test / 鑑別測試610.14、標籤後檢驗、區別同設施產品、免疫學方法 | FDA-21CFR-Biologics |
+| Biologics container label 610.60, 7 required elements, partial label small vial, visual inspection window / 生物製品容器標籤610.60、七大必備元素、部分標籤小瓶、視覺檢驗窗口 | FDA-21CFR-Biologics |
+| Dating period expiration date biological product 610.53, shelf life extension BLA supplement / 有效期生物製品610.53、延長有效期BLA補充申請 | FDA-21CFR-Biologics |
+| Adverse experience reporting biologics 600.80, 15-day alert serious unexpected, ICSR, 10 year retention / 生物製品上市後不良事件報告600.80、15天緊急報告、ICSR、10年保存 | FDA-21CFR-Biologics |
+| Equivalent methods 610.9 biologics, rapid sterility test alternative, written FDA approval / 等效方法610.9、快速無菌測試替代方法、FDA書面批准 | FDA-21CFR-Biologics |
+| Accelerated approval biologics surrogate endpoint, Animal Rule biological threat, postmarketing studies / 加速批准代理終點、動物規則生物恐怖威脅、上市後研究 | FDA-21CFR-Biologics |
+| CDMO quality agreement biologics responsibilities, deviation notification 45 days, potency testing delegation / CDMO品質協議生物製品責任分工、偏差通知、效力測試委託 | FDA-21CFR-Biologics |
 | Sterility test method Ph.Eur., European Pharmacopoeia 2.6.1, membrane filtration sterility / 歐洲藥典無菌試驗、Ph.Eur.膜過濾法 | PhEur-261 |
 | Fluid thioglycollate medium FTM composition, SCDM formula, culture media preparation for sterility / FTM培養基配方、SCDM大豆酪蛋白培養基 | PhEur-261 |
 | Growth promotion test microorganism strains, Clostridium sporogenes ATCC, Aspergillus brasiliensis sterility / 生長促進測試菌株、無菌試驗標準菌 | PhEur-261 |
