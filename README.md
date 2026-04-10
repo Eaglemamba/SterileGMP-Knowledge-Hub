@@ -2,7 +2,7 @@
 
 A multi-source GMP knowledge base for sterile pharmaceutical manufacturing — combining human-readable HTML educational guides with a chatbot-ready Markdown knowledge base and a Claude Code skill for conversational access.
 
-Covers **PDA Technical Reports**, **ISPE Guidelines**, **FDA Guidance**, **PIC/S Annexes**, **ICH Guidelines**, **USP Chapters**, **ISO Standards**, and **Ph.Eur. Chapters** — all focused on sterile/injectable pharmaceutical manufacturing.
+Covers **PDA Technical Reports**, **ISPE Guidelines**, **FDA Guidance**, **PIC/S Annexes**, **ICH Guidelines**, **USP Chapters**, **ISO Standards**, and **European Pharmacopoeia (Ph.Eur.)** — all focused on sterile/injectable pharmaceutical manufacturing. **170 documents** across 8 source organizations.
 
 ## What's in Here
 
@@ -98,7 +98,66 @@ Covers **PDA Technical Reports**, **ISPE Guidelines**, **FDA Guidance**, **PIC/S
 | Q10 Pharmaceutical Quality System | ICH | ✅ Complete | Pharmaceutical quality system framework |
 | 14644-1/5/7 Cleanroom Classification | ISO | ✅ Complete | Cleanroom classification, operations, and separative devices |
 
-### USP General Chapters (38 complete, 18 skeleton)
+| Document | Status | Topic |
+|----------|--------|-------|
+| Aseptic Processing Guidance (2004) | ✅ Complete | Sterile drug products by aseptic processing |
+| Process Validation Guidance (2011) | ✅ Complete | Lifecycle approach to process validation |
+| Process Inspection CPGM 7356.002A | ✅ Complete | Drug process inspection procedures |
+| Combination Products CGMP (21 CFR 4) | ✅ Complete | CGMP framework for combination products |
+| Combination Products Human Factors | ✅ Complete | HF engineering and usability for combo products |
+
+**PIC/S Annexes (4 complete)**
+
+| Document | Status | Topic |
+|----------|--------|-------|
+| Annex 1 (2022) | ✅ Complete | Manufacture of sterile medicinal products |
+| Annex 2 | ✅ Complete | Manufacture of biological medicinal substances and products |
+| Annex 15 (2023) | ✅ Complete | Qualification and validation |
+| Annex 20 | ✅ Complete | Quality risk management |
+
+**ICH Guidelines (6 complete)**
+
+| Document | Status | Topic |
+|----------|--------|-------|
+| Q8(R2) Pharmaceutical Development | ✅ Complete | Design space and quality by design |
+| Q9(R1) Quality Risk Management | ✅ Complete | Risk management methodology framework |
+| Q10 Pharmaceutical Quality System | ✅ Complete | Pharmaceutical quality system framework |
+| Q12 Technical and Regulatory Considerations for Pharmaceutical Product Lifecycle Management | ✅ Complete | Established conditions, PACMP, PLCM |
+| Q13 Continuous Manufacturing for Drug Substances and Drug Products | ✅ Complete | CM State of Control, batch definition, CPV |
+| Q14 Analytical Procedure Development | ✅ Complete | ATP, MODR, ACS, multivariate procedures, RTRT |
+
+**ISO Standards (17 complete)**
+
+| Document | Topic |
+|----------|-------|
+| ISO 10993-1 | Biological evaluation of medical devices |
+| ISO 11040 | Prefilled syringes |
+| ISO 11608-1 | Needle injection systems for medical use |
+| ISO 13408 | Aseptic processing of health care products |
+| ISO 13485 | Medical devices QMS requirements |
+| ISO 13926-1/2/3 | Pen injector components (glass cylinders, stoppers, seals) |
+| ISO 14644 | Cleanrooms and associated controlled environments |
+| ISO 14971 | Risk management for medical devices |
+| ISO 15223-1/2 | Medical device symbols for labels |
+| ISO 15378 | Primary packaging materials for medicinal products |
+| ISO 15394 | Packaging barcodes and bar codes for shipping |
+| ISO 2859-1 | AQL sampling procedures |
+| ISO 9000 / 9001 | QMS fundamentals and requirements |
+| ISO TR 24971 | Application guidance for ISO 14971 risk management |
+
+**European Pharmacopoeia (Ph.Eur.) (7 complete)**
+
+| Chapter | Topic |
+|---------|-------|
+| 2.6.1 | Sterility |
+| 2.6.14 | Bacterial endotoxins |
+| 2.9.19 | Particulate contamination — sub-visible particles |
+| 2.9.20 | Particulate contamination — visible particles |
+| 3.2.1 | Glass containers for pharmaceutical use |
+| 3.3.8 | Sterile single-use assemblies for intravenous infusion |
+| 5.1.1 | Methods of preparation of sterile products |
+
+### USP General Chapters (76 complete)
 
 | Chapter | Topic | Status |
 |---------|-------|--------|

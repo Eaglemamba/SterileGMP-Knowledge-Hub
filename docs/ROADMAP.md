@@ -479,9 +479,9 @@ Add only when client mix justifies:
 | **NMPA + ChP** | China GMP + Chinese Pharmacopoeia | If China market entry planned |
 | **EMA product-specific** | Biologics, lyophilization, ATMP guidelines | When ATMP or EU biologics clients onboard |
 | **ICH Q5 series** | Q5A–E: viral safety, stability for biologics | If biologics API clients increase |
-| **ICH Q11 / Q12** | Drug substance dev + lifecycle management | When regulatory submission support expands |
+| **ICH Q11** | Drug substance development | When regulatory submission support expands |
 
-> **ICH scope note:** Only Q8/Q9/Q10 belong in this hub. The full ICH set (Q1-Q14, S-series, E-series, M-series) is not sterile-manufacturing-specific.
+> **ICH scope note:** Q8/Q9/Q10/Q12/Q13/Q14 are included in this hub (analytical + manufacturing lifecycle). The full ICH set (Q1–Q7, Q11, S-series, E-series, M-series) is not sterile-manufacturing-specific.
 
 > **IEC scope note:** IEC 62366-1 is included only for combination product human factors validation. Other IEC standards are out of scope.
 
@@ -491,7 +491,7 @@ Add only when client mix justifies:
 
 | Document | Why Excluded |
 |----------|-------------|
-| ICH Q1–Q7, Q13–Q14 | General pharma — not sterile-specific |
+| ICH Q1–Q7, Q11 | General pharma chemistry / drug substance — not sterile-manufacturing-specific |
 | ICH S-series, E-series, M-series | Safety, efficacy, multidisciplinary — not manufacturing-focused |
 | ASTM standards | ASTM E2500 (verification) is influential but too niche for this hub |
 | ISO 11135 (EtO sterilization) | Rarely used for sterile injectables |
