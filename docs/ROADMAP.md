@@ -2,7 +2,7 @@
 
 This document summarizes the current coverage status, gap analysis, and expansion roadmap for building a comprehensive sterile pharmaceutical manufacturing knowledge hub suitable for COO-level operational decision-making.
 
-Last updated: 2026-04-10 — 170 documents complete (PDA 41, USP 76, ISPE 14, FDA 5, ICH 6, PIC/S 4, ISO 17, Ph.Eur. 7); Completed ICH Q12 (Lifecycle Management, 6 sections), ICH Q13 (Continuous Manufacturing, 5 sections), ICH Q14 (Analytical Procedure Development, 5 sections) — all merged, knowledge MDs regenerated, INDEX.md + INDEX-router.md updated; Raw PDFs queue: 3 permanently blocked (OCR/encoding), 1 to-do (21 CFR 600-680); Education Layer complete at 8 depts
+Last updated: 2026-04-11 — 171 documents complete (PDA 41, USP 76, ISPE 14, FDA 6, ICH 6, PIC/S 4, ISO 17, Ph.Eur. 7); Added 21 CFR Subchapter F Biologics (Parts 600–680): 6 sections, web-sourced from eCFR/LII; Raw PDFs queue: 3 permanently blocked (OCR/encoding); Added 5 new 21 CFR chapter recommendations to roadmap (Parts 11, 210/211, 4, 312, 820)
 
 ---
 
@@ -56,10 +56,12 @@ Layer 3: Site-Specific Documents             ~/Amaran-Site-Knowledge/
 
 1. ~~**PICS-Annex15**~~ ✅ **Done 2026-04-09** — 3 sections generated (p211-p226), merged, reports.json + INDEX.md + INDEX-router.md updated. PIC/S set complete at 4 documents.
 2. ~~**ICH Q12/Q13/Q14**~~ ✅ **Done 2026-04-10** — ICH Q12 (6 sections, lifecycle management/ECs/PACMP), ICH Q13 (5 sections, continuous manufacturing/CPV/RTD), ICH Q14 (5 sections, analytical procedure development/ATP/MODR/RTRT) — all merged, knowledge MDs regenerated, INDEX.md + INDEX-router.md updated. ICH set now at 6 documents (170 total).
-3. **Expert Knowledge Base** — start with SA25 lifecycle (`#1`) or Lyo ANDA end-to-end (`#2`); see full plan below
-3. **Layer 2 Operational Frameworks** — P0 skills first (`/deviation`, `/change-control`) with supporting templates
-4. **Layer 1 additions requiring new PDFs** — ISO 14644-2/3, ISO 17665, PDA TR36, FDA Container Closure / Terminal Sterilization, 21 CFR 600-680 (biological products — To-Do item) *(USP `<1229>` sub-series: ✅ complete as of 2026-04-09)*
-5. **Layer 3** — resume SOP desensitization via `~/Amaran-AI-SOP/`; human review required per document
+3. ~~**21 CFR 600–680 Biologics**~~ ✅ **Done 2026-04-11** — 6 sections, web-sourced from eCFR/LII (no PDF). Covers: BLA licensing, establishment standards, lot release trilogy (sterility/purity/potency/identity), labeling, deviation reporting, CDMO compliance matrix. FDA set now at 6 documents (171 total).
+4. **Expert Knowledge Base** — start with SA25 lifecycle (`#1`) or Lyo ANDA end-to-end (`#2`); see full plan below
+4. **Layer 2 Operational Frameworks** — P0 skills first (`/deviation`, `/change-control`) with supporting templates
+5. **Layer 1 additions requiring new PDFs** — ISO 14644-2/3, ISO 17665, PDA TR36, FDA Container Closure / Terminal Sterilization *(USP `<1229>` sub-series: ✅ complete 2026-04-09; 21 CFR 600-680: ✅ complete 2026-04-11)*
+6. **21 CFR additional chapters** — see Phase 4/5 entries in Remaining Layer 1 Additions table below
+7. **Layer 3** — resume SOP desensitization via `~/Amaran-AI-SOP/`; human review required per document
 
 > **Raw PDFs queue status (2026-04-09):**
 > - ✅ **Done:** `pe-009-17-gmp-guide-annexes.pdf` — PICS-Annex15 complete; PDF moved to `Raw pdfs/processed/`
@@ -158,7 +160,7 @@ Single source of truth for learning path structure. Consumed by `learning-path.h
 | **PDA** | 41 | Technical Reports, Points to Consider, Guides | ✅ Complete |
 | **USP** | 76 | General Chapters — sterility, endotoxin, particulates, microbial, CCI, E&L, water, validation, analytical | ✅ Complete |
 | **ISPE** | 14 | Baseline Guides, Good Practice Guides, GAMP | ✅ Complete (1 pending OCR) |
-| **FDA** | 5 | Aseptic Processing, Process Validation, Process Inspection, Combination Products CGMP, HF for Combo Products | ✅ Complete |
+| **FDA** | 6 | Aseptic Processing, Process Validation, Process Inspection, Combination Products CGMP, HF for Combo Products, 21 CFR 600–680 Biologics | ✅ Complete (available PDFs + web-sourced) |
 | **ICH** | 6 | Q8(R2), Q9(R1), Q10, Q12 (Lifecycle Mgmt), Q13 (Continuous Mfg), Q14 (Analytical Procedure Dev) | ✅ Complete |
 | **PIC/S** | 4 | Annex 1 (2022), Annex 2 (ATMPs + Biologics), Annex 20 (QRM), Annex 15 (Qualification and Validation 2023) | ✅ Complete |
 | **ISO** | 17 | ISO 11040 (Prefilled Syringes Parts 1–8), ISO 13408 (Aseptic Processing Parts 1–7), ISO 14644 (Cleanrooms Parts 1/5/7), ISO 11608-1 (NIS), ISO 13485 (Medical Device QMS), ISO 10993-1 (Biological Evaluation), ISO TR 24971 (Risk Management Guidance), ISO 15378 (Primary Packaging GMP), ISO 9001, ISO 2859-1, ISO 9000, ISO 15223-1, ISO 15223-2, ISO 15394, ISO 13926-1/2/3 — ISO 14971 ❌ blocked (scanned PDF); ISO 15225 ❌ blocked (font encoding) | ✅ Complete (available PDFs) |
@@ -214,6 +216,11 @@ Single source of truth for learning path structure. Consumed by `learning-path.h
 | **PDA TR81 (2020)** — Cell-Based Potency Assays for Biologics | Phase 6 | Low | Medium |
 | **PDA TR47** — Preparation of Biological Indicators | Phase 6 | Low | Small |
 | **EP 5.1.6** — Alternative Methods for Microbiological Quality | Phase 6 | Low | Small |
+| **21 CFR Part 11** — Electronic Records; Electronic Signatures | Phase 4 | **High** | Medium |
+| **21 CFR Parts 210 & 211** — Drug CGMP Finished Pharmaceuticals (baseline CGMP alongside Parts 600–680) | Phase 4 | **High** | Large |
+| **21 CFR Part 820** — Quality System Regulation / QMSR (implementing ISO 13485 for FDA) | Phase 5 | Medium | Medium |
+| **21 CFR Part 4** — Regulation of Combination Products (jurisdiction, lead center, co-submission) | Phase 5 | Medium | Small |
+| **21 CFR Part 312** — Investigational New Drug Applications (IND; clinical-stage CDMO manufacturing requirements) | Phase 5 | Medium | Medium |
 
 ---
 
