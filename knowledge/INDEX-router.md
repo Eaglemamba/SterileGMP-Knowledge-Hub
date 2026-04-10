@@ -30,6 +30,10 @@ Use these mappings to translate user questions before routing:
 | 技術轉移 | technology transfer, TT, sending unit, receiving unit |
 | 滅菌 / 高壓滅菌 | sterilization, autoclave, F0, D-value |
 | 用水 / 注射用水 | WFI, PW, pharmaceutical water |
+| 連續製造 / 連製 | continuous manufacturing, CM, RTD, State of Control, steady state |
+| 已確立條件 / 法規彈性 | established conditions, EC, PACMP, PLCM, post-approval change |
+| 分析方法開發 / 分析目標概況 | analytical procedure development, ATP, MODR, PAR, ACS, SST |
+| 即時放行 / RTRT | real-time release testing, RTRT, multivariate model, PAT |
 
 ---
 
@@ -173,6 +177,9 @@ Use these mappings to translate user questions before routing:
 | FDA inspection / 483 / OAI | FDA-ProcessInspection (§I-§IV all parts) | — |
 | Post-approval changes / PAC | TR91 (§2-§4 Framework) | TR68, PtC-9, TR60 |
 | ICH Q8/Q9/Q10 framework | ICH-Q8R2 · ICH-Q9R1 · ICH-Q10 | TR60 |
+| ICH Q12 lifecycle management / EC / PACMP | ICH-Q12 (§2-§5, Annex I-II) | TR91, ICH-Q10 |
+| ICH Q13 continuous manufacturing | ICH-Q13 (§0-§3 + Annexes I-V) | FDA-ProcessVal §V |
+| ICH Q14 analytical procedure development | ICH-Q14 (§0-§4 + §10 CTD) | ICH-Q2 |
 | Remote/hybrid inspection | PtC-Remote (§1-§3 Planning to closing) | PtC-9 |
 | Biologics GMP / ATMP GMP / PIC/S Annex 2 | PICS-Annex2 (§1 Scope, §2 Principles, §3 Manufacturing) | PtC-14, ISPE-Vol6 |
 | QRM regulatory perspective / PIC/S Annex 20 | PICS-Annex20 (§1-§3 QRM process, risk tools) | ICH-Q9R1, TR60 |
@@ -221,8 +228,41 @@ Use these mappings to translate user questions before routing:
 
 | Topic | ★★★ Primary (section hint) | ★★ Secondary |
 |---|---|---|
-| Change control / 變更管制 | TR91 §3-§4 · TR60 | TR66, TR90, TR68, PtC-9 |
-| Post-approval change management | TR91 (§3 Tools: ECs, PACMP, PLCM) | TR68, ICH-Q10 §3 |
+| Change control / 變更管制 | ICH-Q12 (§2 ECs, §4 PACMP, §5 PLCM) · TR91 §3-§4 · TR60 | TR66, TR90, TR68, PtC-9 |
+| Post-approval change management | ICH-Q12 (§2-§5 full framework) · TR91 (§3 Tools: ECs, PACMP, PLCM) | TR68, ICH-Q10 §3 |
+| Established conditions / ECs / 已確立條件 | ICH-Q12 (§2 EC identification, §3 Reporting categories, §Annex I examples) | TR91 §2, TR60 |
+| PACMP / change management protocol | ICH-Q12 (§4 PACMP design + regulatory treatment, §Annex II examples) | TR91 §3 |
+| Product lifecycle management / PLCM | ICH-Q12 (§5 PLCM document structure and contents) · ICH-Q10 (§3 Lifecycle) | TR60, TR91 |
+
+### Continuous Manufacturing (ICH Q13)
+
+| Topic | ★★★ Primary (section hint) | ★★ Secondary |
+|---|---|---|
+| Continuous manufacturing / CM overview | ICH-Q13 (§0 Intro, §1 Scientific considerations) | FDA-ProcessVal §III |
+| State of Control vs Steady State / CM | ICH-Q13 (§1 §2.1 distinction table, §Annex V examples) | — |
+| Material traceability / diversion strategy | ICH-Q13 (§1 §2.2 traceability requirements, design factors) | — |
+| CM batch definition / batch size | ICH-Q13 (§2 §4.2 four methods, four output increase modes) | PICS-Annex15 §2 |
+| CM control strategy / Active Process Controls | ICH-Q13 (§2 §4.1 five-element framework, §4.3 description) | ICH-Q8R2 |
+| CPV / Continuous Process Verification for CM | ICH-Q13 (§3 §4.7 CPV replacing traditional PV, five justification elements) | FDA-ProcessVal §V |
+| CM regulatory submission / CTD mapping | ICH-Q13 (§2 §4.5 Table 1 CTD sections, §4.6 conversion from batch) | — |
+| CM lifecycle management / PQS for CM | ICH-Q13 (§3 §4.8 planned events vs disturbances, §4.9 Q12 integration) | ICH-Q12, ICH-Q10 |
+| CM disturbances / transient events | ICH-Q13 (§3 §4.8 distinction, §Annex V three scenarios + Funnel Plot) | — |
+
+### Analytical Procedure Development (ICH Q14)
+
+| Topic | ★★★ Primary (section hint) | ★★ Secondary |
+|---|---|---|
+| Analytical Target Profile / ATP | ICH-Q14 (§0 Intro, §1 ATP definition — 3 elements, 4 lifecycle functions) | — |
+| Minimal vs Enhanced analytical approach | ICH-Q14 (§0 §2.1 comparison table, commercial value logic) | — |
+| PAR / Proven Acceptable Range (single parameter) | ICH-Q14 (§2 §5.2 PAR definition, set-point vs PAR vs MODR) | — |
+| MODR / Method Operable Design Region | ICH-Q14 (§2 §5.2 MODR for multi-parameter, Design Space analogue) | ICH-Q8R2 |
+| Analytical Control Strategy / ACS | ICH-Q14 (§2 §6 four ACS elements, ECs for analytical procedures) | — |
+| System Suitability Test / SST design | ICH-Q14 (§2 §6.1 three design considerations, sample suitability for biologics) | ICH-Q2 |
+| Analytical procedure lifecycle management | ICH-Q14 (§3 §7 Q12 tools: ECs, PACMP, PLCM applied to AP) | ICH-Q12, TR91 |
+| AP change evaluation / Table 2 | ICH-Q14 (§3 §7 Figure 2 risk framework, Table 1 knowledge×risk matrix, Table 2 three change types) | ICH-Q2 |
+| Multivariate analytical procedures / PLS NIRS | ICH-Q14 (§4 §8 latent variable models, calibration set strategy, model maintenance) | — |
+| RTRT / Real-Time Release Testing | ICH-Q14 (§4 §9 RTRT definition, validation per Q2, CTD placement) | ICH-Q8R2 |
+| Analytical procedure regulatory submission | ICH-Q14 (§4 §10 CTD mapping S.4.2/P.5.2, S.4.3/P.5.3, S.2.6/P.2) | ICH-Q2 |
 
 ### Ph.Eur. European Pharmacopoeia
 
@@ -244,10 +284,9 @@ Use these mappings to translate user questions before routing:
 
 - Specific drug formulation / chemistry
 - PDA reports not in library (e.g., TR14, TR28, TR44, TR83)
-- Full ICH guideline text (Q8/Q9/Q10 summaries available)
+- ICH guidelines not yet in library (Q1, Q3, Q4, Q5 series, Q6, Q7, Q11) — Q8(R2), Q9(R1), Q10, Q12, Q13, Q14 are available
 - Full FDA CFR Part 211 / EU GMP Part I/II
 - API synthesis manufacturing
-- Laboratory analytical methods
 
 ### USP Pharmacopeial Standards
 

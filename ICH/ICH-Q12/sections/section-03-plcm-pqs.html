@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICH Q12 - Section 3: PLCM Document &amp; PQS Change Management</title>
+    <style>
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif; line-height: 1.75; color: var(--text-dark); background: #f0f2f5; }
+.header { background: linear-gradient(135deg, #0f5446 0%, #0f766e 100%); color: white; padding: 2rem; text-align: center; }
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.learning-objectives { background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+.section-title { font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; font-weight: 600; }
+.two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+.left-column { background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; }
+.left-column h2 { color: var(--primary-blue); border-bottom: 2px solid #3182ce; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.left-column h3 { color: var(--primary-blue); margin: 1.2rem 0 0.5rem; font-size: 1rem; }
+.left-column h4 { color: #4a5568; margin: 1rem 0 0.4rem; font-size: 0.95rem; font-weight: 600; }
+.left-column p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li { margin-bottom: 0.5rem; }
+.right-column { background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #bee3f8; }
+.right-column h2 { color: #2c5282; border-bottom: 2px solid #63b3ed; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.key-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
+.quote-box { background: linear-gradient(to right, #e7f3ff, #d6e9ff); border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem; }
+.concept-box, .analogy-box, .note-box, .formula-box { border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 0.92rem; line-height: 1.7; }
+.concept-box h4, .analogy-box h4, .note-box h4, .formula-box h4 { margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600; }
+.concept-box p, .analogy-box p, .note-box p, .formula-box p { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.concept-box ul, .analogy-box ul, .note-box ul, .formula-box ul { margin: 0.5rem 0 0.5rem 1.25rem; font-size: 0.92rem; }
+.concept-box li, .analogy-box li, .note-box li, .formula-box li { margin-bottom: 0.35rem; }
+.concept-box { background: var(--green-bg); border-left: 4px solid var(--green-border); }
+.concept-box h4 { color: #2e7d32; }
+.analogy-box { background: linear-gradient(135deg, var(--yellow-start), var(--yellow-end)); border-left: 4px solid #f6ad55; }
+.analogy-box h4 { color: #856404; }
+.note-box { background: var(--orange-bg); border-left: 4px solid var(--orange-border); }
+.note-box h4 { color: #c65102; }
+.formula-box { background: var(--purple-bg); border-left: 4px solid var(--purple-border); }
+.formula-box h4 { color: #7b1fa2; }
+.practice-box { background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%); border: 2px dashed #3182ce; border-radius: 10px; padding: 1.25rem; margin: 1.25rem 0; font-size: 0.92rem; }
+.practice-box h4 { color: #2c5282; margin-bottom: 0.75rem; font-size: 0.95rem; font-weight: 600; }
+.practice-box ol, .practice-box ul { margin-left: 1.25rem; }
+.practice-box li { margin-bottom: 0.5rem; }
+.summary-box { background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-radius: 10px; padding: 1.25rem; margin-top: 1.5rem; }
+.summary-box h3 { color: #92400e; margin-bottom: 0.75rem; }
+.summary-box ul { margin-left: 1.25rem; }
+.summary-box li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+.main-footer { background: var(--primary-blue); color: white; padding: 1.5rem; text-align: center; margin-top: 2rem; }
+.main-footer p { opacity: 0.9; font-size: 0.9rem; }
+@media (max-width: 900px) { .two-column { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>ICH Q12 — Pharmaceutical Product Lifecycle Management</h1>
+    <div class="subtitle">Section 3: PLCM Document &amp; PQS Change Management｜PLCM 文件與 PQS 變更管理</div>
+    <div class="page-info">ICH Harmonised Guideline Q12 (2019) | pp. 18–20</div>
+</div>
+
+<div class="main-content">
+
+    <div class="learning-objectives">
+        <h3>本章學習目標 Learning Objectives</h3>
+        <ul>
+            <li>能夠說明 <strong>PLCM Document（產品生命週期管理文件）</strong> 的四大核心要素及其在 CTD 中的位置</li>
+            <li>理解 PLCM Document 的 <strong>動態更新機制</strong>：何時必須提交更新版本？如何維護修訂歷史？</li>
+            <li>掌握 Q12 對 <strong>PQS 與跨供應鏈變更管理</strong> 的具體要求，包含多方利害關係人（MAH、CMO、供應商）的互動機制</li>
+            <li>理解 <strong>Figure 2</strong>（知識管理與變更管理的連結圖）的核心邏輯</li>
+            <li>了解 <strong>監管評估（Assessment）與查廠（Inspection）</strong> 的互補角色，以及 PLCM Document 在這兩個活動中的功能</li>
+        </ul>
+    </div>
+
+    <!-- ==================== SECTION 5 PLCM Document ==================== -->
+    <div class="section-title">5. Product Lifecycle Management (PLCM) Document｜PLCM 文件</div>
+
+    <div class="two-column">
+        <div class="left-column">
+            <h2>原文內容 Original Text</h2>
+
+            <h3>5. PRODUCT LIFECYCLE MANAGEMENT (PLCM) DOCUMENT</h3>
+
+            <p>The PLCM document outlines the specific plan for product lifecycle management that includes the ECs, reporting categories for changes to ECs, PACMPs (if used) and any post-approval CMC commitments. Its purpose is to encourage <span class="key-term">prospective lifecycle management planning</span> by the MAH and to facilitate regulatory assessment and inspection. The PLCM document should be updated throughout the product lifecycle as needed.</p>
+
+            <h4>5.1 PLCM Document: Scope</h4>
+
+            <p>The PLCM document serves as a <span class="key-term">central repository</span> in the MAA for ECs and reporting categories for making changes to ECs. It includes the key elements described below and references to the related information located elsewhere in the MAA (see Annex IF). Submission of the PLCM document is critical when the MAH proposes ECs in line with the risk-based approaches in Chapter 3.</p>
+
+            <p>The elements of the PLCM document are summarised below:</p>
+            <ul>
+                <li><strong>ECs (refer to Chapter 3):</strong> The ECs for the product should be listed in the PLCM document. The identification and justification of ECs are located in the relevant sections of the CTD.</li>
+                <li><strong>Reporting category for making changes to approved ECs (refer to Chapter 3):</strong> The reporting categories when making a change to an EC should be listed in the PLCM document. The detailed justification of the reporting categories is located in the relevant sections of the CTD.</li>
+                <li><strong>PACMPs (refer to Chapter 4):</strong> PACMPs that are submitted to prospectively manage and implement one or more post-approval changes should be listed.</li>
+                <li><strong>Post-approval CMC commitments:</strong> specified CMC development activities, agreed between the MAH and regulatory authority at the time of approval (e.g., specific process monitoring, additional testing) that will be performed during the commercial phase should be listed in the PLCM document.</li>
+            </ul>
+
+            <h4>5.2 Submitting the PLCM Document</h4>
+            <p>The PLCM document is submitted in the original MAA or in a supplement/variation for marketed products when defining ECs (Chapter 3).</p>
+
+            <h4>5.3 Maintenance of the PLCM Document</h4>
+            <p>An updated PLCM document should be included in post-approval submissions for CMC changes. The updated PLCM document will capture the change in ECs and other associated elements (reporting category, commitments, PACMP). The MAH should follow regional expectations for maintaining a revision history for the PLCM document.</p>
+
+            <h4>5.4 Format and Location of PLCM Document</h4>
+            <p>A <span class="key-term">tabular format</span> is recommended to capture certain elements of PLCM described in section 5.1, but other appropriate formats can be used. See Annex IF for an example PLCM table.</p>
+            <p>The PLCM document can be located in <span class="key-term">CTD Module 3.2.R</span>.<sup>4</sup></p>
+            <p><em><sup>4</sup> In some regions, the PLCM may be included in Module 1.</em></p>
+        </div>
+
+        <div class="right-column">
+            <h2>導師解析 Tutorial Commentary</h2>
+
+            <div class="concept-box">
+                <h4>PLCM Document 的四大要素</h4>
+                <table>
+                    <thead>
+                        <tr><th>要素</th><th>內容</th><th>詳細資訊位置</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>ECs 清單</strong></td>
+                            <td>所有已識別的既定條件列表</td>
+                            <td>CTD 各相關模組（識別與論證）</td>
+                        </tr>
+                        <tr>
+                            <td><strong>報告分類</strong></td>
+                            <td>每個 EC 變更時對應的分類（Prior Approval / Notification）</td>
+                            <td>CTD 各相關模組（詳細論證）</td>
+                        </tr>
+                        <tr>
+                            <td><strong>PACMPs 清單</strong></td>
+                            <td>已提交的上市後變更管理計畫</td>
+                            <td>CTD Module 3.2.R 中的 PACMP 文件</td>
+                        </tr>
+                        <tr>
+                            <td><strong>上市後 CMC 承諾</strong></td>
+                            <td>核准時議定的特定後續活動（如監控計畫、補充測試）</td>
+                            <td>PLCM Document 直接記載</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><strong>關鍵特性</strong>：PLCM Document 是一份「索引+清單」文件，它提供指引（指向 CTD 其他位置的詳細論證），而不是重複這些論證本身。建議採用表格格式（tabular format），清晰呈現各要素。</p>
+            </div>
+
+            <div class="formula-box">
+                <h4>PLCM Document 更新的觸發點</h4>
+                <pre>
+PLCM Document 必須在以下情況更新：
+
+1. 初次提交 MAA 時（若已識別 ECs）
+   → 首次建立 PLCM Document
+
+2. 每次 Post-Approval 申請中有 EC 變更時
+   → 更新 EC 清單 + 報告分類
+
+3. 新增或修訂 PACMP 時
+   → 更新 PACMP 清單
+
+4. 上市後 CMC 承諾完成或修訂時
+   → 更新承諾狀態
+
+5. 已核准的 EC 報告分類調整時
+   → 更新分類欄位
+
+更新版本必須：
+- 包含在對應的 Post-Approval 申請中提交
+- 維護修訂歷史（依地區要求）
+- 反映「當前」核准狀態，以便監管機構
+  在查廠時對照驗證
+                </pre>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻說明｜PLCM Document 就像是「產品的管理計畫摘要書」</h4>
+                <p>想像你管理一棟大樓：ECs 是「大樓的核心設施清單」（電梯、消防系統、主結構），報告分類是「每項設施若需維修，需要什麼審批層級」，PACMPs 是「預先申請好的特定改裝許可協議」，CMC 承諾是「你答應物業管理委員會定期提交的檢查報告」。PLCM Document 就是這棟大樓的「設施管理計畫摘要書」——它不是詳細的施工圖，而是一份讓物管委員會（監管機構）一目了然你的管理計畫的清單。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>重點提示｜CTD Module 3.2.R 是主要位置（但有地區差異）</h4>
+                <p>PLCM Document 通常位於 CTD Module 3.2.R（地區性資訊），但某些地區（如部分亞太市場）可能要求放在 Module 1（行政資訊）。CDMO 協助客戶準備申請文件時，必須確認目標市場的要求，避免文件放錯位置導致技術性缺陷（TQ, Technical Question）。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>練習思考 Practice Questions</h4>
+                <ol>
+                    <li>若一個產品的 PLCM Document 中列有 10 個 ECs，但有 3 個 EC 的報告分類沒有充分論證（理由在 CTD 其他模組），監管機構會如何看待這份 PLCM Document？</li>
+                    <li>PLCM Document 的「修訂歷史」有什麼實際功能？在查廠時監管機構查廠員可能如何使用它？</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SECTION 6 PQS ==================== -->
+    <div class="section-title">6. Pharmaceutical Quality System (PQS) and Change Management｜PQS 與變更管理</div>
+
+    <div class="two-column">
+        <div class="left-column">
+            <h2>原文內容 Original Text</h2>
+
+            <h3>6. PHARMACEUTICAL QUALITY SYSTEM (PQS) AND CHANGE MANAGEMENT</h3>
+            <h4>6.1 PQS General Considerations</h4>
+
+            <p>An effective PQS as described in ICH Q10 and in compliance with regional GMP requirements where the application is filed, is necessary across the entire supply chain and product lifecycle to support use of the tools described in this guideline. It includes appropriate <span class="key-term">change management, enabled by knowledge management</span>, and management review. The principles are further elaborated in Appendix 2. The relationship between knowledge management, change management, and the regulatory process for ECs are illustrated in <strong>Figure 2</strong>.</p>
+
+            <p>Maintaining an effective PQS is the responsibility of a company (manufacturing sites and MAH where relevant). It is not the intent of this guideline to require a specific inspection assessing the state of the PQS before the company can use the principles in this guideline. The conduct of inspections in connection with submitted MAAs and surveillance will nevertheless continue as foreseen by regional regulatory requirements. It is understood that a manufacturing site can be considered to be in general GMP compliance while resolving deficiencies that do not need regulatory action. In the event that such deficiencies have an impact on the effectiveness of change management in the PQS, it may result in restrictions on the ability to utilise flexibility in this guideline.</p>
+
+            <h4>6.2 Change Management Across the Supply Chain and Product Lifecycle</h4>
+
+            <p>Supply chains involve multiple stakeholders (e.g., MAHs, R&amp;D organisations, manufacturers, Contract Manufacturing Organisations, suppliers). It is important that these stakeholders interact to effectively utilise knowledge and manage changes during the product lifecycle.</p>
+
+            <p>A company has to manage communication of information and interactions of PQSs across multiple entities (internal and external). Therefore, the implementation of <span class="key-term">robust change management across multiple sites</span> (outsourced or not) is necessary. In conjunction with change control principles in Appendix 2, the following change management activities should be considered to support the approaches defined in this guideline:</p>
+            <ul>
+                <li>Changes to ECs should be communicated in a timely fashion between the MAH and the regulators, and between the MAH and the manufacturing chain (and vice versa).</li>
+                <li>The timeliness of communication is driven by the impact of any change related to ECs and should be targeted to those entities in the chain that need to be aware of or to implement the change over the lifecycle of the product.</li>
+                <li>Process knowledge and continual improvement are drivers for change. For example, a CMO may be in a position to propose process improvements which significantly improve control and product consistency. These data can be utilised to revise the ECs and associated PLCM document. The organisation responsible for batch release should be aware of all relevant changes and where applicable, be involved in the decision making.</li>
+                <li>The communication mechanisms regarding MAA changes and GMP issues should be defined in relevant documentation, including <span class="key-term">contracts with CMOs</span>.</li>
+                <li>A critical failure in a PQS anywhere in the supply chain may impact the ability to use the tools in this guideline; therefore, the company should communicate such failures to affected regulatory authorities.</li>
+            </ul>
+        </div>
+
+        <div class="right-column">
+            <h2>導師解析 Tutorial Commentary</h2>
+
+            <div class="concept-box">
+                <h4>Figure 2 邏輯解析：知識管理 → 變更管理 → EC 監管流程</h4>
+                <p>Q12 的 Figure 2 描述了三個概念的循環連結：</p>
+                <ul>
+                    <li><strong>知識管理（Knowledge Management）</strong>：透過開發研究、製造經驗、供應商評估、PQR 等途徑持續積累產品與製程知識</li>
+                    <li><strong>變更管理（Change Management / PQS）</strong>：知識積累觸發改善機會識別 → 公司內部評估 → 決定是否需要改變 EC → 若需要，啟動監管報告流程</li>
+                    <li><strong>EC 監管流程</strong>：EC 變更報告（Prior Approval / Notification）→ 監管核准 → 實施 → 更新 PLCM Document → 生成更多製造知識</li>
+                </ul>
+                <p>這是一個「知識驅動改善」的正向飛輪。Q12 的目標是讓這個飛輪轉得更順暢——通過精準的 EC 識別和 PACMP，減少每個變更的監管摩擦。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>重點提示｜PQS 缺失 = 喪失 Q12 彈性的觸發點</h4>
+                <p>原文明確指出：若 PQS 缺失影響了變更管理的有效性，公司可能失去使用 Q12 彈性工具的能力。這是一個重要的監管邏輯：Q12 的彈性是建立在「你的內部品質管理系統足夠可信」的前提上。若查廠發現 PQS 有重大缺失（如變更控制程序不完善），監管機構可能要求恢復到更嚴格的 Prior Approval 流程，即使相關 EC 已有議定的降類。因此，維護健全的 PQS 是維持 Q12 效益的前提條件。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>重點提示｜CMO 合約中必須包含 EC 溝通機制</h4>
+                <p>原文特別點出：「MAA 變更和 GMP 問題的溝通機制應在相關文件中明確，包含與 CMO 的合約。」這意味著：</p>
+                <ul>
+                    <li>CDMO 合約中必須明確規定哪些 CMC 變更必須通知 MAH、通知的時間要求、資訊格式</li>
+                    <li>若 CDMO 的 PQS 發生重大失效（如批次偏差影響 EC 相關製程），必須向 MAH 報告，由 MAH 決定是否需要通知監管機構</li>
+                    <li>這些條款若在合約中不明確，可能在查廠時被認定為 GMP 缺失</li>
+                </ul>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻說明｜多廠供應鏈的 EC 溝通，就像「多個廚房協作的連鎖餐廳」</h4>
+                <p>想像一家連鎖餐廳（MAH）使用多個加工廚房（CDMO/供應商）：</p>
+                <ul>
+                    <li>每個廚房都有「核心食譜條件」（ECs），如主要食材規格、烹調溫度</li>
+                    <li>若某個廚房（CDMO）要更換一種食材（CMC 變更），必須先告知總部（MAH）</li>
+                    <li>若此變更影響到「已申報的核心食譜條件」（EC 變更），總部必須向衛生局（監管機構）報告</li>
+                    <li>若某個廚房的食安管理系統出了問題（PQS 失效），所有加盟廚房都必須暫停使用「快速通道審核」，恢復標準申請流程</li>
+                </ul>
+                <p>這就是供應鏈多方 PQS 整合的核心邏輯——整個供應鏈是一個品質系統，任何一個節點的失效都影響整體的監管彈性。</p>
+            </div>
+
+            <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+                <h4>實務應用｜CDMO 合約中的 Q12 相關條款設計</h4>
+                <p>依據 Q12 §6.2，CDMO 與 MAH 的製造協議應包含：</p>
+                <ul>
+                    <li><strong>EC 變更通知條款</strong>：CDMO 提議的製程改善若涉及潛在 EC，必須在 X 天內通知 MAH，並提供技術評估報告</li>
+                    <li><strong>PQS 失效通報義務</strong>：若 CDMO 發生影響變更管理有效性的重大 PQS 偏差，必須在 Y 天內告知 MAH</li>
+                    <li><strong>PLCM Document 更新配合義務</strong>：當 MAH 更新 PLCM Document 並提交申請時，CDMO 必須提供所需的技術數據支持</li>
+                    <li><strong>PACMP 執行配合條款</strong>：若 PACMP 涉及 CDMO 的製程，明確規定 CDMO 在 Step 2 研究中的責任範圍</li>
+                </ul>
+            </div>
+
+            <div class="practice-box">
+                <h4>練習思考 Practice Questions</h4>
+                <ol>
+                    <li>若 CDMO 主動提出了一項製程改善方案，可顯著降低生產成本（但可能涉及 EC 變更），應如何在 PQS 和 Q12 框架下推進這個提案？</li>
+                    <li>「批次放行負責組織應了解所有相關變更」——這在多廠商供應鏈中如何實際執行？有什麼資訊管理挑戰？</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SECTION 7 Assessment & Inspection ==================== -->
+    <div class="section-title">7. Relationship Between Regulatory Assessment and Inspection｜監管評估與查廠的關係</div>
+
+    <div class="two-column">
+        <div class="left-column">
+            <h2>原文內容 Original Text</h2>
+
+            <h3>7. RELATIONSHIP BETWEEN REGULATORY ASSESSMENT AND INSPECTION</h3>
+
+            <p>Regulatory assessment and inspection are complementary activities and their fundamental roles remain unchanged by this guideline. Nevertheless, effective communication between assessors and inspectors can facilitate regulatory oversight of product lifecycle management.</p>
+
+            <p>Appropriate mechanisms to share knowledge and information obtained through inspection or assessment activities can facilitate access to necessary information and mitigate increased submission burden on the MAH. For example, the <span class="key-term">conclusions from inspections should be available to assessors</span> to support ongoing oversight of product lifecycle management and the <span class="key-term">most recent PLCM document should be available to inspectors</span> so they are aware of the currently approved status of the PLCM elements.</p>
+
+            <p>Communication is encouraged between regulators across regions, in accordance with appropriate bilateral/multilateral arrangements; for example, to communicate about critical failures in aspects of a company's PQS that may impact the use of tools described in this guideline.</p>
+        </div>
+
+        <div class="right-column">
+            <h2>導師解析 Tutorial Commentary</h2>
+
+            <div class="concept-box">
+                <h4>評估員（Assessor）vs. 查廠員（Inspector）的分工</h4>
+                <table>
+                    <thead>
+                        <tr><th></th><th>評估員（Assessor）</th><th>查廠員（Inspector）</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>主要工作</strong></td>
+                            <td>審查書面申請文件（MAA、補充申請）</td>
+                            <td>現場查廠（GMP 合規、實際執行情況）</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Q12 相關職能</strong></td>
+                            <td>審核 EC 識別合理性、PACMP 可行性、PLCM Document 完整性</td>
+                            <td>驗證現場製程是否符合已申報的 EC；查驗 PQS 變更管理的有效性</td>
+                        </tr>
+                        <tr>
+                            <td><strong>PLCM Document 使用</strong></td>
+                            <td>評估文件一致性，核准 EC 和報告分類</td>
+                            <td>用最新版 PLCM Document 對照現場操作，確認無未報告的 EC 偏離</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Q12 要求的溝通</strong></td>
+                            <td>評估員應能取得查廠結論（了解 PQS 現況）</td>
+                            <td>查廠員應能取得最新 PLCM Document（了解核准狀態）</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="note-box">
+                <h4>重點提示｜「跨地區溝通」的重要性</h4>
+                <p>Q12 特別強調跨地區監管機構之間的溝通——例如，若一個廠址在某個國家的查廠中發現重大 PQS 問題，該國監管機構可能透過雙邊或多邊協議通知其他地區的監管機構（如 FDA 通知 EMA）。對 CDMO 而言，這意味著：</p>
+                <ul>
+                    <li>在任何一個主要市場的查廠缺失，可能影響在所有市場的 Q12 工具使用能力</li>
+                    <li>維持全球一致的 GMP 合規標準，不只是「應付本地查廠」，而是整體監管聲譽的維護</li>
+                </ul>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻說明｜評估與查廠的互補，就像「文件審查員」vs.「現場稽核員」</h4>
+                <p>評估員就像公寓大廈的「管理委員會文件審查員」——他審查你提交的裝修計畫（MAA），核准你的改裝範圍（ECs）和未來修改協議（PACMP）。查廠員就像「現場施工稽核員」——他來現場確認你實際施工的狀況是否符合核准的計畫。</p>
+                <p>Q12 的要求是：文件審查員應能看到稽核員的報告（確認施工品質），稽核員應能看到最新核准的改裝計畫（知道允許的範圍）。兩者資訊互通，才能形成完整的監管閉環。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>練習思考 Practice Questions</h4>
+                <ol>
+                    <li>若查廠員發現某個 CDMO 的製程實際操作與已申報的 EC 有偏差（但尚未達到影響品質的程度），Q12 框架下應如何處理？需要做哪些報告？</li>
+                    <li>評估員在核准 PACMP 時，應如何利用之前查廠的報告來評估提案的可信度？這對 CDMO 的查廠準備有什麼啟示？</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- 本節重點回顧 -->
+    <div class="summary-box">
+        <h3>本節重點回顧 Section Summary</h3>
+        <ul>
+            <li><strong>PLCM Document 四要素</strong>：ECs 清單、報告分類、PACMPs 清單、上市後 CMC 承諾——集中於 CTD Module 3.2.R，以表格格式呈現</li>
+            <li><strong>動態更新</strong>：每次 Post-Approval 申請涉及 EC 變更時必須更新；需維護修訂歷史以供監管審查</li>
+            <li><strong>PQS 是前提</strong>：有效的 PQS 是使用 Q12 彈性工具的必要條件；PQS 失效可能導致失去使用降類申請的資格</li>
+            <li><strong>供應鏈 EC 溝通</strong>：MAH-CDMO-供應商之間需建立明確的 EC 變更通報機制，並寫入合約；CDMO 的 PQS 失效必須及時向 MAH 報告</li>
+            <li><strong>Figure 2 核心邏輯</strong>：知識積累 → 識別改善機會 → PQS 變更管理 → EC 監管流程 → 更多知識積累（正向飛輪）</li>
+            <li><strong>評估與查廠互補</strong>：評估員（審文件）應能取得查廠結論；查廠員（現場驗證）應能取得最新 PLCM Document——資訊互通構成完整監管閉環</li>
+        </ul>
+    </div>
+
+</div>
+
+<div class="main-footer">
+    <p>ICH Q12 (2019): Technical and Regulatory Considerations for Pharmaceutical Product Lifecycle Management | Section 3: PLCM Document &amp; PQS Change Management | pp. 18–20</p>
+</div>
+
+</body>
+</html>

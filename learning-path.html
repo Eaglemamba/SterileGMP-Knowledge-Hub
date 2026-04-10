@@ -52,6 +52,7 @@ body { font-family: 'Noto Sans TC', -apple-system, sans-serif; background: var(-
 .required-badge { font-size: 10px; padding: 2px 8px; border-radius: 980px; font-weight: 600; background: #fee2e2; color: #991b1b; white-space: nowrap; }
 .optional-badge { font-size: 10px; padding: 2px 8px; border-radius: 980px; font-weight: 600; background: #f0fdf4; color: #166534; white-space: nowrap; }
 .source-badge { font-size: 10px; padding: 2px 7px; border-radius: 6px; font-weight: 600; white-space: nowrap; }
+.quiz-badge { font-size: 10px; padding: 2px 7px; border-radius: 6px; font-weight: 600; white-space: nowrap; cursor: pointer; text-decoration: none; }
 
 /* Progress bar */
 .progress-bar { height: 6px; border-radius: 3px; transition: width 0.6s ease; }
@@ -161,6 +162,18 @@ function resetProgress() {
 function selectDept(id) {
   activeDept = id;
   render();
+}
+
+/* ── Quiz results helpers ── */
+function loadQuizResults() {
+  try { return JSON.parse(localStorage.getItem('gmp-quiz-results')) || []; } catch { return []; }
+}
+function bestQuizScore(docKey) {
+  const results = loadQuizResults();
+  const attempts = results.filter(r => r.doc_key === docKey);
+  if (!attempts.length) return null;
+  const best = Math.max(...attempts.map(r => Math.round((r.score / r.total) * 100)));
+  return best;
 }
 
 /* ── Render ── */
@@ -292,6 +305,7 @@ function render() {
                       }
                       ${doc.required ? '<span class="required-badge">Required</span>' : '<span class="optional-badge">Optional</span>'}
                       ${src ? `<span class="source-badge" style="background:${srcColor}15;color:${srcColor}">${src}</span>` : ''}
+                      ${(() => { const pct = bestQuizScore(doc.key); if (pct === null) return ''; const bg = pct >= 80 ? '#d1fae5' : pct >= 60 ? '#fef9c3' : '#fee2e2'; const fg = pct >= 80 ? '#065f46' : pct >= 60 ? '#854d0e' : '#991b1b'; return `<a href="quiz.html" class="quiz-badge" style="background:${bg};color:${fg}" title="Best quiz score">🎯 ${pct}%</a>`; })()}
                     </div>
                     ${titleZh ? `<div style="font-size:11px;color:var(--c-tertiary);margin-top:2px">${titleZh}</div>` : ''}
                     <div style="font-size:11px;color:var(--c-secondary);margin-top:4px;line-height:1.5">${doc.why}</div>
