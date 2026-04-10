@@ -45,6 +45,8 @@ const departments = [
           { key: 'TR65',         required: false, why: 'Technology Transfer — QA role in site transfers' },
           { key: 'PICS-Annex2',  required: false, why: 'ATMPs & Biologics — QA for advanced therapies' },
           { key: 'TR91',         required: false, why: 'Post-Approval Change Management — lifecycle change control' },
+          { key: 'TR49',         required: false, why: 'Biotech Cleaning Validation — QA oversight of cleaning validation programs' },
+          { key: 'TR68',         required: false, why: 'Drug Shortage Prevention — quality system risk and supply continuity' },
         ]
       }
     ]
@@ -88,6 +90,8 @@ const departments = [
           { key: 'TR39',        required: false, why: 'Bioburden Recovery Validation' },
           { key: 'PhEur-261',   required: false, why: 'Ph.Eur. 2.6.1 — Sterility Test (European method)' },
           { key: 'PhEur-2614',  required: false, why: 'Ph.Eur. 2.6.14 — Bacterial Endotoxins (European method)' },
+          { key: 'USP-1',       required: false, why: 'Injections & Parenterals — foundational QC reference for parenteral products' },
+          { key: 'ISPE-QC',     required: false, why: 'Quality Culture & RCA Tools — root cause analysis methodology for QC' },
         ]
       },
       {
@@ -105,6 +109,34 @@ const departments = [
           { key: 'USP-1228',    required: false, why: 'Depyrogenation — methods overview' },
           { key: 'USP-1788',    required: false, why: 'Methods for the Determination of Sub-visible Particulates' },
           { key: 'USP-1790',    required: false, why: 'Visual Inspection of Injections — advanced methods' },
+          { key: 'USP-55',      required: false, why: 'Biological Indicators — sterilization validation testing' },
+          { key: 'USP-161',     required: false, why: 'Device Endotoxin & Pyrogen Testing — combination product testing' },
+          { key: 'USP-631',     required: false, why: 'Color & Achromicity — analytical test method for injectables' },
+          { key: 'USP-729',     required: false, why: 'Globule Size in Lipid Emulsions — specialized QC for lipid-based products' },
+          { key: 'USP-755',     required: false, why: 'Minimum Fill — routine QC inspection of fill volume' },
+          { key: 'USP-771',     required: false, why: 'Ophthalmic Quality Tests — QC for ophthalmic preparations' },
+          { key: 'USP-785',     required: false, why: 'Osmolality & Osmolarity — injectable QC testing' },
+          { key: 'USP-789',     required: false, why: 'Particulates in Ophthalmic Solutions — QC testing' },
+          { key: 'USP-791',     required: false, why: 'pH — routine analytical testing for injectables' },
+          { key: 'USP-921',     required: false, why: 'Water Determination (Karl Fischer) — moisture testing' },
+          { key: 'USP-1229',    required: false, why: 'Sterilization of Compendial Articles — parent chapter overview' },
+          { key: 'USP-1229-3',  required: false, why: 'Bioburden Monitoring — pre-sterilization testing methods' },
+          { key: 'USP-1229-5',  required: false, why: 'Biological Indicators for Sterilization' },
+          { key: 'PhEur-2919',  required: false, why: 'Ph.Eur. 2.9.19 — Sub-Visible Particles (European method)' },
+          { key: 'PhEur-2920',  required: false, why: 'Ph.Eur. 2.9.20 — Visible Particles (European method)' },
+          { key: 'PhEur-511',   required: false, why: 'Ph.Eur. 5.1.1 — Methods of Preparation of Sterile Products' },
+          { key: 'ISPE-Sampling', required: false, why: 'Sampling for Water/Steam/Gases — QC sampling methodology' },
+          { key: 'USP-87',      required: false, why: 'Biological Reactivity In Vitro — biocompatibility testing' },
+          { key: 'USP-88',      required: false, why: 'Biological Reactivity In Vivo — biocompatibility testing' },
+          { key: 'USP-381',     required: false, why: 'Elastomeric Components — testing rubber closures & seals' },
+          { key: 'USP-1207-1',  required: false, why: 'CCI Test Method Selection — container closure integrity strategy' },
+          { key: 'USP-1207-2',  required: false, why: 'Leak Test Technologies — CCI test method comparison' },
+          { key: 'USP-1207-3',  required: false, why: 'Seal Quality Technologies — closure system evaluation' },
+          { key: 'USP-1660',    required: false, why: 'Glass Inner Surface Durability — glass quality testing' },
+          { key: 'USP-1663',    required: false, why: 'Extractables Assessment — E&L testing for packaging' },
+          { key: 'USP-1664',    required: false, why: 'Leachables Assessment — patient safety risk assessment' },
+          { key: 'PhEur-321',   required: false, why: 'Ph.Eur. 3.2.1 — Glass Containers (European method)' },
+          { key: 'PhEur-338',   required: false, why: 'Ph.Eur. 3.3.8 — Sterile Single-Use Syringes (European method)' },
         ]
       }
     ]
@@ -137,6 +169,8 @@ const departments = [
           { key: 'TR13',          required: false, why: 'EM Program Fundamentals — production floor monitoring' },
           { key: 'PtC-1',         required: false, why: 'Isolator Technology for Aseptic Processing' },
           { key: 'TR85',          required: false, why: 'Single-Use Systems — integration in aseptic manufacturing' },
+          { key: 'PtC-12',        required: false, why: 'RABS — Restricted Access Barrier System operations' },
+          { key: 'PtC-Isolators', required: false, why: 'Isolator Technology — aseptic processing in isolator systems' },
         ]
       },
       {
@@ -148,6 +182,16 @@ const departments = [
           { key: 'PtC-14',        required: false, why: 'ATMP Manufacturing — specialized production requirements' },
           { key: 'TR91',          required: false, why: 'Mobile Manufacturing Units — emerging production models' },
           { key: 'TR66',          required: false, why: 'Cold Chain — handling temperature-sensitive products' },
+          { key: 'PtC-15',        required: false, why: 'Mobile Manufacturing — modular and mobile production models' },
+          { key: 'USP-1229-1',    required: false, why: 'Steam Sterilization — cycle design and validation' },
+          { key: 'USP-1229-2',    required: false, why: 'Moist Heat Sterilization of Liquids — cycle parameters' },
+          { key: 'USP-1229-4',    required: false, why: 'Sterilizing Filtration — filter validation for aseptic production' },
+          { key: 'USP-1229-8',    required: false, why: 'Dry Heat Sterilization — depyrogenation tunnel operations' },
+          { key: 'USP-1229-11',   required: false, why: 'VPHP Sterilization — vaporized hydrogen peroxide cycles' },
+          { key: 'USP-1229-13',   required: false, why: 'SIP — Sterilize-in-Place system operations' },
+          { key: 'USP-1229-14',   required: false, why: 'Sterilization Cycle Development — validation strategy' },
+          { key: 'USP-797',       required: false, why: 'Sterile Compounding — aseptic technique reference' },
+          { key: 'PhEur-338',     required: false, why: 'Ph.Eur. 3.3.8 — Sterile Single-Use Syringes (European standard)' },
         ]
       }
     ]
@@ -189,6 +233,14 @@ const departments = [
           { key: 'ISPE-TechTransfer', required: false, why: 'Technology Transfer — engineering readiness' },
           { key: 'ISPE-Vol7',       required: false, why: 'Risk-Based Manufacture — engineering risk assessment' },
           { key: 'TR85',            required: false, why: 'Single-Use Systems — engineering integration' },
+          { key: 'USP-1229-6',      required: false, why: 'Liquid-Phase Sterilization — engineering parameters and validation' },
+          { key: 'USP-1229-7',      required: false, why: 'EtO Sterilization — ethylene oxide cycle engineering' },
+          { key: 'USP-1229-9',      required: false, why: 'Chemical Indicators for Sterilization — monitoring systems' },
+          { key: 'USP-1229-10',     required: false, why: 'Radiation Sterilization — dose setting and validation' },
+          { key: 'USP-1229-12',     required: false, why: 'New Sterilization Methods — emerging technologies' },
+          { key: 'USP-1229-15',     required: false, why: 'Gas Filtration Sterilization — compressed gas systems' },
+          { key: 'ISPE-CTC',        required: false, why: 'CTC Mapping & Monitoring — cold chain qualification engineering' },
+          { key: 'ISPE-SUT',        required: false, why: 'Single-Use Technology — engineering integration and qualification' },
         ]
       }
     ]
@@ -220,6 +272,8 @@ const departments = [
           { key: 'PICS-Annex20',         required: true,  why: 'PIC/S Annex 20 — Quality Risk Management' },
           { key: 'FDA-ComboProd-CGMP',   required: false, why: 'CGMP Requirements for Combination Products' },
           { key: 'FDA-ComboProd-HF',     required: false, why: 'Human Factors for Combination Products' },
+          { key: 'PtC-Remote',           required: false, why: 'Remote & Hybrid GMP Inspections — regulatory expectations for virtual audits' },
+          { key: 'TR73-2',               required: false, why: 'MDR Annex I for Staked Needles — EU regulatory compliance for combination devices' },
         ]
       },
       {
@@ -230,6 +284,14 @@ const departments = [
           { key: 'ISO-15378',      required: false, why: 'ISO 15378 — Primary Packaging GMP (regulatory submission)' },
           { key: 'TR91',           required: false, why: 'Post-Approval Change Management — ICH Q12 & PACMP' },
           { key: 'ISPE-TechTransfer', required: false, why: 'Technology Transfer — regulatory submission support' },
+          { key: 'ISO-9000',       required: false, why: 'QMS Fundamentals — vocabulary and quality principles' },
+          { key: 'ISO-9001',       required: false, why: 'QMS Requirements — risk-based thinking for regulatory submissions' },
+          { key: 'ISO-10993-1',    required: false, why: 'Biological Evaluation of Medical Devices — biocompatibility framework' },
+          { key: 'ISO-15223-1',    required: false, why: 'Medical Device Label Symbols — regulatory labelling requirements' },
+          { key: 'ISO-15223-2',    required: false, why: 'Medical Device Symbol Validation — symbol testing requirements' },
+          { key: 'ISO-TR-24971',   required: false, why: 'Risk Management Application Guidance — ISO 14971 implementation' },
+          { key: 'USP-87',         required: false, why: 'Biological Reactivity In Vitro — biocompatibility submission data' },
+          { key: 'USP-88',         required: false, why: 'Biological Reactivity In Vivo — biocompatibility submission data' },
         ]
       }
     ]
@@ -261,6 +323,9 @@ const departments = [
           { key: 'USP-660',       required: false, why: 'Glass Containers — specifications & handling precautions' },
           { key: 'USP-661',       required: false, why: 'Plastic Packaging Systems — storage compatibility' },
           { key: 'USP-1231',      required: false, why: 'Water for Pharmaceutical Purposes — storage requirements' },
+          { key: 'USP-659',       required: false, why: 'Packaging & Storage Requirements — compendial storage conditions' },
+          { key: 'USP-698',       required: false, why: 'Deliverable Volume — fill volume verification testing' },
+          { key: 'USP-381',       required: false, why: 'Elastomeric Components — rubber stopper/closure receiving specifications' },
         ]
       },
       {
@@ -270,6 +335,15 @@ const departments = [
           { key: 'ISO-15378',     required: false, why: 'ISO 15378 — Primary Packaging GMP (receiving & storage)' },
           { key: 'PtC-9',         required: false, why: 'COVID-19 Lessons — supply chain disruption & BCP' },
           { key: 'TR86',          required: false, why: 'Blockchain in Supply Chain — traceability & serialization' },
+          { key: 'USP-670',       required: false, why: 'Auxiliary Packaging Components — desiccants, oxygen scavengers' },
+          { key: 'USP-671',       required: false, why: 'Containers Performance Testing — packaging material qualification' },
+          { key: 'TR68',          required: false, why: 'Drug Shortage Prevention — supply risk management' },
+          { key: 'ISO-15394',     required: false, why: 'Packaging Barcodes — shipping labels & traceability standards' },
+          { key: 'USP-1207-1',    required: false, why: 'CCI Test Method Selection — container closure integrity strategy' },
+          { key: 'USP-1207-2',    required: false, why: 'Leak Test Technologies — CCI test method comparison' },
+          { key: 'USP-1207-3',    required: false, why: 'Seal Quality Technologies — closure system evaluation' },
+          { key: 'USP-1660',      required: false, why: 'Glass Inner Surface Durability — glass delamination risk' },
+          { key: 'PhEur-321',     required: false, why: 'Ph.Eur. 3.2.1 — Glass Containers (European standard)' },
         ]
       }
     ]
@@ -302,6 +376,8 @@ const departments = [
           { key: 'TR62',            required: false, why: 'Lyophilization — cycle optimization & troubleshooting' },
           { key: 'TR90',            required: false, why: 'Contamination Control Strategy — process-side CCS elements' },
           { key: 'TR29',            required: false, why: 'Cleaning Validation — process equipment cleaning support' },
+          { key: 'USP-1228-1',      required: false, why: 'Dry Heat Depyrogenation — tunnel and oven cycle support' },
+          { key: 'USP-1228-3',      required: false, why: 'Depyrogenation by Filtration — filter-based depyrogenation validation' },
         ]
       },
       {
@@ -312,6 +388,17 @@ const departments = [
           { key: 'TR88',            required: false, why: 'Microbial Data Deviation Investigation — root cause methodology' },
           { key: 'TR91',            required: false, why: 'Post-Approval Change Management — ICH Q12 & PACMP support' },
           { key: 'ISPE-Vol6',       required: false, why: 'Biopharma Facility — process fit considerations' },
+          { key: 'PtC-11',          required: false, why: 'Plasmids & Vectors in ATMP — specialized gene therapy process support' },
+          { key: 'PtC-13',          required: false, why: 'Materials in ATMP Manufacturing — raw material qualification' },
+          { key: 'USP-1228-4',      required: false, why: 'Depyrogenation by Rinsing — WFI rinsing validation' },
+          { key: 'USP-1228-5',      required: false, why: 'Endotoxin Indicators for Depyrogenation — validation indicators' },
+          { key: 'ISO-11040',       required: false, why: 'Prefilled Syringe Standards — process specs for PFS systems' },
+          { key: 'ISO-11608-1',     required: false, why: 'Needle-Based Injection Systems — device integration support' },
+          { key: 'ISO-13926-1',     required: false, why: 'Pen-Injector Glass Cylinders — component specifications' },
+          { key: 'ISO-13926-2',     required: false, why: 'Pen-Injector Plunger Stoppers — component specifications' },
+          { key: 'ISO-13926-3',     required: false, why: 'Pen-Injector Seals — component specifications' },
+          { key: 'USP-1663',        required: false, why: 'Extractables Assessment — E&L testing for process materials' },
+          { key: 'USP-1664',        required: false, why: 'Leachables Assessment — patient safety risk from process contact materials' },
         ]
       }
     ]
