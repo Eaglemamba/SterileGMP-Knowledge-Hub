@@ -79,6 +79,9 @@ mv "Raw pdfs/PDA_TRXX_....pdf" "Raw pdfs/processed/"
 ├── gmp_engine.py           # Unified CLI: scaffold, md, merge
 ├── merge_engine.py         # Shared HTML merge library (imported by gmp_engine.py)
 ├── index.html              # Dashboard — reads from reports.json (no hardcoded data)
+├── learning-path.html      # Department curriculum tracker with quiz badges
+├── mindmap.html            # Knowledge mind map (D3.js + Markmap)
+├── quiz.html               # Quiz score tracker — paste JSON from /quiz skill to record
 ├── template.css            # Shared CSS (do not modify per-report)
 ├── README.md               # Repo readme
 ├── SOURCES.md              # Source organization comparison (PDA, ISPE, FDA, ICH, USP, ISO, Ph.Eur., WHO)
@@ -89,6 +92,8 @@ mv "Raw pdfs/PDA_TRXX_....pdf" "Raw pdfs/processed/"
 ├── Raw pdfs/               # Source PDFs (all sources)
 ├── knowledge/              # Chatbot knowledge base — English-only original content
 │   ├── INDEX.md            # Master routing index — update manually per new document
+│   ├── exams/              # Pre-written question banks (JSON) for /quiz skill
+│   │   └── topics-APS-filling-isolator.json
 │   ├── PDA/                # PDA Technical Reports & Points to Consider
 │   │   ├── TR26-Complete.md    # One .md per document (auto-generated, English only)
 │   │   └── ...
@@ -96,7 +101,7 @@ mv "Raw pdfs/PDA_TRXX_....pdf" "Raw pdfs/processed/"
 ├── .claude/
 │   └── commands/
 │       ├── gmp-ask.md      # /gmp-ask skill — unified chatbot Q&A via Claude Code
-│       └── gmp-ask.md      # /gmp-ask skill — multi-source GMP Q&A
+│       └── quiz.md         # /quiz skill — interactive 10-question exam, outputs JSON for quiz.html
 ├── PDA/                    # All PDA documents
 │   ├── TR26/               # Each subfolder: source/ + sections/ + output/
 │   ├── PtC-14/
