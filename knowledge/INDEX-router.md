@@ -192,6 +192,12 @@ Use these mappings to translate user questions before routing:
 | BLA manufacturing change management / PAS / CBE-30 | FDA-21CFR-Biologics (§2 Part 601 §601.12) | TR91, ICH-Q12 |
 | Biologics container label / Part 610 labeling / expiration dating | FDA-21CFR-Biologics (§4 Part 610 labeling) | — |
 | CDMO quality agreement biologics / responsibility allocation Subchapter F | FDA-21CFR-Biologics (§5 CDMO compliance matrix) | FDA-Aseptic |
+| Electronic records and electronic signatures / Part 11 scope / predicate rule / eCFR §11.1 | FDA-21CFR-Part11 (§0 Overview & 2003 Guidance) | — |
+| Audit trail requirements §11.10(e) / computer-generated time-stamped / old+new value / FDA 483 | FDA-21CFR-Part11 (§2 Subpart B §11.10e) | ISPE-IT |
+| Computer System Validation CSV / GAMP 5 / IQ OQ PQ electronic system / §11.10(a) | FDA-21CFR-Part11 (§2 Subpart B §11.10a) | ISPE-IT |
+| Closed vs open system classification / §11.30 open system encryption digital signature | FDA-21CFR-Part11 (§1 Subpart A §11.3, §2 §11.30) | — |
+| Electronic signature two-component authentication / continuous session / password controls §11.200 §11.300 | FDA-21CFR-Part11 (§3 Subpart C §11.200, §11.300) | — |
+| Signature manifestation §11.50 / printed name / date time / meaning approval reviewed / signature linking §11.70 | FDA-21CFR-Part11 (§3 Subpart C §11.50, §11.70) | — |
 | QRM regulatory perspective / PIC/S Annex 20 | PICS-Annex20 (§1-§3 QRM process, risk tools) | ICH-Q9R1, TR60 |
 | Combination products CGMP / 組合產品 | FDA-ComboProd-CGMP (§1-§3 CGMP requirements) | FDA-ComboProd-HF |
 | Human factors / combination products | FDA-ComboProd-HF (§1-§2 HF process, clinical) | FDA-ComboProd-CGMP |
