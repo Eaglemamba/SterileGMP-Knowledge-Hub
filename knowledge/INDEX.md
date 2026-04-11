@@ -343,6 +343,14 @@ Sections: Overview & Scope of Subchapter F | Part 600 — Establishment Standard
 
 ---
 
+## FDA/FDA-21CFR-Part11-Complete.md
+21 CFR Part 11 — Electronic Records; Electronic Signatures | eCFR current April 2026 | 4 sections
+Covers questions about: When does 21 CFR Part 11 apply to a computer system or electronic record? What is the "predicate rule" concept and how do I determine if a system is subject to Part 11? What are the 11 controls required for closed systems under §11.10? What are the specific requirements for audit trails under §11.10(e) — what must they capture and how long must they be retained? What additional controls are required for open systems under §11.30 (encryption, digital signatures)? What are the three mandatory elements of an electronic signature manifestation under §11.50 (printed name, date/time, meaning)? How does §11.70 require electronic signatures to be linked to electronic records to prevent falsification? What is the FDA certification letter requirement under §11.100(c) and who must submit it? What are the two-component authentication requirements for non-biometric electronic signatures under §11.200? What password management controls are required under §11.300?
+Terms: electronic record, electronic signature, digital signature, closed system, open system, biometric, predicate rule, audit trail, computer-generated audit trail, time-stamped, validation (CSV), Computer System Validation, GAMP 5, IQ/OQ/PQ, signature manifestation, printed name, signature meaning, signature/record linking, authentication components, identification code, password, session continuity, lost credential procedure, transaction safeguards, enforcement discretion, legacy system, ALCOA+, eBR (electronic batch record), LIMS, SCADA, FDA certification letter (Docket 92S-0251), separation of duties, role-based access control
+Sections: Overview, Scope & FDA 2003 Guidance | Subpart A — General Provisions & Definitions | Subpart B — Electronic Records (Closed & Open Systems) | Subpart C — Electronic Signatures
+
+---
+
 ## ISPE/ISPE-CTC-Complete.md
 ISPE Good Practice Guide: Controlled Temperature Chamber Mapping and Monitoring (2016) | p1–p116 | 9
 Terms: CTC (Controlled Temperature Chamber), thermal mapping, temperature mapping, URS (User Requirements Specification), IQ/OQ/PQ, commissioning, FAT (Factory Acceptance Testing), SAT (Site Acceptance Testing), guard-banding, measurement uncertainty, Alert Level, Alarm Level, setpoint, worst-case location, sensor placement, data logger, BMS (Building Management System), 21 CFR Part 11, periodic evaluation, re-mapping trigger, excursion assessment, stability chamber, ICH Q1A, WHO TRS 961, EU GDP, USP <659>, USP <1079>
@@ -587,6 +595,16 @@ Terms: quality culture, root cause analysis (RCA), human error, skill-based erro
 
 | Topic (English / 中文 / common lay terms) | Look in... |
 |---|---|
+| Audit trail requirements §11.10(e), computer-generated time-stamped audit trail, old value new value capture, reason for change, audit trail retention / 稽核追蹤要求、電腦產生時間戳記、舊值新值保留、變更原因、稽核追蹤保留期限 | FDA-21CFR-Part11 |
+| Electronic signature components two-factor authentication, ID code password, continuous session one component, non-continuous both components / 電子簽名元件雙因子認證、帳號密碼、連續作業單元件、非連續雙元件 | FDA-21CFR-Part11 |
+| Closed system vs open system Part 11, who controls access, encryption digital signature open system §11.30 / 封閉系統開放系統判定、存取控制歸屬、開放系統加密數位簽名 | FDA-21CFR-Part11 |
+| Computer System Validation CSV Part 11 §11.10(a), GAMP 5 categories, IQ OQ PQ electronic records system / 電腦化系統驗證CSV、GAMP 5分類、IQ OQ PQ、Part 11驗證 | FDA-21CFR-Part11 |
+| Predicate rule concept Part 11 scope, when does Part 11 apply, 21 CFR 211.68 211.188 electronic batch record / 前提法規概念、Part 11適用時機、電子批次記錄eBR Part 11 | FDA-21CFR-Part11 |
+| Password controls §11.300 uniqueness periodic change loss management transaction safeguards / 密碼管控唯一性定期更換遺失管理交易保護 | FDA-21CFR-Part11 |
+| Electronic signature manifestation §11.50 printed name date time meaning approval reviewed by authored by / 電子簽名呈現要素、印刷姓名、時間戳記、簽名意義、批准、審查 | FDA-21CFR-Part11 |
+| Part 11 scope predicate rule 2003 FDA guidance enforcement discretion legacy system / Part 11適用範圍、前提法規、2003年FDA指引、執法裁量、遺留系統 | FDA-21CFR-Part11 |
+| Signature record linking §11.70 anti-falsification excised copied transferred cryptographic binding / 簽名記錄連結防偽造、簽名剪貼偽造、密碼學綁定 | FDA-21CFR-Part11 |
+| ALCOA plus connection Part 11 data integrity attributable contemporaneous original accurate complete / ALCOA+數據完整性與Part 11對應、可歸屬、即時、原始、準確 | FDA-21CFR-Part11 |
 | Biological product definition, 40 amino acid protein threshold, BLA vs NDA, CBER CDER, PHS Act 351 / 生物製品定義、40胺基酸蛋白質門檻、BLA vs NDA | FDA-21CFR-Biologics |
 | Biologics license application BLA requirements, manufacturing site in BLA, CDMO facility inspection / 生物製品許可申請BLA、製造廠址列入BLA、CDMO廠房查廠 | FDA-21CFR-Biologics |
 | BLA manufacturing change Prior Approval Supplement PAS, CBE-30, annual report, CDMO process change / BLA製程變更PAS事前批准補充申請、CBE-30、年度報告 | FDA-21CFR-Biologics |

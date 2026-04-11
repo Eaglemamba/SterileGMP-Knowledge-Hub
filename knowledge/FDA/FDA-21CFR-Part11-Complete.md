@@ -1,0 +1,774 @@
+# 21 CFR Part 11 — Electronic Records; Electronic Signatures: FDA Requirements for Electronic Records and Electronic Signatures in Regulated Industries
+
+21 CFR PART 11 — ELECTRONIC RECORDS; ELECTRONIC SIGNATURES
+Source: eCFR / Cornell LII (current through April 2026)
+URL: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-11
+
+================================================================================
+OVERVIEW AND REGULATORY CONTEXT
+================================================================================
+
+21 CFR Part 11 was promulgated by the FDA in 1997 (62 FR 13430) and establishes
+criteria under which the agency considers electronic records and electronic
+signatures trustworthy, reliable, and generally equivalent to paper records and
+handwritten signatures executed on paper. It applies to all FDA-regulated
+industries: pharmaceuticals, biologics, medical devices, food, cosmetics, and
+tobacco.
+
+The regulation responds to the rapid adoption of computerized systems in regulated
+industries during the 1990s. Before Part 11, no clear federal standard existed for
+the acceptability of electronic records as alternatives to paper records required
+by FDA regulations.
+
+FDA 2003 GUIDANCE ON SCOPE AND APPLICATION
+In August 2003, FDA issued a guidance document "21 CFR Part 11; Electronic
+Records; Electronic Signatures — Scope and Application" which significantly
+narrowed the agency's enforcement focus. Key points:
+
+1. PREDICATE RULE CONCEPT: Part 11 applies only to electronic records that FDA
+   regulations require to be maintained or submitted and where the regulated
+   entity chooses to use electronic records instead of paper records. The
+   underlying FDA regulation requiring the record is called the "predicate rule"
+   (e.g., 21 CFR 211.68 — computers in drug manufacturing; 21 CFR 211.186 —
+   master production and control records; 21 CFR 211.188 — batch production
+   records).
+
+2. ENFORCEMENT DISCRETION: FDA exercises enforcement discretion regarding
+   certain Part 11 requirements for:
+   - Legacy systems installed before Part 11's effective date (August 20, 1997)
+     if those systems use paper as the official record supplemented by
+     electronic records
+   - Validation requirements for legacy systems that are compliant in all
+     other aspects
+
+3. WHAT PART 11 DOES NOT REQUIRE: Part 11 does NOT mandate that any entity
+   use electronic records or electronic signatures. It only governs the
+   standards IF electronic records/signatures are used.
+
+4. RISK-BASED APPROACH: FDA encourages a risk-based approach to Part 11
+   compliance. Not all predicate rule records carry equal risk. The investment
+   in controls should be commensurate with the risk to product quality and
+   patient safety.
+
+PART 11 AND ALCOA+
+Part 11's requirements align directly with ALCOA+ data integrity principles:
+- Attributable: §11.10(g) authority checks; §11.50 signature manifestations
+- Legible: §11.10(b) ability to generate readable copies
+- Contemporaneous: §11.10(e) time-stamped audit trails
+- Original: §11.10(e) computer-generated audit trails (not user-modifiable)
+- Accurate: §11.10(a) system validation
+
+The "+" elements (Complete, Consistent, Enduring, Available) are addressed by:
+- Complete/Consistent: §11.10(e) audit trail captures ALL operator actions
+- Enduring: §11.10(c) records protected for retention period
+- Available: §11.10(b) copies available for FDA review/inspection
+
+CDMO RELEVANCE
+In a pharmaceutical CDMO context, Part 11 applies to:
+- Electronic Batch Records (eBR): replacing paper batch manufacturing records
+  required by 21 CFR 211.188
+- LIMS (Laboratory Information Management Systems): electronic lab data
+  required by 21 CFR 211.194
+- SCADA/DCS (Supervisory Control and Data Acquisition / Distributed Control
+  Systems): process control data required by 21 CFR 211.68
+- Building Management Systems (BMS): environmental monitoring temperature/
+  humidity data for sterile manufacturing
+- Computer-assisted manufacturing equipment: automated dispensing systems,
+  in-line inspection systems, automated visual inspection
+- MES (Manufacturing Execution Systems): electronic work instructions and
+  confirmations
+
+================================================================================
+SUBPART A — GENERAL PROVISIONS
+§§ 11.1 — 11.3
+================================================================================
+
+§ 11.1 SCOPE
+
+(a) The regulations in this part set forth the criteria under which the agency
+considers electronic records, electronic signatures, and handwritten signatures
+executed to electronic records to be trustworthy, reliable, and generally
+equivalent to paper records and handwritten signatures executed on paper.
+
+(b) This part applies to records in electronic form that are created, modified,
+maintained, archived, retrieved, or transmitted, under any requirements set forth
+in agency regulations. This part also applies to electronic records submitted to
+the agency under requirements of the Federal Food, Drug, and Cosmetic Act and
+the Public Health Service Act, even if such records are not specifically
+identified in agency regulations. However, this part does not apply to paper
+records that are, or have been, transmitted by electronic means.
+
+(c) Where electronic signatures and their associated electronic records meet the
+requirements of this part, the agency will consider the electronic signatures
+to be equivalent to full handwritten signatures, initials, and other general
+signings as required by agency regulations, unless specifically excepted by
+regulation(s) effective on or after August 20, 1997.
+
+(d) Electronic records that meet the requirements of this part may be used in
+lieu of paper records, in accordance with § 11.2, unless paper records are
+specifically required.
+
+(e) Computer systems (including hardware and software), controls, and attendant
+documentation maintained under this part shall be readily available for, and
+subject to, FDA inspection.
+
+KEY INTERPRETATION: §11.1 does not apply to paper records simply transmitted
+electronically (e.g., a scanned PDF of a paper record sent by email). The
+electronic record must itself be created, modified, maintained, or archived
+in electronic form.
+
+§ 11.2 IMPLEMENTATION
+
+(a) For records required to be maintained but not submitted to the agency,
+persons may use electronic records in lieu of paper records or electronic
+signatures in lieu of traditional signatures, in whole or in part, provided
+that the requirements of this part are met.
+
+(b) For records submitted to the agency, persons may use electronic records
+in lieu of paper records or electronic signatures in lieu of traditional
+signatures, in whole or in part, provided that:
+   (1) The requirements of this part are met; and
+   (2) The document or parts of a document to be submitted have been identified
+       in public docket No. 92S-0251 as being the type of submission the agency
+       accepts in electronic form. This docket will identify specifically what
+       types of documents or parts of documents are acceptable for electronic
+       submission. The agency will periodically publish in the Federal Register
+       a list of the types of documents it will accept electronically.
+
+§ 11.3 DEFINITIONS
+
+As used in this part:
+
+(a) Act means the Federal Food, Drug, and Cosmetic Act (sec. 201-903 of the
+act (21 U.S.C. 321-394)).
+
+(b) Agency means the Food and Drug Administration.
+
+(c) Biometric means a method of verifying an individual's identity based on
+measurement of the individual's physical feature(s) or repeatable action(s)
+where those features and/or actions are both unique to that individual and
+measurable.
+
+(d) Closed system means an environment in which system access is controlled
+by persons who are responsible for the content of electronic records that are
+on the system.
+
+EXAMPLE: A dedicated pharmaceutical manufacturing control system (DCS/SCADA)
+where only authorized company personnel can access and whose access is managed
+by the company's IT/quality team is a closed system. The company controls
+both who can log in and what records are stored.
+
+(e) Digital signature means an electronic signature based upon cryptographic
+methods of originator authentication, computed by using a set of rules and a
+set of parameters such that the identity of the signer and the integrity of
+the data can be verified.
+
+NOTE: Digital signatures (using cryptography like RSA or ECDSA) are a
+SUBSET of electronic signatures. Not all electronic signatures are digital
+signatures. PKI-based systems use digital signatures.
+
+(f) Electronic record means any combination of text, graphics, data, audio,
+pictorial, or other information representation in digital form that is created,
+modified, maintained, archived, retrieved, or distributed by a computer system.
+
+(g) Electronic signature means a computer data compilation of any symbol or
+series of symbols executed, adopted, or authorized by an individual to be the
+legally binding equivalent of the individual's handwritten signature.
+
+(h) Handwritten signature means the scripted name or legal mark of an individual
+handwritten by that individual and executed or adopted with the present
+intention to authenticate a writing in an electronic form. The act of signing
+with a writing or marking instrument such as a pen or stylus is preserved.
+The scripted name or legal mark, while conventionally applied to paper, may
+also be applied to other devices that capture the name or mark.
+
+(i) Open system means an environment in which system access is not controlled
+by persons who are responsible for the content of electronic records that are
+on the system.
+
+EXAMPLE: A cloud-based system accessed over the public internet, or a
+third-party hosted system where the cloud provider (not the pharmaceutical
+company) controls system access, is an open system. Email systems are open
+systems. Systems accessed via public telecommunication infrastructure are
+open systems.
+
+OPEN vs CLOSED SYSTEM KEY DISTINCTION:
+The determining factor is NOT the technology (internet vs intranet) but
+WHO controls access. If the persons responsible for the electronic records
+control system access → CLOSED. If access is controlled by others →OPEN.
+
+================================================================================
+SUBPART B — ELECTRONIC RECORDS
+§§ 11.10 — 11.30
+================================================================================
+
+§ 11.10 CONTROLS FOR CLOSED SYSTEMS
+
+Persons who use closed systems to create, modify, maintain, or transmit
+electronic records shall employ procedures and controls designed to ensure
+the authenticity, integrity, and, when appropriate, the confidentiality of
+electronic records, and to ensure that the signer cannot readily repudiate
+the signed record as not genuine. Such procedures and controls shall include
+the following:
+
+(a) VALIDATION
+Validation of systems to ensure accuracy, reliability, consistent intended
+performance, and the ability to discern invalid or altered records.
+
+Validation Scope: This encompasses Installation Qualification (IQ),
+Operational Qualification (OQ), and Performance Qualification (PQ). The
+depth of validation should be commensurate with risk. Systems that create,
+modify, or maintain records that support product release decisions require
+rigorous validation.
+
+FDA 2003 Guidance interpretation: For legacy systems (predating August 1997),
+FDA exercises enforcement discretion on validation requirements provided the
+system otherwise meets Part 11. New systems must be fully validated.
+
+Computer System Validation (CSV) requirements under §11.10(a):
+- Written validation plan (VMP or CVMP)
+- URS (User Requirements Specification)
+- FS (Functional Specification) / DS (Design Specification)
+- IQ/OQ/PQ protocols and reports
+- Traceability matrix linking requirements to test scripts
+- Periodic revalidation when changes occur (change control)
+
+(b) READABLE COPIES
+The ability to generate accurate and complete copies of records in both human
+readable and electronic form suitable for inspection, review, and copying by
+the agency.
+
+This requirement ensures that if FDA inspectors arrive on-site, they can
+receive complete, accurate, human-readable copies of all electronic records.
+Systems must export records to formats accessible to the agency (PDF, CSV,
+printed copies). Data migration to new systems must preserve readability of
+archived records.
+
+(c) PROTECTION OF RECORDS
+Protection of records to enable their accurate and ready retrieval throughout
+the records retention period.
+
+Records must be protected from:
+- Unauthorized alteration or deletion
+- Data corruption from hardware failure
+- Loss from disaster (backup/disaster recovery requirements)
+- Degradation of storage media over time
+
+Retention periods are defined by predicate rules (e.g., 21 CFR 211.180 —
+drug records must be retained at least 1 year after drug expiry, typically
+2-3 years minimum for most pharmaceutical records, up to lifetime for
+biologics).
+
+(d) LIMITING SYSTEM ACCESS
+Limiting system access to authorized individuals.
+
+Access controls implementation:
+- Role-based access control (RBAC) — users assigned roles with defined
+  permissions matching their job function and training
+- Individual user accounts — no shared/generic accounts (except emergency
+  access with appropriate controls and documentation)
+- User access reviews — periodic review of user accounts and permissions
+- Deprovisioning — timely removal of access when personnel change roles or leave
+- Physical access controls for workstations running regulated systems
+
+The prohibition on shared accounts is a common FDA 483 observation: "Shared
+usernames/passwords observed in [LIMS/DCS/eBR system]."
+
+(e) AUDIT TRAILS
+Secure, computer-generated, time-stamped audit trails to independently record
+the date and time of operator entries and actions that create, modify, or delete
+electronic records. Record changes shall not obscure previously recorded
+information. Such audit trail documentation shall be retained for a period at
+least as long as that required for the subject electronic records and shall be
+available for agency review and copying.
+
+CRITICAL ELEMENTS OF §11.10(e) AUDIT TRAILS:
+1. SECURE: Audit trails cannot be turned off, modified, or deleted by system
+   users. Only system administrators with documented authorization can adjust
+   audit trail settings, and such changes must themselves be logged.
+2. COMPUTER-GENERATED: The system automatically creates audit entries — they
+   are NOT manually entered by users. This is the core distinction from paper-
+   based records where an operator writes in a logbook.
+3. TIME-STAMPED: Each entry records the date and time, which should be
+   synchronized to a reliable time source (network time protocol — NTP).
+   Time zone documentation is important for multi-site systems.
+4. INDEPENDENTLY RECORDING: The audit trail records actions independent of
+   the data record itself. Audit trails cannot be part of the same file that
+   can be edited.
+5. CREATE/MODIFY/DELETE: ALL three operations must be captured, not just
+   modifications. This means the audit trail should record:
+   - Original entry (with timestamp and user ID)
+   - Any change (old value → new value, reason for change, timestamp, user)
+   - Any deletion (original value, reason, timestamp, user)
+6. NOT OBSCURING: Changed records must show BOTH old and new values. A system
+   that simply overwrites old data with new data WITHOUT capturing the original
+   value does NOT meet §11.10(e).
+7. RETAINED AS LONG AS THE RECORD: If a batch record must be retained for
+   3 years, the audit trail for that batch record must also be retained for
+   3 years.
+8. AVAILABLE FOR FDA REVIEW: FDA inspectors must be able to access and copy
+   audit trails during inspections.
+
+COMMON AUDIT TRAIL DEFICIENCIES (FDA 483 OBSERVATIONS):
+- Audit trail not enabled or incomplete (not capturing all events)
+- Audit trail can be modified by non-privileged users
+- Old values not captured (only new value recorded)
+- Reason for change not required or captured
+- Audit trail retention shorter than record retention period
+- Audit trail not reviewed as part of quality oversight
+
+(f) OPERATIONAL SYSTEM CHECKS
+Use of operational system checks to enforce permitted sequencing of steps and
+events, as appropriate.
+
+This controls the workflow sequence in electronic systems. For example:
+- In an eBR system, an operator cannot sign the "product dispensed" step
+  before the "formulation complete" step
+- In a LIMS, results cannot be approved before all required tests are entered
+- In a DCS, a sterilization cycle cannot be released before all critical
+  parameters (time, temperature, pressure) are verified within specification
+
+(g) AUTHORITY CHECKS
+Use of authority checks to ensure that only authorized individuals can use
+the system, electronically sign a record, access the operation or computer
+system input or output device, alter a record, or perform the operation at issue.
+
+Authority checks go beyond access controls (§11.10d) to specifically govern:
+- WHO can perform electronic signatures (only persons with validated signing
+  authority in the system)
+- WHO can approve specific records (e.g., only QC manager can approve
+  certificate of analysis)
+- WHO can modify approved records (e.g., only QA can make post-approval
+  amendments with justification)
+
+(h) DEVICE CHECKS
+Use of device checks to determine, as appropriate, the validity of the source
+of data input or operational instruction.
+
+Device checks ensure that:
+- Input devices (scales, pH meters, analytical instruments) are calibrated
+  and verified
+- Data from automated systems is validated as coming from authorized,
+  functioning instruments
+- Checksums or other validation methods verify data integrity during
+  transmission from instruments to systems
+
+(i) EDUCATION, TRAINING AND EXPERIENCE
+Determination that persons who develop, maintain, or use electronic record/
+electronic signature systems have the education, training, and experience to
+perform their assigned tasks.
+
+This mirrors 21 CFR 211.68 training requirements but specifically for computer
+systems. Training must be:
+- Role-specific (what the person needs to know for their specific system role)
+- Documented (training records are themselves electronic records if kept in
+  an LMS or HRIS)
+- Current (retraining required when system changes)
+
+(j) WRITTEN POLICIES
+The establishment of, and adherence to, written policies that hold individuals
+accountable and responsible for actions initiated under their electronic
+signatures.
+
+This creates the legal/administrative framework ensuring that electronic
+signatures carry the same accountability weight as handwritten signatures.
+SOPs must:
+- Define what constitutes an electronic signature at the company
+- Specify prohibited actions (sharing credentials, signing for others)
+- Establish consequences for misuse (disciplinary action)
+- Reference the FDA letter requirement in §11.100(c)
+
+(k) USE OF APPROPRIATE CONTROLS FOR SYSTEMS DOCUMENTATION
+Use of appropriate controls over systems documentation including:
+   (1) Adequate controls over the distribution of, access to, and use of
+       documentation for system operation and maintenance.
+   (2) Revision and change control procedures to maintain an audit trail
+       that identifies the date of, and the nature of, changes to systems
+       documentation, and the individuals making the change.
+
+Systems documentation includes:
+- System Administrator Manuals
+- User manuals and SOPs
+- Validation documents (IQ/OQ/PQ reports)
+- Computer System Validation Package
+
+These documents must be controlled under the company's document management
+system (DMS), itself typically a Part 11 compliant system.
+
+§ 11.30 CONTROLS FOR OPEN SYSTEMS
+
+Persons who use open systems to create, modify, maintain, or transmit electronic
+records shall employ procedures and controls designed to ensure the authenticity,
+integrity, and, as appropriate, the confidentiality of electronic records from
+the point of their creation to the point of their receipt.
+
+Open systems require ALL controls in §11.10 PLUS additional safeguards:
+- Document encryption using appropriate encryption methods to ensure data
+  cannot be read during transmission by unauthorized parties
+- Use of appropriate digital signature standards (e.g., FDA-recognized
+  cryptographic standards) when additional security is needed
+- Additional physical security for workstations and transmission endpoints
+
+WHY OPEN SYSTEMS NEED MORE CONTROLS:
+In a closed system, the company controls who has access — physical and
+logical access controls are sufficient. In an open system (accessible via
+public networks), records can be intercepted during transmission. Encryption
+protects confidentiality. Digital signatures protect integrity (any alteration
+of the transmitted record would invalidate the digital signature).
+
+PRACTICAL EXAMPLE: A CRO submitting clinical data to a sponsor via a cloud
+platform. The CRO cannot fully control access to the cloud infrastructure
+(managed by AWS, Azure, etc.) — this is an open system. The data submission
+must be encrypted and digitally signed to meet §11.30.
+
+================================================================================
+SUBPART C — ELECTRONIC SIGNATURES
+§§ 11.50 — 11.300
+================================================================================
+
+§ 11.50 SIGNATURE MANIFESTATIONS
+
+(a) Signed electronic records shall contain information associated with the
+signing that clearly indicates all of the following:
+   (1) The printed name of the signer;
+   (2) The date and time when the signature was executed; and
+   (3) The meaning (such as review, approval, responsibility, or authorship)
+       associated with the signature.
+
+(b) The items identified in paragraphs (a)(1), (a)(2), and (a)(3) of this
+section shall be subject to the same controls as for electronic records and
+shall be included as part of any human readable form of the electronic record
+(such as electronic display or printout).
+
+THREE MANDATORY ELEMENTS OF §11.50 SIGNATURE MANIFESTATIONS:
+1. PRINTED NAME: The full name of the signer — not just a user ID or employee
+   number. The name must be human-readable.
+2. DATE AND TIME: Timestamp of signature execution — not the date the record
+   was created, but the exact date and time the signature was applied. This
+   must be automatic (computer-generated), not manually entered by the signer.
+3. MEANING: The purpose of the signature must be stated explicitly:
+   - "Reviewed by" — for QC analysts reviewing test data
+   - "Approved by" — for QA managers approving batch records
+   - "Authored by" — for operators entering data
+   - "Verified by" — for second-person verification steps
+
+COMMON DEFICIENCIES:
+- System displays only user ID (not printed name) in audit trail
+- Date/time is manually entered by the signer (not computer-generated)
+- Meaning is generic ("signed") rather than specific ("approved for release")
+- Signature manifestation not included in printed/exported copies of records
+
+§ 11.70 SIGNATURE/RECORD LINKING
+
+Electronic signatures and handwritten signatures executed to electronic records
+shall be linked to their respective electronic records to ensure that the
+signatures cannot be excised, copied, or otherwise transferred to falsify an
+electronic record by ordinary means.
+
+ANTI-FALSIFICATION PURPOSE:
+§11.70 prevents what is called "signature cut-and-paste" fraud: extracting
+a valid electronic signature from a legitimate record and inserting it into
+a falsified record. Technical implementations include:
+- Cryptographic binding: The signature is computed over the record content
+  (like a digital signature/hash). Any modification to the record invalidates
+  the signature.
+- Database linking: The signature record contains an immutable foreign key
+  reference to the specific version of the electronic record (identified by
+  a hash or unique record ID).
+- Time-lock: Once signed, the record is frozen — no edits allowed without
+  going through an amendment workflow that requires re-signature.
+
+FDA INSPECTION FOCUS: Inspectors may test this by asking: "If I print this
+batch record, can the signature block be cut and pasted into another document?"
+The system design must make this technically impossible or detectable.
+
+§ 11.100 GENERAL REQUIREMENTS FOR ELECTRONIC SIGNATURES
+
+(a) Each electronic signature shall be unique to one individual and shall not
+be reused by, or reassigned to, anyone else.
+
+UNIQUENESS PRINCIPLE: One electronic signature (the combination of user ID,
+password, and/or biometric) maps to exactly one person. No sharing, no
+delegation. This is why shared accounts are fundamentally incompatible with
+Part 11 — if two people share an ID/password, the signature is not unique to
+one individual.
+
+(b) Before an organization establishes, assigns, certifies, or otherwise
+sanctions an individual's electronic signature, or any element of such
+electronic signature, the organization shall verify the identity of the
+individual.
+
+IDENTITY VERIFICATION: The company must verify who a person is before
+assigning them an electronic signature. Acceptable methods:
+- Government-issued photo ID verification during onboarding/HR process
+- Biometric enrollment process (fingerprint, iris scan)
+- In-person verification by HR or Supervisor
+
+This requirement means "provisioning" an account requires documented identity
+verification — not just completing a form.
+
+(c) Persons using electronic signatures shall, prior to or at the time of
+such use, certify to the agency in writing that the electronic signatures in
+their system are intended to be the legally binding equivalent of traditional
+handwritten signatures. Upon agency request, such certification shall be
+submitted in paper form with a traditional signature to the docket established
+by the agency for such purposes.
+
+FDA LETTER REQUIREMENT: §11.100(c) requires companies to submit a letter to
+FDA certifying that their electronic signatures are legally binding equivalents
+of handwritten signatures. This is typically a one-time submission per company
+(not per system or per user), sent to:
+FDA Office of Regional Operations (ORO), Docket No. 92S-0251.
+
+(d) If an individual is using electronic signatures in a way not in compliance
+with this paragraph, the electronic signature is not considered to be the
+equivalent of a traditional handwritten signature.
+
+§ 11.200 ELECTRONIC SIGNATURE COMPONENTS AND CONTROLS
+
+(a) Electronic signatures that are not based upon biometrics shall:
+   (1) Employ at least two distinct identification components such as an
+       identification code and password.
+
+   (2) Be used only by their genuine owners; and
+
+   (3) Be administered and executed to ensure that attempted use of an
+       individual's electronic signature by anyone other than its genuine
+       owner requires collaboration of two or more individuals.
+
+WHEN BOTH COMPONENTS ARE REQUIRED (NON-BIOMETRIC):
+- First use in a single work session: Must use BOTH identification components
+  (ID code + password)
+- Subsequent uses in a continuous session: At least one component must be
+  used (e.g., just re-entering the password is sufficient)
+- For non-continuous sessions (new login, session timeout/expiry): Must use
+  BOTH components again
+
+PRACTICAL IMPLEMENTATION:
+- Standard login: username + password (both components)
+- Within-session re-authentication for signing: password only (one component)
+- After session timeout: username + password again (both components)
+- Some systems add a third factor (MFA) for enhanced security — this exceeds
+  Part 11 minimum requirements
+
+(b) Electronic signatures based upon biometrics shall be designed to ensure
+that they cannot be used by anyone other than their genuine owners.
+
+BIOMETRIC ELECTRONIC SIGNATURES:
+Biometrics (fingerprint, retinal scan, facial recognition, voice recognition)
+are inherently individual — you cannot transfer your fingerprint to another
+person. Therefore, the two-component requirement of (a) does not apply to
+biometric signatures. Instead, the system design must ensure:
+- The biometric template cannot be spoofed (anti-spoofing measures)
+- False acceptance rate (FAR) is sufficiently low for the risk level
+- Biometric data storage is secure
+
+§ 11.300 CONTROLS FOR IDENTIFICATION CODES/PASSWORDS
+
+Persons who use electronic signatures based upon use of identification codes in
+combination with passwords shall employ controls to ensure their security and
+integrity. Such controls shall include:
+
+(a) Maintaining the uniqueness of each combined identification code and password,
+such that no two individuals have the same combination of identification code
+and password.
+
+(b) Ensuring that identification code and password issuances are periodically
+checked, recalled, or revised (e.g., to cover such events as password aging,
+with appropriate token revisions as necessary).
+
+PASSWORD MANAGEMENT REQUIREMENTS:
+- Password expiration policy (typical: 90 days maximum)
+- Password complexity requirements (length, character types)
+- Prevention of password reuse (password history)
+- Account lockout after failed attempts (prevent brute force)
+- These are not explicitly stated in the regulation but are expected as
+  "controls to ensure security and integrity"
+
+(c) Following loss management procedures to electronically de-authorize lost,
+stolen, missing, or otherwise potentially compromised tokens, cards, and other
+devices that bear or generate identification code or password information, and
+to issue temporary or permanent replacements using suitable, rigorous controls.
+
+LOST/STOLEN CREDENTIAL RESPONSE:
+- Immediate reporting procedure when credentials are lost or stolen
+- Immediate account deactivation/disabling upon report
+- Issuance of new credentials with identity re-verification
+- Documentation of the incident and response
+- These procedures must be defined in SOPs and followed consistently
+
+(d) Use of transaction safeguards to prevent unauthorized use of passwords
+and/or identification codes, and to detect and report in an immediate and
+urgent manner any attempts at their unauthorized use to the system security
+unit, and, as appropriate, to organizational management.
+
+TRANSACTION SAFEGUARDS:
+- Failed login attempt monitoring and alerting
+- Account lockout after N failed attempts (N typically 3-5)
+- Real-time alerts to system security personnel when lockout occurs
+- Intrusion detection for patterns suggesting unauthorized access attempts
+- Logging of all authentication attempts (successful and failed)
+
+(e) Initial and periodic testing of devices, such as tokens or cards, that
+bear or generate identification code or password information to ensure that
+they function properly and have not been altered in a unauthorized manner.
+
+TOKEN/DEVICE TESTING:
+For systems using hardware tokens (RSA SecurID, smart cards, USB security
+keys), these devices must be:
+- Tested on initial issuance to verify they work as intended
+- Periodically tested to verify continued function
+- Inspected for signs of tampering or unauthorized modification
+
+================================================================================
+CROSS-REFERENCE: PART 11 AND OTHER FDA REGULATIONS
+================================================================================
+
+PREDICATE RULES — KEY CROSS-REFERENCES:
+
+21 CFR 211.68 (Automatic, Mechanical, and Electronic Equipment):
+- Requires validation of computerized systems used in drug manufacturing
+- Establishes that computer printouts of data shall be checked against
+  original data
+- Part 11 elaborates on what "validation" means for systems creating
+  electronic records
+
+21 CFR 211.186 (Master Production and Control Records):
+- Requires master batch records; if maintained electronically, Part 11 applies
+- Electronic master production records must meet §11.10 controls
+
+21 CFR 211.188 (Batch Production and Control Records):
+- Batch records are the primary CDMO document — eBRs must meet Part 11
+- Every entry in an eBR is an electronic record under Part 11
+- Every signature in an eBR is an electronic signature
+
+21 CFR 211.194 (Laboratory Records):
+- LIMS-generated analytical records are electronic records under Part 11
+- Instrument data files (HPLC, UV-Vis, GC) are electronic records
+- Original raw data files must be retained (§11.10c)
+
+21 CFR 211.180 (General Requirements for Records and Reports):
+- Sets record retention periods
+- Part 11 §11.10(c) and (e) reference retention periods defined here
+
+================================================================================
+COMPUTER SYSTEM VALIDATION (CSV) FRAMEWORK
+================================================================================
+
+§11.10(a) requires validation but does not define the validation methodology.
+Industry has adopted the GAMP 5 (Good Automated Manufacturing Practice)
+framework published by ISPE:
+
+GAMP 5 CATEGORIES OF SOFTWARE:
+- Category 1: Infrastructure software (OS, databases) — minimal validation
+- Category 3: Non-configured software (commercial off-the-shelf, no custom
+  configuration) — vendor assessment + testing
+- Category 4: Configured software (LIMS, ERP, DCS with configured workflows)
+  — full CSV with IQ/OQ/PQ
+- Category 5: Custom software (bespoke applications) — full development
+  lifecycle validation
+
+CSV LIFECYCLE DOCUMENTS FOR PART 11 COMPLIANCE:
+1. Computer System Validation Master Plan (CVMP)
+2. User Requirements Specification (URS)
+3. Functional Requirements Specification (FRS)
+4. Design Specification (DS)
+5. Vendor Assessment / Supplier Qualification
+6. Installation Qualification (IQ) Protocol and Report
+7. Operational Qualification (OQ) Protocol and Report
+8. Performance Qualification (PQ) Protocol and Report
+9. Traceability Matrix
+10. Summary Validation Report
+11. System Release for Use (sign-off)
+12. Periodic Review procedure
+13. Change Control procedure
+
+CRITICAL VALIDATION REQUIREMENTS FOR PART 11 SYSTEMS:
+- Audit trail function specifically tested (turned on, immutable, captures
+  all required events with correct user ID, timestamp, old/new values)
+- Access control tested (verify unauthorized users cannot access restricted
+  functions)
+- Signature requirements tested (verify printed name, date/time, meaning
+  appear correctly)
+- Signature linking tested (verify signature cannot be detached from record)
+- Backup and recovery tested
+- Data export/reporting tested (verify complete, accurate copies for FDA)
+
+================================================================================
+FDA INSPECTION READINESS FOR PART 11
+================================================================================
+
+TYPICAL FDA INSPECTION QUESTIONS FOR PART 11:
+
+1. "Show me your audit trail for this batch record"
+   - Inspector will check: Is it enabled? Does it capture all required events?
+   - Are old values captured? Is the reason for change documented?
+
+2. "Who has administrator access to this system?"
+   - Verifying that administrator access is limited and controlled
+   - Checking that admin actions are also logged
+
+3. "Can you generate a complete copy of this batch record for me?"
+   - Testing §11.10(b) — readability and completeness of exported copies
+
+4. "What is your process when an employee leaves the company?"
+   - Checking timely deprovisioning under §11.10(d)
+
+5. "Show me the validation documentation for this system"
+   - Checking §11.10(a) — full IQ/OQ/PQ package
+
+6. "What is your SOD [Separation of Duties] for this system?"
+   - Checking §11.10(g) — authority checks and role separation
+
+7. "Show me your password policy and password reset procedure"
+   - Checking §11.300 — password management controls
+
+COMMON PART 11 FDA 483 OBSERVATIONS (REAL EXAMPLES):
+1. "Audit trail was not enabled on [system name]"
+2. "The system allows users to modify data without capturing the reason for
+   change and original data"
+3. "User accounts are shared between multiple personnel"
+4. "The audit trail does not capture deleted records"
+5. "Personnel training records for the computerized system are incomplete"
+6. "No written policies holding individuals accountable for their electronic
+   signatures"
+7. "The electronic signature does not display the printed name of the signer"
+8. "System administrator passwords are not periodically changed"
+9. "No procedure exists for reporting lost or compromised access credentials"
+10. "Backup and recovery procedures have not been tested"
+
+================================================================================
+FREQUENTLY CONFUSED CONCEPTS
+================================================================================
+
+Q: Does Part 11 require electronic records?
+A: NO. Part 11 only applies if a company CHOOSES to use electronic records
+   for records that predicate rules require to be maintained.
+
+Q: Does Part 11 apply to ALL computer systems?
+A: NO. Only to systems that CREATE, MODIFY, MAINTAIN, ARCHIVE, RETRIEVE,
+   or TRANSMIT records required by predicate FDA regulations. A general
+   purpose email system used for non-regulated communications is not a
+   Part 11 system (though if used to transmit regulated records, those
+   records and that transmission would be subject to Part 11).
+
+Q: What is the difference between an electronic signature and a digital signature?
+A: Digital signatures use public key cryptography (PKI) and are a subset of
+   electronic signatures. An electronic signature can be as simple as an
+   ID+password combination. A digital signature is a specific cryptographic
+   technique. Part 11 requires electronic signatures; digital signatures
+   are required for open systems (§11.30) when additional security is needed.
+
+Q: Can you use biometrics alone (without password) for signing?
+A: YES. §11.200(b) states that biometric signatures must be designed to
+   ensure only genuine owners can use them — the two-component requirement
+   applies only to non-biometric signatures.
+
+Q: How long must audit trails be retained?
+A: At least as long as the associated electronic record (§11.10e). The
+   retention period is set by the predicate rule for each record type.
+
+Q: Must FDA be notified before implementing a Part 11 system?
+A: Only §11.100(c) requires FDA notification — a one-time written certification
+   that electronic signatures are intended to be legally binding. This is not
+   a per-system notification but a company-level declaration.
