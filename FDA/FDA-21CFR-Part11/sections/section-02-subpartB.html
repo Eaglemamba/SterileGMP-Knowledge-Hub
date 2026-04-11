@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>21 CFR Part 11 - Section 2: Subpart B — Electronic Records (Closed & Open Systems)</title>
+    <link rel="stylesheet" href="../../../template.css">
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 2: Subpart B — Electronic Records (Closed &amp; Open Systems)</h1>
+    <div class="subtitle">Subpart B：電子記錄（封閉與開放系統）</div>
+    <div class="page-info">21 CFR Part 11 — §§ 11.10–11.30 | FDA | eCFR current as of April 2026</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>能夠逐一說明 §11.10 封閉系統 11 項控制要求，並解釋每項控制的合規實施方式</li>
+        <li>深入理解 §11.10(e) 稽核追蹤的 8 個關鍵要素，識別常見 FDA 483 觀察缺失</li>
+        <li>掌握 §11.10(a) 系統驗證（CSV）要求及 GAMP 5 框架的對應關係</li>
+        <li>解釋 §11.30 開放系統的額外控制要求（加密、數位簽名）及其技術實施邏輯</li>
+    </ul>
+</div>
+
+<!-- CONTENT: §11.10 Overview -->
+<div class="section-title">2.1 §11.10 — Controls for Closed Systems: Overview of 11 Requirements</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Persons who use closed systems to create, modify, maintain, or transmit electronic records shall employ procedures and controls designed to ensure the <span class="key-term">authenticity</span>, <span class="key-term">integrity</span>, and, when appropriate, the <span class="key-term">confidentiality</span> of electronic records, and to ensure that the signer cannot readily repudiate the signed record as not genuine.</p>
+
+        <p>Such procedures and controls shall include the following:</p>
+        <table>
+            <tr><th>§</th><th>Control</th><th>Core Requirement</th></tr>
+            <tr><td>(a)</td><td>Validation</td><td>Validate systems to ensure accuracy, reliability, consistent performance, ability to discern invalid/altered records</td></tr>
+            <tr><td>(b)</td><td>Readable Copies</td><td>Ability to generate accurate and complete copies in human readable and electronic form</td></tr>
+            <tr><td>(c)</td><td>Record Protection</td><td>Protect records throughout records retention period</td></tr>
+            <tr><td>(d)</td><td>Access Limitation</td><td>Limit system access to authorized individuals</td></tr>
+            <tr><td>(e)</td><td>Audit Trails</td><td>Secure, computer-generated, time-stamped audit trails recording operator entries/actions</td></tr>
+            <tr><td>(f)</td><td>Operational Checks</td><td>Enforce permitted sequencing of steps and events</td></tr>
+            <tr><td>(g)</td><td>Authority Checks</td><td>Ensure only authorized individuals can sign records, execute operations, alter records</td></tr>
+            <tr><td>(h)</td><td>Device Checks</td><td>Determine validity of source of data input or operational instruction</td></tr>
+            <tr><td>(i)</td><td>Training</td><td>Personnel have education, training, and experience commensurate with their responsibilities</td></tr>
+            <tr><td>(j)</td><td>Written Policies</td><td>Policies holding individuals accountable for actions under their electronic signatures</td></tr>
+            <tr><td>(k)</td><td>Systems Documentation Controls</td><td>Controls over distribution, access, and revision of systems documentation</td></tr>
+        </table>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>三個核心目標 (Authenticity + Integrity + Confidentiality)：</strong></p>
+            <p><strong>真實性 (Authenticity)：</strong> 確認記錄確實是聲稱建立者所建立的。電子簽名的身份驗證保障。</p>
+            <p><strong>完整性 (Integrity)：</strong> 確認記錄自建立後未被竄改。稽核追蹤（§11.10e）和簽名連結（§11.70）保障。</p>
+            <p><strong>機密性 (Confidentiality)：</strong> 「適當時」才需要——並非所有記錄都需要保密。GMP 記錄通常不需要加密（封閉系統內），但含有商業機密或個人資料的記錄可能需要。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>FDA 483 高風險控制項目</h4>
+            <p>11 項控制中，FDA 查廠時最常觀察到缺失的（排名）：</p>
+            <p>1st: <strong>(e) 稽核追蹤</strong>——未啟用、不完整、可被修改</p>
+            <p>2nd: <strong>(d) 存取控制</strong>——共用帳號、離職員工帳號未停用</p>
+            <p>3rd: <strong>(a) 驗證</strong>——系統未驗證或驗證不足</p>
+            <p>4th: <strong>(j) 書面政策</strong>——無 SOP 定義電子簽名問責制</p>
+            <p>5th: <strong>(i) 訓練</strong>——系統訓練記錄缺失或不完整</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>把 §11.10 的 11 項控制比作一棟安全建築的防護層：</p>
+            <p>(a) 驗證 = 建築結構安全檢驗（基礎）；(d) 存取 = 門禁卡系統；(e) 稽核追蹤 = 24 小時 CCTV 監控；(f) 操作順序 = 工作流程鎖定（不能跳步驟）；(g) 權限 = 不同區域不同授權；(j) 政策 = 員工行為準則手冊</p>
+        </div>
+    </div>
+</div>
+
+<!-- CONTENT: §11.10(a) Validation -->
+<div class="section-title">2.2 §11.10(a) — Validation: Computer System Validation (CSV)</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><strong>§11.10(a):</strong> <span class="key-term">Validation</span> of systems to ensure accuracy, reliability, consistent intended performance, and the ability to discern invalid or altered records.</p>
+
+        <p>While §11.10(a) does not specify a validation methodology, industry has converged on the <span class="key-term">GAMP 5</span> (Good Automated Manufacturing Practice) framework published by ISPE for implementing CSV requirements.</p>
+
+        <p><strong>GAMP 5 Software Categories:</strong></p>
+        <table>
+            <tr><th>Category</th><th>Type</th><th>Example</th><th>Validation Approach</th></tr>
+            <tr><td>1</td><td>Infrastructure software</td><td>Operating systems, databases</td><td>Vendor documentation review; minimal testing</td></tr>
+            <tr><td>3</td><td>Non-configured COTS</td><td>Word processors, basic tools</td><td>Vendor assessment + functional testing</td></tr>
+            <tr><td>4</td><td>Configured software</td><td>LIMS, ERP, DCS with workflows</td><td>Full CSV: IQ/OQ/PQ</td></tr>
+            <tr><td>5</td><td>Custom software</td><td>Bespoke applications</td><td>Full development lifecycle validation</td></tr>
+        </table>
+
+        <p><strong>Key CSV documents for Part 11 compliance:</strong></p>
+        <ul>
+            <li>Computer System Validation Master Plan (CVMP)</li>
+            <li>User Requirements Specification (URS)</li>
+            <li>Functional Requirements Specification (FRS)</li>
+            <li>Installation Qualification (IQ) — is the system installed correctly?</li>
+            <li>Operational Qualification (OQ) — does the system function as designed?</li>
+            <li>Performance Qualification (PQ) — does the system perform correctly in intended use?</li>
+            <li>Traceability Matrix — linking requirements to test scripts</li>
+            <li>Summary Validation Report and System Release for Use</li>
+        </ul>
+
+        <p><strong>Change Control requirement:</strong> Validated systems must maintain their validated state. Any change (software update, configuration change, hardware replacement) requires documented change control, impact assessment, and revalidation as appropriate.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>為什麼需要驗證？</strong> §11.10(a) 要求系統能「辨識無效或被更改的記錄 (discern invalid or altered records)」——這意味著系統本身必須有足夠的可靠性，才能保證其中的記錄是可信的。一個未驗證的系統可能：(1) 計算錯誤而不報錯；(2) 允許記錄被修改而不留痕跡；(3) 在特定條件下失效，產生錯誤資料。</p>
+            <p><strong>Part 11 驗證重點：</strong> Part 11 特定的驗證測試腳本必須測試：</p>
+            <ul>
+                <li>稽核追蹤功能是否啟用且不可關閉</li>
+                <li>存取控制是否按角色正確限制</li>
+                <li>電子簽名顯示姓名、時間、意義</li>
+                <li>記錄匯出是否完整、準確</li>
+                <li>備份恢復功能是否正常</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>FDA 2003 指引：遺留系統驗證例外</h4>
+            <p>FDA 在 2003 年指引中指出，對於 1997 年 8 月前已在使用、且以紙本為官方記錄的遺留系統，FDA 對 §11.10(a) 驗證要求行使「執法裁量 (enforcement discretion)」。但這個例外適用範圍非常窄——現代 CDMO 系統幾乎不可能符合這兩個條件。</p>
+        </div>
+
+        <div class="practice-box" style="border: 2px solid #16a34a;">
+            <h4>實務應用 Practical Application (CDMO Focus)</h4>
+            <p><strong>Amaran Biotech LIMS 驗證策略（GAMP 4 類系統）：</strong></p>
+            <p>1. URS 撰寫：列出所有 Part 11 要求（稽核追蹤、存取控制、電子簽名等）作為使用者需求</p>
+            <p>2. 供應商評估：審查 LIMS 供應商的 GAMP 文件套件（DQ、IQ/OQ 協議模板）</p>
+            <p>3. IQ：確認安裝正確、版本符合規格、授權文件完整</p>
+            <p>4. OQ：測試所有 Part 11 功能（稽核追蹤、存取控制、電子簽名、匯出功能）</p>
+            <p>5. PQ：在實際工作流程中驗證系統效能（用真實 QC 測試流程執行）</p>
+            <p>6. 發布系統使用（System Release）並建立持續監控計畫</p>
+        </div>
+    </div>
+</div>
+
+<!-- CONTENT: §11.10(e) Audit Trails -->
+<div class="section-title">2.3 §11.10(e) — Audit Trails: The Most Critical Part 11 Requirement</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><strong>§11.10(e):</strong> Use of secure, <span class="key-term">computer-generated</span>, <span class="key-term">time-stamped audit trails</span> to independently record the date and time of operator entries and actions that create, modify, or delete electronic records. Record changes shall not obscure previously recorded information. Such audit trail documentation shall be retained for a period at least as long as that required for the subject electronic records and shall be available for agency review and copying.</p>
+
+        <p><strong>The 8 Critical Elements of a §11.10(e) Compliant Audit Trail:</strong></p>
+        <ol>
+            <li><strong>SECURE:</strong> Cannot be turned off, modified, or deleted by users. Only documented administrators with authorization can adjust settings, and such changes are themselves logged.</li>
+            <li><strong>COMPUTER-GENERATED:</strong> Automatically created by the system — NOT manually entered by users. This is the fundamental distinction from paper logbooks.</li>
+            <li><strong>TIME-STAMPED:</strong> Each entry records date and time, synchronized to a reliable time source (NTP). Time zone documentation required for multi-site systems.</li>
+            <li><strong>INDEPENDENTLY RECORDING:</strong> Audit trail is a separate log, not part of the editable data record. Cannot be in the same file as the record that can be edited.</li>
+            <li><strong>CREATE/MODIFY/DELETE:</strong> ALL three operations must be captured. The audit trail must record every original entry, every change (old value → new value, reason, user, timestamp), and every deletion.</li>
+            <li><strong>NOT OBSCURING:</strong> Changes must show BOTH old and new values. Overwriting old data without capturing original = non-compliant.</li>
+            <li><strong>RETAINED:</strong> Retained for at least as long as the associated electronic record. If a batch record is retained 3 years, its audit trail is retained 3 years.</li>
+            <li><strong>AVAILABLE FOR FDA REVIEW:</strong> FDA inspectors must be able to access and copy audit trails during inspections. Must be exportable in a readable format.</li>
+        </ol>
+
+        <div class="quote-box">
+            "Record changes shall not obscure previously recorded information."
+            <br><em>— 21 CFR §11.10(e), critical anti-falsification provision</em>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>稽核追蹤最常見 FDA 483 缺失</h4>
+            <p><strong>1. 稽核追蹤未啟用：</strong> 「Audit trail functionality was not enabled on [system].」系統有稽核追蹤功能，但被管理員或廠商預設關閉。</p>
+            <p><strong>2. 只記錄新值，不記錄舊值：</strong> 「The audit trail does not capture the original value prior to change.」系統只顯示修改後的值，無法追蹤原始數據。</p>
+            <p><strong>3. 未記錄刪除操作：</strong> 「Deleted records are not captured in the audit trail.」有人刪除了記錄，但稽核追蹤沒有記錄。</p>
+            <p><strong>4. 缺少修改原因：</strong> 「Reason for change not required when modifying electronic records.」系統允許無理由修改。</p>
+            <p><strong>5. 稽核追蹤可被使用者修改：</strong> 「Non-administrative users have the ability to modify audit trail entries.」</p>
+            <p><strong>6. 稽核追蹤未定期審查：</strong> 「No procedure for periodic review of audit trail records as part of quality oversight.」</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>稽核追蹤就像銀行的「交易歷史記錄」。你的銀行帳戶每一筆存款、提款、轉帳都有自動記錄（computer-generated）、時間戳記（time-stamped），你無法修改或刪除這些記錄（secure）。如果有爭議，銀行可以提供完整的交易歷史（available for review）。GMP 電子記錄的稽核追蹤就是這個邏輯——只不過管的是製藥操作，而非金融交易。</p>
+        </div>
+
+        <div class="practice-box" style="border: 2px solid #16a34a;">
+            <h4>稽核追蹤查廠演練</h4>
+            <p><strong>場景：</strong> FDA 查廠官員要求查看批次 #AMB-2026-0411 的 eBR 稽核追蹤。</p>
+            <p><strong>你應該能展示：</strong></p>
+            <ol>
+                <li>每個輸入欄位的原始值（由誰輸入，何時輸入）</li>
+                <li>所有修改記錄（舊值、新值、修改者、修改時間、修改原因）</li>
+                <li>所有電子簽名記錄（簽名者姓名、時間、簽名意義）</li>
+                <li>任何嘗試但失敗的操作（拒絕訪問記錄）</li>
+                <li>管理員操作記錄（系統設定變更）</li>
+            </ol>
+            <p><strong>你應該能匯出這些記錄為 PDF 或 CSV，供查廠官員帶走複製。</strong></p>
+        </div>
+    </div>
+</div>
+
+<!-- CONTENT: §11.10(d)(g) Access and Authority -->
+<div class="section-title">2.4 §11.10(d) &amp; (g) — Access Controls and Authority Checks</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><strong>§11.10(d) — Limiting system access:</strong><br>
+        Limiting system access to authorized individuals.</p>
+
+        <p>This requires:</p>
+        <ul>
+            <li>Individual user accounts (no shared/generic accounts)</li>
+            <li>Role-based access control (RBAC) matching job function and training</li>
+            <li>Periodic user access reviews</li>
+            <li>Timely deprovisioning when personnel change roles or leave</li>
+            <li>Physical access controls for workstations</li>
+        </ul>
+
+        <p><strong>§11.10(g) — Authority checks:</strong><br>
+        Use of authority checks to ensure that only authorized individuals can use the system, electronically sign a record, access the operation or computer system input or output device, alter a record, or perform the operation at issue.</p>
+
+        <p>Authority checks go beyond access (§11.10d) to specifically govern:</p>
+        <ul>
+            <li>WHO can perform electronic signatures (validated signing authority)</li>
+            <li>WHO can approve specific records (role-based approval authority)</li>
+            <li>WHO can modify approved records (typically only QA with documented justification)</li>
+            <li>Separation of duties (operator cannot approve their own work)</li>
+        </ul>
+
+        <p><strong>Shared accounts — fundamental incompatibility with Part 11:</strong><br>
+        If two people share an ID/password, the signature is no longer unique to one individual (violating §11.100a) and actions cannot be attributed (violating §11.50 and ALCOA Attributable principle).</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>存取控制 vs 權限控制的差別</h4>
+            <p><strong>§11.10(d) 存取控制：</strong> 「你能不能進入這個系統？」的問題。就像大樓門禁——你有沒有門卡。</p>
+            <p><strong>§11.10(g) 權限控制：</strong> 「進入系統後，你被允許做哪些操作？」的問題。就像大樓裡不同樓層需要不同的授權等級——普通員工可以去辦公室，但不能進伺服器機房、不能進財務室。</p>
+            <p>GMP 系統中的典型權限分層：</p>
+            <table>
+                <tr><th>角色</th><th>允許操作</th><th>禁止操作</th></tr>
+                <tr><td>操作員 (Operator)</td><td>輸入數據、查看記錄</td><td>修改已完成步驟、批准記錄</td></tr>
+                <tr><td>QC 分析師</td><td>輸入測試結果、查看規格</td><td>修改規格、批准批次</td></tr>
+                <tr><td>QA 管理員</td><td>批准批次記錄、授權偏差</td><td>輸入生產數據（職責分離）</td></tr>
+                <tr><td>系統管理員</td><td>帳號管理、系統設定</td><td>直接修改 GMP 記錄內容</td></tr>
+            </table>
+        </div>
+
+        <div class="note-box">
+            <h4>共用帳號（Shared Account）是系統性問題</h4>
+            <p>當 FDA 查廠發現共用帳號時，這不只是 Part 11 §11.10(d) 問題，而是觸發多個合規問題的多米諾骨牌：</p>
+            <p>→ §11.100(a)：電子簽名不是個人唯一的</p>
+            <p>→ §11.50：簽名無法識別真實簽名者（違反「印刷姓名」要求）</p>
+            <p>→ ALCOA Attributable：記錄無法歸屬到個人</p>
+            <p>→ 21 CFR 211.68：操作人員責任不明</p>
+            <p>FDA 通常將共用帳號觀察提升為「資料完整性缺陷」，可能導致 Warning Letter。</p>
+        </div>
+    </div>
+</div>
+
+<!-- CONTENT: §11.10(b)(c)(f)(h)(i)(j)(k) -->
+<div class="section-title">2.5 §11.10(b)(c)(f)(h)(i)(j)(k) — Remaining Controls</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><strong>§11.10(b) — Readable copies:</strong> The ability to generate accurate and complete copies of records in both human readable and electronic form suitable for inspection, review, and copying by the agency.</p>
+
+        <p><strong>§11.10(c) — Record protection:</strong> Protection of records to enable their accurate and ready retrieval throughout the records retention period. Protection from: unauthorized alteration/deletion, data corruption, disaster loss, storage media degradation.</p>
+
+        <p><strong>§11.10(f) — Operational system checks:</strong> Enforce permitted sequencing of steps and events, as appropriate. Example: in an eBR, an operator cannot sign "dispensing complete" before "weight check passed."</p>
+
+        <p><strong>§11.10(h) — Device checks:</strong> Determine, as appropriate, the validity of the source of data input or operational instruction. Includes instrument calibration verification and data transmission integrity checks.</p>
+
+        <p><strong>§11.10(i) — Training:</strong> Persons who develop, maintain, or use electronic record/electronic signature systems have the education, training, and experience to perform their assigned tasks. Training must be role-specific, documented, and current.</p>
+
+        <p><strong>§11.10(j) — Written policies:</strong> Establishment of, and adherence to, written policies that hold individuals accountable and responsible for actions initiated under their electronic signatures. SOPs must define what constitutes an electronic signature, prohibited actions (sharing credentials), and consequences for misuse.</p>
+
+        <p><strong>§11.10(k) — Systems documentation controls:</strong> Adequate controls over distribution, access to, and use of documentation for system operation and maintenance; revision and change control procedures maintaining an audit trail of changes to documentation, identifying date of change, nature of change, and individuals making the change.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>§11.10(b) 可讀副本的查廠意涵</h4>
+            <p>FDA 查廠時，查廠官員有權要求「一份批次記錄的完整、準確副本」帶走。§11.10(b) 要求你的系統能夠：</p>
+            <ul>
+                <li>即時匯出完整批次記錄（包含所有欄位、圖表、附件）</li>
+                <li>以 FDA 能閱讀的格式（PDF、紙本列印）提供</li>
+                <li>確保匯出副本與系統內原始記錄完全一致（不遺漏任何稽核追蹤條目）</li>
+            </ul>
+            <p>常見問題：系統匯出的 PDF 缺少稽核追蹤頁，或格式無法完整顯示所有欄位。這些都會被 FDA 標記為 §11.10(b) 缺失。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>§11.10(c) 記錄保護與備份策略</h4>
+            <p>記錄保護需要涵蓋整個「保留期間 (retention period)」。保留期限由 predicate rule 設定：</p>
+            <ul>
+                <li>藥品批次記錄（§211.180）：效期後至少 1 年，最低 3 年</li>
+                <li>生物製品批次記錄：效期後 10 年或更長</li>
+                <li>驗證文件：系統使用期間 + 退役後若干年</li>
+            </ul>
+            <p>保護措施：定期備份（每日增量 + 每週完整）、異地備份（災難恢復）、備份測試（每季驗證恢復能力）、儲存媒介管理（預防磁碟老化）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>§11.10(f) 操作順序控制 — eBR 的關鍵功能</h4>
+            <p>在電子批次記錄中，操作順序控制確保製程步驟按正確順序執行。這是電子系統相比紙本的重要優勢：紙本批次記錄可以被操作員提前簽名，但 eBR 系統可以技術上強制「步驟 A 完成且簽名，才能開啟步驟 B」。這直接防止了回填簽名（backdating）問題。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>§11.10(h) 裝置檢查對儀器需要做到什麼程度？這與儀器校驗（Calibration）有何關係？</li>
+                <li>§11.10(j) 書面政策 SOP 中，應該包含哪些關於電子簽名的具體條款？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- CONTENT: §11.30 Open Systems -->
+<div class="section-title">2.6 §11.30 — Controls for Open Systems</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><strong>§11.30 Controls for open systems:</strong><br>
+        Persons who use open systems to create, modify, maintain, or transmit electronic records shall employ procedures and controls designed to ensure the authenticity, integrity, and, as appropriate, the <span class="key-term">confidentiality</span> of electronic records from the point of their creation to the point of their receipt.</p>
+
+        <p>Such procedures and controls shall include those identified in §11.10, as appropriate, and additional measures such as:</p>
+        <ul>
+            <li><span class="key-term">Document encryption</span>, using appropriate encryption methods</li>
+            <li>Use of appropriate <span class="key-term">digital signature standards</span> to ensure, as appropriate, record authenticity, integrity, and confidentiality</li>
+        </ul>
+
+        <p><strong>Why open systems need more:</strong></p>
+        <ul>
+            <li>In a closed system, physical and administrative controls protect records — the data "stays inside"</li>
+            <li>In an open system, records traverse public networks — interception is possible</li>
+            <li>Encryption protects confidentiality: even if intercepted, data cannot be read</li>
+            <li>Digital signatures protect integrity: any modification invalidates the signature, alerting recipients</li>
+        </ul>
+
+        <p><strong>Practical example:</strong> A CRO submitting clinical data to a pharma sponsor via a cloud platform. The CRO cannot control access to the AWS infrastructure — this is an open system. Data submission must use TLS encryption (in transit) and SHA-256 digital signatures to meet §11.30.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>開放系統額外控制的技術實施</h4>
+            <p><strong>文件加密 (Document Encryption)：</strong></p>
+            <p>傳輸中加密（in transit）：TLS 1.2+ / HTTPS。瀏覽器的「掛鎖圖示」即表示 TLS 加密。所有 SaaS GMP 系統應強制使用 HTTPS。</p>
+            <p>靜態加密（at rest）：AES-256 對儲存的記錄加密。當資料庫被未授權存取時，無法讀取加密內容。</p>
+
+            <p><strong>數位簽名標準 (Digital Signature Standards)：</strong></p>
+            <p>FDA 認可的標準包括 FIPS 140-2 驗證的密碼模組、RSA/ECDSA 簽名算法。數位簽名將特定的簽名者公鑰和文件內容綁定——任何對文件的修改都會使簽名驗證失敗，提供技術上的完整性保障。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>§11.30 vs §11.10：不是替代，是疊加</h4>
+            <p>許多人誤以為開放系統只需要「加密和數位簽名」而不需要 §11.10 的其他控制。這是錯誤的。§11.30 的原文是：「shall include those identified in §11.10, as appropriate, and <strong>additional</strong> measures」——即 §11.10 的 11 項控制仍然適用，§11.30 再加上加密和數位簽名。</p>
+        </div>
+
+        <div class="practice-box" style="border: 2px solid #16a34a;">
+            <h4>實務應用 Practical Application (CDMO Focus)</h4>
+            <p><strong>雲端 LIMS（開放系統）合規策略：</strong></p>
+            <p>1. 確認 SaaS 供應商提供 TLS 加密傳輸（HTTPS）</p>
+            <p>2. 確認靜態資料加密（at-rest encryption，通常 AES-256）</p>
+            <p>3. 確認供應商的 SOC 2 Type II 報告涵蓋存取控制、加密和稽核追蹤</p>
+            <p>4. 評估系統分類（是否為開放系統）並在 URS 和風險評估中記錄</p>
+            <p>5. 在 SLA/合約中明確供應商的 Part 11 相關責任</p>
+            <p>6. 補充 OQ/PQ 測試開放系統特定功能（加密連線、簽名完整性驗證）</p>
+        </div>
+    </div>
+</div>
+
+<!-- LEARNING SUMMARY -->
+<div class="learning-objectives">
+    <h3>本章重點總結</h3>
+    <ul>
+        <li><strong>§11.10(e) 稽核追蹤是 Part 11 最核心要求：</strong> 必須電腦產生、時間戳記、安全不可竄改、記錄建立/修改/刪除操作、保留舊值與新值、保留期間同主記錄、可供 FDA 審查複製。任何缺失都是高風險 FDA 483 觀察。</li>
+        <li><strong>§11.10(a) 驗證是合規基礎：</strong> 未驗證的系統無法確保記錄的準確性和可靠性。使用 GAMP 5 框架，LIMS/eBR/SCADA 等 CDMO 核心系統均屬 Category 4，需完整 IQ/OQ/PQ。</li>
+        <li><strong>共用帳號是根本性違規：</strong> 違反 §11.10(d) 存取控制 + §11.100(a) 簽名唯一性，同時是 ALCOA Attributable 的嚴重缺失，可能升級為 Warning Letter 層級。</li>
+        <li><strong>開放系統需要疊加控制：</strong> §11.30 = §11.10 的全部 11 項控制 + 加密 + 數位簽名。保護記錄在公共網路傳輸過程中的機密性和完整性。</li>
+    </ul>
+</div>
+
+</body>
+</html>
