@@ -93,6 +93,8 @@ body { margin: 0; padding: 0; font-family: 'Noto Sans TC', -apple-system, sans-s
   background: rgba(255,255,255,0.12); white-space: nowrap; flex-shrink: 0;
 }
 .network-tooltip .tt-doc-title { font-size: 11px; color: #cbd5e1; }
+.network-tooltip .tt-doc-link { font-size: 11px; color: #93c5fd; text-decoration: none; transition: color 0.15s; }
+.network-tooltip .tt-doc-link:hover { color: #bfdbfe; text-decoration: underline; }
 .network-tooltip .tt-close {
   position: absolute; top: 8px; right: 10px; background: none; border: none;
   color: #94a3b8; font-size: 16px; cursor: pointer; line-height: 1;
@@ -172,8 +174,11 @@ function createMarkmap(md, colors) {
 }
 
 /* ── D3 Network Rendering (By Topic view) ────────────────────────── */
+let expandedClusters = new Set();
+
 function renderTopicNetwork(reports) {
   hideTooltip();
+  expandedClusters = new Set();
   const svg = d3.select('#mindmap');
   svg.selectAll('*').remove();
   currentMM = null;
@@ -263,12 +268,12 @@ function renderTopicNetwork(reports) {
       .attr('stroke', '#cbd5e1').attr('stroke-width', 1.8).attr('opacity', 0.5)
       .attr('data-cluster', c.id).attr('class', 'hub-link');
   });
-  // Clusters → sub-topics
+  // Clusters → sub-topics (initially hidden)
   subtopicNodes.forEach(s => {
     const parent = clusterById[s.parentId];
     linkGroup.append('line')
       .attr('x1', parent.x).attr('y1', parent.y).attr('x2', s.x).attr('y2', s.y)
-      .attr('stroke', s.color).attr('stroke-width', 1.2).attr('opacity', 0.3)
+      .attr('stroke', s.color).attr('stroke-width', 1.2).attr('opacity', 0)
       .attr('data-cluster', s.parentId).attr('class', 'sub-link');
   });
 
@@ -296,6 +301,10 @@ function renderTopicNetwork(reports) {
       .attr('fill', 'white').attr('stroke', c.color).attr('stroke-width', 1.5);
     cg.append('text').attr('x', c.x + 20).attr('y', c.y - 16).attr('text-anchor', 'middle')
       .attr('font-size', '9px').attr('font-weight', '700').attr('fill', c.color).text(c.count);
+    // Expand indicator (+/−)
+    cg.append('text').attr('x', c.x - 20).attr('y', c.y - 16).attr('text-anchor', 'middle')
+      .attr('font-size', '12px').attr('font-weight', '700').attr('fill', 'white')
+      .attr('class', `expand-indicator expand-indicator-${c.id}`).text('+');
     // Label
     const labelY = c.y > cy + 10 ? c.y + 44 : (c.y < cy - 10 ? c.y - 38 : c.y + 44);
     cg.append('text').attr('x', c.x).attr('y', labelY).attr('text-anchor', 'middle')
@@ -307,12 +316,13 @@ function renderTopicNetwork(reports) {
     // Interactions
     cg.on('mouseenter touchstart', (e) => { e.preventDefault(); highlightCluster(c.id); })
       .on('mouseleave', () => clearHighlight())
-      .on('click', (e) => { e.stopPropagation(); showClusterTooltip(c, e); });
+      .on('click', (e) => { e.stopPropagation(); toggleCluster(c.id); });
   });
 
-  // Sub-topic nodes
+  // Sub-topic nodes (initially hidden — revealed on cluster expand)
   subtopicNodes.forEach(s => {
-    const sg = nodeGroup.append('g').attr('class', `sub-group sg-${s.parentId}`).style('cursor', 'pointer');
+    const sg = nodeGroup.append('g').attr('class', `sub-group sg-${s.parentId}`)
+      .style('cursor', 'pointer').style('opacity', 0).style('pointer-events', 'none');
     const r = Math.max(8, Math.min(20, 6 + s.count * 0.6));
     sg.append('circle').attr('cx', s.x).attr('cy', s.y).attr('r', r)
       .attr('fill', s.color).attr('opacity', 0.65).attr('stroke', 'white').attr('stroke-width', 1.5);
@@ -334,6 +344,27 @@ function renderTopicNetwork(reports) {
       .on('click', (e) => { e.stopPropagation(); showSubtopicTooltip(s, e); });
   });
 
+  /* ── Expand/collapse logic ── */
+  function toggleCluster(clusterId) {
+    if (expandedClusters.has(clusterId)) {
+      expandedClusters.delete(clusterId);
+      g.selectAll(`.sg-${clusterId}`)
+        .transition().duration(350).style('opacity', 0).on('end', function() { d3.select(this).style('pointer-events', 'none'); });
+      g.selectAll(`.sub-link[data-cluster="${clusterId}"]`)
+        .transition().duration(350).style('opacity', 0);
+      g.selectAll(`.expand-indicator-${clusterId}`).text('+');
+      hideTooltip();
+    } else {
+      expandedClusters.add(clusterId);
+      g.selectAll(`.sg-${clusterId}`)
+        .style('pointer-events', 'all')
+        .transition().duration(350).style('opacity', 1);
+      g.selectAll(`.sub-link[data-cluster="${clusterId}"]`)
+        .transition().duration(350).style('opacity', 0.3);
+      g.selectAll(`.expand-indicator-${clusterId}`).text('−');
+    }
+  }
+
   /* ── Highlight logic ── */
   function highlightCluster(clusterId) {
     const connected = new Set([clusterId]);
@@ -351,10 +382,12 @@ function renderTopicNetwork(reports) {
     // Brighten connected
     connected.forEach(cId => {
       g.selectAll(`.cg-${cId}`).style('opacity', 1);
-      if (cId === clusterId) g.selectAll(`.sg-${cId}`).style('opacity', 1);
-      else g.selectAll(`.sg-${cId}`).style('opacity', 0.5);
+      if (expandedClusters.has(cId)) {
+        if (cId === clusterId) g.selectAll(`.sg-${cId}`).style('opacity', 1);
+        else g.selectAll(`.sg-${cId}`).style('opacity', 0.5);
+        g.selectAll(`.sub-link[data-cluster="${cId}"]`).style('opacity', cId === clusterId ? 0.4 : 0.15);
+      }
       g.selectAll(`.hub-link[data-cluster="${cId}"]`).style('opacity', 0.5);
-      if (cId === clusterId) g.selectAll(`.sub-link[data-cluster="${cId}"]`).style('opacity', 0.4);
     });
     // Brighten cross-links
     g.selectAll('.cross-path').each(function() {
@@ -375,9 +408,17 @@ function renderTopicNetwork(reports) {
 
   function clearHighlight() {
     g.selectAll('.cluster-group').style('opacity', 1);
-    g.selectAll('.sub-group').style('opacity', 1);
+    // Restore sub-groups: only show expanded ones
+    g.selectAll('.sub-group').style('opacity', 0).style('pointer-events', 'none');
+    expandedClusters.forEach(cId => {
+      g.selectAll(`.sg-${cId}`).style('opacity', 1).style('pointer-events', 'all');
+    });
     g.selectAll('.hub-link').style('opacity', 0.5);
-    g.selectAll('.sub-link').style('opacity', 0.3);
+    // Restore sub-links: only show expanded ones
+    g.selectAll('.sub-link').style('opacity', 0);
+    expandedClusters.forEach(cId => {
+      g.selectAll(`.sub-link[data-cluster="${cId}"]`).style('opacity', 0.3);
+    });
     g.selectAll('.cross-path').each(function() {
       d3.select(this).style('opacity', 0.2).attr('stroke', '#94a3b8').attr('stroke-width', 1.5);
     });
@@ -421,7 +462,12 @@ function populateTooltip(title, count, docs, event) {
   docs.sort((a, b) => a.source.localeCompare(b.source) || a.title.localeCompare(b.title)).forEach(d => {
     const div = document.createElement('div');
     div.className = 'tt-doc';
-    div.innerHTML = `<span class="tt-src">${d.source}</span><span class="tt-doc-title">${d.title}</span>`;
+    const r = reportsData[d.key];
+    const link = (r && r.folder && r.output_filename) ? `${r.folder}/output/${r.output_filename}` : null;
+    const titleEl = link
+      ? `<a href="${link}" target="_blank" class="tt-doc-link">${d.title}</a>`
+      : `<span class="tt-doc-title">${d.title}</span>`;
+    div.innerHTML = `<span class="tt-src">${d.source}</span>${titleEl}`;
     container.appendChild(div);
   });
   if (docs.length === 0) container.innerHTML = '<div style="color:#94a3b8;font-style:italic">No processed documents yet</div>';
@@ -461,7 +507,7 @@ function updateLegend(view) {
         <div><span class="legend-line"></span>Cross-connection</div>
       </div>
       <div style="margin-top:4px;color:var(--c-tertiary);font-size:10px">
-        Hover to highlight · Click for details
+        Hover to highlight · Click cluster to expand · Click subtopic for docs
       </div>`;
   } else {
     legend.innerHTML = `
