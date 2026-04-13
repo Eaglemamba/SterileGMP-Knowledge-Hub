@@ -173,6 +173,230 @@ function createMarkmap(md, colors) {
   }, root);
 }
 
+/* ── D3 Network Rendering (By Department view) ───────────────────── */
+function renderDeptNetwork(reports) {
+  hideTooltip();
+  const svg = d3.select('#mindmap');
+  svg.selectAll('*').remove();
+  currentMM = null;
+
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+  svg.attr('width', width).attr('height', height);
+
+  const network = buildDeptNetwork(reports);
+  const nodes = network.nodes;
+  const edges = network.edges;
+  const nNodes = nodes.length;
+
+  const cx = width / 2, cy = height / 2;
+  const R = Math.min(width, height) * 0.30;
+
+  // Place nodes in a circle
+  nodes.forEach((n, i) => {
+    const angle = (i / nNodes) * 2 * Math.PI - Math.PI / 2;
+    n.x = cx + R * Math.cos(angle);
+    n.y = cy + R * Math.sin(angle);
+    n.angle = angle;
+  });
+  const nodeById = {};
+  nodes.forEach(n => nodeById[n.id] = n);
+
+  // Zoom
+  const g = svg.append('g');
+  const zoom = d3.zoom().scaleExtent([0.2, 5]).on('zoom', e => g.attr('transform', e.transform));
+  svg.call(zoom);
+  svg.on('click', e => { if (e.target === svg.node()) hideTooltip(); });
+
+  // Defs: drop shadow
+  const defs = svg.append('defs');
+  const filter = defs.append('filter').attr('id', 'dshadow').attr('x', '-30%').attr('y', '-30%').attr('width', '160%').attr('height', '160%');
+  filter.append('feDropShadow').attr('dx', 0).attr('dy', 2).attr('stdDeviation', 3).attr('flood-opacity', 0.15);
+
+  // Layer 1: Edges
+  const edgeGroup = g.append('g').attr('class', 'dept-edges');
+  edges.forEach(e => {
+    const s = nodeById[e.source], t = nodeById[e.target];
+    const thickness = Math.max(1.5, Math.min(6, e.sharedCount * 0.55));
+
+    // Invisible wide hit target
+    edgeGroup.append('line')
+      .attr('x1', s.x).attr('y1', s.y).attr('x2', t.x).attr('y2', t.y)
+      .attr('stroke', 'transparent').attr('stroke-width', 14).style('cursor', 'pointer')
+      .attr('data-src', e.source).attr('data-tgt', e.target)
+      .attr('class', 'dept-edge-hit')
+      .on('click', ev => { ev.stopPropagation(); showEdgeTooltip(e, ev); });
+
+    // Visible line
+    edgeGroup.append('line')
+      .attr('x1', s.x).attr('y1', s.y).attr('x2', t.x).attr('y2', t.y)
+      .attr('stroke', '#94a3b8').attr('stroke-width', thickness).attr('opacity', 0.4)
+      .attr('data-src', e.source).attr('data-tgt', e.target).attr('class', 'dept-edge-vis')
+      .style('pointer-events', 'none');
+
+    // Edge count label (midpoint)
+    const mx = (s.x + t.x) / 2, my = (s.y + t.y) / 2;
+    edgeGroup.append('text')
+      .attr('x', mx).attr('y', my - 3)
+      .attr('text-anchor', 'middle').attr('font-size', '8px').attr('fill', '#94a3b8')
+      .attr('font-weight', '600').attr('opacity', 0).attr('pointer-events', 'none')
+      .attr('data-src', e.source).attr('data-tgt', e.target).attr('class', 'dept-edge-label')
+      .text(e.sharedCount);
+  });
+
+  // Layer 2: Department nodes
+  const nodeGroup = g.append('g').attr('class', 'dept-nodes');
+  nodes.forEach(n => {
+    const ng = nodeGroup.append('g').attr('class', `dn-group dn-${n.id}`).style('cursor', 'pointer');
+    const r = 36;
+
+    ng.append('circle').attr('cx', n.x).attr('cy', n.y).attr('r', r)
+      .attr('fill', n.color).attr('stroke', 'white').attr('stroke-width', 2.5)
+      .attr('filter', 'url(#dshadow)');
+
+    // Icon
+    ng.append('text').attr('x', n.x).attr('y', n.y - 4).attr('text-anchor', 'middle')
+      .attr('font-size', '18px').text(n.icon);
+
+    // Doc count badge
+    ng.append('circle').attr('cx', n.x + 26).attr('cy', n.y - 26).attr('r', 12)
+      .attr('fill', 'white').attr('stroke', n.color).attr('stroke-width', 1.5);
+    ng.append('text').attr('x', n.x + 26).attr('y', n.y - 22).attr('text-anchor', 'middle')
+      .attr('font-size', '9px').attr('font-weight', '700').attr('fill', n.color).text(n.count);
+
+    // Department name label
+    const below = n.y >= cy - 20;
+    const labelY = below ? n.y + r + 16 : n.y - r - 8;
+    const label2Y = below ? labelY + 13 : labelY - 13;
+    const anchor = 'middle';
+
+    ng.append('text').attr('x', n.x).attr('y', labelY).attr('text-anchor', anchor)
+      .attr('font-size', '11px').attr('font-weight', '700').attr('fill', '#1e293b').text(n.name);
+    ng.append('text').attr('x', n.x).attr('y', label2Y).attr('text-anchor', anchor)
+      .attr('font-size', '9px').attr('fill', '#64748b').text(n.nameZh);
+
+    // Interactions
+    ng.on('mouseenter', () => highlightDept(n.id))
+      .on('mouseleave', clearDeptHighlight)
+      .on('click', ev => { ev.stopPropagation(); showDeptTooltip(n, ev); });
+  });
+
+  // Highlight/clear
+  function highlightDept(deptId) {
+    const connectedIds = new Set([deptId]);
+    edges.forEach(e => {
+      if (e.source === deptId) connectedIds.add(e.target);
+      if (e.target === deptId) connectedIds.add(e.source);
+    });
+    g.selectAll('.dn-group').style('opacity', 0.12);
+    connectedIds.forEach(id => g.selectAll(`.dn-${id}`).style('opacity', 1));
+    g.selectAll('.dept-edge-vis').style('opacity', 0.06);
+    g.selectAll('.dept-edge-label').style('opacity', 0);
+    g.selectAll('.dept-edge-vis').each(function() {
+      const el = d3.select(this);
+      if (el.attr('data-src') === deptId || el.attr('data-tgt') === deptId) {
+        el.style('opacity', 0.75).attr('stroke', nodeById[deptId].color).attr('stroke-width',
+          parseFloat(el.attr('stroke-width')) * 1.5);
+      }
+    });
+    g.selectAll('.dept-edge-label').each(function() {
+      const el = d3.select(this);
+      if (el.attr('data-src') === deptId || el.attr('data-tgt') === deptId) el.style('opacity', 1);
+    });
+  }
+
+  function clearDeptHighlight() {
+    g.selectAll('.dn-group').style('opacity', 1);
+    g.selectAll('.dept-edge-vis').each(function() {
+      const el = d3.select(this);
+      const src = el.attr('data-src'), tgt = el.attr('data-tgt');
+      const e = edges.find(e => e.source === src && e.target === tgt);
+      if (e) el.style('opacity', 0.4).attr('stroke', '#94a3b8').attr('stroke-width', Math.max(1.5, Math.min(6, e.sharedCount * 0.55)));
+    });
+    g.selectAll('.dept-edge-label').style('opacity', 0);
+  }
+
+  // Tooltip: click department node → show its full doc list by tier
+  function showDeptTooltip(node, event) {
+    const tier1 = node.docs.filter(d => d.tier === 1);
+    const tier2 = node.docs.filter(d => d.tier === 2);
+    const tier3 = node.docs.filter(d => d.tier === 3);
+
+    const tt = document.getElementById('networkTooltip');
+    document.getElementById('ttTitle').textContent = `${node.icon} ${node.name}`;
+    document.getElementById('ttCount').textContent = node.count + ' docs';
+    const container = document.getElementById('ttDocs');
+    container.innerHTML = '';
+
+    [[tier1, '1 Foundation', '🟢'], [tier2, '2 Core', '🔵'], [tier3, '3 Advanced', '🟣']].forEach(([docs, label, icon]) => {
+      if (!docs.length) return;
+      const hdr = document.createElement('div');
+      hdr.style.cssText = 'font-size:9px;font-weight:700;color:#94a3b8;margin:6px 0 2px;text-transform:uppercase;letter-spacing:.5px';
+      hdr.textContent = `${icon} Tier ${label}`;
+      container.appendChild(hdr);
+      docs.forEach(d => {
+        const r = reportsData[d.key];
+        const link = (r && r.folder && r.output_filename) ? `${r.folder}/output/${r.output_filename}` : null;
+        const div = document.createElement('div');
+        div.className = 'tt-doc';
+        div.innerHTML = `<span class="tt-src">${d.source}</span>${link
+          ? `<a href="${link}" target="_blank" class="tt-doc-link">${d.title}</a>`
+          : `<span class="tt-doc-title">${d.title}</span>`}`;
+        container.appendChild(div);
+      });
+    });
+
+    positionTooltip(tt, event);
+  }
+
+  // Tooltip: click edge → show shared docs between two depts
+  function showEdgeTooltip(edge, event) {
+    const srcNode = nodeById[edge.source], tgtNode = nodeById[edge.target];
+    const tt = document.getElementById('networkTooltip');
+    document.getElementById('ttTitle').textContent = `${srcNode.icon} ${srcNode.name}  ↔  ${tgtNode.icon} ${tgtNode.name}`;
+    document.getElementById('ttCount').textContent = edge.sharedCount + ' shared';
+    const container = document.getElementById('ttDocs');
+    container.innerHTML = '';
+
+    const hdr = document.createElement('div');
+    hdr.style.cssText = 'font-size:9px;font-weight:700;color:#94a3b8;margin:0 0 4px;text-transform:uppercase;letter-spacing:.5px';
+    hdr.textContent = 'Cross-department reading';
+    container.appendChild(hdr);
+
+    edge.sharedDocs.sort((a, b) => a.source.localeCompare(b.source) || a.title.localeCompare(b.title)).forEach(d => {
+      const r = reportsData[d.key];
+      const link = (r && r.folder && r.output_filename) ? `${r.folder}/output/${r.output_filename}` : null;
+      const div = document.createElement('div');
+      div.className = 'tt-doc';
+      div.innerHTML = `<span class="tt-src">${d.source}</span>${link
+        ? `<a href="${link}" target="_blank" class="tt-doc-link">${d.title}</a>`
+        : `<span class="tt-doc-title">${d.title}</span>`}`;
+      container.appendChild(div);
+    });
+
+    positionTooltip(tt, event);
+  }
+
+  function positionTooltip(tt, event) {
+    const x = event.clientX || window.innerWidth / 2;
+    const y = event.clientY || window.innerHeight / 2;
+    tt.style.display = 'block';
+    const ttW = tt.offsetWidth, ttH = tt.offsetHeight;
+    tt.style.left = Math.min(x + 14, window.innerWidth - ttW - 16) + 'px';
+    tt.style.top = Math.min(y - 20, window.innerHeight - ttH - 16) + 'px';
+  }
+
+  // Initial zoom to fit
+  requestAnimationFrame(() => {
+    const bounds = g.node().getBBox();
+    const pad = 80;
+    const scale = Math.min(width / (bounds.width + pad * 2), (height - 60) / (bounds.height + pad * 2), 1.1);
+    const tx = width / 2 - (bounds.x + bounds.width / 2) * scale;
+    const ty = (height + 50) / 2 - (bounds.y + bounds.height / 2) * scale;
+    svg.call(zoom.transform, d3.zoomIdentity.translate(tx, ty).scale(scale));
+  });
+}
+
 /* ── D3 Network Rendering (By Topic view) ────────────────────────── */
 let expandedClusters = new Set();
 
@@ -489,12 +713,15 @@ function updateLegend(view) {
   const legend = document.getElementById('legend');
   if (view === 'dept') {
     legend.innerHTML = `
-      <div class="legend-title">Department Tracks</div>
+      <div class="legend-title">Departments</div>
       ${departments.map(d =>
         `<div><span class="legend-dot" style="background:${d.color}"></span>${d.icon} ${d.name}</div>`
       ).join('')}
-      <div style="margin-top:6px;color:var(--c-tertiary);font-size:10px">
-        ★ Required · ○ Optional
+      <div style="margin-top:8px;border-top:1px solid var(--c-border);padding-top:6px">
+        <div><span class="legend-line-solid"></span>Shared documents</div>
+      </div>
+      <div style="margin-top:4px;color:var(--c-tertiary);font-size:10px">
+        Hover to highlight · Click node for full list · Click line for shared docs
       </div>`;
   } else if (view === 'topic') {
     legend.innerHTML = `
@@ -522,8 +749,9 @@ function updateStats(view) {
   const stats = document.getElementById('stats-bar');
   const total = Object.values(reportsData).filter(r => r.section_map && r.section_map.length).length;
   if (view === 'dept') {
+    const network = buildDeptNetwork(reportsData);
     const totalCurriculum = departments.reduce((s, d) => s + d.tiers.reduce((s2, t) => s2 + t.docs.length, 0), 0);
-    stats.textContent = `${totalCurriculum} curated readings · ${departments.length} departments · ${total} total documents`;
+    stats.textContent = `${departments.length} departments · ${network.edges.length} cross-connections · ${totalCurriculum} curated readings`;
   } else if (view === 'topic') {
     const nSubs = topicNetworkDef.clusters.reduce((s, c) => s + c.subtopics.length, 0);
     const nLinks = topicNetworkDef.crossLinks.length;
@@ -542,16 +770,12 @@ function switchView(view) {
   updateLegend(view);
   updateStats(view);
 
-  if (view === 'topic') {
+  if (view === 'dept') {
+    renderDeptNetwork(reportsData);
+  } else if (view === 'topic') {
     renderTopicNetwork(reportsData);
   } else {
-    let md;
-    if (view === 'dept') {
-      md = generateDeptMarkdown(reportsData);
-    } else {
-      md = generateSourceMarkdown(reportsData);
-    }
-    createMarkmap(md, viewColors[view]);
+    createMarkmap(generateSourceMarkdown(reportsData), viewColors[view]);
   }
 }
 
@@ -574,7 +798,8 @@ let resizeTimer;
 window.addEventListener('resize', () => {
   clearTimeout(resizeTimer);
   resizeTimer = setTimeout(() => {
-    if (currentView === 'topic') renderTopicNetwork(reportsData);
+    if (currentView === 'dept') renderDeptNetwork(reportsData);
+    else if (currentView === 'topic') renderTopicNetwork(reportsData);
   }, 250);
 });
 </script>
