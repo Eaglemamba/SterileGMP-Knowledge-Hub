@@ -728,43 +728,68 @@ function buildTopicNetwork(reports) {
 
 /* ── Build department network from shared docs ─────────────────────── */
 function buildDeptNetwork(reports) {
-  // Build node list: each dept + its full doc list resolved from reports
-  const nodes = departments.map(dept => {
+  // Step 1: collect ALL docs per dept (all tiers, resolved from reports)
+  const deptAllDocs = {};
+  departments.forEach(dept => {
     const docs = [];
     dept.tiers.forEach(tier => {
       tier.docs.forEach(d => {
         const r = reports[d.key];
         if (!r || !r.section_map || !r.section_map.length) return;
-        docs.push({
-          key: d.key,
-          title: r.title || d.key,
-          source: (r.source || '').split(' ')[0],
-          required: d.required,
-          tier: tier.level,
-          tierLabel: tier.label,
-        });
+        docs.push({ key: d.key, title: r.title || d.key, source: (r.source || '').split(' ')[0], required: d.required, tier: tier.level, tierLabel: tier.label });
       });
     });
-    return { id: dept.id, name: dept.name, nameZh: dept.nameZh, icon: dept.icon, color: dept.color, docs, count: docs.length };
+    deptAllDocs[dept.id] = docs;
   });
 
-  // Build edges: all dept pairs with ≥1 shared doc key
-  const edges = [];
-  for (let i = 0; i < nodes.length; i++) {
-    for (let j = i + 1; j < nodes.length; j++) {
-      const keysA = new Set(nodes[i].docs.map(d => d.key));
-      const sharedDocs = nodes[j].docs.filter(d => keysA.has(d.key));
-      if (sharedDocs.length > 0) {
-        edges.push({
-          source: nodes[i].id,
-          target: nodes[j].id,
-          sharedCount: sharedDocs.length,
-          sharedDocs,
-        });
+  // Step 2: for every doc key, find which depts carry it and at what tier
+  const docDeptMap = {}; // key → [{deptId, deptName, deptIcon, tier, tierLabel, required}]
+  departments.forEach(dept => {
+    deptAllDocs[dept.id].forEach(d => {
+      if (!docDeptMap[d.key]) docDeptMap[d.key] = [];
+      docDeptMap[d.key].push({ deptId: dept.id, deptName: dept.name, deptIcon: dept.icon, deptColor: dept.color, tier: d.tier, tierLabel: d.tierLabel, required: d.required });
+    });
+  });
+
+  // Step 3: build nodes — subtopics = required docs for that dept
+  const nodes = departments.map(dept => {
+    const allDocs = deptAllDocs[dept.id];
+    const requiredDocs = allDocs.filter(d => d.required);
+    const subtopics = requiredDocs.map(d => {
+      const coverage = docDeptMap[d.key] || [];
+      return {
+        id: `${dept.id}__${d.key}`,
+        docKey: d.key,
+        name: d.source ? `${d.source}: ${d.title}` : d.title,
+        shortName: d.source || d.key,
+        title: d.title,
+        source: d.source,
+        deptCoverage: coverage,     // all depts that share this doc
+        count: coverage.filter(c => c.deptId !== dept.id).length, // how many OTHER depts share it
+        docs: [{ key: d.key, title: d.title, source: d.source }],
+      };
+    });
+    return {
+      id: dept.id, name: dept.name, nameZh: dept.nameZh, icon: dept.icon, color: dept.color,
+      subtopics,
+      count: allDocs.length,
+    };
+  });
+
+  // Step 4: build crossLinks — pairs with ≥3 shared docs (required or optional)
+  const crossLinks = [];
+  for (let i = 0; i < departments.length; i++) {
+    for (let j = i + 1; j < departments.length; j++) {
+      const dA = departments[i], dB = departments[j];
+      const keysA = new Set(deptAllDocs[dA.id].map(d => d.key));
+      const shared = deptAllDocs[dB.id].filter(d => keysA.has(d.key));
+      if (shared.length >= 3) {
+        crossLinks.push({ source: dA.id, target: dB.id, label: `${shared.length} shared`, sharedCount: shared.length });
       }
     }
   }
-  return { nodes, edges };
+
+  return { clusters: nodes, crossLinks };
 }
 
 /* ── Module export for Node.js tooling ────────────────────────────── */
