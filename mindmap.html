@@ -417,30 +417,30 @@ function renderDeptNetwork(reports) {
     g.selectAll('.dept-hub-node').style('opacity', 1);
   }
 
-  /* ── Tooltip: required doc (sub-node click) ── */
+  /* ── Tooltip: Annex 1 section (sub-node click) ── */
   function showDocTooltip(s, event) {
     document.getElementById('ttTitle').textContent = s.name;
-    document.getElementById('ttCount').textContent = s.deptCoverage.length + ' depts require this';
+    document.getElementById('ttCount').textContent = `PIC/S Annex 1 · ${s.deptCoverage.length} depts`;
     const container = document.getElementById('ttDocs');
     container.innerHTML = '';
-    // Open link
-    if (s.link) {
-      const openDiv = document.createElement('div');
-      openDiv.style.cssText = 'margin-bottom:8px;';
-      openDiv.innerHTML = `<a href="${s.link}" target="_blank" class="tt-doc-link" style="font-size:11px">→ Open document</a>`;
-      container.appendChild(openDiv);
+    // Chinese name
+    if (s.nameZh) {
+      const zh = document.createElement('div');
+      zh.style.cssText = 'font-size:11px;color:#64748b;margin-bottom:6px;';
+      zh.textContent = s.nameZh;
+      container.appendChild(zh);
     }
-    // Why this dept needs it
-    if (s.why) {
-      const whyDiv = document.createElement('div');
-      whyDiv.style.cssText = 'font-size:10px;color:#475569;margin-bottom:8px;font-style:italic;line-height:1.4';
-      whyDiv.textContent = s.why;
-      container.appendChild(whyDiv);
+    // Section description
+    if (s.desc) {
+      const descDiv = document.createElement('div');
+      descDiv.style.cssText = 'font-size:10px;color:#475569;margin-bottom:10px;line-height:1.5;font-style:italic';
+      descDiv.textContent = s.desc;
+      container.appendChild(descDiv);
     }
-    // Cross-dept coverage
+    // Responsible depts
     const hdr = document.createElement('div');
     hdr.style.cssText = 'font-size:9px;font-weight:700;color:#94a3b8;margin:4px 0 4px;text-transform:uppercase;letter-spacing:.5px';
-    hdr.textContent = 'Required by';
+    hdr.textContent = 'Responsible departments';
     container.appendChild(hdr);
     s.deptCoverage.forEach(cov => {
       const div = document.createElement('div');
@@ -790,10 +790,10 @@ function updateLegend(view) {
         `<div><span class="legend-dot" style="background:${d.color}"></span>${d.icon} ${d.name}</div>`
       ).join('')}
       <div style="margin-top:8px;border-top:1px solid var(--c-border);padding-top:6px">
-        <div><span class="legend-line"></span>Shared core documents</div>
+        <div><span class="legend-line"></span>Shared Annex 1 sections</div>
       </div>
       <div style="margin-top:4px;color:var(--c-tertiary);font-size:10px">
-        Click dept to expand · Click document node for details
+        Click dept to expand Annex 1 responsibilities · Click section node for details
       </div>`;
   } else if (view === 'topic') {
     legend.innerHTML = `
