@@ -47,6 +47,7 @@ Use these mappings to translate user questions before routing:
 | Aseptic processing / 無菌製程 | PICS-Annex1 §8 · FDA-Aseptic §01-§04 · PtC-1 (all topics) | TR22, TR62, PtC-12, PtC-Isolators |
 | Sterile filtration / 除菌過濾 | TR26 (§4 Qualification, §6 Validation, §7 Integrity) | PtC-1 §6, TR90, PICS-Annex1 §8 |
 | PUPSIT / filter integrity | TR26 §7 · PtC-1 §6 · PICS-Annex1 §8 | FDA-Aseptic §04 |
+| CGMP requirement for sterilization §211.113(b) / regulatory basis for media fill / SAL 10⁻⁶ CGMP mandate | FDA-21CFR-211 (§3 §211.113) | FDA-Aseptic |
 | Moist heat sterilization / 濕熱滅菌 | TR1 (§1 Science, §3 Design, §5 PPQ) · PICS-Annex1 §8 | TR60 |
 | Lyophilization / 凍乾 | TR22 §6 (lyo APS) | TR87 (lyo glass handling) |
 | BFS / blow-fill-seal | PtC-1 §1b (K.1-K.3) · PICS-Annex1 §8 | FDA-Aseptic §07 |
@@ -198,10 +199,33 @@ Use these mappings to translate user questions before routing:
 | Closed vs open system classification / §11.30 open system encryption digital signature | FDA-21CFR-Part11 (§1 Subpart A §11.3, §2 §11.30) | — |
 | Electronic signature two-component authentication / continuous session / password controls §11.200 §11.300 | FDA-21CFR-Part11 (§3 Subpart C §11.200, §11.300) | — |
 | Signature manifestation §11.50 / printed name / date time / meaning approval reviewed / signature linking §11.70 | FDA-21CFR-Part11 (§3 Subpart C §11.50, §11.70) | — |
+| FDA CGMP legal basis / FDCA §501(a)(2)(B) adulteration / 21 CFR 210/211 scope / Drug CGMP regulations | FDA-21CFR-211 (§0 Overview & architecture) | FDA-Aseptic |
+| QCU independence §211.22 / batch release approval authority / QCU in CDMO / written procedures | FDA-21CFR-211 (§1 Subparts A–B §211.22) | FDA-ProcessInspection |
+| Aseptic facility design §211.42 / sterile operations area / HEPA pressure differential / CGMP foundation | FDA-21CFR-211 (§2 Subparts C–D §211.42) | FDA-Aseptic, PICS-Annex1 |
+| Aseptic processing validation regulatory basis §211.113(b) / sterilization validation hierarchy / media fill CGMP requirement | FDA-21CFR-211 (§3 Subparts E–F §211.113) | FDA-Aseptic |
+| Batch production record §211.188 / 13 required items / electronic batch record eBR / ALCOA+ CGMP | FDA-21CFR-211 (§5 Subparts I–K §211.188) | — |
+| Batch review §211.192 / thorough review standard / QCU batch disposition / most cited CGMP warning letter | FDA-21CFR-211 (§5 Subparts I–K §211.192) | FDA-ProcessInspection |
+| OOS out-of-specification §211.194 / Phase I Phase II investigation / invalid assay criteria / Barr Laboratories | FDA-21CFR-211 (§5 Subparts I–K §211.194) | — |
 | QRM regulatory perspective / PIC/S Annex 20 | PICS-Annex20 (§1-§3 QRM process, risk tools) | ICH-Q9R1, TR60 |
 | Combination products CGMP / 組合產品 | FDA-ComboProd-CGMP (§1-§3 CGMP requirements) | FDA-ComboProd-HF |
 | Human factors / combination products | FDA-ComboProd-HF (§1-§2 HF process, clinical) | FDA-ComboProd-CGMP |
-| Medical device QMS / ISO 13485 | ISO-13485 (§2 QMS, §3 Resources/Design, §4 Purchasing) | ICH-Q10 |
+| Medical device QMS / ISO 13485 | ISO-13485 (§2 QMS, §3 Resources/Design, §4 Purchasing) | ICH-Q10, FDA-21CFR-820 |
+| QMSR 2024 final rule / QSR to QMSR transition / Part 820 effective Feb 2026 | FDA-21CFR-820 (§0 Overview & transition) | ISO-13485 |
+| Part 820 scope / who must comply / Class I exemptions / combination product QMSR | FDA-21CFR-820 (§1 Scope & definitions) | FDA-ComboProd-CGMP |
+| DHF vs DHR vs DMR / design history file / device master record / device history record | FDA-21CFR-820 (§1 definitions, §3 design controls) | — |
+| Design controls mandatory FDA / design verification vs validation / design transfer §820 | FDA-21CFR-820 (§3 Design Controls & Realization) | FDA-ComboProd-CGMP |
+| Complaint file §820.198 / complaint definition / MDR trigger 30-day decision / Part 803 | FDA-21CFR-820 (§4 CAPA & complaint files) | FDA-ProcessInspection |
+| CAPA medical device / closed-loop CAPA / effectiveness check / FDA 483 CAPA deficiency | FDA-21CFR-820 (§4 CAPA §8.5) | ICH-Q10, FDA-ProcessInspection |
+| Combination product definition §3.2(e) / four types: single-entity, co-packaged, cross-labeled, investigational | FDA-21CFR-Part4 (§0 Overview, §1 Definitions) | FDA-ComboProd-CGMP |
+| PMOA determination / primary mode of action / 5 MOA categories / PMOA tie-breaker | FDA-21CFR-Part4 (§2 RFD & PMOA §4.8) | FDA-ComboProd-CGMP, FDA-21CFR-820 |
+| RFD process / Request for Designation / OCP / 60-day clock / center assignment | FDA-21CFR-Part4 (§2 RFD & jurisdiction §4.6–4.9) | — |
+| Combination product CGMP dual compliance / §4.4 streamlined / Part 211 + Part 820 both apply | FDA-21CFR-Part4 (§3 CGMP dual compliance §4.4) | FDA-21CFR-820, FDA-21CFR-211 |
+| CDMO combination product responsibility / quality agreement combo product / ADE vs MDR dual reporting | FDA-21CFR-Part4 (§3 CDMO responsibilities) | FDA-ComboProd-CGMP, FDA-21CFR-820 |
+| IND required when / IND exemptions / BA BE exemption §312.2 / interstate commerce trigger | FDA-21CFR-Part312 (§0 Overview & exemptions) | — |
+| Phase 1 Phase 2 Phase 3 definitions §312.21 / phase-appropriate CGMP / FDA 2008 CGMP guidance | FDA-21CFR-Part312 (§1 Types & phases §312.21) | FDA-ProcessVal |
+| IND CMC section §312.23 / drug substance drug product CMC requirements / sterile injectable IND CMC | FDA-21CFR-Part312 (§2 CMC section §312.23) | FDA-21CFR-211 |
+| IND safety report §312.32 / SUSAR definition / 7-day report / 15-day report / clinical hold trigger | FDA-21CFR-Part312 (§3 Sponsor obligations §312.32) | — |
+| CDMO investigational drug manufacturing / Form FDA 1572 / clinical hold CDMO impact / IND batch records | FDA-21CFR-Part312 (§4 Investigator & CDMO §312.60) | FDA-21CFR-211 |
 
 ### Personnel & Training
 
