@@ -189,92 +189,113 @@ function renderDeptNetwork(reports) {
   const nClusters = clusters.length;
 
   const cx = width / 2, cy = height / 2;
-  const R = Math.min(width, height) * 0.34;
+  const R = Math.min(width, height) * 0.26;
 
-  // Radial positions for dept nodes (no hub — larger ring)
-  clusters.forEach((c, i) => {
+  // Radial positions — same formula as By Topic
+  const clusterNodes = clusters.map((c, i) => {
     const angle = (i / nClusters) * 2 * Math.PI - Math.PI / 2;
-    c.x = cx + R * Math.cos(angle);
-    c.y = cy + R * Math.sin(angle);
-    c.angle = angle;
+    return { ...c, x: cx + R * Math.cos(angle), y: cy + R * Math.sin(angle), angle };
   });
   const clusterById = {};
-  clusters.forEach(c => clusterById[c.id] = c);
+  clusterNodes.forEach(c => clusterById[c.id] = c);
 
   const maxShared = Math.max(...network.crossLinks.map(cl => cl.sharedCount), 1);
 
-  // Zoom & pan
+  /* ── Zoom ── */
   const g = svg.append('g');
-  const zoom = d3.zoom().scaleExtent([0.2, 5]).on('zoom', e => g.attr('transform', e.transform));
+  const zoom = d3.zoom().scaleExtent([0.25, 5]).on('zoom', e => g.attr('transform', e.transform));
   svg.call(zoom);
-  svg.on('click', e => { if (e.target === svg.node()) { hideTooltip(); clearDeptHighlight(); } });
+  svg.on('click', e => { if (e.target === svg.node()) hideTooltip(); });
 
-  // Defs
+  /* ── Defs ── */
   const defs = svg.append('defs');
-  const filt = defs.append('filter').attr('id', 'dshadow').attr('x', '-30%').attr('y', '-30%').attr('width', '160%').attr('height', '160%');
-  filt.append('feDropShadow').attr('dx', 0).attr('dy', 2).attr('stdDeviation', 3).attr('flood-opacity', 0.15);
+  const filter = defs.append('filter').attr('id', 'dshadow').attr('x', '-30%').attr('y', '-30%').attr('width', '160%').attr('height', '160%');
+  filter.append('feDropShadow').attr('dx', 0).attr('dy', 2).attr('stdDeviation', 3).attr('flood-opacity', 0.15);
 
-  /* ── Layer 1: Connection lines (thickness ∝ shared topics) ── */
-  const edgeGroup = g.append('g').attr('class', 'dept-edges');
+  /* ── Layer 1: Weighted curved arcs between departments ── */
+  const crossGroup = g.append('g').attr('class', 'dept-cross-links');
   network.crossLinks.forEach(cl => {
     const s = clusterById[cl.source], t = clusterById[cl.target];
     if (!s || !t) return;
-    const strength = cl.sharedCount / maxShared;
-    const lw = 1.5 + strength * 7;
-    const op = 0.12 + strength * 0.38;
+    const midX = (s.x + t.x) / 2, midY = (s.y + t.y) / 2;
+    const dx = midX - cx, dy = midY - cy;
+    const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+    const curvature = R * 0.35;
+    const ctrlX = midX + (dx / dist) * curvature;
+    const ctrlY = midY + (dy / dist) * curvature;
+    const d = `M${s.x},${s.y} Q${ctrlX},${ctrlY} ${t.x},${t.y}`;
 
-    // Invisible fat hit area for easier hover
-    edgeGroup.append('line')
-      .attr('x1', s.x).attr('y1', s.y).attr('x2', t.x).attr('y2', t.y)
-      .attr('stroke', 'transparent').attr('stroke-width', 16)
+    const str = cl.sharedCount / maxShared;
+    const lw = 1.5 + str * 6;
+    const op = 0.12 + str * 0.38;
+
+    // Fat invisible hit area
+    crossGroup.append('path').attr('d', d)
+      .attr('fill', 'none').attr('stroke', 'transparent').attr('stroke-width', 14)
       .attr('data-source', cl.source).attr('data-target', cl.target)
-      .attr('class', 'dept-edge-hit')
-      .style('cursor', 'pointer')
-      .on('mouseenter', e => highlightEdge(cl, s, t, e))
+      .attr('class', 'dept-arc-hit').style('cursor', 'pointer')
+      .on('mouseenter', e => highlightArc(cl, s))
       .on('mouseleave', clearDeptHighlight)
-      .on('click', e => { e.stopPropagation(); showEdgeTooltip(cl, s, t, e); });
+      .on('click', e => { e.stopPropagation(); showArcTooltip(cl, s, t, e); });
 
-    // Visible line
-    edgeGroup.append('line')
-      .attr('x1', s.x).attr('y1', s.y).attr('x2', t.x).attr('y2', t.y)
-      .attr('stroke', '#94a3b8').attr('stroke-width', lw).attr('opacity', op)
+    // Visible arc
+    crossGroup.append('path').attr('d', d)
+      .attr('fill', 'none').attr('stroke', '#94a3b8').attr('stroke-width', lw)
+      .attr('stroke-dasharray', str > 0.6 ? 'none' : '6,4')
+      .attr('opacity', op)
       .attr('data-source', cl.source).attr('data-target', cl.target)
-      .attr('class', 'dept-edge').attr('pointer-events', 'none');
+      .attr('class', 'dept-cross-path').attr('pointer-events', 'none');
 
     // Count label (hidden by default)
-    const mx = (s.x + t.x) / 2, my = (s.y + t.y) / 2;
-    edgeGroup.append('text')
-      .attr('x', mx).attr('y', my - 5).attr('text-anchor', 'middle')
-      .attr('font-size', '9px').attr('fill', '#475569').attr('font-weight', '700')
-      .attr('opacity', 0).attr('pointer-events', 'none')
+    crossGroup.append('text')
+      .attr('x', ctrlX).attr('y', ctrlY - 5).attr('text-anchor', 'middle')
+      .attr('font-size', '9px').attr('fill', '#475569').attr('font-weight', '700').attr('opacity', 0)
       .attr('data-source', cl.source).attr('data-target', cl.target)
-      .attr('class', 'dept-edge-label')
+      .attr('class', 'dept-cross-label').attr('pointer-events', 'none')
       .text(cl.sharedCount);
   });
 
-  /* ── Layer 2: Dept nodes ── */
+  /* ── Layer 2: Hub → dept spokes ── */
+  const linkGroup = g.append('g').attr('class', 'dept-hub-links');
+  clusterNodes.forEach(c => {
+    linkGroup.append('line')
+      .attr('x1', cx).attr('y1', cy).attr('x2', c.x).attr('y2', c.y)
+      .attr('stroke', '#cbd5e1').attr('stroke-width', 1.8).attr('opacity', 0.5)
+      .attr('data-cluster', c.id).attr('class', 'dept-hub-link');
+  });
+
+  /* ── Layer 3: Nodes ── */
   const nodeGroup = g.append('g').attr('class', 'dept-nodes');
 
-  clusters.forEach(c => {
-    const cg = nodeGroup.append('g').attr('class', `dept-cg dept-cg-${c.id}`).style('cursor', 'pointer');
+  // Hub center
+  const hubG = nodeGroup.append('g').attr('class', 'dept-hub-node').style('cursor', 'default');
+  hubG.append('circle').attr('cx', cx).attr('cy', cy).attr('r', 36)
+    .attr('fill', '#1e293b').attr('stroke', '#475569').attr('stroke-width', 2)
+    .attr('filter', 'url(#dshadow)');
+  hubG.append('text').attr('x', cx).attr('y', cy - 5).attr('text-anchor', 'middle')
+    .attr('fill', 'white').attr('font-size', '12px').attr('font-weight', '700').text('SterileGMP');
+  hubG.append('text').attr('x', cx).attr('y', cy + 11).attr('text-anchor', 'middle')
+    .attr('fill', '#94a3b8').attr('font-size', '9px').text('Knowledge Hub');
 
-    cg.append('circle').attr('cx', c.x).attr('cy', c.y).attr('r', 32)
-      .attr('fill', c.color).attr('stroke', 'white').attr('stroke-width', 3)
+  // Department nodes
+  clusterNodes.forEach(c => {
+    const cg = nodeGroup.append('g').attr('class', `dept-cg dept-cg-${c.id}`).style('cursor', 'pointer');
+    cg.append('circle').attr('cx', c.x).attr('cy', c.y).attr('r', 28)
+      .attr('fill', c.color).attr('stroke', 'white').attr('stroke-width', 2.5)
       .attr('filter', 'url(#dshadow)');
 
     // Icon
-    cg.append('text').attr('x', c.x).attr('y', c.y - 3).attr('text-anchor', 'middle')
-      .attr('font-size', '18px').text(c.icon);
+    cg.append('text').attr('x', c.x).attr('y', c.y + 6).attr('text-anchor', 'middle')
+      .attr('font-size', '16px').text(c.icon);
 
-    // Topic count badge (top-right)
-    cg.append('circle').attr('cx', c.x + 22).attr('cy', c.y - 22).attr('r', 12)
+    // Doc count badge (top-right)
+    cg.append('circle').attr('cx', c.x + 20).attr('cy', c.y - 20).attr('r', 11)
       .attr('fill', 'white').attr('stroke', c.color).attr('stroke-width', 1.5);
-    cg.append('text').attr('x', c.x + 22).attr('y', c.y - 18).attr('text-anchor', 'middle')
-      .attr('font-size', '9px').attr('font-weight', '700').attr('fill', c.color)
-      .text(c.subtopics.length);
+    cg.append('text').attr('x', c.x + 20).attr('y', c.y - 16).attr('text-anchor', 'middle')
+      .attr('font-size', '9px').attr('font-weight', '700').attr('fill', c.color).text(c.count);
 
-    // Name labels (outside the ring)
-    const labelY = c.y > cy + 10 ? c.y + 48 : (c.y < cy - 10 ? c.y - 42 : c.y + 48);
+    // Name labels
+    const labelY = c.y > cy + 10 ? c.y + 44 : (c.y < cy - 10 ? c.y - 38 : c.y + 44);
     cg.append('text').attr('x', c.x).attr('y', labelY).attr('text-anchor', 'middle')
       .attr('font-size', '11px').attr('font-weight', '700').attr('fill', '#1e293b').text(c.name);
     if (c.nameZh) {
@@ -287,7 +308,7 @@ function renderDeptNetwork(reports) {
       .on('click', e => { e.stopPropagation(); showDeptTooltip(c, e); });
   });
 
-  /* ── Highlight: hover dept ── */
+  /* ── Highlight: hover dept node ── */
   function highlightDept(deptId) {
     const connected = new Set([deptId]);
     network.crossLinks.forEach(cl => {
@@ -296,69 +317,72 @@ function renderDeptNetwork(reports) {
     });
     g.selectAll('.dept-cg').style('opacity', 0.1);
     connected.forEach(cId => g.selectAll(`.dept-cg-${cId}`).style('opacity', 1));
-    g.selectAll('.dept-edge').style('opacity', 0.04);
-    g.selectAll('.dept-edge-label').style('opacity', 0);
-    g.selectAll('.dept-edge').each(function() {
+    g.selectAll('.dept-hub-link').style('opacity', 0.04);
+    g.selectAll(`.dept-hub-link[data-cluster="${deptId}"]`).style('opacity', 0.5);
+    g.selectAll('.dept-cross-path').style('opacity', 0.03);
+    g.selectAll('.dept-cross-label').style('opacity', 0);
+    g.selectAll('.dept-cross-path').each(function() {
       const el = d3.select(this);
       const src = el.attr('data-source'), tgt = el.attr('data-target');
       if (src === deptId || tgt === deptId) {
         const cl = network.crossLinks.find(c => (c.source === src && c.target === tgt) || (c.source === tgt && c.target === src));
         const str = cl ? cl.sharedCount / maxShared : 0.5;
-        el.style('opacity', 0.7 + str * 0.3)
-          .attr('stroke', clusterById[deptId].color)
-          .attr('stroke-width', 2 + str * 8);
+        el.style('opacity', 0.7 + str * 0.3).attr('stroke', clusterById[deptId].color).attr('stroke-width', 2 + str * 7);
       }
     });
-    g.selectAll('.dept-edge-label').each(function() {
+    g.selectAll('.dept-cross-label').each(function() {
       const el = d3.select(this);
-      if (el.attr('data-source') === deptId || el.attr('data-target') === deptId)
-        el.style('opacity', 1);
+      if (el.attr('data-source') === deptId || el.attr('data-target') === deptId) el.style('opacity', 1);
     });
+    g.selectAll('.dept-hub-node').style('opacity', 0.4);
   }
 
-  /* ── Highlight: hover edge ── */
-  function highlightEdge(cl, s, t) {
-    const str = cl.sharedCount / maxShared;
+  /* ── Highlight: hover arc ── */
+  function highlightArc(cl, s) {
     g.selectAll('.dept-cg').style('opacity', 0.1);
     g.selectAll(`.dept-cg-${cl.source}`).style('opacity', 1);
     g.selectAll(`.dept-cg-${cl.target}`).style('opacity', 1);
-    g.selectAll('.dept-edge').style('opacity', 0.04);
-    g.selectAll('.dept-edge-label').style('opacity', 0);
-    g.selectAll('.dept-edge').each(function() {
+    g.selectAll('.dept-cross-path').style('opacity', 0.03);
+    g.selectAll('.dept-cross-label').style('opacity', 0);
+    g.selectAll('.dept-cross-path').each(function() {
       const el = d3.select(this);
       if (el.attr('data-source') === cl.source && el.attr('data-target') === cl.target) {
-        el.style('opacity', 1).attr('stroke', s.color).attr('stroke-width', 3 + str * 9);
+        const str = cl.sharedCount / maxShared;
+        el.style('opacity', 1).attr('stroke', s.color).attr('stroke-width', 3 + str * 8).attr('stroke-dasharray', 'none');
       }
     });
-    g.selectAll('.dept-edge-label').each(function() {
+    g.selectAll('.dept-cross-label').each(function() {
       const el = d3.select(this);
-      if (el.attr('data-source') === cl.source && el.attr('data-target') === cl.target)
-        el.style('opacity', 1);
+      if (el.attr('data-source') === cl.source && el.attr('data-target') === cl.target) el.style('opacity', 1);
     });
+    g.selectAll('.dept-hub-node').style('opacity', 0.4);
   }
 
   /* ── Clear highlight ── */
   function clearDeptHighlight() {
     g.selectAll('.dept-cg').style('opacity', 1);
-    g.selectAll('.dept-edge').each(function() {
+    g.selectAll('.dept-hub-link').style('opacity', 0.5);
+    g.selectAll('.dept-cross-path').each(function() {
       const el = d3.select(this);
       const src = el.attr('data-source'), tgt = el.attr('data-target');
       const cl = network.crossLinks.find(c => (c.source === src && c.target === tgt) || (c.source === tgt && c.target === src));
       if (cl) {
         const str = cl.sharedCount / maxShared;
-        el.style('opacity', 0.12 + str * 0.38).attr('stroke', '#94a3b8').attr('stroke-width', 1.5 + str * 7);
+        el.style('opacity', 0.12 + str * 0.38).attr('stroke', '#94a3b8')
+          .attr('stroke-width', 1.5 + str * 6).attr('stroke-dasharray', str > 0.6 ? 'none' : '6,4');
       }
     });
-    g.selectAll('.dept-edge-label').style('opacity', 0);
+    g.selectAll('.dept-cross-label').style('opacity', 0);
+    g.selectAll('.dept-hub-node').style('opacity', 1);
+    hideTooltip();
   }
 
-  /* ── Dept tooltip ── */
+  /* ── Dept tooltip: topic areas grouped by cluster ── */
   function showDeptTooltip(c, event) {
     document.getElementById('ttTitle').textContent = `${c.icon} ${c.name}`;
     document.getElementById('ttCount').textContent = `${c.subtopics.length} topics · ${c.count} docs`;
     const container = document.getElementById('ttDocs');
     container.innerHTML = '';
-    // Group subtopics by cluster
     const byCluster = {};
     c.subtopics.forEach(s => {
       if (!byCluster[s.clusterName]) byCluster[s.clusterName] = { color: s.clusterColor, topics: [] };
@@ -368,14 +392,14 @@ function renderDeptNetwork(reports) {
       const div = document.createElement('div');
       div.style.cssText = 'margin-bottom:6px;';
       div.innerHTML = `<span style="background:${cl.color}22;color:${cl.color};padding:1px 6px;border-radius:3px;font-size:9px;font-weight:600;display:inline-block;margin-bottom:2px">${clName}</span><br>
-        <span style="font-size:10px;color:#475569;line-height:1.4">${cl.topics.join(' · ')}</span>`;
+        <span style="font-size:10px;color:#475569;line-height:1.5">${cl.topics.join(' · ')}</span>`;
       container.appendChild(div);
     });
     positionTooltip(event);
   }
 
-  /* ── Edge tooltip ── */
-  function showEdgeTooltip(cl, s, t, event) {
+  /* ── Arc tooltip: shared topics list ── */
+  function showArcTooltip(cl, s, t, event) {
     document.getElementById('ttTitle').textContent = `${s.icon} ${s.name} ↔ ${t.icon} ${t.name}`;
     document.getElementById('ttCount').textContent = `${cl.sharedCount} shared topics`;
     const container = document.getElementById('ttDocs');
@@ -387,7 +411,7 @@ function renderDeptNetwork(reports) {
     (cl.sharedTopics || []).forEach(st => {
       const div = document.createElement('div');
       div.className = 'tt-doc';
-      div.innerHTML = `<span class="tt-src" style="background:${st.color}22;color:${st.color}">${st.clusterName.slice(0,4)}</span>
+      div.innerHTML = `<span class="tt-src" style="background:${st.color}22;color:${st.color}">${st.clusterName.slice(0, 4)}</span>
         <span class="tt-doc-title">${st.name}</span>`;
       container.appendChild(div);
     });
@@ -408,7 +432,7 @@ function renderDeptNetwork(reports) {
   requestAnimationFrame(() => {
     const bounds = g.node().getBBox();
     const pad = 80;
-    const scale = Math.min(width / (bounds.width + pad * 2), (height - 60) / (bounds.height + pad * 2), 1.1);
+    const scale = Math.min(width / (bounds.width + pad * 2), (height - 60) / (bounds.height + pad * 2), 1.2);
     const tx = width / 2 - (bounds.x + bounds.width / 2) * scale;
     const ty = (height + 50) / 2 - (bounds.y + bounds.height / 2) * scale;
     svg.call(zoom.transform, d3.zoomIdentity.translate(tx, ty).scale(scale));
@@ -736,10 +760,10 @@ function updateLegend(view) {
         `<div><span class="legend-dot" style="background:${d.color}"></span>${d.icon} ${d.name}</div>`
       ).join('')}
       <div style="margin-top:8px;border-top:1px solid var(--c-border);padding-top:6px">
-        <div><span class="legend-line-solid"></span>Shared topics (thicker = more)</div>
+        <div><span class="legend-line"></span>Shared topics (thicker = more)</div>
       </div>
       <div style="margin-top:4px;color:var(--c-tertiary);font-size:10px">
-        Hover dept or line to highlight · Click for details · Badge = topic count
+        Hover to highlight · Click dept or arc for details
       </div>`;
   } else if (view === 'topic') {
     legend.innerHTML = `
