@@ -313,7 +313,7 @@ function renderDeptNetwork(reports) {
       .on('click', e => { e.stopPropagation(); toggleDept(c.id); });
   });
 
-  // Sub-nodes (Tier 1 required docs, initially hidden)
+  // Sub-nodes (Annex 1 responsibility sections, initially hidden)
   subtopicNodes.forEach(s => {
     const sg = nodeGroup.append('g').attr('class', `dept-sg dept-sg-${s.parentId}`)
       .style('cursor', 'pointer').style('opacity', 0).style('pointer-events', 'none');
@@ -822,8 +822,7 @@ function updateStats(view) {
   const total = Object.values(reportsData).filter(r => r.section_map && r.section_map.length).length;
   if (view === 'dept') {
     const network = buildDeptNetwork(reportsData);
-    const totalCurriculum = departments.reduce((s, d) => s + d.tiers.reduce((s2, t) => s2 + t.docs.length, 0), 0);
-    stats.textContent = `${departments.length} departments · ${network.crossLinks.length} cross-connections · ${totalCurriculum} curated readings`;
+    stats.textContent = `${departments.length} departments · ${annex1Responsibilities.length} Annex 1 sections · ${network.crossLinks.length} shared responsibilities`;
   } else if (view === 'topic') {
     const nSubs = topicNetworkDef.clusters.reduce((s, c) => s + c.subtopics.length, 0);
     const nLinks = topicNetworkDef.crossLinks.length;
