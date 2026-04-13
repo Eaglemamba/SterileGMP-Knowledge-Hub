@@ -705,6 +705,85 @@ const topicNetworkDef = {
   ]
 };
 
+/* ── PIC/S Annex 1 responsibility matrix ──────────────────────────── */
+const annex1Responsibilities = [
+  {
+    id: 'a1-3', num: '§3', name: 'Pharmaceutical Quality System', nameZh: '藥品品質系統',
+    desc: 'PQS design, CCS ownership, QRM integration, self-inspection',
+    depts: ['qa', 'ra'],
+  },
+  {
+    id: 'a1-4', num: '§4', name: 'Premises & CCS', nameZh: '廠房設施與污染控制策略',
+    desc: 'Facility design, cleanroom zoning, CCS implementation, pressure cascades',
+    depts: ['engineering', 'qa', 'production'],
+  },
+  {
+    id: 'a1-5', num: '§5', name: 'Equipment', nameZh: '設備',
+    desc: 'Equipment design, qualification (IQ/OQ/PQ), maintenance, calibration',
+    depts: ['engineering', 'production', 'techservice'],
+  },
+  {
+    id: 'a1-6', num: '§6', name: 'Utilities', nameZh: '公用系統',
+    desc: 'WFI, purified water, HVAC, compressed gases — design, qualification, monitoring',
+    depts: ['engineering'],
+  },
+  {
+    id: 'a1-7', num: '§7', name: 'Personnel & Training', nameZh: '人員與培訓',
+    desc: 'Gowning qualification, aseptic technique, microbiological training, health monitoring',
+    depts: ['qa', 'production', 'qc'],
+  },
+  {
+    id: 'a1-8-aseptic', num: '§8.1', name: 'Aseptic Processing', nameZh: '無菌製造操作',
+    desc: 'Aseptic filling, media fills (APS), process simulation, aseptic interventions',
+    depts: ['production', 'qa', 'techservice'],
+  },
+  {
+    id: 'a1-8-isolator', num: '§8.2', name: 'Isolators & RABS', nameZh: '隔離器與限制系統',
+    desc: 'Isolator/RABS design, bio-decontamination (VPHP), glove integrity',
+    depts: ['production', 'engineering'],
+  },
+  {
+    id: 'a1-8-bfs', num: '§8.3–8.4', name: 'BFS / FFS Technologies', nameZh: 'BFS/FFS 技術',
+    desc: 'Blow-Fill-Seal, Form-Fill-Seal — process validation, in-process controls',
+    depts: ['production', 'engineering'],
+  },
+  {
+    id: 'a1-8-lyo', num: '§8.5', name: 'Lyophilization', nameZh: '凍乾製程',
+    desc: 'Freeze-drying cycle development, transfer, qualification, container closure post-lyo',
+    depts: ['production', 'engineering', 'techservice'],
+  },
+  {
+    id: 'a1-8-atmp', num: '§8.7', name: 'ATMP & Biological Products', nameZh: '先進治療與生物製品',
+    desc: 'Cell/gene therapy, viral vectors, biosafety containment, dedicated facilities',
+    depts: ['bt', 'qa', 'engineering'],
+  },
+  {
+    id: 'a1-9', num: '§9', name: 'Environmental Monitoring', nameZh: '環境監測',
+    desc: 'EM program design, viable/non-viable particle sampling, trending, OOT/OOS investigation',
+    depts: ['qc', 'qa', 'production'],
+  },
+  {
+    id: 'a1-10', num: '§10', name: 'Sterilization', nameZh: '滅菌',
+    desc: 'Moist/dry heat, filtration, radiation, gas sterilization — cycle development & validation',
+    depts: ['engineering', 'production', 'qa', 'techservice'],
+  },
+  {
+    id: 'a1-11', num: '§11', name: 'QC Laboratory', nameZh: '品管實驗室',
+    desc: 'Sterility testing, BET/LAL, particulate matter, compendial method validation',
+    depts: ['qc', 'qa'],
+  },
+  {
+    id: 'a1-12', num: '§12', name: 'Logistics & Batch Release', nameZh: '物流與批次放行',
+    desc: 'Material receipt, quarantine, storage conditions, GDP, Qualified Person (QP) batch release',
+    depts: ['warehouse', 'qa', 'ra'],
+  },
+  {
+    id: 'a1-13', num: '§13', name: 'Contract Manufacture', nameZh: '委外生產',
+    desc: 'Technical agreements, CMO oversight, audit, supply chain quality assurance',
+    depts: ['qa', 'ra'],
+  },
+];
+
 /* ── Build network data from reports (counts docs per node) ────────── */
 function buildTopicNetwork(reports) {
   const clusters = topicNetworkDef.clusters.map(c => {
@@ -728,50 +807,38 @@ function buildTopicNetwork(reports) {
 
 /* ── Build department network via topic/subtopic overlap ───────────── */
 function buildDeptNetwork(reports) {
-  // Step 1: Tier 1 (Foundation) required docs per dept
-  const deptT1Docs = {};   // deptId → [{key, title, source, shortName, link, why}]
-  const deptAllCount = {}; // deptId → total resolved doc count (for badge)
-
+  // Step 1: total resolved doc count per dept (for badge display)
+  const deptAllCount = {};
   departments.forEach(dept => {
-    const tier1 = dept.tiers.find(t => t.level === 1);
-    const t1Docs = [];
-    let allCount = 0;
-    dept.tiers.forEach(tier => {
-      tier.docs.forEach(d => {
-        const r = reports[d.key];
-        if (!r || !r.section_map || !r.section_map.length) return;
-        allCount++;
-        if (tier.level === 1 && d.required) {
-          const source = (r.source || '').split(' ')[0];
-          const link = (r.folder && r.output_filename) ? `${r.folder}/output/${r.output_filename}` : null;
-          t1Docs.push({ key: d.key, title: r.title || d.key, source, shortName: source || d.key, link, why: d.why });
-        }
-      });
-    });
-    deptT1Docs[dept.id] = t1Docs;
-    deptAllCount[dept.id] = allCount;
+    let n = 0;
+    dept.tiers.forEach(tier => tier.docs.forEach(d => {
+      const r = reports[d.key];
+      if (r && r.section_map && r.section_map.length) n++;
+    }));
+    deptAllCount[dept.id] = n;
   });
 
-  // Step 2: For each Tier 1 doc key, find all depts that require it
-  const docDeptMap = {}; // key → [{deptId, deptName, deptIcon, deptColor}]
-  departments.forEach(dept => {
-    deptT1Docs[dept.id].forEach(d => {
-      if (!docDeptMap[d.key]) docDeptMap[d.key] = [];
-      docDeptMap[d.key].push({ deptId: dept.id, deptName: dept.name, deptIcon: dept.icon, deptColor: dept.color });
-    });
+  // Step 2: for each Annex 1 section, build a dept coverage list
+  const sectionDeptMap = {}; // sectionId → [{deptId, deptName, deptIcon, deptColor}]
+  annex1Responsibilities.forEach(sec => {
+    sectionDeptMap[sec.id] = sec.depts
+      .map(dId => departments.find(d => d.id === dId))
+      .filter(Boolean)
+      .map(d => ({ deptId: d.id, deptName: d.name, deptIcon: d.icon, deptColor: d.color }));
   });
 
-  // Step 3: Build cluster nodes — sub-nodes are Tier 1 required docs
+  // Step 3: Build cluster nodes — sub-nodes are Annex 1 sections for that dept
   const nodes = departments.map(dept => {
-    const subtopics = deptT1Docs[dept.id].map(d => {
-      const coverage = docDeptMap[d.key] || [];
+    const mySections = annex1Responsibilities.filter(sec => sec.depts.includes(dept.id));
+    const subtopics = mySections.map(sec => {
+      const coverage = sectionDeptMap[sec.id];
       return {
-        id: `${dept.id}__${d.key}`,
-        docKey: d.key,
-        name: d.title,
-        shortName: d.shortName,
-        link: d.link,
-        why: d.why,
+        id: `${dept.id}__${sec.id}`,
+        sectionId: sec.id,
+        name: `${sec.num} ${sec.name}`,
+        shortName: sec.num,
+        nameZh: sec.nameZh,
+        desc: sec.desc,
         deptCoverage: coverage,
         count: coverage.filter(c => c.deptId !== dept.id).length,
       };
@@ -783,18 +850,19 @@ function buildDeptNetwork(reports) {
     };
   });
 
-  // Step 4: CrossLinks — dept pairs sharing ≥1 Tier 1 required doc
+  // Step 4: CrossLinks — dept pairs sharing ≥1 Annex 1 section
   const crossLinks = [];
   for (let i = 0; i < departments.length; i++) {
     for (let j = i + 1; j < departments.length; j++) {
       const dA = departments[i], dB = departments[j];
-      const keysA = new Set(deptT1Docs[dA.id].map(d => d.key));
-      const shared = deptT1Docs[dB.id].filter(d => keysA.has(d.key));
+      const shared = annex1Responsibilities.filter(sec =>
+        sec.depts.includes(dA.id) && sec.depts.includes(dB.id)
+      );
       if (shared.length >= 1) {
         crossLinks.push({
           source: dA.id, target: dB.id,
           label: `${shared.length} shared`, sharedCount: shared.length,
-          sharedDocs: shared.map(d => ({ key: d.key, title: d.title, source: d.source })),
+          sharedSections: shared.map(s => ({ num: s.num, name: s.name })),
         });
       }
     }
@@ -805,5 +873,5 @@ function buildDeptNetwork(reports) {
 
 /* ── Module export for Node.js tooling ────────────────────────────── */
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { departments, topicClusters, sourceOrgs, topicNetworkDef, buildTopicNetwork, buildDeptNetwork, generateDeptMarkdown, generateTopicMarkdown, generateSourceMarkdown };
+  module.exports = { departments, topicClusters, sourceOrgs, topicNetworkDef, annex1Responsibilities, buildTopicNetwork, buildDeptNetwork, generateDeptMarkdown, generateTopicMarkdown, generateSourceMarkdown };
 }
