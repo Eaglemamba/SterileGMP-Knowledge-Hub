@@ -2,7 +2,7 @@
 
 This document summarizes the current coverage status, gap analysis, and expansion roadmap for building a comprehensive sterile pharmaceutical manufacturing knowledge hub suitable for COO-level operational decision-making.
 
-Last updated: 2026-04-11 — 171 documents complete (PDA 41, USP 76, ISPE 14, FDA 6, ICH 6, PIC/S 4, ISO 17, Ph.Eur. 7); Added 21 CFR Subchapter F Biologics (Parts 600–680): 6 sections, web-sourced from eCFR/LII; Raw PDFs queue: 3 permanently blocked (OCR/encoding); Added 5 new 21 CFR chapter recommendations to roadmap (Parts 11, 210/211, 4, 312, 820)
+Last updated: 2026-04-13 — 172 documents complete (PDA 42, USP 76, ISPE 14, FDA 6, ICH 6, PIC/S 4, ISO 17, Ph.Eur. 7); Added TR80: Data Integrity Management System for Pharma Labs (7 sections, 0.48 MB); PtC Oxidation by Peroxide blocked (scanned PDF, OCR required); Mindmap By-Topic: ★ 必讀 badge added
 
 ---
 
@@ -44,7 +44,7 @@ Layer 3: Site-Specific Documents             ~/Amaran-Site-Knowledge/
 | Education Layer — Dashboard & Learning UI | ✅ Complete | 4 tools (index.html, learning-path.html, mindmap.html, quiz.html) |
 | Education Layer — Curriculum Data | ✅ Complete | 8 departments × 3 tiers (gmp-curriculum-data.js) |
 | Education Layer — Quiz System | ✅ Complete | /quiz skill + quiz.html tracker + knowledge/exams/ bank |
-| Layer 1 — Regulatory Reference | ✅ Complete | 170 documents |
+| Layer 1 — Regulatory Reference | ✅ Complete | 172 documents |
 | Expert Knowledge Base | ⬜ Not started | 9 files planned |
 | Layer 2 — Operational Frameworks | ⬜ Not started | ~27 files planned |
 | Layer 2 — Skills System | ⬜ Not started | 26 slash commands planned |
@@ -57,18 +57,22 @@ Layer 3: Site-Specific Documents             ~/Amaran-Site-Knowledge/
 1. ~~**PICS-Annex15**~~ ✅ **Done 2026-04-09** — 3 sections generated (p211-p226), merged, reports.json + INDEX.md + INDEX-router.md updated. PIC/S set complete at 4 documents.
 2. ~~**ICH Q12/Q13/Q14**~~ ✅ **Done 2026-04-10** — ICH Q12 (6 sections, lifecycle management/ECs/PACMP), ICH Q13 (5 sections, continuous manufacturing/CPV/RTD), ICH Q14 (5 sections, analytical procedure development/ATP/MODR/RTRT) — all merged, knowledge MDs regenerated, INDEX.md + INDEX-router.md updated. ICH set now at 6 documents (170 total).
 3. ~~**21 CFR 600–680 Biologics**~~ ✅ **Done 2026-04-11** — 6 sections, web-sourced from eCFR/LII (no PDF). Covers: BLA licensing, establishment standards, lot release trilogy (sterility/purity/potency/identity), labeling, deviation reporting, CDMO compliance matrix. FDA set now at 6 documents (171 total).
+4. ~~**PDA TR80**~~ ✅ **Done 2026-04-13** — Data Integrity Management System for Pharma Labs (2018) — 7 sections (0.48 MB), merged, reports.json + INDEX.md + INDEX-router.md updated. PDA set now at 42 documents (172 total).
 4. **Expert Knowledge Base** — start with SA25 lifecycle (`#1`) or Lyo ANDA end-to-end (`#2`); see full plan below
-4. **Layer 2 Operational Frameworks** — P0 skills first (`/deviation`, `/change-control`) with supporting templates
-5. **Layer 1 additions requiring new PDFs** — ISO 14644-2/3, ISO 17665, PDA TR36, FDA Container Closure / Terminal Sterilization *(USP `<1229>` sub-series: ✅ complete 2026-04-09; 21 CFR 600-680: ✅ complete 2026-04-11)*
+5. **Layer 2 Operational Frameworks** — P0 skills first (`/deviation`, `/change-control`) with supporting templates
+6. **Layer 1 additions requiring new PDFs** — ISO 14644-2/3, ISO 17665, PDA TR36, FDA Container Closure / Terminal Sterilization *(USP `<1229>` sub-series: ✅ complete 2026-04-09; 21 CFR 600-680: ✅ complete 2026-04-11)*
 6. **21 CFR additional chapters** — see Phase 4/5 entries in Remaining Layer 1 Additions table below
 7. **Layer 3** — resume SOP desensitization via `~/Amaran-AI-SOP/`; human review required per document
 
-> **Raw PDFs queue status (2026-04-09):**
+> **Raw PDFs queue status (2026-04-13):**
 > - ✅ **Done:** `pe-009-17-gmp-guide-annexes.pdf` — PICS-Annex15 complete; PDF moved to `Raw pdfs/processed/`
+> - ✅ **Done:** `Q12_Guideline_Step4_2019_1119.pdf` — ICH Q12 complete 2026-04-10; PDF in `Raw pdfs/processed/` (⚠️ duplicate also in `Raw pdfs/` — remove)
+> - ✅ **Done:** 21 CFR 600-680 — web-sourced from eCFR/LII 2026-04-11 (no PDF needed)
+> - ✅ **Done:** `PDA_TR80_Data Integrity Management System for Pharmaceutical Laboratories.pdf` — TR80 complete 2026-04-13; 7 sections (0.48 MB); PDF moved to `Raw pdfs/processed/`
+> - ❌ **Blocked — scanned PDF (OCR required):** `PDA_Point to Consider for Sensitivity to Oxidation by Peroxide_2020.pdf` — 24 pages; only references page (p21) has extractable text; topic: VPHP/H₂O₂ residues in isolators → protein oxidation risk in mAb aseptic filling
 > - ❌ **Blocked — OCR required:** `ISPE-Good Engineering Practice.pdf`
 > - ❌ **Blocked — scanned PDF:** `N. BS EN ISO14971_2019.pdf`
 > - ❌ **Blocked — font encoding failure:** `CEN EN ISO 15225.pdf`
-> - 📋 **To-Do (no PDF yet):** 21 CFR 600-680 — Biological Products regulations
 
 ---
 
@@ -138,7 +142,7 @@ Interactive D3.js + Markmap-powered visualization of the entire knowledge base. 
 |------|-------------|
 | By Department | Shows 8 department tracks with Foundation → Core → Advanced hierarchy |
 | By Topic | Groups documents into 10 thematic clusters (Aseptic Processing, Sterilization & Filtration, Container Closure, Quality Systems, Environmental Monitoring, Testing Methods, Facilities & Utilities, Advanced Therapies, Regulatory & Compliance, Emerging Technologies) |
-| By Source | Organizes all 167 documents by issuing organization (PDA, ISPE, FDA, ICH, PIC/S, USP, ISO, Ph.Eur.) |
+| By Source | Organizes all 172 documents by issuing organization (PDA, ISPE, FDA, ICH, PIC/S, USP, ISO, Ph.Eur.) |
 
 ### gmp-curriculum-data.js — Curriculum Data File
 

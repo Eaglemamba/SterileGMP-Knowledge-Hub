@@ -159,7 +159,11 @@ Use these mappings to translate user questions before routing:
 | Topic | ★★★ Primary (section hint) | ★★ Secondary |
 |---|---|---|
 | Risk assessment / FMEA | ICH-Q9R1 (§1-§3 Framework, §Annex I Tools) · TR60 · TR54-6 §6A-§6B | TR22, TR84, TR68 |
-| Data integrity / ALCOA+ | TR84 (§2-§4 Framework, §6a-§6b Examples) | ISPE-GAMP5 |
+| Data integrity / ALCOA+ (manufacturing) | TR84 (§2-§4 Framework, §6a-§6b Examples) | ISPE-GAMP5 |
+| Data integrity — QC lab / ALCS / chromatography | TR80 (§1 Intro+Glossary, §4a ALCS, §4b Audit Trails) | TR84 |
+| Data integrity — microbiology lab / EM / sterility | TR80 (§2 Micro Lab) | TR88 |
+| Hybrid system DI / spreadsheet validation / LDMS | TR80 (§3 Hybrid, §5 LDMS) | TR84 |
+| DI breach remediation / CAPA / DI investigation | TR80 (§6 Risk+Remediation) | TR84 |
 | CSV / computer validation | ISPE-GAMP5 (§0-§2 Lifecycle, §3-§4 Planning) · TR84 | ISPE-IT, ISPE-Vol5 |
 | IT infrastructure / GxP IT | ISPE-IT (§0-§3 Qualification, §4-§7 Appendices) | ISPE-GAMP5 §4 |
 | AI/ML in pharma | ISPE-GAMP5 §6 (App D11) | — |
