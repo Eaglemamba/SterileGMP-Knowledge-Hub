@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TR80 - Section 4a: ALCS Qualification &amp; Data Operations</title>
+    <link rel="stylesheet" href="../../../template.css">
+</head>
+<body>
+
+<div class="header">
+    <h1>Section 6.3–6.3.7: ALCS — Qualification, Data Governance &amp; Processing</h1>
+    <div class="subtitle">ALCS 資格確認、數據治理與處理</div>
+    <div class="page-info">PDA Technical Report No. 80 (2018) | p23 - p34</div>
+</div>
+
+<div class="main-container">
+
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解分析實驗室電腦化系統（ALCS）的定義、範圍與資格確認要求，包括伺服器與雲端環境</li>
+        <li>掌握商業現成（COTS）軟體驗證的要點及必要控制措施，並了解其與 21 CFR Part 11 的關聯</li>
+        <li>識別數據生成與注射序列中的數據完整性風險，包括「試注射」與「testing into compliance」的法規違規定義</li>
+        <li>理解峰值積分（Peak Integration）的正確操作方式、手動積分的限制條件，以及積分操作如何構成數據造假</li>
+        <li>掌握 Figure 6.3-1 數據流與稽核軌跡架構，以及 Figure 6.3.5-1 層析分析典型數據流的意涵</li>
+    </ul>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- SECTION 6.3 — ALCS Definition and Scope                       -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
+<div class="section-title">6.3 Analytical Laboratory Computerized Systems (ALCS)</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>In addition, any computer system attached to analytical equipment should not be accessible for general purposes, such as generating SOPs or checking email. Personal mobile devices also should not be permitted to be connected to analytical equipment to avoid infecting the computer with a virus and causing it to crash.</p>
+
+        <p>Figure 6.3-1 illustrates one example of a typical data flow and configuration which includes a remote data center. In a smaller laboratory setting, the configuration could be much simpler with a desktop connected directly to the chromatography instruments. Some configurations do not use temporary storage but send raw data directly to the data center/file server. The system configuration will determine how audit trails are established and reviewed, which is discussed in greater detail in Section 6.3.9.</p>
+
+        <div class="figure-container">
+            <div class="note-box" style="text-align:left;">
+                <h4>Figure 6.3-1 — Sample Data Flow and Audit Trail Points in an ALCS</h4>
+                <p><em>[Diagram]</em> This figure depicts a typical ALCS configuration. Chromatography instruments generate raw data which flows through an interface to a laboratory desktop. Metadata and instrument control parameters are transmitted to a file server. Data is then sent to central servers for storage and backup. Review of system audit trails occurs periodically per firm procedures. Results and associated data are stored at the central server. A separate Site QA central server holds finalized results; results audit trails are reviewed before batch release.</p>
+            </div>
+            <p class="figure-caption">Figure 6.3-1: Sample Data Flow and Audit Trail Points in an ALCS (TR80, p23)</p>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：ALCS 是什麼？</h4>
+            <p><strong>分析實驗室電腦化系統（Analytical Laboratory Computerized Systems, ALCS）</strong>指用於操控儀器、採集數據、處理結果的軟硬體整合系統，典型例子是 HPLC 或 GC 與層析數據系統（CDS）的組合。</p>
+            <p>ALCS 的核心數據完整性風險在於：從儀器產生原始訊號，到結果報告，中間每一個環節都可能遭到非預期的變更或蓄意操作。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：ALCS 就像監控攝影機</h4>
+            <p>想像 ALCS 是一台監控攝影機系統。儀器是攝影機（產生原始影像），伺服器是儲存硬碟，審查員是安全人員，稽核軌跡是時間戳記記錄。若攝影機連接在一般電腦上，任何人都能用同一台電腦打開瀏覽器、刪改影片——這就是 GMP 明確禁止的情境。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>Figure 6.3-1 的數據完整性意涵</h4>
+            <p>圖中顯示三個稽核軌跡審查點：</p>
+            <ul>
+                <li><strong>儀器端</strong>：由介面記錄原始數據、方法參數與元數據</li>
+                <li><strong>桌機/文件伺服器端</strong>：定期審查系統稽核軌跡（依公司程序）</li>
+                <li><strong>Site QA 中央伺服器端</strong>：批次放行前審查結果稽核軌跡</li>
+            </ul>
+            <p>此分層架構確保原始數據無法在「到達 QA 之前」被悄悄修改，任何未被記錄的異動均屬數據完整性違規。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>思考練習</h4>
+            <p>若實驗室分析員習慣在 HPLC 電腦上處理電子郵件，可能產生哪些數據完整性風險？稽核員在 FDA 查廠時會如何評估這個問題？</p>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- SECTION 6.3.1 — Server / Virtual System Qualification         -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
+<div class="section-title">6.3.1 Qualification of Computer Server and/or Virtual System</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Software verification provides objective evidence that the design output of a specific phase of a software development lifecycle will meet all the requirements for that phase of the application's development. Software verification looks for consistency, completeness, and correctness of the software and its supporting documentation.</p>
+
+        <p>Typically, an ALCS is designed to run on a local computer or, often, several ALCS could be connected to a centralized server. That server could be hosted from another building, from a remote site, or from a third-party hosting site, often referred to as a virtual system or "Cloud" system. Whether the server is housed locally or in the Cloud, the requirement exists that the server must be qualified to demonstrate that it is fit for use and able to support the software in a compliant environment related to all applicable regulations. Testing this premise of control is an expectation from all major health authorities.</p>
+
+        <p>The intended functionality of the server must be qualified to ensure data transmitted, processed, and maintained is as accurate as the originally generated data, and that the audit trail capabilities remain enabled to ensure authenticity and integrity of the electronic data. Network mapping, fitness for intended use, and functional testing are basic criteria for any server qualification.</p>
+
+        <p>The following are recommended components of server qualification:</p>
+        <ul>
+            <li>Assign the system a unique identification number</li>
+            <li>Locate the server in a secured environment</li>
+            <li>Restrict access to the physical location of server</li>
+            <li>Document the operating system details and version number</li>
+            <li>Qualify the server for its intended use and controls that prevent misuse</li>
+            <li>Map the network and perform functional testing</li>
+            <li>Define the periods to update applications, operating system, and antivirus software</li>
+            <li>Control remote access appropriately (e.g., maintenance or system upgrades)</li>
+        </ul>
+
+        <p>As a result of Cloud technology, software-as-a-service (SaaS) is becoming a common offering by software vendors. An SaaS environment offers pharmaceutical companies many benefits; however, they must understand that, ultimately, as the end user, the pharmaceutical company is responsible for the appropriate use and the control of this technology. Consequently, a detailed service level agreement (SLA) between the SaaS hosting company and the end user is needed to clearly define the roles and responsibilities of each party particularly to satisfy each regulatory requirement. Such an agreement details information about the vendor, the physical and logistical security of the facility, and the security of the firewall and firewall monitoring for possible cyberattack. It should also include any other elements to ensure the environment is well controlled for the application's use, including data back-ups, application response times, and support response times. Appropriate metrics that can be used to monitor the SaaS hosting company's ability to meet the established expectations of the SLA should be maintained. Both companies should devise a contingency plan to ensure against loss of data in the event of network outage, hardware failure, or a cyber event and conduct a routine and detailed audit of the SaaS application and the hosting environment at a frequency determined based on risk. The ultimate responsibility remains with the pharmaceutical laboratory, including the review of audit trails, backup logs, change controls, and system administration controls to assure that only appropriate users are accessing the system.</p>
+
+        <p>A clear advantage for the use of SaaS applications is that, typically, the buyer can use much of the vendor's documentation for installation qualification (IQ) and operational qualification (OQ) and the vendor provides test scripts for the standard out-of-the-box functionality. This may reduce the documentation required by the company buying the services to test unique features or user-defined configurations. When the application is ready for use, the end-user company performs the user acceptance testing that certifies the system meets the agreed-upon requirements and is fit for use in the company environment. It is important to note that this approach does not alleviate the regulatory requirement for the end user to assure a compliant use of the system.</p>
+
+        <p>Pharma companies (end users) can also host the company-owned regulated systems in a third party's Cloud environment. This scenario allows a third party to run a company's application in a virtualized server in the third party's data center. The regulated company must still assure compliance in the third party's environment, but this allows the regulated company to focus more on its own core business rather than staffing the complex environment of a regulated data center.</p>
+
+        <p>As with an SaaS system, a detailed SLA must be established with the third party's data center detailing information about the vendor, the physical and logistical security of the facility, and the security of the firewall and firewall monitoring for possible cyberattack. The agreement should include any other elements that ensure the environment is well controlled for the application's use. The end-user company should devise a contingency plan to ensure against loss of data in the event of network outage or hardware failure and conduct a detailed audit of a Cloud system and application vendor at least once a year. As with SaaS, the end-user company should perform user acceptance testing of the vendor's application hosted in the vendor's Cloud to certify that the application is fit for use in the company's environment.</p>
+
+        <p><em>Additional information on Cloud and SaaS qualification can be found in the COBIT framework created by ISACA (40) and in ITIL® books (41).</em></p>
+
+        <p>Several different health authorities have published guidances and regulations that set out their expectations for system qualification and software validation. Consensus standards are also available in some areas. Table 6.3.1-1 provides a cross-reference of key terms related to automated systems and the regulations, guidances, or standards that specify the expectations.</p>
+
+        <h3>Table 6.3.1-1: Key Terms and References for Automated Systems Requirements</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Reference Term</th>
+                    <th>FDA 21 CFR Part 11</th>
+                    <th>FDA Part 820</th>
+                    <th>EU Annex 11</th>
+                    <th>ICH Q7</th>
+                    <th>GAMP 5</th>
+                    <th>WHO DI (Draft)</th>
+                    <th>ISO 13485:2016</th>
+                    <th>COBIT 5</th>
+                    <th>MHRA GxP Data Integrity Guidance</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Audit Trail</td>
+                    <td>Part 11.10(e)</td>
+                    <td>—</td>
+                    <td>Section No. 9</td>
+                    <td>5.43</td>
+                    <td>5.4; 13.7; 6.6</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>BAI07</td>
+                    <td>6.13</td>
+                </tr>
+                <tr>
+                    <td>Change and Configuration Management</td>
+                    <td>Part 11.10(k)</td>
+                    <td>820.70(i)</td>
+                    <td>Section No. 10</td>
+                    <td>5.43; 5.47</td>
+                    <td>8.6; 13.6</td>
+                    <td>4.1.6</td>
+                    <td>6.1</td>
+                    <td>BAI06</td>
+                    <td>6.16; 6.17.2; 6.19</td>
+                </tr>
+                <tr>
+                    <td>Data Backup</td>
+                    <td>Part 11.10(c)</td>
+                    <td>820.180</td>
+                    <td>Section No. 7.2</td>
+                    <td>5.48</td>
+                    <td>5.4; 11.2; 13.3; 13.7</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>DSS04</td>
+                    <td>6.17; 6.17.2</td>
+                </tr>
+                <tr>
+                    <td>Data Encryption</td>
+                    <td>Part 11.10(h)</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>DSS05</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>Data Exchange</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>Section No. 4.8</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>BAI07</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>Disaster Recovery</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>3.2; 13.11</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>BAI07; DSS04</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>Electronic Media Management</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>14.2</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>DSS06</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>Incident and Problem Management</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>5.46</td>
+                    <td>11.2; 13.12</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>DSS02, DSS03</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>Infrastructure Monitoring</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>6.11; 6.3</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>DSS01</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>Network Connectivity</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>DSS01</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>Periodic Review</td>
+                    <td>Part 11.300(b)&amp;(c); Part 11.10(k)</td>
+                    <td>—</td>
+                    <td>Section No. 11</td>
+                    <td>12.60</td>
+                    <td>13.12</td>
+                    <td>7.2.2</td>
+                    <td>—</td>
+                    <td>MEA01</td>
+                    <td>6.2; 6.15; 6.17.1</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：伺服器資格確認 vs. 軟體驗證</h4>
+            <p><strong>軟體驗證（Software Validation）</strong>：確認軟體的功能符合使用者需求，通常包含 IQ/OQ/PQ。</p>
+            <p><strong>伺服器資格確認（Server Qualification）</strong>：確認硬體/作業環境本身能夠支持受管制的軟體運作。兩者缺一不可——伺服器資格確認是軟體驗證的「地基」。</p>
+            <p>TR80 的核心主張：<em>不論伺服器在本地機房還是雲端，資格確認要求完全相同。</em></p>
+        </div>
+
+        <div class="note-box">
+            <h4>雲端／SaaS 的責任歸屬——法規關鍵點</h4>
+            <p>TR80 明確指出：<strong>最終責任仍在藥廠（end user）</strong>。即使將系統委外給 SaaS 供應商，藥廠仍須：</p>
+            <ul>
+                <li>審查稽核軌跡、備份日誌、變更控制</li>
+                <li>執行使用者接受測試（UAT）</li>
+                <li>建立詳細服務等級協議（SLA）</li>
+                <li>每年至少一次稽核雲端供應商</li>
+                <li>制定資料遺失的應急計畫</li>
+            </ul>
+            <p>常見的 483/Warning Letter 引用點：「委外給 IT 廠商就等於不需要驗證」——此認知完全錯誤。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：SLA 就像租房合約</h4>
+            <p>SaaS 就像向房東租用儲存空間。無論房東多可靠，你的資產（數據）一旦遺失或被非法存取，責任仍在你（藥廠），而不是房東。SLA 就是租約，需清楚定義雙方責任、維護時間、緊急聯絡方式。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>Table 6.3.1-1 的使用方式</h4>
+            <p>此交叉參照表的實務價值：在撰寫電腦化系統驗證（CSV）計畫時，可直接查詢特定控制要素（如稽核軌跡、數據備份）在各法規框架中的對應條款，避免遺漏。</p>
+            <p>例如：若公司同時需符合 FDA 21 CFR Part 11 與 EU Annex 11，則稽核軌跡需分別符合 Part 11.10(e) 與 Annex 11 Section 9 的要求。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>思考練習</h4>
+            <p>你的 HPLC 系統使用 SaaS 型層析數據系統，供應商告知「他們已完成 IQ/OQ，不需要藥廠再次驗證」。請問：</p>
+            <ul>
+                <li>此說法從法規角度是否正確？</li>
+                <li>藥廠至少還需完成哪些步驟才算符合法規要求？</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- SECTION 6.3.2 — COTS Software Validation                      -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
+<div class="section-title">6.3.2 Commercial Off-the-Shelf (COTS) Software Validation for HPLC, GC, and Other Instrument Operations</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Most commercial off-the-shelf (COTS) software includes formal, structural testing and a compliance certificate from the vendor, who has the proprietary source code. Once the system is installed, the purchasing laboratory must configure the equipment, define roles and responsibilities, and confirm operation in its environment. Validation must be completed on-site for the intended use. Part of the validation may include verification and/or audits that the vendor has performed adequate testing prior to shipping the software.</p>
+
+        <p>Software validation is often referred to by regulators as "confirmation by examination and provision of objective evidence that software specifications conform to user needs and intended uses, and that the particular requirements implemented through software can be consistently fulfilled." In practice, software validation activities may occur both during and at the end of the software development lifecycle to ensure that all requirements have been fulfilled. A conclusion that software is validated is highly dependent upon comprehensive software testing, inspections, analyses, and other verification tasks performed at each stage of the software development lifecycle.</p>
+
+        <p>Validation documentation should include evidence of verification by the system owner, or Quality Unit, of the following:</p>
+        <ul>
+            <li>Vendor has performed adequate testing prior to shipping the software</li>
+            <li>Intended functionality of software in terms of analysis, data acquisition, processing, reporting, tracking, and security</li>
+            <li>Software name, configuration, and version number</li>
+            <li>Compliance of audit trail(s) that meets 21 CFR Part 11 requirements</li>
+            <li>Logic/basis for the algorithms used in calculations (e.g., USP tailing, ASTM peak integration)</li>
+            <li>Common statistical calculations used by the software (such as mean, standard deviation, and % relative standard deviation), as well as complex statistics (such as residual error, regression, and slope) calculated manually and compared with software values</li>
+            <li>Data transmission checks of the computer, the server, and the interfaces between the two (to verify what happens with the server, network unavailability, and local PC unavailability) are essential to ensure data transmitted has not been manipulated, altered, or corrupted during the transmission phase.</li>
+        </ul>
+
+        <p>The compatibility of COTS software with the laboratory data management software being used, such as laboratory information management system (LIMS), electronic laboratory notebooks (ELN), and enterprise resource planning (ERP), is also important to ensure the integrity of the electronic data.</p>
+
+        <p><em>Additional details on validation planning and lifecycle management can be found in Validation of Chromatography Data Systems by Robert McDowall (47).</em></p>
+
+        <h3>6.3.2.1 Controls for COTS Software for HPLC, GC, and Other Instrument Operations</h3>
+
+        <p>The following are the minimal controls needed to safeguard COTS software and secure its use:</p>
+        <ul>
+            <li>Identifying the person(s) responsible for installing updates</li>
+            <li>Addressing any changes to software through change control procedure with risk assessment</li>
+            <li>Setting up secure individual user log-ins and periodic change of passwords</li>
+            <li>Disabling data modification, deletion, or copying by anyone other than the administrator</li>
+            <li>Restricting data deletion to only the authorized system administrator following established procedures, with oversight by the Quality Unit</li>
+            <li>Maintaining a detailed, QA-approved list of roles and responsibilities and copies of previous versions of software when updating to allow reviewing, processing, audit trail review, backup/restore testing, and reporting of older reports in case of regulatory requirements and investigations (recommended)</li>
+            <li>Establishing periodic review of control effectiveness based on the risk posed, paying attention to software upgrades and patches, and taking appropriate remediation and/or mitigation actions</li>
+            <li>Maintaining a detailed list of roles, responsibilities, and access privileges for all the software in the laboratory</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：COTS 軟體的驗證策略</h4>
+            <p>COTS（Commercial Off-the-Shelf）指已商品化的軟體，如 Empower、OpenLAB、Chromeleon 等層析數據系統。由於廠商持有原始碼，實驗室無法修改軟體本身，驗證重點轉移為：</p>
+            <ul>
+                <li><strong>廠商已做了什麼</strong>：廠商測試文件、合規憑證</li>
+                <li><strong>實驗室需確認什麼</strong>：在本地環境中的預期功能、使用者配置、介面相容性</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>驗證文件的必要內容——稽核員最常查的清單</h4>
+            <p>TR80 列出 7 大驗證文件要素，其中最容易被忽略的兩項：</p>
+            <ul>
+                <li><strong>計算演算法基礎</strong>：軟體用哪個 USP/ASTM 標準計算拖尾因子、積分面積？這必須被記錄與驗證。</li>
+                <li><strong>數據傳輸測試</strong>：必須驗證當網路中斷或 PC 斷線時，數據不會遺失或被竄改。</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>驗證計算核查舉例</h4>
+            <p>TR80 要求對軟體計算結果進行手動核算並比對，例如：</p>
+            <pre>
+%RSD = (標準差 / 平均值) × 100%
+
+拖尾因子 (T) = W₀.₀₅ / (2f)
+  其中 W₀.₀₅ = 5% 峰高處峰寬
+        f = 峰頂到前緣的距離
+            </pre>
+            <p>驗證時需手動計算至少一個數據集，確認與軟體輸出值一致，偏差在可接受範圍內並有記錄。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：COTS 驗證就像驗收新車</h4>
+            <p>購買新車（COTS 軟體）時，製造商提供了出廠測試合格書，但你仍需在自己的路況下試駕（UAT），確認它在你的使用場景（實驗室配置、LIMS 介面）下正常運作。製造商的合格書不能取代你的試駕記錄。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>6.3.2.1 最低控制措施的重點：存取控制層級</h4>
+            <p>TR80 對 COTS 軟體的控制要求可分為三個層面：</p>
+            <ul>
+                <li><strong>人員控制</strong>：個別帳號、定期換密碼、明確的角色與責任清單</li>
+                <li><strong>技術控制</strong>：停用非管理員的資料刪除與複製功能</li>
+                <li><strong>程序控制</strong>：變更控制＋風險評估、定期審查控制有效性</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>思考練習</h4>
+            <p>在你的實驗室中，HPLC CDS 軟體是否有以下設定？</p>
+            <ul>
+                <li>分析員無法刪除或修改原始數據文件？</li>
+                <li>軟體版本號被記錄在驗證主計畫中？</li>
+                <li>軟體更新前是否執行變更控制與風險評估？</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- SECTION 6.3.3 — Instrument Functionality & Qualification      -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
+<div class="section-title">6.3.3 Laboratory Instrument Functionality and Qualification</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Risk assessments to be executed during the initial qualification of laboratory instruments should identify various controls to manage risks, including data risks, at an acceptable level and should be challenged upfront. Necessary periodic checks and/or system controls would be identified at the same time.</p>
+
+        <p>Qualification of laboratory instruments and any features or functionality that may compromise data should be verified, for example:</p>
+        <ul>
+            <li>Date and time stamp function should be enabled either in the instrument or on the computer attached to the instrument, but analysts should not have the option of modifying the date and time stamp functionality</li>
+            <li>Analysts should not have the authority or capability to disable the audit trail feature</li>
+            <li>Some instruments are manufactured with built-in memory and a computer that can also be connected to an external computer; the system owner should clearly define the role of such computers without compromising the data generated on those instruments</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：資格確認中的數據風險評估</h4>
+            <p>儀器資格確認不僅是確認儀器性能（IQ/OQ/PQ），TR80 明確要求同時識別<strong>數據風險控制點</strong>。資格確認計畫中應包含：</p>
+            <ul>
+                <li>哪些功能若失效會影響數據完整性？</li>
+                <li>分析員是否有辦法修改時間戳記或關閉稽核軌跡？</li>
+                <li>儀器內建記憶體與外接電腦之間的數據流定義是否清楚？</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>三大數據完整性驗證重點</h4>
+            <ul>
+                <li><strong>時間戳記不可修改</strong>：是最基本的數據可歸因性（Attributable）要求。若系統允許分析員任意修改時間，則所有帶時間戳記的記錄均失去法律效力。</li>
+                <li><strong>稽核軌跡不可停用</strong>：分析員不得有權限關閉稽核軌跡。這需要在使用者角色配置中明確設定，並在驗證中確認。</li>
+                <li><strong>內建記憶體的雙重記錄問題</strong>：某些儀器（如 UV/Vis 分光光度計）具有內建顯示器與記憶體，若同時連接外接電腦，需定義哪個才是「原始數據」的來源。</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：時間戳記就像法院文件的日期戳</h4>
+            <p>若你的實驗記錄可以事後修改日期，就像可以竄改法院文件上的蓋章日期——無論內容是否正確，該文件的法律效力即告喪失。GMP 記錄中的時間戳記具有同等的法律意涵。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>思考練習</h4>
+            <p>假設稽核員發現：分析員可以在 HPLC 電腦上手動修改系統時間，且此操作不會被稽核軌跡捕捉。這代表什麼數據完整性風險？應如何在資格確認時預防？</p>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- SECTION 6.3.4 — Data Governance                               -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
+<div class="section-title">6.3.4 Data Governance — Generating, Processing, Reporting, and Archiving</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Any features or functionalities that will enable data generation should be checked for how they function without connecting to computer (e.g., samples injected prior to the official test). Analysts should not have the authority to conduct independent trial or pre-sample injections, and system suitability/equilibration procedures should be defined in method validation/procedures. FDA Warning Letters have cited companies for performing these types of testing prior to the official test. As per USP &lt;621&gt;, no sample analysis is acceptable unless the suitability of the system has been demonstrated. If the system suitability test fails, the results should be documented and handled according to the firm's SOPs; in this case, adjustments can be made, and a system suitability test can be repeated. Procedures should be designed, however, to prevent trial injections in quality control analysis. FDA has found trial injections of official samples included in a few company SOPs and has determined that the practice is not acceptable. Regulators have also found trial injections conducted with samples masked or identified as standards, that when reexamined, were found to be samples and not standards.</p>
+
+        <p>Regulatory authorities prohibit pre-testing samples with the goal of obtaining a favorable or specific result prior to testing the official or reportable sample, or to overcome an unexpected/unacceptable result (e.g., testing different samples until the desired passing result is obtained). This practice, also referred to as "testing into compliance," is not consistent with CGMP. In some situations, actual samples have been used to perform system suitability testing as a means of testing into compliance. Regulatory authorities consider the practice of using an actual sample in test, prep, or equilibration runs as a means of disguising testing into compliance and deem it a violation.</p>
+
+        <p>Modern chromatographic software has the capability of acquiring data until the point a chromatographic run is intentionally or unintentionally interrupted. Any such instances that are cited as "system crash/equipment unplugged" or "miscommunication" without documented justification may not be accepted by regulatory agencies. These instances should be properly investigated and documented. Companies should evaluate this software capability as a part of qualification of new equipment. It is also recommended to evaluate this for existing analytical equipment where available.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：數據治理的四個維度</h4>
+            <p>TR80 Section 6.3.4 以數據治理的視角涵蓋四個關鍵環節：</p>
+            <ul>
+                <li><strong>生成（Generating）</strong>：數據在何時、以何種方式被創建？</li>
+                <li><strong>處理（Processing）</strong>：如何對原始數據進行積分、計算？</li>
+                <li><strong>報告（Reporting）</strong>：如何將結果呈現給審查者與 QA？</li>
+                <li><strong>歸檔（Archiving）</strong>：數據如何被保存以供未來查閱？</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>「試注射」是 FDA Warning Letter 的常見引用點</h4>
+            <p>TR80 明確指出：FDA 已在 Warning Letter 中引用試注射（trial injection）問題。常見違規情境：</p>
+            <ul>
+                <li>分析員在正式測試前注射樣品「看看峰形是否正常」</li>
+                <li>將真實樣品標示為「標準品」進行注射，若結果不理想則刪除</li>
+                <li>SOP 中明文允許試注射（FDA 認為此類 SOP 本身即為違規）</li>
+            </ul>
+        </div>
+
+        <div class="note-box" style="background: #fff0f0 !important; border-left-color: #e53e3e !important;">
+            <h4>「Testing into Compliance」——最嚴重的數據完整性違規之一</h4>
+            <p><strong>定義</strong>：反覆測試樣品直到獲得「通過」結果，然後只報告通過的結果，不報告失敗的結果。</p>
+            <p><strong>偽裝手法</strong>：</p>
+            <ul>
+                <li>以「系統適用性測試」名義使用真實樣品</li>
+                <li>以「平衡管柱」為由注射樣品</li>
+                <li>事後刪除「不通過」的注射記錄</li>
+            </ul>
+            <p><strong>法規立場</strong>：所有上述做法均被視為違反 CGMP，可觸發 Warning Letter 甚至犯罪調查。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：Testing into Compliance 就像考試作弊</h4>
+            <p>想像你參加考試，考完不滿意就偷偷換一份試卷重考，只交出最高分的那份。GMP 中的測試用同樣邏輯——每一次分析都是「正式考試」，必須完整記錄，不可選擇性揭露結果。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>思考練習</h4>
+            <p>層析軟體具有「數據取得直到運行中斷」的能力，這代表即使分析員以「系統當機」為由終止運行，數據仍存在系統中。若稽核員發現大量「中斷」事件而無書面調查，可能提出什麼樣的 483 觀察？</p>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- SECTION 6.3.5 — Data Generation                               -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
+<div class="section-title">6.3.5 Data Generation</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>The Quality Unit should have clear procedures and qualified personnel to meticulously define data governance in the organization. Appropriate written procedures should be in place and should be followed to ensure all data generated by the laboratory is reliable and accurate. The moment an injection is made, or signal processing starts, the data file is deemed to be generated. The following are the criteria or characteristics that define a data file:</p>
+        <ul>
+            <li>Analyst's name</li>
+            <li>Name of product</li>
+            <li>Description of sample</li>
+            <li>Date and time stamp</li>
+            <li>Method parameters (wavelength, flow, injection volume, and run time, at a minimum)</li>
+        </ul>
+
+        <p>Figure 6.3.5-1 depicts the typical data flow in chromatographic analysis. The following conditions should be defined in the laboratory procedures and any deviations investigated:</p>
+        <ul>
+            <li>When the data file can be treated as raw data</li>
+            <li>What to do if a run aborts before completion</li>
+            <li>How to handle transmission loss from analytical equipment to connected computer</li>
+            <li>What to do if power is lost between chromatographic runs</li>
+            <li>Protocol for renaming of data file after signal acquisition</li>
+            <li>How to identify willful acts to compromise data using any of the above methods</li>
+        </ul>
+
+        <div class="figure-container">
+            <div class="note-box" style="text-align:left;">
+                <h4>Figure 6.3.5-1 — Typical Data Flow in Chromatographic Analysis</h4>
+                <p><em>[Diagram]</em> This figure illustrates the sequential flow of data through a chromatographic analysis lifecycle. The flow proceeds from instrument setup and injection (with analyst ID audit trail and method audit trail captured), through integration and data review (with results and raw data audit trails captured, including metadata, electronic time stamp, and electronic signature), to analysis, and finally to release. At each stage, audit trail information is associated with the data record.</p>
+            </div>
+            <p class="figure-caption">Figure 6.3.5-1: Typical Data Flow in Chromatographic Analysis (TR80, p28)</p>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：數據文件的生成時點</h4>
+            <p>TR80 明確定義：<strong>「數據文件在注射發生或訊號處理開始時即視為已生成」</strong>。這個定義具有重要的法規意涵——</p>
+            <p>一旦注射完成，數據文件就已存在，不得被悄悄刪除或替換。任何後續修改都必須通過稽核軌跡留下記錄。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>Figure 6.3.5-1 的數據流解析</h4>
+            <p>此圖呈現層析分析的完整數據流，關鍵的稽核軌跡點包括：</p>
+            <ul>
+                <li><strong>儀器設置與注射階段</strong>：捕捉分析員 ID 稽核軌跡與方法稽核軌跡</li>
+                <li><strong>積分與數據審查階段</strong>：捕捉結果稽核軌跡、原始數據稽核軌跡，包含元數據、電子時間戳記、電子簽名</li>
+                <li><strong>分析與放行階段</strong>：最終結果須與完整稽核軌跡一同呈現</li>
+            </ul>
+            <p>此流程確保數據的可追溯性（Traceable）——每一個操作步驟都有記錄，且可被重建（Reconstructable）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>SOP 必須定義的六個異常情境</h4>
+            <p>TR80 列出六種需要在實驗室程序中明確定義的情境，稽核員在查廠時會確認這些情境是否有對應的 SOP：</p>
+            <ul>
+                <li>數據文件何時可視為原始數據？</li>
+                <li>運行在完成前中止時如何處理？</li>
+                <li>儀器至電腦的傳輸中斷時如何處理？</li>
+                <li>層析運行中間斷電時如何處理？</li>
+                <li>訊號取得後的數據文件重命名規範？</li>
+                <li>如何識別蓄意破壞數據的行為？</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：數據文件就像出生登記</h4>
+            <p>一旦孩子出生（注射完成），出生登記（數據文件）就必須建立，不可撤銷。你可以日後更改孩子的名字（數據處理），但出生的事實本身不可被抹去——稽核軌跡就是這份不可更改的出生證明。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>思考練習</h4>
+            <p>分析員在 HPLC 注射完成後，以「序列名稱輸入錯誤」為由，刪除了數據文件並重新命名後再次注射。這個操作是否符合 GMP 要求？若不符合，正確的做法應為何？</p>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- SECTION 6.3.6 — Injection Sequences                           -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
+<div class="section-title">6.3.6 Injection Sequences</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Analyzing several samples at one time is a common practice in analytical laboratories, where samples are queued by a set of commands or "sequences." The Quality Unit should approve the software system architecture and the defined rules for creating and executing sequences; controls and permissions for renaming files after acquisition; controls on modifying method parameters during sample execution; and copying or moving data files. Where possible, these rules should be incorporated into the system architecture. Renaming a file to mask or hide the identity of a trial or pre-sample injection is not an acceptable practice.</p>
+
+        <p>In addition, the following controls are recommended to capture such events in an audit trail:</p>
+        <ul>
+            <li>Name/number of sequence</li>
+            <li>Analyst's name</li>
+            <li>Name of the product</li>
+            <li>Reason for modification</li>
+            <li>Description of the method for each sample</li>
+            <li>Review or clearance by a second analyst before execution of sequence (suggested)</li>
+        </ul>
+
+        <p>The following conditions also should be listed in the functional requirements and defined in laboratory procedures and any deviations should be investigated:</p>
+        <ul>
+            <li>Modification or execution of partial sequences</li>
+            <li>Acceptable situations to abort a sequence and to maintain a track of aborted sequences</li>
+            <li>Modification of the method parameters after initiating the sequence</li>
+            <li>Criteria for adding a sample to a sequence after initiation</li>
+            <li>Handling transmission loss from analytical equipment to the connected computer</li>
+            <li>Managing power loss between chromatographic runs</li>
+            <li>Controls on sample trial injections, system check injections, or single injections</li>
+            <li>Controls to identify willful acts to compromise data using any of the above situations</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：注射序列（Injection Sequence）的數據完整性風險</h4>
+            <p>注射序列是層析分析最常見的操作模式，但也是數據操縱的高風險區域。TR80 識別出以下主要風險：</p>
+            <ul>
+                <li><strong>序列後重命名</strong>：以新名稱覆蓋試注射記錄，使其看起來像正式測試</li>
+                <li><strong>部分序列執行</strong>：只跑「好的」樣品，跳過失敗的樣品</li>
+                <li><strong>序列中途修改方法參數</strong>：在不希望的峰出現後修改積分參數</li>
+                <li><strong>序列中途插入樣品</strong>：在序列已啟動後加入「補測」樣品而無記錄</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>稽核軌跡應捕捉的序列資訊</h4>
+            <p>TR80 建議稽核軌跡中至少應包含以下序列資訊，這也是稽核員查廠時的核查清單：</p>
+            <ul>
+                <li>序列名稱/編號</li>
+                <li>分析員姓名</li>
+                <li>產品名稱</li>
+                <li>修改原因（任何變更均需記錄）</li>
+                <li>每個樣品的方法描述</li>
+                <li>建議：執行序列前由第二位分析員審核確認</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：注射序列就像手術排程</h4>
+            <p>手術室的手術排程一旦確定，不得臨時增加或刪除病人而無記錄。若在手術中途發現某台手術「結果不理想」就將記錄刪除，這在醫療法律上是重大違規。HPLC 序列的操作邏輯相同——每一個注射位置都代表一個「官方分析行為」。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>第二分析員審核序列的實務意義</h4>
+            <p>TR80 「建議」執行序列前由第二位分析員審核，這雖非強制要求，但具有重要的預防價值：</p>
+            <ul>
+                <li>確認序列中的樣品識別碼與批次記錄一致</li>
+                <li>確認方法版本正確</li>
+                <li>確認系統適用性注射位置正確</li>
+                <li>防止「故意配錯樣品」或「故意用錯方法」等操縱行為</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>思考練習</h4>
+            <p>稽核員要求查看過去三個月所有「中止」的注射序列記錄，以及每次中止的調查記錄。你的實驗室能否立即提供這份清單？若不能，代表哪個控制環節存在缺口？</p>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- SECTION 6.3.7 — Data Processing and Peak Integration          -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
+<div class="section-title">6.3.7 Data Processing and Peak Integration</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Chromatographic software uses dynamic peak detection algorithms and automatic peak detection algorithms. Integrating the chromatograms using software to apply the integration events, such as peak width, threshold, height, and area, etc., and then visually observing the peak integration for its correctness is generally recommended. The inherent or analytical variations and combination of various factors can result in non-Gaussian peaks and drifting baselines in which the auto-integration will either underreport or overintegrate the peak areas.</p>
+
+        <p>Once acquired, the electronic raw data of the measurements (measured values and metadata) are stored and available for processing. Some acquired electronic raw data already represent usable results (e.g., weight, temperature, and humidity). Other acquired electronic raw data, such as intensity values correlated with time or wavelength and generated by chromatography or spectroscopy, require further processing to obtain usable results (e.g., retention times, peak areas, and amounts). These processes, such as integration and calibration, are defined by processing parameters or calibration factors and affect only the resultant data after processing, but not the acquired electronic raw data. In contrast to the acquired electronic raw data, the processing parameters, such as integration events and calibration curves, may be changed during data evaluation. The changed processing parameters, methods, and processed data should be identified by versioning (i.e., number of times reprocessed) either on the results or from the audit trail data.</p>
+
+        <p>Integration events should be defined through standard algorithms, and metadata and should be associated with respective raw data files. In such cases, the analyst adjusts the integration events to obtain proper peak integration. As chromatography is a comparative technique, the consistent integration events should be applied for the entire set of chromatograms, as much as possible, or published along with the chromatograms.</p>
+
+        <div class="figure-container">
+            <div class="note-box" style="text-align:left;">
+                <h4>Figure 6.3.7-1 — Typical Overlaid Chromatogram of Two Injections (Standard and Sample) Integrated with Same Integration Events</h4>
+                <p><em>[Diagram]</em> This figure shows two chromatograms overlaid — one from a reference standard and one from a sample of the same nominal concentration — both processed with identical integration parameters. The visual comparison demonstrates that when integration events are consistent, relative peak areas between standard and sample provide a reliable basis for quantitation.</p>
+            </div>
+            <p class="figure-caption">Figure 6.3.7-1: Overlaid chromatogram showing standard and sample integrated with the same events (TR80, p29)</p>
+        </div>
+
+        <p>Integrating small peaks, closer peaks, negative peaks, drifting peaks, and peak-to-valley requires time and skill. Integrating peaks manually is not recommended and should be avoided to the extent possible.</p>
+
+        <p>QC laboratories should have procedures in place that require authorization to perform manual integration and for procedures to track such events to avoid unnoticed or unevaluated cases that may affect the accuracy of the results. PDA defines manual integration as a process used by a person to manually integrate the peak height or area by modifying the baseline of the chromatogram with use of chromatographic software. The conditions and circumstances when manual integration would be allowed should be predefined (e.g., complexity of the sample matrix). Generally, a good chromatographic data system would be able to render consistent and reliable baselines for an overwhelming majority of injections within a chromatographic run. When consistently bad chromatographic peaks and baseline issues are encountered, having good documentation should not be the only way to address the issue. In this circumstance, the goal should be to improve the system and ensure that the data generated is reliable and consistent.</p>
+
+        <p>The Quality Unit should define standard protocols for processing data to include the following, which may be instrument- or application-specific:</p>
+        <ul>
+            <li>Reprocessing peaks</li>
+            <li>Applying instrument/application-specific integration events/algorithms</li>
+            <li>Fully integrating peaks</li>
+            <li>Inhibiting or disregarding any peaks in the test chromatogram (e.g., blank peaks, placebo peaks, solvent peaks) without scientific justification; examples where justification is needed include counter ion and reagent interactions with a sample</li>
+            <li>Applying the same integration events for all samples in the sample set or sequence and justifying any change in integration events</li>
+        </ul>
+
+        <p>Peak integration is the process used by a chromatographic system to determine the peak height and width and obtain the quantitation of the peak of interest. Certain USP monograph methods specify inhibiting integration at specified zones in the chromatographic run. USP &lt;621&gt; states that peaks can be disregarded by setting the thresholds in the integration to at least half of those below reporting threshold. Therefore, utilizing the built-in capability of the chromatographic data acquisition software to inhibit integration of peaks from solvent, mobile phase, placebo, and counter ions in impurity analysis is a common industry practice. Firms should scientifically evaluate and judiciously determine whether to use the inhibit integration functionality. Peaks in the chromatographic analysis may be excluded in the event of a known abnormality. Unknown peaks should be integrated and investigated according to the firm's quality procedures.</p>
+
+        <p>Manual integration is the process used by the analyst to integrate the peak height or area by modifying the baseline of the chromatograph using software. Manual integrations may be required for R&amp;D and biological labs. Though in QC labs, manual integration may be necessary or acceptable only under special circumstances (e.g., complex chromatography due to sample matrix interferences, poor resolution, co-elution of peak of interest, problem with the baseline, or software with limited capabilities); however, manual integration is not generally acceptable for assay. Manual integration should not be left to an analyst's discretion; it should be performed only according to an approved procedure, with documented approval from a supervisor and results appropriately documented. A mature quality system will review these instances as part of continual improvement of methods and equipment. Modern chromatographic software identifies and displays manually integrated peaks.</p>
+
+        <div class="figure-container">
+            <div class="note-box" style="text-align:left;">
+                <h4>Figure 6.3.7-2 — Typical Chromatogram with Integration Type (Manual/Chromatographic Software)</h4>
+                <p><em>[Diagram]</em> This figure displays a chromatogram in which some peaks are integrated automatically by the software algorithm and others are manually integrated by an analyst. Modern CDS software flags manually integrated peaks visually (e.g., with a different color or symbol), enabling reviewers to immediately identify which peaks required manual intervention.</p>
+            </div>
+            <p class="figure-caption">Figure 6.3.7-2: Chromatogram showing both manually and software-integrated peaks (TR80, p30)</p>
+        </div>
+
+        <p>Printed chromatograms should be presented in visible scale as per the respective analysis (peak top visible for assay or single analysis, peak base clearly visible for purity analysis). After integration, results may be published or electronically stored. If results are reprocessed, permission from a supervisor is required. Those types of events may be noted in a log (paper or electronic) for quick reference.</p>
+
+        <div class="figure-container">
+            <div class="note-box" style="text-align:left;">
+                <h4>Figure 6.3.7-3 — Chromatogram with Appropriate Integration Events</h4>
+                <p><em>[Diagram]</em> This figure illustrates a chromatogram displayed at proper scale with appropriate integration boundaries. The baseline is clearly visible, peak start and end points are correctly placed, and the integration accurately represents the peak area. This serves as a reference for what correct integration looks like — a key comparison standard when evaluating whether manipulation has occurred.</p>
+            </div>
+            <p class="figure-caption">Figure 6.3.7-3: Chromatogram at appropriate scale with correct integration (TR80, p30)</p>
+        </div>
+
+        <p>Figure 6.3.7-4a represents the chromatogram printed in large scale, where peak integration is not visible. Figure 6.3.7-4b represents the same chromatogram with printed proper scaling, where peak trimming and missing peak integrations are visible, revealing possible intentional data manipulation.</p>
+
+        <div class="figure-container">
+            <div class="note-box" style="text-align:left;">
+                <h4>Figure 6.3.7-4a — Chromatogram of Related Substances Analysis Presented with an Improper Scale</h4>
+                <p><em>[Diagram]</em> The chromatogram is zoomed in/scaled incorrectly such that integration boundaries are hidden from view. In this presentation, peak trimming and missing integrations cannot be detected by the reviewer — a presentation that can conceal data manipulation.</p>
+            </div>
+            <p class="figure-caption">Figure 6.3.7-4a: Related substances chromatogram at improper scale — integration problems invisible (TR80, p32)</p>
+        </div>
+
+        <div class="figure-container">
+            <div class="note-box" style="text-align:left;">
+                <h4>Figure 6.3.7-4b — Chromatogram of Related Substances Analysis Presented with Appropriate Scale</h4>
+                <p><em>[Diagram]</em> The same chromatogram as 6.3.7-4a, now displayed at the correct scale. At this scale, peak trimming (integration lines that cut off peak tails) and missing peak integrations become clearly visible, revealing that the data was potentially manipulated to report fewer/smaller impurity peaks.</p>
+            </div>
+            <p class="figure-caption">Figure 6.3.7-4b: Same chromatogram at appropriate scale — peak trimming and missing integrations now visible (TR80, p32)</p>
+        </div>
+
+        <p>Assay analysis, dissolution, and content uniformity involve a single analyte/peak analysis where the content will be calculated against a known standard. Gaussian peaks, with allowed system suitability characteristics of accuracy and precision, are expected in these types of analysis. Normal Gaussian peaks should be integrated exactly where the peak starts and finishes. The peak integration represented in these types of analysis is illustrated in Figures 6.3.7-5a–f.</p>
+
+        <div class="figure-container">
+            <div class="note-box" style="text-align:left;">
+                <h4>Figures 6.3.7-5a through 6.3.7-5f — Single Component Analysis Integration Scenarios</h4>
+                <p><em>[Diagram Series]</em></p>
+                <ul>
+                    <li><strong>5a</strong>: Raw unprocessed signal before any integration — baseline chromatogram data.</li>
+                    <li><strong>5b</strong>: Raw data integrated with proper peak width and threshold — correct, full baseline-to-baseline integration. This is the reference standard.</li>
+                    <li><strong>5c</strong>: Raw data integrated with peak trimming — integration cuts off peak tails, yielding falsely low area. <em>Risk: Reports lower assay/dissolution/content values.</em></li>
+                    <li><strong>5d</strong>: Raw data not integrated base-to-base — integration misses the baseline, yielding falsely high area. <em>Risk: Reports higher values.</em></li>
+                    <li><strong>5e</strong>: Raw data integrated with peak tailing artifact — tailing extends integration region, overestimating area.</li>
+                    <li><strong>5f</strong>: Raw data integrated followed by a negative peak or drift — negative peak distorts the baseline, artificially altering integrated area.</li>
+                </ul>
+            </div>
+            <p class="figure-caption">Figures 6.3.7-5a–f: Six integration scenarios for single component analysis showing correct and incorrect integration methods (TR80, pp32–33)</p>
+        </div>
+
+        <p>Data manipulation of chromatograms by manually manipulating the integrated peaks is one factor the FDA has cited in Warning Letters. In these illustrations, all the integrations presented are made through chromatographic software by adjusting integration events. Chromatographic software will indicate which peaks are manually integrated. Laboratory management should have appropriate controls in place for detecting the data compromises made by applying the wrong integration events.</p>
+
+        <div class="figure-container">
+            <div class="note-box" style="text-align:left;">
+                <h4>Figures 6.3.7-6a through 6.3.7-6c — Co-eluting Peaks Integration Scenarios</h4>
+                <p><em>[Diagram Series]</em></p>
+                <ul>
+                    <li><strong>6a</strong>: Raw data of co-eluting peaks in related substances analysis — two or more peaks partially overlap.</li>
+                    <li><strong>6b</strong>: Co-eluting peaks integrated with suitable peak width and threshold — correct valley-to-valley or skim integration, properly resolving individual peak contributions.</li>
+                    <li><strong>6c</strong>: Co-eluting peaks integrated with improper events — incorrect baseline placement presents less response for one or more peaks. <em>Risk: Underreports impurity levels in related substances analysis.</em></li>
+                </ul>
+            </div>
+            <p class="figure-caption">Figures 6.3.7-6a–c: Co-eluting peak integration scenarios showing proper and improper separation (TR80, p33)</p>
+        </div>
+
+        <div class="figure-container">
+            <div class="note-box" style="text-align:left;">
+                <h4>Figures 6.3.7-7a through 6.3.7-7c — Multicomponent Analysis Integration Scenarios</h4>
+                <p><em>[Diagram Series]</em></p>
+                <ul>
+                    <li><strong>7a</strong>: Raw data of multicomponent analysis peaks — multiple peaks in a complex chromatogram.</li>
+                    <li><strong>7b</strong>: Peaks integrated with suitable peak width and threshold — all peaks correctly integrated with consistent parameters.</li>
+                    <li><strong>7c</strong>: One peak integrated with peak trimming; another integrated including tailing/fronting — selective application of different integration events to different peaks, resulting in less reported area overall. <em>Risk: Systematic underreporting of impurities in purity analysis.</em></li>
+                </ul>
+            </div>
+            <p class="figure-caption">Figures 6.3.7-7a–c: Multicomponent analysis showing selective integration manipulation (TR80, p33)</p>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：原始數據 vs. 處理數據</h4>
+            <p>TR80 明確區分兩種數據類型：</p>
+            <ul>
+                <li><strong>原始電子數據（Acquired Electronic Raw Data）</strong>：儀器訊號本身——時間對應的強度值。一旦取得，不應被更改。</li>
+                <li><strong>處理後數據（Processed Data）</strong>：通過積分事件、校準曲線等計算得到的保留時間、峰面積、含量值。這些可以合法地重新計算（reprocess），但必須有記錄（版本控制）。</li>
+            </ul>
+            <p>關鍵原則：<strong>處理參數的改變不影響原始電子數據本身</strong>，但必須通過稽核軌跡中的版本號追蹤。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>峰積分的基本計算概念</h4>
+            <p>峰面積是量化分析的基礎，其計算方式影響最終報告值：</p>
+            <pre>
+含量（Assay）= (樣品峰面積 / 標準品峰面積)
+              × 標準品濃度 × 稀釋因子
+
+% 雜質 = (雜質峰面積 / 總峰面積之和) × 100%
+  （或相對於主峰面積）
+            </pre>
+            <p>因此，任何影響峰面積計算的積分操作都會直接影響報告結果。「削峰」（peak trimming）會使面積減少，進而使含量偏低；「過積分」則反之。</p>
+        </div>
+
+        <div class="note-box" style="background: #fff0f0 !important; border-left-color: #e53e3e !important;">
+            <h4>積分操作如何構成數據完整性違規——FDA Warning Letter 重點</h4>
+            <p>TR80 明確引用 FDA Warning Letter 中的積分操縱案例。常見的違規積分模式：</p>
+            <ul>
+                <li><strong>削峰（Peak Trimming, 圖 5c）</strong>：設定峰寬過小，積分線未延伸到峰底，人為減少峰面積 → 讓含量看起來更低（或雜質更少）</li>
+                <li><strong>基線未歸零（圖 5d）</strong>：積分起始線未從基線開始，包含了基線漂移 → 人為增加峰面積 → 讓含量看起來更高</li>
+                <li><strong>共洗脫峰不正確分割（圖 6c）</strong>：對部分共洗脫峰使用錯誤的 valley drop 設定 → 少報雜質</li>
+                <li><strong>選擇性使用不同積分事件（圖 7c）</strong>：同一序列中不同樣品用不同積分參數 → 選擇性操控特定樣品的結果</li>
+            </ul>
+        </div>
+
+        <div class="concept-box">
+            <h4>手動積分的法規立場</h4>
+            <p>TR80 的立場非常清晰：</p>
+            <ul>
+                <li><strong>R&amp;D 和生物實驗室</strong>：手動積分可能是必要的</li>
+                <li><strong>QC 實驗室</strong>：手動積分僅在特殊情況下可接受（複雜基質、共洗脫、基線問題）</li>
+                <li><strong>含量測定（Assay）</strong>：手動積分<strong>通常不可接受</strong></li>
+            </ul>
+            <p>無論何種情況，手動積分必須：有書面 SOP 規範 → 獲得主管書面批准 → 結果被適當記錄 → 現代軟體會自動標記手動積分峰。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>圖 6.3.7-4a vs. 4b：呈現比例的重要性</h4>
+            <p>這兩張圖揭示了一個審查技巧：相同的層析數據，在不同比例下呈現會有完全不同的可見性。</p>
+            <ul>
+                <li><strong>大比例圖（4a）</strong>：峰很大，基線相關的積分問題被壓縮、隱藏</li>
+                <li><strong>適當比例圖（4b）</strong>：可清楚看見峰被「削掉」的積分線，以及遺漏的峰</li>
+            </ul>
+            <p>TR80 規定：<strong>含量分析：峰頂可見；純度/雜質分析：基線必須清楚可見</strong>。稽核員會要求查看適當比例的層析圖，並對比列印版本。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>Inhibit Integration（抑制積分）的合法使用</h4>
+            <p>TR80 認可在以下情況使用軟體的積分抑制功能（即設定積分不計算特定時間窗口內的峰）：</p>
+            <ul>
+                <li>USP 專論方法中有明確規定</li>
+                <li>USP &lt;621&gt;：閾值設定為報告閾值一半以下的峰可被忽略</li>
+                <li>已知的空白峰、安慰劑峰、溶劑峰、反離子峰</li>
+            </ul>
+            <p>重要前提：<strong>必須有科學依據，且未知峰不得被抑制</strong>——未知峰必須被積分並按品質程序調查。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：積分就像量地積</h4>
+            <p>峰積分就像測量一塊不規則土地的面積。正確的測量應從土地的真實邊界開始（峰底到基線）。若你刻意把捲尺放在稍微高一點的地方（削峰），量出來的面積就會偏小。若你把捲尺拉過了邊界（過積分），面積就偏大。地政機關（稽核員）可以比對土地登記謄本（原始數據）與你提交的測量結果，發現兩者不一致。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>思考練習</h4>
+            <p>稽核員查閱你的相關物質分析（Related Substances）結果，發現：</p>
+            <ul>
+                <li>某個雜質峰在原始層析圖中清晰可見</li>
+                <li>但列印出來的報告中該峰並未出現在積分報告裡</li>
+                <li>稽核軌跡顯示積分事件被修改過兩次，但無修改理由記錄</li>
+            </ul>
+            <p>請問：這代表哪些 ALCOA+ 原則可能被違反？應如何回應稽核員的質疑？</p>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- SECTION SUMMARY                                                -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary (6.3–6.3.7)</h3>
+    <ul>
+        <li><strong>ALCS 定義與架構</strong>：任何連接分析儀器的電腦系統都屬於 ALCS，不得用於一般用途。系統配置決定稽核軌跡的建立與審查方式（Figure 6.3-1）。</li>
+        <li><strong>伺服器與雲端資格確認</strong>：無論本地或雲端，伺服器必須完成資格確認（IQ/OQ/UAT）。SaaS 不免除藥廠的法規責任；詳細 SLA 是必要條件，並需每年稽核供應商。</li>
+        <li><strong>COTS 軟體驗證</strong>：廠商合規證書不能取代實驗室端的驗證。驗證文件必須涵蓋演算法基礎、統計計算核查、數據傳輸測試，以及與 LIMS/ELN 的相容性。</li>
+        <li><strong>儀器資格確認的數據焦點</strong>：時間戳記不可修改、稽核軌跡不可停用——這兩項應在資格確認中明確測試並記錄。</li>
+        <li><strong>試注射與 Testing into Compliance</strong>：使用真實樣品進行試注射或系統適用性測試是 CGMP 違規，FDA Warning Letter 已有明確引用案例。</li>
+        <li><strong>注射序列控制</strong>：序列的建立、執行、修改、中止均需有程序規範，重命名文件以掩蓋試注射身份是不可接受的做法。</li>
+        <li><strong>峰積分</strong>：原始電子數據不可更改；處理參數（積分事件）可修改但必須版本化記錄。一致的積分事件必須應用於整個樣品組。手動積分在 QC 含量測定中通常不可接受，需有 SOP、主管批准與完整記錄。</li>
+        <li><strong>積分操縱的識別</strong>：削峰、過積分、選擇性使用積分事件、不當比例呈現——均已出現在 FDA Warning Letter 中。適當比例呈現（純度分析需可見基線）是識別積分問題的關鍵。</li>
+    </ul>
+</div>
+
+</div><!-- end main-container -->
+
+</body>
+</html>

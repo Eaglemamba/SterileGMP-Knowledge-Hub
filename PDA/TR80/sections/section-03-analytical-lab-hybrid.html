@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TR80 - Section 3: Analytical QC Lab &amp; Hybrid Systems</title>
+    <style>
+    /* =============================================================
+       PDA Educational Material - Shared CSS Template
+       Version: 2.0 (for Claude Code automation)
+       Last Updated: 2025
+    ============================================================= */
+
+    :root {
+        --primary-blue: #1e3a5f;
+        --accent-blue: #3498db;
+        --light-gray: #fafafa;
+        --light-blue: #f0f7ff;
+        --yellow-start: #fff9e6;
+        --yellow-end: #fff3cd;
+        --green-bg: #e8f5e9;
+        --green-border: #4caf50;
+        --orange-bg: #fff3e0;
+        --orange-border: #ff9800;
+        --purple-bg: #f3e5f5;
+        --purple-border: #9c27b0;
+        --text-dark: #2d3748;
+        --text-medium: #4a5568;
+        --header-height: 60px;
+        --nav-height: 50px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+        line-height: 1.75;
+        color: var(--text-dark);
+        background: #f0f2f5;
+    }
+
+    .header {
+        background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+        color: white;
+        padding: 2rem;
+        text-align: center;
+    }
+    .header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+    .header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+    .top-header {
+        background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+        color: white;
+        padding: 1rem 2rem;
+        text-align: center;
+    }
+    .top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+    .top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+
+    .top-nav {
+        background: #2d3748;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    }
+    .nav-container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        max-width: 1600px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    .nav-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.85rem 1rem;
+        color: rgba(255,255,255,0.85);
+        text-decoration: none;
+        white-space: nowrap;
+        border-bottom: 3px solid transparent;
+        transition: all 0.2s ease;
+    }
+    .nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+    .nav-item.active { color: white; border-bottom-color: var(--accent-blue); background: rgba(255,255,255,0.05); }
+    .nav-num {
+        width: 24px; height: 24px;
+        background: rgba(255,255,255,0.15);
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 0.75rem; font-weight: 600;
+    }
+    .nav-item.active .nav-num { background: var(--accent-blue); }
+    .nav-label { font-size: 0.85rem; font-weight: 500; }
+
+    .main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+    .main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+    .chapter-section {
+        background: white;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        overflow: hidden;
+        scroll-margin-top: calc(var(--nav-height) + 1rem);
+    }
+    .chapter-divider {
+        display: flex; align-items: center; gap: 1rem;
+        padding: 1rem 1.5rem;
+        background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+        color: white;
+    }
+    .chapter-badge {
+        width: 45px; height: 45px;
+        background: rgba(255,255,255,0.2);
+        border-radius: 10px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+    }
+    .chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+    .chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+    .chapter-body { padding: 1.5rem; }
+
+    .two-column, .content-grid, .side-by-side {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .left-column, .original-content {
+        background: var(--light-gray);
+        border-radius: 10px;
+        padding: 1.5rem;
+        border: 1px solid #e2e8f0;
+    }
+    .left-column h2, .left-column h3,
+    .original-content h2, .original-content h3 {
+        color: var(--primary-blue);
+        border-bottom: 2px solid #3182ce;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+    }
+    .left-column p, .original-content p {
+        margin-bottom: 0.85rem;
+        text-align: justify;
+        font-size: 0.95rem;
+    }
+    .left-column ul, .left-column ol,
+    .original-content ul, .original-content ol {
+        margin: 0.75rem 0 0.75rem 1.5rem;
+        font-size: 0.95rem;
+    }
+    .left-column li, .original-content li { margin-bottom: 0.5rem; }
+
+    .right-column, .commentary {
+        background: var(--light-blue);
+        border-radius: 10px;
+        padding: 1.5rem;
+        border: 1px solid #bee3f8;
+    }
+    .right-column h2, .right-column h3,
+    .commentary h2, .commentary h3 {
+        color: #2c5282;
+        border-bottom: 2px solid #63b3ed;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+    }
+    .right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+    .key-term, .highlight-term {
+        background: linear-gradient(to right, #d4edda, #c3e6cb);
+        padding: 1px 6px;
+        border-radius: 4px;
+        font-weight: 600;
+        color: #155724;
+        font-size: 0.9em;
+    }
+
+    .quote-box, .important-quote {
+        background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+        border-left: 4px solid #3182ce;
+        padding: 1rem 1.25rem;
+        margin: 1rem 0;
+        border-radius: 0 8px 8px 0;
+        font-style: italic;
+        font-size: 0.95rem;
+    }
+
+    .concept-box, .analogy-box, .note-box, .key-note,
+    .term-box, .formula-box, .key-term-box, .key-point-box, .highlight-box {
+        border-radius: 8px !important;
+        padding: 1rem 1.25rem !important;
+        margin-bottom: 1rem !important;
+        font-size: 0.92rem !important;
+        line-height: 1.7 !important;
+    }
+    .concept-box h3, .concept-box h4,
+    .analogy-box h3, .analogy-box h4,
+    .note-box h3, .note-box h4,
+    .key-note h3, .key-note h4,
+    .term-box h3, .term-box h4,
+    .formula-box h3, .formula-box h4,
+    .key-term-box h3, .key-term-box h4,
+    .key-point-box h3, .key-point-box h4,
+    .highlight-box h3, .highlight-box h4 {
+        margin-bottom: 0.6rem !important;
+        font-size: 0.95rem !important;
+        font-weight: 600 !important;
+    }
+    .concept-box p, .analogy-box p, .note-box p, .key-note p,
+    .term-box p, .formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+        margin-bottom: 0.5rem !important;
+        font-size: 0.92rem !important;
+    }
+    .concept-box ul, .concept-box ol,
+    .analogy-box ul, .analogy-box ol,
+    .note-box ul, .note-box ol,
+    .term-box ul, .term-box ol,
+    .formula-box ul, .formula-box ol,
+    .key-point-box ul, .key-point-box ol {
+        margin: 0.5rem 0 0.5rem 1.25rem !important;
+        font-size: 0.92rem !important;
+    }
+    .concept-box li, .analogy-box li, .note-box li, .term-box li,
+    .formula-box li, .key-point-box li {
+        margin-bottom: 0.35rem !important;
+        font-size: 0.92rem !important;
+    }
+
+    .analogy-box {
+        background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+        border-left: 4px solid #f6ad55 !important;
+    }
+    .analogy-box h3, .analogy-box h4 { color: #856404 !important; }
+
+    .concept-box {
+        background: var(--green-bg) !important;
+        border-left: 4px solid var(--green-border) !important;
+    }
+    .concept-box h3, .concept-box h4 { color: #2e7d32 !important; }
+
+    .note-box, .key-note, .key-point-box, .highlight-box {
+        background: var(--orange-bg) !important;
+        border-left: 4px solid var(--orange-border) !important;
+    }
+    .note-box h3, .note-box h4,
+    .key-note h3, .key-note h4,
+    .key-point-box h3, .key-point-box h4,
+    .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+    .formula-box {
+        background: var(--purple-bg) !important;
+        border-left: 4px solid var(--purple-border) !important;
+    }
+    .formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+
+    .practice-box {
+        background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+        border: 2px dashed #3182ce !important;
+        border-radius: 10px !important;
+        padding: 1.25rem !important;
+        margin: 1.25rem 0 !important;
+        font-size: 0.92rem !important;
+    }
+    .practice-box h3, .practice-box h4 {
+        color: #2c5282 !important;
+        margin-bottom: 0.75rem !important;
+        font-size: 0.95rem !important;
+        font-weight: 600 !important;
+    }
+    .practice-box p, .practice-box li { font-size: 0.92rem !important; }
+    .practice-box ul, .practice-box ol {
+        margin: 0.5rem 0 0.5rem 1.25rem !important;
+    }
+
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+    th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+    th {
+        background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+        font-weight: 600;
+        color: var(--primary-blue);
+        font-size: 0.85rem;
+    }
+    tr:nth-child(even) { background: #f7fafc; }
+
+    .learning-objectives {
+        background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+        border-radius: 10px;
+        padding: 1.25rem;
+        margin-bottom: 1.5rem;
+    }
+    .learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+    .learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+    .learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+    .section-title, .section-divider {
+        font-size: 1.1rem;
+        color: var(--primary-blue);
+        margin: 1.5rem 0 1rem;
+        padding: 0.75rem 1rem;
+        background: linear-gradient(to right, #ebf4ff, #dbeafe);
+        border-left: 4px solid var(--accent-blue);
+        border-radius: 0 8px 8px 0;
+        font-weight: 600;
+    }
+
+    .warning-box {
+        background: #fff5f5 !important;
+        border-left: 4px solid #e53e3e !important;
+        border-radius: 8px !important;
+        padding: 1rem 1.25rem !important;
+        margin-bottom: 1rem !important;
+        font-size: 0.92rem !important;
+    }
+    .warning-box h3, .warning-box h4 { color: #c53030 !important; margin-bottom: 0.6rem !important; font-weight: 600 !important; }
+    .warning-box ul { margin: 0.5rem 0 0.5rem 1.25rem !important; }
+    .warning-box li { margin-bottom: 0.35rem !important; font-size: 0.92rem !important; }
+
+    @media (max-width: 768px) {
+        .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Section 6.0–6.2: Analytical QC Laboratory &amp; Hybrid Systems</h1>
+    <div class="subtitle">分析品質管制實驗室與混合系統</div>
+    <div class="page-info">PDA Technical Report No. 80 (2018) | p19 - p22</div>
+</div>
+
+<div class="main-content">
+
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>說明分析品質管制實驗室（Analytical QC Lab）在資料完整性管理上的獨特挑戰與風險因素。</li>
+        <li>區分簡單系統（Simple System）、混合系統（Hybrid System）與複雜電子系統（Complex Electronic System）三種資料獲取模式的差異。</li>
+        <li>辨識混合系統（Hybrid System）的定義特徵，並解釋 Figure 6.2-1 所描述的資料流程架構。</li>
+        <li>列舉混合系統在資料完整性方面的主要風險項目，包括追溯性缺失與稽核軌跡不完整問題。</li>
+        <li>描述混合系統資格確認（Qualification）的重點要求，包括資料格式、備份、跨平台能力及生命週期管理。</li>
+    </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 6.0 / 6.1 -->
+<!-- ============================================================ -->
+<div class="section-title">6.0 Data Integrity in the Analytical Quality Control Laboratory &amp; 6.1 General Considerations and Risks</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><strong>6.0 Data Integrity in the Analytical Quality Control Laboratory</strong><br>
+        <strong>6.1 General Considerations and Risks</strong></p>
+
+        <p>Manual and electronic data generated within the <span class="key-term">analytical quality control laboratory</span> (chemical and physical testing) should be maintained and reported in a manner that ensures compliance with CGMP, as well as with the FDA's measure of being <span class="key-term">attributable, legible, contemporaneous, original, and accurate (ALCOA)</span> (2).</p>
+
+        <p>This compliance is accomplished through the implementation of robust controls, beginning with the establishment of policies and procedures aligned with regulatory requirements, and a <span class="key-term">data governance</span> process that ensures the data for health products are reliable enough to make a case in court (36).</p>
+
+        <p>Factors affecting data integrity include <span class="key-term">risk-based governance</span> of laboratory data processes; appropriate validation of test methods; controls on the computerized system; and training and education of analysts, reviewers, and individuals involved in the testing or review of laboratory testing operations.</p>
+
+        <p>Some firms have implemented a <span class="key-term">laboratory data governance manual</span> as one way of addressing the complexities within an analytical QC laboratory. A document of this type can be used as a roadmap, guiding the user through the manual and electronic data governance processes in place from the point of sample receipt to the time of data reporting. Associated equipment, logbooks, and procedural controls can be referenced and the overall laboratory flow for samples and data can be outlined. Flowcharts of various analytical equipment data handling and/or processes can be presented for quick reference and verification to evaluate the quality and data integrity risks. Flow charts are also useful in applying principles of quality risk management as noted in <span class="key-term">ICH Q9</span> (37).</p>
+
+        <p>In order to understand data integrity risks within the laboratory, it is important to understand the types of data being generated and the systems in place that impact and control data integrity. The associated data acquisition processes may range from simple systems to complex:</p>
+        <ul>
+            <li><strong>Simple systems</strong>, where data is recorded manually;</li>
+            <li><strong>Hybrid systems</strong>, where the equipment or instruments generate both source electronic data and a paper printout of the data;</li>
+            <li><strong>Complex systems</strong>, where all the data is generated, processed, recorded and maintained electronically.</li>
+        </ul>
+
+        <p>Original records include <span class="key-term">source data and all metadata</span> and must be recorded contemporaneous with the GXP step or event, whether the process and data are manual/paper or automated/electronic. When source data is generated electronically via an analog signal and then converted to a digital signal and/or transferred from a source system with limited storage capabilities, such as a mobile device, or to a storage database, such as an electronic data capture, then <span class="key-term">end-to-end data process governance</span> and verification controls must ensure that what is stored in the database is a complete and accurate copy of the source data and all metadata and allows for full reconstruction of the data process. Specific attention should be given to establishing controls that prevent and detect the alteration, corruption, or deletion of the data in <span class="key-term">temporary memory or transient locations</span>, including proper security and verification of the complete data flow (27).</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h3>核心概念：ALCOA 原則在 QC 實驗室的基礎地位</h3>
+            <p><strong>ALCOA</strong> 是美國 FDA 對資料品質的五大要求縮寫：</p>
+            <ul>
+                <li><strong>A</strong>ttributable（可歸責）— 每筆記錄必須清楚標示執行者與時間</li>
+                <li><strong>L</strong>egible（清晰可讀）— 手寫或列印記錄均須清楚且持久</li>
+                <li><strong>C</strong>ontemporaneous（即時記錄）— 在執行步驟當下立刻記錄，不可事後補填</li>
+                <li><strong>O</strong>riginal（原始記錄）— 保存第一手資料，不得只保存謄寫版</li>
+                <li><strong>A</strong>ccurate（正確）— 資料必須如實反映實際情況</li>
+            </ul>
+            <p>部分法規補充了 ALCOA+，增加 Complete（完整）、Consistent（一致）、Enduring（持久）、Available（可取得）。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h3>類比說明：「法庭證據」標準</h3>
+            <p>原文提到資料必須「reliable enough to make a case in court」（可靠到足以在法庭上作為證據）。這個比喻非常貼切——製藥公司的資料在 FDA 稽查或訴訟中確實可能被視為法律文件。一旦資料缺乏追溯性或被竄改，輕則收到 Warning Letter，重則面臨產品下架或刑事指控。</p>
+        </div>
+
+        <div class="concept-box">
+            <h3>三種資料獲取系統的比較</h3>
+            <table>
+                <tr>
+                    <th>系統類型</th>
+                    <th>描述</th>
+                    <th>範例</th>
+                    <th>DI 複雜度</th>
+                </tr>
+                <tr>
+                    <td>Simple（簡單）</td>
+                    <td>純手動記錄，無電子元件</td>
+                    <td>手寫計時表</td>
+                    <td>低，但易有人為錯誤</td>
+                </tr>
+                <tr>
+                    <td>Hybrid（混合）</td>
+                    <td>同時產生電子來源資料與紙本列印</td>
+                    <td>pH 計、天平、自動滴定儀</td>
+                    <td>高，稽核軌跡不完整</td>
+                </tr>
+                <tr>
+                    <td>Complex（複雜）</td>
+                    <td>全電子化資料管理</td>
+                    <td>HPLC（連線電腦）</td>
+                    <td>高，需完整系統驗證</td>
+                </tr>
+            </table>
+            <p>混合系統被視為最棘手的類別，因為它跨越紙本與電子兩個世界，容易出現資料流失或竄改的盲點。</p>
+        </div>
+
+        <div class="note-box">
+            <h3>重要提醒：暫存記憶體（Transient Data）的風險</h3>
+            <p>原文特別強調「temporary memory or transient locations」的風險。許多儀器在資料正式寫入儲存前，先暫存於緩衝區（buffer）或 RAM 中——這段過程中若發生斷電、覆寫或人為介入，資料即告遺失且無法追溯。企業必須評估從訊號產生到最終儲存的完整端對端（end-to-end）資料流。</p>
+        </div>
+
+        <div class="practice-box">
+            <h3>實務應用：實驗室資料治理手冊（Laboratory Data Governance Manual）</h3>
+            <p>TR80 建議企業建立一本「資料治理手冊」作為路線圖，涵蓋：</p>
+            <ul>
+                <li>從樣品接收到最終報告的完整流程</li>
+                <li>各類儀器的資料處理流程圖（flowchart）</li>
+                <li>設備、記錄簿與程序管制的相互參照</li>
+                <li>依 ICH Q9 風險管理原則評估 DI 風險點</li>
+            </ul>
+            <p>這份手冊不是單一 SOP，而是整個 QC 實驗室 DI 管理架構的「主索引」，稽查員常會要求查閱。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 6.2 -->
+<!-- ============================================================ -->
+<div class="section-title">6.2 Hybrid Systems</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>A <span class="key-term">hybrid system</span> refers to analytical equipment for which both electronic and paper documentation combine to build the record. Analytical balances, autotitrators, polarimeters, dissolution apparatus, and pH meters, for example, are instruments managed by firmware that provide paper records. Per MHRA, balances and pH meters without software are considered simple systems (5). To comply with regulatory requirements, a firm must ensure that the original data generated is retained and/or that the record archived represents a true copy of the data (2).</p>
+
+        <p>Several models of the above-listed equipment (balance, auto titrator, polarimeter, dissolution apparatus, and pH meter) with various functionalities are available in the market. Equipment with features including software, audit trail functionality, and storage capacity along with equipment with firmware, without electronic audit trail storage capacity, are considered <span class="key-term">analytical laboratory computerized systems (ALCS)</span>. For example, if a laboratory uses a balance connected to a computer or with integrated software, this balance qualifies as ALCS (discussed further in Section 6.3) and is not in the scope of hybrid systems. As shown in Figure 6.2-1, simple systems with or without analytical data storage capability are both considered to be hybrid systems.</p>
+
+        <div style="background:#f8f9fa; border:1px solid #dee2e6; border-radius:8px; padding:1.25rem; margin:1rem 0; font-size:0.9rem;">
+            <strong>Figure 6.2-1: Data Flow in Hybrid Analytical Systems</strong><br><br>
+            <strong>Simple Systems (No data storage/display or print-outs)</strong><br>
+            Examples: analytical scale, pH meter<br>
+            Controls: Strict controls on date and time change, equipment log books for analyst traceability<br><br>
+            <strong>Systems with Data Storage Capability</strong><br>
+            Examples: titrators, dissolution apparatus<br>
+            Controls: Periodic checks of stored data, Data Backup and verification, periodic reconciliation of data; control of date and time, equipment log books for analyst traceability; commensurate with risks and in accordance with CGxP requirements<br><br>
+            <em>Both categories above = Hybrid Analytical Equipment</em>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h3>混合系統的定義關鍵：韌體（Firmware）與軟體（Software）的分野</h3>
+            <p><strong>Firmware（韌體）</strong>：燒錄在儀器晶片內的固定程式，使用者無法修改功能，也無法安裝外部軟體——例如傳統天平、pH 計的內建程式。</p>
+            <p><strong>Software（軟體）</strong>：可安裝、升級、設定的程式，例如 HPLC 的資料工作站（Empower、Chromeleon）。</p>
+            <p>一旦天平或 pH 計連接電腦或安裝軟體，就升級為 ALCS（分析實驗室電腦化系統），適用更嚴格的系統驗證要求，不再屬於混合系統的管理範疇。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h3>類比說明：混合系統就像「底片相機加數位列印」</h3>
+            <p>想像一台底片相機（firmware-driven）：它確實會產生影像（類比訊號轉為化學顯影），但要看到影像必須沖洗成紙本（列印輸出）。如果只保存照片而丟棄底片，你無法驗證照片是否被修改。混合系統同理——電子來源資料（底片）才是原始記錄，紙本（列印）只是呈現方式。但很多企業卻只保留列印結果，這正是 FDA 稽查的重點缺失。</p>
+        </div>
+
+        <div class="concept-box">
+            <h3>Figure 6.2-1 資料流圖解析：兩類混合系統的管制差異</h3>
+            <p>TR80 的 Figure 6.2-1 將混合系統分為兩個子類：</p>
+            <ul>
+                <li><strong>無儲存能力的簡單系統</strong>（如傳統天平、pH 計）：無電子稽核軌跡，管制重點在於<em>嚴格管控日期/時間設定</em>與<em>記錄簿（logbook）可追溯性</em>。</li>
+                <li><strong>具資料儲存能力的系統</strong>（如自動滴定儀、溶出試驗儀）：除上述控制外，還需進行<em>定期儲存資料核查</em>、<em>資料備份與驗證</em>，以及<em>設備儲存結果與記錄簿之間的定期核對（reconciliation）</em>。</li>
+            </ul>
+            <p>兩類系統的管制深度不同，但共同點是：紙本列印不得作為唯一原始記錄。</p>
+        </div>
+
+        <div class="note-box">
+            <h3>監管視角：MHRA 的分類標準</h3>
+            <p>原文引用 MHRA（英國藥品與保健產品監管局）的規定：<strong>沒有軟體的天平與 pH 計視為簡單系統</strong>。這個細節很重要——同一型號的天平，若配備了 USB 輸出軟體或連接電腦，立刻改變其監管分類，需要更高層次的驗證與管制。企業在採購設備時，必須事先釐清設備的功能組合及其對應的分類。</p>
+        </div>
+
+        <div class="practice-box">
+            <h3>實務應用：設備採購前的分類評估清單</h3>
+            <ul>
+                <li>該儀器使用 firmware 還是可安裝軟體？</li>
+                <li>是否具備稽核軌跡（audit trail）功能？</li>
+                <li>是否能儲存電子資料（有無儲存容量）？</li>
+                <li>是否連接外部電腦或網路？</li>
+                <li>以上任一「是」→ 考慮歸類為 ALCS，需要正式的電腦化系統驗證（CSV）。</li>
+                <li>全部「否」但有列印功能 → 歸類為混合系統，需按 6.2.2 進行資格確認。</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 6.2.1 -->
+<!-- ============================================================ -->
+<div class="section-title">6.2.1 Hybrid Systems — Associated Risks</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>The major risks associated with data integrity in the data governance of laboratory <span class="key-term">hybrid systems</span> should be monitored by quality personnel on a regular basis and include, but are not limited to, the following:</p>
+
+        <ul>
+            <li>Lack of traceability for all the data generated (lack of password control, lack of <span class="key-term">audit trail</span> capability and/or intentional inactivation of audit trail, and vulnerability of date and time to manual change)</li>
+            <li>Lack of understanding of the functionality and available features</li>
+            <li>Lack of second-person review</li>
+            <li><span class="key-term">Testing into compliance</span> or duplicate prints of the same record</li>
+            <li>Poor restoration, backup, or single-point failure (hard drive)</li>
+            <li>Lack of controls to retain source electronic data and data that is "complete" and includes all metadata, which may be due to access to the computer clock, recycle bin, and data files in operating system files</li>
+            <li>Lack of adequate second-person verification that printed data is a true copy of original data or a representative summary of the source electronic data, including all metadata and results</li>
+        </ul>
+
+        <p>Many of these risks also occur in full electronic systems if adequate controls are not in place.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="warning-box">
+            <h3>高風險警示：混合系統的七大資料完整性弱點</h3>
+            <p>TR80 列出的七項風險並非理論清單，而是 FDA Warning Letter 中反覆出現的真實缺失。以下逐項解析其危害性：</p>
+        </div>
+
+        <div class="concept-box">
+            <h3>風險 1：缺乏追溯性（Lack of Traceability）</h3>
+            <p>混合系統最根本的弱點在於無法追溯「誰、何時、做了什麼」。具體表現包括：</p>
+            <ul>
+                <li>無密碼管控 → 多人共用帳號，無法歸責</li>
+                <li>無稽核軌跡功能或蓄意關閉 → 操作歷史被抹去</li>
+                <li>日期/時間可手動修改 → 分析時間可被回溯竄改</li>
+            </ul>
+            <p>這三點直接違反 ALCOA 中的「Attributable（可歸責）」與「Contemporaneous（即時）」要求。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h3>類比說明：「Testing into Compliance」是什麼？</h3>
+            <p>想像一個分析師測試溶出度，第一次結果不符規格，他重新取樣做第二次——但只列印第二次（合格）的結果，把第一次記錄丟棄或不上報。這就是「testing into compliance」（測試至符規）。混合系統的紙本列印特性讓這種行為難以被發現：同一儀器可以重複列印，或者只選擇性列印合格結果。</p>
+        </div>
+
+        <div class="note-box">
+            <h3>風險 5：單點故障（Single-Point Failure）</h3>
+            <p>許多混合系統將資料儲存在儀器本身的硬碟或 SD 卡中，沒有異地備份。一旦硬碟損壞，所有歷史資料永久遺失。這不僅是資料完整性問題，也是合規風險——FDA 要求記錄必須在規定保存期限內隨時可取得。</p>
+        </div>
+
+        <div class="note-box">
+            <h3>風險 6：作業系統層級的資料暴露</h3>
+            <p>原文特別提到「access to the computer clock, recycle bin, and data files in operating system files」。這代表若分析師可以進入 Windows 系統的回收桶、系統時鐘設定、或直接存取儀器資料夾，就能在不留痕跡的情況下刪除或修改資料。這就是為何分析師的電腦權限管控（OS-level access control）至關重要。</p>
+        </div>
+
+        <div class="concept-box">
+            <h3>第二人審查（Second-Person Review）的特殊重要性</h3>
+            <p>混合系統中，列印輸出與電子來源資料之間的一致性驗證，必須由另一名有資格的人員確認：</p>
+            <ul>
+                <li>列印結果是否包含所有元數據（metadata）？</li>
+                <li>列印結果是否為完整且未經選取的原始資料？</li>
+                <li>計算結果是否與儀器直接輸出一致？</li>
+            </ul>
+            <p>在全電子化系統中，稽核軌跡可自動紀錄這些；但混合系統依賴人工確認，因此第二人審查是不可省略的程序補償措施。</p>
+        </div>
+
+        <div class="practice-box">
+            <h3>實務應用：混合系統 DI 自查問卷（Quality Unit 定期核查清單）</h3>
+            <ul>
+                <li>儀器是否有唯一使用者帳號與密碼？</li>
+                <li>日期/時間是否鎖定，無法由使用者修改？</li>
+                <li>列印輸出是否包含完整元數據（樣品 ID、批號、計算值、原始數值）？</li>
+                <li>是否有記錄簿記錄每次分析與對應列印輸出？</li>
+                <li>是否有第二人確認列印輸出為來源資料的真實副本？</li>
+                <li>是否有備份機制，且已定期測試資料還原？</li>
+                <li>是否有定期核對儀器儲存資料與記錄簿記錄的一致性？</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 6.2.2 -->
+<!-- ============================================================ -->
+<div class="section-title">6.2.2 Hybrid Systems — Qualification</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Most vendors provide a standard validation protocol defining the functional criteria and controls of the hybrid system. The firm's <span class="key-term">Quality Unit</span> is responsible for ensuring that these controls, validation criteria, and instrument operational qualifications are properly understood and implemented. If required, the Quality Unit should implement company-designed controls to govern the intended use of the system. Please note that all types of data have the potential for manipulation, particularly in CSV text or PDF format. Some additional examples of limitations that should be checked are:</p>
+
+        <ul>
+            <li><strong>Data format and storage capacity.</strong> The data storage format, limits, and storage capacity should be known to identify possible risks, e.g., data that is not stored in its original format, or can be formatted in "CSV," "Unix code formatter," or saved as a spreadsheet or PDF. Systems with insufficient data storage capacity may result in data being overwritten or not saved.</li>
+            <li><strong>Data backup and archival capabilities.</strong> The process of data backup, archival, and retrieval of data should be controlled and tested. Ideally, backups will be automated to eliminate errors and/or incomplete data transfer.</li>
+            <li><strong>Cross-platform data capabilities.</strong> The requirements for viewing, printing, or analyzing data on a computer should be known and tested, e.g., if the data is stored in CSV text or PDF format, it may be viewed directly. Most data (such as Karl Fischer equipment for measuring moisture) may require installation of a specific software program to store and interpret this data; in that case, software validation may be required, and the software should be checked for additional features, such as data compatibility with commonly used software (e.g., PDF generators and spreadsheets).</li>
+            <li><strong>Data integrity when copied to computer.</strong> If data or results are being copied to a computer, the possibility of data manipulation must be tested to define the controls and limitations for data copying and printing; for example, if the data is stored in spreadsheet format, the date and time of acquisition, identity, result, etc., might be open to manipulation.</li>
+            <li><strong>Data handling.</strong> If an analytical instrument (e.g., balance) does not have the functional capability to store and manage the data or the critical metadata, the printed data may be considered as the original record, only when that record is a complete and accurate copy of the complete data and metadata generated by the instrument. Firms engaged in the manufacture and testing of pharmaceutical products who process information electronically should have laboratory equipment that meets CGMP standards for the processing and maintenance of electronic data. The entire <span class="key-term">end-to-end data handling process</span>, from the point of generation of the electronic signal in the source system through to final decision-making based upon this source data, needs to be assessed for data integrity risks and designed to reduce these risks through a combination of appropriate technical and procedural controls. The Quality Unit is ultimately responsible for ensuring that appropriate procedures are in place for storing and protecting electronic records and restricting access to those files. One best practice is to identify an independent system administrator with specialized expertise to be responsible for storing and protecting electronic records.</li>
+            <li><strong>Results output.</strong> The results from hybrid systems (pH meters, balances, and titrators) should be printed with <span class="key-term">date-and-time stamp, raw data, metadata, measurement values, sample identity, batch number, file names, and calculated values</span>.</li>
+            <li><strong>Backup and data review.</strong> For hybrid systems that are not connected to computers, ideally a report (event log) can be printed (meaning published in PDF) with every analysis or, at least, printed periodically. Publishing or viewing event logs may not always be possible on hybrid analytical equipment; therefore, data integrity should be ensured by periodic Quality Unit checks for date and time breaches, data breaches, weights-on-results calculations vs. analytical scale printouts, checks against the timing of other instruments, and periodic data reconciliation (results stored on the instrument vs. recorded in an equipment logbook). Any breach in data or of established laboratory criteria should be investigated according to laboratory SOPs and applicable regulatory guidance.</li>
+            <li><strong>Data lifecycle management.</strong> Periodic data backups, if applicable, should be implemented and archived. Archived data should be stored according to Quality Unit procedures. Archived data is generally stored off-site and should be checked for ease of data retrieval. Backup data should be more readily accessible.</li>
+        </ul>
+
+        <p>Deficiencies that have been cited in <span class="key-term">FDA Warning Letters</span> include:</p>
+        <ul>
+            <li>Investigators found that laboratory analysts did not document the balance weights at the time of sample weighing. Specifically, sample weights used in calculations were created after the chromatographic runs (38).</li>
+            <li>A review of the Karl Fischer electronic records revealed an OOS result that was not reported. The passing results reported on the data sheets were generated from another sample tested an hour after the initial OOS results were obtained on the same day (39).</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h3>資格確認（Qualification）vs. 驗證（Validation）的區別</h3>
+            <p>在混合系統的語境中，TR80 使用「qualification」而非「validation」，原因在於：</p>
+            <ul>
+                <li><strong>Qualification（資格確認）</strong>：確認儀器硬體及韌體功能符合設計規格（IQ/OQ/PQ）。適用於儀器設備層級。</li>
+                <li><strong>Validation（驗證）</strong>：確認整個資料處理流程（含軟體）符合預定用途。適用於連接電腦的 ALCS 系統。</li>
+            </ul>
+            <p>混合系統的資格確認雖然要求較低，但 QA 必須確認廠商提供的驗證文件確實涵蓋公司的實際使用情境，不能照單全收。</p>
+        </div>
+
+        <div class="note-box">
+            <h3>高風險格式警告：CSV 與 PDF 的可竄改性</h3>
+            <p>原文特別強調「all types of data have the potential for manipulation, particularly in CSV text or PDF format」。這是因為：</p>
+            <ul>
+                <li><strong>CSV 檔案</strong>：純文字格式，可在 Excel 或記事本中直接編輯，無任何格式保護機制。</li>
+                <li><strong>PDF 檔案</strong>：雖然視覺上難以修改，但可用 Adobe Acrobat 或線上工具編輯內容。</li>
+            </ul>
+            <p>因此，以這些格式儲存的分析資料，必須配合額外的程序管制（如雜湊值核驗、唯讀儲存、訪問權限限制）才能確保完整性。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h3>類比說明：結果輸出的「最低必要元素」如同發票</h3>
+            <p>TR80 要求列印輸出必須包含「日期時間戳記、原始數據、元數據、測量值、樣品身份、批號、檔案名稱、計算值」——這就像一張合法發票必須包含交易日期、品項、數量、單價、總金額、買賣方資訊才有法律效力。缺少任何一項，整筆記錄的可信度與法規合規性都會受到質疑。</p>
+        </div>
+
+        <div class="concept-box">
+            <h3>資料生命週期管理：備份 vs. 封存的差異</h3>
+            <p>TR80 區分了 Backup（備份）與 Archive（封存）兩個概念：</p>
+            <table>
+                <tr>
+                    <th>項目</th>
+                    <th>Backup 備份</th>
+                    <th>Archive 封存</th>
+                </tr>
+                <tr>
+                    <td>目的</td>
+                    <td>快速還原作業（災難復原）</td>
+                    <td>長期法規保存</td>
+                </tr>
+                <tr>
+                    <td>存放位置</td>
+                    <td>易於存取（如本地伺服器）</td>
+                    <td>通常異地儲存（off-site）</td>
+                </tr>
+                <tr>
+                    <td>存取頻率</td>
+                    <td>高（需要時立即可用）</td>
+                    <td>低（定期查核即可）</td>
+                </tr>
+                <tr>
+                    <td>測試要求</td>
+                    <td>定期測試還原成功率</td>
+                    <td>確認資料可檢索性</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="warning-box">
+            <h3>FDA Warning Letter 真實案例分析</h3>
+            <p><strong>案例 1：天平稱量記錄事後補填</strong></p>
+            <p>分析師在跑 HPLC 後才回頭記錄樣品稱量重量，違反了即時記錄（contemporaneous）原則。更嚴重的是，這意味著記錄的重量可能是針對計算結果反推的，而非真實稱量值——這是典型的「使結果符合規格」操作。</p>
+            <p style="margin-top:0.75rem;"><strong>案例 2：Karl Fischer 水分測試隱匿 OOS 結果</strong></p>
+            <p>第一次測試出現超出規格（OOS）結果後，分析師一小時後重新測試並只報告通過的結果。這直接違反 OOS 調查要求（21 CFR 211.192），並可能構成偽造記錄的刑事行為。電子記錄的保存讓 FDA 調查人員得以發現時間線上的異常。</p>
+        </div>
+
+        <div class="concept-box">
+            <h3>獨立系統管理員（Independent System Administrator）最佳實務</h3>
+            <p>TR80 建議指定一名<strong>不涉及實驗室分析作業</strong>的獨立系統管理員，專責電子記錄的儲存與保護。這個設計原則源自「利益衝突迴避」：</p>
+            <ul>
+                <li>若分析師同時擁有管理員權限，他可以刪除自己的錯誤記錄而不留痕跡。</li>
+                <li>獨立管理員制度將資料存取權與分析操作權分離，形成相互制衡。</li>
+                <li>這也是 21 CFR Part 11 中「系統存取控制」要求的具體落實。</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h3>實務應用：混合系統資格確認稽查要點</h3>
+            <p>當稽查員審查混合系統時，通常會要求提供以下文件與證據：</p>
+            <ul>
+                <li>設備 IQ/OQ/PQ 文件，確認廠商 validation protocol 的覆蓋範圍</li>
+                <li>資料格式清單（CSV、PDF、proprietary format？）及其對應的管制措施</li>
+                <li>資料備份 SOP 及最近一次備份還原測試記錄</li>
+                <li>日期/時間設定的管控記錄（誰有權限修改？有無鎖定機制？）</li>
+                <li>結果列印輸出樣本（確認包含所有必要元數據）</li>
+                <li>OOS 調查完整記錄（比對電子存檔與紙本報告的時間線）</li>
+                <li>系統管理員職責說明文件與存取權限矩陣</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION SUMMARY -->
+<!-- ============================================================ -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>6.0/6.1 QC 實驗室 DI 基礎</strong>：所有手動與電子資料均須符合 ALCOA 原則；企業應建立實驗室資料治理手冊作為完整流程的路線圖；資料獲取系統分為簡單、混合、複雜三類，混合系統風險最為複雜。</li>
+        <li><strong>6.2 混合系統定義</strong>：以韌體驅動、同時產生電子來源資料與紙本列印的儀器（天平、pH 計、自動滴定儀、溶出試驗儀等）；一旦連接電腦或安裝軟體，即升級為 ALCS，不再屬於混合系統範疇。</li>
+        <li><strong>6.2.1 混合系統風險</strong>：七大風險核心為「追溯性缺失」，包括無稽核軌跡、日期/時間可竄改、選擇性列印（testing into compliance）、缺乏第二人審查、作業系統層級資料暴露。</li>
+        <li><strong>6.2.2 資格確認要點</strong>：QA 必須評估並管制八大面向——資料格式與儲存容量、備份封存能力、跨平台相容性、複製至電腦的完整性、資料處理方式、結果輸出元素、備份資料審查，以及生命週期管理；並注意 CSV/PDF 格式的高竄改風險。</li>
+        <li><strong>FDA Warning Letter 教訓</strong>：天平稱量事後補填與 OOS 結果隱匿是混合系統最典型的 DI 違規行為，電子記錄保存是發現這類違規的關鍵工具。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+</body>
+</html>

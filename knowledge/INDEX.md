@@ -241,6 +241,12 @@ Terms: CSV (Computer System Validation), GxP, GAMP, computerized system, life cy
 
 ---
 
+## PDA/TR80-Complete.md
+PDA TR80: Data Integrity Management System for Pharmaceutical Laboratories | p1–p53 | 6 (sec4 split 4A/4B)
+Terms: data integrity, ALCS (Analytical Laboratory Computerized System), ALCOA, audit trail, hybrid system, COTS software, HPLC, chromatography, peak integration, manual integration, injection sequence, injection log, system audit trail, application audit trail, method audit trail, results audit trail, sequence audit trail, project audit trail, LDMS (Laboratory Data Management Software), spreadsheet validation, data backup, data governance, environmental monitoring (EM), sterility test, bacterial endotoxin test (BET), interview analysts, contract laboratory, risk assessment, CAPA, data breach remediation, 21 CFR Part 211, MHRA, WHO, FDA guidance
+
+---
+
 ## PDA/TR84-Complete.md
 PDA TR84: Integrating Data Integrity into Manufacturing and Packaging Operations | p1–p57 | 8 (including split appendix)
 Terms: ALCOA+, data integrity, audit trail, 21 CFR Part 11, EU GMP Annex 11, MHRA, data lifecycle, data criticality, data vulnerability, 9-Box grid, DPFM, FMEA, ATRA, access control, system clock, true copy, raw data, EBR, hybrid system, CSV, GDocP, looped memory, Big Data, IoT
@@ -935,6 +941,12 @@ Terms: quality culture, root cause analysis (RCA), human error, skill-based erro
 | Access control, shared logins, system clock / 存取控制、共用帳號、系統時鐘管理 | TR84 |
 | Paper vs electronic vs hybrid system DI controls / 紙本vs電子vs混合系統DI管控 | TR84 |
 | CSV, data backup, true copy, raw data / 電腦系統驗證、資料備份、真實副本 | TR84 + ISPE-GAMP5 |
+| QC laboratory data integrity, ALCS, analytical lab DI / QC實驗室數據完整性、分析實驗室系統 | TR80 |
+| HPLC chromatography audit trail, peak integration DI, injection sequence / HPLC層析稽核追蹤、峰面積積分DI | TR80 |
+| Microbiology lab DI, EM audit, sterility test data integrity, BET / 微生物實驗室DI、環境監控稽核 | TR80 |
+| Hybrid system QC lab, paper electronic mixed lab records / 混合系統品管實驗室、紙本電子混合記錄 | TR80 + TR84 |
+| Spreadsheet validation, LDMS laboratory data management / 試算表驗證、實驗室數據管理軟體 | TR80 |
+| Data integrity remediation, DI breach CAPA, DI investigation / 數據完整性矯正、DI缺口CAPA | TR80 + TR84 |
 | GAMP 5, computerized system validation, software categories, life cycle / GAMP 5、電腦系統確效、軟體類別、生命週期 | ISPE-GAMP5 |
 | GxP software category 1 3 4 5, COTS, custom software, infrastructure / GxP軟體類別、商業現成軟體、客製軟體 | ISPE-GAMP5 |
 | Validation master plan VMP, system validation plan, traceability matrix / 確效主計畫、系統確效計畫、追溯矩陣 | ISPE-GAMP5 |
@@ -1293,7 +1305,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → ISPE/ISPE-Vol5 ★★★ (CDE identification via QRM, 13-column SRA format, risk levels)
 
 **Data Integrity / ALCOA+ / Electronic Records (資料完整性/電子記錄)**
-→ TR84 ★★★ (complete DI framework: 9-Box grid, 13 control areas, ATRA, 54 worked examples, paper/electronic/hybrid) — single primary source
+→ TR84 ★★★ (complete DI framework: 9-Box grid, 13 control areas, ATRA, 54 worked examples, paper/electronic/hybrid) | TR80 ★★★ (QC laboratory-specific DI: ALCS audit trails, chromatography peak integration, microbiology lab, hybrid systems, spreadsheet validation, LDMS, DI breach remediation)
 
 **IT Infrastructure Qualification / GxP IT 基礎設施確效 (IT Infrastructure for Regulated Systems)**
 → ISPE-IT ★★★ (complete IT infrastructure qualification guide: V-model, building block strategy, type/instance qualification, QMS for IT, risk assessment, IQ/OQ, operation/maintenance processes, security, patch management, outsourcing, server/client/network management, periodic review, SOPs — the GAMP companion guide for IT platforms supporting GxP applications) | ISPE-GAMP5 ★★ (CSV lifecycle for applications, references IT infrastructure as foundation layer) | TR84 ★★ (DI controls for computerized systems: access controls, audit trail, system clock — IT infrastructure dependent)
@@ -2398,7 +2410,7 @@ Key terms: leachables, analytical evaluation threshold (AET), leachables specifi
 → USP/USP-1231 ★★★ (comprehensive: PW/WFI/HPW/Pure Steam classification, system design, validation lifecycle, TOC/conductivity/endotoxin limits, biofilm control, Alert/Action Levels) | USP/USP-643 ★★★ (TOC testing procedure) | USP/USP-645 ★★★ (conductivity testing) | USP/USP-1228-4 ★★ (WFI rinsing for depyrogenation)
 
 **Good Documentation / Data Integrity (良好文件/數據完整性)**
-→ USP/USP-1029 ★★★ (primary: ALCOA+ principles, GMP document types, 21 CFR Part 11, correction procedures) | ICH/ICH-Q10 ★★ (pharmaceutical quality system, documentation requirements) | ISPE/ISPE-GAMP5 ★★ (computerized system validation, audit trails)
+→ USP/USP-1029 ★★★ (primary: ALCOA+ principles, GMP document types, 21 CFR Part 11, correction procedures) | ICH/ICH-Q10 ★★ (pharmaceutical quality system, documentation requirements) | ISPE/ISPE-GAMP5 ★★ (computerized system validation, audit trails) | TR80 ★★ (QC laboratory DI controls, ALCS audit trails, LDMS, spreadsheet validation, DI remediation) | TR84 ★★ (manufacturing/packaging DI framework)
 
 **Analytical Instrument Qualification (分析儀器確效)**
 → USP/USP-1058 ★★★ (primary: Group A/B/C classification, DQ/IQ/OQ/PQ lifecycle, Quality Triangle, software validation, change control) — primary source for lab instrument qualification
