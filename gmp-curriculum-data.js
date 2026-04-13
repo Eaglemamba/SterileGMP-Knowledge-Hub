@@ -728,82 +728,73 @@ function buildTopicNetwork(reports) {
 
 /* ── Build department network via topic/subtopic overlap ───────────── */
 function buildDeptNetwork(reports) {
-  // Step 1: collect all resolved docs + union tags per dept
-  const deptAllDocs = {};
-  const deptTagSets = {};
+  // Step 1: Tier 1 (Foundation) required docs per dept
+  const deptT1Docs = {};   // deptId → [{key, title, source, shortName, link, why}]
+  const deptAllCount = {}; // deptId → total resolved doc count (for badge)
+
   departments.forEach(dept => {
-    const docs = [];
+    const tier1 = dept.tiers.find(t => t.level === 1);
+    const t1Docs = [];
+    let allCount = 0;
     dept.tiers.forEach(tier => {
       tier.docs.forEach(d => {
         const r = reports[d.key];
         if (!r || !r.section_map || !r.section_map.length) return;
-        docs.push({ key: d.key, title: r.title || d.key, source: (r.source || '').split(' ')[0], required: d.required, tags: r.tags || [] });
+        allCount++;
+        if (tier.level === 1 && d.required) {
+          const source = (r.source || '').split(' ')[0];
+          const link = (r.folder && r.output_filename) ? `${r.folder}/output/${r.output_filename}` : null;
+          t1Docs.push({ key: d.key, title: r.title || d.key, source, shortName: source || d.key, link, why: d.why });
+        }
       });
     });
-    deptAllDocs[dept.id] = docs;
-    const tagSet = new Set();
-    docs.forEach(d => d.tags.forEach(t => tagSet.add(t)));
-    deptTagSets[dept.id] = tagSet;
+    deptT1Docs[dept.id] = t1Docs;
+    deptAllCount[dept.id] = allCount;
   });
 
-  // Step 2: flatten all subtopics from topicNetworkDef (with cluster metadata)
-  const allSubtopics = [];
-  topicNetworkDef.clusters.forEach(cluster => {
-    cluster.subtopics.forEach(s => {
-      allSubtopics.push({ ...s, clusterName: cluster.name, clusterColor: cluster.color });
+  // Step 2: For each Tier 1 doc key, find all depts that require it
+  const docDeptMap = {}; // key → [{deptId, deptName, deptIcon, deptColor}]
+  departments.forEach(dept => {
+    deptT1Docs[dept.id].forEach(d => {
+      if (!docDeptMap[d.key]) docDeptMap[d.key] = [];
+      docDeptMap[d.key].push({ deptId: dept.id, deptName: dept.name, deptIcon: dept.icon, deptColor: dept.color });
     });
   });
 
-  // Step 3: for each subtopic, find which depts cover it (via tag intersection)
-  const subtopicDeptMap = {};
-  allSubtopics.forEach(s => {
-    subtopicDeptMap[s.id] = departments
-      .filter(dept => s.tags.some(t => deptTagSets[dept.id].has(t)))
-      .map(dept => ({ deptId: dept.id, deptName: dept.name, deptIcon: dept.icon, deptColor: dept.color }));
-  });
-
-  // Step 4: build cluster nodes — sub-nodes are matched topicNetworkDef subtopics
+  // Step 3: Build cluster nodes — sub-nodes are Tier 1 required docs
   const nodes = departments.map(dept => {
-    const dTagSet = deptTagSets[dept.id];
-    const matchedSubtopics = allSubtopics
-      .filter(s => s.tags.some(t => dTagSet.has(t)))
-      .map(s => {
-        const coverage = subtopicDeptMap[s.id];
-        const matchingDocs = deptAllDocs[dept.id]
-          .filter(d => d.tags.some(t => s.tags.includes(t)))
-          .map(d => ({ key: d.key, title: d.title, source: d.source, required: d.required }));
-        return {
-          id: s.id,
-          name: s.name,
-          shortName: s.name,
-          clusterName: s.clusterName,
-          clusterColor: s.clusterColor,
-          deptCoverage: coverage,
-          count: coverage.filter(c => c.deptId !== dept.id).length,
-          docs: matchingDocs,
-        };
-      });
+    const subtopics = deptT1Docs[dept.id].map(d => {
+      const coverage = docDeptMap[d.key] || [];
+      return {
+        id: `${dept.id}__${d.key}`,
+        docKey: d.key,
+        name: d.title,
+        shortName: d.shortName,
+        link: d.link,
+        why: d.why,
+        deptCoverage: coverage,
+        count: coverage.filter(c => c.deptId !== dept.id).length,
+      };
+    });
     return {
       id: dept.id, name: dept.name, nameZh: dept.nameZh, icon: dept.icon, color: dept.color,
-      subtopics: matchedSubtopics,
-      count: deptAllDocs[dept.id].length,
+      subtopics,
+      count: deptAllCount[dept.id],
     };
   });
 
-  // Step 5: crossLinks — dept pairs sharing ≥3 subtopics, include shared topic list
+  // Step 4: CrossLinks — dept pairs sharing ≥1 Tier 1 required doc
   const crossLinks = [];
   for (let i = 0; i < departments.length; i++) {
     for (let j = i + 1; j < departments.length; j++) {
       const dA = departments[i], dB = departments[j];
-      const shared = allSubtopics.filter(s =>
-        s.tags.some(t => deptTagSets[dA.id].has(t)) &&
-        s.tags.some(t => deptTagSets[dB.id].has(t))
-      );
-      if (shared.length >= 3) {
+      const keysA = new Set(deptT1Docs[dA.id].map(d => d.key));
+      const shared = deptT1Docs[dB.id].filter(d => keysA.has(d.key));
+      if (shared.length >= 1) {
         crossLinks.push({
           source: dA.id, target: dB.id,
-          label: `${shared.length} topics`, sharedCount: shared.length,
-          sharedTopics: shared.map(s => ({ name: s.name, clusterName: s.clusterName, color: s.clusterColor })),
+          label: `${shared.length} shared`, sharedCount: shared.length,
+          sharedDocs: shared.map(d => ({ key: d.key, title: d.title, source: d.source })),
         });
       }
     }
