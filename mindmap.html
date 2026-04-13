@@ -205,7 +205,7 @@ function renderDeptNetwork(reports) {
   const clusterById = {};
   clusters.forEach(c => clusterById[c.id] = c);
 
-  // Sub-node positions (required docs, initially hidden)
+  // Sub-node positions (topic subtopics, initially hidden)
   const subtopicNodes = [];
   clusters.forEach(c => {
     const sector = (2 * Math.PI) / nClusters;
@@ -329,7 +329,7 @@ function renderDeptNetwork(reports) {
       .on('click', e => { e.stopPropagation(); toggleDept(c.id); });
   });
 
-  // Sub-nodes (required docs, initially hidden)
+  // Sub-nodes (topic subtopics, initially hidden)
   subtopicNodes.forEach(s => {
     const sg = nodeGroup.append('g').attr('class', `dept-sg dept-sg-${s.parentId}`)
       .style('cursor', 'pointer').style('opacity', 0).style('pointer-events', 'none');
@@ -433,37 +433,59 @@ function renderDeptNetwork(reports) {
     g.selectAll('.dept-hub-node').style('opacity', 1);
   }
 
-  /* ── Subtopic tooltip: cross-dept coverage ── */
+  /* ── Subtopic tooltip: topic name + docs in dept + cross-dept coverage ── */
   function showSubtopicTooltip(s, event) {
     const tt = document.getElementById('networkTooltip');
-    const r = reportsData[s.docKey];
-    const link = (r && r.folder && r.output_filename) ? `${r.folder}/output/${r.output_filename}` : null;
 
-    document.getElementById('ttTitle').textContent = s.title;
+    document.getElementById('ttTitle').textContent = s.name;
     document.getElementById('ttCount').textContent = s.deptCoverage.length + ' depts';
     const container = document.getElementById('ttDocs');
     container.innerHTML = '';
 
-    if (link) {
-      const openDiv = document.createElement('div');
-      openDiv.style.cssText = 'margin-bottom:8px;';
-      openDiv.innerHTML = `<a href="${link}" target="_blank" class="tt-doc-link" style="font-size:11px">→ Open document</a>`;
-      container.appendChild(openDiv);
+    // Cluster tag
+    if (s.clusterName) {
+      const clusterTag = document.createElement('div');
+      clusterTag.style.cssText = 'margin-bottom:8px;';
+      clusterTag.innerHTML = `<span style="background:${s.clusterColor}22;color:${s.clusterColor};padding:2px 7px;border-radius:4px;font-size:9px;font-weight:600">${s.clusterName}</span>`;
+      container.appendChild(clusterTag);
     }
 
-    const hdr = document.createElement('div');
-    hdr.style.cssText = 'font-size:9px;font-weight:700;color:#94a3b8;margin:4px 0 4px;text-transform:uppercase;letter-spacing:.5px';
-    hdr.textContent = 'Cross-department coverage';
-    container.appendChild(hdr);
+    // Docs from this dept covering this topic
+    if (s.docs && s.docs.length) {
+      const hdr1 = document.createElement('div');
+      hdr1.style.cssText = 'font-size:9px;font-weight:700;color:#94a3b8;margin:4px 0 4px;text-transform:uppercase;letter-spacing:.5px';
+      hdr1.textContent = 'Documents';
+      container.appendChild(hdr1);
+      s.docs.slice(0, 5).forEach(doc => {
+        const div = document.createElement('div');
+        div.className = 'tt-doc';
+        div.innerHTML = `<span class="tt-src">${doc.source || '—'}</span>
+          <span class="tt-doc-title">${doc.required ? '★ ' : ''}${doc.title}</span>`;
+        container.appendChild(div);
+      });
+      if (s.docs.length > 5) {
+        const more = document.createElement('div');
+        more.style.cssText = 'font-size:9px;color:#94a3b8;margin-top:2px;margin-left:4px';
+        more.textContent = `+${s.docs.length - 5} more`;
+        container.appendChild(more);
+      }
+    }
 
-    s.deptCoverage.forEach(cov => {
-      const div = document.createElement('div');
-      div.className = 'tt-doc';
-      const bullet = cov.required ? '★' : '○';
-      div.innerHTML = `<span class="tt-src" style="background:${cov.deptColor}22;color:${cov.deptColor}">${cov.deptIcon}</span>
-        <span class="tt-doc-title">${bullet} ${cov.deptName} — Tier ${cov.tier} ${cov.tierLabel}</span>`;
-      container.appendChild(div);
-    });
+    // Other depts that also cover this topic
+    const otherDepts = s.deptCoverage.filter(c => c.deptId !== s.parentId);
+    if (otherDepts.length) {
+      const hdr2 = document.createElement('div');
+      hdr2.style.cssText = 'font-size:9px;font-weight:700;color:#94a3b8;margin:8px 0 4px;text-transform:uppercase;letter-spacing:.5px';
+      hdr2.textContent = 'Also covered by';
+      container.appendChild(hdr2);
+      otherDepts.forEach(cov => {
+        const div = document.createElement('div');
+        div.className = 'tt-doc';
+        div.innerHTML = `<span class="tt-src" style="background:${cov.deptColor}22;color:${cov.deptColor}">${cov.deptIcon}</span>
+          <span class="tt-doc-title">${cov.deptName}</span>`;
+        container.appendChild(div);
+      });
+    }
 
     const x = event.clientX || window.innerWidth / 2;
     const y = event.clientY || window.innerHeight / 2;
@@ -805,10 +827,11 @@ function updateLegend(view) {
         `<div><span class="legend-dot" style="background:${d.color}"></span>${d.icon} ${d.name}</div>`
       ).join('')}
       <div style="margin-top:8px;border-top:1px solid var(--c-border);padding-top:6px">
-        <div><span class="legend-line-solid"></span>Shared documents</div>
+        <div><span class="legend-line-solid"></span>Shared topics</div>
+        <div><span class="legend-line"></span>Cross-connection</div>
       </div>
       <div style="margin-top:4px;color:var(--c-tertiary);font-size:10px">
-        Hover to highlight · Click node for full list · Click line for shared docs
+        Hover to highlight · Click dept to expand topics · Click topic for docs
       </div>`;
   } else if (view === 'topic') {
     legend.innerHTML = `
