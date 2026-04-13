@@ -790,17 +790,21 @@ function buildDeptNetwork(reports) {
     };
   });
 
-  // Step 5: crossLinks — dept pairs sharing ≥5 subtopics
+  // Step 5: crossLinks — dept pairs sharing ≥3 subtopics, include shared topic list
   const crossLinks = [];
   for (let i = 0; i < departments.length; i++) {
     for (let j = i + 1; j < departments.length; j++) {
       const dA = departments[i], dB = departments[j];
-      const sharedCount = allSubtopics.filter(s =>
+      const shared = allSubtopics.filter(s =>
         s.tags.some(t => deptTagSets[dA.id].has(t)) &&
         s.tags.some(t => deptTagSets[dB.id].has(t))
-      ).length;
-      if (sharedCount >= 5) {
-        crossLinks.push({ source: dA.id, target: dB.id, label: `${sharedCount} topics`, sharedCount });
+      );
+      if (shared.length >= 3) {
+        crossLinks.push({
+          source: dA.id, target: dB.id,
+          label: `${shared.length} topics`, sharedCount: shared.length,
+          sharedTopics: shared.map(s => ({ name: s.name, clusterName: s.clusterName, color: s.clusterColor })),
+        });
       }
     }
   }
