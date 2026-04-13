@@ -66,6 +66,48 @@ body { margin: 0; padding: 0; font-family: 'Noto Sans TC', -apple-system, sans-s
   border-radius: 50%; animation: spin 0.8s linear infinite;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Network tooltip ────────────────────────────────────── */
+.network-tooltip {
+  display: none; position: fixed; z-index: 1000;
+  background: rgba(30,41,59,0.95); backdrop-filter: blur(8px);
+  border-radius: 12px; padding: 14px 16px; color: white;
+  min-width: 220px; max-width: 340px; max-height: 50vh;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25); overflow-y: auto;
+  font-size: 12px; line-height: 1.6;
+}
+.network-tooltip .tt-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+.network-tooltip .tt-title { font-weight: 700; font-size: 13px; }
+.network-tooltip .tt-count {
+  font-size: 10px; background: rgba(255,255,255,0.15); padding: 2px 8px;
+  border-radius: 10px; font-weight: 600;
+}
+.network-tooltip .tt-doc {
+  padding: 3px 0; display: flex; align-items: baseline; gap: 6px;
+}
+.network-tooltip .tt-src {
+  font-size: 9px; font-weight: 700; padding: 1px 5px; border-radius: 4px;
+  background: rgba(255,255,255,0.12); white-space: nowrap; flex-shrink: 0;
+}
+.network-tooltip .tt-doc-title { font-size: 11px; color: #cbd5e1; }
+.network-tooltip .tt-close {
+  position: absolute; top: 8px; right: 10px; background: none; border: none;
+  color: #94a3b8; font-size: 16px; cursor: pointer; line-height: 1;
+}
+.network-tooltip .tt-close:hover { color: white; }
+
+/* ── Cross-link legend line ─────────────────────────── */
+.legend-line {
+  display: inline-block; width: 20px; height: 0; border-top: 2px dashed #94a3b8;
+  margin-right: 6px; vertical-align: middle;
+}
+.legend-line-solid {
+  display: inline-block; width: 20px; height: 0; border-top: 2px solid #cbd5e1;
+  margin-right: 6px; vertical-align: middle;
+}
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -89,6 +131,14 @@ body { margin: 0; padding: 0; font-family: 'Noto Sans TC', -apple-system, sans-s
 
 <div class="legend" id="legend"></div>
 <div class="stats-bar" id="stats-bar"></div>
+<div class="network-tooltip" id="networkTooltip">
+  <button class="tt-close" onclick="hideTooltip()">&times;</button>
+  <div class="tt-header">
+    <span class="tt-title" id="ttTitle"></span>
+    <span class="tt-count" id="ttCount"></span>
+  </div>
+  <div id="ttDocs"></div>
+</div>
 <svg id="mindmap"></svg>
 
 <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
@@ -121,6 +171,274 @@ function createMarkmap(md, colors) {
   }, root);
 }
 
+/* ── D3 Network Rendering (By Topic view) ────────────────────────── */
+function renderTopicNetwork(reports) {
+  hideTooltip();
+  const svg = d3.select('#mindmap');
+  svg.selectAll('*').remove();
+  currentMM = null;
+
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+  svg.attr('width', width).attr('height', height);
+
+  const network = buildTopicNetwork(reports);
+  const nClusters = network.clusters.length;
+
+  /* ── Layout: radial positions ── */
+  const cx = width / 2;
+  const cy = height / 2;
+  const R = Math.min(width, height) * 0.26;
+  const subOffset = R * 0.48;
+
+  const clusterNodes = network.clusters.map((c, i) => {
+    const angle = (i / nClusters) * 2 * Math.PI - Math.PI / 2;
+    return { ...c, x: cx + R * Math.cos(angle), y: cy + R * Math.sin(angle), angle, type: 'cluster' };
+  });
+  const clusterById = {};
+  clusterNodes.forEach(c => clusterById[c.id] = c);
+
+  const subtopicNodes = [];
+  clusterNodes.forEach(c => {
+    const sector = (2 * Math.PI) / nClusters;
+    const nSubs = c.subtopics.length;
+    c.subtopics.forEach((s, j) => {
+      const spread = sector * 0.72;
+      const subAngle = c.angle - spread / 2 + (nSubs === 1 ? spread / 2 : (j / (nSubs - 1)) * spread);
+      const jitter = (j % 2 === 0 ? 0 : 10);
+      const subR = R + subOffset + jitter;
+      subtopicNodes.push({
+        ...s, parentId: c.id, color: c.color, type: 'subtopic',
+        x: cx + subR * Math.cos(subAngle),
+        y: cy + subR * Math.sin(subAngle),
+      });
+    });
+  });
+
+  /* ── Zoom ── */
+  const g = svg.append('g');
+  const zoom = d3.zoom().scaleExtent([0.25, 5]).on('zoom', e => g.attr('transform', e.transform));
+  svg.call(zoom);
+  svg.on('click', (e) => { if (e.target === svg.node()) hideTooltip(); });
+
+  /* ── Defs: drop shadow ── */
+  const defs = svg.append('defs');
+  const filter = defs.append('filter').attr('id', 'shadow').attr('x', '-30%').attr('y', '-30%').attr('width', '160%').attr('height', '160%');
+  filter.append('feDropShadow').attr('dx', 0).attr('dy', 2).attr('stdDeviation', 3).attr('flood-opacity', 0.15);
+
+  /* ── Layer 1: Cross-links (curved dashed arcs) ── */
+  const crossGroup = g.append('g').attr('class', 'cross-links');
+  network.crossLinks.forEach(cl => {
+    const s = clusterById[cl.source], t = clusterById[cl.target];
+    if (!s || !t) return;
+    const midX = (s.x + t.x) / 2, midY = (s.y + t.y) / 2;
+    const dx = midX - cx, dy = midY - cy;
+    const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+    const curvature = R * 0.35;
+    const ctrlX = midX + (dx / dist) * curvature;
+    const ctrlY = midY + (dy / dist) * curvature;
+
+    crossGroup.append('path')
+      .attr('d', `M${s.x},${s.y} Q${ctrlX},${ctrlY} ${t.x},${t.y}`)
+      .attr('fill', 'none').attr('stroke', '#94a3b8').attr('stroke-width', 1.5)
+      .attr('stroke-dasharray', '6,4').attr('opacity', 0.2)
+      .attr('data-source', cl.source).attr('data-target', cl.target)
+      .attr('class', 'cross-path');
+
+    crossGroup.append('text')
+      .attr('x', ctrlX).attr('y', ctrlY - 5)
+      .attr('text-anchor', 'middle').attr('font-size', '8px').attr('fill', '#64748b')
+      .attr('font-weight', '600').attr('opacity', 0)
+      .attr('data-source', cl.source).attr('data-target', cl.target)
+      .attr('class', 'cross-label')
+      .text(cl.label);
+  });
+
+  /* ── Layer 2: Hierarchical links ── */
+  const linkGroup = g.append('g').attr('class', 'hier-links');
+  // Hub → clusters
+  clusterNodes.forEach(c => {
+    linkGroup.append('line')
+      .attr('x1', cx).attr('y1', cy).attr('x2', c.x).attr('y2', c.y)
+      .attr('stroke', '#cbd5e1').attr('stroke-width', 1.8).attr('opacity', 0.5)
+      .attr('data-cluster', c.id).attr('class', 'hub-link');
+  });
+  // Clusters → sub-topics
+  subtopicNodes.forEach(s => {
+    const parent = clusterById[s.parentId];
+    linkGroup.append('line')
+      .attr('x1', parent.x).attr('y1', parent.y).attr('x2', s.x).attr('y2', s.y)
+      .attr('stroke', s.color).attr('stroke-width', 1.2).attr('opacity', 0.3)
+      .attr('data-cluster', s.parentId).attr('class', 'sub-link');
+  });
+
+  /* ── Layer 3: Nodes ── */
+  const nodeGroup = g.append('g').attr('class', 'nodes');
+
+  // Hub
+  const hubG = nodeGroup.append('g').attr('class', 'hub-node').style('cursor', 'default');
+  hubG.append('circle').attr('cx', cx).attr('cy', cy).attr('r', 36)
+    .attr('fill', '#1e293b').attr('stroke', '#475569').attr('stroke-width', 2)
+    .attr('filter', 'url(#shadow)');
+  hubG.append('text').attr('x', cx).attr('y', cy - 5).attr('text-anchor', 'middle')
+    .attr('fill', 'white').attr('font-size', '12px').attr('font-weight', '700').text('SterileGMP');
+  hubG.append('text').attr('x', cx).attr('y', cy + 11).attr('text-anchor', 'middle')
+    .attr('fill', '#94a3b8').attr('font-size', '9px').text('Knowledge Hub');
+
+  // Cluster nodes
+  clusterNodes.forEach(c => {
+    const cg = nodeGroup.append('g').attr('class', `cluster-group cg-${c.id}`).style('cursor', 'pointer');
+    cg.append('circle').attr('cx', c.x).attr('cy', c.y).attr('r', 28)
+      .attr('fill', c.color).attr('stroke', 'white').attr('stroke-width', 2.5)
+      .attr('filter', 'url(#shadow)');
+    // Count badge
+    cg.append('circle').attr('cx', c.x + 20).attr('cy', c.y - 20).attr('r', 11)
+      .attr('fill', 'white').attr('stroke', c.color).attr('stroke-width', 1.5);
+    cg.append('text').attr('x', c.x + 20).attr('y', c.y - 16).attr('text-anchor', 'middle')
+      .attr('font-size', '9px').attr('font-weight', '700').attr('fill', c.color).text(c.count);
+    // Label
+    const labelY = c.y > cy + 10 ? c.y + 44 : (c.y < cy - 10 ? c.y - 38 : c.y + 44);
+    cg.append('text').attr('x', c.x).attr('y', labelY).attr('text-anchor', 'middle')
+      .attr('font-size', '11px').attr('font-weight', '700').attr('fill', '#1e293b').text(c.name);
+    if (c.nameZh) {
+      cg.append('text').attr('x', c.x).attr('y', labelY + 14).attr('text-anchor', 'middle')
+        .attr('font-size', '9px').attr('fill', '#64748b').text(c.nameZh);
+    }
+    // Interactions
+    cg.on('mouseenter touchstart', (e) => { e.preventDefault(); highlightCluster(c.id); })
+      .on('mouseleave', () => clearHighlight())
+      .on('click', (e) => { e.stopPropagation(); showClusterTooltip(c, e); });
+  });
+
+  // Sub-topic nodes
+  subtopicNodes.forEach(s => {
+    const sg = nodeGroup.append('g').attr('class', `sub-group sg-${s.parentId}`).style('cursor', 'pointer');
+    const r = Math.max(8, Math.min(20, 6 + s.count * 0.6));
+    sg.append('circle').attr('cx', s.x).attr('cy', s.y).attr('r', r)
+      .attr('fill', s.color).attr('opacity', 0.65).attr('stroke', 'white').attr('stroke-width', 1.5);
+    if (s.count > 0) {
+      sg.append('text').attr('x', s.x).attr('y', s.y + 3.5).attr('text-anchor', 'middle')
+        .attr('font-size', '8px').attr('font-weight', '700').attr('fill', 'white').text(s.count);
+    }
+    // Label
+    const angle = Math.atan2(s.y - cy, s.x - cx);
+    const lOff = r + 6;
+    const lx = s.x + lOff * Math.cos(angle);
+    const ly = s.y + lOff * Math.sin(angle);
+    const anchor = (angle > -Math.PI / 2 && angle < Math.PI / 2) ? 'start' : 'end';
+    sg.append('text').attr('x', lx).attr('y', ly + 3).attr('text-anchor', anchor)
+      .attr('font-size', '9px').attr('fill', '#475569').attr('font-weight', '500').text(s.name);
+    // Interactions
+    sg.on('mouseenter touchstart', (e) => { e.preventDefault(); highlightCluster(s.parentId); })
+      .on('mouseleave', () => clearHighlight())
+      .on('click', (e) => { e.stopPropagation(); showSubtopicTooltip(s, e); });
+  });
+
+  /* ── Highlight logic ── */
+  function highlightCluster(clusterId) {
+    const connected = new Set([clusterId]);
+    network.crossLinks.forEach(cl => {
+      if (cl.source === clusterId) connected.add(cl.target);
+      if (cl.target === clusterId) connected.add(cl.source);
+    });
+    // Dim all
+    g.selectAll('.cluster-group').style('opacity', 0.1);
+    g.selectAll('.sub-group').style('opacity', 0.08);
+    g.selectAll('.hub-link').style('opacity', 0.04);
+    g.selectAll('.sub-link').style('opacity', 0.04);
+    g.selectAll('.cross-path').style('opacity', 0.03);
+    g.selectAll('.cross-label').style('opacity', 0);
+    // Brighten connected
+    connected.forEach(cId => {
+      g.selectAll(`.cg-${cId}`).style('opacity', 1);
+      if (cId === clusterId) g.selectAll(`.sg-${cId}`).style('opacity', 1);
+      else g.selectAll(`.sg-${cId}`).style('opacity', 0.5);
+      g.selectAll(`.hub-link[data-cluster="${cId}"]`).style('opacity', 0.5);
+      if (cId === clusterId) g.selectAll(`.sub-link[data-cluster="${cId}"]`).style('opacity', 0.4);
+    });
+    // Brighten cross-links
+    g.selectAll('.cross-path').each(function() {
+      const el = d3.select(this);
+      const src = el.attr('data-source'), tgt = el.attr('data-target');
+      if (src === clusterId || tgt === clusterId) {
+        el.style('opacity', 0.65).attr('stroke', clusterById[clusterId].color).attr('stroke-width', 2.5);
+      }
+    });
+    g.selectAll('.cross-label').each(function() {
+      const el = d3.select(this);
+      if (el.attr('data-source') === clusterId || el.attr('data-target') === clusterId) {
+        el.style('opacity', 1);
+      }
+    });
+    g.selectAll('.hub-node').style('opacity', 0.4);
+  }
+
+  function clearHighlight() {
+    g.selectAll('.cluster-group').style('opacity', 1);
+    g.selectAll('.sub-group').style('opacity', 1);
+    g.selectAll('.hub-link').style('opacity', 0.5);
+    g.selectAll('.sub-link').style('opacity', 0.3);
+    g.selectAll('.cross-path').each(function() {
+      d3.select(this).style('opacity', 0.2).attr('stroke', '#94a3b8').attr('stroke-width', 1.5);
+    });
+    g.selectAll('.cross-label').style('opacity', 0);
+    g.selectAll('.hub-node').style('opacity', 1);
+  }
+
+  /* ── Initial zoom to fit ── */
+  requestAnimationFrame(() => {
+    const bounds = g.node().getBBox();
+    const pad = 80;
+    const scale = Math.min(
+      width / (bounds.width + pad * 2),
+      (height - 60) / (bounds.height + pad * 2),
+      1.2
+    );
+    const tx = width / 2 - (bounds.x + bounds.width / 2) * scale;
+    const ty = (height + 50) / 2 - (bounds.y + bounds.height / 2) * scale;
+    svg.call(zoom.transform, d3.zoomIdentity.translate(tx, ty).scale(scale));
+  });
+}
+
+/* ── Tooltip helpers ────────────────────────────────────────────────── */
+function showClusterTooltip(cluster, event) {
+  const tt = document.getElementById('networkTooltip');
+  const allDocs = new Map();
+  cluster.subtopics.forEach(s => s.docs.forEach(d => allDocs.set(d.key, d)));
+  populateTooltip(cluster.name + ' ' + (cluster.nameZh || ''), allDocs.size, Array.from(allDocs.values()), event);
+}
+
+function showSubtopicTooltip(subtopic, event) {
+  populateTooltip(subtopic.name, subtopic.count, subtopic.docs || [], event);
+}
+
+function populateTooltip(title, count, docs, event) {
+  const tt = document.getElementById('networkTooltip');
+  document.getElementById('ttTitle').textContent = title;
+  document.getElementById('ttCount').textContent = count + ' docs';
+  const container = document.getElementById('ttDocs');
+  container.innerHTML = '';
+  docs.sort((a, b) => a.source.localeCompare(b.source) || a.title.localeCompare(b.title)).forEach(d => {
+    const div = document.createElement('div');
+    div.className = 'tt-doc';
+    div.innerHTML = `<span class="tt-src">${d.source}</span><span class="tt-doc-title">${d.title}</span>`;
+    container.appendChild(div);
+  });
+  if (docs.length === 0) container.innerHTML = '<div style="color:#94a3b8;font-style:italic">No processed documents yet</div>';
+  // Position
+  const x = (event.clientX || event.touches?.[0]?.clientX || window.innerWidth / 2);
+  const y = (event.clientY || event.touches?.[0]?.clientY || window.innerHeight / 2);
+  tt.style.display = 'block';
+  const ttW = tt.offsetWidth, ttH = tt.offsetHeight;
+  tt.style.left = Math.min(x + 12, window.innerWidth - ttW - 16) + 'px';
+  tt.style.top = Math.min(y - 20, window.innerHeight - ttH - 16) + 'px';
+}
+
+function hideTooltip() {
+  document.getElementById('networkTooltip').style.display = 'none';
+}
+
+/* ── Legend & stats per view ──────────────────────────────────────── */
 function updateLegend(view) {
   const legend = document.getElementById('legend');
   if (view === 'dept') {
@@ -135,9 +453,16 @@ function updateLegend(view) {
   } else if (view === 'topic') {
     legend.innerHTML = `
       <div class="legend-title">Topic Clusters</div>
-      ${topicClusters.map(c =>
+      ${topicNetworkDef.clusters.map(c =>
         `<div><span class="legend-dot" style="background:${c.color}"></span>${c.name}</div>`
-      ).join('')}`;
+      ).join('')}
+      <div style="margin-top:8px;border-top:1px solid var(--c-border);padding-top:6px">
+        <div><span class="legend-line-solid"></span>Hierarchy</div>
+        <div><span class="legend-line"></span>Cross-connection</div>
+      </div>
+      <div style="margin-top:4px;color:var(--c-tertiary);font-size:10px">
+        Hover to highlight · Click for details
+      </div>`;
   } else {
     legend.innerHTML = `
       <div class="legend-title">Source Organizations</div>
@@ -154,7 +479,9 @@ function updateStats(view) {
     const totalCurriculum = departments.reduce((s, d) => s + d.tiers.reduce((s2, t) => s2 + t.docs.length, 0), 0);
     stats.textContent = `${totalCurriculum} curated readings · ${departments.length} departments · ${total} total documents`;
   } else if (view === 'topic') {
-    stats.textContent = `${topicClusters.length} topic clusters · ${total} documents`;
+    const nSubs = topicNetworkDef.clusters.reduce((s, c) => s + c.subtopics.length, 0);
+    const nLinks = topicNetworkDef.crossLinks.length;
+    stats.textContent = `${topicNetworkDef.clusters.length} clusters · ${nSubs} subtopics · ${nLinks} cross-connections · ${total} documents`;
   } else {
     stats.textContent = `${Object.keys(sourceOrgs).length} source organizations · ${total} documents`;
   }
@@ -165,18 +492,21 @@ function switchView(view) {
   ['dept', 'topic', 'source'].forEach(v => {
     document.getElementById(`btn-${v}`).classList.toggle('active', v === view);
   });
+  hideTooltip();
   updateLegend(view);
   updateStats(view);
 
-  let md;
-  if (view === 'dept') {
-    md = generateDeptMarkdown(reportsData);
-  } else if (view === 'topic') {
-    md = generateTopicMarkdown(reportsData);
+  if (view === 'topic') {
+    renderTopicNetwork(reportsData);
   } else {
-    md = generateSourceMarkdown(reportsData);
+    let md;
+    if (view === 'dept') {
+      md = generateDeptMarkdown(reportsData);
+    } else {
+      md = generateSourceMarkdown(reportsData);
+    }
+    createMarkmap(md, viewColors[view]);
   }
-  createMarkmap(md, viewColors[view]);
 }
 
 /* ── Init ── */
@@ -192,6 +522,15 @@ fetch('reports.json')
     document.getElementById('loadingOverlay').innerHTML =
       `<div style="color:#dc2626;font-size:14px">Failed to load data. Please check reports.json.</div>`;
   });
+
+/* ── Resize handler ── */
+let resizeTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => {
+    if (currentView === 'topic') renderTopicNetwork(reportsData);
+  }, 250);
+});
 </script>
 </body>
 </html>

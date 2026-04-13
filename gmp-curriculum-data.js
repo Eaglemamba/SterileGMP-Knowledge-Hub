@@ -576,7 +576,157 @@ function generateSourceMarkdown(reports) {
   return md;
 }
 
+/* ── Topic Network Definition (detailed subcategories + cross-links) ── */
+const topicNetworkDef = {
+  clusters: [
+    {
+      id: 'aseptic', name: 'Aseptic Processing', nameZh: '無菌製程', color: '#2563eb',
+      subtopics: [
+        { id: 'aps', name: 'Process Simulation (APS)', tags: ['APS', 'Media Fill'] },
+        { id: 'barriers', name: 'Barrier Systems', tags: ['Isolator', 'RABS', 'RABS/Isolator', 'Barrier Systems'] },
+        { id: 'filling-ops', name: 'Filling Operations', tags: ['Filling', 'Interventions', 'Line Setup', 'BFS', 'Dose Control', 'IPC', 'Foam Control', 'Changeover', 'Priming', 'Yield'] },
+        { id: 'ccs-aseptic', name: 'Contamination Control', tags: ['CCS', 'Contamination Control', 'Sterile', 'Sterility'] },
+        { id: 'personnel', name: 'Personnel & Gowning', tags: ['Personnel Qualification', 'Glove Integrity'] },
+      ]
+    },
+    {
+      id: 'sterilization', name: 'Sterilization & Filtration', nameZh: '滅菌與過濾', color: '#7c3aed',
+      subtopics: [
+        { id: 'moist-heat', name: 'Moist Heat / Steam', tags: ['Sterilization', 'Autoclave', 'SIP', 'Steam', 'Moist Heat', 'Sterilisation', 'Steam Sterilisation'] },
+        { id: 'dry-heat', name: 'Dry Heat & Depyrogenation', tags: ['Depyrogenation', 'Dry Heat'] },
+        { id: 'sterilizing-filt', name: 'Sterilizing Filtration', tags: ['Filtration', 'Filter', 'Membrane', 'PUPSIT', 'Integrity Test', 'Bacterial Retention', 'Bubble Point', 'Diffusion', 'Membrane Filtration', 'Sterilizing Filtration'] },
+        { id: 'chem-steril', name: 'Chemical / Gas / Radiation', tags: ['VPHP', 'Decontamination', 'Radiation'] },
+      ]
+    },
+    {
+      id: 'containers', name: 'Container Closure', nameZh: '容器封蓋', color: '#059669',
+      subtopics: [
+        { id: 'primary-containers', name: 'Primary Containers', tags: ['Container', 'Glass', 'Glass Container', 'Glass Containers', 'Prefilled Syringe', 'Syringes'] },
+        { id: 'closures', name: 'Closures & Seals', tags: ['Closure', 'Elastomer', 'Stopper', 'Stoppers', 'Seals', 'Elastomers'] },
+        { id: 'cci', name: 'CCI Testing', tags: ['CCI', 'CCI Testing', 'Package Integrity', 'Leak Testing', 'Seal Quality', 'Deterministic Testing', 'Probabilistic Testing'] },
+        { id: 'el', name: 'E&L / Compatibility', tags: ['E&L', 'Extractables', 'Leachables', 'Compatibility', 'Biocompatibility'] },
+        { id: 'sus-pkg', name: 'Single-Use Systems', tags: ['SUS', 'Single-Use', 'RTU', 'SUT', 'Single-Use Systems'] },
+        { id: 'packaging', name: 'Packaging Systems', tags: ['Packaging', 'Packaging Systems', 'Primary Packaging'] },
+      ]
+    },
+    {
+      id: 'quality', name: 'Quality & Risk', nameZh: '品質與風險', color: '#d97706',
+      subtopics: [
+        { id: 'qms', name: 'Quality Management', tags: ['GMP', 'PQS', 'Quality Systems', 'Quality Culture', 'Quality Management'] },
+        { id: 'qrm', name: 'Risk Management', tags: ['QRM', 'Risk Management', 'Risk Assessment', 'Risk', 'FMEA', 'HACCP', 'Risk MaPP', 'Risk Analysis'] },
+        { id: 'pv', name: 'Process Validation', tags: ['Process Validation', 'Validation', 'PPQ', 'CPV', 'DOE', 'SPC', 'Stage 1', 'Stage 2', 'Stage 3'] },
+        { id: 'capa', name: 'Deviation & CAPA', tags: ['Deviation', 'Investigation', 'Root Cause', 'Root Cause Analysis', 'CAPA', 'RCA', 'Troubleshooting', 'Human Error'] },
+        { id: 'change', name: 'Change Control', tags: ['Change Control', 'Post-Approval', 'Lifecycle', 'PACMP', 'Established Conditions'] },
+        { id: 'di', name: 'Data Integrity', tags: ['Data Integrity', 'Documentation', 'Document Management'] },
+      ]
+    },
+    {
+      id: 'em', name: 'Environmental Monitoring', nameZh: '環境監測', color: '#dc2626',
+      subtopics: [
+        { id: 'em-program', name: 'EM Programs', tags: ['EM', 'Environmental Monitoring'] },
+        { id: 'cleanroom', name: 'Cleanroom Classification', tags: ['Cleanroom', 'Grade A', 'Classification'] },
+        { id: 'bioburden', name: 'Bioburden & Microbial Control', tags: ['Bioburden', 'Microbial Control', 'Biofilm', 'Cross-Contamination'] },
+        { id: 'cleaning', name: 'Cleaning & Disinfection', tags: ['Disinfectant', 'Cleaning Validation', 'Cleaning', 'Disinfection'] },
+      ]
+    },
+    {
+      id: 'testing', name: 'Testing Methods', nameZh: '測試方法', color: '#0891b2',
+      subtopics: [
+        { id: 'endotoxin', name: 'Endotoxin & Pyrogen', tags: ['Endotoxin', 'Pyrogen', 'Bacterial Endotoxins', 'LAL', 'Gel-Clot', 'Photometric'] },
+        { id: 'particulate', name: 'Particulate Testing', tags: ['Particle', 'Particulate Matter', 'Sub-Visible Particles', 'Visual Inspection'] },
+        { id: 'microbial-test', name: 'Microbial Testing', tags: ['Sterility Testing', 'TAMC', 'TYMC', 'Rapid Methods', 'Mycoplasma', 'Microbial Identification', 'Strain Typing'] },
+        { id: 'analytical', name: 'Analytical Methods', tags: ['Analytical Methods', 'Analytical', 'Method Validation', 'Method Verification', 'Compendial Procedures'] },
+        { id: 'pharma', name: 'Pharmacopoeia', tags: ['Ph.Eur.', 'USP', 'Pharmacopoeia', 'Biological Tests'] },
+      ]
+    },
+    {
+      id: 'facilities', name: 'Facilities & Utilities', nameZh: '設施與公用系統', color: '#8b5cf6',
+      subtopics: [
+        { id: 'facility-design', name: 'Facility Design', tags: ['Facility Design'] },
+        { id: 'hvac', name: 'HVAC & Air Systems', tags: ['HVAC', 'Air Filtration'] },
+        { id: 'water', name: 'Water Systems', tags: ['Water', 'WFI', 'Purified Water', 'Pharmaceutical Water', 'Piping', 'Storage', 'Pretreatment', 'RO', 'Distillation', 'Water System', 'Water Systems'] },
+        { id: 'process-gas', name: 'Process Gases', tags: ['Process Gases', 'Compressed Air', 'Gas Systems', 'ISO 8573'] },
+        { id: 'equip', name: 'Equipment & Maintenance', tags: ['Equipment', 'Maintenance', 'Calibration', 'Instrumentation'] },
+        { id: 'cq', name: 'Commissioning & Qualification', tags: ['Commissioning', 'IQ/OQ/PQ', 'C&Q'] },
+      ]
+    },
+    {
+      id: 'atmp', name: 'Advanced Therapies', nameZh: '先進治療', color: '#ec4899',
+      subtopics: [
+        { id: 'cell-gene', name: 'Cell & Gene Therapy', tags: ['ATMP', 'Cell Therapy', 'Gene Therapy'] },
+        { id: 'vectors', name: 'Viral Vectors', tags: ['Viral Vectors', 'AAV', 'Lentivirus', 'Plasmid DNA'] },
+        { id: 'biosafety', name: 'Biosafety & Containment', tags: ['Biosafety', 'BSL', 'BSC', 'Containment'] },
+        { id: 'biologics', name: 'Biologics Manufacturing', tags: ['Biologics', 'Biopharmaceutical', 'Bioreactor'] },
+        { id: 'lyo', name: 'Lyophilization', tags: ['Lyophilization', 'Powder'] },
+      ]
+    },
+    {
+      id: 'regulatory', name: 'Regulatory', nameZh: '法規', color: '#f97316',
+      subtopics: [
+        { id: 'reg-framework', name: 'Regulatory Framework', tags: ['Regulatory', 'Annex 1', 'Regulatory Compliance', 'GMP Compliance'] },
+        { id: 'ich', name: 'ICH Guidelines', tags: ['ICH', 'QbD', 'Design Space', 'CMC'] },
+        { id: 'devices', name: 'Medical Devices', tags: ['MDR', 'GSPR', 'Combination Product', 'Combination Products', 'Medical Devices', 'Notified Body'] },
+        { id: 'supply-chain', name: 'Supply Chain & GDP', tags: ['Supply Chain', 'GDP', 'Cold Chain', 'Distribution', 'CDMO'] },
+        { id: 'tech-transfer', name: 'Technology Transfer', tags: ['Technology Transfer'] },
+        { id: 'inspections', name: 'Inspections', tags: ['GMP Inspection', 'GDP Inspection', 'Remote Inspection', 'Virtual Inspection', 'Hybrid Inspection'] },
+      ]
+    },
+    {
+      id: 'emerging', name: 'Emerging Tech', nameZh: '新興技術', color: '#14b8a6',
+      subtopics: [
+        { id: 'digital', name: 'Digital & AI', tags: ['AI/ML', 'Blockchain', 'Digital Tools'] },
+        { id: 'csv', name: 'Computerized Systems', tags: ['CSV', 'GAMP', 'Computerized Systems', 'Agile'] },
+        { id: 'mobile', name: 'Mobile / Modular', tags: ['Mobile Manufacturing', 'Modular', 'MMU'] },
+        { id: 'continuous', name: 'Continuous Manufacturing', tags: ['Continuous Manufacturing', 'RTRT', 'ATP'] },
+      ]
+    }
+  ],
+  crossLinks: [
+    { source: 'aseptic', target: 'sterilization', label: 'Sterility Assurance' },
+    { source: 'aseptic', target: 'containers', label: 'Filling & Sealing' },
+    { source: 'aseptic', target: 'em', label: 'Cleanroom Monitoring' },
+    { source: 'aseptic', target: 'facilities', label: 'Aseptic Facility Design' },
+    { source: 'aseptic', target: 'atmp', label: 'ATMP Aseptic Manufacturing' },
+    { source: 'aseptic', target: 'emerging', label: 'Single-Use & Automation' },
+    { source: 'sterilization', target: 'em', label: 'Bioburden → SAL' },
+    { source: 'sterilization', target: 'facilities', label: 'Sterilization Equipment' },
+    { source: 'sterilization', target: 'testing', label: 'Sterility Assurance Testing' },
+    { source: 'containers', target: 'testing', label: 'CCI & E&L Testing' },
+    { source: 'containers', target: 'regulatory', label: 'Packaging Regulations' },
+    { source: 'quality', target: 'em', label: 'Risk-Based CCS' },
+    { source: 'quality', target: 'regulatory', label: 'Compliance Framework' },
+    { source: 'quality', target: 'emerging', label: 'CSV & Data Integrity' },
+    { source: 'em', target: 'testing', label: 'Microbial Test Methods' },
+    { source: 'em', target: 'facilities', label: 'HVAC & Cleanroom Design' },
+    { source: 'atmp', target: 'facilities', label: 'Biosafety Lab Design' },
+    { source: 'atmp', target: 'regulatory', label: 'ATMP Regulations' },
+    { source: 'testing', target: 'regulatory', label: 'Compendial Standards' },
+    { source: 'facilities', target: 'quality', label: 'C&Q Lifecycle' },
+  ]
+};
+
+/* ── Build network data from reports (counts docs per node) ────────── */
+function buildTopicNetwork(reports) {
+  const clusters = topicNetworkDef.clusters.map(c => {
+    const subtopics = c.subtopics.map(s => {
+      const docs = [];
+      Object.entries(reports).forEach(([key, r]) => {
+        if (!r.section_map || !r.section_map.length) return;
+        const rTags = r.tags || [];
+        if (rTags.some(t => s.tags.includes(t))) {
+          docs.push({ key, title: r.title || key, source: (r.source || '').split(' ')[0] });
+        }
+      });
+      return { ...s, docs, count: docs.length };
+    });
+    const allDocs = new Set();
+    subtopics.forEach(s => s.docs.forEach(d => allDocs.add(d.key)));
+    return { ...c, subtopics, count: allDocs.size };
+  });
+  return { clusters, crossLinks: topicNetworkDef.crossLinks };
+}
+
 /* ── Module export for Node.js tooling ────────────────────────────── */
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { departments, topicClusters, sourceOrgs, generateDeptMarkdown, generateTopicMarkdown, generateSourceMarkdown };
+  module.exports = { departments, topicClusters, sourceOrgs, topicNetworkDef, buildTopicNetwork, generateDeptMarkdown, generateTopicMarkdown, generateSourceMarkdown };
 }
