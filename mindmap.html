@@ -95,6 +95,16 @@ body { margin: 0; padding: 0; font-family: 'Noto Sans TC', -apple-system, sans-s
 .network-tooltip .tt-doc-title { font-size: 11px; color: #cbd5e1; }
 .network-tooltip .tt-doc-link { font-size: 11px; color: #93c5fd; text-decoration: none; transition: color 0.15s; }
 .network-tooltip .tt-doc-link:hover { color: #bfdbfe; text-decoration: underline; }
+.network-tooltip .tt-doc-primary {
+  background: rgba(251,191,36,0.10); border-left: 2px solid #fbbf24;
+  border-radius: 4px; padding: 4px 6px; margin-bottom: 2px;
+}
+.network-tooltip .tt-doc-primary .tt-doc-link { color: #fde68a; font-weight: 600; }
+.network-tooltip .tt-doc-primary .tt-doc-link:hover { color: #fef3c7; }
+.network-tooltip .tt-primary-badge {
+  font-size: 9px; background: #fbbf24; color: #1c1917; font-weight: 700;
+  padding: 1px 5px; border-radius: 3px; white-space: nowrap; flex-shrink: 0;
+}
 .network-tooltip .tt-close {
   position: absolute; top: 8px; right: 10px; background: none; border: none;
   color: #94a3b8; font-size: 16px; cursor: pointer; line-height: 1;
@@ -746,24 +756,30 @@ function showClusterTooltip(cluster, event) {
 }
 
 function showSubtopicTooltip(subtopic, event) {
-  populateTooltip(subtopic.name, subtopic.count, subtopic.docs || [], event);
+  populateTooltip(subtopic.name, subtopic.count, subtopic.docs || [], event, subtopic.primaryDoc);
 }
 
-function populateTooltip(title, count, docs, event) {
+function populateTooltip(title, count, docs, event, primaryDoc) {
   const tt = document.getElementById('networkTooltip');
   document.getElementById('ttTitle').textContent = title;
   document.getElementById('ttCount').textContent = count + ' docs';
   const container = document.getElementById('ttDocs');
   container.innerHTML = '';
-  docs.sort((a, b) => a.source.localeCompare(b.source) || a.title.localeCompare(b.title)).forEach(d => {
+  const sorted = [...docs].sort((a, b) => {
+    if (primaryDoc) { if (a.key === primaryDoc) return -1; if (b.key === primaryDoc) return 1; }
+    return a.source.localeCompare(b.source) || a.title.localeCompare(b.title);
+  });
+  sorted.forEach(d => {
+    const isPrimary = !!primaryDoc && d.key === primaryDoc;
     const div = document.createElement('div');
-    div.className = 'tt-doc';
+    div.className = isPrimary ? 'tt-doc tt-doc-primary' : 'tt-doc';
     const r = reportsData[d.key];
     const link = (r && r.folder && r.output_filename) ? `${r.folder}/output/${r.output_filename}` : null;
     const titleEl = link
       ? `<a href="${link}" target="_blank" class="tt-doc-link">${d.title}</a>`
       : `<span class="tt-doc-title">${d.title}</span>`;
-    div.innerHTML = `<span class="tt-src">${d.source}</span>${titleEl}`;
+    const badge = isPrimary ? `<span class="tt-primary-badge">★ 必讀</span>` : '';
+    div.innerHTML = `<span class="tt-src">${d.source}</span>${badge}${titleEl}`;
     container.appendChild(div);
   });
   if (docs.length === 0) container.innerHTML = '<div style="color:#94a3b8;font-style:italic">No processed documents yet</div>';

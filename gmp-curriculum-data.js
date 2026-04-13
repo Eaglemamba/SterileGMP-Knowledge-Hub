@@ -582,11 +582,11 @@ const topicNetworkDef = {
     {
       id: 'aseptic', name: 'Aseptic Processing', nameZh: '無菌製程', color: '#2563eb',
       subtopics: [
-        { id: 'aps', name: 'Process Simulation (APS)', tags: ['APS', 'Media Fill'] },
-        { id: 'barriers', name: 'Barrier Systems', tags: ['Isolator', 'RABS', 'RABS/Isolator', 'Barrier Systems'] },
-        { id: 'filling-ops', name: 'Filling Operations', tags: ['Filling', 'Interventions', 'Line Setup', 'BFS', 'Dose Control', 'IPC', 'Foam Control', 'Changeover', 'Priming', 'Yield', 'Dose Accuracy', 'Fill Volume', 'Process Closure'] },
-        { id: 'ccs-aseptic', name: 'Contamination Control', tags: ['CCS', 'Contamination Control', 'Sterile', 'Sterility', 'Aseptic', 'Aseptic Processing', 'Injectable', 'Injectables', 'Ophthalmic', 'Sterile Manufacturing', 'aseptic'] },
-        { id: 'personnel', name: 'Personnel & Gowning', tags: ['Personnel Qualification', 'Glove Integrity', 'Personnel'] },
+        { id: 'aps', name: 'Process Simulation (APS)', tags: ['APS', 'Media Fill'], primaryDoc: 'TR22' },
+        { id: 'barriers', name: 'Barrier Systems', tags: ['Isolator', 'RABS', 'RABS/Isolator', 'Barrier Systems'], primaryDoc: 'PtC-12' },
+        { id: 'filling-ops', name: 'Filling Operations', tags: ['Filling', 'Interventions', 'Line Setup', 'BFS', 'Dose Control', 'IPC', 'Foam Control', 'Changeover', 'Priming', 'Yield', 'Dose Accuracy', 'Fill Volume', 'Process Closure'], primaryDoc: 'pda-guide-no1' },
+        { id: 'ccs-aseptic', name: 'Contamination Control', tags: ['CCS', 'Contamination Control', 'Sterile', 'Sterility', 'Aseptic', 'Aseptic Processing', 'Injectable', 'Injectables', 'Ophthalmic', 'Sterile Manufacturing', 'aseptic'], primaryDoc: 'TR90' },
+        { id: 'personnel', name: 'Personnel & Gowning', tags: ['Personnel Qualification', 'Glove Integrity', 'Personnel'], primaryDoc: 'TR22' },
       ]
     },
     {
@@ -594,47 +594,47 @@ const topicNetworkDef = {
       subtopics: [
         { id: 'moist-heat', name: 'Moist Heat / Steam', tags: ['Sterilization', 'Autoclave', 'SIP', 'Steam', 'Moist Heat', 'Sterilisation', 'Steam Sterilisation', 'Biological Indicators', 'SAL', 'Terminal Sterilisation'] },
         { id: 'dry-heat', name: 'Dry Heat & Depyrogenation', tags: ['Depyrogenation', 'Dry Heat', 'Loss on Drying'] },
-        { id: 'sterilizing-filt', name: 'Sterilizing Filtration', tags: ['Filtration', 'Filter', 'Membrane', 'PUPSIT', 'Integrity Test', 'Bacterial Retention', 'Bubble Point', 'Diffusion', 'Membrane Filtration', 'Sterilizing Filtration'] },
-        { id: 'chem-steril', name: 'Chemical / Gas / Radiation', tags: ['VPHP', 'Decontamination', 'Radiation'] },
+        { id: 'sterilizing-filt', name: 'Sterilizing Filtration', tags: ['Filtration', 'Filter', 'Membrane', 'PUPSIT', 'Integrity Test', 'Bacterial Retention', 'Bubble Point', 'Diffusion', 'Membrane Filtration', 'Sterilizing Filtration'], primaryDoc: 'TR26' },
+        { id: 'chem-steril', name: 'Chemical / Gas / Radiation', tags: ['VPHP', 'Decontamination', 'Radiation'], primaryDoc: 'PtC-Isolators' },
       ]
     },
     {
       id: 'containers', name: 'Container Closure', nameZh: '容器封蓋', color: '#059669',
       subtopics: [
-        { id: 'primary-containers', name: 'Primary Containers', tags: ['Container', 'Glass', 'Glass Container', 'Glass Containers', 'Prefilled Syringe', 'Syringes', 'Injection Systems', 'Pen Systems'] },
-        { id: 'closures', name: 'Closures & Seals', tags: ['Closure', 'Elastomer', 'Stopper', 'Stoppers', 'Seals', 'Elastomers', 'Container Closure', 'Containers & Closures'] },
-        { id: 'cci', name: 'CCI Testing', tags: ['CCI', 'CCI Testing', 'Package Integrity', 'Leak Testing', 'Seal Quality', 'Deterministic Testing', 'Probabilistic Testing', 'Container Closure Integrity'] },
-        { id: 'el', name: 'E&L / Compatibility', tags: ['E&L', 'Extractables', 'Leachables', 'Compatibility', 'Biocompatibility'] },
-        { id: 'sus-pkg', name: 'Single-Use Systems', tags: ['SUS', 'Single-Use', 'RTU', 'SUT', 'Single-Use Systems'] },
-        { id: 'packaging', name: 'Packaging Systems', tags: ['Packaging', 'Packaging Systems', 'Primary Packaging', 'Barcodes', 'Damage Prevention', 'Desiccants', 'Drug Product Storage', 'Excipient', 'Light Protection', 'Material Safety', 'Moisture Control', 'Package Testing', 'Printed Packaging', 'Serialization', 'Storage Conditions', 'Labeling', 'Labelling'] },
+        { id: 'primary-containers', name: 'Primary Containers', tags: ['Container', 'Glass', 'Glass Container', 'Glass Containers', 'Prefilled Syringe', 'Syringes', 'Injection Systems', 'Pen Systems'], primaryDoc: 'TR73' },
+        { id: 'closures', name: 'Closures & Seals', tags: ['Closure', 'Elastomer', 'Stopper', 'Stoppers', 'Seals', 'Elastomers', 'Container Closure', 'Containers & Closures'], primaryDoc: 'TR85' },
+        { id: 'cci', name: 'CCI Testing', tags: ['CCI', 'CCI Testing', 'Package Integrity', 'Leak Testing', 'Seal Quality', 'Deterministic Testing', 'Probabilistic Testing', 'Container Closure Integrity'], primaryDoc: 'TR73' },
+        { id: 'el', name: 'E&L / Compatibility', tags: ['E&L', 'Extractables', 'Leachables', 'Compatibility', 'Biocompatibility'], primaryDoc: 'TR66' },
+        { id: 'sus-pkg', name: 'Single-Use Systems', tags: ['SUS', 'Single-Use', 'RTU', 'SUT', 'Single-Use Systems'], primaryDoc: 'TR66' },
+        { id: 'packaging', name: 'Packaging Systems', tags: ['Packaging', 'Packaging Systems', 'Primary Packaging', 'Barcodes', 'Damage Prevention', 'Desiccants', 'Drug Product Storage', 'Excipient', 'Light Protection', 'Material Safety', 'Moisture Control', 'Package Testing', 'Printed Packaging', 'Serialization', 'Storage Conditions', 'Labeling', 'Labelling'], primaryDoc: 'TR87' },
       ]
     },
     {
       id: 'quality', name: 'Quality & Risk', nameZh: '品質與風險', color: '#d97706',
       subtopics: [
-        { id: 'qms', name: 'Quality Management', tags: ['GMP', 'PQS', 'Quality Systems', 'Quality Culture', 'Quality Management', 'CGMP', 'Compliance', 'Continual Improvement', 'QMS', 'Quality System', 'Lot Release', 'ISO 9001', 'ISO 9000', 'PDCA'] },
-        { id: 'qrm', name: 'Risk Management', tags: ['QRM', 'Risk Management', 'Risk Assessment', 'Risk', 'FMEA', 'HACCP', 'Risk MaPP', 'Risk Analysis', 'Risk Reduction', 'Risk-Based Thinking', 'risk assessment', 'risk control', 'risk management'] },
-        { id: 'pv', name: 'Process Validation', tags: ['Process Validation', 'Validation', 'PPQ', 'CPV', 'DOE', 'SPC', 'Stage 1', 'Stage 2', 'Stage 3', 'AQL', 'Acceptance Limits', 'Acceptance Sampling', 'CQA', 'Control Strategy', 'Deliverable Volume', 'Process Design', 'Statistical', 'Batch', 'Sampling'] },
-        { id: 'capa', name: 'Deviation & CAPA', tags: ['Deviation', 'Investigation', 'Root Cause', 'Root Cause Analysis', 'CAPA', 'RCA', 'Troubleshooting', 'Human Error', 'Deviation Reporting', 'Nonconformity'] },
-        { id: 'change', name: 'Change Control', tags: ['Change Control', 'Post-Approval', 'Lifecycle', 'PACMP', 'Established Conditions', 'Post-Approval Change'] },
-        { id: 'di', name: 'Data Integrity', tags: ['Data Integrity', 'Documentation', 'Document Management', '21 CFR 211.194', 'Documented Information'] },
+        { id: 'qms', name: 'Quality Management', tags: ['GMP', 'PQS', 'Quality Systems', 'Quality Culture', 'Quality Management', 'CGMP', 'Compliance', 'Continual Improvement', 'QMS', 'Quality System', 'Lot Release', 'ISO 9001', 'ISO 9000', 'PDCA'], primaryDoc: 'TR91' },
+        { id: 'qrm', name: 'Risk Management', tags: ['QRM', 'Risk Management', 'Risk Assessment', 'Risk', 'FMEA', 'HACCP', 'Risk MaPP', 'Risk Analysis', 'Risk Reduction', 'Risk-Based Thinking', 'risk assessment', 'risk control', 'risk management'], primaryDoc: 'TR54-6' },
+        { id: 'pv', name: 'Process Validation', tags: ['Process Validation', 'Validation', 'PPQ', 'CPV', 'DOE', 'SPC', 'Stage 1', 'Stage 2', 'Stage 3', 'AQL', 'Acceptance Limits', 'Acceptance Sampling', 'CQA', 'Control Strategy', 'Deliverable Volume', 'Process Design', 'Statistical', 'Batch', 'Sampling'], primaryDoc: 'TR60' },
+        { id: 'capa', name: 'Deviation & CAPA', tags: ['Deviation', 'Investigation', 'Root Cause', 'Root Cause Analysis', 'CAPA', 'RCA', 'Troubleshooting', 'Human Error', 'Deviation Reporting', 'Nonconformity'], primaryDoc: 'TR88' },
+        { id: 'change', name: 'Change Control', tags: ['Change Control', 'Post-Approval', 'Lifecycle', 'PACMP', 'Established Conditions', 'Post-Approval Change'], primaryDoc: 'TR91' },
+        { id: 'di', name: 'Data Integrity', tags: ['Data Integrity', 'Documentation', 'Document Management', '21 CFR 211.194', 'Documented Information'], primaryDoc: 'TR46' },
       ]
     },
     {
       id: 'em', name: 'Environmental Monitoring', nameZh: '環境監測', color: '#dc2626',
       subtopics: [
-        { id: 'em-program', name: 'EM Programs', tags: ['EM', 'Environmental Monitoring', 'Airborne Particles', 'GMP Environment', 'Physical Environment', 'Temperature Control', 'Temperature'] },
-        { id: 'cleanroom', name: 'Cleanroom Classification', tags: ['Cleanroom', 'Grade A', 'Classification'] },
-        { id: 'bioburden', name: 'Bioburden & Microbial Control', tags: ['Bioburden', 'Microbial Control', 'Biofilm', 'Cross-Contamination', 'CIP/SIP', 'Culture Media', 'Mapping', 'Microbiology', 'Rinsing'] },
-        { id: 'cleaning', name: 'Cleaning & Disinfection', tags: ['Disinfectant', 'Cleaning Validation', 'Cleaning', 'Disinfection'] },
+        { id: 'em-program', name: 'EM Programs', tags: ['EM', 'Environmental Monitoring', 'Airborne Particles', 'GMP Environment', 'Physical Environment', 'Temperature Control', 'Temperature'], primaryDoc: 'TR13' },
+        { id: 'cleanroom', name: 'Cleanroom Classification', tags: ['Cleanroom', 'Grade A', 'Classification'], primaryDoc: 'TR13' },
+        { id: 'bioburden', name: 'Bioburden & Microbial Control', tags: ['Bioburden', 'Microbial Control', 'Biofilm', 'Cross-Contamination', 'CIP/SIP', 'Culture Media', 'Mapping', 'Microbiology', 'Rinsing'], primaryDoc: 'TR13-2' },
+        { id: 'cleaning', name: 'Cleaning & Disinfection', tags: ['Disinfectant', 'Cleaning Validation', 'Cleaning', 'Disinfection'], primaryDoc: 'TR70' },
       ]
     },
     {
       id: 'testing', name: 'Testing Methods', nameZh: '測試方法', color: '#0891b2',
       subtopics: [
         { id: 'endotoxin', name: 'Endotoxin & Pyrogen', tags: ['Endotoxin', 'Pyrogen', 'Bacterial Endotoxins', 'LAL', 'Gel-Clot', 'Photometric'] },
-        { id: 'particulate', name: 'Particulate Testing', tags: ['Particle', 'Particulate Matter', 'Sub-Visible Particles', 'Visual Inspection', 'Color Testing', 'Particulates'] },
-        { id: 'microbial-test', name: 'Microbial Testing', tags: ['Sterility Testing', 'TAMC', 'TYMC', 'Rapid Methods', 'Mycoplasma', 'Microbial Identification', 'Strain Typing', 'Biological Testing'] },
+        { id: 'particulate', name: 'Particulate Testing', tags: ['Particle', 'Particulate Matter', 'Sub-Visible Particles', 'Visual Inspection', 'Color Testing', 'Particulates'], primaryDoc: 'TR85' },
+        { id: 'microbial-test', name: 'Microbial Testing', tags: ['Sterility Testing', 'TAMC', 'TYMC', 'Rapid Methods', 'Mycoplasma', 'Microbial Identification', 'Strain Typing', 'Biological Testing'], primaryDoc: 'TR88' },
         { id: 'analytical', name: 'Analytical Methods', tags: ['Analytical Methods', 'Analytical', 'Method Validation', 'Method Verification', 'Compendial Procedures', 'AIQ', 'Analytical Instrument Qualification', 'Analytical Testing', 'Conductivity', 'Conductivity Testing', 'Laboratory Suitability', 'Linearity', 'Physical Tests', 'Precision', 'Specificity', 'Potency', 'Potency Testing', 'QC Lab', 'Lab Practices', 'Karl Fischer', 'Osmolality', 'Test Methods', 'Methods'] },
         { id: 'pharma', name: 'Pharmacopoeia', tags: ['Ph.Eur.', 'USP', 'Pharmacopoeia', 'Biological Tests'] },
       ]
@@ -642,7 +642,7 @@ const topicNetworkDef = {
     {
       id: 'facilities', name: 'Facilities & Utilities', nameZh: '設施與公用系統', color: '#8b5cf6',
       subtopics: [
-        { id: 'facility-design', name: 'Facility Design', tags: ['Facility Design', 'Architecture', 'cGMP Layout', 'Shared Facility'] },
+        { id: 'facility-design', name: 'Facility Design', tags: ['Facility Design', 'Architecture', 'cGMP Layout', 'Shared Facility'], primaryDoc: 'PtC-14' },
         { id: 'hvac', name: 'HVAC & Air Systems', tags: ['HVAC', 'Air Filtration'] },
         { id: 'water', name: 'Water Systems', tags: ['Water', 'WFI', 'Purified Water', 'Pharmaceutical Water', 'Piping', 'Storage', 'Pretreatment', 'RO', 'Distillation', 'Water System', 'Water Systems', 'Passivation', 'TOC Testing', 'Utilities', 'Water Determination', 'Water Quality'] },
         { id: 'process-gas', name: 'Process Gases', tags: ['Process Gases', 'Compressed Air', 'Gas Systems', 'ISO 8573'] },
@@ -653,21 +653,21 @@ const topicNetworkDef = {
     {
       id: 'atmp', name: 'Advanced Therapies', nameZh: '先進治療', color: '#ec4899',
       subtopics: [
-        { id: 'cell-gene', name: 'Cell & Gene Therapy', tags: ['ATMP', 'Cell Therapy', 'Gene Therapy', 'cell therapy', 'gene therapy'] },
-        { id: 'vectors', name: 'Viral Vectors', tags: ['Viral Vectors', 'AAV', 'Lentivirus', 'Plasmid DNA', 'viral vector'] },
-        { id: 'biosafety', name: 'Biosafety & Containment', tags: ['Biosafety', 'BSL', 'BSC', 'Containment', 'Cytotoxicity', 'HBEL', 'OEL'] },
-        { id: 'biologics', name: 'Biologics Manufacturing', tags: ['Biologics', 'Biopharmaceutical', 'Bioreactor', 'BLA', 'Biological Products', 'Biologics Licensing', 'Biotechnology', 'CBER', 'Comparability', 'biological'] },
+        { id: 'cell-gene', name: 'Cell & Gene Therapy', tags: ['ATMP', 'Cell Therapy', 'Gene Therapy', 'cell therapy', 'gene therapy'], primaryDoc: 'PtC-14' },
+        { id: 'vectors', name: 'Viral Vectors', tags: ['Viral Vectors', 'AAV', 'Lentivirus', 'Plasmid DNA', 'viral vector'], primaryDoc: 'PtC-13' },
+        { id: 'biosafety', name: 'Biosafety & Containment', tags: ['Biosafety', 'BSL', 'BSC', 'Containment', 'Cytotoxicity', 'HBEL', 'OEL'], primaryDoc: 'PtC-14' },
+        { id: 'biologics', name: 'Biologics Manufacturing', tags: ['Biologics', 'Biopharmaceutical', 'Bioreactor', 'BLA', 'Biological Products', 'Biologics Licensing', 'Biotechnology', 'CBER', 'Comparability', 'biological'], primaryDoc: 'TR91' },
         { id: 'lyo', name: 'Lyophilization', tags: ['Lyophilization', 'Powder'] },
       ]
     },
     {
       id: 'regulatory', name: 'Regulatory', nameZh: '法規', color: '#f97316',
       subtopics: [
-        { id: 'reg-framework', name: 'Regulatory Framework', tags: ['Regulatory', 'Annex 1', 'Regulatory Compliance', 'GMP Compliance', 'FDA', 'ICH Q9', 'Regulatory Data Exchange'] },
-        { id: 'ich', name: 'ICH Guidelines', tags: ['ICH', 'QbD', 'Design Space', 'CMC'] },
-        { id: 'devices', name: 'Medical Devices', tags: ['MDR', 'GSPR', 'Combination Product', 'Combination Products', 'Medical Devices', 'Notified Body', 'Device Standards', 'IVD', 'ISO 14971'] },
-        { id: 'supply-chain', name: 'Supply Chain & GDP', tags: ['Supply Chain', 'GDP', 'Cold Chain', 'Distribution', 'CDMO', 'Clinical Studies', 'Supplier Assessment', 'Raw Materials', 'Transportation'] },
-        { id: 'tech-transfer', name: 'Technology Transfer', tags: ['Technology Transfer', 'Scale-up'] },
+        { id: 'reg-framework', name: 'Regulatory Framework', tags: ['Regulatory', 'Annex 1', 'Regulatory Compliance', 'GMP Compliance', 'FDA', 'ICH Q9', 'Regulatory Data Exchange'], primaryDoc: 'TR91' },
+        { id: 'ich', name: 'ICH Guidelines', tags: ['ICH', 'QbD', 'Design Space', 'CMC'], primaryDoc: 'TR91' },
+        { id: 'devices', name: 'Medical Devices', tags: ['MDR', 'GSPR', 'Combination Product', 'Combination Products', 'Medical Devices', 'Notified Body', 'Device Standards', 'IVD', 'ISO 14971'], primaryDoc: 'TR73-2' },
+        { id: 'supply-chain', name: 'Supply Chain & GDP', tags: ['Supply Chain', 'GDP', 'Cold Chain', 'Distribution', 'CDMO', 'Clinical Studies', 'Supplier Assessment', 'Raw Materials', 'Transportation'], primaryDoc: 'TR52' },
+        { id: 'tech-transfer', name: 'Technology Transfer', tags: ['Technology Transfer', 'Scale-up'], primaryDoc: 'TR65' },
         { id: 'inspections', name: 'Inspections', tags: ['GMP Inspection', 'GDP Inspection', 'Remote Inspection', 'Virtual Inspection', 'Hybrid Inspection', 'Lot Inspection', 'Inspection'] },
       ]
     },
@@ -676,7 +676,7 @@ const topicNetworkDef = {
       subtopics: [
         { id: 'digital', name: 'Digital & AI', tags: ['AI/ML', 'Blockchain', 'Digital Tools', 'Business Case', 'IT Infrastructure', 'Platform Technology', 'Software Categories'] },
         { id: 'csv', name: 'Computerized Systems', tags: ['CSV', 'GAMP', 'Computerized Systems', 'Agile'] },
-        { id: 'mobile', name: 'Mobile / Modular', tags: ['Mobile Manufacturing', 'Modular', 'MMU'] },
+        { id: 'mobile', name: 'Mobile / Modular', tags: ['Mobile Manufacturing', 'Modular', 'MMU'], primaryDoc: 'PtC-15' },
         { id: 'continuous', name: 'Continuous Manufacturing', tags: ['Continuous Manufacturing', 'RTRT', 'ATP', 'Human Factors'] },
       ]
     }
