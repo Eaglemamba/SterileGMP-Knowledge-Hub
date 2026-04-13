@@ -174,8 +174,11 @@ function createMarkmap(md, colors) {
 }
 
 /* ── D3 Network Rendering (By Department view) ───────────────────── */
+let expandedDepts = new Set();
+
 function renderDeptNetwork(reports) {
   hideTooltip();
+  expandedDepts = new Set();
   const svg = d3.select('#mindmap');
   svg.selectAll('*').remove();
   currentMM = null;
@@ -185,21 +188,35 @@ function renderDeptNetwork(reports) {
   svg.attr('width', width).attr('height', height);
 
   const network = buildDeptNetwork(reports);
-  const clusters = network.clusters;
-  const nClusters = clusters.length;
+  const nClusters = network.clusters.length;
 
   const cx = width / 2, cy = height / 2;
   const R = Math.min(width, height) * 0.26;
+  const subOffset = R * 0.48;
 
-  // Radial positions — same formula as By Topic
-  const clusterNodes = clusters.map((c, i) => {
+  /* ── Layout: identical to By Topic ── */
+  const clusterNodes = network.clusters.map((c, i) => {
     const angle = (i / nClusters) * 2 * Math.PI - Math.PI / 2;
     return { ...c, x: cx + R * Math.cos(angle), y: cy + R * Math.sin(angle), angle };
   });
   const clusterById = {};
   clusterNodes.forEach(c => clusterById[c.id] = c);
 
-  const maxShared = Math.max(...network.crossLinks.map(cl => cl.sharedCount), 1);
+  const subtopicNodes = [];
+  clusterNodes.forEach(c => {
+    const sector = (2 * Math.PI) / nClusters;
+    const nSubs = c.subtopics.length;
+    c.subtopics.forEach((s, j) => {
+      const spread = sector * 0.72;
+      const subAngle = c.angle - spread / 2 + (nSubs === 1 ? spread / 2 : (j / (nSubs - 1)) * spread);
+      const jitter = (j % 2 === 0 ? 0 : 10);
+      subtopicNodes.push({
+        ...s, parentId: c.id, color: c.color,
+        x: cx + (R + subOffset + jitter) * Math.cos(subAngle),
+        y: cy + (R + subOffset + jitter) * Math.sin(subAngle),
+      });
+    });
+  });
 
   /* ── Zoom ── */
   const g = svg.append('g');
@@ -212,7 +229,7 @@ function renderDeptNetwork(reports) {
   const filter = defs.append('filter').attr('id', 'dshadow').attr('x', '-30%').attr('y', '-30%').attr('width', '160%').attr('height', '160%');
   filter.append('feDropShadow').attr('dx', 0).attr('dy', 2).attr('stdDeviation', 3).attr('flood-opacity', 0.15);
 
-  /* ── Layer 1: Weighted curved arcs between departments ── */
+  /* ── Layer 1: Cross-links (curved dashed arcs) ── */
   const crossGroup = g.append('g').attr('class', 'dept-cross-links');
   network.crossLinks.forEach(cl => {
     const s = clusterById[cl.source], t = clusterById[cl.target];
@@ -223,51 +240,40 @@ function renderDeptNetwork(reports) {
     const curvature = R * 0.35;
     const ctrlX = midX + (dx / dist) * curvature;
     const ctrlY = midY + (dy / dist) * curvature;
-    const d = `M${s.x},${s.y} Q${ctrlX},${ctrlY} ${t.x},${t.y}`;
-
-    const str = cl.sharedCount / maxShared;
-    const lw = 1.5 + str * 6;
-    const op = 0.12 + str * 0.38;
-
-    // Fat invisible hit area
-    crossGroup.append('path').attr('d', d)
-      .attr('fill', 'none').attr('stroke', 'transparent').attr('stroke-width', 14)
+    crossGroup.append('path')
+      .attr('d', `M${s.x},${s.y} Q${ctrlX},${ctrlY} ${t.x},${t.y}`)
+      .attr('fill', 'none').attr('stroke', '#94a3b8').attr('stroke-width', 1 + cl.sharedCount * 0.8)
+      .attr('stroke-dasharray', '6,4').attr('opacity', 0.18 + cl.sharedCount * 0.06)
       .attr('data-source', cl.source).attr('data-target', cl.target)
-      .attr('class', 'dept-arc-hit').style('cursor', 'pointer')
-      .on('mouseenter', e => highlightArc(cl, s))
-      .on('mouseleave', clearDeptHighlight)
-      .on('click', e => { e.stopPropagation(); showArcTooltip(cl, s, t, e); });
-
-    // Visible arc
-    crossGroup.append('path').attr('d', d)
-      .attr('fill', 'none').attr('stroke', '#94a3b8').attr('stroke-width', lw)
-      .attr('stroke-dasharray', str > 0.6 ? 'none' : '6,4')
-      .attr('opacity', op)
-      .attr('data-source', cl.source).attr('data-target', cl.target)
-      .attr('class', 'dept-cross-path').attr('pointer-events', 'none');
-
-    // Count label (hidden by default)
+      .attr('class', 'dept-cross-path');
     crossGroup.append('text')
       .attr('x', ctrlX).attr('y', ctrlY - 5).attr('text-anchor', 'middle')
-      .attr('font-size', '9px').attr('fill', '#475569').attr('font-weight', '700').attr('opacity', 0)
+      .attr('font-size', '8px').attr('fill', '#64748b').attr('font-weight', '600').attr('opacity', 0)
       .attr('data-source', cl.source).attr('data-target', cl.target)
-      .attr('class', 'dept-cross-label').attr('pointer-events', 'none')
-      .text(cl.sharedCount);
+      .attr('class', 'dept-cross-label')
+      .text(cl.label);
   });
 
-  /* ── Layer 2: Hub → dept spokes ── */
-  const linkGroup = g.append('g').attr('class', 'dept-hub-links');
+  /* ── Layer 2: Hierarchical links ── */
+  const linkGroup = g.append('g').attr('class', 'dept-hier-links');
   clusterNodes.forEach(c => {
     linkGroup.append('line')
       .attr('x1', cx).attr('y1', cy).attr('x2', c.x).attr('y2', c.y)
       .attr('stroke', '#cbd5e1').attr('stroke-width', 1.8).attr('opacity', 0.5)
       .attr('data-cluster', c.id).attr('class', 'dept-hub-link');
   });
+  subtopicNodes.forEach(s => {
+    const parent = clusterById[s.parentId];
+    linkGroup.append('line')
+      .attr('x1', parent.x).attr('y1', parent.y).attr('x2', s.x).attr('y2', s.y)
+      .attr('stroke', s.color).attr('stroke-width', 1.2).attr('opacity', 0)
+      .attr('data-cluster', s.parentId).attr('class', 'dept-sub-link');
+  });
 
   /* ── Layer 3: Nodes ── */
   const nodeGroup = g.append('g').attr('class', 'dept-nodes');
 
-  // Hub center
+  // Hub
   const hubG = nodeGroup.append('g').attr('class', 'dept-hub-node').style('cursor', 'default');
   hubG.append('circle').attr('cx', cx).attr('cy', cy).attr('r', 36)
     .attr('fill', '#1e293b').attr('stroke', '#475569').attr('stroke-width', 2)
@@ -283,18 +289,18 @@ function renderDeptNetwork(reports) {
     cg.append('circle').attr('cx', c.x).attr('cy', c.y).attr('r', 28)
       .attr('fill', c.color).attr('stroke', 'white').attr('stroke-width', 2.5)
       .attr('filter', 'url(#dshadow)');
-
-    // Icon
     cg.append('text').attr('x', c.x).attr('y', c.y + 6).attr('text-anchor', 'middle')
       .attr('font-size', '16px').text(c.icon);
-
-    // Doc count badge (top-right)
+    // Doc count badge
     cg.append('circle').attr('cx', c.x + 20).attr('cy', c.y - 20).attr('r', 11)
       .attr('fill', 'white').attr('stroke', c.color).attr('stroke-width', 1.5);
     cg.append('text').attr('x', c.x + 20).attr('y', c.y - 16).attr('text-anchor', 'middle')
       .attr('font-size', '9px').attr('font-weight', '700').attr('fill', c.color).text(c.count);
-
-    // Name labels
+    // Expand indicator
+    cg.append('text').attr('x', c.x - 20).attr('y', c.y - 16).attr('text-anchor', 'middle')
+      .attr('font-size', '12px').attr('font-weight', '700').attr('fill', 'white')
+      .attr('class', `dept-expand-${c.id}`).text('+');
+    // Name label
     const labelY = c.y > cy + 10 ? c.y + 44 : (c.y < cy - 10 ? c.y - 38 : c.y + 44);
     cg.append('text').attr('x', c.x).attr('y', labelY).attr('text-anchor', 'middle')
       .attr('font-size', '11px').attr('font-weight', '700').attr('fill', '#1e293b').text(c.name);
@@ -302,13 +308,59 @@ function renderDeptNetwork(reports) {
       cg.append('text').attr('x', c.x).attr('y', labelY + 14).attr('text-anchor', 'middle')
         .attr('font-size', '9px').attr('fill', '#64748b').text(c.nameZh);
     }
-
     cg.on('mouseenter touchstart', e => { e.preventDefault(); highlightDept(c.id); })
       .on('mouseleave', clearDeptHighlight)
-      .on('click', e => { e.stopPropagation(); showDeptTooltip(c, e); });
+      .on('click', e => { e.stopPropagation(); toggleDept(c.id); });
   });
 
-  /* ── Highlight: hover dept node ── */
+  // Sub-nodes (Tier 1 required docs, initially hidden)
+  subtopicNodes.forEach(s => {
+    const sg = nodeGroup.append('g').attr('class', `dept-sg dept-sg-${s.parentId}`)
+      .style('cursor', 'pointer').style('opacity', 0).style('pointer-events', 'none');
+    const r = Math.max(9, Math.min(18, 8 + s.count * 2));
+    sg.append('circle').attr('cx', s.x).attr('cy', s.y).attr('r', r)
+      .attr('fill', s.color).attr('opacity', 0.7).attr('stroke', 'white').attr('stroke-width', 1.5);
+    // Cross-dept count badge (only when shared)
+    if (s.count > 0) {
+      sg.append('text').attr('x', s.x).attr('y', s.y + 3.5).attr('text-anchor', 'middle')
+        .attr('font-size', '8px').attr('font-weight', '700').attr('fill', 'white').text(s.count);
+    }
+    // Source label
+    const angle = Math.atan2(s.y - cy, s.x - cx);
+    const lOff = r + 6;
+    const lx = s.x + lOff * Math.cos(angle);
+    const ly = s.y + lOff * Math.sin(angle);
+    const anchor = (angle > -Math.PI / 2 && angle < Math.PI / 2) ? 'start' : 'end';
+    sg.append('text').attr('x', lx).attr('y', ly + 3).attr('text-anchor', anchor)
+      .attr('font-size', '9px').attr('fill', '#475569').attr('font-weight', '500').text(s.shortName);
+    sg.on('mouseenter touchstart', e => { e.preventDefault(); highlightDept(s.parentId); })
+      .on('mouseleave', clearDeptHighlight)
+      .on('click', e => { e.stopPropagation(); showDocTooltip(s, e); });
+  });
+
+  /* ── Expand/collapse ── */
+  function toggleDept(deptId) {
+    if (expandedDepts.has(deptId)) {
+      expandedDepts.delete(deptId);
+      g.selectAll(`.dept-sg-${deptId}`)
+        .transition().duration(350).style('opacity', 0)
+        .on('end', function() { d3.select(this).style('pointer-events', 'none'); });
+      g.selectAll(`.dept-sub-link[data-cluster="${deptId}"]`)
+        .transition().duration(350).style('opacity', 0);
+      g.selectAll(`.dept-expand-${deptId}`).text('+');
+      hideTooltip();
+    } else {
+      expandedDepts.add(deptId);
+      g.selectAll(`.dept-sg-${deptId}`)
+        .style('pointer-events', 'all')
+        .transition().duration(350).style('opacity', 1);
+      g.selectAll(`.dept-sub-link[data-cluster="${deptId}"]`)
+        .transition().duration(350).style('opacity', 0.3);
+      g.selectAll(`.dept-expand-${deptId}`).text('−');
+    }
+  }
+
+  /* ── Highlight dept ── */
   function highlightDept(deptId) {
     const connected = new Set([deptId]);
     network.crossLinks.forEach(cl => {
@@ -316,18 +368,24 @@ function renderDeptNetwork(reports) {
       if (cl.target === deptId) connected.add(cl.source);
     });
     g.selectAll('.dept-cg').style('opacity', 0.1);
-    connected.forEach(cId => g.selectAll(`.dept-cg-${cId}`).style('opacity', 1));
+    g.selectAll('.dept-sg').style('opacity', 0.06);
     g.selectAll('.dept-hub-link').style('opacity', 0.04);
-    g.selectAll(`.dept-hub-link[data-cluster="${deptId}"]`).style('opacity', 0.5);
+    g.selectAll('.dept-sub-link').style('opacity', 0.04);
     g.selectAll('.dept-cross-path').style('opacity', 0.03);
     g.selectAll('.dept-cross-label').style('opacity', 0);
+    connected.forEach(cId => {
+      g.selectAll(`.dept-cg-${cId}`).style('opacity', 1);
+      if (expandedDepts.has(cId)) {
+        g.selectAll(`.dept-sg-${cId}`).style('opacity', cId === deptId ? 1 : 0.5);
+        g.selectAll(`.dept-sub-link[data-cluster="${cId}"]`).style('opacity', cId === deptId ? 0.4 : 0.15);
+      }
+      g.selectAll(`.dept-hub-link[data-cluster="${cId}"]`).style('opacity', 0.5);
+    });
     g.selectAll('.dept-cross-path').each(function() {
       const el = d3.select(this);
       const src = el.attr('data-source'), tgt = el.attr('data-target');
       if (src === deptId || tgt === deptId) {
-        const cl = network.crossLinks.find(c => (c.source === src && c.target === tgt) || (c.source === tgt && c.target === src));
-        const str = cl ? cl.sharedCount / maxShared : 0.5;
-        el.style('opacity', 0.7 + str * 0.3).attr('stroke', clusterById[deptId].color).attr('stroke-width', 2 + str * 7);
+        el.style('opacity', 0.7).attr('stroke', clusterById[deptId].color).attr('stroke-width', 2.5);
       }
     });
     g.selectAll('.dept-cross-label').each(function() {
@@ -337,94 +395,66 @@ function renderDeptNetwork(reports) {
     g.selectAll('.dept-hub-node').style('opacity', 0.4);
   }
 
-  /* ── Highlight: hover arc ── */
-  function highlightArc(cl, s) {
-    g.selectAll('.dept-cg').style('opacity', 0.1);
-    g.selectAll(`.dept-cg-${cl.source}`).style('opacity', 1);
-    g.selectAll(`.dept-cg-${cl.target}`).style('opacity', 1);
-    g.selectAll('.dept-cross-path').style('opacity', 0.03);
-    g.selectAll('.dept-cross-label').style('opacity', 0);
-    g.selectAll('.dept-cross-path').each(function() {
-      const el = d3.select(this);
-      if (el.attr('data-source') === cl.source && el.attr('data-target') === cl.target) {
-        const str = cl.sharedCount / maxShared;
-        el.style('opacity', 1).attr('stroke', s.color).attr('stroke-width', 3 + str * 8).attr('stroke-dasharray', 'none');
-      }
-    });
-    g.selectAll('.dept-cross-label').each(function() {
-      const el = d3.select(this);
-      if (el.attr('data-source') === cl.source && el.attr('data-target') === cl.target) el.style('opacity', 1);
-    });
-    g.selectAll('.dept-hub-node').style('opacity', 0.4);
-  }
-
   /* ── Clear highlight ── */
   function clearDeptHighlight() {
     g.selectAll('.dept-cg').style('opacity', 1);
+    g.selectAll('.dept-sg').style('opacity', 0).style('pointer-events', 'none');
+    expandedDepts.forEach(cId => {
+      g.selectAll(`.dept-sg-${cId}`).style('opacity', 1).style('pointer-events', 'all');
+    });
     g.selectAll('.dept-hub-link').style('opacity', 0.5);
+    g.selectAll('.dept-sub-link').style('opacity', 0);
+    expandedDepts.forEach(cId => {
+      g.selectAll(`.dept-sub-link[data-cluster="${cId}"]`).style('opacity', 0.3);
+    });
     g.selectAll('.dept-cross-path').each(function() {
       const el = d3.select(this);
       const src = el.attr('data-source'), tgt = el.attr('data-target');
       const cl = network.crossLinks.find(c => (c.source === src && c.target === tgt) || (c.source === tgt && c.target === src));
-      if (cl) {
-        const str = cl.sharedCount / maxShared;
-        el.style('opacity', 0.12 + str * 0.38).attr('stroke', '#94a3b8')
-          .attr('stroke-width', 1.5 + str * 6).attr('stroke-dasharray', str > 0.6 ? 'none' : '6,4');
-      }
+      if (cl) el.style('opacity', 0.18 + cl.sharedCount * 0.06).attr('stroke', '#94a3b8').attr('stroke-width', 1 + cl.sharedCount * 0.8);
     });
     g.selectAll('.dept-cross-label').style('opacity', 0);
     g.selectAll('.dept-hub-node').style('opacity', 1);
-    hideTooltip();
   }
 
-  /* ── Dept tooltip: topic areas grouped by cluster ── */
-  function showDeptTooltip(c, event) {
-    document.getElementById('ttTitle').textContent = `${c.icon} ${c.name}`;
-    document.getElementById('ttCount').textContent = `${c.subtopics.length} topics · ${c.count} docs`;
+  /* ── Tooltip: required doc (sub-node click) ── */
+  function showDocTooltip(s, event) {
+    document.getElementById('ttTitle').textContent = s.name;
+    document.getElementById('ttCount').textContent = s.deptCoverage.length + ' depts require this';
     const container = document.getElementById('ttDocs');
     container.innerHTML = '';
-    const byCluster = {};
-    c.subtopics.forEach(s => {
-      if (!byCluster[s.clusterName]) byCluster[s.clusterName] = { color: s.clusterColor, topics: [] };
-      byCluster[s.clusterName].topics.push(s.name);
-    });
-    Object.entries(byCluster).forEach(([clName, cl]) => {
-      const div = document.createElement('div');
-      div.style.cssText = 'margin-bottom:6px;';
-      div.innerHTML = `<span style="background:${cl.color}22;color:${cl.color};padding:1px 6px;border-radius:3px;font-size:9px;font-weight:600;display:inline-block;margin-bottom:2px">${clName}</span><br>
-        <span style="font-size:10px;color:#475569;line-height:1.5">${cl.topics.join(' · ')}</span>`;
-      container.appendChild(div);
-    });
-    positionTooltip(event);
-  }
-
-  /* ── Arc tooltip: shared topics list ── */
-  function showArcTooltip(cl, s, t, event) {
-    document.getElementById('ttTitle').textContent = `${s.icon} ${s.name} ↔ ${t.icon} ${t.name}`;
-    document.getElementById('ttCount').textContent = `${cl.sharedCount} shared topics`;
-    const container = document.getElementById('ttDocs');
-    container.innerHTML = '';
+    // Open link
+    if (s.link) {
+      const openDiv = document.createElement('div');
+      openDiv.style.cssText = 'margin-bottom:8px;';
+      openDiv.innerHTML = `<a href="${s.link}" target="_blank" class="tt-doc-link" style="font-size:11px">→ Open document</a>`;
+      container.appendChild(openDiv);
+    }
+    // Why this dept needs it
+    if (s.why) {
+      const whyDiv = document.createElement('div');
+      whyDiv.style.cssText = 'font-size:10px;color:#475569;margin-bottom:8px;font-style:italic;line-height:1.4';
+      whyDiv.textContent = s.why;
+      container.appendChild(whyDiv);
+    }
+    // Cross-dept coverage
     const hdr = document.createElement('div');
-    hdr.style.cssText = 'font-size:9px;font-weight:700;color:#94a3b8;margin:4px 0 6px;text-transform:uppercase;letter-spacing:.5px';
-    hdr.textContent = 'Shared topics';
+    hdr.style.cssText = 'font-size:9px;font-weight:700;color:#94a3b8;margin:4px 0 4px;text-transform:uppercase;letter-spacing:.5px';
+    hdr.textContent = 'Required by';
     container.appendChild(hdr);
-    (cl.sharedTopics || []).forEach(st => {
+    s.deptCoverage.forEach(cov => {
       const div = document.createElement('div');
       div.className = 'tt-doc';
-      div.innerHTML = `<span class="tt-src" style="background:${st.color}22;color:${st.color}">${st.clusterName.slice(0, 4)}</span>
-        <span class="tt-doc-title">${st.name}</span>`;
+      div.innerHTML = `<span class="tt-src" style="background:${cov.deptColor}22;color:${cov.deptColor}">${cov.deptIcon}</span>
+        <span class="tt-doc-title">${cov.deptName}</span>`;
       container.appendChild(div);
     });
-    positionTooltip(event);
-  }
-
-  function positionTooltip(event) {
     const tt = document.getElementById('networkTooltip');
     const x = event.clientX || window.innerWidth / 2;
     const y = event.clientY || window.innerHeight / 2;
     tt.style.display = 'block';
     const ttW = tt.offsetWidth, ttH = tt.offsetHeight;
-    tt.style.left = Math.min(x + 14, window.innerWidth - ttW - 16) + 'px';
+    tt.style.left = Math.min(x + 12, window.innerWidth - ttW - 16) + 'px';
     tt.style.top = Math.min(y - 20, window.innerHeight - ttH - 16) + 'px';
   }
 
@@ -760,10 +790,10 @@ function updateLegend(view) {
         `<div><span class="legend-dot" style="background:${d.color}"></span>${d.icon} ${d.name}</div>`
       ).join('')}
       <div style="margin-top:8px;border-top:1px solid var(--c-border);padding-top:6px">
-        <div><span class="legend-line"></span>Shared topics (thicker = more)</div>
+        <div><span class="legend-line"></span>Shared core documents</div>
       </div>
       <div style="margin-top:4px;color:var(--c-tertiary);font-size:10px">
-        Hover to highlight · Click dept or arc for details
+        Click dept to expand · Click document node for details
       </div>`;
   } else if (view === 'topic') {
     legend.innerHTML = `
@@ -840,7 +870,7 @@ let resizeTimer;
 window.addEventListener('resize', () => {
   clearTimeout(resizeTimer);
   resizeTimer = setTimeout(() => {
-    if (currentView === 'dept') { renderDeptNetwork(reportsData); }
+    if (currentView === 'dept') { expandedDepts = new Set(); renderDeptNetwork(reportsData); }
     else if (currentView === 'topic') { expandedClusters = new Set(); renderTopicNetwork(reportsData); }
   }, 250);
 });
