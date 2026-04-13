@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TR80 - Section 6: Risk Management, Remediation &amp; Conclusion</title>
+    <link rel="stylesheet" href="../../../template.css">
+</head>
+<body>
+
+<div class="header">
+    <h1>Sections 7–10: Risk Management, Remediation &amp; Conclusion</h1>
+    <div class="subtitle">風險管理、矯正措施與結論</div>
+    <div class="page-info">PDA Technical Report No. 80 (2018) | p48 - p53</div>
+</div>
+
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>運用 ICH Q9 風險管理原則建立資料完整性（DI）風險矩陣，依資料關鍵性與系統成熟度確立管控優先順序</li>
+        <li>辨識資料完整性問題的各種發現途徑，並說明初步應對行動的三大關鍵：封鎖（contain）、蒐集（gather）、確認範圍（determine scope）</li>
+        <li>描述 DI 違規調查的完整架構，包括：獨立性原則、員工訪談、調查文件保密要求</li>
+        <li>設計全面性評估（Comprehensive Assessment, CA）的範疇，區分系統性違規與個別事件，並規劃適當的回顧性審查</li>
+        <li>制定符合法規審查標準的 CAPA 計畫，涵蓋產品影響評估、SOP 修訂、人員管理、系統升級及持續培訓等要素</li>
+    </ul>
+</div>
+
+<!-- ============================================================
+     SECTION 7.0 — Risk Management of Data Governance Systems
+     ============================================================ -->
+<div class="two-column">
+    <div class="left-column">
+        <h2>7.0 Risk Management of Data Governance Systems</h2>
+        <p>Data integrity controls should be based on quality risk management principles such as ICH Q9, that is, the level of controls, verification, and oversight should be commensurate with the criticality of the data to patient safety and with the risk to data accuracy, completeness, fabrication, or falsification.</p>
+
+        <h3>7.1 Risk Assessment</h3>
+        <p>Conducting a risk assessment is a recommended method to assess and challenge processes, systems, controls, and practices in place for the generation, review, and archival of paper and electronic data. Risk assessments may be performed as part of the selection, commissioning, and validation of computerized systems. Testing of system functions and user privileges should be performed to ensure appropriate controls are in place that prevent or track changes to data, including any mechanism or role that allows data to be altered, overwritten, not saved, or deleted.</p>
+        <p>Risk assessments for paper data should be performed to assess controls in place that provide for traceability and reconciliation of the records. Mechanisms should also be in place to ensure that original records can be authenticated.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：DI 風險管理的法規基礎</h4>
+            <p>本節直接援引 <strong>ICH Q9 品質風險管理</strong>原則，確立一個重要邏輯：<em>管控力度必須與資料對病人安全的關鍵程度相稱</em>。這意味著並非所有資料都需要相同等級的管控，而是應根據風險高低分配資源。</p>
+            <p>三個核心風險維度：</p>
+            <ul>
+                <li>資料對病人安全的<strong>關鍵性</strong>（Criticality）</li>
+                <li>資料正確性受損的<strong>風險</strong>（Accuracy risk）</li>
+                <li>資料被<strong>偽造或竄改</strong>的可能性（Fabrication / Falsification）</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：機場安檢的比例原則</h4>
+            <p>ICH Q9 在 DI 的應用就像機場安檢分級：頭等艙不一定比經濟艙安全要求更嚴，<em>但攜帶危險物品的乘客</em>才是篩查重點。同理，無菌測試（CQA）失誤直接影響病人安全，理應受到最嚴格的雙人驗證；而非無菌產品的一般環境監測則可接受較輕量的管控。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：紙本資料同樣需要風險評估</h4>
+            <p>TR80 特別強調，<strong>紙本資料</strong>的風險評估不可忽略。評估重點：</p>
+            <ul>
+                <li>追溯性（Traceability）：是否可追蹤記錄的建立過程？</li>
+                <li>核對（Reconciliation）：記錄是否可與原始來源對帳？</li>
+                <li>原始性驗證（Authentication）：是否有機制確認原始記錄未被置換？</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>思考練習</h4>
+            <p>您的實驗室剛完成 HPLC 系統的 21 CFR Part 11 稽核，發現審計追蹤功能可被系統管理員停用。這屬於哪一層風險？您會建議進行什麼樣的風險評估？</p>
+        </div>
+    </div>
+</div>
+
+<!-- 7.2 Risk-Based Mitigation -->
+<div class="two-column">
+    <div class="left-column">
+        <h3>7.2 Risk-Based Mitigation</h3>
+        <p>As discussed earlier in this paper, risks to ensuring data integrity might include computerized systems with lack of audit trails or appropriate security controls to prevent unauthorized changes as well as observational test methodologies. A systematic approach to risk mitigation is the use of a risk matrix.</p>
+        <p>A risk matrix can be established using criticality of the test and maturity of the quality system and use of risk-reducing technology. Data criticality can be established based on whether the test is for a critical quality attribute (CQA), such as a sterility test; a critical process control (CPC), such as an environmental monitoring test; or an in-process control or other test, such as environmental monitoring for nonsterile products.</p>
+        <p>Figure 7.2-1 shows a risk matrix applied to data integrity. In this example, the matrix is used to establish which microbiological tests require second-person verification prior to approving test results. Currently, a high percentage of the tests conducted in microbiology laboratories are observational, that is, the results (such as a colony count) are viewed and manually recorded on a paper document or in a computer record. Absent an easy, reliable method to verify the recorded data, some laboratories require microbiologists to use second-person verification (e.g., supervisor) by physical examination of the test plates. Further, the second-person verification could be performed as a discreet step prior to approval of the data or combined with the data-approval step.</p>
+        <p>Risk factors for the collection, control, and verification of microbiology data are reduced with computer interface technology, such as automated plate readers or rapid methods that produce an electronic record that is retrievable and relatively tamper-proof or digitally time-and-date-stamped photography equipment. This can include automation and the use of advanced methods with a validated data recording (for example, ATP bioluminescence platform) system and audit trail capabilities. Even when a technological solution is not available, a strong pharmaceutical quality system (PQS), including an effective site audit program, supervisory and Quality Unit presence in the laboratory, and a robust periodic review of the documentation system, will reduce data integrity risk. On the other hand, a weak PQS increases the data integrity risk.</p>
+
+        <div class="figure-container">
+            <p><em>[Figure 7.2-1: Risk Matrix Example for Microbiological Testing — Axes: Data Criticality (IPC/Other → CPC → CQA) vs. Data Collection Method (Automated/Electronic → Rapid Sterility → Conventional). Strong QMS reduces overall risk level; weak QMS elevates it.]</em></p>
+        </div>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="formula-box">
+            <h4>風險矩陣架構：DI 管控優先序</h4>
+            <p>TR80 Figure 7.2-1 提供一個雙軸風險矩陣：</p>
+            <pre>
+縱軸（資料蒐集方式）：
+  高風險 → 人工觀察記錄（Conventional / Manual）
+  中風險 → 快速無菌測試（Rapid Sterility）
+  低風險 → 自動化 / 電子記錄（Automated / Electronic）
+
+橫軸（資料關鍵性）：
+  左 → IPC / Other（製程管控 / 其他）
+  中 → CPC（關鍵製程管控）
+  右 → CQA（關鍵品質屬性）
+
+調節因子：
+  強 QMS → 整體風險下降（向左下移動）
+  弱 QMS → 整體風險上升（向右上移動）
+            </pre>
+            <p>矩陣交叉點決定是否需要<strong>第二人驗證（Second-person verification）</strong>：高資料關鍵性 + 人工記錄 → 必須強制雙人確認。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念：降低微生物實驗室 DI 風險的四種策略</h4>
+            <ul>
+                <li><strong>自動化讀板器（Automated plate readers）</strong>：產生可稽查的電子記錄，消除人工抄錄誤差</li>
+                <li><strong>快速檢測方法（Rapid methods）</strong>：如 ATP 生物冷光，具備時間戳記與稽核追蹤</li>
+                <li><strong>數位時間戳攝影（Timestamped photography）</strong>：作為人工計數的佐證</li>
+                <li><strong>強健的 PQS</strong>：包含有效的內部稽核、QU 的實驗室存在感、定期文件審查</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：菌落計數的可驗證性困境</h4>
+            <p>微生物菌落計數就像快艇比賽的計時——如果裁判只有一人且沒有照片，結果容易被質疑。引入自動化讀板器就像裝設感應計時系統：數據自動產生、時間戳記不可竄改，DI 風險從根本消除。這正是 TR80 鼓勵<em>以技術降低風險</em>的核心邏輯。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：PQS 強弱是 DI 風險的乘數</h4>
+            <p>技術工具固然重要，但 TR80 明確指出：<strong>薄弱的藥品品質系統（PQS）會放大一切 DI 風險</strong>。即使擁有最先進的 LIMS，若缺乏有效的稽核程序與 QU 監督，DI 漏洞仍會被放大。相對地，強健的 PQS 可以在技術解決方案不可得的情況下，通過管理手段有效降低風險。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>思考練習：建立您自己的 DI 風險矩陣</h4>
+            <p>請為以下三個測試項目，在 Figure 7.2-1 的矩陣中定位並決定是否需要第二人驗證：</p>
+            <ol>
+                <li>無菌檢測（人工觀察，強 QMS）</li>
+                <li>環境監測（自動化空氣採樣器，強 QMS）</li>
+                <li>非無菌產品環境監測（人工計數，弱 QMS）</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================
+     SECTION 8.0 — How to Remediate Breaches in Data Integrity
+     ============================================================ -->
+<div class="two-column">
+    <div class="left-column">
+        <h2>8.0 How to Remediate Breaches in Data Integrity</h2>
+        <h3>8.1 Discovery of Data Integrity Issues in Pharmaceutical Laboratories</h3>
+        <p>Data integrity issues may be discovered by various means, including self-reporting, data review, and internal audits, as well as during regulatory inspections. Any deviations from the established procedures that affect data integrity should be reported through the quality system; the Quality Unit should then investigate those situations to assess their impact and scope, determine the root cause, and define corrective and preventative actions.</p>
+        <p>Deviations affecting data integrity may be a single event or the result of ongoing practices. Regardless, each instance must be investigated to ensure data reliability. Any data breach or compromise that takes place due to ignorance or to a willful act may lead to a quality- or public safety-related event. Upon discovery of a data integrity breach, the actions taken should be proportional to the circumstances. Key considerations are to contain the event, to gather the data necessary to confirm event details, and to determine the scope.</p>
+        <p>Employee interviews play a key role in data integrity investigations and should be conducted as soon after an event as possible. To prevent a conflict of interest, interviewers selected to conduct the investigations should be independent from the unit under investigation and should conduct interviews away from the unit under investigation. While data integrity investigations should be documented within the quality system (as are all types of investigations), portions of these investigations may need to be kept "confidential" within the quality management system while the investigation is underway to protect the anonymity of the individuals involved. This is necessary to protect against retaliation, to promote open communication, and to avoid possible roadblocks during the course of the investigation.</p>
+        <p>Factors that may contribute to data integrity breaches include:</p>
+        <ul>
+            <li>Inadequate resources, training, or necessary expertise</li>
+            <li>Time constraints</li>
+            <li>Poor test methods, validation gaps, or product issues</li>
+            <li>Processes, procedures, or systems that do not fundamentally support data integrity</li>
+        </ul>
+        <p>Data integrity failures may be unintentional errors or may be attributed to sloppiness. They may also be a deliberate attempt to mislead, misrepresent, alter, or falsify the original data. While corporate officers, management, and personnel often dismiss the willingness of their colleagues to breach data integrity principles, its occurrence has been evidenced by multiple incidents of regulatory correspondence and in industry discussions. Leadership may be culpable, intentionally or not, of creating an environment where values and/or performance expectations hinder compliance, or where individuals may act in their own interests. Acknowledging these risks is crucial to developing a data governance system that can detect and remediate data integrity failures of this nature.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：DI 問題的四種發現途徑</h4>
+            <ul>
+                <li><strong>自我揭露（Self-reporting）</strong>：通常源自誠信文化良好的組織；員工主動揭報可疑情況</li>
+                <li><strong>資料審查（Data review）</strong>：QU 例行性資料審查發現異常</li>
+                <li><strong>內部稽核（Internal audit）</strong>：計畫性稽核中發現系統性問題</li>
+                <li><strong>法規查驗（Regulatory inspection）</strong>：FDA / EMA 查廠時發現——此時已是最壞的情況</li>
+            </ul>
+            <p>最理想的狀況是問題在<em>自我揭露階段</em>就被發現；最糟的情況是由法規機關在查廠中首先發現。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念：發現後的初步三步驟</h4>
+            <p>TR80 明確指出三個比例性初步行動：</p>
+            <ol>
+                <li><strong>封鎖（Contain）</strong>：防止問題擴散或資料被進一步竄改</li>
+                <li><strong>蒐集（Gather）</strong>：收集確認事件細節所需的所有資料</li>
+                <li><strong>確認範圍（Determine scope）</strong>：釐清影響的時間範圍、人員、產品批號</li>
+            </ol>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：調查獨立性與保密性的雙重要求</h4>
+            <p><strong>獨立性（Independence）</strong>：訪談者必須來自被調查單位以外，避免利益衝突。</p>
+            <p><strong>保密性（Confidentiality）</strong>：調查進行中，涉及人員身份的部分應在 QMS 內保密。原因有三：</p>
+            <ul>
+                <li>防止打擊報復（Retaliation）</li>
+                <li>促進開放溝通（Open communication）</li>
+                <li>避免調查阻礙（Investigation roadblocks）</li>
+            </ul>
+            <p>注意：保密性並不代表調查結果不需文件化，最終仍須完整記錄於品質系統中。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：領導文化是 DI 違規的溫床</h4>
+            <p>TR80 用了相當直接的語言指出：<em>管理層可能（有意或無意地）創造一種「業績壓力超越合規要求」的環境</em>。這就像一個公司文化中，「趕上市時程」比「確保測試正確」更受獎勵時，個別員工被迫在合規與求生存之間做選擇。承認這種文化風險，才能設計出真正有效的資料治理系統。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>思考練習</h4>
+            <p>您的品保部門在例行資料審查中發現，某分析師在過去六個月內有 12 次 OOS 結果從 LIMS 系統中被刪除。這屬於哪種發現途徑？初步三步驟各應如何執行？</p>
+        </div>
+    </div>
+</div>
+
+<!-- 8.2 Investigation Considerations -->
+<div class="two-column">
+    <div class="left-column">
+        <h3>8.2 Investigation Considerations</h3>
+        <p>An investigation must evaluate both the impact of the data integrity breach on the data generated and the decisions made based on that data. Companies might want to use the services of an independent laboratory to conduct a retrospective review of data and/or perform additional testing.</p>
+        <p>Remediation of data integrity "risks," as opposed to an identified data integrity breach, may follow a similar pattern of investigation to determine the possible impact on data generated; however, the approach and level of effort invested in a retrospective review will differ. For example, if a system gap is identified and process improvements are made to address the gap, a retrospective review of data generated prior to the process improvement may not be necessary. Factors to consider in this decision may include the overall site compliance profile; complexity of the risk (level of effort to exploit the risk); associate knowledge (well-known gap or initial discovery); or type of risk, as well as measures in place and/or other testing that detects a product failure.</p>
+        <p>It may not be possible to confirm with absolute certainty that a gap has not been exploited; however, when identified, immediate actions should be taken to protect against that risk being exploited and to correct the system or process for the future. As an example, if administrator access was given to a laboratory supervisor or analyst and audit trails were not in place or turned on, a retrospective data review and associate interviews may provide some evidence of actions taken. Yet, most likely, that review will not provide 100% certainty that the data generated, while those risks were in place, were not compromised. Taking immediate action to address those gaps will contribute greatly to ensuring data integrity in the future. Added controls can demonstrate gaps related to test methods or product issues that may not have been detectable prior to system upgrades. In that event, a full investigation would be required, including a retrospective review of previously tested and/or released batches as well as test results for pending and approved applications that might have been affected.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：「已識別違規」vs.「識別風險」的調查差異</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>情境</th>
+                        <th>調查深度</th>
+                        <th>回顧性審查必要性</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>已確認 DI 違規（如：發現資料竄改）</td>
+                        <td>全面調查，評估所有受影響資料及決策</td>
+                        <td>必須進行，範圍廣</td>
+                    </tr>
+                    <tr>
+                        <td>識別系統漏洞（如：管理員權限未設限）但無濫用證據</td>
+                        <td>評估漏洞被利用的可能性與時間窗口</td>
+                        <td>基於風險決定；可能不需要</td>
+                    </tr>
+                    <tr>
+                        <td>流程改善後發現的舊有缺口</td>
+                        <td>確認改善已落實</td>
+                        <td>通常不需要（依合規歷史判斷）</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：無法達到 100% 確定性時的正確做法</h4>
+            <p>TR80 承認一個務實現實：當審計追蹤功能從未啟用時，你<em>永遠無法 100% 確認</em>資料是否在該期間被竄改。此時的正確行動邏輯是：</p>
+            <ol>
+                <li>立即修補漏洞（防止未來被利用）</li>
+                <li>執行可能範圍內的回顧性審查</li>
+                <li>訪談相關人員蒐集佐證</li>
+                <li>文件化所有行動與風險評估決策</li>
+            </ol>
+            <p>這個「採取最大合理努力」的態度，在法規查廠中具有重要的可信度價值。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：無人警衛的保全攝影機</h4>
+            <p>啟用後從未被審查的審計追蹤，就像保全室裡沒有人看的攝影機——技術上有記錄，但沒有偵測功能。若攝影機還被管理員關閉過，那就連記錄都沒有。此時即使翻遍所有現存的影像，也無法確認空白期間發生了什麼。TR80 的建議是：<em>承認不確定性，但立即採取行動確保未來的安全</em>。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>思考練習</h4>
+            <p>您發現一台 HPLC 的審計追蹤功能在 18 個月前被停用，且在近期系統升級後才重新啟用。這 18 個月期間共釋出 47 批次產品。請問：是否需要回顧性審查？需要考慮哪些因素？</p>
+        </div>
+    </div>
+</div>
+
+<!-- 8.3 Comprehensive Assessment of Systems -->
+<div class="two-column">
+    <div class="left-column">
+        <h3>8.3 Comprehensive Assessment of Systems</h3>
+        <p>For a remediation plan to be effective, a comprehensive assessment (CA) of the potentially affected system(s) and extent of the inaccuracies must be performed including identification of root cause. Depending on the severity and complexity of the issue, a competent independent party might best be utilized to perform the CA under a protocol that specifies how the data or information will be assessed, along with the scope of the evaluation. The approach selected should be justified. The following points in the scope of a CA for laboratory data integrity breaches should be considered:</p>
+        <ul>
+            <li>Time period and product(s) to be covered</li>
+            <li>Details specifying data types to be examined (estimated number of HPLC-processed injections, type of microbial identification platform)</li>
+            <li>Equipment to be evaluated (HPLC, GC, NIR, FTIR, automated microbial air sampler, stand-alone equipment)</li>
+            <li>Departments included in the assessment (R&amp;D, stability, microbiology laboratory)</li>
+        </ul>
+        <p>Systems other than the laboratory may need to be included.</p>
+        <p>The CA should focus on the process gaps that permitted the data integrity breach to occur without detection. Depending on these gaps, the CA would be designed to identify other possible data integrity breaches that may have occurred. In most cases, the CA and retrospective review should include an assessment of testing data for incoming materials, in-process testing, stability and finished testing, and data used to support pending and approved applications to determine if any wrongful acts might have adversely impacted the application. This should include impact on the development/scale-up/validation of products distributed.</p>
+        <p>This data review is critical because the findings may need to be reported to the regional regulatory agency and can be used to inform decisions to initiate corrective actions against marketed products or the withdrawal of pending or approved applications.</p>
+        <p>For the remediation to be effective, the scope of the CA must be appropriate. For example, if one or two employees were engaged in deliberate practices that compromised data integrity, the CA should require evaluation of all test results generated by those employees. Whether or not lab managers were aware of the wrongdoing should also be considered in the scope of the CA.</p>
+        <p>The following are recommendations on how to implement a CA:</p>
+        <ul>
+            <li>Consider using independent interviews of staff, without fear of reprisal, to ensure the causes of data integrity issues and scope of the problematic practices are fully understood.</li>
+            <li>Develop a detailed protocol and methodology, a summary of all laboratories, manufacturing operations, and systems to be covered, and a justification for excluding any relevant operation.</li>
+            <li>Identify the omissions, alterations, deletions, records destroyed, nonconcurrent records completed, etc.</li>
+            <li>When appropriate, conduct a retrospective evaluation of the nature of the deficiencies in testing data integrity. A risk-based decision should be made in determining the scope of such reviews considering the data integrity gap, whether there is evidence that the gap has been exploited, and the potential impact on product quality.</li>
+            <li>Assess the associated risk and potential effects of failures on drug products released and on patients.</li>
+            <li>Third-party product testing may be considered as part of additional verification.</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：全面性評估（CA）的六大範疇要素</h4>
+            <ol>
+                <li><strong>時間範圍</strong>：違規行為涵蓋的起訖日期</li>
+                <li><strong>產品範圍</strong>：哪些產品批號可能受影響</li>
+                <li><strong>資料類型</strong>：HPLC 注射序列數、微生物鑑定記錄數等具體規格</li>
+                <li><strong>設備範圍</strong>：HPLC、GC、NIR、FTIR、微生物空氣採樣器等</li>
+                <li><strong>部門範圍</strong>：R&amp;D、穩定性、微生物實驗室，必要時延伸至製造、品管</li>
+                <li><strong>排除事項的正當性</strong>：任何不納入評估的操作，均需書面說明理由</li>
+            </ol>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：CA 為何需要獨立第三方？</h4>
+            <p>TR80 建議在複雜或嚴重案例中使用<strong>獨立的有能力第三方</strong>執行 CA，原因包括：</p>
+            <ul>
+                <li>消除利益衝突（Conflict of interest）</li>
+                <li>提供客觀的技術評估能力</li>
+                <li>增強法規機關的可信度（Credibility to regulators）</li>
+                <li>避免「自我調查」的固有限制</li>
+            </ul>
+            <p>特別是當管理層可能知情或共謀時，內部調查的公信力嚴重不足。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：系統性漏洞 vs. 個人行為</h4>
+            <p>CA 的關鍵問題不是「誰做了壞事」，而是「什麼樣的系統讓壞事得以發生且未被察覺」。就像飛機失事調查不只是追究飛行員責任，更要找出整個航管系統、設計缺陷、維護程序的漏洞。TR80 的 CA 邏輯同樣如此：<em>找到讓違規「滑溜通過」的制度性缺口</em>，才是矯正的核心。</p>
+        </div>
+
+        <div class="application-box">
+            <h4>應用情境：CDMO 場景——分析師偽造 OOS 結果</h4>
+            <p><strong>情境</strong>：您是一家 CDMO 的 QA 總監。稽核中發現，某分析師在過去一年內多次在 HPLC 軟體中刪除 OOS 序列，並重新執行分析至獲得合格結果，但未按照 OOS 程序進行調查。</p>
+            <p><strong>CA 設計要點</strong>：</p>
+            <ul>
+                <li><strong>時間範圍</strong>：確認該分析師的任職起始日期，CA 應涵蓋其整個任期</li>
+                <li><strong>資料類型</strong>：所有 HPLC 原始序列檔案（.raw），比對注射記錄與放行記錄</li>
+                <li><strong>設備</strong>：該分析師有權操作的所有 HPLC 系統</li>
+                <li><strong>人員</strong>：評估是否有其他分析師或主管知情或共謀</li>
+                <li><strong>產品影響</strong>：所有受影響批號的重新測試或市場行動評估</li>
+                <li><strong>客戶通知</strong>：CDMO 需評估是否需通知受影響客戶及法規機關（尤其是核准申請中引用的資料）</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>思考練習</h4>
+            <p>在上述 CDMO 場景中，若實驗室主管被證實知道該分析師的行為但選擇不上報，CA 的範疇應如何調整？這對矯正計畫（CAPA）的設計有什麼影響？</p>
+        </div>
+    </div>
+</div>
+
+<!-- 8.4 Corrective and Preventive Action Plans -->
+<div class="two-column">
+    <div class="left-column">
+        <h3>8.4 Corrective and Preventive Action Plans</h3>
+        <p>A risk-based approach is necessary for establishing corrective and preventive actions for data integrity breaches uncovered. Actions taken may include establishing additional controls, providing training or resources to prevent recurrence, or implementing measures to promote transparency and detection. Any permanent changes implemented should be based upon the results of the investigation and comprehensive assessment, the resulting root cause determination, and the gap analysis. The following steps are commonly taken to prevent recurrence:</p>
+        <ul>
+            <li>Product impact assessment (e.g., evaluation of risk to patient safety and potential market actions)</li>
+            <li>Creation of a mechanism for anonymous reports to surface data integrity issues early, before they become systemic</li>
+            <li>Changes to SOPs</li>
+            <li>Changes in personnel</li>
+            <li>Changes in access to computerized systems</li>
+            <li>Capital investment in upgrading to equipment with more compliant features</li>
+            <li>Changes to the quality oversight function (reassessment of roles and responsibilities, QA review process, how corporate quality/compliance will oversee)</li>
+            <li>Improvement in systems that allows employees to report suspected noncompliant practices without fear of retaliation</li>
+            <li>Gap analysis providing clear understanding of deficiencies that lead to questionable practices so to prevent recurrence</li>
+            <li>Evaluation of potential market actions</li>
+            <li>Assessment of similar practices affecting other markets (products intended for international markets)</li>
+            <li>Engagement with other regulatory authorities and reporting findings</li>
+            <li>Comprehensive continuous training program in place and training effectiveness assessment</li>
+            <li>Changes to the internal audit program</li>
+            <li>Assurance that incidents of missing data, deletion of data, and changes to time-and-date stamps has stopped and actions have been taken to prevent recurrence</li>
+            <li>Verifiable changes to software to ensure inability to manipulate electronic data</li>
+            <li>Management strategy, including global corrective action plan that could identify if problems were limited to a specific site or generalized throughout corporation and how problems will be prevented</li>
+            <li>Create a detailed plan on how a firm will ensure reliability, accuracy, and completeness of data generated and/or submitted to the regulating agency in applications or DMF submissions</li>
+            <li>A mechanism to provide regulators and sponsors notifications and updates regarding the assessment of each application should also be considered</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：DI CAPA 的四大維度</h4>
+            <p>TR80 列出的 19 項 CAPA 措施可歸類為四個維度：</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>維度</th>
+                        <th>措施類別</th>
+                        <th>典型行動</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>產品安全</strong></td>
+                        <td>市場行動評估</td>
+                        <td>重新測試批次、下架評估、向法規機關報告</td>
+                    </tr>
+                    <tr>
+                        <td><strong>技術管控</strong></td>
+                        <td>系統升級、軟體鎖定</td>
+                        <td>關閉管理員後門、強制審計追蹤、存取權限重設</td>
+                    </tr>
+                    <tr>
+                        <td><strong>流程管控</strong></td>
+                        <td>SOP 修訂、稽核強化</td>
+                        <td>更新 OOS 程序、加強 QU 資料審查頻率</td>
+                    </tr>
+                    <tr>
+                        <td><strong>文化管控</strong></td>
+                        <td>人員管理、舉報機制</td>
+                        <td>匿名舉報系統、主管問責、持續培訓</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：讓 CAPA 在法規查廠中具有可信度的五個條件</h4>
+            <ol>
+                <li><strong>根本原因驅動</strong>：每項 CAPA 措施都能直接對應到確認的根本原因</li>
+                <li><strong>可驗證性</strong>：措施的完成狀態可被客觀驗證（如：軟體更新版本、培訓簽到記錄）</li>
+                <li><strong>時間表承諾</strong>：具體的完成日期，而非模糊的「儘快完成」</li>
+                <li><strong>全球視角</strong>：評估問題是否僅限於單一廠址，或存在於整個企業體系</li>
+                <li><strong>法規機關溝通</strong>：若申請案資料受影響，需主動通知相關法規機關，建立更新通報機制</li>
+            </ol>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：CAPA 不是罰單，是系統重設</h4>
+            <p>法規機關審查 CAPA 時，他們真正想看到的不是「我們已處分了那個員工」，而是「我們找到了系統讓一個人能夠輕易犯錯的原因，並從根本上改變了那個系統」。一張將責任推到個人身上的 CAPA，等同於說「我們的系統是好的，只是這個人是壞蘋果」——這對 FDA 審查員而言是最沒有說服力的答案。</p>
+        </div>
+
+        <div class="application-box">
+            <h4>應用情境：查廠現場如何呈現矯正計畫</h4>
+            <p><strong>情境</strong>：FDA 查廠進行中，查廠員要求說明針對資料刪除事件的矯正措施。</p>
+            <p><strong>有效呈現策略</strong>：</p>
+            <ul>
+                <li>準備一份<strong>時間軸文件</strong>：發現日期 → 封鎖行動 → CA 完成 → CAPA 實施 → 驗證結果</li>
+                <li>展示<strong>軟體設定變更記錄</strong>：如審計追蹤不可停用的技術鎖定截圖</li>
+                <li>提供<strong>培訓完成率報告</strong>：包含培訓有效性評估（筆試或行為觀察）</li>
+                <li>呈現<strong>後期審計追蹤審查結果</strong>：CAPA 實施後無新增異常記錄</li>
+                <li>說明<strong>全球化評估結論</strong>：問題是否限於此廠址，其他廠址的預防性措施</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>思考練習：評估 CAPA 的完整性</h4>
+            <p>一家藥廠在 FDA 警告信後提交了以下 CAPA 回應：「已對相關分析師進行再培訓，並要求其簽署誠信承諾書。」</p>
+            <p>請從 TR80 的角度分析：這個 CAPA 缺少哪些關鍵要素？若您是 FDA 審查員，您會要求補充什麼？</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================
+     SECTION 9.0 — Conclusion
+     ============================================================ -->
+<div class="two-column">
+    <div class="left-column">
+        <h2>9.0 Conclusion</h2>
+        <p>Data integrity is a key element of ensuring robust operations in laboratories. It signifies the level of completeness, consistency, and accuracy of testing processes and results. The current focus on data integrity by health authorities requires companies to remain alert to changing regulations and to instigate internal strategies to detect and correct gaps in data integrity. Therefore, this report identified the global guidances applicable to the data integrity of analytical and microbiological laboratories and described recent regulatory actions against pharmaceutical manufacturers who have major breaches.</p>
+        <p>Frequent internal auditing, continual training of analysts on regulatory expectations for data generation and management, and assessment of various types of data generated by simple, hybrid, and complex systems are essential. Advancements in automated systems are improving electronic data generation and storage, even as many tests are still performed manually, particularly in micro labs. Thus, computer server qualification, software validation, laboratory equipment qualifications, and data retrieval for inspection or review are the key elements of data integrity.</p>
+        <p>Risk assessment of data governance and control of systems in the pharmaceutical industry should be conducted to remove or mitigate the potential for a breach in data integrity and to avoid enforcement actions (warning letters, import alerts, notices of concern, and refusal to accept or approve applications).</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：TR80 的三大結論主軸</h4>
+            <ol>
+                <li><strong>持續警覺（Continuous vigilance）</strong>：資料完整性法規持續演進，企業必須保持對法規動態的敏感度並主動調整內部策略。</li>
+                <li><strong>三項基礎要素</strong>：
+                    <ul>
+                        <li>頻繁的<strong>內部稽核</strong></li>
+                        <li>持續的<strong>分析師培訓</strong>（聚焦法規期望）</li>
+                        <li>對<strong>各類系統資料</strong>（簡單 / 混合 / 複雜）的系統性評估</li>
+                    </ul>
+                </li>
+                <li><strong>技術進步的雙面性</strong>：自動化改善了電子資料生成與儲存，但微生物實驗室仍大量依賴人工——這是 DI 風險的持續熱點，需要特別關注。</li>
+            </ol>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：電腦化系統的四項 DI 關鍵要素</h4>
+            <p>TR80 在結論中明確點出四個關鍵：</p>
+            <ul>
+                <li><strong>伺服器資格確認（Computer server qualification）</strong></li>
+                <li><strong>軟體驗證（Software validation）</strong></li>
+                <li><strong>實驗室設備資格確認（Laboratory equipment qualification）</strong></li>
+                <li><strong>資料可檢索性（Data retrieval for inspection/review）</strong></li>
+            </ul>
+            <p>這四項涵蓋了硬體、軟體、設備、流程四個層面的系統完整性。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：資料完整性的 DI「預防代價」vs. 「違規代價」</h4>
+            <p>TR80 結尾提到：風險評估的目的是「避免執法行動——警告信、進口警示、拒絕核准申請」。這些後果的代價遠高於建立資料治理系統的投資。就像工廠的安全設備——平時看起來是成本，但一次重大事故的損失（聲譽、罰款、市場準入）可能是預防性投資的百倍。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>思考練習：TR80 的整體學習回顧</h4>
+            <p>回顧 TR80 全文，從 Section 1–9，請嘗試回答：</p>
+            <ol>
+                <li>ALCOA+ 原則在微生物實驗室的最大挑戰是什麼？</li>
+                <li>電腦化系統的哪三個設定最常出現在 FDA 警告信中？</li>
+                <li>若您要為您的組織建立一個「資料完整性成熟度路徑圖」，最優先改善的三個領域是什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================
+     SECTION 10.0 — References
+     ============================================================ -->
+<div class="two-column">
+    <div class="left-column">
+        <h2>10.0 References (Key References — Abbreviated)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Source / Reference</th>
+                    <th>Relevance to DI</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>FDA. Guide to Inspections of Pharmaceutical Quality Control Laboratories, July 1993.</td>
+                    <td>Foundational inspection guidance for QC labs</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>FDA. Data Integrity and Compliance with cGMP Guidance for Industry (Draft), April 2016.</td>
+                    <td>Primary U.S. DI guidance document</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>WHO. Annex 5: Guidance on Good Data and Record Management Practices; WHO Technical Report Series No. 996. 2016.</td>
+                    <td>Global DI standard for developing nations</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>PIC/S. Draft Good Practices for Data Management and Integrity in Regulated GMP/GDP Environments, 2016.</td>
+                    <td>International inspection-authority harmonization</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>MHRA. 'GXP' Data Integrity Definitions and Guidance for Industry, March 2018.</td>
+                    <td>Most detailed DI definitions; ALCOA+ source</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>FDA. Guidance for Industry, Part 11, Electronic Records; Electronic Signatures—Scope and Application, August 2003.</td>
+                    <td>Electronic records baseline requirements</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>European Commission. EudraLex Volume 4 Annex 11: Computerised Systems, June 2011.</td>
+                    <td>EU computerized system DI requirements</td>
+                </tr>
+                <tr>
+                    <td>37</td>
+                    <td>ICH Q9: Quality Risk Management, 2006.</td>
+                    <td>Foundation for Section 7 risk matrix methodology</td>
+                </tr>
+                <tr>
+                    <td>45</td>
+                    <td>ISPE. GAMP 5 Guide: Compliant GxP Computerized Systems. 2008.</td>
+                    <td>Computer system validation framework</td>
+                </tr>
+                <tr>
+                    <td>54</td>
+                    <td>Guttman &amp; Roback. Chapter 18: Audit Trails. NIST Special Publication 800-12, Oct 1995.</td>
+                    <td>Technical audit trail design principles</td>
+                </tr>
+                <tr>
+                    <td>30–34</td>
+                    <td>USP General Chapters: &lt;71&gt; Sterility Tests, &lt;61&gt;/&lt;62&gt; Microbial Examination, &lt;85&gt; Bacterial Endotoxins. USP41–NF36.</td>
+                    <td>Microbiological test method standards relevant to DI</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：TR80 引用文獻的法規層級地圖</h4>
+            <p>TR80 的 55 項參考文獻可按法規強制性分級：</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>層級</th>
+                        <th>文件</th>
+                        <th>地區適用</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>強制性規定</td>
+                        <td>21 CFR Part 11, EU GMP Annex 11</td>
+                        <td>美國 / 歐盟</td>
+                    </tr>
+                    <tr>
+                        <td>指引（Guidance）</td>
+                        <td>FDA DI Draft Guidance, MHRA GXP Guide</td>
+                        <td>美國 / 英國</td>
+                    </tr>
+                    <tr>
+                        <td>技術報告</td>
+                        <td>WHO TRS 996, PIC/S PI-041, PDA TR80</td>
+                        <td>全球</td>
+                    </tr>
+                    <tr>
+                        <td>業界最佳實踐</td>
+                        <td>GAMP 5, ICH Q9, NIST SP 800-12</td>
+                        <td>全球</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：最重要的五個 DI 參考文件</h4>
+            <p>若只能精讀五份文件，建議優先順序：</p>
+            <ol>
+                <li><strong>MHRA GXP DI Guide (2018)</strong>：最完整的 ALCOA+ 定義與實作指引</li>
+                <li><strong>FDA DI Draft Guidance (2016)</strong>：美國市場合規的直接依據</li>
+                <li><strong>EU GMP Annex 11</strong>：歐盟電腦化系統的法規基礎</li>
+                <li><strong>WHO TRS 996 Annex 5</strong>：全球新興市場的通用標準</li>
+                <li><strong>ICH Q9</strong>：風險管理方法論的基礎，支撐整個第 7 章的邏輯</li>
+            </ol>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：法規層級如同交通法規</h4>
+            <p>21 CFR Part 11 是「法律」——必須遵守，違反即構成違規。FDA Draft Guidance 是「執法說明」——解釋法律如何被解讀執行。GAMP 5 則像「駕駛手冊」——提供最佳實踐的操作建議，不遵守不一定違法，但有助於展示「以業界標準為基礎的合理實踐」。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>思考練習：法規引用策略</h4>
+            <p>您正在為一家同時向 FDA（美國）和 EMA（歐盟）申請新藥上市的 CDMO 撰寫資料完整性政策文件。在引用參考文獻時，您應如何確保文件能同時滿足兩個法規機關的期望？哪些文獻是「雙邊適用」的？</p>
+        </div>
+    </div>
+</div>
+
+<!-- Section Summary -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>7.0 風險管理</strong>：DI 管控力度應與資料對病人安全的關鍵性相稱（ICH Q9 原則）；風險矩陣以資料關鍵性（CQA/CPC/IPC）為橫軸、資料蒐集方式（人工/快速/自動化）為縱軸，QMS 強弱為調節因子，決定是否需要第二人驗證。</li>
+        <li><strong>8.1 發現與初步應對</strong>：DI 問題可由自我揭露、資料審查、內部稽核或法規查廠發現；初步行動三步驟為：封鎖（Contain）→ 蒐集（Gather）→ 確認範圍（Determine scope）。員工訪談應儘早、獨立、保密進行。</li>
+        <li><strong>8.2 調查考量</strong>：已確認違規需全面調查並評估對已生成資料及決策的影響；識別的「風險」（尚未確認違規）可採比例性調查。無法達到 100% 確定性時，應立即採取行動防止風險被利用並修補系統。</li>
+        <li><strong>8.3 全面性評估（CA）</strong>：CA 需包含時間範圍、產品、資料類型、設備、部門的完整範疇定義，並明確排除事項的理由。重點是識別「讓違規得以發生且未被察覺的流程缺口」，必要時委託獨立第三方執行。</li>
+        <li><strong>8.4 CAPA 計畫</strong>：CAPA 應基於根本原因，涵蓋產品安全、技術管控、流程管控、文化管控四個維度。有效 CAPA 的五個條件：根本原因驅動、可驗證性、時間表承諾、全球視角、主動與法規機關溝通。</li>
+        <li><strong>9.0 結論</strong>：資料完整性=完整性+一致性+準確性。三大持續要務：頻繁內部稽核、持續分析師培訓、各類系統資料的系統性評估。電腦化系統的四項 DI 關鍵：伺服器資格確認、軟體驗證、設備資格確認、資料可檢索性。</li>
+        <li><strong>法規引用</strong>：TR80 引用 55 項參考，最重要的五個包含 MHRA GXP DI Guide、FDA DI Draft Guidance、EU GMP Annex 11、WHO TRS 996 Annex 5、ICH Q9。</li>
+    </ul>
+</div>
+
+</body>
+</html>

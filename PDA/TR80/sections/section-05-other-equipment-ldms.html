@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TR80 - Section 5: Other Equipment, LDMS &amp; Electronic Governance</title>
+    <link rel="stylesheet" href="../../../template.css">
+</head>
+<body>
+
+<div class="header">
+    <h1>Section 6.4–6.6: Other Equipment, LDMS &amp; Electronic Data Governance</h1>
+    <div class="subtitle">其他設備、LDMS 與電子數據治理</div>
+    <div class="page-info">PDA Technical Report No. 80 (2018) | p42 - p48</div>
+</div>
+
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解非 HPLC/GC 儀器（UV、FTIR、天平、pH 計等）在數據完整性框架中的法規地位，以及忽視這些設備的常見風險</li>
+        <li>掌握 LDMS（實驗室數據管理軟體）驗證的關鍵步驟、最低控制要求，及常見缺陷類型</li>
+        <li>了解試算表（Spreadsheet）驗證的必要性、最低控制要求，以及未受保護試算表所導致的數據竄改場景</li>
+        <li>建立電子數據治理（Electronic Data Governance）的整體框架：備份策略、例行對帳、廠商溝通、稽查電子數據提交</li>
+        <li>能在 CDMO 情境中識別可能導致數據洩漏的系統設計缺口，並提出對應的預防控制措施</li>
+    </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 6.4: OTHER LABORATORY EQUIPMENT -->
+<!-- ============================================================ -->
+
+<div class="section-title">6.4 Other Laboratory Equipment（其他實驗室設備）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Due to the increasing number of citations about HPLC and GC instruments that have led to FDA Warning Letters, laboratory management may underestimate the importance of other equipment (e.g., UV, FTIR) being in compliance with 21 CFR Part 11. Because not all laboratory equipment is available in both a hybrid-system and a computer operated system (e.g., UV spectrophotometer, Fourier transform infrared spectrometer (FTIR), atomic absorption spectrometer, X-ray spectrometer, or titrator), there could be a mix of formats in the laboratory. As a result, some laboratories have adopted "scientific data management systems," which can capture data from all instruments that generate signals and are equipped with RS 232 or local area network ports. If used, this scientific data management system needs to be qualified as laboratory data management software and should be compliant with 21 CFR Part 11 requirements.</p>
+
+        <p>Although the software supplied for UV and FTIR instruments may not have the same applications as HPLC or GC software, similar observations have been listed as deficiencies in audits and FDA Warning Letters, for example: (55)</p>
+        <ul>
+            <li>Lack of audit trails</li>
+            <li>No unique user IDs and passwords</li>
+            <li>Data can be deleted</li>
+            <li>Data files can be saved as new data files using "save as" function</li>
+            <li>Not all changes to data captured in audit trails</li>
+            <li>Processing parameters not saved or not captured as metadata</li>
+            <li>Not enabling, reviewing, or printing/publishing audit trails</li>
+            <li>All user IDs and passwords treated as "administrator" for the majority of stand-alone systems</li>
+            <li>Failure to establish and exercise adequate controls over computers to prevent unauthorized access, changes to, or omission of electronic data</li>
+            <li>Failure to maintain complete electronic raw data for instruments, Malvern particle-size analyzer, and UV spectrophotometer, e.g., instruments were connected to stand-alone computers that stored the data, which could be deleted at any time</li>
+        </ul>
+
+        <p>Laboratory management should ensure that the following procedures and system design, where possible, are put in place for UV and FTIR instruments:</p>
+        <ul>
+            <li>Audit trail feature enabled at all times</li>
+            <li>System audit trails review, including scope and how to conduct</li>
+            <li>Data protection and archival</li>
+            <li>Individual user logins</li>
+            <li>Qualification of software</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：非 HPLC 儀器同樣受 21 CFR Part 11 規範</h4>
+            <p>許多實驗室犯了「只重視 HPLC/GC 合規，忽略 UV、FTIR、滴定儀」的錯誤。這種盲點往往來自以下兩個誤解：</p>
+            <ol>
+                <li><strong>誤解一：UV/FTIR 不屬於「電腦操作系統」，不需符合 Part 11。</strong>
+                — 事實上，只要設備產生電子記錄並使用電子簽名，不論儀器類型，均受 21 CFR Part 11 規範。</li>
+                <li><strong>誤解二：UV/FTIR 沒有被 Warning Letter 引用，風險較低。</strong>
+                — FDA 的引用數量反映稽查重點，而非風險高低。TR80 Ref (55) 明確列出 UV/FTIR 的缺陷類型，與 HPLC 幾乎相同。</li>
+            </ol>
+            <p><strong>Scientific Data Management System (SDMS)：</strong> 當實驗室有多台孤立（stand-alone）儀器時，可採用 SDMS 集中收集 RS-232 或 LAN 埠的訊號數據。一旦啟用，SDMS 本身必須作為 LDMS 進行驗證並符合 Part 11。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>概念比喻：「監控死角」</h4>
+            <p>想像一棟有安全管理的大樓：前門（HPLC/GC）安裝了門禁刷卡和攝影機，但側門（UV/FTIR）卻沒有任何管控——任何人都可以進出、偷東西、不留紀錄。</p>
+            <p>Stand-alone UV 電腦上的數據若可以隨時刪除，就等同這扇開著的側門。稽查人員在執行全面性數據完整性稽查時，UV/FTIR 常常是突破口。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>★ <strong>「Save As」風險：</strong> 允許用「另存新檔」功能將數據另存為新檔案，意味著原始文件可能被取代或掩蓋。Part 11 要求原始數據必須被保存且不可被覆蓋。</p>
+            <p>★ <strong>共用管理員帳號：</strong> Stand-alone 系統最常見的缺陷是所有使用者共用一個「admin」帳號，導致無法追蹤是誰做了什麼操作——這直接違反 ALCOA 原則中的 Attributable（可歸責）要求。</p>
+            <p>★ <strong>Malvern 粒徑分析儀 (PSD)：</strong> FDA Warning Letter 中曾明確點名此類儀器。PSD 數據關係到注射劑的粒徑分佈，屬於放行關鍵數據，不能因「不是 HPLC」就忽視。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>您的實驗室有一台 UV 分光光度計，連接到一台 Windows XP 的老舊電腦，無法設定使用者帳號。請說明您會採取哪些 compensating controls（補償性控制）？</li>
+                <li>如果實驗室引入 SDMS 系統，哪些驗證活動是最低限度必須執行的？</li>
+                <li>試列出三種稽查員可能在 UV/FTIR 站發現的數據完整性缺陷，並說明其法規依據。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 6.5: LABORATORY DATA MANAGEMENT SOFTWARE -->
+<!-- ============================================================ -->
+
+<div class="section-title">6.5 Laboratory Data Management Software (LDMS)（實驗室數據管理軟體）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Some analytical laboratories manage laboratory data using commercial software like LIMS or scientific data management systems. Whether the software is validated at the site, either by the vendor or by the user, the user is responsible for assuring its compliance with 21 CFR Part 11. The Quality Unit should understand completely the functionality, features, and capability of the software. All automatic equipment used in pharmaceutical manufacturing environment, including computers used to test drug products, must also comply with 21 CFR Part 211.68. Regulatory expectations for computerized systems used in the manufacture of API are found in the ICH Q7 Guidance for Industry (6,8,43).</p>
+
+        <p>Browser-enabled user logins from multiple computers pose a potential risk. Login functionality is recommended to be properly challenged, mitigated, and verified. An additional layer of security should be embedded in the software that allows only user logins that have been verified by specific, permitted IP addresses as filter logins.</p>
+
+        <p>Laboratory data management software typically is validated using the following steps (not necessarily in this order):</p>
+        <ul>
+            <li>Document the software name and version number</li>
+            <li>Define the period for software updates</li>
+            <li>Check and validate e-signatures</li>
+            <li>Validate the software for its intended use</li>
+            <li>Determine capability of meeting 21 CFR Part 11 requirements in terms of audit trail and controls</li>
+            <li>Test the software on the network for data transmission</li>
+            <li>Set up controls and traceability of printouts and define number of printouts allowed</li>
+            <li>Check data and security of offshore and Cloud data</li>
+            <li>Validate Cloud-based data management system for security and possibility of compromise</li>
+            <li>Establish quality service agreement and contingency plan for Cloud-based systems and determine exact physical location of servers</li>
+            <li>Verify record and logic behind the algorithms used in calculations</li>
+            <li>Calculate manually the common statistical computations used by software (such as mean, standard deviation, percentage of relative standard deviation to complex math like potency content, similarity factor (F2) values for dissolution analysis, and coefficient of variation for uniformity of dosage) and compare with software values</li>
+            <li>Check data transmission and losses from instruments to attached computer</li>
+            <li>Check data transmission to computer, server, and interfaces in between, and validate for intended functionality of analysis, data acquisition, processing, reporting, tracking, and security</li>
+            <li>Ensure PDFs of any converted data files are not editable and bear a date-and-time stamp</li>
+            <li>Confirm that intended software is compatible with COTS software for any laboratory instrument (e.g., HPLC, GC, and PSD).</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：LDMS 驗證責任在使用者</h4>
+            <p>即使軟體供應商已提供「已驗證」的 LIMS 或 SDMS，最終符合法規的責任仍在製藥廠（使用者）身上。這是因為：</p>
+            <ul>
+                <li>供應商驗證是在「標準環境」下完成的，無法涵蓋您的特定設定、網路架構和使用場景</li>
+                <li>21 CFR Part 211.68 明確要求，用於藥品測試的所有自動化設備（含電腦）都必須符合 GMP</li>
+                <li>ICH Q7（API 製造）進一步要求電腦化系統的驗證</li>
+            </ul>
+            <p><strong>法規依據雙軌制：</strong></p>
+            <ul>
+                <li>成品（Drug Product）→ 21 CFR Part 211.68 + Part 11</li>
+                <li>原料藥（API）→ ICH Q7 + Part 11</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>概念比喻：雲端數據的「實體地址」問題</h4>
+            <p>採用雲端 LIMS 時，「伺服器實際在哪裡」是一個真實的法規問題。FDA 在境外服務器存儲 GXP 數據時，可能要求查看數據。若您不知道伺服器在哪個國家，當局有權拒絕承認這些數據的合法性。</p>
+            <p>要求雲端供應商提供：(1) 伺服器實體位置、(2) GXP 合規聲明、(3) 品質服務協議（Quality Service Agreement）和緊急應變計畫（Contingency Plan）——這是 TR80 的明確建議。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>★ <strong>瀏覽器登入的安全風險：</strong> 基於瀏覽器的 LIMS 登入允許任何電腦存取，攻擊面大。TR80 建議實施 IP 白名單（IP address filter login）作為第二層安全控制。</p>
+            <p>★ <strong>手動計算驗證：</strong> 軟體用於統計計算（如均值、標準差、%RSD、F2 相似因子、含量均勻度 CV）時，必須手動計算一組數據並與軟體結果對比——這是驗證的必要步驟，不是選項。</p>
+            <p>★ <strong>PDF 輸出的可編輯性：</strong> 由系統輸出的 PDF 報告，必須確認為不可編輯，並帶有日期時間戳記。可編輯的 PDF 報告無法作為可靠的電子記錄。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>供應商已提供 LIMS 的「驗證套件」（IQ/OQ/PQ 文件），作為使用者還需要執行哪些額外的驗證活動？</li>
+                <li>如果 LIMS 供應商不公開其雲端伺服器的實體位置，您應如何處理？</li>
+                <li>為什麼 TR80 特別要求手動計算 F2 相似因子並與軟體比較？這在哪些測試項目中最關鍵？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 6.5.1: CONTROLS -->
+<!-- ============================================================ -->
+
+<div class="section-title">6.5.1 Controls（最低控制要求）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>The following are the minimum controls needed to validate laboratory data management software:</p>
+        <ul>
+            <li>Identify the person responsible for updates and maximum possible software updates to be performed by the software vendor and in-house IT personnel</li>
+            <li>Address any changes to software through change history</li>
+            <li>Establish secure unique user login identifications and periodic change of passwords</li>
+            <li>Restrict permission to delete data to administrator or IT personnel</li>
+            <li>Maintain copies of older versions of software whenever version is updated (recommended) and ensure that backed-up data from previous versions can still be accessed</li>
+            <li>Check software integrity on a periodic basis</li>
+            <li>Maintain detailed list of roles, responsibilities, and privileges for all staff who use the laboratory data management software</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：LDMS 的七大最低控制</h4>
+            <p>TR80 列出的七項控制，可歸納為三個管理維度：</p>
+            <table style="width:100%; border-collapse: collapse; font-size: 0.9em;">
+                <tr style="background:#1e3a5f; color:white;">
+                    <th style="padding:6px; border:1px solid #ccc;">管理維度</th>
+                    <th style="padding:6px; border:1px solid #ccc;">對應控制項目</th>
+                </tr>
+                <tr>
+                    <td style="padding:6px; border:1px solid #ccc;"><strong>人員與角色管理</strong></td>
+                    <td style="padding:6px; border:1px solid #ccc;">唯一使用者 ID、定期更換密碼、角色/權限清單</td>
+                </tr>
+                <tr style="background:#f0f7ff;">
+                    <td style="padding:6px; border:1px solid #ccc;"><strong>軟體變更管理</strong></td>
+                    <td style="padding:6px; border:1px solid #ccc;">變更記錄、版本更新責任人、舊版本保留</td>
+                </tr>
+                <tr>
+                    <td style="padding:6px; border:1px solid #ccc;"><strong>數據保護</strong></td>
+                    <td style="padding:6px; border:1px solid #ccc;">刪除權限限制、定期完整性檢查</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>★ <strong>舊版本軟體保留：</strong> 更新軟體版本後，必須保留舊版本的副本，並確認舊版備份數據在新環境下仍可讀取。這解決了「數據可存取性（accessibility）」問題——五年後還能打開 2019 年的數據嗎？</p>
+            <p>★ <strong>刪除權限最小化原則（Principle of Least Privilege）：</strong> 只有管理員或 IT 人員才能刪除數據。一般分析師不應具備此權限。這是 ALCOA 中「Enduring（持久性）」原則的系統實現。</p>
+            <p>★ <strong>定期完整性檢查：</strong> 軟體完整性應定期核查——確認沒有未授權的配置更改、安全漏洞或非計畫的版本變動。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果 LIMS 進行版本升級（如 v3.1 → v4.0），需要執行哪些再驗證（revalidation）活動？</li>
+                <li>「舊版本數據仍可存取」這個要求在實務上如何驗證？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 6.5.2: COMMON DEFICIENCIES -->
+<!-- ============================================================ -->
+
+<div class="section-title">6.5.2 Common Deficiencies that May Lead to Data Compromise（常見缺陷）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <ul>
+            <li>Browser-based interface enabling simultaneous logins with the same IDs without sufficient controls to prevent redundant data activity</li>
+            <li>Not investigating qualification errors or shortfalls according to nonconformance procedure</li>
+            <li>Not enabling, reviewing, or publishing audit trails</li>
+            <li>Installing features without complete understanding, leading to data compromise</li>
+            <li>Lapses in training, e.g., lack of training or inadequate training for tasks being performed</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>五大缺陷的根本原因分析</h4>
+            <p>TR80 列出的五種 LDMS 常見缺陷，可從「技術」和「管理」兩個層面理解：</p>
+            <ul>
+                <li><strong>同帳號並行登入：</strong> 技術設計缺陷。允許同一 ID 同時在多台電腦登入，意味著無法確定「是誰」在哪台電腦做了操作，破壞 ALCOA 的 Attributable 要求。</li>
+                <li><strong>未按不符合程序調查驗證錯誤：</strong> 管理缺陷。驗證期間發現的缺失若未正式記錄和調查，可能被隱藏，導致系統帶著已知問題上線。</li>
+                <li><strong>未啟用/審查/發佈稽核軌跡：</strong> 最常見的法規引用項目。TR80 第 6.4 節也提到此問題。啟用 ≠ 審查 ≠ 發佈——三者都必須做。</li>
+                <li><strong>功能安裝前未充分理解：</strong> 新功能啟用（如自動整合、批次計算）可能改變數據流，若未先評估影響就上線，可能引入未知風險。</li>
+                <li><strong>訓練缺失：</strong> 根本原因之一。即使系統設計良好，操作者不理解為何不能共用密碼、如何正確使用系統，仍會造成數據洩漏。</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>概念比喻：「辦公室監視器開著但沒人看」</h4>
+            <p>啟用稽核軌跡但從未審查，就像安裝了監視器但從來不看錄像。問題早就發生了，但沒有人知道。</p>
+            <p>稽查員不只會問「稽核軌跡是否啟用」，更會要求查看最近 6 個月的審查紀錄。若沒有記錄顯示審查已執行，等同於未執行。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如何設計一個 SOP 來確保稽核軌跡的定期審查確實被執行並記錄？</li>
+                <li>一個驗證工程師在 LIMS 驗證期間發現「搜尋功能偶爾顯示錯誤結果」，但急於上線而未記錄。這在法規上的潛在後果是什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 6.5.3: SPREADSHEET VALIDATION -->
+<!-- ============================================================ -->
+
+<div class="section-title">6.5.3 Spreadsheet Validation（試算表驗證）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Many laboratories use customized spreadsheets for calculations. To avoid possible data breaches, the Quality Unit should validate the customized spreadsheet template for its intended use and protect it by restricting permissions to alter the template or delete data.</p>
+
+        <p>Typically, customized spreadsheets are validated by customizing them to the intended use with a standardized formula in the USP or another valid source, comparing the manual calculations against the spreadsheet calculations, and testing boundaries and functions.</p>
+
+        <h3>6.5.3.1 Spreadsheet Controls</h3>
+
+        <p>The following are the minimum controls to be put in place for customized spreadsheets, which are recommended to be captured in the SOPs:</p>
+        <ul>
+            <li>Encrypt with password protection</li>
+            <li>Restrict editing (set to "Read only") so previous data is not retained in the template</li>
+            <li>Save spreadsheets to a designated location on the server and capture the file location on each spreadsheet</li>
+            <li>Change passwords and revalidate customized spreadsheets periodically per established SOPs</li>
+        </ul>
+
+        <p>Figure 6.5.3.1-1 represents a typical template for a validated, protected, tamper-resistant spreadsheet.</p>
+
+        <h3>6.5.3.2 Common Deficiencies in Spreadsheets</h3>
+
+        <p>The following are commonly seen deficiencies in spreadsheets that may lead to data compromise and risk of data integrity problems:</p>
+        <ul>
+            <li>Spreadsheets not validated</li>
+            <li>Accidental or deliberate formula changes made in unprotected spreadsheets (e.g., data was manipulated; the failing value of 96.30 was replaced with a passing value of 98.23, which was entered manually on the unprotected sheet)</li>
+            <li>Entering passing results in unprotected spreadsheets</li>
+            <li>Lack of controls on spreadsheet access and lack of training of staff to respect password control</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：Excel 試算表為何是高風險區域</h4>
+            <p>Excel 試算表是製藥實驗室中數據完整性最脆弱的環節之一，原因在於：</p>
+            <ul>
+                <li><strong>可輕易修改公式：</strong> 任何人只要有存取權限，可以悄悄更改計算公式，而不留明顯痕跡</li>
+                <li><strong>沒有原生稽核軌跡：</strong> 標準 Excel 不記錄「誰在何時修改了哪個儲存格」</li>
+                <li><strong>數據輸入區未鎖定：</strong> 未受保護的試算表允許直接在結果儲存格輸入手動數值，覆蓋公式計算結果</li>
+                <li><strong>檔案可任意複製：</strong> 試算表可被另存為新檔案，製造多個「版本」，無法確認哪個是原始版本</li>
+            </ul>
+            <p><strong>驗證方法三步驟：</strong></p>
+            <ol>
+                <li>按照 USP 或其他有效來源的標準公式建立試算表模板</li>
+                <li>手動計算一組代表性數據，與試算表結果對比</li>
+                <li>測試邊界值（如最大/最小輸入值）和特殊功能（如條件格式）</li>
+            </ol>
+        </div>
+
+        <div class="concept-box" style="background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%); border-left: 4px solid #e91e63;">
+            <h4>實務應用：CDMO 試算表控制情境</h4>
+            <p>以下是 CDMO 環境中試算表控制的常見場景與對應措施：</p>
+            <table style="width:100%; border-collapse: collapse; font-size: 0.87em;">
+                <tr style="background:#880e4f; color:white;">
+                    <th style="padding:6px; border:1px solid #ccc;">情境</th>
+                    <th style="padding:6px; border:1px solid #ccc;">風險</th>
+                    <th style="padding:6px; border:1px solid #ccc;">TR80 建議控制</th>
+                </tr>
+                <tr>
+                    <td style="padding:6px; border:1px solid #ccc;">分析師使用本機桌面的 Excel 計算含量</td>
+                    <td style="padding:6px; border:1px solid #ccc;">無備份、無版本管理、可刪除</td>
+                    <td style="padding:6px; border:1px solid #ccc;">強制存於伺服器指定位置</td>
+                </tr>
+                <tr style="background:#fce4ec;">
+                    <td style="padding:6px; border:1px solid #ccc;">試算表模板未設密碼保護</td>
+                    <td style="padding:6px; border:1px solid #ccc;">公式可被意外或蓄意更改</td>
+                    <td style="padding:6px; border:1px solid #ccc;">加密保護 + 唯讀設定</td>
+                </tr>
+                <tr>
+                    <td style="padding:6px; border:1px solid #ccc;">舊試算表已使用超過三年，密碼從未更換</td>
+                    <td style="padding:6px; border:1px solid #ccc;">密碼外洩、未驗證的公式更新</td>
+                    <td style="padding:6px; border:1px solid #ccc;">定期更換密碼 + 重新驗證</td>
+                </tr>
+                <tr style="background:#fce4ec;">
+                    <td style="padding:6px; border:1px solid #ccc;">新分析師不知道試算表已被保護</td>
+                    <td style="padding:6px; border:1px solid #ccc;">試圖繞過保護、在未保護版本輸入數據</td>
+                    <td style="padding:6px; border:1px solid #ccc;">培訓記錄 + SOP 明確規定</td>
+                </tr>
+                <tr>
+                    <td style="padding:6px; border:1px solid #ccc;">試算表檢測到 API 含量 96.30%（OOS），分析師手動改為 98.23%</td>
+                    <td style="padding:6px; border:1px solid #ccc;">數據偽造（Falsification）</td>
+                    <td style="padding:6px; border:1px solid #ccc;">結果欄位鎖定，僅公式可自動填入</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="analogy-box">
+            <h4>概念比喻：「可以亂填的考試答案卷」</h4>
+            <p>未受保護的試算表就像一張考試答案卷，老師批改完後發回給學生，學生可以拿白色修正液把 60 分改成 90 分再拿回去說「老師您算錯了」。</p>
+            <p>正確的做法是：結果欄位由公式自動計算並鎖定，不允許手動輸入——就像考卷批改後立刻收走，學生無法觸碰。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>★ <strong>試算表存放位置：</strong> 必須存放在伺服器的指定位置，而非分析師的本機桌面或 USB 隨身碟。位置資訊應顯示在試算表本身（如頁腳），以便稽查時快速核對。</p>
+            <p>★ <strong>「唯讀」設定的意義：</strong> 將試算表設為唯讀，確保前一次的輸入數據不會殘留在模板中，避免新分析師因使用含舊數據的模板而產生記錄混淆。</p>
+            <p>★ <strong>定期重新驗證：</strong> 試算表密碼更換後，等同於變更控制，需要進行再驗證（revalidation），確認保護功能仍然有效。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一個用於溶解度計算（含 F2 相似因子）的 Excel 試算表，請列出完整的驗證測試項目。</li>
+                <li>稽查員要求查看所有曾使用過的溶解度試算表的歷史版本。若試算表存於本機且無版本管理，可能面臨什麼樣的合規問題？</li>
+                <li>如何在不使用昂貴的電子試算表管理系統（如 Veeva）的前提下，僅用 Excel 內建功能實現最低限度的試算表控制？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 6.6: ELECTRONIC DATA GOVERNANCE -->
+<!-- ============================================================ -->
+
+<div class="section-title">6.6 Electronic Data Governance（電子數據治理）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>In the current analytical laboratory environment, the key factors, discussed in this section, need to be considered for data governance. Analytical equipment controlled by firmware may not be able to publish audit trails. If not, the Quality Unit should implement a procedure to check for data compromises on any equipment for which this is the case. Controls should be similar for all equipment and data integrity should be ensured on all equipment. A logbook for data backup and deletion should also be maintained.</p>
+
+        <p>A high-level diagram of electronic data governance in an analytical laboratory is presented in Figure 6.6-1.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：電子數據治理是「全面性」的</h4>
+            <p>Section 6.6 的核心思想是：數據治理不能只針對部分設備，而必須涵蓋實驗室中所有產生電子數據的設備和系統。</p>
+            <p><strong>Firmware 控制設備的特殊挑戰：</strong> 某些設備（如老式天平、滴定儀）由韌體（firmware）控制，無法輸出稽核軌跡。在這種情況下，質量部門應建立一個替代程序（如每日日誌核對）來偵測潛在的數據洩漏。</p>
+            <p><strong>電子數據治理手冊（Data Governance Manual）：</strong> TR80 建議實驗室建立並維護一本治理手冊，整合所有設備和數據流程的最新資訊。這份手冊能大幅提高稽查效率。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>★ <strong>備份與刪除日誌：</strong> 對數據備份和刪除操作維護一本日誌（logbook）——這意味著每次備份和刪除都應有書面記錄，包括時間、操作人員、數據範圍。</p>
+            <p>★ <strong>一致性原則：</strong> 所有設備的控制標準應一致。不能因為某台儀器「較少被稽查到」就降低控制要求。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 6.6.1: DATA BACKUP AND STORAGE -->
+<!-- ============================================================ -->
+
+<div class="section-title">6.6.1 Data Backup and Storage（數據備份與儲存）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>The Quality Unit should develop a procedure for data backup and determine at what intervals it will be performed. Hybrid systems have temporary electronic storage that is overwritten (e.g., calibration curves on pH meters); this printed/published record is the primary data source. This electronic information is not intended for backup or long-term retention. Analytical equipment on which electronic data is generated should be included in the data backup. Copying data onto discs as a backup is recommended to protect against the potential failure of the server or Cloud. The data copied onto the discs should be checked for completeness and accuracy. To ensure the safety of the data, common industry practice is to maintain two copies of the data at different locations. Any Cloud-based storage service should be GXP-compliant (5). Wherever possible, a risk-based cold backup (a scheduled backup without any manual intervention) should be planned to avoid surprises and regulatory complications.</p>
+
+        <p>It is strongly recommended that electronic signatures, if adopted, comply with 21 CFR Part 11 requirements and include date and time stamps.</p>
+
+        <p>The laboratory data governance manual is useful for consolidating current information about laboratory equipment and data procedures and may contain sections such as those listed below. Table 6.6.1-1 represents a model table from a laboratory data governance manual. Preparing this manual and keeping it current is a good practice, one that makes a laboratory audit more efficient.</p>
+        <ul>
+            <li>Details of all laboratory equipment</li>
+            <li>Details of all equipment software, including version information</li>
+            <li>Laboratory equipment procedure numbers</li>
+            <li>Data handling procedures, list of audit trails published or reviewed, each analysis, and typical information captured</li>
+            <li>List of all users of all software and their roles</li>
+            <li>Server(s) details</li>
+            <li>Data backup frequency</li>
+            <li>Risk analysis and mitigation plan</li>
+            <li>Names and contact information of key personnel and vendors</li>
+        </ul>
+
+        <p><strong>Table 6.6.1-1 Example of a Table in a Laboratory Manual</strong></p>
+        <table>
+            <tr>
+                <th>Instrument</th>
+                <th>Software</th>
+                <th>Version</th>
+                <th>Procedure Reference</th>
+                <th>Part 11 Compliant</th>
+                <th>Audit Trails Reviewed</th>
+                <th>Backup Frequency</th>
+                <th>Reconciliation</th>
+            </tr>
+            <tr>
+                <td>HPLC</td>
+                <td>Important R</td>
+                <td>1</td>
+                <td>SOP 34, 36, 45</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>3 M</td>
+                <td>30 days</td>
+            </tr>
+            <tr>
+                <td>GC</td>
+                <td>Important R</td>
+                <td>1</td>
+                <td>SOP 34, 39, 45</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>3 M</td>
+                <td>30 days</td>
+            </tr>
+            <tr>
+                <td>PSD</td>
+                <td>Super V</td>
+                <td>5</td>
+                <td>SOP 34, 48, 56</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>3 M</td>
+                <td>60 days</td>
+            </tr>
+            <tr>
+                <td>Balance</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>SOP 15</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>LIMS</td>
+                <td>Excel V</td>
+                <td>4.2</td>
+                <td>SOP 98, 89, 105</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>1 M</td>
+                <td>N/A</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：3-2-1 備份原則</h4>
+            <p>TR80 建議維護「兩份數據拷貝，存放於不同地點」，這與業界普遍採用的 <strong>3-2-1 備份策略</strong>相呼應：</p>
+            <ul>
+                <li><strong>3</strong> 份數據副本（原始 + 2 份備份）</li>
+                <li><strong>2</strong> 種不同的儲存媒體（如伺服器 + 光碟/磁帶）</li>
+                <li><strong>1</strong> 份異地儲存（off-site）</li>
+            </ul>
+            <p>TR80 具體強調：伺服器或雲端可能失效，將數據複製到光碟是重要的保護層。複製到光碟後，還必須核查完整性和準確性。</p>
+            <p><strong>Cold Backup（冷備份）的優勢：</strong> 已排程、無需人工介入的備份——避免「忘記備份」或「有人跳過備份」的人為失誤，也避免稽查時發現備份記錄不規律的監管問題。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>混合系統 (Hybrid System) 的特殊規則</h4>
+            <p>pH 計的校正曲線等暫時性電子儲存，會被下一次操作覆蓋（overwritten）。對於這類混合系統：</p>
+            <ul>
+                <li><strong>列印/發布的記錄</strong>是主要數據來源（Primary Record）</li>
+                <li>這些暫時性的電子資訊<strong>不需要備份或長期保留</strong></li>
+                <li>但紙本或 PDF 記錄必須按照 GMP 記錄保存規定妥善保存</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>概念比喻：數據治理手冊是「實驗室地圖」</h4>
+            <p>想像稽查員進入實驗室，詢問：「您的 HPLC 數據備份頻率是多少？稽核軌跡多久審查一次？使用什麼版本的軟體？誰負責維護？」</p>
+            <p>若有一本完整的數據治理手冊，這些問題的答案都在一份文件中。若沒有，稽查員必須分別查找 SOP、維修記錄、IT 文件——這既耗時又容易產生疏漏。</p>
+            <p>TR80 指出：「準備和維護這份手冊是好做法，能使實驗室稽查更有效率」——這等於是說，有無此手冊會直接影響稽查觀感。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>★ <strong>GXP 合規的雲端服務：</strong> 雲端備份服務必須是 GXP-compliant。消費級雲端服務（如個人 Google Drive、Dropbox）不可接受。</p>
+            <p>★ <strong>電子簽名的日期時間戳：</strong> 強烈建議的要求。電子簽名若無法追溯到具體的時間點，其法律效力存疑——而時間戳是 Part 11 的核心要求之一。</p>
+            <p>★ <strong>Table 6.6.1-1 的模型意義：</strong> 這張表格的 N/A（天平）行非常重要——它承認天平這類儀器沒有 Part 11 稽核軌跡，但仍然在清單中，說明已「有意識地評估過」其合規狀態，這本身就是良好的 DI 管理實踐。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若伺服器備份每三個月進行一次，但其中一次因為 IT 人員休假而延誤了三週，這是否構成 CAPA 事件？為什麼？</li>
+                <li>請依 Table 6.6.1-1 的格式，為您實驗室中的 UV 分光光度計填寫一行記錄。</li>
+                <li>「Cold Backup」和手動備份的主要合規差異是什麼？在稽查中各自的風險是什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 6.6.2: ROUTINE CHECKS -->
+<!-- ============================================================ -->
+
+<div class="section-title">6.6.2 Routine Checks of Data and Multiple Equipment in the Laboratory（例行數據對帳）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>The Quality Unit should schedule regular data reconciliation to detect data compromises early. Creating a data flow of the entire laboratory from the top down will provide an excellent overview of where mistakes or breaches might occur. Random checks of employee shifts or timing logs against equipment use should be performed to check data integrity. Synchronization of raw data across the instruments can be verified to expose data manipulation by random checks, such as checking the injection time and balance printout/PDF time for sample weighing and reconciling data periodically on instruments, as represented in Figure 6.6.2-1.</p>
+
+        <p>Examples of what to look for on some instruments are:</p>
+        <ul>
+            <li>Titrator: Data stored on the internal memory vs. number of records in the instrument logbook</li>
+            <li>HPLC: Number of injections vs. number of logbook entries or number of results</li>
+            <li>UV, IR: Number of data files vs. number of logbook entries</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：跨系統對帳是揭露數據竄改的關鍵工具</h4>
+            <p>數據竄改通常發生在「系統的邊界」——例如，分析師在 HPLC 電腦端刪除了一個進樣（injection），但忘記同步修改實驗室日誌（logbook）和 LIMS 的記錄條目。跨系統對帳就是利用這種「痕跡不一致」來偵測問題。</p>
+            <p><strong>核心邏輯：「數字必須吻合」</strong></p>
+            <table style="width:100%; border-collapse: collapse; font-size: 0.87em;">
+                <tr style="background:#1e3a5f; color:white;">
+                    <th style="padding:6px; border:1px solid #ccc;">儀器</th>
+                    <th style="padding:6px; border:1px solid #ccc;">對帳項目</th>
+                    <th style="padding:6px; border:1px solid #ccc;">偵測到的異常類型</th>
+                </tr>
+                <tr>
+                    <td style="padding:6px; border:1px solid #ccc;">HPLC</td>
+                    <td style="padding:6px; border:1px solid #ccc;">進樣次數 vs 日誌記錄條目 vs 結果報告數</td>
+                    <td style="padding:6px; border:1px solid #ccc;">刪除不理想進樣、未報告的額外分析</td>
+                </tr>
+                <tr style="background:#f0f7ff;">
+                    <td style="padding:6px; border:1px solid #ccc;">滴定儀</td>
+                    <td style="padding:6px; border:1px solid #ccc;">內部記憶體記錄數 vs 日誌記錄條目</td>
+                    <td style="padding:6px; border:1px solid #ccc;">儀器上有未被記錄的測試</td>
+                </tr>
+                <tr>
+                    <td style="padding:6px; border:1px solid #ccc;">UV/IR</td>
+                    <td style="padding:6px; border:1px solid #ccc;">數據檔案數 vs 日誌記錄條目</td>
+                    <td style="padding:6px; border:1px solid #ccc;">額外測試掃描未被記錄</td>
+                </tr>
+                <tr style="background:#f0f7ff;">
+                    <td style="padding:6px; border:1px solid #ccc;">HPLC + 天平</td>
+                    <td style="padding:6px; border:1px solid #ccc;">進樣時間 vs 天平稱重 PDF 時間</td>
+                    <td style="padding:6px; border:1px solid #ccc;">回溯製作稱樣記錄、先分析後補記錄</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="analogy-box">
+            <h4>概念比喻：「對帳就像查銀行帳單」</h4>
+            <p>您每個月對帳銀行帳單，不是因為您不信任銀行，而是要確認沒有異常交易。同樣地，定期對帳儀器數據不是「不信任分析師」，而是系統性的品質保證機制。</p>
+            <p>重要的是：對帳記錄本身也必須保存。稽查員可能要求查看最近 12 個月的對帳記錄，以確認這個程序確實在執行。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>★ <strong>時間同步的重要性：</strong> HPLC 進樣時間戳 vs 天平稱重時間戳的對比，是偵測「先做分析，事後補稱樣記錄」的有效方法。若稱樣時間晚於進樣時間，明顯不合理。</p>
+            <p>★ <strong>隨機抽查（Random Checks）：</strong> 對帳不需要 100% 全面核查，隨機抽查即可有效嚇阻有意圖的竄改行為，同時偵測意外的操作錯誤。</p>
+            <p>★ <strong>班別/時間日誌核查：</strong> 將員工班別記錄與儀器使用記錄對比——若一台 HPLC 在某夜班無人登記使用，但卻有進樣記錄，即為異常。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>您的 HPLC 系統顯示某批次測試共有 18 個進樣記錄，但實驗室日誌只記錄了 15 個進樣。您應如何調查這個差異？</li>
+                <li>滴定儀的內部記憶體記錄了 25 筆滴定數據，但日誌中只有 20 筆記錄。請列出可能的解釋（包括良性和惡意的），以及各自對應的調查步驟。</li>
+                <li>設計一個「月度數據對帳」程序，涵蓋實驗室中 HPLC、天平和 UV 三種儀器的對帳項目和執行方式。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 6.6.3: VENDOR COMMUNICATIONS -->
+<!-- ============================================================ -->
+
+<div class="section-title">6.6.3 Communications with Chromatographic Software Vendors（與色譜軟體廠商的溝通）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Since instrumental software may have some exceptional behavior, firms should document the communications with software vendors regarding clarification/remediation of error messages, warning messages, software bugs, and other issues that may be identified in audit trails, or other operations that need support from the vendor. These issues, communicated over the phone or via email, should be documented and will serve as a basis for change of procedures or initiation of new controls. Often vendor call centers or tech support groups allot a ticket number or tag number that can be referenced.</p>
+
+        <p>In addition, there may be issues or restrictions in the software that a vendor would identify and communicate to all users through website notification or email communication. Firms should assess and document how those communications will be evaluated and how a determination is made regarding the effect on GMP operations. Recordings of audit trails and other critical data are recommended to be checked on a periodic basis to have better control and understanding of software issues. If any anomalies are observed they should be investigated immediately, and if they are suspected as software issues they should be communicated to the vendor for next steps of investigation.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：廠商溝通必須書面化</h4>
+            <p>色譜軟體（如 Empower、Chromeleon、OpenLAB）是複雜的程式，可能存在已知的 bugs、特殊行為或版本限制。TR80 要求：所有與廠商的技術溝通必須記錄，原因有三：</p>
+            <ol>
+                <li><strong>建立因果鏈（Causality Chain）：</strong> 若稽查員在稽核軌跡中發現奇怪的錯誤訊息，而您能提供「廠商工單 #12345 確認這是軟體已知問題，已在 v3.2 修復」的文件，問題的性質就從「可疑缺陷」轉變為「已知並受控的問題」。</li>
+                <li><strong>觸發程序變更：</strong> 廠商的澄清意見或修復方案，可能需要更新 SOP 或啟動新的控制措施。</li>
+                <li><strong>廠商通知的評估：</strong> 廠商主動發出的安全公告或版本更新通知，需要評估其對 GMP 操作的影響，並留下評估記錄。</li>
+            </ol>
+        </div>
+
+        <div class="analogy-box">
+            <h4>概念比喻：「工單號碼是您的護身符」</h4>
+            <p>當 HPLC 軟體出現一個奇怪的錯誤訊息，您打電話給廠商技術支援，廠商說「這是已知問題，不影響數據，下個版本修復」。這個電話內容必須書面記錄——包括廠商工單號碼、通話日期、對方的名字、確認內容。</p>
+            <p>若未記錄，稽查員看到稽核軌跡中的錯誤訊息，而您說「廠商說不影響數據」但拿不出任何佐證，這在稽查中幾乎必然成為一個缺陷（Observation）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>★ <strong>廠商工單號碼（Ticket Number）：</strong> 保留廠商技術支援的工單號碼，作為溝通記錄的索引。這讓您在稽查時能快速找到對應文件。</p>
+            <p>★ <strong>廠商主動通知的處理程序：</strong> 應建立 SOP 說明「當收到廠商軟體通知時，由誰來評估 GMP 影響、記錄評估結果、決定是否需要緊急行動」。</p>
+            <p>★ <strong>定期核查稽核軌跡的雙重目的：</strong> 不僅偵測人員數據操作，也偵測軟體異常行為（如時間戳錯誤、系統崩潰記錄）。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>您的 HPLC 軟體稽核軌跡中，持續出現「System Suitability Failed — Auto-corrected」的警告訊息，但報告中均顯示通過。您應如何處理？</li>
+                <li>廠商發出 email 通知，說明「v4.1 版本在特定條件下可能導致積分參數不正確保存」。請描述您的 GMP 影響評估流程，以及需要留存的文件。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 6.6.4: ELECTRONIC DATA FOR INSPECTIONS -->
+<!-- ============================================================ -->
+
+<div class="section-title">6.6.4 Presenting Data on Request in Electronic Format for Audits and Inspections（稽查時提供電子格式數據）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Auditors and health authority inspectors may request that electronic data be copied onto portable media (such as a USB or portable hard drive) or in a readable format (such as PDF, Microsoft Excel, or text) for their review evidence. Copying data from a validated system compliant with 21 CFR Part 11 or EU GMP Annex 11 onto media or into a readable format that does not maintain the original metadata should be avoided if possible. If data is transferred onto media or into a readable format, verification that the data and metadata are a true copy is recommended. Uncontrolled use of the copy-and-paste function can be prone to error and give the impression that original data has been altered or falsified. Establishing an SOP that governs how to copy and save data from laboratory systems is highly recommended. The SOP should describe the standard queries and reports that can be generated for audit and inspection purposes and the controls in place to ensure the accuracy of non-routine reports. Printing or exporting injection logs with all the details, such as injection time and sample name, may not be readily possible on some chromatographic software.</div>
+
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：電子數據提交的合規挑戰</h4>
+            <p>當 FDA 稽查員要求「把所有 HPLC 數據複製到這個 USB 隨身碟」時，這看似簡單的要求，實際上充滿法規風險：</p>
+            <ul>
+                <li><strong>Metadata 丟失：</strong> 將 .raw 檔案複製到 USB 後，原始的 metadata（如審核者、電子簽名、修改歷史）可能無法在目標環境中讀取</li>
+                <li><strong>「真實副本」認定（True Copy）：</strong> 複製後的數據必須通過驗證，確認與原始數據完全一致——這需要正式的程序，不能依賴口頭確認</li>
+                <li><strong>Copy-and-paste 風險：</strong> 手動 C/P 操作容易出錯，且外觀上與「刻意篡改」難以區分</li>
+                <li><strong>舊版軟體相容性：</strong> 部分色譜軟體無法輕易匯出包含進樣時間和樣品名稱的完整注射日誌，需要預先知道如何做到這一點</li>
+            </ul>
+        </div>
+
+        <div class="concept-box" style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); border-left: 4px solid #4caf50;">
+            <h4>稽查準備行動清單：電子數據請求預案</h4>
+            <p>建議在平時就準備好以下工作，而不是等到稽查員進門再臨時處理：</p>
+            <table style="width:100%; border-collapse: collapse; font-size: 0.87em;">
+                <tr style="background:#1b5e20; color:white;">
+                    <th style="padding:6px; border:1px solid #ccc;">準備項目</th>
+                    <th style="padding:6px; border:1px solid #ccc;">具體行動</th>
+                    <th style="padding:6px; border:1px solid #ccc;">SOP 要求</th>
+                </tr>
+                <tr>
+                    <td style="padding:6px; border:1px solid #ccc;">標準數據匯出流程</td>
+                    <td style="padding:6px; border:1px solid #ccc;">預先測試並記錄從 HPLC 軟體匯出完整進樣日誌的步驟</td>
+                    <td style="padding:6px; border:1px solid #ccc;">SOP 規定標準查詢和報告格式</td>
+                </tr>
+                <tr style="background:#e8f5e9;">
+                    <td style="padding:6px; border:1px solid #ccc;">True Copy 驗證程序</td>
+                    <td style="padding:6px; border:1px solid #ccc;">定義如何核對複製後數據與原始數據的一致性</td>
+                    <td style="padding:6px; border:1px solid #ccc;">SOP 規定驗證步驟和負責人</td>
+                </tr>
+                <tr>
+                    <td style="padding:6px; border:1px solid #ccc;">非例行報告的準確性控制</td>
+                    <td style="padding:6px; border:1px solid #ccc;">對稽查期間臨時生成的報告，需有第二人核查</td>
+                    <td style="padding:6px; border:1px solid #ccc;">SOP 規定非例行報告的審查流程</td>
+                </tr>
+                <tr style="background:#e8f5e9;">
+                    <td style="padding:6px; border:1px solid #ccc;">媒體格式選擇</td>
+                    <td style="padding:6px; border:1px solid #ccc;">優先提供可保留 metadata 的格式（原生檔案格式），若必須轉為 PDF，確認不可編輯</td>
+                    <td style="padding:6px; border:1px solid #ccc;">SOP 規定偏好格式和轉換驗證</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="analogy-box">
+            <h4>概念比喻：「電子數據轉交就像公證文件」</h4>
+            <p>當您向銀行申請「往來帳戶對帳單」作為申辦貸款的證明文件時，銀行必須在官方格式上蓋章，確認「此為真實副本」。</p>
+            <p>電子數據提供給稽查員時，同樣的邏輯適用：您需要有程序確認「這份 USB 中的數據是我們系統中數據的真實副本，metadata 完整，未被修改」。這不是口頭保證，而是有文件記錄的正式確認。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>★ <strong>21 CFR Part 11 vs EU GMP Annex 11：</strong> 本節明確點名兩個主要監管框架。為美國 FDA 和歐洲 EMA 同時生產的工廠（例如 CDMO），需要確保電子數據管理程序同時滿足兩者要求。</p>
+            <p>★ <strong>Copy-paste 的法律風險：</strong> 即使是無意的複製錯誤，在外觀上也可能被誤認為「數據竄改」。使用 SOP 定義的官方匯出流程，能保護企業免於不必要的質疑。</p>
+            <p>★ <strong>進樣日誌匯出的實務挑戰：</strong> TR80 特別提到某些色譜軟體無法輕易匯出包含進樣時間和樣品名稱的完整進樣日誌——這需要提前探索和記錄如何操作，而不是等到稽查當天。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>FDA 稽查員要求查看過去一年所有 HPLC 失敗進樣（Aborted Injections）的完整記錄。請描述您將如何從 Empower（或您使用的軟體）中提取這些數據，以及如何確認為真實副本。</li>
+                <li>稽查員要求將三批產品的 HPLC 原始數據複製到 USB。您的公司沒有 SOP 規定此程序。請描述您會如何即時處理此請求，以及事後應建立的 SOP 應包含哪些元素。</li>
+                <li>如果必須將數據轉換為 PDF 格式提供給稽查員，需要進行哪些「True Copy 驗證」步驟？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION SUMMARY -->
+<!-- ============================================================ -->
+
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>6.4 其他實驗室設備：</strong> UV、FTIR、PSD 等非 HPLC/GC 儀器同樣受 21 CFR Part 11 規範。Stand-alone 系統最常見缺陷包括共用管理員帳號、可隨時刪除數據、缺乏稽核軌跡。最低控制要求：啟用稽核軌跡、個人帳號、數據保護與軟體驗證。</li>
+        <li><strong>6.5 LDMS：</strong> 無論由廠商或使用者驗證，合規責任在使用者。驗證步驟涵蓋文件記錄、電子簽名、傳輸測試、手動計算比對、PDF 不可編輯確認等 16 項關鍵活動。最低控制包含：唯一 ID、定期更換密碼、刪除權限限制、舊版本保留、定期完整性檢查、角色清單維護。常見缺陷五項：並行登入、不調查驗證缺失、不啟用審查稽核軌跡、功能安裝前未充分理解、訓練不足。</li>
+        <li><strong>6.5.3 試算表驗證：</strong> Excel 試算表是高風險區域，必須驗證、密碼保護、唯讀設定、存於伺服器指定位置，並定期更換密碼和重新驗證。未受保護試算表的典型攻擊手法是手動在結果欄輸入合格數值（如把 96.30 改為 98.23）覆蓋公式計算結果。</li>
+        <li><strong>6.6.1 數據備份：</strong> 應制定備份程序和頻率；建議維護兩份不同地點的備份（3-2-1 原則）；雲端服務必須 GXP 合規並知悉伺服器實體位置；建議採用 cold backup（排程自動）避免人為遺漏；維護數據治理手冊整合所有相關資訊。</li>
+        <li><strong>6.6.2 例行數據對帳：</strong> 定期對帳儀器數據以早期偵測問題；對帳邏輯為跨系統數字吻合（進樣次數 vs 日誌記錄 vs 結果數）；進樣時間 vs 稱樣時間的時序對比可揭露回溯偽造記錄。</li>
+        <li><strong>6.6.3 廠商溝通：</strong> 所有技術溝通（電話/email）必須書面記錄，保留廠商工單號碼；廠商主動通知需評估 GMP 影響並記錄；定期核查稽核軌跡兼顧人員行為和軟體異常偵測。</li>
+        <li><strong>6.6.4 稽查電子數據提交：</strong> 避免將數據轉換為失去 metadata 的格式；必須轉換時需驗證為真實副本；建立 SOP 規範數據複製流程和標準報告格式；提前探索各軟體的完整進樣日誌匯出方法。</li>
+    </ul>
+</div>
+
+</body>
+</html>
