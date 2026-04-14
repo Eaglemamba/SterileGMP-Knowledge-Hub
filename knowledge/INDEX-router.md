@@ -48,7 +48,8 @@ Use these mappings to translate user questions before routing:
 | Sterile filtration / 除菌過濾 | TR26 (§4 Qualification, §6 Validation, §7 Integrity) | PtC-1 §6, TR90, PICS-Annex1 §8 |
 | PUPSIT / filter integrity | TR26 §7 · PtC-1 §6 · PICS-Annex1 §8 | FDA-Aseptic §04 |
 | CGMP requirement for sterilization §211.113(b) / regulatory basis for media fill / SAL 10⁻⁶ CGMP mandate | FDA-21CFR-211 (§3 §211.113) | FDA-Aseptic |
-| Moist heat sterilization / 濕熱滅菌 | TR1 (§1 Science, §3 Design, §5 PPQ) · PICS-Annex1 §8 | TR60 |
+| Moist heat sterilization / 濕熱滅菌 | TR1 (§1 Science, §3 Design, §5 PPQ) · PICS-Annex1 §8 | FDA-ParametricRelease, TR60 |
+| Parametric release / 參數放行 | FDA-ParametricRelease (§0 Background, §1 Control strategy, §2 Filing) | TR1, USP-1229, PDA TR30 |
 | Lyophilization / 凍乾 | TR22 §6 (lyo APS) | TR87 (lyo glass handling) |
 | BFS / blow-fill-seal | PtC-1 §1b (K.1-K.3) · PICS-Annex1 §8 | FDA-Aseptic §07 |
 | Manual aseptic / 手動無菌 | TR62 (§1 Facilities, §2 Equipment, §3 APS) | PtC-1 |
@@ -139,12 +140,17 @@ Use these mappings to translate user questions before routing:
 
 | Topic | ★★★ Primary (section hint) | ★★ Secondary |
 |---|---|---|
-| CCI / container closure integrity | TR86 (§1-§2 Challenges, §3 Methods) · TR27 (§1-§3 Methods) | TR73 §12, TR43, TR90 |
+| CCI / container closure integrity | TR86 (§1-§2 Challenges, §3 Methods) · TR27 (§1-§3 Methods) · FDA-CCIT (§0-§1 Stability CCIT) | TR73 §12, TR43, TR90, USP-1207 |
+| CCIT in stability protocol / 穩定性 CCIT 替代無菌檢驗 | FDA-CCIT (§0 Purpose, §1 Alternatives+Implementation) | USP-1207, TR86 |
+| Container closure systems CMC / 容器密封 CMC 文件 | FDA-ContainerClosure (§0-§1 Qualification, §2 Injectable, §4 Post-approval) | FDA-GlassVial, USP-660, USP-661 |
+| Glass vial & stopper changes / 玻璃瓶膠塞變更 | FDA-GlassVial (§0 Regulatory, §1 Common changes, §2 Tools, §3 Tables) | FDA-ContainerClosure §4 |
 | Prefilled syringe / 預充填注射器 | TR73 (§12-§15) · TR73-2 (EU MDR) | TR43 §4 (syringe defects), Guide-No1 |
 | Needle-based injection systems / 針筒系統 | ISO-11608-1 (§3 Requirements, §4 Dose accuracy, §5 Test matrix) | TR73, TR73-2 |
-| Primary packaging GMP / 一次包材 GMP | ISO-15378 (§2 Context, §3a-§3b Operations, §4 Annex) | USP-660, USP-661, USP-381 |
-| Glass defects / 玻璃缺陷 | TR43 (§0-§5 All five lexicons) | TR87, TR85 |
+| Primary packaging GMP / 一次包材 GMP | ISO-15378 (§2 Context, §3a-§3b Operations, §4 Annex) | USP-660, USP-661, USP-381, FDA-ContainerClosure |
+| Extractables & leachables (packaging) / 包材萃取物 | FDA-ContainerClosure (§1 General, §5 Attachment C) | USP-661, ISPE-SUT §1a |
+| Glass defects / 玻璃缺陷 | TR43 (§0-§5 All five lexicons) | TR87, TR85, FDA-GlassVial |
 | Glass vial handling / breakage | TR87 (§3 Best practices, §4 Risk, §5 Process) | TR43, TR85 |
+| Drug Master File (Type III) / DMF | FDA-ContainerClosure (§4 DMF section) | — |
 | Visible particle inspection | TR85 (§3-§5 Methods) | TR90, PtC-12 |
 
 ### Single-Use Systems
@@ -375,7 +381,10 @@ Use these mappings to translate user questions before routing:
 | 除熱原 / 去熱原 | depyrogenation, LRV, endotoxin indicator, Fh value |
 | 微粒 / 不可見微粒 / particulates | subvisible particulate, light obscuration, PFAT5, 10 µm |
 | 可見異物 / visible particles | visible inspection, PoD, Knapp, AVI, MVI |
-| 包裝完整性 / CCI test / leak test | container closure integrity, HVLD, vacuum decay, MALL |
+| 包裝完整性 / CCI test / leak test | container closure integrity, HVLD, vacuum decay, MALL, CCIT |
+| 穩定性 CCIT / stability CCI | CCIT in lieu of sterility, stability protocol, bubble test, dye penetration |
+| 參數放行 / parametric release | parametric release, CPG 460.800, load monitor, Class 5 indicator |
+| 容器密封變更 / CCS change | glass vial change, stopper change, PAS, CBE-30, comparability protocol |
 | 玻璃脫層 / 玻璃片 | delamination, glass flakes, lamellae, ICP-MS |
 | 無菌調配 / CSP / BUD | compounded sterile preparation, Category 1/2/3, beyond-use date |
 | 滲透壓 / osmolality | osmolality, osmolarity, mOsmol, freezing point depression |

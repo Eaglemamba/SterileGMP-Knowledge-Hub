@@ -1,0 +1,370 @@
+# FDA Guidance for Industry: Container and Closure System Integrity Testing in Lieu of Sterility Testing as a Component of the Stability Protocol for Sterile Products (2008)
+
+Guidance for Industry
+
+Container and Closure System Integrity
+Testing in Lieu of Sterility Testing as a
+Component of the Stability Protocol for
+Sterile Products
+
+For questions on the content of the guidance, contact CBER’s Office of Compliance and
+Biologics Quality at 301-827-3031; CDER’s Office of Pharmaceutical Science at 301-796-1228;
+CDRH’s Office of Device Evaluation at 240-276-3747; or CVM’s Office of New Animal Drug
+Evaluation at 301-827-6963.
+
+U. S. Department of Health and Human Services
+Food and Drug Administration
+Center for Biologics Evaluation and Research
+Center for Drug Evaluation and Research
+Center for Devices and Radiological Health
+Center for Veterinary Medicine
+February 2008
+
+Guidance for Industry
+
+Container and Closure System Integrity
+Testing in Lieu of Sterility Testing as a
+Component of the Stability Protocol for
+Sterile Products
+
+Additional copies of this guidance are available from:
+
+Office of Communication, Training and Manufacturers Assistance, HFM-40
+Center for Biologics Evaluation and Research
+Food and Drug Administration
+1401 Rockville Pike, Suite 200N, Rockville, MD 20852-1448
+Internet: http://www.fda.gov/cber/guidelines.htm
+Phone:  800-835-4709 or 301-827-1800
+or
+Office of Training and Communication
+Division of Drug Information, HFD-240
+Center for Drug Evaluation and Research
+Food and Drug Administration
+5600 Fishers Lane, Rockville, MD 20857
+Phone:  301-827-4573
+Internet:  http://www.fda.gov/cder/guidance/index.htm
+or
+Division of Small Manufacturers, International, and Consumer Assistance (DSMICA), HFZ-220
+Center for Devices and Radiological Health
+Food and Drug Administration
+1350 Piccard Drive, Rockville, MD 20850
+Phone:  800-638-2041
+Internet:  http://www.fda.gov/cdrh/guidance.html
+Email:  dsmica@cdrh.fda.gov
+Fax: 240-276-3151
+or
+Communications Staff, HFV-12
+Center for Veterinary Medicine (CVM)
+Food and Drug Administration
+7519 Standish Place
+Internet at http://www.fda.gov/cvm/guidance/published.htm
+
+Contains Nonbinding Recommendations
+
+Table of Contents
+
+I.
+PURPOSE AND SCOPE................................................................................................1
+II.
+INTRODUCTION...........................................................................................................2
+III.
+DEFINITIONS................................................................................................................3
+IV.
+BACKGROUND .............................................................................................................3
+V.
+ALTERNATIVES...........................................................................................................4
+VI.
+IMPLEMENTATION ....................................................................................................5
+VII.
+APPLICATION SUBMISSION ....................................................................................5
+
+i
+
+Contains Nonbinding Recommendations
+
+GUIDANCE FOR INDUSTRY1
+
+Container and Closure System Integrity Testing in Lieu of Sterility
+Testing as a Component of the Stability Protocol for Sterile
+Products
+
+This guidance represents the Food and Drug Administration’s (FDA’s) current thinking on this
+topic.  It does not create or confer any rights for or on any person and does not operate to bind
+FDA or the public.  You can use an alternative approach if the approach satisfies the
+requirements of the applicable statutes and regulations.  If you want to discuss an alternative
+approach, contact the appropriate FDA staff.  If you cannot identify the appropriate FDA staff,
+call the appropriate number listed on the title page of this guidance.
+
+I.
+PURPOSE AND SCOPE
+
+This guidance document provides recommendations to you, manufacturers, for using methods
+other than sterility testing to confirm container and closure system integrity as a part of the
+stability protocol for sterile biological products, human and animal drugs, and medical devices.
+This guidance document finalizes the draft guidance of the same title dated January 1998
+(January 28, 1998, 63 Federal Register (FR) 4272).
+
+Manufacturers of drugs and biologics purporting to be sterile must test each batch or lot, as the
+case may be, to ensure that the product in question conforms to sterility requirements.  21 CFR
+211.167(a); 21 CFR 610.12.  Such drugs and biologics are also subject to stability testing
+requirements.  21 CFR 211.166.  The stability testing requirements include maintaining a written
+testing program designed to assess stability characteristics.  Manufacturers of medical devices
+must validate processes, including sterilization for a device purporting to be sterile.  21 CFR
+820.75.  Stability testing should be part of the design validation of such devices.  In vitro
+diagnostic products for human use are required to be labeled with stability information. 21 CFR
+809.10.  For products labeled as sterile, we consider sterility to be a stability characteristic.
+
+The purpose of stability testing is to provide evidence on how the quality of a substance or
+product varies with time under the influence of a variety of environmental factors such as
+temperature, humidity, and light, which enables you to establish or modify recommended storage
+conditions, retest periods, and shelf life or dating period, as the case may be.2  This guidance
+document applies only to the replacement of the sterility test with an appropriate container and
+closure system integrity test in the stability written testing program (referred to in this guidance
+
+1 This guidance document was prepared by an intercenter working group with representatives from the Center for
+Biologics Evaluation and Research, Center for Devices and Radiological Health, Center for Drug Evaluation and
+Research, and the Center for Veterinary Medicine.
+2  "Dating period" being the term used for biologics, as defined at 21 CFR 600.3(l), and "shelf life" being the term
+used for other drugs.
+
+Contains Nonbinding Recommendations
+
+as the "stability protocol"), recommending an alternative to sterility testing for supporting the
+continued capability of containers to maintain sterility.  The guidance document does not apply
+to sterility testing methods for product sterility testing prior to release, as container and closure
+system integrity tests cannot demonstrate a product's initial sterility.
+
+This guidance document provides information that we recommend you consider when you
+propose using alternative methods to sterility testing to confirm the integrity of a container and
+closure system throughout the product's shelf life or dating period.  The recommendations in this
+guidance document apply to both pre- and post-approval stability protocols for sterile biological
+products, human and animal drugs, including investigational and bulk drugs.  For medical
+devices, the recommendations in this guidance document apply to stability protocols for those
+devices labeled as sterile.
+
+If you currently perform sterility testing as a stability-indicating test as part of a stability
+protocol, you may continue to do so.   If your product is approved for an alternative to sterility
+testing as a component of your stability protocol, this document is not intended to recommend
+additional testing requirements.
+
+FDA’s guidance documents, including this guidance, do not establish legally enforceable
+responsibilities.  Instead, guidances describe the FDA’s current thinking on a topic and should be
+viewed only as recommendations, unless specific regulatory or statutory requirements are cited.
+The use of the word should in FDA’s guidances means that something is suggested or
+recommended, but not required.
+
+II.
+INTRODUCTION
+
+Products labeled as sterile are expected to be free from viable microbial contamination
+throughout the product's entire shelf life or dating period.  For products labeled as sterile, we
+consider sterility to be a stability characteristic.  As a result, the stability protocol should include
+confirmation of continuing sterility throughout the product's shelf life or dating period.    The
+minimum sterility testing generally performed as a component of the stability protocol for sterile
+products is at the initial time point (release) and final testing interval (i.e., expiration).
+Additional testing is often performed at appropriate intervals within this time period (e.g.,
+annually).  However, as discussed below sterility tests for the purpose of demonstrating
+continuing sterility have limitations, with respect to the method's reliability, accuracy, and the
+conclusions that may be derived from the results.  Because of the limitations of sterility tests
+described below, sterility tests are not recommended as a component of a stability program for
+confirming the continued sterility throughout a product's shelf life or dating period.  Alternative
+methods may be more reliable in confirming the integrity of the container and closure system as
+a component of the stability protocol for sterile products.
+
+This guidance document does not suggest specific test methods and acceptance criteria (except
+for references to USP methods), nor does it provide comprehensive lists of tests.  You should
+determine these details based on good scientific principles for each specific container and closure
+system taking into consideration particular product formulations and, where applicable, routes of
+administration.
+
+Contains Nonbinding Recommendations
+
+III.
+DEFINITIONS
+
+The definitions presented here are for the purposes of this guidance only.
+
+A container and closure system refers to the entirety of packaging components that together
+contain and protect the product.
+
+A packaging component means any single part of a container and closure system.  Typical
+components are containers (e.g., ampules, vials, bottles), container liners, closures (e.g., screw
+caps, stoppers), closure liners, stopper overseals, container inner seals, administration ports (e.g.,
+on large-volume parenterals), overwraps, administration accessories, and container labels.
+
+IV.
+BACKGROUND
+
+Sterility tests have long been used to verify that products maintain their sterility throughout the
+product's entire shelf life or dating period.  However, sterility testing has scientific and practical
+limitations, which are well known.  Some of these are:
+
+1. Sterility tests will only detect viable microorganisms present at the time of the test;
+2. Viable organisms present at the time of the test can only be detected if they are
+capable of growth in the specified culture media;
+3. Sterility tests may be subject to potential interference due to adventitious microbial
+contamination introduced at the time of testing, resulting in false positive readings;
+and
+4. Sterility tests are always destructive of the samples tested and do not offer the
+opportunity to reexamine the same samples in the event of either positive or negative
+findings.
+
+Some Centers of FDA have sought to address these shortcomings and communicated the
+information to you in the guidance document:  "Guidance for Industry for the Submission
+Documentation for Sterilization Process Validation in Applications for Human and Veterinary
+Drug Products" (December 3, 1993, 58 FR 63996).  Section V. A., page 16 of the guidance
+states:
+
+The ability of the container-closure system to maintain the integrity of its
+microbial barrier, and, hence, the sterility of a drug product throughout its shelf
+life, should be demonstrated. […] As previously stated, sterility testing at the
+initial time point is not considered sufficient to demonstrate the microbial
+integrity of a container-closure system. […].
+
+In the Federal Register of July 10, 1996 (61 FR 36466), we published a notice regarding the final
+guideline entitled "Quality of Biotechnological Products: Stability Testing of
+Biotechnological/Biological Products", prepared under the auspices of the International
+Conference on Harmonization of Technical Requirements for Registration of Pharmaceuticals
+
+Contains Nonbinding Recommendations
+
+for Human Use (ICH Final Guideline).3  The ICH Final Guideline is intended to provide
+guidance to applicants regarding the type of stability studies that should be provided in support
+of marketing applications for biotechnological/biological products. 4
+
+V.
+ALTERNATIVES
+
+Alternatives to sterility testing as part of the stability protocol, such as replacing the sterility test
+with container and closure system integrity testing, might include any properly validated
+physical or chemical container and closure system integrity test (e.g., bubble tests,
+pressure/vacuum decay, trace gas permeation/leak tests, dye penetration tests, seal force or
+electrical conductivity and capacitance tests, etc.), or microbiological container and closure
+system integrity tests (e.g., microbial challenge or immersion tests).  Such tests may be more
+useful than sterility testing in demonstrating the potential for product contamination over the
+product’s shelf life or dating period.  The advantages of using such container and closure system
+integrity tests in lieu of sterility tests in the stability protocol for sterile products include:
+
+1. Such alternate methods may detect a breach of the container and/or closure system
+prior to product contamination;
+2. Some of the alternate methods used to evaluate container and closure integrity can
+conserve samples that may be used for other stability tests;
+3. Alternative test methods may require less time than sterility test methods which
+require at least seven days incubation; and
+4. The potential for false positive results may be reduced with some alternative test
+methods when compared to sterility tests.
+
+3 For veterinary products, generally, see: VICH GL17, "Stability Testing of New Biotechnological/Biological
+Veterinary Medicinal Products," 66 FR 19177, April 13, 2001, and VICH GL3(R), "Stability Testing of New
+Veterinary Drug Substances and Medicinal Products (Revision)," 71 FR 19525, April 14, 2006.
+
+4 The ICH Final Guideline is intended to supplement the tripartite ICH guideline entitled, “Stability Testing of New
+Drug Substances and Products,” the notice for which is published in the Federal Register of September 22, 1994 (59
+FR 48754). This guideline reflects formal scientific principles for stability testing of human drugs, and provides a
+general indication of the information to be generated on product stability, but leaves sufficient flexibility to
+encompass the variety of different practical approaches required for specific scientific situations and characteristics
+of the materials being evaluated.
+
+A revision of the September 22, 1994, ICH guideline with the same title (Q1A (R)) (66 FR 56332, November 7,
+2001) was issued to add information to certain sections and to provide clarification to other sections. The most
+important changes were as follows:  (1) stress testing of the drug substance was moved from the glossary to the main
+text; (2) the text on test procedures was made consistent with ICH guidance  “Q6A Specifications:  Test Procedures
+and Acceptance Criteria for New Drug Substances and New Drug Products:  Chemical Substances” (65 FR 83041,
+December 29, 2000)), and relevant cross-references to other ICH guidelines were introduced; (3) the text on testing
+frequency was amended for accelerated testing conditions; (4) storage conditions are described in more detail, and
+testing at low temperature and testing of aqueous liquids in semipermeable containers are specifically addressed; (5)
+the postapproval commitment is clearly described; and (6) the guidance was made editorially consistent.  A second
+revision of the guideline, “Guidance for Industry Q1A (R2) Stability Testing of New Drug Substances and
+Products,” (68 FR 65717, November 21, 2003) was issued to harmonize intermediate storage conditions for zones I
+and II with long-term storage conditions for zones III and IV.
+
+Contains Nonbinding Recommendations
+
+Occasionally, applicants have proposed the use of a preservative effectiveness test in lieu of the
+appropriate sterility test for products containing antimicrobial preservatives.  However, these
+tests only measure the effectiveness of preservatives against a panel of five different test
+organisms.  This method cannot confirm product sterility since it does not confirm the presence
+or absence of contamination, but rather only demonstrates the microbiological effectiveness of
+the preservative system against the five test organisms in question.  For these reasons,
+preservative effectiveness tests are not acceptable alternative tests for monitoring container and
+closure system integrity or for demonstrating maintenance of sterility.  However, such tests are
+appropriate to perform as part of the stability protocol on multi-dose containers at the end of the
+product's shelf life or dating period, to verify antimicrobial preservative effectiveness and
+preservative content.
+
+VI.
+IMPLEMENTATION
+
+When seeking to implement container and closure system integrity testing as an alternative to
+sterility testing as a component of the stability protocol for sterile products, we recommend that
+you consider the following:
+
+1. A container and closure system integrity test may replace sterility testing in a stability
+program at time points other than the product sterility test prior to release;
+2. Container and closure system integrity tests do not replace sterility testing methods
+for product sterility testing prior to release;
+3. Any validated container and closure system integrity test method should be
+acceptable provided the method uses analytical detection techniques appropriate to
+the method and is compatible with the specific product being tested.  A test method is
+adequately validated if it has been proven through scientifically accepted studies to be
+capable of detecting a breach in container and closure system integrity; and
+4. An appropriate container and closure system integrity test should be conducted
+annually and at expiration, or as otherwise required by applicable regulations.
+
+VII.
+APPLICATION SUBMISSION
+
+For new marketing applications for sterile products, we recommend that you include container
+and closure system integrity tests in your stability protocol.  Pending new marketing applications
+may be amended prior to approval.
+
+If you wish to incorporate a validated container and closure system integrity test to demonstrate
+the continued capability of containers to maintain sterility for an approved product,5 you must
+submit the appropriate application supplement, as follows:
+
+5  As previously mentioned, if you currently perform sterility testing as a stability-indicating test as part of a stability
+protocol, you may continue to do so.  Also, if your product is approved for an alternative to sterility testing as a
+component of your stability protocol, this document is not intended to impose additional testing requirements.
+
+Contains Nonbinding Recommendations
+
+Human drugs:  Submit methods and data labeled “Special Supplement - Changes Being
+Effected” for new and abbreviated new drug applications under § 314.70.
+
+Animal drugs:  Submit methods and data as “Supplement - Changes Being Effected” under §
+514.8.
+
+Biological products:  Submit a supplement with proper validation data in support of the
+proposed change as a “Supplement - Changes Being Effected” under § 601.12.
+
+Medical devices:  Submit a PMA supplement with proper validation data in support of the
+proposed change under § 814.39.
+
+You should include in your application supplement a discussion of what the test method
+evaluates and how it is applicable to microbial integrity.  You should select methods that are
+appropriate to the product in question, and validate all test methods.  Validation of particular
+methods should be specific to the product container and closure system or product type.  Several
+alternative container and closure system integrity test methods exist, as described above.  We
+encourage you to develop innovative methods of testing the integrity of specific container and
+closure systems.
+
+The use of media-filled containers is generally acceptable for initial validation studies.  It may be
+acceptable to use media-filled containers instead of product-filled containers for testing during
+the product's shelf life or dating period, if the product contains a material, such as a preservative,
+which would bias the results of the container and closure system integrity test.  If you propose to
+use media-filled containers for some or all of the testing, you should include data in your
+application supplement to support this request.
+
+If you manufacture a number of products that use the same type of container and closure system,
+you may validate your integrity test method using a bracketing matrix.6  It is not necessary to
+perform validation studies on each product.
+
+The number of samples to be tested should be statistically appropriate.  Samples which pass
+container and closure system integrity testing may be further utilized in the stability testing for
+that specific test period or interval; however, the test should be non-destructive and the sample
+unaltered by the container and closure testing method itself.  Samples should not, however, be
+tested for container and closure system integrity at one time interval (e.g., 12 months), and then
+stored for further stability testing at later time periods (e.g., 24 months).
+
+6 See ICH guidance “Q1D Bracketing and Matrixing Designs for Stability Testing of New Drug Substances and
+Products” (68 FR 2339, January 16, 2003).

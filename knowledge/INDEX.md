@@ -383,6 +383,38 @@ Sections: Section 0 — Overview: Scope, Dual Compliance & Regulatory Architectu
 
 ---
 
+## FDA/FDA-CCIT-Complete.md
+FDA Guidance: Container and Closure System Integrity Testing in Lieu of Sterility Testing as a Component of the Stability Protocol for Sterile Products (February 2008) | p1–p9 | 2 sections
+Covers questions about: When can CCIT replace sterility testing in stability protocols? What are the limitations of sterility tests that justify CCIT alternatives? What validated physical/chemical CCIT methods are acceptable (bubble test, pressure/vacuum decay, trace gas, dye penetration, electrical conductivity)? What microbiological CCIT methods exist (microbial challenge, immersion tests)? Why are preservative effectiveness tests NOT acceptable CCIT alternatives? What are the implementation constraints (CCIT replaces stability testing but NOT release testing)? How frequently should CCIT be conducted (annually + expiration)? What application supplements are needed (CBE for drugs, PMA supplement for devices)? Can bracketing matrix validation be used across products with the same CCS? What are the sample management rules for non-destructive CCIT?
+Terms: container closure integrity testing (CCIT), sterility testing, stability protocol, shelf life, dating period, bubble test, pressure decay, vacuum decay, trace gas permeation, dye penetration, seal force, electrical conductivity, capacitance, microbial challenge, immersion test, preservative effectiveness test, CBE (Changes Being Effected), bracketing matrix, USP <71>, USP <1207>, ICH Q1A, ICH Q1D
+Sections: Section 0 — Purpose, Scope, Introduction & Definitions | Section 1 — Background, Alternatives, Implementation & Submission
+
+---
+
+## FDA/FDA-ContainerClosure-Complete.md
+FDA Guidance: Container Closure Systems for Packaging Human Drugs and Biologics — CMC Documentation (May 1999) | p1–p56 | 6 sections
+Covers questions about: What is the definition of a container closure system vs packaging component vs market package? What CGMP/USP requirements apply to containers and closures (21 CFR 211.94, USP <661>)? What are the four key considerations for CCS qualification (protection, safety, compatibility, performance)? What extraction studies are required for primary packaging components? How should toxicological evaluation of extractables be conducted? What information should be submitted in an NDA/BLA for CCS? What specific CCS requirements apply to injectable and ophthalmic products? What are the requirements for inhalation drug product packaging? What CCS testing differs between liquid oral, topical, and solid oral dosage forms? What are the rules for postapproval packaging changes? What information belongs in a Type III Drug Master File (DMF)? What are the requirements for bulk drug substance and bulk drug product containers?
+Terms: container closure system (CCS), packaging component, primary packaging, secondary packaging, materials of construction, extraction profile, extractables, leachables, toxicological evaluation, protection, safety, compatibility, performance, USP <661>, USP <660>, 21 CFR 211.94, Type III DMF, Drug Master File, NDA, BLA, ANDA, bulk container, suitability, vial, stopper, ampule, syringe, overwrap
+Sections: Section 0 — Introduction & Background | Section 1 — Qualification & General Considerations | Section 2 — Application Submissions, Injection & Ophthalmic Products | Section 3 — Oral, Topical & Other Dosage Forms | Section 4 — Post-Approval Changes, DMF & Bulk Containers | Section 5 — Attachments: Regulations, CPGs, Extraction Studies & References
+
+---
+
+## FDA/FDA-GlassVial-Complete.md
+FDA Guidance: Container Closure System and Component Changes: Glass Vials and Stoppers (July 2024) | p1–p36 | 4 sections
+Covers questions about: What reporting categories apply to CCS changes for approved sterile products (PAS, CBE-30, annual report)? What common changes to glass vials and stoppers does this guidance address? How does FDA apply a risk-based approach to CCS component changes? What factors increase risk for glass delamination, particulates, and leachables? What is a Comparability Protocol and how can it facilitate CCS changes? What data is needed for changing vial size, vial supplier, stopper formulation, or stopper supplier? When can a CCS change be filed via annual report vs requiring a prior approval supplement? What specific tables describe change categories for NDA, ANDA, and BLA products? How does this guidance relate to the COVID-19 emergency guidance (2021)?
+Terms: container closure system (CCS), glass vial, stopper, prior approval supplement (PAS), CBE-30 (changes being effected in 30 days), annual report, comparability protocol, glass delamination, leachables, extractables, dual sourcing, supplier change, NDA, ANDA, BLA, 21 CFR 314.70, 21 CFR 601.12, SUPAC, ICH Q12, risk-based approach, CMC change
+Sections: Section 0 — Introduction & Regulatory Approaches to CMC Changes | Section 1 — Common Changes Related to Glass Vials & Stoppers | Section 2 — Risk-Based Tools & Comparability Protocols | Section 3 — Appendix: CCS Change Tables for NDA/ANDA/BLA
+
+---
+
+## FDA/FDA-ParametricRelease-Complete.md
+FDA Guidance: Submission of Documentation for Parametric Release of Drug Products Terminally Sterilized by Moist Heat (February 2010) | p1–p10 | 3 sections
+Covers questions about: What is parametric release and how does it differ from traditional sterility testing? What are the limitations of sterility testing that parametric release addresses? What is SAL 10⁻⁶ and how is it calculated? What control strategy elements are required for a parametric release program? What critical process parameters (CPPs) must be identified and monitored? What risk assessment (per ICH Q9) should be included in the submission? What sterilization load monitors are required (Class 3 vs Class 5 indicators)? What happens when CPP acceptance criteria are not met — can sterility testing overrule the failure? What filing pathway applies (original application, PAS, special report, annual report)? What is the relationship between parametric release and PDA TR30, USP <1222>, PIC/S PI 005-3?
+Terms: parametric release, terminal sterilization, moist heat, sterility assurance level (SAL), SAL 10⁻⁶, critical process parameter (CPP), sterilization load monitor, biological indicator (BI), chemical indicator, Class 5 indicator, F₀, bioburden, overkill, D-value, Z-value, prior approval supplement (PAS), 21 CFR 211.165, 21 CFR 211.167, CPG 460.800, PDA TR30, USP <1222>, ICH Q9, PIC/S PI 005-3
+Sections: Section 0 — Introduction & Background | Section 1 — Control Strategy & Risk Assessment | Section 2 — Documentation, Filing Requirements & References
+
+---
+
 ## ISPE/ISPE-CTC-Complete.md
 ISPE Good Practice Guide: Controlled Temperature Chamber Mapping and Monitoring (2016) | p1–p116 | 9
 Terms: CTC (Controlled Temperature Chamber), thermal mapping, temperature mapping, URS (User Requirements Specification), IQ/OQ/PQ, commissioning, FAT (Factory Acceptance Testing), SAT (Site Acceptance Testing), guard-banding, measurement uncertainty, Alert Level, Alarm Level, setpoint, worst-case location, sensor placement, data logger, BMS (Building Management System), 21 CFR Part 11, periodic evaluation, re-mapping trigger, excursion assessment, stability chamber, ICH Q1A, WHO TRS 961, EU GDP, USP <659>, USP <1079>
