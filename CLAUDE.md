@@ -1,332 +1,79 @@
 # SterileGMP Knowledge Hub — Project Rules
 
-This repo covers **multiple GMP guideline sources**: PDA Technical Reports, ISPE Guidelines, FDA Guidance, PIC/S Annex 1, ISO Standards, and ECA Guides. All workflows apply regardless of source. Use the source `id` prefix in folder naming to distinguish (e.g., `ISPE-Vol5/`, `FDA-Aseptic/`).
+Multi-source GMP knowledge base covering PDA, ISPE, FDA, PIC/S, ICH, USP, ISO, and ECA. Each source uses its own folder prefix (e.g., `ISPE/ISPE-Vol5/`, `FDA/FDA-Aseptic/`).
 
-## Post-Completion Checklist
-
-When any document is fully processed (all sections generated, merged, and verified in browser), you MUST complete these steps before committing:
-
-### 1. Update `reports.json` (SINGLE source of truth)
-
-Add a new report entry to the `reports` object. This feeds BOTH the dashboard and the merge engine — no need to edit index.html separately.
-
-```json
-{
-  "TRXX": {
-    "report_title_en": "PDA Technical Report No. XX (Year)",
-    "report_subtitle_en": "Full English Subtitle",
-    "report_subtitle_zh": "中文副標題 完整教學版",
-    "output_filename": "TRXX-Complete.html",
-    "footer_text": "PDA Technical Report No. XX (Year): Full English Subtitle",
-    "chapter_label": "Section",
-    "date": "2026-03-20",
-    "title": "PDA TRXX: Short Dashboard Title",
-    "titleZh": "中文標題",
-    "source": "PDA TRXX",
-    "source_color": { "bg": "#...", "text": "#...", "bar": "#...", "short": "TRXX" },
-    "tags": ["Tag1", "Tag2", "Tag3"],
-    "summary": "中文摘要（1-2句）",
-    "pages": "p1-p100",
-    "figures": 0,
-    "section_map": [
-      { "files": ["section-00-intro.html"], "id": "sec0", "num": "0", "label_en": "Introduction", "label_zh": "導論", "pages": "p1-p5" }
-    ]
-  }
-}
-```
-
-Also add any new tags to `tagClasses` in the same file if they don't already exist.
-
-### 2. Update `knowledge/INDEX.md`
-
-Add an entry for the new report to THREE places in `knowledge/INDEX.md`:
-
-1. **New report block** — copy the format of an existing entry, fill in:
-   - File name, report name, pages, section count
-   - "Covers questions about" — list 6–10 specific question types
-   - "Key terms" — 10–15 technical terms users might search for
-   - "Sections" — list the section titles
-
-2. **Quick Topic Routing Guide table** — add a row with English + Chinese keywords → file name
-
-3. **Cross-Report Topics** — if the new report overlaps with existing topics (e.g., APS, E&L, EM),
-   add it to the relevant rows with appropriate ★ rating. If it introduces a new cross-report topic,
-   add a new row.
-
-### 3. Move Source PDF to Processed
-
-Move the source PDF from the project root (or wherever it was uploaded) into `Raw pdfs/processed/`:
-
-```bash
-mv "Raw pdfs/PDA_TRXX_....pdf" "Raw pdfs/processed/"
-```
-
-### 4. Verify Before Commit
-
-- [ ] Open `index.html` in browser — confirm new card appears (data comes from reports.json)
-- [ ] Confirm search works for new report content
-- [ ] Confirm filter buttons include the new source
-- [ ] Confirm stats numbers are correct
-- [ ] Confirm "Open" button links to the correct file
-- [ ] Confirm `knowledge/PDA/<TRXX>-Complete.md` was generated with **English-only** content (no Chinese)
-- [ ] Confirm `knowledge/INDEX.md` has been updated with the new report
-
-## File Structure Convention
-
-```
-/
-├── reports.json            # SINGLE SOURCE OF TRUTH — all report metadata, dashboard data, section maps
-├── gmp_engine.py           # Unified CLI: scaffold, md, merge
-├── merge_engine.py         # Shared HTML merge library (imported by gmp_engine.py)
-├── index.html              # Dashboard — reads from reports.json (no hardcoded data)
-├── learning-path.html      # Department curriculum tracker with quiz badges
-├── mindmap.html            # Knowledge mind map (D3.js + Markmap)
-├── quiz.html               # Quiz score tracker — paste JSON from /quiz skill to record
-├── template.css            # Shared CSS (do not modify per-report)
-├── README.md               # Repo readme
-├── SOURCES.md              # Source organization comparison (PDA, ISPE, FDA, ICH, USP, ISO, Ph.Eur., WHO)
-├── docs/                   # Internal planning & tooling docs
-│   ├── PROMPT.md           # Master generation instructions
-│   ├── ROADMAP.md          # Coverage status and expansion roadmap
-│   └── SKILLS.md           # Planned Claude Code skills list
-├── Raw pdfs/               # Source PDFs (all sources)
-├── knowledge/              # Chatbot knowledge base — English-only original content
-│   ├── INDEX.md            # Master routing index — update manually per new document
-│   ├── exams/              # Pre-written question banks (JSON) for /quiz skill
-│   │   └── topics-APS-filling-isolator.json
-│   ├── topics/             # Cross-document topic synthesis MDs (for /quiz & /gmp-ask)
-│   │   ├── APS-filling-isolator.md
-│   │   ├── disinfectant-efficacy-study.md
-│   │   └── VPHP-cycle-development.md  # + opus/sonnet variants
-│   ├── PDA/                # PDA Technical Reports & Points to Consider
-│   │   ├── TR26-Complete.md    # One .md per document (auto-generated, English only)
-│   │   └── ...
-│   └── ISPE/               # ISPE Guidelines (same structure, future)
-├── .claude/
-│   └── commands/
-│       ├── gmp-ask.md      # /gmp-ask skill — unified chatbot Q&A via Claude Code
-│       └── quiz.md         # /quiz skill — interactive 10-question exam, outputs JSON for quiz.html
-├── PDA/                    # All PDA documents
-│   ├── TR26/               # Each subfolder: source/ + sections/ + output/
-│   ├── PtC-14/
-│   └── pda-guide-no1/
-├── ISPE/                   # All ISPE documents (same structure as PDA/)
-│   ├── ISPE-Vol3/
-│   ├── ISPE-Vol5/
-│   └── ...
-```
-
-> **reports.json `folder` field**: Every report entry must include `"folder": "PDA/TR26"` (or `"ISPE/ISPE-Vol5"` etc.).
-> `gmp_engine.py` uses this field to resolve all paths. `index.html` uses it to build the Open button link.
-> Use `python gmp_engine.py scaffold ISPE-Vol5 --source ISPE` to auto-populate `folder` for new reports.
-
-## Naming Conventions
-
-**PDA documents** — under `PDA/`:
-- Folders: `PDA/TR26/`, `PDA/TR01/`, `PDA/PtC-14/`, `PDA/pda-guide-no1/`
-
-**ISPE documents** — under `ISPE/`:
-- Folders: `ISPE/ISPE-Vol3/`, `ISPE/ISPE-Vol5/`, `ISPE/ISPE-GAMP5/`, `ISPE/ISPE-HVAC/`, `ISPE/ISPE-TechTransfer/`
-
-**FDA documents** — under `FDA/`:
-- Folders: `FDA/FDA-Aseptic/`, `FDA/FDA-Process-Val/`, etc.
-
-**PIC/S documents** — under `PICS/`:
-- Folders: `PICS/PICS-Annex1/`, `PICS/PICS-GMP-Part1/`, etc.
-
-**ICH guidelines** — under `ICH/`:
-- Folders: `ICH/ICH-Q9/`, `ICH/ICH-Q10/`, `ICH/ICH-Q8/`, etc.
-
-**USP chapters** — under `USP/`:
-- Folders: `USP/USP-1072/`, `USP/USP-1231/`, etc.
-
-**ISO standards** — under `ISO/`:
-- Folders: `ISO/ISO-14644-1/`, `ISO/ISO-14644-3/`, etc.
-
-**Ph.Eur. monographs** — under `PHEUR/`:
-- Folders: `PHEUR/PhEur-261/`, `PHEUR/PhEur-321/`, etc.
-- Knowledge MDs: `knowledge/PHEUR/PhEur-XXX-Complete.md`
-
-**All sources:**
-- Section files: `section-XX-short-name.html`
-- Split sections: `section-XXa-name.html`, `section-XXb-name.html`
-- Merged output: `[FOLDER_ID]-Complete.html`
-- Source text: `section-X.0-text.txt` or `[FOLDER_ID]-full-text.txt`
-- Knowledge MD: `knowledge/<SOURCE>/[FOLDER_ID]-Complete.md` (English only, auto-generated)
-
-**Source colors** — follow existing palette per source org in `reports.json`:
-- PDA=blue, ISPE=green, FDA=red, PIC/S=orange, ISO=purple, USP=gold, ICH=teal, Ph.Eur.=brown/amber
-
-## TopNav Scroll Arrow Rule
-
-All merged documents use scroll arrow buttons (‹ ›) in the top nav. This is required whenever a report has more than ~8 sections, as tabs overflow the viewport. The nav HTML and JS are auto-generated by `merge_engine.py` — no manual setup needed.
-
----
-
-## Starting a New Session — Finding Unprocessed PDFs
-
-When the user says "continue the educational HTML work" or "process new PDFs":
-
-1. **Always `git pull` first** — new PDFs are pushed to the remote repo, not copied locally.
-2. **Unprocessed PDFs** live in `Raw pdfs/` (root level). Already-processed PDFs are moved to `Raw pdfs/processed/`.
-3. **Processing order**: PDA → sort by lowest TR/PtC number first. ISPE → follow the ranked importance order (Vol.5 C&Q → GEP → Vol.7 Risk → Vol.3 Sterile → Vol.4 Water → HVAC → ...). FDA/PIC/S → process by regulatory significance.
-4. **One PDF at a time** — complete the full workflow for one document before starting the next.
-
-```bash
-# Quick check for unprocessed PDFs:
-ls "Raw pdfs/" | grep -v processed
-```
+**Detail in `.claude/rules/`:**
+- `workflow-checklist.md` — post-completion steps + git push sync checklist
+- `naming-conventions.md` — folder structure, file naming, source color palette
+- `pitfalls.md` — known bugs and workarounds
 
 ---
 
 ## Quick Start — Adding a New Report
 
 ```bash
-# 1. Scaffold the folder structure + add skeleton to reports.json
+# 1. Scaffold folder + skeleton entry in reports.json
 python gmp_engine.py scaffold TRXX
-#    ISPE reports:
-python gmp_engine.py scaffold ISPE-Vol5 --source ISPE
+python gmp_engine.py scaffold ISPE-Vol5 --source ISPE   # ISPE variant
 
-# 2. Edit reports.json — fill in TRXX entry (title, tags, colors, section_map)
+# 2. Fill in reports.json entry (title, tags, colors, section_map)
 
-# 3. Extract PDF text into PDA/TRXX/source/
-#    Use any external tool (e.g., pdftotext, PyMuPDF, or manual copy-paste)
+# 3. Extract PDF text into <SOURCE>/<ID>/source/
 
-# 4. Generate knowledge MD — review hierarchy before proceeding
+# 4. Generate knowledge MD — review before proceeding
 python gmp_engine.py md TRXX
-#    Review knowledge/PDA/TRXX-Complete.md — confirm sections/headings match PDF
 
 # 5. Generate bilingual HTML sections (Claude agents, parallel dispatch)
-#    Use docs/PROMPT.md template. For sections likely >1000 lines, plan A/B split upfront.
+#    Use docs/PROMPT.md template. Plan A/B split upfront for source files > 800 lines.
 
-# 6. Merge HTML → PDA/TRXX/output/TRXX-Complete.html
+# 6. Merge HTML
 python gmp_engine.py merge TRXX
 
-# 7. Update knowledge/INDEX.md (new block using "PDA/TRXX-Complete.md" header + routing table row + cross-report topics)
+# 7. Update knowledge/INDEX.md + knowledge/INDEX-router.md
 
-# 8. Move source PDF to processed
+# 8. Move source PDF
 mv "Raw pdfs/PDA_TRXX_....pdf" "Raw pdfs/processed/"
 
 # 9. Verify in browser, then commit + push
-git add PDA/TRXX/ reports.json knowledge/ "Raw pdfs/processed/" && git commit -m "Add TRXX: [title]"
+git add <SOURCE>/TRXX/ reports.json knowledge/ "Raw pdfs/processed/"
+git commit -m "Add TRXX: [title]"
 ```
 
 ---
 
-## After Every git push — Project File Sync
+## Starting a New Session
 
-**Whenever a `git push` is executed, run `/project-sync` OR manually complete the checklist below before ending the session.**
-
-The fastest path: just run `/project-sync` — it audits all files automatically and makes edits where needed.
-
-> **Note:** `/project-sync` covers items 1, 2, and 5 automatically (ROADMAP dates/counts, INDEX.md entries, folder integrity). It does **not** cover items 2b, 3, or 4 — after running it, manually verify `INDEX-router.md` for new router rows, and whether `CLAUDE.md` or `docs/PROMPT.md` need updating.
-
-### Manual checklist (if not using /project-sync)
-
-#### 1. docs/ROADMAP.md — always update
-- [ ] "Last updated" line → set to today + describe what changed
-- [ ] "Current Status at a Glance" table → recount from `reports.json`
-- [ ] Per-source counts (PDA, ISPE, USP, FDA, ICH, PIC/S, ISO) → recount from `reports.json`
-- [ ] Active Priorities → still accurate? Re-order if needed
-- [ ] Phase tasks → tick off newly completed items
+1. `git pull` first — new PDFs are pushed remotely, not copied locally.
+2. Unprocessed PDFs live in `Raw pdfs/` root. Processed are in `Raw pdfs/processed/`.
+3. Processing order: PDA (lowest TR# first) → ISPE (Vol.5 → GEP → Vol.7 → Vol.3 → Vol.4 → HVAC) → FDA/PIC/S by regulatory significance.
+4. One PDF at a time — complete full workflow before starting next.
 
 ```bash
-# Accurate count by source:
-python3 -c "
-import json, collections
-d = json.load(open('reports.json'))
-src = collections.Counter()
-for k, v in d['reports'].items():
-    if v.get('section_map'):
-        s = v.get('source','').split()[0]
-        src[s] += 1
-for k,v in sorted(src.items()): print(f'{k}: {v}')
-print('Total:', sum(src.values()))
-"
+ls "Raw pdfs/" | grep -v processed   # check for unprocessed PDFs
 ```
-
-#### 2. knowledge/INDEX.md — update when new knowledge MDs added
-- [ ] New report block added (file name, covers questions about, key terms, sections)
-- [ ] Quick Topic Routing Guide table has new row
-- [ ] Cross-Report Topics updated if new report overlaps existing topics
-
-#### 2b. knowledge/INDEX-router.md — update when new knowledge MDs added
-`INDEX-router.md` is a compact topic router (★★★/★★ ratings + section hints) read first by every `/gmp-ask` query. It is **not** auto-updated when INDEX.md is updated — add the new report to the router manually.
-
-- [ ] Identify which Topic Router category the new report belongs to (Aseptic, Barriers, EM, Contamination, Facility, Validation, Containers, Risk/Data, Regulatory, Supply Chain, ATMP, etc.)
-- [ ] Add a new row (or update existing rows) in that category table:
-  `| Topic description | NewReport (§section hint) | Secondary reports |`
-- [ ] If the new report is a primary source (★★★) for an existing topic that previously had no primary → promote it and demote old primary to ★★
-- [ ] Add any new synonyms to the Synonym Table at the top if the new report introduces new terminology
-
-**Do NOT add a row to INDEX-router.md for every document** — only add rows for topics where this document is the definitive (★★★) or strong secondary (★★) source. Documents that are ★ (mentioned only) don't need router entries.
-
-> Note: `INDEX-verbose.md` is a legacy file predating the current INDEX.md structure. It is not referenced by any skill or workflow. Do NOT update it — it will be removed in a future cleanup.
-
-#### 3. CLAUDE.md (this file) — update when workflow changes
-- [ ] New source org added → add to Naming Conventions + source color note
-- [ ] New folder type introduced → update File Structure Convention diagram
-- [ ] New known pitfall discovered → add to Known Pitfalls section
-
-#### 4. docs/PROMPT.md — update when generation approach changes
-- [ ] Section generation instructions still match current HTML structure
-- [ ] Any new source org needs its own color/header template documented
-
-#### 5. Folder structure integrity — check when folders moved or renamed
-- [ ] `reports.json` `folder` field matches actual folder path for affected reports
-- [ ] `index.html` Open button links still resolve (open in browser to verify)
-- [ ] `knowledge/EXPERT/` exists if Expert Knowledge Base files were added
-
-Do NOT rewrite entire files — only update sections where actual changes occurred.
 
 ---
 
-## Current Reports Inventory
+## After Every `git push`
 
-**Do NOT duplicate the full inventory here.** `reports.json` is the single source of truth.
-To check current status: `python3 -c "import json; d=json.load(open('reports.json')); [print(f'{k}: {v.get(\"folder\",k)}') for k,v in d['reports'].items() if v.get('section_map')]"`
+Run `/project-sync` — audits ROADMAP dates/counts, INDEX.md entries, folder integrity automatically.
+
+After `/project-sync`, manually verify: `INDEX-router.md` new rows, and whether `CLAUDE.md` or `docs/PROMPT.md` need updating.
 
 ---
 
-## Known Pitfalls
+## Critical Rules
 
-### 32K Output Token Limit
-Claude agents have a 32,000 output token limit per response. Sections covering 20+ pages of dense
-technical content often exceed this. **Plan A/B splits upfront** for any source text file over ~800 lines.
-Name them: `section-04a-name.html`, `section-04b-name.html`.
-Update section_map in reports.json to pass both files in the same entry:
-```json
-{ "files": ["section-04a-name.html", "section-04b-name.html"], "id": "sec4", "num": "4", "label_en": "Label", "label_zh": "中文", "pages": "p29-p41" }
-```
+- **Never** manually edit `index.html` — it reads from `reports.json`
+- **Never** add inventory tables here — `reports.json` is the single source of truth
+- Knowledge MDs in `knowledge/` must be **English-only** (no Chinese)
+- Plan **A/B section splits** upfront for any source text file over ~800 lines
+- `INDEX-router.md` only gets rows for ★★★ and ★★ sources — not every document
 
-### Nav Overflow (justify-content: center)
-If `.nav-container` has `justify-content: center`, overflow is clipped symmetrically — users cannot
-reach leftmost tabs. Always use `justify-content: flex-start` + scroll arrows (handled by merge_engine.py).
+---
 
-### Regenerating All Knowledge MDs
-To regenerate all knowledge MDs at once (e.g. after updating `gmp_engine.py` heading detection):
+## Current Inventory
+
 ```bash
-python gmp_engine.py md --all
+python3 -c "import json; d=json.load(open('reports.json')); [print(f'{k}: {v.get(\"folder\",k)}') for k,v in d['reports'].items() if v.get('section_map')]"
 ```
-Note: `pda-guide-no1` has no source text — its MD is generated via HTML-stripping fallback in `merge_engine.generate_markdown()`.
-
-### Knowledge MDs — English Only
-Knowledge MDs in `knowledge/` must contain **only original English text** from the PDF. No Chinese translations or commentary. The `gmp_engine.py md` command generates these from `source/*.txt` files. The `merge_engine.generate_markdown()` fallback strips CJK from HTML sections.
-
-### Heading Detection & PDF Noise Rules
-Rules are documented in `gmp_engine.py` source code (`source_to_markdown()`, `HEADING_RE`, `PDF_NOISE_PATTERNS`, `UNIT_WORDS`). If a new PDF introduces false headings or noise, update the code and run `python gmp_engine.py md --all`.
-
-### Rogue `knowledge/` Directories Inside Source Folders
-`merge_engine.py` computes `repo_root = os.path.join(base_dir, '..')` where `base_dir` is the report folder (e.g. `FDA/FDA-21CFR-820`). This resolves one level up to `FDA/` — **not** the repo root. As a result, `generate_markdown()` writes MDs to `FDA/knowledge/`, `ISPE/knowledge/`, `PDA/knowledge/`, etc. instead of `knowledge/FDA/`, `knowledge/ISPE/`, `knowledge/PDA/`.
-
-**Workaround (until bug is fixed in merge_engine.py):**
-```bash
-# After every merge, manually copy the MD to the correct location:
-cp FDA/knowledge/FDA-21CFR-820-Complete.md knowledge/FDA/
-cp ISPE/knowledge/ISPE-Vol5-Complete.md knowledge/ISPE/
-# etc.
-```
-The rogue directories (`FDA/knowledge/`, `ISPE/knowledge/`, etc.) can be left in place — they are ignored by git if not tracked, and harmless.
-
-### Agent 0-Tool-Use Failure
-Background agents occasionally report "file written" success but have 0 actual tool uses — the file is not created. **Symptom**: `ls sections/` shows the file missing after the agent completes. **Fix**: re-launch the same agent with explicit instruction "MUST use the Write tool. The file must actually exist on disk." The retry succeeds.
