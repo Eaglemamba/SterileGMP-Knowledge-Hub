@@ -143,6 +143,10 @@ mv "Raw pdfs/PDA_TRXX_....pdf" "Raw pdfs/processed/"
 **ISO standards** — under `ISO/`:
 - Folders: `ISO/ISO-14644-1/`, `ISO/ISO-14644-3/`, etc.
 
+**Ph.Eur. monographs** — under `PHEUR/`:
+- Folders: `PHEUR/PhEur-261/`, `PHEUR/PhEur-321/`, etc.
+- Knowledge MDs: `knowledge/PHEUR/PhEur-XXX-Complete.md`
+
 **All sources:**
 - Section files: `section-XX-short-name.html`
 - Split sections: `section-XXa-name.html`, `section-XXb-name.html`
@@ -151,7 +155,7 @@ mv "Raw pdfs/PDA_TRXX_....pdf" "Raw pdfs/processed/"
 - Knowledge MD: `knowledge/<SOURCE>/[FOLDER_ID]-Complete.md` (English only, auto-generated)
 
 **Source colors** — follow existing palette per source org in `reports.json`:
-- PDA=blue, ISPE=green, FDA=red, PIC/S=orange, ISO=purple, USP=gold, ICH=teal
+- PDA=blue, ISPE=green, FDA=red, PIC/S=orange, ISO=purple, USP=gold, ICH=teal, Ph.Eur.=brown/amber
 
 ## TopNav Scroll Arrow Rule
 
@@ -311,3 +315,18 @@ Knowledge MDs in `knowledge/` must contain **only original English text** from t
 
 ### Heading Detection & PDF Noise Rules
 Rules are documented in `gmp_engine.py` source code (`source_to_markdown()`, `HEADING_RE`, `PDF_NOISE_PATTERNS`, `UNIT_WORDS`). If a new PDF introduces false headings or noise, update the code and run `python gmp_engine.py md --all`.
+
+### Rogue `knowledge/` Directories Inside Source Folders
+`merge_engine.py` computes `repo_root = os.path.join(base_dir, '..')` where `base_dir` is the report folder (e.g. `FDA/FDA-21CFR-820`). This resolves one level up to `FDA/` — **not** the repo root. As a result, `generate_markdown()` writes MDs to `FDA/knowledge/`, `ISPE/knowledge/`, `PDA/knowledge/`, etc. instead of `knowledge/FDA/`, `knowledge/ISPE/`, `knowledge/PDA/`.
+
+**Workaround (until bug is fixed in merge_engine.py):**
+```bash
+# After every merge, manually copy the MD to the correct location:
+cp FDA/knowledge/FDA-21CFR-820-Complete.md knowledge/FDA/
+cp ISPE/knowledge/ISPE-Vol5-Complete.md knowledge/ISPE/
+# etc.
+```
+The rogue directories (`FDA/knowledge/`, `ISPE/knowledge/`, etc.) can be left in place — they are ignored by git if not tracked, and harmless.
+
+### Agent 0-Tool-Use Failure
+Background agents occasionally report "file written" success but have 0 actual tool uses — the file is not created. **Symptom**: `ls sections/` shows the file missing after the agent completes. **Fix**: re-launch the same agent with explicit instruction "MUST use the Write tool. The file must actually exist on disk." The retry succeeds.
