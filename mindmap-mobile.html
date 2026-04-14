@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>SterileGMP — 知識地圖（手機版）</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --c-bg: #f1f5f9;
+  --c-surface: #ffffff;
+  --c-border: #e2e8f0;
+  --c-text: #0f172a;
+  --c-muted: #64748b;
+  --c-light: #94a3b8;
+  --c-blue: #2563eb;
+  --c-nav-h: 52px;
+  --c-tab-h: 48px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--c-bg);
+  color: var(--c-text);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* ── Top nav ── */
+.top-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: var(--c-nav-h);
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--c-border);
+  display: flex; align-items: center; gap: 8px;
+  padding: 0 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+.nav-back {
+  padding: 8px 12px; border-radius: 8px; font-size: 13px; font-weight: 600;
+  background: #1e3a5f; color: white; text-decoration: none; white-space: nowrap;
+}
+.nav-title {
+  font-size: 14px; font-weight: 700; color: var(--c-text);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.nav-badge {
+  margin-left: auto; font-size: 11px; color: var(--c-muted);
+  background: #f1f5f9; padding: 3px 8px; border-radius: 6px;
+  white-space: nowrap; border: 1px solid var(--c-border);
+}
+
+/* ── Tab bar ── */
+.tab-bar {
+  position: fixed; top: var(--c-nav-h); left: 0; right: 0; z-index: 99;
+  display: flex;
+  background: #fff;
+  border-bottom: 2px solid var(--c-border);
+}
+.tab-btn {
+  flex: 1; height: var(--c-tab-h);
+  border: none; background: transparent; cursor: pointer;
+  font-size: 13px; font-weight: 600; color: var(--c-muted);
+  font-family: 'Noto Sans TC', sans-serif;
+  transition: color 0.15s, border-bottom 0.15s;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  display: flex; align-items: center; justify-content: center; gap: 4px;
+}
+.tab-btn.active {
+  color: var(--c-blue);
+  border-bottom-color: var(--c-blue);
+}
+.tab-btn .tab-icon { font-size: 16px; }
+
+/* ── Main content ── */
+.content {
+  padding-top: calc(var(--c-nav-h) + var(--c-tab-h) + 12px);
+  padding-bottom: 24px;
+}
+
+.view { display: none; }
+.view.active { display: block; }
+
+/* ── Search bar ── */
+.search-wrap {
+  padding: 8px 12px 0;
+  position: sticky;
+  top: calc(var(--c-nav-h) + var(--c-tab-h));
+  z-index: 50;
+  background: var(--c-bg);
+}
+.search-input {
+  width: 100%; padding: 10px 14px;
+  border: 1.5px solid var(--c-border); border-radius: 10px;
+  font-size: 14px; background: #fff; color: var(--c-text);
+  font-family: 'Noto Sans TC', sans-serif;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.search-input:focus { border-color: var(--c-blue); }
+.search-input::placeholder { color: var(--c-light); }
+
+/* ── Cards ── */
+.cards { padding: 8px 12px; display: flex; flex-direction: column; gap: 10px; }
+
+.card {
+  background: var(--c-surface); border-radius: 14px;
+  border: 1px solid var(--c-border);
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.card-header {
+  display: flex; align-items: center; gap: 10px;
+  padding: 14px 14px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  min-height: 60px;
+}
+.card-header:active { background: #f8fafc; }
+
+.card-color-bar {
+  width: 4px; height: 44px; border-radius: 3px; flex-shrink: 0;
+}
+
+.card-icon {
+  font-size: 22px; flex-shrink: 0; width: 32px; text-align: center;
+}
+
+.card-titles { flex: 1; min-width: 0; }
+.card-name {
+  font-size: 15px; font-weight: 700; color: var(--c-text);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.card-name-zh {
+  font-size: 12px; color: var(--c-muted); margin-top: 1px;
+}
+
+.card-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; flex-shrink: 0; }
+.card-count {
+  font-size: 11px; font-weight: 700;
+  padding: 2px 8px; border-radius: 20px;
+  background: #f1f5f9; color: var(--c-muted);
+}
+.card-arrow {
+  font-size: 16px; color: var(--c-light); transition: transform 0.2s;
+}
+.card-header.open .card-arrow { transform: rotate(90deg); }
+
+.card-body { display: none; border-top: 1px solid var(--c-border); }
+.card-body.open { display: block; }
+
+/* ── Description ── */
+.card-desc {
+  font-size: 13px; color: var(--c-muted);
+  padding: 10px 14px; line-height: 1.6;
+  background: #fafbfd;
+  border-bottom: 1px solid var(--c-border);
+}
+
+/* ── Tier sections ── */
+.tier {
+  border-bottom: 1px solid var(--c-border);
+}
+.tier:last-child { border-bottom: none; }
+
+.tier-header {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  background: #f8fafc;
+  min-height: 44px;
+}
+.tier-header:active { background: #f1f5f9; }
+
+.tier-level {
+  width: 22px; height: 22px; border-radius: 50%;
+  font-size: 11px; font-weight: 800; color: white;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.tier-level-1 { background: #dc2626; }
+.tier-level-2 { background: #ea580c; }
+.tier-level-3 { background: #7c3aed; }
+
+.tier-label {
+  font-size: 13px; font-weight: 700; color: var(--c-text);
+}
+.tier-label-zh { font-size: 11px; color: var(--c-muted); }
+.tier-doc-count {
+  margin-left: auto; font-size: 11px; color: var(--c-muted);
+  background: #e2e8f0; padding: 2px 7px; border-radius: 10px;
+}
+.tier-arrow { font-size: 13px; color: var(--c-light); transition: transform 0.2s; margin-left: 4px; }
+.tier-header.open .tier-arrow { transform: rotate(90deg); }
+
+.tier-docs { display: none; }
+.tier-docs.open { display: block; }
+
+/* ── Doc items ── */
+.doc-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 11px 14px;
+  border-bottom: 1px solid #f1f5f9;
+  text-decoration: none;
+  cursor: default;
+}
+.doc-item:last-child { border-bottom: none; }
+.doc-item.has-link { cursor: pointer; }
+.doc-item.has-link:active { background: #f8fafc; }
+
+.doc-badge {
+  flex-shrink: 0; margin-top: 2px;
+  font-size: 10px; font-weight: 700;
+  padding: 2px 6px; border-radius: 4px;
+  white-space: nowrap;
+}
+.badge-required {
+  background: #fef3c7; color: #92400e;
+  border: 1px solid #fde68a;
+}
+.badge-optional {
+  background: #f1f5f9; color: #64748b;
+  border: 1px solid #e2e8f0;
+}
+
+.doc-info { flex: 1; min-width: 0; }
+.doc-key {
+  font-size: 12px; font-weight: 700; color: var(--c-blue);
+  margin-bottom: 2px;
+}
+.doc-title {
+  font-size: 13px; color: var(--c-text); font-weight: 500;
+  line-height: 1.4;
+}
+.doc-why {
+  font-size: 11px; color: var(--c-muted); margin-top: 3px;
+  line-height: 1.5;
+}
+.doc-arrow {
+  font-size: 14px; color: var(--c-light); flex-shrink: 0; margin-top: 2px;
+}
+
+/* ── Topic subtopics ── */
+.subtopic-list { padding: 8px 14px; }
+
+.subtopic-item {
+  display: flex; align-items: center; gap: 8px;
+  padding: 9px 10px; margin-bottom: 6px;
+  background: #f8fafc; border-radius: 8px;
+  border: 1px solid var(--c-border);
+}
+.subtopic-dot {
+  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+}
+.subtopic-name {
+  flex: 1; font-size: 13px; font-weight: 600; color: var(--c-text);
+}
+.subtopic-count {
+  font-size: 11px; color: var(--c-muted); font-weight: 600;
+}
+.subtopic-tags {
+  display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px;
+}
+.subtopic-tag {
+  font-size: 10px; background: #e0e7ff; color: #3730a3;
+  padding: 1px 6px; border-radius: 4px;
+}
+
+.subtopic-full {
+  flex-direction: column; align-items: flex-start;
+}
+
+/* ── Annex 1 responsibility badge ── */
+.resp-badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: #fff; border: 1px solid var(--c-border);
+  border-radius: 6px; padding: 3px 8px; margin: 3px 4px 3px 0;
+  font-size: 11px; font-weight: 600; color: var(--c-muted);
+}
+
+/* ── Source org cards ── */
+.source-card {
+  background: var(--c-surface); border-radius: 14px;
+  border: 1px solid var(--c-border); overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  margin-bottom: 10px;
+}
+.source-header {
+  display: flex; align-items: center; gap: 10px;
+  padding: 14px; cursor: pointer;
+  min-height: 56px; -webkit-tap-highlight-color: transparent;
+}
+.source-header:active { background: #f8fafc; }
+.source-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+.source-name { flex: 1; font-size: 15px; font-weight: 700; }
+.source-docs { display: none; border-top: 1px solid var(--c-border); }
+.source-docs.open { display: block; }
+
+/* ── Legend chips ── */
+.legend-wrap {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  padding: 10px 12px 2px;
+}
+.legend-chip {
+  display: flex; align-items: center; gap: 5px;
+  background: #fff; border: 1px solid var(--c-border);
+  border-radius: 20px; padding: 4px 10px;
+  font-size: 11px; font-weight: 600; color: var(--c-text);
+  white-space: nowrap;
+}
+.legend-dot-chip { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+/* ── Stats bar ── */
+.stats-strip {
+  padding: 6px 12px 4px;
+  font-size: 11px; color: var(--c-muted); text-align: center;
+}
+
+/* ── Empty search state ── */
+.empty-msg {
+  text-align: center; padding: 40px 16px;
+  font-size: 14px; color: var(--c-muted);
+}
+
+/* ── Annex 1 section tags ── */
+.annex-section {
+  display: flex; flex-wrap: wrap; gap: 4px;
+  padding: 8px 14px 12px;
+}
+.annex-chip {
+  font-size: 11px; font-weight: 600;
+  padding: 3px 8px; border-radius: 6px;
+  background: #f1f5f9; color: var(--c-muted);
+  border: 1px solid var(--c-border);
+}
+
+/* ── No-match hide ── */
+.card.hidden { display: none; }
+
+/* ── Loading ── */
+.loading-overlay {
+  position: fixed; inset: 0; z-index: 200;
+  background: var(--c-bg);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+}
+.spinner {
+  width: 32px; height: 32px;
+  border: 3px solid #e2e8f0; border-top-color: var(--c-blue);
+  border-radius: 50%; animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@media (min-width: 640px) {
+  .cards { padding: 12px 20px; gap: 12px; }
+  .search-wrap { padding: 12px 20px 0; }
+  .card-name { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="spinner"></div>
+  <div style="font-size:13px;color:#64748b">載入知識地圖中…</div>
+</div>
+
+<!-- Top nav -->
+<nav class="top-nav">
+  <a class="nav-back" href="index.html">← 首頁</a>
+  <span class="nav-title">知識地圖</span>
+  <a href="mindmap.html" style="margin-left:auto;font-size:11px;color:#64748b;background:#f1f5f9;padding:4px 9px;border-radius:6px;text-decoration:none;border:1px solid #e2e8f0;white-space:nowrap;flex-shrink:0">🖥️ 桌面版</a>
+  <span class="nav-badge" id="navBadge" style="margin-left:6px">—</span>
+</nav>
+
+<!-- Tab bar -->
+<div class="tab-bar">
+  <button class="tab-btn active" id="tab-dept" onclick="switchView('dept')">
+    <span class="tab-icon">🏢</span> 部門
+  </button>
+  <button class="tab-btn" id="tab-topic" onclick="switchView('topic')">
+    <span class="tab-icon">🗂️</span> 主題
+  </button>
+  <button class="tab-btn" id="tab-source" onclick="switchView('source')">
+    <span class="tab-icon">📚</span> 來源
+  </button>
+</div>
+
+<!-- Main content -->
+<main class="content">
+
+  <!-- ═══ BY DEPARTMENT VIEW ═══════════════════════════════════ -->
+  <div class="view active" id="view-dept">
+    <div class="search-wrap">
+      <input class="search-input" id="search-dept" type="search" placeholder="搜尋部門或文件代號…" oninput="filterCards('dept', this.value)">
+    </div>
+    <div class="stats-strip" id="stats-dept"></div>
+    <div class="cards" id="cards-dept"></div>
+  </div>
+
+  <!-- ═══ BY TOPIC VIEW ════════════════════════════════════════ -->
+  <div class="view" id="view-topic">
+    <div class="search-wrap">
+      <input class="search-input" id="search-topic" type="search" placeholder="搜尋主題或關鍵字…" oninput="filterCards('topic', this.value)">
+    </div>
+    <div class="stats-strip" id="stats-topic"></div>
+    <div class="cards" id="cards-topic"></div>
+  </div>
+
+  <!-- ═══ BY SOURCE VIEW ═══════════════════════════════════════ -->
+  <div class="view" id="view-source">
+    <div class="search-wrap">
+      <input class="search-input" id="search-source" type="search" placeholder="搜尋標準組織或文件…" oninput="filterCards('source', this.value)">
+    </div>
+    <div class="stats-strip" id="stats-source"></div>
+    <div class="cards" id="cards-source"></div>
+  </div>
+
+</main>
+
+<script src="gmp-curriculum-data.js"></script>
+<script>
+/* ─────────────────────────────────────────────────────────────────
+   State
+───────────────────────────────────────────────────────────────── */
+let reportsData = {};
+let currentView = 'dept';
+
+/* ─────────────────────────────────────────────────────────────────
+   Tab switching
+───────────────────────────────────────────────────────────────── */
+function switchView(v) {
+  currentView = v;
+  document.querySelectorAll('.view').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById('view-' + v).classList.add('active');
+  document.getElementById('tab-' + v).classList.add('active');
+  updateNavBadge(v);
+}
+
+function updateNavBadge(v) {
+  const total = Object.keys(reportsData).filter(k => reportsData[k].section_map?.length).length;
+  const badges = {
+    dept: departments.length + ' 部門',
+    topic: topicNetworkDef.clusters.length + ' 主題',
+    source: Object.keys(sourceOrgs).length + ' 來源',
+  };
+  document.getElementById('navBadge').textContent = badges[v] || total + ' 份文件';
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   Utility
+───────────────────────────────────────────────────────────────── */
+function getDocTitle(key) {
+  const r = reportsData[key];
+  if (!r) return key;
+  return r.title || r.report_title_en || key;
+}
+
+function getDocLink(key) {
+  const r = reportsData[key];
+  if (!r || !r.folder || !r.output_filename) return null;
+  return r.folder + '/output/' + r.output_filename;
+}
+
+function toggleAccordion(bodyEl, headerEl) {
+  const open = bodyEl.classList.toggle('open');
+  headerEl.classList.toggle('open', open);
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   BUILD: By Department
+───────────────────────────────────────────────────────────────── */
+function buildDeptCards() {
+  const container = document.getElementById('cards-dept');
+  container.innerHTML = '';
+
+  // Legend chips
+  const legend = document.createElement('div');
+  legend.className = 'legend-wrap';
+  legend.innerHTML = `
+    <div class="legend-chip"><span class="legend-dot-chip" style="background:#dc2626"></span>Tier 1 基礎必讀</div>
+    <div class="legend-chip"><span class="legend-dot-chip" style="background:#ea580c"></span>Tier 2 核心能力</div>
+    <div class="legend-chip"><span class="legend-dot-chip" style="background:#7c3aed"></span>Tier 3 進階專業</div>
+    <div class="legend-chip" style="background:#fef3c7;border-color:#fde68a">★ 必讀</div>
+    <div class="legend-chip">選讀</div>`;
+  container.appendChild(legend);
+
+  // Annex 1 responsibility map: dept → sections
+  const deptAnnex = {};
+  annex1Responsibilities.forEach(sec => {
+    sec.depts.forEach(dId => {
+      if (!deptAnnex[dId]) deptAnnex[dId] = [];
+      deptAnnex[dId].push(sec);
+    });
+  });
+
+  departments.forEach(dept => {
+    const totalDocs = dept.tiers.reduce((s, t) => s + t.docs.length, 0);
+    const requiredDocs = dept.tiers.reduce((s, t) => s + t.docs.filter(d => d.required).length, 0);
+
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.dataset.search = [dept.name, dept.nameZh, dept.id, dept.description,
+      dept.tiers.flatMap(t => t.docs.map(d => d.key + ' ' + getDocTitle(d.key))).join(' ')
+    ].join(' ').toLowerCase();
+
+    // Header
+    const header = document.createElement('div');
+    header.className = 'card-header';
+    header.innerHTML = `
+      <div class="card-color-bar" style="background:${dept.color}"></div>
+      <div class="card-icon">${dept.icon}</div>
+      <div class="card-titles">
+        <div class="card-name">${dept.name}</div>
+        <div class="card-name-zh">${dept.nameZh}</div>
+      </div>
+      <div class="card-meta">
+        <span class="card-count" style="color:${dept.color};background:${dept.color}18">${totalDocs} 份</span>
+        <span class="card-arrow">›</span>
+      </div>`;
+
+    const body = document.createElement('div');
+    body.className = 'card-body';
+
+    // Description
+    if (dept.description) {
+      const desc = document.createElement('div');
+      desc.className = 'card-desc';
+      desc.textContent = dept.description;
+      body.appendChild(desc);
+    }
+
+    // Annex 1 responsibilities
+    const annexSecs = deptAnnex[dept.id] || [];
+    if (annexSecs.length) {
+      const annexDiv = document.createElement('div');
+      annexDiv.className = 'annex-section';
+      annexDiv.innerHTML = '<div style="width:100%;font-size:11px;font-weight:700;color:#64748b;margin-bottom:2px;letter-spacing:.5px">PIC/S ANNEX 1 責任章節</div>' +
+        annexSecs.map(s => `<span class="annex-chip" title="${s.nameZh}">${s.num} ${s.nameZh}</span>`).join('');
+      body.appendChild(annexDiv);
+    }
+
+    // Tiers
+    const tierColors = ['#dc2626', '#ea580c', '#7c3aed'];
+    dept.tiers.forEach((tier, ti) => {
+      const tierEl = document.createElement('div');
+      tierEl.className = 'tier';
+
+      const tierHeader = document.createElement('div');
+      tierHeader.className = 'tier-header';
+      tierHeader.innerHTML = `
+        <span class="tier-level tier-level-${tier.level}">${tier.level}</span>
+        <span class="tier-label">${tier.label}</span>
+        <span class="tier-label-zh"> · ${tier.labelZh}</span>
+        <span class="tier-doc-count">${tier.docs.length} 份</span>
+        <span class="tier-arrow">›</span>`;
+
+      const tierDocs = document.createElement('div');
+      tierDocs.className = 'tier-docs';
+
+      tier.docs.forEach(doc => {
+        const link = getDocLink(doc.key);
+        const item = document.createElement('div');
+        item.className = 'doc-item' + (link ? ' has-link' : '');
+        if (link) item.setAttribute('onclick', `window.open('${link}','_blank')`);
+
+        item.innerHTML = `
+          <span class="doc-badge ${doc.required ? 'badge-required' : 'badge-optional'}">${doc.required ? '★ 必讀' : '選讀'}</span>
+          <div class="doc-info">
+            <div class="doc-key">${doc.key}</div>
+            <div class="doc-title">${getDocTitle(doc.key)}</div>
+            ${doc.why ? `<div class="doc-why">${doc.why}</div>` : ''}
+          </div>
+          ${link ? '<span class="doc-arrow">›</span>' : ''}`;
+
+        tierDocs.appendChild(item);
+      });
+
+      tierHeader.onclick = () => toggleAccordion(tierDocs, tierHeader);
+      tierEl.appendChild(tierHeader);
+      tierEl.appendChild(tierDocs);
+      body.appendChild(tierEl);
+    });
+
+    header.onclick = () => toggleAccordion(body, header);
+    card.appendChild(header);
+    card.appendChild(body);
+    container.appendChild(card);
+  });
+
+  // Stats
+  const total = departments.reduce((s, d) => s + d.tiers.reduce((ts, t) => ts + t.docs.length, 0), 0);
+  const req = departments.reduce((s, d) => s + d.tiers.reduce((ts, t) => ts + t.docs.filter(dd => dd.required).length, 0), 0);
+  document.getElementById('stats-dept').textContent =
+    `${departments.length} 個部門 · ${total} 份文件（${req} 份必讀）`;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   BUILD: By Topic
+───────────────────────────────────────────────────────────────── */
+function buildTopicCards() {
+  const container = document.getElementById('cards-topic');
+  container.innerHTML = '';
+
+  topicNetworkDef.clusters.forEach(cluster => {
+    const network = buildTopicNetwork(reportsData);
+    const netCluster = network.clusters.find(c => c.id === cluster.id) || {};
+    const totalDocs = (netCluster.subtopics || []).reduce((s, st) => s + (st.count || 0), 0);
+
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.dataset.search = [
+      cluster.name, cluster.nameZh || '',
+      cluster.subtopics.map(s => s.name + ' ' + (s.tags || []).join(' ')).join(' ')
+    ].join(' ').toLowerCase();
+
+    const header = document.createElement('div');
+    header.className = 'card-header';
+    header.innerHTML = `
+      <div class="card-color-bar" style="background:${cluster.color}"></div>
+      <div class="card-titles">
+        <div class="card-name">${cluster.name}</div>
+        ${cluster.nameZh ? `<div class="card-name-zh">${cluster.nameZh}</div>` : ''}
+      </div>
+      <div class="card-meta">
+        <span class="card-count" style="color:${cluster.color};background:${cluster.color}18">${cluster.subtopics.length} 子主題</span>
+        <span class="card-arrow">›</span>
+      </div>`;
+
+    const body = document.createElement('div');
+    body.className = 'card-body';
+
+    const subList = document.createElement('div');
+    subList.className = 'subtopic-list';
+
+    cluster.subtopics.forEach(sub => {
+      const netSub = (netCluster.subtopics || []).find(s => s.id === sub.id) || {};
+      const cnt = netSub.count || 0;
+
+      const item = document.createElement('div');
+      item.className = 'subtopic-item subtopic-full';
+
+      const topRow = document.createElement('div');
+      topRow.style.cssText = 'display:flex;align-items:center;gap:8px;width:100%';
+      topRow.innerHTML = `
+        <span class="subtopic-dot" style="background:${cluster.color}"></span>
+        <span class="subtopic-name">${sub.name}</span>
+        ${cnt ? `<span class="subtopic-count">${cnt} 份</span>` : ''}`;
+      item.appendChild(topRow);
+
+      if (sub.tags?.length) {
+        const tagRow = document.createElement('div');
+        tagRow.className = 'subtopic-tags';
+        tagRow.style.paddingLeft = '16px';
+        sub.tags.forEach(tag => {
+          const t = document.createElement('span');
+          t.className = 'subtopic-tag';
+          t.textContent = tag;
+          tagRow.appendChild(t);
+        });
+        item.appendChild(tagRow);
+      }
+
+      // Docs for this subtopic
+      if (netSub.docs?.length) {
+        const docList = document.createElement('div');
+        docList.style.cssText = 'width:100%;margin-top:6px;padding-left:16px;display:flex;flex-direction:column;gap:4px';
+        netSub.docs.forEach(doc => {
+          const link = getDocLink(doc.key);
+          const dRow = document.createElement('div');
+          dRow.style.cssText = 'display:flex;align-items:baseline;gap:6px;font-size:12px;';
+          dRow.innerHTML = `<span style="font-weight:700;color:#475569;background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:10px">${doc.source}</span>`;
+          if (link) {
+            dRow.innerHTML += `<a href="${link}" target="_blank" style="color:#2563eb;text-decoration:none;font-size:12px">${doc.title}</a>`;
+          } else {
+            dRow.innerHTML += `<span style="color:#64748b;font-size:12px">${doc.title}</span>`;
+          }
+          docList.appendChild(dRow);
+        });
+        item.appendChild(docList);
+      }
+
+      subList.appendChild(item);
+    });
+
+    body.appendChild(subList);
+
+    // Cross-links info
+    const crossLinks = (topicNetworkDef.crossLinks || []).filter(cl =>
+      cl.source === cluster.id || cl.target === cluster.id
+    );
+    if (crossLinks.length) {
+      const crossDiv = document.createElement('div');
+      crossDiv.style.cssText = 'padding:8px 14px 12px;border-top:1px solid #f1f5f9';
+      crossDiv.innerHTML = `<div style="font-size:11px;font-weight:700;color:#94a3b8;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px">相關連結主題</div>`;
+      const chips = document.createElement('div');
+      chips.style.cssText = 'display:flex;flex-wrap:wrap;gap:6px';
+      crossLinks.forEach(cl => {
+        const otherId = cl.source === cluster.id ? cl.target : cl.source;
+        const other = topicNetworkDef.clusters.find(c => c.id === otherId);
+        if (!other) return;
+        const chip = document.createElement('span');
+        chip.style.cssText = `display:inline-flex;align-items:center;gap:4px;background:${other.color}15;color:${other.color};border:1px solid ${other.color}30;border-radius:6px;padding:3px 8px;font-size:11px;font-weight:600`;
+        chip.textContent = other.name;
+        chips.appendChild(chip);
+      });
+      crossDiv.appendChild(chips);
+      body.appendChild(crossDiv);
+    }
+
+    header.onclick = () => toggleAccordion(body, header);
+    card.appendChild(header);
+    card.appendChild(body);
+    container.appendChild(card);
+  });
+
+  const nSubs = topicNetworkDef.clusters.reduce((s, c) => s + c.subtopics.length, 0);
+  document.getElementById('stats-topic').textContent =
+    `${topicNetworkDef.clusters.length} 主題群 · ${nSubs} 子主題 · ${(topicNetworkDef.crossLinks || []).length} 跨主題連結`;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   BUILD: By Source
+───────────────────────────────────────────────────────────────── */
+function buildSourceCards() {
+  const container = document.getElementById('cards-source');
+  container.innerHTML = '';
+
+  // Group reports by source org
+  const grouped = {};
+  Object.entries(sourceOrgs).forEach(([key, meta]) => {
+    grouped[key] = { meta, docs: [] };
+  });
+
+  Object.entries(reportsData).forEach(([key, rep]) => {
+    if (!rep.section_map?.length) return;
+    const srcKey = (rep.source || '').split(' ')[0].replace(/[0-9]/g, '').trim();
+    // Match to sourceOrgs
+    const match = Object.keys(sourceOrgs).find(k =>
+      (rep.source || '').startsWith(k) || rep.folder?.startsWith(k)
+    );
+    if (match && grouped[match]) {
+      grouped[match].docs.push({ key, rep });
+    } else {
+      // Fallback by common prefix
+      for (const org of Object.keys(sourceOrgs)) {
+        if ((rep.source || '').includes(org) || key.toUpperCase().startsWith(org.replace('/','').replace('.',''))) {
+          grouped[org].docs.push({ key, rep });
+          break;
+        }
+      }
+    }
+  });
+
+  let totalShown = 0;
+
+  Object.entries(grouped).forEach(([orgKey, { meta, docs }]) => {
+    if (!docs.length) return;
+    totalShown += docs.length;
+
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.dataset.search = [orgKey, meta.label, docs.map(d => d.key + ' ' + (d.rep.title || '')).join(' ')].join(' ').toLowerCase();
+
+    const header = document.createElement('div');
+    header.className = 'card-header';
+    header.innerHTML = `
+      <div class="card-color-bar" style="background:${meta.color}"></div>
+      <div class="card-titles">
+        <div class="card-name">${orgKey}</div>
+        <div class="card-name-zh">${meta.label}</div>
+      </div>
+      <div class="card-meta">
+        <span class="card-count" style="color:${meta.color};background:${meta.color}18">${docs.length} 份</span>
+        <span class="card-arrow">›</span>
+      </div>`;
+
+    const body = document.createElement('div');
+    body.className = 'card-body';
+
+    docs.sort((a, b) => (a.rep.title || a.key).localeCompare(b.rep.title || b.key));
+    docs.forEach(({ key, rep }) => {
+      const link = getDocLink(key);
+      const item = document.createElement('div');
+      item.className = 'doc-item' + (link ? ' has-link' : '');
+      if (link) item.setAttribute('onclick', `window.open('${link}','_blank')`);
+
+      const tags = (rep.tags || []).slice(0, 3).map(t =>
+        `<span style="font-size:10px;background:#f1f5f9;color:#475569;padding:1px 5px;border-radius:3px;margin-right:3px">${t}</span>`
+      ).join('');
+
+      item.innerHTML = `
+        <div class="doc-info">
+          <div class="doc-key">${key}</div>
+          <div class="doc-title">${rep.title || rep.report_title_en || key}</div>
+          ${rep.titleZh ? `<div style="font-size:11px;color:#64748b;margin-top:1px">${rep.titleZh}</div>` : ''}
+          ${tags ? `<div style="margin-top:4px">${tags}</div>` : ''}
+        </div>
+        ${link ? '<span class="doc-arrow">›</span>' : ''}`;
+
+      body.appendChild(item);
+    });
+
+    header.onclick = () => toggleAccordion(body, header);
+    card.appendChild(header);
+    card.appendChild(body);
+    container.appendChild(card);
+  });
+
+  document.getElementById('stats-source').textContent =
+    `${Object.keys(sourceOrgs).length} 個標準組織 · ${totalShown} 份已處理文件`;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   Filter / Search
+───────────────────────────────────────────────────────────────── */
+function filterCards(view, query) {
+  const q = query.trim().toLowerCase();
+  const container = document.getElementById('cards-' + view);
+  let shown = 0;
+  container.querySelectorAll('.card').forEach(card => {
+    if (!q || card.dataset.search?.includes(q)) {
+      card.classList.remove('hidden');
+      shown++;
+    } else {
+      card.classList.add('hidden');
+    }
+  });
+  // Show/hide empty state
+  let empty = container.querySelector('.empty-msg');
+  if (shown === 0 && q) {
+    if (!empty) {
+      empty = document.createElement('div');
+      empty.className = 'empty-msg';
+      container.appendChild(empty);
+    }
+    empty.textContent = `找不到「${query}」相關內容`;
+    empty.style.display = 'block';
+  } else if (empty) {
+    empty.style.display = 'none';
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   Init
+───────────────────────────────────────────────────────────────── */
+fetch('reports.json')
+  .then(r => r.json())
+  .then(data => {
+    reportsData = data.reports || {};
+    buildDeptCards();
+    buildTopicCards();
+    buildSourceCards();
+    updateNavBadge('dept');
+    document.getElementById('loadingOverlay').style.display = 'none';
+  })
+  .catch(err => {
+    console.error('Failed to load reports.json:', err);
+    // Build with empty reports
+    reportsData = {};
+    buildDeptCards();
+    buildTopicCards();
+    buildSourceCards();
+    updateNavBadge('dept');
+    document.getElementById('loadingOverlay').style.display = 'none';
+  });
+</script>
+</body>
+</html>
