@@ -2,7 +2,7 @@
 
 This document summarizes the current coverage status, gap analysis, and expansion roadmap for building a comprehensive sterile pharmaceutical manufacturing knowledge hub suitable for COO-level operational decision-making.
 
-Last updated: 2026-04-14 — 177 documents complete (PDA 42, USP 76, ISPE 14, FDA 11, ICH 6, PIC/S 4, ISO 17, Ph.Eur. 7)
+Last updated: 2026-04-14 — 181 documents complete (PDA 42, USP 76, ISPE 14, FDA 15, ICH 6, PIC/S 4, ISO 17, Ph.Eur. 7)
 
 ---
 
@@ -44,7 +44,7 @@ Layer 3: Site-Specific Documents             ~/Amaran-Site-Knowledge/
 | Education Layer — Dashboard & Learning UI | ✅ Complete | 4 tools (index.html, learning-path.html, mindmap.html, quiz.html) |
 | Education Layer — Curriculum Data | ✅ Complete | 8 departments × 3 tiers (gmp-curriculum-data.js) |
 | Education Layer — Quiz System | ✅ Complete | /quiz skill + quiz.html tracker + knowledge/exams/ bank |
-| Layer 1 — Regulatory Reference | ✅ Complete | 177 documents |
+| Layer 1 — Regulatory Reference | ✅ Complete | 181 documents |
 | Expert Knowledge Base | ⬜ Not started | 9 files planned |
 | Layer 2 — Operational Frameworks | ⬜ Not started | ~27 files planned |
 | Layer 2 — Skills System | ⬜ Not started | 26 slash commands planned |
@@ -54,7 +54,7 @@ Layer 3: Site-Specific Documents             ~/Amaran-Site-Knowledge/
 
 1. **Expert Knowledge Base** — start with SA25 lifecycle (`#1`) or Lyo ANDA end-to-end (`#2`); see full plan below
 2. **Layer 2 Operational Frameworks** — P0 skills first (`/deviation`, `/change-control`) with supporting templates
-3. **Layer 1 additions requiring new PDFs** — ISO 14644-2/3, ISO 17665, PDA TR36, FDA Container Closure / Terminal Sterilization
+3. **Layer 1 additions requiring new PDFs** — ISO 14644-2/3, ISO 17665, PDA TR36 (FDA Container Closure / Terminal Sterilization ✅ done)
 4. **Layer 3** — resume SOP desensitization via `~/Amaran-AI-SOP/`; human review required per document
 
 > **Raw PDFs queue status (2026-04-14):**
@@ -131,7 +131,7 @@ Interactive D3.js + Markmap-powered visualization of the entire knowledge base. 
 |------|-------------|
 | By Department | Shows 8 department tracks with Foundation → Core → Advanced hierarchy |
 | By Topic | Groups documents into 10 thematic clusters (Aseptic Processing, Sterilization & Filtration, Container Closure, Quality Systems, Environmental Monitoring, Testing Methods, Facilities & Utilities, Advanced Therapies, Regulatory & Compliance, Emerging Technologies) |
-| By Source | Organizes all 177 documents by issuing organization (PDA, ISPE, FDA, ICH, PIC/S, USP, ISO, Ph.Eur.) |
+| By Source | Organizes all 181 documents by issuing organization (PDA, ISPE, FDA, ICH, PIC/S, USP, ISO, Ph.Eur.) |
 
 ### gmp-curriculum-data.js — Curriculum Data File
 
@@ -144,7 +144,7 @@ Single source of truth for learning path structure. Consumed by `learning-path.h
 
 ---
 
-## Layer 1: Regulatory Reference — ✅ COMPLETE (177 documents)
+## Layer 1: Regulatory Reference — ✅ COMPLETE (181 documents)
 
 ### Completion Summary
 
@@ -153,12 +153,12 @@ Single source of truth for learning path structure. Consumed by `learning-path.h
 | **PDA** | 42 | Technical Reports, Points to Consider, Guides | ✅ Complete |
 | **USP** | 76 | General Chapters — sterility, endotoxin, particulates, microbial, CCI, E&L, water, validation, analytical | ✅ Complete |
 | **ISPE** | 14 | Baseline Guides, Good Practice Guides, GAMP | ✅ Complete (1 pending OCR) |
-| **FDA** | 11 | Aseptic Processing, Process Validation, Process Inspection, Combination Products CGMP, HF for Combo Products, 21 CFR 600–680 Biologics, 21 CFR Parts 210/211, 21 CFR Part 11, 21 CFR Part 820 (QMSR), 21 CFR Part 4, 21 CFR Part 312 (IND) | ✅ Complete |
+| **FDA** | 15 | Aseptic Processing, Process Validation, Process Inspection, Combination Products CGMP, HF for Combo Products, 21 CFR 600–680 Biologics, 21 CFR Parts 210/211, 21 CFR Part 11, 21 CFR Part 820 (QMSR), 21 CFR Part 4, 21 CFR Part 312 (IND), CCIT (2008), Container Closure CMC (1999), Glass Vials & Stoppers (2024), Parametric Release (2010) | ✅ Complete |
 | **ICH** | 6 | Q8(R2), Q9(R1), Q10, Q12, Q13, Q14 | ✅ Complete |
 | **PIC/S** | 4 | Annex 1 (2022), Annex 2 (ATMPs + Biologics), Annex 15 (Qualification 2023), Annex 20 (QRM) | ✅ Complete |
 | **ISO** | 17 | 11040 (×8), 13408 (×7), 14644 (Parts 1/5/7), 11608-1, 13485, 10993-1, TR 24971, 15378, 9001, 9000, 2859-1, 15223-1/2, 15394, 13926-1/2/3 | ✅ Complete (2 blocked: 14971 scanned, 15225 font) |
 | **Ph.Eur.** | 7 | 2.6.1, 2.6.14, 2.9.19, 2.9.20, 3.2.1, 3.3.8, 5.1.1 | ✅ Complete |
-| **Total** | **177** | | |
+| **Total** | **181** | | |
 
 ### USP Batch History
 
@@ -174,7 +174,7 @@ Single source of truth for learning path structure. Consumed by `learning-path.h
 | ISPE GEP — Good Engineering Practice | Phase 4 | Low | — | ❌ Blocked (OCR) |
 | PDA TR36 — Lyophilization Validation | Phase 4 | Medium | Medium | ⬜ Need PDF |
 | ISO 17665 — Steam sterilization | Phase 4 | Medium | Medium | ⬜ Need PDF |
-| FDA — Container Closure Guidance, Terminal Sterilization Guidance | Phase 4 | Medium | Medium | ⬜ Need PDF |
+| ~~FDA — Container Closure Guidance, Terminal Sterilization Guidance~~ | Phase 4 | Medium | Medium | ✅ Done (CCIT, ContainerClosure, GlassVial, ParametricRelease) |
 | ISO 14971 — Risk Management for Medical Devices | Phase 5 | High | — | ❌ Blocked (scanned PDF) |
 | ISO 11608-3 — Finished containers for injection systems | Phase 5 | Medium | Small | ⬜ Need PDF |
 | ISO 15225 — GMDN Nomenclature Data Structure | Phase 5 | Low | — | ❌ Blocked (font encoding) |
@@ -331,8 +331,9 @@ Layer 3 is fed by the Amaran AI SOP project (`~/Amaran-AI-SOP/`), which already 
 | Aseptic Processing | TR22, TR62, PtC-1, PtC-12, PtC-Isolators, Guide No.1, Ph.Eur. 5.1.1 | Excellent |
 | Environmental Monitoring | TR13, TR13-2, TR88 | Excellent |
 | Contamination Control (CCS) | TR90, TR70 | Excellent |
-| Container/Closure & Packaging | TR73, TR73-2, TR85, TR87, TR43, ISO 11040 (×8) | Excellent |
-| Container Closure Integrity (CCI) | TR27, USP 〈1207〉 trilogy | Excellent |
+| Container/Closure & Packaging | TR73, TR73-2, TR85, TR87, TR43, ISO 11040 (×8), FDA-ContainerClosure, FDA-GlassVial | Excellent |
+| Container Closure Integrity (CCI) | TR27, USP 〈1207〉 trilogy, FDA-CCIT | Excellent |
+| Terminal Sterilization & Parametric Release | TR1, FDA-ParametricRelease, USP 〈1222〉, USP 〈1229〉 series | Good |
 | Sterilizing Filtration | TR26, ISO 13408-2 | Good |
 | Process Validation | TR60, FDA Process Val | Good |
 | Single-Use Systems | TR66 | Good |
@@ -377,7 +378,7 @@ Layer 3 is fed by the Amaran AI SOP project (`~/Amaran-AI-SOP/`), which already 
 
 ### Phases 1–3: COMPLETE (archived 2026-04)
 
-All PDA TRs (42), top ISPE guides (14), PIC/S Annexes (4), FDA guidances + CFR chapters (11), ICH Q8–Q14 (6), USP 76 chapters, ISO 17 standards, and Ph.Eur. 7 chapters are fully processed (bilingual HTML + knowledge MD). Infrastructure (dashboard, tooling, workflow) is complete and stable.
+All PDA TRs (42), top ISPE guides (14), PIC/S Annexes (4), FDA guidances + CFR chapters (15), ICH Q8–Q14 (6), USP 76 chapters, ISO 17 standards, and Ph.Eur. 7 chapters are fully processed (bilingual HTML + knowledge MD). Infrastructure (dashboard, tooling, workflow) is complete and stable.
 
 ### Phase 4: Active — Topic Gap-Fillers
 
@@ -389,7 +390,7 @@ All PDA TRs (42), top ISPE guides (14), PIC/S Annexes (4), FDA guidances + CFR c
 | PDA addition | TR36 — Lyophilization | Medium | ⬜ Need PDF |
 | ISO addition | ISO 17665 — Steam sterilization | Medium | ⬜ Need PDF |
 | ISPE completion | GEP — Good Engineering Practice | Medium | ❌ Blocked (OCR) |
-| FDA additions | Container Closure Guidance, Terminal Sterilization Guidance | Medium | ⬜ Need PDF |
+| ~~FDA additions~~ | ~~Container Closure Guidance, Terminal Sterilization Guidance~~ | Medium | ✅ Done (4 docs: CCIT, ContainerClosure, GlassVial, ParametricRelease) |
 
 ### Phase 5: Active — Combination Products Device Layer + Additional Standards
 
@@ -495,7 +496,7 @@ Add only when client mix justifies:
 │   └── ISPE-GEP/              # ❌ Blocked (OCR)
 ├── PICS/                   # 4 PIC/S documents complete
 │   ├── PICS-Annex1/, PICS-Annex2/, PICS-Annex15/, PICS-Annex20/
-├── FDA/                    # 11 FDA documents complete
+├── FDA/                    # 15 FDA documents complete
 │   ├── FDA-Aseptic/, FDA-ProcessVal/, FDA-ProcessInspection/
 │   ├── FDA-ComboProducts-CGMP/, FDA-ComboProducts-HF/
 │   ├── FDA-21CFR-600-680/, FDA-21CFR-Part11/, FDA-21CFR-210-211/
@@ -544,7 +545,7 @@ Add only when client mix justifies:
 | PDA | 42 | +5 (TR33, TR36, TR57, TR69, TR74, TR76) | +2 (TR47, TR81) | |
 | ISPE | 14 | +0 | — | GEP ❌ blocked (OCR) |
 | PIC/S | 4 | — | — | Complete |
-| FDA | 11 | +2 (Container Closure, Terminal Steril) | — | +1 if Design Considerations |
+| FDA | 15 | — | — | +1 if Design Considerations |
 | ICH | 6 | — | — | Q5A–E / Q11 only if client mix warrants |
 | USP | 76 | — | — | Complete |
 | ISO | 17 | +3 (14644-2/3, 17665) | +2 (11737-1/2) | 14971 ❌ blocked; 15225 ❌ blocked; +1 11608-3; +1 IEC 62366-1 |
@@ -552,6 +553,6 @@ Add only when client mix justifies:
 | EU GMP | 0 | — | +3 (Annex 15, 2, 20) | |
 | Ph.Eur. | 7 | — | +1 (EP 5.1.6) | |
 | WHO GMP | 0 | — | +2 (TRS 961, TRS 1010) | |
-| **Total** | **177** | **~188** | **~198** | |
+| **Total** | **181** | **~188** | **~198** | |
 
-The infrastructure (tooling, workflow, dashboard, chatbot) is built and serving 177 documents. All uploaded Raw PDFs have been processed or marked blocked. Active focus shifts to Expert Knowledge Base and Layer 2 Operational Frameworks, with Phase 4–5 content additions when new PDFs are sourced.
+The infrastructure (tooling, workflow, dashboard, chatbot) is built and serving 181 documents. All uploaded Raw PDFs have been processed or marked blocked. Active focus shifts to Expert Knowledge Base and Layer 2 Operational Frameworks, with Phase 4–5 content additions when new PDFs are sourced.

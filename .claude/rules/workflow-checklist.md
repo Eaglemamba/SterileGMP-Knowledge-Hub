@@ -56,14 +56,28 @@ Not auto-updated with INDEX.md — must be done manually:
 mv "Raw pdfs/PDA_TRXX_....pdf" "Raw pdfs/processed/"
 ```
 
-### 4. Verify Before Commit
+### 4. Update `docs/ROADMAP.md` (BEFORE commit, not after)
+
+This step is mandatory when adding new documents. Do not defer to post-push.
+
+- [ ] "Last updated" line → today's date + new count
+- [ ] "Current Status at a Glance" table → recount Layer 1 documents
+- [ ] Layer 1 Completion Summary table → update source row count + description
+- [ ] Estimated Target table (bottom) → update current count
+- [ ] Phase tasks → tick off completed items
+- [ ] Active Priorities → remove completed items or mark done
+- [ ] Coverage by Domain → add new documents to relevant domain rows
+- [ ] Remaining Layer 1 Additions → mark completed items as done
+- [ ] Any mention of "N documents" in the file → grep for old count, replace all
+
+### 5. Verify Before Commit
 
 - [ ] Open `index.html` in browser — confirm new card appears
 - [ ] Confirm search works for new report content
 - [ ] Confirm filter buttons include the new source
 - [ ] Confirm stats numbers are correct
 - [ ] Confirm "Open" button links to the correct file
-- [ ] Confirm `knowledge/PDA/<TRXX>-Complete.md` is English-only (no Chinese)
+- [ ] Confirm `knowledge/<SOURCE>/<ID>-Complete.md` is English-only (no Chinese)
 - [ ] Confirm `knowledge/INDEX.md` has been updated
 
 ---
