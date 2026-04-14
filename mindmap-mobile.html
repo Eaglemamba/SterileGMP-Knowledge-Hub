@@ -607,9 +607,30 @@ function buildDeptCards() {
 /* ─────────────────────────────────────────────────────────────────
    BUILD: By Topic
 ───────────────────────────────────────────────────────────────── */
+
+// Build a Set of all doc keys marked required:true across all dept tiers
+function buildRequiredSet() {
+  const req = new Set();
+  departments.forEach(dept => {
+    dept.tiers.forEach(tier => {
+      tier.docs.forEach(doc => { if (doc.required) req.add(doc.key); });
+    });
+  });
+  return req;
+}
+
 function buildTopicCards() {
   const container = document.getElementById('cards-topic');
   container.innerHTML = '';
+  const requiredKeys = buildRequiredSet();
+
+  // Legend
+  const legend = document.createElement('div');
+  legend.className = 'legend-wrap';
+  legend.innerHTML = `
+    <div class="legend-chip" style="background:#fef3c7;border-color:#fde68a">★ 必讀（跨部門）</div>
+    <div class="legend-chip">一般文件</div>`;
+  container.appendChild(legend);
 
   topicNetworkDef.clusters.forEach(cluster => {
     const network = buildTopicNetwork(reportsData);
@@ -672,17 +693,30 @@ function buildTopicCards() {
 
       // Docs for this subtopic
       if (netSub.docs?.length) {
+        // Sort: required first
+        const sortedDocs = [...netSub.docs].sort((a, b) => {
+          const aReq = requiredKeys.has(a.key) ? 0 : 1;
+          const bReq = requiredKeys.has(b.key) ? 0 : 1;
+          return aReq - bReq;
+        });
         const docList = document.createElement('div');
-        docList.style.cssText = 'width:100%;margin-top:6px;padding-left:16px;display:flex;flex-direction:column;gap:4px';
-        netSub.docs.forEach(doc => {
+        docList.style.cssText = 'width:100%;margin-top:6px;padding-left:16px;display:flex;flex-direction:column;gap:5px';
+        sortedDocs.forEach(doc => {
           const link = getDocLink(doc.key);
+          const isReq = requiredKeys.has(doc.key);
           const dRow = document.createElement('div');
-          dRow.style.cssText = 'display:flex;align-items:baseline;gap:6px;font-size:12px;';
-          dRow.innerHTML = `<span style="font-weight:700;color:#475569;background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:10px">${doc.source}</span>`;
+          dRow.style.cssText = `display:flex;align-items:baseline;gap:6px;font-size:12px;padding:4px 6px;border-radius:6px;${isReq ? 'background:#fffbeb;border:1px solid #fde68a;' : ''}`;
+          const badge = isReq
+            ? `<span style="flex-shrink:0;font-size:9px;font-weight:800;background:#f59e0b;color:#fff;padding:1px 5px;border-radius:3px;white-space:nowrap">★ 必讀</span>`
+            : `<span style="flex-shrink:0;font-weight:700;color:#475569;background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:10px">${doc.source}</span>`;
+          dRow.innerHTML = badge;
+          if (isReq) {
+            dRow.innerHTML += `<span style="font-weight:700;color:#475569;background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:10px;flex-shrink:0">${doc.source}</span>`;
+          }
           if (link) {
-            dRow.innerHTML += `<a href="${link}" target="_blank" style="color:#2563eb;text-decoration:none;font-size:12px">${doc.title}</a>`;
+            dRow.innerHTML += `<a href="${link}" target="_blank" style="color:${isReq ? '#92400e' : '#2563eb'};text-decoration:none;font-size:12px;font-weight:${isReq ? '600' : '400'}">${doc.title}</a>`;
           } else {
-            dRow.innerHTML += `<span style="color:#64748b;font-size:12px">${doc.title}</span>`;
+            dRow.innerHTML += `<span style="color:${isReq ? '#92400e' : '#64748b'};font-size:12px;font-weight:${isReq ? '600' : '400'}">${doc.title}</span>`;
           }
           docList.appendChild(dRow);
         });
