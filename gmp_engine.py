@@ -1043,6 +1043,11 @@ PDF_DIR = REPO_ROOT / "Raw pdfs" / "processed"
 MANIFEST_FILE = REPO_ROOT / "figures-manifest.json"
 MIN_IMG_SIZE = 5000       # Skip images smaller than 5 KB (icons, decorations)
 MIN_IMG_DIM = 80          # Skip images smaller than 80px in either dimension
+LOGO_THRESHOLD = 3        # Images in N+ documents are cross-doc logos → remove
+MIN_TBL_ROWS = 3          # Tables need at least 3 rows to be meaningful
+MIN_TBL_HEIGHT = 60       # Minimum table bbox height (pts)
+MIN_TBL_WIDTH = 200       # Minimum table bbox width (pts)
+TBL_ZOOM = 2              # Render zoom factor for table screenshots
 
 
 def _find_pdf_for_report(report_id: str) -> Path | None:
@@ -1075,8 +1080,14 @@ def _find_pdf_for_report(report_id: str) -> Path | None:
     return candidates[0] if candidates else None
 
 
+def _is_pda_report(report_id: str, config: dict) -> bool:
+    """Check if a report is from PDA (TR, PtC, or pda-guide)."""
+    return config.get("source", "").startswith("PDA")
+
+
 def cmd_extract_figs(args):
-    """Extract figures from processed PDFs into <SOURCE>/<ID>/figures/."""
+    """Extract figures and tables from processed PDFs into <SOURCE>/<ID>/figures/."""
+    import hashlib
     try:
         import fitz  # PyMuPDF
     except ImportError:
@@ -1095,8 +1106,12 @@ def cmd_extract_figs(args):
         sys.exit(1)
 
     total_extracted = 0
+    total_tables = 0
     total_skipped = 0
     reports_with_figs = 0
+    # Track image hashes globally for cross-doc logo detection
+    # md5 -> {"pdfs": set(pdf_path_str), "entries": [(rid, fig_path, fig_entry)]}
+    global_hashes = {}
 
     for rid in sorted(report_ids):
         config = all_reports.get(rid)
@@ -1109,6 +1124,10 @@ def cmd_extract_figs(args):
 
         report_dir = _report_dir(rid, config)
         figs_dir = report_dir / "figures"
+        # Clean existing figures to avoid stale files
+        if figs_dir.exists():
+            for old_file in figs_dir.iterdir():
+                old_file.unlink()
         figs_dir.mkdir(parents=True, exist_ok=True)
 
         try:
@@ -1116,9 +1135,12 @@ def cmd_extract_figs(args):
         except Exception as e:
             print(f"  [SKIP] {rid}: cannot open PDF ({e})")
             continue
-        figures = []
-        seen_hashes = set()  # Deduplicate identical images
 
+        is_pda = _is_pda_report(rid, config)
+        figures = []
+        seen_hashes = set()  # Per-doc dedup
+
+        # --- Image extraction ---
         for page_num in range(len(doc)):
             try:
                 page = doc[page_num]
@@ -1136,38 +1158,85 @@ def cmd_extract_figs(args):
                     continue
                 img_ext = base_image.get("ext", "png")
 
-                # Skip tiny images
                 if len(img_bytes) < MIN_IMG_SIZE:
                     total_skipped += 1
                     continue
 
-                # Skip by dimension
                 w = base_image.get("width", 0)
                 h = base_image.get("height", 0)
                 if w < MIN_IMG_DIM or h < MIN_IMG_DIM:
                     total_skipped += 1
                     continue
 
-                # Deduplicate
-                img_hash = hash(img_bytes)
-                if img_hash in seen_hashes:
+                img_md5 = hashlib.md5(img_bytes).hexdigest()
+                if img_md5 in seen_hashes:
                     total_skipped += 1
                     continue
-                seen_hashes.add(img_hash)
+                seen_hashes.add(img_md5)
 
                 fig_name = f"fig-p{page_num + 1}-{img_index + 1}.{img_ext}"
                 fig_path = figs_dir / fig_name
                 with open(fig_path, "wb") as f:
                     f.write(img_bytes)
 
-                figures.append({
+                fig_entry = {
                     "file": fig_name,
                     "page": page_num + 1,
                     "width": w,
                     "height": h,
                     "size_kb": round(len(img_bytes) / 1024, 1),
-                })
+                    "type": "figure",
+                }
+                figures.append(fig_entry)
                 total_extracted += 1
+
+                # Track for cross-doc logo detection (by unique PDF, not report ID)
+                if img_md5 not in global_hashes:
+                    global_hashes[img_md5] = {"pdfs": set(), "entries": []}
+                global_hashes[img_md5]["pdfs"].add(str(pdf_path))
+                global_hashes[img_md5]["entries"].append((rid, fig_path, fig_entry))
+
+        # --- Table extraction (PDA documents) ---
+        if is_pda:
+            for page_num in range(len(doc)):
+                try:
+                    page = doc[page_num]
+                    found = page.find_tables()
+                except Exception:
+                    continue
+                for tbl_idx, table in enumerate(found.tables):
+                    if table.row_count < MIN_TBL_ROWS:
+                        continue
+                    bbox = table.bbox
+                    tw = bbox[2] - bbox[0]
+                    th = bbox[3] - bbox[1]
+                    if tw < MIN_TBL_WIDTH or th < MIN_TBL_HEIGHT:
+                        continue
+                    # Render table region with padding
+                    clip = fitz.Rect(bbox)
+                    clip.x0 = max(0, clip.x0 - 5)
+                    clip.y0 = max(0, clip.y0 - 5)
+                    clip.x1 = min(page.rect.width, clip.x1 + 5)
+                    clip.y1 = min(page.rect.height, clip.y1 + 5)
+                    mat = fitz.Matrix(TBL_ZOOM, TBL_ZOOM)
+                    try:
+                        pix = page.get_pixmap(matrix=mat, clip=clip)
+                    except Exception:
+                        continue
+                    tbl_name = f"tbl-p{page_num + 1}-{tbl_idx + 1}.png"
+                    tbl_path = figs_dir / tbl_name
+                    pix.save(str(tbl_path))
+                    tbl_size = tbl_path.stat().st_size
+                    figures.append({
+                        "file": tbl_name,
+                        "page": page_num + 1,
+                        "width": pix.width,
+                        "height": pix.height,
+                        "size_kb": round(tbl_size / 1024, 1),
+                        "type": "table",
+                    })
+                    total_tables += 1
+                    total_extracted += 1
 
         doc.close()
 
@@ -1179,32 +1248,74 @@ def cmd_extract_figs(args):
                 "folder": folder,
                 "figures": figures,
             }
-            print(f"  [OK] {rid}: {len(figures)} figures extracted")
+            fig_n = sum(1 for f in figures if f.get("type") == "figure")
+            tbl_n = sum(1 for f in figures if f.get("type") == "table")
+            parts = []
+            if fig_n:
+                parts.append(f"{fig_n} fig")
+            if tbl_n:
+                parts.append(f"{tbl_n} tbl")
+            print(f"  [OK] {rid}: {' + '.join(parts)}")
         else:
-            # Remove empty figures dir
             if figs_dir.exists() and not any(figs_dir.iterdir()):
                 figs_dir.rmdir()
+
+    # --- Post-processing: remove cross-document logos ---
+    # Count by unique PDF files, not report IDs (multiple IDs may share a PDF)
+    logo_hashes = {h for h, data in global_hashes.items()
+                   if len(data["pdfs"]) >= LOGO_THRESHOLD}
+    logos_removed = 0
+    if logo_hashes:
+        for img_md5 in logo_hashes:
+            for rid, fig_path, fig_entry in global_hashes[img_md5]["entries"]:
+                if fig_path.exists():
+                    fig_path.unlink()
+                if rid in manifest:
+                    manifest[rid]["figures"] = [
+                        f for f in manifest[rid]["figures"]
+                        if f["file"] != fig_entry["file"]
+                    ]
+                    manifest[rid]["total"] = len(manifest[rid]["figures"])
+                logos_removed += 1
+        # Remove manifest entries with 0 remaining figures
+        empty_rids = [r for r, d in manifest.items() if d["total"] == 0]
+        for r in empty_rids:
+            del manifest[r]
+            reports_with_figs -= 1
+            # Clean empty dir
+            cfg = all_reports.get(r)
+            if cfg:
+                rd = _report_dir(r, cfg) / "figures"
+                if rd.exists() and not any(rd.iterdir()):
+                    rd.rmdir()
+        total_extracted -= logos_removed
+        print(f"\n  [LOGO] Removed {logos_removed} cross-document images "
+              f"({len(logo_hashes)} unique hashes, threshold={LOGO_THRESHOLD})")
 
     # Write manifest
     with open(MANIFEST_FILE, "w", encoding="utf-8") as f:
         json.dump(manifest, f, indent=2, ensure_ascii=False)
     print(f"\n[SUCCESS] figures-manifest.json written")
-    print(f"  Reports with figures: {reports_with_figs}")
-    print(f"  Total figures extracted: {total_extracted}")
+    print(f"  Reports with content: {reports_with_figs}")
+    print(f"  Figures: {total_extracted - total_tables}")
+    if total_tables:
+        print(f"  Tables (PDA): {total_tables}")
+    print(f"  Total: {total_extracted}")
     print(f"  Skipped (tiny/duplicate): {total_skipped}")
+    if logos_removed:
+        print(f"  Logos removed: {logos_removed}")
 
     # Update reports.json with figures_count
     with open(REPORTS_JSON, "r", encoding="utf-8") as f:
         data = json.load(f)
     changed = 0
+    # Reset all to 0, then overwrite from manifest
+    for rid in data["reports"]:
+        data["reports"][rid]["figures_count"] = 0
     for rid, fig_data in manifest.items():
         if rid in data["reports"]:
             data["reports"][rid]["figures_count"] = fig_data["total"]
             changed += 1
-    # Also set 0 for reports without figures
-    for rid in data["reports"]:
-        if rid not in manifest and "figures_count" not in data["reports"][rid]:
-            data["reports"][rid]["figures_count"] = 0
     with open(REPORTS_JSON, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
     print(f"  reports.json updated: {changed} reports with figures_count")
