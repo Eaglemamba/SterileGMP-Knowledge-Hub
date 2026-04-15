@@ -62,6 +62,9 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans
 .fig-card:hover { transform:translateY(-2px); box-shadow:var(--shadow-2); }
 .fig-card img { width:100%; aspect-ratio:4/3; object-fit:contain; background:#f8f9fa; padding:0.5rem; }
 .fig-card .fig-info { padding:0.6rem 0.8rem; font-size:0.78rem; color:var(--c-secondary); display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(0,0,0,0.06); }
+.type-badge { display:inline-block; font-size:0.65rem; font-weight:600; padding:0.15rem 0.45rem; border-radius:4px; text-transform:uppercase; letter-spacing:0.03em; }
+.type-badge.fig { background:#e8f4fd; color:#1e6aa0; }
+.type-badge.tbl { background:#fef3e2; color:#b3711a; }
 
 /* Lightbox */
 .lightbox { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:1000; justify-content:center; align-items:center; cursor:zoom-out; }
@@ -94,6 +97,7 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans
   <div class="stats">
     <div class="stat"><div class="stat-num" id="statDocs">—</div><div class="stat-label">Documents</div></div>
     <div class="stat"><div class="stat-num" id="statFigs">—</div><div class="stat-label">Figures</div></div>
+    <div class="stat"><div class="stat-num" id="statTbls">—</div><div class="stat-label">Tables</div></div>
   </div>
 </div>
 
@@ -134,9 +138,15 @@ async function init() {
 
   // Stats
   const docCount = Object.keys(manifest).length;
-  const figCount = Object.values(manifest).reduce((s, d) => s + d.total, 0);
+  let figCount = 0, tblCount = 0;
+  for (const d of Object.values(manifest)) {
+    for (const f of d.figures) {
+      if (f.type === 'table') tblCount++; else figCount++;
+    }
+  }
   document.getElementById('statDocs').textContent = docCount;
   document.getElementById('statFigs').textContent = figCount.toLocaleString();
+  document.getElementById('statTbls').textContent = tblCount.toLocaleString();
 
   // Check URL param
   const params = new URLSearchParams(window.location.search);
@@ -176,7 +186,14 @@ function showDocList() {
         <span style="font-size:11px;font-weight:600;color:${textColor}">${sc.short || rid}</span>
         <h3>${title}</h3>
         ${titleZh ? `<p style="font-size:0.8rem;color:#6e6e73;margin-top:2px">${titleZh}</p>` : ''}
-        <div class="fig-count">${data.total} figures</div>
+        <div class="fig-count">${(() => {
+          const fc = data.figures.filter(f => f.type !== 'table').length;
+          const tc = data.figures.filter(f => f.type === 'table').length;
+          const parts = [];
+          if (fc) parts.push(fc + ' fig');
+          if (tc) parts.push(tc + ' tbl');
+          return parts.join(' + ') || '0';
+        })()}</div>
       </div>
     </div>`;
   }
@@ -207,24 +224,37 @@ function showFigures(rid) {
   }
   const pageNums = Object.keys(byPage).map(Number).sort((a, b) => a - b);
 
+  const fc = data.figures.filter(f => f.type !== 'table').length;
+  const tc = data.figures.filter(f => f.type === 'table').length;
+  const countParts = [];
+  if (fc) countParts.push(fc + ' figures');
+  if (tc) countParts.push(tc + ' tables');
+
   let html = `<button class="back-btn" onclick="showDocList()">← All Documents</button>
     <div class="fig-header">
       <h2>${title}</h2>
-      <p>${data.total} figures from ${r.pages || 'document'}</p>
+      <p>${countParts.join(' + ')} from ${r.pages || 'document'}</p>
     </div>`;
 
   for (const pg of pageNums) {
     const figs = byPage[pg];
+    const pgFigs = figs.filter(f => f.type !== 'table').length;
+    const pgTbls = figs.filter(f => f.type === 'table').length;
+    const pgParts = [];
+    if (pgFigs) pgParts.push(pgFigs + ' fig');
+    if (pgTbls) pgParts.push(pgTbls + ' tbl');
     html += `<div class="page-group">
-      <div class="page-group-label">Page ${pg} — ${figs.length} figure${figs.length > 1 ? 's' : ''}</div>
+      <div class="page-group-label">Page ${pg} — ${pgParts.join(' + ') || figs.length + ' items'}</div>
       <div class="fig-grid">`;
 
     for (const fig of figs) {
       const src = `${folder}/figures/${fig.file}`;
+      const isTable = fig.type === 'table';
+      const badge = isTable ? '<span class="type-badge tbl">Table</span>' : '<span class="type-badge fig">Figure</span>';
       html += `<div class="fig-card" onclick="openLightbox('${src}','${fig.file}',${fig.width},${fig.height},${fig.size_kb})">
         <img src="${src}" alt="${fig.file}" loading="lazy">
         <div class="fig-info">
-          <span>${fig.file}</span>
+          <span>${badge} ${fig.file}</span>
           <span>${fig.width}×${fig.height} · ${fig.size_kb} KB</span>
         </div>
       </div>`;
