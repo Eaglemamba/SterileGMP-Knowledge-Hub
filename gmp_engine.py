@@ -1049,7 +1049,7 @@ MIN_TBL_ROWS = 3          # Tables need at least 3 rows to be meaningful
 MIN_TBL_HEIGHT = 60       # Minimum table bbox height (pts)
 MIN_TBL_WIDTH = 200       # Minimum table bbox width (pts)
 TBL_ZOOM = 2              # Render zoom factor for table screenshots
-CAPTION_Y_THRESHOLD = 80  # Max pts distance for caption matching
+CAPTION_Y_THRESHOLD = 300  # Max pts distance for caption matching
 
 # Regex for figure/table labels: "Figure 3.1-1", "Fig. 1", "Table A.1", etc.
 import re as _re
@@ -1091,32 +1091,52 @@ def _extract_caption_lines(page) -> list[tuple[float, str, str]]:
     return results
 
 
-def _match_caption(caption_lines: list, y_ref: float, direction: str,
-                   type_prefix: str, used: set) -> tuple[str | None, str | None]:
-    """Find the nearest caption line matching type_prefix near y_ref.
+def _match_caption(caption_lines: list, y_bottom: float, direction: str,
+                   type_prefixes: list[str] | str, used: set,
+                   y_top: float | None = None) -> tuple[str | None, str | None]:
+    """Find the nearest caption line matching type_prefixes near an element.
 
+    y_bottom: bottom edge of the element.
+    y_top: top edge (if None, uses y_bottom - 20 as estimate).
     direction: 'below' (for figures — caption below image) or 'above' (for tables).
+    Tries preferred direction first; falls back to opposite direction if no match.
+    type_prefixes: single prefix string or list, e.g. ["fig"] or ["table", "tbl"].
     Returns (label, caption) or (None, None).
     """
-    best = None
-    best_dist = CAPTION_Y_THRESHOLD + 1
-    prefix_lower = type_prefix.lower()
-    for i, (y_mid, label, caption) in enumerate(caption_lines):
-        if i in used:
-            continue
-        if not label.lower().startswith(prefix_lower):
-            continue
-        if direction == "below":
-            dist = y_mid - y_ref  # caption should be below → positive
-            if dist < -10 or dist > CAPTION_Y_THRESHOLD:
+    if isinstance(type_prefixes, str):
+        type_prefixes = [type_prefixes]
+    prefixes = [p.lower() for p in type_prefixes]
+    if y_top is None:
+        y_top = y_bottom - 20
+
+    def _search(direction_to_try):
+        best = None
+        best_dist = CAPTION_Y_THRESHOLD + 1
+        for i, (y_mid, label, caption) in enumerate(caption_lines):
+            if i in used:
                 continue
-        else:  # above
-            dist = y_ref - y_mid  # label should be above → positive
-            if dist < -10 or dist > CAPTION_Y_THRESHOLD:
+            if not any(label.lower().startswith(p) for p in prefixes):
                 continue
-        if abs(dist) < best_dist:
-            best_dist = abs(dist)
-            best = (i, label, caption)
+            if direction_to_try == "below":
+                dist = y_mid - y_bottom  # caption should be below bottom edge → positive
+                if dist < -10 or dist > CAPTION_Y_THRESHOLD:
+                    continue
+            else:  # above
+                dist = y_top - y_mid  # label should be above top edge → positive
+                if dist < -10 or dist > CAPTION_Y_THRESHOLD:
+                    continue
+            if abs(dist) < best_dist:
+                best_dist = abs(dist)
+                best = (i, label, caption)
+        return best
+
+    # Try preferred direction first
+    best = _search(direction)
+    # Fallback: try opposite direction
+    if best is None:
+        opposite = "above" if direction == "below" else "below"
+        best = _search(opposite)
+
     if best:
         used.add(best[0])
         return best[1], best[2] if best[2] else None
@@ -1274,20 +1294,21 @@ def cmd_extract_figs(args):
                 seen_hashes.add(img_md5)
 
                 # Get image position on page for caption matching
-                img_y1 = None
+                img_y0, img_y1 = None, None
                 try:
                     rects = page.get_image_rects(xref)
                     if rects:
+                        img_y0 = rects[0].y0  # top edge of image
                         img_y1 = rects[0].y1  # bottom edge of image
                 except Exception:
                     pass
 
-                page_imgs.append((img_index, img_ext, img_bytes, w, h, img_md5, img_y1))
+                page_imgs.append((img_index, img_ext, img_bytes, w, h, img_md5, img_y0, img_y1))
 
             # Sort by y-position for ordered caption matching
-            page_imgs.sort(key=lambda x: x[6] if x[6] is not None else 9999)
+            page_imgs.sort(key=lambda x: x[7] if x[7] is not None else 9999)
 
-            for img_index, img_ext, img_bytes, w, h, img_md5, img_y1 in page_imgs:
+            for img_index, img_ext, img_bytes, w, h, img_md5, img_y0, img_y1 in page_imgs:
                 fig_name = f"fig-p{page_num + 1}-{img_index + 1}.{img_ext}"
                 fig_path = figs_dir / fig_name
 
@@ -1315,11 +1336,12 @@ def cmd_extract_figs(args):
 
                 file_size = fig_path.stat().st_size
 
-                # Match caption by y-proximity (caption below figure)
+                # Match caption by y-proximity (caption below figure, fallback above)
                 label, caption = None, None
                 if img_y1 is not None:
                     label, caption = _match_caption(
-                        captions, img_y1, "below", "fig", used_captions)
+                        captions, img_y1, "below", ["fig", "figure"], used_captions,
+                        y_top=img_y0)
 
                 fig_entry = {
                     "file": fig_name,
@@ -1341,6 +1363,23 @@ def cmd_extract_figs(args):
                     global_hashes[img_md5] = {"pdfs": set(), "entries": []}
                 global_hashes[img_md5]["pdfs"].add(str(pdf_path))
                 global_hashes[img_md5]["entries"].append((rid, fig_path, fig_entry))
+
+            # Post-page sweep: pair unmatched figures with remaining captions
+            # Sequential pairing when counts match, or 1:1 special case
+            page_figs_unlabeled = [f for f in figures
+                                   if f["page"] == page_num + 1
+                                   and f["type"] == "figure"
+                                   and "label" not in f]
+            unused_fig_captions = [
+                (i, y, lbl, cap) for i, (y, lbl, cap) in enumerate(captions)
+                if i not in used_captions
+                and any(lbl.lower().startswith(p) for p in ("fig", "figure"))
+            ]
+            if page_figs_unlabeled and len(page_figs_unlabeled) == len(unused_fig_captions):
+                for fig_e, (_, _, lbl, cap) in zip(page_figs_unlabeled, unused_fig_captions):
+                    fig_e["label"] = lbl
+                    if cap:
+                        fig_e["caption"] = cap
 
         # --- Table extraction (PDA documents) ---
         if is_pda:
@@ -1392,9 +1431,10 @@ def cmd_extract_figs(args):
 
                     tbl_size = tbl_path.stat().st_size
 
-                    # Match label above table
+                    # Match label above table (y_top=bbox[1], y_bottom=bbox[3])
                     tbl_label, tbl_caption = _match_caption(
-                        tbl_captions, bbox[1], "above", "table", tbl_used)
+                        tbl_captions, bbox[3], "above", ["table", "tbl"], tbl_used,
+                        y_top=bbox[1])
 
                     tbl_entry = {
                         "file": tbl_name,
@@ -1411,6 +1451,22 @@ def cmd_extract_figs(args):
                     figures.append(tbl_entry)
                     total_tables += 1
                     total_extracted += 1
+
+                # Post-page sweep: pair unmatched tables with remaining captions
+                page_tbls_unlabeled = [f for f in figures
+                                       if f["page"] == page_num + 1
+                                       and f["type"] == "table"
+                                       and "label" not in f]
+                unused_tbl_captions = [
+                    (i, y, lbl, cap) for i, (y, lbl, cap) in enumerate(tbl_captions)
+                    if i not in tbl_used
+                    and any(lbl.lower().startswith(p) for p in ("table", "tbl"))
+                ]
+                if page_tbls_unlabeled and len(page_tbls_unlabeled) == len(unused_tbl_captions):
+                    for tbl_e, (_, _, lbl, cap) in zip(page_tbls_unlabeled, unused_tbl_captions):
+                        tbl_e["label"] = lbl
+                        if cap:
+                            tbl_e["caption"] = cap
 
         doc.close()
 
