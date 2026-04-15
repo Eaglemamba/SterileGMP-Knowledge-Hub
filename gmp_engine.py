@@ -1044,6 +1044,7 @@ MANIFEST_FILE = REPO_ROOT / "figures-manifest.json"
 MIN_IMG_SIZE = 5000       # Skip images smaller than 5 KB (icons, decorations)
 MIN_IMG_DIM = 80          # Skip images smaller than 80px in either dimension
 LOGO_THRESHOLD = 3        # Images in N+ documents are cross-doc logos → remove
+SKIP_FIRST_PAGES = 1      # Skip images on first N pages (cover/title page logos)
 MIN_TBL_ROWS = 3          # Tables need at least 3 rows to be meaningful
 MIN_TBL_HEIGHT = 60       # Minimum table bbox height (pts)
 MIN_TBL_WIDTH = 200       # Minimum table bbox width (pts)
@@ -1140,8 +1141,10 @@ def cmd_extract_figs(args):
         figures = []
         seen_hashes = set()  # Per-doc dedup
 
-        # --- Image extraction ---
+        # --- Image extraction (skip cover pages) ---
         for page_num in range(len(doc)):
+            if page_num < SKIP_FIRST_PAGES:
+                continue
             try:
                 page = doc[page_num]
                 images = page.get_images(full=True)
