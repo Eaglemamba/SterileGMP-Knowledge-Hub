@@ -1049,6 +1049,78 @@ MIN_TBL_ROWS = 3          # Tables need at least 3 rows to be meaningful
 MIN_TBL_HEIGHT = 60       # Minimum table bbox height (pts)
 MIN_TBL_WIDTH = 200       # Minimum table bbox width (pts)
 TBL_ZOOM = 2              # Render zoom factor for table screenshots
+CAPTION_Y_THRESHOLD = 80  # Max pts distance for caption matching
+
+# Regex for figure/table labels: "Figure 3.1-1", "Fig. 1", "Table A.1", etc.
+import re as _re
+CAPTION_RE = _re.compile(
+    r'(?i)\b((?:figure|fig\.?|table|tbl\.?)\s*[A-Z]?\d[\d.\-]*)',
+)
+
+
+def _extract_caption_lines(page) -> list[tuple[float, str, str]]:
+    """Extract lines containing figure/table labels from a page.
+
+    Returns list of (y_mid, label, full_text) sorted by y_mid.
+    y_mid is the vertical midpoint of the text line.
+    label is the matched pattern (e.g. "Figure 3.1-1").
+    full_text is everything after the label on that line (the caption).
+    """
+    results = []
+    try:
+        td = page.get_text("dict")
+    except Exception:
+        return results
+    for block in td.get("blocks", []):
+        if block.get("type") != 0:  # text block only
+            continue
+        for line in block.get("lines", []):
+            # Concatenate all spans in the line
+            text = "".join(s.get("text", "") for s in line.get("spans", []))
+            text = text.strip()
+            m = CAPTION_RE.search(text)
+            if not m:
+                continue
+            bbox = line.get("bbox", (0, 0, 0, 0))
+            y_mid = (bbox[1] + bbox[3]) / 2
+            label = m.group(1).strip()
+            # Caption = everything after the label match
+            after = text[m.end():].strip().lstrip(":").lstrip("—").lstrip("-").lstrip(".").strip()
+            results.append((y_mid, label, after))
+    results.sort(key=lambda x: x[0])
+    return results
+
+
+def _match_caption(caption_lines: list, y_ref: float, direction: str,
+                   type_prefix: str, used: set) -> tuple[str | None, str | None]:
+    """Find the nearest caption line matching type_prefix near y_ref.
+
+    direction: 'below' (for figures — caption below image) or 'above' (for tables).
+    Returns (label, caption) or (None, None).
+    """
+    best = None
+    best_dist = CAPTION_Y_THRESHOLD + 1
+    prefix_lower = type_prefix.lower()
+    for i, (y_mid, label, caption) in enumerate(caption_lines):
+        if i in used:
+            continue
+        if not label.lower().startswith(prefix_lower):
+            continue
+        if direction == "below":
+            dist = y_mid - y_ref  # caption should be below → positive
+            if dist < -10 or dist > CAPTION_Y_THRESHOLD:
+                continue
+        else:  # above
+            dist = y_ref - y_mid  # label should be above → positive
+            if dist < -10 or dist > CAPTION_Y_THRESHOLD:
+                continue
+        if abs(dist) < best_dist:
+            best_dist = abs(dist)
+            best = (i, label, caption)
+    if best:
+        used.add(best[0])
+        return best[1], best[2] if best[2] else None
+    return None, None
 
 
 def _find_pdf_for_report(report_id: str, config: dict | None = None) -> Path | None:
@@ -1144,7 +1216,10 @@ def cmd_extract_figs(args):
         # Clean existing figures to avoid stale files
         if figs_dir.exists():
             for old_file in figs_dir.iterdir():
-                old_file.unlink()
+                try:
+                    old_file.unlink()
+                except PermissionError:
+                    pass  # Skip locked files on Windows
         figs_dir.mkdir(parents=True, exist_ok=True)
 
         try:
@@ -1166,6 +1241,11 @@ def cmd_extract_figs(args):
                 images = page.get_images(full=True)
             except Exception:
                 continue
+            # Extract caption lines once per page
+            captions = _extract_caption_lines(page)
+            used_captions = set()
+            # Collect images with their y-positions for ordered matching
+            page_imgs = []
             for img_index, img_info in enumerate(images):
                 xref = img_info[0]
                 try:
@@ -1193,19 +1273,66 @@ def cmd_extract_figs(args):
                     continue
                 seen_hashes.add(img_md5)
 
+                # Get image position on page for caption matching
+                img_y1 = None
+                try:
+                    rects = page.get_image_rects(xref)
+                    if rects:
+                        img_y1 = rects[0].y1  # bottom edge of image
+                except Exception:
+                    pass
+
+                page_imgs.append((img_index, img_ext, img_bytes, w, h, img_md5, img_y1))
+
+            # Sort by y-position for ordered caption matching
+            page_imgs.sort(key=lambda x: x[6] if x[6] is not None else 9999)
+
+            for img_index, img_ext, img_bytes, w, h, img_md5, img_y1 in page_imgs:
                 fig_name = f"fig-p{page_num + 1}-{img_index + 1}.{img_ext}"
                 fig_path = figs_dir / fig_name
-                with open(fig_path, "wb") as f:
-                    f.write(img_bytes)
+
+                # Auto-rotate portrait figures to landscape for readability
+                rotated = False
+                if h > w * 1.3:
+                    try:
+                        from PIL import Image
+                        import io
+                        img_pil = Image.open(io.BytesIO(img_bytes))
+                        if img_pil.mode == "CMYK":
+                            img_pil = img_pil.convert("RGB")
+                        img_pil = img_pil.rotate(90, expand=True)
+                        # Save as PNG for rotated images
+                        fig_name = f"fig-p{page_num + 1}-{img_index + 1}.png"
+                        fig_path = figs_dir / fig_name
+                        img_pil.save(str(fig_path))
+                        w, h = img_pil.size
+                        rotated = True
+                    except Exception as e:
+                        print(f"    [WARN] rotate failed {fig_name}: {e}")
+                if not rotated:
+                    with open(fig_path, "wb") as f:
+                        f.write(img_bytes)
+
+                file_size = fig_path.stat().st_size
+
+                # Match caption by y-proximity (caption below figure)
+                label, caption = None, None
+                if img_y1 is not None:
+                    label, caption = _match_caption(
+                        captions, img_y1, "below", "fig", used_captions)
 
                 fig_entry = {
                     "file": fig_name,
                     "page": page_num + 1,
                     "width": w,
                     "height": h,
-                    "size_kb": round(len(img_bytes) / 1024, 1),
+                    "size_kb": round(file_size / 1024, 1),
                     "type": "figure",
                 }
+                if label:
+                    fig_entry["label"] = label
+                if caption:
+                    fig_entry["caption"] = caption
                 figures.append(fig_entry)
                 total_extracted += 1
 
@@ -1223,6 +1350,9 @@ def cmd_extract_figs(args):
                     found = page.find_tables()
                 except Exception:
                     continue
+                # Extract caption lines once per page for table matching
+                tbl_captions = _extract_caption_lines(page)
+                tbl_used = set()
                 for tbl_idx, table in enumerate(found.tables):
                     if table.row_count < MIN_TBL_ROWS:
                         continue
@@ -1245,15 +1375,40 @@ def cmd_extract_figs(args):
                     tbl_name = f"tbl-p{page_num + 1}-{tbl_idx + 1}.png"
                     tbl_path = figs_dir / tbl_name
                     pix.save(str(tbl_path))
+
+                    # Auto-rotate portrait tables to landscape for readability
+                    tbl_w, tbl_h = pix.width, pix.height
+                    if tbl_h > tbl_w * 1.3:
+                        try:
+                            from PIL import Image
+                            img_pil = Image.open(str(tbl_path))
+                            if img_pil.mode == "CMYK":
+                                img_pil = img_pil.convert("RGB")
+                            img_pil = img_pil.rotate(90, expand=True)
+                            img_pil.save(str(tbl_path))
+                            tbl_w, tbl_h = img_pil.size
+                        except Exception as e:
+                            print(f"    [WARN] rotate failed {tbl_name}: {e}")
+
                     tbl_size = tbl_path.stat().st_size
-                    figures.append({
+
+                    # Match label above table
+                    tbl_label, tbl_caption = _match_caption(
+                        tbl_captions, bbox[1], "above", "table", tbl_used)
+
+                    tbl_entry = {
                         "file": tbl_name,
                         "page": page_num + 1,
-                        "width": pix.width,
-                        "height": pix.height,
+                        "width": tbl_w,
+                        "height": tbl_h,
                         "size_kb": round(tbl_size / 1024, 1),
                         "type": "table",
-                    })
+                    }
+                    if tbl_label:
+                        tbl_entry["label"] = tbl_label
+                    if tbl_caption:
+                        tbl_entry["caption"] = tbl_caption
+                    figures.append(tbl_entry)
                     total_tables += 1
                     total_extracted += 1
 
