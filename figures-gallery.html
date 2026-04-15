@@ -251,12 +251,14 @@ function showFigures(rid) {
       const src = `${folder}/figures/${fig.file}`;
       const isTable = fig.type === 'table';
       const badge = isTable ? '<span class="type-badge tbl">Table</span>' : '<span class="type-badge fig">Figure</span>';
-      html += `<div class="fig-card" onclick="openLightbox('${src}','${fig.file}',${fig.width},${fig.height},${fig.size_kb})">
-        <img src="${src}" alt="${fig.file}" loading="lazy">
+      const displayName = fig.label || fig.file;
+      html += `<div class="fig-card" onclick="openLightbox('${src}','${fig.file}',${fig.width},${fig.height},${fig.size_kb}${fig.label ? `,'${fig.label.replace(/'/g,"\\'")}'` : ',null'}${fig.caption ? `,'${fig.caption.replace(/'/g,"\\'")}'` : ',null'})">
+        <img src="${src}" alt="${displayName}" loading="lazy">
         <div class="fig-info">
-          <span>${badge} ${fig.file}</span>
+          <span>${badge} ${displayName}</span>
           <span>${fig.width}×${fig.height} · ${fig.size_kb} KB</span>
         </div>
+        ${fig.caption ? `<div style="padding:0 0.8rem 0.5rem;font-size:0.72rem;color:#6e6e73;line-height:1.3">${fig.caption}</div>` : ''}
       </div>`;
     }
     html += '</div></div>';
@@ -270,11 +272,14 @@ function filterDocs() {
   if (!currentDoc) showDocList();
 }
 
-function openLightbox(src, name, w, h, kb) {
+function openLightbox(src, name, w, h, kb, label, caption) {
   event.stopPropagation();
   const lb = document.getElementById('lightbox');
   document.getElementById('lightboxImg').src = src;
-  document.getElementById('lightboxInfo').textContent = `${name} — ${w}×${h} · ${kb} KB`;
+  let info = label ? `${label}` : name;
+  if (caption) info += ` — ${caption}`;
+  info += ` · ${w}×${h} · ${kb} KB`;
+  document.getElementById('lightboxInfo').textContent = info;
   lb.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
