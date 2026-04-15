@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SterileGMP — Figure Gallery</title>
+<style>
+:root {
+  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --c-bg: #f5f5f7;
+  --c-surface: #ffffff;
+  --c-primary: #1d1d1f;
+  --c-secondary: #6e6e73;
+  --shadow-1: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-2: 0 4px 12px rgba(0,0,0,0.1), 0 2px 4px rgba(0,0,0,0.04);
+  --shadow-3: 0 8px 24px rgba(0,0,0,0.12), 0 4px 8px rgba(0,0,0,0.06);
+  --r-card: 16px;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans TC","Microsoft JhengHei",sans-serif; background:var(--c-bg); color:var(--c-primary); line-height:1.5; }
+
+/* Header */
+.header { background:linear-gradient(135deg,#1e3a5f 0%,#2c5282 100%); color:#fff; padding:2rem 1.5rem; text-align:center; }
+.header h1 { font-size:1.4rem; font-weight:700; margin-bottom:0.3rem; }
+.header p { font-size:0.9rem; opacity:0.85; }
+.header .stats { display:flex; gap:2rem; justify-content:center; margin-top:1rem; }
+.header .stat { text-align:center; }
+.header .stat-num { font-size:1.6rem; font-weight:700; }
+.header .stat-label { font-size:0.75rem; opacity:0.75; }
+
+/* Nav */
+.nav-bar { background:#2d3748; padding:0.5rem 1.5rem; display:flex; align-items:center; gap:1rem; position:sticky; top:0; z-index:100; }
+.nav-bar a { color:rgba(255,255,255,0.8); text-decoration:none; font-size:0.85rem; padding:0.4rem 0.8rem; border-radius:8px; transition:all 0.15s; }
+.nav-bar a:hover { background:rgba(255,255,255,0.1); color:#fff; }
+.nav-bar a.active { background:rgba(255,255,255,0.15); color:#fff; font-weight:600; }
+.search-box { flex:1; max-width:400px; }
+.search-box input { width:100%; padding:0.4rem 0.8rem; border-radius:8px; border:none; font-size:0.85rem; background:rgba(255,255,255,0.12); color:#fff; outline:none; }
+.search-box input::placeholder { color:rgba(255,255,255,0.5); }
+.search-box input:focus { background:rgba(255,255,255,0.2); }
+
+/* Container */
+.container { max-width:1400px; margin:0 auto; padding:1.5rem; }
+
+/* Document List View */
+.doc-list { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1rem; }
+.doc-item { background:var(--c-surface); border-radius:var(--r-card); box-shadow:var(--shadow-1); overflow:hidden; cursor:pointer; transition:transform 0.2s var(--ease),box-shadow 0.2s var(--ease); }
+.doc-item:hover { transform:translateY(-2px); box-shadow:var(--shadow-2); }
+.doc-item-bar { height:4px; }
+.doc-item-body { padding:1rem 1.25rem; }
+.doc-item-body h3 { font-size:0.9rem; font-weight:600; margin-bottom:0.25rem; }
+.doc-item-body .meta { font-size:0.8rem; color:var(--c-secondary); display:flex; align-items:center; gap:0.5rem; }
+.doc-item-body .fig-count { font-size:1.1rem; font-weight:700; margin-top:0.5rem; }
+
+/* Figure Grid View */
+.back-btn { display:inline-flex; align-items:center; gap:0.4rem; padding:0.5rem 1rem; border-radius:8px; background:var(--c-surface); box-shadow:var(--shadow-1); cursor:pointer; border:none; font-size:0.85rem; font-weight:500; color:var(--c-primary); margin-bottom:1rem; transition:all 0.15s; font-family:inherit; }
+.back-btn:hover { box-shadow:var(--shadow-2); }
+.fig-header { margin-bottom:1.5rem; }
+.fig-header h2 { font-size:1.2rem; font-weight:700; margin-bottom:0.25rem; }
+.fig-header p { font-size:0.85rem; color:var(--c-secondary); }
+.fig-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1rem; }
+.fig-card { background:var(--c-surface); border-radius:12px; box-shadow:var(--shadow-1); overflow:hidden; cursor:pointer; transition:transform 0.2s var(--ease),box-shadow 0.2s var(--ease); }
+.fig-card:hover { transform:translateY(-2px); box-shadow:var(--shadow-2); }
+.fig-card img { width:100%; aspect-ratio:4/3; object-fit:contain; background:#f8f9fa; padding:0.5rem; }
+.fig-card .fig-info { padding:0.6rem 0.8rem; font-size:0.78rem; color:var(--c-secondary); display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(0,0,0,0.06); }
+
+/* Lightbox */
+.lightbox { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:1000; justify-content:center; align-items:center; cursor:zoom-out; }
+.lightbox.open { display:flex; }
+.lightbox img { max-width:95%; max-height:95%; object-fit:contain; border-radius:8px; }
+.lightbox-close { position:fixed; top:1rem; right:1.5rem; color:#fff; font-size:2rem; cursor:pointer; z-index:1001; opacity:0.7; background:none; border:none; }
+.lightbox-close:hover { opacity:1; }
+.lightbox-info { position:fixed; bottom:1.5rem; left:50%; transform:translateX(-50%); color:#fff; font-size:0.85rem; opacity:0.7; background:rgba(0,0,0,0.5); padding:0.4rem 1rem; border-radius:8px; z-index:1001; }
+
+/* Empty state */
+.empty { text-align:center; padding:4rem 2rem; color:var(--c-secondary); }
+.empty h3 { font-size:1.1rem; margin-bottom:0.5rem; }
+
+/* Page group dividers */
+.page-group { margin-bottom:1.5rem; }
+.page-group-label { font-size:0.85rem; font-weight:600; color:var(--c-secondary); margin-bottom:0.75rem; padding-bottom:0.4rem; border-bottom:1px solid rgba(0,0,0,0.08); }
+
+@media(max-width:640px) {
+  .fig-grid { grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:0.75rem; }
+  .doc-list { grid-template-columns:1fr; }
+  .header .stats { gap:1rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Figure Gallery</h1>
+  <p>SterileGMP Knowledge Hub — Document Figure Browser</p>
+  <div class="stats">
+    <div class="stat"><div class="stat-num" id="statDocs">—</div><div class="stat-label">Documents</div></div>
+    <div class="stat"><div class="stat-num" id="statFigs">—</div><div class="stat-label">Figures</div></div>
+  </div>
+</div>
+
+<div class="nav-bar">
+  <a href="index.html">Document Index</a>
+  <a href="figures-gallery.html" class="active">Figure Gallery</a>
+  <a href="learning-path.html">Learning Path</a>
+  <div class="search-box"><input type="text" id="searchInput" placeholder="Search documents..." oninput="filterDocs()"></div>
+</div>
+
+<div class="container" id="app"></div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <img id="lightboxImg" src="" alt="">
+  <div class="lightbox-info" id="lightboxInfo"></div>
+</div>
+
+<script>
+let manifest = {};
+let reports = {};
+let currentDoc = null;
+
+async function init() {
+  try {
+    const [mRes, rRes] = await Promise.all([
+      fetch('figures-manifest.json'),
+      fetch('reports.json')
+    ]);
+    manifest = await mRes.json();
+    const rData = await rRes.json();
+    reports = rData.reports || {};
+  } catch (e) {
+    document.getElementById('app').innerHTML = '<div class="empty"><h3>Unable to load data</h3><p>figures-manifest.json or reports.json not found.</p></div>';
+    return;
+  }
+
+  // Stats
+  const docCount = Object.keys(manifest).length;
+  const figCount = Object.values(manifest).reduce((s, d) => s + d.total, 0);
+  document.getElementById('statDocs').textContent = docCount;
+  document.getElementById('statFigs').textContent = figCount.toLocaleString();
+
+  // Check URL param
+  const params = new URLSearchParams(window.location.search);
+  const docParam = params.get('doc');
+  if (docParam && manifest[docParam]) {
+    showFigures(docParam);
+  } else {
+    showDocList();
+  }
+}
+
+function showDocList() {
+  currentDoc = null;
+  history.replaceState(null, '', 'figures-gallery.html');
+
+  // Sort by figure count descending
+  const entries = Object.entries(manifest).sort((a, b) => b[1].total - a[1].total);
+  const query = (document.getElementById('searchInput').value || '').toLowerCase();
+
+  let html = '<div class="doc-list">';
+  let shown = 0;
+  for (const [rid, data] of entries) {
+    const r = reports[rid] || {};
+    const title = r.title || rid;
+    const titleZh = r.titleZh || '';
+    const sc = r.source_color || {};
+    const barColor = sc.bar || sc.bg || '#e8e8ed';
+    const textColor = sc.text || '#6e6e73';
+    const searchText = `${rid} ${title} ${titleZh}`.toLowerCase();
+
+    if (query && !searchText.includes(query)) continue;
+    shown++;
+
+    html += `<div class="doc-item" onclick="showFigures('${rid}')">
+      <div class="doc-item-bar" style="background:${barColor}"></div>
+      <div class="doc-item-body">
+        <span style="font-size:11px;font-weight:600;color:${textColor}">${sc.short || rid}</span>
+        <h3>${title}</h3>
+        ${titleZh ? `<p style="font-size:0.8rem;color:#6e6e73;margin-top:2px">${titleZh}</p>` : ''}
+        <div class="fig-count">${data.total} figures</div>
+      </div>
+    </div>`;
+  }
+  html += '</div>';
+
+  if (shown === 0) {
+    html = '<div class="empty"><h3>No matching documents</h3></div>';
+  }
+
+  document.getElementById('app').innerHTML = html;
+}
+
+function showFigures(rid) {
+  currentDoc = rid;
+  history.replaceState(null, '', `figures-gallery.html?doc=${rid}`);
+
+  const data = manifest[rid];
+  const r = reports[rid] || {};
+  const title = r.title || rid;
+  const folder = data.folder || rid;
+
+  // Group figures by page
+  const byPage = {};
+  for (const fig of data.figures) {
+    const pg = fig.page;
+    if (!byPage[pg]) byPage[pg] = [];
+    byPage[pg].push(fig);
+  }
+  const pageNums = Object.keys(byPage).map(Number).sort((a, b) => a - b);
+
+  let html = `<button class="back-btn" onclick="showDocList()">← All Documents</button>
+    <div class="fig-header">
+      <h2>${title}</h2>
+      <p>${data.total} figures from ${r.pages || 'document'}</p>
+    </div>`;
+
+  for (const pg of pageNums) {
+    const figs = byPage[pg];
+    html += `<div class="page-group">
+      <div class="page-group-label">Page ${pg} — ${figs.length} figure${figs.length > 1 ? 's' : ''}</div>
+      <div class="fig-grid">`;
+
+    for (const fig of figs) {
+      const src = `${folder}/figures/${fig.file}`;
+      html += `<div class="fig-card" onclick="openLightbox('${src}','${fig.file}',${fig.width},${fig.height},${fig.size_kb})">
+        <img src="${src}" alt="${fig.file}" loading="lazy">
+        <div class="fig-info">
+          <span>${fig.file}</span>
+          <span>${fig.width}×${fig.height} · ${fig.size_kb} KB</span>
+        </div>
+      </div>`;
+    }
+    html += '</div></div>';
+  }
+
+  document.getElementById('app').innerHTML = html;
+  window.scrollTo(0, 0);
+}
+
+function filterDocs() {
+  if (!currentDoc) showDocList();
+}
+
+function openLightbox(src, name, w, h, kb) {
+  event.stopPropagation();
+  const lb = document.getElementById('lightbox');
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightboxInfo').textContent = `${name} — ${w}×${h} · ${kb} KB`;
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+init();
+</script>
+</body>
+</html>

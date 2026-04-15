@@ -2,7 +2,7 @@
 
 This document summarizes the current coverage status, gap analysis, and expansion roadmap for building a comprehensive sterile pharmaceutical manufacturing knowledge hub suitable for COO-level operational decision-making.
 
-Last updated: 2026-04-14 — 181 documents complete (PDA 42, USP 76, ISPE 14, FDA 15, ICH 6, PIC/S 4, ISO 17, Ph.Eur. 7)
+Last updated: 2026-04-14 — 182 documents complete (PDA 42, USP 76, ISPE 14, FDA 15, ICH 6, PIC/S 4, ISO 17, Ph.Eur. 7)
 
 ---
 
@@ -44,7 +44,7 @@ Layer 3: Site-Specific Documents             ~/Amaran-Site-Knowledge/
 | Education Layer — Dashboard & Learning UI | ✅ Complete | 4 tools (index.html, learning-path.html, mindmap.html, quiz.html) |
 | Education Layer — Curriculum Data | ✅ Complete | 8 departments × 3 tiers (gmp-curriculum-data.js) |
 | Education Layer — Quiz System | ✅ Complete | /quiz skill + quiz.html tracker + knowledge/exams/ bank |
-| Layer 1 — Regulatory Reference | ✅ Complete | 181 documents |
+| Layer 1 — Regulatory Reference | ✅ Complete | 182 documents |
 | Expert Knowledge Base | ⬜ Not started | 9 files planned |
 | Layer 2 — Operational Frameworks | ⬜ Not started | ~27 files planned |
 | Layer 2 — Skills System | ⬜ Not started | 26 slash commands planned |
@@ -55,7 +55,8 @@ Layer 3: Site-Specific Documents             ~/Amaran-Site-Knowledge/
 1. **Expert Knowledge Base** — start with SA25 lifecycle (`#1`) or Lyo ANDA end-to-end (`#2`); see full plan below
 2. **Layer 2 Operational Frameworks** — P0 skills first (`/deviation`, `/change-control`) with supporting templates
 3. **Layer 1 additions requiring new PDFs** — ISO 14644-2/3, ISO 17665, PDA TR36 (FDA Container Closure / Terminal Sterilization ✅ done)
-4. **Layer 3** — resume SOP desensitization via `~/Amaran-AI-SOP/`; human review required per document
+4. **Warehouse Practice Expansion (Phase 4b)** — PIC/S PE 011 → WHO TRS 961 Annex 6 → ICH Q1A(R2); plus topic synthesis + exam bank
+5. **Layer 3** — resume SOP desensitization via `~/Amaran-AI-SOP/`; human review required per document
 
 > **Raw PDFs queue status (2026-04-14):**
 > - ❌ **Blocked — scanned PDF (OCR required):** `PDA_Point to Consider for Sensitivity to Oxidation by Peroxide_2020.pdf`
@@ -91,7 +92,7 @@ Role-based reading tracker powered by `gmp-curriculum-data.js`. Covers 8 departm
 | Manufacturing / Production | ⚙️ | 5 docs | 7 docs | 6 docs |
 | Engineering & Maintenance | 🔧 | 5 docs | 6 docs | 5 docs |
 | Regulatory Affairs | 📋 | 5 docs | 6 docs | 5 docs |
-| Warehouse | 🏗️ | 5 docs | 6 docs | 4 docs |
+| Warehouse | 🏗️ | 6 docs | 6 docs | 4 docs |
 | Technical Service | 🛠️ | 5 docs | 7 docs | 5 docs |
 | Biotechnology IT (BT) | 💻 | 5 docs | 6 docs | 5 docs |
 
@@ -131,7 +132,7 @@ Interactive D3.js + Markmap-powered visualization of the entire knowledge base. 
 |------|-------------|
 | By Department | Shows 8 department tracks with Foundation → Core → Advanced hierarchy |
 | By Topic | Groups documents into 10 thematic clusters (Aseptic Processing, Sterilization & Filtration, Container Closure, Quality Systems, Environmental Monitoring, Testing Methods, Facilities & Utilities, Advanced Therapies, Regulatory & Compliance, Emerging Technologies) |
-| By Source | Organizes all 181 documents by issuing organization (PDA, ISPE, FDA, ICH, PIC/S, USP, ISO, Ph.Eur.) |
+| By Source | Organizes all 182 documents by issuing organization (PDA, ISPE, FDA, ICH, PIC/S, USP, ISO, Ph.Eur.) |
 
 ### gmp-curriculum-data.js — Curriculum Data File
 
@@ -144,7 +145,7 @@ Single source of truth for learning path structure. Consumed by `learning-path.h
 
 ---
 
-## Layer 1: Regulatory Reference — ✅ COMPLETE (181 documents)
+## Layer 1: Regulatory Reference — ✅ COMPLETE (182 documents)
 
 ### Completion Summary
 
@@ -155,7 +156,7 @@ Single source of truth for learning path structure. Consumed by `learning-path.h
 | **ISPE** | 14 | Baseline Guides, Good Practice Guides, GAMP | ✅ Complete (1 pending OCR) |
 | **FDA** | 15 | Aseptic Processing, Process Validation, Process Inspection, Combination Products CGMP, HF for Combo Products, 21 CFR 600–680 Biologics, 21 CFR Parts 210/211, 21 CFR Part 11, 21 CFR Part 820 (QMSR), 21 CFR Part 4, 21 CFR Part 312 (IND), CCIT (2008), Container Closure CMC (1999), Glass Vials & Stoppers (2024), Parametric Release (2010) | ✅ Complete |
 | **ICH** | 6 | Q8(R2), Q9(R1), Q10, Q12, Q13, Q14 | ✅ Complete |
-| **PIC/S** | 4 | Annex 1 (2022), Annex 2 (ATMPs + Biologics), Annex 15 (Qualification 2023), Annex 20 (QRM) | ✅ Complete |
+| **PIC/S** | 5 | Annex 1 (2022), Annex 2 (ATMPs + Biologics), Annex 15 (Qualification 2023), Annex 20 (QRM), PE 011 (GDP 2014) | ✅ Complete |
 | **ISO** | 17 | 11040 (×8), 13408 (×7), 14644 (Parts 1/5/7), 11608-1, 13485, 10993-1, TR 24971, 15378, 9001, 9000, 2859-1, 15223-1/2, 15394, 13926-1/2/3 | ✅ Complete (2 blocked: 14971 scanned, 15225 font) |
 | **Ph.Eur.** | 7 | 2.6.1, 2.6.14, 2.9.19, 2.9.20, 3.2.1, 3.3.8, 5.1.1 | ✅ Complete |
 | **Total** | **181** | | |
@@ -188,7 +189,8 @@ Single source of truth for learning path structure. Consumed by `learning-path.h
 | EU GMP Annex 15 — Qualification and Validation | Phase 6 | High | Small | ⬜ Future |
 | EU GMP Annex 2 — Biological Medicinal Products | Phase 6 | Medium | Small | ⬜ Future |
 | EU GMP Annex 20 — Quality Risk Management | Phase 6 | Medium | Small | ⬜ Future |
-| WHO TRS 961 Annex 6, TRS 1010 | Phase 6 | Medium | Small each | ⬜ Future |
+| ~~WHO TRS 961 Annex 6~~ | ~~Phase 6~~ | — | — | ✅ Moved to Phase 4b |
+| WHO TRS 1010 | Phase 6 | Medium | Small | ⬜ Future |
 | ISO 11737-1 — Sterilization: Bioburden Determination | Phase 6 | Medium | Small | ⬜ Need PDF |
 | ISO 11737-2 — Sterilization: Sterility Testing | Phase 6 | Medium | Small | ⬜ Need PDF |
 | PDA TR81 (2020) — Cell-Based Potency Assays for Biologics | Phase 6 | Low | Medium | ⬜ Need PDF |
@@ -350,7 +352,7 @@ Layer 3 is fed by the Amaran AI SOP project (`~/Amaran-AI-SOP/`), which already 
 | Particulate Testing | Ph.Eur. 2.9.19, Ph.Eur. 2.9.20, USP 〈788〉 〈790〉 | Excellent |
 | Glass & Container Materials | Ph.Eur. 3.2.1, USP 〈660〉, ISO 11040 | Excellent |
 | Labelling & Symbols | ISO 15223-1, ISO 15223-2, ISO 15394 | Good |
-| Supply Chain & GDP | TR39, TR46, TR52, TR68 | Good |
+| Supply Chain & GDP | PE 011, TR39, TR46, TR52, TR68 | Good — PE 011 ✅ done; TRS 961 Annex 6 + ICH Q1A(R2) remaining in Phase 4b |
 
 ### Remaining Gaps
 
@@ -361,7 +363,9 @@ Layer 3 is fed by the Amaran AI SOP project (`~/Amaran-AI-SOP/`), which already 
 | **Steam sterilization validation** | Terminal sterilization method with F₀ detail | ISO 17665 — Phase 4 |
 | **Combination Products — device side (remaining)** | IEC 62366-1 (usability) and ISO 14971 still absent | IEC 62366-1 — Phase 5; ISO 14971 ❌ blocked |
 | **EU regulatory anchor** | Binding EU GMP law; required for EU-MAA clients | EU GMP Annex 15, Annex 2, Annex 20 — Phase 6 |
-| **WHO GMP** | WHO prequalification supply chains | TRS 961 Annex 6, TRS 1010 — Phase 6 |
+| **Warehouse GDP framework** | ~~PIC/S PE 011~~ ✅ done; WHO TRS 961 Annex 6 + ICH Q1A(R2) remaining | TRS 961 Annex 6 — Phase 4b; ICH Q1A(R2) — Phase 4b |
+| **Storage condition upstream** | USP 〈1079〉 defines practice but ICH Q1A(R2) defines the "why" | ICH Q1A(R2) — Phase 4b |
+| **WHO GMP** | WHO prequalification supply chains | TRS 1010 — Phase 6 |
 
 ### COO-Specific Decision Gaps
 
@@ -408,6 +412,25 @@ All PDA TRs (42), top ISPE guides (14), PIC/S Annexes (4), FDA guidances + CFR c
 | PDA addition | TR57 — Analytical Method Validation & Transfer | Medium | ⬜ Need PDF |
 | PDA addition | TR69 (2014) — Bioburden & Biofilm in Pharma Water Systems | Medium | ⬜ Need PDF |
 
+### Phase 4b: Active — Warehouse Practice Expansion
+
+**Goal:** Strengthen warehouse operations coverage — GDP framework, storage condition management, material receipt. Current warehouse curriculum (27 docs) covers packaging, CCI, and cold chain well, but lacks comprehensive GDP standards and storage qualification upstream documents.
+
+| Task | Document | Effort | Status |
+|------|----------|--------|--------|
+| PIC/S addition | **PIC/S PE 011 — GDP Guide** | Medium | ✅ Done (2026-04-14) |
+| WHO addition | **WHO TRS 961 Annex 6 — GDP for Pharmaceutical Products** | Small | ⬜ Need PDF (moved from Phase 6) |
+| ICH addition | **ICH Q1A(R2) — Stability Testing** (defines storage condition requirements) | Medium | ⬜ Need PDF |
+
+**Priority order:** PE 011 → TRS 961 Annex 6 → ICH Q1A(R2)
+
+**Warehouse structural deliverables** (no new PDFs required):
+
+| Task | Output | Status |
+|------|--------|--------|
+| Topic synthesis | `knowledge/topics/warehouse-storage-GDP.md` — cross-document synthesis of existing 27 warehouse docs | ⬜ To build |
+| Exam bank | `knowledge/exams/topics-warehouse.json` — warehouse question bank | ⬜ To build |
+
 ### Phase 6: Future — EU + Global Market Expansion
 
 **Trigger:** Add when EU-client volume justifies the effort, or when an EU inspection is scheduled.
@@ -417,7 +440,7 @@ All PDA TRs (42), top ISPE guides (14), PIC/S Annexes (4), FDA guidances + CFR c
 | EU GMP | Annex 15 — Qualification and Validation (2015) | Small | ⬜ Future |
 | EU GMP | Annex 2 — Biological Medicinal Products (2012) | Small | ⬜ Future |
 | EU GMP | Annex 20 — Quality Risk Management | Small | ⬜ Future |
-| WHO | TRS 961 Annex 6 — Sterile Products | Small | ⬜ Future |
+| ~~WHO~~ | ~~TRS 961 Annex 6 — Sterile Products~~ | ~~Small~~ | ✅ Moved to Phase 4b (Warehouse) |
 | WHO | TRS 1010 — Biological Products | Small | ⬜ Future |
 | ISO | ISO 11737-1 — Sterilization: Bioburden Determination | Small | ⬜ Need PDF |
 | ISO | ISO 11737-2 — Sterilization: Sterility Testing | Small | ⬜ Need PDF |
@@ -544,15 +567,15 @@ Add only when client mix justifies:
 |--------|---------|--------------------|--------------------|-------|
 | PDA | 42 | +5 (TR33, TR36, TR57, TR69, TR74, TR76) | +2 (TR47, TR81) | |
 | ISPE | 14 | +0 | — | GEP ❌ blocked (OCR) |
-| PIC/S | 4 | — | — | Complete |
+| PIC/S | 5 | ~~+1 (PE 011 GDP)~~ ✅ | — | PE 011 done |
 | FDA | 15 | — | — | +1 if Design Considerations |
-| ICH | 6 | — | — | Q5A–E / Q11 only if client mix warrants |
+| ICH | 6 | +1 (Q1A(R2) Stability) | — | Phase 4b warehouse |
 | USP | 76 | — | — | Complete |
 | ISO | 17 | +3 (14644-2/3, 17665) | +2 (11737-1/2) | 14971 ❌ blocked; 15225 ❌ blocked; +1 11608-3; +1 IEC 62366-1 |
 | IEC | 0 | +1 (62366-1) | — | |
 | EU GMP | 0 | — | +3 (Annex 15, 2, 20) | |
 | Ph.Eur. | 7 | — | +1 (EP 5.1.6) | |
-| WHO GMP | 0 | — | +2 (TRS 961, TRS 1010) | |
-| **Total** | **181** | **~188** | **~198** | |
+| WHO GMP | 0 | +1 (TRS 961 Annex 6) | +1 (TRS 1010) | TRS 961 moved to Phase 4b |
+| **Total** | **182** | **~189** | **~199** | |
 
-The infrastructure (tooling, workflow, dashboard, chatbot) is built and serving 181 documents. All uploaded Raw PDFs have been processed or marked blocked. Active focus shifts to Expert Knowledge Base and Layer 2 Operational Frameworks, with Phase 4–5 content additions when new PDFs are sourced.
+The infrastructure (tooling, workflow, dashboard, chatbot) is built and serving 182 documents. All uploaded Raw PDFs have been processed or marked blocked. Active focus shifts to Expert Knowledge Base and Layer 2 Operational Frameworks, with Phase 4–5 content additions when new PDFs are sourced.

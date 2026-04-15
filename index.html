@@ -169,6 +169,7 @@ async function loadData() {
         documents = Object.entries(data.reports)
             .filter(([, r]) => r.date && r.output_filename && (r.section_map || []).length > 0)
             .map(([key, r]) => ({
+                _key: key,
                 date: r.date,
                 title: [r.report_title_en, r.report_subtitle_en].filter(Boolean).join(': '),
                 titleZh: r.titleZh || '',
@@ -178,6 +179,7 @@ async function loadData() {
                 sections: (r.section_map || []).length,
                 pages: r.pages || '',
                 figures: r.figures || 0,
+                figures_count: r.figures_count || 0,
                 file: `${r.folder || key}/output/${r.output_filename}`
             }));
 
@@ -638,7 +640,10 @@ function renderCards(){
                         <span class="mono" style="font-size:11px;color:#aeaeb2">${d.pages||''}</span>
                         ${d.sections?`<span style="font-size:11px;color:#aeaeb2">${d.sections}&thinsp;sec</span>`:''}
                     </div>
+                    <div style="display:flex;align-items:center;gap:6px">
+                    ${d.figures_count>0?`<a href="figures-gallery.html?doc=${d._key}" target="_blank" class="open-btn" style="background:transparent;color:${sc.bar||sc.bg||'#1d1d1f'};border:1.5px solid ${sc.bar||sc.bg||'#d2d2d7'};font-size:11px;height:28px;padding:0 10px">\u{1F4F7} ${d.figures_count}</a>`:''}
                     ${btn}
+                    </div>
                 </div>
             </div>
         </div>`;
