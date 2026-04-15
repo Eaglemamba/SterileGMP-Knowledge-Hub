@@ -14,6 +14,8 @@ Usage:
     python gmp_engine.py merge TRXX                # Merge HTML sections → Complete.html + MD
     python gmp_engine.py merge --all               # Merge all reports
     python gmp_engine.py index                     # Audit INDEX-router.md coverage
+    python gmp_engine.py extract-figs TRXX         # Extract figures from processed PDF
+    python gmp_engine.py extract-figs --all        # Extract figures from all processed PDFs
 
 Workflow:
     1. gmp_engine.py scaffold ID [--source SOURCE]
@@ -1033,6 +1035,181 @@ def cmd_index(args):
 # MAIN
 # ============================================================
 
+# ============================================================
+# EXTRACT-FIGS — Extract figures from processed PDFs
+# ============================================================
+
+PDF_DIR = REPO_ROOT / "Raw pdfs" / "processed"
+MANIFEST_FILE = REPO_ROOT / "figures-manifest.json"
+MIN_IMG_SIZE = 5000       # Skip images smaller than 5 KB (icons, decorations)
+MIN_IMG_DIM = 80          # Skip images smaller than 80px in either dimension
+
+
+def _find_pdf_for_report(report_id: str) -> Path | None:
+    """Search processed PDFs for one matching the report ID."""
+    if not PDF_DIR.exists():
+        return None
+    rid = report_id.lower().replace("-", "").replace("_", "")
+    # Build search patterns from report_id
+    # e.g. TR26 → "tr26", PICS-PE011 → "pe011", ISPE-Vol5 → "vol5"
+    parts = report_id.lower().split("-")
+    candidates = []
+    for pdf_file in PDF_DIR.iterdir():
+        if not pdf_file.suffix.lower() == ".pdf":
+            continue
+        fn = pdf_file.stem.lower().replace("-", "").replace("_", "").replace(" ", "")
+        # Try exact match on last part (e.g., "tr26", "pe011", "vol5")
+        for part in parts:
+            clean = part.replace("-", "").replace("_", "")
+            if clean in fn:
+                candidates.append(pdf_file)
+                break
+    if len(candidates) == 1:
+        return candidates[0]
+    # Multiple matches — try stricter matching with full ID
+    for c in candidates:
+        fn = c.stem.lower().replace("-", "").replace("_", "").replace(" ", "")
+        if rid in fn:
+            return c
+    # Return first candidate if any
+    return candidates[0] if candidates else None
+
+
+def cmd_extract_figs(args):
+    """Extract figures from processed PDFs into <SOURCE>/<ID>/figures/."""
+    try:
+        import fitz  # PyMuPDF
+    except ImportError:
+        print("[ERROR] PyMuPDF required. Install: pip install PyMuPDF")
+        sys.exit(1)
+
+    all_reports = _load_all_reports()
+    manifest = {}
+
+    if args.all:
+        report_ids = [k for k, v in all_reports.items() if v.get("section_map")]
+    elif args.report_id:
+        report_ids = [args.report_id]
+    else:
+        print("[ERROR] Provide a report_id or --all")
+        sys.exit(1)
+
+    total_extracted = 0
+    total_skipped = 0
+    reports_with_figs = 0
+
+    for rid in sorted(report_ids):
+        config = all_reports.get(rid)
+        if not config or not config.get("section_map"):
+            continue
+
+        pdf_path = _find_pdf_for_report(rid)
+        if not pdf_path:
+            continue
+
+        report_dir = _report_dir(rid, config)
+        figs_dir = report_dir / "figures"
+        figs_dir.mkdir(parents=True, exist_ok=True)
+
+        try:
+            doc = fitz.open(str(pdf_path))
+        except Exception as e:
+            print(f"  [SKIP] {rid}: cannot open PDF ({e})")
+            continue
+        figures = []
+        seen_hashes = set()  # Deduplicate identical images
+
+        for page_num in range(len(doc)):
+            try:
+                page = doc[page_num]
+                images = page.get_images(full=True)
+            except Exception:
+                continue
+            for img_index, img_info in enumerate(images):
+                xref = img_info[0]
+                try:
+                    base_image = doc.extract_image(xref)
+                except Exception:
+                    continue
+                img_bytes = base_image.get("image")
+                if not img_bytes:
+                    continue
+                img_ext = base_image.get("ext", "png")
+
+                # Skip tiny images
+                if len(img_bytes) < MIN_IMG_SIZE:
+                    total_skipped += 1
+                    continue
+
+                # Skip by dimension
+                w = base_image.get("width", 0)
+                h = base_image.get("height", 0)
+                if w < MIN_IMG_DIM or h < MIN_IMG_DIM:
+                    total_skipped += 1
+                    continue
+
+                # Deduplicate
+                img_hash = hash(img_bytes)
+                if img_hash in seen_hashes:
+                    total_skipped += 1
+                    continue
+                seen_hashes.add(img_hash)
+
+                fig_name = f"fig-p{page_num + 1}-{img_index + 1}.{img_ext}"
+                fig_path = figs_dir / fig_name
+                with open(fig_path, "wb") as f:
+                    f.write(img_bytes)
+
+                figures.append({
+                    "file": fig_name,
+                    "page": page_num + 1,
+                    "width": w,
+                    "height": h,
+                    "size_kb": round(len(img_bytes) / 1024, 1),
+                })
+                total_extracted += 1
+
+        doc.close()
+
+        if figures:
+            reports_with_figs += 1
+            folder = config.get("folder", rid)
+            manifest[rid] = {
+                "total": len(figures),
+                "folder": folder,
+                "figures": figures,
+            }
+            print(f"  [OK] {rid}: {len(figures)} figures extracted")
+        else:
+            # Remove empty figures dir
+            if figs_dir.exists() and not any(figs_dir.iterdir()):
+                figs_dir.rmdir()
+
+    # Write manifest
+    with open(MANIFEST_FILE, "w", encoding="utf-8") as f:
+        json.dump(manifest, f, indent=2, ensure_ascii=False)
+    print(f"\n[SUCCESS] figures-manifest.json written")
+    print(f"  Reports with figures: {reports_with_figs}")
+    print(f"  Total figures extracted: {total_extracted}")
+    print(f"  Skipped (tiny/duplicate): {total_skipped}")
+
+    # Update reports.json with figures_count
+    with open(REPORTS_JSON, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    changed = 0
+    for rid, fig_data in manifest.items():
+        if rid in data["reports"]:
+            data["reports"][rid]["figures_count"] = fig_data["total"]
+            changed += 1
+    # Also set 0 for reports without figures
+    for rid in data["reports"]:
+        if rid not in manifest and "figures_count" not in data["reports"][rid]:
+            data["reports"][rid]["figures_count"] = 0
+    with open(REPORTS_JSON, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+    print(f"  reports.json updated: {changed} reports with figures_count")
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="SterileGMP Knowledge Hub — document processing engine",
@@ -1059,6 +1236,11 @@ def main():
     # index
     p_index = sub.add_parser("index", help="Audit INDEX-router.md coverage, show missing reports")
 
+    # extract-figs
+    p_figs = sub.add_parser("extract-figs", help="Extract figures from processed PDFs")
+    p_figs.add_argument("report_id", nargs="?", help="Report folder name")
+    p_figs.add_argument("--all", action="store_true", help="Extract from all processed PDFs")
+
     args = parser.parse_args()
 
     if args.command == "scaffold":
@@ -1069,6 +1251,8 @@ def main():
         cmd_merge(args)
     elif args.command == "index":
         cmd_index(args)
+    elif args.command == "extract-figs":
+        cmd_extract_figs(args)
     else:
         parser.print_help()
 

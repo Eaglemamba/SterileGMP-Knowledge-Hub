@@ -307,6 +307,7 @@ const departments = [
       {
         level: 1, label: 'Foundation', labelZh: '基礎必讀',
         docs: [
+          { key: 'PICS-PE011',    required: true,  why: 'PIC/S GDP Guide — comprehensive GDP framework for warehouse & distribution' },
           { key: 'USP-1079',      required: true,  why: 'Good Storage & Distribution Practices — the warehouse bible' },
           { key: 'TR52',          required: true,  why: 'Good Distribution Practices — GDP for supply chain' },
           { key: 'TR39',          required: true,  why: 'Temperature-Controlled Medicinal Products — cold chain fundamentals' },
