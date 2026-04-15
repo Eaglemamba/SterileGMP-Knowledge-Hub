@@ -244,8 +244,10 @@ Use these mappings to translate user questions before routing:
 
 | Topic | ★★★ Primary (section hint) | ★★ Secondary |
 |---|---|---|
-| GDP / distribution | TR52 (§1-§4 Framework) · TR46 (§3a-§7 Global) | TR39 |
-| Cold chain / temperature control | ISPE-CTC (§0-§4 Mapping & qualification) · TR39 · TR52 · TR46 | PtC-9, PtC-14 |
+| GDP / distribution | **PICS-PE011** (§0-§10 Comprehensive GDP) · TR52 (§1-§4 Framework) · TR46 (§3a-§7 Global) | TR39 |
+| Cold chain / temperature control | ISPE-CTC (§0-§4 Mapping & qualification) · TR39 · **PICS-PE011** (§9 Transportation) · TR52 · TR46 | PtC-9, PtC-14 |
+| Warehouse operations / storage | **PICS-PE011** (§3 Premises, §5 Operations) · USP-1079 | TR52, TR39 |
+| Returns / recalls / falsified products | **PICS-PE011** (§6 Complaints-Returns-Recalls) | TR52 |
 | Drug shortage prevention | TR68 (§2-§4 Risk triage, DSPR Plan) | PtC-9, TR91 |
 | Pandemic preparedness | PtC-9 (§1-§5 All domains) | TR68 |
 | Supplier / vendor qualification | PtC-13 §1-§3 · TR66 §5 | TR65, TR52, TR39, TR90 |
