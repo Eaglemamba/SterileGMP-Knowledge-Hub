@@ -1051,10 +1051,26 @@ MIN_TBL_WIDTH = 200       # Minimum table bbox width (pts)
 TBL_ZOOM = 2              # Render zoom factor for table screenshots
 
 
-def _find_pdf_for_report(report_id: str) -> Path | None:
-    """Search processed PDFs for one matching the report ID."""
+def _find_pdf_for_report(report_id: str, config: dict | None = None) -> Path | None:
+    """Search processed PDFs for one matching the report ID.
+
+    If the report config has an explicit ``pdf_file`` field, use that directly
+    (avoids fuzzy-match collisions for ambiguous IDs like Q10, Vol3, etc.).
+    """
     if not PDF_DIR.exists():
         return None
+
+    # --- Explicit pdf_file in reports.json (highest priority) ---
+    if config and "pdf_file" in config:
+        pdf_file_val = config["pdf_file"]
+        if not pdf_file_val:
+            # Empty string means "no PDF available" — skip fuzzy matching
+            return None
+        explicit = PDF_DIR / pdf_file_val
+        if explicit.exists():
+            return explicit
+        return None  # Explicit PDF specified but not found
+
     rid = report_id.lower().replace("-", "").replace("_", "")
     # Build search patterns from report_id
     # e.g. TR26 → "tr26", PICS-PE011 → "pe011", ISPE-Vol5 → "vol5"
@@ -1119,7 +1135,7 @@ def cmd_extract_figs(args):
         if not config or not config.get("section_map"):
             continue
 
-        pdf_path = _find_pdf_for_report(rid)
+        pdf_path = _find_pdf_for_report(rid, config)
         if not pdf_path:
             continue
 
