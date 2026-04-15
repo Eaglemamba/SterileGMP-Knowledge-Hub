@@ -1468,6 +1468,23 @@ def cmd_extract_figs(args):
                         if cap:
                             tbl_e["caption"] = cap
 
+        # Cross-page inheritance: unlabeled items inherit label from the
+        # last labeled item of the same type (continuation pages)
+        last_label = {"figure": None, "table": None}
+        last_caption = {"figure": None, "table": None}
+        for fig in figures:
+            ftype = fig["type"]
+            if "label" in fig:
+                last_label[ftype] = fig["label"]
+                last_caption[ftype] = fig.get("caption")
+            elif last_label[ftype]:
+                cont_label = last_label[ftype]
+                if not cont_label.endswith("(cont.)"):
+                    cont_label += " (cont.)"
+                fig["label"] = cont_label
+                if last_caption[ftype] and "caption" not in fig:
+                    fig["caption"] = last_caption[ftype]
+
         doc.close()
 
         if figures:
