@@ -33,6 +33,14 @@ Layer 3: Site-Specific Documents             ~/Amaran-Site-Knowledge/
   IQ/OQ/PQ reports, validation reports
 ```
 
+**Design Principle — Knowledge Cycle, Not Just Stack:**
+This architecture is not a one-way pipeline from reference → practice. It operates as a DIKW cycle (Data → Information → Knowledge → Application → feedback), aligned with PDA TR60 §6.5.1's model and ICH Q10 §1.6.1's KM definition. Concretely:
+- **Layer 1** (regulatory MDs) supplies *information*; **Expert KB** adds *knowledge* (interpretation, judgment, failure modes)
+- **Layer 2 skills** both **consume** knowledge (reading from Layer 1 + Expert KB) and **produce** knowledge (skill outputs feed back into Expert KB and Layer 3 as operational records)
+- **Education Layer** serves as the KM delivery mechanism — converting specialized knowledge into forms usable by non-specialist personnel (TR60 §6.5.3: "KM cannot be in a form usable only by specialized personnel")
+- System design follows **FAIR principles** (Findable, Accessible, Interoperable, Reusable) per TR60 §6.5.2: reports.json as single index (F), knowledge MDs in plain Markdown (A/I), skills as reusable frameworks (R)
+- **CDMO knowledge isolation**: client product knowledge stays in Layer 3 (private repo); platform/process knowledge is shared across layers (public repo). This mirrors TR60 Ch7's PTT model adapted for multi-client CDMO context.
+
 **Why separate repos for Layer 3:** This repo is public. Site SOPs contain proprietary process logic and may reflect client product information. Even after desensitization, the document structure itself carries IP risk. Layer 3 lives in a private repo, read locally by skills.
 
 ---
@@ -205,11 +213,21 @@ Single source of truth for learning path structure. Consumed by `learning-path.h
 
 ### What This Layer Is
 
-Layer 1 documents what regulations *say*. This layer documents what a practitioner *knows from doing it* — the failure modes, judgment calls, shortcuts that backfire, and decisions that aren't documented anywhere. Knowledge of this type is:
+Layer 1 documents what regulations *say*. This layer documents what a practitioner *knows from doing it* — the failure modes, judgment calls, shortcuts that backfire, and decisions that aren't documented anywhere. In TR60's Venn diagram model, Layer 1 is **Explicit Knowledge** (regulatory guidance, published research); this layer captures **Tacit Knowledge** (industry experience, SME insights, innovation patterns) — and the critical overlap between them. Knowledge of this type is:
 - Tacit (in someone's head, not in any guideline)
 - Rare (very few people have the same cross-functional exposure)
 - Perishable (gets lost when people move on or organizations change)
 - High-leverage (saves weeks of trial and error for the next person)
+
+**Capture Waves — Progressive Knowledge Extraction:**
+- **Wave 1** (current scope): David's 9 ownable knowledge files — one-time extraction from a single practitioner's career experience. This is the **tacit → explicit conversion** that TR60 §6.5.3 identifies as the hardest but most valuable KM activity.
+- **Wave 2** (organic growth): Operational decision patterns captured through Layer 2 skill usage. As skills run against real deviations, tech transfers, and batch releases, the decision rationale and outcomes accumulate as structured knowledge — analogous to TR60 Ch7's "Specification File maintained and updated throughout product lifetime."
+- **Wave 3** (future): Other key personnel's domain expertise (QA, QC, engineering leads). Extends the same capture methods to build organizational rather than individual knowledge.
+
+**CDMO-Specific Design Choices** (derived from TR60 §6.5.3 and Ch7):
+- **Stage 1→2 handoff risk**: TR60 identifies this transition as the primary knowledge-loss point ("different equipment, different batch sizes, different personnel responsibilities"). For a CDMO, this happens with *every new client tech transfer* — making robust KM existential, not optional.
+- **Living document principle**: Expert KB files are not write-once memoirs. Following TR60 Ch7's Product Technical Team model, they are updated when new evidence emerges (new deviation patterns, new client TT learnings, equipment lifecycle events).
+- **Platform knowledge isolation**: Expert KB captures *platform knowledge* (how our SA25 behaves, how our facility operates) separate from client product knowledge (which stays in Layer 3). This enables cross-client learning without confidentiality breach.
 
 ### Practitioner Background — David Kuo
 
@@ -265,6 +283,21 @@ Layer 1 documents what regulations *say*. This layer documents what a practition
 | `aseptic-deviation-patterns.md` | ⬜ Not started | Recall |
 | `anda-ctd-authorship.md` | ⬜ Not started | Recall |
 | `cdmo-operations-economics.md` | ⬜ Not started | Recall |
+
+### Knowledge Refresh Mechanism
+
+Expert KB files are living documents. Updates are triggered by **CDMO operational events**, not by calendar schedule — following TR60 Ch7's principle that "manufacturing-knowledge documentation files are updated regularly with all pertinent studies."
+
+| Trigger Event | Which Files to Review | What to Add |
+|--------------|----------------------|-------------|
+| New client tech transfer completed | `sponsor-cmo-bilateral-view.md`, `cdmo-operations-economics.md` | TT friction points, knowledge gaps encountered, onboarding lessons |
+| Annual APS campaign | `vanrx-SA25-lifecycle.md`, `aseptic-deviation-patterns.md` | Intervention patterns, media fill outcomes, equipment behavior drift |
+| Critical/Major deviation closed | `aseptic-deviation-patterns.md`, relevant topic file | Root cause pattern, investigation approach, corrective action effectiveness |
+| New product format integrated | `vanrx-SA25-lifecycle.md`, `cdmo-line-build-to-commercial.md` | Equipment configuration decisions, C&Q scope differences, format-specific risks |
+| Client or regulatory audit completed | `cdmo-operations-economics.md`, `ai-in-gmp-operations.md` | Observations received, audit preparation insights, documentation gaps identified |
+| Layer 2 skill used on real case | Relevant Expert KB file | Decision rationale and outcome — Wave 2 organic knowledge capture |
+
+> This mechanism closes the DIKW feedback loop: operational **data** (deviation records, batch data, audit findings) is processed through Layer 2 skills into **information**, interpreted against Layer 1 references into **knowledge**, and fed back into Expert KB as **application** insights for future use.
 
 ---
 
