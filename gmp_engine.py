@@ -1058,15 +1058,17 @@ CAPTION_RE = _re.compile(
 )
 
 
-def _extract_caption_lines(page) -> list[tuple[float, float, float, str, str]]:
+def _extract_caption_lines(page) -> list[tuple[float, float, float, str, str, float, float]]:
     """Extract lines containing figure/table labels from a page.
 
-    Returns list of (y_mid, y_top, y_bottom, label, full_text) sorted by y_mid.
+    Returns list of (y_mid, y_top, y_bottom, label, full_text, x_left, x_right)
+    sorted by y_mid.
     y_mid is the vertical midpoint of the first caption line.
     y_top / y_bottom are the full bounding box top/bottom covering all
     continuation lines (for multi-line captions).
     label is the matched pattern (e.g. "Figure 3.1-1").
     full_text is the caption text after the label, including continuation lines.
+    x_left / x_right are the horizontal extents of all caption lines.
     """
     results = []
     try:
@@ -1090,6 +1092,8 @@ def _extract_caption_lines(page) -> list[tuple[float, float, float, str, str]]:
             bbox = line.get("bbox", (0, 0, 0, 0))
             cap_y_top = bbox[1]
             cap_y_bottom = bbox[3]
+            cap_x_left = bbox[0]
+            cap_x_right = bbox[2]
             y_mid = (cap_y_top + cap_y_bottom) / 2
             label = m.group(1).strip()
             # Caption = everything after the label match
@@ -1111,16 +1115,18 @@ def _extract_caption_lines(page) -> list[tuple[float, float, float, str, str]]:
                     break
                 after = (after + " " + cont_text).strip() if after else cont_text
                 cap_y_bottom = cont_bbox[3]
+                cap_x_left = min(cap_x_left, cont_bbox[0])
+                cap_x_right = max(cap_x_right, cont_bbox[2])
                 skip_until = cont_idx
 
-            results.append((y_mid, cap_y_top, cap_y_bottom, label, after))
+            results.append((y_mid, cap_y_top, cap_y_bottom, label, after, cap_x_left, cap_x_right))
     results.sort(key=lambda x: x[0])
     return results
 
 
 def _match_caption(caption_lines: list, y_bottom: float, direction: str,
                    type_prefixes: list[str] | str, used: set,
-                   y_top: float | None = None) -> tuple[str | None, str | None, float | None, float | None]:
+                   y_top: float | None = None) -> tuple[str | None, str | None, float | None, float | None, float | None, float | None]:
     """Find the nearest caption line matching type_prefixes near an element.
 
     y_bottom: bottom edge of the element.
@@ -1128,8 +1134,10 @@ def _match_caption(caption_lines: list, y_bottom: float, direction: str,
     direction: 'below' (for figures — caption below image) or 'above' (for tables).
     Tries preferred direction first; falls back to opposite direction if no match.
     type_prefixes: single prefix string or list, e.g. ["fig"] or ["table", "tbl"].
-    Returns (label, caption, cap_y_top, cap_y_bottom) or (None, None, None, None).
+    Returns (label, caption, cap_y_top, cap_y_bottom, cap_x_left, cap_x_right)
+    or (None, None, None, None, None, None).
     cap_y_top/cap_y_bottom: bounding box of the matched caption text (multi-line aware).
+    cap_x_left/cap_x_right: horizontal extents of the caption text.
     """
     if isinstance(type_prefixes, str):
         type_prefixes = [type_prefixes]
@@ -1140,7 +1148,7 @@ def _match_caption(caption_lines: list, y_bottom: float, direction: str,
     def _search(direction_to_try):
         best = None
         best_dist = CAPTION_Y_THRESHOLD + 1
-        for i, (y_mid, _cy0, _cy1, label, caption) in enumerate(caption_lines):
+        for i, (y_mid, _cy0, _cy1, label, caption, _cx0, _cx1) in enumerate(caption_lines):
             if i in used:
                 continue
             if not any(label.lower().startswith(p) for p in prefixes):
@@ -1155,7 +1163,7 @@ def _match_caption(caption_lines: list, y_bottom: float, direction: str,
                     continue
             if abs(dist) < best_dist:
                 best_dist = abs(dist)
-                best = (i, label, caption, _cy0, _cy1)
+                best = (i, label, caption, _cy0, _cy1, _cx0, _cx1)
         return best
 
     # Try preferred direction first
@@ -1167,8 +1175,8 @@ def _match_caption(caption_lines: list, y_bottom: float, direction: str,
 
     if best:
         used.add(best[0])
-        return best[1], best[2] if best[2] else None, best[3], best[4]
-    return None, None, None, None
+        return best[1], best[2] if best[2] else None, best[3], best[4], best[5], best[6]
+    return None, None, None, None, None, None
 
 
 def _find_pdf_for_report(report_id: str, config: dict | None = None) -> Path | None:
@@ -1367,9 +1375,9 @@ def cmd_extract_figs(args):
                 file_size = fig_path.stat().st_size
 
                 # Match caption by y-proximity (caption below figure, fallback above)
-                label, caption, cap_y_top, cap_y_bottom = None, None, None, None
+                label, caption, cap_y_top, cap_y_bottom, cap_x0, cap_x1 = None, None, None, None, None, None
                 if img_y1 is not None:
-                    label, caption, cap_y_top, cap_y_bottom = _match_caption(
+                    label, caption, cap_y_top, cap_y_bottom, cap_x0, cap_x1 = _match_caption(
                         captions, img_y1, "below", ["fig", "figure"], used_captions,
                         y_top=img_y0)
 
@@ -1378,11 +1386,14 @@ def cmd_extract_figs(args):
                     try:
                         from PIL import Image
                         import io as _io
-                        # Render caption region from page
+                        # Render caption region from page — use the wider of
+                        # image bounds and caption text bounds so labels aren't clipped
+                        clip_x0 = min(img_x0, cap_x0) if cap_x0 is not None else img_x0
+                        clip_x1 = max(img_x1, cap_x1) if cap_x1 is not None else img_x1
                         cap_clip = fitz.Rect(
-                            max(0, img_x0 - 10),
+                            max(0, clip_x0 - 10),
                             max(0, cap_y_top - 6),
-                            min(page.rect.width, img_x1 + 10),
+                            min(page.rect.width, clip_x1 + 10),
                             min(page.rect.height, cap_y_bottom + 6),
                         )
                         cap_mat = fitz.Matrix(2, 2)  # 2x zoom for readability
@@ -1453,12 +1464,12 @@ def cmd_extract_figs(args):
                                    and f["type"] == "figure"
                                    and "label" not in f]
             unused_fig_captions = [
-                (i, y, _t, _b, lbl, cap) for i, (y, _t, _b, lbl, cap) in enumerate(captions)
+                (i, y, _t, _b, lbl, cap, _cx0, _cx1) for i, (y, _t, _b, lbl, cap, _cx0, _cx1) in enumerate(captions)
                 if i not in used_captions
                 and any(lbl.lower().startswith(p) for p in ("fig", "figure"))
             ]
             if page_figs_unlabeled and len(page_figs_unlabeled) == len(unused_fig_captions):
-                for fig_e, (_, _, _, _, lbl, cap) in zip(page_figs_unlabeled, unused_fig_captions):
+                for fig_e, (_, _, _, _, lbl, cap, _, _) in zip(page_figs_unlabeled, unused_fig_captions):
                     fig_e["label"] = lbl
                     if cap:
                         fig_e["caption"] = cap
@@ -1483,18 +1494,25 @@ def cmd_extract_figs(args):
                     if tw < MIN_TBL_WIDTH or th < MIN_TBL_HEIGHT:
                         continue
                     # Match label above table FIRST so we can extend clip
-                    tbl_label, tbl_caption, cap_y_top, cap_y_bottom = _match_caption(
+                    tbl_label, tbl_caption, cap_y_top, cap_y_bottom, tbl_cap_x0, tbl_cap_x1 = _match_caption(
                         tbl_captions, bbox[3], "above", ["table", "tbl"], tbl_used,
                         y_top=bbox[1])
 
                     # Render table region with padding; extend upward to include heading
+                    # Also widen horizontally to include caption text bounds
                     clip = fitz.Rect(bbox)
-                    clip.x0 = max(0, clip.x0 - 15)
+                    clip_left = clip.x0
+                    clip_right = clip.x1
+                    if tbl_cap_x0 is not None:
+                        clip_left = min(clip_left, tbl_cap_x0)
+                    if tbl_cap_x1 is not None:
+                        clip_right = max(clip_right, tbl_cap_x1)
+                    clip.x0 = max(0, clip_left - 15)
                     if cap_y_top is not None and cap_y_top < bbox[1]:
                         clip.y0 = max(0, cap_y_top - 15)
                     else:
                         clip.y0 = max(0, clip.y0 - 15)
-                    clip.x1 = min(page.rect.width, clip.x1 + 15)
+                    clip.x1 = min(page.rect.width, clip_right + 15)
                     clip.y1 = min(page.rect.height, clip.y1 + 15)
                     mat = fitz.Matrix(TBL_ZOOM, TBL_ZOOM)
                     try:
@@ -1543,12 +1561,12 @@ def cmd_extract_figs(args):
                                        and f["type"] == "table"
                                        and "label" not in f]
                 unused_tbl_captions = [
-                    (i, y, _t, _b, lbl, cap) for i, (y, _t, _b, lbl, cap) in enumerate(tbl_captions)
+                    (i, y, _t, _b, lbl, cap, _cx0, _cx1) for i, (y, _t, _b, lbl, cap, _cx0, _cx1) in enumerate(tbl_captions)
                     if i not in tbl_used
                     and any(lbl.lower().startswith(p) for p in ("table", "tbl"))
                 ]
                 if page_tbls_unlabeled and len(page_tbls_unlabeled) == len(unused_tbl_captions):
-                    for tbl_e, (_, _, _, _, lbl, cap) in zip(page_tbls_unlabeled, unused_tbl_captions):
+                    for tbl_e, (_, _, _, _, lbl, cap, _, _) in zip(page_tbls_unlabeled, unused_tbl_captions):
                         tbl_e["label"] = lbl
                         if cap:
                             tbl_e["caption"] = cap
