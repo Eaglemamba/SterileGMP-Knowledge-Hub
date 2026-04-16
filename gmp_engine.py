@@ -1380,10 +1380,10 @@ def cmd_extract_figs(args):
                         import io as _io
                         # Render caption region from page
                         cap_clip = fitz.Rect(
-                            max(0, img_x0 - 2),
-                            max(0, cap_y_top - 2),
-                            min(page.rect.width, img_x1 + 2),
-                            min(page.rect.height, cap_y_bottom + 2),
+                            max(0, img_x0 - 10),
+                            max(0, cap_y_top - 6),
+                            min(page.rect.width, img_x1 + 10),
+                            min(page.rect.height, cap_y_bottom + 6),
                         )
                         cap_mat = fitz.Matrix(2, 2)  # 2x zoom for readability
                         cap_pix = page.get_pixmap(matrix=cap_mat, clip=cap_clip)
@@ -1489,13 +1489,13 @@ def cmd_extract_figs(args):
 
                     # Render table region with padding; extend upward to include heading
                     clip = fitz.Rect(bbox)
-                    clip.x0 = max(0, clip.x0 - 5)
+                    clip.x0 = max(0, clip.x0 - 15)
                     if cap_y_top is not None and cap_y_top < bbox[1]:
-                        clip.y0 = max(0, cap_y_top - 5)
+                        clip.y0 = max(0, cap_y_top - 15)
                     else:
-                        clip.y0 = max(0, clip.y0 - 5)
-                    clip.x1 = min(page.rect.width, clip.x1 + 5)
-                    clip.y1 = min(page.rect.height, clip.y1 + 5)
+                        clip.y0 = max(0, clip.y0 - 15)
+                    clip.x1 = min(page.rect.width, clip.x1 + 15)
+                    clip.y1 = min(page.rect.height, clip.y1 + 15)
                     mat = fitz.Matrix(TBL_ZOOM, TBL_ZOOM)
                     try:
                         pix = page.get_pixmap(matrix=mat, clip=clip)
@@ -1552,6 +1552,36 @@ def cmd_extract_figs(args):
                         tbl_e["label"] = lbl
                         if cap:
                             tbl_e["caption"] = cap
+
+        # --- Filter out back-matter pages (PDA Officers, ads, etc.) ---
+        # Check the last few pages for non-content text markers
+        back_matter_pages = set()
+        BACK_MATTER_MARKERS = [
+            "pda officers", "pda directors", "pda publication",
+            "parenteral drug association", "bethesda, md",
+            "facility of the year", "advertisement",
+        ]
+        last_page = len(doc) - 1
+        for check_pg in range(max(0, last_page - 3), last_page + 1):
+            try:
+                pg_text = doc[check_pg].get_text().lower()
+                if any(marker in pg_text for marker in BACK_MATTER_MARKERS):
+                    back_matter_pages.add(check_pg + 1)  # 1-indexed
+            except Exception:
+                pass
+        if back_matter_pages:
+            before = len(figures)
+            figures = [f for f in figures if f["page"] not in back_matter_pages]
+            removed = before - len(figures)
+            if removed:
+                print(f"    [FILTER] Removed {removed} items from back-matter pages {sorted(back_matter_pages)}")
+                # Clean orphaned files
+                for pg in back_matter_pages:
+                    for old_f in figs_dir.glob(f"*-p{pg}-*"):
+                        try:
+                            old_f.unlink()
+                        except Exception:
+                            pass
 
         # Cross-page inheritance: unlabeled items inherit label from the
         # last labeled item of the same type (continuation pages)
