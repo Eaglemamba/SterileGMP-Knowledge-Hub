@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GAMP 5 2nd Ed — Appendices D4 & D5: Software Development &amp; Testing</title>
+    <title>GAMP 5 2nd Ed — Appendices D4 &amp; D5: Software Development &amp; Testing</title>
     <style>
 /* =============================================================
    ISPE GAMP 5 Educational Material — ISPE Green Theme
@@ -481,7 +481,20 @@ tr:nth-child(even) { background: #f7fafc; }
     </div>
     <div class="right-column">
         <h2>中文解說：第三方與開源軟體</h2>
-        <div class="concept-box">
+        <div class="note-box">
+            <h4>實際場景：R 語言在 QC 統計分析中的使用</h4>
+            <p>許多 QC 部門使用 R 進行統計分析（如製程能力分析 Cpk）。按 GAMP 5 D4.3.3.2：</p>
+            <ul>
+                <li>需鎖定使用的 R 版本（不能自動更新）</li>
+                <li>使用的 packages 版本需文件化（SBOM 概念）</li>
+                <li>更新前需評估對 GxP 功能的影響</li>
+                <li>統計計算邏輯需經驗證</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="concept-box">
             <h4>商業軟體 vs 開源軟體的監管策略</h4>
             <table>
                 <tr>
@@ -511,20 +524,7 @@ tr:nth-child(even) { background: #f7fafc; }
                 </tr>
             </table>
         </div>
-        <div class="note-box">
-            <h4>實際場景：R 語言在 QC 統計分析中的使用</h4>
-            <p>許多 QC 部門使用 R 進行統計分析（如製程能力分析 Cpk）。按 GAMP 5 D4.3.3.2：</p>
-            <ul>
-                <li>需鎖定使用的 R 版本（不能自動更新）</li>
-                <li>使用的 packages 版本需文件化（SBOM 概念）</li>
-                <li>更新前需評估對 GxP 功能的影響</li>
-                <li>統計計算邏輯需經驗證</li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-<!-- ============================================================
+        <!-- ============================================================
      APPENDIX D5 SECTION
      ============================================================ -->
 
@@ -584,7 +584,37 @@ tr:nth-child(even) { background: #f7fafc; }
     <div class="left-column">
         <h2>D5.3 Roles and Responsibilities</h2>
         <p>The regulated company should define roles and responsibilities covering testing. Such definitions typically are included in an appropriate planning document, test strategy, or company procedure. Traditional roles and responsibilities may include:</p>
-        <table>
+        <p>The quality of the test cases and the functionality they cover directly impact the effectiveness of the testing. No matter who is creating the test case, they should be an SME in the associated field.</p>
+    </div>
+    <div class="right-column">
+        <h2>中文解說：測試角色責任</h2>
+        <div class="concept-box">
+            <h4>獨立性原則 (Independence Principle)</h4>
+            <p>GAMP 5 強調兩個關鍵的獨立性要求：</p>
+            <ul>
+                <li><strong>開發者 ≠ 測試者</strong>：寫代碼的人不能測自己的代碼（因為只會確認預期行為，發現不了設計盲點）</li>
+                <li><strong>執行者 ≠ 審查者</strong>：執行測試的人不能審查自己的測試結果</li>
+            </ul>
+            <p>這與 GMP 中「雙人復核」原則相同，確保客觀性。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>SME 在測試設計中的角色</h4>
+            <p>GAMP 5 特別強調：測試案例的設計者必須是該領域的 SME。</p>
+            <p>以 LIMS 的樣品接收功能為例：</p>
+            <ul>
+                <li>IT 測試師寫的測試：「填欄位、存檔、確認無錯誤」</li>
+                <li>QC SME 寫的測試：「測試樣品ID重複時系統是否警示」、「測試緊急樣品優先級標記」、「測試跨部門接收時通知邏輯」</li>
+            </ul>
+            <p>SME 測試覆蓋業務場景，IT 測試覆蓋系統功能——兩者缺一不可。</p>
+        </div>
+        <div class="note-box">
+            <h4>供應商責任 vs 受規管公司責任</h4>
+            <p>無論外包多少，<strong>法規合規的最終責任永遠在受規管公司</strong>。供應商的測試可以被利用（leveraged），但不能取代受規管公司的驗證決策。</p>
+        </div>
+    </div>
+</div>
+
+<div class="concept-box"><table>
             <tr>
                 <th>Role</th>
                 <th>Responsibility</th>
@@ -626,37 +656,7 @@ tr:nth-child(even) { background: #f7fafc; }
                 <td>Should have already completed substantial testing in their development life cycle. Final responsibility for compliance remains with the regulated company irrespective of any outsourcing.</td>
             </tr>
         </table>
-        <p>The quality of the test cases and the functionality they cover directly impact the effectiveness of the testing. No matter who is creating the test case, they should be an SME in the associated field.</p>
-    </div>
-    <div class="right-column">
-        <h2>中文解說：測試角色責任</h2>
-        <div class="concept-box">
-            <h4>獨立性原則 (Independence Principle)</h4>
-            <p>GAMP 5 強調兩個關鍵的獨立性要求：</p>
-            <ul>
-                <li><strong>開發者 ≠ 測試者</strong>：寫代碼的人不能測自己的代碼（因為只會確認預期行為，發現不了設計盲點）</li>
-                <li><strong>執行者 ≠ 審查者</strong>：執行測試的人不能審查自己的測試結果</li>
-            </ul>
-            <p>這與 GMP 中「雙人復核」原則相同，確保客觀性。</p>
-        </div>
-        <div class="analogy-box">
-            <h4>SME 在測試設計中的角色</h4>
-            <p>GAMP 5 特別強調：測試案例的設計者必須是該領域的 SME。</p>
-            <p>以 LIMS 的樣品接收功能為例：</p>
-            <ul>
-                <li>IT 測試師寫的測試：「填欄位、存檔、確認無錯誤」</li>
-                <li>QC SME 寫的測試：「測試樣品ID重複時系統是否警示」、「測試緊急樣品優先級標記」、「測試跨部門接收時通知邏輯」</li>
-            </ul>
-            <p>SME 測試覆蓋業務場景，IT 測試覆蓋系統功能——兩者缺一不可。</p>
-        </div>
-        <div class="note-box">
-            <h4>供應商責任 vs 受規管公司責任</h4>
-            <p>無論外包多少，<strong>法規合規的最終責任永遠在受規管公司</strong>。供應商的測試可以被利用（leveraged），但不能取代受規管公司的驗證決策。</p>
-        </div>
-    </div>
-</div>
-
-<!-- D5 — Influences and Test Planning -->
+        </div><!-- D5 — Influences and Test Planning -->
 <div class="two-column">
     <div class="left-column">
         <h2>D5.4 Influences on Test Activities &amp; Table 25.1</h2>
@@ -672,7 +672,42 @@ tr:nth-child(even) { background: #f7fafc; }
         </ul>
 
         <h3>Table 25.1: Key Testing Activities and Their Influences</h3>
-        <table>
+        </div>
+    <div class="right-column">
+        <h2>中文解說：測試活動的影響因素</h2>
+        <div class="concept-box">
+            <h4>風險為基礎的測試策略 — 核心概念</h4>
+            <p>GAMP 5 最重要的訊息之一：<strong>不是所有功能都需要相同程度的測試。</strong></p>
+            <p>測試投入應與風險相稱 (commensurate with risk)：</p>
+            <ul>
+                <li><strong>高風險功能</strong>（如電子簽名、批次放行計算）→ 詳細腳本式測試 (Scripted Testing: Robust)</li>
+                <li><strong>中等風險功能</strong>（如報表生成）→ 腳本式有限測試 (Scripted Testing: Limited)</li>
+                <li><strong>低風險功能</strong>（如 UI 偏好設定）→ 非腳本式探索性測試即可</li>
+            </ul>
+        </div>
+        <div class="analogy-box">
+            <h4>LIMS 驗證的測試規劃實例</h4>
+            <p>以驗證一套 LIMS 為例，根據 Table 25.1 的邏輯：</p>
+            <ul>
+                <li><strong>需求定義</strong>：先完成 URS/FRS，確認 GxP 影響範圍</li>
+                <li><strong>供應商評估</strong>：供應商有 GAMP Category 4 軟體的完整測試記錄？可降低受規管公司的測試負擔</li>
+                <li><strong>功能風險評估</strong>：樣品追蹤功能（高風險）vs 報表格式設定（低風險）</li>
+                <li><strong>測試規劃</strong>：高風險功能需 100% 腳本式測試；低風險功能可用探索性測試</li>
+            </ul>
+        </div>
+        <div class="key-point-box">
+            <h4>驗證報告 (Validation Report) 的關鍵內容</h4>
+            <p>驗證報告不只是「所有測試通過」的總結，還需要：</p>
+            <ul>
+                <li>記錄測試記錄的存放位置（工具中？紙本協議書？）</li>
+                <li>列出未解決的偏差及其影響評估</li>
+                <li>確認驗證策略是否按計畫執行</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="concept-box"><table>
             <tr>
                 <th>Activity</th>
                 <th>Key Objectives/Focus</th>
@@ -729,42 +764,7 @@ tr:nth-child(even) { background: #f7fafc; }
                 <td>Applicable GxP Regulations; Validation Planning; Requirements; SLA</td>
             </tr>
         </table>
-    </div>
-    <div class="right-column">
-        <h2>中文解說：測試活動的影響因素</h2>
-        <div class="concept-box">
-            <h4>風險為基礎的測試策略 — 核心概念</h4>
-            <p>GAMP 5 最重要的訊息之一：<strong>不是所有功能都需要相同程度的測試。</strong></p>
-            <p>測試投入應與風險相稱 (commensurate with risk)：</p>
-            <ul>
-                <li><strong>高風險功能</strong>（如電子簽名、批次放行計算）→ 詳細腳本式測試 (Scripted Testing: Robust)</li>
-                <li><strong>中等風險功能</strong>（如報表生成）→ 腳本式有限測試 (Scripted Testing: Limited)</li>
-                <li><strong>低風險功能</strong>（如 UI 偏好設定）→ 非腳本式探索性測試即可</li>
-            </ul>
-        </div>
-        <div class="analogy-box">
-            <h4>LIMS 驗證的測試規劃實例</h4>
-            <p>以驗證一套 LIMS 為例，根據 Table 25.1 的邏輯：</p>
-            <ul>
-                <li><strong>需求定義</strong>：先完成 URS/FRS，確認 GxP 影響範圍</li>
-                <li><strong>供應商評估</strong>：供應商有 GAMP Category 4 軟體的完整測試記錄？可降低受規管公司的測試負擔</li>
-                <li><strong>功能風險評估</strong>：樣品追蹤功能（高風險）vs 報表格式設定（低風險）</li>
-                <li><strong>測試規劃</strong>：高風險功能需 100% 腳本式測試；低風險功能可用探索性測試</li>
-            </ul>
-        </div>
-        <div class="key-point-box">
-            <h4>驗證報告 (Validation Report) 的關鍵內容</h4>
-            <p>驗證報告不只是「所有測試通過」的總結，還需要：</p>
-            <ul>
-                <li>記錄測試記錄的存放位置（工具中？紙本協議書？）</li>
-                <li>列出未解決的偏差及其影響評估</li>
-                <li>確認驗證策略是否按計畫執行</li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-<!-- D5 — IQ/OQ/PQ for Computerized Systems -->
+    </div><!-- D5 — IQ/OQ/PQ for Computerized Systems -->
 <div class="two-column">
     <div class="left-column">
         <h2>D5.9.1.1 Installation Qualification (IQ) Context for Computerized Systems</h2>
@@ -855,78 +855,8 @@ tr:nth-child(even) { background: #f7fafc; }
         <h4>D5.5.2 Scripted vs. Unscripted Testing — Table 25.2 Summary</h4>
 
         <h3>Table 25.2: Acceptable Assurance Approaches and Records</h3>
-        <table>
-            <tr>
-                <th>Assurance Approach</th>
-                <th>Test Plan Required</th>
-                <th>Test Results Record</th>
-            </tr>
-            <tr>
-                <td><strong>Unscripted: Ad-hoc</strong><br><em>(least-burdensome)</em></td>
-                <td>Testing of requirements or functions with no test plan; details regarding any failures/deviations found</td>
-                <td>Summary description of requirements or functions tested; issues found and disposition; conclusion statement; record of who performed testing and date</td>
-            </tr>
-            <tr>
-                <td><strong>Unscripted: Error Guessing</strong></td>
-                <td>Testing of requirement or function failure modes with optional listing of expected failure modes in advance</td>
-                <td>Summary description of failure modes tested; issues found and disposition; conclusion statement; who performed and date</td>
-            </tr>
-            <tr>
-                <td><strong>Unscripted: Exploratory Testing</strong></td>
-                <td>Establish high-level test plan objectives for requirements or functions (no step-by-step procedure necessary)</td>
-                <td>Pass/fail for each test plan objective; issues found and disposition; conclusion statement; who performed and date</td>
-            </tr>
-            <tr>
-                <td><strong>Unscripted: Day in the Life Testing</strong></td>
-                <td>Establish high-level test plan objectives for normal day-to-day activities (no step-by-step procedure necessary). Test using business process experience and against SOPs where available.</td>
-                <td>Pass/fail for each test plan objective; summary of activities or business operation challenged; issues found; conclusion; who performed and date</td>
-            </tr>
-            <tr>
-                <td><strong>Scripted: Limited</strong></td>
-                <td>Limited test cases (step-by-step procedure) identified; expected results and values; independent review and approval of test plan</td>
-                <td>Pass/fail for each test case; result for each test case (critical values + pass/fail indication); issues found and disposition; conclusion; who performed and reviewed with dates</td>
-            </tr>
-            <tr>
-                <td><strong>Scripted: Robust</strong></td>
-                <td>Test objectives; test cases (step-by-step procedure); expected results and values; independent review and approval of test cases</td>
-                <td>Pass/fail for test case; details regarding any failures/deviations found and disposition; detailed report of assurance activity; result for each test case; issues found; conclusion; who performed and reviewed with dates</td>
-            </tr>
-        </table>
-
         <h4>Table 25.3: Comparison of Unscripted vs. Scripted Testing</h4>
-        <table>
-            <tr>
-                <th>Dimension</th>
-                <th>Unscripted Testing</th>
-                <th>Scripted Testing</th>
-            </tr>
-            <tr>
-                <td>Primary use</td>
-                <td>Supplement scripted testing; used for low/medium risk functions using critical thinking</td>
-                <td>Used alone or in combination for high-risk functions affecting patient safety, product quality, data integrity</td>
-            </tr>
-            <tr>
-                <td>Defect detection</td>
-                <td>Uncovers defects from poorly defined/implemented specs. Dynamic test design allows exploration against specs.</td>
-                <td>Tests against specs to confirm fitness. May miss issues not identified at time of test design.</td>
-            </tr>
-            <tr>
-                <td>Repeatability</td>
-                <td>Lower — no detailed step-by-step script</td>
-                <td>Higher — detailed scripted nature enables regression testing</td>
-            </tr>
-            <tr>
-                <td>Tester requirements</td>
-                <td>Relies on tester intuition, knowledge, and experience. More sensitive to inexperienced testers.</td>
-                <td>Tests expected user/system behaviors. Uses specification as the standard to verify.</td>
-            </tr>
-            <tr>
-                <td>Regression testing</td>
-                <td>Not directly suitable for regression testing</td>
-                <td>Manual or automated scripted testing can provide the basis for regression testing</td>
-            </tr>
-        </table>
-    </div>
+        </div>
     <div class="right-column">
         <h2>中文解說：測試文件要求</h2>
         <div class="key-point-box">
@@ -966,7 +896,77 @@ tr:nth-child(even) { background: #f7fafc; }
     </div>
 </div>
 
-<!-- D5 — Executing Tests and Test Evidence -->
+<div class="concept-box"><table>
+            <tr>
+                <th>Assurance Approach</th>
+                <th>Test Plan Required</th>
+                <th>Test Results Record</th>
+            </tr>
+            <tr>
+                <td><strong>Unscripted: Ad-hoc</strong><br><em>(least-burdensome)</em></td>
+                <td>Testing of requirements or functions with no test plan; details regarding any failures/deviations found</td>
+                <td>Summary description of requirements or functions tested; issues found and disposition; conclusion statement; record of who performed testing and date</td>
+            </tr>
+            <tr>
+                <td><strong>Unscripted: Error Guessing</strong></td>
+                <td>Testing of requirement or function failure modes with optional listing of expected failure modes in advance</td>
+                <td>Summary description of failure modes tested; issues found and disposition; conclusion statement; who performed and date</td>
+            </tr>
+            <tr>
+                <td><strong>Unscripted: Exploratory Testing</strong></td>
+                <td>Establish high-level test plan objectives for requirements or functions (no step-by-step procedure necessary)</td>
+                <td>Pass/fail for each test plan objective; issues found and disposition; conclusion statement; who performed and date</td>
+            </tr>
+            <tr>
+                <td><strong>Unscripted: Day in the Life Testing</strong></td>
+                <td>Establish high-level test plan objectives for normal day-to-day activities (no step-by-step procedure necessary). Test using business process experience and against SOPs where available.</td>
+                <td>Pass/fail for each test plan objective; summary of activities or business operation challenged; issues found; conclusion; who performed and date</td>
+            </tr>
+            <tr>
+                <td><strong>Scripted: Limited</strong></td>
+                <td>Limited test cases (step-by-step procedure) identified; expected results and values; independent review and approval of test plan</td>
+                <td>Pass/fail for each test case; result for each test case (critical values + pass/fail indication); issues found and disposition; conclusion; who performed and reviewed with dates</td>
+            </tr>
+            <tr>
+                <td><strong>Scripted: Robust</strong></td>
+                <td>Test objectives; test cases (step-by-step procedure); expected results and values; independent review and approval of test cases</td>
+                <td>Pass/fail for test case; details regarding any failures/deviations found and disposition; detailed report of assurance activity; result for each test case; issues found; conclusion; who performed and reviewed with dates</td>
+            </tr>
+        </table>
+
+        </div><div class="concept-box"><table>
+            <tr>
+                <th>Dimension</th>
+                <th>Unscripted Testing</th>
+                <th>Scripted Testing</th>
+            </tr>
+            <tr>
+                <td>Primary use</td>
+                <td>Supplement scripted testing; used for low/medium risk functions using critical thinking</td>
+                <td>Used alone or in combination for high-risk functions affecting patient safety, product quality, data integrity</td>
+            </tr>
+            <tr>
+                <td>Defect detection</td>
+                <td>Uncovers defects from poorly defined/implemented specs. Dynamic test design allows exploration against specs.</td>
+                <td>Tests against specs to confirm fitness. May miss issues not identified at time of test design.</td>
+            </tr>
+            <tr>
+                <td>Repeatability</td>
+                <td>Lower — no detailed step-by-step script</td>
+                <td>Higher — detailed scripted nature enables regression testing</td>
+            </tr>
+            <tr>
+                <td>Tester requirements</td>
+                <td>Relies on tester intuition, knowledge, and experience. More sensitive to inexperienced testers.</td>
+                <td>Tests expected user/system behaviors. Uses specification as the standard to verify.</td>
+            </tr>
+            <tr>
+                <td>Regression testing</td>
+                <td>Not directly suitable for regression testing</td>
+                <td>Manual or automated scripted testing can provide the basis for regression testing</td>
+            </tr>
+        </table>
+    </div><!-- D5 — Executing Tests and Test Evidence -->
 <div class="two-column">
     <div class="left-column">
         <h2>D5.5.3 Executing Tests</h2>
@@ -1004,7 +1004,28 @@ tr:nth-child(even) { background: #f7fafc; }
             <h4>缺陷管理 (Defect Management) — 驗證期間的決策框架</h4>
             <p>測試期間發現的缺陷需要按嚴重程度分類，然後決定是否可以繼續推進驗證：</p>
         </div>
-        <table>
+        <div class="key-point-box">
+            <h4>例外報告原則 (Exception-Reporting Approach)</h4>
+            <p>GAMP 5 的高效測試記錄原則：</p>
+            <ul>
+                <li><strong>正常情況</strong>：記錄「Pass」就足夠</li>
+                <li><strong>異常情況</strong>：記錄「Fail」+ 預期結果 + 實際結果 + 差異描述</li>
+            </ul>
+            <p>這消除了大量不必要的文件工作（如逐步截圖），讓測試者可以專注在真正有價值的缺陷記錄上。</p>
+        </div>
+        <div class="note-box">
+            <h4>測試審查的重點是功能，不是文件格式</h4>
+            <p>GAMP 5 明確指出，測試審查的焦點是：<em>「功能是否正確運作？」</em>，而非<em>「測試者是否精確遵循每個步驟？」</em></p>
+            <p>常見的過度稽核現象（GAMP 5 明確不鼓勵）：</p>
+            <ul>
+                <li>要求測試者在每一步旁邊簽名確認</li>
+                <li>因為日期格式寫成 01/04 而非 2026-04-01 就 reject 整份測試記錄</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="concept-box"><table>
             <tr>
                 <th>缺陷類型</th>
                 <th>定義</th>
@@ -1030,28 +1051,7 @@ tr:nth-child(even) { background: #f7fafc; }
                 <td>Go — 可放行，但需在驗證報告中說明</td>
             </tr>
         </table>
-        <div class="key-point-box">
-            <h4>例外報告原則 (Exception-Reporting Approach)</h4>
-            <p>GAMP 5 的高效測試記錄原則：</p>
-            <ul>
-                <li><strong>正常情況</strong>：記錄「Pass」就足夠</li>
-                <li><strong>異常情況</strong>：記錄「Fail」+ 預期結果 + 實際結果 + 差異描述</li>
-            </ul>
-            <p>這消除了大量不必要的文件工作（如逐步截圖），讓測試者可以專注在真正有價值的缺陷記錄上。</p>
-        </div>
-        <div class="note-box">
-            <h4>測試審查的重點是功能，不是文件格式</h4>
-            <p>GAMP 5 明確指出，測試審查的焦點是：<em>「功能是否正確運作？」</em>，而非<em>「測試者是否精確遵循每個步驟？」</em></p>
-            <p>常見的過度稽核現象（GAMP 5 明確不鼓勵）：</p>
-            <ul>
-                <li>要求測試者在每一步旁邊簽名確認</li>
-                <li>因為日期格式寫成 01/04 而非 2026-04-01 就 reject 整份測試記錄</li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-<!-- D5 — Types of Testing -->
+        </div><!-- D5 — Types of Testing -->
 <div class="two-column">
     <div class="left-column">
         <h2>D5.6 Types of Testing</h2>
@@ -1088,31 +1088,6 @@ tr:nth-child(even) { background: #f7fafc; }
     </div>
     <div class="right-column">
         <h2>中文解說：測試類型詳解</h2>
-        <div class="concept-box">
-            <h4>黑盒 vs 白盒測試 — 誰來做？</h4>
-            <table>
-                <tr>
-                    <th></th>
-                    <th>黑盒測試 (Black Box)</th>
-                    <th>白盒測試 (White Box)</th>
-                </tr>
-                <tr>
-                    <td>執行者</td>
-                    <td>業務 SME、QA、使用者</td>
-                    <td>開發工程師、測試工程師</td>
-                </tr>
-                <tr>
-                    <td>關注點</td>
-                    <td>輸入/輸出是否符合規格</td>
-                    <td>代碼路徑、邏輯分支</td>
-                </tr>
-                <tr>
-                    <td>GAMP 角色</td>
-                    <td>受規管公司 OQ/PQ 主要方式</td>
-                    <td>供應商開發測試的主要方式</td>
-                </tr>
-            </table>
-        </div>
         <div class="key-point-box">
             <h4>迴歸測試 (Regression Testing) — 軟體更新後最關鍵的測試</h4>
             <p>當 LIMS 供應商發布 v4.1 → v4.2 更新時，需要判斷哪些測試必須重跑：</p>
@@ -1146,7 +1121,32 @@ tr:nth-child(even) { background: #f7fafc; }
     </div>
 </div>
 
-<!-- D5 — Test Environments -->
+<div class="concept-box">
+            <h4>黑盒 vs 白盒測試 — 誰來做？</h4>
+            <table>
+                <tr>
+                    <th></th>
+                    <th>黑盒測試 (Black Box)</th>
+                    <th>白盒測試 (White Box)</th>
+                </tr>
+                <tr>
+                    <td>執行者</td>
+                    <td>業務 SME、QA、使用者</td>
+                    <td>開發工程師、測試工程師</td>
+                </tr>
+                <tr>
+                    <td>關注點</td>
+                    <td>輸入/輸出是否符合規格</td>
+                    <td>代碼路徑、邏輯分支</td>
+                </tr>
+                <tr>
+                    <td>GAMP 角色</td>
+                    <td>受規管公司 OQ/PQ 主要方式</td>
+                    <td>供應商開發測試的主要方式</td>
+                </tr>
+            </table>
+        </div>
+        <!-- D5 — Test Environments -->
 <div class="two-column">
     <div class="left-column">
         <h2>D5.7 Test Environments</h2>
@@ -1179,7 +1179,24 @@ tr:nth-child(even) { background: #f7fafc; }
                 <li>難以維持「已驗證狀態」的完整性</li>
             </ul>
         </div>
-        <div class="concept-box">
+        <div class="analogy-box">
+            <h4>環境等同性 (Functional Equivalency) = 分析方法轉移</h4>
+            <p>如果在實驗室 A 驗證了分析方法，要在實驗室 B 使用，需要做方法轉移確認，證明兩個實驗室的結果具有可比性。</p>
+            <p>測試環境也一樣：在 TEST 環境中完成的測試，若環境配置與 PROD 有差異，需要評估差異是否影響測試結果的有效性。若不影響（例如：審計追蹤功能的測試結果在兩個環境中相同），則無需在 PROD 中重複測試。</p>
+        </div>
+        <div class="note-box">
+            <h4>SaaS 環境的特殊考量</h4>
+            <p>對於雲端 SaaS 系統（如某些雲端 LIMS），測試環境由供應商管理。關鍵要求：</p>
+            <ul>
+                <li>確認供應商提供的 sandbox/staging 環境與生產環境在功能上是等同的</li>
+                <li>記錄每次測試時的環境版本（供應商可能隨時更新）</li>
+                <li>在合約 (SLA) 中明確測試環境的維護責任</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="concept-box">
             <h4>三層環境架構的最佳實踐</h4>
             <table>
                 <tr>
@@ -1204,24 +1221,7 @@ tr:nth-child(even) { background: #f7fafc; }
                 </tr>
             </table>
         </div>
-        <div class="analogy-box">
-            <h4>環境等同性 (Functional Equivalency) = 分析方法轉移</h4>
-            <p>如果在實驗室 A 驗證了分析方法，要在實驗室 B 使用，需要做方法轉移確認，證明兩個實驗室的結果具有可比性。</p>
-            <p>測試環境也一樣：在 TEST 環境中完成的測試，若環境配置與 PROD 有差異，需要評估差異是否影響測試結果的有效性。若不影響（例如：審計追蹤功能的測試結果在兩個環境中相同），則無需在 PROD 中重複測試。</p>
-        </div>
-        <div class="note-box">
-            <h4>SaaS 環境的特殊考量</h4>
-            <p>對於雲端 SaaS 系統（如某些雲端 LIMS），測試環境由供應商管理。關鍵要求：</p>
-            <ul>
-                <li>確認供應商提供的 sandbox/staging 環境與生產環境在功能上是等同的</li>
-                <li>記錄每次測試時的環境版本（供應商可能隨時更新）</li>
-                <li>在合約 (SLA) 中明確測試環境的維護責任</li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-<!-- D5 — Leveraging Supplier Testing -->
+        <!-- D5 — Leveraging Supplier Testing -->
 <div class="two-column">
     <div class="left-column">
         <h2>D5.8 Leveraging Previous Testing Including Supplier Testing</h2>
@@ -1335,7 +1335,30 @@ tr:nth-child(even) { background: #f7fafc; }
     </div>
     <div class="right-column">
         <h2>中文解說：各軟體類別測試策略</h2>
-        <div class="concept-box">
+        <div class="key-point-box">
+            <h4>重要的「全系統通用」測試清單</h4>
+            <p>不論 Category 為何，D5.9.1.2 的清單中有幾項幾乎每次都會被查核：</p>
+            <ul>
+                <li><strong>稽核追蹤 (Audit Trail)</strong>：21 CFR Part 11 / Annex 11 核心要求</li>
+                <li><strong>電子簽名</strong>：必須測試意義聲明、不可否認性</li>
+                <li><strong>備份與還原 (Backup &amp; Restore)</strong>：還原測試常被忽略，但後果嚴重</li>
+                <li><strong>關鍵計算</strong>：所有數值計算必須用已知數據驗證結果</li>
+            </ul>
+        </div>
+        <div class="analogy-box">
+            <h4>LIMS 是 Category 4 的代表</h4>
+            <p>大多數 LIMS（如 LabWare、Thermo LIMS、Veeva Vault QMS 的實驗室模組）屬於 Category 4：</p>
+            <ul>
+                <li><strong>IQ</strong>：確認安裝版本、資料庫設置、網路配置</li>
+                <li><strong>OQ</strong>：測試所有已配置功能是否符合 FRS（功能需求規格）</li>
+                <li><strong>PQ</strong>：業務使用者用真實場景執行端對端工作流程</li>
+                <li>供應商的測試可用於減少 OQ 中對標準功能的重複測試</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="concept-box">
             <h4>四個 GAMP 類別的測試策略比較</h4>
             <table>
                 <tr>
@@ -1370,30 +1393,7 @@ tr:nth-child(even) { background: #f7fafc; }
                 </tr>
             </table>
         </div>
-        <div class="key-point-box">
-            <h4>重要的「全系統通用」測試清單</h4>
-            <p>不論 Category 為何，D5.9.1.2 的清單中有幾項幾乎每次都會被查核：</p>
-            <ul>
-                <li><strong>稽核追蹤 (Audit Trail)</strong>：21 CFR Part 11 / Annex 11 核心要求</li>
-                <li><strong>電子簽名</strong>：必須測試意義聲明、不可否認性</li>
-                <li><strong>備份與還原 (Backup & Restore)</strong>：還原測試常被忽略，但後果嚴重</li>
-                <li><strong>關鍵計算</strong>：所有數值計算必須用已知數據驗證結果</li>
-            </ul>
-        </div>
-        <div class="analogy-box">
-            <h4>LIMS 是 Category 4 的代表</h4>
-            <p>大多數 LIMS（如 LabWare、Thermo LIMS、Veeva Vault QMS 的實驗室模組）屬於 Category 4：</p>
-            <ul>
-                <li><strong>IQ</strong>：確認安裝版本、資料庫設置、網路配置</li>
-                <li><strong>OQ</strong>：測試所有已配置功能是否符合 FRS（功能需求規格）</li>
-                <li><strong>PQ</strong>：業務使用者用真實場景執行端對端工作流程</li>
-                <li>供應商的測試可用於減少 OQ 中對標準功能的重複測試</li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-<!-- ============================================================
+        <!-- ============================================================
      SECTION SUMMARY
      ============================================================ -->
 
@@ -1431,7 +1431,7 @@ tr:nth-child(even) { background: #f7fafc; }
 
 </div><!-- end main-content -->
 
-<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">⇧</button>
 
 <script>
 window.addEventListener('scroll', function() {

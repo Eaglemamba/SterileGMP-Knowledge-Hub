@@ -1298,7 +1298,48 @@ RMON   → 網路流量分析（Probe → 分析平台）
         <p>Table A11.1 represents actual settings for a network segment and may be used as guidance for a company to decide on its own metrics and limits.</p>
 
         <div style="overflow-x:auto;">
-            <table>
+            </div>
+        <p>A monitoring frequency of one to four times a month should be considered; in larger organizations, monitoring would be automated and run almost continuously.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念：Alert vs. Action 雙層門檻</h4>
+            <p>表格採用兩層門檻設計：</p>
+            <ul>
+                <li><strong>Alert Limit（警示限）</strong>：超過此值需記錄並持續觀察，但不一定立即介入</li>
+                <li><strong>Action Limit（行動限）</strong>：超過此值必須立即採取矯正措施</li>
+            </ul>
+            <p>這與 GxP 製程監控中的「警戒限／行動限」概念完全一致，是品質管理思維在 IT 基礎設施層面的延伸。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 — 遺失封包（Discards）在 GxP 的意涵</h4>
+            <p>網路封包遺失不只是效能問題——在 GxP 環境中，若資料傳輸過程中有封包遺失，可能導致電子記錄不完整或時序錯亂。行動限 &gt;0.5% 看起來很小，但在高頻資料採集的場景（如批次製程監控）中，0.5% 的遺失率已可能導致資料缺口。</p>
+        </div>
+        <div class="formula-box">
+            <h4>監控頻率建議</h4>
+            <pre>
+小型組織：每月 1–4 次人工檢查
+大型組織：自動化持續監控（接近即時）
+
+建議配置：
+  SNMP polling  → 每 5 分鐘
+  Syslog        → 即時收集
+  RMON 報告     → 每日/每週彙總
+  SLA 報告      → 每月提交管理層
+            </pre>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若 Switch CPU-load 連續三天超過 Alert Limit（&gt;50%），你應採取哪些步驟？</li>
+                <li>如何向非技術背景的 QA 主管解釋「封包遺失率」與資料完整性的關聯？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="concept-box"><table>
                 <caption style="font-weight:600; color:#1e3a5f; padding-bottom:0.5rem; caption-side:top;">Table A11.1: Example Network Performance Limits</caption>
                 <thead>
                     <tr>
@@ -1347,48 +1388,7 @@ RMON   → 網路流量分析（Probe → 分析平台）
                     </tr>
                 </tbody>
             </table>
-        </div>
-        <p>A monitoring frequency of one to four times a month should be considered; in larger organizations, monitoring would be automated and run almost continuously.</p>
-    </div>
-    <div class="right-column">
-        <h2>導師解析 Tutorial Commentary</h2>
-        <div class="concept-box">
-            <h4>核心概念：Alert vs. Action 雙層門檻</h4>
-            <p>表格採用兩層門檻設計：</p>
-            <ul>
-                <li><strong>Alert Limit（警示限）</strong>：超過此值需記錄並持續觀察，但不一定立即介入</li>
-                <li><strong>Action Limit（行動限）</strong>：超過此值必須立即採取矯正措施</li>
-            </ul>
-            <p>這與 GxP 製程監控中的「警戒限／行動限」概念完全一致，是品質管理思維在 IT 基礎設施層面的延伸。</p>
-        </div>
-        <div class="note-box">
-            <h4>重點提示 — 遺失封包（Discards）在 GxP 的意涵</h4>
-            <p>網路封包遺失不只是效能問題——在 GxP 環境中，若資料傳輸過程中有封包遺失，可能導致電子記錄不完整或時序錯亂。行動限 &gt;0.5% 看起來很小，但在高頻資料採集的場景（如批次製程監控）中，0.5% 的遺失率已可能導致資料缺口。</p>
-        </div>
-        <div class="formula-box">
-            <h4>監控頻率建議</h4>
-            <pre>
-小型組織：每月 1–4 次人工檢查
-大型組織：自動化持續監控（接近即時）
-
-建議配置：
-  SNMP polling  → 每 5 分鐘
-  Syslog        → 即時收集
-  RMON 報告     → 每日/每週彙總
-  SLA 報告      → 每月提交管理層
-            </pre>
-        </div>
-        <div class="practice-box">
-            <h4>練習思考 Practice Questions</h4>
-            <ol>
-                <li>若 Switch CPU-load 連續三天超過 Alert Limit（&gt;50%），你應採取哪些步驟？</li>
-                <li>如何向非技術背景的 QA 主管解釋「封包遺失率」與資料完整性的關聯？</li>
-            </ol>
-        </div>
-    </div>
-</div>
-
-<!-- ============================================================ -->
+        </div><!-- ============================================================ -->
 <!-- APPENDIX 12: GLOSSARY -->
 <!-- ============================================================ -->
 
@@ -1398,7 +1398,34 @@ RMON   → 網路流量分析（Probe → 分析平台）
     <div class="left-column">
         <h2>原文內容 Original Text — App. 12 §1 Definitions</h2>
 
-        <table>
+        </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念：三組容易混淆的術語</h4>
+            <p><strong>Assessment（評估）vs. Audit（稽核）</strong><br>
+            最關鍵的差異在於「獨立性」：評估可由內部主題專家執行（不要求獨立）；稽核必須是系統性、獨立且有文件的。一個部門不能稽核自己——但可以自我評估。</p>
+            <p><strong>Qualification（資格確認）vs. Validation（驗證）</strong><br>
+            資格確認針對「設備/系統能否達到預期功能」；驗證針對「製程能否持續生產符合規格的產品」。資格確認（IQ/OQ/PQ）通常是驗證的前提條件。</p>
+            <p><strong>Building Block（建構組件）vs. Computerized System（電腦化系統）</strong><br>
+            Building Block 是以「最大化重用」為目的設計的標準化組件群；Computerized System 是滿足特定使用者需求的整體系統。路由器、交換機等標準基礎設施組件不被視為 Computerized System，因此其合規要求較輕。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 — Periodic Review（定期審查）</h4>
+            <p>定期審查的頻率取決於三個因素：複雜性、關鍵性、變更率。GxP 應用系統通常每年執行一次；基礎設施系統可能每兩年一次。審查的目的是確認系統仍處於「已驗證狀態（validated state）」，若發現偏離，必須啟動再驗證。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 — Privileged Access（特權存取）</h4>
+            <p>特權存取（系統管理員帳號）在 GxP 系統中屬於高風險控制點。任何特權存取操作都應被記錄、核准，並納入定期審查。21 CFR Part 11 要求審計追蹤包括「誰」在「何時」做了「什麼」——特權帳號的操作記錄尤為重要。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 — Assessment vs. Audit</h4>
+            <p>評估（Assessment）就像主廚試吃自己餐廳的菜色後記錄改善點；稽核（Audit）就像米其林評審匿名前來，依據標準作客觀評判——前者可以自己做，後者必須來自外部或獨立的人。</p>
+        </div>
+    </div>
+</div>
+
+<div class="concept-box"><table>
             <thead>
                 <tr>
                     <th>Term</th>
@@ -1508,39 +1535,41 @@ RMON   → 網路流量分析（Probe → 分析平台）
                 </tr>
             </tbody>
         </table>
-    </div>
-    <div class="right-column">
-        <h2>導師解析 Tutorial Commentary</h2>
-        <div class="concept-box">
-            <h4>核心概念：三組容易混淆的術語</h4>
-            <p><strong>Assessment（評估）vs. Audit（稽核）</strong><br>
-            最關鍵的差異在於「獨立性」：評估可由內部主題專家執行（不要求獨立）；稽核必須是系統性、獨立且有文件的。一個部門不能稽核自己——但可以自我評估。</p>
-            <p><strong>Qualification（資格確認）vs. Validation（驗證）</strong><br>
-            資格確認針對「設備/系統能否達到預期功能」；驗證針對「製程能否持續生產符合規格的產品」。資格確認（IQ/OQ/PQ）通常是驗證的前提條件。</p>
-            <p><strong>Building Block（建構組件）vs. Computerized System（電腦化系統）</strong><br>
-            Building Block 是以「最大化重用」為目的設計的標準化組件群；Computerized System 是滿足特定使用者需求的整體系統。路由器、交換機等標準基礎設施組件不被視為 Computerized System，因此其合規要求較輕。</p>
-        </div>
-        <div class="note-box">
-            <h4>重點提示 — Periodic Review（定期審查）</h4>
-            <p>定期審查的頻率取決於三個因素：複雜性、關鍵性、變更率。GxP 應用系統通常每年執行一次；基礎設施系統可能每兩年一次。審查的目的是確認系統仍處於「已驗證狀態（validated state）」，若發現偏離，必須啟動再驗證。</p>
-        </div>
-        <div class="note-box">
-            <h4>重點提示 — Privileged Access（特權存取）</h4>
-            <p>特權存取（系統管理員帳號）在 GxP 系統中屬於高風險控制點。任何特權存取操作都應被記錄、核准，並納入定期審查。21 CFR Part 11 要求審計追蹤包括「誰」在「何時」做了「什麼」——特權帳號的操作記錄尤為重要。</p>
-        </div>
-        <div class="analogy-box">
-            <h4>比喻說明 — Assessment vs. Audit</h4>
-            <p>評估（Assessment）就像主廚試吃自己餐廳的菜色後記錄改善點；稽核（Audit）就像米其林評審匿名前來，依據標準作客觀評判——前者可以自己做，後者必須來自外部或獨立的人。</p>
-        </div>
-    </div>
-</div>
-
-<!-- App 12 Section 2: Acronyms -->
+    </div><!-- App 12 Section 2: Acronyms -->
 <div class="two-column">
     <div class="left-column">
         <h2>原文內容 Original Text — App. 12 §2 Acronyms and Abbreviations</h2>
         <div style="overflow-x:auto;">
-            <table>
+            </div>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念：縮寫背後的重要性分層</h4>
+            <p>這份縮寫表反映了本指南所涉及的多個合規層面，幾個值得特別注意的縮寫：</p>
+            <ul>
+                <li><strong>CSV（電腦化系統驗證）</strong>：整份指南存在的根本原因，確保電腦化系統符合 GxP 要求</li>
+                <li><strong>IQ / OQ / PQ</strong>：資格確認三階段，任何 GxP 系統上線前的必經程序</li>
+                <li><strong>CAPA</strong>：矯正預防措施，偏差發生後的正式回應機制</li>
+                <li><strong>IDS</strong>：入侵偵測系統，資安控制的重要組件</li>
+                <li><strong>UPS</strong>：不斷電系統，GxP 系統可用性保障的硬體基礎</li>
+            </ul>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 — GxP 中的 x</h4>
+            <p>GxP 中的「x」代表 Clinical（臨床）、Distribution（配銷）、Laboratory（實驗室）、Manufacturing（製造）四個領域。作為 CDMO，你的作業橫跨 GMP（製造）與 GLP（實驗室），因此 IT 系統必須同時符合兩者的要求。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一個 LIMS 系統同時屬於哪幾個縮寫所代表的範疇（CSV、GxP Application、Computerized System）？</li>
+                <li>UPS 在 GxP 資料完整性框架中扮演什麼角色？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="concept-box"><table>
                 <thead>
                     <tr>
                         <th>Acronym</th>
@@ -1593,36 +1622,7 @@ RMON   → 網路流量分析（Probe → 分析平台）
                     <tr><td>WAP</td><td>Wireless Access Point</td></tr>
                 </tbody>
             </table>
-        </div>
-    </div>
-    <div class="right-column">
-        <h2>導師解析 Tutorial Commentary</h2>
-        <div class="concept-box">
-            <h4>核心概念：縮寫背後的重要性分層</h4>
-            <p>這份縮寫表反映了本指南所涉及的多個合規層面，幾個值得特別注意的縮寫：</p>
-            <ul>
-                <li><strong>CSV（電腦化系統驗證）</strong>：整份指南存在的根本原因，確保電腦化系統符合 GxP 要求</li>
-                <li><strong>IQ / OQ / PQ</strong>：資格確認三階段，任何 GxP 系統上線前的必經程序</li>
-                <li><strong>CAPA</strong>：矯正預防措施，偏差發生後的正式回應機制</li>
-                <li><strong>IDS</strong>：入侵偵測系統，資安控制的重要組件</li>
-                <li><strong>UPS</strong>：不斷電系統，GxP 系統可用性保障的硬體基礎</li>
-            </ul>
-        </div>
-        <div class="note-box">
-            <h4>重點提示 — GxP 中的 x</h4>
-            <p>GxP 中的「x」代表 Clinical（臨床）、Distribution（配銷）、Laboratory（實驗室）、Manufacturing（製造）四個領域。作為 CDMO，你的作業橫跨 GMP（製造）與 GLP（實驗室），因此 IT 系統必須同時符合兩者的要求。</p>
-        </div>
-        <div class="practice-box">
-            <h4>練習思考 Practice Questions</h4>
-            <ol>
-                <li>一個 LIMS 系統同時屬於哪幾個縮寫所代表的範疇（CSV、GxP Application、Computerized System）？</li>
-                <li>UPS 在 GxP 資料完整性框架中扮演什麼角色？</li>
-            </ol>
-        </div>
-    </div>
-</div>
-
-<!-- ============================================================ -->
+        </div><!-- ============================================================ -->
 <!-- APPENDIX 13: REFERENCES -->
 <!-- ============================================================ -->
 
@@ -1705,7 +1705,7 @@ RMON   → 網路流量分析（Probe → 分析平台）
 
 </div><!-- end main-content -->
 
-<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">⇧</button>
 
 <script>
 window.addEventListener('scroll', function() {

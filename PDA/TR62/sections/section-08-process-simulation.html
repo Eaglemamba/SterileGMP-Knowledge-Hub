@@ -1038,7 +1038,20 @@ tr:nth-child(even) {
                         <p><strong>最差情境（Worst-case Simulation）原則</strong>：APS 應代表生產過程中最有可能引入污染的步驟，包括最長的操作時間、最多的人工介入次數、最複雜的容器組裝操作。</p>
                     </div>
 
-                    <div class="concept-box">
+                    <div class="note-box">
+                        <h4>凍乾製程特別注意</h4>
+                        <p>當 MAP 包含凍乾步驟（lyophilization）時，灌裝/分裝模擬必須包含：</p>
+                        <ul>
+                            <li>半封口狀態（partially stoppered）的操作</li>
+                            <li>從灌裝間轉移至凍乾機的步驟</li>
+                            <li>凍乾機裝載/卸載的手動操作</li>
+                            <li>最終壓塞的步驟</li>
+                        </ul>
+                        <p>每個涉及開口容器的手動步驟都是潛在污染點，必須在 APS 中重現。</p>
+                    </div>
+                </div>
+            </div>
+        <div class="concept-box">
                         <h4>四大類 MAP 活動的模擬對應</h4>
                         <table>
                             <thead>
@@ -1073,20 +1086,7 @@ tr:nth-child(even) {
                         </table>
                     </div>
 
-                    <div class="note-box">
-                        <h4>凍乾製程特別注意</h4>
-                        <p>當 MAP 包含凍乾步驟（lyophilization）時，灌裝/分裝模擬必須包含：</p>
-                        <ul>
-                            <li>半封口狀態（partially stoppered）的操作</li>
-                            <li>從灌裝間轉移至凍乾機的步驟</li>
-                            <li>凍乾機裝載/卸載的手動操作</li>
-                            <li>最終壓塞的步驟</li>
-                        </ul>
-                        <p>每個涉及開口容器的手動步驟都是潛在污染點，必須在 APS 中重現。</p>
                     </div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <!-- Section 8.2–8.6 Media and Run Parameters -->
@@ -1151,7 +1151,41 @@ tr:nth-child(even) {
                         </ul>
                     </div>
 
+                    <div class="formula-box">
+                        <h4>8.5 — 培養基填充量計算原則</h4>
+                        <p><strong>核心要求：</strong>培養基用量必須足以完全潤濕容器所有內部接觸面，並能夠偵測微生物生長。</p>
+                        <pre>
+最低填充量標準：
+
+對於灌裝模擬：
+  V_fill ≥ 潤濕所有內表面所需的最低量
+  （通常為最大填充量的 1–3%，
+   或最低絕對體積，例如小瓶 ≥ 3 mL）
+
+對於調配/合池模擬：
+  V_media = V_production
+  （與實際生產操作體積相同，以確保
+   模擬製程時間的準確性）
+
+對於完整製程模擬：
+  所有液體均應以培養基替代
+  V_media ≥ V_process（等於或大於實際生產量）
+        </pre>
+                        <p><strong>目的：</strong>確保容器、封口件和培養基在 APS 中承受與實際生產相同的最長暴露時間，使模擬代表相應的污染風險。</p>
+                    </div>
+
                     <div class="concept-box">
+                        <h4>8.6 — 厭氧菌與惰性氣體</h4>
+                        <p>大多數 MAP 情況下，可直接以<strong>空氣代替惰性氣體</strong>（如氮氣、氬氣）進行 APS，因為：</p>
+                        <ul>
+                            <li>一般環境微生物（需要偵測的主要污染源）大多為需氧菌</li>
+                            <li>空氣環境不影響主要污染風險的評估</li>
+                        </ul>
+                        <p><strong>例外情況：</strong>當生產製程在真正的厭氧隔離器中進行時，APS 應使用惰性氣體環境，並選用<strong>流體硫乙醇酸鹽培養基（FTM）</strong>，以同時支持需氧菌和厭氧菌的生長。</p>
+                    </div>
+                </div>
+            </div>
+        <div class="concept-box">
                         <h4>TR62 vs. TR22：APS 頻率比較</h4>
                         <table>
                             <thead>
@@ -1187,41 +1221,7 @@ tr:nth-child(even) {
                         <p>MAP 的 APS 管理遠比自動化複雜，因為人員流動本身就是額外的資格驗證需求。</p>
                     </div>
 
-                    <div class="formula-box">
-                        <h4>8.5 — 培養基填充量計算原則</h4>
-                        <p><strong>核心要求：</strong>培養基用量必須足以完全潤濕容器所有內部接觸面，並能夠偵測微生物生長。</p>
-                        <pre>
-最低填充量標準：
-
-對於灌裝模擬：
-  V_fill ≥ 潤濕所有內表面所需的最低量
-  （通常為最大填充量的 1–3%，
-   或最低絕對體積，例如小瓶 ≥ 3 mL）
-
-對於調配/合池模擬：
-  V_media = V_production
-  （與實際生產操作體積相同，以確保
-   模擬製程時間的準確性）
-
-對於完整製程模擬：
-  所有液體均應以培養基替代
-  V_media ≥ V_process（等於或大於實際生產量）
-        </pre>
-                        <p><strong>目的：</strong>確保容器、封口件和培養基在 APS 中承受與實際生產相同的最長暴露時間，使模擬代表相應的污染風險。</p>
                     </div>
-
-                    <div class="concept-box">
-                        <h4>8.6 — 厭氧菌與惰性氣體</h4>
-                        <p>大多數 MAP 情況下，可直接以<strong>空氣代替惰性氣體</strong>（如氮氣、氬氣）進行 APS，因為：</p>
-                        <ul>
-                            <li>一般環境微生物（需要偵測的主要污染源）大多為需氧菌</li>
-                            <li>空氣環境不影響主要污染風險的評估</li>
-                        </ul>
-                        <p><strong>例外情況：</strong>當生產製程在真正的厭氧隔離器中進行時，APS 應使用惰性氣體環境，並選用<strong>流體硫乙醇酸鹽培養基（FTM）</strong>，以同時支持需氧菌和厭氧菌的生長。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <!-- Section 8.7–8.11 Execution and Inspection -->
@@ -1537,7 +1537,9 @@ tr:nth-child(even) {
                 <div class="right-column">
                     <h3>延伸閱讀導覽</h3>
 
-                    <div class="concept-box">
+                    </div>
+            </div>
+        <div class="concept-box">
                         <h4>延伸閱讀分類指引</h4>
                         <table>
                             <thead>
@@ -1587,8 +1589,6 @@ tr:nth-child(even) {
                         </table>
                     </div>
                 </div>
-            </div>
-        </div>
     </div>
 
     <!-- Application Box: CDMO Scenario -->
@@ -1616,7 +1616,7 @@ tr:nth-child(even) {
                         <li><strong>Observation (8.4):</strong> A qualified observer (e.g., QA or pharmacy supervisor) must observe and document the full APS, ideally with video recording</li>
                         <li><strong>Incubation (8.10):</strong> Minimum 14 days; dual-phase 7+7 days at 20–25°C / 30–35°C recommended to capture both environmental saprophytes and human flora</li>
                         <li><strong>Acceptance Criterion (8.13):</strong> Zero contaminated vials — any positive result invalidates the APS and requires CAPA before patient dosing</li>
-                        <li><strong>Re-qualification (8.3):</strong> Semi-annually, or if the pharmacist is absent for >6 months, or if any process parameter changes</li>
+                        <li><strong>Re-qualification (8.3):</strong> Semi-annually, or if the pharmacist is absent for &gt;6 months, or if any process parameter changes</li>
                     </ul>
                 </div>
                 <div class="right-column">
@@ -1716,7 +1716,9 @@ tr:nth-child(even) {
                 <div class="right-column">
                     <h3>重點關鍵詞彙表</h3>
 
-                    <div class="concept-box">
+                    </div>
+            </div>
+        <div class="concept-box">
                         <h4>Section 8–11 核心術語</h4>
                         <table>
                             <thead>
@@ -1786,8 +1788,6 @@ tr:nth-child(even) {
                         </table>
                     </div>
                 </div>
-            </div>
-        </div>
     </div>
 
 </div><!-- end main-content -->
@@ -1795,10 +1795,10 @@ tr:nth-child(even) {
 <div class="main-footer">
     <p>PDA Technical Report No. 62 (2013): Recommended Practices for Manual Aseptic Processes</p>
     <p>Sections 8–11: Process Simulation (APS), Conclusion &amp; References | p16–p23</p>
-    <p>Educational material for training purposes. Source: PDA TR62 &copy; 2013 Parenteral Drug Association, Inc.</p>
+    <p>Educational material for training purposes. Source: PDA TR62 © 2013 Parenteral Drug Association, Inc.</p>
 </div>
 
-<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">⇧</button>
 
 <script>
     window.addEventListener('scroll', function() {

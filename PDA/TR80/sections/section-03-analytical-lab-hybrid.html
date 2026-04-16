@@ -401,7 +401,26 @@
             <p>原文提到資料必須「reliable enough to make a case in court」（可靠到足以在法庭上作為證據）。這個比喻非常貼切——製藥公司的資料在 FDA 稽查或訴訟中確實可能被視為法律文件。一旦資料缺乏追溯性或被竄改，輕則收到 Warning Letter，重則面臨產品下架或刑事指控。</p>
         </div>
 
-        <div class="concept-box">
+        <div class="note-box">
+            <h3>重要提醒：暫存記憶體（Transient Data）的風險</h3>
+            <p>原文特別強調「temporary memory or transient locations」的風險。許多儀器在資料正式寫入儲存前，先暫存於緩衝區（buffer）或 RAM 中——這段過程中若發生斷電、覆寫或人為介入，資料即告遺失且無法追溯。企業必須評估從訊號產生到最終儲存的完整端對端（end-to-end）資料流。</p>
+        </div>
+
+        <div class="practice-box">
+            <h3>實務應用：實驗室資料治理手冊（Laboratory Data Governance Manual）</h3>
+            <p>TR80 建議企業建立一本「資料治理手冊」作為路線圖，涵蓋：</p>
+            <ul>
+                <li>從樣品接收到最終報告的完整流程</li>
+                <li>各類儀器的資料處理流程圖（flowchart）</li>
+                <li>設備、記錄簿與程序管制的相互參照</li>
+                <li>依 ICH Q9 風險管理原則評估 DI 風險點</li>
+            </ul>
+            <p>這份手冊不是單一 SOP，而是整個 QC 實驗室 DI 管理架構的「主索引」，稽查員常會要求查閱。</p>
+        </div>
+    </div>
+</div>
+
+<div class="concept-box">
             <h3>三種資料獲取系統的比較</h3>
             <table>
                 <tr>
@@ -432,26 +451,7 @@
             <p>混合系統被視為最棘手的類別，因為它跨越紙本與電子兩個世界，容易出現資料流失或竄改的盲點。</p>
         </div>
 
-        <div class="note-box">
-            <h3>重要提醒：暫存記憶體（Transient Data）的風險</h3>
-            <p>原文特別強調「temporary memory or transient locations」的風險。許多儀器在資料正式寫入儲存前，先暫存於緩衝區（buffer）或 RAM 中——這段過程中若發生斷電、覆寫或人為介入，資料即告遺失且無法追溯。企業必須評估從訊號產生到最終儲存的完整端對端（end-to-end）資料流。</p>
-        </div>
-
-        <div class="practice-box">
-            <h3>實務應用：實驗室資料治理手冊（Laboratory Data Governance Manual）</h3>
-            <p>TR80 建議企業建立一本「資料治理手冊」作為路線圖，涵蓋：</p>
-            <ul>
-                <li>從樣品接收到最終報告的完整流程</li>
-                <li>各類儀器的資料處理流程圖（flowchart）</li>
-                <li>設備、記錄簿與程序管制的相互參照</li>
-                <li>依 ICH Q9 風險管理原則評估 DI 風險點</li>
-            </ul>
-            <p>這份手冊不是單一 SOP，而是整個 QC 實驗室 DI 管理架構的「主索引」，稽查員常會要求查閱。</p>
-        </div>
-    </div>
-</div>
-
-<!-- ============================================================ -->
+        <!-- ============================================================ -->
 <!-- SECTION 6.2 -->
 <!-- ============================================================ -->
 <div class="section-title">6.2 Hybrid Systems</div>
@@ -661,38 +661,6 @@
             <p>TR80 要求列印輸出必須包含「日期時間戳記、原始數據、元數據、測量值、樣品身份、批號、檔案名稱、計算值」——這就像一張合法發票必須包含交易日期、品項、數量、單價、總金額、買賣方資訊才有法律效力。缺少任何一項，整筆記錄的可信度與法規合規性都會受到質疑。</p>
         </div>
 
-        <div class="concept-box">
-            <h3>資料生命週期管理：備份 vs. 封存的差異</h3>
-            <p>TR80 區分了 Backup（備份）與 Archive（封存）兩個概念：</p>
-            <table>
-                <tr>
-                    <th>項目</th>
-                    <th>Backup 備份</th>
-                    <th>Archive 封存</th>
-                </tr>
-                <tr>
-                    <td>目的</td>
-                    <td>快速還原作業（災難復原）</td>
-                    <td>長期法規保存</td>
-                </tr>
-                <tr>
-                    <td>存放位置</td>
-                    <td>易於存取（如本地伺服器）</td>
-                    <td>通常異地儲存（off-site）</td>
-                </tr>
-                <tr>
-                    <td>存取頻率</td>
-                    <td>高（需要時立即可用）</td>
-                    <td>低（定期查核即可）</td>
-                </tr>
-                <tr>
-                    <td>測試要求</td>
-                    <td>定期測試還原成功率</td>
-                    <td>確認資料可檢索性</td>
-                </tr>
-            </table>
-        </div>
-
         <div class="warning-box">
             <h3>FDA Warning Letter 真實案例分析</h3>
             <p><strong>案例 1：天平稱量記錄事後補填</strong></p>
@@ -727,7 +695,39 @@
     </div>
 </div>
 
-<!-- ============================================================ -->
+<div class="concept-box">
+            <h3>資料生命週期管理：備份 vs. 封存的差異</h3>
+            <p>TR80 區分了 Backup（備份）與 Archive（封存）兩個概念：</p>
+            <table>
+                <tr>
+                    <th>項目</th>
+                    <th>Backup 備份</th>
+                    <th>Archive 封存</th>
+                </tr>
+                <tr>
+                    <td>目的</td>
+                    <td>快速還原作業（災難復原）</td>
+                    <td>長期法規保存</td>
+                </tr>
+                <tr>
+                    <td>存放位置</td>
+                    <td>易於存取（如本地伺服器）</td>
+                    <td>通常異地儲存（off-site）</td>
+                </tr>
+                <tr>
+                    <td>存取頻率</td>
+                    <td>高（需要時立即可用）</td>
+                    <td>低（定期查核即可）</td>
+                </tr>
+                <tr>
+                    <td>測試要求</td>
+                    <td>定期測試還原成功率</td>
+                    <td>確認資料可檢索性</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- ============================================================ -->
 <!-- SECTION SUMMARY -->
 <!-- ============================================================ -->
 <div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">

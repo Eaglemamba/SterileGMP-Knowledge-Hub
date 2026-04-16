@@ -1009,7 +1009,106 @@ tr:nth-child(even) {
         <h2>原文內容 Original Text</h2>
         <p><strong>Table A4.1: SOP Requirements</strong></p>
         <div style="overflow-x:auto;">
-        <table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析：矩陣三欄結構</h4>
+            <p>Table A4.1 採用三欄格式，反映 GMP 文件管理的核心邏輯：</p>
+            <ul>
+                <li><strong>欄一 Area or Aspect（領域）：</strong>定義需要管控的功能區域（例如安全管理、資料備份）</li>
+                <li><strong>欄二 Processes Requiring SOPs（需要 SOP 的流程）：</strong>列出該領域下每項需要書面程序的具體作業</li>
+                <li><strong>欄三 Typical Deliverable Documentation（典型交付文件）：</strong>作業執行後產生的品質記錄，供稽核追溯</li>
+            </ul>
+            <p>這個三欄結構的精髓：<strong>光有「做了」還不夠，必須有文件證明「怎麼做」（SOP）和「做了什麼」（記錄）。</strong></p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：為何 IT 需要 SOP — 不只是驗證</h4>
+            <p>許多製藥公司誤以為 IT SOP 只在系統「驗證」期間有用。這是危險的誤解。IT 基礎設施 SOP 的功能包括：</p>
+            <ul>
+                <li><strong>法規合規的持續性：</strong>FDA 21 CFR Part 11、EU Annex 11 要求電子記錄系統在整個生命週期均受管控，不只是上線時</li>
+                <li><strong>人員流動的風險緩解：</strong>SOP 讓新進 IT 人員能按一致方式操作，不依賴個人記憶</li>
+                <li><strong>偏差調查的依據：</strong>當系統異常或資料遺失時，SOP + 記錄是判斷責任歸屬的唯一客觀標準</li>
+                <li><strong>客戶稽核的信心建立：</strong>CDMO 的製藥客戶在審計時，通常會要求查看 IT SOP 清單及執行記錄</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：SOP 矩陣如同醫院的感染管控計畫</h4>
+            <p>醫院的感染管控計畫不只規範「手術室消毒」這一個動作。它涵蓋進出管控、人員訓練、設備維護、廢棄物處理、緊急應變——每一個環節都有對應的 SOP 和記錄要求。IT 基礎設施的 SOP 架構邏輯完全相同：從「誰可以進機房」到「備份失敗時如何處理偏差」，全部都需要正式化。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>安全管控 SOP：21 CFR Part 11 的直接連結</h4>
+            <p>矩陣中「Logical Security」（邏輯安全）部分要求的 SOP，直接對應 FDA 21 CFR Part 11 的條文要求：</p>
+            <ul>
+                <li><strong>User account management（使用者帳號管理）：</strong>對應 §11.10(d) — 限制系統存取僅限授權人員</li>
+                <li><strong>Password management（密碼管理）：</strong>對應 §11.300 — 確保電子簽名的唯一性與不可否認性</li>
+                <li><strong>Digital signature certificate management（數位簽章憑證管理）：</strong>對應 §11.100 — 電子簽名的身分認證要求</li>
+                <li><strong>Logs of creation, deletion, transfers（帳號創建/刪除/職責移轉記錄）：</strong>對應 §11.10(e) — 完整的稽核軌跡</li>
+            </ul>
+            <p>重點：<strong>唯一使用者帳號 + 稽核軌跡 = 21 CFR Part 11 合規的最基本要求。</strong>任何多人共用帳號或無法追溯的存取行為，都是立即的 483 觀察項目。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>資料管理 SOP：備份不等於驗證</h4>
+            <p>許多公司有執行備份，但忽略了矩陣要求「Restoration testing as part of disaster recovery testing」（還原測試）。這是 FDA 483 觀察的常見痛點：</p>
+            <ul>
+                <li>備份計劃存在 ✓</li>
+                <li>每日執行備份 ✓</li>
+                <li>備份媒體離站存放 ✓</li>
+                <li><strong>定期驗證備份可成功還原 ✗ ← 最常被忽略</strong></li>
+            </ul>
+            <p>稽核員會問：「你上次成功執行 restore test 是什麼時候？有記錄嗎？」沒有還原測試紀錄等同於備份系統的有效性無法被證明。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>CDMO 視角：FDA 483 高風險 SOP 類別排名</h4>
+            <pre>
+高風險（最常被引用）：
+  1. Logical Security — 使用者帳號/密碼/稽核軌跡
+  2. Data Backup &amp; Restore — 缺少還原測試記錄
+  3. Change Management — 未經變更管制的 IT 變更
+  4. Training — IT 人員訓練記錄不完整
+
+中風險（常見但可快速補救）：
+  5. Configuration Management — 組態文件過時
+  6. Quality Management — 未定期進行 IT 內部稽核
+  7. Continuity Management — 災難復原計畫未定期測試
+
+低風險（結構性問題，較少單獨被引用）：
+  8. Job Scheduling — 批次作業偏差報告機制
+  9. Networks — 第三方網路連接文件
+            </pre>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用：CDMO 的 SOP 優先建置順序</h4>
+            <p>對於正在建立或重整 IT SOP 架構的 CDMO，建議依以下優先順序建置：</p>
+            <ol>
+                <li><strong>第一優先（法規直接要求）：</strong>Logical Security SOP 套件、Change Management SOP、Data Backup &amp; Restore SOP（含還原測試）</li>
+                <li><strong>第二優先（稽核高頻查詢）：</strong>User Access Review 程序、Training Effectiveness Assessment、Configuration Management</li>
+                <li><strong>第三優先（營運韌性）：</strong>Disaster Recovery Plan（含年度演練）、Capacity Management、Incident Management</li>
+            </ol>
+            <p>不需要一次把所有 SOP 完美建立——先建立高風險的核心文件，其餘依照風險評估逐步補齊。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的公司目前是否有針對 IT 使用者帳號的「離職員工帳號停用」SOP？離職後帳號最晚在幾小時內必須停用？</li>
+                <li>上次你們的 IT 團隊執行備份還原測試（Restoration Testing）是什麼時候？測試結果有沒有正式記錄？</li>
+                <li>如果 FDA 稽核員要求查看過去 12 個月的 IT Change Control Records，你能在 30 分鐘內提交嗎？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="concept-box"><table>
             <thead>
                 <tr>
                     <th style="width:30%;">Area or Aspect</th>
@@ -1517,106 +1616,7 @@ tr:nth-child(even) {
 
             </tbody>
         </table>
-        </div>
-    </div>
-
-    <div class="right-column">
-        <h2>導師解析 Tutorial Commentary</h2>
-
-        <div class="concept-box">
-            <h4>核心概念解析：矩陣三欄結構</h4>
-            <p>Table A4.1 採用三欄格式，反映 GMP 文件管理的核心邏輯：</p>
-            <ul>
-                <li><strong>欄一 Area or Aspect（領域）：</strong>定義需要管控的功能區域（例如安全管理、資料備份）</li>
-                <li><strong>欄二 Processes Requiring SOPs（需要 SOP 的流程）：</strong>列出該領域下每項需要書面程序的具體作業</li>
-                <li><strong>欄三 Typical Deliverable Documentation（典型交付文件）：</strong>作業執行後產生的品質記錄，供稽核追溯</li>
-            </ul>
-            <p>這個三欄結構的精髓：<strong>光有「做了」還不夠，必須有文件證明「怎麼做」（SOP）和「做了什麼」（記錄）。</strong></p>
-        </div>
-
-        <div class="note-box">
-            <h4>重點提示：為何 IT 需要 SOP — 不只是驗證</h4>
-            <p>許多製藥公司誤以為 IT SOP 只在系統「驗證」期間有用。這是危險的誤解。IT 基礎設施 SOP 的功能包括：</p>
-            <ul>
-                <li><strong>法規合規的持續性：</strong>FDA 21 CFR Part 11、EU Annex 11 要求電子記錄系統在整個生命週期均受管控，不只是上線時</li>
-                <li><strong>人員流動的風險緩解：</strong>SOP 讓新進 IT 人員能按一致方式操作，不依賴個人記憶</li>
-                <li><strong>偏差調查的依據：</strong>當系統異常或資料遺失時，SOP + 記錄是判斷責任歸屬的唯一客觀標準</li>
-                <li><strong>客戶稽核的信心建立：</strong>CDMO 的製藥客戶在審計時，通常會要求查看 IT SOP 清單及執行記錄</li>
-            </ul>
-        </div>
-
-        <div class="analogy-box">
-            <h4>比喻說明：SOP 矩陣如同醫院的感染管控計畫</h4>
-            <p>醫院的感染管控計畫不只規範「手術室消毒」這一個動作。它涵蓋進出管控、人員訓練、設備維護、廢棄物處理、緊急應變——每一個環節都有對應的 SOP 和記錄要求。IT 基礎設施的 SOP 架構邏輯完全相同：從「誰可以進機房」到「備份失敗時如何處理偏差」，全部都需要正式化。</p>
-        </div>
-
-        <div class="concept-box">
-            <h4>安全管控 SOP：21 CFR Part 11 的直接連結</h4>
-            <p>矩陣中「Logical Security」（邏輯安全）部分要求的 SOP，直接對應 FDA 21 CFR Part 11 的條文要求：</p>
-            <ul>
-                <li><strong>User account management（使用者帳號管理）：</strong>對應 §11.10(d) — 限制系統存取僅限授權人員</li>
-                <li><strong>Password management（密碼管理）：</strong>對應 §11.300 — 確保電子簽名的唯一性與不可否認性</li>
-                <li><strong>Digital signature certificate management（數位簽章憑證管理）：</strong>對應 §11.100 — 電子簽名的身分認證要求</li>
-                <li><strong>Logs of creation, deletion, transfers（帳號創建/刪除/職責移轉記錄）：</strong>對應 §11.10(e) — 完整的稽核軌跡</li>
-            </ul>
-            <p>重點：<strong>唯一使用者帳號 + 稽核軌跡 = 21 CFR Part 11 合規的最基本要求。</strong>任何多人共用帳號或無法追溯的存取行為，都是立即的 483 觀察項目。</p>
-        </div>
-
-        <div class="note-box">
-            <h4>資料管理 SOP：備份不等於驗證</h4>
-            <p>許多公司有執行備份，但忽略了矩陣要求「Restoration testing as part of disaster recovery testing」（還原測試）。這是 FDA 483 觀察的常見痛點：</p>
-            <ul>
-                <li>備份計劃存在 ✓</li>
-                <li>每日執行備份 ✓</li>
-                <li>備份媒體離站存放 ✓</li>
-                <li><strong>定期驗證備份可成功還原 ✗ ← 最常被忽略</strong></li>
-            </ul>
-            <p>稽核員會問：「你上次成功執行 restore test 是什麼時候？有記錄嗎？」沒有還原測試紀錄等同於備份系統的有效性無法被證明。</p>
-        </div>
-
-        <div class="formula-box">
-            <h4>CDMO 視角：FDA 483 高風險 SOP 類別排名</h4>
-            <pre>
-高風險（最常被引用）：
-  1. Logical Security — 使用者帳號/密碼/稽核軌跡
-  2. Data Backup & Restore — 缺少還原測試記錄
-  3. Change Management — 未經變更管制的 IT 變更
-  4. Training — IT 人員訓練記錄不完整
-
-中風險（常見但可快速補救）：
-  5. Configuration Management — 組態文件過時
-  6. Quality Management — 未定期進行 IT 內部稽核
-  7. Continuity Management — 災難復原計畫未定期測試
-
-低風險（結構性問題，較少單獨被引用）：
-  8. Job Scheduling — 批次作業偏差報告機制
-  9. Networks — 第三方網路連接文件
-            </pre>
-        </div>
-
-        <div class="concept-box application">
-            <h4>實務應用：CDMO 的 SOP 優先建置順序</h4>
-            <p>對於正在建立或重整 IT SOP 架構的 CDMO，建議依以下優先順序建置：</p>
-            <ol>
-                <li><strong>第一優先（法規直接要求）：</strong>Logical Security SOP 套件、Change Management SOP、Data Backup &amp; Restore SOP（含還原測試）</li>
-                <li><strong>第二優先（稽核高頻查詢）：</strong>User Access Review 程序、Training Effectiveness Assessment、Configuration Management</li>
-                <li><strong>第三優先（營運韌性）：</strong>Disaster Recovery Plan（含年度演練）、Capacity Management、Incident Management</li>
-            </ol>
-            <p>不需要一次把所有 SOP 完美建立——先建立高風險的核心文件，其餘依照風險評估逐步補齊。</p>
-        </div>
-
-        <div class="practice-box">
-            <h4>練習思考 Practice Questions</h4>
-            <ol>
-                <li>你的公司目前是否有針對 IT 使用者帳號的「離職員工帳號停用」SOP？離職後帳號最晚在幾小時內必須停用？</li>
-                <li>上次你們的 IT 團隊執行備份還原測試（Restoration Testing）是什麼時候？測試結果有沒有正式記錄？</li>
-                <li>如果 FDA 稽核員要求查看過去 12 個月的 IT Change Control Records，你能在 30 分鐘內提交嗎？</li>
-            </ol>
-        </div>
-    </div>
-</div>
-
-<!-- ===== DEEP DIVE: KEY CATEGORIES ===== -->
+        </div><!-- ===== DEEP DIVE: KEY CATEGORIES ===== -->
 <div class="section-title">深度解析：關鍵 SOP 類別</div>
 
 <div class="two-column">
@@ -1703,7 +1703,7 @@ tr:nth-child(even) {
 </div>
 
 <!-- QUALITY & CONTINUITY MANAGEMENT -->
-<div class="section-title">品質管理與持續性管理 — Quality & Continuity Management SOPs</div>
+<div class="section-title">品質管理與持續性管理 — Quality &amp; Continuity Management SOPs</div>
 
 <div class="two-column">
     <div class="left-column">
@@ -1788,13 +1788,13 @@ tr:nth-child(even) {
         <li><strong>三欄矩陣邏輯：</strong>領域（Area）→ 需要 SOP 的流程（Processes）→ 交付文件（Deliverables）三者構成完整的「說到做到、做了留證」閉環。</li>
         <li><strong>Logical Security = 21 CFR Part 11 的實踐基礎：</strong>唯一帳號、密碼管理、緊急存取管制和完整稽核軌跡，是電子記錄合規性的最低標準，缺一不可。</li>
         <li><strong>備份驗證的關鍵差距：</strong>「有備份計畫」≠「備份有效」——Restoration Testing 是最常被忽略、也最常被稽核員查核的 IT SOP 要項。</li>
-        <li><strong>CDMO 優先行動項目：</strong>Logical Security SOP、Change Management SOP、Data Backup & Restore SOP（含還原測試記錄）是 FDA 483 觀察中最高頻的三個類別，應優先建立並定期審查。</li>
+        <li><strong>CDMO 優先行動項目：</strong>Logical Security SOP、Change Management SOP、Data Backup &amp; Restore SOP（含還原測試記錄）是 FDA 483 觀察中最高頻的三個類別，應優先建立並定期審查。</li>
     </ul>
 </div>
 
 </div><!-- end main-content -->
 
-<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">⇧</button>
 
 <script>
 window.addEventListener('scroll', function() {
