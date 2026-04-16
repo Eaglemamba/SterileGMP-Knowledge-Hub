@@ -925,7 +925,7 @@ tr:nth-child(even) {
         <li>理解屏障系統（Barrier System）在無菌充填中的核心角色：將操作人員與產品完全分離</li>
         <li>區分 Isolator（隔離器）、cRABS（密閉限制進出屏障系統）、oRABS（開放限制進出屏障系統）三類系統的設計原理與管控等級</li>
         <li>掌握 Table 14.2-1 比較表中各屬性的監管意義與 CDMO 選型考量</li>
-        <li>應用決策層次：無菌保證 > 產品 CQA > 商業靈活性，評估屏障選型的風險與效益</li>
+        <li>應用決策層次：無菌保證 &gt; 產品 CQA &gt; 商業靈活性，評估屏障選型的風險與效益</li>
         <li>了解無菌製程模擬（APS）在各屏障類型中的要求差異</li>
     </ul>
 </div>
@@ -1164,7 +1164,88 @@ APS 複雜度  中          高           最高
         <h2>原文內容 Original Text</h2>
 
         <div style="overflow-x:auto;">
-            <table>
+            </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts — 表格解讀</h4>
+            <p>Table 14.2-1 是本章最核心的參考工具，涵蓋五大類屬性比較：</p>
+            <ul>
+                <li><strong>屏障設計意圖（Barrier Design Intent）:</strong> 三類系統均可保護產品；只有 Isolator 和 cRABS 能同時提供操作人員防護（containment），oRABS 無法。</li>
+                <li><strong>管控要素（Control Elements）:</strong> Isolator 對溫濕度、壓差的獨立控制能力最強；oRABS 幾乎無法獨立於背景環境控制。</li>
+                <li><strong>確效要求（Qualification Elements）:</strong> APS 為三類系統共同強制要求；氣流可視化研究均必須包含開門場景，但 oRABS 需模擬最多情境（設置、干預、恢復）。</li>
+                <li><strong>維護週期測試（Maintenance/Periodic Testing）:</strong> 手套口完整性測試為三類系統均要求；腔體氣密性（Leak Test）僅 Isolator 強制要求，cRABS 視設計而定，oRABS 不適用。</li>
+                <li><strong>設計要素（Design Elements）:</strong> Isolator 的材料選擇、管路穿越設計、廢氣過濾均為最嚴格要求。</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes — 表格中的關鍵差異</h4>
+            <p><strong>背景環境等級差異決定潔淨室建置成本：</strong></p>
+            <ul>
+                <li>Isolator（密閉型）：背景只需 Grade D → 潔淨室建置成本最低</li>
+                <li>Isolator（開放型）：背景需 Grade C</li>
+                <li>RABS（無論 open 或 closed）：背景必須 Grade B → 潔淨室成本最高</li>
+            </ul>
+            <p>這意味著：雖然 Isolator 設備本身最貴，但因背景環境要求低，整體 TCO（總擁有成本）在長期高產量生產中可能反而最低。</p>
+            <p><strong>廢氣過濾（Exhaust Filtration）的操作人員安全意涵：</strong>Isolator 強制要求廢氣過濾，適合高活性（OEB 4/5）產品。oRABS 完全無法提供，cRABS 依設計而定。這是高危產品充填選型的決定性因素。</p>
+            <p><strong>管路穿越等級設計（Piping Transiting Grades）：</strong>Isolator 因背景環境為 Grade C，從 Grade A 穿越到 Grade C 的管路設計「Critical」；RABS 因背景為 Grade B，穿越等差較小，設計挑戰相對低。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>APS 要求比較 APS Requirements by Barrier Type</h4>
+            <pre>
+Isolator APS 重點：
+  - 模擬 VHP 生物去污後首批充填
+  - 手套口操作場景（介入）
+  - 開門設置恢復場景
+  - 批次間/活動（campaign）間的連續模擬
+
+cRABS APS 重點：
+  - 所有預期開門干預場景
+  - 消毒位置（Disinfection Position）覆蓋驗證
+  - 氣相生物去污後的設備移動（Jog Feature）
+
+oRABS APS 重點：
+  - 設置、所有干預、恢復三大類場景
+  - 最多的開門干預模擬數量
+  - 每次干預後的環境恢復驗證
+  - 潔淨室（Grade B）的狀態確認
+
+共同要求：
+  - APS = Yes（三類皆強制）
+  - 手套口完整性測試 = Yes（三類皆要求）
+  - 氣流可視化研究 = Yes（三類皆要求）</pre>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 採購新充填線時的屏障選型流程：</strong></p>
+            <ol>
+                <li><strong>確認產品組合：</strong>是否包含高活性/毒性產品？→ 若是，需 Isolator 或 cRABS（exhaust filtration）</li>
+                <li><strong>確認批次模式：</strong>單一長期商業化？→ Isolator TCO 最優。多品項小批次？→ cRABS 清潔靈活性更高。</li>
+                <li><strong>評估現有潔淨室等級：</strong>現有 Grade B 背景 → RABS 可立即適配；需新建 → Isolator 背景要求較低可節省建設成本。</li>
+                <li><strong>評估監管市場：</strong>目標市場包含歐盟 → Annex 1 偏好 Isolator，需有充分 RABS 使用理由。</li>
+                <li><strong>APS 規劃：</strong>選定屏障後，規劃 APS 涵蓋的干預清單，確保所有高風險操作均被模擬驗證。</li>
+            </ol>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>從 Table 14.2-1 中，找出三個在 Isolator 和 oRABS 之間差異最大的屬性，並解釋為什麼這些差異對無菌保證（Sterility Assurance）最為關鍵。</li>
+                <li>為什麼 oRABS 不能提供操作人員防護（Containment）？這對充填高活性細胞毒性藥物（如某些抗腫瘤藥）的 CDMO 意味著什麼？</li>
+                <li>「Jog Feature（點動功能）」在 cRABS 和 oRABS 的消毒過程中有何作用？如果沒有此功能，會產生什麼消毒死角風險？</li>
+                <li>Isolator 的腔體氣密性測試（Leak Test）在生物去污前進行的意義是什麼？若洩漏，VHP 去污是否仍然有效？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="concept-box"><table>
                 <thead>
                     <tr>
                         <th>Attribute</th>
@@ -1316,88 +1397,7 @@ APS 複雜度  中          高           最高
                     </tr>
                 </tbody>
             </table>
-        </div>
-    </div>
-
-    <div class="right-column">
-        <h2>導師解析 Tutorial Commentary</h2>
-
-        <div class="concept-box">
-            <h4>核心概念解析 Key Concepts — 表格解讀</h4>
-            <p>Table 14.2-1 是本章最核心的參考工具，涵蓋五大類屬性比較：</p>
-            <ul>
-                <li><strong>屏障設計意圖（Barrier Design Intent）:</strong> 三類系統均可保護產品；只有 Isolator 和 cRABS 能同時提供操作人員防護（containment），oRABS 無法。</li>
-                <li><strong>管控要素（Control Elements）:</strong> Isolator 對溫濕度、壓差的獨立控制能力最強；oRABS 幾乎無法獨立於背景環境控制。</li>
-                <li><strong>確效要求（Qualification Elements）:</strong> APS 為三類系統共同強制要求；氣流可視化研究均必須包含開門場景，但 oRABS 需模擬最多情境（設置、干預、恢復）。</li>
-                <li><strong>維護週期測試（Maintenance/Periodic Testing）:</strong> 手套口完整性測試為三類系統均要求；腔體氣密性（Leak Test）僅 Isolator 強制要求，cRABS 視設計而定，oRABS 不適用。</li>
-                <li><strong>設計要素（Design Elements）:</strong> Isolator 的材料選擇、管路穿越設計、廢氣過濾均為最嚴格要求。</li>
-            </ul>
-        </div>
-
-        <div class="note-box">
-            <h4>重點提示 Key Notes — 表格中的關鍵差異</h4>
-            <p><strong>背景環境等級差異決定潔淨室建置成本：</strong></p>
-            <ul>
-                <li>Isolator（密閉型）：背景只需 Grade D → 潔淨室建置成本最低</li>
-                <li>Isolator（開放型）：背景需 Grade C</li>
-                <li>RABS（無論 open 或 closed）：背景必須 Grade B → 潔淨室成本最高</li>
-            </ul>
-            <p>這意味著：雖然 Isolator 設備本身最貴，但因背景環境要求低，整體 TCO（總擁有成本）在長期高產量生產中可能反而最低。</p>
-            <p><strong>廢氣過濾（Exhaust Filtration）的操作人員安全意涵：</strong>Isolator 強制要求廢氣過濾，適合高活性（OEB 4/5）產品。oRABS 完全無法提供，cRABS 依設計而定。這是高危產品充填選型的決定性因素。</p>
-            <p><strong>管路穿越等級設計（Piping Transiting Grades）：</strong>Isolator 因背景環境為 Grade C，從 Grade A 穿越到 Grade C 的管路設計「Critical」；RABS 因背景為 Grade B，穿越等差較小，設計挑戰相對低。</p>
-        </div>
-
-        <div class="formula-box">
-            <h4>APS 要求比較 APS Requirements by Barrier Type</h4>
-            <pre>
-Isolator APS 重點：
-  - 模擬 VHP 生物去污後首批充填
-  - 手套口操作場景（介入）
-  - 開門設置恢復場景
-  - 批次間/活動（campaign）間的連續模擬
-
-cRABS APS 重點：
-  - 所有預期開門干預場景
-  - 消毒位置（Disinfection Position）覆蓋驗證
-  - 氣相生物去污後的設備移動（Jog Feature）
-
-oRABS APS 重點：
-  - 設置、所有干預、恢復三大類場景
-  - 最多的開門干預模擬數量
-  - 每次干預後的環境恢復驗證
-  - 潔淨室（Grade B）的狀態確認
-
-共同要求：
-  - APS = Yes（三類皆強制）
-  - 手套口完整性測試 = Yes（三類皆要求）
-  - 氣流可視化研究 = Yes（三類皆要求）</pre>
-        </div>
-
-        <div class="concept-box application">
-            <h4>實務應用 Practical Application</h4>
-            <p><strong>CDMO 採購新充填線時的屏障選型流程：</strong></p>
-            <ol>
-                <li><strong>確認產品組合：</strong>是否包含高活性/毒性產品？→ 若是，需 Isolator 或 cRABS（exhaust filtration）</li>
-                <li><strong>確認批次模式：</strong>單一長期商業化？→ Isolator TCO 最優。多品項小批次？→ cRABS 清潔靈活性更高。</li>
-                <li><strong>評估現有潔淨室等級：</strong>現有 Grade B 背景 → RABS 可立即適配；需新建 → Isolator 背景要求較低可節省建設成本。</li>
-                <li><strong>評估監管市場：</strong>目標市場包含歐盟 → Annex 1 偏好 Isolator，需有充分 RABS 使用理由。</li>
-                <li><strong>APS 規劃：</strong>選定屏障後，規劃 APS 涵蓋的干預清單，確保所有高風險操作均被模擬驗證。</li>
-            </ol>
-        </div>
-
-        <div class="practice-box">
-            <h4>練習思考 Practice Questions</h4>
-            <ol>
-                <li>從 Table 14.2-1 中，找出三個在 Isolator 和 oRABS 之間差異最大的屬性，並解釋為什麼這些差異對無菌保證（Sterility Assurance）最為關鍵。</li>
-                <li>為什麼 oRABS 不能提供操作人員防護（Containment）？這對充填高活性細胞毒性藥物（如某些抗腫瘤藥）的 CDMO 意味著什麼？</li>
-                <li>「Jog Feature（點動功能）」在 cRABS 和 oRABS 的消毒過程中有何作用？如果沒有此功能，會產生什麼消毒死角風險？</li>
-                <li>Isolator 的腔體氣密性測試（Leak Test）在生物去污前進行的意義是什麼？若洩漏，VHP 去污是否仍然有效？</li>
-            </ol>
-        </div>
-    </div>
-</div>
-
-<!-- SECTION SUMMARY -->
+        </div><!-- SECTION SUMMARY -->
 <div class="learning-objectives" style="max-width:1800px; margin:0 auto 1.5rem; padding:1.25rem 1.5rem; background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
     <h3>本節重點回顧 Section Summary</h3>
     <ul>
@@ -1411,7 +1411,7 @@ oRABS APS 重點：
     </ul>
 </div>
 
-<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">&#8679;</button>
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">⇧</button>
 <script>
 window.addEventListener('scroll', function() {
     const btn = document.querySelector('.back-to-top');

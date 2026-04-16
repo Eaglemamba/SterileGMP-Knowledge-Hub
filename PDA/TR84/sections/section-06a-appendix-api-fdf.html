@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Section 6a: Appendix I — API & FDF Examples | PDA TR84</title>
+<title>Section 6a: Appendix I — API &amp; FDF Examples | PDA TR84</title>
 <style>
 /* =============================================================
    PDA Educational Material - Shared CSS Template
@@ -386,7 +386,65 @@ tr:nth-child(even) { background: #f7fafc; }
       <div class="two-column">
         <div class="left-column">
           <div class="column-header">Table 8.1-1: Example 1 — High Criticality API Reaction</div>
-          <table class="example-table">
+          </div>
+        <div class="right-column">
+          <div class="column-header">中文解析</div>
+
+          <div class="concept-box">
+            <h4>DI 問題核心：手動抄錄的斷鏈風險</h4>
+            <p><strong>1a 問題：</strong>操作員從儀表板讀取數值後手寫到紙本批次記錄（BPR, Batch Production Record）。這個「人工轉錄」步驟是資料完整性的最大漏洞——數值可能被錯誤抄寫、事後補填、甚至刻意竄改，而無法追溯原始來源。</p>
+            <p><strong>1b 改善：</strong>加入 PLC（可程式邏輯控制器）後，設備本身已有電子記錄，但數據仍需人工從 HMI（人機介面）抄錄到紙本 BPR。問題縮小但未消除，且 PLC 本身若無稽核軌跡設定，電子資料仍可能被覆寫。</p>
+            <p><strong>1c 最佳：</strong>EBR（電子批次記錄, Electronic Batch Record）直接與 PLC 整合，數據自動寫入，人工介入降至殘餘水準。稽核軌跡完整，任何修改均有記錄。</p>
+          </div>
+
+          <div class="analogy-box">
+            <h4>比喻：溫度計讀數的三種記錄方式</h4>
+            <p>想像病房護理師每小時量體溫：</p>
+            <ul>
+              <li><strong>1a：</strong>看著水銀溫度計，憑記憶一小時後補寫在紙上。</li>
+              <li><strong>1b：</strong>有電子體溫計顯示數值，但護理師仍需手抄到護理記錄。</li>
+              <li><strong>1c：</strong>電子體溫計直接藍牙傳輸到電子病歷，護理師確認即可。</li>
+            </ul>
+            <p>製藥界要求的就是 1c 的可靠程度——尤其當這個「體溫」直接關係到病人用藥安全（= 產品 CQA）時。</p>
+          </div>
+
+          <div class="note-box">
+            <h4>稽核警示：1b 的常見陷阱</h4>
+            <p>許多 CDMO 處於 1b 狀態：有 PLC 但沒有設定稽核軌跡，或稽核軌跡功能被關閉「以節省儲存空間」。FDA 483 觀察項目中，這是高頻缺失之一。關鍵提醒：PLC 有記錄能力不等於 DI 合規——必須啟用、驗證、並確保記錄不可被刪除。</p>
+          </div>
+
+          <div class="formula-box">
+            <h4>9-Box 定位：Example 1</h4>
+            <pre>資料關鍵性（縱軸）× 管控水準（橫軸）
+─────────────────────────────────────
+1a: High × Low   → Significant（紅）
+1b: High × Medium → Moderate（橙）
+1c: High × High  → Acceptable（綠）
+
+注意：高關鍵性資料在任何管控水準下，
+最高只能達到 Acceptable（無法達到 Negligible）</pre>
+          </div>
+
+          <div class="practice-box">
+            <h4>思考問題</h4>
+            <ol>
+              <li>你的 CDMO 現有 API 反應器屬於 1a、1b 還是 1c？若是 1b，PLC 的稽核軌跡是否已驗證並啟用？</li>
+              <li>若客戶要求你提供反應溫度的原始電子記錄（raw data），你能提供嗎？從哪個系統匯出？</li>
+            </ol>
+          </div>
+
+          <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-color:#22c55e;">
+            <h4>CDMO 應用：如何從 1b 升級到 1c</h4>
+            <ul>
+              <li>盤點現有 PLC 系統是否支援 21 CFR Part 11 或 Annex 11 稽核軌跡功能</li>
+              <li>若支援但未啟用，立即安排 CSV（電腦化系統驗證）變更評估</li>
+              <li>評估 EBR 系統（如 Syncade、MasterControl、Tulip）的整合可行性與投資報酬率</li>
+              <li>短期過渡方案：為 HMI 列印輸出設計受控的「黏貼驗證」程序，確保列印品即時、完整、不可竄改</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    <div class="concept-box"><table class="example-table">
             <thead>
               <tr>
                 <th>Ex</th>
@@ -451,65 +509,7 @@ tr:nth-child(even) { background: #f7fafc; }
               </tr>
             </tbody>
           </table>
-        </div>
-        <div class="right-column">
-          <div class="column-header">中文解析</div>
-
-          <div class="concept-box">
-            <h4>DI 問題核心：手動抄錄的斷鏈風險</h4>
-            <p><strong>1a 問題：</strong>操作員從儀表板讀取數值後手寫到紙本批次記錄（BPR, Batch Production Record）。這個「人工轉錄」步驟是資料完整性的最大漏洞——數值可能被錯誤抄寫、事後補填、甚至刻意竄改，而無法追溯原始來源。</p>
-            <p><strong>1b 改善：</strong>加入 PLC（可程式邏輯控制器）後，設備本身已有電子記錄，但數據仍需人工從 HMI（人機介面）抄錄到紙本 BPR。問題縮小但未消除，且 PLC 本身若無稽核軌跡設定，電子資料仍可能被覆寫。</p>
-            <p><strong>1c 最佳：</strong>EBR（電子批次記錄, Electronic Batch Record）直接與 PLC 整合，數據自動寫入，人工介入降至殘餘水準。稽核軌跡完整，任何修改均有記錄。</p>
-          </div>
-
-          <div class="analogy-box">
-            <h4>比喻：溫度計讀數的三種記錄方式</h4>
-            <p>想像病房護理師每小時量體溫：</p>
-            <ul>
-              <li><strong>1a：</strong>看著水銀溫度計，憑記憶一小時後補寫在紙上。</li>
-              <li><strong>1b：</strong>有電子體溫計顯示數值，但護理師仍需手抄到護理記錄。</li>
-              <li><strong>1c：</strong>電子體溫計直接藍牙傳輸到電子病歷，護理師確認即可。</li>
-            </ul>
-            <p>製藥界要求的就是 1c 的可靠程度——尤其當這個「體溫」直接關係到病人用藥安全（= 產品 CQA）時。</p>
-          </div>
-
-          <div class="note-box">
-            <h4>稽核警示：1b 的常見陷阱</h4>
-            <p>許多 CDMO 處於 1b 狀態：有 PLC 但沒有設定稽核軌跡，或稽核軌跡功能被關閉「以節省儲存空間」。FDA 483 觀察項目中，這是高頻缺失之一。關鍵提醒：PLC 有記錄能力不等於 DI 合規——必須啟用、驗證、並確保記錄不可被刪除。</p>
-          </div>
-
-          <div class="formula-box">
-            <h4>9-Box 定位：Example 1</h4>
-            <pre>資料關鍵性（縱軸）× 管控水準（橫軸）
-─────────────────────────────────────
-1a: High × Low   → Significant（紅）
-1b: High × Medium → Moderate（橙）
-1c: High × High  → Acceptable（綠）
-
-注意：高關鍵性資料在任何管控水準下，
-最高只能達到 Acceptable（無法達到 Negligible）</pre>
-          </div>
-
-          <div class="practice-box">
-            <h4>思考問題</h4>
-            <ol>
-              <li>你的 CDMO 現有 API 反應器屬於 1a、1b 還是 1c？若是 1b，PLC 的稽核軌跡是否已驗證並啟用？</li>
-              <li>若客戶要求你提供反應溫度的原始電子記錄（raw data），你能提供嗎？從哪個系統匯出？</li>
-            </ol>
-          </div>
-
-          <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-color:#22c55e;">
-            <h4>CDMO 應用：如何從 1b 升級到 1c</h4>
-            <ul>
-              <li>盤點現有 PLC 系統是否支援 21 CFR Part 11 或 Annex 11 稽核軌跡功能</li>
-              <li>若支援但未啟用，立即安排 CSV（電腦化系統驗證）變更評估</li>
-              <li>評估 EBR 系統（如 Syncade、MasterControl、Tulip）的整合可行性與投資報酬率</li>
-              <li>短期過渡方案：為 HMI 列印輸出設計受控的「黏貼驗證」程序，確保列印品即時、完整、不可竄改</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+        </div></div>
   </div>
 
   <!-- ═══════════════════════════════════════════════════════
@@ -552,7 +552,51 @@ tr:nth-child(even) { background: #f7fafc; }
       <div class="two-column">
         <div class="left-column">
           <div class="column-header">Table 8.1-2: Example 2 — Medium Criticality Drying of API</div>
-          <table class="example-table">
+          </div>
+        <div class="right-column">
+          <div class="column-header">中文解析</div>
+
+          <div class="analogy-box">
+            <h4>比喻：廚房麵粉的濕度管理</h4>
+            <p>LOD 對 API 流動性的影響，就像麵粉含水量對揉麵的影響：麵粉本身的品質（CQA）沒問題，但太潮濕的麵粉在後段製程會結塊、難以定量——影響的是製程一致性，而非最終成品的直接安全性。這就是「中關鍵性」的核心含義。</p>
+          </div>
+
+          <div class="formula-box">
+            <h4>9-Box 定位：Example 2</h4>
+            <pre>資料關鍵性（縱軸）× 管控水準（橫軸）
+─────────────────────────────────────
+2a: Medium × Low    → Moderate（橙）
+2b: Medium × Medium → Acceptable（綠）
+2c: Medium × High   → Negligible（藍）
+
+中關鍵性資料在高管控下可達 Negligible，
+優於高關鍵性（最高只到 Acceptable）</pre>
+          </div>
+
+          <div class="concept-box">
+            <h4>LOD 管控的 DI 重點</h4>
+            <ul>
+              <li><strong>溫度記錄：</strong>烘乾溫度與時間是主要記錄對象，需確保儀器校驗狀態有效</li>
+              <li><strong>取樣測試記錄：</strong>LOD 測試結果本身也需完整稽核軌跡，特別是重測（retest）情形</li>
+              <li><strong>批次間一致性：</strong>趨勢分析（trending）在 2c 的 EBR 環境中自動可行，是預防性品質管理的基礎</li>
+            </ul>
+          </div>
+
+          <div class="practice-box">
+            <h4>思考問題</h4>
+            <ol>
+              <li>你的 LOD 測試儀（如水分分析儀）是否有電子記錄功能？測試結果是直接匯入系統還是手抄？</li>
+              <li>若客戶審計要求提供某批次 API 烘乾的完整製程數據趨勢圖，你能在 24 小時內提供嗎？</li>
+            </ol>
+          </div>
+
+          <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-color:#22c55e;">
+            <h4>CDMO 應用：中關鍵性資料的合理投資策略</h4>
+            <p>對於中關鍵性資料，2b（PLC + 列印輸出）通常是最具成本效益的合規解決方案。升級到 2c 的 EBR 整合是好的，但應以系統整合的整體效益為決策依據，而非單純為了提升 DI 等級。</p>
+          </div>
+        </div>
+      </div>
+    <div class="concept-box"><table class="example-table">
             <thead>
               <tr>
                 <th>Ex</th>
@@ -617,51 +661,7 @@ tr:nth-child(even) { background: #f7fafc; }
               </tr>
             </tbody>
           </table>
-        </div>
-        <div class="right-column">
-          <div class="column-header">中文解析</div>
-
-          <div class="analogy-box">
-            <h4>比喻：廚房麵粉的濕度管理</h4>
-            <p>LOD 對 API 流動性的影響，就像麵粉含水量對揉麵的影響：麵粉本身的品質（CQA）沒問題，但太潮濕的麵粉在後段製程會結塊、難以定量——影響的是製程一致性，而非最終成品的直接安全性。這就是「中關鍵性」的核心含義。</p>
-          </div>
-
-          <div class="formula-box">
-            <h4>9-Box 定位：Example 2</h4>
-            <pre>資料關鍵性（縱軸）× 管控水準（橫軸）
-─────────────────────────────────────
-2a: Medium × Low    → Moderate（橙）
-2b: Medium × Medium → Acceptable（綠）
-2c: Medium × High   → Negligible（藍）
-
-中關鍵性資料在高管控下可達 Negligible，
-優於高關鍵性（最高只到 Acceptable）</pre>
-          </div>
-
-          <div class="concept-box">
-            <h4>LOD 管控的 DI 重點</h4>
-            <ul>
-              <li><strong>溫度記錄：</strong>烘乾溫度與時間是主要記錄對象，需確保儀器校驗狀態有效</li>
-              <li><strong>取樣測試記錄：</strong>LOD 測試結果本身也需完整稽核軌跡，特別是重測（retest）情形</li>
-              <li><strong>批次間一致性：</strong>趨勢分析（trending）在 2c 的 EBR 環境中自動可行，是預防性品質管理的基礎</li>
-            </ul>
-          </div>
-
-          <div class="practice-box">
-            <h4>思考問題</h4>
-            <ol>
-              <li>你的 LOD 測試儀（如水分分析儀）是否有電子記錄功能？測試結果是直接匯入系統還是手抄？</li>
-              <li>若客戶審計要求提供某批次 API 烘乾的完整製程數據趨勢圖，你能在 24 小時內提供嗎？</li>
-            </ol>
-          </div>
-
-          <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-color:#22c55e;">
-            <h4>CDMO 應用：中關鍵性資料的合理投資策略</h4>
-            <p>對於中關鍵性資料，2b（PLC + 列印輸出）通常是最具成本效益的合規解決方案。升級到 2c 的 EBR 整合是好的，但應以系統整合的整體效益為決策依據，而非單純為了提升 DI 等級。</p>
-          </div>
-        </div>
-      </div>
-    </div>
+        </div></div>
   </div>
 
   <!-- ═══════════════════════════════════════════════════════
@@ -704,7 +704,51 @@ tr:nth-child(even) { background: #f7fafc; }
       <div class="two-column">
         <div class="left-column">
           <div class="column-header">Table 8.1-3: Example 3 — Low Criticality API Batch-to-Batch Cleaning</div>
-          <table class="example-table">
+          </div>
+        <div class="right-column">
+          <div class="column-header">中文解析</div>
+
+          <div class="analogy-box">
+            <h4>比喻：餐廳廚具的班次間清洗</h4>
+            <p>同一間餐廳同一天烹調同一道菜，廚具班次間的沖洗記錄屬於「例行清潔」，不需要和跨菜品或跨天的深層清潔（相當於「活動結束清潔」）一樣嚴格的記錄體系。TR84 的低關鍵性邏輯正是如此：在已驗證的使用週期內，簡單記錄已足夠。</p>
+          </div>
+
+          <div class="concept-box">
+            <h4>3b 與 3c 的差異：Negligible 已是頂點</h4>
+            <p>3b（CIP + PLC 列印）和 3c（EBR 整合）都達到 Negligible（藍色）。這說明對低關鍵性資料，從 3b 升級到 3c 在 DI 脆弱性上不帶來額外效益——只有在系統整合或效率提升上才有意義。TR84 的訊息是：<strong>不要為了升色塊而過度投資。</strong></p>
+          </div>
+
+          <div class="formula-box">
+            <h4>9-Box 定位：Example 3</h4>
+            <pre>資料關鍵性（縱軸）× 管控水準（橫軸）
+─────────────────────────────────────
+3a: Low × Low    → Acceptable（綠）✓ 已合規
+3b: Low × Medium → Negligible（藍）超過要求
+3c: Low × High   → Negligible（藍）超過要求
+
+低關鍵性 + 低管控 = 已合規。
+紙本 BPR 對此類資料是完全可接受的解決方案。</pre>
+          </div>
+
+          <div class="practice-box">
+            <h4>思考問題</h4>
+            <ol>
+              <li>你的 CIP 系統是否已驗證？驗證報告中是否明確定義了活動期間（campaign length）的上限？</li>
+              <li>若你的設備清潔記錄目前是紙本，是否有必要升級為電子系統？依據 TR84，答案應如何論證？</li>
+            </ol>
+          </div>
+
+          <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-color:#22c55e;">
+            <h4>CDMO 應用：清潔記錄的風險分類管理</h4>
+            <ul>
+              <li>建立清潔記錄的風險分類清單：區分「活動期間內批次間清潔」vs「產品切換清潔」vs「定期深層清潔」</li>
+              <li>對批次間清潔維持紙本記錄是合理的；對產品切換清潔需考量是否有 CQA 影響（可能升為中關鍵性）</li>
+              <li>確保每份清潔記錄都有「清潔類型」和「活動批次序號」，以利追溯是否仍在驗證範圍內</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    <div class="concept-box"><table class="example-table">
             <thead>
               <tr>
                 <th>Ex</th>
@@ -769,51 +813,7 @@ tr:nth-child(even) { background: #f7fafc; }
               </tr>
             </tbody>
           </table>
-        </div>
-        <div class="right-column">
-          <div class="column-header">中文解析</div>
-
-          <div class="analogy-box">
-            <h4>比喻：餐廳廚具的班次間清洗</h4>
-            <p>同一間餐廳同一天烹調同一道菜，廚具班次間的沖洗記錄屬於「例行清潔」，不需要和跨菜品或跨天的深層清潔（相當於「活動結束清潔」）一樣嚴格的記錄體系。TR84 的低關鍵性邏輯正是如此：在已驗證的使用週期內，簡單記錄已足夠。</p>
-          </div>
-
-          <div class="concept-box">
-            <h4>3b 與 3c 的差異：Negligible 已是頂點</h4>
-            <p>3b（CIP + PLC 列印）和 3c（EBR 整合）都達到 Negligible（藍色）。這說明對低關鍵性資料，從 3b 升級到 3c 在 DI 脆弱性上不帶來額外效益——只有在系統整合或效率提升上才有意義。TR84 的訊息是：<strong>不要為了升色塊而過度投資。</strong></p>
-          </div>
-
-          <div class="formula-box">
-            <h4>9-Box 定位：Example 3</h4>
-            <pre>資料關鍵性（縱軸）× 管控水準（橫軸）
-─────────────────────────────────────
-3a: Low × Low    → Acceptable（綠）✓ 已合規
-3b: Low × Medium → Negligible（藍）超過要求
-3c: Low × High   → Negligible（藍）超過要求
-
-低關鍵性 + 低管控 = 已合規。
-紙本 BPR 對此類資料是完全可接受的解決方案。</pre>
-          </div>
-
-          <div class="practice-box">
-            <h4>思考問題</h4>
-            <ol>
-              <li>你的 CIP 系統是否已驗證？驗證報告中是否明確定義了活動期間（campaign length）的上限？</li>
-              <li>若你的設備清潔記錄目前是紙本，是否有必要升級為電子系統？依據 TR84，答案應如何論證？</li>
-            </ol>
-          </div>
-
-          <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-color:#22c55e;">
-            <h4>CDMO 應用：清潔記錄的風險分類管理</h4>
-            <ul>
-              <li>建立清潔記錄的風險分類清單：區分「活動期間內批次間清潔」vs「產品切換清潔」vs「定期深層清潔」</li>
-              <li>對批次間清潔維持紙本記錄是合理的；對產品切換清潔需考量是否有 CQA 影響（可能升為中關鍵性）</li>
-              <li>確保每份清潔記錄都有「清潔類型」和「活動批次序號」，以利追溯是否仍在驗證範圍內</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+        </div></div>
   </div>
 
   <!-- ═══════════════════════════════════════════════════════
@@ -877,7 +877,66 @@ tr:nth-child(even) { background: #f7fafc; }
       <div class="two-column">
         <div class="left-column">
           <div class="column-header">Table 8.2-1: Example 4 — High Criticality Humidity Monitoring</div>
-          <table class="example-table">
+          </div>
+        <div class="right-column">
+          <div class="column-header">中文解析</div>
+
+          <div class="analogy-box">
+            <h4>比喻：博物館文物的濕度管控</h4>
+            <p>吸濕性藥物對濕度的敏感程度，如同博物館中的古代羊皮紙文件——濕度一旦超標，損害立即且不可逆。這種情況下，監控記錄不只是行政要求，而是保存完整性的直接保障。類比到製藥：不只是監管合規，而是產品品質的最後防線。</p>
+          </div>
+
+          <div class="concept-box">
+            <h4>BMS（樓宇管理系統）的 DI 關鍵要素</h4>
+            <p>4b 和 4c 都使用了 BMS（Building Management System，樓宇管理系統）。BMS 的 DI 合規要求包括：</p>
+            <ul>
+              <li>系統需經過 CSV（電腦化系統驗證）</li>
+              <li>稽核軌跡必須啟用且不可關閉</li>
+              <li>存取控制需基於使用者角色（role-based access）</li>
+              <li>電子簽名功能若使用，須符合 21 CFR Part 11</li>
+              <li>資料備份與還原程序需驗證</li>
+            </ul>
+            <p>4b 中，BMS 有這些功能但製造記錄仍是紙本，因此停留在 Moderate；4c 連製造記錄也電子化，才達到 Acceptable。</p>
+          </div>
+
+          <div class="formula-box">
+            <h4>9-Box 定位：Example 4</h4>
+            <pre>資料關鍵性（縱軸）× 管控水準（橫軸）
+─────────────────────────────────────
+4a: High × Low    → Significant（紅）⚠ 需立即 CAPA
+4b: High × Medium → Moderate（橙）需改善計畫
+4c: High × High   → Acceptable（綠）✓ 合規目標
+
+高關鍵性資料的合規路徑：
+BMS 驗證 + 電子製造記錄 + Part 11 管理</pre>
+          </div>
+
+          <div class="note-box">
+            <h4>4c 的 Part 11 要求提醒</h4>
+            <p>4c 明確提到「managed per Part 11 requirements」。這代表除了技術控制，還需要相對應的程序文件：電子簽名 SOP、稽核軌跡審查程序、系統存取管理程序、以及定期的記錄完整性自我稽核。技術實施與程序文件缺一不可。</p>
+          </div>
+
+          <div class="practice-box">
+            <h4>思考問題</h4>
+            <ol>
+              <li>你的 CDMO 廠房 BMS 是否已完成 CSV？最後一次 BMS 稽核軌跡審查是什麼時候？</li>
+              <li>對於吸濕性原料，你的製造現場是否有即時濕度警報系統？警報記錄如何歸檔？</li>
+              <li>若 BMS 數據與紙本手抄記錄出現差異，SOP 中的調查程序是什麼？</li>
+            </ol>
+          </div>
+
+          <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-color:#22c55e;">
+            <h4>CDMO 應用：從 4a 升級的優先行動</h4>
+            <ul>
+              <li><strong>第一步：</strong>立即盤點哪些客戶產品具有吸濕性，對應製程環境的濕度記錄方式</li>
+              <li><strong>第二步：</strong>若目前為 4a 狀態，評估 BMS 升級或感測器直接串接的技術可行性</li>
+              <li><strong>第三步：</strong>向客戶揭露目前 DI 管控狀態，討論改善時程（客戶稽核前主動溝通優於被動發現）</li>
+              <li><strong>第四步：</strong>製訂 CAPA，以達到 4b（BMS）為短期目標，4c（EBR 整合）為長期目標</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    <div class="concept-box"><table class="example-table">
             <thead>
               <tr>
                 <th>Ex</th>
@@ -942,66 +1001,7 @@ tr:nth-child(even) { background: #f7fafc; }
               </tr>
             </tbody>
           </table>
-        </div>
-        <div class="right-column">
-          <div class="column-header">中文解析</div>
-
-          <div class="analogy-box">
-            <h4>比喻：博物館文物的濕度管控</h4>
-            <p>吸濕性藥物對濕度的敏感程度，如同博物館中的古代羊皮紙文件——濕度一旦超標，損害立即且不可逆。這種情況下，監控記錄不只是行政要求，而是保存完整性的直接保障。類比到製藥：不只是監管合規，而是產品品質的最後防線。</p>
-          </div>
-
-          <div class="concept-box">
-            <h4>BMS（樓宇管理系統）的 DI 關鍵要素</h4>
-            <p>4b 和 4c 都使用了 BMS（Building Management System，樓宇管理系統）。BMS 的 DI 合規要求包括：</p>
-            <ul>
-              <li>系統需經過 CSV（電腦化系統驗證）</li>
-              <li>稽核軌跡必須啟用且不可關閉</li>
-              <li>存取控制需基於使用者角色（role-based access）</li>
-              <li>電子簽名功能若使用，須符合 21 CFR Part 11</li>
-              <li>資料備份與還原程序需驗證</li>
-            </ul>
-            <p>4b 中，BMS 有這些功能但製造記錄仍是紙本，因此停留在 Moderate；4c 連製造記錄也電子化，才達到 Acceptable。</p>
-          </div>
-
-          <div class="formula-box">
-            <h4>9-Box 定位：Example 4</h4>
-            <pre>資料關鍵性（縱軸）× 管控水準（橫軸）
-─────────────────────────────────────
-4a: High × Low    → Significant（紅）⚠ 需立即 CAPA
-4b: High × Medium → Moderate（橙）需改善計畫
-4c: High × High   → Acceptable（綠）✓ 合規目標
-
-高關鍵性資料的合規路徑：
-BMS 驗證 + 電子製造記錄 + Part 11 管理</pre>
-          </div>
-
-          <div class="note-box">
-            <h4>4c 的 Part 11 要求提醒</h4>
-            <p>4c 明確提到「managed per Part 11 requirements」。這代表除了技術控制，還需要相對應的程序文件：電子簽名 SOP、稽核軌跡審查程序、系統存取管理程序、以及定期的記錄完整性自我稽核。技術實施與程序文件缺一不可。</p>
-          </div>
-
-          <div class="practice-box">
-            <h4>思考問題</h4>
-            <ol>
-              <li>你的 CDMO 廠房 BMS 是否已完成 CSV？最後一次 BMS 稽核軌跡審查是什麼時候？</li>
-              <li>對於吸濕性原料，你的製造現場是否有即時濕度警報系統？警報記錄如何歸檔？</li>
-              <li>若 BMS 數據與紙本手抄記錄出現差異，SOP 中的調查程序是什麼？</li>
-            </ol>
-          </div>
-
-          <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-color:#22c55e;">
-            <h4>CDMO 應用：從 4a 升級的優先行動</h4>
-            <ul>
-              <li><strong>第一步：</strong>立即盤點哪些客戶產品具有吸濕性，對應製程環境的濕度記錄方式</li>
-              <li><strong>第二步：</strong>若目前為 4a 狀態，評估 BMS 升級或感測器直接串接的技術可行性</li>
-              <li><strong>第三步：</strong>向客戶揭露目前 DI 管控狀態，討論改善時程（客戶稽核前主動溝通優於被動發現）</li>
-              <li><strong>第四步：</strong>製訂 CAPA，以達到 4b（BMS）為短期目標，4c（EBR 整合）為長期目標</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+        </div></div>
   </div>
 
   <!-- ═══════════════════════════════════════════════════════
@@ -1044,7 +1044,51 @@ BMS 驗證 + 電子製造記錄 + Part 11 管理</pre>
       <div class="two-column">
         <div class="left-column">
           <div class="column-header">Table 8.2-2: Example 5 — Medium Criticality Humidity Monitoring</div>
-          <table class="example-table">
+          </div>
+        <div class="right-column">
+          <div class="column-header">中文解析</div>
+
+          <div class="formula-box">
+            <h4>9-Box 定位：Example 5</h4>
+            <pre>資料關鍵性（縱軸）× 管控水準（橫軸）
+─────────────────────────────────────
+5a: Medium × Low    → Moderate（橙）需改善計畫
+5b: Medium × Medium → Acceptable（綠）✓ 合規目標
+5c: Medium × High   → Negligible（藍）超過最低要求
+
+對中關鍵性資料，5b（BMS + 列印輸出）
+是最具成本效益的合規終點。</pre>
+          </div>
+
+          <div class="analogy-box">
+            <h4>比喻：5a 與 4a 的關鍵比較</h4>
+            <p>同樣是手抄濕度記錄、同樣是低管控——但 5a 只有 Moderate（橙色），而 4a 是 Significant（紅色）。差別只在藥物的吸濕性。就像同樣的「不鎖門」行為，在一般住宅是低風險，在核電廠控制室就是重大危機。風險等級來自於資產的關鍵程度，而不只是行為本身。</p>
+          </div>
+
+          <div class="concept-box">
+            <h4>5b 的「合理管控」原則</h4>
+            <p>TR84 認可 5b 狀態（BMS 數位記錄 + 列印輸出附於紙本記錄）對中關鍵性資料已達 Acceptable。這是一個重要的監管立場：不要求所有設備都與 EBR 整合。對於資源有限的 CDMO，這提供了清晰的合規路徑：優先確保 BMS 已驗證、稽核軌跡已啟用、列印輸出程序受控。</p>
+          </div>
+
+          <div class="practice-box">
+            <h4>思考問題</h4>
+            <ol>
+              <li>你如何確定某個藥物的濕度影響屬於 CQA（如降解）還是製程一致性（如流動性）？這個判斷在哪份文件中記載？</li>
+              <li>若同一製程用於不同客戶的藥物，一個吸濕一個不吸濕，你的製程記錄系統是否分別設定了不同的 DI 管控要求？</li>
+            </ol>
+          </div>
+
+          <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-color:#22c55e;">
+            <h4>CDMO 應用：多客戶 FDF 製程的 DI 差異化管理</h4>
+            <ul>
+              <li>建立產品 DI 關鍵性矩陣，以藥物屬性（吸濕性、光敏性、氧敏性等）為行，以製程步驟為列，系統性填入資料關鍵性等級</li>
+              <li>同一製程步驟若服務多個客戶，以最高關鍵性等級設定管控基準（向上取齊原則）</li>
+              <li>每年更新此矩陣，納入新上線客戶的產品特性評估</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    <div class="concept-box"><table class="example-table">
             <thead>
               <tr>
                 <th>Ex</th>
@@ -1109,51 +1153,7 @@ BMS 驗證 + 電子製造記錄 + Part 11 管理</pre>
               </tr>
             </tbody>
           </table>
-        </div>
-        <div class="right-column">
-          <div class="column-header">中文解析</div>
-
-          <div class="formula-box">
-            <h4>9-Box 定位：Example 5</h4>
-            <pre>資料關鍵性（縱軸）× 管控水準（橫軸）
-─────────────────────────────────────
-5a: Medium × Low    → Moderate（橙）需改善計畫
-5b: Medium × Medium → Acceptable（綠）✓ 合規目標
-5c: Medium × High   → Negligible（藍）超過最低要求
-
-對中關鍵性資料，5b（BMS + 列印輸出）
-是最具成本效益的合規終點。</pre>
-          </div>
-
-          <div class="analogy-box">
-            <h4>比喻：5a 與 4a 的關鍵比較</h4>
-            <p>同樣是手抄濕度記錄、同樣是低管控——但 5a 只有 Moderate（橙色），而 4a 是 Significant（紅色）。差別只在藥物的吸濕性。就像同樣的「不鎖門」行為，在一般住宅是低風險，在核電廠控制室就是重大危機。風險等級來自於資產的關鍵程度，而不只是行為本身。</p>
-          </div>
-
-          <div class="concept-box">
-            <h4>5b 的「合理管控」原則</h4>
-            <p>TR84 認可 5b 狀態（BMS 數位記錄 + 列印輸出附於紙本記錄）對中關鍵性資料已達 Acceptable。這是一個重要的監管立場：不要求所有設備都與 EBR 整合。對於資源有限的 CDMO，這提供了清晰的合規路徑：優先確保 BMS 已驗證、稽核軌跡已啟用、列印輸出程序受控。</p>
-          </div>
-
-          <div class="practice-box">
-            <h4>思考問題</h4>
-            <ol>
-              <li>你如何確定某個藥物的濕度影響屬於 CQA（如降解）還是製程一致性（如流動性）？這個判斷在哪份文件中記載？</li>
-              <li>若同一製程用於不同客戶的藥物，一個吸濕一個不吸濕，你的製程記錄系統是否分別設定了不同的 DI 管控要求？</li>
-            </ol>
-          </div>
-
-          <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-color:#22c55e;">
-            <h4>CDMO 應用：多客戶 FDF 製程的 DI 差異化管理</h4>
-            <ul>
-              <li>建立產品 DI 關鍵性矩陣，以藥物屬性（吸濕性、光敏性、氧敏性等）為行，以製程步驟為列，系統性填入資料關鍵性等級</li>
-              <li>同一製程步驟若服務多個客戶，以最高關鍵性等級設定管控基準（向上取齊原則）</li>
-              <li>每年更新此矩陣，納入新上線客戶的產品特性評估</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+        </div></div>
   </div>
 
   <!-- ═══════════════════════════════════════════════════════
@@ -1196,7 +1196,54 @@ BMS 驗證 + 電子製造記錄 + Part 11 管理</pre>
       <div class="two-column">
         <div class="left-column">
           <div class="column-header">Table 8.2-3: Example 6 — Low Criticality Humidity Monitoring</div>
-          <table class="example-table">
+          </div>
+        <div class="right-column">
+          <div class="column-header">中文解析</div>
+
+          <div class="formula-box">
+            <h4>9-Box 定位：Example 6</h4>
+            <pre>資料關鍵性（縱軸）× 管控水準（橫軸）
+─────────────────────────────────────
+6a: Low × Low    → Acceptable（綠）✓ 已合規
+6b: Low × Medium → Negligible（藍）超過最低要求
+6c: Low × High   → Negligible（藍）顯著超過要求
+
+對低關鍵性資料，紙本記錄是完全合規的選擇。
+投資 EBR 整合應以整體效率為依據，而非 DI 合規壓力。</pre>
+          </div>
+
+          <div class="analogy-box">
+            <h4>三組案例的整體比較</h4>
+            <p>把 Examples 4、5、6 放在一起，就像同一間倉庫存放三種貨物：</p>
+            <ul>
+              <li><strong>Example 4（高）：</strong>易燃化學品——必須有完整的電子監控、即時警報、稽核軌跡</li>
+              <li><strong>Example 5（中）：</strong>一般化工原料——需要基本電子記錄，紙本備份可接受</li>
+              <li><strong>Example 6（低）：</strong>穩定的金屬零件——紙本入庫記錄完全足夠，不需要溫濕度監控系統</li>
+            </ul>
+            <p>倉庫管理的原則是：根據貨物特性決定管控等級，而不是用同一套最高標準管理所有東西。</p>
+          </div>
+
+          <div class="practice-box">
+            <h4>思考問題</h4>
+            <ol>
+              <li>你的 CDMO 是否有一份文件，明確列出每個客戶產品對應的製程資料關鍵性等級？若無，如何開始建立？</li>
+              <li>若現有製程中有些資料是 Significant（紅色），你有 CAPA 計畫嗎？時程是否合理？</li>
+              <li>你認為在你的 CDMO，哪一個製程步驟的 DI 管控最薄弱？它在 9-Box 的位置在哪裡？</li>
+            </ol>
+          </div>
+
+          <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-color:#22c55e;">
+            <h4>CDMO 應用：建立 DI 風險優先順序清單</h4>
+            <ul>
+              <li><strong>第一優先：</strong>識別所有 Significant（紅色）資料——這些需要立即 CAPA，應在下次客戶稽核前完成改善</li>
+              <li><strong>第二優先：</strong>Moderate（橙色）資料——制訂 12-18 個月的改善計畫，與客戶溝通時程</li>
+              <li><strong>長期規劃：</strong>評估 EBR 平台整合的 ROI，優先整合高關鍵性製程步驟</li>
+              <li><strong>維持現狀：</strong>Acceptable + 低關鍵性的紙本記錄，確保程序受控即可，無需強制升級</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    <div class="concept-box"><table class="example-table">
             <thead>
               <tr>
                 <th>Ex</th>
@@ -1261,34 +1308,7 @@ BMS 驗證 + 電子製造記錄 + Part 11 管理</pre>
               </tr>
             </tbody>
           </table>
-        </div>
-        <div class="right-column">
-          <div class="column-header">中文解析</div>
-
-          <div class="formula-box">
-            <h4>9-Box 定位：Example 6</h4>
-            <pre>資料關鍵性（縱軸）× 管控水準（橫軸）
-─────────────────────────────────────
-6a: Low × Low    → Acceptable（綠）✓ 已合規
-6b: Low × Medium → Negligible（藍）超過最低要求
-6c: Low × High   → Negligible（藍）顯著超過要求
-
-對低關鍵性資料，紙本記錄是完全合規的選擇。
-投資 EBR 整合應以整體效率為依據，而非 DI 合規壓力。</pre>
-          </div>
-
-          <div class="analogy-box">
-            <h4>三組案例的整體比較</h4>
-            <p>把 Examples 4、5、6 放在一起，就像同一間倉庫存放三種貨物：</p>
-            <ul>
-              <li><strong>Example 4（高）：</strong>易燃化學品——必須有完整的電子監控、即時警報、稽核軌跡</li>
-              <li><strong>Example 5（中）：</strong>一般化工原料——需要基本電子記錄，紙本備份可接受</li>
-              <li><strong>Example 6（低）：</strong>穩定的金屬零件——紙本入庫記錄完全足夠，不需要溫濕度監控系統</li>
-            </ul>
-            <p>倉庫管理的原則是：根據貨物特性決定管控等級，而不是用同一套最高標準管理所有東西。</p>
-          </div>
-
-          <div class="concept-box">
+        </div><div class="concept-box">
             <h4>三組 FDF 案例的横向比較總結</h4>
             <table>
               <thead>
@@ -1323,27 +1343,7 @@ BMS 驗證 + 電子製造記錄 + Part 11 管理</pre>
             <p style="font-size:0.85rem; margin-top:0.5rem;">右移（升級技術）和上移（藥物更敏感）對風險等級的影響完全對稱。</p>
           </div>
 
-          <div class="practice-box">
-            <h4>思考問題</h4>
-            <ol>
-              <li>你的 CDMO 是否有一份文件，明確列出每個客戶產品對應的製程資料關鍵性等級？若無，如何開始建立？</li>
-              <li>若現有製程中有些資料是 Significant（紅色），你有 CAPA 計畫嗎？時程是否合理？</li>
-              <li>你認為在你的 CDMO，哪一個製程步驟的 DI 管控最薄弱？它在 9-Box 的位置在哪裡？</li>
-            </ol>
           </div>
-
-          <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-color:#22c55e;">
-            <h4>CDMO 應用：建立 DI 風險優先順序清單</h4>
-            <ul>
-              <li><strong>第一優先：</strong>識別所有 Significant（紅色）資料——這些需要立即 CAPA，應在下次客戶稽核前完成改善</li>
-              <li><strong>第二優先：</strong>Moderate（橙色）資料——制訂 12-18 個月的改善計畫，與客戶溝通時程</li>
-              <li><strong>長期規劃：</strong>評估 EBR 平台整合的 ROI，優先整合高關鍵性製程步驟</li>
-              <li><strong>維持現狀：</strong>Acceptable + 低關鍵性的紙本記錄，確保程序受控即可，無需強制升級</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 
   <!-- ═══════════════════════════════════════════════════════

@@ -202,7 +202,24 @@
     <div class="right-column">
         <h2>導師解析 Tutorial Commentary</h2>
 
-        <div class="concept-box">
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>★ <strong>舊版本軟體保留：</strong> 更新軟體版本後，必須保留舊版本的副本，並確認舊版備份數據在新環境下仍可讀取。這解決了「數據可存取性（accessibility）」問題——五年後還能打開 2019 年的數據嗎？</p>
+            <p>★ <strong>刪除權限最小化原則（Principle of Least Privilege）：</strong> 只有管理員或 IT 人員才能刪除數據。一般分析師不應具備此權限。這是 ALCOA 中「Enduring（持久性）」原則的系統實現。</p>
+            <p>★ <strong>定期完整性檢查：</strong> 軟體完整性應定期核查——確認沒有未授權的配置更改、安全漏洞或非計畫的版本變動。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果 LIMS 進行版本升級（如 v3.1 → v4.0），需要執行哪些再驗證（revalidation）活動？</li>
+                <li>「舊版本數據仍可存取」這個要求在實務上如何驗證？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="concept-box">
             <h4>核心概念：LDMS 的七大最低控制</h4>
             <p>TR80 列出的七項控制，可歸納為三個管理維度：</p>
             <table style="width:100%; border-collapse: collapse; font-size: 0.9em;">
@@ -225,24 +242,7 @@
             </table>
         </div>
 
-        <div class="note-box">
-            <h4>重點提示 Key Notes</h4>
-            <p>★ <strong>舊版本軟體保留：</strong> 更新軟體版本後，必須保留舊版本的副本，並確認舊版備份數據在新環境下仍可讀取。這解決了「數據可存取性（accessibility）」問題——五年後還能打開 2019 年的數據嗎？</p>
-            <p>★ <strong>刪除權限最小化原則（Principle of Least Privilege）：</strong> 只有管理員或 IT 人員才能刪除數據。一般分析師不應具備此權限。這是 ALCOA 中「Enduring（持久性）」原則的系統實現。</p>
-            <p>★ <strong>定期完整性檢查：</strong> 軟體完整性應定期核查——確認沒有未授權的配置更改、安全漏洞或非計畫的版本變動。</p>
-        </div>
-
-        <div class="practice-box">
-            <h4>練習思考 Practice Questions</h4>
-            <ol>
-                <li>如果 LIMS 進行版本升級（如 v3.1 → v4.0），需要執行哪些再驗證（revalidation）活動？</li>
-                <li>「舊版本數據仍可存取」這個要求在實務上如何驗證？</li>
-            </ol>
-        </div>
-    </div>
-</div>
-
-<!-- ============================================================ -->
+        <!-- ============================================================ -->
 <!-- SECTION 6.5.2: COMMON DEFICIENCIES -->
 <!-- ============================================================ -->
 
@@ -349,7 +349,31 @@
             </ol>
         </div>
 
-        <div class="concept-box" style="background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%); border-left: 4px solid #e91e63;">
+        <div class="analogy-box">
+            <h4>概念比喻：「可以亂填的考試答案卷」</h4>
+            <p>未受保護的試算表就像一張考試答案卷，老師批改完後發回給學生，學生可以拿白色修正液把 60 分改成 90 分再拿回去說「老師您算錯了」。</p>
+            <p>正確的做法是：結果欄位由公式自動計算並鎖定，不允許手動輸入——就像考卷批改後立刻收走，學生無法觸碰。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>★ <strong>試算表存放位置：</strong> 必須存放在伺服器的指定位置，而非分析師的本機桌面或 USB 隨身碟。位置資訊應顯示在試算表本身（如頁腳），以便稽查時快速核對。</p>
+            <p>★ <strong>「唯讀」設定的意義：</strong> 將試算表設為唯讀，確保前一次的輸入數據不會殘留在模板中，避免新分析師因使用含舊數據的模板而產生記錄混淆。</p>
+            <p>★ <strong>定期重新驗證：</strong> 試算表密碼更換後，等同於變更控制，需要進行再驗證（revalidation），確認保護功能仍然有效。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一個用於溶解度計算（含 F2 相似因子）的 Excel 試算表，請列出完整的驗證測試項目。</li>
+                <li>稽查員要求查看所有曾使用過的溶解度試算表的歷史版本。若試算表存於本機且無版本管理，可能面臨什麼樣的合規問題？</li>
+                <li>如何在不使用昂貴的電子試算表管理系統（如 Veeva）的前提下，僅用 Excel 內建功能實現最低限度的試算表控制？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="concept-box" style="background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%); border-left: 4px solid #e91e63;">
             <h4>實務應用：CDMO 試算表控制情境</h4>
             <p>以下是 CDMO 環境中試算表控制的常見場景與對應措施：</p>
             <table style="width:100%; border-collapse: collapse; font-size: 0.87em;">
@@ -386,31 +410,7 @@
             </table>
         </div>
 
-        <div class="analogy-box">
-            <h4>概念比喻：「可以亂填的考試答案卷」</h4>
-            <p>未受保護的試算表就像一張考試答案卷，老師批改完後發回給學生，學生可以拿白色修正液把 60 分改成 90 分再拿回去說「老師您算錯了」。</p>
-            <p>正確的做法是：結果欄位由公式自動計算並鎖定，不允許手動輸入——就像考卷批改後立刻收走，學生無法觸碰。</p>
-        </div>
-
-        <div class="note-box">
-            <h4>重點提示 Key Notes</h4>
-            <p>★ <strong>試算表存放位置：</strong> 必須存放在伺服器的指定位置，而非分析師的本機桌面或 USB 隨身碟。位置資訊應顯示在試算表本身（如頁腳），以便稽查時快速核對。</p>
-            <p>★ <strong>「唯讀」設定的意義：</strong> 將試算表設為唯讀，確保前一次的輸入數據不會殘留在模板中，避免新分析師因使用含舊數據的模板而產生記錄混淆。</p>
-            <p>★ <strong>定期重新驗證：</strong> 試算表密碼更換後，等同於變更控制，需要進行再驗證（revalidation），確認保護功能仍然有效。</p>
-        </div>
-
-        <div class="practice-box">
-            <h4>練習思考 Practice Questions</h4>
-            <ol>
-                <li>一個用於溶解度計算（含 F2 相似因子）的 Excel 試算表，請列出完整的驗證測試項目。</li>
-                <li>稽查員要求查看所有曾使用過的溶解度試算表的歷史版本。若試算表存於本機且無版本管理，可能面臨什麼樣的合規問題？</li>
-                <li>如何在不使用昂貴的電子試算表管理系統（如 Veeva）的前提下，僅用 Excel 內建功能實現最低限度的試算表控制？</li>
-            </ol>
-        </div>
-    </div>
-</div>
-
-<!-- ============================================================ -->
+        <!-- ============================================================ -->
 <!-- SECTION 6.6: ELECTRONIC DATA GOVERNANCE -->
 <!-- ============================================================ -->
 
@@ -471,7 +471,59 @@
         </ul>
 
         <p><strong>Table 6.6.1-1 Example of a Table in a Laboratory Manual</strong></p>
-        <table>
+        </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：3-2-1 備份原則</h4>
+            <p>TR80 建議維護「兩份數據拷貝，存放於不同地點」，這與業界普遍採用的 <strong>3-2-1 備份策略</strong>相呼應：</p>
+            <ul>
+                <li><strong>3</strong> 份數據副本（原始 + 2 份備份）</li>
+                <li><strong>2</strong> 種不同的儲存媒體（如伺服器 + 光碟/磁帶）</li>
+                <li><strong>1</strong> 份異地儲存（off-site）</li>
+            </ul>
+            <p>TR80 具體強調：伺服器或雲端可能失效，將數據複製到光碟是重要的保護層。複製到光碟後，還必須核查完整性和準確性。</p>
+            <p><strong>Cold Backup（冷備份）的優勢：</strong> 已排程、無需人工介入的備份——避免「忘記備份」或「有人跳過備份」的人為失誤，也避免稽查時發現備份記錄不規律的監管問題。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>混合系統 (Hybrid System) 的特殊規則</h4>
+            <p>pH 計的校正曲線等暫時性電子儲存，會被下一次操作覆蓋（overwritten）。對於這類混合系統：</p>
+            <ul>
+                <li><strong>列印/發布的記錄</strong>是主要數據來源（Primary Record）</li>
+                <li>這些暫時性的電子資訊<strong>不需要備份或長期保留</strong></li>
+                <li>但紙本或 PDF 記錄必須按照 GMP 記錄保存規定妥善保存</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>概念比喻：數據治理手冊是「實驗室地圖」</h4>
+            <p>想像稽查員進入實驗室，詢問：「您的 HPLC 數據備份頻率是多少？稽核軌跡多久審查一次？使用什麼版本的軟體？誰負責維護？」</p>
+            <p>若有一本完整的數據治理手冊，這些問題的答案都在一份文件中。若沒有，稽查員必須分別查找 SOP、維修記錄、IT 文件——這既耗時又容易產生疏漏。</p>
+            <p>TR80 指出：「準備和維護這份手冊是好做法，能使實驗室稽查更有效率」——這等於是說，有無此手冊會直接影響稽查觀感。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>★ <strong>GXP 合規的雲端服務：</strong> 雲端備份服務必須是 GXP-compliant。消費級雲端服務（如個人 Google Drive、Dropbox）不可接受。</p>
+            <p>★ <strong>電子簽名的日期時間戳：</strong> 強烈建議的要求。電子簽名若無法追溯到具體的時間點，其法律效力存疑——而時間戳是 Part 11 的核心要求之一。</p>
+            <p>★ <strong>Table 6.6.1-1 的模型意義：</strong> 這張表格的 N/A（天平）行非常重要——它承認天平這類儀器沒有 Part 11 稽核軌跡，但仍然在清單中，說明已「有意識地評估過」其合規狀態，這本身就是良好的 DI 管理實踐。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若伺服器備份每三個月進行一次，但其中一次因為 IT 人員休假而延誤了三週，這是否構成 CAPA 事件？為什麼？</li>
+                <li>請依 Table 6.6.1-1 的格式，為您實驗室中的 UV 分光光度計填寫一行記錄。</li>
+                <li>「Cold Backup」和手動備份的主要合規差異是什麼？在稽查中各自的風險是什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="concept-box"><table>
             <tr>
                 <th>Instrument</th>
                 <th>Software</th>
@@ -533,59 +585,7 @@
                 <td>N/A</td>
             </tr>
         </table>
-    </div>
-
-    <div class="right-column">
-        <h2>導師解析 Tutorial Commentary</h2>
-
-        <div class="concept-box">
-            <h4>核心概念：3-2-1 備份原則</h4>
-            <p>TR80 建議維護「兩份數據拷貝，存放於不同地點」，這與業界普遍採用的 <strong>3-2-1 備份策略</strong>相呼應：</p>
-            <ul>
-                <li><strong>3</strong> 份數據副本（原始 + 2 份備份）</li>
-                <li><strong>2</strong> 種不同的儲存媒體（如伺服器 + 光碟/磁帶）</li>
-                <li><strong>1</strong> 份異地儲存（off-site）</li>
-            </ul>
-            <p>TR80 具體強調：伺服器或雲端可能失效，將數據複製到光碟是重要的保護層。複製到光碟後，還必須核查完整性和準確性。</p>
-            <p><strong>Cold Backup（冷備份）的優勢：</strong> 已排程、無需人工介入的備份——避免「忘記備份」或「有人跳過備份」的人為失誤，也避免稽查時發現備份記錄不規律的監管問題。</p>
-        </div>
-
-        <div class="concept-box">
-            <h4>混合系統 (Hybrid System) 的特殊規則</h4>
-            <p>pH 計的校正曲線等暫時性電子儲存，會被下一次操作覆蓋（overwritten）。對於這類混合系統：</p>
-            <ul>
-                <li><strong>列印/發布的記錄</strong>是主要數據來源（Primary Record）</li>
-                <li>這些暫時性的電子資訊<strong>不需要備份或長期保留</strong></li>
-                <li>但紙本或 PDF 記錄必須按照 GMP 記錄保存規定妥善保存</li>
-            </ul>
-        </div>
-
-        <div class="analogy-box">
-            <h4>概念比喻：數據治理手冊是「實驗室地圖」</h4>
-            <p>想像稽查員進入實驗室，詢問：「您的 HPLC 數據備份頻率是多少？稽核軌跡多久審查一次？使用什麼版本的軟體？誰負責維護？」</p>
-            <p>若有一本完整的數據治理手冊，這些問題的答案都在一份文件中。若沒有，稽查員必須分別查找 SOP、維修記錄、IT 文件——這既耗時又容易產生疏漏。</p>
-            <p>TR80 指出：「準備和維護這份手冊是好做法，能使實驗室稽查更有效率」——這等於是說，有無此手冊會直接影響稽查觀感。</p>
-        </div>
-
-        <div class="note-box">
-            <h4>重點提示 Key Notes</h4>
-            <p>★ <strong>GXP 合規的雲端服務：</strong> 雲端備份服務必須是 GXP-compliant。消費級雲端服務（如個人 Google Drive、Dropbox）不可接受。</p>
-            <p>★ <strong>電子簽名的日期時間戳：</strong> 強烈建議的要求。電子簽名若無法追溯到具體的時間點，其法律效力存疑——而時間戳是 Part 11 的核心要求之一。</p>
-            <p>★ <strong>Table 6.6.1-1 的模型意義：</strong> 這張表格的 N/A（天平）行非常重要——它承認天平這類儀器沒有 Part 11 稽核軌跡，但仍然在清單中，說明已「有意識地評估過」其合規狀態，這本身就是良好的 DI 管理實踐。</p>
-        </div>
-
-        <div class="practice-box">
-            <h4>練習思考 Practice Questions</h4>
-            <ol>
-                <li>若伺服器備份每三個月進行一次，但其中一次因為 IT 人員休假而延誤了三週，這是否構成 CAPA 事件？為什麼？</li>
-                <li>請依 Table 6.6.1-1 的格式，為您實驗室中的 UV 分光光度計填寫一行記錄。</li>
-                <li>「Cold Backup」和手動備份的主要合規差異是什麼？在稽查中各自的風險是什麼？</li>
-            </ol>
-        </div>
-    </div>
-</div>
-
-<!-- ============================================================ -->
+    </div><!-- ============================================================ -->
 <!-- SECTION 6.6.2: ROUTINE CHECKS -->
 <!-- ============================================================ -->
 
@@ -608,7 +608,31 @@
     <div class="right-column">
         <h2>導師解析 Tutorial Commentary</h2>
 
-        <div class="concept-box">
+        <div class="analogy-box">
+            <h4>概念比喻：「對帳就像查銀行帳單」</h4>
+            <p>您每個月對帳銀行帳單，不是因為您不信任銀行，而是要確認沒有異常交易。同樣地，定期對帳儀器數據不是「不信任分析師」，而是系統性的品質保證機制。</p>
+            <p>重要的是：對帳記錄本身也必須保存。稽查員可能要求查看最近 12 個月的對帳記錄，以確認這個程序確實在執行。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>★ <strong>時間同步的重要性：</strong> HPLC 進樣時間戳 vs 天平稱重時間戳的對比，是偵測「先做分析，事後補稱樣記錄」的有效方法。若稱樣時間晚於進樣時間，明顯不合理。</p>
+            <p>★ <strong>隨機抽查（Random Checks）：</strong> 對帳不需要 100% 全面核查，隨機抽查即可有效嚇阻有意圖的竄改行為，同時偵測意外的操作錯誤。</p>
+            <p>★ <strong>班別/時間日誌核查：</strong> 將員工班別記錄與儀器使用記錄對比——若一台 HPLC 在某夜班無人登記使用，但卻有進樣記錄，即為異常。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>您的 HPLC 系統顯示某批次測試共有 18 個進樣記錄，但實驗室日誌只記錄了 15 個進樣。您應如何調查這個差異？</li>
+                <li>滴定儀的內部記憶體記錄了 25 筆滴定數據，但日誌中只有 20 筆記錄。請列出可能的解釋（包括良性和惡意的），以及各自對應的調查步驟。</li>
+                <li>設計一個「月度數據對帳」程序，涵蓋實驗室中 HPLC、天平和 UV 三種儀器的對帳項目和執行方式。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="concept-box">
             <h4>核心概念：跨系統對帳是揭露數據竄改的關鍵工具</h4>
             <p>數據竄改通常發生在「系統的邊界」——例如，分析師在 HPLC 電腦端刪除了一個進樣（injection），但忘記同步修改實驗室日誌（logbook）和 LIMS 的記錄條目。跨系統對帳就是利用這種「痕跡不一致」來偵測問題。</p>
             <p><strong>核心邏輯：「數字必須吻合」</strong></p>
@@ -641,31 +665,7 @@
             </table>
         </div>
 
-        <div class="analogy-box">
-            <h4>概念比喻：「對帳就像查銀行帳單」</h4>
-            <p>您每個月對帳銀行帳單，不是因為您不信任銀行，而是要確認沒有異常交易。同樣地，定期對帳儀器數據不是「不信任分析師」，而是系統性的品質保證機制。</p>
-            <p>重要的是：對帳記錄本身也必須保存。稽查員可能要求查看最近 12 個月的對帳記錄，以確認這個程序確實在執行。</p>
-        </div>
-
-        <div class="note-box">
-            <h4>重點提示 Key Notes</h4>
-            <p>★ <strong>時間同步的重要性：</strong> HPLC 進樣時間戳 vs 天平稱重時間戳的對比，是偵測「先做分析，事後補稱樣記錄」的有效方法。若稱樣時間晚於進樣時間，明顯不合理。</p>
-            <p>★ <strong>隨機抽查（Random Checks）：</strong> 對帳不需要 100% 全面核查，隨機抽查即可有效嚇阻有意圖的竄改行為，同時偵測意外的操作錯誤。</p>
-            <p>★ <strong>班別/時間日誌核查：</strong> 將員工班別記錄與儀器使用記錄對比——若一台 HPLC 在某夜班無人登記使用，但卻有進樣記錄，即為異常。</p>
-        </div>
-
-        <div class="practice-box">
-            <h4>練習思考 Practice Questions</h4>
-            <ol>
-                <li>您的 HPLC 系統顯示某批次測試共有 18 個進樣記錄，但實驗室日誌只記錄了 15 個進樣。您應如何調查這個差異？</li>
-                <li>滴定儀的內部記憶體記錄了 25 筆滴定數據，但日誌中只有 20 筆記錄。請列出可能的解釋（包括良性和惡意的），以及各自對應的調查步驟。</li>
-                <li>設計一個「月度數據對帳」程序，涵蓋實驗室中 HPLC、天平和 UV 三種儀器的對帳項目和執行方式。</li>
-            </ol>
-        </div>
-    </div>
-</div>
-
-<!-- ============================================================ -->
+        <!-- ============================================================ -->
 <!-- SECTION 6.6.3: VENDOR COMMUNICATIONS -->
 <!-- ============================================================ -->
 
@@ -726,7 +726,7 @@
     <div class="left-column">
         <h2>原文內容 Original Text</h2>
 
-        <p>Auditors and health authority inspectors may request that electronic data be copied onto portable media (such as a USB or portable hard drive) or in a readable format (such as PDF, Microsoft Excel, or text) for their review evidence. Copying data from a validated system compliant with 21 CFR Part 11 or EU GMP Annex 11 onto media or into a readable format that does not maintain the original metadata should be avoided if possible. If data is transferred onto media or into a readable format, verification that the data and metadata are a true copy is recommended. Uncontrolled use of the copy-and-paste function can be prone to error and give the impression that original data has been altered or falsified. Establishing an SOP that governs how to copy and save data from laboratory systems is highly recommended. The SOP should describe the standard queries and reports that can be generated for audit and inspection purposes and the controls in place to ensure the accuracy of non-routine reports. Printing or exporting injection logs with all the details, such as injection time and sample name, may not be readily possible on some chromatographic software.</div>
+        <p>Auditors and health authority inspectors may request that electronic data be copied onto portable media (such as a USB or portable hard drive) or in a readable format (such as PDF, Microsoft Excel, or text) for their review evidence. Copying data from a validated system compliant with 21 CFR Part 11 or EU GMP Annex 11 onto media or into a readable format that does not maintain the original metadata should be avoided if possible. If data is transferred onto media or into a readable format, verification that the data and metadata are a true copy is recommended. Uncontrolled use of the copy-and-paste function can be prone to error and give the impression that original data has been altered or falsified. Establishing an SOP that governs how to copy and save data from laboratory systems is highly recommended. The SOP should describe the standard queries and reports that can be generated for audit and inspection purposes and the controls in place to ensure the accuracy of non-routine reports. Printing or exporting injection logs with all the details, such as injection time and sample name, may not be readily possible on some chromatographic software.</p></div>
 
     </div>
 
@@ -798,7 +798,7 @@
             </ol>
         </div>
     </div>
-</div>
+
 
 <!-- ============================================================ -->
 <!-- SECTION SUMMARY -->
