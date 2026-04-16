@@ -311,17 +311,6 @@ tr:nth-child(even) { background: #f7fafc; }
                 <p>重要認知：危害存在不等於危險情境發生；危險情境發生不等於損害一定出現。這三步之間的「連結機率」是風險估計的核心。</p>
             </div>
 
-            <div class="concept-box">
-                <h4>FMEA 與三步鏈的對應關係</h4>
-                <p>對熟悉失效模式與影響分析（FMEA）的工程師而言，這個對應關係很有幫助：</p>
-                <table>
-                    <tr><th>FMEA 術語</th><th>ISO 14971 對應</th><th>填充製程舉例</th></tr>
-                    <tr><td>失效原因（Cause）</td><td>危害來源（Hazard source）</td><td>橡膠塞原料中的多環芳烴（PAH）</td></tr>
-                    <tr><td>失效模式（Failure Mode）</td><td>危害（Hazard）</td><td>浸出物遷移至藥液</td></tr>
-                    <tr><td>失效影響（Effect）</td><td>危險情境 → 損害</td><td>病患注射後 PAH 引發突變 → 致癌風險</td></tr>
-                </table>
-            </div>
-
             <div class="analogy-box">
                 <h4>生活類比：廚房刀具的三步鏈</h4>
                 <p><strong>危害</strong>：廚房刀具有鋒利的刀刃（本身只是一個潛在傷害源）</p>
@@ -345,7 +334,18 @@ tr:nth-child(even) { background: #f7fafc; }
         </div>
     </div>
 
-    <!-- ============================================================ -->
+    <div class="concept-box">
+                <h4>FMEA 與三步鏈的對應關係</h4>
+                <p>對熟悉失效模式與影響分析（FMEA）的工程師而言，這個對應關係很有幫助：</p>
+                <table>
+                    <tr><th>FMEA 術語</th><th>ISO 14971 對應</th><th>填充製程舉例</th></tr>
+                    <tr><td>失效原因（Cause）</td><td>危害來源（Hazard source）</td><td>橡膠塞原料中的多環芳烴（PAH）</td></tr>
+                    <tr><td>失效模式（Failure Mode）</td><td>危害（Hazard）</td><td>浸出物遷移至藥液</td></tr>
+                    <tr><td>失效影響（Effect）</td><td>危險情境 → 損害</td><td>病患注射後 PAH 引發突變 → 致癌風險</td></tr>
+                </table>
+            </div>
+
+            <!-- ============================================================ -->
     <!-- SECTION 5.4.7: SEQUENCES OF EVENTS (standalone block) -->
     <!-- ============================================================ -->
     <div class="two-column">
@@ -532,7 +532,54 @@ tr:nth-child(even) { background: #f7fafc; }
             <p>Several approaches can be used for qualitative analysis. A typical approach is to use an N-by-M matrix to describe the severities and probabilities of occurrence of harm associated with each hazardous situation. One carefully defines N levels of probability and M levels of severity. Each cell of the matrix represents a subset of the full set of possible risks.</p>
 
             <h3>Table 2 — Example of Three Qualitative Severity Levels</h3>
-            <table>
+            <h3>Table 3 — Example of Three Qualitative Probability Levels</h3>
+            <p>A simple example is a 3 × 3 matrix constructed by using the three levels of Table 2 as columns and the three qualitative probability levels of Table 3 as rows. The estimated risks (R₁, R₂, R₃, …) are entered into the appropriate cells.</p>
+
+            <h3>Table 4 — Example of Five Qualitative Severity Levels</h3>
+            <h3>Table 5 — Example of Five Semi-Quantitative Probability Levels</h3>
+            <p>A more elaborate example is a 5 × 5 matrix constructed by using the five severity levels of Table 4 as columns and the five semi-quantitative probability levels of Table 5 as rows. The estimated risks (R₁, R₂, R₃, …) are entered into the appropriate cells.</p>
+
+            <p>Other sizes than 3 × 3 or 5 × 5 matrices can be employed. However, matrices with more than five levels can require significantly more data to be able to distinguish between the various levels and to avoid overlap of the levels. Rationales for the selection of matrices and their outcome scores should be documented. Note that matrices with three levels might not always be sufficiently accurate for adequate decision making. While the above examples were 3 × 3 and 5 × 5, there is no need that these matrices be balanced. For example, a 4 × 5 matrix could be appropriate for a given application.</p>
+        </div>
+        <div class="right-column">
+            <h2>導師解析：風險矩陣的實務應用</h2>
+
+            <div class="concept-box">
+                <h4>核心概念：風險矩陣的兩個維度必須獨立定義</h4>
+                <p>風險矩陣的橫軸是嚴重性（Severity），縱軸是發生機率（Probability）。兩個維度的等級定義必須：</p>
+                <ul>
+                    <li><strong>不含機率成分的嚴重性描述</strong>：「死亡」是嚴重性描述；「很可能導致死亡」就混入了機率，是錯誤寫法</li>
+                    <li><strong>不重疊的機率區間</strong>：每個機率等級的數值範圍不能有交集，以確保分類的一致性和可重現性</li>
+                    <li><strong>有明確書面定義</strong>：不能讓評估者自行解讀「中等嚴重性」的含義</li>
+                </ul>
+            </div>
+
+            <div class="analogy-box">
+                <h4>CDMO 風險矩陣實作範例</h4>
+                <p>以 CDMO 無菌充填製程的橡膠塞浸出物風險為例，應用 5×5 矩陣：</p>
+                <ul>
+                    <li><strong>危害</strong>：橡膠塞中含有 NDMA（亞硝胺類基因毒性物質）</li>
+                    <li><strong>危險情境</strong>：NDMA 遷移至靜脈注射藥液，每劑暴露量超過 ICH M7 TTC（96 ng/day）</li>
+                    <li><strong>嚴重性評估</strong>：NDMA 是基因毒性致癌物 → Catastrophic（可能增加癌症風險）</li>
+                    <li><strong>機率評估</strong>：依據 E&amp;L 研究數據，遷移量遠低於 TTC → Remote（&lt;10⁻⁵）</li>
+                    <li><strong>初步風險等級</strong>：嚴重 + 罕見 → 需要深入評估，但可能在 ALARP 範圍內可接受</li>
+                </ul>
+            </div>
+
+            <div class="practice-box">
+                <h4>思考練習</h4>
+                <ol>
+                    <li>一個預期用途是「兒科靜脈注射」的藥品容器，其預期用途描述需要特別強調哪些面向？</li>
+                    <li>橡膠塞的化學物質遷移屬於隨機故障還是系統性故障？對風險估計策略有何影響？</li>
+                    <li>如果 P₁（浸出物達到危害濃度的機率）無法精確估計，ISO/TR 24971 建議如何處理？</li>
+                    <li>為什麼嚴重性等級的描述「不應包含任何機率成分」？如果混入了會有什麼問題？</li>
+                    <li>一個 CDMO 決定為新承接的無菌注射液製程使用 3×3 風險矩陣。這個決定是否合適？請提出理由。</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+<div class="concept-box"><table>
                 <thead>
                     <tr>
                         <th>Common Terms</th>
@@ -555,8 +602,7 @@ tr:nth-child(even) { background: #f7fafc; }
                 </tbody>
             </table>
 
-            <h3>Table 3 — Example of Three Qualitative Probability Levels</h3>
-            <table>
+            </div><div class="concept-box"><table>
                 <thead>
                     <tr>
                         <th>Common Terms</th>
@@ -579,10 +625,7 @@ tr:nth-child(even) { background: #f7fafc; }
                 </tbody>
             </table>
 
-            <p>A simple example is a 3 × 3 matrix constructed by using the three levels of Table 2 as columns and the three qualitative probability levels of Table 3 as rows. The estimated risks (R₁, R₂, R₃, …) are entered into the appropriate cells.</p>
-
-            <h3>Table 4 — Example of Five Qualitative Severity Levels</h3>
-            <table>
+            </div><div class="concept-box"><table>
                 <thead>
                     <tr>
                         <th>Common Terms</th>
@@ -613,8 +656,7 @@ tr:nth-child(even) { background: #f7fafc; }
                 </tbody>
             </table>
 
-            <h3>Table 5 — Example of Five Semi-Quantitative Probability Levels</h3>
-            <table>
+            </div><div class="concept-box"><table>
                 <thead>
                     <tr>
                         <th>Common Terms</th>
@@ -645,24 +687,7 @@ tr:nth-child(even) { background: #f7fafc; }
                 </tbody>
             </table>
 
-            <p>A more elaborate example is a 5 × 5 matrix constructed by using the five severity levels of Table 4 as columns and the five semi-quantitative probability levels of Table 5 as rows. The estimated risks (R₁, R₂, R₃, …) are entered into the appropriate cells.</p>
-
-            <p>Other sizes than 3 × 3 or 5 × 5 matrices can be employed. However, matrices with more than five levels can require significantly more data to be able to distinguish between the various levels and to avoid overlap of the levels. Rationales for the selection of matrices and their outcome scores should be documented. Note that matrices with three levels might not always be sufficiently accurate for adequate decision making. While the above examples were 3 × 3 and 5 × 5, there is no need that these matrices be balanced. For example, a 4 × 5 matrix could be appropriate for a given application.</p>
-        </div>
-        <div class="right-column">
-            <h2>導師解析：風險矩陣的實務應用</h2>
-
-            <div class="concept-box">
-                <h4>核心概念：風險矩陣的兩個維度必須獨立定義</h4>
-                <p>風險矩陣的橫軸是嚴重性（Severity），縱軸是發生機率（Probability）。兩個維度的等級定義必須：</p>
-                <ul>
-                    <li><strong>不含機率成分的嚴重性描述</strong>：「死亡」是嚴重性描述；「很可能導致死亡」就混入了機率，是錯誤寫法</li>
-                    <li><strong>不重疊的機率區間</strong>：每個機率等級的數值範圍不能有交集，以確保分類的一致性和可重現性</li>
-                    <li><strong>有明確書面定義</strong>：不能讓評估者自行解讀「中等嚴重性」的含義</li>
-                </ul>
-            </div>
-
-            <div class="concept-box">
+            </div><div class="concept-box">
                 <h4>3×3 vs. 5×5 矩陣：如何選擇？</h4>
                 <table>
                     <tr>
@@ -688,32 +713,7 @@ tr:nth-child(even) { background: #f7fafc; }
                 </table>
             </div>
 
-            <div class="analogy-box">
-                <h4>CDMO 風險矩陣實作範例</h4>
-                <p>以 CDMO 無菌充填製程的橡膠塞浸出物風險為例，應用 5×5 矩陣：</p>
-                <ul>
-                    <li><strong>危害</strong>：橡膠塞中含有 NDMA（亞硝胺類基因毒性物質）</li>
-                    <li><strong>危險情境</strong>：NDMA 遷移至靜脈注射藥液，每劑暴露量超過 ICH M7 TTC（96 ng/day）</li>
-                    <li><strong>嚴重性評估</strong>：NDMA 是基因毒性致癌物 → Catastrophic（可能增加癌症風險）</li>
-                    <li><strong>機率評估</strong>：依據 E&amp;L 研究數據，遷移量遠低於 TTC → Remote（&lt;10⁻⁵）</li>
-                    <li><strong>初步風險等級</strong>：嚴重 + 罕見 → 需要深入評估，但可能在 ALARP 範圍內可接受</li>
-                </ul>
-            </div>
-
-            <div class="practice-box">
-                <h4>思考練習</h4>
-                <ol>
-                    <li>一個預期用途是「兒科靜脈注射」的藥品容器，其預期用途描述需要特別強調哪些面向？</li>
-                    <li>橡膠塞的化學物質遷移屬於隨機故障還是系統性故障？對風險估計策略有何影響？</li>
-                    <li>如果 P₁（浸出物達到危害濃度的機率）無法精確估計，ISO/TR 24971 建議如何處理？</li>
-                    <li>為什麼嚴重性等級的描述「不應包含任何機率成分」？如果混入了會有什麼問題？</li>
-                    <li>一個 CDMO 決定為新承接的無菌注射液製程使用 3×3 風險矩陣。這個決定是否合適？請提出理由。</li>
-                </ol>
-            </div>
-        </div>
-    </div>
-
-</div><!-- end main-content -->
+            </div><!-- end main-content -->
 
 <div class="main-footer">
     <p>ISO/TR 24971:2020 — Guidance on the Application of ISO 14971</p>

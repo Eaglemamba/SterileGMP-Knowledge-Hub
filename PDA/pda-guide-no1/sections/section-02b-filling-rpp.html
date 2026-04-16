@@ -521,7 +521,22 @@ tr:nth-child(even) { background: #f7fafc; }
                     <p>這就是為什麼 RPP 通常需要第三個驅動器（第三軸）專門負責移動到 CIP/SIP 位置。</p>
                 </div>
 
-                <div class="note-box">
+                <div class="analogy-box">
+                    <h4>比喻說明：CIP/SIP 位置 = 牙醫椅的傾斜調整</h4>
+                    <p>想像牙醫椅：為了讓醫生能夠全面清潔你的每顆牙齒，椅子必須能調整角度，讓口腔以最佳姿態暴露。</p>
+                    <p>RPP 的 CIP/SIP 位置也是同樣道理：泵必須移動到一個特殊姿態，讓清洗液和蒸汽能夠「看到」並接觸到每一個汽缸內壁表面，包括最難到達的活塞-汽缸界面。這個動作需要一個專用的機械驅動器，也因此增加了設備複雜度與驗證負擔。</p>
+                </div>
+
+                <div class="practice-box">
+                    <h4>練習思考 Practice Questions</h4>
+                    <ol>
+                        <li>為何 RPP 的 CIP/SIP 比 TP「挑戰性更大」？從幾何結構和連接數量兩個角度分析。</li>
+                        <li>如果你是 QA 主任，需要驗證 RPP 的 SIP 效果，你會如何設計蒸汽穿透（steam penetration）的挑戰點？上方接口和下方接口各需要放置哪種監測器？</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    <div class="note-box">
                     <h4>關鍵對比：RPP vs PP — 劑量漂移與 IPC 策略</h4>
                     <p>這是本節最重要的監管考點：</p>
                     <table style="margin-top:0.5rem">
@@ -549,22 +564,7 @@ tr:nth-child(even) { background: #f7fafc; }
                     <p style="margin-top:0.5rem">重要提醒：RPP 即使技術上允許統計性 IPC，實務上<strong>仍建議定期進行 IPC</strong>，主要目的是偵測管路中的氣泡。這是 Section 2.2.6 的重點。</p>
                 </div>
 
-                <div class="analogy-box">
-                    <h4>比喻說明：CIP/SIP 位置 = 牙醫椅的傾斜調整</h4>
-                    <p>想像牙醫椅：為了讓醫生能夠全面清潔你的每顆牙齒，椅子必須能調整角度，讓口腔以最佳姿態暴露。</p>
-                    <p>RPP 的 CIP/SIP 位置也是同樣道理：泵必須移動到一個特殊姿態，讓清洗液和蒸汽能夠「看到」並接觸到每一個汽缸內壁表面，包括最難到達的活塞-汽缸界面。這個動作需要一個專用的機械驅動器，也因此增加了設備複雜度與驗證負擔。</p>
                 </div>
-
-                <div class="practice-box">
-                    <h4>練習思考 Practice Questions</h4>
-                    <ol>
-                        <li>為何 RPP 的 CIP/SIP 比 TP「挑戰性更大」？從幾何結構和連接數量兩個角度分析。</li>
-                        <li>如果你是 QA 主任，需要驗證 RPP 的 SIP 效果，你會如何設計蒸汽穿透（steam penetration）的挑戰點？上方接口和下方接口各需要放置哪種監測器？</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
 <!-- ============================================================ -->
@@ -729,7 +729,59 @@ tr:nth-child(even) { background: #f7fafc; }
                 <p>Table 2.2.4-1 identifies the advantages and disadvantages of RPP systems.</p>
 
                 <div style="overflow-x:auto;">
-                <table>
+                </div>
+            </div>
+
+            <div class="right-column">
+                <h2>導師解析 Tutorial Commentary</h2>
+
+                <div class="concept-box">
+                    <h4>核心概念：讀懂這張表的方法</h4>
+                    <p>這張優缺點表是 PDA 考試的高頻考點。關鍵不是死記，而是理解背後的物理機制：</p>
+                    <ul>
+                        <li><strong>黏度兼容性：</strong>正排量機制不依賴流體流動性 → 高黏度 OK</li>
+                        <li><strong>剪切力：</strong>活塞壓縮液體時產生高局部剪切 → 對剪切敏感蛋白質有風險</li>
+                        <li><strong>劑量穩定性：</strong>機械行程固定 → 批次始末劑量一致</li>
+                        <li><strong>10倍充填範圍：</strong>活塞行程可調，但汽缸容積有上限 → 大範圍需換泵</li>
+                    </ul>
+                </div>
+
+                <div class="note-box">
+                    <h4>重點提示：剪切力 — RPP 最大的產品風險</h4>
+                    <p>RPP 在充填過程中對產品施加<strong>顯著的剪切力（significant shear force）</strong>，這是其最主要的產品質量風險：</p>
+                    <ul>
+                        <li>活塞壓縮汽缸內液體時，液體在狹小空間內被強力擠壓</li>
+                        <li>活塞-汽缸界面的微小間隙形成高剪切速率區域</li>
+                        <li><strong>高風險產品：</strong>單株抗體（mAb）、聚集敏感蛋白質、脂質體</li>
+                    </ul>
+                    <p><strong>決策邏輯（來自 Table 2.0-1 的選擇原則）：</strong></p>
+                    <ul>
+                        <li>高黏度 + 非剪切敏感 → <span class="key-term">RPP 是首選</span></li>
+                        <li>高黏度 + 剪切敏感 → 需要更仔細的工藝評估，可能選 TP 低壓系統</li>
+                        <li>低黏度 + 剪切敏感 → PP 或 TP 低壓系統</li>
+                    </ul>
+                </div>
+
+                <div class="analogy-box">
+                    <h4>比喻說明：10倍充填範圍 = 同一款發動機不同排氣量</h4>
+                    <p>汽車同一系列車款的發動機，可以通過改變汽缸行程來提供 1.5L 到 2.5L 的排氣量。但是如果你想要 5L 的大排量，就需要換一個完全不同的發動機。</p>
+                    <p>RPP 同理：一個泵型號通常可以覆蓋 10 倍的充填範圍（例如 0.5 mL 到 5 mL），但如果你的產品既有 0.1 mL 又有 50 mL 的規格，就需要多種尺寸的泵頭。這在 CDMO 中影響重大——需要備有多套泵，增加庫存和換產成本。</p>
+                </div>
+
+                <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+                    <h4>實務應用 CDMO Scenario</h4>
+                    <p>你的 CDMO 客戶有一個皮下注射用高濃度 mAb（180 mg/mL），黏度約 80 mPa-s，但聚集敏感性高（高剪切會導致蛋白質聚集）。客戶要求充填量為 1 mL（固定規格）。</p>
+                    <p><strong>你的技術選擇建議：</strong></p>
+                    <ul>
+                        <li>黏度 80 mPa-s → 超過 PP 的上限（約 40-60 mPa-s），PP 不適合</li>
+                        <li>聚集敏感 + 高剪切風險 → RPP 需謹慎評估</li>
+                        <li>最終建議：<strong>進行剪切相容性研究（shear compatibility study）</strong>，測試 RPP 對該蛋白的聚集影響。同時考慮 TP 低壓系統作為備選方案。</li>
+                    </ul>
+                    <p>這正是為什麼 Table 2.0-1 中，RPP 被標記為「高黏度且非剪切敏感產品」的最佳選擇。</p>
+                </div>
+            </div>
+        </div>
+    <div class="concept-box"><table>
                     <caption style="text-align:left;font-weight:600;margin-bottom:0.5rem;color:#1e3a5f;">Table 2.2.4-1 Advantages and Disadvantages of Rotary Piston Pump Systems</caption>
                     <thead>
                         <tr>
@@ -788,59 +840,7 @@ tr:nth-child(even) { background: #f7fafc; }
                         </tr>
                     </tbody>
                 </table>
-                </div>
-            </div>
-
-            <div class="right-column">
-                <h2>導師解析 Tutorial Commentary</h2>
-
-                <div class="concept-box">
-                    <h4>核心概念：讀懂這張表的方法</h4>
-                    <p>這張優缺點表是 PDA 考試的高頻考點。關鍵不是死記，而是理解背後的物理機制：</p>
-                    <ul>
-                        <li><strong>黏度兼容性：</strong>正排量機制不依賴流體流動性 → 高黏度 OK</li>
-                        <li><strong>剪切力：</strong>活塞壓縮液體時產生高局部剪切 → 對剪切敏感蛋白質有風險</li>
-                        <li><strong>劑量穩定性：</strong>機械行程固定 → 批次始末劑量一致</li>
-                        <li><strong>10倍充填範圍：</strong>活塞行程可調，但汽缸容積有上限 → 大範圍需換泵</li>
-                    </ul>
-                </div>
-
-                <div class="note-box">
-                    <h4>重點提示：剪切力 — RPP 最大的產品風險</h4>
-                    <p>RPP 在充填過程中對產品施加<strong>顯著的剪切力（significant shear force）</strong>，這是其最主要的產品質量風險：</p>
-                    <ul>
-                        <li>活塞壓縮汽缸內液體時，液體在狹小空間內被強力擠壓</li>
-                        <li>活塞-汽缸界面的微小間隙形成高剪切速率區域</li>
-                        <li><strong>高風險產品：</strong>單株抗體（mAb）、聚集敏感蛋白質、脂質體</li>
-                    </ul>
-                    <p><strong>決策邏輯（來自 Table 2.0-1 的選擇原則）：</strong></p>
-                    <ul>
-                        <li>高黏度 + 非剪切敏感 → <span class="key-term">RPP 是首選</span></li>
-                        <li>高黏度 + 剪切敏感 → 需要更仔細的工藝評估，可能選 TP 低壓系統</li>
-                        <li>低黏度 + 剪切敏感 → PP 或 TP 低壓系統</li>
-                    </ul>
-                </div>
-
-                <div class="analogy-box">
-                    <h4>比喻說明：10倍充填範圍 = 同一款發動機不同排氣量</h4>
-                    <p>汽車同一系列車款的發動機，可以通過改變汽缸行程來提供 1.5L 到 2.5L 的排氣量。但是如果你想要 5L 的大排量，就需要換一個完全不同的發動機。</p>
-                    <p>RPP 同理：一個泵型號通常可以覆蓋 10 倍的充填範圍（例如 0.5 mL 到 5 mL），但如果你的產品既有 0.1 mL 又有 50 mL 的規格，就需要多種尺寸的泵頭。這在 CDMO 中影響重大——需要備有多套泵，增加庫存和換產成本。</p>
-                </div>
-
-                <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
-                    <h4>實務應用 CDMO Scenario</h4>
-                    <p>你的 CDMO 客戶有一個皮下注射用高濃度 mAb（180 mg/mL），黏度約 80 mPa-s，但聚集敏感性高（高剪切會導致蛋白質聚集）。客戶要求充填量為 1 mL（固定規格）。</p>
-                    <p><strong>你的技術選擇建議：</strong></p>
-                    <ul>
-                        <li>黏度 80 mPa-s → 超過 PP 的上限（約 40-60 mPa-s），PP 不適合</li>
-                        <li>聚集敏感 + 高剪切風險 → RPP 需謹慎評估</li>
-                        <li>最終建議：<strong>進行剪切相容性研究（shear compatibility study）</strong>，測試 RPP 對該蛋白的聚集影響。同時考慮 TP 低壓系統作為備選方案。</li>
-                    </ul>
-                    <p>這正是為什麼 Table 2.0-1 中，RPP 被標記為「高黏度且非剪切敏感產品」的最佳選擇。</p>
-                </div>
-            </div>
-        </div>
-    </div>
+                </div></div>
 </div>
 
 <!-- ============================================================ -->
@@ -949,34 +949,6 @@ tr:nth-child(even) { background: #f7fafc; }
             <div class="right-column">
                 <h2>導師解析 Tutorial Commentary</h2>
 
-                <div class="concept-box">
-                    <h4>核心概念：為何 RPP 允許統計性 IPC？</h4>
-                    <p>IPC（製程中管控，In-Process Control）的充填重量檢查，在不同充填技術中有不同的頻率要求：</p>
-                    <table>
-                        <tr>
-                            <th>充填技術</th>
-                            <th>IPC 策略</th>
-                            <th>原因</th>
-                        </tr>
-                        <tr>
-                            <td>PP（蠕動泵）</td>
-                            <td>建議 100% IPC</td>
-                            <td>矽膠管磨損 → 劑量持續漂移，需逐支監控</td>
-                        </tr>
-                        <tr>
-                            <td>RPP（旋轉活塞泵）</td>
-                            <td>統計性 IPC 技術上可行</td>
-                            <td>機械行程固定，無劑量漂移；只需偵測偶發性氣泡</td>
-                        </tr>
-                        <tr>
-                            <td>TP（時間壓力）</td>
-                            <td>建議定期 IPC</td>
-                            <td>溫度/壓力波動影響充填量，需定期確認</td>
-                        </tr>
-                    </table>
-                    <p style="margin-top:0.5rem"><strong>統計性 IPC（statistical IPC）</strong>是指：不需對每支容器稱重，而是按照統計抽樣計畫（如 AQL 或固定間隔）抽取樣品。這在高速充填線上大幅降低操作負擔。</p>
-                </div>
-
                 <div class="note-box">
                     <h4>重點提示：為何 RPP 仍需要定期 IPC？</h4>
                     <p>即使 RPP 無劑量漂移，仍應保留<strong>定期 IPC</strong>的原因：</p>
@@ -1007,7 +979,35 @@ tr:nth-child(even) { background: #f7fafc; }
                 </div>
             </div>
         </div>
-    </div>
+    <div class="concept-box">
+                    <h4>核心概念：為何 RPP 允許統計性 IPC？</h4>
+                    <p>IPC（製程中管控，In-Process Control）的充填重量檢查，在不同充填技術中有不同的頻率要求：</p>
+                    <table>
+                        <tr>
+                            <th>充填技術</th>
+                            <th>IPC 策略</th>
+                            <th>原因</th>
+                        </tr>
+                        <tr>
+                            <td>PP（蠕動泵）</td>
+                            <td>建議 100% IPC</td>
+                            <td>矽膠管磨損 → 劑量持續漂移，需逐支監控</td>
+                        </tr>
+                        <tr>
+                            <td>RPP（旋轉活塞泵）</td>
+                            <td>統計性 IPC 技術上可行</td>
+                            <td>機械行程固定，無劑量漂移；只需偵測偶發性氣泡</td>
+                        </tr>
+                        <tr>
+                            <td>TP（時間壓力）</td>
+                            <td>建議定期 IPC</td>
+                            <td>溫度/壓力波動影響充填量，需定期確認</td>
+                        </tr>
+                    </table>
+                    <p style="margin-top:0.5rem"><strong>統計性 IPC（statistical IPC）</strong>是指：不需對每支容器稱重，而是按照統計抽樣計畫（如 AQL 或固定間隔）抽取樣品。這在高速充填線上大幅降低操作負擔。</p>
+                </div>
+
+                </div>
 </div>
 
 <!-- ============================================================ -->
@@ -1209,7 +1209,33 @@ RPP TCO = 初始資本支出 + 生命週期操作成本
             <div class="right-column">
                 <h2>導師解析 Tutorial Commentary</h2>
 
-                <div class="concept-box">
+                <div class="note-box">
+                    <h4>重點提示：伺服馬達管理 — 預防勝於治療</h4>
+                    <p>伺服馬達（servo motor）是 RPP 各驅動軸的動力來源，也是最可能突發失效的關鍵零件：</p>
+                    <ul>
+                        <li><strong>計畫性更換：</strong>OEM 提供的馬達額定運行小時數（prescribed run-time limits）是更換的觸發條件，不要等到馬達失效再換</li>
+                        <li><strong>備用零件庫存：</strong>每種型號的伺服馬達至少備有一個備件，避免緊急採購的漫長等待時間</li>
+                        <li><strong>定期測試：</strong>在 PM 時測試馬達的扭矩輸出、位置精度和溫度，建立趨勢資料</li>
+                    </ul>
+                    <p><strong>為何伺服馬達失效是「災難性」的？</strong>充填中途伺服馬達失效 → 充填線立即停止 → 產品在無菌環境中暴露 → 可能需要廢棄整批產品 → 重大財務和客戶影響。</p>
+                </div>
+
+                <div class="analogy-box">
+                    <h4>比喻說明：活塞表面缺陷管理 = 飛機引擎葉片檢查</h4>
+                    <p>航空工程師在每次維護時都會仔細檢查引擎渦輪葉片的每一道刮痕，因為他們知道：今天的一道小裂紋，可能是明天引擎故障的起點。</p>
+                    <p>RPP 活塞表面的管理完全相同：發現任何缺陷（刮傷、腐蝕斑、形變），都不能繼續使用，必須送回 OEM 評估。理由是：活塞表面損傷 → 間隙改變 → 顆粒產生 → 充填精度下降 → 最終可能導致患者安全風險。在製藥行業，「安全飛行」的成本永遠值得支付。</p>
+                </div>
+
+                <div class="practice-box">
+                    <h4>練習思考 Practice Questions</h4>
+                    <ol>
+                        <li>你的 RPP 充填線有 8 個泵頭，每個泵頭有 3 個伺服馬達（樞軸、旋轉、CIP/SIP 定位），OEM 規定每個馬達的更換週期為 5,000 小時。你的充填線每年運行 2,000 小時。建立一個 5 年的馬達更換計畫，並說明你需要備有多少備用馬達。</li>
+                        <li>充填線維護團隊報告說某個泵頭的活塞表面有一道細小刮痕（長約 2 mm，深度無法目視判斷）。你作為生產管理者，需要如何決策？這個決策需要哪些部門的參與？</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    <div class="concept-box">
                     <h4>核心概念：RPP 的預防性保養（PM）清單</h4>
                     <p>RPP 的維護需求比 PP 和 TP 更多，但泵本體壽命很長：</p>
                     <table>
@@ -1251,17 +1277,6 @@ RPP TCO = 初始資本支出 + 生命週期操作成本
                     </table>
                 </div>
 
-                <div class="note-box">
-                    <h4>重點提示：伺服馬達管理 — 預防勝於治療</h4>
-                    <p>伺服馬達（servo motor）是 RPP 各驅動軸的動力來源，也是最可能突發失效的關鍵零件：</p>
-                    <ul>
-                        <li><strong>計畫性更換：</strong>OEM 提供的馬達額定運行小時數（prescribed run-time limits）是更換的觸發條件，不要等到馬達失效再換</li>
-                        <li><strong>備用零件庫存：</strong>每種型號的伺服馬達至少備有一個備件，避免緊急採購的漫長等待時間</li>
-                        <li><strong>定期測試：</strong>在 PM 時測試馬達的扭矩輸出、位置精度和溫度，建立趨勢資料</li>
-                    </ul>
-                    <p><strong>為何伺服馬達失效是「災難性」的？</strong>充填中途伺服馬達失效 → 充填線立即停止 → 產品在無菌環境中暴露 → 可能需要廢棄整批產品 → 重大財務和客戶影響。</p>
-                </div>
-
                 <div class="concept-box">
                     <h4>材質選擇：SS、陶瓷、玻璃的比較</h4>
                     <table>
@@ -1292,22 +1307,7 @@ RPP TCO = 初始資本支出 + 生命週期操作成本
                     </table>
                 </div>
 
-                <div class="analogy-box">
-                    <h4>比喻說明：活塞表面缺陷管理 = 飛機引擎葉片檢查</h4>
-                    <p>航空工程師在每次維護時都會仔細檢查引擎渦輪葉片的每一道刮痕，因為他們知道：今天的一道小裂紋，可能是明天引擎故障的起點。</p>
-                    <p>RPP 活塞表面的管理完全相同：發現任何缺陷（刮傷、腐蝕斑、形變），都不能繼續使用，必須送回 OEM 評估。理由是：活塞表面損傷 → 間隙改變 → 顆粒產生 → 充填精度下降 → 最終可能導致患者安全風險。在製藥行業，「安全飛行」的成本永遠值得支付。</p>
                 </div>
-
-                <div class="practice-box">
-                    <h4>練習思考 Practice Questions</h4>
-                    <ol>
-                        <li>你的 RPP 充填線有 8 個泵頭，每個泵頭有 3 個伺服馬達（樞軸、旋轉、CIP/SIP 定位），OEM 規定每個馬達的更換週期為 5,000 小時。你的充填線每年運行 2,000 小時。建立一個 5 年的馬達更換計畫，並說明你需要備有多少備用馬達。</li>
-                        <li>充填線維護團隊報告說某個泵頭的活塞表面有一道細小刮痕（長約 2 mm，深度無法目視判斷）。你作為生產管理者，需要如何決策？這個決策需要哪些部門的參與？</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
 <!-- ============================================================ -->
@@ -1482,33 +1482,6 @@ RPP CIP/SIP 設計要求：
                 <p>Table 2.2.12-1 highlights the common benefits and risks analysis that is pertinent to the use of RPP systems.</p>
 
                 <div style="overflow-x:auto;">
-                <table>
-                    <caption style="text-align:left;font-weight:600;margin-bottom:0.5rem;color:#1e3a5f;">Table 2.2.12-1 Benefits and Risks of Rotary Piston Pumps</caption>
-                    <thead>
-                        <tr>
-                            <th style="width:50%">Benefits</th>
-                            <th style="width:50%">Risks</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Volumetric nature of the pump creates a reproducible filling accuracy.</td>
-                            <td>Wide ranges of fill volumes will require additional pump sizes.</td>
-                        </tr>
-                        <tr>
-                            <td>Very flexible system for a wide range of product attributes.</td>
-                            <td>For products that are metal sensitive or that may crystalize, ceramic or glass pumps may be required.</td>
-                        </tr>
-                        <tr>
-                            <td>Low maintenance</td>
-                            <td>Training for assembly, setup, and operation is essential.</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>Cleaning and sterilization validation is necessary and may be more complex than for other systems.</td>
-                        </tr>
-                    </tbody>
-                </table>
                 </div>
             </div>
 
@@ -1583,7 +1556,34 @@ RPP CIP/SIP 設計要求：
                 </div>
             </div>
         </div>
-    </div>
+    <div class="concept-box"><table>
+                    <caption style="text-align:left;font-weight:600;margin-bottom:0.5rem;color:#1e3a5f;">Table 2.2.12-1 Benefits and Risks of Rotary Piston Pumps</caption>
+                    <thead>
+                        <tr>
+                            <th style="width:50%">Benefits</th>
+                            <th style="width:50%">Risks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Volumetric nature of the pump creates a reproducible filling accuracy.</td>
+                            <td>Wide ranges of fill volumes will require additional pump sizes.</td>
+                        </tr>
+                        <tr>
+                            <td>Very flexible system for a wide range of product attributes.</td>
+                            <td>For products that are metal sensitive or that may crystalize, ceramic or glass pumps may be required.</td>
+                        </tr>
+                        <tr>
+                            <td>Low maintenance</td>
+                            <td>Training for assembly, setup, and operation is essential.</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Cleaning and sterilization validation is necessary and may be more complex than for other systems.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div></div>
 </div>
 
 <!-- ============================================================ -->

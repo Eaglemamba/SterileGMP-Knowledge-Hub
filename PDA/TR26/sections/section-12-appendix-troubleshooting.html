@@ -978,7 +978,7 @@
             <ul>
                 <li><strong>潤濕不足 (Insufficiently Wetted Filter)：</strong> 這是最常見的根因。如果濾膜沒有被完全潤濕，乾燥的孔隙會讓氣體直接通過，導致擴散流偏高或泡點偏低。解決方案：按照製造商建議的潤濕程序操作，確保足夠的潤濕時間和壓力</li>
                 <li><strong>不適當的潤濕液 (Inappropriate Wetting Medium)：</strong> 使用溶劑而非水作為潤濕液，會改變表面張力和接觸角，導致測試參數完全不同。必須使用製造商指定的潤濕液</li>
-                <li><strong>錯誤的孔徑規格：</strong> 安裝了 0.45 &mu;m 的濾膜卻用 0.2 &mu;m 的測試參數，測試必然「失敗」</li>
+                <li><strong>錯誤的孔徑規格：</strong> 安裝了 0.45 μm 的濾膜卻用 0.2 μm 的測試參數，測試必然「失敗」</li>
             </ul>
         </div>
 
@@ -1035,7 +1035,70 @@ Level 4 (最內層 — 最後查)：
         <h3>Table 12.0-1 Automatic Device Integrity Test Troubleshooting Guide</h3>
 
         <div style="overflow-x:auto;">
-            <table>
+            </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>表格結構解讀：</strong> Table 12.0-1 列出了 10 種不同的故障現象 (Issue)，每種現象對應多個可能原因 (Possible Cause)。學習這張表格的關鍵不在於死記，而在於理解以下模式：</p>
+            <ul>
+                <li><strong>高頻根因：</strong> 「潤濕不足」(Insufficiently wetted filter) 出現在幾乎所有故障類型中 — 這是最普遍的問題</li>
+                <li><strong>系統性問題：</strong> 「內部氣動元件異常」(Internal pneumatic works improperly) 同樣是高頻原因，指向儀器維護的重要性</li>
+                <li><strong>參數錯誤：</strong> 「錯誤的測試參數設定」和「錯誤的測試氣體」提醒我們人為設定錯誤的風險</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>這張故障排除表就像醫院急診的「症狀-鑑別診斷」對照表：</p>
+            <ul>
+                <li><strong>症狀（Issue）：</strong> 病人發燒（= 測試失敗）</li>
+                <li><strong>鑑別診斷（Possible Cause）：</strong> 可能是感冒、肺炎、尿路感染、甚至闌尾炎 — 同一個症狀可能有很多不同原因</li>
+                <li><strong>調查策略：</strong> 不是看到發燒就開抗生素（= 不是測試失敗就判定濾膜壞了），而是要做系統性的排查</li>
+            </ul>
+            <p>同樣地，有些「疾病」（= 根因）會表現為多種不同的「症狀」（= 故障現象）。例如「潤濕不足」這個根因，可能表現為泡點失敗、擴散流失敗、或壓力衰減失敗。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>特別值得關注的故障現象：</strong></p>
+            <ul>
+                <li><strong>「No Pressure Decay」（無壓力衰減）：</strong> 這是唯一一個可能表示「假通過」的情況。如果下游閥門關閉或管路堵塞，氣體無法擴散到下游，壓力不會衰減 — 測試顯示「通過」但實際上根本沒有測到濾膜！這比測試「失敗」更危險</li>
+                <li><strong>「Elevated temperature during test time」（測試期間溫度升高）：</strong> 在「No Pressure Decay」中出現，因為溫度升高會增加系統壓力，抵消了擴散造成的壓力下降</li>
+                <li><strong>「Large multiple-cartridge assembly」（大型多支濾芯組件）：</strong> 僅在泡點失敗中出現，因為多支濾芯並聯時，大量擴散流會掩蓋泡點信號</li>
+            </ul>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 場景 — 建立標準調查程序 (SOP)：</strong></p>
+            <p>在 CDMO 環境中，完整性測試失敗的調查不僅影響當批產品的放行決策，還涉及法規要求的偏差調查和 CAPA。建議建立以下調查流程：</p>
+            <ol>
+                <li><strong>第一步 — 記錄現場狀態：</strong> 記錄測試參數、環境溫度、濾芯批號、潤濕程序執行記錄</li>
+                <li><strong>第二步 — 排除操作和系統因素：</strong> 對照 Table 12.0-1 逐項排查非濾膜因素</li>
+                <li><strong>第三步 — 重新潤濕並重測：</strong> 如果懷疑潤濕不足，按照完整的潤濕程序重新潤濕後再測</li>
+                <li><strong>第四步 — 更換濾芯重測：</strong> 如果仍然失敗，更換新濾芯測試，確認是否為系統問題</li>
+                <li><strong>第五步 — 判定與記錄：</strong> 根據調查結果做出最終判定，記錄根因和改善措施</li>
+            </ol>
+            <p>關鍵原則：無菌保證 (Sterility Assurance) 永遠是第一優先。如果無法排除濾膜缺陷的可能性，該批產品不得放行。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在 Table 12.0-1 的 10 種故障中，哪一種最危險（可能導致不完整的濾膜被誤判為「通過」）？請解釋你的推理。</li>
+                <li>如果你在 CDMO 中遇到連續三個批次的擴散流測試都「偏高但剛好通過」（未超過限值但趨勢上升），你會如何處理？這屬於偏差還是趨勢管理的範疇？</li>
+                <li>「Filter contains traces of product solution or extraneous material from wetting fluid」這個根因出現在多個故障類型中。為什麼產品液殘留會影響完整性測試結果？它會使結果偏高還是偏低？</li>
+                <li>你的團隊報告說「壓力衰減測試失敗」。請按照優先順序列出你會排查的前五個可能原因，並解釋為什麼按這個順序。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="concept-box"><table>
                 <tr>
                     <th style="width:30%;">Issue</th>
                     <th style="width:70%;">Possible Cause</th>
@@ -1187,44 +1250,7 @@ Level 4 (最內層 — 最後查)：
                     </td>
                 </tr>
             </table>
-        </div>
-    </div>
-
-    <div class="right-column">
-        <h2>導師解析 Tutorial Commentary</h2>
-
-        <div class="concept-box">
-            <h4>核心概念解析 Key Concepts</h4>
-            <p><strong>表格結構解讀：</strong> Table 12.0-1 列出了 10 種不同的故障現象 (Issue)，每種現象對應多個可能原因 (Possible Cause)。學習這張表格的關鍵不在於死記，而在於理解以下模式：</p>
-            <ul>
-                <li><strong>高頻根因：</strong> 「潤濕不足」(Insufficiently wetted filter) 出現在幾乎所有故障類型中 — 這是最普遍的問題</li>
-                <li><strong>系統性問題：</strong> 「內部氣動元件異常」(Internal pneumatic works improperly) 同樣是高頻原因，指向儀器維護的重要性</li>
-                <li><strong>參數錯誤：</strong> 「錯誤的測試參數設定」和「錯誤的測試氣體」提醒我們人為設定錯誤的風險</li>
-            </ul>
-        </div>
-
-        <div class="analogy-box">
-            <h4>比喻說明 Analogy</h4>
-            <p>這張故障排除表就像醫院急診的「症狀-鑑別診斷」對照表：</p>
-            <ul>
-                <li><strong>症狀（Issue）：</strong> 病人發燒（= 測試失敗）</li>
-                <li><strong>鑑別診斷（Possible Cause）：</strong> 可能是感冒、肺炎、尿路感染、甚至闌尾炎 — 同一個症狀可能有很多不同原因</li>
-                <li><strong>調查策略：</strong> 不是看到發燒就開抗生素（= 不是測試失敗就判定濾膜壞了），而是要做系統性的排查</li>
-            </ul>
-            <p>同樣地，有些「疾病」（= 根因）會表現為多種不同的「症狀」（= 故障現象）。例如「潤濕不足」這個根因，可能表現為泡點失敗、擴散流失敗、或壓力衰減失敗。</p>
-        </div>
-
-        <div class="note-box">
-            <h4>重點提示 Key Notes</h4>
-            <p><strong>特別值得關注的故障現象：</strong></p>
-            <ul>
-                <li><strong>「No Pressure Decay」（無壓力衰減）：</strong> 這是唯一一個可能表示「假通過」的情況。如果下游閥門關閉或管路堵塞，氣體無法擴散到下游，壓力不會衰減 — 測試顯示「通過」但實際上根本沒有測到濾膜！這比測試「失敗」更危險</li>
-                <li><strong>「Elevated temperature during test time」（測試期間溫度升高）：</strong> 在「No Pressure Decay」中出現，因為溫度升高會增加系統壓力，抵消了擴散造成的壓力下降</li>
-                <li><strong>「Large multiple-cartridge assembly」（大型多支濾芯組件）：</strong> 僅在泡點失敗中出現，因為多支濾芯並聯時，大量擴散流會掩蓋泡點信號</li>
-            </ul>
-        </div>
-
-        <div class="note-box">
+        </div><div class="note-box">
             <h4>重點提示 Key Notes — 共通根因分析</h4>
             <p><strong>跨故障類型的共通根因統計：</strong></p>
             <table>
@@ -1243,33 +1269,7 @@ Level 4 (最內層 — 最後查)：
             <p>結論：<strong>前三大根因都不是「濾膜壞了」</strong>。潤濕、儀器維護和潤濕液選擇才是最需要注意的。</p>
         </div>
 
-        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
-            <h4>實務應用 Practical Application</h4>
-            <p><strong>CDMO 場景 — 建立標準調查程序 (SOP)：</strong></p>
-            <p>在 CDMO 環境中，完整性測試失敗的調查不僅影響當批產品的放行決策，還涉及法規要求的偏差調查和 CAPA。建議建立以下調查流程：</p>
-            <ol>
-                <li><strong>第一步 — 記錄現場狀態：</strong> 記錄測試參數、環境溫度、濾芯批號、潤濕程序執行記錄</li>
-                <li><strong>第二步 — 排除操作和系統因素：</strong> 對照 Table 12.0-1 逐項排查非濾膜因素</li>
-                <li><strong>第三步 — 重新潤濕並重測：</strong> 如果懷疑潤濕不足，按照完整的潤濕程序重新潤濕後再測</li>
-                <li><strong>第四步 — 更換濾芯重測：</strong> 如果仍然失敗，更換新濾芯測試，確認是否為系統問題</li>
-                <li><strong>第五步 — 判定與記錄：</strong> 根據調查結果做出最終判定，記錄根因和改善措施</li>
-            </ol>
-            <p>關鍵原則：無菌保證 (Sterility Assurance) 永遠是第一優先。如果無法排除濾膜缺陷的可能性，該批產品不得放行。</p>
-        </div>
-
-        <div class="practice-box">
-            <h4>練習思考 Practice Questions</h4>
-            <ol>
-                <li>在 Table 12.0-1 的 10 種故障中，哪一種最危險（可能導致不完整的濾膜被誤判為「通過」）？請解釋你的推理。</li>
-                <li>如果你在 CDMO 中遇到連續三個批次的擴散流測試都「偏高但剛好通過」（未超過限值但趨勢上升），你會如何處理？這屬於偏差還是趨勢管理的範疇？</li>
-                <li>「Filter contains traces of product solution or extraneous material from wetting fluid」這個根因出現在多個故障類型中。為什麼產品液殘留會影響完整性測試結果？它會使結果偏高還是偏低？</li>
-                <li>你的團隊報告說「壓力衰減測試失敗」。請按照優先順序列出你會排查的前五個可能原因，並解釋為什麼按這個順序。</li>
-            </ol>
-        </div>
-    </div>
-</div>
-
-<!-- SECTION SUMMARY -->
+        <!-- SECTION SUMMARY -->
 <div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
     <h3>本節重點回顧 Section Summary</h3>
     <ul>

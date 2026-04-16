@@ -932,9 +932,9 @@ tr:nth-child(even) {
 
 <!-- SECTION HEADER -->
 <div class="header">
-    <h1>Section 7b: Appendix II &mdash; Types of Control Charts + Appendix References</h1>
+    <h1>Section 7b: Appendix II — Types of Control Charts + Appendix References</h1>
     <div class="subtitle">附錄 II：管制圖類型 + 附錄參考文獻</div>
-    <div class="page-info">PDA Technical Report No. 60 (Revised 2026) &mdash; Process Validation: A Lifecycle Approach | p144 - p155</div>
+    <div class="page-info">PDA Technical Report No. 60 (Revised 2026) — Process Validation: A Lifecycle Approach | p144 - p155</div>
 </div>
 
 <div class="main-content">
@@ -977,7 +977,7 @@ tr:nth-child(even) {
         <h2>導師解析 Tutorial Commentary</h2>
         <div class="concept-box">
             <h4>核心概念解析 Key Concepts</h4>
-            <p><strong>Control Chart (管制圖)：</strong>管制圖是 Statistical Process Control (SPC，統計製程管制) 的核心工具。它以時間序列的方式繪製製程數據，並設定管制上限 (UCL) 與管制下限 (LCL)，通常為中心線 &plusmn;3 個標準差。當數據點落在管制界限之外或出現非隨機模式時，即表示製程可能已發生偏移。</p>
+            <p><strong>Control Chart (管制圖)：</strong>管制圖是 Statistical Process Control (SPC，統計製程管制) 的核心工具。它以時間序列的方式繪製製程數據，並設定管制上限 (UCL) 與管制下限 (LCL)，通常為中心線 ±3 個標準差。當數據點落在管制界限之外或出現非隨機模式時，即表示製程可能已發生偏移。</p>
             <p><strong>TR 59 (PDA 技術報告第 59 號)：</strong>專門探討「生產監控中統計方法的利用」，是 TR 60 管制圖議題的延伸閱讀重要資源。兩份報告應搭配使用。</p>
         </div>
         <div class="analogy-box">
@@ -997,7 +997,7 @@ tr:nth-child(even) {
         <h2>原文內容 Original Text</h2>
         <p>Commonly used control charts for <span class="key-term">variables data</span> are (8,9):</p>
         <ul>
-            <li><span class="key-term">x&#772;/R or x&#772;/S "Shewhart" chart</span> using &plusmn;3-sigma limits</li>
+            <li><span class="key-term">x̄/R or x̄/S "Shewhart" chart</span> using ±3-sigma limits</li>
             <li><span class="key-term">Individuals/Moving Range (I/MR) chart</span></li>
             <li><span class="key-term">Levey-Jennings chart</span></li>
             <li><span class="key-term">Moving average chart</span></li>
@@ -1014,16 +1014,49 @@ tr:nth-child(even) {
         </div>
 
         <div style="overflow-x:auto;">
-        <table>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>Shewhart 圖 vs EWMA/CUSUM 的選擇邏輯：</strong></p>
+            <ul>
+                <li>Shewhart 圖對<strong>大偏移</strong>（≥2σ）偵測快速，但對小偏移不敏感</li>
+                <li>EWMA 和 CUSUM 則對<strong>小偏移</strong>（0.5σ~1.5σ）有卓越的偵測能力</li>
+                <li>在 Continued Process Verification (CPV，持續製程確認) 階段，製程通常已穩定，因此<strong>偵測小偏移</strong>的能力更為關鍵 — 此時 EWMA/CUSUM 是更佳選擇</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你在監控一個水塔的水位：</p>
+            <ul>
+                <li><strong>Shewhart 圖</strong>像是每隔一段時間看一眼水位表 — 如果水位突然大幅下降你會發現，但慢慢滲漏就不容易察覺</li>
+                <li><strong>EWMA 圖</strong>像是一個智慧型感測器，會加權考慮最近的水位變化趨勢，即使每次只滲漏一點點也能發出預警</li>
+                <li><strong>CUSUM 圖</strong>則像是記帳本，持續累積偏差 — 即使每次偏差很小，累積起來就會觸發警報</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的工廠每批充填後取 5 支安瓿測量充填體積，應該選用哪種管制圖？為什麼？</li>
+                <li>在 CPV 階段，如果你擔心製程的平均值緩慢漂移（例如每批偏移 0.5σ），Shewhart 圖能否有效偵測？你會推薦什麼替代方案？</li>
+                <li>Levey-Jennings 圖主要用於什麼場景？它與 I/MR 圖的主要差異為何？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="concept-box"><table>
             <tr>
                 <th>管制圖類型</th>
                 <th>適用場景</th>
                 <th>特點</th>
             </tr>
             <tr>
-                <td><strong>x&#772;/R 或 x&#772;/S (Shewhart)</strong></td>
+                <td><strong>x̄/R 或 x̄/S (Shewhart)</strong></td>
                 <td>每個取樣點有多個觀測值（子組），例如每批取 5 個樣品測量</td>
-                <td>最經典的管制圖；x&#772; 監控平均值，R 或 S 監控組內變異。使用 &plusmn;3&sigma; 管制界限</td>
+                <td>最經典的管制圖；x̄ 監控平均值，R 或 S 監控組內變異。使用 ±3σ 管制界限</td>
             </tr>
             <tr>
                 <td><strong>I/MR (個別值/移動全距)</strong></td>
@@ -1043,7 +1076,7 @@ tr:nth-child(even) {
             <tr>
                 <td><strong>EWMA (指數加權移動平均)</strong></td>
                 <td>需要偵測製程的小偏移</td>
-                <td>賦予近期數據較大權重，對小偏移（0.5&sigma; ~ 2&sigma;）比 Shewhart 圖更靈敏</td>
+                <td>賦予近期數據較大權重，對小偏移（0.5σ ~ 2σ）比 Shewhart 圖更靈敏</td>
             </tr>
             <tr>
                 <td><strong>CUSUM (累積和)</strong></td>
@@ -1051,40 +1084,7 @@ tr:nth-child(even) {
                 <td>累積觀測值與目標值的偏差；對持續小偏移的偵測力最強</td>
             </tr>
         </table>
-        </div>
-
-        <div class="note-box">
-            <h4>重點提示 Key Notes</h4>
-            <p><strong>Shewhart 圖 vs EWMA/CUSUM 的選擇邏輯：</strong></p>
-            <ul>
-                <li>Shewhart 圖對<strong>大偏移</strong>（&ge;2&sigma;）偵測快速，但對小偏移不敏感</li>
-                <li>EWMA 和 CUSUM 則對<strong>小偏移</strong>（0.5&sigma;~1.5&sigma;）有卓越的偵測能力</li>
-                <li>在 Continued Process Verification (CPV，持續製程確認) 階段，製程通常已穩定，因此<strong>偵測小偏移</strong>的能力更為關鍵 &mdash; 此時 EWMA/CUSUM 是更佳選擇</li>
-            </ul>
-        </div>
-
-        <div class="analogy-box">
-            <h4>比喻說明 Analogy</h4>
-            <p>想像你在監控一個水塔的水位：</p>
-            <ul>
-                <li><strong>Shewhart 圖</strong>像是每隔一段時間看一眼水位表 &mdash; 如果水位突然大幅下降你會發現，但慢慢滲漏就不容易察覺</li>
-                <li><strong>EWMA 圖</strong>像是一個智慧型感測器，會加權考慮最近的水位變化趨勢，即使每次只滲漏一點點也能發出預警</li>
-                <li><strong>CUSUM 圖</strong>則像是記帳本，持續累積偏差 &mdash; 即使每次偏差很小，累積起來就會觸發警報</li>
-            </ul>
-        </div>
-
-        <div class="practice-box">
-            <h4>練習思考 Practice Questions</h4>
-            <ol>
-                <li>你的工廠每批充填後取 5 支安瓿測量充填體積，應該選用哪種管制圖？為什麼？</li>
-                <li>在 CPV 階段，如果你擔心製程的平均值緩慢漂移（例如每批偏移 0.5&sigma;），Shewhart 圖能否有效偵測？你會推薦什麼替代方案？</li>
-                <li>Levey-Jennings 圖主要用於什麼場景？它與 I/MR 圖的主要差異為何？</li>
-            </ol>
-        </div>
-    </div>
-</div>
-
-<!-- ============================================================= -->
+        </div><!-- ============================================================= -->
 <!-- 10.2 CONTROL CHARTS FOR ATTRIBUTES DATA -->
 <!-- ============================================================= -->
 <div class="section-title" id="sec10-2">10.2 Control Charts for Attributes Data</div>
@@ -1123,44 +1123,12 @@ tr:nth-child(even) {
         </div>
 
         <div style="overflow-x:auto;">
-        <table>
-            <tr>
-                <th>管制圖</th>
-                <th>監控對象</th>
-                <th>分布假設</th>
-                <th>樣本量要求</th>
-            </tr>
-            <tr>
-                <td><strong>p-chart</strong></td>
-                <td>不合格品比例</td>
-                <td>Binomial</td>
-                <td>可變動（n 可以不同）</td>
-            </tr>
-            <tr>
-                <td><strong>np-chart</strong></td>
-                <td>不合格品數量</td>
-                <td>Binomial</td>
-                <td>必須固定（n 相同）</td>
-            </tr>
-            <tr>
-                <td><strong>c-chart</strong></td>
-                <td>缺陷數</td>
-                <td>Poisson</td>
-                <td>必須固定（檢查區域/體積相同）</td>
-            </tr>
-            <tr>
-                <td><strong>u-chart</strong></td>
-                <td>平均缺陷數</td>
-                <td>Poisson</td>
-                <td>可變動（n 可以不同）</td>
-            </tr>
-        </table>
         </div>
 
         <div class="note-box">
             <h4>重點提示 Key Notes</h4>
-            <p><strong>大樣本量的陷阱 &mdash; Over-Dispersion (過度分散)：</strong></p>
-            <p>這是一個非常實務且容易被忽略的問題。當樣本量非常大（例如 n &gt; 500 或 1,000）時，傳統 p-chart 和 u-chart 的管制界限會變得極窄（因為標準差與 &radic;n 成反比）。這導致：</p>
+            <p><strong>大樣本量的陷阱 — Over-Dispersion (過度分散)：</strong></p>
+            <p>這是一個非常實務且容易被忽略的問題。當樣本量非常大（例如 n &gt; 500 或 1,000）時，傳統 p-chart 和 u-chart 的管制界限會變得極窄（因為標準差與 √n 成反比）。這導致：</p>
             <ul>
                 <li>大量數據點落在管制界限之外，產生過多<strong>假警報 (False Alarms)</strong></li>
                 <li>這些「超限點」並非真正的製程偏移，而是因為實際數據的變異比 Binomial/Poisson 模型假設的更大（即<strong>過度分散</strong>）</li>
@@ -1196,7 +1164,39 @@ tr:nth-child(even) {
     </div>
 </div>
 
-<!-- ============================================================= -->
+<div class="concept-box"><table>
+            <tr>
+                <th>管制圖</th>
+                <th>監控對象</th>
+                <th>分布假設</th>
+                <th>樣本量要求</th>
+            </tr>
+            <tr>
+                <td><strong>p-chart</strong></td>
+                <td>不合格品比例</td>
+                <td>Binomial</td>
+                <td>可變動（n 可以不同）</td>
+            </tr>
+            <tr>
+                <td><strong>np-chart</strong></td>
+                <td>不合格品數量</td>
+                <td>Binomial</td>
+                <td>必須固定（n 相同）</td>
+            </tr>
+            <tr>
+                <td><strong>c-chart</strong></td>
+                <td>缺陷數</td>
+                <td>Poisson</td>
+                <td>必須固定（檢查區域/體積相同）</td>
+            </tr>
+            <tr>
+                <td><strong>u-chart</strong></td>
+                <td>平均缺陷數</td>
+                <td>Poisson</td>
+                <td>可變動（n 可以不同）</td>
+            </tr>
+        </table>
+        </div><!-- ============================================================= -->
 <!-- PERFORMANCE OF CONTROL CHARTS: ARL -->
 <!-- ============================================================= -->
 <div class="section-title" id="sec-arl">Performance of Control Charts: Average Run Length (ARL)</div>
@@ -1214,7 +1214,7 @@ tr:nth-child(even) {
             <p><strong>Average Run Length, ARL (平均運行長度)：</strong>指管制圖在製程偏移發生後，平均需要觀察幾個取樣點才能偵測到偏移（即第一個點落在管制界限之外）。</p>
             <ul>
                 <li><strong>ARL<sub>0</sub>（製程在管制狀態）：</strong>希望此值越大越好，代表不會頻繁產生假警報。Shewhart 圖的 ARL<sub>0</sub> = 370（即平均每 370 個取樣點才會有一次假警報）</li>
-                <li><strong>ARL<sub>1</sub>（製程已偏移）：</strong>希望此值越小越好，代表能快速偵測到問題。例如偏移 1&sigma; 時，Shewhart 圖的 ARL<sub>1</sub> &asymp; 44，EWMA 的 ARL<sub>1</sub> &asymp; 10</li>
+                <li><strong>ARL<sub>1</sub>（製程已偏移）：</strong>希望此值越小越好，代表能快速偵測到問題。例如偏移 1σ 時，Shewhart 圖的 ARL<sub>1</sub> ≈ 44，EWMA 的 ARL<sub>1</sub> ≈ 10</li>
             </ul>
         </div>
 
@@ -1224,17 +1224,17 @@ tr:nth-child(even) {
             <pre>
 ARL = 1 / P(點落在管制界限外)
 
-製程在管制狀態（&plusmn;3&sigma; limits）：
-  P(超限) = 0.0027 (即 &plusmn;3&sigma; 外的常態分布面積)
-  ARL_0 = 1 / 0.0027 &asymp; 370
+製程在管制狀態（±3σ limits）：
+  P(超限) = 0.0027 (即 ±3σ 外的常態分布面積)
+  ARL_0 = 1 / 0.0027 ≈ 370
 
-製程偏移 1&sigma;：
-  P(超限) &asymp; 0.0228
-  ARL_1 = 1 / 0.0228 &asymp; 44
+製程偏移 1σ：
+  P(超限) ≈ 0.0228
+  ARL_1 = 1 / 0.0228 ≈ 44
 
-製程偏移 2&sigma;：
-  P(超限) &asymp; 0.1587
-  ARL_1 = 1 / 0.1587 &asymp; 6.3
+製程偏移 2σ：
+  P(超限) ≈ 0.1587
+  ARL_1 = 1 / 0.1587 ≈ 6.3
             </pre>
         </div>
 
@@ -1242,8 +1242,8 @@ ARL = 1 / P(點落在管制界限外)
             <h4>重點提示 Key Notes</h4>
             <p><strong>ARL 與取樣策略的關聯：</strong></p>
             <ul>
-                <li>ARL 直接影響你的<strong>取樣頻率</strong>決策。如果 ARL<sub>1</sub> = 44，表示平均要等 44 個取樣點才能偵測到 1&sigma; 的偏移。若每月取樣一次，可能需要近 4 年才能發現！</li>
-                <li>這也是為什麼 TR 60 特別指出 ARL 在 <strong>CPV 階段</strong>最為重要 &mdash; CPV 的目標是及時發現製程變化，而非等到大量不合格品產出後才處理</li>
+                <li>ARL 直接影響你的<strong>取樣頻率</strong>決策。如果 ARL<sub>1</sub> = 44，表示平均要等 44 個取樣點才能偵測到 1σ 的偏移。若每月取樣一次，可能需要近 4 年才能發現！</li>
+                <li>這也是為什麼 TR 60 特別指出 ARL 在 <strong>CPV 階段</strong>最為重要 — CPV 的目標是及時發現製程變化，而非等到大量不合格品產出後才處理</li>
                 <li>實務上，可使用 ARL 比較表來選擇最適合的管制圖類型和取樣方案</li>
             </ul>
         </div>
@@ -1254,14 +1254,14 @@ ARL = 1 / P(點落在管制界限外)
             <ul>
                 <li>你希望在沒有火災時不要亂響（<strong>ARL<sub>0</sub> 越大越好</strong> = 不要太敏感而頻繁假警報）</li>
                 <li>但你也希望在真正有火災時能迅速響起（<strong>ARL<sub>1</sub> 越小越好</strong> = 快速偵測到真正的問題）</li>
-                <li>不同種類的管制圖就像不同品牌的偵測器 &mdash; 有些對大火反應快但對陰燃不敏感（Shewhart），有些對小火苗就能偵測到（EWMA/CUSUM）</li>
+                <li>不同種類的管制圖就像不同品牌的偵測器 — 有些對大火反應快但對陰燃不敏感（Shewhart），有些對小火苗就能偵測到（EWMA/CUSUM）</li>
             </ul>
         </div>
 
         <div class="practice-box">
             <h4>練習思考 Practice Questions</h4>
             <ol>
-                <li>如果你的 CPV 取樣頻率是每週一次，而你使用 Shewhart 圖監控一個 CQA，當製程偏移 1&sigma; 時，大約需要多少週（ARL<sub>1</sub> &asymp; 44）才能偵測到？這樣的延遲在實務上是否可接受？</li>
+                <li>如果你的 CPV 取樣頻率是每週一次，而你使用 Shewhart 圖監控一個 CQA，當製程偏移 1σ 時，大約需要多少週（ARL<sub>1</sub> ≈ 44）才能偵測到？這樣的延遲在實務上是否可接受？</li>
                 <li>如何透過管制圖類型的選擇（例如改用 EWMA）來降低 ARL<sub>1</sub>，又不至於讓 ARL<sub>0</sub> 過低而產生太多假警報？</li>
                 <li>為什麼 TR 60 說 ARL 可以幫助決定取樣大小和取樣頻率？請用自己的話解釋其中的邏輯。</li>
             </ol>
@@ -1280,9 +1280,9 @@ ARL = 1 / P(點落在管制界限外)
         <h3>Appendix References</h3>
         <ol>
             <li>Meeker, W.Q., Hahn, G.J., Escobar, L.A. <em>Statistical Intervals: A Guide for Practitioners and Researchers.</em> John Wiley &amp; Sons, 2017.</li>
-            <li>U.S. Food and Drug Administration. <em>Guidance for Industry: PAT &mdash; A Framework for Innovative Pharmaceutical Development, Manufacturing, and Quality Assurance;</em> U.S. Department of Health and Human Services: Rockville, Md., 2004.</li>
+            <li>U.S. Food and Drug Administration. <em>Guidance for Industry: PAT — A Framework for Innovative Pharmaceutical Development, Manufacturing, and Quality Assurance;</em> U.S. Department of Health and Human Services: Rockville, Md., 2004.</li>
             <li>Oliver, J. A 3-D Risk Assessment Model. <em>J Validation Tech</em> 2008, 14 (5), 70-76.</li>
-            <li>Makkonen, L. Bringing Closure to the Plotting Position Controversy. <em>Communications in Statistics&mdash;Theory and Methods</em> 2008, 37, 460&ndash;67.</li>
+            <li>Makkonen, L. Bringing Closure to the Plotting Position Controversy. <em>Communications in Statistics—Theory and Methods</em> 2008, 37, 460–67.</li>
             <li>Lenth, R V. Java Applets for Power and Sample Size [computer software]. http://homepage.divms.uiowa.edu/~rlenth/Power/ (accessed 20 Mar 2011).</li>
             <li>Hoffman, D; Kringle, R. Two-Sided Tolerance Intervals for Balanced and Unbalanced Random Effects Models. <em>J Biopharm Stat</em> 2005, 15 (2), 283-93.</li>
             <li>Vangel, M. New Methods for One-Sided Tolerance Limits for a One-Way Balanced Random-Effects ANOVA Model. <em>Technometrics</em> 1992, 34, 176-85.</li>
@@ -1293,7 +1293,7 @@ ARL = 1 / P(點落在管制界限外)
             <li>Farnuma, N; Stantona, L. Narrow Limit Gauging: Go or No Go? <em>Qual Eng</em> 1991, 3 (3), 293-307.</li>
             <li>Nelson, L. Nomograph of Sample Size for Estimating Standard Deviation. <em>J Quality Tech</em> 2018, 11 (Sup1), 25-26.</li>
             <li>Greenwood, J A; Sondomire, M M. Sample Size Required for Estimating the Standard Deviation as a Percent of its True Value. <em>J Am Statistical Assoc</em> 1950, 45 (250), 257-60.</li>
-            <li>Flight, L., and Julious, S. A. Practical guide to sample size calculations: non-inferiority and equivalence trials. <em>Pharmaceut. Statist.</em>, 2016, 15: 80&ndash;89.</li>
+            <li>Flight, L., and Julious, S. A. Practical guide to sample size calculations: non-inferiority and equivalence trials. <em>Pharmaceut. Statist.</em>, 2016, 15: 80–89.</li>
             <li>Parenteral Drug Association. <em>Technical Report No. 59: Utilization of Statistical Methods for Production Monitoring;</em> PDA: Bethesda, Md., 2012.</li>
             <li>Laney, D B. Improved Control Chart for Attributes. <em>Qual Eng</em> 2002, 14 (4), 531-37.</li>
         </ol>
@@ -1307,43 +1307,6 @@ ARL = 1 / P(點落在管制界限外)
         </div>
 
         <div style="overflow-x:auto;">
-        <table>
-            <tr>
-                <th>主題分類</th>
-                <th>文獻編號</th>
-                <th>內容摘要</th>
-            </tr>
-            <tr>
-                <td><strong>統計區間與容許區間</strong></td>
-                <td>Ref 1, 6, 7</td>
-                <td>Meeker 等人的經典教科書，以及 Hoffman 和 Vangel 關於容許區間 (Tolerance Intervals) 的專論，適用於製程驗證中的 acceptance criteria 設定</td>
-            </tr>
-            <tr>
-                <td><strong>SPC 與管制圖</strong></td>
-                <td>Ref 8, 9, 16, 17</td>
-                <td>Montgomery 和 Wheeler 的 SPC 經典教科書；TR 59 為 PDA 姊妹報告；Laney 的改良計數型管制圖</td>
-            </tr>
-            <tr>
-                <td><strong>樣本量與檢定力</strong></td>
-                <td>Ref 5, 13, 14, 15</td>
-                <td>樣本量計算工具、標準差估計所需樣本量、非劣性/等效性試驗的樣本量指引</td>
-            </tr>
-            <tr>
-                <td><strong>製程能力指標</strong></td>
-                <td>Ref 10, 11</td>
-                <td>Scherder 對製程能力指標的優缺點分析；Burdick 關於變異成分信賴區間的方法論</td>
-            </tr>
-            <tr>
-                <td><strong>風險評估與 PAT</strong></td>
-                <td>Ref 2, 3</td>
-                <td>FDA PAT 指引（製程分析技術框架）；Oliver 的 3D 風險評估模型</td>
-            </tr>
-            <tr>
-                <td><strong>其他統計方法</strong></td>
-                <td>Ref 4, 12</td>
-                <td>繪圖位置爭議的結論性文章；窄限量規 (Narrow Limit Gauging) 方法論</td>
-            </tr>
-        </table>
         </div>
 
         <div class="note-box">
@@ -1380,13 +1343,50 @@ ARL = 1 / P(點落在管制界限外)
     </div>
 </div>
 
-<!-- ============================================================= -->
+<div class="concept-box"><table>
+            <tr>
+                <th>主題分類</th>
+                <th>文獻編號</th>
+                <th>內容摘要</th>
+            </tr>
+            <tr>
+                <td><strong>統計區間與容許區間</strong></td>
+                <td>Ref 1, 6, 7</td>
+                <td>Meeker 等人的經典教科書，以及 Hoffman 和 Vangel 關於容許區間 (Tolerance Intervals) 的專論，適用於製程驗證中的 acceptance criteria 設定</td>
+            </tr>
+            <tr>
+                <td><strong>SPC 與管制圖</strong></td>
+                <td>Ref 8, 9, 16, 17</td>
+                <td>Montgomery 和 Wheeler 的 SPC 經典教科書；TR 59 為 PDA 姊妹報告；Laney 的改良計數型管制圖</td>
+            </tr>
+            <tr>
+                <td><strong>樣本量與檢定力</strong></td>
+                <td>Ref 5, 13, 14, 15</td>
+                <td>樣本量計算工具、標準差估計所需樣本量、非劣性/等效性試驗的樣本量指引</td>
+            </tr>
+            <tr>
+                <td><strong>製程能力指標</strong></td>
+                <td>Ref 10, 11</td>
+                <td>Scherder 對製程能力指標的優缺點分析；Burdick 關於變異成分信賴區間的方法論</td>
+            </tr>
+            <tr>
+                <td><strong>風險評估與 PAT</strong></td>
+                <td>Ref 2, 3</td>
+                <td>FDA PAT 指引（製程分析技術框架）；Oliver 的 3D 風險評估模型</td>
+            </tr>
+            <tr>
+                <td><strong>其他統計方法</strong></td>
+                <td>Ref 4, 12</td>
+                <td>繪圖位置爭議的結論性文章；窄限量規 (Narrow Limit Gauging) 方法論</td>
+            </tr>
+        </table>
+        </div><!-- ============================================================= -->
 <!-- SECTION SUMMARY -->
 <!-- ============================================================= -->
 <div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
     <h3>本節重點回顧 Section Summary</h3>
     <ul>
-        <li><strong>管制圖分類：</strong>計量型數據（Variables）使用 x&#772;/R、I/MR、Levey-Jennings、Moving Average、EWMA、CUSUM 等管制圖；計數型數據（Attributes）使用 p、np、c、u 管制圖</li>
+        <li><strong>管制圖分類：</strong>計量型數據（Variables）使用 x̄/R、I/MR、Levey-Jennings、Moving Average、EWMA、CUSUM 等管制圖；計數型數據（Attributes）使用 p、np、c、u 管制圖</li>
         <li><strong>管制圖選擇邏輯：</strong>Shewhart 圖適合偵測大偏移；EWMA 和 CUSUM 適合偵測持續性小偏移，在 CPV 階段特別有價值</li>
         <li><strong>大樣本量陷阱：</strong>當樣本量很大（n &gt; 500~1,000）時，傳統計數型管制圖的分布假設可能被違反，導致過多假警報。Laney's p'/u' chart 或 I/MR 圖是有效的替代方案</li>
         <li><strong>ARL 的決策意義：</strong>Average Run Length 衡量管制圖偵測偏移的速度。ARL<sub>0</sub> 要大（避免假警報），ARL<sub>1</sub> 要小（快速偵測真實偏移）。ARL 可作為選擇管制圖類型和取樣策略的定量依據</li>
@@ -1398,13 +1398,13 @@ ARL = 1 / P(點落在管制界限外)
 
 <!-- FOOTER -->
 <div class="main-footer">
-    <p>PDA Technical Report No. 60 (Revised 2026) &mdash; Process Validation: A Lifecycle Approach</p>
+    <p>PDA Technical Report No. 60 (Revised 2026) — Process Validation: A Lifecycle Approach</p>
     <p>Section 7b: Appendix II Control Charts + Appendix References (10.0-11.0, p144-p155)</p>
     <p>Educational Material for CDMO Professionals | Bilingual EN/繁體中文</p>
 </div>
 
 <!-- BACK TO TOP BUTTON -->
-<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">⇧</button>
 
 <script>
 // Back to top button visibility
