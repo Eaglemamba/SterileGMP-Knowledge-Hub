@@ -126,8 +126,8 @@ async function init(){
   document.getElementById('statDocs').textContent=Object.keys(manifest).length;
   document.getElementById('statFigs').textContent=figCount.toLocaleString();
   document.getElementById('statTbls').textContent=tblCount.toLocaleString();
-  var params=new URLSearchParams(window.location.search);var docParam=params.get('doc');
-  if(docParam&&manifest[docParam])showFigures(docParam);else showDocList();
+  var params=new URLSearchParams(window.location.search);var docParam=params.get('doc');var fileParam=params.get('file');
+  if(docParam&&manifest[docParam]){if(fileParam){var tgt=manifest[docParam].figures.find(function(f){return f.file===fileParam;});if(tgt){currentDoc=docParam;currentTab=tgt.type==='table'?'tables':'figures';currentView='carousel';currentIdx=0;history.replaceState(null,'','figures-gallery.html?doc='+docParam);renderDocView();for(var i=0;i<currentItems.length;i++){if(currentItems[i].file===fileParam){currentIdx=i;renderDocView();break;}}}else{showFigures(docParam);}}else{showFigures(docParam);}}else showDocList();
 }
 function showDocList(){
   currentDoc=null;history.replaceState(null,'','figures-gallery.html');
