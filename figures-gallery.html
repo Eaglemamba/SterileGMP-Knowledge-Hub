@@ -3,286 +3,219 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SterileGMP — Figures & Tables</title>
+<title>SterileGMP &mdash; Figures &amp; Tables</title>
 <style>
-:root {
-  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  --c-bg: #f5f5f7;
-  --c-surface: #ffffff;
-  --c-primary: #1d1d1f;
-  --c-secondary: #6e6e73;
-  --shadow-1: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
-  --shadow-2: 0 4px 12px rgba(0,0,0,0.1), 0 2px 4px rgba(0,0,0,0.04);
-  --shadow-3: 0 8px 24px rgba(0,0,0,0.12), 0 4px 8px rgba(0,0,0,0.06);
-  --r-card: 16px;
-}
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans TC","Microsoft JhengHei",sans-serif; background:var(--c-bg); color:var(--c-primary); line-height:1.5; }
-
-/* Header */
-.header { background:linear-gradient(135deg,#1e3a5f 0%,#2c5282 100%); color:#fff; padding:2rem 1.5rem; text-align:center; }
-.header h1 { font-size:1.4rem; font-weight:700; margin-bottom:0.3rem; }
-.header p { font-size:0.9rem; opacity:0.85; }
-.header .stats { display:flex; gap:2rem; justify-content:center; margin-top:1rem; }
-.header .stat { text-align:center; }
-.header .stat-num { font-size:1.6rem; font-weight:700; }
-.header .stat-label { font-size:0.75rem; opacity:0.75; }
-
-/* Nav */
-.nav-bar { background:#2d3748; padding:0.5rem 1.5rem; display:flex; align-items:center; gap:1rem; position:sticky; top:0; z-index:100; }
-.nav-bar a { color:rgba(255,255,255,0.8); text-decoration:none; font-size:0.85rem; padding:0.4rem 0.8rem; border-radius:8px; transition:all 0.15s; }
-.nav-bar a:hover { background:rgba(255,255,255,0.1); color:#fff; }
-.nav-bar a.active { background:rgba(255,255,255,0.15); color:#fff; font-weight:600; }
-.search-box { flex:1; max-width:400px; }
-.search-box input { width:100%; padding:0.4rem 0.8rem; border-radius:8px; border:none; font-size:0.85rem; background:rgba(255,255,255,0.12); color:#fff; outline:none; }
-.search-box input::placeholder { color:rgba(255,255,255,0.5); }
-.search-box input:focus { background:rgba(255,255,255,0.2); }
-
-/* Container */
-.container { max-width:1400px; margin:0 auto; padding:1.5rem; }
-
-/* Document List View */
-.doc-list { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1rem; }
-.doc-item { background:var(--c-surface); border-radius:var(--r-card); box-shadow:var(--shadow-1); overflow:hidden; cursor:pointer; transition:transform 0.2s var(--ease),box-shadow 0.2s var(--ease); }
-.doc-item:hover { transform:translateY(-2px); box-shadow:var(--shadow-2); }
-.doc-item-bar { height:4px; }
-.doc-item-body { padding:1rem 1.25rem; }
-.doc-item-body h3 { font-size:0.9rem; font-weight:600; margin-bottom:0.25rem; }
-.doc-item-body .meta { font-size:0.8rem; color:var(--c-secondary); display:flex; align-items:center; gap:0.5rem; }
-.doc-item-body .fig-count { font-size:1.1rem; font-weight:700; margin-top:0.5rem; }
-
-/* Figure Grid View */
-.back-btn { display:inline-flex; align-items:center; gap:0.4rem; padding:0.5rem 1rem; border-radius:8px; background:var(--c-surface); box-shadow:var(--shadow-1); cursor:pointer; border:none; font-size:0.85rem; font-weight:500; color:var(--c-primary); margin-bottom:1rem; transition:all 0.15s; font-family:inherit; }
-.back-btn:hover { box-shadow:var(--shadow-2); }
-.fig-header { margin-bottom:1.5rem; }
-.fig-header h2 { font-size:1.2rem; font-weight:700; margin-bottom:0.25rem; }
-.fig-header p { font-size:0.85rem; color:var(--c-secondary); }
-.fig-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1rem; }
-.fig-card { background:var(--c-surface); border-radius:12px; box-shadow:var(--shadow-1); overflow:hidden; cursor:pointer; transition:transform 0.2s var(--ease),box-shadow 0.2s var(--ease); }
-.fig-card:hover { transform:translateY(-2px); box-shadow:var(--shadow-2); }
-.fig-card img { width:100%; aspect-ratio:4/3; object-fit:contain; background:#f8f9fa; padding:0.5rem; }
-.fig-card .fig-info { padding:0.6rem 0.8rem; font-size:0.78rem; color:var(--c-secondary); display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(0,0,0,0.06); }
-/* Lightbox */
-.lightbox { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:1000; justify-content:center; align-items:center; cursor:zoom-out; }
-.lightbox.open { display:flex; }
-.lightbox img { max-width:95%; max-height:95%; object-fit:contain; border-radius:8px; }
-.lightbox-close { position:fixed; top:1rem; right:1.5rem; color:#fff; font-size:2rem; cursor:pointer; z-index:1001; opacity:0.7; background:none; border:none; }
-.lightbox-close:hover { opacity:1; }
-.lightbox-info { position:fixed; bottom:1.5rem; left:50%; transform:translateX(-50%); color:#fff; font-size:0.85rem; opacity:0.7; background:rgba(0,0,0,0.5); padding:0.4rem 1rem; border-radius:8px; z-index:1001; }
-
-/* Empty state */
-.empty { text-align:center; padding:4rem 2rem; color:var(--c-secondary); }
-.empty h3 { font-size:1.1rem; margin-bottom:0.5rem; }
-
-/* Page group dividers */
-.page-group { margin-bottom:1.5rem; }
-.page-group-label { font-size:0.85rem; font-weight:600; color:var(--c-secondary); margin-bottom:0.75rem; padding-bottom:0.4rem; border-bottom:1px solid rgba(0,0,0,0.08); }
-
-@media(max-width:640px) {
-  .fig-grid { grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:0.75rem; }
-  .doc-list { grid-template-columns:1fr; }
-  .header .stats { gap:1rem; }
+:root{--ease:cubic-bezier(.25,.46,.45,.94);--c-bg:#f5f5f7;--c-surface:#fff;--c-primary:#1d1d1f;--c-secondary:#6e6e73;--shadow-1:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04);--shadow-2:0 4px 12px rgba(0,0,0,.1),0 2px 4px rgba(0,0,0,.04);--shadow-3:0 8px 24px rgba(0,0,0,.12),0 4px 8px rgba(0,0,0,.06);--r-card:16px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans TC","Microsoft JhengHei",sans-serif;background:var(--c-bg);color:var(--c-primary);line-height:1.5}
+.header{background:linear-gradient(135deg,#1e3a5f 0%,#2c5282 100%);color:#fff;padding:2rem 1.5rem;text-align:center}
+.header h1{font-size:1.4rem;font-weight:700;margin-bottom:.3rem}
+.header p{font-size:.9rem;opacity:.85}
+.header .stats{display:flex;gap:2rem;justify-content:center;margin-top:1rem}
+.header .stat{text-align:center}
+.header .stat-num{font-size:1.6rem;font-weight:700}
+.header .stat-label{font-size:.75rem;opacity:.75}
+.nav-bar{background:#2d3748;padding:.5rem 1.5rem;display:flex;align-items:center;gap:1rem;position:sticky;top:0;z-index:100}
+.nav-bar a{color:rgba(255,255,255,.8);text-decoration:none;font-size:.85rem;padding:.4rem .8rem;border-radius:8px;transition:all .15s}
+.nav-bar a:hover{background:rgba(255,255,255,.1);color:#fff}
+.nav-bar a.active{background:rgba(255,255,255,.15);color:#fff;font-weight:600}
+.search-box{flex:1;max-width:400px}
+.search-box input{width:100%;padding:.4rem .8rem;border-radius:8px;border:none;font-size:.85rem;background:rgba(255,255,255,.12);color:#fff;outline:none}
+.search-box input::placeholder{color:rgba(255,255,255,.5)}
+.search-box input:focus{background:rgba(255,255,255,.2)}
+.container{max-width:1400px;margin:0 auto;padding:1.5rem}
+.doc-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
+.doc-item{background:var(--c-surface);border-radius:var(--r-card);box-shadow:var(--shadow-1);overflow:hidden;cursor:pointer;transition:transform .2s var(--ease),box-shadow .2s var(--ease)}
+.doc-item:hover{transform:translateY(-2px);box-shadow:var(--shadow-2)}
+.doc-item-bar{height:4px}
+.doc-item-body{padding:1rem 1.25rem}
+.doc-item-body h3{font-size:.9rem;font-weight:600;margin-bottom:.25rem}
+.doc-item-body .fig-count{font-size:1.1rem;font-weight:700;margin-top:.5rem}
+.back-btn{display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1rem;border-radius:8px;background:var(--c-surface);box-shadow:var(--shadow-1);cursor:pointer;border:none;font-size:.85rem;font-weight:500;color:var(--c-primary);margin-bottom:1rem;transition:all .15s;font-family:inherit}
+.back-btn:hover{box-shadow:var(--shadow-2)}
+.fig-header{margin-bottom:1.5rem}
+.fig-header h2{font-size:1.2rem;font-weight:700;margin-bottom:.25rem}
+.fig-header p{font-size:.85rem;color:var(--c-secondary)}
+.fig-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem}
+.fig-card{background:var(--c-surface);border-radius:12px;box-shadow:var(--shadow-1);overflow:hidden;cursor:pointer;transition:transform .2s var(--ease),box-shadow .2s var(--ease)}
+.fig-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-2)}
+.fig-card img{width:100%;aspect-ratio:4/3;object-fit:contain;background:#f8f9fa;padding:.5rem}
+.fig-card .fig-info{padding:.6rem .8rem;font-size:.78rem;color:var(--c-secondary);display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(0,0,0,.06)}
+.lightbox{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.9);z-index:1000;justify-content:center;align-items:center;cursor:zoom-out}
+.lightbox.open{display:flex}
+.lightbox img{max-width:90%;max-height:90%;object-fit:contain;border-radius:8px;cursor:default}
+.lightbox-close{position:fixed;top:1rem;right:1.5rem;color:#fff;font-size:2rem;cursor:pointer;z-index:1001;opacity:.7;background:none;border:none}
+.lightbox-close:hover{opacity:1}
+.lightbox-info{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);color:#fff;font-size:.85rem;opacity:.7;background:rgba(0,0,0,.5);padding:.4rem 1rem;border-radius:8px;z-index:1001;max-width:80%;text-align:center}
+.empty{text-align:center;padding:4rem 2rem;color:var(--c-secondary)}
+.empty h3{font-size:1.1rem;margin-bottom:.5rem}
+.page-group{margin-bottom:1.5rem}
+.page-group-label{font-size:.85rem;font-weight:600;color:var(--c-secondary);margin-bottom:.75rem;padding-bottom:.4rem;border-bottom:1px solid rgba(0,0,0,.08)}
+.tabs{display:flex;gap:.5rem}
+.tab-btn{padding:.5rem 1.2rem;border-radius:8px;border:1px solid #e2e8f0;background:var(--c-surface);cursor:pointer;font-size:.85rem;font-weight:500;font-family:inherit;color:var(--c-secondary);transition:all .15s}
+.tab-btn.active{background:#2c5282;color:#fff;border-color:#2c5282}
+.tab-btn:hover:not(.active){background:#f0f4f8}
+.tab-btn .badge{font-size:.75rem;background:rgba(0,0,0,.08);padding:.1rem .5rem;border-radius:10px;margin-left:.4rem}
+.tab-btn.active .badge{background:rgba(255,255,255,.25)}
+.view-toggle{display:flex;gap:.25rem;margin-left:auto}
+.view-btn{padding:.4rem .7rem;border-radius:6px;border:1px solid #e2e8f0;background:var(--c-surface);cursor:pointer;font-size:.8rem;font-family:inherit;color:var(--c-secondary)}
+.view-btn.active{background:#edf2f7;color:var(--c-primary);font-weight:600}
+.carousel{position:relative;background:var(--c-surface);border-radius:var(--r-card);box-shadow:var(--shadow-2);overflow:hidden;margin-bottom:1.5rem}
+.carousel-main{position:relative;display:flex;align-items:center;justify-content:center;min-height:420px;background:#f8f9fa}
+.carousel-main img{max-width:90%;max-height:400px;object-fit:contain;cursor:zoom-in}
+.carousel-arrow{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(0,0,0,.5);color:#fff;border:none;font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;opacity:.7;transition:opacity .15s}
+.carousel-arrow:hover{opacity:1}
+.carousel-arrow.prev{left:.75rem}
+.carousel-arrow.next{right:.75rem}
+.carousel-arrow:disabled{opacity:.2;cursor:default}
+.carousel-counter{text-align:center;padding:.5rem;font-size:.8rem;color:var(--c-secondary);font-weight:600}
+.carousel-caption{padding:.75rem 1.25rem;border-top:1px solid rgba(0,0,0,.06)}
+.carousel-caption .cap-label{font-weight:600;font-size:.9rem;margin-bottom:.2rem}
+.carousel-caption .cap-text{font-size:.82rem;color:var(--c-secondary);line-height:1.4}
+.thumb-strip{display:flex;gap:.5rem;padding:.75rem 1rem;overflow-x:auto;border-top:1px solid rgba(0,0,0,.06);background:#fafafa}
+.thumb-strip::-webkit-scrollbar{height:4px}
+.thumb-strip::-webkit-scrollbar-thumb{background:#cbd5e0;border-radius:2px}
+.thumb{width:64px;height:48px;border-radius:6px;object-fit:contain;background:#fff;border:2px solid transparent;cursor:pointer;flex-shrink:0;padding:2px;transition:border-color .15s}
+.thumb.active{border-color:#2c5282}
+.thumb:hover:not(.active){border-color:#a0aec0}
+.lb-arrow{position:fixed;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.15);color:#fff;border:none;font-size:1.6rem;cursor:pointer;z-index:1002;display:flex;align-items:center;justify-content:center;opacity:.7;transition:opacity .15s}
+.lb-arrow:hover{opacity:1;background:rgba(255,255,255,.25)}
+.lb-arrow.prev{left:1rem}
+.lb-arrow.next{right:1rem}
+@media(max-width:640px){
+  .fig-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.75rem}
+  .doc-list{grid-template-columns:1fr}
+  .header .stats{gap:1rem}
+  .carousel-main{min-height:280px}
+  .carousel-main img{max-height:260px}
 }
 </style>
 </head>
 <body>
-
 <div class="header">
-  <h1>Figures & Tables</h1>
-  <p>SterileGMP Knowledge Hub — Document Figures & Tables Browser</p>
+  <h1>Figures &amp; Tables</h1>
+  <p>SterileGMP Knowledge Hub &mdash; Document Figures &amp; Tables Browser</p>
   <div class="stats">
-    <div class="stat"><div class="stat-num" id="statDocs">—</div><div class="stat-label">Documents</div></div>
-    <div class="stat"><div class="stat-num" id="statFigs">—</div><div class="stat-label">Figures</div></div>
-    <div class="stat"><div class="stat-num" id="statTbls">—</div><div class="stat-label">Tables</div></div>
+    <div class="stat"><div class="stat-num" id="statDocs">&mdash;</div><div class="stat-label">Documents</div></div>
+    <div class="stat"><div class="stat-num" id="statFigs">&mdash;</div><div class="stat-label">Figures</div></div>
+    <div class="stat"><div class="stat-num" id="statTbls">&mdash;</div><div class="stat-label">Tables</div></div>
   </div>
 </div>
-
 <div class="nav-bar">
   <a href="index.html">Document Index</a>
-  <a href="figures-gallery.html" class="active">Figures & Tables</a>
+  <a href="figures-gallery.html" class="active">Figures &amp; Tables</a>
   <a href="learning-path.html">Learning Path</a>
   <div class="search-box"><input type="text" id="searchInput" placeholder="Search documents..." oninput="filterDocs()"></div>
 </div>
-
 <div class="container" id="app"></div>
-
-<!-- Lightbox -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
-  <img id="lightboxImg" src="" alt="">
+  <button class="lb-arrow prev" onclick="event.stopPropagation();lbNav(-1)">&#8249;</button>
+  <img id="lightboxImg" src="" alt="" onclick="event.stopPropagation()">
+  <button class="lb-arrow next" onclick="event.stopPropagation();lbNav(1)">&#8250;</button>
   <div class="lightbox-info" id="lightboxInfo"></div>
 </div>
-
 <script>
-let manifest = {};
-let reports = {};
-let currentDoc = null;
-
-async function init() {
-  try {
-    const [mRes, rRes] = await Promise.all([
-      fetch('figures-manifest.json'),
-      fetch('reports.json')
-    ]);
-    manifest = await mRes.json();
-    const rData = await rRes.json();
-    reports = rData.reports || {};
-  } catch (e) {
-    document.getElementById('app').innerHTML = '<div class="empty"><h3>Unable to load data</h3><p>figures-manifest.json or reports.json not found.</p></div>';
-    return;
-  }
-
-  // Stats
-  const docCount = Object.keys(manifest).length;
-  let figCount = 0, tblCount = 0;
-  for (const d of Object.values(manifest)) {
-    for (const f of d.figures) {
-      if (f.type === 'table') tblCount++; else figCount++;
-    }
-  }
-  document.getElementById('statDocs').textContent = docCount;
-  document.getElementById('statFigs').textContent = figCount.toLocaleString();
-  document.getElementById('statTbls').textContent = tblCount.toLocaleString();
-
-  // Check URL param
-  const params = new URLSearchParams(window.location.search);
-  const docParam = params.get('doc');
-  if (docParam && manifest[docParam]) {
-    showFigures(docParam);
-  } else {
-    showDocList();
-  }
+var manifest={},reports={},currentDoc=null;
+var currentItems=[],currentIdx=0,currentView='carousel',currentTab='all';
+var lbIdx=-1;
+function esc(s){return s?s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'):'';}
+async function init(){
+  try{var res=await Promise.all([fetch('figures-manifest.json'),fetch('reports.json')]);manifest=await res[0].json();var rData=await res[1].json();reports=rData.reports||{};}catch(e){document.getElementById('app').innerHTML='<div class="empty"><h3>Unable to load data</h3></div>';return;}
+  var figCount=0,tblCount=0;for(var k in manifest){var d=manifest[k];for(var i=0;i<d.figures.length;i++){if(d.figures[i].type==='table')tblCount++;else figCount++;}}
+  document.getElementById('statDocs').textContent=Object.keys(manifest).length;
+  document.getElementById('statFigs').textContent=figCount.toLocaleString();
+  document.getElementById('statTbls').textContent=tblCount.toLocaleString();
+  var params=new URLSearchParams(window.location.search);var docParam=params.get('doc');
+  if(docParam&&manifest[docParam])showFigures(docParam);else showDocList();
 }
-
-function showDocList() {
-  currentDoc = null;
-  history.replaceState(null, '', 'figures-gallery.html');
-
-  // Sort by figure count descending
-  const entries = Object.entries(manifest).sort((a, b) => b[1].total - a[1].total);
-  const query = (document.getElementById('searchInput').value || '').toLowerCase();
-
-  let html = '<div class="doc-list">';
-  let shown = 0;
-  for (const [rid, data] of entries) {
-    const r = reports[rid] || {};
-    const title = r.title || rid;
-    const titleZh = r.titleZh || '';
-    const sc = r.source_color || {};
-    const barColor = sc.bar || sc.bg || '#e8e8ed';
-    const textColor = sc.text || '#6e6e73';
-    const searchText = `${rid} ${title} ${titleZh}`.toLowerCase();
-
-    if (query && !searchText.includes(query)) continue;
+function showDocList(){
+  currentDoc=null;history.replaceState(null,'','figures-gallery.html');
+  var entries=Object.entries(manifest).sort(function(a,b){return b[1].total-a[1].total;});
+  var query=(document.getElementById('searchInput').value||'').toLowerCase();
+  var html='<div class="doc-list">',shown=0;
+  for(var e=0;e<entries.length;e++){
+    var rid=entries[e][0],data=entries[e][1],r=reports[rid]||{};
+    var title=r.title||rid,titleZh=r.titleZh||'',sc=r.source_color||{};
+    var barColor=sc.bar||sc.bg||'#e8e8ed',textColor=sc.text||'#6e6e73';
+    if(query&&(rid+' '+title+' '+titleZh).toLowerCase().indexOf(query)<0)continue;
     shown++;
-
-    html += `<div class="doc-item" onclick="showFigures('${rid}')">
-      <div class="doc-item-bar" style="background:${barColor}"></div>
-      <div class="doc-item-body">
-        <span style="font-size:11px;font-weight:600;color:${textColor}">${sc.short || rid}</span>
-        <h3>${title}</h3>
-        ${titleZh ? `<p style="font-size:0.8rem;color:#6e6e73;margin-top:2px">${titleZh}</p>` : ''}
-        <div class="fig-count">${(() => {
-          const fc = data.figures.filter(f => f.type !== 'table').length;
-          const tc = data.figures.filter(f => f.type === 'table').length;
-          const parts = [];
-          if (fc) parts.push(fc + ' fig');
-          if (tc) parts.push(tc + ' tbl');
-          return parts.join(' + ') || '0';
-        })()}</div>
-      </div>
-    </div>`;
+    var fc=data.figures.filter(function(f){return f.type!=='table';}).length;
+    var tc=data.figures.filter(function(f){return f.type==='table';}).length;
+    var parts=[];if(fc)parts.push(fc+' fig');if(tc)parts.push(tc+' tbl');
+    html+='<div class="doc-item" onclick="showFigures(\''+rid+'\')">';
+    html+='<div class="doc-item-bar" style="background:'+barColor+'"></div>';
+    html+='<div class="doc-item-body">';
+    html+='<span style="font-size:11px;font-weight:600;color:'+textColor+'">'+(sc.short||rid)+'</span>';
+    html+='<h3>'+esc(title)+'</h3>';
+    if(titleZh)html+='<p style="font-size:0.8rem;color:#6e6e73;margin-top:2px">'+esc(titleZh)+'</p>';
+    html+='<div class="fig-count">'+(parts.join(' + ')||'0')+'</div></div></div>';
   }
-  html += '</div>';
-
-  if (shown === 0) {
-    html = '<div class="empty"><h3>No matching documents</h3></div>';
+  html+='</div>';
+  if(!shown)html='<div class="empty"><h3>No matching documents</h3></div>';
+  document.getElementById('app').innerHTML=html;
+}
+function showFigures(rid){currentDoc=rid;currentTab='all';currentView='carousel';currentIdx=0;history.replaceState(null,'','figures-gallery.html?doc='+rid);renderDocView();}
+function renderDocView(){
+  var rid=currentDoc,data=manifest[rid],r=reports[rid]||{};
+  var title=r.title||rid,folder=data.folder||rid;
+  var allFigs=data.figures.filter(function(f){return f.type!=='table';});
+  var allTbls=data.figures.filter(function(f){return f.type==='table';});
+  var fc=allFigs.length,tc=allTbls.length;
+  var items;
+  if(currentTab==='figures')items=allFigs;else if(currentTab==='tables')items=allTbls;else items=data.figures;
+  currentItems=[];
+  for(var i=0;i<items.length;i++){var fig=items[i];currentItems.push({src:folder+'/figures/'+fig.file,file:fig.file,label:fig.label||fig.file,caption:fig.caption||'',page:fig.page,type:fig.type});}
+  if(currentIdx>=currentItems.length)currentIdx=Math.max(0,currentItems.length-1);
+  var html='<button class="back-btn" onclick="showDocList()">&larr; All Documents</button>';
+  html+='<div class="fig-header"><h2>'+esc(title)+'</h2>';
+  html+='<p>'+(fc?fc+' figures':'')+(fc&&tc?' + ':'')+(tc?tc+' tables':'')+' from '+(r.pages||'document')+'</p></div>';
+  html+='<div style="display:flex;align-items:center;flex-wrap:wrap;gap:0.5rem;margin-bottom:1rem">';
+  html+='<div class="tabs">';
+  html+='<button class="tab-btn'+(currentTab==='all'?' active':'')+'" onclick="switchTab(\'all\')">All<span class="badge">'+(fc+tc)+'</span></button>';
+  if(fc)html+='<button class="tab-btn'+(currentTab==='figures'?' active':'')+'" onclick="switchTab(\'figures\')">Figures<span class="badge">'+fc+'</span></button>';
+  if(tc)html+='<button class="tab-btn'+(currentTab==='tables'?' active':'')+'" onclick="switchTab(\'tables\')">Tables<span class="badge">'+tc+'</span></button>';
+  html+='</div>';
+  html+='<div class="view-toggle">';
+  html+='<button class="view-btn'+(currentView==='carousel'?' active':'')+'" onclick="switchView(\'carousel\')">Carousel</button>';
+  html+='<button class="view-btn'+(currentView==='grid'?' active':'')+'" onclick="switchView(\'grid\')">Grid</button>';
+  html+='</div></div>';
+  if(!currentItems.length){html+='<div class="empty"><h3>No items in this category</h3></div>';}
+  else if(currentView==='carousel'){
+    var item=currentItems[currentIdx];
+    html+='<div class="carousel"><div class="carousel-main">';
+    html+='<button class="carousel-arrow prev" onclick="carouselNav(-1)"'+(currentIdx===0?' disabled':'')+'>&lsaquo;</button>';
+    html+='<img src="'+item.src+'" alt="'+esc(item.label)+'" onclick="openLightboxIdx('+currentIdx+')">';
+    html+='<button class="carousel-arrow next" onclick="carouselNav(1)"'+(currentIdx===currentItems.length-1?' disabled':'')+'>&rsaquo;</button>';
+    html+='</div>';
+    html+='<div class="carousel-counter">'+(currentIdx+1)+' / '+currentItems.length+' &middot; Page '+item.page+'</div>';
+    html+='<div class="carousel-caption"><div class="cap-label">'+esc(item.label)+'</div>';
+    if(item.caption)html+='<div class="cap-text">'+esc(item.caption)+'</div>';
+    html+='</div><div class="thumb-strip" id="thumbStrip">';
+    for(var i=0;i<currentItems.length;i++){html+='<img class="thumb'+(i===currentIdx?' active':'')+'" src="'+currentItems[i].src+'" onclick="goToSlide('+i+')" loading="lazy">';}
+    html+='</div></div>';
+  }else{
+    var byPage={};for(var i=0;i<currentItems.length;i++){var it=currentItems[i];if(!byPage[it.page])byPage[it.page]=[];byPage[it.page].push({src:it.src,label:it.label,caption:it.caption,type:it.type,page:it.page,idx:i});}
+    var pageNums=Object.keys(byPage).map(Number).sort(function(a,b){return a-b;});
+    for(var p=0;p<pageNums.length;p++){var pg=pageNums[p],figs=byPage[pg];var pgF=0,pgT=0;for(var j=0;j<figs.length;j++){if(figs[j].type==='table')pgT++;else pgF++;}var pgP=[];if(pgF)pgP.push(pgF+' fig');if(pgT)pgP.push(pgT+' tbl');
+    html+='<div class="page-group"><div class="page-group-label">Page '+pg+' &mdash; '+(pgP.join(' + ')||figs.length+' items')+'</div><div class="fig-grid">';
+    for(var j=0;j<figs.length;j++){var fig=figs[j];html+='<div class="fig-card" onclick="openLightboxIdx('+fig.idx+')"><img src="'+fig.src+'" alt="'+esc(fig.label)+'" loading="lazy"><div class="fig-info"><span>'+esc(fig.label)+'</span></div>';if(fig.caption)html+='<div style="padding:0 0.8rem 0.5rem;font-size:0.72rem;color:#6e6e73;line-height:1.3">'+esc(fig.caption)+'</div>';html+='</div>';}
+    html+='</div></div>';}
   }
-
-  document.getElementById('app').innerHTML = html;
+  document.getElementById('app').innerHTML=html;
+  if(currentView==='carousel')scrollThumbIntoView();
 }
-
-function showFigures(rid) {
-  currentDoc = rid;
-  history.replaceState(null, '', `figures-gallery.html?doc=${rid}`);
-
-  const data = manifest[rid];
-  const r = reports[rid] || {};
-  const title = r.title || rid;
-  const folder = data.folder || rid;
-
-  // Group figures by page
-  const byPage = {};
-  for (const fig of data.figures) {
-    const pg = fig.page;
-    if (!byPage[pg]) byPage[pg] = [];
-    byPage[pg].push(fig);
-  }
-  const pageNums = Object.keys(byPage).map(Number).sort((a, b) => a - b);
-
-  const fc = data.figures.filter(f => f.type !== 'table').length;
-  const tc = data.figures.filter(f => f.type === 'table').length;
-  const countParts = [];
-  if (fc) countParts.push(fc + ' figures');
-  if (tc) countParts.push(tc + ' tables');
-
-  let html = `<button class="back-btn" onclick="showDocList()">← All Documents</button>
-    <div class="fig-header">
-      <h2>${title}</h2>
-      <p>${countParts.join(' + ')} from ${r.pages || 'document'}</p>
-    </div>`;
-
-  for (const pg of pageNums) {
-    const figs = byPage[pg];
-    const pgFigs = figs.filter(f => f.type !== 'table').length;
-    const pgTbls = figs.filter(f => f.type === 'table').length;
-    const pgParts = [];
-    if (pgFigs) pgParts.push(pgFigs + ' fig');
-    if (pgTbls) pgParts.push(pgTbls + ' tbl');
-    html += `<div class="page-group">
-      <div class="page-group-label">Page ${pg} — ${pgParts.join(' + ') || figs.length + ' items'}</div>
-      <div class="fig-grid">`;
-
-    for (const fig of figs) {
-      const src = `${folder}/figures/${fig.file}`;
-      const displayName = fig.label || fig.file;
-      html += `<div class="fig-card" onclick="openLightbox('${src}','${fig.file}'${fig.label ? `,'${fig.label.replace(/'/g,"\\'")}'` : ',null'}${fig.caption ? `,'${fig.caption.replace(/'/g,"\\'")}'` : ',null'})">
-        <img src="${src}" alt="${displayName}" loading="lazy">
-        <div class="fig-info">
-          <span>${displayName}</span>
-        </div>
-        ${fig.caption ? `<div style="padding:0 0.8rem 0.5rem;font-size:0.72rem;color:#6e6e73;line-height:1.3">${fig.caption}</div>` : ''}
-      </div>`;
-    }
-    html += '</div></div>';
-  }
-
-  document.getElementById('app').innerHTML = html;
-  window.scrollTo(0, 0);
-}
-
-function filterDocs() {
-  if (!currentDoc) showDocList();
-}
-
-function openLightbox(src, name, label, caption) {
-  event.stopPropagation();
-  const lb = document.getElementById('lightbox');
-  document.getElementById('lightboxImg').src = src;
-  let info = label ? `${label}` : name;
-  if (caption) info += ` — ${caption}`;
-  document.getElementById('lightboxInfo').textContent = info;
-  lb.classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeLightbox() {
-  document.getElementById('lightbox').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
-
+function switchTab(tab){currentTab=tab;currentIdx=0;renderDocView();window.scrollTo(0,0);}
+function switchView(view){currentView=view;renderDocView();}
+function carouselNav(dir){var n=currentIdx+dir;if(n<0||n>=currentItems.length)return;currentIdx=n;renderDocView();}
+function goToSlide(idx){currentIdx=idx;renderDocView();}
+function scrollThumbIntoView(){var s=document.getElementById('thumbStrip');if(!s)return;var a=s.querySelector('.thumb.active');if(a)a.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});}
+function openLightboxIdx(idx){if(event)event.stopPropagation();lbIdx=idx;updateLightbox();document.getElementById('lightbox').classList.add('open');document.body.style.overflow='hidden';}
+function updateLightbox(){var item=currentItems[lbIdx];if(!item)return;document.getElementById('lightboxImg').src=item.src;var info=item.label;if(item.caption)info+=' \u2014 '+item.caption;info+='  ('+(lbIdx+1)+'/'+currentItems.length+')';document.getElementById('lightboxInfo').textContent=info;}
+function lbNav(dir){var n=lbIdx+dir;if(n<0||n>=currentItems.length)return;lbIdx=n;updateLightbox();}
+function closeLightbox(){document.getElementById('lightbox').classList.remove('open');document.body.style.overflow='';if(lbIdx>=0&&currentView==='carousel'){currentIdx=lbIdx;renderDocView();}}
+function filterDocs(){if(!currentDoc)showDocList();}
+document.addEventListener('keydown',function(e){var lb=document.getElementById('lightbox');if(lb.classList.contains('open')){if(e.key==='Escape')closeLightbox();else if(e.key==='ArrowLeft')lbNav(-1);else if(e.key==='ArrowRight')lbNav(1);}else if(currentDoc&&currentView==='carousel'){if(e.key==='ArrowLeft')carouselNav(-1);else if(e.key==='ArrowRight')carouselNav(1);}});
 init();
 </script>
 </body>
