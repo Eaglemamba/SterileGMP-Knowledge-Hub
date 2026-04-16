@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDA TR13 — Section 5a: Alert Levels, Action Limits &amp; Data Management</title>
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PDA TR13 — Section 5a: Alert Levels, Action Limits &amp; Data Management</title>
+<style>
 /* =============================================================
    PDA Educational Material - Shared CSS Template
    Version: 2.0 (for Claude Code automation)
@@ -1082,119 +1083,100 @@ tr:nth-child(even) {
     </style>
 </head>
 <body>
-
 <!-- ===== HEADER ===== -->
 <div class="header">
-    <h1>PDA Technical Report No. 13 (Revised 2022)</h1>
-    <div class="subtitle">Fundamentals of an Environmental Monitoring Program</div>
-    <div class="subtitle">Section 5a: Alert Levels, Action Limits &amp; Data Management</div>
-    <div class="page-info">Sections 5.3 – 5.4 | Pages 18–24</div>
+<h1>PDA Technical Report No. 13 (Revised 2022)</h1>
+<div class="subtitle">Fundamentals of an Environmental Monitoring Program</div>
+<div class="subtitle">Section 5a: Alert Levels, Action Limits &amp; Data Management</div>
+<div class="page-info">Sections 5.3 – 5.4 | Pages 18–24</div>
 </div>
-
 <!-- ===== MAIN CONTENT ===== -->
 <div class="main-content">
-
-    <!-- ===== LEARNING OBJECTIVES ===== -->
-    <div class="learning-objectives">
-        <h3>Learning Objectives / 學習目標</h3>
-        <ol>
-            <li>理解警戒水準 (Alert Level) 與行動限度 (Action Limit) 的差異，以及 USP &lt;1116&gt; 從 CFU 計數轉向汙染回收率 (CRR) 的典範轉移</li>
-            <li>掌握三種非參數統計方法（百分位數法、容忍限法、截斷值法）在設定環境監測限度中的應用與適用條件</li>
-            <li>學習即時、短期與長期趨勢分析規則，以及 CCC 圖表 (Cumulative Conforming Count) 在偵測漂移中的價值</li>
-            <li>瞭解 ALCOA 數據完整性原則及環境監測數據管理的最低記錄要求</li>
-            <li>能夠解讀 USP &lt;1116&gt; 汙染回收率 (CRR) 表格，並將其應用於實際潔淨室環境評估</li>
-        </ol>
-    </div>
-
-    <!-- ===== TOC ===== -->
-    <div class="toc">
-        <h3>Section Contents / 本節目錄</h3>
-        <div class="toc-grid">
-            <a href="#sec-5-3">5.3 Alert Levels &amp; Action Limits</a>
-            <a href="#sec-5-3-1">5.3.1 Nonparametric Approach</a>
-            <a href="#sec-5-3-2">5.3.2 Tolerance Limit Approach</a>
-            <a href="#sec-5-3-3">5.3.3 Cutoff Value Approach</a>
-            <a href="#sec-5-3-4">5.3.4 Trending Rules</a>
-            <a href="#sec-5-4">5.4 Data Management</a>
-            <a href="#sec-5-4-1">5.4.1 Data Integrity (ALCOA)</a>
-            <a href="#sec-5-4-2">5.4.2 Data Trending Analysis</a>
-            <a href="#sec-5-4-3">5.4.3 Interpretation &amp; CRR Table</a>
-        </div>
-    </div>
-
-    <!-- ================================================================
+<!-- ===== LEARNING OBJECTIVES ===== -->
+<div class="learning-objectives">
+<h3>Learning Objectives / 學習目標</h3>
+<ol>
+<li>理解警戒水準 (Alert Level) 與行動限度 (Action Limit) 的差異，以及 USP &lt;1116&gt; 從 CFU 計數轉向汙染回收率 (CRR) 的典範轉移</li>
+<li>掌握三種非參數統計方法（百分位數法、容忍限法、截斷值法）在設定環境監測限度中的應用與適用條件</li>
+<li>學習即時、短期與長期趨勢分析規則，以及 CCC 圖表 (Cumulative Conforming Count) 在偵測漂移中的價值</li>
+<li>瞭解 ALCOA 數據完整性原則及環境監測數據管理的最低記錄要求</li>
+<li>能夠解讀 USP &lt;1116&gt; 汙染回收率 (CRR) 表格，並將其應用於實際潔淨室環境評估</li>
+</ol>
+</div>
+<!-- ===== TOC ===== -->
+<div class="toc">
+<h3>Section Contents / 本節目錄</h3>
+<div class="toc-grid">
+<a href="#sec-5-3">5.3 Alert Levels &amp; Action Limits</a>
+<a href="#sec-5-3-1">5.3.1 Nonparametric Approach</a>
+<a href="#sec-5-3-2">5.3.2 Tolerance Limit Approach</a>
+<a href="#sec-5-3-3">5.3.3 Cutoff Value Approach</a>
+<a href="#sec-5-3-4">5.3.4 Trending Rules</a>
+<a href="#sec-5-4">5.4 Data Management</a>
+<a href="#sec-5-4-1">5.4.1 Data Integrity (ALCOA)</a>
+<a href="#sec-5-4-2">5.4.2 Data Trending Analysis</a>
+<a href="#sec-5-4-3">5.4.3 Interpretation &amp; CRR Table</a>
+</div>
+</div>
+<!-- ================================================================
          SECTION 5.3: ALERT LEVELS AND ACTION LIMITS
          ================================================================ -->
-    <h2 class="section-title" id="sec-5-3">5.3 Alert Levels and Action Limits</h2>
-
-    <div class="two-column">
-        <div class="left-column">
-            <h3>5.3 Alert Levels and Action Limits</h3>
-            <p>EM programs require action limits to be established based on the applicable regulatory guidelines or requirements. These guidelines frequently recommend alert levels also be established. Some companies also choose to set levels for individual cleanrooms or sample sites. The alert level will be established based on statistical analysis of the historic EM data.</p>
-
-            <p>Alert levels and action limits based on CFU count excursions have been eliminated from USP &lt;1116&gt;, which indicates a <span class="key-term">paradigm shift to contamination recovery rate (CRR)</span>. CRR is the percentage of environmental samples found to have microbial contamination (e.g., a CRR of 1% would mean that only 1% of the samples taken showed contamination, regardless of colony numbers). The CRR approach may lend itself to wider applicability considering emerging EM technologies, such as those not reliant on CFU measurement. However, current official regulatory guidances from both the EU and the US still retain GMP requirements for alert levels and action limits. Consequently, companies may want to voluntarily monitor CRR as an EM trending tool in addition to the required alert levels and action limits.</p>
-
-            <p>The response to alert levels or action limits should be written and employed consistently. To create consistency, investigatory and corrective action steps should be specified in advance. Records should show that the excursion was recognized, appropriate follow-up occurred, and appropriate corrective and preventive actions (CAPA) were taken. Established alert levels should be reviewed periodically as part of routine trend analysis. They may be revised to reflect improvements, advances in technology, changes in use patterns, or other changes.</p>
-
-            <p>When no regulatory or industry guidelines are provided, alert levels and action limits may be derived statistically from historical data. Statistically derived alert levels, based on performance of the area, might be low; however, one should be using those values to detect atypical recurrences. Other considerations in adjusting levels include improving process capability, consistency of alert levels and action limits for similar room classifications, level of gowning, and product contamination risk. Infrequent excursions from these levels are expected at frequencies characteristic for the specific mathematical model used in their derivation. The critical requirement is recognizing an adverse trend that may represent a loss of environmental control.</p>
-
-            <p>The alert levels and action limits do not define product attributes, such as sterility, and should not be considered as product specifications. Rather, alert levels are intended to indicate changes or drifts in environmental control so that corrective action may be taken before product quality is adversely affected. However, where an action limit is exceeded where critical aseptic process steps are conducted, the investigation should be completed prior to release of the batches impacted by the excursion, which should include an evaluation of the product impact, based on the most probable root cause identified.</p>
-
-            <p>Since there is no one best method for setting alert levels, the approaches described in Sections 5.3.1–5.3.3 may be taken within the pharmaceutical industry. Where compendial requirements exist, as with action limits, they supersede these examples.</p>
-        </div>
-        <div class="right-column">
-            <h3>中文解析：警戒水準與行動限度</h3>
-
-            <div class="analogy-box">
-                <h4>生活比喻：駕駛速度警示</h4>
-                <p>想像開車時儀表板上的速度表：</p>
-                <ul>
-                    <li><strong>警戒水準 (Alert Level)</strong> = 接近速限的黃燈提醒（例如速限 100，開到 90 時亮黃燈）。這表示「注意，你正在接近邊界」，需要關注但不必立刻停車。</li>
-                    <li><strong>行動限度 (Action Limit)</strong> = 超速紅燈警報（超過 100 就亮紅燈）。這表示「你已超標」，必須立刻採取糾正措施，並且要記錄和調查原因。</li>
-                </ul>
-                <p>在環境監測中，Alert 是「早期預警」，Action 是「強制處理」。</p>
-            </div>
-
-            <p><strong>USP &lt;1116&gt; 的典範轉移 (Paradigm Shift)：</strong>傳統上，環境監測關注每個樣品的 CFU 計數是否超過特定數值。但 USP &lt;1116&gt; 現在推動使用<strong>汙染回收率 (Contamination Recovery Rate, CRR)</strong>，也就是「在所有採樣中，有多少比例檢出微生物」。這個改變的意義在於：</p>
-            <ul>
-                <li>CRR 不依賴於 CFU 計數，因此適用於不基於 CFU 的新興快速微生物檢測技術</li>
-                <li>CRR 提供了環境整體汙染「頻率」的宏觀視角，而非單一事件的「嚴重程度」</li>
-                <li>目前 EU GMP Annex 1 和 FDA 仍要求設定 Alert/Action 限度，因此 CRR 可作為額外的趨勢分析工具併用</li>
-            </ul>
-
-            <div class="note-box">
-                <h4>重點提示：EM 限度 vs 產品規格</h4>
-                <p>TR13 明確指出：Alert/Action 限度<strong>不是</strong>產品規格 (product specifications)，不定義無菌性 (sterility)。它們是環境控制的「體溫計」——用來偵測環境漂移，以便在影響產品品質之前採取預防措施。</p>
-                <p>但當行動限度在<strong>關鍵無菌操作步驟</strong>區域被超過時，調查必須在批次放行前完成，並評估對產品的潛在影響。</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- ===== NOTE BOX: Non-normal distribution ===== -->
-    <div class="note-box">
-        <h4>Warning: EM Data Is NOT Normally Distributed / 警告：環境監測數據並非常態分佈</h4>
-        <p>Using standard statistical tools for setting alert levels and action limits can be misleading because <strong>environmental monitoring data is not normally distributed</strong>. No pharmaceutical industry or regulatory consensus exists on the best statistical model to use for setting these levels. Therefore, it may be appropriate to determine the model that best fits the data and use that model to set the levels. When data does not fall within a normal distribution and exhibits high levels of skewness towards lower counts and/or zero counts, a non-parametric approach to setting alert levels and action limits is suitable when large numbers of historical observations exist.</p>
-        <p><strong>實務含義：</strong>環境監測數據大量集中在 0 或低 CFU，呈現高度右偏態分佈。傳統 Mean ± 2SD / 3SD 的方法假設常態分佈，套用在 EM 數據上會產生誤導性的限度。因此 TR13 推薦以下三種非參數方法。</p>
-    </div>
-
-    <!-- ================================================================
+<h2 class="section-title" id="sec-5-3"><strong>5.3 Alert Levels and Action Limits 5.3 警示標準與行動限値</strong></h2>
+<div class="two-column">
+<div class="left-column">
+<h3>5.3 Alert Levels and Action Limits</h3>
+<p>EM programs require action limits to be established based on the applicable regulatory guidelines or requirements. These guidelines frequently recommend alert levels also be established. Some companies also choose to set levels for individual cleanrooms or sample sites. The alert level will be established based on statistical analysis of the historic EM data.</p>
+<p>Alert levels and action limits based on CFU count excursions have been eliminated from USP &lt;1116&gt;, which indicates a <span class="key-term">paradigm shift to contamination recovery rate (CRR)</span>. CRR is the percentage of environmental samples found to have microbial contamination (e.g., a CRR of 1% would mean that only 1% of the samples taken showed contamination, regardless of colony numbers). The CRR approach may lend itself to wider applicability considering emerging EM technologies, such as those not reliant on CFU measurement. However, current official regulatory guidances from both the EU and the US still retain GMP requirements for alert levels and action limits. Consequently, companies may want to voluntarily monitor CRR as an EM trending tool in addition to the required alert levels and action limits.</p>
+<p>The response to alert levels or action limits should be written and employed consistently. To create consistency, investigatory and corrective action steps should be specified in advance. Records should show that the excursion was recognized, appropriate follow-up occurred, and appropriate corrective and preventive actions (CAPA) were taken. Established alert levels should be reviewed periodically as part of routine trend analysis. They may be revised to reflect improvements, advances in technology, changes in use patterns, or other changes.</p>
+<p>When no regulatory or industry guidelines are provided, alert levels and action limits may be derived statistically from historical data. Statistically derived alert levels, based on performance of the area, might be low; however, one should be using those values to detect atypical recurrences. Other considerations in adjusting levels include improving process capability, consistency of alert levels and action limits for similar room classifications, level of gowning, and product contamination risk. Infrequent excursions from these levels are expected at frequencies characteristic for the specific mathematical model used in their derivation. The critical requirement is recognizing an adverse trend that may represent a loss of environmental control.</p>
+<p>The alert levels and action limits do not define product attributes, such as sterility, and should not be considered as product specifications. Rather, alert levels are intended to indicate changes or drifts in environmental control so that corrective action may be taken before product quality is adversely affected. However, where an action limit is exceeded where critical aseptic process steps are conducted, the investigation should be completed prior to release of the batches impacted by the excursion, which should include an evaluation of the product impact, based on the most probable root cause identified.</p>
+<p>Since there is no one best method for setting alert levels, the approaches described in Sections 5.3.1–5.3.3 may be taken within the pharmaceutical industry. Where compendial requirements exist, as with action limits, they supersede these examples.</p>
+</div>
+<div class="right-column">
+<h3>中文解析：警戒水準與行動限度</h3>
+<div class="analogy-box">
+<h4>生活比喻：駕駛速度警示</h4>
+<p>想像開車時儀表板上的速度表：</p>
+<ul>
+<li><strong>警戒水準 (Alert Level)</strong> = 接近速限的黃燈提醒（例如速限 100，開到 90 時亮黃燈）。這表示「注意，你正在接近邊界」，需要關注但不必立刻停車。</li>
+<li><strong>行動限度 (Action Limit)</strong> = 超速紅燈警報（超過 100 就亮紅燈）。這表示「你已超標」，必須立刻採取糾正措施，並且要記錄和調查原因。</li>
+</ul>
+<p>在環境監測中，Alert 是「早期預警」，Action 是「強制處理」。</p>
+</div>
+<p><strong>USP &lt;1116&gt; 的典範轉移 (Paradigm Shift)：</strong>傳統上，環境監測關注每個樣品的 CFU 計數是否超過特定數值。但 USP &lt;1116&gt; 現在推動使用<strong>汙染回收率 (Contamination Recovery Rate, CRR)</strong>，也就是「在所有採樣中，有多少比例檢出微生物」。這個改變的意義在於：</p>
+<ul>
+<li>CRR 不依賴於 CFU 計數，因此適用於不基於 CFU 的新興快速微生物檢測技術</li>
+<li>CRR 提供了環境整體汙染「頻率」的宏觀視角，而非單一事件的「嚴重程度」</li>
+<li>目前 EU GMP Annex 1 和 FDA 仍要求設定 Alert/Action 限度，因此 CRR 可作為額外的趨勢分析工具併用</li>
+</ul>
+<div class="note-box">
+<h4>重點提示：EM 限度 vs 產品規格</h4>
+<p>TR13 明確指出：Alert/Action 限度<strong>不是</strong>產品規格 (product specifications)，不定義無菌性 (sterility)。它們是環境控制的「體溫計」——用來偵測環境漂移，以便在影響產品品質之前採取預防措施。</p>
+<p>但當行動限度在<strong>關鍵無菌操作步驟</strong>區域被超過時，調查必須在批次放行前完成，並評估對產品的潛在影響。</p>
+</div>
+</div>
+</div>
+<!-- ===== NOTE BOX: Non-normal distribution ===== -->
+<div class="note-box">
+<h4>Warning: EM Data Is NOT Normally Distributed / 警告：環境監測數據並非常態分佈</h4>
+<p>Using standard statistical tools for setting alert levels and action limits can be misleading because <strong>environmental monitoring data is not normally distributed</strong>. No pharmaceutical industry or regulatory consensus exists on the best statistical model to use for setting these levels. Therefore, it may be appropriate to determine the model that best fits the data and use that model to set the levels. When data does not fall within a normal distribution and exhibits high levels of skewness towards lower counts and/or zero counts, a non-parametric approach to setting alert levels and action limits is suitable when large numbers of historical observations exist.</p>
+<p><strong>實務含義：</strong>環境監測數據大量集中在 0 或低 CFU，呈現高度右偏態分佈。傳統 Mean ± 2SD / 3SD 的方法假設常態分佈，套用在 EM 數據上會產生誤導性的限度。因此 TR13 推薦以下三種非參數方法。</p>
+</div>
+<!-- ================================================================
          SECTION 5.3.1: NONPARAMETRIC APPROACH
          ================================================================ -->
-    <h2 class="section-title" id="sec-5-3-1">5.3.1 Nonparametric Approach</h2>
-
-    <div class="two-column">
-        <div class="left-column">
-            <h3>5.3.1 Nonparametric Approach</h3>
-            <p>A nonparametric evaluation is based on 99.9th and 99.99th percentiles and can be chosen as the alert and action levels. These levels correspond to about mean plus 3 and 4 sigma ranges, respectively. These levels are commonly selected as process alert and action levels. When the requirement of proper sample size is met (N≈1000), the alert levels analysis establishes confidence that during actual process monitoring 99.9% of the population will lie below the stated value. When these limits are exceeded, it will trigger investigation that will prevent contamination or an adverse trend condition.</p>
-
-            <p>Action levels can be selected at 99.99th percentile. The action level analysis establishes confidence that during actual process monitoring 99.99% of the population will lie below the stated value. Therefore, the derived action levels serve to identify an excursion at the selected percentile level. By definition, it is very unlikely that a validated system, operating in a state of control, will deliver results that will deviate significantly from the norm especially when multiple alert/action excursions in the same room on the same day are detected. This condition is likely indicative of a significant drift in the process control(s) or a systemic failure of the validated system has occurred.</p>
-        </div>
-        <div class="right-column">
-            <h3>中文解析：非參數百分位數法</h3>
-
-            <div class="formula-box">
-                <h4>Nonparametric Percentile Method / 非參數百分位數法</h4>
-                <pre>Alert Level  = 99.9th percentile  (approx. Mean + 3 sigma)
+<h2 class="section-title" id="sec-5-3-1"><strong>5.3.1 Nonparametric Approach 5.3.1 無母數方法</strong></h2>
+<div class="two-column">
+<div class="left-column">
+<h3>5.3.1 Nonparametric Approach</h3>
+<p>A nonparametric evaluation is based on 99.9th and 99.99th percentiles and can be chosen as the alert and action levels. These levels correspond to about mean plus 3 and 4 sigma ranges, respectively. These levels are commonly selected as process alert and action levels. When the requirement of proper sample size is met (N≈1000), the alert levels analysis establishes confidence that during actual process monitoring 99.9% of the population will lie below the stated value. When these limits are exceeded, it will trigger investigation that will prevent contamination or an adverse trend condition.</p>
+<p>Action levels can be selected at 99.99th percentile. The action level analysis establishes confidence that during actual process monitoring 99.99% of the population will lie below the stated value. Therefore, the derived action levels serve to identify an excursion at the selected percentile level. By definition, it is very unlikely that a validated system, operating in a state of control, will deliver results that will deviate significantly from the norm especially when multiple alert/action excursions in the same room on the same day are detected. This condition is likely indicative of a significant drift in the process control(s) or a systemic failure of the validated system has occurred.</p>
+</div>
+<div class="right-column">
+<h3>中文解析：非參數百分位數法</h3>
+<div class="formula-box">
+<h4>Nonparametric Percentile Method / 非參數百分位數法</h4>
+<pre>Alert Level  = 99.9th percentile  (approx. Mean + 3 sigma)
 Action Limit = 99.99th percentile (approx. Mean + 4 sigma)
 
 Required sample size: N ≈ 1,000
@@ -1203,36 +1185,30 @@ Interpretation:
   - 99.9% of all future results should fall BELOW the Alert Level
   - 99.99% of all future results should fall BELOW the Action Limit
   - Exceedance of these limits is statistically RARE in a controlled system</pre>
-            </div>
-
-            <p><strong>方法解析：</strong>此方法將所有歷史數據由小到大排列，直接取第 99.9 和 99.99 百分位數的值作為 Alert 和 Action 限度。由於不假設任何特定分佈，因此叫「非參數」。</p>
-
-            <p><strong>實務舉例：</strong>假設某 ISO 7 房間收集了 1,200 筆主動空氣採樣數據，將數據從小到大排列：</p>
-            <ul>
-                <li>第 99.9 百分位數 = 第 1,199 個值 = 8 CFU → Alert Level = 8 CFU</li>
-                <li>第 99.99 百分位數 = 最大值附近 = 12 CFU → Action Limit = 12 CFU</li>
-            </ul>
-
-            <p><strong>關鍵注意事項：</strong>此方法需要大量數據 (N≈1000)。若數據量不足，極端值（可能來自失控事件的異常值）會被選為限度，導致限度被不當抬高。</p>
-        </div>
-    </div>
-
-    <!-- ================================================================
+</div>
+<p><strong>方法解析：</strong>此方法將所有歷史數據由小到大排列，直接取第 99.9 和 99.99 百分位數的值作為 Alert 和 Action 限度。由於不假設任何特定分佈，因此叫「非參數」。</p>
+<p><strong>實務舉例：</strong>假設某 ISO 7 房間收集了 1,200 筆主動空氣採樣數據，將數據從小到大排列：</p>
+<ul>
+<li>第 99.9 百分位數 = 第 1,199 個值 = 8 CFU → Alert Level = 8 CFU</li>
+<li>第 99.99 百分位數 = 最大值附近 = 12 CFU → Action Limit = 12 CFU</li>
+</ul>
+<p><strong>關鍵注意事項：</strong>此方法需要大量數據 (N≈1000)。若數據量不足，極端值（可能來自失控事件的異常值）會被選為限度，導致限度被不當抬高。</p>
+</div>
+</div>
+<!-- ================================================================
          SECTION 5.3.2: NONPARAMETRIC TOLERANCE LIMIT APPROACH
          ================================================================ -->
-    <h2 class="section-title" id="sec-5-3-2">5.3.2 Nonparametric Tolerance Limit Approach</h2>
-
-    <div class="two-column">
-        <div class="left-column">
-            <h3>5.3.2 Nonparametric Tolerance Limit Approach</h3>
-            <p>As environmental monitoring data, especially in cleanrooms, is typically not normally distributed (i.e., exhibits skew heavily toward lower counts or zero counts), a nonparametric tolerance limit approach to setting alert levels and action limits is recommended. These limits allow the user to assert with at least 95% (K=0.95) confidence that 100(P) or 99% of a population lies below the value, as determined by the stated action limits, for the respective data. For distribution-free tolerance limits, minimum sample sizes are N=60 for 95/95 (alert level) and N=300 for 95/99 (action limits).</p>
-        </div>
-        <div class="right-column">
-            <h3>中文解析：非參數容忍限法</h3>
-
-            <div class="formula-box">
-                <h4>Tolerance Limit Notation / 容忍限符號說明</h4>
-                <pre>Format: Confidence / Coverage  (K / P)
+<h2 class="section-title" id="sec-5-3-2"><strong>5.3.2 Nonparametric Tolerance Limit Approach 5.3.2 無母數容忍限値方法</strong></h2>
+<div class="two-column">
+<div class="left-column">
+<h3>5.3.2 Nonparametric Tolerance Limit Approach</h3>
+<p>As environmental monitoring data, especially in cleanrooms, is typically not normally distributed (i.e., exhibits skew heavily toward lower counts or zero counts), a nonparametric tolerance limit approach to setting alert levels and action limits is recommended. These limits allow the user to assert with at least 95% (K=0.95) confidence that 100(P) or 99% of a population lies below the value, as determined by the stated action limits, for the respective data. For distribution-free tolerance limits, minimum sample sizes are N=60 for 95/95 (alert level) and N=300 for 95/99 (action limits).</p>
+</div>
+<div class="right-column">
+<h3>中文解析：非參數容忍限法</h3>
+<div class="formula-box">
+<h4>Tolerance Limit Notation / 容忍限符號說明</h4>
+<pre>Format: Confidence / Coverage  (K / P)
 
 Alert Level:  95/95
   → 95% confidence that 95% of population is below this value
@@ -1241,52 +1217,39 @@ Alert Level:  95/95
 Action Limit: 95/99
   → 95% confidence that 99% of population is below this value
   → Minimum sample size: N = 300</pre>
-            </div>
-
-            <p><strong>與百分位數法的差異：</strong>百分位數法只給出數據的某個位置值，而容忍限法多了一層「信心水準」(confidence level)。95/95 表示「我有 95% 的信心保證，95% 的未來數據都會低於這個值」。</p>
-
-            <p><strong>優勢：</strong></p>
-            <ul>
-                <li>所需數據量遠低於百分位數法（60 vs 1000）</li>
-                <li>不假設特定分佈（distribution-free）</li>
-                <li>提供明確的統計信心保證</li>
-            </ul>
-            <p><strong>適用情境：</strong>新建潔淨室或新導入 EM 程序、尚未累積大量歷史數據時，此方法比百分位數法更實用。</p>
-        </div>
-    </div>
-
-    <!-- ================================================================
+</div>
+<p><strong>與百分位數法的差異：</strong>百分位數法只給出數據的某個位置值，而容忍限法多了一層「信心水準」(confidence level)。95/95 表示「我有 95% 的信心保證，95% 的未來數據都會低於這個值」。</p>
+<p><strong>優勢：</strong></p>
+<ul>
+<li>所需數據量遠低於百分位數法（60 vs 1000）</li>
+<li>不假設特定分佈（distribution-free）</li>
+<li>提供明確的統計信心保證</li>
+</ul>
+<p><strong>適用情境：</strong>新建潔淨室或新導入 EM 程序、尚未累積大量歷史數據時，此方法比百分位數法更實用。</p>
+</div>
+</div>
+<!-- ================================================================
          SECTION 5.3.3: CUTOFF VALUE APPROACH
          ================================================================ -->
-    <h2 class="section-title" id="sec-5-3-3">5.3.3 Cutoff Value Approach</h2>
-
-    <div class="two-column">
-        <div class="left-column">
-            <h3>5.3.3 Cutoff Value Approach</h3>
-            <p>All the test data for a particular site, or group of similar sites, are arranged in a histogram, and the alert levels and action limits are set at values whose monitoring results are respectively 5% and 1% higher than the level selected (i.e., 95th and 99th percentile, respectively). Other percentiles may be used in establishing levels. Alert levels are typically determined per test type (active air, passive air, and surface monitoring).</p>
-
-            <p>The alert definition should be based on a timeframe allowing the accumulation of enough data to be representative of a population. A general text on statistics recommends a statistically significant value of at least 20 data points. Alert levels are typically set at about 50–60% of action until enough data is generated. An example is to take the last 100 monitoring results or data collected during one full year and use the 95th and 99th percentile values as the alert levels and action limits.</p>
-
-            <p>Areas that have the same activities may be grouped to provide more data points; for example, material airlocks of the same Grade, or Grade D hallways of same function can be grouped.</p>
-
-            <p>The calculated alert level should be challenged for its appropriateness, however, avoid modifying or increasing the alert as such it loses any correlation with your actual cleanroom performance. In addition, performance-based alert levels that seem to be well below the applied action limits should be considered as a confirmation of a solid microbial control of the environment and does not per definition to be considered as inappropriate. One should be aware that above alerts will occur and that this is inherent with the use of a cut-off approach. One should be more focused on the level of occurrence.</p>
-
-            <p>If the outcome of the periodic reassessment of the alert assessment results in a level increase, this should be interpreted as a warning that the facility may be slowly drifting out of control or might be a result of modifications of the activities within the area. It is recommended not to increase alert levels without a good understanding of the reasons behind it.</p>
-
-            <p>The frequency-based excursion rates and trends can be used to determine the state of the EM control and gowning process. The <span class="key-term">cumulative conforming count chart (CCC)</span> is easy to use and more sensitive to short-term drifts in process parameter, enabling its user to judge the state of control. The idea behind the CCC is the fact that the number of conforming items between two consecutive nonconforming items changes when the fraction nonconforming shifts is observed. CCC plots the number of inspectional monitoring data sets between excursions. The method is suitable when large number of data exists.</p>
-
-            <p>At a specified excursion rate, a likely number of excursions per given number of samples can be estimated at a 95% confidence level. The CCC can be used to identify the average and the minimum number of continuous successful (within alert levels) facility- or gown-monitoring examinations before the data shifts. Such approaches can be used to evaluate limits, define trends, and assess training effectiveness, for example, gowning process and operator or analyst disqualification and requalification.</p>
-
-            <p>Other models based on negative binomial, Poisson, Weibull, or exponential distributions are possible. It may be appropriate to determine the model that best fits the data and use that model to set the levels. As noted, contamination in strictly controlled environments does not typically fall within a normal distribution. Environmental monitoring data may be evaluated to determine the suitability of the approaches to level setting.</p>
-
-            <p>The monitoring group should review the data for trends at an appropriate frequency. The quality unit should review quarterly and yearly monitoring reports.</p>
-        </div>
-        <div class="right-column">
-            <h3>中文解析：截斷值法與 CCC 圖表</h3>
-
-            <div class="formula-box">
-                <h4>Cutoff Value Method / 截斷值法</h4>
-                <pre>Alert Level  = 95th percentile (top 5% are above)
+<h2 class="section-title" id="sec-5-3-3"><strong>5.3.3 Cutoff Value Approach 5.3.3 截止値方法</strong></h2>
+<div class="two-column">
+<div class="left-column">
+<h3>5.3.3 Cutoff Value Approach</h3>
+<p>All the test data for a particular site, or group of similar sites, are arranged in a histogram, and the alert levels and action limits are set at values whose monitoring results are respectively 5% and 1% higher than the level selected (i.e., 95th and 99th percentile, respectively). Other percentiles may be used in establishing levels. Alert levels are typically determined per test type (active air, passive air, and surface monitoring).</p>
+<p>The alert definition should be based on a timeframe allowing the accumulation of enough data to be representative of a population. A general text on statistics recommends a statistically significant value of at least 20 data points. Alert levels are typically set at about 50–60% of action until enough data is generated. An example is to take the last 100 monitoring results or data collected during one full year and use the 95th and 99th percentile values as the alert levels and action limits.</p>
+<p>Areas that have the same activities may be grouped to provide more data points; for example, material airlocks of the same Grade, or Grade D hallways of same function can be grouped.</p>
+<p>The calculated alert level should be challenged for its appropriateness, however, avoid modifying or increasing the alert as such it loses any correlation with your actual cleanroom performance. In addition, performance-based alert levels that seem to be well below the applied action limits should be considered as a confirmation of a solid microbial control of the environment and does not per definition to be considered as inappropriate. One should be aware that above alerts will occur and that this is inherent with the use of a cut-off approach. One should be more focused on the level of occurrence.</p>
+<p>If the outcome of the periodic reassessment of the alert assessment results in a level increase, this should be interpreted as a warning that the facility may be slowly drifting out of control or might be a result of modifications of the activities within the area. It is recommended not to increase alert levels without a good understanding of the reasons behind it.</p>
+<p>The frequency-based excursion rates and trends can be used to determine the state of the EM control and gowning process. The <span class="key-term">cumulative conforming count chart (CCC)</span> is easy to use and more sensitive to short-term drifts in process parameter, enabling its user to judge the state of control. The idea behind the CCC is the fact that the number of conforming items between two consecutive nonconforming items changes when the fraction nonconforming shifts is observed. CCC plots the number of inspectional monitoring data sets between excursions. The method is suitable when large number of data exists.</p>
+<p>At a specified excursion rate, a likely number of excursions per given number of samples can be estimated at a 95% confidence level. The CCC can be used to identify the average and the minimum number of continuous successful (within alert levels) facility- or gown-monitoring examinations before the data shifts. Such approaches can be used to evaluate limits, define trends, and assess training effectiveness, for example, gowning process and operator or analyst disqualification and requalification.</p>
+<p>Other models based on negative binomial, Poisson, Weibull, or exponential distributions are possible. It may be appropriate to determine the model that best fits the data and use that model to set the levels. As noted, contamination in strictly controlled environments does not typically fall within a normal distribution. Environmental monitoring data may be evaluated to determine the suitability of the approaches to level setting.</p>
+<p>The monitoring group should review the data for trends at an appropriate frequency. The quality unit should review quarterly and yearly monitoring reports.</p>
+</div>
+<div class="right-column">
+<h3>中文解析：截斷值法與 CCC 圖表</h3>
+<div class="formula-box">
+<h4>Cutoff Value Method / 截斷值法</h4>
+<pre>Alert Level  = 95th percentile (top 5% are above)
 Action Limit = 99th percentile (top 1% are above)
 
 Minimum data: 20 data points (minimum)
@@ -1297,534 +1260,480 @@ Initial (insufficient data):
 
 Grouping allowed:
   Same-grade rooms with same activities can be pooled</pre>
-            </div>
-
-            <p><strong>三種方法比較總結：</strong></p>
-            <p><strong>CCC 圖表 (Cumulative Conforming Count)：</strong>CCC 是一種特殊的控制圖，用於監控連續「合格」樣品的間隔。原理如下：</p>
-            <ul>
-                <li>X 軸：每次超標事件的序號</li>
-                <li>Y 軸：兩次超標事件之間的合格樣品數量</li>
-                <li>如果環境控制穩定，兩次超標之間的合格數應該相對穩定</li>
-                <li>如果合格間隔突然縮短，代表環境正在惡化</li>
-            </ul>
-
-            <p><strong>CCC 的實務價值：</strong></p>
-            <ul>
-                <li>比傳統 SPC 圖更敏感於短期漂移</li>
-                <li>可用於評估更衣培訓效果（操作員更衣合格/不合格的間隔）</li>
-                <li>可用於評估操作員資格的維持和重新資格確認</li>
-            </ul>
-
-            <div class="note-box">
-                <h4>Alert Level 調整的陷阱</h4>
-                <p>TR13 特別警告：如果定期重新評估後 Alert Level 需要上調，這應被視為環境控制可能正在惡化的警訊，而非「正常調整」。不要在不了解根本原因的情況下隨意提高 Alert Level —— 這等於自欺欺人地掩蓋問題。</p>
-                <p>低於 Action Limit 的 Alert Level 應被視為微生物控制良好的<strong>正面確認</strong>，而非不適當的設定。</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="concept-box"><table>
-                <thead>
-                    <tr>
-                        <th>方法</th>
-                        <th>Alert 百分位</th>
-                        <th>Action 百分位</th>
-                        <th>最低數據量</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>百分位數法 (5.3.1)</td>
-                        <td>99.9th</td>
-                        <td>99.99th</td>
-                        <td>N ≈ 1,000</td>
-                    </tr>
-                    <tr>
-                        <td>容忍限法 (5.3.2)</td>
-                        <td>95/95</td>
-                        <td>95/99</td>
-                        <td>N = 60 / 300</td>
-                    </tr>
-                    <tr>
-                        <td>截斷值法 (5.3.3)</td>
-                        <td>95th</td>
-                        <td>99th</td>
-                        <td>N ≥ 20</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            </div><!-- ================================================================
+</div>
+<p><strong>三種方法比較總結：</strong></p>
+<p><strong>CCC 圖表 (Cumulative Conforming Count)：</strong>CCC 是一種特殊的控制圖，用於監控連續「合格」樣品的間隔。原理如下：</p>
+<ul>
+<li>X 軸：每次超標事件的序號</li>
+<li>Y 軸：兩次超標事件之間的合格樣品數量</li>
+<li>如果環境控制穩定，兩次超標之間的合格數應該相對穩定</li>
+<li>如果合格間隔突然縮短，代表環境正在惡化</li>
+</ul>
+<p><strong>CCC 的實務價值：</strong></p>
+<ul>
+<li>比傳統 SPC 圖更敏感於短期漂移</li>
+<li>可用於評估更衣培訓效果（操作員更衣合格/不合格的間隔）</li>
+<li>可用於評估操作員資格的維持和重新資格確認</li>
+</ul>
+<div class="note-box">
+<h4>Alert Level 調整的陷阱</h4>
+<p>TR13 特別警告：如果定期重新評估後 Alert Level 需要上調，這應被視為環境控制可能正在惡化的警訊，而非「正常調整」。不要在不了解根本原因的情況下隨意提高 Alert Level —— 這等於自欺欺人地掩蓋問題。</p>
+<p>低於 Action Limit 的 Alert Level 應被視為微生物控制良好的<strong>正面確認</strong>，而非不適當的設定。</p>
+</div>
+</div>
+</div>
+<div class="concept-box"><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>Alert 百分位</th>
+<th>Action 百分位</th>
+<th>最低數據量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>百分位數法 (5.3.1)</td>
+<td>99.9th</td>
+<td>99.99th</td>
+<td>N ≈ 1,000</td>
+</tr>
+<tr>
+<td>容忍限法 (5.3.2)</td>
+<td>95/95</td>
+<td>95/99</td>
+<td>N = 60 / 300</td>
+</tr>
+<tr>
+<td>截斷值法 (5.3.3)</td>
+<td>95th</td>
+<td>99th</td>
+<td>N ≥ 20</td>
+</tr>
+</tbody>
+</table>
+</div><!-- ================================================================
          SECTION 5.3.4: TRENDING RULES
          ================================================================ -->
-    <h2 class="section-title" id="sec-5-3-4">5.3.4 Quantitative and Qualitative Trending Rules</h2>
-
-    <div class="two-column">
-        <div class="left-column">
-            <h3>5.3.4 Quantitative and Qualitative Trending Rules</h3>
-            <p>Trend rules should supplement alert levels and action limits and focus on two important axes:</p>
-            <ul>
-                <li>To rapidly detect gradual bioburden changes before it leads to real excursions with potential impact for production and/or the cleanroom environment (immediate term trending)</li>
-                <li>It should be able to periodically evaluate the general state of control of the cleanroom environment (short- and long-term trending)</li>
-            </ul>
-            <p>A useful trending rule is to look at alert level excursions over time within the same room identifying correlation between/among locations, or frequent sustained recoveries above alert. When trend rules are exceeded, an investigation is recommended.</p>
-
-            <p><strong>Immediate — short term trending rules</strong> typically look at an increase in the proportion of above alerts over a specified time period. Examples:</p>
-            <ul>
-                <li>A specified number of above alerts at a single location/type of test</li>
-                <li>A specified number of alerts within one room (same and different types of tests)</li>
-            </ul>
-            <p>Some statistical rules can be used as well in order to identify when the proportion of above alerts is moving to an atypical level.</p>
-
-            <p><strong>Short Term — monthly or quarterly:</strong> The monitoring group should perform a comprehensive review of the data at an appropriate frequency as a function of the amount and criticality of the data generated. The quality unit should review and approve the periodic monitoring reports. Typically, a thorough analysis with a statement if data indicate that the facility is operating in a state of control or if data indicate some issues, how it was discovered, where and what corrective action was taken and what impact the issue had on the facility. The integration of graphs is highly recommended to visualize the state of control. One can assess:</p>
-            <ul>
-                <li>Same sample type from same location exceeding the action limit multiple times</li>
-                <li>Increases of the number of alert level excursions (e.g., same monitoring type: active, passive or surface monitoring)</li>
-                <li>Recovery rate increases for the same location, or the same room or area</li>
-            </ul>
-
-            <p><strong>Long Term — annual:</strong> Annual trending should report the changes in a year's worth of data. Since it incorporates more data, it should be able to give a better holistic picture of the cleanroom environment. It might include:</p>
-            <ul>
-                <li>Number of EM Deviations per grade with indication of concerned rooms and test type and corrective actions</li>
-                <li>Occurrence of atypical microorganism per grade and explanation of potential root cause identified</li>
-                <li>Microbial flora analysis and confirmation of the disinfection program efficiency and validated state</li>
-                <li>Global analysis of the site performance covered by the monthly/quarterly reports and comparison with the previous period</li>
-                <li>Key findings and highlights on any change in SOP or modification during the year</li>
-                <li>Year graphical representation and global analysis of the data from your cleanrooms and conclusion with a statement such as data indicate that the facility is operating in a state of control or if data indicate some issues and any related CAPAs</li>
-                <li>Analysis of potential correlations between observed product contamination (e.g., bioburden) and the micro-organisms recovered within the cleanroom environment</li>
-            </ul>
-        </div>
-        <div class="right-column">
-            <h3>中文解析：趨勢分析三層結構</h3>
-
-            <p>趨勢分析是 EM 程式中的「預防性監控機制」。TR13 將其分為三個層次：</p>
-
-            <p><strong>即時趨勢規則（實務範例）：</strong></p>
-            <ul>
-                <li>同一地點在一週內出現 2 次 Alert 超標 → 觸發調查</li>
-                <li>同一房間在同一天出現 3 個以上不同測試點的 Alert → 可能系統性問題</li>
-            </ul>
-
-            <p><strong>短期報告應包含的元素：</strong></p>
-            <ul>
-                <li>是否有同一地點重複超過 Action Limit</li>
-                <li>Alert 超標頻率是否在增加</li>
-                <li>同一區域的回收率是否在上升</li>
-                <li>明確的結論聲明：設施是否處於受控狀態</li>
-                <li><strong>強烈建議使用圖表</strong>（趨勢圖、控制圖）來視覺化呈現</li>
-            </ul>
-
-            <p><strong>年度報告應涵蓋：</strong></p>
-            <ul>
-                <li>各等級偏差數量、涉及的房間和測試類型</li>
-                <li>非典型微生物出現分析及根本原因</li>
-                <li>微生物菌群分析 → 驗證消毒程序有效性</li>
-                <li>與前期數據的比較分析</li>
-                <li>產品汙染與環境微生物的關聯性分析</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="concept-box">
-                <h4>三層趨勢分析架構</h4>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>層次</th>
-                            <th>頻率</th>
-                            <th>目的</th>
-                            <th>負責單位</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>即時 (Immediate)</strong></td>
-                            <td>每次/每日</td>
-                            <td>偵測突發性惡化</td>
-                            <td>EM 監控組</td>
-                        </tr>
-                        <tr>
-                            <td><strong>短期 (Short-term)</strong></td>
-                            <td>月/季</td>
-                            <td>評估控制狀態</td>
-                            <td>QA 審核批准</td>
-                        </tr>
-                        <tr>
-                            <td><strong>長期 (Long-term)</strong></td>
-                            <td>年度</td>
-                            <td>全面環境健康報告</td>
-                            <td>QA + 管理層</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- ================================================================
+<h2 class="section-title" id="sec-5-3-4"><strong>5.3.4 Quantitative and Qualitative Trending Rules 5.3.4 定量與定性趨勢規則</strong></h2>
+<div class="two-column">
+<div class="left-column">
+<h3>5.3.4 Quantitative and Qualitative Trending Rules</h3>
+<p>Trend rules should supplement alert levels and action limits and focus on two important axes:</p>
+<ul>
+<li>To rapidly detect gradual bioburden changes before it leads to real excursions with potential impact for production and/or the cleanroom environment (immediate term trending)</li>
+<li>It should be able to periodically evaluate the general state of control of the cleanroom environment (short- and long-term trending)</li>
+</ul>
+<p>A useful trending rule is to look at alert level excursions over time within the same room identifying correlation between/among locations, or frequent sustained recoveries above alert. When trend rules are exceeded, an investigation is recommended.</p>
+<p><strong>Immediate — short term trending rules</strong> typically look at an increase in the proportion of above alerts over a specified time period. Examples:</p>
+<ul>
+<li>A specified number of above alerts at a single location/type of test</li>
+<li>A specified number of alerts within one room (same and different types of tests)</li>
+</ul>
+<p>Some statistical rules can be used as well in order to identify when the proportion of above alerts is moving to an atypical level.</p>
+<p><strong>Short Term — monthly or quarterly:</strong> The monitoring group should perform a comprehensive review of the data at an appropriate frequency as a function of the amount and criticality of the data generated. The quality unit should review and approve the periodic monitoring reports. Typically, a thorough analysis with a statement if data indicate that the facility is operating in a state of control or if data indicate some issues, how it was discovered, where and what corrective action was taken and what impact the issue had on the facility. The integration of graphs is highly recommended to visualize the state of control. One can assess:</p>
+<ul>
+<li>Same sample type from same location exceeding the action limit multiple times</li>
+<li>Increases of the number of alert level excursions (e.g., same monitoring type: active, passive or surface monitoring)</li>
+<li>Recovery rate increases for the same location, or the same room or area</li>
+</ul>
+<p><strong>Long Term — annual:</strong> Annual trending should report the changes in a year's worth of data. Since it incorporates more data, it should be able to give a better holistic picture of the cleanroom environment. It might include:</p>
+<ul>
+<li>Number of EM Deviations per grade with indication of concerned rooms and test type and corrective actions</li>
+<li>Occurrence of atypical microorganism per grade and explanation of potential root cause identified</li>
+<li>Microbial flora analysis and confirmation of the disinfection program efficiency and validated state</li>
+<li>Global analysis of the site performance covered by the monthly/quarterly reports and comparison with the previous period</li>
+<li>Key findings and highlights on any change in SOP or modification during the year</li>
+<li>Year graphical representation and global analysis of the data from your cleanrooms and conclusion with a statement such as data indicate that the facility is operating in a state of control or if data indicate some issues and any related CAPAs</li>
+<li>Analysis of potential correlations between observed product contamination (e.g., bioburden) and the micro-organisms recovered within the cleanroom environment</li>
+</ul>
+</div>
+<div class="right-column">
+<h3>中文解析：趨勢分析三層結構</h3>
+<p>趨勢分析是 EM 程式中的「預防性監控機制」。TR13 將其分為三個層次：</p>
+<p><strong>即時趨勢規則（實務範例）：</strong></p>
+<ul>
+<li>同一地點在一週內出現 2 次 Alert 超標 → 觸發調查</li>
+<li>同一房間在同一天出現 3 個以上不同測試點的 Alert → 可能系統性問題</li>
+</ul>
+<p><strong>短期報告應包含的元素：</strong></p>
+<ul>
+<li>是否有同一地點重複超過 Action Limit</li>
+<li>Alert 超標頻率是否在增加</li>
+<li>同一區域的回收率是否在上升</li>
+<li>明確的結論聲明：設施是否處於受控狀態</li>
+<li><strong>強烈建議使用圖表</strong>（趨勢圖、控制圖）來視覺化呈現</li>
+</ul>
+<p><strong>年度報告應涵蓋：</strong></p>
+<ul>
+<li>各等級偏差數量、涉及的房間和測試類型</li>
+<li>非典型微生物出現分析及根本原因</li>
+<li>微生物菌群分析 → 驗證消毒程序有效性</li>
+<li>與前期數據的比較分析</li>
+<li>產品汙染與環境微生物的關聯性分析</li>
+</ul>
+</div>
+</div>
+<div class="concept-box">
+<h4>三層趨勢分析架構</h4>
+<table>
+<thead>
+<tr>
+<th>層次</th>
+<th>頻率</th>
+<th>目的</th>
+<th>負責單位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>即時 (Immediate)</strong></td>
+<td>每次/每日</td>
+<td>偵測突發性惡化</td>
+<td>EM 監控組</td>
+</tr>
+<tr>
+<td><strong>短期 (Short-term)</strong></td>
+<td>月/季</td>
+<td>評估控制狀態</td>
+<td>QA 審核批准</td>
+</tr>
+<tr>
+<td><strong>長期 (Long-term)</strong></td>
+<td>年度</td>
+<td>全面環境健康報告</td>
+<td>QA + 管理層</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- ================================================================
          SECTION 5.4: DATA MANAGEMENT
          ================================================================ -->
-    <h2 class="section-title" id="sec-5-4">5.4 Data Management</h2>
-
-    <div class="two-column">
-        <div class="left-column">
-            <h3>5.4 Data Management</h3>
-            <p>Routine review and analysis of EM data for trends at an appropriate frequency is essential to aid in the interpretation of process stability and assess overall environmental control performance. Management must be kept abreast of trends and the subsequent state of operations within facilities with review of quarterly and yearly monitoring reports.</p>
-            <p>Based on the large number of samples tested by a given facility, a computer-based data-tracking system is essential. Before implementation, all database applications used should be validated or qualified for specific software applications.</p>
-        </div>
-        <div class="right-column">
-            <h3>中文解析：數據管理概論</h3>
-            <p>EM 程式產生的數據量龐大（一個設施每月可能有數千筆採樣結果），因此需要電腦化的數據追蹤系統。TR13 強調：</p>
-            <ul>
-                <li>必須定期審查和分析數據以評估趨勢</li>
-                <li>管理層必須掌握設施的環境控制狀態</li>
-                <li>所有數據庫應用程式必須經過<strong>驗證 (validated)</strong> 或<strong>確認 (qualified)</strong></li>
-            </ul>
-            <p>這與 EU GMP Annex 11 (Computerized Systems) 和 FDA 21 CFR Part 11 (Electronic Records) 的要求一致。</p>
-        </div>
-    </div>
-
-    <!-- ================================================================
+<h2 class="section-title" id="sec-5-4"><strong>5.4 Data Management 5.4 資料管理</strong></h2>
+<div class="two-column">
+<div class="left-column">
+<h3>5.4 Data Management</h3>
+<p>Routine review and analysis of EM data for trends at an appropriate frequency is essential to aid in the interpretation of process stability and assess overall environmental control performance. Management must be kept abreast of trends and the subsequent state of operations within facilities with review of quarterly and yearly monitoring reports.</p>
+<p>Based on the large number of samples tested by a given facility, a computer-based data-tracking system is essential. Before implementation, all database applications used should be validated or qualified for specific software applications.</p>
+</div>
+<div class="right-column">
+<h3>中文解析：數據管理概論</h3>
+<p>EM 程式產生的數據量龐大（一個設施每月可能有數千筆採樣結果），因此需要電腦化的數據追蹤系統。TR13 強調：</p>
+<ul>
+<li>必須定期審查和分析數據以評估趨勢</li>
+<li>管理層必須掌握設施的環境控制狀態</li>
+<li>所有數據庫應用程式必須經過<strong>驗證 (validated)</strong> 或<strong>確認 (qualified)</strong></li>
+</ul>
+<p>這與 EU GMP Annex 11 (Computerized Systems) 和 FDA 21 CFR Part 11 (Electronic Records) 的要求一致。</p>
+</div>
+</div>
+<!-- ================================================================
          SECTION 5.4.1: DATA INTEGRITY (ALCOA)
          ================================================================ -->
-    <h2 class="section-title" id="sec-5-4-1">5.4.1 Data Integrity (ALCOA)</h2>
-
-    <div class="two-column">
-        <div class="left-column">
-            <h3>5.4.1 Data Integrity</h3>
-            <p>The PDA Elements of a Code of Conduct for Data Integrity in the Pharmaceutical Industry and PDA Technical Report No. 80: Data Integrity Management Systems for Pharmaceutical Laboratories provide comprehensive information on this topic.</p>
-
-            <p>Collecting, analyzing, reporting and retention of EM data should be done under conditions that are designed to guarantee reliability and integrity of the data. The data are required to be <span class="key-term">attributable, legible, contemporaneous, original, and accurate (ALCOA)</span>:</p>
-            <ul>
-                <li><strong>Attributable:</strong> Information is captured that identifies where the data came from</li>
-                <li><strong>Legible:</strong> Data are readable and understandable by humans</li>
-                <li><strong>Contemporaneous:</strong> Data are recorded at the time they are generated or observed</li>
-                <li><strong>Original:</strong> Data are recorded for the first time</li>
-                <li><strong>Accurate:</strong> Data are correct</li>
-            </ul>
-
-            <p>Important elements to consider with respect to environmental monitoring are:</p>
-            <ul>
-                <li>Integrity of the sampling site data by including a formal mechanism to enable full reconciliation of sample collection, incubation, and evaluation</li>
-                <li>EM data must be documented on controlled worksheets for paper records or entered into a validated computer system with appropriate security, audit trails, validation, and oversight</li>
-                <li>Employees must adhere to the established site documentation requirement and will not record raw data on unofficial forms, writing pads, or other uncontrolled media</li>
-                <li>Employees will not discard or destroy raw data or original records, other than at the end of the prescribed retention period</li>
-            </ul>
-
-            <p>The deployment of a second-person verification should be considered to confirm the enumeration of microbial recovery. The main focus, however, should be to have in place a robust plate-reading process, reducing the risk for variability to the minimum, for instance, by applying appropriate lighting and/or magnification and a robust training of the technicians performing the readout. The utilization of QRM principles can aid in the determination of whether or not a secondary verification is required (e.g., Grade A EM). Automated systems for EM test readouts and data storage can eliminate bias and the need to perform a second verification.</p>
-
-            <p>Routine data are aligned into a source in a consistent record format. At a minimum, the record format should include the following:</p>
-            <ul>
-                <li>Identification of the operator and analyst</li>
-                <li>Monitoring date and time</li>
-                <li>Equipment used</li>
-                <li>Specific sampling locations</li>
-                <li>Sampling methods including media used</li>
-                <li>Incubation conditions</li>
-                <li>Colony-forming units (CFU) or total airborne particulate count results</li>
-                <li>Identifications performed</li>
-                <li>Batch information (if applicable, e.g., for batch-related monitoring)</li>
-                <li>Current alert levels or action limits</li>
-            </ul>
-
-            <p>Records must be signed and verified by the appropriate person, depending on the type of system used. Some alternative microbiological methods can use measurements other than CFUs, provided they have been properly validated before use, for example, relative light units, cells, etc.</p>
-        </div>
-        <div class="right-column">
-            <h3>中文解析：數據完整性與 ALCOA 原則</h3>
-
-            <p><strong>EM 數據完整性的常見風險點：</strong></p>
-            <ul>
-                <li><strong>採樣與培養的全程追溯：</strong>必須有正式機制確保每個樣品從採集、培養到讀盤結果都可追溯，不能「漏」樣品</li>
-                <li><strong>禁止非受控介質：</strong>不可在便利貼、筆記本上先記錄再謄抄到正式表格</li>
-                <li><strong>禁止銷毀原始記錄：</strong>只有在規定的保存期限屆滿後才能銷毀</li>
-            </ul>
-
-            <p><strong>二人覆核 (Second-person Verification)：</strong></p>
-            <ul>
-                <li>應考慮是否需要第二人覆核 CFU 計數</li>
-                <li>更重要的是建立穩健的讀盤程序：適當照明、放大鏡、人員培訓</li>
-                <li>可用 QRM 原則決定是否需要（如 Grade A 的 EM 可能需要）</li>
-                <li>自動化系統可消除偏差並取代二人覆核</li>
-            </ul>
-
-            <div class="note-box">
-                <h4>EM 記錄的最低要素 (Minimum Record Elements)</h4>
-                <p>每筆 EM 數據記錄至少應包含以下 10 項資訊：操作員/分析員身分、監測日期與時間、使用設備、具體採樣位置、採樣方法含培養基、培養條件、CFU 或粒子計數結果、執行的鑑定、批次資訊（如適用）、現行 Alert/Action 限度。</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="concept-box">
-                <h4>ALCOA 數據完整性原則</h4>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>字母</th>
-                            <th>英文</th>
-                            <th>中文說明</th>
-                            <th>EM 實例</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>A</strong></td>
-                            <td>Attributable</td>
-                            <td>可歸屬性</td>
-                            <td>記錄誰採樣、誰讀盤、誰審核</td>
-                        </tr>
-                        <tr>
-                            <td><strong>L</strong></td>
-                            <td>Legible</td>
-                            <td>可讀性</td>
-                            <td>數據清晰可辨，不可塗改模糊</td>
-                        </tr>
-                        <tr>
-                            <td><strong>C</strong></td>
-                            <td>Contemporaneous</td>
-                            <td>同步性</td>
-                            <td>培養結束當下記錄 CFU，不可事後補填</td>
-                        </tr>
-                        <tr>
-                            <td><strong>O</strong></td>
-                            <td>Original</td>
-                            <td>原始性</td>
-                            <td>首次記錄即為原始數據，不可重抄替代</td>
-                        </tr>
-                        <tr>
-                            <td><strong>A</strong></td>
-                            <td>Accurate</td>
-                            <td>準確性</td>
-                            <td>CFU 計數正確、設備校準有效</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- ================================================================
+<h2 class="section-title" id="sec-5-4-1"><strong>5.4.1 Data Integrity (ALCOA) 5.4.1 資料完整性（ALCOA）</strong></h2>
+<div class="two-column">
+<div class="left-column">
+<h3>5.4.1 Data Integrity</h3>
+<p>The PDA Elements of a Code of Conduct for Data Integrity in the Pharmaceutical Industry and PDA Technical Report No. 80: Data Integrity Management Systems for Pharmaceutical Laboratories provide comprehensive information on this topic.</p>
+<p>Collecting, analyzing, reporting and retention of EM data should be done under conditions that are designed to guarantee reliability and integrity of the data. The data are required to be <span class="key-term">attributable, legible, contemporaneous, original, and accurate (ALCOA)</span>:</p>
+<ul>
+<li><strong>Attributable:</strong> Information is captured that identifies where the data came from</li>
+<li><strong>Legible:</strong> Data are readable and understandable by humans</li>
+<li><strong>Contemporaneous:</strong> Data are recorded at the time they are generated or observed</li>
+<li><strong>Original:</strong> Data are recorded for the first time</li>
+<li><strong>Accurate:</strong> Data are correct</li>
+</ul>
+<p>Important elements to consider with respect to environmental monitoring are:</p>
+<ul>
+<li>Integrity of the sampling site data by including a formal mechanism to enable full reconciliation of sample collection, incubation, and evaluation</li>
+<li>EM data must be documented on controlled worksheets for paper records or entered into a validated computer system with appropriate security, audit trails, validation, and oversight</li>
+<li>Employees must adhere to the established site documentation requirement and will not record raw data on unofficial forms, writing pads, or other uncontrolled media</li>
+<li>Employees will not discard or destroy raw data or original records, other than at the end of the prescribed retention period</li>
+</ul>
+<p>The deployment of a second-person verification should be considered to confirm the enumeration of microbial recovery. The main focus, however, should be to have in place a robust plate-reading process, reducing the risk for variability to the minimum, for instance, by applying appropriate lighting and/or magnification and a robust training of the technicians performing the readout. The utilization of QRM principles can aid in the determination of whether or not a secondary verification is required (e.g., Grade A EM). Automated systems for EM test readouts and data storage can eliminate bias and the need to perform a second verification.</p>
+<p>Routine data are aligned into a source in a consistent record format. At a minimum, the record format should include the following:</p>
+<ul>
+<li>Identification of the operator and analyst</li>
+<li>Monitoring date and time</li>
+<li>Equipment used</li>
+<li>Specific sampling locations</li>
+<li>Sampling methods including media used</li>
+<li>Incubation conditions</li>
+<li>Colony-forming units (CFU) or total airborne particulate count results</li>
+<li>Identifications performed</li>
+<li>Batch information (if applicable, e.g., for batch-related monitoring)</li>
+<li>Current alert levels or action limits</li>
+</ul>
+<p>Records must be signed and verified by the appropriate person, depending on the type of system used. Some alternative microbiological methods can use measurements other than CFUs, provided they have been properly validated before use, for example, relative light units, cells, etc.</p>
+</div>
+<div class="right-column">
+<h3>中文解析：數據完整性與 ALCOA 原則</h3>
+<p><strong>EM 數據完整性的常見風險點：</strong></p>
+<ul>
+<li><strong>採樣與培養的全程追溯：</strong>必須有正式機制確保每個樣品從採集、培養到讀盤結果都可追溯，不能「漏」樣品</li>
+<li><strong>禁止非受控介質：</strong>不可在便利貼、筆記本上先記錄再謄抄到正式表格</li>
+<li><strong>禁止銷毀原始記錄：</strong>只有在規定的保存期限屆滿後才能銷毀</li>
+</ul>
+<p><strong>二人覆核 (Second-person Verification)：</strong></p>
+<ul>
+<li>應考慮是否需要第二人覆核 CFU 計數</li>
+<li>更重要的是建立穩健的讀盤程序：適當照明、放大鏡、人員培訓</li>
+<li>可用 QRM 原則決定是否需要（如 Grade A 的 EM 可能需要）</li>
+<li>自動化系統可消除偏差並取代二人覆核</li>
+</ul>
+<div class="note-box">
+<h4>EM 記錄的最低要素 (Minimum Record Elements)</h4>
+<p>每筆 EM 數據記錄至少應包含以下 10 項資訊：操作員/分析員身分、監測日期與時間、使用設備、具體採樣位置、採樣方法含培養基、培養條件、CFU 或粒子計數結果、執行的鑑定、批次資訊（如適用）、現行 Alert/Action 限度。</p>
+</div>
+</div>
+</div>
+<div class="concept-box">
+<h4>ALCOA 數據完整性原則</h4>
+<table>
+<thead>
+<tr>
+<th>字母</th>
+<th>英文</th>
+<th>中文說明</th>
+<th>EM 實例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A</strong></td>
+<td>Attributable</td>
+<td>可歸屬性</td>
+<td>記錄誰採樣、誰讀盤、誰審核</td>
+</tr>
+<tr>
+<td><strong>L</strong></td>
+<td>Legible</td>
+<td>可讀性</td>
+<td>數據清晰可辨，不可塗改模糊</td>
+</tr>
+<tr>
+<td><strong>C</strong></td>
+<td>Contemporaneous</td>
+<td>同步性</td>
+<td>培養結束當下記錄 CFU，不可事後補填</td>
+</tr>
+<tr>
+<td><strong>O</strong></td>
+<td>Original</td>
+<td>原始性</td>
+<td>首次記錄即為原始數據，不可重抄替代</td>
+</tr>
+<tr>
+<td><strong>A</strong></td>
+<td>Accurate</td>
+<td>準確性</td>
+<td>CFU 計數正確、設備校準有效</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- ================================================================
          SECTION 5.4.2: DATA TRENDING ANALYSIS
          ================================================================ -->
-    <h2 class="section-title" id="sec-5-4-2">5.4.2 Data Trending Analysis</h2>
-
-    <div class="two-column">
-        <div class="left-column">
-            <h3>5.4.2 Data Trending Analysis</h3>
-            <p>Histograms or tables, characterized by a number of data points that fall within a common frequency, are valuable tools to conduct the trending expected by regulatory agencies. Different room classifications with defined requirements will produce different histograms. For example, the CFU spread obtained across an ISO 8 data set will not be observed in a data set from an ISO 5 area. Therefore, each area, or area type, and its accompanying data set must be viewed as distinct. Data trends in counts, occurrences, and organism types can provide a holistic view of the cleanroom environment. They can also be used to evaluate if there is ingress from lower to higher grades. Cleanroom maps indicating sampling excursions are useful as well to show connectivity of various grades and potential ingress through equipment and personnel flows. While this does not require statistical tools, mathematical models could be applied. Examples of statistical methods and control charts can be found in PDA Technical Report 59: Utilization of Statistical Methods for Production Monitoring.</p>
-        </div>
-        <div class="right-column">
-            <h3>中文解析：數據趨勢分析工具</h3>
-            <p><strong>直方圖 (Histograms)：</strong>將 CFU 計數按頻率分佈呈現。不同等級的潔淨室會產生不同形態的直方圖：</p>
-            <ul>
-                <li><strong>ISO 5：</strong>絕大多數為 0 CFU，極少有非零值</li>
-                <li><strong>ISO 7：</strong>偏態分佈，集中在 0–5 CFU</li>
-                <li><strong>ISO 8：</strong>分佈較寬，可能達到 20+ CFU</li>
-            </ul>
-            <p><strong>關鍵原則：</strong>每個區域或區域類型必須視為獨立的數據集進行分析，不可混合不同等級的數據。</p>
-
-            <p><strong>趨勢分析的三個維度：</strong></p>
-            <ul>
-                <li><strong>計數趨勢 (Counts)</strong> — CFU 數值隨時間的變化</li>
-                <li><strong>發生次數趨勢 (Occurrences)</strong> — 超標事件的頻率</li>
-                <li><strong>菌種趨勢 (Organism Types)</strong> — 回收微生物種類的變化</li>
-            </ul>
-
-            <p><strong>潔淨室地圖 (Cleanroom Maps)：</strong>將超標事件標示在平面圖上，可視覺化呈現不同等級之間的連通性和潛在的微生物侵入路徑（通過設備流和人員流）。</p>
-
-            <p>更多統計方法和控制圖的範例可參考 <strong>PDA TR59</strong>: Utilization of Statistical Methods for Production Monitoring。</p>
-        </div>
-    </div>
-
-    <!-- ================================================================
+<h2 class="section-title" id="sec-5-4-2"><strong>5.4.2 Data Trending Analysis 5.4.2 資料趨勢分析</strong></h2>
+<div class="two-column">
+<div class="left-column">
+<h3>5.4.2 Data Trending Analysis</h3>
+<p>Histograms or tables, characterized by a number of data points that fall within a common frequency, are valuable tools to conduct the trending expected by regulatory agencies. Different room classifications with defined requirements will produce different histograms. For example, the CFU spread obtained across an ISO 8 data set will not be observed in a data set from an ISO 5 area. Therefore, each area, or area type, and its accompanying data set must be viewed as distinct. Data trends in counts, occurrences, and organism types can provide a holistic view of the cleanroom environment. They can also be used to evaluate if there is ingress from lower to higher grades. Cleanroom maps indicating sampling excursions are useful as well to show connectivity of various grades and potential ingress through equipment and personnel flows. While this does not require statistical tools, mathematical models could be applied. Examples of statistical methods and control charts can be found in PDA Technical Report 59: Utilization of Statistical Methods for Production Monitoring.</p>
+</div>
+<div class="right-column">
+<h3>中文解析：數據趨勢分析工具</h3>
+<p><strong>直方圖 (Histograms)：</strong>將 CFU 計數按頻率分佈呈現。不同等級的潔淨室會產生不同形態的直方圖：</p>
+<ul>
+<li><strong>ISO 5：</strong>絕大多數為 0 CFU，極少有非零值</li>
+<li><strong>ISO 7：</strong>偏態分佈，集中在 0–5 CFU</li>
+<li><strong>ISO 8：</strong>分佈較寬，可能達到 20+ CFU</li>
+</ul>
+<p><strong>關鍵原則：</strong>每個區域或區域類型必須視為獨立的數據集進行分析，不可混合不同等級的數據。</p>
+<p><strong>趨勢分析的三個維度：</strong></p>
+<ul>
+<li><strong>計數趨勢 (Counts)</strong> — CFU 數值隨時間的變化</li>
+<li><strong>發生次數趨勢 (Occurrences)</strong> — 超標事件的頻率</li>
+<li><strong>菌種趨勢 (Organism Types)</strong> — 回收微生物種類的變化</li>
+</ul>
+<p><strong>潔淨室地圖 (Cleanroom Maps)：</strong>將超標事件標示在平面圖上，可視覺化呈現不同等級之間的連通性和潛在的微生物侵入路徑（通過設備流和人員流）。</p>
+<p>更多統計方法和控制圖的範例可參考 <strong>PDA TR59</strong>: Utilization of Statistical Methods for Production Monitoring。</p>
+</div>
+</div>
+<!-- ================================================================
          SECTION 5.4.3: INTERPRETATION & CRR TABLE
          ================================================================ -->
-    <h2 class="section-title" id="sec-5-4-3">5.4.3 Interpretation &amp; Contamination Recovery Rates</h2>
-
-    <div class="two-column">
-        <div class="left-column">
-            <h3>5.4.3 Interpretation</h3>
-            <p>Routine environmental microbial monitoring data should demonstrate that the classified area is operating under an adequate microbial control for the needs of the operations conducted in that area. Individual recoveries in critical areas (i.e., Grade A) must be adequately investigated. Compliant EM results do not guarantee the sterility assurance of the process, however, as EM incorporates multiple limitations (e.g., recovery efficiency of the applied methods, selected sample locations etc.). EM can only confirm to some extent the robustness of the design and processes.</p>
-
-            <p>Data generated should be summarized and evaluated to determine whether the EM process is in a state of control and documented in periodic reports. A variety of methods are available to perform this analysis, for example, the use of frequency distribution and control charts or statistical analysis.</p>
-
-            <p>Measurements for viable contamination, such as contamination excursion rates and/or recovery rates, can be used to determine the level of control in a given area. The excursion rate is related to the number of samples exceeding the defined alert levels and action limits, whereas the contamination recovery rate (expressed as a percentage) is related to the number of samples that are positive for microbial growth when compared to the total number of samples taken within the same classified area(s). Therefore, recovery rates differ from excursion rates. Given that microorganisms are not homogeneously distributed in the same environments, and the sensitivity and variability associated with microbial sampling methods, these rates can be useful approaches to trending results in controlled areas.</p>
-
-            <p>The combined excursion rates are calculated by determining the number of samples with excursions outside of established levels, dividing by the total number of samples collected, and converting to a percentage. For an ISO 5 environment, an excursion rate of not more than 1% is achievable due to stringent controls, and the expectation is that the results show no viable recoveries.</p>
-
-            <p>In addition to individual excursions, CRRs may be used for trending and control of the overall microbial load in the classified environment, equipment surfaces, material, and personnel. Companies can utilize the criteria from USP &lt;1116&gt; to develop their recovery rates for cleanroom environments depending on the activities and processes conducted in those areas. They should also establish a CRR for each monitoring attribute, such as surfaces, air, and garments, for each classified area. Any changes from the established calculated contamination rates should be investigated and corrected. However, any contamination in Grade A/ISO 5 areas must be investigated, since there should not be any microbial recovery within those areas. The CRR provides an alternative measurement of the effectiveness of the overall contamination control strategy.</p>
-        </div>
-        <div class="right-column">
-            <h3>中文解析：數據解讀 — 超標率 vs 回收率</h3>
-
-            <div class="concept-box">
-                <h4>Excursion Rate vs Recovery Rate (CRR)</h4>
-                <p><strong>超標率 (Excursion Rate)：</strong></p>
-                <ul>
-                    <li>= 超過 Alert/Action 限度的樣品數 ÷ 總採樣數 × 100%</li>
-                    <li>關注的是「超過設定限度」的比例</li>
-                </ul>
-                <p><strong>汙染回收率 (Contamination Recovery Rate, CRR)：</strong></p>
-                <ul>
-                    <li>= 檢出任何微生物的樣品數 ÷ 總採樣數 × 100%</li>
-                    <li>關注的是「有微生物生長」的比例，不論是否超過限度</li>
-                </ul>
-                <p><strong>兩者不同！</strong>一個樣品可能有 1 CFU（陽性回收但未超標），則計入 CRR 但不計入 Excursion Rate。</p>
-            </div>
-
-            <p><strong>EM 的固有局限性：</strong>TR13 特別提醒，合規的 EM 結果<strong>不保證</strong>製程的無菌保證 (sterility assurance)。EM 有多重限制：</p>
-            <ul>
-                <li>採樣方法的回收效率有限</li>
-                <li>採樣位置只涵蓋空間的極小部分</li>
-                <li>EM 只能在一定程度上確認設計和流程的穩健性</li>
-            </ul>
-
-            <p><strong>Grade A/ISO 5 的特殊要求：</strong>在 Grade A 區域，<strong>任何</strong>微生物回收都必須調查，因為預期該區域不應有任何微生物回收 (no viable recoveries)。</p>
-
-            <p><strong>CRR 的應用建議：</strong></p>
-            <ul>
-                <li>應為每個監測屬性（表面、空氣、更衣服）分別建立 CRR</li>
-                <li>至少每月評估一次（USP &lt;1116&gt; 建議）</li>
-                <li>CRR 的任何變化都應調查並糾正</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- ===== TABLE 5.4.4-1: CRR TABLE ===== -->
-    <h3 class="section-title">Table 5.4.4-1: Contamination Recovery Rates Suggested by USP Chapter &lt;1116&gt;</h3>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Room Classification</th>
-                <th>Active Air Sample (%)</th>
-                <th>Settle Plate (9 cm) 4-Hour Exposure (%)</th>
-                <th>Contact Plate or Swab (%)</th>
-                <th>Glove or Garment (%)</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><strong>Isolator / closed RABS or ISO 5 or better</strong></td>
-                <td>&lt;0.1</td>
-                <td>&lt;0.1</td>
-                <td>&lt;0.1</td>
-                <td>&lt;0.1</td>
-            </tr>
-            <tr>
-                <td><strong>ISO 5</strong></td>
-                <td>&lt;1</td>
-                <td>&lt;1</td>
-                <td>&lt;1</td>
-                <td>&lt;1</td>
-            </tr>
-            <tr>
-                <td><strong>ISO 6</strong></td>
-                <td>&lt;3</td>
-                <td>&lt;3</td>
-                <td>&lt;3</td>
-                <td>&lt;3</td>
-            </tr>
-            <tr>
-                <td><strong>ISO 7</strong></td>
-                <td>&lt;5</td>
-                <td>&lt;5</td>
-                <td>&lt;5</td>
-                <td>&lt;5</td>
-            </tr>
-            <tr>
-                <td><strong>ISO 8</strong></td>
-                <td>&lt;10</td>
-                <td>&lt;10</td>
-                <td>&lt;10</td>
-                <td>&lt;10</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <div class="note-box">
-        <h4>Table Note / 表格附註</h4>
-        <p><strong>Original Note:</strong> All operators are aseptically gowned in these environments. These recommendations do not apply to production areas for nonsterile products or other classified environments in which fully aseptic gowns are not donned. In those conditions other Recovery Rates might be used if appropriately justified.</p>
-        <p><strong>中文說明：</strong>此表假設所有人員均穿著無菌更衣。對於非無菌產品生產區域或未穿著完整無菌更衣的分類環境，可使用其他經適當論證的回收率標準。</p>
-    </div>
-
-    <div class="two-column">
-        <div class="left-column">
-            <h3>CRR Table Interpretation</h3>
-            <p>Evaluating the recovery rate levels at a defined frequency is recommended (at least monthly as per USP &lt;1116&gt;). Trends may include a gradual increase or decrease in the overall counts observed over time, or a change in flora or counts on several plates of a particular area on a given day. Interpretation of the impact of a significant fluctuation in counts or a change in flora should be based on the experienced judgment of a qualified microbiologist.</p>
-            <p>Some considerations for assessing the state of control for a given process include:</p>
-            <ul>
-                <li>Multiple excursions observed within a specified time period may be considered a pattern or cluster formation that, if above the alert level, signals a trend that requires investigation. As an alternative, such approaches as statistically derived frequency of excursion can be used and justified.</li>
-                <li>Fluctuations in environmental monitoring data values for a given process or a specific area require further attention as this may point to construction activities, facility conditions, change in process, flow of material, seasonal variations, disruptive events, or other factors.</li>
-            </ul>
-            <p>Understanding the potential impact of the results generated during EM is critical to a successful EM program.</p>
-        </div>
-        <div class="right-column">
-            <h3>中文解析：CRR 表格的實務應用</h3>
-            <p><strong>如何使用此表：</strong></p>
-            <ul>
-                <li><strong>Isolator/cRABS/ISO 5 (最嚴)：</strong>CRR &lt;0.1%，意味著每 1,000 個樣品中不超過 1 個陽性</li>
-                <li><strong>ISO 5 (open)：</strong>CRR &lt;1%，每 100 個樣品中不超過 1 個陽性</li>
-                <li><strong>ISO 7：</strong>CRR &lt;5%，每 100 個樣品中不超過 5 個陽性</li>
-                <li><strong>ISO 8：</strong>CRR &lt;10%，每 100 個樣品中不超過 10 個陽性</li>
-            </ul>
-
-            <p><strong>評估頻率：</strong>USP &lt;1116&gt; 建議至少<strong>每月</strong>評估 CRR。</p>
-
-            <p><strong>趨勢解讀需注意的情境：</strong></p>
-            <ul>
-                <li>短時間內多次超標 → 可能形成群集 (cluster)，需要調查</li>
-                <li>數據波動突然增加 → 可能因施工活動、設施條件變化、季節因素等</li>
-                <li>菌群 (flora) 突然改變 → 可能有新的汙染源或消毒劑效力下降</li>
-            </ul>
-
-            <p><strong>微生物學家的角色：</strong>TR13 強調，重大計數波動或菌群變化的影響評估，應基於<strong>有經驗的合格微生物學家</strong>的專業判斷。這不是可以純粹自動化的工作。</p>
-        </div>
-    </div>
-
-    <!-- ===== PRACTICE BOX ===== -->
-    <div class="practice-box">
-        <h3>Practice Questions / 練習思考題</h3>
-        <ol>
-            <li>你的 ISO 7 房間有 500 筆歷史數據，你會選用哪種統計方法來設定 Alert/Action 限度？為什麼？（提示：考慮三種方法各自的最低數據量要求）</li>
-            <li>某 ISO 5 填充線在一週內同一地點出現 2 次 Active Air Alert 超標（各 1 CFU），你會如何處理？需要升級為偏差調查嗎？</li>
-            <li>年度趨勢報告中，某 ISO 7 更衣區的 CRR 從去年的 3.2% 上升到今年的 4.8%（仍低於 USP &lt;1116&gt; 建議的 &lt;5%），你是否應該調查？為什麼？</li>
-            <li>一位技術員在便利貼上先記錄了 CFU 計數結果，然後再謄抄到正式工作表上。這違反了 ALCOA 的哪些原則？應如何改善？</li>
-            <li>你的公司正在導入一套即時微生物偵測系統（不基於 CFU），傳統的 CFU-based Alert/Action 限度不適用。根據 TR13 Section 5.3 的指引，CRR 如何幫助解決這個問題？</li>
-        </ol>
-    </div>
-
-    <!-- ===== SECTION SUMMARY ===== -->
-    <div class="section-summary">
-        <h3>Section Summary / 本節摘要</h3>
-        <div class="summary-grid">
-            <div class="summary-col">
-                <h4>Key Concepts</h4>
-                <ul>
-                    <li>Alert Levels = early warning; Action Limits = mandatory response</li>
-                    <li>USP &lt;1116&gt; paradigm shift: CFU counts → CRR (Contamination Recovery Rate)</li>
-                    <li>Three nonparametric methods: Percentile (N~1000), Tolerance Limit (N=60/300), Cutoff (N≥20)</li>
-                    <li>EM data is NOT normally distributed — avoid Mean ± SD methods</li>
-                    <li>CCC charts detect short-term drifts between excursion events</li>
-                </ul>
-            </div>
-            <div class="summary-col">
-                <h4>Data Management Essentials</h4>
-                <ul>
-                    <li>ALCOA: Attributable, Legible, Contemporaneous, Original, Accurate</li>
-                    <li>Trending: Immediate / Short-term (monthly/quarterly) / Long-term (annual)</li>
-                    <li>Excursion Rate vs CRR — different metrics, different insights</li>
-                    <li>Grade A: ANY microbial recovery must be investigated</li>
-                    <li>CRR evaluation at least monthly per USP &lt;1116&gt;</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
+<h2 class="section-title" id="sec-5-4-3"><strong>5.4.3 Interpretation &amp; Contamination Recovery Rates 5.4.3 結果判讀與污染回收率</strong></h2>
+<div class="two-column">
+<div class="left-column">
+<h3>5.4.3 Interpretation</h3>
+<p>Routine environmental microbial monitoring data should demonstrate that the classified area is operating under an adequate microbial control for the needs of the operations conducted in that area. Individual recoveries in critical areas (i.e., Grade A) must be adequately investigated. Compliant EM results do not guarantee the sterility assurance of the process, however, as EM incorporates multiple limitations (e.g., recovery efficiency of the applied methods, selected sample locations etc.). EM can only confirm to some extent the robustness of the design and processes.</p>
+<p>Data generated should be summarized and evaluated to determine whether the EM process is in a state of control and documented in periodic reports. A variety of methods are available to perform this analysis, for example, the use of frequency distribution and control charts or statistical analysis.</p>
+<p>Measurements for viable contamination, such as contamination excursion rates and/or recovery rates, can be used to determine the level of control in a given area. The excursion rate is related to the number of samples exceeding the defined alert levels and action limits, whereas the contamination recovery rate (expressed as a percentage) is related to the number of samples that are positive for microbial growth when compared to the total number of samples taken within the same classified area(s). Therefore, recovery rates differ from excursion rates. Given that microorganisms are not homogeneously distributed in the same environments, and the sensitivity and variability associated with microbial sampling methods, these rates can be useful approaches to trending results in controlled areas.</p>
+<p>The combined excursion rates are calculated by determining the number of samples with excursions outside of established levels, dividing by the total number of samples collected, and converting to a percentage. For an ISO 5 environment, an excursion rate of not more than 1% is achievable due to stringent controls, and the expectation is that the results show no viable recoveries.</p>
+<p>In addition to individual excursions, CRRs may be used for trending and control of the overall microbial load in the classified environment, equipment surfaces, material, and personnel. Companies can utilize the criteria from USP &lt;1116&gt; to develop their recovery rates for cleanroom environments depending on the activities and processes conducted in those areas. They should also establish a CRR for each monitoring attribute, such as surfaces, air, and garments, for each classified area. Any changes from the established calculated contamination rates should be investigated and corrected. However, any contamination in Grade A/ISO 5 areas must be investigated, since there should not be any microbial recovery within those areas. The CRR provides an alternative measurement of the effectiveness of the overall contamination control strategy.</p>
+</div>
+<div class="right-column">
+<h3>中文解析：數據解讀 — 超標率 vs 回收率</h3>
+<div class="concept-box">
+<h4>Excursion Rate vs Recovery Rate (CRR)</h4>
+<p><strong>超標率 (Excursion Rate)：</strong></p>
+<ul>
+<li>= 超過 Alert/Action 限度的樣品數 ÷ 總採樣數 × 100%</li>
+<li>關注的是「超過設定限度」的比例</li>
+</ul>
+<p><strong>汙染回收率 (Contamination Recovery Rate, CRR)：</strong></p>
+<ul>
+<li>= 檢出任何微生物的樣品數 ÷ 總採樣數 × 100%</li>
+<li>關注的是「有微生物生長」的比例，不論是否超過限度</li>
+</ul>
+<p><strong>兩者不同！</strong>一個樣品可能有 1 CFU（陽性回收但未超標），則計入 CRR 但不計入 Excursion Rate。</p>
+</div>
+<p><strong>EM 的固有局限性：</strong>TR13 特別提醒，合規的 EM 結果<strong>不保證</strong>製程的無菌保證 (sterility assurance)。EM 有多重限制：</p>
+<ul>
+<li>採樣方法的回收效率有限</li>
+<li>採樣位置只涵蓋空間的極小部分</li>
+<li>EM 只能在一定程度上確認設計和流程的穩健性</li>
+</ul>
+<p><strong>Grade A/ISO 5 的特殊要求：</strong>在 Grade A 區域，<strong>任何</strong>微生物回收都必須調查，因為預期該區域不應有任何微生物回收 (no viable recoveries)。</p>
+<p><strong>CRR 的應用建議：</strong></p>
+<ul>
+<li>應為每個監測屬性（表面、空氣、更衣服）分別建立 CRR</li>
+<li>至少每月評估一次（USP &lt;1116&gt; 建議）</li>
+<li>CRR 的任何變化都應調查並糾正</li>
+</ul>
+</div>
+</div>
+<!-- ===== TABLE 5.4.4-1: CRR TABLE ===== -->
+<h3 class="section-title"><strong>Table 5.4.4-1: Contamination Recovery Rates Suggested by USP Chapter &lt;1116&gt; Table 5.4.4-1：USP Chapter &lt;1116&gt; 建議之污染回收率</strong></h3>
+<table>
+<thead>
+<tr>
+<th>Room Classification</th>
+<th>Active Air Sample (%)</th>
+<th>Settle Plate (9 cm) 4-Hour Exposure (%)</th>
+<th>Contact Plate or Swab (%)</th>
+<th>Glove or Garment (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Isolator / closed RABS or ISO 5 or better</strong></td>
+<td>&lt;0.1</td>
+<td>&lt;0.1</td>
+<td>&lt;0.1</td>
+<td>&lt;0.1</td>
+</tr>
+<tr>
+<td><strong>ISO 5</strong></td>
+<td>&lt;1</td>
+<td>&lt;1</td>
+<td>&lt;1</td>
+<td>&lt;1</td>
+</tr>
+<tr>
+<td><strong>ISO 6</strong></td>
+<td>&lt;3</td>
+<td>&lt;3</td>
+<td>&lt;3</td>
+<td>&lt;3</td>
+</tr>
+<tr>
+<td><strong>ISO 7</strong></td>
+<td>&lt;5</td>
+<td>&lt;5</td>
+<td>&lt;5</td>
+<td>&lt;5</td>
+</tr>
+<tr>
+<td><strong>ISO 8</strong></td>
+<td>&lt;10</td>
+<td>&lt;10</td>
+<td>&lt;10</td>
+<td>&lt;10</td>
+</tr>
+</tbody>
+</table>
+<div class="note-box">
+<h4>Table Note / 表格附註</h4>
+<p><strong>Original Note:</strong> All operators are aseptically gowned in these environments. These recommendations do not apply to production areas for nonsterile products or other classified environments in which fully aseptic gowns are not donned. In those conditions other Recovery Rates might be used if appropriately justified.</p>
+<p><strong>中文說明：</strong>此表假設所有人員均穿著無菌更衣。對於非無菌產品生產區域或未穿著完整無菌更衣的分類環境，可使用其他經適當論證的回收率標準。</p>
+</div>
+<div class="two-column">
+<div class="left-column">
+<h3>CRR Table Interpretation</h3>
+<p>Evaluating the recovery rate levels at a defined frequency is recommended (at least monthly as per USP &lt;1116&gt;). Trends may include a gradual increase or decrease in the overall counts observed over time, or a change in flora or counts on several plates of a particular area on a given day. Interpretation of the impact of a significant fluctuation in counts or a change in flora should be based on the experienced judgment of a qualified microbiologist.</p>
+<p>Some considerations for assessing the state of control for a given process include:</p>
+<ul>
+<li>Multiple excursions observed within a specified time period may be considered a pattern or cluster formation that, if above the alert level, signals a trend that requires investigation. As an alternative, such approaches as statistically derived frequency of excursion can be used and justified.</li>
+<li>Fluctuations in environmental monitoring data values for a given process or a specific area require further attention as this may point to construction activities, facility conditions, change in process, flow of material, seasonal variations, disruptive events, or other factors.</li>
+</ul>
+<p>Understanding the potential impact of the results generated during EM is critical to a successful EM program.</p>
+</div>
+<div class="right-column">
+<h3>中文解析：CRR 表格的實務應用</h3>
+<p><strong>如何使用此表：</strong></p>
+<ul>
+<li><strong>Isolator/cRABS/ISO 5 (最嚴)：</strong>CRR &lt;0.1%，意味著每 1,000 個樣品中不超過 1 個陽性</li>
+<li><strong>ISO 5 (open)：</strong>CRR &lt;1%，每 100 個樣品中不超過 1 個陽性</li>
+<li><strong>ISO 7：</strong>CRR &lt;5%，每 100 個樣品中不超過 5 個陽性</li>
+<li><strong>ISO 8：</strong>CRR &lt;10%，每 100 個樣品中不超過 10 個陽性</li>
+</ul>
+<p><strong>評估頻率：</strong>USP &lt;1116&gt; 建議至少<strong>每月</strong>評估 CRR。</p>
+<p><strong>趨勢解讀需注意的情境：</strong></p>
+<ul>
+<li>短時間內多次超標 → 可能形成群集 (cluster)，需要調查</li>
+<li>數據波動突然增加 → 可能因施工活動、設施條件變化、季節因素等</li>
+<li>菌群 (flora) 突然改變 → 可能有新的汙染源或消毒劑效力下降</li>
+</ul>
+<p><strong>微生物學家的角色：</strong>TR13 強調，重大計數波動或菌群變化的影響評估，應基於<strong>有經驗的合格微生物學家</strong>的專業判斷。這不是可以純粹自動化的工作。</p>
+</div>
+</div>
+<!-- ===== PRACTICE BOX ===== -->
+<div class="practice-box">
+<h3>Practice Questions / 練習思考題</h3>
+<ol>
+<li>你的 ISO 7 房間有 500 筆歷史數據，你會選用哪種統計方法來設定 Alert/Action 限度？為什麼？（提示：考慮三種方法各自的最低數據量要求）</li>
+<li>某 ISO 5 填充線在一週內同一地點出現 2 次 Active Air Alert 超標（各 1 CFU），你會如何處理？需要升級為偏差調查嗎？</li>
+<li>年度趨勢報告中，某 ISO 7 更衣區的 CRR 從去年的 3.2% 上升到今年的 4.8%（仍低於 USP &lt;1116&gt; 建議的 &lt;5%），你是否應該調查？為什麼？</li>
+<li>一位技術員在便利貼上先記錄了 CFU 計數結果，然後再謄抄到正式工作表上。這違反了 ALCOA 的哪些原則？應如何改善？</li>
+<li>你的公司正在導入一套即時微生物偵測系統（不基於 CFU），傳統的 CFU-based Alert/Action 限度不適用。根據 TR13 Section 5.3 的指引，CRR 如何幫助解決這個問題？</li>
+</ol>
+</div>
+<!-- ===== SECTION SUMMARY ===== -->
+<div class="section-summary">
+<h3>Section Summary / 本節摘要</h3>
+<div class="summary-grid">
+<div class="summary-col">
+<h4>Key Concepts</h4>
+<ul>
+<li>Alert Levels = early warning; Action Limits = mandatory response</li>
+<li>USP &lt;1116&gt; paradigm shift: CFU counts → CRR (Contamination Recovery Rate)</li>
+<li>Three nonparametric methods: Percentile (N~1000), Tolerance Limit (N=60/300), Cutoff (N≥20)</li>
+<li>EM data is NOT normally distributed — avoid Mean ± SD methods</li>
+<li>CCC charts detect short-term drifts between excursion events</li>
+</ul>
+</div>
+<div class="summary-col">
+<h4>Data Management Essentials</h4>
+<ul>
+<li>ALCOA: Attributable, Legible, Contemporaneous, Original, Accurate</li>
+<li>Trending: Immediate / Short-term (monthly/quarterly) / Long-term (annual)</li>
+<li>Excursion Rate vs CRR — different metrics, different insights</li>
+<li>Grade A: ANY microbial recovery must be investigated</li>
+<li>CRR evaluation at least monthly per USP &lt;1116&gt;</li>
+</ul>
+</div>
+</div>
+</div>
 </div><!-- end main-content -->
-
 <!-- ===== FOOTER ===== -->
 <div class="main-footer">
-    <p>PDA Technical Report No. 13 (Revised 2022): Fundamentals of an Environmental Monitoring Program</p>
-    <p>Section 5a: Alert Levels, Action Limits &amp; Data Management (Sections 5.3–5.4, p18–p24)</p>
-    <p>Educational Material — For Training Purposes Only</p>
+<p>PDA Technical Report No. 13 (Revised 2022): Fundamentals of an Environmental Monitoring Program</p>
+<p>Section 5a: Alert Levels, Action Limits &amp; Data Management (Sections 5.3–5.4, p18–p24)</p>
+<p>Educational Material — For Training Purposes Only</p>
 </div>
-
 <!-- ===== BACK TO TOP ===== -->
 <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">⇧</button>
 <script>
@@ -1837,6 +1746,5 @@ window.addEventListener('scroll', function() {
     }
 });
 </script>
-
 </body>
 </html>

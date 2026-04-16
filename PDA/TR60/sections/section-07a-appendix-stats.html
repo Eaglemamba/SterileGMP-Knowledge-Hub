@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDA TR60 - Section 7a: Appendix I - Statistical Methods (9.0-9.6)</title>
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PDA TR60 - Section 7a: Appendix I - Statistical Methods (9.0-9.6)</title>
+<style>
 /* =============================================================
    PDA Educational Material - Shared CSS Template
    Version: 2.0 (for Claude Code automation)
@@ -925,107 +926,92 @@ tr:nth-child(even) {
     </style>
 </head>
 <body>
-
 <!-- SECTION HEADER -->
 <div class="header">
-    <h1>9.0 Appendix I: Statistical Methods for Determining the Number of Lots</h1>
-    <div class="subtitle">附錄 I：決定批次數量的統計方法（第一部分：9.0-9.6）</div>
-    <div class="page-info">PDA Technical Report No. 60 (Revised 2026) — Process Validation: A Lifecycle Approach | p136 - p140</div>
+<h1>9.0 Appendix I: Statistical Methods for Determining the Number of Lots</h1>
+<div class="subtitle">附錄 I：決定批次數量的統計方法（第一部分：9.0-9.6）</div>
+<div class="page-info">PDA Technical Report No. 60 (Revised 2026) — Process Validation: A Lifecycle Approach | p136 - p140</div>
 </div>
-
 <div class="main-container">
-
 <!-- LEARNING OBJECTIVES -->
 <div class="learning-objectives">
-    <h3>本章學習目標</h3>
-    <ul>
-        <li>理解製程效能確認 (PPQ) 階段決定批次數量的多種統計方法</li>
-        <li>掌握 Average Run Length (ARL)、批間變異範圍、容許區間等核心概念</li>
-        <li>學會 Ppk/Cpk 製程能力指標的應用與信賴區間的解讀</li>
-        <li>理解批次合格率信心水準法 (Confidence for Reliability) 的查表與階段策略</li>
-        <li>認識窄限量測 (Narrow-Limit Gauging) 與 PRE-Control 技術降低樣本需求的原理</li>
-    </ul>
+<h3>本章學習目標</h3>
+<ul>
+<li>理解製程效能確認 (PPQ) 階段決定批次數量的多種統計方法</li>
+<li>掌握 Average Run Length (ARL)、批間變異範圍、容許區間等核心概念</li>
+<li>學會 Ppk/Cpk 製程能力指標的應用與信賴區間的解讀</li>
+<li>理解批次合格率信心水準法 (Confidence for Reliability) 的查表與階段策略</li>
+<li>認識窄限量測 (Narrow-Limit Gauging) 與 PRE-Control 技術降低樣本需求的原理</li>
+</ul>
 </div>
-
 <!-- TABLE OF CONTENTS -->
 <div class="toc">
-    <h3>本部分章節導覽 Section Navigation (Part 7a)</h3>
-    <div class="toc-grid">
-        <a href="#sec9-0">9.0 導論</a>
-        <a href="#sec9-1">9.1 ARL 平均運行長度</a>
-        <a href="#sec9-2">9.2 批間變異範圍</a>
-        <a href="#sec9-3">9.3 容許區間</a>
-        <a href="#sec9-4">9.4 SPC 管制圖</a>
-        <a href="#sec9-5">9.5 Ppk/Cpk 製程能力</a>
-        <a href="#sec9-6">9.6 批次合格率</a>
-    </div>
+<h3>本部分章節導覽 Section Navigation (Part 7a)</h3>
+<div class="toc-grid">
+<a href="#sec9-0">9.0 導論</a>
+<a href="#sec9-1">9.1 ARL 平均運行長度</a>
+<a href="#sec9-2">9.2 批間變異範圍</a>
+<a href="#sec9-3">9.3 容許區間</a>
+<a href="#sec9-4">9.4 SPC 管制圖</a>
+<a href="#sec9-5">9.5 Ppk/Cpk 製程能力</a>
+<a href="#sec9-6">9.6 批次合格率</a>
 </div>
-
+</div>
 <!-- ============================================================= -->
 <!-- 9.0 Introduction -->
 <!-- ============================================================= -->
-<h2 class="section-title" id="sec9-0">9.0 Appendix I: Statistical Methods for Determining the Number of Lots</h2>
-
+<h2 class="section-title" id="sec9-0"><strong>9.0 Appendix I: Statistical Methods for Determining the Number of Lots 9.0 附錄 I：確定批次數量之統計方法</strong></h2>
 <div class="two-column">
-    <div class="left-column">
-        <h3>原文內容 Original Text</h3>
-        <p>Listed below are statistical approaches used to determine the number of lots that may be required at the <span class="key-term">process performance qualification (PPQ)</span> stage. Other approaches may also be suitable. Statistical justification of the number of lots may be particularly important when the level of risk on quality at the time of <span class="key-term">PPQ-readiness assessment</span> remains high. In that case, it can be recommended to define the number of PPQ lots with a statistical or probabilistic rationale, guided by the mitigation of this risk and establishment of a good level of confidence about the capacity of the process to deliver batches meeting their <span class="key-term">critical quality attributes (CQAs)</span>. Involvement of a statistician or a subject matter expert skilled in this domain is recommended, when possible. As there is no standard industry approach to statistically determine the number of lots, multiple options are offered, and Section 9.0 (Appendix I) will provide applied statistical methods for determining the number of lots. It will also stimulate further discussion on this issue.</p>
-    </div>
-    <div class="right-column">
-        <h3>導師解析 Tutorial Commentary</h3>
-
-        <div class="concept-box">
-            <h4>核心概念解析 Key Concepts</h4>
-            <p><strong>PPQ 批次數的統計決定 (Statistical Determination of PPQ Lot Number)：</strong>業界長期以來對 PPQ 應執行幾批並無統一標準。TR60 附錄 I 提供了多種統計方法，讓企業可根據風險水準與產品特性，選擇最適合的方法來「量化」決定批次數。</p>
-            <p>關鍵訊息：當 PPQ 準備度評估 (PPQ-Readiness Assessment) 顯示品質風險仍高時，特別需要以統計方法來定義批次數，而非僅憑「業界慣例做三批」。</p>
-        </div>
-
-        <div class="analogy-box">
-            <h4>比喻說明 Analogy</h4>
-            <p>想像你是一位駕訓班教練，要決定學生需要考幾次路考才能放心發給駕照。如果學生在練習階段就表現穩定（低風險），也許考 2-3 次就足夠；但如果練習時常出差錯（高風險），你可能需要觀察更多次考試才能確信他的駕駛能力。PPQ 批次數的決定邏輯完全相同——風險越高，需要的統計證據越多。</p>
-        </div>
-
-        <div class="note-box">
-            <h4>重點提示 Key Notes</h4>
-            <p>TR60 明確建議盡可能讓統計學家 (Statistician) 或具備相關專長的主題專家 (SME) 參與。這不僅是「建議」，更是當法規審查官質疑「為何只做三批？」時，能提供有說服力答案的關鍵。</p>
-            <p>本附錄提供的方法並非互斥，企業可以組合使用，例如先用 ARL 做初步篩選，再用 Ppk 做細部確認。</p>
-        </div>
-    </div>
+<div class="left-column">
+<h3>原文內容 Original Text</h3>
+<p>Listed below are statistical approaches used to determine the number of lots that may be required at the <span class="key-term">process performance qualification (PPQ)</span> stage. Other approaches may also be suitable. Statistical justification of the number of lots may be particularly important when the level of risk on quality at the time of <span class="key-term">PPQ-readiness assessment</span> remains high. In that case, it can be recommended to define the number of PPQ lots with a statistical or probabilistic rationale, guided by the mitigation of this risk and establishment of a good level of confidence about the capacity of the process to deliver batches meeting their <span class="key-term">critical quality attributes (CQAs)</span>. Involvement of a statistician or a subject matter expert skilled in this domain is recommended, when possible. As there is no standard industry approach to statistically determine the number of lots, multiple options are offered, and Section 9.0 (Appendix I) will provide applied statistical methods for determining the number of lots. It will also stimulate further discussion on this issue.</p>
 </div>
-
+<div class="right-column">
+<h3>導師解析 Tutorial Commentary</h3>
+<div class="concept-box">
+<h4>核心概念解析 Key Concepts</h4>
+<p><strong>PPQ 批次數的統計決定 (Statistical Determination of PPQ Lot Number)：</strong>業界長期以來對 PPQ 應執行幾批並無統一標準。TR60 附錄 I 提供了多種統計方法，讓企業可根據風險水準與產品特性，選擇最適合的方法來「量化」決定批次數。</p>
+<p>關鍵訊息：當 PPQ 準備度評估 (PPQ-Readiness Assessment) 顯示品質風險仍高時，特別需要以統計方法來定義批次數，而非僅憑「業界慣例做三批」。</p>
+</div>
+<div class="analogy-box">
+<h4>比喻說明 Analogy</h4>
+<p>想像你是一位駕訓班教練，要決定學生需要考幾次路考才能放心發給駕照。如果學生在練習階段就表現穩定（低風險），也許考 2-3 次就足夠；但如果練習時常出差錯（高風險），你可能需要觀察更多次考試才能確信他的駕駛能力。PPQ 批次數的決定邏輯完全相同——風險越高，需要的統計證據越多。</p>
+</div>
+<div class="note-box">
+<h4>重點提示 Key Notes</h4>
+<p>TR60 明確建議盡可能讓統計學家 (Statistician) 或具備相關專長的主題專家 (SME) 參與。這不僅是「建議」，更是當法規審查官質疑「為何只做三批？」時，能提供有說服力答案的關鍵。</p>
+<p>本附錄提供的方法並非互斥，企業可以組合使用，例如先用 ARL 做初步篩選，再用 Ppk 做細部確認。</p>
+</div>
+</div>
+</div>
 <!-- ============================================================= -->
 <!-- 9.1 Average Run Length -->
 <!-- ============================================================= -->
-<h2 class="section-title" id="sec9-1">9.1 Average Run Length to Detect a p x 100% Lot Failure Rate</h2>
-
+<h2 class="section-title" id="sec9-1"><strong>9.1 Average Run Length to Detect a p x 100% Lot Failure Rate 9.1 偵測 p × 100% 批次失敗率之平均連串長度</strong></h2>
 <div class="two-column">
-    <div class="left-column">
-        <h3>原文內容 Original Text</h3>
-        <p>The average number of lots, or <span class="key-term">average run length (ARL)</span>, until the first lot failure is ARL = 1/p, where p is the lot failure rate that is important to detect.</p>
-
-        <div class="quote-box">
+<div class="left-column">
+<h3>原文內容 Original Text</h3>
+<p>The average number of lots, or <span class="key-term">average run length (ARL)</span>, until the first lot failure is ARL = 1/p, where p is the lot failure rate that is important to detect.</p>
+<div class="quote-box">
             "Example: A lot failure rate of 20% is deemed unacceptable for a given process. A lot failure rate of 20% would be detected on average in 1/0.2 = once every 5 lots."
         </div>
-
-        <p>Common choices for p would be 25%, 20%, 10%, and 5%, depending on factors such as prior knowledge, risk, and production rate. Five percent (5%) would generally be the tightest value to consider since a process running right at the <span class="key-term">acceptance quality limit (AQL)</span> is still expected to have a 5% lot rejection rate. If applicable, this approach may be particularly useful when there are many quality attributes to assess. Rather than determining the number of lots required separately for each attribute, the PPQ stage is complete when all CQAs pass their acceptance criteria for the required number of lots.</p>
-    </div>
-    <div class="right-column">
-        <h3>導師解析 Tutorial Commentary</h3>
-
-        <div class="concept-box">
-            <h4>核心概念解析 Key Concepts</h4>
-            <p><strong>Average Run Length, ARL（平均運行長度）：</strong>這是最直觀的方法——如果批次不合格率是 p，那麼平均需要觀察 1/p 批才會「遇到」一次失敗。反過來說，如果連續 1/p 批都合格，就代表不合格率很可能低於 p。</p>
-            <ul>
-                <li>p = 25% → ARL = 4 批</li>
-                <li>p = 20% → ARL = 5 批</li>
-                <li>p = 10% → ARL = 10 批</li>
-                <li>p = 5% → ARL = 20 批</li>
-            </ul>
-        </div>
-
-        <div class="formula-box">
-            <h4>公式與計算 Formula</h4>
-            <pre>
+<p>Common choices for p would be 25%, 20%, 10%, and 5%, depending on factors such as prior knowledge, risk, and production rate. Five percent (5%) would generally be the tightest value to consider since a process running right at the <span class="key-term">acceptance quality limit (AQL)</span> is still expected to have a 5% lot rejection rate. If applicable, this approach may be particularly useful when there are many quality attributes to assess. Rather than determining the number of lots required separately for each attribute, the PPQ stage is complete when all CQAs pass their acceptance criteria for the required number of lots.</p>
+</div>
+<div class="right-column">
+<h3>導師解析 Tutorial Commentary</h3>
+<div class="concept-box">
+<h4>核心概念解析 Key Concepts</h4>
+<p><strong>Average Run Length, ARL（平均運行長度）：</strong>這是最直觀的方法——如果批次不合格率是 p，那麼平均需要觀察 1/p 批才會「遇到」一次失敗。反過來說，如果連續 1/p 批都合格，就代表不合格率很可能低於 p。</p>
+<ul>
+<li>p = 25% → ARL = 4 批</li>
+<li>p = 20% → ARL = 5 批</li>
+<li>p = 10% → ARL = 10 批</li>
+<li>p = 5% → ARL = 20 批</li>
+</ul>
+</div>
+<div class="formula-box">
+<h4>公式與計算 Formula</h4>
+<pre>
 ARL = 1 / p
 
 其中：
@@ -1037,54 +1023,46 @@ ARL = 1 / p
   ARL = 1 / 0.20 = 5 批
   意即：平均每 5 批會發生 1 次失敗
             </pre>
-        </div>
-
-        <div class="analogy-box">
-            <h4>比喻說明 Analogy</h4>
-            <p>如果一顆骰子有 20% 機率擲到「1」，那麼平均每擲 5 次就會出現一次「1」。如果你連續擲了 5 次都沒出現「1」，你會開始懷疑這顆骰子出「1」的機率其實沒有 20% 那麼高。同理，PPQ 連續 5 批通過，就提供了「不合格率低於 20%」的間接證據。</p>
-        </div>
-
-        <div class="note-box">
-            <h4>重點提示 Key Notes</h4>
-            <p><strong>AQL 下限的考量：</strong>即使製程完全運行在 AQL 門檻上，仍預期有 5% 的批次拒收率。因此 p = 5%（需要 20 批）通常是此方法的最嚴格考量。</p>
-            <p><strong>多屬性的優勢：</strong>當產品有多個 CQA 需要評估時，ARL 法特別實用——不必為每個屬性分別計算批次數，只需要求所有 CQA 在規定批次數內全部合格即可。</p>
-        </div>
-
-        <div class="practice-box">
-            <h4>練習思考 Practice Questions</h4>
-            <ol>
-                <li>如果某製程的風險評估認為 10% 的批次不合格率不可接受，應至少執行多少 PPQ 批次？</li>
-                <li>為何 TR60 提到 5% 通常是 ARL 法考慮的最嚴格值？這與 AQL 有什麼關係？</li>
-                <li>對於一個有 15 個 CQA 的產品，使用 ARL 法相比逐一計算每個 CQA 的批次數有何優勢？</li>
-            </ol>
-        </div>
-    </div>
 </div>
-
+<div class="analogy-box">
+<h4>比喻說明 Analogy</h4>
+<p>如果一顆骰子有 20% 機率擲到「1」，那麼平均每擲 5 次就會出現一次「1」。如果你連續擲了 5 次都沒出現「1」，你會開始懷疑這顆骰子出「1」的機率其實沒有 20% 那麼高。同理，PPQ 連續 5 批通過，就提供了「不合格率低於 20%」的間接證據。</p>
+</div>
+<div class="note-box">
+<h4>重點提示 Key Notes</h4>
+<p><strong>AQL 下限的考量：</strong>即使製程完全運行在 AQL 門檻上，仍預期有 5% 的批次拒收率。因此 p = 5%（需要 20 批）通常是此方法的最嚴格考量。</p>
+<p><strong>多屬性的優勢：</strong>當產品有多個 CQA 需要評估時，ARL 法特別實用——不必為每個屬性分別計算批次數，只需要求所有 CQA 在規定批次數內全部合格即可。</p>
+</div>
+<div class="practice-box">
+<h4>練習思考 Practice Questions</h4>
+<ol>
+<li>如果某製程的風險評估認為 10% 的批次不合格率不可接受，應至少執行多少 PPQ 批次？</li>
+<li>為何 TR60 提到 5% 通常是 ARL 法考慮的最嚴格值？這與 AQL 有什麼關係？</li>
+<li>對於一個有 15 個 CQA 的產品，使用 ARL 法相比逐一計算每個 CQA 的批次數有何優勢？</li>
+</ol>
+</div>
+</div>
+</div>
 <!-- ============================================================= -->
 <!-- 9.2 Range of Expected Between-Lot Variation -->
 <!-- ============================================================= -->
-<h2 class="section-title" id="sec9-2">9.2 Range of Expected Between-Lot Variation</h2>
-
+<h2 class="section-title" id="sec9-2"><strong>9.2 Range of Expected Between-Lot Variation 9.2 批次間預期變異範圍</strong></h2>
 <div class="two-column">
-    <div class="left-column">
-        <h3>原文內容 Original Text</h3>
-        <p>As shown in Table 9.2-1, the range of <span class="key-term">between-lot variation</span> to be covered by number of lots (n<sub>L</sub>) is calculated as: <strong>100 x (n<sub>L</sub> - 1) / (n<sub>L</sub> + 1)</strong>. This follows from the expected percentile of an order statistic. The order statistic's rank is divided by n + 1 (1). This approach does not require between-lot normality. The method may be modified to provide confidence levels of coverage instead of expected coverage. The approach may be used to determine <span class="key-term">"step-down sampling"</span> during CPV. For example, a higher level of sampling may be used in PPQ for the first three lots until 50% coverage is reached. At that time, the PPQ is considered complete. Reduced sampling for critical characteristics may continue into Stage 3 CPV for four more lots until 75% coverage is reached, at which point, routine sampling begins (2).</p>
-
-        <h4>Table 9.2-1 Expected Between-Lot Variation in Number of Lots</h4>
-        </div>
-    <div class="right-column">
-        <h3>導師解析 Tutorial Commentary</h3>
-
-        <div class="concept-box">
-            <h4>核心概念解析 Key Concepts</h4>
-            <p><strong>批間變異涵蓋率 (Between-Lot Variation Coverage)：</strong>這個方法回答的問題是「我需要做多少批，才能觀察到批間變異的大部分範圍？」。公式基於順序統計量 (Order Statistic) 的期望百分位數，數學上優雅且不需要假設批間數據呈常態分佈。</p>
-            <p><strong>Step-Down Sampling（逐步降低取樣）：</strong>這是一種階段性策略——在 PPQ 期間以較密集的取樣開始，達到一定覆蓋率後視為 PPQ 完成，然後在 CPV 階段繼續以較低密度取樣，直到達到目標覆蓋率後轉為常規取樣。</p>
-        </div>
-
-        <div class="formula-box">
-            <h4>公式與計算 Formula</h4>
-            <pre>
+<div class="left-column">
+<h3>原文內容 Original Text</h3>
+<p>As shown in Table 9.2-1, the range of <span class="key-term">between-lot variation</span> to be covered by number of lots (n<sub>L</sub>) is calculated as: <strong>100 x (n<sub>L</sub> - 1) / (n<sub>L</sub> + 1)</strong>. This follows from the expected percentile of an order statistic. The order statistic's rank is divided by n + 1 (1). This approach does not require between-lot normality. The method may be modified to provide confidence levels of coverage instead of expected coverage. The approach may be used to determine <span class="key-term">"step-down sampling"</span> during CPV. For example, a higher level of sampling may be used in PPQ for the first three lots until 50% coverage is reached. At that time, the PPQ is considered complete. Reduced sampling for critical characteristics may continue into Stage 3 CPV for four more lots until 75% coverage is reached, at which point, routine sampling begins (2).</p>
+<h4>Table 9.2-1 Expected Between-Lot Variation in Number of Lots</h4>
+</div>
+<div class="right-column">
+<h3>導師解析 Tutorial Commentary</h3>
+<div class="concept-box">
+<h4>核心概念解析 Key Concepts</h4>
+<p><strong>批間變異涵蓋率 (Between-Lot Variation Coverage)：</strong>這個方法回答的問題是「我需要做多少批，才能觀察到批間變異的大部分範圍？」。公式基於順序統計量 (Order Statistic) 的期望百分位數，數學上優雅且不需要假設批間數據呈常態分佈。</p>
+<p><strong>Step-Down Sampling（逐步降低取樣）：</strong>這是一種階段性策略——在 PPQ 期間以較密集的取樣開始，達到一定覆蓋率後視為 PPQ 完成，然後在 CPV 階段繼續以較低密度取樣，直到達到目標覆蓋率後轉為常規取樣。</p>
+</div>
+<div class="formula-box">
+<h4>公式與計算 Formula</h4>
+<pre>
 Expected Coverage (%) = 100 x (nL - 1) / (nL + 1)
 
 範例計算：
@@ -1095,110 +1073,96 @@ Expected Coverage (%) = 100 x (nL - 1) / (nL + 1)
 逆向計算：需要涵蓋 X% 時所需批次數：
   nL = (1 + X/100) / (1 - X/100)   [取整數]
             </pre>
-        </div>
-
-        <div class="analogy-box">
-            <h4>比喻說明 Analogy</h4>
-            <p>想像你要了解一個城市的氣溫範圍。如果只看 2 天的溫度，你只能涵蓋約 33% 的變異；看一整週（7 天）可以涵蓋約 75%。要涵蓋 95% 的溫度變異，你可能需要觀察 39 天！批間變異也是如此——觀察越多批次，對變異範圍的了解越完整。</p>
-        </div>
-
-        <div class="note-box">
-            <h4>重點提示 Key Notes</h4>
-            <p><strong>表格解讀的實務意義：</strong></p>
-            <ul>
-                <li>3 批 PPQ 只涵蓋 50% 的批間變異——這意味著另外 50% 的變異尚未被觀察到</li>
-                <li>5 批可涵蓋 67%，但仍有 1/3 的變異範圍未知</li>
-                <li>要達到 90% 涵蓋率需要 19 批，這在 PPQ 階段通常不切實際</li>
-                <li>因此，分階段策略（PPQ + CPV）是務實的做法</li>
-            </ul>
-            <p><strong>不需常態假設：</strong>此方法的一大優勢是不需要假設批間數據呈常態分佈，因為它基於非參數統計的順序統計量。</p>
-        </div>
-
-        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
-            <h4>實務應用 Practical Application</h4>
-            <p><strong>CDMO 情境：</strong>一家 CDMO 接到客戶的 PPQ 計畫審查。客戶計畫只做 3 批 PPQ。使用此表格，CDMO 可以向客戶解釋：3 批僅涵蓋 50% 的批間變異，建議在 PPQ 後的 CPV 階段繼續監控至少 4 批，達到 75% 涵蓋率（共 7 批）後才轉為常規監控。這個分階段策略既滿足法規期望，又不會造成過度的 PPQ 批次需求。</p>
-        </div>
-
-        <div class="practice-box">
-            <h4>練習思考 Practice Questions</h4>
-            <ol>
-                <li>如果 PPQ 做了 5 批，剩餘的 33% 批間變異應在哪個階段繼續觀察？</li>
-                <li>為什麼此方法「不需要常態假設」是一個重要優勢？</li>
-            </ol>
-        </div>
-    </div>
 </div>
-
+<div class="analogy-box">
+<h4>比喻說明 Analogy</h4>
+<p>想像你要了解一個城市的氣溫範圍。如果只看 2 天的溫度，你只能涵蓋約 33% 的變異；看一整週（7 天）可以涵蓋約 75%。要涵蓋 95% 的溫度變異，你可能需要觀察 39 天！批間變異也是如此——觀察越多批次，對變異範圍的了解越完整。</p>
+</div>
+<div class="note-box">
+<h4>重點提示 Key Notes</h4>
+<p><strong>表格解讀的實務意義：</strong></p>
+<ul>
+<li>3 批 PPQ 只涵蓋 50% 的批間變異——這意味著另外 50% 的變異尚未被觀察到</li>
+<li>5 批可涵蓋 67%，但仍有 1/3 的變異範圍未知</li>
+<li>要達到 90% 涵蓋率需要 19 批，這在 PPQ 階段通常不切實際</li>
+<li>因此，分階段策略（PPQ + CPV）是務實的做法</li>
+</ul>
+<p><strong>不需常態假設：</strong>此方法的一大優勢是不需要假設批間數據呈常態分佈，因為它基於非參數統計的順序統計量。</p>
+</div>
+<div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+<h4>實務應用 Practical Application</h4>
+<p><strong>CDMO 情境：</strong>一家 CDMO 接到客戶的 PPQ 計畫審查。客戶計畫只做 3 批 PPQ。使用此表格，CDMO 可以向客戶解釋：3 批僅涵蓋 50% 的批間變異，建議在 PPQ 後的 CPV 階段繼續監控至少 4 批，達到 75% 涵蓋率（共 7 批）後才轉為常規監控。這個分階段策略既滿足法規期望，又不會造成過度的 PPQ 批次需求。</p>
+</div>
+<div class="practice-box">
+<h4>練習思考 Practice Questions</h4>
+<ol>
+<li>如果 PPQ 做了 5 批，剩餘的 33% 批間變異應在哪個階段繼續觀察？</li>
+<li>為什麼此方法「不需要常態假設」是一個重要優勢？</li>
+</ol>
+</div>
+</div>
+</div>
 <div class="concept-box"><table>
-            <thead>
-                <tr>
-                    <th>Expected Coverage</th>
-                    <th>Number of Lots (n<sub>L</sub>)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>33%</td><td>2</td></tr>
-                <tr><td>50%</td><td>3</td></tr>
-                <tr><td>60%</td><td>4</td></tr>
-                <tr><td>67%</td><td>5</td></tr>
-                <tr><td>75%</td><td>7</td></tr>
-                <tr><td>80%</td><td>9</td></tr>
-                <tr><td>85%</td><td>12</td></tr>
-                <tr><td>90%</td><td>19</td></tr>
-                <tr><td>95%</td><td>39</td></tr>
-            </tbody>
-        </table>
-    </div><!-- ============================================================= -->
+<thead>
+<tr>
+<th>Expected Coverage</th>
+<th>Number of Lots (n<sub>L</sub>)</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>33%</td><td>2</td></tr>
+<tr><td>50%</td><td>3</td></tr>
+<tr><td>60%</td><td>4</td></tr>
+<tr><td>67%</td><td>5</td></tr>
+<tr><td>75%</td><td>7</td></tr>
+<tr><td>80%</td><td>9</td></tr>
+<tr><td>85%</td><td>12</td></tr>
+<tr><td>90%</td><td>19</td></tr>
+<tr><td>95%</td><td>39</td></tr>
+</tbody>
+</table>
+</div><!-- ============================================================= -->
 <!-- 9.3 Within-Lot and Between-Lot Tolerance Intervals -->
 <!-- ============================================================= -->
-<h2 class="section-title" id="sec9-3">9.3 Within-Lot and Between-Lot Tolerance Intervals</h2>
-
+<h2 class="section-title" id="sec9-3"><strong>9.3 Within-Lot and Between-Lot Tolerance Intervals 9.3 批次內與批次間允差區間</strong></h2>
 <div class="two-column">
-    <div class="left-column">
-        <h3>原文內容 Original Text</h3>
-        <p><span class="key-term">Statistical tolerance intervals</span> are commonly used in validation. Tables of normal tolerance interval factors for variable data are widely available and implemented in statistical software. Specialized software is available to optimally calculate the desired confidence statement. Normal tolerance intervals for the total process variation over time are more complicated; they include both within- and between-lot variation. Standard normal tolerance interval factors assume that there is only one population in the data. However, most PPQs contain multiple populations, since each lot is a separate population.</p>
-
-        <p>If, given quantitative attributes for which several units are tested per lot, there are no significant differences between the lots, the simplest way to deal with multiple lots is to combine the data. An <span class="key-term">Analysis of Variance (ANOVA)</span> test may be used to compare lot means; within-lot variation may be compared with the <span class="key-term">Levene, Browne-Forsythe, Bartlett, Cochran, or Fmax</span> statistical tests (2-4). An omnibus test may also be used. The sample size per lot and the number of lots should be statistically determined to have adequate power to detect any between-lot variation.</p>
-
-        <div class="quote-box">
+<div class="left-column">
+<h3>原文內容 Original Text</h3>
+<p><span class="key-term">Statistical tolerance intervals</span> are commonly used in validation. Tables of normal tolerance interval factors for variable data are widely available and implemented in statistical software. Specialized software is available to optimally calculate the desired confidence statement. Normal tolerance intervals for the total process variation over time are more complicated; they include both within- and between-lot variation. Standard normal tolerance interval factors assume that there is only one population in the data. However, most PPQs contain multiple populations, since each lot is a separate population.</p>
+<p>If, given quantitative attributes for which several units are tested per lot, there are no significant differences between the lots, the simplest way to deal with multiple lots is to combine the data. An <span class="key-term">Analysis of Variance (ANOVA)</span> test may be used to compare lot means; within-lot variation may be compared with the <span class="key-term">Levene, Browne-Forsythe, Bartlett, Cochran, or Fmax</span> statistical tests (2-4). An omnibus test may also be used. The sample size per lot and the number of lots should be statistically determined to have adequate power to detect any between-lot variation.</p>
+<div class="quote-box">
             "Example: The specification for cap-removal torque for a small-volume parenteral product is 8.0–12.0 inch-pounds. Limited data from Stage 1 showed a standard deviation of about 0.5. The production AQL for removal torque is 1.0%. The acceptance criterion for the PPQ is to show with 90% confidence that at least 99% (1 minus the AQL) of the cap torques are within specifications."
         </div>
-
-        <p>Three lots are included in the PPQ to evaluate the within-lot and between-lot variations. A sample size of 30 units per PPQ lot was tested to detect between-lot variation as large as the within-lot variation with 90% confidence (5). Samples from throughout each of the three lots were tested, and the acceptance criteria for each lot was met. An individual/moving range (I/MR) statistical process control (SPC) chart indicated that the process was in control during each lot. Normality tests for each lot did not indicate significant non-normality. Since ANOVA and Levene's tests showed no significant difference among the three lots, the data were combined.</p>
-
-        <p>The 90 test results had a mean of 9.59 and standard deviation of 0.51. This interval is within the specification limits of 8.0-12.0. Thus, the PPQ has shown with 90% confidence that at least 99% of torque results are expected to meet specifications. Those calculations may be performed using Commercial-Off-The-Shelf statistical software (e.g., JMP©, Minitab©, SAS©). If there are statistically significant differences between lots, the tolerance interval should be constructed with more advanced methods that take the between-lot variance component into account (6,7).</p>
-    </div>
-    <div class="right-column">
-        <h3>導師解析 Tutorial Commentary</h3>
-
-        <div class="concept-box">
-            <h4>核心概念解析 Key Concepts</h4>
-            <p><strong>Statistical Tolerance Interval（統計容許區間）：</strong>不同於規格限 (Specification Limits)，容許區間是從數據計算得出的區間，用來聲明「有 X% 信心，至少 Y% 的產品會落在此範圍內」。在確效中，這是證明製程能力的重要工具。</p>
-            <p><strong>ANOVA（變異數分析）：</strong>用來比較多批次的平均值是否存在統計顯著差異。如果 ANOVA 顯示無顯著差異，可以合併數據來計算容許區間。</p>
-            <p><strong>Levene's Test（Levene 變異數同質性檢定）：</strong>用來檢驗各批次的批內變異是否一致。與 ANOVA 比較平均值不同，Levene 檢定比較的是「離散程度」。</p>
-        </div>
-
-        <div class="analogy-box">
-            <h4>比喻說明 Analogy</h4>
-            <p>假設你有三個班級的數學考試成績。如果三個班的平均分和成績分散程度都差不多（ANOVA 和 Levene 檢定無顯著差異），你可以把三個班的成績合在一起分析，得到更精確的「全校成績分佈」估計。但如果某個班明顯偏高或偏低，合併數據就會掩蓋這個差異，得出誤導性的結論。PPQ 批次數據的合併邏輯完全相同。</p>
-        </div>
-
-        <div class="note-box">
-            <h4>重點提示 Key Notes</h4>
-            <p><strong>範例解讀重點：</strong></p>
-            <ul>
-                <li><strong>規格：</strong>8.0-12.0 inch-pounds（拆蓋扭力）</li>
-                <li><strong>Stage 1 估計標準差：</strong>約 0.5</li>
-                <li><strong>接受標準：</strong>90% 信心，至少 99% 合規</li>
-                <li><strong>每批 30 件，共 3 批 = 90 件</strong>合併數據後計算容許區間</li>
-                <li><strong>結果：</strong>均值 9.59，標準差 0.51，容許區間落在 8.0-12.0 規格內</li>
-            </ul>
-            <p><strong>重要警告：</strong>如果批間存在顯著差異，不能簡單合併數據！必須使用考慮批間變異成分的進階方法來建構容許區間。</p>
-        </div>
-
-        <div class="formula-box">
-            <h4>公式與計算 Formula</h4>
-            <pre>
+<p>Three lots are included in the PPQ to evaluate the within-lot and between-lot variations. A sample size of 30 units per PPQ lot was tested to detect between-lot variation as large as the within-lot variation with 90% confidence (5). Samples from throughout each of the three lots were tested, and the acceptance criteria for each lot was met. An individual/moving range (I/MR) statistical process control (SPC) chart indicated that the process was in control during each lot. Normality tests for each lot did not indicate significant non-normality. Since ANOVA and Levene's tests showed no significant difference among the three lots, the data were combined.</p>
+<p>The 90 test results had a mean of 9.59 and standard deviation of 0.51. This interval is within the specification limits of 8.0-12.0. Thus, the PPQ has shown with 90% confidence that at least 99% of torque results are expected to meet specifications. Those calculations may be performed using Commercial-Off-The-Shelf statistical software (e.g., JMP©, Minitab©, SAS©). If there are statistically significant differences between lots, the tolerance interval should be constructed with more advanced methods that take the between-lot variance component into account (6,7).</p>
+</div>
+<div class="right-column">
+<h3>導師解析 Tutorial Commentary</h3>
+<div class="concept-box">
+<h4>核心概念解析 Key Concepts</h4>
+<p><strong>Statistical Tolerance Interval（統計容許區間）：</strong>不同於規格限 (Specification Limits)，容許區間是從數據計算得出的區間，用來聲明「有 X% 信心，至少 Y% 的產品會落在此範圍內」。在確效中，這是證明製程能力的重要工具。</p>
+<p><strong>ANOVA（變異數分析）：</strong>用來比較多批次的平均值是否存在統計顯著差異。如果 ANOVA 顯示無顯著差異，可以合併數據來計算容許區間。</p>
+<p><strong>Levene's Test（Levene 變異數同質性檢定）：</strong>用來檢驗各批次的批內變異是否一致。與 ANOVA 比較平均值不同，Levene 檢定比較的是「離散程度」。</p>
+</div>
+<div class="analogy-box">
+<h4>比喻說明 Analogy</h4>
+<p>假設你有三個班級的數學考試成績。如果三個班的平均分和成績分散程度都差不多（ANOVA 和 Levene 檢定無顯著差異），你可以把三個班的成績合在一起分析，得到更精確的「全校成績分佈」估計。但如果某個班明顯偏高或偏低，合併數據就會掩蓋這個差異，得出誤導性的結論。PPQ 批次數據的合併邏輯完全相同。</p>
+</div>
+<div class="note-box">
+<h4>重點提示 Key Notes</h4>
+<p><strong>範例解讀重點：</strong></p>
+<ul>
+<li><strong>規格：</strong>8.0-12.0 inch-pounds（拆蓋扭力）</li>
+<li><strong>Stage 1 估計標準差：</strong>約 0.5</li>
+<li><strong>接受標準：</strong>90% 信心，至少 99% 合規</li>
+<li><strong>每批 30 件，共 3 批 = 90 件</strong>合併數據後計算容許區間</li>
+<li><strong>結果：</strong>均值 9.59，標準差 0.51，容許區間落在 8.0-12.0 規格內</li>
+</ul>
+<p><strong>重要警告：</strong>如果批間存在顯著差異，不能簡單合併數據！必須使用考慮批間變異成分的進階方法來建構容許區間。</p>
+</div>
+<div class="formula-box">
+<h4>公式與計算 Formula</h4>
+<pre>
 Normal Tolerance Interval:
   X-bar +/- k * s
 
@@ -1213,104 +1177,88 @@ Normal Tolerance Interval:
   3. Normality test p-value &gt; alpha → 數據近似常態
   4. SPC chart 顯示製程受控
             </pre>
-        </div>
-
-        <div class="practice-box">
-            <h4>練習思考 Practice Questions</h4>
-            <ol>
-                <li>為什麼標準容許區間因子假設「只有一個母體」會在 PPQ 場景中造成問題？</li>
-                <li>如果 ANOVA 顯示批次間有顯著差異，下一步應該怎麼做？</li>
-                <li>在範例中，為何選擇每批 30 件而非更少？提示：考慮偵測批間變異的統計檢定力 (Power)。</li>
-            </ol>
-        </div>
-    </div>
 </div>
-
+<div class="practice-box">
+<h4>練習思考 Practice Questions</h4>
+<ol>
+<li>為什麼標準容許區間因子假設「只有一個母體」會在 PPQ 場景中造成問題？</li>
+<li>如果 ANOVA 顯示批次間有顯著差異，下一步應該怎麼做？</li>
+<li>在範例中，為何選擇每批 30 件而非更少？提示：考慮偵測批間變異的統計檢定力 (Power)。</li>
+</ol>
+</div>
+</div>
+</div>
 <!-- ============================================================= -->
 <!-- 9.4 Statistical Process Control Charts -->
 <!-- ============================================================= -->
-<h2 class="section-title" id="sec9-4">9.4 Statistical Process Control Charts</h2>
-
+<h2 class="section-title" id="sec9-4"><strong>9.4 Statistical Process Control Charts 9.4 統計製程管制圖</strong></h2>
 <div class="two-column">
-    <div class="left-column">
-        <h3>原文內容 Original Text</h3>
-        <p>Most SPC references suggest obtaining data from <span class="key-term">20-30 time periods</span> before calculating control limits to assess whether the process is in control. Samples could be taken at 30 time periods across three or more lots. For three lots, 10 sets of <span class="key-term">"rational subgroup"</span> samples could be selected from each lot. The SPC chart limits are then calculated, and the process is assessed for statistical control. The number of lots to use can be based on the power of the SPC chart to detect undesirable between-lot variation.</p>
-
-        <p>A potential problem with the use of SPC charts, such as <span class="key-term">Xbar/S charts</span> plotted across lots, is that they define a process as being in statistical control if there is no underlying lot-to-lot variation (8). This is often not the case, and some lot-to-lot variation is typical and expected, especially for lot means. In these cases, an <span class="key-term">I/MR chart</span> for the mean and/or standard deviation or <span class="key-term">three-way between/within chart</span> can be used to detect out-of-statistical-control between-lot variation (9).</p>
-
-        <p>If there is only one test result per lot, such as a lot assay or pH of a tank of solution, the 20-30 time periods become 20-30 lots. This is seldom feasible for PPQ. An alternative is to select a smaller number of lots, perhaps 5-10, and construct a <span class="key-term">preliminary I/MR control chart</span>. If it shows an in-control process, the PPQ would be complete, and the control chart would extend into Stage 3 to verify longer-term statistical control during CPV.</p>
-    </div>
-    <div class="right-column">
-        <h3>導師解析 Tutorial Commentary</h3>
-
-        <div class="concept-box">
-            <h4>核心概念解析 Key Concepts</h4>
-            <p><strong>Rational Subgroup（合理子群）：</strong>在 SPC 中，合理子群是指在短時間內、相似條件下生產的樣品。子群內的變異反映「共同原因」變異，子群間的變異則可能反映「特殊原因」。在 PPQ 中，每批抽取 10 組合理子群，跨 3 批共 30 組，符合 SPC 建立管制限所需的 20-30 個時段。</p>
-            <p><strong>I/MR Chart（個別值/移動範圍圖）：</strong>當每批只有一個結果（如批次含量試驗、pH）時使用。與 Xbar/S 圖不同，I/MR 圖不需要子群結構。</p>
-        </div>
-
-        <div class="analogy-box">
-            <h4>比喻說明 Analogy</h4>
-            <p>Xbar/S 管制圖就像在每堂課中監控學生的「課堂測驗平均分」——如果不同課堂之間平均分有變化，圖表就會警報。但問題是：不同「學期」之間的成績波動是正常的（批間變異），Xbar/S 圖可能會把這種正常波動誤判為異常。I/MR 圖則更像在追蹤「每學期期末考的平均分」變化趨勢，能區分正常的學期間波動與真正的異常。</p>
-        </div>
-
-        <div class="note-box">
-            <h4>重點提示 Key Notes</h4>
-            <p><strong>Xbar/S 圖的陷阱：</strong>跨批繪製 Xbar/S 圖時，管制限是基於批內變異計算的。如果存在正常的批間變異（幾乎所有製程都有），圖表會出現大量「假警報」——批次平均值偏移被錯誤標記為失控。這是驗證中常見的統計誤用。</p>
-            <p><strong>務實替代方案：</strong>先用 5-10 批建立初步 I/MR 管制圖，PPQ 確認製程受控後，將管制圖延伸到 Stage 3 CPV 繼續監控，逐步累積更多數據點。</p>
-        </div>
-
-        <div class="practice-box">
-            <h4>練習思考 Practice Questions</h4>
-            <ol>
-                <li>為什麼 SPC 教科書建議的「20-30 個時段」在 PPQ 中很難達到？</li>
-                <li>假設你的產品每批只有一個含量結果，你會如何設計 PPQ 的 SPC 策略？</li>
-                <li>三因子 (three-way) between/within 管制圖與普通 Xbar/S 圖的主要差異是什麼？</li>
-            </ol>
-        </div>
-    </div>
+<div class="left-column">
+<h3>原文內容 Original Text</h3>
+<p>Most SPC references suggest obtaining data from <span class="key-term">20-30 time periods</span> before calculating control limits to assess whether the process is in control. Samples could be taken at 30 time periods across three or more lots. For three lots, 10 sets of <span class="key-term">"rational subgroup"</span> samples could be selected from each lot. The SPC chart limits are then calculated, and the process is assessed for statistical control. The number of lots to use can be based on the power of the SPC chart to detect undesirable between-lot variation.</p>
+<p>A potential problem with the use of SPC charts, such as <span class="key-term">Xbar/S charts</span> plotted across lots, is that they define a process as being in statistical control if there is no underlying lot-to-lot variation (8). This is often not the case, and some lot-to-lot variation is typical and expected, especially for lot means. In these cases, an <span class="key-term">I/MR chart</span> for the mean and/or standard deviation or <span class="key-term">three-way between/within chart</span> can be used to detect out-of-statistical-control between-lot variation (9).</p>
+<p>If there is only one test result per lot, such as a lot assay or pH of a tank of solution, the 20-30 time periods become 20-30 lots. This is seldom feasible for PPQ. An alternative is to select a smaller number of lots, perhaps 5-10, and construct a <span class="key-term">preliminary I/MR control chart</span>. If it shows an in-control process, the PPQ would be complete, and the control chart would extend into Stage 3 to verify longer-term statistical control during CPV.</p>
 </div>
-
+<div class="right-column">
+<h3>導師解析 Tutorial Commentary</h3>
+<div class="concept-box">
+<h4>核心概念解析 Key Concepts</h4>
+<p><strong>Rational Subgroup（合理子群）：</strong>在 SPC 中，合理子群是指在短時間內、相似條件下生產的樣品。子群內的變異反映「共同原因」變異，子群間的變異則可能反映「特殊原因」。在 PPQ 中，每批抽取 10 組合理子群，跨 3 批共 30 組，符合 SPC 建立管制限所需的 20-30 個時段。</p>
+<p><strong>I/MR Chart（個別值/移動範圍圖）：</strong>當每批只有一個結果（如批次含量試驗、pH）時使用。與 Xbar/S 圖不同，I/MR 圖不需要子群結構。</p>
+</div>
+<div class="analogy-box">
+<h4>比喻說明 Analogy</h4>
+<p>Xbar/S 管制圖就像在每堂課中監控學生的「課堂測驗平均分」——如果不同課堂之間平均分有變化，圖表就會警報。但問題是：不同「學期」之間的成績波動是正常的（批間變異），Xbar/S 圖可能會把這種正常波動誤判為異常。I/MR 圖則更像在追蹤「每學期期末考的平均分」變化趨勢，能區分正常的學期間波動與真正的異常。</p>
+</div>
+<div class="note-box">
+<h4>重點提示 Key Notes</h4>
+<p><strong>Xbar/S 圖的陷阱：</strong>跨批繪製 Xbar/S 圖時，管制限是基於批內變異計算的。如果存在正常的批間變異（幾乎所有製程都有），圖表會出現大量「假警報」——批次平均值偏移被錯誤標記為失控。這是驗證中常見的統計誤用。</p>
+<p><strong>務實替代方案：</strong>先用 5-10 批建立初步 I/MR 管制圖，PPQ 確認製程受控後，將管制圖延伸到 Stage 3 CPV 繼續監控，逐步累積更多數據點。</p>
+</div>
+<div class="practice-box">
+<h4>練習思考 Practice Questions</h4>
+<ol>
+<li>為什麼 SPC 教科書建議的「20-30 個時段」在 PPQ 中很難達到？</li>
+<li>假設你的產品每批只有一個含量結果，你會如何設計 PPQ 的 SPC 策略？</li>
+<li>三因子 (three-way) between/within 管制圖與普通 Xbar/S 圖的主要差異是什麼？</li>
+</ol>
+</div>
+</div>
+</div>
 <!-- ============================================================= -->
 <!-- 9.5 Process Performance Index & Process Capability Index -->
 <!-- ============================================================= -->
-<h2 class="section-title" id="sec9-5">9.5 Process Performance Index (Ppk) &amp; Process Capability Index (Cpk)</h2>
-
+<h2 class="section-title" id="sec9-5"><strong>9.5 Process Performance Index (Ppk) &amp; Process Capability Index (Cpk) 9.5 製程性能指標（Ppk）與製程能力指標（Cpk）</strong></h2>
 <div class="two-column">
-    <div class="left-column">
-        <h3>原文內容 Original Text</h3>
-        <p><span class="key-term">Ppk</span> is the most common statistic used to assess long-term process capability (refer to Figure 6.2.2.3-1). Acceptable values of Ppk depend on the criticality of the characteristic, but <span class="key-term">1.0 and 1.33</span> are commonly used (10). Smaller or larger values may be used depending on the risk factors involved. The Ppk acceptance criterion may be based on a <span class="key-term">point estimate</span> or a <span class="key-term">one-sided lower-confidence interval</span>. If there is significant between-lot variation, caution should be exercised in using confidence intervals for Ppk calculated by statistical software. Most statistical software programs do not take between-lot variation into account and may provide optimistic confidence intervals that are too narrow (11).</p>
-
-        <div class="quote-box">
+<div class="left-column">
+<h3>原文內容 Original Text</h3>
+<p><span class="key-term">Ppk</span> is the most common statistic used to assess long-term process capability (refer to Figure 6.2.2.3-1). Acceptable values of Ppk depend on the criticality of the characteristic, but <span class="key-term">1.0 and 1.33</span> are commonly used (10). Smaller or larger values may be used depending on the risk factors involved. The Ppk acceptance criterion may be based on a <span class="key-term">point estimate</span> or a <span class="key-term">one-sided lower-confidence interval</span>. If there is significant between-lot variation, caution should be exercised in using confidence intervals for Ppk calculated by statistical software. Most statistical software programs do not take between-lot variation into account and may provide optimistic confidence intervals that are too narrow (11).</p>
+<div class="quote-box">
             "Example: Fill-volume specification limits for a small-volume parenteral product are 98-102. PPQ acceptance criteria are that each lot is Ppk ≥ 1.0; also, that the overall process Ppk is ≥ 1.0 with 95% confidence. To detect a between-lot standard deviation that is half of the within-lot standard deviation with 90% confidence, 33 units will need to be tested from across each of five PPQ lots."
         </div>
-
-        <p>The data from the five lots were analyzed by control charts, histograms, normality tests, Levene's test, and ANOVA. These analyses indicated that the data from the five lots could be combined. The Ppks of each of the five lots were &gt; 1.0. The calculated Ppk from the combined data was 1.14, with a lower 95% confidence interval of 1.03. Since each lot met its Ppk requirement and the lower confidence interval for the overall process, Ppk, was above the acceptance limit of 1.0. Thus, the PPQ acceptance criteria were met.</p>
-
-        <p>An alternative to calculating a parametric confidence interval for Ppk is to require each of four or five consecutive lots in a row to meet the Ppk acceptance criteria. For example, four PPQ lots, each with Ppk ≥ 1.0, provides over 90% confidence that the process median Ppk is ≥ 1.0; five lots provide over 95% confidence.</p>
-    </div>
-    <div class="right-column">
-        <h3>導師解析 Tutorial Commentary</h3>
-
-        <div class="concept-box">
-            <h4>核心概念解析 Key Concepts</h4>
-            <p><strong>Ppk vs Cpk：</strong></p>
-            <ul>
-                <li><strong>Cpk (Process Capability Index，製程能力指數)：</strong>使用批內標準差（短期變異），衡量製程在穩定狀態下的「潛力」能力</li>
-                <li><strong>Ppk (Process Performance Index，製程效能指數)：</strong>使用總標準差（包含批間+批內變異），衡量製程的「實際」表現</li>
-                <li>Ppk 總是 ≤ Cpk，因為 Ppk 包含了更多變異來源</li>
-                <li>Ppk = Cpk 的理想情況意味著沒有批間變異</li>
-            </ul>
-            <p><strong>常用接受標準：</strong></p>
-            <ul>
-                <li>Ppk ≥ 1.0：製程平均值距離最近規格限至少 3 個標準差</li>
-                <li>Ppk ≥ 1.33：距離至少 4 個標準差（更嚴格，常用於關鍵特性）</li>
-            </ul>
-        </div>
-
-        <div class="formula-box">
-            <h4>公式與計算 Formula</h4>
-            <pre>
+<p>The data from the five lots were analyzed by control charts, histograms, normality tests, Levene's test, and ANOVA. These analyses indicated that the data from the five lots could be combined. The Ppks of each of the five lots were &gt; 1.0. The calculated Ppk from the combined data was 1.14, with a lower 95% confidence interval of 1.03. Since each lot met its Ppk requirement and the lower confidence interval for the overall process, Ppk, was above the acceptance limit of 1.0. Thus, the PPQ acceptance criteria were met.</p>
+<p>An alternative to calculating a parametric confidence interval for Ppk is to require each of four or five consecutive lots in a row to meet the Ppk acceptance criteria. For example, four PPQ lots, each with Ppk ≥ 1.0, provides over 90% confidence that the process median Ppk is ≥ 1.0; five lots provide over 95% confidence.</p>
+</div>
+<div class="right-column">
+<h3>導師解析 Tutorial Commentary</h3>
+<div class="concept-box">
+<h4>核心概念解析 Key Concepts</h4>
+<p><strong>Ppk vs Cpk：</strong></p>
+<ul>
+<li><strong>Cpk (Process Capability Index，製程能力指數)：</strong>使用批內標準差（短期變異），衡量製程在穩定狀態下的「潛力」能力</li>
+<li><strong>Ppk (Process Performance Index，製程效能指數)：</strong>使用總標準差（包含批間+批內變異），衡量製程的「實際」表現</li>
+<li>Ppk 總是 ≤ Cpk，因為 Ppk 包含了更多變異來源</li>
+<li>Ppk = Cpk 的理想情況意味著沒有批間變異</li>
+</ul>
+<p><strong>常用接受標準：</strong></p>
+<ul>
+<li>Ppk ≥ 1.0：製程平均值距離最近規格限至少 3 個標準差</li>
+<li>Ppk ≥ 1.33：距離至少 4 個標準差（更嚴格，常用於關鍵特性）</li>
+</ul>
+</div>
+<div class="formula-box">
+<h4>公式與計算 Formula</h4>
+<pre>
 Ppk = min( (USL - X-bar) / (3 * sigma_total),
            (X-bar - LSL) / (3 * sigma_total) )
 
@@ -1328,74 +1276,63 @@ Cpk = min( (USL - X-bar) / (3 * sigma_within),
   4 批均 Ppk ≥ 1.0 → &gt; 90% 信心中位 Ppk ≥ 1.0
   5 批均 Ppk ≥ 1.0 → &gt; 95% 信心中位 Ppk ≥ 1.0
             </pre>
-        </div>
-
-        <div class="analogy-box">
-            <h4>比喻說明 Analogy</h4>
-            <p>想像高速公路的車道。規格限就像車道的邊界線，Ppk 衡量的是你的車（製程平均值）距離最近車道線的距離除以你的車寬（製程變異）。Ppk = 1.0 表示車身剛好完全在車道內；Ppk = 1.33 表示兩側還有額外的安全空間。如果你的車有時會左右偏移（批間變異），你需要更多安全餘裕——這就是為什麼 Ppk（考慮所有偏移）比 Cpk（只考慮穩態）更保守。</p>
-        </div>
-
-        <div class="note-box">
-            <h4>重點提示 Key Notes</h4>
-            <p><strong>軟體陷阱警告：</strong>大多數統計軟體（JMP, Minitab, SAS）計算 Ppk 信賴區間時，不考慮批間變異成分。當存在顯著批間變異時，軟體會給出過於樂觀（太窄）的信賴區間，可能導致錯誤地通過 PPQ 接受標準。</p>
-            <p><strong>非參數替代法：</strong>要求連續 4-5 批的 Ppk 都 ≥ 1.0，是一種不依賴信賴區間計算的簡單替代方案。這利用了二項分佈的性質：如果中位 Ppk &lt; 1.0，連續 4 批都 ≥ 1.0 的機率不到 6.25%（0.5^4 = 6.25%）。</p>
-        </div>
-
-        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
-            <h4>實務應用 Practical Application</h4>
-            <p><strong>CDMO 場景：</strong>客戶要求充填體積 PPQ 的 Ppk ≥ 1.33。你的 5 批數據合併後計算得 Ppk = 1.28，但 ANOVA 顯示批間有顯著差異。此時：</p>
-            <ol>
-                <li>不能直接合併數據計算 Ppk 信賴區間</li>
-                <li>應使用考慮批間變異成分的進階方法</li>
-                <li>或改用逐批 Ppk 法：如果 5 批的個別 Ppk 都 ≥ 1.33，則有 &gt; 95% 信心</li>
-                <li>與客戶討論是否 Ppk ≥ 1.0 的接受標準在風險可接受範圍內</li>
-            </ol>
-        </div>
-
-        <div class="practice-box">
-            <h4>練習思考 Practice Questions</h4>
-            <ol>
-                <li>為什麼 Ppk 比 Cpk 更適合用於 PPQ 的長期製程能力評估？</li>
-                <li>範例中，為何需要每批 33 件（而非更少）才能偵測到「批間標準差為批內標準差一半」的情況？</li>
-                <li>如果計算出的 Ppk 點估計值為 1.14 但信賴下限為 0.97，你應該如何處理？</li>
-            </ol>
-        </div>
-    </div>
 </div>
-
+<div class="analogy-box">
+<h4>比喻說明 Analogy</h4>
+<p>想像高速公路的車道。規格限就像車道的邊界線，Ppk 衡量的是你的車（製程平均值）距離最近車道線的距離除以你的車寬（製程變異）。Ppk = 1.0 表示車身剛好完全在車道內；Ppk = 1.33 表示兩側還有額外的安全空間。如果你的車有時會左右偏移（批間變異），你需要更多安全餘裕——這就是為什麼 Ppk（考慮所有偏移）比 Cpk（只考慮穩態）更保守。</p>
+</div>
+<div class="note-box">
+<h4>重點提示 Key Notes</h4>
+<p><strong>軟體陷阱警告：</strong>大多數統計軟體（JMP, Minitab, SAS）計算 Ppk 信賴區間時，不考慮批間變異成分。當存在顯著批間變異時，軟體會給出過於樂觀（太窄）的信賴區間，可能導致錯誤地通過 PPQ 接受標準。</p>
+<p><strong>非參數替代法：</strong>要求連續 4-5 批的 Ppk 都 ≥ 1.0，是一種不依賴信賴區間計算的簡單替代方案。這利用了二項分佈的性質：如果中位 Ppk &lt; 1.0，連續 4 批都 ≥ 1.0 的機率不到 6.25%（0.5^4 = 6.25%）。</p>
+</div>
+<div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+<h4>實務應用 Practical Application</h4>
+<p><strong>CDMO 場景：</strong>客戶要求充填體積 PPQ 的 Ppk ≥ 1.33。你的 5 批數據合併後計算得 Ppk = 1.28，但 ANOVA 顯示批間有顯著差異。此時：</p>
+<ol>
+<li>不能直接合併數據計算 Ppk 信賴區間</li>
+<li>應使用考慮批間變異成分的進階方法</li>
+<li>或改用逐批 Ppk 法：如果 5 批的個別 Ppk 都 ≥ 1.33，則有 &gt; 95% 信心</li>
+<li>與客戶討論是否 Ppk ≥ 1.0 的接受標準在風險可接受範圍內</li>
+</ol>
+</div>
+<div class="practice-box">
+<h4>練習思考 Practice Questions</h4>
+<ol>
+<li>為什麼 Ppk 比 Cpk 更適合用於 PPQ 的長期製程能力評估？</li>
+<li>範例中，為何需要每批 33 件（而非更少）才能偵測到「批間標準差為批內標準差一半」的情況？</li>
+<li>如果計算出的 Ppk 點估計值為 1.14 但信賴下限為 0.97，你應該如何處理？</li>
+</ol>
+</div>
+</div>
+</div>
 <!-- ============================================================= -->
 <!-- 9.6 Lot Conformance Rate -->
 <!-- ============================================================= -->
-<h2 class="section-title" id="sec9-6">9.6 Assure the Lot Conformance Rate is Above an Acceptable Rate with Specified Confidence</h2>
-
+<h2 class="section-title" id="sec9-6"><strong>9.6 Assure the Lot Conformance Rate is Above an Acceptable Rate with Specified Confidence 9.6 以指定信賴水準確保批次符合率高於可接受比率</strong></h2>
 <div class="two-column">
-    <div class="left-column">
-        <h3>原文內容 Original Text</h3>
-        <p>An approach commonly referred to as the <span class="key-term">"confidence for reliability"</span> method, demonstrates that the percentage of lot conformance is acceptable. It identifies unacceptable variation due to either common or special causes. Table 9.6-1 shows the required number of conforming lots. This method is sometimes called "confidence for reliability."</p>
-
-        <h4>Table 9.6-1 Number of Lots to Demonstrate Confidence for Lot Conformance Rate</h4>
-        <div style="overflow-x:auto;">
-            </div>
-
-        <div class="quote-box">
+<div class="left-column">
+<h3>原文內容 Original Text</h3>
+<p>An approach commonly referred to as the <span class="key-term">"confidence for reliability"</span> method, demonstrates that the percentage of lot conformance is acceptable. It identifies unacceptable variation due to either common or special causes. Table 9.6-1 shows the required number of conforming lots. This method is sometimes called "confidence for reliability."</p>
+<h4>Table 9.6-1 Number of Lots to Demonstrate Confidence for Lot Conformance Rate</h4>
+<div style="overflow-x:auto;">
+</div>
+<div class="quote-box">
             "Example: To demonstrate the process is acceptable, the PPQ acceptance criterion will be to show with 90% confidence that the process-lot conformance rate (the lot pass rate) is at least 90%. A total of 22 passing lots in a row will demonstrate this."
         </div>
-
-        <p>Requiring many lots during PPQ to reach 90% or 95% confidence is difficult. An alternative is to use 50% confidence in PPQ and monitor the process further during CPV to reach the final desired confidence. Crossing the 50% confidence threshold is the point at which the selected lot conformance rate is more likely to be met. For the example above, once seven (7) passing lots are reached, it is more likely that the conformance rate is greater than 90% rather than less than 90%, and the PPQ could be considered complete. An additional 15 lots during early CPV would reach the required 22 lots. This approach may be particularly useful when there are many quality attributes to assess. Rather than determining the number of lots required separately for each attribute, the PPQ stage is complete when all attributes pass for the required number of lots.</p>
-    </div>
-    <div class="right-column">
-        <h3>導師解析 Tutorial Commentary</h3>
-
-        <div class="concept-box">
-            <h4>核心概念解析 Key Concepts</h4>
-            <p><strong>Confidence for Reliability（可靠度信心法）：</strong>此方法的邏輯是：如果連續 n 批全部合格（零失敗），我們可以對「真實合格率 ≥ R」的聲明達到 C% 的信心水準。數學基礎是二項分佈的單側信賴區間。</p>
-            <p>公式推導：要使 P(0 failures in n trials | true failure rate = 1-R) ≤ 1-C</p>
-            <p>簡化為：R<sup>n</sup> ≥ 1 - C，即 n ≥ ln(1-C) / ln(R)</p>
-        </div>
-
-        <div class="formula-box">
-            <h4>公式與計算 Formula</h4>
-            <pre>
+<p>Requiring many lots during PPQ to reach 90% or 95% confidence is difficult. An alternative is to use 50% confidence in PPQ and monitor the process further during CPV to reach the final desired confidence. Crossing the 50% confidence threshold is the point at which the selected lot conformance rate is more likely to be met. For the example above, once seven (7) passing lots are reached, it is more likely that the conformance rate is greater than 90% rather than less than 90%, and the PPQ could be considered complete. An additional 15 lots during early CPV would reach the required 22 lots. This approach may be particularly useful when there are many quality attributes to assess. Rather than determining the number of lots required separately for each attribute, the PPQ stage is complete when all attributes pass for the required number of lots.</p>
+</div>
+<div class="right-column">
+<h3>導師解析 Tutorial Commentary</h3>
+<div class="concept-box">
+<h4>核心概念解析 Key Concepts</h4>
+<p><strong>Confidence for Reliability（可靠度信心法）：</strong>此方法的邏輯是：如果連續 n 批全部合格（零失敗），我們可以對「真實合格率 ≥ R」的聲明達到 C% 的信心水準。數學基礎是二項分佈的單側信賴區間。</p>
+<p>公式推導：要使 P(0 failures in n trials | true failure rate = 1-R) ≤ 1-C</p>
+<p>簡化為：R<sup>n</sup> ≥ 1 - C，即 n ≥ ln(1-C) / ln(R)</p>
+</div>
+<div class="formula-box">
+<h4>公式與計算 Formula</h4>
+<pre>
 n = ln(1 - C) / ln(R)     [取上整數]
 
 其中：
@@ -1411,73 +1348,65 @@ n = ln(1 - C) / ln(R)     [取上整數]
 50% 信心 + 90% 合格率：
   n = ln(0.50) / ln(0.90) = -0.6931 / -0.10536 = 6.58 → 7 批
             </pre>
-        </div>
-
-        <div class="analogy-box">
-            <h4>比喻說明 Analogy</h4>
-            <p>想像你在面試一位新廚師。如果他連續 7 道菜都做得好（50% 信心），你會覺得他「大概不錯」，可以正式錄用。但要真正「很有信心」（90%）他能長期保持 90% 以上的菜品合格率，你可能需要觀察他做 22 道菜。</p>
-            <p>TR60 的務實建議是：先觀察 7 道菜（PPQ 期間），如果都合格就正式錄用，然後在試用期（CPV）繼續觀察剩下的 15 道菜，最終達到 22 道的高信心水準。</p>
-        </div>
-
-        <div class="note-box">
-            <h4>重點提示 Key Notes</h4>
-            <p><strong>表格使用要領：</strong></p>
-            <ul>
-                <li><strong>50% 信心 = 跨越損益平衡點：</strong>超過此點後，「合格率 ≥ 目標」的可能性大於「&lt; 目標」</li>
-                <li><strong>階段策略的關鍵：</strong>PPQ 達到 50% 信心 → CPV 繼續累積到 90% 信心</li>
-                <li><strong>99% 合格率極難驗證：</strong>即使只要求 50% 信心也需要 69 批！這說明驗證 99% 合格率在 PPQ 階段幾乎不可能</li>
-            </ul>
-            <p><strong>多屬性策略：</strong>與 ARL 法類似，此方法可以跨所有品質屬性統一應用——只要所有屬性在規定批次數內都合格即可。</p>
-        </div>
-
-        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
-            <h4>實務應用 Practical Application</h4>
-            <p><strong>法規面試情境：</strong>FDA 審查員問：「你如何證明你的製程有 90% 的信心達到 90% 的批次合格率？」</p>
-            <p>回答策略：「我們採用分階段方法。在 PPQ 中，7 批連續合格達到 50% 信心（即合格率 ≥ 90% 的可能性超過一半）。在 CPV 初期繼續監控，累計至 22 批連續合格時達到 90% 信心。此方法基於二項分佈，參考 TR60 Appendix I Section 9.6。」</p>
-        </div>
-
-        <div class="practice-box">
-            <h4>練習思考 Practice Questions</h4>
-            <ol>
-                <li>使用公式驗算：95% 信心 + 95% 合格率 = 59 批是否正確？</li>
-                <li>如果 PPQ 做了 7 批但第 6 批失敗了，能否重新開始計數？這對統計有效性有何影響？</li>
-                <li>為什麼「50% 信心」被稱為「損益平衡點」？</li>
-            </ol>
-        </div>
-    </div>
 </div>
-
+<div class="analogy-box">
+<h4>比喻說明 Analogy</h4>
+<p>想像你在面試一位新廚師。如果他連續 7 道菜都做得好（50% 信心），你會覺得他「大概不錯」，可以正式錄用。但要真正「很有信心」（90%）他能長期保持 90% 以上的菜品合格率，你可能需要觀察他做 22 道菜。</p>
+<p>TR60 的務實建議是：先觀察 7 道菜（PPQ 期間），如果都合格就正式錄用，然後在試用期（CPV）繼續觀察剩下的 15 道菜，最終達到 22 道的高信心水準。</p>
+</div>
+<div class="note-box">
+<h4>重點提示 Key Notes</h4>
+<p><strong>表格使用要領：</strong></p>
+<ul>
+<li><strong>50% 信心 = 跨越損益平衡點：</strong>超過此點後，「合格率 ≥ 目標」的可能性大於「&lt; 目標」</li>
+<li><strong>階段策略的關鍵：</strong>PPQ 達到 50% 信心 → CPV 繼續累積到 90% 信心</li>
+<li><strong>99% 合格率極難驗證：</strong>即使只要求 50% 信心也需要 69 批！這說明驗證 99% 合格率在 PPQ 階段幾乎不可能</li>
+</ul>
+<p><strong>多屬性策略：</strong>與 ARL 法類似，此方法可以跨所有品質屬性統一應用——只要所有屬性在規定批次數內都合格即可。</p>
+</div>
+<div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+<h4>實務應用 Practical Application</h4>
+<p><strong>法規面試情境：</strong>FDA 審查員問：「你如何證明你的製程有 90% 的信心達到 90% 的批次合格率？」</p>
+<p>回答策略：「我們採用分階段方法。在 PPQ 中，7 批連續合格達到 50% 信心（即合格率 ≥ 90% 的可能性超過一半）。在 CPV 初期繼續監控，累計至 22 批連續合格時達到 90% 信心。此方法基於二項分佈，參考 TR60 Appendix I Section 9.6。」</p>
+</div>
+<div class="practice-box">
+<h4>練習思考 Practice Questions</h4>
+<ol>
+<li>使用公式驗算：95% 信心 + 95% 合格率 = 59 批是否正確？</li>
+<li>如果 PPQ 做了 7 批但第 6 批失敗了，能否重新開始計數？這對統計有效性有何影響？</li>
+<li>為什麼「50% 信心」被稱為「損益平衡點」？</li>
+</ol>
+</div>
+</div>
+</div>
 <div class="concept-box"><table>
-                <thead>
-                    <tr>
-                        <th>Confidence</th>
-                        <th>Conformance Rate</th>
-                        <th>Number of Successive Conforming Lots to Ensure Conformance Rate with Stated Confidence</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td rowspan="3">50%</td><td>90%</td><td>7</td></tr>
-                    <tr><td>95%</td><td>14</td></tr>
-                    <tr><td>99%</td><td>69</td></tr>
-                    <tr><td rowspan="3">90%</td><td>90%</td><td>22</td></tr>
-                    <tr><td>95%</td><td>45</td></tr>
-                    <tr><td>99%</td><td>230</td></tr>
-                    <tr><td rowspan="3">95%</td><td>90%</td><td>29</td></tr>
-                    <tr><td>95%</td><td>59</td></tr>
-                    <tr><td>99%</td><td>299</td></tr>
-                </tbody>
-            </table>
-        </div><!-- CONTINUATION NOTICE -->
+<thead>
+<tr>
+<th>Confidence</th>
+<th>Conformance Rate</th>
+<th>Number of Successive Conforming Lots to Ensure Conformance Rate with Stated Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr><td rowspan="3">50%</td><td>90%</td><td>7</td></tr>
+<tr><td>95%</td><td>14</td></tr>
+<tr><td>99%</td><td>69</td></tr>
+<tr><td rowspan="3">90%</td><td>90%</td><td>22</td></tr>
+<tr><td>95%</td><td>45</td></tr>
+<tr><td>99%</td><td>230</td></tr>
+<tr><td rowspan="3">95%</td><td>90%</td><td>29</td></tr>
+<tr><td>95%</td><td>59</td></tr>
+<tr><td>99%</td><td>299</td></tr>
+</tbody>
+</table>
+</div><!-- CONTINUATION NOTICE -->
 <div class="learning-objectives" style="background: linear-gradient(135deg, #e8eaf6 0%, #c5cae9 100%);">
-    <h3>接續提示 Continuation Notice</h3>
-    <p style="font-size:0.95rem;">本部分（7a）涵蓋 Appendix I 的 Section 9.0 至 9.6。後續內容包括 Section 9.7 Narrow-Limit Gauging、9.8 Between-Lot vs Within-Lot Variation、9.9 Sample Size、9.10 Demonstrate Between-Lot SD、9.11 Demonstrating Equivalence Between Lots，將在 <strong>Section 7b</strong> 中繼續。</p>
+<h3>接續提示 Continuation Notice</h3>
+<p style="font-size:0.95rem;">本部分（7a）涵蓋 Appendix I 的 Section 9.0 至 9.6。後續內容包括 Section 9.7 Narrow-Limit Gauging、9.8 Between-Lot vs Within-Lot Variation、9.9 Sample Size、9.10 Demonstrate Between-Lot SD、9.11 Demonstrating Equivalence Between Lots，將在 <strong>Section 7b</strong> 中繼續。</p>
 </div>
-
 </div><!-- end main-container -->
-
 <!-- BACK TO TOP -->
 <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-
 <script>
 window.addEventListener('scroll', function() {
     const btn = document.getElementById('backToTop');
@@ -1488,6 +1417,5 @@ window.addEventListener('scroll', function() {
     }
 });
 </script>
-
 </body>
 </html>
