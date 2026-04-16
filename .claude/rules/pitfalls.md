@@ -56,3 +56,50 @@ Current `gmp_engine.py md` generates MDs from raw source text — PDF tables los
 # costs ~30-60K tokens per section but produces proper Markdown tables
 ```
 Existing reports can be upgraded incrementally by re-generating individual report MDs via Claude.
+
+
+## Tables Inside Two-Column Layout (Added 2026-04)
+
+**Problem**: Wide `<table>` elements placed inside `<div class="left-column">` get squeezed to half-width, breaking layout and making content unreadable.
+
+**Rule**: All `<table>` elements MUST be placed OUTSIDE the `<div class="two-column">` block, in a full-width section below it. Use the `full-width-table` template in PROMPT.md.
+
+**Pattern — WRONG**:
+```html
+<div class="two-column">
+    <div class="left-column">
+        <table>...</table>  <!-- BREAKS LAYOUT -->
+    </div>
+</div>
+```
+
+**Pattern — CORRECT**:
+```html
+<div class="two-column">
+    <div class="left-column">
+        <p>See Table X.X below.</p>
+    </div>
+    <div class="right-column">...</div>
+</div>
+<!-- Table in full width AFTER two-column -->
+<div style="overflow-x:auto; margin:1rem 0;">
+    <table>...</table>
+</div>
+```
+
+## Section Headings Must Be Bilingual & Bold (Added 2026-04)
+
+**Problem**: Many section headings are English-only, missing Chinese translations. Some lack bold formatting.
+
+**Rule**: Every `.section-title` heading MUST follow this format:
+```html
+<div class="section-title"><strong>X.X English Title 中文標題</strong></div>
+```
+- Always bilingual: English first, Chinese after
+- Always wrapped in `<strong>` for consistent bold weight
+- CSS `.section-title` must include `font-weight: 700`
+
+**Examples**:
+- `1.0 Introduction 導論`
+- `3.2 Number and Frequency of Simulations 模擬次數與頻率`
+- `7.5 Container-Closure System 容器密封系統`

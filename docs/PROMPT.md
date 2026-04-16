@@ -92,7 +92,8 @@ Every section file MUST follow this exact structure:
 </div>
 
 <!-- CONTENT SECTIONS - Repeat for each subsection -->
-<div class="section-title">X.X [Subsection Title]</div>
+<!-- IMPORTANT: Section titles MUST be bilingual and bold -->
+<div class="section-title"><strong>X.X [English Subsection Title] [中文標題]</strong></div>
 
 <div class="two-column">
     <div class="left-column">
@@ -114,11 +115,6 @@ Every section file MUST follow this exact structure:
             </p>
         </div>
         
-        <!-- For tables -->
-        <table>
-            <tr><th>Column 1</th><th>Column 2</th></tr>
-            <tr><td>Data</td><td>Data</td></tr>
-        </table>
     </div>
     
     <div class="right-column">
@@ -170,6 +166,22 @@ Formula or calculation...
             <h4>圖表解讀 Figure Analysis</h4>
             <p>Detailed explanation of the figure in Traditional Chinese...</p>
         </div>
+    </div>
+</div>
+
+<!-- FULL-WIDTH TABLES — placed OUTSIDE two-column to preserve bicolumn layout -->
+<!-- Tables wider than half-page MUST go here, not inside left-column -->
+<div class="full-width-table" style="margin: 1rem 0;">
+    <h3 style="font-weight:600; color:var(--primary-blue); margin-bottom:0.5rem;">Table X.X-X: [Table Title]</h3>
+    <div style="overflow-x:auto;">
+        <table>
+            <thead>
+                <tr><th>Column 1</th><th>Column 2</th><th>Column 3</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Data</td><td>Data</td><td>Data</td></tr>
+            </tbody>
+        </table>
     </div>
 </div>
 
