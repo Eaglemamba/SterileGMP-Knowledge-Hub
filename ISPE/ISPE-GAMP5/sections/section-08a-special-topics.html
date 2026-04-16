@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ISPE GAMP 5 2nd Ed. – Appendices S1–S6: Special Interest Topics</title>
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ISPE GAMP 5 2nd Ed. – Appendices S1–S6: Special Interest Topics</title>
+<style>
 /* =============================================================
    PDA Educational Material - Shared CSS Template
    Version: 2.0 (ISPE Green Override)
@@ -239,686 +240,606 @@ tr:nth-child(even) { background: #f7fafc; }
     </style>
 </head>
 <body>
-
 <!-- SECTION HEADER -->
 <div class="header">
-    <h1>Appendices S1–S6: Special Interest Topics</h1>
-    <div class="subtitle">附錄 S1–S6：特殊主題（ASTM E2500 對應 / 電子生產記錄 / 試算表驗證 / 補丁管理 / 組織變更）</div>
-    <div class="page-info">ISPE GAMP 5, 2nd Edition | Appendix S1–S6 | p347–p382</div>
+<h1>Appendices S1–S6: Special Interest Topics</h1>
+<div class="subtitle">附錄 S1–S6：特殊主題（ASTM E2500 對應 / 電子生產記錄 / 試算表驗證 / 補丁管理 / 組織變更）</div>
+<div class="page-info">ISPE GAMP 5, 2nd Edition | Appendix S1–S6 | p347–p382</div>
 </div>
-
 <div class="main-content">
-
 <!-- LEARNING OBJECTIVES -->
 <div class="learning-objectives">
-    <h3>Learning Objectives — 學習目標</h3>
-    <ol>
-        <li>Explain how GAMP 5 aligns with and differs from ASTM E2500, and determine when each framework is the appropriate tool. ／ 說明 GAMP 5 與 ASTM E2500 的共同原則與適用場景差異。</li>
-        <li>Describe the structure and regulatory requirements of Electronic Production Records (EPR / eBR / eDHR) including audit trail obligations under 21 CFR Part 11 and EU Annex 11. ／ 描述電子生產記錄的架構、稽核軌跡要求，以及相關法規義務。</li>
-        <li>Categorize end user applications (spreadsheets, databases, macros) by GAMP category and apply appropriate risk-based validation controls. ／ 依 GAMP 類別分類終端使用者應用程式，套用風險導向驗證控制措施。</li>
-        <li>Apply a risk-based patch management framework that balances enterprise cybersecurity risk against GxP validated-state maintenance. ／ 建立平衡資安風險與 GxP 驗證狀態的補丁管理決策架構。</li>
-        <li>Identify the compliance impacts of organizational change (M&amp;A, outsourcing, supplier loss) on validated computerized systems. ／ 識別組織變更對已驗證電腦化系統的法規合規影響。</li>
-        <li>Apply the stakeholder engagement and documentation update requirements for CSV programs undergoing organizational restructuring. ／ 在組織重組期間，執行 CSV 程式的利害關係人參與及文件更新要求。</li>
-    </ol>
+<h3>Learning Objectives — 學習目標</h3>
+<ol>
+<li>Explain how GAMP 5 aligns with and differs from ASTM E2500, and determine when each framework is the appropriate tool. ／ 說明 GAMP 5 與 ASTM E2500 的共同原則與適用場景差異。</li>
+<li>Describe the structure and regulatory requirements of Electronic Production Records (EPR / eBR / eDHR) including audit trail obligations under 21 CFR Part 11 and EU Annex 11. ／ 描述電子生產記錄的架構、稽核軌跡要求，以及相關法規義務。</li>
+<li>Categorize end user applications (spreadsheets, databases, macros) by GAMP category and apply appropriate risk-based validation controls. ／ 依 GAMP 類別分類終端使用者應用程式，套用風險導向驗證控制措施。</li>
+<li>Apply a risk-based patch management framework that balances enterprise cybersecurity risk against GxP validated-state maintenance. ／ 建立平衡資安風險與 GxP 驗證狀態的補丁管理決策架構。</li>
+<li>Identify the compliance impacts of organizational change (M&amp;A, outsourcing, supplier loss) on validated computerized systems. ／ 識別組織變更對已驗證電腦化系統的法規合規影響。</li>
+<li>Apply the stakeholder engagement and documentation update requirements for CSV programs undergoing organizational restructuring. ／ 在組織重組期間，執行 CSV 程式的利害關係人參與及文件更新要求。</li>
+</ol>
 </div>
-
 <!-- ============================================================ -->
 <!-- APPENDIX S1: ASTM E2500 ALIGNMENT -->
 <!-- ============================================================ -->
-<h2 class="section-title" id="s1">Appendix S1 — Alignment with ASTM E2500 (p347–p351)</h2>
-
+<h2 class="section-title" id="s1"><strong>Appendix S1 — Alignment with ASTM E2500 (p347–p351) Appendix S1 — 與 ASTM E2500 對齊</strong></h2>
 <div class="two-column">
-    <div class="left-column">
-        <h2>S1.1 Introduction &amp; Background</h2>
-        <p>GxP regulations require validation of computer and control systems that are critical to patient health and protection. Historically, regulated companies performed installation, commissioning, and validation as separate sequential exercises — producing duplicated documentation that added little value to demonstrating fitness for intended use.</p>
-        <p>Emerging standards, particularly <span class="key-term">ASTM E2500</span> (Standard Guide for Specification, Design, and Verification of Pharmaceutical and Biopharmaceutical Manufacturing Systems and Equipment), adopt a science- and risk-based philosophy focused on patient risk rather than prescriptive activity sequences. Combining Good Engineering Practice (GEP), science- and risk-based approaches, process understanding, and appropriate SME involvement creates a streamlined framework that meets all regulatory requirements.</p>
-
-        <h3>S1.2 Focusing on Patient Risk</h3>
-        <p>By focusing on risk to the patient and leveraging supplier expertise and SME knowledge through GEP, <span class="key-term">verification</span> replaces the previously separate IQ and OQ activities as an integrated set of activities. Regulated company IQ/OQ activities may be omitted or limited to assessing supplier activities, closing gaps, and confirming fitness for intended use through Performance Qualification focused on critical-to-quality attributes.</p>
-        <p>This approach demonstrates that equipment or systems are performing satisfactorily for their intended purpose, the process is controlled, and patient risks are effectively managed — thereby satisfying regulatory validation requirements.</p>
-
-        <div class="concept-box">
-            <h4>ASTM E2500: The Specification, Design, and Verification Process</h4>
-            <p>ASTM E2500 structures equipment qualification around three integrated phases:</p>
-            <ul>
-                <li><strong>Specification</strong> — Define critical requirements tied to patient risk</li>
-                <li><strong>Design</strong> — Apply GEP with appropriate SME review</li>
-                <li><strong>Verification</strong> — Leverage supplier testing; confirm critical-to-quality requirements are met</li>
-            </ul>
-            <p>A plan describing the approach and a report providing evidence supporting fitness for use remain appropriate regardless of terminology used.</p>
-        </div>
-
-        <h3>S1.3 Different Types of Computerized Systems</h3>
-        <p>For integrated manufacturing systems where a computer-based system is part of overall functionality, a separate computerized system validation may not be required. Where computer-controlled equipment is one component of a wider manufacturing or process control system, verification can be an integrated part of the overall process validation effort.</p>
-        <p>IT systems with no direct correlation to manufacturing (e.g., clinical trials data collection, adverse event management, product release systems) have no direct parallel to process validation. Acceptance depends on satisfactory functional testing equivalent to OQ prior to controlled cut-over into the live environment.</p>
-
-        <h3>S1.4 Terminology</h3>
-        <p>GAMP 5 recognizes that different organizations may use different terminology:</p>
-        <ul>
-            <li>Some adopt "verification" for both computer and control systems</li>
-            <li>Others retain "qualification" language but apply ASTM E2500 principles</li>
-            <li>Still others use verification for controlled process equipment and qualification for computer systems</li>
-        </ul>
-        <p>GAMP Guidance is neither mandatory nor prescriptive. Individual companies should decide what terms and precise approach they will use, provided the outcome demonstrates fitness for intended use with appropriate risk control.</p>
-    </div>
-
-    <div class="right-column">
-        <h2>中文解析：GAMP 5 vs. ASTM E2500</h2>
-        <div class="concept-box">
-            <h4>兩個框架的本質差異</h4>
-            <p><span class="key-term">ASTM E2500</span> 的核心目標是製造設備與製程系統的規格、設計和驗證（specification, design, and verification）。它是工程導向的，強調把設備的 IQ/OQ 活動整合成一個以病人風險為中心的「verification」流程，大量借用供應商的測試文件。</p>
-            <p><span class="key-term">GAMP 5</span> 的範圍更廣：它涵蓋所有電腦化系統，包括製造執行系統、實驗室系統、ERP、臨床數據系統等，不只是製造設備。</p>
-            <p><strong>互補關係</strong>：ASTM E2500 的思想直接影響了 GAMP 5 的演進——兩者的核心都是「科學+風險導向」，都反對重複且無價值的文件。</p>
-        </div>
-
-        <div class="analogy-box">
-            <h4>實際場景比較</h4>
-            <p><strong>使用 ASTM E2500 的情境</strong>：廠房新建時導入無菌灌裝機（aseptic filling machine）。設備製造商的工廠驗收測試（FAT）、現場驗收測試（SAT）可直接作為 verification 的一部分，不需要再另外跑完整的 IQ/OQ 文件套組。</p>
-            <p><strong>使用 GAMP 5 的情境</strong>：同一條灌裝線上的 MES（Manufacturing Execution System）或 SCADA 系統的電腦化系統驗證，屬於 GAMP 5 的主要適用範疇。</p>
-            <p><strong>重疊區域</strong>：整合控制系統（PLC/DCS）通常兩者都適用；此時依公司政策選擇術語即可，關鍵是文件證明 critical-to-quality requirements 已被驗證。</p>
-        </div>
-
-        <div class="key-point-box">
-            <h4>查廠重點</h4>
-            <p>稽核員關注的不是你用哪個術語（IQ/OQ 或 verification），而是：</p>
-            <ul>
-                <li>你有沒有<strong>識別出對病人風險有影響的關鍵要求</strong>（critical-to-quality requirements）？</li>
-                <li>你有沒有<strong>提供充分的文件證據</strong>說明這些要求已被驗證？</li>
-                <li>你有沒有一份<strong>計畫（plan）</strong>說明你的驗證方法，以及一份<strong>報告（report）</strong>作為完成的證據？</li>
-            </ul>
-        </div>
-
-        <div class="note-box">
-            <h4>CDMO 情境應用</h4>
-            <p>在 CDMO 環境，同一台設備可能生產多個客戶的產品。建議在設備層級做一次完整的 GAMP/ASTM E2500 驗證，然後在產品層級的製程驗證（PV）中確認該設備在特定產品條件下的表現。這樣可以避免每換一個產品就重跑完整 IQ/OQ 的資源浪費。</p>
-        </div>
-    </div>
+<div class="left-column">
+<h2>S1.1 Introduction &amp; Background</h2>
+<p>GxP regulations require validation of computer and control systems that are critical to patient health and protection. Historically, regulated companies performed installation, commissioning, and validation as separate sequential exercises — producing duplicated documentation that added little value to demonstrating fitness for intended use.</p>
+<p>Emerging standards, particularly <span class="key-term">ASTM E2500</span> (Standard Guide for Specification, Design, and Verification of Pharmaceutical and Biopharmaceutical Manufacturing Systems and Equipment), adopt a science- and risk-based philosophy focused on patient risk rather than prescriptive activity sequences. Combining Good Engineering Practice (GEP), science- and risk-based approaches, process understanding, and appropriate SME involvement creates a streamlined framework that meets all regulatory requirements.</p>
+<h3>S1.2 Focusing on Patient Risk</h3>
+<p>By focusing on risk to the patient and leveraging supplier expertise and SME knowledge through GEP, <span class="key-term">verification</span> replaces the previously separate IQ and OQ activities as an integrated set of activities. Regulated company IQ/OQ activities may be omitted or limited to assessing supplier activities, closing gaps, and confirming fitness for intended use through Performance Qualification focused on critical-to-quality attributes.</p>
+<p>This approach demonstrates that equipment or systems are performing satisfactorily for their intended purpose, the process is controlled, and patient risks are effectively managed — thereby satisfying regulatory validation requirements.</p>
+<div class="concept-box">
+<h4>ASTM E2500: The Specification, Design, and Verification Process</h4>
+<p>ASTM E2500 structures equipment qualification around three integrated phases:</p>
+<ul>
+<li><strong>Specification</strong> — Define critical requirements tied to patient risk</li>
+<li><strong>Design</strong> — Apply GEP with appropriate SME review</li>
+<li><strong>Verification</strong> — Leverage supplier testing; confirm critical-to-quality requirements are met</li>
+</ul>
+<p>A plan describing the approach and a report providing evidence supporting fitness for use remain appropriate regardless of terminology used.</p>
 </div>
-
-<hr class="appendix-divider">
-
+<h3>S1.3 Different Types of Computerized Systems</h3>
+<p>For integrated manufacturing systems where a computer-based system is part of overall functionality, a separate computerized system validation may not be required. Where computer-controlled equipment is one component of a wider manufacturing or process control system, verification can be an integrated part of the overall process validation effort.</p>
+<p>IT systems with no direct correlation to manufacturing (e.g., clinical trials data collection, adverse event management, product release systems) have no direct parallel to process validation. Acceptance depends on satisfactory functional testing equivalent to OQ prior to controlled cut-over into the live environment.</p>
+<h3>S1.4 Terminology</h3>
+<p>GAMP 5 recognizes that different organizations may use different terminology:</p>
+<ul>
+<li>Some adopt "verification" for both computer and control systems</li>
+<li>Others retain "qualification" language but apply ASTM E2500 principles</li>
+<li>Still others use verification for controlled process equipment and qualification for computer systems</li>
+</ul>
+<p>GAMP Guidance is neither mandatory nor prescriptive. Individual companies should decide what terms and precise approach they will use, provided the outcome demonstrates fitness for intended use with appropriate risk control.</p>
+</div>
+<div class="right-column">
+<h2>中文解析：GAMP 5 vs. ASTM E2500</h2>
+<div class="concept-box">
+<h4>兩個框架的本質差異</h4>
+<p><span class="key-term">ASTM E2500</span> 的核心目標是製造設備與製程系統的規格、設計和驗證（specification, design, and verification）。它是工程導向的，強調把設備的 IQ/OQ 活動整合成一個以病人風險為中心的「verification」流程，大量借用供應商的測試文件。</p>
+<p><span class="key-term">GAMP 5</span> 的範圍更廣：它涵蓋所有電腦化系統，包括製造執行系統、實驗室系統、ERP、臨床數據系統等，不只是製造設備。</p>
+<p><strong>互補關係</strong>：ASTM E2500 的思想直接影響了 GAMP 5 的演進——兩者的核心都是「科學+風險導向」，都反對重複且無價值的文件。</p>
+</div>
+<div class="analogy-box">
+<h4>實際場景比較</h4>
+<p><strong>使用 ASTM E2500 的情境</strong>：廠房新建時導入無菌灌裝機（aseptic filling machine）。設備製造商的工廠驗收測試（FAT）、現場驗收測試（SAT）可直接作為 verification 的一部分，不需要再另外跑完整的 IQ/OQ 文件套組。</p>
+<p><strong>使用 GAMP 5 的情境</strong>：同一條灌裝線上的 MES（Manufacturing Execution System）或 SCADA 系統的電腦化系統驗證，屬於 GAMP 5 的主要適用範疇。</p>
+<p><strong>重疊區域</strong>：整合控制系統（PLC/DCS）通常兩者都適用；此時依公司政策選擇術語即可，關鍵是文件證明 critical-to-quality requirements 已被驗證。</p>
+</div>
+<div class="key-point-box">
+<h4>查廠重點</h4>
+<p>稽核員關注的不是你用哪個術語（IQ/OQ 或 verification），而是：</p>
+<ul>
+<li>你有沒有<strong>識別出對病人風險有影響的關鍵要求</strong>（critical-to-quality requirements）？</li>
+<li>你有沒有<strong>提供充分的文件證據</strong>說明這些要求已被驗證？</li>
+<li>你有沒有一份<strong>計畫（plan）</strong>說明你的驗證方法，以及一份<strong>報告（report）</strong>作為完成的證據？</li>
+</ul>
+</div>
+<div class="note-box">
+<h4>CDMO 情境應用</h4>
+<p>在 CDMO 環境，同一台設備可能生產多個客戶的產品。建議在設備層級做一次完整的 GAMP/ASTM E2500 驗證，然後在產品層級的製程驗證（PV）中確認該設備在特定產品條件下的表現。這樣可以避免每換一個產品就重跑完整 IQ/OQ 的資源浪費。</p>
+</div>
+</div>
+</div>
+<hr class="appendix-divider"/>
 <!-- ============================================================ -->
 <!-- APPENDIX S2: ELECTRONIC PRODUCTION RECORDS -->
 <!-- ============================================================ -->
-<h2 class="section-title" id="s2">Appendix S2 — Electronic Production Records (EPR / eBR) (p351–p361)</h2>
-
+<h2 class="section-title" id="s2"><strong>Appendix S2 — Electronic Production Records (EPR / eBR) (p351–p361) Appendix S2 — 電子生產紀錄 (EPR / eBR)</strong></h2>
 <div class="two-column">
-    <div class="left-column">
-        <h2>S2.1 Introduction</h2>
-        <p>This appendix describes best practices for Electronic Production Records (EPRs) in GxP manufacturing environments. EPRs support modern manufacturing paradigms including <span class="key-term">Review by Exception (RBE)</span>, real-time disposition, cloud technology, and blockchain technology.</p>
-        <p>The ISA-88 standard provides the basis for establishing electronic system terminology equivalent to paper-based batch records. Key terminology mappings:</p>
-
-        <h3>S2.2 GxP-Relevant Data Considerations</h3>
-        <p>Systems must be capable of reconstruction of GxP-relevant data in appropriate formats. Key data elements to define include production record data requirements, <span class="key-term">data audit trails</span>, security and user rights, master data and metadata, and time zone/timestamp reconciliation methods.</p>
-
-        <h4>Audit Trail Terminology</h4>
-        <p>Data audit trails — as required by various regulations — record operator actions that create, modify, or delete GMP records during normal operations, and must be clearly distinguished from system technical logs and other event logs. The data audit trail provides electronic equivalency to striking out data on paper: recording the original and new values, the user, the timestamp, and in some cases, the reason for the change.</p>
-
-        <h4>Audit Trail Review</h4>
-        <div class="quote-box">
+<div class="left-column">
+<h2>S2.1 Introduction</h2>
+<p>This appendix describes best practices for Electronic Production Records (EPRs) in GxP manufacturing environments. EPRs support modern manufacturing paradigms including <span class="key-term">Review by Exception (RBE)</span>, real-time disposition, cloud technology, and blockchain technology.</p>
+<p>The ISA-88 standard provides the basis for establishing electronic system terminology equivalent to paper-based batch records. Key terminology mappings:</p>
+<h3>S2.2 GxP-Relevant Data Considerations</h3>
+<p>Systems must be capable of reconstruction of GxP-relevant data in appropriate formats. Key data elements to define include production record data requirements, <span class="key-term">data audit trails</span>, security and user rights, master data and metadata, and time zone/timestamp reconciliation methods.</p>
+<h4>Audit Trail Terminology</h4>
+<p>Data audit trails — as required by various regulations — record operator actions that create, modify, or delete GMP records during normal operations, and must be clearly distinguished from system technical logs and other event logs. The data audit trail provides electronic equivalency to striking out data on paper: recording the original and new values, the user, the timestamp, and in some cases, the reason for the change.</p>
+<h4>Audit Trail Review</h4>
+<div class="quote-box">
             "Audit trail review is similar to assessing cross-outs on paper when reviewing data. Personnel responsible for record review under CGMP should review the audit trails that capture changes to data associated with the record as they review the rest of the record." — FDA Guidance on Data Integrity
         </div>
-        <p>Key FDA/MHRA guidance principles:</p>
-        <ul>
-            <li>Review frequency for audit trails should match review frequency for the underlying data</li>
-            <li>Risk assessment should determine review frequency where regulations do not specify</li>
-            <li>Review need not include every system activity (log-on/off, keystrokes)</li>
-            <li>Exception reporting (a validated search tool identifying abnormal data or actions) is an acceptable approach</li>
-            <li>Reviewers must have sufficient knowledge and system access to review relevant audit trails, raw data, and metadata</li>
-        </ul>
-
-        <h3>S2.3 EPR Data Types and ALCOA+</h3>
-        <p><span class="key-term">ALCOA+</span> principles (Attributable, Legible, Contemporaneous, Original, Accurate, plus Complete, Consistent, Enduring, Available) must be applied to EPR data. Only records and data required by applicable regulations are considered GxP electronic records within an EPR.</p>
-        <p>Systems across the manufacturing domain that may generate or hold EPR data include: Document Management Systems, Supply Chain Management, MES, Data Historians, ERP, Process Control Systems (SCADA/DCS), and LIMS.</p>
-
-        <h3>S2.4 Data Capturing, Processing, and Output</h3>
-        <p><strong>Data Input:</strong> Master recipes are created from multiple data sources; transformation from paper to electronic form requires verification of equivalency. ALCOA+ principles apply.</p>
-        <p><strong>Data Processing:</strong> Key factors include verified rounding rules, calculation definitions, alerts, alarms, and specific events that may automatically create data or initiate actions. Audit trails and data review procedures are essential.</p>
-        <p><strong>Data Output:</strong> Verified methods must generate reports from EPRs presenting all required information accurately in timely, human-readable form. Interface design, development, and verification requires specific attention; early involvement of interface partners is recommended.</p>
-
-        <h3>S2.5 Review by Exception (RBE)</h3>
-        <p>RBE screens manufacturing data through verified system functionality to create focused review reports that include all critical process exceptions while reducing the need to review in-tolerance data. RBE:</p>
-        <ul>
-            <li>Does not eliminate or change data in EPRs</li>
-            <li>Is a verified extension of existing report-generation functionality</li>
-            <li>Filters EPR data presented to personnel, including all critical exceptions or deviations</li>
-            <li>Is applied to well-understood processes with operational experience</li>
-            <li>Requires that even when no exceptions occur, a report is always generated and examined by approvers</li>
-        </ul>
-
-        <h3>S2.6 Technology Considerations</h3>
-        <p><strong>Cloud Computing:</strong> Edge cloud (physically closer service provider) can mitigate risks of real-time process automation interruption. The end user is always ultimately responsible for determining and maintaining the validated state of cloud-based systems, regardless of cloud configuration.</p>
-        <p><strong>Blockchain:</strong> Blockchain's distributed, immutable ledger characteristics make it a candidate for audit trail implementations. Every node verifies each data entry; transaction data is not centrally stored but distributed across designated nodes. This effectively creates a write-once, read-only data storage implementation.</p>
-    </div>
-
-    <div class="right-column">
-        <h2>中文解析：電子批次記錄 (eBR)</h2>
-        <div class="concept-box">
-            <h4>eBR vs. 傳統紙本批次記錄</h4>
-            <p>電子批次記錄（eBR / Electronic Batch Record）是 EPR 的輸出報告形式。GAMP 5 的 ISA-88 術語體系幫助我們理解這個架構：</p>
-            <ul>
-                <li><strong>Master Recipe</strong> = 你的配方/製程指令（相當於 MBR）</li>
-                <li><strong>Control Recipe</strong> = 針對特定批次的 MBR 實例（相當於 Production Batch Record 的指令部分）</li>
-                <li><strong>EPR</strong> = 執行過程中產生的所有數據（分散在多個系統中）</li>
-                <li><strong>Batch Report</strong> = 彙整給 QA 審查/放行的人類可讀文件（就是我們說的 eBR 或 eDHR）</li>
-            </ul>
-            <p>重要區分：EPR 是數據的儲存，Batch Report 是審查用的呈現形式。兩者之間的轉換（report generation）本身需要被驗證。</p>
-        </div>
-
-        <div class="key-point-box">
-            <h4>CDMO 導入 eBR 的關鍵挑戰</h4>
-            <p>當 CDMO 為客戶產品導入電子批次記錄時，稽核員特別關注以下問題：</p>
-            <ul>
-                <li><strong>數據所有權</strong>：批次數據最終歸客戶還是 CDMO？數據遷移或合約終止時如何處理？</li>
-                <li><strong>Master Recipe 控管</strong>：客戶提供的配方如何安全地匯入 MES？版本控制如何確保？</li>
-                <li><strong>跨系統完整性</strong>：當 ERP、MES、LIMS 各自保存一部分 EPR 數據時，如何確保整份 eBR 的完整性（completeness）？</li>
-                <li><strong>稽核軌跡範圍</strong>：所有 GMP 相關操作（修改、刪除、電子簽名）都必須被記錄，且與系統技術日誌明確區分。</li>
-            </ul>
-        </div>
-
-        <div class="note-box">
-            <h4>21 CFR Part 11 / EU Annex 11 的核心要求</h4>
-            <p>兩個法規的共同要求核心：</p>
-            <ul>
-                <li><strong>稽核軌跡（Audit Trail）</strong>：必須記錄誰、何時、修改了什麼（原值 vs. 新值）</li>
-                <li><strong>電子簽名（Electronic Signature）</strong>：與手寫簽名法律效力相同；必須包含姓名、日期時間、簽名意義（例如：審查/批准）</li>
-                <li><strong>記錄保護</strong>：記錄必須防止未經授權的修改（access control + audit trail 雙重保護）</li>
-                <li><strong>可讀性與可存取性</strong>：在保存期間內必須保持可存取且人類可讀</li>
-            </ul>
-            <p>稽核員的 483 觀察重點：「Audit trail is not reviewed as part of batch record review.」— 這是最常見的 eBR 系統缺失。</p>
-        </div>
-
-        <div class="analogy-box">
-            <h4>Review by Exception (RBE) — 實際意義</h4>
-            <p>傳統做法：QA 人員審閱整份批次記錄，包括所有在允差內的製程數據。</p>
-            <p>RBE 做法：系統自動篩選，只把<strong>超出規格、需要人工判斷的例外項目</strong>呈現給 QA 審查。正常的數據不需要人眼逐一確認。</p>
-            <p>好處：大幅提高審查效率；風險：RBE 篩選邏輯本身必須經過嚴格驗證，否則可能遺漏真正的問題。</p>
-            <p>查廠重點：即使批次完全沒有例外，RBE 報告也必須被產生並由授權人員審核（不能「沒有例外 = 不需要簽名」）。</p>
-        </div>
-
-        <div class="practice-box">
-            <h4>Cloud EPR 驗證狀態維護責任</h4>
-            <p>GAMP 5 明確聲明：即使系統部署在雲端，<strong>終端使用者（即藥廠）仍對驗證狀態負最終責任</strong>。這對使用 SaaS MES 的公司影響深遠：</p>
-            <ul>
-                <li>供應商的軟體更新需要評估對驗證狀態的衝擊</li>
-                <li>必須在供應商合約中明確服務水準協議（SLA）和資料完整性責任</li>
-                <li>需要建立監控機制，確保雲端系統的可用性符合生產需求</li>
-            </ul>
-        </div>
-    </div>
+<p>Key FDA/MHRA guidance principles:</p>
+<ul>
+<li>Review frequency for audit trails should match review frequency for the underlying data</li>
+<li>Risk assessment should determine review frequency where regulations do not specify</li>
+<li>Review need not include every system activity (log-on/off, keystrokes)</li>
+<li>Exception reporting (a validated search tool identifying abnormal data or actions) is an acceptable approach</li>
+<li>Reviewers must have sufficient knowledge and system access to review relevant audit trails, raw data, and metadata</li>
+</ul>
+<h3>S2.3 EPR Data Types and ALCOA+</h3>
+<p><span class="key-term">ALCOA+</span> principles (Attributable, Legible, Contemporaneous, Original, Accurate, plus Complete, Consistent, Enduring, Available) must be applied to EPR data. Only records and data required by applicable regulations are considered GxP electronic records within an EPR.</p>
+<p>Systems across the manufacturing domain that may generate or hold EPR data include: Document Management Systems, Supply Chain Management, MES, Data Historians, ERP, Process Control Systems (SCADA/DCS), and LIMS.</p>
+<h3>S2.4 Data Capturing, Processing, and Output</h3>
+<p><strong>Data Input:</strong> Master recipes are created from multiple data sources; transformation from paper to electronic form requires verification of equivalency. ALCOA+ principles apply.</p>
+<p><strong>Data Processing:</strong> Key factors include verified rounding rules, calculation definitions, alerts, alarms, and specific events that may automatically create data or initiate actions. Audit trails and data review procedures are essential.</p>
+<p><strong>Data Output:</strong> Verified methods must generate reports from EPRs presenting all required information accurately in timely, human-readable form. Interface design, development, and verification requires specific attention; early involvement of interface partners is recommended.</p>
+<h3>S2.5 Review by Exception (RBE)</h3>
+<p>RBE screens manufacturing data through verified system functionality to create focused review reports that include all critical process exceptions while reducing the need to review in-tolerance data. RBE:</p>
+<ul>
+<li>Does not eliminate or change data in EPRs</li>
+<li>Is a verified extension of existing report-generation functionality</li>
+<li>Filters EPR data presented to personnel, including all critical exceptions or deviations</li>
+<li>Is applied to well-understood processes with operational experience</li>
+<li>Requires that even when no exceptions occur, a report is always generated and examined by approvers</li>
+</ul>
+<h3>S2.6 Technology Considerations</h3>
+<p><strong>Cloud Computing:</strong> Edge cloud (physically closer service provider) can mitigate risks of real-time process automation interruption. The end user is always ultimately responsible for determining and maintaining the validated state of cloud-based systems, regardless of cloud configuration.</p>
+<p><strong>Blockchain:</strong> Blockchain's distributed, immutable ledger characteristics make it a candidate for audit trail implementations. Every node verifies each data entry; transaction data is not centrally stored but distributed across designated nodes. This effectively creates a write-once, read-only data storage implementation.</p>
 </div>
-
+<div class="right-column">
+<h2>中文解析：電子批次記錄 (eBR)</h2>
+<div class="concept-box">
+<h4>eBR vs. 傳統紙本批次記錄</h4>
+<p>電子批次記錄（eBR / Electronic Batch Record）是 EPR 的輸出報告形式。GAMP 5 的 ISA-88 術語體系幫助我們理解這個架構：</p>
+<ul>
+<li><strong>Master Recipe</strong> = 你的配方/製程指令（相當於 MBR）</li>
+<li><strong>Control Recipe</strong> = 針對特定批次的 MBR 實例（相當於 Production Batch Record 的指令部分）</li>
+<li><strong>EPR</strong> = 執行過程中產生的所有數據（分散在多個系統中）</li>
+<li><strong>Batch Report</strong> = 彙整給 QA 審查/放行的人類可讀文件（就是我們說的 eBR 或 eDHR）</li>
+</ul>
+<p>重要區分：EPR 是數據的儲存，Batch Report 是審查用的呈現形式。兩者之間的轉換（report generation）本身需要被驗證。</p>
+</div>
+<div class="key-point-box">
+<h4>CDMO 導入 eBR 的關鍵挑戰</h4>
+<p>當 CDMO 為客戶產品導入電子批次記錄時，稽核員特別關注以下問題：</p>
+<ul>
+<li><strong>數據所有權</strong>：批次數據最終歸客戶還是 CDMO？數據遷移或合約終止時如何處理？</li>
+<li><strong>Master Recipe 控管</strong>：客戶提供的配方如何安全地匯入 MES？版本控制如何確保？</li>
+<li><strong>跨系統完整性</strong>：當 ERP、MES、LIMS 各自保存一部分 EPR 數據時，如何確保整份 eBR 的完整性（completeness）？</li>
+<li><strong>稽核軌跡範圍</strong>：所有 GMP 相關操作（修改、刪除、電子簽名）都必須被記錄，且與系統技術日誌明確區分。</li>
+</ul>
+</div>
+<div class="note-box">
+<h4>21 CFR Part 11 / EU Annex 11 的核心要求</h4>
+<p>兩個法規的共同要求核心：</p>
+<ul>
+<li><strong>稽核軌跡（Audit Trail）</strong>：必須記錄誰、何時、修改了什麼（原值 vs. 新值）</li>
+<li><strong>電子簽名（Electronic Signature）</strong>：與手寫簽名法律效力相同；必須包含姓名、日期時間、簽名意義（例如：審查/批准）</li>
+<li><strong>記錄保護</strong>：記錄必須防止未經授權的修改（access control + audit trail 雙重保護）</li>
+<li><strong>可讀性與可存取性</strong>：在保存期間內必須保持可存取且人類可讀</li>
+</ul>
+<p>稽核員的 483 觀察重點：「Audit trail is not reviewed as part of batch record review.」— 這是最常見的 eBR 系統缺失。</p>
+</div>
+<div class="analogy-box">
+<h4>Review by Exception (RBE) — 實際意義</h4>
+<p>傳統做法：QA 人員審閱整份批次記錄，包括所有在允差內的製程數據。</p>
+<p>RBE 做法：系統自動篩選，只把<strong>超出規格、需要人工判斷的例外項目</strong>呈現給 QA 審查。正常的數據不需要人眼逐一確認。</p>
+<p>好處：大幅提高審查效率；風險：RBE 篩選邏輯本身必須經過嚴格驗證，否則可能遺漏真正的問題。</p>
+<p>查廠重點：即使批次完全沒有例外，RBE 報告也必須被產生並由授權人員審核（不能「沒有例外 = 不需要簽名」）。</p>
+</div>
+<div class="practice-box">
+<h4>Cloud EPR 驗證狀態維護責任</h4>
+<p>GAMP 5 明確聲明：即使系統部署在雲端，<strong>終端使用者（即藥廠）仍對驗證狀態負最終責任</strong>。這對使用 SaaS MES 的公司影響深遠：</p>
+<ul>
+<li>供應商的軟體更新需要評估對驗證狀態的衝擊</li>
+<li>必須在供應商合約中明確服務水準協議（SLA）和資料完整性責任</li>
+<li>需要建立監控機制，確保雲端系統的可用性符合生產需求</li>
+</ul>
+</div>
+</div>
+</div>
 <div class="concept-box"><table>
-            <thead>
-                <tr><th>Paper System</th><th>Electronic Equivalent</th><th>Description</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>Master Batch Record (MBR)</td><td>Master Recipe</td><td>Product name, formulas, equipment requirements, sequence of activities, BoM</td></tr>
-                <tr><td>Production Batch Record</td><td>Control Recipe</td><td>MBR dispatched for execution with schedule, specific quantities, batch instance data</td></tr>
-                <tr><td>Electronic Production Record</td><td>EPR</td><td>Data and information created or entered during Control Recipe execution; may span multiple systems/databases</td></tr>
-                <tr><td>Batch (Production) Report</td><td>Data Report</td><td>Human-readable output for review, disposition, investigation, audit, and analysis</td></tr>
-            </tbody>
-        </table>
-
-        </div><hr class="appendix-divider">
-
+<thead>
+<tr><th>Paper System</th><th>Electronic Equivalent</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Master Batch Record (MBR)</td><td>Master Recipe</td><td>Product name, formulas, equipment requirements, sequence of activities, BoM</td></tr>
+<tr><td>Production Batch Record</td><td>Control Recipe</td><td>MBR dispatched for execution with schedule, specific quantities, batch instance data</td></tr>
+<tr><td>Electronic Production Record</td><td>EPR</td><td>Data and information created or entered during Control Recipe execution; may span multiple systems/databases</td></tr>
+<tr><td>Batch (Production) Report</td><td>Data Report</td><td>Human-readable output for review, disposition, investigation, audit, and analysis</td></tr>
+</tbody>
+</table>
+</div><hr class="appendix-divider"/>
 <!-- ============================================================ -->
 <!-- APPENDIX S3: END USER APPLICATIONS / SPREADSHEETS -->
 <!-- ============================================================ -->
-<h2 class="section-title" id="s3">Appendix S3 — End User Applications Including Spreadsheets (p361–p370)</h2>
-
+<h2 class="section-title" id="s3"><strong>Appendix S3 — End User Applications Including Spreadsheets (p361–p370) Appendix S3 — 終端使用者應用（含試算表）</strong></h2>
 <div class="two-column">
-    <div class="left-column">
-        <h2>S3.1 Introduction</h2>
-        <p>End user applications — spreadsheets, small databases, statistical applications, and other small applications — present particular compliance challenges in GxP environments. Spreadsheets tend to be the most under-documented systems because:</p>
-        <ul>
-            <li>Users regard them as part of the desktop environment</li>
-            <li>Users may not understand or be aware of quality procedures</li>
-            <li>The ease with which applications can be built without formal training</li>
-            <li>The significant data processing power they can have</li>
-        </ul>
-        <p>The level and rigor of specification and verification applied to end user applications should be based on risk, complexity, novelty, and intended use.</p>
-
-        <h3>S3.2 Application Types</h3>
-
-        <h4>Disposable Spreadsheets</h4>
-        <p>Used in the same way as a hand calculator — results are calculated and the electronic copy is not retained. The calculation result must be printed, labeled, and signed (or saved to a static format with an external electronic signature). The arithmetic manipulation performed must be clearly documented. Calculations used to process GxP data should be verified — this means confirming the formulas are correct, not testing native spreadsheet functions.</p>
-
-        <h4>Spreadsheets Retained as Documents</h4>
-        <p>When used to both record GxP data and manipulate it, spreadsheets should be managed as documents. Calculations should be verified and fully explained. Control options include: internal security options (password-protecting cells), storing in a secure directory, or managing in an EDMS. If adequate control cannot be achieved, a static version (secure PDF or hardcopy) should be the primary record.</p>
-
-        <h4>Spreadsheets as Databases</h4>
-        <p>Using spreadsheets as GxP databases presents significant risk because:</p>
-        <ul>
-            <li>Limited or no capability to restrict user data editing</li>
-            <li>No native audit trail support</li>
-            <li>Every save creates an entirely new database copy — code changes may go unnoticed</li>
-        </ul>
-        <p>Where audit trails are required, use of spreadsheets is inadvisable as a general rule. A proper database application is a far better alternative.</p>
-
-        <h4>Template Applications</h4>
-        <p>Template solutions where data is subjected to standard manipulation require careful consideration of:</p>
-        <ul>
-            <li>Verified calculations</li>
-            <li>Version control and effective change management</li>
-            <li>Access control (ideally, all cells except data entry fields should be locked)</li>
-            <li>Macro management (macros are custom software — even keystroke-captured macros contain VBA code)</li>
-            <li>Integration testing for multi-module sheets with cell links between worksheets</li>
-            <li>Electronic record controls for retained output files</li>
-        </ul>
-
-        <h3>S3.3 GAMP Category Assignment</h3>
-        <p>The underlying spreadsheet tool (e.g., Excel) is <strong>Category 1</strong>. Spreadsheets themselves span a continuum of Categories 3, 4, and 5:</p>
-        <ul>
-            <li><strong>Category 3</strong> — Simple native function calculations (e.g., calculating mean and SD using built-in functions)</li>
-            <li><strong>Category 4</strong> — Moderate complexity with configuration elements, e.g., simple Boolean logic (IF branches based on user input)</li>
-            <li><strong>Category 5</strong> — Custom macros, sophisticated nested logic, or lookup functions</li>
-        </ul>
-        <p>Note: For end user applications, Category 4 focuses on complexity rather than configurability (the standard GAMP definition).</p>
-
-        <h3>S3.4 Risk-Based Controls</h3>
-        <p>Four control dimensions apply:</p>
-        <ul>
-            <li><strong>Degree of Verification</strong> — Complexity determines rigor; macros require functional testing; logical branches require multiple logic path testing</li>
-            <li><strong>Security Control</strong> — Combination of infrastructure controls (restricted directory access) and application-level controls (cell password protection). GxP data should be saved to a secure, backed-up drive.</li>
-            <li><strong>Change Control</strong> — All GxP end user applications must be subject to change control; EDMS or code library tools support version management</li>
-            <li><strong>Infrastructure Control</strong> — The spreadsheet environment (e.g., Excel installation) is Category 1 software; IT manages its verification and compatibility with the standard desktop build</li>
-        </ul>
-
-        <h3>S3.5 Examples of Typical Approaches</h3>
-        </div>
-
-    <div class="right-column">
-        <h2>中文解析：試算表驗證</h2>
-        <div class="key-point-box">
-            <h4>FDA 483 最常見觀察項目：未驗證的 Excel 試算表</h4>
-            <p>這是製藥界最普遍的合規問題之一。常見的 483 觀察文字是：</p>
-            <p><em>"Laboratory controls do not include the validation of test methods and associated computerized systems. Specifically, the spreadsheet used to calculate [product X assay results] was not validated."</em></p>
-            <p>問題的根源在於：試算表被視為「日常辦公工具」而非「電腦化系統」，因此沒有納入 CSV 程式管控。</p>
-        </div>
-
-        <div class="concept-box">
-            <h4>GxP 試算表最低文件要求（實務清單）</h4>
-            <p>根據 GAMP 5 S3 附錄，以下是風險導向的最低文件要求：</p>
-            <ul>
-                <li><strong>需求規格（RS）</strong>：說明試算表的用途、輸入數據類型、計算目的、輸出格式（通常一頁即可）</li>
-                <li><strong>公式驗證記錄</strong>：列出所有儲存格公式（可列印公式視圖），由第三方確認公式邏輯正確</li>
-                <li><strong>測試案例</strong>：至少包括正常值、邊界值、已知結果的樣本計算</li>
-                <li><strong>版本控制</strong>：版本號、修改日期、修改者、審核者，儲存於安全目錄</li>
-                <li><strong>存取控制</strong>：非輸入欄位應鎖定，防止意外修改</li>
-                <li><strong>變更控制程序</strong>：任何修改都需要重新驗證並記錄影響評估</li>
-            </ul>
-        </div>
-
-        <div class="analogy-box">
-            <h4>Macro（巨集）的特殊風險</h4>
-            <p>許多使用者認為「錄製巨集」只是記錄按鍵動作，不是真正的程式設計。但 GAMP 5 明確指出：<strong>即使是錄製的巨集，背後也是 VBA 程式碼</strong>。</p>
-            <p>這意味著：</p>
-            <ul>
-                <li>含有巨集的試算表必須視為 Category 5 軟體</li>
-                <li>所有邏輯分支（IF 判斷）都需要測試</li>
-                <li>巨集碼需要版本控制（不能只控制試算表本身）</li>
-                <li>如果 VBA 碼使用了外部引用或 API，還需要整合測試</li>
-            </ul>
-            <p>建議做法：如果業務需求需要複雜巨集，評估是否應直接使用正式驗證過的系統（例如 LIMS、MES）會更安全。</p>
-        </div>
-
-        <div class="note-box">
-            <h4>試算表作為資料庫：為何危險</h4>
-            <p>GAMP 5 非常明確地說：<strong>需要稽核軌跡的 GxP 資料，不應使用試算表儲存</strong>。原因：</p>
-            <ul>
-                <li>Excel 沒有原生稽核軌跡（Track Changes 功能不符合 GxP 要求）</li>
-                <li>每次儲存都會覆蓋整個檔案，無法追蹤誰改了哪一個儲存格</li>
-                <li>存取控制薄弱，無法有效防止未授權修改</li>
-            </ul>
-            <p>如果目前有用 Excel 管理 GxP 資料（例如穩定性數據表、OOS 追蹤表），建議納入風險評估，優先考慮遷移到有原生稽核軌跡的系統。</p>
-        </div>
-
-        <div class="practice-box">
-            <h4>CDMO 情境：QC 計算試算表驗證策略</h4>
-            <p>在 CDMO 環境，實驗室經常使用 Excel 計算含量均一度、效價、降解物等。建議策略：</p>
-            <ol>
-                <li>建立試算表盤點清單（Inventory），依 GxP 影響分類</li>
-                <li>高影響（產品放行決策相關）→ 正式 RS + 驗證 + 版本控制</li>
-                <li>低影響（研究用輔助計算）→ 文件化說明計算目的即可</li>
-                <li>考慮使用 EDMS 管控所有高影響試算表，確保版本完整性</li>
-                <li>定期（例如每年）審查盤點清單，確認沒有未管控的新增試算表</li>
-            </ol>
-        </div>
-    </div>
+<div class="left-column">
+<h2>S3.1 Introduction</h2>
+<p>End user applications — spreadsheets, small databases, statistical applications, and other small applications — present particular compliance challenges in GxP environments. Spreadsheets tend to be the most under-documented systems because:</p>
+<ul>
+<li>Users regard them as part of the desktop environment</li>
+<li>Users may not understand or be aware of quality procedures</li>
+<li>The ease with which applications can be built without formal training</li>
+<li>The significant data processing power they can have</li>
+</ul>
+<p>The level and rigor of specification and verification applied to end user applications should be based on risk, complexity, novelty, and intended use.</p>
+<h3>S3.2 Application Types</h3>
+<h4>Disposable Spreadsheets</h4>
+<p>Used in the same way as a hand calculator — results are calculated and the electronic copy is not retained. The calculation result must be printed, labeled, and signed (or saved to a static format with an external electronic signature). The arithmetic manipulation performed must be clearly documented. Calculations used to process GxP data should be verified — this means confirming the formulas are correct, not testing native spreadsheet functions.</p>
+<h4>Spreadsheets Retained as Documents</h4>
+<p>When used to both record GxP data and manipulate it, spreadsheets should be managed as documents. Calculations should be verified and fully explained. Control options include: internal security options (password-protecting cells), storing in a secure directory, or managing in an EDMS. If adequate control cannot be achieved, a static version (secure PDF or hardcopy) should be the primary record.</p>
+<h4>Spreadsheets as Databases</h4>
+<p>Using spreadsheets as GxP databases presents significant risk because:</p>
+<ul>
+<li>Limited or no capability to restrict user data editing</li>
+<li>No native audit trail support</li>
+<li>Every save creates an entirely new database copy — code changes may go unnoticed</li>
+</ul>
+<p>Where audit trails are required, use of spreadsheets is inadvisable as a general rule. A proper database application is a far better alternative.</p>
+<h4>Template Applications</h4>
+<p>Template solutions where data is subjected to standard manipulation require careful consideration of:</p>
+<ul>
+<li>Verified calculations</li>
+<li>Version control and effective change management</li>
+<li>Access control (ideally, all cells except data entry fields should be locked)</li>
+<li>Macro management (macros are custom software — even keystroke-captured macros contain VBA code)</li>
+<li>Integration testing for multi-module sheets with cell links between worksheets</li>
+<li>Electronic record controls for retained output files</li>
+</ul>
+<h3>S3.3 GAMP Category Assignment</h3>
+<p>The underlying spreadsheet tool (e.g., Excel) is <strong>Category 1</strong>. Spreadsheets themselves span a continuum of Categories 3, 4, and 5:</p>
+<ul>
+<li><strong>Category 3</strong> — Simple native function calculations (e.g., calculating mean and SD using built-in functions)</li>
+<li><strong>Category 4</strong> — Moderate complexity with configuration elements, e.g., simple Boolean logic (IF branches based on user input)</li>
+<li><strong>Category 5</strong> — Custom macros, sophisticated nested logic, or lookup functions</li>
+</ul>
+<p>Note: For end user applications, Category 4 focuses on complexity rather than configurability (the standard GAMP definition).</p>
+<h3>S3.4 Risk-Based Controls</h3>
+<p>Four control dimensions apply:</p>
+<ul>
+<li><strong>Degree of Verification</strong> — Complexity determines rigor; macros require functional testing; logical branches require multiple logic path testing</li>
+<li><strong>Security Control</strong> — Combination of infrastructure controls (restricted directory access) and application-level controls (cell password protection). GxP data should be saved to a secure, backed-up drive.</li>
+<li><strong>Change Control</strong> — All GxP end user applications must be subject to change control; EDMS or code library tools support version management</li>
+<li><strong>Infrastructure Control</strong> — The spreadsheet environment (e.g., Excel installation) is Category 1 software; IT manages its verification and compatibility with the standard desktop build</li>
+</ul>
+<h3>S3.5 Examples of Typical Approaches</h3>
 </div>
-
+<div class="right-column">
+<h2>中文解析：試算表驗證</h2>
+<div class="key-point-box">
+<h4>FDA 483 最常見觀察項目：未驗證的 Excel 試算表</h4>
+<p>這是製藥界最普遍的合規問題之一。常見的 483 觀察文字是：</p>
+<p><em>"Laboratory controls do not include the validation of test methods and associated computerized systems. Specifically, the spreadsheet used to calculate [product X assay results] was not validated."</em></p>
+<p>問題的根源在於：試算表被視為「日常辦公工具」而非「電腦化系統」，因此沒有納入 CSV 程式管控。</p>
+</div>
+<div class="concept-box">
+<h4>GxP 試算表最低文件要求（實務清單）</h4>
+<p>根據 GAMP 5 S3 附錄，以下是風險導向的最低文件要求：</p>
+<ul>
+<li><strong>需求規格（RS）</strong>：說明試算表的用途、輸入數據類型、計算目的、輸出格式（通常一頁即可）</li>
+<li><strong>公式驗證記錄</strong>：列出所有儲存格公式（可列印公式視圖），由第三方確認公式邏輯正確</li>
+<li><strong>測試案例</strong>：至少包括正常值、邊界值、已知結果的樣本計算</li>
+<li><strong>版本控制</strong>：版本號、修改日期、修改者、審核者，儲存於安全目錄</li>
+<li><strong>存取控制</strong>：非輸入欄位應鎖定，防止意外修改</li>
+<li><strong>變更控制程序</strong>：任何修改都需要重新驗證並記錄影響評估</li>
+</ul>
+</div>
+<div class="analogy-box">
+<h4>Macro（巨集）的特殊風險</h4>
+<p>許多使用者認為「錄製巨集」只是記錄按鍵動作，不是真正的程式設計。但 GAMP 5 明確指出：<strong>即使是錄製的巨集，背後也是 VBA 程式碼</strong>。</p>
+<p>這意味著：</p>
+<ul>
+<li>含有巨集的試算表必須視為 Category 5 軟體</li>
+<li>所有邏輯分支（IF 判斷）都需要測試</li>
+<li>巨集碼需要版本控制（不能只控制試算表本身）</li>
+<li>如果 VBA 碼使用了外部引用或 API，還需要整合測試</li>
+</ul>
+<p>建議做法：如果業務需求需要複雜巨集，評估是否應直接使用正式驗證過的系統（例如 LIMS、MES）會更安全。</p>
+</div>
+<div class="note-box">
+<h4>試算表作為資料庫：為何危險</h4>
+<p>GAMP 5 非常明確地說：<strong>需要稽核軌跡的 GxP 資料，不應使用試算表儲存</strong>。原因：</p>
+<ul>
+<li>Excel 沒有原生稽核軌跡（Track Changes 功能不符合 GxP 要求）</li>
+<li>每次儲存都會覆蓋整個檔案，無法追蹤誰改了哪一個儲存格</li>
+<li>存取控制薄弱，無法有效防止未授權修改</li>
+</ul>
+<p>如果目前有用 Excel 管理 GxP 資料（例如穩定性數據表、OOS 追蹤表），建議納入風險評估，優先考慮遷移到有原生稽核軌跡的系統。</p>
+</div>
+<div class="practice-box">
+<h4>CDMO 情境：QC 計算試算表驗證策略</h4>
+<p>在 CDMO 環境，實驗室經常使用 Excel 計算含量均一度、效價、降解物等。建議策略：</p>
+<ol>
+<li>建立試算表盤點清單（Inventory），依 GxP 影響分類</li>
+<li>高影響（產品放行決策相關）→ 正式 RS + 驗證 + 版本控制</li>
+<li>低影響（研究用輔助計算）→ 文件化說明計算目的即可</li>
+<li>考慮使用 EDMS 管控所有高影響試算表，確保版本完整性</li>
+<li>定期（例如每年）審查盤點清單，確認沒有未管控的新增試算表</li>
+</ol>
+</div>
+</div>
+</div>
 <div class="concept-box"><table>
-            <thead>
-                <tr><th>Example</th><th>Impact / Complexity</th><th>Recommended Approach</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>Content uniformity calculation template</td><td>High / Low</td><td>RS + third-party verification of calculations + security + change control</td></tr>
-                <tr><td>Training attendance spreadsheet</td><td>Low / Low</td><td>Standard electronic document controls only</td></tr>
-                <tr><td>Desktop database for toxicology study</td><td>High / Medium</td><td>Full Category 4: Validation Plan, RS, FS/DS, traceability, testing, report</td></tr>
-                <tr><td>Clinical study statistics with VBA macros</td><td>High / High</td><td>Full Category 5: All above + rigorous macro and branch testing</td></tr>
-                <tr><td>SPC spreadsheet with complex logic/lookups</td><td>Low / High</td><td>Third-party verification of calculations + change control + security</td></tr>
-                <tr><td>Label disposition tracking database</td><td>Medium / Medium</td><td>Abbreviated Category 4: Combined RS/FS/DS + testing + report + change control</td></tr>
-            </tbody>
-        </table>
-    </div><hr class="appendix-divider">
-
+<thead>
+<tr><th>Example</th><th>Impact / Complexity</th><th>Recommended Approach</th></tr>
+</thead>
+<tbody>
+<tr><td>Content uniformity calculation template</td><td>High / Low</td><td>RS + third-party verification of calculations + security + change control</td></tr>
+<tr><td>Training attendance spreadsheet</td><td>Low / Low</td><td>Standard electronic document controls only</td></tr>
+<tr><td>Desktop database for toxicology study</td><td>High / Medium</td><td>Full Category 4: Validation Plan, RS, FS/DS, traceability, testing, report</td></tr>
+<tr><td>Clinical study statistics with VBA macros</td><td>High / High</td><td>Full Category 5: All above + rigorous macro and branch testing</td></tr>
+<tr><td>SPC spreadsheet with complex logic/lookups</td><td>Low / High</td><td>Third-party verification of calculations + change control + security</td></tr>
+<tr><td>Label disposition tracking database</td><td>Medium / Medium</td><td>Abbreviated Category 4: Combined RS/FS/DS + testing + report + change control</td></tr>
+</tbody>
+</table>
+</div><hr class="appendix-divider"/>
 <!-- ============================================================ -->
 <!-- APPENDIX S4: PATCH AND UPDATE MANAGEMENT -->
 <!-- ============================================================ -->
-<h2 class="section-title" id="s4">Appendix S4 — Patch and Update Management (p371–p373)</h2>
-
+<h2 class="section-title" id="s4"><strong>Appendix S4 — Patch and Update Management (p371–p373) Appendix S4 — 修補程式與更新管理</strong></h2>
 <div class="two-column">
-    <div class="left-column">
-        <h2>S4.1 Introduction</h2>
-        <p>Software patches, hot fixes, and service pack upgrades are a frequent operational reality due to:</p>
-        <ul>
-            <li>Security vulnerabilities in widely integrated/connected applications (theft of personal data or IP; theft of computing power for malicious software agents)</li>
-            <li>Defects in complex software requiring supplier-issued fixes for critical processes</li>
-            <li>Periodic supplier software updates</li>
-        </ul>
-        <p>Appropriate patch management is particularly important to maintain compliance and fitness for intended use of GxP regulated computerized systems.</p>
-
-        <h3>S4.2 Approach to Patch and Update Management</h3>
-        <p>Regulated companies should develop a patch and upgrade management approach that:</p>
-        <ul>
-            <li>Provides criteria for determining enterprise threat levels and urgency for applying patches</li>
-            <li>Allows flexibility considering both enterprise risk and compliance risk to regulated systems</li>
-            <li>Generates configuration records showing version and patch level at any point in the system life cycle</li>
-            <li>Generates change records describing what testing was done (may include enterprise-level and/or application-specific testing)</li>
-        </ul>
-
-        <div class="concept-box">
-            <h4>The Core Tension: Security vs. GxP Compliance</h4>
-            <p>Many patches address urgent security vulnerabilities where exploits may already be known or imminent. The time required to evaluate and test all affected GxP regulated computerized systems prior to implementation may increase risk to data integrity if a threat is actively being exploited.</p>
-            <p>Regulated companies must develop a risk-management approach that considers <strong>both</strong> regulatory compliance (validated state) and the level of threat to the system and wider computing environment.</p>
-        </div>
-
-        <h4>Quality Unit Role</h4>
-        <p>The quality unit should <strong>approve the process</strong> for risk evaluation of all patches but is generally not involved in individual patch assessments. If the QU is involved in an assessment, they should not have final say in how the patch is managed. <strong>Enterprise risk typically has to be given precedence over GxP risk.</strong> If a patch must be applied that carries undesirable GxP risk, business process owners and the quality unit should work together to mitigate through verification activities, temporary business process changes, or other approaches.</p>
-
-        <h4>Patch Strategies (Figure 49.1)</h4>
-        <p>The process should define criteria and required approvals for selecting each strategy, and include notification to affected parties (including the help desk) after patch application.</p>
-
-        <h3>S4.3 Configuration Management</h3>
-        <p>Accurate configuration management records support patch management by enabling:</p>
-        <ul>
-            <li><strong>Planning</strong> — Patches often must be applied sequentially; knowing the current patch level is prerequisite</li>
-            <li><strong>Interoperability</strong> — Systems running at multiple sites or interfacing with external applications may require matching patch levels</li>
-            <li><strong>Troubleshooting</strong> — Thorough knowledge of configuration is critical to understanding incidents</li>
-            <li><strong>Data Integrity</strong> — Demonstrating security gaps have been closed and when this was achieved</li>
-        </ul>
-        <p>Configuration records should be sufficient to show the current as-built state and when patches or upgrades have been applied.</p>
-    </div>
-
-    <div class="right-column">
-        <h2>中文解析：補丁管理的兩難困境</h2>
-        <div class="concept-box">
-            <h4>核心衝突：立即打補丁 vs. 先測試</h4>
-            <p>這是許多製藥廠 IT/品保部門的日常矛盾：</p>
-            <ul>
-                <li><strong>IT 資安立場</strong>：Windows/Linux 發布高危漏洞補丁 → 應在 24-48 小時內部署，否則系統暴露在攻擊風險中</li>
-                <li><strong>GxP 合規立場</strong>：任何對已驗證系統的變更都需要影響評估和測試，怎麼可能 48 小時內完成？</li>
-            </ul>
-            <p>GAMP 5 的答案是：<strong>企業資安風險通常優先於 GxP 法規風險</strong>。關鍵是要有一個被 QA 批准的程序，規定在不同威脅等級下採取不同策略，並且記錄決策依據。</p>
-        </div>
-
-        <div class="analogy-box">
-            <h4>實務補丁策略設計</h4>
-            <p>建議將補丁分為三類來管理：</p>
-            <ol>
-                <li><strong>緊急安全補丁（Critical Security）</strong>：CVSS 評分 ≥ 9.0 或已有主動攻擊 → 採用 Strategy 1/2，事後補齊測試記錄；通知幫服台和使用者；QA 記錄風險決策</li>
-                <li><strong>一般安全補丁（High/Medium）</strong>：計畫到下個維護窗口，在非 GxP 環境先測試 1-2 週後推送 GxP 系統 → 採用 Strategy 2/3</li>
-                <li><strong>功能更新 / Service Pack</strong>：完整的影響評估 + 回歸測試 + 變更控制 → 採用 Strategy 3/4</li>
-            </ol>
-        </div>
-
-        <div class="key-point-box">
-            <h4>查廠重點：補丁管理 SOP 的必備要素</h4>
-            <p>稽核員在檢查補丁管理時會尋找：</p>
-            <ul>
-                <li>是否有 QA 批准的補丁管理 SOP，且涵蓋 GxP 系統</li>
-                <li>每個補丁是否有影響評估記錄（即使決定「不測試」也要記錄理由）</li>
-                <li>配置管理記錄是否能顯示「某系統在某日期的補丁水準」</li>
-                <li>緊急補丁後是否有「補後測試」記錄（retrospective testing documentation）</li>
-                <li>跨站點系統是否維持相同補丁水準（interoperability 問題）</li>
-            </ul>
-        </div>
-
-        <div class="note-box">
-            <h4>組態管理記錄的實際重要性</h4>
-            <p>當生產系統發生資料異常或系統故障時，調查的第一步通常是查詢「事件發生時系統的確切版本和補丁水準」。如果組態管理記錄不完整，就無法確定是否因為某個補丁引入了問題，也無法向稽核員證明系統在事件前後的配置狀態。</p>
-            <p>建議工具：使用 CMDB（Configuration Management Database）或在變更控制系統中強制記錄每次補丁後的版本快照。</p>
-        </div>
-
-        <div class="practice-box">
-            <h4>OT/IT 融合環境（SCADA、DCS）的特殊挑戰</h4>
-            <p>生產環境的控制系統（例如無菌灌裝線的 PLC/SCADA）往往有更長的補丁延遲，因為：</p>
-            <ul>
-                <li>設備供應商（如 Rockwell、Siemens）需要先測試補丁對控制邏輯的影響再發布認可版本</li>
-                <li>生產設備通常 24/7 運行，難以安排停機維護窗口</li>
-                <li>某些老舊設備的作業系統（如 Windows XP embedded）已停止更新</li>
-            </ul>
-            <p>對策：針對 OT 環境建立補償控制措施（compensating controls），例如網路隔離（air gap / DMZ）、入侵偵測系統，並在補丁管理 SOP 中明確 OT 環境的特殊處理規則。</p>
-        </div>
-    </div>
+<div class="left-column">
+<h2>S4.1 Introduction</h2>
+<p>Software patches, hot fixes, and service pack upgrades are a frequent operational reality due to:</p>
+<ul>
+<li>Security vulnerabilities in widely integrated/connected applications (theft of personal data or IP; theft of computing power for malicious software agents)</li>
+<li>Defects in complex software requiring supplier-issued fixes for critical processes</li>
+<li>Periodic supplier software updates</li>
+</ul>
+<p>Appropriate patch management is particularly important to maintain compliance and fitness for intended use of GxP regulated computerized systems.</p>
+<h3>S4.2 Approach to Patch and Update Management</h3>
+<p>Regulated companies should develop a patch and upgrade management approach that:</p>
+<ul>
+<li>Provides criteria for determining enterprise threat levels and urgency for applying patches</li>
+<li>Allows flexibility considering both enterprise risk and compliance risk to regulated systems</li>
+<li>Generates configuration records showing version and patch level at any point in the system life cycle</li>
+<li>Generates change records describing what testing was done (may include enterprise-level and/or application-specific testing)</li>
+</ul>
+<div class="concept-box">
+<h4>The Core Tension: Security vs. GxP Compliance</h4>
+<p>Many patches address urgent security vulnerabilities where exploits may already be known or imminent. The time required to evaluate and test all affected GxP regulated computerized systems prior to implementation may increase risk to data integrity if a threat is actively being exploited.</p>
+<p>Regulated companies must develop a risk-management approach that considers <strong>both</strong> regulatory compliance (validated state) and the level of threat to the system and wider computing environment.</p>
 </div>
-
+<h4>Quality Unit Role</h4>
+<p>The quality unit should <strong>approve the process</strong> for risk evaluation of all patches but is generally not involved in individual patch assessments. If the QU is involved in an assessment, they should not have final say in how the patch is managed. <strong>Enterprise risk typically has to be given precedence over GxP risk.</strong> If a patch must be applied that carries undesirable GxP risk, business process owners and the quality unit should work together to mitigate through verification activities, temporary business process changes, or other approaches.</p>
+<h4>Patch Strategies (Figure 49.1)</h4>
+<p>The process should define criteria and required approvals for selecting each strategy, and include notification to affected parties (including the help desk) after patch application.</p>
+<h3>S4.3 Configuration Management</h3>
+<p>Accurate configuration management records support patch management by enabling:</p>
+<ul>
+<li><strong>Planning</strong> — Patches often must be applied sequentially; knowing the current patch level is prerequisite</li>
+<li><strong>Interoperability</strong> — Systems running at multiple sites or interfacing with external applications may require matching patch levels</li>
+<li><strong>Troubleshooting</strong> — Thorough knowledge of configuration is critical to understanding incidents</li>
+<li><strong>Data Integrity</strong> — Demonstrating security gaps have been closed and when this was achieved</li>
+</ul>
+<p>Configuration records should be sufficient to show the current as-built state and when patches or upgrades have been applied.</p>
+</div>
+<div class="right-column">
+<h2>中文解析：補丁管理的兩難困境</h2>
+<div class="concept-box">
+<h4>核心衝突：立即打補丁 vs. 先測試</h4>
+<p>這是許多製藥廠 IT/品保部門的日常矛盾：</p>
+<ul>
+<li><strong>IT 資安立場</strong>：Windows/Linux 發布高危漏洞補丁 → 應在 24-48 小時內部署，否則系統暴露在攻擊風險中</li>
+<li><strong>GxP 合規立場</strong>：任何對已驗證系統的變更都需要影響評估和測試，怎麼可能 48 小時內完成？</li>
+</ul>
+<p>GAMP 5 的答案是：<strong>企業資安風險通常優先於 GxP 法規風險</strong>。關鍵是要有一個被 QA 批准的程序，規定在不同威脅等級下採取不同策略，並且記錄決策依據。</p>
+</div>
+<div class="analogy-box">
+<h4>實務補丁策略設計</h4>
+<p>建議將補丁分為三類來管理：</p>
+<ol>
+<li><strong>緊急安全補丁（Critical Security）</strong>：CVSS 評分 ≥ 9.0 或已有主動攻擊 → 採用 Strategy 1/2，事後補齊測試記錄；通知幫服台和使用者；QA 記錄風險決策</li>
+<li><strong>一般安全補丁（High/Medium）</strong>：計畫到下個維護窗口，在非 GxP 環境先測試 1-2 週後推送 GxP 系統 → 採用 Strategy 2/3</li>
+<li><strong>功能更新 / Service Pack</strong>：完整的影響評估 + 回歸測試 + 變更控制 → 採用 Strategy 3/4</li>
+</ol>
+</div>
+<div class="key-point-box">
+<h4>查廠重點：補丁管理 SOP 的必備要素</h4>
+<p>稽核員在檢查補丁管理時會尋找：</p>
+<ul>
+<li>是否有 QA 批准的補丁管理 SOP，且涵蓋 GxP 系統</li>
+<li>每個補丁是否有影響評估記錄（即使決定「不測試」也要記錄理由）</li>
+<li>配置管理記錄是否能顯示「某系統在某日期的補丁水準」</li>
+<li>緊急補丁後是否有「補後測試」記錄（retrospective testing documentation）</li>
+<li>跨站點系統是否維持相同補丁水準（interoperability 問題）</li>
+</ul>
+</div>
+<div class="note-box">
+<h4>組態管理記錄的實際重要性</h4>
+<p>當生產系統發生資料異常或系統故障時，調查的第一步通常是查詢「事件發生時系統的確切版本和補丁水準」。如果組態管理記錄不完整，就無法確定是否因為某個補丁引入了問題，也無法向稽核員證明系統在事件前後的配置狀態。</p>
+<p>建議工具：使用 CMDB（Configuration Management Database）或在變更控制系統中強制記錄每次補丁後的版本快照。</p>
+</div>
+<div class="practice-box">
+<h4>OT/IT 融合環境（SCADA、DCS）的特殊挑戰</h4>
+<p>生產環境的控制系統（例如無菌灌裝線的 PLC/SCADA）往往有更長的補丁延遲，因為：</p>
+<ul>
+<li>設備供應商（如 Rockwell、Siemens）需要先測試補丁對控制邏輯的影響再發布認可版本</li>
+<li>生產設備通常 24/7 運行，難以安排停機維護窗口</li>
+<li>某些老舊設備的作業系統（如 Windows XP embedded）已停止更新</li>
+</ul>
+<p>對策：針對 OT 環境建立補償控制措施（compensating controls），例如網路隔離（air gap / DMZ）、入侵偵測系統，並在補丁管理 SOP 中明確 OT 環境的特殊處理規則。</p>
+</div>
+</div>
+</div>
 <div class="concept-box"><table>
-            <thead>
-                <tr><th>Strategy</th><th>Approach</th><th>Enterprise Risk</th><th>GxP Risk</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>Strategy 1 (Most Aggressive)</td><td>Apply immediately enterprise-wide; perform post-implementation testing</td><td>Lowest</td><td>Highest (limited pre-testing)</td></tr>
-                <tr><td>Strategy 2</td><td>Apply to non-GxP systems immediately; apply to GxP systems after abbreviated testing</td><td>Low-Medium</td><td>Medium</td></tr>
-                <tr><td>Strategy 3</td><td>Apply to all systems after normal change management testing cycle</td><td>Medium-High</td><td>Lower</td></tr>
-                <tr><td>Strategy 4 (Most Conservative)</td><td>Apply only after full application-specific impact assessment and testing</td><td>Highest</td><td>Lowest</td></tr>
-            </tbody>
-        </table>
-        </div><hr class="appendix-divider">
-
+<thead>
+<tr><th>Strategy</th><th>Approach</th><th>Enterprise Risk</th><th>GxP Risk</th></tr>
+</thead>
+<tbody>
+<tr><td>Strategy 1 (Most Aggressive)</td><td>Apply immediately enterprise-wide; perform post-implementation testing</td><td>Lowest</td><td>Highest (limited pre-testing)</td></tr>
+<tr><td>Strategy 2</td><td>Apply to non-GxP systems immediately; apply to GxP systems after abbreviated testing</td><td>Low-Medium</td><td>Medium</td></tr>
+<tr><td>Strategy 3</td><td>Apply to all systems after normal change management testing cycle</td><td>Medium-High</td><td>Lower</td></tr>
+<tr><td>Strategy 4 (Most Conservative)</td><td>Apply only after full application-specific impact assessment and testing</td><td>Highest</td><td>Lowest</td></tr>
+</tbody>
+</table>
+</div><hr class="appendix-divider"/>
 <!-- ============================================================ -->
 <!-- APPENDIX S5: RETIRED -->
 <!-- ============================================================ -->
-<h2 class="section-title" id="s5">Appendix S5 — Retired (p375)</h2>
-
+<h2 class="section-title" id="s5"><strong>Appendix S5 — Retired (p375) Appendix S5 — 已廢止</strong></h2>
 <div class="two-column">
-    <div class="left-column">
-        <div class="retired-box">
-            <h3>Appendix S5 — Managing Quality within an Outsourced IS/IT Environment (Retired)</h3>
-            <p>Appendix S5 of GAMP 5, 1st Edition covered the management of quality within an outsourced IT/IS environment. In the 2nd Edition, this content has been <strong>withdrawn and substantially revised</strong>. The updated material has been renamed and relocated to <strong>Appendix M11</strong>, which provides current guidance on managing outsourced IT/IS environments in the context of GxP computerized systems.</p>
-            <p>This appendix entry is retained as a placeholder to maintain the numbered appendix sequence (S1 through S6) and to direct readers to the current guidance location.</p>
-        </div>
-    </div>
-    <div class="right-column">
-        <div class="retired-box">
-            <h3>附錄 S5 — 已撤銷（Retired）</h3>
-            <p>GAMP 5 第一版的 S5 附錄涵蓋「外包 IS/IT 環境中的品質管理」。在第二版中，此內容已被撤銷並重新修訂，改名為 <strong>Appendix M11</strong>。</p>
-            <p>如需查閱 IT 外包的 GxP 合規管理指引，請參閱 Appendix M11。S5 的空缺是刻意保留，以維持附錄編號序列（S1–S6）的連貫性。</p>
-        </div>
-    </div>
+<div class="left-column">
+<div class="retired-box">
+<h3>Appendix S5 — Managing Quality within an Outsourced IS/IT Environment (Retired)</h3>
+<p>Appendix S5 of GAMP 5, 1st Edition covered the management of quality within an outsourced IT/IS environment. In the 2nd Edition, this content has been <strong>withdrawn and substantially revised</strong>. The updated material has been renamed and relocated to <strong>Appendix M11</strong>, which provides current guidance on managing outsourced IT/IS environments in the context of GxP computerized systems.</p>
+<p>This appendix entry is retained as a placeholder to maintain the numbered appendix sequence (S1 through S6) and to direct readers to the current guidance location.</p>
 </div>
-
-<hr class="appendix-divider">
-
+</div>
+<div class="right-column">
+<div class="retired-box">
+<h3>附錄 S5 — 已撤銷（Retired）</h3>
+<p>GAMP 5 第一版的 S5 附錄涵蓋「外包 IS/IT 環境中的品質管理」。在第二版中，此內容已被撤銷並重新修訂，改名為 <strong>Appendix M11</strong>。</p>
+<p>如需查閱 IT 外包的 GxP 合規管理指引，請參閱 Appendix M11。S5 的空缺是刻意保留，以維持附錄編號序列（S1–S6）的連貫性。</p>
+</div>
+</div>
+</div>
+<hr class="appendix-divider"/>
 <!-- ============================================================ -->
 <!-- APPENDIX S6: ORGANIZATIONAL CHANGE -->
 <!-- ============================================================ -->
-<h2 class="section-title" id="s6">Appendix S6 — Organizational Change (p377–p381)</h2>
-
+<h2 class="section-title" id="s6"><strong>Appendix S6 — Organizational Change (p377–p381) Appendix S6 — 組織變更</strong></h2>
 <div class="two-column">
-    <div class="left-column">
-        <h2>S6.1 Introduction</h2>
-        <p>There has been a global trend within the life sciences sector toward organizational consolidation and outsourcing of services. Additional challenges from the COVID-19 pandemic and digital transformation have further stimulated agile ways of working. This appendix considers the impact of organizational change on GxP regulated computerized systems and provides guidance for ensuring continued compliance and system availability.</p>
-
-        <h3>S6.2 Initiators for Change</h3>
-        <ul>
-            <li>Internal reorganization</li>
-            <li>Being acquired by another company</li>
-            <li>Divesting part of an organization to a third party (including offshoring and outsourcing)</li>
-            <li>Supplier or service provider ceasing to trade</li>
-        </ul>
-
-        <h3>S6.3 Scope and Impact of Change</h3>
-        <p>Organizational change may apply to any aspect of the system supply chain — regulated companies, system integrators, base product and infrastructure suppliers. Change can occur during any stage of a computerized system's life cycle. Aspects to consider include:</p>
-        <ul>
-            <li>Changes in the business process the computerized system supports</li>
-            <li>Changes in how an existing system is used</li>
-            <li>Moving systems from one location to another</li>
-            <li>New or different regulatory and compliance requirements</li>
-            <li>Impact on regulated records and associated signatures</li>
-            <li>Changes in how security (physical and logical access control) is handled</li>
-            <li>Clarification of where primary data is located and who the system/process owners are</li>
-            <li>Timing and need to audit a reorganized supplier</li>
-            <li>Impact on service level agreements</li>
-            <li>Maintaining expertise on systems (with both supplier and regulated company)</li>
-            <li>Impact on support contracts and system implementation projects</li>
-            <li>Changes in personnel and/or individual responsibilities</li>
-        </ul>
-
-        <h3>S6.4 Organizational Challenges</h3>
-        <ul>
-            <li>Maintaining multiple/parallel systems for the same business process</li>
-            <li>Developing interfaces between multiple/parallel systems</li>
-            <li>Migrating data or subsets of data from one system to another</li>
-            <li>Maintaining data sets for third parties for extended periods (format, conversion, discarding decisions)</li>
-            <li>Systems likely to be retired</li>
-            <li>Location of life cycle records and inspection support on an ongoing basis</li>
-            <li>Maintaining multiple/parallel compliance practices and documentation</li>
-            <li>Harmonizing compliance practices and training in new practices</li>
-            <li>Changes in regulatory expectations and subsequent impact on life cycle activities</li>
-            <li>Change management and configuration management across changed organizations</li>
-            <li>Increased focus on incident monitoring during the transition period</li>
-        </ul>
-
-        <h3>S6.5 Outsourcing Considerations</h3>
-        <p>Where organizational change involves outsourcing, additionally consider:</p>
-        <ul>
-            <li>Whether the regulated company continues to own the equipment or whether this transfers to the outsource company</li>
-            <li>Whether the outsource organization QMS is used or the regulated company QMS</li>
-            <li>Need to both initially and periodically audit the outsource organization (scope: both compliance and financial)</li>
-        </ul>
-        <p>See Appendix M11 for further details on managing outsourced IT/IS environments.</p>
-
-        <h3>S6.6 Loss of a Supplier</h3>
-        <p>Where a supplier ceases to trade, consider:</p>
-        <ul>
-            <li>Ensuring business continuity plans are established and accurate for related systems</li>
-            <li>Invoking any escrow agreements to gain access to application source code</li>
-            <li>Record and system migration options</li>
-            <li>Retrieval of regulated company owned components (hardware, software, records, documentation)</li>
-        </ul>
-
-        <h3>S6.7 Risk Assessment and Project Status Scenarios</h3>
-        <h3>S6.8 Affected Stakeholders</h3>
-        <p>Agreement must be reached between all affected organizations. Representatives typically involved include:</p>
-        <ul>
-            <li>Business process owners</li>
-            <li>Compliance / Quality / Regulatory</li>
-            <li>Legal</li>
-            <li>IT and Engineering</li>
-            <li>Purchasing groups and in some cases Finance</li>
-        </ul>
-        <p>Key documentation update tasks for stakeholders:</p>
-        <ul>
-            <li>Business process documentation</li>
-            <li>Policies, procedures, work instructions, test methods</li>
-            <li>Training materials and user manuals</li>
-            <li>Batch records (if applicable)</li>
-            <li>Archived records/data</li>
-            <li>Contracts, system interfaces, validation/qualification records</li>
-            <li>Record retention schedules</li>
-        </ul>
-        <p>Training requirements must be evaluated against all changes made to QMS, ways of working, or documentation — at both organizational and system levels.</p>
-    </div>
-
-    <div class="right-column">
-        <h2>中文解析：CSV 程式的組織變更管理</h2>
-        <div class="concept-box">
-            <h4>為什麼組織變更對 CSV 是高風險事件</h4>
-            <p>已驗證的電腦化系統存在於特定的組織環境中：有特定的系統負責人、SOP 持有人、IT 支援人員、供應商關係管理者。當組織發生重大變更時，這些角色可能在同一時間全部改變，而系統本身（硬體、軟體、配置）可能完全不變——但它的「驗證狀態維護」所依賴的所有人和程序都斷裂了。</p>
-        </div>
-
-        <div class="analogy-box">
-            <h4>IT 部門重組 / 外包的真實挑戰</h4>
-            <p>想像一個製藥廠決定把 IT 基礎設施外包給第三方 IT 服務商：</p>
-            <ul>
-                <li>原本的內部 IT 團隊（知道 MES 系統的所有歷史決策）離職了</li>
-                <li>新的外包供應商不了解 GxP 要求，只按照一般 IT SLA 操作</li>
-                <li>系統的補丁管理、備份驗證、存取控制管理現在由不熟悉 GxP 的人執行</li>
-            </ul>
-            <p>這種情況會導致：驗證狀態的逐漸侵蝕（validated state drift）——系統還在跑，但沒有人確保它還在「驗證狀態」下運行。</p>
-        </div>
-
-        <div class="key-point-box">
-            <h4>CDMO 在 M&amp;A 情境下的特殊風險</h4>
-            <p>當 CDMO 被大型藥廠收購，或自己收購其他 CDMO 時，常見的 GxP 風險包括：</p>
-            <ul>
-                <li><strong>系統整合壓力</strong>：IT 急著整合系統（例如統一 ERP），但整合本身就是對已驗證系統的重大變更，需要重新驗證</li>
-                <li><strong>SOP 衝突</strong>：兩個組織各自有不同的 CSV SOP，需要決定遵循哪一套，並訓練所有人員</li>
-                <li><strong>供應商審計重新啟動</strong>：收購後，新的母公司可能有不同的供應商審計要求，需要重新審計所有關鍵系統供應商</li>
-                <li><strong>記錄保留責任轉移</strong>：客戶的批次記錄、驗證文件的保留責任在合約轉移後如何確保連續性？</li>
-            </ul>
-        </div>
-
-        <div class="note-box">
-            <h4>供應商倒閉的緊急應對</h4>
-            <p>這是最難預先準備但後果最嚴重的情境。關鍵行動清單：</p>
-            <ol>
-                <li><strong>立即啟動業務連續性計畫</strong>（如果有的話）</li>
-                <li><strong>執行軟體源碼托管（Escrow）協議</strong>：如果合約中有 source code escrow 條款，立即申請釋出</li>
-                <li><strong>下載所有支援文件</strong>：技術手冊、驗證文件、系統配置記錄——供應商的伺服器可能隨時關閉</li>
-                <li><strong>評估現有維護合約</strong>：年度維護費已付但供應商倒閉，這是法律問題也是合規問題</li>
-                <li><strong>決定替換或維持策略</strong>：如果系統還要繼續使用，需要找有能力維護該系統的第三方廠商</li>
-            </ol>
-        </div>
-
-        <div class="practice-box">
-            <h4>組織變更的 CSV 影響評估框架</h4>
-            <p>建議在任何重大組織變更發生時，執行以下 CSV 影響評估：</p>
-            <ol>
-                <li><strong>盤點清單</strong>：列出所有受影響的 GxP 電腦化系統，標記其 GxP 影響等級</li>
-                <li><strong>角色責任重新對應</strong>：系統負責人、SOP 持有人、IT 聯絡人在新組織結構下由誰負責？</li>
-                <li><strong>程序文件審查</strong>：涉及組織架構、人員職責的 SOP 是否需要更新？</li>
-                <li><strong>訓練需求評估</strong>：新的負責人員是否已接受系統特定訓練？</li>
-                <li><strong>合約審查</strong>：系統支援合約、許可協議在組織變更後是否仍有效？</li>
-                <li><strong>過渡期監控強化</strong>：在組織過渡期間，提高事件監控頻率，設立快速升級機制</li>
-            </ol>
-        </div>
-    </div>
+<div class="left-column">
+<h2>S6.1 Introduction</h2>
+<p>There has been a global trend within the life sciences sector toward organizational consolidation and outsourcing of services. Additional challenges from the COVID-19 pandemic and digital transformation have further stimulated agile ways of working. This appendix considers the impact of organizational change on GxP regulated computerized systems and provides guidance for ensuring continued compliance and system availability.</p>
+<h3>S6.2 Initiators for Change</h3>
+<ul>
+<li>Internal reorganization</li>
+<li>Being acquired by another company</li>
+<li>Divesting part of an organization to a third party (including offshoring and outsourcing)</li>
+<li>Supplier or service provider ceasing to trade</li>
+</ul>
+<h3>S6.3 Scope and Impact of Change</h3>
+<p>Organizational change may apply to any aspect of the system supply chain — regulated companies, system integrators, base product and infrastructure suppliers. Change can occur during any stage of a computerized system's life cycle. Aspects to consider include:</p>
+<ul>
+<li>Changes in the business process the computerized system supports</li>
+<li>Changes in how an existing system is used</li>
+<li>Moving systems from one location to another</li>
+<li>New or different regulatory and compliance requirements</li>
+<li>Impact on regulated records and associated signatures</li>
+<li>Changes in how security (physical and logical access control) is handled</li>
+<li>Clarification of where primary data is located and who the system/process owners are</li>
+<li>Timing and need to audit a reorganized supplier</li>
+<li>Impact on service level agreements</li>
+<li>Maintaining expertise on systems (with both supplier and regulated company)</li>
+<li>Impact on support contracts and system implementation projects</li>
+<li>Changes in personnel and/or individual responsibilities</li>
+</ul>
+<h3>S6.4 Organizational Challenges</h3>
+<ul>
+<li>Maintaining multiple/parallel systems for the same business process</li>
+<li>Developing interfaces between multiple/parallel systems</li>
+<li>Migrating data or subsets of data from one system to another</li>
+<li>Maintaining data sets for third parties for extended periods (format, conversion, discarding decisions)</li>
+<li>Systems likely to be retired</li>
+<li>Location of life cycle records and inspection support on an ongoing basis</li>
+<li>Maintaining multiple/parallel compliance practices and documentation</li>
+<li>Harmonizing compliance practices and training in new practices</li>
+<li>Changes in regulatory expectations and subsequent impact on life cycle activities</li>
+<li>Change management and configuration management across changed organizations</li>
+<li>Increased focus on incident monitoring during the transition period</li>
+</ul>
+<h3>S6.5 Outsourcing Considerations</h3>
+<p>Where organizational change involves outsourcing, additionally consider:</p>
+<ul>
+<li>Whether the regulated company continues to own the equipment or whether this transfers to the outsource company</li>
+<li>Whether the outsource organization QMS is used or the regulated company QMS</li>
+<li>Need to both initially and periodically audit the outsource organization (scope: both compliance and financial)</li>
+</ul>
+<p>See Appendix M11 for further details on managing outsourced IT/IS environments.</p>
+<h3>S6.6 Loss of a Supplier</h3>
+<p>Where a supplier ceases to trade, consider:</p>
+<ul>
+<li>Ensuring business continuity plans are established and accurate for related systems</li>
+<li>Invoking any escrow agreements to gain access to application source code</li>
+<li>Record and system migration options</li>
+<li>Retrieval of regulated company owned components (hardware, software, records, documentation)</li>
+</ul>
+<h3>S6.7 Risk Assessment and Project Status Scenarios</h3>
+<h3>S6.8 Affected Stakeholders</h3>
+<p>Agreement must be reached between all affected organizations. Representatives typically involved include:</p>
+<ul>
+<li>Business process owners</li>
+<li>Compliance / Quality / Regulatory</li>
+<li>Legal</li>
+<li>IT and Engineering</li>
+<li>Purchasing groups and in some cases Finance</li>
+</ul>
+<p>Key documentation update tasks for stakeholders:</p>
+<ul>
+<li>Business process documentation</li>
+<li>Policies, procedures, work instructions, test methods</li>
+<li>Training materials and user manuals</li>
+<li>Batch records (if applicable)</li>
+<li>Archived records/data</li>
+<li>Contracts, system interfaces, validation/qualification records</li>
+<li>Record retention schedules</li>
+</ul>
+<p>Training requirements must be evaluated against all changes made to QMS, ways of working, or documentation — at both organizational and system levels.</p>
 </div>
-
+<div class="right-column">
+<h2>中文解析：CSV 程式的組織變更管理</h2>
+<div class="concept-box">
+<h4>為什麼組織變更對 CSV 是高風險事件</h4>
+<p>已驗證的電腦化系統存在於特定的組織環境中：有特定的系統負責人、SOP 持有人、IT 支援人員、供應商關係管理者。當組織發生重大變更時，這些角色可能在同一時間全部改變，而系統本身（硬體、軟體、配置）可能完全不變——但它的「驗證狀態維護」所依賴的所有人和程序都斷裂了。</p>
+</div>
+<div class="analogy-box">
+<h4>IT 部門重組 / 外包的真實挑戰</h4>
+<p>想像一個製藥廠決定把 IT 基礎設施外包給第三方 IT 服務商：</p>
+<ul>
+<li>原本的內部 IT 團隊（知道 MES 系統的所有歷史決策）離職了</li>
+<li>新的外包供應商不了解 GxP 要求，只按照一般 IT SLA 操作</li>
+<li>系統的補丁管理、備份驗證、存取控制管理現在由不熟悉 GxP 的人執行</li>
+</ul>
+<p>這種情況會導致：驗證狀態的逐漸侵蝕（validated state drift）——系統還在跑，但沒有人確保它還在「驗證狀態」下運行。</p>
+</div>
+<div class="key-point-box">
+<h4>CDMO 在 M&amp;A 情境下的特殊風險</h4>
+<p>當 CDMO 被大型藥廠收購，或自己收購其他 CDMO 時，常見的 GxP 風險包括：</p>
+<ul>
+<li><strong>系統整合壓力</strong>：IT 急著整合系統（例如統一 ERP），但整合本身就是對已驗證系統的重大變更，需要重新驗證</li>
+<li><strong>SOP 衝突</strong>：兩個組織各自有不同的 CSV SOP，需要決定遵循哪一套，並訓練所有人員</li>
+<li><strong>供應商審計重新啟動</strong>：收購後，新的母公司可能有不同的供應商審計要求，需要重新審計所有關鍵系統供應商</li>
+<li><strong>記錄保留責任轉移</strong>：客戶的批次記錄、驗證文件的保留責任在合約轉移後如何確保連續性？</li>
+</ul>
+</div>
+<div class="note-box">
+<h4>供應商倒閉的緊急應對</h4>
+<p>這是最難預先準備但後果最嚴重的情境。關鍵行動清單：</p>
+<ol>
+<li><strong>立即啟動業務連續性計畫</strong>（如果有的話）</li>
+<li><strong>執行軟體源碼托管（Escrow）協議</strong>：如果合約中有 source code escrow 條款，立即申請釋出</li>
+<li><strong>下載所有支援文件</strong>：技術手冊、驗證文件、系統配置記錄——供應商的伺服器可能隨時關閉</li>
+<li><strong>評估現有維護合約</strong>：年度維護費已付但供應商倒閉，這是法律問題也是合規問題</li>
+<li><strong>決定替換或維持策略</strong>：如果系統還要繼續使用，需要找有能力維護該系統的第三方廠商</li>
+</ol>
+</div>
+<div class="practice-box">
+<h4>組織變更的 CSV 影響評估框架</h4>
+<p>建議在任何重大組織變更發生時，執行以下 CSV 影響評估：</p>
+<ol>
+<li><strong>盤點清單</strong>：列出所有受影響的 GxP 電腦化系統，標記其 GxP 影響等級</li>
+<li><strong>角色責任重新對應</strong>：系統負責人、SOP 持有人、IT 聯絡人在新組織結構下由誰負責？</li>
+<li><strong>程序文件審查</strong>：涉及組織架構、人員職責的 SOP 是否需要更新？</li>
+<li><strong>訓練需求評估</strong>：新的負責人員是否已接受系統特定訓練？</li>
+<li><strong>合約審查</strong>：系統支援合約、許可協議在組織變更後是否仍有效？</li>
+<li><strong>過渡期監控強化</strong>：在組織過渡期間，提高事件監控頻率，設立快速升級機制</li>
+</ol>
+</div>
+</div>
+</div>
 <div class="concept-box"><table>
-            <thead>
-                <tr><th>Project Status</th><th>Company Acquisition</th><th>Company Merger</th><th>Supplier Insolvency</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>Not Started</td><td>On hold pending management review</td><td>On hold pending management review</td><td>Cancelled</td></tr>
-                <tr><td>In Progress — Early in Life Cycle</td><td>On hold pending management review</td><td>On hold pending management review</td><td>Cancelled</td></tr>
-                <tr><td>In Progress — Late in Life Cycle</td><td>On hold pending management review</td><td>Continued</td><td>On hold pending management review</td></tr>
-                <tr><td>Approaching Go-Live</td><td>On hold pending management review (priority decision)</td><td>Continued</td><td>On hold pending management review</td></tr>
-            </tbody>
-        </table>
-
-        </div><!-- ============================================================ -->
+<thead>
+<tr><th>Project Status</th><th>Company Acquisition</th><th>Company Merger</th><th>Supplier Insolvency</th></tr>
+</thead>
+<tbody>
+<tr><td>Not Started</td><td>On hold pending management review</td><td>On hold pending management review</td><td>Cancelled</td></tr>
+<tr><td>In Progress — Early in Life Cycle</td><td>On hold pending management review</td><td>On hold pending management review</td><td>Cancelled</td></tr>
+<tr><td>In Progress — Late in Life Cycle</td><td>On hold pending management review</td><td>Continued</td><td>On hold pending management review</td></tr>
+<tr><td>Approaching Go-Live</td><td>On hold pending management review (priority decision)</td><td>Continued</td><td>On hold pending management review</td></tr>
+</tbody>
+</table>
+</div><!-- ============================================================ -->
 <!-- SECTION SUMMARY -->
 <!-- ============================================================ -->
 <div class="section-summary">
-    <h2>Section Summary — 章節總結：附錄 S1–S6 核心要點</h2>
-    <ul>
-        <li><strong>S1 — ASTM E2500:</strong> GAMP 5 and ASTM E2500 share the same science- and risk-based philosophy. ASTM E2500 focuses on manufacturing equipment; GAMP 5 covers all computerized systems. "Verification" replaces separate IQ/OQ as an integrated activity; the key requirement is evidence that critical-to-quality requirements have been met. ／ 兩者核心一致：以病人風險為中心、借用供應商測試、減少重複活動。術語可以不同，但文件證據必須充分。</li>
-        <li><strong>S2 — Electronic Production Records:</strong> EPR ≠ Batch Report — EPR is distributed data; the batch report is the human-readable output. Data audit trails are mandatory; they must be reviewed as part of the batch review process. The end user is always ultimately responsible for validated state, even for cloud-hosted systems. ／ 稽核軌跡必須作為批次記錄審查的一部分；RBE 是合規的，但篩選邏輯本身需要被驗證。</li>
-        <li><strong>S3 — Spreadsheets:</strong> Unvalidated GxP spreadsheets are a top FDA 483 observation. Minimum requirements: formula verification, version control, access control, change control. Macros = Category 5 software. Spreadsheets with audit trail requirements should be replaced with proper database systems. ／ Excel 不是 GxP 的安全選項，除非有完整的驗證和控制措施。含巨集的試算表等同 Category 5 軟體。</li>
-        <li><strong>S4 — Patch Management:</strong> Enterprise security risk generally takes precedence over GxP risk. Quality unit approves the patch management process but not individual patch decisions. A documented risk-based decision for each patch — including the choice of strategy and testing scope — is required. Configuration records must show patch levels at any point in time. ／ 有「QA 批准程序 + 風險記錄」才能合規地快速打補丁。</li>
-        <li><strong>S5 — Retired:</strong> Content from GAMP 5 1st Edition S5 (Managing Quality within an Outsourced IS/IT Environment) has been moved to Appendix M11 in the 2nd Edition. ／ 相關內容已移至 Appendix M11。</li>
-        <li><strong>S6 — Organizational Change:</strong> M&amp;A, outsourcing, and supplier loss all threaten validated state. A CSV-specific organizational change impact assessment is essential. Training requirements must be re-evaluated. Stakeholders from Business, QA, Legal, IT, and Finance must all be engaged. ／ 組織變更不只是 HR 的事——它直接威脅已驗證系統的合規狀態，需要 QA 主動介入管理。</li>
-    </ul>
+<h2>Section Summary — 章節總結：附錄 S1–S6 核心要點</h2>
+<ul>
+<li><strong>S1 — ASTM E2500:</strong> GAMP 5 and ASTM E2500 share the same science- and risk-based philosophy. ASTM E2500 focuses on manufacturing equipment; GAMP 5 covers all computerized systems. "Verification" replaces separate IQ/OQ as an integrated activity; the key requirement is evidence that critical-to-quality requirements have been met. ／ 兩者核心一致：以病人風險為中心、借用供應商測試、減少重複活動。術語可以不同，但文件證據必須充分。</li>
+<li><strong>S2 — Electronic Production Records:</strong> EPR ≠ Batch Report — EPR is distributed data; the batch report is the human-readable output. Data audit trails are mandatory; they must be reviewed as part of the batch review process. The end user is always ultimately responsible for validated state, even for cloud-hosted systems. ／ 稽核軌跡必須作為批次記錄審查的一部分；RBE 是合規的，但篩選邏輯本身需要被驗證。</li>
+<li><strong>S3 — Spreadsheets:</strong> Unvalidated GxP spreadsheets are a top FDA 483 observation. Minimum requirements: formula verification, version control, access control, change control. Macros = Category 5 software. Spreadsheets with audit trail requirements should be replaced with proper database systems. ／ Excel 不是 GxP 的安全選項，除非有完整的驗證和控制措施。含巨集的試算表等同 Category 5 軟體。</li>
+<li><strong>S4 — Patch Management:</strong> Enterprise security risk generally takes precedence over GxP risk. Quality unit approves the patch management process but not individual patch decisions. A documented risk-based decision for each patch — including the choice of strategy and testing scope — is required. Configuration records must show patch levels at any point in time. ／ 有「QA 批准程序 + 風險記錄」才能合規地快速打補丁。</li>
+<li><strong>S5 — Retired:</strong> Content from GAMP 5 1st Edition S5 (Managing Quality within an Outsourced IS/IT Environment) has been moved to Appendix M11 in the 2nd Edition. ／ 相關內容已移至 Appendix M11。</li>
+<li><strong>S6 — Organizational Change:</strong> M&amp;A, outsourcing, and supplier loss all threaten validated state. A CSV-specific organizational change impact assessment is essential. Training requirements must be re-evaluated. Stakeholders from Business, QA, Legal, IT, and Finance must all be engaged. ／ 組織變更不只是 HR 的事——它直接威脅已驗證系統的合規狀態，需要 QA 主動介入管理。</li>
+</ul>
 </div>
-
 </div><!-- end main-content -->
-
 <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">⇧</button>
-
 <script>
 window.addEventListener('scroll', function() {
     const btn = document.getElementById('backToTop');
@@ -929,6 +850,5 @@ window.addEventListener('scroll', function() {
     }
 });
 </script>
-
 </body>
 </html>

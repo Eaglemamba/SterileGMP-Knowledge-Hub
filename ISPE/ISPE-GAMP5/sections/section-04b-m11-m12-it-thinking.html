@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ISPE GAMP 5 (2nd Ed.) - Appendices M11 &amp; M12: IT Infrastructure &amp; Critical Thinking</title>
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ISPE GAMP 5 (2nd Ed.) - Appendices M11 &amp; M12: IT Infrastructure &amp; Critical Thinking</title>
+<style>
 /* =============================================================
    PDA Educational Material - Shared CSS Template
    Version: 2.0 (ISPE Green Override)
@@ -224,711 +225,669 @@ tr:nth-child(even) { background: #f7fafc; }
     </style>
 </head>
 <body>
-
 <!-- SECTION HEADER -->
 <div class="header">
-    <h1>Appendices M11 &amp; M12: IT Infrastructure &amp; Critical Thinking</h1>
-    <div class="subtitle">IT基礎架構與批判性思維</div>
-    <div class="page-info">ISPE GAMP 5 Second Edition | Appendix M11 (p163–p171) &amp; Appendix M12 (p172–p182)</div>
+<h1>Appendices M11 &amp; M12: IT Infrastructure &amp; Critical Thinking</h1>
+<div class="subtitle">IT基礎架構與批判性思維</div>
+<div class="page-info">ISPE GAMP 5 Second Edition | Appendix M11 (p163–p171) &amp; Appendix M12 (p172–p182)</div>
 </div>
-
 <div class="main-content">
-
 <!-- LEARNING OBJECTIVES -->
 <div class="learning-objectives">
-    <h3>Learning Objectives — 學習目標</h3>
-    <ol>
-        <li>Explain why EU Annex 11 distinguishes between <strong>application validation</strong> and <strong>IT infrastructure qualification</strong>, and why infrastructure software is classified as GAMP Category 1. — 說明為何EU Annex 11區分應用程式驗證與IT基礎架構確認，以及基礎架構軟體為何歸類為GAMP第1類。</li>
-        <li>Describe the "one qualification, many implementations" model for standard infrastructure components and how Infrastructure as Code (IaC) supports it. — 描述標準基礎架構元件的「一次確認，多次部署」模型，以及IaC如何支持此模型。</li>
-        <li>Differentiate the responsibilities and validation obligations for IaaS, PaaS, and SaaS cloud deployments in a GxP context. — 區分IaaS、PaaS、SaaS三種雲端部署模式在GxP環境下的責任與驗證義務。</li>
-        <li>Define the role of an IT Quality (ITQ) function and where QA involvement in IT infrastructure is warranted versus unnecessary. — 定義IT品質職能（ITQ）的角色，並識別QA介入IT基礎架構的適當邊界。</li>
-        <li>Apply critical thinking principles to avoid both over-validation and under-validation of computerized systems throughout the system life cycle. — 應用批判性思維原則，在整個系統生命週期中避免過度驗證與不足驗證。</li>
-        <li>Assess an organization's critical thinking maturity using the five-level capability model in Table 20.1. — 運用表20.1的五級能力模型評估組織批判性思維成熟度。</li>
-    </ol>
+<h3>Learning Objectives — 學習目標</h3>
+<ol>
+<li>Explain why EU Annex 11 distinguishes between <strong>application validation</strong> and <strong>IT infrastructure qualification</strong>, and why infrastructure software is classified as GAMP Category 1. — 說明為何EU Annex 11區分應用程式驗證與IT基礎架構確認，以及基礎架構軟體為何歸類為GAMP第1類。</li>
+<li>Describe the "one qualification, many implementations" model for standard infrastructure components and how Infrastructure as Code (IaC) supports it. — 描述標準基礎架構元件的「一次確認，多次部署」模型，以及IaC如何支持此模型。</li>
+<li>Differentiate the responsibilities and validation obligations for IaaS, PaaS, and SaaS cloud deployments in a GxP context. — 區分IaaS、PaaS、SaaS三種雲端部署模式在GxP環境下的責任與驗證義務。</li>
+<li>Define the role of an IT Quality (ITQ) function and where QA involvement in IT infrastructure is warranted versus unnecessary. — 定義IT品質職能（ITQ）的角色，並識別QA介入IT基礎架構的適當邊界。</li>
+<li>Apply critical thinking principles to avoid both over-validation and under-validation of computerized systems throughout the system life cycle. — 應用批判性思維原則，在整個系統生命週期中避免過度驗證與不足驗證。</li>
+<li>Assess an organization's critical thinking maturity using the five-level capability model in Table 20.1. — 運用表20.1的五級能力模型評估組織批判性思維成熟度。</li>
+</ol>
 </div>
-
 <!-- ===== PART 1: M11 INTRODUCTION ===== -->
-<h2 class="section-title" id="m11-intro">Appendix M11: IT Infrastructure — Introduction &amp; Principles</h2>
+<h2 class="section-title" id="m11-intro"><strong>Appendix M11: IT Infrastructure — Introduction &amp; Principles Appendix M11: IT 基礎設施 — 簡介與原則</strong></h2>
 <div class="two-column">
-    <div class="left-column">
-        <h2>19.1 Introduction</h2>
-        <p>EU Annex 11 states: <em>"The application should be validated; IT infrastructure should be qualified."</em> However, due to the dynamic nature of infrastructure, it is best to think of achieving and maintaining a qualified state as an exercise of <strong>managing to compliance</strong>. This state of control is the cornerstone of qualification as expected in EU Annex 11.</p>
-        <p>A controlled IT infrastructure is a prerequisite for ensuring that GxP applications are managed in a state of control. Infrastructure plays a significant role in ensuring applications are on a stable platform with reliable required communications. The IT infrastructure supports application performance and availability as well as the <strong>integrity, availability, security, and confidentiality of data</strong>. Many of the processes required to ensure this rely on some aspects of infrastructure management, such as cybersecurity, load balancing, backup and restore, disaster recovery, etc.</p>
-
-        <h4>19.1.1 Changes from GAMP 5 First Edition</h4>
-        <p>This appendix was originally identified as Appendix S5, dealing only with managing quality in an outsourced environment. This significantly revised appendix applies current risk-based thinking on good practice for managing infrastructure that resides within a regulated company's own facilities <em>as well as</em> ensuring those of external suppliers — for example, cloud-based suppliers of Infrastructure as a Service (IaaS), Platform as a Service (PaaS), and Software as a Service (SaaS). Appendix S5 has been withdrawn and the revised material renamed as Appendix M11.</p>
-
-        <h2>19.2 Principles and Assumptions</h2>
-        <h4>19.2.2 Infrastructure Qualification versus Application Validation</h4>
-        <p>A regulated company approaches implementing an application by developing requirements, configuring the application as necessary, performing risk-based verification, and managing it to a controlled state — these combined efforts comprise <strong>validation</strong>. This is far simpler for most infrastructure elements. The company has no input into the design and manufacture of components such as servers and network switches, which are effectively off-the-shelf purchases.</p>
-        <p>After the initial component build has been verified to perform acceptably, new components are simply configured to the standard. Testing of each build may be extremely limited (e.g., verifying that a network node can reach another node) or absent (e.g., by using a review-by-exception approach). Infrastructure, which is continually evolving, must be managed to a controlled state.</p>
-        <div class="concept-box">
-            <h4>Key Regulatory Distinction</h4>
-            <p>The greater dynamism of infrastructure, combined with the widespread use of standardized components using the <strong>"one qualification, many implementations" model</strong>, is the primary difference highlighted in EU Annex 11. Infrastructure software is <strong>GAMP Category 1</strong>, and as such is <em>qualified</em>, not validated.</p>
-        </div>
-
-        <h4>19.2.3 Component-Based Nature of Infrastructure</h4>
-        <p>Infrastructure is generally comprised of many instances of certain standard components — network switches, servers, and storage devices deployed in standard basic configurations. If these standard configurations have been demonstrated to perform acceptably, it is a reasonable assumption that additional components deployed in those configurations also will. This indicates that IT infrastructure presents <strong>lower risk than applications</strong>.</p>
-
-        <h4>19.2.4 Infrastructure Automation</h4>
-        <p><strong>Infrastructure as Code (IaC)</strong> is a means of provisioning and deploying infrastructure using DevOps processes. IaC enables organizations to automate the provisioning of infrastructure, reducing the risk of human errors. Infrastructure code is subject to configuration management ensuring all code changes are traceable. A "one qualification, many deployments" approach can be taken, particularly with standard virtualized environments.</p>
-        <p>An out-of-the-box server can have the OS, middleware, layered software, and security policies loaded via an automated process. These automated builds can produce log files or perform simple automated tests, and a review-by-exception process obviates the need for further verification. Critical thinking must be applied when deploying such "standard" environments, however — cybersecurity risks may differ from one instance to the next.</p>
-
-        <h4>19.2.5 Tools</h4>
-        <p>Automated tools such as a <strong>Configuration Management Database (CMDB)</strong> and IT service management tools do not require validation, although proper installation, use, and a state of control for them is required.</p>
-    </div>
-    <div class="right-column">
-        <h2>中文解析 — 基礎架構基本原則</h2>
-        <div class="concept-box">
-            <h4>核心概念：驗證 vs. 確認</h4>
-            <p>EU Annex 11最重要的一句話：<strong>應用程式需要驗證（Validation）；IT基礎架構需要確認（Qualification）</strong>。</p>
-            <p>這不只是文字遊戲。兩者的差異反映了根本的邏輯：</p>
-            <ul>
-                <li>應用程式（如eDMS、ERP）：公司根據自身需求設定，需證明「符合預定用途」</li>
-                <li>基礎架構（如伺服器、網路交換器）：廠商製造的標準品，公司只是「配置並維持受控狀態」</li>
-            </ul>
-        </div>
-        <div class="analogy-box">
-            <h4>類比：廠房設備 vs. 支撐設施</h4>
-            <p>想像一座製藥廠：</p>
-            <ul>
-                <li>無菌灌裝機（應用程式）：需要完整IQ/OQ/PQ，因為它直接影響產品品質</li>
-                <li>廠房電力系統（IT基礎架構）：需要確認電力穩定可靠，但不需要像灌裝機一樣詳細驗證每一個功能</li>
-            </ul>
-            <p>同理，SQL Server資料庫引擎是基礎架構（Category 1），而跑在其上的LIMS系統才是需要驗證的應用程式。</p>
-        </div>
-        <div class="concept-box">
-            <h4>GAMP Category 1 的意義</h4>
-            <p>基礎架構軟體（OS、資料庫引擎、網路韌體）歸類為<strong>GAMP第1類：基礎架構軟體</strong>。</p>
-            <p>實務含義：</p>
-            <ul>
-                <li>不需要編寫URS（使用者需求規格）</li>
-                <li>不需要完整的功能測試協議</li>
-                <li>重點是：安裝確認（正確版本？正確配置？）+ 維持受控狀態</li>
-            </ul>
-            <p>常見錯誤：把Windows Server或Oracle Database當作Category 3/4應用程式來驗證，浪費大量資源。</p>
-        </div>
-        <div class="concept-box">
-            <h4>「一次確認，多次部署」</h4>
-            <p>這是基礎架構管理的核心效率原則。一旦「標準配置模板」被驗證為可接受，後續每台按同樣模板部署的伺服器只需要確認「是否確實按模板部署」即可，不需要重複完整確認流程。</p>
-            <p><strong>IaC（基礎架構即程式碼）</strong>將這個概念推向自動化：配置腳本受版本控制管理，部署過程可自動產生記錄，實現「review-by-exception（例外審查）」。</p>
-        </div>
-        <div class="note-box">
-            <h4>對CDMO的提醒</h4>
-            <p>在CDMO環境，IT基礎架構往往由IT部門管理，QA人員對伺服器架構不熟悉，容易陷入兩個極端：</p>
-            <ul>
-                <li>過度介入：要求IT對每個修補程式都走完整變更控制流程</li>
-                <li>完全不介入：讓IT自行決定，QA毫無監督</li>
-            </ul>
-            <p>正確做法：建立IT Quality（ITQ）職能，作為IT與QA之間的橋梁（見Section 19.4）。</p>
-        </div>
-    </div>
+<div class="left-column">
+<h2>19.1 Introduction</h2>
+<p>EU Annex 11 states: <em>"The application should be validated; IT infrastructure should be qualified."</em> However, due to the dynamic nature of infrastructure, it is best to think of achieving and maintaining a qualified state as an exercise of <strong>managing to compliance</strong>. This state of control is the cornerstone of qualification as expected in EU Annex 11.</p>
+<p>A controlled IT infrastructure is a prerequisite for ensuring that GxP applications are managed in a state of control. Infrastructure plays a significant role in ensuring applications are on a stable platform with reliable required communications. The IT infrastructure supports application performance and availability as well as the <strong>integrity, availability, security, and confidentiality of data</strong>. Many of the processes required to ensure this rely on some aspects of infrastructure management, such as cybersecurity, load balancing, backup and restore, disaster recovery, etc.</p>
+<h4>19.1.1 Changes from GAMP 5 First Edition</h4>
+<p>This appendix was originally identified as Appendix S5, dealing only with managing quality in an outsourced environment. This significantly revised appendix applies current risk-based thinking on good practice for managing infrastructure that resides within a regulated company's own facilities <em>as well as</em> ensuring those of external suppliers — for example, cloud-based suppliers of Infrastructure as a Service (IaaS), Platform as a Service (PaaS), and Software as a Service (SaaS). Appendix S5 has been withdrawn and the revised material renamed as Appendix M11.</p>
+<h2>19.2 Principles and Assumptions</h2>
+<h4>19.2.2 Infrastructure Qualification versus Application Validation</h4>
+<p>A regulated company approaches implementing an application by developing requirements, configuring the application as necessary, performing risk-based verification, and managing it to a controlled state — these combined efforts comprise <strong>validation</strong>. This is far simpler for most infrastructure elements. The company has no input into the design and manufacture of components such as servers and network switches, which are effectively off-the-shelf purchases.</p>
+<p>After the initial component build has been verified to perform acceptably, new components are simply configured to the standard. Testing of each build may be extremely limited (e.g., verifying that a network node can reach another node) or absent (e.g., by using a review-by-exception approach). Infrastructure, which is continually evolving, must be managed to a controlled state.</p>
+<div class="concept-box">
+<h4>Key Regulatory Distinction</h4>
+<p>The greater dynamism of infrastructure, combined with the widespread use of standardized components using the <strong>"one qualification, many implementations" model</strong>, is the primary difference highlighted in EU Annex 11. Infrastructure software is <strong>GAMP Category 1</strong>, and as such is <em>qualified</em>, not validated.</p>
 </div>
-
+<h4>19.2.3 Component-Based Nature of Infrastructure</h4>
+<p>Infrastructure is generally comprised of many instances of certain standard components — network switches, servers, and storage devices deployed in standard basic configurations. If these standard configurations have been demonstrated to perform acceptably, it is a reasonable assumption that additional components deployed in those configurations also will. This indicates that IT infrastructure presents <strong>lower risk than applications</strong>.</p>
+<h4>19.2.4 Infrastructure Automation</h4>
+<p><strong>Infrastructure as Code (IaC)</strong> is a means of provisioning and deploying infrastructure using DevOps processes. IaC enables organizations to automate the provisioning of infrastructure, reducing the risk of human errors. Infrastructure code is subject to configuration management ensuring all code changes are traceable. A "one qualification, many deployments" approach can be taken, particularly with standard virtualized environments.</p>
+<p>An out-of-the-box server can have the OS, middleware, layered software, and security policies loaded via an automated process. These automated builds can produce log files or perform simple automated tests, and a review-by-exception process obviates the need for further verification. Critical thinking must be applied when deploying such "standard" environments, however — cybersecurity risks may differ from one instance to the next.</p>
+<h4>19.2.5 Tools</h4>
+<p>Automated tools such as a <strong>Configuration Management Database (CMDB)</strong> and IT service management tools do not require validation, although proper installation, use, and a state of control for them is required.</p>
+</div>
+<div class="right-column">
+<h2>中文解析 — 基礎架構基本原則</h2>
+<div class="concept-box">
+<h4>核心概念：驗證 vs. 確認</h4>
+<p>EU Annex 11最重要的一句話：<strong>應用程式需要驗證（Validation）；IT基礎架構需要確認（Qualification）</strong>。</p>
+<p>這不只是文字遊戲。兩者的差異反映了根本的邏輯：</p>
+<ul>
+<li>應用程式（如eDMS、ERP）：公司根據自身需求設定，需證明「符合預定用途」</li>
+<li>基礎架構（如伺服器、網路交換器）：廠商製造的標準品，公司只是「配置並維持受控狀態」</li>
+</ul>
+</div>
+<div class="analogy-box">
+<h4>類比：廠房設備 vs. 支撐設施</h4>
+<p>想像一座製藥廠：</p>
+<ul>
+<li>無菌灌裝機（應用程式）：需要完整IQ/OQ/PQ，因為它直接影響產品品質</li>
+<li>廠房電力系統（IT基礎架構）：需要確認電力穩定可靠，但不需要像灌裝機一樣詳細驗證每一個功能</li>
+</ul>
+<p>同理，SQL Server資料庫引擎是基礎架構（Category 1），而跑在其上的LIMS系統才是需要驗證的應用程式。</p>
+</div>
+<div class="concept-box">
+<h4>GAMP Category 1 的意義</h4>
+<p>基礎架構軟體（OS、資料庫引擎、網路韌體）歸類為<strong>GAMP第1類：基礎架構軟體</strong>。</p>
+<p>實務含義：</p>
+<ul>
+<li>不需要編寫URS（使用者需求規格）</li>
+<li>不需要完整的功能測試協議</li>
+<li>重點是：安裝確認（正確版本？正確配置？）+ 維持受控狀態</li>
+</ul>
+<p>常見錯誤：把Windows Server或Oracle Database當作Category 3/4應用程式來驗證，浪費大量資源。</p>
+</div>
+<div class="concept-box">
+<h4>「一次確認，多次部署」</h4>
+<p>這是基礎架構管理的核心效率原則。一旦「標準配置模板」被驗證為可接受，後續每台按同樣模板部署的伺服器只需要確認「是否確實按模板部署」即可，不需要重複完整確認流程。</p>
+<p><strong>IaC（基礎架構即程式碼）</strong>將這個概念推向自動化：配置腳本受版本控制管理，部署過程可自動產生記錄，實現「review-by-exception（例外審查）」。</p>
+</div>
+<div class="note-box">
+<h4>對CDMO的提醒</h4>
+<p>在CDMO環境，IT基礎架構往往由IT部門管理，QA人員對伺服器架構不熟悉，容易陷入兩個極端：</p>
+<ul>
+<li>過度介入：要求IT對每個修補程式都走完整變更控制流程</li>
+<li>完全不介入：讓IT自行決定，QA毫無監督</li>
+</ul>
+<p>正確做法：建立IT Quality（ITQ）職能，作為IT與QA之間的橋梁（見Section 19.4）。</p>
+</div>
+</div>
+</div>
 <!-- ===== PART 2: RISK MANAGEMENT & QUALITY ROLE ===== -->
-<h2 class="section-title" id="m11-risk-quality">M11: Risk Management, Quality Role &amp; IT Processes</h2>
+<h2 class="section-title" id="m11-risk-quality"><strong>M11: Risk Management, Quality Role &amp; IT Processes M11: 風險管理、品質角色與 IT 流程</strong></h2>
 <div class="two-column">
-    <div class="left-column">
-        <h2>19.3 Risk Management and Infrastructure</h2>
-        <p>IT departments service the entire enterprise, not just GxP areas. Cases may arise where a risk to the enterprise as a whole requires a change that cannot go through a time-consuming change control process. For example, if a <strong>zero-day security vulnerability</strong> is recognized that threatens serious harm, remediation will be done as rapidly as possible. IT risk priorities tend to focus on risks to system availability, performance, and information security — these priorities actually address GxP concerns: applications are available when needed, they work well, and there is data integrity.</p>
-        <div class="quote-box">
+<div class="left-column">
+<h2>19.3 Risk Management and Infrastructure</h2>
+<p>IT departments service the entire enterprise, not just GxP areas. Cases may arise where a risk to the enterprise as a whole requires a change that cannot go through a time-consuming change control process. For example, if a <strong>zero-day security vulnerability</strong> is recognized that threatens serious harm, remediation will be done as rapidly as possible. IT risk priorities tend to focus on risks to system availability, performance, and information security — these priorities actually address GxP concerns: applications are available when needed, they work well, and there is data integrity.</p>
+<div class="quote-box">
             "Threats to the IT Infrastructure environment largely come from cyberattacks, unauthorized access, system and component failure, or inadequate resource provisioning. These risks are continuous, and it is therefore imperative that the currency of IT infrastructure controls is maintained (e.g., through security patching) and monitoring is in place to provide early detection of any threat."
-            <br><em>— Reid and Wyn</em>
-        </div>
-
-        <h2>19.4 The Role of Quality</h2>
-        <p>Heavy quality unit involvement in infrastructure is <strong>unwarranted and potentially extremely inefficient</strong>. Infrastructure groups manage many non-impact changes and the risk to patients for IT infrastructure decisions is typically extremely low. The US FDA 21 CFR Parts 210/211 preamble states:</p>
-        <div class="quote-box">
+            <br/><em>— Reid and Wyn</em>
+</div>
+<h2>19.4 The Role of Quality</h2>
+<p>Heavy quality unit involvement in infrastructure is <strong>unwarranted and potentially extremely inefficient</strong>. Infrastructure groups manage many non-impact changes and the risk to patients for IT infrastructure decisions is typically extremely low. The US FDA 21 CFR Parts 210/211 preamble states:</p>
+<div class="quote-box">
             "Functions that are properly those of the engineering department or other specialized units because of their unique training and experience should not be duplicated or usurped by the quality control unit. Where expertise is in other units, the responsibility of the quality control unit is to assure that such expertise has been utilized."
         </div>
-        <p>It is advisable that IT organizations establish an internal <strong>IT Quality (ITQ) function</strong>. This function should oversee IT processes to ensure they support a state of control, and should be familiar enough with GxP expectations to know when the quality unit should be involved. For example, it may make sense for quality to be involved in a change of database engines used in multiple GxP applications, or when a major OS upgrade is undertaken — but not for microcode updates or new virus definitions.</p>
-        <p>Responsibility for any quality decision should be procedurally defined.</p>
-
-        <h2>19.5 IT Processes in Scope for Infrastructure Qualification</h2>
-
-        <h4>19.5.1 Security Management</h4>
-        <ul>
-            <li>Access control and password management — only authorized people have access</li>
-            <li>Management of administrative access — to minimize elevated privileges</li>
-            <li>Cybersecurity — data segregation, firewalls, intrusion detection, antivirus, vulnerability management</li>
-            <li>Management of encryption key(s)</li>
-        </ul>
-        <p>IT will approach data integrity with a generic enterprise-wide solution unless informed that additional protections are needed. The business process owner and/or data owner must assess supporting infrastructure processes and request modification if necessary.</p>
-
-        <h4>19.5.2 Backup and Recovery</h4>
-        <p>Processes need to include analysis of the required frequency of backup to meet business needs. For GxP applications, both <strong>Recovery Point Objectives (RPO)</strong> — which dictates backup frequency — and <strong>Recovery Time Objectives (RTO)</strong> — which dictates interval between system failure and recovery — must be defined, testable, and agreed by the business owner. All backup processes should be periodically verified to demonstrate recoverability.</p>
-
-        <h4>19.5.3 Archive and Restore</h4>
-        <p>Processes should include how and when data (including metadata) is moved to an archive, how archived data can be accessed and by whom, and how to destroy data no longer needed. Data needs to be readable throughout the retention period.</p>
-
-        <h4>19.5.4 Change Management</h4>
-        <p>Infrastructure change management cannot be a direct parallel to change-control processes for GxP applications. Infrastructure changes should be managed at the IT process layer, not at the product life cycle management process layer. The ITIL concept of <strong>standard changes</strong> can be extended into GxP infrastructure management — a list of pre-agreed changes that IT can make without additional oversight.</p>
-
-        <h4>19.5.5 Configuration Management</h4>
-        <p>Configuration management is both a regulatory expectation and necessary for running an effective IT operation. In a modern IT environment, it is impractical to achieve this without a CMDB.</p>
-
-        <h4>19.5.6 Disaster Recovery and Business Continuity Planning</h4>
-        <p>DR and BCP processes should be defined, documented, and practiced. GxP process owners need to understand that enterprise risk priorities may supersede GxP priorities — if the business may fail without finance systems, they may be restored before manufacturing systems. If there is a potential public health impact (e.g., a drug shortage), that should be part of the prioritization consideration.</p>
-    </div>
-    <div class="right-column">
-        <h2>中文解析 — 風險管理與品保角色</h2>
-        <div class="concept-box">
-            <h4>QA在IT基礎架構的正確角色</h4>
-            <p>這一節給很多製藥QA人員一個重要訊息：<strong>品保不需要審批每一個IT基礎架構變更</strong>。</p>
-            <p>應該介入的情況（高風險）：</p>
-            <ul>
-                <li>更換多個GxP應用程式共用的資料庫引擎</li>
-                <li>重大作業系統版本升級</li>
-                <li>影響GxP應用程式可用性的網路架構變更</li>
-            </ul>
-            <p>不需要介入的情況（低風險）：</p>
-            <ul>
-                <li>病毒碼更新</li>
-                <li>微碼（microcode）修補</li>
-                <li>增加儲存空間</li>
-                <li>例行網路設備更換（同規格）</li>
-            </ul>
-        </div>
-        <div class="concept-box">
-            <h4>IT Quality（ITQ）職能 — 為何重要</h4>
-            <p>在大型CDMO，建議設立ITQ角色（可以是IT部門內的人員兼任），負責：</p>
-            <ul>
-                <li>監督IT流程是否支持受控狀態</li>
-                <li>了解GxP期望，判斷何時需要QA介入</li>
-                <li>與QA合作制定IT品質框架</li>
-            </ul>
-            <p>沒有ITQ的常見問題：IT做了影響GxP系統的重大變更，QA事後才知道。</p>
-        </div>
-        <div class="analogy-box">
-            <h4>RPO vs. RTO — 實際案例</h4>
-            <p>假設你有一套雲端MES（製造執行系統）：</p>
-            <ul>
-                <li><strong>RPO = 4小時</strong>：意思是系統崩潰後，最多接受損失4小時的資料（備份每4小時執行一次）</li>
-                <li><strong>RTO = 2小時</strong>：意思是系統崩潰後，必須在2小時內恢復運作</li>
-            </ul>
-            <p>這兩個數字必須由<strong>業務主管（Business Owner）</strong>定義並認可，不能只由IT自行決定。如果生產線停工損失巨大，RTO可能需要設為30分鐘。</p>
-            <p>重點：<strong>定期測試備份可回復性</strong>，不能只設定備份任務就假設它能用。</p>
-        </div>
-        <div class="concept-box">
-            <h4>IT變更控制 vs. GxP變更控制</h4>
-            <p>很多公司的問題：把IT基礎架構變更強行套用到GxP應用程式的變更控制流程中，造成效率極低。</p>
-            <p>GAMP 5建議的做法：</p>
-            <ul>
-                <li>基礎架構變更由<strong>IT流程層</strong>管理（ITIL標準變更清單）</li>
-                <li>GxP應用程式變更由<strong>產品生命週期管理流程</strong>管理</li>
-                <li>建立「標準變更清單」：IT可自行執行、無需額外審批的預核准變更</li>
-            </ul>
-        </div>
-        <div class="note-box">
-            <h4>災難復原的優先順序問題</h4>
-            <p>這是容易引起爭議的議題：當IT系統全面崩潰時，製藥GxP系統優先恢復嗎？</p>
-            <p>GAMP 5的回答：<strong>不一定</strong>。企業層級的優先順序可能讓財務系統（ERP）排在製造系統之前，因為沒有ERP企業可能無法運作。</p>
-            <p>QA需要在BCP計畫中了解並接受這個優先順序，並確保公共衛生影響（如藥品短缺）已被納入考量。</p>
-        </div>
-    </div>
+<p>It is advisable that IT organizations establish an internal <strong>IT Quality (ITQ) function</strong>. This function should oversee IT processes to ensure they support a state of control, and should be familiar enough with GxP expectations to know when the quality unit should be involved. For example, it may make sense for quality to be involved in a change of database engines used in multiple GxP applications, or when a major OS upgrade is undertaken — but not for microcode updates or new virus definitions.</p>
+<p>Responsibility for any quality decision should be procedurally defined.</p>
+<h2>19.5 IT Processes in Scope for Infrastructure Qualification</h2>
+<h4>19.5.1 Security Management</h4>
+<ul>
+<li>Access control and password management — only authorized people have access</li>
+<li>Management of administrative access — to minimize elevated privileges</li>
+<li>Cybersecurity — data segregation, firewalls, intrusion detection, antivirus, vulnerability management</li>
+<li>Management of encryption key(s)</li>
+</ul>
+<p>IT will approach data integrity with a generic enterprise-wide solution unless informed that additional protections are needed. The business process owner and/or data owner must assess supporting infrastructure processes and request modification if necessary.</p>
+<h4>19.5.2 Backup and Recovery</h4>
+<p>Processes need to include analysis of the required frequency of backup to meet business needs. For GxP applications, both <strong>Recovery Point Objectives (RPO)</strong> — which dictates backup frequency — and <strong>Recovery Time Objectives (RTO)</strong> — which dictates interval between system failure and recovery — must be defined, testable, and agreed by the business owner. All backup processes should be periodically verified to demonstrate recoverability.</p>
+<h4>19.5.3 Archive and Restore</h4>
+<p>Processes should include how and when data (including metadata) is moved to an archive, how archived data can be accessed and by whom, and how to destroy data no longer needed. Data needs to be readable throughout the retention period.</p>
+<h4>19.5.4 Change Management</h4>
+<p>Infrastructure change management cannot be a direct parallel to change-control processes for GxP applications. Infrastructure changes should be managed at the IT process layer, not at the product life cycle management process layer. The ITIL concept of <strong>standard changes</strong> can be extended into GxP infrastructure management — a list of pre-agreed changes that IT can make without additional oversight.</p>
+<h4>19.5.5 Configuration Management</h4>
+<p>Configuration management is both a regulatory expectation and necessary for running an effective IT operation. In a modern IT environment, it is impractical to achieve this without a CMDB.</p>
+<h4>19.5.6 Disaster Recovery and Business Continuity Planning</h4>
+<p>DR and BCP processes should be defined, documented, and practiced. GxP process owners need to understand that enterprise risk priorities may supersede GxP priorities — if the business may fail without finance systems, they may be restored before manufacturing systems. If there is a potential public health impact (e.g., a drug shortage), that should be part of the prioritization consideration.</p>
 </div>
-
+<div class="right-column">
+<h2>中文解析 — 風險管理與品保角色</h2>
+<div class="concept-box">
+<h4>QA在IT基礎架構的正確角色</h4>
+<p>這一節給很多製藥QA人員一個重要訊息：<strong>品保不需要審批每一個IT基礎架構變更</strong>。</p>
+<p>應該介入的情況（高風險）：</p>
+<ul>
+<li>更換多個GxP應用程式共用的資料庫引擎</li>
+<li>重大作業系統版本升級</li>
+<li>影響GxP應用程式可用性的網路架構變更</li>
+</ul>
+<p>不需要介入的情況（低風險）：</p>
+<ul>
+<li>病毒碼更新</li>
+<li>微碼（microcode）修補</li>
+<li>增加儲存空間</li>
+<li>例行網路設備更換（同規格）</li>
+</ul>
+</div>
+<div class="concept-box">
+<h4>IT Quality（ITQ）職能 — 為何重要</h4>
+<p>在大型CDMO，建議設立ITQ角色（可以是IT部門內的人員兼任），負責：</p>
+<ul>
+<li>監督IT流程是否支持受控狀態</li>
+<li>了解GxP期望，判斷何時需要QA介入</li>
+<li>與QA合作制定IT品質框架</li>
+</ul>
+<p>沒有ITQ的常見問題：IT做了影響GxP系統的重大變更，QA事後才知道。</p>
+</div>
+<div class="analogy-box">
+<h4>RPO vs. RTO — 實際案例</h4>
+<p>假設你有一套雲端MES（製造執行系統）：</p>
+<ul>
+<li><strong>RPO = 4小時</strong>：意思是系統崩潰後，最多接受損失4小時的資料（備份每4小時執行一次）</li>
+<li><strong>RTO = 2小時</strong>：意思是系統崩潰後，必須在2小時內恢復運作</li>
+</ul>
+<p>這兩個數字必須由<strong>業務主管（Business Owner）</strong>定義並認可，不能只由IT自行決定。如果生產線停工損失巨大，RTO可能需要設為30分鐘。</p>
+<p>重點：<strong>定期測試備份可回復性</strong>，不能只設定備份任務就假設它能用。</p>
+</div>
+<div class="concept-box">
+<h4>IT變更控制 vs. GxP變更控制</h4>
+<p>很多公司的問題：把IT基礎架構變更強行套用到GxP應用程式的變更控制流程中，造成效率極低。</p>
+<p>GAMP 5建議的做法：</p>
+<ul>
+<li>基礎架構變更由<strong>IT流程層</strong>管理（ITIL標準變更清單）</li>
+<li>GxP應用程式變更由<strong>產品生命週期管理流程</strong>管理</li>
+<li>建立「標準變更清單」：IT可自行執行、無需額外審批的預核准變更</li>
+</ul>
+</div>
+<div class="note-box">
+<h4>災難復原的優先順序問題</h4>
+<p>這是容易引起爭議的議題：當IT系統全面崩潰時，製藥GxP系統優先恢復嗎？</p>
+<p>GAMP 5的回答：<strong>不一定</strong>。企業層級的優先順序可能讓財務系統（ERP）排在製造系統之前，因為沒有ERP企業可能無法運作。</p>
+<p>QA需要在BCP計畫中了解並接受這個優先順序，並確保公共衛生影響（如藥品短缺）已被納入考量。</p>
+</div>
+</div>
+</div>
 <!-- ===== PART 3: CLOUD INFRASTRUCTURE ===== -->
-<h2 class="section-title" id="m11-cloud">M11: Cloud Infrastructure</h2>
+<h2 class="section-title" id="m11-cloud"><strong>M11: Cloud Infrastructure M11: 雲端基礎設施</strong></h2>
 <div class="two-column">
-    <div class="left-column">
-        <h2>19.6 Cloud Infrastructure</h2>
-        <p>Any use of cloud resources brings infrastructure qualification considerations into scope. Figure 19.3 illustrates the various levels of delegation of control to the supplier for IaaS, PaaS, and SaaS deployments. In all cases, however, the infrastructure management and control expectations are constant.</p>
-        <ul>
-            <li><strong>IaaS (Infrastructure as a Service)</strong>: Infrastructure management is shared between the regulated firm and the supplier. The regulated company manages OS, middleware, applications, and data.</li>
-            <li><strong>PaaS (Platform as a Service)</strong>: All infrastructure activities are delegated to the supplier. The regulated company manages applications and data.</li>
-            <li><strong>SaaS (Software as a Service)</strong>: All infrastructure activities are delegated to the supplier. The regulated company manages data and configuration only.</li>
-        </ul>
-        <p>Cloud suppliers are generally <em>not</em> GxP regulated. This does not mean they are universally unsuited to host GxP applications. The core question is whether they have an adequate <strong>state of control</strong> over their infrastructure — determined via an effective supplier evaluation process (Appendix M2) and a robust set of contractual agreements on service levels, quality, and monitoring.</p>
-
-        <h4>Data Integrity Considerations for Cloud GxP</h4>
-        <ul>
-            <li><strong>Access management</strong>: What are the implications if supplier staff see GxP data?</li>
-            <li><strong>Encryption</strong>: If data in motion and/or at rest is encrypted, who manages the key?</li>
-            <li><strong>DR</strong>: What happens if the cloud supplier has a major incident? RTO and RPO must be agreed.</li>
-            <li><strong>Certifications</strong>: Which certifications does the provider hold? (e.g., ISO 27001, SOC 1, SOC 2 Type 1/2, HITRUST)</li>
-            <li>Frequency of vulnerability scans and third-party penetration tests</li>
-            <li>Local, regional, and global redundancies and segregation</li>
-            <li>Deployment model and service model compatibility with the level of GxP risk</li>
-        </ul>
-        <p>Cloud service suppliers are not GxP regulated, and it is the <strong>accountability of the regulated organization</strong> using such services to ensure that quality processes provide an equivalent level of assurance that patient safety, product quality, and data integrity are protected.</p>
-
-        <h2>19.7 Continual Improvement</h2>
-        <p>For all IT infrastructure, but especially for cloud implementations, there should always be the question: "What could we be doing better?" Key processes should be monitored by the service provider, with adherence to agreed SLAs and inclusion of specific Key Process Indicators (KPIs) in the monitoring.</p>
-    </div>
-    <div class="right-column">
-        <h2>中文解析 — 雲端基礎架構</h2>
-        <div class="practice-box">
-            <h4>實際案例：驗證雲端eDMS（Veeva Vault QualityDocs）</h4>
-            <p>這是SaaS模式。你的驗證策略應該是：</p>
-            <ul>
-                <li><strong>供應商評估</strong>：確認Veeva有SOC 2 Type 2認證、ISO 27001，審查其資料中心安全措施</li>
-                <li><strong>合約確認</strong>：SLA中明確RPO、RTO；資料所在地（Data Residency）符合法規；供應商變更通知機制</li>
-                <li><strong>IQ</strong>：確認SaaS環境配置符合我方需求（不是安裝伺服器，而是確認租戶配置）</li>
-                <li><strong>OQ</strong>：測試配置的功能（工作流程、存取控制、電子簽章）是否如預期運作</li>
-                <li><strong>不需要</strong>：測試Veeva底層資料庫引擎、伺服器OS版本</li>
-            </ul>
-        </div>
-        <div class="note-box">
-            <h4>誰來確認雲端服務？IT還是QA？</h4>
-            <p>GAMP 5的建議：<strong>IT + QA協作，但角色分工明確</strong>。</p>
-            <ul>
-                <li><strong>IT</strong>：評估供應商技術能力（安全性、可靠性、認證）；管理SLA；執行技術層面的確認測試</li>
-                <li><strong>QA</strong>：審查供應商評估結果；批准驗證計畫與報告；確保GxP資料完整性要求被納入合約</li>
-                <li><strong>ITQ</strong>（如有）：協調IT與QA之間的溝通，確保兩方理解彼此的期望</li>
-            </ul>
-            <p>關鍵原則：<strong>監管責任無法外包</strong>。即使Veeva的資料中心在愛爾蘭，你的GxP資料完整性仍是你的責任。</p>
-        </div>
-        <div class="key-point-box">
-            <h4>雲端GxP的核心問題清單</h4>
-            <ul>
-                <li>資料加密金鑰由誰持有？供應商還是我方？</li>
-                <li>供應商staff有權存取我的GxP資料嗎？</li>
-                <li>系統崩潰後，供應商保證幾小時內恢復（RTO）？</li>
-                <li>供應商有哪些第三方認證（SOC 2 Type 2？ISO 27001？）？</li>
-                <li>供應商升級SaaS版本時，我有機會拒絕或延遲嗎？</li>
-                <li>退出條款：如果我要離開這個供應商，我的資料如何遷出？格式是否可讀？</li>
-            </ul>
-        </div>
-    </div>
+<div class="left-column">
+<h2>19.6 Cloud Infrastructure</h2>
+<p>Any use of cloud resources brings infrastructure qualification considerations into scope. Figure 19.3 illustrates the various levels of delegation of control to the supplier for IaaS, PaaS, and SaaS deployments. In all cases, however, the infrastructure management and control expectations are constant.</p>
+<ul>
+<li><strong>IaaS (Infrastructure as a Service)</strong>: Infrastructure management is shared between the regulated firm and the supplier. The regulated company manages OS, middleware, applications, and data.</li>
+<li><strong>PaaS (Platform as a Service)</strong>: All infrastructure activities are delegated to the supplier. The regulated company manages applications and data.</li>
+<li><strong>SaaS (Software as a Service)</strong>: All infrastructure activities are delegated to the supplier. The regulated company manages data and configuration only.</li>
+</ul>
+<p>Cloud suppliers are generally <em>not</em> GxP regulated. This does not mean they are universally unsuited to host GxP applications. The core question is whether they have an adequate <strong>state of control</strong> over their infrastructure — determined via an effective supplier evaluation process (Appendix M2) and a robust set of contractual agreements on service levels, quality, and monitoring.</p>
+<h4>Data Integrity Considerations for Cloud GxP</h4>
+<ul>
+<li><strong>Access management</strong>: What are the implications if supplier staff see GxP data?</li>
+<li><strong>Encryption</strong>: If data in motion and/or at rest is encrypted, who manages the key?</li>
+<li><strong>DR</strong>: What happens if the cloud supplier has a major incident? RTO and RPO must be agreed.</li>
+<li><strong>Certifications</strong>: Which certifications does the provider hold? (e.g., ISO 27001, SOC 1, SOC 2 Type 1/2, HITRUST)</li>
+<li>Frequency of vulnerability scans and third-party penetration tests</li>
+<li>Local, regional, and global redundancies and segregation</li>
+<li>Deployment model and service model compatibility with the level of GxP risk</li>
+</ul>
+<p>Cloud service suppliers are not GxP regulated, and it is the <strong>accountability of the regulated organization</strong> using such services to ensure that quality processes provide an equivalent level of assurance that patient safety, product quality, and data integrity are protected.</p>
+<h2>19.7 Continual Improvement</h2>
+<p>For all IT infrastructure, but especially for cloud implementations, there should always be the question: "What could we be doing better?" Key processes should be monitored by the service provider, with adherence to agreed SLAs and inclusion of specific Key Process Indicators (KPIs) in the monitoring.</p>
 </div>
-
+<div class="right-column">
+<h2>中文解析 — 雲端基礎架構</h2>
+<div class="practice-box">
+<h4>實際案例：驗證雲端eDMS（Veeva Vault QualityDocs）</h4>
+<p>這是SaaS模式。你的驗證策略應該是：</p>
+<ul>
+<li><strong>供應商評估</strong>：確認Veeva有SOC 2 Type 2認證、ISO 27001，審查其資料中心安全措施</li>
+<li><strong>合約確認</strong>：SLA中明確RPO、RTO；資料所在地（Data Residency）符合法規；供應商變更通知機制</li>
+<li><strong>IQ</strong>：確認SaaS環境配置符合我方需求（不是安裝伺服器，而是確認租戶配置）</li>
+<li><strong>OQ</strong>：測試配置的功能（工作流程、存取控制、電子簽章）是否如預期運作</li>
+<li><strong>不需要</strong>：測試Veeva底層資料庫引擎、伺服器OS版本</li>
+</ul>
+</div>
+<div class="note-box">
+<h4>誰來確認雲端服務？IT還是QA？</h4>
+<p>GAMP 5的建議：<strong>IT + QA協作，但角色分工明確</strong>。</p>
+<ul>
+<li><strong>IT</strong>：評估供應商技術能力（安全性、可靠性、認證）；管理SLA；執行技術層面的確認測試</li>
+<li><strong>QA</strong>：審查供應商評估結果；批准驗證計畫與報告；確保GxP資料完整性要求被納入合約</li>
+<li><strong>ITQ</strong>（如有）：協調IT與QA之間的溝通，確保兩方理解彼此的期望</li>
+</ul>
+<p>關鍵原則：<strong>監管責任無法外包</strong>。即使Veeva的資料中心在愛爾蘭，你的GxP資料完整性仍是你的責任。</p>
+</div>
+<div class="key-point-box">
+<h4>雲端GxP的核心問題清單</h4>
+<ul>
+<li>資料加密金鑰由誰持有？供應商還是我方？</li>
+<li>供應商staff有權存取我的GxP資料嗎？</li>
+<li>系統崩潰後，供應商保證幾小時內恢復（RTO）？</li>
+<li>供應商有哪些第三方認證（SOC 2 Type 2？ISO 27001？）？</li>
+<li>供應商升級SaaS版本時，我有機會拒絕或延遲嗎？</li>
+<li>退出條款：如果我要離開這個供應商，我的資料如何遷出？格式是否可讀？</li>
+</ul>
+</div>
+</div>
+</div>
 <div class="concept-box">
-            <h4>IaaS / PaaS / SaaS — GxP驗證義務比較</h4>
-            <table>
-                <thead>
-                    <tr>
-                        <th>雲端模式</th>
-                        <th>供應商管</th>
-                        <th>我方管</th>
-                        <th>驗證重點</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>IaaS</strong><br>（如AWS EC2）</td>
-                        <td>硬體、網路、虛擬化層</td>
-                        <td>OS、中介軟體、應用程式、資料</td>
-                        <td>我方需確認OS配置、應用程式安裝；供應商基礎設施做供應商評估</td>
-                    </tr>
-                    <tr>
-                        <td><strong>PaaS</strong><br>（如Azure App Service）</td>
-                        <td>硬體、網路、OS、執行環境</td>
-                        <td>應用程式、資料</td>
-                        <td>應用程式層驗證；平台穩定性靠合約SLA保障</td>
-                    </tr>
-                    <tr>
-                        <td><strong>SaaS</strong><br>（如Veeva Vault）</td>
-                        <td>幾乎全部</td>
-                        <td>資料、系統配置</td>
-                        <td>供應商評估最重要；我方驗證聚焦於配置確認（Configuration Qualification）</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <!-- ===== PART 4: M12 INTRODUCTION ===== -->
-<h2 class="section-title" id="m12-intro">Appendix M12: Critical Thinking — Introduction &amp; Scope</h2>
+<h4>IaaS / PaaS / SaaS — GxP驗證義務比較</h4>
+<table>
+<thead>
+<tr>
+<th>雲端模式</th>
+<th>供應商管</th>
+<th>我方管</th>
+<th>驗證重點</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>IaaS</strong><br/>（如AWS EC2）</td>
+<td>硬體、網路、虛擬化層</td>
+<td>OS、中介軟體、應用程式、資料</td>
+<td>我方需確認OS配置、應用程式安裝；供應商基礎設施做供應商評估</td>
+</tr>
+<tr>
+<td><strong>PaaS</strong><br/>（如Azure App Service）</td>
+<td>硬體、網路、OS、執行環境</td>
+<td>應用程式、資料</td>
+<td>應用程式層驗證；平台穩定性靠合約SLA保障</td>
+</tr>
+<tr>
+<td><strong>SaaS</strong><br/>（如Veeva Vault）</td>
+<td>幾乎全部</td>
+<td>資料、系統配置</td>
+<td>供應商評估最重要；我方驗證聚焦於配置確認（Configuration Qualification）</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- ===== PART 4: M12 INTRODUCTION ===== -->
+<h2 class="section-title" id="m12-intro"><strong>Appendix M12: Critical Thinking — Introduction &amp; Scope Appendix M12: 批判性思維 — 簡介與範圍</strong></h2>
 <div class="two-column">
-    <div class="left-column">
-        <h2>20.1 Introduction</h2>
-        <p>This appendix discusses the concept of <strong>critical thinking</strong> to proactively optimize the approach taken to ensure quality and compliance of computerized systems (i.e., better development, testing, operation, and maintenance) within the context of the business processes they support.</p>
-        <p>While GAMP 5 promotes a risk-based approach to ensuring fitness for intended use, some practitioners do not apply sufficient thought to ensure the approach they are taking is <strong>customized and proportionate</strong> to the needs of different systems. The use of rigid tables, overly prescriptive templates, and tick-in-the-box methods impedes critical thinking and could inhibit innovation and the adoption of new technologies. Wasting time and effort on non-value-added activities can lead to insufficient or excessive work with potential budget overspend and delays, and may reduce focus on more valuable and essential quality activities.</p>
-
-        <h2>20.2 Scope</h2>
-        <p>Critical thinking should be applied in a holistic manner to the entirety of the business process that the computerized system supports. The role of ancillary equipment and interfaces should be included in scope to avoid missing potential risks to patient safety, product quality, and data integrity.</p>
-        <p>The interplay between <strong>system and data life cycles</strong> should also be subject to critical thinking. Multiple systems may be involved in supporting a single data life cycle — data may be created and processed in one system, reported in an ERP system, and archived in another.</p>
-        <p>Operational compliance and data integrity is highly dependent upon <strong>personal behaviors</strong>. Critical thinking will play a key role in addressing human factors through effective behavioral, procedural, and technical controls, recognizing that the strength of quality culture varies across different locations driven by geographic values and local historical context.</p>
-
-        <h2>20.3.1 Facilitating Critical Thinking</h2>
-        <p>For critical thinking to be used successfully, the QMS and validation policy must permit and encourage its application. Examples:</p>
-        <ul>
-            <li>Where templates are provided, they are used as an <em>aide memoire</em> to ensure relevant areas are covered rather than as a form to be completed.</li>
-            <li>An addition or alternative to templates can be provided to cover essential elements, leaving the format and structure open to optimization for the particular system.</li>
-        </ul>
-    </div>
-    <div class="right-column">
-        <h2>中文解析 — 批判性思維的本質</h2>
-        <div class="concept-box">
-            <h4>什麼是「批判性思維」在GAMP 5的語境中？</h4>
-            <p>GAMP 5的批判性思維核心原則可以用一句話概括：</p>
-            <p style="text-align:center; font-size: 1.05rem; font-weight: 600; color: #2e7d32; margin: 0.75rem 0; padding: 0.5rem; background: #e8f5e9; border-radius: 6px;">「將相稱的工作量投入到最重要的地方」<br>Apply proportionate effort where it matters most.</p>
-            <p>這不是說「少做一點」，而是說「聰明地做」：</p>
-            <ul>
-                <li>高風險功能 → 嚴格測試、完整文件</li>
-                <li>低風險功能 → 簡化測試、輕量文件</li>
-                <li>COTS標準功能 → 善用供應商測試結果，不重複驗證</li>
-                <li>客製化配置 → 完整記錄，因為這是你獨有的</li>
-            </ul>
-        </div>
-        <div class="analogy-box">
-            <h4>現實中的反例：缺乏批判性思維</h4>
-            <p><strong>案例A：過度驗證</strong><br>
+<div class="left-column">
+<h2>20.1 Introduction</h2>
+<p>This appendix discusses the concept of <strong>critical thinking</strong> to proactively optimize the approach taken to ensure quality and compliance of computerized systems (i.e., better development, testing, operation, and maintenance) within the context of the business processes they support.</p>
+<p>While GAMP 5 promotes a risk-based approach to ensuring fitness for intended use, some practitioners do not apply sufficient thought to ensure the approach they are taking is <strong>customized and proportionate</strong> to the needs of different systems. The use of rigid tables, overly prescriptive templates, and tick-in-the-box methods impedes critical thinking and could inhibit innovation and the adoption of new technologies. Wasting time and effort on non-value-added activities can lead to insufficient or excessive work with potential budget overspend and delays, and may reduce focus on more valuable and essential quality activities.</p>
+<h2>20.2 Scope</h2>
+<p>Critical thinking should be applied in a holistic manner to the entirety of the business process that the computerized system supports. The role of ancillary equipment and interfaces should be included in scope to avoid missing potential risks to patient safety, product quality, and data integrity.</p>
+<p>The interplay between <strong>system and data life cycles</strong> should also be subject to critical thinking. Multiple systems may be involved in supporting a single data life cycle — data may be created and processed in one system, reported in an ERP system, and archived in another.</p>
+<p>Operational compliance and data integrity is highly dependent upon <strong>personal behaviors</strong>. Critical thinking will play a key role in addressing human factors through effective behavioral, procedural, and technical controls, recognizing that the strength of quality culture varies across different locations driven by geographic values and local historical context.</p>
+<h2>20.3.1 Facilitating Critical Thinking</h2>
+<p>For critical thinking to be used successfully, the QMS and validation policy must permit and encourage its application. Examples:</p>
+<ul>
+<li>Where templates are provided, they are used as an <em>aide memoire</em> to ensure relevant areas are covered rather than as a form to be completed.</li>
+<li>An addition or alternative to templates can be provided to cover essential elements, leaving the format and structure open to optimization for the particular system.</li>
+</ul>
+</div>
+<div class="right-column">
+<h2>中文解析 — 批判性思維的本質</h2>
+<div class="concept-box">
+<h4>什麼是「批判性思維」在GAMP 5的語境中？</h4>
+<p>GAMP 5的批判性思維核心原則可以用一句話概括：</p>
+<p style="text-align:center; font-size: 1.05rem; font-weight: 600; color: #2e7d32; margin: 0.75rem 0; padding: 0.5rem; background: #e8f5e9; border-radius: 6px;">「將相稱的工作量投入到最重要的地方」<br/>Apply proportionate effort where it matters most.</p>
+<p>這不是說「少做一點」，而是說「聰明地做」：</p>
+<ul>
+<li>高風險功能 → 嚴格測試、完整文件</li>
+<li>低風險功能 → 簡化測試、輕量文件</li>
+<li>COTS標準功能 → 善用供應商測試結果，不重複驗證</li>
+<li>客製化配置 → 完整記錄，因為這是你獨有的</li>
+</ul>
+</div>
+<div class="analogy-box">
+<h4>現實中的反例：缺乏批判性思維</h4>
+<p><strong>案例A：過度驗證</strong><br/>
             一個公司驗證SAP ERP系統，針對SAP標準的計算邏輯（如庫存計算公式）做完整OQ測試，每個計算步驟都有截圖。問題：SAP已有自己的單元測試套件，這個計算邏輯無法被我方修改。重複測試完全沒有附加價值。</p>
-            <p><strong>案例B：不足驗證</strong><br>
+<p><strong>案例B：不足驗證</strong><br/>
             同一家公司，針對他們高度客製化的工作流程（Workflow），因為「是標準COTS系統」就沒有充分測試。這個工作流程決定批次紀錄是否被批准，直接影響數據完整性，卻沒有足夠測試覆蓋。</p>
-        </div>
-        <div class="note-box">
-            <h4>批判性思維防止的常見CSV錯誤</h4>
-            <ul>
-                <li>過度測試COTS功能（這些功能由供應商維護，無法被更改）</li>
-                <li>客製化配置記錄不足（這才是你獨有的風險所在）</li>
-                <li>對同一功能測試兩次（供應商已測試，你又重複）</li>
-                <li>對所有資料都設定稽核追蹤，不論是否為GxP關鍵資料</li>
-                <li>使用千篇一律的測試模板，不考慮系統風險差異</li>
-            </ul>
-        </div>
-        <div class="key-point-box">
-            <h4>QMS必須支持批判性思維</h4>
-            <p>一個重要洞見：如果你的SOP和驗證政策要求每個系統都按照同樣的模板格式來做，那麼批判性思維就無從發揮。</p>
-            <p>真正的風險基礎方法要求：模板是<strong>思考的起點</strong>，不是<strong>機械填寫的表格</strong>。每個系統都應該根據其獨特的風險狀況來決定需要什麼程度的驗證工作。</p>
-        </div>
-    </div>
 </div>
-
+<div class="note-box">
+<h4>批判性思維防止的常見CSV錯誤</h4>
+<ul>
+<li>過度測試COTS功能（這些功能由供應商維護，無法被更改）</li>
+<li>客製化配置記錄不足（這才是你獨有的風險所在）</li>
+<li>對同一功能測試兩次（供應商已測試，你又重複）</li>
+<li>對所有資料都設定稽核追蹤，不論是否為GxP關鍵資料</li>
+<li>使用千篇一律的測試模板，不考慮系統風險差異</li>
+</ul>
+</div>
+<div class="key-point-box">
+<h4>QMS必須支持批判性思維</h4>
+<p>一個重要洞見：如果你的SOP和驗證政策要求每個系統都按照同樣的模板格式來做，那麼批判性思維就無從發揮。</p>
+<p>真正的風險基礎方法要求：模板是<strong>思考的起點</strong>，不是<strong>機械填寫的表格</strong>。每個系統都應該根據其獨特的風險狀況來決定需要什麼程度的驗證工作。</p>
+</div>
+</div>
+</div>
 <!-- ===== PART 5: M12 APPLICATION AREAS ===== -->
-<h2 class="section-title" id="m12-applications">M12: Applying Critical Thinking — Planning, Risk, Requirements &amp; Supplier</h2>
+<h2 class="section-title" id="m12-applications"><strong>M12: Applying Critical Thinking — Planning, Risk, Requirements &amp; Supplier M12: 批判性思維應用 — 規劃、風險、需求與供應商</strong></h2>
 <div class="two-column">
-    <div class="left-column">
-        <h2>20.3.2 Planning</h2>
-        <p>Critical thinking should be applied to understand both implementation risks and functional risks to patient safety, product quality, and data integrity. Business process flowcharts and data flow diagrams help identify risks associated with the process. Data integrity cannot be achieved without a complete understanding of the data flow.</p>
-        <p>Examples of planning using critical thinking include:</p>
-        <ul>
-            <li>Using business process mapping and data flow diagrams to understand where the computerized system will fit, what regulated data will pass through it</li>
-            <li>Defining consistent nomenclature for use in the process</li>
-            <li>Selecting a solution that best fits business requirements, minimizing configuration and customization — it may be more pragmatic to adjust the business process to fit a standard application</li>
-            <li>Understanding the interfaces needed to other systems and what standard interfaces are available</li>
-            <li>Planning for how the system should respond in an error or failure situation</li>
-        </ul>
-
-        <h2>20.3.3 Quality Risk Management</h2>
-        <p>Critical thinking should be applied to ensure risk assessments are as effective as possible. When assigning a severity rating for a potential failure, consider the overall risk to patient safety, product quality, and data integrity. A complete failure to meet a requirement may render part of the system non-functional, but if the overall system remains fit for intended use, this might be acceptable.</p>
-        <p>Similar functions may be grouped in a <strong>recursive hierarchy</strong> of major and subsidiary functions. A subsidiary function cannot have a higher risk than the overarching function — so there may be little or no benefit to assessing subsidiary functions of a low-risk overarching function. Assessing risk at the major and/or subsidiary level as needed ensures selection of optimal control measures and testing rigor commensurate with risk.</p>
-
-        <h2>20.3.4 Requirements</h2>
-        <p>Critical thinking should ensure that requirements specifically relating to regulatory compliance are <strong>tailored to the system's intended use</strong> rather than indiscriminately applying every potentially applicable regulatory reference. For example, critical thinking should be applied to identify GxP regulated records that need an audit trail rather than defaulting to all data requiring audit trails regardless of context.</p>
-        <p><strong>Requirements Management and Traceability Tools</strong>: Where sufficient detail and approvals are contained within the tool, there is no benefit to manually creating separate documentation. Some tools allow reports to be generated in portable formats (requirements, test outcomes, traceability matrices) on request.</p>
-
-        <h2>20.3.5 Supplier Assessment and Selection</h2>
-        <p>Knowledge of the processes followed by the supplier can enable the regulated company to <strong>reduce their validation effort by leveraging supplier activities</strong>. Supplier activities should focus on ensuring their product meets their specifications. Where the supplier has used a risk-based approach, the regulated company should determine if their assessment of risk is different and adjust accordingly.</p>
-        <p>Critical thinking should ensure supplier selection criteria contain performance measures such as system reliability, service continuity, and reputation for customer responsiveness. For SaaS, reliance on the supplier may include the data life cycle.</p>
-        <p>Key principles for leveraging supplier effort:</p>
-        <ul>
-            <li>Regulated companies are accountable for ensuring the system is fit for intended use and should evaluate the supplier's approach against their intended use</li>
-            <li>Leveraging is enabled through a risk-based approach to IT/IS service provider assurance</li>
-            <li>Supplier deliverables should be assessed for suitability, accuracy, and completeness — there is no value in recreating documentation in a different template</li>
-            <li>Information and test evidence within automated test tools have the same status as formal documentation</li>
-            <li>Where feasible, supplier should develop customer-requested functionality into their mainstream product rather than creating special versions</li>
-        </ul>
-    </div>
-    <div class="right-column">
-        <h2>中文解析 — 批判性思維的應用領域</h2>
-        <div class="concept-box">
-            <h4>系統分類（Categorization）的批判性思維</h4>
-            <p>常見問題：公司有一套「系統分類表格」，填完就決定類別，沒有人真正思考「這個系統的哪些部分最有風險」。</p>
-            <p>批判性思維問法：</p>
-            <ul>
-                <li>這個系統處理哪些GxP關鍵資料？</li>
-                <li>系統的哪些功能是COTS標準功能，哪些是我方自定義的？</li>
-                <li>供應商的開發和測試能力如何？（能槓桿多少？）</li>
-                <li>同類系統在業界有哪些驗證先例可以參考？</li>
-            </ul>
-        </div>
-        <div class="concept-box">
-            <h4>風險評估的層級思維</h4>
-            <p>GAMP 5提出了「主要功能 → 次要功能」的層級風險評估方法：</p>
-            <p>舉例：稽核追蹤功能</p>
-            <ul>
-                <li>主要功能：記錄GxP關鍵資料的變更 → <strong>高風險</strong>，需要嚴格測試</li>
-                <li>次要功能A：顯示時間戳記格式 → 風險不高於主要功能（仍需測試，但可簡化）</li>
-                <li>次要功能B：稽核日誌的顯示排序 → 低風險，可做簡單確認</li>
-            </ul>
-            <p>關鍵原則：<strong>次要功能的風險永遠不會高於上層主要功能</strong>。如果主要功能是低風險，就沒必要對每個次要功能做詳細評估。</p>
-        </div>
-        <div class="practice-box">
-            <h4>實際案例：要求書（Requirements）的批判性思維</h4>
-            <p>錯誤做法：在系統URS中把所有可能相關的法規條文都列進去（21 CFR Part 11全文、EU Annex 11全文...），不管對不對。</p>
-            <p>正確做法：</p>
-            <ul>
-                <li>先確定系統是否涉及電子簽章（才需要Part 11 §11.100-11.200）</li>
-                <li>確定系統是否儲存GxP原始資料（才需要稽核追蹤）</li>
-                <li>確定稽核追蹤需要記錄什麼（用戶操作、系統管理、還是兩者都要？）</li>
-                <li>需求應該是「可測試的」，不是法規條文的複製貼上</li>
-            </ul>
-        </div>
-        <div class="concept-box">
-            <h4>善用供應商驗證成果（Leverage）</h4>
-            <p>這是避免重複驗證的關鍵策略。以SQL Server資料庫為例：</p>
-            <ul>
-                <li>Microsoft有完整的開發測試記錄</li>
-                <li>SQL Server是GAMP Category 1（基礎架構軟體）</li>
-                <li>你需要做的：確認版本、確認配置符合你的GxP應用程式需求、確認安全性設定</li>
-                <li>你<strong>不需要</strong>做的：測試SQL Server的查詢引擎準確性、測試JOIN操作的正確性</li>
-            </ul>
-            <p>對於COTS應用程式（如Veeva、SAP）：</p>
-            <ul>
-                <li>要求供應商提供測試摘要報告（Test Summary Report）</li>
-                <li>評估供應商的測試覆蓋率和品質</li>
-                <li>你的測試應聚焦於：你的配置是否正確、你的業務流程是否如預期運作</li>
-                <li>不需要重複測試供應商已完整測試的標準功能</li>
-            </ul>
-        </div>
-    </div>
+<div class="left-column">
+<h2>20.3.2 Planning</h2>
+<p>Critical thinking should be applied to understand both implementation risks and functional risks to patient safety, product quality, and data integrity. Business process flowcharts and data flow diagrams help identify risks associated with the process. Data integrity cannot be achieved without a complete understanding of the data flow.</p>
+<p>Examples of planning using critical thinking include:</p>
+<ul>
+<li>Using business process mapping and data flow diagrams to understand where the computerized system will fit, what regulated data will pass through it</li>
+<li>Defining consistent nomenclature for use in the process</li>
+<li>Selecting a solution that best fits business requirements, minimizing configuration and customization — it may be more pragmatic to adjust the business process to fit a standard application</li>
+<li>Understanding the interfaces needed to other systems and what standard interfaces are available</li>
+<li>Planning for how the system should respond in an error or failure situation</li>
+</ul>
+<h2>20.3.3 Quality Risk Management</h2>
+<p>Critical thinking should be applied to ensure risk assessments are as effective as possible. When assigning a severity rating for a potential failure, consider the overall risk to patient safety, product quality, and data integrity. A complete failure to meet a requirement may render part of the system non-functional, but if the overall system remains fit for intended use, this might be acceptable.</p>
+<p>Similar functions may be grouped in a <strong>recursive hierarchy</strong> of major and subsidiary functions. A subsidiary function cannot have a higher risk than the overarching function — so there may be little or no benefit to assessing subsidiary functions of a low-risk overarching function. Assessing risk at the major and/or subsidiary level as needed ensures selection of optimal control measures and testing rigor commensurate with risk.</p>
+<h2>20.3.4 Requirements</h2>
+<p>Critical thinking should ensure that requirements specifically relating to regulatory compliance are <strong>tailored to the system's intended use</strong> rather than indiscriminately applying every potentially applicable regulatory reference. For example, critical thinking should be applied to identify GxP regulated records that need an audit trail rather than defaulting to all data requiring audit trails regardless of context.</p>
+<p><strong>Requirements Management and Traceability Tools</strong>: Where sufficient detail and approvals are contained within the tool, there is no benefit to manually creating separate documentation. Some tools allow reports to be generated in portable formats (requirements, test outcomes, traceability matrices) on request.</p>
+<h2>20.3.5 Supplier Assessment and Selection</h2>
+<p>Knowledge of the processes followed by the supplier can enable the regulated company to <strong>reduce their validation effort by leveraging supplier activities</strong>. Supplier activities should focus on ensuring their product meets their specifications. Where the supplier has used a risk-based approach, the regulated company should determine if their assessment of risk is different and adjust accordingly.</p>
+<p>Critical thinking should ensure supplier selection criteria contain performance measures such as system reliability, service continuity, and reputation for customer responsiveness. For SaaS, reliance on the supplier may include the data life cycle.</p>
+<p>Key principles for leveraging supplier effort:</p>
+<ul>
+<li>Regulated companies are accountable for ensuring the system is fit for intended use and should evaluate the supplier's approach against their intended use</li>
+<li>Leveraging is enabled through a risk-based approach to IT/IS service provider assurance</li>
+<li>Supplier deliverables should be assessed for suitability, accuracy, and completeness — there is no value in recreating documentation in a different template</li>
+<li>Information and test evidence within automated test tools have the same status as formal documentation</li>
+<li>Where feasible, supplier should develop customer-requested functionality into their mainstream product rather than creating special versions</li>
+</ul>
 </div>
-
-<!-- ===== PART 6: M12 TESTING & BUILD ===== -->
-<h2 class="section-title" id="m12-testing">M12: Critical Thinking Applied to Testing, Build &amp; Operations</h2>
-<div class="two-column">
-    <div class="left-column">
-        <h2>20.3.6 Testing</h2>
-        <p>Critical thinking should facilitate the testing of functions with appropriate risk priorities that reflect:</p>
-        <ul>
-            <li>The potential impact on patient safety, product quality, and data integrity — higher-risk functions may require greater test rigor</li>
-            <li>Prior testing of the function either in the supplier's development life cycle or the regulated company's life cycle</li>
-            <li>The degree of confidence in that prior testing based on supplier assessment</li>
-        </ul>
-        <p>The aim of testing is to <strong>identify and allow the removal of defects and confirm fitness for intended use</strong> — not to produce documentation for documentation's sake. Critical thinking can optimize test approaches such as:</p>
-        <ul>
-            <li>Combining tests to minimize repeated test setup activities</li>
-            <li>Differentiating between <strong>proving steps</strong> and <strong>non-proving steps</strong> — test evidence is only captured for proving steps that demonstrate a higher-risk GxP or business requirement has been fulfilled</li>
-            <li>Ensuring testers have the skills and expertise to execute tests, obviating the need for overly prescriptive test instructions</li>
-            <li>Leveraging automated test tools and test-management tools in place of extensive manual effort</li>
-            <li>Managing incidents and their corrective actions to include appropriate regression testing</li>
-        </ul>
-        <p>In most cases, screenshots and excessive commentary do not add value and are unnecessary. The critical-thinking rationale behind the test strategy must be documented.</p>
-
-        <h2>20.3.7 Managing Build and Configuration</h2>
-        <p>The traditional "static snapshot" approach of installation qualification and configuration management has proven difficult to apply and is ineffective when using modern virtual environments and cloud computing. If the build is maintained in an automatically controlled environment with regular checks, then the need to independently confirm the installation is reduced to a <strong>review by exception</strong>.</p>
-        <p>Most automated build installers provide reporting tools for configuration and setup anomalies. Such configuration management of the build script ensures continuous verification is synchronized to compare the current system against the correct setup conditions. Technology has superseded the need for traditional aspects of qualification in many cases.</p>
-
-        <h2>20.3.8 Operation and Maintenance</h2>
-        <h4>20.3.8.1 System Evolution</h4>
-        <p>The regulatory expectation is that application updates offering improvements to patient safety, product quality, or data integrity should be applied when available — GxP systems should not run on obsolete or unsupported operating systems. Critical thinking allows change to be <strong>embraced in support of improved operation</strong> rather than avoided due to the perceived validation burden.</p>
-        <p>When a defect is discovered during operational use, it is important to apply critical thinking during root-cause analysis. An excessive response may be to initiate a "test all" approach. Instead, test metrics should be used to confirm that the actual escape rate of defects is in line with assumptions. An unacceptable number of escaped defects in high-risk functions requires a re-evaluation of the functional risks and testing strategies.</p>
-
-        <h4>20.3.8.2 Ways of Working</h4>
-        <p>Operational compliance is highly dependent on the working practices of users. SOPs, video how-to guides, and built-in online help should be practical and intuitive. Critical thinking should ensure supervisory measures are proportionate to risk — for example, where is it appropriate to have a contemporaneous second-person verification versus a later check of completed data activity.</p>
-
-        <h4>20.3.8.3 Training</h4>
-        <p>When introducing a new or updated system, critical thinking helps identify and target appropriate training levels for different audiences. Training is not necessarily effective if it just repeats earlier content or if it relies on attendees only documenting they have read and understood the material.</p>
-    </div>
-    <div class="right-column">
-        <h2>中文解析 — 測試策略與運維批判性思維</h2>
-        <div class="concept-box">
-            <h4>Proving Steps vs. Non-Proving Steps</h4>
-            <p>這是提升測試效率的重要技巧：</p>
-            <ul>
-                <li><strong>Proving Step（證明步驟）</strong>：直接驗證某個GxP要求已被滿足的測試步驟 → 需要擷取截圖或記錄結果</li>
-                <li><strong>Non-Proving Step（非證明步驟）</strong>：為了設定測試環境而執行的準備步驟 → 不需要擷取截圖</li>
-            </ul>
-            <p>舉例：測試電子簽章功能</p>
-            <ul>
-                <li>登入系統（非證明步驟）→ 不需截圖</li>
-                <li>導航到批次紀錄審批頁面（非證明步驟）→ 不需截圖</li>
-                <li>按下「電子簽章」按鈕並完成簽章（<strong>證明步驟</strong>）→ <strong>需要截圖</strong></li>
-                <li>確認簽章記錄出現在稽核追蹤中（<strong>證明步驟</strong>）→ <strong>需要截圖</strong></li>
-            </ul>
-            <p>這樣可以大幅減少無意義的「流程截圖」，讓測試報告更加聚焦。</p>
-        </div>
-        <div class="analogy-box">
-            <h4>關於「擁抱變更」而非逃避</h4>
-            <p>批判性思維改變了對系統更新的心態：</p>
-            <p>傳統CSV心態：「系統已驗證通過，任何變更都是風險，能不升級就不升級。」</p>
-            <p>批判性思維心態：「跑在不支援的OS上本身就是一個風險（安全漏洞）。保持系統更新是維護驗證狀態的一部分。」</p>
-            <p>GAMP 5明確說：監管機構期望GxP系統不應跑在廢棄或不受支援的作業系統上。所以「不升級」不是比較安全的選項。</p>
-        </div>
-        <div class="note-box">
-            <h4>發現缺陷時的批判性思維</h4>
-            <p>運維過程中發現defect時，錯誤反應是：「全部重新測試一遍！」</p>
-            <p>批判性思維的回應：</p>
-            <ul>
-                <li>分析這個缺陷的實際影響範圍（是否影響GxP關鍵功能？）</li>
-                <li>評估escape rate：已逃脫到生產環境的缺陷比例是否符合預期？</li>
-                <li>如果高風險功能有不可接受的缺陷逃脫率，才需要重新評估測試策略</li>
-                <li>局部修正 + 針對性回歸測試，不是「全部重做」</li>
-            </ul>
-        </div>
-    </div>
-</div>
-
+<div class="right-column">
+<h2>中文解析 — 批判性思維的應用領域</h2>
 <div class="concept-box">
-            <h4>測試深度（Test Depth）的判斷</h4>
-            <p>GAMP 5建議根據兩個維度決定測試深度：</p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>功能特性</th>
-                        <th>建議測試深度</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>高風險 + 客製化</td>
-                        <td>完整測試協議、截圖、審批簽名</td>
-                    </tr>
-                    <tr>
-                        <td>高風險 + COTS標準</td>
-                        <td>確認功能運作、槓桿供應商測試</td>
-                    </tr>
-                    <tr>
-                        <td>低風險 + 客製化</td>
-                        <td>功能確認、輕量文件</td>
-                    </tr>
-                    <tr>
-                        <td>低風險 + COTS標準</td>
-                        <td>簡單冒煙測試或review-by-exception</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <!-- ===== PART 7: M12 PERIODIC REVIEW, RETIREMENT & MATURITY ===== -->
-<h2 class="section-title" id="m12-review-maturity">M12: Periodic Review, Retirement, Inspection Readiness &amp; Organizational Maturity</h2>
+<h4>系統分類（Categorization）的批判性思維</h4>
+<p>常見問題：公司有一套「系統分類表格」，填完就決定類別，沒有人真正思考「這個系統的哪些部分最有風險」。</p>
+<p>批判性思維問法：</p>
+<ul>
+<li>這個系統處理哪些GxP關鍵資料？</li>
+<li>系統的哪些功能是COTS標準功能，哪些是我方自定義的？</li>
+<li>供應商的開發和測試能力如何？（能槓桿多少？）</li>
+<li>同類系統在業界有哪些驗證先例可以參考？</li>
+</ul>
+</div>
+<div class="concept-box">
+<h4>風險評估的層級思維</h4>
+<p>GAMP 5提出了「主要功能 → 次要功能」的層級風險評估方法：</p>
+<p>舉例：稽核追蹤功能</p>
+<ul>
+<li>主要功能：記錄GxP關鍵資料的變更 → <strong>高風險</strong>，需要嚴格測試</li>
+<li>次要功能A：顯示時間戳記格式 → 風險不高於主要功能（仍需測試，但可簡化）</li>
+<li>次要功能B：稽核日誌的顯示排序 → 低風險，可做簡單確認</li>
+</ul>
+<p>關鍵原則：<strong>次要功能的風險永遠不會高於上層主要功能</strong>。如果主要功能是低風險，就沒必要對每個次要功能做詳細評估。</p>
+</div>
+<div class="practice-box">
+<h4>實際案例：要求書（Requirements）的批判性思維</h4>
+<p>錯誤做法：在系統URS中把所有可能相關的法規條文都列進去（21 CFR Part 11全文、EU Annex 11全文...），不管對不對。</p>
+<p>正確做法：</p>
+<ul>
+<li>先確定系統是否涉及電子簽章（才需要Part 11 §11.100-11.200）</li>
+<li>確定系統是否儲存GxP原始資料（才需要稽核追蹤）</li>
+<li>確定稽核追蹤需要記錄什麼（用戶操作、系統管理、還是兩者都要？）</li>
+<li>需求應該是「可測試的」，不是法規條文的複製貼上</li>
+</ul>
+</div>
+<div class="concept-box">
+<h4>善用供應商驗證成果（Leverage）</h4>
+<p>這是避免重複驗證的關鍵策略。以SQL Server資料庫為例：</p>
+<ul>
+<li>Microsoft有完整的開發測試記錄</li>
+<li>SQL Server是GAMP Category 1（基礎架構軟體）</li>
+<li>你需要做的：確認版本、確認配置符合你的GxP應用程式需求、確認安全性設定</li>
+<li>你<strong>不需要</strong>做的：測試SQL Server的查詢引擎準確性、測試JOIN操作的正確性</li>
+</ul>
+<p>對於COTS應用程式（如Veeva、SAP）：</p>
+<ul>
+<li>要求供應商提供測試摘要報告（Test Summary Report）</li>
+<li>評估供應商的測試覆蓋率和品質</li>
+<li>你的測試應聚焦於：你的配置是否正確、你的業務流程是否如預期運作</li>
+<li>不需要重複測試供應商已完整測試的標準功能</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- ===== PART 6: M12 TESTING & BUILD ===== -->
+<h2 class="section-title" id="m12-testing"><strong>M12: Critical Thinking Applied to Testing, Build &amp; Operations M12: 批判性思維應用於測試、建置與營運</strong></h2>
 <div class="two-column">
-    <div class="left-column">
-        <h2>20.3.9 Periodic Review</h2>
-        <p>During periodic review, the system is assessed for the cumulative impact of changes, defects, or regulatory updates. The <strong>frequency of periodic review should be based on the GxP impact of the system</strong>, with high-risk systems reviewed more frequently. Critical thinking should be used to determine whether the review frequency should be increased or decreased based on the outcome of the previous review and performance trends.</p>
-        <p>Effective system and process performance monitoring and metrics allows <strong>decreased periodic review frequency, extent, and formality</strong>. Critical thinking combined with system performance metrics can identify areas for improvement, including considering whether incremental changes have extended the system beyond its intended use.</p>
-
-        <h2>20.3.10 Retirement</h2>
-        <p>Retirement consists of withdrawal, decommissioning, and disposal. Critical thinking and risk management are needed to effectively evaluate what data needs to be retained, for what period, and how:</p>
-        <ul>
-            <li>Identifying what data needs to be archived and how to transfer it if the archival solution is not the original system</li>
-            <li>Balancing the risk of data migration against the complexity of maintaining a legacy copy</li>
-            <li>Understanding the diminishing value of data as it moves through the retention period — data that is inactive may be retained in a static, easily readable, and portable format</li>
-        </ul>
-        <p>Planning the means to meaningfully view archived data if the original system is decommissioned — data formats between original and archive systems may differ. Automated migration tools should be assessed on actual use cases to test potential problems and confirm correct migration.</p>
-
-        <h2>20.3.11 Inspection Readiness</h2>
-        <p>Critical thinking should be applied to support ongoing compliance and inspection readiness. Rationales should be available to explain how high-risk areas were assessed and identified — these justify the level of effort, formality, and documentation. <strong>A regulator will view the computerized system with a fresh pair of eyes</strong>.</p>
-        <p>During an inspection, a regulated company may need to provide evidence of the assessment and qualification of their supplier. Holding duplicate copies of supplier information that rightly belong in the supplier QMS is unnecessary and brings the risk of inconsistency and increased complexity for no quality benefit.</p>
-
-        <h2>20.3.12 Organizational Capability</h2>
-        <p>The successful application of critical thinking is highly dependent on the ability of the organization to build and maintain the necessary supportive mindset and culture within its workforce. Open and constructive discussion between stakeholders is vital to evaluate and challenge assumptions and organizational precedents to make better decisions.</p>
-
-        <h3>Table 20.1: Critical-Thinking Capability Maturity</h3>
-        </div>
-    <div class="right-column">
-        <h2>中文解析 — 定期審查、退役與組織成熟度</h2>
-        <div class="note-box">
-            <h4>系統退役的資料完整性陷阱</h4>
-            <p>系統退役時常見的合規風險：</p>
-            <ul>
-                <li>舊系統被關閉，但稽核追蹤記錄無法在新系統中查看</li>
-                <li>資料格式遷移後，原始計算的可追溯性丟失</li>
-                <li>保留期結束前刪除了應保存的數據</li>
-                <li>保留期已過但數據因為「沒人確認」而繼續佔用昂貴儲存資源</li>
-            </ul>
-            <p>批判性思維問法：「10年後，稽查員要查這批數據，能查到嗎？能讀懂嗎？」</p>
-        </div>
-        <div class="concept-box">
-            <h4>稽查準備的批判性思維</h4>
-            <p>GAMP 5的重要提醒：<strong>不要在你的驗證文件中存放供應商文件的副本</strong>。</p>
-            <p>正確做法：</p>
-            <ul>
-                <li>你的驗證文件中記錄「如何評估了供應商」以及「評估結論」</li>
-                <li>供應商的詳細測試記錄留在供應商的QMS中</li>
-                <li>合約中確保稽查時有權存取供應商文件</li>
-            </ul>
-            <p>持有副本的問題：供應商更新了文件，你的副本成為過時版本，反而增加合規風險。</p>
-        </div>
-        <div class="formula-box">
-            <h4>組織批判性思維成熟度自評</h4>
-            <p>對照Table 20.1，CDMO組織常見的現實狀況：</p>
-            <ul>
-                <li>大多數製藥公司目前處於<strong>Level 2-3</strong>：有些人懂，但執行不一致</li>
-                <li>CSV驗證仍大量依賴「填表格」而不是「思考風險」</li>
-                <li>Level 4-5的組織特徵：驗證文件因系統而異，每個系統都有清晰的風險決策記錄</li>
-            </ul>
-            <p>如何推進到Level 4：</p>
-            <ul>
-                <li>修改驗證政策，明確允許並鼓勵批判性思維</li>
-                <li>對CSV審查人員進行培訓：審查的重點是「決策是否有理據」，不是「格式是否符合模板」</li>
-                <li>建立正向激勵：當驗證人員做出有理據的簡化決策，給予認可而非質疑</li>
-            </ul>
-        </div>
-    </div>
+<div class="left-column">
+<h2>20.3.6 Testing</h2>
+<p>Critical thinking should facilitate the testing of functions with appropriate risk priorities that reflect:</p>
+<ul>
+<li>The potential impact on patient safety, product quality, and data integrity — higher-risk functions may require greater test rigor</li>
+<li>Prior testing of the function either in the supplier's development life cycle or the regulated company's life cycle</li>
+<li>The degree of confidence in that prior testing based on supplier assessment</li>
+</ul>
+<p>The aim of testing is to <strong>identify and allow the removal of defects and confirm fitness for intended use</strong> — not to produce documentation for documentation's sake. Critical thinking can optimize test approaches such as:</p>
+<ul>
+<li>Combining tests to minimize repeated test setup activities</li>
+<li>Differentiating between <strong>proving steps</strong> and <strong>non-proving steps</strong> — test evidence is only captured for proving steps that demonstrate a higher-risk GxP or business requirement has been fulfilled</li>
+<li>Ensuring testers have the skills and expertise to execute tests, obviating the need for overly prescriptive test instructions</li>
+<li>Leveraging automated test tools and test-management tools in place of extensive manual effort</li>
+<li>Managing incidents and their corrective actions to include appropriate regression testing</li>
+</ul>
+<p>In most cases, screenshots and excessive commentary do not add value and are unnecessary. The critical-thinking rationale behind the test strategy must be documented.</p>
+<h2>20.3.7 Managing Build and Configuration</h2>
+<p>The traditional "static snapshot" approach of installation qualification and configuration management has proven difficult to apply and is ineffective when using modern virtual environments and cloud computing. If the build is maintained in an automatically controlled environment with regular checks, then the need to independently confirm the installation is reduced to a <strong>review by exception</strong>.</p>
+<p>Most automated build installers provide reporting tools for configuration and setup anomalies. Such configuration management of the build script ensures continuous verification is synchronized to compare the current system against the correct setup conditions. Technology has superseded the need for traditional aspects of qualification in many cases.</p>
+<h2>20.3.8 Operation and Maintenance</h2>
+<h4>20.3.8.1 System Evolution</h4>
+<p>The regulatory expectation is that application updates offering improvements to patient safety, product quality, or data integrity should be applied when available — GxP systems should not run on obsolete or unsupported operating systems. Critical thinking allows change to be <strong>embraced in support of improved operation</strong> rather than avoided due to the perceived validation burden.</p>
+<p>When a defect is discovered during operational use, it is important to apply critical thinking during root-cause analysis. An excessive response may be to initiate a "test all" approach. Instead, test metrics should be used to confirm that the actual escape rate of defects is in line with assumptions. An unacceptable number of escaped defects in high-risk functions requires a re-evaluation of the functional risks and testing strategies.</p>
+<h4>20.3.8.2 Ways of Working</h4>
+<p>Operational compliance is highly dependent on the working practices of users. SOPs, video how-to guides, and built-in online help should be practical and intuitive. Critical thinking should ensure supervisory measures are proportionate to risk — for example, where is it appropriate to have a contemporaneous second-person verification versus a later check of completed data activity.</p>
+<h4>20.3.8.3 Training</h4>
+<p>When introducing a new or updated system, critical thinking helps identify and target appropriate training levels for different audiences. Training is not necessarily effective if it just repeats earlier content or if it relies on attendees only documenting they have read and understood the material.</p>
 </div>
-
+<div class="right-column">
+<h2>中文解析 — 測試策略與運維批判性思維</h2>
+<div class="concept-box">
+<h4>Proving Steps vs. Non-Proving Steps</h4>
+<p>這是提升測試效率的重要技巧：</p>
+<ul>
+<li><strong>Proving Step（證明步驟）</strong>：直接驗證某個GxP要求已被滿足的測試步驟 → 需要擷取截圖或記錄結果</li>
+<li><strong>Non-Proving Step（非證明步驟）</strong>：為了設定測試環境而執行的準備步驟 → 不需要擷取截圖</li>
+</ul>
+<p>舉例：測試電子簽章功能</p>
+<ul>
+<li>登入系統（非證明步驟）→ 不需截圖</li>
+<li>導航到批次紀錄審批頁面（非證明步驟）→ 不需截圖</li>
+<li>按下「電子簽章」按鈕並完成簽章（<strong>證明步驟</strong>）→ <strong>需要截圖</strong></li>
+<li>確認簽章記錄出現在稽核追蹤中（<strong>證明步驟</strong>）→ <strong>需要截圖</strong></li>
+</ul>
+<p>這樣可以大幅減少無意義的「流程截圖」，讓測試報告更加聚焦。</p>
+</div>
+<div class="analogy-box">
+<h4>關於「擁抱變更」而非逃避</h4>
+<p>批判性思維改變了對系統更新的心態：</p>
+<p>傳統CSV心態：「系統已驗證通過，任何變更都是風險，能不升級就不升級。」</p>
+<p>批判性思維心態：「跑在不支援的OS上本身就是一個風險（安全漏洞）。保持系統更新是維護驗證狀態的一部分。」</p>
+<p>GAMP 5明確說：監管機構期望GxP系統不應跑在廢棄或不受支援的作業系統上。所以「不升級」不是比較安全的選項。</p>
+</div>
+<div class="note-box">
+<h4>發現缺陷時的批判性思維</h4>
+<p>運維過程中發現defect時，錯誤反應是：「全部重新測試一遍！」</p>
+<p>批判性思維的回應：</p>
+<ul>
+<li>分析這個缺陷的實際影響範圍（是否影響GxP關鍵功能？）</li>
+<li>評估escape rate：已逃脫到生產環境的缺陷比例是否符合預期？</li>
+<li>如果高風險功能有不可接受的缺陷逃脫率，才需要重新評估測試策略</li>
+<li>局部修正 + 針對性回歸測試，不是「全部重做」</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="concept-box">
+<h4>測試深度（Test Depth）的判斷</h4>
+<p>GAMP 5建議根據兩個維度決定測試深度：</p>
+<table>
+<thead>
+<tr>
+<th>功能特性</th>
+<th>建議測試深度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>高風險 + 客製化</td>
+<td>完整測試協議、截圖、審批簽名</td>
+</tr>
+<tr>
+<td>高風險 + COTS標準</td>
+<td>確認功能運作、槓桿供應商測試</td>
+</tr>
+<tr>
+<td>低風險 + 客製化</td>
+<td>功能確認、輕量文件</td>
+</tr>
+<tr>
+<td>低風險 + COTS標準</td>
+<td>簡單冒煙測試或review-by-exception</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- ===== PART 7: M12 PERIODIC REVIEW, RETIREMENT & MATURITY ===== -->
+<h2 class="section-title" id="m12-review-maturity"><strong>M12: Periodic Review, Retirement, Inspection Readiness &amp; Organizational Maturity M12: 定期審查、退役、稽查準備與組織成熟度</strong></h2>
+<div class="two-column">
+<div class="left-column">
+<h2>20.3.9 Periodic Review</h2>
+<p>During periodic review, the system is assessed for the cumulative impact of changes, defects, or regulatory updates. The <strong>frequency of periodic review should be based on the GxP impact of the system</strong>, with high-risk systems reviewed more frequently. Critical thinking should be used to determine whether the review frequency should be increased or decreased based on the outcome of the previous review and performance trends.</p>
+<p>Effective system and process performance monitoring and metrics allows <strong>decreased periodic review frequency, extent, and formality</strong>. Critical thinking combined with system performance metrics can identify areas for improvement, including considering whether incremental changes have extended the system beyond its intended use.</p>
+<h2>20.3.10 Retirement</h2>
+<p>Retirement consists of withdrawal, decommissioning, and disposal. Critical thinking and risk management are needed to effectively evaluate what data needs to be retained, for what period, and how:</p>
+<ul>
+<li>Identifying what data needs to be archived and how to transfer it if the archival solution is not the original system</li>
+<li>Balancing the risk of data migration against the complexity of maintaining a legacy copy</li>
+<li>Understanding the diminishing value of data as it moves through the retention period — data that is inactive may be retained in a static, easily readable, and portable format</li>
+</ul>
+<p>Planning the means to meaningfully view archived data if the original system is decommissioned — data formats between original and archive systems may differ. Automated migration tools should be assessed on actual use cases to test potential problems and confirm correct migration.</p>
+<h2>20.3.11 Inspection Readiness</h2>
+<p>Critical thinking should be applied to support ongoing compliance and inspection readiness. Rationales should be available to explain how high-risk areas were assessed and identified — these justify the level of effort, formality, and documentation. <strong>A regulator will view the computerized system with a fresh pair of eyes</strong>.</p>
+<p>During an inspection, a regulated company may need to provide evidence of the assessment and qualification of their supplier. Holding duplicate copies of supplier information that rightly belong in the supplier QMS is unnecessary and brings the risk of inconsistency and increased complexity for no quality benefit.</p>
+<h2>20.3.12 Organizational Capability</h2>
+<p>The successful application of critical thinking is highly dependent on the ability of the organization to build and maintain the necessary supportive mindset and culture within its workforce. Open and constructive discussion between stakeholders is vital to evaluate and challenge assumptions and organizational precedents to make better decisions.</p>
+<h3>Table 20.1: Critical-Thinking Capability Maturity</h3>
+</div>
+<div class="right-column">
+<h2>中文解析 — 定期審查、退役與組織成熟度</h2>
+<div class="note-box">
+<h4>系統退役的資料完整性陷阱</h4>
+<p>系統退役時常見的合規風險：</p>
+<ul>
+<li>舊系統被關閉，但稽核追蹤記錄無法在新系統中查看</li>
+<li>資料格式遷移後，原始計算的可追溯性丟失</li>
+<li>保留期結束前刪除了應保存的數據</li>
+<li>保留期已過但數據因為「沒人確認」而繼續佔用昂貴儲存資源</li>
+</ul>
+<p>批判性思維問法：「10年後，稽查員要查這批數據，能查到嗎？能讀懂嗎？」</p>
+</div>
+<div class="concept-box">
+<h4>稽查準備的批判性思維</h4>
+<p>GAMP 5的重要提醒：<strong>不要在你的驗證文件中存放供應商文件的副本</strong>。</p>
+<p>正確做法：</p>
+<ul>
+<li>你的驗證文件中記錄「如何評估了供應商」以及「評估結論」</li>
+<li>供應商的詳細測試記錄留在供應商的QMS中</li>
+<li>合約中確保稽查時有權存取供應商文件</li>
+</ul>
+<p>持有副本的問題：供應商更新了文件，你的副本成為過時版本，反而增加合規風險。</p>
+</div>
+<div class="formula-box">
+<h4>組織批判性思維成熟度自評</h4>
+<p>對照Table 20.1，CDMO組織常見的現實狀況：</p>
+<ul>
+<li>大多數製藥公司目前處於<strong>Level 2-3</strong>：有些人懂，但執行不一致</li>
+<li>CSV驗證仍大量依賴「填表格」而不是「思考風險」</li>
+<li>Level 4-5的組織特徵：驗證文件因系統而異，每個系統都有清晰的風險決策記錄</li>
+</ul>
+<p>如何推進到Level 4：</p>
+<ul>
+<li>修改驗證政策，明確允許並鼓勵批判性思維</li>
+<li>對CSV審查人員進行培訓：審查的重點是「決策是否有理據」，不是「格式是否符合模板」</li>
+<li>建立正向激勵：當驗證人員做出有理據的簡化決策，給予認可而非質疑</li>
+</ul>
+</div>
+</div>
+</div>
 <div class="concept-box"><table>
-            <thead>
-                <tr>
-                    <th>Maturity Level</th>
-                    <th>Capability</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>1</strong></td>
-                    <td>No application of critical thinking evident in decision-making either by practitioners or by management</td>
-                </tr>
-                <tr>
-                    <td><strong>2</strong></td>
-                    <td>Some awareness of critical thinking within the organization but highly variable across individuals and departments</td>
-                </tr>
-                <tr>
-                    <td><strong>3</strong></td>
-                    <td>Critical thinking is described in policies and procedures but is inconsistently applied</td>
-                </tr>
-                <tr>
-                    <td><strong>4</strong></td>
-                    <td>Critical thinking principles are fully incorporated and routinely applied in working practices</td>
-                </tr>
-                <tr>
-                    <td><strong>5</strong></td>
-                    <td>Critical thinking is respected as a core competency with organizational capability continually improved</td>
-                </tr>
-            </tbody>
-        </table>
-    </div><div class="concept-box">
-            <h4>定期審查頻率的決策邏輯</h4>
-            <p>批判性思維應用於定期審查頻率的決定：</p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>考量因素</th>
-                        <th>影響審查頻率</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>系統GxP風險高</td>
-                        <td>縮短審查週期（如每年）</td>
-                    </tr>
-                    <tr>
-                        <td>上次審查發現多個問題</td>
-                        <td>縮短下次審查週期</td>
-                    </tr>
-                    <tr>
-                        <td>系統有實時監控指標</td>
-                        <td>可延長審查週期（有持續監控）</td>
-                    </tr>
-                    <tr>
-                        <td>系統長期無重大問題</td>
-                        <td>可考慮延長審查週期</td>
-                    </tr>
-                    <tr>
-                        <td>功能範圍已超出原始設計</td>
-                        <td>觸發立即審查</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <!-- ===== SECTION SUMMARY ===== -->
-<div class="section-summary">
-    <h2>Section Summary — 章節總結</h2>
-    <ul>
-        <li><strong>Infrastructure vs. Application (M11)</strong>: EU Annex 11 draws a clear line — applications are validated, infrastructure is qualified. Infrastructure software (OS, database engines) is GAMP Category 1. The "one qualification, many implementations" model and Infrastructure as Code (IaC) enable efficient, controlled infrastructure management. — EU Annex 11明確區分：應用程式需要驗證，基礎架構需要確認。基礎架構軟體屬於GAMP第1類，「一次確認，多次部署」模型透過IaC實現高效合規管理。</li>
-        <li><strong>Cloud in GxP (M11)</strong>: SaaS, PaaS, and IaaS have different validation scopes. Cloud suppliers are not GxP regulated, but the regulated company's accountability cannot be delegated. Supplier evaluation, contractual SLAs, and key data integrity considerations (RPO, RTO, encryption, certifications) are mandatory. — 三種雲端模式有不同的驗證範圍；監管責任無法外包；供應商評估、SLA合約、RPO/RTO是必要條件。</li>
-        <li><strong>Quality Role in IT (M11)</strong>: Heavy QA involvement in IT infrastructure is unwarranted. An IT Quality (ITQ) function serves as the bridge between IT and QA, defining when quality involvement is needed. Procedurally defined responsibilities prevent both over-involvement and under-oversight. — QA不需要深度介入基礎架構，ITQ職能充當IT與QA之間的橋梁，程序化定義介入邊界。</li>
-        <li><strong>Critical Thinking Principle (M12)</strong>: Apply proportionate effort where it matters most. Rigid templates and tick-box methods impede critical thinking. The QMS itself must permit and encourage proportionate approaches rather than requiring uniform documentation regardless of risk. — 批判性思維核心：相稱的工作量投入到最重要的地方；QMS政策必須支持而非阻礙批判性思維。</li>
-        <li><strong>Key CSV Applications (M12)</strong>: Avoid over-testing COTS standard functions (leverage supplier testing); ensure custom configurations are adequately documented; differentiate proving steps from non-proving steps in test execution; apply risk hierarchy to avoid redundant subsidiary function assessment. — 避免重複驗證COTS功能；充分記錄客製化配置；區分證明步驟與非證明步驟；利用風險層級避免冗餘評估。</li>
-        <li><strong>Organizational Maturity (M12)</strong>: Critical thinking capability follows a 5-level maturity model. Most organizations sit at Level 2–3. Reaching Level 4–5 requires policy changes that explicitly permit proportionate approaches, training reviewers to evaluate rationale rather than format, and cultural support for risk-based decisions. — 批判性思維有五級成熟度模型；多數組織處於第2-3級；提升成熟度需要政策、培訓、文化三管齊下。</li>
-    </ul>
+<thead>
+<tr>
+<th>Maturity Level</th>
+<th>Capability</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td>No application of critical thinking evident in decision-making either by practitioners or by management</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>Some awareness of critical thinking within the organization but highly variable across individuals and departments</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>Critical thinking is described in policies and procedures but is inconsistently applied</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>Critical thinking principles are fully incorporated and routinely applied in working practices</td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td>Critical thinking is respected as a core competency with organizational capability continually improved</td>
+</tr>
+</tbody>
+</table>
+</div><div class="concept-box">
+<h4>定期審查頻率的決策邏輯</h4>
+<p>批判性思維應用於定期審查頻率的決定：</p>
+<table>
+<thead>
+<tr>
+<th>考量因素</th>
+<th>影響審查頻率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系統GxP風險高</td>
+<td>縮短審查週期（如每年）</td>
+</tr>
+<tr>
+<td>上次審查發現多個問題</td>
+<td>縮短下次審查週期</td>
+</tr>
+<tr>
+<td>系統有實時監控指標</td>
+<td>可延長審查週期（有持續監控）</td>
+</tr>
+<tr>
+<td>系統長期無重大問題</td>
+<td>可考慮延長審查週期</td>
+</tr>
+<tr>
+<td>功能範圍已超出原始設計</td>
+<td>觸發立即審查</td>
+</tr>
+</tbody>
+</table>
 </div>
-
+<!-- ===== SECTION SUMMARY ===== -->
+<div class="section-summary">
+<h2>Section Summary — 章節總結</h2>
+<ul>
+<li><strong>Infrastructure vs. Application (M11)</strong>: EU Annex 11 draws a clear line — applications are validated, infrastructure is qualified. Infrastructure software (OS, database engines) is GAMP Category 1. The "one qualification, many implementations" model and Infrastructure as Code (IaC) enable efficient, controlled infrastructure management. — EU Annex 11明確區分：應用程式需要驗證，基礎架構需要確認。基礎架構軟體屬於GAMP第1類，「一次確認，多次部署」模型透過IaC實現高效合規管理。</li>
+<li><strong>Cloud in GxP (M11)</strong>: SaaS, PaaS, and IaaS have different validation scopes. Cloud suppliers are not GxP regulated, but the regulated company's accountability cannot be delegated. Supplier evaluation, contractual SLAs, and key data integrity considerations (RPO, RTO, encryption, certifications) are mandatory. — 三種雲端模式有不同的驗證範圍；監管責任無法外包；供應商評估、SLA合約、RPO/RTO是必要條件。</li>
+<li><strong>Quality Role in IT (M11)</strong>: Heavy QA involvement in IT infrastructure is unwarranted. An IT Quality (ITQ) function serves as the bridge between IT and QA, defining when quality involvement is needed. Procedurally defined responsibilities prevent both over-involvement and under-oversight. — QA不需要深度介入基礎架構，ITQ職能充當IT與QA之間的橋梁，程序化定義介入邊界。</li>
+<li><strong>Critical Thinking Principle (M12)</strong>: Apply proportionate effort where it matters most. Rigid templates and tick-box methods impede critical thinking. The QMS itself must permit and encourage proportionate approaches rather than requiring uniform documentation regardless of risk. — 批判性思維核心：相稱的工作量投入到最重要的地方；QMS政策必須支持而非阻礙批判性思維。</li>
+<li><strong>Key CSV Applications (M12)</strong>: Avoid over-testing COTS standard functions (leverage supplier testing); ensure custom configurations are adequately documented; differentiate proving steps from non-proving steps in test execution; apply risk hierarchy to avoid redundant subsidiary function assessment. — 避免重複驗證COTS功能；充分記錄客製化配置；區分證明步驟與非證明步驟；利用風險層級避免冗餘評估。</li>
+<li><strong>Organizational Maturity (M12)</strong>: Critical thinking capability follows a 5-level maturity model. Most organizations sit at Level 2–3. Reaching Level 4–5 requires policy changes that explicitly permit proportionate approaches, training reviewers to evaluate rationale rather than format, and cultural support for risk-based decisions. — 批判性思維有五級成熟度模型；多數組織處於第2-3級；提升成熟度需要政策、培訓、文化三管齊下。</li>
+</ul>
+</div>
 </div><!-- end main-content -->
-
 <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">⇧</button>
-
 <script>
     window.addEventListener('scroll', function() {
         const btn = document.getElementById('backToTop');
@@ -939,6 +898,5 @@ tr:nth-child(even) { background: #f7fafc; }
         }
     });
 </script>
-
 </body>
 </html>
