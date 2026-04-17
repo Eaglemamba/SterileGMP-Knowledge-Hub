@@ -2,7 +2,7 @@
 
 This document summarizes the current coverage status, gap analysis, and expansion roadmap for building a comprehensive sterile pharmaceutical manufacturing knowledge hub suitable for COO-level operational decision-making.
 
-Last updated: 2026-04-14 — 182 documents complete (PDA 42, USP 76, ISPE 14, FDA 15, ICH 6, PIC/S 4, ISO 17, Ph.Eur. 7)
+Last updated: 2026-04-17 — 182 documents complete (PDA 42, USP 76, ISPE 14, FDA 15, ICH 6, PIC/S 5, ISO 17, Ph.Eur. 7); added topic synthesis `knowledge/topics/depyrogenation-tunnel-validation.md`
 
 ---
 
@@ -415,7 +415,7 @@ Layer 3 is fed by the Amaran AI SOP project (`~/Amaran-AI-SOP/`), which already 
 
 ### Phases 1–3: COMPLETE (archived 2026-04)
 
-All PDA TRs (42), top ISPE guides (14), PIC/S Annexes (4), FDA guidances + CFR chapters (15), ICH Q8–Q14 (6), USP 76 chapters, ISO 17 standards, and Ph.Eur. 7 chapters are fully processed (bilingual HTML + knowledge MD). Infrastructure (dashboard, tooling, workflow) is complete and stable.
+All PDA TRs (42), top ISPE guides (14), PIC/S documents (5, incl. PE 011 Guide), FDA guidances + CFR chapters (15), ICH Q8–Q14 (6), USP 76 chapters, ISO 17 standards, and Ph.Eur. 7 chapters are fully processed (bilingual HTML + knowledge MD). Infrastructure (dashboard, tooling, workflow) is complete and stable.
 
 ### Phase 4: Active — Topic Gap-Fillers
 
@@ -550,8 +550,9 @@ Add only when client mix justifies:
 │   ├── ISPE-QC/, ISPE-ProcessGas/, ISPE-TechTransfer/
 │   ├── ISPE-Sampling/, ISPE-CTC/, ISPE-IT/
 │   └── ISPE-GEP/              # ❌ Blocked (OCR)
-├── PICS/                   # 4 PIC/S documents complete
+├── PICS/                   # 5 PIC/S documents complete
 │   ├── PICS-Annex1/, PICS-Annex2/, PICS-Annex15/, PICS-Annex20/
+│   └── PICS-PE011/              # GDP Guide
 ├── FDA/                    # 15 FDA documents complete
 │   ├── FDA-Aseptic/, FDA-ProcessVal/, FDA-ProcessInspection/
 │   ├── FDA-ComboProducts-CGMP/, FDA-ComboProducts-HF/

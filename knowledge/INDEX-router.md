@@ -403,4 +403,5 @@ Cross-document synthesized summaries. Use instead of grepping individual report 
 | APS in filling isolator | `topics/APS-filling-isolator.md` | Isolator-specific APS design, personnel workflow, BI placement, batch size, acceptance criteria — synthesized from TR22, PtC-Isolators, PtC-12 |
 | Disinfectant efficacy study | `topics/disinfectant-efficacy-study.md` | Carrier tests, suspension tests, in-situ field studies, log-reduction targets, documentation — synthesized from TR70, USP-1072 |
 | VPHP cycle development | `topics/VPHP-cycle-development.md` | Cycle parameter rationale, BI placement, H₂O₂ concentration decay, validation phases — synthesized from TR70, PtC-Isolators |
+| Depyrogenation tunnel validation | `topics/depyrogenation-tunnel-validation.md` | IQ/OQ/PQ framework for dry-heat continuous tunnels, F_H dosimetry, load mapping (≥5 sensors per section), endotoxin challenge (3-log reduction, ≤0.1 EU), airflow/ΔP correlation, routine control — synthesized from USP-1228-1, PICS-Annex1 §8.66-8.70, USP-85, FDA-Aseptic, ICH-Q9 |
 
