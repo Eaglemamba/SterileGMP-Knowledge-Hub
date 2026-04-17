@@ -207,8 +207,23 @@ function renderDocView(){
 }
 function switchTab(tab){currentTab=tab;currentIdx=0;renderDocView();window.scrollTo(0,0);}
 function switchView(view){currentView=view;renderDocView();}
-function carouselNav(dir){var n=currentIdx+dir;if(n<0||n>=currentItems.length)return;currentIdx=n;renderDocView();}
-function goToSlide(idx){currentIdx=idx;renderDocView();}
+function carouselNav(dir){var n=currentIdx+dir;if(n<0||n>=currentItems.length)return;currentIdx=n;updateCarousel();}
+function goToSlide(idx){if(idx===currentIdx)return;currentIdx=idx;updateCarousel();}
+function updateCarousel(){
+  var item=currentItems[currentIdx];if(!item)return;
+  var main=document.querySelector('.carousel-main img');if(main){main.src=item.src;main.alt=item.label;main.onclick=function(){openLightboxIdx(currentIdx);};}
+  var prev=document.querySelector('.carousel-arrow.prev'),next=document.querySelector('.carousel-arrow.next');
+  if(prev)prev.disabled=(currentIdx===0);
+  if(next)next.disabled=(currentIdx===currentItems.length-1);
+  var counter=document.querySelector('.carousel-counter');if(counter)counter.innerHTML=(currentIdx+1)+' / '+currentItems.length+' \u00b7 Page '+item.page;
+  var capLabel=document.querySelector('.carousel-caption .cap-label');if(capLabel)capLabel.textContent=item.label;
+  var capText=document.querySelector('.carousel-caption .cap-text');
+  if(item.caption){if(capText)capText.textContent=item.caption;else{var cc=document.querySelector('.carousel-caption');if(cc){var d=document.createElement('div');d.className='cap-text';d.textContent=item.caption;cc.appendChild(d);}}}
+  else if(capText)capText.remove();
+  var thumbs=document.querySelectorAll('#thumbStrip .thumb');
+  for(var i=0;i<thumbs.length;i++){if(i===currentIdx)thumbs[i].classList.add('active');else thumbs[i].classList.remove('active');}
+  scrollThumbIntoView();
+}
 function scrollThumbIntoView(){var s=document.getElementById('thumbStrip');if(!s)return;var a=s.querySelector('.thumb.active');if(a)a.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});}
 function openLightboxIdx(idx){if(event)event.stopPropagation();lbIdx=idx;updateLightbox();document.getElementById('lightbox').classList.add('open');document.body.style.overflow='hidden';}
 function updateLightbox(){var item=currentItems[lbIdx];if(!item)return;document.getElementById('lightboxImg').src=item.src;var info=item.label;if(item.caption)info+=' \u2014 '+item.caption;info+='  ('+(lbIdx+1)+'/'+currentItems.length+')';document.getElementById('lightboxInfo').textContent=info;}
