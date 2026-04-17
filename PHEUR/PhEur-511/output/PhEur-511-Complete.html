@@ -628,14 +628,23 @@ tr:nth-child(even) {
     font-size: 0.9rem;
 }
 
-/* ===== SECTION TITLES ===== */
+/* ===== SECTION TITLES =====
+   padding-left matches .left-column padding (1.5rem) so the
+   section title text aligns with the start of "原文 Original Text".
+   Border-bottom stays full-width as a visual separator. */
 .section-title,
 .section-divider {
     font-size: 1.1rem;
     color: var(--primary-blue);
     margin: 1.5rem 0 1rem;
-    padding-bottom: 0.5rem;
+    padding: 0 1.5rem 0.5rem 1.5rem;
     border-bottom: 2px solid #e2e8f0;
+    font-weight: 700;
+}
+
+.section-title strong,
+.section-divider strong {
+    font-weight: 700;
 }
 
 .section-divider {
@@ -956,14 +965,14 @@ tr:nth-child(even) {
     </header>
 
     <nav class="top-nav" id="topNav">
-        <button class="nav-scroll-btn hidden" id="navScrollLeft">‹</button>
+        <button class="nav-scroll-btn hidden" id="navScrollLeft">&#8249;</button>
         <div class="nav-container" id="navContainer">
             <a href="#sec1" class="nav-item" data-section="sec1">
                 <span class="nav-num">1</span>
                 <span class="nav-label">Full Document (Ph.Eur. 5.1.1)</span>
             </a>
         </div>
-        <button class="nav-scroll-btn" id="navScrollRight">›</button>
+        <button class="nav-scroll-btn" id="navScrollRight">&#8250;</button>
     </nav>
 
 <main class="main-content">
@@ -981,12 +990,6 @@ tr:nth-child(even) {
             <div class="progress-bar-container"><div class="progress-bar" id="progressBar"></div></div>
 
 <!-- ===== HEADER ===== -->
-<header class="header">
-    <h1>Ph.Eur. 5.1.1 — Methods of Preparation of Sterile Products</h1>
-    <p class="subtitle">European Pharmacopoeia 11.0 | General Text 5.1. | Monograph 07/2017:50101</p>
-    <p class="page-info">European Pharmacopoeia General Chapter | 4 pages</p>
-</header>
-
 <!-- ===== SOURCE BADGE + TAGS ===== -->
 <div class="tags-container">
     <span style="background:#7e22ce;color:#fff;padding:0.3rem 0.8rem;border-radius:1rem;font-size:0.8rem;font-weight:600;">Ph.Eur.</span>
@@ -1003,40 +1006,6 @@ tr:nth-child(even) {
 </div>
 
 <!-- ===== STICKY NAVIGATION ===== -->
-<nav class="top-nav" id="topNav">
-    <button class="nav-scroll-btn hidden" id="navScrollLeft">‹</button>
-    <div class="nav-container" id="navContainer">
-        <a href="#sec-overview" class="nav-item active" data-section="sec-overview">
-            <span class="nav-num">1</span><span class="nav-label">Overview</span>
-        </a>
-        <a href="#sec-intro" class="nav-item" data-section="sec-intro">
-            <span class="nav-num">2</span><span class="nav-label">General Intro</span>
-        </a>
-        <a href="#sec-steam" class="nav-item" data-section="sec-steam">
-            <span class="nav-num">3</span><span class="nav-label">Steam Sterilisation</span>
-        </a>
-        <a href="#sec-dryheat" class="nav-item" data-section="sec-dryheat">
-            <span class="nav-num">4</span><span class="nav-label">Dry Heat</span>
-        </a>
-        <a href="#sec-radiation" class="nav-item" data-section="sec-radiation">
-            <span class="nav-num">5</span><span class="nav-label">Ionising Radiation</span>
-        </a>
-        <a href="#sec-gas" class="nav-item" data-section="sec-gas">
-            <span class="nav-num">6</span><span class="nav-label">Gas Sterilisation</span>
-        </a>
-        <a href="#sec-filtration" class="nav-item" data-section="sec-filtration">
-            <span class="nav-num">7</span><span class="nav-label">Membrane Filtration</span>
-        </a>
-        <a href="#sec-aseptic" class="nav-item" data-section="sec-aseptic">
-            <span class="nav-num">8</span><span class="nav-label">Aseptic Assembly</span>
-        </a>
-        <a href="#sec-gmp" class="nav-item" data-section="sec-gmp">
-            <span class="nav-num">9</span><span class="nav-label">GMP Context</span>
-        </a>
-    </div>
-    <button class="nav-scroll-btn" id="navScrollRight">›</button>
-</nav>
-
 <main class="main-content">
 
 <!-- ================================================================
@@ -1801,111 +1770,18 @@ tr:nth-child(even) {
 
 </main>
 
-<!-- ===== FOOTER ===== -->
-
-
 <!-- ===== BACK TO TOP ===== -->
-<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">⇧</button>
-
 <!-- ===== JAVASCRIPT ===== -->
-<script>
-// ---- Progress Bar ----
-window.addEventListener('scroll', function() {
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const scrolled = window.scrollY;
-    const pct = docHeight > 0 ? (scrolled / docHeight) * 100 : 0;
-    document.getElementById('progressBar').style.width = pct + '%';
-
-    // Back to top button
-    const btn = document.getElementById('backToTop');
-    if (scrolled > 300) {
-        btn.classList.add('visible');
-    } else {
-        btn.classList.remove('visible');
-    }
-});
-
-// ---- Sticky Nav Scroll Arrows ----
-const navContainer = document.getElementById('navContainer');
-const navScrollLeft = document.getElementById('navScrollLeft');
-const navScrollRight = document.getElementById('navScrollRight');
-
-function updateScrollArrows() {
-    if (!navContainer) return;
-    navScrollLeft.classList.toggle('hidden', navContainer.scrollLeft <= 5);
-    navScrollRight.classList.toggle('hidden',
-        navContainer.scrollLeft >= navContainer.scrollWidth - navContainer.clientWidth - 5
-    );
-}
-
-if (navContainer) {
-    navContainer.addEventListener('scroll', updateScrollArrows);
-    navScrollLeft.addEventListener('click', function() {
-        navContainer.scrollBy({left: -200, behavior: 'smooth'});
-    });
-    navScrollRight.addEventListener('click', function() {
-        navContainer.scrollBy({left: 200, behavior: 'smooth'});
-    });
-    updateScrollArrows();
-}
-
-// ---- Active Nav Item via IntersectionObserver ----
-const sections = document.querySelectorAll('.chapter-section[id]');
-const navItems = document.querySelectorAll('.nav-item[data-section]');
-
-const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-            const id = entry.target.getAttribute('id');
-            navItems.forEach(function(item) {
-                const isActive = item.getAttribute('data-section') === id;
-                item.classList.toggle('active', isActive);
-                if (isActive) {
-                    // Scroll nav item into view
-                    item.scrollIntoView({block: 'nearest', inline: 'center', behavior: 'smooth'});
-                }
-            });
-        }
-    });
-}, {
-    rootMargin: '-10% 0px -70% 0px',
-    threshold: 0
-});
-
-sections.forEach(function(section) {
-    observer.observe(section);
-});
-
-// ---- localStorage Progress Tracking ----
-(function() {
-    var KEY = 'pheur511_progress';
-    var data = {};
-    try { data = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch(e) {}
-
-    var sectionIds = [];
-    sections.forEach(function(s) { sectionIds.push(s.id); });
-
-    var visitObserver = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-                var id = entry.target.getAttribute('id');
-                if (!data[id]) {
-                    data[id] = { visited: true, ts: Date.now() };
-                    try { localStorage.setItem(KEY, JSON.stringify(data)); } catch(e) {}
-                }
-            }
-        });
-    }, { threshold: 0.2 });
-
-    sections.forEach(function(s) { visitObserver.observe(s); });
-})();
-</script>
         </div>
     </section>
 
 </main>
 
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">⇧</button>
+    <footer class="main-footer">
+        <p>SterileGMP Knowledge Hub — 僅供學習參考</p>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -2018,11 +1894,6 @@ sections.forEach(function(section) {
         });
     });
     </script>
-
-
-<footer class="main-footer">
-    <p>SterileGMP Knowledge Hub — 僅供學習參考</p>
-</footer>
 
 </body>
 </html>

@@ -628,14 +628,23 @@ tr:nth-child(even) {
     font-size: 0.9rem;
 }
 
-/* ===== SECTION TITLES ===== */
+/* ===== SECTION TITLES =====
+   padding-left matches .left-column padding (1.5rem) so the
+   section title text aligns with the start of "原文 Original Text".
+   Border-bottom stays full-width as a visual separator. */
 .section-title,
 .section-divider {
     font-size: 1.1rem;
     color: var(--primary-blue);
     margin: 1.5rem 0 1rem;
-    padding-bottom: 0.5rem;
+    padding: 0 1.5rem 0.5rem 1.5rem;
     border-bottom: 2px solid #e2e8f0;
+    font-weight: 700;
+}
+
+.section-title strong,
+.section-divider strong {
+    font-weight: 700;
 }
 
 .section-divider {
@@ -956,7 +965,7 @@ tr:nth-child(even) {
     </header>
 
     <nav class="top-nav" id="topNav">
-        <button class="nav-scroll-btn hidden" id="navScrollLeft">‹</button>
+        <button class="nav-scroll-btn hidden" id="navScrollLeft">&#8249;</button>
         <div class="nav-container" id="navContainer">
             <a href="#sec1" class="nav-item" data-section="sec1">
                 <span class="nav-num">1</span>
@@ -967,7 +976,7 @@ tr:nth-child(even) {
                 <span class="nav-label">Clauses 10–13 + Tables: Sampling Plans, Acceptability, Fractional Plans, AQL Tables</span>
             </a>
         </div>
-        <button class="nav-scroll-btn" id="navScrollRight">›</button>
+        <button class="nav-scroll-btn" id="navScrollRight">&#8250;</button>
     </nav>
 
 <main class="main-content">
@@ -984,334 +993,323 @@ tr:nth-child(even) {
         <div class="chapter-body">
             <div class="page-info">ISO 2859-1:1999 Sampling Procedures for Inspection by Attributes | p1 – p51</div>
 </div>
-
 <div class="main-content">
-
-    <!-- LEARNING OBJECTIVES -->
-    <div class="learning-objectives">
-        <h3>Learning Objectives 學習目標</h3>
-        <ul>
-            <li>Understand the purpose and scope of ISO 2859-1 as an attribute acceptance sampling system — 理解ISO 2859-1作為屬性允收抽樣系統的目的與範圍</li>
-            <li>Master the key terminology: AQL, Ac/Re, lot, sample, process average, switching score — 掌握核心術語：AQL、Ac/Re、批、樣本、製程平均、切換分數</li>
-            <li>Distinguish between percent nonconforming and nonconformities per 100 items — 區辨不合格品百分率與每百件不合格數</li>
-            <li>Understand the three-state inspection switching rules (Normal / Tightened / Reduced) — 理解三態檢驗切換規則（正常／加嚴／放寬）</li>
-            <li>Apply ISO 2859-1 to pharmaceutical incoming inspection: glass vials, stoppers, labels — 應用於製藥來料檢驗：玻璃瓶、膠塞、標籤</li>
-            <li>Execute a step-by-step sampling plan selection using the standard — 逐步執行抽樣計畫的選擇</li>
-        </ul>
-    </div>
-
-    <!-- TOC -->
-    <div class="toc">
-        <h3>Section Contents 本節內容</h3>
-        <div class="toc-grid">
-            <a href="#foreword">Foreword 導言</a>
-            <a href="#clause1">Clause 1: Scope 範圍</a>
-            <a href="#clause2">Clause 2: References 引用標準</a>
-            <a href="#clause3">Clause 3: Terms &amp; Symbols 術語</a>
-            <a href="#clause4">Clause 4: Nonconformity 不合格表示</a>
-            <a href="#clause5">Clause 5: AQL</a>
-            <a href="#clause6">Clause 6: Submission 提交</a>
-            <a href="#clause7">Clause 7: Acceptance 允收</a>
-            <a href="#clause8">Clause 8: Sampling 抽樣</a>
-            <a href="#clause9">Clause 9: Switching Rules 切換規則</a>
-            <a href="#worked-example">Worked Example 實例演算</a>
-            <a href="#pharma-application">Pharma Application 製藥應用</a>
-        </div>
-    </div>
-
-    <!-- ===================== FOREWORD ===================== -->
-    <div class="chapter-section" id="foreword">
-        <div class="chapter-divider">
-            <div class="chapter-badge">F</div>
-            <div class="chapter-info">
-                <h2>Foreword — ISO 2859 Series Overview</h2>
-                <p>導言 — ISO 2859系列概覽</p>
-            </div>
-        </div>
-        <div class="chapter-body">
-            <div class="two-column">
-                <div class="left-column">
-                    <h3>Original Text 原文內容</h3>
-                    <p>International Standard ISO 2859-1 was prepared by Technical Committee ISO/TC 69, Applications of statistical methods, Subcommittee SC 5, Acceptance sampling. This second edition (1999) cancels and replaces the first edition (ISO 2859-1:1989).</p>
-                    <p><strong>Significant changes in the 1999 edition include:</strong></p>
-                    <ul>
-                        <li>A new procedure for switching from normal to reduced inspection (switching score system)</li>
-                        <li>Reference to skip-lot sampling (ISO 2859-3) as an alternative to reduced inspection</li>
-                        <li>The term "limiting quality" changed to "consumer's risk quality" in Tables 6 and 7</li>
-                        <li>A new producer's risk table added (probability of rejection at the AQL)</li>
-                        <li>Optional fractional acceptance number plans added (Tables 11-A, 11-B, 11-C)</li>
-                        <li>Reduced plans changed to eliminate the gap between Ac and Re numbers</li>
-                        <li>Multiple sampling plans changed from seven stages to five stages</li>
-                        <li>Scheme operating characteristic (OC) curves added as Table 12</li>
-                    </ul>
-                    <p><strong>ISO 2859 consists of four parts:</strong></p>
-                    <ul>
-                        <li><strong>Part 0:</strong> Introduction to the ISO 2859 attribute sampling system</li>
-                        <li><strong>Part 1:</strong> Sampling schemes indexed by AQL for lot-by-lot inspection</li>
-                        <li><strong>Part 2:</strong> Sampling plans indexed by limiting quality (LQ) for isolated lot inspection</li>
-                        <li><strong>Part 3:</strong> Skip-lot sampling procedures</li>
-                    </ul>
-                </div>
-                <div class="right-column">
-                    <h3>Commentary &amp; Context 解說與背景</h3>
-                    <div class="term-box">
-                        <h4>What is ISO 2859-1? 什麼是ISO 2859-1？</h4>
-                        <p>ISO 2859-1 is the global standard for <strong>acceptance sampling by attributes</strong> — the statistical method for deciding whether to accept or reject a lot of product based on inspection of a sample. It is the international equivalent of the US military standard MIL-STD-1916 predecessor, and is essentially identical to <strong>ANSI/ASQ Z1.4</strong> (the American national standard).</p>
-                        <p>ISO 2859-1是<strong>屬性允收抽樣</strong>的全球標準——根據對樣本的檢驗結果，以統計方法決定接受或拒絕一批產品。它在實質上與美國標準<strong>ANSI/ASQ Z1.4</strong>相同。</p>
-                    </div>
-                    <div class="analogy-box">
-                        <h4>Analogy: The Restaurant Inspector 比喻：餐廳稽查員</h4>
-                        <p>Imagine a health inspector visiting a restaurant. They don't taste every dish — they sample a few. If enough samples pass, the restaurant gets certified. If too many fail, they tighten scrutiny or shut down. ISO 2859-1 formalizes this logic for industrial inspection with precise statistical guarantees.</p>
-                        <p>想像衛生稽查員視察餐廳：不需品嚐每道菜，只需抽查幾道。若足夠多的樣本通過，則核發認證；若太多失敗，則加嚴審查甚至停業。ISO 2859-1正是將這個邏輯形式化，提供精確的統計保證。</p>
-                    </div>
-                    <div class="note-box">
-                        <h4>Part 1 vs. Part 2 vs. Part 3 各部分區別</h4>
-                        <ul>
-                            <li><strong>Part 1 (this standard):</strong> For <em>continuing series of lots</em> — you receive regular shipments from a supplier. The AQL index and switching rules apply.</li>
-                            <li><strong>Part 2:</strong> For <em>isolated lots</em> — a one-time purchase where switching rules don't apply. Uses LQ (Limiting Quality) as the index.</li>
-                            <li><strong>Part 3:</strong> Skip-lot sampling — for mature, proven suppliers where inspection frequency can be further reduced (inspect every 2nd or 3rd lot).</li>
-                        </ul>
-                        <p>In pharma CDMO practice, Part 1 is overwhelmingly the standard used for incoming material inspection from repeat suppliers.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ===================== CLAUSE 1 ===================== -->
-    <div class="chapter-section" id="clause1">
-        <div class="chapter-divider">
-            <div class="chapter-badge">1</div>
-            <div class="chapter-info">
-                <h2>Clause 1: Scope 範圍</h2>
-                <p>What ISO 2859-1 covers and its intended application 標準的適用範圍</p>
-            </div>
-        </div>
-        <div class="chapter-body">
-            <div class="two-column">
-                <div class="left-column">
-                    <h3>1.1 System Description</h3>
-                    <p>This part of ISO 2859 specifies an <strong>acceptance sampling system for inspection by attributes</strong>. It is indexed in terms of the acceptance quality limit (AQL).</p>
-                    <p>Its purpose is to induce a supplier through <strong>economic and psychological pressure</strong> of lot non-acceptance to maintain a process average at least as good as the specified AQL, while at the same time providing an upper limit for the risk to the consumer of accepting the occasional poor lot.</p>
-                    <p>Sampling schemes designated in this part of ISO 2859 are applicable to inspection of:</p>
-                    <ul>
-                        <li>End items</li>
-                        <li>Components and raw materials</li>
-                        <li>Operations</li>
-                        <li>Materials in process</li>
-                        <li>Supplies in storage</li>
-                        <li>Maintenance operations</li>
-                        <li>Data or records</li>
-                        <li>Administrative procedures</li>
-                    </ul>
-                    <h3>1.2 Intended Use: Continuing Series of Lots</h3>
-                    <p>These schemes are intended primarily for a <strong>continuing series of lots</strong> — a series long enough to allow the switching rules (Clause 9) to be applied. These rules provide:</p>
-                    <ul>
-                        <li><strong>Consumer protection:</strong> switch to tightened inspection or discontinuation if quality deteriorates</li>
-                        <li><strong>Producer incentive:</strong> switch to reduced inspection if consistently good quality is maintained</li>
-                    </ul>
-                    <p>Sampling plans may also be used for isolated lots, but then the user is strongly advised to consult the OC curves (Clause 12.6) and consider ISO 2859-2.</p>
-                </div>
-                <div class="right-column">
-                    <h3>Commentary 解說</h3>
-                    <div class="application-box">
-                        <h4>Attribute Inspection vs. Variable Inspection 屬性 vs. 計量</h4>
-                        <p><strong>Attribute inspection (this standard):</strong> Each unit is classified as pass or fail — binary outcome. Examples: crack present/absent, label readable/unreadable, particle visible/not visible.</p>
-                        <p><strong>Variable inspection (ISO 3951):</strong> A measurement is recorded for each unit — continuous data. Examples: fill volume in mL, closure torque in N·cm, headspace oxygen %.</p>
-                        <p>The key distinction: attributes are faster and cheaper (go/no-go gauge, visual inspection) but carry less statistical information than variables. For a given level of protection, attribute sampling requires a larger sample than variable sampling.</p>
-                        <p><strong>屬性檢驗（本標準）：</strong>每個單位分為合格或不合格——二元結果。<strong>計量值檢驗（ISO 3951）：</strong>記錄每個單位的測量值——連續數據。屬性抽樣速度較快、成本較低，但統計效率低於計量值抽樣。</p>
-                    </div>
-                    <div class="note-box">
-                        <h4>Critical Limitation: Not for All Pharma Tests 重要限制</h4>
-                        <p>ISO 2859-1 is <strong>NOT appropriate</strong> for:</p>
-                        <ul>
-                            <li><strong>Sterility testing</strong> — the sample sizes in ISO 2859-1 are statistically inadequate to detect low-level contamination. Sterility testing uses its own USP/Ph.Eur. sampling schedules.</li>
-                            <li><strong>Endotoxin (BET/LAL) testing</strong> — each batch requires a specific number of containers per USP &lt;85&gt;/Ph.Eur. 2.6.14.</li>
-                            <li><strong>Particulate matter testing</strong> — governed by USP &lt;788&gt;/&lt;789&gt;, not AQL.</li>
-                        </ul>
-                        <p>The standard is best applied to <strong>visual defect classification</strong> (cosmetic, dimensional, label) in incoming inspection of packaging components.</p>
-                    </div>
-                    <div class="analogy-box">
-                        <h4>Economic and Psychological Pressure 經濟與心理壓力</h4>
-                        <p>The standard is deliberately designed to create supplier behavior change — not just lot sentencing. If your lots keep getting rejected (moving you to tightened inspection), you face higher inspection costs, delays, and risk of disqualification. This is the "economic pressure." The psychological pressure: knowing your customer is watching every lot with tighter criteria.</p>
-                        <p>本標準刻意設計來改變供應商行為——不只是判定批次。若批次持續被拒絕（進入加嚴），你會面臨更高的檢驗成本、延誤，甚至被取消資格。這就是「經濟壓力」。心理壓力：知道你的客戶正在用更嚴格的標準監控每一批次。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ===================== CLAUSE 2 ===================== -->
-    <div class="chapter-section" id="clause2">
-        <div class="chapter-divider">
-            <div class="chapter-badge">2</div>
-            <div class="chapter-info">
-                <h2>Clause 2: Normative References 引用標準</h2>
-                <p>Supporting standards referenced by ISO 2859-1 本標準引用的支持標準</p>
-            </div>
-        </div>
-        <div class="chapter-body">
-            <div class="two-column">
-                <div class="left-column">
-                    <h3>Referenced Documents 引用文件</h3>
-                    <p>The following normative documents contain provisions which constitute provisions of this part of ISO 2859:</p>
-                    <ul>
-                        <li><strong>ISO 2859-3:1991</strong> — Sampling procedures for inspection by attributes — Part 3: Skip-lot sampling procedures</li>
-                        <li><strong>ISO 3534-1:1993</strong> — Statistics: Vocabulary and symbols — Part 1: Probability and general statistical terms</li>
-                        <li><strong>ISO 3534-2:1993</strong> — Statistics: Vocabulary and symbols — Part 2: Statistical quality control</li>
-                    </ul>
-                    <p>The most recent editions of ISO 3534-1 and ISO 3534-2 apply for undated references. ISO 2859-3 applies as specified in Clause 9.5.</p>
-                </div>
-                <div class="right-column">
-                    <h3>Commentary 解說</h3>
-                    <div class="term-box">
-                        <h4>ISO 3534-2: The Vocabulary Foundation 術語基礎</h4>
-                        <p>ISO 3534-2 (Statistical Quality Control vocabulary) is the foundational reference for all the statistical terminology used in ISO 2859-1. When ISO 2859-1 redefines or modifies a term, it notes the departure from ISO 3534-2 — for example, the definition of "percent nonconforming" is modified for practical use in this standard.</p>
-                        <p>ISO 3534-2是ISO 2859-1所有統計術語的基礎參考標準。當ISO 2859-1重新定義或修改某個術語時，會明確指出與ISO 3534-2的差異。</p>
-                    </div>
-                    <div class="note-box">
-                        <h4>ISO 2859 vs. ANSI/ASQ Z1.4 兩個標準的關係</h4>
-                        <p>ANSI/ASQ Z1.4 (US) and ISO 2859-1 (International) are technically equivalent — same tables, same switching rules, same philosophy. They share a common origin in the US military standard MIL-STD-105. When a supplier says their AQL program uses "Z1.4", they are using an essentially identical system to ISO 2859-1. In FDA-regulated environments, either standard is acceptable; the choice is typically based on customer or regional preference.</p>
-                        <p>ANSI/ASQ Z1.4（美國）與ISO 2859-1（國際）在技術上等同——相同的表格、相同的切換規則、相同的理念。在FDA監管環境中，兩者均可接受。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ===================== CLAUSE 3 ===================== -->
-    <div class="chapter-section" id="clause3">
-        <div class="chapter-divider">
-            <div class="chapter-badge">3</div>
-            <div class="chapter-info">
-                <h2>Clause 3: Terms, Definitions and Symbols 術語、定義與符號</h2>
-                <p>The most important clause — defines 28+ technical terms 最重要的條款——定義28個以上的技術術語</p>
-            </div>
-        </div>
-        <div class="chapter-body">
-
-            <div class="note-box" style="margin-bottom: 1.5rem;">
-                <h4>Why Clause 3 Matters Most 為何第3條最重要</h4>
-                <p>Clause 3 is the conceptual foundation of the entire standard. Every other clause builds on these definitions. In pharma audits and supplier qualification, disagreements about AQL programs almost always trace back to misunderstanding of these terms — especially AQL itself, which is frequently confused with a quality target.</p>
-                <p>第3條是整個標準的概念基礎。幾乎所有關於AQL程式的爭議都源於對這些術語的誤解——尤其是AQL本身，常被誤認為品質目標。</p>
-            </div>
-
-            <!-- Group 1: Lot and Sample -->
-            <h3 class="section-title">3.1 Lot and Sample Concepts 批次與樣本概念</h3>
-            <div class="two-column">
-                <div class="left-column">
-                    <div class="term-box">
-                        <h4>3.1.13 Lot (批)</h4>
-                        <p>A definite amount of some product, material or service, collected together. Note: An inspection lot may consist of several batches or parts of batches.</p>
-                        <p>一定量的產品、材料或服務的集合體。注：一個檢驗批可由若干個生產批或生產批的一部分組成。</p>
-                    </div>
-                    <div class="term-box">
-                        <h4>3.1.14 Lot Size N (批量)</h4>
-                        <p>The number of items in a lot.</p>
-                        <p>批中的項目數量。符號：N</p>
-                    </div>
-                    <div class="term-box">
-                        <h4>3.1.15 Sample (樣本)</h4>
-                        <p>A set of one or more items taken from a lot and intended to provide information on the lot.</p>
-                        <p>從批中抽取的一個或多個項目的集合，用於提供關於該批的信息。</p>
-                    </div>
-                    <div class="term-box">
-                        <h4>3.1.16 Sample Size n (樣本量)</h4>
-                        <p>The number of items in the sample. Symbol: n</p>
-                        <p>樣本中的項目數量。符號：n</p>
-                    </div>
-                </div>
-                <div class="right-column">
-                    <h3>Commentary 解說</h3>
-                    <div class="analogy-box">
-                        <h4>Lot vs. Batch in Pharma 製藥中批次與生產批的區別</h4>
-                        <p>In pharmaceutical manufacturing, "batch" typically means a production batch (a specific manufacturing run). An "inspection lot" under ISO 2859-1 might be one production batch of glass vials received, or it might be combined from multiple deliveries to form a statistically meaningful lot.</p>
-                        <p>Key rule: A lot should consist of items of a single type, grade, class, size and composition, manufactured under uniform conditions at essentially the same time (Clause 6.1). Do not mix vials of different cavity origins into one lot if they could have different defect profiles.</p>
-                        <p>製藥中「生產批」指特定的生產運行。ISO 2859-1下的「檢驗批」可能是一個收到的玻璃瓶生產批，或可能是合並自多次交貨以形成統計上有意義的批次。關鍵規則：批次應由相同類型、等級、類別、尺寸和成分的項目組成，在實質上相同時間在均一條件下製造。</p>
-                    </div>
-                    </div>
-            </div>
-
-            <!-- Group 2: Sampling Plans -->
-            <h3 class="section-title">3.1.17–3.1.19: Sampling Plan, Scheme, and System</h3>
-            <div class="two-column">
-                <div class="left-column">
-                    <div class="term-box">
-                        <h4>3.1.17 Sampling Plan (抽樣計畫)</h4>
-                        <p>A combination of sample size(s) to be used and associated lot acceptability criteria. A single sampling plan has one sample size and acceptance/rejection numbers. A double sampling plan has two sample sizes with criteria for the first sample and for the combined sample.</p>
-                        <p>Note: A sampling plan does not contain the rules on how to draw the sample.</p>
-                        <p>抽樣計畫是樣本量與相應批允收準則的組合。它不包含如何抽取樣本的規則。</p>
-                    </div>
-                    <div class="term-box">
-                        <h4>3.1.18 Sampling Scheme (抽樣方案)</h4>
-                        <p>A combination of sampling plans with rules for changing from one plan to another. The switching rules in Clause 9 define the scheme.</p>
-                        <p>抽樣方案是抽樣計畫的組合，加上從一個計畫切換到另一個計畫的規則。第9條的切換規則定義了方案。</p>
-                    </div>
-                    <div class="term-box">
-                        <h4>3.1.19 Sampling System (抽樣系統)</h4>
-                        <p>A collection of sampling plans or schemes, each with rules for changing plans, together with sampling procedures including criteria by which appropriate plans or schemes may be chosen.</p>
-                        <p>ISO 2859-1 is a sampling system indexed by lot-size ranges, inspection levels, and AQLs.</p>
-                    </div>
-                </div>
-                <div class="right-column">
-                    <h3>Commentary 解說</h3>
-                    <div class="analogy-box">
-                        <h4>Plan vs. Scheme vs. System — The Hierarchy 計畫、方案、系統的層次</h4>
-                        <p>Think of it like traffic laws:</p>
-                        <ul>
-                            <li><strong>Sampling Plan = Speed Limit on one road:</strong> "Sample 80 units; if ≤2 defects, accept; if ≥3, reject."</li>
-                            <li><strong>Sampling Scheme = The full traffic code:</strong> includes what happens when you get caught (tightened) or have a perfect record (reduced).</li>
-                            <li><strong>Sampling System = The entire legal framework:</strong> includes all roads (lot sizes), all limits (AQLs), and all courts (responsible authority).</li>
-                        </ul>
-                        <p>Most QA staff work at the plan level day-to-day, but the scheme (switching rules) is what creates the long-term incentive structure for suppliers.</p>
-                        <p>大多數QA人員日常工作在計畫層面，但方案（切換規則）才是為供應商創造長期激勵結構的關鍵。</p>
-                    </div>
-                    <div class="note-box">
-                        <h4>Single vs. Double vs. Multiple Sampling 單次、雙次、多次抽樣</h4>
-                        <ul>
-                            <li><strong>Single sampling:</strong> One sample, one decision. Simplest to administrate. Most common in pharma incoming inspection.</li>
-                            <li><strong>Double sampling:</strong> First small sample → if borderline, draw second sample and combine. Reduces average sample size at cost of more complexity.</li>
-                            <li><strong>Multiple sampling (up to 5 stages):</strong> Smallest average sample size but most complex. Used in high-volume automated inspection scenarios.</li>
-                        </ul>
-                        <p>For most pharma CDMO applications, <strong>single sampling is recommended</strong> — it is transparent, easy to audit, and easy to document in SOPs.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Group 3: AQL and Risk -->
-            <h3 class="section-title">3.1.26–3.1.28 + 3.1.20–3.1.23: AQL, Switching States, and Risk</h3>
-            <div class="two-column">
-                <div class="left-column">
-                    <div class="term-box">
-                        <h4>3.1.26 Acceptance Quality Limit (AQL) 允收品質界限</h4>
-                        <p>The quality level that is the <strong>worst tolerable process average</strong> when a continuing series of lots is submitted for acceptance sampling.</p>
-                        <p>CAUTION (Clause 5.1): "The designation of an AQL shall not imply that the supplier has the right knowingly to supply any nonconforming item."</p>
-                        <p>NOTE 2: "Although individual lots with quality as bad as the AQL may be accepted with fairly high probability, the designation of an AQL does not suggest that this is a desirable quality level."</p>
-                        <p>允收品質界限（AQL）是在對一連續系列的批進行允收抽樣時，能被容忍的最差的製程平均。注：AQL的指定並不意味著這是一個理想的品質水準。</p>
-                    </div>
-                    <div class="term-box">
-                        <h4>3.1.27 Consumer's Risk Quality (CRQ) 消費者風險品質</h4>
-                        <p>The lot or process quality level that in the sampling plan corresponds to a specified consumer's risk. Consumer's risk is usually 10% (i.e., a 10% chance of accepting a lot at this quality level).</p>
-                        <p>對應於特定消費者風險的批或製程品質水準。消費者風險通常為10%（即接受此品質水準批次的概率為10%）。</p>
-                    </div>
-                    <div class="term-box">
-                        <h4>3.1.25 Process Average 製程平均</h4>
-                        <p>Process level averaged over a defined time period or quantity of production. In ISO 2859-1, this is the quality level (percent nonconforming or number of nonconformities per hundred items) during a period when the process is in a state of statistical control.</p>
-                        <p>製程平均：在定義的時間段或生產量上的製程水準平均值。</p>
-                    </div>
-                </div>
-                <div class="right-column">
-                    <h3>Commentary 解說</h3>
-                    <div class="analogy-box">
-                        <h4>AQL: The Most Misunderstood Term AQL：最被誤解的術語</h4>
-                        <p><strong>What AQL is NOT:</strong> AQL is not your target quality. It is not the defect rate you "accept." It is not the number of defects you allow per shipment.</p>
-                        <p><strong>What AQL IS:</strong> AQL is the upper boundary of your process average that you consider tolerable as an ongoing supplier — the worst long-term quality level still acceptable. If a supplier's process average equals the AQL, they will face frequent rejections.</p>
-                        <p><strong>Restaurant analogy:</strong> If a restaurant's AQL for "wrong order" is 1%, it doesn't mean they're happy with 1% wrong orders. It means: "If your long-term average error rate exceeds 1%, we will tighten scrutiny or stop using you." The actual target should be 0.1% or lower.</p>
-                        <p><strong>AQL不是</strong>您的品質目標。AQL<strong>是</strong>您認為可容忍的供應商製程平均上限。若供應商的製程平均等於AQL，他們將面臨頻繁的拒絕。實際目標應比AQL好得多。</p>
-                    </div>
-                    <div class="formula-box">
-                        <h4>Producer's Risk and Consumer's Risk 生產者風險與消費者風險</h4>
-                        <pre>Producer's Risk (α, Type I Error):
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+<h3>Learning Objectives 學習目標</h3>
+<ul>
+<li>Understand the purpose and scope of ISO 2859-1 as an attribute acceptance sampling system — 理解ISO 2859-1作為屬性允收抽樣系統的目的與範圍</li>
+<li>Master the key terminology: AQL, Ac/Re, lot, sample, process average, switching score — 掌握核心術語：AQL、Ac/Re、批、樣本、製程平均、切換分數</li>
+<li>Distinguish between percent nonconforming and nonconformities per 100 items — 區辨不合格品百分率與每百件不合格數</li>
+<li>Understand the three-state inspection switching rules (Normal / Tightened / Reduced) — 理解三態檢驗切換規則（正常／加嚴／放寬）</li>
+<li>Apply ISO 2859-1 to pharmaceutical incoming inspection: glass vials, stoppers, labels — 應用於製藥來料檢驗：玻璃瓶、膠塞、標籤</li>
+<li>Execute a step-by-step sampling plan selection using the standard — 逐步執行抽樣計畫的選擇</li>
+</ul>
+</div>
+<!-- TOC -->
+<div class="toc">
+<h3>Section Contents 本節內容</h3>
+<div class="toc-grid">
+<a href="#foreword">Foreword 導言</a>
+<a href="#clause1">Clause 1: Scope 範圍</a>
+<a href="#clause2">Clause 2: References 引用標準</a>
+<a href="#clause3">Clause 3: Terms &amp; Symbols 術語</a>
+<a href="#clause4">Clause 4: Nonconformity 不合格表示</a>
+<a href="#clause5">Clause 5: AQL</a>
+<a href="#clause6">Clause 6: Submission 提交</a>
+<a href="#clause7">Clause 7: Acceptance 允收</a>
+<a href="#clause8">Clause 8: Sampling 抽樣</a>
+<a href="#clause9">Clause 9: Switching Rules 切換規則</a>
+<a href="#worked-example">Worked Example 實例演算</a>
+<a href="#pharma-application">Pharma Application 製藥應用</a>
+</div>
+</div>
+<!-- ===================== FOREWORD ===================== -->
+<div class="chapter-section" id="foreword">
+<div class="chapter-divider">
+<div class="chapter-badge">F</div>
+<div class="chapter-info">
+<h2>Foreword — ISO 2859 Series Overview</h2>
+<p>導言 — ISO 2859系列概覽</p>
+</div>
+</div>
+<div class="chapter-body">
+<div class="two-column">
+<div class="left-column">
+<h3>Original Text 原文內容</h3>
+<p>International Standard ISO 2859-1 was prepared by Technical Committee ISO/TC 69, Applications of statistical methods, Subcommittee SC 5, Acceptance sampling. This second edition (1999) cancels and replaces the first edition (ISO 2859-1:1989).</p>
+<p><strong>Significant changes in the 1999 edition include:</strong></p>
+<ul>
+<li>A new procedure for switching from normal to reduced inspection (switching score system)</li>
+<li>Reference to skip-lot sampling (ISO 2859-3) as an alternative to reduced inspection</li>
+<li>The term "limiting quality" changed to "consumer's risk quality" in Tables 6 and 7</li>
+<li>A new producer's risk table added (probability of rejection at the AQL)</li>
+<li>Optional fractional acceptance number plans added (Tables 11-A, 11-B, 11-C)</li>
+<li>Reduced plans changed to eliminate the gap between Ac and Re numbers</li>
+<li>Multiple sampling plans changed from seven stages to five stages</li>
+<li>Scheme operating characteristic (OC) curves added as Table 12</li>
+</ul>
+<p><strong>ISO 2859 consists of four parts:</strong></p>
+<ul>
+<li><strong>Part 0:</strong> Introduction to the ISO 2859 attribute sampling system</li>
+<li><strong>Part 1:</strong> Sampling schemes indexed by AQL for lot-by-lot inspection</li>
+<li><strong>Part 2:</strong> Sampling plans indexed by limiting quality (LQ) for isolated lot inspection</li>
+<li><strong>Part 3:</strong> Skip-lot sampling procedures</li>
+</ul>
+</div>
+<div class="right-column">
+<h3>Commentary &amp; Context 解說與背景</h3>
+<div class="term-box">
+<h4>What is ISO 2859-1? 什麼是ISO 2859-1？</h4>
+<p>ISO 2859-1 is the global standard for <strong>acceptance sampling by attributes</strong> — the statistical method for deciding whether to accept or reject a lot of product based on inspection of a sample. It is the international equivalent of the US military standard MIL-STD-1916 predecessor, and is essentially identical to <strong>ANSI/ASQ Z1.4</strong> (the American national standard).</p>
+<p>ISO 2859-1是<strong>屬性允收抽樣</strong>的全球標準——根據對樣本的檢驗結果，以統計方法決定接受或拒絕一批產品。它在實質上與美國標準<strong>ANSI/ASQ Z1.4</strong>相同。</p>
+</div>
+<div class="analogy-box">
+<h4>Analogy: The Restaurant Inspector 比喻：餐廳稽查員</h4>
+<p>Imagine a health inspector visiting a restaurant. They don't taste every dish — they sample a few. If enough samples pass, the restaurant gets certified. If too many fail, they tighten scrutiny or shut down. ISO 2859-1 formalizes this logic for industrial inspection with precise statistical guarantees.</p>
+<p>想像衛生稽查員視察餐廳：不需品嚐每道菜，只需抽查幾道。若足夠多的樣本通過，則核發認證；若太多失敗，則加嚴審查甚至停業。ISO 2859-1正是將這個邏輯形式化，提供精確的統計保證。</p>
+</div>
+<div class="note-box">
+<h4>Part 1 vs. Part 2 vs. Part 3 各部分區別</h4>
+<ul>
+<li><strong>Part 1 (this standard):</strong> For <em>continuing series of lots</em> — you receive regular shipments from a supplier. The AQL index and switching rules apply.</li>
+<li><strong>Part 2:</strong> For <em>isolated lots</em> — a one-time purchase where switching rules don't apply. Uses LQ (Limiting Quality) as the index.</li>
+<li><strong>Part 3:</strong> Skip-lot sampling — for mature, proven suppliers where inspection frequency can be further reduced (inspect every 2nd or 3rd lot).</li>
+</ul>
+<p>In pharma CDMO practice, Part 1 is overwhelmingly the standard used for incoming material inspection from repeat suppliers.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ===================== CLAUSE 1 ===================== -->
+<div class="chapter-section" id="clause1">
+<div class="chapter-divider">
+<div class="chapter-badge">1</div>
+<div class="chapter-info">
+<h2>Clause 1: Scope 範圍</h2>
+<p>What ISO 2859-1 covers and its intended application 標準的適用範圍</p>
+</div>
+</div>
+<div class="chapter-body">
+<div class="two-column">
+<div class="left-column">
+<h3>1.1 System Description</h3>
+<p>This part of ISO 2859 specifies an <strong>acceptance sampling system for inspection by attributes</strong>. It is indexed in terms of the acceptance quality limit (AQL).</p>
+<p>Its purpose is to induce a supplier through <strong>economic and psychological pressure</strong> of lot non-acceptance to maintain a process average at least as good as the specified AQL, while at the same time providing an upper limit for the risk to the consumer of accepting the occasional poor lot.</p>
+<p>Sampling schemes designated in this part of ISO 2859 are applicable to inspection of:</p>
+<ul>
+<li>End items</li>
+<li>Components and raw materials</li>
+<li>Operations</li>
+<li>Materials in process</li>
+<li>Supplies in storage</li>
+<li>Maintenance operations</li>
+<li>Data or records</li>
+<li>Administrative procedures</li>
+</ul>
+<h3>1.2 Intended Use: Continuing Series of Lots</h3>
+<p>These schemes are intended primarily for a <strong>continuing series of lots</strong> — a series long enough to allow the switching rules (Clause 9) to be applied. These rules provide:</p>
+<ul>
+<li><strong>Consumer protection:</strong> switch to tightened inspection or discontinuation if quality deteriorates</li>
+<li><strong>Producer incentive:</strong> switch to reduced inspection if consistently good quality is maintained</li>
+</ul>
+<p>Sampling plans may also be used for isolated lots, but then the user is strongly advised to consult the OC curves (Clause 12.6) and consider ISO 2859-2.</p>
+</div>
+<div class="right-column">
+<h3>Commentary 解說</h3>
+<div class="application-box">
+<h4>Attribute Inspection vs. Variable Inspection 屬性 vs. 計量</h4>
+<p><strong>Attribute inspection (this standard):</strong> Each unit is classified as pass or fail — binary outcome. Examples: crack present/absent, label readable/unreadable, particle visible/not visible.</p>
+<p><strong>Variable inspection (ISO 3951):</strong> A measurement is recorded for each unit — continuous data. Examples: fill volume in mL, closure torque in N·cm, headspace oxygen %.</p>
+<p>The key distinction: attributes are faster and cheaper (go/no-go gauge, visual inspection) but carry less statistical information than variables. For a given level of protection, attribute sampling requires a larger sample than variable sampling.</p>
+<p><strong>屬性檢驗（本標準）：</strong>每個單位分為合格或不合格——二元結果。<strong>計量值檢驗（ISO 3951）：</strong>記錄每個單位的測量值——連續數據。屬性抽樣速度較快、成本較低，但統計效率低於計量值抽樣。</p>
+</div>
+<div class="note-box">
+<h4>Critical Limitation: Not for All Pharma Tests 重要限制</h4>
+<p>ISO 2859-1 is <strong>NOT appropriate</strong> for:</p>
+<ul>
+<li><strong>Sterility testing</strong> — the sample sizes in ISO 2859-1 are statistically inadequate to detect low-level contamination. Sterility testing uses its own USP/Ph.Eur. sampling schedules.</li>
+<li><strong>Endotoxin (BET/LAL) testing</strong> — each batch requires a specific number of containers per USP &lt;85&gt;/Ph.Eur. 2.6.14.</li>
+<li><strong>Particulate matter testing</strong> — governed by USP &lt;788&gt;/&lt;789&gt;, not AQL.</li>
+</ul>
+<p>The standard is best applied to <strong>visual defect classification</strong> (cosmetic, dimensional, label) in incoming inspection of packaging components.</p>
+</div>
+<div class="analogy-box">
+<h4>Economic and Psychological Pressure 經濟與心理壓力</h4>
+<p>The standard is deliberately designed to create supplier behavior change — not just lot sentencing. If your lots keep getting rejected (moving you to tightened inspection), you face higher inspection costs, delays, and risk of disqualification. This is the "economic pressure." The psychological pressure: knowing your customer is watching every lot with tighter criteria.</p>
+<p>本標準刻意設計來改變供應商行為——不只是判定批次。若批次持續被拒絕（進入加嚴），你會面臨更高的檢驗成本、延誤，甚至被取消資格。這就是「經濟壓力」。心理壓力：知道你的客戶正在用更嚴格的標準監控每一批次。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ===================== CLAUSE 2 ===================== -->
+<div class="chapter-section" id="clause2">
+<div class="chapter-divider">
+<div class="chapter-badge">2</div>
+<div class="chapter-info">
+<h2>Clause 2: Normative References 引用標準</h2>
+<p>Supporting standards referenced by ISO 2859-1 本標準引用的支持標準</p>
+</div>
+</div>
+<div class="chapter-body">
+<div class="two-column">
+<div class="left-column">
+<h3>Referenced Documents 引用文件</h3>
+<p>The following normative documents contain provisions which constitute provisions of this part of ISO 2859:</p>
+<ul>
+<li><strong>ISO 2859-3:1991</strong> — Sampling procedures for inspection by attributes — Part 3: Skip-lot sampling procedures</li>
+<li><strong>ISO 3534-1:1993</strong> — Statistics: Vocabulary and symbols — Part 1: Probability and general statistical terms</li>
+<li><strong>ISO 3534-2:1993</strong> — Statistics: Vocabulary and symbols — Part 2: Statistical quality control</li>
+</ul>
+<p>The most recent editions of ISO 3534-1 and ISO 3534-2 apply for undated references. ISO 2859-3 applies as specified in Clause 9.5.</p>
+</div>
+<div class="right-column">
+<h3>Commentary 解說</h3>
+<div class="term-box">
+<h4>ISO 3534-2: The Vocabulary Foundation 術語基礎</h4>
+<p>ISO 3534-2 (Statistical Quality Control vocabulary) is the foundational reference for all the statistical terminology used in ISO 2859-1. When ISO 2859-1 redefines or modifies a term, it notes the departure from ISO 3534-2 — for example, the definition of "percent nonconforming" is modified for practical use in this standard.</p>
+<p>ISO 3534-2是ISO 2859-1所有統計術語的基礎參考標準。當ISO 2859-1重新定義或修改某個術語時，會明確指出與ISO 3534-2的差異。</p>
+</div>
+<div class="note-box">
+<h4>ISO 2859 vs. ANSI/ASQ Z1.4 兩個標準的關係</h4>
+<p>ANSI/ASQ Z1.4 (US) and ISO 2859-1 (International) are technically equivalent — same tables, same switching rules, same philosophy. They share a common origin in the US military standard MIL-STD-105. When a supplier says their AQL program uses "Z1.4", they are using an essentially identical system to ISO 2859-1. In FDA-regulated environments, either standard is acceptable; the choice is typically based on customer or regional preference.</p>
+<p>ANSI/ASQ Z1.4（美國）與ISO 2859-1（國際）在技術上等同——相同的表格、相同的切換規則、相同的理念。在FDA監管環境中，兩者均可接受。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ===================== CLAUSE 3 ===================== -->
+<div class="chapter-section" id="clause3">
+<div class="chapter-divider">
+<div class="chapter-badge">3</div>
+<div class="chapter-info">
+<h2>Clause 3: Terms, Definitions and Symbols 術語、定義與符號</h2>
+<p>The most important clause — defines 28+ technical terms 最重要的條款——定義28個以上的技術術語</p>
+</div>
+</div>
+<div class="chapter-body">
+<div class="note-box" style="margin-bottom: 1.5rem;">
+<h4>Why Clause 3 Matters Most 為何第3條最重要</h4>
+<p>Clause 3 is the conceptual foundation of the entire standard. Every other clause builds on these definitions. In pharma audits and supplier qualification, disagreements about AQL programs almost always trace back to misunderstanding of these terms — especially AQL itself, which is frequently confused with a quality target.</p>
+<p>第3條是整個標準的概念基礎。幾乎所有關於AQL程式的爭議都源於對這些術語的誤解——尤其是AQL本身，常被誤認為品質目標。</p>
+</div>
+<!-- Group 1: Lot and Sample -->
+<h3 class="section-title">3.1 Lot and Sample Concepts 批次與樣本概念</h3>
+<div class="two-column">
+<div class="left-column">
+<div class="term-box">
+<h4>3.1.13 Lot (批)</h4>
+<p>A definite amount of some product, material or service, collected together. Note: An inspection lot may consist of several batches or parts of batches.</p>
+<p>一定量的產品、材料或服務的集合體。注：一個檢驗批可由若干個生產批或生產批的一部分組成。</p>
+</div>
+<div class="term-box">
+<h4>3.1.14 Lot Size N (批量)</h4>
+<p>The number of items in a lot.</p>
+<p>批中的項目數量。符號：N</p>
+</div>
+<div class="term-box">
+<h4>3.1.15 Sample (樣本)</h4>
+<p>A set of one or more items taken from a lot and intended to provide information on the lot.</p>
+<p>從批中抽取的一個或多個項目的集合，用於提供關於該批的信息。</p>
+</div>
+<div class="term-box">
+<h4>3.1.16 Sample Size n (樣本量)</h4>
+<p>The number of items in the sample. Symbol: n</p>
+<p>樣本中的項目數量。符號：n</p>
+</div>
+</div>
+<div class="right-column">
+<h3>Commentary 解說</h3>
+<div class="analogy-box">
+<h4>Lot vs. Batch in Pharma 製藥中批次與生產批的區別</h4>
+<p>In pharmaceutical manufacturing, "batch" typically means a production batch (a specific manufacturing run). An "inspection lot" under ISO 2859-1 might be one production batch of glass vials received, or it might be combined from multiple deliveries to form a statistically meaningful lot.</p>
+<p>Key rule: A lot should consist of items of a single type, grade, class, size and composition, manufactured under uniform conditions at essentially the same time (Clause 6.1). Do not mix vials of different cavity origins into one lot if they could have different defect profiles.</p>
+<p>製藥中「生產批」指特定的生產運行。ISO 2859-1下的「檢驗批」可能是一個收到的玻璃瓶生產批，或可能是合並自多次交貨以形成統計上有意義的批次。關鍵規則：批次應由相同類型、等級、類別、尺寸和成分的項目組成，在實質上相同時間在均一條件下製造。</p>
+</div>
+</div>
+</div>
+<!-- Group 2: Sampling Plans -->
+<h3 class="section-title"><strong>3.1.17–3.1.19: Sampling Plan, Scheme, and System 3.1.17–3.1.19：抽樣計畫、方案與系統</strong></h3>
+<div class="two-column">
+<div class="left-column">
+<div class="term-box">
+<h4>3.1.17 Sampling Plan (抽樣計畫)</h4>
+<p>A combination of sample size(s) to be used and associated lot acceptability criteria. A single sampling plan has one sample size and acceptance/rejection numbers. A double sampling plan has two sample sizes with criteria for the first sample and for the combined sample.</p>
+<p>Note: A sampling plan does not contain the rules on how to draw the sample.</p>
+<p>抽樣計畫是樣本量與相應批允收準則的組合。它不包含如何抽取樣本的規則。</p>
+</div>
+<div class="term-box">
+<h4>3.1.18 Sampling Scheme (抽樣方案)</h4>
+<p>A combination of sampling plans with rules for changing from one plan to another. The switching rules in Clause 9 define the scheme.</p>
+<p>抽樣方案是抽樣計畫的組合，加上從一個計畫切換到另一個計畫的規則。第9條的切換規則定義了方案。</p>
+</div>
+<div class="term-box">
+<h4>3.1.19 Sampling System (抽樣系統)</h4>
+<p>A collection of sampling plans or schemes, each with rules for changing plans, together with sampling procedures including criteria by which appropriate plans or schemes may be chosen.</p>
+<p>ISO 2859-1 is a sampling system indexed by lot-size ranges, inspection levels, and AQLs.</p>
+</div>
+</div>
+<div class="right-column">
+<h3>Commentary 解說</h3>
+<div class="analogy-box">
+<h4>Plan vs. Scheme vs. System — The Hierarchy 計畫、方案、系統的層次</h4>
+<p>Think of it like traffic laws:</p>
+<ul>
+<li><strong>Sampling Plan = Speed Limit on one road:</strong> "Sample 80 units; if ≤2 defects, accept; if ≥3, reject."</li>
+<li><strong>Sampling Scheme = The full traffic code:</strong> includes what happens when you get caught (tightened) or have a perfect record (reduced).</li>
+<li><strong>Sampling System = The entire legal framework:</strong> includes all roads (lot sizes), all limits (AQLs), and all courts (responsible authority).</li>
+</ul>
+<p>Most QA staff work at the plan level day-to-day, but the scheme (switching rules) is what creates the long-term incentive structure for suppliers.</p>
+<p>大多數QA人員日常工作在計畫層面，但方案（切換規則）才是為供應商創造長期激勵結構的關鍵。</p>
+</div>
+<div class="note-box">
+<h4>Single vs. Double vs. Multiple Sampling 單次、雙次、多次抽樣</h4>
+<ul>
+<li><strong>Single sampling:</strong> One sample, one decision. Simplest to administrate. Most common in pharma incoming inspection.</li>
+<li><strong>Double sampling:</strong> First small sample → if borderline, draw second sample and combine. Reduces average sample size at cost of more complexity.</li>
+<li><strong>Multiple sampling (up to 5 stages):</strong> Smallest average sample size but most complex. Used in high-volume automated inspection scenarios.</li>
+</ul>
+<p>For most pharma CDMO applications, <strong>single sampling is recommended</strong> — it is transparent, easy to audit, and easy to document in SOPs.</p>
+</div>
+</div>
+</div>
+<!-- Group 3: AQL and Risk -->
+<h3 class="section-title"><strong>3.1.26–3.1.28 + 3.1.20–3.1.23: AQL, Switching States, and Risk 3.1.26–3.1.28 + 3.1.20–3.1.23：AQL、切換狀態與風險</strong></h3>
+<div class="two-column">
+<div class="left-column">
+<div class="term-box">
+<h4>3.1.26 Acceptance Quality Limit (AQL) 允收品質界限</h4>
+<p>The quality level that is the <strong>worst tolerable process average</strong> when a continuing series of lots is submitted for acceptance sampling.</p>
+<p>CAUTION (Clause 5.1): "The designation of an AQL shall not imply that the supplier has the right knowingly to supply any nonconforming item."</p>
+<p>NOTE 2: "Although individual lots with quality as bad as the AQL may be accepted with fairly high probability, the designation of an AQL does not suggest that this is a desirable quality level."</p>
+<p>允收品質界限（AQL）是在對一連續系列的批進行允收抽樣時，能被容忍的最差的製程平均。注：AQL的指定並不意味著這是一個理想的品質水準。</p>
+</div>
+<div class="term-box">
+<h4>3.1.27 Consumer's Risk Quality (CRQ) 消費者風險品質</h4>
+<p>The lot or process quality level that in the sampling plan corresponds to a specified consumer's risk. Consumer's risk is usually 10% (i.e., a 10% chance of accepting a lot at this quality level).</p>
+<p>對應於特定消費者風險的批或製程品質水準。消費者風險通常為10%（即接受此品質水準批次的概率為10%）。</p>
+</div>
+<div class="term-box">
+<h4>3.1.25 Process Average 製程平均</h4>
+<p>Process level averaged over a defined time period or quantity of production. In ISO 2859-1, this is the quality level (percent nonconforming or number of nonconformities per hundred items) during a period when the process is in a state of statistical control.</p>
+<p>製程平均：在定義的時間段或生產量上的製程水準平均值。</p>
+</div>
+</div>
+<div class="right-column">
+<h3>Commentary 解說</h3>
+<div class="analogy-box">
+<h4>AQL: The Most Misunderstood Term AQL：最被誤解的術語</h4>
+<p><strong>What AQL is NOT:</strong> AQL is not your target quality. It is not the defect rate you "accept." It is not the number of defects you allow per shipment.</p>
+<p><strong>What AQL IS:</strong> AQL is the upper boundary of your process average that you consider tolerable as an ongoing supplier — the worst long-term quality level still acceptable. If a supplier's process average equals the AQL, they will face frequent rejections.</p>
+<p><strong>Restaurant analogy:</strong> If a restaurant's AQL for "wrong order" is 1%, it doesn't mean they're happy with 1% wrong orders. It means: "If your long-term average error rate exceeds 1%, we will tighten scrutiny or stop using you." The actual target should be 0.1% or lower.</p>
+<p><strong>AQL不是</strong>您的品質目標。AQL<strong>是</strong>您認為可容忍的供應商製程平均上限。若供應商的製程平均等於AQL，他們將面臨頻繁的拒絕。實際目標應比AQL好得多。</p>
+</div>
+<div class="formula-box">
+<h4>Producer's Risk and Consumer's Risk 生產者風險與消費者風險</h4>
+<pre>Producer's Risk (α, Type I Error):
 Probability of REJECTING a "good" lot
 (a lot whose true quality equals the AQL)
 Typical α = 5%
@@ -1328,454 +1326,426 @@ Typical β = 10%
 消費者風險（β，型二錯誤）：
 接受「壞批」的概率（批處於CRQ水準）
 典型β = 10%</pre>
-                        <p>The OC (Operating Characteristic) curve plots P(acceptance) vs. actual lot quality — it visually shows how well a sampling plan discriminates between good and bad lots.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Group 4: Nonconformity -->
-            <h3 class="section-title">3.1.5–3.1.11: Nonconformity Concepts 不合格概念</h3>
-            <div class="two-column">
-                <div class="left-column">
-                    <div class="term-box">
-                        <h4>3.1.5 Nonconformity (不合格)</h4>
-                        <p>Non-fulfilment of a specified requirement. Note: Nonconformity is classified by degree of seriousness — Class A (highest concern, smallest AQL) through Class B, C, etc.</p>
-                        <p>不符合規定要求。注：按嚴重程度分類——A類（最嚴重，最小AQL）、B類、C類等。</p>
-                    </div>
-                    <div class="term-box">
-                        <h4>3.1.6 Defect (缺陷)</h4>
-                        <p>Non-fulfilment of an <em>intended usage requirement</em>. The term "defect" relates to usage (not just specification compliance). Due to legal implications, "nonconformity" is the preferred general term.</p>
-                        <p>不符合<em>預期使用要求</em>。「缺陷」與使用有關（而非僅規格符合性）。由於法律含義，「不合格」是首選的通用術語。</p>
-                    </div>
-                    <div class="term-box">
-                        <h4>3.1.7 Nonconforming Item (不合格品)</h4>
-                        <p>An item with one or more nonconformities. Classified by degree of seriousness: Class A item contains one or more Class A nonconformities. Class B item contains Class B but no Class A nonconformities.</p>
-                        <p>含有一個或多個不合格的項目。按嚴重程度分類：A類品含有一個或多個A類不合格；B類品含有B類但不含A類不合格。</p>
-                    </div>
-                </div>
-                <div class="right-column">
-                    <h3>Commentary 解說</h3>
-                    <div class="application-box">
-                        <h4>Pharma Critical/Major/Minor Classification 製藥嚴重/主要/次要分類</h4>
-                        <p>ISO 2859-1 uses "Class A, B, C" — pharma industry typically maps these to:</p>
-                        <p>Note: These AQL values (0.065 / 0.65 / 2.5) are the most commonly used in pharma CDMO practice for packaging components. Your actual specification may differ — always defer to your validated SOP and customer requirement.</p>
-                    </div>
-                    <div class="note-box">
-                        <h4>Multiple Classifications Require Multiple Plans 多種分類需要多個計畫</h4>
-                        <p>In practice, you run multiple simultaneous sampling plans on the same sample — one for critical defects, one for major, one for minor. The sample size is typically determined by the most stringent AQL (critical), then that same sample is also evaluated against the major and minor acceptance numbers. A lot is rejected if it fails ANY classification.</p>
-                        <p>實際操作中，同一批次的同一樣本同時執行多個抽樣計畫——嚴重、主要、次要各一個。若任一分類失敗，批次即被拒絕。</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Symbols -->
-            <h3 class="section-title">3.2 Key Symbols and Abbreviations 關鍵符號與縮寫</h3>
-            <div class="two-column">
-                <div class="left-column">
-                    </div>
-                <div class="right-column">
-                    <h3>Commentary 解說</h3>
-                    <div class="term-box">
-                        <h4>Ac vs. Re — The Acceptance Decision Rule Ac vs. Re——允收判定規則</h4>
-                        <p>For a single sampling plan: inspect n items. Count d = number of nonconforming items found.</p>
-                        <ul>
-                            <li>If d ≤ Ac → <span class="badge green">ACCEPT the lot</span></li>
-                            <li>If d ≥ Re → <span class="badge red">REJECT the lot</span></li>
-                        </ul>
-                        <p>Note: In all standard single sampling plans, Re = Ac + 1. There is no "gray zone" — every lot is either accepted or rejected. Double sampling plans may have a zone between first-sample Ac and Re that triggers the second sample.</p>
-                        <p>對於單次抽樣計畫：檢驗n個項目，計算d=找到的不合格品數。若d≤Ac→接受批次；若d≥Re→拒絕批次。在所有標準單次計畫中，Re = Ac + 1，沒有「灰色地帶」。</p>
-                    </div>
-                    <div class="analogy-box">
-                        <h4>Switching Score 切換分數</h4>
-                        <p>The switching score (3.1.23) is a running counter used to determine eligibility for reduced inspection. Think of it like a "no-claims bonus" in car insurance — each lot that passes "easily" (i.e., would have passed even with a tighter AQL) adds points. When you accumulate 30 points, you qualify for the reduced-inspection discount. Any rejection resets the score to zero.</p>
-                        <p>切換分數（3.1.23）是用於確定是否有資格進行放寬檢驗的運行計數器。類似汽車保險的「無索賠獎金」——每個「輕鬆通過」的批次（即即使AQL更緊也能通過）加分。累積到30分，可享放寬檢驗優惠。任何拒絕將分數重置為零。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ===================== CLAUSE 4 ===================== -->
-    <div class="chapter-section" id="clause4">
-        <div class="chapter-divider">
-            <div class="chapter-badge">4</div>
-            <div class="chapter-info">
-                <h2>Clause 4: Expression of Nonconformity 不合格的表示方式</h2>
-                <p>Percent nonconforming vs. nonconformities per 100 items — when to use each</p>
-            </div>
-        </div>
-        <div class="chapter-body">
-            <div class="two-column">
-                <div class="left-column">
-                    <h3>4.1 General 一般原則</h3>
-                    <p>The extent of nonconformity shall be expressed either in terms of:</p>
-                    <ul>
-                        <li><strong>Percent nonconforming (%):</strong> 100 × d/n (items classified as pass/fail)</li>
-                        <li><strong>Nonconformities per 100 items:</strong> 100 × d/n (count of defects, multiple per item possible)</li>
-                    </ul>
-                    <p>Tables 7, 8 and 10 assume nonconformities occur randomly and with statistical independence. If one nonconformity in an item could be caused by a condition also likely to cause others, items shall be considered as conforming or not (binary) and multiple nonconformities ignored.</p>
-
-                    <h3>4.2 Classification of Nonconformities 不合格分類</h3>
-                    <p>Since most acceptance sampling involves evaluation of more than one quality characteristic, and since they may differ in importance, it is often desirable to classify the types of nonconformities according to agreed classes.</p>
-                    <p>The number of classes, the assignment into a class, and the choice of AQL for each class should be appropriate to the quality requirements of the specific situation.</p>
-                </div>
-                <div class="right-column">
-                    <h3>Commentary 解說</h3>
-                    <div class="term-box">
-                        <h4>Percent Nonconforming vs. Per 100 Items 兩種計量方式的區別</h4>
-                        <p>For most pharma incoming inspection of primary packaging, <strong>percent nonconforming</strong> is used — a vial either passes or fails its inspection, regardless of how many defects it has.</p>
-                    </div>
-                    <div class="application-box">
-                        <h4>Pharma Application: Glass Vial Inspection 製藥應用：玻璃瓶檢驗</h4>
-                        <p>For glass vials, a single unit may have multiple defects (e.g., a visible inclusion AND a dimensional deviation). Under "percent nonconforming," this counts as one nonconforming item. Under the classification system, the vial may be classified by its worst defect class — one Class A defect makes it a Class A nonconforming item regardless of other defects present.</p>
-                        <p>對於玻璃瓶，單個單位可能有多個缺陷。在「不合格品百分率」下，這算作一個不合格品。在分類系統下，瓶子由其最嚴重的缺陷類別決定——一個A類缺陷使其成為A類不合格品。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ===================== CLAUSE 5 ===================== -->
-    <div class="chapter-section" id="clause5">
-        <div class="chapter-divider">
-            <div class="chapter-badge">5</div>
-            <div class="chapter-info">
-                <h2>Clause 5: Acceptance Quality Limit (AQL) 允收品質界限</h2>
-                <p>Preferred AQL values, specification, and critical caution 優選AQL值、規定與重要注意事項</p>
-            </div>
-        </div>
-        <div class="chapter-body">
-            <div class="two-column">
-                <div class="left-column">
-                    <h3>5.1 Use and Application 使用與應用</h3>
-                    <p>The AQL, together with the sample size code letter (see Clause 10.2), is used for <strong>indexing the sampling plans and schemes</strong> provided in this part of ISO 2859.</p>
-                    <p>The AQL is a parameter of the sampling scheme and <strong>should not be confused with the process average</strong> that describes the operating level of the manufacturing process. It is expected that the process average will be better than the AQL to avoid excessive rejections.</p>
-                    <div class="quote-box">
+<p>The OC (Operating Characteristic) curve plots P(acceptance) vs. actual lot quality — it visually shows how well a sampling plan discriminates between good and bad lots.</p>
+</div>
+</div>
+</div>
+<!-- Group 4: Nonconformity -->
+<h3 class="section-title">3.1.5–3.1.11: Nonconformity Concepts 不合格概念</h3>
+<div class="two-column">
+<div class="left-column">
+<div class="term-box">
+<h4>3.1.5 Nonconformity (不合格)</h4>
+<p>Non-fulfilment of a specified requirement. Note: Nonconformity is classified by degree of seriousness — Class A (highest concern, smallest AQL) through Class B, C, etc.</p>
+<p>不符合規定要求。注：按嚴重程度分類——A類（最嚴重，最小AQL）、B類、C類等。</p>
+</div>
+<div class="term-box">
+<h4>3.1.6 Defect (缺陷)</h4>
+<p>Non-fulfilment of an <em>intended usage requirement</em>. The term "defect" relates to usage (not just specification compliance). Due to legal implications, "nonconformity" is the preferred general term.</p>
+<p>不符合<em>預期使用要求</em>。「缺陷」與使用有關（而非僅規格符合性）。由於法律含義，「不合格」是首選的通用術語。</p>
+</div>
+<div class="term-box">
+<h4>3.1.7 Nonconforming Item (不合格品)</h4>
+<p>An item with one or more nonconformities. Classified by degree of seriousness: Class A item contains one or more Class A nonconformities. Class B item contains Class B but no Class A nonconformities.</p>
+<p>含有一個或多個不合格的項目。按嚴重程度分類：A類品含有一個或多個A類不合格；B類品含有B類但不含A類不合格。</p>
+</div>
+</div>
+<div class="right-column">
+<h3>Commentary 解說</h3>
+<div class="note-box">
+<h4>Multiple Classifications Require Multiple Plans 多種分類需要多個計畫</h4>
+<p>In practice, you run multiple simultaneous sampling plans on the same sample — one for critical defects, one for major, one for minor. The sample size is typically determined by the most stringent AQL (critical), then that same sample is also evaluated against the major and minor acceptance numbers. A lot is rejected if it fails ANY classification.</p>
+<p>實際操作中，同一批次的同一樣本同時執行多個抽樣計畫——嚴重、主要、次要各一個。若任一分類失敗，批次即被拒絕。</p>
+</div>
+</div>
+</div>
+<div class="application-box">
+<h4>Pharma Critical/Major/Minor Classification 製藥嚴重/主要/次要分類</h4>
+<p>ISO 2859-1 uses "Class A, B, C" — pharma industry typically maps these to:</p>
+<p>Note: These AQL values (0.065 / 0.65 / 2.5) are the most commonly used in pharma CDMO practice for packaging components. Your actual specification may differ — always defer to your validated SOP and customer requirement.</p>
+</div>
+<!-- Symbols -->
+<h3 class="section-title">3.2 Key Symbols and Abbreviations 關鍵符號與縮寫</h3>
+<div class="two-column">
+<div class="left-column">
+</div>
+<div class="right-column">
+<h3>Commentary 解說</h3>
+<div class="term-box">
+<h4>Ac vs. Re — The Acceptance Decision Rule Ac vs. Re——允收判定規則</h4>
+<p>For a single sampling plan: inspect n items. Count d = number of nonconforming items found.</p>
+<ul>
+<li>If d ≤ Ac → <span class="badge green">ACCEPT the lot</span></li>
+<li>If d ≥ Re → <span class="badge red">REJECT the lot</span></li>
+</ul>
+<p>Note: In all standard single sampling plans, Re = Ac + 1. There is no "gray zone" — every lot is either accepted or rejected. Double sampling plans may have a zone between first-sample Ac and Re that triggers the second sample.</p>
+<p>對於單次抽樣計畫：檢驗n個項目，計算d=找到的不合格品數。若d≤Ac→接受批次；若d≥Re→拒絕批次。在所有標準單次計畫中，Re = Ac + 1，沒有「灰色地帶」。</p>
+</div>
+<div class="analogy-box">
+<h4>Switching Score 切換分數</h4>
+<p>The switching score (3.1.23) is a running counter used to determine eligibility for reduced inspection. Think of it like a "no-claims bonus" in car insurance — each lot that passes "easily" (i.e., would have passed even with a tighter AQL) adds points. When you accumulate 30 points, you qualify for the reduced-inspection discount. Any rejection resets the score to zero.</p>
+<p>切換分數（3.1.23）是用於確定是否有資格進行放寬檢驗的運行計數器。類似汽車保險的「無索賠獎金」——每個「輕鬆通過」的批次（即即使AQL更緊也能通過）加分。累積到30分，可享放寬檢驗優惠。任何拒絕將分數重置為零。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ===================== CLAUSE 4 ===================== -->
+<div class="chapter-section" id="clause4">
+<div class="chapter-divider">
+<div class="chapter-badge">4</div>
+<div class="chapter-info">
+<h2>Clause 4: Expression of Nonconformity 不合格的表示方式</h2>
+<p>Percent nonconforming vs. nonconformities per 100 items — when to use each</p>
+</div>
+</div>
+<div class="chapter-body">
+<div class="two-column">
+<div class="left-column">
+<h3>4.1 General 一般原則</h3>
+<p>The extent of nonconformity shall be expressed either in terms of:</p>
+<ul>
+<li><strong>Percent nonconforming (%):</strong> 100 × d/n (items classified as pass/fail)</li>
+<li><strong>Nonconformities per 100 items:</strong> 100 × d/n (count of defects, multiple per item possible)</li>
+</ul>
+<p>Tables 7, 8 and 10 assume nonconformities occur randomly and with statistical independence. If one nonconformity in an item could be caused by a condition also likely to cause others, items shall be considered as conforming or not (binary) and multiple nonconformities ignored.</p>
+<h3>4.2 Classification of Nonconformities 不合格分類</h3>
+<p>Since most acceptance sampling involves evaluation of more than one quality characteristic, and since they may differ in importance, it is often desirable to classify the types of nonconformities according to agreed classes.</p>
+<p>The number of classes, the assignment into a class, and the choice of AQL for each class should be appropriate to the quality requirements of the specific situation.</p>
+</div>
+<div class="right-column">
+<h3>Commentary 解說</h3>
+<div class="term-box">
+<h4>Percent Nonconforming vs. Per 100 Items 兩種計量方式的區別</h4>
+<p>For most pharma incoming inspection of primary packaging, <strong>percent nonconforming</strong> is used — a vial either passes or fails its inspection, regardless of how many defects it has.</p>
+</div>
+<div class="application-box">
+<h4>Pharma Application: Glass Vial Inspection 製藥應用：玻璃瓶檢驗</h4>
+<p>For glass vials, a single unit may have multiple defects (e.g., a visible inclusion AND a dimensional deviation). Under "percent nonconforming," this counts as one nonconforming item. Under the classification system, the vial may be classified by its worst defect class — one Class A defect makes it a Class A nonconforming item regardless of other defects present.</p>
+<p>對於玻璃瓶，單個單位可能有多個缺陷。在「不合格品百分率」下，這算作一個不合格品。在分類系統下，瓶子由其最嚴重的缺陷類別決定——一個A類缺陷使其成為A類不合格品。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ===================== CLAUSE 5 ===================== -->
+<div class="chapter-section" id="clause5">
+<div class="chapter-divider">
+<div class="chapter-badge">5</div>
+<div class="chapter-info">
+<h2>Clause 5: Acceptance Quality Limit (AQL) 允收品質界限</h2>
+<p>Preferred AQL values, specification, and critical caution 優選AQL值、規定與重要注意事項</p>
+</div>
+</div>
+<div class="chapter-body">
+<div class="two-column">
+<div class="left-column">
+<h3>5.1 Use and Application 使用與應用</h3>
+<p>The AQL, together with the sample size code letter (see Clause 10.2), is used for <strong>indexing the sampling plans and schemes</strong> provided in this part of ISO 2859.</p>
+<p>The AQL is a parameter of the sampling scheme and <strong>should not be confused with the process average</strong> that describes the operating level of the manufacturing process. It is expected that the process average will be better than the AQL to avoid excessive rejections.</p>
+<div class="quote-box">
                         CAUTION: The designation of an AQL shall not imply that the supplier has the right knowingly to supply any nonconforming item.
                     </div>
-
-                    <h3>5.2 Specifying AQLs 規定AQL</h3>
-                    <p>The AQL to be used shall be designated in the contract or by the responsible authority. Different AQLs may be designated for:</p>
-                    <ul>
-                        <li>Groups of nonconformities considered collectively</li>
-                        <li>Individual nonconformities as defined by class</li>
-                    </ul>
-                    <p>When quality level is expressed as percent nonconforming, AQL values shall not exceed 10%. When expressed as nonconformities per 100 items, AQL values up to 1,000 may be used.</p>
-
-                    <h3>5.3 Preferred AQL Series 優選AQL系列</h3>
-                    <p>The preferred series of AQL values (must use one of these for the tables to apply):</p>
-                    <p><strong>0.010, 0.015, 0.025, 0.040, 0.065, 0.10, 0.15, 0.25, 0.40, 0.65, 1.0, 1.5, 2.5, 4.0, 6.5, 10</strong></p>
-                    <p>(continued for nonconformities per 100 items: 15, 25, 40, 65, 100, 150, 250, 400, 650, 1000)</p>
-                </div>
-                <div class="right-column">
-                    <h3>Commentary 解說</h3>
-                    <div class="note-box">
-                        <h4>AQL Is an Index, Not a Quality Target AQL是索引，不是品質目標</h4>
-                        <p>The single most important concept in ISO 2859-1: AQL is used to <em>select</em> a sampling plan, not to define what quality you want. When you specify AQL 0.65% for major defects in glass vials, you are saying: "I want a sampling plan whose switching rules will trigger tightened inspection if the supplier's long-term defect rate approaches 0.65%." Your actual expectation of the supplier might be 0.05% or better.</p>
-                        <p>AQL最重要的概念：AQL用於<em>選擇</em>抽樣計畫，不是定義您想要的品質。指定AQL 0.65%時，您是在說：「我想要一個抽樣計畫，如果供應商的長期缺陷率接近0.65%，切換規則將觸發加嚴檢驗。」您對供應商的實際期望可能是0.05%或更好。</p>
-                    </div>
-                    <div class="application-box">
-                        <h4>Standard Pharma AQL Levels 製藥標準AQL水準</h4>
-                        <p>These values are widely used in CDMO/pharma incoming QC as industry convention. They are not mandated by ISO 2859-1 or FDA guidance — they represent accumulated industry consensus from MIL-STD-105 era through to current GMP practice. Always confirm against your quality agreement with the supplier and your internal SOP.</p>
-                    </div>
-                    <div class="analogy-box">
-                        <h4>Why These Specific AQL Values? 為什麼是這些特定值？</h4>
-                        <p>The preferred series is logarithmically spaced — each step is approximately 1.585× the previous. This geometric progression was chosen to provide approximately equal statistical discrimination between adjacent values across a wide range of quality levels. Using a non-preferred AQL (e.g., 0.5%) means none of the tables apply, requiring custom plan generation — a significant practical disadvantage.</p>
-                        <p>優選系列是對數等距的——每步約為前一個的1.585倍。使用非優選AQL（如0.5%）意味著任何表格均不適用，需要自定義計畫生成——實際操作上存在重大不便。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ===================== CLAUSE 6 ===================== -->
-    <div class="chapter-section" id="clause6">
-        <div class="chapter-divider">
-            <div class="chapter-badge">6</div>
-            <div class="chapter-info">
-                <h2>Clause 6: Submission of Product for Sampling 產品的提交</h2>
-                <p>Lot formation rules and presentation requirements 批次形成規則與提交要求</p>
-            </div>
-        </div>
-        <div class="chapter-body">
-            <div class="two-column">
-                <div class="left-column">
-                    <h3>6.1 Formation of Lots 批次形成</h3>
-                    <p>The product shall be assembled into identifiable lots, sub-lots, or in such other manner as may be laid down. Each lot shall, as far as is practicable, consist of items of:</p>
-                    <ul>
-                        <li>A single type, grade, class, size and composition</li>
-                        <li>Manufactured under uniform conditions</li>
-                        <li>Produced at essentially the same time</li>
-                    </ul>
-
-                    <h3>6.2 Presentation of Lots 批次提交</h3>
-                    <p>The formation of the lots, the lot size and the manner in which each lot shall be presented and identified by the supplier shall be designated or approved by the responsible authority.</p>
-                    <p>The supplier shall provide:</p>
-                    <ul>
-                        <li>Adequate and suitable storage space for each lot</li>
-                        <li>Equipment needed for proper identification and presentation</li>
-                        <li>Personnel for all handling of product required for drawing of samples</li>
-                    </ul>
-                </div>
-                <div class="right-column">
-                    <h3>Commentary 解說</h3>
-                    <div class="application-box">
-                        <h4>Lot Formation in CDMO Incoming Inspection CDMO來料檢驗的批次形成</h4>
-                        <p>In practice, the "lot" for incoming inspection is typically:</p>
-                        <ul>
-                            <li><strong>One delivery / shipment</strong> from a supplier, OR</li>
-                            <li><strong>One supplier's production batch</strong> (if the supplier provides batch data)</li>
-                            <li><strong>One pallet</strong> if the delivery spans multiple supplier batches</li>
-                        </ul>
-                        <p>Key decision: Do not mix vials from different mold cavities or different production days into a single lot if defect patterns might differ by cavity or shift. Stratified sampling (Clause 8.1) can address this if mixing is unavoidable.</p>
-                        <p>關鍵決策：如果不同模腔或不同生產日的缺陷模式可能不同，不要將其混合成一個批次。若混合不可避免，可使用分層抽樣（第8.1條）。</p>
-                    </div>
-                    <div class="note-box">
-                        <h4>Lot Size Determination 批量確定</h4>
-                        <p>The lot size directly determines the sample size code letter (Table 1 of ISO 2859-1), which then determines n, Ac, and Re. Larger lots → larger sample sizes (though the sampling fraction decreases). Smaller lots → smaller samples but higher sampling fractions.</p>
-                        <p>批量直接決定樣本量碼字（ISO 2859-1第1表），進而決定n、Ac和Re。批量越大→樣本量越大（但抽樣比例下降）；批量越小→樣本量越小但抽樣比例越高。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ===================== CLAUSE 7 ===================== -->
-    <div class="chapter-section" id="clause7">
-        <div class="chapter-divider">
-            <div class="chapter-badge">7</div>
-            <div class="chapter-info">
-                <h2>Clause 7: Acceptance and Non-acceptance 允收與不允收</h2>
-                <p>Lot sentencing rules, disposition of non-acceptable lots, resubmission 批次判定、不合格批次處置、重新提交</p>
-            </div>
-        </div>
-        <div class="chapter-body">
-            <div class="two-column">
-                <div class="left-column">
-                    <h3>7.1 Acceptability of Lots 批次允收性</h3>
-                    <p>Acceptability of a lot shall be determined by the use of a sampling plan or plans. The term "non-acceptance" is used in this context for "rejection" when it refers to the result of following the procedure. Forms of the term "reject" are retained when they refer to actions the consumer may take (e.g., "rejection number").</p>
-
-                    <h3>7.2 Disposition of Non-acceptable Lots 不允收批次的處置</h3>
-                    <p>The responsible authority shall decide how lots that are not accepted will be disposed of. Such lots may be:</p>
-                    <ul>
-                        <li>Scrapped 報廢</li>
-                        <li>Sorted (with or without nonconforming items being replaced) 揀選</li>
-                        <li>Reworked 返工</li>
-                        <li>Re-evaluated against more specific usability criteria 重新評估</li>
-                        <li>Held for additional information 暫扣待查</li>
-                    </ul>
-
-                    <h3>7.3 Nonconforming Items Found in Accepted Lots 已允收批中發現的不合格品</h3>
-                    <p>If a lot has been accepted, the right is reserved to not accept any item found nonconforming during inspection. Items found nonconforming may be reworked or replaced by conforming items, and resubmitted for inspection with the approval of the responsible authority.</p>
-
-                    <h3>7.5 Special Reservation for Critical Classes 嚴重類不合格的特別保留條款</h3>
-                    <p>At the discretion of the responsible authority, every item in the lot may be required to be inspected for critical nonconformities. The right is reserved to inspect every item submitted and to not accept the lot immediately if a critical nonconformity is found.</p>
-
-                    <h3>7.6 Resubmitted Lots 重新提交的批次</h3>
-                    <p>All parties shall be immediately notified if a lot is found not acceptable. Such lots shall not be resubmitted until all items are re-examined and the supplier is satisfied that all nonconforming items have been removed or replaced.</p>
-                </div>
-                <div class="right-column">
-                    <h3>Commentary 解說</h3>
-                    <div class="note-box">
-                        <h4>Non-acceptance ≠ Rejection — A Subtle Distinction 不允收≠拒絕</h4>
-                        <p>ISO 2859-1 uses "non-acceptance" when describing the statistical outcome of the inspection procedure, and "rejection" when describing an action taken by the consumer (e.g., rejection number Re). This distinction matters legally — a "non-accepted" lot isn't necessarily defective; it simply didn't meet the acceptance criterion of the sample. The responsible authority makes the final disposition decision.</p>
-                        <p>ISO 2859-1在描述抽樣程序的統計結果時使用「不允收」，在描述消費者採取的行動時使用「拒絕」（例如拒收數Re）。區別很重要——「不允收」的批次不一定有缺陷；它只是樣本未達到允收標準。</p>
-                    </div>
-                    <div class="application-box">
-                        <h4>Disposition Decision Tree 處置決策樹</h4>
-                        <p>When a lot is non-accepted, the quality unit typically follows this sequence:</p>
-                        <ol>
-                            <li><strong>Quarantine:</strong> Segregate the lot, apply "HOLD" or "REJECTED" label</li>
-                            <li><strong>Notification:</strong> Notify supplier and procurement within 24 hours (per quality agreement)</li>
-                            <li><strong>Root cause investigation:</strong> Request 8D or CAPA from supplier</li>
-                            <li><strong>Options:</strong>
-                                <ul>
-                                    <li>Return to supplier for replacement</li>
-                                    <li>100% sort (supplier or internal) — document sorting criteria</li>
-                                    <li>Use-as-is via formal deviation/concession (only if defects are truly minor and documented)</li>
-                                    <li>Scrap</li>
-                                </ul>
-                            </li>
-                            <li><strong>Switching impact:</strong> This rejection counts toward the switching score — document for next lot assessment</li>
-                        </ol>
-                    </div>
-                    <div class="note-box">
-                        <h4>100% Inspection for Critical Defects 嚴重缺陷的全數檢驗</h4>
-                        <p>Clause 7.5 explicitly allows 100% inspection for designated critical nonconformities. In pharmaceutical packaging, this is commonly applied to:</p>
-                        <ul>
-                            <li>Particulate contamination visible in glass vials (100% inspection by automated or semi-automated systems)</li>
-                            <li>Label text accuracy for high-risk items (e.g., narcotics, look-alike/sound-alike drugs)</li>
-                        </ul>
-                        <p>When 100% inspection is used for criticals, the AQL sampling plan still applies to major and minor defects on the same sample.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ===================== CLAUSE 8 ===================== -->
-    <div class="chapter-section" id="clause8">
-        <div class="chapter-divider">
-            <div class="chapter-badge">8</div>
-            <div class="chapter-info">
-                <h2>Clause 8: Drawing of Samples 樣本的抽取</h2>
-                <p>Random sampling requirement and stratified sampling rules 隨機抽樣要求與分層抽樣規則</p>
-            </div>
-        </div>
-        <div class="chapter-body">
-            <div class="two-column">
-                <div class="left-column">
-                    <h3>8.1 Sample Selection 樣本選取</h3>
-                    <p>The items selected for the sample shall be drawn from the lot by <strong>simple random sampling</strong>. However, when the lot consists of sub-lots or strata identified by some rational criterion, <strong>stratified sampling</strong> shall be used such that the size of the subsample from each sub-lot or stratum is proportional to the size of that sub-lot or stratum.</p>
-
-                    <h3>8.2 Time for Drawing the Samples 抽樣時間</h3>
-                    <p>Samples may be drawn after the lot has been produced, or during production of the lot. In either case, the samples shall be selected according to 8.1.</p>
-
-                    <h3>8.3 Double or Multiple Sampling 雙次或多次抽樣</h3>
-                    <p>When double or multiple sampling is to be used, each subsequent sample shall be selected from the remainder of the same lot — not from a different lot or different shipment.</p>
-                </div>
-                <div class="right-column">
-                    <h3>Commentary 解說</h3>
-                    <div class="application-box">
-                        <h4>Random Sampling in Practice 隨機抽樣的實際操作</h4>
-                        <p>True random sampling means every unit in the lot has an equal probability of being selected. In practice for large incoming shipments:</p>
-                        <ul>
-                            <li><strong>Systematic sampling:</strong> Select every kth item (e.g., every 50th vial) — acceptable approximation if no periodic patterns</li>
-                            <li><strong>Stratified random:</strong> Take samples from different layers/positions in the pallet — required when storage position might affect defect probability (e.g., top layer vs. bottom layer in glass)</li>
-                            <li><strong>Random number table:</strong> For small lots, use actual random numbers — documented in SOP</li>
-                        </ul>
-                        <p>Do NOT just sample from the top of the first box — this is the most common AQL audit finding and violates the randomness requirement.</p>
-                        <p>絕對不要只從第一個箱子的頂部抽樣——這是最常見的AQL審計發現，違反了隨機性要求。</p>
-                    </div>
-                    <div class="analogy-box">
-                        <h4>Stratified vs. Simple Random — When It Matters 分層 vs. 簡單隨機——何時重要</h4>
-                        <p>If a pallet of vials was assembled from 3 different supplier batches (bottom, middle, top layers), simple random sampling might accidentally oversample one batch. Stratified sampling forces proportional representation. The analogy: if you want to poll a country's opinion, you don't just ask people in the capital — you sample proportionally from all regions.</p>
-                        <p>如果一個托盤的瓶子由3個不同的供應商批次組成，簡單隨機抽樣可能偶然過度抽取一個批次。分層抽樣強制按比例代表。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ===================== CLAUSE 9 ===================== -->
-    <div class="chapter-section" id="clause9">
-        <div class="chapter-divider">
-            <div class="chapter-badge">9</div>
-            <div class="chapter-info">
-                <h2>Clause 9: Normal, Tightened and Reduced Inspection — Switching Rules</h2>
-                <p>正常、加嚴與放寬檢驗——切換規則（最重要的操作條款）</p>
-            </div>
-        </div>
-        <div class="chapter-body">
-
-            <!-- State diagram -->
-            <div class="state-diagram">
-                <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">Inspection State Transition Diagram 檢驗狀態轉換圖</h3>
-
-                <div class="state-row">
-                    <div class="state-node state-reduced">Reduced Inspection<br>放寬檢驗</div>
-                    <div style="font-size: 1.5rem; color: #64748b;">⇄</div>
-                    <div class="state-node state-normal">Normal Inspection<br>正常檢驗<br><small>▶ START HERE 從這裡開始</small></div>
-                    <div style="font-size: 1.5rem; color: #64748b;">⇄</div>
-                    <div class="state-node state-tightened">Tightened Inspection<br>加嚴檢驗</div>
-                    <div style="font-size: 1.5rem; color: #64748b;">→</div>
-                    <div class="state-node state-stop">DISCONTINUE<br>暫停檢驗</div>
-                </div>
-
-                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 0.5rem; margin-top: 1rem; font-size: 0.82rem;">
-                    <div class="state-arrow">
-                        <strong>Normal → Tightened</strong><br>
+<h3>5.2 Specifying AQLs 規定AQL</h3>
+<p>The AQL to be used shall be designated in the contract or by the responsible authority. Different AQLs may be designated for:</p>
+<ul>
+<li>Groups of nonconformities considered collectively</li>
+<li>Individual nonconformities as defined by class</li>
+</ul>
+<p>When quality level is expressed as percent nonconforming, AQL values shall not exceed 10%. When expressed as nonconformities per 100 items, AQL values up to 1,000 may be used.</p>
+<h3>5.3 Preferred AQL Series 優選AQL系列</h3>
+<p>The preferred series of AQL values (must use one of these for the tables to apply):</p>
+<p><strong>0.010, 0.015, 0.025, 0.040, 0.065, 0.10, 0.15, 0.25, 0.40, 0.65, 1.0, 1.5, 2.5, 4.0, 6.5, 10</strong></p>
+<p>(continued for nonconformities per 100 items: 15, 25, 40, 65, 100, 150, 250, 400, 650, 1000)</p>
+</div>
+<div class="right-column">
+<h3>Commentary 解說</h3>
+<div class="note-box">
+<h4>AQL Is an Index, Not a Quality Target AQL是索引，不是品質目標</h4>
+<p>The single most important concept in ISO 2859-1: AQL is used to <em>select</em> a sampling plan, not to define what quality you want. When you specify AQL 0.65% for major defects in glass vials, you are saying: "I want a sampling plan whose switching rules will trigger tightened inspection if the supplier's long-term defect rate approaches 0.65%." Your actual expectation of the supplier might be 0.05% or better.</p>
+<p>AQL最重要的概念：AQL用於<em>選擇</em>抽樣計畫，不是定義您想要的品質。指定AQL 0.65%時，您是在說：「我想要一個抽樣計畫，如果供應商的長期缺陷率接近0.65%，切換規則將觸發加嚴檢驗。」您對供應商的實際期望可能是0.05%或更好。</p>
+</div>
+<div class="analogy-box">
+<h4>Why These Specific AQL Values? 為什麼是這些特定值？</h4>
+<p>The preferred series is logarithmically spaced — each step is approximately 1.585× the previous. This geometric progression was chosen to provide approximately equal statistical discrimination between adjacent values across a wide range of quality levels. Using a non-preferred AQL (e.g., 0.5%) means none of the tables apply, requiring custom plan generation — a significant practical disadvantage.</p>
+<p>優選系列是對數等距的——每步約為前一個的1.585倍。使用非優選AQL（如0.5%）意味著任何表格均不適用，需要自定義計畫生成——實際操作上存在重大不便。</p>
+</div>
+</div>
+</div>
+<div class="application-box">
+<h4>Standard Pharma AQL Levels 製藥標準AQL水準</h4>
+<p>These values are widely used in CDMO/pharma incoming QC as industry convention. They are not mandated by ISO 2859-1 or FDA guidance — they represent accumulated industry consensus from MIL-STD-105 era through to current GMP practice. Always confirm against your quality agreement with the supplier and your internal SOP.</p>
+</div>
+</div>
+</div>
+<!-- ===================== CLAUSE 6 ===================== -->
+<div class="chapter-section" id="clause6">
+<div class="chapter-divider">
+<div class="chapter-badge">6</div>
+<div class="chapter-info">
+<h2>Clause 6: Submission of Product for Sampling 產品的提交</h2>
+<p>Lot formation rules and presentation requirements 批次形成規則與提交要求</p>
+</div>
+</div>
+<div class="chapter-body">
+<div class="two-column">
+<div class="left-column">
+<h3>6.1 Formation of Lots 批次形成</h3>
+<p>The product shall be assembled into identifiable lots, sub-lots, or in such other manner as may be laid down. Each lot shall, as far as is practicable, consist of items of:</p>
+<ul>
+<li>A single type, grade, class, size and composition</li>
+<li>Manufactured under uniform conditions</li>
+<li>Produced at essentially the same time</li>
+</ul>
+<h3>6.2 Presentation of Lots 批次提交</h3>
+<p>The formation of the lots, the lot size and the manner in which each lot shall be presented and identified by the supplier shall be designated or approved by the responsible authority.</p>
+<p>The supplier shall provide:</p>
+<ul>
+<li>Adequate and suitable storage space for each lot</li>
+<li>Equipment needed for proper identification and presentation</li>
+<li>Personnel for all handling of product required for drawing of samples</li>
+</ul>
+</div>
+<div class="right-column">
+<h3>Commentary 解說</h3>
+<div class="application-box">
+<h4>Lot Formation in CDMO Incoming Inspection CDMO來料檢驗的批次形成</h4>
+<p>In practice, the "lot" for incoming inspection is typically:</p>
+<ul>
+<li><strong>One delivery / shipment</strong> from a supplier, OR</li>
+<li><strong>One supplier's production batch</strong> (if the supplier provides batch data)</li>
+<li><strong>One pallet</strong> if the delivery spans multiple supplier batches</li>
+</ul>
+<p>Key decision: Do not mix vials from different mold cavities or different production days into a single lot if defect patterns might differ by cavity or shift. Stratified sampling (Clause 8.1) can address this if mixing is unavoidable.</p>
+<p>關鍵決策：如果不同模腔或不同生產日的缺陷模式可能不同，不要將其混合成一個批次。若混合不可避免，可使用分層抽樣（第8.1條）。</p>
+</div>
+<div class="note-box">
+<h4>Lot Size Determination 批量確定</h4>
+<p>The lot size directly determines the sample size code letter (Table 1 of ISO 2859-1), which then determines n, Ac, and Re. Larger lots → larger sample sizes (though the sampling fraction decreases). Smaller lots → smaller samples but higher sampling fractions.</p>
+<p>批量直接決定樣本量碼字（ISO 2859-1第1表），進而決定n、Ac和Re。批量越大→樣本量越大（但抽樣比例下降）；批量越小→樣本量越小但抽樣比例越高。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ===================== CLAUSE 7 ===================== -->
+<div class="chapter-section" id="clause7">
+<div class="chapter-divider">
+<div class="chapter-badge">7</div>
+<div class="chapter-info">
+<h2>Clause 7: Acceptance and Non-acceptance 允收與不允收</h2>
+<p>Lot sentencing rules, disposition of non-acceptable lots, resubmission 批次判定、不合格批次處置、重新提交</p>
+</div>
+</div>
+<div class="chapter-body">
+<div class="two-column">
+<div class="left-column">
+<h3>7.1 Acceptability of Lots 批次允收性</h3>
+<p>Acceptability of a lot shall be determined by the use of a sampling plan or plans. The term "non-acceptance" is used in this context for "rejection" when it refers to the result of following the procedure. Forms of the term "reject" are retained when they refer to actions the consumer may take (e.g., "rejection number").</p>
+<h3>7.2 Disposition of Non-acceptable Lots 不允收批次的處置</h3>
+<p>The responsible authority shall decide how lots that are not accepted will be disposed of. Such lots may be:</p>
+<ul>
+<li>Scrapped 報廢</li>
+<li>Sorted (with or without nonconforming items being replaced) 揀選</li>
+<li>Reworked 返工</li>
+<li>Re-evaluated against more specific usability criteria 重新評估</li>
+<li>Held for additional information 暫扣待查</li>
+</ul>
+<h3>7.3 Nonconforming Items Found in Accepted Lots 已允收批中發現的不合格品</h3>
+<p>If a lot has been accepted, the right is reserved to not accept any item found nonconforming during inspection. Items found nonconforming may be reworked or replaced by conforming items, and resubmitted for inspection with the approval of the responsible authority.</p>
+<h3>7.5 Special Reservation for Critical Classes 嚴重類不合格的特別保留條款</h3>
+<p>At the discretion of the responsible authority, every item in the lot may be required to be inspected for critical nonconformities. The right is reserved to inspect every item submitted and to not accept the lot immediately if a critical nonconformity is found.</p>
+<h3>7.6 Resubmitted Lots 重新提交的批次</h3>
+<p>All parties shall be immediately notified if a lot is found not acceptable. Such lots shall not be resubmitted until all items are re-examined and the supplier is satisfied that all nonconforming items have been removed or replaced.</p>
+</div>
+<div class="right-column">
+<h3>Commentary 解說</h3>
+<div class="note-box">
+<h4>Non-acceptance ≠ Rejection — A Subtle Distinction 不允收≠拒絕</h4>
+<p>ISO 2859-1 uses "non-acceptance" when describing the statistical outcome of the inspection procedure, and "rejection" when describing an action taken by the consumer (e.g., rejection number Re). This distinction matters legally — a "non-accepted" lot isn't necessarily defective; it simply didn't meet the acceptance criterion of the sample. The responsible authority makes the final disposition decision.</p>
+<p>ISO 2859-1在描述抽樣程序的統計結果時使用「不允收」，在描述消費者採取的行動時使用「拒絕」（例如拒收數Re）。區別很重要——「不允收」的批次不一定有缺陷；它只是樣本未達到允收標準。</p>
+</div>
+<div class="application-box">
+<h4>Disposition Decision Tree 處置決策樹</h4>
+<p>When a lot is non-accepted, the quality unit typically follows this sequence:</p>
+<ol>
+<li><strong>Quarantine:</strong> Segregate the lot, apply "HOLD" or "REJECTED" label</li>
+<li><strong>Notification:</strong> Notify supplier and procurement within 24 hours (per quality agreement)</li>
+<li><strong>Root cause investigation:</strong> Request 8D or CAPA from supplier</li>
+<li><strong>Options:</strong>
+<ul>
+<li>Return to supplier for replacement</li>
+<li>100% sort (supplier or internal) — document sorting criteria</li>
+<li>Use-as-is via formal deviation/concession (only if defects are truly minor and documented)</li>
+<li>Scrap</li>
+</ul>
+</li>
+<li><strong>Switching impact:</strong> This rejection counts toward the switching score — document for next lot assessment</li>
+</ol>
+</div>
+<div class="note-box">
+<h4>100% Inspection for Critical Defects 嚴重缺陷的全數檢驗</h4>
+<p>Clause 7.5 explicitly allows 100% inspection for designated critical nonconformities. In pharmaceutical packaging, this is commonly applied to:</p>
+<ul>
+<li>Particulate contamination visible in glass vials (100% inspection by automated or semi-automated systems)</li>
+<li>Label text accuracy for high-risk items (e.g., narcotics, look-alike/sound-alike drugs)</li>
+</ul>
+<p>When 100% inspection is used for criticals, the AQL sampling plan still applies to major and minor defects on the same sample.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ===================== CLAUSE 8 ===================== -->
+<div class="chapter-section" id="clause8">
+<div class="chapter-divider">
+<div class="chapter-badge">8</div>
+<div class="chapter-info">
+<h2>Clause 8: Drawing of Samples 樣本的抽取</h2>
+<p>Random sampling requirement and stratified sampling rules 隨機抽樣要求與分層抽樣規則</p>
+</div>
+</div>
+<div class="chapter-body">
+<div class="two-column">
+<div class="left-column">
+<h3>8.1 Sample Selection 樣本選取</h3>
+<p>The items selected for the sample shall be drawn from the lot by <strong>simple random sampling</strong>. However, when the lot consists of sub-lots or strata identified by some rational criterion, <strong>stratified sampling</strong> shall be used such that the size of the subsample from each sub-lot or stratum is proportional to the size of that sub-lot or stratum.</p>
+<h3>8.2 Time for Drawing the Samples 抽樣時間</h3>
+<p>Samples may be drawn after the lot has been produced, or during production of the lot. In either case, the samples shall be selected according to 8.1.</p>
+<h3>8.3 Double or Multiple Sampling 雙次或多次抽樣</h3>
+<p>When double or multiple sampling is to be used, each subsequent sample shall be selected from the remainder of the same lot — not from a different lot or different shipment.</p>
+</div>
+<div class="right-column">
+<h3>Commentary 解說</h3>
+<div class="application-box">
+<h4>Random Sampling in Practice 隨機抽樣的實際操作</h4>
+<p>True random sampling means every unit in the lot has an equal probability of being selected. In practice for large incoming shipments:</p>
+<ul>
+<li><strong>Systematic sampling:</strong> Select every kth item (e.g., every 50th vial) — acceptable approximation if no periodic patterns</li>
+<li><strong>Stratified random:</strong> Take samples from different layers/positions in the pallet — required when storage position might affect defect probability (e.g., top layer vs. bottom layer in glass)</li>
+<li><strong>Random number table:</strong> For small lots, use actual random numbers — documented in SOP</li>
+</ul>
+<p>Do NOT just sample from the top of the first box — this is the most common AQL audit finding and violates the randomness requirement.</p>
+<p>絕對不要只從第一個箱子的頂部抽樣——這是最常見的AQL審計發現，違反了隨機性要求。</p>
+</div>
+<div class="analogy-box">
+<h4>Stratified vs. Simple Random — When It Matters 分層 vs. 簡單隨機——何時重要</h4>
+<p>If a pallet of vials was assembled from 3 different supplier batches (bottom, middle, top layers), simple random sampling might accidentally oversample one batch. Stratified sampling forces proportional representation. The analogy: if you want to poll a country's opinion, you don't just ask people in the capital — you sample proportionally from all regions.</p>
+<p>如果一個托盤的瓶子由3個不同的供應商批次組成，簡單隨機抽樣可能偶然過度抽取一個批次。分層抽樣強制按比例代表。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ===================== CLAUSE 9 ===================== -->
+<div class="chapter-section" id="clause9">
+<div class="chapter-divider">
+<div class="chapter-badge">9</div>
+<div class="chapter-info">
+<h2>Clause 9: Normal, Tightened and Reduced Inspection — Switching Rules</h2>
+<p>正常、加嚴與放寬檢驗——切換規則（最重要的操作條款）</p>
+</div>
+</div>
+<div class="chapter-body">
+<!-- State diagram -->
+<div class="state-diagram">
+<h3 style="color: var(--primary-blue); margin-bottom: 1rem;">Inspection State Transition Diagram 檢驗狀態轉換圖</h3>
+<div class="state-row">
+<div class="state-node state-reduced">Reduced Inspection<br>放寬檢驗</div>
+<div style="font-size: 1.5rem; color: #64748b;">⇄</div>
+<div class="state-node state-normal">Normal Inspection<br>正常檢驗<br><small>▶ START HERE 從這裡開始</small></div>
+<div style="font-size: 1.5rem; color: #64748b;">⇄</div>
+<div class="state-node state-tightened">Tightened Inspection<br>加嚴檢驗</div>
+<div style="font-size: 1.5rem; color: #64748b;">→</div>
+<div class="state-node state-stop">DISCONTINUE<br>暫停檢驗</div>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 0.5rem; margin-top: 1rem; font-size: 0.82rem;">
+<div class="state-arrow">
+<strong>Normal → Tightened</strong><br>
                         2 out of 5 consecutive lots rejected on original inspection<br>
                         連續5批中有2批被拒（原始檢驗）
                     </div>
-                    <div class="state-arrow">
-                        <strong>Tightened → Normal</strong><br>
+<div class="state-arrow">
+<strong>Tightened → Normal</strong><br>
                         5 consecutive lots accepted on tightened inspection<br>
                         加嚴下連續5批通過
                     </div>
-                    <div class="state-arrow">
-                        <strong>Normal → Reduced</strong><br>
+<div class="state-arrow">
+<strong>Normal → Reduced</strong><br>
                         Switching score ≥ 30 + steady production + authority approval<br>
                         切換分數≥30 + 穩定生產 + 主管機關批准
                     </div>
-                    <div class="state-arrow">
-                        <strong>Reduced → Normal</strong><br>
+<div class="state-arrow">
+<strong>Reduced → Normal</strong><br>
                         Lot rejected, OR irregular production, OR other conditions<br>
                         批次被拒 或 生產不穩定 或 其他條件
                     </div>
-                </div>
-                <div style="margin-top: 0.75rem;">
-                    <div class="state-arrow" style="max-width: 100%; display: block; background: #fef3c7; border-color: #f59e0b;">
-                        <strong>Tightened → DISCONTINUE:</strong> Cumulative 5 lots rejected on original tightened inspection → Stop using this standard until supplier demonstrates improvement and responsible authority agrees to restart
+</div>
+<div style="margin-top: 0.75rem;">
+<div class="state-arrow" style="max-width: 100%; display: block; background: #fef3c7; border-color: #f59e0b;">
+<strong>Tightened → DISCONTINUE:</strong> Cumulative 5 lots rejected on original tightened inspection → Stop using this standard until supplier demonstrates improvement and responsible authority agrees to restart
                         <br>加嚴下累積5批被拒→停止使用本標準，直到供應商證明改善且主管機關同意重新開始
                     </div>
-                </div>
-            </div>
-
-            <div class="two-column">
-                <div class="left-column">
-                    <h3>9.1 Start of Inspection 開始檢驗</h3>
-                    <p>Normal inspection shall be carried out at the start of inspection, unless otherwise directed by the responsible authority.</p>
-
-                    <h3>9.3.1 Normal → Tightened 正常→加嚴</h3>
-                    <p>When normal inspection is being carried out, tightened inspection shall be implemented as soon as <strong>two out of five (or fewer than five) consecutive lots have been non-acceptable on original inspection</strong> (ignoring resubmitted lots for this procedure).</p>
-
-                    <h3>9.3.2 Tightened → Normal 加嚴→正常</h3>
-                    <p>When tightened inspection is being carried out, normal inspection shall be re-instated when <strong>five consecutive lots have been considered acceptable on original inspection</strong>.</p>
-
-                    <h3>9.3.3 Normal → Reduced (Switching Score System) 正常→放寬（切換分數系統）</h3>
-                    <p>Reduced inspection shall be implemented provided ALL of the following conditions are satisfied:</p>
-                    <ul>
-                        <li>(a) Current value of the <strong>switching score is at least 30</strong></li>
-                        <li>(b) Production is at a <strong>steady rate</strong></li>
-                        <li>(c) Reduced inspection is considered <strong>desirable by the responsible authority</strong></li>
-                    </ul>
-
-                    <p><strong>Switching Score Calculation (Single Sampling):</strong></p>
-                    <ul>
-                        <li>When Ac ≥ 2: Add 3 if lot would have been accepted under one step tighter AQL; otherwise reset to zero</li>
-                        <li>When Ac = 0 or 1: Add 2 if lot accepted; otherwise reset to zero</li>
-                    </ul>
-
-                    <h3>9.3.4 Reduced → Normal 放寬→正常</h3>
-                    <p>Normal inspection shall be re-instated if any of the following occur:</p>
-                    <ul>
-                        <li>(a) A lot is not accepted</li>
-                        <li>(b) Production becomes irregular or delayed</li>
-                        <li>(c) Other conditions warrant re-instatement</li>
-                    </ul>
-
-                    <h3>9.4 Discontinuation of Inspection 停止檢驗</h3>
-                    <p>If the cumulative number of lots not accepted in a sequence of consecutive lots on <strong>original tightened inspection reaches 5</strong>, the acceptance procedures shall not be resumed until action has been taken by the supplier to improve quality and the responsible authority has agreed this action is likely to be effective. Tightened inspection shall then be used as if 9.3.1 had been invoked.</p>
-                </div>
-                <div class="right-column">
-                    <h3>Commentary 解說</h3>
-                    <div class="analogy-box">
-                        <h4>Switching Rules as a Supplier Feedback Loop 切換規則作為供應商反饋迴路</h4>
-                        <p>The three inspection states function as a quality escalation system — like a traffic light for supplier performance:</p>
-                        <ul>
-                            <li><span class="badge green">Green (Reduced):</span> Proven excellent supplier → reward with reduced inspection, saving cost</li>
-                            <li><span class="badge blue">Blue (Normal):</span> Default state — ongoing relationship with standard vigilance</li>
-                            <li><span class="badge yellow">Orange (Tightened):</span> Quality concern detected → increase scrutiny, apply pressure</li>
-                            <li><span class="badge red">Red (Discontinue):</span> Supplier too unreliable → stop the relationship until they fix root cause</li>
-                        </ul>
-                        <p>This mirrors pharma supplier escalation SOPs: audit finding → CAPA → re-qualification. The ISO 2859-1 switching rules provide the statistical trigger points.</p>
-                        <p>這反映了製藥供應商升級SOP：審計發現→CAPA→重新資格確認。ISO 2859-1切換規則提供了統計觸發點。</p>
-                    </div>
-                    <div class="note-box">
-                        <h4>Independent Switching per Defect Class 每個缺陷類別獨立切換</h4>
-                        <p>Clause 9.2: The switching procedures shall be applied to each class of nonconformities or nonconforming items <strong>independently</strong>. This means:</p>
-                        <ul>
-                            <li>A supplier could be on Normal inspection for Critical defects</li>
-                            <li>AND on Tightened inspection for Major defects</li>
-                            <li>AND on Reduced inspection for Minor defects</li>
-                        </ul>
-                        <p>All simultaneously. The sample is drawn once; the acceptance/rejection decision is made separately for each class. Your switching score tracking must be maintained separately per class.</p>
-                        <p>切換程序對每類不合格獨立應用。供應商可能同時處於嚴重缺陷正常、主要缺陷加嚴、次要缺陷放寬的狀態。切換分數必須按類別分別跟蹤。</p>
-                    </div>
-                    <div class="formula-box">
-                        <h4>Switching Score Example 切換分數計算範例</h4>
-                        <pre>Scenario: AQL 0.65%, n=80, Ac=2, Re=3 (single sampling)
+</div>
+</div>
+<div class="two-column">
+<div class="left-column">
+<h3>9.1 Start of Inspection 開始檢驗</h3>
+<p>Normal inspection shall be carried out at the start of inspection, unless otherwise directed by the responsible authority.</p>
+<h3>9.3.1 Normal → Tightened 正常→加嚴</h3>
+<p>When normal inspection is being carried out, tightened inspection shall be implemented as soon as <strong>two out of five (or fewer than five) consecutive lots have been non-acceptable on original inspection</strong> (ignoring resubmitted lots for this procedure).</p>
+<h3>9.3.2 Tightened → Normal 加嚴→正常</h3>
+<p>When tightened inspection is being carried out, normal inspection shall be re-instated when <strong>five consecutive lots have been considered acceptable on original inspection</strong>.</p>
+<h3>9.3.3 Normal → Reduced (Switching Score System) 正常→放寬（切換分數系統）</h3>
+<p>Reduced inspection shall be implemented provided ALL of the following conditions are satisfied:</p>
+<ul>
+<li>(a) Current value of the <strong>switching score is at least 30</strong></li>
+<li>(b) Production is at a <strong>steady rate</strong></li>
+<li>(c) Reduced inspection is considered <strong>desirable by the responsible authority</strong></li>
+</ul>
+<p><strong>Switching Score Calculation (Single Sampling):</strong></p>
+<ul>
+<li>When Ac ≥ 2: Add 3 if lot would have been accepted under one step tighter AQL; otherwise reset to zero</li>
+<li>When Ac = 0 or 1: Add 2 if lot accepted; otherwise reset to zero</li>
+</ul>
+<h3>9.3.4 Reduced → Normal 放寬→正常</h3>
+<p>Normal inspection shall be re-instated if any of the following occur:</p>
+<ul>
+<li>(a) A lot is not accepted</li>
+<li>(b) Production becomes irregular or delayed</li>
+<li>(c) Other conditions warrant re-instatement</li>
+</ul>
+<h3>9.4 Discontinuation of Inspection 停止檢驗</h3>
+<p>If the cumulative number of lots not accepted in a sequence of consecutive lots on <strong>original tightened inspection reaches 5</strong>, the acceptance procedures shall not be resumed until action has been taken by the supplier to improve quality and the responsible authority has agreed this action is likely to be effective. Tightened inspection shall then be used as if 9.3.1 had been invoked.</p>
+</div>
+<div class="right-column">
+<h3>Commentary 解說</h3>
+<div class="analogy-box">
+<h4>Switching Rules as a Supplier Feedback Loop 切換規則作為供應商反饋迴路</h4>
+<p>The three inspection states function as a quality escalation system — like a traffic light for supplier performance:</p>
+<ul>
+<li><span class="badge green">Green (Reduced):</span> Proven excellent supplier → reward with reduced inspection, saving cost</li>
+<li><span class="badge blue">Blue (Normal):</span> Default state — ongoing relationship with standard vigilance</li>
+<li><span class="badge yellow">Orange (Tightened):</span> Quality concern detected → increase scrutiny, apply pressure</li>
+<li><span class="badge red">Red (Discontinue):</span> Supplier too unreliable → stop the relationship until they fix root cause</li>
+</ul>
+<p>This mirrors pharma supplier escalation SOPs: audit finding → CAPA → re-qualification. The ISO 2859-1 switching rules provide the statistical trigger points.</p>
+<p>這反映了製藥供應商升級SOP：審計發現→CAPA→重新資格確認。ISO 2859-1切換規則提供了統計觸發點。</p>
+</div>
+<div class="note-box">
+<h4>Independent Switching per Defect Class 每個缺陷類別獨立切換</h4>
+<p>Clause 9.2: The switching procedures shall be applied to each class of nonconformities or nonconforming items <strong>independently</strong>. This means:</p>
+<ul>
+<li>A supplier could be on Normal inspection for Critical defects</li>
+<li>AND on Tightened inspection for Major defects</li>
+<li>AND on Reduced inspection for Minor defects</li>
+</ul>
+<p>All simultaneously. The sample is drawn once; the acceptance/rejection decision is made separately for each class. Your switching score tracking must be maintained separately per class.</p>
+<p>切換程序對每類不合格獨立應用。供應商可能同時處於嚴重缺陷正常、主要缺陷加嚴、次要缺陷放寬的狀態。切換分數必須按類別分別跟蹤。</p>
+</div>
+<div class="formula-box">
+<h4>Switching Score Example 切換分數計算範例</h4>
+<pre>Scenario: AQL 0.65%, n=80, Ac=2, Re=3 (single sampling)
 One-step tighter AQL = 0.40%, which has Ac=1 for same n
 
 Lot 1: d=1 (would pass at AQL 0.40, Ac=1)  → Score: 0+3=3
@@ -1792,186 +1762,158 @@ Lot 6: d=0 → Score: 6+3=9
 以AQL 0.65%，n=80，Ac=2，Re=3為例：
 每批「在更緊AQL下也能通過」則加3分；否則重置為0。
 積累到≥30分，加上穩定生產和主管批准，即可切換至放寬。</pre>
-                    </div>
-                    <div class="application-box">
-                        <h4>Tightened Inspection in Pharma 製藥中的加嚴檢驗</h4>
-                        <p>Tightened inspection has two effects: (1) the acceptance criterion is stricter (higher sample quality required to pass), and (2) the psychological/economic pressure on the supplier increases. In a CDMO context, triggering tightened inspection should also automatically initiate a supplier quality notification, requesting a root cause analysis and CAPA. The switching rule provides the statistical trigger; the quality system provides the business response.</p>
-                        <p>加嚴檢驗有兩個效果：（1）允收標準更嚴格；（2）對供應商的心理/經濟壓力增加。在CDMO情境中，觸發加嚴也應自動啟動供應商品質通知，要求根本原因分析和CAPA。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ===================== WORKED EXAMPLE ===================== -->
-    <div class="chapter-section" id="worked-example">
-        <div class="chapter-divider">
-            <div class="chapter-badge">★</div>
-            <div class="chapter-info">
-                <h2>Worked Example: Step-by-Step Sampling Plan Selection 實例演算：逐步選擇抽樣計畫</h2>
-                <p>Glass vial incoming inspection — complete walkthrough 玻璃瓶來料檢驗——完整演算過程</p>
-            </div>
-        </div>
-        <div class="chapter-body">
-            <div class="note-box" style="margin-bottom: 1.5rem;">
-                <h4>Scenario 情境設定</h4>
-                <p>You are the incoming QC manager at a sterile fill-finish CDMO. A supplier has delivered a lot of 15,000 × 2 mL glass vials for an injectable product. You need to select an appropriate single sampling plan for AQL inspection at Normal inspection level. The supplier has been reliable — you need to establish the initial sampling plan.</p>
-                <p>您是無菌分裝CDMO的來料QC主任。供應商交付了15,000支2 mL注射用玻璃瓶。您需要為正常檢驗建立適當的單次抽樣計畫。</p>
-            </div>
-
-            <div class="practice-box">
-                <h3>Step 1: Determine the Lot Size 第一步：確定批量</h3>
-                <p><strong>N = 15,000</strong> vials in the lot.</p>
-                <p>This is the entire delivery from the supplier in this shipment, confirmed as a single supplier production batch.</p>
-            </div>
-
-            <div class="practice-box">
-                <h3>Step 2: Select the Inspection Level 第二步：選擇檢驗水準</h3>
-                <p>ISO 2859-1 Table 1 offers <strong>General Inspection Levels I, II, III</strong> and <strong>Special Levels S-1 to S-4</strong>.</p>
-                <ul>
-                    <li>General Level I: Reduced discrimination — use only when less stringency is justified</li>
-                    <li><strong>General Level II: Default for most applications</strong> — standard pharma incoming inspection</li>
-                    <li>General Level III: Higher discrimination — use when extra assurance required</li>
-                    <li>Special Levels S-1 to S-4: For destructive or very expensive tests where small samples required</li>
-                </ul>
-                <p><strong>Decision: Use General Level II</strong> — this is the default and is appropriate for glass vial visual inspection.</p>
-                <p><strong>決定：使用通用水準II</strong>——這是默認水準，適用於玻璃瓶目視檢驗。</p>
-            </div>
-
-            <div class="practice-box">
-                <h3>Step 3: Find the Sample Size Code Letter 第三步：查找樣本量碼字</h3>
-                <p>From ISO 2859-1 <strong>Table 1</strong>: Sample Size Code Letters</p>
-                <p><strong>N = 15,000 → Code Letter = M</strong></p>
-            </div>
-
-            <div class="practice-box">
-                <h3>Step 4: Identify Sample Size n 第四步：確定樣本量n</h3>
-                <p>From ISO 2859-1 <strong>Table 2-A</strong> (Single Sampling Plans for Normal Inspection): Code Letter M corresponds to <strong>n = 315</strong></p>
-                <p>碼字M對應<strong>n = 315</strong>件</p>
-            </div>
-
-            <div class="practice-box">
-                <h3>Step 5: Select AQL and Find Ac/Re 第五步：選擇AQL並查找Ac/Re</h3>
-                <p>You are using three simultaneous AQL classes:</p>
-                <p><em>Note: All three classes use the same sample of 315 units. The sample size is determined by the most stringent AQL; the same sample is evaluated against all three sets of acceptance criteria.</em></p>
-                <p><em>注：三種類別均使用同一個315件的樣本。樣本量由最嚴格的AQL確定；同一樣本根據三組允收標準進行評估。</em></p>
-            </div>
-
-            <div class="practice-box">
-                <h3>Step 6: Draw the Sample 第六步：抽取樣本</h3>
-                <p>Draw <strong>315 vials</strong> using stratified random sampling from across the lot:</p>
-                <ul>
-                    <li>If 15,000 vials are on 5 pallets of 3,000 each: draw ~63 vials per pallet</li>
-                    <li>From each pallet: draw from top, middle, and bottom layers proportionally</li>
-                    <li>Within each layer: use systematic or random selection — do not take all from one corner</li>
-                    <li>Document the sampling procedure in the inspection record</li>
-                </ul>
-                <p>從整批中使用分層隨機抽樣抽取<strong>315支</strong>瓶子。記錄抽樣程序。</p>
-            </div>
-
-            <div class="practice-box">
-                <h3>Step 7: Inspect and Record 第七步：檢驗並記錄</h3>
-                <p>Inspect each of the 315 vials against defined criteria. Example results:</p>
-                <p><strong>Outcome: LOT NON-ACCEPTED</strong> — because Minor defects exceed Ac=14 (d=18 ≥ Re=15).</p>
-                <p><strong>結果：批次不允收</strong>——因為次要缺陷超過Ac=14（d=18 ≥ Re=15）。</p>
-            </div>
-
-            <div class="practice-box">
-                <h3>Step 8: Switching Score Update 第八步：更新切換分數</h3>
-                <p>This lot is rejected (non-accepted) on original inspection. The switching score resets to <strong>0</strong> for all classes where rejection occurred.</p>
-                <p>Additionally: if this is the 2nd rejection in the last 5 consecutive lots for any class, that class must switch to <strong>Tightened Inspection</strong> for the next lot.</p>
-                <p>此批次在原始檢驗中被拒絕。所有發生拒絕的類別的切換分數重置為<strong>0</strong>。如果這是連續5批中的第2次拒絕，則該類別必須切換至<strong>加嚴檢驗</strong>。</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- ===================== PHARMA APPLICATION ===================== -->
-    <div class="chapter-section" id="pharma-application">
-        <div class="chapter-divider">
-            <div class="chapter-badge">Rx</div>
-            <div class="chapter-info">
-                <h2>Pharmaceutical &amp; CDMO Application Guide 製藥與CDMO應用指南</h2>
-                <p>Practical guidance for implementing ISO 2859-1 in a GMP environment 在GMP環境中實施ISO 2859-1的實務指導</p>
-            </div>
-        </div>
-        <div class="chapter-body">
-            <div class="two-column">
-                <div class="left-column">
-                    <h3>Common Materials and Typical AQL Plans 常見物料與典型AQL計畫</h3>
-                    <p><em>Ac/Re values are approximate — always verify against the actual ISO 2859-1 Table 2-A for your specific AQL. Critical=0.065%, Major=0.65%, Minor=2.5%.</em></p>
-
-                    <div class="term-box">
-                        <h4>Inspection Level Selection 檢驗水準選擇</h4>
-                        <ul>
-                            <li><strong>General Level II:</strong> Use for all standard incoming inspection of primary and secondary packaging</li>
-                            <li><strong>General Level I:</strong> May be considered for non-critical materials (shipping cartons, outer packaging) with established suppliers</li>
-                            <li><strong>General Level III:</strong> Use when heightened assurance required, e.g., new supplier qualification, after quality event, high-risk product</li>
-                            <li><strong>Special Levels S-1/S-2:</strong> For destructive tests on expensive components (e.g., closure integrity by dye ingress)</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="right-column">
-                    <h3>Commentary &amp; Best Practices 最佳實務</h3>
-                    <div class="application-box">
-                        <h4>Why NOT Use AQL for Sterility Testing 為什麼不應將AQL用於無菌測試</h4>
-                        <p>This is one of the most important distinctions for pharma professionals:</p>
-                        <ul>
-                            <li><strong>Sterility testing</strong> (USP &lt;71&gt;/Ph.Eur. 2.6.1) tests a specific number of containers to detect microbial contamination — the sample sizes (14 or 40 units) are fixed by regulation, not by AQL</li>
-                            <li>A positive sterility test renders the <em>entire batch</em> rejected — not just the lot in the AQL sense</li>
-                            <li>AQL sampling (binomial statistics) was never validated for the detection of rare microbiological events — the sample sizes required to detect even 1% contamination with 95% confidence exceed 300 units</li>
-                            <li><strong>The difference in principle:</strong> AQL tests for process-level quality in a continuing series. Sterility testing detects batch contamination events. They answer different questions.</li>
-                        </ul>
-                        <p>同理，<strong>內毒素測試</strong>（BET/LAL）遵循USP &lt;85&gt;/Ph.Eur. 2.6.14的固定抽樣要求，不使用AQL。<strong>微粒物質測試</strong>遵循USP &lt;788&gt;/&lt;789&gt;。這些測試的抽樣邏輯與AQL完全不同。</p>
-                    </div>
-                    <div class="note-box">
-                        <h4>Supplier Qualification Integration 與供應商資格整合</h4>
-                        <p>ISO 2859-1 switching rules can be formally embedded in supplier qualification systems:</p>
-                        <ul>
-                            <li><strong>New supplier / new material:</strong> Start on General Level III (heightened discrimination) until proven</li>
-                            <li><strong>Tightened inspection trigger:</strong> Automatically generate a Supplier Corrective Action Request (SCAR) + escalate to quality agreement review</li>
-                            <li><strong>Discontinuation trigger:</strong> Automatic supplier disqualification / supply chain backup activation</li>
-                            <li><strong>Reduced inspection qualification:</strong> Require switching score ≥30 + internal quality review approval + no open CAPA items</li>
-                        </ul>
-                        <p>Document the switching history in the vendor master or supplier quality management system — this becomes part of the Annual Product Quality Review (APQR) data.</p>
-                    </div>
-                    <div class="analogy-box">
-                        <h4>AQL in Quality Agreements AQL在品質協議中的地位</h4>
-                        <p>The AQL values, inspection levels, defect classifications, and switching rules should all be specified in the Quality Agreement between CDMO and material supplier. A well-written QA section includes:</p>
-                        <ul>
-                            <li>Defect definition list (with photos where possible)</li>
-                            <li>AQL values per defect class</li>
-                            <li>Inspection level (typically General II)</li>
-                            <li>Sampling type (typically single sampling)</li>
-                            <li>Switching rule conditions and escalation triggers</li>
-                            <li>Disposition procedure for rejected lots</li>
-                        </ul>
-                        <p>AQL值、檢驗水準、缺陷分類和切換規則應全部在CDMO與物料供應商之間的品質協議中明確規定。</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Summary Table -->
-            <h3 class="section-title">Quick Reference: Switching Rules Summary 快速參考：切換規則摘要</h3>
-            </div>
-    </div>
-
+</div>
+<div class="application-box">
+<h4>Tightened Inspection in Pharma 製藥中的加嚴檢驗</h4>
+<p>Tightened inspection has two effects: (1) the acceptance criterion is stricter (higher sample quality required to pass), and (2) the psychological/economic pressure on the supplier increases. In a CDMO context, triggering tightened inspection should also automatically initiate a supplier quality notification, requesting a root cause analysis and CAPA. The switching rule provides the statistical trigger; the quality system provides the business response.</p>
+<p>加嚴檢驗有兩個效果：（1）允收標準更嚴格；（2）對供應商的心理/經濟壓力增加。在CDMO情境中，觸發加嚴也應自動啟動供應商品質通知，要求根本原因分析和CAPA。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ===================== WORKED EXAMPLE ===================== -->
+<div class="chapter-section" id="worked-example">
+<div class="chapter-divider">
+<div class="chapter-badge">★</div>
+<div class="chapter-info">
+<h2>Worked Example: Step-by-Step Sampling Plan Selection 實例演算：逐步選擇抽樣計畫</h2>
+<p>Glass vial incoming inspection — complete walkthrough 玻璃瓶來料檢驗——完整演算過程</p>
+</div>
+</div>
+<div class="chapter-body">
+<div class="note-box" style="margin-bottom: 1.5rem;">
+<h4>Scenario 情境設定</h4>
+<p>You are the incoming QC manager at a sterile fill-finish CDMO. A supplier has delivered a lot of 15,000 × 2 mL glass vials for an injectable product. You need to select an appropriate single sampling plan for AQL inspection at Normal inspection level. The supplier has been reliable — you need to establish the initial sampling plan.</p>
+<p>您是無菌分裝CDMO的來料QC主任。供應商交付了15,000支2 mL注射用玻璃瓶。您需要為正常檢驗建立適當的單次抽樣計畫。</p>
+</div>
+<div class="practice-box">
+<h3>Step 1: Determine the Lot Size 第一步：確定批量</h3>
+<p><strong>N = 15,000</strong> vials in the lot.</p>
+<p>This is the entire delivery from the supplier in this shipment, confirmed as a single supplier production batch.</p>
+</div>
+<div class="practice-box">
+<h3>Step 2: Select the Inspection Level 第二步：選擇檢驗水準</h3>
+<p>ISO 2859-1 Table 1 offers <strong>General Inspection Levels I, II, III</strong> and <strong>Special Levels S-1 to S-4</strong>.</p>
+<ul>
+<li>General Level I: Reduced discrimination — use only when less stringency is justified</li>
+<li><strong>General Level II: Default for most applications</strong> — standard pharma incoming inspection</li>
+<li>General Level III: Higher discrimination — use when extra assurance required</li>
+<li>Special Levels S-1 to S-4: For destructive or very expensive tests where small samples required</li>
+</ul>
+<p><strong>Decision: Use General Level II</strong> — this is the default and is appropriate for glass vial visual inspection.</p>
+<p><strong>決定：使用通用水準II</strong>——這是默認水準，適用於玻璃瓶目視檢驗。</p>
+</div>
+<div class="practice-box">
+<h3>Step 3: Find the Sample Size Code Letter 第三步：查找樣本量碼字</h3>
+<p>From ISO 2859-1 <strong>Table 1</strong>: Sample Size Code Letters</p>
+<p><strong>N = 15,000 → Code Letter = M</strong></p>
+</div>
+<div class="practice-box">
+<h3>Step 4: Identify Sample Size n 第四步：確定樣本量n</h3>
+<p>From ISO 2859-1 <strong>Table 2-A</strong> (Single Sampling Plans for Normal Inspection): Code Letter M corresponds to <strong>n = 315</strong></p>
+<p>碼字M對應<strong>n = 315</strong>件</p>
+</div>
+<div class="practice-box">
+<h3>Step 5: Select AQL and Find Ac/Re 第五步：選擇AQL並查找Ac/Re</h3>
+<p>You are using three simultaneous AQL classes:</p>
+<p><em>Note: All three classes use the same sample of 315 units. The sample size is determined by the most stringent AQL; the same sample is evaluated against all three sets of acceptance criteria.</em></p>
+<p><em>注：三種類別均使用同一個315件的樣本。樣本量由最嚴格的AQL確定；同一樣本根據三組允收標準進行評估。</em></p>
+</div>
+<div class="practice-box">
+<h3>Step 6: Draw the Sample 第六步：抽取樣本</h3>
+<p>Draw <strong>315 vials</strong> using stratified random sampling from across the lot:</p>
+<ul>
+<li>If 15,000 vials are on 5 pallets of 3,000 each: draw ~63 vials per pallet</li>
+<li>From each pallet: draw from top, middle, and bottom layers proportionally</li>
+<li>Within each layer: use systematic or random selection — do not take all from one corner</li>
+<li>Document the sampling procedure in the inspection record</li>
+</ul>
+<p>從整批中使用分層隨機抽樣抽取<strong>315支</strong>瓶子。記錄抽樣程序。</p>
+</div>
+<div class="practice-box">
+<h3>Step 7: Inspect and Record 第七步：檢驗並記錄</h3>
+<p>Inspect each of the 315 vials against defined criteria. Example results:</p>
+<p><strong>Outcome: LOT NON-ACCEPTED</strong> — because Minor defects exceed Ac=14 (d=18 ≥ Re=15).</p>
+<p><strong>結果：批次不允收</strong>——因為次要缺陷超過Ac=14（d=18 ≥ Re=15）。</p>
+</div>
+<div class="practice-box">
+<h3>Step 8: Switching Score Update 第八步：更新切換分數</h3>
+<p>This lot is rejected (non-accepted) on original inspection. The switching score resets to <strong>0</strong> for all classes where rejection occurred.</p>
+<p>Additionally: if this is the 2nd rejection in the last 5 consecutive lots for any class, that class must switch to <strong>Tightened Inspection</strong> for the next lot.</p>
+<p>此批次在原始檢驗中被拒絕。所有發生拒絕的類別的切換分數重置為<strong>0</strong>。如果這是連續5批中的第2次拒絕，則該類別必須切換至<strong>加嚴檢驗</strong>。</p>
+</div>
+</div>
+</div>
+<!-- ===================== PHARMA APPLICATION ===================== -->
+<div class="chapter-section" id="pharma-application">
+<div class="chapter-divider">
+<div class="chapter-badge">Rx</div>
+<div class="chapter-info">
+<h2>Pharmaceutical &amp; CDMO Application Guide 製藥與CDMO應用指南</h2>
+<p>Practical guidance for implementing ISO 2859-1 in a GMP environment 在GMP環境中實施ISO 2859-1的實務指導</p>
+</div>
+</div>
+<div class="chapter-body">
+<div class="two-column">
+<div class="left-column">
+<h3>Common Materials and Typical AQL Plans 常見物料與典型AQL計畫</h3>
+<p><em>Ac/Re values are approximate — always verify against the actual ISO 2859-1 Table 2-A for your specific AQL. Critical=0.065%, Major=0.65%, Minor=2.5%.</em></p>
+<div class="term-box">
+<h4>Inspection Level Selection 檢驗水準選擇</h4>
+<ul>
+<li><strong>General Level II:</strong> Use for all standard incoming inspection of primary and secondary packaging</li>
+<li><strong>General Level I:</strong> May be considered for non-critical materials (shipping cartons, outer packaging) with established suppliers</li>
+<li><strong>General Level III:</strong> Use when heightened assurance required, e.g., new supplier qualification, after quality event, high-risk product</li>
+<li><strong>Special Levels S-1/S-2:</strong> For destructive tests on expensive components (e.g., closure integrity by dye ingress)</li>
+</ul>
+</div>
+</div>
+<div class="right-column">
+<h3>Commentary &amp; Best Practices 最佳實務</h3>
+<div class="application-box">
+<h4>Why NOT Use AQL for Sterility Testing 為什麼不應將AQL用於無菌測試</h4>
+<p>This is one of the most important distinctions for pharma professionals:</p>
+<ul>
+<li><strong>Sterility testing</strong> (USP &lt;71&gt;/Ph.Eur. 2.6.1) tests a specific number of containers to detect microbial contamination — the sample sizes (14 or 40 units) are fixed by regulation, not by AQL</li>
+<li>A positive sterility test renders the <em>entire batch</em> rejected — not just the lot in the AQL sense</li>
+<li>AQL sampling (binomial statistics) was never validated for the detection of rare microbiological events — the sample sizes required to detect even 1% contamination with 95% confidence exceed 300 units</li>
+<li><strong>The difference in principle:</strong> AQL tests for process-level quality in a continuing series. Sterility testing detects batch contamination events. They answer different questions.</li>
+</ul>
+<p>同理，<strong>內毒素測試</strong>（BET/LAL）遵循USP &lt;85&gt;/Ph.Eur. 2.6.14的固定抽樣要求，不使用AQL。<strong>微粒物質測試</strong>遵循USP &lt;788&gt;/&lt;789&gt;。這些測試的抽樣邏輯與AQL完全不同。</p>
+</div>
+<div class="note-box">
+<h4>Supplier Qualification Integration 與供應商資格整合</h4>
+<p>ISO 2859-1 switching rules can be formally embedded in supplier qualification systems:</p>
+<ul>
+<li><strong>New supplier / new material:</strong> Start on General Level III (heightened discrimination) until proven</li>
+<li><strong>Tightened inspection trigger:</strong> Automatically generate a Supplier Corrective Action Request (SCAR) + escalate to quality agreement review</li>
+<li><strong>Discontinuation trigger:</strong> Automatic supplier disqualification / supply chain backup activation</li>
+<li><strong>Reduced inspection qualification:</strong> Require switching score ≥30 + internal quality review approval + no open CAPA items</li>
+</ul>
+<p>Document the switching history in the vendor master or supplier quality management system — this becomes part of the Annual Product Quality Review (APQR) data.</p>
+</div>
+<div class="analogy-box">
+<h4>AQL in Quality Agreements AQL在品質協議中的地位</h4>
+<p>The AQL values, inspection levels, defect classifications, and switching rules should all be specified in the Quality Agreement between CDMO and material supplier. A well-written QA section includes:</p>
+<ul>
+<li>Defect definition list (with photos where possible)</li>
+<li>AQL values per defect class</li>
+<li>Inspection level (typically General II)</li>
+<li>Sampling type (typically single sampling)</li>
+<li>Switching rule conditions and escalation triggers</li>
+<li>Disposition procedure for rejected lots</li>
+</ul>
+<p>AQL值、檢驗水準、缺陷分類和切換規則應全部在CDMO與物料供應商之間的品質協議中明確規定。</p>
+</div>
+</div>
+</div>
+<!-- Summary Table -->
+<h3 class="section-title">Quick Reference: Switching Rules Summary 快速參考：切換規則摘要</h3>
+</div>
+</div>
 </div><!-- end .main-content -->
-
-
-
-<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-
-<script>
-    window.addEventListener('scroll', function() {
-        const btn = document.getElementById('backToTop');
-        if (window.scrollY > 400) {
-            btn.classList.add('visible');
-        } else {
-            btn.classList.remove('visible');
-        }
-    });
-</script>
-        
+        </div>
     </section>
 
     <!-- ========== Section 2: Clauses 10–13 + Tables: Sampling Plans, Acceptability, Fractional Plans, AQL Tables ========== -->
@@ -2513,8 +2455,7 @@ After decision:
             <div class="worked-example">
                 <h3>Example 1: Standard Incoming Inspection of Glass Vials 標準進料檢驗：玻璃瓶</h3>
 
-                <div class="two-column">
-                    <div>
+                <div>
                         <div class="step-block">
                             <strong>Scenario Setup 場景設置</strong>
                             Supplier delivers a lot of 5,000 Type I borosilicate glass vials (20 mL) for a sterile injectable product. Your QC SOP requires General Inspection Level II. Two defect categories are defined: Major (functional defects that affect container integrity — cracks, chips at the sealing surface) at AQL 0.65%, and Minor (cosmetic defects — superficial scratches, minor cosmetic blemishes) at AQL 2.5%.
@@ -2571,14 +2512,12 @@ After decision:
                         </div>
                     </div>
                 </div>
-            </div>
 
             <!-- EXAMPLE 2 -->
             <div class="worked-example">
                 <h3>Example 2: Tightened Inspection Trigger — Same Supplier, Same Component 加嚴檢驗觸發：同一供應商、同一組件</h3>
 
-                <div class="two-column">
-                    <div>
+                <div>
                         <div class="step-block">
                             <strong>Background 背景</strong>
                             Over the past 10 lots of glass vials from the same supplier, 2 consecutive lots were rejected (major defects d ≥ Re = 2 in both cases). Per ISO 2859-1 §9.3.1 switching rules: 2 rejections in 5 consecutive lots on normal inspection → switch to tightened inspection.
@@ -2627,14 +2566,12 @@ After decision:
                         </div>
                     </div>
                 </div>
-            </div>
 
             <!-- EXAMPLE 3 -->
             <div class="worked-example">
                 <h3>Example 3: Reduced Inspection — Rewarding a High-Performing Supplier 減量檢驗：獎勵高績效供應商</h3>
 
-                <div class="two-column">
-                    <div>
+                <div>
                         <div class="step-block">
                             <strong>Background 背景</strong>
                             A rubber stopper supplier has delivered 12 consecutive lots, all accepted under Normal inspection, with switching scores consistently accumulating to ≥ 30. The process is declared stable by the process engineer, and QA Management has approved switching to Reduced inspection per §9.3.3.
@@ -2682,7 +2619,6 @@ After decision:
                         </div>
                     </div>
                 </div>
-            </div>
 
             <!-- Annex A Reference -->
             <div class="worked-example">
@@ -2819,23 +2755,16 @@ After decision:
     </div>
 
 </div><!-- end main-content -->
-
-
-
-<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">⇧</button>
-
-<script>
-    const btn = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-        btn.classList.toggle('visible', window.scrollY > 300);
-    });
-</script>
-        
+        </div>
     </section>
 
 </main>
 
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">⇧</button>
+    <footer class="main-footer">
+        <p>SterileGMP Knowledge Hub — 僅供學習參考</p>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -2948,11 +2877,6 @@ After decision:
         });
     });
     </script>
-
-
-<footer class="main-footer">
-    <p>SterileGMP Knowledge Hub — 僅供學習參考</p>
-</footer>
 
 </body>
 </html>
