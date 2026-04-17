@@ -139,53 +139,6 @@ This guidance focuses on HF issues related to combination products that are comp
 
                 
 
-#### 
-
-                
-                    
-                        
-                        
-                        
-                    
-| --- | --- | --- |
-                    
-                        
-                        
-                        
-                    
-| IND | Investigational New Drug | |
-                    
-                        
-                        
-                        
-                    
-| NDA | New Drug Application | |
-                    
-                        
-                        
-                        
-                    
-| BLA | Biologics License Application | |
-                    
-                        
-                        
-                        
-                    
-| PMA | Premarket Approval | |
-                    
-                        
-                        
-                        
-                    
-| IDE | Investigational Device Exemption | |
-                
-
-            
-
-            
-
-                
-
 #### 510(k) ANDA
 
                 
@@ -400,42 +353,6 @@ Other general inquiries relate to regulatory considerations such as when a HF st
             
 
             
-
-                
-
-#### FDA HF
-
-                
-                    
-                        
-                        
-                    
-| --- | --- |
-                    
-                        
-                        
-                    
-| HF | Section III |
-                    
-                        
-                        
-                    
-| HF | Section IV |
-                    
-                        
-                        
-                    
-| HF vs. | Section V |
-                    
-                        
-                        
-                    
-| | Section III/IV |
-                
-
-            
-
-        
 
     
 
@@ -1085,52 +1002,6 @@ And, in all cases, we encourage you to discuss your combination product developm
 ## Summary: Process Pathway for HF in Combination Products
 
             
-                
-                    
-                    
-                    
-                
-| Stage | HF Activity | Submission |
-| --- | --- | --- |
-                
-                    
-                    
-                    
-                
-| Pre-IND / Early Development | Use-Related Risk Analysis (URRA); Formative Studies begin | Discuss HF plan with FDA at Pre-IND meeting |
-                
-                    
-                    
-                    
-                
-| IND (Phase 1/2) | Formative Studies; user interface iteration | Submit URRA + formative summary + draft HF Validation protocol + draft IFU for FDA feedback |
-                
-                    
-                    
-                    
-                
-| Pre-Phase 3 (EOP2) | HF Validation Study (final finished product) | Conduct HF Validation; confirm all critical tasks pass; discuss results at EOP2 |
-                
-                    
-                    
-                    
-                
-| Phase 3 (IND) | Major clinical study using HF-validated final product | No separate HF submission; product must match HF Validation version |
-                
-                    
-                    
-                    
-                
-| Marketing Application (NDA/BLA/PMA) | Full HF Validation report | URRA + formative summary + full HF Validation report + critical task analysis + proposed IFU |
-                
-                    
-                    
-                    
-                
-| Post-Approval | Design change assessment | Updated URRA; bridging HF study if critical tasks affected |
-            
-
-        
 
         
 

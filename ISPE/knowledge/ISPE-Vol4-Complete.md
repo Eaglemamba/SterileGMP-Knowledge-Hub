@@ -466,66 +466,6 @@ If pretreatment is inadequate, resulting problems can become very large in magni
                     
 
                         
-                            
-                                
-                                    
-                                      
-
-                                      
-
-                                      
-
-                                      
-
-                                
-| Final Treatment | Fouling(Particulates) | Scaling(Hardness) | Degradation(Chlorine) | Corrosion(Chlorides) |
-| --- | --- | --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| Reverse Osmosis | Large | Large | Large* | None |
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| Other Membrane Processes | Large-moderate | Large-moderate | Large* | None |
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| Single Effect Distillation | Moderate | Moderate | Large | Moderate-large |
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| Multi-effect Distillation | Large-moderate | Large-moderate | Large | Moderate-large |
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| Vapor Compression Distillation | Moderate | Moderate | Large | Small |
-                            
-                        
-
-                        
 
 *Membrane dependent  |  Table 4-1 from ISPE Vol.4
 
@@ -669,6 +609,23 @@ Chemical injection (sequestrants) is an alternate method to control scaling. The
                     
 
                         
+
+#### 
+
+                        
+
+                    
+
+                
+
+            
+
+            
+            
+
+                
+
+                    
 
 ### Softener Location: A Key Design Choice
 
@@ -1012,6 +969,46 @@ These operations may be part of pretreatment or final treatment.
 
                         
 
+#### CO2 / NH3 pH
+
+                        
+
+```
+
+Carbon Dioxide System:
+CO2 (gas) ↔ H2CO3 ↔ HCO3⁻ ↔ CO3²⁻
+  pH < 4.3    pH 4.3-8.3    pH > 8.3
+
+Ammonia System:
+NH4⁺ (ion) ↔ NH3 (gas)
+  pH < 9.3      pH > 9.3
+
+Key conflict: CO2 removal needs LOW pH
+              NH3 removal needs LOW pH (as NH4⁺ for RO)
+              BUT CO2 is ionic at HIGH pH
+              → Cannot remove both at same pH!
+```
+
+                    
+
+                    
+
+                        
+
+#### pH
+
+                        
+
+                    
+
+                
+
+            
+
+        
+
+                        
+
 ## 4.12 Materials of Construction and Construction Practices
 
                 
@@ -1141,18 +1138,6 @@ Pretreatment, like other parts of the water treatment system, should be subject 
         
 
     
-
-    
-
-ISPE Baseline® Guide Volume 4: Water and Steam Systems
-
-    
-
-Chapter 4: Pretreatment Options | Pages 43–55
-
-    
-
-SterileGMP Knowledge Hub — Bilingual Educational Reference
 
 ⇧
 
@@ -1469,28 +1454,6 @@ Independent sanitary entrainment devices are available for installation at, or c
 
                         
 
-#### Simple CS Generator Sanitary CS Generator
-
-                        
-                            
-| | Sanitary CS Gen. | Simple CS Gen. |
-| --- | --- | --- |
-                            
-| | entrainment | feed water |
-                            
-| / | 316L SS | |
-                            
-                            
-                            
-| | SIP | utility steam |
-                        
-
-                    
-
-                    
-
-                        
-
 #### 
 
                         
@@ -1583,28 +1546,6 @@ Steam “Quality” sampling may be employed to determine the level of saturatio
                 
 
                 
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
-                            
-| | Purity Sampling | Quality Sampling |
-| --- | --- | --- |
-                            
-                            
-| | TOC | (NCG) |
-                            
-| | Sample cooler + | (calorimeter) |
-                            
-                            
-| | (use point) | |
-                        
 
                     
 
@@ -1756,30 +1697,6 @@ Chemical compatibility with the utility boiler generated steam and the carried o
 #### 
 
                         
-                            
-| | CS | Utility Steam |
-| --- | --- | --- |
-                            
-| / | 300 SS | N/A |
-                            
-| | 300 SS | N/A |
-                            
-| | 300 SS | SS |
-                            
-| Utility steam | | |
-                            
-| / | | |
-                        
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
 
                     
 
@@ -1852,25 +1769,6 @@ The operating temperatures of these systems are more than sufficient for inhibit
 
                             
 
-                        
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
-                            
-| --- | --- | --- |
-                            
-| Mill Finish + Passivation | + Cr₂O₃ | |
-                            
-| Mechanical Polish (MP) | | |
-                            
-| Electropolish (EP) | Cr₂O₃ | |
                         
 
                     
@@ -2400,31 +2298,6 @@ Steam quality sampling may be determined during “commissioning” and consiste
 
                         
 
-#### CS
-
-                        
-                            
-| --- | --- |
-                            
-| | 304/316/316L SS tubing solid-drawn pipe |
-                            
-| | Mill finish 180-grit MP |
-                            
-| | TIG Orbital welding + |
-                            
-| | Sanitary clamp |
-                            
-| | Ball valveDiaphragm Teflon-EPDM |
-                            
-| | (air break) |
-                        
-
-                    
-
-                    
-
-                        
-
 #### Ball Valve Diaphragm Valve
 
                         
@@ -2711,31 +2584,6 @@ The following practices are commonly employed:
 
                             
 
-                        
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
-                            
-| --- | --- |
-                            
-                            
-| Steam Trap | 30m |
-                            
-| Trap | |
-                            
-| | → |
-                            
-| | → trap |
-                            
-| | + |
-                            
                         
 
                     
@@ -3042,28 +2890,6 @@ For short vertical drops from a main header to equipment that is used daily (e.g
                 
 
                 
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
-                            
-| # | | |
-| --- | --- | --- |
-                            
-| 1 | | + trap |
-                            
-| 2 | | trap |
-                            
-| 3 | | |
-                            
-| 4 | | trap |
-                        
 
                     
 
@@ -3476,55 +3302,6 @@ Measure pH within 5 minutes of the Stage 2 conductivity reading after increasing
 ### 11.1.3 In-Line (Stage 1) Conductivity Limits
 
             
-                
-                    
-                        
-                        
-                    
-| Temperature Range (°C) | Max Conductivity (µS/cm) |
-| --- | --- |
-                
-                
-                    
-| 0 to 4.9 | 0.6 |
-                    
-| 5 to 9.9 | 0.8 |
-                    
-| 10 to 14.9 | 0.9 |
-                    
-| 15 to 19.9 | 1.0 |
-                    
-| 20 to 24.9 | 1.1 |
-                    
-| 25 to 29.9 | 1.3 |
-                    
-| 30 to 34.9 | 1.4 |
-                    
-| 35 to 39.9 | 1.5 |
-                    
-| 40 to 44.9 | 1.7 |
-                    
-| 45 to 49.9 | 1.8 |
-                    
-| 50 to 54.9 | 1.9 |
-                    
-| 55 to 59.9 | 2.1 |
-                    
-| 60 to 64.9 | 2.2 |
-                    
-| 65 to 69.9 | 2.4 |
-                    
-| 70 to 74.9 | 2.5 |
-                    
-| 75 to 94.9 | 2.7 |
-                    
-| 95 to 99.9 | 2.9 |
-                    
-| 100 | 3.1 |
-                
-            
-
-            
 
 Based on the chloride-ammonia model at the least conductive water attributes between pH 5 and 7.
 
@@ -3696,28 +3473,6 @@ Instruments are available for measuring TOC in-line from slip streams and from g
 #### Oxidation Methods
 
             
-                
-                    
-                        
-                        
-                        
-                    
-| Method of Oxidation | CO2 Detection | Requires Chemicals/Gases |
-| --- | --- | --- |
-                
-                
-                    
-| High temperature combustion (>500°C) | NDIR | Yes |
-                    
-| Heat activated persulfate | NDIR | Yes |
-                    
-| UV activated persulfate | NDIR or CO2 selective conductivity | Yes |
-                    
-| UV light only (<195 nm) | Direct conductivity or CO2 selective conductivity | No |
-                
-            
-
-            
 
 #### CO2 Detection Methods
 
@@ -3794,24 +3549,6 @@ Four CO2 detection methods are currently used:
 #### CO2
 
                 
-                    
-                        
-| | LOD | | |
-| --- | --- | --- | --- |
-                    
-                    
-                        
-| NDIR | 2-10 ppb | | |
-                        
-| CO2 | 0.05 ppb | 6-12 | |
-                        
-| | ~0.05 ppb | 6-12 | DI + CO2 |
-                        
-| | - | - | CO2 |
-                    
-                
-
-            
 
         
 
@@ -4186,34 +3923,6 @@ The EC recognizes the European Pharmacopoeia (EP) as the source of compendial wa
 #### 
 
                 
-                    
-                        
-| | USP | EP |
-| --- | --- | --- |
-                    
-                    
-                        
-                        
-| WFI | RO | |
-                        
-                        
-| TOC | 500 ppb | |
-                        
-| pH | 1998 | |
-                        
-| | | PW 100 mL / WFI 500 mL |
-                    
-                
-
-            
-
-            
-
-                
-
-#### 
-
-                
 
                     
 
@@ -4503,27 +4212,6 @@ Orbital welding with electropolished tubing decreases the aggressiveness require
 #### 
 
                 
-                    
-                        
-| --- | --- | --- | --- |
-                    
-                    
-                        
-| HNO3 | | | |
-                        
-                        
-                    
-                
-
-            
-
-            
-
-                
-
-#### 
-
-                
 
                 
 
@@ -4561,26 +4249,6 @@ Orbital welding with electropolished tubing decreases the aggressiveness require
             
 
 ### 11.3.6 Chemical Application Methods
-
-            
-                
-                    
-| Method | Application |
-| --- | --- |
-                
-                
-                    ****
-| Circulation | Recirculating through distribution systems (preferred); flow rate ≥5 ft/s (1.5 m/s) |
-                    ****
-| One Way Intermittent Flow | Large non-recirculating, long one-way pipe runs |
-                    ****
-| Spraying | Tank interiors |
-                    ****
-| Tank Immersion | Numerous small parts, prefabricated tubing |
-                    ****
-| Swabbing/Wiping | Isolated areas, tank/equipment exteriors |
-                
-            
 
             
 
@@ -4653,29 +4321,6 @@ Orbital welding with electropolished tubing decreases the aggressiveness require
 
                     
 
-                
-
-            
-
-            
-
-                
-
-#### 
-
-                
-                    
-                        
-| --- | --- | --- | --- |
-                    
-                    
-                        
-| | UV | | |
-                        
-| | Ferroxyl= | | |
-                        
-| | XPS / AES | | |
-                    
                 
 
             
@@ -4804,33 +4449,19 @@ Removal: phosphoric, citric, oxalic acids, and ammonium citrates depending on se
 
             
 
+    
+
+    
+
                 
 
 #### Derouging
-
-                
-                    
-                        
-| --- | --- | --- |
-                    
-                    
-                        
-| | / | |
-                        
-                        
-| | Oxalic acid | |
-                    
-                
 
                 
 
             
 
         
-
-    
-
-    
     
 
         
@@ -4867,28 +4498,6 @@ Removal: phosphoric, citric, oxalic acids, and ammonium citrates depending on se
             
 
 ### 11.3.11 System Chemistry (Summary)
-
-            
-                
-                    
-| Chemistry | Description |
-| --- | --- |
-                
-                
-                    
-| 1 | Nitric acid: ambient temp 30-60 min; 50-60°C for 20-40 min |
-                    
-| 2 | Alkaline degreasing: detergents + pH buffers + surfactants (1-2% / 0.2-0.5% / 0.01-0.2%) |
-                    
-| 3 | Citric acid/chelant: 3-5% citric acid + chelants + reducing agents |
-                    
-| 4 | Mineral acid (phosphoric, sulfuric, sulfamic): 3-10% at various temps |
-                    
-| 5 | Intensified acid/chelant: for high-temp oxide, silica, carbon films |
-                    
-| 6 | Sodium Hydrosulfite: 5% by weight, 120-160°F, 2-4 hours |
-                
-            
 
             
 
@@ -5147,38 +4756,6 @@ Feedwater pre-heaters are sometimes used to elevate the temperature of the feedw
             
 
 **Typical performance values for a 600-gph VC and 5-effect ME:**
-
-            
-                
-                    
-                        
-                        
-                        
-                        
-                        
-                    
-| Parameter | VC Cold | VC Hot | 5 ME Cold | 5 ME Hot |
-| --- | --- | --- | --- | --- |
-                
-                
-                    
-                        
-                        
-                        
-                        
-                        
-                    
-| Economy (lbs/1000 BTUs) | 19.52* | — | 6.8 | 3.84 |
-                    
-                        
-                        
-                        
-                        
-                        
-                    
-| Performance Ratio (lbs distillate/lb steam) | 27.67 | — | 7.11 | 3.39 |
-                
-            
 
             
 
@@ -5472,105 +5049,12 @@ The table below provides typical water analysis of a feed source for a high-puri
 #### Feedwater Analysis — City of Ocala, FL. Plant Effluent
 
             
-                
-                    
-                        
-                        
-                        
-                        
-                    
-| Constituent | mg/l | Constituent | mg/l |
-| --- | --- | --- | --- |
-                
-                
-                    
-| Calcium | 38 | Nitrate | 1.1 |
-                    
-| Chlorine | 13 | Sodium | 8.1 |
-                    
-| Bicarbonate (HCO3) | 1.2 | Sulfate | 111 |
-                    
-| Fluoride | 0.7 | Carbon Dioxide | 0.2 |
-                    
-| Iron | 0.026 | Zinc | 0.026 |
-                    
-| Magnesium | 14.0 | pH | 8.2 |
-                    
-| TDS: 157 mg/l |  |
-                
-            
-
-            
 
 #### High Purity Water Production Costs — 600 GPH
 
             
-                
-                    
-                        
-                        
-                        
-                        
-                        
-                    
-| Consumables | 5ME (82°C) | VC (82°C) | 5ME (30°C) | VC (30°C) |
-| --- | --- | --- | --- | --- |
-                
-                
-                    
-| Steam (lbs/hr) | 1,471 | 700 | 1,471 | 180 |
-                    
-| Electricity (kW) | 1.5 | 26.5 | 1.5 | 26.5 |
-                    
-| Regenerant (lb/yr) | — | 17,520 | — | 17,520 |
-                    
-| Acid (lb/yr) | 32,143 | — | 32,143 | — |
-                    
-| Caustic (lb/yr) | 30,917 | — | 30,917 | — |
-                    
-| Cooling Water (gpm) | 18 | — | 32 | — |
-                
-            
-
-            
 
 #### Associated Costs (US$/year, based on 7000 hr/yr operation)
-
-            
-                
-                    
-                        
-                        
-                        
-                        
-                        
-                    
-| Cost Item | 5ME (82°C) | VC (82°C) | 5ME (30°C) | VC (30°C) |
-| --- | --- | --- | --- | --- |
-                
-                
-                    
-| Steam | $79,802 | $37,975 | $79,802 | $9,765 |
-                    
-| Electricity | $736 | $13,000 | $736 | $13,000 |
-                    
-| Regenerant | — | $876 | — | $876 |
-                    
-| Acid | $1,928 | — | $1,928 | — |
-                    
-| Caustic | $4,019 | — | $4,019 | — |
-                    
-| Cooling Water | $1,513 | — | $2,688 | — |
-                    
-                        
-                    
-| Running Cost ($/year) | $87,998 | $51,851 | $89,173 | $23,641 |
-                    
-                        
-                    
-| Cost ($/1000 gal) | $20.95 | $12.34 | $21.23 | $5.63 |
-                
-            
 
             
 
@@ -5637,35 +5121,6 @@ At the relatively high temperature of the ME, the attack is very rapid, and fail
             
 
 ### ME vs VC
-
-            
-
-                
-
-#### 
-
-                
-                    
-                        
-| | ME | VC |
-| --- | --- | --- |
-                    
-                    
-                        
-                        
-                        
-| | | 100 gph |
-                        
-| | | ≥300 gph |
-                        
-| | 8 | |
-                        
-| | 24 | |
-                        
-                    
-                
-
-            
 
             
 

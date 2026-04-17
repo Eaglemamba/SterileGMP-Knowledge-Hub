@@ -140,109 +140,6 @@ The technical report team consisted of cleaning and disinfection experts from gl
 Selected key terms from TR70. Full glossary covers all terms used throughout the report.
 
             
-                
-                    
-                        
-                        
-                    
-| Term | Definition |
-| --- | --- |
-                
-                
-                    
-                        
-                        
-                    
-| Antimicrobial Chemical Agent | Substance used to destroy or suppress the growth of microorganisms (bacteria, fungi, viruses) on inanimate objects and surfaces. General umbrella term used in TR70. |
-                    
-                        
-                        **
-                    
-| Sanitizer | A compound that reduces the number of vegetative microorganisms to a safe level as determined by public health requirements. Normally a reduction of 103 in vegetative microorganisms is obtained. Does not destroy spores. |
-                    
-                        
-                        **
-                    
-| Disinfectant | A chemical or physical agent that reduces, destroys, or eliminates vegetative forms of harmful microorganisms but not spores. |
-                    
-                        
-                        **
-                    
-| Sporicide | A compound that destroys all vegetative microorganisms and bacterial and fungal spores. |
-                    
-                        
-                        
-                    
-| Germicide | A compound that destroys all vegetative microorganisms. Broader in use than sanitizer but does not necessarily cover spores. |
-                    
-                        
-                        
-                    
-| Disinfection | The destruction of pathogenic and other kinds of microorganisms by thermal or chemical means. |
-                    
-                        
-                        
-                    
-| Contact Time | The minimum amount of time a sanitizer, disinfectant, or sporicide must remain in complete (wet) contact with the surface to be effective. |
-                    
-                        
-                        
-                    
-| Log Reduction | 1st log = 90% reduction; 2nd log = 99% (9% additional); 3rd log = 99.9% (0.09% additional) of the original inoculum. |
-                    
-                        
-                        
-                    
-| Bioburden Load | A measure of the number of viable organisms in a given environment or material. |
-                    
-                        
-                        
-                    
-| Aseptic Processing Area (APA) | A controlled environment that directly supports aseptic processing, consisting of several zones where air, materials, equipment, and personnel are regulated to control microbial and particulate contamination. |
-                    
-                        
-                        
-                    
-| Environmental Monitoring (EM) | Processes and activities that characterize and monitor the quality of the environment. |
-                    
-                        
-                        
-                    
-| Transfer Disinfection | A disinfection process applied to materials and equipment coatings for a validated wetted time to remove bioburden prior to introducing items into classified areas. |
-                    
-                        
-                        
-                    
-| Adverse Trend | A series of alert-level or action-level excursions indicating the system or area is not in control and has potential to affect product quality. |
-                    
-                        
-                        
-                    
-| VPHP | Vapor Phase Hydrogen Peroxide. A disinfection system using 35% H2O2 vapor for bioburden reduction of a chamber or items within it. |
-                    
-                        
-                        
-                    
-| Validation | A documented program providing a high degree of assurance that a specific process, method, or system will consistently produce results meeting predetermined acceptance criteria. |
-                    
-                        
-                        
-                    
-| In-Use Testing | Also called In-Situ Testing. A field study that validates the effectiveness of a disinfecting agent, trained operators, and approved operating procedures. |
-                    
-                        
-                        
-                    
-| Trend Analysis | Analysis of environmental data over time indicating a shift; adverse trends require investigation. |
-                    
-                        
-                        
-                    
-| First Air | The air exiting at the face of HEPA filters. For aseptic processing purposes, this air is considered free of particulate contamination (viable and non-viable). |
-                
-            
-
-        
 
         
 
@@ -434,43 +331,6 @@ This internal qualification is an expectation of regulatory agencies worldwide (
 ### Classification of Antimicrobial Chemical Agents
 
             
-                
-                    
-                        
-                        
-                    
-| Class | Examples |
-| --- | --- |
-                
-                
-                    
-| Alcohols | Isopropyl alcohol (IPA), ethanol |
-                    
-| Iodine/bromine-containing compounds | Iodophors, povidone-iodine |
-                    
-| Aldehydes | Glutaraldehyde, formaldehyde |
-                    
-| Quaternary ammonium compounds (QACs) | Benzalkonium chloride |
-                    
-| Phenolic compounds | Phenol, chloroxylenol |
-                    
-| Hydrogen peroxide | H2O2 solution, VPHP |
-                    
-| Chlorine and sodium hypochlorite | Bleach solutions |
-                    
-| Peracetic acid / hydrogen peroxide | PAA-based products |
-                    
-| Beta-propiolactone | BPL (restricted use) |
-                    
-| Ethylene oxide | EtO (equipment sterilization) |
-                    
-| Ozone | Ozone gas systems |
-                    
-| Chlorine dioxide | ClO2 gas/solution |
-                
-            
-
-            
 
 Note: The term "disinfectant" is often used as a general term. In TR70, the term **antimicrobial chemical agent** is used when referring collectively to sanitizers, disinfectants, and sporicides.
 
@@ -582,18 +442,6 @@ PDA TR70 Section 5 — Supplier Qualification & Efficacy Testing
 
     
 
-    
-
-PDA Technical Report No. 70 (2015): Fundamentals of Cleaning and Disinfection Programs for Aseptic Manufacturing Facilities
-
-    
-
-Section 2 — Supplier Qualification & Efficacy Testing | pp. 12–18
-
-    
-
-For educational use. Source: © 2015 Parenteral Drug Association, Inc.
-
 ⇧
 
 ## Section 3: In-Use Expiration, Environment & In-Situ Studies (p15-p23)
@@ -670,18 +518,6 @@ Pages 15–23  |  Educational Reference — Bilingual Edition
 
     
 
-    
-
-PDA Technical Report No. 70 (2015): Fundamentals of Cleaning and Disinfection Programs for Aseptic Manufacturing Facilities
-
-    
-
-Sections 6.0–8.0  |  Pages 15–23  |  Educational Reference — For Internal Training Use Only
-
-    
-
-© 2015 Parenteral Drug Association, Inc. — Reproduced for educational purposes.
-
 ⇧
 
 ## Section 4a: Cleaning & Disinfection (Part 1 — Classified Areas) (p24-p31)
@@ -748,42 +584,6 @@ Terminology and adherence to specific guidelines varies among GMP firms througho
 ### Table 9.1-1: Area Classification Equivalents
 
                     
-                        
-                            
-                                
-                                
-                                
-                                
-                            
-| ISO 14644 | U.S. FDA / USP | EU Annex 1 / WHO | 0.5 µm limit (p/m³) |
-| --- | --- | --- | --- |
-                        
-                        
-                            
-                                
-                                
-                                
-                                
-                            
-| ISO 5 | Class 100 | Grade A & Grade B (at rest) | 3,520 |
-                            
-                                
-                                
-                                
-                                
-                            
-| ISO 7 | Class 10,000 | Grade B (in operation) / Grade C (at rest) | 352,000 |
-                            
-                                
-                                
-                                
-                                
-                            
-| ISO 8 | Class 100,000 | Grade C (in operation) / Grade D (at rest) | 3,520,000 |
-                        
-                    
-
-                
 
                 
 
@@ -808,24 +608,6 @@ Terminology and adherence to specific guidelines varies among GMP firms througho
                         
 
 ### 9.1-2Active Air Sampling
-
-                    
-                        
-                            
-| Grade | Action Level (CFU/m³) |
-| --- | --- |
-                        
-                        
-                            
-| A | < 1 |
-                            
-| B | 10 |
-                            
-| C | 100 |
-                            
-| D | 200 |
-                        
-                    
 
                     
 
@@ -1072,29 +854,6 @@ Grade B is the background environment surrounding the Grade A zone during asepti
 
                         
 
-#### Grade B Grade A
-
-                        
-                            
-                                
-| | Grade A | Grade B |
-| --- | --- | --- |
-                            
-                            
-                                
-                                
-                                
-                                
-| EM | / | |
-                            
-                        
-
-                    
-
-                    
-
-                        
-
 #### CDMO TWi
 
                         
@@ -1262,54 +1021,6 @@ Cleaning requirements for Grade D:
 ### 
 
                     
-                        
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| Grade | | | | |
-| --- | --- | --- | --- | --- |
-                        
-                        
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| A | Sporicide | / | | |
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| B | + Sporicide | | | |
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| C | | / | | |
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| D | Sanitizer | | | |
-                        
-                    
-
-                
 
             
 
@@ -1590,49 +1301,6 @@ The selection of antimicrobial chemical agents and application methods must be c
 ### Agent Selection by Grade — Summary Table
 
                     
-                        
-                            
-                                
-                                
-                                
-                                
-                            
-| Grade | Primary Agent | Sporicide Frequency | Wiper Requirement |
-| --- | --- | --- | --- |
-                        
-                        
-                            
-                                
-                                
-                                
-                                
-                            
-| A | Sporicide (routine) | Each campaign / batch | Sterile, low-lint |
-                            
-                                
-                                
-                                
-                                
-                            
-| B | Disinfectant rotation + Sporicide | Weekly or per campaign | Sterile or sanitized |
-                            
-                                
-                                
-                                
-                                
-                            
-| C | Disinfectant rotation | Monthly / quarterly | Low-lint |
-                            
-                                
-                                
-                                
-                                
-                            
-| D | Sanitizer | Periodic (e.g., biannual) | Standard |
-                        
-                    
-
-                    
 
                         
 
@@ -1755,18 +1423,6 @@ The selection of antimicrobial chemical agents and application methods must be c
         
 
     
-
-    
-
-PDA Technical Report No. 70 (2015): Fundamentals of Cleaning and Disinfection Programs for Aseptic Manufacturing Facilities
-
-    
-
-Section 9.0 Cleaning and Disinfection — Part 1 (p24–p31) | Educational Use Only
-
-    
-
-Generated 2026-03-30 | PDA TR70 Knowledge Base
 
 ⇧
 
@@ -1977,54 +1633,6 @@ Buckets used to prepare and carry cleaning solutions should be:
             
 
             
-                
-                    
-                        
-                        
-                        
-                        
-                        
-                    
-| Material / | Grade A/B (ISO 5) — Requirement | Grade C (ISO 7) — Requirement | Grade D (ISO 8) — Requirement | Reusable? / |
-| --- | --- | --- | --- | --- |
-                
-                
-                    
-                        
-                        
-                        
-                        
-                        
-                    
-| Wipers / | Sterile γ-irradiated | Sterile or non-sterile | Non-sterile acceptable | Yes — validated laundering + re-sterilization required / |
-                    
-                        
-                        
-                        
-                        
-                        
-                    
-| Mop Heads / | Sterile γ-irradiated | Sterile preferred | Non-sterile acceptable | Yes — validated process only / |
-                    
-                        
-                        
-                        
-                        
-                        
-                    
-| Buckets / | Dedicated, disinfected each use | Dedicated, disinfected each use | Dedicated, cleaned regularly | Yes — grade-dedicated / |
-                    
-                        
-                        
-                        
-                        
-                        
-                    
-| Squeegees / | Sterile or wiped with sporicide | Clean and disinfect after each use | Clean and disinfect after each use | Yes — cleaning frequency based on use / |
-                
-            
-
-        
 
     
 
@@ -2879,18 +2487,6 @@ Formal material compatibility data must be obtained before introducing any new d
 
     
 
-    
-
-PDA Technical Report No. 70 (2015): Fundamentals of Cleaning and Disinfection Programs for Aseptic Manufacturing Facilities
-
-    
-
-Section 4b: Cleaning & Disinfection — Surfaces, Equipment & Special Situations  |  Pages 31–37
-
-    
-
-© 2015 Parenteral Drug Association, Inc. — Educational Use Only
-
 ⇧
 
 ## Section 5: Frequency, Resistance, Hold Times & Training (p38-p46)
@@ -2948,34 +2544,6 @@ Cleaning and disinfection programs and practices that are not followed can resul
           
 
 For investigations related to viable contamination, the **type of organism** found can be an important factor in understanding the possible source:
-
-          
-            
-              
-                
-                
-              
-| Organism Type | Most Prevalent Source |
-| --- | --- |
-            
-            
-              
-                
-                
-              
-| Gram(+) cocci / small non-spore-forming rods | Personnel |
-              
-                
-                
-              
-| Gram(+) rods & Fungi | External environment (air, soil, facility interstitial spaces) |
-              
-                
-                
-              
-| Gram(–) rods | Water or liquid-related sources |
-            
-          
 
           
 
@@ -3935,38 +3503,6 @@ A-III
 In the United States, multiple federal agencies have overlapping but distinct authority over disinfectants and sanitizers used in pharmaceutical manufacturing settings. Understanding which agency regulates which product type is essential for compliance.
 
           
-            
-              
-                
-                
-                
-              
-| Agency | Regulatory Authority | Relevant to Pharma Manufacturing |
-| --- | --- | --- |
-            
-            
-              
-                ****
-                
-                
-              
-| US EPA | FIFRA — regulates antimicrobial pesticide products (disinfectants, sanitizers, sterilants used on inanimate surfaces) | All disinfectants and sanitizers used on facility surfaces, equipment, and floors must carry EPA registration |
-              
-                ****
-                
-                
-              
-| FDA (CDER / CBER) | FD&C Act — regulates drug products, drug manufacturing facilities (cGMP), and healthcare antiseptics used on living tissue | cGMP requirements (21 CFR Parts 211 / 600s) require that disinfectants be tested for effectiveness; FDA does not re-register disinfectants but expects documented efficacy and qualification |
-              
-                ****
-                
-                
-              
-| USDA | Regulates disinfectants used in meat, poultry, and egg processing facilities under FSIS | Less directly relevant to aseptic pharma manufacturing; relevant when CDMO handles food-contact products or veterinary biologics |
-            
-          
-
-          
 
             
 
@@ -4001,37 +3537,6 @@ In the United States, multiple federal agencies have overlapping but distinct au
 
 ### III——
 
-          
-
-          
-            
-              
-                
-                
-                
-              
-| --- | --- | --- |
-            
-            
-              
-                ****
-                
-                
-              
-| US EPA | FIFRA—— | EPA |
-              
-                ****
-                
-                
-              
-| FDA (CDER / CBER) | FD&C ——cGMP | cGMP 21 CFR 211 / 600 FDA |
-              
-                ****
-                
-                
-              
-| USDA | FSIS | CDMO |
-            
           
 
           
@@ -4114,41 +3619,6 @@ A-IV
 The EU regulatory framework for disinfectants used in pharmaceutical aseptic manufacturing involves several overlapping regulatory instruments. Unlike the US system where EPA and FDA have clearly delineated roles, the EU system requires compliance with both the product-authorization pathway (BPR) and the GMP framework.
 
           
-            
-              
-                
-                
-                
-              
-| Regulatory Instrument | Governing Body | Scope |
-| --- | --- | --- |
-            
-            
-              
-                **  
-**
-                
-                
-              
-| Biocidal Products Regulation (BPR)Reg. (EU) 528/2012 | ECHA + National Competent Authorities (NCAs) | Market authorization of biocidal products (including disinfectants) for sale and use in the EU/EEA. Active substance approval precedes product authorization. |
-              
-                **  
-**
-                
-                
-              
-| EudraLex Vol. 4GMP Annex 1 (2022) | EMA / National competent authorities | Contamination Control Strategy (CCS) for sterile medicines. Requires disinfectants to be qualified/validated for efficacy; mandates sporicide use rotation; addresses sterility of solutions used in Grade A/B areas. |
-              
-                **  
-**
-                
-                
-              
-| EN Standards(e.g., EN 14885) | CEN (European Committee for Standardization) | Reference standards framework for testing chemical disinfectants and antiseptics; often cited in BPR product dossiers and GMP qualification protocols. |
-            
-          
-
-          
 
             
 
@@ -4186,40 +3656,6 @@ The EU regulatory framework for disinfectants used in pharmaceutical aseptic man
 
 ### IV——
 
-          
-
-          
-            
-              
-                
-                
-                
-              
-| --- | --- | --- |
-            
-            
-              
-                **  
-**
-                
-                
-              
-| BPR 528/2012 | ECHA + NCAs | / |
-              
-                **  
-**
-                
-                
-              
-| EudraLex GMP 12022 | EMA / | CCS/ A/B |
-              
-                **  
-**
-                
-                
-              
-| EN EN 14885 | CEN | BPR GMP |
-            
           
 
           
@@ -4294,18 +3730,6 @@ The EU regulatory framework for disinfectants used in pharmaceutical aseptic man
     
 
   
-
-  
-
-PDA Technical Report No. 70 (2015): Fundamentals of Cleaning and Disinfection Programs for Aseptic Manufacturing Facilities
-
-  
-
-Section 6a — 15.0 Investigations • 16.0 Conclusion • Appendix I–IV  |  p46–p56
-
-  
-
-Bilingual Educational Edition — For internal training use. © 2015 Parenteral Drug Association, Inc.
 
 ⇧
 
@@ -4426,67 +3850,11 @@ With the exception of dermal sensitization, each study is assigned to a Toxicity
 
                     
 
-### Table 21.0-1: Toxicity Categories
+### Table 21.0-1🔍: Toxicity Categories
 
                     
 
                         
-                            
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| Study | Category I (Most Hazardous) | Category II | Category III | Category IV (Least Hazardous) |
-| --- | --- | --- | --- | --- |
-                            
-                            
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                    
-                                
-| Acute oral | LD50 ≤ 50 mg/kg | >50 – 500 mg/kg | >500 – 5,000 mg/kg | >5,000 mg/kg |
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                    
-                                
-| Acute dermal | LD50 ≤ 200 mg/kg | >200 – 2,000 mg/kg | >2,000 – 5,000 mg/kg | >5,000 mg/kg |
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                    
-                                
-| Acute inhalation (4-hr) | LC50 ≤ 0.05 mg/L | >0.05 – 0.5 mg/L | >0.5 – 2 mg/L | >2 mg/L |
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                    
-                                
-| Primary eye irritation | Corrosive; irreversible destruction or corneal involvement >21 days | Corneal involvement clearing in 8–21 days | Corneal involvement clearing in ≤7 days | Minimal effects clearing in <24 hours |
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                    
-                                
-| Primary skin irritation | Corrosive — tissue destruction into dermis / scarring | Severe irritation at 72 hrs (severe erythema or edema) | Moderate irritation at 72 hrs (moderate erythema) | Mild or slight irritation at 72 hrs |
-                            
-                        
-
-                    
 
                 
 
@@ -4533,137 +3901,33 @@ With the exception of dermal sensitization, each study is assigned to a Toxicity
 
                     
 
-### Table 21.0-2: Required Precautionary Statements by Route of Entry
+### Table 21.0-2🔍: Required Precautionary Statements by Route of Entry
 
                     
 
 **Acute Oral Toxicity**
 
                     
-                        
-                            
-| Category | Required Label Statement |
-| --- | --- |
-                        
-                        
-                            
-| I | Fatal if swallowed. Wash thoroughly with soap and water after handling. |
-                            
-| II | May be fatal if swallowed. Wash thoroughly with soap and water after handling. |
-                            
-| III | Harmful if swallowed. Wash thoroughly with soap and water after handling. |
-                            
-| IV | No statement required (registrant may choose to use Category III language). |
-                        
-                    
-
-                    
 
 **Acute Dermal Toxicity**
-
-                    
-                        
-                            
-| Category | Required Label Statement |
-| --- | --- |
-                        
-                        
-                            
-| I | Fatal if absorbed through skin. Do not get in eyes, on skin, or on clothing. Wear [specify protective clothing]. Remove and wash contaminated clothing before reuse. |
-                            
-| II | May be fatal if absorbed through skin. Wear [protective clothing]. Remove and wash contaminated clothing before reuse. |
-                            
-| III | Harmful if absorbed through skin. Avoid contact with skin, eyes, or clothing. Wear [appropriate protective clothing if appropriate]. |
-                            
-| IV | No statement required. |
-                        
-                    
 
                     
 
 **Acute Inhalation Toxicity**
 
                     
-                        
-                            
-| Category | Required Label Statement |
-| --- | --- |
-                        
-                        
-                            
-| I | Fatal if inhaled. Do not breathe [dust/vapor/spray mist]. Wear [specify respiratory protection per EPA Label Review Manual Table 4]. |
-                            
-| II | May be fatal if inhaled. Do not breathe [dust/vapor/spray mist]. Wear [respiratory protection]. |
-                            
-| III | Harmful if inhaled. Avoid breathing [dust/vapor/spray mist]. |
-                            
-| IV | No statement required. |
-                        
-                    
-
-                    
 
 **Primary Eye Irritation**
-
-                    
-                        
-                            
-| Category | Required Label Statement |
-| --- | --- |
-                        
-                        
-                            
-| I | Corrosive. Causes irreversible eye damage. Do not get in eyes or on clothing. Wear [goggles, face shield, or safety glasses]. |
-                            
-| II | Causes substantial but temporary eye injury. Do not get in eyes. Wear [protective eyewear]. |
-                            
-| III | Causes moderate eye irritation. Avoid contact with eyes. Wear [protective eyewear if appropriate]. |
-                            
-| IV | No statement required. |
-                        
-                    
 
                     
 
 **Primary Skin Irritation**
 
                     
-                        
-                            
-| Category | Required Label Statement |
-| --- | --- |
-                        
-                        
-                            
-| I | Corrosive. Causes skin burns. Do not get in eyes, on skin, or on clothing. Wear [protective clothing and gloves]. |
-                            
-| II | Causes skin irritation. Do not get on skin. Wear [protective clothing and gloves]. |
-                            
-| III | Avoid contact with skin or clothing. Wear [protective clothing and gloves if appropriate]. |
-                            
-| IV | No statement required. |
-                        
-                    
-
-                    
 
 **Dermal Sensitization**
 
                     
-                        
-                            
-| Study Result | Required Statement |
-| --- | --- |
-                        
-                        
-                            
-| Product is a sensitizer (positive) | Prolonged or frequently repeated skin contact may cause allergic reactions in some individuals. |
-                            
-| Product is not a sensitizer (negative) | No labeling required. |
-                        
-                    
-
-                
 
                 
 
@@ -5307,71 +4571,15 @@ A key component of BPR dossiers is the efficacy assessment. The EU Commission pl
 
                     
 
-### Table 23.0-1: Summary of EN Test Criteria for Established Claims
+### Table 23.0-1🔍: Summary of EN Test Criteria for Established Claims
 
                     
 
                         
-                            
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| Organism Type | Test Method | Test Type | Contact Time (min) | Log Reduction Pass Criteria |
-| --- | --- | --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                    
-                                    ****
-                                
-| Vegetative bacteria | EN 1276:1997 | Suspension | 5 | 5-log |
-                                
-                                    
-                                    
-                                    
-                                    
-                                    ****
-                                
-| Vegetative bacteria | EN 13697:2001 | Surface | 5 | 4-log |
-                                
-                                    
-                                    
-                                    
-                                    
-                                    ****
-                                
-| Vegetative fungi | EN 1650:1998 | Suspension | 15 | 4-log |
-                                
-                                    
-                                    
-                                    
-                                    
-                                    ****
-                                
-| Vegetative fungi | EN 13697:2001 | Surface | 15 | 3-log |
-                                
-                                    
-                                    
-                                    
-                                    
-                                    ****
-                                
-| Bacterial spores | EN 13704:2002 | Suspension | 60 | 3-log |
-                            
-                        
 
                     
 
-                    
-
-Source: PDA TR70, Table 23.0-1
+Source: PDA TR70, Table 23.0-1🔍
 
                 
 
@@ -5465,80 +4673,6 @@ VS
                     
 
                         
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| Dimension | AOAC (US) | EN (EU) |
-| --- | --- | --- |
-                            
-                            
-                                
-                                    ****
-                                    
-                                    
-                                
-| Governing Authority | U.S. EPA (FIFRA) | EU Biocidal Products Regulation (BPR) |
-                                
-                                    ****
-                                    
-                                    
-                                
-| Test Organization | AOAC International | CEN (European Committee for Standardization) |
-                                
-                                    ****
-                                    
-                                    
-                                
-| Primary Method Type | Carrier-based (penicylinder, suture loop, porcelain) | Both suspension (Step 1) and surface (Step 2) |
-                                
-                                    ****
-                                    
-                                    
-                                
-| Interfering Substance | Not standardized across all methods (product-specific) | Standardized BSA: 0.3% (clean) or 3.0% (dirty) |
-                                
-                                    ****
-                                    
-                                    
-                                
-| Pass Criteria (Bacteria) | 59/60 carriers survive-free (carrier test) or 3-log (suspension) | 5-log (suspension, EN 1276); 4-log (surface, EN 13697) |
-                                
-                                    ****
-                                    
-                                    
-                                
-| Pass Criteria (Spores) | 720/720 carriers (AOAC Sporicidal Test) | 3-log in 60 min (EN 13704) |
-                                
-                                    ****
-                                    
-                                    
-                                
-| Lot Stability Requirement | One lot ≥60 days old required | Not explicitly specified by EN standard |
-                                
-                                    ****
-                                    
-                                    
-                                
-| GMP Validation Relevance | Used for registration only; pharma must supplement with site-specific testing | Used for registration; pharma must supplement with site-specific testing |
-                                
-                                    ****
-                                    
-                                    
-                                
-| Geographic Applicability | US market (EPA registration) | EU market (BPR registration) |
-                                
-                                    ****
-                                    
-                                    
-                                
-| Required for GMP Disinfectant Validation? | No — but EPA approval must be verified | No — but BPR approval must be verified |
-                            
-                        
-
-                    
 
                 
 
@@ -5730,18 +4864,6 @@ Facilities supplying both US and EU markets must verify that disinfectant suppli
         
 
     
-
-    
-
-PDA TR70 (2015): Fundamentals of Cleaning and Disinfection Programs for Aseptic Manufacturing Facilities
-
-    
-
-Appendix V (Section 21.0) + Appendix VI (Section 22.0) + Appendix VII (Section 23.0)  |  pp. 55–62
-
-    
-
-Educational interpretation for CDMO professional development. Source: © 2015 Parenteral Drug Association, Inc.
 
 ⇧
 
@@ -6076,56 +5198,6 @@ This is considered a **wet or aerosol process** rather than a true gaseous proce
 #### vs.
 
                             
-                                
-                                    
-                                        
-                                        
-                                        
-                                    
-| | | VHP |
-| --- | --- | --- |
-                                
-                                
-                                    
-                                        
-                                        
-                                        
-                                    
-                                    
-                                        
-                                        
-                                        
-                                    
-                                    
-                                        
-                                        
-                                        
-                                    
-| | 15–60 min | |
-                                    
-                                        
-                                        
-                                        
-                                    
-| | | H₂O + O₂ |
-                                    
-                                        
-                                        
-                                        
-                                    
-| | | H₂O₂ |
-                                
-                            
-
-                        
-
-                        
-
-                            
-
-#### vs.
-
-                            
 
                         
 
@@ -6337,63 +5409,6 @@ These systems have been employed in many industry settings and are now being con
                         
 
 ### ClO₂
-
-                        
-
-                            
-
-#### 
-
-                            
-                                
-                                    
-                                        
-                                        
-                                        
-                                        
-                                    
-| | VHP | ClO₂ | (O₃) |
-| --- | --- | --- | --- |
-                                
-                                
-                                    
-                                        
-                                        
-                                        
-                                        
-                                    
-| | 6-log | | |
-                                    
-                                        
-                                        
-                                        
-                                        
-                                    
-| | →H₂O + O₂ | | →O₂ |
-                                    
-                                        
-                                        
-                                        
-                                        
-                                    
-                                    
-                                        
-                                        
-                                        
-                                        
-                                    
-| GMP | | | |
-                                    
-                                        
-                                        
-                                        
-                                        
-                                    
-| | | | ≥80% RH |
-                                
-                            
-
-                        
 
                         
 
@@ -7129,17 +6144,5 @@ p. 66–67 | 36 additional resources for deeper study
         
 
     
-
-    
-
-PDA TR70 (2015): Fundamentals of Cleaning and Disinfection Programs for Aseptic Manufacturing Facilities
-
-    
-
-Section 6c: Appendix VIII (Large-Scale Gassing / VHP) & References (pp. 62–75) | Bilingual Educational Version
-
-    
-
-For educational and internal training purposes only. Based on PDA TR70 (2015). Refer to the original document for authoritative guidance.
 
 ⇧

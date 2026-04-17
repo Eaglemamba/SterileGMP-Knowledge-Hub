@@ -2,13 +2,13 @@
 
 ## Section 0: Bioburden Monitoring — Complete (p1-p3)
 
-# USP ⟨1229.3⟩ Monitoring of Bioburden
+# USP 〈1229.3〉 Monitoring of Bioburden
 
     
 
     
 
-Source: USP–NF General Chapter ⟨1229.3⟩ | Official as of 01-Aug-2022 | Pages 1–3
+Source: USP–NF General Chapter 〈1229.3〉 | Official as of 01-Aug-2022 | Pages 1–3
 
     
 

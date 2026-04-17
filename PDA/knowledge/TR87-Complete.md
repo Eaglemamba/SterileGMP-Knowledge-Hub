@@ -185,188 +185,10 @@ This report also reviews typical pharmaceutical glass handling processes and ide
 ### 2.0 Glossary and Abbreviations
 
       
-        
-          
-            
-            
-          
-| Term | Definition |
-| --- | --- |
-        
-        
-          
-            
-            
-          
-| Breakage | An event that happens when the practical strength of the glass is exceeded. This occurs due to a combination of stress (see Stress) and a relevant surface defect. |
-          
-            
-            
-          
-| Break Force | The force required to break glass, usually given in Newtons (1 kg/v × sec²). |
-          
-            
-            
-          
-| Brittle | An attribute of materials that are not able to deform and thus break immediately under excessive stress, even if the material is inherently strong. |
-          
-            
-            
-          
-| Check | A discontinuity in the glass surface that does not penetrate through the glass wall. |
-          
-            
-            
-          
-| Collection Bin | A container for collecting vials that have been removed or diverted from the production line. |
-          
-            
-            **
-          
-| Eject Bin | The container for collecting downed vials or vials removed from the production line following an inspection point within the production process with the intent of reinspection and possible reintroduction to the production stream. |
-          
-            
-            **
-          
-| Reject Bin | The container for collecting vials that have been rejected from the production line following an inspection point within the production process wherein the vial will be removed from production. |
-          
-            
-            
-          
-| Concentricity | Having a common center as circles or spheres (e.g., the finish of a vial should be concentric with the body, otherwise it would be considered offset and/or out-of-round). |
-          
-            
-            
-          
-| Crack | Fracture that penetrates completely through the glass wall. |
-          
-            
-            
-          
-| Dead Plate | A stationary transition platform between two pieces of equipment. |
-          
-            
-            
-          
-| Downed Vial | A vial that has fallen or tipped over and is no longer vertical within the processing line. |
-          
-            
-            
-          
-| Ductile | An attribute of materials that are able to deform under stress. |
-          
-            
-            
-          
-| Dwell Mark | A fracture surface marking representing the site of a fracture discontinuity caused by a sudden shift in the stress distribution or by a fracture stopping for some length of time; also known as an arrest line. |
-          
-            
-            
-          
-| Flaw | A mark, fault, or other imperfection that mars a substance or object (e.g., scratches, scuffs, checks, bruises). |
-          
-            
-            
-          
-| Fractography (Fracture Analysis) | The study of the fractured surfaces that can determine the origin and applied load needed to cause breakage. |
-          
-            
-            
-          
-| Fracture Origin | The single, unique location at which a fracture system begins. |
-          
-            
-            
-          
-| Glass (Silicates) | An inorganic product of fusion that has been cooled to a rigid condition without crystallization and softens gradually upon reheating. Most common pharmaceutical glasses consist of silicon dioxide as the primary component and may contain aluminum trioxide, boron trioxide, sodium oxide, potassium oxide, magnesium oxide, calcium oxide, barium oxide, and/or other oxides. |
-          
-            
-            
-          
-| Glass Strength | The capacity of glass to withstand tensile stress until failure. |
-          
-            
-            
-          
-| Lehr | A temperature-controlled oven for annealing objects made of glass. |
-          
-            
-            
-          
-| Lyophilization (Freeze-Drying) | A process to remove the aqueous component in a material by controlling temperature and pressure changes in the water-freezing realm. The result is a powdery cake that needs to be reconstituted in a solution before usage. |
-          
-            
-            
-          
-| Practical Strength | The resistance to breakage based on geometrical aspects of the glass, flaws inside and outside of the glass, residual stress inside the glass, and the interior and exterior mechanical load. |
-          
-            
-            
-          
-| Screw Feed (Timing Screw / Scroll Feed / Worm Gear) | A mechanism that moves vials from one area of the processing line to another in single file and at a specified pace. |
-          
-            
-            
-          
-| Singulation | The process of arranging vials into single file from a bulk configuration. |
-          
-            
-            
-          
-| Starwheel | A wheel with pockets used to individually move vials into fixed positions. |
-          
-            
-              
-****  
-****
-          
-| Stress | A force resulting in a dislocation of atoms.               Compressive Stress: Describes a force that is pushing the atoms together.               Tensile Stress: Describes a force that is pulling the atoms apart. |
-          
-            
-            
-          
-| Thermal Stress | The stress produced by a temperature differential within a glass body. |
-          
-            
-            
-          
-| Thermal Shock | A rapid change in temperature imposed on a glass body that may lead to checking, cracking, or complete breakage. |
-          
-            
-              
-****  
-****
-          
-| Vial | Glass container with a finish and bottom that can be either molded or tubular.               Molded Vial: Glass container formed by a molded process (blow-and-blow or press-and-blow), made directly from the melting furnace.               Tubular Vial: Glass container converted from a glass tube drawn from a melting furnace in a two-step process. |
-        
-      
-
-      
 
 ### 2.1 Abbreviations
 
       
-        
-          
-            
-            
-          
-| Abbreviation | Full Term |
-| --- | --- |
-        
-        
-          
-| COF | Coefficient of friction |
-          
-| CTE | Coefficient of thermal expansion |
-          
-| FMEA | Failure Mode and Effects Analysis |
-          
-| RPN | Risk priority number |
-        
-      
-
-    
 
     
     
@@ -559,125 +381,13 @@ Current Best Practices for Pharmaceutical Glass Vial Handling and Processing (20
 
       
 
-Processing of glass containers on equipment and lines always presents some level of risk for container damage. To reduce the risk for creating flaws (e.g., scratches, scuffs, checks, bruises) on glass containers and generating glass particles, abrasions, cracks, and breakage, friction and forces exerted upon the containers should be minimized throughout the entire process. To this end, the principles in Table 3.0-1 should be applied to both existing and new equipment. New equipment design and installation should include additional considerations that are outlined in Section 3.1.
+Processing of glass containers on equipment and lines always presents some level of risk for container damage. To reduce the risk for creating flaws (e.g., scratches, scuffs, checks, bruises) on glass containers and generating glass particles, abrasions, cracks, and breakage, friction and forces exerted upon the containers should be minimized throughout the entire process. To this end, the principles in Table 3.0-1🔍 should be applied to both existing and new equipment. New equipment design and installation should include additional considerations that are outlined in Section 3.1.
 
       
 
-**Table 3.0-1: General Glass Handling Considerations**
+**Table 3.0-1🔍: General Glass Handling Considerations**
 
       
-        
-          
-            
-            
-            
-          
-| Handling Consideration | Points to Address | Topic Section |
-| --- | --- | --- |
-        
-        
-          
-            ****  
-
-            
-- 
-- 
-- 
-
-            
-          
-| Limit Glass-to-Glass Contact(Frictive and Impact) | Avoid areas in process where glass items are dropped or excessively hit one another due to movement through ramps, etc. (gravity used to convey)                 Minimize movement of glass via mechanical pushing of large ensemble of glass containers across any surface                 Use equipment or processes that avoid all glass-to-glass contact (recommended) | Section 5.1, 5.2, 5.4, 5.7, 6.0 |
-          
-            ****
-            
-- 
-- 
-- 
-
-            
-          
-| Limit Glass-to-Metal Contact | Avoid metal (e.g., stainless steel) contact surfaces that can scratch the container and may cause eventual breakage or cracks or generate particulates                 Use polymeric materials instead of metal wherever feasible, e.g., polyoxymethylene (aka Delrin), polytetrafluoroethylene (PTFE), polyether ether ketone (PEEK), polyetherimide (PEI), ultra-high-molecular-weight polyethylene (UHMWPE)                 Ensure proper alignment of fill needles, washer needles, etc. | Section 5.1, 5.2, 5.5, 5.8, 5.12 |
-          
-            ****
-            
-- 
-- 
-- 
-- 
-- 
-- 
-
-            
-          
-| Reduce Friction Whenever Possible | Use a material with a low coefficient of friction                 UHMWPE and other newer plastics with similar properties have very low friction coefficients                 Minimize the surface area of contact between the glass and the equipment component                 Convey or transport a container with a moving apparatus rather than sliding the containers over a stationary piece                 Reduce any contact force during sliding                 Use containers with low coefficient of friction (COF) exterior coatings | Section 5.2, 5.7 |
-          
-            ****
-            
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-
-            
-          
-| Overall Process Management | Keep the flow of containers continuous and smooth; avoid frequent stop and start of containers when feasible                 Establish and perform preventive maintenance of parts, especially in transition zones                 Establish procedures and conduct alignment checks during line setup                 For mass flow of containers, minimize areas where the width of the container flow path is reduced (funneling)                 Eliminate or minimize the use of eject bins from which containers may be returned to the line                 When using eject bins, use bins made of soft, plastic materials and minimize drop heights                 Employ use of eject lanes in lieu of eject bins | Section 4.0, 5.2, 5.3, 5.11 |
-          
-            ****
-            
-- 
-- 
-- 
-- 
-- 
-
-            
-          
-| Minimize Transitions and Accumulation of Containers | Where transitions are employed: Match critical dimensions between machine parts and the glass container                 Confirm correct change parts are in place                 Eliminate pinch points or use a mechanism, such as a clutch device                 Ensure transitions between star wheels, conveyors, belts, dead plates, screw feeds, etc., are aligned and synchronized                 Use a slight downward slope or short vertical step down for transitions | Section 5.2, 5.4, 5.10 |
-          
-            ****
-            
-- 
-- 
-- 
-
-            
-          
-| Limit Areas of Back Pressure | Evaluate and minimize areas where excessive back pressure may be created                 Apply countermeasures such as pressure sensors or overtorque motors                 Consider changing the container flow to a system that inherently produces less back pressure (e.g., pressureless loop accumulators or bi-flow, reversing lane accumulator) | Section 5.2, 5.4, 5.10 |
-          
-            ****
-            
-- 
-
-            
-          
-| Assess Thermal Stressors | Evaluate, understand, and account for the potential effects on the container due to induced thermal shock or stresses | Section 4.0, 5.4, 5.7, Appendix I |
-          
-            ****
-            
-- 
-- 
-- 
-- 
-- 
-
-            
-          
-| Mitigate the Impact of Glass Breakage Events | Employ the use of shielding to minimize the number of containers affected by a glass breakage event                 Ensure appropriate line clearance after a glass breakage event                 Ensure line equipment was not damaged as a result of glass breakage                 Employ use of continuous or periodic checks for glass breakage on the line                 Document all glass breakage events and track frequency | Section 4.0, Appendix II |
-          
-            ****
-            
-- 
-
-            
-          
-| Investigate Breakage Events | Perform detailed investigations for deviations related to glass breakage events to identify root cause and effective corrective and preventive actions (CAPAs) | Appendix II |
-        
-      
-
-    
 
     
 
@@ -709,7 +419,7 @@ Factory and site acceptance testing should be conducted to evaluate all vial siz
 
       
 
-        [Figure 3.1-1: Screw Feed, Star Wheel, and Potential Pinch Points — shows the mechanical interface between screw feed, star wheel, and where vials may get pinched during transfer]
+        [Figure 3.1-1🔍: Screw Feed, Star Wheel, and Potential Pinch Points — shows the mechanical interface between screw feed, star wheel, and where vials may get pinched during transfer]
       
 
     
@@ -894,7 +604,7 @@ The data can be used to adjust and optimize conveyor speeds, format part toleran
 
       
 
-        [Figure 3.3-1: Example of a Vial Diagnostic Drone and Associated Data Visualization Technology — shows a sensor device placed among vials on a production line to measure forces, pressure, and shock events during processing; associated software displays real-time data visualization for line optimization]
+        [Figure 3.3-1🔍: Example of a Vial Diagnostic Drone and Associated Data Visualization Technology — shows a sensor device placed among vials on a production line to measure forces, pressure, and shock events during processing; associated software displays real-time data visualization for line optimization]
       
 
     
@@ -1061,7 +771,7 @@ The resulting risks, mitigating activities, and level of risk acceptance must be
 
             
 
-Many tools are available that can be used to employ effective risk management. Table 4.0-1 provides a list of tools typically used with a brief description and potential applications for each.
+Many tools are available that can be used to employ effective risk management. Table 4.0-1🔍 provides a list of tools typically used with a brief description and potential applications for each.
 
         
 
@@ -1117,7 +827,7 @@ Many tools are available that can be used to employ effective risk management. T
 
                 
 
-## Table 4.0-1 — Typical Risk Management Tools
+## Table 4.0-1🔍 — Typical Risk Management Tools
 
     
 
@@ -1125,61 +835,9 @@ Many tools are available that can be used to employ effective risk management. T
 
             
 
-### Table 4.0-1 Typical Risk Management Tools
+### Table 4.0-1🔍 Typical Risk Management Tools
 
             
-                
-                    
-                        
-                        
-                        
-                    
-| Tool | Description / Attributes | Potential Applications |
-| --- | --- | --- |
-                
-                
-                    
-                        ****  
-
-                        
-                        
-                    
-| Basic Tools(Diagram Analysis, Flowcharts, Check Sheets, Process Mapping, Cause/Effect Diagrams) | Simple techniques that are commonly used to gather and organize data, structure risk management processes, and facilitate decision-making | Compilation of observations, trends, or other empirical information to support a variety of less-complex deviations, complaints, defects, or other circumstances |
-                    
-                        ****
-                        
-                        
-                    
-| Risk Ranking and Filtering | Method to compare and rank risks; Typically involves evaluation of multiple, diverse quantitative and qualitative factors for each risk, weighting factors, and risk scores | Useful for situations when the risks and underlying consequences are diverse and difficult to compare using a single tool |
-                    
-                        ****  
-
-                        
-                        
-                    
-| Statistical Tools(Control Charts, Pareto Charts, Histograms) | (statistical analysis tools) | Visualization and evaluation of data to assist in the identification of trends, issues, and appropriate corrective actions |
-                    
-                        ****
-                        
-                        
-                    
-| Fault Tree Analysis (FTA) | Method used to identify all root causes of an assumed failure or problem; Used to evaluate system and subsystem failures one at a time, but can combine multiple causes of failure by identifying causal chains; Relies heavily on complete process understanding to identify causal factors | Evaluation of deviations and investigations |
-                    
-                        ****
-                        
-                        
-                    
-| Hazard Operability Analysis (HAZOP) | Tool assumes that risk events are caused by deviations from the design and operating intentions; Uses a systematic technique to help identify potential deviations from normal use or design intentions | Commonly used to evaluate process safety hazards |
-                    
-                        ****
-                        
-                        
-                    
-| Failure Mode Effects Analysis (FMEA) | Assesses potential failure modes for processes and the probable effect on outcomes or product performance; Once failure modes are known, risk reduction actions can be applied to eliminate, reduce, or control potential failures; Highly dependent on strong understanding of product, process, and facility under evaluation; Output is a relative "risk score" for each failure mode | Evaluation of equipment and facilities; analysis of a manufacturing process to identify high-risk steps and critical parameters |
-                
-            
-
-        
 
         
 
@@ -1421,7 +1079,7 @@ Finally, the definition and rationale for rankings used to assess each criterion
 
                 
 
-## Table 4.0-2 — RPN Example RPN Factor Determination
+## Table 4.0-2🔍 — RPN Example RPN Factor Determination
 
     
 
@@ -1429,50 +1087,9 @@ Finally, the definition and rationale for rankings used to assess each criterion
 
             
 
-### Table 4.0-2 Example of Risk Priority Number (RPN) Factor Determination
+### Table 4.0-2🔍 Example of Risk Priority Number (RPN) Factor Determination
 
             
-                
-                    
-                        
-                        
-                        
-                    
-| Criteria | Correlation Factor | Considerations |
-| --- | --- | --- |
-                
-                
-                    
-                        ****
-                          
-  
-
-                        
-                    
-| Severity | 10 — Will cause glass to crack or break/chip and enter container                             5 — May cause glass to crack or break/chip and enter container                             1 — Will not cause glass to crack or break/chip and enter container | How severe is the effect on the product? (10 = Previously observed glass break/crack; 5 = May cause breakage or cracking, but has not been observed previously) |
-                    
-                        ****
-                          
-  
-  
-  
-
-                        
-                    
-| Occurrence | Daily (1/2) = 10                             Weekly (1/20) = 7                             Monthly (1/100) = 4                             Yearly (1/1000) = 1                             Remote or never (1/1,000,000) = 1 | How often does the event occur (if observed in the past)? How often should the event be expected to occur (if not observed in the past)? |
-                    
-                        ****
-                          
-  
-  
-
-                        
-                    
-| Detection/Control | No possibility/highly unlikely to detect and/or control (<50%) = 10                             Unlikely to detect and/or control (50%–90%) = 7                             Somewhat certain to detect and/or control (90%–100%) = 4                             Certain to detect and/or control (100%) = 1 | How probable is it that the defect (crack or glass in product) will be caught before passing to the final customer? |
-                
-            
-
-        
 
         
 
@@ -2386,29 +2003,6 @@ The filling process can be improved to further reduce damage to the vials by rep
 
         
 
-#### 
-
-        
-          
-            
-| --- | --- | --- |
-          
-          
-            
-| conveyor belt | | |
-            
-| star wheel | vial gate | star wheel |
-            
-| gripper | | |
-          
-        
-
-      
-
-      
-
-        
-
 #### Needle Strike——
 
         
@@ -2752,7 +2346,6 @@ Some breakage observed in a lyophilizer may not be due to improper handling but 
         
 
 #### Hydraulic Shelf-Stoppering System
-
         
 
       
@@ -3213,25 +2806,6 @@ Filled containers should be inspected individually for contamination or other de
 
       
 
-        
-
-#### 
-
-        
-          
-| --- | --- | --- | --- |
-          
-| Manual | | | |
-          
-| Semi-automated | | | |
-          
-| Automated | sensor / camera | | |
-        
-
-      
-
-    
-
   
 
   
@@ -3478,7 +3052,7 @@ The direct-spin system provides an individual servo motor for each location on t
 
       
 
-Off-loading is the collection of finished product from the line. When transferring the vials into interim containers prior to labeling, materials, and practices similar to those outlined in Table 3.0-1 should be employed.
+Off-loading is the collection of finished product from the line. When transferring the vials into interim containers prior to labeling, materials, and practices similar to those outlined in Table 3.0-1🔍 should be employed.
 
     
 
@@ -3721,31 +3295,6 @@ Double-stacking of pallets is generally not recommended and should be avoided, e
 #### 
 
         
-          
-| --- | --- |
-          
-| Set-back | |
-          
-| Carton-stacking configuration | vs. |
-          
-| Corner protection | |
-          
-| Slip sheets | |
-          
-| Securing method | |
-          
-| Total pallet height | |
-        
-
-      
-
-      
-
-        
-
-#### 
-
-        
 
       
 
@@ -3777,590 +3326,149 @@ Double-stacking of pallets is generally not recommended and should be avoided, e
 ## Section 6: Preventing Additional Damage & References (p25-p27)
 
 # PDA TR87 — Section 6 & 7: Considerations for Preventing Additional Damage & References
-  
-
-  
 
 PDA Technical Report No. 87 (2021)  |  Pages 25–27  |  Pharma/CDMO Professional Edition
 
-  
-  
-
-    
-
 ## 6.0 Considerations for Preventing Additional Damage
 
-  
-
-    
-
-      
-
 ## 6.0 Considerations for Preventing Additional Damage
-
-      
 
 New technologies and product developments are available to further mitigate the risk of damage to vials. A brief overview of some of the options are provided in this section. This list is not comprehensive; however, and each company should evaluate its needs and requirements for including any additional damage-prevention solutions.
 
-    
-
-    
-
-      
-
 ## 
 
-      
-
-        
-
 #### 
 
-        
-
-        
-
-          
-
-          
-
-          
-
-        
-
-        
-
-      
-
-      
-
-        
-
 #### 
-
-        
-
-      
-
-    
-
-  
-
-  
-  
 
 ## 6.1 Ready-to-Use VialsRTU
 
-  
-
-    
-
-      
-
 ### 6.1 Ready-to-Use Vials
-
-      
 
 As an alternative to bulk vial delivery, suppliers now offer vials that are prewashed or ready-to-use (prewashed and sterilized). The responsibility for proper glass handling and packaging during the washing and sterilization processes shifts to the supplier of the ready-to-use vials.
 
-      
-
 After the supplier washes the vials, they are placed in nests and tubs, and the packaging units are then sealed with a protective barrier (e.g., high-density polyethylene). This method prevents glass-to-glass contact and allows vials to be used in aseptic manufacturing processing without unpacking for washing, sterilization, filling, and/or lyophilization.
 
-      
-
-        Figure 6.1-1: Ready-to-Use Vial System — shows vials nested in individual compartments within a sealed tub system
-      
-
-    
-
-    
-
+        Figure 6.1-1🔍: Ready-to-Use Vial System — shows vials nested in individual compartments within a sealed tub system
       
 
 ### RTU = Ready-to-Use
 
-      
-
-        
-
 #### RTU +
 
-        
-
-        
-
-          
-
-          
-
-          
-
-        
-
-      
-
-      
-
-        
-
 #### 
-
-        
-
-        
-
-      
-
-      
-
-        
 
 #### CDMO
 
-        
-
-          
-
-          
-
-          
-
-          
-
-        
-
-      
-
-    
-
-  
-
-  
-  
-
 ## 6.2 Robotic Automation
-
-  
-
-    
-
-      
 
 ### 6.2 Robotic Automation
 
-      
-
 Robotics offer alternatives to traditional glass-handling processes by reducing glass-to-glass contact and providing consistent glass manipulation. Precision pick-and-place units can replace infeed screws and accumulation tables.
-
-      
 
 When using robotics, the handling materials, contact points, timing, forces exerted upon the vials, vial configuration, positioning, and orientation should all be carefully considered.
 
-    
-
-    
-
-      
-
 ### 
 
-      
-
-        
+#### 
 
 #### 
 
-        
-
-        
-
-          
-
-          
-
-          
-
-        
-
-      
-
-      
-
-        
-
 #### 
-
-        
-
-        
-
-          
-
-          
-
-          
-
-          
-
-          
-
-          
-
-          
-
-        
-
-      
-
-      
-
-        
-
-#### 
-
-        
-
-      
-
-    
-
-  
-
-  
-  
 
 ## 6.3 Outer Surface Treatments or Coatings
 
-  
-
-    
-
-      
-
 ### 6.3 Outer Surface Treatments or Coatings
-
-      
 
 Glass containers may be subject to abrasion during conveyance on production lines and during transportation, resulting in scratching and bump checks that may adversely affect their mechanical resistance. Strengthening the outer surface and/or applying a lubricating layer can mitigate possible damage.
 
-      
-
 The COF between bare glass surfaces is very high. Vials are typically sterilized by dry heat depyrogenation prior to entering the filling line, which removes water and most lubricious organics and produces a surface with a COF ranging from 0.9 to 1.0. Under these conditions, glass-to-glass contact should be minimized. To mitigate particle generation and any subsequent damage, glass may be coated to reduce the COF.
-
-      
 
 In some molded-glass containers, the exterior surfaces may receive up to two coatings to reduce damage and particle production. The first is applied to the container exterior as tin chloride prior to annealing, forming a thin, tin-oxide film. The second coating is applied after annealing and is organic. The tin-oxide coating helps improve the adhesion of the organic to the glass surface, and the combination improves the mechanical scratch- and damage-resistance of the container's outer surface.
 
-      
-
 For tubular containers, a low-COF polymer chemical-composition coating can be applied to the surface. These types of exterior coatings can persist through the pharmaceutical processes, such as washing and depyrogenation, and maintain a low COF (< 0.5 under a 30 N load).
-
-    
-
-    
-
-      
 
 ### 
 
-      
-
-        
-
 #### COF
-
-        
-
-        
-
-      
-
-      
-
-        
 
 #### 
 
-        
-
 ```
 
         
 ```
 
-      
+#### 
 
-      
-
-        
+#### 
 
 #### Tubularvs. Molded
 
-        
-          
-            
-              
-              
-              
-              
-            
 | | | COF | |
 | --- | --- | --- | --- |
-          
-          
-            
-              
-              
-              
-              
-            
+
 | Molded | + | < 0.5 | |
-            
-              
-              
-              
-              
-            
+
 | Tubular | COF | < 0.530 N | + |
-          
-        
-
-        
-
-      
-
-      
-
-        
-
-#### 
-
-        
-
-        
-
-          
-
-          
-
-          
-
-        
-
-      
-
-      
-
-        
-
-#### 
-
-        
-
-          
-
-          
-
-          
-
-          
-
-        
-
-      
-
-    
-
-  
-
-  
-  
 
 ## 7.0 References
 
-  
-
-    
-
-      
-
 ## 7.0 References
 
-      
-
-        
 1. 
-          Parenteral Drug Association. Technical Report No. 43 (Revised 2013): Identification and Classification of Nonconformities in Molded and Tubular Glass Containers for Pharmaceutical Manufacturing.
+Parenteral Drug Association. Technical Report No. 43 (Revised 2013): Identification and Classification of Nonconformities in Molded and Tubular Glass Containers for Pharmaceutical Manufacturing.
           PDA TR43
-        
 
-        
 2. 
-          International Organization for Standardization. ISO 1101:2017 Geometrical Product Specifications (GPS) — Geometrical Tolerancing.
+International Organization for Standardization. ISO 1101:2017 Geometrical Product Specifications (GPS) — Geometrical Tolerancing.
           ISO
-        
 
-        
 3. 
-          ASTM International. ASTM C162-05(2015): Standard Terminology of Glass and Glass Products.
+ASTM International. ASTM C162-05(2015): Standard Terminology of Glass and Glass Products.
           ASTM
-        
 
-        
 4. 
-          Parenteral Drug Association. Technical Report No. 60-2: Process Validation: A Lifecycle Approach, Annex 1: Oral Solid Dosage/Semisolid Dosage Forms.
+Parenteral Drug Association. Technical Report No. 60-2: Process Validation: A Lifecycle Approach, Annex 1: Oral Solid Dosage/Semisolid Dosage Forms.
           PDA TR60-2
-        
 
-        
 5. 
-          International Organization for Standardization. ISO 12775:1997 Guidelines on Types of Glass of Normal Bulk-Production Composition and their Test Methods.
+International Organization for Standardization. ISO 12775:1997 Guidelines on Types of Glass of Normal Bulk-Production Composition and their Test Methods.
           ISO
-        
 
-        
 6. 
-          International Council for Harmonisation. Quality Guideline Q9: Quality Risk Management; ICH: Geneva, 2005.
+International Council for Harmonisation. Quality Guideline Q9: Quality Risk Management; ICH: Geneva, 2005.
           ICH Q9
-        
 
-        
 7. 
-          International Organization for Standardization. ISO 31000:2018 Risk Management — Guidelines.
+International Organization for Standardization. ISO 31000:2018 Risk Management — Guidelines.
           ISO
-        
 
-        
 8. 
-          International Organization for Standardization. ISO 14971:2019 Medical Devices — Application of Risk Management to Medical Devices.
+International Organization for Standardization. ISO 14971:2019 Medical Devices — Application of Risk Management to Medical Devices.
           ISO
-        
 
-        
 9. 
-          Parenteral Drug Association. Technical Report No. 44: Quality Risk Management for Aseptic Processes; Bethesda, Md., 2008.
+Parenteral Drug Association. Technical Report No. 44: Quality Risk Management for Aseptic Processes; Bethesda, Md., 2008.
           PDA TR44
-        
 
-        
 10. 
           [Additional references 10–20 covering vial washing validation, depyrogenation, sterilization, inspection guidelines, COF measurements, glass surface coatings, and particulate generation research.]
           Various
-        
-
-      
-
-    
-
-    
-
-      
 
 ## 
 
-      
-
-        
-
 #### 
-
-        
-
-        
-
-          
-
-          
-
-          
-
-        
-
-      
-
-      
-
-        
 
 #### Ref 1PDA TR43 —
 
-        
-
-      
-
-      
-
-        
-
 #### Ref 6ICH Q9 —
-
-        
-
-      
-
-      
-
-        
 
 #### Ref 7 & 8ISO 31000 vs. ISO 14971
 
-        
-
-        
-
-          
-
-          
-
-        
-
-        
-
-      
-
-      
-
-        
-
 #### Ref 10–20
 
-        
-
-        
-
-      
-
-      
-
-        
-
 #### 
-
-        
-
-        
-
-          
-
-          
-
-          
-
-          
-
-        
-
-      
-
-    
-
-  
-
-  
-  
-
-    
 
 ### Section Summary
 
@@ -4403,7 +3511,7 @@ Typical compositional ranges for pharmaceutical glasses are outlined in various 
 
       
 
-## Table 8.0-1: Overview of Glasses Used in Pharmaceutical Primary Packaging |
+## Table 8.0-1🔍: Overview of Glasses Used in Pharmaceutical Primary Packaging |
 
   
 
@@ -4411,131 +3519,11 @@ Typical compositional ranges for pharmaceutical glasses are outlined in various 
 
       
 
-### Table 8.0-1: Glass Classification and Standards
+### Table 8.0-1🔍: Glass Classification and Standards
 
       
 
         
-          
-            
-              
-              
-              
-              
-              
-              
-              
-                
-
-              
-            
-| Glass Type | Subtype / Form | SiO₂ (%) | B₂O₃ (%) | Al₂O₃ (%) | Na₂O/K₂O (%) | MgO/CaO/BaO (%) | CTE [10⁻⁶ K⁻¹](20–300°C) | Annealing Point (°C) |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-          
-          
-            
-              ****
-              
-              
-              
-              
-              
-              
-              
-              
-            
-| Borosilicate 3.3 | Tubular | ~81 | ~13 | ~2 | ~4 | — | ~3.3 | ~560–575 |
-            
-              
-              
-              
-              
-              
-              
-            
-| Molded | ~81 | ~13 | ~2 | ~4 | — |
-            
-              ****
-              
-              
-              
-              
-              
-              
-              
-              
-            
-| Borosilicate 5.0 | Tubular | ~75–77 | ~8–10 | ~3–6 | ~6–8 | — | ~4.9–5.5 | ~550–570 |
-            
-              
-              
-              
-              
-              
-              
-            
-| Molded | ~70–75 | ~6–10 | ~4–7 | ~7–10 | ~1–3 |
-            
-              ****
-              
-              
-              
-              
-              
-              
-              
-              
-            
-| Borosilicate 7.0 | Tubular / Molded | ~68–72 | ~4–6 | ~5–8 | ~9–12 | ~1–3 | ~6.3–7.0 | ~550–565 |
-            
-              ****
-              
-              
-              
-              
-              
-              
-              
-              
-            
-| Aluminosilicate | Tubular | ~55–65 | — | ~15–25 | ~8–12 | ~5–10 | ~3.5–7.0 | ~700–750 |
-            
-              ****
-              
-              
-              
-              
-              
-              
-              
-              
-            
-| Quartz (Fused Silica) | Tubular | >99.5 | — | — | — | — | <1.0 | >1150 |
-            
-              ****
-              
-              
-              
-              
-              
-              
-              
-              
-            
-| Soda-Lime-Silicate | Tubular | ~70–74 | — | ~1–3 | ~12–16 | ~8–12 | ~7.1–9.3 | ~525–540 |
-            
-              
-              
-              
-              
-              
-              
-            
-| Molded | ~65–72 | — | ~1–5 | ~12–18 | ~8–14 |
-          
-        
-
-      
 
       
 
@@ -4628,7 +3616,7 @@ Due to the fact that glass has poor thermal conductivity, a thinner wall thickne
 
       
 
-Figure 8.1-1: Comparison of Different Glass Types and Wall Thicknesses (according to CTE)  
+Figure 8.1-1🔍: Comparison of Different Glass Types and Wall Thicknesses (according to CTE)  
 Shows the relationship between glass type, wall thickness, and maximum thermal shock tolerance (°C)  
 [Refer to original TR87 document, p.29]
 
@@ -5843,29 +4831,6 @@ Performing a detailed analysis of the breakage using fractography (fracture anal
 
         
 
-#### 
-
-        
-          
-            
-| --- | --- | --- |
-          
-          
-            
-| chip | | |
-            
-            
-          
-        
-
-        
-
-      
-
-      
-
-        
-
 #### Fractography
 
         
@@ -5925,6 +4890,16 @@ Performing a detailed analysis of the breakage using fractography (fracture anal
   
 
   
+
+        
+
+#### 
+
+        
+
+      
+
+      
   
 
     

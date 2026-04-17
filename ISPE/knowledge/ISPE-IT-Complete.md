@@ -964,65 +964,6 @@ This Guide consists of a main body and a set of supporting appendices.
 
                     
 
-#### CDMO
-
-                    
-                        
-                            
-                            
-                            
-                        
-| --- | --- | --- |
-                        
-                            
-                            
-                            
-                        
-| Ch 1–2 | IT | |
-                        
-                            
-                            
-                            
-                        
-| Ch 3 | | QA / IT-QA |
-                        
-                            
-                            
-                            
-                        
-| Ch 4 | | QA / IT |
-                        
-                            
-                            
-                            
-                        
-| Ch 5 | | IT |
-                        
-                            
-                            
-                            
-                        
-| Ch 6 | | IT Operations |
-                        
-                            
-                            
-                            
-                        
-| Ch 7 | | IT / QA |
-                        
-                            
-                            
-                            
-                        
-| Appendices | | |
-                    
-
-                
-
-                
-
-                    
-
 #### 
 
                     
@@ -1216,74 +1157,6 @@ Quality Manuals and top level documents should be approved by QA. For further in
 ### QMS Elements for IT Departments | ITQMS
 
                         
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| QMS Element | IT Application | Key Output |
-| --- | --- | --- |
-                            
-                            
-                                
-                                    ****
-                                    
-                                    
-                                
-| 3.1 Quality Manual | IT-specific quality objectives aligned to corporate policy | Approved IT Quality Manual / IT |
-                                
-                                    ****
-                                    
-                                    
-                                
-| 3.2 Roles & Responsibilities | Job descriptions for IT, QA, Data Owners | Role matrix / |
-                                
-                                    ****
-                                    
-                                    
-                                
-| 3.3 Record Management | Controls for retrievability, storage, protection | Records retention schedule / |
-                                
-                                    ****
-                                    
-                                    
-                                
-| 3.4 Documentation | Platform docs, test results, consistent templates | EDMS or doc control system / |
-                                
-                                    ****
-                                    
-                                    
-                                
-| 3.5 Testing | Traceable test specs, acceptance criteria, QA review | Executed test records / |
-                                
-                                    ****
-                                    
-                                    
-                                
-| 3.6 SOPs | Critical IT processes and services documented | IT SOP library / IT SOP |
-                                
-                                    ****
-                                    
-                                    
-                                
-| 3.7 Training | Planned, documented, includes contractors | Training records / |
-                                
-                                    ****
-                                    
-                                    
-                                
-| 3.8 Periodic Review | Risk-based frequency, maintains qualified status | Periodic Review reports / |
-                                
-                                    ****
-                                    
-                                    
-                                
-| 3.9 QA Audit | Independent QA audits of IT function | Audit reports & CAPAs / |
-                            
-                        
-
-                    
 
                 
 
@@ -1447,50 +1320,6 @@ Not all IT components require the same level of test documentation rigor. The IS
 
                             
 
-                        
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| Component Type | GxP Impact GxP | Required Rigor |
-| --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| Network switch (non-GxP VLAN) | Low | Checklist-based IQ sufficient |
-                                
-                                    
-                                    
-                                    
-                                
-| Server hosting MES / LIMS | High | Full IQ/OQ with screen dumps, QA sign-off |
-                                
-                                    
-                                    
-                                    
-                                
-| Backup system for GxP data | High | OQ with restore verification, periodic re-test |
-                                
-                                    
-                                    
-                                    
-                                
-| Printer (administrative only) | Minimal | Installation checklist only |
-                                
-                                    
-                                    
-                                    
-                                
-| Active Directory (user access) | Medium | OQ for access controls, IQ for configuration |
-                            
                         
 
                         
@@ -1710,73 +1539,6 @@ Companies also may decide to apply this Risk Management approach to IT Infrastru
 ### Risk-Based Qualification Scope Decision Matrix |
 
                     
-                        
-                            
-                                
-                                  
-
-                                  
-
-                                  
-
-                            
-| Component | GxP Support?GxP? | Business Critical?? | Qualification Scope |
-| --- | --- | --- | --- |
-                        
-                        
-                            
-                                
-                                
-                                
-                                
-                            
-| GxP App Server | Yes | Yes | Full IQ/OQ required |
-                            
-                                
-                                
-                                
-                                
-                            
-| GxP Database Server | Yes | Yes | Full IQ/OQ required |
-                            
-                                
-                                
-                                
-                                
-                            
-| Network Backbone | Indirect | Yes | Scoped IQ + risk controls |
-                            
-                                
-                                
-                                
-                                
-                            
-| ERP (Finance only) | No | Yes | Business controls only |
-                            
-                                
-                                
-                                
-                                
-                            
-| AD / Identity Mgmt | Indirect | Yes | Access controls OQ |
-                            
-                                
-                                
-                                
-                                
-                            
-| Backup System (GxP) | Yes | Yes | OQ incl. restore test |
-                            
-                                
-                                
-                                
-                                
-                            
-| Office WiFi (admin) | No | No | Minimal / checklist |
-                        
-                    
-
-                    
 
                         
 
@@ -1868,70 +1630,6 @@ Once identified, the impact and likelihood of these hazards should be assessed a
                         
 
 ### IT Component Risk Classification Table | IT
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-| IT Component | Risk Categories | Typical Classification | Key Controls |
-| --- | --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-| GxP Data Server | Data integrity, availability, confidentiality | Critical | RAID, backup, access control, audit trail |
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-| Network Infrastructure | Service availability, data integrity in transit | Major | Redundancy, monitoring, segmentation |
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-| Active Directory | User access validity, compliance with 21 CFR Part 11 | Critical | Access review, audit logging, password policy |
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-| Backup Systems | Data availability, long-term integrity | Critical | Restore testing, off-site storage, encryption |
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-| HVAC control IT (BAS) | Indirect product quality impact | Major | Environmental monitoring integration, alarms |
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-| Email / Collaboration | Business continuity only | Minor | Standard IT controls |
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-| Antivirus / Patch Mgmt | Platform integrity (indirect GxP) | Major | Validated patch process, qualification impact assessment |
-                            
-                        
 
                         
 
@@ -2032,64 +1730,6 @@ Successful implementation of the required controls should be verified during qua
                         
 
 ### Risk Control Implementation & GAMP 5 Comparison | GAMP 5
-
-                        
-
-                            
-
-#### How ISPE IT Infrastructure Compares to GAMP 5 CSV Approach
-
-                            
-                                
-                                    
-                                        
-                                        
-                                        
-                                    
-| Aspect | GAMP 5 (Applications) | ISPE GAMP IT Infrastructure |
-| --- | --- | --- |
-                                
-                                
-                                    
-                                        
-                                        
-                                        
-                                    
-| Risk-based scope | Yes — 5 software categories | Yes — component criticality |
-                                    
-                                        
-                                        
-                                        
-                                    
-| Documentation | URS→FS→DS→TP→TR | Platform specs→IQ→OQ→Report |
-                                    
-                                        
-                                        
-                                        
-                                    
-| Life cycle model | V-model (application) | V-model (infrastructure) |
-                                    
-                                        
-                                        
-                                        
-                                    
-| Change control | Validation impact assessment | Qualification impact assessment |
-                                    
-                                        
-                                        
-                                        
-                                    
-| Supplier assessment | GAMP category-dependent | Risk-determined (Q or full audit) |
-                                    
-                                        
-                                        
-                                        
-                                    
-| Periodic review | Required (application level) | Required + can feed app review |
-                                
-                            
-
-                        
 
                         
 
@@ -2296,67 +1936,6 @@ The following life cycle model outlines one way to manage complex IT Infrastruct
                     
 
                     
-                        
-                            
-                                
-                                
-                            
-| Life Cycle Phase | Typical Deliverables |
-| --- | --- |
-                        
-                        
-                            
-                                ****  
-
-                                
-                            
-| Planning Phase | Project Plans and Project Qualification Plans; project scope, responsibilities, deliverables and approvals, project related risks, quality/regulatory considerations, SOPs, timelines, training, funding |
-                            
-                                ****  
-
-                                
-                            
-| Specification & Design Phase | Pertinent requirements sources; platform specifications; design specifications; degree of customization; drawings and diagrams; parameter settings; grouping of standard configurations into building blocks |
-                            
-                                ****  
-
-                                
-                            
-| Risk Assessment & Qualification Test Planning | Impact assessment; hazard identification; design considerations; likelihood of detection; assessment of IT Infrastructure process effectiveness; scoping of qualification; defined test/inspection specifications; acceptance criteria; reviews and approvals |
-                            
-                                ****  
-
-                                
-                            
-| Procurement, Installation & IQ PhaseIQ | Supplier evaluation; requests for tender; completed IQ; supplier release and installation documentation; labeling and issuance; construction, integration, assembly; tests of network assemblies; verified configuration item list; verification of SLAs/contracts/licenses; introduction of Configuration Management and change control |
-                            
-                                ****  
-
-                                
-                            
-| OQ and Acceptance PhaseOQ | Operational tests and verification of specifications and agreed deliverables (completed OQ) |
-                            
-                                ****  
-
-                                
-                            
-| Reporting & Handover Phase | Summary reports; approval of acceptance criteria; transition plans; transfer of source documents and access rights; service contract inauguration |
-                            
-                                ****  
-
-                                
-                            
-| Operation & Maintenance Phase | Change Management; Configuration Management; Security Management; management of servers, clients and networks; Problem Management; Help Desk; Backup/Restore/Archiving; Disaster Recovery; performance monitoring; Supplier Management; Periodic Reviews |
-                            
-                                ****  
-
-                                
-                            
-| Retirement (Decommissioning) Phase | Decommissioning plans; data/information archiving; transfer of processes and data |
-                        
-                    
-
-                
 
                 
 
@@ -2441,49 +2020,6 @@ Procurement, Build, Install & Configure
                         
 
 The left arm defines **what** the system should be. The right arm verifies **that** the system is as defined. The bottom is the implementation. Planning spans the entire V.
-
-                    
-
-                    
-
-                        
-
-#### Key Life Cycle Distinctions |
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| Phase Group | Purpose | QMS Hook |
-| --- | --- | --- |
-                            
-                            
-                                
-                                      
-
-                                    
-                                    
-                                
-| Achieving Qualification | Plan → Specify → Build → IQ → OQ → Report | QA approval of plan and report |
-                                
-                                      
-
-                                    
-                                    
-                                
-| Maintaining Qualification | Change Control, Config Mgmt, Periodic Review | Ongoing SOP compliance |
-                                
-                                      
-
-                                    
-                                    
-                                
-| Retirement | Decommission, archive, transfer | Data retention compliance |
-                            
-                        
 
                     
 
@@ -2624,94 +2160,6 @@ QA should **approve the Platform Qualification Plan and corresponding report** t
 ### Qualification Planning Deliverables Table |
 
                     
-                        
-                            
-                                
-                                
-                                  
-
-                                
-                            
-| Deliverable | Owner | QA Review?QA? | Timing |
-| --- | --- | --- | --- |
-                        
-                        
-                            
-                                  
-
-                                
-                                
-                                
-                            
-| Platform Qualification Plan | IT / Validation | Yes — approve | Before any qualification activity |
-                            
-                                  
-
-                                
-                                
-                                
-                            
-| Initial Risk Assessment | IT / QA / App Owner | Yes — review | During plan preparation |
-                            
-                                  
-
-                                
-                                
-                                
-                            
-| Platform Specifications | IT Engineering | Yes — review | Specification & Design phase |
-                            
-                                  
-
-                                
-                                
-                                
-                            
-| Design Specifications | IT Engineering | Yes — review | Specification & Design phase |
-                            
-                                  
-
-                                
-                                
-                                
-                            
-| IQ Test Plan & Executed IQIQ | Validation / IT | Yes — approve | Procurement & Installation phase |
-                            
-                                  
-
-                                
-                                
-                                
-                            
-| OQ Test Plan & Executed OQOQ | Validation / IT | Yes — approve | OQ & Acceptance phase |
-                            
-                                  
-
-                                
-                                
-                                
-                            
-| Qualification Summary Report | Validation / IT | Yes — approve | Reporting & Handover phase |
-                            
-                                  
-
-                                
-                                
-                                
-                            
-| System Inventory / Config Item List/ | IT Operations | Referenced | Maintained ongoing |
-                            
-                                  
-
-                                
-                                
-                                
-                            
-| Training Records | IT / HR / QA | Referenced | Before and during execution |
-                        
-                    
-
-                    
 
                         
 
@@ -2818,37 +2266,6 @@ The legacy IT Infrastructure should be **audited against company procedures and 
 Key regulatory and business drivers for qualifying the IT Infrastructure include:
 
                     
-                        
-                            
-                                
-                                
-                            
-| Driver Category | Specific Concerns |
-| --- | --- |
-                        
-                        
-                            
-                                ****  
-
-                                
-                            
-| Impact on GxP ApplicationsGxP | Impact of platform failure; impact of platform changes |
-                            
-                                ****  
-
-                                
-                            
-| Maintaining Secure Environment | External connections; access control to GxP applications; access control to platform; securing GxP records |
-                            
-                                ****  
-
-                                
-                            
-| Facilitating Disaster Recovery | Network diagrams; inventory of components; configuration management and change control; document management |
-                        
-                    
-
-                
 
                 
 
@@ -2871,58 +2288,6 @@ Maximum use of existing documentation should be made to minimize timelines and r
 It is probable that relevant information and documentation for the support of platform qualification will already exist within **application validation documentation and records**.
 
                         
-
-                    
-
-                    
-
-                        
-
-#### 5.3.2.3 Legacy Testing Priority Order |
-
-                        
-
-Priority should be given to critical platform components identified by the Risk Assessment:
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| Test Type | Purpose | Note |
-| --- | --- | --- |
-                            
-                            
-                                
-                                    ****
-                                    
-                                    
-                                
-| Basic IQ — Installation Verifications | Verify hardware/software items match documented specifications | Re-installing working components solely for IQ documentation may NOT be appropriate — highlight in Risk Assessment |
-                                
-                                    ****
-                                    
-                                    
-                                
-| Confirming Verifications | Confirm key configuration settings match documented specifications | Config reports and screenshots sufficient |
-                                
-                                    ****
-                                    
-                                    
-                                
-| Operational Tests (OQ) | Identify potential gaps or issues relating to reliable operation | Also basis for performance/monitoring procedures |
-                            
-                        
-
-                        
-
-OQ areas for legacy systems to consider: Storage Capacity, Response Times, Concurrent Sessions/Users, Availability, Backup/Recovery Testing, Access Security Processes/Procedures
-
-                        
-
-For existing IT Infrastructures performing satisfactorily: **stress and load testing is NOT a priority** unless there are specific, reported performance issues.
 
                     
 
@@ -2983,62 +2348,6 @@ Most CDMOs inheriting IT infrastructure from a parent company or previous owner 
 ### Comparing New vs. Legacy Qualification Approach |
 
                     
-                        
-                            
-                                
-                                
-                                
-                            
-| Aspect | New Platform | Legacy Platform |
-| --- | --- | --- |
-                        
-                        
-                            
-                                
-                                
-                                
-                            
-| Starting point | Clean-slate requirements | Gap analysis vs. current state |
-                            
-                                
-                                
-                                
-                            
-| Documentation base | Created from scratch | Leverage existing records |
-                            
-                                
-                                
-                                
-                            
-| Testing approach | Full IQ/OQ as designed | Risk-based; may use Experience Report |
-                            
-                                
-                                
-                                
-                            
-| Re-installation risk | Not applicable | Avoid unless Risk Assessment justifies |
-                            
-                                
-                                
-                                
-                            
-| Stress/load testing | Considered per risk | NOT a priority if performing satisfactorily |
-                            
-                                
-                                
-                                
-                            
-| Planning complexity | Moderate | High — carefully planned, budgeted, resourced |
-                            
-                                
-                                
-                                
-                            
-| Key regulatory drivers | GxP app requirements | GxP impact, security, disaster recovery |
-                        
-                    
-
-                
 
             
 
@@ -3160,57 +2469,6 @@ Most CDMOs inheriting IT infrastructure from a parent company or previous owner 
 
                         
 
-#### Operational Relevance for Aseptic Fill-Finish CDMOs | CDMO
-
-                        
-                            
-                                
-                                    
-                                    
-                                
-| ISPE Requirement | CDMO Operational Impact |
-| --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                
-| IT Quality Manual approved by QA | QA must be actively engaged in IT governance — not just auditing at year-end |
-                                
-                                    
-                                    
-                                
-| Risk-based qualification scope | Saves resources: focus qualification on MES/LIMS/BAS servers, not the office WiFi |
-                                
-                                    
-                                    
-                                
-| Building-block strategy | Pre-qualify a standard server type once; deploy 20 more with abbreviated qualification |
-                                
-                                    
-                                    
-                                
-| Change = risk assessment | Every OS patch on a GxP server needs a qualification impact assessment first |
-                                
-                                    
-                                    
-                                
-| Periodic Review maintains status | Annual IT infrastructure review is a GxP requirement, not optional |
-                                
-                                    
-                                    
-                                
-| Platform ≠ Application qualification | Customer auditors may ask: "Is the server platform qualified separately from the application?" |
-                            
-                        
-
-                    
-
-                    
-
-                        
-
 #### Self-Assessment Checklist for Your Site |
 
                         
@@ -3250,22 +2508,6 @@ Most CDMOs inheriting IT infrastructure from a parent company or previous owner 
         
 
     
-
-    
-
-ISPE GAMP Good Practice Guide: IT Infrastructure Control and Compliance
-
-    
-
-Chapters 3–5.3: Quality Management System, Risk Management & Qualification Planning
-
-    
-
-Section 01 of ISPE-IT Series  |  SterileGMP Knowledge Hub  |  Generated 2026-04-01
-
-    
-
-Educational content for training purposes. Always refer to the original ISPE publication for authoritative guidance.
 
 ↑
 
@@ -3468,24 +2710,6 @@ Network design specifications should be established to:
 The GAMP IT Guide uses an abbreviated OSI model to establish common terminology for qualification activities:
 
           
-            
-              
-| Layer | Description | Examples |
-| --- | --- | --- |
-            
-            
-              ****
-| Layer 1 — Physical | Physical hardware | Copper/optical cables, hubs, NICs, device drivers |
-              ****
-| Layer 2 — Data Link | Basic communication, addressing, routing | Switches |
-              ****
-| Layer 3 — Network | Program-to-program communication | Routers, firewalls |
-              ****
-| Layer 4 — Application | End-user applications via software ports | ERP, LIMS, MES clients |
-            
-          
-
-          
 
 Qualification activities on each layer verify connectivity, functionality, and conformance to design specifications **individually per layer**.
 
@@ -3637,37 +2861,6 @@ Redundancy in server building blocks, power supplies, and storage should be cons
 Most operating systems allow a large number of parameter settings that affect server behavior. These fall into three categories:
 
           
-            
-              
-| # | Category | Documentation Required? | IQ Action |
-| --- | --- | --- | --- |
-            
-            
-              
-                
-                ****
-                
-                
-              
-| 1 | Manufacturer default values — remain unchanged | Not required | No IQ action needed |
-              
-                
-                ****
-                
-                
-              
-| 2 | Manufacturer defaults — altered for specific behavior or performance optimization | Required | Include in specifications; verify during IQ |
-              
-                
-                ****
-                
-                
-              
-| 3 | Parameters supplied blank by manufacturer — must be completed by customer | Required | Include in specifications; must verify during IQ |
-            
-          
-
-          
 
 #### System Time Management /
 
@@ -3698,28 +2891,6 @@ Time management specifications must be verified during both **IQ and OQ**. Respo
           
 
 #### Storage Systems — SAN vs. NAS /
-
-          
-            
-| Type | Architecture | Characteristic |
-| --- | --- | --- |
-            
-              
-                ****  
-
-                
-                
-              
-| SANStorage Area Network | Own high-speed dedicated network with routers, hubs, switches, gateways | High performance; suitable for high I/O workloads |
-              
-                ****  
-
-                
-                
-              
-| NASNetwork Attached Storage | Dedicated server + disk array; attached to existing network | Simpler; suitable for file sharing |
-            
-          
 
           
 
@@ -3860,35 +3031,6 @@ Peripherals (label printers, barcode scanners, electronic signature pads, camera
           
 
 Clients provide users access to shared services and local GxP applications. They should be grouped into categories with different capability and management profiles:
-
-          
-            
-| Classification | Description | Typical Use |
-| --- | --- | --- |
-            
-              
-                ****  
-
-                
-                
-              
-| Un-restricted | Open to user modifications (per company security policy) + accepts centrally controlled updates | Email workstations, general office PCs |
-              
-                ****  
-
-                
-                
-              
-| Restricted | Closed to user modifications; accepts centrally controlled updates only | Shared lab workstations, QA review terminals |
-              
-                ****  
-
-                
-                
-              
-| Controlled | Closed for ALL modifications except via formal change management + qualification; high-priority security patches may be excepted | GxP application hosts, validated LIMS clients, MES terminals |
-            
-          
 
           
 
@@ -4174,69 +3316,6 @@ In pharma process validation, we don't test every parameter equally — we focus
             
 
 ### GAMP Testing Category Decision Table / GAMP
-
-        
-          
-            
-                
-
-                
-
-                
-
-                
-
-                
-
-                
-
-            
-| Testing Level | GAMP Risk ProfileGAMP | Typical IT Infrastructure Component IT | Qualification Approach | Documentation Required | QA Sign-offQA |
-| --- | --- | --- | --- | --- | --- |
-          
-          
-            
-              ****  
-
-              
-              
-              
-              
-              
-            
-| No Testing | Infrastructure layer — no direct impact on product quality or data integrity; standard commodity hardware with no GxP parameter customization | Standard office network switches (admin network); UPS battery units (power protection only); physical rack mounting hardware; generic patch cables | Good Engineering Practice (GEP) commissioning; vendor installation to specification; no formal IQ protocol required | Procurement record; installation record; vendor certificates | Not required |
-            
-              ****  
-
-              
-              
-              
-              
-              
-            
-| Confirmation Testing | Low complexity; standard COTS; manufacturer-supplied evidence (certificates of conformance, factory test reports) can be leveraged; minor GxP relevance | Network cables (physical layer — ISO/IEC 11801 certified); standard network switches on GxP segments (Layer 2); standard rack servers (hardware layer only); label printers with firmware | Review and confirm vendor-supplied test reports and certificates; limited site verification; sampling-based checks | Vendor certificates; site installation checklist; brief IQ summary report | Light review |
-            
-              ****  
-
-              
-              
-              
-              
-              
-            
-| Confidence Testing | Moderate complexity; COTS with configuration; some GxP-relevant parameters (OS settings, network configuration, time sync); limited customization | Windows Server OS (with configured parameters); routers / firewalls on GxP network segments; database servers (Oracle, SQL Server) — infrastructure layer; VMware ESXi hypervisor; Active Directory domain controllers | Formal IQ protocol covering critical parameters; OS CIL verification; configuration parameter checks; connectivity testing; building block qualification for duplicates | Approved IQ protocol; completed IQ report with deviations; CIL; topology diagrams; approved change records | QA review |
-            
-              ****  
-
-              
-              
-              
-              
-              
-            
-| Full Testing | High complexity; bespoke/custom configuration; direct GxP impact; manages or stores electronic records, audit trails, electronic signatures; high patient safety / product quality risk | GxP application servers (LIMS, MES, ERP with batch records); Electronic Batch Record (EBR) servers; Chromatography Data Systems (CDS) servers; validated document management systems; audit trail database servers | Complete IQ/OQ/PQ lifecycle; full test scripting with expected results and pass/fail criteria; 100% critical parameter verification; formal deviation management; traceability matrix from URS to test results | Validation plan; approved IQ/OQ/PQ protocols; completed test reports with all deviations resolved; traceability matrix; validation summary report | Full QA approval |
-          
-        
 
         
 
@@ -4750,198 +3829,6 @@ IQ for a server is like commissioning a new cleanroom: you verify that the physi
 ### IQ Activities by Component Type / IQ
 
         
-          
-            
-                
-
-                
-
-                
-
-                
-
-                
-
-            
-| Component | IQ ActivityIQ | What to Verify | Evidence / Records / | Reference Standard |
-| --- | --- | --- | --- | --- |
-          
-          
-            
-            
-              ****  
-  
-
-              
-              
-              
-              
-            
-| Server HardwareHardware | Physical installation check | Make, model, serial number match order spec; rack mounting; cable connections; no physical damage | Hardware CIL; delivery receipt; photos | Supplier installation guide; DS |
-            
-              
-              
-              
-              
-            
-| Component verification | Memory type & amount, CPU count, disk count, RAID controller, NIC type — all match DS | Server management software report; BIOS/UEFI screenshots | Design specification; vendor datasheet |
-            
-              
-              
-              
-              
-            
-| Power-on self-test | Server completes POST without errors; no hardware alerts in management console | POST log; IPMI/iDRAC event log | Supplier installation guide |
-            
-              
-              
-              
-              
-            
-| Redundancy verification | Redundant power supplies present and both active; RAID array healthy; failover components installed per risk assessment | Server management console screenshot; RAID status report | DS (risk-based redundancy requirements) |
-            
-            
-              ****  
-  
-
-              
-              
-              ````
-              
-            
-| Operating SystemSoftware | OS version verification | OS name, version number, edition — match design specification and software CIL | System Properties screenshot; winver / uname -a output | Software CIL; DS |
-            
-              
-              
-              
-              
-            
-| Service pack / patch verification | All required service packs, hot fixes, and security patches installed per CIL | Windows Update history; patch management report | Software CIL; site security patch policy |
-            
-              
-              
-              
-              
-            
-| Parameter settings verification | All non-default and blank-field parameters set per DS (Categories 2 & 3 per Section 5.4.2.2) | Configuration screenshots; Group Policy report; registry exports | Design specification; OS hardening baseline |
-            
-              
-              
-              
-              
-            
-| Time synchronization verification | NTP server configured and reachable; time zone correctly set; NTP sync active with traceable source (UTC) | NTP status command output; system clock settings screenshot; time zone configuration | DS (time management spec); 21 CFR Part 11 |
-            
-              
-              
-              
-              
-            
-| Access control settings | Local administrator accounts, password policies, and account lockout settings match DS and site security policy | Local Security Policy screenshot; user account list | DS; site security policy; 21 CFR Part 11 |
-            
-            
-              ****  
-  
-
-              
-              
-              ``
-              
-            
-| Database (Oracle / SQL Server)Software | Version and patch level verification | Database version and patch set match software CIL | Database version query output (e.g., SELECT * FROM v$version); screenshots | Software CIL; vendor release notes |
-            
-              
-              
-              
-              
-            
-| Instance and schema verification | Database instance name, character set, tablespace configuration match DS | Database parameter query output; DBA configuration report | Design specification |
-            
-              
-              
-              
-              
-            
-| Audit trail configuration | Database-level auditing enabled per GxP requirements; audit log retention configured | Database audit settings query; audit log location and retention policy | 21 CFR Part 11; EU Annex 11; DS |
-            
-            
-              ****  
-  
-
-              
-              
-              
-              
-            
-| VMware ESXi / HypervisorSoftware | Hypervisor version verification | ESXi version, build number match software CIL; vCenter version verified | vSphere client screenshot; ESXCLI output | Software CIL; VMware compatibility matrix |
-            
-              
-              
-              
-              
-            
-| VM configuration verification | Virtual machine hardware version, vCPU, vRAM, vDisk sizes match DS for each GxP VM | VM configuration screenshots from vSphere client | Design specification per VM |
-            
-            
-              ****  
-  
-
-              
-              
-              
-              
-            
-| Network EquipmentNetwork | Physical cable testing (Layer 1) | Cable performance meets ISO/IEC 11801 or ANSI/TIA/EIA 568B standards; attenuation, refraction, connector integrity verified; EMC compliance | Cable certifier test reports (actual values); cable labels match cable list | ISO/IEC 11801; ANSI/TIA/EIA 568B; DS |
-            
-              
-              
-              
-              
-            
-| Switch / router configuration (Layer 2/3) | Switch firmware version, VLAN configuration, port assignments match network DS; firewall rules match topology design | Switch configuration file export; VLAN summary; firewall rule base export | Network design specification; topology diagram |
-            
-              
-              
-              
-              
-            
-| Network segmentation verification | GxP network segments are isolated from administrative network; routing between segments only via approved firewall rules | Connectivity test results (ping/traceroute); firewall policy screenshots; port scan results | Network topology diagram; DS; security policy |
-            
-              
-              
-              
-              
-            
-| Network management system (SNMP) | SNMP configured on all managed GxP network devices; NMS can discover and monitor all devices per topology | NMS device inventory; SNMP poll test results; alert configuration | Network DS; GEP |
-            
-            
-              ****  
-  
-
-              
-              
-              
-              
-            
-| Data Center / EnvironmentEnvironment | Temperature & humidity verification | Server room temperature and humidity within design specification limits; monitoring system operational and calibrated | Environmental monitoring system readings; calibration certificates for sensors | DS (environmental spec); ISO/IEC standards |
-            
-              
-              
-              
-              
-            
-| Power supply verification | UPS capacity meets VA/duration requirements from DS; UPS self-test passed; circuit protection (breakers, surge protection) installed per spec | UPS test log; power measurement records; electrical circuit documentation | DS; UPS manufacturer specs; local electrical codes |
-            
-              
-              
-              
-              
-            
-| Physical security verification | Access control system operational; entry log functioning; camera coverage as specified; badge/biometric access restricted to authorized personnel | Access control system test; entry log review; camera coverage map | DS; site security policy |
-          
-        
-
-      
 
     
 
@@ -5437,18 +4324,6 @@ IT qualification is like a jigsaw puzzle: URS defines what the completed picture
 
   
 
-  
-
-ISPE GAMP Good Practice Guide: IT Infrastructure Control and Compliance
-
-  
-
-Chapter 5.4–5.6 | Section 02 — Specification, Design & Installation Qualification
-
-  
-
-SterileGMP Knowledge Hub  |  Generated 2026
-
 ⇧
 
 ## Chapter 3: OQ, Maintaining Qualified State & Retirement (p48-p56)
@@ -5561,50 +4436,6 @@ OQ (Operational Qualification) for IT platforms is NOT about testing software fe
 #### OQ Test Categories for IT | IT OQ
 
                     
-                        
-                            
-                                
-                                
-                                
-                            
-| Category | What to Test | GxP Risk |
-| --- | --- | --- |
-                        
-                        
-                            
-                                
-                                
-                                
-                            
-| Connectivity | IP addresses, response times, routing paths, DNS resolution | Application unavailability |
-                            
-                                
-                                
-                                
-                            
-| Security | Default passwords changed, firewall rules (positive + negative), security settings | Data breach, unauthorized access |
-                            
-                                
-                                
-                                
-                            
-| OS Functionality | Disk volumes accessible, OS services running, time synchronization | Data integrity, audit trail accuracy |
-                            
-                                
-                                
-                                
-                            
-| Data Management | Database connectivity, query response, backup connectivity | Data loss, record inaccessibility |
-                            
-                                
-                                
-                                
-                            
-| Performance | Capacity under load, throughput, latency benchmarks | System slowdown affecting operations |
-                        
-                    
-
-                
 
                 
 
@@ -5637,94 +4468,6 @@ OQ (Operational Qualification) for IT platforms is NOT about testing software fe
 ### OQ Activity Summary Table | OQ
 
         
-            
-                
-                    
-                    
-                    
-                    
-                    
-                
-| Test Area | Test Method | Expected Evidence | Risk if Failed | GxP Relevance GxP |
-| --- | --- | --- | --- | --- |
-            
-            
-                
-                    
-                    
-                    
-                    
-                    
-                
-| IP Address Verification IP | ping / nslookup commands | All IPs respond within specified time | Applications unreachable | High — 21 CFR Part 11 system availability |
-                
-                    
-                    
-                    
-                    
-                    
-                
-| Network Routing | traceroute to critical destinations | Expected hop path documented | Data routed via insecure paths | High — data integrity |
-                
-                    
-                    
-                    
-                    
-                    
-                
-| Security Settings | Automated security scan + manual review | Default passwords changed; hardening checklist signed | Unauthorized system access | Critical — audit trail integrity |
-                
-                    
-                    
-                    
-                    
-                    
-                
-| Firewall Rules | Positive + negative traffic injection tests | Allowed traffic passes; blocked traffic denied with log | Unauthorized data transfer | Critical — data confidentiality |
-                
-                    
-                    
-                    
-                    
-                    
-                
-| Time Synchronization | Compare server clock vs. NTP source | Drift within acceptable tolerance (e.g., ±1 sec) | Audit trail timestamps inaccurate | Critical — 21 CFR Part 11 §11.10(e) |
-                
-                    
-                    
-                    
-                    
-                    
-                
-| Database Connectivity | Connection test + query execution | Connection established; query returns expected result | Data inaccessible or corrupt | High — data integrity |
-                
-                    
-                    
-                    
-                    
-                    
-                
-| Disk Volume Access | Read/write test to critical volumes | Expected permissions; data written and read correctly | Data loss on system failure | High — backup readiness |
-                
-                    
-                    
-                    
-                    
-                    
-                
-| Backup/Restore Test | Execute backup; restore to test environment | Data restored matches source; no missing records | Cannot recover critical GxP data | Critical — regulatory record retention |
-                
-                    
-                    
-                    
-                    
-                    
-                
-| Performance Baseline | Load simulation at specified concurrent users | Response time within SLA; no errors under load | System degradation during peak use | Medium — operational continuity |
-            
-        
-
-    
 
     
 
@@ -6003,112 +4746,6 @@ In order to be efficient and cost-effective, the required documented state of co
 ### Chapter 6 Operational Management — 13 Processes Overview | 13
 
                 
-                    
-                        
-                            
-                            
-                            
-                            
-                        
-| # | Process | | GxP Link GxP |
-| --- | --- | --- | --- |
-                    
-                    
-                        
-                            
-                            ****
-                            
-                            
-                        
-| 6.1 | Change Management | GxP | Re-qualification trigger |
-                        
-                            
-                            ****
-                            
-                            
-                        
-| 6.2 | Configuration Management | (CI) | Baseline & restoration |
-                        
-                            
-                            ****
-                            
-                            
-                        
-| 6.3 | Security Management | CIA | Data integrity / Part 11 |
-                        
-                            
-                            ****
-                            
-                            
-                        
-| 6.4 | Server Management | | Application uptime |
-                        
-                            
-                            ****
-                            
-                            
-                        
-| 6.5 | Client Management | | Endpoint security |
-                        
-                            
-                            ****
-                            
-                            
-                        
-| 6.6 | Network Management | | Connectivity / data flow |
-                        
-                            
-                            ****
-                            
-                            
-                        
-| 6.7 | Problem Management | | CAPA / deviation |
-                        
-                            
-                            ****
-                            
-                            
-                        
-| 6.8 | Help Desk | | Operational continuity |
-                        
-                            
-                            ****
-                            
-                            
-                        
-| 6.9 | Backup, Restore & Archiving | | Record retention / recovery |
-                        
-                            
-                            ****
-                            
-                            
-                        
-| 6.10 | Disaster Recovery | | Business continuity |
-                        
-                            
-                            ****
-                            
-                            
-                        
-| 6.11 | Performance Monitoring | SLA | Continued qualification |
-                        
-                            
-                            ****
-                            
-                            
-                        
-| 6.12 | Supplier Management | SLA | Vendor qualification |
-                        
-                            
-                            ****
-                            
-                            
-                        
-| 6.13 | Periodic Review | GxP | Revalidation / requalification |
-                    
-                
-
-                
 
                     
 
@@ -6205,56 +4842,6 @@ CIs are defined down to the lowest level at which a component can be independent
 #### Change Control Decision Tree for IT | IT
 
                     
-                        
-                            
-                                
-                                
-                                
-                            
-| Change Type | GxP Impact? | Required Action |
-| --- | --- | --- |
-                        
-                        
-                            
-                                
-                                
-                                
-                            
-| Emergency security patch () | Assess | Expedited review; document retrospectively if urgent |
-                            
-                                
-                                
-                                
-                            
-| OS version upgrade () | High | Full change control + re-qualification assessment |
-                            
-                                
-                                
-                                
-                            
-| Network cable swap () | Low | Standard work order; update CI record |
-                            
-                                
-                                
-                                
-                            
-| Firewall rule change () | High | Change control + OQ retest of affected rules |
-                            
-                                
-                                
-                                
-                            
-| New server added () | High | Full IQ/OQ for new component |
-                            
-                                
-                                
-                                
-                            
-| Antivirus update () | Low | Standard update; log in CM system |
-                        
-                    
-
-                
 
                 
 
@@ -6399,42 +4986,6 @@ Information security is achieved by implementing a suitable set of controls, whi
 #### CIA Triad — GxP Implications | CIAGxP
 
                     
-                        
-                            
-                                
-                                
-                                
-                                
-                            
-| Principle | Pharma Meaning | Violation Example | Regulatory Risk |
-| --- | --- | --- | --- |
-                        
-                        
-                            
-                                
-                                
-                                
-                                
-                            
-| Confidentiality | Only authorized personnel access batch records, formulas, patient data | Competitor accesses proprietary process data | IP loss; potential 483 if patient data involved |
-                            
-                                
-                                
-                                
-                                
-                            
-| Integrity | Batch records, analytical results, audit trails are accurate and unaltered | Audit trail modified or deleted | Critical — data integrity warning letter |
-                            
-                                
-                                
-                                
-                                
-                            
-| Availability | Systems accessible when needed for GxP operations | LIMS down during critical batch release window | Production delay; potential batch failure |
-                        
-                    
-
-                
 
                 
 
@@ -6566,50 +5117,6 @@ The Client Management Group is advised to use **computerized tools** where possi
 #### Server vs. Client Management — Key Differences |
 
                     
-                        
-                            
-                                
-                                
-                                
-                            
-| Aspect | Server Management | Client Management |
-| --- | --- | --- |
-                        
-                        
-                            
-                                
-                                
-                                
-                            
-| Volume | Few, high-criticality systems | Many (10s–100s) diverse endpoints |
-                            
-                                
-                                
-                                
-                            
-| Change frequency | Controlled, less frequent | Frequent (patches, updates) |
-                            
-                                
-                                
-                                
-                            
-| Management approach | Manual + automated monitoring | Central push tools (SCCM, Intune) |
-                            
-                                
-                                
-                                
-                            
-| GxP impact | Typically high (hosts applications) | Variable (depends on use) |
-                            
-                                
-                                
-                                
-                            
-| Re-qual trigger | OS/hardware changes → assess | Standard updates → usually low |
-                        
-                    
-
-                
 
                 
 
@@ -6701,44 +5208,6 @@ Problem Management should **trend problem reports** and strive to counteract esc
 #### Problem vs. Incident vs. Change | //
 
                     
-                        
-                            
-                                
-                                
-                                
-                            
-| Term | Definition | GxP Action |
-| --- | --- | --- |
-                        
-                        
-                            
-                                ****
-                                
-                                
-                            
-| Incident | Service disruption or degradation (symptom) | Log; restore service; open Problem if recurring |
-                            
-                                ****
-                                
-                                
-                            
-| Problem | Unknown root cause of one or more incidents | RCA investigation; workaround if needed |
-                            
-                                ****
-                                
-                                
-                            
-| Known Error | Problem with identified root cause + workaround | Document; plan permanent fix via Change Control |
-                            
-                                ****
-                                
-                                
-                            
-| Change | Permanent fix or improvement to the system | Full change control process; re-qual assessment |
-                        
-                    
-
-                
 
                 
 
@@ -6837,62 +5306,6 @@ When a request to perform a restoration is received, consideration should be giv
 #### Backup Strategy — Risk-Based Decision Matrix |
 
                     
-                        
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| System | GxP Level | Backup Type | Frequency | Retention |
-| --- | --- | --- | --- | --- |
-                        
-                        
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| LIMS (batch results) | Critical | Full + incremental | Daily + hourly | Batch record retention period |
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| MES (batch execution) | Critical | Full + incremental | Daily + transaction log | ≥5 years or shelf-life +1 yr |
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| Email system | Low | Full | Weekly | Business policy (e.g., 3 years) |
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| Network config backup | Medium | Config snapshot | After each change | Until next change + 1 version |
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| QMS documents | Critical | Full | Daily | Regulatory requirement (varies by market) |
-                        
-                    
-
-                
 
                 
 
@@ -6926,58 +5339,6 @@ This is a data integrity issue that inspectors probe: *Who can request a restore
                 
 
                 
-
-                    
-
-#### Backup vs. Archiving — The Difference | vs
-
-                    
-                        
-                            
-                                
-                                
-                                
-                            
-| Aspect | Backup | Archiving |
-| --- | --- | --- |
-                        
-                        
-                            
-                                
-                                
-                                
-                            
-| Purpose | Recovery from failure | Long-term retention |
-                            
-                                
-                                
-                                
-                            
-| Frequency | Daily/hourly | On defined schedule (e.g., batch close) |
-                            
-                                
-                                
-                                
-                            
-| Accessibility | Fast retrieval | May be offline/nearline |
-                            
-                                
-                                
-                                
-                            
-| Data refresh | Overwrites old backups | Immutable; media refresh required |
-                            
-                                
-                                
-                                
-                            
-| GxP regulation | Operational continuity | Regulatory record retention |
-                        
-                    
-
-                
-
-            
 
         
 
@@ -7058,56 +5419,6 @@ A baseline should be created at the time of installation (or during the Performa
                     
 
 #### CDMO Disaster Recovery Planning Framework | CDMO
-
-                    
-                        
-                            
-                                
-                                
-                                
-                                
-                            
-| System | RTO | RPO | DR Strategy |
-| --- | --- | --- | --- |
-                        
-                        
-                            
-                                
-                                
-                                
-                                
-                            
-| LIMS () | < 4 hours | < 1 hour | Hot standby + replicated DB |
-                            
-                                
-                                
-                                
-                                
-                            
-| MES () | < 2 hours | < 30 min | Hot standby; fallback to paper BPR |
-                            
-                                
-                                
-                                
-                                
-                            
-| QMS () | < 8 hours | < 4 hours | Cold standby + daily backup |
-                            
-                                
-                                
-                                
-                                
-                            
-| Environmental Monitoring | < 1 hour | Real-time | Redundant servers + local loggers |
-                            
-                                
-                                
-                                
-                                
-                            
-| IT Infrastructure (AD, DNS) | < 1 hour | < 2 hours | Redundant domain controllers |
-                        
-                    
 
                     
 
@@ -7245,44 +5556,6 @@ Periodic Reviews should establish that procedures meeting current applicable **G
 #### IT Supplier Qualification Framework | IT
 
                     
-                        
-                            
-                                
-                                
-                                
-                            
-| Supplier Type | Qualification Requirement | SLA Key Terms SLA |
-| --- | --- | --- |
-                        
-                        
-                            
-                                
-                                
-                                
-                            
-| Cloud service provider (AWS, Azure) | Security audit, compliance certifications (ISO 27001, SOC 2) | Uptime ≥99.9%, data residency, audit access rights |
-                            
-                                
-                                
-                                
-                            
-| Hardware vendor (servers, switches) | Approved vendor list; delivery lead time guarantee | Stock availability of qualified building blocks |
-                            
-                                
-                                
-                                
-                            
-| Managed IT service provider | Supplier audit; quality agreement | Incident response time, change notification requirements |
-                            
-                                
-                                
-                                
-                            
-| Software vendor (OS, DB) | Support lifecycle commitment; patch delivery | Security patch SLA; end-of-life notice period |
-                        
-                    
-
-                
 
                 
 
@@ -7488,119 +5761,12 @@ In many cases, it may be appropriate to apply **statistical methods** to obtain 
 ### Data Migration Assurance Methods |
 
                 
-                    
-                        
-                            
-                            
-                            
-                            
-                        
-| Data Volume | GxP Criticality | Recommended Method | Example Tool |
-| --- | --- | --- | --- |
-                    
-                    
-                        
-                            
-                            
-                            
-                            
-                        
-| Small (<10,000 records) | Critical | 100% record-by-record comparison | Database comparison script |
-                        
-                            
-                            
-                            
-                            
-                        
-| Medium (10K–1M records) | Critical | Statistical sampling + checksum verification | Automated migration validation tool |
-                        
-                            
-                            
-                            
-                            
-                        
-| Large (>1M records) | Critical | Automated full-data integrity check (hash/checksum) | Supplier-provided migration validator |
-                        
-                            
-                            
-                            
-                            
-                        
-| Any volume | Medium | Representative sample (e.g., 10% or risk-stratified) | Manual review + automated count check |
-                        
-                            
-                            
-                            
-                            
-                        
-| Archival only (no active use) | Low | Format verification + accessibility test | Document retrieval test |
-                    
-                
-
-            
 
             
 
                 
 
 ### Regulatory Record Retention Requirements |
-
-                
-                    
-                        
-                            
-                            
-                            
-                            
-                        
-| Record Type | Regulation | Retention Period | Notes |
-| --- | --- | --- | --- |
-                    
-                    
-                        
-                            
-                            
-                            
-                            
-                        
-| Batch production records | 21 CFR 211.180 / EU GMP | ≥1 year past expiry or ≥3 years post-release | Longer of the two applies |
-                        
-                            
-                            
-                            
-                            
-                        
-| Validation/qualification records | 21 CFR 211 / EU GMP Part I | Life of equipment + observation period | Typically ≥5 years after system retirement |
-                        
-                            
-                            
-                            
-                            
-                        
-| Audit trails | 21 CFR Part 11 / Annex 11 | Same as the records they protect | Must remain readable throughout |
-                        
-                            
-                            
-                            
-                            
-                        
-| Clinical trial data | ICH E6(R2) / 21 CFR 312 | 15 years post-trial (or per protocol) | Archive must remain accessible |
-                        
-                            
-                            
-                            
-                            
-                        
-| Change control records | EU GMP Part I | Life of the changed item + defined period | Links to qualification records |
-                        
-                            
-                            
-                            
-                            
-                        
-| Computer system validation docs | Annex 11 §4.8 | Throughout system life + post-retirement | Exact period per company policy / HA requirement |
-                    
-                
 
                 
 
@@ -7626,56 +5792,6 @@ When retiring a server that hosted GxP data, simply deleting files is not suffic
 ### Common Retirement Triggers |
 
         
-            
-                
-                    
-                    
-                    
-                    
-                
-| Trigger | Example | Key Risk at Retirement | Special Consideration |
-| --- | --- | --- | --- |
-            
-            
-                
-                    
-                    
-                    
-                    
-                
-| Application upgrade requires new platform | LIMS v8 requires Windows Server 2022 (current: 2012) | Data migration completeness | Validate new platform before migrating data |
-                
-                    
-                    
-                    
-                    
-                
-| Supplier end-of-support | OS vendor stops security patches | Security vulnerability if kept in service | Plan replacement before EOL date; avoid operating on unsupported OS |
-                
-                    
-                    
-                    
-                    
-                
-| Hardware failure beyond repair | RAID failure; no spare parts available | Data loss during unplanned retirement | DR plan should pre-authorize emergency replacement procedure |
-                
-                    
-                    
-                    
-                    
-                
-| Consolidation / cloud migration / | Multiple on-premise servers migrated to cloud | Data integrity across format/platform change | Cloud platform must itself be qualified; assess new security perimeter |
-                
-                    
-                    
-                    
-                    
-                
-| Regulatory requirement change | New data integrity expectations require audit trail upgrade | Compliance gap during transition | Phased retirement with parallel running period |
-            
-        
-
-    
 
     
 

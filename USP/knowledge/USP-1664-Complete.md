@@ -57,38 +57,3 @@ Designing an individual leachables assessment is a process that strikes a balanc
         
 
 Management of leachables is important to pharmaceutical and biotechnology/biologic product manufacturers and regulatory authorities because certain leachables above specific concentrations can present safety concerns for patients and/or compatibility issues for drug product formulations. During the 1980s, the U.S. FDA began to formally address leachables in drug products after findings of patient sensitivity induced by leachables and other potential safety concerns. Since then, management of both extractables and leachables for packaging systems and final drug products has become an important part of pharmaceutical development and regulatory submissions.
-
-        
-            Table 1. Modified FDA/CDER/CBER Risk-Based Approach to Consideration of Leachables
-            
-                
-                    
-                    
-                    
-                    
-                
-| Degree of Concern (Route) | High Likelihood of Interaction | Medium Likelihood | Low Likelihood |
-| --- | --- | --- | --- |
-            
-            
-                
-                    ****
-                    
-                    
-                    
-                
-| Highest | Inhalation Aerosols & Sprays | Injections & Injectable Suspensions; Inhalation Solutions | Sterile Powders; Inhalation Powders |
-                
-                    ****
-                    
-                    
-                    
-                
-| High | Transdermal Ointments & Patches | Ophthalmic Solutions; Nasal Aerosols & Sprays | — |
-                
-                    ****
-                    
-                    
-                    
-                
-| Low | Topical Solutions; Oral Solutions | — | Oral Tablets & Capsules; Topical Powders |

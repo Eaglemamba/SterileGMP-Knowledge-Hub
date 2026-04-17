@@ -112,17 +112,6 @@ PDA Points to Consider No. 9 (2024): Lessons Learned from the COVID-19 Pandemic 
 
     
 
-    
-
-PDA Points to Consider No. 9 (2024): Lessons Learned from the COVID-19 Pandemic
-
-    
-
-Section III: Quality (Pages 23–31) | Bilingual Educational Material
-
-    
-
-
 ⇧
 
 ## Section 4a: IV. Regulatory (Part 1) (p32-p43)
@@ -243,16 +232,5 @@ PDA PtC-9 Section V & VI: Supply Chain & Vendor Resources
         
 
     
-
-    
-
-PDA Points to Consider No. 9 (2024): Lessons Learned from the COVID-19 Pandemic
-
-    
-
-Section V: Supply Chain (p49–p65) & Section VI: Vendor Resources
-
-    
-
 
 ⇧

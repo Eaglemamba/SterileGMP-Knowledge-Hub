@@ -29,30 +29,6 @@ Specifically, leaks of concern for sterile product–packages include the follow
         
 
         
-            
-                
-                
-            
-| Leaks of Concern | Product Quality Risks Posed by Leaks |
-| --- | --- |
-            
-                
-                
-            
-| Capable of allowing entry of microorganisms | Failure of product sterility quality attribute |
-            
-                
-                
-            
-| Capable of allowing escape of the product dosage form or allowing entry of external liquid or solid matter | Failure of relevant product physicochemical quality attributes |
-            
-                
-                
-            
-| Capable of allowing change in gas headspace content. For example, loss of headspace inert gases (e.g., nitrogen), loss of headspace vacuum, and/or entry of gases (e.g., oxygen, water vapor, air). | Failure of relevant product physicochemical quality attributes and/or hindrance of product access by the end-user |
-        
-
-        
 
         
 

@@ -4,692 +4,226 @@
 
 # Chapter 1: Introduction /
 
-    
-
 ISPE Baseline Guide Volume 3 (3rd Edition, 2018): Sterile Product Manufacturing Facilities
-
-    
 
 ISPE Baseline Guide Vol. 3 (3rd Ed.) | p9 – p16
 
-    
-    
-
-        
-
-## 1.1 Background
-
-    
-
-        
-
-            
+## **1.1 Background 1.1 **
 
 ### 1.1 Background
 
-            
-
 The design, construction, commissioning, and qualification of pharmaceutical facilities present significant challenges to manufacturers, engineering professionals, and equipment suppliers. These facilities are required to meet GMP regulations while remaining in compliance with other governing codes, laws, and regulations.
-
-            
 
 Lack of understanding of regulatory requirements may cause investment and operational costs to escalate. This Guide is intended to offer a consistent interpretation, while allowing a flexible and innovative approach to facility design, construction, commissioning, and qualification.
 
-            
-
 This Baseline Guide takes into account the FDA Pharmaceutical GMPs for the 21st Century – A Risk-Based Approach and the FDA September 2004 Guidance for Industry: Sterile Drug Products Produced by Aseptic Processing – Current Good Manufacturing Practice (which supersedes the 1987 Guideline on Sterile Drug Products Produced by Aseptic Processing). It also refers to Annex 1 of the European Union GMPs, which was last updated in November 2008. Another significant change since the original ISPE Sterile Guide was published, is that ISO 14644-1 has replaced US Federal Standard 209E Airborne Particulate Cleanliness Classes in Cleanrooms and Clean Zones. The reader also should be aware that there are other standards and guidance available in this subject area, such as ISO 13408-1.
-
-            
 
 This Guide is based on US and European Union (EU) requirements. This third edition has harmonized these requirements as much as possible, based on the experience of the authors. For further information regarding changes associated with the third edition, see Section 1.5.
 
-        
-
-        
-
-            
-
 ### 
 
-            
-
-                
-
-## 1.2 Scope and Purpose of This Guide
-
-    
-
-        
-
-            
+## **1.2 Scope and Purpose of This Guide 1.2 **
 
 ### 1.2 Scope and Purpose of This Guide
 
-            
-
 This Guide may be used by industry for the design, construction, commissioning, and qualification of sterile product manufacturing facilities. It is neither a standard nor a GMP regulation. It is not intended to replace governing laws, codes, guidelines, standards, or regulations that apply to facilities of this type. The use of this document for new or existing facilities is at the discretion of the facility owner or operator.
-
-            
 
 The purpose of this Guide is to focus on facility engineering issues and how to provide cost effective facilities which make best use of available modern technologies to ensure that products of the highest quality are consistently manufactured. Where non-engineering issues are covered (e.g., microbiological topics, operational issues unrelated to the facility), the information is included to show engineers the importance of such topics and the impact they have on facility design. Therefore, these non-engineering topics are not covered comprehensively. Specific advice from Quality Assurance (QA) should be sought where additional information is required.
 
-            
-
 This Guide covers facilities for aseptic processing and terminal sterilization of Active Pharmaceutical Ingredients (APIs) and formulated products, generally for parenteral use. It is applicable to formulations that use APIs devised from either conventional chemistry or biopharmaceutical processing.
-
-            
 
 This Guide is focused on commercial scale medicinal sterile production. It does not cover medical devices. It does cover the facility aspects of sterile APIs but it does not cover the upstream process controls and equipment aspects of sterile APIs, details of which are covered in ISPE Baseline Guide: Active Pharmaceutical Ingredients (Second Edition).
 
-            
-
-                **Note:** Many aspects of the guidance contained in this document (e.g., environmental and engineering matters) may be applicable to the manufacture of clinical supplies, Investigational Medicinal Products (IMP), sterile medical devices, and sterile drug/device combinations, as well as veterinary injectable products. Specific "specialty" sterile products (e.g., radiopharmaceuticals) are not covered in this Guide and may require additional controls, safeguards and regulations.
-            
-
+**Note:** Many aspects of the guidance contained in this document (e.g., environmental and engineering matters) may be applicable to the manufacture of clinical supplies, Investigational Medicinal Products (IMP), sterile medical devices, and sterile drug/device combinations, as well as veterinary injectable products. Specific "specialty" sterile products (e.g., radiopharmaceuticals) are not covered in this Guide and may require additional controls, safeguards and regulations.
             
 
 It is a principle of US and European GMP that when sterile APIs are manufactured, and the sterility is carried forward into the dosage form without change, then the dosage form GMP apply to both the sterile API manufacture and dosage form formulation.
 
-            
-
 This Baseline Guide takes into account the similar requirements of the GMPs of regulatory agencies from the US, EU, and those expressed in the Pharmaceutical Inspection Convention and Pharmaceutical Inspection Co-operation Scheme (PIC/S) and World Health Organization (WHO).
-
-            
 
 It is also recognized that some International Conference on Harmonisation (ICH) documents, which are applicable to products that may supply the US, EU, or Japan, should be considered for sterile product facilities. Since the original Sterile Manufacturing Facilities Baseline Guide was published, several papers and references have been produced, such as ICH Q8, ICH Q9, and ICH Q10.
 
-            
-
 This is the third edition of ISPE Baseline Guide: Sterile Product Manufacturing Facilities, which was originally issued in January 1999. It has been updated to reflect changes in regulations and industry practice, but it also takes into account that over the past few years several new ISPE Baseline Guides have been issued or re-issued.
-
-        
-
-        
-
-            
 
 ### 
 
-            
-
-                
-
-## 1.3 Key Features of This Guide
-
-    
-
-        
-
-            
+## **1.3 Key Features of This Guide 1.3 **
 
 ### 1.3 Key Features of This Guide
 
-            
-
 The following key principles are integral to this Guide:
 
-            
-
-                
 - The need to understand product and process requirements
 
-                
 - Use of risk-based approaches
 
-                
 - Concept of Good Engineering Practice (GEP)
 
-                
 - Role of terminal sterilization and aseptic processing as mechanisms for producing sterile products
 
-                
 - Protection of the product and the importance of understanding the most critical process steps
 
-                
 - Management of flow and movement of personnel and materials
 
-                
 - Importance of an integrated facility design approach
 
-                
 - Understanding the principles of "open processing" and "closed processing", and how they affect the specification of the surrounding controlled environment
 
-                
 - Role of barrier and isolator technology
 
-                
 - Role of automation and robotics
 
-                
 - Use of consistent HVAC terminology
 
-                
 - Principles and understanding of "in operation" and "at rest" conditions for classified environments
 
-                
 - Selection of appropriate materials and finishes
 
-                
 - Importance of Environmental, Health and Safety (EH&S) issues as part of the design and operation
 
-                
 - Reference to sterile APIs and link to ISPE Baseline Guide: Active Pharmaceutical Ingredients (Second Edition)
-
-            
-
-            
 
 Product and process requirements normally drive the fundamental layout of a sterile product manufacturing facility. The Critical Quality Attributes (CQA) of the product should be understood. Significant sources of variability, which are Critical Process Parameters (CPP), can be determined from the CQA. For example, terminal sterilization is recommended wherever it can be applied; but where the product is affected significantly by this process step, product requirements may take precedence and other controlled methods of manufacturing may be used. This Guide seeks to make distinctions, where relevant, between aseptically processed products and those that are terminally sterilized.
 
-            
-
 The processing department (normally made up of the support areas and the processing core area) is the area where the product is formulated, filled into containers (usually vials, ampoules, pre-filled syringes, flexible bags, etc.), and the containers are sealed and secured. Protection of the product and container/closures from bio-contamination during these operations is considered critical.
-
-            
 
 Personnel are normally the greatest potential source of particulate and microbiological challenge to the process; therefore, any interface between personnel and the environment where sterile materials, products, components, and contact surfaces are exposed should be minimized. Consideration of all features should be taken into account, to produce an integrated facility design and to achieve a logical separation of clean and dirty operations. Available environmental control technologies should be used where possible, including:
 
-            
-
-                
 - Restricted Access Barrier Systems (RABS)
 
-                
 - Isolators
 
-                
 - Blow, Fill, and Seal (BFS) technology
 
-                
 - Personnel gowning
-
-            
-
-            
 
 The use of so-called conventional cleanroom technology may be acceptable for the processing of terminally sterilized products and APIs and products where there are technical issues which prevent the use of barrier technology for aseptic processing. Such choices have a fundamental effect on the design and operation of a facility, and should be considered at an early stage.
 
-            
-
 Documents that provide information on sterile products manufacturing facilities may use different terminology, particularly for environmental classifications (e.g., Class 100, ISO 5, or Grade A). This third edition of the Guide is intended to harmonize environmental classifications to help manufacturers to comply with regulations.
-
-            
 
 Facilities should be designed to ensure that the "in operation" condition during manufacture is met. Engineers and designers should also consider ensuring that the "at rest" condition is met. Although the principles behind the US and EU air classification terminologies are similar (particularly for the "in operation" condition), there is no commonly agreed global nomenclature to cover both the "at rest" and "in operation" conditions.
 
-            
-
 This Guide provides a tabular comparison of these various standards and guides and, in order to achieve clarity in the text, uses a single nomenclature to define the different process areas.
-
-            
 
 Fundamental requirements for facilities used for the manufacture of sterile products are the control principles offered by HVAC systems. In particular, engineers should understand that the environmental performance during "in operation" conditions is the time when the product and sterile package components are most likely to be exposed. The HVAC design and area classifications should ultimately relate to this condition.
 
-            
-
 Engineers and designers should understand the sources of particulate and bio-contamination, and the various ways that air quality can be maintained during manufacturing, such as:
 
-            
-
-                
 - Air filtration
 
-                
 - Airflow uniformity control and direction
 
-                
 - Differential cleanliness cascades
 
-                
 - Room pressure differentials
 
-                
 - Effective bio-contamination dilution
-
-            
-
-            
 
 Engineers and designers should understand the importance of avoiding cross-contamination, which is a key factor that can influence HVAC design.
 
-            
-
 This Guide also is applicable to the selection of materials and finishes. A lifecycle approach should be taken when selecting materials to ensure a balance between the initial cost and expected life.
-
-            
 
 From a product point of view, it is important to understand the following concepts of Pharmaceutical Development (as embodied in ICH Q8, ICH Q9, and ICH Q10) and how they relate to product quality:
 
-            
-
-                
 - Quality by Design (QbD)
 
-                
 - Quality Risk Management
 
-                
 - Pharmaceutical Quality Systems
-
-            
-
-            
 
 This Guide refers to these guidelines, as appropriate, to the design of facilities. It also supports taking a risk-based approach as this helps to assure the final facility meets the often demanding product requirements.
 
-            
-
 GEP should be applied to a facility to ensure that the most effective and efficient design solution is found, consistent with meeting manufacturing and quality needs.
-
-        
-
-        
-
-            
 
 ### 
 
-            
-
-                
-
-## 1.4 Terminology Used in This Guide
-
-    
-
-        
-
-            
+## **1.4 Terminology Used in This Guide 1.4 **
 
 ### 1.4 Terminology Used in This Guide
 
-            
-
 The terminology for environmental classification levels, used throughout this Guide, is described in Chapter 2.
-
-            
 
 The conventions for referring to Good Manufacturing Practices differ in various regulatory communities. In the US, the acronym cGMP is used, while in Europe, Japan, and other areas the acronym is simplified to GMP. The "c" in cGMP stands for "current." For purposes of simplicity and harmonization, this Guide uses GMP. Where this term applies to US facilities or regulations, it is understood to mean cGMP.
 
-        
-
-        
-
-            
-
 ### 
-
-            
-
-                
 
 #### GMP vs cGMP —
 
-                
-
-                
-
-                
-
-            
-
-            
-
-                
-
 #### 
 
-                
-
-                
-                    
-                        
-                        
-                        
-                    
-| (FS 209E) | ISO 14644 () | EU GMP (GMP ) |
-| --- | --- | --- |
-                    
-                        
-                        
-                        
-                    
-| Class 100 | ISO 5 | Grade A |
-                    
-                        
-                        
-                        
-                    
-| Class 10,000 | ISO 7 | Grade B |
-                    
-                        
-                        
-                        
-                    
-| Class 100,000 | ISO 8 | Grade C / D |
-                
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-    
-    
-
-## 1.5 Changes Since the Previous Edition of This Guide
-
-    
-
-        
-
-            
+## **1.5 Changes Since the Previous Edition of This Guide 1.5 **
 
 ### 1.5 Changes Since the Previous Edition of This Guide
 
-            
-
 There are numerous changes within this Guide. An overview of the major changes for the third edition of this Guide is listed below:
 
-            
-
-                
 - A global facility design approach is now the basis for this Guide, with examples of RABS, full isolator, and BFS recommended layouts (see Chapter 4).
 
-                
 - Area classifications have been normalized and harmonized to show the alignment of FDA and EU requirements. This mirrors the approach used in ISPE Baseline Guide: Biopharmaceutical Manufacturing Facilities (Second Edition):
                     
 
-                        
     - ISPE classification grades have been deleted and replaced with harmonized dual designations (e.g., Grade 5 has been replaced with ISO 5/Grade A).
 
-                        
     - Area classification terms "Controlled Not Classified" (CNC) and "Unclassified" (UC) are no longer defined in the harmonized designations (Table 2.2). These terms are not part of the regulations, but are designations commonly used in the industry to differentiate respective areas (see Chapter 2).
 
-                    
-
-                
-
-                
 - Local Protection/Grade A Air Supply (LP/GAAS) for areas within lower classified areas has been added to Chapters 2 and 5.
 
-                
 - Practical guidelines and practices for particulate monitoring have been added to this Guide.
 
-            
-
-            
-
-                **Note:** Users of this Guide should consider that in some circumstances, cost or single market focus could depart from the harmonized room classification design.
-            
-
-        
-
-        
-
+**Note:** Users of this Guide should consider that in some circumstances, cost or single market focus could depart from the harmonized room classification design.
             
 
 ### 
 
-            
-
-                
-
 #### 
 
-                
-
-                    
-
-                    
-
-                    
-
-                    
-
-                
-
-            
-
-            
-
-                
-
 #### 
-
-                
-
-            
-
-            
-
-                
 
 #### LP/GAAS
 
-                
-
-                
-
-                
-
-                    
-
-                    
-
-                    
-
-                
-
-            
-
-            
-
-                
-
-## 1.6 Considerations for Legacy Facilities
-
-    
-
-        
-
-            
+## **1.6 Considerations for Legacy Facilities 1.6 **
 
 ### 1.6 Considerations for Legacy Facilities
 
-            
-
 While the premise and focus of this Guide is directed at best practices for designing and constructing new facilities, the Guide can be useful in the renovation of older facilities to reduce the risk of non-sterility in order to comply with regulations.
-
-            
 
 Facility renovations and equipment upgrades/replacements can be a challenge to validated legacy systems. This Guide should serve as reference for updating facility and equipment to comply with these regulations.
 
-            
-
 For further insight into upgrading and replacing systems, see ISPE GAMP Good Practice Guide: The Validation of Legacy Systems.
 
-        
-
-        
-
-            
-
 ### 
-
-            
-
-                
 
 #### Legacy Facility
 
-                
-
-                
-
-                    
-
-                    
-
-                    
-
-                
-
-            
-
-            
-
-                
-
 #### 
 
-                
-
-            
-
-            
-
-                
-
 #### 
-
-                
-
-                
-
-                    
-
-                    
-
-                    
-
-                    
-
-                
-
-            
-
-            
-
-                
 
 ## Section Summary /
 
-                
-
 Chapter 1: Introduction — Key Takeaways
-
-            
-
-        
-
-        
-
-            
-
-                
-
-                    
 
 ### Key Takeaways
 
-                    
-
-                        
 - **Positioning:** ISPE Baseline Guide Vol. 3 is an engineering-focused reference for sterile product manufacturing facility design — not a regulation, but an industry-recognized best practice document.
 
-                        
 - **Scope:** Covers both aseptic processing and terminal sterilization facilities for APIs and formulated products (parenteral use), applicable to chemical and biopharmaceutical entities.
 
-                        
 - **Design Philosophy:** Product CQA drives CPP, which drives facility design specifications. Quality by Design (QbD) and risk-based approaches are foundational principles.
 
-                        
 - **Personnel = #1 Contamination Source:** This drives the adoption of barrier technologies (RABS, Isolators, BFS) to minimize human-product interface.
 
-                        
 - **Harmonization:** The 3rd edition unifies US and EU environmental classification nomenclature using dual designations (e.g., ISO 5/Grade A).
 
-                        
 - **Key Regulatory References:** FDA Aseptic Guidance (2004), EU GMP Annex 1, ISO 14644, ISO 13408, ICH Q8/Q9/Q10.
 
-                        
 - **Legacy Facilities:** The Guide is applicable to both new builds and renovations of existing facilities.
-
-                    
-
-                
-
-                
-
-                    
 
 ### 
 
-                    
-
-                        
-
 #### 
 
-                        
-
-                            
-
-                            
-
-                            
-
-                            
-
-                            
-
-                        
-
-                    
-
-                    
-
-                        
-
 #### 
-
-                        
-
-                            
-
-                            
-
-                            
-
-                        
-
-                    
-
-                
-
-            
-
-        
-
-    
-
-    
-
-ISPE Baseline Guide Volume 3 (3rd Edition, 2018): Sterile Product Manufacturing Facilities
-
-    
-
-Chapter 1: Introduction | Bilingual Educational Material
-
-    
-
-For educational purposes only. Refer to the original ISPE publication for official guidance.
 
 ↑
 
@@ -1051,6 +585,16 @@ Critical process steps should be defined for all product types. For aseptically 
 
             
 
+#### 
+
+            
+
+            
+
+        
+
+        
+
 ### 
 
         
@@ -1377,6 +921,50 @@ Avoidance of cross-contamination to prevent carryover of one product into anothe
 
             
 
+#### 
+
+            
+
+            
+
+                
+
+                
+
+                
+
+            
+
+            
+
+        
+
+        
+
+            
+
+#### 
+
+            
+
+                
+
+                
+
+                
+
+                
+
+                
+
+            
+
+        
+
+        
+
+            
+
 ## Table 2.1: Sources of Contamination and Mitigation / 2.1
 
     
@@ -1386,42 +974,6 @@ Avoidance of cross-contamination to prevent carryover of one product into anothe
 Original Table (ISPE Vol. 3)
 
         
-            
-                
-                    
-                    
-                    
-                    
-                
-| Type | Example | Derived From | Mitigation Measures |
-| --- | --- | --- | --- |
-            
-            
-                
-                    ****
-                    
-                    
-                    
-                
-| Non-viable (particulates) | Particulates, foreign matter, clothing fiber | Equipment, operators, HVAC, water, compressed gases | Sanitary design, gowning, automation/robotics, barrier technology, HEPA filtration, process filters |
-                
-                    ****
-                    
-                    
-                    
-                
-| Viable (microorganisms) | Bacteria, yeast, molds | People, water, air, equipment, packaging, facility surfaces | Automation, gowning, water purification, RABS/isolators, cleaning/sanitization, sterile filtration (≥0.2 μm) |
-                
-                    ****
-                    
-                    
-                    
-                
-| Endotoxins | Cell wall debris from organisms | Wet equipment, containers, water | Drying processes, hot caustic soda, dry heat (>250°C), sanitary design, WFI systems |
-            
-        
-
-    
 
     
 
@@ -1526,18 +1078,6 @@ Key Takeaways
 
     
 
-    
-
-ISPE Baseline Guide Vol. 3 (3rd Ed. 2018): Sterile Product Manufacturing Facilities
-
-    
-
-Chapter 2a: Regulatory, Design Concepts & Manufacturing Philosophies (2.1–2.5) | p17 – p26
-
-    
-
-Educational Material — For learning purposes only
-
 ▲
 
 ## Chapter 1b: 2b. Classification & Integration (2.6–2.10) (p27-p36)
@@ -1635,74 +1175,6 @@ Table 2.2 shows harmonized designations and their correlation with the Class/Gra
 ### Table 2.2: Harmonized Designations (Simplified) /
 
             
-                
-                    
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                    
-| ISPE Designation | EU/PIC/S Grade | ISO Class | Old US (particles/ft³) | ≥0.5 µm (In Op.) /m³ | ≥5.0 µm (In Op.) /m³ | Microbial CFU/m³ |
-| --- | --- | --- | --- | --- | --- | --- |
-                
-                
-                    
-                        ****
-                        
-                        
-                        
-                        
-                        
-                        
-                    
-| ISO 5 / Grade A | Grade A | ISO 5 | Class 100 | 3,520 | 20 | < 1 |
-                    
-                        ****
-                        
-                        
-                        
-                        
-                        
-                        
-                    
-| ISO 7 / Grade B | Grade B | ISO 7 | Class 10,000 | 352,000 | 2,900 | 10 |
-                    
-                        ****
-                        
-                        
-                        
-                        
-                        
-                        
-                    
-| ISO 8 / Grade C | Grade C | ISO 8 | Class 100,000 | 3,520,000 | 29,000 | 100 |
-                    
-                        ****
-                        
-                        
-                        
-                        
-                        
-                        
-                    
-| Grade D | Grade D | ISO 8 (at rest) | N/A | Not defined (in op.) | Not defined (in op.) | 200 |
-                    
-                        ****
-                        
-                        
-                        
-                        
-                        
-                        
-                    
-| CNC | N/A | N/A | N/A | Not defined | Not defined | Not defined |
-                
-            
-
-            
 
                 
 
@@ -1788,116 +1260,6 @@ Facilities designed for potent or biological products (viral or spore forming) m
             
 
 ### Table 2.3: Baseline Environmental Classification for Key Process Steps (Simplified) /
-
-            
-                
-                    
-                        
-                        
-                        
-                    
-| Process Step | Aseptically Processed Products | Terminally Sterilized Products |
-| --- | --- | --- |
-                    
-                        
-                        
-                        
-                        
-                        
-                    
-|  | Background | Product Exposure | Background | Product Exposure |
-                
-                
-                    
-                        
-                        
-                        
-                        
-                        
-                    
-| Non-sterile raw material dispensing | ISO 8/Grade C | LP/GAAS | ISO 8/Grade C | LP/GAAS |
-                    
-                        
-                        
-                        
-                        
-                        
-                    
-| Sterile raw material dispensing (open) | ISO 7/Grade B | ISO 5/Grade A | N/A | N/A |
-                    
-                        
-                        
-                        
-                        
-                        
-                    
-| Sterile raw material dispensing (closed/isolator) | ISO 8/Grade C | ISO 5/Grade A (within isolator) | N/A | N/A |
-                    
-                        
-                        
-                        
-                        
-                        
-                    
-| Non-sterile compounding & filtration | ISO 8/Grade C | LP/GAAS | ISO 8/Grade C | LP/GAAS |
-                    
-                        
-                        
-                        
-                        
-                        
-                    
-| Filling & stoppering (open aseptic) | ISO 7/Grade B | ISO 5/Grade A | ISO 8/Grade C | LP/GAAS |
-                    
-                        
-                        
-                        
-                        
-                        
-                    
-| Filling & stoppering (closed/isolator) | ISO 8/Grade C | ISO 5/Grade A (within isolator) | N/A | N/A |
-                    
-                        
-                        
-                        
-                        
-                        
-                    
-| Lyophilizer transfer (open) | ISO 7/Grade B | ISO 5/Grade A | N/A | N/A |
-                    
-                        
-                        
-                        
-                        
-                        
-                    
-| Component sterilization — unloading | ISO 7/Grade B | ISO 5/Grade A (or wrapped) | ISO 8/Grade C | — |
-                    
-                        
-                        
-                        
-                        
-                        
-                    
-| Capping & crimping | Grade D | LP/GAAS (Grade A) | Grade D | LP/GAAS |
-                    
-                        
-                        
-                        
-                        
-                        
-                    
-| Terminal sterilization | N/A | N/A | CNC / Grade D | N/A |
-                    
-                        
-                        
-                        
-                        
-                        
-                    
-| Inspection | CNC / Grade D | N/A | CNC / Grade D | N/A |
-                
-            
 
             
 
@@ -2148,51 +1510,6 @@ Isolators are decontaminated internally, typically using VHP or similar. No acce
 
 #### 
 
-                        
-
-                    
-
-                    
-
-                        
-
-#### RABS vs
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| | RABS | |
-| --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| | ISO 5/Grade A | ISO 5/Grade A |
-                                
-                                    
-                                    
-                                    
-                                
-| | ISO 7/Grade B | ISO 8/Grade C |
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-| | / | VHP |
-                            
                         
 
                     
@@ -2685,18 +2002,6 @@ Key takeaways from Sections 2.6–2.10
         
 
     
-
-    
-
-ISPE Baseline Guide Vol. 3 (3rd Ed. 2018): Sterile Product Manufacturing Facilities
-
-    
-
-Chapter 2b: Area Classification & Integrated Design (2.6–2.10) — Educational Reference
-
-    
-
-For training and reference purposes only. Refer to the original ISPE publication for official guidance.
 
 ↑
 
@@ -3462,18 +2767,6 @@ Equipment surfaces must be cleaned and sterilized (CIP/SIP). Products that canno
 
     
 
-    
-
-ISPE Baseline Guide Vol. 3 (3rd Ed. 2018): Sterile Product Manufacturing Facilities
-
-    
-
-Chapter 3a: Process Equipment Considerations (3.1–3.2.3) — Bilingual Educational Material
-
-    
-
-For educational purposes only. Refer to the original ISPE publication for official guidance.
-
 ⇧
 
 ## Chapter 2b: 3b. Process Equipment (3.2.4–3.2.6) (p50-p61)
@@ -3815,58 +3108,6 @@ Among the sterilization methods available, moist heat autoclaving is the most wi
             
 
 ### 
-
-            
-
-            
-
-                
-
-#### 
-
-                
-                    
-                        
-                        
-                        
-                    
-| --- | --- | --- |
-                    
-                        
-                        
-                        
-                    
-| | + | |
-                    
-                        
-                        
-                        
-                    
-| | | IV |
-                    
-                        
-                        
-                        
-                    
-| | / | |
-                    
-                        
-                        
-                        
-                    
-                    
-                        
-                        
-                        
-                    
-| / | | |
-                    
-                        
-                        
-                        
-                    
-| | | WFI |
-                
 
             
 
@@ -4275,44 +3516,6 @@ The security of rejecting "must-reject" containers is the Reject Zone Efficiency
 
                 
 
-#### Knapp
-
-                
-                    
-                        
-                        
-                        
-                    
-| | (PR) | |
-| --- | --- | --- |
-                    
-                        
-                        
-                        
-                    
-| Reject | 0.7071 – 1.0 | |
-                    
-                        
-                        
-                        
-                    
-| Gray Zone | 0.30 – 0.7071 | Reject |
-                    
-                        
-                        
-                        
-                    
-| Accept | 0 – 0.30 | |
-                
-
-                
-
-            
-
-            
-
-                
-
 #### RZE
 
                 
@@ -4324,6 +3527,16 @@ The security of rejecting "must-reject" containers is the Reject Zone Efficiency
     
 
     
+
+                
+
+#### Knapp
+
+                
+
+            
+
+            
     
 
 ## 3.2.8.2 Operator Qualification /
@@ -4801,1223 +4014,375 @@ The same general principles used for packaging of non-sterile products apply to 
 
     
 
-    
-
-ISPE Baseline Guide Volume 3 (3rd Ed. 2018): Sterile Product Manufacturing Facilities
-
-    
-
-Chapter 3c: Process Equipment (3.2.7–3.2.9) | Educational Material
-
 ↑
 
 ## Chapter 2d: 3d. Process Equipment (3.2.10–end) (p73-p78)
 
 # Chapter 3d: Process Equipment (3.2.10–end) /
 
-    
-
 ISPE Baseline Guide Volume 3 (3rd Ed. 2018): Sterile Product Manufacturing Facilities
-
-    
 
 ISPE Baseline Guide Vol. 3 (3rd Ed.) | p73 – p78
 
-    
-    
-
-        
-
-## 3.2.10 Cleaning, Disinfection and Sterilization
-
-    
-
-        
-
-            
+## **3.2.10 Cleaning, Disinfection and Sterilization 3.2.10 **
 
 ### Cleaning and Disinfection of Facility and Stationary Equipment
 
-            
-
 Cleaning, disinfection and sterilization are critical processes in a sterile facility as they have the potential to adversely impact critical quality attributes of finished product.
-
-            
 
                 Note: The terms disinfection and sanitization are often used interchangeably, which can lead to confusion about the efficacy of the process. Regulated companies should ensure that their in-house terminology is well defined.
             
 
-            
-
 Facility space and stationary equipment surfaces (non-product contact) should be cleaned and disinfected on a routine basis to maintain a state of environmental control as demonstrated by environmental monitoring data.
-
-            
 
 Written procedures for cleaning and disinfection should contain information on:
 
-            
-
-                
 - Frequency
 
-                
 - Approved cleaning/disinfecting solutions
 
-                
 - Equipment/utensils/consumables
 
-                
 - Methodology
 
-                
 - Operator protection requirements
-
-            
-
-            
 
 Solutions used for cleaning and disinfecting should be qualified as effective against a broad range of microorganisms on prevalent surface materials in use in the facility. Multiple agents should be rotated, where appropriate. Surface material compatibility with cleaning/disinfecting solutions should be evaluated during the selection process.
 
-            
-
 To prevent introduction of contamination, disinfectants should be:
 
-            
-
-                
 - Sterile
 
-                
 - Handled appropriately in suitable (e.g., sterile) containers
 
-                
 - Labeled and expiry dated
 
-                
 - Used for no longer than the predefined period specified by written procedures
-
-            
-
-            
 
 Critical areas (ISO 5/Grade A) likely require cleaning on a more frequent basis than less critical areas (ISO 8/Grade C), due to higher environmental standards.
 
-        
-
-        
-
-            
-
 ### 
 
-            
-
-                
-
 #### 
-
-                
-
-            
-
-            
-
-                
 
 #### vs.
 
-                
-
-            
-
-            
-
-                
-
 #### 
 
-                
-
-            
-
-            
-
-                
-
 #### 
-
-                
-
-                    
-
-                    
-
-                    
-
-                    
-
-                
-
-            
-
-            
-
-                
 
 #### CDMO
 
-                
-
-            
-
-        
-
-    
-
-    
-    
-
-        
-
-            
-
 ### Cleaning of Critical Parts
-
-            
 
 Critical parts, which are defined as parts either in direct contact with product or have the possibility to contaminate the product, should be subjected to a qualified cleaning process a short period after use to remove product residue.
 
-            
-
 Critical parts should be identified via a documented risk assessment. Clean hold times for parts should be established; when these clean hold times expire, the parts should be cleaned again prior to next use.
-
-            
 
 Chemical cleaning agents may be necessary to remove residual product from product contacting surfaces. Selection of an appropriate agent should be based on the type of soil and cleaning process (e.g., ultrasonic, high impingement) and may be undertaken in conjunction with the cleaning agent vendors.
 
-            
-
 When cleaning agents are used, the cleaning process should include qualified rinse steps to demonstrate removal of these agents to a safe level.
-
-            
 
                 Note: Endotoxins are not appreciably retained by most sterilizing grade filters, nor are they appreciably reduced by moist heat sterilization. Control of endotoxins, therefore, requires a comprehensive approach including bioburden control, cleaning, dry heat depyrogenation, and filtration processes.
             
 
-        
-
-        
-
-            
-
 ### 
 
-            
-
-                
+#### 
 
 #### 
 
-                
-
-            
-
-            
-
-                
-
 #### 
 
-                
-
-            
-
-            
-
-                
-
-#### 
-
-                
-
-                
-
-                    
-
-                    
-
-                    
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-
-## Single-Use Systems
-
-    
-
-        
-
-            
+## **Single-Use Systems **
 
 ### Single-Use Systems
 
-            
-
 Implementation of single-use disposable technology and single-use systems is an increasing practice. Single-use disposable systems are available for a variety of fill/finish unit operations, including formulation, material addition, buffer prep, filtration, product transfer, and product filling.
-
-            
 
 Single-use systems offer several advantages such as:
 
-            
-
-                
 - Elimination of cleaning steps
 
-                
 - Reduced operator exposure to high potent or toxic materials during cleaning
 
-                
 - Elimination of cleaning validation
 
-                
 - Reduced risk of cross-contamination
 
-                
 - Flexible scalability
 
-                
 - Reduction of capital costs
-
-            
-
-            
 
 Single-use systems are not suitable for all product types. For example, temperature limits on the film may exclude products requiring heating for formulation/filtration/filling.
 
-            
-
 Implementation of single-use systems requires a cross-functional corporate effort in areas such as:
 
-            
-
-                
 - Primary and secondary film/vendor selection (includes quality audits and supplier agreements)
 
-                
 - Single-use system design (includes film selection, component selection, tubing selection, packaging, sterilization, etc.)
 
-                
 - Testing for extractables, leachables and particulates (primary and backup systems)
 
-                
 - Integrity testing of single-use assemblies, including filters (pre and/or post-use)
 
-                
 - Batch record modifications
-
-            
-
-            
 
 Single-use systems entail higher operating costs (consumables) than traditional systems. A careful financial analysis is required to evaluate costs versus potential savings. The timeframe associated with completion of these activities is quite lengthy, and is in fact much longer than the typical timeframe for facility conceptual and detailed design.
 
-        
-
-        
-
-            
-
 ### 
 
-            
-
-                
-
 #### 
-
-                
-
-            
-
-            
-
-                
 
 #### vs.
 
-                
-
-            
-
-            
-
-                
-
 #### 
 
-                
-
-            
-
-            
-
-                
-
 #### CDMO
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-
-        
-
-            
 
 ### Equipment Flow
 
-            
-
 Careful consideration of equipment flow during cleaning, preparation and staging operations is required to effectively mitigate risk of cross-contamination. This cross-contamination can be either batch to batch for Product A, or from Product A to Product B.
-
-            
 
 Use of pass-through type washers and autoclaves and unidirectional equipment flows are recommended to ensure that clean parts do not come in close proximity to dirty parts.
 
-            
-
 Segregated staging areas of sufficient size should be provided for soiled, cleaned, and sterilized equipment. Segregation of pre and post-use filter integrity testing should also be considered.
-
-        
-
-        
-
-            
 
 ### 
 
-            
-
-                
+#### 
 
 #### 
 
-                
-
-            
-
-            
-
-                
-
 #### 
 
-                
-
-            
-
-            
-
-                
-
-#### 
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-
-## Cleaning Equipment
-
-    
-
-        
-
-            
+## **Cleaning Equipment **
 
 ### Semi-Automated and Automated Cleaning Systems
 
-            
-
 Semi-automated and automated cleaning systems can provide an enhanced level of process control and reliability. Use of such systems is recommended over manual cleaning processes.
-
-            
 
 Examples of semi-automated cleaning systems include ultrasonic baths and parts (cabinet) washers. These systems are useful for components and equipment that require disassembly for effective cleaning. Load mapping of items in automated and semi-automated cleaners is required to ensure reproducibility.
 
-            
-
 Some equipment, such as formulation vessels and filling line process pathways, lend themselves to fully automated CIP systems. The advantage of automated CIP is its potential to configure both the CIP system and the component for cleaning, execute the cycle, and return the component to service or subsequent sterilization without disassembly/assembly.
-
-            
 
 CIP systems should be designed from the beginning for cleanability and proper CIP to avoid potential issues with product contamination. Considerations include:
 
-            
-
-                
 - Elimination of dead legs
 
-                
 - Adequate flow rates (to ensure turbulent flow in piping systems)
 
-                
 - Complete drainability
 
-                
 - Cleaning of piping high and low points
 
-                
 - System drying
 
-                
 - Material surface finishes
-
-            
-
-            
 
 Modern cleaning devices and CIP equipment include electronic controls that allow for programming, monitoring/alarming, and recording of critical parameters such as cycle time, water temperature, water pressure, flow rate/totalized flow, and detergent addition (volume/weight).
 
-            
-
 Design considerations for CIP systems include:
 
-            
-
-                
 - Single versus multi-tank
 
-                
 - High impingement dynamic spray devices versus static spray balls/nozzles (or combination)
 
-                
 - Recirculating or once through
-
-            
-
-        
-
-        
-
-            
 
 ### 
 
-            
-
-                
-
 #### 
-
-                
-
-                    
-
-                    
-
-                    
-
-                
-
-            
-
-            
-
-                
 
 #### CIP
 
-                
-
-                    
-
-                    
-
-                    
-
-                    
-
-                    
-
-                    
-
-                
-
-            
-
-            
-
-                
-
 #### 
-
-                
-
-            
-
-            
-
-                
 
 #### vs. CIP
 
-                
-
-            
-
-            
-
-                
-
 #### CDMO
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-
-        
-
-            
 
 ### Cleaning Equipment Location and Selection
 
-            
-
 Cleaning equipment should be located to minimize impact of mechanical systems and maintenance activities on the cleanroom environment. For example, a pass-through type parts washer can be installed to allow access to the mechanical sections from CNC or mechanical space. Drains should be located in a mechanical area, when possible, due to their high moisture levels and potential to introduce contamination.
-
-            
 
 Specific considerations for selection of cleaning equipment include:
 
-            
-
-                
 - Types of equipment and components that require cleaning
 
-                
 - Product characteristics/unique cleaning requirements
 
-                
 - Cycle times and impact on capacity
 
-                
 - Demand on water systems as well as heating and cooling systems
 
-                
 - Location in facility
 
-                
 - Use of and need for detergents
 
-                
 - Local requirements for capture and treatment of rinse water
-
-            
-
-        
-
-        
-
-            
 
 ### 
 
-            
-
-                
+#### 
 
 #### 
 
-                
-
-            
-
-            
-
-                
-
-#### 
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-
-## Steam Sterilization
-
-    
-
-        
-
-            
+## **Steam Sterilization **
 
 ### Steam Sterilization
 
-            
-
 Critical parts in an aseptic process, which are defined as parts, equipment, tools and utensils either in direct contact with sterile product or having the possibility to contaminate the product, should be subjected to a qualified sterilization process within a defined period prior to use.
-
-            
 
 Use of sterile articles, components, or equipment in aseptic fill/finish operations requires:
 
-            
-
-                
 1. Effective sterilization of the article
 
-                
 2. Protection of the article from contamination during staging and transfer to the aseptic zone
 
-                
 3. Transfer into the aseptic zone
-
-            
-
-            
 
 Several sterilization methods are available:
 
-            
-
-                
 - Gamma irradiation
 
-                
 - E-beam irradiation
 
-                
 - Ethylene Oxide (EtO)
 
-                
 - Dry heat
 
-                
 - Moist heat
-
-            
-
-            
 
 The two available methods for moist heat (or steam) sterilization are autoclaving or SIP. These cycles are generally qualified according to the overkill approach, requiring a minimum F0 of 12 minutes.
 
-            
-
 When qualifying a steam sterilization process, the following should be verified:
 
-            
-
-                
 - Steam quality at point of delivery (dryness, superheat, non-condensable gases)
 
-                
 - Preparation/wrapping of articles to be sterilized (autoclave only)
 
-                
 - Effective removal of air from porous loads or wrapped articles (autoclave) or from all points in the system (SIP)
 
-                
 - Effective removal of condensate from the system during the cycle
 
-                
 - Appropriate design of the sterilizing cycle (pre-vacuum pulses, F0 requirements, post-vacuum drying)
 
-                
 - Temperature mapping (minimum F0 delivered at all locations)
 
-                
 - Orientation/equipment configuration
 
-                
 - Minimum and maximum loads (autoclave only) and load mapping
 
-                
 - Determination of worst case conditions
 
-                
 - Ability to inactivate biological challenge (Geobacillus stearothermophilus, 1.0 x 106 minimum population)
 
-            
-
-        
-
-        
-
-            
-
 ### 
-
-            
-
-                
 
 #### → →
 
-                
-
-            
-
-            
-
-                
-
 #### F0
 
-                
-
-            
-
-            
-
-                
+#### 
 
 #### 
 
-                
-
-            
-
-            
-
-                
-
 #### 
-
-                
-
-            
-
-            
-
-                
-
-#### 
-
-                
-
-                
-
-                    
-
-                    
-
-                    
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-
-        
-
-            
 
 ### Autoclave Process Design
 
-            
-
 Effective removal of air from wrapped articles and porous loads is required for good sterilization efficacy. Autoclaves should be properly maintained and checked at regular intervals for vacuum integrity (leak rate). Use of an air removal test (e.g., Bowie-Dick, DART, Lantor Cube) at a regular interval is also recommended.
-
-            
 
 Autoclave sterilization process design should consider the packaging/wrapping of articles:
 
-            
-
-                
 - Packaging/wrapping should be designed to promote effective air removal, steam penetration, and condensate removal during sterilization.
 
-                
 - Packaging and wrapping may be a manual operation; effective training is required to ensure consistent and reproducible preparation of articles.
 
-                
 - Packaging/wrapping materials should provide an effective microbiological barrier to maintain sterility during cool down and staging.
 
-                
 - The packaging/wrapping should allow for successive improvement steps during transfer of the articles to areas of higher cleanliness.
 
-                
 - Permeability of the packaging/wrapping as required for sterilization may impact selection of subsequent improvement steps.
-
-            
-
-            
 
 Sterilized articles should be securely staged and transferred to the aseptic processing zone. Considerations for secure transfer include:
 
-            
-
-                
 - Technologies such as Rapid Transfer Ports (RTPs) or automated VHP airlocks for secure transfer across the RABS/isolator boundary
 
-                
 - For isolator-based facilities, autoclaves may be unloaded into an ISO 8/Grade C area
 
-                
 - In RABS-based facilities, autoclaves are generally unloaded into an ISO 5/Grade A area
-
-            
-
-            
 
 The number and size of autoclaves should be designed to support production operations, considering types of equipment, number of cycles, cycle time, and impact of routine testing on availability.
 
-        
-
-        
-
-            
-
 ### 
 
-            
-
-                
-
 #### 
-
-                
-
-            
-
-            
-
-                
 
 #### vs.
 
-                
-
-            
-
-            
-
-                
-
 #### RTP vs. VHP —
-
-                
-
-                    
-
-                    
-
-                
-
-                
-
-            
-
-            
-
-                
 
 #### CDMO
 
-                
-
-            
-
-        
-
-    
-
-    
-    
-
-## Sterilize-In-Place (SIP)
-
-    
-
-        
-
-            
+## **Sterilize-In-Place (SIP) (SIP)**
 
 ### Sterilize-In-Place (SIP)
 
-            
-
 The term SIP is commonly used to refer to both:
 
-            
-
-                
 - Sterilization of large scale fixed holding vessels and fill line process piping
 
-                
 - Sterilization of smaller portable vessels at a dedicated SIP (or CIP/SIP) process station
-
-            
-
-            
 
 Product compounding/filtration/transfer/holding systems can be designed as completely closed systems, due to advances in aseptic fluid transfer and material addition technologies (e.g., tubing welders, aseptic connectors, closed addition devices). This allows installation in areas of lower cleanliness (e.g., ISO 8/Grade C, Grade D or CNC zones).
 
-            
-
 When installed in aseptic areas, systems should be designed to minimize impact of mechanical and control elements and steam/condensate release in the process area. This may be accomplished via use of "half-wall" or split systems that segregate the process side of the equipment from the mechanical side.
-
-            
 
 Design considerations for effective SIP include:
 
-            
-
-                
 - **Air removal:** Pre-vacuum steps or gravity displacement; leak rate assessment on regular basis; proper steam trap design; multiple steam injection points for large systems
 
-                
 - **Sterilization of vent filters:** Avoid compromising filter integrity at elevated temperatures; limit flow across filters; use multiple steam injection points for large systems
 
-                
 - **Condensate drainage:** System should drain condensate quickly from all portions; use steam traps and orifices; avoid group trapping of drain legs
 
-                
 - **Drying and cool down:** Use 0.2 µm sterile filtered air or nitrogen; avoid exceeding differential pressure rating of filters at elevated temperatures; maintain overpressure until time of use
-
-            
-
-            
 
 Calibrated temperature sensors (RTD, thermocouples) and pressure sensors are required for system control and monitoring. Temperature sensors should be installed at potential cold spot locations. Comparison of system pressure and temperature can verify presence of saturated steam.
 
-        
-
-        
-
-            
-
 ### 
-
-            
-
-                
 
 #### SIP
 
-                
-
-                    
-
-                    
-
-                
-
-            
-
-            
-
-                
-
 #### 
-
-                
-
-            
-
-            
-
-                
 
 #### —
 
-                
-
-            
-
-            
-
-                
-
 #### SIP
-
-                
-
-                    
-
-                    
-
-                    
-
-                    
-
-                
-
-            
-
-            
-
-                
 
 #### 
 
-                
-
-                
-
-                    
-
-                    
-
-                    
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-
-## Other Sterilization Methods
-
-    
-
-        
-
-            
+## **Other Sterilization Methods **
 
 ### Other Sterilization Methods
 
-            
-
 The use of fumigants—for example, hydrogen peroxide (H2O2), chlorine dioxide (ClO2), and nitrogen dioxide (NO2)—for room and equipment surface decontamination should consider that, in order to be effective, they need to be able to directly contact target surfaces in adequate concentrations.
-
-            
 
 Fumigation is generally not required to maintain aseptic conditions in a facility; however, in some cases it can provide a useful add-on process. Considerations include:
 
-            
-
-                
 - **VHP:** Usually used to decontaminate the interior of barrier isolators.
 
-                
 - **Gamma irradiation:** Usually used for sterilization of single-use technology, as well as selected ready-to-use elastomeric components such as syringe plungers. Cycles should be validated and under routine dose auditing.
 
-                
 - **Ethylene oxide (EtO):** Usually used for sterilization of ready-to-fill pre-nested components such as syringes, vials, and cartridges and ophthalmic containers.
-
-            
-
-        
-
-        
-
-            
 
 ### 
 
-            
-
-                
-
 #### 
-
-                
-                    
-                        
-                            
-                            
-                            
-                        
-| --- | --- | --- |
-                    
-                    
-                        
-                            
-                            
-                            
-                        
-| VHP | | |
-                        
-                            
-                            
-                            
-                        
-                        
-                            
-                            
-                            
-                        
-| EtO | | |
-                    
-                
-
-            
-
-            
-
-                
-
-#### 
-
-                
-
-            
-
-            
-
-                
 
 #### CDMO
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-
-        
 
 ### Section Summary — Chapter 3d: Process Equipment (3.2.10–end)
 
@@ -6025,1536 +4390,417 @@ Fumigation is generally not required to maintain aseptic conditions in a facilit
 
 # Chapter 4a: Architecture & Layout (4.1–4.3) /
 
-    
-
 ISPE Baseline Guide Vol. 3: Sterile Product Manufacturing Facilities (3rd Ed. 2018)
-
-    
 
 ISPE Baseline Guide Vol. 3 (3rd Ed.) | p79 – p91
 
-    
-    
-
-        
-
-## 4.1 Introduction
-
-    
-
-        
-
-            
+## **4.1 Introduction 4.1 **
 
 ### 4.1 Introduction
 
-            
-
 This chapter addresses the importance of integrated design and examines considerations for facility layout, together with the architectural detailing and finish requirements. The key concept emphasized in this chapter is risk assessment and how it integrates into facility design.
-
-            
 
 A risk assessment should appropriately evaluate where the product is at risk and to address and mitigate the potential for product chemical or bio-contamination by using facility design approaches.
 
-            
-
 The facility design approaches addressed in this chapter are:
 
-            
-
-                
 - Product protection by **spatial (physical) separation**
 
-                
 - Product protection by **procedural means**
 
-                
 - Product protection using **time separation** (also referred to as "campaigning" or "temporal segregation")
-
-            
-
-            
 
 Implementation of these approaches is determined by three basic categories for aseptic production:
 
-            
-
-                
 - **Open processing aseptic production:** e.g., filling of open vials in an isolator where product is exposed to the environment within the isolator
 
-                
 - **Closed processing aseptic production:** e.g., direct connections of formulation charging containers to formulation vessels via aseptic transfer valves
 
-                
 - **Open processing non-aseptic production** for terminally sterilized products: measures should minimize bioburden prior to sterilization
-
-            
-
-            
 
 *Note: The term "product protection" as used in this chapter includes protecting the product, product contact sterile processing surfaces, and protecting the prepared primary components and containers for filling.*
 
-        
-
-        
-
-            
-
 ### 
 
-            
-
-            
-
-            
-
-                
+#### 
 
 #### 
 
-                
-
-                    
-
-                    
-
-                    
-
-                
-
-            
-
-            
-
-                
-
-#### 
-
-                
-
-            
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-
-## 4.1.1 Facility Design Approaches
-
-    
-
-        
-
-            
+## **4.1.1 Facility Design Approaches 4.1.1 **
 
 ### 4.1.1 Facility Design Approaches
 
-            
-
 Facility design approaches for product protection have traditionally been achieved by procedural segregation, spatial segregation, by campaigning (segregation by time), or by a combination of all three. This Guide recommends the use of spatial separation, where practical, to maintain protection of the ISO 5/Grade A environment.
-
-            
 
 Examples of product protection by spatial (or physical) separation include:
 
-            
-
-                
 - **An open process placed within either an isolator or RABS:**
-                    
 
-                        
     - In an **isolator** setup, the surrounding room environment does not come in contact with the product. The level of finish and HVAC classification of the surrounding room can be reduced.
 
-                        
     - In a **RABS** setup, most interactions occur through integral glove ports. The surrounding environment should meet ISO 7/Grade B specifications. The space next to the RABS into which doors open should meet LP/GAAS conditions.
 
-                    
-
-                
-
-                
 - **Closed process systems** where the product is processed within closed or sealed process equipment
 
-                
 - **Dedicated gowning rooms** for ingress (entering) and egress (exiting) to prevent contamination from egress garments reaching ingress garments
-
-            
-
-            
 
 An example of product protection using time separation:
 
-            
-
-                
 - **Shared gowning room** for bidirectional traffic, but with non-concurrent gowning and de-gowning, with a suitable air exchange clean-up period
-
-            
-
-            
 
 The use of separate routes for personnel ingress and egress into aseptic areas of classification ISO 7/Grade B and cleaner is recommended, where possible.
 
-        
-
-        
-
-            
-
 ### 4.1.1
-
-            
-
-            
-
-                
 
 #### vs. RABS
 
-                
-
-                    
-
-                    
-
-                
-
-            
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-                
-
 #### 
 
-                
-
-            
-
-        
-
-    
-
-    
-    
-
-## 4.1.2 Design Approach Implementation
-
-    
-
-        
-
-            
+## **4.1.2 Design Approach Implementation 4.1.2 **
 
 ### 4.1.2 Design Approach Implementation
 
-            
-
 There are three basic facility types related to open processing sterile product manufacturing:
 
-            
-
-                
 - Open processing aseptic production **in the absence of barrier technology**
 
-                
 - Open processing aseptic production **utilizing barrier technology**
 
-                
 - Open processing **non-aseptic production** for terminally sterilized products
-
-            
-
-            
 
 **4.1.2.1 Open Processing Without Barrier Technology:** Where open aseptic production occurs without barrier technology, operations should be conducted within a laminar flow cabinet. ISO 5/Grade A conditions should be met within the cabinet. The surrounding room should meet ISO 7/Grade B requirements.
 
-            
-
 Design measures include:
 
-            
-
-                
 - Room air classification, zoning, directional airflow, and monitoring to protect the product
 
-                
 - Personnel gowning areas and material airlocks providing step-up transitions to cleaner classifications
 
-                
 - Coved corners at floor, wall, and ceiling intersections to facilitate room cleaning
 
-                
 - Flush detailing to minimize horizontal surfaces and difficult-to-clean areas
 
-                
 - Low wall HVAC exhaust points designed for easy cleaning; vertically mounted louvered grills should be avoided
-
-            
-
-            
 
 **4.1.2.2 RABS:** The aseptic critical zone is separated from the surrounding environment via barrier walls and ISO 5/Grade A air overspill. Most intrusions use glove ports; however, occasional door openings may be needed, requiring ISO 7/Grade B surrounding environment.
 
-            
-
 **4.1.2.3 Isolators:** Isolators provide a fully enclosed and segregated aseptic environment. The critical zone is reduced to the volume of air inside the isolator. Key reductions may include: room classification, gowning requirements, number of airlocks, extent of room cleaning, and room finishes (still meeting ISO 8/Grade C minimum).
-
-            
 
 **4.1.2.4 Non-Aseptic Processing (Terminal Sterilization):** The process should occur within RABS protected by LP/GAAS. The local environment should not add particulates or bioburden that the terminal sterilization process cannot remove.
 
-            
-
 **4.1.2.5 Closed System Aseptic Processing:** Defined with examples in Section 2.8.2.
-
-        
-
-        
-
-            
 
 ### 4.1.2
 
-            
-
-            
-
-                
+#### 
 
 #### 
 
-                
-                    
-                        
-                            
-                            
-                            
-                            
-                        
-| | (ISO 5) | | |
-| --- | --- | --- | --- |
-                    
-                    
-                        
-                            
-                            
-                            
-                            
-                        
-| | | ISO 7/Grade B | |
-                        
-                            
-                            
-                            
-                            
-                        
-| RABS | + | ISO 7/Grade B | |
-                        
-                            
-                            
-                            
-                            
-                        
-| | | ISO 8/Grade C | |
-                    
-                
-
-            
-
-            
-
-                
-
-#### 
-
-                
-
-                
-
-                    
-
-                    
-
-                    
-
-                    
-
-                    
-
-                
-
-            
-
-            
-
-                
-
-#### 
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-
-## 4.1.3 Concurrent Production
-
-    
-
-        
-
-            
+## **4.1.3 Concurrent Production 4.1.3 **
 
 ### 4.1.3 Concurrent Production
 
-            
-
 Although concurrent production of multiple products (each in its own fully segregated system in the same area) is technically feasible, the practical application can generate many concerns regarding the potential for mix-ups.
-
-            
 
 Such a facility would have to rely heavily on procedures and automation to control the status of all containers, equipment, and components associated with different lots and stages of production.
 
-            
-
 In accordance with GMPs, it is generally recommended to provide physical barriers and adequate space to control materials rather than to rely on procedures. Concurrent multi-product facilities, which place different products in separate rooms, provide a robust engineering solution for prevention of lot mix-up and errors.
-
-        
-
-        
-
-            
 
 ### 4.1.3
 
-            
-
-            
-
-                
-
 #### GMP
-
-                
-
-            
-
-            
-
-                
 
 #### 
 
-                
-
-            
-
-        
-
-    
-
-    
-    
-    
-    
-
-## 4.2 General Design Criteria
-
-    
-
-        
-
-            
+## **4.2 General Design Criteria 4.2 **
 
 ### 4.2 General Design Criteria
 
-            
-
 A facility should be designed to help protect the product. It should also protect operators from hazardous product exposure. Protection begins with a thorough knowledge of the product(s) to be produced. This knowledge sets the direction for facility design.
-
-            
 
 One of the first major decisions in the project should be to determine which of the three basic approaches (spatial, procedural, or time-based) will apply to the facility design.
 
-            
-
 The general design criteria are grouped into two major categories:
 
-            
-
-                
 - **Process and operational**
 
-                
 - **Facility** (site and building)
-
-            
-
-        
-
-        
-
-            
 
 ### 4.2
 
-            
-
-            
-
-                
-
 #### 
 
-                
-
-                    
-
-                    
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-
-## 4.2.1 Process & Operational Considerations
-
-    
-
-        
-
-            
+## **4.2.1 Process & Operational Considerations 4.2.1 **
 
 ### 4.2.1 Process and Operational Considerations
 
-            
-
 The operating philosophy can determine how a facility is organized and how layouts are developed. Key points to consider include:
 
-            
-
-                
 - Types of products and desired throughput per year
 
-                
 - Potential product hazards and containment requirements
 
-                
 - Whether products are aseptically produced, non-aseptically produced, or a combination
 
-                
 - Product final form: liquid, lyophilized powder, or sterile API powder
 
-                
 - Clinical fills vs. commercial fills (no facility difference, but barrier technology should be utilized)
 
-                
 - Governing regulatory agencies
 
-                
 - Product volume scaling up or down
 
-                
 - Production schedules and rate of product movement through the facility
 
-                
 - Material handling approaches (high volume lines need high quantities of primary containers)
 
-                
 - Batch versus continuous processes
 
-                
 - Use of ready-to-use components (e.g., syringes, vials, stoppers, caps/seals)
 
-                
 - Use of single-use disposable systems and impact on storage
 
-                
 - Multi-product campaigned or concurrent production
 
-                
 - Level of technology: manual fills are high risk and not recommended
 
-                
 - Level of automation
 
-                
 - Line integration: primary fill with secondary packaging
 
-                
 - Open vs. closed processes (RABS require individual rooms; isolators can share rooms)
 
-                
 - Equipment layout footprints, operational and maintenance access clearances
 
-                
 - Material staging and access for each process area
 
-                
 - Movement of used equipment parts to cleaning rooms
 
-                
 - Environmental room classification for each room or area
 
-                
 - Number of personnel and gowning philosophy
 
-                
 - Routing of utilities (central or localized)
 
-                
 - Waste disposal/treatment
 
-                
 - Personnel support areas
-
-            
-
-        
-
-        
-
-            
 
 ### 4.2.1
 
-            
-
-            
-
-                
-
 #### 
 
-                
-
-                    
-
-                    
-
-                    
-
-                    
-
-                    
-
-                
-
-            
-
-            
-
-                
-
 #### 
-
-                
-
-                    
-
-                    
-
-                    
-
-                    
-
-                
-
-            
-
-            
-
-                
 
 #### RABS vs.
 
-                
-
-            
-
-        
-
-    
-
-    
-    
-
-## 4.2.2 Site & Building Considerations
-
-    
-
-        
-
-            
+## **4.2.2 Site & Building Considerations 4.2.2 **
 
 ### 4.2.2 Site and Building Considerations
 
-            
-
 Few projects begin as a "green field" site with unlimited building area. Most projects and sites have limitations from both internal and external sources. The key is to understand the limitations and make reasonable decisions in fitting the process and operational criteria into the project site.
-
-            
 
 Site and building limitations or opportunities to consider:
 
-            
-
-                
 - Site planning ordinances or construction code requirements (building height, total area)
 
-                
 - Environmental protection codes
 
-                
 - Operator protection codes
 
-                
 - Site access/traffic including shipping and receiving vehicles (truck traffic patterns are key for air intake locations)
 
-                
 - Existing site infrastructure
 
-                
 - Constructing within an existing building with physical limitations
 
-                
 - Retrofitting an existing filling suite
 
-                
 - Project construction phasing, schedule, funding, and approvals
-
-            
-
-        
-
-        
-
-            
 
 ### 4.2.2
 
-            
-
-            
-
-                
+#### 
 
 #### 
 
-                
-
-            
-
-            
-
-                
-
-#### 
-
-                
-
-                    
-
-                    
-
-                    
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-
-## 4.2.3 Facility Fit Considerations
-
-    
-
-        
-
-            
+## **4.2.3 Facility Fit Considerations 4.2.3 **
 
 ### 4.2.3 Facility Fit Considerations
 
-            
-
 Fitting or integrating the process and operational requirements into a project site is considered essential for a successful project. Although the project focus tends to be on the production areas, designers should also consider equipment, engineering, and operational requirements.
-
-            
 
 This process is called facility modeling. Consideration should be given to facility systems and support areas to ensure that the entire project scope can be accommodated.
 
-        
-
-        
-
-            
-
 ### 4.2.3
 
-            
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-    
-    
-
-## 4.3 Layout Considerations
-
-    
-
-        
-
-            
+## **4.3 Layout Considerations 4.3 **
 
 ### 4.3 Layout Considerations
 
-            
-
 Designers should go through a programming process consisting of the following steps:
 
-            
-
-                
 1. **Define goals and objectives** that support the business case for the project
 
-                
 2. **Understand product and process requirements** and use this information to generate block flow diagrams and a specific project program
 
-                
 3. **Create a zoning and transition diagram** which defines transition requirements between different area classifications and identifies directional airflows. This establishes the "rules" the layout should follow.
 
-                
 4. **Develop conceptual layout** based on the program, equipment arrangements, and requirements of the zoning and transition diagram
-
-            
-
-            
 
 The process specialist, architect, layout engineer, HVAC engineer, and QA representative should collaborate to ensure a successful integrated design.
 
-            
-
 **4.3.1 Project Goals and Objectives:** Goals are the "what" — expected outcomes. Objectives are the "how" — statements of action that should be clear, realistic, specific, measurable, and time-limited.
-
-            
 
 **4.3.2 Block Flow Diagram:** Used to define production steps, identify major processing areas, area classifications, key adjacencies, segregation, and flows. They document inputs and outputs for given activities.
 
-            
-
 **4.3.3 Facility Program:** A list of all rooms with special requirements and designated area classifications. An initial program should be developed based on known requirements and updated as the design develops. (See Table 4.1 for example.)
-
-        
-
-        
-
-            
 
 ### 4.3
 
-            
-
-            
-
-                
-
 #### 
 
-                
-
-                    
-
-                    
-
-                    
-
-                    
-
-                
-
-            
-
-            
-
-                
-
 #### 
-
-                
-
-            
-
-            
-
-            
-                
-                    
-| --- | --- | --- |
-                
-                
-                    
-| | | 1,200 ft² |
-                    
-| | ISO 8/Grade C | 120 ft² |
-                    
-| | ISO 8/Grade C | 80 ft² |
-                    
-| | ISO 8/Grade C | 600 ft² |
-                    
-| | ISO 8/Grade C | 1,500 ft² |
-                    
-| | ISO 8/Grade C | 400 ft² |
-                
-            
-
-        
-
-    
-
-    
-    
-
-        
-
-            
 
 ### 4.3.4 Transition and Zoning Diagram
 
-            
-
 The transition and zoning diagram identifies all areas that can affect or influence the required space or unit operations, defines their interrelationships, and establishes the flow pattern that best represents the process GMP and operator requirements.
-
-            
 
 These diagrams establish the "rules" of the facility and serve as the basis from which the layout is developed. Personnel, product, and material flows should be fully understood prior to development of the layout.
 
-            
-
 Area classifications and directional airflows should be defined to ensure proper airlock schemes at transitions and where containment is required.
-
-            
 
 **4.3.5 Space Planning:** The designer should develop a series of functional room layouts which graphically illustrate the area requirements to support operations. A conceptual layout is developed by combining all functional room layouts in an arrangement meeting transition and zoning requirements.
 
-            
-
 **4.3.6 Equipment Arrangements:** Equipment arrangements help determine room sizes, structural grids, and access routes. They are generally developed to optimize production, but facility restrictions may impact arrangements, requiring collaborative effort between architects, engineers, and equipment vendors.
-
-        
-
-        
-
-            
 
 ### 4.3.4
 
-            
-
-            
-
-                
-
 #### 
 
-                
-
-                    
-
-                    
-
-                    
-
-                    
-
-                
-
-            
-
-            
-
-            
-
-        
-
-    
-
-    
-    
-
-## 4.3.7 Material/Personnel Flows
-
-    
-
-        
-
-            
+## **4.3.7 Material/Personnel Flows 4.3.7 /**
 
 ### 4.3.7 Material/Personnel Flows
 
-            
-
 The design of personnel and material flows should minimize or prevent the introduction of contaminants into the clean area. This is significant in open system aseptic processing rooms where container closures and product are exposed to the room.
-
-            
 
 **Product, material, and equipment flows** should address:
 
-            
-
-                
 - Layout should prevent product cross-contamination and environmental contamination
 
-                
 - One-way flows should be considered for suites where open aseptic processing occurs without barrier technology or with RABS
 
-                
 - Simultaneous two-way flows through a common area should be prohibited by using door interlocks, indicator lights, alarms, or similar means
 
-                
 - Process waste should be removed from the aseptic area without contaminating the product
 
-                
 - In-process storage should be provided
 
-                
 - Logical flow of product components to prevent mix-ups
-
-            
-
-            
 
 **Personnel flow** into and within the clean area should address:
 
-            
-
-                
 - Compliance with gowning requirements
 
-                
 - Sufficient space for personnel movement with clearly defined instructions
 
-                
 - Compliance with GMP and HVAC zones
 
-                
 - No non-emergency personnel ingress/egress except through controlled gowning change area
 
-                
 - Design of airlocks, step-over benches, gowning areas, time delay alarms, and door interlocks
 
-                
 - One-way personnel flow for areas where product is exposed to the room environment
 
-                
 - Minimizing interventions into the critical zone
-
-            
-
-            
 
 *Note: Changing rooms requiring crossover benches for GMP should not be placed in the path of egress as the benches could be viewed as tripping hazards.*
 
-        
-
-        
-
-            
-
 ### 4.3.7
 
-            
-
-            
-
-                
-
 #### 
 
-                
-
-                    
-
-                    
-
-                    
-
-                    
-
-                    
-
-                
-
-            
-
-            
-
-                
-
 #### 
-
-                
-
-                    
-
-                    
-
-                    
-
-                    
-
-                
-
-            
-
-            
-
-                
 
 #### vs.
 
-                
-
-            
-
-        
-
-    
-
-    
-    
-
-## 4.3.8 Additional Layout Considerations
-
-    
-
-        
-
-            
+## **4.3.8 Additional Layout Considerations 4.3.8 **
 
 ### 4.3.8 Additional Layout Considerations
 
-            
-
 In addition to flow considerations, the layout should address:
 
-            
-
-                
 - Adoption of barrier or isolator technology can significantly impact material flow and personnel movement compared with traditional open aseptic processing
 
-                
 - A risk assessment should determine the extent of unidirectional flows, considering cleanliness levels, product type, extent of closed processing, and concurrent multi-product production
 
-                
 - Where room integrity is critical, equipment interfaces with building fabric/finishes should be minimized; where unavoidable, clear access all around should be provided
 
-                
 - Services penetrating clean areas can be grouped together to allow manifold plates
 
-                
 - Service distribution and pipework should be located outside the cleanroom in a separate manifold room, where possible
 
-                
 - Cleanrooms ISO 8/Grade C or cleaner should **not** be placed directly adjacent to exterior walls (moisture infiltration, pest infiltration, wind influence on room pressure)
 
-                
 - Equipment interchangeability and long-term maintenance/replacement access should be incorporated
 
-                
 - General piping and services distribution should be addressed by allocating horizontal and vertical distribution zones
 
-                
 - HVAC airflow patterns should be compared to equipment layout to avoid turbulence or dead spots in critical zones
 
-                
 - Horizontal surfaces should be avoided to prevent UAF disruption and particle accumulation
 
-                
 - **Open sinks and drains are not permitted** in aseptic processing areas (ISO 7/Grade B and ISO 5/Grade A)
 
-                
 - Properly designed HEPA filtered portable vacuums are acceptable. Central vacuum systems should have back flow preventers installed.
-
-            
-
-        
-
-        
-
-            
 
 ### 4.3.8
 
-            
-
-            
-
-                
+#### 
 
 #### 
 
-                
-
-                
-
-                    
-
-                    
-
-                    
-
-                
-
-            
-
-            
-
-                
-
 #### 
 
-                
-
-                    
-
-                    
-
-                    
-
-                
-
-            
-
-            
-
-                
-
-#### 
-
-                
-
-                    
-
-                    
-
-                    
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-
-## 4.3.9–4.3.10 Cost Optimization & Fire Protection
-
-    
-
-        
-
-            
+## **4.3.9–4.3.10 Cost Optimization & Fire Protection 4.3.9–4.3.10 **
 
 ### 4.3.9 Planning Layouts to Minimize Cost
 
-            
-
 **External Building Shape:** The layout configuration affects cost by influencing materials, labor, and running costs. External walls and insulation are high cost items. Simple plan shapes are most economical. Minimum perimeter length results from a square plan shape.
-
-            
 
 **Building Height:** Average cost per square meter increases with the number of stories due to:
 
-            
-
-                
 - Increase in perimeter wall for any given total floor area
 
-                
 - Effect of increased load on the structure
 
-                
 - Additional hoisting of materials and extra time for operators to reach higher floors
-
-            
-
-            
 
 **Foundation:** Foundation costs vary with load and height. Cost of structure per square meter increases rapidly above four stories.
 
-            
-
 **Internal Layouts:** The overall cost of the aseptic area (including HVAC services) is significantly higher than any other part of the facility. This area should be kept as small as possible without affecting efficient operation.
-
-            
 
 Modular wall and ceiling systems or prefabricated systems reduce construction time and may provide flexibility to expand, rearrange, or relocate.
 
-            
-
 ### 4.3.10 Fire Protection and Means of Escape
-
-            
 
 Issues become more onerous as building size grows:
 
-            
-
-                
 - Specific time periods of fire resistance for design elements
 
-                
 - Compartmentalization of the building to isolate fire within specific areas
 
-                
 - Emergency escape routes for personnel
 
-                
 - Provision of suitable separation to prevent fire, hot gases, and smoke spreading via circulation routes
-
-            
-
-        
-
-        
-
-            
 
 ### 4.3.9
 
-            
-
-            
-
-                
-
 #### 
 
-                
-
-                    
-
-                    
-
-                    
-
-                
-
-            
-
-            
-
-                
-
 #### 
-
-                
-
-                
-
-            
-
-            
 
 ### 4.3.10
-
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-    
-    
-
-        
-
-### Section Summary /
-
-        
-            
-                
-                    
-                    
-                    
-                    
-                
-| Topic | Key Takeaway | | |
-| --- | --- | --- | --- |
-            
-            
-                
-                    
-                    
-                    
-                    
-                
-| Three Design Approaches | Spatial separation is preferred; procedural and time-based are alternatives when physical barriers are impractical | | |
-                
-                    
-                    
-                    
-                    
-                
-| Barrier Technology Impact | Isolators reduce surrounding room requirements significantly; RABS still require ISO 7/Grade B background | | RABS ISO 7/Grade B |
-                
-                    
-                    
-                    
-                    
-                
-| Layout Programming | Four-step process: Goals → Block Flow → Zoning Diagram → Conceptual Layout | | → → → |
-                
-                    
-                    
-                    
-                    
-                
-| Unidirectional Flow | Material and personnel flows must be separated and unidirectional in open processing areas; door interlocks prevent simultaneous access | | |
-                
-                    
-                    
-                    
-                    
-                
-| Cleanroom Placement | Grade C+ cleanrooms must not be placed against exterior walls (moisture, pests, pressure instability) | | Grade C |
-                
-                    
-                    
-                    
-                    
-                
-| Cost Optimization | Minimize aseptic area footprint; use modular systems; simple building shapes reduce perimeter cost | | |
-            
-        
-
-    
-
-    
-    
-
-        
-
-### Key Terminology /
-
-        
-            
-                
-| English Term | | Context |
-| --- | --- | --- |
-            
-            
-                
-| Cleanroom Wall System | | Modular or stick-built systems forming cleanroom envelope |
-                
-| Ceiling System | | Walk-on or non-walk-on panels with sealed joints |
-                
-| Floor System | | Epoxy, vinyl, or resin flooring with coved junctions |
-                
-| Coved Junction | | Curved wall-to-floor/ceiling transitions preventing particle accumulation |
-                
-| Pressure Cascade | | Higher pressure in clean core, decreasing outward |
-                
-| Material Flow | | Path of materials through facility zones |
-                
-| Personnel Flow | | Path of operators through gowning and processing zones |
-                
-| Airlock | | Transition chamber between different cleanliness zones |
-                
-| Pass-Through | | Material transfer hatch between zones without personnel passage |
-                
-| Zoning | | Designation of cleanliness classification areas within the facility |
-                
-| Spatial Separation | | Physical barriers separating clean and non-clean areas |
-                
-| Facility Modeling | | Process of integrating all requirements into the project site |
-            
-        
-
-    
-
-    
-
-ISPE Baseline Guide Vol. 3 (3rd Ed. 2018): Sterile Product Manufacturing Facilities
-
-    
-
-Chapter 4a: Architecture & Layout (4.1–4.3) — Educational Reference Material
 
 ⇧
 
@@ -7562,1612 +4808,323 @@ Chapter 4a: Architecture & Layout (4.1–4.3) — Educational Reference Material
 
 # Chapter 4b: Architecture — Room Functions & Transfer Zones (4.4–4.6)
 
-    
-
-    
-
 ISPE Baseline Guide Vol. 3 (3rd Ed.) | p92 – p100
-
-    
-    
-
-        
 
 ## 4.4 Room Function
 
-                
-
-            
-
-        
-
-        
-
-            
-
-                
-                
-
-                    
-
 ### 4.4.1 Room Function
-
-                    
 
 Facility areas are divided into five general functional categories:
 
-                    
-
-                        
 - Areas for aseptic processing of product or components
 
-                        
 - Areas immediately adjacent to the above, comprised of material/personnel airlocks
 
-                        
 - Preparation areas closely related to the aseptic processing area
 
-                        
 - Areas immediately adjacent to the above, comprising material airlocks, personnel clean change, inspection, and other associated areas ("pharmaceutical" areas)
 
-                        
 - General ancillary/support functions, including warehousing, offices, plant utilities, and circulation areas with no protection requirements other than, perhaps, a factory change/uniform for unclassified areas
 
-                    
-
-                
-
-                
-                
-
-                    
-
 ### 
-
-                    
-
-                    
-
-                        
 
 ## 4.4.2 Changing Rooms
 
-                
-
-            
-
-        
-
-        
-
-            
-
-                
-
-                    
-
 ### 4.4.2 Changing Rooms
-
-                    
 
 Changing rooms should be designed to accommodate the gowning philosophy and changing regimes determined by process operations. They should be arranged to support procedures which prevent the ingress of outside environmental contaminant. Personnel should pass from facility changing rooms (where street clothes are replaced with facility uniforms) to clean environment or aseptic changing rooms in a logical progression.
 
-                    
-
 Changing rooms into open process aseptic areas (including RABS) should, where possible, have separate ingress/egress routes to prevent chemical or bio-contamination of clean garments. Clean and aseptic processing change areas can be sequential and in separate rooms. HVAC and personnel movements should be controlled.
-
-                    
 
 Changing facilities can range from CNC or Grade D to ISO 7/Grade B or higher, so the changing area standards and finishes should be appropriate for the highest cleanliness processing area into which it opens. The flow and storage of gowning materials should also be considered in the design.
 
-                    
-
 Personal showering and toilet facilities should not be directly connected to classified cleanroom locker room or gowning areas.
-
-                
-
-                
-
-                    
 
 ### 
 
-                    
-
-                        
-
 #### 
 
-                        
-
-                            
-
-                            
-
-                            
-
-                            
-
-                        
-
-                    
-
-                    
-
-                        
-
 #### 
-
-                        
-
-                    
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-    
-    
-
-        
-
-            
 
 4.4
 
-            
-
-                
-
 ## 4.4.3 Bulk Storage Areas
-
-                
-
-            
-
-        
-
-        
-
-            
-
-                
-
-                    
 
 ### 4.4.3 Bulk Storage Areas
 
-                    
-
 Bulk storage areas within warehouses are generally remote from the clean core. Some intermediate, product, and components storage may be required within the preparation and aseptic processing areas. Storage within these areas should have dedicated floor space and may need special HVAC provisions.
-
-                
-
-                
-
-                    
 
 ### 
 
-                    
-
-                    
-
-                        
-
 #### 
 
-                        
-
-                    
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-    
-    
-
-        
-
-            
-
 4.5
-
-            
-
-                
 
 ## 4.5 Surface Finishes and Materials of Construction
 
-                
-
-            
-
-        
-
-        
-
-            
-
-                
-
-                    
-
 ### 4.5.1 Architectural Detailing
-
-                    
 
 In detailing the architectural aspects of cleanrooms, key factors which should be addressed include:
 
-                    
-
-                        
 - The principal function of the room is to provide an enclosure to contain the defined activity and its associated equipment.
 
-                        
 - Finish materials should be non-shedding, non-porous, and resistant to sustaining microbial growth.
 
-                        
 - Surfaces should be smooth and easy to clean, with minimal ledges and joints. Corners at walls, ceilings, and floors should be coved with a sufficient radius to facilitate cleaning and minimize areas that are difficult to access, particularly near the product and process equipment.
 
-                        
 - Finishes should be able to withstand repeated cleaning and sanitization with various chemicals and resist surface oxidization.
 
-                        
 - Attention should be given to these issues when detailing any interface between the facility and the equipment and services.
 
-                        
 - Wall protection and guarding to prevent mechanical failure should be considered to maintain the integrity of the finishes and minimize damage or premature wearing.
-
-                    
-
-                    
 
 Door hardware should be carefully considered for ease of cleaning. "Hands off" proximity sensors and openers should be installed, where possible. Normally, doors should swing towards higher room pressures, to assist in maintaining differential pressurization. Fire regulations governing escape in an emergency, however, usually take precedence, requiring door closers of sufficient force to overcome the pressure. Door interlocks should have emergency override features in case of fire.
 
-                    
-
 A risk assessment should be made when doors swing into ISO 7/Grade B or higher areas as these doors may contaminate the aseptic area, having been exposed to lower classified areas.
-
-                    
 
 The goal of architectural detailing is to help protect the product by providing finishes which can withstand cleaning and sanitization requirements, providing details which minimize horizontal ledges and provide tight seals at penetration points or where different systems are integrated.
 
-                    
-
 Higher quality, robust finishes can evoke an environment of cleanliness and control, where lesser finishes which do not hold up as well to use and cleaning can make a facility look dated and in need of repair. Higher quality finishes demonstrate a dedication to quality to inspectors.
-
-                
-
-                
-
-                    
 
 ### 
 
-                    
-
-                        
-
 #### 
-
-                        
-
-                            
-
-                            
-
-                            
-
-                            
-
-                            
-
-                            
-
-                        
-
-                    
-
-                    
-
-                        
 
 #### —
 
-                        
-
-                    
-
-                    
-
-                        
-
 #### 
 
-                        
-
-                    
-
-                    
-
-                        
-
 #### 
-
-                        
-
-                    
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-    
-    
-
-        
-
-            
 
 T4.2
 
-            
-
-                
-
 ## Table 4.2: Architectural Materials and Finishes Guide
-
-                
-
-            
-
-        
-
-        
-
-            
-
-                
-
-                    
 
 ### Table 4.2 — Floors
 
-                    
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| Element | Unclassified / Support | CNC / Grade D | ISO 8 / Grade C | ISO 7/Grade B & ISO 5/Grade A |
-| --- | --- | --- | --- | --- |
-                            
-                            
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                    ****
-                                
-| Floors | Standard construction practice. Sealed concrete or coatings with high wear resistance. Locker rooms: welded seam vinyl, vinyl composition tile. | Resinous coatings (epoxy, MMA, urethane), vinyl composition tile, welded seam vinyl, terrazzo. Easily cleanable. | Smooth, cleanable. Resinous coatings, welded seam vinyl, chemically resistant coatings, terrazzo. Floor drains capped if required. | Solid, non-porous, sanitizable. Terrazzo, welded seam vinyl, resinous coatings. Coved wall bases integral with floor. No floor drains or sinks. |
-                            
-                        
-
-                    
-
-                    
-
 ### Table 4.2 — Interior Walls
-
-                    
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| Element | Unclassified / Support | CNC / Grade D | ISO 8 / Grade C | ISO 7/Grade B & ISO 5/Grade A |
-| --- | --- | --- | --- | --- |
-                            
-                            
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                    
-                                
-| Interior Walls | Moisture/mold-resistant gypsum board or concrete block with latex paint. | Latex painted gypsum board, metal panels, glazed tile. Suitable durability and cleanability. | Smooth, solid, non-porous. Concrete block, gypsum board, metal panels. Chemical resistant coatings, welded seam vinyl, sprayed-on finishes. Glass cleanroom panels acceptable. | Crevice-free, smooth, non-porous, robust. No joints/seams for microbial growth. Resistant to corrosion from cleaning/bio-decontamination agents. Curved/rounded corners for cleanability. |
-                            
-                        
-
-                    
-
-                    
 
 ### Table 4.2 — Ceilings
 
-                    
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| Element | Unclassified / Support | CNC / Grade D | ISO 8 / Grade C | ISO 7/Grade B & ISO 5/Grade A |
-| --- | --- | --- | --- | --- |
-                            
-                            
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                    
-                                
-| Ceilings | Not required if material not exposed. Lay-in ceiling for personnel areas. Locker rooms: mylar/vinyl encapsulated tiles. | Suspended grid systems (mylar/vinyl lay-in, FRP, metal). Hold-down clips where pressure differential required. | FRP, metal, sealed/epoxy painted gypsum board. Non-porous, cleanable/sanitizable. No joints for microbial growth. Fixtures flush-mounted. Sprinklers concealed, gasketed, fusibly capped (not caulked). | Smooth, solid, cleanable, sanitizable, non-porous. Fixtures flush mounted, maintenance from outside. ISO 5/Grade A: ceiling is HEPA/ULPA filter grid for UAF. Sprinklers concealed and non-disruptive to UAF. |
-                            
-                        
-
-                    
-
-                    
-
 ### Table 4.2 — Junctions, Doors, Hardware, Lighting, Sprinklers, Penetrations
-
-                    
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| Element | Unclassified / Support | CNC / Grade D | ISO 8 / Grade C | ISO 7/Grade B & ISO 5/Grade A |
-| --- | --- | --- | --- | --- |
-                            
-                            
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                
-| Junction Details | Standard practice. Coved bases not required but recommended. | Coved integral floor bases required. Wall protection in high traffic areas. Rounded wall/wall, wall/ceiling details required. | Caulked coved integral floor bases. Wall/wall and wall/ceiling covings. Minimal wall protection to maintain cleanability. |
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                    
-                                
-| Doors & Windows | General building code. | General building code. | Metal with epoxy finish, FRP in corrosive areas. Flush glazing; drop sills problematic. All-glass door panels acceptable. | Corrosion-resistant metals (stainless steel), vinyl, PVC. All surfaces accessible for cleaning. Stainless steel for doors, hardware, kick/mop plates. |
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                    
-                                
-| Door Hardware | General purpose, building code compliant. | General purpose, building code compliant. | Designed for cleaning access. Plated metals or stainless steel. | Recessed, concealed where possible, accessible for cleaning. Automated touchless actuators recommended. Stainless steel. |
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                    
-                                
-| Lighting | Industrial suspended fixtures. | Flush or surface mounted to ceiling. | Flush mounted, sealed fixtures considered. Maintenance access from outside. | Sealed fixtures. Positioned to avoid UAF disruption. Maintenance from outside. |
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                    
-                                
-| Fire Sprinklers | Conventional wet/dry, exposed. | Conventional, concealed pipes, through ceiling. | Concealed pipes, recessed/flush heads. No caulking on caps. | Concealed, gasketed (not caulked), fusibly capped. ISO 5: specialized heads that do not disrupt UAF. |
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                    
-                                
-| Penetrations | Sealing not required except for fire/thermal. Locker rooms: sealed for cleanability. | Sealed with caulk for pest/contamination prevention. Escutcheon plates recommended. | Silicone caulk acceptable. Fire-resistant sealant with silicone overlay or escutcheon plate. | All penetrations sealed. Silicone caulking generally acceptable. Fire-resistant sealant with smooth finish overlay. |
-                            
-                        
-
-                    
-
-                
-
-                
-
-                    
 
 ### Table 4.2
 
-                    
-
-                        
-
 #### 
-
-                        
-
-                        
-
-                            
-
-                            
-
-                            
-
-                            
-
-                        
-
-                    
-
-                    
-
-                        
 
 #### Grade A
 
-                        
-
-                            
-
-                            
-
-                            
-
-                            
-
-                        
-
-                    
-
-                    
-
-                        
-
 #### 
 
-                        
-
-                    
-
-                    
-
-                        
-
 #### 
-
-                        
-
-                    
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-    
-    
-
-        
-
-            
 
 4.5
 
-            
-
-                
-
 ## 4.5.2 Room Finishes
-
-                
-
-            
-
-        
-
-        
-
-            
-
-                
-
-                    
 
 ### 4.5.2 Room Finishes
 
-                    
-
 While specifying room finishes for cleanrooms, key factors which should be addressed include:
 
-                    
-
-                        
 - The nature of the process performed in the room should be considered. Manufacturing or preparation activity in an ISO 8/Grade C room places more demands on housekeeping, cleaning, disinfection, and environmental monitoring than if an aseptic processing isolator were placed in the same room.
 
-                        
 - The balance of installation costs against maintainability and ease with which repair or replacement can be performed.
 
-                        
 - Finishes should allow for the ease of installation of building services, grilles, controls/switches, and piped penetrations.
 
-                        
 - Finishes should accommodate integration of fixtures such as CCTV, intercom panels, key pads, telephones, sprinkler heads and covers, and emergency showers.
 
-                        
 - Wall or floor mounted wall protection is recommended in high traffic areas.
 
-                        
 - Fire protection aspects should be accommodated: surface flame spread, fire resistant construction (doors and vision panels), detectors, sprinkler heads, and alarm sounders.
 
-                        
 - Air tightness of room fabric, particularly around door openings and sprinkler heads, and the choice of finish materials that are not adversely affected by sanitizing chemicals.
 
-                        
 - All wall penetrations (electrical outlets, data ports, fire extinguisher cabinets, etc.) should be sealed to maintain air pressure control and prevent pest infiltration.
 
-                        
 - Electrically conductive and grounded flooring should be considered in areas where explosion control is required.
 
-                        
 - Method and frequency of cleaning, cleaning agents, and details such as equipment surface fixings and floor drains should be considered. Floor drains are not permitted inside the aseptic processing area. In other areas, floor drains should be minimized with concave, minimum 2" air break on process drain lines. Back flow preventers and trap controllers should be utilized.
-
-                    
-
-                
-
-                
-
-                    
 
 ### 
 
-                    
-
-                        
-
 #### 
-
-                        
-
-                            
-
-                            
-
-                            
-
-                            
-
-                            
-
-                        
-
-                    
-
-                    
-
-                        
 
 #### —
 
-                        
-
-                        
-
-                            
-
-                            
-
-                        
-
-                        
-
-                    
-
-                    
-
-                        
-
 #### 
 
-                        
-
-                        
-
-                            
-
-                            
-
-                            
-
-                            
-
-                        
-
-                    
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-    
-    
-
-        
-
-            
-
 4.6
-
-            
-
-                
 
 ## 4.6 Transfer Zones
 
-                
-
-            
-
-        
-
-        
-
-            
-
-                
-
-                    
-
 ### 4.6 Transfer Zones
-
-                    
 
 Transfer zones and airlocks into and out of cleanroom areas should provide suitable transition for materials, personnel, equipment and waste. Airlocks are used to maintain pressure differentials between areas of differing classifications and to provide a controlled environment for the transfer of materials or the transition/gowning of personnel between classified areas.
 
-                    
-
 Personnel and material (including components, raw materials, equipment and waste) require airlocks to enter and exit areas of different classifications. The staging and movement of personnel and materials should be designed to minimize errors, maintain gowning room hygiene, and minimize the risk of cross-contamination. Airlocks should be appropriately sized and environmentally controlled depending upon the activity occurring within the airlock.
 
-                
-
-                
-
-                    
-
 ### 
-
-                    
-
-                        
 
 #### Airlock
 
-                        
-
-                            
-
-                            
-
-                            
-
-                        
-
-                    
-
-                    
-
-                        
-
 #### 
 
-                        
-
-                    
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-    
-    
-
-        
-
-            
-
 4.6
-
-            
-
-                
 
 ## 4.6.1 Improvement Step
 
-                
-
-            
-
-        
-
-        
-
-            
-
-                
-
-                    
-
 ### 4.6.1 Improvement Step
-
-                    
 
 There is an expectation that when personnel and materials transition from a lower area classification to a higher area classification that an improvement step occurs.
 
-                    
-
 **For materials**, the improvement step can be a cleaning and/or sanitization activity:
 
-                    
-
-                        
 - Depending on the cleanliness of the intended area, it can consist of removing an outer cover or wrapping, a manual wipe down, or fumigation/decontamination.
 
-                        
 - A transition line is recommended for airlocks moving into ISO 8/Grade C and higher areas. Materials should be transferred over the line after they have been cleaned/sanitized.
 
-                        
 - For materials going into a CNC or Grade D space, cleaning can take place outside of the Grade D airlock.
-
-                    
-
-                    
 
 **For personnel**, the improvement step can include putting on an additional layer of protective clothing.
 
-                
-
-                
-
-                    
-
 ### —
 
-                    
-
-                        
-
 #### 
-
-                        
-
-                        
-
-                            
-
-                            
-
-                        
-
-                    
-
-                    
-
-                        
 
 #### Transition Line
 
-                        
-
-                        
-
-                    
-
-                    
-
-                        
-
 #### 
-
-                        
-
-                    
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-    
-    
-
-        
-
-            
 
 4.6
 
-            
-
-                
-
 ## 4.6.2 Sequential Transitions
-
-                
-
-            
-
-        
-
-        
-
-            
-
-                
-
-                    
 
 ### 4.6.2 Sequential Transitions
 
-                    
-
 Airlock transitions should occur one grade at a time when transitioning from lower to higher (cleaner) classifications, for both personnel and materials. When exiting, it is often acceptable to step down in classification. Although, when exiting from an ISO 7/Grade B production room, an ISO 7/Grade B exit airlock is preferred to protect the critical area.
-
-                    
 
 An airlock should be provided for transitioning from an unclassified environment into CNC or Grade D.
 
-                    
-
 ISO 5/Grade A environments may only be accessed from ISO 7/Grade B environments. Airlocks are generally not provided between ISO 5/Grade A and ISO 7/Grade B; however, clear visual indications and physical barriers should be provided so that the boundary between these environments can be seen and understood by personnel.
-
-                    
 
 ISO 7/Grade B environments should be accessed from ISO 8/Grade C, through airlocks. There should be separate entry airlocks for personnel and materials for entry to ISO 7/Grade B from ISO 8/Grade C rooms. The entry airlock into an ISO 7/Grade B aseptic area should demonstrate ISO 7 "at rest" conditions in the location where the final stages of gowning occurs.
 
-                    
-
 Regular access to mechanical rooms should be from unclassified areas, or provisions should be made to accommodate required airlocks and gowning.
-
-                
-
-                
-
-                    
 
 ### 
 
-                    
-
-                        
-
 #### 
-
-                        
-
-                        
-
-                        
-
-                        
-
-                            
-
-                            
-
-                            
-
-                        
-
-                    
-
-                    
 
                         
 
 #### Grade A Grade B
 
-                        
-
-                        
-
-                            
-
-                            
-
-                        
-
-                        
-
-                    
-
-                    
-
-                        
-
 #### 
 
-                        
-
-                        
-
-                            
-
-                            
-
-                            
-
-                            
-
-                        
-
-                    
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-    
-    
-
-        
-
-            
-
 4.6
-
-            
-
-                
 
 ## 4.6.3 Airlock Design Philosophies
 
-                
-
-            
-
-        
-
-        
-
-            
-            
-
-                
-
-                    
-
 ### 4.6.3 Airlock Design Philosophies
-
-                    
 
 Airflow direction is generally from higher grade to lower grade. A higher grade room or airlock should be positive to a lower grade room or airlock. Airlock doors should be interlocked or alarmed to prevent both sets of doors from being opened simultaneously, to control the ingress of potential contaminates to the cleaner zones.
 
-                    
-
 Alternate airlock pressurization schemes are often required for containment or the mitigation of cross-contamination between different products. A risk assessment should be performed on such airlocks to evaluate the risk of product contamination versus the potential for cross-contamination or the requirements for containment.
-
-                
-
-                
-
-                    
 
 ### 
 
-                    
-
-                        
-
 #### 
-
-                        
-
-                            
-
-                            
-
-                            
-
-                        
-
-                    
-
-                    
-
-                        
 
 #### vs. —
 
-                        
-
-                        
-
-                            
-
-                            
-
-                            
-
-                        
-
-                    
-
-                
-
-            
-
-            
-            
-
-## 4.6.3.1 Personnel Airlocks (PAL)
-
-            
-
-                
-
-                    
+## **4.6.3.1 Personnel Airlocks (PAL) 4.6.3.1 (PAL)**
 
 ### 4.6.3.1 Personnel Airlocks (PAL) from Lower Grade to Higher Grade
 
-                    
-
 Unidirectional flow is suggested for ISO 8/Grade C and higher personnel airlocks (i.e., personnel should not gown and de-gown in the same PAL). If a single airlock is provided, procedures should be established to prevent simultaneous gowning and de-gowning.
-
-                    
 
 PAL considerations include:
 
-                    
-
-                        
 - PALs should have clearly defined changing areas, adequate garment storage, dressing mirrors, and access control.
 
-                        
 - Step-over benches should be used in ISO 8/Grade C and ISO 7/Grade B PALs to put on shoe covers, boot covers, etc.
 
-                        
 - Toilet rooms should not be directly accessed from locker rooms or transfer zones where personnel will change for entry into ISO 8/Grade C or higher areas.
 
-                        
 - Hand washing sinks should be limited to CNC or Grade D areas.
 
-                        
 - Hand sanitizing gels and solutions should be used in higher (cleaner) classifications.
-
-                    
-
-                
-
-                
-
-                    
 
 ### PAL
 
-                    
-
-                        
-
 #### PAL
 
-                        
-
-                            
-
-                            
-
-                            
-
-                            
-
-                            
-
-                        
-
-                    
-
-                    
-
-                        
-
 #### 
-
-                        
-
-                    
-
-                    
-
-                        
 
 #### Step-over Bench
 
-                        
-
-                    
-
-                
-
-            
-
-            
-            
-
-## 4.6.3.2 Material Airlocks (MAL)
-
-            
-
-                
-
-                    
+## **4.6.3.2 Material Airlocks (MAL) 4.6.3.2 (MAL)**
 
 ### 4.6.3.2 Material Airlocks (MAL) from Lower Grade to Higher Grade
 
-                    
-
 Airlocks should be sized appropriately to allow materials to be staged in the airlocks during disinfectant dwell times and to allow personnel adequate space for movement without compromising the materials or airflows.
-
-                    
 
 Personnel gowning is allowed in a material airlock exclusively to allow personnel access to higher grade airlocks to support the movement of material. Personnel may not enter the production suite through this path.
 
-                    
-
 A transition line should be established when an improvement step takes place within the airlock. Transition across the line requires an improvement activity, either unwrapping or wiping of all materials.
-
-                    
 
 For sequential, adjacent MALs, personnel on the entry side of a MAL may pass through the MAL to the entry side of the higher grade MAL for the purpose of facilitating material movement. For example, CNC or Grade D personnel can go to the entry side of the ISO 8/Grade C MAL (without crossing the transition line).
 
-                    
-
 **Note:** Manual transfers into ISO 7/Grade B are often inferior to automated sterilization systems or decontamination chambers; these should be used where practical. Decontamination should allow for the required dwell time to assure the effectiveness of disinfection for manual transfers.
-
-                
-
-                
-
-                    
 
 ### MAL
 
-                    
-
-                        
-
 #### MAL
-
-                        
-
-                            
-
-                            
-
-                            
-
-                            
-
-                        
-
-                    
-
-                    
-
-                        
 
 #### vs.
 
-                        
-
-                    
-
-                
-
-            
-
-            
-            
-
-## 4.6.3.3 & 4.6.3.4 Same Grade / Exit Airlocks
-
-            
-
-                
-
-                    
+## **4.6.3.3 & 4.6.3.4 Same Grade / Exit Airlocks 4.6.3.3 & 4.6.3.4 /**
 
 ### 4.6.3.3 PAL or MAL within the Same Grade
 
-                    
-
 No additional gowning is required when moving between areas of the same grade, except where required for personnel protection or material containment.
-
-                    
 
 ### 4.6.3.4 Exit Airlocks from Higher Grade to Lower Grade
 
-                    
-
 Generally, personnel and materials can share exit airlocks. Separate personnel and material exit airlocks are preferred at higher classifications where the de-gowning activity is substantial and in areas of high material movement activity.
-
-                    
 
 Separate airlocks must be provided when there is a dwell time associated with material decontamination using chemical disinfectants.
 
-                
-
-                
-
-                    
-
 ### 
 
-                    
-
-                        
+#### 
 
 #### 
 
-                        
-
-                    
-
-                    
-
-                        
-
 #### 
-
-                        
-
-                            
-
-                            
-
-                            
-
-                        
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
-
-                    
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-    
-    
-
-        
-
-            
 
 4.6
 
-            
-
-                
-
 ## 4.6.4 Pass Boxes
-
-                
-
-            
-
-        
-
-        
-
-            
-
-                
-
-                    
 
 ### 4.6.4 Pass Boxes
 
-                    
-
 Pass boxes (also known as pass-through boxes or transfer hatches) may be used in lieu of material airlocks for smaller materials, equipment, product containers, waste, samples, etc.
-
-                    
 
 The materials and construction should be compatible with the cleaning regime and consistent with the standards of the room(s) they are located in.
 
-                    
-
 For detailed information about pass boxes, refer to Chapters 5 and 11.
-
-                
-
-                
-
-                    
 
 ### Pass Box
 
-                    
-
-                        
-
 #### vs.
-
-                        
-
-                            
-
-                            
-
-                            
-
-                            
-
-                        
-
-                    
-
-                    
-
-                        
 
 #### 
 
-                        
-
-                    
-
-                    
-
-                        
-
 #### Grade C Grade B
 
-                        
-
-                        
-
-                            
-
-                            
-
-                            
-
-                        
-
-                    
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-    
-    
-
-        
-
 ### Section Summary /
-
-        
-
-            
-
-            
-
-            
-
-            
-
-            
-
-            
-
-        
-
-    
-
-    
-
-ISPE Baseline® Guide Volume 3: Sterile Product Manufacturing Facilities (3rd Edition, 2018)
-
-    
-
-Educational Material — Bilingual English/Traditional Chinese
 
 ⇧
 
@@ -9992,44 +5949,6 @@ Where "at rest" testing is undertaken, it is important that a "clean up" (also c
 
                         
 
-#### Three Occupancy States /
-
-                        
-                            
-                                
-                                
-                                
-                            
-| --- | --- | --- |
-                            
-                                **  
-**
-                                
-                                
-                            
-| In Operation | | HVAC + + + |
-                            
-                                **  
-**
-                                
-                                
-                            
-| At Rest | | HVAC |
-                            
-                                **  
-**
-                                
-                                
-                            
-| As-Built | | HVAC |
-                        
-
-                    
-
-                    
-
-                        
-
 #### Purge Time /
 
                         
@@ -10107,45 +6026,6 @@ The term "recovery" and "air change" do not apply to UAF spaces (usually ISO 5/G
                     
 
 ### 5.1.5.1
-
-                    
-
-                        
-
-#### Two Recovery Methods /
-
-                        
-                            
-                                
-                                
-                                
-                            
-| | | ISO 14644-3 |
-| --- | --- | --- |
-                            
-                                
-                                
-                                
-                            
-                            
-                                
-                                
-                                
-                            
-| | | Grade C: 1-logGrade B: 2-log |
-                            
-                                
-                                
-                                
-                            
-                            
-                                
-                                
-                                
-                            
-                        
-
-                    
 
                     
 
@@ -10428,73 +6308,6 @@ A well-designed LP/GAAS involves proper configuration of the extract to ensure a
 ### Table 5.1: Examples of LP/GAAS Applications
 
                     
-                        
-                            
-                            
-                            
-                            
-                        
-| Process | LP/GAAS Application | Background | Design Intent |
-| --- | --- | --- | --- |
-                        
-                            
-                            
-                            
-                            
-                        
-| Pre-Sterilized Syringe Tub Transfer | Over outer bag removal station | Grade D | Protect inner bag/tub from contamination during de-bagging |
-                        
-                            
-                            
-                            
-                            
-                        
-| Process Tank Protection | Over tank manway or open ports | ISO 8/Grade C | Protect exposed product contact surfaces during material additions |
-                        
-                            
-                            
-                            
-                            
-                        
-| Capping | Over fully stoppered vials | ISO 8/C or Grade D | Consistent with EU Annex 1 and FDA recommendations |
-                        
-                            
-                            
-                            
-                            
-                        
-| Isolator Mousehole | Outside the isolator mousehole | ISO 8/Grade C | Reduce risk of air induction into isolator due to turbulence |
-                        
-                            
-                            
-                            
-                            
-                        
-| RABS Door Swings | Along RABS perimeter over door swings | ISO 7/Grade B | Protect gloves and door surfaces during interventions |
-                        
-                            
-                            
-                            
-                            
-                        
-| Autoclave/Oven Unloading | Over/near unload area | ISO 7/B or ISO 8/C | Minimize contamination of sterilized articles during cooling |
-                        
-                            
-                            
-                            
-                            
-                        
-| Parts Preparation | In parts preparation area | ISO 8/Grade C | Protect articles during wrapping and autoclave preparation |
-                        
-                            
-                            
-                            
-                            
-                        
-| Parts Washer Unloading | Over unloading area | ISO 8/Grade C | Reduce particulate contamination during unloading/transfer |
-                    
-
-                
 
                 
 
@@ -10631,55 +6444,6 @@ Principles for establishing LP/GAAS EM limits:
 ### Table 5.2: Recommended Initial Qualification Limits for LP/GAAS
 
                     
-                        
-                            
-                            
-                            
-                            
-                            
-                            
-                        
-| Installation | Background | Total Particles (particle/m³) | Active Air Viable (CFU/m³) | Settle Plates (CFU/4hr) | Contact Plates (CFU/plate) |
-| --- | --- | --- | --- | --- | --- |
-                        
-                            
-                            
-                            
-                            
-                            
-                            
-                        
-| LP/GAAS in ISO 7/Grade B background (e.g., RABS perimeter protection) | ISO 7/Grade B | 35,200 | 5 | 3 | 3 |
-                        
-                            
-                            
-                            
-                            
-                            
-                            
-                        
-| LP/GAAS in ISO 8/Grade C with RABS (e.g., capper with glove ports) | ISO 8/Grade C | 352,000 | 33 | 17 | 8 |
-                        
-                            
-                            
-                            
-                            
-                            
-                            
-                        
-| LP/GAAS in ISO 8/Grade C without RABS (e.g., tank manway, autoclave unload) | ISO 8/Grade C | 352,000 | 50 | 25 | 12 |
-                        
-                            
-                            
-                            
-                            
-                            
-                            
-                        
-| LP/GAAS in Grade D background (e.g., syringe tub de-bagging) | Grade D | 3,520,000 | 100 | 50 | 25 |
-                    
-
-                
 
                 
 
@@ -11234,127 +6998,24 @@ This table bridges the differing cleanliness classifications used by major regul
 #### US FDA Classification (In Operation)
 
                     
-                        
-                            
-                            
-                            
-                            
-                        
-| ISPE Designation | ISO Class | ≥0.5 μm (particle/ft³) | ≥0.5 μm (particle/m³) |
-| --- | --- | --- | --- |
-                        
-| ISO 5/Grade A | ISO 5 | 100 | 3,520 |
-                        
-| ISO 6 | ISO 6 | 1,000 | 35,200 |
-                        
-| ISO 7/Grade B | ISO 7 | 10,000 | 352,000 |
-                        
-| ISO 8/Grade C | ISO 8 | 100,000 | 3,520,000 |
-                    
-
-                    
 
 #### EU/PIC/S Classification (In Operation)
-
-                    
-                        
-                            
-                            
-                            
-                        
-| Grade | ≥0.5 μm (particle/m³) | ≥5.0 μm (particle/m³) |
-| --- | --- | --- |
-                        
-| Grade A | 3,520 | 20 |
-                        
-| Grade B | 352,000 | 2,900 |
-                        
-| Grade C | 3,520,000 | 29,000 |
-                    
 
                     
 
 #### EU/PIC/S Classification (At Rest)
 
                     
-                        
-                            
-                            
-                            
-                        
-| Grade | ≥0.5 μm (particle/m³) | ≥5.0 μm (particle/m³) |
-| --- | --- | --- |
-                        
-| Grade A | 3,520 | 20 |
-                        
-| Grade B | 3,520 | 29 |
-                        
-| Grade C | 352,000 | 2,900 |
-                        
-| Grade D | 3,520,000 | 29,000 |
-                    
-
-                    
 
 #### Microbiological Action Limits (In Operation)
 
                     
-                        
-                            
-                            
-                        
-| Classification | Active Air (CFU/m³) |
-| --- | --- |
-                        
-| ISO 5/Grade A | < 1 |
-                        
-| ISO 6 | 7 |
-                        
-| ISO 7/Grade B | 10 |
-                        
-| ISO 8/Grade C | 100 |
-                        
-| Grade D | 200 |
-                    
-
-                
 
                 
 
                     
 
 ### 5.4.1 5.3
-
-                    
-
-                        
-
-#### Harmonized Classification /
-
-                        
-                            
-                                
-                                
-                                
-                                
-                            
-| ISPE | FDA | EU/PIC/S | ISPE |
-| --- | --- | --- | --- |
-                            
-| ISO 5/Grade A | ISO 5 | Grade A | Grade 5 |
-                            
-| ISO 6 | ISO 6 | N/A | Grade 6 |
-                            
-| ISO 7/Grade B | ISO 7 | Grade B | Grade 7 |
-                            
-| ISO 8/Grade C | ISO 8 | Grade C | Grade 8 |
-                            
-| Grade D | N/A | Grade D | CNC+ |
-                            
-| CNC | N/A | Grade D | CNC |
-                        
-
-                    
 
                     
 
@@ -11427,1893 +7088,478 @@ Key Takeaways from Sections 5.1–5.4
 
 # Chapter 5b: HVAC — Design & Process Knowledge (5.5–5.7) / HVAC —
 
-    
-
 ISPE Baseline Guide Vol. 3: Sterile Product Manufacturing Facilities (3rd Ed. 2018)
-
-    
 
 ISPE Baseline Guide Vol. 3 (3rd Ed.) | p123 – p136
 
-    
-
 ## Environmental Critical Parameters
-
-            
 
 Temperature, Humidity, Contaminants, and Other HVAC Parameters
 
-        
-
-    
-
-    
-
-        
-        
-
-### 5.5.1 Temperature
-
-        
-
-            
-
-                
+### **5.5.1 Temperature 5.5.1 **
 
 Higher room temperature may affect the comfort of operators in the room, causing them to release more viable particles (perspiration and respiration), especially during more strenuous activities. A renovated or new facility should find technical solutions to eliminate the need for strenuous manual activities. Heavier gowning also would require lower room temperatures for comfort.
 
-                
-
 Generally, a room temperature in the lower end of the typical comfort range, around **18–22°C** (64.4–71.6°F), can be easily maintained at reasonable cost.
-
-                
 
 Product temperature limits may differ from room temperatures for operator comfort. For prolonged residence of product with no special temperature requirements, USP <659> suggests temperature limits for “controlled room temperature” and other storage conditions. Room temperature limits of **15–25°C** (59–77°F) are common.
 
-            
-
-            
-
-                
+#### 
 
 #### 
 
-                
-
-                
-
-                    
-
-                    
-
-                
-
-                
-
-                    
-
-#### 
-
-                    
-
-                
-
-            
-
-        
-
-        
-        
-
-### 5.5.2 Relative Humidity
-
-        
-
-            
-
-                
+### **5.5.2 Relative Humidity 5.5.2 **
 
 Because product may be exposed to the surrounding environment for a relatively short time, usually during formulation and filling, the influence of the room’s humidity is minimal. Hydrophilic liquids and products in powder form, however, may be significantly affected by moisture in the surrounding air, and should be processed in low Relative Humidity (RH) rooms or enclosures.
 
-                
-
 Low humidity environments may create their own problems, such as **static electricity** and powder flow problems.
-
-                
 
 Room RH above 70% can, over time, lead to **mold growth** in some areas. It has been good practice to hold the room environment to below 60% RH (as growth of yeast and fungi are not observed below 0.60 AW or 60% RH, per USP <1112>). Studies have shown that some mold spores can germinate when exposed to >70% RH and can propagate on common building materials as RH approaches and exceeds 80%.
 
-                
-
 Unless product requirements dictate otherwise, a comfort humidity of **30–60% RH** is recommended. RH values as low as 20–25% may be used as a lower limit in dry or cold climates, but these values are at the lower end of the range suggested for human health and may result in elevated levels of static electricity. **RH below 25% is not recommended.**
 
-            
-
-            
-
-                
+#### 
 
 #### 
 
-                
-
-                    
+#### 
 
 #### 
 
-                    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                    
-
-                
-
-                
-
-                    
-
-#### 
-
-                    
-
-                        
-
-                        
-
-                        
-
-                    
-
-                
-
-                
-
-                    
-
-#### 
-
-                    
-
-                
-
-            
-
-        
-
-        
-        
-
-### 5.5.3 Environmental Contaminants
-
-        
-
-            
-
-                
+### **5.5.3 Environmental Contaminants 5.5.3 **
 
 Airborne particulate contaminant levels depend on:
 
-                
-
-                    
 - **Grade and integrity of final air supply filters** — affecting quality of air delivered to the space
 
-                    
 - **Quantity of airborne contaminants** entering the space from within the room (from personnel, equipment, and materials) and from sources external to it (particle generation rate). Note: Leakage of unfiltered air from HVAC equipment can also be a source of particles.
 
-                    
 - **Airflow introduced to the space:**
-                        
 
-                            
     - Cleanliness and flow rate sufficient to dilute airborne particles to acceptable levels
 
-                            
     - Air change rate may be used as an indirect measure of dilution airflow, which affects the time for the room to recover from “in use” to “at rest” conditions
 
-                        
-
-                    
-
-                    
 - **Differential pressure regime** (including cascade, bubble, and sink arrangements)
 
-                    
 - **Airlocks and anterooms** (providing transition zones for cleaning of incoming materials and personnel as well as a buffer to intercept airborne particulate)
 
-                    
 - **Airflow patterns within the cleanroom:**
-                        
 
-                            
     - Particulate removal efficiency (ventilation efficiency) for non-unidirectional cleanrooms
 
-                            
     - Airflow visualization to demonstrate satisfactory patterns, per ISO 14644-3
 
-                        
-
-                    
-
-                
-
-            
-
-            
-
-                
-
 #### 
 
-                
-
-                
-
-                    
-
 #### 
-
-                    
-
-                    
-
-                        
-
-                        
-
-                        
-
-                    
-
-                
-
-                
-
-                    
 
 #### (Room Recovery)
 
-                    
+### **5.5.4 Other Potential HVAC Critical Parameters 5.5.4 **
 
-                
-
-            
-
-        
-
-        
-        
-
-### 5.5.4 Other Potential HVAC Critical Parameters
-
-        
-
-            
-
-                
-
-                    
 - **Airflow patterns within the room** to ensure sufficient mixing in turbulent cleanroom design, especially if air change rates are below 20 ACH in an ISO 8/Grade C space, or if local sites of high airborne particles are observed.
 
-                    
 - **Recovery period** from “in use” to “at rest” (common in EU facilities), which is a good indicator of the air system’s overall effectiveness (“robustness”):
                         
 
-                            
     - The recovery time is measured from the time when room activity ceases
 
-                            
     - The EU GMPs suggest **15 to 20 minutes** as an acceptable recovery time
 
-                        
-
-                    
-
-                    
 - **Noise and vibration levels** (rarely product requirements, but may be driven by operator health requirements)
 
-                    
 - **Occupational (operator) product exposure levels**
 
-                
-
-            
-
-            
-
-                
+#### 
 
 #### 
 
-                
-
-                    
-
 #### 
-
-                    
-
-                    
-
-                
-
-                
-
-                    
-
-#### 
-
-                    
-
-                
-
-            
-
-        
-
-    
-
-    
-
-        
 
 5.6
 
-        
-
-            
-
 ## Facility Layout and HVAC Design
-
-            
 
 Pressure Cascades, Airlocks, Containment, and Hazardous Products
 
-        
-
-    
-
-    
-
-        
-        
-
-### 5.6.1 Manufacturing Environment and Cleanliness Cascades
-
-        
-
-            
-
-                
+### **5.6.1 Manufacturing Environment and Cleanliness Cascades 5.6.1 **
 
 Critical areas are locations where sterile product, container/closures, product contact surfaces, or filled (partially stoppered) containers are exposed or unprotected. Examples include:
 
-                
-
-                    
 - Point of fill
 
-                    
 - Sterilized vials/caps entering the sterile processing area
 
-                    
 - Product containers opened in the aseptic processing area
 
-                    
 - Connections made to product containers
 
-                    
 - Holding of sterilized container/closures and machine contact surfaces
 
-                    
 - Transfer of partially stoppered containers for lyophilization
 
-                    
 - Cooling of sterilized container/closures following heat sterilization
 
-                    
 - Connecting, opening, or assembling of process sterilizing filters
 
-                    
 - Storage and assembly of sterilized equipment
 
-                    
 - Transfer or holding of stoppered, uncapped vials
 
-                    
 - Capping of filled vials
-
-                
-
-                
 
 Once critical areas are identified, appropriate environmental standards can be assigned.
 
-                
-
 The guide defines three pressurization principles:
 
-                
-
-                    
 - **Cascade Principle (Figure 5.1A):** Air flows from highest pressure to lowest pressure area.
 
-                    
 - **Sink Principle (Figure 5.1B):** Commonly applied to high containment products. The transition zone is at lowest pressure; air flows from the cleanroom and corridor.
 
-                    
 - **Bubble Principle (Figure 5.1C):** Commonly applied to high aerosol producing products. The transition zone is at highest pressure; air flows to the cleanroom and corridor.
 
-                
-
-            
-
-            
-
-                
+#### 
 
 #### 
 
-                
-
-                
-
-                    
-
-#### 
-
-                    
-                        
-                            
-                            
-                            
-                        
-| --- | --- | --- |
-                        
-                            ****
-                            
-                            
-                        
-| Cascade | | |
-                        
-                            ****
-                            
-                            
-                        
-| Sink | | / |
-                        
-                            ****
-                            
-                            
-                        
-| Bubble | | |
-                    
-
-                
-
-                
-
-                    
-
-#### 
-
-                    
-
-                
-
-            
-
-        
-
-        
-        
-
-### 5.6.2 Differential Pressures
-
-        
-
-            
-
-                
+### **5.6.2 Differential Pressures 5.6.2 **
 
 An airflow cascade should be set up using a differential pressure (DP) cascade. Key considerations:
 
-                
-
-                    
 - Minimum suggested DP is **10–15 Pa** (0.04–0.06" wg) between air classes with doors closed. Typical design pressure: **12.5 ± 2.5 Pa** per step.
 
-                    
 - Rooms of differing criticality within an air class may be separated by less pressure, as long as DP can be reliably maintained and monitored.
 
-                    
 - Minimum suggested DP value is **5 Pa** between areas of like classification.
 
-                    
 - Where DP less than zero (pressure reversal) is possible, DP sensors should be capable of sensing negative pressures and triggering alarms.
 
-                    
 - Excessive compounded pressure may create problems with the fabric of the highest pressure room, materials transferred across boundaries, or doors. Typical maximum room pressure is usually **less than 45 Pa** relative to the building.
 
-                    
 - There is no mandate to maintain pressurization between spaces while the door between them is open; attempting to do this generally results in oversized mechanical systems and unstable control.
 
-                    
 - An overall flow of air in the desired direction when door(s) are open should be maintained.
 
-                    
 - Pressure stabilizers (barometric dampers) are preferred over open ports and fixed dampers for maintaining velocity across open doors.
 
-                    
 - Temperature differences between spaces should not induce convection currents that overcome the intended direction of flow.
 
-                    
 - Highly potent, radiological, live microorganism, sensitizing, cytotoxic, hormonal, or biosafety hazards should be contained, possibly requiring bubble and sink arrangements.
-
-                
-
-                
 
 A risk assessment is recommended to review all concerns and potential failure states in the determination of the final pressure regime.
 
-            
-
-            
-
-                
-
 #### 
 
-                
-
-                    
-
 #### 
-
-                    
-                        
-                            
-                            
-                        
-| --- | --- |
-                        
-                            
-                            
-                        
-| DP | 10–15 Pa 12.5 ± 2.5 Pa |
-                        
-                            
-                            
-                        
-| DP | ≥ 5 Pa |
-                        
-                            
-                            
-                        
-| | < 45 Pa |
-                    
-
-                
-
-                
-
-                    
-
-#### 
-
-                    
-
-                
-
-                
-
-                    
 
 #### (Pressure Stabilizer)
 
-                    
-
-                
-
-            
-
-        
-
-        
-        
-
-### Pressurization Scheme Examples
-
-        
-
-            
-
-                
+### **Pressurization Scheme Examples **
 
 #### Table 5.4: Scheme #1 — Tighter Control Range, Larger Step Spacing
 
-                
-                    
-                        
-                        
-                        
-                        
-                    
-| Step | Low (Pa) | Set Point (Pa) | High (Pa) |
-| --- | --- | --- | --- |
-                    
-| 0 | -2.50 | 0.00 | 2.50 |
-                    
-| 1 | 10.00 | 12.50 | 15.00 |
-                    
-| 2 | 22.50 | 25.00 | 27.50 |
-                    
-| 3 | 35.00 | 37.50 | 40.00 |
-                    
-| 4 | 47.50 | 50.00 | 52.50 |
-                    
-| 5 | 60.00 | 62.50 | 65.00 |
-                
-
-                
-
 Increment: 12.5 Pa | Range: ±2.5 Pa | Min DP Step: 7.5 Pa | Max DP Step: 17.5 Pa
-
-                
 
 #### Table 5.5: Scheme #2 — Less Stringent Control Range, Tighter Spacing
 
-                
-                    
-                        
-                        
-                        
-                        
-                    
-| Step | Low (Pa) | Set Point (Pa) | High (Pa) |
-| --- | --- | --- | --- |
-                    
-| 0 | -5 | 0 | 5 |
-                    
-| 1 | 17 | 22 | 27 |
-                    
-| 2 | 39 | 44 | 49 |
-                    
-| 3 | 61 | 66 | 71 |
-                    
-| 4 | 83 | 88 | 93 |
-                    
-| 5 | 105 | 110 | 115 |
-                
-
-                
-
 Increment: 12.5 Pa | Range: ±5.0 Pa | Min DP Step: 12.0 Pa | Max DP Step: 32.0 Pa
 
-            
-
-            
-
-                
+#### 
 
 #### 
 
-                
-
-                    
-
-#### vs
-
-                    
-                        
-                            
-                            
-                            
-                        
-| | #1 | #2 |
-| --- | --- | --- |
-                        
-                            
-                            
-                            
-                        
-| | ±2.5 Pa | ±5.0 Pa |
-                        
-                            
-                            
-                            
-                        
-                        
-                            
-                            
-                            
-                        
-| | 17.5 Pa | 32.0 Pa |
-                        
-                            
-                            
-                            
-                        
-                    
-
-                
-
-                
-
-                    
-
-#### 
-
-                    
-
-                
-
-            
-
-        
-
-        
-        
-
-### 5.6.3 Airlocks
-
-        
-
-            
-
-                
+### **5.6.3 Airlocks 5.6.3 **
 
 Airlocks preserve some DP between rooms of different air classification; if there is no airlock, the DP between two rooms would drop to nearly zero when the door is opened.
 
-                
-
 Airlocks are usually small and should be highly ventilated rooms (for quick recovery), with doors interlocked and/or alarmed to prevent more than one being opened at a time. Local alarms should be employed if:
 
-                
-
-                    
 - A door remains open for more than a preset period
 
-                    
 - Both doors are opened simultaneously
 
-                    
 - The DP across an airlock goes to zero
-
-                
-
-                
 
 Airlocks between classified areas interpose multiple doors between areas of differing classification. Regardless of the airlock classification, there is no need to design for 10–15 Pa per door; it is more appropriate to **divide the target pressurization across the number of doors present**.
 
-                
-
 Material pass-throughs (transfer hatches) for higher risk transfers should incorporate ventilated hatches (actively supplied with filtered air or passively ventilated). Best practice is to use pass-through hatches capable of automated sanitization (e.g., via VHP, pulse UV, NO2).
-
-                
 
 Airborne particle levels near the door of an airlock, at rest, should meet the same level as the highest classified room served by the airlock.
 
-            
-
-            
-
-                
+#### 
 
 #### 
 
-                
-
-                    
+#### 
 
 #### 
 
-                    
-
-                        
-
-                        
-
-                        
-
-                    
-
-                
-
-                
-
-                    
-
-#### 
-
-                    
-
-                
-
-                
-
-                    
-
-#### 
-
-                    
-
-                
-
-            
-
-        
-
-        
-        
-
-### 5.6.4 Biological Safety / Bio-Containment
-
-        
-
-            
-
-                
+### **5.6.4 Biological Safety / Bio-Containment 5.6.4 / **
 
 Where products may contain pathogens, viral vectors, or recombinant human DNA, biological safety requirements may modify the pressurization, filtration, and airlocking schemes suggested by the desired space cleanliness classification.
 
-            
-
-            
-
-                
-
 #### 
 
-                
-
-            
-
-        
-
-        
-        
-
-### 5.6.5 Hazardous Products and Operator Protection
-
-        
-
-            
-
-                
+### **5.6.5 Hazardous Products and Operator Protection 5.6.5 **
 
 For an open process, airflow pattern testing should consider operator protection as well as product protection. Local exhaust ventilation can help control the dissemination of hazardous aerosols to limit operator exposure.
 
-                
-
 Local pickup of potentially hazardous aerosols for treatment (e.g., filtration) and return to the room is possible for operator protection; however, risk assessment is recommended as failure of the treatment system should be considered. Generally, return of treated room air has a very low risk, while return of treated hazardous exhaust has a high risk.
-
-                
 
 The use of **barrier technologies** provides an opportunity to overcome this problem by preventing hazardous aerosols from entering the operator’s environment.
 
-            
-
-            
-
-                
-
 #### 
 
-                
-
-                    
-
 #### 
-
-                    
-
-                    
-
-                        
-
-                        
-
-                    
-
-                    
-
-                
-
-            
-
-        
-
-    
-
-    
-
-        
 
 5.7
 
-        
-
-            
-
 ## Process Knowledge and HVAC Design
-
-            
 
 Sterilizers, Barrier Technology, Lyophilizers, Capping, and UAF Design
 
-        
-
-    
-
-    
-
-        
-        
-
-### 5.7 Process-HVAC Interface Overview
-
-        
-
-            
-
-                
+### **5.7 Process-HVAC Interface Overview 5.7 -**
 
 Considerations for process knowledge, as it relates to HVAC design, include:
 
-                
-
-                    
 - Product specific processing limits (e.g., temperature, humidity, particles in air)
 
-                    
 - Occupational (operator) exposure limits
 
-                    
 - Product form (liquid, dry powder, etc.) and other special physical or chemical parameters
 
-                    
 - Degree of separation between the immediate process environment and the general room environment:
                         
 
-                            
     - **Very high degree:** isolator, closed process, closed RABS
 
-                            
     - **High degree:** active RABS, well-sealed passive RABS
 
-                            
     - **Moderate degree:** LP/GAAS, most passive RABS, some machine guarding
 
-                            
     - **Low degree:** strip curtains, air curtains
-
-                        
-
-                    
-
-                
-
-            
-
-            
-
-                
 
 #### HVAC
 
-                
-
-                
-
-                    
-
 #### 
 
-                    
-
-                
-
-            
-
-        
-
-        
-        
-
-### 5.7.1.1 Sterilizers
-
-        
-
-            
-
-                
+### **5.7.1.1 Sterilizers 5.7.1.1 **
 
 A key equipment selection that interacts with HVAC is the “in-feed” sterilizer. There are two basic types:
 
-                
-
-                    
 - **Static equipment** (such as autoclaves, dry heat ovens): Has little effect on the HVAC system and environmental balance, although hot air currents liberated on door opening may affect normal airflows. Heat and humidity gains should be considered. These are constant known quantities that can be anticipated.
 
-                    
 - **Dynamic equipment** (such as integrated sterilizing tunnels with conveyor openings): Have many differing operational and non-operational modes. They take air from or leak it to surrounding areas; these volumes change depending upon air temperature in the tunnel at the time. These changing conditions require **careful integration with the HVAC system**. There are serious risks of reversing DP and putting product at risk.
-
-                
-
-                
 
 Tunnel designs may have a DP control zone at the washed vial entry point to prevent blow-through of hot sterilizing air into the washing room.
 
-            
-
-            
-
-                
-
 #### HVAC
-
-                
-
-                    
-
-#### vs
-
-                    
-                        
-                            
-                            
-                            
-                        
-| --- | --- | --- |
-                        
-                            
-                            
-                            
-                        
-| HVAC | | |
-                        
-                            
-                            
-                            
-                        
-                        
-                            
-                            
-                            
-                        
-                    
-
-                
-
-                
-
-                    
 
 #### CDMO
 
-                    
-
-                
-
-            
-
-        
-
-        
-        
-
-### 5.7.1.2 Filling Room Equipment & ISO 5/Grade A Environments
-
-        
-
-            
-
-                
+### **5.7.1.2 Filling Room Equipment & ISO 5/Grade A Environments 5.7.1.2 ISO 5/A **
 
 Facilities using UAF and machine guarding or strip curtains provide inferior separation of the exposed sterile product from the surrounding environment, especially during operator intrusions.
 
-                
-
 The advent of personalized therapies (such as cell and gene therapy) has increased the need for small scale aseptic filling, sometimes for a single patient. In these situations, biological safety cabinets or clean workstations may be used to provide an ISO 5/Grade A environment. It is still preferable that these activities take place in an ISO 7/Grade B background.
-
-                
 
 Open filling operations are best protected by the use of **barrier technology**. The choice of barrier technology (isolator or RABS) impacts HVAC and controls design.
 
-                
-
 **Isolators** exhibit four primary modes of HVAC operation:
 
-                
-
-                    
 - **Outflow:** flowing HEPA filtered air over critical areas and out into the room through open doors
 
-                    
 - **Decontamination:** air tight to room while recirculating gaseous decontamination agent
 
-                    
 - **Aeration:** flowing HEPA filtered air out through the exhaust
 
-                    
 - **Operation:** flowing HEPA filtered air into the surrounding room through mouseholes
-
-                
-
-                
 
 **RABS** have only one mode of operation from an HVAC perspective, but come in two types:
 
-                
-
-                    
 - **Passive RABS:** utilize air directly from the HVAC system terminal HEPA filters (ceiling-mounted)
 
-                    
 - **Active RABS:** take in room supply air and circulate it through HEPA filters before releasing back to room below work height
-
-                
-
-                
 
 Best practice: all RABS air should be removed from the room via low returns, not from a high inlet on the RABS unit. High inlets can seriously impede proper air patterns. CFD modeling is recommended.
 
-            
-
-            
-
-                
-
 #### HVAC
-
-                
-
-                    
-
-#### HVAC
-
-                    
-                        
-                            
-                            
-                            
-                        
-| --- | --- | --- |
-                        
-                            
-                            
-                            
-                        
-| Outflow | HEPA → | / |
-                        
-                            
-                            
-                            
-                        
-| Decontamination | | VHP |
-                        
-                            
-                            
-                            
-                        
-| Aeration | HEPA → | |
-                        
-                            
-                            
-                            
-                        
-| Operation | HEPA → mousehole → | |
-                    
-
-                
-
-                
-
-                    
 
 #### Passive vs Active RABS
 
-                    
-
-                        
-
-                        
-
-                    
-
-                
-
-                
-
-                    
-
 #### RABS
 
-                    
-
-                        
-
-                        
-
-                        
-
-                    
-
-                
-
-            
-
-        
-
-        
-        
-
-### 5.7.1.3 Lyophilizers
-
-        
-
-            
-
-                
+### **5.7.1.3 Lyophilizers 5.7.1.3 **
 
 Stoppers in vials should be fully seated in an environment that meets ISO 5/Grade A microbial limits. Transfer of partially stoppered vials to lyophilizers should be under ISO 5/Grade A environmental conditions.
 
-                
-
 Loading the shelves of lyophilizer equipment creates potential for biological contamination of partially stoppered vials, unless ISO 5/Grade A continuity is maintained, preferably by the use of barrier technology. The use of **automated loading** represents best practice to maintain the sterile integrity of the product during lyophilizer loading.
 
-            
-
-            
-
-                
+#### 
 
 #### 
 
-                
-
-                    
-
-#### 
-
-                    
-
-                
-
-            
-
-        
-
-        
-        
-
-### 5.7.1.4 Capping Equipment
-
-        
-
-            
-
-                
+### **5.7.1.4 Capping Equipment 5.7.1.4 **
 
 Cappers traditionally generate large quantities of particles and are generally located outside filling and lyophilizer rooms. Airborne bioburden should be kept low until the cap has been crimped.
 
-                
-
 Transfer of stoppered, uncapped vials to capping should be under ISO 5/Grade A conditions until the vial leaves the aseptic environment. Thereafter, the vial transfer and capping environment should be served with **LP/GAAS HEPA filtered air**. It is acceptable that the actual environment may not meet ISO 5/Grade A “in use” during capping due to the liberation of particulates.
 
-            
-
-            
-
-                
+#### 
 
 #### 
 
-                
-
-                    
-
-#### 
-
-                    
-
-                
-
-            
-
-        
-
-        
-        
-
-### 5.7.2 General Manufacturing Area Environmental Design
-
-        
-
-            
-
-                
+### **5.7.2 General Manufacturing Area Environmental Design 5.7.2 **
 
 HVAC design based on **constant volume supply** to the space can minimize potential for DP upsets and low airflow, which could lead to higher particle counts. An airflow monitor should be fitted to indicate and alarm a reduction of airflow (and therefore air changes) to rooms.
 
-                
-
 #### 5.7.2.1 Operational Issues
-
-                
 
 Personnel practices can significantly impact contamination. Considerations include:
 
-                
-
-                    
 - Limiting or eliminating operator intervention into ISO 5/Grade A areas, and reducing operator numbers in ISO 7/Grade B areas
 
-                    
 - Avoiding personnel moving near critical areas such as isolator mouseholes or RABS when doors are opened (movements should be slow to minimize airflow interruption)
 
-                    
 - Understanding where operators are stationed during normal operation
 
-                    
 - Fitting glove ports in lieu of opening RABS during operation
 
-                    
 - Understanding personnel traffic routes to assure particulates are properly flushed from the space
-
-                
-
-                
 
 Process considerations include:
 
-                
-
-                    
 - Where the process generates particles — airflow patterns should direct particles away from critical sites
 
-                    
 - Control of heat from process equipment (ventilation with cool air, exhaust, or enclosure)
 
-                    
 - Controlling vapors from sporicides and other cleaning solutions (may require more outside air than needed for pressurization)
-
-                
-
-                
 
 #### 5.7.2.2 Physical Issues
 
-                
-
-                    
 - Good room and equipment finishes, cleanable to minimize re-entrainment of settled contamination
 
-                    
 - How rooms are sanitized (contact time, how quickly odors should be diluted)
 
-                    
 - Holes through walls (conveyor belts, sprinkler housings, electrical boxes) — potential for pressure leakage
 
-                    
 - Door clearances and tolerances — tighter doors require less exfiltration airflow
 
-                    
 - Door swings, closure force, and effect on room pressure
 
-                    
 - Equipment locations relative to air supply and return openings
 
-                    
 - Physical locations of critical areas in relation to uncontrolled areas
 
-                    
 - Use of active pressure control via automated dampers or use of statically balanced systems
 
-                
-
-            
-
-            
-
-                
-
 #### 
-
-                
-
-                    
 
 #### (Constant Volume)
 
-                    
-
-                
-
-                
-
-                    
+#### 
 
 #### 
 
-                    
-
-                    
-
-                        
-
-                        
-
-                        
-
-                    
-
-                
-
-                
-
-                    
-
-#### 
-
-                    
-
-                
-
-            
-
-        
-
-        
-        
-
-### 5.7.2.3 Supply and Extract Point Locations
-
-        
-
-            
-
-                
+### **5.7.2.3 Supply and Extract Point Locations 5.7.2.3 **
 
 For ISO 7/Grade B and ISO 8/Grade C rooms, the design and location of air supply outlets are critical to proper performance. The “Contaminant Removal Effectiveness” (ASHRAE) depends on the location and type of both supplies and returns. Considerations include:
 
-                
-
-                    
 - Air volume supplied to help achieve room design air change rates for recovery and particle dilution or displacement
 
-                    
 - Optimum number of air supply outlets to achieve good air distribution:
                         
 
-                            
     - Uniform distribution of supply points with smallest practical dead zones
 
-                            
     - Utilizing a larger number of terminal HEPA outlets generally produces better results than using the fewest supplies at highest allowable flow
 
-                            
     - The % ceiling coverage technique (ISO 14644-3) can provide good airflow patterns
 
-                        
-
-                    
-
-                    
 - Avoiding airflow through any HEPA or ULPA filter exceeding the manufacturer’s rating
 
-                    
 - Use of airflow distributing screens (polyolefin) for more nearly unidirectional flow
 
-                    
 - Use of non-aspirating diffusers (radial flow) for uniform air distribution
 
-                    
 - Consideration of final equipment location to avoid interference with supply outlets/equipment intakes
 
-                    
 - Standardized terminal HEPA filter sizes to limit replacement and capital costs; using a single size HEPA with different airflow volumes at each location can lead to **differential blinding**
 
-                    
 - For critical environments (>1 µm): extract/return grilles at **low level** (to minimize upward airflow) and at multiple locations evenly around the room
 
-                    
 - For high particle count areas (Grade D, CNC) with low risk operations: high level returns may be employed without adverse effect
 
-                
-
-            
-
-            
-
-                
-
 #### 
 
-                
-
-                    
-
 #### 
-
-                    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                    
-
-                
-
-                
-
-                    
-
-#### 
-
-                    
-                        
-                            
-                            
-                            
-                        
-| --- | --- | --- |
-                        
-                            
-                            
-                            
-                        
-| Grade B/C | | |
-                        
-                            
-                            
-                            
-                        
-| Grade D | | |
-                    
-
-                
-
-                
-
-                    
 
 #### (Differential Blinding)
 
-                    
-
-                
-
-            
-
-        
-
-        
-        
-
-### 5.7.3 Unidirectional Airflow (UAF) Design Considerations
-
-        
-
-            
-
-                
+### **5.7.3 Unidirectional Airflow (UAF) Design Considerations 5.7.3 (UAF) **
 
 #### 5.7.3.1 Local Airflow Patterns
 
-                
-
 The effect of localized air movement on room conditions during operation should be considered. Generally speaking:
 
-                
-
-                    
 - Airflow patterns that circulate from the floor up to work height are **undesirable**
 
-                    
 - Areas of very low velocity near critical operations are **undesirable**
 
-                    
 - Areas of very low velocity where particulate can accumulate are **undesirable**
 
-                    
 - Areas of closed recirculation (reservoir of particles) are **undesirable**
 
-                    
 - Airflow from less clean to more clean areas is **undesirable**
-
-                
-
-                
 
 Large thermal loads within the space (e.g., equipment heat gains, items cooling after sterilization) may cause thermal airflow movement that should also be taken into account. Ceiling mounted extract can help minimize recirculation due to high heat.
 
-                
-
 In principle, UAF protection sweeps air from the cleaner environment (where product is exposed) toward the operator and other potential contamination sources. Room airflow should be verified with airflow visualization (smoke) tests under at rest and simulated operational conditions.
-
-                
 
 #### 5.7.3.2 Horizontal versus Vertical Unidirectional Airflow
 
-                
-
 Two approaches to providing unidirectional flow protection:
 
-                
-
-                    
 - **Horizontal airflow** — effective when only product protection or only operator protection is of concern
 
-                    
 - **Vertical airflow** — usually used when both product and operator protection must be considered
-
-                
-
-                
 
 Target velocities are suggested as a footnote in the FDA guideline and other regulations. The important principle is **protection of the critical area**. During qualification, the velocity required to optimize protection during operating conditions should be determined, documented, and used as the basis of ongoing monitoring.
 
-                
-
 Advanced computer-aided airflow modeling programs (CFD) may assist in initial room and UAF modeling, but fine tuning may still be required during qualification.
-
-            
-
-            
-
-                
 
 #### (UAF)
 
-                
-
-                    
+#### 
 
 #### 
 
-                    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                    
-
-                
-
-                
-
-                    
-
-#### vs
-
-                    
-                        
-                            
-                            
-                        
-| --- | --- |
-                        
-                            
-                            
-                        
-| (Horizontal) | |
-                        
-                            
-                            
-                        
-| (Vertical) | |
-                    
-
-                
-
-                
-
-                    
-
 #### 
-
-                    
-
-                
-
-                
-
-                    
-
-#### 
-
-                    
-
-                    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                    
-
-                
-
-            
-
-        
-
-    
-
-    
-
-        
 
 S
 
-        
-
-            
-
 ## Section Summary /
-
-            
 
 Key Takeaways from Sections 5.5–5.7
 
-        
-
-    
-
-    
-
-        
-
-            
-
-                
-
-                    
-
 ### Key Takeaways
 
-                    
-
-                        
 - **Environmental Critical Parameters:** Temperature (18–22°C), humidity (30–60% RH), and airborne particulates are the three pillars of cleanroom environmental control. Each must be evaluated through product-specific risk assessment.
 
-                        
 - **Pressure Cascades:** Design DP of 10–15 Pa between air classes (doors closed), with 5 Pa minimum between like classifications. Maximum room pressure typically <45 Pa relative to building.
 
-                        
 - **Three Pressurization Principles:** Cascade (standard aseptic), Sink (high containment), and Bubble (high aerosol) address different product/process risk profiles.
 
-                        
 - **Airlocks:** Distribute target DP across all doors (not 10–15 Pa per door). High ventilation rates for quick recovery. Door interlocks and alarms are essential.
 
-                        
 - **Process-HVAC Integration:** The choice of barrier technology (isolator vs. RABS), sterilizer type (static vs. dynamic), and product form fundamentally shapes HVAC design requirements.
 
-                        
 - **Supply and Return Design:** More, smaller supply outlets outperform fewer, larger ones. Low-level returns for critical environments; standardized HEPA sizes to avoid differential blinding.
 
-                        
 - **UAF Principles:** Sweep air from clean to less clean. Verify with smoke tests. Use vertical UAF when both product and operator protection are needed. CFD modeling recommended.
 
-                    
-
-                
-
-            
-
-            
-
-                
-
-                    
-
 ### 
-
-                    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                    
-
-                
-
-            
-
-        
-
-        
-        
-
-            
-
-#### Key Terminology Reference /
-
-            
-                
-                    
-                    
-                    
-                
-| English | | Abbreviation |
-| --- | --- | --- |
-                
-| Pressure Cascade | | DP Cascade |
-                
-| Air Handling Unit | | AHU |
-                
-| Fan Filter Unit | | FFU |
-                
-| Recirculation | | — |
-                
-| Once-Through System | | — |
-                
-| Room Recovery | | — |
-                
-| Critical Parameter | | CP |
-                
-| Supply Air | | SA |
-                
-| Return Air | | RA |
-                
-| Exhaust Air | | EA |
-                
-| Unidirectional Airflow | | UAF |
-                
-| Differential Blinding | | — |
-            
-
-        
-
-    
-
-    
-
-ISPE Baseline Guide Vol. 3 (3rd Ed. 2018): Sterile Product Manufacturing Facilities
-
-    
-
-Chapter 5b: HVAC — Design & Process Knowledge (5.5–5.7) | Pages 123–136
-
-    
-
-Educational Material — For Learning Purposes Only
 
 ↑
 
@@ -13473,69 +7719,6 @@ The test frequency for each test depends upon plant operating experience, the pr
 ## 
 
         
-        
-
-            
-
-#### 
-
-            
-                
-                    
-                        
-                        
-                        
-                    
-| --- | --- | --- |
-                
-                
-                    
-                        
-                        
-                        
-                    
-| Particle Count | / EM | |
-                    
-                        
-                        
-                        
-                    
-| HEPA | 2 | |
-                    
-                        
-                        
-                        
-                    
-| HEPA | 1-2 | |
-                    
-                        
-                        
-                        
-                    
-| / | HEPA | |
-                    
-                        
-                        
-                        
-                    
-| Grade A | 3-5 | |
-                    
-                        
-                        
-                        
-                    
-| | 3-5 | |
-                    
-                        
-                        
-                        
-                    
-| | + | |
-                
-            
-
-        
-
         
         
 
@@ -13835,8 +8018,6 @@ During design, risk assessment should be performed to assess the positive and ne
         
 
     
-
-5.9 Qualification of HVAC Systems
 
     
 
@@ -14177,39 +8358,7 @@ For additional information, refer to ISPE Baseline Guide: Commissioning and Qual
 
             
 
-#### 
-
-            
-
-                
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-    
-
- 
-
-    
-
-ISPE Baseline Guide Vol. 3 (3rd Ed. 2018): Sterile Product Manufacturing Facilities
-
-    
-
-Chapter 5c: HVAC — Monitoring & Qualification (Sections 5.8–5.10) | Educational Material
-
-    
-
-For training purposes only. Refer to original ISPE publication for official guidance.
+####
 
 ## Chapter 5: 6. Utility Systems (p143-p150)
 
@@ -14281,1770 +8430,362 @@ Designers should also consider other relevant design criteria, such as safety, r
 
 # Chapter 9a: Barrier & Isolator Technology — Types & Comparison (9.1–9.4)
 
-    
-
-    
-
 ISPE Baseline Guide Vol. 3 (3rd Ed.) | p167 – p178
-
-    
-    
-
-        
 
 ## Introduction /
 
-                
-
 p167 – p168
 
-            
-
-        
-
-        
-
-            
-
-                
-
-                    
-
 English — Original Content
-
-                    
 
 For new and renovated aseptic processing facilities, barrier technologies, such as isolators and RABS, are usually preferred to protect the product. They are being increasingly used for aseptic filling. Isolators can provide a higher safety level and are typically used in new facility designs. RABS are usually used to upgrade existing facilities, when existing equipment needs to have better protection.
 
-                    
-
 Both technologies can be applied to batches of all sizes, from small scale filling of clinical trial materials to large, automated, high speed processing lines. They can also be applied to research and development, quality control (sterility testing), and drug formulation. When the product is hazardous, isolators or RABS, with their reduced air overspill into a room, can help to protect the operator and the surrounding environment.
-
-                    
 
 People are considered the greatest source of contamination in the manufacturing of sterile products. Over the past decades, substantial progress has been made in separating the operator from the critical areas within the aseptic manufacturing suite.
 
-                    
-
 Physical separation, equipment integration, and the increasing use of automation in these systems can reduce the need for personnel involvement inside critical areas. Advantages of these technologies can, however, be counteracted by poor design and ineffective operator training. Ergonomic aspects are fundamental to the design concept and should be considered in conjunction with:
 
-                    
-
-                        
 - Mechanical movement (i.e., moving machine parts)
 
-                        
 - Safe material and product transfers in and out of the barrier
 
-                        
 - Cleanability
 
-                        
 - Ability to decontaminate the system
 
-                        
 - Appropriate background environment in which the system is to be operated
-
-                    
-
-                    
 
 These decisions should be made on a risk-based approach, depending upon the application and specific system design.
 
-                
-
-                
-
-                    
-
-                    
-
-                    
-
-                    
-
-                        
-
 ## System Definitions /
-
-                
 
 p168 – p172
 
-            
-
-        
-
-        
-
-            
-            
-
-                
-
-                    
-
 English — Original Content
-
-                    
 
 The differences between the types of isolators and RABS used in pharmaceutical aseptic processing should be understood. Isolators and RABS can be broadly classified according to the type of separation they provide and the assurance of maintaining that separation, although there may be some overlap in the degrees of separation and operator protection.
 
-                    
-
 Figure 9.1 (from ISO 14644-7) illustrates increasing levels of separation assurance moving from purely aerodynamic separation (as in a unidirectional airflow hood) to complete physical separation (as in a closed isolator).
-
-                    
 
 Along the continuum of assurance of maintaining separation:
 
-                    
-
-                        
 - **RABS** tend to utilize physical separation and air overspill all around the barrier to separate personnel from the aseptic processing critical areas.
 
-                        
 - **Isolators** tend to rely on physical separation, positive pressure differentials and mouseholes with air overspill to provide the necessary level of separation and protection.
-
-                    
-
-                    
 
 Where hazardous materials are aseptically processed:
 
-                    
-
-                        
 - **RABS** requires personnel to wear PPE and rooms to be fully segregated by airlocks to avoid spreading of product throughout the facility and into the environment.
 
-                        
 - **Isolators** maintain operator protection by technical measures, such as adequate differential pressure zones and the integrity of the isolator.
-
-                    
-
-                
-
-                
-
-                    
-
-                    
-
-                    
-
-                        
 
 #### Figure 9.1
 
-                        
-
-                        
-
-                        
-
-                    
-
-                    
-
-                    
-
-                        
-
-                        
-
-                    
-
-                    
-
-                        
-
 #### 
 
-                        
-
-                    
-
-                
-
-            
-
-            
-            
-
-            
-
-                
-
-                    
-
 English — Original Content
-
-                    
 
 An aseptic isolator is described as a decontaminated unit which meets ISO 5/Grade A conditions on the inside and does not compromise these conditions over a specified period of time, by providing an uncompromised isolation of its interior from the surrounding environment.
 
-                    
-
 ### 9.2.1.1 Types of Isolators
-
-                    
 
 Aseptic isolators can be either "open" or "closed", as defined in PDA TR 34, depending upon their operational state and may operate at positive or negative pressures with respect to the surrounding environment:
 
-                    
-
-                        
 - When **"closed"**, isolators may exchange air with the surrounding environment only through microbial retentive filters.
 
-                        
 - When **"open"**, isolators may transfer air directly to the surrounding environment through openings (e.g., mouseholes) that prevent the ingress of viable and non-viable particles.
-
-                    
-
-                    
 
 **1. Closed Isolators**
 
-                    
-
 Closed isolators are typically used for batch processes that do not require a high number of components. Material is placed inside the isolator before a decontamination cycle is performed, or material is transferred in via decontamination airlocks. Typical applications for a closed isolator are for a formulation process or for sterility testing.
-
-                    
 
 **2. Open Isolators**
 
-                    
-
 Open isolators are used in continuous process applications. Material is continuously transferred into the isolator via appropriate decontamination or sterilization devices. A differential pressure zoning concept guarantees a continuous airflow towards the surrounding environment to prevent particulate or microbiological ingress through transfer openings.
-
-                    
 
 ### 9.2.1.2 Considerations
 
-                    
-
 The level of separation provided by isolators (both open and closed) allows for operating an isolator in an ISO 8/Grade C environment (Grade D or unclassified, but access controlled for sterility testing application), while providing ISO 5/Grade A conditions inside the isolator, after performing a surface decontamination.
-
-                    
 
 A surface decontamination cycle is typically capable of six-log spore reduction. A surface decontamination cycle should be applied following any event when the enclosure is opened towards the surrounding environment.
 
-                    
-
 The following should be considered for isolators:
 
-                    
-
-                        
 - Proper surface decontamination should be performed with a sporicidal agent (e.g., hydrogen peroxide).
 
-                        
 - Continuous positive pressure should be maintained inside the isolator.
 
-                        
 - Glove maintenance programs should ensure integrity and decontamination of gloves.
 
-                        
 - Transfer systems should ensure that the cleanliness of the isolator is not compromised.
 
-                        
 - Cleaning processes should ensure that all production remains are properly removed after a production batch, to a reproducible value allowing an efficient surface decontamination.
 
-                    
-
-                
-
-                
-
-                    
-
-                    
-
-                        
-
 #### 
-
-                        
-
-                    
-
-                    
 
 ### 9.2.1.1
 
-                    
-
-                    
-
-                        
-
-                        
-
-                    
-
-                    
-                        
-                            
-                            
-                            
-                        
-| --- | --- | --- |
-                        
-                            
-                            
-                            
-                        
-                        
-                            
-                            
-                            
-                        
-| | | / |
-                        
-                            
-                            
-                            
-                        
-                        
-                            
-                            
-                            
-                        
-                    
-
-                    
-
 ### 9.2.1.2
-
-                    
-
-                        
 
 #### 
 
-                        
-
-                    
-
-                    
-
-                    
-
-                    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                    
-
-                
-
-            
-
-            
-            
-
-            
-
-                
-
-                    
-
 English — Original Content
-
-                    
 
 A RABS is described as an aseptic processing system that provides an enclosed environment to house an aseptic processing line and supply it with ISO 5/Grade A unidirectional air. RABS utilize rigid wall enclosure design to provide a physical separation of the process. This rigid wall enclosure is decontaminated with sporicidal disinfectant and interventions are done using installed barrier gloves. RABS are rarely opened, except as appropriate.
 
-                    
-
 RABS design provides a physical separation of the process through rigid doors and gloves, while keeping air overspill into the surrounding (or positive differential pressure versus the surrounding) as the main method of separation. RABS can provide ISO 5/Grade A environments on the inside and can be located in ISO 7/Grade B surroundings. RABS should be decontaminated with a sporicidal agent and operated within a fully disinfected surrounding ISO 7/Grade B cleanroom.
-
-                    
 
 ### 9.2.2.1 Types of RABS
 
-                    
-
 **Operations Perspective:**
-
-                    
 
 **1. Open RABS (oRABS)**
 
-                    
-
 An open RABS is designed to operate with doors closed at all times, except in rare predefined circumstances when the doors of the enclosure can be opened to perform specific interventions.
-
-                    
 
 **2. Closed RABS (cRABS)**
 
-                    
-
 A closed RABS remains closed at all times during operation. The only acceptable intervention would be for machinery setup.
-
-                    
 
 **Airflow Design Perspective:**
 
-                    
-
 **1. Active RABS with Air Overspill into the Room**
-
-                    
 
 An active RABS with air overspill into the room uses an integral HEPA filtered air supply providing UAF to the critical process and air overspill into the room below the critical process. RABS are not suitable for hazardous products, as they spill air into the surrounding area.
 
-                    
-
 **2. Passive RABS with Air Overspill to the Surrounding**
-
-                    
 
 In a passive RABS, the airflow to the critical area is provided by ceiling mounted HEPA filters and the bottom of the enclosure is open to the room to provide for airflow through the system.
 
-                    
-
 **3. Active RABS with Air Returns Through HEPA Filters**
-
-                    
 
 An active RABS with air returns through HEPA filters uses an integral HEPA filtered air supply providing UAF to the critical process. It also uses air return through HEPA filters to prevent hazardous product migrating to the surrounding or microbial contamination migrating into the RABS. This type of RABS can be suitable for hazardous products, based on a risk assessment.
 
-                    
-
 ### 9.2.2.2 Considerations
-
-                    
 
 A formal risk management program should be established for RABS to ensure the effectiveness of the design in relation with the process, as well as the efficiency of the applied disinfection program.
 
-                    
-
 The following should be considered for RABS:
 
-                    
-
-                        
 - Gloves and gauntlets attached to the glove ports should be sterile when installed. A glove monitoring program should ensure proper disinfection procedures and intervals, as well as glove exchange intervals.
 
-                        
 - Written procedures should describe what is done when an open door intervention (which should be rare) is performed.
                             
 
-                                
     - Open door interventions should be documented, described in batch records, and followed by a disinfection step.
 
-                                
     - Open door interventions may require a line clearance, which should be documented in batch records.
 
-                            
-
-                        
-
-                        
 - Direct and indirect product contact parts and fluid pathways should be sterilized prior to filling of each batch.
 
-                        
 - Product contact equipment should be subject to sterilization.
 
-                        
 - Sterile components and supplies should be transferred to the RABS without exposing sterile surfaces to less clean environments, such as the use of RTPs or disinfection airlocks.
 
-                        
 - Robust disinfection of all non-product contact surfaces within the RABS should be performed with a suitable sporicidal agent before each batch or campaign.
 
-                        
 - The effectiveness of the overall disinfection program should be demonstrated and routinely evaluated as part of the environmental monitoring program.
-
-                    
-
-                
-
-                
-
-                    
-
-                    
-
-                        
 
 #### RABS
 
-                        
-
-                        
-
-                    
-
-                    
-
 ### 9.2.2.1 RABS
-
-                    
-
-                    
-                        
-                            
-                            
-                            
-                        
-| | oRABS | cRABS |
-| --- | --- | --- |
-                        
-                            
-                            
-                            
-                        
-                        
-                            
-                            
-                            
-                        
-                        
-                            
-                            
-                            
-                        
-                    
-
-                    
-
-                    
-                        
-                            
-                            
-                            
-                        
-| --- | --- | --- |
-                        
-                            
-                            
-                            
-                        
-| | HEPA UAF | |
-                        
-                            
-                            
-                            
-                        
-| | HEPA | |
-                        
-                            
-                            
-                            
-                        
-| HEPA | HEPA + HEPA | |
-                    
-
-                    
 
 ### 9.2.2.2 RABS
 
-                    
-
-                        
-
 #### 
-
-                        
-
-                        
-
-                            
-
-                            
-
-                            
-
-                            
-
-                        
-
-                        
-
-                    
-
-                    
-
-                    
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-                    
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-    
-    
-
-        
-
-            
 
 9.3
 
-            
-
-                
-
 ## System Comparisons /
-
-                
 
 p172 – p176
 
-            
-
-        
-
-        
-
-            
-
-                
-
-                    
-
 English — Original Content
-
-                    
 
 In conventional aseptic filling operations, the filling equipment and gowned personnel operate together in a cleanroom environment. There is limited defined separation between the personnel and the production environment (e.g., flexible plastic curtains). The product and product contact exposure areas are locally protected in an ISO 5/Grade A environment.
 
-                    
-
 Isolators and RABS utilize physical or aerodynamic methods (or both) to achieve separation between the inside of the containment and the surrounding environment. There are two primary differences between isolators and RABS:
-
-                    
 
 **Decontamination:** Isolators are reproducibly decontaminated using an automated system (e.g., using VHP); such decontamination can be performed batch-wise. RABS are usually thoroughly manually disinfected. Alternatively, decontamination is performed by gassing or fogging processes together with the surrounding room. Typically, this cannot be performed batch-wise and manual disinfection may be used in conjunction with the room decontamination.
 
-                    
-
 **Pressure differentials:** Isolators operate at an established pressure differential with respect to the surrounding environment, while RABS utilize air overspill without a defined pressure differential to achieve aerodynamic separation.
-
-                    
 
 Table 9.1 contains points to be considered and highlights areas of differences among traditional cleanrooms, RABS, and isolator designs. Each system should be considered in terms of its intended use and the specific circumstances related to that use. All consideration points assume a proper design according to the latest standards of the respective technology. Poor design can have a negative impact (e.g., a poorly designed isolator can be less efficient than a well designed RABS).
 
-                
-
-                
-
-                    
-
-                    
-
-                    
-
-                        
-
-#### vs RABS
-
-                        
-                            
-                                
-                                
-                                
-                            
-| | | RABS |
-| --- | --- | --- |
-                            
-                                ****
-                                
-                                
-                            
-| | VHP | / |
-                            
-                                ****
-                                
-                                
-                            
-                        
-
-                    
-
-                    
-
-                        
-
 #### 
 
-                        
-
-                    
-
-                
-
-            
-
-            
-            
-
-### Table 9.1: Points to Consider — Traditional Cleanrooms vs RABS vs Isolators
-
-            
+### **Table 9.1: Points to Consider — Traditional Cleanrooms vs RABS vs Isolators Table 9.1: — vs RABS vs **
 
 ### 9.1RABS
 
-            
-
-            
-                
-                    
-                        
-                        
-                        
-                        
-                    
-| Issue / | Traditional Cleanrooms / | RABS / | Isolator Systems / |
-| --- | --- | --- | --- |
-                
-                
-                    
-                          
-
-                          
-
-                          
-
-                          
-
-                    
-| Degree of Separation | Separation provided by airflow, room pressure differentials, and cleanroom clothing systems | Superior to cleanrooms | Superior to other technologies |
-                    
-                          
-
-                          
-
-                          
-
-                          
-
-                    
-| Initial Facility Costs | Maximized footprint of classified environment | Additional cost for barrier; GAAS extensions may be required; buffer zones for material transfer; slightly larger footprint GAAS | Equipment may be more expensive, but total capital project costs may be similar; facility capital, air handling, and operational costs can be significantly lower |
-                    
-                          
-
-                          
-
-                          
-
-                          
-
-                    
-| Operating Cost | High | May be slightly higher than traditional cleanroom | Approximately 75% less than cleanroom costs (mostly HVAC); savings in gowns, supplies, labor, EM 75% |
-                    
-                          
-
-                          
-
-                          
-
-                          
-
-                    
-| Environmental Treatment | High level disinfection with sporicidal agent performed by gowned personnel | Same as cleanrooms; reproducibility and validation possible using automated decontamination systems | Reproducible decontamination using automated cycles with a sporicidal agent |
-                    
-                          
-
-                          
-
-                          
-
-                          
-
-                    
-| Impact of Personnel | Highly influenced by personnel | High separation as long as air overspill is guaranteed; operator protection limited for hazardous compounds | High separation; enhanced operator safety for hazardous compounds; presents less risk than RABS RABS |
-                    
-                          
-
-                          
-
-                          
-
-                          
-
-                    
-| Line Operation | Risk of contamination dependent on cleanroom clothing and personnel behavior | Greatly reduced risk vs cleanroom; material transfers into RABS still provide high risk if performed manually | Less risk due to complete and uninterrupted separation; more rigorous transfer controls (RTP, e-beam, decontamination airlocks) |
-                    
-                          
-
-                          
-
-                          
-
-                          
-
-                    
-| Cleaning | Manual, not suitable for hazardous product | RABS with HEPA returns: contamination limited to RABS interior; RABS with air overspill: not suitable for hazardous materialsHEPA RABS | Hazardous compound cleaning substantially safer; complete WIP/CIP possible; contamination limited to isolator interior WIP/CIP |
-                    
-                          
-
-                          
-
-                          
-
-                          
-
-                    
-| Complexity | Less controls but high monitoring efforts | Less complex than isolators; can be retrofitted more easily to traditional equipment | More controls, equipment, and instrumentation required; decontamination adds extra elements; dedicated HVAC may be needed |
-                    
-                          
-
-                          
-
-                          
-
-                          
-
-                    
-| Format Changeover | Access to equipment is easy but requires stringent validation and monitoring | Change of format parts and components is relatively easy; product change requires internal cleaning; greater risk of bio-contamination during changeover | Changeover is easier as performed under ISO 8/Grade C; product change requires internal cleaning; more difficult to correct setup issues during process Grade C |
-                    
-                          
-
-                          
-
-                          
-
-                          
-
-                    
-| Containment Potential | None | Improved if properly designed as active closed RABS with safe change HEPA filtered air returns + HEPA | Excellent, if designed for hazardous products (safe change return HEPA filters and adequate differential pressure zones) HEPA |
-                    
-                          
-
-                          
-
-                          
-
-                          
-
-                    
-| Regulatory Perspective | Becoming increasingly unacceptable; no longer the design of choice | Recognized as a significant improvement over traditional cleanroom equipment, but not perceived to be equal to isolators | Considered superior |
-                    
-                          
-
-                          
-
-                          
-
-                          
-
-                    
-| Industry Perspective | No longer the design of choice within major pharmaceutical companies | Largely proven technology with known limitations | Well established and considered superior for product and operator safety; green technology due to significantly reduced energy consumption |
-                    
-                          
-
-                          
-
-                          
-
-                          
-
-                    
-| Handling of Oxidation-Sensitive Products | Residual concentrations of manually applied agents are difficult to evaluate and validate | Same as traditional cleanrooms | Decontamination agents are defined and validated; can achieve reproducible low level residual concentration limits |
-                
-            
-
-            
-
-        
-
-    
-
-    
-    
-    
-    
-
-        
-
-            
-
 9.4
-
-            
-
-                
 
 ## Factors to Consider When Choosing /
 
-                
-
 p176 – p179
-
-            
-
-        
-
-        
-
-            
-            
 
 ### 9.4.1 Personnel Involvement with the Aseptic Process /
 
-            
-
-                
-
-                    
-
 English — Original Content
-
-                    
 
 Isolator technology removes a major source of bio-contamination by eliminating direct operator intervention from the aseptic process, making it superior for aseptic/containment applications. RABS are superior to conventional manned cleanrooms for aseptic operation and can approach the superior separation provided by isolators if the doors remain closed.
 
-                
-
-                
-
-                    
-
-                    
-
-                    
-
-                        
-
 #### CDMO
-
-                        
-
-                    
-
-                
-
-            
-
-            
-            
 
 ### 9.4.2 Labor Efficiency Gains /
 
-            
-
-                
-
-                    
-
 English — Original Content
-
-                    
 
 Isolators eliminate a confining gown, close fitting hood, and face mask, leading to improved operator comfort and cost savings in laundry and cleanroom clothing sterilization (each operator can consume 4 to 5 gown sets per day). Isolator systems require reduced gowning according to the lower grade surrounding room and allow the same operator to serve several different functions on the same line without re-gowning, affording greater labor utilization and significantly reducing gowning costs.
 
-                    
-
 In general, access to the aseptic processing area is no longer restricted by sterile gowning and de-gowning procedures, therefore permitting controlled, multiple access routes.
-
-                    
 
 RABS do not offer these advantages as the operators need to wear full aseptic gowns and are largely restricted to a single location/function.
 
-                
-
-                
-
-                    
-
-                    
-
-                    
-
-                        
-
 #### 
-
-                        
-
-                            
-
-                            
-
-                            
-
-                        
-
-                        
-
-                    
-
-                
-
-            
-
-            
-            
 
 ### 9.4.3 Containment of Hazardous Product /
 
-            
-
-                
-
-                    
-
 English — Original Content
-
-                    
 
 Isolators and active closed RABS with safe change HEPA filters in the air returns can be particularly useful for processing of chemically/biologically hazardous material when operated as closed systems from an operations and airflow perspective. RABS with air overspill to the room provide better separation than conventional cleanrooms but are not suitable if containment of hazardous materials is required.
 
-                
-
-                
-
-                    
-
-                    
-
-                    
-
-                        
-
 #### 
-
-                        
-
-                            
-
-                            
-
-                            
-
-                            
-
-                        
-
-                    
-
-                
-
-            
-
-            
-            
 
 ### 9.4.4 Setup Time and Facility Start-Up /
 
-            
-
-                
-
-                    
-
 English — Original Content
-
-                    
 
 Enclosing the process inside an isolator means that some early construction and pre-delivery testing can be performed offsite, prior to installation, while the surrounding environmental room is being constructed. RABS start-up periods are closer to those for conventional cleanrooms, as critical facility environmental systems are required and control systems are less complex than for isolators.
 
-                    
-
 Control systems can be designed integrally and placed into operation with the isolator, potentially shortening facility start-up time, since isolators are independent units. This can be improved when using isolator air handling concepts that operate without interface to the building HVAC and exhaust.
 
-                
-
-                
-
-                    
-
-                    
-
-                    
-
-                        
-
 #### 
-
-                        
-
-                        
-
-                            
-
-                            
-
-                            
-
-                        
-
-                    
-
-                
-
-            
-
-            
-            
 
 ### 9.4.5 Capital Costs /
 
-            
-
-                
-
-                    
-
 English — Original Content
-
-                    
 
 Isolator equipment cost usually is higher than conventional equipment and may offset initial capital cost savings gained by improved space utilization, compared to a conventional facility. RABS and associated processing considerations may be more expensive than conventional cleanrooms but are generally similar to isolators. Isolators may be the most cost-effective option for new construction. Individual cost analyses should be performed for RABS versus isolators. Consideration should be given to operational as well as capital costs, including the facility.
 
-                
-
-                
-
-                    
-
-                    
-
-                    
-
-                        
-
 #### 
-
-                        
-
-                        
-
-                            
-
-                            
-
-                            
-
-                            
-
-                        
-
-                    
-
-                
-
-            
-
-            
-            
 
 ### 9.4.6 Operating Costs /
 
-            
-
-                
-
-                    
-
 English — Original Content
-
-                    
 
 For most applications, the scaled down size of the aseptic process and associated air handling equipment, combined with the lower environmental class of the background room and reduced gowning and environmental monitoring requirements, results in significantly reduced operating costs for isolator systems. Operating costs for RABS designs are comparable to those for traditional cleanrooms, but the additional cost for maintaining and monitoring RABS gloves should also be considered.
 
-                
-
-                
-
-                    
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
-                            
-                                
-                                
-                                
-                                
-                            
-| | | RABS | |
-| --- | --- | --- | --- |
-                            
-                                
-                                
-                                
-                                
-                            
-| HVAC | 100% | ~100% | ~25% |
-                            
-                                
-                                
-                                
-                                
-                            
-                            
-                                
-                                
-                                
-                                
-                            
-                            
-                                
-                                
-                                
-                                
-                            
-                            
-                                
-                                
-                                
-                                ****
-                            
-| | | | 75% |
-                        
-
-                    
-
-                
-
-            
-
-            
-            
-
 ### 9.4.7 Maintenance Access /
 
-            
-
-                
-
-                    
-
 English — Original Content
-
-                    
 
 Maintenance access (from outside the critical environment) is possible with both isolator and RABS designs. It should be considered at the start of the design process. Given the freestanding nature of isolators, access may be superior and gowning requirements minimal.
 
-                    
-
 A suitable glove management program should be established for both isolators and RABS, as gloves may become brittle over time.
-
-                
-
-                
-
-                    
-
-                    
-
-                    
-
-                
-
-            
-
-            
-            
 
 ### 9.4.8 Flexibility of the Equipment /
 
-            
-
-                
-
-                    
-
 English — Original Content
-
-                    
 
 Isolator flexibility is increased by the reduced footprint of the ISO 5/Grade A area; there is also less facility area to clean between batches.
 
-                    
-
 Various process equipment may be docked into isolator systems, via direct interfaces between the process equipment and isolator system.
 
-                
-
-                
-
-                    
-
-                    
-
-                    
-
-                        
-
 #### CDMO
-
-                        
-
-                        
-
-                            
-
-                            
-
-                            
-
-                        
-
-                    
-
-                
-
-            
-
-            
-            
 
 ### 9.4.9 Ergonomics /
 
-            
-
-                
-
-                    
-
 English — Original Content
-
-                    
 
 The position of the glove ports, half-suits, and interfaces with the operator should be considered, as the aseptic method may suffer if the operator is uncomfortable. Efficient layouts should be developed for both isolators and RABS. Typically, an ergonomic mockup study is performed during the design phase of the project to ensure all process steps can be performed properly.
 
-                
-
-                
-
-                    
-
-                    
-
-                    
-
-                        
-
 #### 
-
-                        
-
-                        
-
-                            
-
-                            
-
-                            
-
-                        
-
-                    
-
-                
-
-            
-
-            
-            
 
 ### 9.4.10 Airflow within the Enclosure /
 
-            
-
-                
-
-                    
-
 English — Original Content
-
-                    
 
 Airflow within the enclosure should be unidirectional at the product, container, or closure exposure points wherever product is exposed and according to GMP regulations.
 
-                    
-
 The purpose of the UAF is to protect the product from viable and non-viable particles.
-
-                    
 
 Turbulent flow might be applied in specific cases when required by the process, for example:
 
-                    
-
-                        
 - When the system design can guarantee that no particulates generated during the process can create an out of specification result
 
-                        
 - In quality control applications, such as sterility testing
-
-                    
-
-                    
 
 The airflow can help to achieve faster decontamination cycles, especially to aerate decontamination agents at the end of a cycle. Poor airflow design can result in long decontamination cycles that can impact the productivity of the facility.
 
-                    
-
 The impact of the airflow on the temperature distribution inside the enclosure should also be considered.
 
-                
-
-                
-
-                    
-
-                    
-
-                    
-
-                    
-
-                        
-
 #### 
-
-                        
-
-                        
-
-                            
-
-                            
-
-                            
-
-                        
-
-                        
-
-                    
-
-                
-
-            
-
-            
-            
 
 ### 9.4.11 Pressure Differential /
 
-            
-
-                
-
-                    
-
 English — Original Content
-
-                    
 
 In an open RABS, the air overspill to the surroundings generates a dynamic barrier for contamination.
 
-                    
-
 Isolators should be maintained at positive pressure relative to their surroundings in order to prevent ingress of any contamination from the external environment. The differential pressure levels are typically between 15 – 50 Pa to avoid ingress of contamination through transfer openings (such as mouseholes) and other potential openings.
-
-                    
 
 Higher differential pressures provide better separation (air velocity should be ≥ 0.2 m/s according to ISO 14644-4). High differential pressures also generate high airflows between isolator chambers. This should be accounted for when specifying differential pressures, as airflows might compromise the UAF inside the enclosure or have an impact on the process itself (e.g., powder dosing, vial falling).
 
-                    
-
 Reverse flow might be generated at mouseholes with high air velocity. The proper design can be shown with smoke studies.
-
-                    
 
 When handling hazardous materials, a differential pressure concept should be established, using multiple differential pressure zones. The concept needs to ensure that the level of contamination escaping to the surrounding area is below any critical limits. One possibility is to add a higher pressure zone at the mousehole of the critical zone.
 
-                    
-
 If out of specification results occur, a risk assessment should be performed to define necessary actions. Appropriate microbial monitoring results may prevent loss of a batch.
 
-                
-
-                
-
-                    
-
-                    
-
-                    
-
-                    
-
-                        
-
 #### 
 
-                        
-                            
-                                
-                                
-                                
-                            
-| --- | --- | --- |
-                            
-                                
-                                
-                                
-                            
-| 50 Pa | | UAF |
-                            
-                                
-                                
-                                
-                            
-| 15 Pa | | |
-                        
-
-                        
-
-                    
-
-                    
-
-                        
-
 #### 
-
-                        
-
-                    
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-    
-    
-
-        
-
-            
 
 S
 
-            
-
-                
-
 ## Section Summary /
-
-            
-
-        
-
-        
-
-            
-
-                
-
-                    
 
 English — Key Takeaways
 
-                    
-
-                        
-
 #### Technology Hierarchy
-
-                        
-
-                            
 
 Isolator — Highest Separation
 
-                            
-
 ↓
-
-                            
 
 cRABS — Doors Always Closed
 
-                            
-
 ↓
-
-                            
 
 oRABS — Rare Door Opening
 
-                            
-
 ↓
-
-                            
 
 Conventional Cleanroom — Becoming Unacceptable
 
-                        
-
-                    
-
-                    
-
 **Key definitions to remember:**
 
-                    
-
-                        
 - **oRABS:** Doors closed at all times except in rare predefined circumstances for specific interventions
 
-                        
 - **cRABS:** Remains closed at all times during operation; only acceptable intervention is for machinery setup
 
-                        
 - **Isolator:** Decontaminated unit meeting ISO 5/Grade A providing uncompromised isolation from surrounding environment
-
-                    
-
-                    
 
 **Two primary differences between isolator and RABS:**
 
-                    
-
-                        
 1. **Decontamination:** Isolators use automated, reproducible VHP cycles; RABS typically use manual disinfection
 
-                        
 2. **Pressure:** Isolators maintain defined pressure differential; RABS use air overspill without defined differential
-
-                    
-
-                    
 
 **Decision factors (9.4):** Personnel involvement, labor efficiency, hazardous containment, setup time, capital costs, operating costs, maintenance access, flexibility, ergonomics, airflow design, and pressure differential.
 
-                
-
-                
-
-                    
-
-                    
-
-                        
-
 #### CDMO
-
-                        
-
-                        
-
-                            
-
-                            
-
-                            
-
-                            
-
-                        
-
-                    
-
-                    
-
-                        
 
 #### 
 
-                        
-
-                            
-
-                            
-
-                            
-
-                            
-
-                            
-
-                        
-
-                    
-
-                    
-
-                        
-
 #### EU Annex 12022
-
-                        
-
-                        
-
-                            
-
-                            
-
-                            
-
-                            
-
-                        
-
-                        
-
-                    
-
-                
-
-            
-
-        
-
-    
-
-    
-
-ISPE Baseline Guide Vol. 3 (3rd Ed. 2018): Sterile Product Manufacturing Facilities
-
-    
-
-Chapter 9a: Barrier & Isolator Technology — Types & Comparison (9.1–9.4) | p167–p178
-
-    
-
-Bilingual Educational Material — For Training Use Only
 
 ⇧
 
@@ -16752,48 +9493,6 @@ The requirement of recovery time can either come from a regulatory basis (EU) or
 #### 
 
                 
-                    
-                        
-                        
-                        
-                    
-| # | | |
-| --- | --- | --- |
-                    
-                        
-                        
-                        
-                    
-| 1 | | |
-                    
-                        
-                        
-                        
-                    
-| 2 | | |
-                    
-                        
-                        
-                        
-                    
-| 3 | | |
-                    
-                        
-                        
-                        
-                    
-| 4 | | |
-                
-
-            
-
-            
-
-                
-
-#### 
-
-                
 
             
 
@@ -17341,48 +10040,6 @@ Typical process and production information, required to assess the risk and impa
 
                 
 
-#### 
-
-                
-                    
-                        
-                        
-                    
-| | HVAC |
-| --- | --- |
-                    
-                        ****
-                        
-                    
-| a. | UAF |
-                    
-                        ****
-                        
-                    
-| b. / | |
-                    
-                        ****
-                        
-                    
-| c. | ACR |
-                    
-                        ****
-                        
-                    
-| d. | |
-                    
-                        ****
-                        
-                    
-| e. | |
-                
-
-            
-
-            
-
-                
-
 #### HVAC
 
                 
@@ -17721,18 +10378,6 @@ Summary (English)
         
 
     
-
-    
-
-ISPE Baseline Guide Volume 3 (3rd Edition, 2018): Sterile Product Manufacturing Facilities
-
-    
-
-Appendix 1: HVAC Additional Engineering — Principles (11.1–11.5) | Pages 199–207
-
-    
-
-Educational Material — For Training Purposes Only
 
 ▲
 
@@ -18196,19 +10841,6 @@ A strategy of preventive maintenance is advisable, augments the above measures, 
             
 
             
-                
-| --- | --- |
-                
-                
-                
-| | / |
-                
-| | UPS |
-                
-                
-            
-
-            
 
         
 
@@ -18501,18 +11133,6 @@ All active control systems are more complex and harder to maintain than passive 
             
 
             
-                
-| --- | --- | --- | --- | --- |
-                
-                
-                
-                
-| | | | | / |
-                
-| /+ | | | | |
-            
-
-            
 
                 
 
@@ -18609,23 +11229,6 @@ Best practice is to observe the necessary door open time associated with operati
         
 
         
-
-            
-
-            
-
-                
-
-#### 
-
-                
-                    
-| --- | --- | --- |
-                    
-| (Alert) | SPC≥ 3σ | Pk > 2.254.5σ |
-                    
-| (Alarm) | | |
-                
 
             
 
@@ -18816,58 +11419,6 @@ Where products may contain pathogens, viral vectors or recombinant human DNA, bi
 
                 
 
-            
-
-            
-                
-                    
-                    
-                    
-                    
-                    
-                
-| BSL | | | HEPA | |
-| --- | --- | --- | --- | --- |
-                
-                    
-                    
-                    
-                    
-                    
-                
-| GLSP/BSL-1 | | | | |
-                
-                    
-                    
-                    
-                    
-                    
-                
-| BSL-2 | | | | / |
-                
-                    
-                    
-                    
-                    
-                    
-                
-| BSL-2+/3** | | | | /~6 ACH |
-                
-                    
-                    
-                    
-                    
-                    
-                
-| BSL-3 | | 100% | HEPA+ | |
-                
-                    
-                    
-                    
-                    
-                    
-                
-| BSL-4 | | 100% | HEPA+ | + |
             
 
             
@@ -19225,26 +11776,6 @@ Additional optional features include:
 #### 
 
                 
-                    
-| --- | --- |
-                    
-                    
-| / | |
-                    
-                    
-                    
-| | //UV |
-                
-
-            
-
-            
-
-                
-
-#### 
-
-                
 
                     
 
@@ -19313,85 +11844,10 @@ The difference in classification between adjoining spaces is a key issue. The di
 **Table 11.2: Particle Concentration Change Risk Depending on Direction of Travel**
 
             
-                
-                    
-                    
-                    
-                    
-                    
-                
-| Cleaner Room → | B | C | D | U/C |
-| --- | --- | --- | --- | --- |
-                
-                    ****
-                    
-                    
-                    
-                    
-                
-| A | 2 log | 3 log | 4 log | 5 log |
-                
-                    ****
-                    
-                    
-                    
-                    
-                
-| B | — | 1 log | 2 log | 3 log |
-                
-                    ****
-                    
-                    
-                    
-                    
-                
-| C | — | — | 1 log | 2 log |
-                
-                    ****
-                    
-                    
-                    
-                    
-                
-| D | — | — | — | 1 log |
-            
-
-            
 
 **Table 11.2: Risk by Direction of Travel**
 
             
-                
-                    
-                    
-                    
-                    
-                    
-                    
-                
-| Direction | A | B | C | D | U/C |
-| --- | --- | --- | --- | --- | --- |
-                
-                    ****
-                    
-                    
-                    
-                    
-                    
-                
-| Entering (from less clean) | — | Low | Moderate | Moderate-High | High |
-                
-                    ****
-                    
-                    
-                    
-                    
-                    
-                
-| Exiting (to less clean) | Very Low | Very Low | Very Low | Very Low | Low |
-            
-
-        
 
         
 
@@ -19483,23 +11939,6 @@ Actively ventilated boxes may be used to handle more robust particle concentrati
         
 
         
-
-            
-
-            
-
-                
-
-#### 
-
-                
-                    
-| --- | --- |
-                    
-| | 1-2 log |
-                    
-                    
-                
 
             
 
@@ -19722,18 +12161,6 @@ Key Takeaways (English)
 
     
 
-    
-
-ISPE Baseline Guide Vol. 3 (3rd Ed. 2018): Sterile Product Manufacturing Facilities
-
-    
-
-Appendix 1b: HVAC Additional Engineering — System Design (11.6–11.12) | Pages 208–222
-
-    
-
-Educational Material for GMP Training — Not for Commercial Distribution
-
 ↑
 
 ## Chapter 10: App 2–3. References & Glossary (p223-p244)
@@ -19784,78 +12211,6 @@ This appendix compiles all 71 references cited throughout the ISPE Baseline Guid
     
 
     
-    
-
-        
-
-#### Reference Categories /
-
-        
-            
-                
-                    
-                    
-                    
-                    
-                
-| Category | Count | Ref # | Description |
-| --- | --- | --- | --- |
-            
-            
-                
-                    ****
-                    
-                    
-                    
-                
-| Regulatory / GMP Guidelines | 8 | 1-3, 9-10, 17-18, 62-63 | EU GMP Annex 1 & 15, FDA Aseptic Processing & Process Validation, PIC/S, WHO GMP, EudraLex Ch.4 & Annex 11 |
-                
-                    ****
-                    
-                    
-                    
-                
-| ICH Guidelines | 5 | 6-7, 11-13 | Q7 (API GMP), Q8 (Pharma Dev), Q9 (QRM), Q10 (PQS), Q11 (Drug Substance) |
-                
-                    ****
-                    
-                    
-                    
-                
-| ISO Standards | 8 | 4-5, 20, 29, 31, 36, 42, 49 | ISO 14644 series (cleanroom), ISO 13408 (aseptic), ISO 8573 (compressed air) |
-                
-                    ****
-                    
-                    
-                    
-                
-| USP Chapters | 6 | 22-24, 27, 37-38 | Sterilization, Visual Inspection, Package Integrity, Packaging, Water Activity |
-                
-                    ****
-                    
-                    
-                    
-                
-| ISPE Guides | 14 | 8, 14-15, 19, 25, 28, 34-35, 41, 44-48, 52-53 | Baseline Guides Vol.1/4/5/6/7, GPGs (HVAC, C&Q, GEP, Maintenance, Process Gases, Packaging), GAMP 5 |
-                
-                    ****
-                    
-                    
-                    
-                
-| PDA Technical Reports | 3 | 26, 54, 69 | TR1 (Moist Heat Sterilization), TR22 (Process Simulation), TR34 (Isolators) |
-                
-                    ****
-                    
-                    
-                    
-                
-| Published Literature / Other | 14 | 16, 21, 30, 32-33, 39-40, 43, 50-51, 55-58, 59-61, 64-68 | ASHRAE, ASME BPE, IEST, IEEE, OSHA, CSA, EPA, CDC/BMBL, journal articles |
-            
-        
-
-    
-
     
     
 
@@ -20714,18 +13069,6 @@ Together, these documents provide the technical and regulatory foundation for ev
         
 
     
-
-    
-
-ISPE Baseline Guide Vol. 3 (3rd Ed. 2018): Sterile Product Manufacturing Facilities
-
-    
-
-Appendix 2: References — Educational Material for GMP Professionals
-
-    
-
-For reference only. Always consult the original ISPE publication for official guidance.
 
 ↑
 

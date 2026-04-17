@@ -55,45 +55,21 @@ PDA Points to Consider No. 12 (2025): Restricted Access Barrier Systems | p23 - 
 
 # Topic 2: Physical Environment
 
-    
-
-    
-
 PDA Points to Consider No. 12 (2025) - RABS | p34 - p40
 
-    
-
-## Q 2.1 Room Classification Surrounding RABS
-
-    
-
-        
-
-        
+## **Q 2.1 Room Classification Surrounding RABS Q 2.1 RABS **
 
 ### Q 2.1. What should be the classification of the room surrounding the restricted access barrier system (RABS)?
 
-        
-
 **Recommendation**
-
-        
 
 The minimum classification of the room immediately surrounding the RABS must be Grade B. However, a manufacturer may also choose to maintain these areas at more stringent levels of control when assessed for risk, especially in the area immediately surrounding the RABS doors, which may require execution of open-door interventions (i.e., during setup or filling) (1, 4).
 
-        
-
 **Rationale**
-
-        
 
 A RABS provides an enclosed and separated environment designed to reduce the risk of contamination to product, components, and product-contact surfaces when compared to conventional "curtained" aseptic processing operations. However, RABS are not fully sealed from the immediate surrounding environment and, in some designs, allow for open-door interventions by aseptic operators. As such, the adjacent background cleanroom environment must be appropriately classified and maintained to protect the critical processing zone(s) within the RABS; therefore, the cleanroom environment should not be lower than Grade B.
 
-        
-
 Companies should provide the maximum assurance possible and practicable so that the controlled RABS environment is not impacted by the surrounding environmental conditions since the RABS is not completely isolated from the surroundings, unlike closed isolators, for example.
-
-        
 
             "Note: The minimum regulatory expectations (e.g., FDA, EMA) for the classification of manufacturing spaces immediately adjacent (i.e., background) to the Grade A critical processing zone is Grade B."
 

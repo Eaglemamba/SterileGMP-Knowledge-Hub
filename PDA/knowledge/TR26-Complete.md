@@ -204,8 +204,6 @@ Membrane filters are used for multiple applications within the pharmaceutical in
 
 PDA Technical Report No. 26 (Revised 2025) — Sterilizing Filtration of Liquids | p31 - p39
 
-5.4.2 Filtration Process-Scaling Considerations
-
     
 
         
@@ -262,8 +260,6 @@ Process-specific filter validation studies, to provide assurance that the filter
 
 PDA Technical Report No. 26 (Revised 2025) — Sterilizing Filtration of Liquids | p44 - p48
 
-6.6 Bacterial Retention Study
-
     
 
         
@@ -294,8 +290,6 @@ Bacterial retention studies are used to validate a filter to perform the sterili
 
 PDA Technical Report No. 26 (Revised 2025) — Sterilizing Filtration of Liquids | p49 - p56
 
-6.6.6 Bacterial Retention Validation Studies: Considerations for Selection of Worst-Case Test Conditions
-
     
 
         
@@ -314,118 +308,11 @@ Bacterial retention study conditions should simulate the production process as c
 
         
 
-Table 6.6.6-1 lists examples of factors to consider when selecting worst-case parameters for process-specific bacterial retention studies.
+Table 6.6.6-1🔍 lists examples of factors to consider when selecting worst-case parameters for process-specific bacterial retention studies.
 
         
 
-### Table 6.6.6-1 Considerations for Selection of Bacterial Retention Study Parameters
-
-        
-
-        
-            
-                
-                
-                
-                
-            
-| Description | Parameters | Worst-Case | Rationale |
-| --- | --- | --- | --- |
-            
-| Drug Product Properties |
-            
-                
-                
-                
-                
-            
-| Viscosity | Viscosity | Higher | Potential to cause higher pressure to the filter |
-            
-                
-                
-                
-                
-            
-| Surface Tension | Surface Tension | Lower | Potential to contribute to bacterial penetration (based on higher-risk fluids, such as liposomes) |
-            
-                
-                
-                
-                
-            
-| Osmolarity | Osmolarity | Higher | Potential for reduction in cell size over prolonged exposure |
-            
-                
-                
-                
-                
-            
-| Components | Liposomes, Emulsions with Lipids | — | Potential to contribute to bacterial penetration |
-            
-                
-                
-                
-                
-            
-| Bioburden | Diminutive Organisms | — | Potential to contribute to bacterial penetration |
-            
-                
-                
-                
-                
-            
-| pH | pH | Neutral | Neutral pH more likely to support bioburden |
-            
-                
-                
-                
-                
-            
-| Ionic Strength | Ionic Strength | Consider Extremes | Potential impact to adsorptive retention |
-            
-| Process Conditions |
-            
-                
-                
-                
-                
-            
-| Temperature | Temperature | Case-specific | Lower temperatures may increase product viscosity leading to increased pressure to filter; Ambient temperature more likely to support bioburden; High temperatures may identify any potential compatibility issues |
-            
-                
-                
-                
-                
-            
-| Duration | Duration | Longer | Extended durations may increase possibility of bacterial penetration. Consideration should be given to the total filter/product contact time (e.g., account for time needed for any potential product-wet integrity-testing prior to filtration) |
-            
-                
-                
-                
-                
-            
-| Pressure | Pressure | Higher | Higher pressures may contribute to bacterial penetration under specific conditions (e.g., higher-risk fluids) |
-            
-                
-                
-                
-                
-            
-| Flow rate | Flow rate | Higher | Higher flow rates may contribute to bacterial penetration under specific conditions (e.g., higher risk fluids) |
-            
-                
-                
-                
-                
-            
-| Throughput | Throughput | Higher | Increased volume throughput may increase potential prefiltration bioburden to the filter |
-            
-                
-                
-                
-                
-            
-| Intermittency | On/Off Cycles | Case Specific | Consider if pressure spikes following an "off" cycle could impact potential filter performance; exact simulation of "on/off" cycles may not be possible in scale-down test |
+### Table 6.6.6-1🔍 Considerations for Selection of Bacterial Retention Study Parameters
 
 ## Section 7: Integrity Testing (p56-p70)
 
@@ -445,23 +332,23 @@ Bacterial retention studies are used for validating a filter membrane but are no
 
         
 
-For integrity tests on hydrophilic membranes, gas flow properties of wetted filter membranes are evaluated over a range of pressures. This can be demonstrated by completely wetting the entire filter membrane and introducing gas to the upstream side of the membrane at a low pressure. Capillary forces within the filter material keep the liquid from being expelled from the pores, and the wetted membrane functions as a barrier to convective gas flow. As this pressure is applied on the upstream side of the filter, a small amount of the gas dissolves into the wetting liquid, diffuses across the wetted membrane, and is released on the downstream side when it is maintained at atmospheric pressure (Figure 7.0-1). The diffusion rate increases as the pressure on the upstream side is increased. Once a critical pressure is achieved ("the bubble point"), the effect of capillary forces keeping the liquid in the pores will be overcome by sufficient pressure, pushing the wetting liquid out through the membrane pores. This happens first for the largest pores, where capillary forces are the weakest (Figure 7.0-2). If the rate of gas flow that passes to the downstream is measured at increasing pressure values, the membrane characterization curve (Figure 7.0-3) can be obtained for the given membrane filter.
+For integrity tests on hydrophilic membranes, gas flow properties of wetted filter membranes are evaluated over a range of pressures. This can be demonstrated by completely wetting the entire filter membrane and introducing gas to the upstream side of the membrane at a low pressure. Capillary forces within the filter material keep the liquid from being expelled from the pores, and the wetted membrane functions as a barrier to convective gas flow. As this pressure is applied on the upstream side of the filter, a small amount of the gas dissolves into the wetting liquid, diffuses across the wetted membrane, and is released on the downstream side when it is maintained at atmospheric pressure (Figure 7.0-1🔍). The diffusion rate increases as the pressure on the upstream side is increased. Once a critical pressure is achieved ("the bubble point"), the effect of capillary forces keeping the liquid in the pores will be overcome by sufficient pressure, pushing the wetting liquid out through the membrane pores. This happens first for the largest pores, where capillary forces are the weakest (Figure 7.0-2🔍). If the rate of gas flow that passes to the downstream is measured at increasing pressure values, the membrane characterization curve (Figure 7.0-3🔍) can be obtained for the given membrane filter.
 
         
 
-Characterization of these dynamics (both the diffusive flow rate at pressures below the bubble point, as well as the exact bubble point pressure) can indicate integrity of the filter in a nondestructive manner, resulting in a method that can be performed on every filter used in production. Diffusive flow theory is discussed further in Section 10.1. Figure 7.0-1 illustrates gas diffusion through the wetted membrane pores at pressures where the wetting fluid is held in the pores by capillary forces. Figure 7.0-2 illustrates gas flow through the membrane at a pressure exceeding the bubble point where the wetting fluid is expelled from the largest pores.
+Characterization of these dynamics (both the diffusive flow rate at pressures below the bubble point, as well as the exact bubble point pressure) can indicate integrity of the filter in a nondestructive manner, resulting in a method that can be performed on every filter used in production. Diffusive flow theory is discussed further in Section 10.1. Figure 7.0-1🔍 illustrates gas diffusion through the wetted membrane pores at pressures where the wetting fluid is held in the pores by capillary forces. Figure 7.0-2🔍 illustrates gas flow through the membrane at a pressure exceeding the bubble point where the wetting fluid is expelled from the largest pores.
 
         
 
-*[Figure 7.0-1 Gas Diffusion Through a Wetted Membrane]*
+*[Figure 7.0-1🔍 Gas Diffusion Through a Wetted Membrane]*
 
         
 
-*[Figure 7.0-2 Bubble Point Through a Wetted Membrane]*
+*[Figure 7.0-2🔍 Bubble Point Through a Wetted Membrane]*
 
         
 
-Figure 7.0-3 illustrates the relationship between measured air flow downstream of a wetted filter membrane. Three characteristic portions of the curves act as the basis for membrane-filter integrity-testing:
+Figure 7.0-3🔍 illustrates the relationship between measured air flow downstream of a wetted filter membrane. Three characteristic portions of the curves act as the basis for membrane-filter integrity-testing:
 
         
 
@@ -478,7 +365,7 @@ Figure 7.0-3 illustrates the relationship between measured air flow downstream o
 
         
 
-*[Figure 7.0-3 Characteristic Curve of the Membrane]*
+*[Figure 7.0-3🔍 Characteristic Curve of the Membrane]*
 
 ## Section 8: Sterilization (p71-p73)
 
@@ -632,7 +519,7 @@ K2 is a correction factor accounting for shape of the largest pores as well as w
 
         
 
-The theory behind diffusive flow-testing can best be summarized by the extended integrity-test profile in Figure 7.0-3, depicting the gas-flow properties of a wetted filter as a function of the applied test pressure. The linear portion at the lower test pressures corresponds to the diffusive flow regime described by Equation 4 or Equation 5, while viscous flow becomes the main transport mechanism for the steeper portion at higher pressures. The transition from diffusive to bulk flow (diffusive plus viscous flow) represents the maximum end of the pore-size distribution, as the larger pores are being voided of their wetting liquid. The relative size of the membrane's largest pores can be estimated from the test pressure using Equation 8.
+The theory behind diffusive flow-testing can best be summarized by the extended integrity-test profile in Figure 7.0-3🔍, depicting the gas-flow properties of a wetted filter as a function of the applied test pressure. The linear portion at the lower test pressures corresponds to the diffusive flow regime described by Equation 4 or Equation 5, while viscous flow becomes the main transport mechanism for the steeper portion at higher pressures. The transition from diffusive to bulk flow (diffusive plus viscous flow) represents the maximum end of the pore-size distribution, as the larger pores are being voided of their wetting liquid. The relative size of the membrane's largest pores can be estimated from the test pressure using Equation 8.
 
 ## Section A2: Appendix II
 
@@ -749,4 +636,4 @@ When investigating a manual integrity test failure, the following items should b
 
         
 
-Table 12.0-1 lists items for consideration when investigating an automatic device integrity-test failure.
+Table 12.0-1🔍 lists items for consideration when investigating an automatic device integrity-test failure.

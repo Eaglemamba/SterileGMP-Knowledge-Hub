@@ -40,20 +40,6 @@ COMPLIANCE PROGRAM GUIDANCE MANUAL**
 #### Program Codes
 
         
-            
-| Code Type | Code |
-| --- | --- |
-            
-| Industry Codes | 54, 56 and 60–66 |
-            
-| Full Inspection | 56002A |
-            
-| Abbreviated Inspection | 56002I |
-            
-| Related PACs | 56002, 56002C, 56002M |
-        
-
-        
 
 #### Field Reporting Requirements
 
@@ -250,25 +236,6 @@ Manufacturers who follow the 2004 Aseptic Processing Guidance are generally cons
 
             
 
-#### 
-
-            
-                
-| --- | --- | --- |
-                ****  
-| Terminal Sterilization | | F₀ |
-                ****  
-| Aseptic Processing | | APS |
-            
-
-            
-
-        
-
-        
-
-            
-
 #### ⚠️ vs
 
             
@@ -308,6 +275,16 @@ Manufacturers who follow the 2004 Aseptic Processing Guidance are generally cons
         
 
     
+
+            
+
+#### 
+
+            
+
+        
+
+        
 
 ## Part II — Implementation
 
@@ -572,66 +549,12 @@ Consider using a team approach when appropriate. Team members should:
 Update all applicable profile classes in the profile screen of the FACTS coversheet based on inspection findings. Use the codes corresponding to the product and process type covered.
 
         
-            
-                
-                
-            
-| Profile Class | Full Description |
-| --- | --- |
-            ****
-| LVP | Large Volume Parenterals — sterile injectable drugs in containers labeled >100 mL. Most are terminally sterilized; some may be aseptically processed. |
-            ******
-| SVT | Small Volume Parenterals — sterile injectable drugs in containers labeled <100 mL that are terminally sterilized. |
-            ******
-| SVS | Small Volume Parenterals — sterilized by filtration and aseptically processed. |
-            ******
-| SVL | Small Volume Parenterals — sterilized by filtration, aseptically filled and lyophilized. |
-            ****
-| SLQ | Sterile liquid (other than suspensions and emulsions) |
-            ****
-| SON | Sterile ointment |
-            ****
-| SPW | Sterile powder |
-            ****
-| CSS | Sterile bulk drugs made by chemical synthesis |
-            ****
-| CFS | Sterile crude drugs made by fermentation |
-            ****
-| CRX | API sterile or API intermediate/NEC inorganic/mineral |
-        
-
-    
 
     
 
         
 
 ### 📘 Profile Class —
-
-        
-
-            
-
-#### Profile Class
-
-            
-
-            
-                
-| --- | --- | --- |
-                ****
-| SVL | + + | |
-                ****
-| SVS | + | APS |
-                ****
-| SVT | | F₀ |
-                ****
-| LVP | | |
-                ****
-| CSS | | |
-            
-
-        
 
         
 
@@ -682,6 +605,16 @@ Update all applicable profile classes in the profile screen of the FACTS coversh
         
 
     
+
+            
+
+#### Profile Class
+
+            
+
+            
+
+        
 
     
 
@@ -837,47 +770,6 @@ Aseptic processing involves more variables than terminal sterilization. Any manu
         
 
 ### 📘 — FDA
-
-        
-
-            
-
-#### 
-
-            
-                  
-  
-| | Terminal Sterilization | Aseptic Processing |
-| --- | --- | --- |
-                
-                
-                
-                
-                
-| | LVP SVT | SVS/SVL |
-            
-
-        
-
-        
-
-            
-
-#### 
-
-            
-                
-|  | Overkill Method | Bioburden-Based |
-| --- | --- | --- |
-                
-                
-                
-| F₀ | ≥ 12 SAL 10⁻⁶ | |
-                
-                
-            
-
-        
 
         
 
@@ -1306,27 +1198,6 @@ May be appropriate if **BOTH** conditions are satisfied:
 
             
 
-#### 💡 Full vs Abbreviated
-
-            
-
-            
-                
-|  | Full Inspection | Abbreviated Inspection |
-| --- | --- | --- |
-                
-| | ≥ 4 | |
-                
-                
-| | GMP | |
-            
-
-        
-
-        
-
-            
-
 #### ⚠️ NAI / VAI / OAI
 
             
@@ -1573,51 +1444,10 @@ The comprehensive review of data by the firm is essential to assuring products a
 
             
 
-#### 
-
-            
-                
-| --- | --- | --- |
-                ****  
-| Phase 1 | SOP QU | SOP |
-                ****  
-| Phase 2 | QU | CAPA |
-            
-
-            
-
-        
-
-        
-
-            
-
 #### ⚠️
 
             
 
-            
-
-        
-
-        
-
-            
-
-#### 
-
-            
-                
-| | FDA |
-| --- | --- |
-                
-| | ADE |
-                
-| / | CAPA |
-                
-| | EM Media Fill |
-                
-| | / |
             
 
         
@@ -1655,6 +1485,16 @@ The comprehensive review of data by the firm is essential to assuring products a
         
 
     
+
+            
+
+#### 
+
+            
+
+        
+
+        
 
 ## 3.6 Facilities and Equipment System
 
@@ -1757,25 +1597,6 @@ Investigators should also look for visible deficiencies: cleanliness, equipment 
 
             
 
-#### +
-
-            
-
-            
-                
-| --- | --- |
-                
-                
-| | HEPA EM |
-                
-            
-
-        
-
-        
-
-            
-
 #### ⚠️ Smoke Study
 
             
@@ -1795,6 +1616,16 @@ Investigators should also look for visible deficiencies: cleanliness, equipment 
         
 
     
+
+            
+
+#### +
+
+            
+
+            
+
+        
 
 ## 3.6B Equipment — Key Equipment Inspection Points
 
@@ -2072,29 +1903,6 @@ Investigators should also look for visible deficiencies: cleanliness, equipment 
             
 
             
-
-        
-
-        
-
-            
-
-#### RABS vs Isolator
-
-            
-                
-| | Isolator | Open RABS | Closed RABS |
-| --- | --- | --- | --- |
-                
-| | H₂O₂ | |
-                
-                
-| | ISO 7 | ISO 7 | ISO 7 |
-                
-| Abbreviated | ✅ | | ✅ |
-                
-            
-
         
 
         
@@ -2344,28 +2152,6 @@ Integrity of the CCS is critical to assuring units remain sterile through shipme
         
 
 ### 📘 —
-
-        
-
-            
-
-#### WFI
-
-            
-                
-| --- | --- | --- |
-                
-| Dead Leg | 6D | |
-                
-                
-| Alert/Action Level | | Action Level |
-                
-                
-| | TOC | |
-                
-            
-
-        
 
         
 
@@ -2809,28 +2595,6 @@ Defined as a sterility assurance release based on demonstrated control of the st
 
             
 
-#### Media Fill
-
-            
-                
-| | Media Fill | |
-| --- | --- | --- |
-                
-| | ≥ | |
-                
-| Isolator | | |
-                
-| | | >1 / |
-            
-
-            
-
-        
-
-        
-
-            
-
 #### ⚠️ Legacy Products
 
             
@@ -2844,27 +2608,6 @@ Defined as a sterility assurance release based on demonstrated control of the st
                 
 
                 
-
-            
-
-        
-
-        
-
-            
-
-#### 3-log vs 6-log
-
-            
-                
-| --- | --- | --- |
-                ****
-| WFI | 3-log | FDA CPGM 7356.002A |
-                ****
-| | 3-log | |
-                ****
-| Isolator | 6-log | FDA CPGM 7356.002A (Section 3.6) |
-            
 
             
 
@@ -2951,6 +2694,26 @@ Defined as a sterility assurance release based on demonstrated control of the st
         
 
     
+
+            
+
+#### Media Fill
+
+            
+
+        
+
+        
+
+            
+
+#### 3-log vs 6-log
+
+            
+
+        
+
+        
 
     
 
@@ -3723,26 +3486,6 @@ In addition to physical product samples, investigators should collect documentar
 
             
 
-#### 📊
-
-            
-                
-| | FDA | |
-| --- | --- | --- |
-                ****
-| USP <71> | 48 | FDA + |
-                ****
-| USP <85> | 20 | USP |
-                
-| USP <788> | | |
-            
-
-        
-
-        
-
-            
-
 #### 🧤
 
             
@@ -3826,22 +3569,6 @@ In addition to physical product samples, investigators should collect documentar
 Investigational samples collected by FDA investigators are submitted to the appropriate FDA laboratory based on geographic district. The laboratory assignments for sterile drug process inspections are:
 
         
-            
-| FDA Region / District | Assigned Laboratory |
-| --- | --- |
-            
-| Northeast Region (NER) | Northeast Regional Laboratory (NRL), Jamaica, NY |
-            
-| Southeast Region (SER) | Southeast Regional Laboratory (SRL), Atlanta, GA |
-            
-| Central Region (CER) | Northeast Regional Laboratory (NRL), Jamaica, NY |
-            
-| Pacific Region (PAR) | San Francisco District Office – Laboratory (SAN-DO) |
-            
-| Southwest Region (SWR) | Denver District Office – Laboratory (DEN-DO) |
-        
-
-        
 
 #### Analytical Methods — Key USP Chapters
 
@@ -3887,31 +3614,6 @@ Investigational samples collected by FDA investigators are submitted to the appr
 
             
 
-#### 🗺️ FDA
-
-            
-                
-| --- | --- |
-                
-| NER | NRL Jamaica |
-                
-| SER | SRL |
-                
-| CER | NRL Jamaica |
-                
-| PAR | SAN-DO |
-                
-| SWR | DEN-DO |
-            
-
-            
-
-        
-
-        
-
-            
-
 #### 📋 USP
 
             
@@ -3949,6 +3651,16 @@ Investigational samples collected by FDA investigators are submitted to the appr
         
 
     
+
+            
+
+#### 🗺️ FDA
+
+            
+
+        
+
+        
 
     
 
@@ -4063,29 +3775,6 @@ The following types of CGMP deficiencies may warrant regulatory or administrativ
         
 
         
-
-        
-
-        
-
-            
-
-#### 📊
-
-            
-                
-| --- | --- | --- |
-                
-| Warning Letter | 15 | |
-                
-| Import Alert | | |
-                
-| Recall | | |
-                
-| Consent Decree | | |
-                
-| Seizure / Injunction | | |
-            
 
         
 
@@ -4229,27 +3918,6 @@ The following types of CGMP deficiencies may warrant regulatory or administrativ
         
 
 ### 📚
-
-        
-
-            
-
-#### ⚖️
-
-            
-                
-| --- | --- | --- |
-                
-| | 21 CFR 210 / 211 | |
-                
-| | FDA Guidance Documents | |
-                
-| | PDA TR / ISO / ISPE | |
-                
-| | USP <71><85><788> | |
-            
-
-        
 
         
 
@@ -4418,23 +4086,6 @@ CDER explicitly acknowledges the tension between CGMP enforcement and drug avail
         
 
 ### 🏛️ CDER
-
-        
-
-            
-
-#### 🏢 CDER
-
-            
-                
-| --- | --- |
-                ****  
-| OPQ | |
-                ****  
-| OS | ORA |
-            
-
-        
 
         
 
@@ -4873,33 +4524,6 @@ Attachment A provides structured inspection question sets organized by 8 major t
         
 
         
-
-            
-
-#### 📊
-
-            
-                
-| --- | --- |
-                
-| | F₀ ≥ 8 minoverkillor bioburden-based |
-                
-| | ≥3-log 250°C / 30 min |
-                
-| Isolator | ≥6-log BI G. stearothermophilus |
-                
-| Media Fill | / |
-                
-| Media Fill | ≥5,000 / |
-                
-| | 48 FDA |
-                
-| | 20 FDA |
-            
-
-        
-
-    
 
     
 

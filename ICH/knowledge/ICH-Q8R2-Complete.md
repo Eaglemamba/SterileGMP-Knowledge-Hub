@@ -151,34 +151,6 @@ Information to support the safety of excipients, when appropriate, should be cro
 
                 
 
-#### CTD
-
-                
-                    
-                        
-| | | | CTD |
-| --- | --- | --- | --- |
-                    
-                    
-                        
-| | Lactose, MCC | | 3.2.P.3.3 |
-                        
-| | Croscarmellose | | 3.2.P.5.6 |
-                        
-| | BHT, Vit E | shelf life | 3.2.P.8.3 |
-                        
-| | Benzalkonium Cl | | 3.2.P.4.6 |
-                        
-| | | | 3.2.P.3.2 |
-                    
-                
-
-            
-
-            
-
-                
-
 #### 
 
                 
@@ -541,31 +513,6 @@ Similarly, admixture or dilution of products prior to administration (e.g., prod
 
                 
 
-#### vs
-
-                
-                    
-                        
-| --- | --- | --- |
-                    
-                    
-                        
-| | | ICH Q6A Decision Tree #8 |
-                        
-| | + | AET |
-                        
-| inherent | | ICH Q6A |
-                        
-| | CCI | USP <1207>, PIC/S Annex 1 |
-                    
-                
-
-            
-
-            
-
-                
-
 #### 
 
                 
@@ -748,36 +695,19 @@ The **multidimensional combination and interaction** of input variables (e.g., m
 
             
 
+    
+
+    
+
                 
 
 #### Design Space vs Normal Operating Range (NOR) vs PAR
-
-                
-                    
-                        
-| --- | --- | --- |
-                    
-                    
-                        
-| Design Space | | DS |
-                        
-| PAR (Proven Acceptable Range) | | |
-                        
-| NOR (Normal Operating Range) | | DS PAR |
-                        
-| Edge of Failure | DS | |
-                    
-                
 
                 
 
             
 
         
-
-    
-
-    
     
 
 ## Formal Experimental Design & Lifecycle
@@ -836,6 +766,10 @@ All phases in the life of a product from the **initial development** through **m
 
             
 
+    
+
+    
+
                 
 
 #### Lifecycle ICH Q
@@ -845,29 +779,10 @@ All phases in the life of a product from the **initial development** through **m
                 
 
                 
-                    
-                        
-| --- | --- |
-                    
-                    
-                        
-| ICH Q8 | |
-                        
-| ICH Q9 | |
-                        
-| ICH Q10 | PQS |
-                    
-                
-
-                
 
             
 
         
-
-    
-
-    
     
 
 ## PAT, Process Robustness & Quality
@@ -1026,30 +941,6 @@ The **suitability** of either a drug substance or drug product for its intended 
 ## Six Key Terms — Official Definitions Summary
 
             
-                
-                    
-| Term | One-Line Definition |
-| --- | --- |
-                
-                
-                    
-| Continuous Process Verification | Alternative to traditional PV; continuously monitors and evaluates manufacturing process performance |
-                    
-| Design Space | Multidimensional combination of inputs/parameters demonstrated to provide quality assurance; operating within is not a change |
-                    
-| Formal Experimental Design | Structured method (DoE) to determine relationships between process factors and outputs |
-                    
-| Lifecycle | All phases from initial development through marketing until discontinuation |
-                    
-| Process Analytical Technology (PAT) | System for designing, analyzing, and controlling manufacturing via timely in-process measurements |
-                    
-| Process Robustness | Ability of a process to tolerate material/equipment variability without negative quality impact |
-                    
-| Quality | Suitability for intended use; includes identity, strength, purity (from ICH Q6A) |
-                
-            
-
-        
 
         
 
@@ -1061,55 +952,7 @@ The **suitability** of either a drug substance or drug product for its intended 
 
                 
 
-#### 
-
-                
-
-                
-
-                    
-
-                    
-
-                    
-
-                    
-
-                    
-
-                    
-
-                    
-
-                
-
-            
-
-            
-
-                
-
-#### CTD
-
-                
-                    
-                        
-| | CTD |
-| --- | --- |
-                    
-                    
-                        
-| Design Space | 3.2.P.2 (2.4), P.3.3 |
-                        
-| CPV | 3.2.P.2 (2.3), P.3.5 |
-                        
-| PAT | 3.2.P.2 (2.3), P.3.3, P.3.5 |
-                        
-| Process Robustness | 3.2.P.2 (2.3) |
-                        
-| Formal Experimental Design | 3.2.P.2 (2.2.1, 2.3) |
-                        
-| Lifecycle | Module 3 + CTD 1.3 |
+####
 
 ## Section Annex: Annex: Phase-Appropriate Approach (p9-p17)
 
@@ -1191,6 +1034,30 @@ An enhanced, QbD approach to product development would additionally include:
 ## 
 
             
+
+                
+
+#### Annex
+
+                
+
+                
+
+                    
+
+                    
+
+                    
+
+                
+
+            
+
+        
+
+    
+
+    
 
                 
 
@@ -1456,35 +1323,6 @@ It can be helpful to determine the edge of failure for process parameters or mat
 
                 
 
-#### 2.4.1–2.4.6
-
-                
-                    
-                        
-| --- | --- | --- |
-                    
-                    
-                        
-| 2.4.1 | DS | |
-                        
-| 2.4.2 DS | CTD DS | |
-                        
-| 2.4.3 | DS | DS |
-                        
-| 2.4.4 | DS | |
-                        
-| 2.4.5 DS vs PAR | PAR DS | DS |
-                        
-| 2.4.6 | | |
-                    
-                
-
-            
-
-            
-
-                
-
 #### 2.4.5 PAR ≠ Design Space
 
                 
@@ -1628,35 +1466,6 @@ Key CTD placement guidance for QbD elements:
 
                 
 
-#### Control Strategy
-
-                
-
-                
-                    
-                        
-| --- | --- | --- |
-                    
-                    
-                        
-| 1. | API | |
-                        
-| 2. CPP | | / |
-                        
-| 3. IPC | | |
-                        
-| 4. | | |
-                        
-| 5. RTRT | NIR | PAT |
-                    
-                
-
-            
-
-            
-
-                
-
 #### RTRTReal-Time Release Testing
 
                 
@@ -1711,37 +1520,31 @@ Key CTD placement guidance for QbD elements:
 
                 
 
-#### QbD CTD Module 3
+#### 
 
                 
+
                     
-                        
-| QbD | CTD | |
-| --- | --- | --- |
+
                     
+
                     
-                        
-| QTPP | P.2 | P.1 |
-                        
-| CQA | P.2.2 | P.5.6 |
-                        
-| | P.2.1, P.2.2, P.2.3 | - |
-                        
-| Design Space | P.3.3 | P.2.3 |
-                        
-| | P.3.3, P.3.4 | P.5.6, P.2 |
-                        
-| RTRT | P.3.4 | P.5.6 |
+
                     
+
                 
 
             
 
-            
+        
+
+    
+
+    
 
                 
 
-####
+#### Control Strategy
 
 ## Section App: Appendices & Examples (p18-p24)
 
@@ -1860,43 +1663,6 @@ The ability to evaluate and ensure the quality of in-process and/or final produc
 
                 
 
-#### Part II
-
-                
-                    
-                        
-| --- | --- | --- |
-                    
-                    
-                        
-| Control Strategy | | Q10 |
-                        
-| CPP | | CQA —— |
-                        
-| CQA | | |
-                        
-| Design Space | | |
-                        
-| Lifecycle | | |
-                        
-| PAR | | |
-                        
-| Quality | | |
-                        
-| QbD | | |
-                        
-| QTPP | | |
-                        
-| RTRT | | + |
-                    
-                
-
-            
-
-            
-
-                
-
 #### QbD
 
                 
@@ -1977,56 +1743,6 @@ The ability to evaluate and ensure the quality of in-process and/or final produc
 The following table illustrates some potential contrasts between what might be considered a minimal approach and an enhanced, quality by design approach. The comparisons are shown merely to aid in the understanding of a range of potential approaches and should not be considered all-encompassing. Current practices in the pharmaceutical industry typically lie between the two approaches.
 
             
-                
-                    
-                        
-                        
-                        
-                    
-| Aspect | Minimal Approaches | Enhanced, QbD Approaches |
-| --- | --- | --- |
-                
-                
-                    
-                        ****
-                        
-                        
-                    
-| Overall Pharmaceutical Development | Mainly empirical; developmental research often conducted one variable at a time | Systematic, relating mechanistic understanding of material attributes and process parameters to drug product CQAs; multivariate experiments; establishment of design space; PAT tools utilised |
-                    
-                        ****
-                        
-                        
-                    
-| Manufacturing Process | Fixed; validation primarily based on initial full-scale batches; focus on optimisation and reproducibility | Adjustable within design space; lifecycle approach to validation and CPV; focus on control strategy and robustness; use of statistical process control methods |
-                    
-                        ****
-                        
-                        
-                    
-| Process Controls | In-process tests primarily for go/no go decisions; off-line analysis | PAT tools utilised with appropriate feed forward and feedback controls; process operations tracked and trended to support continual improvement post-approval |
-                    
-                        ****
-                        
-                        
-                    
-| Product Specifications | Primary means of control; based on batch data available at time of registration | Part of the overall quality control strategy; based on desired product performance with relevant supportive data |
-                    
-                        ****
-                        
-                        
-                    
-| Control Strategy | Drug product quality controlled primarily by intermediates and end product testing | Drug product quality ensured by risk-based control strategy for well understood product and process; quality controls shifted upstream, with the possibility of RTRT or reduced end-product testing |
-                    
-                        ****
-                        
-                        
-                    
-| Lifecycle Management | Reactive (problem solving and corrective action) | Preventive action; continual improvement facilitated |
-                
-            
-
-        
 
         
 
@@ -2064,34 +1780,6 @@ The following table illustrates some potential contrasts between what might be c
 
                 
 
-#### Design Space
-
-                
-
-                
-                    
-                        
-| | | QbD |
-| --- | --- | --- |
-                    
-                    
-                        
-| | = 20% | 15-25% |
-                        
-| | PV | + CPV |
-                        
-| | PAC | DS |
-                        
-| | = | = |
-                    
-                
-
-            
-
-            
-
-                
-
 #### 
 
                 
@@ -2115,6 +1803,16 @@ The following table illustrates some potential contrasts between what might be c
     
 
     
+
+                
+
+#### Design Space
+
+                
+
+                
+
+            
     
 
 ## Appendix 2: Illustrative Examples — Risk Assessment & Design Space Presentations
@@ -2251,32 +1949,6 @@ Key finding from the interaction plots: **Initial moisture content and temperatu
 
                 
 
-#### C. Design Space
-
-                
-                    
-                        
-| DS | | | |
-| --- | --- | --- | --- |
-                    
-                    
-                        
-| DS 1d | | | |
-                        
-| DS 1c | | | |
-                        
-| DS 3 | / | | |
-                        
-| CQA DS 2 | CQA | CQA | CQA |
-                    
-                
-
-            
-
-            
-
-                
-
 #### CQA DS
 
                 
@@ -2341,31 +2013,3 @@ Key finding from the interaction plots: **Initial moisture content and temperatu
         
 
 ### ICH Q8(R2) — Complete Document Summary
-
-        
-
-            
-
-            
-
-            
-
-            
-
-            
-
-            
-
-            
-
-        
-
-    
-
-    
-
-ICH Q8(R2) Pharmaceutical Development — Section 4: Part II Glossary & Appendices
-
-    
-
-SterileGMP Knowledge Hub | Educational Use Only

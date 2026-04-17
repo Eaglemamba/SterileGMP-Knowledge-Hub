@@ -471,184 +471,20 @@ To successfully complete the formalized risk assessment process, the information
 
                     
 
-Table 5.0-1 delineates the roles in the supply chain, examples of their areas of responsibility, the information for which they are accountable, and the types of documents they may be expected to supply.
+Table 5.0-1🔍 delineates the roles in the supply chain, examples of their areas of responsibility, the information for which they are accountable, and the types of documents they may be expected to supply.
 
                     
 
-### Table 5.0-1: Roles in the Supply Chain and Examples of Their Responsibilities
+### Table 5.0-1🔍: Roles in the Supply Chain and Examples of Their Responsibilities
 
                     
-                        
-                            
-                                
-                                
-                                
-                                
-                            
-| Supply Chain Role | Areas of Accountability | Information Accountable | Documents Typically Provided |
-| --- | --- | --- | --- |
-                        
-                        
-                            
-                                ****
-                                
-- 
-- 
-- 
-- 
-- 
-
-                                
-- 
-- 
-- 
-- 
-
-                                
-- 
-- 
-- 
-- 
-- 
-
-                            
-| Subcontractor of the Excipient Manufacturer | Sourcing raw materials                                         Manufacturing                                         Testing                                         Packaging and labeling                                         Transporting | Manufacture                                         Testing certificates                                         Compliance certificates                                         Quality standards in use | Manufacturing flow chart                                         Certificate of analysis                                         ISO, GMP, or EXCiPACT certificate                                         Supply chain map                                         Transport and storage conditions |
-                            
-                                ****
-                                
-- 
-- 
-- 
-- 
-- 
-
-                                
-- 
-- 
-- 
-- 
-
-                                
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-
-                            
-| Manufacturer of the Excipient | Sourcing raw materials                                         Manufacturing under appropriate standards                                         Testing                                         Packaging and labeling                                         Transporting | Manufacture                                         Testing certificates                                         Compliance certificates                                         Quality standards in use | Manufacturing flow chart                                         Certificate of analysis                                         ISO, GMP, or EXCiPACT certificate                                         Supply chain map                                         Transport and storage conditions                                         Excipient information package (EIP) or comparable information package                                         Regulatory declaration statement                                         Technical expert support                                         Excipient master files (e.g., U.S. DMFs) |
-                            
-                                ****
-                                
-- 
-- 
-- 
-
-                                
-- 
-- 
-
-                                
-- 
-- 
-
-                            
-| Broker | Flow of information                                         Supply chain overview                                         Access to suppliers | Certificate of analysis                                         Supply chain map | Certificate of analysis                                         Supply chain map |
-                            
-                                ****
-                                
-- 
-- 
-- 
-- 
-
-                                
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-
-                                
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-
-                            
-| Supplier or Distributor | Transporting                                         Warehousing                                         Repackaging                                         Testing | Transport overview                                         Storage conditions                                         Direct link to manufacturer/supplier                                         Packing and labeling                                         Testing certificates                                         Compliance certificates                                         Quality standards in use | Access to EIP or comparable information package                                         Regulatory declaration statement                                         Certificate of analysis                                         ISO, GMP, or EXCiPACT certificate                                         Supply chain map                                         Transport and storage conditions                                         Technical expert support |
-                            
-                                ****
-                                
-- 
-- 
-- 
-- 
-- 
-- **
-
-                                
-- 
-- 
-- 
-- 
-- 
-- 
-
-                                
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-
-                            
-| CMO or Manufacturer of Drug Product | Sourcing raw materials                                         Manufacturing drug product                                         Testing of excipient                                         Packaging and labeling                                         Transporting                                         Conducting excipient risk assessment (ultimate accountability rests with manufacturing authorization holder) | Excipient information                                         Supply chain oversight                                         Formulation information                                         Special requirements of excipient                                         Excipient risk assessment                                         Supply chain map | Audit of excipient supplier and manufacturer                                         Quality oversight of supplier and manufacturer                                         Regulatory filing of excipient                                         Toxicological data                                         Excipient quality and performance quality trends                                         Formulation information                                         Specification of excipient                                         Control strategy |
-                            
-                                ****
-                                
-- 
-- 
-- 
-- 
-- 
-- 
-
-                                
-- 
-- 
-- 
-- 
-
-                                
-- 
-- 
-
-                            
-| Marketing Authorization Holder (Manufacturing Authorization Holder) | Submission of dossier                                         Defining route of administration and function of excipient                                         Excipient risk assessment                                         Toxicological data                                         Maximum daily dose                                         Excipient use and function | Technical data                                         Regulatory file                                         Manufacturing process flow                                         Supply chain overview | Manufacturer and supplier audit documents                                         Oversight of outsourced activities (e.g., risk assessment, compliance history) |
-                        
-                    
-
-                
 
                 
                 
 
                     
 
-### Table 5.0-1
+### Table 5.0-1🔍
 
                     
 
@@ -697,7 +533,7 @@ Table 5.0-1 delineates the roles in the supply chain, examples of their areas of
 
                     
 
-### Information Sources and Common Scenarios (Table 5.0-2)
+### Information Sources and Common Scenarios (Table 5.0-2🔍)
 
                     
 
@@ -733,88 +569,20 @@ Information to support the excipient risk assessment process can be obtained usi
 
                     
 
-When collaboration between the manufacturing authorization holder and other parties in the supply chain is limited, the manufacturing authorization holder may need to consider alternative means for obtaining information. Table 5.0-2 lists some common scenarios and potential resolutions.
+When collaboration between the manufacturing authorization holder and other parties in the supply chain is limited, the manufacturing authorization holder may need to consider alternative means for obtaining information. Table 5.0-2🔍 lists some common scenarios and potential resolutions.
 
                     
 
-### Table 5.0-2: Common Scenarios in Information-Gathering
+### Table 5.0-2🔍: Common Scenarios in Information-Gathering
 
                     
-                        
-                            
-                                
-                                
-                            
-| Potential Issue | Potential Resolution |
-| --- | --- |
-                        
-                        
-                            
-                                
-                                
-- 
-- 
-- 
-
-                            
-| Unable to determine all participants in the supply chain for commercial reasons, e.g., a Distributor enforces supply chain opaqueness for competitive reasons | Allow the distributor to redact information in responses to protect their business advantage                                         Use the quality agreement with suppliers/distributors to assign accountability and supply chain oversight                                         Use onsite audit program to challenge and confirm information |
-                            
-                                
-                                
-- 
-- 
-- 
-
-                            
-| Unable to obtain appropriate regulatory declaration statements (e.g., residual solvent statement) due to lack of technical understanding or expertise of a participant in the supply chain | Support the excipient manufacturer/supplier with in-house technical support, if available                                         Provide the manufacturer/supplier with declaration templates, if available, for manufacturer/supplier to complete                                         Use the manufacturing authorization holder's internal technical team to assess and/or test material in lieu of supplier regulatory declaration |
-                            
-                                
-                                
-- 
-- 
-- 
-
-                            
-| Unable to obtain all information required to support the risk assessment because the excipient manufacturer's quality standards do not meet the excipient user's requirements | Determine if the excipient manufacturer is performing additional activities to facilitate alignment of quality standards                                         Reassess to identify gaps and mitigate through internal or external action (e.g., increase quality oversight, change specifications)                                         If residual risks identified are unacceptable, change the excipient supply chain |
-                            
-                                
-                                
-- 
-- 
-- 
-- 
-
-                            
-| Insufficient provisions in place (e.g., lack quality agreements or unable to agree on a confidentiality agreement) to support information exchange with manufacturing authorization holder | Review obligations agreed with parties in the supply chain                                         Put in place an appropriate agreement to support this process                                         Review manufacturer audit reports and supply management files to determine whether the assessor already possesses required information                                         Explore other avenues (e.g., manufacturer's standard customer information portals, public domain information) |
-                            
-                                
-                                
-- 
-- 
-- 
-- 
-
-                            
-| Insufficient or no collaboration between key participants and manufacturing authorization holder in the supply chain (e.g., no leverage due to low volume purchase, stressed or non-existent commercial relationships) | Use distributor relationship to leverage information transfer                                         Identify alternative sources for obtaining support and information                                         Use already-established agreements or put in place appropriate agreement to obligate supply chain party support                                         Review manufacturer/supplier audit reports/questionnaire/excipient file (e.g., EIP) and supply management files |
-                            
-                                
-                                
-- 
-- 
-
-                            
-| Unable to support the excipient risk assessment process due to limited oversight of outsourced activity (e.g., unable to secure an audit) | Ensure adequate resources are allocated to ensure appropriate prioritization of manufacturer/supplier management activities                                         Use third-party audit program (e.g., EXCiPACT) |
-                        
-                    
-
-                
 
                 
                 
 
                     
 
-### Table 5.0-2
+### Table 5.0-2🔍
 
                     
 
@@ -904,10 +672,10 @@ When collaboration between the manufacturing authorization holder and other part
 - **Section 4.1.6 (CMO):** When CMOs are involved, the MAH retains ultimate accountability for the risk assessment. Roles must be explicitly defined in quality agreements, including procedures for resolving conflicting risk assessment outcomes.
 
                         
-- **Section 5.0 (Table 5.0-1):** Each supply chain role has distinct accountability — from the excipient manufacturer (maximum information obligations) to the Broker (minimal, information-flow only) to the MAH (ultimate responsibility).
+- **Section 5.0 (Table 5.0-1🔍):** Each supply chain role has distinct accountability — from the excipient manufacturer (maximum information obligations) to the Broker (minimal, information-flow only) to the MAH (ultimate responsibility).
 
                         
-- **Section 5.0 (Table 5.0-2):** Six common information-gathering challenges are addressed with practical resolutions, including use of quality agreements, onsite audits, provision of declaration templates, and third-party certification programs such as EXCiPACT.
+- **Section 5.0 (Table 5.0-2🔍):** Six common information-gathering challenges are addressed with practical resolutions, including use of quality agreements, onsite audits, provision of declaration templates, and third-party certification programs such as EXCiPACT.
 
                     
 
@@ -968,18 +736,6 @@ When collaboration between the manufacturing authorization holder and other part
         
 
     
-
-    
-
-PDA Technical Report No. 54-6 (2019) — Formalized Risk Assessment for Excipients
-
-    
-
-Sections 3–5: Overall Strategy, Supply Chain & Roles | p4–p10
-
-    
-
-Educational material — for training use only. Source: PDA/IPEC Federation Joint Technical Report.
 
 ⇧
 
@@ -1492,50 +1248,6 @@ The EC Guidelines specify the following as key intrinsic risk factors that must 
 
                         
 
-#### 
-
-                        
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-| --- | --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-                            
-                        
-
-                        
-
-                    
-
-                    
-
-                        
-
 #### vs. —
 
                         
@@ -1571,6 +1283,18 @@ The EC Guidelines specify the following as key intrinsic risk factors that must 
             
 
         
+
+                        
+
+#### 
+
+                        
+
+                        
+
+                    
+
+                    
 
     
 
@@ -1650,38 +1374,6 @@ Only excipient attributes with a correlation marked "+" are brought forward as n
                     
 
 The Route of Administration is a critical factor in the impact assessment. The same excipient attribute may have very different risk levels depending on the dosage form:
-
-                    
-                        
-                            
-                                
-                                
-                                
-                            
-| Route of Administration / Dosage Form | Risk Level | Rationale |
-| --- | --- | --- |
-                        
-                        
-                            
-                                ****
-                                
-                                
-                            
-| Parenteral (injectable, IV, SC, IM); Ophthalmic; Open wound | HIGH | Bypasses all body defense barriers; direct contact with blood, tissues, or sensitive organs. Any impurity or endotoxin has immediate systemic access. |
-                            
-                                ****
-                                
-                                
-                            
-| Pulmonary / Inhalation | MEDIUM | Bypasses GI tract; large surface area of absorption; direct access to pulmonary mucosa. Particle size and impurity concerns are heightened. |
-                            
-                                ****
-                                
-                                
-                            
-| Topical, Oral, Vaginal, Rectal | LOW | GI barrier, skin, or mucosal membranes provide a defense. First-pass metabolism (oral) reduces systemic exposure. Topical excipients rarely reach systemic circulation in significant amounts. |
-                        
-                    
 
                     
 
@@ -1835,7 +1527,7 @@ An impact assessment is conducted for each drug product in which the excipient i
 
                 
 
-Table 6.3.2-1: Excipient Risk Calculation Tool — Seven Risk Factors & ERPN Formula
+Table 6.3.2-1🔍: Excipient Risk Calculation Tool — Seven Risk Factors & ERPN Formula
 
             
 
@@ -1886,88 +1578,11 @@ The second part of the excipient risk analysis is creating a Risk Profile (or ra
 
                     
 
-### Table 6.3.2-1: Excipient Risk Calculation Tool
+### Table 6.3.2-1🔍: Excipient Risk Calculation Tool
 
                     
 
 Each risk factor (RFE) is assigned a score of **1 (Low)**, **3 (Medium)**, or **5 (High)**.
-
-                    
-                        
-                            
-                                
-                                
-                                
-                                
-                            
-| Risk Factor (RFE) | Low (1) | Medium (3) | High (5) |
-| --- | --- | --- | --- |
-                        
-                        
-                            
-                                
-                                
-                                
-                                
-                            
-| RFE1: excipient function in Formulation | Diluent, coloring agent, flavor, sweetening agent, identity through printing with ink, emollient, tonicity agent | Thickener, coating agent, former, compression aid, lubricant, glidant and/or anticaking agent, humectant, suspending/dispersing agent, buffer, adhesive, penetrant, disintegrant, binder, capsule shell, plasticizers, pH modifiers, chelating/complexing agents, antioxidants, suppository base, suspending/viscosity-increasing agent, stiffening agent, propellant | Antimicrobial preservative, vehicle, release modifier, wetting and/or solubilizing agent, pH modifier, pharmaceutical water |
-                            
-                                  
-
-                                ****
-                                
-                                ****
-                            
-| RFE2: Intended Patient Intake(dose regimen, frequency, amount; consult FDA Inactive Ingredients Database) | Expected maximum daily intake does not exceed known maximum dose of excipient in a drug product | N.A. | Expected maximum daily intake exceeds known maximum dose of excipient in a drug product |
-                            
-                                  
-
-                                
-                                
-                                
-                            
-| RFE3: Route of Administration(Risk to the patient) | Topical, oral, vaginal, rectal | Pulmonary / inhalation | Parenteral, ophthalmic, for open wounds |
-                            
-                                
-                                
-                                
-                                
-                            
-| RFE4: Potential for Contamination | Excipient is well-defined, not of animal origin; manufacturing process is well-controlled, resulting in low or no potential for contamination by: TSE/BSE, viral contamination, microbiological organisms/endotoxins/pyrogens, residual solvents and catalysts, impurities from raw materials (aflatoxins, pesticides) | N.A. | Animal origin or circumstances indicating a heightened potential for contamination by virus, impurities, or other unwanted adulterants |
-                            
-                                  
-
-                                ****
-                                
-                                ****
-                            
-| RFE5: Excipient Complexity(Composite or individual excipient?) | Excipient is not a composite | Excipient is a composite and each component is well characterized and supported by technical data | Excipient is a composite and components are not formally managed or traced |
-                            
-                                  
-
-                                
-                                
-                                
-                            
-| RFE6: Prior Knowledge or Experience(Known quality defects) | Material does not cause challenges; prior experience with excipient and low or no history of defects | Prior knowledge or experience with the excipient is minimal | History of defects and challenges, or no prior knowledge of or experience with the excipient |
-                            
-                                  
-
-                                
-                                
-                                
-                            
-| RFE7: Packaging Size(Internal use in manufacture) | Single-use, ready to be used in manufacturing | Excipient must be divided or repackaged for manufacturing, but transfer into alternative primary packaging does not introduce additional risks | Excipient must be divided or repackaged in a highly controlled environment with high precision before use in manufacturing |
-                            
-                                  
-
-                                
-                                
-                                
-                            
-| RFEx: Additional Factors(Add according to specific needs) | To be defined | To be defined | To be defined |
-                        
-                    
 
                     
 
@@ -1994,55 +1609,6 @@ Note: Users would adjust the calculation as necessary to reflect additional risk
                     
 
 ### 
-
-                    
-
-                        
-
-#### ERPN
-
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-
-ERPN = (RFE1 + RFE2 + RFE3 + RFE4 + RFE5 + RFE6 + RFE7) ÷ 7
-
-                        
-
-                        
-                            
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-| RFE1 | 5 | / |
-                                
-| RFE2 | 1 | |
-                                
-| RFE3 | 5 | parenteral |
-                                
-| RFE4 | 3 | |
-                                
-| RFE5 | 1 | |
-                                
-| RFE6 | 3 | |
-                                
-| RFE7 | 1 | |
-                                ********
-| ERPN | (5+1+5+3+1+3+1)÷7 = 2.71 | |
-                            
-                        
-
-                        
-
-                    
 
                     
 
@@ -2155,18 +1721,6 @@ ERPN = (RFE1 + RFE2 + RFE3 + RFE4 + RFE5 + RFE6 + RFE7) ÷ 7
 
     
 
-    
-
-PDA Technical Report No. 54-6 (2019): Formalized Risk Assessment for Excipients
-
-    
-
-Section 6A: QRM Model — Initiate & Excipient Risk Analysis (Sections 6.0–6.3) | pp. 11–17
-
-    
-
-PDA & IPEC Federation Joint Initiative | Educational Material
-
 ⇧
 
 ## Section 6B: Risk Evaluation & Mitigation (p17-p24)
@@ -2226,64 +1780,6 @@ At a minimum, the following six risk factors must be considered when building th
             
 
                 
-                    Table 6.4-1 — Supply Chain Risk Calculation Tool (Abbreviated)
-                    
-                        
-                            
-                            
-                            
-                            
-                        
-| Risk Factor (RFS) | Low (1) | Medium (3) | High (5) |
-| --- | --- | --- | --- |
-                    
-                    
-                        
-                            ****
-                            
-                            
-                            
-                        
-| RFS1: Supply Chain Complexity | Purchased directly from manufacturer; low fraud probability; sourced from US/EU; not repackaged; qualified carrier transport | At least one broker/distributor but transparency to original manufacturer; re-manipulation under established GMP procedures | Complex chain with several manipulations/distribution channels; repackaging occurs; region of security concern; potential for fraud |
-                        
-                            ****
-                            
-                            
-                            
-                        
-| RFS2: Prior Knowledge of Manufacturer | Prior experience; critical attributes monitored; no nonconformance/complaints; no evidence of variability in final drug product | Minimal experience with manufacturer; minor delivery issues | No experience with manufacturer; history of delivery issues; excipient variability; previous/outstanding complaints; impact on product attributes |
-                        
-                            ****
-                            
-                            
-                            
-                        
-| RFS3: Organizational Volatility | Stable organization; low turnover in key positions | Limited knowledge of organizational volatility | High turnover in key positions |
-                        
-                            ****
-                            
-                            
-                            
-                        
-| RFS4: QMS Performance History | QMS proven effective; few/no regulatory observations; minor findings only; prompt CAPA on schedule | QMS defined but has weaknesses | Significant regulatory observations; adverse regulatory status (consent decree, warning letters); critical/major findings; past due CAPA |
-                        
-                            ****
-                            
-                            
-                            
-                        
-| RFS5: Packaging Suitability | Packaging qualified with scientific studies; tamper-evident packaging used | Data supporting packaging suitability is questionable | Not supported by technical evidence; no tamper-evident seals |
-                        
-                            ****
-                            
-                            
-                            
-                        
-| RFS6: QMS Standards & Certification | Established, well-documented QMS; certifications from regulatory bodies or standardization organizations | QMS implemented; no certification | Minimal QMS evidence; lacks supplier qualification program, service-level agreements, transportation auditing, documented waste management |
-                    
-                
-
-            
 
             
 
@@ -2360,78 +1856,11 @@ OverallRPN range: 1 (minimum) to 25 (maximum)
 
             
 
-Table 6.5.1-1 shows all possible multiplication results across the 5×5 matrix:
+Table 6.5.1-1🔍 shows all possible multiplication results across the 5×5 matrix:
 
             
 
                 
-                    Table 6.5.1-1 — Risk Matrix: Combined Risk Score (OverallRPN = ERPN × SCRPN)
-                    
-                        
-                            
-                            
-                        
-| Supply Chain Risk (SCRPN) | Excipient Risk (ERPN) |
-| --- | --- |
-                        
-                            
-                            
-                            
-                            
-                            
-                        
-| 1 (Low) | 2 | 3 | 4 | 5 (High) |
-                    
-                    
-                        
-                            ****
-                            
-                            
-                            
-                            
-                            
-                        
-| 5 (High) | 5 | 10 | 15 | 20 | 25 |
-                        
-                            ****
-                            
-                            
-                            
-                            
-                            
-                        
-| 4 | 4 | 8 | 12 | 16 | 20 |
-                        
-                            ****
-                            
-                            
-                            
-                            
-                            
-                        
-| 3 | 3 | 6 | 9 | 12 | 15 |
-                        
-                            ****
-                            
-                            
-                            
-                            
-                            
-                        
-| 2 | 2 | 4 | 6 | 8 | 10 |
-                        
-                            ****
-                            
-                            
-                            
-                            
-                            
-                        
-| 1 (Low) | 1 | 2 | 3 | 4 | 5 |
-                    
-                
-
-            
 
             
 
@@ -2440,39 +1869,6 @@ From the OverallRPN, the manufacturing authorization holder (MAH) determines whe
             
 
                 
-                    Table 6.5.1-2 — Decision Table Based on OverallRPN
-                    
-                        
-                            
-                            
-                            
-                        
-| OverallRPN Range | Risk Verdict | Required Action |
-| --- | --- | --- |
-                    
-                    
-                        
-                            
-                            ****
-                            **
-                        
-| OverallRPN > 10 | Unacceptable — Residual risk is High | Additional actions to mitigate risk must be implemented |
-                        
-                            
-                            ****
-                            **
-                        
-| 4 ≤ OverallRPN ≤ 10 | As low as acceptable — Residual risk is Medium | Additional actions should be considered; acceptance must be justified |
-                        
-                            
-                            ****
-                            
-                        
-| OverallRPN < 4 | Acceptable — Residual risk is Low | No additional actions needed |
-                    
-                
-
-            
 
             
 
@@ -2512,33 +1908,6 @@ The MAH may also calculate individual scores for each role in the supply chain �
             
 
                 
-                    Table 6.5.2-1 — Calculated Final Risk Score Examples
-                    
-                        
-                            
-                            
-                            
-                            
-                            
-                        
-| Excipient Risk Score (ERPN) | ERPN Weight | Supply Chain Risk Score (SCRPN) | SCRPN Weight | Final Risk Score |
-| --- | --- | --- | --- | --- |
-                    
-                    
-                        
-| 1.9 | 2 | 1.7 | 1 | 1.8 |
-                        
-| 3.6 | 1 | 4.3 | 1 | 4.0 |
-                        
-| 4.7 | 1 | 1.3 | 3 | 2.2 |
-                        
-| 3.9 | 3 | 3.3 | 2 | 3.7 |
-                        
-| 2.4 | 3 | 2.0 | 1 | 2.3 |
-                    
-                
-
-            
 
         
 
@@ -2654,69 +2023,11 @@ When the risk is found to be at an acceptable level, the risk assessment process
 
             
 
-If additional actions are needed, Table 6.6-1 describes factors that should be considered. Specific actions that might lower the residual risk can be found by deconstructing the OverallRPN and investigating the risk scores for both the supply chain and the excipient that are driving the overall risk score.
+If additional actions are needed, Table 6.6-1🔍 describes factors that should be considered. Specific actions that might lower the residual risk can be found by deconstructing the OverallRPN and investigating the risk scores for both the supply chain and the excipient that are driving the overall risk score.
 
             
 
                 
-                    Table 6.6-1 — Factors to Consider When Additional Actions Are Needed
-                    
-                        
-                            
-                            
-                        
-| Control Category | Examples of Additional Actions |
-| --- | --- |
-                    
-                    
-                        
-                            ****
-                            
-- 
-- 
-- 
-
-                        
-| Additional Drug Product Manufacturer Controls | Additional receiving inspection or testing                                     Special storage to avoid certain risks (e.g., degradation)                                     Additional processing of the excipient (e.g., filtration, irradiation) |
-                        
-                            ****
-                            
-- 
-- 
-- 
-- 
-- 
-- 
-
-                        
-| Additional Excipient Controls (Supplier Supply Chain) | Change of GMP Standard applied                                     Changes to specifications or packaging                                     Change of testing (e.g., every pack or lot for identity and homogeneity)                                     Microbiological testing                                     Regular verification of supplier's Certificate of Analysis                                     Introduction of new testing |
-                        
-                            ****
-                            
-- 
-- 
-- 
-- 
-
-                        
-| Additional Excipient Supplier Supply Chain Controls | Increased auditing by excipient user or third party                                     Changes to the excipient manufacturing process or controls                                     Higher demand for notification of changes                                     Increased oversight and control of shipments; tamper-proofing |
-                        
-                            ****
-                            
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-
-                        
-| Additional Excipient Manufacturing Controls | Increased effectiveness of cleaning (microbiological risk reduction)                                     Sanitization (microbiological risk reduction)                                     Enhanced filtration (e.g., TUPPS risk reduction)                                     Altered processing conditions (by-product reduction)                                     Exclusion of rework (reduced unknown impurity risks)                                     Use of dedicated equipment                                     Introduction or change of in-process controls |
-                    
-                
-
-            
 
             
 
@@ -2888,80 +2199,6 @@ The EC Guidelines indicate the minimum GMP principles the manufacturer should im
             
 
                 
-                    Table 6.6.2-1 — GMP Standards by Standard Organization
-                    
-                        
-                            
-                            
-                        
-| Standard | Comments |
-| --- | --- |
-                    
-                    
-                        
-                            ****
-                            
-                        
-| EC Food "GMP" & U.S. Food GMP | Where both apply, a prerequisite QMS in combination with hazard analysis and critical control point (HACCP) principles. |
-                        
-                            ****
-                            
-                        
-| EC GMP Part II (Eudralex Vol. 4, Part II) / ICH Q7 | This is the GMP standard for active pharmaceutical ingredients (APIs). Applicable when the excipient risk profile demands API-level controls. |
-                        
-                            ****
-                            
-                        
-| EC GMP Part I (Eudralex Vol. 4, Part I) | This is the GMP standard for drug products. |
-                        
-                            ****
-                            
-                        
-| EC GMP Part I + Annex 1 | This is the GMP standard for sterile materials. Required for highest-risk excipients used in parenteral/sterile preparations. |
-                        
-                            ****
-                            
-                        
-| EFfCI GMP for Cosmetic Ingredients | An annex to ISO 9001 relying on basic GMP principles in the EC Guidelines. Focus on purity and contamination controls. Manufacturers must apply both ISO 9001 and EFfCI certificates simultaneously. |
-                        
-                            ****
-                            
-                        
-| EXCiPACT™ GMP for Pharmaceutical Excipients | An annex to ISO 9001 designed for pharmaceutical excipients. Based on the IPEC-PQG GMP Guide. Fully includes EC Guideline GMP principles. Manufacturers must apply both ISO 9001 and EXCiPACT™ certificates simultaneously. |
-                        
-                            ****
-                            
-                        
-| IFAC Quality Systems, Food Safety & GMP Guide | Guidelines for food additives and GRAS substances under U.S. requirements; provides a unified approach for the international food additive industry. |
-                        
-                            ****
-                            
-                        
-| IPEC Japan Self-imposed GMP Standard | Based on the Joint IPEC-PQG GMP Guide (2006 version) with modifications for Japan's regulatory context. |
-                        
-                            ****
-                            
-                        
-| Joint IPEC-PQG GMP Guide | A guide and audit standard. Designed around ISO 9001 and ICH Q7 principles; encompasses all GMP principles. A compliant manufacturer has equivalent risk mitigation to EXCiPACT™ and NSF/IPEC/ANSI 363. |
-                        
-                            ****
-                            
-                        
-| ISO 9001 | Establishes a basic QMS capable of delivering consistent quality materials. In many instances, needed GMP details may be absent — risk mitigations may lack a high degree of assurance. |
-                        
-                            ****
-                            
-                        
-| NSF/IPEC/ANSI 363 | For all practical purposes equivalent to EXCiPACT™. Designed for manufacturers that do not apply ISO 9001. |
-                        
-                            ****
-                            
-                        
-| USP General Chapter <1078> | Discusses Good Manufacturing Practices for Bulk Pharmaceutical Excipients (General Information Chapter). |
-                    
-                
-
-            
 
         
 
@@ -3153,18 +2390,6 @@ The EC Guidelines indicate the minimum GMP principles the manufacturer should im
         
 
     
-
-    
-
-PDA Technical Report No. 54-6 (2019): Formalized Risk Assessment for Excipients
-
-    
-
-Section 6B: Supply Chain Risk Analysis, Risk Evaluation & GMP Standards (Sections 6.4–6.6)
-
-    
-
-Educational material for training purposes. Refer to the original PDA TR54-6 document for authoritative guidance.
 
 ⇧
 
@@ -3669,18 +2894,6 @@ A global excipient risk assessment throughout the drug product lifecycle deliver
         
 
     
-
-    
-
-PDA Technical Report No. 54-6 (2019): Formalized Risk Assessment for Excipients
-
-    
-
-Sections 7–9 | Lifecycle Review, Benefits & References | p25–p27
-
-    
-
-Educational material for internal training purposes
 
 ⇧
 

@@ -542,58 +542,6 @@ In the United States Pharmacopeia (USP):
 
                         
 
-#### CDMO
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| / | CDMO | |
-| --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| EU GDP Guidelines (EMA 2013) | | |
-                                
-                                    
-                                    
-                                    
-                                
-| WHO TRS 961 Annex 9 | | |
-                                
-                                    
-                                    
-                                    
-                                
-| PIC/S PE 011-1 | TFDA | |
-                                
-                                    
-                                    
-                                    
-                                
-| USP <659> | | |
-                                
-                                    
-                                    
-                                    
-                                
-| Health Canada GUI-0069 | | |
-                            
-                        
-
-                    
-
-                    
-
-                        
-
 #### WHO TRS 961 Annex 9
 
                         
@@ -750,25 +698,6 @@ Used for storage of material below -120°C (-184°F), e.g., cell banks. If mater
 
             
             
-
-                
-
-                
-
-                    
-
-#### 
-
-                    
-                        
-| --- | --- | --- |
-                        
-| | -20°C | API |
-                        
-| (ULT) | -70 / -80°C | |
-                        
-| | -120 ~ -196°C | |
-                    
 
                 
 
@@ -976,27 +905,6 @@ Cold room control systems usually consist of a local **Programmable Logic Contro
 
                     
 
-#### vs.
-
-                    
-                        
-| --- | --- | --- |
-                        
-| | | PLC |
-                        
-                        
-                        
-| | 1-2 | |
-                        
-                        
-                    
-
-                
-
-                
-
-                    
-
 #### PLC CSV
 
                     
@@ -1078,32 +986,6 @@ A local controller should control system operation for process parameters such a
             
 
             
-
-                
-
-                
-
-                    
-
-#### ICH
-
-                    
-                        
-| ICH | | (%RH) | |
-| --- | --- | --- | --- |
-                        
-| Zone I | 25°C ± 2°C | 60% ± 5% | |
-                        
-| Zone II | 40°C ± 2°C | 75% ± 5% | |
-                        
-| Zone IVb | 30°C ± 2°C | 65% ± 5% | |
-                        
-| | 5°C ± 3°C | — | |
-                        
-| | -20°C ± 5°C | — | |
-                    
-
-                    
 
                 
 
@@ -1238,27 +1120,6 @@ Site (Custom) Built Systems normally require additional verification to ensure t
 
 #### 
 
-                    
-
-                
-
-                
-
-                    
-
-#### vs.
-
-                    
-                        
-| --- | --- | --- |
-                        
-                        
-                        
-| | | set-up tuning |
-                        
-| Mapping | | |
-                        
-                        
                     
 
                 
@@ -1433,28 +1294,6 @@ Typical roles and responsibilities of parties involved include:
                         
 
                         
-
-                    
-
-                
-
-                
-
-                    
-
-#### vs.
-
-                    
-                        
-| | Acceptance Criteria | Expected Results |
-| --- | --- | --- |
-                        
-                        
-| | CAPA | |
-                        
-| | ≤ 8°C | 2 |
-                        
-                    
 
                     
 
@@ -1656,31 +1495,6 @@ The risk management requirements identified should be designated as critical and
 
                     
 
-#### FMEA CTC
-
-                    
-
-                    
-                        
-| --- | --- | --- |
-                        
-| | | + |
-                        
-                        
-| | → | + |
-                        
-| | | UPS + |
-                        
-                    
-
-                    
-
-                
-
-                
-
-                    
-
 ## Commissioning During Installation /
 
             
@@ -1856,28 +1670,6 @@ Once Qualification is complete, change should be managed through the site GMP ch
 
                     
 
-#### 
-
-                    
-                        
-| # | | | |
-| --- | --- | --- | --- |
-                        
-| 1 | | | |
-                        
-| 2 | | | LOTO |
-                        
-| 3 | | | I/O |
-                        
-| 4 | | | |
-                    
-
-                
-
-                
-
-                    
-
 #### (Red-Line Drawings)
 
                     
@@ -1901,64 +1693,6 @@ Once Qualification is complete, change should be managed through the site GMP ch
                 
 
                 
-                
-
-                    
-
-#### FAT / SAT — CTC
-
-                    
-                        
-| | FAT | SAT |
-| --- | --- | --- |
-                        
-| / | ✓ | ✓ |
-                        
-| / URS | ✓ | — |
-                        
-| / | ✓ | ✓ |
-                        
-| I/O | ✓ | ✓ |
-                        
-| | ✓ | ✓ |
-                        
-| | ✓ | ✓ |
-                        
-| | ✓ | ✓ |
-                        
-| | — | ✓ |
-                        
-| | — | ✓ |
-                        
-| | — | ✓ |
-                        
-| | ✓ | ✓ |
-                        
-| | — | ✓ |
-                    
-
-                
-
-                
-
-                    
-
-#### 
-
-                    
-
-                    
-                        
-| --- | --- | --- |
-                        
-                        
-| | ECR | |
-                        
-| | GMP | GMP |
-                    
-
-                
-
                 
 
                     
@@ -2036,34 +1770,6 @@ A job safety analysis covering all the phases of commissioning should be prepare
 
                     
 
-#### Punch List GMP
-
-                    
-
-                    
-                        
-| | | CDMO |
-| --- | --- | --- |
-                        
-| 1. | | |
-                        
-| 2. | | |
-                        
-| 3. | | |
-                        
-| 4. | | |
-                        
-| 5. | | |
-                    
-
-                    
-
-                
-
-                
-
-                    
-
 #### 
 
                     
@@ -2083,35 +1789,6 @@ A job safety analysis covering all the phases of commissioning should be prepare
                 
 
                 
-                
-
-                    
-
-#### 
-
-                    
-                        
-| --- | --- | --- | --- |
-                        
-| | | OQ | |
-                        
-| | | OQ + PQ | |
-                        
-| | | | + |
-                        
-| | | OQ/PQ | mapping |
-                        
-| / | | PQ | |
-                        
-                        
-| | | OQ | CSV |
-                        
-                        
-| | | OQ + PQ | |
-                    
-
-                
-
                 
 
                     
@@ -2138,132 +1815,6 @@ The following table compares commissioning with the three stages of formal quali
 
         
 
-        
-
-        
-            
-                
-                    
-                      
-
-                      
-
-                      
-
-                      
-
-                
-| / Aspect | Commissioning | IQInstallation Qualification | OQOperational Qualification | PQPerformance Qualification |
-| --- | --- | --- | --- | --- |
-            
-            
-                
-                    ****
-                    
-                    
-                    
-                    
-                
-                
-                    ****
-                      
-
-                      
-
-                    
-                    
-                
-| | GMP | FDA/EMA/PIC/S | | |
-                
-                    ****
-                    
-                    
-                    
-                    
-                
-| | IQ | | IQ | OQ |
-                
-                    ****
-                    
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-
-                    
-- 
-- 
-- 
-- 
-- 
-- 
-
-                    
-- 
-- 
-- 
-- 
-- 
-- 
-
-                    
-- 
-- 
-- 
-- 
-- 
-
-                
-| | FAT / SAT LOTO | SDS, CoC SOP | / | mapping / |
-                
-                    ****
-                    
-                    
-                    
-                    
-                
-| | FAT/SAT Punch list | IQ IQ NIST | OQ OQ | PQ PQ mapping |
-                
-                    ****
-                    
-                    
-                    
-                    
-                
-| | URS + + | URS + + | URS + | URS + |
-                
-                    ****
-                    
-                    
-                    
-                    
-                
-| | / + Commissioning Lead | QA | QA | QA |
-                
-                    ****
-                    
-                    
-                    
-                    
-                
-| QA | | | | |
-                
-                    ****
-                    
-                    
-                    
-                    
-                
-| | | CAPA | CAPA OQ | CAPA |
-                
-                    ****
-                    
-                
-| | — FAT/SAT IQ/OQ GMP ALCOA+ |
-            
         
 
         
@@ -2353,16 +1904,6 @@ The following table compares commissioning with the three stages of formal quali
         
 
     
-
-    
-
-ISPE Good Practice Guide: Controlled Temperature Chamber Mapping and Monitoring (2016)
-
-    
-
-    
-
-SterileGMP Knowledge Hub  |  For educational use only  |  © ISPE 2016, original content
 
 ↑
 
@@ -2653,54 +2194,6 @@ CFD can help visualize airflow patterns and predict temperature gradients before
                     
 
 ### 
-
-                    
-                        
-                            
-                                
-                                
-                                
-                            
-| --- | --- | --- |
-                        
-                        
-                            
-                                
-                                
-                                
-                            
-| HVAC | | |
-                            
-                                
-                                
-                                
-                            
-| / | | |
-                            
-                                
-                                
-                                
-                            
-| 30%+ | | + |
-                            
-                                
-                                
-                                
-                            
-| HVAC±1°C | | + |
-                            
-                                
-                                
-                                
-                            
-| | | + |
-                            
-                                
-                                
-                                
-                            
-                        
-                    
 
                     
 
@@ -3327,44 +2820,6 @@ Comprehensive factor list including load state, probe types, and sampling rate �
 ### vs. vs.
 
                     
-                        
-                            
-                                
-                                
-                                
-                                
-                            
-| | ISPE | | CDMO |
-| --- | --- | --- | --- |
-                        
-                        
-                            
-                                
-                                
-                                  
-
-                                
-                            
-| Empty | | | FAT/SAT |
-                            
-                                
-                                
-                                  
-
-                                
-                            
-| Simulated Full Load | | | QC |
-                            
-                                
-                                
-                                
-                                
-                            
-| Partial Load | | | |
-                        
-                    
-
-                    
 
                         
 
@@ -3798,74 +3253,6 @@ General guidance should not be used without a supporting rationale. For example,
 ### Table 6.1 — Recommended Placement of Measuring Devices |
 
                 
-                    
-                        
-                            
-                            
-                            
-                        
-| Location / | Rationale (Original) / | CDMO Commentary / CDMO |
-| --- | --- | --- |
-                    
-                    
-                        
-                            ****
-                            
-                            
-                        
-| Adjacent to the CTC monitoring sensor / | Ensures that the CTC monitoring probe is correctly monitoring the set parameters | mapping |
-                        
-                            ****
-                            
-                            
-                        
-| Storage rack corners including geometric center / | Ensures that the furthest locations can maintain temperature and that distribution temperature is met and maintained | CDMO——HVAC |
-                        
-                            ****
-                            
-                            
-                        
-| Adjacent to ingresses/egresses (Doors) / | A potential area for temperature deviation | CDMO50–100cmdoor-opening testCDMO20–30 |
-                        
-                            ****
-                            
-                            
-                        
-| Near Air Supply and Return Outlets / | To monitor air temperature within proximity to air inlets and outlets | supplyreturnHVAC |
-                        
-                            ****
-                            
-                            
-                        
-| Near Air Distributors (fans, blowers) / | Ensures air distributors do not create temperature excursions or dead air pockets | /HVAC |
-                        
-                            ****
-                            
-                            
-                        
-| Shelving positions / | Ensures that the type of shelving structure does not create dead air pockets | wire deck pallet rackCDMO |
-                        
-                            ****
-                            
-                            
-                        
-| Adjacent to physical/structural obstructions / | Ensures that structures within the CTC do not create dead air pockets | |
-                        
-                            ****
-                            
-                            
-                        
-| Height of component storage / | Ensures that the intended height of component storage is monitored at the maximum height of any potential material to be stored | stratification457cm3–5°C |
-                        
-                            ****
-                            
-                            
-                        
-| Adjacent to lighting / | Ensures that lights do not create warm spots when turned on | 20–40W0.5–2°CLEDOQ |
-                    
-                
-
-            
 
             
             
@@ -3877,84 +3264,6 @@ General guidance should not be used without a supporting rationale. For example,
                 
 
                 
-                    
-                        
-                              
-
-                              
-
-                              
-
-                              
-
-                              
-
-                              
-
-                        
-| Load State | Summer / High Ambient / | Winter / Low Ambient / | Door Closed (Steady State) | Door Open Scenario | ISPE Priority |
-| --- | --- | --- | --- | --- | --- |
-                    
-                    
-                        
-                            ****
-                              
-
-                              
-
-                              
-
-                              
-
-                            
-                        
-| Empty / | Recommended | Optional | Required | Recommended | |
-                        
-                            **  
-**
-                              
-
-                              
-
-                              
-
-                              
-
-                            
-                        
-| Simulated Full Load | Required (Worst-case) | Optional | Required | Required | |
-                        
-                            **  
-**
-                              
-
-                              
-
-                              
-
-                              
-
-                            
-                        
-| Partial Load | Generally unnecessary | Generally unnecessary | Generally unnecessary | Generally unnecessary | |
-                        
-                            **  
-**
-                              
-
-                              
-
-                              
-
-                              
-
-                            
-                        
-| Conditioning Test | Required | Consider | Required | N/A | |
-                    
-                
-
-            
 
             
 
@@ -4170,107 +3479,6 @@ Consolidated learning from all sub-sections
             
 
 ### Chapter 6 Quick-Reference Summary Table |
-
-            
-                
-                    
-                        
-                        
-                        
-                        
-                    
-| Topic / | ISPE Requirement / ISPE | CDMO Implication / CDMO | Common Pitfall / |
-| --- | --- | --- | --- |
-                
-                
-                    
-                        
-                        
-                        
-                        
-                    
-| Testing Outcomes | Confirm uniformity + identify monitoring locations | Monitoring locations must protect most stringent product spec | Treating mapping as a pass/fail test only, ignoring Outcome 2 |
-                    
-                        
-                        
-                        
-                        
-                    
-| Risk Assessment | 5 factors evaluated before strategy development | Add: multi-client load variability, adjacent heat sources | Copying last project's mapping strategy without re-assessing |
-                    
-                        
-                        
-                        
-                        
-                    
-| CFD Modeling | Supplement only — cannot replace actual testing | Useful for initial sensor placement planning | Accepting CFD results as qualification evidence |
-                    
-                        
-                        
-                        
-                        
-                    
-| Pre-approval | QA approval required before testing begins | Multi-client CDMO may need client QA co-review | Executing first, approving protocol retrospectively |
-                    
-                        
-                        
-                        
-                        
-                    
-| Sensor Accuracy | Must match acceptance criteria range | ±0.5°C recommended for 2–8°C cold chain | Using ±2°C loggers for pharmaceutical cold chain |
-                    
-                        
-                        
-                        
-                        
-                    
-| Buffered Probes | Not for mapping, not for controlling | Can be used for permanent monitoring if relationship is characterized | Using buffered probes during temperature mapping study |
-                    
-                        
-                        
-                        
-                        
-                    
-| Sample Rate | ≥ every 5 min; more frequent if spikes expected | 1–2 min for facilities with frequent defrost or door opening | 5-min interval missing peak temperatures during defrost |
-                    
-                        
-                        
-                        
-                        
-                    
-| Load State Testing | Empty + full-load; partial load generally unnecessary | Define "worst-case load scenario" for multi-client environment | Only testing empty state, never validating loaded performance |
-                    
-                        
-                        
-                        
-                        
-                    
-| Seasonal Testing | Summer worst-case is the critical test period | Taiwan July–September = mandatory seasonal mapping period | Mapping in winter and assuming year-round compliance |
-                    
-                        
-                        
-                        
-                        
-                    
-| Sensor Rationale | Scientific rationale + QA approval required | Document each location individually; general rules insufficient | "We placed sensors every 4 meters" without risk-based justification |
-                
-            
-
-        
-
-    
-
-    
-
-ISPE Good Practice Guide: Controlled Temperature Chamber Mapping and Monitoring (2016)
-
-    
-
-Chapter 6: Testing Strategy | Section 02 | SterileGMP Knowledge Hub
-
-    
-
-For individual use only. © Copyright ISPE 2016. All rights reserved. Educational commentary © 2026 SterileGMP Knowledge Hub.
 
 ## Chapter 3: Qualification, System Monitoring & Periodic Evaluation (p58-p71)
 
@@ -4744,20 +3952,6 @@ When specifying a new facility, it is worthwhile defining the system design life
 #### 
 
                     
-                        
-| | | | GMP |
-| --- | --- | --- | --- |
-                        
-                              
-| | | PM | |
-                            
-| (Control Sensor) | | | / |
-                            
-| (Monitoring Sensor) | | | |
-                        
-                    
-
-                    
 
                 
 
@@ -4917,32 +4111,6 @@ Regardless of approach, loading and unloading methods must be qualified and proc
 #### vs.
 
                     
-                        
-| | (Active) | (Passive) |
-| --- | --- | --- |
-                        
-                            
-| | / | + (/) |
-                            
-| | 30–72() | () |
-                            
-| | | / |
-                            
-| | | (ISTA/WHO) |
-                            
-| ISPE | CTC | |
-                        
-                    
-
-                
-
-                
-
-                    
-
-#### vs.
-
-                    
 
                         
 
@@ -5049,22 +4217,6 @@ Depending on the geographical area, manufacturers build and test trailers to mee
 #### TMC / ATP Classification Table
 
                 
-                    
-| TMC (North America) | ATP (Europe) | Application |
-| --- | --- | --- |
-                    
-                        
-| C65 | FRA | Controlled Room Temperature |
-                        
-| C35 | FRB | Refrigerated (2–8°C) |
-                        
-| F | FRC | Frozen (-20°C) |
-                        
-| DF | — | Deep Frozen (-25°C or below) |
-                    
-                
-
-                
 
 #### 11.4 Insulation Degradation
 
@@ -5087,34 +4239,6 @@ The validation exercise is focused on loading patterns and assuring that proper 
                 
 
 ### CTC
-
-                
-
-                    
-
-#### vs. CTC
-
-                    
-                        
-| | CTC | |
-| --- | --- | --- |
-                        
-                            
-                            
-| | | (/) |
-                            
-                            
-| | + | |
-                            
-| | | "" |
-                            
-| | SOP + USP/WHO | TMC () / ATP () |
-                            
-| | | F() |
-                        
-                    
-
-                
 
                 
 
@@ -5674,40 +4798,6 @@ A review of current system performance data against the as-Qualified data by an 
 #### PM | PM Frequency Reference
 
                     
-                        
-| | | | ISPE |
-| --- | --- | --- | --- |
-                        
-                            
-| | / | | 12.1 — |
-                            
-| | | | 12.1 — |
-                            
-| | | | 12.2 — |
-                            
-| | Walk-in / | | 12.3 — |
-                            
-| | | | 12.4 — |
-                            
-| | CTC | | 12.6 — + |
-                            
-| () | Walk-in / | | 12.5 — |
-                            
-| | CTC | | 10.4 — |
-                            
-| | CTC | | 10.4 — |
-                            
-| HVAC | CRT | | 12.6 — |
-                            
-| | | | 12.4 — () |
-                            
-| SME | | | 12.6 — PM |
-                            
-| | CTC | | |
-                        
-                    
-
-                
 
                 
                 
@@ -5810,84 +4900,6 @@ A review of current system performance data against the as-Qualified data by an 
 ### PM | PM Impact on Qualification Status
 
         
-            
-                
-                    
-                    
-                    
-                    
-                
-| PM / | | | |
-| --- | --- | --- | --- |
-            
-            
-                
-                    
-                    
-                    
-                    
-                
-| | — | | PM + |
-                
-                    
-                    
-                    
-                    
-                
-| | — | | 2SME |
-                
-                    
-                    
-                    
-                    
-                
-| | — | | |
-                
-                    
-                    
-                    
-                    
-                
-| /(unit cooler) | — | | |
-                
-                    
-                    
-                    
-                    
-                
-| () | — | | |
-                
-                    
-                    
-                    
-                    
-                
-| / | — | | |
-                
-                    
-                    
-                    
-                    
-                
-| | — | | |
-                
-                    
-                    
-                    
-                    
-                
-| () | — | | 2 |
-                
-                    
-                    
-                    
-                    
-                
-| PM2PM | — | | PM + SME + |
-            
-        
-
-    
 
     
 
@@ -6091,18 +5103,6 @@ A review of current system performance data against the as-Qualified data by an 
         
 
     
-
-    
-
-ISPE Good Practice Guide: Controlled Temperature Chamber Mapping and Monitoring (2016)
-
-    
-
-Section 04 — Chapters 10–12: Operational Issues, Packaged Transport Systems & Maintenance
-
-    
-
-SterileGMP Knowledge Hub  |  Bilingual Educational Edition  |  For internal training use only
 
 ⇧
 
@@ -6554,22 +5554,6 @@ Temperature control, alarms, data integrity, and system interfaces
 #### Alarms Classification
 
                     
-                        
-                            
-                            
-                            
-                        
-| Alarm Type | Critical | Non-Critical |
-| --- | --- | --- |
-                        
-                            
-                            
-                            
-                        
-| Alarm Display | Local Display + DCS | DCS only |
-                    
-
-                    
 
 #### Data and Security
 
@@ -6680,20 +5664,6 @@ The user requirements stated herein describe what must be achieved for the syste
 ### Section 2 — Definitions and Abbreviations
 
                     
-                        
-| Term | Definition |
-| --- | --- |
-                        
-| CE Marking | Manufacturer declares conformance with applicable EC directives for environmental, health, and safety |
-                        
-| NEC | National Electric Code — standard for electrical systems design |
-                        
-| SME | Subject Matter Expert — individuals with specific expertise (QA, engineering, validation, manufacturing) |
-                        
-| UL | Underwriters Laboratories — global independent safety science company |
-                    
-
-                    
 
 Key abbreviations: BMS, CE, dB(A), MCC, OSHA, PI, RTD, SCBD, SME, SOP, UPS, URS, VAC
 
@@ -6789,14 +5759,6 @@ The walk-in Cold Room units provide refrigerated storage for XX that support pro
                     
 
 This system encompasses the equipment items listed below, as illustrated by referenced P&IDs:
-
-                    
-                        
-| Type | Equipment Description | P&ID |
-| --- | --- | --- |
-                        
-| Cold Room (2°C to 8°C) | Walk-in Cold Room | TBA |
-                    
 
                     
 
@@ -6913,38 +5875,6 @@ Translating business needs into traceable, numbered requirements
 ### 5.1 Process Requirements: Capacity (Source Text)
 
                     
-                        
-                            
-                            
-                            
-                            
-                        
-| ID | Requirement | Type | Source |
-| --- | --- | --- | --- |
-                        
-                            
-                            
-                            
-                            
-                        
-| 5.1 | The Cold Room must be sized to XX. Shelves must be provided for XX. Cold Room interior dimensions must be approximately W × D × H. Note: material will not be stored on the floor; access for cleaning must be provided for all racking. | Business | Operations |
-                        
-                            
-                            
-                            
-                            
-                        
-| 5.2 | The system should be designed to operate with external design conditions of -2.8°C to 36.7°C (27°F to 98°F). | Business | ASHRAE / Operations |
-                        
-                            
-                            
-                            
-                            
-                        
-| 5.3 | The Cold Room will be located in a room maintained at controlled room temperature. | Business | Operations |
-                    
-
-                    
 
 ### 5.2 Process Requirements: Product Physical Properties
 
@@ -7015,51 +5945,6 @@ Five real-world examples showing what testable requirements look like
             
 
             
-                
-                    
-                    
-                    
-                
-| Topic | Poor Requirement | Good Requirement |
-| --- | --- | --- |
-                
-                    **  
-**
-                    
-                    
-                
-| Temperature control | The system shall maintain proper temperature for product storage. | The Cold Room shall maintain an internal temperature of 2°C to 8°C under full load (12 Euro pallets). Temperature shall recover to within range within 30 minutes after single-pallet loading at ambient conditions. |
-                
-                    **  
-**
-                    
-                    
-                
-| Alarms | The system shall provide alarms when temperature is out of range. | The system shall activate a critical alarm (audible + visual at local panel and DCS) when internal temperature exceeds 10°C or falls below 0°C for more than 5 consecutive minutes. |
-                
-                    **  
-**
-                    
-                    
-                
-| Data integrity | Temperature data shall be stored securely. | All temperature records shall be stored in a format that prevents modification. Any attempt to alter records shall generate an audit trail entry with user ID, timestamp, original value, and new value. |
-                
-                    **  
-**
-                    
-                    
-                
-| Cleaning | The unit shall be easy to clean. | All interior surfaces and racking shall be GMP-grade, crevice-free, and resistant to the site's validated cleaning agents (including sporicidal agents). All surfaces shall be accessible with standard cleaning tools. |
-                
-                    **  
-**
-                    
-                    
-                
-| Access control | Only authorized personnel shall operate the system. | Access to temperature set points and alarm thresholds shall require a unique user credential. The system shall log each access event with user ID and timestamp. Minimum two authorization levels (Operator, Supervisor) shall be supported. |
-            
-
-            
 
                 "A URS requirement must be testable — if you can't write a test for it, you haven't written a requirement."
                 
@@ -7069,14 +5954,6 @@ Five real-world examples showing what testable requirements look like
         
 
     
-
-    
-
-ISPE Good Practice Guide: Controlled Temperature Chamber Mapping and Monitoring (2016)
-
-    
-
-Appendix 1 (Part 1): Example URS — Facility & Performance Requirements | SterileGMP Knowledge Hub
 
 ⇧
 
@@ -7119,128 +5996,6 @@ Controlled Temperature Chamber Mapping and Monitoring (2016)  |  Source: Appen
 Appendix 1 | pp. 69–71
 
       
-        
-          
-| ID | Requirement | Type | Source |
-| --- | --- | --- | --- |
-        
-        
-          
-            
-            
-            
-            
-          
-| 6.1 | The control unit must be provided with two temperature monitors dedicated for monitoring cold room temperature (in addition to, and independent from, the unit's control system). One must measure the localized high temperature zone and one must measure the localized low temperature zone as determined by temperature mapping. | Quality | SME |
-          
-            
-            
-            
-            
-          
-| 6.2 | The installation of the monitoring sensors must facilitate routine calibration e.g., using long cable/radio transmitters. | Quality | SME |
-          
-            
-            
-            
-            
-          
-| 6.3 | The unit's temperature loops that sense cold room temperature and are dedicated for monitoring must be accurate to within 0.5°C accuracy. | Quality | SME |
-          
-            
-            
-            
-            
-          
-| 6.4 | The unit must achieve set point from ambient in 12 hours or less. | Business | SME |
-          
-            
-            
-            
-            
-          
-| 6.5 | The unit must be provided with a vendor standard control system that must control and monitor all aspects of operation, provide operator interface capability, and records of key aspects of operation. The system must provide redundancy such that either the duty or standby system can operate while the other is maintained/repaired. | Business | SME |
-          
-            
-            
-            
-            
-          
-| 6.6 | A user must be logged in and have proper security privileges to issue commands or change set points/values, or there must be access control to prevent accidental changes. (Note: the refrigeration control system is not required to comply with 21 CFR Part 11 as it provides no records; the independent monitoring system will be compliant.) | Business | SME |
-          
-            
-            
-            
-            
-          
-| 6.7 | The system must have an automatic log off feature with a configurable time out where applicable. | Business | SME |
-          
-            
-            
-            
-            
-          
-| 6.8 | The room temperature data must be recorded/archived in the plant BMS system. | Quality | SME |
-          
-            
-            
-            
-            
-          
-| 6.9 | The unit must be capable of resuming operation in a safe manner without loss of configuration or data after power loss and restoration. | Business | SME |
-          
-            
-            
-            
-            
-          
-| 6.10 | The unit must operate refrigeration skids in lead-lag mode, with alternating designation to ensure even run time, and provide system redundancy. | Business | SME |
-          
-            
-            
-            
-            
-          
-| 6.11 | Alarms must be provided for the following conditions: Fan failure; Door open beyond established time limit; Refrigeration system failure. | Quality | SME |
-          
-            
-            
-            
-            
-          
-| 6.12 | Alarms must be configured so that they are easily distinguishable based on their present condition (e.g., unacknowledged/acknowledged). | Business | SME |
-          
-            
-            
-            
-            
-          
-| 6.13 | All alarms shall be provided with an individual delay timer which must complete (i.e., time out) before the alarm becomes active. | Business | SME |
-          
-            
-            
-            
-            
-          
-| 6.14 | Alarm annunciation shall be audible and visual; acknowledging the alarm will silence the local annunciation. | Business | SME |
-          
-            
-            
-            
-            
-          
-| 6.15 | There must be an engineering alarm if the system temperature exceeds pre-defined limits, outside the normal operating range. | Business | SME |
-          
-            
-            
-            
-            
-          
-| 6.16 | The system must automatically switch control to the redundant unit if the temperature exceeds normal operating high or low conditions, or the duty system fails. | Business | SME |
-        
-      
-
-    
 
     
 
@@ -7339,110 +6094,14 @@ Appendix 1 | pp. 69–71
 #### Section 7 — Material Compatibility
 
       
-        
-| ID | Requirement | Type |
-| --- | --- | --- |
-        
-          
-            
-            
-            
-          
-| 7.1 | All internal and external surfaces must resist corrosion from cleaning and sanitizing chemicals, including bleach and Spor-Klenz®. | Quality |
-          
-            
-            
-            
-          
-| 7.2 | Design must ensure that the forming of voids or other spaces capable of harboring vermin colonies is avoided. All junctions must be sealed with appropriate fillers and mastic beading to prevent insect and rodent ingress. Materials must not support vermin colonies. | Quality |
-        
-      
-
-      
 
 #### Section 8 — Mechanical
-
-      
-        
-| ID | Requirement | Type |
-| --- | --- | --- |
-        
-          
-            
-            
-            
-          
-| 8.1 | The unit's temperature sensors used for control must be accurate to within 0.25°C (measurement uncertainty) / 0.5°C accuracy. | Business |
-          
-            
-            
-            
-          
-| 8.2 | The unit must be provided with RTD(s) placed in the discharge air stream of each evaporator for troubleshooting (separate to RTDs used for control). | Business |
-          
-            
-            
-            
-          
-| 8.3 | The unit must be provided with external and internal fire protection in line with the insurer's (Factory Mutual, FM) requirements. | Business |
-          
-            
-            
-            
-          
-| 8.4 | System materials of construction must meet the insurer's (FM) requirements. | Business |
-          
-            
-            
-            
-          
-| 8.5 | The Cold Room must be provided with bollards to protect door openings from forklifts and pallet jacks. | Business |
-          
-            
-            
-            
-          
-| 8.6 | The Cold Room must be provided with door height indicators for reference by operators using forklifts and pallet jacks. | Business |
-          
-            
-            
-            
-          
-| 8.7 | System design must prevent the possibility of condensed moisture dripping on stored material. | Quality |
-          
-            
-            
-            
-          
-| 8.8 | The system provided must impede warm air infiltration when doors are open by using a vinyl curtain or other inhibiting device or method. | Quality |
-          
-            
-            
-            
-          
-| 8.9 | The internal fixtures and fittings must be designed in accordance with GMP to facilitate cleaning. | Quality |
-        
-      
 
       
 
 #### Section 9 — Utilities
 
       
-        
-| ID | Requirement | Type |
-| --- | --- | --- |
-        
-          
-            
-            
-            
-          
-| 9.1 | The system must be able to operate from the utility supplies as follows: Condenser Water — 1.4 bar delta / 6°C. Utilities must be live to the unit unless it is down for maintenance. | Business |
-        
-      
-
-    
 
     
 
@@ -7541,86 +6200,10 @@ Appendix 1 | pp. 69–71
 #### Section 10 — Electrical
 
       
-        
-| ID | Requirement | Type |
-| --- | --- | --- |
-        
-          
-            
-            
-            
-          
-| 10.1 | All electrical equipment must be designed and installed in accordance with National Electrical Code (NEC), Underwriters Laboratories (UL) or European Conformity (CE). Engineering Standard exceptions require Company approval. | Business |
-          
-            
-            
-            
-          
-| 10.2 | Control panels must be labeled per applicable testing organization. | Business |
-          
-            
-            
-            
-          
-| 10.3 | Electrical power components must be designed for 230VAC, 400VAC, or both. Components must be designed for 50Hz. Frequency conversion equipment must not be used without prior approval. Circuit and plug sizing must be per applicable specification. | Business |
-          
-            
-            
-            
-          
-| 10.4 | The Cold Room must be connected to generator power. Its control system must be designed for operation with a central UPS system (connected to generator power, not central UPS power). | Business |
-          
-            
-            
-            
-          
-| 10.5 | The redundant refrigeration skids must receive power from different MCCs (Motor Control Centers). | Business |
-          
-            
-            
-            
-          
-| 10.6 | Power >50V must be segregated from power <50V. | EHS |
-        
-      
-
-      
 
 #### Section 11 — Environmental Health and Safety
 
       
-        
-| ID | Requirement | Type |
-| --- | --- | --- |
-        
-          
-            
-            
-            
-          
-| 11.1 | The noise made by any part of the installation must not exceed 85 dB(A) in operating state, at 1 m (3 ft) from the source (externally and internally). | EHS |
-          
-            
-            
-            
-          
-| 11.2 | The door must be provided with hardware to allow egress from the Cold Room in an emergency. | EHS |
-          
-            
-            
-            
-          
-| 11.3 | An emergency button must be provided inside the cold room to activate an external light and initiate a common trouble alarm in an emergency. | EHS |
-          
-            
-            
-            
-          
-| 11.4 | Refrigerant monitoring must be provided near the refrigeration skids, with connection to the fire alarm (life safety) system. | EHS |
-        
-      
-
-    
 
     
 
@@ -7721,38 +6304,6 @@ Appendix 1 | pp. 69–71
       
 
 Appendix 1 | p. 72
-
-      
-        
-| ID | Requirement | Type |
-| --- | --- | --- |
-        
-          
-            
-            
-            
-          
-| 13.1 | Maintain accessibility for service. The system must be serviceable with required clearances and proper access provided for equipment, components, and instruments. Where necessary, provide access panels or doors as required. Do not place products requiring regular maintenance at locations that will be inaccessible after construction is completed. | Business |
-          
-            
-            
-            
-          
-| 13.2 | Standard operating procedures must define acceptable storage locations and the maximum quantity of material allowed to be stored. | Quality |
-          
-            
-            
-            
-          
-| 13.3 | Standard operating procedures must identify actions and temperature alarms and equipment alarms. | Quality |
-          
-            
-            
-            
-          
-| 13.4 | Door gaskets for all doors should be designed for easy replacement to facilitate maintenance. | Business |
-        
-      
 
       
 
@@ -7867,275 +6418,6 @@ In regulatory inspections (FDA 483, EMA), auditors specifically ask: "Show me wh
       
 
       
-        
-          
-            
-            
-            
-            
-            
-            
-          
-| URS ID | Requirement Summary | IQ | OQ | PQ | Test Reference |
-| --- | --- | --- | --- | --- | --- |
-        
-        
-          
-            ****
-            
-            
-            
-            
-            
-          
-| 5.5 | Maintain 2–8°C (accept.) / 3–7°C (design) | — | OQ | PQ | OQ-TC-001, PQ-TM-001 |
-          
-            ****
-            
-            
-            
-            
-            
-          
-| 5.6 | Maintain temp in empty/partial/full load | — | — | PQ | PQ-TM-002, PQ-TM-003 |
-          
-            ****
-            
-            
-            
-            
-            
-          
-| 6.1 | Two independent monitoring sensors (hot/cold zones) | IQ | OQ | — | IQ-I-005, OQ-AL-003 |
-          
-            ****
-            
-            
-            
-            
-            
-          
-| 6.2 | Sensor installation facilitates calibration | IQ | — | — | IQ-I-006 |
-          
-            ****
-            
-            
-            
-            
-            
-          
-| 6.3 | Monitoring accuracy ≤0.5°C | IQ | OQ | — | IQ-CAL-001, OQ-CAL-002 |
-          
-            ****
-            
-            
-            
-            
-            
-          
-| 6.4 | Set point from ambient in ≤12 hours | — | OQ | — | OQ-TC-005 |
-          
-            ****
-            
-            
-            
-            
-            
-          
-| 6.5 | Control system redundancy | IQ | OQ | — | IQ-I-010, OQ-RD-001 |
-          
-            ****
-            
-            
-            
-            
-            
-          
-| 6.6 | Access control / security privileges | IQ | OQ | — | IQ-I-011, OQ-SC-001 |
-          
-            ****
-            
-            
-            
-            
-            
-          
-| 6.8 | BMS data archiving | IQ | OQ | PQ | IQ-I-012, OQ-BMS-001, PQ-BMS-001 |
-          
-            ****
-            
-            
-            
-            
-            
-          
-| 6.9 | Resume after power loss without data loss | — | OQ | — | OQ-RD-002 |
-          
-            ****
-            
-            
-            
-            
-            
-          
-| 6.10 | Lead-lag mode operation | IQ | OQ | — | IQ-I-013, OQ-RD-003 |
-          
-            ****
-            
-            
-            
-            
-            
-          
-| 6.11 | Alarms: fan, door, refrigeration failure | — | OQ | — | OQ-AL-001, OQ-AL-002 |
-          
-            ****
-            
-            
-            
-            
-            
-          
-| 6.13 | Alarm delay timers | — | OQ | — | OQ-AL-004 |
-          
-            ****
-            
-            
-            
-            
-            
-          
-| 6.14 | Audible and visual alarm annunciation | — | OQ | — | OQ-AL-005 |
-          
-            ****
-            
-            
-            
-            
-            
-          
-| 6.15 | Engineering alarm for out-of-range temperature | — | OQ | — | OQ-AL-006 |
-          
-            ****
-            
-            
-            
-            
-            
-          
-| 6.16 | Auto-switch to redundant unit on failure | — | OQ | — | OQ-RD-004 |
-          
-            ****
-            
-            
-            
-            
-            
-          
-| 7.1 | Corrosion-resistant surfaces | IQ | — | — | IQ-MAT-001 (CoC review) |
-          
-            ****
-            
-            
-            
-            
-            
-          
-| 7.2 | Sealed junctions, vermin prevention | IQ | — | — | IQ-I-020 (visual) |
-          
-            ****
-            
-            
-            
-            
-            
-          
-| 8.1 | Control sensor accuracy ≤0.25°C MU | IQ | OQ | — | IQ-CAL-002, OQ-CAL-001 |
-          
-            ****
-            
-            
-            
-            
-            
-          
-| 8.7 | No condensate drip on product | IQ | OQ | — | IQ-I-030, OQ-TC-010 |
-          
-            ****
-            
-            
-            
-            
-            
-          
-| 10.4 | Generator power connection | IQ | OQ | — | IQ-EL-001, OQ-RD-005 |
-          
-            ****
-            
-            
-            
-            
-            
-          
-| 10.5 | Redundant skids from separate MCCs | IQ | OQ | — | IQ-EL-002, OQ-RD-006 |
-          
-            ****
-            
-            
-            
-            
-            
-          
-| 11.2 | Emergency egress hardware | IQ | — | — | IQ-EHS-001 |
-          
-            ****
-            
-            
-            
-            
-            
-          
-| 11.3 | Internal emergency button | IQ | OQ | — | IQ-EHS-002, OQ-EHS-001 |
-          
-            ****
-            
-            
-            
-            
-            
-          
-| 11.4 | Refrigerant monitoring with fire alarm link | IQ | OQ | — | IQ-EHS-003, OQ-EHS-002 |
-          
-            ****
-            
-            
-            
-            
-            
-          
-| 13.1 | Service accessibility and clearances | IQ | — | — | IQ-I-040 (clearance measure) |
-          
-            ****
-            
-            
-            
-            
-            
-          
-| 13.2 | SOP for storage locations and max quantity | — | — | PQ | PQ pre-req: SOP-CR-001 |
-          
-            ****
-            
-            
-            
-            
-            
-          
-| 13.3 | SOP for alarm response | — | — | PQ | PQ pre-req: SOP-CR-002 |
-        
-      
-
-    
 
     
 
@@ -8157,46 +6439,6 @@ In regulatory inspections (FDA 483, EMA), auditors specifically ask: "Show me wh
 
           
 
-        
-
-      
-
-      
-
-        
-
-#### 
-
-        
-          
-            
-              
-              
-              
-            
-| Phase | Typical URS Types Tested | |
-| --- | --- | --- |
-          
-          
-            
-              
-              
-              
-            
-| IQ | Installation, materials, documentation, nameplate data, as-built drawings, calibration certs | |
-            
-              
-              
-              
-            
-| OQ | Functional tests: alarms, control accuracy, redundancy, BMS connectivity, security access, set-point response | |
-            
-              
-              
-              
-            
-| PQ | Temperature mapping under actual load conditions, BMS continuous recording, SOP compliance, seasonal re-qualification | |
-          
         
 
       
@@ -8711,42 +6953,6 @@ Including documentation requirements in the URS — not just in a separate procu
 #### FAT vs SAT
 
         
-          
-            
-              
-              
-              
-            
-| | FAT | SAT |
-| --- | --- | --- |
-          
-          
-            
-              
-              
-              
-            
-            
-              
-              
-              
-            
-| | | IQ |
-            
-              
-              
-              
-            
-            
-              
-              
-              
-            
-| BMS | BMSor N/A | BMS |
-          
-        
-
-        
 
       
 
@@ -8936,56 +7142,6 @@ Any of the following events triggers a re-qualification assessment for the affec
 
           
 
-        
-
-      
-
-      
-
-        
-
-#### GMP
-
-        
-          
-            
-              
-              
-              
-            
-| --- | --- | --- |
-          
-          
-            
-              
-              
-              
-            
-| IQ | 8 | 1+8 |
-            
-              
-              
-              
-            
-| SOP | 8 | 1+ |
-            
-              
-              
-              
-            
-| setpoint | | alarm table |
-            
-              
-              
-              
-            
-| | | VMP |
-            
-              
-              
-              
-            
-          
         
 
       
@@ -10054,32 +8210,6 @@ DL_low  = 2+(GB–0) = 2.25°C
 
             
 
-#### 
-
-            
-              
-                
-| | DL_high | DL_low | |
-| --- | --- | --- | --- |
-              
-              
-                
-| C(a) | 7.15°C | 2.85°C | |
-                
-| C(b) | 7.75°C | 3.35°C | |
-                
-| C(c) | 6.65°C | 2.25°C | |
-                
-| C(d) | 7.75°C | 2.25°C | |
-              
-            
-
-          
-
-          
-
-            
-
 #### C(d)
 
             
@@ -10649,56 +8779,6 @@ A5
 ### Table 17.1 — Risk Assessment Chart
 
           
-            
-              
-                
-                
-                
-                
-              
-| Score | Severity of Failure Effect | Likelihood of Occurrence | Ability to Detect Failure |
-| --- | --- | --- | --- |
-            
-            
-              
-                ****
-                **
-                ****
-                ****
-              
-| 9 / Severe | Serious impact to a critical quality attribute of the system output; impact to final product CQA | Frequent: Failure almost inevitable; consistent failures observed (e.g., once a week or several times a month) | Absolutely uncertain: Existing controls cannot detect the failure; no controls in place |
-              
-                ****
-                
-                ****
-                ****
-              
-| 7 / Major | Significant impact to a CQA of the system; possible impact to final product CQA | Likely: Failure is likely in most circumstances; repeated failures observed (e.g., once a month or several times a year) | Remote: A control may be in place but is untested or unreliable |
-              
-                ****
-                
-                ****
-                ****
-              
-| 5 / Moderate | Possible impact to a CQA; no impact to final product CQA | Occasional: Failure probable at some time and has been observed (once every 1–2 years) | Moderate: Moderate chance the control will detect failure |
-              
-                ****
-                
-                ****
-                ****
-              
-| 3 / Minor | Minor impact to a CQA; no final product impact | Unlikely: Failure could occur; only isolated incidents observed (once every 3–5 years) | High: Very likely control will detect failure (e.g., procedural control) |
-              
-                ****
-                
-                ****
-                ****
-              
-| 1 / Insignificant | No impact to QA of system output; no final product impact | Remote: Failure extremely unlikely; no history of failure | Almost certain: Control detects failure in almost every instance (e.g., alarm or automated function) |
-            
-          
-
-        
 
         
 
@@ -10802,121 +8882,10 @@ A5
 ### Table 17.2 — Severity × Occurrence → Interim Risk Level
 
           
-            
-              
-                
-                  
-
-                  
-
-                  
-
-                  
-
-                  
-
-              
-|  | S=1Insignificant | S=3Minor | S=5Moderate | S=7Major | S=9Severe |
-| --- | --- | --- | --- | --- | --- |
-            
-            
-              
-                ****
-                
-                
-                
-                
-                
-              
-| O=9 Frequent | Medium | Medium | High | High | High |
-              
-                ****
-                
-                
-                
-                
-                
-              
-| O=7 Likely | Low | Medium | High | High | High |
-              
-                ****
-                
-                
-                
-                
-                
-              
-| O=5 Occasional | Low | Medium | Medium | High | High |
-              
-                ****
-                
-                
-                
-                
-                
-              
-| O=3 Unlikely | Low | Low | Medium | Medium | High |
-              
-                ****
-                
-                
-                
-                
-                
-              
-| O=1 Remote | Low | Low | Low | Low | Medium |
-            
-          
-
-          
 
 ### Table 17.3 — Interim Risk × Detection → Final Risk Classification
 
           
-            
-              
-                
-                
-                
-                
-                
-                
-              
-| Interim Risk (from T17.2) | D=1 Almost Certain | D=3 High | D=5 Moderate | D=7 Remote | D=9 Absolutely Uncertain |
-| --- | --- | --- | --- | --- | --- |
-            
-            
-              
-                ****
-                
-                
-                
-                
-                
-              
-| High | Low | Medium | High | High | High |
-              
-                ****
-                
-                
-                
-                
-                
-              
-| Medium | Low | Low | Medium | High | High |
-              
-                ****
-                
-                
-                
-                
-                
-              
-| Low | Low | Low | Low | Medium | Medium |
-            
-          
-
-        
 
         
 
@@ -10974,46 +8943,6 @@ A5
           
 
 #### 
-
-          
-            
-              
-                
-                
-                
-                
-                
-              
-| Risk Level | Mapping Sensors | Load Scenarios | Test Duration | Requalification |
-| --- | --- | --- | --- | --- |
-            
-            
-              
-                
-                
-                
-                
-                
-              
-| Low | Minimum (per volume table) | Empty only | 24h | 3 years or on change |
-              
-                
-                
-                
-                
-                
-              
-| Medium | Standard + extra at risk zones | Empty + simulated full | 48–72h | 2 years or on change |
-              
-                
-                
-                
-                
-                
-              
-| High | Full coverage + redundant at extremes | Multiple: empty, half, full, door open | ≥72h + seasonal | Annual + on change |
-            
-          
 
           
 
@@ -11350,18 +9279,6 @@ DL_high = 7.75°C | DL_low = 2.25°C
 
   
 
-  
-
-ISPE Good Practice Guide: Controlled Temperature Chamber Mapping and Monitoring (2016)
-
-  
-
-Appendices 2, 3 & 5  |  Sensor Placement · Measurement Uncertainty · Risk-Based Testing
-
-  
-
-SterileGMP Knowledge Hub  |  Educational bilingual reference — not a substitute for the original ISPE publication
-
 ⇧
 
 ## Chapter 7: Appendices 6 & 7: Testing Strategies & Templates (p108-p115)
@@ -11511,344 +9428,6 @@ For a CDMO operating in a multi-market environment (US, EU, Asia-Pacific), famil
 ### Annotated Reference Table |
 
     
-      
-        
-          
-          
-          
-          
-          
-          
-          
-        
-| # | Document & Issuing Body | Year | Scope / Subject | Relevance to CTC Qualification | CDMO Priority | Type |
-| --- | --- | --- | --- | --- | --- | --- |
-      
-      
-        
-          
-          
-          
-          
-          
-          
-          
-        
-| 1 | ISPE Concept Paper: Controlled Temperature Chamber Mapping | 2012 | Precursor document that defined the scope and approach for this guide | Historical context; explains why the full guide was developed | Reference | ISPE |
-        
-          
-          
-          
-          
-          
-          
-          
-        
-| 2 | ISPE GPG: Cold Chain Management, 1st Ed. | 2011 | End-to-end cold chain: storage, transport, distribution | Complementary guide — covers transport legs beyond the chamber | High | ISPE |
-        
-          
-          
-          
-          
-          
-          
-          
-        
-| 3 | HPRA IA-G0046-2: Guide to Good Distribution Practice (Ireland) | 2014 | GDP requirements for medicinal products — Irish national guidance | Aligns with EU GDP; applicable for EU-market CDMOs | Medium | GDP |
-        
-          
-          
-          
-          
-          
-          
-          
-        
-| 4 | HPRA IA-G0011-1: Control and Monitoring of Storage and Transportation Temperature | 2011 | Monitoring systems, sensor placement, data management | Directly relevant to alarm/alert setpoints and sensor qualification | High | GDP |
-        
-          
-          
-          
-          
-          
-          
-          
-        
-| 5 | EU GDP Guidelines 2013 (2013/C 68/01) — EMA | 2013 | EU-wide GDP requirements including temperature-controlled storage | Mandatory for EU market; defines qualification and monitoring expectations | Critical | GDP |
-        
-          
-          
-          
-          
-          
-          
-          
-        
-| 6 | PIC/S PE 011-1: Good Distribution Practice for Medicinal Products | 2014 | International GDP harmonisation framework | Baseline for non-EU markets; often adopted verbatim in Asian markets | High | GDP |
-        
-          
-          
-          
-          
-          
-          
-          
-        
-| 7 | EU GDP Guidelines (2013/C 343/01) — European Commission (revised) | 2013 | Updated GDP text with EEA relevance; supersedes earlier version | Same as #5 but final authoritative text; always cite this version | Critical | GDP |
-        
-          
-          
-          
-          
-          
-          
-          
-        
-| 8 | Health Canada GUI-0069: Temperature Control of Drug Products during Storage and Transportation | 2011 | Canadian requirements for temperature monitoring and control | Required for Canadian market; similar structure to EU GDP | Medium | Regulatory |
-        
-          
-          
-          
-          
-          
-          
-          
-        
-| 9 | WHO TRS 961, Annex 9: Model Guidance for Storage and Transport of Time- and Temperature-Sensitive Pharmaceutical Products | 2011 | Global baseline for temperature-sensitive product storage, distribution, and monitoring | Foundational international benchmark; cited in many national guidelines; covers mapping protocols | Critical | WHO |
-        
-          
-          
-          
-          
-          
-          
-          
-        
-| 10 | MCA Part II, Chapter 6: Control and Monitoring of Storage and Transit Temperatures (MHRA) | — | UK/MHRA guidance on temperature monitoring systems | Relevant for UK-licensed facilities; post-Brexit still widely followed | Medium | Regulatory |
-        
-          
-          
-          
-          
-          
-          
-          
-        
-| 11 | USP <659> Packaging and Storage Requirements | Current | Pharmacopeial definitions of storage temperature categories (Cold, Cool, CRT, Freezer, Warm) | Defines the temperature limits that CTC qualification must verify; underpins acceptance criteria | Critical | Pharmacopeial |
-        
-          
-          
-          
-          
-          
-          
-          
-        
-| 12 | ISPE Baseline Guide Vol. 5: Commissioning and Qualification, 1st Ed. | 2001 | C&Q framework for pharmaceutical facilities and equipment | Foundational IQ/OQ/PQ methodology underlying all CTC qualification protocols | High | ISPE |
-        
-          
-          
-          
-          
-          
-          
-          
-        
-| 13 | USP <32> General Notices: Section 7.20 Rounding Rules | Current | Statistical rounding conventions for measurement reporting | Applies when recording temperature data and calculating mean values in OQ/PQ reports | Medium | Pharmacopeial |
-        
-          
-          
-          
-          
-          
-          
-          
-        
-| 14 | JTM K 01: Temperature and Humidity Chambers – Test and Indication Method (Japan) | — | Japanese national standard for chamber performance testing | Relevant for Japan market; defines test methods for chamber uniformity | Regional | Standard |
-        
-          
-          
-          
-          
-          
-          
-          
-        
-| 15 | JTM K 03: Environmental Temperature and Humidity Rooms (Japan) | — | Japanese standard for walk-in environmental room performance | Applicable to walk-in cold rooms in Japanese-licensed facilities | Regional | Standard |
-        
-          
-          
-          
-          
-          
-          
-          
-        
-| 16 | JTM K 05: High Temperature Chambers (Japan) | — | Japanese standard for elevated temperature chambers | Relevant for incubators and stress testing chambers | Regional | Standard |
-        
-          
-          
-          
-          
-          
-          
-          
-        
-| 17 | FD X15-140: Measurement of Air Moisture – Climatic and Thermostatic Chambers (France/AFNOR) | 2013 | French standard for humidity measurement characterisation and verification in chambers | Relevant when RH control is a qualification parameter (e.g. stability chambers) | Medium | Standard |
-        
-          
-          
-          
-          
-          
-          
-          
-        
-| 18 | DIN 12880: Electrical Laboratory Devices – Heating Ovens and Incubators (Germany) | 2007 | German standard for laboratory heating chamber performance | Applicable to incubators and accelerated stability chambers | Regional | Standard |
-        
-          
-          
-          
-          
-          
-          
-          
-        
-| 19 | AS 2853: Enclosures – Temperature Controlled – Performance Testing and Grading (Australia) | — | Australian standard for temperature-controlled enclosure qualification | Required for Australian TGA-licensed facilities | Regional | Standard |
-        
-          
-          
-          
-          
-          
-          
-          
-        
-| 20 | IEC 60068: Environmental Testing Series (IEC) | Current | International standard series for environmental testing of electronic/electrical equipment | Background reference for sensor and data logger environmental qualification | Medium | IEC |
-        
-          
-          
-          
-          
-          
-          
-          
-        
-| 21 | ASTM E2500-13: Standard Guide for Specification, Design, and Verification of Pharmaceutical and Biopharmaceutical Manufacturing Systems and Equipment | 2013 | Science and risk-based verification framework; defines Critical Aspects, GEP, SME-led approach | Underpins the modern C&Q approach; ECM definition from this document is used in the CTC guide | High | ASTM |
-        
-          
-          
-          
-          
-          
-          
-          
-        
-| 22 | ISPE Guide: Science and Risk-Based Approach for the Delivery of Facilities, Systems, and Equipment | 2011 | ISPE's implementation of the ASTM E2500 philosophy | Supports risk-based qualification planning and critical aspect identification | High | ISPE |
-        
-          
-          
-          
-          
-          
-          
-          
-        
-| 23 | TSO-C90c: Cargo Pallets, Nets, and Containers (FAA) | — | US FAA technical standard order for aircraft cargo containers (ULDs) | Relevant for air freight cold chain qualification (TCCU/ULD qualification) | Transport | Regulatory |
-        
-          
-          
-          
-          
-          
-          
-          
-        
-| 24 | ISPE GPG: Maintenance, 1st Ed. | 2009 | Maintenance management for pharmaceutical equipment | Supports the periodic review and preventive maintenance sections of CTC monitoring | Medium | ISPE |
-        
-          
-          
-          
-          
-          
-          
-          
-        
-| 25 | 21 CFR Part 11: Electronic Records; Electronic Signatures (FDA) | Current | US FDA requirements for electronic data integrity, audit trails, access controls | Directly applies to computerised monitoring systems, BMS, and data loggers used in CTC monitoring | Critical | FDA |
-        
-          
-          
-          
-          
-          
-          
-          
-        
-| 26 | NSAI National Metrology Laboratory (Ireland) | — | National metrology traceability authority | Supports calibration traceability requirements for temperature sensors | Medium | Metrology |
-        
-          
-          
-          
-          
-          
-          
-          
-        
-| 27 | IEST-RP-CC006.3: Testing Cleanrooms (IEST) | — | Cleanroom performance testing methodology | Referenced for mapping methodology analogies (sensor placement, statistical analysis) | Medium | Standard |
-        
-          
-          
-          
-          
-          
-          
-          
-        
-| 28 | EudraLex Vol. 4, Annex 11: Computerised Systems (EU GMP) | 2011 | EU GMP requirements for computerised systems: validation, data integrity, access control | Applies to BMS and continuous monitoring systems used in CTC facilities | Critical | EU GMP |
-        
-          
-          
-          
-          
-          
-          
-          
-        
-| 29 | PDA Technical Report No. 52: Guidance for Good Distribution Practices | 2011 | Pharmaceutical supply chain GDP, including storage and distribution temperature control | Complementary to ISPE CTC guide; covers GDP from a PDA perspective | High | PDA |
-        
-          
-          
-          
-          
-          
-          
-          
-        
-| 30 | PDA Technical Report No. 64: Active Temperature-Controlled Systems: Qualification Guidance | 2013 | Qualification of active refrigerated vehicles and containers | Extends CTC qualification principles to transport systems; relevant for CDMO logistics | High | PDA |
-        
-          
-          
-          
-          
-          
-          
-          
-        
-| 31 | IEC Publication 584: Thermocouples (IEC) | — | International standard for thermocouple types, tolerances, and measurement characteristics | Sensor selection and calibration reference for thermocouple-based data loggers | Medium | IEC |
-        
-          
-          
-          
-          
-          
-          
-          
-        
-| 32 | IEC Publication 751: Resistance Temperature Detectors (RTDs) (IEC) | — | International standard for RTD/Pt100 sensors: specifications, tolerances, calibration | Primary sensor standard for pharmaceutical-grade temperature monitoring systems (RTDs preferred for accuracy) | High | IEC |
-      
-    
-
-    
 
       
 
@@ -11935,90 +9514,6 @@ All abbreviations used throughout the ISPE CTC Good Practice Guide (2016)
 ### Full Acronym List |
 
         
-          
-            
-| Acronym | Full Form | Context in CTC |
-| --- | --- | --- |
-          
-          
-            ****
-| AC | Alternating Current | Electrical supply type for chamber equipment |
-            ****
-| API | Active Pharmaceutical Ingredient | The drug substance stored in CTCs |
-            ****
-| ASHRAE | American Society of Heating, Refrigerating and Air-Conditioning Engineers | Standards body for HVAC systems relevant to cold rooms |
-            ****
-| ATP | Agreement on the International Carriage of Perishable Foodstuffs (EU) | Transport qualification standard for refrigerated vehicles |
-            ****
-| BAS | Building Automation System | System controlling building environmental services |
-            ****
-| BMS | Building Management System | Computerised system monitoring all building services including temperature; subject to 21 CFR Part 11 / Annex 11 |
-            ****
-| CRT | Controlled Room Temperature | USP <659>: 20–25°C with excursions 15–30°C; MKT ≤25°C |
-            ****
-| COD | Critical Operational Data | Data whose integrity is essential to product quality decisions |
-            ****
-| CPP | Critical Process Parameter | A parameter (e.g. temperature setpoint) directly impacting CQA |
-            ****
-| CQA | Critical Quality Attribute | Product attribute (potency, stability) that must be preserved by CTC |
-            ****
-| DC | Direct Current | Electrical supply type; relevant for battery-powered data loggers |
-            ****
-| EHS | Environment, Health, and Safety | Regulatory compliance domain relevant to cold room access and cryogen safety |
-            ****
-| FAT | Factory Acceptance Test | Verification of CTC equipment at vendor site before delivery |
-            ****
-| FMEA | Failure Mode Effects Analysis | Risk tool used during CTC design and qualification planning |
-            ****
-| GDP | Good Distribution Practice | Regulatory framework governing pharmaceutical storage and distribution |
-            ****
-| GSM | Global System for Mobile | Wireless communication protocol used by some remote alarm systems |
-            ****
-| HMI | Human Machine Interface | Operator interface panel on CTC equipment or BMS |
-            ****
-| HVAC | Heating, Ventilation, and Air Conditioning | Infrastructure system maintaining cold room temperature; subject to qualification |
-            ****
-| I/O | Input/Output | Signal connections between sensors and monitoring systems |
-            ****
-| IQ | Installation Qualification | First stage: verifying CTC is installed per design specifications |
-            ****
-| OQ | Operational Qualification | Second stage: verifying CTC operates within specified limits (empty, worst-case) |
-            ****
-| MCC | Motor Control Center | Electrical panel controlling compressors and fans in cold rooms |
-            ****
-| MU | Measurement Uncertainty | Statistical range of values within which the true temperature lies; must be accounted for in acceptance criteria via guard-banding |
-            ****
-| P&ID | Piping and Instrumentation Diagram | Engineering drawing showing all instruments and process connections in cold room |
-            ****
-| PQ | Performance Qualification | Third stage: verifying CTC performs under loaded, operational conditions |
-            ****
-| RH | Relative Humidity | Secondary parameter monitored in some CTCs (especially stability chambers) |
-            ****
-| RTD | Resistance Temperature Detector | High-accuracy temperature sensor (Pt100); preferred over thermocouples for pharmaceutical monitoring |
-            ****
-| SME | Subject Matter Expert | ASTM E2500-defined role for qualification decisions |
-            ****
-| SOP | Standard Operating Procedure | Controlled document governing CTC operation and monitoring |
-            ****
-| TCCU | Temperature Controlled Cargo Unit | Active refrigerated air cargo container (e.g. Envirotainer) |
-            ****
-| TMC | Technology & Maintenance Council (US) | Standards body for refrigerated transport equipment |
-            ****
-| ULD | Unit Load Device | Standardised aircraft cargo pallet or container; may be temperature-controlled |
-            ****
-| UPS | Uninterruptible Power Supply | Backup power for CTC equipment and monitoring systems; URS requirement |
-            ****
-| URS | User Requirements Specification | Document defining all stakeholder requirements for the CTC; starting point for qualification |
-            ****
-| USP | United States Pharmacopeia | Pharmacopeial body; USP <659> defines storage temperature categories |
-            ****
-| VDC | Volts of Direct Current | Electrical specification for sensor power supply |
-            ****
-| WIP | Work in Progress | Intermediate product stored in CTC during manufacturing operations |
-          
-        
-
-      
 
       
 
@@ -12123,202 +9618,6 @@ These are the official definitions from the ISPE CTC Guide. When your SOPs, qual
 ### Bilingual Definitions Table |
 
     
-      
-        
-          
-          
-          
-          
-          
-        
-| English Term | Official English Definition (ISPE CTC 2016) | | | Practical Use in CDMO |
-| --- | --- | --- | --- | --- |
-      
-      
-        
-          ****
-          
-          ****
-          
-          
-        
-| Building Management System (BMS) | A computerized system that controls, monitors, and optimizes building services, this may include environmental conditions, heating and cooling systems, elevator systems, lighting, and security. | | GMP BMS 21 CFR Part 11 Annex 11 | Used to continuously monitor and alarm on temperature excursions; requires validation, audit trails, and access controls. BMS data may be primary evidence in deviations. |
-        
-          ****
-          
-          ****
-          
-          
-        
-| Cold | Any temperature not exceeding 8°C (46°F). A refrigerator is a cold place in which the temperature is maintained thermostatically between 2° and 8°C (36° and 46°F). [USP <659>] | Cold | 8°C 2–8°C CDMO CTC | Set OQ/PQ acceptance criteria as: all mapped locations must remain ≥2°C and ≤8°C throughout the study period. Guard-banding adjusts these limits for sensor MU. |
-        
-          ****
-          
-          ****
-          
-          
-        
-| Cool | Any temperature between 8° and 15°C (46° and 59°F). An article for which storage in a cool place is directed may, alternatively, be stored and distributed in a refrigerator. [USP <659>] | Cool | 8–15°C 2–8°C CDMO Cool | Less common in fill-finish CDMOs; mainly for specific APIs or intermediates. Qualification approach is identical to Cold storage but with different temperature limits. |
-        
-          ****
-          
-          ****
-          
-          
-        
-| Controlled Cold Temperature (CCT) | Temperature maintained thermostatically between 2° and 8°C, that allows for excursions between 0° and 15°C such that the allowable calculated mean kinetic temperature is not more than 8°C. | CCT | 2–8°C 0–15°C MKT 8°CCCT Cold | Relevant for distribution qualification scenarios; allows using MKT calculations to justify short excursions during loading/unloading without failing qualification. |
-        
-          ****
-          
-          ****
-          
-          
-        
-| Controlled Room Temperature (CRT) | Temperature maintained thermostatically at 20° to 25°C (68° to 77°F); MKT ≤25°C; allows excursions between 15° and 30°C experienced in pharmacies, hospitals, and warehouses. [USP <659>] | CRT | 20–25°CMKT 25°C 15–30°C ICH Q1A | Most API and finished product warehouses are qualified as CRT. OQ must demonstrate ≥20°C and ≤25°C across all mapped locations under normal and door-open conditions. |
-        
-          ****
-          
-          ****
-          
-          
-        
-| Commissioning | A well planned, documented, and managed engineering approach to the start-up and turnover of facilities, systems, and equipment to the end-user, that results in a safe and functional environment that meets established design requirements and stakeholder expectations. | / | Commissioning IQ GEP QA GMP commissioning IQ | For a new cold room, commissioning includes: mechanical completion checks, pre-functional testing, control system start-up, and system handover to QA for IQ initiation. |
-        
-          ****
-          
-          ****
-          
-          
-        
-| Dry Place | A place that does not exceed 40% average relative humidity at Controlled Room Temperature or the equivalent water vapor pressure at other temperatures. [USP <659>] | | 40% CTC stability chamber OQ/PQ RH | For stability chambers with RH control, add RH acceptance criteria (e.g. ≤40% RH) to OQ protocol. Sensor placement must cover both temperature and humidity worst-case locations. |
-        
-          ****
-          
-          ****
-          
-          
-        
-| Engineering Change Management (ECM) | Prior to system or facility acceptance, changes managed by approved SMEs. Changes affecting Critical Aspects should be communicated to the Quality Unit. [ASTM E2500] | ECM | SME Critical AspectsECM ASTM E2500 IQ GMP Change Control | During CTC installation, if the vendor changes sensor locations or refrigeration components, this triggers ECM. QA must be notified if the change affects mapped sensor positions or alarm setpoints. |
-        
-          ****
-          
-          ****
-          
-          
-        
-| Equipment Qualification | Confirming that there is adequate documentation to confirm that equipment is installed and operates according to its specifications, and is fit for its intended use. | | IQ + OQ + PQ FDA EU GMP GMP | For a CTC, equipment qualification = IQ (installed per design) + OQ (operates within limits) + PQ (performs under loaded conditions). All three stages require approved protocols and reports. |
-        
-          ****
-          
-          ****
-          
-          
-        
-| Excessive Heat | Any temperature above 40°C (104°F). [USP <659>] | | 40°C 40°C/75% RH ICH Q1A CTC 40°C | A temperature excursion above 40°C in a cold room or CRT chamber triggers an immediate critical deviation. Impact assessment must consider product stability data and MKT calculation before release decision. |
-        
-          ****
-          
-          ****
-          
-          
-        
-| Freezer | A place in which the temperature is maintained thermostatically between -25° and -10°C (-13° and 14°F). Note: freezing point is the temperature at which a liquid turns to a solid. [USP <659>] | | -25° -10°C USP Freezer -80°CUSP Deep FreezerCDMO mRNA | Freezer qualification requires mapping at -25°C to -10°C. Key challenge: door-open testing at low temperatures; worst-case location identification when loaded with frozen product. |
-        
-          ****
-          
-          ****
-          
-          
-        
-| Good Engineering Practice (GEP) | A system whereby individual design decisions are performed by qualified personnel and documented so that they can be traced from user requirements through final design. GEPs consider purpose, responsible party, references, assumptions, calculations, conclusions, and impact. GEPs take industry practices, constructability, economics, regulatory requirements, and safety into account. | GEP | GEP GMP GMP GEP IQ/OQ/PQ | Use GEP for non-direct-impact CTC components (e.g. chiller plant, UPS room). Document design rationale, equipment selection criteria, and installation records — these support IQ without full GMP qualification rigor. |
-        
-          ****
-          
-          ****
-          
-          
-        
-| Mean Kinetic Temperature (MKT) | The single calculated temperature at which the total amount of degradation over a particular period is equal to the sum of the individual degradations that would occur at various temperatures. | MKT | MKT Arrhenius MKT | Calculate MKT when a temperature excursion occurs to determine whether the product's cumulative thermal exposure exceeds specifications. Software tools or Excel formulas using Arrhenius equation automate this. Document MKT calculations in the excursion deviation report. |
-        
-          ****
-          
-          ****
-          
-          
-        
-| Periodic Review | A documented assessment of documentation, procedures, records, and performance to ensure that facilities, equipment, and systems continue to be fit for purpose and comply with safety regulatory requirements. Frequency depends on complexity, criticality, and rate of change. | | CTC SOP | Establish a periodic review SOP for CTCs: annually review alarm frequency trends, calibration records, maintenance logs, and any deviation history. If significant changes or excessive alarms are found, trigger a requalification assessment. |
-        
-          ****
-          
-          ****
-          
-          
-        
-| Protection from Freezing | Where freezing subjects an article to loss of strength or potency or to destructive alteration of its characteristics, the container label bears an appropriate instruction to protect the article from freezing. [USP <659>] | | 2–8°C—— 0°C | During cold room mapping, pay special attention to locations near evaporator coils and floor level — these are highest-risk for sub-zero excursions. Set alarm lower limit ≥2°C (or product specification minimum) with MU guard-banding applied. |
-        
-          ****
-          
-          ****
-          
-          
-        
-| Qualification (FDA definition) | Activities undertaken to demonstrate that utilities and equipment are suitable for their intended use and perform properly. | FDA | FDA ICH Q2(R1) fit for purpose | Every CTC qualification must start with clearly defined intended use (from URS), then design protocols to demonstrate fitness for that use. Acceptance criteria must be pre-defined before testing starts — not determined after results are seen. |
-        
-          ****
-          
-          ****
-          
-          
-        
-| Quality Unit (QU) | The Quality Unit has a key role within the quality management system governing facilities, systems, and equipment. In addition to acting as an SME, the Quality Unit is responsible for overseeing quality and compliance. | QU | QU SME CTC QU | QU must approve CTC qualification protocols before execution and review/approve reports after completion. For excursions or requalification triggers, QU makes the final release or rejection decision. |
-        
-          ****
-          
-          ****
-          
-          
-        
-| Sensor (FDA definition) | A peripheral input device which senses some variable in the system environment, such as temperature, and converts it to an electrical signal which can be further converted to a digital signal for processing by the computer. [FDA Glossary of Computerized System and Software Development Technology] | FDA | BMS | All temperature sensors in a monitoring system must be: (1) calibrated against a traceable standard, (2) placed at qualified locations from mapping study, (3) included in a periodic calibration program, (4) replaced or recalibrated if drift is detected. |
-        
-          ****
-          
-          ****
-          
-          
-        
-| Warm | Any temperature between 30° and 40°C (86° and 104°F). [USP <659>] | Warm | 30–40°C Warm API CTC | Warm storage (30–40°C) is less common in fill-finish CDMOs but relevant for stability testing incubators. Acceptance criteria: 30°C ≤ all locations ≤ 40°C (or per specific protocol). |
-      
-    
-
-    
-
-      
-
-        
-
-#### Temperature Category Summary |
-
-        
-          
-| Category | °C Range | | Excursion Allowed |
-| --- | --- | --- | --- |
-          
-            ****
-| Freezer | -25° to -10°C | | Per product label |
-            ****
-| Cold | ≤8°C (refrigerator: 2–8°C) | | CCT: 0–15°C if MKT ≤8°C |
-            ****
-| Cool | 8–15°C | | May use refrigerator |
-            ****
-| CRT | 20–25°C (MKT ≤25°C) | | 15–30°C in normal use |
-            ****
-| Warm | 30–40°C | | Per product label |
-            ****
-| Excessive Heat | >40°C | | Not acceptable for storage |
-          
-        
-
-      
 
       
 
@@ -12457,123 +9756,6 @@ It represents the pharmaceutical industry's consensus position on how to demonst
 ### Guide Architecture Table |
 
     
-      
-        
-          
-          
-          
-          
-          
-          
-        
-| Chapter | Title (EN/ZH) | Purpose & Scope | Key Outputs / Documents | Primary Users | Key Regulatory Links |
-| --- | --- | --- | --- | --- | --- |
-      
-      
-        
-          ****
-            
-**
-          
-          
-          
-          
-        
-| Ch. 1 | Introduction & Scope | Defines what CTCs are, why mapping/monitoring matters, scope of the guide, and relationship to ICH Q10 pharmaceutical quality system | Guide scope definition; ICH Q10 alignment statement; overview of CTC types (stability, cold room, freezer, incubator) | All users; Senior Management; Regulatory Affairs | ICH Q10, EU GDP 2013, WHO TRS 961 Annex 9 |
-        
-          ****
-            
-**
-          
-          
-          
-          
-        
-| Ch. 2 | Applicable Standards & Regulations | Reviews all relevant regulatory documents: EU GDP, WHO, USP, FDA, ICH, national standards (JTM, DIN, AS). Establishes the regulatory context for qualification requirements | Regulatory landscape summary; market-specific compliance requirements; crosswalk table of standards vs. CTC requirements | QA/Regulatory Affairs; Validation Engineers | EU GDP 2013, WHO TRS 961, USP <659>, 21 CFR Part 211, PIC/S PE 011 |
-        
-          ****
-            
-**
-          
-          
-          
-          
-        
-| Ch. 3 | User Requirements Specification (URS) | Explains how to develop a URS for CTCs: defining intended use, product temperature requirements, alarm setpoints, operational parameters, and regulatory requirements that drive equipment selection | URS template; URS content checklist; requirements traceability matrix (RTM) framework; FMEA risk input | Engineering; QA; Operations; Product Management | ASTM E2500, ISPE Vol. 5 C&Q, EU GDP Art. on storage |
-        
-          ****
-            
-**
-          
-          
-          
-          
-        
-| Ch. 4 | Types of Controlled Temperature Chambers | Describes all CTC categories: stability chambers, refrigerators/freezers, cold rooms, ultra-low temperature freezers, incubators, transport containers (TCCUs/ULDs). Provides qualification considerations specific to each type | CTC type selection guide; type-specific qualification considerations; sensor placement guidance by chamber type | Engineering; QA; Procurement | USP <659> (temperature categories), JTM standards, IEC 60068 |
-        
-          ****
-            
-**
-          
-          
-          
-          
-        
-| Ch. 5 | Qualification: IQ, OQ, PQ | Core qualification chapter: IQ (installation verification), OQ (empty chamber performance), PQ (loaded chamber performance). Covers FAT, SAT, worst-case testing, acceptance criteria, and documentation requirements | IQ/OQ/PQ protocol templates; FAT/SAT checklists; acceptance criteria methodology; qualification summary reports; requalification triggers | Validation Engineers; QA; Equipment Vendors | ISPE Vol. 5, ASTM E2500, 21 CFR Part 211, EudraLex Vol. 4 Annex 15 |
-        
-          ****
-            
-**
-          
-          
-          
-          
-        
-| Ch. 6 | Mapping Studies | Detailed methodology for temperature mapping: sensor number and placement, study duration, test conditions (empty, loaded, worst-case), data collection, statistical analysis, worst-case location identification, guard-banding with MU | Mapping study protocol; sensor placement diagram; data analysis report; worst-case location identification report; MU calculation worksheet; guard-banding calculation | Validation Engineers; Metrology/Calibration; QA | ISO/IEC Guide 98-3 (GUM), ISPE Vol. 5, WHO TRS 961 Annex 9, IEST-RP-CC006 |
-        
-          ****
-            
-**
-          
-          
-          
-          
-        
-| Ch. 7 | Monitoring Systems | Design and qualification of continuous temperature monitoring systems: sensor selection (RTD vs. thermocouple), placement (monitoring vs. mapping sensors), alarm levels vs. alert levels, BMS integration, data integrity requirements, calibration programme | Monitoring system design specification; alarm/alert setpoint justification document; sensor calibration SOP; BMS validation protocol (if applicable); continuous monitoring SOP | Engineering; IT/Systems; QA; Operations | 21 CFR Part 11, EudraLex Annex 11, EU GDP 2013, IEC 751 (RTD), IEC 584 (thermocouples) |
-        
-          ****
-            
-**
-          
-          
-          
-          
-        
-| Ch. 8–9 | Excursion Management & Periodic Review | Ch. 8: How to respond to temperature excursions — investigation, impact assessment, MKT calculation, CAPA, product disposition. Ch. 9: Periodic review programme — frequency, triggers for requalification, trending, change control integration | Excursion SOP; impact assessment template; MKT calculation tool; CAPA log; periodic review SOP; requalification trigger criteria; trend analysis report | QA; Operations; Regulatory Affairs; Product Management | ICH Q9 (risk management), ICH Q10 (lifecycle), EU GDP 2013 Art. on excursions, WHO TRS 961 |
-        
-          ****
-            
-**
-          
-          
-          
-          
-        
-| App. 1–7 | Worked Examples & Templates | Appendices 1–7 provide worked examples: sample URS, IQ/OQ/PQ protocols, mapping data analysis worksheets, sensor placement diagrams, alarm setpoint justification examples, and statistical calculation examples | Ready-to-adapt protocol templates; worked numerical examples for MU and guard-banding; sensor layout diagrams; alarm level justification examples | Validation Engineers; QA (protocol authors) | ISO/IEC Guide 98-3 (GUM calculations), USP <659> (setpoint examples) |
-        
-          ****
-            
-**
-          
-          
-          
-          
-        
-| App. 8–9 | References & Glossary | Complete bibliography of 32 cited documents spanning regulatory, pharmacopeial, and technical standards. Comprehensive glossary of all acronyms and definitions used in the guide | Reference list (this section); acronym table; official definitions table; temperature category summary | All users | All 32 cited references |
-      
-    
-
-  
 
   
 
@@ -13135,123 +10317,6 @@ Regulatory inspectors assess CTC qualification not just against the ISPE guide, 
     
 
     
-      
-        
-          
-          
-          
-          
-          
-          
-        
-| ISPE CTC Chapter | EU GDP 2013 Requirement | WHO TRS 961 Annex 9 | FDA / 21 CFR | USP / Pharmacopeial | ICH Guidelines |
-| --- | --- | --- | --- | --- | --- |
-      
-      
-        
-          ****  
-
-          
-          
-          
-          
-          
-        
-| Ch. 1 – Introduction & Scope | GDP Art. 3 (GDP principles); requirement for suitable storage facilities with temperature control | Section 1: Purpose and Scope — global baseline for time/temperature-sensitive products | 21 CFR 211.68 (automated equipment); 21 CFR 211.142 (warehousing procedures) | USP <659> general principles; USP <1079> risk-based storage approach | ICH Q10 §3.2 (process performance and product quality monitoring system) |
-        
-          ****  
-
-          
-          
-          
-          
-          
-        
-| Ch. 2 – Standards & Regulations | GDP Chapter 3 (premises and equipment) — all applicable regulations must be followed | Section 2: Reference documents — aligns with national and international standards | 21 CFR Part 211 Subpart D (equipment); FDA 2011 GMP guidance | USP <659>; USP <1079> — comprehensive pharmacopeial storage framework | ICH Q9 (quality risk management) — for risk-based standards selection |
-        
-          ****  
-
-          
-          
-          
-          
-          
-        
-| Ch. 3 – URS Development | GDP Chapter 3.2.2: equipment must be suitable for intended use; specifications required | Section 4: Facilities — defines performance criteria for storage facilities | 21 CFR 211.63: equipment must be of appropriate design and adequate size; ASTM E2500 alignment | USP <659> storage temperature categories provide URS temperature limits | ICH Q8(R2) — design space concept applicable to URS development |
-        
-          ****  
-
-          
-          
-          
-          
-          
-        
-| Ch. 4 – CTC Types | GDP Chapter 3: specific requirements for different types of storage (refrigerated, frozen, ambient) | Section 4.1–4.5: Cold chain management for different temperature categories | 21 CFR 211.68(b): automated equipment — applicable to all CTC types with electronic monitoring | USP <659> Cold, Cool, CRT, Freezer definitions — applies to each chamber type | ICH Q1A(R2): stability testing conditions for different product types (relevant to incubators) |
-        
-          ****  
-
-          
-          
-          
-          
-          
-        
-| Ch. 5 – IQ/OQ/PQ | GDP Chapter 3.2.1: equipment qualification required; documented qualification programmes | Section 4.3: Qualification of temperature-controlled storage facilities — mapping and monitoring required | 21 CFR 211.63, 211.68: equipment qualification; FDA Process Validation 2011 guidance (Stage 1: Process Design) | USP <1058> Analytical Instrument Qualification — methodology analogues to CTC IQ/OQ/PQ | ICH Q10 §3.1 (process performance and product quality monitoring); ICH Q9 for risk-based scope |
-        
-          ****  
-
-          
-          
-          
-          
-          
-        
-| Ch. 6 – Mapping Studies | GDP Chapter 3.2.2: temperature mapping of storage areas required; appropriate number of sensors; worst-case conditions | Section 4.3.3: Temperature mapping studies — detailed mapping methodology requirements | FDA Draft Guidance: Stability Testing (temperature monitoring in storage areas); 21 CFR 211.68 | USP <659> — temperature limits that mapping acceptance criteria must demonstrate are met | ICH Q1A(R2): storage conditions for stability studies; mapping supports ICH-compliant stability storage |
-        
-          ****  
-
-          
-          
-          
-          
-          
-        
-| Ch. 7 – Monitoring Systems | GDP Chapter 3.2.3: continuous temperature monitoring with alarms; regular calibration of monitoring equipment; data records maintained | Section 4.4: Monitoring and alarming systems — continuous monitoring, calibration, data management | 21 CFR Part 11: electronic records and signatures for computerised monitoring; 21 CFR 211.68(b) | USP <1079>: good storage and distribution practices — monitoring expectations | ICH Q10: product quality system monitoring; data review and trend analysis |
-        
-          ****  
-
-          
-          
-          
-          
-          
-        
-| Ch. 8 – Excursion Management | GDP Chapter 6.5: temperature excursions must be investigated; product assessment before release; documented CAPA | Section 5: Deviation management — impact assessment, MKT calculation, quarantine procedures | 21 CFR 211.192: investigation of failures; 21 CFR 211.196: records of investigations | USP <1079>: excursion evaluation using MKT; stability data use in impact assessment | ICH Q9: risk-based product disposition decisions; ICH Q10: CAPA system |
-        
-          ****  
-
-          
-          
-          
-          
-          
-        
-| Ch. 9 – Periodic Review | GDP Chapter 3.2.4: regular review of qualification; requalification after significant changes | Section 4.3.5: Re-qualification triggers — change control and periodic assessment | 21 CFR 211.68: periodic review of equipment; FDA Process Validation 2011 Stage 3 (Continued Process Verification) | USP <1058>: ongoing performance monitoring analogues to CTC periodic review | ICH Q10 §3.2.3: performance review; ICH Q9: continual risk management during product lifecycle |
-        
-          ****  
-
-          
-          
-          
-          
-          
-        
-| App. 1–7 – Templates | GDP Chapter 10: documentation requirements — SOPs, records, qualification documentation | Section 6: Documentation — records, SOPs, qualification reports | 21 CFR Part 211 Subpart J: records and reports; 21 CFR Part 11 for electronic records | USP <1058> documentation requirements — applicable to qualification report format | ICH Q10: documentation as part of pharmaceutical quality system |
-      
-    
-
-    
 
       
 
@@ -13582,15 +10647,5 @@ These questions are designed to test not just knowledge recall, but the ability 
     
 
   
-
-  
-
-ISPE Good Practice Guide: Controlled Temperature Chamber Mapping and Monitoring (2016)
-
-  
-
-  
-
-SterileGMP Knowledge Hub  |  Educational content for pharmaceutical professionals  |  For individual use only. © ISPE 2016. All rights reserved.
 
 ⇧

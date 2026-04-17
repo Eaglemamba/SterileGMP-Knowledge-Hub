@@ -948,107 +948,6 @@ This caveat is important: TR86 acknowledges that industry terminology is not yet
             
 
                 
-                    
-                        
-                            
-                            
-                            
-                        
-| Term / | Original Definition (TR86) | & |
-| --- | --- | --- |
-                    
-                    
-                        
-                              
-  
-
-                            
-                            ****
-
-                        
-| Container Closure System(CCS) CCS | The sum of packaging components (primary and secondary) and materials that together contain and protect a product. | + + = CCS PFS CCS backstop CCI |
-                        
-                              
-  
-
-                            
-                            ****
-
-                        
-| Container Closure Integrity Test(CCIT) CCIT | A package leak test (either physicochemical or microbiological) that detects the presence of a package breach or gap. Some tests may also be able to identify the magnitude and/or location of the leak. (Synonymous with "package leak test" or "package integrity test" for the purposes of this TR.) | TR86 CCITpackage leak testpackage integrity test MIL probabilistic CCITHVLD deterministic CCIT |
-                        
-                              
-
-                            
-                            ****
-
-                        
-| Destructive | A method in which a sample cannot be subsequently utilized in any other analytical method or processed to a final product. | MIL—— 100% CDMO CCIT |
-                        
-                              
-
-                            
-                            ****
-
-****
-
-                        
-| Deterministic Leak Test Method | A method in which the leakage event being detected or measured is based on phenomena that follow a predictable chain of events. In addition, the measure of leak detection is based on physicochemical technologies that are readily controlled and monitored, yielding objective quantitative data. | USP <1207> FDA HVLDvacuum decayheadspace gas analysis 100% |
-                        
-                              
-
-                            
-                            ****
-
-                        
-| Labeling | The process by which a label is affixed to a packaging component. | CCI |
-                        
-                              
-  
-
-                            
-                            ****
-
-                        
-| Maximum Allowable Leak Limit(MALL) MALL | The greatest gap or leak rate that does not put product quality at risk. | MALL CCIT CCIT LOD MALLMALL FDA MALL |
-                        
-                              
-
-                            
-                            ****
-
-****
-
-                        
-| Nondestructive | A method in which a passing sample can subsequently be utilized in additional analytical methods or processed to a final product. | CCIT 100% HVLD CDMO |
-                        
-                              
-
-                            
-                            ****
-
-                        
-| Package integrity | Is the measure of the ability of the package to prevent product loss or maintain product sterility and the ability to maintain the internal environment. | maintain the internal environment—— |
-                        
-                              
-
-                            
-                            ****
-
-                        
-| Probabilistic Leak Test Method | A method that is the converse of a deterministic leak test method, being stochastic in nature. Probabilistic tests rely on a series of sequential and/or simultaneous events, each associated with random outcomes described by probability distributions. | stochastic MIL——USP <1207> FDA deterministic |
-                        
-                              
-
-                            
-                            ****
-
-                        
-| Sterile/Microbial Barrier | The purported location on a container closure system beyond which no microorganism can pass under conditions qualified for the barrier. | /CCS "purported"—— sterile barrier stopper seatingcapping force |
-                    
-                
-
-            
 
             
             
@@ -1200,86 +1099,6 @@ All abbreviations used in TR86 — with full names, Chinese translation, and con
 ### 2.1 Abbreviations — Full Reference
 
                     
-                        
-                            
-                                
-                                
-                                
-                            
-| Abbr. | Full Name | Usage Context |
-| --- | --- | --- |
-                        
-                        
-                            
-                                ****
-                                
-                                
-                            
-| CCI | Container Closure Integrity | General term for the property of integrity; the state of being integral |
-                            
-                                ****
-                                
-                                
-                            
-| CCIT | Container Closure Integrity Test | The testing process or method; an action/procedure |
-                            
-                                ****
-                                
-                                
-                            
-| CCS | Container Closure Systems | The physical packaging system as a whole; a noun |
-                            
-                                ****
-                                
-                                
-                            
-| CPP | Critical Process Parameter | Manufacturing parameters that directly impact CCI outcome (e.g., capping force, stopper insertion depth) |
-                            
-                                ****
-                                
-                                
-                            
-| CQA | Critical Quality Attributes | Product or container quality attributes that must be within defined limits; CCI itself may be a CQA |
-                            
-                                ****
-                                
-                                
-                            
-| HVLD | High-Voltage Leak Detection | Deterministic, nondestructive CCIT method using electrical current; effective for conductive liquids |
-                            
-                                ****
-                                
-                                
-                            
-| FISTA | International Safe Transit Association | Standards body for shipping and transit packaging; relevant for distribution integrity challenges |
-                            
-                                ****
-                                
-                                
-                            
-| MALL | Maximum Allowable Leak Limit | The quality threshold that defines the sensitivity requirement for CCIT methods |
-                            
-                                ****
-                                
-                                
-                            
-| LOD | Limit of Detection | The smallest detectable defect for a given CCIT method; must be ≤ MALL |
-                            
-                                ****
-                                
-                                
-                            
-| OES | Optical Emission Spectroscopy | Analytical technique applicable to headspace gas analysis for CCI evaluation |
-                            
-                                ****
-                                
-                                
-                            
-| QbD | Quality by Design | ICH Q8 framework; TR86 applies QbD principles to CCS design and CCIT strategy development |
-                        
-                    
-
-                
 
                 
 
@@ -1591,16 +1410,6 @@ Synthesis of Section 0 content for examination and practical application
 
     
 
-    
-
-PDA Technical Report No. 86 (2021): Industry Challenges and Current Technologies for Pharmaceutical Package Integrity Testing
-
-    
-
-    
-
-SterileGMP Knowledge Hub • For educational and training purposes only
-
 ⇧
 
 ## Section 1: Challenges with Methodologies (p3-p9)
@@ -1810,31 +1619,6 @@ Note: References that provide a broad overview of historical approaches to defec
 
               
 
-            
-
-          
-
-          
-
-            
-
-#### vs
-
-            
-              
-                  
-  
-| | Natural Leaks | Engineered Defects |
-| --- | --- | --- |
-              
-              
-                
-                
-                
-                
-                
-                
-              
             
 
           
@@ -2470,117 +2254,6 @@ An alternative to laser-drilling directly into a container is to use stainless-s
 ### Comparison Table — Positive Control Types |
 
         
-          
-            
-              
-                
-
-              
-              
-                
-
-                
-
-            
-| / Type | Min Defect Size | Advantages | Limitations | Applicable Containers | CCIT Compatible Methods |
-| --- | --- | --- | --- | --- | --- |
-          
-          
-            
-              ****  
-
-              
-              
-- 
-- 
-- 
-
-              
-- 
-- 
-- 
-- 
-
-              
-              
-            
-| Glass Micropipette | 0.1 µm | | / | septum/stopper | VDMSTHe LeakHVLD |
-            
-              ****  
-
-                
-
-              
-- 
-- 
-- 
-
-              
-- 
-- 
-- 
-
-              
-              
-            
-| Wire Insertion | 10 µm 2–5 µm | | | / | VDMST |
-            
-              ****  
-
-              
-              
-- 
-- 
-
-              
-- 
-- 
-- 
-- 
-
-              
-              
-            
-| Laser-Drilled (Glass) | 2 µm ± 0.5 µm | / | <10 µm | | VDMSTHe LeakHVLD |
-            
-              ****  
-
-              
-              
-- 
-- 
-
-              
-- 
-- 
-- 
-
-              
-              
-            
-| Laser-Drilled (Flexible) | 0.5 µm | | | IV SUS | VD |
-            
-              ****  
-
-              
-              
-- 
-- 
-- 
-
-              
-- 
-- 
-- 
-
-              
-              
-            
-| Calibrated Leak | | NIST | | | He LeakMSTVD |
-          
-        
-
-      
 
     
 
@@ -2863,37 +2536,6 @@ Section 6.5 provides an example of a study using positive controls. See Section 
 
             
 
-#### vs
-
-            
-              
-                
-| --- | --- | --- |
-              
-              
-                
-                  ****  
-
-                  
-                  **
-                
-| Deterministic | / | |
-                
-                  ****  
-
-                  
-                  **
-                
-| Probabilistic | | |
-              
-            
-
-          
-
-          
-
-            
-
 #### 
 
             
@@ -3049,43 +2691,6 @@ Manufacturers can develop different ways to resolve the clogging challenge. The 
 
             
 
-#### 
-
-            
-              
-                
-| --- | --- | --- | --- |
-              
-              
-                
-                  ****
-                  
-                  
-                  
-                
-| | | >100 mg/mL | |
-                
-                  ****
-                  
-                  
-                  
-                
-                
-                  ****
-                  
-                  
-                  
-                
-| / | | | |
-              
-            
-
-          
-
-          
-
-            
-
 #### 120 mg/mL vs
 
             
@@ -3098,60 +2703,6 @@ Manufacturers can develop different ways to resolve the clogging challenge. The 
 
               
 
-            
-
-          
-
-          
-
-            
-
-#### CCIT
-
-            
-              
-                
-| CCIT | | |
-| --- | --- | --- |
-              
-              
-                
-                  
-                  
-                  
-                
-| (VD) | — | |
-                
-                  
-                  
-                  
-                
-| He (MST) | — | |
-                
-                  
-                  
-                  
-                
-| HVLD | | |
-                
-                  
-                  
-                  
-                
-| (DI) | | / |
-                
-                  
-                  
-                  
-                
-| (VI) | | |
-                
-                  
-                  
-                  
-                
-| (RSF) | | |
-              
             
 
           
@@ -3329,18 +2880,6 @@ Key takeaways from Sections 3.0 – 3.2
     
 
   
-
-  
-
-**PDA Technical Report No. 86 (2021): Industry Challenges and Current Technologies for Pharmaceutical Package Integrity Testing**
-
-  
-
-Section 1 — Challenges with Methodologies (3.0, 3.1, 3.1.1–3.1.5, 3.2)
-
-  
-
-SterileGMP Knowledge Hub  |  Educational Reference Only  |  Licensed Content — Not for Distribution
 
 ⇧
 
@@ -3624,46 +3163,6 @@ Since each type of syringe has its own type of closure system, unique considerat
 
                         
 
-#### PFS
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| | | CCI |
-| --- | --- | --- |
-                            
-                            
-                                
-                                    ****
-                                    
-                                    
-                                
-| Staked Needle | | 2 & 3 |
-                                
-                                    ****
-                                    
-                                    
-                                
-| Luer Lock | + + | |
-                                
-                                    ****
-                                    
-                                    
-                                
-| / Luer Cone/Slip | | |
-                            
-                        
-
-                    
-
-                    
-
-                        
-
 #### CDMO
 
                         
@@ -3778,91 +3277,6 @@ The table below summarizes all major PFS components, their function, CCI relevan
             
 
             
-                
-                    
-                        
-                        
-                        
-                        
-                    
-| Component | Function | CCI Relevance CCI | Testing Challenge |
-| --- | --- | --- | --- |
-                
-                
-                    
-                        ****  
-**
-                        
-                        
-                        
-                    
-| Barrel (glass or polymer) | Primary container for drug product; structural support for all interfaces | Barrel geometry (inner diameter, roundness) directly determines compression fit of stopper and thus primary seal quality | Polymer barrels subject to physicochemical change under heat, irradiation, mechanical stress; dimensional variation across batches |
-                    
-                        ****  
-**
-                        
-                        
-                        
-                    
-| Plunger Stopper (halobutyl elastomer, ±FPT laminate) | PRIMARY BARRIER — seals drug product from the rear; enables drug delivery via axial compression | Interface 1 (stopper-barrel): most critical CCI point in any syringe design. Three-rib structure provides layered sealing assurance | Stopper movement under vacuum/pressure differential during CCIT can reduce method sensitivity; FPT laminate wrinkling during mechanical insertion |
-                    
-                        ****
-                        
-                        
-                        
-                    
-| Plunger Rod | Transmits force from user/device to plunger stopper; enables drug expulsion | Insertion can disturb stopper-barrel interface; secondary packaging step requiring CCI re-evaluation | Rod insertion torque/force may displace stopper; CCIT should be re-evaluated after rod insertion for finished syringe |
-                    
-                        ****
-                        
-                        
-                        
-                    
-| Staked Needle | Drug delivery conduit; permanently affixed to barrel at fill-finish | Creates Interface 2 (needle-needle shield) — drug directly contacts needle lumen; any gap = direct sterility risk | Needle positioning must be verified: fully embedded but not piercing through shield; shipping may cause displacement |
-                    
-                        ****  
-**
-                        
-                        
-                        
-                    
-| Needle Shield (rigid or flexible elastomer) | Protects needle; maintains Interface 2 (needle-elastomer) and Interface 3 (barrel-shield) closure | Dual interface sealing: needle must be fully embedded in elastomeric portion; shield must be properly seated on barrel | Shield adhesion force may be compromised by silicone contamination; auto-injector spring forces can stress shield positioning |
-                    
-                        ****  
-**
-                        
-                        
-                        
-                    
-| Tip Cap / Luer Cap / (for luer lock and luer slip) | Seals the front opening of luer-type syringes; replaced by staked needle in staked needle designs | For luer lock: cap + adapter + cone form sealing surface. For luer slip: cap + cone interference fit forms seal | Silicone oil at tip can compromise cap adhesion; cone glazing/coating must be uniformly distributed to prevent dislodgement |
-                    
-                        ****  
-**
-                        
-                        
-                        
-                    
-| Barrel Lubricity Coating (silicone oil or vapor-deposited) | Reduces friction to allow plunger movement during filling, assembly, and injection | Critical dual role: adequate coating enables functionality; excess coating allows stopper to move too freely during transport, breaching CCI | Silicone oil may block defects (false negatives in probabilistic methods like dye ingress); out-gassing under vacuum; polymer barrels show surface staining with dyes |
-                    
-                        ****  
-**
-                        
-                        
-                        
-                    
-| Finger Flange (secondary packaging component) | Ergonomic support for injection; enables correct two-finger injection technique | Flange placement (clipping plastic flange onto glass barrel flange) carries fracture risk; broken syringe = total CCI failure | 100% visual inspection required; glass fracture may be invisible without adequate lighting/magnification |
-                    
-                        ****  
-**
-                        
-                        
-                        
-                    
-| Combination Seal (cartridge systems only) | Provides front-end closure for cartridge; re-sealable for multidose applications | Must maintain CCI through all expected punctures; compression from crimping must be adequate | Resealability testing (ISO 13926-3) ≠ CCI testing; must test at maximum puncture count for multidose products |
-                
-            
-
-        
 
     
 
@@ -3913,60 +3327,6 @@ The supplier of plastic syringe components is responsible for establishing and v
                 
 
                 
-
-                    
-
-                    
-
-                        
-
-#### PFS vs. PFSCCI
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| | PFS | COP/COCPFS |
-| --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-| | | → |
-                                
-                                    
-                                    
-                                    
-                                
-| | | → |
-                            
-                        
 
                     
 
@@ -4052,54 +3412,6 @@ The application of a pressure differential to the prefilled syringe during CCIT 
                 
 
                 
-
-                    
-
-                    
-
-                        
-
-#### PFS CCIT
-
-                        
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| | CCIT | |
-| --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| conductivity | HVLD | HVLD |
-                                
-                                    
-                                    
-                                    
-                                
-| / | vacuum decay | |
-                                
-                                    
-                                    
-                                    
-                                
-| | tracer gas | |
-                                
-                                    
-                                    
-                                    
-                                
-| / | surrogate solution | → → |
-                            
-                        
 
                     
 
@@ -4241,60 +3553,6 @@ Secondary packaging of a prefilled syringe can be performed manually by a techni
 
                             
 
-                        
-
-                    
-
-                    
-
-                        
-
-#### CCI
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-| | CCI | | CCIT |
-| --- | --- | --- | --- |
-                            
-                            
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                
-| | | 100% | CCIT |
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                
-                            
                         
 
                     
@@ -4521,18 +3779,6 @@ Not every secondary packaging operation requires CCIT, but every operation must 
         
 
     
-
-    
-
-**PDA Technical Report No. 86 (2021): Industry Challenges and Current Technologies for Pharmaceutical Package Integrity Testing**
-
-    
-
-Section 2a — Challenges with Package Design: Overview + Prefilled Syringes (Sections 4.0 & 4.1, Pages p10–p17)
-
-    
-
-SterileGMP Knowledge Hub • Bilingual Educational Edition • For Internal Training Use Only
 
 ⇧
 
@@ -4891,69 +4137,7 @@ Pressure drop technology is less complex, less expensive, easier to operate, and
               
               
 
-Table 4.2.3-1: Comparison of Physical SUS Integrity Testing Methods
-
-              
-                
-                  
-                    
-                    
-                    
-                  
-| Feature | Helium Technology | Pressure Drop Technology |
-| --- | --- | --- |
-                
-                
-                  
-                    ****
-                    
-                    
-                  
-| Sensitivity | ≥ 2 µm | ≥ 10 µm |
-                  
-                    ****
-                    
-                    
-                  
-| Environmental Effects | Low | Medium (Temperature) |
-                  
-                    ****
-                    
-                    
-                  
-| Volume Impact | Low to Medium | Medium to High |
-                  
-                    ****
-                    
-                    
-                  
-| Material Impact | Medium to High | Low to Medium |
-                  
-                    ****
-                    
-                    
-                  
-| Handling | Complex | Simple |
-                  
-                    ****
-                    
-                    
-                  
-| Test Time | Low to Medium | Medium to High |
-                  
-                    ****
-                    
-                    
-                  
-| Maintenance | Complex | Simple |
-                  
-                    ****
-                    
-                    
-                  
-| Investment Cost | High | Low |
-                
-              
+Table 4.2.3-1🔍: Comparison of Physical SUS Integrity Testing Methods
 
               
 
@@ -5252,24 +4436,6 @@ Because it comes in direct contact with the pharmaceutical product or formulatio
 ### IV vs. SUS
 
           
-            
-              
-| | SUS | IV |
-| --- | --- | --- |
-            
-            
-              
-| | / | |
-              
-              
-| | ASTM WK64337 | USP <1207> |
-              
-| CCI | | |
-              
-            
-          
-
-        
 
       
 
@@ -5510,77 +4676,6 @@ Natural or real-world CCI defects are generally larger in size than engineered d
               
 
 ### IV
-
-              
-                
-                  
-                    
-                    
-                    
-                    
-                  
-| | | IV | |
-| --- | --- | --- | --- |
-                
-                
-                  
-                    ****  
-
-                    
-                    
-                    
-                  
-| HVLD | | | |
-                  
-                    ****  
-
-                    
-                    
-                    
-                  
-| Vacuum Decay | | | |
-                  
-                    ****  
-
-                    
-                    
-                    
-                  
-| Mass Extraction | | | |
-                  
-                    ****  
-
-                    
-                    
-                    
-                  
-| Force Decay | | | |
-                  
-                    ****  
-
-                    
-                    
-                    
-                  
-| Laser Headspace | | | |
-                  
-                    ****  
-
-                    
-                    
-                    
-                  
-| Dye Ingress | | | |
-                  
-                    ****  
-
-                    
-                    
-                    
-                  
-| Helium Leak | | | |
-                
-              
 
               
 
@@ -5855,42 +4950,6 @@ When CCI is compromised, nonsterile reactive gases from the surrounding environm
 #### 
 
                 
-                  
-                    
-| | | CCI |
-| --- | --- | --- |
-                  
-                  
-                    
-                      
-                      
-                      ****
-                    
-| CO₂ | < 0.4 mbar | |
-                    
-                      
-                      
-                      ****
-                    
-| O₂ | 20.9% | CO₂ |
-                    
-                      
-                      
-                      ****
-                    
-| | 1000 mbar | |
-                  
-                
-
-              
-
-              
-
-                
-
-#### 
-
-                
 
               
 
@@ -6026,45 +5085,6 @@ P₂ = 1000 × (193/293) = 659 mbar ≈ 660 mbar
               
 
               
-                
-                  
-| --- | --- | --- |
-                
-                
-                  
-                    
-                    
-                    
-                  
-| 1. | -70 °C | 11% |
-                  
-                    
-                    
-                    
-                  
-| 2. | -80 °C | 1 atm CO₂ 0.66 atmCO₂ |
-                  
-                    
-                    
-                    
-                  
-| 3. | -80 °C | O₂ CO₂ |
-                  
-                    
-                    
-                    
-                  
-| 4. | -70 °C | CO₂ |
-                  
-                    
-                    
-                    
-                  
-| 5. | 20 °C | 1.4 atm |
-                
-              
-
-            
 
           
 
@@ -6161,35 +5181,6 @@ When CCI is lost in a sterile pharmaceutical vial stored at cryogenic temperatur
               
 
               
-                
-                  
-| --- | --- | --- | --- |
-                
-                
-                  
-                    
-                    
-                    
-                    
-                  
-                  
-                    
-                    
-                    
-                    
-                  
-| | | <2 µm | |
-                  
-                    
-                    
-                    
-                    
-                  
-| | | | CCI |
-                
-              
-
-            
 
           
 
@@ -6470,31 +5461,6 @@ The coldest storage temperatures are used for storing cellular materials, which 
 ### 
 
           
-            
-              
-| --- | --- | --- |
-            
-            
-              
-| SUS | | |
-              
-| MALL | | |
-              
-| LoD | | |
-              
-| HVLD | | CCI |
-              
-| Tg | | |
-              
-| TDLS | | |
-              
-| RSF | | |
-              
-| QbD | | |
-            
-          
-
-        
 
       
 
@@ -6608,18 +5574,6 @@ The coldest storage temperatures are used for storing cellular materials, which 
     
 
   
-
-  
-
-PDA Technical Report No. 86 (2021): Industry Challenges and Current Technologies for Pharmaceutical Package Integrity Testing
-
-  
-
-Section 2b — Challenges with Package Design: SUS, IV Bags, Cryogenic (4.2–4.4) | Pages 17–26
-
-  
-
-SterileGMP Knowledge Hub | Licensed educational content | For training purposes
 
 ⇧
 
@@ -6809,7 +5763,7 @@ Helium integrity testing is a well-known, deterministic, nondestructive test met
 
             
 
-Helium testing is suitable for test units that are dry and can withstand at least 1 psi pressure differential once they are restrained by a special holder. This test method can be used to verify the integrity of fully-assembled 2-D and 3-D single-use bags (such as disposable bioreactor or mixing and storage bags) as well as complex manifold systems consisting of multiple 2-D or 3-D bags connected to a central tubing manifold (Figure 5.1.1-1). Specific components that have a natural leak rate above the determined limit, e.g., aseptic connectors with porous membranes, cannot be tested and must be excluded. Permeation leak rate of nondefective assemblies should also be considered. The complex assemblies, which have more than 100 connection points (such as barb–tube, film–film, and film–fitment joints), can be tested to a defect size of a 2 µm pinhole equivalent flow-effective diameter.
+Helium testing is suitable for test units that are dry and can withstand at least 1 psi pressure differential once they are restrained by a special holder. This test method can be used to verify the integrity of fully-assembled 2-D and 3-D single-use bags (such as disposable bioreactor or mixing and storage bags) as well as complex manifold systems consisting of multiple 2-D or 3-D bags connected to a central tubing manifold (Figure 5.1.1-1🔍). Specific components that have a natural leak rate above the determined limit, e.g., aseptic connectors with porous membranes, cannot be tested and must be excluded. Permeation leak rate of nondefective assemblies should also be considered. The complex assemblies, which have more than 100 connection points (such as barb–tube, film–film, and film–fitment joints), can be tested to a defect size of a 2 µm pinhole equivalent flow-effective diameter.
 
             
 
@@ -6817,7 +5771,7 @@ The method involves placing a finished biopharmaceutical single-use bag assembly
 
             
 
-Figure 5.1.1-1: Sample Manifold with 10 2-D Bags Attached to a Central Fluid Line with 70+ Joining Points
+Figure 5.1.1-1🔍: Sample Manifold with 10 2-D Bags Attached to a Central Fluid Line with 70+ Joining Points
 
           
 
@@ -6990,11 +5944,11 @@ Helium molecules escaping through the defects are sensed by mass spectrometer an
 
             
 
-Helium testing can sense helium leak rates in the range of 10-8 to 10-4 atmosphere mbar L/s. The test sensitivity depends on the background helium leak rate of a nondefective bag assembly versus one with a defect. The greater the difference between the background leak rate of the nondefective bag assembly versus the defective bag assembly, the higher the confidence that a defect can be detected. Helium testing is capable of detecting 2 µm laser-drilled defects, as shown in Figure 5.1.3-1 (examples of helium leak rates of a nondefective bag versus a defective bag). Just as design-specific characteristics like numbers of connections, surface area, and type of film and tubing material can highly impact the natural background leak rate of nondefective assemblies, an individual acceptance limit must be identified and proven with a statistically significant number of positive and negative controls.
+Helium testing can sense helium leak rates in the range of 10-8 to 10-4 atmosphere mbar L/s. The test sensitivity depends on the background helium leak rate of a nondefective bag assembly versus one with a defect. The greater the difference between the background leak rate of the nondefective bag assembly versus the defective bag assembly, the higher the confidence that a defect can be detected. Helium testing is capable of detecting 2 µm laser-drilled defects, as shown in Figure 5.1.3-1🔍 (examples of helium leak rates of a nondefective bag versus a defective bag). Just as design-specific characteristics like numbers of connections, surface area, and type of film and tubing material can highly impact the natural background leak rate of nondefective assemblies, an individual acceptance limit must be identified and proven with a statistically significant number of positive and negative controls.
 
             
 
-Figure 5.1.3-1: Comparison of Helium Leak Rates of a Nondefective Bag versus a Defective Bag
+Figure 5.1.3-1🔍: Comparison of Helium Leak Rates of a Nondefective Bag versus a Defective Bag
 
           
 
@@ -7672,7 +6626,7 @@ The ultrasound signal is a point-focused measurement. Test data comprises signal
 
             
 
-The measurement can be presented in a line graph format (Figure 5.3.2-3), or a composite scan can pair line scans to create an optoacoustic image (Figure 5.3.2-4). The optoacoustic image is a data matrix of ultrasonic signal strength data paired with X-Y coordinates. The data is presented in the form of a bitmap file, making the image quantitative in its base measurement.
+The measurement can be presented in a line graph format (Figure 5.3.2-3🔍), or a composite scan can pair line scans to create an optoacoustic image (Figure 5.3.2-4🔍). The optoacoustic image is a data matrix of ultrasonic signal strength data paired with X-Y coordinates. The data is presented in the form of a bitmap file, making the image quantitative in its base measurement.
 
             
 
@@ -7684,19 +6638,19 @@ A low signal value or minimum value usually indicates the presence of a defect s
 
             
 
-Figure 5.3.2-1: Airborne Ultrasound Through Transmission
+Figure 5.3.2-1🔍: Airborne Ultrasound Through Transmission
 
             
 
-Figure 5.3.2-2: Propagation of Ultrasound Through Material Being Tested
+Figure 5.3.2-2🔍: Propagation of Ultrasound Through Material Being Tested
 
             
 
-Figure 5.3.2-3: Ultrasound Single Linear Scan Graph of Channel Defect within a Pouch Seal
+Figure 5.3.2-3🔍: Ultrasound Single Linear Scan Graph of Channel Defect within a Pouch Seal
 
             
 
-Figure 5.3.2-4: Ultrasound Composite Scan / Optoacoustic Image of Channel Defect within a Pouch Seal
+Figure 5.3.2-4🔍: Ultrasound Composite Scan / Optoacoustic Image of Channel Defect within a Pouch Seal
 
           
 
@@ -7746,25 +6700,6 @@ Figure 5.3.2-4: Ultrasound Composite Scan / Optoacoustic Image of Channel Defect
 
                 
 
-              
-
-            
-
-            
-
-              
-
-#### 
-
-              
-                
-| --- | --- | --- |
-                
-| / | | FAIL |
-                
-| / | | FAIL |
-                
-| | | PASS |
               
 
             
@@ -8034,7 +6969,7 @@ X-ray is applied to package systems to evaluate physical attributes of the test 
 
             
 
-For pharmaceutical CCI applications, an X-ray image can be produced in a number of ways. The first is a line scan technique (Figure 5.4.2-1), where the object to be inspected is slowly moved through a plane of X-ray radiation and the picture is created in a linear X-ray-sensitive diode array. This technique is called fan or line-beam X-ray scanning. The advantage is high resolution, although from a very low speed, and the scan speed defines the resolution.
+For pharmaceutical CCI applications, an X-ray image can be produced in a number of ways. The first is a line scan technique (Figure 5.4.2-1🔍), where the object to be inspected is slowly moved through a plane of X-ray radiation and the picture is created in a linear X-ray-sensitive diode array. This technique is called fan or line-beam X-ray scanning. The advantage is high resolution, although from a very low speed, and the scan speed defines the resolution.
 
             
 
@@ -8042,7 +6977,7 @@ A variation of this scanning technique known as X-ray tomography, or CT (compute
 
             
 
-Another technique for X-ray analysis is the area X-ray camera, which works much like a simple photography camera. Here, the object will be penetrated by the radiation, attenuated by the object, and the result captured as a gray-scale image on a large X-ray-sensitive diode array (See Figure 5.4.2-2). This scanning process produces 2-D as well as 3-D pictures.
+Another technique for X-ray analysis is the area X-ray camera, which works much like a simple photography camera. Here, the object will be penetrated by the radiation, attenuated by the object, and the result captured as a gray-scale image on a large X-ray-sensitive diode array (See Figure 5.4.2-2🔍). This scanning process produces 2-D as well as 3-D pictures.
 
             
 
@@ -8054,64 +6989,15 @@ There are two types of X-ray tubes. The first is the closed-tube design, which p
 
             
 
-Figure 5.4.2-1: Principle of the Line Scan Imaging Technique
+Figure 5.4.2-1🔍: Principle of the Line Scan Imaging Technique
 
             
 
-Figure 5.4.2-2: Principle of the Area Scan Imaging Technique
+Figure 5.4.2-2🔍: Principle of the Area Scan Imaging Technique
 
           
 
           
-
-            
-
-              
-
-#### X
-
-              
-                
-                  
-                  
-                  
-                  
-                  
-                
-| --- | --- | --- | --- | --- |
-                
-                  **  
-**
-                  
-                    
-
-                  
-                  
-                
-| (Line Scan) | X | | | |
-                
-                  **  
-**
-                  
-                    
-
-                  
-                  
-                
-| CT(Tomography) | 3D | | | |
-                
-                  **  
-**
-                  
-                    
-
-                  
-                  
-                
-| (Area Scan) | | <100 ms | | / |
-              
-
-            
 
             
 
@@ -8148,7 +7034,7 @@ X-ray technology can detect cracks in glass containers like syringes, vials, and
 
             
 
-Figures 5.4.3-1 through 5.4.3-4 show defects identified by X-ray technology. Spotting the crack in Figure 5.4.3-2 strongly depends on the angle of the view. For an automated inspection, a minimum of six angles needs to be inspected. A more comprehensive CT scan may prove more valuable for nonautomated, offline sampling.
+Figures 5.4.3-1 through 5.4.3-4 show defects identified by X-ray technology. Spotting the crack in Figure 5.4.3-2🔍 strongly depends on the angle of the view. For an automated inspection, a minimum of six angles needs to be inspected. A more comprehensive CT scan may prove more valuable for nonautomated, offline sampling.
 
             
 
@@ -8156,19 +7042,19 @@ X-ray technology also has the ability to detect functional defects in pharmaceut
 
             
 
-Figure 5.4.3-1: X-Ray Picture of a Large Crack in the Syringe Barrel Inside an Auto-Injector Device
+Figure 5.4.3-1🔍: X-Ray Picture of a Large Crack in the Syringe Barrel Inside an Auto-Injector Device
 
             
 
-Figure 5.4.3-2: X-Ray Picture of a Vial with a Glass Defect at the Rim under the Crimp
+Figure 5.4.3-2🔍: X-Ray Picture of a Vial with a Glass Defect at the Rim under the Crimp
 
             
 
-Figure 5.4.3-3: X-Ray Picture of an Ampoule Neck with a Glass Cut Detection
+Figure 5.4.3-3🔍: X-Ray Picture of an Ampoule Neck with a Glass Cut Detection
 
             
 
-Figure 5.4.3-4: X-ray Picture of Needle Socket with the Glue made Visible
+Figure 5.4.3-4🔍: X-ray Picture of Needle Socket with the Glue made Visible
 
           
 
@@ -8257,7 +7143,7 @@ In a 2016 study by Nieto et al., CT scans were used to visually and geometricall
 
             
 
-Figure 5.4.4-1: Comparative CT Scans of Four Different Elastomers Used to Calculate Stopper Compression and Fit; Stopper D Shows Signs of Dimpling
+Figure 5.4.4-1🔍: Comparative CT Scans of Four Different Elastomers Used to Calculate Stopper Compression and Fit; Stopper D Shows Signs of Dimpling
 
           
 
@@ -8350,127 +7236,6 @@ Method | Principle | Application | LOD | Advantages | Limitations
       
 
         
-          
-            
-              
-              
-              
-              
-              
-              
-              
-            
-| Method | Principle | Primary Application | LOD | Advantages | Limitations | CDMO Considerations CDMO |
-| --- | --- | --- | --- | --- | --- | --- |
-          
-          
-            
-              ****  
-  
-
-                
-**
-                
-**
-              ****  
-
-              
-- 
-- 
-- 
-- 
-- 
-
-              
-- 
-- 
-- 
-- 
-
-              
-            
-| Helium Testing CCIT Deterministic | SUS He-filled bag in vacuum chamber; mass spectrometer detects escaping He molecules. | 2-D/3-D SUS100+ SUS bags, complex manifold systems with 100+ connection points | 10-8–10-4 atm·mbar·L/s 2 µm | | | SUS/ |
-            
-              ****  
-  
-
-                
-**
-                
-**
-              
-              
-- 
-- 
-- 
-- 
-- 
-
-              
-- 
-- 
-- 
-- 
-- 
-
-              
-            
-| Optical Emission Spectroscopy (OES) CCIT Deterministic | Plasma excitation of headspace gases under high vacuum; characteristic emission lines identify leaking gases. | Vials, PFS, cartridges, pouches; simultaneous detection of water and air leaks in liquid-filled products | LOD | | / IV | IV |
-            
-              ****  
-  
-
-                
-**
-                
-**
-              
-              
-- 
-- 
-- 
-- 
-- 
-
-              
-- 
-- 
-- 
-- 
-
-              
-            
-| Airborne Ultrasound Seal Integrity Nondestructive | Through-transmission: ultrasound propagates through seal; signal attenuation on receiving side reflects seal quality. | Tyvek Porous sterile barrier packaging, flexible pouch seals — online seal inspection | ≥1 mm/ | | 2-3 mm | Tyvek |
-            
-              ****  
-  
-
-                
-**
-                
-**
-              
-              
-- 
-- 
-- 
-- 
-- 
-
-              
-- 
-- 
-- 
-- 
-- 
-
-              
-            
-| X-Ray Detection X Supporting CCI Nondestructive | EM radiation penetrates container; differential attenuation creates grayscale images revealing internal physical defects. | /auto-injector Glass cracks, device functional defects (syringe/auto-injector), stopper compression in package development | X1-5 µm6 | CT3D <100 ms | CT | /CT |
-          
-        
-
-      
 
       
 
@@ -8481,33 +7246,6 @@ Method | Principle | Application | LOD | Advantages | Limitations
 ### Method Selection Decision Guide
 
           
-            
-              
-              
-            
-| Package/Scenario | Recommended Method(s) |
-| --- | --- |
-            
-| SUS bag with manifold, 100+ joints | Helium Testing (primary) |
-            
-| Glass vials — routine release | OES or Headspace Analysis |
-            
-| Prefilled syringes (liquid) | OES (high sensitivity for liquid leaks) |
-            
-| Tyvek / porous sterile pouch | Airborne Ultrasound (only viable option) |
-            
-| Flexible non-porous pouch | Airborne Ultrasound + vacuum/tracer gas |
-            
-| Glass vial — crack investigation | X-Ray (supporting) + He leak test |
-            
-| Auto-injector internal defect check | X-Ray detection |
-            
-| Package development, stopper selection | X-Ray CT + He leak test |
-            
-| Frozen storage impact study | X-Ray CT (stopper shrinkage, Tg) |
-          
-
-        
 
         
 
@@ -8516,33 +7254,6 @@ Method | Principle | Application | LOD | Advantages | Limitations
 ### 
 
           
-            
-              
-              
-            
-| / | |
-| --- | --- |
-            
-| SUS100+ | |
-            
-| — | OES |
-            
-| | OES |
-            
-| Tyvek / | |
-            
-| | + / |
-            
-| | X+ |
-            
-| Auto-injector | X |
-            
-| | XCT + |
-            
-| | XCTTg |
-          
-
-        
 
       
 
@@ -8725,26 +7436,6 @@ For new container/closure systems introduced by a CDMO client, a full method *va
 #### 
 
             
-              
-| --- | --- |
-              
-| | SUS/ |
-              
-| OES | |
-              
-              
-| X | ≥6 |
-            
-
-          
-
-          
-
-            
-
-#### 
-
-            
 
             
 
@@ -8829,18 +7520,6 @@ For new container/closure systems introduced by a CDMO client, a full method *va
     
 
   
-
-  
-
-PDA Technical Report No. 86 (2021): Industry Challenges and Current Technologies for Pharmaceutical Package Integrity Testing
-
-  
-
-Section 3: Innovative Methods for Existing Technologies (5.0–5.4) | Pages 26–37 | SterileGMP Knowledge Hub
-
-  
-
-Licensed content — Educational use only
 
   **TR86 Section Navigation:**
    
@@ -9056,17 +7735,6 @@ The effects of temperature on packaging and distribution is also discussed in Se
             
 
             
-              
-| --- | --- | --- |
-              
-| Shattering | | |
-              
-| Crack/Check | | |
-              
-| Chip | | |
-            
-
-            
 
               
 
@@ -9201,19 +7869,6 @@ Numerous documents from internationally recognized organizations (e.g., ASTM, IS
             
 
             
-              
-| --- | --- | --- |
-              
-| ISTA | ISTA 2A, 3A | |
-              
-| ASTM | D4169, D7386 | |
-              
-| ICH | Q1A, Q1B | |
-              
-| ISO | ISO 4180 | |
-            
-
-          
 
         
 
@@ -9324,27 +7979,6 @@ No one test method fits all products. In-line test methods must be nondestructiv
           
 
 ### — 6.2
-
-          
-
-          
-
-            
-
-#### 
-
-            
-              
-| --- | --- | --- |
-              
-| | In-line | 100% |
-              
-| | On-line | |
-              
-| | At-line | |
-              
-| | Off-line | |
-            
 
           
 
@@ -9675,19 +8309,6 @@ Similar to Six Sigma thinking (define-measure-analyze-improve-control), the risk
             
 
             
-              
-| --- | --- |
-              
-| HACCP | |
-              
-| FMEA | |
-              
-| Ishikawa | |
-              
-| FTA | |
-            
-
-            
 
               
 
@@ -9768,35 +8389,9 @@ For the flexible container manufacturer, test methods may differ between the pha
 
           
 
-**Table 6.4-1: Considerations for Single-Use System's Lifecycle at User's Site**
+**Table 6.4-1🔍: Considerations for Single-Use System's Lifecycle at User's Site**
 
           
-            
-| Area to Manage Product Quality | Considerations |
-| --- | --- |
-            
-| Risk assessment | Evaluate the quality risk from the supply chain as well as the risks associated with their processes that can affect integrity; develop a control strategy, which may involve use of a physical leak test method |
-            
-| Incoming goods inspection | Identify seal quality and integrity attributes to be evaluated upon receipt |
-            
-| Assembly storage | Ensure that products are stored in a manner that prevents damage |
-            
-| Assembly unpacking and installation | Ensure that assemblies are transported through the plant in a manner that does not induce damage; support the product appropriately (large surface), eliminating use of sharp tools and short-term storage racks with sharp edges |
-            
-| Visual inspection | Check visually for marks, damages, and abnormalities on the SUS |
-            
-| Pre-use leak testing | Verify integrity after transportation and handling directly before use; supplement release testing at supplier |
-            
-| Use | Use the SUS within its specifications |
-            
-| Post-use leak testing | Verify integrity of the SUS after use to support the sterility claim on the final product |
-            
-| Operator training | Ensure that operators understand in which modes assemblies may be damaged by handling and deployment, how to inspect an assembly prior to use, and how to run a leak test |
-            
-| Supplier feedback | Inform supplier of integrity failures so supplier can understand and correct issues |
-          
-
-        
 
         
 
@@ -10108,47 +8703,11 @@ Optimization aimed to achieve maximum defect detection sensitivity while minimiz
 
           
 
-### LOD Study Data — Table 6.5-1 (Hypothetical)
+### LOD Study Data — Table 6.5-1🔍 (Hypothetical)
 
           
 
 PharmaCo-A defined the detection limit as the smallest defect size (defined as the average size in each positive control-size subset) in which 95% or more of the defect size-subset was detected as leaking on all test days. All defects larger than the detection limit must fail. Method accuracy was confirmed if all negative controls pass.
-
-          
-            
-              
-              
-              
-              
-              
-            
-| Defect Size | Method A (%) | Method B (%) | Method C (%) | Method D (%) |
-| --- | --- | --- | --- | --- |
-            
-              
-              
-              
-              
-              
-            
-|  | D1 | D2 | D3 | D1 | D2 | D3 | D1 | D2 | D3 | D1 | D2 | D3 |
-            
-| 0 µm (n=300) | 0.3 | 0 | 0.7 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-            
-| 3 µm (n=40) | 90 | 87.5 | 92.5 | 5 | 7.7 | 5 | 30 | 0 | 20 | 0 | 0 | 2.5 |
-            
-| 6 µm (n=40) | 100 | 100 | 95 | 12.5 | 20 | 10 | 100 | 2.5 | 0 | 2.5 | 2.5 | 2.5 |
-            
-| 10 µm (n=40) | 100 | 100 | 100 | 20 | 10 | 30 | 100 | 100 | 95 | 50 | 20 | 20 |
-            
-| 20 µm (n=40) | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 92.5* | 100 | 80 | 90 | 100 |
-            ************
-| LOD | 6 µm | Suggests 20 µm | 10 µm | Undefined |
-            
-| All Larger Detected | Yes | Data absent | Confirmed | Undefined |
-            
-| All Neg Controls Pass | No | Yes | Yes | Yes |
-          
 
           
 
@@ -10161,20 +8720,6 @@ PharmaCo-A defined the detection limit as the smallest defect size (defined as t
           
 
 ### — LOD
-
-          
-            
-| | LOD | | |
-| --- | --- | --- | --- |
-            ****
-| A | 6 µm | | |
-            ****
-| B | ~20 µm | | |
-            ****
-| C | 10 µm | | |
-            ****
-| D | | | |
-          
 
           
 
@@ -10395,29 +8940,6 @@ Best practices in pharmaceutical packaging suggest that all activities must be e
 
             
 
-#### TR86 vs USP <1207>
-
-            
-              
-|  | USP <1207> | PDA TR86 |
-| --- | --- | --- |
-              
-              
-| | CCI | |
-              
-| | | PFSSUS |
-              
-| | vs | |
-              
-| | | QbDMALLLOD |
-            
-
-          
-
-          
-
-            
-
 #### TR86
 
             
@@ -10574,25 +9096,6 @@ RSF and CCIT correlation for vials — relevant to capping process as a CPP for 
 
             
 
-#### /
-
-            
-              
-| --- | --- | --- |
-              
-| | EU GMP Annex 1 [19] | 100% |
-              
-| | USP <1207> [2], <1207.1> [4] | |
-              
-| | ICH Q9 [3], PDA TR27 [1], TR73 [7] | |
-            
-
-          
-
-          
-
-            
-
 #### 
 
             
@@ -10723,35 +9226,6 @@ Ultra-low temperature (−80°C) CCI — critical for mRNA vaccine and gene ther
 
             
 
-#### 
-
-            
-              
-| --- | --- |
-              
-| | [AR1], [AR4] |
-              
-| MALL | [AR2] |
-              
-| | [AR3] |
-              
-| | [AR5] |
-              
-| CCI | [AR6] |
-              
-| | [AR7] |
-              
-| /CCI | [AR9] |
-              
-| X | [AR8] |
-            
-
-          
-
-          
-
-            
-
 #### mRNA/
 
             
@@ -10791,28 +9265,6 @@ Ultra-low temperature (−80°C) CCI — critical for mRNA vaccine and gene ther
 ### Key Concept Summary
 
           
-            
-| Topic | Key Point |
-| --- | --- |
-            
-| 6.1 Distribution | Profile must account for shock, vibration, compression, pressure (air transport ~0.75 atm). Use ISTA/ASTM standards but customize to actual distribution chain. |
-            
-| 6.1.2 Pressure/PFS | Low-pressure environments risk plunger retraction in PFS, flexible container burst/creep. Must characterize effect on sterility and quality. |
-            
-| 6.2 100% In-Line | Acts as filter: rejected = confirmed fail; accepted ≠ guaranteed shelf-life CCI. Advantage: no suspect lots. Must be nondestructive. Not currently feasible for all CCS. |
-            
-| 6.3 QbD | QTPP → CMAs/CPPs → MALL → CCIT tool kit → control strategy → continuous improvement. MALL anchors method selection. |
-            
-| 6.3.1 Risk Assessment | HACCP/FMEA for each process step. Ongoing lifecycle assessment database. Six Sigma DMAIC analogy. |
-            
-| 6.4 Bulk/SUS | Two phases: development (design/qualification) and product (manufacturing to use). Pre-use and post-use leak testing required at user site. |
-            
-| 6.5 LOD Simulation | Predefine LOD criteria: ≥95% detection of smallest subset on all test days, 100% larger detected, all negative controls pass. Laser-drilled defects as positive controls. |
-            
-| 7.0 Conclusion | No one-size-fits-all. Risk-based approach + existing technologies = best defense. TR86 extends USP <1207> for complex systems. |
-          
-
-        
 
         
 
@@ -11322,59 +9774,6 @@ The number of test days and operators also contributes to the statistical robust
 The following outlines the major standards and their application to pharmaceutical packaging integrity testing during transportation and distribution:
 
           
-            
-              
-              
-              
-              
-            
-| Standard | Organization | Scope | Pharmaceutical Application |
-| --- | --- | --- | --- |
-            
-              
-              
-              
-              
-            
-| ISTA 2A | ISTA | Packaged products >68 kg; truck/ground | Most commonly cited for pharma distribution simulation; vibration + shock + compression |
-            
-              
-              
-              
-              
-            
-| ISTA 3A | ISTA | Packaged products, general simulation | More comprehensive; includes climate conditioning; often used for international shipments |
-            
-              
-              
-              
-              
-            
-| ASTM D4169 | ASTM | Performance testing of shipping containers | Alternative/complementary to ISTA; defines distribution cycles by hazard profile |
-            
-              
-              
-              
-              
-            
-| ASTM D7386 | ASTM | Small packaged products (<68 kg) | Suitable for unit-dose pharmaceutical products shipped via parcel carriers |
-            
-              
-              
-              
-              
-            
-| ISO 4180 | ISO | Complete, filled transport packages | International harmonization; referenced in EU pharmaceutical distribution guidelines |
-            
-              
-              
-              
-              
-            
-| ICH Q1A(R2) | ICH | Stability testing conditions | Addresses stress conditions during shipping as part of stability protocol design |
-          
-
-          
 
             
 
@@ -11597,73 +9996,6 @@ Volume increase = 0.033 mL, corresponding to a plunger retraction of approximate
 Container Closure Integrity is addressed across multiple regulatory frameworks. Understanding how these documents relate helps practitioners build compliant programs that satisfy inspectors from different health authorities.
 
           
-            
-              
-              
-              
-              
-            
-| Document | Type | Key CCI Requirements/Guidance | TR86 Relationship |
-| --- | --- | --- | --- |
-            
-              ****
-              
-              
-              
-            
-| USP <1207> | Compendial Standard | Defines CCI; classifies deterministic vs. probabilistic methods; establishes basic validation requirements | Foundation that TR86 extends; TR86 addresses challenges not fully covered by USP <1207> |
-            
-              ****
-              
-              
-              
-            
-| USP <1207.1> | Compendial Guidance | Decision trees for test method selection by container type and risk level | Complementary method selection guidance; TR86 provides deeper technical detail |
-            
-              ****
-              
-              
-              
-            
-| USP <1207.2> | Compendial Guidance | Packaging system CCI guidance; validation approach | Validation framework; TR86 provides lifecycle and LOD simulation detail |
-            
-              ****
-              
-              
-              
-            
-| ICH Q9 | Guideline | Risk management tools: FMEA, HACCP, risk ranking; quality risk management framework | Risk-based CCIT program foundation; TR86 Section 6.3.1 directly applies ICH Q9 tools |
-            
-              ****
-              
-              
-              
-            
-| ICH Q8(R2) | Guideline | QbD framework: QTPP, CQAs, CMAs, CPPs, Design Space, Control Strategy | QbD language and framework; TR86 Section 6.3 applies ICH Q8 to CCIT program design |
-            
-              ****
-              
-              
-              
-            
-| EU GMP Annex 1 (2022) | Regulation | Mandates CCIT for all sterile products; 100% for ampules/BFS; risk-based for others; enhanced PFS requirements | Regulatory mandate that makes TR86 guidance operationally necessary; Annex 1 2022 strengthens requirements aligned with TR86 approach |
-            
-              ****
-              
-              
-              
-            
-| FDA 2008 CCI Guidance | Guidance | CCIT in lieu of sterility testing in stability programs; method validation expectations | TR86 provides the technical depth needed to implement FDA guidance requirements |
-            
-              ****
-              
-              
-              
-            
-| PDA TR27 | Technical Report | Predecessor to TR86; established pharmaceutical package integrity testing framework | Historical foundation; TR86 supersedes and extends TR27 for modern complex packaging systems |
-          
-
-        
 
         
 
@@ -11770,13 +10102,5 @@ Container Closure Integrity is addressed across multiple regulatory frameworks. 
     
 
   
-
-  
-
-PDA Technical Report No. 86 (2021): Industry Challenges and Current Technologies for Pharmaceutical Package Integrity Testing
-
-  
-
-Section 4: Additional Considerations & References (6.0–9.0) | Pages p38–p52 | SterileGMP Knowledge Hub
 
 ⇧

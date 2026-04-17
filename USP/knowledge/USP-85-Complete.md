@@ -12,8 +12,6 @@ USP ⟨85⟩ Bacterial Endotoxins Test | p1-p3
 
     
 
-    
-
         
 
 Portions of this general chapter have been harmonized with the corresponding texts of the European Pharmacopoeia and/or the Japanese Pharmacopoeia. Those portions that are not harmonized are marked with symbols (◊) to specify this fact.
@@ -43,8 +41,6 @@ The test is carried out in a manner that avoids endotoxin contamination.
     
 
 USP ⟨85⟩ Bacterial Endotoxins Test | p3-p5
-
-    
 
     
 
@@ -108,8 +104,6 @@ USP ⟨85⟩ Bacterial Endotoxins Test | p5-p7
 
     
 
-    
-
         
 
 Select an endotoxin concentration at or near the middle of the endotoxin standard curve.
@@ -117,20 +111,6 @@ Select an endotoxin concentration at or near the middle of the endotoxin standar
         
 
 ### Table 4. Preparation of Solutions for the Inhibition/Enhancement Test for Photometric Techniques
-
-        
-            
-| Solution | Endotoxin Concentration | Solution to Which Endotoxin Is Added | Replicates |
-| --- | --- | --- | --- |
-            ****
-| A | None | Sample Solution | ≥ 2 |
-            ****
-| B | Middle concentration of the standard curve | Sample Solution | ≥ 2 |
-            ****
-| C | At least three concentrations (lowest = λ) | Water for BET | Each ≥ 2 |
-            ****
-| D | None | Water for BET | ≥ 2 |
-        
 
         
 

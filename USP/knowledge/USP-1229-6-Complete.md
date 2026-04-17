@@ -2,13 +2,13 @@
 
 ## Section 0: Liquid-Phase Sterilization — Complete (p1-p4)
 
-# USP ⟨1229.6⟩ Liquid-Phase Sterilization
+# USP 〈1229.6〉 Liquid-Phase Sterilization
 
     
 
     
 
-Source: USP–NF General Chapter ⟨1229.6⟩ | Official as of 01-May-2018 | Status: Currently Official on 12-Feb-2025 | Pages 1–4
+Source: USP–NF General Chapter 〈1229.6〉 | Official as of 01-May-2018 | Status: Currently Official on 12-Feb-2025 | Pages 1–4
 
     
 
@@ -16,7 +16,7 @@ Source: USP–NF General Chapter ⟨1229.6⟩ | Official as of 01-May-2018 | Sta
 
     
 
-© 2025 The United States Pharmacopeial Convention (USPC). All rights reserved. This educational document is derived from USP–NF ⟨1229.6⟩ for non-commercial training purposes only. The original text remains the property of USPC and should not be redistributed. For the official, legally binding version, refer to the USP–NF at **www.usp.org**.
+© 2025 The United States Pharmacopeial Convention (USPC). All rights reserved. This educational document is derived from USP–NF 〈1229.6〉 for non-commercial training purposes only. The original text remains the property of USPC and should not be redistributed. For the official, legally binding version, refer to the USP–NF at **www.usp.org**.
 
     
 

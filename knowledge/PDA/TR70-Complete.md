@@ -680,9 +680,24 @@ and the CFUs recovered from the inoculum exposed to the chemical agent. This lev
 tion should be assessed against a set of pre-established criteria to determine if the chemical agent
 provided the level of reduction required.
 
-| | | |
-| --- | --- | --- |
+**Table 5.2.1-1**
 
+Commonly Used Neutralization Agents
+Antimicrobial Chemical Agent
+Neutralizing Agent
+Alcohols
+Dilution or polysorbate 80
+Sodium hypochlorite
+Sodium thiosulfate
+Quaternary ammonium compounds
+Polysorbate 80 and lecithin
+Phenolic compounds
+Dilution or polysorbate 80 and lecithin
+Hydrogen Peroxide/Peracetic Acid and Hydrogen
+Peroxide
+Catalase
+The methods used should be validated to ensure that the neutralizing agent selected does not prevent
+growth of the various organisms chosen for the studies yet is effective in neutralizing the chemical agent.
 1. To validate the ability of the test organisms to grow in the presence of the neutralizing agent, the
 test organism (typically at a concentration of <100 microorganisms) and the neutralizing agent
 should be plated together using a standard pour plate technique and using the same media type
@@ -833,9 +848,36 @@ The method should be validated to ensure that the neutralizing agent selected do
 growth of the various organisms chosen for the studies yet is effective in neutralizing the chemical
 agent. The validation should be performed as described in the first method (total kill) above.
 
-| Category | Examples | Key Properties | Limitations |
-| --- | --- | --- | --- |
+**Table 5.2.2-1**
 
+Recommended Acceptance Criteria
+Antimicrobial
+Chemical Agent
+Organism Type
+Suggested Contact
+Time1
+Suggested Minimum
+Reduction2
+Sanitizer
+Non-spore formers
+max. 90 sec
+>1 Log
+Disinfectant/Sporicide
+Non-spore formers
+1–5 min
+>1 Log
+Disinfectant/Sporicide
+Mycoplasma
+1–5 min
+>1 Log
+Sporicide
+Mold spores
+1–5 min
+>1 Log
+Sporicide
+Bacterial spores
+1–5 min
+>1 Log
 1. Suggested contact time depends on surface dry times as well as on the room classification the agent is used in, action/
 alert levels, normal flora, and inoculums. Worker exposure time should also be taken into consideration.
 2. Log reduction is defined as the first log being 90%, the second log being 9% and the third log being 0.09% of the original
@@ -1392,12 +1434,107 @@ Terminology and adherence to specific guidelines varies among GMP firms througho
 worldwide harmonization by new clean room protocols from the International Organization for Standardization (ISO). The following table provides a comparison
 of these standards.
 
-| ISO 14644 | U.S. FDA / USP | EU Annex 1 / WHO | 0.5 µm limit (p/m³) |
-| --- | --- | --- | --- |
-| ISO 5 | Class 100 | Grade A & Grade B (at rest) | 3,520 |
-| ISO 7 | Class 10,000 | Grade B (in operation) / Grade C (at rest) | 352,000 |
-| ISO 8 | Class 100,000 | Grade C (in operation) / Grade D (at rest) | 3,520,000 |
+**Table 9.1-1 Area Classiﬁcations**
 
+Cleanroom Standards – Airborne Particulate Limits (particulates/m3) (13)
+Particle
+Size
+ISO 14644
+U.S. FDA
+(Aseptic Processing
+Guidance)
+USP <1116>
+EU Annex 1
+and WHO Annex 4
+Japan
+(Aseptic Processing
+Guidance)
+JP XVI
+ISO 5
+Class 1001,2
+ISO 5/Class 100
+Grade A
+Grade B (at rest)
+Grade A
+Grade B (at rest)
+Grade A
+Grade B (at rest)
+*0.5 μm
+3,520
+3,5203
+3,520
+3,500
+3,520
+3,520
+*5 μm
+Not speciﬁed
+Not speciﬁed
+Not speciﬁed
+ISO 6
+Class 1000
+ISO 6/Class 1000
+NA
+NA
+NA
+*0.5 μm
+35,200
+35,200
+35,200
+NA
+NA
+NA
+*5 μm
+Not speciﬁed
+Not speciﬁed
+NA
+NA
+NA
+ISO 7
+Class 10,000
+ISO 7/Class 10,000
+Grade B (in operation)
+Grade C (at rest)
+Grade B (in operation)
+Grade C (at rest)
+Grade B (in operation)
+Grade C (at rest)
+*0.5 μm
+352,000
+352,000
+352,000
+350,000
+352,000
+352,000
+*5 μm
+2,900
+Not speciﬁed
+Not speciﬁed
+2,900
+2,900
+Not speciﬁed
+ISO 8
+Class 100,000
+ISO 8/Class 100,000
+Grade C (in operation)
+Grade D (at rest)5
+Grade C (in operation)
+Grade D (at rest)
+Grade C (in operation)
+Grade D (at rest)
+*0.5 μm
+3,520,000
+3,520,000
+3,520,000
+3,500,000
+3,520,000
+3,520,000
+*5 μm
+29,000
+Not speciﬁed
+Not speciﬁed
+29,000
+29,000
+Not speciﬁed
 1. Class 100 and Grade A are deﬁned as requiring unidirectional airﬂow by all applicable guidelines.
 2. Obsolete U.S. Federal Standard 209E classiﬁcation added for continuity.
 3. Class titles for U.S. FDA and USP indicate equivalent particle counts per cubic foot.
@@ -1419,13 +1556,75 @@ In addition to standards on airborne particulates, guidance for microbial action
 
 $
 
-| Grade | Action Level (CFU/m³) |
-| --- | --- |
-| A | < 1 |
-| B | 10 |
-| C | 100 |
-| D | 200 |
+**Table 9.1-2 Environmental Monitoring Requirements/Guidance (13)**
 
+Monitoring
+Guidance
+U.S. FDA
+(Aseptic Processing Guidance)
+USP <1116>
+EU Annex 1, PIC/S
+and WHO Annex 4
+Japan
+(Aseptic Processing Guidance)
+JP XVI
+Frequency
+(Airborne total particulate and
+viable count. Surface viable count.
+Personnel sampling as noted)
+Class 100: Each production shift.
+Gloves daily or each lot.
+Other classes not speciﬁed.
+ISO 5: Each production shift.
+ISO 7: Each operating shift.
+ISO 8: Twice per week.
+A: In operation, continuous
+particulate monitoring required for
+critical operations. Frequent viable
+sampling.
+B: In operation, frequent particle
+monitoring is required.
+C, D: Monitoring on risk basis.
+Surfaces and personnel should be
+monitored after critical operations.
+A, B: Each operating shift for
+airborne micro, surfaces and
+personnel; continuous particulate
+monitoring.
+C, D: Airborne micro twice per
+week; airborne particulate once
+per month; personnel not required.
+A: Each operating shift.
+B: Each operating shift.
+C, D (potential product/container
+contact): Twice per week
+C, D (no potential product/
+container contact): Once per week
+Airborne viable action levels
+(Active air sampling)
+Class 100: 1 CFU/m3
+Class 10,000: 10 CFU/m3
+Class 100,000: 100 CFU/m3
+Recommends use of incident
+rate (% of samples with micro
+contamination) rather than count
+levels, as follows(2):
+A: <1 CFU/m3
+B: 10 CFU/m3
+C: 100 CFU/m3
+D: 200 CFU/m3
+A: <1 CFU/m3
+B: 10 CFU/m3
+C: 100 CFU/m3
+D: 200 CFU/m3
+A: <1 CFU/m3
+B: 10 CFU/m3
+C: 100 CFU/m3
+D: 200 CFU/m3
+ISO 5: <1%
+ISO 6: <3%
+ISO 7: <5%
+ISO 8: <10%
 0.5 m3 sample required for A, B
 0.2 m3 sample required for C, D
 Applies to all active air, passive air,
@@ -1812,13 +2011,33 @@ include those shown in Table 9.4.3-1.
 
 $
 
-| Material / | Grade A/B (ISO 5) — Requirement | Grade C (ISO 7) — Requirement | Grade D (ISO 8) — Requirement | Reusable? / |
-| --- | --- | --- | --- | --- |
-| Wipers / | Sterile γ-irradiated | Sterile or non-sterile | Non-sterile acceptable | Yes — validated laundering + re-sterilization required / |
-| Mop Heads / | Sterile γ-irradiated | Sterile preferred | Non-sterile acceptable | Yes — validated process only / |
-| Buckets / | Dedicated, disinfected each use | Dedicated, disinfected each use | Dedicated, cleaned regularly | Yes — grade-dedicated / |
-| Squeegees / | Sterile or wiped with sporicide | Clean and disinfect after each use | Clean and disinfect after each use | Yes — cleaning frequency based on use / |
+**Table 9.4.3-1 Examples of Surfaces**
 
+Routine Nonstructural Surfaces
+Hard-to-Clean Surfaces
+Tanks
+Tops of doors
+Carts
+Tracks
+Countertops
+Conveyers
+Racks
+Phones
+Packaged supplies on racks
+Equipment feet and legs
+Storage bins
+Underside of tanks, carts, and equipment
+Stairs
+Wheels
+Exterior of tubing or pipes
+Incubators, refrigerators, and cold rooms
+Work surfaces
+
+Non-product-contact surfaces
+Non-product-equipment
+Monitors, samplers, gauges
+Tools (sterilization may be required)
+Cleaning should be done on all equipment to assure the surface is visibly free from particulate and
 residue. Disinfection of the surfaces should assure the removal of microbial content to below accept-
 able surface-monitoring levels. All equipment should be wiped after disinfection by spraying 70% IPA,
 70% EtOH, or a high surfactant-based cleaner with little residue that is subsequently wiped with a dry
@@ -2954,9 +3173,36 @@ ity category based on the study results (See Table 21.0-1 below). The results of
 studies must be known in order for the appropriate labeling language to be determined. Table 21.0-2
 provides the required precautionary language based on the assigned toxicity category.
 
-| Study | Category I (Most Hazardous) | Category II | Category III | Category IV (Least Hazardous) |
-| --- | --- | --- | --- | --- |
+**Table 21.0-1 Toxicity Categories (22)**
 
+Study
+Category I
+Category II
+Category III
+Category IV
+Acute oral
+Oral LD50 up to and
+including 50 mg/kg
+>50 through 500
+mg/kg
+>500 through
+5,000 mg/kg
+>5,000 mg/kg
+Acute
+dermal
+Dermal LD50 up to and
+including 200 mg/kg
+>200 through
+2,000 mg/kg
+>2,000 through
+5,000 mg/kg
+>5,000 mg/kg
+Acute
+inhalation
+(4-hour exposure)
+Inhalation LD50 up to and
+including 0.05 mg/liter
+>0.05 through
 0.5 mg/liter
 >0.5 through 2
 mg/liter
@@ -3014,13 +3260,13 @@ erythema)
 
 $
 
-| Category | Required Label Statement |
-| --- | --- |
-| I | Fatal if swallowed. Wash thoroughly with soap and water after handling. |
-| II | May be fatal if swallowed. Wash thoroughly with soap and water after handling. |
-| III | Harmful if swallowed. Wash thoroughly with soap and water after handling. |
-| IV | No statement required (registrant may choose to use Category III language). |
+**Table 21.0-2 Precautionary Statements by Route of Entry**
 
+Acute Oral Toxicity
+Toxicity
+category
+Statements
+I
 Fatal if swallowed. Wash thoroughly with soap and water after handling and before eating,
 drinking, and chewing gum, using tobacco or using the toilet.
 II
@@ -3134,12 +3380,21 @@ Product is not a sensitizer or is negative for
 sensitization
 No labeling is required for this result.
 
-| Category | Required Label Statement |
-| --- | --- |
-| I | Fatal if absorbed through skin. Do not get in eyes, on skin, or on clothing. Wear [specify protective clothing]. Remove and wash contaminated clothing before reuse. |
-| II | May be fatal if absorbed through skin. Wear [protective clothing]. Remove and wash contaminated clothing before reuse. |
-| III | Harmful if absorbed through skin. Avoid contact with skin, eyes, or clothing. Wear [appropriate protective clothing if appropriate]. |
-| IV | No statement required. |
+**Table 21.0-2 (Continued)**
+
+
+	
+
+	
+	
+	
+
+	
+	 	!"		#
+
+	
+
+$
 
 ## 22.0 Appendix VI: AOAC Protocol Testing
 
@@ -3326,14 +3581,45 @@ Quantitative nonporous surface test for the evaluation of bactericidal or fungic
 chemical disinfectants used in food, industrial, domestic, and institutional areas (phase 2, step 2).
 A brief overview of the criteria for each EN test is outlined in the table that follows:
 
-| | | VHP |
-| --- | --- | --- |
-| | | |
-| | | |
-| | 15–60 min | |
-| | | H₂O + O₂ |
-| | | H₂O₂ |
+**Table 23.0-1 Summary of EN Test Criteria for Registration for Established Claims**
 
+Organism Type
+Test Method
+Test Type
+Contact Time
+(minutes)
+Log Reduction
+Pass Criteria
+Vegetative bacteria
+EN 1276:1997
+Suspension
+Vegetative bacteria
+EN 13697:2001
+Surface
+Vegetative fungi
+EN 1650:1998
+Suspension
+Vegetative fungi
+EN 13697:2001
+Surface
+Bacterial spores
+EN 13704:2002
+Suspension
+
+	
+
+	
+	
+	
+
+	
+	 	!"		#
+
+	
+
+$
+Users’ Protection: Safety Data Sheets (SDS)
+Wearing gloves is a critical safety procedure when handling and using sanitizers, disinfectants, and
 sporicides. Typically rubber or nitrile gloves are recommended for the hands, as well as chemically
 compatible gowning materials, when diluting or using disinfectants. Operators that are applying the
 disinfectants to ceilings should wear hoods or smocks and goggles with an ocular cavity fit so that

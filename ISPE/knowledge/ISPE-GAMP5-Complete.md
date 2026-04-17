@@ -28,7 +28,7 @@ Compliance with regulatory requirements and fitness for intended use may be achi
 
         
 
-A life cycle approach entails defining and performing activities in a systematic way from conception, understanding the requirements, through development, release, and operational use, to system retirement. Figure 3.1 shows a general specification, design, and verification process described in ASTM E2500.
+A life cycle approach entails defining and performing activities in a systematic way from conception, understanding the requirements, through development, release, and operational use, to system retirement. Figure 3.1🔍 shows a general specification, design, and verification process described in ASTM E2500.
 
         
 
@@ -150,7 +150,7 @@ A **linear approach** is particularly suitable when system requirements are full
 
         
 
-As shown in Figure 3.4, the life cycle and specification and verification approach described in the Guide is **not inherently linear**. This Guide supports the use of **Agile approaches** for product development, the development of custom applications, and incremental product configuration.
+As shown in Figure 3.4🔍, the life cycle and specification and verification approach described in the Guide is **not inherently linear**. This Guide supports the use of **Agile approaches** for product development, the development of custom applications, and incremental product configuration.
 
         
 
@@ -189,31 +189,6 @@ This Guide describes the overall GxP system life cycle from the perspective of t
 
             
 
-            
-
-        
-
-        
-
-            
-
-#### Agile
-
-            
-                
-                    
-| --- | --- |
-                
-                
-                    
-| SCADA | V-model |
-                    
-| | Agile+ |
-                    
-| ERP Category 4 | |
-                    
-| SaaS | AgileCI/CD |
-                
             
 
         
@@ -328,7 +303,7 @@ Critical thinking is not a one-time activity and should be applied throughout th
 
         
 
-Figure 3.5 illustrates critical thinking for computerized systems whereby proactive adoption of a risk-based approach takes into account the **multiple layers of assurance** provided elsewhere within the business process — combining technical, procedural, and behavioral controls applied throughout the business process.
+Figure 3.5🔍 illustrates critical thinking for computerized systems whereby proactive adoption of a risk-based approach takes into account the **multiple layers of assurance** provided elsewhere within the business process — combining technical, procedural, and behavioral controls applied throughout the business process.
 
         
 
@@ -717,7 +692,7 @@ Verification confirms that specifications have been met. This may involve multip
 
         
 
-While verification is shown as a single box on Figure 4.1, **verification activities occur throughout the project stages**. For example, design reviews should verify specifications during the specification stage.
+While verification is shown as a single box on Figure 4.1🔍, **verification activities occur throughout the project stages**. For example, design reviews should verify specifications during the specification stage.
 
         
 
@@ -1012,1600 +987,537 @@ Computerized systems are generally made up of a combination of components from d
 
 # Chapters 5–6: Quality Risk Management & Regulated Company Activities
 
-    
-
-    
-
 ISPE GAMP 5 2nd Edition | Section 02a | Doc p49–p68
 
-    
-
-## Chapter 5: Quality Risk Management (Doc p49–p55)
-
-    
-
-        
+## **Chapter 5: Quality Risk Management (Doc p49–p55) Chapter 5Doc p49–p55**
 
 ## 5.1 Overview
 
-        
-
 QRM is a systematic process for the assessment, control, communication, and review of risks. It is an iterative process used throughout the computerized system life cycle from concept to retirement.
-
-        
 
 For a given organization, a framework for making risk-management decisions should be defined to ensure consistency of application across systems and business functions. Terminology should be agreed upon, particularly regarding definitions and metrics for key risk factors.
 
-        
-
 Such a framework is most effectively implemented when it is incorporated into the overall QMS and is fully integrated with the system life cycle.
-
-        
-
-            
 
 #### Scope Note
 
-            
-
 This chapter is primarily aimed at **new computerized systems**. It does not imply that formal risk assessments are required for all existing systems. The extent of risk management required for existing systems should be considered as part of periodic review.
-
-            
 
 This chapter focuses on software products and custom applications rather than on infrastructure.
 
-        
-
-    
-
-    
-
-        
-
 ## 5.1 —
 
-        
-
-            
-
 #### QRM
 
-            
-
-            
-
-        
-
-        
-
-            
-
 #### QRM
-
-            
-
-        
-
-        
-
-            
 
 #### 
-
-            
-
-        
-
-    
-
-    
-
-        
 
 ## 5.2 Science-Based Quality Risk Management
 
-        
-
 Determining the risks posed by a computerized system requires a common and shared understanding of:
 
-        
-
-            
 - Impact of the computerized system on patient safety, product quality, and data integrity
 
-            
 - Supported business processes
 
-            
 - CQAs for systems that monitor or control CPPs
 
-            
 - User requirements
 
-            
 - Regulatory requirements
 
-            
 - Project approach (contracts, methods, timelines)
 
-            
 - System components and architecture
 
-            
 - System functions
 
-            
 - Supplier capability
-
-        
-
-        
 
 The organization also should consider other applicable risks, such as Health, Safety, and Environment (HSE).
 
-        
-
 Managing the risks may be achieved by:
 
-        
-
-            
 - **Elimination by design** — modifying processes or system design
 
-            
 - **Reduction to an acceptable level** — applying controls to lower severity, decrease probability, or increase detectability
 
-            
 - **Verification** — demonstrating that risks are managed to an acceptable level
-
-        
-
-        
 
 It is desirable to eliminate risk, if possible, by modifying processes or system design. Design reviews can play a key role in eliminating risk by design.
 
-        
-
 A systematic approach should be defined to verify that the risk associated with a system has been managed to an acceptable level. The overall extent of verification and the level of detail of documentation should be based on the risk to patient safety, product quality, and data integrity, and take into account the complexity and novelty of the system.
-
-        
 
 The criticality of a business process is independent of whether it is manually processed, semi-automated, or fully automated. Systems that support critical processes include those that:
 
-        
-
-            
 - Generate, manipulate, or control data supporting regulatory safety and efficacy submissions
 
-            
 - Control critical parameters and data in pre-clinical, clinical, development, and manufacturing
 
-            
 - Control or provide data or information for product release
 
-            
 - Control data or information required in case of product recall
 
-            
 - Control adverse event or complaint recording or reporting
 
-            
 - Support pharmacovigilance
-
-        
-
-    
-
-    
-
-        
 
 ## 5.2 QRM —
 
-        
-
-            
-
 #### 
 
-            
-
-            
-
-        
-
-        
-
-            
-
 #### 
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-        
-
-        
-
-            
 
 #### ≠
 
-            
-
-        
-
-        
-
-            
-
 #### CDMO
-
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-    
-
-    
-
-        
 
 ## 5.3 Quality Risk Management Process
 
-        
-
 The ICH Q9 describes a systematic approach to QRM intended for general application within the pharmaceutical industry. It defines two primary principles:
-
-        
 
             "The evaluation of the risk to quality should be based on scientific knowledge and ultimately link to the protection of the patient; and the level of effort, formality and documentation of the quality risk-management process should be commensurate with the level of risk."
         
 
-        
-
 In the context of computerized systems, scientific knowledge is based upon the system specifications and the business process being supported.
-
-        
 
 ### Key ICH Q9 Terms Used in This Guide
 
-        
-
-            
 - **Harm:** Damage to health, including the damage that can occur from loss of product quality or availability.
 
-            
 - **Hazard:** The potential source of harm.
 
-            
 - **Risk:** The combination of the probability of occurrence of harm and the severity of that harm.
 
-            
 - **Severity:** A measure of the possible consequences of a hazard.
-
-        
-
-        
 
 ### Process Risk Assessment
 
-        
-
 QRM activities should start at the business process level, at a level higher than individual systems. A **process risk assessment** (also known as business process risk assessment) is a non-system-specific high-level assessment of the business process or data flow, which may occur before system-specific QRM activities.
-
-        
 
 The process risk assessment is aimed at identifying key high-level risks to patient safety, product quality, and data integrity, and identifying the required controls to manage those risks. Typical inputs include:
 
-        
-
-            
 - Defined business process scope
 
-            
 - Process descriptions and/or diagrams
 
-            
 - Identified regulatory requirements for the proposed process scope
 
-            
 - Identified company quality requirements
-
-        
-
-        
 
 ### Five-Step QRM Process
 
-        
-
 This Guide applies the general principles of ICH Q9 to describe a five-step process for risk management as an integral part of achieving and maintaining system compliance.
-
-        
 
 This process applies during the project phase. Examples of application include: determining the need for supplier audit, determining the rigor and extent of testing, determining corrective actions from test failures, determining impact of proposed changes, and determining the frequency of periodic reviews.
 
-        
-
 #### Step 1 – Perform Initial Risk Assessment and Determine System Impact
-
-        
 
 An initial risk assessment should be performed based on business processes and business risk assessments, user requirements, regulatory requirements, and known functional areas. The results should include a decision on whether the system is GxP regulated (i.e., GxP assessment) and an overall assessment of system impact.
 
-        
-
 A system cannot have a higher impact than the business process it supports.
-
-        
 
 #### Step 2 – Identify Functions with Impact on Patient Safety, Product Quality, and Data Integrity
 
-        
-
 Functions that have an impact on patient safety, product quality, and data integrity should be identified by building on information gathered during Step 1, referring to relevant specifications, and considering project approach, system architecture, and categorization of system components.
-
-        
 
 Individual functions cannot have a higher impact than the system as a whole.
 
-        
-
 #### Step 3 – Perform Functional Risk Assessments and Identify Controls
-
-        
 
 Functions identified during Step 2 should be assessed by considering possible hazards, and how the potential harm arising from these hazards may be controlled. A more detailed assessment may analyze severity of harm, likelihood of occurrence, and probability of detection.
 
-        
-
 Criteria to consider include: criticality of the supported process, specific impact of the function within the process, and nature of the system (e.g., complexity and novelty).
-
-        
 
 Appropriate controls include, but are not limited to:
 
-        
-
-            
 - Modification of process design
 
-            
 - Modification of system design
 
-            
 - Application of external procedures
 
-            
 - Increasing the detail or formality of specifications
 
-            
 - Increasing the number and level of detail of design reviews
 
-            
 - Increasing the extent or rigor of verification activities
-
-        
-
-        
 
 #### Step 4 – Implement and Verify Appropriate Controls
 
-        
-
 The control measures identified in Step 3 should be implemented and verified to ensure that they have been successfully implemented. Controls should be traceable to the relevant identified risks. The effort, formality, and documentation of the verification activity should be commensurate with the level of risk.
-
-        
 
 #### Step 5 – Review Risks and Monitor Controls
 
-        
-
 During periodic review of systems, or at other defined points, an organization should review the risks and verify that controls are still effective. The organization should consider whether:
 
-        
-
-            
 - Previously unrecognized hazards are present
 
-            
 - Previously identified hazards are no longer applicable
 
-            
 - The estimated risk associated with a hazard is no longer acceptable
 
-            
 - The original assessment is otherwise invalidated (e.g., following changes to applicable regulations or change of system use)
-
-        
-
-        
 
 The frequency and extent of any periodic review should be based on the level of risk and should consider previous findings and operational history.
 
-    
-
-    
-
-        
-
 ## 5.3 QRM —
-
-        
-
-            
 
 #### ICH Q9
 
-            
-
-            
-
-        
-
-        
-
-            
-
 #### vs.
-
-            
-
-            
-
-        
-
-        
-
-            
-
-#### CDMO
-
-            
-                
-| GAMP 5 | CDMO |
-| --- | --- |
-                
-| Step 1: RA & GxP | GxP |
-                
-| Step 2: | FIA |
-                
-| Step 3: RA & | RA FMEA/Risk Matrix |
-                
-| Step 4: | IQ/OQ/PQ SOP |
-                
-| Step 5: | Periodic Review |
-            
-
-        
-
-        
-
-            
 
 #### Step 1
 
-            
-
-            
-
-        
-
-        
-
-            
-
 #### Step 5
 
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-    
-
-## Chapter 6: Regulated Company Activities (Doc p55–p68)
-
-    
-
-        
+## **Chapter 6: Regulated Company Activities (Doc p55–p68) Chapter 6Doc p55–p68**
 
 ## 6.1 Governance for Achieving Compliance
 
-        
-
 Responsibility for the compliance of computerized systems lies with the regulated company. This involves activities at both the organizational level and at the level of individual systems.
-
-        
 
 Achieving robust, cost-effective compliance requires strong governance. Key elements of successful governance include:
 
-        
-
-            
 - Establishing computerized systems compliance policies and procedures
 
-            
 - Identifying clear roles and responsibilities
 
-            
 - Training
 
-            
 - Managing supplier relationships
 
-            
 - Maintaining a system inventory
 
-            
 - Planning for validation
 
-            
 - Continual improvement activities
 
-            
 - Data governance
-
-        
-
-        
 
 Effective governance is achieved by integrating these activities into the management of the organization.
 
-        
-
 ### 6.1.1 Computerized Systems Policies and Procedures
-
-        
 
 Regulated companies should have a defined policy for ensuring that computerized systems are compliant and fit for intended use. The policy should typically include a commitment to:
 
-        
-
-            
 - Identify and comply with all applicable GxP requirements
 
-            
 - Integrate life cycle activities into the regulated company's QMS
 
-            
 - Identify and assess each system
 
-            
 - Ensure GxP regulated systems are compliant and fit for intended use according to established SOPs
 
-            
 - Follow a validation framework, including the use of validation plans and validation reports as necessary
 
-            
 - Maintain compliance throughout the life of a system
-
-        
-
-        
 
 Further details should be documented in SOPs, which may be supplemented by guidance and templates, typically addressing: system inventory, impact assessment, roles/responsibilities, life cycle approach, planning/risk management/specification/verification activities, system operation and management, record and data management, and security management.
 
-        
-
 ### 6.1.2 Identifying Clear Roles and Responsibilities
-
-        
 
 Roles and responsibilities for activities should be documented, allocated, and communicated. Key responsibilities include:
 
-        
-
-            
 - Defining, approving, and maintaining policies and SOPs
 
-            
 - Compiling and prioritizing the system inventory
 
-            
 - Producing plans and reports
 
-            
 - Managing compliance and validation activities
 
-            
 - Maintaining compliance during operation
-
-        
-
-        
 
 ### 6.1.3 Training
 
-        
-
 Training ensures that persons who develop, validate, maintain, support, or use computerized systems have the education, training, and experience to perform their assigned tasks. A risk-based approach should be used to determine the rigor of training required.
-
-        
 
 For computerized systems, the regulated company should:
 
-        
-
-            
 - Establish the necessary training needs, including users, suppliers, data centers, IT departments, engineering, maintenance
 
-            
 - Provide training to satisfy these needs
 
-            
 - Evaluate the effectiveness of the training
 
-            
 - Ensure that staff are aware of the relevance and importance of their activities (e.g., GxP)
 
-            
 - Ensure that supplier staff are adequately trained, e.g., as part of supplier assessment
 
-            
 - Maintain appropriate training records
 
-            
 - Ensure training is maintained up-to-date, e.g., following system changes
-
-        
-
-        
 
 ### 6.1.4 Managing Supplier Relationships
 
-        
-
 Responsibility for activities may be with the suppliers, but in all cases regulatory accountability lies with the regulated company. The regulated company must have defined roles and responsibilities for acceptance and release of GxP computerized systems.
-
-        
 
 Even though regulated companies cannot delegate their regulatory accountabilities to a supplier, they may leverage the knowledge, experience, activities, and artifacts of an IT/IS service provider through risk-based assessment, management, and governance processes.
 
-        
-
 The regulated company should verify, prior to contract placement, that the supplier has adequate expertise and resources to support user requirements and expectations. The most common mechanism is the supplier assessment, which may include an audit depending on risk, complexity, and novelty.
-
-        
 
 ### 6.1.5 Maintaining the System Inventory
 
-        
-
 Regulated companies should maintain an inventory of computerized systems, showing those that are GxP regulated. The inventory should provide summary information such as the validation status, ownership, impact, current system version, and supplier. Automated equipment may be listed separately and duplication should be avoided.
-
-        
 
 The inventory should be at the level of systems that support business processes, rather than individual items of hardware. The system inventory may be used for planning periodic reviews.
 
-        
-
 ### 6.1.6 Planning for Validation
-
-        
 
 Computerized system validation within a business unit is typically performed using a hierarchical framework of plans covering GxP regulated computerized systems. Computerized system validation plans describe how to ensure compliance and fitness for intended use of specific systems, and specify scope, approach, resources, roles and responsibilities, and the types and extent of activities, tasks, and deliverables.
 
-        
-
 ### 6.1.7 Continual Improvement Activities
-
-        
 
 Understanding the effectiveness of current processes is best gained by considering current levels of conformance (e.g., established by audit and trending performance), by reviewing current processes against recognized good practices, and applying critical thinking.
 
-        
-
 Metrics may be gathered throughout the system life cycle, including:
 
-        
-
-            
 - Design and development metrics (e.g., from design and code reviews)
 
-            
 - Testing metrics (e.g., from analysis of test failures and resulting actions)
 
-            
 - Operation and maintenance metrics (e.g., from incident management, change management, backup and restore)
 
-        
-
-        
-
 ### 6.1.8 Data Governance
-
-        
 
             "The arrangements to ensure that data, irrespective of the format in which they are generated, are recorded, processed, retained and used to ensure the record throughout the data lifecycle."
         
 
-        
-
 Data governance encompasses the people, processes, and technology required to achieve consistent, accurate, and effective data handling. It provides the structure within which appropriate decisions regarding data-related matters may be made according to agreed models, principles, processes, and defined authority.
-
-    
-
-    
-
-        
 
 ## 6.1 —
 
-        
-
-            
-
 #### Governance CSV
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### CDMO CSV
 
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
-
 #### 6.1.3
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### 6.1.4
 
-            
-
-            
-
-        
-
-        
-
-            
-
 #### 6.1.5 CSV
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### 6.1.8
 
-            
-
-            
-
-        
-
-    
-
-    
-
-        
-
 ## 6.2 System-Specific Activities
-
-        
 
 Table 6.1 shows the typical regulated company activities required for a configurable computerized system. *Note: This table is indicative only. Activities required for a specific system should be determined based on risk, complexity, and novelty, by applying critical thinking.*
 
-        
-
 ### Table 6.1: Typical Activities for a Configurable Computerized System
-
-        
-            
-                
-                
-                
-            
-| Step | Task | Description |
-| --- | --- | --- |
-            
-                
-                
-                
-            
-| 1 | Identify Compliance Standards | Compliance activities should be performed in accordance with applicable company policies and procedures. |
-            
-                
-                
-                
-            
-| 2 | Identify System | The system should be added to an inventory of systems in accordance with documented procedures. |
-            
-                
-                
-                
-            
-| 3 | Identify Key Individuals | These include Process Owner, System Owner, Quality Unit, SME, Supplier, End User. |
-            
-                
-                
-                
-            
-| 4 | Produce Requirements Specification (RS) | The RS should define clearly and precisely what the regulated company wants the system to do, state any constraints, and define regulatory and documentation requirements. |
-            
-                
-                
-                
-            
-| 5 | Determine Strategy (Risk Assessment, System Assessment, Supplier Assessment) | Initial risk assessment during planning; system components assessed for architecture/complexity/novelty; supplier quality capability formally assessed. |
-            
-                
-                
-                
-            
-| 6 | Plan | Activities, deliverables, procedures, and responsibilities defined in a plan. |
-            
-                
-                
-                
-            
-| 7 | Review and Approve Specifications | Regulated company reviews and approves specifications as appropriate. Design reviews may be used. |
-            
-                
-                
-                
-            
-| 8 | Develop Test Strategy | Determine what testing is required after considering existing documentation available. Depth and rigor consider intended use, impact, and risk. |
-            
-                
-                
-                
-            
-| 9 | Test | Ensure testing defined in the test strategy is completed and ensure review of test results. |
-            
-                
-                
-                
-            
-| 10 | Report and Release | Report provides evidence all planned deliverables and activities are complete and system is fit for intended use. Formal process for release to operational use. |
-            
-                
-                
-                
-            
-| 11 | Maintain System Compliance During Operation | Establish adequate system management and operational procedures. |
-            
-                
-                
-                
-            
-| 12 | System Retirement | Manage the withdrawal of the computerized system from use, including migration of data to a new system, if applicable. |
-        
-
-    
-
-    
-
-        
 
 ## 6.2 —
 
-        
-
-            
-
 #### Table 6.1GAMP 5
-
-            
-
-            
-
-        
-
-        
-
-            
-
-#### 12 CDMO
-
-            
-                
-| | CDMO |
-| --- | --- |
-                
-| 1 | VMP SOP for CSV |
-                
-| 2 | |
-                
-| 3 | RACI |
-                
-| 4 | URS |
-                
-| 5 | System Assessment + Supplier Assessment |
-                
-| 6 | Validation PlanVP |
-                
-| 7 | FS/CS/DS |
-                
-| 8 | Test Strategy / Test Plan |
-                
-| 9 | IQ / OQ / PQ |
-                
-| 10 & | Validation Summary Report |
-                
-| 11 | CC / PR / IM / CAPA SOP |
-                
-| 12 | Retirement Plan + |
-            
-
-        
-
-    
-
-    
-
-        
 
 ## 6.2.3 Key Roles and Responsibilities
 
-        
-
 #### 6.2.3.1 Process Owner
-
-        
 
 The process owner is ultimately responsible for ensuring that the computerized system and its operation are in compliance and fit for intended use in accordance with applicable SOPs. Process owners are typically the head of the functional unit using the system. Specific activities include:
 
-        
-
-            
 - Approving key documentation as defined by plans and SOPs
 
-            
 - Providing adequate resources (personnel and financial) to support development and operation
 
-            
 - Ensuring adequate training for end users
 
-            
 - Ensuring that SOPs required for the operation of the system exist, are followed, and are reviewed periodically
 
-            
 - Ensuring changes are approved and managed
 
-            
 - Reviewing assessment/audit reports and taking appropriate actions to ensure GxP compliance
 
-            
 - Coordinating input from other groups (e.g., finance, information security, HSE, legal)
-
-        
-
-        
 
 #### 6.2.3.2 System Owner
 
-        
-
 The system owner is responsible for the availability, support, maintenance, and security of a system. For systems supporting regulated processes, the ownership of the data resides with the GxP process owner, not the system owner. The system owner acts on behalf of the users. Specific activities include:
 
-        
-
-            
 - Approving key documentation as defined by plans and SOPs
 
-            
 - Ensuring SOPs for maintenance exist, are followed, and reviewed periodically
 
-            
 - Ensuring adequate training for maintenance and support staff
 
-            
 - Ensuring changes are managed
 
-            
 - Ensuring availability of information for the system inventory and configuration management
 
-            
 - Managing the system life cycle, including upgrade and replacement planning
 
-            
 - Ensuring that data integrity risks are identified and controlled
-
-        
-
-        
 
 #### 6.2.3.3–6.2.3.5 Quality Unit (Corporate & Operational)
 
-        
-
 The quality unit provides an independent role in:
 
-        
-
-            
 - Approving or auditing key documentation (policies, procedures, acceptance criteria, plans, reports)
 
-            
 - Focusing on quality critical aspects
 
-            
 - Approving changes that potentially affect patient safety, product quality, or data integrity
 
-            
 - Auditing processes to verify that compliance activities are effective
-
-        
-
-        
 
 **Corporate Quality** operates at the corporate level: setting policy, maintaining oversight of company standards, auditing for compliance, reviewing effectiveness of quality systems. Regulatory authorities require independence from business activities.
 
-        
-
 **Operational Quality** (division/business unit level): implementing quality standards, reviewing risk assessment and control activities, supporting project phase activities, supporting life cycle processes (change control, document management), managing quality of external service providers. Specific operational quality activities can be delegated to IT departments or engineering departments with their own quality management functions.
-
-        
 
 #### 6.2.3.6 Subject Matter Expert (SME)
 
-        
-
 SMEs have a key role in performing reviews and assessments, and taking technical decisions, based on science-based process and product understanding, and sound engineering principles. SMEs should take the lead role in the verification of the computerized system. Responsibilities include planning and defining verification strategies, defining acceptance criteria, selection of appropriate test methods, execution of verification tests, and reviewing results.
-
-        
 
 #### 6.2.3.7 Supplier
 
-        
-
 Suppliers (including internal suppliers such as IT or engineering) play an important support role. Specific activities include: provisioning existing documentation, preparing and reviewing documentation, acting as SME for technical aspects, performing and supporting testing, managing changes and configuration, and supporting processes for maintaining system compliance.
-
-        
 
 #### 6.2.3.8 End User
 
-        
-
 In addition to using the system in accordance with approved procedures, end users may be involved in: providing input to user requirements, evaluating prototypes, testing, acceptance and handover, developing SOPs for system use, reporting defects, and identifying opportunities for improvement.
-
-    
-
-    
-
-        
 
 ## 6.2.3 —
 
-        
-
-            
-
 #### vs.
-
-            
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### 
 
-            
-
-        
-
-        
-
-            
-
 #### Corporate Quality vs. Operational Quality
-
-            
-
-            
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### SME
 
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
-
 #### End User
-
-            
-
-        
-
-    
-
-    
-
-        
 
 ## 6.2.4–6.2.9: Core System Activities
 
-        
-
 ### 6.2.4 Requirements Specification (RS)
-
-        
 
 The RS describes what the system should do. The RS is the responsibility of the regulated company but may be written by a third party or supplier. It should be adequately reviewed by SMEs and approved by the process owner.
 
-        
-
 ### 6.2.5 Determine Strategy for Achieving Compliance
-
-        
 
 #### 6.2.5.1 Risk Assessment
 
-        
-
 An initial risk assessment should be performed during planning to determine whether the system is GxP regulated, the impact of the system, and the need for further risk assessments (described in Chapter 5).
-
-        
 
 #### 6.2.5.2 Assessment of System Components
 
-        
-
 The process of assessing system components applies the GAMP software categories and hardware categories as input to establishing the required activities, based on how the system is constructed or configured. This should take into account architecture, complexity, and novelty, including maturity and level of configuration or customization. Categorization should, however, be regarded as only part of the process of defining the required life cycle strategy based on critical thinking.
-
-        
 
 #### 6.2.5.3 Supplier Assessment and Education
 
-        
-
 The regulated company should formally assess each supplier to establish their quality capability. The assessment may find that a supplier has a well-established QMS or has attained recognized third-party certification such as ISO 9001. The strategy should take account of assessment conclusions.
-
-        
 
 If another regulated company has already assessed the supplier for the same reason, then subject to that company agreeing to share that information, an additional assessment may not be necessary. The justification for not assessing a specific supplier should be formally documented.
 
-        
-
 Regulated companies should be prepared to assist in the education and training of suppliers.
-
-        
 
 ### 6.2.6 Planning
 
-        
-
 Planning is an essential activity for any system development and should address all aspects, including activities that demonstrate compliance and fitness for intended use. Since the supplier may provide deliverables or directly support activities, planning provides the opportunity to decide how best to leverage supplier activities and documentation to avoid unnecessary duplication.
-
-        
 
 ### 6.2.7 System Specifications
 
-        
-
 Types of specifications may include functional specifications, configuration specifications, and design specifications. In Agile development, types and naming of deliverables may differ. The applicability depends on the specific system and should be defined during planning.
-
-        
 
 **Design Reviews** evaluate deliverables against standards and requirements, identify issues, and propose corrective actions. For GAMP Category 3, design reviews by the regulated company are not typically required. For Category 4, focus on configuration and customization. For Category 5, may be conducted at various levels of specification.
 
-        
-
 ### 6.2.8 Development and Review of Software for Custom Applications
-
-        
 
 Code reviews by the regulated company are not required for standard and configurable software products. Custom applications and custom software should be developed in accordance with defined standards. The need for and extent of reviews should be based on risk, complexity, and novelty.
 
-        
-
 ### 6.2.9 Test Strategy and Testing
-
-        
 
 The regulated company is responsible for ensuring that the test strategy will demonstrate compliance and fitness for intended use. The number and types of tests should be based on risk, complexity, and novelty. The role of the supplier, including use of existing supplier documentation, should be considered when developing the strategy.
 
-        
-
 The results of testing should be documented against defined acceptance criteria based on specifications. Test failures should be captured, reviewed, documented, and managed.
-
-    
-
-    
-
-        
 
 ## 6.2.4–6.2.9 —
 
-        
-
-            
-
 #### 6.2.4 URS
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### 6.2.5.2
 
-            
-
-            
-
-        
-
-        
-
-            
-
 #### 6.2.5.3
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### 6.2.7 Agile
 
-            
-
-        
-
-        
-
-            
-
 #### 6.2.9
-
-            
-
-            
-
-        
-
-    
-
-    
-
-        
 
 ## 6.2.10–6.2.12: Reporting, Operation, and Retirement
 
-        
-
 ### 6.2.10 Reporting and Release
-
-        
 
 At the conclusion of the project, a computerized system validation report should be produced summarizing:
 
-        
-
-            
 - The activities performed
 
-            
 - Any deviations from the plan
 
-            
 - Any outstanding and corrective actions
 
-            
 - A statement of fitness for intended use of the system
-
-        
-
-        
 
 In some cases, specific computerized system validation reports may not be required. Release of the system into the operating environment should be performed in accordance with a controlled and documented process.
 
-        
-
 ### 6.2.11 Maintaining System Compliance During Operation
-
-        
 
 The regulated company is responsible for maintaining system compliance during operation. This includes the operational processes described in Section 4.3 of GAMP 5, covering:
 
-        
-
-            
 - Change and configuration management
 
-            
 - Periodic review
 
-            
 - Incident management
 
-            
 - Business continuity and disaster recovery
 
-            
 - Security management
 
-            
 - Data backup and archiving
-
-        
-
-        
 
 ### 6.2.12 System Retirement
 
-        
-
 System retirement is the managed withdrawal of the computerized system from use. Key considerations include:
 
-        
-
-            
 - Migration of data to a new system, if applicable
 
-            
 - Archiving of data and documentation for the required retention period
 
-            
 - Ensuring continued accessibility to archived data
 
-            
 - Decommissioning activities documented and controlled
-
-        
-
-    
-
-    
-
-        
 
 ## 6.2.10–6.2.12 —
 
-        
-
-            
-
 #### 6.2.10 Fit for Intended Use
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### 6.2.11
 
-            
-
-            
-
-        
-
-        
-
-            
-
 #### 6.2.12
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-        
-
-    
-
-    
 
 ## Section Summary |
 
-    
-
-        
-
-            
-
 ### Key English Takeaways
 
-            
-
-                
 - **QRM is iterative and proportional** — not a one-time exercise, and effort must match risk level throughout the life cycle.
 
-                
 - **Process RA precedes system RA** — a system cannot have higher impact than the business process it supports.
 
-                
 - **Five QRM steps**: Initial RA → Identify critical functions → Functional RA & controls → Implement & verify → Review & monitor.
 
-                
 - **Governance is the foundation** — policy, roles, inventory, and validation planning must be in place before system-specific activities.
 
-                
 - **Regulatory accountability cannot be delegated** — supplier activities support compliance, but the regulated company remains responsible.
 
-                
 - **Table 6.1 is not prescriptive** — apply the 12 steps with critical thinking based on risk, complexity, and novelty of each system.
 
-                
 - **Supplier assessment reduces testing** — leveraging supplier QMS data and documentation is encouraged to avoid unnecessary duplication.
 
-                
 - **Data ownership ≠ system ownership** — data belongs to the Process Owner, not the System Owner (typically IT).
 
-            
-
-        
-
-        
-
-            
-
 ### 
-
-            
-
-                
-
-                
-
-                
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-    
 
 ↑
 
@@ -2683,49 +1595,6 @@ The required information may be satisfactorily covered by other contractual docu
 
             
 
-#### GAMP
-
-            
-                
-                    
-                    
-                    
-                    
-                
-| | | | CDMO |
-| --- | --- | --- | --- |
-                
-                    ****  
-
-                    
-                    
-                    
-                
-| Cat 3 | | | (IQ) + (OQ) |
-                
-                    ****  
-
-                    
-                    
-                    
-                
-| Cat 4 | | | + URS |
-                
-                    ****  
-
-                    
-                    
-                    
-                
-| Cat 5 | | | V-model |
-            
-
-        
-
-        
-
-            
-
 #### CDMO
 
             
@@ -2769,88 +1638,6 @@ The required information may be satisfactorily covered by other contractual docu
 Table 7.1 lists good practice activities that apply to product and application development, support, and service provision.
 
         
-            
-                
-                
-                
-            
-| Step | Practice | Description |
-| --- | --- | --- |
-            
-                
-                
-                
-            
-| 1 | Establish QMS | Provide documented procedures and standards; ensure competent trained staff; provide evidence of conformance; enable continual improvement. |
-            
-                
-                
-                
-            
-| 2 | Establish Requirements | Ensure clear requirements are defined or provided by the regulated company. |
-            
-                
-                
-                
-            
-| 3 | Quality Planning | Define how the QMS will be implemented for a particular product, application, or service. |
-            
-                
-                
-                
-            
-| 4 | Assessments of Sub-Suppliers | Formally assess sub-suppliers as part of selection and quality planning. |
-            
-                
-                
-                
-            
-| 5 | Produce Specifications | Specify the system to meet the defined requirements. |
-            
-                
-                
-                
-            
-| 6 | Perform Design Review | Formally review design against requirements, standards, and identified risks. |
-            
-                
-                
-                
-            
-| 7 | Software Production / Configuration | Develop software per defined standards including code review. Document configuration per guidelines. |
-            
-                
-                
-                
-            
-| 8 | Perform Testing | Test the system per approved test plans and test specifications. |
-            
-                
-                
-                
-            
-| 9 | Commercial Release | Formal release process with criteria, responsibilities, records, and release notes. |
-            
-                
-                
-                
-            
-| 10 | User Documentation and Training | Provide system management documentation, operational documentation, and training per agreed contracts. |
-            
-                
-                
-                
-            
-| 11 | System Support During Operation | Support and maintain per agreed contracts; document change management process. |
-            
-                
-                
-                
-            
-| 12 | System Replacement and Retirement | Manage replacement or withdrawal per documented process; support regulated company retirement activities. |
-        
-
-    
 
     
 
@@ -3061,36 +1848,6 @@ The use of appropriate and effective software tools should be considered by supp
 
 #### 
 
-            
-
-        
-
-        
-
-            
-
-#### 
-
-            
-                
-                    
-                    
-                
-| --- | --- |
-                
-                    
-                    
-                
-| | 3 |
-                
-                    
-                    
-                
-                
-                    
-                    
-                
-| | ERR-001 |
             
 
         
@@ -3480,53 +2237,6 @@ The supplier should manage the replacement or withdrawal of products or service 
 
             
 
-#### 
-
-            
-
-            
-                
-                    
-                    
-                    
-                
-| --- | --- | --- |
-                
-                    
-                    
-                    
-                
-                
-                    
-                    
-                    
-                
-                
-                    
-                    
-                    
-                
-| (FAT) | | OQ |
-                
-                    
-                    
-                    
-                
-| (SAT) | | URS |
-                
-                    
-                    
-                    
-                
-| (PQ) | | |
-            
-
-        
-
-        
-
-            
-
 #### Release Notes
 
             
@@ -3556,6 +2266,16 @@ The supplier should manage the replacement or withdrawal of products or service 
         
 
     
+
+            
+
+#### 
+
+            
+
+            
+
+        
 
 ## Chapter 8 — Efficiency Improvements | 8
 
@@ -3687,50 +2407,6 @@ Requirements should be analyzed to ensure that they are fully defined and are ve
 The level of detail is dependent on the novelty and complexity of the processes and system being implemented. Table 8.1 lists aspects to consider when developing verifiable and objective requirements.
 
         
-            
-                
-                
-            
-| Aspect | Purpose |
-| --- | --- |
-            
-                
-                
-            
-| Process Knowledge | To identify key requirements related to the business or manufacturing process |
-            
-                
-                
-            
-| Business Knowledge | To ensure requirements are challenged against business need and benefits can be realized |
-            
-                
-                
-            
-| Ownership | To ensure clarity and understanding of the stated requirements |
-            
-                
-                
-            
-| Analytical | To ensure requirements are challenged to confirm they are complete and accurate |
-            
-                
-                
-            
-| Technical/Product | To ensure requirements are practical in terms of available technology |
-            
-                
-                
-            
-| Process/Product Impact | To ensure requirements impacting the process or product are clearly identified (including CQA or CPP) |
-            
-                
-                
-            
-| Technical Authorship | To ensure requirements are written in concise, correct, and unambiguous language |
-        
-
-    
 
     
 
@@ -3985,59 +2661,6 @@ Suppliers also may have tools or techniques unique to the specification and test
 
                 
 
-            
-
-        
-
-        
-
-            
-
-#### 
-
-            
-                
-                    
-                    
-                    
-                
-| --- | --- | --- |
-                
-                    
-                    
-                    
-                
-| FAT | IQ/OQ | URS |
-                
-                    
-                    
-                    
-                
-| / | Cat 5 Cat 3 | |
-                
-                    
-                    
-                    
-                
-| DQ | DQ | |
-                
-                    
-                    
-                    
-                
-| IQ | | |
-                
-                    
-                    
-                    
-                
-| OQ | ~ | URS |
-                
-                    
-                    
-                    
-                
-| PQ | | PQ |
             
 
         
@@ -4769,55 +3392,6 @@ The use of appropriate tools and automation to support IT process and infrastruc
 
             
 
-#### CSV
-
-            
-
-            
-                
-                    
-                    
-                    
-                
-| --- | --- | --- |
-                
-                    
-                    
-                    
-                
-| | DOORS, Polarion, Jira | |
-                
-                    
-                    
-                    
-                
-| | ALM/QC, TestRail, Zephyr | |
-                
-                    
-                    
-                    
-                
-| | Selenium, UFT, Robot Framework | |
-                
-                    
-                    
-                    
-                
-| | Veeva Vault, DocuSign | |
-                
-                    
-                    
-                    
-                
-| | SonarQube, GitLab CI | |
-            
-
-        
-
-        
-
-            
-
 #### 
 
             
@@ -4825,6 +3399,16 @@ The use of appropriate tools and automation to support IT process and infrastruc
         
 
     
+
+            
+
+#### CSV
+
+            
+
+            
+
+        
 
     
 
@@ -4867,4118 +3451,1216 @@ The use of appropriate tools and automation to support IT process and infrastruc
 
 # Appendices M1 & M2: Validation Planning & Supplier Assessment
 
-    
-
-    
-
 ISPE GAMP 5 Second Edition | p85 – p106
 
-    
-
-## Appendix M1 — Validation Planning: Introduction & Scope
-
-    
-
-        
+## **Appendix M1 — Validation Planning: Introduction & Scope Appendix M1 — **
 
 ## 9.1 Introduction
 
-        
-
 Appendix M1 covers the production of individual validation plans for systems or projects (computerized systems validation plans), and also gives information on validation policies and Validation Master Plans (VMPs) for background and context.
-
-        
 
 Computerized system validation plans describe how the validation is to be performed for specific systems. Validation policies define management intent and commitment. VMPs describe the areas of the company where validation is required and provide an overview of validation planning for those areas.
 
-        
-
 It is a regulatory expectation that validation activities are planned — see for example EU Annex 11, Section 4.
-
-        
 
 #### Changes from GAMP 5 First Edition
 
-        
-
-            
 - Take into account the validation of SaaS solutions
 
-            
 - Take into account the validation of systems developed in an incremental or iterative manner (Agile)
 
-            
 - De-emphasize VMP, with the main focus remaining on computerized system validation planning
-
-        
-
-        
 
 ## 9.2 Scope
 
-        
-
 This guidance may be applied to all GxP regulated computerized systems — both new and existing systems, and sites and organizations in which these systems are used.
-
-        
 
 Where a computer system is regarded as one component of a wider manufacturing process or system — particularly in an integrated QbD environment — specific and separate computerized system validation may not be necessary, and separate computerized system validation plans would not be required. This environment requires both complete product and process understanding and that the CPPs can be accurately and reliably predicted and controlled over the design space.
 
-        
-
 For automated manufacturing equipment, separate computer system validation should be avoided. Computer system specification and verification should be part of an integrated engineering approach to ensure compliance and fitness for intended use of the complete automated equipment.
-
-    
-
-    
-
-        
 
 ## 
 
-        
-
-            
-
 #### 
 
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-        
-
-        
-
-            
-
 #### 
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### GAMP 5
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### CSV
 
-            
-
-            
-
-        
-
-    
-
-## 9.3 Computerized System Validation Plans — Content Requirements
-
-    
-
-        
+## **9.3 Computerized System Validation Plans — Content Requirements 9.3 — **
 
 ### 9.3.1 General Guidelines
 
-        
-
 A computerized system validation plan should be produced for each GxP regulated computerized system focusing on aspects related to patient safety, product quality, and data integrity. It should summarize the system and/or project, identify measures for success, and clearly define criteria for final acceptance and release of the system.
-
-        
 
 The plan should define:
 
-        
-
-            
 - What activities are required
 
-            
 - How they will be performed and who is responsible
 
-            
 - What the output will be
 
-            
 - What the requirements are for acceptance
 
-            
 - How compliance will be maintained for the lifetime of the system
-
-        
-
-        
 
 The level of detail in the plan should reflect the risk, complexity, and novelty of the system. For simple or low-risk systems a separate plan may not be needed — applicable aspects of planning may be covered within another document or process.
 
-        
-
 Planning should commence as early as possible, ideally no later than during the development of the initial user requirements.
-
-        
 
 The plan, along with the associated report, may be one of the first documents offered during an inspection or audit to demonstrate regulatory compliance. It should therefore be written at a level suitable to be understood by a wide readership. Jargon and technical detail should be avoided.
 
-        
-
 ### 9.3.2 Roles and Responsibilities
-
-        
 
 Responsibility for computerized system validation planning ultimately rests with the **process owner**. This may be delegated to a project manager and also may involve the system owner.
 
-        
-
 Typically, the computerized system validation plan is approved by the process owner and quality unit.
-
-        
 
 Even though regulated companies cannot delegate their regulatory accountabilities to a supplier or service provider, they may leverage the knowledge, experience, and activities of the supplier or service provider through risk-based assessment, management, and governance processes.
 
-        
-
 In the case of SaaS, the plan should describe how the regulated company will leverage product specification and verification activities performed by the supplier as part of product development and performed under the supplier's QMS. The plan should describe the configuration specification and verification activities and user acceptance activities required to ensure fitness for intended use.
 
-    
-
-    
-
-        
-
 ### 
-
-        
-
-            
 
 #### =
 
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
-
 #### 
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### SaaS
 
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
-
 #### CDMO
 
-            
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-    
-
-## 9.3.3 Contents of the Computerized System Validation Plan
-
-    
-
-        
+## **9.3.3 Contents of the Computerized System Validation Plan 9.3.3 **
 
 ### Required Content Sections
 
-        
-
 #### 9.3.3.1 Introduction and Scope
 
-        
-
-            
 - The scope of the system
 
-            
 - The objectives of the validation process
 
-            
 - Applicable main regulations
 
-            
 - Review, maintenance, or update process for the plan itself
-
-        
-
-        
 
 #### 9.3.3.2 System Overview
 
-        
-
-            
 - Business purpose and intended use for the system
 
-            
 - A description of the system and its data at a high level
 
-            
 - System scope and boundaries, and overview of the system architecture
-
-        
-
-        
 
 Diagrams are encouraged. If the system is being developed using an incremental and iterative approach (Agile), information relevant to the initial release should be provided.
 
-        
-
 #### 9.3.3.3 Organizational Structure
-
-        
 
 Roles and responsibilities should be described. Regulated company roles typically include:
 
-        
-
-            
 - **Project manager** — project management, planning, control of resources and costs, monitoring progress, reporting to senior management, liaising with the quality unit
 
-            
 - **Quality unit** — ensuring compliance, reviewing and approving deliverables, approving the release of the system
 
-            
 - **Process owner / system owner** — implementing and managing the system
 
-            
 - **SMEs** — planning and defining verification strategies, performing reviews, defining acceptance criteria, selecting test methods, executing tests, reviewing results
-
-        
-
-        
 
 The number of personnel required to approve specific documents should be kept to a minimum.
 
-        
-
 #### 9.3.3.4 Quality Risk Management
-
-        
 
 An initial risk assessment should be performed based on an understanding of business processes, initial user requirements, regulatory requirements, and known functional areas. The results should include a GxP assessment decision and an overall assessment of system impact.
 
-        
-
 Large enterprise systems (e.g., ERP) may have some functionality declared GxP relevant while other functionality is outside the GxP scope. The method by which this decision is made should be described.
-
-        
 
 #### 9.3.3.5 Validation Strategy
 
-        
-
 The strategy should be based on:
 
-        
-
-            
 - Risk assessment
 
-            
 - Assessment of system components and architecture
 
-            
 - Supplier assessment
-
-        
-
-        
 
 The validation strategy should describe the life cycle model; specification and verification approach (linear, iterative, incremental, or Agile); inputs and outputs required for each stage; acceptance criteria; approach to traceability; approach to design review; and approach to leveraging supplier activities.
 
-        
-
 #### 9.3.3.6 Deliverables
-
-        
 
 The deliverable items to be produced should be listed, including responsibility for production, review, and approval. Note that deliverables may include records within tools and supporting systems and are not constrained to traditional documentation.
 
-        
-
 #### 9.3.3.7 Acceptance Criteria
-
-        
 
 The overall acceptance criteria for the system should be described. The approach to handling significant deviations should be defined. For Agile development, acceptance criteria are typically defined in the Minimum Viable Product (MVP) and Definition of Done (DoD).
 
-        
-
 #### 9.3.3.8 Change Control
-
-        
 
 Requirements for project change control should be defined, including reference to relevant procedures and/or tools. The stage at which operational change control will be applied should be defined.
 
-        
-
 #### 9.3.3.9 Standard Operating Procedures
-
-        
 
 The SOPs to be created or updated as a result of the implementation of the system should be defined, with responsibility for their production, review, and approval.
 
-        
-
 #### 9.3.3.10 Supporting and Operational Processes
 
-        
-
-            
 - Training (including project team and user training)
 
-            
 - Documentation, record, and knowledge management
 
-            
 - Configuration management
 
-            
 - Maintaining compliance and fitness for intended use
 
-            
 - Operational processes
-
-        
-
-        
 
 #### 9.3.3.11 Glossary
 
-        
-
 Definitions of any terms and abbreviations that may be unfamiliar to the readership should be included.
-
-    
-
-    
-
-        
 
 ### 
 
-        
-
-            
-
-#### 
-
-            
-                
-                    
-| --- | --- | --- |
-                
-                
-                    
-| | / | |
-                    
-                    
-| | | IT Process Owner |
-                    
-| QRM | GxP | |
-                    
-                    
-| | / | |
-                    
-                
-            
-
-        
-
-        
-
-            
-
 #### CDMO
-
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### ERP GxP
 
-            
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-            
-
-        
-
-        
-
-            
-
 #### CDMO
 
-            
-
-                
-
-                
-
-                
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-    
-
-## 9.4–9.5 Validation Policies & Validation Master Plans
-
-    
-
-        
+## **9.4–9.5 Validation Policies & Validation Master Plans 9.4–9.5 **
 
 ### 9.4 Validation Policies
 
-        
-
 Regulated companies should have corporate or site-level policy documents that define their overall approach to computerized system quality and compliance. Such documents should define, or make reference to, the following:
 
-        
-
-            
 - Roles and responsibilities for activities and support
 
-            
 - High-level expectations for deliverables
 
-            
 - Standards, templates, and procedures expected to be followed throughout the organization
 
-            
 - Definition of high-level processes, including the process to determine whether a system is GxP regulated
 
-            
 - Requirements for record and knowledge management
-
-        
-
-        
 
 These policies should be readily available to all those with responsibilities for verification and validation activities, and should be referred to by relevant planning documents.
 
-        
-
 ### 9.5 Validation Master Plans
-
-        
 
 #### 9.5.1 General Guidelines
 
-        
-
 A VMP may be used to define the overview plan for a given period of time, large project, or program of work under which there may be several individual validation plans. Computerized system validation is often a subset or part of a VMP covering all of an organization's validation activities.
-
-        
 
 The VMP should be a clear and concise summary document, typically covering:
 
-        
-
-            
 - Summary of facilities, systems, equipment, or processes in scope, and their respective validation status
 
-            
 - Current status of these facilities, systems, equipment, or processes
 
-            
 - Change-control process to be followed
 
-            
 - Planning and scheduling (including activities for new systems, activities driven by change, and periodic review)
-
-        
-
-        
 
 The VMP requires approval by management, and is often subject to regulatory inspection.
 
-        
-
-#### VMP Planning Hierarchy (Figure 9.1)
-
-        
+#### VMP Planning Hierarchy (Figure 9.1🔍)
 
 Companies may structure VMPs hierarchically. Within a site, there may be:
 
-        
-
-            
 - **VMP Level 1**: Single VMP for the entire site
 
-            
 - **VMP Level 2**: Separate plans for individual areas on the site
 
-            
 - **System-level plans**: Detailed plans for specific systems within a given area
-
-        
-
-        
 
 Companies may merge VMP Level 1 and Level 2 into a single plan, or operate with a collection of Level 2 VMPs and not collate them into higher-level plans.
 
-        
-
 #### 9.5.2 Roles and Responsibilities for VMPs
-
-        
 
 Responsibility for creating VMPs rests with senior management. Regardless of who prepares a VMP, senior-management support is essential to ensure adequate resources for the required activities. Facility or area management should approve VMPs. The quality unit should approve the policies and procedures for validation.
 
-        
-
 #### 9.5.3 Contents of the VMP
-
-        
 
 The VMP should be a summary document that is brief, concise, and clear. It should cover:
 
-        
-
-            
 - Scope
 
-            
 - Reference to relevant policies
 
-            
 - Organizational structure
 
-            
 - Summary of facilities, systems, equipment, and processes
 
-            
 - Record types, content, availability, and retention
 
-            
 - Planning and scheduling
 
-            
 - Change control
 
-            
 - Reference to existing documents
-
-        
-
-    
-
-    
-
-        
 
 ### VMP vs
 
-        
-
-            
-
 #### VMP
 
-            
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-        
-
-        
-
-            
-
 #### VMP
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### GAMP 5 VMP
 
-            
-
-            
-
-            
-
-        
-
-        
-
-            
-
 #### CDMO VMP
 
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-    
-
-## Appendix M2 — Supplier Assessment: Introduction & Rationale
-
-    
-
-        
+## **Appendix M2 — Supplier Assessment: Introduction & Rationale Appendix M2 — **
 
 ## 10.1 Introduction
 
-        
-
 Appendix M2 provides a risk-based approach to performing supplier assessments. Regulated companies should consider formally assessing each supplier of GxP regulated computerized systems and services. The assessment approach should be based upon the application of critical thinking to understand the risk to patient safety, product quality, and data integrity.
-
-        
 
 Topics covered in M2:
 
-        
-
-            
 - The reasons for carrying out supplier assessments
 
-            
 - The different types of assessment
 
-            
 - The assessment process
 
-            
 - Postal/email audits and on-site/virtual online audits
 
-            
 - Joint and shared audits
 
-            
 - Corporate audits
 
-            
 - Supplier preparation for an audit
 
-            
 - Supplier certification
 
-            
 - International standards and certification
-
-        
-
-        
 
 The term *audit* in this appendix covers both a physical or virtual online visit to the supplier and a formal assessment using a questionnaire (known as a postal or email audit).
 
-        
-
 M2 covers assessments of both prospective and existing suppliers of computerized services and systems, including cloud (XaaS) service providers. It may also be used to assess external service providers (validation, project management, engineering support, maintenance) and internal functions such as IT and engineering.
-
-        
 
 ## 10.2 Reasons for Supplier Assessment
 
-        
-
 Regulated companies require a high level of confidence that computerized systems will meet their technical, commercial, and regulatory requirements. They also wish to leverage the knowledge, experience, and documentation of the supplier.
-
-        
 
 The computerized system supplier should build quality and integrity into a software product during development, as it cannot be added effectively (e.g., through testing and rework) later by the regulated company. The supplier is also better positioned to produce most of the required information during the development process.
 
-        
-
 Supplier assessments are also an opportunity to develop relationships with suppliers, to clarify expectations and intentions, and to identify misunderstandings and risks. The assessment report should provide a balanced view of what was found, including positive observations, along with a list of concerns.
-
-        
 
 Consideration should be given to adopting a **broader approach** that covers multiple products/services from a supplier to avoid multiple assessments — particularly important for larger, globally regulated companies.
 
-    
-
-    
-
-        
-
 ## 
 
-        
-
-            
-
 #### 
 
-            
-
-            
-
-        
-
-        
-
-            
-
 #### 
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### GAMP 5
 
-            
-
-                
-
-                
-
-                
-
-            
-
-        
-
-        
-
-            
-
 #### CDMO
 
-            
-
-            
-
-            
-
-        
-
-    
-
-## 10.3–10.4 Types of Assessment & The Assessment Process
-
-    
-
-        
+## **10.3–10.4 Types of Assessment & The Assessment Process 10.3–10.4 **
 
 ### 10.3 Types of Assessment
 
-        
-
 There are three main options for performing a supplier assessment:
 
-        
-
-            
 1. **Basic Assessment** — based on available information (for components considered as commodities, e.g., common desktop applications, a documented decision not to perform any assessment may be appropriate)
 
-            
 2. **Postal/Email Audit** — using a questionnaire; can also be performed via email
 
-            
 3. **On-Site Audit (or Virtual Online Audit)** — by relevant specialist, auditor, or audit team
-
-        
-
-        
 
 Typically, a basic assessment is sufficient for lower-impact systems, while higher-impact systems may require formal audits. Postal audits may be appropriate for suppliers of standard and configurable products and services.
 
-        
-
 Note: Virtual online audits should be considered as a subset of on-site audits and performed to the same level and detail as on-site audits.
-
-        
 
 ### 10.4 Assessment Process
 
-        
-
 The assessment process should be completed **before any contract is finalized** and the service commenced.
 
-        
+The main steps of the overall assessment process (Figure 10.1🔍):
 
-The main steps of the overall assessment process (Figure 10.1):
-
-        
-
-            
 1. A risk-based decision on the most appropriate assessment route
 
-            
 2. Perform a basic assessment if sufficient; otherwise, perform a postal/email audit or an on-site/virtual online audit
 
-            
 3. Document assessment or produce audit report
 
-            
 4. Determine and monitor corrective actions and document completion (could involve follow-up audit)
 
-            
 5. Accept or reject the supplier
-
-        
-
-        
 
 Once suppliers have been accepted, they may be subject to periodic re-evaluation at a frequency specified in SOPs. Regulated companies normally maintain a **supplier audit schedule** indicating which suppliers have been audited, when, and the reason.
 
-        
-
 #### 10.4.1 Need for Audit
-
-        
 
 A decision on the need for an audit should be taken based on the results of the initial risk assessment and system impact, considering novelty and complexity, and the categorization of components (see Appendix M4).
 
-        
-
 #### 10.4.2 Basic Assessment
-
-        
 
 A basic assessment may be based on:
 
-        
-
-            
 - A review of public domain information, including information regarding certification
 
-            
 - Market reputation
 
-            
 - Knowledge and experience of prior performance
 
-            
 - Discussions with other regulated companies
-
-        
-
-        
 
 The results of the assessment should be documented. For components that are considered as commodities, a documented decision not to perform any assessment may be appropriate.
 
-    
-
-    
-
-        
-
 ### 
 
-        
-
-            
-
 #### 
-
-            
-                
-                    
-| | GxP | |
-| --- | --- | --- |
-                
-                
-                    
-| LIMS | | On-site / Virtual Audit |
-                    
-| MES | | On-site / Virtual Audit |
-                    
-| SCADA/DCS | | On-site + Postal |
-                    
-| ERPGxP | - | Postal + On-site |
-                    
-| BMS | | Postal Audit |
-                    
-| (DMS) | | Postal Audit |
-                    
-| Office | / | Basic / |
-                    
-| SaaS LIMS/QMS | | SOC 2+ + Virtual Audit |
-                
-            
-
-        
-
-        
-
-            
-
-#### 
-
-            
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### Basic Assessment
 
-            
-
-            
-
-        
-
-        
-
-            
-
 #### 
 
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-    
-
-## 10.4.3 Postal/Email Audits
-
-    
-
-        
+## **10.4.3 Postal/Email Audits 10.4.3 / **
 
 ### Purpose and Applicability
 
-        
-
 There is a significant cost to both regulated companies and suppliers associated with conducting audits at the supplier's premises. A postal/email audit provides a mechanism for reducing these costs.
-
-        
 
 A postal/email audit may be used as:
 
-        
-
-            
 - A part of the tendering process to determine if a supplier merits further consideration (shortlisting)
 
-            
 - A preliminary audit to focus efforts in critical areas during a subsequent on-site audit
 
-            
 - A broad audit to determine whether the system/service is a mature, trustworthy product that does not require an on-site audit
 
-            
 - A follow-up audit for suppliers that have passed an on-site audit with outstanding corrective actions
 
-            
 - A means of periodically reassessing a supplier providing ongoing service
 
-            
 - A means of auditing other premises of the supplier where the same QMS is implemented
-
-        
-
-        
 
 ### Postal/Email Audit Questionnaire Content
 
-        
-
 Questionnaires typically include:
 
-        
-
-            
 - Company overview including product-specific locations
 
-            
 - Organization, roles and responsibilities, staff training and experience
 
-            
 - Key products and/or service history and development plans
 
-            
 - QMS implementation at company level and for product-related processes
 
-            
 - Product/project management
 
-            
 - Software development life cycle processes and deliverables
 
-            
 - Software development life cycle support processes
 
-            
 - Service delivery processes
 
-            
 - User training
 
-            
 - Product support/maintenance
 
-            
 - IT infrastructure management and control
 
-            
 - Security
 
-            
 - Use of subcontractors
-
-        
-
-        
 
 The assessment of software products will normally be version specific — the questionnaire should be drawn up accordingly.
 
-        
-
 #### Postal/Email Audit Evidence
-
-        
 
 The value of any postal/email audit will be limited or even irrelevant if there is no evidence supplied to support the completed questionnaire. The postal/email audit questionnaire should therefore request supporting evidence wherever possible, including real examples of the work performed.
 
-        
-
 If during review of the supplier's response problems or concerns are found, the postal/email audit process may be terminated and an on-site/virtual online audit scheduled and conducted.
-
-    
-
-    
-
-        
 
 ### Postal Audit
 
-        
-
-            
-
 #### Postal Audit
 
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-        
-
-        
-
-            
-
 #### Postal Audit
-
-            
-
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-        
-
-            
 
 #### 
-
-            
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### Postal Audit On-site
 
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-    
-
-## 10.4.4–10.4.8 On-Site/Virtual Online Audits
-
-    
-
-        
+## **10.4.4–10.4.8 On-Site/Virtual Online Audits 10.4.4–10.4.8 / **
 
 ### 10.4.4 Preparation and Organization
 
-        
-
 #### 10.4.4.2 Scope of the Audit
-
-        
 
 The audit scope is determined by the purpose of the audit and the supplier's main activities:
 
-        
-
-            
 - **Detailed audits**: Cover all aspects relating to the product or service under consideration. Also used to assess the supplier's capability to produce a quality product when custom services are being sought.
 
-            
 - **Follow-up audits**: Concentrate on specific areas of concern identified during previous audits, or the progress made on agreed corrective actions.
 
-            
 - **Surveillance audits**: Focus on areas of weakness found during previous audits, on new products and services; provide a vehicle for monitoring ongoing compliance.
-
-        
-
-        
 
 #### 10.4.4.3 Select Audit Team
 
-        
-
 On-site audits of complex systems may require a team of at least two: a lead auditor plus a system user and/or a technical specialist. A lead auditor should have formal auditing qualifications and experience in computerized system development and their use in a regulated environment.
-
-        
 
 #### 10.4.4.4 Supplier Notification
 
-        
-
 Audit details should be confirmed in writing: reason, objective, scope, location (on-site or virtual online), timing, and audit team details. A provisional agenda should also be provided.
-
-        
 
 ### 10.4.5 Performing the Audit
 
-        
-
 An on-site/virtual online audit has three parts:
 
-        
-
-            
 1. **Opening meeting**: Formal introductions; lead auditor summarizes purpose and scope; agenda confirmed.
 
-            
 2. **Review and inspection**: The audit team examines the supplier's practices and records using a "show me" (evidence-based) approach. Auditors interview designers and operatives as well as management. Issues of potential concern should be raised with the supplier when found.
 
-            
 3. **Closing meeting**: Lead auditor lists observations (both positive and areas of concern); supplier representatives respond; next steps explained.
-
-        
-
-        
 
 ### 10.4.6 Audit Report
 
-        
-
 The audit report is a quality record that:
 
-        
-
-            
 - Provides a formal record of the audit and its findings
 
-            
 - Acts as a major input when determining corrective action
 
-            
 - Provides objective evidence to support the selection or continued use of a supplier
-
-        
-
-        
 
 The audit report normally contains: Introduction; Scope; Organization and agenda; Detailed findings; Record of closing meeting; Conclusions.
 
-        
-
 ### 10.4.7 Supplier Acceptance and Rejection
-
-        
 
 Based on the audit outcome, the regulated company may decide:
 
-        
-
-            
 - To use the supplier unconditionally
 
-            
 - To use the supplier for certain products or versions only
 
-            
 - To use the supplier subject to specific corrective actions being addressed
 
-            
 - To provide additional regulated company supervision and/or conduct additional testing to overcome shortfalls
 
-            
 - To agree with the supplier on the application of a documented QMS for the purposes of the contract
 
-            
 - To prohibit the use of the supplier
-
-        
-
-        
 
 ### 10.4.8 Corrective Actions and Follow-up Audits
 
-        
-
 If corrective actions are required, the regulated company should follow up and obtain documentary evidence of successful completion. Evidence could include copies of new procedures, testing records, design review, and code review documents. A letter of confirmation from the supplier is not normally sufficient.
-
-        
 
 ### 10.4.9 Re-Evaluation
 
-        
-
 Once accepted, suppliers should be subject to periodic re-evaluation. The decision on whether to reaudit can be influenced by:
 
-        
-
-            
 - The criticality of the product/service provided
 
-            
 - Change of supplier ownership (acquisitions/mergers)
 
-            
 - Changes in the supplier management structure
 
-            
 - Changes to the QMS
 
-            
 - Change of license model (e.g., closed source to open-source or freeware)
 
-            
 - Change of delivery model (e.g., on-premise to cloud)
 
-        
-
-    
-
-    
-
-        
-
 ### 
-
-        
-
-            
 
 #### "Show Me"
 
-            
-
-            
-
-            
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
+#### 
 
 #### 
 
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
+#### 
 
 #### 
 
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-        
-
-            
-
-#### 
-
-            
-
-            
-
-        
-
-        
-
-            
-
-#### 
-
-            
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-    
-
-## 10.5–10.10 Joint Audits, Shared Reports, Corporate Audits & Certification
-
-    
-
-        
+## **10.5–10.10 Joint Audits, Shared Reports, Corporate Audits & Certification 10.5–10.10 **
 
 ### 10.5 Joint Audits
 
-        
-
 Maintaining individual regulated company audit programs has several drawbacks: it is resource intensive, leading to duplicated activities; it places a heavy burden on supplier time and effort; multiple auditing standards may develop.
-
-        
 
 Joint audits involve representatives from more than one regulated company performing an audit together. Benefits:
 
-        
-
-            
 - Reduced time and effort for both regulated companies and suppliers
 
-            
 - Increased cooperation between regulated companies
 
-            
 - Progress toward common auditing standards
-
-        
-
-        
 
 Challenges to overcome: confidentiality and liability; makeup and size of the audit team; common and consistent auditor training; follow-up on corrective actions.
 
-        
-
 ### 10.6 Shared Audit Reports
-
-        
 
 Some regulated companies share their audit reports. If sharing, the following should be documented:
 
-        
-
-            
 - That the scope of the audit is valid for the recipient
 
-            
 - That the auditor's qualifications meet the requirements of the recipient
 
-            
 - That the audit process, including the use of any checklists, is acceptable to the recipient
-
-        
-
-        
 
 Agreements of all parties (including the supplier) should be obtained and documented. If a shared audit is used, the regulated company must ensure it covers the relevant aspects of the particular application scope.
 
-        
-
 ### 10.7 Corporate Audits
-
-        
 
 Regulated companies often have multiple departments conducting supplier audits: Business Quality Units; Regulatory Compliance; IT QA; Engineering/Project Management/Validation groups; Purchasing.
 
-        
-
 The regulated company should try to maintain a **centralized audit repository** so that audit efforts can be leveraged within the company and to avoid a supplier being audited by different parts of the same company.
-
-        
 
 ### 10.8 Supplier Preparation for an Audit
 
-        
-
 The supplier can prepare for a postal/email audit by providing clear answers and the quality/technical documentation requested.
-
-        
 
 For on-site/virtual online audits, suppliers should make the requested personnel available, provide clear answers, and make quality and technical documentation easily accessible.
 
-        
-
 ### 10.9 Supplier Certification
-
-        
 
 Suppliers who operate to very high standards may be certified against the regulated company's quality standards. In such cases, direct involvement in design, implementation, and testing by the regulated company may be limited. However, the audit process should be very rigorous, and periodic re-evaluation is essential.
 
-        
-
 ### 10.10 International Standards and Certification
-
-        
 
 The certification of a supplier against a nationally or internationally recognized accredited quality standard (e.g., ISO 9001) may be taken into consideration when planning the scope of the audit program.
 
-        
-
 The assessment of IT infrastructure and platform services can be assessed through the evaluation of a range of certifications and attestations:
 
-        
-
-            
 - **SOC 2+** (AICPA Trust Service Criteria)
 
-            
 - **ISO 9001** (Quality Management Systems)
 
-            
 - **ISO 27001** (Information Security Management)
 
-            
 - **ISO 27002** (Security Controls)
 
-            
 - **ISO 27017** (Cloud Security Controls)
 
-            
 - **ISO/IEC 20000-1** (IT Service Management)
-
-        
-
-        
 
 It is very important to understand the scope and current applicability of certification — ISO 9001 certification does not automatically mean GxP compliance.
 
-    
-
-    
-
-        
-
 ### 
 
-        
-
-            
-
 #### 
 
-            
-
-            
-
-            
-
-        
-
-        
-
-            
-
 #### 
-
-            
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### vs
 
-            
-
-            
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
-
 #### SaaS CDMO
-
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-    
-
-    
 
 ## Section Summary
 
-    
-
-        
-
-            
-
 ### Appendix M1 — Key Takeaways
 
-            
-
-                
 - Three-tier hierarchy: Validation Policy → VMP → System Validation Plan. Each serves a distinct purpose; the system-level plan is the operational document.
 
-                
 - A validation plan is a strategy document — it defines the *why* and *how* of achieving compliance, not just a list of test scripts.
 
-                
 - GAMP 5 2nd Edition de-emphasizes VMP. Regulatory focus has shifted to the quality of individual system validation plans.
 
-                
 - Plan scope decisions are critical: automated manufacturing equipment should be validated as part of equipment qualification, not as separate CSV projects.
 
-                
 - SaaS systems require a new approach to validation planning — leverage supplier's QMS activities; focus regulated company efforts on configuration and user acceptance.
 
-                
 - Plans must be written for a broad audience — they may be the first documents an inspector reads.
-
-            
-
-        
-
-        
-
-            
 
 ### Appendix M2 — Key Takeaways
 
-            
-
-                
 - Three assessment types: Basic Assessment, Postal/Email Audit, On-Site/Virtual Audit. Selection is risk-based on system GxP impact and novelty.
 
-                
 - Assessment must occur *before contract finalization* — it informs the procurement decision, not just the validation documentation.
 
-                
 - The primary purpose is to determine how much regulated company testing can safely be reduced by leveraging supplier development activities.
 
-                
 - Supplier acceptance has five levels — from unconditional use to prohibition. "Accept with additional in-house testing" is a resource-intensive option that must be planned explicitly.
 
-                
 - For SaaS/cloud suppliers: SOC 2+, ISO 27001, and ISO 27017 certifications serve as proxies for on-site audit; always verify scope and currency of the certification.
 
-                
 - Red flags triggering increased in-house testing: absent SDLC documentation, poor traceability, low QA involvement in testing, high hotfix frequency.
 
-            
-
-        
-
-    
-
-    
-
-        
-
 ### CDMO
-
-        
-
-    
 
 ⇧
 
 # Appendices M3 & M4: Science-Based Quality Risk Management & Software Categories
 
-    
-
-    
-
 ISPE GAMP 5 Second Edition | Appendix M3 (p107–p126) & Appendix M4 (p127–p134)
 
-    
-
-## Appendix M3 — Science-Based Quality Risk Management
-
-    
-
-        
+## **Appendix M3 — Science-Based Quality Risk Management Appendix M3 — **
 
 ## 11.1 Introduction & 11.2 Scope
 
-        
-
 This appendix provides further detail on the QRM process introduced in Chapter 5. QRM is a systematic process for the assessment, control, communication, and review of risks to patient safety, product quality, and data integrity, based on a framework consistent with **ICH Q9**. It is used:
 
-        
-
-            
 - To identify risks and to remove or reduce them to an acceptable level
 
-            
 - As part of a scalable approach that enables regulated companies to select the appropriate life cycle activities for a specific system
-
-        
-
-        
 
 Organizations should already have established risk assessment methods and tools. While this Guide describes one suggested approach, it does not intend or imply that existing processes should be discarded. Methods described should be applied in conjunction with **critical-thinking skills** (see Appendix M12).
 
-        
-
 #### Changes from GAMP 5 First Edition
-
-        
 
 While the approach is essentially unchanged, the use of **cloud platforms and applications** moves some risk-management activities outside the regulated company — a key evolution addressed in this second edition.
 
-        
-
 #### Scope
-
-        
 
 This appendix is applicable to all types of computerized systems used in regulated activities, including those supporting:
 
-        
-
-            
 - Clinical trials and toxicological studies
 
-            
 - API production and formulated product manufacture
 
-            
 - Warehousing, distribution, medical devices
 
-            
 - Pharmacovigilance
-
-        
-
-        
 
 ## 11.3 Benefits
 
-        
-
 Application of QRM enables effort to be focused on critical aspects of a computerized system, leading to:
 
-        
-
-            
 - Identification and management of risks to patient safety, product quality, and data integrity
 
-            
 - Scaling of life cycle activities and associated records according to system impact and risks
 
-            
 - Justification for use of supplier documentation
 
-            
 - Better understanding of potential risks and proposed controls
 
-            
 - Highlighting areas where more detailed information is needed
 
-            
 - Improving business process understanding
 
-            
 - Supporting regulatory expectations
-
-        
-
-    
-
-    
-
-        
 
 ## QRM
 
-        
-
-            
-
 #### QRM
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### 
 
-            
-
-        
-
-        
-
-            
-
 #### 
 
-            
-
-        
-
-        
-
-            
-
 #### QRM
-
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-    
-
-    
-
-        
 
 ## 11.4 Roles and Responsibilities
 
-        
-
 QRM is part of the overall responsibility of the business process owner. Key roles are shown in Table 11.1. All roles benefit from critical thinking skills.
-
-        
-            
-                
-                    
-                    
-                
-| Role | Responsibilities |
-| --- | --- |
-            
-            
-                
-                    ****
-                    
-- 
-- 
-- 
-
-                
-| Process Owner / System Owner | Establish team and provide resources (may delegate to project manager)                             Participate in risk assessments as required                             Approve documentation |
-                
-                    ****
-                    
-- 
-- 
-
-                
-| Team of SMEs and Key Users | Identify, analyze, and evaluate risks to patient safety, product quality, and data integrity                             Develop controls |
-                
-                    ****
-                    
-- 
-- 
-- 
-
-                
-| Quality Unit | Identify, analyze, and evaluate risks associated with regulatory compliance and company quality standards                             Participate in risk assessments as required                             Approve documentation where appropriate |
-                
-                    ****
-                    
-- 
-- 
-- 
-
-                
-| Supplier | Provide information on product development, function, and failure modes                             Provide advice on controls                             Participate in risk assessments as required |
-            
-        
-
-        
 
 **SMEs may include Process Owner, System Owner, Quality Unit, Business or IT Application Support, IT or Engineering Operations Support, Infrastructure specialists, supplier, or any appropriate specialist.*
 
-    
-
-    
-
-        
-
 ## QRM
 
-        
-
-            
-
-#### CDMO
-
-            
-                
-                    
-| GAMP | CDMO |
-| --- | --- |
-                
-                
-                    
-| Process/System Owner | |
-                    
-| SME | + IT + + QA |
-                    
-| Quality Unit | QA |
-                    
-| Supplier | SiemensDCS OracleERP |
-                
-            
-
-        
-
-        
-
-            
-
 #### 
 
-            
-
-        
-
-        
-
-            
-
 #### 
-
-            
-
-        
-
-    
 
 ---
 
-## 11.5 Guidance — QRM Process in Detail
-
-    
-
-        
+## **11.5 Guidance — QRM Process in Detail 11.5 — QRM **
 
 ## 11.5.1 Scalability & 11.5.2 Business Process Context
 
-        
-
 The five-step risk management process may be scaled according to risk, complexity, and novelty of individual systems, with each step building upon the previous output.
 
-        
-
-**Figure 11.2** shows how the process is applied to a typical **Category 3 product** — often a single, compact assessment covers all relevant risks.
-
-        
+**Figure 11.2🔍** shows how the process is applied to a typical **Category 3 product** — often a single, compact assessment covers all relevant risks.
 
 #### Applying Risk Management Based on the Business Process
 
-        
-
 To effectively apply QRM to computerized systems, consider:
 
-        
-
-            
 - **What are the hazards?** — Recognize what could go wrong, including both system failures and user failures.
 
-            
 - **What is the harm?** — Examples: adulterated product due to system failure; inaccurate clinical study conclusions; incomplete toxicological profile; supply interruption causing drug shortage.
 
-            
 - **What is the impact?** — Estimate the possible consequence of a hazard on patient safety, product quality, and data integrity.
 
-            
 - **What is the probability of failure?** — For software failure, it may be very difficult to assign a probability value. Probability of failure aligns with GAMP Categories 1–5; as complexity increases, failure likelihood increases.
 
-            
 - **What is the detectability of failure?** — Detection is useful only if it occurs before consequences cause harm. As complexity of detection processes increases, likelihood of undetected failure increases.
 
-            
 - **How will the risk be managed?** — Risk can be eliminated or reduced by design, or reduced to acceptable level by applying controls that reduce probability or increase detectability.
-
-        
-
-        
 
             "Zero risk is usually an unattainable goal, and there are diminishing returns as it is approached. Instead, companies need to think in terms of acceptable risk, sometimes known as **risk tolerance**."
         
 
-        
-
 Risk tolerance is context dependent: risk tolerance related to product release is **lower for a life-saving oncology drug** than for an allergy cream, even though processes may be identical.
-
-    
-
-    
-
-        
 
 ## 
 
-        
-
-            
-
 #### QRM ICH Q9
-
-            
-
-                
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-        
-
-            
 
 #### 
 
-            
-
-        
-
-        
-
-            
-
 #### CDMO
-
-            
-
-            
-
-                
-
-                
-
-            
-
-            
-
-        
-
-    
-
-    
-
-        
 
 ## 11.5.3 Risk Management Throughout the System Life Cycle
 
-        
-
 #### 11.5.3.1 Initial Risk Assessment
-
-        
 
 An initial risk assessment should be performed at (or before) the beginning of the project phase — this is **Step 1** of the process. Key prerequisites:
 
-        
-
-            
 - A clear understanding of the business process
 
-            
 - A defined boundary around the business process
 
-            
 - The role of the computerized system, including interfaces with other systems
 
-            
 - Sufficiently defined requirements
-
-        
-
-        
 
 **GxP Determination:** The initial risk assessment should include a decision on whether the system is GxP regulated. If a system is only partially in GxP scope, understanding this may simplify validation substantially.
 
-        
-
 **System Impact — High-impact systems typically include those supporting:**
 
-        
-
-            
 - Regulatory safety and efficacy data generation, manipulation, or control
 
-            
 - Critical parameters or data at any stage (pre-clinical through manufacture)
 
-            
 - Product release — control, management, storage, or data provision
 
-            
 - Product recall data management
 
-            
 - Adverse event / complaint recording or pharmacovigilance
-
-        
-
-        
 
 **Need for Further Assessments:** For Category 3 products, the initial risk assessment may be sufficient for all relevant risks. For a custom application (Category 5), more detailed assessments are required as the system is developed. Note: if interfaces exist to other systems, a deeper assessment is advisable even for a Category 3 system.
 
-        
-
 #### 11.5.3.2 Risk-Based Decisions during Planning
-
-        
 
 Key risk-based decisions during planning include:
 
-        
-
-            
 - Need for, and rigor of, supplier assessment
 
-            
 - Using supplier assessment results for compliance planning
 
-            
 - Determining activities, deliverables, and responsibilities for compliance
 
-            
 - Need for further risk assessments and method selection
-
-        
-
-        
 
 These decisions should be documented. Risk-based compliance improves efficiency at two levels:
 
-        
-
-            
 - **Scalability:** Lower-impact systems documented and tested less rigorously
 
-            
 - **Focusing:** Greater rigor applied to highest-risk functions; less to low-risk areas
-
-        
-
-        
 
 #### 11.5.3.3 Functional Risk Assessment
 
-        
-
 Functional risk assessments identify and manage risks that arise from failure of specific functions. Computerization may introduce particular risks not otherwise associated with manual processes, such as:
 
-        
-
-            
 - Electronic record integrity
 
-            
 - System availability
 
-            
 - Security
 
-            
 - Infrastructure failures
-
-        
-
-        
 
             EU Annex 11: "Where a computerised system replaces a manual operation, there should be no resultant decrease in product quality, process control or quality assurance. There should be no increase in the overall risk of the process."
         
 
-        
-
 #### 11.5.3.4 Risk-Based Decisions during Test Planning
-
-        
 
 The results of functional risk assessments should influence the extent and rigor of verification. Testing should be **focused on high-risk functionality**, minimizing effort on low-risk areas.
 
-        
-
 #### 11.5.3.5–11.5.3.7 Operational & Change Control & Retirement
-
-        
 
 Risk-based decisions during operation include: system availability, backup/recovery frequency, disaster planning, security, change control, and periodic reviews. Risk management also applies to system retirement, including data/record retention, destruction, or migration.
 
-    
-
-    
-
-        
-
 ## 
 
-        
-
-            
-
 #### 
-
-            
-                
-                    
-| --- | --- | --- |
-                
-                
-                    
-| | | GxP |
-                    
-                    
-                
-            
-
-        
-
-        
-
-            
-
-#### 
-
-            
-
-        
-
-        
-
-            
 
 #### EU Annex 11
 
-            
-
-        
-
-        
-
-            
-
 #### CDMO QRM
-
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-    
-
-    
-
-        
 
 ## 11.5.4 Risk Assessment Method
 
-        
-
 Risk management aims to establish controls such that the combination of **severity, probability of occurrence, and detectability** of failures is reduced to an acceptable level. The method presented is a simplified functional risk assessment tool — it is not mandatory.
-
-        
 
 Each hazard identified for a function is assessed in two stages:
 
-        
-
-            
 1. **Severity of impact** (on patient safety, product quality, data integrity) is plotted against **likelihood of fault occurrence** → giving a **Risk Class**
 
-            
 2. **Risk Class** is then plotted against **likelihood of detection before harm occurs** → giving a **Risk Priority**
-
-        
-
-        
 
 The Risk Priority helps focus attention on areas where the regulated company is most exposed. Successful application requires agreement on the meaning of High, Medium, and Low for each segment, considered **specifically in the context of the system** in each project.
 
-        
-
 #### 11.5.4.1 Scaling the Method
-
-        
 
 Function impact is context sensitive. Failure of an instrument in a QC laboratory for **chemical intermediates** is far less likely to affect patient safety than the same instrument in a QC laboratory that **releases drug product to market** — because there are many additional controls between the intermediate and the patient in the former case.
 
-    
-
-    
-
-        
-
 ## GAMP
 
-        
-
-            
-
 #### 
-
-            
-
-            
-                
-                    
-| --- | --- | --- | --- |
-                
-                
-                    ****
-                    ****
-                    ****
-                
-            
-
-            
-
-            
-
-        
-
-        
-
-            
-
-#### 
-
-            
 
   
 
-        
-
-        
-
-            
-
 #### 
 
-            
-
-        
-
-    
-
-    
-
-        
+#### 
 
 ## 11.5.5 Controls & 11.5.6 Residual Risk
 
-        
-
 Controls are measures put in place to reduce risk to an acceptable level. They may be part of a computerized system function, parallel manual procedures, or downstream controls.
-
-        
 
 #### Table 11.2: Examples of Controls to Reduce Risk
 
-        
-            
-                
-| Control Strategy |
-| --- |
-            
-            
-                
-| Introduction of automated checks of data quality in downstream computerized systems |
-                
-| Introduction of procedures to counter possible failures (e.g., QC testing of products) |
-                
-| Automated controls within the system: data verification checks (acceptable input ranges); user prompts to verify inputs |
-                
-| Use of proven methods, tools, and components; fault-tolerance (e.g., system mirroring, replicated parts); controlled operating environment |
-                
-| Increased rigor of verification testing to demonstrate system handles error conditions |
-                
-| Enhanced training of users |
-            
-        
-
-        
-
 #### Table 11.3: Wider Risk Control Approaches
-
-        
-            
-                
-| Approach | Details |
-| --- | --- |
-            
-            
-                
-                    ****
-                    
-                
-| Modify Project Strategies | Experience and qualifications of staff; level of documentation and review; formal review points |
-                
-                    ****
-                    
-                
-| Modify Business Process | Alternative approaches to system use; redesign of business process to eliminate risk |
-                
-                    ****
-                    
-                
-| Risk Avoidance | Risks are so high that the new way of working should not be implemented |
-            
-        
-
-        
 
 #### 11.5.6 Residual Risk
 
-        
-
 Residual risks after implementing controls should be considered. If residual risk remains above acceptable threshold, further controls should be implemented and the analysis repeated — until residual risk is acceptable.
-
-    
-
-    
-
-        
 
 ## 
 
-        
-
-            
+#### 
 
 #### 
 
-            
-
-                
-
-                
-
-                
-
-            
-
-        
-
-        
-
-            
-
 #### 
-
-            
-
-        
-
-        
-
-            
-
-#### 
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-        
-
-    
-
-    
-
-        
 
 ## 11.5.7 Scaling Life Cycle Activities
 
-        
-
 Activities should be scaled according to:
 
-        
-
-            
 - System impact on patient safety, product quality, and data integrity (risk assessment)
 
-            
 - System complexity and novelty (architecture and categorization of system components)
 
-            
 - Outcome of supplier assessment (supplier capability)
-
-        
-
-        
 
 Specific activities that may be scaled include: levels of specification; design reviews; code reviews; extent and rigor of verification activities. The supplier assessment strategy can also be scaled based on system impact, GAMP category, and product maturity.
 
-        
-
 ## 11.5.8 Risk Communication and Documentation
-
-        
 
 As defined in ICH Q9, **Risk Communication** is the sharing of information about risk and risk management between decision makers and others. The output of the risk-management process should be shared with the quality unit, the business process owner, and the supplier as appropriate.
 
-        
-
 Communication should take place throughout the risk-management process and does not necessarily take the form of a report. Special emphasis should be given when a risk or impact has changed. Regulated companies should be able to **explain risk-based decisions if questioned by a regulator**.
-
-        
 
             "A **risk register** is a listing of recognized risks wherein risks can be prioritized and measures taken to mitigate them are recorded. This is often managed in a database or spreadsheet."
         
 
-        
-
 As part of the periodic review, the risk register should be reviewed to ensure that all control strategies remain appropriate.
-
-        
 
 ## 11.5.9 QRM for Outsourced Activities
 
-        
-
 Cloud computing means direct control of risk-management processes must sometimes be delegated to a supplier. This **does not absolve the regulated company of accountability**. Supplier assessment and management processes become a critical part of the regulated company's QRM approach. Continuous monitoring of engaged IT service suppliers should be a contractually obligated aspect of the supplier relationship.
 
-    
-
-    
-
-        
-
 ## 
-
-        
-
-            
 
 #### Risk Register
 
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
-
-#### CDMO
-
-            
-                
-                    
-| --- | --- | --- | --- | --- |
-                
-                
-                    
-| | | → | + | |
-                    
-| LIMS | | | + | |
-                    
-| | | | + | |
-                
-            
-
-        
-
-        
-
-            
-
 #### /SaaS QRM
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-    
-
-    
-
-        
 
 ## 11.6 Other Risk Assessment Methods and Tools
 
-        
-
 The following commonly used methods and tools for risk assessment can supplement or replace the GAMP tool:
 
-        
-
-            
 - **HAZOP** — Hazard and Operability Analysis
 
-            
 - **CHAZOP** — Computer Hazards and Operability Analysis
 
-            
 - **FMEA** — Failure Mode and Effects Analysis
 
-            
 - **FMECA** — Failure Mode, Effects, and Criticality Analysis
 
-            
 - **FTA** — Fault Tree Analysis
 
-            
 - **HACCP** — Hazard Analysis and Critical Control Points
 
-            
 - Basic Risk-Management Facilitation Methods
 
-            
 - **PHA** — Preliminary Hazard Analysis
 
-            
 - Risk Ranking and Filtering
-
-        
-
-        
 
 *For further details see ICH Q9 Annex I: Risk Management Methods and Tools.*
 
-        
-
 ## 11.7 Examples
-
-        
 
 These examples are indicative and not intended to be definitive. Other approaches can be equally applicable.
 
-        
-
 #### 11.7.1 Example 1 – Approaches for Different Categories
 
-        
-
-            
 - **Category 3:** May be possible to cover all relevant risks in a single assessment (Figure 11.6). For specific systems, further assessments may be required.
 
-            
 - **Category 4:** Typically requires initial risk assessment followed by one or more detailed risk assessments as system specification is developed (Figure 11.7). Some systems may cover all risks in the initial assessment.
 
-            
-- **Category 5:** Necessary to carry out initial risk assessment followed by one or more detailed risk assessments as specification and design are developed (Figure 11.8).
-
-        
-
-        
+- **Category 5:** Necessary to carry out initial risk assessment followed by one or more detailed risk assessments as specification and design are developed (Figure 11.8🔍).
 
 #### 11.7.2 Example 2 – Determining System and Functional Impact
 
-        
-
 Process knowledge helps determine system impact, and understanding the importance of process steps assists with determination of functional risk in Step 2. System impact is chosen to be the impact for the **highest assessed process step**.
-
-        
 
 #### 11.7.3 Example 3 – Functional Risk Assessment Based on Impact
 
-        
-
 Functions are classified as High, Medium, or Low impact:
 
-        
-
-            
 - **High impact:** Carry out detailed assessment of hazards based on probability and detectability
 
-            
 - **Medium impact:** Hazard scenarios considered, but hazards can be grouped generally
 
-            
 - **Low impact:** Reasonable to forego formal risk assessment; apply good practice
 
-        
-
-    
-
-    
-
-        
-
 ## 
-
-        
-
-            
-
-#### 
-
-            
-                
-                    
-| --- | --- | --- | --- |
-                
-                
-                    
-                        ****  
-
-                        
-                        
-                        
-                    
-| FMEA | Cat 4/5 | | |
-                    
-                        ****  
-
-                        
-                        
-                        
-                    
-| HAZOP/CHAZOP | DCSSCADA | | |
-                    
-                        ****  
-
-                        
-                        
-                        
-                    
-| GAMP | GxP | | SME |
-                
-            
-
-        
-
-        
-
-            
 
 #### FMEA
 
-            
-
-                
-
-                
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-    
-
-    
-
-        
-
 ## 11.7.4 Example 4 – Medium and High-Impact Function Examples
-
-        
 
 Table 11.4 compares generic assessments for Medium-impact vs. detailed assessments for High-impact functions.
 
-        
-            
-                
-                    
-                    
-                    
-                    
-                
-| System | Function | Medium-Impact: Generic Hazard / Consequence | High-Impact: Specific Hazard / Consequence |
-| --- | --- | --- | --- |
-            
-            
-                
-                    
-                    
-                    
-                      
-
-                
-| Packaging line | Thermal seal | Control failure / Package or product damage | High temp failure → Package damage / Product damage                         Low temp failure → Package not sealed |
-                
-                    
-                    
-                    
-                      
-  
-  
-  
-
-                
-| Liquid filling line | Filling | Power problem / Inaccurate vial fill | Voltage spike → Damage to electronics                         Brief voltage drop (co-located equipment) → No impact                         Prolonged brownout → No impact if UPS holds; inaccurate fill if UPS runs out                         Power loss <30 min → No impact (UPS)                         Power loss >30 min → Line crash if no controlled shutdown |
-                
-                    
-                    
-                    
-                      
-
-                
-| IT change-control database | Change status | Status to "Approved" fails / Change stays "Submitted" | Status fails → Change not executed                         No documented approval for executed change |
-                
-                    
-                    
-                    
-                      
-
-                
-| Toxicology database | Audit trail | Audit trail fails / Inadequate change documentation | Audit trail fails → Data changes inadequately attributed                         Old versions of data lost |
-                
-                    
-                    
-                    
-                      
-
-                
-| Antivirus software | Automated virus definition update | Updates not downloaded / Exposure to virus attack | Updates fail → Virus causes temporary system loss                         Viruses cause loss of data |
-                
-                    
-                    
-                    
-                      
-
-                
-| HPLC control system | Solvent pump control | Control failure / Incorrect assay | High flow failure → Incorrect assay (peak resolution loss or misidentification)                         Low flow failure → Incorrect assay (component peaks assigned to wrong reference) |
-            
-        
-
-        
-
 **Note: There is no implication that these functions should always be defined as high or medium impact; such assignment must be made within the context of the business process.*
-
-    
-
-    
-
-        
 
 ## 
 
-        
-
-            
-
 #### 
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### vs
 
-            
-
-        
-
-        
-
-            
-
 #### CDMO
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-        
-
-    
 
 ---
 
-## Appendix M4 — Categories of Software and Hardware
-
-    
-
-        
+## **Appendix M4 — Categories of Software and Hardware Appendix M4 — **
 
 ## 12.1 Introduction
 
-        
-
 This appendix describes how software and hardware components of a system may be analyzed and categorized in terms of **increasing complexity, novelty, and inherent likelihood of residual defects**, as a very high-level preliminary risk assessment. These categories feed into the risk assessment and supplier-assessment approaches.
-
-        
 
 **Key principle:** Categories 3 to 5 are effectively a continuum with no absolute boundaries, and most systems will contain components of multiple categories. For example:
 
-        
-
-            
 - Core functionality → Category 3
 
-            
 - Workflow configuration → Category 4
 
-            
 - Bespoke interfaces to other systems → Category 5
-
-        
-
-        
 
 The software categories assist in understanding the system; however, **life cycle activities should be scaled based on risk, complexity, and novelty**, supported by critical thinking — not solely by category assignment.
 
-        
-
 #### 12.1.1 Changes from GAMP 5 First Edition
-
-        
 
 This appendix has been revised to emphasize that:
 
-        
-
-            
 - Systems are generally made up of combinations from different categories — view as a continuum
 
-            
 - Software category is just *one factor* in a risk-based approach; life cycle activities should be scaled based on overall GxP impact, complexity, and novelty
 
-            
 - Software categories still bring benefit in deciding the rigor of supplier assessment and judging the probability of failure or defect
-
-        
-
-    
-
-    
-
-        
 
 ## 
 
-        
-
-            
-
 #### GAMP
 
-            
-
-            
-
-        
-
-        
-
-            
-
 #### 
 
-            
-
-        
-
-        
-
-            
-
 #### 
-
-            
-
-                
-
-                
-
-                
-
-            
-
-        
-
-    
-
-    
-
-        
 
 ## 12.2 Using the GAMP Categories
 
-        
-
 When coupled with critical thinking, risk assessment, and supplier assessment, categorization can be part of an effective QRM approach. Categorization is **not intended to provide a checklist approach to validation**.
-
-        
 
 Two main ways to use the categories:
 
-        
-
-            
 - **Whole-system assessment:** The category of the main component may be used to help define the approach to supplier assessment. Combining categorization with GxP impact assessment helps decide the extent of supplier assessment required.
 
-            
 - **Functional risk assessment:** Categorization can increase objectivity:
                 
 
-                    
     - There is generally increasing risk of failure or defects progressing from standard to custom software/hardware — this informs "Probability" in the M3 method
 
-                    
     - Where Detectability relies on a system function (e.g., alarm), the category can influence detectability assessment — a bespoke alarm may be more likely to fail than standard functionality
 
-                    
     - Severity is independent of category — it derives from the business process supported
-
-                
-
-            
-
-        
-
-        
 
             "Referring to systems as a single category can be further misleading given that even within a category there can be dramatic differences in GxP impact and complexity... A balance with a configurable serial output may be simplistically labeled as 'Category 4'. A Chromatography Data System (CDS) is also often classed as 'Category 4'. However, there is an enormous difference in complexity between the two."
         
 
-    
-
-    
-
-        
-
 ## 
-
-        
-
-            
-
-#### × =
-
-            
-                
-                    
-| | GxP | GxP |
-| --- | --- | --- |
-                
-                
-                    
-| Cat 1 | | |
-                    
-| Cat 3 COTS | | IQ/OQ |
-                    
-| Cat 4 COTS | | IQ/OQ/PQ |
-                    
-| Cat 5 | + | + // |
-                
-            
-
-        
-
-        
-
-            
 
 #### vs CDS Cat 4
 
-            
-
-        
-
-    
-
-    
-
-        
-
 ## 12.3 Categories of Software
-
-        
 
 ### Cat 1 12.3.1 Category 1 – Infrastructure Software, Tools, and IT Services
 
-        
-
 Infrastructure elements link together to form an integrated environment for running and supporting applications and services. Software in this category includes:
 
-        
-
-            
 - **Established or publicly available layered software:** Operating systems, database managers, programming languages, middleware, ladder logic interpreters, statistical programming tools, spreadsheet packages (but NOT business applications built on these)
 
-            
 - **Infrastructure software tools:** Network monitoring software, batch job scheduling tools, security software, antivirus, configuration management tools. Risk assessments should be carried out on tools with potential high impact (e.g., password management, security management).
 
-            
 - **Software supporting computerized system life cycle activities and IT processes** (as opposed to supporting business and pharmaceutical life cycle processes)
-
-        
-
-        
 
 Layered software is not subject to specific functional verification, though their features are indirectly tested during application testing. The **identity and version numbers** of layered software and operating system should be recorded and verified during installation. Infrastructure software should be controlled and managed.
 
-        
-
 ### Cat 2 12.3.2 Category 2 – Not Used
-
-        
 
 Category 2 has been removed from GAMP 5. It previously covered firmware but this is now addressed within other categories.
 
-    
-
-    
-
-        
-
 ## Category 1 —
 
-        
-
-            
-
 #### Cat 1
 
-            
-
-                
-
-                
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-        
-
-            
-
 #### Cat 1
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### 
-
-            
-
-        
-
-    
-
-    
-
-        
 
 ### Cat 3 12.3.3 Category 3 – Standard System Components
 
-        
-
 This category includes **off-the-shelf components used for business purposes**. It includes both those that cannot be configured to conform to business processes and those that offer limited configurations using factory-provided values or ranges (also called *parameterization*).
-
-        
 
 A simplified life cycle approach may be applied to systems predominantly consisting of Category 3 components with limited or moderate GxP impact. Key requirements:
 
-        
-
-            
 - User requirements necessary, focusing on key aspects of intended use in the regulated environment
 
-            
 - Need for and extent of supplier assessment based on risk and intent to leverage supplier documentation
 
-            
 - All changes to software should be controlled, including supplier-provided patches
 
-            
 - SOPs established for system use and management; training plans implemented
 
-            
 - Configuration or parameterization choices should be managed, recorded, and verified
 
-            
 - Where software and hardware are interdependent, **calibration may be a critical quality activity**
-
-        
-
-    
-
-    
-
-        
 
 ## Category 3 —
 
-        
-
-            
-
 #### Cat 3
 
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-        
-
-            
-
 #### Cat 3
-
-            
-
-        
-
-        
-
-            
 
 #### Cat 3 vs Cat 4
 
-            
-
-        
-
-    
-
-    
-
-        
-
 ### Cat 4 12.3.4 Category 4 – Configured Components
-
-        
 
 Configurable software components enable **configuration of user-specific business processes** into one or more workflows, specific to methods, products, or processes. This typically involves configuring predefined software modules — there is an increase in the importance of capturing and managing configuration choices.
 
-        
-
 Key considerations:
 
-        
-
-            
 - Risks are often dependent on how well the system is configured to meet user-business process needs
 
-            
 - Increased risk with new software and recent major upgrades
 
-            
 - Supplier testing may have used default configuration; applied configuration is company-specific — **less opportunity to leverage supplier verification**, more need for regulated company activities
 
-            
 - Support must be carefully managed: when new software versions are introduced, dependencies on features that may have changed can cause serious problems
-
-        
-
-        
 
 **Important:** Custom software components such as macros developed with internal scripting language, written or modified to satisfy specific user-business requirements, should be treated as **Category 5**.
 
-    
-
-    
-
-        
-
 ## Category 4 —
 
-        
-
-            
-
-#### Cat 4 CDMO
-
-            
-                
-                    
-| --- | --- | --- |
-                
-                
-                    ****  
-| LIMS | OOS | OOS |
-                    ****  
-| DCS/SCADA | | |
-                    ****  
-| MES | | 21 CFR Part 11 |
-                    ****  
-| ERP | | GxP QC |
-                    ****
-| EDMS/QMS | | |
-                
-            
-
-        
-
-        
-
-            
-
 #### vs
-
-            
-
-        
-
-        
-
-            
 
 #### Cat 4 = Cat 5
 
-            
-
-        
-
-    
-
-    
-
-        
-
 ### Cat 5 12.3.5 Category 5 – Custom Applications and Components
-
-        
 
 These applications, subsystems, or components are **developed to meet the specific requirements of the regulated company**. Key characteristics:
 
-        
-
-            
 - Risk inherent with custom software is high — no user experience or system reliability information is available
 
-            
 - May be reflected in functional risk assessment ratings for **probability of failures or defects**
 
-            
 - Calculation or logic errors can be difficult to detect and may persist for months or years before detection
 
-            
 - Very wide range: from small end-user applications based on spreadsheets to large, complex, custom process control systems
-
-        
-
-        
 
 ## 12.3.6 Typical Examples and Approaches — Table 12.1
 
-        
-
 The actual approach should be scaled based on how much of the system functionality is based on different components and the GxP impact. Rigor of controls and extent of testing should be scaled based on functional risk assessment.
-
-        
-            
-                
-                    
-                    
-                    
-                    
-                
-| Category | Description | Typical Examples | Typical Approaches and Considerations |
-| --- | --- | --- | --- |
-            
-            
-                
-                    ****
-                    
-                    
-                    
-                
-| Cat 1 Infrastructure Software | Layered software; software managing the operating environment; software supporting CS life cycle activities | Operating systems; database engines; middleware; programming languages; network monitoring; scheduling tools; requirements/test management tools | Record version number, verify correct installation; assess and record tool's adequacy for use; see ISPE GAMP IT Infrastructure GPG |
-                
-                    ****
-                    
-                    **
-                    
-                
-| Cat 3 Standard Components | Run-time parameters may be entered and stored, but software cannot be configured to suit the business process | Firmware-based applications; COTS software; some instruments. Note: most systems contain some Cat 3 components. | Requirements for key functionality; life cycle approach scaled on system complexity; risk-based supplier assessment; record version number and verify installation; risk-based testing leveraging supplier testing; procedures for data management and compliance maintenance |
-                
-                    ****
-                    
-                    **
-                    
-                
-| Cat 4 Configured Components | Software (often complex) configurable to meet user business process needs via workflows, process flows; code is not altered | LIMS; data acquisition systems; SCADA; ERP; clinical trial monitoring; DCS; ADR reporting; CDS; EDMS; Building Management Systems; CRM; spreadsheets; simple HMI. Note: Specific examples may also contain substantial custom elements. | Per Cat 3 plus: business process map and data flow diagram; risk-based testing to demonstrate applied configuration delivers application meeting business needs and workflows |
-                
-                    ****
-                    
-                    **
-                    
-                
-| Cat 5 Custom Applications | Software custom designed and coded to suit the business process | Bespoke interfaces between systems; internally/externally developed IT applications; internally/externally developed process control applications; custom ladder logic; custom firmware; spreadsheets (macro). Note: Even fully customized development leverages standard modules and libraries. | Same as configurable, plus: supplier-assessment focus on QMS for new component development; design and source-code review; coding standard; full life cycle information (design specifications, unit, module, integration and functional testing, where relevant) |
-            
-        
-
-        
 
 **Abbreviations:** ADR: Adverse Drug Reaction | ERP: Enterprise Resource Planning | CDS: Chromatography Data System | HMI: Human Machine Interfaces | COTS: Commercial off the Shelf | LIMS: Laboratory Information Management System | CRM: Customer Relationship Management | QMS: Quality Management System | DCS: Distributed Control System | SCADA: Supervisory Control and Data Acquisition | EDMS: Electronic Document Management System
 
-    
-
-    
-
-        
-
 ## Category 5
-
-        
-
-            
 
 #### Cat 5 CDMO
 
-            
-
-                
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-        
-
-            
-
 #### Cat 5
-
-            
-
-            
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
-
-#### CDMO
-
-            
-                
-                    
-| | GAMP | | |
-| --- | --- | --- | --- |
-                
-                
-                    
-                        
-                        
-                        
-                        
-                    
-| | Cat 4 | / | IQ/OQ/PQ + + |
-                    
-                        
-                        
-                        
-                        
-                    
-| LIMS LabwareLabVantage | Cat 4 | | + + OOS |
-                    
-                        
-                        
-                        
-                        
-                    
-| | Cat 5 | | DS + + + IQ/OQ/PQ |
-                    
-                        
-                        
-                        
-                        
-                    
-| Windows Server LIMS | Cat 1 | | |
-                    
-                        
-                        
-                        
-                        
-                    
-| | Cat 3 | | + |
-                
-            
-
-        
-
-        
-
-            
 
 #### vs
 
-            
-
-        
-
-    
-
-    
-
-        
-
 ## 12.4 Categories of Hardware
-
-        
 
 These hardware categories are provided for information only, and do not explicitly require additional documentation beyond what is described.
 
-        
-
 ### 12.4.1 Hardware Category 1 – Standard Hardware Components
-
-        
 
 The majority of hardware used by regulated companies falls into this category. Requirements include:
 
-        
-
-            
 - Document manufacturer/supplier details, version numbers, and model numbers
 
-            
 - Verify correct installation and connection of components
 
-            
 - For preassembled hardware: record model, version number, and where available, serial number — hardware details can be taken from the data sheet (does not need to be disassembled)
 
-            
 - Configuration management and change control apply
-
-        
-
-        
 
 ### 12.4.2 Hardware Category 2 – Custom Built Hardware Components
 
-        
-
 Requirements are in addition to those of standard hardware components:
 
-        
-
-            
 - Custom items of hardware should have a **Design Specification (DS)**
 
-            
 - Subject to **acceptance testing**
 
-            
 - Supplier assessment should be risk-based and documented
 
-            
 - In most cases, a **supplier audit** should be performed for custom hardware development
 
-            
 - Assembled systems using custom hardware from different sources require verification confirming **compatibility of interconnected hardware components**
 
-            
 - Hardware configuration should be defined in design documentation and verified
 
-            
 - Configuration management and change control apply
-
-        
-
-    
-
-    
-
-        
 
 ## 
 
-        
-
-            
-
 #### 1
-
-            
-
-                
-
-                
-
-                
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### 2
 
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
-
 #### 
-
-            
-
-            
-
-                
-
-                
-
-            
-
-            
-
-        
-
-    
-
-    
 
 ## Section Summary |
 
-    
-
-        
-
-            
-
 ### Appendix M3 Key Takeaways
 
-            
-
-                
 - QRM is a five-step, scalable process anchored in ICH Q9, applicable across the entire computerized system life cycle — from initial project through retirement.
 
-                
 - The initial risk assessment (Step 1) must determine GxP scope and system impact before requirements are written — not after.
 
-                
 - Risk assessment uses a two-stage method: (Severity × Likelihood) → Risk Class; (Risk Class × Detectability) → Risk Priority.
 
-                
 - Controls target three vectors: eliminate hazard through redesign, reduce probability, or increase detectability through downstream checks.
 
-                
 - Residual risk must be explicitly reviewed and documented; the risk register is the living document that tracks all this through the system life cycle.
 
-                
 - Cloud/SaaS deployments do not transfer regulatory accountability — supplier monitoring must be contractually mandated.
 
-                
 - FMEA, HAZOP/CHAZOP, and FTA are recognized supplementary tools alongside the GAMP matrix method.
-
-            
-
-        
-
-        
-
-            
 
 ### Appendix M4 Key Takeaways |
 
-            
-
-                
 - Cat 1 Infrastructure (OS, DB engines, network tools): record version, verify installation, change control — no functional verification required.
 
-                
 - Cat 3 Standard COTS (fixed-function, parameter-only): simplified life cycle; calibration may substitute for OQ for simple instruments.
 
-                
 - Cat 4 Configured COTS (LIMS, DCS, MES, ERP): configuration is the product — must verify applied configuration, not just platform. Macros/scripts within Cat 4 platforms = Cat 5.
 
-                
 - Cat 5 Custom software: highest inherent risk, no user history. Requires design spec, code review, coding standard, full life cycle documentation.
 
-                
 - Categories 3–5 form a continuum; most systems contain components of multiple categories — categorize each component, not the entire system.
 
-                
 - GxP impact (from the business process) is independent of software category. A Cat 4 DCS in an aseptic fill line carries far more risk than a Cat 4 LMS for training records.
 
-                
 - Hardware Cat 1 (standard): document and verify installation. Hardware Cat 2 (custom): Design Specification + acceptance testing + supplier audit required.
-
-            
-
-        
-
-    
 
 ↑
 
@@ -8986,2462 +4668,838 @@ Requirements are in addition to those of standard hardware components:
 
 # Appendices M5–M10: Design Review, Supplier Quality, Validation Reporting, Change & Configuration Management, Documentation, System Retirement
 
-    
-
-    
-
 ISPE GAMP 5 Second Edition | Appendices M5–M10 | p135–p162
 
-    
-
-## M5 Appendix M5 – Design Review and Traceability (p135–p140)
-
-    
-    
-
-        
+## **M5Appendix M5 – Design Review and Traceability (p135–p140) Appendix M5 – **
 
 ### 13.1 Introduction
 
-        
-
 This appendix covers the design review process and requirements traceability for computerized systems. Defects should be identified and corrected at the earliest opportunity in the life cycle. Design reviews and traceability assist with ensuring that computerized systems are fit for intended use and with keeping the overall cost of projects down through the early identification of defects and resolution of problems.
-
-        
 
 Design review and traceability can help ensure that:
 
-        
-
-            
 - Requirements have been addressed
 
-            
 - The functionality is appropriate, consistent, and meets predefined standards
 
-            
 - Existing functionality is not negatively affected
 
-            
 - The system is appropriately tested with no unintended gaps between requirements and tests
-
-        
-
-        
 
 For non-linear software development life cycles, for example Agile, it is appropriate for design reviews and traceability to be achieved in an iterative manner, for example within each sprint cycle for Scrum.
 
-        
-
 This revised appendix encourages automated and tool-based reviews rather than manual traceability approaches where possible, as this drives efficiency and accuracy.
-
-        
 
 ### 13.3 Design Review
 
-        
-
 Design reviews evaluate deliverables against standards and requirements, identify issues, and propose required corrective actions. They are planned and systematic reviews of specifications, design, and development performed at appropriate points throughout the life cycle of the system. They are an important part of the verification process.
-
-        
 
 Design review should be performed by appropriate SMEs. The rigor of the design review process and the extent of documentation/artifacts should be based on GxP risk, complexity, and novelty.
 
-        
-
 Aspects to consider when planning design reviews:
 
-        
-
-            
 - The scope and objectives of the review
 
-            
 - What method or process will be followed
 
-            
 - Who will be involved, and their specific roles/responsibilities
 
-            
 - What the outputs will be
-
-        
-
-        
 
 **By GAMP Category:**
 
-        
-
-            
 - **Category 3 (standard products):** Design review by the regulated company is typically not required.
 
-            
 - **Configured products:** Supplier should have performed most design review activities during product development. User review focuses on configuration and implementation activities.
 
-            
 - **Custom applications:** Design reviews typically are conducted at each level of detail of specification and design, or within the sprint process for Agile.
-
-        
-
-        
 
 ### 13.4 Traceability
 
-        
-
 #### 13.4.1 Introduction
-
-        
 
 Traceability establishes the relationship between two or more products of the development process. Traceability ensures that:
 
-        
-
-            
 - Requirements are met and can be traced to the appropriate configuration or design elements
 
-            
 - Requirements are verified, and can be traced to the test or verification activity that shows the requirement has been met
-
-        
-
-        
 
 Accurate traceability can also provide benefit by:
 
-        
-
-            
 - Enabling more effective risk-management and design review processes
 
-            
 - Judging potential impact of a proposed change
 
-            
 - Facilitating risk assessment for a proposed change
 
-            
 - Identifying scope of regression testing for changes
 
-            
 - Enabling fast and accurate responses during an inspection or audit
-
-        
-
-        
 
 #### 13.4.2 Principles
 
-        
-
 A means of linking relevant specification records to testing should be established and maintained. It should also be possible to trace from testing back to the relevant specification record. Accurate traceability depends upon the completeness and accuracy of the specification records.
-
-        
 
 The rigor of traceability activities should be based on GxP risk, complexity, and novelty. For more complex systems, the relationship between requirements, specifications, and verification may not be simple:
 
-        
-
-            
 - Multiple requirements can be covered by a single design specification (DS) and verified by a single test
 
-            
 - Multiple DS may be linked to a single requirement
 
-            
 - Multiple tests can be required to address one requirement or one DS
-
-        
-
-        
 
 #### 13.4.3 Methods of Achieving Traceability
 
-        
-
 Traceability may be achieved in a number of ways, including automated software tools, spreadsheets, or embedding references directly within documents, or a separate Requirements Trace Matrix (RTM). The use of automated tools is recommended — manual methods such as spreadsheets or RTM documents are difficult to maintain and keep accurate.
-
-        
 
 For simpler systems, traceability can be achieved through common or consistent numbering of requirements, designs, and testing documentation, rather than a separate matrix. For custom applications, traceability should be provided from requirements through each level of specification to the appropriate verification.
 
-        
-
 **By GAMP Category:**
 
-        
-
-            
 - **Standard products:** Traceability between user requirements and verification may be sufficient.
 
-            
 - **Configured products:** The Design column in the RTM may be replaced with a link to configuration items.
 
-            
 - **Custom applications:** Full RTM from requirements through each level of specification to verification.
-
-        
-
-        
 
 For Agile developments, traceability is often inherent in the method and tools used (e.g., Scrum: epics/user stories → sprint backlog → sprint artifacts → release/retrospective). This should be verified during tool selection.
 
-        
-
 #### 13.4.4 Additional Traceability Considerations
-
-        
 
 Requirements traceability may be enhanced by adding:
 
-        
-
-            
 - Brief description of each requirement
 
-            
 - Change-control numbers or linkage to the change tool to track system history
 
-            
 - Indication of criticality of requirements (high-criticality requirements may reference multiple tests)
 
-            
 - Identification of where a requirement is satisfied by a procedure rather than software, with reference to the SOP and version number
 
-            
 - Testing level (unit, integration, acceptance), timing (development/test/operational), and location (global/local)
 
-            
 - Traceability to maintenance or calibration record for test instruments
-
-        
-
-        
 
 #### 13.4.5 Practical Issues to Consider
 
-        
-
-            
 - For linear projects, the traceability strategy should be established during planning. For Agile, at project start and reviewed continuously.
 
-            
 - Traceability could simply comprise references to supplier documentation, if adequate.
 
-            
 - Requirements need not trace to technical controls in all circumstances — they can trace to procedural controls (SOPs).
 
-            
 - For simple systems, a separate RTM is not recommended — sufficient traceability can be incorporated within document cross-references.
 
-            
 - For global systems, early and careful planning is required to resolve local/global requirements tracking.
 
-        
-
-    
-
-    
-    
-
-        
-
-## M6 Appendix M6 – Supplier Quality Planning (p141–p145)
-
-    
-
-        
+## **M6Appendix M6 – Supplier Quality Planning (p141–p145) Appendix M6 – **
 
 ### 14.1 Introduction
 
-        
-
 Quality planning defines how a supplier fulfills the quality requirements for a new software release, project, or service introduction. Quality planning defines the approach, tools, control mechanisms, roles and responsibilities, and deliverables. It ensures the appropriate application of the supplier's QMS based on risk.
-
-        
 
 Supplier organizations work across multiple industries and are often not governed by GxP regulations. Quality agreements and/or other contractual documents define the quality responsibilities and measures to be attained by the supplier to enable regulated companies to leverage their effort and activities.
 
-        
-
 The output of quality planning may be defined in IT tools, a document quality plan, project plan, Service Level Agreement (SLA), or other artifact such as a release plan.
-
-        
 
 ### 14.3 Considerations of Quality Planning
 
-        
-
 #### 14.3.1 Quality Agreements
-
-        
 
 Quality agreements are established between regulated companies and suppliers to define the responsibilities and measures to be taken to ensure computerized systems and services are fit for intended use. These quality measures enable the regulated company to leverage the supplier effort and avoid duplication of activities.
 
-        
-
 Quality planning should ensure that responsibilities and measures defined in quality agreements are addressed by the supplier's QMS. Suppliers may contract with multiple regulated companies; therefore quality agreements should define quality measures at an *objectives level* rather than imposing specific processes on the supplier.
-
-        
 
 #### 14.3.2 Quality Planning Considerations (Table 14.1)
 
-        
-            
-                
-                
-            
-| Area | Planning Consideration |
-| --- | --- |
-            
-                
-                
-            
-| System/Service/Project Approach | Life cycle approach appropriate to the project, products, and services being provided |
-            
-                
-                
-            
-| Risk Management | Risk-management approach and plans; managing customer input to risk assessments (patient safety, product quality, data integrity) |
-            
-                
-                
-            
-| Organization | Roles and responsibilities of supplier, customer, and third parties; third-party governance controls |
-            
-                
-                
-            
-| Specification | Process for capturing, analyzing, and recording customer requirements; whether requirements are integrated into core software or managed as custom developments |
-            
-                
-                
-            
-| Design and Configuration | How design records will be articulated; configuration management approach; customer review and approval expectations |
-            
-                
-                
-            
-| Traceability | How to ensure requirements traceability throughout the life cycle (IT tools, documents, traceability matrices) |
-            
-                
-                
-            
-| Build | Source-code management and integration tools; software coding standards, code review, and automated code verification tools |
-            
-                
-                
-            
-| Test | Risk-based test planning; testing roles and resources; use of test-management tools and automated testing; approach to defect management and regression testing |
-            
-                
-                
-            
-| Release Management | Acceptance criteria (based on quality planning requirements); release authorization requirements |
-            
-                
-                
-            
-| Installation | Procedures for software deployment/installation; approach to verification of deployment/installation |
-            
-                
-                
-            
-| Data Migration | Data migration approach; data verification approach to ensure data integrity |
-            
-                
-                
-            
-| Records/Document Management | Ownership of records and documents; records and document management processes including supplier/customer roles |
-            
-                
-                
-            
-| Deliverables | Life cycle records and information, software products, configuration, source code, services, training, user and admin manuals, reports |
-            
-                
-                
-            
-| Project Change Management | Project change process and governance responsibilities; transition from supplier processes to customer processes during handover |
-            
-                
-                
-            
-| Training | User and system support/administration requirements; training materials ownership; roles and responsibilities |
-        
-
-        
-
 ### 14.4 Projects Involving Multiple Organizations
-
-        
 
 Quality planning should ensure all parties understand:
 
-        
-
-            
 - Roles and responsibilities
 
-            
 - Dependencies between related activities
 
-            
 - Timescales for each party's activities
 
-            
 - Requirements to jointly participate in activities (e.g., interface testing, data, equipment, test execution)
 
-            
 - Responsibilities for deliverables (creation, review, approval, and sharing)
 
-        
-
-    
-
-    
-
-        
-
-## M7 Appendix M7 – Validation Reporting (p145–p149)
-
-    
-
-        
+## **M7Appendix M7 – Validation Reporting (p145–p149) Appendix M7 – **
 
 ### 15.1 Introduction
 
-        
-
 This appendix describes the computerized system validation reporting process. Accurate and informative planning and reporting are key elements of effective and successful governance, and **the validation report is often the first document related to a system that is examined during a regulatory inspection.**
-
-        
 
 This appendix should be read in conjunction with Appendix M1, which discusses computerized system validation planning.
 
-        
-
 ### 15.3 Roles and Responsibilities
-
-        
 
 Specific roles and responsibilities will vary depending upon the scope and scale of the project. They should cover who is responsible for the creation, review, and approval of the validation report(s). Any changes in roles and responsibilities that were made during the project should be noted in the report.
 
-        
-
 The quality unit is responsible for ensuring that the generated deliverables comply with requirements specified in the corresponding plan, are produced in line with company policies and procedures, and meet the appropriate regulatory requirements.
-
-        
 
 ### 15.4 Reporting Process
 
-        
-
 Where required by a computerized system validation plan, a validation report should be produced, focusing on aspects related to patient safety, product quality, and data integrity. It should summarize:
 
-        
-
-            
 - Activities performed
 
-            
 - Any deviations from the validation plan
 
-            
 - Outstanding and corrective actions
 
-            
 - A statement of fitness for intended use of the system
-
-        
-
-        
 
 The level of detail in the report should reflect the risk, complexity, and novelty of the system. For simple or low-risk systems, a separate document may not be needed.
 
-        
-
 The structure of the report should mirror the structure of the corresponding plan. The report should be approved, as a minimum, by the process owner and the quality unit.
-
-        
 
 For Agile systems, the report would be expected prior to initial release. The approach to reporting and acceptance of subsequent sprint releases should be defined in the validation plan.
 
-        
-
 #### 15.4.1 Contents of the Computerized System Validation Report
-
-        
 
 #### 15.4.1.1 Introduction and Scope
 
-        
-
 Purpose and scope of the report; who created the report and under what authority; summary of approach adopted; cross-reference to controlling plans, policies, or procedures.
-
-        
 
 #### 15.4.1.2 Scope Changes
 
-        
-
 Highlight and justify any modifications to the original approach. For large complex projects, this may reference a formal RAID log.
-
-        
 
 #### 15.4.1.3 Supplier Assessment
 
-        
-
 Supplier assessment activities should be summarized, or a reference made to other sources such as a Supplier Assessment or Audit Report. Regulatory accountability lies with the regulated company. Information available in other documents should not be repeated.
-
-        
 
 #### 15.4.1.4 Summary of Activities
 
-        
-
 Refer to existing documentation (e.g., verification or test reports); information should not be duplicated. May include subsections relevant to each phase.
-
-        
 
 #### 15.4.1.5 Summary of Deliverables
 
-        
-
 Verify that all deliverables noted in the corresponding plan are complete, adequate, and where appropriate approved. This includes system development documentation, information maintained in tools or supporting systems, and SOPs required for operational support.
-
-        
 
 #### 15.4.1.6 Summary of Deviations and Corrective Actions
 
-        
-
 Describe any activities and results that did not conform to plan expectations, explain the impact and corrective actions. Outstanding corrective actions should be highlighted and appropriate next steps identified or referenced.
-
-        
 
 #### 15.4.1.7 Statement of Fitness for Intended Use
 
-        
-
 There should be a clear statement on the status of the system and whether it is fit for intended use, bearing in mind any outstanding deviations or corrective actions.
-
-        
 
 #### 15.4.1.8 Training and Knowledge Management
 
-        
-
 Verify that personnel involved with new processes, equipment, or systems have been trained and that this training is documented. Knowledge management arrangements should be verified.
-
-        
 
 #### 15.4.1.9 Maintaining Compliance and Fitness for Intended Use
 
-        
-
 Outline how the compliant status of the system will be maintained. May efficiently be achieved by referring to relevant policies and procedures or other QMS elements.
-
-        
 
 #### 15.4.1.10–11 Glossary and Appendices
 
-        
-
 Definitions of unfamiliar terms; appendices including project-specific documentation and references to other relevant documentation such as policies, procedures, guidelines, and standards.
 
-    
-
-    
-
-        
-
-## M8 Appendix M8 – Project Change and Configuration Management (p149–p153)
-
-    
-
-        
+## **M8Appendix M8 – Project Change and Configuration Management (p149–p153) Appendix M8 – **
 
 ### 16.1 Introduction
 
-        
-
 This appendix covers change and configuration management of computerized systems **during the project phases prior to acceptance and handover to operational use.** Any controlled item that undergoes review, approval, or test should be governed by appropriate configuration management, and every controlled item should be subject to appropriate change management.
-
-        
 
 Change management should be applied to each controlled item upon its first formal approval to avoid unintentional or unauthorized change. Project change management processes typically are *simpler* than those for operational GxP systems due to fewer people involved, faster communication, and lower risk to patient safety, product quality, and data integrity.
 
-        
-
 **The point of transfer from project to operational change management should be clearly defined before handover to operational use.**
-
-        
 
 ### 16.2 Scope
 
-        
-
 This appendix applies to changes to controlled items such as documentation, application software, operating software, firmware, hardware, and system, master, and configuration data within the scope of the specified computerized system during its *project phase.*
-
-        
 
 ### 16.3.1 Configuration Management
 
-        
-
 All components of a computerized system, and changes to them, should be controlled. The exact hardware and software configuration of the system should be documented throughout the life of the system.
-
-        
 
 Configuration management consists of four elements:
 
-        
-
-            
 - **Configuration Identification** — WHAT to keep under control
 
-            
 - **Configuration Control** — HOW to perform the control
 
-            
 - **Configuration Status Accounting** — HOW to document the control
 
-            
 - **Configuration Evaluation** — HOW to verify that control
-
-        
-
-        
 
 Configuration management should begin as early as possible during development. The more formality introduced during development, the easier it is to document the baseline configuration for operational configuration management.
 
-        
-
 For a large or complex project, a separate Configuration Management Plan should be produced. The use of automated configuration management tools can bring significant advantages.
-
-        
 
 ### 16.3.2 Change Management
 
-        
-
 Project changes should be controlled and documented. As the project advances, the formality of the change management process generally increases:
 
-        
-
-            
 - Informal project team meetings and discussions
 
-            
 - Formally recorded project meetings
 
-            
 - Formal change management requests
-
-        
-
-        
 
 All deliverables subject to change management may include:
 
-        
-
-            
 - Planning documents; vendor/supplier contracts and assessments
 
-            
 - Requirements specifications; design specifications; quality review documents; risk assessments
 
-            
 - Test specifications including acceptance criteria; testing results and discrepancy handling; reports
 
-            
 - Hardware (PLCs, PCs, servers, communication interfaces, printers)
 
-            
 - Developed software code (PLC code, source code, executables, data files)
 
-            
 - Third-party software (operating systems, firmware, library files, configurable products, drivers, compilers, virtualization software)
 
-            
 - Configuration files (for configurable products, alarm and process setpoints)
 
-            
 - Manuals (user manuals, system manuals)
-
-        
-
-        
 
 #### 16.3.2.1 Changes during Development and Prototyping
 
-        
-
 Formal control should not be introduced too early during development in order to minimize non-productive work. Documents should be held in a draft status during development without formal change control. Version control should track the current working draft and ensure that documents are not unintentionally modified simultaneously by different project team members.
-
-        
 
 At the end of the development phase, document review and approval should act as the formal verification that the document content is complete, accurate, and fit for intended use.
 
-        
-
 #### 16.3.2.2 Changes to Code
-
-        
 
 Changes to code should be managed effectively to avoid unintended or unauthorized changes. The best solution is the use of an automated code management tool using a check-in and check-out process to protect code so that two developers cannot be simultaneously working on the same file.
 
-        
-
 #### 16.3.2.3 Key Change Management Steps
-
-        
 
 **Raising a Change:** Any member of the project should be able to raise a change. Each change should be uniquely identified and indexed.
 
-        
-
 **Change Review and Authorization:** Each project should have a designated project manager. Each change raised should be reviewed; based on a risk assessment there should be a decision to accept or reject. If accepted, define:
 
-        
-
-            
 - Scope of the change and which controlled items are affected
 
-            
 - Impact of the proposed change and need for further risk assessments
 
-            
 - Risks associated with making the change, and back-out plans if the change fails
-
-        
-
-        
 
 The quality unit should approve changes to regulatory and compliance user and functional requirements.
 
-        
-
 **Change Completion and Approval:** When the change has been implemented, documentation revised, and appropriate verification performed, the change should be approved by the project manager and closed.
 
-    
-
-    
-
-        
-
-## M9 Appendix M9 – Documentation and Information Management (p153–p157)
-
-    
-
-        
+## **M9Appendix M9 – Documentation and Information Management (p153–p157) Appendix M9 – **
 
 ### 17.1 Introduction
 
-        
-
 This appendix covers the management of relevant information created during the development, implementation, and validation of applications, which is required to demonstrate that the application is in a state of control.
-
-        
 
 As tools and approaches to information management have evolved, the emphasis on all evidence residing in signed hard-copy documents has also evolved. Major new considerations are:
 
-        
-
-            
 - Much information will never exist on paper, or even in the form of a document
 
-            
 - Some information will be created and managed throughout its lifetime in a tool
 
-            
 - Documentation needs to be searchable — there must be a robust search engine able to locate information when needed
 
-            
 - There is no need to create documents simply for the sake of having a document in case of regulatory inspection. If it is not useful for managing the application in a state of control, it is not needed.
-
-        
-
-        
 
 ### 17.3 Guidelines
 
-        
-
 A procedure should be established for management of documentation covering:
 
-        
-
-            
 - Production
 
-            
 - Review
 
-            
 - Approval (where appropriate)
 
-            
 - Issue
 
-            
 - Change
 
-            
 - Withdrawal
 
-            
 - Storage
-
-        
-
-        
 
 #### 17.3.1 Documentation Production
 
-        
-
 Documentation standards should be agreed, including the use and management of tools where information may reside, and the searchability of the information. Documents should be under version control and in draft form prior to formal issue. Draft and approved versions should be clearly distinguished.
-
-        
 
 Where information resides in a database or tool, data integrity controls should be in place to ensure that information is correct and trustworthy. Only people with a justified need to enter or change the content should have access rights. Audit trails may be appropriate.
 
-        
-
 It is critical that information can be located when needed. This may require metadata to be created for indexing purposes.
-
-        
 
 #### 17.3.2 Documentation Review
 
-        
-
 The review of documentation should be part of the business process of system build, with the level of formality based on risk. Review is typically most effective when carried out by an SME. For example:
 
-        
-
-            
 - For test records: the most effective review will be by a business process SME
 
-            
 - For release of an application at end of validation: the appropriate SME is the quality unit
-
-        
-
-        
 
 If review results in remedial actions, those measures should be assigned to a responsible party, addressed, and completed before submission for approval.
 
-        
-
 #### 17.3.3 Documentation Approval
-
-        
 
 Formalization of the review and approval can take a variety of forms, ranging from a pen and ink signature to an electronic approval in an EDMS, to a separate record where an SME attests to having reviewed and accepted the information.
 
-        
-
 The reason for each approval should be defined (e.g., technical approval, system release). Approvals should be dated. Unnecessary approvals should be avoided — it is extremely unusual that more than two approvals are justifiable.
-
-        
 
 #### 17.3.4 Documentation Issue
 
-        
-
 As soon as documentation is approved, all indexing actions needed to ensure that the information is searchable and can be located should be completed. **Documentation that cannot be located has no value, and worse, may lead to compromised decision-making in its absence.**
-
-        
 
 Superseded versions should be removed from use and clearly marked as such. Those versions may need to be archived for future deviation investigations.
 
-        
-
 #### 17.3.5 Documentation Changes
-
-        
 
 Modifications to documentation should be controlled. Finalized documentation, whether in the form of an actual document or in a tool or database, should be managed under change control. The rigor of the change-control process should be based on risk.
 
-        
-
 Modifications to approved documentation should be reviewed and approved by the same functions or organizations that performed the original review and approval, unless specifically designated otherwise.
-
-        
 
 #### 17.3.6 Documentation Withdrawal
 
-        
-
 There should be a defined procedure for withdrawal of approved documentation, normally handled through change control. The documentation index and history should be updated. Any controlled copy holders should be notified. If required to be retained, withdrawn documentation should be archived securely.
-
-        
 
 #### 17.3.7 Documentation Records and Storage
 
-        
-
 Documentation and associated information should be stored safely and securely (whether by paper-based or electronic means), according to defined procedures. They should have standard data integrity protections against accidental and malicious damage, and should be retrievable throughout the defined retention period. Safeguards should prevent the unintended use of unapproved, superseded, and withdrawn documents.
 
-    
-
-    
-
-        
-
-## M10 Appendix M10 – System Retirement (p157–p162)
-
-    
-
-        
+## **M10Appendix M10 – System Retirement (p157–p162) Appendix M10 – **
 
 ### 18.1 Introduction
 
-        
-
 This appendix provides guidance on planning the orderly retirement of computerized systems. It assumes that the regulated company has already made a decision to retire a system and has identified the data to be archived and/or migrated to another system(s). Throughout the data and system life cycle it is paramount that data integrity is at the forefront of the solution design; this also carries through to retirement.
-
-        
 
 **New in 2nd Edition:** Inclusion of retirement process owner and data owner responsibilities; accounting for cloud service providers/XaaS; inclusion of XaaS exit strategies.
 
-        
-
 ### 18.3 System Retirement Planning
-
-        
 
 #### 18.3.1 General Guidelines
 
-        
-
 System retirement is a process consisting of three main activities:
 
-        
-
-            
 - **Retirement** — System is removed from active operations; normal operational users are deactivated and interfaces disabled. No data is added from this point forward. "Special access" is retained for data reporting, results analysis, and support.
 
-            
 - **Decommissioning** — The controlled shutdown of a retired system. A system may be stored if required to be reactivated at a later date (e.g., for retrieval of regulatory data or results).
 
-            
 - **Disposal** — Data, documentation, software, or hardware can be permanently destroyed. Each may reach this stage at a different time. Data and documentation may not be disposed of until they have reached the end of the record-retention period as specified in the record-retention policy.
-
-        
-
-        
 
 The system retirement process should be documented in a **system retirement plan**, receiving input from business process owner, quality unit, system owner, and IT.
 
-        
-
 #### 18.3.2 Contents of the System Retirement Plan
-
-        
 
 The plan should describe the approach including: introduction; roles and responsibilities; overview and implications; business process description; retirement approach; data and record migration, archiving, and destruction; verification approach; ending system maintenance and support; change management; schedule; retirement execution; system documentation.
 
-        
-
 #### 18.3.2.3 Overview and Implications
 
-        
-
-            
 - **Strategy** — Document impact on technology strategy, including archive access controls and future viewing of data. In order to access archived data, the strategy may require retention of software (including licenses) and hardware with appropriate operating system.
 
-            
 - **Process** — Describe impact on support of the business process going forward.
 
-            
 - **Technology** — Determine and document the scope and boundaries of the system to be retired, the rationale, and other interfacing systems. Identify new location of primary records. Consider data warehouses and data lakes. Identify infrastructure components (networking, etc.) to be decoupled.
 
-            
 - **Personnel** — Describe impact on the user base.
-
-        
-
-        
 
 #### 18.3.2.5 Retirement Approach
 
-        
-
 A decision on whether the system will be replaced should be documented. If it is to be replaced, retirement planning should be referenced and synchronized with implementation planning for the replacement system. A risk assessment should be performed to identify and mitigate potential risks introduced by resulting changes initiated by the retirement process.
-
-        
 
 System retirement is a formal life cycle phase and should be treated as such by identifying the required inputs, outputs, standards, activities, and deliverables.
 
-        
-
 #### 18.3.2.6 Data and Record Migration, Archiving, and Destruction
-
-        
 
 The plan should identify which data should be migrated, archived, or destroyed, and the associated approval process. The approach should take into consideration:
 
-        
-
-            
 - Data should be backed up and stored per data retention schedules and company procedures.
 
-            
 - Before data is moved or archived, the appropriate data retrieval procedures and technology should be available and tested.
 
-            
 - Cloud service provider/XaaS contractual agreements should include language that enables migration of data to other systems, or holds data in archive for a predetermined period.
 
-            
 - Archived data media should be stored and maintained per manufacturer recommendations and under required environmental conditions.
 
-            
 - Data migration procedures should be tested or confirmed before data is completely transferred out of the system. Migration/conversion methods and verification should be defined.
-
-        
-
-        
 
 #### 18.3.2.8 System Maintenance and Support Discontinuance
 
-        
-
 Required actions associated with the modification or ending of internal and external support agreements, operations, backup and restore, DR and business continuity plans, technical support, security and user administration, SLAs, cloud subscriptions, and configuration management programs should be planned and documented. The retired system should also be removed from any inventory lists.
-
-        
 
 #### 18.3.2.9 Change Management
 
-        
-
 Formal change management procedures should be followed for the retirement of a computerized system to ensure the retirement process is controlled. Changes resulting from system retirement (e.g., changes in support roles and associated training) should also be addressed. The approach to communicating the impact on affected stakeholders should be documented.
-
-        
 
 #### 18.3.2.10 Schedule
 
-        
-
 Individual retirement tasks should be documented along with who is responsible, associated due dates, and task dependencies. Critical milestones and checkpoints should be included. Scheduling archive purge periods to align with record-retention requirements should be assessed to determine potential risks associated with the purge and appropriate timing of archive disposal.
-
-        
 
 #### 18.3.2.11 Retirement Execution
 
-        
-
 The timing of retirement execution should be carefully considered, including cutover to a replacement system (phased in parallel, or a clean cutover). Business continuity plans should be in place. A back-out plan is suggested, with detailed steps or references to configuration and reinstallation procedures to make the retired system operational again if necessary.
-
-        
 
 #### 18.3.2.12 System Records, Software, and Life Cycle Documentation
 
-        
-
 System records, software including source code for custom applications, and life cycle documentation (validation documentation, change history, system-related SOPs) should be defined. Decisions regarding whether to retain specific documents should be based on potential future usefulness and the risk associated with destroying them. Information to be retained should have a designated data owner and be placed in a defined secure location using a taxonomy that is helpful in maintaining traceability to archived records.
-
-        
 
 ### 18.4 System Retirement Reporting
 
-        
-
 After the system retirement plan is executed, a summary (report, checklist, etc.) should be created describing the execution and results. If testing or verification activities were executed, the results should be summarized, and any deviations discussed along with their resolution. This summary also may include an index or registry of all documentation related to the retired system and where it is archived.
-
-    
-
-    
-
-        
 
 ## Section Summary —
 
-    
-
 Appendices M5–M10 cover the project life cycle management tools that are essential for maintaining control over computerized systems from design through validation and eventual retirement. Together they form a coherent framework for CSV governance.
-
-    
-
-    
-
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
-    
 
 ⇧
 
 # Appendices M11 & M12: IT Infrastructure & Critical Thinking
 
-    
-
-    
-
 ISPE GAMP 5 Second Edition | Appendix M11 (p163–p171) & Appendix M12 (p172–p182)
 
-    
-
-## Appendix M11: IT Infrastructure — Introduction & Principles
-
-    
-
-        
+## **Appendix M11: IT Infrastructure — Introduction & Principles Appendix M11: IT — **
 
 ## 19.1 Introduction
 
-        
-
 EU Annex 11 states: *"The application should be validated; IT infrastructure should be qualified."* However, due to the dynamic nature of infrastructure, it is best to think of achieving and maintaining a qualified state as an exercise of **managing to compliance**. This state of control is the cornerstone of qualification as expected in EU Annex 11.
-
-        
 
 A controlled IT infrastructure is a prerequisite for ensuring that GxP applications are managed in a state of control. Infrastructure plays a significant role in ensuring applications are on a stable platform with reliable required communications. The IT infrastructure supports application performance and availability as well as the **integrity, availability, security, and confidentiality of data**. Many of the processes required to ensure this rely on some aspects of infrastructure management, such as cybersecurity, load balancing, backup and restore, disaster recovery, etc.
 
-        
-
 #### 19.1.1 Changes from GAMP 5 First Edition
-
-        
 
 This appendix was originally identified as Appendix S5, dealing only with managing quality in an outsourced environment. This significantly revised appendix applies current risk-based thinking on good practice for managing infrastructure that resides within a regulated company's own facilities *as well as* ensuring those of external suppliers — for example, cloud-based suppliers of Infrastructure as a Service (IaaS), Platform as a Service (PaaS), and Software as a Service (SaaS). Appendix S5 has been withdrawn and the revised material renamed as Appendix M11.
 
-        
-
 ## 19.2 Principles and Assumptions
-
-        
 
 #### 19.2.2 Infrastructure Qualification versus Application Validation
 
-        
-
 A regulated company approaches implementing an application by developing requirements, configuring the application as necessary, performing risk-based verification, and managing it to a controlled state — these combined efforts comprise **validation**. This is far simpler for most infrastructure elements. The company has no input into the design and manufacture of components such as servers and network switches, which are effectively off-the-shelf purchases.
-
-        
 
 After the initial component build has been verified to perform acceptably, new components are simply configured to the standard. Testing of each build may be extremely limited (e.g., verifying that a network node can reach another node) or absent (e.g., by using a review-by-exception approach). Infrastructure, which is continually evolving, must be managed to a controlled state.
 
-        
-
-            
-
 #### Key Regulatory Distinction
-
-            
 
 The greater dynamism of infrastructure, combined with the widespread use of standardized components using the **"one qualification, many implementations" model**, is the primary difference highlighted in EU Annex 11. Infrastructure software is **GAMP Category 1**, and as such is *qualified*, not validated.
 
-        
-
-        
-
 #### 19.2.3 Component-Based Nature of Infrastructure
-
-        
 
 Infrastructure is generally comprised of many instances of certain standard components — network switches, servers, and storage devices deployed in standard basic configurations. If these standard configurations have been demonstrated to perform acceptably, it is a reasonable assumption that additional components deployed in those configurations also will. This indicates that IT infrastructure presents **lower risk than applications**.
 
-        
-
 #### 19.2.4 Infrastructure Automation
-
-        
 
 **Infrastructure as Code (IaC)** is a means of provisioning and deploying infrastructure using DevOps processes. IaC enables organizations to automate the provisioning of infrastructure, reducing the risk of human errors. Infrastructure code is subject to configuration management ensuring all code changes are traceable. A "one qualification, many deployments" approach can be taken, particularly with standard virtualized environments.
 
-        
-
 An out-of-the-box server can have the OS, middleware, layered software, and security policies loaded via an automated process. These automated builds can produce log files or perform simple automated tests, and a review-by-exception process obviates the need for further verification. Critical thinking must be applied when deploying such "standard" environments, however — cybersecurity risks may differ from one instance to the next.
-
-        
 
 #### 19.2.5 Tools
 
-        
-
 Automated tools such as a **Configuration Management Database (CMDB)** and IT service management tools do not require validation, although proper installation, use, and a state of control for them is required.
-
-    
-
-    
-
-        
 
 ## —
 
-        
-
-            
-
-## M11: Risk Management, Quality Role & IT Processes
-
-    
-
-        
+## **M11: Risk Management, Quality Role & IT Processes M11: IT **
 
 ## 19.3 Risk Management and Infrastructure
 
-        
-
 IT departments service the entire enterprise, not just GxP areas. Cases may arise where a risk to the enterprise as a whole requires a change that cannot go through a time-consuming change control process. For example, if a **zero-day security vulnerability** is recognized that threatens serious harm, remediation will be done as rapidly as possible. IT risk priorities tend to focus on risks to system availability, performance, and information security — these priorities actually address GxP concerns: applications are available when needed, they work well, and there is data integrity.
-
-        
 
             "Threats to the IT Infrastructure environment largely come from cyberattacks, unauthorized access, system and component failure, or inadequate resource provisioning. These risks are continuous, and it is therefore imperative that the currency of IT infrastructure controls is maintained (e.g., through security patching) and monitoring is in place to provide early detection of any threat."
               
 *— Reid and Wyn*
-        
-
-        
 
 ## 19.4 The Role of Quality
 
-        
-
 Heavy quality unit involvement in infrastructure is **unwarranted and potentially extremely inefficient**. Infrastructure groups manage many non-impact changes and the risk to patients for IT infrastructure decisions is typically extremely low. The US FDA 21 CFR Parts 210/211 preamble states:
-
-        
 
             "Functions that are properly those of the engineering department or other specialized units because of their unique training and experience should not be duplicated or usurped by the quality control unit. Where expertise is in other units, the responsibility of the quality control unit is to assure that such expertise has been utilized."
         
 
-        
-
 It is advisable that IT organizations establish an internal **IT Quality (ITQ) function**. This function should oversee IT processes to ensure they support a state of control, and should be familiar enough with GxP expectations to know when the quality unit should be involved. For example, it may make sense for quality to be involved in a change of database engines used in multiple GxP applications, or when a major OS upgrade is undertaken — but not for microcode updates or new virus definitions.
-
-        
 
 Responsibility for any quality decision should be procedurally defined.
 
-        
-
 ## 19.5 IT Processes in Scope for Infrastructure Qualification
-
-        
 
 #### 19.5.1 Security Management
 
-        
-
-            
 - Access control and password management — only authorized people have access
 
-            
 - Management of administrative access — to minimize elevated privileges
 
-            
 - Cybersecurity — data segregation, firewalls, intrusion detection, antivirus, vulnerability management
 
-            
 - Management of encryption key(s)
-
-        
-
-        
 
 IT will approach data integrity with a generic enterprise-wide solution unless informed that additional protections are needed. The business process owner and/or data owner must assess supporting infrastructure processes and request modification if necessary.
 
-        
-
 #### 19.5.2 Backup and Recovery
-
-        
 
 Processes need to include analysis of the required frequency of backup to meet business needs. For GxP applications, both **Recovery Point Objectives (RPO)** — which dictates backup frequency — and **Recovery Time Objectives (RTO)** — which dictates interval between system failure and recovery — must be defined, testable, and agreed by the business owner. All backup processes should be periodically verified to demonstrate recoverability.
 
-        
-
 #### 19.5.3 Archive and Restore
-
-        
 
 Processes should include how and when data (including metadata) is moved to an archive, how archived data can be accessed and by whom, and how to destroy data no longer needed. Data needs to be readable throughout the retention period.
 
-        
-
 #### 19.5.4 Change Management
-
-        
 
 Infrastructure change management cannot be a direct parallel to change-control processes for GxP applications. Infrastructure changes should be managed at the IT process layer, not at the product life cycle management process layer. The ITIL concept of **standard changes** can be extended into GxP infrastructure management — a list of pre-agreed changes that IT can make without additional oversight.
 
-        
-
 #### 19.5.5 Configuration Management
-
-        
 
 Configuration management is both a regulatory expectation and necessary for running an effective IT operation. In a modern IT environment, it is impractical to achieve this without a CMDB.
 
-        
-
 #### 19.5.6 Disaster Recovery and Business Continuity Planning
-
-        
 
 DR and BCP processes should be defined, documented, and practiced. GxP process owners need to understand that enterprise risk priorities may supersede GxP priorities — if the business may fail without finance systems, they may be restored before manufacturing systems. If there is a potential public health impact (e.g., a drug shortage), that should be part of the prioritization consideration.
 
-    
-
-    
-
-        
-
 ## —
-
-        
-
-            
 
 #### QAIT
 
-            
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-        
-
-            
-
 #### IT QualityITQ —
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### RPO vs. RTO —
 
-            
-
-            
-
-                
-
-                
-
-            
-
-            
-
-            
-
-        
-
-        
-
-            
-
 #### IT vs. GxP
-
-            
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-        
-
-        
-
-            
 
 #### 
 
-            
-
-            
-
-            
-
-        
-
-    
-
-## M11: Cloud Infrastructure
-
-    
-
-        
+## **M11: Cloud Infrastructure M11: **
 
 ## 19.6 Cloud Infrastructure
 
-        
+Any use of cloud resources brings infrastructure qualification considerations into scope. Figure 19.3🔍 illustrates the various levels of delegation of control to the supplier for IaaS, PaaS, and SaaS deployments. In all cases, however, the infrastructure management and control expectations are constant.
 
-Any use of cloud resources brings infrastructure qualification considerations into scope. Figure 19.3 illustrates the various levels of delegation of control to the supplier for IaaS, PaaS, and SaaS deployments. In all cases, however, the infrastructure management and control expectations are constant.
-
-        
-
-            
 - **IaaS (Infrastructure as a Service)**: Infrastructure management is shared between the regulated firm and the supplier. The regulated company manages OS, middleware, applications, and data.
 
-            
 - **PaaS (Platform as a Service)**: All infrastructure activities are delegated to the supplier. The regulated company manages applications and data.
 
-            
 - **SaaS (Software as a Service)**: All infrastructure activities are delegated to the supplier. The regulated company manages data and configuration only.
-
-        
-
-        
 
 Cloud suppliers are generally *not* GxP regulated. This does not mean they are universally unsuited to host GxP applications. The core question is whether they have an adequate **state of control** over their infrastructure — determined via an effective supplier evaluation process (Appendix M2) and a robust set of contractual agreements on service levels, quality, and monitoring.
 
-        
-
 #### Data Integrity Considerations for Cloud GxP
 
-        
-
-            
 - **Access management**: What are the implications if supplier staff see GxP data?
 
-            
 - **Encryption**: If data in motion and/or at rest is encrypted, who manages the key?
 
-            
 - **DR**: What happens if the cloud supplier has a major incident? RTO and RPO must be agreed.
 
-            
 - **Certifications**: Which certifications does the provider hold? (e.g., ISO 27001, SOC 1, SOC 2 Type 1/2, HITRUST)
 
-            
 - Frequency of vulnerability scans and third-party penetration tests
 
-            
 - Local, regional, and global redundancies and segregation
 
-            
 - Deployment model and service model compatibility with the level of GxP risk
-
-        
-
-        
 
 Cloud service suppliers are not GxP regulated, and it is the **accountability of the regulated organization** using such services to ensure that quality processes provide an equivalent level of assurance that patient safety, product quality, and data integrity are protected.
 
-        
-
 ## 19.7 Continual Improvement
-
-        
 
 For all IT infrastructure, but especially for cloud implementations, there should always be the question: "What could we be doing better?" Key processes should be monitored by the service provider, with adherence to agreed SLAs and inclusion of specific Key Process Indicators (KPIs) in the monitoring.
 
-    
-
-    
-
-        
-
 ## —
-
-        
-
-            
-
-#### IaaS / PaaS / SaaS — GxP
-
-            
-                
-                    
-                        
-                        
-                        
-                        
-                    
-| --- | --- | --- | --- |
-                
-                
-                    
-                        ****  
-
-                        
-                        
-                        
-                    
-| IaaSAWS EC2 | | OS | OS |
-                    
-                        ****  
-
-                        
-                        
-                        
-                    
-| PaaSAzure App Service | OS | | SLA |
-                    
-                        ****  
-
-                        
-                        
-                        
-                    
-| SaaSVeeva Vault | | | Configuration Qualification |
-                
-            
-
-        
-
-        
-
-            
 
 #### eDMSVeeva Vault QualityDocs
 
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-        
-
-            
-
 #### ITQA
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### GxP
 
-            
-
-                
-
-                
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-    
-
-## Appendix M12: Critical Thinking — Introduction & Scope
-
-    
-
-        
+## **Appendix M12: Critical Thinking — Introduction & Scope Appendix M12: — **
 
 ## 20.1 Introduction
 
-        
-
 This appendix discusses the concept of **critical thinking** to proactively optimize the approach taken to ensure quality and compliance of computerized systems (i.e., better development, testing, operation, and maintenance) within the context of the business processes they support.
-
-        
 
 While GAMP 5 promotes a risk-based approach to ensuring fitness for intended use, some practitioners do not apply sufficient thought to ensure the approach they are taking is **customized and proportionate** to the needs of different systems. The use of rigid tables, overly prescriptive templates, and tick-in-the-box methods impedes critical thinking and could inhibit innovation and the adoption of new technologies. Wasting time and effort on non-value-added activities can lead to insufficient or excessive work with potential budget overspend and delays, and may reduce focus on more valuable and essential quality activities.
 
-        
-
 ## 20.2 Scope
-
-        
 
 Critical thinking should be applied in a holistic manner to the entirety of the business process that the computerized system supports. The role of ancillary equipment and interfaces should be included in scope to avoid missing potential risks to patient safety, product quality, and data integrity.
 
-        
-
 The interplay between **system and data life cycles** should also be subject to critical thinking. Multiple systems may be involved in supporting a single data life cycle — data may be created and processed in one system, reported in an ERP system, and archived in another.
-
-        
 
 Operational compliance and data integrity is highly dependent upon **personal behaviors**. Critical thinking will play a key role in addressing human factors through effective behavioral, procedural, and technical controls, recognizing that the strength of quality culture varies across different locations driven by geographic values and local historical context.
 
-        
-
 ## 20.3.1 Facilitating Critical Thinking
-
-        
 
 For critical thinking to be used successfully, the QMS and validation policy must permit and encourage its application. Examples:
 
-        
-
-            
 - Where templates are provided, they are used as an *aide memoire* to ensure relevant areas are covered rather than as a form to be completed.
 
-            
 - An addition or alternative to templates can be provided to cover essential elements, leaving the format and structure open to optimization for the particular system.
 
-        
-
-    
-
-    
-
-        
-
 ## —
-
-        
-
-            
 
 #### GAMP 5
 
-            
-
-            
-
 Apply proportionate effort where it matters most.
 
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-        
-
-            
-
 #### 
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### CSV
 
-            
-
-                
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-        
-
-            
-
 #### QMS
 
-            
-
-            
-
-        
-
-    
-
-## M12: Applying Critical Thinking — Planning, Risk, Requirements & Supplier
-
-    
-
-        
+## **M12: Applying Critical Thinking — Planning, Risk, Requirements & Supplier M12: — **
 
 ## 20.3.2 Planning
 
-        
-
 Critical thinking should be applied to understand both implementation risks and functional risks to patient safety, product quality, and data integrity. Business process flowcharts and data flow diagrams help identify risks associated with the process. Data integrity cannot be achieved without a complete understanding of the data flow.
-
-        
 
 Examples of planning using critical thinking include:
 
-        
-
-            
 - Using business process mapping and data flow diagrams to understand where the computerized system will fit, what regulated data will pass through it
 
-            
 - Defining consistent nomenclature for use in the process
 
-            
 - Selecting a solution that best fits business requirements, minimizing configuration and customization — it may be more pragmatic to adjust the business process to fit a standard application
 
-            
 - Understanding the interfaces needed to other systems and what standard interfaces are available
 
-            
 - Planning for how the system should respond in an error or failure situation
-
-        
-
-        
 
 ## 20.3.3 Quality Risk Management
 
-        
-
 Critical thinking should be applied to ensure risk assessments are as effective as possible. When assigning a severity rating for a potential failure, consider the overall risk to patient safety, product quality, and data integrity. A complete failure to meet a requirement may render part of the system non-functional, but if the overall system remains fit for intended use, this might be acceptable.
-
-        
 
 Similar functions may be grouped in a **recursive hierarchy** of major and subsidiary functions. A subsidiary function cannot have a higher risk than the overarching function — so there may be little or no benefit to assessing subsidiary functions of a low-risk overarching function. Assessing risk at the major and/or subsidiary level as needed ensures selection of optimal control measures and testing rigor commensurate with risk.
 
-        
-
 ## 20.3.4 Requirements
-
-        
 
 Critical thinking should ensure that requirements specifically relating to regulatory compliance are **tailored to the system's intended use** rather than indiscriminately applying every potentially applicable regulatory reference. For example, critical thinking should be applied to identify GxP regulated records that need an audit trail rather than defaulting to all data requiring audit trails regardless of context.
 
-        
-
 **Requirements Management and Traceability Tools**: Where sufficient detail and approvals are contained within the tool, there is no benefit to manually creating separate documentation. Some tools allow reports to be generated in portable formats (requirements, test outcomes, traceability matrices) on request.
-
-        
 
 ## 20.3.5 Supplier Assessment and Selection
 
-        
-
 Knowledge of the processes followed by the supplier can enable the regulated company to **reduce their validation effort by leveraging supplier activities**. Supplier activities should focus on ensuring their product meets their specifications. Where the supplier has used a risk-based approach, the regulated company should determine if their assessment of risk is different and adjust accordingly.
-
-        
 
 Critical thinking should ensure supplier selection criteria contain performance measures such as system reliability, service continuity, and reputation for customer responsiveness. For SaaS, reliance on the supplier may include the data life cycle.
 
-        
-
 Key principles for leveraging supplier effort:
 
-        
-
-            
 - Regulated companies are accountable for ensuring the system is fit for intended use and should evaluate the supplier's approach against their intended use
 
-            
 - Leveraging is enabled through a risk-based approach to IT/IS service provider assurance
 
-            
 - Supplier deliverables should be assessed for suitability, accuracy, and completeness — there is no value in recreating documentation in a different template
 
-            
 - Information and test evidence within automated test tools have the same status as formal documentation
 
-            
 - Where feasible, supplier should develop customer-requested functionality into their mainstream product rather than creating special versions
 
-        
-
-    
-
-    
-
-        
-
 ## —
-
-        
-
-            
 
 #### Categorization
 
-            
-
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-        
-
-            
-
 #### 
-
-            
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### Requirements
 
-            
-
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-        
-
-            
-
 #### Leverage
 
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-    
-
-## M12: Critical Thinking Applied to Testing, Build & Operations
-
-    
-
-        
+## **M12: Critical Thinking Applied to Testing, Build & Operations M12: **
 
 ## 20.3.6 Testing
 
-        
-
 Critical thinking should facilitate the testing of functions with appropriate risk priorities that reflect:
 
-        
-
-            
 - The potential impact on patient safety, product quality, and data integrity — higher-risk functions may require greater test rigor
 
-            
 - Prior testing of the function either in the supplier's development life cycle or the regulated company's life cycle
 
-            
 - The degree of confidence in that prior testing based on supplier assessment
-
-        
-
-        
 
 The aim of testing is to **identify and allow the removal of defects and confirm fitness for intended use** — not to produce documentation for documentation's sake. Critical thinking can optimize test approaches such as:
 
-        
-
-            
 - Combining tests to minimize repeated test setup activities
 
-            
 - Differentiating between **proving steps** and **non-proving steps** — test evidence is only captured for proving steps that demonstrate a higher-risk GxP or business requirement has been fulfilled
 
-            
 - Ensuring testers have the skills and expertise to execute tests, obviating the need for overly prescriptive test instructions
 
-            
 - Leveraging automated test tools and test-management tools in place of extensive manual effort
 
-            
 - Managing incidents and their corrective actions to include appropriate regression testing
-
-        
-
-        
 
 In most cases, screenshots and excessive commentary do not add value and are unnecessary. The critical-thinking rationale behind the test strategy must be documented.
 
-        
-
 ## 20.3.7 Managing Build and Configuration
-
-        
 
 The traditional "static snapshot" approach of installation qualification and configuration management has proven difficult to apply and is ineffective when using modern virtual environments and cloud computing. If the build is maintained in an automatically controlled environment with regular checks, then the need to independently confirm the installation is reduced to a **review by exception**.
 
-        
-
 Most automated build installers provide reporting tools for configuration and setup anomalies. Such configuration management of the build script ensures continuous verification is synchronized to compare the current system against the correct setup conditions. Technology has superseded the need for traditional aspects of qualification in many cases.
-
-        
 
 ## 20.3.8 Operation and Maintenance
 
-        
-
 #### 20.3.8.1 System Evolution
-
-        
 
 The regulatory expectation is that application updates offering improvements to patient safety, product quality, or data integrity should be applied when available — GxP systems should not run on obsolete or unsupported operating systems. Critical thinking allows change to be **embraced in support of improved operation** rather than avoided due to the perceived validation burden.
 
-        
-
 When a defect is discovered during operational use, it is important to apply critical thinking during root-cause analysis. An excessive response may be to initiate a "test all" approach. Instead, test metrics should be used to confirm that the actual escape rate of defects is in line with assumptions. An unacceptable number of escaped defects in high-risk functions requires a re-evaluation of the functional risks and testing strategies.
-
-        
 
 #### 20.3.8.2 Ways of Working
 
-        
-
 Operational compliance is highly dependent on the working practices of users. SOPs, video how-to guides, and built-in online help should be practical and intuitive. Critical thinking should ensure supervisory measures are proportionate to risk — for example, where is it appropriate to have a contemporaneous second-person verification versus a later check of completed data activity.
-
-        
 
 #### 20.3.8.3 Training
 
-        
-
 When introducing a new or updated system, critical thinking helps identify and target appropriate training levels for different audiences. Training is not necessarily effective if it just repeats earlier content or if it relies on attendees only documenting they have read and understood the material.
 
-    
-
-    
-
-        
-
 ## —
-
-        
-
-            
-
-#### Test Depth
-
-            
-
-            
-                
-                    
-                        
-                        
-                    
-| --- | --- |
-                
-                
-                    
-                        
-                        
-                    
-| + | |
-                    
-                        
-                        
-                    
-| + COTS | |
-                    
-                        
-                        
-                    
-| + | |
-                    
-                        
-                        
-                    
-| + COTS | review-by-exception |
-                
-            
-
-        
-
-        
-
-            
 
 #### Proving Steps vs. Non-Proving Steps
 
-            
-
-            
-
-                
-
-                
-
-            
-
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
+#### 
 
 #### 
 
-            
+#### Test Depth
 
-            
-
-            
-
-            
-
-        
-
-        
-
-            
-
-#### 
-
-            
-
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-    
-
-## M12: Periodic Review, Retirement, Inspection Readiness & Organizational Maturity
-
-    
-
-        
+## **M12: Periodic Review, Retirement, Inspection Readiness & Organizational Maturity M12: **
 
 ## 20.3.9 Periodic Review
 
-        
-
 During periodic review, the system is assessed for the cumulative impact of changes, defects, or regulatory updates. The **frequency of periodic review should be based on the GxP impact of the system**, with high-risk systems reviewed more frequently. Critical thinking should be used to determine whether the review frequency should be increased or decreased based on the outcome of the previous review and performance trends.
-
-        
 
 Effective system and process performance monitoring and metrics allows **decreased periodic review frequency, extent, and formality**. Critical thinking combined with system performance metrics can identify areas for improvement, including considering whether incremental changes have extended the system beyond its intended use.
 
-        
-
 ## 20.3.10 Retirement
-
-        
 
 Retirement consists of withdrawal, decommissioning, and disposal. Critical thinking and risk management are needed to effectively evaluate what data needs to be retained, for what period, and how:
 
-        
-
-            
 - Identifying what data needs to be archived and how to transfer it if the archival solution is not the original system
 
-            
 - Balancing the risk of data migration against the complexity of maintaining a legacy copy
 
-            
 - Understanding the diminishing value of data as it moves through the retention period — data that is inactive may be retained in a static, easily readable, and portable format
-
-        
-
-        
 
 Planning the means to meaningfully view archived data if the original system is decommissioned — data formats between original and archive systems may differ. Automated migration tools should be assessed on actual use cases to test potential problems and confirm correct migration.
 
-        
-
 ## 20.3.11 Inspection Readiness
-
-        
 
 Critical thinking should be applied to support ongoing compliance and inspection readiness. Rationales should be available to explain how high-risk areas were assessed and identified — these justify the level of effort, formality, and documentation. **A regulator will view the computerized system with a fresh pair of eyes**.
 
-        
-
 During an inspection, a regulated company may need to provide evidence of the assessment and qualification of their supplier. Holding duplicate copies of supplier information that rightly belong in the supplier QMS is unnecessary and brings the risk of inconsistency and increased complexity for no quality benefit.
-
-        
 
 ## 20.3.12 Organizational Capability
 
-        
-
 The successful application of critical thinking is highly dependent on the ability of the organization to build and maintain the necessary supportive mindset and culture within its workforce. Open and constructive discussion between stakeholders is vital to evaluate and challenge assumptions and organizational precedents to make better decisions.
-
-        
 
 ### Table 20.1: Critical-Thinking Capability Maturity
 
-        
-            
-                
-                    
-                    
-                
-| Maturity Level | Capability |
-| --- | --- |
-            
-            
-                
-                    ****
-                    
-                
-| 1 | No application of critical thinking evident in decision-making either by practitioners or by management |
-                
-                    ****
-                    
-                
-| 2 | Some awareness of critical thinking within the organization but highly variable across individuals and departments |
-                
-                    ****
-                    
-                
-| 3 | Critical thinking is described in policies and procedures but is inconsistently applied |
-                
-                    ****
-                    
-                
-| 4 | Critical thinking principles are fully incorporated and routinely applied in working practices |
-                
-                    ****
-                    
-                
-| 5 | Critical thinking is respected as a core competency with organizational capability continually improved |
-            
-        
-
-    
-
-    
-
-        
-
 ## —
 
-        
-
-            
+#### 
 
 #### 
 
-            
-
-            
-                
-                    
-                        
-                        
-                    
-| --- | --- |
-                
-                
-                    
-                        
-                        
-                    
-| GxP | |
-                    
-                        
-                        
-                    
-                    
-                        
-                        
-                    
-                    
-                        
-                        
-                    
-                    
-                        
-                        
-                    
-                
-            
-
-        
-
-        
-
-            
-
 #### 
 
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
-
 #### 
-
-            
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
-
-#### 
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-        
-
-    
-
-    
 
 ## Section Summary —
-
-    
-
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
-    
 
 ⇧
 
@@ -11449,1459 +5507,500 @@ The successful application of critical thinking is highly dependent on the abili
 
 # Appendices D1–D3: Specifying Requirements, Configuration & Design
 
-    
-
-    
-
 ISPE GAMP 5 Second Edition | Appendix D1 (p183–p196), D2 (Retired), D3 (p199–p205)
 
-    
-
-## Appendix D1 — Specifying Requirements: Introduction & Scope
-
-    
-
-        
+## **Appendix D1 — Specifying Requirements: Introduction & Scope Appendix D1 — **
 
 ## D1.1 Introduction
 
-        
-
 This appendix provides guidance for the production of requirements for a computerized system or system component. The approach to specifying requirements may be achieved using multiple methods, either all at once or incrementally over time. Regardless of the approach used, it should be defined during planning.
-
-        
 
 The extent and detail of requirements should be commensurate with **risk, complexity, and novelty**, and should be sufficient to support subsequent risk analysis, traceability, system development, and verification.
 
-        
-
 For a commercially available and low-risk system it may be appropriate to include requirements in purchasing documentation. A complex and custom application may require several levels of requirements specification, for example, a Requirements Specification (RS) and Functional Specification (FS).
 
-        
-
 The requirements should define the intended use in the operating environment including limits of operation. Requirements should accurately reflect the business process and data workflows. The approach should be top-down and based on product and process understanding including Critical Quality Attributes (CQA) and relevant regulatory requirements.
-
-        
 
             "The level of detail provided in this appendix assumes a complex configurable or custom system (Category 4 or 5) with considerable risks for patient safety, product quality, and/or data integrity."
         
 
-        
-
 For Category 3 systems, critical thinking needs to be applied to determine the appropriate and simpler approach. This appendix covers a wide range of requirement aspects but is by no means a checklist with mandatory requirements that every system must address.
-
-        
 
 #### Changes from GAMP 5 First Edition
 
-        
-
 The previous version contained separate appendices for User Requirement Specification (URS) and Functional Specification (FS). These have been updated and combined into this single appendix. The former Appendix D2 has been retired. Functional design specifications for custom systems can be prepared if needed and are covered in Appendix D3.
-
-        
 
 ## D1.2 Scope
 
-        
-
 This appendix provides general guidance on the development of requirements for a wide range of computerized systems. It also provides specific guidance on the typical contents of an RS where this is in the form of a document. These principles also apply where requirements exist as records within a tool rather than a document.
 
-    
-
-    
-
-        
-
 ## 
-
-        
-
-            
 
 #### URS CS/DS
 
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-        
-
-        
-
-            
-
 #### 
-
-            
-
-            
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### CDMO
 
-            
-
-        
-
-    
-
-## D1.3.1 General Guidelines & Requirements Good Practice (SMART)
-
-    
-
-        
+## **D1.3.1 General Guidelines & Requirements Good Practice (SMART) D1.3.1 (SMART)**
 
 ## General Guidelines
 
-        
-
 Requirements define, clearly and precisely, what the regulated company requires the system to do and what functions and facilities are to be provided to meet the intended use. Requirements should be driven by the business process needs.
-
-        
 
 Requirements may be developed independently of a specific solution prior to selection. Where there is a limited number of suppliers, requirements may be based on the available solution, but these need to be reviewed and tailored for the specific intended use. This is particularly relevant to many Category 3 systems.
 
-        
-
 The content of an RS typically includes, but is not limited to:
 
-        
-
-            
 - Operational requirements
 
-            
 - Functional requirements
 
-            
 - Data requirements
 
-            
 - Technical requirements
 
-            
 - Interface requirements
 
-            
 - Environment requirements
 
-            
 - Performance requirements
 
-            
 - Availability requirements
 
-            
 - Security requirements
 
-            
 - Maintenance requirements
 
-            
 - Regulatory requirements
 
-            
 - Migration of any electronic data
 
-            
 - Constraints to be observed
 
-            
 - Life cycle requirements
-
-        
-
-        
 
 ## Quality-Critical Requirements
 
-        
-
 Requirements should address applicable GxP regulations and should highlight those aspects critical to patient safety, product quality, and data integrity. The RS should **not** include general and unverifiable requirements such as *"Part 11 compliant"* or *"GMP-compliant."* It should define what functionality the users need in the system to manage risk.
-
-        
 
 ## Requirements Good Practice — SMART
 
-        
-
 Requirements should be **sufficient and appropriate**:
 
-        
-
-            
 - **Specific** — clearly defined, not vague
 
-            
 - **Measurable** — quantitative where possible
 
-            
 - **Achievable** — technically and practically feasible
 
-            
 - **Realistic** — within project scope and constraints
 
-            
 - **Testable (Verifiable)** — can be objectively confirmed
-
-        
-
-        
 
 *Note: Other principles like INVEST (Independent, Negotiable, Valuable, Estimable, Small, Testable) may be used instead of SMART in Agile contexts.*
 
-        
-
 Requirements should also be:
 
-        
-
-            
 - **Unambiguous** — clear, precise, self-contained
 
-            
 - **Consider design constraints** — hardware/software platform, speed, environment
 
-            
 - **Define internal and external interfaces**
 
-            
 - **Support full traceability** through configuration/design and testing
 
-            
 - **Prioritized** — Mandatory (high) / Beneficial (medium) / Nice to have (low)
 
-            
 - **Uniquely identified and version controlled**, with change history maintained
 
-            
 - **Linked to the associated business-process step(s)** where appropriate
-
-        
-
-    
-
-    
-
-        
 
 ## vs.
 
-        
-
-            
-
 #### SMART
-
-            
-
-        
-
-        
-            
-                
-| --- | --- | --- |
-            
-            
-                
-                    
-                    
-                    
-                
-| | 21 CFR Part 11 | 8 3 |
-                
-                    
-                    
-                    
-                
-| | | UTC ID |
-                
-                    
-                    
-                    
-                
-| | | 100 3 95 |
-                
-                    
-                    
-                    
-                
-| GMP | GMP | |
-            
-        
-
-        
-
-            
 
 #### CDMO LIMS URS
 
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
-
 #### Part 11
 
-            
-
-        
-
-    
-
-## D1.3.3 Contents of the Requirements Specification
-
-    
-
-        
+## **D1.3.3 Contents of the Requirements Specification D1.3.3 **
 
 ## RS Structure: Key Sections
 
-        
-
 #### Introduction
-
-        
 
 The introduction should provide information on: who produced the document, under what authority, and for what purpose; contractual status; relationship to other documents; high-level description including breakdown of primary components; and assumptions/restrictions. A data flow diagram should be referenced or created.
 
-        
-
 #### Overview
-
-        
 
 An overview should explain why the system is required, the essential system functions, interfaces, and what is required. It should address: background, impact on patient safety, product quality, and data integrity; scope including system limits and boundaries, key objectives, applicable GxP requirements, and other applicable regulations.
 
-        
-
 #### Operational Requirements — Functions
-
-        
 
 Functional requirements should be broken down to the level of individual functions using a recursive hierarchy. The following should be specified as appropriate:
 
-        
-
-            
 - Objective of the function, details of use, inputs, outputs, algorithms
 
-            
 - Calculations, including all critical algorithms and data entry/edit checks that support CQAs
 
-            
 - Functions that inherently need to be configurable and any limits to configuration
 
-            
 - Performance: response, sizing, throughput (quantitative and unambiguous)
 
-            
 - System safety including action in case of software or hardware failures
 
-            
 - Security including access control
 
-            
 - Audit trails
 
-            
 - Use of electronic signatures
 
-            
 - Output (e.g., reports, files)
 
-            
 - Error conditions, unambiguous error messages, failure actions
-
-        
-
-        
 
 #### Data Requirements
 
-        
-
 Data-handling requirements should be documented based on the impact to patient safety, product quality, and data integrity. Topics include: definition of records and data, primary record specification, critical data definition, data-validation checks, data migration, backup and recovery, data retention, and data security/integrity.
-
-        
 
 #### Technical Requirements
 
-        
-
 System technical requirements should address: changes in system operation (start-up, shutdown, failover), disaster recovery, performance and timing requirements, minimum capacity requirements, hardware requirements, portability, availability, and configurability.
-
-        
 
 #### Interface Requirements
 
-        
-
 System interfaces should describe how systems or sub-systems interact. Key interface topics include: data transmitted and received, data type/format/ranges, timing, rates of data transfer, communications protocol, data sharing/storage/destruction, mechanisms for initiation and interruption, error handling, and access/security.
-
-        
 
 #### Nonfunctional Attributes & Environment
 
-        
-
 Nonfunctional attributes include availability (disaster recovery, backup/restore, RTO/RPO) and maintainability (expansion possibilities, cloud storage elasticity, lifetime). Environment requirements address physical layout, physical conditions (temperature, humidity, EMI, dust), physical security, and power requirements.
-
-        
 
 #### Constraints
 
-        
-
 System constraints include: compatibility with existing systems, regulated company strategy, availability, reliability requirements, maximum allowable downtime, statutory obligations, working methods, user skill levels, expansion capability, expected lifetime, and long-term support.
-
-        
 
 #### Life Cycle Requirements
 
-        
-
 Life cycle requirements include: development standards required of the supplier, quality assurance procedures, mandatory design methods, special testing requirements, test data, load testing, acceptance testing, information supplier must make available on regulatory inspection, training courses, archiving facilities, and support after acceptance.
-
-        
 
 #### What Does NOT Belong in the RS
 
-        
-
 The following should **not** be included in the RS:
 
-        
-
-            
 - System configuration/design details
 
-            
 - Implementation details
 
-            
 - Project deadlines
 
-            
 - Cost
 
-            
 - Project organizational details
-
-        
-
-    
-
-    
-
-        
 
 ## RS
 
-        
-
-            
-
 #### RS
-
-            
-
-            
-
-                
-
-                
-
-            
-
-        
-
-        
-
-            
-
-#### CDMO LIMS
-
-            
-
-            
-                
-| --- | --- |
-                
-                    
-| 4 RTO = 4hr | |
-                    
-| SAP ERP | |
-                    
-| CQA / | |
-                    
-| 15–25°C | |
-                    
-| 21 CFR Part 11 | |
-                
-            
-
-        
-
-        
-
-            
 
 #### CDMO RS
 
-            
-
-            
-
-        
-
-        
-
-            
-
 #### 
 
-            
+#### CDMO LIMS
 
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-    
-
-## D1.3.2 & D1.4 — Ownership and Requirements Capture
-
-    
-
-        
+## **D1.3.2 & D1.4 — Ownership and Requirements Capture D1.3.2 & D1.4 — **
 
 ## Ownership
 
-        
-
 Ownership of business requirements lies with the **business process owner** of the regulated company. Without user ownership, the business operational needs and any associated issues can never be fully understood and captured. Defined requirements form the basis for acceptance of the system by users.
-
-        
 
 Software or service providers may maintain a separate set of requirements that are more technical in nature. In Agile approaches, these requirements are often owned by the product owner. SMEs, including those from third parties, may help both the user and technical communities analyze and understand the operational needs.
 
-        
-
 ## Requirements Capture
-
-        
 
 For Category 4 and 5 systems, requirements capture is often the most difficult and time-consuming aspect of producing an RS. A suitably experienced individual should be identified and made responsible for managing the requirements-capture process.
 
-        
-
 #### Discussions and Interviews
-
-        
 
 Participants should include process and system owners, business process participants and users, and SMEs. Key principles:
 
-        
-
-            
 - Ask open-ended questions so requirements can be investigated
 
-            
 - Determine the participant's actual involvement in the process to be automated
 
-            
 - Ask participants to identify weaknesses of the existing process
 
-            
 - Use terms familiar to participants; avoid technical jargon
 
-            
 - Avoid proposing solutions — proposing supplier-specific solutions stifles consideration of actual needs
 
-            
 - Examine issue logs from existing systems being replaced
-
-        
-
-        
 
 #### Observation
 
-        
-
 The business function should be observed, noting that "what is done today may not be the best solution for tomorrow." Caution should be exercised regarding designing a new system to duplicate the current business process — the current process may not be the best way to meet all requirements.
-
-        
 
 #### Workflow Analysis
 
-        
-
 Use cases describe the interactions between a system and hardware/software/equipment and people outside the system. Use cases aid in: gathering requirements, developing SOPs, developing training materials, writing test scripts, and designing a system.
-
-        
 
 #### Workshops
 
-        
-
 Workshops usually involve multifunctional meetings. All affected user groups should be represented while keeping the size manageable. Participants should focus on their area of expertise and be empowered to make decisions for that area.
-
-        
 
 ## Requirements Planning Pitfalls
 
-        
-
-            
 - A common understanding among team members should be established
 
-            
 - All required levels of the business should be involved
 
-            
 - Ambiguous requirements should be avoided
 
-            
 - Requirements should be classified to ensure appropriate focus on critical requirements
 
-            
 - Functionality that will not be used should be avoided
 
-            
 - The original scope should be maintained; extending scope only through formal change control
 
-            
 - Multiple requirements within a single-requirement statement should be avoided
-
-        
-
-    
-
-    
-
-        
 
 ## 
 
-        
-
-            
-
 #### 
 
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
-
 #### 
-
-            
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### CDMO (Scope Creep)
 
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-        
-
-            
-
-#### vs.
-
-            
-                
-| --- | --- |
-                
-                    
-                    
-                    
-                
-            
-
-        
-
-    
-
-## Appendix D2 — Functional Specifications (Retired)
-
-    
-
-        
-
-            
+## **Appendix D2 — Functional Specifications (Retired) Appendix D2 — **
 
 ### Appendix D2 — Retired
 
-            
-
 Appendix D2: Functional Specifications has been retired in GAMP 5 Second Edition.
-
-            
 
 The content has been incorporated into **Appendix D1 — Specifying Requirements**. Functional design specifications for custom systems can be prepared if needed and are covered in **Appendix D3 — Configuration and Design**.
 
-        
-
-    
-
-    
-
-        
-
 ## D2
-
-        
-
-            
 
 #### FRS
 
-            
-
-            
-
-            
-
-        
-
-    
-
-## Appendix D3 — Configuration and Design: Introduction & Overview
-
-    
-
-        
+## **Appendix D3 — Configuration and Design: Introduction & Overview Appendix D3 — **
 
 ## D3.1 Introduction
 
-        
-
 This appendix provides guidance for defining the required configuration of system components and for system design. Based upon the type of system (configurable or custom, on-premise or SaaS), **Configuration and Design Specifications (CS and DS)** provide a detailed, technical expansion of the RS. They explain *how* the system will do what is defined in the RS.
-
-        
 
 ## D3.2 Scope
 
-        
-
 This appendix applies to the production of all CS/DS. Separate documents may not always be needed to adequately define configuration and design aspects. A hierarchy of specifications may be required for larger more complex systems, while specifications may be combined for smaller, simpler systems or systems classified as low risk. A system may be used to record and track configuration and design information including required approvals.
-
-        
 
 ## D3.3.1 Overview of Configuration and Design
 
-        
-
 #### Configuration
-
-        
 
 Configuration specifications should be provided for **configured products** and cover the appropriate configuration of the software products that comprise the system to meet specified requirements. This includes the definition of all settings and parameters supporting the intended business process.
 
-        
-
 It may be possible to maintain configuration information electronically in systems with robust configuration management (e.g., audit trails). Such an approach should be clearly documented.
-
-        
 
 #### Design
 
-        
-
 Custom applications require design of hardware and software, and also may require CS.
 
-        
-
-            
 - **Hardware design** defines the hardware components of a system, e.g., system or component architecture, or interfaces.
 
-            
 - **Software design** occurs at two levels: at the higher level it defines the software modules (sub-systems), interfaces between modules, and interfaces to external systems including data flow. At the lower level it describes the operation of the individual software modules. These specifications should be unambiguous, clear, and precise.
-
-        
-
-        
 
 ## D3.3.2 General Guidelines
 
-        
-
 The use of **tables and diagrams** to illustrate CS and DS is highly recommended. Standardized tables help ensure all relevant parameters and settings have been defined. Diagrams can clarify data flow, control logic, data structures, interfaces, and mapping to corresponding business processes.
-
-        
 
 Configuration and design should cover both hardware and software aspects. Each specification in a tier should be uniquely referenced and traceable back to its appropriate higher-level specification.
 
-        
-
 Where a system is hosted by a service provider, the CS/DS are typically produced and maintained by the service provider. The regulated company should leverage the service provider effort and where necessary produce a supplementary specification based upon the system configurations required to support the intended business process. Oversight should be maintained through a quality agreement.
-
-        
 
 All specifications should be structured in a way that **supports traceability through the life cycle** from individual requirements to associated testing.
 
-    
-
-    
-
-        
-
 ## CS vs. DS — COTS
-
-        
-
-            
 
 #### (CS) vs. (DS)
 
-            
-
-            
-
-                
-
-                
-
-            
-
-        
-
-        
-
-            
-
 #### LIMS vs.
-
-            
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### CDMO COTS
 
-            
-
-            
-
-            
-
-        
-
-        
-
-            
-
 #### SaaS /
 
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-    
-
-## D3.3.3 Configuration Specification Content
-
-    
-
-        
+## **D3.3.3 Configuration Specification Content D3.3.3 **
 
 ## Configuration Specification
 
-        
-
 The required configuration of components to be provided as all or part of the solution should be defined. This includes but is not limited to:
 
-        
-
-            
 - **Required configuration settings or parameters**
 
-            
 - **Reason for setting**, with reference to controlling specification (i.e., the RS requirement it fulfills)
 
-            
 - **Tools or methods** that will be used to set the required options
 
-            
 - **Dependencies and impacts** on other modules or systems
 
-            
 - **Infrastructure items** such as operating systems and layered software
 
-            
 - **Security of settings**
-
-        
-
-        
 
 *For simple systems it may be possible to incorporate this information into the RS.*
 
-        
-
 #### Configuration Introduction Section
-
-        
 
 The introduction to a CS/DS should contain:
 
-        
-
-            
 - Ownership of the document
 
-            
 - Who produced the document, under what authority, and for what purpose
 
-            
 - The contractual status of the document (if applicable)
 
-            
 - Relationship to other documents (RS, other configuration or design specifications, etc.)
-
-        
-
-        
 
 #### Configuration Overview Section
 
-        
-
 The overview should briefly describe the configuration and/or design as defined in the document, including the storage and in some cases, location of the records and the involved systems. The overview may be illustrated using diagrams. The overview should not contain detailed design information.
-
-    
-
-    
-
-        
 
 ## CS
 
-        
-
-            
+#### 
 
 #### CS
 
-            
-
-            
-
-            
-                
-| | | /RS ID |
-| --- | --- | --- |
-                
-                    
-| | 8 | RS-SEC-003 21 CFR Part 11 §11.300 |
-                    
-| Session | 30 | RS-SEC-004 Annex 11 §12 |
-                    
-| | 7 | RS-DATA-008EU GMP Part II §4.9 |
-                    
-| | | RS-GMP-012 Qualified Person 21 CFR §211.68 |
-                
-            
-
-            
-
-        
-
-        
-
-            
-
-#### 
-
-            
-
-            
-
-        
-
-    
-
-## D3.3.4 Hardware Design Specification
-
-    
-
-        
+## **D3.3.4 Hardware Design Specification D3.3.4 **
 
 ## Hardware Design
 
-        
-
 Hardware Design Specifications (DS) are required for **custom applications**. The overall architecture of the hardware required should be defined. At a high level this may be illustrated by an annotated block diagram.
-
-        
 
 #### Computer System Architecture
 
-        
-
 The following should be covered as appropriate:
 
-        
-
-            
 - **Main computer system**: primary hardware components (CPU, memory, bus type, clock accuracy) or Virtual Machine (VM) components (VM software, processing unit, memory, elasticity of setup)
 
-            
 - **Storage including location of data**: all proposed storage devices with maximum storage capacities (hard disk, cloud storage)
 
-            
 - **Peripherals**: including sensors, wearables, mobile devices, and BYOD setups
 
-            
 - **Interconnections/networks**: all interconnections of hardware components and connections to external equipment, including cable specifications, connector specifications, network connections, wireless connections, and bandwidth capabilities
 
-            
 - **Configuration**: DIP switch settings, device addresses, pin assignments, encryption, mobile device lockdown
 
-            
 - **Embedded systems (within process equipment)**: layout diagrams, location diagrams for sensors, electrical wiring diagrams, P&ID drawings
-
-        
-
-        
 
 #### Inputs and Outputs
 
-        
-
 Input and output formats should be specified where necessary. For external equipment: accuracy, isolation, range of current and voltage, type and numbers of interface cards, timing, and encryption and security.
-
-        
 
 #### Environment & Electrical Supplies
 
-        
-
 The operating environment for hardware should define: temperature, humidity, external interference, physical security, shielding against RF/EMI/UV, hardening against dust or vibration, and location. Electrical supply requirements should address: filtering, loading, grounding protection, UPS, and power consumption/heat emission for HVAC capacity calculations.
 
-    
-
-    
-
-        
-
 ## 
-
-        
-
-            
 
 #### DS
 
-            
-
-            
-
-                
-
-                
-
-            
-
-        
-
-        
-
-            
-
 #### CDMO
 
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-    
-
-## D3.3.5 Software Design Specification
-
-    
-
-        
+## **D3.3.5 Software Design Specification D3.3.5 **
 
 ## Software Design
 
-        
-
 Software should be designed in accordance with recognized design standards where appropriate. **Design Specifications covering software design are required for custom applications.** This is not normally required for configurable products, where software design is normally reviewed or evaluated as part of the supplier assessment and is often proprietary.
-
-        
 
 #### Software Description
 
-        
-
 The modules that will form the system should be described, briefly stating the purpose of each. A list of all interfaces between modules, and any interfaces to external systems should be given. A system diagram is recommended. For SaaS the delivery model (e.g., single-instance-multitenant) should be described.
-
-        
 
 #### System Data
 
-        
-
 System data and the major data objects should be defined. Data should be characterized in a hierarchical manner with complex objects built up of simpler objects:
 
-        
-
-            
 - Instances and tenants
 
-            
 - Databases and collections of files
 
-            
 - Files / Records
-
-        
-
-        
 
 Data objects should include: data types, data format, data precision, and data accuracy. Each file and data structure should be uniquely identified. The use of formal data description methods such as Entity Relationship Models should be considered. In multitenant environments, the method of data separation and security should be described.
 
-        
-
 #### Module Description
-
-        
 
 For each software module:
 
-        
-
-            
 - Module operation: may take the form of pseudo code or a flow chart
 
-            
 - Interfaces to other modules
 
-            
 - Error handling and data checking
 
-            
 - Data mapping to each module
 
-            
 - Data load and module performance aspects
-
-        
-
-        
 
 For each sub-program:
 
-        
-
-            
 - Sub-program operation (pseudo code or flow chart)
 
-            
 - The steps and inputs/outputs from each step
 
-            
 - Parameters: input/output/input-output, pass by value/reference
 
-            
 - Algorithms, side effects, language including version
 
-            
 - Reference to programming standards
 
-            
 - Description of all display screens and all implemented reports
-
-        
-
-    
-
-    
-
-        
 
 ## 
 
-        
-
-            
-
 #### 
-
-            
-
-            
-
-            
-
-            
-
-            
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
 
             
 
 #### (Design Review)
 
-            
-
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-                
-
-            
-
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-        
-
-            
-
 #### CDMO
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### SaaS
 
-            
-
-        
-
-    
-
-## The Traceability Chain: Requirements → Design → Testing
-
-    
-
-        
+## **The Traceability Chain: Requirements → Design → Testing → → **
 
 ## Complete Lifecycle Traceability
 
-        
-
 A fundamental principle throughout Appendices D1 and D3 is that all specifications should be structured to support traceability through the entire life cycle from individual requirements through configuration/design and into testing. This is referenced in both appendices as fundamental to GxP validation.
-
-        
 
 #### Traceability Requirements for RS
 
-        
-
-            
 - Requirements should be uniquely identified and version controlled
 
-            
 - Requirements should enable clear communication and management of critical requirements throughout the life cycle
 
-            
 - Requirements should be linked to the associated business-process step(s) where appropriate
 
-            
 - Requirements should support full traceability through configuration/design and testing — see Appendix M5
-
-        
-
-        
 
 #### Traceability Requirements for CS/DS
 
-        
-
-            
 - All specifications should be structured in a way that supports traceability through the life cycle from individual requirements to associated testing
 
-            
 - Each specification in a tier should be uniquely referenced and traceable back to its appropriate higher-level specification
 
-            
 - This high-level design should also be traceable to the RS, where appropriate
-
-        
-
-        
 
 #### Design Review and Traceability (Reference to Appendix M5)
 
-        
-
 Further information on design review and traceability is provided in Appendix M5. The design review process is the formal mechanism through which the traceability chain is verified — confirming that the CS/DS adequately addresses all requirements in the RS before proceeding to testing.
-
-    
-
-    
-
-        
 
 ## 
 
-        
-
-            
-
 #### 
-
-            
 
 ```
 
@@ -12914,77 +6013,9 @@ Further information on design review and traceability is provided in Appendix M5
             
 ```
 
-        
-
-        
-
-            
-
 #### 
-
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-        
-
-            
-
-#### CDMO LIMS
-
-            
-                
-                    
-| RS ID | | CS/DS | | |
-| --- | --- | --- | --- | --- |
-                
-                
-                    
-| RS-SEC-003 | 8 | CS §4.2 | OQ-TC-015 | PASS |
-                    
-| RS-AUDIT-007 | | CS §6.1 | OQ-TC-042 | PASS |
-                    
-| RS-INT-011 | SAP | DS §8.3 | OQ-TC-067 | PASS |
-                    
-| RS-DATA-015 | 7 | CS §9.4 | OQ-TC-089 | PASS |
-                
-            
-
-        
-
-    
-
-    
 
 ## Section Summary —
-
-    
-
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
-    
 
 ⇧
 
@@ -13562,46 +6593,6 @@ To determine whether there is an adequate level of software maturity and control
 
             
 
-#### vs
-
-            
-                
-                    
-                    
-                    
-                
-| | | (OSS) |
-| --- | --- | --- |
-                
-                    
-                    
-                    
-                
-| | SLA | + |
-                
-                    
-                    
-                    
-                
-                
-                    
-                    
-                    
-                
-                
-                    
-                    
-                    
-                
-| | SLA | |
-            
-
-        
-
-        
-
-            
-
 #### R QC
 
             
@@ -13748,60 +6739,6 @@ Testing should be carried out in accordance with an appropriate test strategy ba
 The regulated company should define roles and responsibilities covering testing. Such definitions typically are included in an appropriate planning document, test strategy, or company procedure. Traditional roles and responsibilities may include:
 
         
-            
-                
-                
-            
-| Role | Responsibility |
-| --- | --- |
-            
-                ****
-                
-            
-| Process Owner | Responsible for the business process supported by the system and for the approval of the test strategy and overall test coverage |
-            
-                ****
-                
-            
-| System Owner | Responsible for the system in question and for ensuring system prerequisites are satisfied to allow testing to proceed |
-            
-                ****
-                
-            
-| SMEs | Essential for input to the test strategy and test case design |
-            
-                ****
-                
-            
-| Test Manager | Plans testing approaches and types of testing |
-            
-                ****
-                
-            
-| Test Analyst | Responsible for developing test cases |
-            
-                ****
-                
-            
-| Tester | Should be as independent as possible; should not be the author of the function/feature being tested |
-            
-                ****
-                
-            
-| Test Reviewer | Responsible for reviewing test cases and completed testing; should not be the same person who executed the specific test case |
-            
-                ****
-                
-            
-| Quality Oversight | If applicable and necessary |
-            
-                ****
-                
-            
-| Supplier | Should have already completed substantial testing in their development life cycle. Final responsibility for compliance remains with the regulated company irrespective of any outsourcing. |
-        
-
-        
 
 The quality of the test cases and the functionality they cover directly impact the effectiveness of the testing. No matter who is creating the test case, they should be an SME in the associated field.
 
@@ -13907,76 +6844,6 @@ Test coverage and approaches are influenced by the:
 ### Table 25.1: Key Testing Activities and Their Influences
 
         
-            
-                
-                
-                
-            
-| Activity | Key Objectives/Focus | Influenced By |
-| --- | --- | --- |
-            
-                ****
-                
-                
-            
-| Defining Requirements | Identifies what the system must do to support the business process and the data integrity technical controls needed. Requirements form the specifications against which test cases will be run. | Applicable GxP Regulations; Business Process Map; Data Flow Diagram; Process Risk Assessment |
-            
-                ****
-                
-                
-            
-| Supplier Assessment | Evaluate if the supplier can provide a system of acceptable quality. Extensive well-executed supplier testing can reduce the amount of testing the regulated company needs to complete. | Supplier Qualification Process; Requirements; SLA |
-            
-                ****
-                
-                
-            
-| Validation Planning | Defines the GxP impact of the system, the life cycle and test strategy, and the decisions made based on the outcome of the supplier assessment. | Applicable GxP Regulations; CSV Policy; Requirements; Supplier Assessment; GxP Risk |
-            
-                ****
-                
-                
-            
-| Functional Risk Assessment | Assesses and prioritizes the risks from the system functionality with the potential to impact patient safety, product quality, and data integrity. | Requirements; Risk Assessment Procedure |
-            
-                ****
-                
-                
-            
-| Test Planning/Coverage | Defines the depth and rigor of test coverage and documentation needed based on the assigned risk priority of the function. | Requirements; Validation Planning; Supplier Assessment; Functional Risk Assessment |
-            
-                ****
-                
-                
-            
-| Test Management Processes | Defines the testing approach and execution instructions. Often captured in a test plan or SOP. | CSV Policy; Validation Planning |
-            
-                ****
-                
-                
-            
-| Creating Test Cases | Test types include scripted/unscripted, manual/automated, exploratory, regression, etc. Most tests have at minimum a defined objective, pass/fail criteria, and reference to the requirement. | Test Planning/Traceability Matrix; Configuration Specification |
-            
-                ****
-                
-                
-            
-| Executing Tests | Test execution should meet the objectives of the test cases and generate records/evidence to demonstrate fitness for intended use or allow defects to be addressed. | Test Management Processes; Scripted and Unscripted Tests |
-            
-                ****
-                
-                
-            
-| Reviewing and Reporting | Confirm if the functionality operated correctly. Any test failures should be assessed to confirm that defects have been fixed or dispositioned satisfactorily. | Test Management Processes; Test Planning/Traceability Matrix; Executed Tests |
-            
-                ****
-                
-                
-            
-| Validation Reporting | Confirms if the validation strategy was implemented as planned and if all requirements have been met and verified based on risk. Document the impact of any non-conformances or outstanding deviations. | Applicable GxP Regulations; Validation Planning; Requirements; SLA |
-        
-
-    
 
     
 
@@ -14196,97 +7063,10 @@ A test management process may include:
 ### Table 25.2: Acceptable Assurance Approaches and Records
 
         
-            
-                
-                
-                
-            
-| Assurance Approach | Test Plan Required | Test Results Record |
-| --- | --- | --- |
-            
-                ****  
-**
-                
-                
-            
-| Unscripted: Ad-hoc(least-burdensome) | Testing of requirements or functions with no test plan; details regarding any failures/deviations found | Summary description of requirements or functions tested; issues found and disposition; conclusion statement; record of who performed testing and date |
-            
-                ****
-                
-                
-            
-| Unscripted: Error Guessing | Testing of requirement or function failure modes with optional listing of expected failure modes in advance | Summary description of failure modes tested; issues found and disposition; conclusion statement; who performed and date |
-            
-                ****
-                
-                
-            
-| Unscripted: Exploratory Testing | Establish high-level test plan objectives for requirements or functions (no step-by-step procedure necessary) | Pass/fail for each test plan objective; issues found and disposition; conclusion statement; who performed and date |
-            
-                ****
-                
-                
-            
-| Unscripted: Day in the Life Testing | Establish high-level test plan objectives for normal day-to-day activities (no step-by-step procedure necessary). Test using business process experience and against SOPs where available. | Pass/fail for each test plan objective; summary of activities or business operation challenged; issues found; conclusion; who performed and date |
-            
-                ****
-                
-                
-            
-| Scripted: Limited | Limited test cases (step-by-step procedure) identified; expected results and values; independent review and approval of test plan | Pass/fail for each test case; result for each test case (critical values + pass/fail indication); issues found and disposition; conclusion; who performed and reviewed with dates |
-            
-                ****
-                
-                
-            
-| Scripted: Robust | Test objectives; test cases (step-by-step procedure); expected results and values; independent review and approval of test cases | Pass/fail for test case; details regarding any failures/deviations found and disposition; detailed report of assurance activity; result for each test case; issues found; conclusion; who performed and reviewed with dates |
-        
-
-        
 
 #### Table 25.3: Comparison of Unscripted vs. Scripted Testing
 
         
-            
-                
-                
-                
-            
-| Dimension | Unscripted Testing | Scripted Testing |
-| --- | --- | --- |
-            
-                
-                
-                
-            
-| Primary use | Supplement scripted testing; used for low/medium risk functions using critical thinking | Used alone or in combination for high-risk functions affecting patient safety, product quality, data integrity |
-            
-                
-                
-                
-            
-| Defect detection | Uncovers defects from poorly defined/implemented specs. Dynamic test design allows exploration against specs. | Tests against specs to confirm fitness. May miss issues not identified at time of test design. |
-            
-                
-                
-                
-            
-| Repeatability | Lower — no detailed step-by-step script | Higher — detailed scripted nature enables regression testing |
-            
-                
-                
-                
-            
-| Tester requirements | Relies on tester intuition, knowledge, and experience. More sensitive to inexperienced testers. | Tests expected user/system behaviors. Uses specification as the standard to verify. |
-            
-                
-                
-                
-            
-| Regression testing | Not directly suitable for regression testing | Manual or automated scripted testing can provide the basis for regression testing |
-        
-
-    
 
     
 
@@ -14475,38 +7255,6 @@ Test reports should be produced that summarize activities and findings and state
         
 
         
-            
-                
-                
-                
-                
-            
-| | | | Go/No-Go |
-| --- | --- | --- | --- |
-            
-                ****
-                
-                
-                
-            
-| (Critical) | GxP | | No-Go — |
-            
-                ****
-                
-                
-                
-            
-| (Major) | | (workaround) | Go — QA |
-            
-                ****
-                
-                
-                
-            
-| (Minor) | UI GxP | | Go — |
-        
-
-        
 
             
 
@@ -14641,42 +7389,6 @@ These acceptance tests may be leveraged in support of, but do not replace the ne
         
 
 ## 
-
-        
-
-            
-
-#### vs —
-
-            
-                
-                    
-                    
-                    
-                
-| | (Black Box) | (White Box) |
-| --- | --- | --- |
-                
-                    
-                    
-                    
-                
-| | SMEQA | |
-                
-                    
-                    
-                    
-                
-| | / | |
-                
-                    
-                    
-                    
-                
-| GAMP | OQ/PQ | |
-            
-
-        
 
         
 
@@ -14828,42 +7540,6 @@ It is the scope, rigor, and coverage of the testing that ensures the quality of 
 
                 
 
-            
-
-        
-
-        
-
-            
-
-#### 
-
-            
-                
-                    
-                    
-                    
-                
-| | | GxP |
-| --- | --- | --- |
-                
-                    ****
-                    
-                    
-                
-| (DEV) | | — |
-                
-                    ****
-                    
-                    
-                
-| /UAT (TEST) | | — |
-                
-                    ****
-                    
-                    
-                
-| (PROD) | GxP | — |
             
 
         
@@ -15180,56 +7856,6 @@ Custom-developed software. Testing should include Category 4 approaches, plus:
         
 
 ## 
-
-        
-
-            
-
-#### GAMP
-
-            
-                
-                    
-                    
-                    
-                    
-                
-| --- | --- | --- | --- |
-                
-                    ****  
-
-                    
-                    
-                    
-                
-| Cat 1 | OS | + | |
-                
-                    ****  
-
-                    
-                    
-                    
-                
-| Cat 3 | | + | |
-                
-                    ****  
-
-                    
-                    
-                    
-                
-| Cat 4 | LIMSMESERP | + + + | () |
-                
-                    ****  
-
-                    
-                    
-                    
-                
-| Cat 5 | | Cat 4 + + + | () |
-            
-
-        
 
         
 
@@ -15619,32 +8245,6 @@ Definitions of any terms that may be unfamiliar to the readership should be prov
 
             
 
-#### vs.
-
-            
-                
-                    
-| --- | --- | --- |
-                
-                
-                    
-                    
-| URS | | |
-                    
-| FS/DS | / | IT |
-                    
-| IQ/OQ/PQ | // | |
-                
-            
-
-            
-
-        
-
-        
-
-            
-
 #### 
 
             
@@ -15676,6 +8276,16 @@ Definitions of any terms that may be unfamiliar to the readership should be prov
         
 
     
+
+            
+
+#### vs.
+
+            
+
+        
+
+        
 
 ## Appendix D7 — Data Migration /
 
@@ -16007,33 +8617,6 @@ The data migration report summarizes the activities conducted during the data mi
 
             
 
-#### Data Mapping Table
-
-            
-
-            
-                
-                    
-| --- | --- | --- | --- |
-                
-                
-                    
-| Batch_No (text) | batch_number (varchar) | | 100% |
-                    
-| Test_Result (text) | result_value (decimal) | | +checksum |
-                    
-| Analyst_Name | user_id (FK) | | |
-                
-            
-
-            
-
-        
-
-        
-
-            
-
 #### Source → Staging → Target
 
             
@@ -16109,6 +8692,18 @@ The data migration report summarizes the activities conducted during the data mi
         
 
     
+
+            
+
+#### Data Mapping Table
+
+            
+
+            
+
+        
+
+        
 
 ## Appendix D8 — Agile Software Development /
 
@@ -16265,28 +8860,6 @@ Agile is typically used with sets of tools providing control over the product ba
 Tools manage a variety of Agile activities such as user-story risk assessments, testing, and traceability. A backlog with continuously changing user stories is extremely difficult to manage on paper; a tool can provide an efficient and effective means to manage user stories throughout updates and changes. Reports may be generated from tools, for instance during regulatory inspections to provide evidence of status.
 
         
-            
-                
-| Tool Type | Quality Benefit |
-| --- | --- |
-            
-            
-                
-| Backlog Management Software | Real-time status of requirements including traceability and approval status; audit trail for changes |
-                
-| Testing Management | Evidence of test status, automation and regression testing; negative and stress testing |
-                
-| Orchestration Software | Automated assurance of working and tested code; defined workflow for code moving between environments |
-                
-| Code Repository Software | Reduces configuration management issues; enables traceability from requirements to code level |
-                
-| Large Binary File Registry | Accurate configuration management across multiple repositories |
-                
-| Knowledge Management Software | Context repository assisting team members in locating information quickly and accurately |
-            
-        
-
-        
 
 The tools used as part of Agile are covered within the scope of Appendix D9 and do not require computerized system validation, but should be subject to risk assessment, assessed for adequacy by appropriate SMEs, used by trained and qualified individuals, and appropriate controls applied according to intended use.
 
@@ -16379,34 +8952,6 @@ Agile is by its essence about tightly controlled management of change. Adherence
 
 #### Agile vs GxP
 
-            
-
-            
-
-        
-
-        
-
-            
-
-#### ScrumGxP
-
-            
-                
-                    
-| Scrum | GxP |
-| --- | --- |
-                
-                
-                    
-| Product Owner | + GxP |
-                    
-| Scrum Master | ceremonies |
-                    
-| Development Team | sprint |
-                    
-| Quality/Compliance SME | GxP |
-                
             
 
             
@@ -16528,6 +9073,16 @@ Agile is by its essence about tightly controlled management of change. Adherence
         
 
     
+
+            
+
+#### ScrumGxP
+
+            
+
+        
+
+        
 
 ## Appendix D9 — Software Tools /
 
@@ -16718,38 +9273,6 @@ Tools and systems supporting life cycles, IT processes, and infrastructure (rath
 
             
 
-            
-
-        
-
-        
-
-            
-
-#### GAMP Category 1 vs
-
-            
-                
-                    
-| | GAMP | validation |
-| --- | --- | --- |
-                
-                
-                    
-| LIMSGxP | Category 4/5 | |
-                    
-| MES | Category 4/5 | |
-                    
-| Jiratracking defects | Category 1 | risk assessment |
-                    
-| GitHub/GitLab | Category 1 | risk assessment |
-                    
-| Selenium | Category 1 | adequacy assessment |
-                    
-| Datadog | Category 1 | IT good practice |
-                    
-| GxPExcel macro | Category 4/5 | |
-                
             
 
         
@@ -17384,34 +9907,6 @@ Migration to a new blockchain protocol presents unique challenges: historical tr
 When selecting a blockchain platform for GxP use, organizations should assess technology maturity across three dimensions:
 
         
-            
-                
-                    
-                    
-                
-| Dimension | Key Questions |
-| --- | --- |
-            
-            
-                
-                    ****
-                    
-                
-| Network Maturity | Size of developer community? Length of operation? Number of prior forks? |
-                
-                    ****
-                    
-                
-| Vendor Support | Commercial support model available? Technology vendor landscape? Vendor QMS in place? |
-                
-                    ****
-                    
-                
-| Pace of Change | Mature change-governance process? Architectural changes well documented to users? |
-            
-        
-
-        
 
 ### 30.4.2 Cryptography as a Foundation of Trust
 
@@ -17567,44 +10062,6 @@ The appendix addresses four themes:
         
 
 Common model categories by function:
-
-        
-            
-                
-                    
-                    
-                    
-                
-| Model Type | Function | Example Pharma Application |
-| --- | --- | --- |
-            
-            
-                
-                    ****
-                    
-                    
-                
-| Classification | Categorize data into two or more classes | Visual inspection: pass/fail for cosmetic defects |
-                
-                    ****
-                    
-                    
-                
-| Clustering | Recognize patterns by attribute for targeted action | Environmental monitoring: group anomalous locations |
-                
-                    ****
-                    
-                    
-                
-| Outlier Detection | Identify anomalous data points | Process monitoring: detect OOS precursors in real time |
-                
-                    ****
-                    
-                    
-                
-| Forecasting | Analyze patterns to predict future outcomes | Predictive maintenance: forecast equipment failure timing |
-            
-        
 
         
 
@@ -18349,44 +10806,6 @@ The regulatory framework for AI/ML in pharmaceutical manufacturing is actively e
 ### Key FDA / MHRA GMLP Guiding Principles Referenced
 
         
-            
-                
-                    
-                    
-                
-| Principle | Focus Area |
-| --- | --- |
-            
-            
-                
-                    ****
-                    
-                
-| GP 1 & 2 | Multi-disciplinary expertise; good software engineering and security practices |
-                
-                    ****
-                    
-                
-| GP 6 | Model selection fit for the intended purpose |
-                
-                    ****
-                    
-                
-| GP 8 | Performance demonstrated during model testing through scorecards |
-                
-                    ****
-                    
-                
-| GP 9 | Users are provided with clear, essential information — transparency of AI outputs |
-                
-                    ****
-                    
-                
-| GP 10 | Deployed models are monitored for performance and users can report problems |
-            
-        
-
-        
 
 ### The "Continuous Learning" Validation Challenge
 
@@ -18633,3618 +11052,1223 @@ For both technologies, the concept phase is disproportionately important — dec
 
 # Section 07a: Appendices O–O5 — Operation Introduction, Handover, Support Services, System Monitoring, Incident Management & CAPA
 
-    
-
-    
-
 ISPE GAMP 5 Second Edition | Appendices O, O1–O5 | Doc p281–p302
-
-    
 
 ## Appendix O — Introduction to Operation Appendices
 
-        
-
 ### Purpose and Scope
-
-        
 
 The Operational Appendices provide guidance on how to maintain GxP computerized systems in a compliant state after go-live. These appendices ensure that GxP computerized systems continue to maintain **patient safety, product quality, and the integrity of GxP data and records**.
 
-        
-
 The Operational Appendices may be used as a foundation for implementing policies, procedures, and/or work instructions within the QMS. The application of good IT practices such as described by **ITIL** [54], supported by IT service management tools and automation, is encouraged.
-
-        
 
 ### Scalability Principle
 
-        
-
 Scalability should be considered: controls can be implemented at a level of formality and complexity appropriate to the individual organization and across a wide range of systems. Organizations may have straightforward controls for simple systems and more sophisticated tools and procedures for systems with increased impact, size, and complexity.
-
-        
 
 ### Non-Prescriptive Approach
 
-        
-
 In view of the diversity of computerized systems and organizations, it is not considered appropriate to be prescriptive regarding how operational controls are implemented. To ensure compliance with regulatory expectations, regulated companies should be able to demonstrate that they have:
 
-        
-
-            
 - Considered and reviewed the maintenance and support needs for each system
 
-            
 - Decided what procedures, processes, and records should be established and maintained
-
-        
-
-        
-
-            
 
 #### Operational Process Relationships
 
-            
-
-Figure 32.1 (source document) illustrates the relationships between operational processes. The key operational appendices — Handover (O1), Support Services (O2), System Monitoring (O3), Incident & Problem Management (O4), CAPA (O5), and Change & Configuration Management (O6) — form an interconnected lifecycle management framework.
-
-        
-
-    
-
-    
-
-        
+Figure 32.1🔍 (source document) illustrates the relationships between operational processes. The key operational appendices — Handover (O1), Support Services (O2), System Monitoring (O3), Incident & Problem Management (O4), CAPA (O5), and Change & Configuration Management (O6) — form an interconnected lifecycle management framework.
 
 ## —
 
-        
-
 ### 
-
-        
-
-        
-
-            
 
 ### ITIL
 
-        
-
-        
-
 ### Scalability
-
-        
-
-        
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### vs
 
-            
-
-        
-
-    
-
-App O1 Appendix O1 — Handover (p283–p286)
-
-    
-
-        
-
 ## Appendix O1 — Handover
-
-        
 
 ### 33.1 Introduction
 
-        
-
 Handover is the process of moving the computerized system from the **project phase** to the **operational phase**. This includes the transfer of responsibilities for:
 
-        
-
-            
 - Maintaining the computerized system in a **validated state**
 
-            
 - Maintaining **data integrity**
-
-        
-
-        
 
 These responsibilities transfer to the **business process owner, data owner, and system owner**.
 
-        
-
 ### 33.2 Key Requirements
-
-        
 
 Regulated companies should be able to demonstrate the **formal acceptance** of computerized systems following the completion of validation activities and verification of the controlled transfer of the system into operational use.
 
-        
-
 ### 33.4 Guidance
-
-        
 
 #### 33.4.1 General Approach
 
-        
-
 The project management approach should include a process for handover from the project phase into the operational phase. Handover activities should ensure that the business and support organization are ready to receive the new or upgraded solution following confirmation of successful validation (e.g., approval of the validation report).
-
-        
 
 Key handover activities cover:
 
-        
-
 **Confirmation of the Validated State:** The validated state of the computerized system should be confirmed — including closure of change controls, approval of validation reports. System specifications should be in an "as built" state reflecting the configuration baseline of the validated system. SOPs should be updated to reflect changed roles; training provided in new or modified business processes.
-
-        
 
 **Managed Handover of Open Items:** Open items remaining at handover (defects, incomplete training, documents awaiting approval) must be transferred in a controlled manner in accordance with risk. Incident logs, change records, CAPAs, or deviations may be raised to ensure open items are appropriately assigned. Particular attention should be given to items that could negatively impact GxP or compromise compliance status.
 
-        
-
 **Completion of Data Migration:** Data migration/load has been successfully completed in accordance with a documented data migration plan and data migration report.
-
-        
 
 **Update of Configuration Items:** Updates to the CMDB/configuration items list for the system are complete. New system modules and infrastructure components have been registered.
 
-        
-
 **Establishing Support Agreements and Controls:** Establishment of appropriate SLAs, quality agreements, OLAs, or contracts defining support requirements. Creation/update of operational support procedures in accordance with the O Appendices. Service management tools used in the provision of support services have been established/updated.
 
-        
-
 **Knowledge Transfer:** Knowledge transfer to support organizations should be conducted. This includes transfer of system lifecycle documentation, business process and data flows, and risk assessments. Knowledge transfer is not only documentation — it also includes transfer of implicit knowledge and lessons learned by the project team.
-
-        
 
             "Knowledge transfer is not only the transfer of documentation and records; it also includes the transfer of knowledge and experiences of the project team, including implicit knowledge that cannot be easily articulated in documentation and records."
         
 
-        
-
 **Hypercare and Monitoring of Business Readiness:** Depending on complexity, a period of hypercare may be required — a phased transition from project team to support team following handover. Hypercare continues until defined criteria are met (e.g., post go-live incidents diminishing in quantity and severity; support organization has demonstrated adequate knowledge). A rollback strategy should be defined in the event of a significant problem.
-
-        
 
 #### 33.4.2 Responsibilities
 
-        
-
-            
 - **Project Manager:** Prepares the system for handover
 
-            
 - **Process Owner, Data Owner, System Owner:** Accepts the system into operational use
-
-        
-
-    
-
-    
-
-        
 
 ## —
 
-        
-
 ### 
-
-        
-
-        
-
-            
 
 #### CDMO
 
-            
-
-        
-
-        
-
 ### CDMO
-
-        
-
-        
-            
-| --- | --- | --- |
-            
-| | change control | Validation Engineer |
-            
-| | SOP | QA |
-            
-| | | IT + Data Owner |
-            
-| | | IT |
-            
-| | SLA IT helpdesk | System Owner |
-            
-| | GxP | PM + QA |
-            
-| | IT | Project Team |
-            
-| | Rollback | IT + PM |
-        
-
-        
-
-            
 
 #### Hypercare
 
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
 ### 
-
-        
-
-        
-
-            
-
-            
-
-            
-
-        
-
-    
-
-App O2 Appendix O2 — Establishing and Managing Support Services (p287–p290)
-
-    
-
-        
 
 ## Appendix O2 — Establishing and Managing Support Services
 
-        
-
 ### 34.1 Introduction
-
-        
 
 The process for establishing and managing support services ensures that support services (whether internal or external) are appropriately specified and managed. This is often governed by **Service Level Agreements (SLAs)**.
 
-        
-
 ### 34.2 Key Requirements
-
-        
 
 When external service providers are used, there should be a **formal agreement** that clearly states the services to be provided and the responsibilities of the service provider and the regulated company. This applies to both external third parties and internal support functions.
 
-        
-
 ### 34.4 Guidance
-
-        
 
 #### Types of Agreements
 
-        
-
 **Service Level Agreement (SLA):** Describes the services to be provided and service level targets; specifies responsibilities of both parties. May be established separately for individual systems or cover groups of similar systems.
-
-        
 
 **Operating Level Agreement (OLA):** An agreement between a service provider and another part of the same organization. Example: agreement between the primary support organization and a storage management group regarding file restoration times.
 
-        
-
 **Underpinning Contract (UC):** A contract between a service provider and a third party that provides goods or services integral to overall support service delivery. Example: a contract with a telecommunications provider for WAN maintenance.
-
-        
 
 Additionally, a **Quality Agreement** may be required, defining the quality expectations of the regulated company to be achieved by the service provider.
 
-        
-
 #### 34.4.4 SLA Content Requirements
-
-        
 
 SLAs should address:
 
-        
-
-            
 - Scope of computerized systems/support services to be provided
 
-            
 - Service descriptions including:
                 
 
-                    
     - Software releases, patch, maintenance, enhancement releases
 
-                    
     - IT infrastructure and platform services
 
-                    
     - IT security
 
-                    
     - Backup and restoration
 
-                    
     - Business continuity and disaster recovery
 
-                    
     - Information security and data privacy controls
 
-                    
     - Data archiving and retention
 
-                    
     - Record and asset disposal
 
-                    
     - System maintenance, administration, repair, housekeeping
 
-                    
     - Maintenance of separate development, testing, and operations environments
 
-                    
     - Routine testing and calibration
 
-                    
     - Training
 
-                
-
-            
-
-            
 - System support tools (e.g., service desk, security monitoring, backup)
 
-            
 - Roles and responsibilities
 
-            
 - Reporting, prioritization, and processing times for support requests and faults
 
-            
 - Key contact details
 
-            
 - Escalation processes
-
-        
-
-        
 
 #### 34.4.5 Measurement, Reporting, and Review
 
-        
-
 Service performance monitoring should be defined in terms of:
 
-        
-
-            
 - Key performance metrics (system and data availability, downtime, unplanned outages, response times, incidents)
 
-            
 - Reporting frequency
 
-            
 - Periodic review meetings
-
-        
-
-        
 
 #### 34.4.6 Managing Contract Exit
 
-        
-
 Contract exit should be planned in advance. Agreements should address:
 
-        
-
-            
 - Knowledge transfer
 
-            
 - Documentation/records transfer
 
-            
 - Software code transfer
 
-            
 - Data transfer
 
-        
-
-    
-
-    
-
-        
-
 ## —
-
-        
 
 ### GxP SLA99.9%
 
-        
-
-        
-
-            
-
-#### CDMO GxP SLA
-
-            
-                
-| | GxP | |
-| --- | --- | --- |
-                
-| Uptime | ≥ 99.5% | LIMS |
-                
-| P1 | 15 2 | P1 = |
-                
-| P2 | 1 8 | P2 = |
-                
-| | 100% | |
-                
-| | | DR RTO |
-                
-| | 30 90 | change control |
-                
-| | ≥ 1 | 21 CFR Part 11 |
-            
-
-        
-
-        
-
 ### SLA / OLA / UC
-
-        
-
-        
-
-            
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### Quality Agreement
 
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
 ### Contract Exit
-
-        
-
-    
-
-App O3 Appendix O3 — System Monitoring (p291–p293)
-
-    
-
-        
 
 ## Appendix O3 — System Monitoring
 
-        
-
 ### 35.1 Introduction
-
-        
 
 System monitoring can be used to monitor and report **system failures, availability, performance, configuration baseline, and information security issues**. Feedback from monitoring processes and tools can be used to anticipate and respond to potential computerized system incidents and to improve the overall controls environment.
 
-        
-
 ### 35.2 Key Requirements
-
-        
 
 The need for, and extent of, monitoring activities should be based on **business risk and risk to patient safety, product quality, and data integrity**. The extent of monitoring shall also be relative to the type of system and its external exposure.
 
-        
-
 ### 35.4 Guidance
-
-        
 
 #### 35.4.1 General Approach
 
-        
-
 System monitoring may cover a specific system, group of systems, or an IT infrastructure environment. The extent of monitoring is dependent on system complexity, business impact, patient safety, product quality, data integrity impact, and external threats such as cybersecurity threats.
-
-        
 
 #### 35.4.2 Responsibilities
 
-        
-
 **System Owner:**
 
-        
-
-            
 - Ensures system monitoring is in place based on risk
 
-            
 - Works with system administrators and IT to ensure system monitoring is implemented
 
-            
 - Participates in the incident and problem management process for detected incidents
-
-        
-
-        
 
 **Business Process Owner / Data Owner:**
 
-        
-
-            
 - Agrees on scope of system monitoring
 
-            
 - Participates in incident and problem management process
-
-        
-
-        
 
 #### 35.4.3 System Monitoring Considerations
 
-        
-
 System monitoring should consider the following:
 
-        
-
-            
 - System and data availability
 
-            
 - System performance and resources (CPU utilization, storage capacities)
 
-            
 - Network routing, load, and failures
 
-            
 - Configuration status against configuration templates
 
-            
 - Batch job failures including backups
 
-            
 - System interface failures
 
-            
 - Instrumentation communication failures
 
-            
 - Software, operating system, and hardware failures
 
-            
 - Printer queue failures
 
-            
 - System and process alarms and events
 
-            
 - Response times
 
-            
 - Security vulnerabilities
 
-            
 - Intrusion detection
-
-        
-
-        
 
 #### 35.4.4 System Monitoring Tools
 
-        
-
 System monitoring should leverage **automated tools** wherever possible. Such tools can detect and report potential system incidents and automatically alert support organizations. Some monitoring tools include self-rectification capabilities — resources such as processing and storage capacity can automatically adjust to address performance issues. Monitoring tools can also automatically reset configuration that does not meet the current configuration template.
-
-        
 
 #### 35.4.5 Manual Monitoring
 
-        
-
 Manual monitoring activities can be defined in and scheduled from service management tools or defined in system administration plans or procedures. Monitoring tasks, roles, frequency, and reporting requirements should be clearly defined.
 
-    
-
-    
-
-        
-
 ## —
-
-        
 
 ### GxP ≠ IT
 
-        
-
-        
-
-            
-
 #### GxP
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-        
-
-        
 
 ### Configuration Drift
 
-        
-
-        
-
-            
-
 #### LIMS
 
-            
-
-        
-
-        
-
 ### 
-
-        
-
-        
-
-            
-
-            
-
-            
-
-        
-
-        
-
-    
-
-App O4 Appendix O4 — Incident Management and Problem Management (p295–p297)
-
-    
-
-        
 
 ## Appendix O4 — Incident Management and Problem Management
 
-        
-
 ### 36.1 Introduction — Key Definitions
-
-        
 
 An **incident** relates to the effect of an unplanned interruption to a service, or reduction in service quality, typically linked to a breach of the SLA, user observation, or feedback from automated monitoring tools.
 
-        
-
 A **problem** relates to the *root cause* of one or more incidents. Problems can be raised in response to a single significant incident or multiple related incidents.
-
-        
 
 "Problems are the cause and incidents are the effect."
 
-        
-
 ### 36.2 Key Requirements
-
-        
 
 Unplanned computerized system interruptions or reductions in service quality should be **reported, investigated, and resolved** by support teams in order to ensure incidents are effectively managed.
 
-        
-
 ### 36.4.1 Incident Management — Three-Tier Support Model
-
-        
 
 **Level 1 Support** is usually provided by IT SMEs staffing the help desk. Level 1 gathers information describing the incident, conducts basic investigations and troubleshooting, and solves common problems such as access issues, solution understanding, setup issues, and service restoration.
 
-        
-
 **Level 2 Support** conducts a more in-depth assessment of the incident and identifies available solutions. Level 2 is generally provided by IT SMEs outside the help desk staff. If no available solutions exist, a problem is raised and handed to Level 3 support.
-
-        
 
 **Level 3 Support** is provided by SMEs such as developers, DevOps, architects, engineers, or external software/IT service suppliers. Level 3 investigates potential design and implementation issues. Technical solutions may be required.
 
-        
-
 **Major Incidents:** Relate to serious disruption to business operations and should be resolved with greater urgency. A major incident team comprising business, technical, and quality expertise may be assembled. Business continuity and disaster recovery plans may need to be invoked.
-
-        
 
 ### 36.4.2 Problem Management
 
-        
-
 Problem management is the process by which the **root cause of one or more incidents is determined** and solutions are implemented to minimize the risk of similar incidents occurring in the future. Problem management processes are integrated with change management, configuration management, training, and disaster recovery.
-
-        
 
 Resolution of a problem may also involve **GxP CAPA activities**.
 
-        
-
 Communication is an essential part of the incident and problem management process to ensure business users and the quality unit are aware of any disruptions or restrictions of service.
-
-        
 
 ### 36.4.3 Determining GxP Impact
 
-        
-
 Incidents are generally reported directly to technical functions who are not necessarily SMEs with respect to the impact on patient safety, product quality, and data integrity.
-
-        
 
 **Configuration Management Databases (CMDB)** or other tools should identify configuration items (hardware components, application modules, business processes, records) that impact GxP. Processes for GxP determination should be agreed by business process owners, data owners, and the quality unit.
 
-        
-
 The quality unit should be informed of incidents and problems potentially impacting product quality and patient safety. They may raise a **quality deviation** and initiate a **CAPA process**. IT, system owners, process owners, and the quality unit should cooperate in ensuring effective resolution.
-
-        
 
 ### 36.4.4 Incident and Problem Records
 
-        
-
 Incident and problem records are typically managed in IT tools and capture: incident/problem information, impact assessments, root cause analyses, and actions taken to resolve the problem including any workarounds. If changes are required to system lifecycle documentation or configuration records, they should be updated and tested in line with any changes implemented.
 
-    
-
-    
-
-        
-
 ## —
-
-        
 
 ### Incidentvs Problem
 
-        
-
-        
-
-            
-
-            
-
-        
-
-        
-
-        
-
-            
-
-#### GxP Deviation
-
-            
-
-            
-                
-| --- | --- | --- |
-                
-| | | GxP |
-                
-| LIMS 1 | | |
-                
-| 30 | | |
-                
-| MES | | GxP |
-                
-| | | 21 CFR Part 11 / Annex 11 |
-                
-| ±1 | | |
-            
-
-            
-
-        
-
-        
-
 ### CDMO
 
-        
-
-            
-
 #### 
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-        
-
-        
 
 ### CMDBGxP
 
-        
-
-        
-
-            
-
-            
-
-            
-
-        
-
-        
-
-            
-
 #### IT QA
 
-            
-
-        
-
-    
-
-App O5 Appendix O5 — Corrective and Preventive Action (CAPA) (p299–p302)
-
-    
-
-        
+#### GxP Deviation
 
 ## Appendix O5 — Corrective and Preventive Action (CAPA)
 
-        
-
 ### 37.1 Introduction
-
-        
 
 CAPA is a process for investigating, understanding, and correcting deviations and nonconformities to address the immediate impact of the issue and to minimize the risk of recurrence. The scope and depth of CAPA plans should be developed **relative to the risk** of the associated deviation or nonconformity to patient safety, product quality, and data integrity.
 
-        
-
 ### 37.2 Key Requirements
-
-        
 
 The CAPA process covers:
 
-        
-
-            
 - Assessment of the impact of the identified deviation or problem
 
-            
 - Corrective action planning to address the impact
 
-            
 - Root cause analysis to determine the cause
 
-            
 - Preventive action to minimize the risk of recurrence
 
-            
 - Monitoring of action completion
 
-            
 - Effectiveness checks and trending analysis
-
-        
-
-        
 
 Computerized system failures and issues are typically reported through the IT incident and problem management process. Incidents related to **GxP configuration items should be reported as a deviation** and investigated for any impact to patient safety, product quality, or data integrity. CAPAs are created in response to the investigation.
 
-        
-
 ### 37.4 Guidance
-
-        
 
 #### 37.4.1 General Approach
 
-        
-
 The CAPA process is part of the quality system and is used to manage corrective and preventive actions associated with GxP deviations and nonconformities. CAPAs are typically managed within an electronic QMS but may be managed as paper records.
-
-        
 
 Actions arising from CAPAs should be assigned to appropriate SMEs, including technical functions such as IT and engineering. **Planned actions should be proportionate to the identified risk.**
 
-        
-
 #### 37.4.2 Responsibilities
-
-        
 
 **Quality Unit:**
 
-        
-
-            
 - Establishes the CAPA process within the quality system
 
-            
 - Provides oversight of the CAPA process
-
-        
-
-        
 
 **Business Process Owners and System Owners:**
 
-        
-
-            
 - Review and approve CAPAs to ensure suitability
 
-            
 - Monitor the status of CAPAs relating to computerized systems within their remit
-
-        
-
-        
 
 **Subject Matter Experts:**
 
-        
-
-            
 - Support CAPA planning
 
-            
 - Implement assigned actions in accordance with planned completion dates
-
-        
-
-        
 
 #### 37.4.3 CAPA Process — Key Steps
 
-        
-
 **Investigation:** Determines the impact from the deviation, nonconformance, or problem. Must determine the impact on patient safety, product quality, and data integrity.
-
-        
 
 **Corrective Action Planning:** Defines the actions to address the impact — including invoking disaster recovery or restoration processes, resolving data issues, reinstating services. Must also consider actions to isolate the issue and prevent further impact.
 
-        
-
 **Root Cause Analysis:** Determines why the problem occurred. Conducted by relevant SMEs.
-
-        
 
 **Preventive Action:** Defines actions to minimize the risk of recurrence. May involve solution enhancements, bug fixes, training, SOP updates, improved system security, or improved system monitoring.
 
-        
-
 **Monitoring:** Ensures CAPAs are addressed within defined targets. Automated or manual monitoring of CAPA target dates ensures reminders and escalations. CAPA target date extensions should be reviewed and approved by business process owner and system owner following impact assessment. Quality Unit oversight should ensure CAPA extensions are being appropriately managed.
-
-        
 
 **Effectiveness Checks:** Ensure that the implemented actions are effective in addressing the root cause of the problem being addressed.
 
-        
-
 **Trending:** Ensures that recurring CAPA themes are investigated. Trends may be identified at an organizational, process, or system level. Learning from deviation and CAPA trends may be used to inform updates to computerized system risk assessments.
-
-        
 
 CAPA action planning should be **risk-based and proportionate** to the impact on patient safety, product quality, and data integrity. CAPA plans should be reviewed and approved by business process owners, system owners, and action owners.
 
-    
-
-    
-
-        
-
 ## — CAPA
-
-        
 
 ### CAPA CAPA
 
-        
-
-        
-            
-| | CAPA | CAPA |
-| --- | --- | --- |
-            
-| | QA/ | IT |
-            
-| | SOP | change control |
-            
-            
-            
-| | eQMSTrackwise | IT + eQMS |
-        
-
-        
-
-            
-
 #### IT → → CAPA
-
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
 
 ### Bug CAPA
 
-        
-
-        
-
-            
-
-            
-
-            
-
-            
-
-        
-
-        
-
-            
-
 #### CAPA Effectiveness Check
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
 
 ### CAPA
 
-        
-
-        
-
-            
-
-            
-
-            
-
-            
-
-        
-
-        
-
-            
-
 #### 
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-    
-
-    
-
-        
 
 ## Common Pitfalls: Project to Operational Transition
 
-        
-
 ### Pitfall 1: Incomplete Handover Documentation
-
-        
 
 Handover is declared complete but the support organization lacks the information necessary to maintain the system in a validated state. Common causes: validation reports approved but not transferred to operations; system specifications not reflecting the "as built" state; training completed but not documented.
 
-        
-
 ### Pitfall 2: No Formal Hypercare Period
-
-        
 
 The project team disappears immediately after go-live, leaving the support organization without adequate knowledge to handle early operational issues. GAMP 5 recommends a defined hypercare period with explicit exit criteria before full handover to operations.
 
-        
-
 ### Pitfall 3: GxP Impact Determination Not Documented
-
-        
 
 No written procedure defines which IT incidents must be escalated to the quality unit. IT resolves GxP-impacting incidents through the helpdesk without QA involvement, creating undocumented deviations.
 
-        
-
 ### Pitfall 4: IT Records and QMS Records Not Linked
-
-        
 
 IT manages incidents in ServiceNow; QA manages deviations in TrackWise — but no cross-reference links the records. During an audit, the chain from incident to deviation to CAPA cannot be demonstrated.
 
-        
-
 ### Pitfall 5: SLA Does Not Address GxP Requirements
-
-        
 
 The SLA with the IT service provider covers standard uptime and response times but does not address audit trail retention, configuration change notification requirements, or the obligation to notify QA of GxP incidents.
 
-        
-
 ### Pitfall 6: No Defined Rollback Strategy
-
-        
 
 A significant post-go-live problem is discovered but there is no documented rollback procedure and no pre-defined criteria for invoking it. The organization struggles with decision-making under pressure.
 
-    
-
-    
-
-        
-
 ## —
-
-        
 
 ### 
 
-        
-
-        
-
-            
-
 #### CDMO
-
-            
-
-                
-
-                
-
-                
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-        
-
-            
 
 #### QMS IT
 
-            
-
-            
-
-            
-
-            
-
-        
-
-    
-
-    
-
 ## Section Summary — (Appendices O, O1–O5)
-
-    
-
-        
-
-            
 
 **English Summary**
 
-            
-
 The GAMP 5 Operational Appendices (O–O5) establish a comprehensive framework for maintaining computerized systems in a validated, compliant state throughout their operational life. The lifecycle does not end at go-live — it continues through structured handover, ongoing support management, proactive monitoring, and integrated quality processes.
 
-            
-
-                
 - **App O:** Establishes the purpose and scalability principle of all operational appendices, grounded in ITIL good practices with GxP overlay requirements.
 
-                
 - **App O1 (Handover):** Requires formal, documented transfer of validated state, open items, knowledge, and support agreements from project team to operations. Hypercare is a key new element in the 2nd Edition.
 
-                
 - **App O2 (Support Services):** Mandates SLAs that cover not just uptime but also GxP-specific requirements including audit trail retention, change notification, and quality agreement provisions. OLAs and UCs form the supporting agreement ecosystem.
 
-                
 - **App O3 (System Monitoring):** Risk-based monitoring must cover availability, performance, configuration baseline, security, and — uniquely for GxP — audit trail integrity, instrumentation communication, and configuration drift.
 
-                
 - **App O4 (Incident & Problem Management):** Three-tier support model (L1/L2/L3); critical GxP requirement to assess every incident for GxP impact using CMDB, and to link GxP incidents to the deviation and CAPA process via quality unit involvement.
 
-                
 - **App O5 (CAPA):** Full CAPA lifecycle applied to IT failures: investigation, corrective action, root cause analysis, preventive action, monitoring, effectiveness checks, and trending — all proportionate to GxP risk and documented in the QMS.
-
-            
-
-        
-
-        
-
-            
-
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-    
 
 ⇧
 
 # Appendices O6–O13: Operational Change, Periodic Review, Backup/Restore, Security & Archiving
 
-    
-
-    
-
 ISPE GAMP 5 (2nd Edition) | Appendices O6–O13 | p303–p346
-
-    
 
 ## Appendix O6 — Operational Change and Configuration Management
 
-    
-
-        
-
 ## 38.4 Guidance
-
-        
 
 ### 38.4.1 Responsibilities
 
-        
-
 **Process Owner:** Ensures that change control and configuration management processes and procedures are in place.
-
-        
 
 **System Owner:** Coordinates changes and evaluates the technical impact of the change.
 
-        
-
 **Quality Unit:** Ensures that the process and procedures are followed.
-
-        
 
 **Change Plan Task and Action Owners:** Ensure completion in accordance with defined timelines.
 
-        
-
 ### 38.4.2 General Approach
-
-        
 
 The point of transfer from project change management (see Appendix M8) to operational change management should be clearly defined and documented, e.g., in the computerized system validation report, system release documentation, or handover reports. Operational change management should start no later than handover for operational use.
 
-        
-
 #### 38.4.2.1 Change Request / Change Proposal and Evaluation
-
-        
 
 The change request or change proposal is the initial definition of the change outlining the business and/or technical reason for the change and the general scope. The change may be accepted or rejected based on business value; the decision outcome should be communicated to key stakeholders.
 
-        
-
 #### 38.4.2.2 Change Specification
-
-        
 
 The change specification defines the change in terms of impacted configuration items (e.g., business process, data, functionality, configuration, service, infrastructure). It may be defined in the change record and/or supported by system life cycle records.
 
-        
-
 #### 38.4.2.3 Impact and Risk Assessment
-
-        
 
 Risk assessments should determine whether the change impacts **patient safety, product quality, or data integrity**. Existing risk assessment records should be updated to reflect the change. Impact assessments should consider:
 
-        
-
-            
 - Solution regression
 
-            
 - Data
 
-            
 - Business process and data flows (SOPs)
 
-            
 - System life cycle documentation and records
 
-            
 - Training
 
-            
 - SLAs
-
-        
-
-        
 
 #### 38.4.2.4 Change Plan
 
-        
-
 The change plan defines actions and tasks required to implement the change, addressing the change specification and impact/risk assessment outputs. Responsibilities for all parties — including the regulated company and external service providers — should be clearly defined.
-
-        
 
 #### 38.4.2.5 Backout Plan
 
-        
-
 Backout plans should be considered for complex and/or high-risk changes. They define how the solution/service is reverted to a known state if the change has an unexpected impact.
-
-        
 
 #### 38.4.2.6 Authorize Implementation
 
-        
-
 The change should be authorized prior to implementation to confirm the adequacy of change specifications, impact and risk assessments, change plans, and backout plans. Authorization may take the form of review and approval of the change record.
-
-        
 
 #### 38.4.2.7 Execute Change Plan
 
-        
-
 Actions and tasks defined in the change plan are executed, including but not limited to:
 
-        
-
-            
 - Update system documentation and/or records
 
-            
 - Update system manuals/SOPs/work instructions/SLAs
 
-            
 - Implement functional, configuration, and technical changes (where possible within a validation/test environment)
 
-            
 - Creation/update and execution of tests/verification tasks to confirm correct outcome of the change
 
-            
 - User and support organization training
-
-        
-
-        
 
 #### 38.4.2.8 Release to Operations
 
-        
-
 Once the change has been verified, the change and associated change records are reviewed to confirm all actions in the change plan have been fully executed. Installation into the operational environment should follow documented installation procedures. Knowledge transfer to support organizations should be completed before transition to operations.
-
-        
 
 ### 38.4.3 Types of Change
 
-        
-
-            
 - **Standard/Routine Changes:** Considered low risk to patient safety, product quality, and data integrity. Work instructions, system administration plans, or service requests may define implementation tasks. A record of the change — including any verification tasks — should be maintained.
 
-            
 - **Like-for-Like Replacements/Repairs:** Typically low-risk changes controlled by maintenance or service management procedures. Approved replacements include like-for-like (identical components) and like-for-kind (similar pre-approved components with the same functional characteristics).
 
-            
 - **System Administration Changes:** Some system administration activities involve changes to system components. These should be defined in system administration procedures (see Appendix O12).
 
-            
 - **Emergency Changes:** Implemented when delay may result in greater impact, e.g., data loss, data integrity impact, or impact on system availability due to a cyber security attack. Emergency changes may require **retrospective application** of the change process to document the change.
 
-            
 - **Temporary Changes:** Planned for a limited period. Particular attention should be paid to ensuring temporary changes are "rolled back" and properly reviewed before being made permanent. They should be monitored to ensure they do not remain beyond the planned duration.
 
-            
 - **Global Changes:** Changes to global systems and services may require additional governance to minimize the impact of locally identified changes on other functions and regions.
-
-        
-
-        
 
 ### 38.4.4 Business, IT, Engineering, and Service Provider Change Processes
 
-        
-
 Changes often involve interdependencies between business organizations, internal IT organizations, and external service providers. Responsibilities for different aspects of the change should be clearly defined and agreed, e.g., through a quality agreement, operational agreement, or SLA.
-
-        
 
 Where IaaS, PaaS, and/or SaaS is used, risk-based supplier assessments and monitoring should be considered to ensure that the service provider has appropriate change and configuration management processes in place. Where a SaaS service provider controls the release of new software versions, the regulated company should evaluate the impact of new releases on business processes and ensure actions are taken to accept the new release.
 
-        
-
 ### 38.4.5 Configuration Management
-
-        
 
 Operational configuration management should start with the baseline configuration that is part of system handover. Configuration management consists of four key activities:
 
-        
-
-            
 - **Configuration Identification** — WHAT to keep under control
 
-            
 - **Configuration Control** — HOW to perform the control
 
-            
 - **Configuration Status Accounting** — HOW to document the control
 
-            
 - **Configuration Evaluation** — HOW to verify that control
-
-        
-
-        
 
 Configuration items with GxP impact should be identified. The list of configuration items and their status (e.g., version) is called the configuration baseline and serves as the reference for the validated state of a system. Configuration items should be subject to version control to provide traceability to any implemented changes.
 
-        
-
 ### 38.4.6 Cloud Service Provider Changes
-
-        
 
 Changes may be scheduled by IaaS/PaaS/SaaS providers with limited opportunity to evaluate impact. The regulated company should be aware of the service provider's release schedule and evaluate the impact of releases on business processes and regulated data. Where appropriate, testing should be conducted to confirm business processes have not been adversely impacted.
 
-        
-
 ### 38.4.7 Software Development Change Management
-
-        
 
 Software development processes commonly follow an iterative or Agile development approach. Such processes are followed to manage the implementation of software enhancements and bug fixes. Suppliers and service providers may not differentiate change management from normal software development processes.
 
-    
-
-    
-
-        
-
 ## 
 
-        
-
-            
-
 #### vs.
 
-            
-
-            
-
-            
-
-        
-
-        
-
-            
-
 #### vs.
-
-            
-
-        
-
-        
-
-            
 
 #### Emergency Change
 
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
-
 #### Temporary Change
-
-            
-
-            
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### Configuration Baseline
 
-            
-
-            
-
-        
-
-        
-
-            
-
 #### SaaS
-
-            
-
-        
-
-        
 
 ### 
 
-        
-            
-| --- | --- | --- |
-            
-| Standard/Routine | | + |
-            
-| Like-for-Like | | / |
-            
-| System Admin | - | |
-            
-| Emergency | | |
-            
-| Temporary | | + |
-            
-| Global | - | |
-        
-
-    
-
-## Appendix O7 — Retired RETIRED
-
-    
-
-        
+## **Appendix O7 — RetiredRETIRED Appendix O7 — **
 
 ## 39 Appendix O7 (Retired)
 
-        
-
 Repair activities are typically managed as standard changes, service requests, and/or system administration tasks. As such, the requirements for repair activities are defined in Appendix O6. **Appendix O7 has been removed from this Guide.**
 
-    
-
-    
-
-        
-
 ## 
-
-        
-
-            
 
 #### O7
 
-            
-
-        
-
-    
-
 ## Appendix O8 — Periodic Review
-
-    
-
-        
 
 ## 40 Appendix O8 – Periodic Review
 
-        
-
 ### 40.1 Introduction
-
-        
 
 Periodic reviews are conducted throughout the operational life of a computerized system to verify that it remains in a validated state, complies with current regulatory requirements, is fit for intended use, and satisfies company policies and procedures. The review should confirm that operational controls are in place and are being effectively applied.
 
-        
-
 **Changes from GAMP 5 First Edition:**
 
-        
-
-            
 - Risk-based approach to periodic reviews
 
-            
 - Utilization of metrics and trends to determine fitness for intended use
 
-            
 - Sample-based review of records
-
-        
-
-        
 
 ### 40.2 Key Requirements
 
-        
-
 A documented risk assessment should determine the frequency of periodic reviews. The risk assessment should evaluate the impact on patient safety, product quality, and data integrity, and also consider system complexity and stability.
-
-        
 
 Identified deficiencies should be recorded with a prioritized action plan to mitigate risk. The outcome and associated actions should be reviewed by business process owners, data owners, system owners, and the quality unit. Execution of actions should be monitored to ensure timely completion.
 
-        
-
 ### 40.4 Guidance
-
-        
 
 #### 40.4.1 General Approach
 
-        
-
 The periodic review may be conducted as a dedicated review or may leverage the outcome of routine reviews conducted against different operational activities (e.g., user-access reviews and problem management reviews). Where possible, the periodic review should use **metrics** to determine the stability and fitness for intended use of the system.
-
-        
 
 #### 40.4.2 Responsibilities
 
-        
-
 **Process Owner:** Ensures that periodic reviews are conducted and actions arising from the periodic review are implemented.
-
-        
 
 **Quality Unit:** Ensures that periodic reviews are scheduled, performed, documented, and that actions arising from the review are completed in accordance with plans.
 
-        
-
 The review is conducted by a multi-disciplined team including business process owners, data owners, system owner, SME, users, IT, engineering, and the quality unit.
-
-        
 
 #### 40.4.3 Timing and Scheduling
 
-        
-
 Periodic review frequency should be based on a documented risk assessment. The frequency may be adjusted based on current and historical information, for example:
 
-        
-
-            
 - Increasing frequency when significant incidents occur that suggest operational controls are not effective
 
-            
 - Decreasing frequency based on system maturity (e.g., systems not subject to significant change or incidents)
-
-        
-
-        
 
 #### 40.4.4.1 Preparation
 
-        
-
 The scope should cover the period since the last periodic review or since the last validation report. Records should be reviewed on a sample basis. The following information should be collated:
 
-        
-
-            
 - Policies, SOPs, and work instructions
 
-            
 - Risk assessment records
 
-            
 - Last periodic review report
 
-            
 - Current validation plan and report
 
-            
 - Internal audit observations
 
-            
 - System life cycle documents/records (including traceability)
 
-            
 - Change and configuration management records
 
-            
 - Incident, problem, and service management records / fault and error logs
 
-            
 - User-access management records and periodic user-access review records
 
-            
 - Backup and restoration records
 
-            
 - Deviation and CAPA records
-
-        
-
-        
 
 #### 40.4.4.2 Conducting the Review
 
-        
-
 The periodic review should assess the following areas:
-
-        
-            
-| Review Area | Key Questions |
-| --- | --- |
-            
-| Action Closure | Open actions from previous reports addressed? |
-            
-| Operational SOPs | SOPs in place per O Appendices? |
-            
-| System Inventory / CMDB | Up-to-date for current release? |
-            
-| Change Management | Validated state maintained? Change trends reviewed? Authorization appropriate? |
-            
-| Incident and Problem Management | Incident trends indicate design or validation weaknesses? |
-            
-| User-Access Management | Appropriate role assignments? Segregation of duties? Training prior to access? |
-            
-| Information Security Controls | Patching? Virus protection? Vulnerability monitoring? |
-            
-| Backup and Restoration | Scheduled and operating? Failures investigated? Periodically tested? |
-            
-| Record Archiving | Recoverable in readable form throughout retention period? |
-            
-| Continuity and DR | BCPs and DR plans in place? Rehearsals/testing conducted? |
-            
-| Audit Trails | Audit trails remain enabled for GxP records? |
-            
-| Training | Training records maintained for new users? |
-        
-
-        
 
 #### 40.4.4.3 Output from the Review
 
-        
-
 The periodic review should be documented, and prioritized action plans created with appropriate accountability to address identified deficiencies. A **statement of acceptability** for continued use of the system should be provided. The timing of the next periodic review should be reconsidered based on deficiencies and risks identified.
-
-    
-
-    
-
-        
 
 ## ——GxP
 
-        
-
-            
-
 #### CDMO
-
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-        
-
-            
 
 #### 
 
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
-
 #### vs.
-
-            
-
-        
-
-        
-
-            
 
 #### 1 vs. 3
 
-            
-
-            
-
-        
-
-        
-
-            
-
 #### 
 
-            
-
-            
-
-        
-
-        
-
-            
-
 #### CDMO
-
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-    
 
 ## Appendix O9 — Backup and Restore
 
-    
-
-        
-
 ## 41 Appendix O9 – Backup and Restore
-
-        
 
 ### 41.1 Introduction
 
-        
-
 Backup is the process of copying data, records, configuration, and software to protect against loss of integrity or availability of the original. Restore is the subsequent restoration of data, records, configuration, or software when required.
-
-        
 
 Backup and restore should **not be confused with archiving and retrieval processes** (covered by Appendix O13). Backup supports DR whereas archive supports the ability to access records in a readable and meaningful form for the duration of the records retention period. **Backup should not be used as a means of archive.**
 
-        
-
 ### 41.2 Key Requirements
-
-        
 
 Backup strategies may include cloud backup, backup appliances, snapshots, disk-to-disk, disk-to-tape, image backups, and replication to an alternative data center or cloud environment.
 
-        
-
 Procedures should define the backup and restoration approach including the management of backup failures. Backup scheduling should be consistent with disaster Recovery Point Objective (RPO). Backup procedures and technologies should be **verified to ensure correct operation**. Backup storage locations should be **separated from the primary location**.
-
-        
 
 ### 41.4.1 Responsibilities
 
-        
-
 **Process Owner and/or Data Owner:**
 
-        
-
-            
 - Define when external service providers should be used
 
-            
 - Establish and monitor compliance against SLAs and quality agreements
 
-            
 - Define RPO and Recovery Time Objective (RTO)
 
-            
 - Define backup scope (data/records, configuration, application components)
 
-            
 - Define backup retention requirements based on business need
-
-        
-
-        
 
 **System Owner or Service Owner:**
 
-        
-
-            
 - Ensures technologies/services are established to meet business needs, RPO, and RTO
 
-            
 - Verifies the operation and performance of the backup solution
 
-            
 - Detects and manages backup failures
-
-        
-
-        
 
 ### 41.4.2 Risk Assessment
 
-        
-
 A documented risk assessment should inform the backup strategy. The business process owner and/or data owner should define the RTO and RPO. The backup and restoration strategy should ensure that data, records, configuration, and applications can be recovered in accordance with the defined RPO and RTO.
-
-        
 
 ### 41.4.3 Backup Strategy
 
-        
-
 #### 41.4.3.1 Cloud Backup Services
-
-        
 
 Cloud backup approaches include: Replication to the Cloud, Backup to the Cloud, Cloud Backup Services (service provider manages backup), and Cloud-to-Cloud Backup.
 
-        
-
 #### 41.4.3.2 Backup Appliances
-
-        
 
 Backup appliances are commercially available solutions that include backup software and storage capability. The most recent backup is typically retained in the backup appliance in addition to being stored in a secondary location such as the cloud.
 
-        
-
 #### 41.4.3.3 Backup Using Portable Media
-
-        
 
 When choosing portable storage media, consider: recommended service life, acceptable environmental conditions for storage, and periodic verification of backup integrity.
 
-        
-
 #### 41.4.3.4 Facilities and Storage
-
-        
 
 Backups should be stored in a **separate secure location**. Geographical separation should be based on risk. Backups should be physically secured and protected from fire, water, and other hazards.
 
-        
-
 ### 41.4.4 Backup and Restore Procedures
-
-        
 
 Procedures should address:
 
-        
-
-            
 - Backup and restoration instructions
 
-            
 - Approval responsibilities for restoration from backup
 
-            
 - Backup identification (naming, labeling, inventories)
 
-            
 - Backup approach (full, differential, incremental)
 
-            
 - Technologies/services used to meet RPO and RTO
 
-            
 - Backup scope (data, records, configuration, applications)
 
-            
 - Backup frequency in response to RPO
 
-            
 - Backup separation requirements
 
-            
 - Backup monitoring and management of backup failures
 
-            
 - Periodic backup integrity verification
-
-        
-
-        
 
 ### 41.4.6 Verification and Monitoring
 
-        
-
 Backup and restoration should be **tested during the validation of the solution** and following any changes in technology and/or approach. Scheduled backups should be monitored to ensure successful completion. Backup integrity should be **periodically verified**.
-
-        
 
 The frequency and approach to backup integrity verification should consider:
 
-        
-
-            
 - Risk assessments
 
-            
 - Backup retention periods
 
-            
 - Backup approach, technologies, and storage media
-
-        
-
-        
 
 Backup integrity verification does not require restoration to production environments. It is acceptable to combine testing of the backup process with testing of DR procedures (see Appendix O10).
 
-        
-
 ### 41.4.7 Specific Considerations
-
-        
 
 #### 41.4.7.1 Software and Configuration Backup
 
-        
-
 Backup of software components and system configuration may not be conducted at the same frequency as data and records backups. Consider: backups that enable backout prior to change implementation, backups post-implementation of changes to enable DR, and periodic backups to cover routine changes.
-
-        
 
 #### 41.4.7.2 Specific Considerations for Data Backup
 
-        
-
 Data backups should also include **metadata**, which provides the context and meaning of data. Specifically, **GxP audit trails should be backed up**.
-
-        
 
 #### 41.4.7.3 Backup Metadata
 
-        
-
 Backup solutions often maintain backup metadata containing information about each backup, including the system on which it was created, restore points, and the relationship between restore points. This metadata **must itself be backed up** otherwise the ability to restore following a backup solution failure will be impaired.
-
-    
-
-    
-
-        
 
 ## vs. ——
 
-        
-
-            
-
 #### 
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### RPO vs. RTO
 
-            
-
-            
-
-            
-
-        
-
-        
-
-            
-
 #### vs.
 
-            
-
-            
-
-        
-
-        
-
-            
-
 #### vs.
-
-            
-                
-| | Backup | Archive |
-| --- | --- | --- |
-                
-                
-                
-| | RPO/RTO | |
-                
-            
-
-            
-
-        
-
-        
-
-            
 
 #### CDMO
 
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-        
-
-            
-
 #### GxP
-
-            
-
-            
-
-        
-
-    
 
 ## Appendix O10 — Business Continuity Management
 
-    
-
-        
-
 ## 42 Appendix O10 – Business Continuity Management
-
-        
 
 ### 42.1 Introduction
 
-        
-
 The regulated company should perform BC planning to actively protect its ability to continue to supply the public, maintain safety, and comply with regulatory requirements.
-
-        
 
 **Business Continuity (BC)** is the documented procedure that guides organizations to respond, recover, resume, and restore to a defined level of operation during and following disruption. BC focuses on keeping businesses operational during a disaster, while **Disaster Recovery (DR)** focuses on restoring computerized systems and data to a known point (RPO) within an agreed time (RTO).
 
-        
-
 Disaster scenarios and BC provisions should not be limited to computerized system failures. Considerations include:
 
-        
-
-            
 - Loss of application components
 
-            
 - Loss of IT infrastructure
 
-            
 - Loss of a service provider
 
-            
 - Loss of access to premises
 
-            
 - Network failures
 
-            
 - Cyber attacks
 
-            
 - Pandemics
-
-        
-
-        
 
 ### 42.2 Key Requirements
 
-        
-
 Patient safety, product quality, and data integrity should not be compromised by disaster scenarios. The need for and extent of the BC plan and DR plan should be based on a documented risk assessment.
-
-        
 
 ### 42.4.1 Business Continuity Planning
 
-        
-
 BCPs should define alternative processes to be followed during a prolonged disruption that allow the safe continuance of business. BCPs should be **rehearsed**. Alternative processes and materials required by the BCP should be suitably documented and available during a disaster scenario. Roles of all parties should be clearly defined, and personnel should be adequately trained.
-
-        
 
 BCPs should consider measures for minimizing threats and vulnerabilities:
 
-        
-
-            
 - Review the DR strategy (including solutions to maximize availability)
 
-            
 - Review appropriateness of backup and recovery procedures
 
-            
 - Review of security controls
 
-            
 - Establish failure and backup systems (redundancy, UPS, high-availability solutions)
 
-            
 - Avoid single-supplier agreements
 
-            
 - Failure detection systems (monitoring, intrusion detection)
 
-            
 - Ability to work from alternative locations
-
-        
-
-        
 
 BCPs should include provisions for re-establishing the status quo once disruption has been rectified, for example: synchronization of manual records established during disruption with the computerized system following recovery, and reprocessing of operations and data not included in backup at the time of failure.
 
-        
-
 ### 42.4.2 Disaster Recovery Planning
-
-        
 
 A documented risk assessment should identify potential disaster scenarios, including threats such as natural events, power failures, hardware/infrastructure failures, software defects, information security risks, service provider failures, human error, pandemic, and cyber attack.
 
-        
-
 DR plans should address:
 
-        
-
-            
 - Immediate steps to be taken to minimize further impact
 
-            
 - Actions to recover the situation, including the order in which systems must be brought online
 
-            
 - Actions to implement alternative working arrangements (BCP)
 
-            
 - Roles and responsibilities for recovering the situation
 
-            
 - Communication requirements
-
-        
-
-        
 
 DR testing should be conducted periodically in accordance with risk. DR testing should ensure that IT infrastructure, applications, and data can be recovered in accordance with the RPO and RTO.
 
-        
-
 Incident management procedures should define how a disaster scenario is invoked. The communication process is an important aspect — key contacts (process owner, system owner, suppliers, quality unit) should be listed with contact details. The DR plan should include a clear process for **prioritizing system restore** when multiple systems are involved.
-
-    
-
-    
-
-        
 
 ## 
 
-        
-
-            
-
 #### BC vs. DR
-
-            
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### CDMOBCP
 
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-        
-
-            
-
 #### vs.
 
-            
-
-            
-
-        
-
-        
-
-            
-
 #### 
-
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### DR
 
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-    
-
 ## Appendix O11 — Security Management
-
-    
-
-        
 
 ## 43 Appendix O11 – Security Management
 
-        
-
 ### 43.1 Introduction
-
-        
 
 Security management is the organizational, process, and technical considerations that ensure the **confidentiality, integrity, and availability** of an organization's regulated computerized systems, data, and records.
 
-        
-
 This appendix has been updated to include considerations of current data IT security practices aligned with industry standards such as ISO 27001 and the NIST framework.
-
-        
 
 ### 43.2 Key Requirements
 
-        
-
 Security measures include:
 
-        
-
-            
 - Establishing and maintaining organizational, procedural, and technical controls to minimize unauthorized or inadvertent access
 
-            
 - Managing role-based system access for user and system administrators, including segregation of duties
 
-            
 - Establishing manual and automated monitoring to identify and respond to potential vulnerabilities and intrusions
 
-            
 - Following incident and problem management processes to evaluate and mitigate potential security risks
-
-        
-
-        
 
 Security controls should be **continuously assessed** to address and respond to new threats.
 
-        
-
 ### 43.4.1 Organizational Controls
-
-        
 
 Information security training should be provided periodically. Roles and responsibilities must be clearly defined and communicated throughout the organization. Human-resource checks should be conducted at the time of engaging new employees and associates to identify potential risks from human behaviors.
 
-        
-
 ### 43.4.2 Information Security Management System (ISMS)
-
-        
 
 An ISMS (as defined by ISO 27001) should be established, covering policies and procedures including:
 
-        
-
-            
 - Information security and human-resource management
 
-            
 - Identity and access management (including starters, movers, and leavers, and periodic review of access rights)
 
-            
 - Segregation of duties
 
-            
 - Virus and malicious code protection
 
-            
 - Network security management
 
-            
 - Patch management and vulnerability management
 
-            
 - Mobile computing and teleworking
 
-            
 - Control and synchronization of system clocks
 
-            
 - Asset management and data classification
 
-            
 - Media handling and disposal
 
-            
 - Regulatory and geographic considerations for data privacy
 
-            
 - Internal audit of ISMS
-
-        
-
-        
 
 ### 43.4.3 Physical and Technical Controls
 
-        
-
 Physical and technical controls should be implemented to minimize unauthorized or inadvertent access, including:
 
-        
-
-            
 - Role-based security and role-based access
 
-            
 - Identity and access management (including multifactor authentication)
 
-            
 - Password management controls
 
-            
 - Segmentation of environments
 
-            
 - Encryption of backups; data encryption at rest and in transit
 
-            
 - Restrictions on software installation
 
-            
 - Anti-phishing software
 
-            
 - Network security and virtual private networks
 
-            
 - Vulnerability scanning, intrusion detection and prevention
 
-            
 - Penetration testing
 
-            
 - Firewall and perimeter detection and prevention
 
-            
 - Endpoint device protection
 
-            
 - Physical access controls to facilities (server rooms, data centers, manufacturing suites, laboratories)
 
-            
 - Guest and Wi-Fi network controls
 
-            
 - Clear screen and desk policy
-
-        
-
-        
 
 ### 43.4.4 Monitoring and Incident Management
 
-        
-
 Security threats should be monitored, especially when computerized systems are externally facing. Automated and manual monitoring processes should consider: intrusion detection, security vulnerabilities, software and hardware failures, unauthorized configuration changes, resource utilization, network failures, and periodic review of user access.
-
-        
 
 Where possible, monitoring tools should automatically alert the information security organization and raise incident tickets to facilitate investigation and mitigation.
 
-        
-
 ### 43.4.5 Cloud Environments
-
-        
 
 Cloud environments are continuously at risk from sophisticated cyber threats. A robust cloud-security framework is a shared responsibility. Information security considerations should cover: human resources, data protection/location, application security, configuration baseline monitoring, operating system security, physical and virtual networks, and monitoring of cloud suppliers.
 
-        
-
 API design must include robust security provisions to minimize unauthorized access. Security provisions should include protection against denial-of-service attacks.
-
-        
 
 ### 43.4.8 Security Patching and GxP Compliance
 
-        
-
 Security patches should be applied based on risk. The risk that security patches impact business process-related functionality is **low** and therefore the impact on the validated status of the computerized system is low. Approaches to evaluate security patches prior to release to production may include:
 
-        
-
-            
 - Risk assessment of patch release
 
-            
 - Release of patches to development and test/validation environments prior to production
 
-            
 - Release of patches to non-GxP environments before GxP environments
-
-        
-
-        
 
 ### 43.4.9 Security Certification Programs
 
-        
-
 Third-party independently certified security certifications such as ISO 27001, ISO/IEC 27017, ISO/IEC 27701, and AICPA SOC 1, SOC 2, and SOC 3 reports can be a useful benchmark for evaluating the efficacy of service providers' ISMS. The boundaries of ISO certifications must be fully disclosed and understood.
-
-    
-
-    
-
-        
 
 ## IT——GxP
 
-        
-
-            
-
 #### Shared Accounts
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### Access Review
 
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
-
 #### vs.
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### 21 CFR Part 11
 
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
-
 #### GxP
-
-            
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### CDMO
 
-            
-
-                
-
-                
-
-                
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-    
-
 ## Appendix O12 — System Administration
-
-    
-
-        
 
 ## 44 Appendix O12 – System Administration
 
-        
-
 ### 44.1 Introduction
-
-        
 
 System administration involves routine management and support of systems to ensure that they are running efficiently and effectively. This may include database administration activities. System administration activities may be conducted by multiple roles including system owner, IT, and/or system administrator, and may also be the responsibility of a service provider.
 
-        
-
 ### 44.2 Key Requirements
-
-        
 
 Support processes should be established, and appropriate resources made available **before a computerized system becomes operational**. System administration tasks should be identified, documented, and supported by controlling procedures. System administrators should be trained and evidence of competency retained.
 
-        
-
 **System administration duties generally should be segregated from operational processing duties.**
-
-        
 
 Any activities relating to the system that are not covered by standard administration procedures should be subject to operational change and configuration management.
 
-        
-
 Administrator privileges should be assigned using the principle of least privilege and should only be assigned to a limited number of people required to carry out system administration tasks. These activities should be documented.
-
-        
 
 ### 44.4.1 General Approach
 
-        
-
 System administration tasks are more commonly managed in IT tools that define the instructions to execute the tasks and the information records associated with the tasks. Typical system administration tasks include:
 
-        
-
-            
 - User and administration account management and review
 
-            
 - System housekeeping (e.g., file cleanup)
 
-            
 - Backup and restoration
 
-            
 - System repair (like-for-like or qualified like-for-kind replacements — see Appendix O6)
 
-            
 - Nonfunctional static data management
 
-            
 - Monitoring system logs
 
-            
 - Database tuning and capacity management
-
-        
-
-        
 
 ### 44.4.2 Responsibilities
 
-        
-
 **System Owner:**
 
-        
-
-            
 - Accountable overall for ensuring that processes and procedures are in place
 
-            
 - Ensures that any tasks delegated to the system administrator or other roles are clearly identified and documented
-
-        
-
-        
 
 **System Administrator:**
 
-        
-
-            
 - Develops sufficiently detailed procedures/work instructions relating to system administration tasks
 
-            
 - Ensures that tasks are executed in compliance with procedures and that required records are established and maintained
-
-        
-
-    
-
-    
-
-        
 
 ## ——
 
-        
-
-            
-
 #### Privileged Access Management, PAM
 
-            
-
-            
-
-        
-
-        
-
-            
-
 #### 
 
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
-
 #### 
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### Segregation of Duties
 
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
-
 #### System Administration Plan
-
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-    
 
 ## Appendix O13 — Archiving and Retrieval
 
-    
-
-        
-
 ## 45 Appendix O13 – Archiving and Retrieval
-
-        
 
 ### 45.1 Introduction
 
-        
-
 Archiving is the process of moving records/data from the computerized system to a different location or system, often protecting them against further changes. Archived records should be readily retrievable for business or regulatory purposes. Use of cloud storage solutions for archived records is acceptable.
-
-        
 
 Archiving and retrieval should not be confused with backup and restore processes (covered in Appendix O9).
 
-        
-
 ### 45.2 Key Requirements
-
-        
 
 GxP records and data should be secured against unauthorized or inadvertent access, alteration, or deletion **throughout the required retention period**. Archiving approaches should be considered during the design of the computerized system.
 
-        
-
 Archiving processes should ensure that **record content and meaning are preserved**, including the preservation of electronic signature and audit trail information and other metadata required to understand the record. Roles, responsibilities, procedures, and specific regulatory requirements should be defined.
-
-        
 
 Stored records and data should be **initially and periodically checked** for accessibility, durability, readability, and completeness. Regulators should have reasonable access to archived GxP records during an inspection and within a reasonable time.
 
-        
-
 ### 45.4.1 General Approach
-
-        
 
 Archiving processes should be documented and verified to ensure that record content and meaning, including electronic signature and audit trail information and metadata, are preserved. The approach should consider the impact of **application, database, and technology upgrades** on the ability to retrieve electronic records in an accessible, accurate, and complete way.
 
-        
-
 The archiving process should pay particular attention to metadata related to electronic signatures, ensuring that the electronic signature **authentication and attributability** is maintained.
-
-        
 
 ### 45.4.3 Policies and Strategy
 
-        
-
 The regulated company should have an established, documented policy on record retention defining the types of records to be retained along with format and retention period for each record type. An archive strategy is recommended that sets out the requirements and how they should be met.
-
-        
 
 ### 45.4.4 Archival and Retention
 
-        
-
 A Data Archiving Plan (DAP) should be created to define:
 
-        
-
-            
 - Roles and responsibilities including external organizations
 
-            
 - Triggers for data archiving (event driven, e.g., storage capacity, or frequency driven)
 
-            
 - Archiving process
 
-            
 - Scope of records to be archived
 
-            
 - Archiving tools
 
-            
 - Archive media and location
 
-            
 - Archived record searchability
 
-            
 - Verification approach (initial and periodic)
 
-            
 - Retrieval approach
 
-            
 - Synchronization of archived records with system upgrades
-
-        
-
-        
 
 Archives should be **geographically separated** to minimize risk. Data privacy requirements should be considered when determining geographic location. The destruction of archived records at the end of the retention period should be authorized by the data owner, quality unit, and where appropriate, the legal department.
 
-        
-
 ### 45.4.5 Retrieval
-
-        
 
 Retained records should be readily retrievable for business or regulatory purposes. Considerations include:
 
-        
-
-            
 - Authorization to access controlled records
 
-            
 - Ability to search for archived records
 
-            
 - Ability to retrieve audit trail information associated with the archived record
 
-            
 - Verification to ensure correct record(s) has been retrieved
-
-        
-
-        
 
 ### 45.4.6 Copying/Migrating Records to an Alternative Format
 
-        
-
 The archiving process may require records to be copied or migrated to an alternative file format. This process must be **documented and verified** to ensure the accessibility, accuracy, completeness, and searchability of the records.
-
-        
 
 ### 45.4.7 Retaining Existing Systems
 
-        
-
 When retaining historical records in an existing system following an upgrade, the DAP must consider:
 
-        
-
-            
 - Securing records from any further processing
 
-            
 - How the system is to be maintained to ensure accessibility for the retention period
 
-            
 - Licensing
 
-            
 - Maintaining information security controls
 
-            
 - Retaining knowledge of how to access the system and records
 
-            
 - Ensuring that hardware and software are available to support the legacy application
-
-        
-
-        
 
 Current technologies enable the migration of physical systems to virtual environments, which significantly reduces risks associated with maintaining aging systems for archive purposes.
 
-        
-
 ### 45.4.8 Return of Archived Records
-
-        
 
 Archived records managed by a third party may need to be returned to the record owner (e.g., return of records to a sponsor). Contracts should clearly define the required controls to ensure all records are returned in a form that enables the record owner to access, search, and where required, process records once returned.
 
-    
-
-    
-
-        
-
 ## ——30
 
-        
-
-            
-
 #### 
 
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
-
 #### 
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### VHS
 
-            
-
-            
-
-        
-
-        
-
-            
-
 #### Attributability
-
-            
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### vs.
 
-            
-
-            
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
-
 #### Data Archiving PlanDAPCDMO
-
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-        
 
 ### vs.
 
-        
-
-            
-                
-                    
-                    
-                    
-                
-| | O9 | O13 |
-| --- | --- | --- |
-                
-                    
-                    
-                    
-                
-                
-                    
-                    
-                    
-                
-| | // | |
-                
-                    
-                    
-                    
-                
-| | | immutable |
-                
-                    
-                    
-                    
-                
-| | RPO/RTO | |
-                
-                    
-                    
-                    
-                
-| | | 30 |
-            
-
-        
-
-    
-
-    
-
 ## Section Summary — Appendices O6–O13
-
-    
-
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
-    
 
 ⇧
 
@@ -22252,1419 +12276,460 @@ Archived records managed by a third party may need to be returned to the record 
 
 # Appendices S1–S6: Special Interest Topics
 
-    
-
-    
-
 ISPE GAMP 5, 2nd Edition | Appendix S1–S6 | p347–p382
 
-    
-
-## Appendix S1 — Alignment with ASTM E2500 (p347–p351)
-
-    
-
-        
+## **Appendix S1 — Alignment with ASTM E2500 (p347–p351) Appendix S1 — ASTM E2500 **
 
 ## S1.1 Introduction & Background
 
-        
-
 GxP regulations require validation of computer and control systems that are critical to patient health and protection. Historically, regulated companies performed installation, commissioning, and validation as separate sequential exercises — producing duplicated documentation that added little value to demonstrating fitness for intended use.
-
-        
 
 Emerging standards, particularly ASTM E2500 (Standard Guide for Specification, Design, and Verification of Pharmaceutical and Biopharmaceutical Manufacturing Systems and Equipment), adopt a science- and risk-based philosophy focused on patient risk rather than prescriptive activity sequences. Combining Good Engineering Practice (GEP), science- and risk-based approaches, process understanding, and appropriate SME involvement creates a streamlined framework that meets all regulatory requirements.
 
-        
-
 ### S1.2 Focusing on Patient Risk
-
-        
 
 By focusing on risk to the patient and leveraging supplier expertise and SME knowledge through GEP, verification replaces the previously separate IQ and OQ activities as an integrated set of activities. Regulated company IQ/OQ activities may be omitted or limited to assessing supplier activities, closing gaps, and confirming fitness for intended use through Performance Qualification focused on critical-to-quality attributes.
 
-        
-
 This approach demonstrates that equipment or systems are performing satisfactorily for their intended purpose, the process is controlled, and patient risks are effectively managed — thereby satisfying regulatory validation requirements.
-
-        
-
-            
 
 #### ASTM E2500: The Specification, Design, and Verification Process
 
-            
-
 ASTM E2500 structures equipment qualification around three integrated phases:
 
-            
-
-                
 - **Specification** — Define critical requirements tied to patient risk
 
-                
 - **Design** — Apply GEP with appropriate SME review
 
-                
 - **Verification** — Leverage supplier testing; confirm critical-to-quality requirements are met
-
-            
-
-            
 
 A plan describing the approach and a report providing evidence supporting fitness for use remain appropriate regardless of terminology used.
 
-        
-
-        
-
 ### S1.3 Different Types of Computerized Systems
-
-        
 
 For integrated manufacturing systems where a computer-based system is part of overall functionality, a separate computerized system validation may not be required. Where computer-controlled equipment is one component of a wider manufacturing or process control system, verification can be an integrated part of the overall process validation effort.
 
-        
-
 IT systems with no direct correlation to manufacturing (e.g., clinical trials data collection, adverse event management, product release systems) have no direct parallel to process validation. Acceptance depends on satisfactory functional testing equivalent to OQ prior to controlled cut-over into the live environment.
-
-        
 
 ### S1.4 Terminology
 
-        
-
 GAMP 5 recognizes that different organizations may use different terminology:
 
-        
-
-            
 - Some adopt "verification" for both computer and control systems
 
-            
 - Others retain "qualification" language but apply ASTM E2500 principles
 
-            
 - Still others use verification for controlled process equipment and qualification for computer systems
-
-        
-
-        
 
 GAMP Guidance is neither mandatory nor prescriptive. Individual companies should decide what terms and precise approach they will use, provided the outcome demonstrates fitness for intended use with appropriate risk control.
 
-    
-
-    
-
-        
-
 ## GAMP 5 vs. ASTM E2500
 
-        
-
-            
+#### 
 
 #### 
 
-            
-
-            
-
-            
-
-        
-
-        
-
-            
-
 #### 
-
-            
-
-            
-
-            
-
-        
-
-        
-
-            
-
-#### 
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-        
-
-        
-
-            
 
 #### CDMO
 
-            
-
-        
-
-    
-
 ---
 
-## Appendix S2 — Electronic Production Records (EPR / eBR) (p351–p361)
-
-    
-
-        
+## **Appendix S2 — Electronic Production Records (EPR / eBR) (p351–p361) Appendix S2 — (EPR / eBR)**
 
 ## S2.1 Introduction
 
-        
-
 This appendix describes best practices for Electronic Production Records (EPRs) in GxP manufacturing environments. EPRs support modern manufacturing paradigms including Review by Exception (RBE), real-time disposition, cloud technology, and blockchain technology.
-
-        
 
 The ISA-88 standard provides the basis for establishing electronic system terminology equivalent to paper-based batch records. Key terminology mappings:
 
-        
-            
-                
-| Paper System | Electronic Equivalent | Description |
-| --- | --- | --- |
-            
-            
-                
-| Master Batch Record (MBR) | Master Recipe | Product name, formulas, equipment requirements, sequence of activities, BoM |
-                
-| Production Batch Record | Control Recipe | MBR dispatched for execution with schedule, specific quantities, batch instance data |
-                
-| Electronic Production Record | EPR | Data and information created or entered during Control Recipe execution; may span multiple systems/databases |
-                
-| Batch (Production) Report | Data Report | Human-readable output for review, disposition, investigation, audit, and analysis |
-            
-        
-
-        
-
 ### S2.2 GxP-Relevant Data Considerations
-
-        
 
 Systems must be capable of reconstruction of GxP-relevant data in appropriate formats. Key data elements to define include production record data requirements, data audit trails, security and user rights, master data and metadata, and time zone/timestamp reconciliation methods.
 
-        
-
 #### Audit Trail Terminology
-
-        
 
 Data audit trails — as required by various regulations — record operator actions that create, modify, or delete GMP records during normal operations, and must be clearly distinguished from system technical logs and other event logs. The data audit trail provides electronic equivalency to striking out data on paper: recording the original and new values, the user, the timestamp, and in some cases, the reason for the change.
 
-        
-
 #### Audit Trail Review
-
-        
 
             "Audit trail review is similar to assessing cross-outs on paper when reviewing data. Personnel responsible for record review under CGMP should review the audit trails that capture changes to data associated with the record as they review the rest of the record." — FDA Guidance on Data Integrity
         
 
-        
-
 Key FDA/MHRA guidance principles:
 
-        
-
-            
 - Review frequency for audit trails should match review frequency for the underlying data
 
-            
 - Risk assessment should determine review frequency where regulations do not specify
 
-            
 - Review need not include every system activity (log-on/off, keystrokes)
 
-            
 - Exception reporting (a validated search tool identifying abnormal data or actions) is an acceptable approach
 
-            
 - Reviewers must have sufficient knowledge and system access to review relevant audit trails, raw data, and metadata
-
-        
-
-        
 
 ### S2.3 EPR Data Types and ALCOA+
 
-        
-
 ALCOA+ principles (Attributable, Legible, Contemporaneous, Original, Accurate, plus Complete, Consistent, Enduring, Available) must be applied to EPR data. Only records and data required by applicable regulations are considered GxP electronic records within an EPR.
-
-        
 
 Systems across the manufacturing domain that may generate or hold EPR data include: Document Management Systems, Supply Chain Management, MES, Data Historians, ERP, Process Control Systems (SCADA/DCS), and LIMS.
 
-        
-
 ### S2.4 Data Capturing, Processing, and Output
-
-        
 
 **Data Input:** Master recipes are created from multiple data sources; transformation from paper to electronic form requires verification of equivalency. ALCOA+ principles apply.
 
-        
-
 **Data Processing:** Key factors include verified rounding rules, calculation definitions, alerts, alarms, and specific events that may automatically create data or initiate actions. Audit trails and data review procedures are essential.
-
-        
 
 **Data Output:** Verified methods must generate reports from EPRs presenting all required information accurately in timely, human-readable form. Interface design, development, and verification requires specific attention; early involvement of interface partners is recommended.
 
-        
-
 ### S2.5 Review by Exception (RBE)
-
-        
 
 RBE screens manufacturing data through verified system functionality to create focused review reports that include all critical process exceptions while reducing the need to review in-tolerance data. RBE:
 
-        
-
-            
 - Does not eliminate or change data in EPRs
 
-            
 - Is a verified extension of existing report-generation functionality
 
-            
 - Filters EPR data presented to personnel, including all critical exceptions or deviations
 
-            
 - Is applied to well-understood processes with operational experience
 
-            
 - Requires that even when no exceptions occur, a report is always generated and examined by approvers
-
-        
-
-        
 
 ### S2.6 Technology Considerations
 
-        
-
 **Cloud Computing:** Edge cloud (physically closer service provider) can mitigate risks of real-time process automation interruption. The end user is always ultimately responsible for determining and maintaining the validated state of cloud-based systems, regardless of cloud configuration.
-
-        
 
 **Blockchain:** Blockchain's distributed, immutable ledger characteristics make it a candidate for audit trail implementations. Every node verifies each data entry; transaction data is not centrally stored but distributed across designated nodes. This effectively creates a write-once, read-only data storage implementation.
 
-    
-
-    
-
-        
-
 ## (eBR)
-
-        
-
-            
 
 #### eBR vs.
 
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
-
 #### CDMO eBR
-
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-        
-
-            
 
 #### 21 CFR Part 11 / EU Annex 11
 
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
-
 #### Review by Exception (RBE) —
-
-            
-
-            
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### Cloud EPR
 
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-        
-
-    
-
 ---
 
-## Appendix S3 — End User Applications Including Spreadsheets (p361–p370)
-
-    
-
-        
+## **Appendix S3 — End User Applications Including Spreadsheets (p361–p370) Appendix S3 — **
 
 ## S3.1 Introduction
 
-        
-
 End user applications — spreadsheets, small databases, statistical applications, and other small applications — present particular compliance challenges in GxP environments. Spreadsheets tend to be the most under-documented systems because:
 
-        
-
-            
 - Users regard them as part of the desktop environment
 
-            
 - Users may not understand or be aware of quality procedures
 
-            
 - The ease with which applications can be built without formal training
 
-            
 - The significant data processing power they can have
-
-        
-
-        
 
 The level and rigor of specification and verification applied to end user applications should be based on risk, complexity, novelty, and intended use.
 
-        
-
 ### S3.2 Application Types
-
-        
 
 #### Disposable Spreadsheets
 
-        
-
 Used in the same way as a hand calculator — results are calculated and the electronic copy is not retained. The calculation result must be printed, labeled, and signed (or saved to a static format with an external electronic signature). The arithmetic manipulation performed must be clearly documented. Calculations used to process GxP data should be verified — this means confirming the formulas are correct, not testing native spreadsheet functions.
-
-        
 
 #### Spreadsheets Retained as Documents
 
-        
-
 When used to both record GxP data and manipulate it, spreadsheets should be managed as documents. Calculations should be verified and fully explained. Control options include: internal security options (password-protecting cells), storing in a secure directory, or managing in an EDMS. If adequate control cannot be achieved, a static version (secure PDF or hardcopy) should be the primary record.
-
-        
 
 #### Spreadsheets as Databases
 
-        
-
 Using spreadsheets as GxP databases presents significant risk because:
 
-        
-
-            
 - Limited or no capability to restrict user data editing
 
-            
 - No native audit trail support
 
-            
 - Every save creates an entirely new database copy — code changes may go unnoticed
-
-        
-
-        
 
 Where audit trails are required, use of spreadsheets is inadvisable as a general rule. A proper database application is a far better alternative.
 
-        
-
 #### Template Applications
-
-        
 
 Template solutions where data is subjected to standard manipulation require careful consideration of:
 
-        
-
-            
 - Verified calculations
 
-            
 - Version control and effective change management
 
-            
 - Access control (ideally, all cells except data entry fields should be locked)
 
-            
 - Macro management (macros are custom software — even keystroke-captured macros contain VBA code)
 
-            
 - Integration testing for multi-module sheets with cell links between worksheets
 
-            
 - Electronic record controls for retained output files
-
-        
-
-        
 
 ### S3.3 GAMP Category Assignment
 
-        
-
 The underlying spreadsheet tool (e.g., Excel) is **Category 1**. Spreadsheets themselves span a continuum of Categories 3, 4, and 5:
 
-        
-
-            
 - **Category 3** — Simple native function calculations (e.g., calculating mean and SD using built-in functions)
 
-            
 - **Category 4** — Moderate complexity with configuration elements, e.g., simple Boolean logic (IF branches based on user input)
 
-            
 - **Category 5** — Custom macros, sophisticated nested logic, or lookup functions
-
-        
-
-        
 
 Note: For end user applications, Category 4 focuses on complexity rather than configurability (the standard GAMP definition).
 
-        
-
 ### S3.4 Risk-Based Controls
-
-        
 
 Four control dimensions apply:
 
-        
-
-            
 - **Degree of Verification** — Complexity determines rigor; macros require functional testing; logical branches require multiple logic path testing
 
-            
 - **Security Control** — Combination of infrastructure controls (restricted directory access) and application-level controls (cell password protection). GxP data should be saved to a secure, backed-up drive.
 
-            
 - **Change Control** — All GxP end user applications must be subject to change control; EDMS or code library tools support version management
 
-            
 - **Infrastructure Control** — The spreadsheet environment (e.g., Excel installation) is Category 1 software; IT manages its verification and compatibility with the standard desktop build
-
-        
-
-        
 
 ### S3.5 Examples of Typical Approaches
 
-        
-            
-                
-| Example | Impact / Complexity | Recommended Approach |
-| --- | --- | --- |
-            
-            
-                
-| Content uniformity calculation template | High / Low | RS + third-party verification of calculations + security + change control |
-                
-| Training attendance spreadsheet | Low / Low | Standard electronic document controls only |
-                
-| Desktop database for toxicology study | High / Medium | Full Category 4: Validation Plan, RS, FS/DS, traceability, testing, report |
-                
-| Clinical study statistics with VBA macros | High / High | Full Category 5: All above + rigorous macro and branch testing |
-                
-| SPC spreadsheet with complex logic/lookups | Low / High | Third-party verification of calculations + change control + security |
-                
-| Label disposition tracking database | Medium / Medium | Abbreviated Category 4: Combined RS/FS/DS + testing + report + change control |
-            
-        
-
-    
-
-    
-
-        
-
 ## 
-
-        
-
-            
 
 #### FDA 483 Excel
 
-            
-
-            
-
 *"Laboratory controls do not include the validation of test methods and associated computerized systems. Specifically, the spreadsheet used to calculate [product X assay results] was not validated."*
-
-            
-
-        
-
-        
-
-            
 
 #### GxP
 
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-        
-
-            
-
 #### Macro
 
-            
-
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
-
 #### 
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### CDMO QC
 
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-    
-
 ---
 
-## Appendix S4 — Patch and Update Management (p371–p373)
-
-    
-
-        
+## **Appendix S4 — Patch and Update Management (p371–p373) Appendix S4 — **
 
 ## S4.1 Introduction
 
-        
-
 Software patches, hot fixes, and service pack upgrades are a frequent operational reality due to:
 
-        
-
-            
 - Security vulnerabilities in widely integrated/connected applications (theft of personal data or IP; theft of computing power for malicious software agents)
 
-            
 - Defects in complex software requiring supplier-issued fixes for critical processes
 
-            
 - Periodic supplier software updates
-
-        
-
-        
 
 Appropriate patch management is particularly important to maintain compliance and fitness for intended use of GxP regulated computerized systems.
 
-        
-
 ### S4.2 Approach to Patch and Update Management
-
-        
 
 Regulated companies should develop a patch and upgrade management approach that:
 
-        
-
-            
 - Provides criteria for determining enterprise threat levels and urgency for applying patches
 
-            
 - Allows flexibility considering both enterprise risk and compliance risk to regulated systems
 
-            
 - Generates configuration records showing version and patch level at any point in the system life cycle
 
-            
 - Generates change records describing what testing was done (may include enterprise-level and/or application-specific testing)
-
-        
-
-        
-
-            
 
 #### The Core Tension: Security vs. GxP Compliance
 
-            
-
 Many patches address urgent security vulnerabilities where exploits may already be known or imminent. The time required to evaluate and test all affected GxP regulated computerized systems prior to implementation may increase risk to data integrity if a threat is actively being exploited.
-
-            
 
 Regulated companies must develop a risk-management approach that considers **both** regulatory compliance (validated state) and the level of threat to the system and wider computing environment.
 
-        
-
-        
-
 #### Quality Unit Role
-
-        
 
 The quality unit should **approve the process** for risk evaluation of all patches but is generally not involved in individual patch assessments. If the QU is involved in an assessment, they should not have final say in how the patch is managed. **Enterprise risk typically has to be given precedence over GxP risk.** If a patch must be applied that carries undesirable GxP risk, business process owners and the quality unit should work together to mitigate through verification activities, temporary business process changes, or other approaches.
 
-        
-
-#### Patch Strategies (Figure 49.1)
-
-        
-            
-                
-| Strategy | Approach | Enterprise Risk | GxP Risk |
-| --- | --- | --- | --- |
-            
-            
-                
-| Strategy 1 (Most Aggressive) | Apply immediately enterprise-wide; perform post-implementation testing | Lowest | Highest (limited pre-testing) |
-                
-| Strategy 2 | Apply to non-GxP systems immediately; apply to GxP systems after abbreviated testing | Low-Medium | Medium |
-                
-| Strategy 3 | Apply to all systems after normal change management testing cycle | Medium-High | Lower |
-                
-| Strategy 4 (Most Conservative) | Apply only after full application-specific impact assessment and testing | Highest | Lowest |
-            
-        
-
-        
+#### Patch Strategies (Figure 49.1🔍)
 
 The process should define criteria and required approvals for selecting each strategy, and include notification to affected parties (including the help desk) after patch application.
 
-        
-
 ### S4.3 Configuration Management
-
-        
 
 Accurate configuration management records support patch management by enabling:
 
-        
-
-            
 - **Planning** — Patches often must be applied sequentially; knowing the current patch level is prerequisite
 
-            
 - **Interoperability** — Systems running at multiple sites or interfacing with external applications may require matching patch levels
 
-            
 - **Troubleshooting** — Thorough knowledge of configuration is critical to understanding incidents
 
-            
 - **Data Integrity** — Demonstrating security gaps have been closed and when this was achieved
-
-        
-
-        
 
 Configuration records should be sufficient to show the current as-built state and when patches or upgrades have been applied.
 
-    
-
-    
-
-        
-
 ## 
-
-        
-
-            
 
 #### vs.
 
-            
-
-            
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
-
 #### 
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-        
-
-        
-
-            
 
 #### SOP
 
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-        
-
-            
-
 #### 
-
-            
-
-            
-
-        
-
-        
-
-            
 
 #### OT/IT SCADADCS
 
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-    
-
 ---
 
-## Appendix S5 — Retired (p375)
-
-    
-
-        
-
-            
+## **Appendix S5 — Retired (p375) Appendix S5 — **
 
 ### Appendix S5 — Managing Quality within an Outsourced IS/IT Environment (Retired)
 
-            
-
 Appendix S5 of GAMP 5, 1st Edition covered the management of quality within an outsourced IT/IS environment. In the 2nd Edition, this content has been **withdrawn and substantially revised**. The updated material has been renamed and relocated to **Appendix M11**, which provides current guidance on managing outsourced IT/IS environments in the context of GxP computerized systems.
-
-            
 
 This appendix entry is retained as a placeholder to maintain the numbered appendix sequence (S1 through S6) and to direct readers to the current guidance location.
 
-        
-
-    
-
-    
-
-        
-
-            
-
 ### S5 — Retired
-
-            
-
-            
-
-        
-
-    
 
 ---
 
-## Appendix S6 — Organizational Change (p377–p381)
-
-    
-
-        
+## **Appendix S6 — Organizational Change (p377–p381) Appendix S6 — **
 
 ## S6.1 Introduction
 
-        
-
 There has been a global trend within the life sciences sector toward organizational consolidation and outsourcing of services. Additional challenges from the COVID-19 pandemic and digital transformation have further stimulated agile ways of working. This appendix considers the impact of organizational change on GxP regulated computerized systems and provides guidance for ensuring continued compliance and system availability.
-
-        
 
 ### S6.2 Initiators for Change
 
-        
-
-            
 - Internal reorganization
 
-            
 - Being acquired by another company
 
-            
 - Divesting part of an organization to a third party (including offshoring and outsourcing)
 
-            
 - Supplier or service provider ceasing to trade
-
-        
-
-        
 
 ### S6.3 Scope and Impact of Change
 
-        
-
 Organizational change may apply to any aspect of the system supply chain — regulated companies, system integrators, base product and infrastructure suppliers. Change can occur during any stage of a computerized system's life cycle. Aspects to consider include:
 
-        
-
-            
 - Changes in the business process the computerized system supports
 
-            
 - Changes in how an existing system is used
 
-            
 - Moving systems from one location to another
 
-            
 - New or different regulatory and compliance requirements
 
-            
 - Impact on regulated records and associated signatures
 
-            
 - Changes in how security (physical and logical access control) is handled
 
-            
 - Clarification of where primary data is located and who the system/process owners are
 
-            
 - Timing and need to audit a reorganized supplier
 
-            
 - Impact on service level agreements
 
-            
 - Maintaining expertise on systems (with both supplier and regulated company)
 
-            
 - Impact on support contracts and system implementation projects
 
-            
 - Changes in personnel and/or individual responsibilities
-
-        
-
-        
 
 ### S6.4 Organizational Challenges
 
-        
-
-            
 - Maintaining multiple/parallel systems for the same business process
 
-            
 - Developing interfaces between multiple/parallel systems
 
-            
 - Migrating data or subsets of data from one system to another
 
-            
 - Maintaining data sets for third parties for extended periods (format, conversion, discarding decisions)
 
-            
 - Systems likely to be retired
 
-            
 - Location of life cycle records and inspection support on an ongoing basis
 
-            
 - Maintaining multiple/parallel compliance practices and documentation
 
-            
 - Harmonizing compliance practices and training in new practices
 
-            
 - Changes in regulatory expectations and subsequent impact on life cycle activities
 
-            
 - Change management and configuration management across changed organizations
 
-            
 - Increased focus on incident monitoring during the transition period
-
-        
-
-        
 
 ### S6.5 Outsourcing Considerations
 
-        
-
 Where organizational change involves outsourcing, additionally consider:
 
-        
-
-            
 - Whether the regulated company continues to own the equipment or whether this transfers to the outsource company
 
-            
 - Whether the outsource organization QMS is used or the regulated company QMS
 
-            
 - Need to both initially and periodically audit the outsource organization (scope: both compliance and financial)
-
-        
-
-        
 
 See Appendix M11 for further details on managing outsourced IT/IS environments.
 
-        
-
 ### S6.6 Loss of a Supplier
-
-        
 
 Where a supplier ceases to trade, consider:
 
-        
-
-            
 - Ensuring business continuity plans are established and accurate for related systems
 
-            
 - Invoking any escrow agreements to gain access to application source code
 
-            
 - Record and system migration options
 
-            
 - Retrieval of regulated company owned components (hardware, software, records, documentation)
-
-        
-
-        
 
 ### S6.7 Risk Assessment and Project Status Scenarios
 
-        
-            
-                
-| Project Status | Company Acquisition | Company Merger | Supplier Insolvency |
-| --- | --- | --- | --- |
-            
-            
-                
-| Not Started | On hold pending management review | On hold pending management review | Cancelled |
-                
-| In Progress — Early in Life Cycle | On hold pending management review | On hold pending management review | Cancelled |
-                
-| In Progress — Late in Life Cycle | On hold pending management review | Continued | On hold pending management review |
-                
-| Approaching Go-Live | On hold pending management review (priority decision) | Continued | On hold pending management review |
-            
-        
-
-        
-
 ### S6.8 Affected Stakeholders
-
-        
 
 Agreement must be reached between all affected organizations. Representatives typically involved include:
 
-        
-
-            
 - Business process owners
 
-            
 - Compliance / Quality / Regulatory
 
-            
 - Legal
 
-            
 - IT and Engineering
 
-            
 - Purchasing groups and in some cases Finance
-
-        
-
-        
 
 Key documentation update tasks for stakeholders:
 
-        
-
-            
 - Business process documentation
 
-            
 - Policies, procedures, work instructions, test methods
 
-            
 - Training materials and user manuals
 
-            
 - Batch records (if applicable)
 
-            
 - Archived records/data
 
-            
 - Contracts, system interfaces, validation/qualification records
 
-            
 - Record retention schedules
-
-        
-
-        
 
 Training requirements must be evaluated against all changes made to QMS, ways of working, or documentation — at both organizational and system levels.
 
-    
-
-    
-
-        
-
 ## CSV
 
-        
-
-            
-
 #### CSV
-
-            
-
-        
-
-        
-
-            
 
 #### IT /
 
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-        
-
-            
-
 #### CDMO M&A
-
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-        
-
-            
 
 #### 
 
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-        
-
-            
-
 #### CSV
 
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-    
-
-    
-
 ## Section Summary — S1–S6
-
-    
-
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
-    
 
 ⇧
 
@@ -24039,35 +13104,6 @@ ASTM & Other Standards
 
             
 
-#### 21 CFR Part 11 vs. EU Annex 11 —
-
-            
-                
-                    
-| | 21 CFR Part 11 | EU Annex 11 |
-| --- | --- | --- |
-                
-                
-                    
-| | FDA | EMA |
-                    
-| | | GMP |
-                    
-                    
-| | | Periodic Review |
-                    
-                    
-                
-            
-
-            
-
-        
-
-        
-
-            
-
 #### ICH Q10 —
 
             
@@ -24110,230 +13146,6 @@ ASTM & Other Standards
 ## G2 — Acronyms and Abbreviations
 
         
-            
-                
-| Acronym / | Full Term / |
-| --- | --- |
-            
-            
-                
-| AI | Artificial Intelligence |
-                
-| ALCOA+ | Attributable, Legible, Contemporaneous, Original, Accurate, Complete, Consistent, Enduring, Available |
-                
-| BaaS | Blockchain as a Service |
-                
-| BC | Business Continuity |
-                
-| BCP | Business Continuity Planning |
-                
-| BYOD | Bring Your Own Device |
-                
-| CAPA | Corrective and Preventive Action |
-                
-| CD | Continuous Deployment |
-                
-| CDRH | Center for Devices and Radiological Health |
-                
-| CDS | Chromatography Data System |
-                
-| CI | Continuous Integration |
-                
-| CMDB | Configuration Management Database |
-                
-| COTS | Commercial off the Shelf |
-                
-| CPP | Critical Process Parameter |
-                
-| CPU | Central Processing Unit |
-                
-| CQA | Critical Quality Attribute |
-                
-| CRO | Clinical Research Organization |
-                
-| CS | Configuration Specification |
-                
-| CSA | Computer Software Assurance |
-                
-| DAP | Data Archiving Plan |
-                
-| DIP | Dual In-line Package |
-                
-| DMS | Document Management System |
-                
-| DoD | Definition of Done |
-                
-| DoR | Definition of Ready |
-                
-| DQ | Design Qualification |
-                
-| DR | Disaster Recovery |
-                
-| DS | Design Specification |
-                
-| EDA | Electronic Data Archive |
-                
-| EDMS | Electronic Document Management System |
-                
-| EMA | European Medicines Agency (EU) |
-                
-| EPR | Electronic Production Record |
-                
-| ERP | Enterprise Resource Planning |
-                
-| ETL | Tool that extracts, transforms, and loads data |
-                
-| EU | European Union |
-                
-| FAT | Factory Acceptance Test |
-                
-| FDA | Food and Drug Administration (US) |
-                
-| FMEA | Failure Mode Effects Analysis |
-                
-| FS | Functional Specification |
-                
-| GDPR | General Data Protection Regulation (EU) |
-                
-| GEP | Good Engineering Practice |
-                
-| GLP | Good Laboratory Practice |
-                
-| GMP | Good Manufacturing Practice |
-                
-| GxP | Good "x" Practice |
-                
-| HSE | Health, Safety, and Environment |
-                
-| HVAC | Heating, Ventilation, and Air Conditioning |
-                
-| IaaS | Infrastructure as a Service |
-                
-| IaC | Infrastructure as Code |
-                
-| ICH | International Council for Harmonisation of Technical Requirements for Pharmaceuticals for Human Use |
-                
-| INVEST | Independent, Negotiable, Valuable, Estimable, Small, Testable |
-                
-| IP | Intellectual Property |
-                
-| ISA | International Society of Automation |
-                
-| ISMS | Information Security Management System |
-                
-| IT | Information Technology |
-                
-| ITQ | IT Quality |
-                
-| KPI | Key Performance Indicator |
-                
-| LDAP | Lightweight Directory Access Protocol |
-                
-| LIMS | Laboratory Information Management System |
-                
-| LMS | Learning Management System |
-                
-| MES | Manufacturing Execution System |
-                
-| MHRA | Medicines & Healthcare products Regulatory Agency |
-                
-| ML | Machine Learning |
-                
-| MSA | Master Service Agreement |
-                
-| MVP | Minimum Viable Product |
-                
-| NIST | National Institute of Standards and Technology |
-                
-| OLA | Operating Level Agreement |
-                
-| OQ | Operational Qualification |
-                
-| OSS | Open-Source Software |
-                
-| P&ID | Process and Instrumentation Diagram |
-                
-| PaaS | Platform as a Service |
-                
-| PAT | Process Analytical Technology |
-                
-| PI | Personal Information |
-                
-| PII | Personally Identifiable Information |
-                
-| PLC | Programmable Logic Controller |
-                
-| PPQ | Process Performance Qualification |
-                
-| PQ | Performance Qualification |
-                
-| QA | Quality Assurance |
-                
-| QbD | Quality by Design |
-                
-| QC | Quality Control |
-                
-| QMS | Quality Management System |
-                
-| QRM | Quality Risk Management |
-                
-| QTPP | Quality Target Product Profile |
-                
-| R&D | Research and Development |
-                
-| RAID | Risks, Actions, Issues, Decisions |
-                
-| RFP | Request for Proposal |
-                
-| RPO | Recovery Point Objective |
-                
-| RS | Requirements Specification |
-                
-| RTM | Requirements Trace Matrix |
-                
-| RTO | Recovery Time Objectives |
-                
-| SaaS | Software as a Service |
-                
-| SaMD | Software as a Medical Device |
-                
-| SBOM | Software Bill of Materials |
-                
-| SLA | Service Level Agreement |
-                
-| SME | Subject Matter Expert |
-                
-| SOP | Standard Operating Procedure |
-                
-| SOW | Statement Of Work |
-                
-| SOX | Sarbanes-Oxley |
-                
-| TMF | Trial Master File |
-                
-| UAT | User Acceptance Testing |
-                
-| UC | Underpinning Contract |
-                
-| UPS | Uninterruptable Power Supply |
-                
-| URS | User Requirement Specification |
-                
-| UV | Ultraviolet |
-                
-| VBA | Visual Basic for Applications |
-                
-| VM | Virtual Machine |
-                
-| VMP | Validation Master Plan |
-                
-| WAN | Wide Area Network |
-                
-| XaaS | Infrastructure/Platform/Software as a Service |
-            
-        
-
-    
 
     
     
@@ -24341,63 +13153,6 @@ ASTM & Other Standards
         
 
 ## — 20 GAMP 5
-
-        
-
-            
-
-#### GAMP 5 20
-
-            
-                
-                    
-| --- | --- | --- |
-                
-                
-                    ****
-| CSV | Computer System Validation | |
-                    ****
-| CSA | Computer Software Assurance | FDA |
-                    ****
-| COTS | Commercial Off-the-Shelf | |
-                    ****
-| GxP | Good "x" Practice | GxP GMP/GLP/GCP |
-                    ****
-| URS | User Requirement Specification | |
-                    ****
-| FS | Functional Specification | |
-                    ****
-| CS | Configuration Specification | |
-                    ****
-| DS | Design Specification | |
-                    ****
-| IQ | Installation Qualification | |
-                    ****
-| OQ | Operational Qualification | |
-                    ****
-| PQ | Performance Qualification | |
-                    ****
-| DQ | Design Qualification | |
-                    ****
-| QRM | Quality Risk Management | |
-                    ****
-| VMP | Validation Master Plan | |
-                    ****
-| RTM | Requirements Trace Matrix | |
-                    ****
-| FAT | Factory Acceptance Test | |
-                    ****
-| SME | Subject Matter Expert | |
-                    ****
-| CAPA | Corrective and Preventive Action | |
-                    ****
-| QMS | Quality Management System | |
-                    ****
-| ALCOA+ | Attributable, Legible, Contemporaneous, Original, Accurate... | |
-                
-            
-
-        
 
         
 
@@ -24928,27 +13683,6 @@ Software that provides common services such as communication and data management
 #### GxP —
 
             
-                
-                    
-| --- | --- | --- |
-                
-                
-                    
-| GMP | Good Manufacturing Practice | |
-                    
-| GLP | Good Laboratory Practice | |
-                    
-| GCP | Good Clinical Practice | |
-                    
-| GDP | Good Distribution Practice | |
-                    
-| GVP | Good Pharmacovigilance Practice | |
-                    
-| GQP | Good Quality Practice | |
-                
-            
-
-            
 
         
 
@@ -25408,34 +14142,6 @@ Source: ISO 9000 [1]; ASTM E2500 [8]
 
             
 
-#### System Owner vs. Process Owner —
-
-            
-                
-                    
-| | System Owner | Process Owner |
-| --- | --- | --- |
-                
-                
-                    
-| | IT | QA// |
-                    
-                    
-| | GxP | Data Owner |
-                    
-| SOP | SOP | GxP SOP |
-                    
-                
-            
-
-            
-
-        
-
-        
-
-            
-
 #### Periodic Review—
 
             
@@ -25450,63 +14156,6 @@ Source: ISO 9000 [1]; ASTM E2500 [8]
 
             
 
-            
-
-        
-
-        
-
-            
-
-#### 20 GAMP 5
-
-            
-                
-                    
-| --- | --- | --- |
-                
-                
-                    
-| Computerized System Validation | | GAMP 5 |
-                    
-| Fitness for Intended Use | | |
-                    
-| GxP Compliance | GxP | |
-                    
-| Critical Aspect | | |
-                    
-| Risk Assessment | | ICH Q9 |
-                    
-| Quality Risk Management | | GAMP 5 |
-                    
-| Acceptance Criteria | | |
-                    
-| Process Owner | | |
-                    
-| System Owner | | |
-                    
-| Supplier | | |
-                    
-| Periodic Review | | EU Annex 11 |
-                    
-| Change Management | | ICH Q10 |
-                    
-| COTS Software | | GAMP 5 3/4/5 |
-                    
-| Subject Matter Expert | | ASTM E2500 SME |
-                    
-| Calibration | | ICH Q7 |
-                    
-| Software Life Cycle | | |
-                    
-| Verification (ASTM) | ASTM | |
-                    
-| Functional Testing | | |
-                    
-| Structural Testing | | |
-                    
-| Incident | | |
-                
             
 
         
@@ -25560,6 +14209,16 @@ Source: ISO 9000 [1]; ASTM E2500 [8]
         
 
     
+
+            
+
+#### System Owner vs. Process Owner —
+
+            
+
+        
+
+        
 
     
 

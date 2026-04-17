@@ -340,21 +340,19 @@ Considerations ����������������������
 
 **Table 5.1.4-1	 Holistic Approach to Utility Considerations���18**
 
-**Table 8.0-1 — Holistic Approach to Personnel Considerations**
-| Non-Holistic Approach | Holistic Approach |
-| --- | --- |
-| Contamination cannot occur if SOP instructions and batch records are precisely followed by personnel | Contamination can be prevented by understanding and reducing the specific hazards throughout the process, through a combination of strong CCS practices, quality culture, and continuous improvement |
+**Table 8.0-1**
+
+Holistic Approach to Personnel
+Considerations�����������������������������������������26
 
 *[Figure 8.4.2-1	Aseptic-Operator’s Observation 7-Step]*
 
 Program ��������������������������������������������������29
 
-**Table 9.0-1 Holistic Approach to Equipment Considerations**
-| Non-Holistic Approach | Holistic Approach |
-| --- | --- |
-| Nonsterile equipment is always appropriate for nonsterile processes | Design the equipment controls to prevent and reduce contamination risk under worst-case circumstances |
-| Cleaning is validated and therefore cannot be a root cause or contributing factor for contamination | Design the equipment handling procedures with the understanding that validated cleaning practices can be overchallenged by poor equipment hold practices; nonsterile equipment with any residual moisture will foul with biofilm over time |
-| Perform only testing after a clean hold time is exceeded but do not reclean | Perform full cleaning after a clean hold time is exceeded to reduce any build-up of biofilm, which can be more difficult to remove later |
+**Table 9.0-1**
+
+Holistic Approach to Equipment
+Considerations�����������������������������������������31
 
 *[Figure 10.2-1	 Fishbone Diagram Conveying a]*
 
@@ -372,31 +370,23 @@ during Periodic Review�������������������
 
 Assessments that Support CCS�����������������40
 
-| Table 15.0-1 — Structure of the Manufacturing Areas |
-| --- |
+**Table 15.0-1	 Structure of the Manufacturing Areas������46**
 
-| Table 15.0-2 — Multiuse or Single-Product Facility |
-| --- |
+**Table 15.0-2	 Multiuse or Single-Product Facility����������47**
 
-| Table 15.0-3 — Storage of Materials and Equipment |
-| --- |
+**Table 15.0-3	 Storage of Materials and Equipment��������48**
 
-| Table 15.0-4 — Path of Materials, Equipment, or Waste |
-| --- |
+=== PDF PAGE 7 ===
 
-| Table 15.0-5 — Maintenance |
-| --- |
-| Training of Maintenance Personnel | Conduct contamination control training, including behavior in the cleanroom, to ensure that those who have an impact are thoroughly familiar with and able to follow all the processes and procedures of a successful contamination control program while performing activities. This program should include employees and contractors who may need to enter controlled classified areas. |
+**Table 15.0-4	 Path of Materials, Equipment, or Waste���48**
 
-| Table 15.0-6 — Movement and Gowning of Personnel |
-| --- |
+**Table 15.0-5	 Maintenance��������������������������������������������49**
 
-| Table 15.0-7 — Composition of DS and DP |
-| --- |
+**Table 15.0-6	 Movement and Gowning of Personnel�����50**
 
-| Table 15.0-8 — Cleaning and Sterilization Processes |
-| --- |
-| Cleaning | Manual cleaning processes (such as washing) for equipment are difficult to qualify and ensure reproducibility |
+**Table 15.0-7	 Composition of DS and DP�����������������������50**
+
+**Table 15.0-8	 Cleaning and Sterilization Processes��������50**
 
 **Table 15.0-9	 Environmental Monitoring�����������������������51**
 
@@ -1855,10 +1845,17 @@ tamination control training program. Operators performing activities in the asep
 have additional aseptic operator training and meet qualification requirements, including reviewing the air-
 flow visualization studies. Table 8.0-1 highlights the mindset shift toward holistic CCS relating to personnel.
 
-**Table 8.0-1 — Holistic Approach to Personnel Considerations**
-| Non-Holistic Approach | Holistic Approach |
-| --- | --- |
-| Contamination cannot occur if SOP instructions and batch records are precisely followed by personnel | Contamination can be prevented by understanding and reducing the specific hazards throughout the process, through a combination of strong CCS practices, quality culture, and continuous improvement |
+**Table 8.0-1**
+
+Holistic Approach to Personnel Considerations
+Non-Holistic Approach
+Holistic Approach
+Contamination cannot occur if SOP
+instructions and batch records are precisely
+followed by personnel
+Contamination can be prevented by understanding and reducing the specific hazards
+throughout the process, through a combination of strong CCS practices, quality culture,
+and continuous improvement
 
 ### 8.1 Basic Microbiology
 
@@ -2125,13 +2122,26 @@ Cleaning validation is essential, but it is also limited in its value to predict
 lifespan of equipment due to the timing and amount of validation testing and the limitations of tradi-
 tional microbiological testing. Historically, cleaning validation has primarily focused on the removal of
 
-**Table 9.0-1 Holistic Approach to Equipment Considerations**
-| Non-Holistic Approach | Holistic Approach |
-| --- | --- |
-| Nonsterile equipment is always appropriate for nonsterile processes | Design the equipment controls to prevent and reduce contamination risk under worst-case circumstances |
-| Cleaning is validated and therefore cannot be a root cause or contributing factor for contamination | Design the equipment handling procedures with the understanding that validated cleaning practices can be overchallenged by poor equipment hold practices; nonsterile equipment with any residual moisture will foul with biofilm over time |
-| Perform only testing after a clean hold time is exceeded but do not reclean | Perform full cleaning after a clean hold time is exceeded to reduce any build-up of biofilm, which can be more difficult to remove later |
+**Table 9.0-1**
 
+Holistic Approach to Equipment Considerations
+Non-Holistic Approach
+Holistic Approach
+Nonsterile equipment is always appropriate for
+nonsterile processes
+Design the equipment controls to prevent and reduce contamination risk under
+worst-case circumstances
+Cleaning is validated and therefore cannot be a root
+cause or contributing factor for contamination
+Design the equipment handling procedures with the understanding that validated
+cleaning practices can be overchallenged by poor equipment hold practices;
+nonsterile equipment with any residual moisture will foul with biofilm over time
+Perform only testing after a clean hold time is
+exceeded but do not reclean
+Perform full cleaning after a clean hold time is exceeded to reduce any build-up of
+biofilm, which can be more difficult to remove later
+
+=== PDF PAGE 39 ===
 product residue and less on prevention of biofilms. Additionally, sampling techniques and culture-based
 microbiological testing are known to have limited detection power for a range of microorganisms.
 Equipment validation is often performed on new equipment that has not been exposed to the broad
@@ -3008,9 +3018,26 @@ Contamination Control Strategy Elements
 Tables 15.0-1–15.0-10 provide practical considerations for many elements of contamination control
 system (CCS) with an explanation of the relevant benefit of preventing contamination.
 
-| Table 15.0-1 — Structure of the Manufacturing Areas |
-| --- |
+**Table 15.0-1**
 
+Structure of the Manufacturing Areas
+Closed
+Processes
+Closed systems are a physical barrier between the environment and materials in a manufacturing process
+Closed process provides protection from the introduction of contamination from the environment because introduction of
+materials into the equipment is restricted to closed connectors
+A closed system prevents release of inherent contaminants into the manufacturing environment
+Inherent bioburden of the process is contained
+Prevent interaction of humans with the product or direct product contact surfaces
+Isolator surfaces can be decontaminated with a validated process
+Understand sequence operation to prevent downstream contamination
+Open
+Processes
+Open processes rely significantly on appropriate gowning and operator training/aseptic practices/hygienic behavior to
+protect process from human originating contaminates
+Multiple barriers are required to protect against contamination in open manufacturing systems
+Design of facilities should consider flows of people, product, materials, equipment, and waste to prevent contamination
+and cross-contamination
 For open processes that directly impact purity of materials from contaminant or adventitious agents, use of barrier technology is
 preferred over a unidirectional flow unit or biosafety cabinet (BSC)
 Appropriate use of a unidirectional flow unit or BSC is for reduced bioburden processing (or low or controlled); the purpose of the
@@ -3051,9 +3078,20 @@ in direct contact with product and requires temporal or other procedural control
 would include a closed system using single-use equipment from the step that removed contaminants, perhaps as early as DS, until the
 formulated DP is dispensed into primary packaging
 
-| Table 15.0-2 — Multiuse or Single-Product Facility |
-| --- |
+**Table 15.0-2**
 
+Multiuse or Single-Product Facility
+Multiuse Facility
+Facility design should consider features that prevent introduction of harmful contaminants into products at every
+stage of the manufacturing process
+Segregation of areas during manufacture of biologics where adventitious and viral control of downstream mate-
+rial should be maintained
+Single-Product Facility
+Facility design should consider features that prevent introduction of harmful contaminants into products at every
+stage of the manufacturing process
+Equipment may require segregation by process
+Multiuse and Single-
+Product Facilities
 The difference between contamination in a single-use facility versus a multiuse facility is quite subtle. It is unac-
 ceptable in either circumstance to introduce impurities inadvertently from an earlier upstream unit of operation.
 In both circumstances, if the intermediate or product is of an inferior nature, it is adulterated irrespective of the
@@ -3064,12 +3102,33 @@ Benefit to Preventing Contamination
 
 === PDF PAGE 55 ===
 
-| Table 15.0-3 — Storage of Materials and Equipment |
-| --- |
+**Table 15.0-3**
 
-| Table 15.0-4 — Path of Materials, Equipment, or Waste |
-| --- |
+Storage of Materials and Equipment
+Control of
+Materials
+Stored in closed/sealed protective containers
+Dispensed in controlled/monitored areas
+Stored in temperature- and humidity-controlled areas
+Storage conditions prevent microbial proliferation
+Control of
+Equipment
 
+Equipment stored clean and dry and protected from the environment
+Cleaning process validated and monitored
+Sterilization processes validated
+Sterile hold times defined and validated
+Benefit to Preventing Contamination
+•	 Materials and equipment are stored in a manner that prevents or minimizes introduction or proliferation of bioburden.
+•	 Sampling and dispensing areas do not add bioburden to raw materials.
+•	 Storage of clean equipment is qualified to ensure that bioburden or endotoxin levels do not increase.
+
+**Table 15.0-4**
+
+Path of Materials, Equipment, or Waste
+Materials and/or
+Equipment
+Material air locks separate from personnel air locks
 Qualified disinfection practices (including use of sporicides where appropriate) for transfer into controlled/classified areas
 Shedding layers of packaging as items are transferred into controlled/classified areas
 Unidirectional flow
@@ -3094,10 +3153,14 @@ adventitious agents.
 
 === PDF PAGE 56 ===
 
-| Table 15.0-5 — Maintenance |
-| --- |
-| Training of Maintenance Personnel | Conduct contamination control training, including behavior in the cleanroom, to ensure that those who have an impact are thoroughly familiar with and able to follow all the processes and procedures of a successful contamination control program while performing activities. This program should include employees and contractors who may need to enter controlled classified areas. |
+**Table 15.0-5**
 
+Maintenance
+Training of
+Maintenance
+Personnel
+Conduct contamination control training, including behavior in the cleanroom, to ensure that those who have an
+impact are thoroughly familiar with and able to follow all the processes and procedures of a successful contamination
 control program while performing activities. This program should include employees and contractors who may need to
 enter controlled classified areas.
 Movement
@@ -3138,9 +3201,20 @@ perform all maintenance activities in a way that reduces risk.
 
 === PDF PAGE 57 ===
 
-| Table 15.0-6 — Movement and Gowning of Personnel |
-| --- |
+**Table 15.0-6**
 
+Movement and Gowning of Personnel
+Path of
+Incoming and
+Exiting
+Personnel
+Personnel air locks are separate from air locks for equipment and materials
+Air locks provide a staging area to systematically replace outer garments and gloves
+Unidirectional flow
+Personnel are trained in effective aseptic practices for areas in which they work and instructed to understand the
+impact of personnel flow on bioburden introduction
+Personnel
+Gowning
 Use of multiple layers of gowning, where appropriate, to protect environmental or product quality in controlled or classified areas
 Preventing the presence of personnel in the same area with different gowning requirements, such as material air locks
 Qualification of gowning practices where required
@@ -3152,17 +3226,38 @@ flows, air locks, and aseptic practices are effective barriers between controlle
 other sources of contaminants will raise awareness.
 •	 Use of air locks to replace gowns along the path to a clean room is an important terminating point for potentially contaminated garments and gloves.
 
-| Table 15.0-7 — Composition of DS and DP |
-| --- |
+**Table 15.0-7**
 
+Composition of DS and DP
+Growth Source
+Determine whether the composition of intermediates and buffers allow microbial growth or inhibit microbial growth,
+based on nutrient content, pH, water activity
+Understand that extended hold times create vulnerability to contamination if the composition allows growth
+Store material in an integral container to prevent contamination ingress
+Downstream
+Processes
+Check downstream bioburden or endotoxin reduction steps after introduction of growth-enhancing materials
+Bioburden
+Removal
+Filtering solutions and intermediates
+Removing bioburden from materials and buffers/media before adding to process stream via filtration, autoclaving, or
+other sterilization
+Viral Removal or
+Inactivation
+Low pH or detergent step, which inactivates enveloped viruses
+Nanofiltration
+Benefit to Preventing Contamination
+•
 Understanding the points in the process that are vulnerable to microbial contamination allows for effective CCS to be built. The
 vulnerable points warrant strict control of the potential sources of microbial ingress (materials, equipment, environment, personnel),
 may warrant a bioburden removal, possibly viral removal, and in-process monitoring
 
-| Table 15.0-8 — Cleaning and Sterilization Processes |
-| --- |
-| Cleaning | Manual cleaning processes (such as washing) for equipment are difficult to qualify and ensure reproducibility |
+**Table 15.0-8**
 
+Cleaning and Sterilization Processes
+Cleaning
+Manual cleaning processes (such as washing) for equipment are difficult to qualify and ensure reproducibility
+Sterilization
 Facility design should consider features that prevent introduction of harmful contaminants into products at every stage of the
 sterilization process (e.g., one-way autoclaves, tunnels, storage of processed equipment in appropriate classification)
 Understand requirements for equipment maintenance, calibration, validation, requalification.

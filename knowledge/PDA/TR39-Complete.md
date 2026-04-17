@@ -429,31 +429,78 @@ to OQ and performance qualification (PQ). The outcome of a successful DQ assures
 dence level for successful OQ of a specific TPS. Typical process parameters may include, but are not
 limited to, the items listed in Table 3.3-1.
 
-| Parameter / | Passive / | Active / |
-| --- | --- | --- |
-| Process duration / | Yes | Yes |
-| Temperature monitoring device / | Yes | Yes |
-| Family approach rationale / | Yes | Yes |
-| Product quantity / | Yes | Yes |
-| Temperature-conditioning of product / | Yes | Yes |
-| Type of insulated material / | Yes | Yes |
-| Product shipping configuration / | Yes | Yes |
-| Min/Max thermal mass / / | Yes | Yes |
-| Ambient temperature profiles (hot & cold) / | Yes | Yes |
-| Conditioning of PCM or active container / PCM/ | Yes | Yes |
-| Location of refrigerants / | Yes | No |
-| Phase-change materials (PCM) / | Yes | No |
-| Orientation of package / | Yes | Yes |
-| Representative shipper selection / | Yes | Yes |
-| Refrigeration system capacity / | No | Yes |
-| Air flow (forced) / | No | Yes |
-| Diesel or electric power supply / | No | Yes |
-| Operational modes / | No | Yes |
-| Defrost cycles / | No | Yes |
-| Power failure and recovery test / | No | Yes |
-| Loading and unloading pattern/time / / | Yes | Yes |
-| Door opening / | No | Yes |
+**Table 3.3-1	 Typical Process Parameters for Design Qualification**
 
+Description
+Passive
+Active
+Process duration
+Yes
+Yes
+Determining temperature monitoring device
+Yes
+Yes
+Family approach rationale
+Yes
+Yes
+Product quantity
+Yes
+Yes
+Temperature-conditioning of product
+Yes
+Yes
+Type of insulated material used
+Yes
+Yes
+Product shipping configuration
+Yes
+Yes
+Minimum and maximum thermal mass/product loads
+Yes
+Yes
+Defined ambient temperature profile(s)—both hot and cold profiles, where appropriate
+Yes
+Yes
+Temperature-conditioning of phase-change materials or active container
+Yes
+Yes
+Location of refrigerants
+Yes
+No
+Product used to stabilize temperatures such as phase-change materials
+Yes
+No
+Orientation of package
+Yes
+Yes
+Representative shipper selection strategy
+Yes
+Yes
+Refrigeration system capacity
+No
+Yes
+Air flow (forced)
+No
+Yes
+Diesel or electric power supply
+No
+Yes
+Operational modes (cycle sentry, continuous, front evaporator only)
+No
+Yes
+Defrost cycles capability and inclusion
+No
+Yes
+Power failure and recovery test
+No
+Yes
+Loading and unloading pattern/time
+Yes
+Yes
+Door opening
+No
+Yes
+Hybrid active–passive systems also exist where all the items in Table 3.3-1 may be applicable.
 Design testing must consider both physical and thermal protection. The product transport evaluation
 should demonstrate that product can be transported without adverse impact to product quality attri-
 butes and package protection. Thermal qualification should demonstrate that a TPS can maintain the

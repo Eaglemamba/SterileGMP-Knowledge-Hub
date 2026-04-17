@@ -895,12 +895,272 @@ team to achieve business goals. Once the RU has been selected and the TT moves i
 stage, a TT PM will be assigned. In many TTs, the RU PM will serve as TT PM for the remainder
 of the project.
 
-| Stage | Business | TT PM | Process | Analytical | Engineering | Manufacturing | Regulatory | Quality | Sourcing / Supply Chain |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+**Table 5.1-1**
 
-| Function | Activities | Deliverables |
-| --- | --- | --- |
+Initiation Stage Activities and Deliverables
+STAGE
+Business
+TT PM
+Process
+Analytical
+Engineering
+Manufacturing
+Regulatory
+Quality
+Sourcing/Supply Chain
+Initiation
+Activities
+Develop Business
+Case
+Coordinate Subject
+Matter Expert (SME)
+Assessments
+Determine
+Preliminary Process
+Flow
+Perform Initial
+Method Evaluation
+Perform Permit
+Reviews
+(Licenses,
+Construction)
+Perform Permit
+Reviews
+(Environment, Health,
+and Safety (EHS))
+Evaluate Market
+Requirements
+Perform RU Quality
+Assessment(s)
+Perform RU Capacity
+Analysis
+Identify Technology
+Transfer (TT) Project
+Manager
+Perform Initial Risk
+Assessment
+Define Batch Size
+Evaluate Laboratory
+Capabilities
+Evaluate SU and RU
+Site Capabilities
+Assess EHS
+Requirements
+Develop Regulatory
+Strategy
+Evaluate Import/
+Export Requirements
+Perform Patent
+Review
+Perform Due
+Diligence
+Develop/Obtain
+Sending Unit (SU)
+Qualtiy Target
+Prodcut Profile
+(QTPP) and Product
+Specifications
+Estimate Capital
+Requirements
+Evaluate Material
+Sourcing
+Develop Product
+Strategy
+Drive Receiving
+Unit (RU) Selection
+Decision
+Evaluate
+Manufacturing
+Process Equipment
+Requirements
+Determine
+Requirements for
+Tightly Regulated
+Materials
+Obtain Non-Disclosure
+and/or Confidentiality
+Agreements
+Develop/Update
+Project Plan
+Identify Scale-Up
+Needs
+Deliverables
+Business Case
+Initial TT Charter
+Process Flow/
+Description
+Laboratory
+Evaluation Report
+Facility Fit
+Assessment
+EHS Viability Report
+Regulatory Strategy
+ Quality
+Assessment(s)
+Preliminary Product
+Supply Chain Strategy,
+Including Map
+Product Strategy
+High-Level Project
+Plan
+Process Fit/Gap
+Assessment
+Methods Evaluation
+Report
+Permit Requirements
+Permit Requirements
+Regulatory Approval
+Timing
+Critical Material List
+Patent Review
+Report
+RU Due Diligence
+Report
+Product QTPP
+Capital Estimate
+Non-Disclosure and/
+or Confidentiality
+Agreements
+Risk Assessment
+Report
+RU Site Selection
+Steering Committee
+Formed
 
+**Table 5.1-1**
+
+Initiation Stage Activities and Deliverables
+STAGE
+Business
+TT PM
+Process
+Analytical
+Engineering
+Manufacturing
+Regulatory
+Quality
+Sourcing/Supply Chain
+Initiation
+Activities
+Develop Business
+Case
+Coordinate Subject
+Matter Expert (SME)
+Assessments
+Determine
+Preliminary Process
+Flow
+Perform Initial
+Method Evaluation
+Perform Permit
+Reviews
+(Licenses,
+Construction)
+Perform Permit
+Reviews
+(Environment, Health,
+and Safety (EHS))
+Evaluate Market
+Requirements
+Perform RU Quality
+Assessment(s)
+Perform RU Capacity
+Analysis
+Identify Technology
+Transfer (TT) Project
+Manager
+Perform Initial Risk
+Assessment
+Define Batch Size
+Evaluate Laboratory
+Capabilities
+Evaluate SU and RU
+Site Capabilities
+Assess EHS
+Requirements
+Develop Regulatory
+Strategy
+Evaluate Import/
+Export Requirements
+Perform Patent
+Review
+Perform Due
+Diligence
+Develop/Obtain
+Sending Unit (SU)
+Qualtiy Target
+Prodcut Profile
+(QTPP) and Product
+Specifications
+Estimate Capital
+Requirements
+Evaluate Material
+Sourcing
+Develop Product
+Strategy
+Drive Receiving
+Unit (RU) Selection
+Decision
+Evaluate
+Manufacturing
+Process Equipment
+Requirements
+Determine
+Requirements for
+Tightly Regulated
+Materials
+Obtain Non-Disclosure
+and/or Confidentiality
+Agreements
+Develop/Update
+Project Plan
+Identify Scale-Up
+Needs
+Deliverables
+Business Case
+Initial TT Charter
+Process Flow/
+Description
+Laboratory
+Evaluation Report
+Facility Fit
+Assessment
+EHS Viability Report
+Regulatory Strategy
+ Quality
+Assessment(s)
+Preliminary Product
+Supply Chain Strategy,
+Including Map
+Product Strategy
+High-Level Project
+Plan
+Process Fit/Gap
+Assessment
+Methods Evaluation
+Report
+Permit Requirements
+Permit Requirements
+Regulatory Approval
+Timing
+Critical Material List
+Patent Review
+Report
+RU Due Diligence
+Report
+Product QTPP
+Capital Estimate
+Non-Disclosure and/
+or Confidentiality
+Agreements
+Risk Assessment
+Report
+RU Site Selection
+Steering Committee
+Formed
+
+The Initiation Stage PM coordinates an initial high-level risk assessment using cross-functional ex-
+pertise and drives site selection by ensuring the completion of proper due diligence of the RUs under
 consideration. These assessments must be documented to support both the TT decision and site selec-
 tion. One methodology for these assessments is risk-ranking and filtering.
 One key deliverable the Initiation Stage PM must fulfill during the Initiation stage is the establishment
@@ -1036,8 +1296,9 @@ product value chain.
 
 #### 5.1.10 Best Practices and Additional Suggestions
 
-| Topic | Details |
-| --- | --- |
+**Table 5.1.10-1 details additional ideas for consideration as well as best practices for the Initiation**
+
+stage.
 
 **Table 5.1.10-1	 Best Practices and Additional Suggestions for the Initiation Stage**
 
@@ -1655,18 +1916,24 @@ Stage�������������������������
 Activities and Deliverables in the
 Execution Stage�������������������������������42
 
-**Table 5.5.10-1: Best Practices and Additional Suggestions for the Execution Stage**
-| Topic | Details |
-| --- | --- |
+**Table 5.5.10-1**
+
+Best Practices and Additional
+Suggestions for the Execution
+Stage�����������������������������������������������45
 
 **Table 5.6-1**
 
 Activities and Deliverables in the
 Handover Stage�������������������������������47
 
-**Table 5.6.10-1: Best Practices and Additional Suggestions for the Handover Stage**
-| Topic | Details |
-| --- | --- |
+**Table 5.6.10-1**
+
+Best Practices and Additional
+Suggestions for the Handover
+Stage�����������������������������������������������49
+
+--- PAGE 6 ---
 
 ## 1.0 Introduction
 
@@ -4140,10 +4407,64 @@ tion stage.
 
 --- PAGE 50 ---
 
-**Table 5.5.10-1: Best Practices and Additional Suggestions for the Execution Stage**
-| Topic | Details |
-| --- | --- |
+**Table 5.5.10-1	 Best Practices and Additional Suggestions for the Execution Stage**
 
+Topic
+Details
+Create a technical
+support plan for
+qualification
+• Ensure SMEs are on the floor prior to Execution to provide training, to support personnel should any
+technical challenges arise, to ensure KT from SU to RU, and to provide quick availability to resolve issues or
+escalations in a timely manner to prevent delay to schedule
+• Involve technical personnel during qualification for technical support of new equipment if issues arise and
+to monitor for future improvements
+Ensure the team involved
+in qualification is trained
+adequately prior to the
+first engineering run
+• Ensure that technical representatives and SMEs from the TT Team provide formal training on any new
+equipment and processes to the production personnel who will execute qualification batches
+• Ensure sufficient time to train personnel if technology or process steps are new or otherwise present a high
+risk for human error
+Perform a trial run
+• Conduct a mock or trial run with a water batch or rejected material to ensure equipment readiness and
+adequacy of operations training
+• Ensure the production team has sufficient time to practice using new equipment, parameters, batch
+record, and process steps before using qualification material
+• Provide opportunities to ask questions, improve training, incorporate process improvements and lessons
+learned, and reduce any human error on new process
+Call a readiness
+meeting before running
+qualification batches
+• Ensure the production team is clear on process requirements prior to execution
+• Review and/or update the control strategy
+• Avoid introducing new variables not challenged in previous stages
+• Plan ahead and reference best practices on the engineering run, in pre-batch readiness meetings, and
+during operator training
+• Use risk assessment to address any new variables that cannot be avoided
+Prepare filing and plan
+for questions from
+regulatory authorities
+• Provide Regulatory with documents that support the filing as they become available, in alignment with
+the submission tracker
+• Begin rolling review of drafted sections of regulatory filings as sections are (nearly) completed to manage
+resources and avoid unexpected delays due to reviewer availability
+• Identify and prepare SMEs to address questions received from regulatory authorities after initial submission
+Ensure adequate
+development testing
+from the previous stage
+• Provide robust supporting data and rationale from the previous stage through adequate testing to support
+recommended parameters, process, and instructions
+• Ensure a repeatable process that is controlled within its recommended operating parameters
+Provide adequate batch
+record instructions
+• Ensure all requirements and expectations are clearly defined in the batch record, and that training has
+been conducted and documented
+• Use the engineering batch to help identify any missing instructions that can be incorporated prior to the
+start of qualification
+Ensure adequate training
+of production personnel
 • Ensure hands-on training of personnel on the post-transfer operations team. Operator qualification is
 recommended over read-only training
 Ensure process performs
@@ -5165,10 +5486,41 @@ accordance with business needs following qualification activities.
 Table 5.6.10-1 describes additional ideas for consideration as well as best practices for the Handover
 stage.
 
-**Table 5.6.10-1: Best Practices and Additional Suggestions for the Handover Stage**
-| Topic | Details |
-| --- | --- |
+**Table 5.6.10-1	 Best Practices and Additional Suggestions for the Handover Stage**
 
+Topic
+Details
+Host a formal
+Handover meeting
+• Hold formal a meeting between the TT Team and the post-transfer operations team to ensure overall
+readiness of process
+• Provide a Handover package including key documents, process understanding, and learnings
+• Provide the regulatory dossier and any critical knowledge to the commercial regulatory group and
+communicate any post-marketing commitments made to regulatory authorities
+• Have the TT Team provide an overview of new equipment, unique requirements, launch timeline, commercial
+forecast, labor requirements, procurement needs, open actions from risk assessment, process improvement,
+and lessons learned
+• If applicable, have the TT Team provide customer introductions
+• Be aware of potential issues: Without an adequate handover, additional risks may arise if the post-transfer
+operations team is unable to execute production effectively
+Create a formal long-
+term training plan for
+production
+• Prior to Handover, assess whether the production team needs additional training on the process and
+equipment
+• Use final lessons learned to revise and maintain the training program, which should include adequate hands-
+on training with batch records and SOPs, not only classroom presentation
+• Consider use of demonstrated hands-on training to verify understanding
+• Be aware of potential issues: Without proper training, the team runs the risk of requiring additional technical
+support or potentially experiencing human error, deviations, downtime, or delays upon commercial start
+Perform a lessons-
+learned meeting
+• Set up a formal meeting to discuss lessons learned at project closure, inviting the entire TT Team and
+involving key supporting team members (e.g., production, labs)
+• Discuss successes as well as opportunities for improvement, considering such areas as processes, people,
+communication, and documentation
+• Determine root causes of any challenging areas, obstacles, failures, scope changes, and deviations and discuss
+how to prevent them in the future
 • Capture a summary of lessons learned that the TT PM can drive to the rest of the team. The SU, RU, and MAH
 should incorporate these learnings into future projects where possible
 Ensure all commercial

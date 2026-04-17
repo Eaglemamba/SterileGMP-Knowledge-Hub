@@ -12,8 +12,6 @@ USP ⟨62⟩ Tests for Specified Microorganisms | p1-p3
 
     
 
-    
-
         
 
 The tests described hereafter will allow determination of the absence of, or limited occurrence of, specified microorganisms that may be detected under the conditions described.
@@ -38,8 +36,6 @@ USP ⟨62⟩ Tests for Specified Microorganisms | p3-p6
 
     
 
-    
-
         
 
 Prepare a sample using a 1 in 10 dilution of not less than 1 g of the product to be examined as described in Microbiological Examination of Nonsterile Products: Microbial Enumeration Tests ⟨61⟩, but using Soybean–Casein Digest Broth as the chosen diluent, mix, and incubate at 20° to 25° for a time sufficient to resuscitate the bacteria but not sufficient to encourage multiplication of the organisms (usually 2 hours but not more than 5 hours).
@@ -53,8 +49,6 @@ Prepare a sample using a 1 in 10 dilution of not less than 1 g of the product to
     
 
 USP ⟨62⟩ Tests for Specified Microorganisms | p6-p10
-
-    
 
     
 
