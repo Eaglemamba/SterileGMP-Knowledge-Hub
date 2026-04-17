@@ -92,7 +92,10 @@ Every section file MUST follow this exact structure:
 </div>
 
 <!-- CONTENT SECTIONS - Repeat for each subsection -->
-<!-- IMPORTANT: Section titles MUST be bilingual and bold -->
+<!-- IMPORTANT: Section titles MUST be bilingual and wrapped in <strong>.
+     CSS (template.css) applies padding-left: 1.5rem so the title text
+     visually aligns with the "原文 Original Text" column heading below.
+     Do NOT add inline styles that override this — rely on the class. -->
 <div class="section-title"><strong>X.X [English Subsection Title] [中文標題]</strong></div>
 
 <div class="two-column">
