@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR73 - Section 9: Cosmetic Imperfections</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== CUSTOM: CCI comparison table ===== */
+.cci-table-wrapper {
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+.cci-table-wrapper table {
+    min-width: 900px;
+    font-size: 0.82rem;
+}
+.cci-table-wrapper th {
+    font-size: 0.8rem;
+    position: sticky;
+    top: 0;
+}
+.cci-table-wrapper td {
+    vertical-align: top;
+    padding: 0.5rem 0.6rem;
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 9: Cosmetic Imperfections</h1>
+    <div class="subtitle">外觀缺陷：缺陷識別、分類與目視檢查（空針）</div>
+    <div class="page-info">PDA Technical Report No. 73: Prefilled Syringes | p47 - p50</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 PFS 外觀缺陷（Cosmetic Imperfections）的範疇：僅限未充填注射器的視覺缺陷，不含尺寸、印刷或包裝缺陷。</li>
+        <li>掌握 PDA TR43 對缺陷分類的基本框架（Critical / Major A / Major B / Minor / N/A）及其與 AQL 的連結。</li>
+        <li>說明 ICH Q9 品質風險管理方法在缺陷分類與驗證中的應用。</li>
+        <li>區分人工目視檢查（Manual Visual Inspection）與自動目視檢查（Automated Visual Inspection）的方法、限制與應用場景。</li>
+        <li>理解外觀缺陷如何影響最終充填容器的視覺檢查缺陷率，以及對患者安全的潛在影響。</li>
+    </ul>
+</div>
+
+<!-- ==================== SECTION 9.0 INTRO ==================== -->
+<div class="section-title"><strong>9.0 Cosmetic Imperfections 外觀缺陷</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The focus of this section is on <span class="key-term">visual imperfections in unfilled glass syringes</span> with staked needles and other components (i.e., needle shields, plunger stoppers, and plunger rods). Dimensional nonconformities, printing imperfections, and defects in packaging are out of scope for this section. Visual inspection to detect imperfections on filled glass syringes is described in Section 13.4.</p>
+        <p>Cosmetic imperfections in PFS components may increase the defect rate detected in the final visual inspection of the filled containers, so each component contributes to the overall cosmetic result of the filled syringe at the end. Imperfections not detected during the final inspection (i.e., imperfections with a direct impact on container integrity or drug integrity and delivery) may lead to severe issues in the market, including risk to the patient during use.</p>
+        <p>Each part of the process outlined in Figure 9.0-1 can create specific defects, but all processes can have a common list of identified and classified defects.</p>
+        <p>The PFS system can be divided into two subassembly parts:</p>
+        <ul>
+            <li><strong>Primary components</strong> in contact with the drug (glass barrel, plunger stopper, and tip closure)</li>
+            <li><strong>Secondary components</strong> (plunger rod, backstop, and safety system in the combination product) interacting with the primary components and providing complete functionality to the healthcare provider</li>
+        </ul>
+        <p>The defect evaluation list should be available and comprehensible to all stakeholders (manufacturers and suppliers). Different approaches to classify various imperfections exist, and companies should have the capability and applicable methods in place for inspection.</p>
+        <p>A final visual inspection should be included in the process to ensure adequate quality output at the completion of syringe manufacturing. Any defective syringes found will result in a nonconformance requiring root-cause investigations of the unexpected event.</p>
+        <p>As noted above, imperfections not detected during the final inspection may lead to severe issues in the market linked to risk to the patient during use. To minimize this risk, pharmaceutical companies and producers of PFSs should implement agreed-on processes and methods to minimize cosmetic imperfections.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>本節範疇（Scope）:</strong> 僅涵蓋「未充填（unfilled）」玻璃注射器的視覺缺陷，包含玻璃筒身、針頭、針頭護套、活塞、活塞桿。尺寸不符、印刷缺陷、包裝缺陷均不在本節討論。充填後注射器的目視檢查見 Section 13.4。</p>
+            <p><strong>缺陷的累積效應:</strong> PFS 各零組件的外觀缺陷會累積，最終反映在充填後注射器的視覺檢查缺陷率上。未被偵測的嚴重缺陷（影響容器完整性或藥品完整性）可能導致市場上的患者安全事件。這就是為何外觀缺陷管理必須從空針（零組件）階段就開始。</p>
+            <p><strong>兩大次組件類別:</strong>
+            <br>- <strong>初級組件（Primary）:</strong> 直接接觸藥品——玻璃筒身、活塞、尖端封口
+            <br>- <strong>次級組件（Secondary）:</strong> 與初級組件互動、提供使用功能——活塞桿、backstop、安全裝置</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>把 PFS 想像成一支精密鋼筆的組合——墨水匣（玻璃筒身）的外觀瑕疵，加上筆尖（針頭）的彎曲，再加上筆蓋（針頭護套）的變形，三者疊加才決定了這支鋼筆最後是否「外觀合格」。每個零件的品質管控都不能掉以輕心，因為它們共同構成最終產品的外觀結果。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes — Taiwan CDMO 視角</h4>
+            <p>在 PIC/S Annex 1 (2022) 第 8.87 條框架下，CDMO 對充填後注射器執行 100% 目視檢查，而本節所討論的「空針外觀缺陷管理」是前段管控的基礎。供應商的 AQL 進料抽驗（Incoming Inspection）與製程中管控（In-Process Control）若能有效攔截外觀缺陷，即可降低充填後最終檢查的缺陷率，減少批次報廢風險。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為何「未充填注射器的外觀缺陷」管理對充填後的最終目視檢查良率有直接影響？請說明其邏輯鏈。</li>
+                <li>初級組件（Primary）與次級組件（Secondary）的外觀缺陷，對患者安全的潛在風險是否相同？請舉例說明。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- Table 9.0-1 OUTSIDE two-column — full width -->
+<div class="section-title"><strong>Table 9.0-1 可用指引與標準概覽 Available Guidance and Standards for PFS Components</strong></div>
+<div style="overflow-x: auto; margin: 1rem 0 1.5rem 0;">
+    <table>
+        <thead>
+            <tr>
+                <th>材料 Material</th>
+                <th>指引/參考文件 Guidance/Reference</th>
+                <th>說明 Comments</th>
+                <th>供應商 Supplier</th>
+                <th>進料檢查 Incoming Inspection</th>
+                <th>製程中管控 In-Process Control</th>
+                <th>最終管控 Final Control</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>玻璃管 Glass tube</td>
+                <td>無 Not Available</td>
+                <td>玻璃管生產商與玻璃轉化商協議的缺陷評估清單<br><em>Defect evaluation list agreed on by glass tube producers and glass converters</em></td>
+                <td>&#10003;</td>
+                <td>&#10003;</td>
+                <td>&#10003;</td>
+                <td>&#10003;</td>
+            </tr>
+            <tr>
+                <td>散裝注射器 Bulk Syringes</td>
+                <td>PDA Technical Report No. 43</td>
+                <td>玻璃轉化商與藥廠協議的缺陷評估清單<br><em>Defect evaluation list agreed on by glass converters and pharmaceutical company</em></td>
+                <td>&#10003;</td>
+                <td>&#10003;</td>
+                <td>&#10003;</td>
+                <td>&#10003;</td>
+            </tr>
+            <tr>
+                <td>即用型注射器 Ready-to-use Syringes</td>
+                <td>PDA Technical Report No. 43</td>
+                <td>玻璃轉化商與藥廠協議的缺陷評估清單<br><em>Defect evaluation list agreed on by glass converters and pharmaceutical company</em></td>
+                <td>&#10003;</td>
+                <td>&#10003;</td>
+                <td>&#10003;</td>
+                <td>&#10003;</td>
+            </tr>
+            <tr>
+                <td>橡膠組件 Rubber component</td>
+                <td>無 Not Available</td>
+                <td>需依據藥用特殊嚴格程度進行調整<br><em>Adaptation required due to the specific criticality of pharmaceutical use</em></td>
+                <td>&#10003;</td>
+                <td>&#10003;</td>
+                <td>&#10003;</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>塑膠組件 Plastic component</td>
+                <td>無 Not Available</td>
+                <td>工業標準的適用性<br><em>Applicability of industrial standard</em></td>
+                <td>&#10003;</td>
+                <td>&#10003;</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="note-box" style="margin-bottom:1.5rem;">
+    <h4>表格解讀 Commentary</h4>
+    <p>玻璃組件（玻璃管、散裝注射器、即用型注射器）有 PDA TR43 可作為缺陷評估依據，且四個管控點均適用。橡膠組件與塑膠組件目前無藥學專用標準，需借用橡膠技術工業標準，並依藥用嚴格程度調整——這意味著 CDMO 必須與供應商共同定義並協議接受標準，而非直接套用工業標準。</p>
+</div>
+
+<!-- ==================== SECTION 9.1 DEFECT IDENTIFICATION ==================== -->
+<div class="section-title"><strong>9.1 Defect Identification 缺陷識別</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>To ensure defective syringes with cosmetic imperfections relevant to the quality of the drug product are identified and addressed, imperfections need to be <span class="key-term">classified</span> and robust processes implemented to ensure that such syringes are not used for patient medication. To accomplish this, <span class="key-term">PDA Technical Report No. 43</span>: Identification and Classification of Nonconformities in Molded and Tubular Glass Containers for Pharmaceutical Manufacturing provides basic guidelines on the definition of the imperfections.</p>
+        <p>Currently, there is no pharmaceutical guidance concerning elastomeric parts defects or plastic components. However, some basics can be found in rubber technology standards.</p>
+        <p>The supplier of the PFS components and the pharmaceutical company should determine <span class="key-term">specifications</span> that reflect agreement on the acceptance levels for individual cosmetic imperfections. To reach agreement on acceptance levels, the PFS supplier and the pharmaceutical company should define and agree on the <span class="key-term">limit samples</span> that may be required.</p>
+        <p>Pharmaceutical companies and suppliers of PFSs should align their methods for identification of cosmetic imperfections. Visual inspections can be performed <span class="key-term">manually</span> or by <span class="key-term">automatic camera systems</span>.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>PDA TR43 的角色:</strong> 目前唯一針對玻璃注射器缺陷識別與分類的 PDA 技術報告，提供缺陷定義的基本框架。對於橡膠與塑膠組件，目前尚無藥學專用指引，需借用工業標準並因應藥用嚴格程度調整。</p>
+            <p><strong>Limit Samples（界限樣品）:</strong> 實體樣品，展示某缺陷類型的最大可接受程度。是供應商與藥廠之間建立共識的重要工具，類似於顏色比對色卡的概念——文字描述有時無法取代實體參照物。</p>
+            <p><strong>對齊方法的重要性:</strong> 供應商與藥廠必須使用相同的識別方法（人工或自動），否則同一批次在供應商端通過但在藥廠進料檢查時不通過，會造成供應鏈摩擦與爭議。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>Limit Sample 就像烹飪競賽中的「標準菜色樣品」——評審（藥廠）與參賽者（供應商）都需要先看過標準樣品，才能對「什麼是剛好可接受」達成一致的判斷。沒有這個實體參照，同樣的缺陷，不同的人可能做出截然不同的判定。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes — GMP 品質協議視角</h4>
+            <p>在 PIC/S GMP Part I Chapter 7 (Outsourced Activities) 要求下，CDMO 與玻璃/橡膠/塑膠供應商之間的品質協議（Quality Agreement）必須明確載明：(1) 缺陷分類方式，(2) AQL 接受標準，(3) Limit Sample 的管理方式（版本控制、存放地點、更新週期）。這是 GMP 審計的常見查核點。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為何橡膠組件（活塞）的外觀缺陷標準無法直接套用工業橡膠標準？藥用場景有哪些特殊考量？</li>
+                <li>Limit Sample（界限樣品）在供應商審計中扮演什麼角色？若 Limit Sample 遺失或損壞，應如何處理？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION 9.2 DEFECT CLASSIFICATION ==================== -->
+<div class="section-title"><strong>9.2 Defect Classification 缺陷分類</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Currently, the defect evaluation list may not be supported by pharmaceutical standards or requirements. However, the industrial production references can be a source of defect definition and help define a common language for suppliers and users.</p>
+        <p>Based on <span class="key-term">PDA Technical Report No. 43</span>, each nonconformance is judged using the criteria of critical, major A, major B, minor, and not applicable (N/A). The following list provides the definition for each category of nonconformance:</p>
+        <ul>
+            <li><strong>Critical:</strong> Likely to result in personal injury or potential hazard to the patient; assigned to any nonconformity that compromises the integrity of the container and could lead to microbiological contamination of a sterile product</li>
+            <li><strong>Major A:</strong> Leads to serious impairments, such as a malfunction that makes the packaging unusable</li>
+            <li><strong>Major B:</strong> Leads to impairments of a lesser degree, such as reduced efficiency in production</li>
+            <li><strong>Minor:</strong> Does not affect product quality or process capability</li>
+            <li><strong>N/A:</strong> Of minimum size, and therefore acceptable</li>
+            <li><strong>Limit sample:</strong> Actual physical unit that shows the nonconformance and represents the maximum degree of acceptability</li>
+        </ul>
+        <p>N/A could be applied to nonconformities that may arise out of a glass manufacturer's process-related or a non-process-related error that is not sampled or estimated statistically, and therefore should not be assigned an AQL.</p>
+        <p>Nonconformities could be reviewed and classified (with a rationale) using an <span class="key-term">ICH Q9 quality risk management</span> approach for risk assessment. Verification of nonconformity classifications may warrant additional testing to establish their rationale.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>PDA TR43 五級分類體系:</strong></p>
+            <ul>
+                <li><strong>Critical（致命缺陷）:</strong> 可能造成患者傷害或危害；任何損害容器完整性、可能導致無菌產品微生物污染的缺陷均屬此類。這是最高等級，通常 AQL = 0（零接受）。</li>
+                <li><strong>Major A（嚴重 A 缺陷）:</strong> 嚴重損害，例如使包裝無法使用的功能障礙。</li>
+                <li><strong>Major B（嚴重 B 缺陷）:</strong> 較輕微的損害，例如降低生產效率。</li>
+                <li><strong>Minor（輕微缺陷）:</strong> 不影響產品品質或製程能力。</li>
+                <li><strong>N/A（不適用/可接受）:</strong> 尺寸極小，屬可接受範圍，不應賦予 AQL 值。</li>
+            </ul>
+            <p><strong>ICH Q9 風險評估的整合:</strong> 缺陷分類不應單純依賴主觀判斷，而應有書面的風險評估依據（Rationale）。ICH Q9(R1) 提供了 FMEA、風險矩陣等工具，可用於系統性評估每種缺陷類型的嚴重性（Severity）、發生機率（Occurrence）及可偵測性（Detectability）。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes — AQL 抽樣連結</h4>
+            <p>AQL（Acceptable Quality Level，允收品質水準）僅適用於 Critical、Major A、Major B、Minor 四個等級，N/A 類別不賦予 AQL。在台灣 CDMO 的進料抽驗實務中，通常：Critical = AQL 0（任何一件即拒收）；Major A = AQL 0.65；Major B = AQL 1.0；Minor = AQL 2.5 或 4.0。具體數值應在品質協議中與供應商明確約定，並符合 ISO 2859-1 抽樣程序要求。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>這個分類體系就像交通違規的罰則分級——闖紅燈（Critical）可能造成車禍傷亡，立即吊照；超速 10 km/h（Major B）是違規但尚可管理；輕微刮傷（Minor）記錄但不影響駕駛；停車位置輕微偏差（N/A）則直接接受，不開罰單。分級的目的是讓執法資源集中在真正有風險的地方。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一個活塞上的微小裂縫（microfissure）在 PDA TR43 框架下應歸為哪個缺陷等級？請說明理由（提示：考慮容器完整性與無菌性）。</li>
+                <li>在使用 ICH Q9 風險評估工具對缺陷進行分類驗證時，「Detectability（可偵測性）」這個維度對分類結果有何影響？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- Defect Classification Table OUTSIDE two-column — full width -->
+<div class="section-title"><strong>缺陷分類快速參考表 Defect Classification Quick Reference</strong></div>
+<div style="overflow-x: auto; margin: 1rem 0 1.5rem 0;">
+    <table>
+        <thead>
+            <tr>
+                <th>缺陷等級 Level</th>
+                <th>英文定義 English Definition</th>
+                <th>中文說明 Chinese</th>
+                <th>容器完整性影響 Container Integrity</th>
+                <th>典型 AQL 值 Typical AQL</th>
+                <th>範例 Example</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background:#fee2e2;">
+                <td><strong>Critical 致命</strong></td>
+                <td>Likely to result in personal injury or potential hazard; compromises container integrity</td>
+                <td>可能造成患者傷害；損害容器完整性，可能導致無菌污染</td>
+                <td>直接影響</td>
+                <td>AQL = 0（零接受）</td>
+                <td>玻璃裂縫、貫穿性缺損、針頭斷裂</td>
+            </tr>
+            <tr style="background:#fef3c7;">
+                <td><strong>Major A 嚴重 A</strong></td>
+                <td>Leads to serious impairments; malfunction making packaging unusable</td>
+                <td>嚴重損害，使包裝無法使用的功能障礙</td>
+                <td>間接影響或功能失效</td>
+                <td>AQL 0.65</td>
+                <td>針頭嚴重彎折、護套無法套合</td>
+            </tr>
+            <tr style="background:#fff3cd;">
+                <td><strong>Major B 嚴重 B</strong></td>
+                <td>Leads to impairments of a lesser degree; reduced efficiency in production</td>
+                <td>較輕微損害，降低生產效率</td>
+                <td>不直接影響但可能有間接影響</td>
+                <td>AQL 1.0</td>
+                <td>針頭輕微彎曲影響組裝、外表面明顯污漬</td>
+            </tr>
+            <tr style="background:#d1fae5;">
+                <td><strong>Minor 輕微</strong></td>
+                <td>Does not affect product quality or process capability</td>
+                <td>不影響產品品質或製程能力</td>
+                <td>不影響</td>
+                <td>AQL 2.5 – 4.0</td>
+                <td>外觀輕微刮痕、微小氣泡（符合尺寸限制）</td>
+            </tr>
+            <tr style="background:#f0f4f8;">
+                <td><strong>N/A 不適用</strong></td>
+                <td>Of minimum size, therefore acceptable; no AQL assigned</td>
+                <td>尺寸極小，可接受；不賦予 AQL</td>
+                <td>無影響</td>
+                <td>不適用</td>
+                <td>玻璃管製程中的極微小製程痕跡</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- ==================== SECTION 9.3 VISUAL INSPECTION ==================== -->
+<div class="section-title"><strong>9.3 Visual Inspection of Unfilled Syringes 未充填注射器之目視檢查</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>9.3.1 Manual Visual Inspection 人工目視檢查</h3>
+        <p>Two methods for performing a manual visual inspection are inspection by means of the <span class="key-term">naked eye</span> or through use of <span class="key-term">magnifying optical systems</span>. In both cases, the ability to identify the defect correctly is influenced by the qualifications and experience of the personnel performing the manual inspection. Personnel must be periodically trained to meet the constantly increasing demands of productivity and product quality.</p>
+        <p>Additionally, a suitable support capable of <span class="key-term">rotating the syringes</span> in order to view all sides provides a suitable method to inspect the syringes without creating additional defects. This can be managed by avoiding direct contact with the sample by means of manipulation using a suitable device or by direct use of the support in which the sample is contained (e.g., rondo tray or nest).</p>
+        <p>The apparatus usually includes a suitable <span class="key-term">white light source</span>, and the illuminated field permits inspection of the entire surface of the syringe. The use of a <span class="key-term">dark panel</span> and the ability to vary the intensity of light enable detection of some defects that would be difficult to identify if illuminated by white light only. Other detection devices include magnifying systems, such as lenses or magnifying optical microscopes. Operators should promptly classify and record the fault when identified.</p>
+        <h3>9.3.2 Automated Visual Inspection 自動目視檢查</h3>
+        <p>The rapid development of modern manufacturing processes has led to an increase in automation and production rates, and fostered the development and adoption of increasingly sophisticated detection systems. These systems <span class="key-term">reduce human error</span> during visual inspection. Automated inspection systems are able to identify and recognize syringe defects normally identified through manual inspection by an operator. A new detection system should undergo a <span class="key-term">thorough analysis</span> first to determine under what situations the system fails to detect the various types of defects.</p>
+        <p>The most commonly used automated detection system is equipped with <span class="key-term">high-intensity focused lights</span> designed to highlight a specific area of the container and is supported by software. The software uses <span class="key-term">image algorithms</span> to identify defects without contacting the samples, which reduces the inspection work required of operators. Multiple areas of inspection (lateral surface, bottom, and front surface) allow the acquisition of different images in different areas of a syringe, permitting easier identification of specific types of defects.</p>
+        <p>Configurable detection criteria levels for each inspection area permit optimal identification of defects on the barrel and the needle in relation to the requirements agreed by the supplier and pharmaceutical company. The automatic camera system should <span class="key-term">record all statistical parameters</span> for later use in specific reports, certificates for internal use, or to share with the customer.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>9.3.1 人工目視檢查 Key Concepts</h4>
+            <p><strong>兩種方法:</strong>
+            <br>1. <strong>裸眼（Naked Eye）</strong>: 速度快、成本低，但受操作者狀態影響大（疲勞、視力、經驗）
+            <br>2. <strong>放大光學系統（Magnifying Optical Systems）</strong>: 可偵測更微小缺陷，但速度慢，適用於高風險零件或樣品確認</p>
+            <p><strong>旋轉支撐（Rotating Support）的必要性:</strong> 注射器需從各角度檢視，但直接手持可能造成額外缺陷（指紋、壓力損傷）。使用 rondo tray 或 nest 托架旋轉，是同時確保全面檢視與避免引入新缺陷的標準做法。</p>
+            <p><strong>光源配置:</strong> 白光 + 暗板（Dark Panel）的組合是標準配置。暗板背景下，容器表面的反光差異更容易揭示細微缺陷（如微裂縫、氣泡）。變光強度功能讓操作者可在不同光照條件下辨識不同性質的缺陷。</p>
+        </div>
+        <div class="concept-box">
+            <h4>9.3.2 自動目視檢查 Key Concepts</h4>
+            <p><strong>自動化的優勢:</strong> 減少人為誤差（Human Error），適合高速生產線。系統使用高強度聚焦光源與影像演算法，不接觸樣品即可偵測缺陷。</p>
+            <p><strong>多區域掃描:</strong> 分別掃描注射器的側面（Lateral Surface）、底部（Bottom）、前面（Front Surface），針對不同區域設定不同的偵測靈敏度（Configurable Detection Criteria），以最佳化偵測效能。</p>
+            <p><strong>新系統驗證要求:</strong> 新的自動偵測系統必須先進行「Failure Mode Analysis」——找出系統在哪些情況下「偵測失敗」（False Negative），而非只確認它能偵測什麼。這是設備驗證（Qualification）的核心邏輯。</p>
+            <p><strong>統計數據記錄:</strong> 自動系統應記錄所有統計參數，供後續報告、供應商分享或品質趨勢分析使用——這直接支援 APQR（Annual Product Quality Review）的數據需求。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes — PIC/S Annex 1 類比</h4>
+            <p>PIC/S Annex 1 (2022) 對充填後無菌製劑的 100% 目視檢查（Section 8.87–8.91）有詳細規定，包含光源強度、背景顏色、旋轉速度與操作者認證。本節 9.3 對「未充填注射器」的目視檢查原則與之高度一致——差別在於空針的目視檢查屬於零組件進料管控，不需符合 Annex 1 的完整要求，但相同的基本原則（足夠光照、多角度、操作者培訓）均應遵守。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>自動目視檢查系統就像機場的 X 光行李掃描機——它能快速掃描大量行李，但系統設計者必須先確認：「什麼樣的刀具掃描機會『看不見』？」（False Negative 分析）。只知道系統能看見什麼是不夠的，更重要的是知道它的盲點在哪裡，然後用補充措施（人工複驗、抽樣確認）填補那些盲點。</p>
+        </div>
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application — Taiwan CDMO</h4>
+            <p>Amaran 等 sterile fill-finish CDMO 在評估新玻璃供應商時，應要求供應商提供其自動目視檢查系統的驗證報告（AVI Qualification Report），確認：(1) 系統偵測的缺陷類型覆蓋 TR43 各分類；(2) 已進行 Worst-Case 挑戰測試（Challenge Test），確認 False Negative 率在可接受範圍內；(3) 統計輸出格式可與 CDMO 的品質系統整合，支援趨勢分析。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>人工目視檢查中，「暗板背景（Dark Panel）」能幫助偵測哪類缺陷？白光背景無法有效偵測的缺陷類型是什麼？</li>
+                <li>自動目視檢查系統驗證時，為何「False Negative（漏偵）分析」比「True Positive（正確偵測）確認」更為關鍵？請從患者安全的角度說明。</li>
+                <li>若供應商使用自動目視檢查，藥廠使用人工目視檢查進行進料抽驗，可能出現哪些爭議情境？如何在品質協議中預防？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>範疇（Scope）:</strong> Section 9 聚焦於未充填 PFS 的視覺缺陷管理，不含尺寸、印刷、包裝缺陷。外觀缺陷的累積效應會直接影響充填後最終目視檢查的良率，未偵測的嚴重缺陷可危及患者安全。</li>
+        <li><strong>缺陷識別（Section 9.1）:</strong> PDA TR43 提供玻璃零件的缺陷識別框架；橡膠與塑膠組件目前無藥學專用標準。供應商與藥廠須協議接受標準並建立 Limit Samples，並對齊識別方法（人工 vs. 自動）。</li>
+        <li><strong>缺陷分類（Section 9.2）:</strong> PDA TR43 五級分類——Critical / Major A / Major B / Minor / N/A。Critical 缺陷影響容器完整性，AQL 通常為零。N/A 不賦予 AQL。ICH Q9 風險評估方法應用於分類驗證，確保有書面依據。</li>
+        <li><strong>人工目視檢查（Section 9.3.1）:</strong> 裸眼或放大光學系統，需搭配旋轉支撐、白光源與暗板，操作者須定期培訓。操作者的資格與經驗是人工檢查品質的關鍵變數。</li>
+        <li><strong>自動目視檢查（Section 9.3.2）:</strong> 高強度聚焦光源 + 影像演算法，多區域掃描（側面、底部、前面），可配置各區域偵測靈敏度。新系統須先分析其「偵測失敗」情境（False Negative 分析）。系統應記錄所有統計參數以支援品質趨勢分析。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- FOOTER -->
+<div class="main-footer">
+    <p>PDA Technical Report No. 73 (2015): Prefilled Syringes — Section 9 Cosmetic Imperfections</p>
+    <p>Educational bilingual version for GMP training purposes | Amaran Biopharmaceutical CDMO</p>
+</div>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>

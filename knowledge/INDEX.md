@@ -42,8 +42,10 @@ Terms: single-use system (SUS), disposable, bag, tubing, connector, extractables
 ---
 
 ## PDA/TR73-Complete.md
-PDA TR73: Prefilled Syringe Technology (Sections 12–18, p74–p102) | p74–p102 | 4 (partial report — Sections 12–18 only)
-Terms: prefilled syringe, container closure integrity (CCI), helium leak test, dye ingress, vacuum decay, headspace analysis, staked needle, barrel, plunger stopper, silicone oil, tungsten, drug compatibility, needle shield
+PDA TR73: Prefilled Syringe User Requirements for Biotechnology Applications (2015) | p1–p102 | 15 (full report, 18 sections; Sections 15–18 merged as Appendices)
+Question types: PFS development & licensing strategy, human factors engineering (formative vs summative), extractables/leachables study design (AET/SCT thresholds), glass barrel dimensional tolerances, needle gauge/sharpness, needle shield pull-off force, cosmetic defect classification (Critical/Major/Minor + AQL), siliconization methods (spray vs baked) and impact on drug product, plunger stopper materials/functional testing, container closure integrity testing (helium leak, vacuum decay, dye ingress), drug product compatibility studies, eCTD submission structure
+Terms: prefilled syringe (PFS), staked needle, Type I borosilicate glass, siliconization, break-loose force, glide force, plunger stopper, elastomeric closure, needle shield, tungsten, silicone oil, cosmetic imperfection, AQL (acceptable quality limit), container closure integrity (CCI), helium leak test, vacuum decay, dye ingress, headspace analysis, extractables, leachables, AET (analytical evaluation threshold), SCT (safety concern threshold), TTC (threshold of toxicological concern), human factors engineering (HFE), formative study, summative study, IEC 62366, ISO 11608, ISO 11040, ICH Q9/Q10, eCTD Module 3, DMF
+Sections: 1 Introduction | 2 Glossary | 3 PFS Development & Licensing | 4 Human Factors Engineering | 5 Extractables & Leachables | 6 Glass Barrel | 7 Needle | 8 Needle Shield | 9 Cosmetic Imperfections | 10 Siliconization | 11 Plunger Stopper Suitability | 12 Container Closure Integrity | 13 Manufacturing Requirements | 14 Drug Product Compatibility | 15–18 Appendices
 
 ---
 

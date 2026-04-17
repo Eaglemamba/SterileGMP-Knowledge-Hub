@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Section 8: Needle-Shield Requirements 針頭護罩需求 | PDA TR73</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== CUSTOM: CCI comparison table ===== */
+.cci-table-wrapper {
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+.cci-table-wrapper table {
+    min-width: 900px;
+    font-size: 0.82rem;
+}
+.cci-table-wrapper th {
+    font-size: 0.8rem;
+    position: sticky;
+    top: 0;
+}
+.cci-table-wrapper td {
+    vertical-align: top;
+    padding: 0.5rem 0.6rem;
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 8: Needle-Shield Requirements 針頭護罩需求</h1>
+    <div class="subtitle">針頭護罩的功能、材料特性、機械性能與容器密封完整性要求</div>
+    <div class="page-info">PDA Technical Report No. 73: Prefilled Syringes | p42–p46 (PDF p49–p53)</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解針頭護罩（非硬質 / 硬質 RNS）的兩種類型及其在 PFS 中的密封功能</li>
+        <li>掌握熱固性橡膠與熱塑性彈性體（TPE/TPV）配方對滅菌相容性、可萃取物及藥品相容性的影響</li>
+        <li>了解可萃取物（Extractables）與滲出物（Leachables）的監管要求（USP &lt;381&gt;、EP 3.2.9、ISO 10993）</li>
+        <li>能夠解釋針頭護罩拔除力（Pull-off Force）的規格設定原則及其與 CCI 和自動注射器相容性的關聯</li>
+        <li>識別 EO / 蒸汽 / E-beam 三種滅菌方式對針頭護罩材料選擇的不同要求</li>
+        <li>認識空針與充填後針頭護罩的 CCI 驗證策略差異</li>
+        <li>理解針頭護罩尺寸相容性對組合產品（Combination Product）開發的重要性</li>
+    </ul>
+</div>
+
+<!-- ==================== SECTION 8.0 INTRO ==================== -->
+<div class="section-title"><strong>8.0 Needle-Shield Requirements 針頭護罩需求</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>This section describes the functions, materials, and formulations used by manufacturers and suppliers to develop the needle shield.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>針頭護罩（Needle Shield）</strong>是 PFS 安全性的第一道防線，直接影響：<strong>（1）微生物屏障</strong>（防止汙染）、<strong>（2）針尖保護</strong>（防止損傷）、<strong>（3）產品密封</strong>（CCI）、以及<strong>（4）使用者操作性</strong>（拔除力）。Section 8 涵蓋功能、材料、機械性能與 CCI 四大主軸。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>針頭護罩就像外科手術刀的刀片保護套——既要保護刀刃不受汙染，又要讓醫生能夠輕鬆單手拔除，還必須確保在運輸振動中不脫落。這三個要求相互制衡，正是 Section 8 的設計核心挑戰。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>本 section 與 TR73 的其他章節高度相互參照：§14.3（相容性）、§12.0（CCI）、§11.1.1（彈性體配方）、§5.3（E&amp;L）。在 Amaran 承接含針頭護罩的 PFS 專案時，這些章節需並行審查，不可孤立評估。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION 8.1 ==================== -->
+<div class="section-title"><strong>8.1 Functions of the Needle Shield 針頭護罩的功能</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The function of the needle shield is to cover the needle, protect the needle mechanically, minimize risk of needle contamination from the external environment, and keep the sharpness of the needle from being compromised. Because the sharp end of the needle is embedded in the elastomeric needle shield, the needle shield serves as a seal that prevents leakage or microbial ingress through the needle opening. In addition, the <span class="key-term">interference fit</span> between the elastomeric needle shield and the glass cone provides a seal against microbial ingress into the external surface of the needle. This interference fit also provides resistance to separation of the needle shield from the syringe tip during normal handling and distribution. Furthermore, the seal isolates the needle from external contaminants.</p>
+        <p>In the market, two versions of the needle shield are in use: the <span class="key-term">soft or flexible needle shield</span>, which consists only of the elastomer, and the <span class="key-term">rigid needle shield (RNS)</span>, which has a plastic cover over the elastomer. The RNS has higher impact resistance, and pulling it off is more intuitive for the user. Some RNS designs offer additional mechanical resistance to needle shield separation from the needle tip or to provide tamper evidence.</p>
+        <p>In many cases, the syringe is provided ready-for-filling. The nonrigid needle shield or RNS material and design must be compatible with the <span class="key-term">EO sterilization process</span> typically used for sterilization. In situations where empty syringes are supplied in bulk, the pharmaceutical company washes, assembles (siliconized) with a needle shield, and sterilizes the syringes. The needle-shield materials must be compatible with the sterilization process, which typically consists of <span class="key-term">autoclaving by steam</span>.</p>
+        <p>The elastomeric part of the needle shield can make contact with the product after filling. Therefore, the manufacturer must demonstrate that any needle shield elastomer material is compliant with safety regulations and compatible with the drug product. The design and installation of the elastomer needle shield must be confirmed to ensure satisfactory <span class="key-term">CCI</span> of the needle end of the filled assembled product throughout the life cycle of the drug product.</p>
+        <p>Often, a PFS product is attached to an add-on device, such as a safety device or autoinjector. The dimensions of nonrigid needle shields and RNSs should be compatible with the devices and machines that assemble them.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Interference Fit（干涉配合）：</strong>彈性體針頭護罩的外徑略大於玻璃錐頭的內徑，壓配後產生預壓力，形成物理性密封。這是 PFS 針頭端 CCI 的主要機制，與橡膠塞的「cork-in-bottle」原理相同。</p>
+            <p><strong>非硬質護罩 vs 硬質護罩（RNS）：</strong>
+                <ul>
+                    <li><strong>非硬質（Soft）：</strong>純彈性體，成本低，常用於手動注射的 PFS</li>
+                    <li><strong>RNS：</strong>彈性體外加塑料外殼，抗衝擊性更高，操作更直觀，適合自動注射器（autoinjector）及安全裝置，且可加入防拆（tamper evidence）設計</li>
+                </ul>
+            </p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>非硬質護罩像軟木塞——彈性好、密封佳，但容易損壞。RNS 像帶金屬外殼的香檳塞——外殼提供剛性保護，內部軟木仍負責密封。自動注射器需要精確的拔除力曲線，因此 RNS 的可預測性更受青睞。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>滅菌相容性要求分兩種情境：</strong>
+                <ul>
+                    <li>供應商提供 <strong>Ready-for-Filling（RFF）</strong> 預裝針頭護罩：通常用 <strong>EO 滅菌</strong>，彈性體須允許 EO 氣體穿透</li>
+                    <li>藥廠散裝採購自行組裝：通常用 <strong>蒸汽滅菌（autoclaving）</strong>，彈性體須耐受高溫高壓</li>
+                </ul>
+                Amaran 作為 CDMO，在接收空針時須確認供應商採用何種情境，以確保滅菌相容性資料已涵蓋在 DMF 中。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若 RNS 的塑料外殼阻擋 EO 氣體滲透，製造商應如何在設計層面解決此問題？</li>
+                <li>Interference fit 的壓配力過高或過低，各會對 CCI 和針頭護罩拔除力產生什麼影響？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION 8.2 ==================== -->
+<div class="section-title"><strong>8.2 Material Property Requirements 材料性能要求</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Needle shields and the elastomeric parts of RNSs are typically made from <span class="key-term">thermoset rubber</span> or <span class="key-term">thermoplastic rubber formulations</span>. A thermoset rubber formulation is a polymer system in which the basic elastomeric properties are derived from covalent bonds between adjacent polymer chains. These chemical bonds are referred to as <span class="key-term">"cross-links"</span> and are typically created through a high-temperature molding process. Chemical cross-links are considered to be irreversible following the molding step.</p>
+        <p>The industry uses two families of thermoplastic elastomer formulations: materials from the <span class="key-term">styrene block copolymer</span> and <span class="key-term">thermoplastic vulcanizate (TPV)</span> families. Thermoplastic elastomers based on the styrene block copolymer family derive their elastic properties from hard polystyrene domains that act as physical cross-links. Following the molding step, this kind of TPR can be reprocessed if necessary.</p>
+        <p>TPRs from the <span class="key-term">TPV family</span> are made of a thermoset rubber/thermoplastic polymer mixture, such as EPDM and polypropylene. Within TPV polymer systems, the rubber phase is highly cross-linked by means of traditional thermoset-curing systems, such as peroxide or sulfur.</p>
+        <p>Elastomer formulations are unique to the component and manufacturer. The formulations are trade secrets of the manufacturer. Switching from one formulation to another typically requires requalification efforts, including drug product stability and regulatory filing.</p>
+        <p>Some needle shield materials have been known to be susceptible to <span class="key-term">embrittlement or cracking</span> (e.g., through ozone attack). The selection of needle shield material should account for such aging properties. Additionally, consideration of needle shield and needle interactions that may result in <span class="key-term">corrosion</span> should also be included when selecting the needle shield materials.</p>
+        <p>The material of the elastomer needle shield must be compatible with the <span class="key-term">EO or steam sterilization</span> process. Ethylene oxide or steam must be able to permeate the wall of the elastomer needle shield in order to sterilize the surface of the needle and the interface between the needle shield and glass cone. Moreover, residual EO must be able to move out of the elastomer needle shield at the end of the sterilizing cycle. Therefore, the elastomer needle shield material must have <span class="key-term">sufficiently high permeability</span> for steam and gas. Needle shield elastomer formulations suitable for this process are dedicated <span class="key-term">polyisoprene</span> and <span class="key-term">styrene-butadiene</span> formulations, as well as certain thermoplastic elastomer formulations.</p>
+        <p>For the RNS, the plastic part must be designed in such a way as not to interfere with the accessibility of EO or steam to its elastomeric part.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>熱固性橡膠（Thermoset Rubber）：</strong>以共價鍵交聯，成型後不可再加工。交聯點是永久性的化學鍵，類似硫化橡膠。優點：力學強度高、耐老化；缺點：廢料不可回收。</p>
+            <p><strong>熱塑性彈性體（TPE/TPV）：</strong>以物理交聯（苯乙烯嵌段共聚物）或動態硫化（TPV）提供彈性。TPE 可回收再加工；TPV 含已交聯的橡膠相，兼具 TPE 加工性與熱固性橡膠的耐久性。</p>
+            <p><strong>配方保密性（Trade Secret）：</strong>不同供應商的彈性體配方不具化學等效性，任何供應商切換均需重新驗證（包括穩定性試驗及法規申報），是 PFS 供應商管理的高風險變更項目。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>熱固性橡膠如烤好的蛋糕——加熱成型後無法還原，只能切割使用，不能重新融化；熱塑性彈性體如熱熔膠——加熱可流動重塑，冷卻後恢復彈性。TPV 則是「半熟」狀態——橡膠相已交聯但外殼熱塑，兼具兩者優點。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>滅菌滲透性是針頭護罩材料的核心需求：</strong>EO 或蒸汽必須能滲透彈性體壁以滅菌針頭表面，殘留 EO 也必須能逸出。這要求彈性體具有高滲透性（high permeability），而這一特性與傳統瓶蓋或注射器活塞橡膠的低滲透性需求<strong>相反</strong>。因此，針頭護罩專用配方（polyisoprene、SBR）與活塞橡膠配方無法互換。</p>
+            <p><strong>老化風險：</strong>臭氧攻擊（ozone attack）可導致彈性體脆化或龜裂，影響 CCI。長期儲存條件（溫度、濕度、UV 暴露）應納入針頭護罩材料評選標準。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼高滲透性彈性體（適合針頭護罩）不適合用作注射器活塞橡膠？請從 CCI 角度分析。</li>
+                <li>若客戶要求從 A 供應商彈性體配方切換至 B 供應商，Amaran 應要求客戶提供哪些技術文件，並觸發哪些驗證活動？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION 8.2.1 ==================== -->
+<div class="section-title"><strong>8.2.1 Needle-Shield Extractables Profile 針頭護罩可萃取物輪廓</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Elastomeric needle shield formulations are chosen to comply, at a minimum, with the requirements of <span class="key-term">USP &lt;381&gt;</span> Elastomeric Closures for Injections, and <span class="key-term">European Pharmacopeia 3.2.9</span>, Rubber Closures for Containers for Aqueous Parenteral Preparations for Powders and for Freeze-Dried Powders. USP &lt;381&gt; requires conformity of the closures as they are shipped by the closure supplier and in their final ready-to-use state. Materials used for the "rigid" portion of the needle shield should be compliant with <span class="key-term">USP &lt;381&gt;</span> and <span class="key-term">ISO 10993</span>, Biological Evaluation of Medical Devices.</p>
+        <p>To minimize the risk of a negative impact of leachables from the needle shield elastomer on the quality of the drug product, the customer and the syringe supplier should collaborate to obtain the potential extractables profile for the elastomer. The customer should then examine the list with the toxicology group and complete the necessary studies. Refer to Sections 5.3 and 14.0 for details on compatibility requirements.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Extractables（可萃取物）：</strong>在極端溶劑條件下，從彈性體中可萃取出的化學物質，用以預測潛在滲出物風險。這是供應商責任範圍，應包含在 DMF 或 CoA 中。</p>
+            <p><strong>USP &lt;381&gt; 雙重合規點：</strong>測試時機有兩個——<strong>（1）供應商出廠狀態</strong>及<strong>（2）最終就緒使用狀態（Ready-to-Use）</strong>，兩個節點均需合規。這對已經過清洗、矽油化處理的護罩特別重要。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>RNS 的<strong>塑料外殼</strong>（rigid portion）需同時符合 <strong>USP &lt;381&gt;</strong> 及 <strong>ISO 10993</strong>（醫療器材生物評估）。ISO 10993 是組合產品監管的關鍵標準，Amaran 在審查 RNS 供應商資料時須確認兩者均已覆蓋。</p>
+            <p>毒理學評估（Toxicological Evaluation）應由客戶的毒理學部門完成，並形成書面結論後歸入 PFS 技術檔案（Technical File / CTD Module 3.2.P.2）。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>USP &lt;381&gt; 的「出廠狀態」與「就緒使用狀態」測試結果不一致時，應如何處理？從監管申報角度分析。</li>
+                <li>若客戶毒理學評估發現某可萃取物超出安全閾值（TTC），Amaran 作為 CDMO 可以採取哪些控制措施？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION 8.2.2 ==================== -->
+<div class="section-title"><strong>8.2.2 Needle-Shield Leachables Profile 針頭護罩滲出物輪廓</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>While the contact area between the elastomeric part of the nonrigid needle shield or RNS is small, this does not preclude <span class="key-term">migration of extractables</span> from the elastomer needle shield into the pharmaceutical product once the syringe is filled. A number of such migration cases have been reported as <span class="key-term">leachable cases</span> in PFS drug formulations. This possibility must be taken into account during drug product development. Refer to Sections 5.3 and 14.3.1 for additional details.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Leachables（滲出物）vs Extractables（可萃取物）：</strong>可萃取物是壓力測試（worst-case）的預測性資料；滲出物是在實際產品儲存條件下真正遷移進入藥液的物質。接觸面積雖小，但針頭插入彈性體後接觸面積的微觀品質（壓配緊密程度、時間、溫度）均影響滲出速率。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>滲出物就像茶葉泡入水中的茶色素——接觸面積雖然只是葉片表面，但足夠長的時間仍可使茶水顏色明顯改變。針頭端的接觸面積看似微小，但在 24 個月儲存期內積累的遷移量仍可能達到藥品安全閾值。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>TR73 明確點出已有<strong>多起實際滲出物案例</strong>被報告於 PFS 藥品。這是監管機構（FDA、EMA）在 PFS CMC 審查中特別關注的項目。Amaran 在技術協議中應要求客戶提供針頭端滲出物研究計畫（Leachables Study Protocol）並確認完成時程。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION 8.2.3 ==================== -->
+<div class="section-title"><strong>8.2.3 Needle-Shield E-beam Compatibility 電子束相容性</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>When <span class="key-term">e-beam surface sterilization</span> is employed at the form/finish line, the manufacturer should select needle shield (nonrigid or RNS) materials that have been confirmed to be compatible with the equipment and process. Some <span class="key-term">aging evaluation</span> may be warranted because the impact of radiation on elastomers could be delayed. Similar considerations should be taken into account if another "surface sterilization" approach is used.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>E-beam（電子束）表面滅菌：</strong>在灌裝線上對充填後密封的 PFS 進行表面殺菌，是近年無菌製造的新興技術。輻射劑量（kGy）是關鍵參數，需透過劑量映射（Dose Mapping）確認。</p>
+            <p><strong>延遲老化效應：</strong>輻射對彈性體的氧化降解可能在照射後數週至數月才顯現（Post-Irradiation Aging）。因此，材料相容性評估需包含加速老化試驗，而不僅是即時測試。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>Amaran 若評估引入 E-beam 表面滅菌，應要求針頭護罩供應商提供經驗證的輻射相容性資料（包含加速老化），並在工程批次中確認 CCI 是否受影響。這屬於製程驗證中的容器密封相容性子研究。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION 8.2.4 ==================== -->
+<div class="section-title"><strong>8.2.4 Needle-Shield Elastomer Cleanliness 彈性體潔淨度</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The elastomer needle shield should not contaminate the needle. Prior to assembly of the barrel, the elastomer should be <span class="key-term">appropriately cleaned</span> so that fibers or other contaminants are not introduced.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>彈性體潔淨度（Cleanliness）：</strong>彈性體在模製後表面可能殘留纖維（fiber）、微粒（particulate）或模具釋放劑。這些汙染物在針頭組裝時可能被帶入無菌空間，成為不溶性微粒的潛在來源。清洗方法（水洗、超音波清洗等）及潔淨度驗收標準應在供應商資格確認（Supplier Qualification）中明確規範。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>USP &lt;789&gt;（注射用液體中的不溶性微粒）是充填後 PFS 的微粒控制標準。針頭護罩的潔淨度直接影響充填後微粒計數結果。Amaran 應在供應商稽核（Supplier Audit）中確認彈性體清洗 SOP 及批次潔淨度放行數據。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION 8.3 ==================== -->
+<div class="section-title"><strong>8.3 Mechanical Property Requirements 機械性能要求</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Section 8.3 covers the mechanical properties required for proper needle shield performance, encompassing pull-off force specifications and the influence on needle sharpness.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p>機械性能要求包含兩個核心指標：<strong>（1）拔除力（Pull-off Force）</strong>——確保護罩在使用前不脫落且使用時可順利移除；<strong>（2）針尖鋒利度（Needle Sharpness）</strong>——確保護罩組裝後針尖穿刺力不受損。兩者均直接影響患者安全與產品 CQA。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION 8.3.1 ==================== -->
+<div class="section-title"><strong>8.3.1 Needle-Shield Pull-off Force 針頭護罩拔除力</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Before injection, the needle shield (nonrigid or RNS) must be removed manually or in a semiautomated or automated fashion (i.e., using an autoinjector). The force to remove the needle shield from the syringe tip is known as the <span class="key-term">"needle-shield pull-off force."</span></p>
+        <p>Depending on the type of elastomer formulation, sterilization treatment, design and other characteristics, the pull-off forces can vary from type-to-type. Therefore, it is recommended that the system supplier and customer agree on the <span class="key-term">minimum and maximum pull-off forces</span> for the needle shield. The customer can use incoming inspection of the needle shield pull-off force in empty syringes at appropriate frequency to check the robustness of the supplier's process. For further details, refer to <span class="key-term">ISO 11040-4</span>.</p>
+        <p>A specification for final product performance must consider the <span class="key-term">end user's therapeutic area</span> and any requirements associated with <span class="key-term">combination product devices</span>, if applicable. The specified pull-off force range for the empty syringe should guarantee the tightness on the syringe during the filling process, downstream processes, and storage throughout the product's shelf life.</p>
+        <p>It should be cautioned that sometimes test results from <span class="key-term">empty syringes do not necessarily correlate</span> with the results for the final filled syringe system. It is also important to establish agreement among the suppliers and pharmaceutical companies on a control strategy to minimize risk.</p>
+        <p>For RNSs, the separation force of the plastic cap from the elastomer shield must be <span class="key-term">higher than the pull-off force</span> of the complete RNS assembly from the syringe barrel to ensure proper functionality and avoid detachment of the plastic cap from the elastomeric needle shield during preparation for injection.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Pull-off Force 規格的雙重目的：</strong>
+                <ul>
+                    <li><strong>最小值</strong>：確保儲存、運輸、灌裝線操作中護罩不意外脫落（CCI 要求）</li>
+                    <li><strong>最大值</strong>：確保患者（尤其是老年人、關節炎患者）或自動注射器機構能夠順利拔除</li>
+                </ul>
+            </p>
+            <p><strong>RNS 的力量層級要求（Force Hierarchy）：</strong><br>
+            塑料外殼與彈性體的分離力 &gt; RNS 整體從注射筒拔除力<br>
+            這確保拔除時 RNS 作為整體移除，而非外殼先脫離，導致彈性體殘留在針尖上。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>拔除力就像車門的鎖緊力——太鬆車門自動彈開（安全風險），太緊老人和兒童無法開門（使用性問題）。RNS 的力量層級就像「車門整體 vs 車窗」——開車門時必須整扇門一起打開，而不是窗戶先飛出去。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>空針 vs 充填後的拔除力差異：</strong>TR73 明確警告，空針測試結果不一定能預測充填後結果。充填後藥液壓力、矽油遷移、長期儲存等因素均可改變彈性體的摩擦係數和尺寸，導致拔除力漂移。Amaran 應在穩定性研究設計中納入充填後拔除力測試時間點（T0、T6、T12、T24 months）。</p>
+            <p>ISO 11040-4 是拔除力測試方法的主要參考標準，應作為品質協議（Quality Agreement）中測試方法的正式引用依據。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若穩定性試驗顯示充填後拔除力隨時間顯著增加，可能的原因有哪些？應採取什麼矯正措施？</li>
+                <li>一個兼容自動注射器的 PFS 產品，拔除力規格應如何與自動注射器的驅動機構設計協調確認？由哪方負責主導？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION 8.3.2 ==================== -->
+<div class="section-title"><strong>8.3.2 Influence of Needle Shield on Needle Sharpness 針頭護罩對針尖鋒利度的影響</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The sharpness of the needle tip is not likely to be reduced by assembly of the needle shield (nonrigid or RNS), although the sharp end of the needle is embedded into the elastomeric needle shield. Testing the sharpness of the needle should be in accordance with <span class="key-term">ISO Method 11040-4</span> and confirmed by the syringe supplier or customer/filler during incoming inspection. The quality agreement between the syringe supplier and the customer should include <span class="key-term">additional controls</span>, if desired.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>針尖鋒利度（Needle Sharpness）：</strong>以穿刺力（Penetration Force）量化，測試方法依 ISO 11040-4 執行。針頭護罩的彈性體雖包覆針尖，但正常的橡膠硬度不應使針尖變鈍。異常鈍化通常源於：（1）組裝時針尖撞擊模具壁、（2）彈性體過硬導致針尖彎曲、（3）儲存期間針尖腐蝕（與護罩材料不相容）。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>鋒利度測試通常在<strong>進料檢驗（Incoming Inspection）</strong>時執行，採統計抽樣計畫（AQL 計畫），並與供應商品質協議明確規範驗收標準（Acceptance Criteria）。若發現鋒利度不符，需啟動偏差調查（Deviation Investigation）並追蹤至供應商製程。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION 8.4 ==================== -->
+<div class="section-title"><strong>8.4 Container Closure Integrity Requirements 容器密封完整性要求</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Section 8.4 addresses CCI requirements for both empty and filled syringes at the needle-shield end.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p>CCI 在針頭護罩端的評估分為兩個維度：<strong>（1）空針 CCI</strong>（供應商 / 進料驗收階段）和<strong>（2）充填後全生命週期 CCI</strong>（藥廠責任）。兩者的測試策略、方法與驗收標準均有所不同，詳細方法見 §12.4。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION 8.4.1 ==================== -->
+<div class="section-title"><strong>8.4.1 Empty Syringe 空針容器密封完整性</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>During validation of the syringe manufacturing process by the system supplier, an appropriate <span class="key-term">statistical sampling plan</span> should be used to assess the seal of the needle shield (nonrigid or RNS) and maintenance of sterility during transportation and storage of the sterilized syringe. A statistical sampling plan may be used during both the supplier's <span class="key-term">outgoing inspection</span> and the customer's <span class="key-term">incoming inspection</span> to evaluate empty assembled syringes for <span class="key-term">critical defects</span>, such as:
+            <ul>
+                <li>tears or cracks of the needle shield</li>
+                <li>needle protrusion through the needle shield</li>
+                <li>dimensional nonconformities that could jeopardize CCI</li>
+            </ul>
+        The quality agreement should address the sharing of steps implemented to ensure integrity of the CCI.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>三類關鍵缺陷（Critical Defects）：</strong>
+                <ul>
+                    <li><strong>撕裂/龜裂（Tears/Cracks）：</strong>直接破壞微生物屏障，任何數量均為拒收</li>
+                    <li><strong>針頭穿出（Needle Protrusion）：</strong>針尖貫穿護罩，安全風險且 CCI 喪失</li>
+                    <li><strong>尺寸不符（Dimensional Nonconformity）：</strong>護罩壓配深度不足或過深，影響干涉配合密封效果</li>
+                </ul>
+            </p>
+            <p><strong>雙向抽樣計畫：</strong>供應商出貨檢驗（OQC）與客戶進料檢驗（IQC）各自執行，兩者的抽樣計畫及 AQL 設定應在品質協議中對齊，避免重複測試或覆蓋空白。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>品質協議（Quality Agreement）是 CDMO 與客戶之間正式確認 CCI 控制責任分工的法規文件（參照 FDA Guidance on Pharmaceutical Quality Agreement, 2016）。Amaran 作為灌裝方，在接收供應商空針時的進料 CCI 目視檢查責任必須在協議中明確定義，不可默認由供應商全權負責。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若進料檢驗發現 0.5% 的空針出現針頭護罩輕微撕裂，應觸發什麼等級的品質事件（Minor / Major / Critical）？依據什麼判斷？</li>
+                <li>供應商 OQC 放行但客戶 IQC 發現缺陷，兩個抽樣計畫的 AQL 設定應如何協調？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION 8.4.2 ==================== -->
+<div class="section-title"><strong>8.4.2 Filled Syringe throughout the Life Cycle 充填針劑的全生命週期密封完整性</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The needle shield (nonrigid or RNS) must not exhibit <span class="key-term">surface cracks or other surface imperfections</span> visible to the naked eye. Application of suitable methods should ensure the <span class="key-term">CCI of the PFS throughout the product's life cycle</span>. Refer to Sections 12.4 for requirements related to filled and finished syringes, and common methods for CCI testing and assurance.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>全生命週期 CCI（Life Cycle CCI）：</strong>充填後的 PFS 需在以下全程保持 CCI：灌裝冷凍乾燥（如適用）→ 目視檢驗 → 包裝 → 加速穩定性 → 真實穩定性（直至效期末）→ 模擬運輸（Distribution Simulation）。每個階段均可能對針頭護罩產生不同的機械應力。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>目視可見的表面裂紋（Surface Cracks）</strong>是全部充填批次 100% 目視檢驗的拒收標準（Critical Defect）。裸眼可見裂紋意味著 CCI 已失效，任何此類產品均不得放行。CCI 確認方法詳見 §12.4，包含微生物浸入法、壓力衰減法、高壓液相色譜法等確定性方法。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION 8.5 ==================== -->
+<div class="section-title"><strong>8.5 Dimensional Requirements 尺寸相容性要求</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>A PFS can be used without additional attachments, such as a safety device or an autoinjector. However, a PFS is often further assembled with <span class="key-term">add-on devices</span> to meet various customer needs. Compatibility among the dimensions of the assembled syringe, including the needle shield (nonrigid or RNS) and the add-on devices is, therefore, a <span class="key-term">critical requirement</span> for successful assembly and proper functioning of the final combination product. This subject is outside the scope of this technical report, but it should be noted that such alignment of the various dimensions should occur during the <span class="key-term">development program</span> before the design of the add-on device or the needle shield is finalized.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>組合產品尺寸相容性（Dimensional Compatibility）：</strong>當 PFS 與自動注射器（Autoinjector）或安全裝置（Safety Device）組合使用時，針頭護罩的外徑、長度、硬度（Shore A）均影響組合產品的啟動力和功能。這些尺寸需在設計凍結（Design Freeze）前完成跨組件相容性確認（Interface Design Verification）。</p>
+            <p><strong>開發階段的前置協調：</strong>TR73 強調此協調必須在<strong>開發階段</strong>完成，而非量產後再修正。這呼應 ICH Q8 的品質源於設計（QbD）原則：組合產品設計空間（Design Space）需包含所有接口尺寸的容差分析（Tolerance Stack-up Analysis）。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>尺寸相容性就像 USB 接頭的規格統一——USB-A 與 USB-C 不相容，若在量產後才發現接頭型式不匹配，重新開模的成本遠高於設計期間的評估成本。PFS 與自動注射器的尺寸介面若在後期才發現不相容，需要的設計變更（Design Change）將觸發全面的重新驗證，耗時耗資。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>TR73 明確說明組合產品詳細設計規範超出本技術報告範疇，但仍標注其重要性。實際開發中，ISO 11608 系列標準（特別是 ISO 11608-1 及 ISO 11608-5）提供了針頭型注射系統與組合裝置的功能要求框架。Amaran 在接受含自動注射器的組合產品開發委託時，應在 Design Input Requirements 中明確列入針頭護罩尺寸的介面規格項目。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若在 Phase III 臨床試驗期間，客戶決定將針頭護罩從非硬質改為 RNS 以提升自動注射器相容性，這項變更在法規申報上屬於什麼等級（Major / Moderate / Minor）？需要哪些補充數據？</li>
+                <li>Tolerance Stack-up Analysis（公差疊加分析）在確認 PFS 與自動注射器介面相容性時如何應用？誰應負責執行——PFS 供應商、自動注射器製造商，還是藥品持有人？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SUMMARY TABLE ==================== -->
+<div class="section-title"><strong>Section 8 Summary 本章要點總覽</strong></div>
+
+<div style="overflow-x:auto; margin: 1rem 0;">
+    <h3 style="font-weight:600; color:var(--primary-blue); margin-bottom:0.5rem;">Table 8-A: Needle Shield — Key Requirements Summary 針頭護罩主要要求對照表</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Subsection</th>
+                <th>Topic 主題</th>
+                <th>Key Requirement 主要要求</th>
+                <th>Reference Standard 參考標準</th>
+                <th>Amaran Relevance Amaran 實務重點</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>8.1</td>
+                <td>Functions 功能</td>
+                <td>Interference fit CCI; EO or steam sterilization compatibility</td>
+                <td>TR73 §12.0, §14.3</td>
+                <td>確認供應商滅菌情境（RFF/散裝）</td>
+            </tr>
+            <tr>
+                <td>8.2</td>
+                <td>Material 材料</td>
+                <td>High gas/vapor permeability; thermoset or TPE/TPV; trade-secret formulation</td>
+                <td>TR73 §11.1.1</td>
+                <td>供應商切換需重新驗證，觸發法規申報</td>
+            </tr>
+            <tr>
+                <td>8.2.1</td>
+                <td>Extractables 可萃取物</td>
+                <td>USP &lt;381&gt; (shipped + RTU); ISO 10993 for rigid part</td>
+                <td>USP &lt;381&gt;, EP 3.2.9, ISO 10993</td>
+                <td>毒理學評估由客戶負責，應列入技術協議</td>
+            </tr>
+            <tr>
+                <td>8.2.2</td>
+                <td>Leachables 滲出物</td>
+                <td>Small contact area does not preclude migration; multiple cases reported</td>
+                <td>TR73 §5.3, §14.3.1</td>
+                <td>穩定性研究需含針頭端滲出物測試</td>
+            </tr>
+            <tr>
+                <td>8.2.3</td>
+                <td>E-beam 電子束</td>
+                <td>Material compatibility + delayed aging evaluation required</td>
+                <td>—</td>
+                <td>引入 E-beam 前需針頭護罩老化相容性數據</td>
+            </tr>
+            <tr>
+                <td>8.2.4</td>
+                <td>Cleanliness 潔淨度</td>
+                <td>No fiber/particulate introduction during assembly</td>
+                <td>USP &lt;789&gt;</td>
+                <td>供應商稽核確認清洗 SOP 及放行數據</td>
+            </tr>
+            <tr>
+                <td>8.3.1</td>
+                <td>Pull-off Force 拔除力</td>
+                <td>Min/max range agreed; ISO 11040-4 test method; empty ≠ filled</td>
+                <td>ISO 11040-4</td>
+                <td>穩定性研究含充填後拔除力測試時間點</td>
+            </tr>
+            <tr>
+                <td>8.3.2</td>
+                <td>Needle Sharpness 鋒利度</td>
+                <td>Assembly should not reduce sharpness; ISO 11040-4 testing</td>
+                <td>ISO 11040-4</td>
+                <td>進料檢驗統計抽樣，異常觸發供應商偏差</td>
+            </tr>
+            <tr>
+                <td>8.4.1</td>
+                <td>Empty Syringe CCI 空針</td>
+                <td>Statistical sampling; critical defects: tears, protrusion, dimensional</td>
+                <td>TR73 §12.0</td>
+                <td>品質協議明確進料 CCI 責任分工</td>
+            </tr>
+            <tr>
+                <td>8.4.2</td>
+                <td>Filled Syringe CCI 充填後</td>
+                <td>No visible cracks; CCI throughout life cycle</td>
+                <td>TR73 §12.4</td>
+                <td>目視裂紋為 Critical Defect，100% 拒收</td>
+            </tr>
+            <tr>
+                <td>8.5</td>
+                <td>Dimensions 尺寸</td>
+                <td>Compatibility with add-on devices; align in development phase</td>
+                <td>ISO 11608-1, ISO 11608-5</td>
+                <td>Design Input 需含介面規格；公差疊加分析</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- FOOTER -->
+<footer class="main-footer">
+    <p>PDA Technical Report No. 73 (2015): Prefilled Syringes</p>
+    <p>Section 8: Needle-Shield Requirements 針頭護罩需求 | p42–p46</p>
+    <p>Bilingual Educational Edition — For Internal Training Use Only</p>
+</footer>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+    window.addEventListener('scroll', function() {
+        var btn = document.getElementById('backToTop');
+        if (window.scrollY > 300) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+</script>
+
+</body>
+</html>
