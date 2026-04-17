@@ -304,9 +304,19 @@ the inputs of microbial testing during root cause analysis.
 Table 4.0-1 lists sample questions that may be asked during the laboratory investigation. This sug-
 gested list of questions and conditions for consideration should not be considered all-inclusive.
 
-| Laboratory Process or Component | Questions for Consideration |
-| --- | --- |
+**Table 4.0-1 Sample Questions for Laboratory Investigations**
 
+Laboratory Process or
+Questions for Consideration
+Component
+Were the samples collected using proper aseptic technique?
+Were the samples taken in a sampling cabinet (where applicable) so not to contaminate the test material?
+Were sterile sampling devices used (e.g., sterile scoops, sampling thieves)?
+Was the sampler gowned appropriately to protect the sample from contamination?
+Were personnel properly trained to take samples?
+Were personnel wearing appropriate personal protective equipment (PPE)?
+Were sample containers intact (not damaged or opened) and sterile prior to testing?
+Was the sampling area properly sanitized, using qualified sanitizing agents?
 Sampling and/or Shipment Did errors occur during routing, delivery, and storage of the test samples to the laboratory (e.g., dropped,
 to the Microbiology opened, spilled, and/or improperly stored)?
 Laboratory Were all procedures followed and confirmed (e.g., container-closure integrity testing, label review and
@@ -479,17 +489,12 @@ be overlooked.
 Table 4.1-1 outlines general points to consider when encountering a microorganism associated with
 a product failure.
 
-| Sampling and/or Shipment to the Microbiology Laboratory | Were the samples collected using proper aseptic technique? |
-| Were the samples taken in a sampling cabinet (where applicable) so not to contaminate the test material? |
-| Were sterile sampling devices used (e.g., sterile scoops, sampling thieves)? |
-| Was the sampler gowned appropriately to protect the sample from contamination? |
-| Were personnel properly trained to take samples? |
-| Were personnel wearing appropriate personal protective equipment (PPE)? |
-| Were sample containers intact (not damaged or opened) and sterile prior to testing? |
-| Was the sampling area properly sanitized, using qualified sanitizing agents? |
-| Did errors occur during routing, delivery, and storage of the test samples to the laboratory (e.g., dropped, opened, spilled, and/or improperly stored)? |
-| Were all procedures followed and confirmed (e.g., container-closure integrity testing, label review and verification, attribute inspection) during sample collection? Did the chain of custody and the time lapse between sampling and testing adhere to procedural requirements? Were the samples transported in a secure manner that did not contribute to microbial contamination? Were the associated documentation and sampling forms properly completed? Were the samples transferred into the laboratory promptly and stored under proper conditions prior to use in testing? |
+**Table 4.1-1 General Points to Consider in Microbial Identification**
 
+Identification Aspect Considerations
+Is the instrumentation used for the identification adequately maintained and within calibration? Did the
+reagents pass their quality control checks?
+Was the probability of the match to the database sufficiently high or are supplemental tests required?
 Instrumentation and Data Would a small change in the results lead to a completely different identification? Does the isolate need
 further subculture for full phenotypic expression?
 Is the isolate difficult to differentiate from other related species with the identification technology
@@ -597,19 +602,16 @@ During the laboratory phase of the investigation, the review process should be f
 operating procedure or other type of Work instruction document. To be consistent with the USP cri-
 teria, the investigative review questions in this section have been grouped in the same order.
 
-| Testing Procedures | Was the test method performed in accordance with the current standard operating procedure? |
-| Is the test method correct and appropriate for the sample being tested? |
-| Was method suitability testing performed on the applicable sample type? |
-| Were the samples tested in a controlled environment using proper aseptic technique? |
-| Is the analyst properly qualified, experienced in running the test, and current with their training? |
-| Is the procedure and/or test method clear, or could it be subject to interpretation? |
-| Was the analyst properly gowned, wearing appropriate PPE for the test (e.g., face mask, sterile sleeves, sterile gloves, etc.)? |
-| Were the appropriate materials, media, diluents, and components used for the test? |
-| Were the testing consumables accepted into inventory via a defined incoming-materials process and within the appropriate expiration date? |
-| Did the materials, media, and diluents pass quality control testing, where required? |
-| Was the lot information for the materials, media, and diluents properly documented? |
-| Were any changes made to how reusable glassware were cleaned and sterilized (e.g., new employee, new detergent, new washer, new autoclave)? Was there a trainee or new analyst working with the lead analyst? Were the required incubation time and temperature used? Was water of the appropriate quality and volume used? Was the testing area properly sanitized? Were all agents within their expiration date? Was the sanitization performed properly and as frequently as required? Were the environmental and/or personnel monitoring samples appropriate and acceptable? Were all system controls (manipulative) properly executed and acceptable? Were all negative controls for media and diluents properly executed and acceptable? Has the microbiology laboratory experienced any unusual events that could compromise the laboratory testing areas (e.g., construction, open doors, standing water, temperature excursions, spills, HVAC failure)? |
+**Table 4.2.1-1 Data of the Sterility Testing Facility Show a Fault**
 
+Identification
+Considerations
+Aspect
+Has the sterility testing isolator system, glovebox, or laminar flow hood been certified to meet the required
+certification standards?
+Has any of the test equipment (e.g., filtration apparatus, filter) been associated with other recent sterility issues?
+Has the isolator chamber, glovebox, or laminar flow hood been properly decontaminated by chemical
+disinfection, e.g., vapor phase hydrogen peroxide? Has the decontamination process been successfully validated?
 Testing Facilities Are there any leaks in the gloves? (Review the glove integrity test and EM data including fingertip glove samples)
 Has the sterility testing suite been disinfected according to laboratory SOPs? Were there any recent changes to
 the disinfection solutions used before the appearance of the suspect test results?
@@ -635,12 +637,17 @@ aerobes or small budding fungal growth attached to membrane filter or walls of g
 purchased media, diluent, and test equipment should be checked for manufacturing recalls. Alterna-
 tively, in-house-prepared media records should be reviewed for contamination trends.
 
-| Equipment/Supplies | Were the equipment, instruments, and pipette aids used in the test properly maintained and calibrated? |
-| Were related, reusable, testing equipment (e.g., micropipettes, pipet-aids), glassware, and materials properly cleaned and/or sterilized prior to use, according to procedure? |
-| Were all the pieces of equipment and supplies brought into the testing area properly handled? |
-| Were the gowning components properly cleaned and/or sterilized, and was the packaging fully integral? |
-| Did any maintenance of equipment, planned or unplanned, occur that could have had a potential impact on the test or result? Was a water bath or sonicator required and, if so, was it properly cleaned, sanitized, and filled with the appropriate quality of water? Was the container or packaging used in holding microbiological culture media integral? Were all the analysts trained on the proper use of the equipment? |
+**Table 4.2.1-2 Testing Procedure Used Reveals a Fault**
 
+Fault Aspect Considerations
+Did all sterility test media used pass QC checks (pH, appearance, integrity of container) and relevant growth
+promotion and sterility checks?
+Were the expiry and storage conditions of the sterility test media confirmed?
+Does the product have a history of sterility failure issues?
+Were the Certificates of Analysis for the commercially available media and equipment used for the analyses
+(canisters, preformulated media, diluents) accurate and acceptable?
+Were the product and media containers and any other supplies properly disinfected before being placed into the
+laminar flow hood or isolator?
 Testing Materials Does any of the suspected glassware contain product contamination (e.g., appearance of residual material
 within the glassware from a prior sample or other contamination source)?
 Was the container-closure integrity of the product confirmed?
@@ -860,8 +867,28 @@ fail at one or more time intervals in long-term stability studies supporting mar
 Table 4.2.3.1-1 outlines points to consider in a laboratory investigation of an antimicrobial effective-
 ness test deviation.
 
-| AET Component | Considerations |
-| --- | --- |
+**Table 4.2.3.1-1 Questions Concerning Antimicrobial Effectiveness Testing**
+
+AET Component Considerations
+Was the challenge organism inoculum of the proper quality and purity?
+Was the appropriate inoculum concentration used?
+Was the proper qualified diluent used in the inoculum preparation?
+Sample Preparation
+Was the inoculated product well mixed prior to storage and at the time of testing?
+Was the pH of the product within the specified range?
+Was the preservative concentration as measured by chemical assay within specification, e.g., 80-120% of label claim?
+Were the test materials held at 20-25 °C during the 28-day test period?
+Incubation
+Were the stability samples incubated upright or inverted?
+For evaluation of the statistical robustness of the number of colonies per pour plate over a 10-fold dilution range: Did
+the replicate plates fall into the range of 25 to 250 colonies per plate for bacteria and 8 to 80 for mold ?
+Are the counts on the plates comparable?
+Was the growth-promotion testing conducted with the appropriate microbiology growth medium?
+Results Evaluation
+Was the challenge organism recovery method validated?
+Is the recovered growth morphologically consistent with the inoculum organism?
+Was the laboratory worksheet complete and the log reduction calculations accurate (i.e., were appropriate
+rounding rules followed?)?
 
 #### 4.2.4 Mycoplasma Testing Investigations
 
@@ -886,12 +913,28 @@ the laboratory management and QCU know that it is a valid result?
 Points to consider when conducting the laboratory investigation of culture- or PCR-based detection
 methods are presented in Tables 4.3.4.1-1 and 4.3.4.1-2, respectively.
 
-| Sample Preparation | Was the challenge organism inoculum of the proper quality and purity? |
-| Was the appropriate inoculum concentration used? |
-| Was the proper qualified diluent used in the inoculum preparation? |
-| Was the inoculated product well mixed prior to storage and at the time of testing? |
-| Was the pH of the product within the specified range? |
+**Table 4.3.4.1-1 Culture-Based Mycoplasma Testing Considerations**
 
+Culture Testing
+Considerations
+Component
+What mycoplasma species was detected in the test specimen?
+Could that species be found on laboratory personnel or in the cell line?
+Is there a history of presence of mycoplasma in the specific cell culture, cell culture media, processing
+ingredients, upstream processing, or finished product?
+What was the test sample (e.g., fresh, frozen, or freeze-dried cell pellets; genomic extracts from the cell
+line; cell culture media ingredients; mammalian cell harvest for viral vaccine product)?
+Sample/Organism Did the test sample contain low or high levels of mycoplasma contamination as determined on the
+duration of the enrichment steps to detect mycoplasma?
+Note: Contaminated cell lines will contain higher mycoplasma counts, whereas media ingredients that
+have mycoplasma inactivation steps and no cells to support mycoplasma growth may have low-level
+mycoplasma contamination.
+Although cell culture media will not show turbidity or a pH change, do cell cultures of the contaminated
+cell line show morphological signs of mycoplasma contamination (i.e., cytopathogenic effects or presence
+of fluorochrome-stainable mycoplasma)?
+Did the test meet the USP <63> method suitability requirements?(29)
+Did the media pass the growth promotion tests? Did the positive and negative controls give the required results?
+Was Mycoplasma orale recovered from a non-human mammalian, microbial, insect, or plant cell line?
 If yes, it may have been introduced during upstream processing or testing. As it is the most common
 Method Suitability
 mycoplasma species in the oral cavity of healthy people, it has the greatest potential as a testing
@@ -899,9 +942,19 @@ contaminant.
 Has the analyst conducting the test been adequately trained and is experienced with the test?
 Was the test conducted with adequate personnel and environmental controls?
 
-| Incubation | Was the preservative concentration as measured by chemical assay within specification, e.g., 80–120% of label claim? |
-| Were the test materials held at 20–25 °C during the 28-day test period? |
-| Were the stability samples incubated upright or inverted? |
+**Table 4.3.4.1-2 Mycoplasma PCR-Based Detection Testing Considerations**
+
+PCR Testing Component Considerations
+Was there evidence that the reagents, i.e., master and assay mixes, were satisfactory? Did the inhibition,
+Reagents/Sample negative, and positive controls meet the specified requirements? Were the amplification plot, melting
+Preparation temperature, and derivative value interpreted correctly?
+Was the test environment adequately isolated? Is the test method an open or closed system?
+Was the method validation and suitability testing for the test sample adequate?
+Method
+Was the initial test repeated in duplicate with two of three replicates being clearly positive?
+Does the follow-up culture method (required with PCR failures) support or dispute the initial PCR-based
+Confirmation
+assay reported failure?
 
 #### 4.2.5 Biological Indicators Investigations
 
@@ -958,12 +1011,40 @@ Laboratory investigations are an opportunity to take stock of the sampling progr
 the microbiology laboratory. Common questions that may be asked during a laboratory investigation
 include those in Table 4.3.7-1.
 
-| Results Evaluation | For evaluation of the statistical robustness of the number of colonies per pour plate over a 10-fold dilution range: Did the replicate plates fall into the range of 25 to 250 colonies per plate for bacteria and 8 to 80 for mold? |
-| Are the counts on the plates comparable? |
-| Was the growth-promotion testing conducted with the appropriate microbiology growth medium? |
-| Was the challenge organism recovery method validated? |
-| Is the recovered growth morphologically consistent with the inoculum organism? |
-| | Was the laboratory worksheet complete and the log reduction calculations accurate (i.e., were appropriate rounding rules followed?)? |
+**Table 4.3.7-1 Environmental Monitoring: Questions Concerning Laboratory and Sampling**
+
+Laboratory Component Considerations
+Was the correct sampling method/technique performed?
+Was the sampling technician properly trained and qualified?
+Sample Collection Was the sampling technician properly gowned for the area requirements?
+Were the negative controls handled properly? Were results negative?
+Was the correct swab or contact plate used?
+Was the media appropriate for intended monitoring (i.e., tryptic soy agar, Gamma-irradiated media,
+double- or triple-wrapped media)?
+Was the media properly received and stored in good condition?
+Media Handling
+Was the media growth promoted? Were the results passed, approved?
+Was the lot used within expiry as supported by growth-promotion studies?
+Were the swabs, sterile diluent, and liquid media within expiry?
+Was the active air sampling equipment used within the current calibration period?
+Was the equipment functioning properly during sampling?
+Were the equipment batteries charged?
+Equipment
+Were the sampling heads appropriately sterilized or sanitized prior to use?
+Was the equipment handled properly and not dropped during use?
+Was the appropriate flow rate delivered to the sample?
+Did incubation take place at the correct time and temperature?
+Was the incubator temperature within the acceptable range throughout the incubation?
+Media Incubation
+Did any equipment alarms or power outages occur during incubation?
+Were the samples handled with care and not dropped?
+Was the colony color and morphology documented?
+Was a Gram stain performed and cellular morphology determined?
+Were any preliminary biochemical reactions performed?
+Microbial Identification Were microbial identifications conducted correctly and documented?
+Was the organism reviewed against routine EM results to determine if it had been seen at lower levels of
+contamination prior to the event?
+Was the source of the organism (e.g., water, personnel) determined to evaluate where the contamination came from?
 
 #### 4.2.8 Utilities Monitoring
 
@@ -1165,32 +1246,219 @@ In addition to the information the fishbone diagram provides, Tables 5.1-1, 5.1-
 ent further questions which can be used as applicable to the product type manufactured to aid in the
 investigation.
 
-| Area of Consideration | Questions for Consideration |
-| --- | --- |
+**Table 5.1-1 Factors to Consider in Root Cause Analysis**
 
-| Raw Materials | Have all relevant certificates of analysis been reviewed, with special emphasis on microbial testing? |
-| Have there been any recent notifications from the vendor regarding changes to their raw materials or processes? |
-| Have any of the vendor's suppliers or subsuppliers changed? Has your company been notified appropriately? |
-| If your firm comprises multiple sites that share vendors, have other sites had any complaints or issues? |
-| Did the last audit of the supplier/vendor have no microbial quality issues? |
+Area of Consideration Questions for Consideration
+Have all relevant certificates of analysis been reviewed, with special emphasis on microbial testing?
+Have there been any recent notifications from the vendor regarding changes to their raw materials or
+processes?
+Raw Materials Have any of the vendor’s suppliers or subsuppliers changed? Has your company been notified
+appropriately?
+If your firm comprises multiple sites that share vendors, have other sites had any complaints or issues?
+Did the last audit of the supplier/vendor have no microbial quality issues?
+Have the personnel responsible for manufacturing the product been trained appropriately?
+Was the relevant staff (e.g., cleaning staff, engineers, maintenance workers) involved in the manufacturing
+process around the time of the event interviewed? Were their responses documented?
+Have personnel recently transferred to a new function? Did an error occur due to complexity of the
+function?
+Are all personnel trained on proper aseptic techniques?
+Personnel and Training
+Are all personnel trained on proper cleanroom behaviors?
+Are personnel following procedures for operating in a classified area?
+Were any personnel observed to be ill or infected at the time of sampling?
+Was the occupancy count or time spent in the room exceeded prior to or during sampling?
+Were the personnel involved different from the personnel who routinely perform a particular function?
 
-| Personnel and Training | Have the personnel responsible for manufacturing the product been trained appropriately? |
-| Was the relevant staff (e.g., cleaning staff, engineers, maintenance workers) involved in the manufacturing process around the time of the event interviewed? Were their responses documented? |
-| Have personnel recently transferred to a new function? Did an error occur due to complexity of the function? |
-| Are all personnel trained on proper aseptic techniques? |
-| Are all personnel trained on proper cleanroom behaviors? |
-| Are personnel following procedures for operating in a classified area? |
-| Were any personnel observed to be ill or infected at the time of sampling? |
-| Was the occupancy count or time spent in the room exceeded prior to or during sampling? |
-| Were the personnel involved different from the personnel who routinely perform a particular function? |
-| How long have the personnel been performing this function? Are new employees involved? If so, are they all experienced? |
-| Have recently transferred or temporary operators been in the manufacturing area? |
-| Are the critical tasks performed infrequently? When was the last time the personnel involved performed the tasks? |
-| Are contractors (e.g., an outside cleaning or maintenance service) employed? |
-| How are contractors trained and qualified? |
-| Is operator performance evaluated on an ongoing basis (i.e., performance monitoring)? |
-| Is a particular operator or group of operators associated with a disproportionate number of deviations? |
-| Did any events occur around the time of the deviation that could have impacted operator performance (e.g., a distraction or interruption of activities, including upcoming holiday breaks; union activity; personal conflict; reorganization)? |
+(Table 5.1-1 Continued)
+Area of Consideration Questions for Consideration
+How long have the personnel been performing this function? Are new employees involved? If so, are they
+all experienced?
+Have recently transferred or temporary operators been in the manufacturing area?
+Are the critical tasks performed infrequently? When was the last time the personnel involved performed
+the tasks?
+Are contractors (e.g., an outside cleaning or maintenance service) employed?
+How are contractors trained and qualified?
+Is operator performance evaluated on an ongoing basis (i.e., performance monitoring)?
+Is a particular operator or group of operators associated with a disproportionate number of deviations?
+Did any events occur around the time of the deviation that could have impacted operator performance
+(e.g., a distraction or interruption of activities, including upcoming holiday breaks; union activity; personal
+conflict; reorganization)?
+Personnel and Training Gowning
+Is the personal protective equipment (PPE) appropriate for the manufacturing area?
+Are accessories like makeup and jewelry removed prior to entering classified areas?
+Is the gowning procedure clear and easy to follow?
+Were PPE appropriately stored?
+Did the operators don their gowning materials correctly?
+Are soiled or damaged gowns replaced routinely?
+Is the PPE properly stocked and organized in a way that permits ease of cleaning while not obstructing
+airflow?
+Are the operators’ gloves sanitized periodically?
+If the area in question has video recording of personnel activities, were any deviations noted?
+Were personnel monitoring results acceptable for each operator?
+Were any changes made in the area during the period in question?
+Are the walls, floors, and ceilings made of smooth and nonporous materials?
+Are all the surfaces visibly clean, free of dust, and not deteriorating?
+Are all windows flush mounted and properly sealed?
+Are all electrical outlets well covered to enable cleaning?
+Is there freestanding water or excess water in the manufacturing area?
+Are all floor drains (where applicable) clean and free of residual water and sanitized periodically?
+Were the temperature, differential pressure, and humidity requirements met?
+Were parts and equipment inspected for signs of wear and tear?
+Facility
+Has landscaping recently been done outside the entrances to the building, particularly the application of mulch?
+Was there ongoing construction in the facility? Was the construction properly isolated?
+Are the procedures for extraneous (i.e., contractor’s) equipment sanitization sufficiently robust?
+Air Supply
+Was the HVAC system in proper working order?
+Are the HEPA filters within their intended re-certification period?
+Are the HEPA filters properly installed and clean?
+Was any process equipment or materials obstructing proper air flow?
+Are the space pressurization requirements maintained?
+
+(Table 5.1-1 Continued)
+Area of Consideration Questions for Consideration
+Material and Personnel Flow
+Is there adequate separation of “clean” and “dirty” areas? How are transitional spaces constructed and
+managed?
+How is personnel and equipment access controlled (e.g., any evidence of sharing of access badges through
+security checks)?
+Are gowning and degowning areas separate or combined? Is this appropriate for the processes being
+performed?
+Is the flow of personnel and equipment unidirectional?
+How are materials being sanitized when passed from one area to another (e.g., spray mist, wipe-down,
+immersion, autoclave)?
+Is the material transfer room well organized for proper flow of items?
+Was the material transfer room stocked with cleaning supplies?
+Where needed, was a transfer cart available and free of rust, dirt, etc.?
+When appropriate, were the materials double- or triple-bagged?
+Is there sufficient space in the material transfer room for personnel and for the necessary cleaning
+activities to take place?
+Where is the equipment assembled?
+Is the area of assembly properly controlled for this process?
+How are waste materials handled? Are they segregated from equipment, packaging components, and
+Facility
+product ingredients?
+Environment
+Environmental Monitoring Program [This section applies to utilities, such as pharmaceutical water
+systems, clean steam, and compressed gasses, as well as the facility and process equipment.]
+Is the EM program appropriate for the facility and operations performed? Is the program appropriately
+qualified?
+Is the EM program risk-based? When was it last assessed?
+Was EM performed correctly?
+Are the samplers appropriately trained? Do they have a basic understanding of microbiology?
+Trending [This section also applies to water systems, environmental and personnel monitoring, in-process
+testing, and finished product testing.]
+Have you seen an increase in overall counts of specific genus, species, or organism types, especially a
+resistant type (e.g., Bacillus)?
+What isolates were recovered during sanitization validation?
+Was the organism identified to the correct level, i.e., characterized, speciated, or strain-typed? By which
+method? Is the method appropriate for the deviation?
+What is the probable source of the microorganism identified? Is it of human, environmental, water, or
+other origin? Is it part of the baseline microflora? If not, how did it enter the facility and/or product?
+Are your visitor/contractor training and gowning procedures sufficiently robust?
+Was the area appropriately cleaned and the cleaning documented on and around the date in question?
+Was the decontamination cycle of the manufacturing isolator system completed without error?
+Was the cleaning/sanitizing done on a periodic basis and as defined by SOP?
+Cleaning and Sanitization
+Were the correct (validated) cleaning/sanitizing agents used and in the correct concentration(s)?
+Were the correct cleaning/sanitizing tools used for the process?
+Was the cleaning/sanitizing equipment intact and appropriate for use?
+
+(Table 5.1-1 Continued)
+Area of Consideration Questions for Consideration
+Were the operators trained on how to prepare and apply the cleaning/sanitizing agent?
+Were the operators gowned appropriately during the cleaning/sanitizing process?
+Are there known difficult-to-clean surfaces in the area(s) associated with the deviation?
+Have there been any recent changes to the rooms and/or to the process that would render a surface
+difficult to clean (e.g., physical changes, new product that leaves a residue)?
+Sanitization and Disinfection Efficacy
+Was the manufacturing facility cleaned properly and with the approved agents?
+Was the appropriate contact time maintained for disinfectants?
+Cleaning and Sanitization Were the cleaning and disinfectant agents used within expiry? Have expiry dates been properly
+established for opened or site-prepared agents?
+Are disinfectant agents sterilized prior to use in ISO 5 and ISO 7 areas?
+Are the cleaning procedures and disinfectant agents validated? Have disinfectant efficacy studies been reviewed?
+Are these validations repeated periodically? Are newly isolated microorganisms/surfaces ever added?
+Can the microorganisms implicated in the deviation be killed by the validated disinfectant and sporicidal agents?
+If pre-wetted wipes are used for disinfecting, are the packages resealable? Do they reseal well? Have they been
+validated? Has an appropriate post-opening expiry date been applied (especially for IPA, which is a volatile)?
+Are nonfixed components and equipment routinely moved for appropriate cleaning?
+Process Equipment and Instruments
+Has a thorough review of the following been performed?
+Original validation/qualification (IQ/OQ/PQ) and any updates or amendments to the original
+documentation?
+Calibration and preventive maintenance records, including any repairs or adjustments made during batch
+manufacture?
+Daily use and/or cleaning logs, as applicable, including all setup procedures and activities?
+Procedures for sanitization of nonsterilizable materials? Thorough evaluation of large or intricate pieces of
+equipment?
+Have the sterile boundaries been evaluated and assessed for impact, including those that supply sterile
+gasses or can affect product integrity?
+Manufacturing Process and Procedures
+Has a thorough review of all manufacturing processes and procedures used related to the deviation been
+Manufacturing Processing
+conducted?
+Did the review include verification that the instructions for procedures and/or equipment use are written
+clearly and adequately for the intended use and full documentation of the critical steps in the batch
+records?
+Have all relevant method validation and transfer documentation, including any addendums or updated
+studies, been reviewed?
+Batch Records
+Have all steps been completed accurately and documented appropriately?
+Were all pharmaceutical ingredients added in the correct amounts, in the right sequence and time?
+Were all unit processing steps executed correctly?
+Were critical process parameters, in-process test results, and second-person reviews performed per procedure?
+Were nonroutine events documented (e.g., references to processing problems/difficulties, equipment
+change-outs, loss of environmental control)?
+
+**Table 5.1-2 Root Cause Evaluation and Follow-Up**
+
+Root Cause Analysis
+Considerations
+Portion
+Were all equipment use/cleaning/preventive maintenance/calibration logbooks and records examined to
+Documentation
+ensure that proper procedures were followed and that all these activities were performed at proper intervals?
+Based on the microorganism implicated and its profile, what is the risk to the patient? To the quality,
+efficacy, and safety of the product during its shelf life? Is the sterility assurance of the product impacted?
+What is the route of product administration (oral, injectable, topical, implant, etc.)? Is the patient risk high,
+moderate, or low?
+Does the product have a specific target patient population (pediatric, immune-compromised, post-
+operative, elderly)?
+Personnel monitoring: When and where does this occur?
+Is the microorganism likely to survive and grow in the product?
+Impact Assessment
+Have such product attributes as preservative effectiveness, water activity, pH, and nutrient sources been
+considered?
+If the product contains antibiotic substances, has the antibiotic-resistance profile of the microorganisms
+isolated been reviewed?
+Is the microorganism likely to produce a toxin? Even if the organism is found not to cause a health risk to
+the patient, can it cause a bad flavor, break down the viscosity, or discolor the product?
+Can the organism break down the active ingredient or a component of the product and potentially affect
+the potency or shelf life? Could there be other post-market impacts?
+What is(are) the cause(s) of the deviation? What is the level of certainty as to the conclusion?
+Root Cause: High degree of certainty?
+Investigation Outcomes Most Probable Cause: Most likely cause?
+Possible Cause: Likely, but not definitely, proven cause?
+Unknown cause: Inconclusive data
+
+**Table 5.1-3 CAPA Determination**
+
+Based on the investigation findings, has a CAPA plan been outlined to eliminate the root cause and prevent
+any likelihood of its reoccurrence?
+When determining CAPAs, have the solutions been evaluated and a consensus reached with the process
+owners to ensure buy-in? Are the due dates for CAPAs reasonable with as short as practically possible
+timelines, unless adequate justification is provided for long-term actions, e.g., capital expenditure and
+facility modification? Have responsible owners been assigned for each action and completion date?
+Have all commitments been tracked, and actions taken confirmed to ensure CAPA completion, preferably
+CAPA Plan
+in an electronic investigation database? Have reasons for delayed implementation of a CAPA been
+documented? Have justification and authorization been documented for implementation extensions?
+How is proficiency verified by laboratory management observation and personnel monitoring?
+Are the alert levels and action limits in place appropriate for the area classification and/or the
+manufacturing process being performed?
+Has the effectiveness of the completed CAPAs been checked to ensure that the actions taken were
+successful and the deviation has not recurred?
 
 ### 5.2 Phase II: Specific Points to Consider
 
@@ -1220,9 +1488,33 @@ sterility test failure associated with terminal modalities. The following table 
 suggested questions to consider when evaluating sterility assurance data for a suspect lot of product
 under review during a Phase II manufacturing investigation.
 
-| Area of Consideration | Questions for Consideration |
-| --- | --- |
+**Table 5.2.1-1 Questions for Investigating Manufacturing/Process Sources Associated with a Confirmed Sterility Batch Failure**
 
+Area of Consideration Questions for Consideration
+Are the biological Indicators used to monitor equipment sterilization partially open and improperly stored
+in the refrigerator, allowing ingress of moisture to reduce spore resistance?
+Sterilization of Components Is equipment not held under sterile conditions after terminal sterilization?
+Has a new piece of equipment been added to the production train?
+Has there been a change or increase in the equipment pre-sterilization bioburden?
+Has there been a change in trend results for in-process control bioburden testing for product?
+Has there been a change to bioburden counts or the types of microorganisms recovered for water-for-
+In-Process Bioburden
+injection?
+Testing of Water and
+Is (are) the microorganism(s) recovered from the product sterility test capable of growing on the media with
+Product
+the incubation conditions used for production EM and personnel monitoring? (e.g., Propionibacterium sp.)
+Is the on-line sampling portal capable of being sterilized before taking a sample?
+Have there been any changes in the viable EM data in lots prior to or during the suspect lot failure?
+Has there been any significant increase of nonviable particulate counts in the critical areas within or
+Batch Monitoring Data from
+adjacent to the filling line?
+Setup through Post-Fill
+Did any critical locations (for surface or air) within the ISO 5 (Grade A) area exceed the action limit? If so,
+was an investigation opened to evaluate the source of contamination?
+Was there a new or unusual intervention for the suspect lot that has not been evaluated during the aseptic
+process simulation study?
+Personnel Interventions and
 Glove Monitoring in Critical Do the process simulation studies include the aseptic manner for how to properly obtain in-line process
 Zone samples?
 Is personnel or room EM actually being performed? [data integrity concern]
@@ -1279,9 +1571,34 @@ nents, or the pharmaceutical water system.
 Areas to be considered during the manufacturing investigation in response to endotoxin contamina-
 tion are outlined in Table 5.2.2-1.
 
-| Sterilization of Components | Are the biological indicators used to monitor equipment sterilization partially open and improperly stored in the refrigerator, allowing ingress of moisture to reduce spore resistance? |
-| Is equipment not held under sterile conditions after terminal sterilization? |
-| Has a new piece of equipment been added to the production train? Has there been a change or increase in the equipment pre-sterilization bioburden? |
+**Table 5.2.2-1 Endotoxin-Related Investigation Considerations**
+
+Focus Area Questions for Consideration
+Is the water system operating in a state of control? Have there been any endotoxin excursions with the
+water system? Have Gram-negative bacteria been recovered from the water system?
+Were there any conditions within the manufacturing facilities that might favor proliferation of Gram-
+Water System and Facility
+negative bacteria (e.g., standing water, improperly stored process equipment, pumps, hosing, or a spray
+bottle of water used for equipment lubrication)?
+Have the compressed air or gas lines been checked for the presence of water?
+Were pharmaceutical excipients and drug substances properly screened for endotoxin content? Historical
+evidence has shown that raw materials, especially those from natural sources (i.e., animal- or plant-
+derived materials), may be a potential source of endotoxin.
+Raw Materials and
+Have changes to starting materials or manufacturing processes been reported by the ingredient vendor
+Components
+that could impact endotoxin content of pharmaceutical ingredients?
+Were all product contact materials, including processing equipment and primary packaging, properly
+cleaned, depyrogenated, and stored to ensure they were free of detectable endotoxins?
+Were laboratory test samples taken, transported, and stored correctly and following approved methods?
+Have any process deviations occurred or manufacturing changes been implemented that could have
+contributed to the deviation result (e.g., rinsing aseptic equipment with purified water instead of WFI,
+water system filters that have not been replaced on schedule)?
+Operations
+Was the proper operation verified for any depyrogenation ovens or tunnels or endotoxin-removing
+columns or filtration equipment used during product handling?
+Were any contract manufacturers contacted regarding any changes to their processes that contact your
+firm’s product material?
 
 #### 5.2.3 Pharmaceutical Ingredient-Related Investigations
 
@@ -1307,9 +1624,38 @@ pliers are largely unresponsive to the GMP requirement to exclude objectionable 
 nonsterile drug products (24, 45, 46). Table 5.2.3-1 provides a list of additional questions to consider
 during a manufacturing investigation.
 
-| In-Process Bioburden Testing of Water and Product | Has there been a change in trend results for in-process control bioburden testing for product? |
-| Has there been a change to bioburden counts or the types of microorganisms recovered for water-for-injection? |
+**Table 5.2.3-1 Additional considerations for raw material investigations**
 
+Raw Material Component Considerations
+What size is the bulk container? Is it sampled top, middle, and bottom?
+Is it a synthetic or mineral-, plant-, or animal-derived ingredient?
+Is it provided for sterile or nonsterile drug product manufacture?
+Format/Storage Is the raw material presented as a powder or liquid?
+Does it contain a preservative? If so, are preservative effectiveness tests conducted or is an assay performed?
+Was the raw material properly released from quarantine?
+Were the temperature and humidity conditions maintained during shipping and storage?
+Have there been any recent changes in suppliers or manufacturer?
+Was the vendor qualification program followed? Are the audits current and passing?
+What is the source/origin? Plant, animal, or biological materials (chemically undefined) are often at a
+higher risk for contamination.
+Vendor/Source What is the history of the material? Are the results trended? Has a drift from the mean been detected?
+Have supplier and manufacturer risk assessments been completed based on the intended use?
+Is a skip lot program in place? If so, should it be suspended?
+Has the vendor’s certificate of analysis tests been verified on an annual basis?
+Are the manufacturer’s specifications in compliance with compendial monographs?
+Was the sampling plan followed upon receipt?
+Were samples composited? Composited samples can potentially dilute the final results.
+Is there a pharmacopeial monograph?
+Is the sampling hood or room classified? Or controlled but not classified?
+Were the proper sterile sampling devices and containers used?
+Sampling For sterile processes:
+– How are samples obtained?
+– Are there side samples, or is the material sampled aseptically through a septum?
+Were the established test frequencies/test-on-expiry maintained?
+Are there reserve samples of the material or unused stock materials available for microbiological testing?
+Are samples representative of the container/lot or could there be potential pockets of contamination in the
+bulk material or hot spots?
+As the deviation investigation progresses, answering these or similar questions can be useful in finding
 the root cause. These questions can also be used in a product lifecycle approach for new raw materials,
 or to build a proactive continuous improvement tool to manage contamination risk.
 
@@ -1421,10 +1767,17 @@ equipment controls
 Possible sources of contamination that may enter the manufacturing or testing environment are sum-
 marized in Table 5.2.6-1 (48, 49).
 
-| Batch Monitoring Data from Setup through Post-Fill | Is the on-line sampling portal capable of being sterilized before taking a sample? |
-| Have there been any changes in the viable EM data in lots prior to or during the suspect lot failure? |
-| Has there been any significant increase of nonviable particulate counts in the critical areas within or adjacent to the filling line? |
-| Did any critical locations (for surface or air) within the ISO 5 (Grade A) area exceed the action limit? If so, was an investigation opened to evaluate the source of contamination? |
+**Table 5.2.6-1 Potential Sources of Contamination**
+
+Source Example
+Pharmaceutical Excipients Corn starch, dicalcium biphosphate, purified water
+Air Supply Unfiltered air, turbulent air, mixed air
+Building Materials Plastic, sheetrock, wood, metal, epoxy
+Equipment Parts washers, hoses, air samplers, pallet jacks, transfer carts
+Disinfectants Preparation, expiration, sterile (where appropriate)
+Containers Storage totes, waste receptacles
+Packaging Cardboard, gowning supplies, paper
+Supplies Mops, wipes, labels, booties
 
 ##### 5.2.6.1 Historical Data Evaluation
 
@@ -1468,9 +1821,24 @@ crobial proliferation.
 Examples of CAPAs to remediate microbial contamination in the manufacturing facility are outlined
 in Table 5.2.6.2-1
 
-| Personnel Interventions and Glove Monitoring in Critical Zone | Was there a new or unusual intervention for the suspect lot that has not been evaluated during the aseptic process simulation study? |
-| Do the process simulation studies include the aseptic manner for how to properly obtain in-line process samples? |
-| Is personnel or room EM actually being performed? [data integrity concern] |
+**Table 5.2.6.2-1 Examples of Corrective Actions**
+
+System Example of Corrective Action
+• Review risk for product or component contact
+• Inspect preventive maintenance records
+Facility
+• Reduce equipment or materials in the location
+• Upgrade facility surface finishes, i.e., floors, doors, walls, and ceilings
+• Increase the number of air exchanges in the area
+• Lower temperature and humidity settings
+HVAC System
+• Repair or replace HEPA filters or housing grates
+• Add low wall air returns to eliminate particles
+• Reduce the number of operators in confined areas
+• Reduce the number of operator interventions
+Personnel
+• Interview production staff for area improvement suggestions
+• Retrain or requalify operators with improved techniques
 
 ##### 5.2.6.3 Resampling or Investigational Monitoring
 
@@ -1501,15 +1869,9 @@ rility testing. Table 5.2.7-1 contains a sample of representative microorganisms
 members’ experience, have been found in failing media fills and their possible origins. These microor-
 ganisms were benchmarked against a recent review of cleanroom microorganisms (40).
 
-| Manufacturing Batch Records | Were there any past deviations, problems, or changes to earlier batches that may have passed the sterility test that could provide an indication of the origin of the current lot sterility test failure? |
-| Are the batch records or any associated recording logs incomplete or altered that may indicate possible data integrity problems that may cover the true cause of the operation/sterility failure? |
-| Were there any issues with sterilization of equipment (tanks) or change parts that occurred for this batch, possibly indicating a failure in sterility assurance? |
-| Were validated holding times (e.g., mix to sterilize time) met for products that promote microbial growth? |
-| Were all other critical microbial control parameters (e.g., filter integrity test) met? |
-| For terminal sterilization processes, were all critical parameters met for the sterilization cycle? |
-| Was the calibration of sterilizer-critical instruments (e.g., temperature probes, pressure transducers, etc.) confirmed to be within limits? |
-| Were all terminal sterilization processes in a currently qualified state? Was the container closure integrity of the sterility test positive units confirmed? |
+**Table 5.2.7-1 Possible Origin of Representative Microorganisms**
 
+Possible Origin of Microorganisms Bacteria Yeast and Mold
 Micrococcus luteus, M. lylae, Staphylococcus Candidia albicans, C. parapsilosis, Rhodotorula rubra,
 epidermidis, S. hominis, Corynebacterium tuberculo- Torulopsis spp., Trichosporon cutaneum, Microsporum
 Cleanroom Personnel

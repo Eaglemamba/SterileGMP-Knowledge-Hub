@@ -8,7 +8,7 @@
 
     
 
-USP ⟨1116⟩ Microbiological Control and Monitoring of Aseptic Processing Environments | p1 – p3
+USP 〈1116〉 Microbiological Control and Monitoring of Aseptic Processing Environments | p1 – p3
 
     
 
@@ -57,7 +57,7 @@ The numerical values for air, surface, and personnel monitoring included in this
 
     
 
-USP ⟨1116⟩ Microbiological Control and Monitoring of Aseptic Processing Environments | p5 – p10
+USP 〈1116〉 Microbiological Control and Monitoring of Aseptic Processing Environments | p5 – p10
 
     
 
@@ -121,7 +121,7 @@ The unit consists of a vacuum pump with an extension hose terminating in a filte
 
     
 
-USP ⟨1116⟩ Microbiological Control and Monitoring of Aseptic Processing Environments | p6 – p9
+USP 〈1116〉 Microbiological Control and Monitoring of Aseptic Processing Environments | p6 – p9
 
     
 
@@ -166,7 +166,7 @@ Resampling an environment several days after contamination is of little value, b
 
     
 
-USP ⟨1116⟩ Microbiological Control and Monitoring of Aseptic Processing Environments | p4 – p5, p8 – p9
+USP 〈1116〉 Microbiological Control and Monitoring of Aseptic Processing Environments | p4 – p5, p8 – p9
 
     
 
@@ -202,7 +202,7 @@ Glove-and-sleeve assemblies can develop leaks that can allow the mechanical tran
 
     
 
-USP ⟨1116⟩ Microbiological Control and Monitoring of Aseptic Processing Environments | p5 – p7, p10
+USP 〈1116〉 Microbiological Control and Monitoring of Aseptic Processing Environments | p5 – p7, p10
 
     
 
@@ -234,37 +234,6 @@ The classification of a clean room helps establish control levels, but that does
         
 
 ### Table 2. Suggested Frequency of Sampling for Aseptic Processing Areas
-
-        
-            
-                
-                    
-                    
-                
-| Sampling Area/Location | Frequency of Sampling |
-| --- | --- |
-            
-            
-                ****
-| Clean Room/RABS |
-                
-| Critical zone (ISO 5 or better) — Active air sampling | Each operational shift |
-                
-| Critical zone (ISO 5 or better) — Surface monitoring | At the end of the operation |
-                
-| Aseptic area adjacent critical zone — All sampling | Each operating shift |
-                
-| Other nonadjacent aseptic areas — All sampling | Once per day |
-                ****
-| Isolators |
-                
-| Critical zone (ISO 5 or better) — Active air sampling | Once per day |
-                
-| Critical zone (ISO 5 or better) — Surface monitoring | At the end of the campaign |
-                
-| Nonaseptic areas surrounding the isolator — All sampling | Once per month |
-            
-        
 
         
 

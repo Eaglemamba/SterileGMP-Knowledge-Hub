@@ -10,8 +10,6 @@
 
     
 
-    
-
         
 
 The tests described hereafter will allow quantitative enumeration of mesophilic bacteria and fungi that may grow under aerobic conditions.
@@ -38,8 +36,6 @@ Alternative microbiological procedures, including automated methods, may be used
 
     
 
-    
-
         
 
 Test each batch of ready-prepared medium and each batch of medium prepared either from dehydrated medium or from the ingredients described.
@@ -57,113 +53,6 @@ For solid media, growth obtained must not differ by a factor greater than 2 from
 ### Table 1. Preparation and Use of Test Microorganisms
 
         
-            
-                
-                    
-                    
-                    
-                    
-                    
-                    
-                
-| Microorganism | Preparation of Test Strain | Growth Promotion: TAMC | Growth Promotion: TYMC | Suitability: TAMC | Suitability: TYMC |
-| --- | --- | --- | --- | --- | --- |
-            
-            
-                
-                    **  
-
-                      
-  
-
-                      
-  
-
-                    
-                      
-  
-
-                    
-                
-| Staphylococcus aureusATCC 6538, NCIMB 9518, CIP 4.83, or NBRC 13276 | SCDA or SCDB30–35°C18–24 hours | SCDA and SCDB≤100 cfu30–35°C, ≤3 days | — | SCDA / MPN SCDB≤100 cfu30–35°C, ≤3 days | — |
-                
-                    **  
-
-                      
-  
-
-                      
-  
-
-                    
-                      
-  
-
-                    
-                
-| Pseudomonas aeruginosaATCC 9027, NCIMB 8626, CIP 82.118, or NBRC 13275 | SCDA or SCDB30–35°C18–24 hours | SCDA and SCDB≤100 cfu30–35°C, ≤3 days | — | SCDA / MPN SCDB≤100 cfu30–35°C, ≤3 days | — |
-                
-                    **  
-
-                      
-  
-
-                      
-  
-
-                    
-                      
-  
-
-                    
-                
-| Bacillus subtilisATCC 6633, NCIMB 8054, CIP 52.62, or NBRC 3134 | SCDA or SCDB30–35°C18–24 hours | SCDA and SCDB≤100 cfu30–35°C, ≤3 days | — | SCDA / MPN SCDB≤100 cfu30–35°C, ≤3 days | — |
-                
-                    **  
-
-                      
-  
-
-                      
-  
-
-                      
-  
-
-                      
-  
-  
-
-                      
-  
-
-                
-| Candida albicansATCC 10231, NCPF 3179, IP 48.72, or NBRC 1594 | SDA or SDB20–25°C2–3 days | SCDA≤100 cfu30–35°C, ≤5 days | SDA≤100 cfu20–25°C, ≤5 days | SCDA≤100 cfu30–35°C, ≤5 daysMPN: not applicable | SDA≤100 cfu20–25°C, ≤5 days |
-                
-                    **  
-
-                      
-  
-
-                      
-  
-
-                      
-  
-
-                      
-  
-  
-
-                      
-  
-
-                
-| Aspergillus brasiliensisATCC 16404, IMI 149007, IP 1431.83, or NBRC 9455 | SDA or Potato–Dextrose Agar20–25°C, 5–7 days(until good sporulation) | SCDA≤100 cfu30–35°C, ≤5 days | SDA≤100 cfu20–25°C, ≤5 days | SCDA≤100 cfu30–35°C, ≤5 daysMPN: not applicable | SDA≤100 cfu20–25°C, ≤5 days |
-            
-        
-
-        
 
 **Abbreviations:** SCDA = Soybean–Casein Digest Agar; SCDB = Soybean–Casein Digest Broth; SDA = Sabouraud Dextrose Agar; SDB = Sabouraud Dextrose Broth
 
@@ -174,8 +63,6 @@ Use Buffered Sodium Chloride–Peptone Solution pH 7.0 or Phosphate Buffer Solut
 ## Section 2: Testing & Interpretation (p5-p7)
 
 # Section 2: Testing of Products & Interpretation of Results
-
-    
 
     
 

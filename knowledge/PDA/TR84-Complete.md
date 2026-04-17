@@ -610,19 +610,70 @@ mentation practices, insufficient data review, ineffective oversight, and ineffe
 The data in Table 3.1.3-1 is based on observations by FDA and EU inspectors during their inspections
 of quality management systems for production operations between February 2012 and August 2019.
 
-| Country | WL Count |
-| --- | --- |
-| India | 37 |
-| China | 21 |
-| United States | 13 |
-| Canada | 5 |
-| Japan | 3 |
-| Mexico | 3 |
-| Spain | 2 |
-| Hong Kong | 2 |
-| Italy | 2 |
-| Taiwan | 2 |
-| UAE, Austria, Denmark, Germany, Hungary, Korea | 1 each |
+**Table 3.1.3-1**
+
+Examples of Data Integrity Issues in Production Operations cited by FDA and EU, 2012–2019
+Examples of Data Integrity Issues Cited in Production Operations
+Category
+Falsification/Fabrication of Records (e.g., visual inspection data, cleaning validation
+records, batch records, annual product reviews, glove integrity testing)
+False Entries
+False or Misleading Statements (Made to FDA investigators about the practice of
+blending failing and passing API batches)
+False Statements
+Delaying, Denying, Limiting or Refusing Inspection (Failure to allow access
+to facilities, records, documents, or responsible individuals that interferes with
+investigator’s ability to complete an inspection, such as hiding manufacturing-related
+records or dumping unlabeled vials when contents were questioned by FDA)
+Delay/Deny/Limit/
+Refuse Inspection
+Computer Access Controls (Unprotected spreadsheets for performing calculations and
+statistical evaluations of production data; shared login credentials that did not permit
+identification of a specific person using the shared login to link specific actions to a specific
+operator; password shared by multiple individuals to gain access to each individual piece
+of equipment and access level; inadequate controls to assure that changes in master
+production and control records or other records are instituted only by authorized personnel)
+Computer Access
+Controls
+Lack of Contemporaneous Data Entries (Pre-dated and backdated batch records;
+batch records signed by persons who had not performed the activities; uncontrolled
+spreadsheets used to record in-process quality data that were then transcribed and
+backdated in the production record; cleaning records that did not match video recordings;
+batch production data entered on “mock sheets” for later transcription to official records
+that were backdated)
+Contemporaneous
+Data Entries
+Unexplained Data Discrepancies (Production equipment labeled as clean but found to be
+dirty; batch records missing critical information and signatures; erroneous calculations and
+use of incorrect amounts of starting materials during production; inaccurate quantities for
+quality defects; AHU/HVAC filter-cleaning records with discrepant entries)
+Data
+Discrepancies
+Batch Data Traceability (Programmable logic controllers (PLCs) and manufacturing
+equipment with shared login credentials that did not permit identification of a specific
+person using the shared login)
+Data Traceability
+Data Deleted, Destroyed, or Missing/Unavailable (e.g., batch production records,
+cleaning records, sanitization records, annual product reviews, change controls,
+filter integrity testing, media fill data, sterilizer data, in-process weight checks, yield
+calculations, undocumented deviations)
+Data Deleted/
+Destroyed/
+Unavailable
+Audit Trails Unavailable/Disabled (Lack of audit trail to document who accessed each
+of the PLC and man-machine interface equipment (equipment operating parameters);
+disabled electronic audit trail function for nonviable particle-monitoring system)
+Audit Trails
+Inaccurate/Incomplete Data or Records (Inaccurate entries in batch records; incorrect
+quantities of active ingredients/raw materials; inaccurate media-fill records; inaccurate
+CAPA and APR entries)
+Inaccurate/
+Incomplete
+Records
+Illegible Data Entries (Batch records with data changes in pencil)
+Legibility
+Unofficial Records (Use of unofficial records/rough notes/loose paper)
+Unofficial Records
 
 ### 3.2 Regulatory Guidance
 
@@ -759,9 +810,42 @@ intimately related to the effectiveness of the data integrity program.
 In considering the human behavioral influence when examining the elements that pose risk to data
 integrity, two categories need to be examined: unintentional and intentional acts (see Table 4.1.1-1):
 
-| | Unintentional Act | Intentional Act |
-| --- | --- | --- |
+**Table 4.1.1-1**
 
+Human Factors Matrix
+Unintentional Act
+Intentional Act
+Thinking Errors
+Procedure Gap
+Error caused by gaps in rules stating
+what tasks should be performed and by
+whom, e.g., lack of or inadequate stan-
+dard operating procedures (SOPs)
+Knowledge Gap
+Error caused by knowledge gaps in how
+to perform a task, e.g., lack of or inad-
+equate training
+Fraud
+Violations caused by malicious intent to
+perform a fraudulent act, e.g., falsifying
+data for personal gain or avoid personal
+pain
+Action Errors
+Attention Failure
+Error caused by taking the wrong action,
+e.g., unfocused state of mind or a fre-
+quently performed action goes wrong
+or multitasking or aggressive deadlines
+Memory Failure
+Error caused by taking no action, e.g.,
+failure to perform a routine task due to
+forgetting its place in the sequence
+Misconduct
+Violations caused by knowingly ignoring
+procedures or controls due to misplaced
+priority, e.g., ignoring established controls
+to compensate for aggressive target or
+time pressure
 One category is the unintentional act. Risk may be unintentionally introduced in a variety of ways.
 The unintentional act may take the form of an “action error” caused by a slip in attention or lapse
 of memory, or a “thinking error” caused by gaps in governing procedures (knowing what or who) or
@@ -905,8 +989,27 @@ differentiated controls.
 Figure 4.2-1
 Data Integrity Risk Management Model
 
-| | Unintentional | Intentional |
-| --- | --- | --- |
+**Table 4.2.1-1 Classification of Data Criticality**
+
+Data Criticality
+Definition
+High
+When the intended use of the data directly impacts product quality and/or product safety:
+• Product quality monitoring and control of processes that may be responsible for causing
+variability during manufacturing, release, or distribution impacting critical quality attributes,
+critical material attributes, critical process parameters, or critical process controls, including
+those that may be linked with the product registration dossier (where applicable)
+• Product safety monitoring and control of processes that ensure effective management of
+field alerts, recalls, complaints, or adverse events
+Medium
+When the intended use of the data relates to quality attributes, material attributes, process
+parameters, key process parameters, or process controls that are not CQAs/Critical Processes
+(CPs)/CPPs and may or may not be in the product registration dossier; this includes parameters of
+the manufacturing process that “may not be directly linked to critical product quality attributes but
+need to be tightly controlled to assure process consistency” (28)
+Low
+When the intended use of the data is to provide evidence of GMP compliance relating to
+monitoring and control of processes that do not fall into the High or Medium category
 
 #### 4.2.2 Data Control Levels
 
@@ -916,9 +1019,20 @@ throughout the data lifecycle, whereas low-level data controls are those that in
 a high degree of human intervention throughout the data lifecycle. Section 5.0 provides some examples of
 high-, medium-, and low-level data controls that may be appropriate for the criticality of the activity.
 
-| Data Criticality | Definition |
-| --- | --- |
+**Table 4.2.2-1**
 
+Data Control Levels
+Control Level
+Definition/Examples
+High
+High degree of validated process automation; electronic data lifecycle (e.g., capture, analysis,
+reporting); minimal human intervention
+Medium
+Hybrid—some manual processes; semi-automated data lifecycle processes; partial or lack of
+system interfaces
+Low
+Manual data lifecycle (e.g., capture, transcription, second-person witnessing); manual process
+measurements and testing; manual processes with a high degree of human intervention
 4.3 Data Vulnerability (9-Box)
 Data vulnerability is an indicator of the level of exposure to data integrity issues due to intrinsic
 weaknesses in three key elements: data management technology, human factors, GMP manufactur-
@@ -950,17 +1064,111 @@ The 9-Box grid in Table 4.3-1 provides a visual depiction of the vulnerability o
 current level of data management controls and the criticality of the data. The 9-Box grid does not
 provide any opportunity or cover for falsification of data.
 
-| High | When the intended use of the data directly impacts product quality and/or product safety: Product quality monitoring and control of processes that may be responsible for causing variability during manufacturing, release, or distribution impacting critical quality attributes, critical material attributes, critical process parameters, or critical process controls, including those that may be linked with the product registration dossier (where applicable) Product safety monitoring and control of processes that ensure effective management of field alerts, recalls, complaints, or adverse events |
-| Medium | When the intended use of the data relates to quality attributes, material attributes, process parameters, key process parameters, or process controls that are not CQAs/Critical Processes (CPs)/CPPs and may or may not be in the product registration dossier; this includes parameters of the manufacturing process that "may not be directly linked to critical product quality attributes but need to be tightly controlled to assure process consistency" |
-| Low | When the intended use of the data is to provide evidence of GMP compliance relating to monitoring and control of processes that do not fall into the High or Medium category |
+**Table 4.3-1 depicts only the data controls relating to data management technology. For a holistic assess-**
 
+ment of vulnerability, the data controls relating to human factors and the GMP process should be similarly
 assessed. Appendix 1 provides further instructions for using the 9-Box grid, with illustrative examples.
 
-| | | |
-| --- | --- | --- |
-| High | / | CQA CPP |
-| Medium | HEPA | |
-| Low | | GMP |
+**Table 4.3-1	 Data Vulnerability Grid (9-Box) – Example for Data Management Technology Controls**
+
+DATA CONTROL LEVELS
+High
+Medium
+Low
+DATA CRITICALITY LEVELS
+(H/H)
+Criticality
+• CQA/CP/CPP impacting quality &
+safety
+Data Controls
+• Validated & effective automated
+or hybrid data capture & analysis
+system in place
+(H/M)
+Criticality
+• CQA/CP/CPP impacting quality &
+safety
+Data Controls
+• Hybrid systems or manual data
+capture, limited automated
+data analysis, manual data
+transcription
+(H/L)
+Criticality
+• CQA/CP/CPP impacting quality &
+safety
+Data Controls
+• Manual data capture, no
+automated data analysis,
+manual data transcription, heavy
+reliance on second-person
+witnessing of data entries
+(M/H)
+Criticality
+• Processes & process parameters
+that are not CQA/CP/CPP but
+need to be tightly controlled
+Data Controls
+• Validated & effective automated
+data capture & analysis system
+in place
+• More controls than may be
+required based on data criticality
+(M/M)
+Criticality
+• Processes & process parameters
+that are not CQA/CP/CPP but
+need to be tightly controlled
+Data Controls
+• Hybrid systems or manual data
+capture, limited automated
+data analysis, manual data
+transcription
+(M/L)
+Criticality
+• Processes & process parameters
+that are not CQA/CP/CPP but
+need to be tightly controlled
+Data Controls
+• Manual data capture, no
+automated data analysis, manual
+data transcription, heavy reliance
+on second-person witnessing of
+data entries
+(L/H)
+Criticality
+• GMP compliance data that do
+not fall into high or medium
+criticality
+Data Controls
+• Validated & effective automated
+data capture & analysis system
+in place
+• More controls than may be
+required based on data criticality
+(L/M)
+Criticality
+• GMP compliance data that do
+not fall into high or medium
+criticality
+Data Controls
+• Hybrid systems or manual data
+capture, limited automated
+data analysis, manual data
+transcription
+• More controls than may be
+required based on data criticality
+(L/L)
+Criticality
+• GMP compliance data that do
+not fall into high or medium
+criticality
+Data Controls
+• Manual data capture, no
+automated data analysis,
+manual data transcription, heavy
+reliance on second-person
+witnessing of data entries
 
 ### 4.4 Using the Data Vulnerability Grid
 
@@ -1015,12 +1223,50 @@ relationship to data vulnerability.
 Additional examples of potential areas of vulnerability associated with each of these three risk catego-
 ries are presented in Table 4.4-1.
 
-| Control Level | Definition / Examples |
-| --- | --- |
-| High | High degree of validated process automation; electronic data lifecycle (e.g., capture, analysis, reporting); minimal human intervention |
-| Medium | Hybrid—some manual processes; semi-automated data lifecycle processes; partial or lack of system interfaces |
-| Low | Manual data lifecycle (e.g., capture, transcription, second-person witnessing); manual process measurements and testing; manual processes with a high degree of human intervention |
+**Table 4.4-1	 Potential Areas of Data Integrity Vulnerability**
 
+Categories
+Example Areas of Consideration
+Data Management
+Technology
+(consider the full
+data lifecycle)
+• Data transcription
+• Frequency of periodic reviews and change management based on intended use
+• Hybrid systems (e.g., discrepancies between paper printout and corresponding
+electronic record, data duplication)
+• New or complex manufacturing technology (causing repeat errors)
+• Overwriting existing electronic data
+• System validation age
+• System controls related to data export, calculation, reporting, transfer, archiving
+and retrieval
+• Appropriate access level
+• Technologies with inadequate data integrity elements such as unique access, audit
+trail, data backup & restore, electronic data review, date & time stamp, among
+others (e.g., spreadsheets, LIMS)
+• Unexplained discrepancies between electronic raw data and reported data
+Human Factors
+• Lack of supervisory review
+• Manual observations or measurements (e.g., weighing)
+• Repeat human errors (e.g., due to multitasking, high personnel turnover, inadequate
+training, time pressures)
+• Training and procedures (complex, long, unclear, incomplete, or difficult-to-access
+instructions)
+• Unclear role definition or segregation of duties
+• Culture (fear, frustration, intent, unacceptable local documentation practices)
+GMP Process
+• Aborted runs (e.g., due to lack of planning, understanding system operation,
+suitability of equipment and process)
+• Complex process (e.g., many interfaces, high level of human intervention, high
+levels of manual data entry)
+• Data flows and ownership not well defined
+• Inadequate line clearance checks
+• Negative trends related to changes, deviations, out of specification, alarms, out of
+calibration
+• New or complex processes (causing repeat errors)
+• Operation switching (GMP vs. non-GMP)
+• Unavailability of quality-related data requested during regulatory inspections
+Once the risk factors have been identified, the third step is to assess the existing controls as described
 in Section 4.2.2. The controls in place should have been identified, for instance, by using a data flow
 map as discussed in Section 4.5. A historical review of the information related to data integrity issues
 contained in the quality management system (QMS) can be valuable in determining the adequacy of
@@ -1452,8 +1698,51 @@ or system level, depending on which of the seven categories are being discussed.
 within a category that remain consistent across the criticality levels are considered basic elements in
 ensuring a robust QMS and are out of scope for this technical report.
 
-| Type of System | Category | Short Description |
-| --- | --- | --- |
+**Table 5.2-1	 Categories Where Different Levels of Data Integrity Controls are Acceptable based on Criticality**
+
+Type of
+System
+Category of Control
+Short Description of Category
+Paper
+Storage of and access to
+completed/archived paper records
+Controls associated with storage of and access to
+completed / archived paper records, and who has
+access to these documents
+Generation and reconciliation of
+documents
+Guidance on controls associated with generation and
+reconciliation of documents to prevent potential misuse.
+Hybrid
+Manual activities when recording
+or transferring data between paper
+and electronic formats
+Data accuracy associated with manually recording data
+without a controlled second format, transcription of
+manually recorded data into an electronic system, and
+controls around True Copy (paper to electronic)
+Electronic
+Access controls for electronic
+systems
+Different levels of controls to ensure the right level of
+access to electronic records and systems is applied.
+Audit trail review
+Discusses taking a risk-based approach to identify which
+items to review as part of the manufacturing batch data
+and setting parameter / configuration settings audit trail
+reviews, and how frequently to perform the review.
+Backup of electronic data
+Discussing the controls to ensure electronic raw data is
+backed up to ensure a copy of the data remains available
+so it can easily be retrieved in its original format.
+7 Use of electronic data
+Data integrity controls associated with using electronic
+raw data to generate system reports / records and the
+controls associated with the transfer / migration of the
+raw data to another location
+Sections 5.3.1–5.3.7 have been developed with manufacturing operations in mind; however, many
+of the concepts discussed can also be applied to other functional areas (e.g., analytical laboratories).
 
 ### 5.3 Areas of Differentiated Data Integrity Controls
 
@@ -1492,8 +1781,7 @@ controls must be described in SOPs.
 
 #### 5.3.1 Storage of and Access to Completed and Archived Paper Records
 
-| Paper | 1 — Storage of and access to completed/archived paper records | Controls associated with storage of and access to completed/archived paper records, and who has access to these documents |
-| 2 — Generation and reconciliation of documents | Guidance on controls associated with generation and reconciliation of documents to prevent potential misuse |
+**Table 5.3.1-1 identifies several prevention controls related to the storage of and access to completed**
 
 or archived paper records. These controls are applied at the record or system level and are meant to
 prevent a potential data integrity issue from occurring.
@@ -1507,25 +1795,52 @@ dence of training exists in another system, storage in an office retention locat
 cabinet with limited access to the file cabinet keys, would suffice. Who has access to the keys should
 be reviewed on a bi-annual basis.
 
-| Electronic | 4 — Access controls for electronic systems | Different levels of controls to ensure the right level of access to electronic records and systems is applied |
-| 5 — Audit trail review | Risk-based approach to identify which items to review as part of manufacturing batch data and parameter/configuration settings audit trail reviews, and how frequently to perform the review |
-| 6 — Backup of electronic data | Controls to ensure electronic raw data is backed up so a copy remains available and can be retrieved in its original format |
-| 7 — Use of electronic data | Data integrity controls associated with using electronic raw data to generate system reports/records and controls associated with transfer/migration of raw data to another location |
+**Table 5.3.1-1**
+
+Data Integrity Control Grid for Storage of and Access to Completed and Archived Paper Records
+Storage of and Access
+to Completed & Archived
+Paper Records
+High Data Criticality
+Medium Data Criticality
+Low Data Criticality
+Prevention Control
+Where Stored
+Climate-controlled room
+Climate-controlled room
+Office retention location
+How Removed &
+Returned
+Access control to room
+and logbook recording of
+removal and return of the
+record
+Access control to room
+and logbook recording of
+removal and return of the
+record
+Logbook recording of
+documents checked-in/
+checked-out
+Access Control
+Card Key access or
+limited key access with
+entry documented in
+logbook
+Card Key access or
+limited key access with
+entry documented in
+logbook
+Limited key access
+Periodic User Access
+Review
+Annually
+Annually
+Every 2 years
 
 #### 5.3.2 Generation and Reconciliation of Documents
 
-| | English | |
-| --- | --- | --- |
-| | Preventive Control | 5.3 |
-| | Detective Control | 5.3 |
-| | Access Control | 5.1, 5.2 Cat.4 |
-| | Audit Trail | 5.2 Cat.5, 5.3 |
-| | Defense in Depth | 5.3 |
-| | Paper-based System | 5.2 |
-| | Electronic System | 5.2 |
-| | Hybrid System | 5.2 |
-| | Differentiated Controls | 5.1, 5.2, 5.3 |
-| | Data Criticality | 5.1, 5.3 |
+**Table 5.3.2-1 identifies several prevention controls related to the issuance and reconciliation of**
 
 paper records. The controls described are applied at the record or system level.
 Highly critical records, such as batch records, should be issued by a designated unit and have a
@@ -1775,14 +2090,27 @@ As with all controls relating to data integrity, processes relating to true copi
 ity, must be documented in SOPs. A record must be maintained to reflect when each document was
 destroyed and who destroyed it.
 
-| True Copy (Paper to Electronic) | High Data Criticality | Medium Data Criticality | Low Data Criticality |
-| --- | --- | --- | --- |
+**Table 5.3.3.2-1	 Data Integrity Control Grid for Data Accuracy when Transcribing Manually Recorded Data into an**
 
+Electronic System
+Transcription of Manually Recorded
+Data into an Electronic System
+High Data
+Criticality
+Medium Data
+Criticality
+Low Data
+Criticality
+Prevention Control
+Second review required for data
+transcription – Who?
+Supervisor or Quality
+Unit
+Peer
+None
 5.3.3.3	 True Copy (Paper to Electronic)
 
-| Prevention Control | |
-| Review requirements | Documented review by second person from the quality unit for legibility, accuracy, and completeness | Documented review by second person (not necessarily from the quality unit) for legibility, accuracy, and completeness | Documented verification by person performing the scan for legibility, accuracy, and completeness |
-| Discard of original allowed | Yes, as defined by quality unit oversight, unless there is a seal, watermark, or other identifier that can't be accurately reproduced electronically | Yes, performed by the operating unit, unless there is a seal, watermark, or other identifier that can't be accurately reproduced electronically. Quality unit oversight required | Yes, individual can discard original. Quality unit oversight required |
+**Table 5.3.3.3-1 illustrates the controls needed for creation of a true copy, going from a paper record**
 
 to an electronic record. True copies must be maintained using the same controls that applied to the
 original paper record.
@@ -1811,8 +2139,54 @@ As with all controls relating to data integrity, processes relating to true copi
 ity, must be documented in SOPs. A record must be maintained to reflect when each document was
 destroyed and who destroyed it.
 
-| Access Controls for Electronic Systems | High Data Criticality | Medium Data Criticality | Low Data Criticality |
-| --- | --- | --- | --- |
+**Table 5.2.3.3-1	 Data Integrity Control Grid for True Copy (Paper to Electronic)**
+
+True Copy (Paper to
+Electronic)
+High Data Criticality
+Medium Data
+Criticality
+Low Data Criticality
+Prevention Control
+Review requirements
+Documented review
+by second person from
+the quality unit for
+legibility, accuracy, and
+completeness
+Documented review
+by second person
+(not necessarily from
+the quality unit) for
+legibility, accuracy, and
+completeness
+Documented verification
+by person performing
+the scan for legibility,
+accuracy, and
+completeness
+Discard of original
+allowed
+Yes, as defined by
+quality unit oversight,
+unless there is a seal,
+watermark, or other
+identifier that can’t be
+accurately reproduced
+electronically.
+Yes, performed by
+the operating unit,
+unless there is a seal,
+watermark, or other
+identifier that can’t be
+accurately reproduced
+electronically.
+Quality unit oversight
+required
+Yes, individual can
+discard original
+Quality unit oversight
+required
 
 #### 5.3.4 Access Controls for Electronic Systems
 
@@ -1846,12 +2220,51 @@ the risks identified. This assessment should consider the overall system archite
 between systems, criticality of access by unauthorized persons, and the potential for network security
 breaches.
 
-| Prevention Control | |
-| Access to Electronic systems — HOW | Identification and authentication (User ID + Password) | Identification and authentication (User ID + Password) | Passcode/group account based on role & information access |
-| Password change frequency | Every 90 days | Every 180 days | Annually |
-| Periodic user account access review | Annually | Annually | Every 2 years |
-| Account lock-out after repeated incorrect password entries | 5 incorrect password entries | 10 incorrect password entries | Never |
-| Password recycling — Reuse of previously used passwords | 10 cycles | 5 cycles | N/A |
+**Table 5.3.4-1**
+
+Data Integrity Control Grid for Access Controls for Electronic Systems
+Access Controls for
+Electronic Systems
+High Data Criticality
+Medium Data
+Criticality
+Low Data Criticality
+Prevention Control
+Access to Electronic
+systems – HOW
+Identification and
+authentication (User ID
++ Password)
+Identification and
+authentication (User ID
++ Password)
+Passcode/group
+account based on role &
+information access
+Password change
+frequency
+Every 90 days
+Every 180 days
+Annually
+Periodic user account
+access review
+Annually
+Annually
+Every 2 years
+Account lock-out after
+repeated incorrect
+password entries
+5 incorrect password
+entries
+10 incorrect password
+entries
+Never
+Password recycling
+– Reuse of previously
+used passwords
+10 cycles
+5 cycles
+N/A
 
 #### 5.3.5 Electronic Audit Trail Review
 
@@ -1950,19 +2363,36 @@ probability. Score = 1.
 Next, the three scores (Detectability, Severity, and Probability) are multiplied to provide the ATRA
 final score. The lower the score, the lower the risk.
 
-| Frequency of System Use | 0–10 Score | 11–20 Score | 40 Score | 100 Score |
-| --- | --- | --- | --- | --- |
-| Daily / Weekly | Event-based | Twice per year | Weekly | Batch-wise |
-| Monthly | Event-based | Yearly | Monthly | Batch-wise |
-| Less Than Monthly | Event-based | Every 2 years | Quarterly | Batch-wise |
+**Table 5.3.5.1-1 illustrates how the final score can be used to determine the needed frequency of**
 
 review. Some examples are provided in Section 5.3.5.2 that highlight how this can be used together
 with different elements of the audit trail to determine the full audit trail review requirements for a
 system.
 
-| Audit Trail Element | D | S | P | Final | Outcome |
-| --- | --- | --- | --- | --- | --- |
+**Table 5.3.5.1-1	 ATRA Final Score and Frequency Review**
 
+Frequency of
+System Use
+Needed Frequency of Audit Trail Review
+0–10 Score
+11–20 Score
+40 Score
+100 Score
+Daily / Weekly
+Event-based
+Twice per year
+Weekly
+Batch-wise
+Monthly
+Event-based
+Yearly
+Monthly
+Batch-wise
+Less Than Monthly
+Event-based
+Every 2 years
+Quarterly
+Batch-wise
 The timeframes indicated are illustrative only. Organizations should assess their systems and apply
 critical thinking when considering the criticality of the activity being performed as well as the poten-
 tial for impact on product quality and patient safety. Using a risk-based approach, the periodicity of
@@ -2027,9 +2457,19 @@ added to justify the scoring. The scores for detectability, severity, and probab
 ing a Final Score. Then, the data in Table 5.3.5.1-1 is used to determine the frequency of audit trail
 review for that element (Outcome).
 
-| Backup of Electronic Data | High Data Criticality | Medium Data Criticality | Low Data Criticality |
-| --- | --- | --- | --- |
+**Table 5.3.5.2-1	 Example of How ATRA Tool is Used to Score a Filter Integrity Tester**
 
+Audit Trail Element
+Detectability
+Score
+Severity
+Score
+Probability
+Score
+Final Score
+Comments
+Batch Setup Data
+element: Changes to recipes
 Detectability = 1. Will not be detected by any other review during batch review process.
 Severity = 10. If the recipe is modified, it can impact the result obtained, and potentially product
 quality.
@@ -2121,8 +2561,22 @@ Low-critical data, like secondary packaging systems that do not store data relat
 butes or such parameters as expiry dates, the backup should ensure that the data will not be overwrit-
 ten before batch disposition has occurred.
 
-| Prevention Control | |
-| Looped Memory | Perform backup before data is overwritten | Perform backup before data is overwritten | Ensure availability until batch disposition is complete |
+**Table 5.3.6-1**
+
+Data Integrity Control Grid for Data Backup for System with Limited Storage Capacity
+Backup of Electronic Data
+High Data Criticality
+Medium Data Criticality
+Low Data Criticality
+Prevention Control
+Looped Memory
+Perform backup before
+data is overwritten
+Perform backup before
+data is overwritten
+Ensure availability until
+batch disposition is
+complete
 
 #### 5.3.7 Use of Electronic Data
 
@@ -2134,9 +2588,10 @@ data and record levels to help prevent a data integrity incident from occurring.
 
 ##### 5.3.7.1 Exporting Electronic Data to Generate Reports and Records
 
-| Data Export / Report Generation | High Data Criticality | Medium Data Criticality | Low Data Criticality |
-| --- | --- | --- | --- |
+**Table 5.3.7.1-1 identifies prevention controls related to reports and records generation. For reports**
 
+and records used to display High-critical data, such as a batch record from an MES used for making
+release decisions, validation with change control and appropriate test plans is required for changes
 to the report template. The validation should ensure that the report or record is accurate, and that
 all data displayed will remain unchanged from the electronic raw data. IT or automation personnel
 should perform these changes to the template and ensure that the content of the reports and records
@@ -2153,11 +2608,40 @@ in nature, for example, exporting data into a data lake for future non-GMP analy
 Regardless of the criticality, the quality unit should review and approve changes to report templates,
 especially for any changes that could impact the information displayed.
 
-| Prevention Control | |
-| Report validation, verification | Validation, revalidation if changed | Initial validation only | Verification |
-| Documentation of changes in reports | Change control and test plan | Procedural control | Work instructions |
-| Modification of template performed by | IT/Automation unit | IT/Automation unit | Business unit |
-| Report content flexibility | Static/fixed | Limited flexibility, drop-downs or predefined selection criteria | Flexible, based on criteria defined in the work instructions |
+**Table 5.3.7.1-1	 Data Integrity Control Grid for Data Export for Generation of Reports and Records**
+
+Data Export or Generation of
+Report and Records
+High Data Criticality
+Medium Data
+Criticality
+Low Data Criticality
+Prevention Control
+Report validation,
+verification
+Validation, revalidation if
+changed
+Initial validation only
+Verification
+Documentation of
+changes in reports
+Change control and test
+plan
+Procedural control
+Work instructions
+Modification of template
+performed by
+IT/Automation unit
+IT/Automation unit
+Business unit
+Report content flexibility
+Static/fixed
+Limited flexibility, drop-
+downs or predefined
+selection criteria
+Flexible, based on criteria
+defined in the work
+instructions
 
 ##### 5.3.7.2 Data Transfer and Migration Between Electronic Systems
 
@@ -2182,8 +2666,32 @@ process verification conclusions, for example, transferring data into a data lak
 analysis. These are considered Low-critical transfers, so a procedural control is adequate for describ-
 ing the steps to be taken to transfer the data.
 
-| Data Transfer and Migration | High Data Criticality | Medium Data Criticality | Low Data Criticality |
-| --- | --- | --- | --- |
+**Table 5.3.7.2-1	 Data Integrity Control Grid for Data Transfer and Migration Between Electronic Systems**
+
+Data Transfer and Migration
+High Data Criticality
+Medium Data Criticality
+Low Data Criticality
+Prevention Control
+Data migration – How
+executed to ensure
+complete transfer of data
+Under change control
+with test plan
+Under change control
+with test plan
+Under procedural
+control
+Verification of data
+migration
+Checksum, or
+equivalent tool, that
+confirms all data sent
+was received
+Checksum, or equivalent
+tool, that confirms all
+data sent was received
+N/A
 
 ## 6.0 Controls for Big Data as it Relates to Data Integrity
 
@@ -2472,13 +2980,80 @@ the use of access controls, activated audit trails, and automated data archiving
 trend the electronically stored production data. With these additional controls employed, the vulner-
 ability of the High-criticality data has reached an Acceptable level (Green).
 
-| | | |
-| --- | --- | --- |
-| QA Manager | 2FDA Q&A3MHRA13CFR Part 1129EU Annex 11 | |
-| IT / CSV Engineer | 13CFR Part 1123GAMP DI29EU Annex 11 | |
-| Operations Director | 7ICH Q108ICH Q922PDA Code of Conduct | |
-| | 25APIC 26PDA TR548ICH Q9 | DI |
+**Table 8.1-1	 Example 1: High Criticality API Reaction Controls Impurity Level**
 
+Ex
+Mfg Operation
+Data Criticality
+Data Vulnerability Factors
+Data Controls in Place
+Data Vulnerability Level
+1a
+Manually controlled reactor and
+paper BPR
+High: Impacts CQA & is a CPP that
+controls impurity formation
+Human Factor: Manual transfer
+of CPP data from production
+instrumentation & gauges into paper
+BPR.
+GMP Process: Reactor is manually
+controlled by operator
+Data Mgmt: Paper BPR
+Low:
+Human Factor: Supervisory review &
+quantity unit review at release
+GMP Process: Controlled with
+written procedures and training
+Data Mgmt: Reliance on second-
+person witnessing of data entries &
+quality unit review at release
+Significant
+1b
+PLC-controlled reactor and paper
+BPR
+High: Impacts CQA & is a CPP that
+controls impurity formation
+Human Factor: Manual transfer of
+CPP data from HMI into BPR
+GMP Process: PLC-controlled
+reactor of new or complex process
+Data Mgmt: Manual data entry into
+paper BPR from HMI; no audit trail
+or electronic analysis of data in PLC
+Medium:
+Human Factor: Supervisory review &
+quality unit review at release
+GMP Process: PLC validated with
+printout attached to paper BPR
+Data Mgmt: Reliance on second-
+person witnessing of data entries;
+quality unit review of BPR & PLC
+printout at release
+Moderate
+1c
+PLC-controlled reactor & electronic
+BPR
+High: Impacts CQA & is a CPP that
+controls impurity formation
+Human Factor: Electronic BPR
+mitigates human error to a residual
+level
+GMP Process: PLC-controlled
+reactor of robust process
+Data Mgmt: Data automatically
+captured in EBR & data mgmt
+lifecycle is controlled
+High:
+Human Factor: EBR reviewed by
+quality unit at release
+GMP Process: PLC validated
+& production data captured
+automatically
+Data Mgmt: Access controls on
+PLC; electronic analysis of data;
+automatic data storage & audit trail
+Acceptable
 Example 2 covers the oven drying of an API (Table 8.1-2). The loss on drying (LOD) of the API is not a CQA and the drying operation is not a CPP, but the
 LOD does impact the flow characteristics of the API, which affects the downstream processing of the API into the finished product. Therefore, the data regarding
 the drying of the API is of Medium criticality and belongs in the middle row of the 9-Box vulnerability grid.
@@ -3897,9 +4472,80 @@ Fax: +1 (301) 986-0296
 E-mail: info@pda.org
 Web site: www.pda.org
 
-| Ex | Mfg Operation | Data Criticality | Data Vulnerability Factors | Data Controls in Place | Vulnerability Level |
-| --- | --- | --- | --- | --- | --- |
+**Table 8.1-1	 Example 1: High Criticality API Reaction Controls Impurity Level**
 
+Ex
+Mfg Operation
+Data Criticality
+Data Vulnerability Factors
+Data Controls in Place
+Data Vulnerability Level
+1a
+Manually controlled reactor and
+paper BPR
+High: Impacts CQA & is a CPP that
+controls impurity formation
+Human Factor: Manual transfer
+of CPP data from production
+instrumentation & gauges into paper
+BPR.
+GMP Process: Reactor is manually
+controlled by operator
+Data Mgmt: Paper BPR
+Low:
+Human Factor: Supervisory review &
+quantity unit review at release
+GMP Process: Controlled with
+written procedures and training
+Data Mgmt: Reliance on second-
+person witnessing of data entries &
+quality unit review at release
+Significant
+1b
+PLC-controlled reactor and paper
+BPR
+High: Impacts CQA & is a CPP that
+controls impurity formation
+Human Factor: Manual transfer of
+CPP data from HMI into BPR
+GMP Process: PLC-controlled
+reactor of new or complex process
+Data Mgmt: Manual data entry into
+paper BPR from HMI; no audit trail
+or electronic analysis of data in PLC
+Medium:
+Human Factor: Supervisory review &
+quality unit review at release
+GMP Process: PLC validated with
+printout attached to paper BPR
+Data Mgmt: Reliance on second-
+person witnessing of data entries;
+quality unit review of BPR & PLC
+printout at release
+Moderate
+1c
+PLC-controlled reactor & electronic
+BPR
+High: Impacts CQA & is a CPP that
+controls impurity formation
+Human Factor: Electronic BPR
+mitigates human error to a residual
+level
+GMP Process: PLC-controlled
+reactor of robust process
+Data Mgmt: Data automatically
+captured in EBR & data mgmt
+lifecycle is controlled
+High:
+Human Factor: EBR reviewed by
+quality unit at release
+GMP Process: PLC validated
+& production data captured
+automatically
+Data Mgmt: Access controls on
+PLC; electronic analysis of data;
+automatic data storage & audit trail
+Acceptable
 Example 2 covers the oven drying of an API (Table 8.1-2). The loss on drying (LOD) of the API is not a CQA and the drying operation is not a CPP, but the
 LOD does impact the flow characteristics of the API, which affects the downstream processing of the API into the finished product. Therefore, the data regarding
 the drying of the API is of Medium criticality and belongs in the middle row of the 9-Box vulnerability grid.
@@ -3914,9 +4560,85 @@ Example 2c illustrates the same Medium-criticality data but with more than the r
 ability to erase any data, activated audit trails, automated data archiving, and the ability to trend the electronically stored production data. These controls yield a
 Negligible level of data vulnerability (Blue).
 
-| Ex | Mfg. Operation | Data Criticality | Data Vulnerability Factors | Data Controls in Place | Vulnerability Level |
-| --- | --- | --- | --- | --- | --- |
+**Table 8.1-2	 Example 2: Medium Criticality – Drying of API (LOD not a CQA)**
 
+Ex
+Mfg. Operation
+Data Criticality
+Data Vulnerability Factors
+Data Controls in Place
+Data Vulnerability Level
+2a
+Manually controlled oven drying of
+API & paper BPR
+Medium: Moisture (LOD) is not
+a CQA or CPP but impacts flow
+characteristics of API during
+downstream processing
+Human Factor: Manual transfer of
+oven temperature into paper BPR
+GMP Process: Oven is manually
+controlled by operator
+Data Mgmt: Paper BPR
+Low:
+Human Factor: Supervisory review &
+quality unit review at release
+GMP Process: Controlled with
+written procedures and training
+Data Mgmt: Reliance on second-
+person witnessing of data entries &
+quality unit review at release
+Moderate
+2b
+PLC-controlled oven drying of API &
+paper BPR
+Medium: Moisture (LOD) is not
+a CQA or CPP but impacts flow
+characteristics of API during
+downstream processing
+Human Factor: Manual transfer of
+oven temperature data from HMI
+into BPR
+GMP Process: PLC-controlled oven
+Data Mgmt: Manual data entry into
+paper BPR from HMI; no audit trail or
+electronic analysis of data in PLC
+Medium:
+Human Factor: Supervisory review &
+quality unit review at release
+GMP Process: PLC validated with
+printout attached to paper BPR
+Data Mgmt: Reliance on second-
+person witnessing of data entries;
+quality unit review BPR & PLC
+printout at release
+Acceptable
+2c
+PLC-controlled oven drying &
+electronic BPR
+Medium: Moisture (LOD) is not
+a CQA or CPP but impacts flow
+characteristics of API during
+downstream processing
+Human Factor: EBR mitigates human
+error to a residual level
+GMP Process: PLC-controlled oven
+of robust process
+Data Mgmt: Data automatically
+captured in EBR & data mgmt
+lifecycle is controlled
+High:
+Human Factor: EBR reviewed by
+quality unit at release
+GMP Process: PLC validated
+& production data captured
+automatically
+Data Mgmt: Access controls on
+PLC, electronic analysis of data,
+automatic data storage & audit trail
+Negligible
+
+Example 3 depicts the batch-to-batch cleaning of API manufacturing equipment of a small molecule
 during a product campaign within the validated campaign length (Table 8.1-3). Since this type of
 data is neither directly nor indirectly related to a CQA or CPP, it is considered routine GMP data
 and of Low criticality, according to the definitions in Section 4.2.1. Therefore, this data resides in
@@ -3937,8 +4659,83 @@ and ability to trend the electronically stored production data. The vulnerabilit
 unchanged, and the vulnerability remains at a Negligible level (Blue). In this example, there are
 significantly more controls in place than are required.
 
-| Ex | Mfg. Operation | Data Criticality | Data Vulnerability Factors | Data Controls in Place | Vulnerability Level |
-| --- | --- | --- | --- | --- | --- |
+**Table 8.1-3	 Example 3: Low Criticality – Small Molecule API Batch-to-Batch Cleaning of Equipment within a Campaign**
+
+Ex
+Mfg. Operation
+Data Criticality
+Data Vulnerability Factors
+Data Controls in Place
+Data
+Vulnerability
+Level
+3a
+Manual batch-to-batch cleaning
+of equipment within a campaign
+Low: Batch-to-batch carryover
+will not impact the quality of the
+final API for validated campaign
+length
+Human Factor: Manual recording of
+cleaning into paper BPR
+GMP Process: Equipment cleaning
+manually performed by operator
+Data Mgmt: Paper BPR
+Low:
+Human Factor: Supervisory review &
+quality unit review at release
+GMP Process: Controlled with written
+procedures and training
+Data Mgmt: Reliance on second-person
+witnessing of data entries & quality
+unit review at release
+Acceptable
+3b
+CIP batch-to-batch cleaning of
+equipment within a campaign
+Low: Batch-to-batch carryover
+will not impact the quality of the
+final API for validated campaign
+length
+Human Factor: Manual transfer of
+cleaning data from HMI into BPR
+GMP Process: PLC-controlled CIP
+cleaning process
+Data Mgmt: Manual data entry into
+paper BPR from HMI; no audit trail or
+electronic analysis of data in PLC
+Medium:
+Human Factor: Supervisory review &
+quality unit review at release
+GMP Process: PLC validated with
+printout attached to paper BPR
+Data Mgmt: Reliance on second-person
+witnessing of data entries; quality unit
+review BPR & PLC printout at release
+Negligible
+3c
+PLC-controlled CIP batch-to-
+batch cleaning & electronic BPR
+Low: Batch-to-batch carryover
+will not impact the quality of the
+final API for validated campaign
+length
+Human Factor: EBR mitigates human
+error to a residual level
+GMP Process: PLC-controlled CIP
+cleaning process is robust
+Data Mgmt: Data automatically
+captured in EBR & data mgmt lifecycle
+is controlled
+High:
+Human Factor: EBR reviewed by
+quality unit at release
+GMP Process: PLC validated & cleaning
+data captured automatically
+Data Mgmt: Access controls on PLC,
+electronic analysis of data, automatic data
+storage & audit trail
+Negligible
 
 ### 8.2 Finished Dosage Form Examples
 
@@ -3962,8 +4759,99 @@ Example 4c illustrates the same High-criticality data with the additional contro
 electronic manufacturing record with automated data capture, audit trail, and access controls. These
 additional controls yield Acceptable vulnerability (Green).
 
-| Ex | Mfg. Operation | Data Criticality | Data Vulnerability Factors | Data Controls in Place | Vulnerability Level |
-| --- | --- | --- | --- | --- | --- |
+**Table 8.2-1	 Example 4: High Criticality – Humidity Monitoring During Sieving of a Drug Substance**
+
+Ex
+Mfg. Operation
+Data Criticality
+Data Vulnerability Factors
+Data Controls in Place
+Data Vulnerability Level
+4a
+Humidity data is displayed and
+recorded on a paper chart and
+a paper manufacturing record is
+used
+High: Humidity is a CPP that
+impacts CQA; drug substance
+is hygroscopic and will degrade
+with elevated moisture levels
+Human Factor: Analogue
+humidity data is added from
+chart recording, and data is
+transcribed to paper record
+GMP Process: Humidity data is
+captured manually
+Data Mgmt: Periodic manual
+entry of data into BPR
+Low:
+Human Factor: Supervisor review
+and quality unit review at release
+GMP Process: Chart paper is
+attached to paper record
+Data Mgmt: Second-person
+verification of data entry and
+quality unit review at release.
+Significant
+4b
+Humidity data is displayed and
+recorded using BMS, and a
+paper manufacturing record is
+used
+High: Humidity is a CPP that
+impacts CQA; drug substance
+is hygroscopic and will degrade
+with elevated moisture levels
+Human Factor: Digital humidity
+data is printed out from HMI,
+and data is transcribed to paper
+record
+GMP Process: Humidity data
+is captured both manually and
+electronically
+Data Mgmt: Periodic manual
+data entry into paper BPR
+Medium:
+Human Factor: Supervisor
+review and quality unit review at
+release
+GMP Process: HMI printout
+is attached to paper record;
+validated BMS with audit trail
+and access controls
+Data Mgmt: Second-person
+verification of printout and
+quality unit review at release
+Moderate
+4c
+Humidity data is displayed and
+recorded using BMS, and a
+paper manufacturing record is
+used
+High: Humidity is a CPP that
+impacts CQA; drug substance
+is hygroscopic and will degrade
+with elevated moisture levels
+Human Factor: An electronic
+manufacturing record mitigates
+human error to a residual level
+GMP Process: Humidity data is
+captured electronically
+Data Mgmt: Humidity data is
+automatically uploaded into
+electronic manufacturing record
+High:
+Human Factor: Use of electronic
+record minimizes manual entry
+of data
+GMP Process: Validated BMS
+with audit trail and access
+controls; automated data
+capture in electronic record
+Data Mgmt: Humidity data
+is managed per Part 11
+requirements
+Acceptable
 
 Example 5, shown in Table 8.2-2, uses the same sieving operation, the same vulnerability factors, and the same data controls as Example 4, except the humidity is
 Medium-criticality data. At elevated humidity levels, the drug substance will become sticky, giving poor flow properties, which will impact manufacturing consis-
@@ -3977,8 +4865,87 @@ controls yield Acceptable data vulnerability (Green).
 Example 5c illustrates the same Medium-criticality data with the added controls of a validated electronic manufacturing record with automated data capture, audit
 trail, and access controls. The additional controls yield Negligible vulnerability (Blue).
 
-| Ex | Mfg. Operation | Data Criticality | Data Vulnerability Factors | Data Controls in Place | Vulnerability Level |
-| --- | --- | --- | --- | --- | --- |
+**Table 8.2-2	 Example 5: Medium Criticality – Humidity Monitoring During Sieving of a Drug Substance**
+
+Ex
+Mfg. Operation
+Data Criticality
+Data Vulnerability Factors
+Data Controls in Place
+Data Vulnerability Level
+5a
+Humidity data is displayed and
+recorded on a paper chart; a paper
+manufacturing record is used
+Medium: Humidity is not a CPP;
+at elevated humidity levels, drug
+substance will become sticky, giving
+poor flow properties
+Human Factor: Analogue humidity data
+is interpolated from chart recording,
+and data is transcribed to paper record
+GMP Process: Humidity data is
+captured manually
+Data Mgmt.: Periodic manual entry
+of data into BPR
+Low:
+Human Factor: Supervisor review and quality
+unit review at release
+GMP Process: Chart paper is attached to
+paper record
+Data Mgmt: second-person verification of
+data entry. Quality unit review at release
+Moderate
+5b
+Humidity data is displayed and
+recorded using BMS; a paper
+manufacturing record is used
+Medium: Humidity is not a CPP;
+at elevated humidity levels, drug
+substance will become sticky, giving
+poor flow properties
+Human Factor: Digital humidity data
+is printed out from HMI, and data is
+transcribed to paper record
+GMP Process: Humidity data
+is captured both manually and
+electronically
+Data Mgmt: Periodic manual data
+entry into paper BPR
+Medium:
+Human Factor: Supervisor review and quality
+unit review at release
+GMP Process: HMI printout is attached to
+paper record; validated BMS with audit trail
+and access controls
+Data Mgmt: Second-person verification of
+printout and quality unit review at release
+Acceptable
+5c
+Humidity data is displayed and
+recorded using BMS; an electronic
+manufacturing record is used
+Medium: Humidity is not a CPP;
+at elevated humidity levels, drug
+substance will become sticky, giving
+poor flow properties
+Human Factor: An electronic
+manufacturing record mitigates
+human error to a residual level
+GMP Process: Humidity data is
+captured electronically
+Data Mgmt: Humidity data is
+automatically uploaded into
+electronic manufacturing record
+High:
+Human Factor: Use of electronic record
+minimizes manual entry of data
+GMP Process: Validated BMS with audit trail
+and access controls; automated data capture
+in electronic record
+Data Mgmt: Humidity data is managed per
+Part 11 requirements.
+Negligible
 
 Example 6 uses the same sieving operation, the same vulnerability factors, and the same data controls as Examples 4 and 5; however, the humidity is Low-critical
 data (Table 8.2-3). The drug substance is not hygroscopic and is very stable, with good flow properties over a wide humidity range. Humidity is not a CPP. The
@@ -3992,8 +4959,89 @@ controls yield a Negligible data vulnerability risk (Blue).
 Example 6c illustrates the same Low-critical data with the added controls of a validated electronic manufacturing record with automated data capture, audit trail, and
 access controls. The vulnerability of the data remains unchanged at a Negligible level (Blue). In this example, significantly more controls are in place than are required.
 
-| Ex | Mfg Operation | Data Criticality | Data Vulnerability Factors | Data Controls in Place | Vulnerability Level |
-| --- | --- | --- | --- | --- | --- |
+**Table 8.2-3	Example 6: Low Criticality – Humidity Monitoring During Sieving of a Drug Substance**
+
+Ex
+Mfg Operation
+Data Criticality
+Data Vulnerability Factors
+Data Controls in Place
+Data Vulnerability Level
+6a
+Humidity data is displayed and
+recorded on a paper chart; a paper
+manufacturing record is used.
+Low: Humidity is not a CPP; drug
+substance is not hygroscopic
+and is very stable with good flow
+properties over a wide humidity
+range
+Human Factor: Analogue humidity data
+is interpolated from chart recording, and
+data is transcribed to paper record
+GMP Process: Humidity Data is captured
+manually
+Data Mgmt: Periodic manual entry of data
+into BPR
+Low:
+Human Factor: Supervisor review and
+quality unit review at release
+GMP Process: Chart paper is attached to
+paper record
+Data Mgmt: Second-person verification of
+data entry; quality unit review at release
+Acceptable
+6b
+Humidity data is displayed and
+recorded using BMS; a paper
+manufacturing record is used
+Low: Humidity is not a CPP; drug
+substance is not hygroscopic
+and is very stable with good flow
+properties over a wide humidity
+range
+Human Factor: Digital humidity data
+is printed out from HMI, and data is
+transcribed to paper record
+GMP Process: Humidity data is captured
+both manually and electronically
+Data Mgmt: Periodic manual data entry
+into paper BPR
+Medium:
+Human Factor: Supervisor review and
+quality unit review at release
+GMP Process: HMI printout is attached to
+paper record; validated BMS with audit
+trail and access controls
+Data Mgmt: Second-person verification of
+printout; quality unit review at release
+Negligible
+6c
+Humidity data is displayed and
+recorded using BMS; an electronic
+manufacturing record is used
+Low: Humidity is not a CPP; drug
+substance is not hygroscopic
+and is very stable with good flow
+properties over a wide humidity
+range
+Human Factor: An electronic
+manufacturing record mitigates human
+error to a residual level
+GMP Process: Humidity data is captured
+electronically
+Data Mgmt: Humidity data is
+automatically uploaded into electronic
+manufacturing record
+High:
+Human Factor: Use of electronic record
+minimizes manual entry of data
+GMP Process: Validated BMS with audit
+trail and access controls; automated data
+capture in electronic record
+Data Mgmt: Humidity data is managed per
+Part 11 requirements
+Negligible
 
 ### 8.3 Sterility Assurance Examples
 
@@ -4036,8 +5084,85 @@ Aseptic Filling
 Filter Integrity
 Tester
 
-| Ex | Mfg. Operation | Data Vulnerability Factors | Data Controls in Place | Vulnerability Level |
-| --- | --- | --- | --- | --- |
+**Table 8.3-1	 Example 7: High Criticality – Filter Integrity Testing at the Point of Fill (Post-Use)**
+
+Ex
+Mfg. Operation
+Data Criticality
+Data Vulnerability Factors
+Data Controls in Place
+Data Vulnerability Level
+7a
+Aseptic Filling:
+Filter integrity tester with paper print-out
+test results
+High: Impacts CQA (sterility) and is a CPP that
+confirms absence of viable microorganisms
+after aseptic filling
+Human Factor: Manual transcription of set-up data
+by operator
+GMP Process: Filter integrity tester is manually
+controlled by the operator
+Data Mgmt: Legacy filter integrity tester used with
+no/limited ability to store electronic data; paper
+printout used in lieu of electronic data
+Low:
+Human Factor: Supervisor reviews test results prior to
+batch release
+GMP Process: Controlled with written procedures and
+training
+Data Mgmt: Reliance on peer review of data entries
+and test results
+Significant
+7b
+Aseptic Filling:
+Filter integrity tester with automated data
+entry and storage and electronic test results
+High: Impacts CQA (sterility) and is a CPP that
+confirms absence of viable microorganisms
+after aseptic filling
+Human Factor: Automated data entry and data back-
+up mitigates human error to a residual level
+GMP Process: Filter integrity tester is manually
+controlled by the operator
+Data Mgmt: Latest filter integrity tester is used, has
+ability to interface with bar code readers to capture
+set-up data, has secure data storage module, and can
+record operator’s actions, including number of test
+runs, electronically and also on the paper printout
+Medium:
+Human Factor: Supervisor checks test run alert data
+prior to batch release
+GMP Process: Test equipment and associated
+automation interfaces validated, and process
+robustness monitored regularly
+Data Mgmt: Reliance on automation, validation, and
+robust monitoring process
+Moderate
+7c
+Aseptic Filling:
+Filter integrity tester with end-to-end
+automation
+High: Impacts CQA (sterility) and is a CPP that
+confirms absence of viable microorganisms
+after aseptic filling
+Human Factor: End-to-end automation mitigates
+human error to a residual level
+GMP Process: Filter integrity testing instruments
+integrated into the unit operation
+Data Mgmt: Filter is tested in-line without operator
+having to initiate the test manually; test results are
+automatically transferred to a secure data storage
+module
+High:
+Human Factor: Supervisory review is limited to only
+investigation of failed test
+GMP Process: In-line test equipment and associated
+interfaces validated, and process robustness
+monitored regularly
+Data Mgmt: Reliance on automation, validation, and
+the robust monitoring process
+Acceptable
 
 The data in Example 8 would be considered Medium criticality under U.S. regulation because the test is a regulatory recommendation intended to verify filter integrity after
 sterilizing filtration but before aseptic filling (Table 8.3-2). The data may have a different criticality level in other regions of the world due to different regulatory requirements.
@@ -4048,8 +5173,92 @@ to ensure automated data capture, secure storage, and audit trail capabilities.
 Example 8c shows that the data vulnerability becomes Negligible (Blue) when human intervention is reduced to a minimum with the filter testing performed in-
 line, without the operator having to initiate the test manually, and test results are automatically transferred to a secure data storage module.
 
-| Ex | Mfg. Operation | Data Vulnerability Factors | Data Controls in Place | Vulnerability Level |
-| --- | --- | --- | --- | --- |
+**Table 8.3-2	Example 8: Medium Criticality – Filter Integrity Testing at the Point of Fill (Pre-Use–Post-Sterilization)**
+
+Ex
+Mfg. Operation
+Data Criticality
+Data Vulnerability Factors
+Data Controls in Place
+Data Vulnerability Levels
+8a
+Aseptic Filling:
+Filter integrity tester with paper
+printout test results
+Medium: Verifies filter integrity
+after sterilizing filtration but
+before aseptic filling
+Human Factor: Manual transcription of set-up
+data by the operator
+GMP Process: Filter integrity tester is manually
+controlled by the operator
+Data Mgmt: Legacy filter integrity tester used
+with no/limited ability to store electronic data;
+paper printout is used in lieu of electronic data
+Medium:
+Human Factor: Supervisor reviews test
+results prior initiating aseptic filling process
+GMP Process: Controlled with written
+procedures and training
+Data Mgmt: Reliance on peer review of
+data entries and test results
+Moderate
+8b
+Aseptic Filling:
+Filter integrity tester with
+automated data entry and
+storage and electronic test
+results
+Medium: Verifies filter integrity
+after sterilizing filtration but
+before aseptic filling
+Human Factor: Automated data entry and data
+back-up mitigates human error to a residual level
+GMP Process: Filter integrity tester is manually
+controlled by the operator
+Data Mgmt: Latest filter integrity tester is used
+that has the ability to interface with bar code
+readers to capture set-up data, secure data
+storage module, and record operator’s actions,
+including number of tests runs electronically and
+also on the paper printout
+High:
+Human Factor: Supervisor checks test run
+alert data prior to aseptic filling process
+GMP Process: Test equipment and
+associated automation interfaces
+validated, and process robustness
+monitored regularly
+Data Mgmt: Reliance on automation,
+validation, and robustness monitoring
+process
+Acceptable
+8c
+Aseptic Filling:
+Filter integrity tester with end-
+to-end automation
+Medium: Verifies filter integrity
+after sterilizing filtration but
+before aseptic filling
+Human Factor: End-to-end automation mitigates
+human error to a residual level
+GMP Process: Process robustness assured by
+automation, validation, and monitoring practices;
+redundant sterilizing filters installed
+Data Mgmt: Filter is tested in line without the
+operator having to initiate the test manually, and
+test results are automatically transferred to a
+secure data storage module
+High:
+Human Factor: Supervisory review is limited
+to only investigation of failed test runs
+GMP Process: Test equipment and
+associated automation interfaces validated,
+and process robustness monitored regularly
+Data Mgmt: Reliance on automation,
+validation, and robustness of monitoring
+process
+Negligible
 
 The data in Example 9 is considered Low criticality because the test is not a regulatory requirement but is intended to verify filter identity to ensure correct filter
 installation (Table 8.3-3).
@@ -4061,8 +5270,86 @@ Example 9c shows that the data vulnerability is reduced significantly and remain
 filter testing performed in-line, without the operator having to initiate the test manually, and the test results are automatically transferred to a secure data storage
 module. While this example is theoretically possible to put into practice, it is operationally unlikely at the current time.
 
-| Ex | Mfg. Operation | Data Vulnerability Factors | Data Controls in Place | Vulnerability Level |
-| --- | --- | --- | --- | --- |
+**Table 8.3-3	Example 9: Low Criticality – Filter Identity Verification at the Point of Fill (Pre-Use Pre-Sterilization)**
+
+Ex
+Mfg. Operation
+Data Criticality
+Data Vulnerability Factors
+Data Controls in Place
+Data Vulnerability Level
+9a
+Aseptic Filling:
+Filter integrity tester with
+paper print-out test results
+Low: Verifies filter identity
+to support correct filter
+installation
+Human Factor: Manual transcription of set-up data by
+the operator
+GMP Process: Filter integrity tester is manually
+controlled by the operator
+Data Mgmt: Legacy filter integrity tester used with
+no/limited ability to store electronic data; paper
+printout is used in lieu of electronic data
+High:
+Human Factor: Supervisory review is limited to only
+investigation of failed tests
+GMP Process: Controlled with written procedures
+and training
+Data Mgmt: Reliance on peer review of test results
+Acceptable
+9b
+Aseptic Filling:
+Filter integrity tester with
+automated data entry and
+storage and electronic
+test results
+Low: Verifies filter identity
+to support correct filter
+installation
+Human Factor: Automated data entry and data back-
+up mitigates human error to a residual level
+GMP Process: Filter integrity tester is manually
+controlled by the operator
+Data Mgmt: Latest filter integrity tester is used that
+has the ability to interface with bar code readers to
+capture set-up data, secure data storage module, and
+record operator’s actions, including number of tests
+runs electronically and on the paper printout
+High:
+Human Factor: Supervisory review is limited to only
+investigation of failed tests
+GMP Process: Test equipment and associated
+automation interfaces validated, and process
+robustness monitored regularly
+Data Mgmt: Reliance on automation, validation, and
+the robustness of monitoring process
+Negligible
+9c
+Aseptic Filling:
+Filter integrity tester with
+end-to-end automation
+Low: Verifies filter identity
+to support correct filter
+installation
+Human Factor: End-to-end automation mitigates
+human error to a residual level
+GMP Process: Process robustness assured by
+automation, validation, and monitoring practices;
+redundant sterilizing filters installed
+Data Mgmt: Filter is tested in line without operator
+having to initiate the test manually, and test results are
+automatically transferred to a secure data storage module
+High:
+Human Factor: Supervisory review is limited to only
+investigation of failed tests
+GMP Process: Test equipment and associated
+automation interfaces validated, and process
+robustness monitored regularly
+Data Mgmt: Reliance on automation, validation, and
+the robustness of monitoring process
+Negligible
 
 ### 8.4 Tablet Packaging Process Examples
 

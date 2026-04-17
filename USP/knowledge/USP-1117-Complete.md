@@ -2,11 +2,11 @@
 
 ## Section 0: Introduction & Media Preparation (p1-p3)
 
-**Copyright Notice:** The original English text of USP ⟨1117⟩ is the intellectual property of the United States Pharmacopeial Convention (USPC). This educational document presents selected excerpts for teaching purposes only, accompanied by independent Traditional Chinese commentary. It is not a substitute for the official USP–NF publication. © 2025 USPC. Do not distribute.
+**Copyright Notice:** The original English text of USP 〈1117〉 is the intellectual property of the United States Pharmacopeial Convention (USPC). This educational document presents selected excerpts for teaching purposes only, accompanied by independent Traditional Chinese commentary. It is not a substitute for the official USP–NF publication. © 2025 USPC. Do not distribute.
 
     
 
-# USP ⟨1117⟩ Microbiological Best Laboratory Practices
+# USP 〈1117〉 Microbiological Best Laboratory Practices
 
     
 
@@ -32,11 +32,11 @@ Because of the inherent risk of variability in microbiology data, reliability an
 
 ## Section 1: Culture Maintenance & Equipment (p3-p6)
 
-**Copyright Notice:** The original English text of USP ⟨1117⟩ is the intellectual property of the United States Pharmacopeial Convention (USPC). This educational document presents selected excerpts for teaching purposes only, accompanied by independent Traditional Chinese commentary. It is not a substitute for the official USP–NF publication. © 2025 USPC. Do not distribute.
+**Copyright Notice:** The original English text of USP 〈1117〉 is the intellectual property of the United States Pharmacopeial Convention (USPC). This educational document presents selected excerpts for teaching purposes only, accompanied by independent Traditional Chinese commentary. It is not a substitute for the official USP–NF publication. © 2025 USPC. Do not distribute.
 
     
 
-# USP ⟨1117⟩ Microbiological Best Laboratory Practices
+# USP 〈1117〉 Microbiological Best Laboratory Practices
 
     
 
@@ -74,11 +74,11 @@ The number of transfers of working control cultures should be tracked to prevent
 
 ## Section 2: Lab Operations & Sample Handling (p6-p9)
 
-**Copyright Notice:** The original English text of USP ⟨1117⟩ is the intellectual property of the United States Pharmacopeial Convention (USPC). This educational document presents selected excerpts for teaching purposes only, accompanied by independent Traditional Chinese commentary. It is not a substitute for the official USP–NF publication. © 2025 USPC. Do not distribute.
+**Copyright Notice:** The original English text of USP 〈1117〉 is the intellectual property of the United States Pharmacopeial Convention (USPC). This educational document presents selected excerpts for teaching purposes only, accompanied by independent Traditional Chinese commentary. It is not a substitute for the official USP–NF publication. © 2025 USPC. Do not distribute.
 
     
 
-# USP ⟨1117⟩ Microbiological Best Laboratory Practices
+# USP 〈1117〉 Microbiological Best Laboratory Practices
 
     
 
@@ -116,11 +116,11 @@ For less-critical microbiological testing, such as with nonsterile product or in
 
 ## Section 3: Personnel Qualification & Risk Assessment (p9-p12)
 
-**Copyright Notice:** The original English text of USP ⟨1117⟩ is the intellectual property of the United States Pharmacopeial Convention (USPC). This educational document presents selected excerpts for teaching purposes only, accompanied by independent Traditional Chinese commentary. It is not a substitute for the official USP–NF publication. © 2025 USPC. Do not distribute.
+**Copyright Notice:** The original English text of USP 〈1117〉 is the intellectual property of the United States Pharmacopeial Convention (USPC). This educational document presents selected excerpts for teaching purposes only, accompanied by independent Traditional Chinese commentary. It is not a substitute for the official USP–NF publication. © 2025 USPC. Do not distribute.
 
     
 
-# USP ⟨1117⟩ Microbiological Best Laboratory Practices
+# USP 〈1117〉 Microbiological Best Laboratory Practices
 
     
 

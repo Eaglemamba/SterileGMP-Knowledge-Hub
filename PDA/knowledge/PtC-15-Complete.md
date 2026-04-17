@@ -476,121 +476,6 @@ Although not stated explicitly as a numbered hierarchy in PtC-15, the document's
         
 
         
-            
-                
-                    
-                    
-                    
-                
-| Term / | Official Definition (PDA PtC-15) | + CDMO |
-| --- | --- | --- |
-            
-            
-                
-                      
-
-                    
-                    ****  
-  
-****  
-  
-  
-  
-  
-**
-                
-| Distributed Manufacturing (DM) | A decentralized manufacturing strategy consisting of a manufacturing platform comprising manufacturing units deployed to multiple locations. Possible use scenarios include: (1) Units located within manufacturing facilities operating within the host's pharmaceutical quality system (PQS); (2) Units manufactured and installed to the same specifications at multiple MMU manufacturing facilities, networked and operated by a central remote PQS; (3) Units as independent manufacturing facilities, each with its own PQS. | —— (1) PQS (2) MMU PQS (3) PQS CDMO (1) CDMO —— MMU CDMO |
-                
-                      
-
-                    
-                    ****  
-  
-  
-  
-**
-                
-| Family Approach | A concept applied to equipment qualification where a set of identical or very similar pieces of equipment (i.e., those deemed functionally equivalent) are subjected to reduced qualification after an initial member of the set is fully qualified. | 10 MMU 9 Reduced Qualification FDA EMA e.g., ISPE Baseline Guide Volume 5 —— MMU |
-                
-                      
-
-                    
-                    ****  
-  
-  
-  
-**
-                
-| Initially Qualified Site | The first site where a mobile unit is qualified for producing a specific pharmaceutical product or set of products prior to deployment to other locations (usually a fixed facility of the pharma company that developed the product to be manufactured by the mobile units). | MMU —— QMS MMU CDMO——Portability Claim |
-                
-                      
-
-                    
-                    ************  
-  
-  
-****  
-****  
-  
-
-                
-| Mobile Manufacturing | The manufacturing of pharmaceutical products at off-site locations via qualified manufacturing units. | off-site • Off-site • Qualified |
-                
-                      
-
-                    
-                    ****  
-  
-****  
-****  
-****  
-  
-**********
-                
-| Mobile Manufacturing Unit (MMU) | A deployable manufacturing unit that has been qualified to make a specific set of pharmaceutical products, regardless of location. It is designed so that it can be easily disassembled and reassembled into its functional state without incorporating any major rework. | MMU (1) Location-agnostic (2) (3) specific set of products Containerized ModulesG-CON POD MMU |
-                
-                      
-
-                    
-                    ********  
-  
-****  
-  
-  
-  
-****  
-  
-  
-  
-  
-  
-**
-                
-| MMU VendorMMU | The company that assembles the mobile manufacturing units and provides them to the initially qualified site. These are usually enabling companies that provide units, modules, and associated services to end-user pharmaceutical companies and perform the initial qualification of major facility systems like water and air, but not product- or process-specific aspects of validation. | MMU • MMU • HVAC • • MMU MMU G-CON ManufacturingSartorius StedimThermo FisherPatheon |
-                
-                      
-
-                    
-                    ****  
-  
-
-                
-| Off-site | The site where the MMU is deployed for product manufacture. | MMU ——On-site |
-                
-                      
-
-                    
-                    ********  
-  
-**  
-  
-
-                
-| On-site | The site where the MMU is fully qualified (initially qualified site) for manufacture of a pharmaceutical product or set of products. Note: This is usually a fixed site at a pharma company. | On-site PtC-15 MMU —— MMU QMS ——PtC-15 MMU |
-            
-        
-
-    
 
     
     
@@ -600,29 +485,6 @@ Although not stated explicitly as a numbered hierarchy in PtC-15, the document's
             
 
 ## Abbreviations —
-
-            
-                
-                    
-                        
-                        
-                    
-| Abbreviation | Full Form |
-| --- | --- |
-                
-                
-                    
-                        ****
-                        
-                    
-| FEI | FDA Establishment Identification |
-                    
-                        ****
-                        
-                    
-| MMU | Mobile Manufacturing Unit |
-                
-            
 
             
 
@@ -639,79 +501,6 @@ Note: PtC-15 uses a minimal set of abbreviations. Additional technical abbreviat
             
 
             
-                
-                    
-                        
-                        
-                        
-                    
-| --- | --- | --- |
-                
-                
-                    
-                        ****
-                        
-                        
-                    
-| GMP | Good Manufacturing Practice | |
-                    
-                        ****
-                        
-                        
-                    
-| FAT | Factory Acceptance Test | |
-                    
-                        ****
-                        
-                        
-                    
-| SAT | Site Acceptance Test | |
-                    
-                        ****
-                        
-                        
-                    
-| CQV | Commissioning, Qualification & Validation | |
-                    
-                        ****
-                        
-                        
-                    
-| PQS | Pharmaceutical Quality System | |
-                    
-                        ****
-                        
-                        
-                    
-| FEI | FDA Establishment Identification | FDA |
-                    
-                        ****
-                        
-                        
-                    
-| DM | Distributed Manufacturing | |
-                    
-                        ****
-                        
-                        
-                    
-| SUT | Single-Use Technology | |
-                    
-                        ****
-                        
-                        
-                    
-| PI | Process Intensification | |
-                    
-                        ****
-                        
-                        
-                    
-| ISBU | ISO Shipping Container Unit | |
-                
-            
-
-        
 
     
 
@@ -725,64 +514,6 @@ Note: PtC-15 uses a minimal set of abbreviations. Additional technical abbreviat
 ## Key Concept Relationships
 
             
-
-                
-
-#### Stick-Built vs. Prefabricated vs. Mobile — The Spectrum
-
-                
-                    
-                        
-                            
-                            
-                            
-                            
-                        
-| Feature | Stick-Built | Prefabricated | MMU |
-| --- | --- | --- | --- |
-                    
-                    
-                        
-                            
-                            
-                            
-                            
-                        
-| Construction location | On-site | Off-site, assembled on-site | Off-site, self-contained |
-                        
-                            
-                            
-                            
-                            
-                        
-| Relocatable? | No | Generally No | Yes — by design |
-                        
-                            
-                            
-                            
-                            
-                        
-| Qualification approach | Site-specific, full IQ/OQ/PQ | FAT + SAT (limited portability) | FAT-based, portable qualification |
-                        
-                            
-                            
-                            
-                            
-                        
-| Time-to-manufacture | 3–5+ years | 2–3 years | Months (after initial qual) |
-                        
-                            
-                            
-                            
-                            
-                        
-| Regulatory model | Site-registered | Site-registered | Unit-registered (concept) |
-                    
-                
-
-            
-
-        
 
         
 
@@ -985,18 +716,6 @@ The abbreviation table is minimal (only FEI and MMU), but the document relies he
         
 
     
-
-    
-
-PDA Points to Consider No. 15 (2025) — Mobile Manufacturing
-
-    
-
-Section 0: Introduction & Glossary | p1–p4
-
-    
-
-Educational material for internal use. Source: © 2025 Parenteral Drug Association, Inc. Licensed to Kuo, Li-Hung / Amaran Biotechnology, Inc.
 
 ⇧
 
@@ -1214,53 +933,6 @@ Key enabling factors for mobile manufacturing include:
 
                         
 
-                        
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| --- | --- | --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| Stick-built | 3-5 | | | |
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| Modular | 1-3 | | | |
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| MMU | 6-18 | | | |
-                            
                         
 
                     
@@ -1520,54 +1192,6 @@ The PDA PtC-15 document identifies multiple strategic advantages driven by techn
 
                         
 
-#### MMU
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| | | SAT |
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-| | FAT | |
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-                            
-                        
-
-                    
-
-                    
-
-                        
-
 #### CDMO — Q1.2
 
                         
@@ -1737,68 +1361,6 @@ After initial process validation at the on-site (initially qualified) location, 
 
                         
 
-                        
-
-                    
-
-                    
-
-                        
-
-#### FAT vs. SAT
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| | FAT | SAT |
-| --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| (IQ) | | |
-                                
-                                    
-                                    
-                                    
-                                
-| (OQ) | | |
-                                
-                                    
-                                    
-                                    
-                                
-| HVAC | | |
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-| (PQ) | | |
-                                
-                                    
-                                    
-                                    
-                                
-| | | / |
-                            
                         
 
                     
@@ -2153,61 +1715,6 @@ While PDA PtC-15 explicitly excludes point-of-care (POC) manufacturing from its 
 
                         
 
-#### MMU
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| | Tech Transfer | MMU Tech Transfer |
-| --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-| | Scale-up/down | |
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-| | PAS | CBE-30 |
-                                
-                                    
-                                    
-                                    
-                                
-| | 12-24 | 3-6 SAT |
-                            
-                        
-
-                    
-
-                    
-
-                        
-
 #### vs.
 
                         
@@ -2475,18 +1982,6 @@ While PDA PtC-15 explicitly excludes point-of-care (POC) manufacturing from its 
         
 
     
-
-    
-
-PDA Points to Consider No. 15 — Mobile Manufacturing of Pharmaceutical Products
-
-    
-
-Topic 1: Technology Considerations | pp. 5–9 | © 2025 Parenteral Drug Association, Inc.
-
-    
-
-Educational commentary in Traditional Chinese. Licensed to Kuo, Li-Hung / Amaran Biotechnology, Inc.
 
 ⇧
 
@@ -2792,47 +2287,6 @@ ICH Q10 establishes the Pharmaceutical Quality System (PQS) framework. Its site 
 
                 
 
-#### FDA
-
-                
-                    
-                        
-                            
-                            
-                            
-                        
-| --- | --- | --- |
-                    
-                    
-                        
-                            
-                            
-                            
-                        
-| | Prior Approval Supplement (PAS) | 6–12 |
-                        
-                            
-                            
-                            
-                        
-| | CBE-30 | 30 |
-                        
-                            
-                            
-                            
-                        
-| | Annual Report | |
-                    
-                
-
-                
-
-            
-
-            
-
-                
-
 #### 
 
                 
@@ -2880,6 +2334,16 @@ ICH Q10 establishes the Pharmaceutical Quality System (PQS) framework. Its site 
     
 
     
+
+                
+
+#### FDA
+
+                
+
+            
+
+            
     
     
     
@@ -3075,68 +2539,6 @@ The designation of a platform manufacturing technology should be considered earl
 ### Summary: Regulatory Actions to Facilitate MMU
 
             
-                
-                    
-                        
-                        
-                        
-                    
-| Action Category | Specific Action | Lead Agency / Body |
-| --- | --- | --- |
-                
-                
-                    
-                        
-                        
-                        
-                    
-| Administrative Reform | Revise FEI system to track MMUs by manufacturer rather than address | FDA |
-                    
-                        
-                        
-                        
-                    
-| Administrative Reform | Allow single manufacturing license to follow the MMU system, not the address | EMA, national competent authorities |
-                    
-                        
-                        
-                        
-                    
-| Validation Flexibility | Implement "family approach" — one unit qualified, reduced testing for identical follow-on units | All agencies (ICH Q7/Q10) |
-                    
-                        
-                        
-                        
-                    
-| Supply Chain | Allow bulk release of raw materials / WFI at a central site for distribution to MMUs | FDA, EMA |
-                    
-                        
-                        
-                        
-                    
-| Innovation Programs | Expand Platform Technology Designation to include manufacturing platforms | FDA |
-                    
-                        
-                        
-                        
-                    
-| Advanced Manufacturing | Create MMU-specific frameworks under ATMPs / distributed manufacturing guidance | MHRA, Health Canada |
-                    
-                        
-                        
-                        
-                    
-| Early Dialogue | Pre-submission meetings (ETP, INTERACT) for first-in-kind MMU projects | FDA, EMA, MHRA |
-                    
-                        
-                        
-                        
-                    
-| International Harmonization | ICH guideline development for multi-site validation of modular manufacturing | ICH, WHO |
-                
-            
-
-        
 
         
 
@@ -3294,45 +2696,6 @@ Building on Q1.3, elements to address for MMU validation include:
 
                 
 
-                
-
-            
-
-            
-
-                
-
-#### 
-
-                
-                    
-                        
-                            
-                            
-                            
-                        
-| --- | --- | --- |
-                    
-                    
-                        
-                            
-                            
-                            
-                        
-| | MMU Vendor Site | IQ/OQHVAC |
-                        
-                            
-                            
-                            
-                        
-| | Initially Qualified Site | PV |
-                        
-                            
-                            
-                            
-                        
-| | New Field Location | PQ |
-                    
                 
 
             
@@ -3758,140 +3121,6 @@ Shipping the MMU itself is a validation exercise. Key elements:
 The following table summarizes the key regulatory compliance expectations for mobile manufacturing units across major pharmaceutical regulatory jurisdictions. These expectations reflect the **current regulatory framework** for fixed facilities as applied to MMU scenarios, along with known challenges and emerging opportunities.
 
             
-                
-                    
-                        
-                        
-                        
-                        
-                    
-| Region / Agency | Key Regulatory Framework | MMU-Relevant Requirements & Challenges | Emerging Opportunities |
-| --- | --- | --- | --- |
-                
-                
-                    
-                        ****  
-
-                          
-  
-  
-
-                          
-  
-  
-
-                          
-  
-  
-
-                    
-| United StatesFDA (CDER/CBER) | 21 CFR 210/211 (cGMP)21 CFR 207 (Drug Establishment Registration)FD&C Act Section 501PDUFA / GDUFA Fee Frameworks | FEI number tied to physical address; must reregister on relocation.                             NDA/BLA/ANDA site changes require PAS (Prior Approval Supplement) or CBE-30.                             State board of pharmacy registration required in each state of operation.                             100% facility inspection concept may require each MMU to be individually inspected. | Emerging Technology Program (ETP) for early dialogue.                             Platform Technology Designation (draft guidance).                             Advanced Manufacturing Technologies (AMT) Designation.                             INTERACT meetings for novel manufacturing approaches. |
-                    
-                        ****  
-
-                          
-  
-  
-  
-
-                          
-  
-  
-
-                          
-  
-
-                    
-| European UnionEMA + National Competent Authorities | EU GMP (EudraLex Vol. 4)Annex 1 (2023) — Sterile ManufacturingDirective 2001/83/ECEMA Commission Decision 2021/1240Variation Regulation (EC) No. 1234/2008 | Manufacturing Authorisation (MA) issued per site by national authority (e.g., MHRA, BfArM).                             New primary manufacturing site = Type II Major Variation (60–90 day review).                             GMP Certificate required per site; issued after inspection by national authority.                             Cross-border MMU movement requires separate MA in each EU member state. | PRIME designation for advanced therapies.                             EMA Scientific Advice for novel manufacturing approaches.                             MHRA (post-Brexit) developing flexible frameworks for ATMPs and distributed manufacturing. |
-                    
-                        ****  
-
-                          
-  
-
-                          
-  
-  
-
-                          
-  
-
-                    
-| JapanPMDA | Pharmaceutical and Medical Devices Act (PMD Act)GMP Ministerial Ordinance No. 179PMDA Review Guidance | Manufacturing site registration mandatory for all domestic and foreign sites.                             Site changes require prior approval under PMD Act before implementation.                             Foreign manufacturers must have a Japan-registered agent (MAH surrogate).                             Conservative regulatory culture; limited precedent for mobile or modular manufacturing. | PMDA Sakigake designation (fast-track for innovative products).                             PMDA RS Strategy (regulatory science) initiatives for advanced manufacturing.                             MOU with FDA and EMA for mutual recognition of inspection data. |
-                    
-                        ****  
-
-                          
-  
-
-                          
-  
-
-                          
-  
-
-                    
-| CanadaHealth Canada (HC) | Food and Drugs ActFood and Drug Regulations (C.02)HC GMP Guidelines (GUI-0001) | Drug Establishment License (DEL) required for each manufacturing site.                             Site changes require DEL amendment and potentially Supplemental New Drug Submission (SNDS).                             Inspection required before DEL is granted for new sites. | Health Canada is actively developing frameworks for Advanced Therapeutic Products (ATPs).                             Early engagement encouraged for novel manufacturing technologies.                             MRA with EMA enables recognition of some inspection data, potentially streamlining multi-site work. |
-                    
-                        ****  
-
-                          
-  
-
-                          
-  
-
-                          
-  
-
-                    
-| United KingdomMHRA | Human Medicines Regulations 2012UK GMP (post-Brexit, aligned with EU GMP)MHRA Innovation Office | Manufacturer's Licence (ML) required per site, similar to EU MA.                             Site changes require variation to Marketing Authorisation.                             GMP Certificate issued after MHRA inspection. | MHRA actively developing flexible regulatory pathways for decentralized and point-of-care manufacturing.                             MHRA Innovation Office provides early dialogue for novel manufacturing approaches.                             Accelerated Access Review (AAR) program could benefit MMU products. |
-                    
-                        ****  
-
-                          
-  
-
-                          
-  
-  
-
-                          
-
-                    
-| BrazilANVISA | RDC No. 301/2019 (GMP)Resolução RDC 204/2017ANVISA GMP Certification Program | Manufacturing site authorization required; tied to specific address.                             Foreign manufacturing sites must hold valid GMP certification from home country or ANVISA inspection.                             Site changes require regulatory submission and potentially new GMP certification.                             Complex regulatory landscape with requirements for local product registration (GGMED). | ANVISA is a member of PANDRH (Pan American Network for Drug Regulatory Harmonization).                             Brazil's regulatory modernization efforts (MDER) may create new pathways for innovative manufacturing. |
-                    
-                        ****  
-
-                          
-  
-
-                          
-  
-  
-
-                          
-  
-
-                    
-| ChinaNMPA (formerly CFDA) | Drug Administration Law (2019 revision)GMP for Pharmaceutical Products (2010)NMPA Regulation on Drug Registration | GMP Certificate required per manufacturing site; significant local inspection requirements.                             Foreign manufacturers exporting to China must register sites with NMPA and may face on-site inspections.                             Site changes require supplemental registration; prior approval required for major changes.                             Political and trade factors can influence regulatory timelines. | China's "Healthy China 2030" initiative includes focus on advanced manufacturing.                             NMPA ICH membership (since 2017) drives harmonization with global standards.                             Drug registration reform has streamlined some pathways for innovative products. |
-                    
-                        ****
-                          
-  
-
-                          
-  
-
-                          
-  
-
-                    
-| WHO / Developing Countries | WHO GMP Guidelines (Technical Report Series)WHO Prequalification ProgrammeStringent Regulatory Authority (SRA) reliance models | Many developing countries rely on WHO Prequalification or SRA approval for drug registration.                             Mobile manufacturing in these contexts may face less formal regulatory barriers but more logistical ones.                             Supply chain security, cold chain infrastructure, and local QC capacity are key challenges. | WHO Prequalification pathway may be the fastest route for MMU deployment in endemic disease contexts.                             COVAX and pandemic preparedness frameworks showed potential for expedited approvals.                             Emergency Use Listing (EUL) could apply to MMU products in crisis scenarios. |
-                
-            
-
-        
 
         
 
@@ -3909,85 +3138,6 @@ The following table summarizes the key regulatory compliance expectations for mo
 
                 
 
-                
-
-            
-
-            
-
-                
-
-#### MMU
-
-                
-                    
-                        
-                            
-                            
-                            
-                            
-                        
-| | | | MMU |
-| --- | --- | --- | --- |
-                    
-                    
-                        
-                            
-                            
-                            
-                            
-                        
-| MHRA | | Innovation Office | |
-                        
-                            
-                            
-                            
-                            
-                        
-| Health Canada | | ATP | |
-                        
-                            
-                            
-                            
-                            
-                        
-| FDA | | ETP / AMT | |
-                        
-                            
-                            
-                            
-                            
-                        
-| EMA | | Scientific Advice | |
-                        
-                            
-                            
-                            
-                            
-                        
-| PMDA | | Sakigake | |
-                        
-                            
-                            
-                            
-                            
-                        
-| NMPA | | | |
-                        
-                            
-                            
-                            
-                            
-                        
-| ANVISA | | PANDRH | |
-                        
-                            
-                            
-                            
-                            
-                        
-| WHO | | EUL | |
-                    
                 
 
             
@@ -4061,95 +3211,6 @@ The following table summarizes the key regulatory compliance expectations for mo
         
 
         
-            
-                
-                    
-                    
-                    
-                    
-                    
-                    
-                
-| Jurisdiction / | Primary GMP Regulation / | Site Licensing Mechanism / | Site Change Filing Type / | Innovation Dialogue Channel / | MMU Specific Guidance Exists? / MMU |
-| --- | --- | --- | --- | --- | --- |
-            
-            
-                
-                    
-                    
-                    
-                    
-                    
-                    
-                
-| US (FDA) | 21 CFR 210/211 | Drug Establishment Registration + FEI Number | PAS / CBE-30 / Annual Report (by risk level) | ETP, INTERACT, Pre-Sub Meeting | No |
-                
-                    
-                    
-                    
-                    
-                    
-                    
-                
-| EU (EMA + NCA) | EudraLex Vol. 4 + Annex 1 | Manufacturing Authorisation (per site, per member state) | Type IA / IB / II Variation (by risk level) | EMA Scientific Advice, PRIME | No |
-                
-                    
-                    
-                    
-                    
-                    
-                    
-                
-| UK (MHRA) | UK GMP (post-Brexit) | Manufacturer's Licence (ML) | Variation to MA | MHRA Innovation Office, Accelerated Access | In development |
-                
-                    
-                    
-                    
-                    
-                    
-                    
-                
-| Japan (PMDA) | PMD Act + GMP Ordinance No. 179 | Manufacturing Site Registration (per address) | Prior Approval required for major site changes | Sakigake, PMDA RS Strategy | No |
-                
-                    
-                    
-                    
-                    
-                    
-                    
-                
-| Canada (HC) | C.02 + GUI-0001 | Drug Establishment License (DEL) | DEL Amendment + SNDS for major changes | HC Pre-submission, ATP Framework | In development |
-                
-                    
-                    
-                    
-                    
-                    
-                    
-                
-| Brazil (ANVISA) | RDC No. 301/2019 | Site Authorization (per address) | Regulatory submission required | PANDRH, MDER Modernization | No |
-                
-                    
-                    
-                    
-                    
-                    
-                    
-                
-| China (NMPA) | Drug Administration Law + GMP 2010 | GMP Certificate (per site) | Supplemental Registration (prior approval for major changes) | NMPA ICH alignment initiatives | No |
-                
-                    
-                    
-                    
-                    
-                    
-                    
-                
-| WHO (Developing Countries) | WHO GMP TRS (Technical Report Series) | WHO Prequalification + SRA Reliance | Prequalification update required for site changes | Emergency Use Listing (EUL), COVAX | Partial (crisis context) |
-            
-        
-
-    
 
     
     
@@ -4313,17 +3374,5 @@ The following table summarizes the key regulatory compliance expectations for mo
         
 
     
-
-    
-
-PDA Points to Consider No. 15 — Mobile Manufacturing Units
-
-    
-
-Topic 2: Regulatory Considerations  |  Topic 3: Implementation  |  Appendix A: Regional Compliance
-
-    
-
-Licensed to Kuo, Li-Hung / Amaran Biotechnology, Inc.  |  Bilingual Educational Edition  |  © 2025 Parenteral Drug Association, Inc.
 
 ⇧

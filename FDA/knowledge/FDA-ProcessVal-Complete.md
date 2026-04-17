@@ -189,80 +189,6 @@ The lifecycle concept links product and process development, qualification of th
 ### Scope Table
 
                     
-                        
-                            
-                                
-                                
-                                
-                            
-| Product Category | In Scope? | Notes |
-| --- | --- | --- |
-                        
-                        
-                            
-                                
-                                
-                                
-                            
-| Human drugs (finished) | YES | Core application |
-                            
-                                
-                                
-                                
-                            
-| Veterinary drugs | YES | CVM oversight |
-                            
-                                
-                                
-                                
-                            
-| Biological / biotech products | YES | CBER oversight |
-                            
-                                
-                                
-                                
-                            
-| Active Pharmaceutical Ingredients (APIs) | YES | Also see ICH Q7 |
-                            
-                                
-                                
-                                
-                            
-| Drug-device combination product (drug constituent) | YES | Drug part only |
-                            
-                                
-                                
-                                
-                            
-| Medical devices | NO | See GHTF guidance |
-                            
-                                
-                                
-                                
-                            
-| Dietary supplements | NO | Different regulations |
-                            
-                                
-                                
-                                
-                            
-| Type A medicated feed | NO | Excluded explicitly |
-                            
-                                
-                                
-                                
-                            
-| Human tissues for transplantation | NO | PHS Act section 361 |
-                            
-                                
-                                
-                                
-                            
-| Computerized process control systems (CSV) | PARTIAL | Processes with automated equipment are covered; the computer systems validation itself is not |
-                        
-                    
-
-                    
 
                         **Important Clarification:** This guidance "does not specify what information should be included as part of a regulatory submission." Submission content requirements are addressed by separate product-specific guidances from CDER, CBER, or CVM.
                     
@@ -396,32 +322,6 @@ FDA has the authority and responsibility to inspect and evaluate process validat
                     
 
                     
-                        
-                            
-                                
-                                
-                                
-                            
-| Regulation | Key Requirement | Validation Link |
-| --- | --- | --- |
-                        
-                        
-                            
-                                
-                                
-                                
-                            
-| 21 CFR 211.100(a) | Written procedures for production & process controls | Establishes authority for requiring validated processes with documented procedures |
-                            
-                                
-                                
-                                
-                            
-| 21 CFR 211.110(a) | In-process controls to monitor & validate process performance | Direct statutory basis for process validation; requires monitoring for variability |
-                        
-                    
-
-                
 
                 
                 
@@ -488,32 +388,6 @@ FDA has the authority and responsibility to inspect and evaluate process validat
 
                         
 
-#### vs
-
-                        
-                            
-                                
-| | 1987 | 2011 |
-| --- | --- | --- |
-                            
-                            
-                                
-                                
-| | 3 | |
-                                
-| | | Stage 3 |
-                                
-| | | ICH Q9 |
-                                
-                            
-                        
-
-                    
-
-                    
-
-                        
-
 ## Process Validation and Drug Quality
 
                 
@@ -562,34 +436,6 @@ This statement represents a foundational shift in pharmaceutical quality philoso
 ### Three Pillars of Quality Assurance
 
                     
-                        
-                            
-| Pillar | What It Means | How Validation Supports It |
-| --- | --- | --- |
-                        
-                        
-                            
-                                
-                                
-                                
-                            
-| Design/Build in Quality | QA begins at product design; quality attributes are defined early | Stage 1 establishes the commercial process from development knowledge |
-                            
-                                
-                                
-                                
-                            
-| Testing Cannot Ensure Quality | Sampling is inherently limited; cannot test every unit | Process control and validation provide the assurance testing cannot |
-                            
-                                
-                                
-                                
-                            
-| Every Step Controlled | Each unit operation is understood and controlled | Stages 2 & 3 confirm and maintain process control at each step |
-                        
-                    
-
-                
 
                 
                 
@@ -1183,46 +1029,6 @@ Each manufacturer should judge whether it has gained sufficient understanding to
 ### Sources of Variation in Manufacturing
 
                     
-                        
-                            
-| Source | Examples | Control Approach |
-| --- | --- | --- |
-                        
-                        
-                            
-                                
-                                
-                                
-                            
-| Raw Materials | API particle size, excipient moisture, buffer pH | Supplier qualification, incoming testing, specification tightening |
-                            
-                                
-                                
-                                
-                            
-| Equipment | Pump calibration drift, filter integrity, sterilizer load pattern | Preventive maintenance, calibration program, OQ verification |
-                            
-                                
-                                
-                                
-                            
-| Environment | Temperature, humidity, cleanroom pressure differentials | HVAC control, environmental monitoring, alarm systems |
-                            
-                                
-                                
-                                
-                            
-| Personnel | Aseptic technique, gowning, media fill performance | Training qualification, media fill program, SOP compliance |
-                            
-                                
-                                
-                                
-                            
-| Process Steps | Mixing time, fill speed, sterilization time/temperature | CPP identification, in-process controls, SPC monitoring |
-                        
-                    
-
-                
 
                 
                 
@@ -1360,58 +1166,6 @@ Each manufacturer should judge whether it has gained sufficient understanding to
 ### Interconnected Guidance Framework
 
                     
-                        
-                            
-| Document | Focus | Relationship to Process Validation |
-| --- | --- | --- |
-                        
-                        
-                            
-                                
-                                
-                                
-                            
-| FDA PV 2011 (this guidance) | Process Validation Lifecycle | Primary document — defines 3 stages |
-                            
-                                
-                                
-                                
-                            
-| ICH Q8(R2) | Pharmaceutical Development | Provides QbD framework for Stage 1 (design space, CQA/CPP) |
-                            
-                                
-                                
-                                
-                            
-| ICH Q9 | Quality Risk Management | Risk-proportionate control strategy across all 3 stages |
-                            
-                                
-                                
-                                
-                            
-| ICH Q10 | Pharmaceutical Quality System | Organizational framework enabling Stage 3 continuous monitoring |
-                            
-                                
-                                
-                                
-                            
-| ICH Q7 | API GMP | Specific process validation requirements for APIs (Section XII) |
-                            
-                                
-                                
-                                
-                            
-| 21 CFR 211.100(a) | Written procedures | Statutory basis for requiring validated, documented processes |
-                            
-                                
-                                
-                                
-                            
-| 21 CFR 211.110(a) | In-process controls | Direct regulatory requirement to monitor and validate process performance |
-                        
-                    
-
-                
 
                 
 
@@ -2219,56 +1973,6 @@ The terms *attribute(s)* (quality, product, component) and *parameter(s)* (proce
 #### 
 
                         
-                            
-                                
-                                    
-                                    
-                                
-| --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                
-| | CQA |
-                                
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                
-| | DOE Cpk |
-                                
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                
-                            
-                        
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
 
                     
 
@@ -2809,122 +2513,6 @@ Control Strategy & Design Space
             
 
                 
-                    
-                        
-                            
-                            
-                            
-                        
-| / Dimension | CQA — (Critical Quality Attribute) | CPP — (Critical Process Parameter) |
-| --- | --- | --- |
-                    
-                    
-                        
-                            ****
-                            
-                            
-                        
-| Definition | output | CQA input |
-                        
-                            ****
-                            
-                            
-                        
-| Nature | | |
-                        
-                            ****
-                            
-                            
-                        
-| How to Identify | QTPP → → → CQA | CQA → → DOE → → CPP |
-                        
-                            ****
-                            
-                            
-                        
-| Control Method | specification | operating range/ |
-                        
-                            ****
-                            
-- 
-- 
-- 
-- 
-- 
-
-                            
-- 
-- 
-- 
-- 
-- 
-
-                        
-| General Pharma | Content Uniformity Dissolution Profile Particle Size Distribution Moisture Content Related Substances | Granulation Liquid Volume Spray Rate Blending Time & Speed Drying Temperature Compression Force |
-                        
-                            ****
-                            
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-
-                            
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-
-                        
-| Sterile Mfg | Sterility——SAL ≤ 10⁻⁶ Particulate Matter Visible Particles pH pH Osmolality Fill Volume Container Closure Integrity / Potency / Assay | Filter Differential Pressure Fill Temperature Bubble Point / Diffusion Shelf Temperature, Primary Drying Chamber Pressure Stoppering Force Fill Needle Height Cleanroom Classification |
-                        
-                            ****
-                            
-- 
-- 
-- 
-- 
-- 
-
-                            
-- 
-- 
-- 
-- 
-- 
-
-                        
-| Biologics | Protein Purity by SEC-HPLC Aggregation Level Glycosylation Profile Biological Activity HCP Host Cell Protein Residual | pHCell Culture pH Dissolved Oxygen % Harvest Timing / Viability Column Flow Rate pH VI pH & Hold Time |
-                        
-                            ****
-                            
-                            
-                        
-| Who Defines | QTPP+ /+ QA | DOE + + |
-                        
-                            ****
-                            
-                            
-                        
-| Regulatory Docs | Drug Master File (DMF)NDA/BLA | (PVP) (BMR) |
-                        
-                            ****
-                            
-                            
-                        
-| If Out of Spec | OOS + / sterility | + + |
-                    
-                
-
-            
 
             
 
@@ -3160,82 +2748,10 @@ state of control
 ### Section I-II Summary Table /
 
                 
-                    
-                        
-                            
-                            
-                            
-                        
-| Topic / | Key FDA Requirement / FDA | Practical Implication / |
-| --- | --- | --- |
-                    
-                    
-                        
-                            
-                            
-                            
-                        
-| Legal basis / | FDCA 501(a)(2)(B): Non-compliance = adulterated drug | Process validation is legally mandatory, not optional |
-                        
-                            
-                            
-                            
-                        
-| Production procedures / | §211.100(a): Written procedures must assure identity, strength, quality, purity | Every process parameter in BMR needs scientific justification |
-                        
-                            
-                            
-                            
-                        
-| In-process controls / | §211.110(a)(b): Controls must monitor output AND be statistically derived | IPC specifications must be statistically linked to final product specs |
-                        
-                            
-                            
-                            
-                        
-| Periodic review / | §211.180(e): Ongoing review to maintain state of control | Annual PQR / CPV program is a legal requirement, not best practice |
-                        
-                            
-                            
-                            
-                        
-| Team approach / | Multi-disciplinary expertise required; senior management support essential | Validation cannot be siloed within QA alone |
-                        
-                            
-                            
-                            
-                        
-| Risk-based thinking / | Criticality as a continuum; degree of control proportional to risk | Replace binary critical/non-critical with risk-scored control tiers |
-                        
-                            
-                            
-                            
-                        
-| QbD alignment / QbD | Process understanding (DOE, design space, prior knowledge) reduces validation burden | Invest in Stage 1 knowledge to make Stage 2 confirmatory, not exploratory |
-                        
-                            
-                            
-                            
-                        
-| Legacy products / | Begin lifecycle implementation at Stage 3 (CPV) | Use CPV data to retroactively build process understanding |
-                    
-                
-
-            
 
         
 
     
-
-    
-
-**FDA Guidance: Process Validation — General Principles and Practices (January 2011)**
-
-    
-
-    
-
-SterileGMP Knowledge Hub  •  Educational Resource  •  Contains Nonbinding Recommendations
 
 ⇧
 
@@ -3786,99 +3302,6 @@ The central task of Stage 1 is identifying which process parameters are truly **
 
                     
 
-### CPP / CQA Mapping Table — Sterile Fill-Finish | CPP/CQA
-
-                    
-                        
-                            
-                                
-                                
-                                
-                                
-                            
-| Unit Operation | Critical Process Parameter (CPP) | Critical Quality Attribute (CQA) | Risk Level |
-| --- | --- | --- | --- |
-                        
-                        
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Compounding | Mixing speed, time, temperature | Assay, uniformity, pH pH | High |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Compounding | Dissolution order of components | Assay, appearance | Medium |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Bioburden reduction filtration | Filter integrity, differential pressure | Bioburden | High |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Sterilizing filtration | Filtration time, pressure, temperature | Sterility, assay | High |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Aseptic filling | Fill speed, fill weight, needle position | Fill weight accuracy, particulates | High |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Aseptic filling | Environmental conditions (ISO Class) | Sterility, bioburden | High |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Stoppering/Capping | Stopper insertion force, capping torque | Container closure integrity (CCI) | High |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Lyophilization | Shelf temp ramp rate, condenser temp | Residual moisture, appearance | High |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Lyophilization | Chamber pressure during primary drying | Cake appearance, reconstitution time | Medium |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Visual inspection | Inspection speed, light intensity, background | Particulates, appearance defects | Medium |
-                        
-                    
-
-                
-
-                
-
-                    
-
 ### Stage 1CPP
 
                     
@@ -3963,6 +3386,14 @@ The central task of Stage 1 is identifying which process parameters are truly **
 
         
 
+                    
+
+### CPP / CQA Mapping Table — Sterile Fill-Finish | CPP/CQA
+
+                    
+
+                
+
     
 
     
@@ -4009,62 +3440,6 @@ One of the primary outputs of Stage 1 DOE work is the establishment of operating
 ### NOR vs PAR — Comparison Table
 
                     
-                        
-                            
-                                
-                                
-                                
-                            
-| Attribute | NOR (Normal Operating Range) | PAR (Proven Acceptable Range) |
-| --- | --- | --- |
-                        
-                        
-                            
-                                ****
-                                
-                                
-                            
-| Definition | The range within which a process parameter is routinely controlled during commercial production | The range studied and demonstrated to provide acceptable product quality; wider than NOR |
-                            
-                                ****
-                                
-                                
-                            
-| Purpose | Day-to-day manufacturing control | Regulatory filing; demonstrates understanding of process space |
-                            
-                                ****
-                                
-                                
-                            
-| Width | Narrower (tighter) | Wider — provides buffer beyond NOR NOR |
-                            
-                                ****
-                                
-                                
-                            
-| Where documented | Master Batch Record (MBR) / SOP / | Development/Design Report; Regulatory Filing (CTD) / |
-                            
-                                ****
-                                
-                                
-                            
-| Exceedance impact | Deviation; immediate investigation required | Requires evaluation; may still be acceptable |
-                            
-                                ****
-                                
-                                
-                            
-| Established by | Based on PAR + routine control needs; risk-based PAR | DOE studies; scale-up experiments; scientific data DOE |
-                            
-                                ****
-                                
-                                
-                            
-| Example (fill speed) | 3,000–3,200 vials/hour (NOR) | 2,500–3,500 vials/hour (PAR) |
-                        
-                    
-
-                
 
                 
 
@@ -4358,74 +3733,6 @@ In Stage 1, understanding how component characteristics affect the process is es
 ### Critical Material Attributes (CMAs) by Category
 
                     
-                        
-                            
-                                
-                                
-                                
-                            
-| Material Category | Critical Attribute (CMA) | Impact on Process / CQA /CQA |
-| --- | --- | --- |
-                        
-                        
-                            
-                                ****
-                                
-                                
-                            
-| API () | Particle size distribution | Dissolution rate, content uniformity |
-                            
-                                ****
-                                
-                                
-                            
-| API () | Polymorphic form | Solubility, stability |
-                            
-                                ****
-                                
-                                
-                            
-| API () | Protein aggregation | Immunogenicity, potency |
-                            
-                                ****
-                                
-                                
-                            
-| API () | Charge variants / glycosylation pattern / | Biological activity, CCI |
-                            
-                                ****
-                                
-                                
-                            
-| Excipient () | Moisture content (lyoprotectant) | Lyophilized cake quality |
-                            
-                                ****
-                                
-                                
-                            
-| Excipient () | Viscosity of polymer solutions | Filterability, fill accuracy |
-                            
-                                ****
-                                
-                                
-                            
-| Container/Closure / | Stopper dimensional tolerance | CCI, stoppering force, extractables CCI |
-                            
-                                ****
-                                
-                                
-                            
-| Container/Closure / | Vial breakage resistance | Visible particulates, CCI CCI |
-                            
-                                ****
-                                
-                                
-                            
-| Water for Injection (WFI) | TOC, conductivity, endotoxin TOC | Product quality, safety |
-                        
-                    
-
-                
 
                 
 
@@ -4596,55 +3903,6 @@ Computer-based or virtual simulations of certain unit operations can provide pro
                     
 
 ### 
-
-                    
-
-                        
-
-#### Scale-Up
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| | / | |
-| --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| Compounding | 1–10 L | 500–2000 L |
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-| | / | 3,000–10,000/ |
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-                            
-                        
-
-                    
 
                     
 
@@ -4984,76 +4242,6 @@ The **Process Design Report (PDR)** or **Development Report** is the primary out
                     
 
 ### 
-
-                    
-
-                        
-
-#### PDR
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| Section | Content | |
-| --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| 1. | CQA | |
-                                
-                                    
-                                    
-                                    
-                                
-| 2. | | |
-                                
-                                    
-                                    
-                                    
-                                
-| 3. CPP/CMA | DOE | |
-                                
-                                    
-                                    
-                                    
-                                
-| 4. | CPPNORPAR | |
-                                
-                                    
-                                    
-                                    
-                                
-| 5. | | |
-                                
-                                    
-                                    
-                                    
-                                
-| 6. | | |
-                                
-                                    
-                                    
-                                    
-                                
-| 7. | | |
-                                
-                                    
-                                    
-                                    
-                                
-| 8. | Stage 2 | |
-                            
-                        
-
-                    
 
                     
 
@@ -5545,82 +4733,9 @@ Qualification of utilities and equipment generally includes the following activi
                 
 
                 
-                    
-                        
-                            
-                            
-                            
-                        
-| FDA Activity Description | Qualification Phase | Key Question Answered |
-| --- | --- | --- |
-                    
-                    
-                        
-                            
-                            
-                            
-                        
-| Selecting materials, operating principles, and performance characteristics appropriate for specific uses | Design / IQ Basis | Is this equipment right for this use? |
-                        
-                            
-                            
-                            
-                        
-| Verifying equipment is built and installed per design specifications (materials, capacity, calibration) | IQ — Installation Qualification | Was it built and installed as designed? |
-                        
-                            
-                            
-                            
-                        
-| Verifying operation within all anticipated operating ranges, under load, with interventions and start/stop | OQ — Operational Qualification | Does it operate correctly across expected ranges? |
-                        
-                            
-                            
-                            
-                        
-| Demonstrating consistent performance during actual manufacturing conditions (integrated into PPQ) | PQ — Performance Qualification | Does it perform reliably in production conditions? |
-                    
-                
 
             
 
-            
-
-                
-
-                
-                    
-                        
-                            
-                            
-                            
-                            
-                        
-| --- | --- | --- | --- |
-                    
-                    
-                        
-                            ****
-                            
-                            
-                            
-                        
-| IQ | | MOC | IQ |
-                        
-                            ****
-                            
-                            
-                            
-                        
-| OQ | | vials/hr±2%NFF | OQ |
-                        
-                            ****
-                            
-                            
-                            
-                        
-| PQ | | EM | PQ EM PPQ |
-                    
                 
 
                 
@@ -6202,91 +5317,6 @@ Considerations for the duration of the heightened sampling and monitoring period
 ## Comparison: PPQ vs. Routine Commercial Production
 
             
-                
-                    
-                        
-                        
-                        
-                        
-                    
-| Dimension | PPQ (Stage 2) | Routine Production (Stage 3) | Key Difference |
-| --- | --- | --- | --- |
-                
-                
-                    
-                        ****
-                        
-                        
-                        
-                    
-| Purpose | Demonstrate process capability — | Confirm continued process performance — | Proof vs. Monitoring |
-                    
-                        ****
-                        
-                        
-                        
-                    
-| Sampling Frequency | Enhanced / 15 | Routine / 30 | 2×–4× more intensive |
-                    
-                        ****
-                        
-                        
-                        
-                    
-| Sample Size per Test | Larger — | Standard — AQL/ | Statistically justified difference |
-                    
-                        ****
-                        
-                        
-                        
-                    
-| Tests Performed | Full release + characterization tests — | Standard release tests — | More characterization in PPQ |
-                    
-                        ****
-                        
-                        
-                        
-                    
-| Environmental Monitoring EM | Full coverage, all critical zones — | Routine program per SOP — | PPQ: 100% time coverage |
-                    
-                        ****
-                        
-                        
-                        
-                    
-| Statistical Analysis | Required — tolerance intervals, Ppk — | SPC charts, trend analysis — | Capability vs. Control |
-                    
-                        ****
-                        
-                        
-                        
-                    
-| Scrutiny Level | Maximum — QU reviews all data — | Standard QC review — | PPQ: no data point ignored |
-                    
-                        ****
-                        
-                        
-                        
-                    
-| Documentation | PPQ Protocol + PPQ Report (mandatory) — + | Standard batch records + deviation reports | PPQ adds protocol layer |
-                    
-                        ****
-                        
-                        
-                        
-                    
-| Deviation Response | Must be addressed before PPQ conclusion — | CAPA system — | PPQ: no unresolved deviations |
-                    
-                        ****
-                        
-                        
-                        
-                    
-| Commercial Release | Allowed if batch meets specs — | Standard QC release process — | Same outcome, different scrutiny |
-                
-            
-
-        
 
     
 
@@ -7110,70 +6140,6 @@ Higher risk attributes demand more samples, more frequent sampling, and more str
 #### 
 
                 
-                    
-                        
-                            
-                            
-                            
-                            
-                        
-| --- | --- | --- | --- |
-                    
-                    
-                        
-                            
-                            
-                            
-                            
-                        
-| Sterility | | | EM + APS |
-                        
-                            
-                            
-                            
-                            
-                        
-| CCIT | | | n≥100/ |
-                        
-                            
-                            
-                            
-                            
-                        
-| Fill Volume | | | 15 n=20 |
-                        
-                            
-                            
-                            
-                            
-                        
-| VI | | | 100% |
-                        
-                            
-                            
-                            
-                            
-                        
-| pH | | | n=3-5 |
-                        
-                            
-                            
-                            
-                            
-                        
-| Potency | | | |
-                    
-                
-
-            
-
-            
-
-                
-
-#### 
-
-                
 
             
 
@@ -7327,16 +6293,6 @@ Stage 2 — Key Takeaways
 
     
 
-    
-
-FDA Guidance: Process Validation — General Principles and Practices (January 2011)
-
-    
-
-    
-
-SterileGMP Knowledge Hub | Educational Reference — Not for Regulatory Submission
-
 ⇧
 
 ## Section V: Stage 3 — Continued Process Verification & Concurrent Release (p14-p16)
@@ -7385,34 +6341,6 @@ Stage 3 closes the validation lifecycle loop — a product is only fully validat
 ## Stage 3 Comprehensive Summary |
 
   
-
-    
-
-      
-        
-| Stage 3 Key Components | |
-| --- |
-        
-| Component | Description | |
-        ****
-| Purpose | Continual assurance process remains in validated state during commercial manufacturing | |
-        ****
-| Legal Basis | 21 CFR § 211.180(e) — Annual product review | |
-        ****
-| Core Tool | Statistical Process Control (SPC) — control charts, Cpk, Ppk | |
-        ****
-| Sampling | Start at PPQ level, adjust based on statistical evidence | PPQ |
-        ****
-| Review Cycle | Periodic (monthly CPV + annual PQR/APR) | CPV + PQR/APR |
-        ****
-| Key Outputs | OOT investigations, CAPA, process improvements, revalidation decisions | |
-        ****
-| Concurrent Release | Rare exception — orphan drugs, radiopharmaceuticals, supply shortage | |
-        ****
-| Revalidation Trigger | Process, equipment, facility, material, or scale changes | |
-      
-
-    
 
     
 
@@ -7783,43 +6711,6 @@ However, **analytical methods supporting commercial batch release must follow CG
 
 ### vs.
 
-                
-
-                
-                    
-                        
-                            
-                            
-                            
-                        
-| --- | --- | --- |
-                    
-                    
-                        
-                            ****
-                            
-                            
-                        
-| Stage 1 / | | |
-                        
-                            ****
-                            
-                            
-                        
-| PPQ | PPQ | USP <1225>ICH Q2 |
-                        
-                            ****
-                            
-                            
-                        
-| | CGMP | 21 CFR parts 210 & 211 |
-                        
-                            ****
-                            
-                            
-                        
-| | CGMP | Phase |
-                    
                 
 
                 
@@ -8348,120 +7239,6 @@ A condition in which the set of controls consistently provides assurance of cont
 This table synthesizes the entire FDA 2011 guidance into a single reference for the documentation lifecycle across all three stages.
 
             
-                
-                    
-                        
-                        
-                        
-                        
-                        
-                        
-                    
-| Stage | | FDA Name | FDA | Key Activities | | Key Documents | | FDA Expectations | FDA | CGMP Refs | |
-| --- | --- | --- | --- | --- | --- |
-                
-                
-                    
-                        
-                        ****  
-
-                        
-- 
-- 
-- 
-- 
-- 
-
-                        
-- 
-- 
-- 
-- 
-- 
-- 
-
-                        
-- 
-- 
-- 
-
-                        
-- 
-- 
-
-                    
-| Stage 1 | Process Design | DoE CQA/CPP | Master Batch Record CDMO | | § 211.186 (MBR) ICH Q8, Q9, Q10 |
-                    
-                        
-                        ****  
-
-                        
-- 
-- 
-- 
-- 
-- 
-
-                        
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-
-                        
-- 
-- 
-- 
-- 
-
-                        
-- 
-- 
-- 
-- 
-
-                    
-| Stage 2 | Process Qualification | / PPQ | PPQ ProtocolQA PPQ IQ/OQ/PQ OOS PPQ Final ReportQA | QAProtocol CGMP | § 211.22 (QA) § 211.100 (SOPs) § 211.68 () § 211.192 (OOS) |
-                    
-                        
-                        ****  
-
-                        
-- 
-- 
-- 
-- 
-- 
-
-                        
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-
-                        
-- 
-- 
-- 
-- 
-
-                        
-- 
-- 
-- 
-
-                    
-| Stage 3 | Continued Process Verification | SPC Cpk CAPA | CPV SPC CPV/ APR CAPA | | § 211.180 (APR) § 211.192 () ICH Q10 |
-                
-            
-
-        
 
     
 
@@ -8477,166 +7254,6 @@ This table synthesizes the entire FDA 2011 guidance into a single reference for 
             
 
             
-                
-                    
-                        
-                        
-                        
-                        
-                        
-                    
-| # | English Term | | Definition | | Commentary | |
-| --- | --- | --- | --- | --- |
-                
-                
-                    
-                        
-                        ****
-                        ****
-                        
-                        
-                    
-| 1 | Process Validation | | Collection and evaluation of data from process design through commercial production establishing scientific evidence that a process consistently delivers quality products. | ——PPQ |
-                    
-                        
-                        ****
-                        ****
-                        
-                        
-                    
-| 2 | Process Design | | Defining the commercial manufacturing process based on knowledge gained through development and scale-up activities. | Stage 1——CPPCQA |
-                    
-                        
-                        ****
-                        ****
-                        
-                        
-                    
-| 3 | Process Qualification (PPQ) | | Confirming that the manufacturing process as designed is capable of reproducible commercial manufacturing. | Stage 2Stage 1 |
-                    
-                        
-                        ****
-                        ****
-                        
-                        
-                    
-| 4 | Continued Process Verification (CPV) | | Assuring that during routine production the process remains in a state of control. | Stage 3CPV——CPV2011 |
-                    
-                        
-                        ****
-                        ****
-                        
-                        
-                    
-| 5 | Critical Quality Attribute (CQA) | | A physical, chemical, biological, or microbiological property or characteristic that should be within an appropriate limit, range, or distribution to ensure the desired product quality. | CQADNACQAspHCQA |
-                    
-                        
-                        ****
-                        ****
-                        
-                        
-                    
-| 6 | Critical Process Parameter (CPP) | | A process parameter whose variability has an impact on a critical quality attribute and therefore should be monitored or controlled to ensure the process produces the desired quality. | CPPCQAPPQCPP |
-                    
-                        
-                        ****
-                        ****
-                        
-                        
-                    
-| 7 | Design Space | | The multidimensional combination and interaction of input variables (e.g., material attributes) and process parameters that have been demonstrated to provide assurance of quality. (ICH Q8) | FDA |
-                    
-                        
-                        ****
-                        ****
-                        
-                        
-                    
-| 8 | Normal Operating Range (NOR) | | The range established around a setpoint within which a process parameter is controlled during normal operations. | NOR ⊂ PAR ⊂ Design SpaceNORPARPPQNOR |
-                    
-                        
-                        ****
-                        ****
-                        
-                        
-                    
-| 9 | Proven Acceptable Range (PAR) | | A characterized range for a process parameter for which operation within this range, while keeping other parameters constant, will result in producing a material meeting relevant quality criteria. | PARDoEPAR |
-                    
-                        
-                        ****
-                        ****
-                        
-                        
-                    
-| 10 | State of Control | | A condition in which the set of controls consistently provides assurance of continued process performance and product quality. (ICH Q10) | State of ControlCPVFDASPC |
-                    
-                        
-                        ****
-                        ****
-                        
-                        
-                    
-| 11 | Concurrent Release | | Releasing a lot of finished product manufactured following a qualification protocol that meets lot release criteria before the entire study protocol has been executed. | QA |
-                    
-                        
-                        ****
-                        ****
-                        
-                        
-                    
-| 12 | Performance Indicators | | Measurable values used to quantify quality objectives to reflect the performance of an organization, process or system. (ICH Q10) | CPVKPIs ≥ 98%OOS ≤ 0.5%Cpk ≥ 1.33CPV |
-                    
-                        
-                        ****
-                        ****
-                        
-                        
-                    
-| 13 | Process Capability | | Ability of a process to produce a product that will fulfill the requirements. Can be defined statistically (e.g., Cpk). (ISO 9000:2005) | Cpk = min[(USL-μ)/3σ, (μ-LSL)/3σ]Cpk ≥ 1.33 = 4σCpk ≥ 1.67 = 5σ |
-                    
-                        
-                        ****
-                        ****
-                        
-                        
-                    
-| 14 | Quality | | The degree to which a set of inherent properties of a product, system, or process fulfils requirements. (ICH Q9) | FDAICH Q9QRM |
-                    
-                        
-                        ****
-                        ****
-                        
-                        
-                    
-| 15 | Commercial Manufacturing Process | | The manufacturing process resulting in commercial product. Does not include clinical trial or treatment IND material. | ——CGMP |
-                    
-                        
-                        ****
-                        ****
-                        
-                        
-                    
-| 16 | Validation Master Plan (VMP) | | A document that describes the overall philosophy, intentions, and approach to be used to establish performance adequacy. Defines the scope, responsibilities, and schedule for all validation activities. | VMPFDAVMPCDMOVMP |
-                    
-                        
-                        ****
-                        ****
-                        
-                        
-                    
-| 17 | PPQ Protocol | | A written document that specifies the manufacturing conditions, controls, testing, and expected outcomes for PPQ execution. Must be approved by the Quality Unit before execution. | PPQ ProtocolStage 2QApre-defined acceptance criteria—— |
-                    
-                        
-                        ****
-                        ****
-                        
-                        
-                    
-| 18 | Annual Product Review (APR) | | A systematic review of product quality data performed annually to verify consistency of the process and identify product or process improvements. Required by 21 CFR § 211.180(e). | APRStage 3 CPVOOS |
-                
-            
-
-        
 
     
 
@@ -8989,14 +7606,6 @@ The FDA's expectation is that electronic records provide at least the same level
         
             Complete Guide →
         
-    
-
-    
-
-FDA Guidance: Process Validation — General Principles and Practices (January 2011)
-
-    
-
     
 
 ⇧

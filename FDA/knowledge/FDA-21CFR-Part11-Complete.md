@@ -105,33 +105,6 @@ Persons who use closed systems to create, modify, maintain, or transmit electron
 
 Such procedures and controls shall include the following:
 
-        
-            
-| § | Control | Core Requirement |
-| --- | --- | --- |
-            
-| (a) | Validation | Validate systems to ensure accuracy, reliability, consistent performance, ability to discern invalid/altered records |
-            
-| (b) | Readable Copies | Ability to generate accurate and complete copies in human readable and electronic form |
-            
-| (c) | Record Protection | Protect records throughout records retention period |
-            
-| (d) | Access Limitation | Limit system access to authorized individuals |
-            
-| (e) | Audit Trails | Secure, computer-generated, time-stamped audit trails recording operator entries/actions |
-            
-| (f) | Operational Checks | Enforce permitted sequencing of steps and events |
-            
-| (g) | Authority Checks | Ensure only authorized individuals can sign records, execute operations, alter records |
-            
-| (h) | Device Checks | Determine validity of source of data input or operational instruction |
-            
-| (i) | Training | Personnel have education, training, and experience commensurate with their responsibilities |
-            
-| (j) | Written Policies | Policies holding individuals accountable for actions under their electronic signatures |
-            
-| (k) | Systems Documentation Controls | Controls over distribution, access, and revision of systems documentation |
-
 ## Section 3: Subpart C — Electronic Signatures (§§ 11.50–11.300)
 
 # Section 3: Subpart C — Electronic Signatures

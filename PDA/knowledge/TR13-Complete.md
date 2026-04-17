@@ -211,14 +211,6 @@ Bulk and intermediate product bioburden monitoring (except for pharmaceutical wa
 
     
 
-    
-
-PDA Technical Report No. 13 (Revised 2022): Fundamentals of an Environmental Monitoring Program
-
-    
-
-Bilingual Educational Material — For Training Purposes Only
-
 ⇧
 
 ## Section 2: Glossary (p3-p5)
@@ -245,221 +237,6 @@ Section 2 — Glossary & Abbreviations (Sections 2.0, 2.1) • p3–p5
 All key terms defined in TR13 Section 2.0. These definitions form the vocabulary foundation for the entire report.
 
             
-                
-                    
-                        
-                        
-                    
-| Term | Definition |
-| --- | --- |
-                
-                
-                    
-                        
-                        
-                    
-| Action Limit | A microbial or total airborne particulate limit that, when exceeded, indicates a process is outside of its normal operating range. A response should involve a documented investigation and corrective actions based on the results of that investigation. |
-                    
-                          
-
-                        
-                    
-| Airborne Particulate Count(Total Airborne Particulate Count) | The total number of particles of a specific size range per unit volume of air. |
-                    
-                          
-
-                        
-                    
-| Airborne Viable Particulate Count(Total Airborne Aerobic Microbial Count) | The recovered number of colony-forming units or related signal per unit volume of air. |
-                    
-                        
-                        
-                    
-| Alert Level | An established value that when exceeded, provides an early warning of potential drift from normal operating conditions and validated state, which does not necessarily give grounds for corrective action but triggers appropriate scrutiny and follow-up to address the potential problem. |
-                    
-                        
-                        
-                    
-| Aseptic Filling | Part of aseptic processing in which a pre-sterilized or aseptically manufactured product is filled and sealed into sterile containers in a cleanroom, RABS, or isolator. |
-                    
-                        
-                        
-                    
-| Aseptic Processing | Handling of product, packaging materials, and/or processing equipment in a controlled environment in which the air supply, materials, equipment, and personnel are controlled to maintain (product) sterility. |
-                    
-                        
-                        
-                    
-| Bioburden | Viable microorganisms associated with personnel, manufacturing environments (air and surfaces), equipment, product packaging, raw materials (including water), in-process materials, or finished products. |
-                    
-                        
-                        
-                    
-| Campaign | A series of consecutive production batches manufactured without or with reduced intervening cleaning, disinfection, and/or sterilization. |
-                    
-                        
-                        
-                    
-| Cleaning | Chemical or physical means used to remove soil and/or microorganisms from surfaces. |
-                    
-                        
-                        
-                    
-| Cleanroom | A room designed, maintained, and controlled to prevent particle and microbiological contamination of a drug product or medical device. A cleanroom is assigned and reproducibly meets an appropriate air cleanliness classification. |
-                    
-                          
-
-                        
-                    
-| Colony-Forming Unit(CFU) | A single macroscopic colony formed after the growth of one or more microorganisms on a solid microbiological growth medium. |
-                    
-                          
-
-                        
-                    
-| Contamination Control Strategy(CCS) | A holistic, risk-based, planned, and documented approach based on product and process understanding, which explains all the elements that need to be controlled and monitored so microbial, particulate, and pyrogen contamination is minimized to ensure process performance and product quality. The CCS should allow for continuous improvement measures to be taken. |
-                    
-                        
-                        
-                    
-| Continuous Monitoring | A process of data collection in which conditions are monitored continuously throughout the operation. In most applications, this definition implies "during production." |
-                    
-                          
-
-                        
-                    
-| Controlled Non-Classified Area(CNC) | An area that does not meet any of the formal classified grades of cleanliness (i.e., grades A to D), but where a manufacturer-defined level of microbial control is still maintained. (May also be referred to as Pharmaceutically Controlled Clean Area (PCCA).) |
-                    
-                        
-                        
-                    
-| Corrective Action | Action to eliminate the cause of a nonconformity and to prevent recurrence. |
-                    
-                        
-                        
-                    
-| Critical Area / Critical Zone | An area designed to maintain sterility of materials where sterilized product, containers, closures, and equipment may be exposed to the manufacturing environment. |
-                    
-                        
-                        
-                    
-| Critical Surface | A surface within a critical area that may come in direct or indirect contact with sterilized or sterile filtered products, containers, or closures. |
-                    
-                        
-                        
-                    
-| Decontamination | The overall process of removal or reduction of any contaminants (chemical residue, or microorganisms) from an area, processing equipment, or person. The method of decontamination used (e.g., cleaning, disinfection, sterilization) should be chosen and validated to achieve a level of cleanliness appropriate to the intended use. |
-                    
-                        
-                        
-                    
-| Disinfection | The chemical or physical inactivation of a bioburden on inanimate surfaces. |
-                    
-                        
-                        
-                    
-| Grade A Air Supply | Air which is passed through a filter qualified as capable of producing Grade A total particulate quality air, but where there is no requirement to perform continuous total particulate monitoring or meet Grade A viable monitoring limits and the area itself is not classified. |
-                    
-                        
-                        
-                    
-| Grid Profiling | A process of dividing areas of equivalent classifications into grids for the purpose of uniformly assessing contamination characteristics in that area. |
-                    
-                        
-                        ****
-                    
-| Isolator | A contained, decontaminated environment meeting Grade A (ISO 5) conditions used for aseptic process manufacturing that provides uncompromised, continuous isolation of its interior from the external environment including personnel. Subtypes: Closed Isolator (sealed throughout operations) and Open Isolator (allows continuous or semi-continuous ingress/egress of materials through engineered openings). |
-                    
-                        
-                        
-                    
-| Manufacturing Control Parameters | Conditions and corresponding measurements associated with facilities and equipment used in the control of a manufacturing process and/or area that may impact safety, quality, identity, potency, or purity of a product. Includes airflow rates, pressure differentials, temperature, humidity, total airborne particulate, viable particulates, bioburden, process rate, weight, volume, and pressure. |
-                    
-                        
-                        
-                    
-| Microbial Characterization | The description of microorganisms based on their cellular morphology, Gram reaction, and key diagnostic tests (e.g., gram-positive coagulase-negative cocci). |
-                    
-                        
-                        
-                    
-| Microbial Classification | The arrangement of microorganisms into taxonomic groups based on their similarities and relationships. |
-                    
-                        
-                        
-                    
-| Microbial Identification | The determination of the genus, and species when possible, to which a laboratory or manufacturing isolate belongs. |
-                    
-                          
-
-                        ****
-                    
-| Operational State(At Rest / In Operation) | The status of a classified room used as an indicator of the presence or absence of personnel and/or active manufacturing processes. At Rest: equipment installed, standing by, no personnel present (synonymous with "static"). In Operation: usual equipment operating, specified number of personnel present, process is ongoing (synonymous with "dynamic"). |
-                    
-                        
-                        
-                    
-| Parametric Release | A sterility release program based on effective control, monitoring, and documentation of a validated sterile-product manufacturing process where sterility release is based on demonstrated achievement of critical operational parameters in lieu of end-product sterility testing. |
-                    
-                        
-                        
-                    
-| Preventive Action | Action to eliminate the cause of a potential nonconformity or other potential undesirable situation. |
-                    
-                          
-
-                        ****
-                    
-| RABS(Restricted Access Barrier System) | Aseptic processing systems (typically ISO 5) intended to substantially reduce human-borne contamination within the aseptic environment via separative devices and defined mechanical features. Subtypes: Open RABS (vents allow air to move from RABS to surrounding area) and Closed RABS (air vented in return ducts within the cabinet). |
-                    
-                        
-                        
-                    
-| Risk Analysis | The estimation of the risk associated with the identified hazards. |
-                    
-                        
-                        
-                    
-| Sanitization | Process of reducing the number of all forms of microbial contamination including fungi, viruses, and bacteria. |
-                    
-                        
-                        
-                    
-| Spore | A bacterial dormant form that is highly resistant to adverse conditions. Fungal spores are not highly resistant; their susceptibilities are closer to vegetative microorganisms. |
-                    
-                        
-                        
-                    
-| Sterilization | Validated process used to render product, equipment, or primary packaging materials free from viable microorganisms. |
-                    
-                        
-                        
-                    
-| Terminal Sterilization | A process where the material is sterilized in its primary packaging/container configuration. |
-                    
-                        
-                        
-                    
-| Total Airborne Particulates | A term used in reference to the total number of particulates suspended in the air. Airborne particulates may be a complex mixture of viable and nonviable particulates, characterized by their physical attributes (e.g., concentration and size distribution). |
-                    
-                        
-                        
-                    
-| Trend Analysis | A review performed in response to an alert or action condition or as part of periodic data review. This review provides an analysis of specific EM data to identify adverse trends (e.g., increase in counts, repetitive organism recoveries, or multiple counts in the same room). |
-                    
-                        
-                        
-                    
-| Type Strain | A specific isolate of a species maintained in pure culture, serotypically, genotypically, or chemotaxonomically characterized to differentiate it from other strains of the same species. Representative of the species and provides a reference based on its historic isolation, characterization, and deposition in recognized culture collections. |
-                    
-                        
-                        
-                    
-| Vegetative Cell | Cells in an actively growing state. Some microorganisms can only be vegetative, while others are spore-formers and can be in a vegetative or spore (dormant) state. |
-                
-            
-
-        
 
         
 
@@ -591,79 +368,6 @@ All key terms defined in TR13 Section 2.0. These definitions form the vocabulary
 ### 2.1 Abbreviations
 
             
-                
-                    
-                        
-                        
-                    
-| Abbreviation | Full Term |
-| --- | --- |
-                
-                
-                    
-                        
-                        
-                    
-| API | Active pharmaceutical ingredient |
-                    
-                        
-                        
-                    
-| CCS | Contamination control strategy |
-                    
-                        
-                        
-                    
-| CRR | Contamination recovery rate |
-                    
-                        
-                        
-                    
-| EM | Environmental monitoring |
-                    
-                        
-                        
-                    
-| FMEA | Failure Mode & Effects Analysis |
-                    
-                        
-                        
-                    
-| HACCP | Hazard Analysis Critical Control Point |
-                    
-                        
-                        
-                    
-| HEPA Filter | High-efficiency particulate air filter |
-                    
-                        
-                        
-                    
-| RABS | Restricted access barrier system |
-                    
-                        
-                        
-                    
-| SCDA | Soybean casein digest agar (synonymous with TSA) |
-                    
-                        
-                        
-                    
-| SDA | Sabouraud dextrose agar |
-                    
-                        
-                        
-                    
-| TSA | Trypticase soy agar or tryptone soya agar (synonymous with SCDA) |
-                    
-                        
-                        
-                    
-| VBNC | Viable but not culturable |
-                
-            
-
-        
 
         
 
@@ -746,740 +450,133 @@ All key terms defined in TR13 Section 2.0. These definitions form the vocabulary
 
 # PDA Technical Report No. 13 (Revised 2022)
 
-    
-
 Fundamentals of an Environmental Monitoring Program
-
-    
 
 Section 3 — Environmental Classifications: Regulatory Expectations • p5–p10
 
-    
-    
-
-        
-
-## 3.0 Environmental Classifications: Regulatory Expectations
-
-    
-
-        
-
-            
+## **3.0 Environmental Classifications: Regulatory Expectations 3.0 **
 
 ### Overview — Regulatory Bodies Covered
 
-            
-
 An EM program should be designed and implemented in conformance with the requirements of the government agencies regulating the manufacturing site as well as requirements of international standard-setting organizations. If the intent is to serve multinational markets, the most stringent requirements should be evaluated as the basis of an EM program.
-
-            
 
 This section compares regulations and guidance instituted for EM by these authorities:
 
-            
-
-                
 - International Organization for Standardization (ISO)
 
-                
 - U.S. Food and Drug Administration (FDA)
 
-                
 - U.S. Pharmacopeia (USP)
 
-                
 - European Pharmacopoeia (Ph. Eur.)
 
-                
 - European Medicines Agency (EMA)
 
-                
 - Ministry of Health, Labour and Welfare of Japan (MHLW)
 
-                
 - Japanese Pharmacopoeia (JP)
 
-                
 - Chinese Pharmacopeia (ChP)
 
-                
 - Pharmaceutical Inspection Convention (PIC) and Pharmaceutical Inspection Co-operation Scheme (PIC/S)
 
-                
 - World Health Organization (WHO)
-
-            
-
-            
 
 Although the regulations and guidelines of these organizations are similar in many respects, there are important differences among them in terms of the information each provides, particularly with respect to cleanroom classifications.
 
-        
-
-        
-
-            
-
 ### 
 
-            
-
-            
-
-            
-
-            
-
-                
-
 #### 
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-    
-    
-
-        
-
-            
 
 ### ISO 14644-1 Classifications
 
-            
-
 The most commonly accepted international cleanroom standard related to total airborne particulates is **ISO 14644-1:2015** *Cleanrooms and Associated Controlled Environments — Part 1: Classification of Air Cleanliness by Particle Concentration*.
-
-            
 
 ISO class designations are based on the number of particles greater than a specified size (0.1–5 μm) per cubic meter of air sampled. ISO 14644-1 defines classes from 1 to 9, with ISO 1 being the cleanest. **ISO classes 5 through 8** are used in the pharmaceutical industry for sterile-product manufacture.
 
-            
-
 ISO does not specify:
 
-            
-
-                
 - The **operating state** (as built, at rest, or in operation)
 
-                
 - The **particle-size thresholds** to be employed
 
-                
 - Distinction between **viable and nonviable** particles
-
-            
-
-            
 
 The following activities are generally expected in each ISO class:
 
-            
-
-                
 - **ISO 5:** Aseptic processing zone; sterile product and/or packaging component exposed; unidirectional airflow required
 
-                
 - **ISO 7:** Area immediately surrounding the aseptic processing zone
 
-                
 - **ISO 8:** Non-sterile formulation, materials, and component preparation; filling area for terminally sterilized product
 
-            
-
-        
-
-        
-
-            
-
-## Table 3.0-1 — Cleanroom Monitoring: Airborne Particulate Limits (particles/m³)
-
-        
-
-            
-                
-                    
-                        
-                        
-                          
-
-                        
-                          
-
-                          
-
-                        
-                    
-| Particle Size | ISO 14644 | U.S. FDA(Aseptic Processing Guidance)1,2 | USP <1116> | EU & PIC/S Annex 1and WHO Annex 6 | Japan MHLW(Aseptic Processing Guidance) | JP XVI |
-| --- | --- | --- | --- | --- | --- | --- |
-                    
-                        
-                        
-                        
-                        
-                        
-                        
-                    
-| ISO 5 | ISO 5 / Class 100 | ISO 5 | Grade A / Grade B (at rest) | Grade A / Grade B (at rest) | Grade A / Grade B (at rest) |
-                
-                
-                    
-                    
-                        
-                    
-| ISO 5 / Grade A / Grade B at rest |
-                    
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                    
-| ≥0.5 μm | 3,520 | 3,520 | 3,520 | 3,520 | 3,520 | 3,520 |
-                    
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                    
-| ≥5.0 μm | Not specified | Not specified | Not specified | 203 / 29 | 203 | Not specified |
-                    
-                    
-                        
-                    
-| ISO 7 / Grade B (in operation) / Grade C (at rest) |
-                    
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                    
-| ≥0.5 μm | 352,000 | 352,000 | 352,000 | 352,000 | 352,000 | 352,000 |
-                    
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                    
-| ≥5.0 μm | 2,930 | Not specified | Not specified | 2,900 | 2,900 | Not specified |
-                    
-                    
-                        
-                    
-| ISO 8 / Grade C (in operation) / Grade D (at rest)4 |
-                    
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                    
-| ≥0.5 μm | 3,520,000 | 3,520,000 | 3,520,000 | 3,520,000 | 3,520,000 | 3,520,000 |
-                    
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                    
-| ≥5.0 μm | 29,300 | Not specified | Not specified | 29,000 | 29,000 | Not specified |
-                
-            
-
-        
-
-        
-
-            
+## **Table 3.0-1 — Cleanroom Monitoring: Airborne Particulate Limits (particles/m³) Table 3.0-1 — particles/m³**
 
 1 Obsolete U.S. Federal Standard 209E classification added for continuity.
 
-            
-
 2 Class titles for U.S. FDA and USP indicate equivalent particle counts per cubic foot.
-
-            
 
 3 ISO 4.8 is based on reduced limit for particles ≥5 μm. European regulation is considering removing the ≥5 μm classification for Grade A and Grade B at-rest. However, as it is still an expectation within the current EU Annex 1 regulation and other standards, this particle-size requirement remains within the table.
 
-            
-
 4 Grade D operational particulate counts depend on the operation and are not defined by any guideline.
-
-        
-
-    
-
-    
-    
-
-        
-
-            
 
 ### Table 3.0-1 Key Observations
 
-            
-
 Several patterns emerge from the particulate-limits comparison table:
 
-            
-
-                
 - For **≥0.5 μm particles**, all regulatory bodies agree on the same limits at every ISO class level (3,520 / 352,000 / 3,520,000 particles/m³).
 
-                
 - The key difference lies in **≥5.0 μm particles**: FDA and USP do *not* specify limits for this size, while EU/PIC/S, WHO, and Japan MHLW all do.
 
-                
 - ISO 14644-1 itself specifies ≥5.0 μm limits (2,930 for ISO 7; 29,300 for ISO 8), while EU rounds slightly (2,900 and 29,000).
 
-                
 - The Grade A ≥5.0 μm limit of 20 particles/m³ corresponds to ISO 4.8, which is stricter than ISO 5.
-
-            
-
-        
-
-        
-
-            
 
 ### Table 3.0-1
 
-            
-
-            
-
-                
-
-                
-
-            
-
-            
-
-            
-
-                
-
 #### 
 
-                
-
-                
-
-                    
-
-                    
-
-                    
-
-                
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-    
-    
-
-        
-
-## Table 3.0-2 — Environmental Monitoring Requirements/Guidance1
-
-        
-
-            
-                
-                    
-                        
-                          
-
-                        
-                          
-
-                          
-
-                        
-                    
-| Monitoring Guidance | U.S. FDA(Aseptic Processing Guidance) | USP <1116>3 | EU Annex 1, PIC/Sand WHO Annex 42 | Japan MHLW(Aseptic Processing Guidance) | JP XVI |
-| --- | --- | --- | --- | --- | --- |
-                
-                
-                    
-                    
-                        
-                    
-| Frequency (Airborne total particulate and viable count, surface viable count, personnel sampling as noted) |
-                    
-                        
-                          
-  
-
-                        ****  
-  
-  
-  
-  
-****  
-  
-
-                          
-  
-  
-
-                          
-  
-
-                          
-  
-  
-
-                    
-| Monitoring Frequency | ISO 5: Each production shift.Gloves/Gown each exit, daily or each lot.Other classes not specified. | Cleanroom/RABS:                             Critical Zone (ISO 5): Each operational shift (active air); Surface (end of operation)                             Adjacent zone: Each operating shift (all sampling)                             Other non-adjacent: Once per day                             Isolators:                             Critical Zone (ISO 5): Once per day (active air); Surface (end of campaign)                             Surrounding non-aseptic: Once per month | A: Continuous particulate monitoring; frequent viable sampling.                             B: Frequent particle monitoring in operation.                             C, D: Monitoring on risk basis.                             Surfaces & personnel after critical operations. | A, B: Each operating shift (airborne micro, surfaces, personnel; continuous particulate).                             C, D (product/container contact): Airborne micro 2×/week; particulate 1×/month; personnel not required.                             C, D (other): Airborne micro 1×/week; particulate 1×/month. | A: Each operating shift.                             B: Each operating shift.                             C, D (product contact): 2×/week.                             C, D (no contact): 1×/week. |
-
-                    
-                    
-                        
-                    
-| Airborne Viable Action Limits — Active Air Sampling |
-                    
-                          
-
-                          
-  
-
-                        ****  
-  
-  
-  
-  
-**
-                          
-  
-  
-
-                          
-  
-  
-
-                          
-  
-  
-  
-*  
-*
-                    
-| Active Air(CFU/m³) | ISO 5: 1                             ISO 7: 10                             ISO 8: 100 | Uses Contamination Recovery Rate (%)5:                             Isolator/Closed RABS (ISO 5): <0.1%                             ISO 5: <1%                             ISO 7: <5%                             ISO 8: <10%                             (Applies to all active air, passive air, and surface samples) | A: <1                             B: 10                             C: 100                             D: 200 | A: <1                             B: 10                             C: 100                             D: 200 | A: <1                             B: 10                             C: 100                             D: 200                             0.5 m³ for A, B;0.2 m³ for C, D |
-
-                    
-                    
-                        
-                    
-| Airborne Viable Action Limits — Passive Air Sampling (90 mm settle plate / 4 hr) |
-                    
-                          
-
-                          
-  
-  
-**
-                        
-                          
-  
-  
-
-                          
-  
-  
-
-                        
-                    
-| Passive Air(CFU/plate) | ISO 5: 1                             ISO 7: 5                             ISO 8: 50                             Use of settling plates is optional. | Same Contamination Recovery Rate as active air, above. | A: <1                             B: 5                             C: 50                             D: 100 | A: <1                             B: 5                             C: 50                             D: 100 | Not specified |
-
-                    
-                    
-                        
-                    
-| Surface Viables Action Limits (CFU)4 |
-                    
-                          
-
-                        
-                          
-
-                          
-  
-  
-  
-**
-                          
-  
-  
-  
-**
-                          
-  
-  
-  
-**
-                    
-| Surface(CFU/plate) | Not specified | Same Contamination Recovery Rate as active air.Use contact plate or swab. | A: <1                             B: 5                             C: 25                             D: 50                             55 mm contact plate | A: <1                             B: 5                             C: 25                             D: 50                             24–30 cm² contact or swab | A: <1                             B: 5                             C: 25                             D: 50                             24–30 cm² (5.4–6.2 cm dia. contact or 25 cm² swab) |
-
-                    
-                    
-                        
-                    
-| Personnel (Gown) Viables Action Limits |
-                    
-                        
-                          
-
-                        
-                        
-                        
-                        
-                    
-| Gown | Not specified.Gown sampling must be established based on job responsibility. | Same Contamination Recovery Rate as active air. | Not specified | Not specified | Not specified |
-
-                    
-                    
-                        
-                    
-| Personnel (Gloves) Viables Action Limits (Glove print, 5 fingers) |
-                    
-                          
-
-                        
-                        
-                          
-
-                          
-
-                          
-
-                    
-| Gloves(CFU/glove) | Not specified | Same Contamination Recovery Rate as active air. | A: <1                             B: 5 | A: <1 CFU/5 fingers                             B: 5 CFU/5 fingers | A: <1 CFU/5 fingers                             B: 5 CFU/5 fingers |
-                
-            
-
-        
-
-        
-
-            
+## **Table 3.0-2 — Environmental Monitoring Requirements/Guidance1 Table 3.0-2 — 1**
 
 1 Guidance is condensed. Refer to the cited references for complete guidance.
 
-            
-
 2 Limits are based on averages (currently averaging was removed from the draft of EU Annex 1 (Feb 2020)) — In Grade A no growth is expected.
-
-            
 
 3 USP utilizes contamination recovery rate instead of excursion limits as found in all other guidance documents.
 
-            
-
 4 In general, surface and personnel monitoring should not interfere with the zone protection and should be done after critical operations.
-
-            
 
 5 Operators may not be aseptically gowned in ISO 8 support areas.
 
-            
-
 **Note:** Settle plates should be exposed for the duration of operations and changed as required after 4 hours (exposure time should be based on qualification including recovery studies and it should not have any negative effect on the suitability of the media used).
-
-        
-
-    
-
-    
-    
-
-        
-
-            
 
 ### Table 3.0-2 Key Observations
 
-            
-
 The monitoring requirements table reveals several important regulatory differences:
 
-            
-
-                
 - **Frequency:** EU Annex 1 requires continuous particulate monitoring for Grade A and frequent monitoring for Grade B. Japan MHLW is the most prescriptive with specific frequencies for C and D areas.
 
-                
 - **USP <1116> is unique** in recommending a *Contamination Recovery Rate* (% of samples with microbial contamination) rather than individual CFU count limits. This is a fundamentally different statistical approach.
 
-                
 - **Surface limits:** FDA does not specify surface viable limits, while EU, Japan, and JP all agree on the same values (A: <1, B: 5, C: 25, D: 50 CFU).
 
-                
 - **Personnel monitoring:** FDA requires glove/gown sampling but does not set numerical limits. EU Annex 1 specifies glove limits for Grades A and B only.
-
-            
-
-        
-
-        
-
-            
 
 ### Table 3.0-2
 
-            
-
-                
-
 #### USP <1116> (CRR)
-
-                
-
-                
-
-                    
-
-                    
-
-                    
-
-                
-
-                
-
-            
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-    
-    
-
-        
-
-            
 
 ### Airflow & Pressure Differentials
 
-            
-
 Common factors among the various guidelines include the requirement that **ISO 5 areas**, where aseptic conditions must be maintained, typically require **unidirectional airflow**.
-
-            
 
 ISO 14644-1 describes unidirectional flow as **0.45 meters per second (90 ft/min) ±20%** measured 150–300 mm from the supply filter face. EU Annex 1, though, recommends this measurement be taken as close to the work surface as practical.
 
-            
-
 All regulatory authorities recommend an air pressurization scheme to ensure airflow from the cleaner zone to the less-clean zone. The broadly acceptable guidance value is a **differential pressure (ΔP) of 10–15 Pa (0.04–0.06 in H2O)** between zones of differing classes.
-
-            
 
 Several guidance documents describe the use of **air locks** to maintain differential pressures while doors are used between different Grades. Where an open ISO 5 unidirectional zone is placed within an ISO 7 background, this pressure differential is not required.
 
-        
-
-        
-
-            
-
 ### 
-
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-            
-
-                
 
 ####
 
@@ -1487,1090 +584,298 @@ Several guidance documents describe the use of **air locks** to maintain differe
 
 # PDA Technical Report No. 13 (Revised 2022)
 
-    
-
 Fundamentals of an Environmental Monitoring Program
-
-    
 
 Section 4 — Qualification of Cleanrooms & EM Program • Sections 4.0–5.2 • p11–p17
 
-    
-    
-
-        
-
-## 4.0 Environmental Monitoring Qualification of Cleanrooms
-
-    
-
-        
-
-            
+## **4.0 Environmental Monitoring Qualification of Cleanrooms 4.0 **
 
 ### Cleanroom Classification & Initial Qualification
 
-            
-
 Clean areas for the manufacture of sterile products are classified according to the required characteristics of the environment. Each manufacturing operation requires an appropriate environmental cleanliness level in the operational state to minimize the risks of particulate or microbial contamination of the product or materials being handled.
-
-            
 
 For **new areas**, the initial qualification should be performed in a prospective mode. For **existing facilities** that require a repeat of the initial qualification, the requalification can be performed in concurrence with routine production activities if historical data of existing rooms are shown to be in a good state of control. Release of product should await final release of the cleanroom qualification exercise.
 
-            
-
 To meet the in-operation conditions, these areas should be designed to reach certain specified air-cleanliness levels in the "at rest" occupancy state. Section 9.0 (Appendix 1) provides additional guidance to ensure and verify that critical system components meet user requirements and are properly identified, installed, and calibrated (typically covered within the installation qualification (IQ) and operational qualification (OQ) phases of cleanroom qualification).
-
-            
 
 To prepare the cleanroom for classification, air filters should be evaluated for cleanliness and replaced, if necessary, especially in new or modified facilities where excess construction debris or dust may cause clogging. Cleaning and disinfection protocols should be defined and performed prior to conducting qualification.
 
-        
-
-        
-
-            
-
 ### TR13 Section 4.0 /
-
-            
-
-            
-
-                
 
 #### 
 
-                
-
-                
-
-                    
-
-                    
-
-                    
-
-                
-
-            
-
-            
-
-        
-
-    
-
-    
-    
-
-## IQ / OQ Phases & At-Rest vs In-Operation
-
-    
-
-        
-
-            
+## **IQ / OQ Phases & At-Rest vs In-Operation IQ / OQ **
 
 ### At-Rest & In-Operation Testing
 
-            
-
 Performance of the total airborne particulate cleanroom classification described in **ISO 14644-1** would confirm the air-cleanliness levels in the at-rest occupancy state. This initial exercise should be supplemented by an at-rest qualification using viable tests.
-
-            
 
 Viable at-rest locations might focus on more specific aspects related to the actual design of the cleanroom and can be documented as part of the EM risk assessment (see Section 5.2). Although human activity and material transfers (the primary sources of microbial contamination) are not evaluated in the at-rest state, the associated sampling locations will provide valuable information about the intrinsic microbial state-of-control of the cleanroom prior to starting the qualification under in-operation conditions.
 
-            
-
 Specifications applied for viable qualification at rest might be **more stringent** than those applicable for in-operation conditions. All necessary measures should be taken to minimize the impact of personnel during at-rest monitoring (e.g., surface monitoring at the start of the run, only EM technician present, delay timers on automated samplers).
-
-            
 
 Subsequently, it should be confirmed that the cleanroom can maintain operational conditions when executing the activities foreseen within the area. The method detailed in ISO 14644-1 can be used to confirm the total airborne particulate cleanroom classification for the in-operation status. This initial qualification is normally performed by **simulating manufacturing activities**, ensuring that at a certain stage the maximum number of personnel and the worst-case level of activities are covered.
 
-            
-
 The runs described in this section may form part of the OQ of the cleanroom. Data obtained during this stage should be used as part of the EM risk assessment to define routine sampling locations. For both total airborne particulate runs (in the at-rest and in-operational conditions), **one run conducted according to ISO 14644-1 is considered sufficient**.
 
-        
-
-        
-
-            
-
 ### At-Rest vs In-Operation /
-
-            
-
-                
-
-#### At-Rest vs In-Operation
-
-                
-                    
-                        
-| | At-Rest | In-Operation |
-| --- | --- | --- |
-                    
-                    
-                        
-| | EM | |
-                        
-| | | / |
-                        
-                        
-                        
-| ISO 14644-1 Run | 1 | 1 |
-                    
-                
-
-            
-
-            
-
-            
-
-        
-
-    
-
-    
-    
-
-        
-
-            
 
 IQ - Installation Qualification  
 HEPA filters, HVAC, instruments calibrated
 
-        
-
-        
-
 ▼
-
-        
-
-            
 
 OQ - Operational Qualification  
 At-rest classification + In-operation classification (ISO 14644-1)
 
-        
-
-        
-
 ▼
-
-        
-
-            
 
 PQ - Performance Qualification  
 3 consecutive runs under routine in-operation conditions
 
-        
-
-        
-
 ▼
-
-        
-
-            
 
 Extended PQ  
 Seasonal variation, alert level establishment, disinfectant efficacy
 
-        
-
-    
-
-    
-    
-    
-    
-
-## Performance Qualification (PQ) & Extended PQ
-
-    
-
-        
-
-            
+## **Performance Qualification (PQ) & Extended PQ PQ PQ**
 
 ### PQ Execution & Requirements
 
-            
-
 A performance qualification (PQ) should follow the successful completion of the OQ. However, it may commence before the full OQ results are available, based on preliminary results (business risk approach). If this approach is chosen, the PQ protocol should list the results which should be available before the PQ start.
-
-            
 
 PQ typically consists of **three consecutive runs** during routine (in-operation) conditions. In batch-related production rooms, a run would typically comprise a batch covering all applicable shifts and activities. In supporting areas, a run should cover all relevant activities to be performed within that area. Simulating activities during performance qualification might reduce the total runtime (i.e., by executing them in a condensed period of time).
 
-            
-
 The sampling plan should be based on the viable and total airborne particulate sample locations defined as part of the routine monitoring (EM risk assessment) **augmented with additional EM locations** to cover remote parts of the room in order to confirm and document that the complete cleanroom environment is in control. This PQ can be performed during APS or activities can be simulated.
-
-            
 
 There is a business risk, however, performing PQ during APS since the facility is not operating in a fully qualified environment and deficiencies could be detected that first require corrective measures. Consequently, at a certain stage, the maximum number of personnel and the worst-case level of activities need to be covered during one or more PQ runs. The maximum limits for microbial and total airborne particulate contamination during qualification should correspond to the **action limits** applied during routine monitoring.
 
-            
-
 ### Extended PQ
-
-            
 
 Following the initial PQ, an extended PQ may be conducted for a defined time period based on the routine sampling program or continuation of extended sampling. The intent of this process would be to account for conditions which may not have been covered in the initial PQ (e.g., seasonal variation of microbes, establishment of appropriate alert levels, selection of microorganisms for disinfectant efficacy tests, additional evaluation of the periodic cleaning program, etc.).
 
-            
-
 Production or room configuration changes with a possible impact on EM (e.g., gowning procedures, cleaning set-up, layout, material or personnel flow, or other areas) should include a new assessment on the qualified status of the cleanroom and may require **requalification** as part of the change.
-
-        
-
-        
-
-            
 
 ### PQ /
 
-            
-
-                
-
 #### PQ
 
-                
-
-                    
-
-                    
-
-                    
-
-                    
-
-                    
-
-                
-
-            
-
-            
-
-                
-
 #### 
-
-                
-
-            
-
-            
-
-                
 
 #### Requalification
 
-                
-
-                
-
-                    
-
-                    
-
-                    
-
-                    
-
-                
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-    
-    
-
-## 5.0 Environmental Monitoring Program
-
-    
-
-        
-
-            
+## **5.0 Environmental Monitoring Program 5.0 **
 
 ### EM Program Fundamentals
 
-            
-
 An EM program (including EMPQ) should be in conformance with current GMP, which includes appropriate training and authority of personnel involved in implementing the EM program. Equipment used should be qualified and calibrated, and microbiological growth media should be properly qualified, prepared, and tested. In addition, all operational procedures should be written, approved, and followed with appropriate controls to support their use. The methods selected should be justified and qualified for use as appropriate.
-
-            
 
 Cleaning and disinfection of the manufacturing area, and material handling and gowning processes, as well as appropriate aseptic behavior of the personnel, are **key components** of an effective contamination control strategy.
 
-            
-
 Selection of sampling methods (see Section 6.0), sampling sites, and sampling frequencies should be based on the principles of risk management according to **ICH Q9: Quality Risk Management** to ensure that the respective production area is under control and meets regulatory requirements.
-
-            
 
 Establishment of alert levels and action limits may be based on individual sample sites or groups of related sample sites with a similar design or activities. Data obtained are subject to continual review, and alert and action decisions are made by qualified personnel. A documentation system should be in place for identifying and investigating excursions and adverse trends and the effectiveness of the corrective actions taken. All data should be documented and periodically trended.
 
-        
-
-        
-
-            
-
 ### EM /
-
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-                
-
-            
-
-            
-
-                
 
 #### EM
 
-                
-
-                    
-
-                    
-
-                    
-
-                
-
-            
-
-            
-
-        
-
-    
-
-    
-    
-    
-    
-
-## 5.1 Cleaning, Sanitization or Disinfection and Decontamination
-
-    
-
-        
-
-            
+## **5.1 Cleaning, Sanitization or Disinfection and Decontamination 5.1 **
 
 ### Cleaning & Disinfection in the EM Context
 
-            
-
 EM data demonstrates the effectiveness of the cleaning and disinfection program. The qualification of cleaning and disinfection procedures should demonstrate microbial reduction and maintenance of a microbiological state of control and should provide confidence in the effectiveness of the procedure.
-
-            
 
 This typically includes **laboratory surface challenge or carrier studies** for contact time and bioburden reduction, supplemented by **in-situ studies**.
 
-            
-
 Both **USP <1072>** and **PDA Technical Report No. 70**: *Fundamentals of Cleaning and Disinfection Programs for Aseptic Manufacturing Facilities* provide sufficient details of the requirements and in-vitro surface challenge methodology for qualification of the efficacy of the agent used.
-
-        
-
-        
-
-            
 
 ### EM /
 
-            
-
-            
-
-                
-
 #### 
 
-                
-
-                    
-
-                    
-
-                
-
-                
-
-            
-
-            
-
-        
-
-    
-
-    
-    
-    
-    
-
-## 5.2 EM Sample Site Selection Using Risk Management Principles
-
-    
-
-        
-
-            
+## **5.2 EM Sample Site Selection Using Risk Management Principles 5.2 **
 
 ### Overview of Risk-Based Site Selection
 
-            
-
 Sample site selection, selection of the appropriate sampling methods, sampling volumes, and monitoring frequencies are **critical components** of contamination control within a facility. However, EM risk assessments are only intended to define the EM program as a part of the overall contamination control strategy.
-
-            
 
 This section addresses how to create and how to maintain an EM program applying a lifecycle approach (Section 5.2.1) and the use of quality risk management principles to identify and select sites for EM of classified environments including ISO 5-8/Grades A-D as well as personnel monitoring (Section 5.2.2). Sections 6.8 and 6.9 discuss utilities (WFI/Compressed Air, Nitrogen, etc.).
 
-        
-
-        
-
-            
-
 ### /
 
-            
-
-            
-
-            
-
-                
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-    
-    
-
-## 5.2.1 Lifecycle Approach to an Environmental Monitoring Program
-
-    
-
-        
-
-            
+## **5.2.1 Lifecycle Approach to an Environmental Monitoring Program 5.2.1 **
 
 ### Lifecycle Model for EM Programs
 
-            
-
 The creation and maintenance of EM programs are best achieved using a lifecycle approach. This lifecycle approach encompasses the evaluation and definition of suitable sample sites, sample types, sampling volumes, and sample frequency for microbiological monitoring that are required before starting up a new facility, area, or room.
-
-            
 
 These sample sites are used to perform an **EM performance qualification (PQ)**. Based on the PQ results, adaptation (mainly reduction or addition) of sample sites may be necessary before setting up the sample plan for routine and, if applicable, batch-related EM.
 
-            
-
 The impact of any major change (e.g., reconstruction, process change, or equipment relocation) needs to be evaluated and the affected area may need to be requalified.
-
-            
 
 A final EM evaluation may be necessary for **decommissioning** a room, isolator, or facility to demonstrate environmental control through to the end.
 
-            
-
 The model presented in **Figure 5.2.1-1** outlines the general flow of the lifecycle approach of an EM program. Each step defined is designed to ensure that once an EM program is developed, it is carefully reviewed during the lifecycle of the area, product, or process to affirm that a state of control is maintained. A periodic reevaluation of the EM program (e.g., in response to an adverse trend report) may be necessary.
-
-        
-
-        
-
-            
 
 ### /
 
-            
-
-                
-
 #### EM
-
-                
-
-                    
-
-                    
-
-                    
-
-                    
-
-                    
-
-                
-
-            
-
-            
-
-                
 
 #### 
 
-                
-
-                
-
-                    
-
-                    
-
-                    
-
-                    
-
-                
-
-                
-
-            
-
-            
-
-        
-
-    
-
-    
-    
-    
-    
-
-## 5.2.2 Initiation of Quality Risk Management Process
-
-    
-
-        
-
-            
+## **5.2.2 Initiation of Quality Risk Management Process 5.2.2 **
 
 ### Setting Up the Risk Assessment
 
-            
-
 Prior to executing a risk assessment, several elements must be defined: **scope and objective, risk question or problem statement, risk management tool to be applied, and risk-ranking criteria**.
-
-            
 
 To conduct an EM risk assessment, a risk facilitator should be assigned and a **multidisciplinary team** should be assembled representing the areas of microbiology, contamination control and hygiene, quality engineering, facilities and utilities, quality control, quality assurance, and manufacturing.
 
-            
-
 The scope and objective of the risk assessment is defined as the area of the facility or process under assessment. The scope can involve just one room, an isolator, or a larger manufacturing area. Independent of the scope, however, the manufacturing process associated with the area in scope is key to performing the risk assessment.
-
-            
 
 Thorough **process understanding and process mapping** is necessary to evaluate the associated risk of contamination at a specific position within a cleanroom. Prior to initiating the risk assessment, process mapping should be conducted on the shop/manufacturing floor using room layouts and indicating equipment locations, people flow, material flow, and waste flow in the facility.
 
-            
-
 The assessment team will select the most appropriate risk management tool among the different methods applicable, e.g., Failure Mode and Effects Analysis (FMEA), Hazard Analysis Critical Control Point (HACCP), among others. One risk assessment tool, developed by a collaborative of pharmaceutical industry representatives through **BioPhorum**, addresses the wide range of practices within the industry, allowing harmonization as well as compliance with regulatory guidelines. This toolkit provides an easy to use, step-by-step guidance for establishing EM programs.
-
-        
-
-        
-
-            
 
 ### QRM /
 
-            
-
-                
-
 #### 
-
-                
-
-                    
-
-                    
-
-                    
-
-                    
-
-                
-
-            
-
-            
-
-            
-
-                
 
 #### Process Mapping
 
-                
-
-                
-
-                    
-
-                    
-
-                    
-
-                    
-
-                
-
-                
-
-            
-
-            
-
-        
-
-    
-
-    
-    
-    
-    
-
-### 5.2.2.1 General Points to Consider & Grid Profiling
-
-    
-
-        
-
-            
+### **5.2.2.1 General Points to Consider & Grid Profiling 5.2.2.1 **
 
 ### Risk Factors & Grid Profiling Method
 
-            
-
 For process mapping, grid profiling can be useful to describe single process steps and consider activities specific to that grid. After gridding the room layout, the process steps in each grid are evaluated and the risk ranking is determined based on **six risk factors**:
 
-            
-
-                
 1. **Cleaning and sanitization access**
 
-                
 2. **Personnel presence and flow**
 
-                
 3. **Material flow**
 
-                
 4. **Proximity to open product or product contact material**
 
-                
 5. **Interventions/operations by personnel and their complexity**
 
-                
 6. **Frequency of interventions**
-
-            
-
-            
 
 Based on the risk scoring, sampling locations are determined for performing the EMPQ and, afterwards, for conducting the routine monitoring. A recommendation of the grid size for the respective grades is made (e.g., **0.5 m² for Grade A**). In addition, grouping grids into functional sections (e.g., filling area) enables meaningful sample points to be defined.
 
-            
-
 ### Additional Points to Consider
-
-            
 
 Sample locations should be chosen based on:
 
-            
-
-                
 - Criticality of the process being performed in the room
 
-                
 - Product exposure to the environment and susceptibility to microbial and particulate contamination
 
-                
 - Locations of potential ingress from supporting areas or adjacent non-classified areas (gowning areas, airlocks, corridors)
 
-                
 - Sites shown to be appropriately placed to detect a problem in the area
-
-            
-
-            
 
 The following factors should be considered during the facility walk-through:
 
-            
-
-                
 1. Adherence to industry and regulatory guidelines (CFR, ISO 14644, USP, FDA, EU)
 
-                
 2. Sites where contamination would most likely have an adverse effect on product quality:
                     
 
-                        
     - Proximity to open product or product contact surfaces and critical sites
 
-                        
     - Activities linked with interventions
 
-                        
     - Areas most inaccessible or difficult to clean and disinfect
 
-                        
     - Locations with high frequency and/or complexity of activities
 
-                        
     - Areas with large number of personnel and high personnel flow
 
-                        
     - Areas with high material flow
 
-                    
-
-                
-
-                
 3. Uniform geometric pattern or grid-profiling within the cleanrooms
 
-                
 4. Assessment and justification for locations not part of the EM program
 
-                
 5. Historical data and/or data obtained during qualification
 
-                
 6. Anaerobic organisms (periodic/investigational monitoring for *Cutibacterium acnes*)
 
-                
 7. Airflow visualization studies (smoke studies)
-
-            
-
-        
-
-        
-
-            
 
 ### /
 
-            
-
-                
-
 #### 
-
-                
-
-                
-
-            
-
-            
-
-                
-
-#### BioPhorum
-
-                
-                    
-                        
-| # | | Low (1) | Medium | High |
-| --- | --- | --- | --- | --- |
-                    
-                    
-                        
-| 1 | | 1 | 2 | 4 |
-                        
-| 2 | | 1 | 2 | 4 |
-                        
-| 3 | | 1 | 2 | 4 |
-                        ********
-| 4 | / | 1 | 4 | 8 |
-                        
-| 5 | | 1 | 2 | 4 |
-                        
-| 6 | | 1 | 2 | 4 |
-                    
-                
-
-                
-
-                
-
-                
-
-                    
-- Low Risk: 1–16
-
-                    
-- Medium Risk: 32–265
-
-                    
-- High Risk: 512–8,192
-
-                
-
-            
-
-            
-
-                
 
 #### Grid Size
 
-                
+#### BioPhorum
 
-                    
+- Low Risk: 1–16
 
-                    
+- Medium Risk: 32–265
 
-                
+- High Risk: 512–8,192
 
-                
-
-            
-
-            
-
-            
-
-                
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-    
-    
-
-### 5.2.2.2–5.2.2.4 Risk Initiation, Assessment, Control & Review
-
-    
-
-        
-
-            
+### **5.2.2.2–5.2.2.4 Risk Initiation, Assessment, Control & Review 5.2.2.2–5.2.2.4 **
 
 ### 5.2.2.2 Risk Initiation: Development of EM Risk Assessments
 
-            
-
 Typical approaches to EM risk assessments include the following activities:
 
-            
-
-                
 - Map the layout of the room(s), overlay with grids, and combine them into functional sections
 
-                
 - Walk the process with the risk assessment team, detailing process activities grid-by-grid
 
-                
 - Assess each grid against the risk factors and score them to determine the relative probability of contamination
 
-                
 - Evaluate the results by functional sections to select sampling locations and methods
 
-                
 - Create an EMPQ plan
 
-                
 - Evaluate the EMPQ results
 
-                
 - Determine routine EM sampling locations, methods, and frequencies
 
-                
 - Review the risk assessment on a defined, periodic basis
-
-            
-
-            
 
 For each grid, risk is scored based on the process used, and then ranked based on the six factors. Strategies regarding risk scoring and risk ranking can be found in the **BioPhorum EM Risk Assessment Toolkit**. Each risk factor is ranked as low (1), medium (2) or high risk (4), with exception of "proximity to product," which is ranked as low (1), medium (4) or high risk (8). The calculated product for each grid results in the risk scoring as **low risk (1–16), medium risk (32–265) or high risk (512–8192)**.
 
-            
-
 ### 5.2.2.3 Risk Assessment Phase
-
-            
 
 Once the elements of the EM risk assessment are defined, the team will begin the risk assessment phase. Hazards identified during the facility walk-through will be documented, and the hazards will be evaluated for risk factors given the current controls in place. During this phase, consider:
 
-            
-
-                
 - Timing of sampling and sample volume measured against the company standard
 
-                
 - Frequency of sampling measured against the company standard
 
-                
 - Additional criteria (e.g., height of sampling location)
 
-                
 - Risk of sampling procedure for product contamination
 
-                
 - Locations and areas where there is no monitoring
 
-                
 - Historical data
 
-                
 - Air flow studies
-
-            
-
-            
 
 The outcome of the risk assessment includes a documented plan for monitoring and the rationale for the EM program (sampling locations, sampling volume, sampling frequency, methods).
 
-            
-
 If there is an existing EM program without a risk-based rationale, the risk team must be careful to ensure they are not performing an assessment to justify the current sampling program. The team must evaluate the facility/process (e.g., via a Gemba walk), taking into consideration historical data to prevent removal of sampling locations which have historically demonstrated adverse recovery trends.
-
-            
 
 ### 5.2.2.4 Risk Control & Risk Review
 
-            
-
 Where an existing EM program was created using the principles of risk management, the team will evaluate the existing assessment to ensure that all conditions assumed in the original assessment are still in place. If there are discrepancies between the initial and current conditions, the assessment is modified, and the hazards are re-ranked to determine if the risks are below the required threshold. Any major deviations to the relevant criteria should be considered, and mitigation actions may be defined to control the risks.
-
-        
-
-        
-
-            
 
 ### /
 
-            
-
-                
-
 #### EM
-
-                
-
-                    
-
-                    
-
-                    
-
-                    
-
-                    
-
-                    
-
-                    
-
-                    
-
-                
-
-            
-
-            
-
-                
 
 #### 
 
-                
-
-                
-
-            
-
-            
-
-                
-
 #### Section 5.2.2.4
-
-                
-
-                
-
-                    
-
-                    
-
-                    
-
-                    
-
-                
-
-            
-
-            
-
-                
 
 ####
 
@@ -2578,134 +883,43 @@ Where an existing EM program was created using the principles of risk management
 
 # PDA Technical Report No. 13 (Revised 2022)
 
-    
-
 Fundamentals of an Environmental Monitoring Program
-
-    
 
 Section 5a: Alert Levels, Action Limits & Data Management
 
-    
-
 Sections 5.3 – 5.4 | Pages 18–24
 
-    
-    
-
-        
-
-## 5.3 Alert Levels and Action Limits
-
-    
-
-        
-
-            
+## **5.3 Alert Levels and Action Limits 5.3 **
 
 ### 5.3 Alert Levels and Action Limits
 
-            
-
 EM programs require action limits to be established based on the applicable regulatory guidelines or requirements. These guidelines frequently recommend alert levels also be established. Some companies also choose to set levels for individual cleanrooms or sample sites. The alert level will be established based on statistical analysis of the historic EM data.
-
-            
 
 Alert levels and action limits based on CFU count excursions have been eliminated from USP <1116>, which indicates a paradigm shift to contamination recovery rate (CRR). CRR is the percentage of environmental samples found to have microbial contamination (e.g., a CRR of 1% would mean that only 1% of the samples taken showed contamination, regardless of colony numbers). The CRR approach may lend itself to wider applicability considering emerging EM technologies, such as those not reliant on CFU measurement. However, current official regulatory guidances from both the EU and the US still retain GMP requirements for alert levels and action limits. Consequently, companies may want to voluntarily monitor CRR as an EM trending tool in addition to the required alert levels and action limits.
 
-            
-
 The response to alert levels or action limits should be written and employed consistently. To create consistency, investigatory and corrective action steps should be specified in advance. Records should show that the excursion was recognized, appropriate follow-up occurred, and appropriate corrective and preventive actions (CAPA) were taken. Established alert levels should be reviewed periodically as part of routine trend analysis. They may be revised to reflect improvements, advances in technology, changes in use patterns, or other changes.
-
-            
 
 When no regulatory or industry guidelines are provided, alert levels and action limits may be derived statistically from historical data. Statistically derived alert levels, based on performance of the area, might be low; however, one should be using those values to detect atypical recurrences. Other considerations in adjusting levels include improving process capability, consistency of alert levels and action limits for similar room classifications, level of gowning, and product contamination risk. Infrequent excursions from these levels are expected at frequencies characteristic for the specific mathematical model used in their derivation. The critical requirement is recognizing an adverse trend that may represent a loss of environmental control.
 
-            
-
 The alert levels and action limits do not define product attributes, such as sterility, and should not be considered as product specifications. Rather, alert levels are intended to indicate changes or drifts in environmental control so that corrective action may be taken before product quality is adversely affected. However, where an action limit is exceeded where critical aseptic process steps are conducted, the investigation should be completed prior to release of the batches impacted by the excursion, which should include an evaluation of the product impact, based on the most probable root cause identified.
-
-            
 
 Since there is no one best method for setting alert levels, the approaches described in Sections 5.3.1–5.3.3 may be taken within the pharmaceutical industry. Where compendial requirements exist, as with action limits, they supersede these examples.
 
-        
-
-        
-
-            
-
 ### 
-
-            
-
-                
 
 #### 
 
-                
-
-                
-
-                    
-
-                    
-
-                
-
-                
-
-            
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-                
-
-## 5.3.1 Nonparametric Approach
-
-    
-
-        
-
-            
+## **5.3.1 Nonparametric Approach 5.3.1 **
 
 ### 5.3.1 Nonparametric Approach
 
-            
-
 A nonparametric evaluation is based on 99.9th and 99.99th percentiles and can be chosen as the alert and action levels. These levels correspond to about mean plus 3 and 4 sigma ranges, respectively. These levels are commonly selected as process alert and action levels. When the requirement of proper sample size is met (N≈1000), the alert levels analysis establishes confidence that during actual process monitoring 99.9% of the population will lie below the stated value. When these limits are exceeded, it will trigger investigation that will prevent contamination or an adverse trend condition.
-
-            
 
 Action levels can be selected at 99.99th percentile. The action level analysis establishes confidence that during actual process monitoring 99.99% of the population will lie below the stated value. Therefore, the derived action levels serve to identify an excursion at the selected percentile level. By definition, it is very unlikely that a validated system, operating in a state of control, will deliver results that will deviate significantly from the norm especially when multiple alert/action excursions in the same room on the same day are detected. This condition is likely indicative of a significant drift in the process control(s) or a systemic failure of the validated system has occurred.
 
-        
-
-        
-
-            
-
 ### 
 
-            
-
-                
-
 #### Nonparametric Percentile Method /
-
-                
 
 ```
 Alert Level  = 99.9th percentile  (approx. Mean + 3 sigma)
@@ -2719,58 +933,15 @@ Interpretation:
   - Exceedance of these limits is statistically RARE in a controlled system
 ```
 
-            
-
-            
-
-            
-
-            
-
-                
-
-                
-
-            
-
-            
-
-        
-
-    
-
-    
-    
-
-## 5.3.2 Nonparametric Tolerance Limit Approach
-
-    
-
-        
-
-            
+## **5.3.2 Nonparametric Tolerance Limit Approach 5.3.2 **
 
 ### 5.3.2 Nonparametric Tolerance Limit Approach
 
-            
-
 As environmental monitoring data, especially in cleanrooms, is typically not normally distributed (i.e., exhibits skew heavily toward lower counts or zero counts), a nonparametric tolerance limit approach to setting alert levels and action limits is recommended. These limits allow the user to assert with at least 95% (K=0.95) confidence that 100(P) or 99% of a population lies below the value, as determined by the stated action limits, for the respective data. For distribution-free tolerance limits, minimum sample sizes are N=60 for 95/95 (alert level) and N=300 for 95/99 (action limits).
-
-        
-
-        
-
-            
 
 ### 
 
-            
-
-                
-
 #### Tolerance Limit Notation /
-
-                
 
 ```
 Format: Confidence / Coverage  (K / P)
@@ -2784,92 +955,31 @@ Action Limit: 95/99
   → Minimum sample size: N = 300
 ```
 
-            
-
-            
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-    
-
-    
-    
-
-## 5.3.3 Cutoff Value Approach
-
-    
-
-        
-
-            
+## **5.3.3 Cutoff Value Approach 5.3.3 **
 
 ### 5.3.3 Cutoff Value Approach
 
-            
-
 All the test data for a particular site, or group of similar sites, are arranged in a histogram, and the alert levels and action limits are set at values whose monitoring results are respectively 5% and 1% higher than the level selected (i.e., 95th and 99th percentile, respectively). Other percentiles may be used in establishing levels. Alert levels are typically determined per test type (active air, passive air, and surface monitoring).
-
-            
 
 The alert definition should be based on a timeframe allowing the accumulation of enough data to be representative of a population. A general text on statistics recommends a statistically significant value of at least 20 data points. Alert levels are typically set at about 50–60% of action until enough data is generated. An example is to take the last 100 monitoring results or data collected during one full year and use the 95th and 99th percentile values as the alert levels and action limits.
 
-            
-
 Areas that have the same activities may be grouped to provide more data points; for example, material airlocks of the same Grade, or Grade D hallways of same function can be grouped.
-
-            
 
 The calculated alert level should be challenged for its appropriateness, however, avoid modifying or increasing the alert as such it loses any correlation with your actual cleanroom performance. In addition, performance-based alert levels that seem to be well below the applied action limits should be considered as a confirmation of a solid microbial control of the environment and does not per definition to be considered as inappropriate. One should be aware that above alerts will occur and that this is inherent with the use of a cut-off approach. One should be more focused on the level of occurrence.
 
-            
-
 If the outcome of the periodic reassessment of the alert assessment results in a level increase, this should be interpreted as a warning that the facility may be slowly drifting out of control or might be a result of modifications of the activities within the area. It is recommended not to increase alert levels without a good understanding of the reasons behind it.
-
-            
 
 The frequency-based excursion rates and trends can be used to determine the state of the EM control and gowning process. The cumulative conforming count chart (CCC) is easy to use and more sensitive to short-term drifts in process parameter, enabling its user to judge the state of control. The idea behind the CCC is the fact that the number of conforming items between two consecutive nonconforming items changes when the fraction nonconforming shifts is observed. CCC plots the number of inspectional monitoring data sets between excursions. The method is suitable when large number of data exists.
 
-            
-
 At a specified excursion rate, a likely number of excursions per given number of samples can be estimated at a 95% confidence level. The CCC can be used to identify the average and the minimum number of continuous successful (within alert levels) facility- or gown-monitoring examinations before the data shifts. Such approaches can be used to evaluate limits, define trends, and assess training effectiveness, for example, gowning process and operator or analyst disqualification and requalification.
-
-            
 
 Other models based on negative binomial, Poisson, Weibull, or exponential distributions are possible. It may be appropriate to determine the model that best fits the data and use that model to set the levels. As noted, contamination in strictly controlled environments does not typically fall within a normal distribution. Environmental monitoring data may be evaluated to determine the suitability of the approaches to level setting.
 
-            
-
 The monitoring group should review the data for trends at an appropriate frequency. The quality unit should review quarterly and yearly monitoring reports.
-
-        
-
-        
-
-            
 
 ### CCC
 
-            
-
-                
-
 #### Cutoff Value Method /
-
-                
 
 ```
 Alert Level  = 95th percentile (top 5% are above)
@@ -2885,803 +995,163 @@ Grouping allowed:
   Same-grade rooms with same activities can be pooled
 ```
 
-            
-
-            
-
-            
-                
-                    
-                        
-                        
-                        
-                        
-                    
-| | Alert | Action | |
-| --- | --- | --- | --- |
-                
-                
-                    
-                        
-                        
-                        
-                        
-                    
-| (5.3.1) | 99.9th | 99.99th | N ≈ 1,000 |
-                    
-                        
-                        
-                        
-                        
-                    
-| (5.3.2) | 95/95 | 95/99 | N = 60 / 300 |
-                    
-                        
-                        
-                        
-                        
-                    
-| (5.3.3) | 95th | 99th | N ≥ 20 |
-                
-            
-
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-                
-
 #### Alert Level
 
-                
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-
-## 5.3.4 Quantitative and Qualitative Trending Rules
-
-    
-
-        
-
-            
+## **5.3.4 Quantitative and Qualitative Trending Rules 5.3.4 **
 
 ### 5.3.4 Quantitative and Qualitative Trending Rules
 
-            
-
 Trend rules should supplement alert levels and action limits and focus on two important axes:
 
-            
-
-                
 - To rapidly detect gradual bioburden changes before it leads to real excursions with potential impact for production and/or the cleanroom environment (immediate term trending)
 
-                
 - It should be able to periodically evaluate the general state of control of the cleanroom environment (short- and long-term trending)
-
-            
-
-            
 
 A useful trending rule is to look at alert level excursions over time within the same room identifying correlation between/among locations, or frequent sustained recoveries above alert. When trend rules are exceeded, an investigation is recommended.
 
-            
-
 **Immediate — short term trending rules** typically look at an increase in the proportion of above alerts over a specified time period. Examples:
 
-            
-
-                
 - A specified number of above alerts at a single location/type of test
 
-                
 - A specified number of alerts within one room (same and different types of tests)
-
-            
-
-            
 
 Some statistical rules can be used as well in order to identify when the proportion of above alerts is moving to an atypical level.
 
-            
-
 **Short Term — monthly or quarterly:** The monitoring group should perform a comprehensive review of the data at an appropriate frequency as a function of the amount and criticality of the data generated. The quality unit should review and approve the periodic monitoring reports. Typically, a thorough analysis with a statement if data indicate that the facility is operating in a state of control or if data indicate some issues, how it was discovered, where and what corrective action was taken and what impact the issue had on the facility. The integration of graphs is highly recommended to visualize the state of control. One can assess:
 
-            
-
-                
 - Same sample type from same location exceeding the action limit multiple times
 
-                
 - Increases of the number of alert level excursions (e.g., same monitoring type: active, passive or surface monitoring)
 
-                
 - Recovery rate increases for the same location, or the same room or area
-
-            
-
-            
 
 **Long Term — annual:** Annual trending should report the changes in a year's worth of data. Since it incorporates more data, it should be able to give a better holistic picture of the cleanroom environment. It might include:
 
-            
-
-                
 - Number of EM Deviations per grade with indication of concerned rooms and test type and corrective actions
 
-                
 - Occurrence of atypical microorganism per grade and explanation of potential root cause identified
 
-                
 - Microbial flora analysis and confirmation of the disinfection program efficiency and validated state
 
-                
 - Global analysis of the site performance covered by the monthly/quarterly reports and comparison with the previous period
 
-                
 - Key findings and highlights on any change in SOP or modification during the year
 
-                
 - Year graphical representation and global analysis of the data from your cleanrooms and conclusion with a statement such as data indicate that the facility is operating in a state of control or if data indicate some issues and any related CAPAs
 
-                
 - Analysis of potential correlations between observed product contamination (e.g., bioburden) and the micro-organisms recovered within the cleanroom environment
-
-            
-
-        
-
-        
-
-            
 
 ### 
 
-            
-
-            
-
-                
-
-#### 
-
-                
-                    
-                        
-                            
-                            
-                            
-                            
-                        
-| --- | --- | --- | --- |
-                    
-                    
-                        
-                            ****
-                            
-                            
-                            
-                        
-| (Immediate) | / | | EM |
-                        
-                            ****
-                            
-                            
-                            
-                        
-| (Short-term) | / | | QA |
-                        
-                            ****
-                            
-                            
-                            
-                        
-| (Long-term) | | | QA + |
-                    
-                
-
-            
-
-            
-
-            
-
-                
-
-                
-
-            
-
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-                
-
-            
-
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-
-## 5.4 Data Management
-
-    
-
-        
-
-            
+## **5.4 Data Management 5.4 **
 
 ### 5.4 Data Management
 
-            
-
 Routine review and analysis of EM data for trends at an appropriate frequency is essential to aid in the interpretation of process stability and assess overall environmental control performance. Management must be kept abreast of trends and the subsequent state of operations within facilities with review of quarterly and yearly monitoring reports.
-
-            
 
 Based on the large number of samples tested by a given facility, a computer-based data-tracking system is essential. Before implementation, all database applications used should be validated or qualified for specific software applications.
 
-        
-
-        
-
-            
-
 ### 
 
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-        
-
-    
-
-    
-    
-
-## 5.4.1 Data Integrity (ALCOA)
-
-    
-
-        
-
-            
+## **5.4.1 Data Integrity (ALCOA) 5.4.1 ALCOA**
 
 ### 5.4.1 Data Integrity
 
-            
-
 The PDA Elements of a Code of Conduct for Data Integrity in the Pharmaceutical Industry and PDA Technical Report No. 80: Data Integrity Management Systems for Pharmaceutical Laboratories provide comprehensive information on this topic.
-
-            
 
 Collecting, analyzing, reporting and retention of EM data should be done under conditions that are designed to guarantee reliability and integrity of the data. The data are required to be attributable, legible, contemporaneous, original, and accurate (ALCOA):
 
-            
-
-                
 - **Attributable:** Information is captured that identifies where the data came from
 
-                
 - **Legible:** Data are readable and understandable by humans
 
-                
 - **Contemporaneous:** Data are recorded at the time they are generated or observed
 
-                
 - **Original:** Data are recorded for the first time
 
-                
 - **Accurate:** Data are correct
-
-            
-
-            
 
 Important elements to consider with respect to environmental monitoring are:
 
-            
-
-                
 - Integrity of the sampling site data by including a formal mechanism to enable full reconciliation of sample collection, incubation, and evaluation
 
-                
 - EM data must be documented on controlled worksheets for paper records or entered into a validated computer system with appropriate security, audit trails, validation, and oversight
 
-                
 - Employees must adhere to the established site documentation requirement and will not record raw data on unofficial forms, writing pads, or other uncontrolled media
 
-                
 - Employees will not discard or destroy raw data or original records, other than at the end of the prescribed retention period
-
-            
-
-            
 
 The deployment of a second-person verification should be considered to confirm the enumeration of microbial recovery. The main focus, however, should be to have in place a robust plate-reading process, reducing the risk for variability to the minimum, for instance, by applying appropriate lighting and/or magnification and a robust training of the technicians performing the readout. The utilization of QRM principles can aid in the determination of whether or not a secondary verification is required (e.g., Grade A EM). Automated systems for EM test readouts and data storage can eliminate bias and the need to perform a second verification.
 
-            
-
 Routine data are aligned into a source in a consistent record format. At a minimum, the record format should include the following:
 
-            
-
-                
 - Identification of the operator and analyst
 
-                
 - Monitoring date and time
 
-                
 - Equipment used
 
-                
 - Specific sampling locations
 
-                
 - Sampling methods including media used
 
-                
 - Incubation conditions
 
-                
 - Colony-forming units (CFU) or total airborne particulate count results
 
-                
 - Identifications performed
 
-                
 - Batch information (if applicable, e.g., for batch-related monitoring)
 
-                
 - Current alert levels or action limits
-
-            
-
-            
 
 Records must be signed and verified by the appropriate person, depending on the type of system used. Some alternative microbiological methods can use measurements other than CFUs, provided they have been properly validated before use, for example, relative light units, cells, etc.
 
-        
-
-        
-
-            
-
 ### ALCOA
-
-            
-
-                
-
-#### ALCOA
-
-                
-                    
-                        
-                            
-                            
-                            
-                            
-                        
-| | | | EM |
-| --- | --- | --- | --- |
-                    
-                    
-                        
-                            ****
-                            
-                            
-                            
-                        
-| A | Attributable | | |
-                        
-                            ****
-                            
-                            
-                            
-                        
-| L | Legible | | |
-                        
-                            ****
-                            
-                            
-                            
-                        
-| C | Contemporaneous | | CFU |
-                        
-                            ****
-                            
-                            
-                            
-                        
-| O | Original | | |
-                        
-                            ****
-                            
-                            
-                            
-                        
-| A | Accurate | | CFU |
-                    
-                
-
-            
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-            
-
-                
-
-                
-
-                
-
-                
-
-            
-
-            
-
-                
 
 #### EM (Minimum Record Elements)
 
-                
-
-            
-
-        
-
-    
-
-    
-    
-
-## 5.4.2 Data Trending Analysis
-
-    
-
-        
-
-            
+## **5.4.2 Data Trending Analysis 5.4.2 **
 
 ### 5.4.2 Data Trending Analysis
 
-            
-
 Histograms or tables, characterized by a number of data points that fall within a common frequency, are valuable tools to conduct the trending expected by regulatory agencies. Different room classifications with defined requirements will produce different histograms. For example, the CFU spread obtained across an ISO 8 data set will not be observed in a data set from an ISO 5 area. Therefore, each area, or area type, and its accompanying data set must be viewed as distinct. Data trends in counts, occurrences, and organism types can provide a holistic view of the cleanroom environment. They can also be used to evaluate if there is ingress from lower to higher grades. Cleanroom maps indicating sampling excursions are useful as well to show connectivity of various grades and potential ingress through equipment and personnel flows. While this does not require statistical tools, mathematical models could be applied. Examples of statistical methods and control charts can be found in PDA Technical Report 59: Utilization of Statistical Methods for Production Monitoring.
-
-        
-
-        
-
-            
 
 ### 
 
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-            
-
-        
-
-    
-
-    
-    
-
-## 5.4.3 Interpretation & Contamination Recovery Rates
-
-    
-
-        
-
-            
+## **5.4.3 Interpretation & Contamination Recovery Rates 5.4.3 **
 
 ### 5.4.3 Interpretation
 
-            
-
 Routine environmental microbial monitoring data should demonstrate that the classified area is operating under an adequate microbial control for the needs of the operations conducted in that area. Individual recoveries in critical areas (i.e., Grade A) must be adequately investigated. Compliant EM results do not guarantee the sterility assurance of the process, however, as EM incorporates multiple limitations (e.g., recovery efficiency of the applied methods, selected sample locations etc.). EM can only confirm to some extent the robustness of the design and processes.
-
-            
 
 Data generated should be summarized and evaluated to determine whether the EM process is in a state of control and documented in periodic reports. A variety of methods are available to perform this analysis, for example, the use of frequency distribution and control charts or statistical analysis.
 
-            
-
 Measurements for viable contamination, such as contamination excursion rates and/or recovery rates, can be used to determine the level of control in a given area. The excursion rate is related to the number of samples exceeding the defined alert levels and action limits, whereas the contamination recovery rate (expressed as a percentage) is related to the number of samples that are positive for microbial growth when compared to the total number of samples taken within the same classified area(s). Therefore, recovery rates differ from excursion rates. Given that microorganisms are not homogeneously distributed in the same environments, and the sensitivity and variability associated with microbial sampling methods, these rates can be useful approaches to trending results in controlled areas.
-
-            
 
 The combined excursion rates are calculated by determining the number of samples with excursions outside of established levels, dividing by the total number of samples collected, and converting to a percentage. For an ISO 5 environment, an excursion rate of not more than 1% is achievable due to stringent controls, and the expectation is that the results show no viable recoveries.
 
-            
-
 In addition to individual excursions, CRRs may be used for trending and control of the overall microbial load in the classified environment, equipment surfaces, material, and personnel. Companies can utilize the criteria from USP <1116> to develop their recovery rates for cleanroom environments depending on the activities and processes conducted in those areas. They should also establish a CRR for each monitoring attribute, such as surfaces, air, and garments, for each classified area. Any changes from the established calculated contamination rates should be investigated and corrected. However, any contamination in Grade A/ISO 5 areas must be investigated, since there should not be any microbial recovery within those areas. The CRR provides an alternative measurement of the effectiveness of the overall contamination control strategy.
-
-        
-
-        
-
-            
 
 ### — vs
 
-            
-
-                
-
 #### Excursion Rate vs Recovery Rate (CRR)
 
-                
-
-                
-
-                    
-
-                    
-
-                
-
-                
-
-                
-
-                    
-
-                    
-
-                
-
-                
-
-            
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-            
-
-            
-
-            
-
-                
-
-                
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-
-### Table 5.4.4-1: Contamination Recovery Rates Suggested by USP Chapter <1116>
-
-    
-        
-            
-                
-                
-                
-                
-                
-            
-| Room Classification | Active Air Sample (%) | Settle Plate (9 cm) 4-Hour Exposure (%) | Contact Plate or Swab (%) | Glove or Garment (%) |
-| --- | --- | --- | --- | --- |
-        
-        
-            
-                ****
-                
-                
-                
-                
-            
-| Isolator / closed RABS or ISO 5 or better | <0.1 | <0.1 | <0.1 | <0.1 |
-            
-                ****
-                
-                
-                
-                
-            
-| ISO 5 | <1 | <1 | <1 | <1 |
-            
-                ****
-                
-                
-                
-                
-            
-| ISO 6 | <3 | <3 | <3 | <3 |
-            
-                ****
-                
-                
-                
-                
-            
-| ISO 7 | <5 | <5 | <5 | <5 |
-            
-                ****
-                
-                
-                
-                
-            
-| ISO 8 | <10 | <10 | <10 | <10 |
-        
-    
-
-    
-
-        
+### **Table 5.4.4-1: Contamination Recovery Rates Suggested by USP Chapter <1116> Table 5.4.4-1USP Chapter <1116> **
 
 #### Table Note /
 
-        
-
 **Original Note:** All operators are aseptically gowned in these environments. These recommendations do not apply to production areas for nonsterile products or other classified environments in which fully aseptic gowns are not donned. In those conditions other Recovery Rates might be used if appropriately justified.
-
-        
-
-    
-
-    
-
-        
-
-            
 
 ### CRR Table Interpretation
 
-            
-
 Evaluating the recovery rate levels at a defined frequency is recommended (at least monthly as per USP <1116>). Trends may include a gradual increase or decrease in the overall counts observed over time, or a change in flora or counts on several plates of a particular area on a given day. Interpretation of the impact of a significant fluctuation in counts or a change in flora should be based on the experienced judgment of a qualified microbiologist.
-
-            
 
 Some considerations for assessing the state of control for a given process include:
 
-            
-
-                
 - Multiple excursions observed within a specified time period may be considered a pattern or cluster formation that, if above the alert level, signals a trend that requires investigation. As an alternative, such approaches as statistically derived frequency of excursion can be used and justified.
 
-                
 - Fluctuations in environmental monitoring data values for a given process or a specific area require further attention as this may point to construction activities, facility conditions, change in process, flow of material, seasonal variations, disruptive events, or other factors.
-
-            
-
-            
 
 Understanding the potential impact of the results generated during EM is critical to a successful EM program.
 
@@ -4252,38 +1722,6 @@ The identification of microorganisms forms an important element to assess microb
 ### Table 5.6-1: Typical Scheme for Microbial Identification
 
             
-                
-                    
-                        
-                        
-                    
-| Extent of Identification | Isolate and Origin |
-| --- | --- |
-                
-                
-                    
-                        ****  
-**
-                        
-- ****
-- ****
-- ****
-
-                    
-| Identification to species(or genus where speciation is not possible) | All recoveries in Grades A & B                                 Grades C & D, for alert level or action limit excursions                                 Periodically as part of the ongoing surveillance program |
-                    
-                        ****
-                        
-- 
-- 
-- 
-
-                    
-| Strain typing or molecular fingerprinting | Significant product failure (e.g.):                                                              Media fills                                 Sterility test failure                                 Significant adverse trends |
-                
-            
-
-            
 
 Initially, many isolates may be identified to establish a **database of representative microorganisms** found in the area. Periodic identifications should be performed even if no excursions have occurred in Grades C and D. A change in the microflora might signify a change in environmental controls that should be investigated.
 
@@ -4404,90 +1842,6 @@ The procedure should define the level of investigation required if there are **m
             
 
 ### Table 5.7-1: Examples of Investigation Elements for Different Systems
-
-            
-                
-                    
-                        
-                        
-                    
-| System | Investigation Elements |
-| --- | --- |
-                
-                
-                    
-                        ****
-                        
-- 
-- 
-- 
-
-                    
-| Compressed Gas System | Repeat test immediately. Perform filter integrity testing.                                 Replace filter if excursion is confirmed on retest.                                 Evaluate impact on processed component and/or product. |
-                    
-                        ****
-                        
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-
-                    
-| Room Air / HVAC | Review level of personnel activity.                                 Review/perform airflow patterns and HEPA integrity tests.                                 Review aseptic technique of personnel and training records.                                 Review gowning procedures and requirements for area.                                 Review trends and any incidents of HVAC outages.                                 Inspect incoming air filters for leaks and pressure differential across filter.                                 Review room cleaning and disinfection procedures; review training records.                                 Check area pressure differentials, particularly with respect to the last sanitization.                                 Evaluate mechanical equipment in the area as possible contamination source.                                 Review prior and subsequent monitoring results.                                 Review sterilization cycle records. |
-                    
-                        ****
-                        
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-
-                    
-| Facility Surfaces | Perform investigation for possible sources of contamination.                                 Evaluate cleaning and disinfection practices; review preparation of disinfectants, cleaning records, and training records.                                 Review possible unusual events during manufacturing operation.                                 Examine areas during operation.                                 Review closed-circuit video (if applicable).                                 Verify that environmental controls were not circumvented.                                 Review risk of direct or indirect product contact with impacted surfaces.                                 Review isolates for occurrence in other types of EM tests.                                 Evaluate condition of the room (e.g., peeling paint or cracks in ceiling, walls, and floor). |
-                    
-                        ****  
-**
-                        
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-
-                    
-| High Purity Water System(WFI, clean steam, purified water) | Review upstream water treatment systems (e.g., carbon beds used to remove chlorine from municipal water systems).                                 Examine bioburden data for other samples or sites in system — port contamination vs. system contamination.                                 Examine endotoxin and water chemistry data for system.                                 Review efficacy of sanitization procedure and schedule.                                 Inspect system preventive maintenance records; evaluate impact on product.                                 Verify integrity of sample collection and use procedures.                                 Inspect system for dead-legs, proper sloping, hose management, and sample-port design and location.                                 Review data for flow rate, pressure, and vent filter integrity wherever used. |
-                    
-                        ****  
-**
-                        
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-
-                    
-| Personnel Gowning(gowning and gloves) | Evaluate possible operator impact on product.                                 Review EM data and sterility test data.                                 Review preparation and expiry dates for disinfectants used on gloves.                                 Identify all morphologically unique isolates (human vs. environmental).                                 Interview operator for potential cause and retrain or requalify operator; check integrity of isolators and RABS gloves.                                 Evaluate training of operator; review sanitization and disinfection records.                                 Review closed-circuit video (if available).                                 Review previous gowning data for the operator and other operators on the same day. |
-                
-            
 
             
 
@@ -5065,61 +2419,6 @@ Equipment user requirements include: calibration of the instrument and verificat
 
                 
 
-#### Active Samplingvs. Passive Sampling
-
-                
-                    
-                        
-                            
-                            
-                            
-                        
-| --- | --- | --- |
-                    
-                    
-                        
-                            
-                            
-                            
-                        
-                        
-                            
-                            
-                            
-                        
-| | CFU / | CFU / |
-                        
-                            
-                            
-                            
-                        
-| | | 4 |
-                        
-                            
-                            
-                            
-                        
-                        
-                            
-                            
-                            
-                        
-                        
-                            
-                            
-                            
-                        
-                    
-                
-
-                
-
-            
-
-            
-
-                
-
 #### d50
 
                 
@@ -5135,6 +2434,16 @@ Equipment user requirements include: calibration of the instrument and verificat
     
 
     
+
+                
+
+#### Active Samplingvs. Passive Sampling
+
+                
+
+            
+
+            
     
 
         
@@ -5219,56 +2528,6 @@ The surface rinse method is best used when a **large surface area sample is requ
 
                     
 
-                
-
-            
-
-            
-
-                
-
-#### 
-
-                
-                    
-                        
-                            
-                            
-                            
-                            
-                        
-| --- | --- | --- | --- |
-                    
-                    
-                        
-                            ****
-                            
-                            
-                            
-                        
-| (Contact Plate) | | CFU/ | ISO 5 |
-                        
-                            ****
-                            
-                            
-                            
-                        
-| (Flexible Film) | | | |
-                        
-                            ****
-                            
-                            
-                            
-                        
-| (Swab) | / | | ~25 cm²/ |
-                        
-                            ****
-                            
-                            
-                            
-                        
-| (Surface Rinse) | | | → |
-                    
                 
 
             
@@ -5599,93 +2858,6 @@ The quality of laboratory water should meet the needs of analytical methods and 
             
 
             
-                
-                    
-                        
-                        
-                        
-                        
-                    
-| Critical Parameter / Quality Attribute | USP 2021 | EP 9:8 / 10 & JP 17, 2016 | ChP 2015 |
-| --- | --- | --- | --- |
-                
-                
-                    
-                        ****
-                        
-                        
-                        
-                    
-| Source water | Drinking water / Purified water (suitable for human consumption) | JP Drinking water spec. or purified water | Purified water |
-                    
-                        ****
-                        
-                        
-                    
-| Purification Process | Distillation or equivalent/superior process | Distillation |
-                    
-                        ****
-                        
-                        
-                        
-                    
-| pH | N/A | 5.0–7.0 | 5.0–7.0 |
-                    
-                        ****
-                        
-                        
-                    
-| Conductivity at 25°C | 1.3 μS/cm In-line Stage 1 (Stage 2–3 offline)1,2 | 1.3 μS/cm |
-                    
-                        ****
-                        
-                        
-                    
-| WFI Microbial Limit | NMT 10 CFU/100 mL | NMT 10 CFU/100 mL |
-                    
-                        ****
-                        
-                        
-                    
-| Maximum TOC | 500 ppb (0.5 mg/L)3 | 500 ppb |
-                    
-                        ****
-                        
-                        
-                    
-| Bacterial Endotoxin Limit | < 0.25 EU/mL | < 0.25 EU/mL |
-                    
-                        ****
-                        
-                        
-                        
-                    
-| Nitrates Limit (ppm) | NA | 0.2 | 0.06 |
-                    
-                        ****
-                        
-                        
-                        
-                    
-| Nitrites Limit (ppm) | N/A | 0.02 | 0.02 |
-                    
-                        ****
-                        
-                        
-                        
-                    
-| Ammonia Limit (ppm) | N/A | 0.2 | 0.2 |
-                    
-                        ****
-                        
-                        
-                        
-                    
-| Heavy Metals Limit (ppm) | N/A | 0.1 | 0.1 |
-                
-            
-
-            
 
             
 
@@ -5807,50 +2979,6 @@ It is recommended to **not use IPA on gloves or sample port prior to TOC samplin
             
 
             
-                
-                    
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                    
-| Parameter | Clean Steam | Purified Water | USP WFI | EP WFI | JP WFI | ChP WFI |
-| --- | --- | --- | --- | --- | --- | --- |
-                
-                
-                    
-                        ****
-                        
-                        
-                        
-                    
-| Site | Point of generation and furthest point of use | Representative use points in distribution system | All accessible use ports in the distribution system |
-                    
-                        ****
-                        
-                        
-                        
-                        
-                        
-                        
-                    
-| Methods | Chemistry and LAL | Chemistry, pour plate (1.0 mL) or membrane filter (100 mL) | Chemistry, LAL, and membrane filter (200 mL) | Chemistry, LAL, and membrane filtration (100 mL) | Chemistry, LAL, and membrane filtration (≥100 mL) | Chemistry, LAL, and membrane filtration (≥100 mL) |
-                    
-                        ****
-                        
-                        
-                        
-                        
-                        
-                    
-| Microbiological Test (10 CFU/100 mL limit) | Not recommended | PCA/TGYA, 48–72 h at 30–35°C1,2,3 | R2A agar, 30–35°C, ≥5 days | Standard agar 30–35°C 48–72 h, or R2A agar 20–25°C or 30–35°C for 4–7 days | R2A agar, 30–35°C, ≥5 days |
-                
-            
-
-            
 
             
 
@@ -5907,50 +3035,19 @@ It is recommended to **not use IPA on gloves or sample port prior to TOC samplin
 
             
 
+    
+
+    
+
                 
 
 #### 
-
-                
-                    
-                        
-                            
-                            
-                            
-                        
-| --- | --- | --- |
-                    
-                    
-                        
-                            
-                            
-                            
-                        
-| USP | PCA/TGYA | 30–35°C, 48–72 h |
-                        
-                            
-                            
-                            
-                        
-| WFI (USP/EP/ChP) | R2A agar | 30–35°C, ≥5 days |
-                        
-                            
-                            
-                            
-                        
-| WFI (JP) | R2A | / |
-                    
-                
 
                 
 
             
 
         
-
-    
-
-    
     
 
         
@@ -6650,38 +3747,6 @@ Guidance documents and industry practices differ regarding incubation conditions
             
 
 ### Standard Incubation Conditions
-
-            
-                
-                    
-                        
-                        
-                        
-                    
-| Target Organisms | Temperature | Duration |
-| --- | --- | --- |
-                
-                
-                    
-                        
-                        
-                        
-                    
-| Total aerobic bacterial count | 30–35°C | 48–72 hours |
-                    
-                        
-                        
-                        
-                    
-| Total combined yeast and mold count | 20–25°C | 5–7 days |
-                    
-                        
-                        
-                        
-                    
-| Slow-growing contaminants | As applicable | Extended (justified) |
-                
-            
 
             
 
@@ -7390,18 +4455,6 @@ USP <61> <1116> <1117> • EP • ISO 14644 / 14698
 
     
 
-    
-
-PDA Technical Report No. 13 (Revised 2022): Fundamentals of an Environmental Monitoring Program
-
-    
-
-Section 7.0–8.0 — EM Prerequisites & References — p38–p43
-
-    
-
-Educational bilingual summary. Source: © 2022 Parenteral Drug Association, Inc. Licensed content — educational use only.
-
 ⇧
 
 ## Section 9: Appendices: Qualification, FMEA & HACCP (p43-p58)
@@ -7761,114 +4814,6 @@ OQ Testing Requirements (At Rest) by Cleanroom Grade — p45–p46
 *Note: All tables in appendices indicate values for start-up sites, not for facilities where historical data is available.*
 
                     
-                        
-                            
-                                
-                                  
-
-                                  
-
-                                  
-
-                                  
-
-                            
-| Test | Grade A(ISO 5 unidirectional) | Grade B(ISO 5) | Grade C(ISO 7) | Grade D(ISO 8) |
-| --- | --- | --- | --- | --- |
-                        
-                        
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| Filter Pressure Differential | Yes | Yes | Yes | Yes |
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| Filter Leak Test 1 | Yes | Yes | Yes | Yes |
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| Air Flow Distribution | N/A | Yes | Yes | Yes |
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| Air Flow Velocity | Yes | N/A | N/A | N/A |
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| Air Flow Visualization (smoke) Study | Yes | Yes | Optional 2 | Optional 2 |
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| Differential Room Pressure | N/A | Yes | Yes | Yes |
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| Temperature | Yes | Yes | Yes | Yes |
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| Relative Humidity | Yes | Yes | Yes | Yes |
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| Alarms and Interlocks | Yes | Yes | Yes | Yes |
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| Room Air Classification (Total Airborne Particulate Count) | Yes | Yes | Yes | Yes |
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| Recovery Time | N/A | Yes | Yes | Yes |
-                        
-                    
-
-                    
 
                         1 Required for H13/H14 or better filters only.  
 
@@ -7991,62 +4936,6 @@ Area Recertification Frequency Schedule — p46–p47
                     
 
 *All re-certification testing is performed "at rest."*
-
-                    
-                        
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| Test | Grade A | Grade B | Grade C | Grade D |
-| --- | --- | --- | --- | --- |
-                        
-                        
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| Filter Leak Test 3 | 6 months | 6 months | Annual | Annual |
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| Air Flow Distribution | N/A | Annual | Annual | Annual |
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| Air Flow Velocity | 6 months | N/A | N/A | N/A |
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| Room Classification | 6 months 4 | Annual | Annual | Annual |
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| Recovery Time 5 | N/A | N/A | N/A | N/A |
-                        
-                    
 
                     
 
@@ -8191,86 +5080,6 @@ RPN range: 1 to 27
                     
 
                     
-                        
-                            
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                            
-| Item | Risk Statement (Requirement) | SEV | OCC | DET | RPN | Risk Class | Accepted | CAPA |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-                        
-                        
-                            
-                                
-                                **
-                                
-                                
-                                
-                                ****
-                                
-                                
-                                
-                            
-| 1 | High-risk areas in Grade A (filling/stoppering area, stopper bowl, turntable with open vials) must be properly monitored. Gap: no active air monitoring or surface monitoring at stopper bowl. | 3 | 2 | 2 | 12 | MAJOR | N | Add active air monitoring & surface monitoring at stopper bowl. |
-                            
-                                
-                                **
-                                
-                                
-                                
-                                ****
-                                
-                                
-                                
-                            
-| 4 | Air sampling timing and frequency must meet current industry practices: in-operation sampling, set-up activities included, min. 1 active air sample/shift, continuous passive monitoring. Gap: none — EM program meets requirement. | 3 | 1 | 1 | 3 | MINOR | Y | No action required. |
-                            
-                                
-                                **
-                                
-                                
-                                
-                                ****
-                                
-                                
-                                
-                            
-| 8 | Surface monitoring locations must be close to open product (<5 cm) or sterile product contact surfaces. Gap: RABS stopper bowl not monitored; filling needles are monitored. | 3 | 2 | 2 | 12 | MAJOR | N | Include additional surface monitoring locations (e.g., stopper bowl). |
-                            
-                                
-                                **
-                                
-                                
-                                
-                                ****
-                                
-                                
-                                
-                            
-| 16 | Glove monitoring must correctly recover contamination on fingertips (no overlap, defined contact time). Status: settle plates now used; contact time defined, no finger overlap. | 3 | 1 | 1 | 3 | MINOR | Y | No action required. |
-                            
-                                
-                                **
-                                
-                                
-                                
-                                ****
-                                
-                                
-                                
-                            
-| 18 | Growth promotion testing (GPT) must be batch-wise; plates must not be desiccated; transfer into Grade A/B by one- or two-bag method (no disinfectant spraying on plates). Status: supplier changed; GPT now includes EM isolates. | 3 | 1 | 1 | 3 | MINOR | Y | Add more details in EM SOPs. |
-                        
-                    
-
-                
 
                 
 
@@ -8425,87 +5234,6 @@ The **BioPhorum model** divides a filling line into a numbered grid (zones 1–1
                     
 
                     
-                        
-                            
-                                
-                                
-                                  
-
-                                
-                                
-                            
-| Grid Zone(s) | Process Step / Activities | O(×2) | Score | Rank |
-| --- | --- | --- | --- | --- |
-                        
-                        
-                            
-                                
-                                
-                                
-                                ****
-                                
-                            
-| 11 | Conveyor belt — harder-to-clean areas; interventions via glove ports; material via alpha/beta ports <12 in. from open product; correction of vial jams >1×/batch | 8 | 512 | HIGH |
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| 2 | Within 12 in. of open vials; alpha/beta port for material transfer; no direct product interventions | 8 | 32 | HIGH |
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| 8, 12 | Stoppering station & outfeed star wheel; EM plate material flow; clearing stopper jams <1×/batch | 8 | 32 | HIGH |
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| 10 | Needle docking station & stoppering; EM material flow; stopper jam clearing <1×/batch with sterilized tool | 8 | 32 | HIGH |
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| 1, 5, 9, 13 | Turntable with open vials; no interventions in this grid | 8 | 16 | MEDIUM |
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| 4 | Behind stopper station; some material flow for EM plates | 4 | 8 | MEDIUM |
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| 3, 7 | Behind dosing vessel within 12–24 in. of open product; no interventions or material transfer | 4 | 4 | LOW |
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| 15 | In front of needle holder and docking station; EM plate material flow; no interventions | 4 | 4 | LOW |
-                        
-                    
-
-                    
 
 *Selected representative rows from Table 10.0-2. Full table contains all 16 grid zones.*
 
@@ -8518,34 +5246,6 @@ The **BioPhorum model** divides a filling line into a numbered grid (zones 1–1
 The EM Table Template integrates risk ranking outputs with monitoring decisions. For each zone, the template records:
 
                     
-                        
-                            
-                                
-                                
-                            
-| Input Fields | Monitoring Decision Columns |
-| --- | --- |
-                        
-                        
-                            
-                                
-- 
-- 
-- 
-- 
-
-                                
-- 
-- 
-- 
-- 
-
-                            
-| Results of air flow studies                                         Historical data (incl. total particulates)                                         Recent relevant changes                                         Notes | During Set-Up: Total particulates & Viables                                         During Process (2×/batch — beginning & end): Total particulates & Viables                                         End of Process (Surface): Viables                                         Zone Decision (monitor / not monitor) |
-                        
-                    
-
-                
 
                 
 
@@ -8733,82 +5433,6 @@ Maintain records of HACCP decisions, monitoring results, and CAPAs.
 Room has 12 operators; 3 bioreactors. Sources: Phone/computer workstation (touch points) and bioreactors. Hazards: Viable exceedance (alert/action limit) and non-viable particulate exceedance.
 
                     
-                        
-                            
-                                
-                                
-                                
-                                
-                                
-                                  
-
-                                
-                            
-| Sector | Hazard | Likelihood | Severity | Overall Risk | CCP?(Q4) | CAPA / Notes |
-| --- | --- | --- | --- | --- | --- | --- |
-                        
-                        
-                            
-                                
-                                
-                                  
-
-                                  
-
-                                
-                                
-                                
-                            
-| 1 (Phone, computer workstation, bioreactor ×3) | Exceed viable alert/action limit | Occasional(1 excursion in last 2 trended periods) | Critical(Impact to Grade B/C) | High | Yes | CAPA 12245 |
-                            
-                                
-                                
-                                  
-
-                                  
-
-                                
-                                
-                                
-                            
-| 1 | Exceed particulate alert/action limit (non-viable) | Remote(no excursions in last 2 periods) | Critical(Impact to Grade B/C) | Low | Yes | N/A |
-                            
-                                
-                                
-                                  
-
-                                  
-
-                                
-                                
-                                
-                            
-| 2 | Exceed viable alert/action limit | Unlikely(2 alert level excursions in last 2 periods) | Critical(Impact to Grade B/C) | Medium | Yes | N/A |
-                            
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                            
-| 2 | Exceed particulate alert/action limit (non-viable) | Remote | Critical | Low | Yes | N/A |
-                            
-                                
-                                
-                                  
-
-                                
-                                
-                                
-                                
-                            
-| 3 | Exceed viable alert/action limit | Unlikely(2 alert level excursions in last 2 periods) | Critical | Medium | Yes | N/A |
-                        
-                    
-
-                    
 
 *Source: Application of HACCP Methodology to Pharmaceuticals (WHO Technical Report Series, No. 908, 2003, Annex 7). Q1–Q3 decision tree questions omitted for brevity; all sectors above answered Q4 (Is this a Critical Control Point?) = Yes.*
 
@@ -8848,58 +5472,20 @@ Room has 12 operators; 3 bioreactors. Sources: Phone/computer workstation (touch
 
                         
 
-#### HACCP vs. FMEA
-
-                        
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| | FMEA | HACCP |
-| --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-| | RPN = SEV×OCC×DET | × → |
-                                
-                                    
-                                    
-                                    
-                                
-| | CAPA | CCP |
-                                
-                                    
-                                    
-                                    
-                                
-| | / | NASA/Pillsbury |
-                                
-                                    
-                                    
-                                    
-                                
-                            
-                        
-
-                        
-
-                    
-
-                    
-
-                        
-
 #### HACCP
+
+                        
+
+                        
+
+                    
+
+                
+
+            
+
+            
+
+                        
+
+#### HACCP vs. FMEA

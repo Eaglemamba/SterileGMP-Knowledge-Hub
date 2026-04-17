@@ -90,100 +90,6 @@ Original Text (English)
 *The following definitions describe how terms are used specifically in this PtC document.*
 
       
-        
-          
-            
-            
-          
-| Term | Definition |
-| --- | --- |
-        
-        
-          
-            
-            
-          
-| Biological Indicator (BI) | Test systems that contain viable microorganisms with a defined resistance to a specific decontamination process. They help monitor whether the necessary conditions were met to kill a specified number of microorganisms for a given process. |
-          
-            
-            
-          
-| Corrective Intervention (nonroutine) | An intervention that is performed to correct or adjust an aseptic process during its execution. Examples include clearing component misfeeds, adjusting sensors, and replacing equipment parts. |
-          
-            
-            
-          
-| Conventional Aseptic Filling | Aseptic filling that occurs in an environment where one or more critical work areas are not contained in an isolator or RABS. |
-          
-            
-            
-          
-| Inherent Intervention (routine) | An intervention that is an integral part of the aseptic process and is required for setup or routine operation and/or monitoring (e.g., aseptic assembly, container replenishment, or environmental sampling). Required by batch record, procedure, or work instruction. |
-          
-            
-            
-          
-| Critical Work/Processing Area | Typically a Grade A/ISO 5 area where sterile product, direct product contact surfaces, or indirect product contact surfaces are or may be exposed to the environment. |
-          
-            
-            
-          
-| Decontamination | An action taken to render the surface of an item, environment, material, or component in the isolator incapable of microbiologically contaminating sterile product, product contact surfaces, or materials (also referred to as bio-decontamination). |
-          
-            
-            
-          
-| Disinfection | Process by which surface bioburden is reduced to a safe level or eliminated. Some disinfection agents are effective only against vegetative microbes, while others possess additional capability to effectively kill bacterial and fungal spores. |
-          
-            
-            
-          
-| Intervention | Activities, manipulations, and tasks performed in Grade A/ISO 5, or other critical processing areas during aseptic operations. |
-          
-            
-            
-          
-| Isolator | A contained, decontaminated environment meeting Grade A/ISO 5 conditions used for aseptic process manufacturing that provides an uncompromised, continuous isolation of its interior from the external environment. Once decontaminated by a validated cycle, an isolator prevents microbiological contamination of sterile products and product contact surfaces by enclosures and the supply of continuous, controlled overpressure of HEPA-filtered air. |
-          
-            
-            
-          
-| Closed Isolator Systems | Excludes external contamination from the isolator's interior by transfer of material via aseptic connection to auxiliary equipment, rather than using openings to the surrounding environment. Closed systems remain sealed throughout operations. |
-          
-            
-            
-          
-| Open Isolator Systems | Designed to allow for the continuous or semicontinuous ingress and/or egress of materials during operations through one or more openings. Openings are engineered (e.g., using continuous overpressure) to exclude the entry of external contamination into the isolator. |
-          
-            
-            **  
-**
-          
-| Product Contact Surfaces | Direct: Stationary or placed surfaces within the isolator that directly contact sterile product (e.g., filling needles, hosing, valve interiors).Indirect: Surfaces that contact items, materials, or components that will contact sterile product (e.g., stopper bowls and tracks). |
-          
-            
-            
-          
-| Rapid Transfer Port (RTP) | Interlocking systems for the transfer of sterilized materials into the isolator without the interchange of environment outside of the isolator, in order to maintain the sterility of the transferred materials and the decontaminated state of the isolator interior (e.g., Double DPTE®). |
-          
-            
-            
-          
-| Restricted Access Barrier System (RABS) | An area that includes one or more critical work areas that is fully or partially enclosed with rigid or semi-rigid walls, which restricts the access of aseptic processing personnel, via fixed gloves, to the critical work area during aseptic operations. |
-          
-            
-            
-          
-| Unidirectional Flow | An airflow moving in a single direction in a robust and uniform manner and at sufficient speed to reproducibly sweep particles away from the critical processing or testing area. |
-          
-            
-            
-          
-| Vapor Hydrogen Peroxide (VHP) | Agent for the decontamination of the interior of the isolator, including all exposed surfaces, fixed isolator glove exteriors, transfer systems, equipment, and certain supplies, materials, and parts, using a defined and validated gaseous mixture or micro-atomization of hydrogen peroxide over a defined and validated period of time, under defined and validated conditions. |
-        
-      
-
-    
 
     
 
@@ -544,18 +450,6 @@ Human interventions and manipulations within the isolator in the vicinity of exp
 
   
 
-  
-
-PDA Points to Consider for the Aseptic Processing of Sterile Pharmaceutical Products in Isolators (2020)
-
-  
-
-Section 1: Introduction, Glossary & Topic 1 — Isolator Design  |  p1–p7
-
-  
-
-Educational bilingual commentary — for internal learning use only. Not a regulatory document.
-
 ⇧
 
 ## Topic 2: Topic 2–4: Physical Environment, Personnel & Integrity Testing (p8-p21)
@@ -587,8 +481,6 @@ Q2-1 ~ Q2-5 · Pages 8–14
 
     
     
-
-Q2-1: What should the classification of the room surrounding the isolator be?
 
     
 
@@ -643,25 +535,6 @@ Although Annex 1 requires only Grade D "at rest" determination of airborne parti
 #### 
 
                 
-                    
-| --- | --- | --- |
-                    
-                        
-| FDA | ISO 8 | In operation |
-                        
-| EU GMP Annex I | Grade D≈ ISO 8 | At rest |
-                    
-                
-
-            
-
-            
-
-                
-
-#### 
-
-                
 
             
 
@@ -695,8 +568,6 @@ Although Annex 1 requires only Grade D "at rest" determination of airborne parti
 
     
     
-
-Q2-2: Should the isolator fill zone have unidirectional flow?
 
     
 
@@ -780,8 +651,6 @@ ISO 8 in operation is recommended for the area around an isolator to provide a c
 
     
     
-
-Q2-3: Should airflow pattern visualization/demonstration be performed in an isolator?
 
     
 
@@ -884,8 +753,6 @@ Air flow visualization studies should be performed at system qualification. In g
     
     
 
-Q2-4: Should the isolator environment qualification runs (at rest and in operation) include the sample sites established according to ISO 14644-1 or can a reduced sampling plan be followed?
-
     
 
         
@@ -924,25 +791,6 @@ Qualification and recertification according to the ISO standard for total partic
 
                 
 
-#### 
-
-                
-                    
-| --- | --- | --- |
-                    
-                        
-| | ISO 14644-1 | |
-                        
-| | Risk assessment | |
-                    
-                
-
-            
-
-            
-
-                
-
 #### ISO 14644-1
 
                 
@@ -967,8 +815,6 @@ Qualification and recertification according to the ISO standard for total partic
 
     
     
-
-Q2-5: What techniques should be used to identify, track, and evaluate air flow during qualification and maintenance of the isolator?
 
     
 
@@ -1021,19 +867,6 @@ Physical measurement, such as airflow velocity and pressure differential, provid
                 
 
 #### AVS
-
-                
-                    
-| --- | --- | --- |
-                    
-                        
-| tracer thread | | |
-                        
-| smoke study | | |
-                        
-                        
-                    
-                
 
                 
 
@@ -1111,8 +944,6 @@ Q3-1 ~ Q3-2 · Pages 15–17
     
     
 
-Q3-1: How should personnel be gowned when working in the isolator or the background environment area during aseptic processing?
-
     
 
         
@@ -1155,27 +986,6 @@ During the loading of the isolator, the aim is to keep the microbial load low. S
 
                 
 
-#### vs.
-
-                
-                    
-| --- | --- | --- |
-                    
-                        
-| | Grade A/B | Grade C/D |
-                        
-| | | + |
-                        
-| / | Grade A/B | Grade C + |
-                    
-                
-
-            
-
-            
-
-                
-
 #### 
 
                 
@@ -1210,8 +1020,6 @@ During the loading of the isolator, the aim is to keep the microbial load low. S
 
     
     
-
-Q3-2: Should operator gloves be disinfected prior to entering isolator gloves?
 
     
 
@@ -1315,8 +1123,6 @@ Q4-1 ~ Q4-3 · Pages 18–21
     
     
 
-Q4-1: What methods should be used for integrity testing of isolators and gloves?
-
     
 
         
@@ -1362,19 +1168,6 @@ Isolators have components (including gloves) constructed of various materials th
 #### 
 
                 
-                    
-| --- | --- | --- |
-                    
-                        
-| Visual | | pinhole |
-                        
-| Pressure Decay | pinhole | |
-                        
-| Mechanical | | |
-                    
-                
-
-                
 
             
 
@@ -1414,8 +1207,6 @@ Isolators have components (including gloves) constructed of various materials th
 
     
     
-
-Q4-2: What should the maintenance program be for gloves?
 
     
 
@@ -1535,8 +1326,6 @@ Glove integrity is critical to product quality. A robust risk assessment includi
     
     
 
-Q4-3: What is the response to a glove integrity failure?
-
     
 
         
@@ -1580,27 +1369,6 @@ Quality risk management should be applied for each scenario and corrective actio
         
 
         
-
-            
-
-            
-
-                
-
-#### 
-
-                
-                    
-| --- | --- | --- | --- |
-                    
-                        
-                        
-                        
-| | + VHP | | |
-                        
-| / | | | |
-                    
-                
 
             
 
@@ -2108,35 +1876,6 @@ When it is necessary to use plates of nutrient media in an isolator, it is impor
 
                 
 
-#### 
-
-                
-                    
-                        
-| --- | --- | --- |
-                    
-                    
-                        
-                            
-                            
-                            
-                        
-| + RTP | aseptic transfer | VHP |
-                        
-                            
-                            
-                            
-                        
-| | | VHP |
-                    
-                
-
-            
-
-            
-
-                
-
 #### vs.
 
                 
@@ -2326,31 +2065,6 @@ The approach for treating, transferring, handling, and installing indirect produ
 
                 
 
-                
-
-            
-
-            
-
-                
-
-#### 
-
-                
-                    
-                        
-| --- | --- | --- | --- |
-                    
-                    
-                        
-| Approach 1 | Autoclave | | / |
-                        
-| Approach 2 | Autoclave | VHP | |
-                        
-| Approach 3 | Autoclave | VHP | H₂O₂ |
-                        
-| Approach 4 | VHP | autoclave | VHP |
-                    
                 
 
             
@@ -2579,29 +2293,6 @@ These three approaches are commonly used in aseptic processing to reduce the ris
 
                 
 
-#### 
-
-                
-                    
-                        
-| --- | --- | --- | --- |
-                    
-                    
-                        
-| A: RTU | | stopper | |
-                        
-| B: RTS | | A | |
-                        ****
-| C: | | | |
-                    
-                
-
-            
-
-            
-
-                
-
 #### Approach A
 
                 
@@ -2695,34 +2386,6 @@ Both the VHP airlock and E-beam technologies can be used and validated as an eff
 
                 
 
-#### VHP Airlock vs. E-beam
-
-                
-                    
-                        
-| | VHP Airlock | E-beam |
-| --- | --- | --- |
-                    
-                    
-                        
-| | Batch | Continuous |
-                        
-| | 6 log reduction | 6 log reduction25 kGy |
-                        
-| | <30 / | 6 tubs/ |
-                        
-| VHP | | |
-                        
-| | tub | VHP |
-                    
-                
-
-            
-
-            
-
-                
-
 #### E-beam
 
                 
@@ -2800,18 +2463,6 @@ Both the VHP airlock and E-beam technologies can be used and validated as an eff
 
     
 
-    
-
-PDA Points to Consider: Aseptic Processing of Sterile Pharmaceutical Products in Isolators (2020)
-
-    
-
-Section 3 — Environmental Monitoring & Material Transport | p22–p38
-
-    
-
-Educational bilingual document for internal learning purposes
-
 ↑
 
 ## Topic 7a: Topic 7a: Decontamination — Cleaning, Disinfection & Cycle Basics (p37-p43)
@@ -2830,820 +2481,215 @@ Q7-1 through Q7-4  |  p37–p43  |  PDA PtC-Isolators
 
 # PDA Points to Consider for the Aseptic Processing of Sterile Pharmaceutical Products in Isolators (2020)
 
-    
-
 Section 7b — Topic 7: Decontamination — BI, HEPA Filters & Cycle Validation
-
-    
 
 Q7-5 through Q7-9  |  pp. 44–54
 
-    
-    
-
-        
-
-## Q7-5 — Key Differences Between Cycle Development and Cycle Qualification
-
-    
-
-        
-        
-
-            
-
-            
+## **Q7-5 — Key Differences Between Cycle Development and Cycle Qualification Q7-5 — **
 
 **Recommendation**
-
-            
 
 Decontamination cycle development and cycle qualification may involve similar equipment and process performance testing and monitoring. The objective is to develop and qualify the suitability, reliability, and performance of equipment, systems, and instrumentation supporting the decontamination process, as well as the ability or effectiveness of the decontamination agent to eliminate microorganisms.
 
-            
-
 **Cycle Development**
-
-            
 
 Cycle development establishes the conditions, parameters, and settings for an effective cycle. As such, cycle development may involve the adjustment of conditions, parameters, and settings to meet the objective of the effective cycle. Cycle development testing and monitoring may indicate the reaction of adjustment to the output of the cycle.
 
-            
-
 **Cycle Qualification**
-
-            
 
 Cycle qualification provides documented evidence of the reliability and effectiveness of the developed cycle. As such, cycle qualification involves testing the performance of the prescribed conditions, parameters, and settings of the cycle development that normally would not be changed during or after the cycle qualification. Cycle qualification testing and monitoring is designed to confirm that the cycle is performing to specifications. For a production cycle, an overage of decontaminating agent and/or exposure time is typically included.
 
-            
-
 The qualification or validation of the decontamination process should provide confidence that microbiological contamination of all surfaces within the isolator have been eliminated or reduced to a level that will not result in contamination of sterile product, materials, or surfaces. Decontamination cycles for critical areas used in aseptic processing are commonly validated to a **6 log reduction** of the biological indicator. Lower levels of log reduction may be acceptable based on risk assessment.
-
-            
 
 **Documentation**
 
-            
-
 Since cycle development provides information needed to design and qualify the cycle, proper documentation is important; however, it may not require the same level of rigor and quality assurance scrutiny as cycle qualification documentation.
-
-            
 
 Cycle development protocols should be flexible, allowing for parameter adjustments as the result of a failure or an unexpected outcome. While triplicate runs are common for validation activities, a single confirmation run could be acceptable for cycle development.
 
-            
-
 The cycle qualification protocol should use findings and recommendations from cycle development to confirm the robustness and repeatability of the process. **Triplicate runs** are expected for the process qualification.
 
-            
-
 **Rationale**
-
-            
 
 A key difference between decontamination cycle development and cycle qualification is that the objective of cycle development is to *design* a decontamination cycle or procedure that achieves the intended result. The objective of cycle qualification is to provide *evidence* that the developed cycle can reliably perform to prescribed specifications and meet prescribed acceptance criteria.
 
-            
-
 Settings, load configurations, and operating conditions **may change** during cycle development to meet criteria, while they **must remain constant and unchanging** during qualification.
-
-        
-
-        
-        
-
-            
 
 ### 
 
-            
-
-                
-
 #### 
-
-                
-
-                
-
-                    
-
-                    
-
-                
-
-            
-
-            
-
-                
 
 #### vs.
 
-                
-
-                
-
-            
-
-            
-
-                
-
 #### 6 log reduction
 
-                
-
-            
-
-            
-
-                
+#### 
 
 #### 
 
-                
-
-                    
-
-                    
-
-                
-
-                
-
-            
-
-            
-
-                
-
-#### 
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-
-## Q7-6 — Which BI Should Be Used? Requirements for Spore Count, D-Value
-
-    
-
-        
-        
-
-            
-
-            
+## **Q7-6 — Which BI Should Be Used? Requirements for Spore Count, D-Value Q7-6 — BI D **
 
 **Recommendation**
 
-            
-
-                
 - BI should be a suitably qualified organism (e.g., *Geobacillus stearothermophilus*) with **not less than 10⁶ spores/carrier**.
 
-                
 - Microbial count recovery of incoming biological indicator control should be between **50% and 300%**.
 
-                
 - BIs should be handled and stored at temperatures and humidity conditions as specified by the vendor prior to use.
 
-                
 - Carrier should be made of a material that is also commonly used in the isolator, typically **stainless steel**. Additional studies might be required if carrier materials differ significantly from stainless steel.
 
-                
 - BI should consist of a **monolayer of spores** to guarantee direct contact of the VHP to the spores on the carrier.
 
-                
 - BI should be packed in a material permeable for H₂O₂ and easy to handle in the lab.
 
-                
 - D-value of the BI should be known and should be comparable from one validation to the next in order to make validations comparable and to see any shift in the efficacy of the VHP decontamination.
-
-            
-
-            
 
 Different methods are available for determining the D-value. The D-value should be tested in a given isolator system, not just assigned to a BI lot. The D-value can be defined as the time required to kill 90% of the population, reduced by 1 log. A fractional approach may be used as an initial check at one location without a full load.
 
-            
-
 The D-value is usually determined in a routine place in the isolator, not a hard-to-reach surface. Some isolator manufacturers offer a service to pretest BIs prior to shipment, and to test for D-value and consistency within the lot. Maintaining one BI supplier and a consistent lot within cycle development and qualification may reduce variability.
 
-            
-
 **Rationale**
-
-            
 
 The high variability of BIs must be taken into account for development of a consistent and effective cycle, as the BI lot will obviously change during the life cycle of the line during requalification work. Although in-house D-value testing is not often performed, it provides valuable information and can ensure more successful requalification over time.
 
-            
-
 The value assigned by a vendor effectively represents the D-value obtained in their isolator under their cycle conditions. This will invariably differ compared to the D-value obtained in any other system. There is significant risk associated with using a D-value for a BI lot from a supplier as opposed to confirming it in your own isolator system prior to use. The D-value depends on the saturation of air with hydrogen peroxide and the consistency of the cycle over time.
 
-        
-
-        
-        
-
-            
-
 ### 
-
-            
-
-                
 
 #### G. stearothermophilus
 
-                
-
-                
-
-            
-
-            
-
-                
+#### D
 
 #### D
 
-                
-
-                
-
-                
-
-            
-
-            
-
-                
-
-#### D
-
-                
-
-            
-
-            
-
-                
+#### 
 
 #### 
 
-                
-
-                    
-
-                    
-
-                    
-
-                    
-
-                
-
-            
-
-            
-
-                
-
-#### 
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-
-## Q7-7 — How Should Multiple BIs Be Used and Evaluated During VHP Cycle Development and Validation?
-
-    
-
-        
-        
-
-            
-
-            
+## **Q7-7 — How Should Multiple BIs Be Used and Evaluated During VHP Cycle Development and Validation? Q7-7 — VHP BI**
 
 **Recommendation**
-
-            
 
 The exposure of multiple, usually three, BIs at given locations may be used to evaluate and qualify the effectiveness of the decontamination cycle.
 
-            
-
 **BI Location and Placement**
-
-            
 
 BIs should be placed in locations that will provide the best opportunity for identification of difficult-to-decontaminate surfaces. BI locations and placement should be determined through a risk assessment of the isolator, including the configuration of the isolator, the composition and positioning of nonproduct contact surfaces that may impact the effectiveness of the cycle, and the condition and distribution of decontamination agent.
 
-            
-
 Where difficult-to-decontaminate surfaces or locations are identified, placement of multiple (usually triplicate) BIs at individual locations during cycle development and qualification may provide information about the efficacy of the decontamination cycle.
-
-            
 
 **BI Evaluation and Investigation**
 
-            
-
 The logarithmic reduction of surface contamination may be determined through empirical evidence, mathematical formula, experiment, most probable number (MPN) of surviving spores, and/or data evaluation.
-
-            
 
 Where all BIs at a location are deactivated or killed, a more efficient decontamination effect and log reduction level may be assumed. Where one or more of the BIs are not deactivated, a less effective decontaminating cycle or log reduction level may be assumed.
 
-            
-
 The failure to deactivate one or more of the BIs at a given location should be investigated. The outcome of the investigation should indicate whether the growth is due to the cycle failure or to a BI-related issue.
-
-            
 
 The investigation should consider conditions that may adversely affect the decontamination cycle, such as:
 
-            
-
-                
 - Confirmation of indicator organism growth
 
-                
 - BI lot or batch variation
 
-                
 - BI D-value, population, and resistance
 
-                
 - BI preparation and handling
 
-                
 - BI spore clumping or occlusion (rogue spores)
 
-                
 - BI placement configuration and location
 
-                
 - Insufficient exposure to the decontamination agent
 
-                
 - Decontamination cycle parameters
 
-                
 - Decontamination agent concentration
 
-                
 - Decontamination agent application or injection
 
-                
 - Control and monitoring instrumentations and sensors
 
-                
 - Temperature or humidity changes
 
-                
 - Condition, bioburden, and cleanliness of the isolator interior
 
-                
 - Effect of decontamination agent retention
 
-                
 - Results of chemical indicator monitoring
-
-            
-
-            
 
 If the outcome of the investigation indicates a decontamination cycle failure, the cause should be determined, a corrective action implemented, and validation studies repeated.
 
-            
-
 If the outcome of the investigation is that the cause is a problem with the BI, then the reason for the positive BI must be determined and documented. The investigation should include an analysis of the BI lot and historical performance to determine if clumping or occlusion of spores is possible.
 
-            
-
 **Rationale**
-
-            
 
 The deactivation of BIs during the decontamination cycle qualification provides further evidence that the decontaminating agents have contacted the surfaces to the extent needed to provide the decontaminated environment required for aseptic processing. However, the inactivation of all BIs may not be needed to demonstrate that the isolator has been decontaminated to a level that will not contribute contamination to product or product contact surfaces.
 
-        
-
-        
-        
-
-            
-
 ### 
 
-            
-
-                
-
 #### BI
-
-                
-
-                
-
-                    
-
-                    
-
-                    
-
-                
-
-            
-
-            
-
-                
 
 #### 
 
-                
-
-                
-
-                    
-
-                    
-
-                    
-
-                    
-
-                
-
-                
-
-            
-
-            
-
-                
-
 #### 
 
-                
-
-            
-
-            
-
-                
-
 #### BI
-
-                
-
-                
-
-                    
-
-                    
-
-                
-
-                
-
-            
-
-            
-
-                
 
 #### CDMO
 
-                
-
-            
-
-        
-
-    
-
-    
-    
-
-## Q7-8 — What Effect Could Oil-Based HEPA-Filter Integrity Agents Have on the Decontamination Cycle?
-
-    
-
-        
-        
-
-            
-
-            
+## **Q7-8 — What Effect Could Oil-Based HEPA-Filter Integrity Agents Have on the Decontamination Cycle? Q7-8 — HEPA **
 
 **Recommendation**
-
-            
 
 HEPA-filter testing should be carried out as part of routine installation and operation qualification as well as requalification activities. The test method and potential impact on the decontamination process must be considered. Care should be taken to ensure that any residue from HEPA-filter testing that might be trapped on filters or surfaces can be removed and that any remaining residue will not compromise subsequent decontamination cycles. The equipment vendor (e.g., isolator or pass-through chamber) should be consulted for the appropriate test method and post-test activities.
 
-            
-
 If using an oil-based material to test the filters, ensure that the filter does not retain any of the material, because it could interact with the VHP in the system and negatively impact the efficacy of the decontamination process. A risk assessment of the system to be tested should include this consideration, and the timing of the HEPA-filter testing would, ideally, occur **before requalification cycles**.
 
-            
-
 **Rationale**
-
-            
 
 HEPA-filter testing is critical to ensure efficacy of the decontamination process, but it is also important to consider any potential contamination that could be introduced in the system by the procedures used to test the filters.
 
-        
-
-        
-        
-
-            
-
 ### 
-
-            
-
-                
 
 #### vs. VHP
 
-                
-
-                
-
-                    
-
-                    
-
-                    
-
-                    
-
-                
-
-            
-
-            
-
-                
+#### 
 
 #### 
 
-                
-
-                
-
-                
-
-                    
-
-                    
-
-                    
-
-                
-
-            
-
-            
-
-                
+#### 
 
 #### 
 
-                
-
-            
-
-            
-
-                
-
-#### 
-
-                
-
-                    
-
-                    
-
-                    
-
-                    
-
-                    
-
-                
-
-            
-
-            
-
-                
-
-#### 
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-
-## Q7-9 — Should Each Load Be Qualified During the Decontamination Cycle Qualification?
-
-    
-
-        
-        
-
-            
-
-            
+## **Q7-9 — Should Each Load Be Qualified During the Decontamination Cycle Qualification? Q7-9 — **
 
 **Recommendation**
 
-            
-
 Typically, production isolators do not have high-load variability. The variability of the load within the isolator should be minimized and controlled. If variability does exist, however, a risk-based approach should be used to qualify the decontamination of these loads.
-
-            
 
 The most conservative approach is to qualify each manufacturing cycle or load as a separate activity. Testing each load type would provide data to show that each approach is controlled and products are manufactured as expected. The requalification process should align with the original validation strategy. If the approach includes qualifying each presentation within the isolator, the requalification should mimic that approach.
 
-            
-
 It may become possible to choose **alternate revalidation strategies**, such as rotating loads, where all loads are qualified over time. This approach is supported by data collection and risk-based principles. That is only possible with data and strong monitoring processes to ensure control of the process.
-
-            
 
 **Bracketing strategies** (e.g., minimum and maximum loads) may also be employed with proper assessment.
 
-            
-
 **Rationale**
-
-            
 
 Strong process understanding is the best basis for determining validation requirements. Robust monitoring and aseptic manufacturing processes will add to the confidence that the manufacturing process is under a state of control. Decisions should be made based on the facilities process, control structure, and process understanding. Then, based on those decisions, validation programs should be initiated and followed. Decisions regarding the types of loads and frequency of revalidation should be included in the validation program.
 
-        
-
-        
-        
-
-            
-
 ### 
-
-            
-
-                
 
 #### Extrapolate
 
-                
-
-                
-
-            
-
-            
-
-                
+#### 
 
 #### 
 
-                
-                    
-                        
-                            
-                            
-                            
-                        
-| --- | --- | --- |
-                    
-                    
-                        
-                            ****  
-
-                            
-                            
-                        
-                        
-                            ****  
-
-                            
-                            
-                        
-| Bracketing | | |
-                        
-                            ****  
-
-                            
-                            
-                        
-| Rotating | | |
-                    
-                
-
-            
-
-            
-
-                
-
 #### 
-
-                
-
-            
-
-            
-
-                
-
-#### 
-
-                
-
-            
-
-            
-
-                
-
-#### 
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-
-        
 
 ## Section 7b — Decontamination: BI, HEPA Filters & Cycle Validation
-
-        
-
-            
-
-            
-
-            
-
-            
-
-            
-
-        
-
-    
-
-    
-
-PDA Points to Consider for the Aseptic Processing of Sterile Pharmaceutical Products in Isolators (2020)
-
-    
-
-Section 7b — Decontamination: BI, HEPA Filters & Cycle Validation (Q7-5 to Q7-9) | pp. 44–54
-
-    
-
-Educational bilingual material — Traditional Chinese commentary for CDMO operations learning
 
 ⇧
 
@@ -3651,1366 +2697,341 @@ Educational bilingual material — Traditional Chinese commentary for CDMO opera
 
 # Topic 8: Aseptic Process Simulations (APS) in Isolators
 
-  
-
 PDA Points to Consider — Aseptic Processing of Sterile Pharmaceutical Products in Isolators (2020)
-
-  
 
 Section 8 · Q8-1 through Q8-12 · Pages 55–69
 
-  
-  
-
-    
-
-## Q8-1: What are the special considerations for media fills in isolators?
-
-  
-
-    
-
-      
+## **Q8-1: What are the special considerations for media fills in isolators? Q8-1**
 
 Original Text (English)
 
-      
-
 ### Recommendation
-
-      
 
 The same risk-based analysis and approach taken for aseptic process simulation are recommended for all aseptic processing technologies, including isolator systems. This paradigm is addressed in both PDA Aseptic Processing Points to Consider, Part 2, and PDA Technical Report No. 22: Process Simulations for Aseptically Filled Products.
 
-      
-
 Many of the considerations for planning and performing aseptic process simulations (APS) in isolator aseptic processes are the same or similar to those for conventional filling lines. Topic 8 addresses special considerations and the differences in approach to isolator APS.
 
-      
-
 ### Rationale
-
-      
 
 The highest risk for contamination of an aseptic process is based on the events that occur. The variability of the process (i.e., the level of human versus automated interventions), and the protection of the process (closed versus open) directly impacts the level of risk.
 
-      
-
 Many isolator applications still involve a number of interventions that may represent a risk if performed poorly. As such, generalizations cannot be made about the relative risk of a process in an isolator. Unique aseptic process characteristics or conditions that exist in the design and operation of the isolator, however, should be considered in planning and performing APS.
 
-    
-
-    
-
-      
-
-      
-
-        
-
 #### APS
-
-        
-
-      
-
-      
-
-        
 
 #### 
 
-        
-
-        
-
-          
-
-          
-
-          
-
-        
-
-      
-
-      
-
-        
-
 #### APS
-
-        
-
-      
-
-      
-
-        
 
 #### 
 
-        
-
-      
-
-    
-
-  
-
-  
-  
-
-## Q8-2: What are the special considerations for isolator APS study acceptance criteria?
-
-  
-
-    
-
-      
+## **Q8-2: What are the special considerations for isolator APS study acceptance criteria? Q8-2APS**
 
 Original Text (English)
 
-      
-
 ### Recommendation
-
-      
 
 There should be no difference in the acceptance criteria between isolator and conventional or RABS aseptic filling processes. In all cases, the objective of the APS is to produce zero contaminated units, regardless of run size. Therefore, the target involving such simulations should be zero positive units, regardless of the technology or run size.
 
-      
-
 Since isolators provide a greater physical separation of personnel and environment from product and product contact surfaces than conventional lines, failures that involve lapses in aseptic technique or environmental monitoring excursions should be especially scrutinized to determine if they represent the failure of process, system design, or contamination control strategy.
 
-      
-
 ### Rationale
-
-      
 
 Process simulation contamination rates resulting in zero positive units especially should be achievable in well-designed and well-operated isolator filling lines. APS failures that result from environmental contaminants or lapses in aseptic technique should be rare. Therefore, positive units may indicate a process, system design, or contamination control strategy failure.
 
-    
-
-    
-
-      
-
-      
-
-        
+#### 
 
 #### 
 
-        
-
-      
-
-      
-
-        
+#### 
 
 #### 
 
-        
-
-        
-
-          
-
-          
-
-          
-
-          
-
-        
-
-        
-
-      
-
-      
-
-        
-
-#### 
-
-        
-
-      
-
-      
-
-        
-
-#### 
-
-        
-
-      
-
-    
-
-  
-
-  
-  
-
-## Q8-3: Which activities and interventions within the isolator should be included in the APS?
-
-  
-
-    
-
-      
+## **Q8-3: Which activities and interventions within the isolator should be included in the APS? Q8-3APS**
 
 Original Text (English)
 
-      
-
 ### Recommendation
-
-      
 
 Activities and interventions that may pose a risk to the aseptic process or sterile product should be included in the APS. Where activities or interventions do not represent a risk to the aseptic process or sterile product, there may be no need to include them. In general, the following types of activities do not necessarily need to be included in the APS challenge:
 
-      
-
-        
 - Activities that take place outside of the isolator that do not introduce contamination into the isolator interior
 
-        
 - Automated processes with no human involvement that take place completely within the decontaminated isolator
 
-        
 - Activities that are validated as part of other studies (e.g., decontamination cycle validation)
 
-        
 - Activities that are completely automated with no associated manual interventions
 
-        
 - Activities where the isolator provides a complete and maintained separation between the activity and the sterile product or product contact surfaces
 
-        
 - Activities that do not bring operators into proximity of sterile product or product contact surfaces
 
-        
 - Activities that are inherently low risk due to design controls
-
-      
-
-      
 
 If these conditions or performance of these activities are determined to pose a risk to the aseptic process or sterile product, however, they may need to be included in the APS challenge.
 
-      
-
 ### Rationale
-
-      
 
 Activities and interventions that may pose a risk to the aseptic process or product sterility within the isolator, and are not otherwise validated, should be included in the APS regardless of the technology used. Where there is no risk to the aseptic process or sterile product posed by an activity, there is no scientific value to be gained from inclusion in the APS.
 
-      
-
 The objective of an APS is to assess the capability to perform a process including interventions under defined conditions to achieve units free from microbial contamination. Determining the criticality of interventions can be an effective way to identify steps to mitigate or reduce the risk of those interventions and improve the aseptic process.
 
-    
-
-    
-
-      
-
-      
-
-        
+#### 
 
 #### 
 
-        
-
-        
-
-          
-
-          
-
-          
-
-          
-
-        
-
-      
-
-      
-
-        
+#### 
 
 #### 
 
-        
-
-        
-
-          
-
-          
-
-          
-
-          
-
-        
-
-      
-
-      
-
-        
-
-#### 
-
-        
-
-      
-
-      
-
-        
-
-#### 
-
-        
-
-      
-
-    
-
-  
-
-  
-  
-
-## Q8-4: Should the connection, use, and unloading of transfer devices — RTP containers, DPTE bags, or alpha-beta ports — be included in the APS?
-
-  
-
-    
-
-      
+## **Q8-4: Should the connection, use, and unloading of transfer devices — RTP containers, DPTE bags, or alpha-beta ports — be included in the APS? Q8-4RTP DPTE alpha-beta APS**
 
 Original Text (English)
 
-      
-
 ### Recommendation
-
-      
 
 If RTP and/or DPTE systems are used to transfer decontaminated or sterile materials into the isolator prior to or during aseptic filling operations, that transfer should be included in the aseptic process simulations.
 
-      
-
 The aseptic process simulation should not be the primary means by which the sterilization or the effectiveness of the RTP or DPTE systems is validated. The sterilization and integrity of these systems should be qualified prior to the performance of the aseptic process simulations.
 
-      
-
 ### Rationale
-
-      
 
 The transfer of decontaminated and sterile materials is an essential step in the aseptic process. Failure to properly transfer these materials or failure of the integrity of the systems may result in contamination of the material, the isolator environment, and the sterile product or sterile product contact surfaces.
 
-      
-
 The use of these systems, including any interventions associated with the setup of the system or performance of the transfer of materials, should be included in the APS, because there are interventions that can affect its effectiveness.
-
-      
 
 The aseptic process simulation is not sensitive enough to uncover flaws or failures in the design, integrity, or sterilization of the transfer system. Therefore, additional steps should be taken to qualify and validate these systems and the sterilization process.
 
-    
-
-    
-
-      
-
-      
-
-        
+#### APS
 
 #### APS
 
-        
-
-      
-
-      
-
-        
-
-#### APS
-
-        
-
-        
-
-          
-
-          
-
-          
-
-        
-
-      
-
-      
-
-        
+#### 
 
 #### 
 
-        
-
-      
-
-      
-
-        
-
-#### 
-
-        
-
-      
-
-    
-
-  
-
-  
-  
-
-## Q8-5: Should participation in an APS be used to qualify aseptic filling operators working in isolators?
-
-  
-
-    
-
-      
+## **Q8-5: Should participation in an APS be used to qualify aseptic filling operators working in isolators? Q8-5APS**
 
 Original Text (English)
 
-      
-
 ### Recommendation
-
-      
 
 It may not be necessary for aseptic processing personnel who are performing interventions in the isolator to be initially qualified through participation in an APS. If proficiency in aseptic technique can be demonstrated, whether by successful completion of other training and qualification activities involving media manipulation, personnel would not need to be qualified through APS.
 
-      
-
 The method for qualification of the aseptic processing personnel who perform interventions and activities within the decontaminated isolator should be risk-based. Emphasis should be placed on their knowing and demonstrating the ability to perform aseptic process tasks in the confined isolator space with limited movements, using good aseptic technique, practices, and principles.
-
-      
 
 Mere participation in one or more successful APS may not be enough to qualify aseptic processing personnel. They should be trained and evaluated to show they can perform these interventions and activities in the production or simulator isolator.
 
-      
-
 Aseptic processing personnel who do not perform interventions in the isolator do not have to participate in an APS unless their function and activities can introduce contamination into the isolator or otherwise adversely affect the aseptic process.
-
-      
 
 When participation in a successful APS is part of the personnel qualification procedure, failure of that APS should be investigated to determine if the cause of the APS failure was the result of personnel performance. If so, this failure may be a determining factor in disqualifying the person responsible.
 
-      
-
 ### Rationale
-
-      
 
 Qualification should ensure that aseptic processing area personnel have the proper training and knowledge for their respective functions. The critical aspects of qualification involve the demonstrated ability to understand and perform their job functions in an isolator space that may restrict movement. The APS is not sensitive enough to determine if aseptic processing personnel are able to reliably perform interventions and activities within the isolator.
 
-    
-
-    
-
-      
-
-      
-
-        
+#### APS
 
 #### APS
 
-        
-
-        
-
-          
-
-          
-
-          
-
-        
-
-      
-
-      
-
-        
-
-#### APS
-
-        
-
-        
-
-        
-
-      
-
-      
-
-        
+#### 
 
 #### 
 
-        
-
-      
-
-      
-
-        
-
-#### 
-
-        
-
-      
-
-    
-
-  
-
-  
-  
-
-## Q8-6: Does qualification on a conventional aseptic filling line APS qualify personnel on a similar isolator filling line?
-
-  
-
-    
-
-      
+## **Q8-6: Does qualification on a conventional aseptic filling line APS qualify personnel on a similar isolator filling line? Q8-6APS**
 
 Original Text (English)
 
-      
-
 ### Recommendation
-
-      
 
 Participation in conventional aseptic filling lines would not qualify aseptic processing personnel on isolator lines. A history of successful qualification on and participation in conventional line APS, however, may provide useful evidence that the aseptic process personnel has sufficient knowledge and proficiency in aseptic technique to perform similar tasks in isolators.
 
-      
-
 Both PDA Points to Consider for Aseptic Processing, Part 1, and PDA TR-22 discuss the initial qualification of aseptic processing personnel. The Points to Consider document recommends that for initial qualification, in addition to other requirements, personnel demonstrate their proficiency by:
 
-      
-
-        
 1. Successfully completing a qualification test involving manual media manipulation not associated with an APS; or
 
-        
 2. Successfully participating in an APS run in which they perform the same function(s) to the same extent as they will perform the function(s) during actual production, as applicable.
-
-      
-
-      
 
 While participation in an APS on a conventional line would not necessarily satisfy the second option, it may be considered sufficient as "successfully completing a qualification test involving manual media manipulation" if the activities performed are similar and relevant to those performed in the isolator.
 
-      
-
 A risk assessment should be performed to help determine the similarity and relevance of activities performed during the conventional APS and if the participation in the conventional line media fill is useful and appropriate as a basis for operator qualification in the isolator.
-
-      
 
 Regardless of the outcome of the risk assessment, the operator should participate in an APS in the isolator as a part of periodic requalification.
 
-      
-
 ### Rationale
-
-      
 
 Because participation in an APS on a conventional filling line does not take into consideration many of the restrictions and movements associated with similar interventions in isolators, the aseptic processing personnel should demonstrate that they can perform those unique activities and job functions associated with the isolator operations.
 
-    
-
-    
-
-      
-
-      
-
-        
+#### 
 
 #### 
 
-        
-
-      
-
-      
-
-        
+#### 
 
 #### 
 
-        
-
-      
-
-      
-
-        
-
-#### 
-
-        
-
-      
-
-      
-
-        
-
-#### 
-
-        
-
-      
-
-    
-
-  
-
-  
-  
-
-## Q8-7: Should the maximum number of operators be considered during the APS in the isolator?
-
-  
-
-    
-
-      
+## **Q8-7: Should the maximum number of operators be considered during the APS in the isolator? Q8-7APS**
 
 Original Text (English)
 
-      
-
 ### Recommendation
-
-      
 
 All activities performed in the isolator during the aseptic process should be included in the APS in the manner they are normally performed during production. If the number of operators is a variable, then a risk assessment should be used to help determine if the number of operators poses a risk to the sterility of product.
 
-      
-
-        
 - Where multiple interventions are being performed by multiple personnel at the same time in the isolator, those interventions should be performed or simulated during the APS.
 
-        
 - Activities performed by personnel outside of the isolator that do not impact the isolator interior environment, sterility of the product, or the product contact surfaces would not necessarily need to be performed or simulated as part of the isolator APS. Consideration should be given, however, to the number of people and the level of activity occurring around the disinfection and transfer of materials into the isolator.
 
-        
 - In some cases, the maximum number of operators performing interventions at the same time may represent worst-case conditions due to the level of activity, environmental bioburden, and potential for intervention-related contamination.
 
-        
 - In some cases, fewer operators performing the same interventions may provide a higher risk of contamination from excessive activity and speed of movements.
 
-      
-
-      
-
 ### Rationale
-
-      
 
 The design of the isolator and associated barrier systems should prevent or reduce the risk of operator contamination compared to conventional filling lines; however, the level of activity and movement within the isolator may pose a risk of contamination to the isolator interior environment, exposed sterile product, and product contact surfaces. Therefore, all activities and levels of activities that pose a risk to the sterility of the product should be included in the APS in the same manner they are performed during production.
 
-    
-
-    
-
-      
-
-      
-
-        
-
 #### =
 
-        
-
-      
-
-      
-
-        
+#### 
 
 #### 
 
-        
-
-        
-
-          
-
-          
-
-        
-
-        
-
-      
-
-      
-
-        
-
 #### 
 
-        
-
-      
-
-      
-
-        
-
-#### 
-
-        
-
-      
-
-    
-
-  
-
-  
-  
-
-## Q8-8: Should the APS be used to validate the isolator loading pattern?
-
-  
-
-    
-
-      
+## **Q8-8: Should the APS be used to validate the isolator loading pattern? Q8-8APS**
 
 Original Text (English)
 
-      
-
 ### Recommendation
-
-      
 
 The configuration of equipment and materials in the isolator during the decontamination process should be established prior to the qualification and validation of the decontamination cycle. The APS should not be used to qualify or validate the decontamination cycle.
 
-      
-
 The conditions, configurations, design, and loading pattern within the isolator should be qualified and validated in separate studies prior to the performance of the APS. The validated cycle should then be used in preparation of the isolator for the APS.
 
-      
-
 ### Rationale
-
-      
 
 The APS is not sensitive enough to determine, demonstrate, or test the effectiveness and lethality of the decontamination cycle because there is no environmental or surface microbiological contaminant challenge. The effectiveness and lethality of the decontamination cycle is best proven during separate and specific validation studies that include the use of biological indicators.
 
-    
-
-    
-
-      
-
-      
-
-        
-
 #### APS
 
-        
-
-      
-
-      
-
-        
+#### 
 
 #### 
 
-        
-
-        
-
-          
-
-          
-
-          
-
-          
-
-          
-
-        
-
-        
-
-      
-
-      
-
-        
-
 #### 
 
-        
-
-      
-
-      
-
-        
-
-#### 
-
-        
-
-      
-
-    
-
-  
-
-  
-  
-
-## Q8-9: What are the special considerations for setting the APS duration for multiple-shift and multiple-day campaign production in isolators?
-
-  
-
-    
-
-      
+## **Q8-9: What are the special considerations for setting the APS duration for multiple-shift and multiple-day campaign production in isolators? Q8-9APS**
 
 Original Text (English)
 
-      
-
 ### Recommendation
-
-      
 
 The duration of the APS should be sufficient to adequately challenge the aseptic process. Each company must determine appropriate rationale and approaches applicable to its unique operations by means of documented risk assessment and process simulation design.
 
-      
-
-        
 - The design of the APS study should include a risk-based assessment of conditions and activities that can adversely affect product sterility and are not otherwise addressed in other qualification and validation studies.
 
-        
 - Where there are conditions and activities that occur as a result of multiple shifts and multiple-day operations, those activities should be considered for inclusion in the APS study.
 
-        
 - The duration should be long enough to allow simulation of the predetermined interventions, as well as other intrinsic characteristics of the container and closure systems.
 
-        
 - Because of the barrier properties of isolators, conditions and activities within the decontaminated isolator would likely present more risk than conditions outside. Shift changes that involve replacement of personnel *outside* the isolator would not necessarily require inclusion in the APS. Line clearance, removal, or transfer of materials *into or within* the decontaminated isolator during shift or batch changes, however, might require inclusion.
 
-        
 - The APS should not be used to establish sterile product or material hold times, the cleanliness of the environment, the impact of human fatigue, or the capability of the sterilizing filter.
 
-        
 - Manual aseptic filling or closing processes are highly dependent on the operator's individual performance. Therefore, full duration media fills are recommended for qualifying these processes.
 
-        
 - The period that the isolator interior remains in a condition suitable for aseptic processing after decontamination should be established, qualified, and validated. If the isolator remains integral and the decontamination process is shown to be effective, there should be no need to further test the effectiveness of the process during full duration APSs.
 
-      
-
-      
-
 ### Rationale
-
-      
 
 Contamination of an aseptic process is primarily a function of events rather than time. Therefore, the duration of the process simulation should be sufficient to assess the performance of those activities identified in a risk assessment as having the potential to introduce contamination. Good process design, including assessment of human factors, adherence to first-air principles, training, ergonomics, and scheduling of breaks, is a better tool for controlling potential effects of human fatigue than the use of extended media fills.
 
-    
-
-    
-
-      
-
-      
-
-        
-
 #### 
 
-        
-
-      
-
-      
-
-        
-
 #### 
-
-        
-
-        
-
-          
-
-          
-
-        
-
-        
-
-      
-
-      
-
-        
 
 #### APS —— APS
 
-        
-
-          
-
-          
-
-          
-
-          
-
-        
-
-        
-
-      
-
-      
-
-        
-
 #### 
 
-        
-
-      
-
-    
-
-  
-
-  
-  
-
-## Q8-10: What are the special considerations for the inclusion and rejection of units during the isolator APS?
-
-  
-
-    
-
-      
+## **Q8-10: What are the special considerations for the inclusion and rejection of units during the isolator APS? Q8-10APS**
 
 Original Text (English)
 
-      
-
 ### Recommendation
-
-      
 
 The same considerations for the inclusion or rejection of filled media units during a conventional fill line APS should apply to an isolator APS.
 
-      
-
 The decision to reject or incubate integral, filled units normally rejected because of an intervention should be based on a risk assessment of the intervention, proximity of the intervention to open units, positioning of units during the intervention, barrier properties of the isolator, and procedures and systems in place to identify and reject units.
-
-      
 
 The dosed design of and limited access to the isolator interior that present unique or additional challenges for the inclusion, identification, or removal of rejected units should be considered in the decision to incubate or reject intervention-related units.
 
-      
-
 ### Rationale
-
-      
 
 The incubation of nonintegral units will not provide any meaningful measure of the aseptic process, because these units represent neither acceptable production practices nor acceptable container-closure integrity. Other defective units that may routinely be rejected during commercial operations (e.g., cosmetic, particulate, and fill volume defects) should be incubated and included in the evaluation and overall determination of contamination rate. The inclusion of these units is considered meaningful since the routine rejection of these vials is not related to consideration of sterility assurance.
 
-    
-
-    
-
-      
-
-      
-
-        
-
 #### vs.
 
-        
-
-      
-
-      
-
-        
+#### 
 
 #### 
 
-        
-
-        
-
-          
-
-          
-
-          
-
-        
-
-        
-
-        
-
-          
-
-        
-
-      
-
-      
-
-        
-
 #### 
 
-        
-
-      
-
-      
-
-        
-
-#### 
-
-        
-
-      
-
-    
-
-  
-
-  
-  
-
-## Q8-11: Should power failures that result in loss of airflow, differential pressure, or integrity of the isolator be simulated in an APS?
-
-  
-
-    
-
-      
+## **Q8-11: Should power failures that result in loss of airflow, differential pressure, or integrity of the isolator be simulated in an APS? Q8-11APS**
 
 Original Text (English)
 
-      
-
 ### Recommendation
-
-      
 
 Only acceptable interventions and process conditions should be challenged in the aseptic process simulation. Deviations, poor practices, and lapses in contamination control measures should not be qualified or shown to be acceptable by simulating them in an APS.
 
-      
-
 ### Rationale
-
-      
 
 One of the primary contamination control measures for the isolator is the maintenance of positive differential pressure to the outside environment. The loss of power and differential pressure is the loss of that primary contamination control measure. Therefore, contamination control is lost. Aseptic process simulations are not sensitive enough to determine if that loss of contamination control will adversely affect the sterility of the product.
 
-    
-
-    
-
-      
-
-      
-
-        
-
 #### APS
 
-        
-
-      
-
-      
-
-        
-
 #### APS
-
-        
-
-        
-
-          
-
-          
-
-          
-
-        
-
-      
-
-      
-
-        
 
 #### 
-
-        
-
-      
-
-      
-
-        
 
 #### SOP
 
-        
-
-      
-
-    
-
-  
-
-  
-  
-
-## Q8-12: What are the special considerations for determining worst-case conditions in an isolator APS?
-
-  
-
-    
-
-      
+## **Q8-12: What are the special considerations for determining worst-case conditions in an isolator APS? Q8-12APS**
 
 Original Text (English)
 
-      
-
 ### Recommendation
-
-      
 
 Worst-case conditions or configurations are those within the range of normal operating conditions and configurations that challenge the process to provide the best opportunity to uncover process weaknesses and unaddressed process variability. "Worst case" does not mean creation of artificial conditions or environments that exceed allowed operating conditions and force a system failure.
 
-      
-
-        
 - Worst-case conditions and configurations should be assessed and determined on the basis of risk to process and product sterility.
 
-        
 - Because of the barrier properties of isolators, the number of operators *around* the isolator may not represent a worst-case condition. However, the number of operators performing interventions *within* the decontaminated isolator at one time could be considered worst case. Fewer operators may also be considered as a worst case if it results in excessive glove movement, air flow turbulence and disruption, or less attention by those performing interventions.
 
-        
 - The confinement of space, limitation of movement, position of isolator gloves, and proximity to exposed sterile product contact surfaces and materials should be considered in determining worst-case conditions for activities such as transfer, unwrapping, assembly, movement, and removal of materials, and environmental monitoring and sampling.
 
-        
 - Where uncertainty exists related to which conditions represent the worst case, multiple versions of the conditions may need to be used during APS. In this case, it may not be necessary for all conditions and configurations to be used for all APS.
-
-      
-
-      
 
 ### Rationale
 
-      
-
 The design, barrier properties, and gloved operation of isolators may provide worst-case conditions and configurations that are different from those identified in conventional lines. Companies should take the time to conduct thoughtful risk assessments to help determine which conditions and configurations represent the most useful challenge to the process and how to most effectively include them in the APS.
 
-    
-
-    
-
-      
-
-      
-
-        
-
 #### 
-
-        
-
-      
-
-      
-
-        
 
 #### Worst-Case
 
-        
-
-        
-
-          
-
-          
-
-          
-
-          
-
-          
-
-        
-
-      
-
-      
-
-        
-
 #### 
 
-        
-
-      
-
-      
-
-        
-
 #### 
-
-        
-
-      
-
-    
-
-  
-
-  
-  
-
-    
 
 ## Section 8 — Aseptic Process Simulations (APS) in Isolators
 
-    
-
-      
-
-        
-
 ### Core Principles
 
-        
-
-          
-
-          
-
-          
-
-          
-
-        
-
-      
-
-      
-
-        
-
 ### Personnel & Operating Conditions
-
-        
-
-          
-
-          
-
-          
-
-          
-
-          
-
-        
-
-      
-
-    
-
-    
-
-      
-
-    
-
-  
-
-  
-
-PDA Points to Consider for the Aseptic Processing of Sterile Pharmaceutical Products in Isolators (2020)
-
-  
-
-Section 8: Aseptic Process Simulations (APS) · Pages 55–69 · Q8-1 through Q8-12
-
-  
-
-Educational bilingual reference — Traditional Chinese commentary by Claude Code
 
 ⇧
 
@@ -5018,656 +3039,158 @@ Educational bilingual reference — Traditional Chinese commentary by Claude Cod
 
 # PDA Points to Consider: Aseptic Processing in Isolators (2020)
 
-    
-
 Topic 9 — Best Practices in Aseptic Operations
 
-    
-
-    
-    
-
-        
-
-## Q9-1 | Aseptic Technique: Isolators vs. Conventional Fill Lines
-
-    
-
-        
-
-            
-
-            
+## **Q9-1 | Aseptic Technique: Isolators vs. Conventional Fill Lines Q9-1 | **
 
 **Question:** Is it necessary to use the same aseptic technique and practices when performing interventions in isolators and conventional fill lines?
 
-            
-
 **Recommendation:** Proper aseptic technique and good working principles and practices, as applied in conventional Grade A/ISO 5 cleanrooms, should also be followed in isolator operations where possible. Risk assessments should be used to provide information for making decisions related to the performance and control of interventions and procedures in the isolator.
-
-            
 
 The isolator equipment and processes should be designed to allow for proper aseptic technique and practices, where reasonably possible. Where equipment and processes cannot be designed in such a way, additional controls should be considered to mitigate risk of contamination, e.g., use of sterile devices.
 
-            
-
 **Rationale:** While isolators provide better protection and safety against microbial and particulate ingress from the environment than conventional cleanroom operations, proper aseptic technique and good aseptic practices provide additional assurance of quality and mitigate the risk of unforeseen variables that may adversely affect product quality.
-
-            
 
 The use of good aseptic practices and techniques as additional controls, where feasible and reasonable, to address unforeseen process variables and mitigate risks of contamination, process lapses, and errors, is prudent and provides a more reliable aseptic process.
 
-        
-
-        
-
-            
-
 ### 
 
-            
-
-                
-
 #### 
 
-                
-
-                
-
-            
-
-            
-
-                
-
 #### 
-
-                
-
-            
-
-            
-
-                
 
 #### CDMO
 
-                
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-
-## Q9-2 | Interventions Disrupting Unidirectional Airflow (UDF)
-
-    
-
-        
-
-            
-
-            
+## **Q9-2 | Interventions Disrupting Unidirectional Airflow (UDF) Q9-2 | UDF**
 
 **Question:** Should interventions that disrupt unidirectional airflow in the isolator in proximity to or above exposed sterile product, product contact surfaces, and indirect product contact surfaces be permitted?
 
-            
-
 **Recommendation:** Interventions performed in the decontaminated isolator during aseptic operations should be performed through decontaminated, integral isolator gloves or other means that isolates aseptic processing personnel from the sterile product, product contact surfaces, and isolator environment.
-
-            
 
 The isolator, the placement of isolator glove positions, and the aseptic operation should be designed to avoid or minimize the disruption of unidirectional airflow above or in the proximity of exposed sterile product or product contact surfaces.
 
-            
-
 A risk assessment should be performed to determine the level of risk for each specific intervention with regard to a potential contamination created by interventions, e.g., adjusting of filling nozzles or assembling stopper bowls.
-
-            
 
 If the risk assessment shows that there is low or no risk of contamination added by the intervention, then disrupted or turbulent airflow resulting from the intervention within a properly designed and maintained isolator may be acceptable.
 
-            
-
 The risk assessment should take into consideration the potential for contamination and the effectiveness of controls in place, including:
 
-            
-
-                
 - Design and qualification of the isolator and process
 
-                
 - Demonstrating that air within the isolator is HEPA filtered and isolated from potential contamination
 
-                
 - Decontamination of the isolator gloves and other surfaces that turbulent air might contact
 
-                
 - Maintaining isolator gloves and other surfaces in a decontaminated state
 
-                
 - Level of aseptic technique used during the intervention
 
-                
 - Maintaining ISO 5 total particulate and Grade A/ISO 5 viable environmental levels before, during, and after interventions
 
-                
 - Other risk factors
-
-            
-
-            
 
 Where intervention risk is determined to be unacceptable, additional actions may be required, including removal or isolation of product, components, direct product contact surfaces, or indirect product contact surfaces.
 
-            
-
 **Rationale:** To function effectively, isolators and exposed critical areas are designed to be more compact than conventional cleanroom filling systems. These relatively closed areas may not demonstrate strict unidirectional airflow during interventions at all surfaces.
-
-            
 
 This may not represent an increase of contamination risk, though. Isolators provide a physical, rigid barrier between the pressurized, continuously controlled Grade A/ISO 5 interior and the external classified environment and operators. Properly designed, decontaminated, and operated isolators should minimize the impact of non-unidirectional airflow on product quality.
 
-            
-
 The interior of the isolator, including surfaces that may contact HEPA-filtered air, should be decontaminated, using a validated method, to the point where contact with such surfaces poses little or no risk of contaminating product. If performed properly, turbulent HEPA-filtered air may not pose the same risk as it could with conventional cleanroom applications, where similar surfaces are sanitized rather than decontaminated.
-
-            
 
 If the isolator is not properly designed, decontaminated, or operated, however, the disruption of airflow resulting in turbulence and contact with adjacent surfaces may pose an increased product contamination risk.
 
-        
-
-        
-
-            
-
 ### 
-
-            
-
-                
 
 #### UDF ≠
 
-                
-
-                
-
-            
-
-            
-
-                
+#### 
 
 #### 
 
-                
-
-                    
-
-                    
-
-                
-
-                
-
-            
-
-            
-
-                
-
 #### 
 
-                
-
-                    
-
-                    
-
-                    
-
-                    
-
-                    
-
-                
-
-            
-
-            
-
-                
-
-#### 
-
-                
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-
-## Q9-3 | Glove Contact with Product Contact Surfaces
-
-    
-
-        
-
-            
-
-            
+## **Q9-3 | Glove Contact with Product Contact Surfaces Q9-3 | **
 
 **Question:** Should contact between decontaminated isolator gloves and direct or indirect product contact surfaces during setup or operations be permitted?
 
-            
-
 **Recommendation:** Isolator gloves, even if decontaminated, should not contact the part of the filling or sealing equipment that comes in contact with sterile product or components. Only items or materials that have been sterilized by a validated process should contact those product or product contact surfaces.
-
-            
 
 **Rationale:** Although the validated isolator glove decontamination process should be sufficient to render and maintain the glove exterior in a decontaminated state throughout the operation period of the isolator, the environment in the isolator is not sterile. Consequently, a low risk of contamination contacting the exterior of the gloves may remain.
 
-            
-
 The isolator equipment and aseptic process should be designed to avoid the need for contact between the glove and product contact surfaces during interventions and operations. Therefore, there should be no need to incur even a low additional risk of contamination from contact between gloves and product contact surfaces.
 
-        
-
-        
-
-            
-
 ### 
-
-            
-
-                
 
 #### ≠
 
-                
-
-                
-
-            
-
-            
-
-                
-
 #### no-touch zones
 
-                
-
-                    
-
-                    
-
-                    
-
-                    
-
-                
-
-                
-
-            
-
-            
-
-                
+#### 
 
 #### 
 
-                
-
-                
-
-            
-
-            
-
-                
-
-#### 
-
-                
-
-            
-
-        
-
-    
-
-    
-    
-
-## Q9-4 | Unsterilized / Non-Decontaminated Materials in the Isolator
-
-    
-
-        
-
-            
-
-            
+## **Q9-4 | Unsterilized / Non-Decontaminated Materials in the Isolator Q9-4 | **
 
 **Question:** Should surfaces or materials that have not been sterilized or decontaminated be exposed in the isolator interior during aseptic operations?
 
-            
-
 **Recommendation:** All materials and surfaces entering into or in the isolator that are or may be exposed to the isolator environment should be sterilized or decontaminated using validated and qualified procedures prior to use. They should remain in a decontaminated state throughout the aseptic operation.
 
-            
-
-                
 - Interventions that expose surfaces or transfer materials into the isolator that have not been sterilized or decontaminated should be avoided.
 
-                
 - If an intervention results in the exposure of materials or surfaces that have not been properly sterilized or decontaminated and cannot be avoided, the risk and impact of these interventions on sterile product should be assessed.
 
-                
 - If the risk assessment concludes that the intervention and exposure pose an unacceptably high level of risk to sterile product, additional actions or controls should be taken to eliminate or change these interventions to mitigate or reduce the risk of contamination, including steps to ensure that the intervention does not contaminate the isolator environment, isolator gloves, sterile product, or product contact surfaces.
 
-                
 - If additional actions and controls do not adequately mitigate the risk, consideration should be given to stopping aseptic operations or segregating product. Operations should resume only after decontaminated conditions in the isolator have been reestablished.
 
-                
 - If the mitigation actions include disinfection or decontamination of the exposed surfaces, isolator gloves, or materials, the relative risk and effectiveness of those disinfection or decontamination steps should be considered, and the process designed to minimize the potential risk of spreading or adding chemical contamination to the isolator environment, product, or product contact surfaces.
 
-                
 - Spraying of chemical disinfectants in proximity to open product contact surfaces especially should be avoided.
-
-            
-
-            
 
 **Rationale:** The effectiveness and operation of the isolator relies on the confidence that the interior of the isolator and its environment remain in a clean and decontaminated state. A primary contamination control strategy for achieving this condition is allowing only sterile or decontaminated surfaces, items, and materials to be present in the isolator. If surfaces, items, or materials are present or exposed that are not sterilized or decontaminated, then this primary contamination control strategy is not in place. Therefore, a higher level of contamination risk may be present.
 
-        
-
-        
-
-            
-
 ### 
 
-            
-
-                
-
 #### 
-
-                
-
-                
-
-            
-
-            
-
-                
 
 #### Escalation Ladder
 
-                
-
-                    
-
-                    
-
-                    
-
-                    
-
-                    
-
-                
-
-            
-
-            
-
-                
-
 #### CDMO pass-through
-
-                
-
-                
-
-            
-
-            
-
-                
 
 #### 
 
-                
-
-            
-
-        
-
-    
-
-    
-    
-
-## Q9-5 | Decontaminated vs. Sterilized Materials — Different Precautions?
-
-    
-
-        
-
-            
-
-            
+## **Q9-5 | Decontaminated vs. Sterilized Materials — Different Precautions? Q9-5 | — **
 
 **Question:** Should different precautions or steps be taken when handling decontaminated materials versus sterilized materials in the decontaminated isolator?
 
-            
-
 **Recommendation:** Generally, decontaminated materials may be transferred and handled in the same manner as sterilized material. Therefore, no special precautions need to be taken, beyond the following considerations:
 
-            
-
-                
 - Sterilized items, materials, and utensils may contact product and product contact surfaces, providing they remain in a sterile state. Allowing decontaminated items, materials, parts, or utensils to come in contact with sterile product or product contact surfaces should be avoided. Additional precautions, actions, or controls may be needed if the decontaminated items, materials, parts, and utensils do contact sterile product or product contact surfaces.
 
-                
 - Decontamination, sterilization, wrapping, packaging, container, holding, and transfer methods and processes should be validated and included in written procedures and manufacturing instructions.
 
-                
 - The integrity, hold time, and conditions of wrapped or packaged materials being transferred into the isolator should be qualified through appropriate challenge studies, included in the APS, and verified throughout the aseptic operation.
-
-            
-
-            
 
 **Rationale:** Both the decontamination and the sterilization processes should render items, materials, parts, and utensils free of microorganisms to the extent that they do not pose a risk and are incapable of causing microbiological contamination to sterile product, product contact surfaces, or the isolator environment. Precautions should be taken to ensure that decontaminated or sterilized items, materials, parts, and utensils are maintained and remain in such a decontaminated or sterile state throughout their use in the isolator.
 
-        
-
-        
-
-            
-
 ### 
 
-            
-
-                
+#### 
 
 #### 
 
-                
-
-                
-
-                
-
-            
-
-            
-
-                
-
 #### 
-
-                
-
-                    
-
-                    
-
-                    
-
-                
-
-                
-
-            
-
-            
-
-                
-
-#### 
-
-                
-
-                
-
-                    
-
-                    
-
-                
-
-                
-
-            
-
-            
-
-                
 
 #### CDMO
 
-                
-
-            
-
-        
-
-    
-
-    
-    
-
-        
-
 ## PtC-Isolators
 
-        
-
-        
-
 ### 
-
-        
-
-        
-
-            
-
-            
-
-            
-
-        
-
-        
 
 ### PtC-Isolators CCS
 
-        
-
-        
-
-            
-
-            
-
-            
-
-            
-
-            
-
-            
-
-        
-
-        
-
 ### CDMO
 
-        
-
-        
-
-            
-
-            
-
-            
-
-            
-
-            
-
-        
-
-        
-
 ### 
-
-        
-
-        
-
-        
-
-    
-
-    
-
-PDA Points to Consider for the Aseptic Processing of Sterile Pharmaceutical Products in Isolators (2020)
-
-    
-
-Topic 9: Best Practices in Aseptic Operations  |  p70–p85
-
-    
-
-Educational summary for internal training purposes. PDA copyright applies to original text.
 
 ⇧

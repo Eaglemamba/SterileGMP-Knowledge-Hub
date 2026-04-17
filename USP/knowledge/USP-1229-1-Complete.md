@@ -2,13 +2,13 @@
 
 ## Section 0: Steam Sterilization — Complete (p1-p4)
 
-# USP ⟨1229.1⟩ Steam Sterilization by Direct Contact
+# USP 〈1229.1〉 Steam Sterilization by Direct Contact
 
     
 
     
 
-USP General Chapter ⟨1229.1⟩ | Official as of 01-Aug-2013 | 4 Pages
+USP General Chapter 〈1229.1〉 | Official as of 01-Aug-2013 | 4 Pages
 
     
 
@@ -26,4 +26,4 @@ The load items in this sterilization process are variously termed parts, compone
 
         
 
-Sterilization of liquid-filled containers may be substantially different. *Moist Heat Sterilization of Aqueous Liquids ⟨1229.2⟩* provides information about applications in which steam is a heating medium but is not in contact with the sterilization target, the liquid in the container.
+Sterilization of liquid-filled containers may be substantially different. *Moist Heat Sterilization of Aqueous Liquids 〈1229.2〉* provides information about applications in which steam is a heating medium but is not in contact with the sterilization target, the liquid in the container.

@@ -2,7 +2,7 @@
 
 ## Section 0: Gas Filtration — Complete (p1-p2)
 
-# USP ⟨1229.15⟩ Sterilizing Filtration of Gases
+# USP 〈1229.15〉 Sterilizing Filtration of Gases
 
     
 

@@ -625,51 +625,6 @@ This section augments the discussion on psychrometrics in Appendix 1, see Figure
         
 
         
-            
-                
-                
-                
-                
-            
-| Measurable Psychrometric Properties | Symbol | Calculable Psychrometric Properties | Symbol |
-| --- | --- | --- | --- |
-            
-                
-                
-                
-                
-            
-| Dry-bulb Temperature | tDB | Specific Enthalpy | h |
-            
-                
-                
-                
-                
-            
-| Wet-bulb Temperature | tWB | Specific Volume | v |
-            
-                
-                
-                
-                
-            
-| Dew-point Temperature | tDP | Humidity Ratio | W |
-            
-                
-                
-                
-                
-            
-| Relative Humidity | RH | Water Vapor Pressure | pwv |
-            
-                
-                
-                
-            
-| Barometric Pressure | PBAR | — |
-        
-
-        
 
         
 
@@ -1646,34 +1601,6 @@ In addition to the advantages in particle removal, there is an engineering advan
 ### 17.1.7 Summary of Useful Cleanroom Equations
 
                 
-                    
-                        
-| Application | Equation |
-| --- | --- |
-                    
-                    
-                        
-| Ideal Gas Law | PV = N Ru T |
-                        
-| Flow due to DP | VP ≈ P2 – P1 |
-                        
-| Airflow through an Opening | Q = V × A |
-                        
-| Fan Horsepower | HP = η × P × Q |
-                        
-| Air Balance | Supply + Infiltration = Return + Exhaust + Exfiltration |
-                        
-| Average Airborne Particle Level | Cavg = Cs + PGR/Q |
-                        
-| Air Changes | AC/hr = 60 × Q / Volume |
-                        
-| Room Recovery | C(at rest) = (Cop – Cs) × e(-Nt) + Cs |
-                        
-| Cascaded HEPA Filters | Ltot = L1 × L2 |
-                    
-                
-
-            
 
             
 
@@ -2100,33 +2027,19 @@ Figure 17.4 shows how by assuming a simple exponential decay, the “recovery pe
 
                 
 
+        
+
+    
+
                     
 
 #### 100
-
-                    
-                        
-| | 100 | |
-| --- | --- | --- |
-                        
-                            
-| 20 AC/hr | ≈ 14 | EU Grade B/C 15-20 |
-                            
-| 30 AC/hr | ≈ 9 | PGR |
-                            
-| 40 AC/hr | ≈ 7 | |
-                        
-                    
 
                     
 
                 
 
             
-
-        
-
-    
 
     
 
@@ -2188,30 +2101,6 @@ The units use air pressure in one direction with an opposing spring to return th
                 
 
 ### 
-
-                
-
-                    
-
-#### Actuator
-
-                    
-                        
-| --- | --- | --- |
-                        
-                            
-                            
-| | 1-2 | |
-                            
-| | | I/P + + |
-                            
-| | // | |
-                            
-| | — | |
-                        
-                    
-
-                
 
                 
 
@@ -2486,54 +2375,6 @@ The following is a sample description of the controls operation for one HVAC sys
                 
 
 ### 3. I/O Point Schedule (Table 17.1)
-
-                
-                    
-                        
-| No. | Item Description | TAG | Type | Alarm |
-| --- | --- | --- | --- | --- |
-                    
-                    
-                        
-| 1 | Supply Fan Speed Control | SCM 1 | AO | CA, GA |
-                        
-| 2 | Supply Fan On/Off Control | SCO 1 | DO | CA |
-                        
-| 3 | Supply Fan Status | SCI 1 | DI | CA, GA |
-                        
-| 4 | Pre Filter Photohelic Gauge | PDI 1 | DI | CA, GA |
-                        
-| 5 | Secondary Filter Photohelic Gauge | PDI 2 | DI | CA, GA |
-                        
-| 6 | HEPA Filter Photohelic Gauge | PDI 3 | DI | CA, GA |
-                        
-| 7 | Supply Fan Flow Meter | AFD 1 | DI | CA |
-                        
-| 8 | Mixed Air Temperature | TX 1 | AI | CA, GA |
-                        
-| 9 | Supply Air Temperature | TX 2 | AI | CA, GA |
-                        
-| 10 | Low Temp Alarm | TXA 1 | AI | CA, GA |
-                        
-| 11 | Return Air Temperature | TX 3/4 | AI | CA, GA |
-                        
-| 12 | Fresh Air Damper | MDO 1 | AO | CA |
-                        
-| 13 | Return Air Damper | MDO 2 | AO | CA |
-                        
-| 14 | Cooling Coil Control Valve | CVM 1 | AO | CA |
-                        
-| 15 | Heating Coil Control Valve | CVM 2 | AO | CA |
-                        
-| 16 | Re-heater Control Valve | CVM 3/4 | AO | CA |
-                        
-| 17 | Return Air Humidity Detector | HX 1/2 | AI | CA, GA |
-                        
-| 18 | Supply Fan Vibration Detector | VX 1 | AI | CA, GA |
-                        
-| 19 | Supply Air Smoke Damper | SD 1 | AI | CA, GA |
-                    
-                
 
                 
 

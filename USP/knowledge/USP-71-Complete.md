@@ -12,8 +12,6 @@ USP ⟨71⟩ Sterility Tests | p1-p3
 
     
 
-    
-
         
 
 Portions of this general chapter have been harmonized with the corresponding texts of the European Pharmacopeia and/or the Japanese Pharmacopeia. Those portions that are not harmonized are marked with symbols to specify this fact.
@@ -51,8 +49,6 @@ USP ⟨71⟩ Sterility Tests | p3-p7
 
     
 
-    
-
         
 
 Unless otherwise specified elsewhere in this chapter or in the individual monograph, test the number of articles specified in Table 3. If the contents of each article are of sufficient quantity (see Table 2), they may be divided so that equal appropriate portions are added to each of the specified media. If each article does not contain sufficient quantities for each medium, use twice the number of articles indicated in Table 3.
@@ -62,104 +58,8 @@ Unless otherwise specified elsewhere in this chapter or in the individual monogr
 ### Table 2. Minimum Quantity to be Used for Each Medium
 
         
-            
-| Quantity per Container | Minimum Quantity to be Used |
-| --- | --- |
-            ****
-| Liquids |
-            
-| Less than 1 mL | The whole contents of each container |
-            
-| 1–40 mL | Half the contents of each container, but not less than 1 mL |
-            
-| Greater than 40 mL, and not greater than 100 mL | 20 mL |
-            
-| Greater than 100 mL | 10% of the contents, but not less than 20 mL |
-            ****
-| Antibiotic Liquids |
-            
-| — | 1 mL |
-            ****
-| Insoluble preparations, creams, and ointments |
-            
-| — | Not less than 200 mg per container |
-            ****
-| Solids |
-            
-| Less than 50 mg | The whole contents of each container |
-            
-| 50 mg or more, but less than 300 mg | Half the contents, but not less than 50 mg |
-            
-| 300 mg–5 g | 150 mg |
-            
-| Greater than 5 g | 500 mg |
-            ****
-| Other |
-            
-| Catgut and other surgical sutures (veterinary) | 3 sections of strand (each 30-cm long) |
-            
-| Surgical dressing/cotton/gauze (in packages) | 100 mg per package |
-            
-| Sutures and other single-use material | The whole device |
-            
-| Other medical devices | The whole device, cut into pieces or disassembled |
-        
-
-        
 
 ### Table 3. Minimum Number of Articles to be Tested
-
-        
-            
-| Number of Items in the Batch | Minimum Number of Items to be Tested for Each Medium |
-| --- | --- |
-            ****
-| Parenteral preparations |
-            
-| Not more than 100 containers | 10% or 4 containers, whichever is the greater |
-            
-| More than 100 but not more than 500 containers | 10 containers |
-            
-| More than 500 containers | 2% or 20 containers, whichever is less |
-            ****
-| For large-volume parenterals |
-            
-| — | 2% or 10 containers, whichever is less |
-            ****
-| Antibiotic solids |
-            
-| Pharmacy bulk packages (<5 g) | 20 containers |
-            
-| Pharmacy bulk packages (≥5 g) | 6 containers |
-            
-| Bulks and blends | See Bulk solid products |
-            ****
-| Ophthalmic and other noninjectable preparations |
-            
-| Not more than 200 containers | 5% or 2 containers, whichever is the greater |
-            
-| More than 200 containers | 10 containers |
-            ****
-| Surgical sutures (veterinary) |
-            
-| — | 2% or 5 packages, whichever is greater, up to max 20 |
-            ****
-| Other sterile articles |
-            
-| Not more than 100 articles | 10% or 4 articles, whichever is greater |
-            
-| More than 100, but not more than 500 articles | 10 articles |
-            
-| More than 500 articles | 2% or 20 articles, whichever is less |
-            ****
-| Bulk solid products |
-            
-| Up to 4 containers | Each container |
-            
-| More than 4, but not more than 50 containers | 20% or 4 containers, whichever is greater |
-            
-| More than 50 containers | 2% or 10 containers, whichever is greater |
-        
 
         
 
@@ -178,8 +78,6 @@ Unless otherwise specified elsewhere in this chapter or in the individual monogr
     
 
 USP ⟨71⟩ Sterility Tests | p7-p8
-
-    
 
     
 

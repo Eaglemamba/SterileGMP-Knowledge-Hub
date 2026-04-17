@@ -23,6 +23,7 @@ Usage in a report's merge.py:
 import os
 import re
 from html.parser import HTMLParser
+from urllib.parse import unquote
 
 
 # ============================================================
@@ -30,19 +31,87 @@ from html.parser import HTMLParser
 # ============================================================
 
 def extract_body_content(html_content: str) -> str:
-    """Extract content between body tags, stripping header/style/wrappers."""
+    """Extract content between body tags, stripping header/style/wrappers/chrome."""
     body_match = re.search(r'<body[^>]*>(.*?)</body>', html_content, re.DOTALL)
     if not body_match:
         return html_content
     body_content = body_match.group(1).strip()
+    # Per-section header (div or header tag, may carry id="top" or other attrs)
     body_content = re.sub(
-        r'<div\s+class="header">.*?</div>\s*',
+        r'<(?:div|header)\s+[^>]*class="header"[^>]*>.*?</(?:div|header)>\s*',
         '', body_content, count=1, flags=re.DOTALL
     )
     body_content = re.sub(r'<footer[^>]*>.*?</footer>', '', body_content, flags=re.DOTALL)
     body_content = re.sub(r'<div\s+class="main-container"[^>]*>', '', body_content)
     body_content = re.sub(r'</div>\s*<!--\s*end\s+main-container\s*-->', '', body_content)
+    # Per-section back-to-top button (merge_engine emits one at document level — strip per-section copies)
+    body_content = re.sub(
+        r'<button\s+[^>]*id="backToTop"[^>]*>.*?</button>\s*',
+        '', body_content, flags=re.DOTALL
+    )
+    # Per-section topNav chrome (merge_engine emits one set at document level).
+    # Matches <nav id="topNav"> AND <nav class="top-nav">; may contain navContainer/navLeft/navRight/navScrollLeft/navScrollRight inside.
+    body_content = re.sub(
+        r'<nav\s+[^>]*(?:id="topNav"|class="top-nav")[^>]*>.*?</nav>\s*',
+        '', body_content, flags=re.DOTALL
+    )
+    # Any per-section <script> blocks (merge_engine emits STANDARD_JS at document level)
+    body_content = re.sub(r'<script[^>]*>.*?</script>\s*', '', body_content, flags=re.DOTALL)
+    # Stray per-section TOC wrapper with id="toc" (author in-section TOC — drop its colliding id)
+    body_content = re.sub(
+        r'(<div\s+[^>]*?)\s+id="toc"',
+        r'\1', body_content
+    )
     return body_content.strip()
+
+
+# ============================================================
+# ID PREFIX REWRITER
+# ============================================================
+
+def _sanitize_prefix(raw: str) -> str:
+    """Turn a filename or arbitrary string into a safe HTML id fragment."""
+    stem = raw.rsplit('.', 1)[0]
+    return re.sub(r'[^a-zA-Z0-9]+', '-', stem).strip('-')
+
+
+def rewrite_ids_with_prefix(body: str, prefix: str) -> str:
+    """Prefix every `id="X"` in `body` with `{prefix}-` and rewrite any local
+    `href="#X"` that targets a renamed id accordingly.
+
+    Rationale: per-section files authored independently often declare the same
+    generic ids (summary, intro, topic-c, sec1, ...). When merged into a single
+    *-Complete.html, duplicate ids break `getElementById`-based anchor jumps
+    (browser resolves to the first match — wrong chapter). Namespacing ids per
+    source file guarantees uniqueness. External hrefs that target chapter
+    wrapper ids (added by run_merge() AFTER this pass) or cross-section ids
+    not declared in this body stay untouched — rename_map only contains ids
+    actually rewritten in this body pass.
+    """
+    if 'id=' not in body or not prefix:
+        return body
+    rename_map: dict[str, str] = {}
+
+    def _replace_id(m: re.Match) -> str:
+        old = m.group(1)
+        if not old:
+            return m.group(0)
+        new = f'{prefix}-{old}'
+        rename_map[old] = new
+        return f'id="{new}"'
+
+    body = re.sub(r'\bid="([^"]*)"', _replace_id, body)
+    if not rename_map:
+        return body
+
+    def _replace_href(m: re.Match) -> str:
+        target = unquote(m.group(1))
+        if target in rename_map:
+            return f'href="#{rename_map[target]}"'
+        return m.group(0)
+
+    body = re.sub(r'href="#([^"]+)"', _replace_href, body)
+    return body
 
 
 # ============================================================
@@ -592,6 +661,11 @@ def run_merge(
                 with open(filepath, 'r', encoding='utf-8') as f:
                     html = f.read()
                 body = extract_body_content(html)
+                # Namespace all ids to this file's stem so generic ids like
+                # "summary", "intro", "topic-c" don't collide across sections.
+                # Wrapper <section id="{nav_id}"> is added AFTER this pass so
+                # top-nav href="#{nav_id}" still resolves correctly.
+                body = rewrite_ids_with_prefix(body, _sanitize_prefix(filename))
                 combined_content.append(body)
                 print(f"  [OK] {filename} ({len(body)} chars)")
             else:

@@ -87,6 +87,16 @@ Existing reports can be upgraded incrementally by re-generating individual repor
 </div>
 ```
 
+## Per-Section ID Namespacing at Merge Time (Added 2026-04-17)
+
+**Problem**: Section files authored independently often reused generic ids (`summary`, `intro`, `topic-c`, `learning-obj`, `sec1`, ...). When `merge_engine.py` concatenated them, the merged `*-Complete.html` contained duplicate ids — browsers resolve `getElementById("summary")` to the first match, so `href="#summary"` at the bottom of a chapter jumped to the wrong chapter's summary.
+
+**Fix**: `merge_engine.rewrite_ids_with_prefix(body, prefix)` namespaces every `id="X"` in a section body to `{filename-stem}-X` and rewrites any local `href="#X"` that targets a renamed id accordingly. Runs after `extract_body_content()` and before the chapter `<section id="{nav_id}">` wrapper is applied, so top-nav `href="#{nav_id}"` still resolves to the wrapper.
+
+**Result**: 187 duplicate-id issues → 0 across 184 `*-Complete.html` files.
+
+**Within-file author bugs** (same id declared twice in one section file, e.g. TR46 `sec50-56`, ISPE-Vol7 `sec31`) are NOT handled by the prefixer — fix them at the source file level by removing the duplicate heading `id=`.
+
 ## Section Headings Must Be Bilingual, Bold & Aligned (Updated 2026-04-17)
 
 **Problem**: Section headings rendered flush-left against the page container while the two-column content below starts 1.5rem inside (`.left-column { padding: 1.5rem }`). Visually the title floated left of "原文 Original Text", looking detached. Older merged `-Complete.html` files also lacked `font-weight: 700`, so the title appeared thin.

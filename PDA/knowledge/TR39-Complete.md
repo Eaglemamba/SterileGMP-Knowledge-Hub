@@ -425,204 +425,6 @@ The terms and definitions below are in common use within the industry and repres
 ### Glossary of Terms
 
                     
-                        
-                            
-                                
-                                
-                            
-| Term | Definition |
-| --- | --- |
-                        
-                        
-                            
-                                ****
-                                
-                            
-| 503B Pharmacy | An FDA designation for outsourcing facilities that must comply with State Board of Pharmacy guidelines; created to distinguish these from conventional drug manufacturers while maintaining standards to protect patients from substandard compounded drug products. |
-                            
-                                ****
-                                
-                            
-| Acceptance Criteria | Predefined criteria that must be met by testing; numerical limits, ranges, or other suitable measures for acceptance of test results. |
-                            
-                                ****
-                                
-                            
-| Ambient Temperature Profile | The temperatures selected to simulate the anticipated and experienced extremes used to challenge a thermal protection system in a testing chamber. |
-                            
-                                ****
-                                **
-                            
-| Corrective Action/Preventive Action (CAPA) | A corrective action eliminates the root cause of a nonconformance and prevents recurrence. A preventive action eliminates the cause of a potential nonconformance before it occurs. |
-                            
-                                ****
-                                
-                            
-| Conditioning / Preconditioning | The process to bring the payload or a thermal protection system component(s) to a specified temperature condition by keeping it for a given period of time in the conditioning environment. |
-                            
-                                ****
-                                
-                            
-| Data Acquisition System | A combination of sensors, measurement hardware, and software used to measure physical conditions and convert results into digital numeric values (e.g., thermocouples used in TPS qualification). |
-                            
-                                ****
-                                
-                            
-| Data Loggers | Measurement instruments capable of recording temperature over a defined period based on memory capacity; data can be retrieved and used for accept/reject decision-making and route analysis. |
-                            
-                                ****
-                                
-                            
-| Design Qualification (DQ) | Tests or assessments performed prior to operational qualification to ensure that user requirements are met by the proposed thermal protection system. |
-                            
-                                ****
-                                
-                            
-| Equilibration Time | The duration required for a thermal protection system with product load to reach the required product temperature range within the thermal requirements. |
-                            
-                                ****
-                                
-                            
-| Indicators | A measurement instrument capable of comparing environmental conditions (e.g., temperature) to alarm settings to determine if those settings have been exceeded. Limited data may be stored. |
-                            
-                                ****
-                                
-                            
-| Installation Qualification (IQ) | The process of obtaining and documenting evidence that the premises, equipment, and/or supporting systems have been provided and installed in compliance with their design specifications. |
-                            
-                                ****
-                                
-                            
-| Logistics Service Provider (LSP) | Providers that contribute to the transportation and storage/distribution process, including carriers, integrators, forwarders, and custom brokers. LSPs may subcontract aspects of the logistics process. |
-                            
-                                ****
-                                
-                            
-| Management Review | A formal, documented review of the quality system's performance executed periodically at senior management level according to a planned schedule. |
-                            
-                                ****
-                                
-                            
-| Mechanical Testing (also Distribution, Physical, or Dynamic Testing) | Testing that demonstrates and documents the ability of a thermal protection system to withstand the distribution environment (e.g., shock, drop, impact, compression, vibration). |
-                            
-                                ****
-                                
-                            
-| Nonconformance | Any unexpected and/or unwanted deviation from established processes, procedures, regulations, requirements, standards, or specifications, including temperature excursions, anomalous trends, and quality system failures. |
-                            
-                                ****
-                                
-                            
-| Operational Qualification (OQ) | Testing that demonstrates and documents, with a high degree of assurance, that a system consistently performs as intended under the anticipated shipping conditions in compliance with user and design requirements. |
-                            
-                                ****
-                                
-                            
-| Pack-Out | Detailed instructions on how to precondition and assemble the packaging system with the payload. Seasonal pack-out configurations may change by season, ambient temperature, or lane; universal pack-out remains unchanged year-round. |
-                            
-                                ****
-                                
-                            
-| Passive Thermal Protection System | See Thermal Protection Systems, Passive. |
-                            
-                                ****
-                                
-                            
-| Payload (also Product Load) | The variable amount of product to be transported in the thermal protection system, including the combination of cases, cartons, and product assembled to be packed inside the vehicle or within a passive TPS. |
-                            
-                                ****
-                                
-                            
-| Performance Qualification (PQ) | Transport tests of the thermal packaging system and process conducted in the representative transportation or distribution environment by those executing the day-to-day shipping process, demonstrating effectiveness and reproducibility. |
-                            
-                                ****
-                                
-                            
-| Phase Change Material (PCM) | A physical material that absorbs energy when melting and releases thermal energy when freezing; used in TPS to maintain the desired temperature range. Examples: dry ice, gel packs, gel bricks, coolants. |
-                            
-                                ****
-                                
-                            
-| Placebo Product (Mock / Simulated / Dummy Product) | A product used in place of actual pharmaceutical product during qualification. Should closely imitate the dimensions and thermal behavior of the real product and its packaging to provide a cost-effective qualification approach. |
-                            
-                                ****
-                                
-                            
-| PID Controller (Proportional Integral Derivative) | The control loop mechanism that provides feedback on the performance of the thermal testing-chamber control system. |
-                            
-                                ****
-                                
-                            
-| Qualification | Documented testing that demonstrates, with a high degree of assurance, that a process or system will function to meet its predetermined acceptance criteria. |
-                            
-                                ****
-                                
-                            
-| Shipper | An individual or company that tenders products for transportation (also used to identify the package containing products to be shipped). |
-                            
-                                ****
-                                
-                            
-| Stability Budget | Considers results of long-term, accelerated, extreme excursion, and temperature cycling studies to determine the amount of time out of storage that a drug product may experience without significant risk to its quality. |
-                            
-                                ****
-                                
-                            
-| Standard Operating Procedure (SOP) | A written set of step-by-step instructions that describe the requirements necessary to complete an activity, task, or process. |
-                            
-                                ****
-                                
-                            
-| Subcontractor | An entity that takes a portion of a contract from the principal contractor (such as an LSP) or from another subcontractor. |
-                            
-                                ****
-                                
-                            
-| Temperature Excursion | An event in which product is exposed to temperatures outside of the recommended storage and/or transport temperature range. |
-                            
-                                ****
-                                
-                            
-| Thermal Protection System (TPS) | Any active or passive temperature control system for the distribution of temperature-sensitive products. |
-                            
-                                **
-                                
-                            
-| ↳ Active TPS | A temperature-controlled container with refrigeration and/or heating capabilities and associated calibrated temperature-control devices (e.g., temperature-controlled trucks/trailers, ocean containers, active unit load devices for airfreight). |
-                            
-                                **
-                                
-                            
-| ↳ Passive TPS | An insulated container that provides thermal protection for its payload from outside temperatures, comprising insulated container, spacers, dunnage, shipping refrigerants (gel pack, dry ice), packaging, and product payload configured in a specific manner. |
-                            
-                                ****
-                                
-                            
-| Transportation Lane | The two points that define the origin and destination for a shipment. |
-                            
-                                ****
-                                
-                            
-| Transportation Route | The origin, in-transit, and destination points for a shipment (broader than a lane, includes intermediate stops). |
-                            
-                                ****
-                                
-                            
-| User Requirements Specifications (URS) | Defines the users' critical parameters of the product, packaging, and transport system for the qualification process. |
-                            
-                                ****
-                                
-                            
-| Validated Equipment | Equipment used to conduct OQ, including thermal test chambers and data acquisition systems, which has undergone IQ/OQ/PQ and periodic revalidation with calibration to NIST or accepted industry standards. |
-                            
-                                ****
-                                
-                            
-| Validation Master Plan (VMP) | A master plan outlining the validation scope, practices, and requirements to ensure the drug substance/product retains all critical quality attributes through the supply chain, including packaging qualification, container selection, route conditions, and temperature monitoring device placement. |
-                        
-                    
-
-                
 
                 
                 
@@ -903,18 +705,6 @@ Validation Master Plan
         
 
     
-
-    
-
-PDA Technical Report No. 39 (Revised 2021): Guidance for Temperature-Controlled Medicinal Products
-
-    
-
-Section 1.0 Introduction + 2.0 Glossary  |  Pages 1–6  |  Licensed to TWi Pharmaceuticals Inc.
-
-    
-
-Educational material for internal training purposes only. Not for redistribution.
 
 ⇧
 
@@ -1275,64 +1065,6 @@ For reusable temperature-controlled shippers, the strategy should additionally i
 ### Table 3.3-1: Typical Process Parameters for Design Qualification
 
                     
-                        
-                            
-                                
-                                
-                                
-                            
-| Parameter / | Passive / | Active / |
-| --- | --- | --- |
-                        
-                        
-                            
-| Process duration / | Yes | Yes |
-                            
-| Temperature monitoring device / | Yes | Yes |
-                            
-| Family approach rationale / | Yes | Yes |
-                            
-| Product quantity / | Yes | Yes |
-                            
-| Temperature-conditioning of product / | Yes | Yes |
-                            
-| Type of insulated material / | Yes | Yes |
-                            
-| Product shipping configuration / | Yes | Yes |
-                            
-| Min/Max thermal mass / / | Yes | Yes |
-                            
-| Ambient temperature profiles (hot & cold) / | Yes | Yes |
-                            
-| Conditioning of PCM or active container / PCM/ | Yes | Yes |
-                            
-| Location of refrigerants / | Yes | No |
-                            
-| Phase-change materials (PCM) / | Yes | No |
-                            
-| Orientation of package / | Yes | Yes |
-                            
-| Representative shipper selection / | Yes | Yes |
-                            
-| Refrigeration system capacity / | No | Yes |
-                            
-| Air flow (forced) / | No | Yes |
-                            
-| Diesel or electric power supply / | No | Yes |
-                            
-| Operational modes / | No | Yes |
-                            
-| Defrost cycles / | No | Yes |
-                            
-| Power failure and recovery test / | No | Yes |
-                            
-| Loading and unloading pattern/time / / | Yes | Yes |
-                            
-| Door opening / | No | Yes |
-                        
-                    
-
-                    
 
 *Hybrid active–passive systems also exist where all the items may be applicable.*
 
@@ -1474,32 +1206,6 @@ Thermal qualification should not use a macroscopic approach. Rather, it should t
                     
 
 ### 4.0 —
-
-                    
-
-                        
-
-#### OQ vs. PQ —
-
-                        
-                            
-                                
-| | OQ | PQ |
-| --- | --- | --- |
-                            
-                            
-                                
-                                
-| | climate chamber | |
-                                
-| | / | |
-                                
-| | worst-case | |
-                                
-                            
-                        
-
-                    
 
                     
 
@@ -2096,18 +1802,6 @@ Process Design & Process Qualification: Key Takeaways
 
     
 
-    
-
-PDA Technical Report No. 39 (Revised 2021): Guidance for Temperature-Controlled Medicinal Products
-
-    
-
-Section 2 — Process Design & Process Qualification | Pages 6–11
-
-    
-
-Licensed to Kuo, Li-Hung / TWi Pharmaceuticals Inc. | Educational Use Only
-
 ⇧
 
 ## Section 3: Ongoing Process Verification (p11-p17)
@@ -2424,37 +2118,6 @@ Monitors should be started, at the latest, as the container is closed and, in tu
 
 ### 
 
-                    
-
-                    
-                        
-                            
-                                
-                                
-                                
-                            
-| --- | --- | --- |
-                        
-                        
-                            
-                                ****
-                                
-                                
-                            
-| Data Logger | | |
-                            
-                                ****
-                                
-                                
-                            
-| -TTI | / | |
-                            
-                                ****
-                                
-                                
-                            
-| | GSM/Wi-Fi/Bluetooth | |
-                        
                     
 
                     
@@ -2814,36 +2477,6 @@ The categorization applied by each company must be described in a written proced
                     
 
 ### 
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
-                            
-                                
-                                    
-                                    
-                                
-| --- | --- |
-                            
-                            
-                                
-                                    ****
-                                    
-                                
-| Type | /GDP |
-                                
-                                    ****
-                                    
-                                
-| Criticality | no impact |
-                            
-                        
 
                     
 
@@ -3408,39 +3041,6 @@ In contingency situations, such as an element for pandemic, proper risk assessme
 
                         
 
-#### vs.
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-                                    ****
-                                    
-                                    
-                                
-| Major | → TPS | → re-qualification |
-                                
-                                    ****
-                                    
-                                    
-                                
-| Minor | | |
-                            
-                        
-
-                    
-
-                    
-
-                        
-
 #### 
 
                         
@@ -3601,18 +3201,6 @@ OPV data collected across these elements feeds directly into Annual Product Revi
         
 
     
-
-    
-
-PDA Technical Report No. 39 (Revised 2021): Guidance for Temperature-Controlled Medicinal Products
-
-    
-
-Section 5.0 Ongoing Process Verification  |  p11–p17
-
-    
-
-Licensed educational material for internal training use. TWi Pharmaceuticals Inc.
 
 ⇧
 

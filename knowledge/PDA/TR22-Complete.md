@@ -205,28 +205,20 @@ Product ........................................................................
 vii
 Figures and Tables Index
 
-| Table 4.2.5.1-1: Advantages and Disadvantages of Liquid Medium Filled by Powder Filling Equipment |
-| --- |
-| Advantages | Disadvantages |
+**Table 4.2.5.1-1 Advantages and Disadvantages of Liquid Medium Filled by Powder Filling**
 
 Equipment ....................................................................................................................................................... 28
 
-| Table 4.2.5.2-1: Advantages and Disadvantages of Liquid Media Filled on Dry-Powder Filler with Supplementary Liquid-Fill Capability |
-| --- |
-| Advantages | Disadvantages |
+**Table 4.2.5.2-1 Advantages and Disadvantages of Liquid Media Filled on Dry-Powder Filler with**
 
 Supplementary Liquid-Fill Capability ......................................................................................................... 29
 
-| Table 4.2.5.3-1: On-Line Liquid Media Fill Followed by On-Line Placebo Powder Fill |
-| --- |
-| Advantages | Disadvantages |
+**Table 4.2.5.3-1 Advantages and Disadvantages of On-Line Liquid Media Fill Followed by On-Line**
 
 Placebo Powder Fill ....................................................................................................................................... 29
 Table 4.2.5.4-1 On-Line Placebo Powder Fill Followed by On-Line Liquid Media Fill .................... 30
 
-| Table 4.2.5.5-1: Advantages and Disadvantages of Dry Media Filled as a Powder and Reconstituted to a Liquid Form After the Fill |
-| --- |
-| Advantages | Disadvantages |
+**Table 4.2.5.5-1 Advantages and Disadvantages of Dry Media Filled as a Powder and**
 
 Reconstituted to a Liquid Form After the Fill ........................................................................................... 30
 Table 7.5.1-1 Potential Risks Associated with Various Container-Closure Characteristics ........... 47
@@ -262,18 +254,11 @@ Risk Level (Example 4) .........................................................
 
 Access Barrier Systems without Built-In In-Process Control (Example 4) ......................................... 96
 
-**Table 15.5-1** APS Design for Lines Producing Different Products/Dosage Forms (No Worst-Case Vial)**
-| Vial Amount (mL) | Initial Number of Runs |
-| --- | --- |
+**Table 15.5-1 APS Design for Lines Producing Different Products/Dosage Forms (No Worst-Case**
 
 Vial) ................................................................................................................................................................... 98
 
-**Table 15.5-2** Aseptic Process Simulation Design for Lines Producing Different Products/Dosage Forms (Worst-Case Vial)**
-| Vial Amount (mL) | Initial Number of Runs |
-| --- | --- |
-| 2 | 1 |
-| 4 | 1 |
-| 8 | 1 |
+**Table 15.5-2 Aseptic Process Simulation Design for Lines Producing Different Products/Dosage**
 
 Forms (Worst-Case Vial) ............................................................................................................................... 98
 
@@ -1732,9 +1717,34 @@ adaptation to the process when contrasted with the modifications necessary for o
 the APS is essentially the same as that described in Section 4.2, which notes the importance of integrating
 all the fill-line activities during the simulation.
 
-| Table 4.2.5.1-1: Advantages and Disadvantages of Liquid Medium Filled by Powder Filling Equipment |
-| --- |
-| Advantages | Disadvantages |
+**Table 4.2.5.1-1 Advantages and Disadvantages of Liquid Medium Filled by Powder Filling**
+
+Equipment
+Advantages
+Disadvantages
+
+•
+Only a single filling machine is required.
+•
+Simplifies the execution of the APS.
+•
+Avoids the risk of contamination from a
+new system.
+•
+Additional media controls for a separate
+liquid-fill machine are not required.
+•
+Setup may differ from that used for powder fill.
+•
+Any variables or risks posed by the handling and
+filling of dry material may not be captured.
+•
+The powder-filler may be capable, but it may not
+be well-suited for filling liquid.
+•
+Liquid media leakage may occur.
+•
+Cleaning liquid media may be difficult.
 
 ##### 4.2.5.2 Liquid Media Filled on Dry-Powder Filler with Supplementary Liquid-Fill
 
@@ -1746,9 +1756,37 @@ filling machine could be used for both the liquid- and solid-filling operation d
 
 === PDF PAGE 38 ===
 
-| Table 4.2.5.2-1: Advantages and Disadvantages of Liquid Media Filled on Dry-Powder Filler with Supplementary Liquid-Fill Capability |
-| --- |
-| Advantages | Disadvantages |
+**Table 4.2.5.2-1 Advantages and Disadvantages of Liquid Media Filled on Dry-Powder Filler**
+
+with Supplementary Liquid-Fill Capability
+Advantages
+Disadvantages
+•
+A single filler is used, and no
+additional line modifications
+are required.
+•
+The filler may need to be operated at lower speeds due to its
+design.
+•
+Some designs may not fill liquid into every vial that receives
+powder.
+•
+Requires additional processing or handling steps that are not
+part of regular process which may add risk to the simulation
+that is not present in the production process.
+•
+The setup may differ from that used for powder fill.
+•
+Any variables or risks posed by the handling and filling of dry
+material may not be captured.
+•
+The powder filler may be capable but not well-suited for
+filling liquid.
+•
+Liquid media leakage may occur.
+•
+Cleaning liquid media may be difficult.
 
 ##### 4.2.5.3 On-Line Liquid Media Fill followed by On-Line Placebo Powder Fill
 
@@ -1760,9 +1798,26 @@ and a liquid are combined, then the dispersion and dissolution of powder through
 confirmed. This can be achieved manually by inverting the container several times during the pre-inspection
 of containers prior to incubation.
 
-| Table 4.2.5.3-1: On-Line Liquid Media Fill Followed by On-Line Placebo Powder Fill |
-| --- |
-| Advantages | Disadvantages |
+**Table 4.2.5.3-1 Advantages and Disadvantages of On-Line Liquid Media Fill Followed by On-**
+
+Line Placebo Powder Fill
+Advantages
+Disadvantages
+•
+All processes on-line, with
+no additional handling of
+containers.
+•
+A second filler will need to be set up and qualified.
+•
+The process subjects the open units to additional exposure time.
+•
+Additional processing or handling steps that are not part of regular
+process are added due to liquid filling which may add risks to the
+simulation that are not present in the production process.
+•
+Limited space in the container may result in powder collecting on
+the rim of the container and affecting the seal.
 
 ##### 4.2.5.4 On-line Placebo Powder Fill Followed by On-Line Liquid Media Fill
 
@@ -1774,18 +1829,51 @@ inspection of containers prior to incubation.
 
 === PDF PAGE 39 ===
 
-| Table 4.2.5.4-1: On-Line Placebo Powder Fill Followed by On-Line Liquid Media Fill |
-| --- |
-| Advantages | Disadvantages |
+**Table 4.2.5.4-1 On-Line Placebo Powder Fill Followed by On-Line Liquid Media Fill**
+
+Advantages
+Disadvantages
+•
+All processes are on-line,
+with no additional handling
+of containers.
+•
+A second filler will need to be set up and qualified.
+•
+The process subjects the open units to additional exposure time.
+•
+Additional processing or handling steps that are not part of
+regular process are added due to liquid filling which may add risks
+to the simulation that are not present in the production process.
+•
+Limited space in the container may result in media overfill or in
+splash collecting on the rim of the container and affecting the
+seal.
+•
+There is a potential for powder aspiration from the container
+when the liquid is filled last.
+•
+There may be an increased risk for particles impacting the
+inspection after incubation.
 
 ##### 4.2.5.5 Dry Media Filled as a Powder and Reconstituted to a Liquid Form After the Fill
 
 In this method, dry media is filled into the units using a powder filler. Sterile water is added under Grade A
 conditions; the main advantages and disadvantages of this are listed in Table 4.2.5.5-1.
 
-| Table 4.2.5.5-1: Advantages and Disadvantages of Dry Media Filled as a Powder and Reconstituted to a Liquid Form After the Fill |
-| --- |
-| Advantages | Disadvantages |
+**Table 4.2.5.5-1 Advantages and Disadvantages of Dry Media Filled as a Powder and**
+
+Reconstituted to a Liquid Form After the Fill
+Advantages
+Disadvantages
+•
+No additional
+equipment is
+needed.
+•
+Additional steps to add water are burdensome and will add significant,
+and potentially unacceptable, risk to the simulation, which is why this is
+not a recommended practice.
 
 #### 4.2.6 Other Dosage Forms and Drug/Device Combinations
 
@@ -5045,17 +5133,22 @@ and 10 mL vials will be filled and none of them is assessed to be a worst-case, 
 each of minimum and maximum vial sizes should be done, in addition to at least one run from each other
 vial size (Table 15.5-1).
 
-**Table 15.5-1** APS Design for Lines Producing Different Products/Dosage Forms (No Worst-Case Vial)**
-| Vial Amount (mL) | Initial Number of Runs |
-| --- | --- |
+**Table 15.5-1 APS Design for Lines Producing Different Products/Dosage Forms (No Worst-**
 
-**Table 15.5-2** Aseptic Process Simulation Design for Lines Producing Different Products/Dosage Forms (Worst-Case Vial)**
-| Vial Amount (mL) | Initial Number of Runs |
-| --- | --- |
-| 2 | 1 |
-| 4 | 1 |
-| 8 | 1 |
+Case Vial)
+Vial Amount (mL)
+Initial Number of Runs
+However, in the event one of these vials sizes (based on a science-based risk assessment; (see Section 3.4 ))
+is a worst-case (e.g., 10 mL), at least three (3) runs of this vial size plus at least one run of each of the other
+vial sizes should be done in the initial validation study (Table 15.5-2) (see Section 7.5.1.1 for additional
+information on bracketing criteria).
 
+**Table 15.5-2 Aseptic Process Simulation Design for Lines Producing Different**
+
+Products/Dosage Forms (Worst-Case Vial)
+Vial Amount (mL)
+Initial Number of Runs
+In the examples in both Table 15.5-1 and Table 15.5-2, if a new vial size (e.g., 6 mL) needs to be
 introduced, it should be assessed as to whether it represents a worst-case condition. If so, at least three (3)
 runs of the new vial will be required; otherwise, at least one (1) run will be required as it lies between the
 minimum and maximum vials, each of which had three (3) successful consecutive runs. During ongoing
@@ -5390,10 +5483,11 @@ Duration, and Proximity - as defined in Table 15.7-1.
 
 === PDF PAGE 117 ===
 
-**Table 15.7-1** Definition of the Aseptic Manipulation Factors**
-| Factor | Definition |
-| --- | --- |
+**Table 15.7-1 Definition of the Aseptic Manipulation Factors**
 
+Factor
+Definition
+Duration
 The time that it takes to perform the overall aseptic procedure when the product or product-contact surfaces are exposed to the
 surrounding environment. The typical or standard times for these aseptic procedures for the processes evaluated was determined to
 be within a range of 1−10 minutes. Any aseptic procedure less than 1 minute was considered as lower in terms of relative risk, while
@@ -5409,40 +5503,86 @@ aseptic procedure, it is first determined whether first air is broken or not. In
 sterile entity or with a nonsterile entity is determined.
 The relative ratings for each of these three factors, based on the input from this AREM Team, were defined as shown in Table 15.7-2.
 
-**Table 15.7-2** Identification of the Risk Ranking for Each of the Factors**
-| Risk Ranking | Duration | Complexity | Proximity |
-| --- | --- | --- | --- |
-| High | >10 minutes | More than 5 steps; highly difficult to perform manual manipulations | Operator breaks first air with a nonsterile entity (e.g., the sanitized isolator glove) |
-| Medium | 1-10 minutes | 2-5 steps; moderate difficulty to perform manual manipulations | Operator breaks first air with a sterile entity (e.g., the sterilized forceps) |
-| Low | <1 minute | 1 step; easy to perform manual manipulation | Operator does not break first air |
+**Table 15.7-2 Identification of the Risk Ranking for Each of the Factors**
 
+Risk
+Ranking
+Duration
+Complexity
+Proximity
+High
+>10 minutes
+More than 5 steps; highly difficult to perform manual
+manipulations
+Operator breaks first air with a nonsterile entity (e.g.,
+the sanitized isolator glove)
+Medium
+1-10 minutes
+2–5 steps; moderate difficulty to perform manual
+manipulations
+Operator breaks first air with a sterile entity (e.g., the
+sterilized forceps)
+Low
+<1 minute
+1 step; easy to perform manual manipulation
+Operator does not break first air
+
+=== PDF PAGE 118 ===
+Step 4
 Upon determining the risk-ranking of each factor for an aseptic procedure, a preliminary matrix was used to determine the initial Risk Class, as shown
 in Table 15.7-3.
 
-**Table 15.7-3** Preliminary Matrix Used in Determination of Initial Risk Class**
-| | Duration |
-| --- | --- |
-| | Low | Medium | High |
+**Table 15.7-3 Preliminary Matrix Used in Determination of Initial Risk Class**
 
+Duration
+Low
+Medium
+High
+High Complexity
+Risk Class 2
+Risk Class 2
+Risk Class 1
+Medium Complexity
+Risk Class 3
+Risk Class 2
+Risk Class 1
+Low Complexity
+Risk Class 3
+Risk Class 3
+Risk Class 2
 A secondary matrix is then used to determine the overall risk score using the previously determined Risk Class and the proximity, as shown in Table
 15.7-4.
 
-**Table 15.7-4** Secondary Matrix for Determination of the Overall Risk Score**
-| | Proximity |
-| --- | --- |
-| | Low | Medium | High |
+**Table 15.7-4 Secondary Matrix for Determination of the Overall Risk Score**
 
+Proximity
+Low
+Medium
+High
+Risk Class 1
+Low
+Medium
+High
+Risk Class 2
+Low
+Medium
+High
+Risk Class 3
+Low
+Low
+Medium
+
+=== PDF PAGE 119 ===
+Step 5
 Upon the determination of the overall risk score, the aseptic procedures are ranked by risk, and the following actions are to be taken, as shown in
 
 **Table 15.7-5.**
 
-**Table 15.7-5** Action Level Table based on Overall Risk Score**
-| Risk Ranking | Action |
-| --- | --- |
-| High | Unacceptable level of risk. A high risk should be reduced through the reduction of one or more risk factors (proximity, duration, and/or complexity) taking into account the effect of residual risk or unintended consequences of action. |
-| Medium | Actions should be taken to reduce the risk to a lower level through the reduction of one or more risk factors, taking into account the effect of residual risk or unintended consequences of action. If risk cannot be reduced practically, it may still be accepted; however, ways to reduce the risk should be considered as a part of periodic risk review. |
-| Low | Acceptable risk. No additional action necessary. |
+**Table 15.7-5 Action Level Table based on Overall Risk Score**
 
+Risk Ranking
+Action
+High
 Unacceptable level of risk. A high risk should be reduced through the reduction of one or more risk factors (proximity, duration,
 and/or complexity) taking into account the effect of residual risk or unintended consequences of action.
 Medium

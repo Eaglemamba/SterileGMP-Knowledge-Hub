@@ -50,15 +50,15 @@ PDA Manufacturing Technology Guide No. 1 | p8 – p16  |  Sections 1.0, 1.1.1 
 
         
 
-When designing an aseptic filling process, there are many considerations. First, we must recognize that the product is intended to be a sterile product and that our target is an optimally designed aseptic filling system (see the red bullseye in Figure 1.0-1) that supports the goal of producing a sterile product. Therefore, the filling system must be easy to clean, biodecontaminate, and/or sterilize, minimize the need for interventions, maintain air quality within the environment during operation, and the like. Ensuring sterility assurance (SA) will govern all our decision-making as the primary consideration.
+When designing an aseptic filling process, there are many considerations. First, we must recognize that the product is intended to be a sterile product and that our target is an optimally designed aseptic filling system (see the red bullseye in Figure 1.0-1🔍) that supports the goal of producing a sterile product. Therefore, the filling system must be easy to clean, biodecontaminate, and/or sterilize, minimize the need for interventions, maintain air quality within the environment during operation, and the like. Ensuring sterility assurance (SA) will govern all our decision-making as the primary consideration.
 
         
 
-Next, the attributes of the product that will impact the design are evaluated. These include, but are not limited to, the product critical to quality attributes (CQAs). Only after these product attributes are fulfilled by the design, can the desired flexibility and business targets be considered. Figure 1.0-1 illustrates some of these various considerations and shows the complexity of how they might interplay to identify the optimal aseptic filling system design.
+Next, the attributes of the product that will impact the design are evaluated. These include, but are not limited to, the product critical to quality attributes (CQAs). Only after these product attributes are fulfilled by the design, can the desired flexibility and business targets be considered. Figure 1.0-1🔍 illustrates some of these various considerations and shows the complexity of how they might interplay to identify the optimal aseptic filling system design.
 
         
 
-            "When considering all the factors depicted in Figure 1.0-1 collectively, compromises may be required. For example, some of the desired business or flexibility attributes may be waived in order to ensure that the product CQAs, including sterility, are fulfilled."
+            "When considering all the factors depicted in Figure 1.0-1🔍 collectively, compromises may be required. For example, some of the desired business or flexibility attributes may be waived in order to ensure that the product CQAs, including sterility, are fulfilled."
         
 
         
@@ -125,8 +125,6 @@ PDA Manufacturing Technology Guide No. 1 | p17 - p25
 
             
             
-
-1.4.1 Capacity Model Inputs — Shutdown Allowances & Core Factors
 
             
 
@@ -277,8 +275,6 @@ Only after creating a capacity model that takes the above factors into considera
 
             
             
-
-1.4.2 Campaign Strategy Overview
 
             
 
@@ -1025,15 +1021,13 @@ The selection criteria for the most appropriate filling technology should includ
             
             
 
-Table 2.0-1: Comparison of Attributes of Four Major Filling Technologies
-
             
 
                 
 
                     
 
-Original Text (English) — Table 2.0-1
+Original Text (English) — Table 2.0-1🔍
 
                     
 
@@ -1042,86 +1036,6 @@ The following table compares key technical attributes of the four filling techno
                     
 
                         
-                            
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| Attribute | PP (Peristaltic Pump) | RPP (Rotary Piston Pump) | TP (Time Pressure) | DP (Rolling Diaphragm) |
-| --- | --- | --- | --- | --- |
-                            
-                            
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                    
-                                
-| Dosing Accuracy | Very accurate | Very accurate | Very accurate | Very accurate |
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                    
-                                
-| Single-Use (SU) Fluid Path | Well-suited | Possible | Not currently available | Possible with some vendors |
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                    
-                                
-| CIP/SIP | Possible but rare | Possible | Possible | Possible |
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                    
-                                
-| Campaign Compatibility | Hose wear limiting | Compatible | Compatible | Compatible |
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                    
-                                
-| Fill Range | 0.1 – 100 mL | 0.1 – 250 mL | 0.1 – 100 mL | 0.2 – 250 mL |
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                    
-                                
-| Viscosity Range | Up to 60 mPa·s | Up to 300,000 mPa·s | Up to 100 mPa·s | Up to 100 mPa·s |
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                    
-                                
-| Installation Outside RABS | Possible | Not possible | Possible | Possible |
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                    
-                                
-| Product Compatibility Notes | Difficult with solvents | Not for long-chain proteins | Difficult with temp-sensitive products | Difficult with highly viscous products |
-                            
-                        
-
-                    
 
                 
 
@@ -1133,7 +1047,7 @@ The following table compares key technical attributes of the four filling techno
 
                         
 
-#### Table 2.0-1
+#### Table 2.0-1🔍
 
                         
 
@@ -1192,15 +1106,13 @@ The following table compares key technical attributes of the four filling techno
             
             
 
-Table 2.0-2: Containers Used with Each Technology
-
             
 
                 
 
                     
 
-Original Text (English) — Table 2.0-2
+Original Text (English) — Table 2.0-2🔍
 
                     
 
@@ -1209,77 +1121,6 @@ The following table shows which primary container types are compatible with each
                     
 
                         
-                            
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| Container Type | PP | RPP | TP | DP | Notes |
-| --- | --- | --- | --- | --- | --- |
-                            
-                            
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| Vial () | Yes | Yes | Yes | Yes | All four compatible |
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| Cartridge () | Yes | Yes | Yes (preferred) | Yes | TP preferred for cartridge |
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| Syringe () | Yes | Yes | Yes | Yes | All four compatible |
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| Ampoule () | Yes | Yes | Yes | Yes | All four compatible |
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| Bag () | Yes | Yes | Yes | Yes | All four compatible |
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| Eyedrop () | Yes | Yes | Yes | Yes | All four compatible |
-                            
-                        
-
-                    
 
                 
 
@@ -1291,7 +1132,7 @@ The following table shows which primary container types are compatible with each
 
                         
 
-#### Table 2.0-2
+#### Table 2.0-2🔍
 
                         
 
@@ -1332,15 +1173,13 @@ The following table shows which primary container types are compatible with each
             
             
 
-Table 2.0-3: Comparison Based Upon Common Product Types
-
             
 
                 
 
                     
 
-Original Text (English) — Table 2.0-3
+Original Text (English) — Table 2.0-3🔍
 
                     
 
@@ -1349,62 +1188,6 @@ The following table provides technology recommendations based on common pharmace
                     
 
                         
-                            
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| Product Type | PP | RPP | TP | DP |
-| --- | --- | --- | --- | --- |
-                            
-                            
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                    
-                                
-| Proteins () | Yes | No (shear risk) | Yes | Yes |
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                    
-                                
-| Suspensions () | Yes (<60 mPa·s) | Yes | Yes | Yes (with restrictions) |
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                    
-                                
-| High-Viscosity () | No | Yes (<300,000 mPa·s) | No | No |
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                    
-                                
-| Low-Viscosity () | Yes | Yes | Yes | Yes |
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                    
-                                
-| SVP () | Yes | Yes | Yes | Yes |
-                            
-                        
-
-                    
 
                 
 
@@ -1416,7 +1199,7 @@ The following table provides technology recommendations based on common pharmace
 
                         
 
-#### Table 2.0-3
+#### Table 2.0-3🔍
 
                         
 
@@ -1532,11 +1315,11 @@ The principle of operation for the PP is the dynamic rotational squeezing of a f
 
         
 
-The rotating motion of the rotor moves the dynamic squeezing point along the tube and moves the product along, at the same time, creating a vacuum at the inlet and drawing in the product (see Figure 2.1-1). The product to be filled only comes into contact with the filling tube and the filling needle. The tube represents a closed system from the inlet of the product to the outlet through the filling needle.
+The rotating motion of the rotor moves the dynamic squeezing point along the tube and moves the product along, at the same time, creating a vacuum at the inlet and drawing in the product (see Figure 2.1-1🔍). The product to be filled only comes into contact with the filling tube and the filling needle. The tube represents a closed system from the inlet of the product to the outlet through the filling needle.
 
         
 
-            [Figure 2.1-1: Illustration of Progressive Rotary Motion of Rotor Along Backplate — shows how the rotor's rollers sequentially compress the silicone tube against the backplate, creating a traveling squeeze point that propels liquid forward while simultaneously drawing product from the inlet]
+            [Figure 2.1-1🔍: Illustration of Progressive Rotary Motion of Rotor Along Backplate — shows how the rotor's rollers sequentially compress the silicone tube against the backplate, creating a traveling squeeze point that propels liquid forward while simultaneously drawing product from the inlet]
         
 
         
@@ -1545,11 +1328,11 @@ When the product is not viscous (typically less than 60 milliPascal-second (mPa-
 
         
 
-Figure 2.1-2 provides a schematic of a possible PP fluid pathway. Notably, this image depicts the pumps within the aseptic boundary; however, it is possible to install the pumps outside of the aseptic boundary, thereby removing the primary mechanical components from the critical zone. As discussed in Section 2.1.5, there may be reasons that installation within the boundary is preferable for potent or toxic products.
+Figure 2.1-2🔍 provides a schematic of a possible PP fluid pathway. Notably, this image depicts the pumps within the aseptic boundary; however, it is possible to install the pumps outside of the aseptic boundary, thereby removing the primary mechanical components from the critical zone. As discussed in Section 2.1.5, there may be reasons that installation within the boundary is preferable for potent or toxic products.
 
         
 
-            [Figure 2.1-2: Peristaltic Pump Fluid Pathway Configuration — schematic showing the overall PP fluid pathway from intermediate vessel, through pump assembly, to filling needle; illustrates both the option of pump inside the aseptic boundary and the alternative outside-isolator placement]
+            [Figure 2.1-2🔍: Peristaltic Pump Fluid Pathway Configuration — schematic showing the overall PP fluid pathway from intermediate vessel, through pump assembly, to filling needle; illustrates both the option of pump inside the aseptic boundary and the alternative outside-isolator placement]
 
 # Section 2.1.4–2.1.12: Peristaltic Pump (PP) — Sterility Assurance, Costs & Strategy
 
@@ -1563,73 +1346,11 @@ PDA Manufacturing Technology Guide No. 1 | doc p34 – p39
 
         
 
-Table 2.1.4-1 identifies the advantages and disadvantages of PPs.
+Table 2.1.4-1🔍 identifies the advantages and disadvantages of PPs.
 
         
 
-**Table 2.1.4-1 Advantages and Disadvantages of Peristaltic Pumps**
-
-        
-
-        
-            
-                
-                    
-                    
-                    
-                
-| Characteristic | Advantages | Disadvantages |
-| --- | --- | --- |
-            
-            
-                
-                    ****
-                    
-                    
-                
-| Viscosity | None (no disadvantage for low-viscosity products) | Not good for high viscosity products |
-                
-                    ****
-                    
-                    
-                
-| Durability | Product not in direct contact with moving parts; only moving parts are the rotors and rollers in the pump head | Tubing wears, so tubing longevity/particle-generation studies required |
-                
-                    ****
-                    
-                    
-                
-| Single Use | Designed for SU applications | Tubing may need to be changed or moved during filling due to tubing wear, especially on prolonged fills |
-                
-                    ****
-                    
-                    
-                
-| Changeover | Rapid changeover of filling path. Closed system design can limit product exposure when working with potent products. The use of intrinsic sterile connectors can facilitate leak prevention when tubing is removed from the vessel. | For high-dose accuracy applications, rigid tubing between the pump and needle can be hard to aseptically install |
-                
-                    ****
-                    
-                    
-                
-| Sterilization | Entire train can be disposable and sterilized together from intermediate bag to filling needle | System can be CIP/SIP, but tubes need to be dismounted from pump; nevertheless, CIP/SIP is rarely used for PP |
-                
-                    ****
-                    
-                    
-                
-| Shear Level | Very gentle low-shear technology | None |
-                
-                    ****
-                    
-                    
-                
-| Dosing Range | Wide dosing volumes achievable just by changing disposable tubing sets | Very wide dosing ranges may require change of pump occlusion-bed change part |
-                
-                    ****
-                    
-                    
-                
-| Operability | Can institute feedback control/dosing to compensate for tubing deformation. The capability to install outside of the containment simplifies operability and can improve SA by removing mechanical systems from the critical zone. | Tubing deforms over time; potentially impacts dosing for long fills. Slower filling-speed required to avoid splashing if soft tubing is used between pump and filling needle. |
+**Table 2.1.4-1🔍 Advantages and Disadvantages of Peristaltic Pumps**
 
 ## Section 2B: Rotary Piston Pump (p42-p53)
 
@@ -1689,7 +1410,7 @@ Because the piston-cylinder interface is open to the surrounding environment at 
 
                 
 
-                    [Figure 2.2-3: Rotary Piston Pump Filler Fluid Pathway]
+                    [Figure 2.2-3🔍: Rotary Piston Pump Filler Fluid Pathway]
                 
 
                 
@@ -1734,7 +1455,7 @@ PDA Manufacturing Technology Guide No. 1 | doc p71 – p80
 
         
 
-**Table 4.0-1** presents the Functionality Requirements and their influence on liquid filling system selection. The table evaluates four pump technologies across a range of operational considerations:
+**Table 4.0-1🔍** presents the Functionality Requirements and their influence on liquid filling system selection. The table evaluates four pump technologies across a range of operational considerations:
 
         
 
@@ -1809,36 +1530,6 @@ PDA Manufacturing Technology Guide No. 1 | doc p81 - p86
 
 ### Robotics — Technology Comparison (continued from p80)
 
-        
-
-        
-            
-                
-                
-                
-                
-                
-            
-| Consideration / Critical Attributes & Enablers | Peristaltic Pump (PP) | Rotary Piston Pump (RPP) | Time Pressure (TP) | Diaphragm Pump (DP) |
-| --- | --- | --- | --- | --- |
-            
-                ****  
-  
-  
-  
-  
-  
-  
-  
-  
-
-                
-                
-                
-                
-            
-| Robotics                 Clear design objectives for robotics functions with demonstrable advantage of replacing human intervention.                 Computational Fluid Dynamics (CFD) for modeling airflow around robotics movements during design phase.                 Design of robotic movements so that they minimize turbulence and avoid the introduction of contamination.                 Technical expertise in robotics control and calibration.                 Change parts or consumables that are not too heavy or awkward. | Easier to set up with the aid of robotics, as the PP is a closed system. Also, as the pumps can be located outside the containment, a robot would be easily able to install the preassembled filling needles within the Grade A. | Robotic fluid path setup with conventional RPP is difficult. Commonly, fluid path setup is not a requirement for systems that are CIP/SIP-enabled (unless a pump change is required as part of a campaign). | Robotic fluid path setup with conventional TP is difficult. Commonly, fluid path setup is not a requirement for systems that are CIP/SIP-enabled (unless a change is required as part of a campaign). | Robotic fluid path setup with conventional DP is difficult. Commonly, fluid path setup is not a requirement for systems that are CIP/SIP-enabled (unless a pump change is required as part of a campaign). |
-
 ## Section 4B: Functionality II (p87-p100)
 
 # Section 4B: Filling System Functionality (4.4–4.6.1)
@@ -1875,11 +1566,11 @@ PDA Manufacturing Technology Guide No. 1 | doc p94 - p100
 
         
 
-### Figure 4.6.1-4 Double-Loop Recirculation Without Mixing
+### Figure 4.6.1-4🔍 Double-Loop Recirculation Without Mixing
 
         
 
-**Figure 4.6.1-5** depicts a system where there are no mixers that also utilizes a double-loop design. In this scenario, there are two major differences compared to the example depicted in Figure 4.6.1-4:
+**Figure 4.6.1-5🔍** depicts a system where there are no mixers that also utilizes a double-loop design. In this scenario, there are two major differences compared to the example depicted in Figure 4.6.1-4🔍:
 
         
 
@@ -1893,7 +1584,7 @@ PDA Manufacturing Technology Guide No. 1 | doc p94 - p100
 
         
 
-Figure 4.6.1-5: Use of Three-Way Valves in Recirculation Loop and at Filling Needles
+Figure 4.6.1-5🔍: Use of Three-Way Valves in Recirculation Loop and at Filling Needles
 
 ## Section 5: Dose Control (p101-p114)
 
@@ -1931,11 +1622,11 @@ PDA Manufacturing Technology Guide No. 1 | doc p108 - p114
 
         
 
-In a volumetric filling process, the volume of product filled into the container is not controlled gravimetrically by scales, but instead relies on container geometry, plunger position (for cartridges), and residual air-bubble (air gap) size to determine sufficient filling. In the cartridge-filling example below (Figure 5.2.2-1), a laser and sensor are used to detect the filling endpoint. As filling occurs, the laser light is deflected by the empty neck of the cartridge and does not reach the sensor. As the container is filled and the neck fills with product, the laser light is transmitted through the neck of the container, signaling the control system to stop dosing.
+In a volumetric filling process, the volume of product filled into the container is not controlled gravimetrically by scales, but instead relies on container geometry, plunger position (for cartridges), and residual air-bubble (air gap) size to determine sufficient filling. In the cartridge-filling example below (Figure 5.2.2-1🔍), a laser and sensor are used to detect the filling endpoint. As filling occurs, the laser light is deflected by the empty neck of the cartridge and does not reach the sensor. As the container is filled and the neck fills with product, the laser light is transmitted through the neck of the container, signaling the control system to stop dosing.
 
         
 
-            Figure 5.2.2-1: Volumetric Dosing Triggered by Laser Sensor
+            Figure 5.2.2-1🔍: Volumetric Dosing Triggered by Laser Sensor
               
 *[Figure: Cartridge filling — laser beam blocked during empty state, transmitted when neck is filled, triggering stop-dose signal to control system]*
         
@@ -2165,7 +1856,7 @@ The selection of an appropriate elastomer is primarily driven by:
 
                 
 
-## Key Styles of Elastomer (Figure 7.2-1) & Advanced Closures
+## Key Styles of Elastomer (Figure 7.2-1🔍) & Advanced Closures
 
                 
 
@@ -2182,11 +1873,11 @@ The selection of an appropriate elastomer is primarily driven by:
 
                     
 
-### Key Styles of Elastomer (Figure 7.2-1)
+### Key Styles of Elastomer (Figure 7.2-1🔍)
 
                     
 
-Key styles of elastomer include (Figure 7.2-1):
+Key styles of elastomer include (Figure 7.2-1🔍):
 
                     
 
@@ -2366,7 +2057,7 @@ Cartridge disc seals are a specialty closure for the delivery end of the cartrid
 
                         
 
-## Table 7.2-1: Attributes Impacting Closing System Design
+## Table 7.2-1🔍: Attributes Impacting Closing System Design
 
                 
 
@@ -2383,49 +2074,11 @@ Cartridge disc seals are a specialty closure for the delivery end of the cartrid
 
                     
 
-### Table 7.2-1: Attributes Impacting Closing Design
+### Table 7.2-1🔍: Attributes Impacting Closing Design
 
                     
 
                         
-                            
-                                
-                                    
-                                    
-                                
-| Attribute | Impact on Closing System Design |
-| --- | --- |
-                            
-                            
-                                
-                                    ****
-                                    
-                                
-| Closure Dimensions & Overall Shape | Defines sorting-system bowl/track dimensions; influences "twinning" issues (two stoppers stuck together); may require different vibration levels for orientation |
-                                
-                                    ****
-                                    
-                                
-| Materials of Construction & Coatings | Influences surface of sorting components; influences insertion force due to friction (coated vs. uncoated stoppers have very different behavior) |
-                                
-                                    ****
-                                    
-                                
-| Product Requirements | Inert headspace required → closing station needs inert gas provision; headspace minimized → vacuum at closing; both liquid & lyophilized products → closure station must adjust for partial insertion |
-                                
-                                    ****
-                                    
-                                
-| Batch / Campaign Details | Batch size influences replenishment frequency; filling speed influences sorting-system bowl size |
-                                
-                                    ****
-                                    
-                                
-| Method of Introduction to Filling Line | RTU (ready-to-use) vs. in-house processing influences connections to filling line |
-                            
-                        
-
-                    
 
                 
 
@@ -2659,7 +2312,7 @@ Stoppers for prefilled syringes and cartridges serve **dual roles**: protection 
 
                     
 
-### Three Primary Insertion Methods (Figure 7.3.2-1)
+### Three Primary Insertion Methods (Figure 7.3.2-1🔍)
 
                     
 
@@ -2786,7 +2439,7 @@ Silicone and fluoropolymers (e.g., Teflon®) are common coatings. Silicone may b
 
                 
 
-## Table 7.3.2-1: Comparison of Vent and Vacuum Insertion Techniques
+## Table 7.3.2-1🔍: Comparison of Vent and Vacuum Insertion Techniques
 
                 
 
@@ -2800,98 +2453,6 @@ Silicone and fluoropolymers (e.g., Teflon®) are common coatings. Silicone may b
             
 
                 
-                    
-                        
-                            
-                              
-
-                              
-
-                              
-
-                              
-
-                        
-| Feature / | Vented Insertion | Vacuum Bell | Vacuum-Assisted Short | Vacuum-Assisted Long |
-| --- | --- | --- | --- | --- |
-                    
-                    
-                        
-                            ****
-                            
-                            
-                            
-                            
-                        
-| Application / | General use; not for coated stoppers | Coated/delicate stoppers, high-viscosity products | Siliconized and coated stoppers, large fill / shallow insertion | Siliconized stoppers, small fill / deep insertion |
-                        
-                            ****
-                            
-                            
-                            
-                            
-                        
-| Cost / | Least expensive | Most expensive | More expensive than vent | More expensive than vent |
-                        
-                            ****
-                            
-                            
-                            
-                            
-                        
-| Speed / | Fastest speeds | Often slower | Faster of vacuum techniques | Slowest of vacuum techniques |
-                        
-                            ****
-                            
-                            
-                            
-                            
-                        
-| Vacuum Level / | N/A (no vacuum) | Deep vacuum possible | Moderate vacuum | Higher vacuum |
-                        
-                            ****
-                            
-                            
-                            
-                            
-                        
-| Air Bubble Removal / | Less effective | Effective | Similar to vacuum bell | Can be highly effective |
-                        
-                            ****
-                            
-                            
-                            
-                            
-                        
-| Viscous Products / | Less common | Good | Good | Good |
-                        
-                            ****
-                            
-                            
-                            
-                            
-                        
-| Small Fill Volume / | Effective | Less effective | Not for small fill | Designed for small fill / deep insertion |
-                        
-                            ****
-                            
-                            
-                            
-                            
-                        
-| Large Fill Volume / | Effective | Less effective | Effective (designed for large fill) | Less suited |
-                        
-                            ****
-                            
-                            
-                            
-                            
-                        
-| Silicone-Free Stoppers / | Not effective | Effective | May be possible | Not effective |
-                    
-                
-
-            
 
             
 
@@ -3115,43 +2676,11 @@ PDA Manufacturing Technology Guide No. 1 | doc p126 - p133
 
         
 
-Continuation of Table 7.3.2-1 — Comparison of Insertion Methods (doc p126):
+Continuation of Table 7.3.2-1🔍 — Comparison of Insertion Methods (doc p126):
 
         
 
             
-                
-                    
-                        
-                        
-                        
-                        
-                        
-                    
-| Feature | Vented Insertion | Vacuum Insertion | Vacuum-Assisted Vented — Short | Vacuum-Assisted Vented — Long |
-| --- | --- | --- | --- | --- |
-                
-                
-                    
-                        ****
-                        
-                        
-                        
-                        
-                    
-| Consistency of Elastomer Placement | Highly consistent for elastomer placement. | Vacuum alone not highly consistent for elastomer placement. | More consistent for elastomer placement than vacuum alone, but short tube will be more variable with a deeper placement requirement. | Long vent tube permits accurate elastomer placement. |
-                    
-                        ****
-                        
-                        
-                        
-                        
-                    
-| Prevention of Wrinkling or Distortion | Higher risk of wrinkling or distortion of elastomers due to compression. | Low risk of wrinkling or distortion with vacuum alone. | Low risk of wrinkling or distortion of elastomers, similar to vacuum-bell application. | Higher risk of wrinkling or distortion of elastomers due to compression. |
-                
-            
-
-        
 
         
 
@@ -4181,7 +3710,7 @@ Original Text (English)
 
                     
 
-**Table 9.1.1.7-1:** Considerations for In-Line Treated Versus RTU Containers
+**Table 9.1.1.7-1🔍:** Considerations for In-Line Treated Versus RTU Containers
 
                     
 
@@ -4221,105 +3750,6 @@ The table below compares four approaches across six key dimensions: Contaminatio
             
 
                 
-                    
-                        
-                              
-
-                              
-
-                              
-
-                              
-
-                              
-
-                        
-| Consideration | In-Line / On-Site Treatment | RTU with NTTRTU + | RTU with H₂O₂ BiodecontaminationRTU + | RTU with E-Beam BiodecontaminationRTU + |
-| --- | --- | --- | --- | --- |
-                    
-                    
-                        
-                            ****  
-
-                              
-
-                              
-
-                              
-
-                              
-
-                        
-| Contamination Control | All parameters known on-site; controls needed for processing, cleaning, equipment/ | Reduced risk with automatic handling; inspection required for supplier SA controls; CCS must address introduction point + EM SACCS + | Simplified due to in-line management | Simplified due to in-line management |
-                        
-                            ****  
-
-                              
-
-                              
-
-                              
-
-                              
-
-                        
-| Processing Rate | Correlated to component introduction rate; can use multiple tunnels | Correlated to component introduction rate | Correlated to batch cycle; slower than E-Beam E-Beam | Correlated to batch cycle; higher speed than H₂O₂ H₂O₂ |
-                        
-                            ****  
-
-                              
-
-                              
-
-                              
-
-                              
-
-                        
-| Validation | Qualification / validation required; well-understood processes | Simpler validation — no on-site qualification of washer, tunnel, VPHP, or E-Beam | In-line biodecontamination requires qualification; easy to demonstrate 6-log reduction6-log | Requires qualification; easy 6-log reduction demonstration6-log |
-                        
-                            ****  
-
-                              
-
-                              
-
-                              
-
-                              
-
-                        
-| Particulate Risk | Potential glass-to-glass contact depending on conveyance method | No glass-to-glass contact | No glass-to-glass contact | No glass-to-glass contact |
-                        
-                            ****  
-
-                              
-
-                              
-
-                              
-
-                              
-
-                        
-| Residuals Risk | None | None | Risk of oxidizing residuals (H₂O₂) | Risk of free radicals or ozone |
-                        
-                            ****  
-
-                              
-
-                              
-
-                              
-
-                              
-
-                        
-| Cost | Lower primary packaging cost | More expensive primary packaging (additional processing steps from supplier) | Less expensive than NTT; more than fully on-site NTT | Less expensive than NTT; more than fully on-site; initial capital costs high NTT |
-                    
-                
-
-            
 
             
             
@@ -4328,7 +3758,7 @@ The table below compares four approaches across six key dimensions: Contaminatio
 
                     
 
-Key Takeaways from Table 9.1.1.7-1
+Key Takeaways from Table 9.1.1.7-1🔍
 
                     
 
@@ -5624,46 +5054,6 @@ Design of the manifold should be carefully considered to ensure that it can be a
         
 
         
-            Table 11.10-1 Fluid Pathway Design Risk by Liquid Filler Type
-            
-                
-                    
-                    
-                    
-                    
-                    
-                
-| Considerations | Rotary Piston Pump (RPP) | Diaphragm Pump (DP) | Time Pressure (TP) | Peristaltic Pump |
-| --- | --- | --- | --- | --- |
-            
-            
-                
-                    ****
-                    
-                
-| Filtration | Point of Use Requirement |
-                
-                    ****
-                    
-                    
-                    
-                    
-                
-| Operation Risks | Back-flow caused by idle stroke | Consider pulsation risk on filter membrane due to pump operation | Pressure-drop through the filter when not using a sterile receiver | None |
-                
-                    ****
-                    
-                
-| Design Risk for Manifold | Avoid dead-leg at the end of the manifold. Ensure manifold is designed for either aseptic assembly or SIP with appropriate maintenance of sterile pathway. |
-                
-                    ****
-                    
-                
-| Design Risk for Venting | Consider design to vent air out of the filling system. |
-            
-        
-
-        
 
         
 
@@ -5827,7 +5217,7 @@ Filling lines that permit return of units for re-dosing or which employ re-stopp
 
                         
 
-## Table 12.6-1: Common Discard Events & Liquid Filling Technology Risk Matrix
+## Table 12.6-1🔍: Common Discard Events & Liquid Filling Technology Risk Matrix
 
                 
 
@@ -5844,7 +5234,7 @@ Filling lines that permit return of units for re-dosing or which employ re-stopp
 
                     
 
-Original Text — Notes on Table 12.6-1
+Original Text — Notes on Table 12.6-1🔍
 
                     
 
@@ -5906,90 +5296,6 @@ Technologies compared:
             
 
                 
-                    
-                        
-                              
-
-                              
-
-                              
-
-                              
-
-                              
-
-                        
-| Discard Consideration | PP | RPP | TP | DP |
-| --- | --- | --- | --- | --- |
-                    
-                    
-                        
-                            ****  
-
-                            
-                              
-
-                            
-                              
-
-                        
-| Priming, loss of dose control, or end-of-fill discards | | | | |
-                        
-                            ****  
-
-                              
-
-                              
-
-                              
-
-                              
-
-                        
-| Discards for pump interventions | | | | |
-                        
-                            ****  
-
-                              
-
-                              
-
-                              
-
-                              
-
-                        
-| Discards due to homogeneity loss in suspensions | | | | |
-                        
-                            ****  
-
-                              
-
-                              
-
-                              
-
-                              
-
-                        
-| Discards due to absorption or leachables | | | | + |
-                        
-                            ****  
-
-                              
-
-                              
-
-                              
-
-                              
-
-                        
-| Discards due to oxidation | | | | |
-                    
-                
-
-            
 
             
             
@@ -6848,114 +6154,7 @@ Specifications for Case 1 are detailed below:
 
         
 
-Table 21.1.1-1 provides details on product characteristic considerations. Refer to Section 1.0 and Section 4.0 for additional information.
-
-        
-
-        
-            
-                
-                
-                
-            
-| Attribute | Determination | Design Implication |
-| --- | --- | --- |
-            
-                
-            
-| Pharmaceutical Characteristics |
-            
-                
-                
-                
-            
-| Highly Potent | No | None; although containment for toxicity is not required, a decision has been made to fill within an isolator to provide enhanced sterility assurance (SA) |
-            
-                
-                
-                
-            
-| Toxic | No |  |
-            
-                
-                
-                
-            
-| OEL / OEB level | No classification |  |
-            
-                
-            
-| Product Biological or Physicochemical Requirements |
-            
-                
-                
-                
-            
-| Temperature-sensitive | No | Filled under ambient conditions |
-            
-                
-                
-                
-            
-| Oxygen-sensitive | Yes | Inert gas introduction must be considered; bubble/air-gap size between plunger and liquid is not critical, therefore vacuum stoppering is not necessary |
-            
-                
-                
-                
-            
-| Light-sensitive | Yes | Isolator lighting has to have compatible spectrum |
-            
-                
-                
-                
-            
-| Metal-sensitive | No | None; no restrictions on product-contact materials of construction |
-            
-                
-                
-                
-            
-| Silicone-sensitive | No | None; no restrictions on polymers and tubing |
-            
-                
-            
-| Chemical-physical Properties |
-            
-                
-                
-                
-            
-| Viscosity | Water-like, 1–2 mPa-s | None; no restriction on filling technology based on viscosity |
-            
-                
-                
-                
-            
-| Surface Tension | Less than Water | No significant concern for dripping; cylindrical needles acceptable |
-            
-                
-                
-                
-            
-| Solution or Suspension | Solution | No active agitation or recirculation required |
-            
-                
-                
-                
-            
-| Flammable or Explosive | No | None; NEMA/ATEX cabinetry not required |
-            
-                
-                
-                
-            
-| Shear-sensitive | Yes | To be verified for future products; different dosing systems could be utilized if future products are not shear-sensitive |
-            
-                
-                
-                
-            
-| Foaming Tendency | Yes | Filling curve (e.g., start, stop, acceleration) to be carefully designed; level of filling start, filling end, and careful needle movement must be incorporated to prevent foam generation |
+Table 21.1.1-1🔍 provides details on product characteristic considerations. Refer to Section 1.0 and Section 4.0 for additional information.
 
 # Section 21B: Case Studies in Aseptic Filling System Design (Part 2)
 
@@ -6969,66 +6168,8 @@ PDA Manufacturing Technology Guide No. 1 | doc p247 - p267
 
         
 
-Table 21.2.4-1 provides guidance regarding multi-container/multi-volume/multi-product filling requirements. Refer to Section 1.0 and Section 2.0 for additional information.
+Table 21.2.4-1🔍 provides guidance regarding multi-container/multi-volume/multi-product filling requirements. Refer to Section 1.0 and Section 2.0 for additional information.
 
         
 
-**Table 21.2.4-1 Case 2: Requirements for Multi-container/Multi-volume/Multi-product Filling**
-
-        
-
-        
-            
-                
-                
-                
-            
-| Attribute | Determination | Design Implication |
-| --- | --- | --- |
-            
-                ****
-                  
-  
-  
-
-                
-            
-| Additional containers, closures, and sizes to be filled on the same line | 50 IL — Supplier Name, Drawing #123                     250 IL — Supplier Name, Drawing #456                     500 IL — Supplier Name, Drawing #789                     32 mm Lyophilization Stopper — Drawing #101 | Dimensions should be fully understood in order to design appropriate conveyance flexibility and change parts (e.g., feed screws, star wheels, walking rakes/beams). Evaluation of dimensional differences in parts on sorting-system change-parts and insertion station required. |
-            
-                ****
-                  
-  
-  
-  
-
-                
-            
-| Additional fill volume / product requirements | 50 mL — Freeze-dried blood plasma protein                     70 mL — Blood plasma protein solution                     200 mL Fill                     250 mL Fill                     500 mL Fill | Fill volumes to be considered for selected filling technology, including whether change-parts will be required for the various volumetric differences. Product attributes for each product are identical, therefore, no additional sensitivities (e.g., shear, oxygen, metal) are to be considered. |
-            
-                ****
-                
-                
-            
-| Container Flexibility (Required level of flexibility for future products) | Bulk production with on-line washing and depyrogenation | Bulk-container handling will require glassware washer and tunnel, which will affect line footprint. No anticipated future need for ready to use (RTU) glassware. |
-            
-                ****
-                
-                
-            
-| Container Material Flexibility | All foreseen containers to be glass | No anticipated adaptations due to materials of construction foreseen. |
-            
-                ****
-                
-                  
-  
-
-            
-| Alternative Sizes | Range from 50 IL to 500 IL | Ensure that format parts consider the range of sizes (diameters, height) to be filled and whether the format parts will be sourced with the initial purchase, or only when needed.All vials indicated are molded glass infusion bottles (IL). If tubing vials (R) or injection vials (H) were to be filled in the future, additional format parts would be required due to different weights, diameters/tolerances, different stopper-setting requirements, and differences in neck/shoulder for crimp sealing. Extreme variability in glass components could also affect line speeds at the extreme sizes. |
-            
-                ****
-                
-                  
-  
-
-            
-| Filling Technology Flexibility | Identify need based on intended range of filling activities and product types | With some systems, it may be possible to add a different filling technology on the same machine base if required for different products and/or different packaging configurations (e.g., rotary piston pumps with peristaltic pumps as the alternate filler when needed). While design with alternate filling technologies can be more complex than a single system, the knowledge that this will be a future requirement is a critical element to the initial filling line and isolator or RABS design.With the elements of this case, the similarity of the product, containers, and closures signal that a separate technology will not be needed unless there is a plan for a future product not described here. |
+**Table 21.2.4-1🔍 Case 2: Requirements for Multi-container/Multi-volume/Multi-product Filling**

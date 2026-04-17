@@ -518,54 +518,6 @@ The area in which processing occurs, with the appropriate environmental (e.g., g
 
                 
 
-#### 📋 EM
-
-                
-
-                
-                    
-                        
-                            
-                            
-                            
-                            
-                        
-| | | | EM |
-| --- | --- | --- | --- |
-                    
-                    
-                        
-                            ****
-                            
-                            
-                            
-                        
-| Closed System | | Bioreactor | |
-                        
-                            ****
-                            
-                            
-                            
-                        
-| Functionally Closed | | skid | |
-                        
-                            ****
-                            
-                            
-                            
-                        
-| Open System | | | |
-                    
-                
-
-                
-
-            
-
-            
-
-                
-
 #### 💡 EM
 
                 
@@ -691,6 +643,18 @@ The area in which processing occurs, with the appropriate environmental (e.g., g
     
 
     
+
+                
+
+#### 📋 EM
+
+                
+
+                
+
+            
+
+            
     
 
         
@@ -774,54 +738,6 @@ A number of well-known risk assessment tools are available, such as flow charts,
             
 
 ## 
-
-            
-
-                
-
-#### 💡 vs.
-
-                
-
-                
-                    
-                        
-                            
-                            
-                            
-                        
-| --- | --- | --- |
-                    
-                    
-                        
-                            ****
-                            
-                            
-                        
-| | | / |
-                        
-                            ****
-                            
-                            
-                        
-| | SAL ≤ 10⁻⁶ | |
-                        
-                            ****
-                            
-                            
-                        
-                        
-                            ****
-                            
-                            
-                        
-| | | + |
-                    
-                
-
-                
-
-            
 
             
 
@@ -969,6 +885,18 @@ A number of well-known risk assessment tools are available, such as flow charts,
     
 
     
+
+                
+
+#### 💡 vs.
+
+                
+
+                
+
+            
+
+            
     
 
         
@@ -1218,7 +1146,7 @@ Risk assessments highlight manufacturing process steps or room locations that ex
 
                     
 
-Tours of the facility and manufacturing operations using the process flow map are also recommended to collect information and determine the criticality factors relevant to the risk assessment being performed (see Table 4.3.1-1 and Table 4.3.1-2). Only the criticality factors that apply to the scope of the risk assessment should be selected.
+Tours of the facility and manufacturing operations using the process flow map are also recommended to collect information and determine the criticality factors relevant to the risk assessment being performed (see Table 4.3.1-1🔍 and Table 4.3.1-2🔍). Only the criticality factors that apply to the scope of the risk assessment should be selected.
 
                 
 
@@ -1903,7 +1831,7 @@ T4.3.1-1
 
                 
 
-## Table 4.3.1-1: Criticality Factors for Immediate Process Area
+## Table 4.3.1-1🔍: Criticality Factors for Immediate Process Area
 
                 
 
@@ -1920,169 +1848,16 @@ T4.3.1-1
 
                     
 
-### Table 4.3.1-1 — Examples of Criticality Factors for the Immediate Process Area for Mammalian Cell Culture
+### Table 4.3.1-1🔍 — Examples of Criticality Factors for the Immediate Process Area for Mammalian Cell Culture
 
                     
-                        
-                            
-                                
-                                
-                                
-                                
-                            
-| Process Step / Criticality Factor | High Risk | Medium Risk | Low Risk |
-| --- | --- | --- | --- |
-                        
-                        
-                            
-                                
-                            
-| GROUP 1: PROCESS STEP |
-                            
-                                ****
-                                
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-
-                                
-- 
-- 
-- 
-- 
-- 
-
-                                
-- 
-- 
-
-                            
-| Manufacturing Process Step | Critical manufacturing steps:                                                                              Final formulation                                         Seed inoculation                                         Cell-bank preparation                                         Vial-thawing and cell-splitting                                         Bead addition steps                                         Vector transduction                                         Kitting of parts to be sterilized | Media filtration                                         Spiking                                         Post-wash filtration                                         Aliquoting of samples                                         Equipment cool down | Equipment assemblies                                         Tubing welds |
-                            
-                                
-                            
-| GROUP 2: POTENTIAL CONTRIBUTORS TO CONTAMINATION |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Open, Functionally Closed, or Fully Closed System | Product exposed directly to the environment; open system connections | Open system connections with local protection (i.e., LFH/UDF) | Functionally or Fully Closed system (e.g., pressurized or integrity controlled); use of established closed connectors |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Preparation of Equipment/Materials | Equipment only cleaned and sanitized | Some equipment cleaned and sanitized; some parts cleaned and sterilized | All equipment cleaned and sterilized |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Complexity of Equipment Train/Process | Manual assembly or manual manipulations; high number of inputs into the system (manual or automated) | Semi-automated with some manual manipulation; medium number of inputs into the system | Completely automated system; low number of inputs into the system |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Length of Time Required to Perform the Critical Process Step / Operator Intervention | 4–24 hours of processing | < 4 hours of processing | < 30 minutes of processing |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Length of Time Operator is Required to be Physically Present in the Immediate ISO 5/Grade A Area | 4–24 hours | < 4 hours | < 30 minutes |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Classification of the Surrounding Area | ISO 9/Grade D or ISO 8/Grade C | ISO 8/Grade C | ISO 7/Grade B |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Surrounding Room Temperature | Warm (>25 °C) | Room Temperature (20–25 °C) | Cool (<20 °C) |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Level of Activity in Surrounding Room | Common batch-processing area (more than 1 operation occurring in room) | Support area processing; material/equipment prep area; storage of sterilized parts and equipment (if dedicated to the same process) | Dedicated processing area; storage of closed system vessels |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Number of Personnel in Surrounding Area | Maximum validated personnel load | More than one operator present, but not at the maximum validated load | Only one working operator present |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Personnel Gowning | Operators gowned in street clothes with a dedicated, nonsterile lab coat, sterile sleeves, and sterile gloves (or similar) | Operators gowned in scrubs or single-use lab coats, sterile sleeves, and sterile gloves (or similar) | Operators fully gowned in sterile gowns, masks, sleeves, and gloves |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Disinfection of the ISO 5/Grade A Area | Performed at a scheduled frequency (e.g., weekly or daily) regardless of the level of activity | Performed following each operation | Performed prior to and following each operation |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Frequency of Material Transfer into the ISO 5/Grade A Area | Multiple entrances and exits of materials into/out of the area throughout the duration of the process (e.g., filling of multiple containers) | Minimal movement of materials into/out of the area throughout the duration of the process (e.g., a single exchange) | All items placed into the area prior to start of work and no movement into/out of the area during process |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Disinfection of Manufacturing Materials to be Transferred into the Environment | Sanitized with 70% IPA | Sanitized with a disinfectant and/or sporicidal agent | All required materials sterilized and multi-bagged |
-                            
-                                
-                            
-| GROUP 3: UNUSUAL/UNEXPECTED SOURCES OF CONTAMINATION |
-                            
-                                ****
-                                
-- 
-- 
-- 
-
-                                
-                                
-                            
-| Unusual/Unexpected Sources of Contamination | Unexpected contamination detected in an area, such as:                                                                              Leaking equipment or utility connection                                         Breach in integrity of environment or unidentified leakage of other equipment or materials (e.g., bags, connections)                                         Damage to facility surfaces | N/A | N/A |
-                        
-                    
-
-                
 
                 
                 
 
                     
 
-### Table 4.3.1-1
+### Table 4.3.1-1🔍
 
                     
 
@@ -2205,7 +1980,7 @@ T4.3.1-2
 
                 
 
-## Table 4.3.1-2: Criticality Factors for Supporting Area
+## Table 4.3.1-2🔍: Criticality Factors for Supporting Area
 
                 
 
@@ -2221,136 +1996,15 @@ T4.3.1-2
 
                     
 
-### Table 4.3.1-2 — Examples of Criticality Factors for Supporting Area for Mammalian Cell Culture
+### Table 4.3.1-2🔍 — Examples of Criticality Factors for Supporting Area for Mammalian Cell Culture
 
                     
-                        
-                            
-                                
-                                
-                                
-                                
-                            
-| Criticality Factors | High Risk | Medium Risk | Low Risk |
-| --- | --- | --- | --- |
-                        
-                        
-                            
-                                
-                            
-| GROUP 1: PROCESS STEP |
-                            
-                                ****
-                                
-- 
-- 
-- 
-- 
-
-                                
-- 
-- 
-- 
-
-                                
-- 
-- 
-- 
-
-                            
-| Manufacturing Process Step | Critical manufacturing steps:                                                                              Final formulation                                         Seed inoculation                                         Cell bank prep                                         LFH/UDF | Downstream operations:                                                                              Purification                                         Sterilizer unload                                         Kitting of parts and materials to be sterilized | Upstream operations:                                                                              Cell culture                                         Media/buffer preparation                                         Support areas: Equipment cleaning, Airlocks, Gowning rooms, Hallways, Corridors, Control rooms |
-                            
-                                
-                            
-| GROUP 2: POTENTIAL CONTRIBUTORS TO CONTAMINATION |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Open, Functionally Closed, or Fully Closed System | Product exposed directly to the environment; open system connections | Open system connections with local protection (i.e., LFH/UDF); functionally closed with sanitization (risk level needs to be assessed based on the specifics of the set-up) | Functionally or fully closed system; functionally closed with sterilization (risk level needs to be assessed based on the specifics of the set-up) |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Preparation of Equipment/Materials | Cleaned equipment only; CIP of nondedicated equipment | All equipment cleaned; some parts sterilized; some dedicated, some nondedicated equipment | All equipment cleaned and sterilized; CIP/SIP; single-use consumables; all dedicated equipment |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Complexity of Equipment Train/Process | Manual assembly or manual manipulations; high number of inputs into the system (manual or automated) | Semi-automated with some manual manipulation; medium number of inputs into the system | Completely automated system; low number of inputs into the system |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Duration of Process Step | Multiple days of processing (>1 day) | 4 hours–24 hours of processing | Less than 4 hours of processing |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Process/Room Temperature | Warm (>25 °C) | Room temperature (20–25 °C) | Cold (2–8 °C) |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Humidity Control | Absent (no humidity control) | N/A | Present (humidity controlled) |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Presence of Water, Media Powder Residue, or Other Growth-promoting Materials in Surrounding Area | Open water source in area; sink/drain present; CIP/SIP area; tank draining; safety shower/eye wash station present | Water/fluid/buffer/product transported to and used in area | No transfer of fluids or solutions into area; closed system piped directly to drain with air break |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Level of Activity in Surrounding Area (Personnel) | Common batch processing area (more than 1 operation occurring in room) | Support area processing; material/equipment prep area; storage of sterilized parts and equipment | Dedicated processing area; storage of closed system vessels |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Traffic Routes to/from Surrounding Areas | High traffic areas (e.g., hallways and airlocks) | Thoroughfares and access route to processing area (e.g., control rooms) | Low traffic areas or dedicated processing room (e.g., final formulation) |
-                            
-                                
-                            
-| GROUP 3: UNUSUAL/UNEXPECTED SOURCES OF CONTAMINATION |
-                            
-                                ****
-                                
-- 
-- 
-- 
-
-                                
-                                
-                            
-| Unusual/Unexpected Sources of Contamination | Unexpected contamination detected in an area, such as:                                                                              Leaking equipment/utility connection                                         Breach in integrity of environment                                         Damage to facility surfaces | N/A | N/A |
-                        
-                    
-
-                
 
                 
 
                     
 
-### Table 4.3.1-2
+### Table 4.3.1-2🔍
 
                     
 
@@ -2440,7 +2094,7 @@ T4.3.2-1
 
                 
 
-## 4.3.2 Environmental Monitoring Risk Assessments & Table 4.3.2-1
+## 4.3.2 Environmental Monitoring Risk Assessments & Table 4.3.2-1🔍
 
                 
 
@@ -2464,51 +2118,13 @@ Risk assessments are used to provide rationale for EM locations and the frequenc
 
                     
 
-For each major process step/segment/room in the manufacturing process, the items listed in Table 4.3.2-1 may be assessed as risk control criteria to establish EM sample locations.
+For each major process step/segment/room in the manufacturing process, the items listed in Table 4.3.2-1🔍 may be assessed as risk control criteria to establish EM sample locations.
 
                     
 
-### Table 4.3.2-1 — Risk Criteria to Establish EM Sample Locations
+### Table 4.3.2-1🔍 — Risk Criteria to Establish EM Sample Locations
 
                     
-                        
-                            
-                                
-                                
-                            
-| Risk Rating | Sample Location Considerations |
-| --- | --- |
-                        
-                        
-                            
-                                
-                                ****
-- 
-- 
-
-                            
-| Low Risk | Areas with no exposure to product pathway                                                                              Traffic patterns                                         Vectors of contamination (things people touch) |
-                            
-                                
-                                ****
-- 
-- 
-
-                            
-| Medium Risk | Process equipment exteriors or surfaces that are close to the open operations                                                                              Traffic patterns                                         Vectors of contamination |
-                            
-                                
-                                ****
-- 
-- 
-- 
-
-                            
-| High Risk | Each critical manufacturing process                                                                              Traffic patterns                                         Vectors of contamination                                         Process equipment exteriors or surfaces that are close to the open operations with exposure to product pathway |
-                        
-                    
-
-                
 
                 
 
@@ -2560,39 +2176,11 @@ For each major process step/segment/room in the manufacturing process, the items
 
                     
 
-Based on the overall risk rating, the frequencies in Table 4.3.3-1 may be considered. However, based on historical data, different frequencies may be more appropriate. If there is no historical data (e.g., for a new facility), a more frequent monitoring schedule should be utilized until data is obtained to support the development of an appropriate monitoring schedule.
+Based on the overall risk rating, the frequencies in Table 4.3.3-1🔍 may be considered. However, based on historical data, different frequencies may be more appropriate. If there is no historical data (e.g., for a new facility), a more frequent monitoring schedule should be utilized until data is obtained to support the development of an appropriate monitoring schedule.
 
                     
 
-### Table 4.3.3-1 — Frequency of Monitoring
-
-                    
-                        
-                            
-                                
-                                
-                            
-| Risk Rating | Frequency of Monitoring |
-| --- | --- |
-                        
-                        
-                            
-                                
-                                
-                            
-| Low Risk | Bi-weekly or weekly |
-                            
-                                
-                                
-                            
-| Medium Risk | Weekly |
-                            
-                                
-                                
-                            
-| High Risk | Each time a critical operation is performed |
-                        
-                    
+### Table 4.3.3-1🔍 — Frequency of Monitoring
 
                     
 
@@ -2609,47 +2197,6 @@ EM is an important element in bioburden control strategies for environments used
                     
 
 ### 
-
-                    
-
-                        
-
-#### Table 4.3.3-1
-
-                        
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| High | | / |
-                                
-                                    
-                                    
-                                    
-                                
-| Medium | | |
-                                
-                                    
-                                    
-                                    
-                                
-| Low | | |
-                            
-                        
-
-                    
 
                     
 
@@ -2715,6 +2262,16 @@ EM is an important element in bioburden control strategies for environments used
 
         
 
+                        
+
+#### Table 4.3.3-1🔍
+
+                        
+
+                        
+
+                    
+
     
 
     
@@ -2772,14 +2329,6 @@ EM is an important element in bioburden control strategies for environments used
 
     
 
-    
-
-PDA Technical Report No. 13-2 (2020): Environmental Monitoring for Non-Sterile Pharmaceutical Manufacturing
-
-    
-
-Section 4 (Part A): Environmental Risk Assessment Framework & Criticality Factors • p6–p13
-
 ⇧
 
 ## Section 4b: Risk Assessment: Worked Examples (p14-p21)
@@ -2801,41 +2350,13 @@ PDA Technical Report No. 13-2 (2020) | p14–p21 + References
 
             
 
-Based on the overall risk rating, the frequencies in Table 4.3.3-1 may be considered. However, based on historical data, different frequencies may be more appropriate. If there is no historical data (e.g., for a new facility), a more frequent monitoring schedule should be utilized until data is obtained to support the development of an appropriate monitoring schedule.
+Based on the overall risk rating, the frequencies in Table 4.3.3-1🔍 may be considered. However, based on historical data, different frequencies may be more appropriate. If there is no historical data (e.g., for a new facility), a more frequent monitoring schedule should be utilized until data is obtained to support the development of an appropriate monitoring schedule.
 
             
 
-**Table 4.3.3-1 — Frequency of Monitoring**
+**Table 4.3.3-1🔍 — Frequency of Monitoring**
 
             
-                
-                    
-                        
-                        
-                    
-| Risk Rating | Frequency of Monitoring |
-| --- | --- |
-                
-                
-                    
-                        
-                        
-                    
-| Low Risk | Bi-weekly or weekly |
-                    
-                        
-                        
-                    
-| Medium Risk | Weekly |
-                    
-                        
-                        
-                    
-| High Risk | Each time a critical operation is performed |
-                
-            
-
-        
 
         
 
@@ -2997,126 +2518,8 @@ Each factor was assigned a weighting score of **0, 1, 3, or 5**, based on its pe
 
             
 
-**Table 4.4.2-1 — Criticality Factors for ISO 7 and ISO 8 Environment Process Steps**
+**Table 4.4.2-1🔍 — Criticality Factors for ISO 7 and ISO 8 Environment Process Steps**
 
-            
-
-            
-                
-                    
-                        
-                        
-                        
-                        
-                    
-| Criticality Factors | High Risk (5) | Medium Risk (3) | Low Risk (1) |
-| --- | --- | --- | --- |
-                
-                
-                    
-                        
-                    
-| Group 1: Process Step |
-                    
-                        ****
-                          
-  
-  
-  
-
-                          
-  
-  
-  
-
-                          
-  
-
-                    
-| Manufacturing Process Step | Critical manufacturing steps:• Final formulation• Seed inoculation• Cell bank prep• Laminar flow/UDF hood | Downstream operations:• Cell culture• Purification• Sterilizer unload• Kitting of sterilized parts and materials | Upstream operations:• Media/buffer preparation• Support areas (equipment cleaning & prep, airlocks, gowning rooms, hallways, corridors, control rooms) |
-                    
-                        
-                    
-| Group 2: Potential Contributors to Contamination |
-                    
-                        ****
-                        
-                          
-
-                          
-
-                    
-| Open, Functionally Closed, or Fully Closed System | Product exposed directly to the environment; open system connections | • Open system connections with local protection (LFH/UDF)• Functionally Closed with sanitization (risk level needs to be assessed based on specifics) | • Functionally or Fully Closed system• Functionally Closed with sterilization (risk level needs to be assessed based on specifics) |
-                    
-                        ****
-                          
-
-                        
-                          
-
-                    
-| Preparation of Equipment/Materials | • Cleaned equipment only• CIP of nondedicated equipment | All equipment cleaned; some parts sterilized, some dedicated equipment, some nondedicated | • All equipment cleaned and sterilized• CIP/SIP, single-use consumables, all dedicated equipment |
-                    
-                        ****
-                          
-
-                          
-
-                          
-
-                    
-| Complexity of Equipment Train/Process | • Manual assembly or manual manipulations• High number of inputs into the system (manual or automated) | • Semi-automated with some manual manipulation• Medium number of inputs into the system | • Completely automated system• Low number of inputs into the system |
-                    
-                        ****
-                        
-                        
-                        
-                    
-| Duration of Process Step | Multiple days of processing (>1 day) | 4–24 hours of processing | < 4 hours of processing |
-                    
-                        ****
-                        
-                        
-                        
-                    
-| Process/Room Temperature | Warm (>25°C) | Room temperature (20–25°C) | Cold (2–8°C) |
-                    
-                        ****
-                        
-                        
-                        
-                    
-| Humidity Control in Room | Absent | N/A | Present |
-                    
-                        ****
-                          
-  
-  
-  
-
-                        
-                          
-
-                    
-| Presence of Water, Media Powder Residue, or Other Growth-Promoting Materials in Surrounding Area | • Open water source in area• Sink/drain present• CIP/SIP area• Tank draining• Safety shower/eye wash station present | Water/fluid/buffer/product transported to and used in area | • No transfer of fluids or solutions into area• Closed system piped directly to drain with air break |
-                    
-                        ****
-                        
-                          
-  
-
-                          
-
-                    
-| Level of Activity in Surrounding Area (Personnel) | Common batch-processing area (>1 operation occurring in room) | • Support area processing• Material/equipment prep area• Storage of sterilized parts and equipment | • Dedicated processing area• Storage of closed system vessels |
-                    
-                        ****
-                        
-                        
-                        
-                    
-| Traffic Routes to and from Surrounding Areas | High traffic areas (e.g., hallways and airlocks) | Thoroughfares and access route to processing area (e.g., control rooms) | Low traffic areas or dedicated processing room (e.g., final formulation) |
-                
             
 
             
@@ -3127,7 +2530,7 @@ Each factor was assigned a weighting score of **0, 1, 3, or 5**, based on its pe
 
             
 
-## Table 4.4.2-1
+## Table 4.4.2-1🔍
 
             
 
@@ -3193,91 +2596,19 @@ Each factor was assigned a weighting score of **0, 1, 3, or 5**, based on its pe
 
             
 
-The total hazard score for each of the EM sample locations was ranked and then filtered by the **severity score** for the room (Table 4.4.2-2). Severity is the measure of the possible consequences of a hazard potentially resulting in product contamination. Low severity was assigned if product contamination was unlikely as the product was never present in the room. Medium severity was assigned if the product was present but was never exposed to the room environment. High severity was assigned if the product was present and could be exposed to the environment.
+The total hazard score for each of the EM sample locations was ranked and then filtered by the **severity score** for the room (Table 4.4.2-2🔍). Severity is the measure of the possible consequences of a hazard potentially resulting in product contamination. Low severity was assigned if product contamination was unlikely as the product was never present in the room. Medium severity was assigned if the product was present but was never exposed to the room environment. High severity was assigned if the product was present and could be exposed to the environment.
 
             
 
-**Table 4.4.2-2 — Risk Class Ranking Scheme**
-
-            
-                
-                    
-                        
-                        
-                        
-                        
-                    
-| Hazard Probability | Severity: Low (1) | Severity: Medium (2) | Severity: High (3) |
-| --- | --- | --- | --- |
-                
-                
-                    
-                        
-                        
-                        
-                        
-                    
-| High | Risk Class 2 | Risk Class 1 | Risk Class 1 |
-                    
-                        
-                        
-                        
-                        
-                    
-| Medium | Risk Class 3 | Risk Class 2 | Risk Class 2 |
-                    
-                        
-                        
-                        
-                        
-                    
-| Low | Risk Class 3 | Risk Class 3 | Risk Class 3 |
-                
-            
+**Table 4.4.2-2🔍 — Risk Class Ranking Scheme**
 
             
 
-The resulting risk class was then filtered by the **detection controls** (Table 4.4.2-3). Low detection is the use of the building monitoring system (e.g., HVAC, temperature monitoring systems) with no other means of detection. Medium detection includes the building monitoring system plus EM. High detection includes in-process product monitoring for contamination in addition to the building monitoring system and EM.
+The resulting risk class was then filtered by the **detection controls** (Table 4.4.2-3🔍). Low detection is the use of the building monitoring system (e.g., HVAC, temperature monitoring systems) with no other means of detection. Medium detection includes the building monitoring system plus EM. High detection includes in-process product monitoring for contamination in addition to the building monitoring system and EM.
 
             
 
-**Table 4.4.2-3 — Sampling Priority Designation**
-
-            
-                
-                    
-                        
-                        
-                        
-                        
-                    
-| Risk Class | Low Detection | Medium Detection | High Detection |
-| --- | --- | --- | --- |
-                
-                
-                    
-                        
-                        
-                        
-                        
-                    
-| Class 1 (High) | High Priority | High Priority | Medium Priority |
-                    
-                        
-                        
-                        
-                        
-                    
-| Class 2 (Medium) | High Priority | Medium Priority | Low Priority |
-                    
-                        
-                        
-                        
-                        
-                    
-| Class 3 (Low) | Medium Priority | Low Priority | Low Priority |
-                
-            
+**Table 4.4.2-3🔍 — Sampling Priority Designation**
 
             
 
@@ -3479,202 +2810,12 @@ Figure 4.4.3-1 — Warm Room X Layout and Monitoring Locations
 
         
 
-### Table 4.4.3-1 — Sample Site Location Details for Warm Room X
+### Table 4.4.3-1🔍 — Sample Site Location Details for Warm Room X
 
         
 
 Note: These are examples and do not describe all locations on the floor plan diagram. Scores shown are weighting scores assigned to each factor for each site (0, 1, 3, or 5).
 
-        
-
-        
-            
-                
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                
-| EM Sample Site Location | Temperature | Presence of Water / Growth Materials | Processing | Duration of Process Activity | Sanitization Frequency | Processing Step | Room Activity | Preparation of Equip. / Complexity | Grade / Excursions | EM Sample Type Indicator (Overall Hazard) |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-            
-            
-                
-                    ****
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                
-| Site 1: Active air, warm room, near roller bottle incubation, north corridor | High (5) | Low (1) | High (5) | High (5) | Low (1) | Upstream (3) | Low (1) | High (5) | ISO 8 (3) | High (5) |
-                
-                    ****
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                
-| Site 2: Active air, center of incubator | High (5) | Low (1) | High (5) | High (5) | Low (1) | Upstream (3) | Low (1) | High (5) | ISO 8 (3) | High (5) |
-                
-                    ****
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                
-| Site 3: Active air, roller bottle incubation, south incubator corridor | High (5) | Low (1) | High (5) | High (5) | Low (1) | Upstream (3) | Low (1) | High (5) | ISO 8 (3) | High (5) |
-                
-                    ****
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                
-| Site 1: Surface floor | High (5) | Low (1) | Low (1) | High (5) | Low (1) | Upstream (3) | Low (1) | Low (1) | ISO 8 (3) | Low (1) |
-                
-                    ****
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                
-| Site 11: Surface rack-1 | High (5) | Low (1) | High (5) | High (5) | Low (1) | Upstream (3) | Low (1) | High (5) | ISO 8 (3) | Medium (3) |
-                
-                    ****
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                
-| Site 15: Surface wall-1 | High (5) | Low (1) | Low (1) | High (5) | Low (1) | Upstream (3) | Low (1) | High (5) | ISO 8 (3) | Medium (3) |
-                
-                    ****
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                
-| Site 12: Surface UDF | High (5) | Medium (3) | High (5) | High (5) | Low (1) | Upstream (3) | Low (1) | High (5) | ISO 8 (3) | Medium (3) |
-                
-                    ****
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                
-| Site 13: Surface rack-2 | High (5) | Low (1) | Medium (3) | High (5) | Low (1) | Upstream (3) | Low (1) | Low (1) | ISO 8 (3) | Medium (3) |
-                
-                    ****
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                
-| Site 14: Surface wall-2 | High (5) | Low (1) | Medium (3) | High (5) | Low (1) | Upstream (3) | Low (1) | Low (1) | ISO 8 (3) | Medium (3) |
-                
-                    ****
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                
-| Site 21: Surface rack-3 | High (5) | Low (1) | High (5) | High (5) | Low (1) | Upstream (3) | Low (1) | High (5) | ISO 8 (3) | Medium (3) |
-                
-                    ****
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                
-| Site 9: Surface floor — south corridor | High (5) | Low (1) | Low (1) | High (5) | Low (1) | Upstream (3) | Low (1) | Low (1) | ISO 8 (3) | Low (1) |
-                
-                    ****
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                
-| Site 10: Surface floor — near entry and exit door | High (5) | Low (1) | Low (1) | High (5) | Low (1) | Upstream (3) | Low (1) | Low (1) | ISO 8 (3) | Medium (3) |
-            
         
 
         
@@ -3719,7 +2860,7 @@ The media, supplements, and containers used during the process are sterile. In a
 
             
 
-The EM program is designed to monitor manufacturing areas and ensure that the levels of environmental controls are maintained as specified in site SOPs and in the laboratory information management system. Using **FMEA** and following the risk assessment guidance methodology, an EM risk analysis was conducted to identify and quantify risks. The effort was intended to optimize the EM sample plans for media supplementation as well as to determine the appropriate ISO/Grade level needed. (See Table 4.3.1-1 for recommended classifications and types of activities.) Other risk tool methodology may be used depending on the specific process.
+The EM program is designed to monitor manufacturing areas and ensure that the levels of environmental controls are maintained as specified in site SOPs and in the laboratory information management system. Using **FMEA** and following the risk assessment guidance methodology, an EM risk analysis was conducted to identify and quantify risks. The effort was intended to optimize the EM sample plans for media supplementation as well as to determine the appropriate ISO/Grade level needed. (See Table 4.3.1-1🔍 for recommended classifications and types of activities.) Other risk tool methodology may be used depending on the specific process.
 
         
 
@@ -3792,132 +2933,13 @@ A risk tool was executed using appropriate methodology to evaluate contamination
 
             
 
-**Table 4.5.2-1 — Criticality Factors for the Media Supplementation Process**
-
-            
-                
-                    
-                        
-                        
-                        
-                        
-                    
-| Criticality Factors | High Risk (5) | Medium Risk (3) | Low Risk (1) |
-| --- | --- | --- | --- |
-                
-                
-                    
-                        
-                    
-| Group 1: Process Step |
-                    
-                        ****
-                        
-                          
-
-                        
-                    
-| Manufacturing Process Step: Media Supplementation | — | • Addition of supplements to media via pipetting performed in UDF                             • Transfer of sterile media and supplements into the UDF (containers are closed, and outsides of the containers are sanitized prior to transport into the UDF) | • Absence of contamination – rapid test method used at the end of process step |
-                
-            
+**Table 4.5.2-1🔍 — Criticality Factors for the Media Supplementation Process**
 
             
 
-**Table 4.5.2-2 — Criticality Factors for Potential Contributors to Contamination**
+**Table 4.5.2-2🔍 — Criticality Factors for Potential Contributors to Contamination**
 
             
-                
-                    
-                        
-                        
-                        
-                        
-                    
-| Criticality Factors | High Risk (5) | Medium Risk (3) | Low Risk (1) |
-| --- | --- | --- | --- |
-                
-                
-                    
-                        
-                    
-| Group 2: Potential Contributors to Contamination |
-                    
-                        ****
-                          
-  
-  
-
-                        
-                          
-  
-  
-
-                    
-| Open System | • Pipetting Step                             • Inadvertent touching of pipette or lid of containers via personnel gloved hand or sleeve                             • Leaning over open container, interruption of first air                             • EM performed | — | Functionally Closed or Fully Closed System:                             • Bottles during Incubation                             • Leak in a sterile roller bottle                             • Caps not closed appropriately/leaking |
-                    
-                        ****
-                        
-                        
-                        
-                    
-| Preparation of Equipment/Materials | — | — | • Only sterile single-use equipment and materials used |
-                    
-                        ****
-                          
-
-                        
-                        
-                    
-| Complexity of Equipment Train/Process | • Entire operation consists of manual pipetting (increased movement/handling of pipettes)                             • Under UDF, personnel gloves not sanitized properly | — | — |
-                    
-                        ****
-                        
-                        
-                        
-                    
-| Duration of Process Step | — | • Pipette Additions — Aliquoting into each roller bottle, lids replaced on containers between each entry; additions performed using a fresh pipette for each roller bottle | — |
-                    
-                        ****
-                        
-                        
-                        
-                    
-| Process/Room Temperature | — | — | Process incubation at 37°C (incubation is separate/closed) |
-                    
-                        ****
-                        
-                        
-                        
-                    
-| Humidity Control in Room | — | — | • Present |
-                    
-                        ****
-                        
-                        
-                          
-  
-  
-
-                    
-| Presence of Water / Growth Materials | — | — | • No water used in the manufacturing process                             • WFI or purified water used in the preparation of disinfectants/sanitizers                             • All "open" steps occur in UDF with no water present                             • No water drops in immediate manufacturing area |
-                    
-                        ****
-                        
-                        
-                        
-                    
-| Level of Activity in Surrounding Area | — | — | • Minimal activities occur in surrounding area during the process |
-                    
-                        ****
-                        
-                        
-                        
-                    
-| Traffic Routes To and From Surrounding Areas | — | — | • Minimal activities occur in surrounding area during the process; therefore, traffic minimized |
-                
-            
-
-        
 
         
 
@@ -3929,7 +2951,7 @@ A risk tool was executed using appropriate methodology to evaluate contamination
 
                 
 
-#### Table 4.5.2-1
+#### Table 4.5.2-1🔍
 
                 
 
@@ -3951,7 +2973,7 @@ A risk tool was executed using appropriate methodology to evaluate contamination
 
                 
 
-#### Table 4.5.2-2
+#### Table 4.5.2-2🔍
 
                 
 
@@ -4002,45 +3024,7 @@ Based on the risk assessment, a routine EM was defined as seen in Table 4.5.3-1.
 
             
 
-**Table 4.5.3-1 — Routine EM Program for Media Supplementation Process**
-
-            
-                
-                    
-                        
-                        
-                        
-                    
-| Monitoring Type | Details / Location | Timing / Frequency |
-| --- | --- | --- |
-                
-                
-                    
-                        ****
-                        
-                        
-                    
-| Personnel Monitoring | L-glove, R-glove, L-sleeve, R-sleeve at defined intervals in the media supplementation process (gloves and sleeves replaced if monitoring is performed prior to end of process) | At defined intervals during the process |
-                    
-                        ****
-                        
-                        
-                    
-| UDF Hood Surfaces | Left, middle, and right surfaces; rear wall | After process |
-                    
-                        ****
-                        
-                        
-                    
-| Total Particulate Count | UDF hood interior | Prior to start of process |
-                    
-                        ****
-                        
-                        
-                    
-| Active Air or Settle Plate | Within or adjacent to UDF operational zone | During process |
-                
-            
+**Table 4.5.3-1🔍 — Routine EM Program for Media Supplementation Process**
 
             
 
@@ -4052,54 +3036,7 @@ Personnel monitoring was determined to be the best indicator in detecting contam
 
             
 
-## Table 4.5.3-1 — EM
-
-            
-
-                
-
-#### 
-
-                
-
-                
-                    
-                        
-                            
-                            
-                            
-                        
-| --- | --- | --- |
-                    
-                    
-                        
-                            
-                            
-                            
-                        
-| | Total Particulate Count | UDF |
-                        
-                            
-                            
-                            
-                        
-| | / | |
-                        
-                            
-                            
-                            
-                        
-| | / | |
-                        
-                            
-                            
-                            
-                        
-| | UDF | UDF |
-                    
-                
-
-            
+## Table 4.5.3-1🔍 — EM
 
             
 
@@ -4128,6 +3065,16 @@ Personnel monitoring was determined to be the best indicator in detecting contam
     
 
     
+
+                
+
+#### 
+
+                
+
+                
+
+            
     
 
         
@@ -4283,17 +3230,5 @@ Personnel monitoring was determined to be the best indicator in detecting contam
         
 
     
-
-    
-
-PDA Technical Report No. 13-2 (2020): Fundamentals of an Environmental Monitoring Program
-
-    
-
-Annex 1: Environmental Monitoring of Facilities Manufacturing Low Bioburden Products
-
-    
-
-Educational reference material. All original text © Parenteral Drug Association, Inc.
 
 ⇧

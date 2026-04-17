@@ -16,7 +16,7 @@ ISPE Good Practice Guide: Single-Use Technology | p13 - p28
 
         
 
-This section lists the single-use products that are commonly used in pharmaceutical manufacturing facilities. Aligned with Figure 1.1, single-use products can be categorized as follows:
+This section lists the single-use products that are commonly used in pharmaceutical manufacturing facilities. Aligned with Figure 1.1🔍, single-use products can be categorized as follows:
 
         
 
@@ -358,59 +358,11 @@ ISPE Good Practice Guide: Single-Use Technology | p121 - p132
         
 
         
-            
-| Standard/Document | Title/Description |
-| --- | --- |
-            
-                
-| ICH Q1A–Q1F | Stability |
-                
-| ICH Q3A–Q3D | Impurities |
-                
-| ICH Q7 | Good Manufacturing Practice Guide for Active Pharmaceutical Ingredients |
-                
-| ICH Q8 | Pharmaceutical Development |
-                
-| ICH Q9 | Quality Risk Management |
-                
-| ICH Q10 | Pharmaceutical Quality System |
-            
-        
-
-        
 
         
 
 ### International Organization for Standardization (ISO) — Quality Management
 
-        
-
-        
-            
-| Standard | Title/Description |
-| --- | --- |
-            
-                
-| ISO 9000:2015 | Quality management systems – Fundamentals and vocabulary |
-                
-| ISO 9001:2015 | Quality management systems – Requirements |
-                
-| ISO 9004:2018 | Quality management – Guidance to achieve sustained success |
-                
-| ISO 10001:2018 | Customer satisfaction – Guidelines for codes of conduct |
-                
-| ISO 10002:2018 | Customer satisfaction – Guidelines for complaints handling |
-                
-| ISO 10005:2018 | Quality management – Guidelines for quality plans |
-                
-| ISO 10006:2017 | Quality management – Guidelines for quality management in projects |
-                
-| ISO 10012:2003 | Measurement management systems |
-                
-| ISO 10015:1999 | Quality management – Guidelines for training |
-                
-| ISO 19011:2018 | Guidelines for auditing management systems |
-            
         
 
         
@@ -422,28 +374,6 @@ ISPE Good Practice Guide: Single-Use Technology | p121 - p132
         
 
         
-            
-| Standard | Title/Description |
-| --- | --- |
-            
-                
-| ISO 10993-1:2018 | Biological evaluation – Part 1: Evaluation and testing within a risk management process |
-                
-| ISO 10993-3:2014 | Part 3: Tests for genotoxicity, carcinogenicity and reproductive toxicity |
-                
-| ISO 10993-4:2017 | Part 4: Selection of tests for interactions with blood |
-                
-| ISO 10993-5:2009 | Part 5: Tests for in vitro cytotoxicity |
-                
-| ISO 10993-6:2016 | Part 6: Tests for local effects after implantation |
-                
-| ISO 10993-10:2010 | Part 10: Tests for irritation and skin sensitization |
-                
-| ISO 10993-11:2017 | Part 11: Tests for systemic toxicity |
-            
-        
-
-        
 
         
 
@@ -452,54 +382,10 @@ ISPE Good Practice Guide: Single-Use Technology | p121 - p132
         
 
         
-            
-| Standard | Title/Description |
-| --- | --- |
-            
-                
-| ISO 11135:2014 | Sterilization – Ethylene oxide – Requirements for development, validation and routine control |
-                
-| ISO 11137-1:2006 | Sterilization – Radiation – Part 1: Requirements for development, validation and routine control |
-                
-| ISO 11137-2:2013 | Radiation – Part 2: Establishing the sterilization dose |
-                
-| ISO 11137-3:2017 | Radiation – Part 3: Guidance on dosimetric aspects |
-                
-| ISO 11138-1:2017 | Biological indicators – Part 1: General requirements |
-                
-| ISO 11138-2:2017 | Biological indicators – Part 2: For ethylene oxide sterilization |
-                
-| ISO 11607-1:2006 | Packaging for terminally sterilized medical devices – Part 1: Requirements |
-                
-| ISO 11737-1:2018 | Sterilization – Microbiological Methods – Part 1: Population of microorganisms on products |
-                
-| ISO 11737-2:2009 | Microbiological Methods – Part 2: Tests of sterility performed in validation |
-                
-| ISO 14161:2009 | Biological indicators – Guidance for selection, use and interpretation |
-            
-        
-
-        
 
         
 
 ### ISO — Cleanrooms & Other
-
-        
-
-        
-            
-| Standard | Title/Description |
-| --- | --- |
-            
-                
-| ISO 14644-1:2015 | Cleanrooms – Classification of air cleanliness by particle concentration |
-                
-| ISO 14644-8:2013 | Cleanrooms – Classification by chemical concentration (ACC) |
-                
-| ISO 14644-9:2012 | Cleanrooms – Classification of surface cleanliness by particle concentration |
-                
-| ISO 15747:2018 | Plastic containers for intravenous injections |
 
 ## Section 5: App 4: Risk Qualification Attributes (p133-p146)
 
