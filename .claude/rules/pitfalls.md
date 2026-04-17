@@ -97,6 +97,31 @@ Existing reports can be upgraded incrementally by re-generating individual repor
 
 **Within-file author bugs** (same id declared twice in one section file, e.g. TR46 `sec50-56`, ISPE-Vol7 `sec31`) are NOT handled by the prefixer — fix them at the source file level by removing the duplicate heading `id=`.
 
+## Fallback Rendering for Vector Graphics / Text Tables (Added 2026-04)
+
+`gmp_engine.py extract-figs` runs multiple passes per PDF:
+
+1. **Raster pass** — `doc.extract_image(xref)` for embedded images (JPEG/PNG).
+2. **Table pass** — `page.find_tables()` + `page.get_pixmap(clip=bbox)` for structured tables (all sources now, was previously PDA-only).
+3. **Fallback pass** — for any caption label (`Figure X.Y` / `Table X.Y`) on a page with no matching extraction, render the region via `page.get_pixmap(clip=...)` and save as `vec-p{page}-{idx}.png`.
+4. **Relaxed raster match** — pair still-unlabeled raster figures with remaining captions on the same page (ignores y-distance threshold).
+
+The fallback pass captures:
+- **Vector graphics** — PDF-native drawings (flowcharts, diagrams) that `get_images()` cannot see.
+- **Text-based tables** — tables composed of text and rules, no image objects.
+
+Region estimation:
+- **Figures**: render region from previous caption's bottom → current caption's bottom.
+- **Tables**: render region from current caption's top → next caption's top (or page bottom).
+
+Entries are marked `"render": "fallback"` in manifest for identification.
+
+## Non-PDA Table False Positive Filter (Added 2026-04)
+
+`find_tables()` runs on ALL sources, but FDA/ISO regulation PDFs often mis-identify body text paragraphs as tables (producing 5–13 uniform false positives per doc).
+
+**Filter rule**: for non-PDA sources, drop all tables without a matching caption label. PDA docs are exempt — they have legitimate unlabeled tables (e.g., TR43 defect catalog).
+
 ## Section Headings Must Be Bilingual, Bold & Aligned (Updated 2026-04-17)
 
 **Problem**: Section headings rendered flush-left against the page container while the two-column content below starts 1.5rem inside (`.left-column { padding: 1.5rem }`). Visually the title floated left of "原文 Original Text", looking detached. Older merged `-Complete.html` files also lacked `font-weight: 700`, so the title appeared thin.

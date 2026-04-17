@@ -1475,102 +1475,298 @@ def cmd_extract_figs(args):
                     if cap:
                         fig_e["caption"] = cap
 
-        # --- Table extraction (PDA documents) ---
-        if is_pda:
-            for page_num in range(len(doc)):
+        # --- Table extraction (all documents) ---
+        import concurrent.futures as _cf
+        for page_num in range(len(doc)):
+            try:
+                page = doc[page_num]
+                # Timeout find_tables() at 30s per page to avoid hangs
+                with _cf.ThreadPoolExecutor(max_workers=1) as _ex:
+                    _ft = _ex.submit(page.find_tables)
+                    found = _ft.result(timeout=30)
+            except (_cf.TimeoutError, Exception):
+                continue
+            if found is None or found.tables is None:
+                continue
+            # Extract caption lines once per page for table matching
+            tbl_captions = _extract_caption_lines(page)
+            tbl_used = set()
+            for tbl_idx, table in enumerate(found.tables):
+                if table.row_count < MIN_TBL_ROWS:
+                    continue
+                bbox = table.bbox
+                tw = bbox[2] - bbox[0]
+                th = bbox[3] - bbox[1]
+                if tw < MIN_TBL_WIDTH or th < MIN_TBL_HEIGHT:
+                    continue
+                # Match label above table FIRST so we can extend clip
+                tbl_label, tbl_caption, cap_y_top, cap_y_bottom, tbl_cap_x0, tbl_cap_x1 = _match_caption(
+                    tbl_captions, bbox[3], "above", ["table", "tbl"], tbl_used,
+                    y_top=bbox[1])
+
+                # Render table region with padding; extend upward to include heading
+                # Also widen horizontally to include caption text bounds
+                clip = fitz.Rect(bbox)
+                clip_left = clip.x0
+                clip_right = clip.x1
+                if tbl_cap_x0 is not None:
+                    clip_left = min(clip_left, tbl_cap_x0)
+                if tbl_cap_x1 is not None:
+                    clip_right = max(clip_right, tbl_cap_x1)
+                clip.x0 = max(0, clip_left - 15)
+                if cap_y_top is not None and cap_y_top < bbox[1]:
+                    clip.y0 = max(0, cap_y_top - 15)
+                else:
+                    clip.y0 = max(0, clip.y0 - 15)
+                clip.x1 = min(page.rect.width, clip_right + 15)
+                clip.y1 = min(page.rect.height, clip.y1 + 15)
+                mat = fitz.Matrix(TBL_ZOOM, TBL_ZOOM)
                 try:
-                    page = doc[page_num]
-                    found = page.find_tables()
+                    pix = page.get_pixmap(matrix=mat, clip=clip)
                 except Exception:
                     continue
-                # Extract caption lines once per page for table matching
-                tbl_captions = _extract_caption_lines(page)
-                tbl_used = set()
-                for tbl_idx, table in enumerate(found.tables):
-                    if table.row_count < MIN_TBL_ROWS:
-                        continue
-                    bbox = table.bbox
-                    tw = bbox[2] - bbox[0]
-                    th = bbox[3] - bbox[1]
-                    if tw < MIN_TBL_WIDTH or th < MIN_TBL_HEIGHT:
-                        continue
-                    # Match label above table FIRST so we can extend clip
-                    tbl_label, tbl_caption, cap_y_top, cap_y_bottom, tbl_cap_x0, tbl_cap_x1 = _match_caption(
-                        tbl_captions, bbox[3], "above", ["table", "tbl"], tbl_used,
-                        y_top=bbox[1])
+                tbl_name = f"tbl-p{page_num + 1}-{tbl_idx + 1}.png"
+                tbl_path = figs_dir / tbl_name
+                pix.save(str(tbl_path))
 
-                    # Render table region with padding; extend upward to include heading
-                    # Also widen horizontally to include caption text bounds
-                    clip = fitz.Rect(bbox)
-                    clip_left = clip.x0
-                    clip_right = clip.x1
-                    if tbl_cap_x0 is not None:
-                        clip_left = min(clip_left, tbl_cap_x0)
-                    if tbl_cap_x1 is not None:
-                        clip_right = max(clip_right, tbl_cap_x1)
-                    clip.x0 = max(0, clip_left - 15)
-                    if cap_y_top is not None and cap_y_top < bbox[1]:
-                        clip.y0 = max(0, cap_y_top - 15)
-                    else:
-                        clip.y0 = max(0, clip.y0 - 15)
-                    clip.x1 = min(page.rect.width, clip_right + 15)
-                    clip.y1 = min(page.rect.height, clip.y1 + 15)
-                    mat = fitz.Matrix(TBL_ZOOM, TBL_ZOOM)
+                # Auto-rotate portrait tables to landscape for readability
+                tbl_w, tbl_h = pix.width, pix.height
+                if tbl_h > tbl_w * 1.3:
                     try:
-                        pix = page.get_pixmap(matrix=mat, clip=clip)
+                        from PIL import Image
+                        img_pil = Image.open(str(tbl_path))
+                        if img_pil.mode == "CMYK":
+                            img_pil = img_pil.convert("RGB")
+                        img_pil = img_pil.rotate(90, expand=True)
+                        img_pil.save(str(tbl_path))
+                        tbl_w, tbl_h = img_pil.size
+                    except Exception as e:
+                        print(f"    [WARN] rotate failed {tbl_name}: {e}")
+
+                tbl_size = tbl_path.stat().st_size
+
+                tbl_entry = {
+                    "file": tbl_name,
+                    "page": page_num + 1,
+                    "width": tbl_w,
+                    "height": tbl_h,
+                    "size_kb": round(tbl_size / 1024, 1),
+                    "type": "table",
+                }
+                if tbl_label:
+                    tbl_entry["label"] = tbl_label
+                if tbl_caption:
+                    tbl_entry["caption"] = tbl_caption
+                figures.append(tbl_entry)
+                total_tables += 1
+                total_extracted += 1
+
+            # Post-page sweep: pair unmatched tables with remaining captions
+            page_tbls_unlabeled = [f for f in figures
+                                   if f["page"] == page_num + 1
+                                   and f["type"] == "table"
+                                   and "label" not in f]
+            unused_tbl_captions = [
+                (i, y, _t, _b, lbl, cap, _cx0, _cx1) for i, (y, _t, _b, lbl, cap, _cx0, _cx1) in enumerate(tbl_captions)
+                if i not in tbl_used
+                and any(lbl.lower().startswith(p) for p in ("table", "tbl"))
+            ]
+            if page_tbls_unlabeled and len(page_tbls_unlabeled) == len(unused_tbl_captions):
+                for tbl_e, (_, _, _, _, lbl, cap, _, _) in zip(page_tbls_unlabeled, unused_tbl_captions):
+                    tbl_e["label"] = lbl
+                    if cap:
+                        tbl_e["caption"] = cap
+
+        # --- Filter false-positive tables in non-PDA sources ---
+        # find_tables() in FDA/ISO regulation PDFs often mis-identifies
+        # body text paragraphs as tables. PDA docs have known unlabeled
+        # tables (e.g., TR43 defect catalog) so they're exempt.
+        if not is_pda:
+            before_fp = len(figures)
+            removed_fp = [f for f in figures
+                          if f.get("type") == "table" and "label" not in f]
+            figures = [f for f in figures
+                       if not (f.get("type") == "table" and "label" not in f)]
+            removed_fp_cnt = before_fp - len(figures)
+            if removed_fp_cnt:
+                print(f"    [FP-FILTER] Removed {removed_fp_cnt} unlabeled tables (non-PDA false positives)")
+                total_tables -= removed_fp_cnt
+                total_extracted -= removed_fp_cnt
+                for rf in removed_fp:
+                    try:
+                        (figs_dir / rf["file"]).unlink()
                     except Exception:
-                        continue
-                    tbl_name = f"tbl-p{page_num + 1}-{tbl_idx + 1}.png"
-                    tbl_path = figs_dir / tbl_name
-                    pix.save(str(tbl_path))
+                        pass
 
-                    # Auto-rotate portrait tables to landscape for readability
-                    tbl_w, tbl_h = pix.width, pix.height
-                    if tbl_h > tbl_w * 1.3:
-                        try:
-                            from PIL import Image
-                            img_pil = Image.open(str(tbl_path))
-                            if img_pil.mode == "CMYK":
-                                img_pil = img_pil.convert("RGB")
-                            img_pil = img_pil.rotate(90, expand=True)
-                            img_pil.save(str(tbl_path))
-                            tbl_w, tbl_h = img_pil.size
-                        except Exception as e:
-                            print(f"    [WARN] rotate failed {tbl_name}: {e}")
+        # --- Pass 3: Fallback rendering for unmatched captions ---
+        # Detect pages where a figure/table caption exists but no
+        # corresponding embedded image or table was extracted (vector
+        # graphics, text-only tables drawn with PDF operators).
+        # Render the page region as a screenshot using get_pixmap().
+        captured_labels = {f["label"] for f in figures if "label" in f}
+        # Also strip "(cont.)" suffixes to match base labels
+        captured_base = set()
+        for lbl in captured_labels:
+            captured_base.add(lbl)
+            if lbl.endswith(" (cont.)"):
+                captured_base.add(lbl[:-8])
+        total_fallback = 0
+        for page_num in range(len(doc)):
+            if page_num < SKIP_FIRST_PAGES:
+                continue
+            try:
+                page = doc[page_num]
+            except Exception:
+                continue
+            fb_captions = _extract_caption_lines(page)
+            if not fb_captions:
+                continue
+            # Find captions on this page that have no corresponding extraction
+            fb_idx = 0
+            for cap_i, (y_mid, cy_top, cy_bottom, label, caption, cx0, cx1) in enumerate(fb_captions):
+                if label in captured_base:
+                    continue
+                # Determine type from label prefix
+                lbl_lower = label.lower()
+                is_table_cap = any(lbl_lower.startswith(p) for p in ("table", "tbl"))
+                is_fig_cap = any(lbl_lower.startswith(p) for p in ("fig", "figure"))
+                if not is_table_cap and not is_fig_cap:
+                    continue
 
-                    tbl_size = tbl_path.stat().st_size
+                # Estimate clip region:
+                # - For figures: render region ABOVE the caption
+                # - For tables: render region BELOW the caption
+                pw = page.rect.width
+                ph = page.rect.height
+                margin = 30  # page margin
 
-                    tbl_entry = {
-                        "file": tbl_name,
-                        "page": page_num + 1,
-                        "width": tbl_w,
-                        "height": tbl_h,
-                        "size_kb": round(tbl_size / 1024, 1),
-                        "type": "table",
-                    }
-                    if tbl_label:
-                        tbl_entry["label"] = tbl_label
-                    if tbl_caption:
-                        tbl_entry["caption"] = tbl_caption
-                    figures.append(tbl_entry)
+                if is_fig_cap:
+                    # Find the next text element above this caption to bound
+                    # the figure. Use previous caption or page top as upper bound.
+                    upper_bound = margin
+                    for prev_i in range(cap_i - 1, -1, -1):
+                        prev_y_bottom = fb_captions[prev_i][2]  # cy_bottom
+                        upper_bound = prev_y_bottom + 5
+                        break
+                    clip_rect = fitz.Rect(
+                        margin, max(0, upper_bound),
+                        pw - margin, min(ph, cy_bottom + 6),
+                    )
+                    ftype = "figure"
+                else:
+                    # Table: find next caption or page bottom as lower bound
+                    lower_bound = ph - margin
+                    for next_i in range(cap_i + 1, len(fb_captions)):
+                        next_y_top = fb_captions[next_i][1]  # cy_top
+                        lower_bound = next_y_top - 5
+                        break
+                    clip_rect = fitz.Rect(
+                        margin, max(0, cy_top - 6),
+                        pw - margin, min(ph, lower_bound),
+                    )
+                    ftype = "table"
+
+                # Skip tiny regions (likely false positives)
+                if clip_rect.height < 40 or clip_rect.width < 100:
+                    continue
+
+                try:
+                    mat = fitz.Matrix(TBL_ZOOM, TBL_ZOOM)
+                    pix = page.get_pixmap(matrix=mat, clip=clip_rect)
+                except Exception:
+                    continue
+
+                fb_idx += 1
+                vec_name = f"vec-p{page_num + 1}-{fb_idx}.png"
+                vec_path = figs_dir / vec_name
+                pix.save(str(vec_path))
+
+                vec_w, vec_h = pix.width, pix.height
+                vec_size = vec_path.stat().st_size
+
+                # Auto-rotate portrait to landscape
+                if vec_h > vec_w * 1.3:
+                    try:
+                        from PIL import Image
+                        img_pil = Image.open(str(vec_path))
+                        if img_pil.mode == "CMYK":
+                            img_pil = img_pil.convert("RGB")
+                        img_pil = img_pil.rotate(90, expand=True)
+                        img_pil.save(str(vec_path))
+                        vec_w, vec_h = img_pil.size
+                        vec_size = vec_path.stat().st_size
+                    except Exception:
+                        pass
+
+                vec_entry = {
+                    "file": vec_name,
+                    "page": page_num + 1,
+                    "width": vec_w,
+                    "height": vec_h,
+                    "size_kb": round(vec_size / 1024, 1),
+                    "type": ftype,
+                    "label": label,
+                    "render": "fallback",
+                }
+                if caption:
+                    vec_entry["caption"] = caption
+                figures.append(vec_entry)
+                captured_base.add(label)
+                total_fallback += 1
+                total_extracted += 1
+                if ftype == "table":
                     total_tables += 1
-                    total_extracted += 1
 
-                # Post-page sweep: pair unmatched tables with remaining captions
-                page_tbls_unlabeled = [f for f in figures
-                                       if f["page"] == page_num + 1
-                                       and f["type"] == "table"
-                                       and "label" not in f]
-                unused_tbl_captions = [
-                    (i, y, _t, _b, lbl, cap, _cx0, _cx1) for i, (y, _t, _b, lbl, cap, _cx0, _cx1) in enumerate(tbl_captions)
-                    if i not in tbl_used
-                    and any(lbl.lower().startswith(p) for p in ("table", "tbl"))
-                ]
-                if page_tbls_unlabeled and len(page_tbls_unlabeled) == len(unused_tbl_captions):
-                    for tbl_e, (_, _, _, _, lbl, cap, _, _) in zip(page_tbls_unlabeled, unused_tbl_captions):
-                        tbl_e["label"] = lbl
-                        if cap:
-                            tbl_e["caption"] = cap
+        if total_fallback:
+            print(f"    [FALLBACK] Rendered {total_fallback} vector/text items via page pixmap")
+
+        # --- Pass 4: Relaxed raster caption matching ---
+        # Try matching unlabeled raster images with unmatched captions at 2x
+        # threshold distance. Handles cases where figures span a large area
+        # and the caption is far from the image bbox.
+        relaxed_labels = {f["label"] for f in figures if "label" in f}
+        relaxed_base = set()
+        for lbl in relaxed_labels:
+            relaxed_base.add(lbl)
+            if lbl.endswith(" (cont.)"):
+                relaxed_base.add(lbl[:-8])
+        relaxed_matched = 0
+        for page_num in range(len(doc)):
+            if page_num < SKIP_FIRST_PAGES:
+                continue
+            page_figs_nolabel = [f for f in figures
+                                 if f["page"] == page_num + 1
+                                 and "label" not in f
+                                 and f.get("type") == "figure"
+                                 and f.get("render") != "fallback"]
+            if not page_figs_nolabel:
+                continue
+            try:
+                page = doc[page_num]
+            except Exception:
+                continue
+            rx_captions = _extract_caption_lines(page)
+            rx_used = set()
+            for fig_e in page_figs_nolabel:
+                # Estimate y position from filename (fig-pN-M format)
+                # or use relaxed threshold matching
+                for ci, (y_mid, _cy0, _cy1, lbl, cap, _cx0, _cx1) in enumerate(rx_captions):
+                    if ci in rx_used:
+                        continue
+                    if lbl in relaxed_base:
+                        continue
+                    if not any(lbl.lower().startswith(p) for p in ("fig", "figure")):
+                        continue
+                    # Accept any figure caption on the same page
+                    fig_e["label"] = lbl
+                    if cap:
+                        fig_e["caption"] = cap
+                    rx_used.add(ci)
+                    relaxed_base.add(lbl)
+                    relaxed_matched += 1
+                    break
+        if relaxed_matched:
+            print(f"    [RELAXED] Matched {relaxed_matched} raster images with relaxed caption search")
 
         # --- Filter out front-matter decorative images ---
         # Pages 2-6 often contain cover collages, TOC art, logos with no
@@ -1659,11 +1855,14 @@ def cmd_extract_figs(args):
             }
             fig_n = sum(1 for f in figures if f.get("type") == "figure")
             tbl_n = sum(1 for f in figures if f.get("type") == "table")
+            vec_n = sum(1 for f in figures if f.get("render") == "fallback")
             parts = []
             if fig_n:
                 parts.append(f"{fig_n} fig")
             if tbl_n:
                 parts.append(f"{tbl_n} tbl")
+            if vec_n:
+                parts.append(f"{vec_n} vec")
             print(f"  [OK] {rid}: {' + '.join(parts)}")
         else:
             if figs_dir.exists() and not any(figs_dir.iterdir()):
