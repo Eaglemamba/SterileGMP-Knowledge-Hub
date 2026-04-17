@@ -198,25 +198,6 @@ Box 1. Gloved Fingertip and Thumb Sampling Procedures
         
 
         
-            
-                
-                
-            
-| Sampling Occasion | GFT Action Level (cfu, total both hands) |
-| --- | --- |
-            
-                
-                
-            
-| After garbing (initial & ongoing) | >0 = FAIL |
-            
-                
-                
-            
-| After media-fill testing | >3 = FAIL |
-        
-
-        
 
         
 
@@ -246,27 +227,6 @@ Sterile compounding facilities must be designed, outfitted, and maintained prope
 
 **4.1.1 Air quality standards:** The ISO standards for air quality in controlled environments are referenced throughout this chapter.
 
-        
-
-        
-            
-                
-                
-            
-| ISO Class | Particle Count per Cubic Meter (≥0.5 µm, dynamic) |
-| --- | --- |
-            
-| 3 | 35.2 |
-            
-| 4 | 352 |
-            
-| 5 | 3,520 |
-            
-| 6 | 35,200 |
-            
-| 7 | 352,000 |
-            
-| 8 | 3,520,000 |
         
 
         
@@ -411,21 +371,6 @@ Box 5. Active Air Sampling Procedures for Viable Airborne Monitoring
         
 
         
-            
-                
-                
-            
-| ISO Class | Air Sampling Action Level (cfu/m³) |
-| --- | --- |
-            
-| 5 (PEC) | >1 |
-            
-| 7 (Buffer Room) | >10 |
-            
-| 8 (Anteroom) | >100 |
-        
-
-        
 
         
 
@@ -470,21 +415,6 @@ Surface sampling frequency:
 
         
 
-        
-
-        
-            
-                
-                
-            
-| ISO Class | Surface Sampling Action Level (cfu/media device) |
-| --- | --- |
-            
-| 5 (PEC) | >3 |
-            
-| 7 (Buffer Room) | >5 |
-            
-| 8 (Anteroom) | >50 |
         
 
         

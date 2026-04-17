@@ -371,58 +371,6 @@ Relevant CQAs and CPPs should be defined. They will typically be determined by t
         
 
         
-            
-                
-                
-                
-            
-| # | Quality Attribute | Specification / Guideline |
-| --- | --- | --- |
-            
-                
-                
-                
-            
-| 1 | Gas Purity | Applicable for inert gases such as Nitrogen, as per USP/EU Monograph |
-            
-                
-                
-                
-            
-| 2 | Moisture (Water Aerosols or Vapor) | Non-sterile or sterile applications — NMT 2.5 g/kg (−40°F/−40°C dewpoint) |
-            
-                
-                
-                
-            
-| 3 | Hydrocarbons (Oil Content) | NMT 0.5 mg/m³ |
-            
-                
-                
-                
-            
-| 4 | Other Chemical Impurities (as applicable) | Based on generation technology and/or USP/EU Monograph |
-            
-                
-                
-                
-            
-| 5 | Microbial Count (Non-sterile Applications) | Guideline limits based on product bioburden; typical NMT 5 cfu/m³ |
-            
-                
-                
-                
-            
-| 6 | Microbial Count (Sterile Applications) | Per viable particle requirements for Grade area (Grade A, A/B, B, or C) |
-            
-                
-                
-                
-            
-| 7 | Particle Count (Viable and Non-viable) | Typically equal to the at-rest condition of the area served |
-        
-
-        
 
         
 
@@ -514,27 +462,6 @@ The air supplied by the system is -40°F (-40°C) atmospheric PDP. As shown in T
         
 
         
-            Table 10.1: Dewpoint Temperature Conversion to Relative Humidity
-            
-                
-                
-                
-                
-                
-            
-| Dewpoint °F (°C) | Saturated Vapor Pressure (mb) | % RH equivalent | Saturated Vapor Pressure at 6 bar (mb) | % RH at 6 bar, 21°C |
-| --- | --- | --- | --- | --- |
-            
-| -40 (-40) | 0.2 | 0.8 | 1.2 | 4.8 |
-            
-| -4 (-20) | 1.3 | 5.2 | 7.8 | 31.2 |
-            
-| 32 (0) | 6.1 | 24.4 | 36.6 | 146.4 |
-            
-| 68 (20) | 23.3 | 93.2 | 139.8 | 559.2 |
-        
-
-        
 
         
 
@@ -603,14 +530,6 @@ Briefly describe the project scope and any related product requirements. Briefly
 ### 3.0 Abbreviations, Acronyms, and Definitions
 
         
-            
-| Term | Definition |
-| --- | --- |
-            
-| [Term] | [Definition] |
-        
-
-        
 
 ### 4.0 Responsibilities
 
@@ -658,46 +577,6 @@ Indicate the "type" of each User Requirement as one of the following:
 
         
 
-        
-
-        
-            
-                
-                
-                
-            
-| Designation | Description | Type |
-| --- | --- | --- |
-            
-| 1 | Minimum Pressure Requirements |  |
-            
-| 2 | Flow Requirements |  |
-            
-| 3 | Hydrocarbons Limits |  |
-            
-| 4 | Particulate/Microbial limits |  |
-            
-| 5 | Moisture Limits |  |
-            
-| 6 | Purity Requirements |  |
-            
-| 7 | Operating Hours |  |
-            
-| 8 | Maintenance Requirements (Redundancy) |  |
-            
-| 9 | Sustainability/Energy Recovery |  |
-            
-| 10 | Alarm Requirements |  |
-            
-| 11 | Monitoring Requirements |  |
-            
-| 12 | Available Utilities |  |
-            
-| 13 | Available Equipment Locations |  |
-            
-| 14 | Preferred Vendors – Equipment/Instrumentation |  |
-            
-| 15 | Other Facility Requirements |  |
         
 
         
