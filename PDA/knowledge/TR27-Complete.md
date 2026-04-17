@@ -258,46 +258,6 @@ Assurance of package integrity is primarily concerned with:
                         
 
                         
-                            
-                                
-                                    
-                                    
-                                
-| | CCI |
-| --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                
-                                
-                                    ****
-                                    ****
-                                
-| Containment | |
-                                
-                                    ****
-                                    ****
-                                
-| Microbial barrier | |
-                                
-                                    ****
-                                    ****
-                                
-| Headspace | |
-                            
-                        
-
-                    
 
                     
 
@@ -522,93 +482,12 @@ English definitions and Traditional Chinese equivalents from this section
 ## Key Terms — English Definitions
 
                     
-                        
-                            
-                                
-                                
-                            
-| Term | Definition (TR27 Context) |
-| --- | --- |
-                        
-                        
-                            
-                                ****
-                                
-                            
-| Container/Closure Integrity (CCI) | The ability of a container-closure system to prevent loss of contents and ingress of contaminants, including microorganisms. |
-                            
-                                ****
-                                
-                            
-| Package Integrity | The collective ability of all elements of a product package to perform as a nonporous barrier system throughout the product's life cycle. |
-                            
-                                ****
-                                
-                            
-| Sterility | The absence of viable microorganisms; maintained in part by an intact container-closure system for sterile drug products. |
-                            
-                                ****
-                                
-                            
-| Leak | A pathway allowing transfer of gas or liquid through a material or interface; can be microscopic and undetectable by visual inspection. |
-                            
-                                ****
-                                
-                            
-| Seal | Used generically in TR27 to refer to any type of closure system or interface that provides the product barrier function. |
-                        
-                    
-
-                
 
                 
 
                     
 
 ## —
-
-                    
-                        
-                            
-                                
-                                
-                                
-                            
-| --- | --- | --- |
-                        
-                        
-                            
-                                ****
-                                ****
-                                
-                            
-| Container/Closure Integrity (CCI) | | CCI |
-                            
-                                ****
-                                ****
-                                
-                            
-| Package Integrity | | CCI |
-                            
-                                ****
-                                ****
-                                
-                            
-| Sterility | | |
-                            
-                                ****
-                                ****
-                                
-                            
-| Leak | | macromicro |
-                            
-                                ****
-                                ****
-                                
-                            
-| Seal | | TR27 |
-                        
-                    
 
                     
 
@@ -639,14 +518,6 @@ English definitions and Traditional Chinese equivalents from this section
         
 
     
-
-    
-
-PDA Technical Report No. 27 (1998): Pharmaceutical Package Integrity
-
-    
-
-Section 0: Preface & Introduction | SterileGMP Knowledge Hub
 
 ↑
 
@@ -907,47 +778,6 @@ These on-line in-process controls, in combination with well-designed product/pro
 #### 
 
                         
-                            
-                                
-                                    
-                                    
-                                
-| Tool | Application |
-| --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                
-| Vision System | |
-                                
-                                    
-                                    
-                                
-| Gas Flow Meter | |
-                                
-                                    
-                                    
-                                
-| // | |
-                                
-                                    
-                                    
-                                
-| Torque Monitor | |
-                            
-                        
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
 
                     
 
@@ -1055,39 +885,6 @@ The acceptance criteria for such tests should be based on the critical variable 
 
                         
 
-#### 
-
-                        
-                            
-                                
-                                    
-                                    
-                                
-| --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                
-| 100% | |
-                                
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                
-                            
-                        
-
-                    
-
-                    
-
-                        
-
 #### — Indirect Integrity Tests
 
                         
@@ -1157,44 +954,6 @@ Leakage is often described in units of standard cubic centimeters of gas (air) t
                     
 
 ### Leak Rate Scale Reference
-
-                    
-                        
-                            
-                                
-                                
-                            
-| Phenomenon | Approximate Leak Rate |
-| --- | --- |
-                        
-                        
-                            
-                                
-                                
-                            
-| Audible sound from orifice | ~1 scc/s |
-                            
-                                
-                                
-                            
-| Visible liquid flow detectable by human eye | ~0.1 scc/s |
-                            
-                                
-                                
-                            
-| No visible water leakage (dry air at same pressure) | ~10−3 scc/s |
-                            
-                                
-                                
-                            
-| Water cannot penetrate (liquid-borne microbial cutoff) | <10−3 scc/s |
-                            
-                                
-                                
-                            
-| Helium spectroscopy detection limit | ~10−11 scc/s |
-                        
-                    
 
                     
 
@@ -1390,46 +1149,6 @@ A test method's sensitivity can be expressed in various units of measure. Optimu
 
                         
 
-#### vs. — Sensitivity vs. Specificity
-
-                        
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-                                    ****
-                                    
-                                    
-                                
-| | | 10−11 scc/s |
-                                
-                                    ****
-                                    
-                                    
-                                
-| | | 10−6~10−3 scc/s |
-                                
-                                    ****
-                                    
-                                    
-                                
-                            
-                        
-
-                    
-
-                    
-
-                        
-
 #### 
 
                         
@@ -1442,49 +1161,6 @@ A test method's sensitivity can be expressed in various units of measure. Optimu
 
                         
 
-                        
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-| / | | |
-                                
-                                    
-                                    
-                                    
-                                
-| | / | |
-                                
-                                    
-                                    
-                                    
-                                
-                            
                         
 
                     
@@ -1504,6 +1180,16 @@ A test method's sensitivity can be expressed in various units of measure. Optimu
             
 
         
+
+                        
+
+#### vs. — Sensitivity vs. Specificity
+
+                        
+
+                        
+
+                    
 
     
 
@@ -1709,144 +1395,18 @@ Section 8 provides summaries of several of the most commonly used physical metho
 English Terms
 
                     
-                        
-                            
-                                
-                                
-                            
-| Term | Definition (Brief) |
-| --- | --- |
-                        
-                        
-                            
-                                ****
-                                
-                            
-| Package Integrity | Ability of a package to prevent leakage and maintain product protection |
-                            
-                                ****
-                                
-                            
-| Leak Rate | Mass/volume flow of gas or liquid through a defect per unit time |
-                            
-                                ****
-                                
-                            
-| In-Process Control | Monitoring critical process parameters to ensure output meets specifications |
-                            
-                                ****
-                                
-                            
-| Durability Assessment | Evaluation of package performance under simulated storage/distribution stresses |
-                            
-                                ****
-                                
-                            
-| Test Method Sensitivity | Smallest leak rate detectable by a given method under defined conditions |
-                            
-                                ****
-                                
-                            
-| Critical Leak Size | ~10−3 scc/s — threshold below which liquid and microbes cannot penetrate |
-                            
-                                ****
-                                
-                            
-| Tortuous Path Barrier | Leakage-limiting mechanism of closures dependent on path geometry and material fit |
-                            
-                                ****
-                                
-                            
-| Margin of Safety | Buffer between the established leakage specification and actual process extremes |
-                        
-                    
-
-                
 
                 
 
                     
 
                     
-                        
-                            
-                                
-                                
-                                
-                            
-| --- | --- | --- |
-                        
-                        
-                            
-                                
-                                ****
-                                
-                            
-| Package Integrity | | |
-                            
-                                
-                                ****
-                                
-                            
-| Leak Rate | | / |
-                            
-                                
-                                ****
-                                
-                            
-| In-Process Control | | |
-                            
-                                
-                                ****
-                                
-                            
-| Durability Assessment | | / |
-                            
-                                
-                                ****
-                                
-                            
-| Test Method Sensitivity | | |
-                            
-                                
-                                ****
-                                
-                            
-| Critical Leak Size | | ~10−3 scc/s — |
-                            
-                                
-                                ****
-                                
-                            
-| Tortuous Path Barrier | | |
-                            
-                                
-                                ****
-                                
-                            
-| Margin of Safety | | |
-                        
-                    
-
-                
 
             
 
         
 
     
-
-    
-
-PDA Technical Report No. 27 (1998): Pharmaceutical Package Integrity
-
-    
-
-SterileGMP Knowledge Hub — Bilingual Educational Series
-
-    
-
-Sections 3 (3.1–3.3), 4, and 5 (5.1–5.2) — Package Integrity Assurance, Specifications & Test Method Selection
 
 ⇧
 
@@ -2043,78 +1603,6 @@ Another disadvantage is that microbial challenge tests must often be done using 
 
                         
 
-#### — vs.
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-| | | 10⁻⁹ std cc/s |
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-                            
-                        
-
-                    
-
-                    
-
-                        
-
 #### vs.
 
                         
@@ -2226,65 +1714,6 @@ There is no standard liquid immersion microbial challenge test, but the followin
 
                         
 
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-| | / | |
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-                            
-                        
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
-
                     
 
                 
@@ -2292,6 +1721,16 @@ There is no standard liquid immersion microbial challenge test, but the followin
             
 
         
+
+                        
+
+#### 
+
+                        
+
+                        
+
+                    
 
     
 
@@ -2364,49 +1803,6 @@ There are many variables that affect the outcome of airborne microbial challenge
 
                         
 
-#### Airborne Challenge Test
-
-                        
-
-                        
-                            
-                                
-                                    
-                                    
-                                
-| --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                
-| | / |
-                            
-                        
-
-                    
-
-                    
-
-                        
-
 #### vs.
 
                         
@@ -2428,6 +1824,16 @@ There are many variables that affect the outcome of airborne microbial challenge
             
 
         
+
+                        
+
+#### Airborne Challenge Test
+
+                        
+
+                        
+
+                    
 
     
 
@@ -2585,58 +1991,6 @@ Liquid chemical tracer tests provide simple pass-fail results; either the tracer
 
                         
 
-#### vs.
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-| --- | --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-| ① | | | |
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-| ② | | | |
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-| ③ | | | |
-                                
-                                    
-                                    
-                                    
-                                    ****
-                                
-| ④ | | | —— |
-                            
-                        
-
-                        
-
-                    
-
-                    
-
-                        
-
 #### 
 
                         
@@ -2654,6 +2008,16 @@ Liquid chemical tracer tests provide simple pass-fail results; either the tracer
             
 
         
+
+                        
+
+#### vs.
+
+                        
+
+                    
+
+                    
 
     
 
@@ -3067,174 +2431,12 @@ In-process Control
                     
 
                     
-                        
-                            
-                                
-                                
-                            
-| Term | Definition |
-| --- | --- |
-                        
-                        
-                            
-                                ****
-                                
-                            
-| Total leakage and permeation | This refers to the need to detect, qualitatively or quantitatively, the total leakage and permeation. |
-                            
-                                ****
-                                
-                            
-| Leak location | In this case, the source of leak in the container system is sought. |
-                            
-                                ****
-                                
-                            
-| Compression or friction fit closure | A closure mechanism effected by the physical contact of two materials forced against each other, such as a rubber stopper on a glass vial. |
-                            
-                                ****
-                                
-                            
-| Thermal/adhesive bond | A bond formed by thermal fusion of two materials (e.g., a plastic laminate heat seal) or by the use of an intermediate adhesive. |
-                            
-                                ****
-                                
-                            
-| Contiguous container | A package formed from a single material (e.g., a glass or plastic ampoule). |
-                            
-                                ****
-                                
-                            
-| Tortuous path dependent closures | A barrier to airborne microorganisms accomplished primarily via a convoluted pathway to the product (e.g., a crimp-sealed aluminum tube, or a screw-thread closure). |
-                            
-                                ****
-                                
-                            
-| Microbial barrier | The selected method is used to demonstrate that the package system is an effective barrier against microbial ingress. In the case of physical detection methods, correlation between microbial ingress and the physical method is needed. |
-                            
-                                ****
-                                
-                            
-| Product leakage | The method is used to demonstrate that product is contained by the package. |
-                            
-                                ****
-                                
-                            
-| Rarefied gas atmosphere | The method is used to demonstrate that a controlled environment is maintained in the package headspace. |
-                            
-                                ****
-                                
-                            
-| Vacuum retention | The method demonstrates the maintenance of a vacuum in the package headspace. |
-                            
-                                ****
-                                
-                            
-| In-process control | The selected leak test or process control method is used to demonstrate that a manufacturing unit operation or series of operations is "in control." A correlation must exist between process control and product quality. |
-                            
-                                ****
-                                
-                            
-| In-process parameter controls | These are manufacturing parameters which can be controlled to increase the probability of satisfactory package integrity. |
-                        
-                    
-
-                
 
                 
 
                     
 
-### 
-
-                    
-
-                        
-
-#### 
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| Total Leakage & Permeation | | |
-                                
-                                    
-                                    
-                                    
-                                
-| Leak Location | | |
-                                
-                                    
-                                    
-                                    
-                                
-| Compression/Friction Fit | / | + |
-                                
-                                    
-                                    
-                                    
-                                
-| Thermal/Adhesive Bond | / | |
-                                
-                                    
-                                    
-                                    
-                                
-| Contiguous Container | | / |
-                                
-                                    
-                                    
-                                    
-                                
-| Tortuous Path Closures | | |
-                                
-                                    
-                                    
-                                    
-                                
-| Microbial Barrier | | |
-                                
-                                    
-                                    
-                                    
-                                
-| Product Leakage | | |
-                                
-                                    
-                                    
-                                    
-                                
-| Rarefied Gas Atmosphere | | |
-                                
-                                    
-                                    
-                                    
-                                
-| Vacuum Retention | | |
-                                
-                                    
-                                    
-                                    
-                                
-| In-process Control | | → |
-                                
-                                    
-                                    
-                                    
-                                
-| In-process Parameter Controls | | |
+###
 
 ## Section 3: Leak Test Methods (8.1–8.18) (p15-p42)
 
@@ -3722,28 +2924,6 @@ Vacuum is applied to packages in Tracer Probe, Hood, and Inside-Out methods.
 ```
 ```
 
-                        
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
-                            
-| | | / |
-| --- | --- | --- |
-                            
-| Tracer Probe | | / |
-                            
-| Hood | | |
-                            
-| Detector Probe | | / |
-                            
-| Inside-Out | | |
                         
 
                     
@@ -4286,24 +3466,6 @@ Applicable to all pharmaceutical packages that do **not** rely on a tortuous pat
                     
 
 ### 8.5 —
-
-                    
-
-                        
-
-#### 
-
-                        
-                            
-| --- | --- | --- |
-                            
-| | / | |
-                            
-                            
-| | (AAS) | |
-                        
-
-                    
 
                     
 
@@ -6363,258 +5525,6 @@ PDA TR27 Section 8.1–8.18 — Quantitative/Qualitative · Destructive/Non-dest
             
 
                 
-                    
-                        
-                            
-                              
-
-                              
-
-                              
-
-                              
-
-                              
-
-                              
-
-                        
-| Method | Quant / Qual/ | Destructive | Relative Sensitivity | Test Time | Package Stress | Key Application |
-| --- | --- | --- | --- | --- | --- | --- |
-                    
-                    
-                        
-                            **  
-**
-                              
-
-                            
-                            
-                              
-
-                              
-
-                            
-                        
-| 8.1 Dye Immersion | Qualitative | Yes | Moderate | Minutes–Hours | Immersion pressure | Ampoules, vials / |
-                        
-                            **  
-**
-                              
-
-                            
-                            
-                            
-                              
-
-                            
-                        
-| 8.2 Electrical Conductivity | Qualitative | Yes | Moderate-High | Seconds–Minutes | Electrolyte immersion | Hermetic seals |
-                        
-                            **  
-**
-                              
-
-                            
-                            
-                              
-
-                              
-
-                            
-                        
-| 8.3 Helium Leak Detection | Quantitative | No | Very High | Minutes | Pressure differential | Small leaks, metal/glass |
-                        
-                            **  
-**
-                              
-
-                            
-                            
-                            
-                              
-
-                            
-                        
-| 8.4 High Voltage Leak Detection | Qualitative | No | Moderate | <1 second | High voltage spark | Plastic containers |
-                        
-                            **  
-**
-                              
-
-                            
-                            
-                            
-                            
-                            
-                        
-| 8.5 Laser-Based Gas Headspace | Quantitative | No | High | <1 second | None | Lyophilized, gas-filled / |
-                        
-                            **  
-**
-                              
-
-                            
-                            
-                            
-                              
-
-                            
-                        
-| 8.6 Liquid Bubble Emission | Qualitative | No | Low-Moderate | Seconds–Minutes | Pressure differential | Pressurized packages |
-                        
-                            **  
-**
-                              
-
-                            
-                            
-                            
-                              
-
-                            
-                        
-| 8.7 Liquid Tracer | Qualitative | Yes | Moderate | Hours–Days | Pressure/immersion/ | Porous seals, pouches |
-                        
-                            **  
-**
-                              
-
-                            
-                            
-                            
-                              
-
-                            
-                        
-| 8.8 Microbial Challenge | Qualitative | Yes | Moderate | Days–Weeks | Biological exposure | Sterile barriers |
-                        
-                            **  
-**
-                            
-                            
-                            
-                            
-                              
-
-                            
-                        
-| 8.9 Pressure Differential (General) | Both | No | Moderate-High | Seconds–Minutes | Pressure differential | General containers |
-                        
-                            **  
-**
-                              
-
-                            
-                            
-                            
-                            
-                            
-                        
-| 8.10 Residual Gas Ionization | Qualitative | No | Moderate | <1 second | HV spark | Vacuum-sealed |
-                        
-                            **  
-**
-                              
-
-                            
-                            
-                            
-                            
-                            
-                        
-| 8.11 Tracer Gas | Quantitative | No | High | Hours–Days | None | Gas-headspace, permeation / |
-                        
-                            **  
-**
-                              
-
-                            
-                            
-                            
-                              
-
-                            
-                        
-| 8.12 Ultrasonic Gas Flow | Qualitative | No | Low-Moderate | Instantaneous | Squeezing/surfactant/ | Pressurized/flexible / |
-                        
-                            **  
-**
-                              
-
-                            
-                            
-                            
-                            
-                            
-                        
-| 8.13 Ultrasonic Imaging | Qualitative | No | Moderate-High | <1 second | None | Seal defects, pouches |
-                        
-                            **  
-**
-                            
-                            
-                            
-                            
-                              
-
-                            
-                        
-| 8.14 Vacuum/Pressure Decay (Diff.) | Both | No | High | <1s – Minutes | Differential pressure | General pharma packages |
-                        
-                            **  
-**
-                            
-                            
-                            
-                            
-                            
-                            
-                        
-| 8.15 Vacuum/Pressure Retention/ | Both | Yes* * | Moderate | Seconds | Piercing | Lyophilized, vacuum-sealed |
-                        
-                            **  
-**
-                              
-
-                            
-                            
-                            
-                              
-
-                            
-                        
-| 8.16 Visual Inspection | Qualitative | No | Low | <1s – Minutes | Optional stress/ | All packages |
-                        
-                            **  
-**
-                              
-
-                            
-                            
-                            
-                              
-
-                            
-                        
-| 8.17 Volumetric Gas Flow | Quantitative | No | Moderate | Seconds | Differential pressure | Deformable packages, orifices |
-                        
-                            **  
-**
-                              
-
-                            
-                            
-                            
-                              
-
-                            
-                        
-| 8.18 Weight Loss/Gain/ | Quantitative | No | Moderate | Days–Weeks | Env. extremes | All packages, shelf-life |
-                    
-                
-
-            
 
             
 
@@ -6632,54 +5542,6 @@ PDA TR27 Section 8.1–8.18 — Quantitative/Qualitative · Destructive/Non-dest
                     
 
 **Method 8.14** can be implemented in four distinct configurations. Understanding the differences is critical for method selection and validation:
-
-                    
-                        
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| Configuration | Applied to | Leak Indicator | Max Pressure | Sensitivity |
-| --- | --- | --- | --- | --- |
-                        
-                        
-                            
-                                ****
-                                
-                                
-                                
-                                
-                            
-| Vacuum Rise (Absolute) | External chamber evacuated | Pressure rises in chamber | 1 atm limit | Moderate |
-                            
-                                ****
-                                
-                                
-                                
-                                
-                            
-| Vacuum Rise (Differential) | Test vs. reference package in vacuum | Differential pressure rise | 1 atm limit | Higher |
-                            
-                                ****
-                                
-                                
-                                
-                                
-                            
-| Pressure Decay (Absolute) | Positive pressure into package | Pressure drops over time | >1 atm possible | Higher than vacuum rise |
-                            
-                                ****
-                                
-                                
-                                
-                                
-                            
-| Pressure Decay (Differential) | Test vs. reference package pressurized | Differential pressure drop | >1 atm possible | Highest |
-                        
-                    
 
                     
 
@@ -7259,67 +6121,6 @@ Complete Citation List • 56 References • pp. 43–47
 
             
 
-            
-
-            
-                
-                    
-                        
-                        
-                        
-                    
-| --- | --- | --- |
-                
-                
-                    
-                        
-                        
-                        
-                    
-| #2 | British Standards BS 3263:1960 | |
-                    
-                        
-                        
-                        
-                    
-| #14 | European Pharmacopoeia V1.2.3.1 | EP |
-                    
-                        
-                        
-                        
-                    
-| #28 | ISO/DIS 11607 (1995) | ISO |
-                    
-                        
-                        
-                        
-                    
-| #29 | ISO 8362-2 (1988) | ISO |
-                    
-                        
-                        
-                        
-                    
-| #63–66 | USP 23 <71> <661> <671> <1211> | |
-                    
-                        
-                        
-                        
-                    
-| #67 | USP PF <1207> (1997) | CCI TR27 |
-                    
-                        
-                        
-                        
-                    
-| #36 | FDA BAM 22 | FDA |
-                    
-                        
-                        
-                        
-                    
-| #25 | HIMA Report 78-411 (1979) | |
-                
             
 
             

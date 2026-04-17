@@ -23,30 +23,6 @@ This applies to vaccines, blood products, plasma-derived therapies, allergenic s
         
 
             "Biological products and combination products that include biological product constituent parts must comply with all applicable requirements in parts 600 through 680."
-        
-
-        
-            
-| Part | Title | Primary Scope | CDMO Relevance |
-| --- | --- | --- | --- |
-            ****
-| 600 | Biological Products: General | Establishment controls, deviation management, postmarket | ★★★ Direct |
-            ****
-| 601 | Licensing | BLA applications, supplements, change management | ★★★ Direct |
-            ****
-| 610 | General Biological Products Standards | Sterility, purity, potency, identity, labeling, lot release | ★★★ Direct |
-            ****
-| 606 | CGMP — Blood & Blood Components | Blood manufacturing controls | ★ Peripheral |
-            ****
-| 607 | Registration — Blood Products | Blood establishment registration | ★ Peripheral |
-            ****
-| 630 | Requirements — Blood & Blood Products | Donor eligibility, testing | ★ Peripheral |
-            ****
-| 640 | Additional Standards — Blood Components | Component labeling, storage, identity | ★ Peripheral |
-            ****
-| 660 | Additional Standards — Diagnostic Substances | IVD reagents | ★ Peripheral |
-            ****
-| 680 | Additional Standards — Miscellaneous | Allergenics | ★ Peripheral |
 
 ## Part 1: Part 600 — Establishment Standards & General Requirements (§§ 600.2–600.90)
 
@@ -63,29 +39,6 @@ This applies to vaccines, blood products, plasma-derived therapies, allergenic s
         
 
 Key definitions governing all of Subchapter F:
-
-        
-            
-| Term | Definition (§ 600.3) |
-| --- | --- |
-            ****
-| Lot (§ x) | "That quantity of uniform material identified by the manufacturer as having been thoroughly mixed in a single vessel." |
-            ****
-| Filling (§ y) | Final containers identical and filled from same bulk lot without integrity-affecting changes. |
-            ****
-| Manufacture (§ u) | Steps in product propagation including "filling, testing, labeling, packaging, and storage." |
-            ****
-| Distributed (§ hh) | Biological product leaving manufacturer's control. |
-            ****
-| Potency (§ s) | "The specific ability or capacity of the product...to effect a given result." |
-            ****
-| Purity (§ r) | Relative freedom from extraneous matter, moisture, volatile/pyrogenic substances. |
-            ****
-| Safety (§ p) | "The relative freedom from harmful effect to persons...when prudently administered." |
-            ****
-| Specification (§ kk) | "The quality standard (i.e., tests, analytical procedures, and acceptance criteria)." |
-            ****
-| Supplement (§ gg) | Request approving changes in approved license applications. |
 
 ## Part 2: Part 601 — Biologics Licensing (BLA) (§§ 601.2–601.95)
 

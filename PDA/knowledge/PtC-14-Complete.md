@@ -140,56 +140,6 @@ Although risk group classification depends on localities, the definition is gene
 
                         
 
-#### → BSL
-
-                        
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| | BSL | ATMP |
-| --- | --- | --- |
-                            
-                            
-                                
-                                    ****
-                                    
-                                    
-                                
-| RG 1 | BSL-1 | |
-                                
-                                    ****
-                                    
-                                    
-                                
-| RG 2 | BSL-2 | LVVAAV |
-                                
-                                    ****
-                                    
-                                    
-                                
-| RG 3 | BSL-3 | HIV PtC-14 |
-                                
-                                    ****
-                                    
-                                    
-                                
-| RG 4 | BSL-4 | PtC-14 |
-                            
-                        
-
-                        
-
-                    
-
-                    
-
-                        
-
 #### 
 
                         
@@ -233,6 +183,18 @@ Although risk group classification depends on localities, the definition is gene
             
 
             
+
+                        
+
+#### → BSL
+
+                        
+
+                        
+
+                    
+
+                    
             
 
                 
@@ -418,140 +380,6 @@ PtC-14 focuses on facilities operating at BSL-1 and BSL-2, which cover the major
 ### BSL-1 vs. BSL-2
 
                     
-
-                        
-
-#### BSL-1 BSL-2
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| | BSL-1 | BSL-2 |
-| --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-| BSC | | |
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-| | | BSL-1+ |
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-                            
-                        
-
-                    
-
-                    
-
-                        
-
-#### ATMP BSL
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-| ATMP | | BSL | |
-| --- | --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-| CAR-T Cell Therapy | LVV | BSL-2 | RCV |
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-| AAV Gene Therapy | AAV | BSL-2 | RG |
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-| MSC Therapy | | BSL-1/2 | →BSL-1→BSL-2 |
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-| TCR-T Cell Therapy | | BSL-2 | → RCV |
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-| TEP | + | BSL-1 | |
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-| OV | | BSL-2+ | → |
-                            
-                        
-
-                    
-
-                
 
             
 
@@ -943,23 +771,6 @@ This integrated approach aligns with ICH Q9 quality risk management principles, 
             
 
         
-
-    
-
-    
-    
-
-        
-
-**PDA PtC-14: Points to Consider for the Manufacturing of ATMPs — Facility Design**
-
-        
-
-Topic 1: Risk Management | Q1.1–Q1.2 | Pages 10–14
-
-        
-
-© 2025 Parenteral Drug Association, Inc. — Educational commentary in Traditional Chinese for internal learning purposes.
 
     
 
@@ -1647,49 +1458,6 @@ The increased cleanliness requirement is due to the fact that hybrid processes m
 
                         
 
-#### 
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-| --- | --- | --- | --- |
-                            
-                            
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                
-| | Grade A (with Grade B background) | BSC | |
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                
-| | Grade A + Grade BBSC Grade DIsolator | BSC Closed Isolator | / |
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                
-| | Grade C | SUS | |
-                            
-                        
-
-                    
-
-                    
-
-                        
-
 #### — Integrity Testing
 
                         
@@ -2126,46 +1894,6 @@ When designing a production site for ATMPs, essential design considerations incl
 
                         
 
-#### HVAC
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| | | ATMP/ |
-| --- | --- | --- |
-                            
-                            
-                                
-                                    ****
-                                    
-                                    
-                                
-| | HEPA H14Grade A/B | HEPABSL-2 |
-                                
-                                    ****
-                                    
-                                    
-                                
-| | | BSL Bubble/Sink |
-                                
-                                    ****
-                                    
-                                    
-                                
-| | Grade B: 20–40 ACHGrade A: | BSL-2 BSL ≥10 ACH |
-                            
-                        
-
-                    
-
-                    
-
-                        
-
 #### HEPA
 
                         
@@ -2212,54 +1940,6 @@ When designing a production site for ATMPs, essential design considerations incl
                     
 
 ### 
-
-                    
-
-                        
-
-#### PAL vs. MAL
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| | PAL | MAL |
-| --- | --- | --- |
-                            
-                            
-                                
-                                    ****
-                                    
-                                    
-                                
-| | / | / |
-                                
-                                    ****
-                                    
-                                    
-                                
-| | | MAL |
-                                
-                                    ****
-                                    
-                                
-                                
-                                    ****
-                                    
-                                    
-                                
-                                
-                                    ****
-                                    
-                                    
-                                
-                            
-                        
-
-                    
 
                     
 
@@ -2643,50 +2323,6 @@ One particular risk in healthcare settings is related to handling competency. He
 ### Topic 2 Summary — Key Requirements at a Glance
 
                     
-                        
-                            
-                                
-                                
-                                
-                            
-| Question | Core Requirement | Key Document/Concept |
-| --- | --- | --- |
-                        
-                        
-                            
-                                ****
-                                
-                                
-                            
-| Q2.1 | Four-flow separation; inside-out containment strategy; inactivate before clean | CCS; Contamination Control Strategy |
-                            
-                                ****
-                                
-                                
-                            
-| Q2.2 | Open = Grade A; Hybrid = Grade A/B or Grade D; Closed = Grade C (if integrity-tested) | System classification matrix |
-                            
-                                ****
-                                
-                                
-                            
-| Q2.3 | Min. 10 Pa differential between adjacent spaces; Bubble/Sink design for potent products; MAL/PAL interlocks with 4–5 ACH timer | EU GMP Annex 1; Pressure Map |
-                            
-                                ****
-                                
-                                
-                            
-| Q2.4 | HEPA + BIBO design; MAL ≠ PAL; no open drains; chemical compatibility from design stage; waste deactivation before exit | HVAC Design; CCS; BSL requirements |
-                            
-                                ****
-                                
-                                
-                            
-| Q2.5 | GMO local regulations; hospital collaboration; 30-day post-administration contact precautions; manufacturer must provide guidance | IBC; GMO regulations; Post-market risk management |
-                        
-                    
-
-                
 
                 
 
@@ -2757,18 +2393,6 @@ One particular risk in healthcare settings is related to handling competency. He
         
 
     
-
-    
-
-PDA Points to Consider No. 14 — Manufacturing of ATMPs: Facility Design (Part 1)
-
-    
-
-Topic 2: Facilities | Pages 15–25 | Q2.1–Q2.5
-
-    
-
-Licensed to Kuo, Li-Hung / Amaran Biotechnology, Inc. — Educational Use Only. © 2025 Parenteral Drug Association, Inc.
 
 ⇧
 
@@ -3517,53 +3141,6 @@ PDA PtC-14, p26 | Distillation requirement, product-contact validation, biofilm 
 
                         
 
-#### WFI vs. ATMP
-
-                        
-                            
-                                
-                                
-                                
-                            
-| --- | --- | --- |
-                            
-                                
-                                
-                                
-                            
-| | WFI | |
-                            
-                                
-                                
-                                
-                            
-| | WFI | |
-                            
-                                
-                                
-                                
-                            
-| | WFI | |
-                            
-                                
-                                
-                                
-                            
-| | PW | |
-                            
-                                
-                                
-                                
-                            
-| | PW | |
-                        
-
-                    
-
-                    
-
-                        
-
 #### CCS WFI
 
                         
@@ -3879,49 +3456,6 @@ PDA PtC-14, p27 | Inert overlay, sterile filtration, asphyxiation risk, classifi
 
                         
 
-#### N₂ CO₂
-
-                        
-
-                        
-                            
-                                
-                                
-                                
-                            
-| | N₂ | CO₂ |
-| --- | --- | --- |
-                            
-                                
-                                
-                                
-                            
-| | 0.97 | 1.53 |
-                            
-                                
-                                
-                                
-                            
-                            
-                                
-                                
-                                
-                            
-                            
-                                
-                                
-                                
-                            
-                        
-
-                        
-
-                    
-
-                    
-
-                        
-
 #### N₂ Source vs. Terminal
 
                         
@@ -3963,6 +3497,18 @@ PDA PtC-14, p27 | Inert overlay, sterile filtration, asphyxiation risk, classifi
 
         
 
+                        
+
+#### N₂ CO₂
+
+                        
+
+                        
+
+                    
+
+                    
+
     
 
     
@@ -3999,63 +3545,6 @@ All six utility subsystems: primary risk, safety monitoring, and validation requ
 
 ### Six Utility Subsystems at a Glance
 
-                    
-                        
-                            
-                                
-                                
-                                
-                                
-                            
-| Utility System | Primary Safety Risk | Key Monitoring Requirement | Validation Approach |
-| --- | --- | --- | --- |
-                        
-                        
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Gaseous Disinfection | Chemical agent escape; BSL containment breach | Room integrity test; residual level post-cycle | Validation + EM Performance Qualification |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| CO₂ Distribution | Asphyxiation (O₂ displacement) | Fixed room O₂ sensor + personal O₂ monitor | Risk-based qualification; microbial/particulate test |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Purified Water | Biofilm; disinfectant efficacy failure | Routine sampling (generation + distribution) | IQ/OQ/PQ; ongoing monitoring |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| WFI | Endotoxin; biofilm; cross-contamination | Point-of-use sampling per CCS; routine testing | Full validation; distillation or equivalent |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Liquid Nitrogen | Asphyxiation + cryogenic burn; cell bank loss | Fixed O₂ sensor + personal monitor; PPE stations | CoA from supplier; backup equipment qualified |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Nitrogen Gas | Asphyxiation (no warning); cross-contamination | Fixed O₂ sensor + personal monitor; buddy system | Source + terminal sterile filtration if product contact |
-                        
-                    
-
                       
 
                     
@@ -4063,78 +3552,6 @@ All six utility subsystems: primary risk, safety monitoring, and validation requ
 ### Personnel Safety Equipment Summary
 
                     
-                        
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| Safety Measure | CO₂ | LN₂ | N₂ | VHP/ClO₂ |
-| --- | --- | --- | --- | --- |
-                        
-                        
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| Fixed room O₂ monitor | ✓ | ✓ | ✓ | — |
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| Personal O₂ sensor | ✓ | ✓ | ✓ | — |
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| Buddy system / man-down | ✓ | ✓ | ✓ | — |
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| Cryogenic PPE station | — | ✓ | — | — |
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| First-aid station | — | ✓ | — | — |
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| Room airtightness test | — | — | — | ✓ |
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| Leak isolation means | ✓ | ✓ | ✓ | ✓ |
-                        
-                    
-
-                
 
                 
                 
@@ -4344,80 +3761,6 @@ Practical application of Q3.1 utility design principles in real CDMO contexts
 ### Cross-Reference: Q3.1 to Decision Hierarchy
 
                     
-                        
-                            
-                                
-                                
-                                
-                            
-| Q3.1 Requirement | Decision Priority | Consequence of Non-Compliance |
-| --- | --- | --- |
-                        
-                        
-                            
-                                
-                                
-                                
-                            
-| O₂ monitoring for CO₂/LN₂/N₂ | #1 Operator Safety | Personnel asphyxiation / fatality |
-                            
-                                
-                                
-                                
-                            
-| Gaseous disinfection airtightness | #1 Operator Safety | Chemical agent + BSL breach |
-                            
-                                
-                                
-                                
-                            
-| LN₂ cryogenic PPE stations | #1 Operator Safety | Severe frostbite injury |
-                            
-                                
-                                
-                                
-                            
-| LN₂ backup equipment for cell banks | #2 Patient Safety | Loss of irreplaceable patient cells |
-                            
-                                
-                                
-                                
-                            
-| Cross-contamination prevention (DBB) | #2 Patient Safety | Patient identity mix-up |
-                            
-                                
-                                
-                                
-                            
-| WFI biofilm prevention | #2 Patient Safety | Endotoxin contamination |
-                            
-                                
-                                
-                                
-                            
-| N₂ terminal sterile filtration | #3 Product Quality | Microbial contamination of product |
-                            
-                                
-                                
-                                
-                            
-| CO₂ continuous supply (switchover) | #3 Product Quality | Cell death / batch loss |
-                            
-                                
-                                
-                                
-                            
-| VHP residual level validation | #4 Regulatory | FDA 483 observation |
-                            
-                                
-                                
-                                
-                            
-| Pipe labeling (all systems) | #5 Business | GMP deviation; audit finding |
-                        
-                    
-
-                
 
                 
 
@@ -4502,18 +3845,6 @@ Practical application of Q3.1 utility design principles in real CDMO contexts
         
 
     
-
-    
-
-PDA Points to Consider No. 14 — Facilities and Equipment Considerations for ATMPs
-
-    
-
-Topic 3: Utilities (Q3.1) | Source Pages: 25–28 | Educational Commentary Version 1.0
-
-    
-
-Licensed to Kuo, Li-Hung / Amaran Biotechnology, Inc. — Educational use only. Not for redistribution.
 
 ⇧
 
@@ -4785,11 +4116,11 @@ Additional process technologies — such as an incubator, centrifuge, or robotic
 
                     
 
-### Leak Rate & Integrity Testing — Figure 4.2-2
+### Leak Rate & Integrity Testing — Figure 4.2-2🔍
 
                     
 
-                        **Figure 4.2-2 — An Example of a Closed Isolator System for ATMP Manufacturing (textual description):** The figure shows a complete closed isolator installation in a cleanroom background. The main body is a stainless-steel and glass enclosure mounted on a service frame. Multiple glove ports (typically 4–8 depending on working width) are visible on the front panel. A control panel with touch screen and alarm indicators is integrated on the side or top. HEPA supply filters are visible in the top plenum. Exhaust connections lead to the building ductwork. An attached MAL on one end allows material introduction. All seams and connections are sealed and leak-tested to the specified maximum rate. The overall system is designed to be both GMP-compliant and ergonomically accessible for the operators working through gloves.
+                        **Figure 4.2-2🔍 — An Example of a Closed Isolator System for ATMP Manufacturing (textual description):** The figure shows a complete closed isolator installation in a cleanroom background. The main body is a stainless-steel and glass enclosure mounted on a service frame. Multiple glove ports (typically 4–8 depending on working width) are visible on the front panel. A control panel with touch screen and alarm indicators is integrated on the side or top. HEPA supply filters are visible in the top plenum. Exhaust connections lead to the building ductwork. An attached MAL on one end allows material introduction. All seams and connections are sealed and leak-tested to the specified maximum rate. The overall system is designed to be both GMP-compliant and ergonomically accessible for the operators working through gloves.
                     
 
                     
@@ -4875,12 +4206,12 @@ Supporting data from leak-testing should align with segregation policies and com
 
                     
 
-                        **Figure 4.2-3 — Computational Fluid Dynamics Studies (textual description):** A CFD simulation visualization showing airflow streamlines and particle trajectory within an isolator chamber. Color gradients (blue = low velocity, red = high velocity) map the airflow field. Streamlines show air descending from the supply HEPA in the top plenum, sweeping across the work surface, and being drawn toward the return grilles and air-return ducts. Particle trajectories (shown as dots or arrows) demonstrate how aerosols generated at the work surface are swept away from the product and captured by return-duct safety filters rather than escaping to the surrounding environment. The simulation identifies any dead zones (stagnant air pockets) where aerosols might accumulate — these must be eliminated in the final design.
+                        **Figure 4.2-3🔍 — Computational Fluid Dynamics Studies (textual description):** A CFD simulation visualization showing airflow streamlines and particle trajectory within an isolator chamber. Color gradients (blue = low velocity, red = high velocity) map the airflow field. Streamlines show air descending from the supply HEPA in the top plenum, sweeping across the work surface, and being drawn toward the return grilles and air-return ducts. Particle trajectories (shown as dots or arrows) demonstrate how aerosols generated at the work surface are swept away from the product and captured by return-duct safety filters rather than escaping to the surrounding environment. The simulation identifies any dead zones (stagnant air pockets) where aerosols might accumulate — these must be eliminated in the final design.
                     
 
                     
 
-                        **Figure 4.2-4 — Safety Filter Before the Air-return Ducts (textual description):** A cross-sectional schematic showing the air-return pathway from the isolator chamber. At the junction where exhaust air from the chamber enters the building ductwork, a high-efficiency safety filter (HEPA or ULPA) is installed inside the isolator frame, upstream of the building ductwork connection. This filter captures any biological or particulate hazards before exhaust air enters the general building HVAC. For highly potent or biologically active ATMPs (e.g., viral vectors, gene therapy products), the diagram indicates that additional HEPA filters — a double-HEPA configuration — may be required to ensure no particles or aerosols escape the contained environment.
+                        **Figure 4.2-4🔍 — Safety Filter Before the Air-return Ducts (textual description):** A cross-sectional schematic showing the air-return pathway from the isolator chamber. At the junction where exhaust air from the chamber enters the building ductwork, a high-efficiency safety filter (HEPA or ULPA) is installed inside the isolator frame, upstream of the building ductwork connection. This filter captures any biological or particulate hazards before exhaust air enters the general building HVAC. For highly potent or biologically active ATMPs (e.g., viral vectors, gene therapy products), the diagram indicates that additional HEPA filters — a double-HEPA configuration — may be required to ensure no particles or aerosols escape the contained environment.
                     
 
                     
@@ -5013,40 +4344,6 @@ For potent products, additional HEPA filters should be fitted before the air-ret
 
                         
 
-#### 
-
-                        
-                            
-                                
-                                
-                                
-                            
-| --- | --- | --- |
-                            
-                                
-                                
-                                
-                            
-                            
-                                
-                                
-                                
-                            
-| | HEPA | + |
-                            
-                                
-                                
-                                
-                            
-| ATMP | | + |
-                        
-
-                    
-
-                    
-
-                        
-
 #### CDMO ATMP
 
                         
@@ -5089,18 +4386,6 @@ For potent products, additional HEPA filters should be fitted before the air-ret
 
     
 
-    
-
-PDA Points to Consider No. 14 — Manufacturing of Advanced Therapy Medicinal Products
-
-    
-
-Topic 4 (Part A): Q4.1 Biosafety Cabinet | Q4.2 Isolator Selection | p29–p36
-
-    
-
-Educational use only. Licensed content — Kuo, Li-Hung / Amaran Biotechnology, Inc.
-
 ⇧
 
 ### Q 4.3. What should be considered when comparing biosafety cabinet and isolator design?
@@ -5111,7 +4396,7 @@ Educational use only. Licensed content — Kuo, Li-Hung / Amaran Biotechnology, 
 
             
 
-The design of an ATMP facility needs to be focused first considering its containment. The design of the containment and its background environmental classification are key considerations that will drive all other design elements (see Table 4.3-1). The choice of containment measures will be based on the existing facility design constraints, size and layout of the facility, new build budgets, and other company activities (see Table 4.3-2).
+The design of an ATMP facility needs to be focused first considering its containment. The design of the containment and its background environmental classification are key considerations that will drive all other design elements (see Table 4.3-1🔍). The choice of containment measures will be based on the existing facility design constraints, size and layout of the facility, new build budgets, and other company activities (see Table 4.3-2🔍).
 
             
 
@@ -5165,45 +4450,7 @@ Regulators are increasingly pushing industry for containment measures similar to
 
             
 
-### Table 4.3-1: Background Grades and Assurances Considerations
-
-            
-                
-                    
-                        
-                        
-                        
-                    
-| Primary Containment — Grade A | Background Requirements | Considerations Summary (not exhaustive) |
-| --- | --- | --- |
-                
-                
-                    
-                        ****
-                        
-                        
-- 
-- 
-- 
-- 
-- ****
-
-                    
-| Biological Safety Cabinet (BSC) Class II | Grade B | Only partial barrier — processing occurs through the open sash, with gowned forearm and gloved hand exposure to the inside of the BSC.                                 Manual decontamination.                                 Sanitization of items (and hands) upon entering the Grade A environment each time.                                 Wrist rests recommended to fix operator arms and assist in reproducible airflow patterns (and to avoid arms resting on the air exhaust).                                 Considered high-risk by regulators due to the close proximity of the operator to the process and the only barrier being the operator's clothing within the Grade A. |
-                    
-                        ****
-                        
-                        
-- 
-- 
-- 
-- 
-- ****
-
-                    
-| Isolator — Closed | Grade D* | Complete barrier between operator and the process — fixed and sealed.                                 Decontamination of items occurs during a validated decontamination/sanitization cycle.                                 Gloves can be reliably integrity-tested using automated methods.                                 Glove ports are set in place, so airflow movement is well-controlled.                                 Considered as the higher sterility assurance provider by regulators due to automation of decontamination/sanitization and increased physical barriers. |
-                
-            
+### Table 4.3-1🔍: Background Grades and Assurances Considerations
 
             
 
@@ -5343,77 +4590,7 @@ Material transfers in a BSC are performed with the open sash, as one operator tr
 
             
 
-### Table 4.3-2: Comparison Between BSC and Isolator for Facility Design
-
-            
-                
-                    
-                        
-                        
-                        
-                    
-| Facility Design Factor | Class II BSC | Isolator |
-| --- | --- | --- |
-                
-                
-                    
-                        ****
-                          
-
-                          
-
-                    
-| Contamination Control | Lower AdvantageOpen sash; manual decontamination; operator gowning is the primary barrier | Higher AdvantageClosed barrier; automated validated VPHP decontamination cycle |
-                    
-                        ****
-                          
-
-                          
-
-                    
-| Operator Protection | Lower AdvantageDirect exposure possible; reliant on gowning and technique | Higher AdvantagePhysical separation; no operator contact with product or process atmosphere |
-                    
-                        ****
-                          
-
-                          
-
-                    
-| Sustainability | Lower AdvantageGrade B background: high EM, extensive gowning, intensive training | Higher AdvantageGrade D background: less room EM, less gowning, lower long-term burden |
-                    
-                        ****
-                          
-
-                          
-
-                    
-| GMP Annex 1 Compliance | Lower AdvantageNot classified as barrier technology by EU GMP Annex 1 | Higher AdvantageClassified as barrier technology; preferred by regulators |
-                    
-                        ****
-                          
-
-                          
-
-                    
-| Cleanroom Footprint | Higher AdvantageModest footprint; flexible layout; easy to position | Lower AdvantageLarger footprint; requires careful spatial planning for glove ports and transfer systems |
-                    
-                        ****
-                          
-
-                          
-
-                    
-| Integration into an Existing Cleanroom | Higher AdvantagePlug-and-play; readily installed in existing Grade B suites | ModerateMay require facility modifications for airlock connections, utility hookups |
-                    
-                        ****
-                          
-
-                          
-
-                    
-| Equipment Lead Time | Higher AdvantageShorter lead time; widely available from multiple vendors | Lower AdvantageLonger lead time; custom design and qualification required |
-                
-            
+### Table 4.3-2🔍: Comparison Between BSC and Isolator for Facility Design
 
             
 
@@ -5568,35 +4745,7 @@ Material transfers in a BSC are performed with the open sash, as one operator tr
 
             
 
-### Table 4.3-3: Capital Expenditure and Operating Cost Considerations
-
-            
-                
-                    
-                        
-                        
-                        
-                    
-| Primary Containment — Grade A | Background Requirements | Cost Profile |
-| --- | --- | --- |
-                
-                
-                    
-                        ****
-                        
-                          
-
-                    
-| Biological Safety Cabinet (BSC) Class II | Grade B | High OpEx and Low CapExLow equipment purchase cost; high ongoing room, gowning, EM, and training costs |
-                    
-                        ****
-                        
-                          
-
-                    
-| Isolator — Closed | Grade D* | High CapEx and Low OpExHigh equipment purchase cost; low ongoing costs due to Grade D background environment |
-                
-            
+### Table 4.3-3🔍: Capital Expenditure and Operating Cost Considerations
 
             
 
@@ -5703,81 +4852,7 @@ An isolator system is typically more complex than BSC, and the complexity contri
 
             
 
-### Table 4.3-4: Cost Comparison Between the Use of Biosafety Cabinet and Isolator
-
-            
-                
-                    
-                        
-                        
-                        
-                        
-                    
-| Consideration | Cost Category | Class II BSC | Isolator |
-| --- | --- | --- | --- |
-                
-                
-                    
-                        ****
-                        
-                          
-
-                          
-
-                    
-| Equipment | Initial Investment (capital) | Lower CostStandard BSC unit; readily available | Higher CostCustom design; complex systems; longer procurement |
-                    
-                        
-                          
-
-                          
-
-                    
-| Low-volume Products (operational and maintenance costs) | Lower CostSimpler maintenance; fewer specialized parts | Higher CostComplex filter systems; glove/sleeve replacement program; VPHP system upkeep |
-                    
-                        
-                          
-
-                          
-
-                    
-| Medium/High-volume Products (operational and maintenance costs) | Higher CostGrade B EM burden scales with throughput; gowning cost per batch remains high | Lower CostGrade D background fixed costs; per-batch EM and gowning cost remains low regardless of volume |
-                    
-                        ****
-                        
-                          
-
-                          
-
-                    
-| Room | Initial Investment (capital) | Higher CostGrade B cleanroom construction or retrofit; higher HVAC specification | Lower CostGrade D room sufficient; simpler construction and HVAC |
-                    
-                        
-                          
-
-                          
-
-                    
-| Operational and Maintenance Costs | Higher CostOngoing Grade B HVAC energy, monitoring, and requalification | Lower CostGrade D room requires less intensive maintenance and requalification |
-                    
-                        ****
-                        
-                          
-
-                          
-
-                    
-| Gowning | Gowning Cost | Higher CostGrade A gowning: sterile suit, double gloves, hood, face shield — high per-use cost | Lower CostGrade D gowning: basic garments; significantly lower per-use cost |
-                    
-                        
-                          
-
-                          
-
-                    
-| Environmental Monitoring Cost | Higher CostGrade B EM: more sampling points, more frequent, operator active/passive sampling required | Lower CostGrade D EM: fewer sampling points, less frequent monitoring program |
-                
-            
+### Table 4.3-4🔍: Cost Comparison Between the Use of Biosafety Cabinet and Isolator
 
             
 
@@ -5795,7 +4870,7 @@ An isolator system is typically more complex than BSC, and the complexity contri
 
                 
 
-#### Table 4.3-4
+#### Table 4.3-4🔍
 
                 
 
@@ -6441,42 +5516,6 @@ Containment test methods referenced include the KI-Discus test and the segregati
 
                         
 
-#### vs. BSC
-
-                        
-                            
-                                
-                                
-                                
-                                
-                            
-| --- | --- | --- | --- |
-                            
-                                ****
-                                  
-
-                                
-                                  
-
-                            
-| | () | | |
-                            
-                                ****
-                                  
-
-                                
-                                  
-
-                            
-| BSC | / (NSF/ANSI 49 ) | | |
-                        
-
-                    
-
-                    
-
-                        
-
 #### 
 
                         
@@ -6630,7 +5669,7 @@ Measure the absolute pressure of each space and calculate the differential. Adva
 
                         
 
-Figure 5.4-1 — Pressure Difference Measurement Between Isolator Chamber and Above the Supply HEPA Filter
+Figure 5.4-1🔍 — Pressure Difference Measurement Between Isolator Chamber and Above the Supply HEPA Filter
 
                         
 
@@ -7092,17 +6131,5 @@ Key Takeaway for ATMP CDMO Operations
         
 
     
-
-    
-
-PDA Points to Consider No. 14 (2025) — Biosafety Cabinets and Isolators for ATMP Manufacturing
-
-    
-
-Topic 5: Supplementary Technical Information | pp. 42–55 | Educational Commentary in Traditional Chinese
-
-    
-
-Licensed to Kuo, Li-Hung / Amaran Biotechnology, Inc. | For educational use only
 
 ⇧

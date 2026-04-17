@@ -10,8 +10,6 @@
 
     
 
-    
-
         
 
 This general chapter is harmonized with the corresponding texts of the European Pharmacopoeia and/or the Japanese Pharmacopoeia. These pharmacopeias have undertaken not to make any unilateral change to this harmonized chapter.

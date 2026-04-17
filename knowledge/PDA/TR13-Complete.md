@@ -540,29 +540,186 @@ ments for the various environments according to the relevant authorities. The su
 ments is condensed and is limited to routine monitoring; it excludes requirements for area qualifica-
 tion or requalification. More complete guidance may be found in the references cited.
 
-| Particle Size | ISO 14644 | U.S. FDA(Aseptic Processing Guidance)1,2 | USP <1116> | EU & PIC/S Annex 1and WHO Annex 6 | Japan MHLW(Aseptic Processing Guidance) | JP XVI |
-| --- | --- | --- | --- | --- | --- | --- |
-| ISO 5 | ISO 5 / Class 100 | ISO 5 | Grade A / Grade B (at rest) | Grade A / Grade B (at rest) | Grade A / Grade B (at rest) |
-| ISO 5 / Grade A / Grade B at rest |
-| ≥0.5 μm | 3,520 | 3,520 | 3,520 | 3,520 | 3,520 | 3,520 |
-| ≥5.0 μm | Not specified | Not specified | Not specified | 203 / 29 | 203 | Not specified |
-| ISO 7 / Grade B (in operation) / Grade C (at rest) |
-| ≥0.5 μm | 352,000 | 352,000 | 352,000 | 352,000 | 352,000 | 352,000 |
-| ≥5.0 μm | 2,930 | Not specified | Not specified | 2,900 | 2,900 | Not specified |
-| ISO 8 / Grade C (in operation) / Grade D (at rest)4 |
-| ≥0.5 μm | 3,520,000 | 3,520,000 | 3,520,000 | 3,520,000 | 3,520,000 | 3,520,000 |
-| ≥5.0 μm | 29,300 | Not specified | Not specified | 29,000 | 29,000 | Not specified |
+**Table 3.0-1**
 
+Cleanroom Monitoring – Airborne Particulate Limits (particles/m3)
+Particle Size
+ISO 14644
+U.S. FDA
+(Aseptic Processing Guidance) 1,2
+USP <1116>
+EU & PIC/S Annex 1 and
+WHO Annex 6
+Japan MHLW
+(Aseptic Processing Guidance)
+JP XVI
+ISO 5
+ISO 5/Class 100
+ISO 5
+Grade A/ Grade B
+(at rest)
+Grade A/ Grade B
+(at rest)
+Grade A/ Grade B
+(at rest)
+≥0.5 µm
+3,520
+3,520
+3,520
+3,520
+3,520
+3,520
+≥5.0 µm
+Not specified
+Not specified
+Not specified
+203 /29
+Not specified
+ISO 7
+ISO 7/Class 10,000
+ISO 7
+Grade B
+(in operation)
+Grade C (at rest)
+Grade B
+(in operation)
+Grade C (at rest)
+Grade B
+(in operation)
+Grade C (at rest)
+≥0.5 µm
+352,000
+352,000
+352,000
+352,000
+352,000
+352,000
+≥5.0 µm
+2,930
+Not specified
+Not specified
+2,900
+2,900
+Not specified
+ISO 8
+ISO 8/Class 100,000
+ISO 8
+Grade C
+(in operation)
+Grade D (at rest)4
+Grade C
+(in operation)
+Grade D (at rest)
+Grade C
+(in operation)
+Grade D (at rest)
+≥0.5 µm
+3,520,000
+3,520,000
+3,520,000
+3,520,000
+3,520,000
+3,520,000
+≥5.0 µm
+29,300
+Not specified
+Not specified
+29,000
+29,000
+Not specified
 1	 Obsolete U.S. Federal Standard 209E classification added for continuity
 2	 Class titles for U.S. FDA and USP indicate equivalent particle counts per cubic foot
 3	 ISO 4.8 is based on reduced limit for particles ≥5 µm. European regulation is considering removing the ≥5µm classification for Grade A and Grade B at-rest. However, as it is still an expectation within the current EU Annex 1
 regulation and other standards, so this particle-size requirement remains within the table.
 4	 Grade D operational particulate counts depend on the operation and are not defined by any guideline.
 
-| Monitoring Guidance | U.S. FDA(Aseptic Processing Guidance) | USP <1116>3 | EU Annex 1, PIC/Sand WHO Annex 42 | Japan MHLW(Aseptic Processing Guidance) | JP XVI |
-| --- | --- | --- | --- | --- | --- |
-| Frequency (Airborne total particulate and viable count, surface viable count, personnel sampling as noted) |
+**Table 3.0-2**
 
+Environmental Monitoring Requirements/Guidance1
+Monitoring
+Guidance
+U.S. FDA
+(Aseptic Processing Guidance)
+USP <1116>3
+EU Annex 1, PIC/S
+and WHO Annex 4 2
+Japan MHLW
+(Aseptic Processing Guidance)
+JP XVI
+Frequency
+(Airborne total particulate and viable count, surface viable count,
+personnel sampling as noted)
+ISO 5: Each production shift.
+Gloves/Gown each exit, daily
+or each lot.
+Other classes not specified.
+Cleanroom/RABS
+Critical Zone (ISO 5 or better):
+• Each operational shift (active air)
+• Surface monitoring (end of operation)
+Aseptic area adjacent critical zone:
+• Each operating shift (all sampling)
+Other non-adjacent aseptic areas:
+• Once per day (all sampling)
+Isolators
+Critical Zone (ISO 5 or better):
+• Once per day (active air)
+• Surface monitoring (end of campaign)
+Non-aseptic areas surrounding the
+isolator:
+• Once per month (all sampling)
+A: In operation, continuous particulate
+monitoring required for critical
+operations. Frequent viable sampling.
+B: In operation, frequent particle
+monitoring is required.
+C, D: Monitoring on risk basis.
+Surfaces and personnel should be
+monitored after critical operations.
+A, B: Each operating shift for airborne
+micro, surfaces, and personnel;
+continuous particulate monitoring.
+C, D: Areas in which products and
+containers are exposed to the
+environment: Airborne micro twice per
+week; airborne particulate once per
+month; personnel not required.
+C, D other: Airborne micro once per
+week; airborne particulate once per
+month; personnel not required.
+A: Each operating shift.
+B: Each operating shift.
+C, D (potential product/container
+contact): Twice per week
+C, D (no potential product/container
+contact): Once per week
+Airborne viable action limits
+(Active air sampling)
+ISO 5: 1 CFU/m3
+ISO 7: 10 CFU/m3
+ISO 8: 100 CFU/m3
+Recommends use of Recovery Rate (%
+of samples with micro contamination)
+rather than count levels, as follows:
+Isolator/Closed RABS (ISO 5 or better):
+<0.1%
+ISO 5: <1%
+ISO 7: <5%
+ISO 8: <10%
+Applies to all active air, passive air, and
+surface samples. 5
+A: <1 CFU/m3
+B: 10 CFU/m3
+C: 100 CFU/m3
+D: 200 CFU/m3
+A: <1 CFU/m3
+B: 10 CFU/m3
+C: 100 CFU/m3
+D: 200 CFU/m3
+A: <1 CFU/m3
+B: 10 CFU/m3
+C: 100 CFU/m3
+D: 200 CFU/m3
 0.5 m3 sample required for A, B
 0.2 m3 sample required for C, D
 
@@ -1390,12 +1547,41 @@ contamination in Grade A/ISO 5 areas must be investigated, since there should no
 recovery within those areas. The CRR provides an alternative measurement of the effectiveness of the
 overall contamination control strategy.
 
-| | Alert | Action | |
-| --- | --- | --- | --- |
-| (5.3.1) | 99.9th | 99.99th | N ≈ 1,000 |
-| (5.3.2) | 95/95 | 95/99 | N = 60 / 300 |
-| (5.3.3) | 95th | 99th | N ≥ 20 |
+**Table 5.4.4-1	 Contamination Recovery Rates Suggested by USP Chapter <1116>**
 
+Room Classification
+Suggested Initial Contamination Recovery Rates (%)
+Active Air Sample
+Settle Plate (9 cm)
+4-Hour Exposure
+Contact Plate or Swab
+Glove or Garment
+Isolator/closed RABS or
+ISO 5 or better
+<0.1
+<0.1
+<0.1
+<0.1
+ISO 5
+<1
+<1
+<1
+<1
+ISO 6
+<3
+<3
+<3
+<3
+ISO 7
+<5
+<5
+<5
+<5
+ISO 8
+<10
+<10
+<10
+<10
 Note: All operators are aseptically gowned in these environments. These recommendations do not apply
 to production areas for nonsterile products or other classified environments in which fully aseptic gowns
 are not donned. In those conditions other Recovery Rates might be used if appropriately justified.
@@ -1659,15 +1845,29 @@ the potential risk for mold proliferation.
 In Grade C and D environments, levels of undesirable organisms should be controlled in order to limit
 any microbial stress on surrounding aseptic cleanrooms.
 
-| Extent of Identification | Isolate and Origin |
-| --- | --- |
+**Table 5.6-1 illustrates an example of a scheme for the extent of identification that may be used for the**
 
 recovered microbial isolates. The extent of identification and rationale should be documented and should
 be determined on a case-by-case basis, risk assessment, facility validation, and appropriate trend analysis.
 
-| System | Investigation Elements |
-| --- | --- |
+**Table 5.6-1**
 
+Typical Scheme for Microbial Identification
+Extent of Identification
+Isolate and Origin
+Identification to species
+(or genus where speciation is not possible)
+All recoveries in Grades A & B
+Grades C & D, for alert level or action limit excursions
+Periodically as part of the ongoing surveillance program
+Strain typing or molecular fingerprinting
+Significant product failure (e.g.)
+• media fills
+• sterility test
+• significant adverse trends
+For some types of processes and products, concern regarding specific organisms may determine the
+level of identification required.
+Initially, many isolates may be identified to establish a database of the representative microorganisms
 found in the area. Periodic identifications should be performed on routine monitoring to check for any
 changes in the predominant microflora, even if no excursions have occurred in the Grades C and D ar-
 
@@ -2161,15 +2361,37 @@ The quality of the laboratory water should meet the needs of analytical methods 
 which may require compendial-quality laboratory water. Table 6.8-1 lists the pharmacopeial water
 GMP specifications used for manufacturing water and distribution system for pharmaceutical use.
 
-| | | |
-| --- | --- | --- |
-| | | |
-| | CFU / | CFU / |
-| | | 4 |
-| | | |
-| | | |
-| | | |
+**Table 6.8-1**
 
+Examples of measurements critical to water for Injection manufacturing and distribution process
+Critical Parameters Measurement
+Quality Attributes
+US Pharmacopeia (USP)
+2021
+European
+Pharmacopeia (EP) 9:8
+2019, and 10,
+Japanese
+Pharmacopeia (JP) 17,
+2016
+Chinese Pharmacopeia (ChP)
+2015
+Source water
+Drinking water source,
+Purified water
+Suitable for Human
+Consumption
+JP Drinking water
+specification or purified
+water
+Purified water
+Purification Process
+Distillation or equivalent/superior process
+ Distillation
+pH
+N/A
+5.0-7.0
+Conductivity at 25°C
 1.3 µS/cm In-line Stage 1 (Stage 2-3 offline)1,2
 WFI Microbial Limit Specification
 NMT 10 CFU/100 mL
@@ -2233,9 +2455,67 @@ bility, including considerations for storage and shipping to third-party testing
 provides and overview of current guidelines for typical pharmaceutical water and clean steam distribu-
 tion systems monitoring, methods, requirements, frequencies, and levels.
 
-| | | | |
-| --- | --- | --- | --- |
+**Table 6.8.2-1	 Typical Pharmaceutical Water and Clean Steam Distribution System Guidelines**
 
+Clean Steam
+Purified Water
+USP Water
+for Injection
+EP Water for
+Injection
+JP Water for
+Injection
+ChP Water for
+Injection
+Site
+Sample at
+the point of
+generation and
+the furthest point
+of use
+Representative
+use points in
+the distribution
+system
+All accessible use ports in the distribution system.
+Methods
+Chemistry and
+LAL
+Chemistry, pour
+plate (1.0 mL) or
+membrane filter
+(100 mL)
+filter (200 mL)
+membrane filtration
+(100mL)
+and membrane
+filtration (not less
+than 100 mL)
+Microbiological
+test and
+incubation
+requirements
+(10 CFU/100 mL
+limit)
+Not
+recommended
+Plate Count Agar (PCA/TGYA)1 for
+48 – 72 hours2 at 30 – 35 °C3
+R2A agar,
+incubated at 30 –
+35 °C for not less
+than 5 days
+Standard agar media,
+incubated at
+30 – 35 °C for
+48 – 72 hours, or R2A
+agar, incubated at 20 –
+25 °C or 30 – 35 °C for
+4 – 7 days
+R2A agar,
+incubated at 30 –
+35 °C for not less
+than 5 days
 1	 For optimum recovery, an alternative medium may be more appropriate (e.g., m-HPC, TSA/SCDA, R2A).
 2	 For optimum recovery, alternative incubation times may be needed.
 3	 For optimum recovery, alternative incubation temperatures may be needed.
@@ -2267,12 +2547,67 @@ promotion
 7.	 Culture media shelf-life confirmation
 8.	 Sample holding studies and transport
 
-| Target Organisms | Temperature | Duration |
-| --- | --- | --- |
-| Total aerobic bacterial count | 30–35°C | 48–72 hours |
-| Total combined yeast and mold count | 20–25°C | 5–7 days |
-| Slow-growing contaminants | As applicable | Extended (justified) |
+**Table 6.8.2-1	 Typical Pharmaceutical Water and Clean Steam Distribution System Guidelines**
 
+Clean Steam
+Purified Water
+USP Water
+for Injection
+EP Water for
+Injection
+JP Water for
+Injection
+ChP Water for
+Injection
+Site
+Sample at
+the point of
+generation and
+the furthest point
+of use
+Representative
+use points in
+the distribution
+system
+All accessible use ports in the distribution system.
+Methods
+Chemistry and
+LAL
+Chemistry, pour
+plate (1.0 mL) or
+membrane filter
+(100 mL)
+filter (200 mL)
+membrane filtration
+(100mL)
+and membrane
+filtration (not less
+than 100 mL)
+Microbiological
+test and
+incubation
+requirements
+(10 CFU/100 mL
+limit)
+Not
+recommended
+Plate Count Agar (PCA/TGYA)1 for
+48 – 72 hours2 at 30 – 35 °C3
+R2A agar,
+incubated at 30 –
+35 °C for not less
+than 5 days
+Standard agar media,
+incubated at
+30 – 35 °C for
+48 – 72 hours, or R2A
+agar, incubated at 20 –
+25 °C or 30 – 35 °C for
+4 – 7 days
+R2A agar,
+incubated at 30 –
+35 °C for not less
+than 5 days
 1	 For optimum recovery, an alternative medium may be more appropriate (e.g., m-HPC, TSA/SCDA, R2A).
 2	 For optimum recovery, alternative incubation times may be needed.
 3	 For optimum recovery, alternative incubation temperatures may be needed.
@@ -2847,20 +3182,75 @@ The tests are not required to be performed in any prescribed order. Performing c
 Note: All tables in appendices indicate values for start-up sites, not for facilities where historical data
 is available.
 
-| Test | Grade A(ISO 5 unidirectional) | Grade B(ISO 5) | Grade C(ISO 7) | Grade D(ISO 8) |
-| --- | --- | --- | --- | --- |
-| Filter Pressure Differential | Yes | Yes | Yes | Yes |
-| Filter Leak Test 1 | Yes | Yes | Yes | Yes |
-| Air Flow Distribution | N/A | Yes | Yes | Yes |
-| Air Flow Velocity | Yes | N/A | N/A | N/A |
-| Air Flow Visualization (smoke) Study | Yes | Yes | Optional 2 | Optional 2 |
-| Differential Room Pressure | N/A | Yes | Yes | Yes |
-| Temperature | Yes | Yes | Yes | Yes |
-| Relative Humidity | Yes | Yes | Yes | Yes |
-| Alarms and Interlocks | Yes | Yes | Yes | Yes |
-| Room Air Classification (Total Airborne Particulate Count) | Yes | Yes | Yes | Yes |
-| Recovery Time | N/A | Yes | Yes | Yes |
+**Table 9.3.2-1	 OQ Testing Requirements (At Rest)**
 
+Test
+Grade A3
+(ISO 5 unidirectional)
+Grade B
+(ISO 5)
+Grade C
+(ISO 7)
+Grade D
+(ISO 8)
+Filter Pressure differential
+Yes
+Yes
+Yes
+Yes
+Filter Leak Test1
+Yes
+Yes
+Yes
+Yes
+Air Flow Distribution
+N/A
+Yes
+Yes
+Yes
+Air Flow Velocity
+Yes
+N/A
+N/A
+N/A
+Air Flow Visualization (smoke)
+Study
+Yes
+Yes
+Optional2
+Optional2
+Differential room pressure
+N/A
+Yes
+Yes
+Yes
+Temperature
+Yes
+Yes
+Yes
+Yes
+Relative Humidity
+Yes
+Yes
+Yes
+Yes
+Alarms and interlocks
+Yes
+Yes
+Yes
+Yes
+Room Air Classification (Total
+airborne Particulate Count)
+Yes
+Yes
+Yes
+Yes
+Recovery time
+N/A
+Yes
+Yes
+Yes
+1	 Required for H13/H14 or better filters only
 2	 Air flow visualization studies in non-unidirectional areas are optional based on risk analysis. See Section 9.6 below
 3	 OQ testing for Grade A air supplied for crimping of aseptically filled vials or for local assurance of particulate control (i.e., local
 unidirectional air flow devices) is the same as for Grade A, except for Unidirectional
@@ -2883,14 +3273,14 @@ to the schedule in Table 9.3.3-1 and its notes. It is important to regularly rev
 parameters that are continuously monitored or regularly recorded (e.g., temperature, humidity, room
 pressure differential, others based on risk analysis) and that frequencies are justified.
 
-| Test | Grade A | Grade B | Grade C | Grade D |
-| --- | --- | --- | --- | --- |
-| Filter Leak Test 3 | 6 months | 6 months | Annual | Annual |
-| Air Flow Distribution | N/A | Annual | Annual | Annual |
-| Air Flow Velocity | 6 months | N/A | N/A | N/A |
-| Room Classification | 6 months 4 | Annual | Annual | Annual |
-| Recovery Time 5 | N/A | N/A | N/A | N/A |
+**Table 9.3.3-1	 Routine Area Recertification1**
 
+Test2
+Grade A
+Grade B
+Grade C
+Grade D
+Filter Leak Test3
 6 mos.
 6 mos.
 Annual
@@ -2940,9 +3330,71 @@ Controlled Environments — Part 3: Test Methods; ISO: Geneva, 2019.
 Table 10.0-1 shows a real-life example provided by Gapp Associates of a review of an existing EM program at a closed RABS filling operation (vial filling; Grade B
 background). Note that only 5 risk items - from a total of 19 - are listed in the table below.
 
-| Item | Risk Statement (Requirement) | SEV | OCC | DET | RPN | Risk Class | Accepted | CAPA |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+**Table 10.0-1**
 
+Example: Failure Mode and Effects Analysis (FMEA)
+Risk Item
+Problem Statement / Requirement
+Risk Description
+/ Potential
+Failure Mode
+and Impact
+Causes of
+process/ product
+failure
+Current Controls and Preventive Actions/ Comments
+SEV: assess the risk and impact on sterility and regulatory compliance,
+in case of a deviation/ deficiency to this statement/ requirement
+OCC: assess the probability, that the related locations and areas are - in
+fact- microbiologically contaminated
+DET: assess the probability, that the implemented EM sampling plan/
+frequency/ number of samples/ methods would detect - in fact- a
+potential contamination
+SEV
+OCC
+DET
+RPN
+Risk Class
+Risk Accepted
+Mitigation
+Measures/
+CAPAs
+“High-risk areas” in Grade A are
+monitored: samples are selected which
+are:
+• in close proximity to open product
+and critical surfaces
+• linked with an increased number of
+activities and interventions
+• linked with an extended time of
+critical interventions
+• linked with material flow into
+Grade A.
+These areas must be properly
+monitored and sampled in the EM
+program.
+Potential
+contamination
+is not detected
+in high-risk
+areas, which
+results in product
+contamination in
+Grade A.
+Ingress of
+particles and
+microbiological
+contamination into
+the high-risk areas
+by many activities
+and interventions/
+extended
+activities/ material
+flow.
+The high-risk areas in the RABS are a) the filling and stoppering area b) the
+stopper bowl and c) the turntable, where depyrogenated, open vials are exposed
+for an extended time.
+The above areas are well addressed by the surface monitoring program, but not
 by an active air monitoring/ surface monitoring at the stopper bowl. A settle plate
 is exposed. This is a deficiency, since high-risk interventions and aseptic activities
 are performed in the vicinity of the stopper bowl. (Note: active air monitoring is
@@ -3176,9 +3628,34 @@ Accumulation
 Table
 Accumulation Table
 
-| Grid Zone(s) | Process Step / Activities | O(×2) | Score | Rank |
-| --- | --- | --- | --- | --- |
+**Table 10.0-2**
 
+Filling Line Activities and Associated Risk Rankings for a Closed RABS or isolator filling line
+Grid Number
+Process Step Description (activities in this grid)
+C – Access for Cleaning
+(if not automated)
+P – Personnel Presence
+M – Material Flow
+O – Proximity to O Product or
+Exposure to Direct Product
+Contact Materials pen
+CI – Complexity of
+Interventions
+FI – Frequency of
+Interventions
+Risk Score
+(x2 weight for Proximity)
+Rank
+(Heat Map Coloring)
+1,5, 9, 13
+Turn table has open vials however no interventions are performed in this grid
+Within 12 inches of open vials, alpha beta port for material transfer, no interventions with direct product
+3,7
+Behind dosing vessel within 12-24 inches of open product, no interventions or material transfer
+Behind stopper station. Some material flow for EM plates.
+Within 12-24 inches of open vials, behind infeed conveyor, no material transfer or interventions
+8, 12
 Stoppering station and outfeed star wheel. Material flow for EM plates. Clearing stopper jams with poker
 less than 1 batch.
 Part of the needle docking station, needle holder, and stoppering station. Material flow for EM. Clearing
@@ -3190,14 +3667,31 @@ In front of starwheel and conveyor. Material flow for EM plates.
 In front of needle holder and docking station. Material flow for EM plates. No interventions
 In front of stoppering station. Within 12-24 inches of product. Material flow for EM plate.
 
-| 11 | Conveyor belt — harder-to-clean areas; interventions via glove ports; material via alpha/beta ports <12 in. from open product; correction of vial jams >1×/batch | 8 | 512 | HIGH |
-| 2 | Within 12 in. of open vials; alpha/beta port for material transfer; no direct product interventions | 8 | 32 | HIGH |
-| 8, 12 | Stoppering station & outfeed star wheel; EM plate material flow; clearing stopper jams <1×/batch | 8 | 32 | HIGH |
-| 10 | Needle docking station & stoppering; EM material flow; stopper jam clearing <1×/batch with sterilized tool | 8 | 32 | HIGH |
-| 1, 5, 9, 13 | Turntable with open vials; no interventions in this grid | 8 | 16 | MEDIUM |
-| 4 | Behind stopper station; some material flow for EM plates | 4 | 8 | MEDIUM |
-| 3, 7 | Behind dosing vessel within 12–24 in. of open product; no interventions or material transfer | 4 | 4 | LOW |
-| 15 | In front of needle holder and docking station; EM plate material flow; no interventions | 4 | 4 | LOW |
+**Table 10.0-3**
+
+EM Table Template example
+Results of air
+flow studies
+Historical data
+(incl. data on total
+particulates)
+Recent changes
+which may be
+relevant
+Notes
+Recommended Monitoring
+ZONE DECISION
+During Set-Up
+During process
+(2 times during each batch
+-beginning and end)
+End of Process
+(Surface)
+Total particulates
+Viables
+Total particulates
+Viables
+Viables
 
 ### 10.1 Example of an HACCP
 
@@ -3211,8 +3705,7 @@ example of an HACCP exercise applied to a Grade C cell culture room with an occu
 
 *[Figure 10.1-1	 HACCP Principles and Application]*
 
-| Input Fields | Monitoring Decision Columns |
-| --- | --- |
+**Table 10.1-1**
 
 Application of HACCP Methodology to Pharmaceuticals (from WHO Technical Report Series, No. 908, 2003, Annex 7)
 Room Sector

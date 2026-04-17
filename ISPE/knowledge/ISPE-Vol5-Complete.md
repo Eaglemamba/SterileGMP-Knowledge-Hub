@@ -400,6 +400,46 @@ For systems that are not direct impact, the scope of commissioning is determined
 
                         
 
+#### Component Classification
+
+                        
+
+                        
+
+                        
+
+                    
+
+                    
+
+                        
+
+#### vs.
+
+                        
+
+                    
+
+                    
+
+                        
+
+#### 
+
+                        
+
+                        
+
+                    
+
+                
+
+            
+
+        
+
+                        
+
 ## 3.2 System Boundaries
 
                 
@@ -501,108 +541,6 @@ This Guide presents criteria for system classification that consist of eight que
                     
 
                     
-                        
-                            
-                                
-                                
-                                
-                            
-| No. | Question | Additional Information |
-| --- | --- | --- |
-                        
-                        
-                            
-                                
-                                
-                                
-- 
-- 
-
-                            
-| Q1 | Does the system contain CAs/CDEs or perform functions that serve to meet one or more process requirements (CQAs) including CPPs? | There are two inputs to this question: product and process knowledge (CQAs and CPPs)                                         If the system controls or monitors a CPP, then the answer to this question should be a YES |
-                            
-                                
-                                
-                                
-- 
-    - 
-    - 
-
-- 
-
-                            
-| Q2 | Does the system have direct contact with the product or process stream and does such contact have the potential to impact the final product quality or pose a risk to the patient? | Risk factors to consider:                                                                                              GMP requirement that product contact materials are non-reactive, non-additive, and non-absorptive such that the safety, identity, strength, quality, or purity of the drug product is not affected                                                 Whether the materials that contact the manufacturing process can corrode and impart corrosion products into the manufacturing process                                                                                                                               If any of these risk factors is an inherent part of the system, then the answer to this question should be a YES |
-                            
-                                
-                                
-                                
-- 
-    - 
-    - 
-
-- 
-
-                            
-| Q3 | Does the system provide an excipient or produce an ingredient or solvent (e.g., WFI) and could the quality (and compliance with the required specifications thereof) of this substance impact the final product quality or pose a risk to the patient? | Risk factors to consider:                                                                                              Whether the excipient, ingredient, or solvent needs to be of defined requirements in order to produce a quality product                                                 Whether the excipient, ingredient, or solvent can introduce excipients into the process stream (e.g., microbial contamination, corrosion products, residues from improper cleaning of the system)                                                                                                                               If any of these risk factors is an inherent part of the system, then the answer to this question should be a YES |
-                            
-                                
-                                
-                                
-- 
-    - 
-    - 
-        - 
-        - 
-
-- 
-
-                            
-| Q4 | Is the system used in cleaning, sanitizing, or sterilizing, and could malfunction of the system result in failure to adequately clean, sanitize, or sterilize such that a risk to the patient would result? | Risk factors to consider:                                                                                              Whether proper functioning of cleaning, sanitizing, and sterilizing systems is critical to product quality (YES in most cases)                                                 Whether the quality of the substance used to perform the cleaning, sanitizing, or sterilizing (e.g., WFI, purified water, pure steam, cleaning or sterilizing chemicals):                                                                                                              Imparts any impurities to the process equipment                                                         Impacts the effectiveness and repeatability of the cleaning, sanitizing, or sterilizing process                                                                                                                                                                                                                                     If any of these risk factors is an inherent part of the system, then the answer to this question should be a YES |
-                            
-                                
-                                
-                                
-- 
-- 
-
-                            
-| Q5 | Does the system establish a proper environment (e.g., nitrogen blanket, closed process, exposed filling zone air quality, maintenance of temperature, humidity when such parameter is part of the product CPPs) for the process and could failure of the system to function properly pose a risk to the patient? | At different stages of a process, there may be requirements for a controlled temperature, humidity, aseptic, oxygen-free, or pressurized environment; systems that provide this environment (including providing sterile air, unidirectional flow/HEPA filtered air in a clean room or nitrogen that contacts a process stream) would fall into this category                                         If failure of the system to function properly or to provide the required environment of requisite quality means that a risk to product quality exists, then the answer to this question should be a YES |
-                            
-                                
-                                
-                                
-- 
-
-                            
-| Q6 | Does the system use, produce, process, or store data used to accept or reject product, CPPs, or electronic records subject to 21 CFR Part 11 and EU GMP Vol. 4, Annex 11 or the local equivalent? | This criterion is aimed at firmware, software, PLC, SCADA, PCS, BAS, networks, spreadsheets, and databases |
-                            
-                                
-                                
-                                
-- 
-    - 
-    - 
-
-- 
-
-                            
-| Q7 | Does the system provide container closure or product protection, the failure of which would pose a risk to the patient or degradation of product quality? | Risk factors to consider:                                                                                              Whether the system provides the closure or seal                                                 Whether the system controls or provides the outside environment during shipping or product movement                                                                                                                               If any of these risk factors is an inherent part of the system, then the answer to this question should be a YES |
-                            
-                                
-                                
-                                
-- 
-    - 
-    - 
-
-- 
-
-                            
-| Q8 | Does the system provide product identification information (e.g., lot number, expiration date, counterfeit prevention features) without independent verification or is the system used to verify this information? | Risk factors to consider:                                                                                              Whether any packaging components, if compromised, would lead to an impact on product quality or identity                                                 Systems that perform operations such as label verification of lot number/expiration date and proper packaging insert                                                                                                                               If any of these risk factors is an inherent part of the system, then the answer to this question should be a YES |
-                        
-                    
-
-                    
 
                     
 
@@ -647,18 +585,6 @@ Refer to Chapter 17 (Appendix 3) for an example system classification form. Refe
         
 
     
-
-    
-
-ISPE Baseline® Guide: Commissioning and Qualification, 2nd Edition (2019)
-
-    
-
-Chapter 2: User Requirements Specification | Chapter 3: System Classification | Pages 19–26
-
-    
-
-Educational material — for training purposes only. All content © ISPE 2019.
 
 ⇧
 
@@ -913,34 +839,6 @@ The System Risk Assessment establishes (if not available in other documents) and
 
                 
 
-#### 📚 SRA
-
-                
-                    
-                        
-| # | | |
-| --- | --- | --- |
-                    
-                    
-                        
-| 1 | | FMEA / |
-                        
-| 2 | | CAs/CDEs / SOP |
-                        
-| 3 | DQ | CDEs |
-                        
-| 4 | | Chapter 8 |
-                        
-| 5 | QA | CAPA |
-                    
-                
-
-            
-
-            
-
-                
-
 #### 📚 Risk Profile
 
                 
@@ -1038,40 +936,6 @@ An example System Risk Assessment format is presented in Section 4.4.
 
                 
 
-#### 📚 SRA
-
-                
-
-                
-                    
-                        
-| --- | --- | --- |
-                    
-                    
-                        
-                            ****  
-
-                              
-
-                            
-                        
-| Step 1 | + QA + SME3~4 | SRA |
-                        
-                            ****  
-
-                            
-                            
-                        
-| Step 2 | / | |
-                    
-                
-
-            
-
-            
-
-                
-
 #### ⚠️
 
                 
@@ -1105,6 +969,16 @@ An example System Risk Assessment format is presented in Section 4.4.
     
 
     
+
+                
+
+#### 📚 SRA
+
+                
+
+                
+
+            
 
     
     
@@ -1269,34 +1143,6 @@ Prior to determining the risk profile, the team identifies the sources of the ri
 #### Table 4.1: Risk Level Definitions
 
             
-                
-                    
-                        
-                        
-                    
-| Risk Level | Definition |
-| --- | --- |
-                
-                
-                    
-                        
-                        
-                    
-| Low | Considered acceptable with no actions needed. The likelihood of the risk occurring with the defined controls operating is considered low, and the detection is robust. |
-                    
-                        
-                        
-                    
-| Medium | Normally considered unacceptable and requires mitigation through design (CAs/CDEs) and/or procedural controls. However, the SME reviewers may consider a medium risk as acceptable for the specific process/system and decide to accept the risk. |
-                    
-                        
-                        ****
-                    
-| High | Considered unacceptable and requires mitigation through design and/or procedural controls. In certain situations, the SME reviewers may determine that these controls are not appropriate, e.g., implementation costs outweigh the incurred costs if the risk occurred, operational challenges, or other reasons. The SMEs may recommend acceptance of the system with the high risk; in this case, the assessment needs to be accepted by high-level management. |
-                
-            
-
-            
 
 Note: The risk level is defined considering the overall process; thus, if the process is changed, the System Risk Assessments may need to be reviewed/updated. This aspect should be addressed through change management (see Chapter 12).
 
@@ -1315,41 +1161,6 @@ Procedural controls identified during the System Risk Assessment need to be incl
         
 
         
-
-            
-
-            
-
-                
-
-#### 📚 Table 4.1 ——
-
-                
-                    
-                        
-| --- | --- | --- |
-                    
-                    
-                        
-                            
-                            
-                            
-                        
-| Low | | WFI CQA |
-                        
-                            
-                            
-                            
-                        
-| Medium | SME | —— CDEs+ SOP |
-                        
-                            
-                            
-                            
-                        
-| High | | HEPA —— CA |
-                    
-                
 
             
 
@@ -1426,6 +1237,14 @@ Procedural controls identified during the System Risk Assessment need to be incl
     
 
     
+
+                
+
+#### 📚 Table 4.1 ——
+
+                
+
+            
 
     
     
@@ -1623,47 +1442,6 @@ For any changes to the system, the URS and System Risk Assessment should both be
 
                 
 
-#### 📚 SRA
-
-                
-                    
-                        
-| | SRA | |
-| --- | --- | --- |
-                    
-                    
-                        
-                            
-                            
-                            
-                        
-                        
-                            
-                            
-                            
-                        
-| | | CDEs |
-                        
-                            ****
-                            
-                            
-                        
-| IFC | | SRA |
-                        
-                            
-                            ****
-                            
-                        
-| | | → |
-                    
-                
-
-            
-
-            
-
-                
-
 #### 📚 IFCIssued for Construction
 
                 
@@ -1798,98 +1576,6 @@ Refer to Chapter 19 (Appendix 5) for an example of a baseline System Risk Assess
 * Regulatory requirements (e.g., labeling, dating, batch coding) can be addressed in the same manner as CQAs. Controls will normally be incorporated into the design and verified to work to ensure the regulatory requirement is met.
 
         
-            
-                
-                    
-                    
-                    
-                
-| Col # | Column Name | Description |
-| --- | --- | --- |
-            
-            
-                
-                    ****
-                    
-                    
-                
-| 1 | Reference Number | Item reference number. |
-                
-                    ****
-                    
-                    
-                
-| 2 | Operations Sequence / Process Flow | List the entire operational sequence of the system if the system operates in a sequential manner. Include cycles such as Clean-in-Place (CIP) or Sterilize-in-Place (SIP). When the system operates continuously (e.g., for a critical utility system), then a process flow is appropriate. |
-                
-                    ****
-                    
-                    
-                
-| 3 | Process Description | Add a brief description of the process that applies to the sequence. |
-                
-                    ****
-                    
-                    
-                
-| 4 | CQA * | List the CQA that is relevant for this step of the sequence/process. If none at this point, enter N/A. |
-                
-                    ****
-                    
-                    
-                
-| 5 | CPP | This entry should map to the corresponding CQA in the same row. List the CPP whose variability has an impact on the CQA and can be monitored or controlled for that row. If none, enter N/A. |
-                
-                    ****
-                    
-                    ****
-                
-| 6 | Impact on CQA | Enter direct or indirect, based on the impact of the established CPP on the CQA. For example, direct impact is where the CPP directly impacts the CQA. This entry is used to establish the criticality of any associated alarms. |
-                
-                    ****
-                    
-                    
-                
-| 7 | How CQA can be Impacted | Add a brief description on how the CQA can be impacted at this step of the sequence/process, e.g., due to incorrect or out of range conditions of the CPP. This entry is used to define the possible hazard(s) to the CQA at this point of the sequence/process; it serves as an aid in the SME determination of risk. |
-                
-                    ****
-                    
-                    
-                
-| 8 | Critical Aspect (CA) | List the Critical Aspect(s) (CAs) associated with the CPP. CAs are measurable or observable attributes of the system that, if outside the defined limits, can directly affect the ability of the system to perform its function. Enter N/A if no CA applies. |
-                
-                    ****
-                    
-                    
-                
-| 9 | Critical Design Element (CDE) | List the Critical Design Element(s) (CDEs) associated with the CA in the same row. CDEs are the specific design features, components, or parameters that ensure the CA is met. These become the focus of the DQ and commissioning verification activities. |
-                
-                    ****
-                    
-                    
-                
-| 10 | Procedural Control | List the procedural controls (e.g., SOPs, work instructions, training requirements, monitoring schedules) that mitigate or eliminate the identified risk. These controls must be in place and verified before system acceptance/release. |
-                
-                    ****
-                    
-                    
-                
-| 11 | Risk Level | Assign the risk level (Low / Medium / High) per Table 4.1 definitions. The risk level is assigned by the broader review team and considers the controls in columns 9 and 10 as being in place and functioning as intended. |
-                
-                    ****
-                    
-                    
-                
-| 12 | Rationale for Risk Level | Provide a brief justification for the assigned risk level. This documents the team's reasoning and is particularly important for Medium and High risk assignments, or where a risk is accepted without full mitigation. |
-                
-                    ****
-                    
-                    
-                
-| 13 | Remarks / Actions | Record any additional actions required (e.g., additional testing, design changes, SOP creation) or references to related documents (e.g., URS section, DQ report, validation protocol). Also used to track open action items until closure. |
-            
-        
-
-    
 
     
     
@@ -2050,18 +1736,6 @@ Each row in the SRA table follows a structured logic flow:
         
 
     
-
-    
-
-ISPE Baseline® Guide Vol.5: Commissioning and Qualification, 2nd Edition (2019)
-
-    
-
-Chapter 4: System Risk Assessment  |  Pages 27–34
-
-    
-
-Educational commentary in Traditional Chinese. Original English text © ISPE 2019. All rights reserved.
 
 ⇧
 
@@ -2844,86 +2518,6 @@ Table 5.1: Project phases and DR/DQ deliverables
 Table 5.1 summarizes the key project phases and the corresponding DR and DQ deliverables. The table illustrates the timing of these activities throughout the design lifecycle, from project initiation through detailed design completion.
 
                     
-                        
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| Deliverable / Activity | Project Initiation | Concept | BOD (Basis of Design) | Detailed Design |
-| --- | --- | --- | --- | --- |
-                        
-                        
-                            
-                                ****
-                                
-                                
-                                
-                                
-                            
-| URS | Initiated | Developed & Approved | Reviewed / Updated | Final / Approved |
-                            
-                                ****
-                                
-                                
-                                
-                                
-                            
-| System Classification | — | Preliminary | Confirmed | Finalized |
-                            
-                                ****
-                                
-                                
-                                
-                                
-                            
-| System Risk Assessment (SRA) | — | Initiated | Developed (IFD-based) | Updated & Finalized |
-                            
-                                ****
-                                
-                                
-                                
-                                
-                            
-| Design Review (DR) | — | Concept DR | BOD DR (IFD documents) | Detailed Design DR (IFC documents) |
-                            
-                                ****
-                                
-                                
-                                
-                                
-                            
-| Design Documents | Project brief | Concept drawings / scope options | IFD package (P&IDs, layouts, specs) | IFC package (construction-ready) |
-                            
-                                ****
-                                
-                                
-                                
-                                ****
-                            
-| Design Qualification (DQ) | — | — | — (DQ planning may begin) | DQ executed & approved (direct impact systems only) |
-                            
-                                ****
-                                
-                                
-                                
-                                
-                            
-| C&Q Plan | — | Initiated | Developed | Approved |
-                            
-                                ****
-                                
-                                
-                                
-                                
-                            
-| Traceability Matrix | — | — | Draft (CAs/CDEs identified) | Finalized (acceptance criteria defined) |
-                        
-                    
-
-                    
 
 *Note: Table 5.1 content reconstructed from Chapter 5 descriptions. Original table appears on p.40 of ISPE Baseline Guide Vol.5, 2nd Edition.*
 
@@ -3078,14 +2672,6 @@ Table 5.1 summarizes the key project phases and the corresponding DR and DQ deli
         
 
     
-
-    
-
-ISPE Baseline® Guide: Commissioning and Qualification, 2nd Edition © 2019 ISPE. All rights reserved.
-
-    
-
-Educational bilingual commentary for internal training use. Chapter 5 (pp.35–40).
 
 ⇧
 
@@ -4596,42 +4182,6 @@ The plan should address the steps to follow when test results do not meet the ex
 #### 
 
                         
-                            
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-| --- | --- | --- | --- |
-                            
-                            
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                
-| | Installation Phase | IQ | FATSAT |
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                
-| | Operational Phase | OQ | FAT/SAT |
-                            
-                        
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
 
                         
 
@@ -4713,187 +4263,6 @@ General Note: **A = Approver**
                     
 
                         
-                            
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| Document | Pre-Approvers | Post-Approvers | Typical Document Preparation | Guide Chapter Reference |
-| --- | --- | --- | --- | --- |
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| Quality Unit | Production User | Technical1 | Quality Unit | Production User | Technical1 |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| C&Q Plan | Not applicable | A | A | A1 | — | — | Technical | Chapter 6 |
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| User Requirements Specification (URS) | Not applicable2 | A | A | A1 | — | — | Technical | Chapter 2 |
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| System Classification | Not applicable | A | A | A1 | — | — | Technical | Chapter 3 |
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| System Risk Assessment (SRA) | Not applicable | A | A | A1 | — | — | Quality Unit3 | Chapter 4 |
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| Design Review (DR) | Not applicable | — | A | A1 | — | — | Technical | Chapter 5 |
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| Design Qualification (DQ) | Not applicable | A | A | A1 | — | — | Quality Unit3 | Chapter 5 |
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| Commissioning inspection/testing documentation (e.g., FAT, SAT) | A | A1 | A | A1 | — | — | Technical | Chapter 7 |
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| Qualification testing documentation where used4 | A | A | A1 | A | A | A1 | Quality Unit3 | Chapter 7 |
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| Turnover Package (TOP) | Not applicable | — | A | A1 | — | — | Technical | Chapter 7 |
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| Commissioning Acceptance and Release Report | Not applicable | — | A | A1 | — | — | Technical | Chapter 8 |
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| Qualification Acceptance and Release Report (including testing from commissioning) | Not applicable | A | A | A1 | — | — | Quality Unit3 | Chapter 8 |
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| Traceability Matrix | Not applicable | Not applicable | — | — | — | — | Technical | Chapter 8 |
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| Vendor Assessment (when vendor documentation utilized for C&Q) | Not applicable | — | A | A1 | — | — | Technical | Chapter 10 |
-                            
-                        
-
-                    
 
                     
 
@@ -5039,18 +4408,6 @@ General Note: **A = Approver**
         
 
     
-
-    
-
-ISPE Baseline® Guide: Commissioning and Qualification (2nd Edition)
-
-    
-
-Chapter 6: C&Q Planning  |  Pages 41–48
-
-    
-
-For educational purposes. © ISPE 2019. All rights reserved.
 
 ⇧
 
@@ -5319,144 +4676,9 @@ Organizations/sites may use different terminology and deliverables for C&Q testi
 Table 7.1: C&Q Testing and Inspection — Documentation Terminology Comparison
 
                     
-                        
-                            
-                                
-                                
-                                
-                            
-| Document Type | Description / Context | Oversight Level |
-| --- | --- | --- |
-                        
-                        
-                            
-                                ****
-                                
-                                
-                            
-| Document Reviews | Confirming that the testing/inspection has been carried out and is recorded per agreed Good Documentation Practices standards (e.g., material certifications, vendor documentation) | — |
-                            
-                                ****
-                                
-                                
-                            
-| FAT / SAT | Testing to demonstrate that a system meets established design requirements and contractual obligations | Vendor involvement and technical oversight |
-                            
-                                ****
-                                
-                                
-                            
-| Testing and Balancing Reports | Testing to demonstrate that a system meets established design requirements | Technical oversight |
-                            
-                                ****
-                                
-                                
-                            
-| Qualification (CAs/CDEs) | Testing to demonstrate that the CAs/CDEs meet established design requirements | Quality Unit oversight |
-                        
-                    
-
-                    
                     
 
 Table 7.2: Example Options for Testing/Inspection Record Documents
-
-                    
-                        
-                            
-                                
-                                
-                                
-                            
-| System Type | Option 1 | Option 2 |
-| --- | --- | --- |
-                        
-                        
-                            
-                                ****
-                                
-- 
-- 
-- 
-- 
-
-                                
-- 
-- 
-- 
-- 
-
-                            
-| Autoclave | FAT                                         SAT                                         Cycle Development                                         PQ | FAT                                         Installation and Operational Testing Summary                                         Cycle Development                                         PQ |
-                            
-                                ****  
-
-                                
-- 
-- 
-
-                                
-- 
-- 
-
-                            
-| HVAC(Air Handling Unit up to the final filters) | Turnover Package                                         Testing and Balancing Report | Turnover Package                                         Commissioning |
-                            
-                                ****
-                                
-- 
-- 
-- 
-- 
-
-                                
-- 
-- 
-- 
-- 
-- 
-
-                            
-| Lyophilization | FAT                                         SAT                                         Cycle Development                                         PQ | FAT                                         Commissioning                                         Cycle Development                                         Installation and Operational Testing Summary                                         PQ |
-                            
-                                ****
-                                
-- 
-- 
-- 
-
-                                
-                            
-| Scale | Receipt Inspection                                         Calibration Report                                         Installation Testing Summary | — |
-                            
-                                ****
-                                
-- 
-- 
-- 
-
-                                
-- 
-- 
-
-                            
-| WFI Generation | FAT                                         SAT                                         PQ1 | SAT                                         PQ1 |
-                            
-                                ****
-                                
-- 
-- 
-
-                                
-- 
-- 
-- 
-- 
-
-                            
-| WFI Distribution | Turnover Package                                         PQ1* | Turnover Package                                         Receipt Inspection                                         Operational Testing Summary                                         PQ1 |
-                        
-                    
 
                     
 
@@ -5712,47 +4934,6 @@ The **Quality Unit representative** provides oversight to ensure that all CAs/CD
                 
 
                 
-
-                    
-
-                    
-
-                        
-
-#### 👥 C&Q
-
-                        
-                            
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| Testing Coordinator | | |
-                                
-                                    
-                                    
-                                    
-                                
-| Production User | | SOP |
-                                
-                                    
-                                    
-                                    
-                                
-| Technical Experts | ///SME | |
-                                
-                                    
-                                    
-                                    
-                                
-| Quality Unit Rep. | | SRA CDE |
-                            
-                        
 
                     
 
@@ -6369,54 +5550,6 @@ System vendors typically have their own format for TOPs, but the owner organizat
 
                         
 
-#### 🏭 TOP 15 CDMO
-
-                        
-
-                        
-                            
-                                
-| # | TOP | |
-| --- | --- | --- |
-                            
-                            
-                                
-| 1 | SOP | |
-                                
-| 2 | Spare Parts List | |
-                                
-| 3 | | |
-                                
-| 4 | | |
-                                
-| 5 | As-built | IQ |
-                                
-| 6 | CoC | |
-                                
-| 7 | / | IQ |
-                                ****
-| 8 | Loop Calibration | CDE |
-                                
-| 9 | MSDS/SDS | |
-                                
-| 10 | / | |
-                                
-| 11 | Warranties | |
-                                
-| 12 | | PID |
-                                
-| 13 | | |
-                            
-                        
-
-                        
-
-                    
-
-                    
-
-                        
-
 #### ⚠️ TOP
 
                         
@@ -6450,6 +5583,18 @@ System vendors typically have their own format for TOPs, but the owner organizat
             
 
         
+
+                        
+
+#### 🏭 TOP 15 CDMO
+
+                        
+
+                        
+
+                    
+
+                    
 
     
 
@@ -6501,35 +5646,6 @@ Cleaning of any systems that will be moved into a classified area should be perf
                 
 
                 
-
-                    
-
-                    
-
-                        
-
-#### 🧹
-
-                        
-                            
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-                                    ****
-                                    
-                                    
-                                
-| Clean Construction | | |
-                                
-                                    ****
-                                    
-                                    
-                                
-| Post-Construction Cleaning | | cleaningflushingsanitationpassivation |
-                            
-                        
 
                     
 
@@ -6738,37 +5854,19 @@ The scope of installation testing includes all system installation requirements 
 
                     
 
+            
+
+        
+
                         
 
 #### 🏭 FAT vs SAT vs Commissioning vs Qualification
-
-                        
-                            
-                                
-| | | | QA |
-| --- | --- | --- | --- |
-                            
-                            
-                                
-| FAT | | | |
-                                
-| SAT | | | |
-                                
-| Commissioning | | | |
-                                
-| Qualification (IQ/OQ/PQ) | | | QA |
-                            
-                        
 
                         
 
                     
 
                 
-
-            
-
-        
 
     
 
@@ -6863,29 +5961,6 @@ PDIs are construction checks (inspection and testing) of systems or major system
 
                         
 
-#### ⚠️ PDI vs FAT
-
-                        
-                            
-                                
-| | PDI | FAT |
-| --- | --- | --- |
-                            
-                            
-                                
-                                
-                                
-| | | / |
-                                
-                            
-                        
-
-                    
-
-                    
-
-                        
-
 #### 🤔 PDI
 
                         
@@ -6940,22 +6015,6 @@ PDIs are construction checks (inspection and testing) of systems or major system
         
 
     
-
-    
-
-ISPE Baseline® Guide Vol.5: Commissioning and Qualification (2nd Edition)
-
-    
-
-Chapter 7 Part 1 — C&Q Testing and Documentation (pp. 49–56)
-
-    
-
-For individual use only. © Copyright ISPE 2019. All rights reserved.
-
-    
-
-Educational bilingual commentary — Traditional Chinese annotations for training purposes.
 
 ↑
 
@@ -7179,25 +6238,6 @@ After completing SAT testing, the owner representative agrees with the vendor wh
 
                         
 
-#### SATvs FAT
-
-                        
-                            
-| | FAT | SAT |
-| --- | --- | --- |
-                            
-                            
-                            
-| punch list | | FAT |
-                            
-                        
-
-                    
-
-                    
-
-                        
-
 #### 
 
                         
@@ -7340,29 +6380,6 @@ Any issues identified during system start-up activities should be verified to no
 
                         
 
-                        
-                            
-| --- | --- | --- |
-                            
-| Step 1 | | punch list |
-                            
-| Step 2 | (Pre-PSSR) | Step 1 |
-                            
-| Step 3 | | Step 1+2 |
-                            
-| Step 4 | | Step 3 |
-                        
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
-
                     
 
                     
@@ -7380,6 +6397,16 @@ Any issues identified during system start-up activities should be verified to no
             
 
         
+
+                        
+
+#### 
+
+                        
+
+                        
+
+                    
 
     
 
@@ -7662,27 +6689,6 @@ Examples of systems where PQ is usually required before acceptance and release i
 
                         
 
-#### PQ
-
-                        
-                            
-| | PQ |
-| --- | --- |
-                            
-| (Autoclave) | F0 ≥3 |
-                            
-| | (Media Fill/APS) |
-                            
-| | TOC |
-                            
-                        
-
-                    
-
-                    
-
-                        
-
 #### PQ =
 
                         
@@ -7765,126 +6771,12 @@ Table 7.3 provides suggested actions depending on the type of discrepancy.
 #### Table 7.3: Discrepancy Types and Suggested Actions
 
                     
-                        
-                            
-                                
-                                
-                                
-                            
-| Issue | Description | Suggested Action |
-| --- | --- | --- |
-                        
-                        
-                            
-                                  
-
-                                
-                                
-                            
-| Type 1Obvious typographical error | Protocol generation error | Add notation to test documentation with supporting documentation as needed, following Good Documentation Practices. |
-                            
-                                  
-
-                                
-                                
-- 
-- 
-
-                            
-| Type 2Expected result not met | Design authority/SME accepts the result or initiates engineering change to obtain suitable result | Add rationale to test record sheet with approval by the design authority/SME.                                         The design authority has the legal obligation to ensure the system meets codes. |
-                            
-                                  
-
-                                
-                                
-- 
-- 
-- 
-
-                            
-| Type 3Expected result or acceptance criteria not met with known root cause | Discrepancy | Mark test record sheet to reflect the issue and required adjustments with any required repeat test.                                         If engineering change is needed, add cross reference in test record sheet.                                         Rationale/reference is signed off by SME and tests repeated. |
-                            
-                                  
-****
-                                
-                                
-- 
-- ****
-- 
-
-                            
-| Type 4Acceptance criteria not met with no known root cause | Critical discrepancy with Quality Unit involvement | Mark test record sheet to reflect the issue.                                         Use discrepancy form to document investigation results and steps for adjustments. Form signed off by SME and Quality Unit representative.                                         Retest with a new test record sheet. |
-                            
-                                  
-****
-                                
-                                
-- 
-- ****
-
-                            
-| Type 5Acceptance criteria that cannot be met | Critical discrepancy with Quality Unit involvement | Mark test record sheet to reflect the issue.                                         Use discrepancy form to document investigation results, justification, and any additional risk controls implemented. Form signed off by SME and Quality Unit representative. |
-                        
-                    
-
-                    
 
 **Notes:** The Quality Unit has oversight of testing of direct impact systems and needs to approve any engineering change requests for direct impact systems. Critical discrepancies relate to CAs/CDEs.
 
                 
 
                 
-
-                    
-
-                    
-
-                        
-
-#### Expected Result vs Acceptance Criteria
-
-                        
-                            
-| --- | --- | --- |
-                            
-                                ****  
-
-                                
-                                
-                            
-| Expected Result | | /SME |
-                            
-                                ****  
-
-                                
-                                
-                            
-| Acceptance Criteria | | = |
-                        
-
-                    
-
-                    
-
-                        
-
-#### Table 7.3
-
-                        
-                            
-| | | QA |
-| --- | --- | --- |
-                            
-| Type 1 | | GDP |
-                            
-| Type 2 | SME | SME |
-                            
-| Type 3 | | SME + |
-                            ************
-| Type 4 | | |
-                            ************
-| Type 5 | | |
-                        
 
                     
 
@@ -7925,6 +6817,14 @@ Table 7.3 provides suggested actions depending on the type of discrepancy.
             
 
         
+
+                        
+
+#### Table 7.3
+
+                        
+
+                    
 
     
 
@@ -8036,24 +6936,6 @@ The acceptance and release phase is *not intended* to be a catchall for closeout
 
 #### =
 
-                        
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
-                            
-| --- | --- |
-                            
-| SMEs | |
-                            
-                            
-| QA | CA/CDE |
                         
 
                     
@@ -8357,30 +7239,6 @@ A statement that all required quality system elements are in place should be inc
 
                         
 
-                        
-
-                    
-
-                    
-
-                        
-
-#### 8.3.2
-
-                        
-                            
-| --- | --- | --- |
-                            
-                                
-                                
-                                
-                            
-                            
-                                
-                                
-                                
-                            
-| | + + + QA | |
                         
 
                     
@@ -8777,60 +7635,8 @@ For smaller projects, a Traceability Matrix may not be needed. It is considered 
 
                         
 
-#### Traceability Matrix
-
-                        
-                            
-| --- | --- |
-                            
-                            
-                            
-| | CA/CDE |
-                            
-| | DR |
-                            
-                        
-
-                    
-
-                    
-
-                        
-
 #### =
 
-                        
-
-                    
-
-                    
-
-                        
-
-#### CDMO /
-
-                        
-                            
-| | | ISPE |
-| --- | --- | --- |
-                            
-                                
-                                
-                                
-                            
-| | (Periodic Review)/3 | 8.1A&R continuous performance monitoring |
-                            
-                                
-                                
-                                
-                            
-| / | (Quality Change Control) | 8.1 QA-managed CC |
-                            
-                                
-                                
-                                
-                            
-| | (Deviation Report)Type 4/5 QA | 7.4 Table 7.3 |
                         
 
                     
@@ -8915,36 +7721,6 @@ Chapter 7 Part 2 + Chapter 8 — Key Takeaways
 Key Terms Glossary
 
                     
-                        
-| English Term | | |
-| --- | --- | --- |
-                        
-| FAT | | / |
-                        
-| SAT | | / |
-                        
-| Receipt Inspection (RI) | | |
-                        
-| Installation Verification | | CDE |
-                        
-| System Start-Up | | GEP |
-                        
-| Performance Qualification (PQ) | | / |
-                        
-| Discrepancy | | / |
-                        
-| Critical Discrepancy | | CA/CDE QA |
-                        
-| Acceptance and Release | | |
-                        
-| Qualified State | | QA |
-                        
-| Quality System Elements | | SOP |
-                        
-| Traceability Matrix | | URS→DR→ |
-                    
-
-                
 
                 
 
@@ -9124,70 +7900,6 @@ Certain systems have regulatory expectations to confirm ongoing system performan
                     
 
 #### Table 9.1: Examples of Periodic Verification Frequencies for Systems with Regulatory Expectations
-
-                    
-                        
-                            
-                                
-                                
-                                
-                                
-                            
-| System | Periodic Verification Scope | Frequency | Regulatory Basis |
-| --- | --- | --- | --- |
-                        
-                        
-                            
-                                
-                                
-                                
-                                
-                            
-| Facilities — Room classification | Room classification | No period defined1 | N/A |
-                            
-                                
-                                
-                                
-                                
-                            
-| HEPA filter leak testing (aseptic fill environments) | ISO 5/Grade A and ISO 7/Grade B: Semi-annual; ISO 8/Grade C: Annual (industry practice) | Semi-annual2 | [23] FDA Aseptic Guidance |
-                            
-                                
-                                
-                                
-                                
-                            
-| ISO 5/Grade A cabinets (BSC, LAF hoods, isolators, downflow hoods) | HEPA filter testing | Semi-annual | [23] |
-                            
-                                
-                                
-                                
-                                
-                            
-| Steam Sterilizers | All sterilization cycles | Annual | [24] EU GMP Annex 1 |
-                            
-                                
-                                
-                                
-                                
-                            
-| Equipment SIP | SIP cycle | Annual3 | [24] |
-                            
-                                
-                                
-                                
-                                
-                            
-| Depyrogenation Tunnel | Depyrogenation cycle | Annual | [24] |
-                            
-                                
-                                
-                                
-                                
-                            
-| Aseptic Filling Lines | Aseptic process simulation (APS/media fill) | Semi-annual | [23] |
-                        
-                    
 
                     
 
@@ -9757,84 +8469,6 @@ The category defines the periodic review frequency schedule. These frequencies s
 #### Table 9.2: Examples of Periodic Review Categories
 
                     
-                        
-                            
-                                
-                                
-                                
-                                
-                            
-| Process | Category | System Types (Examples) | Rationale |
-| --- | --- | --- | --- |
-                        
-                        
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Sterilization | Cat 1 | Autoclave; Decontamination/sterilization system (including equipment sterilization) | Complex systems with quality critical function subject to regulatory guidance; routine revalidation already established |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Sterile Filtration* | Cat 0 | Filter/filter housing; Filtration system | Standard systems with pre- and post-use integrity tests used to monitor system performance |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Tablet Manufacturing (standard) | Cat 0 | Sieve; Granulator; Dryer; Mill; Blender | Standard equipment with minimal configuration; system performance monitored through in-process controls |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Tablet Manufacturing (complex) | Cat 3 | Coater; Tablet press; Capsule filler | Operationally and/or mechanically complex systems that process the final oral solid dose product |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Fermentation | Cat 3 | Fermentation systems; Bioreactors | Standard equipment; system performance generally monitored through in-process controls |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Purification | Cat 2 | Chromatography skids; TFF systems | Standard equipment with minimal configuration; performance monitored through in-process controls |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Fill/Finish | Cat 2 | Buffer preparation/hold systems; Capper; Filler | Systems generally constructed from standard components; quality of output routinely monitored |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Utilities and HVAC | Cat 0 | Compressed air; Gas systems (Argon, CO₂, N₂, O₂, etc.); Clean steam; Deionized/purified water; WFI; HVAC system; Vacuum; Ethanol | Systems constructed from standard components; quality of output routinely monitored |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Packaging | Cat 0 | Packaging systems | Systems constructed from standard components; quality of output routinely monitored |
-                        
-                    
-
-                    
 
 *Where filters are used for quality critical applications, pre- and post-use integrity testing is used to confirm system performance; therefore, periodic review would not be required.
 
@@ -9843,39 +8477,6 @@ The category defines the periodic review frequency schedule. These frequencies s
 #### Table 9.3: Example Periodic Review Schedule
 
                     
-                        
-                            
-                                
-                                
-                            
-| Periodic Review Category | Periodic Review Schedule |
-| --- | --- |
-                        
-                        
-                            
-                                
-                                ****
-                            
-| Cat 0 | This category relies on existing quality systems and performance monitoring programs; periodic review is not required, e.g., critical utility systems such as compressed air, purified water or WFI. |
-                            
-                                
-                                ****
-                            
-| Cat 1 | This category has established requirements from regulations specific to the system and is not subject to additional periodic assessment activities, e.g., autoclaves and depyrogenation tunnels. |
-                            
-                                
-                                ****
-                            
-| Cat 2 | Perform reviews at two-year intervals. |
-                            
-                                
-                                ****
-                            
-| Cat 3 | Perform reviews at three-year intervals. |
-                        
-                    
-
-                
 
                 
                 
@@ -10738,18 +9339,6 @@ At this level:
 
     
 
-    
-
-ISPE Baseline® Guide: Commissioning and Qualification, 2nd Edition
-
-    
-
-Chapter 9: Periodic Review  |  Pages 69–78
-
-    
-
-© 2019 ISPE. For individual use only. Educational commentary in Traditional Chinese added for learning purposes.
-
 ⇧
 
 ## Chapter 10-11: Vendor Assessment & Engineering Quality Process (p79-p88)
@@ -11116,42 +9705,6 @@ Refer to Chapter 27 (Appendix 13) for an example vendor assessment for verificat
 
                         
 
-#### 📋 11
-
-                        
-                            
-| # | | |
-| --- | --- | --- |
-                            
-| 1 | | |
-                            
-| 2 | | GMP |
-                            
-| 3 | | |
-                            
-| 4 | | |
-                            
-| 5 | QA | QA |
-                            
-| 6 | | |
-                            
-| 7 | | |
-                            
-| 8 | | |
-                            
-| 9 | GDocP | GDocP |
-                            
-| 10 | / | |
-                            
-| 11 | | |
-                        
-
-                    
-
-                    
-
-                        
-
 #### ⚠️
 
                         
@@ -11262,41 +9815,6 @@ The decisions and rationale for the approach taken can be documented and approve
                 
 
                 
-
-                    
-
-                    
-
-                        
-
-#### 📋 4
-
-                        
-                            
-| --- | --- | --- |
-                            
-                                ****
-                                
-                                
-                            
-                            
-                                ****
-                                
-                                
-                            
-                            
-                                ****
-                                
-                                
-                            
-| SME | SME | |
-                            
-                                ****
-                                
-                                
-                            
-| (Waiver) | | |
-                        
 
                     
 
@@ -11549,36 +10067,6 @@ Appropriate training for team members taking over special roles (such as facilit
                 
 
                 
-
-                    
-
-                    
-
-                        
-
-#### 🏫 8
-
-                        
-                            
-| # | | |
-| --- | --- | --- |
-                            
-| 1 | PQS | |
-                            
-| 2 | GMP | GMP |
-                            
-| 3 | | |
-                            
-| 4 | GDocP | |
-                            
-| 5 | ECM | |
-                            
-| 6 | | |
-                            
-| 7 | | NDA/CDA |
-                            
-| 8 | | |
-                        
 
                     
 
@@ -11895,36 +10383,6 @@ In addition, the Engineering Quality Process should be sufficiently flexible in 
 
                         
 
-#### 📋 FDA (6-System FDA Inspection Model)
-
-                        
-
-                        
-                            
-| # | | C&Q |
-| --- | --- | --- |
-                            
-| 1 | 🌟 (Quality) | PQS |
-                            
-| 2 | (Production) | IQ/OQ/PQ |
-                            ****  
-| 3 | (Facilities & Equipment) | ✅ Engineering Quality Process |
-                            
-| 4 | (Laboratory) | |
-                            
-| 5 | (Materials) | |
-                              
-| 6 | (Packaging & Labeling) | |
-                        
-
-                        
-
-                    
-
-                    
-
-                        
-
 #### 💡 vs.
 
                         
@@ -11990,6 +10448,18 @@ In addition, the Engineering Quality Process should be sufficiently flexible in 
             
 
         
+
+                        
+
+#### 📋 FDA (6-System FDA Inspection Model)
+
+                        
+
+                        
+
+                    
+
+                    
 
     
 
@@ -12166,53 +10636,6 @@ In summary, the Engineering Quality Process should:
 
                         
 
-#### 🏢 CDMO SOP
-
-                        
-                            
-                                
-                                
-                            
-| ISPE | CDMO |
-| --- | --- |
-                            
-                                
-                                  
-
-                            
-| / | (Validation Policy, VP-001) |
-                            
-                                
-                                  
-  
-
-                            
-| | (Validation Standard)C&Q |
-                            
-                                
-                                  
-  
-  
-  
-
-                            
-| (SOP) | URS SOPIQ/OQ/PQ SOP SOP SOPDR/DQ SOP |
-                            
-                                
-                                  
-  
-  
-
-                            
-| | IQ/OQ FAT/SAT (QSR) |
-                        
-
-                    
-
-                    
-
-                        
-
 #### 💡 vs.
 
                         
@@ -12329,55 +10752,6 @@ The roles and responsibilities for the Engineering Quality Process should be def
 
                         
 
-#### 📋 5
-
-                        
-                            
-                                
-                                
-                                
-                            
-| | | CDMO |
-| --- | --- | --- |
-                            
-                                ****
-                                
-                                
-                            
-| (Engineering) | Engineering Quality Process | |
-                            
-                                ****
-                                
-                                
-                            
-| (Manufacturing) | C&Q | |
-                            
-                                **  
-**
-                                
-                                
-                            
-| /(Technical Support/Research) | / | |
-                            
-                                ****
-                                
-                                
-                            
-| (Quality Unit) | Engineering Quality Process QMS | QA |
-                            
-                                ****
-                                
-                                
-                            
-| HSE | Engineering Quality Process | EHS |
-                        
-
-                    
-
-                    
-
-                        
-
 #### 💡
 
                         
@@ -12441,18 +10815,6 @@ The roles and responsibilities for the Engineering Quality Process should be def
         
 
     
-
-    
-
-ISPE Baseline® Guide: Commissioning and Qualification, 2nd Edition
-
-    
-
-Chapter 10 (pp.79–82) & Chapter 11 (pp.83–88) — Educational Bilingual Edition
-
-    
-
-© ISPE 2019. For individual educational use only. All rights reserved.
 
 ⇧
 
@@ -12582,44 +10944,6 @@ Figure 12.1 illustrates the differences between the two basic types of change ma
           
 
             
-              
-                
-                  
-                  
-                
-| Engineering Change Management (ECM) | Quality Change Control (QCC) |
-| --- | --- |
-              
-              
-                
-                  
-                  
-                
-| Managed by Engineering or Operations unit | Managed by Quality Assurance (QA) |
-                
-                  
-                  
-                
-| Changes to CAs/CDEs require Quality Unit approval | Changes require pre-approval by Quality Unit prior to initiation |
-                
-                  
-                  
-                
-| Approvals performed by appropriate SMEs and system owners | Impact on system's qualified/validated status must be evaluated and documented |
-                
-                  ****
-                  ****
-                
-| Applicable during projects prior to acceptance and release | Applicable following Quality Unit acceptance and release and during subsequent lifecycle management |
-                
-                  
-                  
-                
-| May also be applied during lifecycle management for non-critical aspects (per System Risk Assessment) | Requalification needs QA approval; post-change verification documentation required |
-              
-            
-
-          
 
           
 
@@ -12723,61 +11047,6 @@ Table 12.2 provides examples of types of changes and the suggested change manage
           
 
             
-              
-                
-                  
-                  
-                  
-                  
-                
-| Change Description | ECM (No QA) | ECM + QA Approval | QCC |
-| --- | --- | --- | --- |
-              
-              
-                
-                  
-                  
-                
-| New system impacting only non-GMP regulations | ✓ |  |  |
-                
-                  
-                  
-                
-| Changes to GMP-supporting system without CAs/CDEs | ✓ |  |  |
-                
-                  
-                  
-                
-| Changes during C&Q that do NOT impact CAs/CDEs | ✓ |  |  |
-                
-                  
-                  
-                
-| Changes during C&Q that DO impact CAs/CDEs |  | ✓ |  |
-                
-                  
-                  
-                
-| Changes to any document previously approved by QA |  | ✓ |  |
-                
-                  
-                  
-                
-| Acceptance and release for systems with CAs/CDEs |  |  | ✓ |
-                
-                  
-                  
-                
-| Changes after acceptance and release to qualified system with CAs/CDEs |  |  | ✓ |
-                
-                  
-                  
-                
-| Post-release changes to non-critical aspects (if justified by risk assessment) | ✓ |  |  |
-              
-            
-
-          
 
           
 
@@ -13377,30 +11646,6 @@ Non-correctable deviations may require an SOP or other procedural change (proced
 
             
 
-#### 📅 ECM
-
-            
-              
-| | | ECM |
-| --- | --- | --- |
-              
-                
-| | | QA |
-                
-| | | SME |
-                
-| /C&Q | | -CDE |
-                
-| | | QCC |
-              
-            
-
-          
-
-          
-
-            
-
 #### ⚠ > >
 
             
@@ -13527,50 +11772,6 @@ This chapter applies to all C&Q documentation, including test documents and repo
           
 
             
-              
-                
-                  
-                  
-                  
-                
-| Aspect | Commissioning (GEP) | Qualification (GMP) |
-| --- | --- | --- |
-              
-              
-                
-                  
-                  
-                  
-                
-| Testing approach | Iterative testing and adjustment permitted; final results permanently recorded | Protocols followed exactly; all events recorded as they occur; all deviations documented |
-                
-                  
-                  
-                  
-                
-| Standards | Engineering standard testing practices (ISO, NEBB); acceptance criteria in approved specifications | Custom protocols with pre-approved acceptance criteria |
-                
-                  
-                  
-                  
-                
-| Acceptability | Engineering judgment used to verify spec and design for non-critical aspects | Quality Unit reviews and approves acceptability; confirms CAs/CDEs |
-                
-                  
-                  
-                  
-                
-| Documentation standard | Generally accepted GDocP (Section 13.3.2) | Organization/site-specific practices required for GMP records |
-                
-                  
-                  
-                  
-                
-| Approval | Typically not approved by Quality Unit; Engineering approves testing strategy | Testing strategy and acceptance approved by Quality Unit |
-              
-            
-
-          
 
           
 
@@ -14895,16 +13096,6 @@ There should be a system in place to handle the reconstruction of records. All m
 
   
 
-  
-
-ISPE Baseline® Guide Vol. 5: Commissioning and Qualification, 2nd Edition
-
-  
-
-For individual use only. © Copyright ISPE 2019. All rights reserved.
-
-  
-
 ↑
 
 ## Chapter 14+App: Implementation Strategies & Key Appendices (p105-p212)
@@ -15384,79 +13575,6 @@ Three-scenario matrix: Major Change / Minor Change / New System | Page 109
 ### Table 14.1: Suggested Approach for Implementation of Science and Risk-Based C&Q Approach
 
                     
-                        
-                            
-                                
-                                  
-
-                                  
-
-                                
-                            
-| Step | Major Change(major change to an existing qualified system or existing system with potential compliance gaps) | Minor Change(minor change to existing system with good qualification package) | New System |
-| --- | --- | --- | --- |
-                        
-                        
-                            
-                                ****
-                                
-                                
-                                
-                            
-| URS | Review process requirements and gaps; identify CAs (based on risk) and proposed technical (CDEs) and procedural controls | Requirements definition of the change control is required to describe the change | Required |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| System Risk Assessment | Risk assessment is required to determine the impact of the change | Risk assessment is required to determine the impact of the change | Required |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| DR/DQ | Review the design to ensure change requirements are met | Review the design to ensure change requirements are met | Required |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| C&Q Plan | Develop the plan to describe the approach | Content is typically included in the change control | Required |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Test Plan | Develop the plan | Content is typically contained in change control (depending on complexity of testing required) | Required |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Testing | Review existing qualification documentation to confirm technical controls (CDEs) that were identified based on risk have been tested; supplement with additional testing if required; review procedures to confirm procedural controls are in place; update if required | Required to address the change | Required |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Procedures (operations and maintenance) | Revise to address the change as required | Revise to address the change as required | Required |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Acceptance and Release (Qualification Summary Report) | Required | Recorded and approved through closeout of the change control | Required |
-                        
-                    
-
-                    
 
 *Note: Any of these aspects may be combined depending on the magnitude and complexity of the project.*
 
@@ -15690,56 +13808,6 @@ The regulatory expectations for C&Q are primarily described in the following doc
 #### 
 
                         
-                            
-                                
-                                    
-                                    
-                                
-| --- | --- |
-                            
-                            
-                                
-                                    ****
-                                    
-                                
-| EU GMP Annex 15 | GMP 152015— IQ/OQ/PQ |
-                                
-                                    ****
-                                    
-                                
-| FDA PV Guidance 2011 | FDA 2011— |
-                                
-                                    ****
-                                    
-                                
-| ICH Q8 | QbD — C&Q |
-                                
-                                    ****
-                                    
-                                
-| ICH Q9 | QRM— SRA |
-                                
-                                    ****
-                                    
-                                
-| ICH Q10 | PQS— |
-                                
-                                    ****
-                                    
-                                
-| 21 CFR 210/211 | cGMP |
-                            
-                        
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
 
                         
 
@@ -15924,119 +13992,6 @@ Summary of all appendices in ISPE Baseline Vol.5 C&Q 2nd Ed.
 The following appendices are referenced throughout the ISPE Baseline Guide Vol.5 Commissioning and Qualification (2nd Edition). Each appendix provides example templates, forms, or reference material to support the implementation of the C&Q process described in Chapters 1–14.
 
                     
-                        
-                            
-                                
-                                
-                                
-                                
-                            
-| Appendix | Chapter | Topic | Primary Use |
-| --- | --- | --- | --- |
-                        
-                        
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Appendix 1 | Ch. 15 | Regulatory Basis | Map ISPE approach to FDA, EU GMP Annex 15, ICH Q8/Q9/Q10 |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Appendix 2 | Ch. 16 | Example URS Template | Template for User Requirements Specification with example requirements (good/bad) |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Appendix 3 | Ch. 17 | Example System Classification Form | Form for classifying systems as Direct / Indirect / No Impact |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Appendix 4 | Ch. 18 | Example Direct Impact Systems List | Sample list of systems typically classified as Direct Impact |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Appendix 5 | Ch. 19 | Example System Risk Assessment | Template for System Risk Assessment (SRA) identifying CDEs and CAs |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Appendix 6 | Ch. 20 | Example DR/DQ Summary | Template for Design Review and Design Qualification summary |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Appendix 7 | Ch. 21 | C&Q Planning Support | Planning tools and templates for C&Q programs |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Appendix 8 | Ch. 22 | Example C&Q Test Documents | Example test protocol and report templates for commissioning and qualification testing |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Appendix 9 | Ch. 23 | Example Discrepancy Form | Form for recording and resolving test discrepancies/deviations during C&Q execution |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Appendix 11 | Ch. 25 | Example Periodic Review Form | Form for conducting periodic reviews to confirm continued qualified state |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Appendix 13 | Ch. 27 | Example Vendor Assessment | Template for assessing vendor documentation and C&Q capabilities |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Appendix 14 | Ch. 28 | Organizational Maturity Model | Framework for assessing organizational readiness for science/risk-based C&Q |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Appendix 15 | Ch. 29 | Legacy System Qualification Approach | Guidance for qualifying legacy systems or systems with inadequate qualification documentation |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| Appendix 17 | Ch. 31 | Expanded Definitions | Comprehensive glossary of terms used throughout the Guide |
-                        
-                    
-
-                
 
                 
                 
@@ -16201,45 +14156,6 @@ All of this is underpinned by regulatory expectations from FDA, EU GMP Annex 15,
 
                         
 
-#### ISPE Vol.5
-
-                        
-
-                        
-                            
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-| Ch.1-3 | + | Direct/Indirect/No Impact |
-                                
-| Ch.4 | | SRA → CDEs |
-                                
-| Ch.5 | | DR/DQ → |
-                                
-| Ch.6 | C&Q | VMP / C&Q Plan |
-                                
-| Ch.7-8 | | Test Protocol / Qualification Report |
-                                
-| Ch.9 | | Periodic Review Form |
-                                
-| Ch.10-11 | | Vendor Assessment |
-                                
-| Ch.12-13 | GDocP | Change Control + |
-                                
-| Ch.14 | | Table 14.1 |
-                                
-| App.1 (Ch.15) | | FDA / EU Annex 15 / ICH |
-                            
-                        
-
-                    
-
-                    
-
-                        
-
 #### 
 
                         
@@ -16264,18 +14180,16 @@ All of this is underpinned by regulatory expectations from FDA, EU GMP Annex 15,
 
         
 
-    
+                        
+
+#### ISPE Vol.5
+
+                        
+
+                        
+
+                    
 
     
-
-ISPE Baseline Guide Vol.5: Commissioning and Qualification, 2nd Edition (2019)
-
-    
-
-Chapter 14: Strategies for Implementation | Appendix 1: Regulatory Basis | Appendices Overview
-
-    
-
-For individual use only. © Copyright ISPE 2019. All rights reserved. Educational commentary in Traditional Chinese added for learning purposes.
 
 ⇧

@@ -749,137 +749,6 @@ A pharmaceutical form of an active substance or placebo being tested or used as 
 ### Acronym Reference |
 
                     
-                        
-                            
-                                
-                                
-                            
-| Acronym | Full Name |
-| --- | --- |
-                        
-                        
-                            ****
-| AA | Atomic Absorption |
-                            ****
-| ADE | Acceptable Daily Exposure |
-                            ****
-| ADI | Acceptable Daily Intake |
-                            ****
-| API | Active Pharmaceutical Ingredient |
-                            ****
-| CAPA | Corrective and Preventive Actions |
-                            ****
-| CBER | Centers For Biological Evaluation and Research |
-                            ****
-| CDER | Centers for Drug Evaluation and Research |
-                            ****
-| CFU | Colony Forming Unit |
-                            ****
-| CGMPs | Current Good Manufacturing Practices |
-                            ****
-| CIP | Clean-In-Place |
-                            ****
-| COP | Clean Out-of-Place |
-                            ****
-| CPP | Critical Process Parameters |
-                            ****
-| CQA | Critical Quality Attributes |
-                            ****
-| CZE | Capillary Zone Electrophoresis |
-                            ****
-| DOE | Design of Experiments |
-                            ****
-| ELISA | Enzyme Linked Immunosorbant Assay |
-                            ****
-| EPDM | Ethylene Propylene Diene Monomer Rubber |
-                            ****
-| EU | Endotoxin Units |
-                            ****
-| FDA | U.S. Food and Drug Administration |
-                            ****
-| FMEA | Failure Mode and Effects Analysis |
-                            ****
-| FTIR | Fourier Transform InfraRed |
-                            ****
-| HPLC | High Performance Liquid Chromatography |
-                            ****
-| ICH | International Conference on Harmonisation |
-                            ****
-| ICP | Inductively Coupled Plasma |
-                            ****
-| IMS | Ion Mobility Spectrometry |
-                            ****
-| LD50 | Lethal Dose 50 Percent |
-                            ****
-| LOD | Limit of Detection |
-                            ****
-| LOQ | Limit of Quantitation |
-                            ****
-| MAC / MACO | Maximum Allowable Carryover |
-                            ****
-| NIR | Near Infrared |
-                            ****
-| NOAEL | No Observable Adverse Effect Level |
-                            ****
-| NOEL | No Observable Effect Level |
-                            ****
-| OIT | Operator Interface Terminal |
-                            ****
-| PAI | Pre-Approval Inspection |
-                            ****
-| PAT | Process Analytical Technology |
-                            ****
-| PIC/S | Pharmaceutical Inspection Cooperation Scheme |
-                            ****
-| PLC | Programmable Logic Controller |
-                            ****
-| PPQ | Process Performance Qualification |
-                            ****
-| PTFE | PolyTetraFluoroEthylene |
-                            ****
-| PW | Purified Water |
-                            ****
-| QA | Quality Assurance |
-                            ****
-| QbD | Quality by Design |
-                            ****
-| QC | Quality Control |
-                            ****
-| RSD | Relative Standard Deviation |
-                            ****
-| SAL | Surface Acceptance Limit |
-                            ****
-| SEM | Scanning Electron Microscopy |
-                            ****
-| SIP | Steam-In-Place (or Sterilization-In-Place) |
-                            ****
-| SOP | Standard Operating Procedure |
-                            ****
-| SPC | Statistical Process Control |
-                            ****
-| SUPAC | Scale Up and Post Approval Changes |
-                            ****
-| TACT | Time, Action, Concentration and Temperature |
-                            ****
-| TLC | Thin Layer Chromatography |
-                            ****
-| TNTC | Too Numerous To Count |
-                            ****
-| TOC | Total Organic Carbon |
-                            ****
-| TTC | Threshold of Toxicological Concern |
-                            ****
-| UPLC | UltraPerformance Liquid Chromatography |
-                            ****
-| UV/Vis | Ultraviolet/visible Spectrophotometry |
-                            ****
-| WFI | Water for Injection |
-                            ****
-| WHO | World Health Organization |
-                        
-                    
-
-                
 
                 
                 
@@ -1131,54 +1000,6 @@ Design starts with a consideration of the Critical Process Parameters (CPPs) and
 ### Table 3.1-1: CPP and CQA Considerations (Risk Impact to Cleaning)
 
                 
-                    
-                        
-                            
-                            
-                        
-| Critical Process Parameters (CPPs) | Critical Quality Attributes (CQAs) |
-| --- | --- |
-                    
-                    
-                        
-                            
-                            
-                        
-| Process temperature | Visual detection or limits |
-                        
-                            
-                            
-                        
-| Process pressure | Cleaning agent residues |
-                        
-                            
-                            
-                        
-| Process flow | Product residues |
-                        
-                            
-                            
-                        
-| Process time | Microbiological residue limits |
-                        
-                            
-                            
-                        
-| Cleaning agent concentration | Drainability / drying |
-                        
-                            
-                            
-                        
-| Dirty hold time (soil condition) | Conductivity / resistivity |
-                        
-                            
-                            
-                        
-| Clean hold conditions | — |
-                    
-                
-
-                
 
 ### The Cleaning Spectrum (Table 3.1-2)
 
@@ -1187,43 +1008,6 @@ Design starts with a consideration of the Critical Process Parameters (CPPs) and
 The cleaning spectrum helps manufacturers establish which factors are critical for individual processes, enabling them to set priorities, develop grouping philosophies and establish scientific rationales governing the cleaning program.
 
                 
-                    
-                        
-                            
-                            
-                        
-| Lower Complexity / Risk | Higher Complexity / Risk |
-| --- | --- |
-                    
-                    
-                        
-| Automated Cleaning | Manual Cleaning |
-                        
-| In-place Cleaning | Out-of-Place Cleaning |
-                        
-| Dedicated Equipment | Non-Dedicated Equipment |
-                        
-| Indirect Product Contact Surfaces | Product Contact Surfaces |
-                        
-| Low Risk Site | High Risk Site |
-                        
-| Minor Equipment | Major Equipment |
-                        
-| Low Risk Drugs | High Risk Drugs |
-                        
-| Liquid Formulations | Solid Formulations |
-                        
-| Easy to Clean Product | Difficult to Clean Product |
-                        
-| Smooth, Non-porous Surfaces | Porous Materials |
-                        
-| Single Product Facility | Multiple Product Facility |
-                        
-| Non-Campaigned Production | Campaigned Production |
-                    
-                
-
-            
 
             
 
@@ -1301,44 +1085,6 @@ Cleaning processes generally contain multiple steps. Each step has a function an
                 
 
 ### Table 3.2-1: Cleaning Process Steps (Examples)
-
-                
-                    
-                        
-                            
-                            
-                            
-                        
-| Step | Function | Comments |
-| --- | --- | --- |
-                    
-                    
-                        
-                            ****
-                            
-                            
-                        
-| Vacuum / Pre-Rinse | Removal of readily soluble and/or non-adhering residues | Reduction of soil load prior to washing step. |
-                        
-                            ****
-                            
-                            
-                        
-| Wash with Cleaning Solution | Removal of soluble and dried residues; solubilization by degradation, heat, and/or wetting with detergents | Primary step for soil and bioburden removal. Often performed at elevated temperatures. May include alkaline, acid, or solvent detergents. |
-                        
-                            ****
-                            
-                            
-                        
-| Rinse | Removal of suspended or solubilized soils and cleaning solution | May include a series of pulse rinses, with a final rinse in higher-grade solvent. |
-                        
-                            ****
-                            
-                            
-                        
-| Dry | Removal of water and other solvents | May be done by air or nitrogen flow or by heat. Water removal may be assisted by an organic solvent final rinse. |
-                    
-                
 
                 
 
@@ -1572,55 +1318,6 @@ Surface finish affects cleanability — rough surfaces provide more area for soi
                 
 
 ## | Commentary
-
-                
-
-                    
-
-### CIP vs. COP
-
-                    
-                        
-                            
-                                
-                                
-                                
-                            
-| | CIP | COP |
-| --- | --- | --- |
-                        
-                        
-                            
-                                
-                                
-                                
-                            
-                            
-                                
-                                
-                                
-                            
-| | | / |
-                            
-                                
-                                
-                                
-                            
-| | PLC | |
-                            
-                                
-                                
-                                
-                            
-                            
-                                
-                                
-                                
-                            
-                        
-                    
-
-                
 
                 
 
@@ -2416,6 +2113,34 @@ Key decision framework:
 
                     
 
+### Change Control
+
+                    
+
+                    
+
+                        
+
+                        
+
+                        
+
+                        
+
+                    
+
+                    
+
+                
+
+            
+
+        
+
+    
+
+                    
+
 ### 
 
                     
@@ -2439,46 +2164,6 @@ Key decision framework:
                         
 
 ↓
-
-                        
-
-                            
-
-                        
-
-                    
-
-                    
-                        
-                            
-                                
-                                
-                            
-| --- | --- |
-                        
-                        
-                            
-                                ****
-                                
-                            
-                            
-                                ****
-                                
-                            
-                            
-                                ****
-                                
-                            
-                        
-                    
-
-                
-
-                
-
-                    
-
-### Change Control
 
 ## Section 2: Qualification (p28-p34)
 
@@ -2961,56 +2646,6 @@ When validated cleaning is only performed at the end of campaign (with no cleani
 
                 
 
-### Worst-Case Checklist
-
-                
-                    
-                        
-                            
-                            
-                        
-| --- | --- |
-                    
-                    
-                        
-                              
-
-                            
-                        
-| Max Dirty Hold Time | |
-                        
-                              
-
-                            
-                        
-| Max Campaign Batches | |
-                        
-                              
-
-                            
-                        
-| Min Cleaning Time | |
-                        
-                              
-
-                            
-                        
-| Min Cleaning Temp | |
-                        
-                              
-
-                            
-                        
-| CIP Worst-Case CIP Circuit | |
-                    
-                
-
-            
-
-            
-
-                
-
 ### 
 
                 
@@ -3280,54 +2915,6 @@ Documentation for cleaning verification is similar to documentation for cleaning
 
                 
 
-### Cleaning Validation vs. Cleaning Verification —
-
-                
-                    
-                        
-                            
-                            
-                            
-                        
-| | Validation | Verification |
-| --- | --- | --- |
-                    
-                    
-                        
-                            
-                            
-                            
-                        
-                        
-                            
-                            
-                            
-                        
-                        
-                            
-                            
-                            
-                        
-                        
-                            
-                            
-                            
-                        
-| | Protocol+ | SOP + |
-                        
-                            
-                            
-                            
-                        
-                    
-                
-
-            
-
-            
-
-                
-
 ### 
 
                 
@@ -3358,98 +2945,6 @@ Documentation for cleaning verification is similar to documentation for cleaning
 ### Key Terms
 
         
-            
-                
-                    
-                    
-                    
-                
-| English Term | | |
-| --- | --- | --- |
-            
-            
-                
-                    ****
-                    
-                    
-                
-| Qualification | | |
-                
-                    ****
-                    
-                    
-                
-| Protocol | | |
-                
-                    ****
-                    
-                    
-                
-| Worst-Case | | |
-                
-                    ****
-                    
-                    
-                
-| Equipment Grouping | | |
-                
-                    ****
-                    
-                    
-                
-| Bracketing | | / |
-                
-                    ****
-                    
-                    
-                
-| Dedicated Equipment | | |
-                
-                    ****
-                    
-                    
-                
-| Number of Runs | | |
-                
-                    ****
-                    
-                    
-                
-| Acceptance Criteria | | |
-                
-                    ****
-                    
-                    
-                
-| Lifecycle Approach | | |
-                
-                    ****
-                    
-                    
-                
-| Mock Soiling | | |
-                
-                    ****
-                    
-                    
-                
-| Cleaning Verification | | |
-                
-                    ****
-                    
-                    
-                
-| Matrixing | | / |
-            
-        
-
-    
-
-    
-
-PDA Technical Report No. 29 (Revised 2012): Points to Consider for Cleaning Validation
-
-    
 
 ⇧
 
@@ -3545,41 +3040,6 @@ Depending on the manufacturer, the expression of calculations may differ because
 
 ### |
 
-                    
-
-                    
-                        
-                            
-                                
-                                
-                                
-                                
-                            
-| --- | --- | --- | --- |
-                        
-                        
-                            
-                                ****
-                                
-                                
-                                
-                            
-| | 10 ppm default | | |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| | 1/1000 dose criterion | | |
-                            
-                                ****
-                                
-                                
-                                
-                            
-| | Toxicity-based (ADE/LD50) | | |
-                        
                     
 
                     
@@ -4940,31 +4400,6 @@ Options: set limits for all actives and measure each, or determine the worst-cas
 
                         
 
-#### 
-
-                        
-                            
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-| ARL | 10 ppm | |
-                                
-| ARLAPI | 50–100 ppm | API |
-                                
-| SAL | 4 µg/cm² | API |
-                            
-                        
-
-                        
-
-                    
-
-                    
-
-                        
-
 #### 5.9.4
 
                         
@@ -5054,6 +4489,16 @@ Options: set limits for all actives and measure each, or determine the worst-cas
             
 
         
+
+                        
+
+#### 
+
+                        
+
+                    
+
+                    
 
     
 
@@ -5169,51 +4614,6 @@ If the equipment is **depyrogenated by heat**, endotoxin will be deactivated and
                     
 
 ### |
-
-                    
-
-                        
-
-#### —
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| ARL | µg/g µg/mL | CFU/g CFU/mL |
-                                
-                                    
-                                    
-                                    
-                                
-| SAL | ≤ 4 µg/cm² | 1–2 CFU/cm² |
-                                
-                                    
-                                    
-                                    
-                                
-| | | 100 CFU/mLPW |
-                                
-                                    
-                                    
-                                    
-                                
-| | / | |
-                            
-                        
-
-                    
 
                     
 
@@ -5411,39 +4811,6 @@ Typical visual limits reported in the literature: **1–4 µg/cm²**. However, t
 #### 
 
                         
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-                                    ****
-                                    
-                                    
-                                
-| / | | |
-                                
-                                    ****
-                                    
-                                    
-                                
-| / | | SAL |
-                            
-                        
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
 
                             
 
@@ -5529,16 +4896,6 @@ Typical visual limits reported in the literature: **1–4 µg/cm²**. However, t
         
 
     
-
-    
-
-PDA Technical Report No. 29 (Revised 2012): Points to Consider for Cleaning Validation
-
-    
-
-    
-
-SterileGMP Knowledge Hub | Educational Reference Only
 
 ⇧
 
@@ -5728,87 +5085,8 @@ Grab samples, separate sampling rinses, and special cases
 ### Table 6.1.2-1: Grab Sampling vs. Separate Sampling Rinse
 
                     
-                        
-                            
-                                
-                                
-                                
-                            
-|  | "Grab" Sampling from Final Process Rinse | Separate Sampling Rinse |
-| --- | --- | --- |
-                        
-                        
-                            
-                                ****
-                                
-- 
-- 
-- 
-- 
-
-                                
-- 
-- 
-- 
-- 
-
-                            
-| Advantages | Represents the normal cleaning process                                         No additional rinse solvent required                                         Equipment can proceed without additional steps                                         Results easily used for carryover calculations | Represents what is left on surfaces after cleaning                                         More likely to yield an acceptable result if done correctly                                         Recirculating rinse provides higher recovery                                         Allows use of a different sampling solution |
-                            
-                                ****
-                                
-- 
-- 
-
-                                
-- 
-- 
-
-                            
-| Disadvantages | Represents worst-case carryover (residue in final rinse, not on dried surfaces)                                         Assumptions needed for carryover calculations | Additional step and additional rinse solvent required                                         Possible contamination during rinse solvent addition |
-                        
-                    
-
-                    
 
 ### Table 6.1.2-2: Advantages and Limitations of Rinse Sampling
-
-                    
-                        
-                            
-                                
-                                
-                            
-| Advantages | Limitations |
-| --- | --- |
-                        
-                        
-                            
-                                
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-
-                                
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-
-                            
-| Entire product-contacting surface is wetted; one result represents all removed residues in the flow path.                                         Sampling procedure may not contaminate equipment if process solvent is used.                                         Re-cleaning may not be required after sampling.                                         Allows conclusions on areas not accessible for swabbing.                                         Adaptable to on-line analysis.                                         Less technique dependent.                                         Applicable for actives, cleaning agents, and bioburden.                                         Allows sampling of unique surfaces (membranes, resins).                                         Useful for cleaning process design/development. | Only residues soluble in rinse solvent can be detected.                                         Must assure rinse solution contacts all surfaces.                                         Does not address residues that preferentially transfer from one part to the next product.                                         May dilute residue to undetectable levels.                                         Limited information on residue location.                                         Knowing the rinse volume is critical.                                         Usually limited to rinsing an entire piece of equipment.                                         Sampling ports for legacy equipment may be problematic. |
-                        
-                    
 
                     
 
@@ -5859,49 +5137,6 @@ Grab samples, separate sampling rinses, and special cases
                     
 
 ### 
-
-                    
-
-                        
-
-#### 
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| | Grab | |
-| --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-| | CIP | |
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-                            
-                        
-
-                    
 
                     
 
@@ -5977,40 +5212,6 @@ Direct surface sampling for worst-case locations
 ### Table 6.1.3-1: Advantages and Limitations of Swab/Wipe Sampling
 
                     
-                        
-                            
-                                
-                                
-                            
-| Advantages | Limitations |
-| --- | --- |
-                        
-                        
-                            
-                                
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-
-                                
-- 
-- 
-- 
-- 
-- 
-- 
-
-                            
-| Enables analysis of residues on specific surfaces                                         Allows sampling of areas that are more difficult to clean (worst cases)                                         Allows both dissolution and physical removal of residues                                         Adaptable to a wide variety of surfaces                                         Economical and widely available                                         Allows sampling of a defined area                                         Applicable to active, microbial, and cleaning agent residues                                         Small extraction volumes may provide greater detectability | Only discrete sampling areas can represent the entire equipment — worst-case locations must be included                                         Sampling can potentially contaminate equipment (fibers or solvent); re-cleaning may be required                                         Some areas are not accessible for swabbing (e.g., piping systems)                                         Results may be technique dependent (surface area sampled)                                         Results may be location dependent (difficult-to-access surfaces)                                         Swab material and design may inhibit recovery and specificity |
-                        
-                    
-
-                
 
                 
                 
@@ -6018,58 +5219,6 @@ Direct surface sampling for worst-case locations
                     
 
 ### 
-
-                    
-
-                        
-
-#### vs. —
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-| | + | |
-                                
-                                    
-                                    
-                                    
-                                
-                            
-                        
-
-                    
 
                     
 
@@ -6306,56 +5455,6 @@ Special considerations for bioburden and LAL testing
                     
 
 ### 
-
-                    
-
-                        
-
-#### 
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| | PBS | |
-                                
-                                    
-                                    
-                                    
-                                
-| | WFI | |
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-| | N/A | |
-                                
-                                    
-                                    
-                                    
-                                
-| | LEW | |
-                            
-                        
-
-                    
 
                     
 
@@ -6757,69 +5856,6 @@ Swab, rinse, visual, bioburden, and endotoxin recovery
 
                         
 
-#### 
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| Coupon | 316L SSPTFEEPDM | |
-                                
-                                    
-                                    
-                                    
-                                
-| Spike | limit level | / |
-                                
-                                    
-                                    
-                                    
-                                
-| / | | |
-                                
-                                    
-                                    
-                                    
-                                
-| | 3 replicate 2 | 3 replicate1 |
-                                
-                                    
-                                    
-                                    
-                                
-| | ≥70% ≥50% | |
-                                
-                                    
-                                    
-                                    
-                                
-| | 15–30% RSD | |
-                                
-                                    
-                                    
-                                    
-                                
-| | 25 cm² 100 cm² | |
-                            
-                        
-
-                    
-
-                    
-
-                        
-
 #### —
 
                         
@@ -7093,49 +6129,6 @@ Swab, rinse, and visual inspection training requirements
 
                         
 
-#### 
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-| --- | --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-| | 4 | Coupon | |
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-| | | | OOT/OOS |
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-| | vs. | / Coupon | |
-                            
-                        
-
-                    
-
-                    
-
-                        
-
 #### 4 —
 
                         
@@ -7333,15 +6326,6 @@ Key takeaways from Sections 6.0–6.6
 
     
 
-    
-
-PDA Technical Report No. 29 (Revised 2012): Points to Consider for Cleaning Validation
-
-    
-
-        SterileGMP Knowledge Hub  |  Section 4: Sampling (6.0–6.6)  |  pp. 44–54
-    
-
 ⇧
 
 ## Section 5: Analytical Methods (p64-p74)
@@ -7494,61 +6478,6 @@ The U.S. FDA guidance states that one should "Determine the specificity and sens
                 
 
 ### vs.
-
-                
-                    
-                        
-                            
-                              
-
-                              
-
-                        
-| | Specific | Nonspecific |
-| --- | --- | --- |
-                    
-                    
-                        
-                            
-                            
-                            
-                        
-| | HPLCUPLCTLCUV/Vis | TOC |
-                        
-                            
-                            
-                            
-                        
-                        
-                            
-                            
-                            
-                        
-                        
-                            
-                            
-                            
-                        
-                        
-                            
-                            
-                            
-                        
-| | | API |
-                        
-                            
-                            
-                            
-                        
-| | | worst-case assumption |
-                        
-                            
-                            
-                            
-                        
-| | FDAEMA | FDAEMA |
-                    
-                
 
                 
 
@@ -7740,55 +6669,6 @@ Four types of visual observations may be found: residue, surface anomalies, fore
 ### TOC vs. HPLC
 
                 
-                    
-                        
-                            
-                            
-                            
-                        
-| --- | --- | --- |
-                    
-                    
-                        
-                            
-                            
-                            
-                        
-| API HPLC | HPLC | |
-                        
-                            
-                            
-                            
-                        
-| API | TOC | HPLC APITOC |
-                        
-                            
-                            
-                            
-                        
-| | TOC | online |
-                        
-                            
-                            
-                            
-                        
-| / | Conductivity | CIP |
-                        
-                            
-                            
-                            
-                        
-| chromophore | UV/Vis | PAT |
-                        
-                            
-                            
-                            
-                        
-| / | Pass-fail | |
-                    
-                
-
-                
 
                     
 
@@ -7967,81 +6847,6 @@ A type of mass spectrometry which only provides information on the time of fligh
 
                     
 
-#### 
-
-                    
-                        
-                            
-                                
-                                
-                                
-                            
-| --- | --- | --- |
-                        
-                        
-                            
-                                
-                                
-                                
-                            
-| pH | | |
-                            
-                                
-                                
-                                
-                            
-| FTIR / NIR | | Investigation |
-                            
-                                
-                                
-                                
-                            
-| / SEM | | |
-                            
-                                
-                                
-                                
-                            
-| Titration | / | Qualification |
-                            
-                                
-                                
-                                
-                            
-| Gravimetric | API | / |
-                            
-                                
-                                
-                                
-                            
-| ELISA | / | / |
-                            
-                                
-                                
-                                
-                            
-| CZE / CE | | / |
-                            
-                                
-                                
-                                
-                            
-| AA / ICP | | rouge |
-                            
-                                
-                                
-                                
-                            
-| IMS | | |
-                        
-                    
-
-                
-
-                
-
-                    
-
 #### pH vs.
 
                     
@@ -8176,40 +6981,6 @@ Most companies use incubation-based techniques counting CFUs. Such procedures ha
 ### 
 
                 
-                    
-                        
-                            
-                            
-                            
-                        
-| --- | --- | --- |
-                    
-                    
-                        
-                              
-
-                            
-                            
-                        
-| (Rinse-water) | | TNTC |
-                        
-                              
-
-                            
-                            
-                        
-| (Swab) | | |
-                        
-                              
-
-                            
-                            
-                        
-| (Contact plate) | | |
-                    
-                
-
-                
 
                     
 
@@ -8327,67 +7098,6 @@ Care should be used in the transfer protocol to first determine whether the meas
                 
 
 ### ICH Q2(R1)
-
-                
-                    
-                        
-                            
-                            
-                            
-                        
-| --- | --- | --- |
-                    
-                    
-                        
-                            ****
-                            
-                            
-                        
-| Accuracy | | RSD 15-20% |
-                        
-                            ****
-                            
-                            
-                        
-| Precision | | repeatability |
-                        
-                            ****
-                            
-                            
-                        
-| Specificity | | |
-                        
-                            ****
-                            
-                            
-                        
-| Linearity | | LOQ Pass/fail |
-                        
-                            ****
-                            
-                            
-                        
-| Range | | |
-                        
-                            ****
-                            
-                            
-                        
-| LOD | | 10% |
-                        
-                            ****
-                            
-                            
-                        
-| LOQ | | ≥ LOQLOD-LOQ < LOQ |
-                        
-                            ****
-                            
-                            
-                        
-| | ICH Q2 | |
-                    
-                
 
                 
 
@@ -8644,40 +7354,6 @@ There are some important considerations for designing the test plan to verify ch
 #### 
 
                         
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-| | / | |
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-                            
-                        
-
-                        
 
                             
 
@@ -8755,40 +7431,6 @@ For example, during initial validation, residues of an active ingredient may be 
                         
 
 #### 
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-| --- | --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-| | | | + |
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-| | / API | | + + |
-                            
-                        
 
                         
 
@@ -8889,49 +7531,6 @@ Statistical process capability studies, based on multiple (e.g., 20–25) data p
 
                                 
 
-                            
-
-                        
-
-                        
-
-                            
-
-#### vs.
-
-                            
-                                
-                                    
-                                        
-                                        
-                                        
-                                        
-                                    
-| --- | --- | --- | --- |
-                                
-                                
-                                    
-                                        
-                                        
-                                        
-                                        
-                                    
-| Alert Level | | | |
-                                    
-                                        
-                                        
-                                        
-                                        
-                                    
-| Action Level | | | CAPA |
-                                    
-                                        
-                                        
-                                        
-                                        
-                                    
-| Acceptance Criteria | | pass/fail | |
-                                
                             
 
                         
@@ -9092,51 +7691,6 @@ Training should cover cleaning process operators, sampling personnel, and analyt
 
                             
 
-#### 
-
-                            
-                                
-                                    
-                                        
-                                        
-                                        
-                                    
-| --- | --- | --- |
-                                
-                                
-                                    
-                                        
-                                        
-                                        
-                                    
-| Type 1 | SOP | |
-                                    
-                                        
-                                        
-                                        
-                                    
-| Type 2 | | |
-                                    
-                                        
-                                        
-                                        
-                                    
-| Type 3 | | |
-                                    
-                                        
-                                        
-                                        
-                                    
-| Type 4 | | / / |
-                                
-                            
-
-                        
-
-                        
-
-                            
-
 #### (Process Creep)
 
                             
@@ -9179,46 +7733,6 @@ Under a lifecycle validation approach, a significant change in a cleaning proces
                         
 
 ### vs.
-
-                        
-
-                            
-
-#### 
-
-                            
-                                
-                                    
-                                        
-                                        
-                                    
-| --- | --- |
-                                
-                                
-                                    
-                                        
-                                        
-                                    
-| | + |
-                                    
-                                        
-                                        
-                                    
-| | + |
-                                    
-                                        
-                                        
-                                    
-| / | |
-                                    
-                                        
-                                        
-                                    
-| → | → |
-                                
-                            
-
-                        
 
                         
 
@@ -9485,55 +7999,6 @@ For a product made at more than one site, where appropriate, the cleaning requir
 #### (Documentation Package)
 
                         
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| (CVMP) | | |
-                                
-                                    
-                                    
-                                    
-                                
-| SOP | | GMP |
-                                
-                                    
-                                    
-                                    
-                                
-| | | GMP |
-                                
-                                    
-                                    
-                                    
-                                
-| | | GMP |
-                                
-                                    
-                                    
-                                    
-                                
-| | | GMP |
-                                
-                                    
-                                    
-                                    
-                                
-| | | GMP |
-                            
-                        
-
-                        
 
                             
 
@@ -9595,44 +8060,6 @@ The output of design/development stage should be both a development report (also
                         
 
 ### /
-
-                        
-
-                            
-
-#### /
-
-                            
-                                
-                                    
-                                        
-                                        
-                                    
-| --- | --- |
-                                
-                                
-                                    
-                                        
-                                        
-                                    
-                                    
-                                        
-                                        
-                                    
-                                    
-                                        
-                                        
-                                    
-| | + |
-                                    
-                                        
-                                        
-                                    
-| | + SOP |
-                                
-                            
-
-                        
 
                         
 
@@ -9838,76 +8265,6 @@ Cleaning log records (such as cleaning log books or cleaning batch records) are 
 
                             
 
-#### (Documentation Package)
-
-                            
-                                
-                                    
-                                        
-                                        
-                                        
-                                    
-| | | / |
-| --- | --- | --- |
-                                
-                                
-                                    
-                                        
-                                        
-                                        
-                                    
-| Alarm & Alert Reports | / | |
-                                    
-                                        
-                                        
-                                        
-                                    
-| Routine Monitoring Data | | / |
-                                    
-                                        
-                                        
-                                        
-                                    
-| Change Control Records | | |
-                                    
-                                        
-                                        
-                                        
-                                    
-| Deviation Reports | + CAPA | |
-                                    
-                                        
-                                        
-                                        
-                                    
-| Cumulative Change Reviews | | / |
-                                    
-                                        
-                                        
-                                        
-                                    
-| Training Records | | |
-                                    
-                                        
-                                        
-                                        
-                                    
-| Periodic Review Reports | | |
-                                    
-                                        
-                                        
-                                        
-                                    
-| Cleaning Logs / Batch Records | / | GMP |
-                                
-                            
-
-                        
-
-                        
-
-                            
-
 #### 
 
                             
@@ -9971,87 +8328,6 @@ The documentation flow covers three major stages:
                         
 
 ### 
-
-                        
-
-                            
-
-#### 
-
-                            
-                                
-                                    
-                                        
-                                        
-                                        
-                                    
-| --- | --- | --- |
-                                
-                                
-                                    
-                                        
-                                        
-                                        
-                                    
-| FDA CDER | | PAI |
-                                    
-                                        
-                                        
-                                        
-                                    
-| FDA CBER | | BLA |
-                                    
-                                        
-                                        
-                                        
-                                    
-                                
-                            
-
-                        
-
-                        
-
-                            
-
-#### vs. (Verification)
-
-                            
-                                
-                                    
-                                        
-                                        
-                                        
-                                    
-| | (Validation) | (Verification) |
-| --- | --- | --- |
-                                
-                                
-                                    
-                                        
-                                        
-                                        
-                                    
-| | | / |
-                                    
-                                        
-                                        
-                                        
-                                    
-| / | | |
-                                    
-                                        
-                                        
-                                        
-                                    
-                                    
-                                        
-                                        
-                                    
-                                
-                            
-
-                        
 
                         
 
@@ -10388,26 +8664,6 @@ For example, for highly hazardous drug active ingredients, cleaning validation o
 #### 
 
                         
-                            
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-                                
-                                
-                            
-                        
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
 
                     
 
@@ -10576,28 +8832,6 @@ Criteria used to determine acceptability after storage include: lack of microbia
                     
 
 ### —
-
-                    
-
-                        
-
-#### Dirty Hold vs. Clean Hold
-
-                        
-                            
-                                
-| | (Dirty Hold) | (Clean Hold) |
-| --- | --- | --- |
-                            
-                            
-                                
-                                
-                                
-                                
-                            
-                        
-
-                    
 
                     
 
@@ -11061,27 +9295,6 @@ Topical drug products may present cleaning challenges due to the nature of excip
 #### 
 
                         
-                            
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-| | carry-over | |
-                                
-| | 0.001cm² | |
-                            
-                        
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
 
                     
 
@@ -11234,601 +9447,6 @@ Secondary packaging equipment (induction sealers, retorquers, labelers, palletiz
                     
 
 ### —
-                    
-
-                        
-
-#### 
-
-                        
-                            
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-| | | + 3-log |
-                                
-| | HDPE | |
-                                
-                                
-                            
-                        
-
-                    
-
-                    
-
-                        
-
-#### 3-log
-
-                        
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
-
-                    
-
-                    
-
-                        
-
-## 10.11 Tubing and Hoses |
-
-                
-
-Cleaning, qualification, storage, and lifetime assessment for transfer tubing
-
-            
-
-        
-
-        
-
-            
-
-                
-
-                    
-
-### 10.11 Tubing and Hoses
-
-                    
-
-Tubing and hoses have diverse transfer applications in pharmaceutical manufacturing. Types may vary from flexible plastics to fixed stainless steel piping. Biocompatibility and inertness of the tubing with the contact material is a primary consideration prior to use. The regulatory standards are covered under 21 CFR Part 177.2600, applied in combination with ISO 10993-1 and USP class I-VI plastics tests.
-
-                    
-
-The cleaning procedure should be effective for exposing all product contact surfaces and the internal bore of tubing to the cleaning detergent and rinsing solution. Key requirements:
-
-                    
-
-                        
-- Assure **turbulent flow** throughout
-
-                        
-- Assure proper sloping for drainage for fixed tubing
-
-                        
-- Visual inspection using video devices such as a borescope for the internal bore
-
-                        
-- Drain tubing and hoses of any water/resident solution when not in use
-
-                    
-
-                    
-
-CIP cleaning equipment or automated hose washers may be utilized and qualified to consistently perform cleaning of tubing or hoses. Shorter tubing length benefits cleaning ability, drainage, and storage management.
-
-                    
-
-### Storage Requirements
-
-                    
-
-If not dried before storage, tubing/hose should be stored on the slope (to allow drainage) and covered using hose-end covers of spun-bonded polyolefin or similar materials to reduce microbial and particulate contamination risk.
-
-                    
-
-### Lifetime and Qualification
-
-                    
-
-Qualification for use of product contact tubing and hoses should include an assessment of the useful lifetime for the manufacturing operation. The assessment should integrate visual inspection for signs of tear, pitting and disintegration, with wear characteristics such as particulate shedding detected under subvisible conditions.
-
-                
-
-                
-
-                    
-
-### —
-
-                    
-
-                        
-
-#### 
-
-                        
-
-                            
-
-                            
-
-                            
-
-                        
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
-
-                    
-
-                    
-
-                        
-
-## 10.12 Excipients |
-
-                
-
-When excipients affect cleaning and when limits must be set
-
-            
-
-        
-
-        
-
-            
-
-                
-
-                    
-
-### 10.12 Excipients
-
-                    
-
-The excipients used for a drug product should be considered in the cleaning validation program. One issue for excipients is the possible effect on cleaning of a drug product. This effect is generally more pronounced for solid dosage products, where the excipient may be a coating or other functional material designed to retard dissolution. This is one reason why some companies prefer to use a laboratory cleaning study to determine the difficulty of cleaning of different products in a grouping approach.
-
-                    
-
-Unless the excipient has some kind of unusual toxicity, limits are generally not set for excipients in a cleaning validation protocol. A case where limits may be set for excipients is where the excipient is known to have a significant effect on the performance of the next manufactured product, such as complexing with the API to reduce bioavailability.
-
-                    
-
-In all cases, residues of excipients after cleaning should be such that the equipment is visually clean. A surface which is not "visually clean" due to a high level of an excipient should be generally considered a cleaning validation failure.
-
-                
-
-                
-
-                    
-
-### —
-
-                    
-
-                        
-
-#### 
-
-                        
-
-                            
-
-                            
-
-                            
-
-                        
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
-
-                    
-
-                    
-
-                        
-
-## 10.13 Dedicated Equipment |
-
-                
-
-When dedication is required, what cleaning validation still applies, and regulatory expectations
-
-            
-
-        
-
-        
-
-            
-
-                
-
-                    
-
-### 10.13 Dedicated Equipment
-
-                    
-
-Dedicated equipment is pharmaceutical manufacturing and packaging equipment used for processing only one product.
-
-                    
-
-### 10.13.1 Reasons for Dedication
-
-                    
-
-Reasons for dedication may be quality driven (to avoid cross-contamination) or based on business considerations (production efficiency). Regulatory agencies recommend dedicated equipment and/or facilities in certain situations:
-
-                    
-
-                        
-- **PIC/S:** Dedicated equipment should be used for products difficult to remove (tarry/gummy residues in bulk API), equipment difficult to clean (bags for fluid bed dryers), or products with high safety risk (biologics, high potency products difficult to detect below acceptable limit).
-
-                        
-- **PIC/S also states:** For certain allergenic ingredients, penicillins, cephalosporins, potent steroids and cytotoxics, the limit should be below the limit of detection by best available analytical methods. In practice this may mean dedicated plants are used for these products.
-
-                        
-- **ANVISA RDC No. 17:** Segregated facilities dedicated for live microorganisms, highly sensitizing materials (penicillin, cephalosporin, carbapenem and other beta-lactam derivatives).
-
-                        
-- **U.S. FDA:** Draft recommendations about dedication for beta-lactams.
-
-                    
-
-                    
-
-### 10.13.2 Cleaning Validation Issues for Dedicated Equipment
-
-                    
-
-Since cross-contamination of the active ingredient from the previous product is not an issue for dedicated equipment, cleaning validation related to the active itself is generally not considered a requirement. The 1993 U.S. FDA cleaning validation guidance states: *"When the cleaning process is used only between batches of the same product (or different lots of the same intermediate in a bulk process) the firm need only meet a criteria of 'visibly clean' for the equipment."*
-
-                    
-
-However, cleaning validation should be considered for dedicated equipment if:
-
-                    
-
-                        
-- Carryover of the **cleaning agent** is a concern
-
-                        
-- Contribution of **bioburden** to the next manufactured batch is a concern
-
-                        
-- Contribution of **degradation byproducts** is a concern
-
-                    
-
-                    
-
-U.S. FDA Compliance Guidance Manual 7356_002 clarified that "lack of demonstration of effectiveness of cleaning" for dedicated equipment warrants a warning letter. It is considered best practice to document effectiveness of a cleaning process for dedicated equipment even if "visually clean" is the only criteria.
-
-                    
-
-Principles for determining acceptance criteria for cleaning agent, bioburden, endotoxin, and degradation products for cleaning validation of dedicated equipment are essentially the same as for nondedicated equipment.
-
-                
-
-                
-
-                    
-
-### —
-
-                    
-
-                        
-
-#### 
-
-                        
-                            
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-| | | PIC/SFDA |
-                                
-| / | β- | ANVISAFDA |
-                                
-| / | | PIC/S |
-                                
-| | | PIC/S |
-                                
-| | API | PIC/S |
-                            
-                        
-
-                    
-
-                    
-
-                        
-
-#### ≠
-
-                        
-
-                        
-
-                            
-
-                            
-
-                            
-
-                        
-
-                        
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
-
-                            
-
-                            
-
-                            
-
-                            
-
-                        
-
-                    
-
-                    
-
-                        
-
-## Special Considerations Summary |
-
-                
-
-Key risk, validation requirement, and decision factor for each topic
-
-            
-
-        
-
-        
-
-            
-
-                
-
-                    
-
-### Summary Table: Special Considerations at a Glance
-
-                    
-                        
-                            
-                                
-                                
-                                
-                            
-| Topic | Key Risk | Validation Requirement |
-| --- | --- | --- |
-                        
-                        
-                            
-                                
-                                
-                                
-                            
-| 10.1 Cleaning Agents | Agent residue in next product | Qualify agent; lot-traceable spec |
-                            
-                                
-                                
-                                
-                            
-| 10.2 Nonproduct Contact | Airborne/indirect transfer | Risk-based; indirect surfaces included |
-                            
-                                
-                                
-                                
-                            
-| 10.3 PAT | Incomplete cleaning without feedback | Feedback mechanism required for PAT |
-                            
-                                
-                                
-                                
-                            
-| 10.4 Clean Hold | Microbial proliferation; endotoxin | Hold time study or hot water flush |
-                            
-                                
-                                
-                                
-                            
-| 10.5 New/Used Equipment | Unknown history; new hard-to-clean areas | Risk assessment; FTIR for used |
-                            
-                                
-                                
-                                
-                            
-| 10.6 MSA | Test method variation masks real signal | R&R study; control measurement variation |
-                            
-                                
-                                
-                                
-                            
-| 10.7 API Manufacture | Large closed equipment; multiple residues | Full validation for later-stage API |
-                            
-                                
-                                
-                                
-                            
-| 10.8 Topical Products | High viscosity; limit calculation ambiguity | Systemic availability determines approach |
-                            
-                                
-                                
-                                
-                            
-| 10.9 Animal Drug Products | Cross-species limit setting | Toxicological assessment per target species |
-                            
-                                
-                                
-                                
-                            
-| 10.10 Packaging Components | Endotoxin in parenteral containers | 3-log endotoxin reduction; spray coverage |
-                            
-                                
-                                
-                                
-                            
-| 10.11 Tubing and Hoses | Particle shedding; microbial in wet storage | Turbulent flow; lifetime qualification |
-                            
-                                
-                                
-                                
-                            
-| 10.12 Excipients | Retard dissolution coatings; API interaction | Lab cleaning study; visually clean criterion |
-                            
-                                
-                                
-                                
-                            
-| 10.13 Dedicated Equipment | No API carryover but agent/bioburden risk | Document effectiveness; agent + micro |
-                        
-                    
-
-                
-
-                
-
-                    
-
-### —
-
-                    
-                        
-                            
-| --- | --- | --- |
-                        
-                        
-                            
-| Manual Cleaning | | |
-                            
-| COP (Clean-Out-of-Place) | | |
-                            
-| Cleaning Agent | | 9GMP |
-                            
-| Hold Time — Dirty | | |
-                            
-| Hold Time — Clean | | |
-                            
-| Dedicated Equipment | | |
-                            
-| Heat Exchanger | | |
-                            
-| Chromatography Column | | |
-                            
-| PAT (Process Analytical Technology) | | |
-                            
-| 3-log Endotoxin Reduction | 3-log | |
-                        
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
-
-                            
-
-                            
-
-                            
-
-                            
-
-                            
-
-                        
-
-                    
-
-                
-
-            
-
-        
-
-    
-
-    
-
-PDA Technical Report No. 29 (Revised 2012): Points to Consider for Cleaning Validation
-
-    
-
-    
-
-SterileGMP Knowledge Hub © 2026  |  Educational Reference Only
-
-⇧
 
 ## Section 8: Regulatory Documents & References (p91-p105)
 
@@ -12024,63 +9642,6 @@ The following regulatory and guidance documents form the primary framework withi
 
 #### 
 
-                        
-
-                    
-
-                    
-
-                        
-
-#### —
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| FDA | 21 CFR 2111993 2011 | |
-                                
-                                    
-                                    
-                                    
-                                
-| EMA | Annex 15 Ref. 44 | |
-                                
-                                    
-                                    
-                                    
-                                
-| WHO | TRS 937 Annex 4 Appendix 3 | |
-                                
-                                    
-                                    
-                                    
-                                
-| ICH | Q8(R2)Q9Q10Q2(R1)Q3C(R5)Q7 | |
-                                
-                                    
-                                    
-                                    
-                                
-| PIC/S | PI 006-3 | + VMP + IQ/OQ |
-                                
-                                    
-                                    
-                                    
-                                
-| Health Canada | Guide-0028 | |
-                            
                         
 
                     
@@ -12468,37 +10029,6 @@ Note: These references are cited throughout the text. References 1–28 appear o
 
                         
 
-#### 45
-
-                        
-                            
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-| FDA / | 14 | CFR 210/2112011 |
-                                
-| ICH | 6 | Q7Q8Q9Q10Q2Q3C |
-                                
-| PDA / | 6 | TR49TR33LeBlanc |
-                                
-| EMA / EU | 3 | Annex 15 |
-                                
-| WHO / PIC/S / HC | 3 | TRS 937PI 006-3Guide-0028 |
-                                
-| | 4 | Conine, Kramer, Layton, Risk-MaPP |
-                                
-| // | 9 | Fourman, LeBlanc , %RSD |
-                            
-                        
-
-                    
-
-                    
-
-                        
-
 #### —
 
                         
@@ -12793,104 +10323,6 @@ All 45 references organized by topic — for rapid localization
 ### References by Topic
 
                     
-                        
-                            
-                                
-                                
-                                
-                            
-| Topic / | References | Key Document |
-| --- | --- | --- |
-                        
-                        
-                            
-                                
-                                
-                                
-                            
-| Regulatory Framework / | 6, 10, 20, 43 | 21 CFR 210/211; FDA 2011 PV Guide |
-                            
-                                
-                                
-                                
-                            
-| Quality Risk Management / | 3, 4, 5 | ICH Q8, Q9, Q10 |
-                            
-                                
-                                
-                                
-                            
-| Residue Limits / | 12, 13, 14, 15, 23 | Risk-MaPP; Fourman & Mullen |
-                            
-                                
-                                
-                                
-                            
-| Genotoxic Impurities / | 16, 19 | EMA 2006; ICH Q3C |
-                            
-                                
-                                
-                                
-                            
-| Sampling / | 17, 25, 35 | PDA Survey; Fingertip Unit |
-                            
-                                
-                                
-                                
-                            
-| Analytical Methods / | 25, 27, 29, 30, 31 | ICH Q2(R1); %RSD; In-situ IR |
-                            
-                                
-                                
-                                
-                            
-| Biotechnology / | 2, 8 | TR49; Rathore et al. 2009 |
-                            
-                                
-                                
-                                
-                            
-| Sterile Products / | 36 | FDA Aseptic Processing Guide 2004 |
-                            
-                                
-                                
-                                
-                            
-| API Cleaning / | 18, 34 | CEFIC/APIC; ICH Q7 |
-                            
-                                
-                                
-                                
-                            
-| Equipment Materials / | 37, 38, 39 | 21 CFR 177.2600; ISO 10993 |
-                            
-                                
-                                
-                                
-                            
-| International Guidance / | 21, 22, 44, 45, 40 | HC Guide-0028; PIC/S; EU Annex 15; WHO TRS 937; ANVISA |
-                            
-                                
-                                
-                                
-                            
-| Process Validation Lifecycle / | 9, 10, 32 | FDA PAT; FDA 2011 PV Guide |
-                            
-                                
-                                
-                                
-                            
-| Beta-Lactam / Dedicated Facility | 11, 24, 41, 42 | SUPAC; cGMP Q&A; Beta-Lactam Draft |
-                            
-                                
-                                
-                                
-                            
-| Statistics / | 31, 33 | %RSD; MSA 4th Ed. |
-                        
-                    
-
-                
 
                 
 
@@ -12973,12 +10405,6 @@ All 45 references organized by topic — for rapid localization
             
 
         
-
-    
-
-    
-
-PDA Technical Report No. 29 (Revised 2012): Points to Consider for Cleaning Validation
 
     
 

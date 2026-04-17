@@ -88,62 +88,6 @@ The product must have two or more regulated article types working together to ac
 ### Real-World Examples
 
                     
-                        
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| Product | Drug Constituent | Device Constituent | Type | Lead Center |
-| --- | --- | --- | --- | --- |
-                        
-                        
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| Pre-filled syringe | Drug (liquid) | Syringe + needle | Single-entity | CDER |
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| Drug-eluting stent | Drug (antiproliferative) | Metal stent (primary) | Single-entity | CDRH |
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| mAb autoinjector pen | Biologic (mAb) | Autoinjector mechanism | Single-entity | CBER or CDER |
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| Antibiotic-coated surgical mesh | Antibiotic drug | Mesh (primary) | Single-entity | CDRH |
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| Photodynamic therapy kit | Photosensitizer drug | Light-delivery device | Co-packaged | CDER |
-                        
-                    
-
-                
 
                 
 
@@ -425,44 +369,6 @@ A CDMO manufacturing a sterile injectable drug for a combination product must an
 A CDMO performs sterile fill-finish for a monoclonal antibody (mAb) in a prefilled autoinjector pen. The product is a single-entity combination product: biologic drug (mAb) + device (autoinjector mechanism + prefilled syringe).
 
                     
-                        
-                            
-                                
-                                
-                                
-                            
-| Question | Analysis | Implication for CDMO |
-| --- | --- | --- |
-                        
-                        
-                            
-                                
-                                
-                                
-                            
-| Lead center? | mAb is the PMOA → CBER or CDER (mAbs transferred to CDER in 2003) | CDER leads; BLA is the likely submission; CMC review under CDER standards |
-                            
-                                
-                                
-                                
-                            
-| Which CGMP? | 21 CFR Part 4 Subpart B: both 21 CFR 211 (drug) and 21 CFR 820 (device) may apply to the combination | CDMO must document how its QMS covers both 211 and 820 requirements for the prefilled syringe/autoinjector components |
-                            
-                                
-                                
-                                
-                            
-| Device CGMP responsibility? | Autoinjector device constituent parts require Design History File (DHF), Device History Record (DHR) under 21 CFR 820 | Quality agreement must specify whether sponsor or CDMO maintains the DHF/DHR; CDMO must confirm its QMS is 820-compatible |
-                            
-                                
-                                
-                                
-                            
-| Change control? | Changes to the prefilled syringe design (e.g., new needle gauge) may require a PAS for the BLA | CDMO change control SOP must route device component changes through sponsor's BLA change management process |
-                        
-                    
-
-                    
 
                         
 
@@ -527,50 +433,6 @@ Regulatory Text & Summary (English)
                     
 
 21 CFR Part 4 does not operate in isolation. It is part of a regulatory framework that must be read in conjunction with several other parts of the CFR:
-
-                    
-                        
-                            
-                                
-                                
-                                
-                            
-| Regulation | Title / Purpose | Relationship to Part 4 |
-| --- | --- | --- |
-                        
-                        
-                            
-                                ****
-                                
-                                
-                            
-| 21 CFR Part 3 | Product Jurisdiction — Procedures for designating the lead center | Part 4 references Part 3 for the formal RFD mechanism and jurisdictional order procedures |
-                            
-                                ****
-                                
-                                
-                            
-| 21 CFR Part 211 | Current Good Manufacturing Practice for Finished Pharmaceuticals | Applies to drug constituent parts; under Part 4 Subpart B, may apply to full combination product when drug CGMP is applicable |
-                            
-                                ****
-                                
-                                
-                            
-| 21 CFR Part 820 | Quality System Regulation (Device CGMP) | Applies to device constituent parts; under Part 4 Subpart B, may apply to combination products where device CGMP is applicable |
-                            
-                                ****
-                                
-                                
-                            
-| 21 CFR Parts 600–680 | Biologics Standards and CGMP | Applies to biological product constituent parts; Part 4 determines whether CBER or CDER leads biologics-containing combination products |
-                            
-                                ****
-                                
-                                
-                            
-| 21 CFR Part 4 Subpart B | Current Good Manufacturing Practice Requirements for Combination Products (2013) | Specifies how CGMP requirements from 211, 820, and 600s apply to combination products and how manufacturers may comply with streamlined provisions |
-                        
-                    
 
                     
 
@@ -946,18 +808,6 @@ Before accepting any combination product contract, a CDMO must confirm: lead cen
         
 
     
-
-    
-
-21 CFR Part 4 — Regulation of Combination Products | FDA eCFR
-
-    
-
-SterileGMP Knowledge Hub | Educational Use Only — Not Legal Advice
-
-    
-
-Last Updated: 2026-04-14
 
 ⇧
 

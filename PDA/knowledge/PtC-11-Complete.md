@@ -67,38 +67,6 @@ While it is not possible to provide a comprehensive framework for categorizing v
         
 
             **Jurisdiction Comparison: Viral Vector used in ex vivo cell modification**
-            
-                
-                    
-                    
-                    
-                
-| Jurisdiction | Classification | Governing GMP |
-| --- | --- | --- |
-                
-                    
-                    
-                    
-                
-| USA (FDA) | Drug Substance (Active Pharmaceutical Ingredient) | 21 CFR Parts 210/211; FDA CMC Gene Therapy Guidance |
-                
-                    
-                    
-                    
-                
-| EU (EMA) | Critical Starting Material | EudraLex Volume 4, Part IV; EMA Q&A EMA/246400/2021 |
-                
-                    
-                    
-                    
-                
-| Australia (TGA) | Critical Starting Material | Australian Code of GMP for Human Blood, Tissues & Cellular Therapy Products |
-                
-                    
-                    
-                    
-                
-| Australia (TGA) | Medicine (if in vivo) | PIC/S PE-009 |
 
 ## Topic 2: Topic 2: QbD Principles (p15-p18)
 

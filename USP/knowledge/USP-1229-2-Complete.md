@@ -2,7 +2,7 @@
 
 ## Section 0: Moist Heat Liquids — Complete (p1-p5)
 
-# USP ⟨1229.2⟩ Moist Heat Sterilization of Aqueous Liquids
+# USP 〈1229.2〉 Moist Heat Sterilization of Aqueous Liquids
 
     
 
@@ -18,7 +18,7 @@ Steam sterilization of aqueous liquids (including both suspensions and emulsions
 
         
 
-This type of sterilization is accomplished primarily in closed containers. During steam sterilization by direct contact (also called steam sterilization of parts, hard goods, or porous items) the steam in the chamber directly contacts the surface of load items to effect sterilization (see ⟨1229.1⟩). In contrast, sterilization of liquids in containers is accomplished by application of heat to the container, heating of the container wall, and ultimately heating of the internal liquid volume. This can be accomplished using steam, superheated water, and air in various combinations.
+This type of sterilization is accomplished primarily in closed containers. During steam sterilization by direct contact (also called steam sterilization of parts, hard goods, or porous items) the steam in the chamber directly contacts the surface of load items to effect sterilization (see 〈1229.1〉). In contrast, sterilization of liquids in containers is accomplished by application of heat to the container, heating of the container wall, and ultimately heating of the internal liquid volume. This can be accomplished using steam, superheated water, and air in various combinations.
 
         
 
@@ -34,7 +34,7 @@ Before sterilization of product containers, manufacturers should consider the po
 
         
 
-When the overkill method can be used for sterilization of sealed liquid containers, it is the preferred method and is described in ⟨1229.1⟩. When product quality attributes can be impaired by excessive heat, the sterilization process should use less time or a lower temperature to minimize the adverse effect on the materials. Sterilization time–temperature or F0 conditions (F0 is defined as the equivalent sterilization time relative to a base temperature of 121°) include both lower (sterility-related) and upper (stability-related) limits.1
+When the overkill method can be used for sterilization of sealed liquid containers, it is the preferred method and is described in 〈1229.1〉. When product quality attributes can be impaired by excessive heat, the sterilization process should use less time or a lower temperature to minimize the adverse effect on the materials. Sterilization time–temperature or F0 conditions (F0 is defined as the equivalent sterilization time relative to a base temperature of 121°) include both lower (sterility-related) and upper (stability-related) limits.1
 
         
 

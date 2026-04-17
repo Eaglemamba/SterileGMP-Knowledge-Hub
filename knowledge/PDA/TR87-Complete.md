@@ -141,9 +141,10 @@ containers should be minimized throughout the entire process. To this end, the p
 3.0-1 should be applied to both existing and new equipment. New equipment design and installation
 should include additional considerations that are outlined in Section 3.1.
 
-| Handling Consideration | Points to Address | Topic Section |
-| --- | --- | --- |
+**Table 3.0-1 General Glass Handling Considerations**
 
+Handling Consideration Points to Address Topic Section
+Limit Glass-to-Glass • Avoid areas in process where glass items are dropped or excessively Section 5.1,
 Contact (Frictive and hit one another due to movement through ramps, etc. (gravity used 5.2, 5.4, 5.7,
 Impact) to convey) 6.0
 • Minimize movement of glass via mechanical pushing of large
@@ -323,9 +324,55 @@ into account the known attributes of the process, thoroughly analyze each one. T
 evaluated to ascertain if the risk is acceptable or unacceptable. Mitigation activities are identified and
 completed for those risks deemed unacceptable.
 
-| Tool | Description / Attributes | Potential Applications |
-| --- | --- | --- |
+**Table 4.0-1 Typical Risk Management Tools**
 
+Risk Management Tool Description / Attributes Potential Applications
+Basic Tools
+• Diagram Analysis Simple techniques that are commonly used Compilation of observations,
+• Flowcharts to gather and organize data, structure risk trends, or other empirical
+management processes, and facilitate information to support a variety
+• Check Sheets
+decision-making of less-complex deviations,
+• Process Mapping
+complaints, defects, or other
+• Cause/Effect Diagrams
+circumstances
+(i.e., Ishikawa or
+fishbone diagrams)
+Risk Ranking and Filtering • Method to compare and rank risks Useful for situations when the risks
+• Typically involves evaluation of multiple, and underlying consequences are
+diverse quantitative and qualitative factors for diverse and difficult to compare
+each risk, weighting factors, and risk scores using a single tool
+Statistical Tools • Control Charts Visualization and evaluation of
+• Pareto Charts data to assist in the identification
+of trends, issues, and appropriate
+• Histograms
+corrective actions
+Advanced Tools
+Fault Tree Analysis (FTA) • Method used to identify all root causes of Evaluation of deviations and
+an assumed failure or problem investigations
+• Used to evaluate system and subsystem
+failures one at a time, but can combine
+multiple causes of failure by identifying
+causal chains
+• Relies heavily on complete process
+understanding to identify causal factors
+Hazard Operability • Tool assumes that risk events are caused Commonly used to evaluate
+Analysis by deviations from the design and process safety hazards
+(HAZOP) operating intentions
+• Uses a systematic technique to help
+identify potential deviations from normal
+use or design intentions
+Failure Mode Effects • Assesses potential failure modes for Evaluation of equipment
+Analysis (FMEA) processes and the probable effect on and facilities; analysis of a
+outcomes or product performance manufacturing process to identify
+• Once failure modes are known, risk reduction high-risk steps and critical
+actions can be applied to eliminate, reduce, parameters
+or control potential failures
+• Highly dependent on strong understanding of
+product, process, and facility under evaluation
+• Output is a relative “risk score” for each
+failure mode
 An FMEA should be performed during the initial design and development of the product. Thus,
 critical elements of the container design can be identified to ensure product quality including, but
 not limited to, considerations for processing steps such as filling, blast freezing, lyophilization, and
@@ -360,8 +407,7 @@ spection capabilities throughout the process should be outlined to provide infor
 Finally, the definition and rationale for rankings used to assess each criterion of the RPN should be clearly
 outlined and documented. An example of RPN definitions specific to glass-handling hazards is provided in
 
-| Criteria | Correlation Factor | Considerations |
-| --- | --- | --- |
+**Table 4.0-2; values and definitions may change depending on the individual process or situation.**
 
 **Table 4.0-2 Example of Risk Priority Number (RPN) Factor Determination**
 
@@ -1064,9 +1110,9 @@ packaging nonparenteral drugs. Typical compositional ranges for pharmaceutical g
 various national standards, such as ISO 12775 and ASTM E438 (2-3). Both these standards describe two
 types of borosilicate glass based on their coefficients of mean linear thermal expansion (see Section 8.1).
 
-| Glass Type | Subtype / Form | SiO₂ (%) | B₂O₃ (%) | Al₂O₃ (%) | Na₂O/K₂O (%) | MgO/CaO/BaO (%) | CTE [10⁻⁶ K⁻¹](20–300°C) | Annealing Point (°C) |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+**Table 8.0-1 Overview of Glasses Used in Pharmaceutical Primary Packaging by Classification and Standards**
 
+Borosilicate
 3.3 5.0 7.0 Quartz Soda-Lime-
 Aluminosilicate Group Group Group Molded (Fused Silicate Tubular/
 Tubular Tubular Tubular Silica) Molded

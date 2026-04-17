@@ -176,7 +176,7 @@ K2 is a correction factor accounting for shape of the largest pores as well as w
 
         
 
-The theory behind diffusive flow-testing can best be summarized by the extended integrity-test profile in Figure 7.0-3, depicting the gas-flow properties of a wetted filter as a function of the applied test pressure. The linear portion at the lower test pressures corresponds to the diffusive flow regime described by Equation 4 or Equation 5, while viscous flow becomes the main transport mechanism for the steeper portion at higher pressures. The transition from diffusive to bulk flow (diffusive plus viscous flow) represents the maximum end of the pore-size distribution, as the larger pores are being voided of their wetting liquid. The relative size of the membrane's largest pores can be estimated from the test pressure using Equation 8.
+The theory behind diffusive flow-testing can best be summarized by the extended integrity-test profile in Figure 7.0-3🔍, depicting the gas-flow properties of a wetted filter as a function of the applied test pressure. The linear portion at the lower test pressures corresponds to the diffusive flow regime described by Equation 4 or Equation 5, while viscous flow becomes the main transport mechanism for the steeper portion at higher pressures. The transition from diffusive to bulk flow (diffusive plus viscous flow) represents the maximum end of the pore-size distribution, as the larger pores are being voided of their wetting liquid. The relative size of the membrane's largest pores can be estimated from the test pressure using Equation 8.
 
 ## 2.0 Glossary
 
@@ -1238,16 +1238,25 @@ differential pressure, flow path design, fluid viscosity, and temperature. Table
 between flow rate and a common list of process parameters.
 
 **Table 5.2-1 Common Factors Affecting Flow Rate**
-| Higher Flow Rate | Lower Flow Rate |
-| --- | --- |
-| High Porosity/Greater Void Volume | Low Porosity/Lesser Void Volume |
-| Large Pore Size | Small Pore Size |
-| Thin Membrane (less hydraulic resistance) | Thick Membrane (greater hydraulic resistance) |
-| Large Effective Filtration Area (EFA) | Low Effective Filtration Area (EFA) |
-| High Differential Pressure (fluid force) | Low Differential Pressure |
-| Straight Flow Path | Tortuous Flow Path |
-| Low Viscosity | High Viscosity |
-| High Temperature | Low Temperature |
+
+Higher Flow Rate Lower Flow Rate
+
+High Porosity/Greater Void Volume Low Porosity/Lesser Void Volume
+
+Large Pore Size Small Pore Size
+
+Thin Membrane (less hydraulic resistance) Thick Membrane (greater hydraulic
+resistance)
+
+Large Effective Filtration Area (EFA) Low Effective Filtration Area (EFA)
+
+High Differential Pressure (fluid force) Low Differential Pressure
+
+Straight Flow Path Torturous Flow Path
+
+Low Viscosity High Viscosity
+
+High Temperature Low Temperature
 
 Most of these parameters are governed by membrane and filter designs or particular fluid properties. The
 primary parameter is the differential pressure that is, the difference between inlet (feed side) and outlet
@@ -1343,16 +1352,24 @@ the case where no defined maximum filter capacity can be determined, the maximum
 filtered should be specified so it can be covered during the filter-validation studies (see Section 6.8).
 
 **Table 5.3-1 Factors Affecting Throughput**
-| Higher Total Throughput | Lower Total Throughput |
-| --- | --- |
-| High Porosity/Higher Void Volume | Low Porosity/Lesser Void Volume |
-| Large Pore Size | Small Pore Size |
-| Low Nonspecific Adsorption | High Nonspecific Adsorption |
-| Asymmetric Pore Shape | Isotropic Pore Shape |
-| High Effective Filtration Area (EFA) | Low Effective Filtration Area (EFA) |
-| Low Contaminant Load | High Contaminant Load |
-| Nondeformable, Hard Contaminant | Deformable, Soft Contaminant |
-| Low Shear-Stress History | High Shear-Stress History |
+
+Higher Total Throughput Lower Total Throughput
+
+High Porosity/Higher Void Volume Low Porosity/Lesser Void Volume
+
+Large Pore Size Small Pore Size
+
+Low Nonspecific Adsorption High Nonspecific Adsorption
+
+Asymmetric Pore Shape Isotropic Pore Shape
+
+High Effective Filtration Area (EFA) Low Effective Filtration Area (EFA)
+
+Low Contaminant Load High Contaminant Load
+
+Nondeformable, Hard Contaminant Deformable, Soft Contaminant
+
+Low Shear-Stress History High Shear-Stress History
 
 ### 5.4 Scale-Down Systems and Testing
 
@@ -2644,11 +2661,13 @@ being tested, the wetting fluid used, and the capability of the automated integr
 general guidance is provided in Table 7.1.1-1.
 
 **Table 7.1.1-1 Suggested Integrity Test Methods Based on Filtration Surface Area**
-| Surface Area of Filter Media* | Suggested Integrity Test Method |
-| --- | --- |
-| < 0.03 m² | Bubble Point |
-| 0.03 -- 1.8 m² | Bubble Point or Diffusive Flow |
-| > 1.8 m² | Combination of Diffusive Flow and Bubble Point |
+
+Surface Area of Filter Media being Integrity
+Tested*
+Suggested Integrity Test Method Based on
+Effective Filtration Area
+
+< 0.03 m2 Bubble Point
 
 0.03 – 1.8 m2 Bubble Point or Diffusive Flow
 

@@ -90,56 +90,6 @@ Under 21 CFR 3.2(e), a combination product includes:
 
                 
 
-#### 
-
-                
-                    
-                        
-                            
-                            
-                            
-                            
-                        
-| --- | --- | --- | --- |
-                    
-                    
-                        
-                            ****
-                            
-                            
-                            
-                        
-| | Single-entity | / | PFS |
-                        
-                            ****
-                            
-                            
-                            
-                        
-| | Co-packaged | | |
-                        
-                            ****
-                            
-                            
-                            
-                        
-| | Cross-labeled | | + |
-                        
-                            ****
-                            
-                            
-                            
-                        
-| | Investigational cross-labeled | | + |
-                    
-                
-
-            
-
-            
-
-                
-
 #### PFS Single-entity
 
                 
@@ -196,58 +146,6 @@ The core requirements provide for systems that assure proper design, monitoring,
             
 
 ## II.B |
-
-            
-
-                
-
-#### CGMP
-
-                
-                    
-                        
-                            
-                            
-                            
-                        
-| | CGMP | |
-| --- | --- | --- |
-                    
-                    
-                        
-                            
-                            
-                            
-                        
-| Drug | Drug CGMP | 21 CFR parts 210/211 |
-                        
-                            
-                            
-                            
-                        
-| Device | Quality System (QS) Reg. QMSR | 21 CFR part 820 |
-                        
-                            
-                            
-                            
-                        
-| Biologic | Biologic CGMP | 21 CFR parts 600-680 |
-                        
-                            
-                            
-                            
-                        
-| HCT/Ps | Current Good Tissue Practice | 21 CFR part 1271 |
-                        
-                            
-                            
-                            
-                        
-| Combination | Part 4 | 21 CFR part 4 |
-                    
-                
-
-            
 
             
 
@@ -389,32 +287,6 @@ For **single-entity and co-packaged** combination products, part 4 identifies tw
             
 
 A manufacturer may choose **either** streamlined approach *regardless of which constituent part provides the primary mode of action (PMOA)*.
-
-            
-                
-                    
-                        
-                        
-                        
-                    
-| Pathway | Base Framework | Added Provisions |
-| --- | --- | --- |
-                
-                
-                    
-                        ****
-                        
-                        
-                    
-| Drug CGMP-based | 21 CFR parts 210/211 (full Drug CGMP) | + 6 device QS provisions (see below) |
-                    
-                        ****
-                        
-                        
-                    
-| Device QS-based | 21 CFR part 820 / QMSR (full Device QS) | + 8 drug CGMP provisions (see below) |
-                
-            
 
             
 
@@ -634,48 +506,6 @@ Manufacturers may contact the Office of Combination Products (OCP) for assistanc
 
                 
 
-#### Lead Center PMOA
-
-                
-                    
-                        
-                            
-                            
-                            
-                        
-| PMOA | | |
-| --- | --- | --- |
-                    
-                    
-                        
-                            
-                            
-                            
-                        
-| Drug | CDER | + CGMP |
-                        
-                            
-                            
-                            
-                        
-| Biologic | CBER | + CGMP |
-                        
-                            
-                            
-                            
-                        
-| Device | CDRH | + CGMP |
-                    
-                
-
-                
-
-            
-
-            
-
-                
-
 #### 2026 QS Reg → QMSR
 
                 
@@ -723,6 +553,16 @@ Manufacturers may contact the Office of Combination Products (OCP) for assistanc
     
 
     
+
+                
+
+#### Lead Center PMOA
+
+                
+
+            
+
+            
 
     
     
@@ -794,18 +634,6 @@ Sections I and II establish the regulatory architecture for combination product 
         
 
     
-
-    
-
-FDA Combination Products CGMP Guidance (January 2017) | 21 CFR Part 4
-
-    
-
-SterileGMP Knowledge Hub  |  Bilingual Educational Series
-
-    
-
-Sections I & II: Introduction & Background  |  p1–p8
 
 ⇧
 
@@ -1059,52 +887,6 @@ Design controls should start as early as possible, once a company has determined
 
                     
 
-#### CGMP
-
-                    
-                        
-                            
-                                
-                                
-                                
-                            
-| | (Parts 210/211) | (Part 820) |
-| --- | --- | --- |
-                        
-                        
-                            
-                                ****
-                                
-                                
-                            
-| Phase 1 | | |
-                            
-                                ****
-                                
-                                
-                            
-| Phase 2 | CGMP | |
-                            
-                                ****
-                                
-                                
-                            
-| Phase 3 | CGMP | |
-                            
-                                ****
-                                
-                                
-                            
-| | CGMP | Part 820 |
-                        
-                    
-
-                
-
-                
-
-                    
-
 #### 820.30
 
                     
@@ -1326,45 +1108,6 @@ However, a facility that manufactures a drug-device combination product formed f
 #### 
 
                     
-                        
-                            
-                                
-                                
-                                
-                            
-| --- | --- | --- |
-                        
-                        
-                            
-                                ****
-                                
-                                
-                            
-| Constituent part | 21 CFR Part 4 | finished state |
-                            
-                                ****
-                                
-                                
-                            
-| Component | 21 CFR 210.3 | |
-                            
-                                ****
-                                
-                                
-                            
-| Component | 21 CFR 820.3(c) | |
-                        
-                    
-
-                
-
-                
-
-                    
-
-#### 
-
-                    
 
                     
 
@@ -1468,63 +1211,6 @@ Manufacturers should document their evaluation if they believe a container closu
                 
 
 ### vs
-
-                
-
-                    
-
-#### Hold vs. Deliver —
-
-                    
-                        
-                            
-                                
-                                
-                                
-                                
-                            
-| --- | --- | --- | --- |
-                        
-                        
-                            
-                                
-                                
-                                
-                                
-                            
-| vial | | Container/closure only | Parts 210/211 |
-                            
-                                
-                                
-                                
-                                
-                            
-| PFS | | Combination product | Parts 211 + 820 |
-                            
-                                
-                                
-                                
-                                
-                            
-| MDI | | Combination product | Parts 211 + 820 |
-                            
-                                
-                                
-                                
-                                
-                            
-| IV | IV line | Combination product | Parts 211 + 820 |
-                            
-                                
-                                
-                                
-                                
-                            
-| cup | | Exempt device | 211 only |
-                        
-                    
-
-                
 
                 
 
@@ -1973,52 +1659,6 @@ Measures that might be taken to ensure CGMP compliance at all manufacturing faci
 
                     
 
-#### CGMP
-
-                    
-                        
-                            
-                                
-                                
-                            
-| | CGMP |
-| --- | --- |
-                        
-                        
-                            
-                                ****
-                                
-                            
-| Combination Product Owner | CGMP |
-                            
-                                ****
-                                
-                            
-| | Part 820QS |
-                            
-                                ****
-                                
-                            
-| | Parts 210/211CGMP |
-                            
-                                ****
-                                
-                            
-| | Part 4 |
-                            
-                                ****
-                                
-                            
-| CDMO | CGMP |
-                        
-                    
-
-                
-
-                
-
-                    
-
 #### Owner
 
                     
@@ -2144,49 +1784,6 @@ Similarly, a change to a device constituent part of a cross-labeled combination 
 
                     
 
-                    
-
-                
-
-                
-
-                    
-
-#### 
-
-                    
-                        
-                            
-                                
-                                
-                                
-                            
-| --- | --- | --- |
-                        
-                        
-                            
-                                
-                                
-                                
-                            
-| pH | | 820.30 |
-                            
-                                
-                                
-                                
-                            
-                            
-                                
-                                
-                                
-                            
-| | | CMC |
-                            
-                                
-                                
-                                
-                            
-                        
                     
 
                 
@@ -2341,18 +1938,6 @@ Similarly, a change to a device constituent part of a cross-labeled combination 
         
 
     
-
-    
-
-FDA Combination Products CGMP Guidance (Jan 2017)
-
-    
-
-Section III: General Considerations for CGMP Compliance | p9 – p18
-
-    
-
-SterileGMP Knowledge Hub — Educational Reference Only
 
 ⇧
 
@@ -2693,84 +2278,6 @@ If a finished device, drug, or biological product is purchased, the combination 
 
                 
 
-#### 
-
-                
-                    
-                        
-                            
-                            
-                            
-                        
-| 820.30 | | |
-| --- | --- | --- |
-                    
-                    
-                        
-                              
-**
-                            
-                            
-                        
-| Design Plan | | + |
-                        
-                              
-**
-                            
-                            
-                        
-| Design Input | QTPP / CQA | |
-                        
-                              
-**
-                            
-                            
-                        
-| Design Output | / Spec | |
-                        
-                              
-**
-                            
-                            
-                        
-| Design Review | | |
-                        
-                              
-**
-                            
-                            
-                        
-| Verification | | bench testing |
-                        
-                              
-**
-                            
-                            
-                        
-| Validation | | |
-                        
-                              
-**
-                            
-                            
-                        
-| Design Transfer | | → |
-                        
-                              
-**
-                            
-                            
-                        
-| DHF | | |
-                    
-                
-
-            
-
-            
-
-                
-
 #### vs.
 
                 
@@ -3095,57 +2602,6 @@ The manufacturer should take appropriate measures, which may include CAPAs, with
 
                 
 
-#### vs. 820.100 CAPA —
-
-                
-                    
-                        
-                            
-                            
-                            
-                        
-| | 211.192 | 820.100 CAPA |
-| --- | --- | --- |
-                    
-                    
-                        
-                            
-                            
-                            
-                        
-| | /OOS | + |
-                        
-                            
-                            
-                            
-                        
-| | | RCA |
-                        
-                            
-                            
-                            
-                        
-| | | CAPA |
-                        
-                            
-                            
-                            
-                        
-| | | CAPA |
-                        
-                            
-                            
-                            
-                        
-                    
-                
-
-            
-
-            
-
-                
-
 #### FDA 483
 
                 
@@ -3281,55 +2737,6 @@ However, the Agency anticipates that installed and serviced devices will rarely 
 
                 
 
-#### 820.170 / 820.200
-
-                
-                    
-                        
-                            
-                            
-                            
-                        
-| | 820.170 | 820.200 |
-| --- | --- | --- |
-                    
-                    
-                        
-                            
-                            
-                            
-                        
-| PFS | | |
-                        
-                            
-                            
-                            
-                        
-                        
-                            
-                            
-                            
-                        
-| DPI | | |
-                        
-                            
-                            
-                            
-                        
-                        
-                            
-                            
-                            
-                        
-                    
-                
-
-            
-
-            
-
-                
-
 #### 
 
                 
@@ -3442,64 +2849,6 @@ Manufacturers should verify they are applying the current QMSR requirements rath
 #### 
 
                 
-                    
-                        
-                            
-                            
-                            
-                        
-| | 8202017 | QMSR / ISO 13485 |
-| --- | --- | --- |
-                    
-                    
-                        
-                            
-                            
-                            
-                        
-| | 820.20 | ISO 13485 §5 |
-                        
-                            
-                            
-                            
-                        
-| | 820.30 | ISO 13485 §7.3 |
-                        
-                            
-                            
-                            
-                        
-| | 820.50 | ISO 13485 §7.4 |
-                        
-                            
-                            
-                            
-                        
-| CAPA | 820.100 | ISO 13485 §8.5 |
-                        
-                            
-                            
-                            
-                        
-| | 820.170 | ISO 13485 §7.5.3 |
-                        
-                            
-                            
-                            
-                        
-| | 820.200 | ISO 13485 §7.5.4 |
-                    
-                
-
-            
-
-            
-
-                
-
-#### 
-
-                
 
                     
 
@@ -3556,77 +2905,6 @@ Manufacturers should verify they are applying the current QMSR requirements rath
         
 
         
-            
-                
-                    
-                    
-                    
-                    
-                    
-                    
-                
-| | | | 820.30 | CDMO | QMSR |
-| --- | --- | --- | --- | --- | --- |
-            
-            
-                
-                    ****
-                    
-                    
-                    
-                    
-                    
-                
-| 820.20 | | 211.22 | | | ISO 13485 §5 |
-                
-                    ****
-                    
-                    
-                    
-                    
-                    
-                
-| 820.30 | | ICH Q8 | DHFI/O/—— | | ISO 13485 §7.3 |
-                
-                    ****
-                    
-                    
-                    
-                    
-                    
-                
-| 820.50 | | 211.84 | ASL | | ISO 13485 §7.4 |
-                
-                    ****
-                    
-                    
-                    
-                    
-                    
-                
-| 820.100 | CAPA | 211.192 | | | ISO 13485 §8.5 |
-                
-                    ****
-                    
-                    
-                    
-                    
-                    
-                
-| 820.170 | | | | | ISO 13485 §7.5.3 |
-                
-                    ****
-                    
-                    
-                    
-                    
-                    
-                
-| 820.200 | | | | | ISO 13485 §7.5.4 |
-            
-        
-
-    
 
     
     
@@ -3652,14 +2930,6 @@ Manufacturers should verify they are applying the current QMSR requirements rath
         
 
     
-
-    
-
-FDA Combination Products CGMP Guidance (January 2017) | Section IV.A: Device QS Provisions — p19–p27
-
-    
-
-Bilingual Educational Edition | SterileGMP Knowledge Hub | QMSR Update: Effective February 2026
 
 ⇧
 
@@ -4306,41 +3576,6 @@ If one facility is manufacturing a drug product as a constituent part to be supp
 
             
 
-                
-
-#### 
-
-                
-                    
-                        
-                        
-                        
-                    
-| --- | --- | --- |
-                    
-                        
-                        
-                        
-                    
-| Single-entity | | |
-                    
-                        
-                        
-                        
-                    
-| Co-packaged | | |
-                    
-                        
-                        
-                        
-                    
-| Co-packaged | + | + |
-                
-
-            
-
-        
-
     
 
     
@@ -4538,41 +3773,6 @@ As with drugs and devices, parametric release may be acceptable for some combina
 
                 
 
-#### 211.167
-
-                
-                    
-                        
-                        
-                        
-                    
-| --- | --- | --- |
-                    
-                        
-                        
-                        
-                    
-| 211.167(a) | / | |
-                    
-                        
-                        
-                        
-                    
-| 211.167(b) | | |
-                    
-                        
-                        
-                        
-                    
-| 211.167(c) | | |
-                
-
-            
-
-            
-
-                
-
 #### 
 
                 
@@ -4742,43 +3942,6 @@ Manufacturers considering use of novel approaches to comply with reserve samplin
 
                 
 
-#### 
-
-                
-                    
-                        
-                        
-                        
-                    
-| --- | --- | --- |
-                    
-                        
-                        
-                        
-                    
-| API | 2× | API1 |
-                    
-                        
-                        
-                        
-                    
-| | 2× / | 1OTC/ |
-                    
-                        
-                        
-                    
-                    
-                        
-                        
-                    
-                
-
-            
-
-            
-
-                
-
 #### Single-Entity vs. Co-packaged
 
                 
@@ -4843,135 +4006,12 @@ Manufacturers considering use of novel approaches to comply with reserve samplin
 ## Quick Reference — 8 Drug CGMP Provisions (21 CFR 4.4(b)(2))
 
             
-                
-                    
-                    
-                    
-                
-| CFR Provision | Subject | Scope for Combination Products |
-| --- | --- | --- |
-                
-                    ****
-                    
-                    
-                
-| 211.84 | Component Testing | Drug components, containers, closures (not device-only materials) |
-                
-                    ****
-                    
-                    
-                
-| 211.103 | Yield Calculation | Drug constituent parts only; at each manufacturing phase |
-                
-                    ****
-                    
-                    
-                
-| 211.132 | Tamper-Evident Packaging | OTC combination products only; exempt products exist |
-                
-                    ****
-                    
-                    
-                
-| 211.137 | Expiration Dating | All combination products with drug constituent parts; earliest date rule |
-                
-                    ****
-                    
-                    
-                
-| 211.165 | Testing and Release | Every batch; identity, strength, quality, purity |
-                
-                    ****
-                    
-                    
-                
-| 211.166 | Stability Testing | Full stability program; re-evaluate on any constituent part change |
-                
-                    ****
-                    
-                    
-                
-| 211.167 | Special Testing | Sterile/pyrogen-free, ophthalmic ointments, controlled-release — as applicable |
-                
-                    ****
-                    
-                    
-                
-| 211.170 | Reserve Samples | API and drug product; 1 year post-expiration retention |
-            
-
-        
 
         
 
             
 
 ## 8CDMO
-
-            
-
-                
-
-#### CDMO
-
-                
-                    
-                        
-                        
-                        
-                    
-| --- | --- | --- |
-                    
-                        
-                        
-                        
-                    
-| 211.84 | | COA |
-                    
-                        
-                        
-                        
-                    
-| 211.103 | SOP | - |
-                    
-                        
-                        
-                        
-                    
-| 211.132 | | OTC |
-                    
-                        
-                        
-                        
-                    
-| 211.137 | | |
-                    
-                        
-                        
-                        
-                    
-| 211.165 | | HPLC |
-                    
-                        
-                        
-                        
-                    
-| 211.166 | | |
-                    
-                        
-                        
-                        
-                    
-| 211.167 | / | |
-                    
-                        
-                        
-                        
-                    
-| 211.170 | | |
-                
-
-            
 
             
 
@@ -5323,14 +4363,6 @@ Section IV.C establishes that the streamlined approach under Part 4 does not rep
 
     
 
-    
-
-FDA Combination Products CGMP Guidance (Jan 2017) | Section IV.B+C: Drug CGMP Provisions & Biologics | p28–p39
-
-    
-
-SterileGMP Knowledge Hub — Educational Reference Only. Consult the original FDA guidance and applicable regulations for compliance purposes.
-
 ⇧
 
 ## Section 3: Product Scenarios & Glossary (p40-p59)
@@ -5391,47 +4423,6 @@ This discussion is intended to highlight only certain issues that a combination 
 
                 
 
-#### 
-
-                
-
-                
-                    
-                        
-                        
-                        
-                        
-                    
-| --- | --- | --- | --- |
-                    
-                        
-                        
-                        
-                        
-                    
-| A | (PFS) | Drug CGMP-based | 6 Device QS |
-                    
-                        
-                        
-                        
-                        
-                    
-| B | | Device QS-based | + |
-                    
-                        
-                        
-                        
-                        
-                    
-| C | (DES) | Device QS-based | 8 Drug CGMP |
-                
-
-            
-
-            
-
-                
-
 #### —
 
                 
@@ -5455,6 +4446,16 @@ This discussion is intended to highlight only certain issues that a combination 
     
 
     
+
+                
+
+#### 
+
+                
+
+                
+
+            
     
 
     
@@ -5645,50 +4646,6 @@ Because no changes are to be made to the drug other than being put into the syri
 ### i. Design Inputs and Outputs
 
             
-                
-                    
-                    
-                
-| Design Input / User Needs | Design Output |
-| --- | --- |
-                
-                    
-                    
-                
-| Required minimum/maximum dose delivery for drug | Drawing/specification for syringe dimensions, markings, etc. |
-                
-                    
-                    
-                
-| Drug viscosity and desired/required delivery rate | Drawing/specification for needle bore, glide force, etc. |
-                
-                    
-                    
-                
-| Expected use condition (e.g., expected user experience/education level) | Content and reading level for the prefilled syringe's labeling |
-                
-                    
-                    
-                
-| Maximum and minimum allowable temperature for prefilled syringe | Packaging/labeling specifications for the prefilled syringe |
-                
-                    
-                    
-                
-| No degradation of drug or syringe over the expected shelf-life as a result of contact with one another | Specifications for drug-contacting syringe materials |
-                
-                    
-                    
-                
-| Expected shipping method and appropriate storage conditions | Design drawings/specifications for primary and secondary packaging, labeling for acceptable storage conditions |
-                
-                    
-                    
-                
-| Drug delivery method (e.g., needle or needleless delivery) | Drawing/specification for needle and/or other associated syringe components |
-            
-
-        
 
         
 
@@ -5805,35 +4762,6 @@ These activities would be documented in the DHF (Design History File) pursuant t
 Manufacturer A should identify risks associated with the prefilled syringe design, its manufacturing processes, and intended uses, and also reduce or mitigate any unacceptable risks.
 
             
-                
-                    
-                    
-                
-| Risk | Mitigation |
-| --- | --- |
-                
-                    
-                    
-                
-| Syringe filled with incorrect drug dose | In-process acceptance testing, process validation |
-                
-                    
-                    
-                
-| Loss of sterility | Container-closure integrity testing, packaging validation/testing |
-                
-                    
-                    
-                
-| Drug contamination from materials of syringe construction | Purchasing controls (including receiving acceptance activities for components received from syringe component manufacturer), in-process and finished product testing to ensure no introduction of contaminants during manufacture and over the product shelf-life |
-                
-                    
-                    
-                
-| Syringe failure during use | Design verification testing on syringe, purchasing controls over syringe component manufacturer(s) |
-            
-
-        
 
         
 
@@ -6114,40 +5042,19 @@ Similarly, if Manufacturer A uses an outside facility for terminal sterilization
 
             
 
+    
+
+    
+
                 
 
 #### 211.84 vs 820.50 — CDMO
-
-                
-                    
-                        
-                        
-                        
-                    
-| --- | --- | --- |
-                    
-                        
-                        
-                        
-                    
-| 211.84 | // | |
-                    
-                        
-                        
-                        
-                    
-| 820.50 | | |
-                
 
                 
 
             
 
         
-
-    
-
-    
     
 
         
@@ -6456,40 +5363,6 @@ Risk analysis must be conducted to identify any risks associated with the design
 ### i. Design Inputs and Outputs
 
             
-                
-                    
-                    
-                
-| Design Input / User Needs | Design Output |
-| --- | --- |
-                
-                    
-                    
-                
-| Required delivery dose and delivery rate for the drug | Drug formulation and concentration, coating thickness, uniformity of coating, manufacturing process requirements, allowable storage conditions |
-                
-                    
-                    
-                
-| Expected use condition (e.g., anatomical location of use, surgical technique) | Labeling (instructions for use), material/drug composition to ensure no damage to mesh or coating during surgical placement |
-                
-                    
-                    
-                
-| Maximum allowable temperature during transportation, handling, and storage for the combination product | Packaging/labeling specifications for the combination product |
-                
-                    
-                    
-                
-| No unacceptable degradation of the drug over the expected shelf-life | Specifications for the drug formulation drug-contacting materials and packaging, shelf-life labeling |
-                
-                    
-                    
-                
-| No degradation of the surgical mesh over the expected shelf-life | Specifications for mesh material, drug formulation and packaging, shelf-life labeling |
-            
-
-            
 
 ### ii. Design Verification and Validation
 
@@ -6511,25 +5384,6 @@ Risk analysis must be conducted to identify any risks associated with the design
 ### iii. Risk Analysis and Mitigation
 
             
-                
-                    
-                    
-                
-| Risk | Mitigation |
-| --- | --- |
-                
-                    
-                    
-                
-| Drug concentration in coating not sufficient to treat infection (e.g., due to insufficient drug coating per surface area of the mesh or non-uniformity of coating), inappropriate delivery rate | Clinical testing of the combination product, in-process acceptance testing, manufacturing process validation |
-                
-                    
-                    
-                
-| Mesh erodes or drug degrades during use or storage | Design verification testing (bench), clinical testing, labeling (instructions for use, expiration dating), purchasing controls over drug supplier, specifications and other process controls |
-            
-
-        
 
         
 
@@ -6770,29 +5624,6 @@ This example focuses on considerations for complying with the drug CGMP provisio
 
                 
 
-#### DES
-
-                
-
-                
-                    
-| --- | --- | --- |
-                    
-| AOwner | | — |
-                    
-| B | API | sirolimus, paclitaxel |
-                    
-| C | | polymer carrier |
-                    
-| D | | |
-                
-
-            
-
-            
-
-                
-
 #### Device QS-based — 8 CGMP
 
                 
@@ -6832,6 +5663,16 @@ This example focuses on considerations for complying with the drug CGMP provisio
     
 
     
+
+                
+
+#### DES
+
+                
+
+                
+
+            
     
 
         
@@ -6885,37 +5726,6 @@ Calculation of yield should be conducted during all appropriate steps in the man
             
 
 ## — 211.84 & 211.103
-
-            
-
-                
-
-#### 211.84
-
-                
-                    
-| --- | --- | --- |
-                    
-                        
-                        
-                        
-                    
-| B | | CoA |
-                    
-                        
-                        
-                        
-                    
-| C | | |
-                    
-                        
-                        
-                        
-                    
-| D | | |
-                
-
-            
 
             
 
@@ -7130,33 +5940,6 @@ Manufacturer A must maintain reserve samples representative of each lot of the a
 
                 
 
-#### 211.170 —
-
-                
-
-                
-                    
-| --- | --- |
-                    
-                        
-                        
-                    
-| Active Ingredient | DES 1 |
-                    
-                        
-                        
-                    
-| DES | 1 |
-                
-
-                
-
-            
-
-            
-
-                
-
 #### DES
 
                 
@@ -7176,6 +5959,18 @@ Manufacturer A must maintain reserve samples representative of each lot of the a
     
 
     
+
+                
+
+#### 211.170 —
+
+                
+
+                
+
+            
+
+            
     
 
     
@@ -7191,48 +5986,6 @@ Manufacturer A must maintain reserve samples representative of each lot of the a
 If you have questions regarding compliance with CGMP requirements for combination products after reviewing this guidance and the materials cited in this document, we encourage you to contact us. We recommend you contact the lead center for your product in the first instance. However, you may also contact OCP for assistance.
 
             
-                
-                    
-                    
-                
-| Center / Office | Contact |
-| --- | --- |
-                
-                    ****  
-  
-
-                      
-
-                
-| CBEROffice of Communication, Outreach and Development (OCOD)10903 New Hampshire Ave, Building 71, Room 3128, Silver Spring, MD 20993 | Phone: 1-800-835-4709 or 240-402-8010Email: ocod@fda.hhs.gov |
-                
-                    ****  
-  
-
-                      
-
-                
-| CDERDivision of Drug Information (DDI)Hillandale Building, 10001 New Hampshire Ave, Silver Spring, MD 20993 | Phone: 1-855-543-3784 or 301-796-3400Email: druginfo@fda.hhs.gov |
-                
-                    ****  
-  
-
-                      
-
-                
-| CDRHDivision of Industry and Consumer Education (DICE)10903 New Hampshire Ave, Building 66, Room 4621, Silver Spring, MD 20993 | Phone: 1-800-638-2041 or 301-796-7100Email: DICE@fda.hhs.gov |
-                
-                    ****  
-  
-
-                      
-  
-
-                
-| OCPOffice of Combination Products10903 New Hampshire Ave, Building 32, Hub/Mail Room #5129, Silver Spring, MD 20993 | Phone: 301-796-8930Fax: 301-847-8619Email: combination@fda.gov |
-            
-
-        
 
         
 
@@ -7314,94 +6067,6 @@ If you have questions regarding compliance with CGMP requirements for combinatio
 *Note: this glossary is for use exclusively with this guidance document. Definitions that have been taken from federal regulations include the relevant citation.*
 
             
-                
-                    
-                    
-                    
-                
-| Term | English Definition | |
-| --- | --- | --- |
-                
-                    
-                    
-                    
-                
-| Constituent part | A drug, device, or biological product that is part of a combination product. (21 CFR 4.2) | PFS + constituent part |
-                
-                    
-                    
-                    
-                
-| Co-packaged combination product | Two or more separate products packaged together in a single package or as a unit and comprised of drug and device products, device and biological products, or biological and drug products. (21 CFR 3.2(e)(2)) | + |
-                
-                    
-                    
-                    
-                
-| Cross-labeled combination product | A drug, device, or biological product packaged separately that according to its investigational plan or proposed labeling is intended for use only with an approved individually specified drug, device, or biological product where both are required to achieve the intended use, indication, or effect. (21 CFR 3.2(e)(3) and 21 CFR 3.2(e)(4)) | |
-                
-                    
-                    
-                    
-                
-| Device QS regulation-based streamlined approach | A CGMP operating system that is intended to demonstrate compliance with all of the provisions of the device QS regulation and the following provisions from the drug CGMPs in accordance with 21 CFR 4.4(b)(2): 211.84, 211.103, 211.132, 211.137, 211.165, 211.166, 211.167, 211.170 | Part 820 8 Drug CGMP |
-                
-                    
-                    
-                    
-                
-| Drug CGMPs | The current good manufacturing practice regulations set forth in 21 CFR 210 and 21 CFR part 211. (21 CFR 4.2) | 21 CFR 210 & 211 |
-                
-                    
-                    
-                    
-                
-| Drug CGMP-based streamlined approach | A CGMP operating system that is intended to demonstrate compliance with all of the provisions from the drug CGMPs and the following provisions from the device QS regulation in accordance with 21 CFR 4.4(b)(1): 820.20, 820.30, 820.50, 820.100, 820.170, 820.200 | 21 CFR 211 6 Device QS CDMO |
-                
-                    
-                    
-                    
-                
-| Lead center | The FDA center (CBER, CDER, or CDRH) that has primary jurisdiction for premarket review and regulation of a combination product. | FDA PMOA |
-                
-                    
-                    
-                    
-                
-| Manufacture | Includes, but is not limited to, designing, fabricating, assembling, filling, processing, testing, labeling, packaging, repackaging, holding, and storage. (21 CFR 4.2) | |
-                
-                    
-                    
-                    
-                
-| CGMP operating system | The operating system within an establishment that is designed and implemented to address and meet the current good manufacturing practice requirements for a combination product. (21 CFR 4.2) | CGMP Drug-based Device QS-based |
-                
-                    
-                    
-                    
-                
-| Owner | For purposes of this guidance, the entity that holds the marketing authorization for a combination product (regardless of whether that entity is directly engaged in the manufacture of the product). | Owner CGMP |
-                
-                    
-                    
-                    
-                
-| Device QS regulation | The quality system regulation in 21 CFR part 820. (21 CFR 4.2) | 21 CFR Part 820 2024 21 CFR Part 820 ISO 13485 |
-                
-                    
-                    
-                    
-                
-| Single-entity combination product | A product comprised of two or more regulated components, i.e., drug/device, biologic/device, drug/biologic, or drug/device/biologic, that are physically, chemically, or otherwise combined or mixed and produced as a single entity. (21 CFR 3.2(e)(1)) | / PFSDES |
-                
-                    
-                    
-                    
-                
-| Streamlined approach | Either of the two approaches permitted under 21 CFR part 4, which allows combination product manufacturers to demonstrate compliance with both the drug CGMPs and device QS regulation by designing and implementing a CGMP operating system that demonstrates compliance with part 211 or part 820 in its entirety plus specified provisions of the other set of regulations. | |
-            
-
-        
 
         
 
@@ -7425,40 +6090,6 @@ If you have questions regarding compliance with CGMP requirements for combinatio
 
                     
 
-                
-
-                
-
-            
-
-            
-
-                
-
-#### Streamlined Approach
-
-                
-                    
-                        
-                        
-                        
-                        
-                    
-| --- | --- | --- | --- |
-                    
-                        
-                        
-                        
-                        
-                    
-| Drug CGMP-based | 21 CFR 210/211 | 6 Device QS | CDMO |
-                    
-                        
-                        
-                        
-                        
-                    
-| Device QS-based | 21 CFR Part 820 | 8 Drug CGMP | |
                 
 
                 
@@ -7500,6 +6131,16 @@ If you have questions regarding compliance with CGMP requirements for combinatio
     
 
     
+
+                
+
+#### Streamlined Approach
+
+                
+
+            
+
+            
     
 
     
@@ -7515,112 +6156,26 @@ If you have questions regarding compliance with CGMP requirements for combinatio
 ### Device
 
             
-                
-| 1 | Applying Human Factors and Usability Engineering to Medical Devices (February 2016) |
-| --- | --- |
-                
-| 2 | Design Control Guidance for Medical Device Manufacturers, Guidance for Industry (March 1997) |
-                
-| 3 | Glass Syringes for Delivering Drug and Biological Products: Technical Information to Supplement ISO Standard 11040-4 — Draft Guidance for Industry and FDA Staff (April 2013) |
-                
-| 4 | Quality System Information for Certain Premarket Application Reviews, Guidance for Industry and FDA Staff (Feb. 3, 2003) |
-                
-| 5 | Requests for Feedback on Medical Device Submissions: The Pre-Submission Program and Meetings with FDA Staff, Guidance for Industry (February 2014) |
-                
-| 6 | Sterilized Convenience Kits for Clinical and Surgical Use, Guidance for Industry (Jan. 2002) |
-                
-| 7 | Use of International Standard ISO 10993, "Biological Evaluation of Medical Devices Part 1: Evaluation and Testing", DRAFT Guidance for Industry |
-            
-
-            
 
 ### Drugs
-
-            
-                
-| 8 | CGMP for Phase 1 Investigational Drugs, Guidance for Industry (July 2008) |
-| --- | --- |
-                
-| 9 | Container Closure Systems for Packaging Human Drugs and Biologics: Chemistry, Manufacturing, and Controls Documentation, Guidance for Industry (May 1999) |
-                
-| 10 | Contract Manufacturing Arrangement for Drugs: Quality Agreements, Guidance for Industry (November 2016) |
-                
-| 11 | Formal Meetings Between the FDA and Sponsor or Applicants, Guidance for Industry (March 2015) |
-                
-| 12 | Investigating Out-of-Specification (OOS) Test Results for Pharmaceutical Production, Guidance for Industry (Oct. 2006) |
-                
-| 13 | Process Validation: General Principles and Practices, Guidance for Industry (Jan. 2011) |
-                
-| 14 | Q1A(R2) Stability Testing of New Drug Substances and Products, Guidance for Industry (Nov. 2003) |
-                
-| 15 | Q1B Photostability Testing of Drug Substances and Products, Guidance for Industry (November 1996) |
-                
-| 16 | Q1C Stability Testing for New Dosage Forms, Guidance for Industry (November 1996) |
-                
-| 17 | Q1D Bracketing and Matrixing Designs for Stability Testing of New Drug Substances and Products, Guidance for Industry (January 2003) |
-                
-| 18 | Q1E Evaluation of Stability Data, Guidance for Industry (June 2004) |
-                
-| 19 | Q7A Good Manufacturing Practice Guidance for Active Pharmaceutical Ingredients, Guidance for Industry (Aug 2001) |
-                
-| 20 | Q8(R2) Pharmaceutical Development, Guidance for Industry (November 2009) |
-                
-| 21 | Q9 Quality Risk Management, Guidance for Industry (June 2006) |
-                
-| 22 | Q10 Pharmaceutical Quality System, Guidance for Industry (April 2009) |
-                
-| 23 | Sterile Drug Products Produced by Aseptic Processing — Current Good Manufacturing Practice, Guidance for Industry (Sept. 2004) |
-                
-| 24 | Submission of Documentation in Applications for Parametric Release of Human and Veterinary Drug Products Terminally Sterilized by Moist Heat Process, Guidance for Industry (February 2010) |
-            
 
             
 
 ### Biological Products
 
             
-                
-| 25 | Cooperative Manufacturing Arrangements for Licensed Biologics, Guidance for Industry (Nov. 2008) |
-| --- | --- |
-            
-
-            
 
 ### HCT/Ps
-
-            
-                
-| 26 | Current Good Tissue Practice (CGTP) and Additional Requirements for Manufacturers of Human Cells, Tissues, and Cellular and Tissue-Based Products (HCT/Ps), Guidance for Industry (Dec 2011) |
-| --- | --- |
-            
 
             
 
 ### Combination Products
 
             
-                
-| 27 | Coronary Drug-Eluting Stents – Nonclinical and Clinical Studies, Draft Guidance for Industry (March 2008) |
-| --- | --- |
-                
-| 28 | How to Write a Request for Designation (RFD), Guidance for Industry (April 2011) |
-                
-| 29 | Human Factors Studies and Related Clinical Study Considerations in Combination Product Design and Development, Draft Guidance for Industry and FDA Staff (February 2016) |
-                
-| 30 | Technical Considerations for Pen, Jet, and Related Injectors Intended for Use with Drugs and Biological Products, Guidance for Industry and FDA Staff (June 2013) |
-            
-
-            
 
 ### General
 
             
-                
-| 31 | Pyrogen and Endotoxins Testing: Questions and Answers, Guidance for Industry (June 2012) |
-| --- | --- |
-            
-
-        
 
         
 
@@ -7853,46 +6408,19 @@ If you have questions regarding compliance with CGMP requirements for combinatio
 
             
 
+    
+
+    
+
                 
 
 #### —
-
-                
-                    
-                        
-                        
-                        
-                    
-| ... | | |
-| --- | --- | --- |
-                    
-                        
-                        
-                        
-                    
-| / CDMO | Drug CGMP-based | 6 Device QS |
-                    
-                        
-                        
-                        
-                    
-| | Device QS-based | 8 Drug CGMP |
-                    
-                        
-                        
-                        
-                    
-                
 
                 
 
             
 
         
-
-    
-
-    
     
 
         

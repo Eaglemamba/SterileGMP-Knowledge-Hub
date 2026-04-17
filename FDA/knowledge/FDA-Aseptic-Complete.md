@@ -135,55 +135,6 @@ All clean area classifications are based on data measured during periods of acti
 **Note:** Class 100 (ISO 5) environments should *normally yield no microbiological contaminants* during aseptic processing operations.
 
             
-                
-                    
-                          
-
-                        
-                        
-                        
-                        
-                    
-| Clean Area Classification(0.5 µm particles/ft³) | ISO Designation | >0.5 µm particles/m³ | Microbiological Active Air Action Levels (cfu/m³) | Microbiological Settling Plates Action Levels (90 mm diam; cfu/4 hr) |
-| --- | --- | --- | --- | --- |
-                
-                
-                    
-                        ****
-                        
-                        
-                        
-                        
-                    
-| 100 | ISO 5 | 3,520 | 1 | 1 |
-                    
-                        ****
-                        
-                        
-                        
-                        
-                    
-| 1,000 | ISO 6 | 35,200 | 7 | 3 |
-                    
-                        ****
-                        
-                        
-                        
-                        
-                    
-| 10,000 | ISO 7 | 352,000 | 10 | 5 |
-                    
-                        ****
-                        
-                        
-                        
-                        
-                    
-| 100,000 | ISO 8 | 3,520,000 | 100 | 50 |
-                
-            
-
-            
 
 **Notes on the table:**
 
@@ -1953,6 +1904,83 @@ Containers and closures must be sterile and nonpyrogenic for parenteral products
       
 
         
+
+#### 3-Log 1000
+
+        
+
+        
+
+        
+
+        
+
+      
+
+      
+
+        
+
+#### 3-Log = 1000
+
+        
+
+      
+
+      
+
+        
+
+#### CDMO
+
+        
+
+        
+
+          
+
+          
+
+          
+
+        
+
+        
+
+      
+
+      
+
+        
+
+#### —
+
+        
+
+          
+
+          
+
+          
+
+          
+
+        
+
+      
+
+    
+
+  
+
+  
+  
+
+  
+
+    
+
+      
 
 ## VI.B Container Closure Integrity (CCI)
 

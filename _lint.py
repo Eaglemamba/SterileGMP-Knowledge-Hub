@@ -15,6 +15,7 @@ import sys
 from collections import defaultdict, Counter
 from pathlib import Path
 from datetime import date
+from urllib.parse import unquote
 
 from bs4 import BeautifulSoup
 
@@ -83,7 +84,7 @@ def check_file(path: Path):
     for a in soup.find_all('a', href=True):
         href = a['href']
         if href.startswith('#') and len(href) > 1:
-            target = href[1:]
+            target = unquote(href[1:])
             if target not in all_ids:
                 issues.append(('broken-anchor', 0,
                                f'href="{href}" (link text: {a.get_text()[:40]!r})'))
@@ -165,7 +166,7 @@ def main():
     lines.append('')
 
     # Detail by category (cap per category to keep report readable)
-    DETAIL_CAP = 50
+    DETAIL_CAP = 500
     for cat in sorted(by_category, key=lambda c: -len(by_category[c])):
         items = by_category[cat]
         lines.append(f'## Detail: {cat} ({len(items)})')

@@ -12,8 +12,6 @@ USP ⟨63⟩ Mycoplasma Tests | p1-p4
 
     
 
-    
-
         
 
 The genus Mycoplasma represents a group of minute bacteria which have no cell walls. The genus comprises more than 120 species. They are the smallest self-replicating prokaryotic organisms. The cells vary in size and morphology and cannot be Gram stained, but impressions of colonies on solid agar can be stained with methylene blue or equivalent stain. Mycoplasma are parasites and commensals, and some may be pathogenic to a variety of animal and plant hosts.
@@ -43,8 +41,6 @@ These tests require careful aseptic technique and suitable laboratory conditions
     
 
 USP ⟨63⟩ Mycoplasma Tests | p4-p7
-
-    
 
     
 

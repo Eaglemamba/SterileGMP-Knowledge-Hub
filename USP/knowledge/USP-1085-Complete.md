@@ -2,7 +2,7 @@
 
 ## Section 0: Introduction & Endotoxin Limits (p1-p4)
 
-# USP ⟨1085⟩ Guidelines on the Endotoxins Test
+# USP 〈1085〉 Guidelines on the Endotoxins Test
 
     
 
@@ -10,13 +10,13 @@ Section 0: Introduction — Pyrogens, Endotoxin Science & Limits
 
     
 
-USP General Chapter (Informational) • Pages 1–4 of 14 • Companion to ⟨85⟩
+USP General Chapter (Informational) • Pages 1–4 of 14 • Companion to 〈85〉
 
     
 
         
 
-The first version of Bacterial Endotoxins Test ⟨85⟩ appeared in USP 20–NF 15 (1980). The chapter was subsequently harmonized with the Japanese and European Pharmacopeias, and the first harmonized chapter appeared in USP 25–NF 20 (2002). Since its first publication, the content has changed very little, but years of experience, increasing knowledge, and more complex parenteral formulations suggest that the basic methodologies described herein could benefit from additional supporting information.
+The first version of Bacterial Endotoxins Test 〈85〉 appeared in USP 20–NF 15 (1980). The chapter was subsequently harmonized with the Japanese and European Pharmacopeias, and the first harmonized chapter appeared in USP 25–NF 20 (2002). Since its first publication, the content has changed very little, but years of experience, increasing knowledge, and more complex parenteral formulations suggest that the basic methodologies described herein could benefit from additional supporting information.
 
         
 
@@ -28,7 +28,7 @@ The purpose of this information chapter is to provide additional background info
 
 ## Section 1: Methodology & MVD Calculations (p4-p8)
 
-# USP ⟨1085⟩ Guidelines on the Endotoxins Test
+# USP 〈1085〉 Guidelines on the Endotoxins Test
 
     
 
@@ -36,7 +36,7 @@ Section 1: Methodology — MVD, Consumables, Analyst & Equipment
 
     
 
-USP General Chapter (Informational) • Pages 4–8 of 14 • Companion to ⟨85⟩
+USP General Chapter (Informational) • Pages 4–8 of 14 • Companion to 〈85〉
 
     
 
@@ -140,7 +140,7 @@ For a new vendor of critical materials, a site audit may be in order. It is high
 
 ## Section 3: Investigation & Troubleshooting (p11-p14)
 
-# USP ⟨1085⟩ Guidelines on the Endotoxins Test
+# USP 〈1085〉 Guidelines on the Endotoxins Test
 
     
 
@@ -148,7 +148,7 @@ Section 3: OOS Investigation, LER & Alternate Methods
 
     
 
-USP General Chapter (Informational) • Pages 11–14 of 14 • Companion to ⟨85⟩
+USP General Chapter (Informational) • Pages 11–14 of 14 • Companion to 〈85〉
 
     
 

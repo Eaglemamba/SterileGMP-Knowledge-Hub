@@ -42,19 +42,19 @@ PDA Technical Report No. 85 (2021) | p3-p8
 
         
 
-A review of recalls of injectable products over the last ten years provides a useful measure of the current state of manufacturing and particle control. Figure 3.0-1 shows this information for product regulated by the U.S. Food and Drug Administration (FDA). The major contributors to these recalls are lack of sterility/sterility assurance and particles.
+A review of recalls of injectable products over the last ten years provides a useful measure of the current state of manufacturing and particle control. Figure 3.0-1🔍 shows this information for product regulated by the U.S. Food and Drug Administration (FDA). The major contributors to these recalls are lack of sterility/sterility assurance and particles.
 
         
 
-Particle recalls alone in Figure 3.0-2 shows a notable upward trend in 2013 with a peak in 2014. This was driven by an increased occurrence of both glass and metal particles. This resulted in greater awareness by both manufacturers and regulators and contributed to the higher number of particle recalls in following years. This situation was exacerbated by the nonspecific requirements for particles found in the global pharmacopeias but improved with the official publication of USP <790> in 2014 (6). At present, annual recalls for particles have returned to historical levels, but still account for a significant amount of product removed from the market and does not consider lots rejected while still within the control of the manufacturer.
+Particle recalls alone in Figure 3.0-2🔍 shows a notable upward trend in 2013 with a peak in 2014. This was driven by an increased occurrence of both glass and metal particles. This resulted in greater awareness by both manufacturers and regulators and contributed to the higher number of particle recalls in following years. This situation was exacerbated by the nonspecific requirements for particles found in the global pharmacopeias but improved with the official publication of USP <790> in 2014 (6). At present, annual recalls for particles have returned to historical levels, but still account for a significant amount of product removed from the market and does not consider lots rejected while still within the control of the manufacturer.
 
         
 
-*Figure 3.0-1 FDA Recall Notices For Injectable Products, Years 2010-2019 (5)*
+*Figure 3.0-1🔍 FDA Recall Notices For Injectable Products, Years 2010-2019 (5)*
 
         
 
-*Figure 3.0-2 FDA Recall Notices For Particles In Injectable Products, Years 2010-2019 (5)*
+*Figure 3.0-2🔍 FDA Recall Notices For Particles In Injectable Products, Years 2010-2019 (5)*
 
 ## Section 4: Elastomeric Closures Test Method (p8-p11)
 
@@ -200,43 +200,6 @@ The glass container inspection study required the test kits to be of sufficient 
 
 **Table C1 Summary of Nominal Particle Size by Material**
 
-        
-
-        
-            
-                
-                
-                
-                
-            
-| Type | Material | Color | Particle/Fiber Size (µm) |
-| --- | --- | --- | --- |
-            
-                
-                
-                
-                ****
-                ****
-                ****
-                ****
-                ****
-                ****
-                ****
-            
-|  |  |  | 100 | 200 | 300 | 500 | 700 | 800 | 1,000 |
-            ****
-| Particles | Glass | Transparent | X | X | X |  |  |  |  |
-              
-  
-| Rubber | Orange – CartridgesBlack – SyringesGray – Vials (shown) | X | X | X | X |  |  |  |
-            
-| Metal | Silver/Gray | X | X | X |  |  |  |  |
-            ****
-| Fibers | Cellulose | White |  |  |  | X | X | X | X |
-            
-| Plastic | White |  |  |  | X | X | X | X |
-            
-| Hair | Brown |  |  |  |  |  | X | X |
         
 
         

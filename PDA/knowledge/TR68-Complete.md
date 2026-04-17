@@ -657,18 +657,6 @@ Once management obtains information about shortages, it must develop an action p
 
     
 
-    
-
-PDA Technical Report No. 68 (Revised 2024) — Risk-Based Approach for Prevention and Management of Drug Shortages
-
-    
-
-Section 1: Drug Shortage — Global Problem & Management Responsibilities (pp. 6–11)
-
-    
-
-Licensed Educational Material | TWi Pharmaceuticals Inc. | PDA TR-68 © 2024 Parenteral Drug Association, Inc.
-
 ⇧
 
 ## Section 2: Risk-Based Prevention Framework (p12-p15)
@@ -757,7 +745,7 @@ Pages 26–32  |  Sections 6.1.4 (continued) · 6.2 · 6.3 · 6.4
 
         
 
-## Table 6.1.4 Risk Control Areas (Continuation) —
+## Table 6.1.4🔍 Risk Control Areas (Continuation) —
 
                 
 
@@ -775,71 +763,9 @@ Materials & Supplier Management · Business Continuity · Regulatory Considerati
 
                     
 
-### Table 6.1.4 — Risk Control Areas (Continued)
+### Table 6.1.4🔍 — Risk Control Areas (Continued)
 
                     
-                        
-                            
-                                
-                                
-                            
-| Risk Control Area | Key Elements |
-| --- | --- |
-                        
-                        
-                            
-                                
-                                
-                            
-| Materials and Supplier Management | Material sourcing |
-                            
-| Alternate or backup site (including redundancy) |
-                            
-| Inventory and safety stock management |
-                            
-| Value stream mapping |
-                            
-| Demand forecasting |
-                            
-| Diversification, multisite sourcing with higher manufacturing capacity reserves |
-                            
-| Supplier qualification and ongoing supplier management and monitoring |
-                            
-| Supply chain or transportation line security |
-                            
-| Supplier relationship management |
-                            
-                                
-                                
-                            
-| Business Continuity | Understanding of marketplace dynamics |
-                            
-| Geopolitical considerations |
-                            
-| Worst-case scenario planning |
-                            
-| Disaster planning (e.g., natural disaster, climate impact, pandemic, significant supply-chain disruptions) |
-                            
-| Production capacity |
-                            
-| Recovery plan |
-                            
-| Reliance on domestic or foreign manufacturing and supply |
-                            
-| Personnel management in case of crises (e.g., public health emergencies, pandemic, strikes) |
-                            
-                                
-                                
-                            
-| Regulatory Considerations | Regulatory requirements and expectations |
-                            
-| Post-approval changes |
-                            
-| Evolving regulatory landscape |
-                        
-                    
-
-                
 
                 
 
@@ -950,96 +876,6 @@ Sales forecast / 6-Month forecast / Weekly order / Weekly updates / Planned Ship
                     
 
                         
-                            
-                                
-                                      
-
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| Suppliers(Glass/Stoppers/API) | Receiving | Incoming Inspection | Inventory | Component Prep | Compounding | Sterile Fill | Inspection | QC & Final Release | Labelling | Packaging | Warehousing / Ship | Global Distribution |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                      
-  
-  
-
-                                      
-  
-  
-
-                                      
-  
-  
-
-                                      
-  
-  
-
-                                      
-  
-  
-
-                                      
-  
-  
-
-                                      
-  
-  
-
-                                      
-  
-  
-
-                                      
-  
-  
-
-                                      
-  
-  
-
-                                      
-  
-  
-
-                                    
-                                
-| Raw Materials | C/O (min)ShiftsUptime (%)Cycle Time | C/O (min)ShiftsUptime (%)Cycle Time | C/O (min)ShiftsUptime (%)Cycle Time | C/O (min)ShiftsUptime (%)Cycle Time | C/O (min)ShiftsUptime (%)Cycle Time | C/O (min)ShiftsUptime (%)Cycle Time | C/O (min)ShiftsUptime (%)Cycle Time | C/O (min)ShiftsUptime (%)Cycle Time | C/O (min)ShiftsUptime (%)Cycle Time | C/O (min)ShiftsUptime (%)Cycle Time | C/O (min)ShiftsUptime (%)Cycle Time | End Customers |
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-|  | 120 hrs | 33 hrs | 0.5 hrs | 15 hrs | 18 hrs | 23.7 hrs | 4.2 hrs | 95 hrs | 8.3 hrs | 13.6 hrs | 28.8 hrs |  |
-                            
-                        
-
-                    
 
                     
 
@@ -1524,22 +1360,6 @@ In all cases, the company concerned should be able to demonstrate that it has an
 
     
 
-    
-
-**PDA Technical Report No. 68 (Revised 2024)**
-
-    
-
-Risk-Based Approach for Prevention and Management of Drug Shortages
-
-    
-
-Section 3B: Supply Chain, Aging Facilities & Post-Approval Changes (pp. 26–32) | Educational Bilingual Version
-
-    
-
-© 2024 Parenteral Drug Association, Inc. — Licensed educational content. Not for redistribution.
-
 ↑
 
 ## Section 4: Prevention Plan & Stakeholder Management (p33-p37)
@@ -1674,22 +1494,6 @@ A Drug Shortage Prevention and Response Plan consists of the following informati
                         
 
 ### Risk Priority Suggested Controls (from Figure 7.0-1)
-
-                        
-                            
-                                
-| Risk Priority Level | Suggested Controls / Preventative Actions |
-| --- | --- |
-                            
-                            
-                                ****
-| Level 1 | Preventative actions and/or response plan required |
-                                ****
-| Level 2 | Preventative actions and/or response plan recommended |
-                                
-| Level 3 | Generally accepted risk level |
-                            
-                        
 
                         
 
@@ -2228,29 +2032,6 @@ A safety or clinical risk assessment should inform the risk communication strate
 
                             
 
-#### 
-
-                            
-                                
-                                    
-| --- | --- | --- |
-                                
-                                
-                                      
-| (EU) | 2003/94/EC 13 + EU GMP Part 1, §5.71 | MAH |
-                                    
-| (US) | 506C | MAH / |
-                                
-                            
-
-                            
-
-                        
-
-                        
-
-                            
-
 #### ERT —
 
                             
@@ -2462,6 +2243,10 @@ Based on product ownership, it is important to openly clarify communication acco
 
                         
 
+                
+
+            
+
                             
 
 #### 2
@@ -2471,29 +2256,10 @@ Based on product ownership, it is important to openly clarify communication acco
                             
 
                             
-                                
-                                    
-| --- | --- | --- | --- | --- |
-                                
-                                
-                                    
-| A | 270,000 | 90,000 | ___ | ___ |
-                                    
-| B | 200,000 | 120,000 | ___ | ___ |
-                                    
-| C | 90,000 | 60,000 | ___ | ___ |
-                                
-                            
-
-                            
 
                         
 
                     
-
-                
-
-            
 
         
 
@@ -2648,48 +2414,6 @@ What communication strategies will be required and how those strategies will ens
 
                             
 
-                            
-
-                        
-
-                        
-
-                            
-
-#### 
-
-                            
-                                
-                                    
-| # | | |
-| --- | --- | --- |
-                                
-                                
-                                    
-                                        
-                                        
-                                        
-                                    
-| 1 | HA | / / |
-                                    
-                                        
-                                        
-                                        
-                                    
-| 2 | | / / / HCP |
-                                    
-                                        
-                                        
-                                        
-                                    
-| 3 | | / / |
-                                    
-                                        
-                                        
-                                        
-                                    
-| 4 | | / / |
-                                
                             
 
                         
@@ -3198,45 +2922,6 @@ Industry Papers & Other Sources
 #### 
 
                         
-                            
-                                
-                                    
-                                    
-                                
-| ICH | TR-68 |
-| --- | --- |
-                            
-                            
-                                
-                                    ****  
-
-                                    
-                                
-| Q9(R1) | Risk Level A/B/C |
-                                
-                                    ****  
-
-                                    
-                                
-| Q10 | Risk Register PQSCAPA |
-                                
-                                    ****  
-
-                                    
-                                
-| Q12 | PACMP PAC |
-                            
-                        
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
 
                     
 
@@ -3312,46 +2997,6 @@ The Risk Register documents product-level drug shortage risks, including the ini
                     
 
                         
-                            
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| ID | Product & Strength | Potential Drug Shortage Hazard | Hazardous Situations | Countries / Regions Affected | Affected Internal Area | Initial Risk Level | Risk Indicators | Planned Risk Control Actions | Risk Level After Control | Person(s) Responsible | Status | Due Date |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-                            
-                            
-                                
-                                    **
-                                    **
-                                    **
-                                    **
-                                    **
-                                    **
-                                    **
-                                    **
-                                    **
-                                    **
-                                    **
-                                    **
-                                    **
-                                
-| Unique reference number | Identify product and strength | Risk description in a newspaper headline style; reference as applicable | Root cause or risk assessment title | Identify countries/regions that could be affected | All sites/locations, affiliates, and functional areas affected by a shortage | Risk Level or indication of the risk as high or medium. Note: Based on a consideration of current shortage prevention controls and their likely effectiveness | Potential leading and lagging indicators for this drug shortage risk | Planned mitigation actions, (CAPA number, if applicable) | Risk Level after mitigation or whether residual risk is high or medium | Who is responsible for coordination of the mitigation action(s) | "Planned," "In process," "Delayed," or "Completed" | Current deadline for completing recommended actions [dd.mm.yy] |
-                            
-                        
-
-                    
 
                     
 
@@ -3378,86 +3023,6 @@ The Risk Register documents product-level drug shortage risks, including the ini
                     
 
                         
-                            
-                                
-                                    
-                                    
-                                
-| --- | --- |
-                            
-                            
-                                
-                                    ****
-                                    
-                                
-| ID | DSR-2024-001 |
-                                
-                                    ****
-                                    
-                                
-| Product & Strength | Oncology Drug X 50mg/mL Injection |
-                                
-                                    ****
-                                    
-                                
-| Potential Hazard | Single-source API supplier disruption could cause complete supply halt for critical oncology injectable |
-                                
-                                    ****
-                                    
-                                
-| Hazardous Situations | API GMP |
-                                
-                                    ****
-                                    
-                                
-| Countries Affected | US, EU, Taiwan |
-                                
-                                    ****
-                                    
-                                
-| Affected Internal Area | Manufacturing, QA, Supply Chain, Regulatory Affairs |
-                                
-                                    ****
-                                    
-                                
-| Initial Risk Level | Risk Level A — High + |
-                                
-                                    ****
-                                      
-
-                                
-| Risk Indicators | Leading: API 90 Lagging: API |
-                                
-                                    ****
-                                      
-  
-
-                                
-| Planned Risk Control Actions | 1. API ANDA/MAA CAPA-2024-0452. 60 180 3. |
-                                
-                                    ****
-                                    
-                                
-| Risk Level After Control | Risk Level BMedium |
-                                
-                                    ****
-                                    
-                                
-| Person Responsible | Supply Chain Director + RA Manager |
-                                
-                                    ****
-                                    
-                                
-| Status | In Process |
-                                
-                                    ****
-                                    
-                                
-| Due Date | 31.12.2025 |
-                            
-                        
-
-                    
 
                     
 
@@ -3688,49 +3253,6 @@ B
 *Mark the Risk Level as A, B, or C based on the product's therapeutic use and availability of alternative therapies using the criteria below.*
 
                             
-                                
-                                    
-                                        
-                                        
-                                    
-| Therapeutic Use & Consequences if Alternate Not Available | Availability of Alternatives |
-| --- | --- |
-                                    
-                                        
-                                        
-                                        
-                                    
-| No Alternatives Available | Alternative Products / API Available | Same Product / API Available |
-                                
-                                
-                                    
-                                        ****  
-**
-                                        
-                                        
-                                        
-                                    
-| Medically necessary product, life supporting or life sustainingFatal or severe irreversible harm if not treated | A | A | B |
-                                    
-                                        ****  
-**
-                                        
-                                        
-                                        
-                                    
-| Acute short term or chronic long termSevere harm but reversible if not treated | A | B | C |
-                                    
-                                        ****  
-**
-                                        
-                                        
-                                        
-                                    
-| Other indicationsInconvenience if not treated | B | C | C |
-                                
-                            
-
-                        
 
                         
 
@@ -3794,42 +3316,6 @@ C
 *Based on the Risk Level (A, B, or C), the probability of a shortage, and the consideration of the drug shortage prevention controls currently in place and their likely effectiveness, indicate the Risk Priority Level (1, 2, or 3) using the criteria below.*
 
                             
-                                
-                                    
-                                        
-                                        
-                                        
-                                        
-                                    
-| Risk Level | Likelihood: High | Likelihood: Medium | Likelihood: Low |
-| --- | --- | --- | --- |
-                                
-                                
-                                    
-                                        
-                                        
-                                        
-                                        
-                                    
-| Risk Level A | Priority 1 | Priority 1 | Priority 2 |
-                                    
-                                        
-                                        
-                                        
-                                        
-                                    
-| Risk Level B | Priority 1 | Priority 2 | Priority 3 |
-                                    
-                                        
-                                        
-                                        
-                                        
-                                    
-| Risk Level C | Priority 2 | Priority 3 | Priority 3 |
-                                
-                            
-
-                        
 
                         
 
@@ -3893,34 +3379,6 @@ D
 *Based on the potential Risk Priority Level (1, 2, or 3), describe suggested controls to be established, the communication plan (in the event of a shortage), and other considerations.*
 
                             
-                                
-                                    
-                                        
-                                        
-                                    
-| Risk Priority | Suggested Controls / Preventive Actions |
-| --- | --- |
-                                
-                                
-                                    
-                                        
-                                        **
-                                    
-| Level 1 | [Describe specific controls for highest-priority products: dual sourcing, safety stock targets, PAC management plans, proactive HA communication schedules, scenario-based contingency planning] |
-                                    
-                                        
-                                        **
-                                    
-| Level 2 | [Describe controls for medium-priority products: enhanced monitoring, qualified backup suppliers, documented escalation criteria] |
-                                    
-                                        
-                                        **
-                                    
-| Level 3 | [Generally accepted risk level — standard QMS controls, routine monitoring, annual review] |
-                                
-                            
-
-                        
 
                         
 
@@ -4179,42 +3637,6 @@ Check the trigger(s) that will drive reviews and revisions:
 ### G. Approvals Required
 
                             
-                                
-                                    
-                                        
-                                        
-                                        
-                                        
-                                    
-| Name | Title and Function | Signature | Date |
-| --- | --- | --- | --- |
-                                
-                                
-                                    
-                                        **
-                                        **
-                                        
-                                        
-                                    
-| [Person Responsible] | Supply Chain / RA Manager |  |  |
-                                    
-                                        **
-                                        **
-                                        
-                                        
-                                    
-| [QA Decision-Maker] | Quality Director / VP QA |  |  |
-                                    
-                                        **
-                                        **
-                                        
-                                        
-                                    
-| [Senior Management Function] | Site Director / GM |  |  |
-                                
-                            
-
-                        
 
                         
 
@@ -4274,55 +3696,6 @@ Check the trigger(s) that will drive reviews and revisions:
                 
 
                 
-                    
-                        
-                            
-                            
-                            
-                        
-| TR-68 | CDMO | MAH |
-| --- | --- | --- |
-                    
-                    
-                        
-                            ****  
-
-                            
-                            
-                        
-| Triage Model(Appendix 2, Part B/C) | RFP MAH | CDMO |
-                        
-                            ****  
-
-                            
-                            
-                        
-| Risk Register(Appendix 1) | / Risk Register | MAH CDMO |
-                        
-                            ****  
-
-                            
-                            
-                        
-| Prevention Plan(Appendix 2, Part D) | PACMP | MAH |
-                        
-                            ****  
-
-                            
-                            
-                        
-| Early Warning System(Leading Indicators) | KPI / MAH | MAH |
-                        
-                            ****  
-
-                            
-                            
-                        
-| Communication Protocol(Appendix 2, Part E) | Quality Technical Agreement | MAH FDA/EMA |
-                    
-                
-
-                
 
             
 
@@ -4354,15 +3727,5 @@ Check the trigger(s) that will drive reviews and revisions:
         
 
     
-
-    
-
-PDA Technical Report No. 68 (Revised 2024): Risk-Based Approach for Prevention and Management of Drug Shortages
-
-    
-
-    
-
-Educational bilingual commentary © 2026. Original content © 2024 Parenteral Drug Association, Inc. Licensed to TWi Pharmaceuticals Inc.
 
 ⇧

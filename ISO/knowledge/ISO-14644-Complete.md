@@ -45,119 +45,6 @@ ISO 14644 Cleanrooms Series | Part 1 | Second Edition 2015 | p1-p44
         
 
         
-            
-                
-                      
-
-                    
-                
-| ISO ClassNumber (N) | Maximum Allowable Concentrations (particles/m³) for particles ≥ the considered sizes |
-| --- | --- |
-                
-                    
-                    
-                    
-                    
-                    
-                    
-                
-| ≥ 0.1 µm | ≥ 0.2 µm | ≥ 0.3 µm | ≥ 0.5 µm | ≥ 1 µm | ≥ 5 µm |
-            
-            
-                
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                
-| ISO Class 1 | 10 b | d | d | d | d | e |
-                
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                
-| ISO Class 2 | 100 | 24 b | 10 b | d | d | e |
-                
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                
-| ISO Class 3 | 1,000 | 237 | 102 | 35 b | d | e |
-                
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                
-| ISO Class 4 | 10,000 | 2,370 | 1,020 | 352 | 83 b | e |
-                
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                
-| ISO Class 5 ★ | 100,000 | 23,700 | 10,200 | 3,520 | 832 | d, e, f |
-                
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                
-| ISO Class 6 | 1,000,000 | 237,000 | 102,000 | 35,200 | 8,320 | 293 |
-                
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                
-| ISO Class 7 | c | c | c | 352,000 | 83,200 | 2,930 |
-                
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                
-| ISO Class 8 | c | c | c | 3,520,000 | 832,000 | 29,300 |
-                
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                
-| ISO Class 9 g | c | c | c | 35,200,000 | 8,320,000 | 293,000 |
-            
-        
-
-        
 
             
 
@@ -195,30 +82,6 @@ ISO 14644 Cleanrooms Series | Part 1 | Second Edition 2015 | p1-p44
 
                 
 
-#### 
-
-                
-                    
-| EU GMP Grade | | ISO Class | /m³ |
-| --- | --- | --- | --- |
-                    ****
-| Grade A / B (at-rest) | ≥0.5 µm | ISO 5 | 3,520 |
-                    ****
-| Grade A (at-rest, ≥5µm) | ≥5 µm | M descriptor | 20 |
-                    ****
-| Grade C (at-rest) | ≥0.5 µm | ISO 7 | 352,000 |
-                    ****
-| Grade D (at-rest) | ≥0.5 µm | ISO 8 | 3,520,000 |
-                
-
-                
-
-            
-
-            
-
-                
-
 #### Table 1
 
                 
@@ -242,6 +105,16 @@ ISO 14644 Cleanrooms Series | Part 1 | Second Edition 2015 | p1-p44
         
 
         
+
+                
+
+#### 
+
+                
+
+            
+
+            
 
             
 
@@ -592,85 +465,6 @@ A.1
             
 
                 
-                    
-                        
-                            
-                            
-                        
-| Area of Cleanroom (m²) ≤ | Minimum NL |
-| --- | --- |
-                    
-                    
-                        
-| 2 | 1 |
-                        
-| 4 | 2 |
-                        
-| 6 | 3 |
-                        
-| 8 | 4 |
-                        
-| 10 | 5 |
-                        
-| 24 | 6 |
-                        
-| 28 | 7 |
-                        
-| 32 | 8 |
-                        
-| 36 | 9 |
-                        
-| 52 | 10 |
-                        
-| 56 | 11 |
-                        
-| 64 | 12 |
-                        
-| 68 | 13 |
-                        
-| 72 | 14 |
-                        
-| 76 | 15 |
-                        
-| 104 | 16 |
-                        
-| 108 | 17 |
-                        
-| 116 | 18 |
-                        
-| 148 | 19 |
-                        
-| 156 | 20 |
-                        
-| 192 | 21 |
-                        
-| 232 | 22 |
-                        
-| 276 | 23 |
-                        
-| 352 | 24 |
-                        
-| 436 | 25 |
-                        
-| 636 | 26 |
-                        
-| 1,000 | 27 |
-                        
-| > 1,000 | See Formula (A.1) |
-                    
-                
-
-                
-
-**Note 1:** If area falls between two values, select the greater number of locations.  
-
-                **Note 2:** For unidirectional airflow, area = cross-section of moving air; for all other cases, area = horizontal plan area.
-
-            
-
-            
-
-                
 
                     
 
@@ -737,6 +531,16 @@ Vs = (20 / 3,520) × 1000
         
 
     
+
+                
+
+**Note 1:** If area falls between two values, select the greater number of locations.  
+
+                **Note 2:** For unidirectional airflow, area = cross-section of moving air; for all other cases, area = horizontal plan area.
+
+            
+
+            
 
     
 
@@ -916,48 +720,6 @@ NL = 6 (from Table A.1). Limits: Cn(≥0.3 µm) = 10,200; Cn(≥0.5 µm) = 3,520
 Vs = (20/3,520) × 1,000 = 5.68 L → use 28.3 L (1-min sample).
 
         
-            Table B.1 — Sampling data for particles ≥ 0.3 µm
-            
-| Location | Count (28.3 L) | Conc. (×35.3) /m³ | Limit | Result |
-| --- | --- | --- | --- | --- |
-            
-                
-| 1 | 245 | 8,649 | 10,200 | Pass |
-                
-| 2 | 185 | 6,531 | 10,200 | Pass |
-                
-| 3 | 59 | 2,083 | 10,200 | Pass |
-                
-| 4 | 106 | 3,742 | 10,200 | Pass |
-                
-| 5 | 164 | 5,789 | 10,200 | Pass |
-                
-| 6 | 196 | 6,919 | 10,200 | Pass |
-            
-        
-
-        
-            Table B.2 — Sampling data for particles ≥ 0.5 µm
-            
-| Location | Count (28.3 L) | Conc. (×35.3) /m³ | Limit | Result |
-| --- | --- | --- | --- | --- |
-            
-                
-| 1 | 21 | 741 | 3,520 | Pass |
-                
-| 2 | 24 | 847 | 3,520 | Pass |
-                
-| 3 | 0 | 0 | 3,520 | Pass |
-                
-| 4 | 7 | 247 | 3,520 | Pass |
-                
-| 5 | 22 | 777 | 3,520 | Pass |
-                
-| 6 | 25 | 883 | 3,520 | Pass |
-            
-        
-
-        
 
 **Conclusion:** All locations pass for both particle sizes. Cleanroom meets ISO Class 5.
 
@@ -968,21 +730,6 @@ Vs = (20/3,520) × 1,000 = 5.68 L → use 28.3 L (1-min sample).
         
 
 Cleanroom: 25 m², ISO Class 5, ≥0.5 µm. NL = 7 minimum, customer agreed to add 3 additional = 10 total. Vs = 5.68 L → 28.3 L per sample.
-
-        
-            Table B.5 — Multi-sample data (selected locations)
-            
-| Loc. | S1 count | S2 count | S3 count | Avg (28.3L) | Conc. /m³ | Limit | Result |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-            
-                
-| 3 | 162 | 78 | 32 | 91 | 3,201 | 3,520 | Pass |
-                
-| 4 | 148 | 74 | 132 | 118 | 4,165 | 3,520 | FAIL |
-                
-| 9 | 54 | 159 | 78 | 97 | 3,424 | 3,520 | Pass |
-            
-        
 
         
 
@@ -1224,22 +971,18 @@ In order to express an airborne concentration of 29 particles/m³ in the particl
 
             
 
+#### 5M Descriptor
+
+            
+
+        
+
+    
+
+            
+
 #### EU GMP Annex 1 M Descriptor
 
-            
-
-            
-                
-| Grade | | ≥5 µm (/m³) | M Descriptor |
-| --- | --- | --- | --- |
-                
-| Grade A | At-rest | 20 | ISO M (20; ≥5 µm); LSAPC |
-                
-| Grade A | Operational | 20 | ISO M (20; ≥5 µm); LSAPC |
-                
-| Grade B | At-rest | 29 | ISO M (29; ≥5 µm); LSAPC |
-                
-| Grade B | Operational | 2,900 | ISO M (2900; ≥5 µm); LSAPC |
             
 
             
@@ -1253,32 +996,10 @@ In order to express an airborne concentration of 29 particles/m³ in the particl
 #### 
 
             
-                
-| --- | --- | --- | --- |
-                
-| LSAPC | ≥1 µm >5 µm | | |
-                
-| TOF | 0.5–20 µm | | |
-                
-| + | ≥2 µm | | |
-                
-            
-
-            
 
         
 
         
-
-            
-
-#### 5M Descriptor
-
-            
-
-        
-
-    
 
     
 
@@ -1424,18 +1145,6 @@ t = 5 s → E = 0.472 × 5 × 1000 / 1000 = 2.4
             
 
             
-                
-| ISO Class | | /m³ | VsL | 28.3 L/min |
-| --- | --- | --- | --- | --- |
-                
-| ISO 3 | 0.1 µm | 1,000 | 20 L | 0.7 min |
-                ****
-| ISO 3 | 0.5 µm | 35 | 571 L | 20 min |
-                ****
-| ISO 2 | 0.3 µm | 10 | 2,000 L | 70 min |
-            
-
-            
 
         
 
@@ -1454,41 +1163,6 @@ t = 5 s → E = 0.472 × 5 × 1000 / 1000 = 2.4
         
 
 If intermediate decimal cleanliness classes are required, Table E.1 should be used. Uncertainties associated with particle measurement make increments of less than 0.5 inappropriate.
-
-        
-            Table E.1 — Intermediate Decimal Air Cleanliness Classes
-            
-                
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                
-| ISO Class (N) | ≥ 0.1 µm | ≥ 0.2 µm | ≥ 0.3 µm | ≥ 0.5 µm | ≥ 1.0 µm | ≥ 5.0 µm |
-| --- | --- | --- | --- | --- | --- | --- |
-            
-            
-                
-| ISO 1.5 | [32] b | d | d | d | d | e |
-                
-| ISO 2.5 | 316 | [75] b | [32] b | d | d | e |
-                
-| ISO 3.5 | 3,160 | 748 | 322 | 111 | d | e |
-                
-| ISO 4.5 | 31,600 | 7,480 | 3,220 | 1,110 | 263 | e |
-                
-| ISO 5.5 | 316,000 | 74,800 | 32,200 | 11,100 | 2,630 | e |
-                
-| ISO 6.5 | 3,160,000 | 748,000 | 322,000 | 111,000 | 26,300 | 925 |
-                
-| ISO 7.5 | c | c | c | 1,110,000 | 263,000 | 9,250 |
-                
-| ISO 8.5 f | c | c | c | 11,100,000 | 2,630,000 | 92,500 |
-            
-        
 
         
 
@@ -1629,40 +1303,6 @@ The following instruments should be used for the recommended tests:
         
 
         
-            Table F.1 — Specifications for Discrete-Macroparticle Counter
-            
-                
-| Item | Specification |
-| --- | --- |
-            
-            
-                
-| Measuring limits | Minimum detectable size: 5 to 80 µm; appropriate for the particle size under consideration |
-                
-| Resolution | 20% for calibration particles of a size specified by the manufacturer |
-                
-| Max. permissible error | 20% for particle count at a specified size setting |
-            
-        
-
-        
-            Table F.2 — Specifications for Time-of-Flight Particle Sizing Apparatus
-            
-                
-| Item | Specification |
-| --- | --- |
-            
-            
-                
-| Measuring limits | Particle size: 0.5 to 20 µm; Concentration: 1.0×10³ to 1.0×10⁸/m³ |
-                
-| Resolution | Aerodynamic diameter: 0.02 µm at 1.0 µm; 0.03 µm at 10 µm |
-                
-| Max. permissible error | 10% of full reading |
-            
-        
-
-    
 
     
 
@@ -1931,37 +1571,6 @@ ISO 14644-5:2004 | Pages 2-3
                 
 
 ### —
-
-                
-
-                    
-
-#### 
-
-                    
-                        
-| --- | --- | --- |
-                        
-| biocleanroom | | |
-                        
-| changing room | | |
-                        
-| cross-over bench | / | |
-                        
-| disinfection | | ≠ sterilization SAL 10⁻⁶ |
-                        
-| fibre | | ≥ 10 |
-                        
-| operator | | |
-                        
-| personnel | | |
-                        
-| separative device | | RABS |
-                        
-| unidirectional airflow | | |
-                    
-
-                
 
                 
 
@@ -3918,30 +3527,6 @@ Personnel should understand that they could have a positive influence on the eff
 
                     
 
-#### C.4
-
-                    
-
-                    
-                        
-| | ISO 14644-5 | EU GMP Annex 1 |
-| --- | --- | --- |
-                        
-| / | | Grade A/B |
-                        
-| / | | Grade A/B |
-                        
-                        
-                    
-
-                    
-
-                
-
-                
-
-                    
-
 #### C.6
 
                     
@@ -4006,6 +3591,18 @@ Personnel should understand that they could have a positive influence on the eff
         
 
     
+
+                    
+
+#### C.4
+
+                    
+
+                    
+
+                
+
+                
 
     
 
@@ -4890,32 +4487,6 @@ Methods for detecting microbiological contamination: contact plates (for flat su
 A 10-stage programme for scheduling, assigning and documenting cleaning procedures during construction:
 
                 
-                    
-| Stage | Purpose | Responsible Party | Method | Standard |
-| --- | --- | --- | --- | --- |
-                    
-| Stage 1 — Clean during demolition/preliminary construction | Preventing unnecessary dust concentration in hard-to-reach places | Contractor | Vacuum clean upon completion | Visual-clean |
-                    
-| Stage 2 — Clean during utility installation | Removing local contaminants from installing electricity, gas, water | Installation engineer | Vacuum clean; wipe-down piping | Visual-clean |
-                    
-| Stage 3 — Clean during early construction | Cleaning all visible contamination from ceilings, walls, floors | Cleaning contractor | Vacuum clean; wipe-down; apply floor sealants if needed | Visual-clean |
-                    
-| Stage 4 — Prepare for AC ductwork installation | Cleaning dust from ductwork before installing | Installation engineer and cleaning contractor | Vacuum clean; wipe down with moistened wipers | Wiper-clean |
-                    
-| Stage 5 — Clean before mounting air filters | Removing deposited/settled dust from ceilings, walls, and floors | Cleaning contractor | Wipe down with moistened wipers | Wiper-clean |
-                    
-| Stage 6 — Mount (HEPA/ULPA) filters | Removing contamination caused by mounting operation | Cleanroom HVAC filter engineer/technician | Clean all surface edges | Wiper-clean |
-                    
-| Stage 7 — Adjust AC equipment | Removing suspended dust from airflow and creating overpressure | Cleanroom HVAC filter engineer/technician | Air conditioning air flushing | Wiper-clean |
-                    
-| Stage 8 — Upgrade room into prescribed classification | Removing all deposited and clinging dust from every surface | Professional cleanroom cleaning personnel | Wipe down with moistened wipers | Wiper-clean |
-                    
-| Stage 9 — Approve installation | Verifying cleanroom to prescribed design specifications; customer acceptance | Installation engineer and certification engineer | Monitor airborne/surface particles, air velocities, T/RH | Wiper-clean; conform to agreed design criteria |
-                    
-| Stage 10 — Clean daily and periodically | Maintaining cleanroom in long-term compliance. Microbiological cleaning begins in biocleanrooms. | Cleanroom manager/cleaning contractor | Listed in F.1 to F.8 | Tailor-made cleaning programme; routine testing |
-                
-
-                
 
 **NOTE 1:** During Stages 4 to 10, all high-efficiency and ultra-high-purity components should arrive on site protected by plastic or foil covers. Covers should only be removed when ready for use.
 
@@ -4930,27 +4501,6 @@ A 10-stage programme for scheduling, assigning and documenting cleaning procedur
                 
 
 ### Annex F
-
-                
-
-                    
-
-#### 
-
-                    
-
-                    
-                        
-| --- | --- | --- | --- |
-                        
-| Gross | >50 µm | | + |
-                        
-| Intermediate | 10-50 µm | | + |
-                        
-| Precision | <10 µm | | |
-                    
-
-                
 
                 
 
@@ -5089,6 +4639,16 @@ A 10-stage programme for scheduling, assigning and documenting cleaning procedur
 
     
 
+                    
+
+#### 
+
+                    
+
+                    
+
+                
+
     
 
         
@@ -5122,44 +4682,10 @@ SUM
 #### The Six Operational Areas (Sections 4.1-4.6)
 
                 
-                    
-| Section | Operational Area | Core Requirement | Informative Guidance |
-| --- | --- | --- | --- |
-                    
-| 4.1 | Operational Systems | Document SOPs, identify risk factors, train personnel, manage changes, safety systems | Annex A |
-                    
-| 4.2 | Cleanroom Clothing | Barrier fabric selection, change frequency, laundering, storage, checking | Annex B |
-                    
-| 4.3 | Personnel | Hygiene training, jewelry/cosmetics policy, behavior training, safety training | Annex C |
-                    
-| 4.4 | Stationary Equipment | Clean before entry, controlled installation, maintenance procedures, preventive maintenance | Annex D |
-                    
-| 4.5 | Materials & Portable Equipment | Compatible with cleanroom class, entry procedures, minimize storage, waste removal | Annex E |
-                    
-| 4.6 | Cleanroom Cleaning | Specified methods, trained designated personnel, scheduled frequency, contamination checks, emergency cleaning | Annex F |
-                
-
-                
 
 #### Key Regulatory Cross-References
 
                 
-                    
-| ISO 14644-5 Topic | EU GMP Annex 1 (2022) | FDA Aseptic Guide (2004) | PDA TR70 |
-| --- | --- | --- | --- |
-                    
-| Personnel Training | §4.2-4.3, §4.9 | §IV.A Personnel | Section 6 (Personnel) |
-                    
-| Gowning | §4.4-4.8 (Grades A/B/C/D) | §IV.A Gowning | — |
-                    
-| Environmental Monitoring | §9 (Full EM Program) | §IV.C EM | — |
-                    
-| Cleaning & Disinfection | §4.34-4.36 | §IV.D Cleaning | Full TR (all sections) |
-                    
-| Change Control | §3.4 (Quality System) | §III.E Change Control | — |
-                
-
-            
 
             
 
@@ -5271,16 +4797,6 @@ SUM
             
 
         
-
-    
-
-    
-
-**ISO 14644-5:2004 — Cleanrooms and Associated Controlled Environments: Part 5: Operations**
-
-    
-
-    
 
     
 

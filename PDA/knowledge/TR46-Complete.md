@@ -683,69 +683,6 @@ T_MKT = (ΔH/R) / [-ln((e^(-ΔH/RT₁) + e^(-ΔH/RT₂) + ... + e^(-ΔH/RTₙ)) 
 
             
             
-
-                
-
-#### RFID vs. Barcode
-
-                
-                    
-                        
-                            
-                            
-                            
-                        
-| | RFID | 1D/2D |
-| --- | --- | --- |
-                    
-                    
-                        
-                            
-                            
-                            
-                        
-                        
-                            
-                            
-                            
-                        
-                        
-                            
-                            
-                            
-                        
-                        
-                            
-                            
-                            
-                        
-| | KB | |
-                        
-                            
-                            
-                            
-                        
-| | $0.1–$1+/ | |
-                        
-                            
-                            
-                            
-                        
-| / | | |
-                        
-                            
-                            
-                            
-                        
-| | | DSCSA/FMD |
-                    
-                
-
-                
-
-            
-
-            
             
 
                 
@@ -795,6 +732,16 @@ T_MKT = (ΔH/R) / [-ln((e^(-ΔH/RT₁) + e^(-ΔH/RT₂) + ... + e^(-ΔH/RTₙ)) 
 
     
 
+                
+
+#### RFID vs. Barcode
+
+                
+
+            
+
+            
+
     
     
 
@@ -809,59 +756,6 @@ T_MKT = (ΔH/R) / [-ln((e^(-ΔH/RT₁) + e^(-ΔH/RT₂) + ... + e^(-ΔH/RTₙ)) 
 The following abbreviations are used throughout this technical report.
 
             
-                
-                    
-                        
-                        
-                    
-| Abbreviation | Full Term |
-| --- | --- |
-                
-                
-                    ****
-| ALCOA+ | Attributable, Legible, Contemporaneous, Original, Accurate + (Complete, Consistent, Enduring, Available) |
-                    ****
-| ASTM | American Society for Testing and Materials |
-                    ****
-| CAPA | Corrective Action, Preventive Action |
-                    ****
-| CGT | Cell and Gene Therapy |
-                    ****
-| CQA | Critical Quality Attribute |
-                    ****
-| DTC | Direct-to-Consumer |
-                    ****
-| DTP | Direct-to-Patient |
-                    ****
-| DSCSA | Drug Supply Chain Security Act (U.S.) |
-                    ****
-| FMD | Falsified Medicines Directive (EU) |
-                    ****
-| GDP | Good Distribution Practices |
-                    ****
-| GMP | Good Manufacturing Practices |
-                    ****
-| ICH | International Council for Harmonisation of Technical Requirements for Pharmaceuticals for Human Use |
-                    ****
-| ISO | International Organization for Standardization |
-                    ****
-| MKT | Mean Kinetic Temperature |
-                    ****
-| PCM | Phase Change Material |
-                    ****
-| PDA | Parenteral Drug Association |
-                    ****
-| RFID | Radio Frequency Identification |
-                    ****
-| SOP | Standard Operating Procedure |
-                    ****
-| TR | Technical Report |
-                    ****
-| USP | United States Pharmacopeia |
-                
-            
-
-        
 
         
 
@@ -1126,7 +1020,7 @@ Within the external distribution network, there may be two supply chains for pha
 
                         
 
-Figure 3.1-1: Schematic Representation of the Pharmaceutical Supply Chain
+Figure 3.1-1🔍: Schematic Representation of the Pharmaceutical Supply Chain
 
                         
 
@@ -1270,7 +1164,7 @@ Single-pack shipments • Minutes to days duration • Rural/remote exceptions �
 
                         
 
-Figure 3.1-1: Schematic Representation of the Pharmaceutical Supply Chain (PDA TR46, p4). POA = Point of Administration; POD = Point of Dispensing; DC = Distribution Center.
+Figure 3.1-1🔍: Schematic Representation of the Pharmaceutical Supply Chain (PDA TR46, p4). POA = Point of Administration; POD = Point of Dispensing; DC = Distribution Center.
 
                     
 
@@ -1282,38 +1176,6 @@ Figure 3.1-1: Schematic Representation of the Pharmaceutical Supply Chain (PDA T
                     
 
 ### 
-
-                    
-
-                        
-
-#### 
-
-                        
-                            
-                                  
-  
-  
-| | First Mile | Middle Mile | Last Mile |
-| --- | --- | --- | --- |
-                            
-                            
-                                
-| | MAH | / | / |
-                                
-| | pallet | / | |
-                                
-| | 1-3 | | 1-3 |
-                                
-| | | / | |
-                                
-| | GMP + GDP | GDP | |
-                                
-| | | / | / |
-                            
-                        
-
-                    
 
                     
 
@@ -1424,98 +1286,6 @@ Figure 3.1-1: Schematic Representation of the Pharmaceutical Supply Chain (PDA T
 There are a number of discernable roles and responsibilities in the pharmaceutical supply chain:
 
                     
-                        
-                            
-| Role / | Definition (TR46) |
-| --- | --- |
-                        
-                        
-                            
-                                ****  
-
-                                
-                            
-| Manufacturer | Produces goods in the internal distribution network and executes stability testing to set expiry, storage, and transportation conditions. |
-                            
-                                ****  
-
-                                
-                            
-| Wholesaler | Procures, holds, supplies, imports, or exports medicinal products in an external private distribution network, apart from supplying medicinal products to the public. |
-                            
-                                ****  
-
-                                
-                            
-| Public Medical Store | Stores and ships goods in a public distribution network along the health pyramid. |
-                            
-                                ****
-                                
-                            
-| Non-Governmental Organization (NGO) | Professional organization that donates goods to public supply chains. |
-                            
-                                ****  
-
-                                
-                            
-| Service Delivery Point (SDP) | Receives goods that are supplied to patients. |
-                            
-                                ****  
-
-                                
-                            
-| Point of Administration (POA) | Receives goods that are administrated to patients, e.g., hospital, clinic, vaccine center. |
-                            
-                                ****  
-
-                                
-                            
-| Point of Dispensing (POD) | Location where goods are dispensed to users, e.g., patient. |
-                            
-                                ****
-                                
-                            
-| Marketing Authorization Holder (MAH) | The person or company who is licensed to distribute, sell, and commercialize a medical product. |
-                            
-                                ****  
-
-                                
-                            
-| Third-Party Logistic Provider (3PL) | Entity that, on behalf of a manufacturer or wholesaler, executes logistics activities like warehousing and transportation in the supply chain. |
-                            
-                                ****  
-
-                                
-                            
-| Customs | The official department that administers and collects the duties levied by the government on imported goods. |
-                            
-                                ****  
-
-                                
-                            
-| Insurance Company | Issues insurance or annuity contracts or reinsures the risks underwritten by other insurance companies. |
-                            
-                                ****  
-
-                                
-                            
-| Quality Assurance | Ensures that a quality system is in place to guarantee product is being distributed in compliance with GDP and that the quality, safety, and efficacy of the pharmaceutical product is maintained. |
-                            
-                                ****  
-
-                                
-                            
-| Pharmaceutical Products Destruction Commission | Multisectoral committee oversees the destruction of expired or deteriorated pharmaceutical products in accordance with hygiene laws and regulations. |
-                            
-                                ****  
-
-                                
-                            
-| Inspectorate | Inspects manufacturers, wholesalers, pharmacies, or processors of regulated products to verify compliance with relevant regulations and provides permits to the MAH to import pharmaceutical products into a specified market. |
-                        
-                    
-
-                    
 
 All participants in the supply chain are responsible for maintaining product quality and the right storage and transportation conditions for the delivery of effective and safe products to patients. Communication about product quality requirements for all players is essential to achieve this aim. Defining the shared responsibility of the participants in a written Quality Agreement is a good practice.
 
@@ -1531,66 +1301,6 @@ Section 3.3 through Section 3.9 provide examples of pharmaceutical supply chains
                     
 
 ### GDP
-
-                    
-
-                        
-
-#### 
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| | GDP | GDP | | |
-| --- | --- | --- | --- | --- |
-                            
-                            
-                                
-                                    ****  
-
-                                    
-                                    
-                                    
-                                    
-                                
-| Manufacturer | GDP | | | GMP + GDP |
-                                
-                                    ****  
-
-                                    
-                                    
-                                    
-                                    
-                                
-| /MAHWholesaler | WDAGDP | | | GDP |
-                                
-                                    ****  
-
-                                    
-                                    
-                                    
-                                    
-                                
-| /Hospital / Pharmacy | FEFO | | | |
-                                
-                                    ****  
-
-                                    
-                                    
-                                    
-                                    
-                                
-| Patient | | | | |
-                            
-                        
-
-                    
 
                     
 
@@ -1749,26 +1459,6 @@ Apart from this provision, many EU member states (e.g., Belgium, France, Germany
 The EU GDP guidelines also address the issue of handling and transporting temperature-sensitive medicinal products. The general requirement of suitability does not specifically target temperature categories by name, but industry practice has established the following classifications:
 
                     
-                        
-                            
-| Temperature Category / | Range / | Typical Products / |
-| --- | --- | --- |
-                        
-                        
-                            ****
-| Deep Frozen / | -196°C (liquid nitrogen) | |
-                            ****
-| Frozen / | -25°C to -15°C | |
-                            ****
-| Refrigerated / | +2°C to +8°C | |
-                            ****
-| Controlled Room Temperature / | +15°C to +25°C | |
-                            ****
-| Ambient / | ≤25°C or ≤30°C | |
-                        
-                    
-
-                
 
                 
                 
@@ -1776,57 +1466,6 @@ The EU GDP guidelines also address the issue of handling and transporting temper
                     
 
 ### GDP
-
-                    
-
-                        
-
-#### EU GDP 2013/C 343/01 vs GDP
-
-                        
-                            
-                                
-| --- | --- | --- | --- |
-                            
-                            
-                                
-                                    ****  
-
-                                    
-                                    
-                                    
-                                
-| EU GDP2013/C 343/01 | European Commission | EU 27 + EEA | |
-                                
-                                    ****  
-
-                                    
-                                    
-                                    
-                                
-| WHO GDP2010 (Annex 5) | World Health Organization | | |
-                                
-                                    ****  
-
-                                    
-                                    
-                                    
-                                
-| PIC/S GDPPE 011 | PIC/S | 53PIC/S | |
-                                
-                                    ****  
-
-                                    
-                                    
-                                    
-                                
-| UK GDP(post-Brexit) | MHRA | | |
-                            
-                        
-
-                        
-
-                    
 
                     
 
@@ -1926,6 +1565,16 @@ The EU GDP guidelines also address the issue of handling and transporting temper
 
         
 
+                        
+
+#### EU GDP 2013/C 343/01 vs GDP
+
+                        
+
+                    
+
+                    
+
     
 
     
@@ -1996,7 +1645,7 @@ WHO PQ is particularly significant because many African NMRAs lack the capacity 
 
                     
 
-#### Figure 3.4-1: Senegal Pharmaceutical Supply Chain (West Africa Example)
+#### Figure 3.4-1🔍: Senegal Pharmaceutical Supply Chain (West Africa Example)
 
                     
                     
@@ -2005,7 +1654,7 @@ WHO PQ is particularly significant because many African NMRAs lack the capacity 
 
                             
 
-Schematic representation of the Senegal pharmaceutical supply chain — a typical West African public/private dual structure (Figure 3.4-1, PDA TR46)
+Schematic representation of the Senegal pharmaceutical supply chain — a typical West African public/private dual structure (Figure 3.4-1🔍, PDA TR46)
 
                             
                             
@@ -2147,7 +1796,7 @@ Patient
 
                         
 
-Figure 3.4-1: Senegal pharmaceutical supply chain — illustrating typical West African public/private/informal tri-channel structure. PNA = Pharmacie Nationale d'Approvisionnement (national procurement agency). SF = Substandard and Falsified.
+Figure 3.4-1🔍: Senegal pharmaceutical supply chain — illustrating typical West African public/private/informal tri-channel structure. PNA = Pharmacie Nationale d'Approvisionnement (national procurement agency). SF = Substandard and Falsified.
 
                     
 
@@ -2224,38 +1873,6 @@ Figure 3.4-1: Senegal pharmaceutical supply chain — illustrating typical West 
 
                         
 
-#### WHOWHO Prequalification
-
-                        
-
-                        
-                            
-                                
-| | WHO PQ |
-| --- | --- |
-                            
-                            
-                                ****
-| | ICH |
-                                ****
-| | PQsurveillance inspections |
-                                ****
-| | PEPFARGlobal FundUNICEFWHO PQ |
-                                ****
-| | NMRA |
-                                ****
-| | HIV/AIDS |
-                            
-                        
-
-                        
-
-                    
-
-                    
-
-                        
-
 #### 
 
                         
@@ -2302,19 +1919,19 @@ Figure 3.4-1: Senegal pharmaceutical supply chain — illustrating typical West 
 
         
 
-    
+                        
+
+#### WHOWHO Prequalification
+
+                        
+
+                        
+
+                    
+
+                    
 
     
-
-PDA Technical Report No. 46 (Revised 2024): Last-Mile Good Distribution Practices for Pharmaceutical Products
-
-    
-
-Section 3 (Part A): Global Supply Chains — Overview, Roles & EU/Africa | p3–p9
-
-    
-
-Educational bilingual commentary © 2026. For training purposes only.
 
 ⇧
 
@@ -2394,51 +2011,6 @@ The main challenge in last-mile transport via road, air, and water, is the **siz
 
                 
 
-#### ANVISA GDP
-
-                
-                    
-                        
-                            
-                            
-                        
-| --- | --- |
-                    
-                    
-                        
-                            ****
-                            
-                        
-| RDC 430/2020 | GDP // |
-                        
-                            ****
-                            
-                        
-| RDC 653/2022 | RDC 430/2020 |
-                        
-                            ****
-                            
-                        
-| RDC 234/2018 | |
-                        
-                            ****
-                            
-                        
-| RDC 18/2014 | MAH → ANVISA |
-                        
-                            ****
-                            
-                        
-| Portaria CVS 1/2020 | |
-                    
-                
-
-            
-
-            
-
-                
-
 #### 
 
                 
@@ -2470,7 +2042,7 @@ The main challenge in last-mile transport via road, air, and water, is the **siz
 
             
 
-### Figure 3.5-1: Example of Brazil's Supply Chain
+### Figure 3.5-1🔍: Example of Brazil's Supply Chain
 
             
 
@@ -2597,7 +2169,7 @@ Patient / Paciente
 
             
 
-## Figure 3.5-1
+## Figure 3.5-1🔍
 
             
 
@@ -2615,57 +2187,6 @@ Patient / Paciente
 
                     
 
-                
-
-            
-
-            
-
-                
-
-#### ANVISA vs. FDA vs. EMA —
-
-                
-                    
-                        
-                            
-                            
-                            
-                            
-                        
-| | ANVISA | FDA | EMA / |
-| --- | --- | --- | --- |
-                    
-                    
-                        
-                            ****
-                            
-                            
-                            
-                        
-| GDP | RDC 430/2020 | 21 CFR 203/205 + USPGDP | EU GDP Guidelines 2013/C 343/01 |
-                        
-                            ****
-                            
-                            
-                            
-                        
-| | AFE/AEANVISA | | EU GDP + EudraGMDP |
-                        
-                            ****
-                            
-                            
-                            
-                        
-| | | USP <1079> | |
-                        
-                            ****
-                            
-                            
-                            
-                        
-| | SNCM | DSCSA EPCIS2023 | FMD 2019 |
-                    
                 
 
             
@@ -2749,42 +2270,17 @@ Neither 21 CFR 203 nor 21 CFR 205 addresses packaging and shipping requirements 
 
             
 
+    
+
                 
 
 #### 21 CFR 203 vs. 21 CFR 205 —
-
-                
-                    
-                        
-                            
-                            
-                            
-                        
-| --- | --- | --- |
-                    
-                    
-                        
-                            ****
-                            
-                            
-                        
-| 21 CFR 203 | Prescription Drug Marketing Act | |
-                        
-                            ****
-                            
-                            
-                        
-| 21 CFR 205 | Guidelines for State Licensing of Wholesale Prescription Drug Distributors | |
-                    
-                
 
                 
 
             
 
         
-
-    
 
     
     
@@ -2940,46 +2436,11 @@ If available, manufacturers should be encouraged to provide specific packaging r
 
             
 
+    
+
                 
 
 #### VAWD vs. NABP Drug Distributor Accreditation
-
-                
-                    
-                        
-                            
-                            
-                            
-                        
-| | VAWD2004–2021 | NABP 2022– |
-| --- | --- | --- |
-                    
-                    
-                        
-                            ****
-                            
-                            
-                        
-| | NABP | |
-                        
-                            ****
-                            
-                            
-                        
-| | | + |
-                        
-                            ****
-                            
-                            
-                        
-| | 28 | 25 |
-                        
-                            ****
-                            
-                            
-                        
-                    
-                
 
                 
 
@@ -2992,55 +2453,10 @@ If available, manufacturers should be encouraged to provide specific packaging r
 #### DSCSA
 
                 
-                    
-                        
-                            
-                            
-                            
-                        
-| --- | --- | --- |
-                    
-                    
-                        
-                            ****
-                            
-                            
-                        
-| 2013 | DSCSA | Drug Supply Chain Security Act 10 |
-                        
-                            ****
-                            
-                            
-                        
-| 2017 | | packageserialization |
-                        
-                            ****
-                            
-                            
-                        
-| 2019 | | /T3 |
-                        
-                            ****
-                            
-                            
-                        
-| 2020 | | |
-                        
-                            ****
-                            
-                            ****
-                        
-| 2023 | Track & TraceEPCIS | EPCIS GS1 / |
-                    
-                
-
-                
 
             
 
         
-
-    
 
     
     
@@ -3049,7 +2465,7 @@ If available, manufacturers should be encouraged to provide specific packaging r
 
             
 
-### Figure 3.6-1: Example of U.S. Private Sector Supply Chain
+### Figure 3.6-1🔍: Example of U.S. Private Sector Supply Chain
 
             
 
@@ -3198,7 +2614,7 @@ Patient
 
             
 
-## Figure 3.6-1
+## Figure 3.6-1🔍
 
             
 
@@ -3279,87 +2695,8 @@ Patient
         
 
             
-                
-                    
-                        
-                        
-                        
-                    
-| | (Brazil) | (United States) |
-| --- | --- | --- |
-                
-                
-                    
-                        ****
-                        
-                        
-                    
-| | ANVISA | FDA+ |
-                    
-                        ****
-                        
-                        
-                    
-| GDP | RDC 430/2020 | 21 CFR 203/205+ USP <659>/<1079> |
-                    
-                        ****
-                        
-                        
-                    
-| | ANVISA AFE/AE | 50 + NABP |
-                    
-                        ****
-                        
-                        
-                    
-| | | USP |
-                    
-                        ****
-                        
-                        
-                    
-| | SUS vs. | |
-                    
-                        ****
-                        
-                        
-                    
-                    
-                        ****
-                        
-                        
-                    
-| | SNCM | DSCSA EPCIS2023GS1 |
-                    
-                        ****
-                        
-                        
-                    
-| | SUS | 340BSpecialty Pharmacy |
-                    
-                        ****
-                        
-                        
-                    
-| | RDC 234/2018 | Quality Agreement |
-                
-            
-
-        
 
     
-
-    
-
-PDA Technical Report No. 46 (Revised 2024): Last Mile GDP for Temperature-Sensitive Medicinal Products
-
-    
-
-Section 3 (Part B): Regional Supply Chains — Brazil & United States (p9–p14)
-
-    
-
-Educational reference material — for training purposes only
 
 ⇧
 
@@ -3846,41 +3183,6 @@ The misalignment between logistics needs and stability data can be resolved if t
 
             
 
-#### Stability Budget
-
-            
-
-            
-              
-                
-                  
-                  
-                  
-                
-| --- | --- | --- |
-              
-              
-                
-| / | 10% | |
-                
-| | 20% | |
-                
-| | 30% | |
-                
-| / | 20% | |
-                
-| / | 20% | |
-              
-            
-
-            
-
-          
-
-          
-
-            
-
 #### TOR / TOS
 
             
@@ -3916,6 +3218,18 @@ The misalignment between logistics needs and stability data can be resolved if t
       
 
     
+
+            
+
+#### Stability Budget
+
+            
+
+            
+
+          
+
+          
 
   
 
@@ -4046,39 +3360,6 @@ The medication provider (e.g., pharmacist) must communicate to end users the imp
 
             
 
-#### Contract Management
-
-            
-
-            
-              
-                
-| --- | --- |
-              
-              
-                
-                  ****  
-
-                  
-                
-| Commercial Contract | SLA |
-                
-                  ****  
-
-                  
-                
-| Quality / Technical Agreement | GDP |
-              
-            
-
-            
-
-          
-
-          
-
-            
-
 #### FEFO vs. FIFO — FEFO
 
             
@@ -4136,6 +3417,18 @@ The medication provider (e.g., pharmacist) must communicate to end users the imp
       
 
     
+
+            
+
+#### Contract Management
+
+            
+
+            
+
+          
+
+          
 
   
 
@@ -4253,73 +3546,6 @@ Sustainability considerations in thermal packaging include:
           
 
 ### Commentary
-
-          
-
-            
-
-#### Passivevs. Active
-
-            
-              
-                
-                  
-                  
-                  
-                
-| | Passive | Active |
-| --- | --- | --- |
-              
-              
-                
-                  ****
-                  
-                  
-                
-| | + PCM / / | / |
-                
-                  ****
-                  
-                  
-                
-                
-                  ****
-                  
-                  
-                
-                
-                  ****
-                  
-                  
-                
-| | PCM | |
-                
-                  ****
-                  
-                  
-                
-| | | + |
-                
-                  ****
-                  
-                  
-                
-| / | + PCM | |
-                
-                  ****
-                  
-                  
-                
-                
-                  ****
-                  
-                  
-                
-| | PDA TR72 | PDA TR64 |
-              
-            
-
-          
 
           
 
@@ -4542,54 +3768,6 @@ Mail service pharmacy (MSP), also known as mail-order pharmacy, has grown substa
 
             
 
-#### FAA / EASA
-
-            
-              
-                
-                  
-                  
-                
-| | 2024 |
-| --- | --- |
-              
-              
-                
-                  ****
-                  
-                
-| FAA | Part 107 VLOSBVLOS |
-                
-                  ****
-                  
-                
-| EASA | Open / Specific / Certified Specific |
-                
-                  ****
-                  
-                
-| | 1–5 kg 1–2 EpiPen |
-                
-                  ****
-                  
-                
-| | >12 m/s |
-                
-                  ****
-                  
-                
-| | Zipline//Wing/ |
-              
-            
-
-            
-
-          
-
-          
-
-            
-
 #### MSP
 
             
@@ -4625,6 +3803,16 @@ Mail service pharmacy (MSP), also known as mail-order pharmacy, has grown substa
       
 
     
+
+            
+
+#### FAA / EASA
+
+            
+
+          
+
+          
 
   
 
@@ -4770,71 +3958,6 @@ A risk-based approach to temperature monitoring recognizes that not all shipment
 
             
 
-#### Data Logger vs. TTI
-
-            
-              
-                
-                  
-                    
-
-                    
-
-                
-| | Data Logger | TTI- |
-| --- | --- | --- |
-              
-              
-                
-                  ****
-                  
-                  
-                
-| | USB/BT/NFC | |
-                
-                  ****
-                  
-                  
-                
-                
-                  ****
-                  
-                  
-                
-| | GDP/GxP | |
-                
-                  ****
-                  
-                  
-                
-| | traceable standard | |
-                
-                  ****
-                  
-                  
-                
-| | $5–$50+ | $0.1–$2 |
-                
-                  ****
-                  
-                  
-                
-| | biologics | VVM |
-                
-                  ****
-                  
-                  
-                
-| WHO | EPI | VVMVaccine Vial Monitor |
-              
-            
-
-          
-
-          
-
-            
-
 #### WHO Vaccine Vial Monitor (VVM) — TTI
 
             
@@ -4849,57 +3972,6 @@ A risk-based approach to temperature monitoring recognizes that not all shipment
 
             
 
-            
-
-          
-
-          
-
-            
-
-#### 
-
-            
-              
-                
-                  
-                  
-                  
-                
-| | → TTI | → Data Logger |
-| --- | --- | --- |
-              
-              
-                
-                  
-                  
-                  
-                
-| | | Biologics |
-                
-                  
-                  
-                  
-                
-| | <$1,000 | >$10,000+ |
-                
-                  
-                  
-                  
-                
-                
-                  
-                  
-                  
-                
-| | GDP | 21 CFR Part 11GDP |
-                
-                  
-                  
-                  
-                
-| | 1–2 | 3 |
-              
             
 
           
@@ -5030,53 +4102,6 @@ In summary, security is an integral component of pharmaceutical supply chain des
 #### 
 
             
-              
-                
-                  
-                  
-                  
-                
-| --- | --- | --- |
-              
-              
-                
-                  ****
-                    
-
-                  
-                
-| | FMDFalsified Medicines Directive | 2D + EMVS |
-                
-                  ****
-                    
-
-                  
-                
-| | DSCSADrug Supply Chain Security Act | 2023 EPCIS |
-                
-                  ****
-                  
-                  
-                
-| | NMPA | + |
-                
-                  ****
-                  
-                  
-                
-| | | TFDA |
-              
-            
-
-          
-
-          
-
-            
-
-#### 
-
-            
 
             
 
@@ -5143,18 +4168,6 @@ In summary, security is an integral component of pharmaceutical supply chain des
     
 
   
-
-  
-
-PDA Technical Report No. 46 (Revised 2024): Last Mile Pharmaceutical Delivery
-
-  
-
-Sections 3.7–5 | p12–p23 | Educational HTML — Bilingual (EN/ZH-TW)
-
-  
-
-For internal educational use only. Source: PDA TR46.
 
 ⇧
 
@@ -5386,81 +4399,6 @@ In addition, risk assessment of the computerized system should provide requireme
 
                 
 
-#### ALCOA+ —
-
-                
-                    
-                        
-                            
-                            
-                            
-                        
-| --- | --- | --- |
-                    
-                    
-                        
-                            ****
-                            
-                            
-                        
-| A | Attributable | Data Logger |
-                        
-                            ****
-                            
-                            
-                        
-| L | Legible | |
-                        
-                            ****
-                            
-                            
-                        
-| C | Contemporaneous | |
-                        
-                            ****
-                            
-                            
-                        
-| O | Original | PDF |
-                        
-                            ****
-                            
-                            
-                        
-| A | Accurate | ±0.5°C |
-                        
-                            ****
-                            
-                            
-                        
-| +C | Complete | |
-                        
-                            ****
-                            
-                            
-                        
-| +C | Consistent | |
-                        
-                            ****
-                            
-                            
-                        
-| +E | Enduring | +1WHO5EU |
-                        
-                            ****
-                            
-                            
-                        
-| +A | Available | |
-                    
-                
-
-            
-
-            
-
-                
-
 #### vs.
 
                 
@@ -5662,51 +4600,6 @@ In event of temperature excursions, the product impact assessment and product di
 
                 
 
-#### Decision Tree
-
-                
-                    
-                        
-                            
-                            
-                            
-                            
-                        
-| --- | --- | --- | --- |
-                    
-                    
-                        
-                            
-                            
-                            
-                            
-                        
-| <2°C | <2 | | |
-                        
-                            
-                            
-                            
-                            
-                        
-| 2–5°C | 2–8 | | |
-                        
-                            
-                            
-                            
-                            
-                        
-| >5°C | >8 | | / |
-                    
-                
-
-                
-
-            
-
-            
-
-                
-
 #### Metadata
 
                 
@@ -5718,6 +4611,16 @@ In event of temperature excursions, the product impact assessment and product di
     
 
     
+
+                
+
+#### Decision Tree
+
+                
+
+            
+
+            
     
 
         
@@ -5960,70 +4863,6 @@ Pedigree requirements currently vary from state to state and where unit serializ
 
                 
 
-#### EU FMD vs. US DSCSA —
-
-                
-                    
-                        
-                            
-                            
-                            
-                        
-| | EU FMD/EMVS | US DSCSA |
-| --- | --- | --- |
-                    
-                    
-                        
-                            ****
-                            
-                            
-                        
-| | Directive 2011/62/EU + Reg. 2016/161 | DQSA 2013, Title II (DSCSA) |
-                        
-                            ****
-                            
-                            
-                        
-| | 2D Data Matrix | 2D Matrix RFID |
-                        
-                            ****
-                            
-                            
-                        
-| | EMVShub + NMVS | EPCIS |
-                        
-                            ****
-                            
-                            
-                        
-| | Point of Dispensing | Chain of Custody |
-                        
-                            ****
-                            
-                            
-                        
-| | 5EU GDP | 10Transaction History |
-                        
-                            ****
-                            
-                            
-                        
-| | MAH | |
-                        
-                            ****
-                            
-                            
-                        
-| | 20192 | 202311 |
-                    
-                
-
-            
-
-            
-
-                
-
 #### DSCSA 2023
 
                 
@@ -6076,54 +4915,6 @@ Adverse events associated with RFID application for medicines have not yet been 
             
 
 ## RFID
-
-            
-
-                
-
-#### RFID vs. RFID
-
-                
-                    
-                        
-                            
-                            
-                            
-                        
-| | RFID (Passive) | RFID (Active) |
-| --- | --- | --- |
-                    
-                    
-                        
-                            
-                            
-                            
-                        
-                        
-                            
-                            
-                            
-                        
-| | 1–3 | 100 |
-                        
-                            
-                            
-                            
-                        
-                        
-                            
-                            
-                            
-                        
-                        
-                            
-                            
-                            
-                        
-                    
-                
-
-            
 
             
 
@@ -6240,7 +5031,7 @@ The architecture of a blockchain enables users to share validated and updated le
 
                     
 
-Figure 6.5.3-1 — IoT/Blockchain Temperature Monitoring Architecture
+Figure 6.5.3-1🔍 — IoT/Blockchain Temperature Monitoring Architecture
 
                     
 
@@ -6360,7 +5151,7 @@ Each temperature event is cryptographically signed and stored as an immutable bl
 
                 
 
-Figure 6.5.3-1: IoT and blockchain integration for pharmaceutical cold chain temperature monitoring. Sensor data flows from asset to distributed ledger; smart contracts enforce compliance rules automatically.
+Figure 6.5.3-1🔍: IoT and blockchain integration for pharmaceutical cold chain temperature monitoring. Sensor data flows from asset to distributed ledger; smart contracts enforce compliance rules automatically.
 
             
 
@@ -6569,76 +5360,19 @@ Performance management data should also be used to evaluate the performance of t
 
             
 
+    
+
+    
+
                 
 
 #### KPI
-
-                
-                    
-                        
-                            
-                            
-                            
-                            
-                        
-| KPI | | | |
-| --- | --- | --- | --- |
-                    
-                    
-                        
-                            ****
-                            
-                            
-                            
-                        
-| OTIF | On Time In Full — | ≥98% | |
-                        
-                            ****
-                            
-                            
-                            
-                        
-| | / | <5/ | |
-                        
-                            ****
-                            
-                            
-                            
-                        
-| | | <24 | |
-                        
-                            ****
-                            
-                            
-                            
-                        
-| | / | <0.1% | |
-                        
-                            ****
-                            
-                            
-                            
-                        
-| CAPA | CAPA | ≥95% | |
-                        
-                            ****
-                            
-                            
-                            
-                        
-| | | ≥99.5% | |
-                    
-                
 
                 
 
             
 
         
-
-    
-
-    
     
 
         
@@ -6666,46 +5400,6 @@ For healthcare professionals who receive cold-chain products at clinical sites, 
             
 
 ## 
-
-            
-
-                
-
-#### 
-
-                
-                    
-                        
-                            
-                            
-                        
-| --- | --- |
-                    
-                    
-                        
-                            ****
-                            
-                        
-| | /Data Logger |
-                        
-                            ****
-                            
-                        
-| / | |
-                        
-                            ****
-                            
-                        
-| | / |
-                        
-                            ****
-                            
-                        
-| HCP | |
-                    
-                
-
-            
 
             
 
@@ -6904,18 +5598,6 @@ Patient education materials should be written in plain language appropriate to t
 
     
 
-    
-
-PDA Technical Report No. 46 (Revised 2024): Last-Mile Delivery of Pharmaceutical Products
-
-    
-
-Section 6: Data and Knowledge Management • p23–p33
-
-    
-
-Educational bilingual reference material. For regulatory guidance, consult the official PDA TR46 document.
-
 ⇧
 
 ## Section 7–9: Cost Management, Sustainability & Summary (p34-p39)
@@ -7107,56 +5789,6 @@ The inventory level, buffer-stock determination, and size of individual packs sh
 
                 
 
-#### 
-
-                
-                    
-                        
-                            
-                            
-                            
-                        
-| --- | --- | --- |
-                    
-                    
-                        
-                            ****
-                            
-                            
-                        
-                        
-                            ****
-                            
-                            
-                        
-| | | 10–15 |
-                        
-                            ****
-                            
-                            
-                        
-| | | vs. |
-                        
-                            ****
-                            
-                            
-                        
-| | MappingIQ/OQ/PQ | + |
-                        
-                            ****
-                            
-                            
-                        
-| | | GDP |
-                    
-                
-
-            
-
-            
-
-                
-
 #### GMP/GDP
 
                 
@@ -7243,51 +5875,6 @@ Reverse logistics encompasses all operations related to the upstream movement of
             
 
 ### 7.3 —
-
-            
-
-                
-
-#### EPREU vs. US
-
-                
-                    
-                        
-                            
-                            
-                            
-                        
-| | EU | US |
-| --- | --- | --- |
-                    
-                    
-                        
-                            ****
-                            
-                            
-                        
-| | Directive 94/62/ECEU (EU) 2022/2379 | CAORME EPR |
-                        
-                            ****
-                            
-                            
-                        
-| | Green Dot Program20 + | EPS/ |
-                        
-                            ****
-                            
-                            
-                        
-                        
-                            ****
-                            
-                            
-                        
-| | EU Green Deal 2030 | EPR |
-                    
-                
-
-            
 
             
 
@@ -7420,63 +6007,6 @@ Reuse is another way to reduce the cost of passive-thermal solutions. The reuse 
 
                 
 
-#### 
-
-                
-                    
-                        
-                            
-                            
-                            
-                            
-                        
-| --- | --- | --- | --- |
-                    
-                    
-                        
-                            
-                            
-                            
-                            
-                        
-| < 24h | < 30°C | 2–8°C | EPS + |
-                        
-                            
-                            
-                            
-                            
-                        
-| 24–72h | | 2–8°C | VIP + PCM/ |
-                        
-                            
-                            
-                            
-                            
-                        
-| > 72h | > 35°C | 2–8°C | |
-                        
-                            
-                            
-                            
-                            
-                        
-| / | | −20°C | + PCM |
-                        
-                            
-                            
-                            
-                            
-                        
-| | | | TCO |
-                    
-                
-
-            
-
-            
-
-                
-
 #### vs.
 
                 
@@ -7569,67 +6099,6 @@ The goal of risk-based planning is to focus on preparing the organization for a 
 
                 
 
-#### vs.
-
-                
-                    
-                        
-                            
-                            
-                            
-                        
-| --- | --- | --- |
-                    
-                    
-                        
-                            ****
-                            
-                            
-                        
-| | | / |
-                        
-                            
-                            
-                        
-| | + |
-                        
-                            
-                            
-                        
-| / | + |
-                        
-                            
-                            
-                        
-| | TCO |
-                        
-                            ****
-                            
-                            
-                        
-| | | FDA Class I recall > 1,000 |
-                        
-                            
-                            
-                        
-                        
-                            
-                            
-                        
-| | FDA Warning Letter GDP |
-                        
-                            
-                            
-                        
-                    
-                
-
-            
-
-            
-
-                
-
 #### BCP
 
                 
@@ -7654,54 +6123,6 @@ The goal of risk-based planning is to focus on preparing the organization for a 
 
                     
 
-                
-
-            
-
-            
-
-                
-
-#### BCP
-
-                
-                    
-                        
-                            
-                            
-                            
-                            
-                        
-| --- | --- | --- | --- |
-                    
-                    
-                        
-                            ****
-                            
-                            
-                            
-                        
-                        
-                            ****
-                            
-                            
-                            
-                        
-| | UPS/ | | ETA |
-                        
-                            ****
-                            
-                            
-                            
-                        
-                        
-                            ****
-                            
-                            
-                            
-                        
-| | | / | |
-                    
                 
 
             
@@ -8045,69 +6466,6 @@ The last mile of delivering temperature-controlled pharmaceutical products has m
 
                 
 
-#### 
-
-                
-                    
-                        
-                            
-                            
-                            
-                        
-| --- | --- | --- |
-                    
-                    
-                        
-                            ****
-                            
-                            
-                        
-| PDA Technical Reports | 1, 2, 35, 44, 45, 51 | TR39, TR53, TR58, TR64, TR72 |
-                        
-                            ****
-                            
-                            
-                        
-| WHO | 4, 5, 11, 12, 37, 56 | TRS 957, 961, 996, 1025 |
-                        
-                            ****
-                            
-                            
-                        
-| | 7, 8, 9, 53, 57, 58 | GDP Guidelines 2013, Directive 94/62/EC |
-                        
-                            ****
-                            
-                            
-                        
-| | 24, 25, 26, 27, 52, 54, 59, 60 | 21 CFR 203/205, USP <659>/<1079>, DSCSA |
-                        
-                            ****
-                            
-                            
-                        
-| ICH | 39, 40, 50 | Q1A(R2), Q1E, Q9(R1) |
-                        
-                            ****
-                            
-                            
-                        
-| IoT/AI/ | 61, 62, 63, 64, 65 | RFID |
-                        
-                            ****
-                            
-                            
-                        
-| | 19–23, 66, 67, 68 | RDC 430 JIS Q 0064São Paulo SMA 45 |
-                    
-                
-
-            
-
-            
-
-                
-
 #### TR46
 
                 
@@ -8129,13 +6487,5 @@ The last mile of delivering temperature-controlled pharmaceutical products has m
         
 
     
-
-    
-
-PDA Technical Report No. 46 (Revised 2024): Last Mile — Guidance for Good Distribution Practices for Pharmaceutical Products to the End User
-
-    
-
-Sections 7–9: Cost Management, Sustainability & Summary | p34–p39
 
 ⇧

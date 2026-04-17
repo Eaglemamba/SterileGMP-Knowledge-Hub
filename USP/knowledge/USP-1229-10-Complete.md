@@ -2,7 +2,7 @@
 
 ## Section 0: Radiation Sterilization — Complete (p1-p4)
 
-# USP ⟨1229.10⟩ Radiation Sterilization
+# USP 〈1229.10〉 Radiation Sterilization
 
     
 
@@ -32,7 +32,7 @@ The use of a biological indicator is inappropriate during radiation sterilizatio
 
         
 
-Dosimetry plays a central role in radiation sterilization and serves as a direct means for affirming process lethality. The radiation dose measured in kGy (formerly MRads) is directly related to the lethal effects of the radiation on microorganisms. The measured dose has the same utility as F0 in steam sterilization. Routine process control for radiation sterilization is provided by one or more reference dosimeters on the exterior of the packages (after dosimeters have been correlated during validation with dose measurement inside the package). The robustness and reliability of the absorbed dose of the article to be sterilized can support parametric release, as described in Terminally Sterilized Pharmaceutical Products—Parametric Release ⟨1222⟩, for many items.
+Dosimetry plays a central role in radiation sterilization and serves as a direct means for affirming process lethality. The radiation dose measured in kGy (formerly MRads) is directly related to the lethal effects of the radiation on microorganisms. The measured dose has the same utility as F0 in steam sterilization. Routine process control for radiation sterilization is provided by one or more reference dosimeters on the exterior of the packages (after dosimeters have been correlated during validation with dose measurement inside the package). The robustness and reliability of the absorbed dose of the article to be sterilized can support parametric release, as described in Terminally Sterilized Pharmaceutical Products—Parametric Release 〈1222〉, for many items.
 
         
 

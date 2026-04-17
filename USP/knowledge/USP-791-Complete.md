@@ -79,25 +79,6 @@ The resulting equation is **[0.05916 + 0.0001984(T − 25°)] volts** at tempera
         
 
         
-            
-                
-                
-            
-| Temperature (°C) | k (V) |
-| --- | --- |
-            
-| 15.00 | 0.05718 |
-            
-| 20.00 | 0.05817 |
-            
-| 25.00 | 0.05916 |
-            
-| 30.00 | 0.06016 |
-            
-| 35.00 | 0.06115 |
-        
-
-        
 
         
 
@@ -155,44 +136,6 @@ Calibration using buffer solutions shall be done in the **temperature range of t
 
 ### Table 2. pH Values of Buffer Solutions for Calibration (Selected Values)
 
-        
-
-        
-            
-                
-                
-                
-                
-                
-                
-                
-                
-            
-| Temp (°C) | K Tetraoxalate 0.05 m | K Biphthalate 0.05 m | Equimolal Phosphate 0.05 m | KH₂PO₄ 0.0087M / Na₂HPO₄ 0.0303M | Na Tetraborate 0.01 m | Na Carbonate / Na Bicarbonate 0.025 M | Ca(OH)₂ Sat. 25° |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-            
-| 15 | 1.67 | 4.00 | 6.90 | 7.45 | 9.28 | 10.12 | 12.81 |
-            
-| 20 | 1.68 | 4.00 | 6.88 | 7.43 | 9.23 | 10.06 | 12.63 |
-            
-| 25 | 1.68 | 4.01 | 6.87 | 7.41 | 9.18 | 10.01 | 12.45 |
-            
-| 30 | 1.68 | 4.02 | 6.85 | 7.40 | 9.14 | 9.97 | 12.29 |
-            
-| 37 | — | 4.03 | 6.84 | 7.38 | 9.11 | 9.94 | — |
-            
-| 40 | 1.69 | 4.04 | 6.84 | — | 9.07 | — | 11.98 |
-            
-                ****
-                
-                
-                
-                
-                
-                
-                
-            
-| ΔpH/Δ° | 0.0010 | 0.0018 | −0.0016 | −0.0028 | −0.0074 | −0.0096 | −0.0310 |
         
 
         

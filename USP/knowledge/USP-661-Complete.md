@@ -85,19 +85,6 @@ Plastic articles used for high risk products, such as those intended for inhalat
 
 ### Scanning Ranges by Resin Type
 
-        
-            
-| Resin Type | Scanning Range |
-| --- | --- |
-            
-| Polyethylene (HDPE/LDPE) | 3500–600 cm⁻¹ |
-            
-| Polypropylene (PP) | 3500–600 cm⁻¹ |
-            
-| PET | 4000–400 cm⁻¹ |
-            
-| PETG | 4000–400 cm⁻¹ |
-
 ## Section 2: Biological Tests & Packaging System Evaluation (p5-p8)
 
 # Section 2: Biological Tests & Packaging System Evaluation |
@@ -130,42 +117,3 @@ Plastic articles used for high risk products, such as those intended for inhalat
         
 
 ### Risk-Based Application of Biological Testing
-
-        
-            
-                
-                
-                
-            
-| Route of Administration | Risk Level | Biological Tests Required? |
-| --- | --- | --- |
-            
-                
-                
-                
-            
-| Parenteral (IV, IM, SC) | High | Yes — 87 In Vitro (minimum) |
-            
-                
-                
-                
-            
-| Inhalation | High | Yes — 87 In Vitro (minimum) |
-            
-                
-                
-                
-            
-| Ophthalmic | High | Yes — 87 In Vitro (minimum) |
-            
-                
-                
-                
-            
-| Oral | Low | No |
-            
-                
-                
-                
-            
-| Topical | Low | No |

@@ -321,23 +321,6 @@ When developing a sampling program, a **risk-based approach** should be utilized
 #### 
 
                         
-                            
-                                
-| --- | --- | --- | --- |
-                            
-                            
-                                
-| | In-line | | TOC |
-                                
-| | On-line | | |
-                                
-| | At-line | | |
-                                
-| | Off-line | | |
-                            
-                        
-
-                        
 
                     
 
@@ -471,23 +454,6 @@ Ultimately, the **quality control function** is responsible for sampling, but ot
                         
 
                         
-                            
-                                
-| --- | --- |
-                            
-                            
-                                
-| QC | |
-                                
-| QA | SOP OOS |
-                                
-                                
-| / | |
-                                
-                            
-                        
-
-                    
 
                     
 
@@ -545,30 +511,6 @@ When no sampling frequency is specified, a **risk-based approach** may be utiliz
                 
 
                 
-
-                    
-
-                        
-
-#### 
-
-                        
-                            
-                                
-| --- | --- | --- | --- |
-                            
-                            
-                                
-| WFI | POU | | |
-                                
-| PW | | | |
-                                
-                                
-| / | | | |
-                            
-                        
-
-                    
 
                     
 
@@ -754,37 +696,6 @@ In pharmaceutical steam systems, compressed air, and process gas systems, attrib
                 
 
                 
-
-                    
-
-                        
-
-#### 
-
-                        
-                            
-                                
-| --- | --- | --- | --- |
-                            
-                            
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                
-| | TOC | homogeneous | —— |
-                                
-                                    ****
-                                    
-                                    
-                                    
-                                
-| | endotoxin | heterogeneous | —— |
-                            
-                        
-
-                    
 
                     
 
@@ -1784,28 +1695,6 @@ Resampling and retesting should be one of the first corrective actions. Where hi
 
           
 
-#### vs vs
-
-          
-            
-| --- | --- | --- |
-            
-              
-| | POU | / |
-              
-| | | + |
-              
-| | POU | |
-              
-            
-          
-
-        
-
-        
-
-          
-
 #### FDA 1993
 
           
@@ -2044,27 +1933,6 @@ For an excursion above a specification limit, an investigation should be perform
 
           
 
-#### OOS vs
-
-          
-            
-| --- | --- | --- |
-            
-              
-| 2σ | | |
-              
-| 3σ | | CAPA |
-              
-| | OOS | OOS |
-            
-          
-
-        
-
-        
-
-          
-
 #### 
 
           
@@ -2212,31 +2080,6 @@ Figure: Simplified PW/WFI distribution loop showing mandatory sampling locations
 
             
 
-          
-
-        
-
-        
-
-          
-
-#### 
-
-          
-
-          
-            
-| --- | --- |
-            
-              
-| POU | |
-              
-| POU | |
-              
-| sub-loop | |
-              
-              
-            
           
 
         
@@ -2666,98 +2509,6 @@ Every POU in a water distribution system that is not active should be **locked o
     
 
       
-        
-          
-            
-            
-            
-            
-          
-| Attribute / | Purified Water (PW) / | Highly Purified Water (HPW) / | Water For Injection (WFI) / |
-| --- | --- | --- | --- |
-        
-        
-          
-            ****
-            
-            
-            
-          
-| Regulatory Basis / | USP <1231>, EP 2.2.1, JP | EP only (not in USP/JP) | USP <1>, EP 2.2.15, JP, ChP |
-          
-            ****
-            
-            
-            
-          
-| Production Method / | RO, deionization, distillation, or combination | Double-pass RO + UF; non-distillation | USP/JP: distillation only; EP: distillation OR membrane (since 2017) |
-          
-            ****
-            
-            
-            
-          
-| Conductivity Limit / | ≤ 1.3 µS/cm (25°C, Stage 3) | Same as WFI: ≤ 1.1 µS/cm | ≤ 1.1 µS/cm (25°C, Stage 3) |
-          
-            ****
-            
-            
-            
-          
-| TOC Limit / | ≤ 500 ppb (USP); ≤ 500 µg/L (EP) | ≤ 500 µg/L (EP) | ≤ 500 ppb (USP); ≤ 500 µg/L (EP) |
-          
-            ****
-            
-            
-            
-          
-| Endotoxin / | Not required | ≤ 0.25 EU/mL (EP) | ≤ 0.25 EU/mL (USP, EP, JP) |
-          
-            ****
-            
-            
-            
-          
-| Bioburden Action Limit / | ≤ 100 cfu/mL (FDA 1993) | ≤ 10 cfu/100 mL (same as WFI) | ≤ 10 cfu/100 mL (FDA 1993) |
-          
-            ****
-            
-            
-            
-          
-| Nitrates (EP) / | ≤ 0.2 ppm | Same as WFI | ≤ 0.2 ppm |
-          
-            ****
-            
-            
-            
-          
-| Heavy Metals (EP) / | Required (unless PW meets WFI conductivity) | Not required | Not required |
-          
-            ****
-            
-            
-            
-          
-| Typical Uses / | Non-parenteral formulation, equipment cleaning, rinsing, analytical reagent preparation | Hemodialysis; products requiring WFI-equivalent purity without full distillation | Parenteral formulations, ophthalmic preparations, final equipment rinse in aseptic processing, WFI for reconstitution |
-          
-            ****
-            
-            
-            
-          
-| Distribution Temperature / | Ambient (with ozone or UV sanitization) or Hot (65–80°C) | Same as WFI: typically hot or cold with validated sanitization | Hot (65–80°C) for continuous microbial control, or cold with ozone/UV |
-          
-            ****
-            
-            
-            
-          
-| Sampling Frequency / | Daily to weekly at each POU (QC); continuous online for TOC/conductivity | Similar to WFI: daily at POUs, continuous online preferred | Daily at each POU (QC); continuous online for TOC/conductivity; weekly endotoxin |
-        
-      
-
-    
 
     
     
@@ -2767,68 +2518,6 @@ Every POU in a water distribution system that is not active should be **locked o
     
 
       
-        
-          
-            
-            
-            
-          
-| Criterion / | Rationale / | Design Implication / |
-| --- | --- | --- |
-        
-        
-          
-            
-            
-            
-          
-| Before and after each unit operation | Performance verification; fault isolation | Install sample ports on both inlet and outlet of every treatment unit |
-          
-            
-            
-            
-          
-| POU | Process control: reflects cumulative loop quality | Return loop sample valve must be accessible; avoid ceiling-level placement |
-          
-            
-            
-            
-          
-| POU | QC: heterogeneous distribution requires per-POU sampling for microorganisms | All POU valves must be sanitary; sampling procedure must mirror manufacturing use |
-          
-            
-            
-            
-          
-| before sub-loop return | Prevents sub-loop contamination from being obscured by main loop dilution | Each sub-loop return pipe needs a sample valve before junction with main return |
-          
-            
-            
-            
-          
-| / Downstream of heat exchangers | Possible leakage of non-sanitary media; temperature changes affect microbial risk | Monitor conductivity/TOC inline; include in manual sampling if pressure differential not confirmed |
-          
-            
-            
-            
-          
-| POU / Most remote POU | Lowest flow velocity = highest biofilm risk | Flag as high-risk during RA; increase sampling frequency during qualification |
-          
-            
-            
-            
-          
-| | Tank can harbor biofilm; velocity is lower than distribution lines | Include tank outlet in regular schedule; direct tank sample valve for validation/diagnostic |
-          
-            
-            
-            
-          
-| | Carbon beds promote microbial growth (remove chlorine + large surface area) | Post-carbon microbial sampling at higher frequency than other pretreatment points |
-        
-      
-
-    
 
     
     
@@ -2838,84 +2527,6 @@ Every POU in a water distribution system that is not active should be **locked o
     
 
       
-        
-          
-            
-            
-            
-            
-          
-| Risk Factor / | Mechanism / | Mitigation / | Priority / |
-| --- | --- | --- | --- |
-        
-        
-          
-            
-            
-            
-            
-          
-| Dead legs / | No flow = biofilm accumulation; planktonic bacteria shed into main loop on perturbation | Design: L/D ≤ 3; eliminate where possible; flush routinely | HIGH |
-          
-            
-            
-            
-            
-          
-| Valve seat surfaces (wet/moist) | Upstream face wetted at all times; biofilm forms on sealing surfaces and downstream surfaces | Sanitary diaphragm valves; surface finish Ra ≤ 0.8 µm; regular sanitization | HIGH |
-          
-            
-            
-            
-            
-          
-| Hoses and connectors | Internal surfaces wet between uses; bacteria colonize during stagnation; difficult to clean | Dedicated hoses; drain and dry after use; replace on schedule; test "as used" | HIGH |
-          
-            
-            
-            
-            
-          
-| Overnight stagnation / | Flow stops; temperature equilibrates to ambient; biofilm shed and planktonic count rises | Continuous loop recirculation; pre-use flush procedure defined in SOP | HIGH |
-          
-            
-            
-            
-            
-          
-| Temperature drop zones | Cool sections (15–30°C) promote faster microbial growth than hot loops (>65°C) | Maintain loop temperature >65°C or use validated cold loop with ozone/UV | MEDIUM |
-          
-            
-            
-            
-            
-          
-| External devices (flow meters, pressure regulators) | Internal geometry creates low-flow areas; difficult to sanitize | Use sanitary-design instrumentation; verify CIP/SIP coverage in qualification | MEDIUM |
-          
-            
-            
-            
-            
-          
-| Non-sanitary sample valves in distribution loop | Ball valves retain water in cavity; cannot be sanitized effectively | Use sanitary diaphragm or sampling needle valves only in distribution loop | MEDIUM |
-          
-            
-            
-            
-            
-          
-| Inactive / locked-out POUs | Stagnant branch; disconnected from sanitization loop | Lock out + tag out; flush weekly or remove entirely; confirm before reuse | MEDIUM |
-          
-            
-            
-            
-            
-          
-| Sub-optimal surface finish | Rough surfaces (Ra > 0.8 µm) provide anchor points for biofilm | Specify electropolished 316L SS; verify surface finish at installation qualification | LOW-MEDIUM |
-        
-      
-
-    
 
     
     
@@ -2925,94 +2536,6 @@ Every POU in a water distribution system that is not active should be **locked o
     
 
       
-        
-          
-            
-            
-            
-            
-            
-            
-            
-          
-| Drawing No. | Tag / | Function / Classification | Location (Room) | Frequency / | Attributes / | Purpose Category |
-| --- | --- | --- | --- | --- | --- | --- |
-        
-        
-          
-            
-            
-            
-            
-            
-            
-            
-          
-| PW-1 | PW-01 | Carbon Bed Inlet | Mechanical / | Monthly / | Chlorine, TOC, Bacteria | Process Control |
-          
-            
-            
-            
-            
-            
-            
-            
-          
-| PW-1 | PW-02 | Carbon Bed Outlet | Mechanical / | Monthly + after restart | Chlorine, TOC, Bacteria (elevated frequency) | Process Control |
-          
-            
-            
-            
-            
-            
-            
-            
-          
-| PW-2 | PW-03 | Deionizer Outlet | Mechanical / | Quarterly / | Sodium, Silica (diagnostic) | Diagnostic |
-          
-            
-            
-            
-            
-            
-            
-            
-          
-| PW-2 | PW-04 | Distribution Loop Supply | Mechanical / | Daily/Weekly / / | TOC, Conductivity, Bacteria | Process Control |
-          
-            
-            
-            
-            
-            
-            
-            
-          
-| PW-3 | PW-05 | POU Valve #1 | Production Room 101 / 101 | Weekly / | TOC, Conductivity, Bacteria | QC + Regulatory |
-          
-            
-            
-            
-            
-            
-            
-            
-          
-| PW-3 | PW-06 | POU Valve #2 (Last POU) | Production Room 103 / 103 | Weekly / | TOC, Conductivity, Bacteria | QC + Worst Case |
-          
-            
-            
-            
-            
-            
-            
-            
-          
-| PW-3 | PW-07 | Loop Return | Mechanical / | Daily / | TOC, Conductivity, Bacteria | Process Control |
-        
-      
-
-    
 
     
     
@@ -3111,22 +2634,6 @@ Every POU in a water distribution system that is not active should be **locked o
     
 
   
-
-  
-
-**ISPE Good Practice Guide (2016): Sampling for Pharmaceutical Water, Steam, and Process Gases**
-
-  
-
-Chapter 2 Part 1: Pharmaceutical Water — Introduction & Sampling Locations (Sections 2.1–2.2.6)
-
-  
-
-Bilingual Educational Version | SterileGMP Knowledge Hub
-
-  
-
-Source: ISPE Good Practice Guide (2016), pp. 14–24. Educational use only. Consult original document for official guidance.
 
 ↑
 
@@ -3457,50 +2964,6 @@ The FDA guide provides the most specific guidelines for sampling frequency durin
         
 
         
-          
-            
-              
-              
-              
-            
-| / | | |
-| --- | --- | --- |
-          
-          
-            
-              ****
-              
-              
-            
-| USP <1231> | + | |
-            
-              ****
-              
-              
-            
-| EP Annex 1 | | ++ |
-            
-              ****
-              
-              
-            
-| JP16 G8 | | |
-            
-              ****
-              
-              
-            
-| ICH Q7 | + + | API |
-            
-              ****
-              
-              
-            
-| FDA 1993 Guide | | PQ |
-          
-        
-
-        
 
           
 
@@ -3759,33 +3222,6 @@ If, during risk assessment, the pretreatment is determined to be a no-impact sys
 
           
 
-#### 
-
-          
-
-          
-            
-              
-| --- | --- | --- |
-            
-            
-              
-| | SDI | |
-              
-              
-              
-| RO | | |
-              
-| CEDI | | |
-            
-          
-
-        
-
-        
-
-          
-
 #### Alert Level vs. Action Level
 
           
@@ -3860,31 +3296,6 @@ Define the microbiological levels as required by intended use of the water. Ther
 
 #### Rotational Sampling
 
-          
-
-          
-
-        
-
-        
-
-          
-
-#### PWAlert/Action Level
-
-          
-            
-              
-| | | Alert Level | Action Level |
-| --- | --- | --- | --- |
-            
-            
-                
-| | USP: 100 CFU/mLEP: 100 CFU/mL | 50 CFU/mL | 100 CFU/mL |
-              
-| TOC | 500 ppb | | 500 ppb |
-              
-            
           
 
           
@@ -4309,53 +3720,6 @@ A worst case scenario tests the limits of the system and is defined as the most 
         
 
         
-          
-            
-              
-              
-              
-              
-            
-| --- | --- | --- | --- |
-          
-          
-            
-              
-              
-              
-              
-            
-| / | → | | TOC |
-            
-              
-              
-              
-              
-            
-| | | | TOC |
-            
-              
-              
-              
-              
-            
-            
-              
-              
-              
-              
-            
-            
-              
-              
-              
-              
-            
-| / | | | TOC |
-          
-        
-
-        
 
           
 
@@ -4458,45 +3822,6 @@ Acceptance criteria should be set up properly for the special scenario. A specia
         
 
         
-          
-            
-              
-              
-              
-              
-            
-| --- | --- | --- | --- |
-          
-          
-            
-              
-              
-              
-              
-            
-| / | X | | 43 |
-            
-              
-              
-              
-              
-            
-            
-              
-              
-              
-              
-            
-            
-              
-              
-              
-              
-            
-          
-        
-
-        
 
           
 
@@ -4559,161 +3884,10 @@ Acceptance criteria should be set up properly for the special scenario. A specia
 ### Table A: Three-Phase PQ Sampling Comparison | PQ
 
     
-      
-        
-          
-          
-          
-          
-        
-| Parameter / | Phase 1 Initial / | Phase 2 Intermediary / | Phase 3 Extended / |
-| --- | --- | --- | --- |
-      
-      
-        
-          ****
-          
-          
-          
-        
-| Duration / | 2–4 weeks (10–20 working days) / 2–4 | 10–20 working days / 10–20 | Remaining balance of 1 year / |
-        
-          ****
-          
-          
-          
-        
-| Sampling Intensity / | Highest — all points daily / — | Reduced frequency / | Routine level / |
-        
-          ****
-          
-          
-          
-        
-| Points Sampled / | All sample and use points in distribution / | Representative points; use points active less often / | Routine monitoring points / |
-        
-          ****
-          
-          
-          
-        
-| Primary Purpose / | Demonstrate consistent compliance / | Demonstrate repeatability with SOPs / SOP | Capture seasonal variation; establish routine monitoring / |
-        
-          ****
-          
-          
-          
-        
-| Worst Case? / | Yes — Monday AM after no weekend use / — | Incidentally — less frequent active use / — | Seasonal extremes / |
-        
-          ****
-          
-          
-          
-        
-| Microbial ID? / | Visually distinct organisms if consistent / | As needed / | New distinct isolates only / |
-        
-          ****
-          
-          
-          
-        
-| Forms Basis For / | Phase 2 start criteria / Phase 2 | Phase 3 entry; SOP refinement / Phase 3SOP | Routine monitoring program / |
-        
-          ****
-          
-          
-          
-        
-| Prerequisites / | IQ/OQ report approval / IQ/OQ | Phase 1 shows consistent quality / Phase 1 | Phase 2 completion / Phase 2 |
-      
-    
-
-    
 
     
 
 ### Table B: Sampling Frequency Risk Matrix — Attribute Type vs. PQ Phase |
-
-    
-      
-        
-          
-          
-          
-          
-          
-          
-        
-| Attribute Type / | Rationale for Frequency / | Phase 1 Typical / Phase 1 | Phase 2 Typical / Phase 2 | Phase 3 / Routine / Phase 3/ | On-line Possible? / |
-| --- | --- | --- | --- | --- | --- |
-      
-      
-        
-          ****
-          
-          
-          
-          
-          
-        
-| Conductivity / | Uniformly distributed; on-line representative / | Daily or on-line / | Daily–weekly or on-line / | On-line preferred / | Yes |
-        
-          ****
-          
-          
-          
-          
-          
-        
-| TOC | Uniformly distributed; process control / | Daily or on-line / | Daily–weekly or on-line / | On-line preferred / | Yes |
-        
-          ****
-          
-          
-          
-          
-          
-        
-| Chemical (compendial) / | Pharmacopoeia specification; PW/WFI grade / | Daily / | Daily–weekly / | Weekly or rotational / | Partial |
-        
-          ****
-          
-          
-          
-          
-          
-        
-| Bioburden / | Localized; point-specific risk / | Daily all points / | Daily–weekly / | Weekly (WFI) / WFI | No |
-        
-          ****
-          
-          
-          
-          
-          
-        
-| Endotoxin / | WFI/PS only; pyrogen risk for injectables / WFI/PS | Daily (WFI/PS) / WFI/PS | Daily–weekly / | Weekly / | No |
-        
-          ****
-          
-          
-          
-          
-          
-        
-| SDI (media filter) / | Pretreatment performance; quarterly for non-critical / | Commissioning baseline / | Quarterly or on-line / | Quarterly / | Partial |
-        
-          ****
-          
-          
-          
-          
-          
-        
-| Hardness / | Pretreatment performance indicator / | Commissioning; worst case before regen / | Quarterly or on-line / | Quarterly / | Partial |
-      
-    
 
     
 
@@ -4722,8 +3896,6 @@ Acceptance criteria should be set up properly for the special scenario. A specia
 ### Table C: Alert Level vs. Action Level Framework |
 
     
-
-      
 
         
 
@@ -4746,24 +3918,6 @@ Acceptance criteria should be set up properly for the special scenario. A specia
         
 
         
-          
-            
-| Water Type | Attribute | Example Alert Level |
-| --- | --- | --- |
-          
-          
-            
-| PW | Bioburden | 50 CFU/mL (USP spec: 100) |
-            
-| WFI | Bioburden | 0.1 CFU/mL (USP spec: 0.1) |
-            
-| WFI | Endotoxin | 0.125 EU/mL |
-            
-| PW | TOC | Trend-based internal limit |
-          
-        
-
-      
 
       
 
@@ -4788,26 +3942,6 @@ Acceptance criteria should be set up properly for the special scenario. A specia
         
 
         
-          
-            
-| Water Type | Attribute | Example Action Level |
-| --- | --- | --- |
-          
-          
-            
-| PW | Bioburden | 100 CFU/mL (= USP spec) |
-            
-| WFI | Bioburden | 0.1 CFU/mL (= USP spec) |
-            
-| WFI | Endotoxin | 0.25 EU/mL (= USP spec) |
-            
-| All | Conductivity | Per USP temperature table |
-          
-        
-
-      
-
-    
 
     
 
@@ -4826,86 +3960,6 @@ Acceptance criteria should be set up properly for the special scenario. A specia
 ### Table D: Worst Case Conditions Summary |
 
     
-      
-        
-          
-          
-          
-          
-          
-        
-| Worst Case Condition / | System Risk / | Sampling Timing / | Critical Attributes / | Water Type / |
-| --- | --- | --- | --- | --- |
-      
-      
-        
-          
-          
-          
-          
-          
-        
-| No consumption — weekend/holiday / —/ | Stagnation → bioburden rise, conductivity drift / → | Monday AM / first use after stagnation / / | Bioburden, conductivity, TOC | PW, WFI |
-        
-          
-          
-          
-          
-          
-        
-| Maximum flow / | System capacity limits; temperature excursion / | During peak production demand / | Temperature, flow rate, conductivity, TOC | PW, WFI |
-        
-          
-          
-          
-          
-          
-        
-| Before sanitization / | Maximum bioburden accumulation / | Immediately before scheduled sanitation / | Bioburden, endotoxin (WFI) | PW, WFI |
-        
-          
-          
-          
-          
-          
-        
-| After sanitization / | Chemical sanitant residuals / | After sanitation, before return to service / | Sanitant residual, TOC, conductivity | PW, WFI |
-        
-          
-          
-          
-          
-          
-        
-| After derouging / passivation / / | Chemical residuals from process / | After flush cycles complete / | Conductivity, TOC, heavy metals, pH | WFI |
-        
-          
-          
-          
-          
-          
-        
-| Sand filter before back-flush / | Maximum particulate load / | Just before automatic back flush / | SDI, turbidity | Pretreatment |
-        
-          
-          
-          
-          
-          
-        
-| Softener before regeneration / | Hardness breakthrough / | Immediately before regeneration / | Hardness (Ca/Mg) | Pretreatment |
-        
-          
-          
-          
-          
-          
-        
-| Carbon filter before back-flush / | Maximum chlorine / bioburden risk / / | Just before back flush / | Free chlorine, total chlorine, bioburden | Pretreatment |
-      
-    
-
-  
 
   
 
@@ -5056,56 +4110,6 @@ Cross-section integration questions and regulatory mapping
 ### Regulatory Alignment Summary |
 
         
-          
-            
-              
-              
-              
-            
-| Topic / | ISPE GPG Position | Applicable Regulations |
-| --- | --- | --- |
-          
-          
-            
-              
-              
-              
-            
-| Routine sampling frequency | Risk-based; no fixed requirement | USP <1231>, EP Annex 1, JP16 G8, ICH Q7 |
-            
-              
-              
-              
-            
-| PQ three-phase approach | Required for new/major modified systems | FDA 1993 Guide; WHO TRS 929 |
-            
-              
-              
-              
-            
-| Alert/Action levels | Mandatory (at least Action Level for pretreatment; both for PW/WFI) | USP <1231>, EP, ICH Q7 |
-            
-              
-              
-              
-            
-| Source water | Must meet drinking water standards; manufacturer responsible from site boundary | EPA 40 CFR 141; EU Drinking Water Directive; WHO TRS 929 |
-            
-              
-              
-              
-            
-| ChP special requirement for WFI feed | ChP requires PW-quality feed to WFI still; USP/EP/JP do not | ChP only — critical for China market products |
-            
-              
-              
-              
-            
-| PSE frequency reduction | Requires historical data and statistical/scientific justification; risk of regulatory scrutiny | 21 CFR 211; EU GMP Annex 1 |
-          
-        
-
-      
 
       
 
@@ -5178,18 +4182,6 @@ Cross-section integration questions and regulatory mapping
     
 
   
-
-  
-
-ISPE Good Practice Guide (2016): Sampling for Pharmaceutical Water, Steam, and Process Gases
-
-  
-
-Chapter 2 Part 2: Pharmaceutical Water — Sampling Plans Framework (2.3.1–2.3.5.4)
-
-  
-
-SterileGMP Knowledge Hub  |  Educational Reference Only  |  For Official Requirements See Current Regulatory Guidance
 
 ⇧
 
@@ -5337,49 +4329,6 @@ The PQ sampling program for pharmaceutical water systems is organized into four 
           
 
             
-              
-                
-                  
-                  
-                  
-                  
-                
-| Phase | Name | Typical Duration | Primary Purpose |
-| --- | --- | --- | --- |
-              
-              
-                
-                  
-                  
-                  
-                  
-                
-| 0 | Commissioning | Prior to formal PQ | Confirm installation, baseline data |
-                
-                  
-                  
-                  
-                  
-                
-| 1 | Initial Phase | 2–4 weeks (typical) | Intensive sampling, establish normal operation range |
-                
-                  
-                  
-                  
-                  
-                
-| 2 | Intermediary Phase | 4–8 weeks (typical) | Confirm system performance, begin frequency reduction |
-                
-                  
-                  
-                  
-                  
-                
-| 3 | Extended Phase | Remainder to 12+ months | Long-term performance; basis for routine monitoring |
-              
-            
-
-          
 
           
 
@@ -5555,142 +4504,6 @@ Table 2.2 covers the **upstream** portion of the water system: from the incoming
           
 
             
-              
-                
-                  
-                  
-                    
-
-                    
-
-                    
-
-                
-| Sample Location | Commissioning Tests | Initial Phase(Phase 1) | Intermediary Phase(Phase 2) | Extended Phase(Phase 3) |
-| --- | --- | --- | --- | --- |
-              
-              
-                
-                  ****  
-**
-                  
-                    
-  
-  
-  
-
-                    
-  
-
-                    
-  
-
-                
-| Source Water(e.g., municipal supply) | Confirm physical, chemical, and microbiological levels meet potable water specifications | • Conductivity and TOC daily or on-line                     • Chemical testing daily                     • Microbiological testing daily                     • Endotoxin testing daily (if applicable)                     • pH daily | • Conductivity/TOC: daily to weekly or on-line                     • Chemical: daily to weekly                     • Microbiological: daily to weekly | • Conductivity/TOC: weekly or on-line                     • Chemical: monthly (per local regulation)                     • Microbiological: monthly |
-                
-                  ****  
-**
-                  
-                    
-  
-
-                    
-  
-
-                    
-  
-
-                
-| Water Softener(outlet) | Confirm hardness removal; check for ion bleed-through | • Hardness daily                     • Conductivity daily                     • Microbiological daily | • Hardness daily to weekly                     • Conductivity daily to weekly                     • Microbiological daily to weekly | • Hardness weekly                     • Conductivity weekly                     • Microbiological weekly to monthly |
-                
-                  ****  
-**
-                  
-                    
-  
-
-                    
-  
-
-                    
-  
-
-                
-| Carbon Filter(outlet) | Confirm chlorine/chloramine removal; TOC baseline | • Chlorine residual daily                     • TOC daily                     • Microbiological daily | • Chlorine daily to weekly                     • TOC daily to weekly                     • Microbiological daily to weekly | • Chlorine weekly                     • TOC weekly                     • Microbiological weekly |
-                
-                  ****  
-**
-                  
-                    
-  
-
-                    
-
-                    
-
-                
-| Membrane Filter / MF(outlet) | Confirm particle removal; integrity test baseline | • Particulates daily                     • Microbiological daily                     • Pressure differential daily | • Particulates daily to weekly                     • Microbiological daily to weekly | • Particulates weekly                     • Microbiological weekly |
-                
-                  ****  
-**
-                  
-                    
-
-                    
-
-                    
-
-                
-| UV Disinfection(outlet) | Confirm UV dose / intensity; microbial reduction baseline | • Microbiological daily                     • UV intensity (on-line monitoring preferred) | • Microbiological daily to weekly                     • UV intensity continuous | • Microbiological weekly                     • UV intensity continuous |
-                
-                  ****  
-**
-                  
-                    
-  
-  
-
-                    
-  
-
-                    
-  
-
-                
-| Reverse Osmosis (RO)(permeate) | Confirm conductivity rejection %; TOC; endotoxin baseline | • Conductivity and TOC daily or on-line                     • Endotoxin daily                     • Microbiological daily                     • Rejection rate (%) daily | • Conductivity/TOC daily to weekly or on-line                     • Endotoxin daily to weekly                     • Microbiological daily to weekly | • Conductivity/TOC weekly or on-line                     • Endotoxin weekly                     • Microbiological weekly |
-                
-                  ****  
-**
-                  
-                    
-  
-
-                    
-
-                    
-
-                
-| CEDI(Continuous Electrodeionization, outlet) | Confirm conductivity; resistivity; TOC; baseline microbiological | • Conductivity and TOC daily or on-line                     • Resistivity daily or on-line                     • Microbiological daily | • Conductivity/TOC/resistivity daily to weekly or on-line                     • Microbiological daily to weekly | • Conductivity/TOC/resistivity weekly or on-line                     • Microbiological weekly |
-                
-                  ****  
-**
-                  
-                    
-  
-  
-
-                    
-  
-
-                    
-  
-
-                
-| PW Storage Tank(outlet / recirculation return) | Confirm all PW pharmacopoeial specifications; bioburden; endotoxin (if WFI grade) | • Conductivity and TOC daily or on-line                     • Chemical (pharmacopoeial) daily                     • Microbiological daily                     • pH daily | • Conductivity/TOC daily to weekly or on-line                     • Chemical daily to weekly                     • Microbiological daily to weekly | • Conductivity/TOC weekly or on-line                     • Chemical weekly                     • Microbiological weekly |
-              
-            
-
-          
 
           
 
@@ -5825,91 +4638,6 @@ Table 2.3 covers the **distribution loop** of a Purified Water system. It specif
           
 
             
-              
-                
-                    
-
-                  
-                  
-                  
-                  
-                
-| PW Distribution System(Sample Location) | Commissioning Tests & Frequencies | Initial Phase Tests & Frequencies | Intermediary Phase Tests & Frequencies | Extended Phase Tests & Frequencies (Note B) |
-| --- | --- | --- | --- | --- |
-              
-              
-                
-                  ****  
-**
-                  
-                    
-  
-
-                    
-  
-
-                    
-
-                
-| Downstream of Distribution Pump discharge                     prior to beginning in loop unit operations | Confirm conductivity, chemical (Note E), TOC and microbiological levels | • Conductivity and TOC daily or on-line (Note D)                     • Chemical testing daily (Note E)                     • Microbiological testing daily (Note F) | • Conductivity and TOC at a frequency between daily and weekly or on-line (Note D)                     • Chemical testing at a frequency between daily and weekly (Note E)                     • Microbiological testing at a frequency between daily and weekly (Note F) | • Conductivity and TOC at regular intervals or on-line (Note D), typically at least once per week                     • Chemical (Note E) and microbiological (Note F) testing at regular intervals, typically at least once per week |
-                
-                  ****
-                  
-                    
-  
-
-                    
-  
-
-                    
-
-                
-| Sample Port following the beginning in loop operations or the first use point | Confirm conductivity, chemical (Note E), TOC and microbiological levels | • Conductivity and TOC daily or on-line (Note D)                     • Chemical testing daily (Note E)                     • Microbiological testing daily (Note F) | • Conductivity and TOC at a frequency between daily and weekly or on-line (Note D)                     • Chemical testing at a frequency between daily and weekly (Note E)                     • Microbiological testing at a frequency between daily and weekly (Note F) | • Conductivity and TOC at regular intervals or on-line (Note D), typically at least once per week                     • Chemical (Note E) and microbiological (Note F) testing at regular intervals, typically at least once per week |
-                
-                  ****
-                  
-                    
-  
-
-                    
-  
-
-                    
-
-                
-| Critical Use Point (Note G) | Confirm conductivity, chemical (Note E), TOC and microbiological levels | • Conductivity and TOC daily or on-line (Note D)                     • Chemical testing daily (Note E)                     • Microbiological testing daily (Note F) | • Conductivity and TOC at a frequency between daily and weekly or on-line (Note D)                     • Chemical testing at a frequency between daily and weekly (Note E)                     • Microbiological testing at a frequency between daily and weekly (Note F) | • Conductivity and TOC at regular intervals or on-line (Note D), typically at least once per week                     • Chemical (Note E) and microbiological (Note F) testing at regular intervals, typically at least once per week |
-                
-                  ****
-                  
-                    
-  
-
-                  ****  
-****  
-****
-                  ****  
-****
-                
-| Non-critical Use Point (Note H) | Confirm conductivity, chemical (Note E), TOC and microbiological levels | • Conductivity and TOC daily or on-line (Note D)                     • Chemical testing daily (Note E)                     • Microbiological testing daily (Note F) | • Conductivity and TOC at a frequency between daily and monthly or on-line (Note D)                     • Chemical testing at a frequency between daily and monthly (Note E)                     • Microbiological testing at a frequency between daily and monthly (Note F) | • Conductivity and TOC at regular intervals or on-line (Note D), typically at least once per month                     • Chemical (Note E) and microbiological (Note F) testing at regular intervals, typically at least once per month |
-                
-                  ****
-                    
-  
-
-                    
-  
-
-                    
-  
-
-                    
-
-                
-| Last POU or end of loop sample port (Note I) | Confirm conductivity, chemical (Note E), TOC, and microbiological levels                     Confirm any other physical attributes such as flow rate, temperature, pressure, etc. at minimum and maximum water use scenarios as defined in a User Requirement Specification | • Conductivity and TOC daily or on-line (Note D)                     • Chemical testing daily (Note E)                     • Microbiological testing daily (Note F) | • Conductivity and TOC at a frequency between daily and weekly or on-line (Note D)                     • Chemical testing at a frequency between daily and weekly (Note E)                     • Microbiological testing at a frequency between daily and weekly (Note F) | • Conductivity and TOC at regular intervals or on-line (Note D), typically at least once per week                     • Chemical (Note E) and microbiological (Note F) and other physical attribute testing at regular intervals, typically at least once per week |
-              
-            
-
-          
 
           
 
@@ -5968,45 +4696,6 @@ Table 2.3 covers the **distribution loop** of a Purified Water system. It specif
               
 
               
-
-            
-
-          
-
-          
-
-            
-
-#### CUP vs NCUP
-
-            
-
-              
-                
-                  
-                    
-                    
-                    
-                  
-| --- | --- | --- |
-                
-                
-                  
-                    
-                    
-                    
-                  
-| (CUP) | | |
-                  
-                    
-                    
-                    
-                  
-| (NCUP) | | |
-                
-              
-
-            
 
             
 
@@ -6113,101 +4802,6 @@ WFI is used for parenteral products and final rinse of sterile equipment — the
           
 
             
-              
-                
-                    
-
-                  
-                  
-                  
-                  
-                
-| WFI Distribution System(Sample Location) | Commissioning Tests & Frequencies | Initial Phase Tests & Frequencies | Intermediary Phase Tests & Frequencies (Note B) | Extended Phase Tests & Frequencies (Note A, B) |
-| --- | --- | --- | --- | --- |
-              
-              
-                
-                  ****  
-**
-                  
-                    
-  
-  
-
-                    
-  
-  
-
-                    
-
-                
-| Downstream of Distribution Pump discharge                     prior to beginning in loop unit operations | Confirm conductivity, chemical (Note D), TOC, endotoxin and microbiological levels | • Conductivity and TOC daily or on-line (Note C)                     • Chemical testing daily (Note D)                     • Endotoxin testing daily                     • Microbiological testing daily (Note E) | • Conductivity and TOC at a frequency between daily and weekly or on-line (Note C)                     • Chemical testing at a frequency between daily and weekly (Note D)                     • Endotoxin testing at a frequency between daily and weekly (Note B)                     • Microbiological testing at a frequency between daily and weekly (Notes B, E) | • Conductivity and TOC at regular intervals or on-line (Note C), typically at least once per week                     • Chemical (Note D), endotoxin (Note B), and microbiological (Notes B, E) testing at regular intervals, typically at least once per week |
-                
-                  ****
-                  
-                    
-  
-  
-
-                    
-  
-  
-
-                    
-
-                
-| Sample Port following the beginning in loop operations or the first use point | Confirm conductivity, chemical (Note D), TOC, endotoxin and microbiological levels | • Conductivity and TOC daily or on-line (Note C)                     • Chemical testing daily (Note D)                     • Endotoxin testing daily                     • Microbiological testing daily (Note E) | • Conductivity and TOC at a frequency between daily and weekly or on-line (Note C)                     • Chemical testing at a frequency between daily and weekly (Note D)                     • Endotoxin testing at a frequency between daily and weekly (Note B)                     • Microbiological testing at a frequency between daily and weekly (Note B, E) | • Conductivity and TOC at regular intervals or on-line (Note C), typically at least once per week                     • Chemical (Note D), endotoxin (Note B), and microbiological (Notes B, E) testing at regular intervals, typically at least once per week |
-                
-                  ****
-                  
-                    
-  
-  
-
-                  ****  
-****  
-****  
-****  
-**
-                    
-
-                
-| Critical Use Point (Note F) | Confirm conductivity, chemical (Note D), TOC, endotoxin, and microbiological levels | • Conductivity and TOC daily or on-line (Note C)                     • Chemical testing daily (Note D)                     • Endotoxin testing daily                     • Microbiological testing daily (Note E) | • Conductivity and TOC daily or on-line (Note C)                     • Chemical testing daily (Note D)                     • Endotoxin testing daily                     • Microbiological testing daily (Note E)                     (Note: CUP maintains daily frequency through intermediary phase) | • Conductivity and TOC at regular intervals or on-line (Note C), typically at least once per week                     • Chemical (Note D), endotoxin (Note B), and microbiological (Note B, E) testing at regular intervals, typically at least once per week |
-                
-                  ****
-                  
-                    
-  
-  
-
-                    
-  
-  
-
-                  ****  
-****
-                
-| Non-Critical Use Point (Note G) | Confirm conductivity, chemical (Note D), TOC, endotoxin, and microbiological levels | • Conductivity and TOC daily or on-line (Note C)                     • Chemical testing daily (Note D)                     • Endotoxin testing daily                     • Microbiological testing daily (Note E) | • Conductivity and TOC at a frequency between daily and weekly or on-line (Note C)                     • Chemical testing at a frequency between daily and weekly (Note D)                     • Endotoxin testing at a frequency between daily and weekly (Note B)                     • Microbiological testing at a frequency between daily and weekly (Note B, E) | • Conductivity and TOC at regular intervals or on-line (Note C), typically at least once per month                     • Chemical (Note D), endotoxin (Note B), and microbiological (Note B, E) testing at regular intervals, typically at least once per month |
-                
-                  ****
-                    
-  
-
-                    
-  
-
-                    
-  
-  
-
-                    
-
-                
-| End of loop Sample Port or last POU (Note H) | Confirm conductivity, chemical (Note D), endotoxin, TOC, and microbiological levels                     Confirm any other physical attributes such as flow rate, temperature, pressure, etc. as defined in a User Requirement Specification | • Conductivity and TOC daily or on-line (Note C)                     • Chemical testing daily (Note D)                     • Microbiological testing daily (Note E) | • Conductivity and TOC at a frequency between daily and weekly or on-line (Note C)                     • Chemical testing at a frequency between daily and weekly (Note D)                     • Endotoxin testing at a frequency between daily and weekly (Note B)                     • Microbiological testing at a frequency between daily and weekly (Note B, E) | • Conductivity and TOC at regular intervals or on-line (Note C), typically at least once per week                     • Chemical (Note D), endotoxin (Note B), and microbiological (Note B, E) testing at regular intervals, typically at least once per week |
-              
-            
-
-          
 
           
 
@@ -6248,58 +4842,6 @@ WFI is used for parenteral products and final rinse of sterile equipment — the
           
 
 ### WFI vs PW —
-
-          
-
-            
-
-#### WFIPW
-
-            
-
-              
-                
-                  
-                    
-                    
-                    
-                  
-| | PW (2.3) | WFI (2.4) |
-| --- | --- | --- |
-                
-                
-                  
-                    
-                    
-                    ****
-                  
-                  
-                    
-                    
-                    ****
-                  
-| CUP | ~ | |
-                  
-                    
-                      
-
-                      
-
-                  
-| | CUPNCUP | CUPNCUPPW |
-                  
-                    
-                    
-                    **  
-**
-                  
-| FDA Note B | | POUPOU |
-                
-              
-
-            
-
-          
 
           
 
@@ -6941,18 +5483,6 @@ This workload typically requires dedicated QC staff for the PQ period and advanc
 
   
 
-  
-
-**ISPE Good Practice Guide (2016): Sampling for Pharmaceutical Water, Steam, and Process Gases**
-
-  
-
-Chapter 2 Part 3 — Sections 2.3.5.5 – 2.3.5.7  |  Tables 2.2, 2.3, 2.4  |  Pages 30–38
-
-  
-
-SterileGMP Knowledge Hub  |  Bilingual Educational Series  |  For internal training use only
-
 ⇧
 
 ## Chapter 4: Water — Valve Design, Techniques & Handling (p38-p50)
@@ -7062,84 +5592,6 @@ Ball valves and other non-sanitary valves should be avoided and only implemented
                         
 
 ### Valve Type Comparison Table |
-
-            
-                
-                    
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                    
-| Valve Type | Sanitary Level | Dead Volume Risk | Typical Use | Microbial Sampling | Chemical Sampling | ISPE Recommendation |
-| --- | --- | --- | --- | --- | --- | --- |
-                
-                
-                    
-                        ****
-                        
-                        
-                        
-                        
-                        
-                        
-                    
-| Sanitary Diaphragm Valve | High | Low | PW / WFI distribution loop POU | Preferred | Preferred | Well-accepted standard |
-                    
-                        ****
-                        
-                        
-                        
-                        
-                        
-                        
-                    
-| Needle Valve | Medium | Medium | Flow metering, high-pressure lines | Limited use | Acceptable | Only if design-constrained |
-                    
-                        ****
-                        
-                        
-                        
-                        
-                        
-                        
-                    
-| Ball Valve | Low | High | Industrial process lines; non-sanitary sections | Avoid | Caution | Avoid for microbial |
-                    
-                        ****
-                        
-                        
-                        
-                        
-                        
-                        
-                    
-| T-Tap / T-Port Valve T | Medium | High | Inline diversion sampling; feed water | Not recommended | With caution | Only upstream pretreatment |
-                    
-                        ****
-                        
-                        
-                        
-                        
-                        
-                        
-                    
-| Sanitizable Valve w/ Sanitant Port | High | Low | High-bioburden-risk POU locations | Preferred | Acceptable | Recommended for microbial POU POU |
-                    
-                        ****
-                        
-                        
-                        
-                        
-                        
-                        
-                    
-| Automated Sample Valve | High | Low | On-line / at-line TOC, conductivity | Application-specific | Preferred | Enables real-time monitoring |
-                
-            
 
             
 
@@ -7264,70 +5716,6 @@ When sampling hot water and clean/pure steam it is often necessary to reduce the
             
 
 ### Flush Volume Decision Guidance |
-
-            
-                
-                    
-                        
-                        
-                        
-                        
-                        
-                    
-| Scenario | Flush Required? | Minimum Flush Volume / Time | Flow Velocity Guidance | Rationale |
-| --- | --- | --- | --- | --- |
-                
-                
-                    
-                        
-                        
-                        
-                        
-                        
-                    
-| Process control / diagnostic sampling | Yes — Thorough — | At least 30 seconds at full open 30 | ≥ 8 ft/sec (2.4 m/s) | Remove valve-resident water and surface bacteria; represent pipe interior water quality |
-                    
-                        
-                        
-                        
-                        
-                        
-                    
-| Quality control sampling (regulatory) | Replicate manufacturing use | Match manufacturing's pre-use flush SOP | Match manufacturing's procedure | Sample should mimic how water is actually delivered to manufacturing equipment |
-                    
-                        
-                        
-                        
-                        
-                        
-                    
-| Microbial (after IPA spray step) | Yes — Re-flush before collect — | Repeat Step 2–3 from 10-step procedure | ≥ 8 ft/sec | Remove IPA residue from outlet before microbial sample collection |
-                    
-                        
-                        
-                        
-                        
-                        
-                    
-| Conductivity / TOC (first in sequence) | Yes — prior to IPA treatment —IPA | 30 seconds minimum; reduce flow for collection | ≥ 8 ft/sec then reduce | Collect before any disinfectant contact; IPA elevates TOC if collected after spray |
-                    
-                        
-                        
-                        
-                        
-                        
-                    
-| Sanitizable valve with retained sanitant | Yes — Thorough | Until sanitant is fully displaced | ≥ 8 ft/sec | Residual sanitant (e.g., alcohol, ozone) will falsely suppress or elevate results |
-                    
-                        
-                        
-                        
-                        
-                        
-                    
-| Hose attached to sample point | Yes — Extended — | Flush entire hose volume + 30 sec additional | ≥ 8 ft/sec through hose | Hose interior is potential biofilm source if not fully flushed |
-                
-            
 
             
 
@@ -7504,78 +5892,6 @@ Sample containers should allow samples to be collected in an aseptic manner and 
             
 
 ### Sample Container Selection Matrix |
-
-            
-                
-                    
-                        
-                        
-                        
-                        
-                        
-                    
-| Water Quality Attribute | Preferred Container Material | Pre-treatment Required | Key Risk If Wrong Container | Notes / Special Precautions |
-| --- | --- | --- | --- | --- |
-                
-                
-                    
-                        ****
-                        
-                        
-                        
-                        
-                    
-| Conductivity | Clean plastic (HDPE/PP) | Residue-free; rinse with sample water | Glass leaches Na⁺ / SiO₄²⁻ → false high; soap residue → false high | Fill to brim to minimize CO₂ headspace; test ASAP |
-                    
-                        ****
-                        
-                        
-                        
-                        
-                    
-| TOC | Certified low-TOC glass or plastic | Commercial pre-cleaned; do not reuse without validation | Standard plastic leaches organics → false high TOC, OOS result | Never dry with toweling; never expose to organic vapors; reuse requires risk assessment |
-                    
-                        ****
-                        
-                        
-                        
-                        
-                    
-| Microbial Count (Bioburden) | Pre-sterilized plastic or glass | Autoclaved or gamma-irradiated; single-use preferred | Unsterile container → false high count; residue from prior use → nutrient for growth | Avoid tissue-culture-coated bottles; collect last in sampling sequence |
-                    
-                        ****
-                        
-                        
-                        
-                        
-                    
-| Bacterial Endotoxin (LAL) | Depyrogenated borosilicate glass | Heat-treated ≥250°C for ≥30 min (depyrogenation) | Plastic surface adsorbs endotoxin → false low (under-reporting) | Hydrophobic plastic surface forms micelle adsorption; prolonged storage increases loss |
-                    
-                        ****
-                        
-                        
-                        
-                        
-                    
-| Particulates | Certified particle-free containers | Pre-rinsed with WFI or filtered water | Container-shed particles → false high particle count | Avoid disturbing headspace during transport |
-                    
-                        ****
-                        
-                        
-                        
-                        
-                    
-| Heavy Metals / Elemental Impurities / | Acid-washed HDPE or certified metal-free containers | Trace-metal-clean rinse; avoid metal-containing closures | Metal leach from glass → false high elemental results | Use preservatives (e.g., HNO₃) per EPA/ICH Q3D requirements |
-                    
-                        ****
-                        
-                        
-                        
-                        
-                    
-| Chlorine / Sanitizer Residues | Amber glass or opaque HDPE | No quenching unless standard method requires | Light degradation of chlorine; container reaction with oxidizers | Test immediately; do not refrigerate if chlorine degrades faster at cold |
-                
-            
 
             
 
@@ -8017,104 +6333,6 @@ Because at least a portion of the endotoxin in a sample could be of a particulat
 ### Sample Hold Time Reference Table |
 
             
-                
-                    
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                    
-| Attribute | Max Hold Time (Room Temp) | Max Hold Time (Refrigerated 2~8°C) | Recommended Storage Temp | Preservative/Stabilizer | Key Container | Regulatory Reference |
-| --- | --- | --- | --- | --- | --- | --- |
-                
-                
-                    
-                        ****
-                        
-                        
-                        
-                        
-                        
-                        
-                    
-| Conductivity | ASAP — within hours | Not recommended | Ambient (room temp) | None | Clean plastic (no glass) | USP <645> |
-                    
-                        ****
-                        
-                        
-                        
-                        
-                        
-                        
-                    
-| TOC (certified low-TOC container) | 2–3 days 23 | 2–3 days 23 | RT or 2~8°C | None for pharma water; no acidification needed | Certified low-TOC glass or plastic | USP <643> |
-                    
-                        ****
-                        
-                        
-                        
-                        
-                        
-                        
-                    
-| TOC (reused non-certified container) | A few hours | Few hours to 1 day 1 | Refrigerate if >2 hrs | None; leaching risk increases with time | Reused glass/plastic (not recommended) | ISPE GPG 2016 |
-                    
-                        ****
-                        
-                        
-                        
-                        
-                        
-                        
-                    
-| Microbial Count (Bioburden) | Within ~2 hours 2 | Per USP <1231> guideline USP | 2~8°C if >2 hrs from collection | None (sodium thiosulfate if chlorinated water) | Pre-sterilized plastic or glass | USP <1231>; FDA 1993 Guide |
-                    
-                        ****
-                        
-                        
-                        
-                        
-                        
-                        
-                    
-| Bacterial Endotoxin (LAL) | Within ~2 hours 2 | Per USP <1231> same as bioburden | 2~8°C if >2 hrs; avoid freezing | None; avoid adsorptive surfaces | Depyrogenated glass (≥250°C/30 min) | USP <161>; USP <1231> |
-                    
-                        ****
-                        
-                        
-                        
-                        
-                        
-                        
-                    
-| pH | Test immediately | Not ideal; CO₂ absorption changes pH | Ambient; test at point of collection when possible | None | Any non-reactive container; plastic preferred | USP <791> |
-                    
-                        ****
-                        
-                        
-                        
-                        
-                        
-                        
-                    
-| Heavy Metals / Elemental | Per method SOP | Up to 6 months if acidified 6 | 2~8°C or ambient (acidified) | HNO₃ (pH <2) for ICP-MS per EPA / ICH Q3D | Acid-washed HDPE; metal-free certified | ICH Q3D; EPA 200.7/200.8 |
-                    
-                        ****
-                        
-                        
-                        
-                        
-                        
-                        
-                    
-| Particulates | Test same day | Minimize time | Ambient; minimize agitation | None | Certified particle-free containers | USP <788>/<789> |
-                
-            
-
-            
 
 Table 2.6-A: Sample hold time reference. When deviating from these guidelines, a formal risk assessment and supporting data are required per ISPE GPG 2016 Section 2.6. Note: Always consult the latest applicable pharmacopoeia and laboratory SOPs as the primary reference.
 
@@ -8447,77 +6665,6 @@ Similar concerns exist with bacterial endotoxin, as it is produced by the Gram-n
             
 
 ### Parametric Release Criteria Table |
-
-            
-                
-                    
-                        
-                        
-                        
-                        
-                        
-                        
-                    
-| Attribute | Homogeneous in System? | Online/Inline RTR Feasible? | Regulatory Basis | POU Grab Sample Still Required for Release? POU grab sample | Current Technology Status |
-| --- | --- | --- | --- | --- | --- |
-                
-                
-                    
-                        ****
-                        
-                        
-                        
-                        
-                        
-                    
-| Conductivity | Yes | Yes — since USP 23rd Ed. (1996) | USP <645> in-line; requires POU equivalence validation | No — if POU equivalence validated | Mature technology; widely deployed inline in PW/WFI loops |
-                    
-                        ****
-                        
-                        
-                        
-                        
-                        
-                    
-| TOC | Yes | Yes — since USP 23rd Ed. (1996) | USP <643> on-line; requires POU equivalence validation | No — if POU equivalence validated | Mature technology; on-line TOC analyzers widely used |
-                    
-                        ****
-                        
-                        
-                        
-                        
-                        
-                    
-| pH | Mostly | Possible with in-line pH probe | USP <791>; limited pharmacopoeial guidance for inline | Case-by-case; CO₂ effect requires validation | In use for process control; not yet standard for release |
-                    
-                        ****
-                        
-                        
-                        
-                        
-                        
-                    
-| Microbial Count (Bioburden) | No — localized | Not for release | USP <1231>; FDA 1993 Guide — POU grab required | Yes — POU grab sampling required POU | Rapid methods (RMM) available but still grab-sample based at POU |
-                    
-                        ****
-                        
-                        
-                        
-                        
-                        
-                    
-| Bacterial Endotoxin | No — localized (biofilm source) | Not currently for release | USP <161>; USP <1231>; FDA — POU grab required | Yes — POU grab required | Portable at-line LAL kit = near real-time; still grab from POU |
-                    
-                        ****
-                        
-                        
-                        
-                        
-                        
-                    
-| Particulates | Mostly | Possible — emerging | USP <788>/<789>; limited online precedent | Generally yes | On-line particle counters available for process monitoring; limited release precedent |
-                
-            
 
             
 
@@ -8882,18 +7029,6 @@ The four sections form a logical quality chain for pharmaceutical water sampling
 
     
 
-    
-
-**ISPE Good Practice Guide (2016): Sampling for Pharmaceutical Water, Steam, and Process Gases**
-
-    
-
-Chapter 2 Part 4: Water — Sample Valve Design, Techniques & Sample Handling (Sections 2.4–2.7)  |  Guide Pages 39–51
-
-    
-
-SterileGMP Knowledge Hub — Bilingual Educational Series — Generated 2026
-
 ⇧
 
 ## Chapter 5: Pharmaceutical Steam — Generation & Sampling (p51-p64)
@@ -8986,69 +7121,6 @@ The majority of discussion contained in this chapter will focus on **pure steam*
 #### Steam Type Selection — Table 3.1 Summary
 
                     
-                        
-                            
-                                
-                                
-                            
-| Intended Use of Steam | Required Steam Type |
-| --- | --- |
-                        
-                        
-                            
-                                
-                                
-                            
-| Parenteral/non-parenteral dosage forms — direct contact with drug | Pure Steam Generator (PSG) |
-                            
-                                
-                                
-                            
-| Critical API manufacture — steam in direct contact with API | PSG |
-                            
-                                
-                                
-                            
-| Non-critical API step — impurities removed in subsequent step | PSG commonly used; chemical-free steam may be acceptable |
-                            
-                                
-                                
-                            
-| Sanitization/sterilization of high-purity water system | PSG commonly used; chemical-free steam + adequate flushing may be acceptable |
-                            
-                                
-                                
-                            
-| Humidification — direct contact with drug, open processing, or chemical additives detrimental | PSG |
-                            
-                                
-                                
-                            
-| Humidification of non-critical HVAC (drug not directly exposed) | PSG commonly used; chemical-free or plant steam may be acceptable |
-                            
-                                
-                                
-                            
-| Humidification of critical process cleanrooms | PSG |
-                            
-                                
-                                
-                            
-| Heat source for non-critical and cGMP heat exchangers | Chemical-free steam or plant steam |
-                            
-                                
-                                
-                            
-| Deactivation of solid or liquid biologic process waste | PSG or chemical-free steam in dedicated deactivation vessel |
-                            
-                                
-                                ****
-                            
-| Sterilization of direct product-contact equipment, process vessels, containers, packaged product | PSG — mandatory |
-                        
-                    
-
-                    
 
 ---
 
@@ -9103,48 +7175,6 @@ Feed water requires proper pretreatment, as all generators are susceptible to sc
 
                 
                 
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-                                    **  
-**
-                                    
-                                    
-                                
-| Plant Steam | | HVAC |
-                                
-                                    **  
-**
-                                    
-                                    
-                                
-| Chemical-Free Steam | WFI | |
-                                
-                                    **  
-**
-                                    
-                                    
-                                
-| Pure / Clean Steam | USP/EP WFI BS EN 285 | CIP |
-                            
-                        
 
                     
 
@@ -9265,38 +7295,6 @@ Table 3.2 summarizes requirements from the USP monographs for the production of 
 The USP monographs also state that dryness and non-condensable gas requirements should be determined by application.
 
                             
-                                
-                                    
-                                        
-                                        
-                                        
-                                    
-| Attribute | USP Chapter | Notes / Limit |
-| --- | --- | --- |
-                                
-                                
-                                    
-                                        
-                                        
-                                        
-                                    
-| Conductivity (µS/cm at 25°C) | <645> | Stage 1: 1.3 µS/cm; Stage 2: 2.1 µS/cm; Stage 3: measure pH |
-                                    
-                                        
-                                        
-                                        
-                                    
-| TOC (mg/l) | <643> | Instrument response (Rs-Rw) to 0.50 mg/l standard |
-                                    
-                                        
-                                        
-                                        
-                                    
-| Bacterial Endotoxins (EU/ml) | <85> | <0.25 EU/ml |
-                                
-                            
-
-                            
 
 3.2.1.2 BS EN 285:2015
 
@@ -9307,44 +7305,6 @@ Additional pretreatment requirements may be necessary if the pure steam is to me
                             
 
 Hot WFI or PW meeting Stage 1 conductivity requirements that has not been nitrogen-blanketed should have low enough levels of NCG to pass the BS EN 285:2015 test.
-
-                            
-                                
-                                    
-                                        
-                                        
-                                        
-                                    
-| Determinant | Feed Water | Clean Steam Condensate |
-| --- | --- | --- |
-                                
-                                
-                                    
-| Residue on Evaporation | ≤ 10 mg/l | N/A |
-                                    
-| Silicate (SiO₂) | ≤ 1 mg/l | ≤ 0.1 mg/l |
-                                    
-| Iron | ≤ 0.2 mg/l | ≤ 0.1 mg/l |
-                                    
-| Cadmium | ≤ 0.005 mg/l | ≤ 0.005 mg/l |
-                                    
-| Lead | ≤ 0.05 mg/l | ≤ 0.05 mg/l |
-                                    
-| Other heavy metals (excl. Fe, Cd, Pb) | ≤ 0.1 mg/l | ≤ 0.1 mg/l |
-                                    
-| Chloride (Cl) | ≤ 2 mg/l | ≤ 0.1 mg/l |
-                                    
-| Phosphate (P₂O₅) | ≤ 0.5 mg/l | ≤ 0.5 mg/l |
-                                    
-| Conductivity (at 25°C) | ≤ 5 µS/cm | Passes Stage 3 |
-                                    
-| pH | 5 to 7.5 | 5 to 7 |
-                                    
-| Appearance | Colorless, clean, no sediment | Colorless, clean, no sediment |
-                                    
-| Hardness (Σ ions of alkaline earth) | ≤ 0.02 mmole/l | ≤ 0.02 mmole/l |
-                                
-                            
 
                             
 
@@ -9452,68 +7412,6 @@ Hot WFI or PW meeting Stage 1 conductivity requirements that has not been nitrog
 Key Standards for Pure Steam
 
                             
-                                
-                                    
-                                        
-                                        
-                                        
-                                    
-| Standard | Title | Scope / Relevance |
-| --- | --- | --- |
-                                
-                                
-                                    
-                                        
-                                        
-                                        
-                                    
-| ANSI/AAMI ST79 | Comprehensive Guide to Steam Sterilization and Sterility Assurance in Health Care Facilities | Steam sterilization in health care facilities |
-                                    
-                                        
-                                        
-                                        
-                                    
-| ASME BPE-2014 | Bioprocessing Equipment | Design recommendations for clean steam distribution systems |
-                                    
-                                        
-                                        
-                                        
-                                    
-| BS EN 285:2015 | Sterilization — Steam Sterilizers — Large Sterilizers | Design requirements and tests for large steam sterilizers; specifies NCG, superheat, dryness limits |
-                                    
-                                        
-                                        
-                                        
-                                    
-| HTM 2031 | Clean Steam for Sterilization | Guideline for the quality of steam for sterilization (UK NHS) |
-                                    
-                                        
-                                        
-                                        
-                                    
-| ISO 13408-5:2006 | Aseptic Processing of Health Care Products — Part 5: Sterilization in Place | Requirements for SIP on product-contact surfaces; validation and control |
-                                    
-                                        
-                                        
-                                        
-                                    
-| PDA TR1 | Validation of Moist Heat Sterilization Processes | Cycle design, development, qualification and ongoing control |
-                                    
-                                        
-                                        
-                                        
-                                    
-| ISO 17665-1:2006 | Sterilization of Health Care Products — Moist Heat — Part 1 | Development, validation and routine control of moist heat sterilization |
-                                    
-                                        
-                                        
-                                        
-                                    
-| ISO 11140-4:2007 | Chemical Indicators — Part 4: Class 2 indicators | Alternative to Bowie and Dick type test for steam penetration detection |
-                                
-                            
-
-                        
 
                         
 
@@ -9825,94 +7723,6 @@ The product or facility requirements should be used to define the CQAs (e.g., dr
 #### —
 
                         
-                            
-                                
-                                      
-
-                                      
-
-                                      
-
-                                      
-
-                                      
-
-                                      
-
-                                
-| Parameter | BS EN 285 Specification | Test Method | Sampling Location | Why It Matters | CDMO Autoclave Impact |
-| --- | --- | --- | --- | --- | --- |
-                            
-                            
-                                
-                                    **  
-**
-                                      
-
-                                      
-
-                                    
-                                    
-                                    
-                                
-| Non-condensable Gases (NCG) | ≤ 3.5%(Cn = Vb/Vc × 100%) | BS EN 285:2015, Ch. 22.1Burette displacement method; dedicated sampling valve at steam line | Same location as dryness; dedicated NCG valve; high points in distribution system | NCG acts as insulating blanket, blocks steam condensation, creates cold spots; most common cause of failed steam penetration | Cold spots cause under-sterilization. Bowie & Dick and steam penetration tests will fail. Root cause is usually nitrogen-blanketed feed water or insufficient deaeration. |
-                                
-                                    **  
-**
-                                      
-
-                                      
-
-                                    
-                                    
-                                    
-                                
-| Dryness Fraction | ≥ 0.95 (metal loads)≥ 0.90 (other loads) | BS EN 285:2015, Ch. 22.2Pitot tube from center of pipe; Dewar flask calorimetric method | Center of distribution pipe (same point as NCG); NOT from pipe wall condensate | Wet steam carries entrained moisture; reduces sterilization temperature; causes uneven heat distribution at load surface | Wet steam means water droplets impinge on load. Bioindicator strips may not reach full sterilizing temperature. Common cause of incomplete sterilization in porous load cycles. |
-                                
-                                    **  
-**
-                                    
-                                      
-
-                                    
-                                    
-                                    
-                                
-| Superheat | ≤ 25°C when expanded to atmospheric pressure | BS EN 285:2015, Ch. 22.3Temperature measurement at POU; enthalpy calculation for pressures >2 barG | Center of steam pipe at POU; note: if pressure <2 barG and D <1.0, superheat requirement is automatically met | Superheated steam is not saturated; behaves more like hot gas; does not condense readily on load surface; loses sterilizing power | Superheated steam reduces the latent heat of condensation available for killing microorganisms. Particularly problematic for porous loads where steam penetration relies on condensation. |
-                                
-                                    **  
-**
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| Conductivity | USP <645> Stage 1: ≤1.3 µS/cm | Condense steam; measure condensate per USP <645> | Outlet of PSG, POUs, or as close to POUs as possible | Indicator of dissolved inorganic salts; elevated values suggest feed water contamination or corrosion products | Failure = batch rejection; also indicates system integrity problem requiring investigation |
-                                
-                                    **  
-**
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| TOC | USP <643> Rs-Rw ≤ 0.50 mg/l standard | Collect condensate; test per USP <643> | PSG outlet, POUs | Indicates organic contamination; may signal volatile organics carried over from feed water | Organic contamination in steam may leave residues on sterilized equipment/containers |
-                                
-                                    **  
-**
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| Bacterial Endotoxins | USP <85>: <0.25 EU/ml | Collect condensate; LAL test per USP <85> | PSG outlet, POUs | Pure steam should not carry endotoxins; if found, indicates system bioburden problem | Critical for parenteral product sterilization; positive result requires immediate OOS investigation and CAPA |
-                            
-                        
-
-                    
 
                     
 
@@ -10185,52 +7995,6 @@ A simple method for sample collection is to have a valve with a sanitary connect
 
                                     
 
-                                
-
-                            
-
-                            
-
-                                
-
-#### 
-
-                                
-                                    
-                                        
-                                            
-                                            
-                                            
-                                        
-| CQA | | |
-| --- | --- | --- |
-                                    
-                                    
-                                        
-                                            
-                                            
-                                            
-                                        
-| NCG | PSG | NCG |
-                                        
-                                            
-                                            
-                                            
-                                        
-| | Pitot tube NCG | Pitot Dewar |
-                                        
-                                            
-                                            
-                                            
-                                        
-| | POU <2 barG | |
-                                        
-                                            
-                                            
-                                            
-                                        
-| TOC | PSG POU POU | |
-                                    
                                 
 
                             
@@ -10610,52 +8374,6 @@ A final report documenting the overall qualification process (all phases) with a
 
                                 
 
-#### PQ
-
-                                
-                                    
-                                        
-                                            
-                                            
-                                            
-                                            
-                                        
-| --- | --- | --- | --- |
-                                    
-                                    
-                                        
-                                            **  
-**
-                                            
-                                            
-                                            
-                                        
-| Initial | | 3 | |
-                                        
-                                            **  
-**
-                                            
-                                            
-                                            
-                                        
-| Intermediary | / | | QM |
-                                        
-                                            **  
-**
-                                            
-                                            
-                                            
-                                        
-| Extended | | | |
-                                    
-                                
-
-                            
-
-                            
-
-                                
-
 #### 
 
                                 
@@ -10791,48 +8509,6 @@ Quality attributes (TOC, conductivity, bacterial endotoxins) should be measured 
                             
 
 #### Ongoing Sampling Plan Example (Table 3.5)
-
-                            
-                                
-                                    
-                                        
-                                        
-                                        
-                                    
-| Location / | Frequency / | Tests / |
-| --- | --- | --- |
-                                
-                                
-                                    
-                                          
-
-                                        
-                                        
-                                    
-| Generator (PSG outlet) | Weekly / | Endotoxin, Nitrates, TOC, Conductivity |
-                                    
-                                          
-
-                                        
-                                        
-                                    
-| One-way distribution most distant points | Monthly / | Endotoxin, Nitrates, TOC, Conductivity |
-                                    
-                                          
-
-                                        
-                                        
-                                    
-| All use points | Biannually / | Endotoxin, Nitrates, TOC, Conductivity |
-                                    
-                                          
-
-                                        
-                                        
-                                    
-| Autoclave use points | Annually / | Steam quality (NCG, Superheat, Dryness) |
-                                
-                            
 
                             
 
@@ -11098,39 +8774,6 @@ Key Concepts Covered
 
                         
 
-#### 
-
-                        
-                            
-| --- | --- | --- |
-                            
-                                
-| NCG | ≤ 3.5% | BS EN 285:2015 |
-                                
-| | ≥ 0.95 | BS EN 285:2015 |
-                                
-| | ≥ 0.90 | BS EN 285:2015 |
-                                
-| | ≤ 25°C | BS EN 285:2015 |
-                                
-| | Stage 1: ≤1.3 µS/cm | USP <645> |
-                                
-| | <0.25 EU/ml | USP <85> |
-                                
-| PQ Initial | 3 | ISPE GPG 3.4.2 |
-                                
-| PQ | | ISPE GPG 3.4.2 |
-                                
-| | 10–20 mm/m | ASME BPE-2014 |
-                            
-                        
-
-                    
-
-                    
-
-                        
-
 #### CDMO Operations Director
 
                         
@@ -11156,18 +8799,6 @@ Key Concepts Covered
         
 
     
-
-    
-
-ISPE Good Practice Guide (2016): Sampling for Pharmaceutical Water, Steam, and Process Gases
-
-    
-
-Chapter 3 Part 1: Pharmaceutical Steam — Generation, Distribution & Sampling Locations | Sections 3.1–3.4 | pp. 52–68
-
-    
-
-SterileGMP Knowledge Hub  |  Educational Reference — Not for Regulatory Submission
 
 ⇧
 
@@ -11548,43 +9179,6 @@ Endotoxin sampling should be done using pyrogen free containers of either glass 
 
             
 
-          
-
-          
-            
-              
-                
-                
-                
-              
-| --- | --- | --- |
-            
-            
-              
-                
-                
-                
-              
-| TOC | TOC 40 mL | TOC |
-              
-                
-                
-                
-              
-| / pH | 300 mL | pH CO₂ |
-              
-                
-                
-                
-              
-| Bioburden | PP | 24 |
-              
-                
-                
-                
-              
-| Endotoxin | 10–20 mL | |
-            
           
 
           
@@ -12088,77 +9682,6 @@ Non-condensable gases (Henriksen method), dryness fraction (Dewar flask), superh
       
 
 ### Steam Quality Test Method Comparison |
-
-      
-        
-          
-            
-            
-            
-            
-            
-            
-          
-| Parameter | Method | Key Equipment | Acceptance Criteria | Standard | Why It Matters |
-| --- | --- | --- | --- | --- | --- |
-        
-        
-          
-            ****  
-
-            
-            
-            
-            
-            
-          
-| Non-Condensable Gases (NCG) | Henriksen method — displacement of deaerated water in inverted burette | 2L container, burette, graduated cylinder, needle valve, funnel | ≤ 3.5% (V/V) | BS EN 285:2015 | NCG inhibits steam penetration in autoclave loads; causes cold spots; NCG must pass before dryness test |
-          
-            ****  
-
-            
-            
-              
-
-            
-            
-          
-| Dryness Fraction | Dewar flask calorimetric method — enthalpy balance | Dewar flask, pitot tube, rubber tube, temperature sensor, precision balance | ≥ 0.95 (metal loads)≥ 0.90 (other loads) | BS EN 285:2015 | Wet steam carries water droplets that can dilute chemical sterilants, cause cool spots, or deposit minerals on loads |
-          
-            ****  
-
-            
-            
-              
-
-            
-            
-          
-| Superheat | Thermometric — temperature differential between steam pipe and sterilizer chamber | Calibrated temperature sensors (RTD/thermocouple), data logger | ≤ 25°C above saturationTemp diff ≤ 3°C vs dryness test | BS EN 285:2015, HTM 2010 | Superheated steam behaves like a gas — reduced condensation rate → reduced sterilization effectiveness |
-          
-            ****  
-
-            
-            
-              
-
-            
-            
-          
-| Condensate Chemistry | Same as WFI testing — conductivity stages 1–3, TOC, pH | Online/offline conductivity meter, TOC analyzer, pH meter | WFI specifications: Cond ≤ 1.3 µS/cm @25°CTOC ≤ 500 ppb | USP <1231>, EP 0169, JP | Condensate contacts product/container — must be as clean as WFI |
-          
-            ****  
-
-            
-            
-              
-
-            
-            
-          
-| Condensate Microbiology | Sterility test (USP <71>), Endotoxin/LAL (USP <85>) | Sterile containers, culture media, LAL reagent kit | Sterility: No growthEndotoxin: ≤ 0.25 EU/mL | USP <71>, USP <85> | Spores can survive in steam traps; endotoxin from feed water may carry over if PSG lacks mist elimination |
-        
-      
 
       
       
@@ -12983,47 +10506,6 @@ The purification system generating the water feeding a PSG typically needs the s
           
 
           
-            
-              
-                
-                
-                
-                
-                
-              
-| --- | --- | --- | --- | --- |
-            
-            
-              
-                ****
-                
-                
-                
-                
-              
-| WFI | | | WFI | |
-              
-                ****
-                  
-
-                
-                
-                
-              
-| PW | | | | |
-              
-                ****
-                
-                  
-
-                
-                
-              
-| Potable | | NH₃ | | |
-            
-          
-
-          
 
             
 
@@ -13149,122 +10631,6 @@ WFI specifications applied to pure steam condensate — container types, methods
     
 
     
-
-      
-        
-          
-            
-            
-            
-            
-            
-            
-            
-            
-          
-| Test | Specification | Compendial Reference | Container Type | Min. Volume | Max. Hold Time | Storage | Key Risk |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-        
-        
-          
-              
-
-            
-            
-            
-            
-            
-            
-            
-          
-| Conductivity (Stage 1) | ≤ 1.3 µS/cm @ 25°C | USP <645>, EP 2.2.38 | Glass or fluoropolymer | 300 mL | 1 hour | Room temp, sealed | CO₂ absorption raises conductivity; glass ion leach |
-          
-              
-
-            
-            
-            
-            
-            
-            
-            
-          
-| TOC | ≤ 500 ppb (0.5 mg/L) | USP <643>, EP 2.2.44 | Glass TOC vial (40 mL) | 40 mL (filled) | 7 days (refrigerated) | 2–8°C, no headspace | Plastic introduces organic carbon; air headspace adds TOC |
-          
-              
-
-            
-            
-            
-            
-            
-            
-            
-          
-| pH | 5.0–7.0 | USP <791>, EP 2.2.3 | Borosilicate glass or fluoropolymer | 100 mL | 1 hour | Room temp, sealed | CO₂ absorption lowers pH; glass ion exchange raises pH |
-          
-              
-
-            
-            
-            
-            
-            
-            
-            
-          
-| Endotoxin (LAL) | ≤ 0.25 EU/mL | USP <85>, EP 2.6.14 | Depyrogenated glass or specific plastic | 10–20 mL | Per validated hold time (typically 24–72 h) | Room temp or 2–8°C | Adsorption to plastic (false negative); glass preferred |
-          
-              
-
-              
-
-            
-            
-            
-            
-            
-            
-          
-| Bioburden / Sterility / | Sterile: No growthBioburden: TVC per SOP | USP <71>, EP 2.6.1 | Sterile PP or fluoropolymer | 100 mL | 24 hours | 2–8°C | Microbial growth at room temp; contamination during collection |
-          
-              
-
-            
-            
-            
-            
-            
-            
-            
-          
-| Heavy Metals | ≤ 0.1 ppm (Pb equivalent) | USP <231>, EP 2.4.8 | Acid-washed glass or HDPE | 50 mL | 6 months (acidified) | RT, acidified to pH < 2 | Metal leach from SS containers if not passivated |
-          
-              
-
-            
-            
-            
-            
-            
-            
-            
-          
-| Nitrates | ≤ 0.2 ppm | EP Purified Water test | Glass or HDPE | 50 mL | 24 hours | 2–8°C | Biological conversion of nitrate to nitrite at room temp |
-          
-              
-
-            
-            
-            
-            
-            
-            
-            
-          
-| Oxidizable Substances | Pass EP test | EP 0169 (Water for Inj.) | Glass | 100 mL | Test immediately | RT, analyze promptly | Organic oxidizable substances degrade over time |
-        
-      
 
       
 
@@ -13476,18 +10842,6 @@ Qualification Workflow Overview
 
   
 
-  
-
-ISPE Good Practice Guide (2016): Sampling for Pharmaceutical Water, Steam, and Process Gases
-
-  
-
-Chapter 3 — Pharmaceutical Steam | Sections 3.5–3.8 | pp. 69–79
-
-  
-
-SterileGMP Knowledge Hub  |  Educational Use Only  |  Not for Regulatory Submission
-
 ⇧
 
 ## Chapter 7: Process Gases (p81-p95)
@@ -13637,56 +10991,6 @@ Process gases may be generated on site or may be provided by a qualified supplie
           
 
           
-            
-              
-                
-                
-                
-                
-              
-| --- | --- | --- | --- |
-            
-            
-              
-                ****  
-
-                
-                
-                
-              
-| Compressed Air | | | |
-              
-                ****
-                
-                
-                
-              
-| N₂ | overlayWFI | | |
-              
-                ****
-                
-                
-                
-              
-| CO₂ | pH | - | |
-              
-                ****
-                
-                
-                
-              
-| Ar | oxygen-sensitive biologics | | |
-              
-                ****
-                
-                
-                
-              
-| O₂ | | | |
-            
-          
-
-        
 
       
 
@@ -13877,24 +11181,6 @@ The CQAs most generally defined are:
           
 
           
-            
-              
-| CQA | | | |
-| --- | --- | --- | --- |
-            
-            
-              
-| viable particles | | RCS/Impaction | |
-              
-| NVP | / | | |
-              
-| dew point | | on-line | ≤ -46°C67 ppm |
-              
-| hydrocarbons | | | ISO 8573-1 Class 1: ≤0.01 mg/m³ |
-            
-          
-
-        
 
       
 
@@ -14142,28 +11428,6 @@ CQAs for the compressed air system typically involve sampling for:
             
 
             
-              
-                
-| | | CQA |
-| --- | --- | --- |
-              
-              
-                
-| | PC | |
-                
-| | QC — | |
-                
-| coalescer | QC — | |
-                
-| | QC — | NVP + VP |
-                
-| POU | QC — | NVP + VP + |
-                
-| POU | QC — | CQA |
-              
-            
-
-          
 
           
 
@@ -14424,83 +11688,12 @@ Qualification typically involves a **minimum of three days** of sampling and tes
 #### 4.3.3.4 Routine Monitoring — Table 4.1
 
           
-            
-              
-| Test | Recommended Frequency / Location |
-| --- | --- |
-            
-            
-              ****
-| Nonviable Particles | Every 3 months, rotating basis — central system final filter locations and predetermined horizontal piping run locations per floor |
-              ****
-| Viable Particles | Every 3 months, rotating basis — same locations as NVP |
-              ****
-| Dew Point (moisture) | Continuous on-line monitoring following compressed air dryer |
-              ****
-| Hydrocarbon (oils) | Annual sampling following coalescing filter to verify hydrocarbon content |
-            
-          
-
-        
 
         
 
           
 
 ### 
-
-          
-
-            
-
-#### 
-
-            
-              
-                
-| --- | --- | --- | --- |
-              
-              
-                
-| Commissioning | | | |
-                
-| PQ | | 3 | PQ |
-                
-| | | | /CAPA |
-                
-| | | Table 4.1 | |
-              
-            
-
-          
-
-          
-
-            
-
-#### CDMO
-
-            
-              
-                
-| | | NVP/VP | | |
-| --- | --- | --- | --- | --- |
-              
-              
-                
-| N₂Grade A | | | | |
-                
-| Grade A | | | | |
-                
-| Grade B | | | | |
-                
-| N₂WFI | | | | |
-                
-| Grade C/D | | | | |
-              
-            
-
-          
 
           
 
@@ -14580,29 +11773,6 @@ The filter housing with the filter placed in it requires the ability to be **ste
         
 
         
-
-          
-
-          
-
-            
-
-#### 
-
-            
-              
-                
-| --- | --- | --- | --- |
-              
-              
-                
-| | Ball Valve | | |
-                
-| | Diaphragm Valve | / | |
-                
-| POU | + 0.22μm | | |
-              
-            
 
           
 
@@ -14765,28 +11935,6 @@ Important notes:
 #### 
 
             
-              
-                
-| --- | --- | --- | --- |
-              
-              
-                
-| + | | | |
-                
-| CNC | | <0.1μm | |
-                
-              
-            
-
-          
-
-          
-
-            
-
-#### 
-
-            
 
           
 
@@ -14848,23 +11996,6 @@ Viable particles or microbial particles may be monitored using several different
           
 
 ### 
-
-          
-            
-              
-| | | | CDMO |
-| --- | --- | --- | --- |
-            
-            
-              
-| STA | | | |
-                
-| ImpactionRCSBiotest Hycon | | | POU |
-              
-              
-| RTM | / | Grade A | EU GMP Annex 1 |
-            
-          
 
           
 
@@ -14967,31 +12098,6 @@ When using chemical reaction detector tubes manually: break tube tips and insert
 #### 
 
             
-              
-                
-| --- | --- | --- | --- |
-              
-              
-                
-| Chilled Mirror | -80°C +20°C | ±0.1°C | |
-                
-| Electrolytic | -110°C +20°C | ±2°C | |
-                
-| Impedance | -40°C +60°C | ±2-3°C | |
-                
-| Polymer Film RH | -40°C +80°C | ±1-3% RH | |
-              
-            
-
-          
-
-          
-
-            
-
-#### 
-
-            
 
           
 
@@ -15081,32 +12187,6 @@ Where design or engineering controls are in place, oil aerosols are not typicall
           
 
 ### vs.
-
-          
-
-            
-
-#### vs.
-
-            
-              
-                
-| | Oil Aerosol | Oil Vapor |
-| --- | --- | --- |
-              
-              
-                
-                
-                
-| | coalescer | |
-                
-| | gravimetric | GC |
-                
-| ISO 8573-1 | Class 1: ≤0.01 mg/m³ | Class 1: ≤0.01 mg/m³ |
-              
-            
-
-          
 
           
 
@@ -15334,84 +12414,6 @@ Chain of custody documentation establishes that the sample has been properly tra
 ### Chapter 4 Summary: Test Method Comparison Table |
 
       
-        
-          
-            
-            
-            
-            
-            
-            
-          
-| CQA | Test Methods | Frequency | Location | Typical Limit | Reference |
-| --- | --- | --- | --- | --- | --- |
-        
-        
-          
-            ****  
-
-              
-
-              
-
-            
-              
-
-            
-          
-| Nonviable Particles | ISO 8573-4 | QCQuarterly | POUPOU | (e.g., ISO Class 5 for Grade A) | ISO 8573-4, EU GMP Annex 1 |
-          
-            ****  
-
-            
-              
-
-            
-              
-
-            
-          
-| Viable Particles | RCSBiotestRTM | QCQuarterly | NVPPOU | (Grade A: <1 CFU/m³) | FDA Aseptic Guide 2004, EU GMP Annex 1 §4.36 |
-          
-            ****  
-
-              
-
-              
-
-            
-              
-
-            
-          
-| /Moisture / Dew Point | ISO 8573-3 | POU | | ≤ -46°C (67 ppm)ISO Class 1: ≤ -70°C | EP/USP monographs, ISO 8573-1 |
-          
-            ****  
-
-            
-              
-
-            
-            
-            
-          
-| Oil Aerosol | gravimetric | Annual | POUPOU | ISO Class 1: ≤0.01 mg/m³ | ISO 8573-1:2010 |
-          
-            ****  
-
-              
-
-              
-
-            
-            
-            
-          
-| Oil Vapor | + GCC6+/C1-10 | Annual | | ISO 8573-1 Class 1: ≤0.01 mg/m³C6+ | ISO 8573-1:2010 |
-        
-      
-
-    
 
   
 
@@ -15526,16 +12528,6 @@ Critical takeaways for CDMO aseptic filling professionals
 
   
 
-  
-
-**ISPE Good Practice Guide (2016): Sampling for Pharmaceutical Water, Steam, and Process Gases**
-
-  
-
-  
-
-SterileGMP Knowledge Hub — Bilingual Educational Edition  |  For training and educational purposes only
-
 ⇧
 
 ## Chapter 8: Appendices & Glossary (p96-p114)
@@ -15628,191 +12620,12 @@ This appendix provides a side-by-side specification comparison of non-pharmacope
 The table below captures the most practically relevant attributes. An asterisk (*) means "Not Specified, Not Required, Not Applicable, or No Limit" for that grade/attribute combination.
 
           
-            
-              
-                
-                
-                
-                
-                
-                
-                
-                
-              
-| Parameter | ISO Gr.1 | ISO Gr.2 | ISO Gr.3 | ASTM Type I | ASTM Type II | ASTM Type III | CLRW |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-            
-            
-              
-                ****
-                
-                
-                
-                
-                
-                
-                
-              
-| Conductivity µS/cm max | 0.1 | 1.0 | 5.0 | 0.0555 | 1.0 | 0.25 | * |
-              
-                ****
-                
-                
-                
-                
-                
-                
-                
-              
-| Resistivity MΩ·cm min | * | * | * | 18 | 1.0 | 4.0 | 18.2 ± 1 |
-              
-                ****
-                
-                
-                
-                
-                
-                
-                
-              
-| TOC (as C) µg/L max | * | * | * | 50 ppb | 50 ppb | 200 ppb | 500 ppb |
-              
-                ****
-                
-                
-                
-                
-                
-                
-                
-              
-| Absorbance @ 254 nm | 0.001 AU | 0.01 AU | * | * | * | * | * |
-              
-                ****
-                
-                
-                
-                
-                
-                
-                
-              
-| Silica (SiO₂) mg/L max | 0.01 | 0.02 | * | * | * | * | * |
-              
-                ****
-                
-                
-                
-                
-                
-                
-                
-              
-| Sodium µg/L max | * | * | * | 1 | 5 | 10 | * |
-              
-                ****
-                
-                
-                
-                
-                
-                
-                
-              
-| Chloride µg/L max | * | * | * | 1 | 5 | 10 | * |
-              
-                ****
-                
-                
-                
-                
-                
-                
-                
-              
-| pH @ 25°C | * | * | 5.0–7.5 | * | * | * | * |
-              
-                ****
-                
-                
-                
-                
-                
-                
-                
-              
-| Temp-Comp Conductivity? | YES | YES | YES | YES | YES | YES | YES |
-            
-          
-
-          
 
 ### Microbiology Specifications (CLSI Grades)
 
           
-            
-              
-                
-                
-                
-              
-| CLSI Grade | Heterotrophic Bacteria (cfu/mL max) | Endotoxin (EU/mL max) |
-| --- | --- | --- |
-            
-            
-              
-                
-                
-                
-              
-| Grade A | 0.01 (10 cfu/1000 mL) | 0.03 |
-              
-                
-                
-                
-              
-| Grade B | 0.1 (10 cfu/100 mL) | 0.25 |
-              
-                
-                
-                
-              
-| Grade C | 10 (1000 cfu/100 mL) | * |
-            
-          
-
-          
 
 ### Purification Methods by Grade
-
-          
-            
-              
-                
-                
-              
-| Grade | Specified Purification Approach |
-| --- | --- |
-            
-            
-              
-| ISO Grade 1 | Grade 2 source + RO + 0.2 µm filter, or DI + 0.2 µm filter, or Re-distillation (in glass) |
-              
-| ISO Grade 2 | Multiple distillation, or DI, or RO + Distillation |
-              
-| ISO Grade 3 | Single distillation, or DI, or RO |
-              
-| ASTM Type I | <20 µS/cm source (distillate equivalent); MB-DI + 0.2 µm filter |
-              
-| ASTM Type II | Distillation or equivalent |
-              
-| ASTM Type III | Distillation, DI, EDI, and/or RO + 0.45 µm filter |
-              
-| ASTM Type IV | Distillation, DI, EDI, and/or RO |
-              
-| CLRW | Drinking water source + suitable process(es) + 0.22 µm filter |
-            
-          
 
           
 
@@ -15984,7 +12797,7 @@ Original Content — Appendix 2
 
           
 
-#### Figure 6.1: POU Piping Direct Connect to Process Equipment
+#### Figure 6.1🔍: POU Piping Direct Connect to Process Equipment
 
           
 
@@ -16008,7 +12821,7 @@ Configuration: Direct Hard-Pipe to Process Equipment
 
           
 
-#### Figure 6.2: POU Hard-Piped to Process Equipment (Extended Run)
+#### Figure 6.2🔍: POU Hard-Piped to Process Equipment (Extended Run)
 
           
 
@@ -16032,7 +12845,7 @@ Configuration: Hard-Piped Extended Connection
 
           
 
-#### Figure 6.3: POU Piping with Integral Heat Exchanger
+#### Figure 6.3🔍: POU Piping with Integral Heat Exchanger
 
           
 
@@ -16056,7 +12869,7 @@ Configuration: POU with Inline Heat Exchanger (Cooler)
 
           
 
-#### Figure 6.4: POU Piping with Hose Connection
+#### Figure 6.4🔍: POU Piping with Hose Connection
 
           
 
@@ -16080,7 +12893,7 @@ Configuration: Hose-Connected POU (Mobile/Flexible)
 
           
 
-#### Figure 6.5: Water Distribution System Sub-Loop
+#### Figure 6.5🔍: Water Distribution System Sub-Loop
 
           
 
@@ -16137,31 +12950,6 @@ Configuration: Main Loop with a Sub-Loop Branch
 
 #### 
 
-            
-
-          
-
-          
-
-            
-
-#### POU
-
-            
-              
-                
-| --- | --- | --- |
-              
-              
-                
-                
-                
-| | | HX |
-                
-| | | SOP + |
-                
-| Sub-loop | – | + |
-              
             
 
           
@@ -16422,28 +13210,6 @@ The frequency should be appropriate for each system and informed by risk assessm
 
 #### 
 
-            
-
-          
-
-          
-
-            
-
-#### PSG
-
-            
-              
-                
-| --- | --- | --- | --- |
-              
-              
-                
-| WFI | | | |
-                
-| PW | | + | |
-                
-              
             
 
           
@@ -17122,47 +13888,6 @@ WHOWorld Health Organization
 
             
 
-#### CDMO
-
-            
-              
-| --- | --- | --- |
-              
-                
-| | PW | |
-                
-| WFI | |
-                
-| PSG | |
-                
-| POU | |
-                
-| | CFU | |
-                
-| LAL | |
-                
-| RMM | |
-                
-| | IQ/OQ/PQ | // |
-                
-| PSE | |
-                
-| CAPA | |
-                
-| | TOC | |
-                
-| SPC | |
-                
-| PAT | |
-              
-            
-
-          
-
-          
-
-            
-
 #### 
 
             
@@ -17227,381 +13952,6 @@ The bilingual glossary below provides the official ISPE definition (English), a 
       
 
       
-        
-          
-            
-            
-            
-            
-          
-| Term | English Definition (ISPE) | | Practical Use |
-| --- | --- | --- | --- |
-        
-        
-          
-              
-
-            
-            
-            
-          
-| Action Level | Levels or ranges that, when exceeded, indicate that a process has drifted from its normal operating range. Corrective action should be taken to bring the process back into range. | | OOS Action Level = CAPA Alert Level ——Alert |
-          
-              
-
-            
-            
-            
-          
-| Action Limit | Criteria established based on possible impact to product quality, outside the operating range (acceptance criteria). A documented response is usually required. (also see: Action Point) | | SOP Action Limit >X CFU/mL |
-          
-              
-
-            
-            
-            
-          
-| Alert Level | Levels or ranges that, when exceeded, indicate that a process may have drifted from its normal operating condition. Alert Levels constitute a warning and do not necessarily require a corrective action. | | 50–70% Alert Level |
-          
-              
-
-            
-            
-            
-          
-| Alert Limit | Criteria established with the intent of notification and possible corrective action prior to exceeding action limits; alert when a parameter is drifting toward extremes of the operating range. | | Alert Limit = + |
-          
-              
-
-            
-            
-            
-          
-| Aseptic | Not sterile, but contaminants controlled within established acceptable limits. | Sterile | Aseptic ≠ SterileAseptic FillingSterile |
-          
-              
-
-            
-            
-            
-          
-| At-Line | In water monitoring systems. (also see: Off-Line) | | At-Line TOC Off-Line In-Line/On-Line |
-          
-              
-
-            
-            
-            
-          
-| Atmospheric Dew Point | The dewpoint at atmospheric conditions (1013 mbar at either 15 or 20°C). (also see: Pressure Dew Point) | 1013 mbar15 20°C | PDP |
-          
-              
-
-            
-            
-            
-          
-| Bioburden | The concentration of microbial matter per unit volume. Includes viruses, bacteria, yeast, mold, and parts thereof. | | PW <100 CFU/mLWFI <10 CFU/100 mLUSP |
-          
-              
-
-            
-            
-            
-          
-| Biofilm | A collection of microorganisms, extracellular polymeric products, and organic matter at the interface in solid-liquid, gas-liquid, or liquid-liquid biphasic systems. | | ≥1 m/s≥65°C for PW≥80°C for WFI/ |
-          
-              
-
-            
-            
-            
-          
-| Blowdown | The withdrawal of water from an evaporating water system to maintain a solids balance within specified limits of concentration. | | PSG TDS |
-          
-              
-
-            
-            
-            
-          
-| Chemical Free Steam | Non-direct impact steam produced from pretreated water with no volatile boiler additives. May be used for humidification but not for product contact. | | Pure SteamPS= USPChemical Free Steam = Plant Steam = |
-          
-              
-
-            
-            
-            
-          
-| Chloramine | A chlorine compound formed by reaction with organic amines or ammonia. | | WFI/PS NH₃-N |
-          
-              
-
-            
-            
-            
-          
-| Commissioning/ | A well planned, documented, and managed engineering approach to the start-up and turnover of facilities, systems, and equipment to the end-user that results in a safe and functional environment meeting design requirements. | | Commissioning IQ/OQ/PQ Commissioning |
-          
-              
-
-            
-            
-            
-          
-| Compendial | Official; purported to comply with USP, EP, or JP. | USPEP JP | PW WFI Compendial Water—— ASTM Type I |
-          
-              
-
-            
-            
-            
-          
-| Conductivity | A measure of flow of electrical current through water. High with high TDS; very low with ultrapure deionized water. Reciprocal of resistivity (C=1/R), measured in µS/cm. | TDS C=1/R µS/cm | PW WFI USP <645> Stage 1/2/3 |
-          
-              
-
-            
-            
-            
-          
-| Critical Quality Attribute (CQA) | Attribute of the water or steam product which usually relates to identity, purity, or quality. Examples: TOC, conductivity, microbial activity. | TOC | CQA PW CQA TOC |
-          
-              
-
-            
-            
-            
-          
-| Dead Leg | An area of entrapment in a vessel or piping run that could lead to contamination of the product. | | L/D ≤ 3ISPE L/D ≤ 6 |
-          
-              
-
-            
-            
-            
-          
-| Dew Point | The temperature to which a given parcel of humid air must be cooled at constant barometric pressure for water vapor to condense into water. | | ≤ -40°C |
-          
-              
-
-            
-            
-            
-          
-| Distillation | The process of separating water from impurities by heating until it changes into vapor and then cooling the vapor to condense it into purified water. | | USP WFI ≥3-log EP 2017 + WFI |
-          
-              
-
-            
-            
-            
-          
-| Dryness | The ratio of vapor mass to the mass of the steam mixture. Value of 1.0 = dry saturated steam; dimensionless otherwise. | 1.0 | ≥0.95 HTM 2031 |
-          
-              
-
-            
-            
-            
-          
-| Endotoxins | Pyrogens from certain Gram-negative bacteria. Highly toxic lipopolysaccharide-protein complexes from cell walls. A marker for these bacteria with a reputation for persistent contamination. (also see: Pyrogen) | - | WFI <0.25 EU/mLUSPPS <0.25 EU/mLLAL BET250°C/30 min |
-          
-              
-
-            
-            
-            
-          
-| Extended Sampling | Compared to Phase 3 of ISPE GPG C&Q: allows the system to be challenged by evaluating effectiveness despite seasonal variations, mature system flora, and other variations. Duration: not less than one year (less Initial and Intermediary phases). | ISPE C&Q | |
-          
-              
-
-            
-            
-            
-          
-| Feedwater | The water entering a treatment process. | | PSG RO ——GIGO |
-          
-              
-
-            
-            
-            
-          
-| Highly Purified Water (HPW) | Water intended for products where high biological quality is needed, except where WFI is required. Meets WFI quality standards but production method (double-pass RO + UF + DI) is considered less reliable than distillation. | WFI WFI RO + + | EP USP |
-          
-              
-
-            
-            
-            
-          
-| In-Line | An integral part of the flow path; the entire fluid stream flows directly through or past the sensor. (also see: On-Line, Off-Line) | | In-Line |
-          
-              
-
-            
-            
-            
-          
-| Initial Sampling | Corresponds to Phase 1 of ISPE GPG C&Q: monitoring and testing all sample and use points daily for 10–20 consecutive days depending on system design. | ISPE C&Q 10–20 | OQ/PQ 100% |
-          
-              
-
-            
-            
-            
-          
-| Intermediary Sampling | Corresponds to Phase 2 of ISPE GPG C&Q: further demonstrates consistent production and delivery of required quality water. Duration: 10–20 days. | ISPE C&Q 10–20 | SOP SOP |
-          
-              
-
-            
-            
-            
-          
-| Non-condensable Gas (NCG) | Air and other gas which will not condense under the conditions of steam sterilization. | | NCGN₂O₂CO₂ Bowie-Dick NCG |
-          
-              
-
-            
-            
-            
-          
-| On-Line | In water monitoring systems: measurement devices directly coupled to the water stream. (also see: In-Line, Off-Line) | | On-Line TOC Off-Line In-Line In-Line + On-Line |
-          
-              
-
-            
-            
-            
-          
-| Passivation | The state in which stainless steel exhibits a very low corrosion rate. Generates an oxide film that covers and protects the metal surface. | | IQ |
-          
-              
-
-            
-            
-            
-          
-| Point Of Use (POU) | The location where the water delivered from the water distribution system is actually used. | | POU = CDMO POU P&ID SOP POU |
-          
-              
-
-            
-            
-            
-          
-| Potable Water | Water of suitable quality for drinking. Must comply with NPDWR (US EPA), EU drinking water regulations, Japanese regulations, or WHO Drinking Water Guidelines. Minimum quality feed water for production of bulk USP monographed pharmaceutical waters. | EPA NPDWR WHO USP | PW/WFI |
-          
-              
-
-            
-            
-            
-          
-| Pressure Dew Point (PDP) | The dew point temperature of a gas under full line pressure. Usually measured for gases at pressures higher than atmospheric. (also see: Atmospheric Dew Point) | | ISO 8573-1 PDP -40°C PDP = Class 2Instrument Air-70°C PDP = Class 1 |
-          
-              
-
-            
-            
-            
-          
-| Pure Steam (USP) | Water heated above 100°C and vaporized in a manner that prevents source water entrainment. Prepared from potable water; contains no added substance. Dryness and NCG levels determined by application. | 100°C | CIP/SIP WFI 3 |
-          
-              
-
-            
-            
-            
-          
-| Purified Water (PW) | USP Purified Water prepared from drinking water with conductivity per Stage 1, 2, 3 tests and Tables. TOC at 0.5 mg/L. Typically <100 CFU/mL for microbiological acceptability. | USP Stage 1/2/3 TOC ≤0.5 mg/L <100 CFU/mL | PW 65°C 80°C WFI |
-          
-              
-
-            
-            
-            
-          
-| Pyrogen | Trace organics used as markers of bacterial growth or contamination. Produced by various bacteria and fungi. Fever-producing substances when administered parenterally. Primarily polysaccharide in nature. (also see: Endotoxin) | | Pyrogen Endotoxin——USP <151> BETLAL |
-          
-              
-
-            
-            
-            
-          
-| Qualification | Action of proving and documenting that equipment or ancillary systems are properly installed, work correctly, and lead to expected results. Part of validation, but individual qualification steps alone do not constitute process validation. | | IQ = OQ = PQ = = |
-          
-              
-
-            
-            
-            
-          
-| Resistivity | The resistance to flow of electrical current through high purity water. Measured in Megohm-cm (MΩ·cm). Reciprocal of Conductivity (R=1/C, 1 MΩ·cm = 1 µS/cm). | MΩ·cm R=1/C1 MΩ·cm = 1 µS/cm | ASTM Type I CLRW 18.2 MΩ·cm WFI µS/cm |
-          
-              
-
-            
-            
-            
-          
-| Risk Assessment | A systematic process of organizing information to support a risk decision. Consists of the identification of hazards and the analysis and evaluation of risks associated with exposure to those hazards. | | ICH Q9 FMEAHACCP |
-          
-              
-
-            
-            
-            
-          
-| Sampling | To take a small but representative portion of a much larger stream where the sample collected accurately represents the content of the larger stream. | | Representativeness |
-          
-              
-
-            
-            
-            
-          
-| Sanitization | That part of decontamination that reduces viable microorganisms to a defined acceptance level; normally achieved by using a chemical agent or heat. | | >65°C NaOH |
-          
-              
-
-            
-            
-            
-          
-| Superheated Steam | Steam whose temperature, at any given pressure, is higher than indicated by the vaporization curve of water. | | |
-          
-              
-
-            
-            
-            
-          
-| TOC (Total Organic Carbon) | (Defined via USP <643> — key attribute for pharmaceutical water purity. Measures all organic carbon compounds present in water.) | USP <643> | PW WFI TOC ≤0.5 mg/L500 ppb TOC TOC |
-          
-              
-
-            
-            
-            
-          
-| Water for Injection (WFI) | Prepared from drinking water; purified by distillation or equivalent/superior process. Conductivity per Stage 1, 2, 3 tests and Tables. TOC ≤0.5 mg/L. Typically <10 CFU/100 mL. Endotoxin <0.25 USP EU/mL. | Stage 1/2/3 TOC ≤0.5 mg/L <10 CFU/100 mL <0.25 USP EU/mL | WFI SIP/CIP POU FDA TOC |
-          
-              
-
-            
-            
-            
-          
-| Worst Case Testing | Testing which encompasses upper and lower limits, and circumstances which pose the greatest chance of finding errors. Synonymous: Most Appropriate Challenge Conditions. | | POUOQ/PQ |
-        
-      
-
-    
 
   
 
@@ -17655,105 +14005,10 @@ This ISPE Good Practice Guide provides practical guidance on sampling programs f
 ### Section-by-Section Summary
 
           
-            
-              
-                
-                
-                
-                
-              
-| Section | Title | Core Content | Key Output |
-| --- | --- | --- | --- |
-            
-            
-              
-                ****
-                
-                
-                
-              
-| Ch. 1 | Introduction & Scope | Purpose, scope, regulatory framework, relationship to other ISPE guides. Defines compendial water types (PW, WFI, PS) and regulatory drivers (FDA, EP, USP, JP, WHO). | Framing document; establishes why sampling matters for product quality and patient safety. |
-              
-                ****
-                
-                
-                
-              
-| Ch. 2 | Water Sampling — PW & WFI | Sampling point selection, sampling techniques (valve operation, flush volumes, aseptic technique), sample frequency (Initial/Intermediary/Extended phases), risk-based approach, continuous monitoring vs. periodic testing. | Sampling Plan SOP framework; validates approach for FDA inspection readiness. |
-              
-                ****
-                
-                
-                
-              
-| Ch. 3 | Pure Steam Sampling | Condensate sampling methods (Sections 3.1–3.x), sampling apparatus design, key quality attributes (conductivity, TOC, endotoxin, dryness, NCG, superheat), interpretation of results. | PS Sampling Protocol; guides equipment selection (steam-to-liquid condensers, collection vessels). |
-              
-                ****
-                
-                
-                
-              
-| Ch. 4 | Process Gases — Compressed Air & Inert Gases | ISO 8573-1 purity classes, key contaminants (water/dew point, oil, particles, microorganisms), sampling equipment, point-of-use vs. point-of-generation sampling, documentation. | Compressed Air Sampling Program; ISO 8573 purity class assignment and monitoring. |
-              
-                ****
-                
-                
-                
-              
-| Ch. 5 | Sampling Program Design & Risk Management | Risk assessment methodology (ICH Q9), Critical Use Points (CUP) classification, sampling frequency justification, data trending, change control impact, SPC tools. | Risk-based sampling plan with documented scientific justification; supports regulatory filing defense. |
-              
-                ****
-                
-                
-                
-              
-| Ch. 6 | Analytical Methods & Test Execution | In-line vs. on-line vs. at-line vs. off-line testing; TOC (USP <643>), conductivity (USP <645>), microbiology (colony count methods), LAL/BET (endotoxin), dryness fraction testing, NCG testing methods, RMM overview. | Method selection guide; testing technology comparison for system monitoring. |
-              
-                ****
-                
-                
-                
-              
-| Ch. 7 | Data Interpretation & Action Response | Alert vs. Action levels/limits, OOS investigation process, trending analysis, Periodic System Evaluation (PSE), corrective action examples, records & documentation requirements. | OOS Management SOP template; PSE framework aligned with regulatory expectations. |
-              
-                ****
-                
-                
-                
-              
-| Ch. 8 / Appendices | Appendices & Glossary | Appendix 1: Non-pharmacopeial water grade comparison (ISO/ASTM/CLSI); Appendix 2: POU sampling point location examples; Appendix 3: PSG performance factors; Appendix 4: 35 references; Appendix 5: Acronyms + 50+ definitions. | Reference toolkit for lab water selection, system design review, and terminology alignment across teams. |
-            
-          
-
-          
 
 ### Regulatory Alignment Map
 
           
-            
-              
-| Requirement Area | Primary Regulatory Source | ISPE Guide Chapter |
-| --- | --- | --- |
-            
-            
-              
-| Water system design & qualification | FDA 1993 Guide; USP <1231>; EudraLex Annex 1 | Ch. 1, 2, 5; App. 2 |
-              
-| PW specifications | USP <1231>, <643>, <645>; EP 3.1.5 | Ch. 2; App. 1, 5 |
-              
-| WFI specifications | USP <1231>; EP 3.1.5; JP G8 | Ch. 2; App. 3, 5 |
-              
-| Pure steam specifications | USP <1231>; BS EN 285; HTM 2031 | Ch. 3; App. 3, 5 |
-              
-| Process gas purity | ISO 8573-1; FDA Aseptic Guide 2004 | Ch. 4; App. 4 |
-              
-| Alert/Action levels | FDA 1993 Guide; USP <1231> | Ch. 7; App. 5 |
-              
-| Risk-based sampling | ICH Q9; ICH Q10 | Ch. 5; App. 5 |
-            
-          
-
-        
 
         
 
@@ -17777,38 +14032,6 @@ This ISPE Good Practice Guide provides practical guidance on sampling programs f
 
               
 
-            
-
-          
-
-          
-
-            
-
-#### CDMO QA/QC
-
-            
-              
-| | CDMO | |
-| --- | --- | --- |
-              
-                
-| 2 | QC | |
-                
-| 5 | | |
-                
-| 7 | OOS CAPA | |
-                
-| 3 | SIP/ | |
-                
-| 4 | | |
-                
-| 2 | P&ID | |
-                
-| 1 | | |
-                
-| 3PSG | | |
-              
             
 
           
@@ -17908,14 +14131,6 @@ This ISPE Good Practice Guide provides practical guidance on sampling programs f
       
 
     
-
-  
-
-  
-
-**ISPE Good Practice Guide (2016): Sampling for Pharmaceutical Water, Steam, and Process Gases**
-
-  
 
   
 

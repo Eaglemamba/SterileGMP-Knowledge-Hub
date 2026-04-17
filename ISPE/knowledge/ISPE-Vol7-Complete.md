@@ -108,7 +108,7 @@ A case by case assessment should be performed of the risk factors that the concu
 
                 
 
-                    Figure 3.1: Quality Management System — illustrates the governance hierarchy from quality policy through standards, SOPs, and forms, embedded in the ICH Q10 lifecycle framework.
+                    Figure 3.1🔍: Quality Management System — illustrates the governance hierarchy from quality policy through standards, SOPs, and forms, embedded in the ICH Q10 lifecycle framework.
                 
 
             
@@ -229,27 +229,6 @@ It is important that basic GMP training for all relevant staff includes practice
 
                     
 
-                
-
-                
-                    
-                        
-| | CC |
-| --- | --- |
-                    
-                    
-                        
-| | ADE + |
-                        
-                        
-| | CC |
-                        
-| CAPA | |
-                        
-| | CC PQR |
-                        
-| | + QRM |
-                    
                 
 
                 
@@ -509,31 +488,6 @@ Each of the modes of cross-contamination should be assessed to determine whether
 
                     
 
-#### ADE vs. OEL
-
-                    
-                        
-                            
-| | ADE | OEL |
-| --- | --- | --- |
-                        
-                        
-                            
-| | Product CC | |
-                            
-| | mg/day | μg/m³ |
-                            
-| | / | |
-                            
-                        
-                    
-
-                
-
-                
-
-                    
-
 #### 
 
                     
@@ -569,31 +523,6 @@ Each of the modes of cross-contamination should be assessed to determine whether
                     
 
 ### — / / /
-
-                
-
-                    
-
-#### CC
-
-                    
-                        
-                            
-| --- | --- | --- |
-                        
-                        
-                            
-| Retention | | |
-                            
-| Mix-Up | SOP | |
-                            
-| | | / |
-                            
-| | HVAC | HVAC |
-                        
-                    
-
-                
 
                 
 
@@ -667,7 +596,7 @@ Fig
 
             
 
-## Logic Diagram — HTML Flowchart (Figure 3.2 / 3.3)
+## Logic Diagram — HTML Flowchart (Figure 3.2🔍 / 3.3)
 
             
 
@@ -684,7 +613,7 @@ Fig
 
                 
 
-### Figure 3.2 — GMP / Regulatory Logic
+### Figure 3.2🔍 — GMP / Regulatory Logic
 
                 
 
@@ -1160,7 +1089,7 @@ Viable — with appropriate controls
 
                 
 
-### Figure 3.3 — Health & Hygiene (IH) Logic
+### Figure 3.3🔍 — Health & Hygiene (IH) Logic
 
                 
 
@@ -1738,6 +1667,50 @@ The rationale for secondary PPE should be well understood and documented: is it 
 
                     
 
+#### PPE
+
+                    
+
+                
+
+                
+
+                    
+
+#### 
+
+                    
+
+                    
+
+                        
+
+                        
+
+                        
+
+                    
+
+                    
+
+                
+
+            
+
+        
+
+    
+
+    
+
+        
+
+3.2.3
+
+        
+
+            
+
 ## Consequences of Control Strategy
 
             
@@ -1776,34 +1749,6 @@ This bidirectional check is critical: decisions made purely on IH grounds (e.g.,
 #### Three Possible Outcomes of the Logic Diagram
 
                 
-                    
-                        
-| Outcome | Description | Conditions |
-| --- | --- | --- |
-                    
-                    
-                        
-                            
-                            
-                            
-                        
-| Dedicated Facility | Product must be manufactured in a separate, dedicated facility | Regulatory requirement; ADE cannot be determined; analytical methods inadequate |
-                        
-                            
-                            
-                            
-                        
-| Campaign / Partial Dedication | Dedicated suite, room, equipment, or campaign scheduling in shared facility | Controls achievable for most but not all stages; partial dedication cost-effective |
-                        
-                            
-                            
-                            
-                        
-| Concurrent Manufacture | Product can be co-manufactured with other products in shared facility | All Logic Diagram questions answered satisfactorily; risk assessment documented |
-                    
-                
-
-            
 
             
 
@@ -1819,33 +1764,6 @@ This bidirectional check is critical: decisions made purely on IH grounds (e.g.,
 
                     
 
-                
-
-                
-                    
-                        
-| | | CDMO |
-| --- | --- | --- |
-                    
-                    
-                        
-                            
-                            
-                            
-                        
-| | / | |
-                        
-                            
-                            
-                            
-                        
-| / | | + |
-                        
-                            
-                            
-                            
-                        
-                    
                 
 
                 
@@ -1920,36 +1838,6 @@ This bidirectional check is critical: decisions made purely on IH grounds (e.g.,
 ### Chapter 3 — Key Decision Points Summary
 
                 
-                    
-                        
-| Decision Node | Key Question | YES | NO |
-| --- | --- | --- | --- |
-                    
-                    
-                        
-| 3.2.1.2 | Written regulation requiring dedicated facility? | Dedicated Facility | Continue |
-                        
-| 3.2.1.3 | Can ADE be determined? | Continue | Dedicated Facility |
-                        
-| 3.2.1.4 | Can residue limits be detected (validated method)? | Continue | Dedicated Facility |
-                        
-| 3.2.1.6 | Can cleaning meet required criteria? | Continue | Consider Partial/Full Dedication |
-                        
-| 3.2.1.9 | Procedures and facility designed to avoid mix-up? | Continue | Consider Partial/Full Dedication |
-                        
-| 3.2.1.12 | Mechanical transfer controlled to safe levels? | Continue | Consider Dedication |
-                        
-| 3.2.1.15 | Airborne transfer controlled (HVAC, airlocks)? | Multiproduct viable | Consider Dedication |
-                        
-| 3.2.2.3 | Worker exposures adequately controlled? | Continue | Select Engineering Controls |
-                        
-| 3.2.2.6 | Residual exposure risk still too high? | Add PPE/Secondary Control | IH Controls Confirmed |
-                        
-| 3.2.3 | IH strategy compromises GMP operability? | Redesign Solution | Strategy Confirmed |
-                    
-                
-
-            
 
             
 
@@ -1996,18 +1884,6 @@ This bidirectional check is critical: decisions made purely on IH grounds (e.g.,
         
 
     
-
-    
-
-ISPE Baseline® Guide Volume 7 (2nd Ed.): Risk-Based Manufacture of Pharmaceutical Products
-
-    
-
-Chapter 3: Quality System Requirements | p23–p36
-
-    
-
-SterileGMP Knowledge Hub — Educational Reference | © ISPE 2017. All rights reserved.
 
 ⇧
 
@@ -2483,31 +2359,6 @@ Many companies assign new compounds to an OEB, or equivalent designation corresp
 Table 5.1: Estimating ADE Values Using OEBs
 
                     
-                        
-                            
-                                
-                                
-                                
-                                
-                            
-| OEB | Concentration Range | Low End of Band | Estimated ADE* |
-| --- | --- | --- | --- |
-                        
-                        
-                            
-| 1 | ≥1 <5 mg/m³ | 1 mg/m³ | 10 mg/day |
-                            
-| 2 | ≥0.1 <1 mg/m³ | 0.1 mg/m³ | 1 mg/day |
-                            
-| 3 | ≥10 <100 µg/m³ | 10 µg/m³ | 100 µg/day |
-                            
-| 4 | ≥1 <10 µg/m³ | 1 µg/m³ | 10 µg/day |
-                            
-| 5 | <1 µg/m³ | <1 µg/m³ | <1 µg/day |
-                        
-                    
-
-                    
 
 * Estimated ADE = Low End of Band × 10 m³
 
@@ -2927,48 +2778,6 @@ Clinically significant effects should be considered adverse effects for anyone n
 #### vs.
 
                         
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-                                      
-
-                                    
-                                    
-                                
-| /Physiological/Adaptive | | LOEL |
-                                
-                                      
-
-                                    
-                                    
-                                
-| Subclinical Pharmacological | | LOEL |
-                                
-                                      
-
-                                    
-                                    
-                                
-| Adverse Effect | | LOAEL → PoD |
-                            
-                        
-
-                    
-
-                    
-
-                        
-
-#### vs.
-
-                        
 
                         
 
@@ -3150,47 +2959,6 @@ The BMD is a value, equivalent to a NOAEL, that is derived mathematically by fit
 
                         
 
-#### NOAELLOAELNOEL
-
-                        
-                            
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| NOAEL | No-Observed-Adverse-Effect Level | ADE |
-                                
-                                    
-                                    
-                                    
-                                
-| NOEL | No-Observed-Effect Level | NOAEL |
-                                
-                                    
-                                    
-                                    
-                                
-| LOAEL | Lowest-Observed-Adverse-Effect Level | NOAEL AFL |
-                                
-                                    
-                                    
-                                    
-                                
-| BMD/BMDL10 | Benchmark Dose (Lower Bound) | NOAEL 10% |
-                            
-                        
-
-                    
-
-                    
-
-                        
-
 #### BMD NOAEL
 
                         
@@ -3311,37 +3079,6 @@ These are multiplied together to form a Composite Adjustment Factor (AFC) that i
 Table 5.2: Adjustment Factors Used in EMA Guidance and Risk-MaPP
 
                     
-                        
-                            
-                                
-                                
-                                
-                                
-                            
-| Adjustment Factor | EMA | Risk-MaPP | Comment |
-| --- | --- | --- | --- |
-                        
-                        
-                            
-| Interspecies | F1 = 2–12 | AFA = 2–12 | Allometric Scaling (BW²/³ or BW³/⁴) |
-                            
-| Intraspecies | F2 = 10 | AFH = 10 or CSAF | Use PK/PD data when available |
-                            
-| Study Duration | F3 = 10 | AFS = 3 | <4 weeks for F3 (EMA) |
-                            
-| Severity of Effect | F4 = 1–10 | Addressed in MF | Overlaps with F5; MF |
-                            
-| LOAEL-to-NOAEL | F5 < 10 | AFL = 3 | F5 = 10 if severe effects |
-                            
-| Database Completeness | AF = 10 or Read Across | AFD = 1–10 | Missing DART studies |
-                            
-| Modifying Factor | MF | MF <1–10 | Residual uncertainties, severity |
-                            
-| PK Adjustments | Bioavailability Correction | Bioavailability (α), Steady State (S) | Route-to-route extrapolation |
-                        
-                    
-
-                
 
                 
 
@@ -3385,33 +3122,6 @@ BW = 50 kg
 AFC = 5 × 10 × 3 × 1 × 1 = 150
 ADE = (5 × 50) / (150 × 1 × 1) = 250/150 ≈ 1.67 mg/day
 ```
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
-                            
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-| AFA | = 5 | / |
-                                
-| AFH | 10 | /2.5 × 2.5 × 1.6 ≈ 10 |
-                                
-| AFS | 3Risk-MaPP | Lewis et al. 3 EMA 10 |
-                                
-| AFLLOAEL | 3 | LOAEL:NOAEL 3 |
-                                
-| AFD | 3 | DART 3 |
-                            
-                        
 
                     
 
@@ -3530,36 +3240,6 @@ While it may be tempting to use wipe limits to assess the potential for cross-co
                 
 
                 
-
-                    
-
-                    
-
-                        
-
-#### OEL vs. HBEL/ADE —
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| | OEL | HBEL/ADE |
-| --- | --- | --- |
-                            
-                            
-                                
-                                
-| | inhalation | // |
-                                
-| | µg/m³ | µg/day mg/day |
-                                
-| | PPE | |
-                                
-                            
-                        
 
                     
 
@@ -3889,36 +3569,6 @@ Chapters 4–5 key concepts consolidated | p37–52
 Chapter 4–5 Key Concepts at a Glance
 
                     
-                        
-                            
-| Concept | Definition / Purpose |
-| --- | --- |
-                        
-                        
-                            
-| Risk Assessment (ICH Q9) | 3 steps: identification → analysis → evaluation |
-                            
-| Hazard | Inherent compound property to cause adverse effects |
-                            
-| Hazard Continuum | Spectrum from no hazard to poorly characterised; spans orders of magnitude in ADE |
-                            
-| OEB | Occupational Exposure Band — interim classification before formal OEL/ADE |
-                            
-| HBEL / ADE / PDE | Health-based exposure limit to protect patients from cross-contamination |
-                            
-| Critical Effect | First clinically significant adverse effect as dose increases; basis for NOAEL selection |
-                            
-| NOAEL | Highest dose with no observed adverse effect; Point-of-Departure for ADE |
-                            
-| Adjustment Factors | AFA, AFH, AFS, AFL, AFD, MF, PK — account for extrapolation uncertainties |
-                            
-| OEL | Worker protection limit; airborne concentration (µg/m³) |
-                            
-| HBEL Documentation | Formal written report by qualified toxicologist; 10 required sections |
-                        
-                    
-
-                
 
                 
 
@@ -3987,18 +3637,6 @@ Chapter 4–5 Key Concepts at a Glance
         
 
     
-
-    
-
-ISPE Baseline® Guide Volume 7 (2nd Ed.): Risk-Based Manufacture of Pharmaceutical Products
-
-    
-
-Chapters 4–5: Risk Assessment & Risk Identification | p37–p52
-
-    
-
-SterileGMP Knowledge Hub — Educational Commentary in Traditional Chinese
 
 ↑
 
@@ -4562,32 +4200,6 @@ There is **no regulatory requirement** to perform air sampling as part of GxP. C
 
                         
 
-#### vs. —
-
-                        
-                            
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-                                
-| | | Cpk/Ppk |
-                                
-| | // | |
-                                
-                                
-                            
-                        
-
-                        
-
-                    
-
-                    
-
-                        
-
 #### Cpk vs. Ppk —
 
                         
@@ -4654,6 +4266,16 @@ There is **no regulatory requirement** to perform air sampling as part of GxP. C
 
         
 
+                        
+
+#### vs. —
+
+                        
+
+                    
+
+                    
+
     
 
     
@@ -4691,7 +4313,7 @@ Four routes ordered by importance | p57
 
                     
 
-The routes for cross-contamination within pharmaceutical processing activities are presented in order of importance. Figure 6.2 contrasts the risk of cross-contamination and worker exposure risk.
+The routes for cross-contamination within pharmaceutical processing activities are presented in order of importance. Figure 6.2🔍 contrasts the risk of cross-contamination and worker exposure risk.
 
                     
 
@@ -4732,58 +4354,6 @@ Note that the ranking of risk to the product from cross-contamination is essenti
 #### 
 
                         
-                            
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-| --- | --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-| Mix-up | ★★★★★ | ★ | |
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-| Retention | ★★★★ | ★★ - | ADE |
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-| | ★★★ | ★★★ | |
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-| | ★★ - | ★★★★★ | CPT |
-                            
-                        
-
-                        
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
 
                         
 
@@ -4802,6 +4372,16 @@ Note that the ranking of risk to the product from cross-contamination is essenti
             
 
         
+
+                        
+
+#### 
+
+                        
+
+                    
+
+                    
 
     
 
@@ -5327,48 +4907,6 @@ Material-related factors increasing residue risk:
 
                         
 
-#### ADE vs. 1/1000 vs. 10 ppm —
-
-                        
-                            
-                                
-| | | | | ISPE |
-| --- | --- | --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| ADE/PDE | | | | |
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| 1/1000 | | | | |
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| 10 ppm | | | | |
-                            
-                        
-
-                    
-
-                    
-
-                        
-
 #### 
 
                         
@@ -5575,29 +5113,6 @@ The use of certain equipment may cause operators or mobile equipment to become c
 
                         
 
-                        
-
-                    
-
-                    
-
-                        
-
-#### vs. Retention
-
-                        
-                            
-                                
-| | Retention | |
-| --- | --- | --- |
-                            
-                            
-                                
-                                
-                                
-| | ADE | |
-                                
-                            
                         
 
                     
@@ -5862,22 +5377,6 @@ The Containment Performance Target (CPT) (expressed in µg/m³) is a target valu
                         
 
                         
-                            
-                                
-| | Dustiness | Dustiness |
-| --- | --- | --- |
-                            
-                            
-                                
-| | < 10 µm | >100 µm |
-                                
-                                
-                                
-                                
-                            
-                        
-
-                        
 
                     
 
@@ -5997,88 +5496,10 @@ The Containment Performance Target (CPT) (expressed in µg/m³) is a target valu
             
 
             
-                
-                    
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                    
-| --- | --- | --- | --- | --- | --- | --- | --- |
-                
-                
-                    
-                        **  
-**
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                    
-| Mix-up | | | 1 | | | GxP | / |
-                    
-                        **  
-**
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                    
-| Retention | | | 2 | - | | ADE | GxP |
-                    
-                        **  
-**
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                    
-| Mechanical | | | 3 | | | | |
-                    
-                        **  
-**
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                    
-| Airborne | | | 4- | | Dustiness | CPTLEV | IH |
-                
-            
-
-            
 
         
 
     
-
-    
-
-ISPE Baseline® Guide Volume 7 (2nd Ed.): Risk-Based Manufacture of Pharmaceutical Products
-
-    
-
-Chapter 6: Risk Analysis & Routes of Cross-Contamination (Part A) | p53–p68
-
-    
-
-SterileGMP Knowledge Hub — Educational Commentary in Traditional Chinese
 
 ⇧
 
@@ -6349,7 +5770,7 @@ A specific process will have a number of features, all of which may have a great
 
                     
 
-                        Figure 6.6: Summary of Process Characteristic Factors that Affect the Risk of Cross-Contamination
+                        Figure 6.6🔍: Summary of Process Characteristic Factors that Affect the Risk of Cross-Contamination
                     
 
                 
@@ -6391,63 +5812,6 @@ A specific process will have a number of features, all of which may have a great
 
                         
 
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-| // | | |
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-| | | CIP/ |
-                                
-                                    
-                                    
-                                    
-                                
-| | | Campaign |
-                                
-                                    
-                                    
-                                    
-                                
-| | 100kg vs 100g | |
-                            
-                        
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
-
                     
 
                     
@@ -6465,6 +5829,16 @@ A specific process will have a number of features, all of which may have a great
             
 
         
+
+                        
+
+#### 
+
+                        
+
+                        
+
+                    
 
     
 
@@ -6805,60 +6179,6 @@ Any process step that does not meet the definition of "closed process" is consid
 
                         
 
-#### 
-
-                        
-
-                        
-                            
-                                
-                                    
-                                    
-                                
-| --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                
-| HVAC | / |
-                                
-                                    
-                                    
-                                
-| Airlock | |
-                                
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                
-| CIP/WIP | |
-                                
-                                    
-                                    
-                                
-| vs | |
-                            
-                        
-
-                    
-
-                    
-
-                        
-
 #### Closed Process
 
                         
@@ -6923,6 +6243,16 @@ Any process step that does not meet the definition of "closed process" is consid
 
         
 
+                        
+
+#### 
+
+                        
+
+                        
+
+                    
+
     
 
     
@@ -6971,7 +6301,7 @@ In general, the risk of cross-contamination due to mechanical and/or airborne tr
 
                     
 
-Figure 6.7 illustrates the main classifications of non-product contact areas:
+Figure 6.7🔍 illustrates the main classifications of non-product contact areas:
 
                     
 
@@ -7090,59 +6420,6 @@ The mode of exposure for non-product contact areas is by either mechanical or ai
 
                 
                 
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| Barriers | | |
-                                
-                                    
-                                    
-                                    
-                                
-| Product Room/Suite | | |
-                                
-                                    
-                                    
-                                    
-                                
-| Supporting Areas | | |
-                                
-                                    
-                                    
-                                    
-                                
-| GxP AreaGxP | | |
-                                
-                                    
-                                    
-                                    
-                                
-| HVAC System | AHU—— | |
-                            
-                        
 
                     
 
@@ -7390,50 +6667,6 @@ Throughout the product life cycle, the containment technologies, equipment, and 
 
                         
 
-#### Adequacy of Controls
-
-                        
-
-                        
-                            
-                                
-                                    
-                                    
-                                
-| --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                
-| Applicability | |
-                                
-                                    
-                                    
-                                
-| Currency | |
-                                
-                                    
-                                    
-                                
-| Reproducibility | |
-                                
-                                    
-                                    
-                                
-| Robustness | |
-                            
-                        
-
-                        
-
-                    
-
-                    
-
-                        
-
 #### HVAC
 
                         
@@ -7457,6 +6690,18 @@ Throughout the product life cycle, the containment technologies, equipment, and 
             
 
             
+
+                        
+
+#### Adequacy of Controls
+
+                        
+
+                        
+
+                    
+
+                    
             
 
                 
@@ -7484,18 +6729,6 @@ Throughout the product life cycle, the containment technologies, equipment, and 
         
 
     
-
-    
-
-ISPE Baseline® Guide Volume 7 (2nd Ed.): Risk-Based Manufacture of Pharmaceutical Products
-
-    
-
-Section 3b — Chapter 6 Risk Analysis (Part B): Probability of Occurrence, Non-Product Contact Areas & Detection | p69–p78
-
-    
-
-SterileGMP Knowledge Hub © 2026 | Educational Reference Document
 
 ⇧
 
@@ -7772,47 +7005,6 @@ Caution should be exercised in the use of qualitative risk terms as these are in
 
                         
 
-#### Traffic-Light Model
-
-                        
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| | ADE / OEL | |
-                                
-                                    
-                                    
-                                    
-                                
-| | ADE / OEL | |
-                                
-                                    
-                                    
-                                    
-                                
-| | ADE / OEL | |
-                            
-                        
-
-                    
-
-                    
-
-                        
-
 #### 
 
                         
@@ -7880,6 +7072,16 @@ Caution should be exercised in the use of qualitative risk terms as these are in
             
 
         
+
+                        
+
+#### Traffic-Light Model
+
+                        
+
+                        
+
+                    
 
     
 
@@ -8671,18 +7873,6 @@ CDMO
 
     
 
-    
-
-ISPE Baseline® Guide Volume 7 (2nd Ed.): Risk-Based Manufacture of Pharmaceutical Products
-
-    
-
-Section 4: Risk Evaluation & Risk Control | Chapters 7–8 | p79–p84
-
-    
-
-SterileGMP Knowledge Hub — Educational Commentary in Traditional Chinese
-
 ⇧
 
 ## Chapter 9: Risk Reduction (p85-p108)
@@ -8782,7 +7972,7 @@ Original Text — English
             
             
 
-                **Figure 9.2:** Applied Hierarchy of Risk Reduction — priority order from most to least preferred control strategy.
+                **Figure 9.2🔍:** Applied Hierarchy of Risk Reduction — priority order from most to least preferred control strategy.
             
 
             
@@ -8948,24 +8138,6 @@ Since success with the procedures is dependent upon adherence to the procedures 
 A key element of a quality management system is to ensure the compliance of personnel with policies, work, processes, and procedures. The quality culture of an organization generally fits one of the progressive descriptions in Table 9.1.
 
             
-                
-                    
-| Stage | Observable / Measurable Behavior |
-| --- | --- |
-                
-                
-                    
-| 1 | Employees do not follow SOPs even when they are being directly supervised |
-                    
-| 2 | Employees follow SOPs only when they are being directly supervised |
-                    
-| 3 | Employees follow SOPs even when not directly supervised |
-                    
-| 4 | An employee will correct the nonadherent or noncompliant behavior of a coworker in the absence of a supervisor |
-                
-            
-
-            
 
 #### 9.1.4.1 The Impact of Culture
 
@@ -9007,31 +8179,6 @@ Staff turnover or the use of temporary staff especially in critical areas, is al
 
                 
 
-#### Table 9.1 —
-
-                
-                    
-                        
-| --- | --- | --- |
-                    
-                    
-                        
-| 1 | SOP | |
-                        
-| 2 | SOP | |
-                        
-| 3 | SOP | |
-                        
-| 4 | | |
-                    
-                
-
-            
-
-            
-
-                
-
 #### David — SOP
 
                 
@@ -9053,6 +8200,14 @@ Staff turnover or the use of temporary staff especially in critical areas, is al
     
 
     
+
+                
+
+#### Table 9.1 —
+
+                
+
+            
     
 
         
@@ -9124,31 +8279,6 @@ It is the manufacturer's responsibility to develop and demonstrate a well though
         
 
         
-
-            
-
-            
-
-                
-
-#### 
-
-                
-                    
-                        
-| --- | --- | --- |
-                    
-                    
-                        
-| Mix-up | / | |
-                        
-| Retention | | |
-                        
-| Mechanical Transfer | | |
-                        
-| Airborne Transfer | | HVAC |
-                    
-                
 
             
 
@@ -9466,37 +8596,6 @@ Wipe samples taken outside the GxP area may show contamination due to failures o
 
                 
 
-#### vs. —
-
-                
-                    
-                        
-| --- | --- | --- |
-                    
-                    
-                        
-| | ✓ | ✓ |
-                        
-| Airlock | ✓ | ✓ |
-                        
-| / | ✓ | ✓ |
-                        
-| HVAC | | ✓ |
-                        
-| HEPA | | ✓ |
-                        
-| | ✓ | |
-                        
-| | ✓ | |
-                    
-                
-
-            
-
-            
-
-                
-
 #### —
 
                 
@@ -9643,35 +8742,6 @@ Once formulations and processes are registered, it can be very costly and time c
 
                     
 
-                
-
-            
-
-            
-
-                
-
-#### 
-
-                
-                    
-                        
-| --- | --- | --- |
-                    
-                    
-                        
-| DC | | API |
-                        
-| | API | |
-                        
-| One-pot | → | API |
-                        
-| / | | |
-                        
-| / | | OEB |
-                        
-| / | | |
-                    
                 
 
             
@@ -9937,7 +9007,7 @@ Regardless of the hazard of a compound, it should be handled in such a way that 
 
             
 
-There are a number of boundaries that contain the pharmaceutical compound (Figure 9.4):
+There are a number of boundaries that contain the pharmaceutical compound (Figure 9.4🔍):
 
             
 
@@ -9954,7 +9024,7 @@ There are a number of boundaries that contain the pharmaceutical compound (Figur
 
             
 
-**Facility Zones (Figure 9.5):**
+**Facility Zones (Figure 9.5🔍):**
 
             
 
@@ -10022,38 +9092,6 @@ There are a number of boundaries that contain the pharmaceutical compound (Figur
 
                 
 
-                
-
-            
-
-            
-
-                
-
-#### 
-
-                
-                    
-                        
-| | | GxP |
-| --- | --- | --- |
-                    
-                    
-                        
-| 1. / | | GxP |
-                        
-| 2. | / | GxP |
-                        
-| 3. | / | |
-                        
-| 4. GxP | / | GxP |
-                        
-| 5. | | GxP |
-                        
-| 6. | / | GxP |
-                        
-| 7. | / | |
-                    
                 
 
             
@@ -10232,27 +9270,6 @@ Airlocks are frequently operated with a positive differential pressure to adjace
 
                 
 
-#### MAL vs. PAL —
-
-                
-                    
-                        
-| --- | --- | --- |
-                    
-                    
-                        
-| MAL | | |
-                        
-| PAL | / | |
-                    
-                
-
-            
-
-            
-
-                
-
 #### PAL
 
                 
@@ -10421,44 +9438,6 @@ If risk cannot be reduced to acceptable levels by dedicating equipment or change
 
                 
 
-#### vs. vs. Campaign —
-
-                
-                    
-                        
-| --- | --- | --- | --- |
-                    
-                    
-                        
-                            ****
-                            
-                            
-                            
-                        
-| Shared | / | | |
-                        
-                            ****
-                            
-                            
-                            
-                        
-| Campaign | | | |
-                        
-                            ****
-                            
-                            
-                            
-                        
-| Dedicated | / | OEB 4/5 | |
-                    
-                
-
-            
-
-            
-
-                
-
 #### 9.5.6
 
                 
@@ -10605,18 +9584,6 @@ Section Summary — Key Takeaways
         
 
     
-
-    
-
-ISPE Baseline® Guide Volume 7 (2nd Ed.): Risk-Based Manufacture of Pharmaceutical Products
-
-    
-
-Section 5a: Risk Reduction — Hierarchy, Routes, R&D Role & Facility Engineering | Pages 85–98
-
-    
-
-SterileGMP Knowledge Hub © 2026 | Educational commentary in Traditional Chinese
 
 ⇧
 
@@ -10790,38 +9757,6 @@ Regulations suggest that if air is to be recirculated, when potentially contamin
 ### Three Levels of HVAC Control (recap)
 
                     
-                        
-                            
-                                
-                                
-                                
-                            
-| Level | Technology | Air Handling Mode |
-| --- | --- | --- |
-                        
-                        
-                            
-                                
-                                
-                                
-                            
-| Room | Dilution / directional flow | Recirculation (if treated) or exhaust |
-                            
-                                
-                                
-                                
-                            
-| Local | LEV, downflow booths | HEPA filtered or 100% exhaust |
-                            
-                                
-                                
-                                
-                            
-| Equipment | Isolator, RABS, closed system | Typically 100% exhaust for potent APIs |
-                        
-                    
-
-                
 
                 
                 
@@ -10919,49 +9854,6 @@ Results from Environmental Health and Safety studies are generally expressed in 
                     
 
 Table 9.2/9.3/9.4 (source tables) demonstrate mass reduction through filtration stages:
-
-                    
-                        
-                            
-                                
-                                
-                                
-                                
-                            
-| Filter Grade | Approx. ASHRAE | Mass Reduction (example) | Log Reduction |
-| --- | --- | --- | --- |
-                        
-                        
-                            
-                                
-                                
-                                
-                                
-                            
-| MERV 11 | ~50% | ~20:1 overall mass | ~1.5 log |
-                            
-                                
-                                
-                                
-                                
-                            
-| MERV 13 | ~85% | Intermediate | ~2 log |
-                            
-                                
-                                
-                                
-                                
-                            
-| MERV 15 | ~95% | ~3 log reduction | ~3 log |
-                            
-                                
-                                
-                                
-                                
-                            
-| HEPA (H13) | ≥99.95% | >4 log at MPPS | >4 log |
-                        
-                    
 
                     
 
@@ -11222,7 +10114,7 @@ The pressure cascade and direction of airflow should be designed to be protectiv
 
                     
 
-Single door configurations between production room and corridor are challenged when the door is open. For greater protection, airlocks with interlocked doors are used. Three configurations (Figure 9.7):
+Single door configurations between production room and corridor are challenged when the door is open. For greater protection, airlocks with interlocked doors are used. Three configurations (Figure 9.7🔍):
 
                     
 
@@ -11298,45 +10190,6 @@ Single door configurations between production room and corridor are challenged w
 
                         
 
-                        
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| Cascade | > > | API |
-                                
-                                    
-                                    
-                                    
-                                
-| Sink | > < | API |
-                                
-                                    
-                                    
-                                    
-                                
-| Bubble | < > | |
-                            
                         
 
                     
@@ -11701,37 +10554,6 @@ Where risk reduction strategies (including PPE, containment, HVAC) are implement
                     
 
 ### PPE / RPE
-
-                    
-
-                        
-
-#### PPE vs RPE
-
-                        
-                            
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-                                    ****  
-
-                                    
-                                    
-                                
-| PPE(Personal Protective Equipment) | | + |
-                                
-                                    ****  
-
-                                    
-                                    
-                                
-| RPE(Respiratory Protective Equipment) | PAPR | API |
-                            
-                        
-
-                    
 
                     
 
@@ -12274,79 +11096,6 @@ For each parameter a numerical value, or high, medium, and low indicator is assi
 
                     
                     
-                        
-                            
-                                  
-
-                                  
-
-                                  
-
-                                  
-
-                                  
-
-                                  
-
-                            
-| ▶ ▼ | Negligible | Low | Moderate | High | Critical |
-| --- | --- | --- | --- | --- | --- |
-                        
-                        
-                            
-                                  
-
-                                
-                                
-                                
-                                
-                                
-                            
-| Almost Certain | | | | | |
-                            
-                                  
-
-                                
-                                
-                                
-                                
-                                
-                            
-| Likely | | | | | |
-                            
-                                  
-
-                                
-                                
-                                
-                                
-                                
-                            
-| Possible | | | | | |
-                            
-                                  
-
-                                
-                                
-                                
-                                
-                                
-                            
-| Unlikely | | | | | |
-                            
-                                  
-
-                                
-                                
-                                
-                                
-                                
-                            
-| Rare | | | | | |
-                        
-                    
-
-                    
 
                         
 
@@ -12640,136 +11389,8 @@ FMEA was originally developed by the US Military in the 1940s and further develo
 ### FMEA Form Column Headings (Table 11.1)
 
                     
-                        
-                            
-                                
-                                
-                            
-| Column Heading | Description |
-| --- | --- |
-                        
-                        
-                            
-                                ****
-                                
-                            
-| Facility | Room/suite, HVAC details, airlocks, corridor, access control |
-                            
-                                ****
-                                
-                            
-| Process Step | Each process from receipt/sampling to dispatch; identify controls to mitigate exposure |
-                            
-                                ****
-                                
-                            
-| Potential Failure | The primary categories of exposure for each mode (mix-up, retention, mechanical, airborne). For patients, route of delivery affects bioavailability. |
-                            
-                                ****
-                                
-                            
-| Potential Effect(s) of Failure | Four cross-contamination modes for each process step (one row per mode) |
-                            
-                                ****
-                                
-                            
-| Severity (S) | Impact on patient or occupational population; scored 1, 3, 5, 7, 10 |
-                            
-                                ****
-                                
-                            
-| Potential Causes | Root causes of failure |
-                            
-                                ****
-                                
-                            
-| Occurrence (O) | Actual or assessed rate of occurrence; scored 1, 3, 5, 7, 10 |
-                            
-                                ****
-                                
-                            
-| Current Controls | Existing control methods |
-                            
-                                ****
-                                
-                            
-| Detection (D) | Ability to detect failure: 10 = not detectable, 1 = obvious or alarmed |
-                            
-                                ****
-                                ****
-                            
-| RPN | S × O × D; range 1–1,000; used for risk assessment and prioritization |
-                            
-                                ****
-                                
-                            
-| Actions | Engineering, administrative, procedural, formulation controls to reduce RPN |
-                            
-                                ****
-                                
-                            
-| Who / By Date | Responsible person and target completion date |
-                            
-                                ****
-                                
-                            
-| Results / Post-RPN | Re-evaluated S, O, D and new RPN after remediation |
-                        
-                    
-
-                    
 
 ### 11.3.1 Scoring Severity, Occurrence, and Detection (Table 11.2)
-
-                    
-                        
-                            
-                                
-                                
-                                
-                                
-                            
-| Score | Severity | Occurrence | Detection |
-| --- | --- | --- | --- |
-                        
-                        
-                            
-                                
-                                
-                                
-                                
-                            
-| 10 | Injury to patient/employee; ADE < 1 µg/day | More than once per batch | Not detectable by current methods |
-                            
-                                
-                                
-                                
-                                
-                            
-| 7 | Extreme customer dissatisfaction; ADE = 1–10 µg/day | Once per batch | All manually inspected |
-                            
-                                
-                                
-                                
-                                
-                            
-| 5 | Likely to result in a complaint; ADE = 10–100 µg/day | Once per six months | Statistical sampling |
-                            
-                                
-                                
-                                
-                                
-                            
-| 3 | Minor nuisance, no loss; ADE = 100–1,000 µg/day | Once every 1–3 years | 100% inspection |
-                            
-                                
-                                
-                                
-                                
-                            
-| 1 | Unnoticed, no effect on performance; ADE ≥ 1,000 µg/day | One occurrence in >5 years | Obvious, or controlled and monitored with alarm |
-                        
-                    
 
                     
 
@@ -13345,57 +11966,6 @@ In addition if a company chooses to have product-specific ADEs (where the follow
 #### 
 
                         
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| VP/COO | RPN | |
-                                
-                                    
-                                    
-                                    
-                                
-| QA / | ADE | |
-                                
-                                    
-                                    
-                                    
-                                
-| | SOP | |
-                                
-                                    
-                                    
-                                    
-                                
-| CMO/CDMO | ADE/OEL | |
-                                
-                                    
-                                    
-                                    
-                                
-| / | QRMP | |
-                            
-                        
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
 
                     
 
@@ -13568,81 +12138,6 @@ Original Text (English)
 
                         
 
-#### QRMP
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-                                    ****
-                                    
-                                    
-                                
-| Introduction | | |
-                                
-                                    ****
-                                    
-                                    
-                                
-| Scope | | |
-                                
-                                    ****
-                                    
-                                    
-                                
-| Responsibilities | | QA |
-                                
-                                    ****
-                                    
-                                    
-                                
-| Facility & Process | | HVAC |
-                                
-                                    ****
-                                    
-                                    
-                                
-| Risk Assessment | →→→ | ADE FMEA |
-                                
-                                    ****
-                                    
-                                    
-                                
-| Risk Control | | > > |
-                                
-                                    ****
-                                    
-                                    
-                                
-| Risk Communication | | |
-                                
-                                    ****
-                                    
-                                    
-                                
-| Risk Review | | |
-                                
-                                    ****
-                                    
-                                    
-                                
-| Summary | | |
-                            
-                        
-
-                    
-
-                    
-
-                        
-
 #### Facility Description
 
                         
@@ -13723,14 +12218,6 @@ Original Text (English)
 
     
 
-    
-
-ISPE Baseline® Guide Volume 7 (2nd Ed.): Risk-Based Manufacture of Pharmaceutical Products | p109–p124
-
-    
-
-SterileGMP Knowledge Hub © 2026 | Section 6: Risk Acceptance, Risk Management Tools, Risk Review & Risk Communication
-
 ⇧
 
 ## Chapter 14: Appendix 1: Case Scenarios (p125-p162)
@@ -13795,22 +12282,6 @@ To make comparisons easier, examples 1 to 3 use the same basic facility layout, 
                 
 
 #### Table 14.1: Compounds Currently Manufactured in the Facility
-
-                
-                    
-                        
-| Compound | ADE (mg/day) | Batches/Year | Wt API/Batch (kg) | Daily Dose (mg) |
-| --- | --- | --- | --- | --- |
-                    
-                    
-                        
-| Antacid | 50 | 200 | 100 | 2,000 |
-                        
-| Anti-hypertensive | 0.5 | 1 | 10 | 10 |
-                        
-| NSAID | 40 | 100 | 2 | 800 |
-                    
-                
 
                 
 
@@ -13968,24 +12439,6 @@ A cornerstone of the QRMP is the establishment of Acceptable Daily Exposure (ADE
                 
 
 #### Table 14.2: Scenario 1 – ADE Values for Active Ingredients
-
-                
-                    
-                        
-| Compound | ADE (mg/day) | Batches/Year | Wt API/Batch (kg) | Daily Dose (mg) |
-| --- | --- | --- | --- | --- |
-                    
-                    
-                        
-| Antacid | 50 | 200 | 100 | 2,000 |
-                        
-| Anti-hypertensive A (existing) | 0.5 | 1 | 10 | 10 |
-                        ********
-| Anti-hypertensive B (Antitense™) — NEW | 0.3 | 20 | 10 | 10 |
-                        
-| NSAID | 40 | 100 | 2 | 800 |
-                    
-                
 
                 
 
@@ -14353,24 +12806,6 @@ The document covers the introduction of anti-neoplastic Agent C into an existing
 #### Table 14.3: Scenario 2 – ADE Values for Active Ingredients
 
                 
-                    
-                        
-| Compound | ADE (mg/day) | Batches/Year | Wt API/Batch (kg) | Daily Dose (mg) |
-| --- | --- | --- | --- | --- |
-                    
-                    
-                        
-| Antacid | 50 | 200 | 100 | 2,000 |
-                        
-| Anti-hypertensive | 0.5 | 1 | 10 | 10 |
-                        ********
-| Anti-neoplastic Agent C — NEW | 0.001 | 200 | 0.25 | 350 |
-                        
-| NSAID | 40 | 100 | 2 | 800 |
-                    
-                
-
-                
 
 The ADEs were set by a qualified toxicologist.
 
@@ -14670,7 +13105,7 @@ Personnel access into the process rooms is controlled by card reader. Personnel 
 
                 
 
-Figure 14.5 shows the pressure cascade and airflow direction in the rooms. The flow is always away from the corridor and toward the rear wall. Supply is through HEPA filters; exhaust via roughing and HEPA filters to protect the ductwork. The MALs and PALs create lock chambers with door operation delay to allow the airlock to be purged. The system is once through — no risk of recirculating particulate.
+Figure 14.5🔍 shows the pressure cascade and airflow direction in the rooms. The flow is always away from the corridor and toward the rear wall. Supply is through HEPA filters; exhaust via roughing and HEPA filters to protect the ductwork. The MALs and PALs create lock chambers with door operation delay to allow the airlock to be purged. The system is once through — no risk of recirculating particulate.
 
                 
 
@@ -15176,34 +13611,6 @@ No further communication on the proposed introduction of Anti-neoplastic Agent C
 ## Cross-Scenario Comparison: Scenarios 1 vs. 2
 
             
-                
-                    
-| Parameter | Scenario 1 (Anti-hypertensive B) | Scenario 2 (Anti-neoplastic C) |
-| --- | --- | --- |
-                
-                
-                    
-| ADE | 0.3 mg/day | 0.001 mg/day (1 μg/day) |
-                    
-| Toxicity class | Similar to existing products | Genotoxic carcinogen (HPAPI) |
-                    
-| ADE magnitude vs. existing | ~1.7× below existing anti-hypertensive | 500× below existing anti-hypertensive |
-                    
-| HVAC system | Recirculation | Once-through |
-                    
-| Isolator required | No | Yes (all sampling, weighing, granulation) |
-                    
-| Closed transfers (SBV/RTP) | No | Yes (all transfers) |
-                    
-| Critical risk finding | None — existing controls sufficient | V-Blender cleaning Ppk = 0.34 (DPM 14,994) |
-                    
-| DoE attempted | N/A | Yes — failed to resolve |
-                    
-| Outcome | Approved — no facility changes needed | Rejected — cannot be manufactured at this site |
-                
-            
-
-        
 
         
 
@@ -15252,18 +13659,6 @@ No further communication on the proposed introduction of Anti-neoplastic Agent C
         
 
     
-
-    
-
-SterileGMP Knowledge Hub — ISPE Baseline® Guide Volume 7 (2nd Ed.): Risk-Based Manufacture of Pharmaceutical Products
-
-    
-
-Appendix 1 §14.1–14.3 | Pages 125–138 | Commentary in Traditional Chinese
-
-    
-
-For educational use only. ISPE copyright acknowledged.
 
 ↑
 
@@ -15910,201 +14305,6 @@ MACO = (Smallest daily dose of product A × Batch size of product B) / (Largest 
 ### 16.1 Acronyms and Abbreviations
 
                     
-                        
-                            
-                                
-                                
-                            
-| Acronym | Full Term |
-| --- | --- |
-                        
-                        
-                            
-| ACGIH® | American Conference of Governmental Industrial Hygienists (US) |
-                            
-| ADE | Acceptable Daily Exposure |
-                            
-| ADI | Acceptable Daily Intake |
-                            
-| AF | Adjustment Factor |
-                            
-| AFc | Composite Adjustment Factor |
-                            
-| AHU | Air Handling Unit |
-                            
-| AIHA | American Industrial Hygiene Association (US) |
-                            
-| ANVISA | National Health Surveillance Agency (Brazil) |
-                            
-| APF | Assigned Protection Factor |
-                            
-| API | Active Pharmaceutical Ingredient |
-                            
-| ASHRAE | American Society of Heating, Refrigerating and Air-Conditioning Engineers (US) |
-                            
-| BLA | Biological License Application |
-                            
-| BMD | Benchmark Dose |
-                            
-| CAPA | Corrective and Preventative Action |
-                            
-| CBER | Center for Biologics Evaluation and Research (US FDA) |
-                            
-| CFR | Code of Federal Regulations (US FDA) |
-                            
-| cGMP | current Good Manufacturing Practice |
-                            
-| CIP | Clean In Place |
-                            
-| CMC | Chemistry, Manufacturing and Controls |
-                            
-| CMO | Contract Manufacturing Organization |
-                            
-| Cpk | Process Capability Index |
-                            
-| CPP | Critical Process Parameter |
-                            
-| CPT | Containment Performance Target |
-                            
-| CPV | Continued Process Verification |
-                            
-| CQA | Critical Quality Attribute |
-                            
-| CSAF | Chemical-Specific Adjustment Factor |
-                            
-| CTD | Common Technical Document |
-                            
-| DART | Developmental and Reproductive Toxicity |
-                            
-| DoE | Design of Experiment |
-                            
-| EMA | European Medicines Agency |
-                            
-| FAT | Factory Acceptance Testing |
-                            
-| FMEA | Failure Mode and Effects Analysis |
-                            
-| FMECA | Failure Mode, Effects, and Criticality Analysis |
-                            
-| FTA | Fault Tree Analysis |
-                            
-| GMP | Good Manufacturing Practice |
-                            
-| GxP | Good "x" Practice |
-                            
-| HACCP | Hazard Analysis and Critical Control Point |
-                            
-| HAZOP | Hazard Operability Analysis |
-                            
-| HEPA | High Efficiency Particulate Air |
-                            
-| HRIPT | Human Repeat Insult Patch Testing |
-                            
-| HVAC | Heating, Ventilation, and Air Conditioning |
-                            
-| ICH | International Council for Harmonisation |
-                            
-| IH | Industrial Hygiene |
-                            
-| IOELV | Indicative Occupational Exposure Limit Value |
-                            
-| LLNA | Local Lymph Node Assay |
-                            
-| LOAEL | Lowest-Observed-Adverse-Effect Level |
-                            
-| LOEL | Lowest-Observed-Effect Level |
-                            
-| LOQ | Limit of Quantitation |
-                            
-| MAA | Marketing Authorization Application |
-                            
-| MAL | Material Air Lock |
-                            
-| MDD | Maximum Daily Dose |
-                            
-| MERV | Minimum Efficiency Reporting Value |
-                            
-| MHLW | Ministry of Health, Labour and Welfare (Japan) |
-                            
-| NDA | New Drug Application |
-                            
-| NIR | Near Infra-Red |
-                            
-| NOAEL | No-Observed-Adverse-Effect Level |
-                            
-| NOEL | No-Observed-Effect Level |
-                            
-| NSAID | Nonsteroidal Anti-inflammatory Drug |
-                            
-| OEB | Occupational Exposure Band |
-                            
-| OEL | Occupational Exposure Limit |
-                            
-| OSHA | Occupational Safety and Health Administration (US) |
-                            
-| OPQ | Office of Pharmaceutical Quality (US FDA CDER) |
-                            
-| PAL | Personnel Air Lock |
-                            
-| PAT | Process Analytical Technology |
-                            
-| PDE | Permitted Daily Exposure |
-                            
-| PEL | Permissible Exposure Limit |
-                            
-| PHA | Preliminary Hazard Analysis |
-                            
-| PIC/S | Pharmaceutical Inspection Convention / Pharmaceutical Inspection Cooperation Scheme |
-                            
-| PoD | Point-of-Departure |
-                            
-| PPE | Personal Protective Equipment |
-                            
-| Ppk | Process Performance Index |
-                            
-| QA | Quality Assurance |
-                            
-| QRM | Quality Risk Management |
-                            
-| QRMP | Quality Risk Management Plan |
-                            
-| RABS | Restricted Access Barrier System |
-                            
-| RfC | Reference Concentration |
-                            
-| RfD | Reference Dose |
-                            
-| RFID | Radio Frequency Identification |
-                            
-| RPE | Respiratory Protective Equipment |
-                            
-| RPN | Risk Priority Number |
-                            
-| RTP | Rapid Transfer Port |
-                            
-| SBV | Split Butterfly Valve |
-                            
-| SDS | Safety Data Sheet |
-                            
-| SME | Subject Matter Expert |
-                            
-| SOP | Standard Operating Procedure |
-                            
-| TI | Tolerable Intake |
-                            
-| TLV® | Threshold Limit Value |
-                            
-| TOC | Total Organic Carbon |
-                            
-| TTC | Threshold of Toxicological Concern |
-                            
-| WHO | World Health Organization |
-                            
-| WIP | Wash In Place |
-                        
-                    
-
-                
 
                 
 
@@ -16148,34 +14348,6 @@ MACO = (Smallest daily dose of product A × Batch size of product B) / (Largest 
 
 MACO (mg) = ADE (mg/day) × Batch size of next product (g) / Maximum daily dose of next product (g/day)
 
-                        
-
-                    
-
-                    
-
-                        
-
-#### OEB — Occupational Exposure Band
-
-                        
-
-                        
-                            
-| OEB | OEL μg/m³ | |
-| --- | --- | --- |
-                            
-                                
-| OEB 1 | > 1,000 | |
-                                
-| OEB 2 | 100–1,000 | |
-                                
-| OEB 3 | 10–100 | API |
-                                
-| OEB 4 | 1–10 | |
-                                
-| OEB 5 | < 1 | |
-                            
                         
 
                     
@@ -16249,6 +14421,16 @@ MACO (mg) = ADE (mg/day) × Batch size of next product (g) / Maximum daily dose 
             
 
         
+
+                        
+
+#### OEB — Occupational Exposure Band
+
+                        
+
+                        
+
+                    
 
     
 
@@ -16917,35 +15099,6 @@ A surface limit applied to external equipment and facility surfaces for the purp
 
                         
 
-#### 
-
-                        
-
-                        
-                            
-| --- | --- | --- |
-                            
-                                
-| | Dedicated Building/Facility | HVAC |
-                                
-| | Self Contained Area | //HVAC |
-                                
-| | Dedicated Area | |
-                                
-| | Dedicated Suite | |
-                                
-| | Segregation | |
-                                
-| | Campaign | |
-                            
-                        
-
-                    
-
-                    
-
-                        
-
 #### PoD— ADE
 
                         
@@ -17036,18 +15189,16 @@ A surface limit applied to external equipment and facility surfaces for the purp
 
         
 
-    
+                        
+
+#### 
+
+                        
+
+                        
+
+                    
 
     
-
-ISPE Baseline® Guide Volume 7 (2nd Edition): Risk-Based Manufacture of Pharmaceutical Products
-
-    
-
-Section 8 — Appendix 2: References & Appendix 3: Glossary | p163–p182
-
-    
-
-SterileGMP Knowledge Hub — Educational Reference | © ISPE 2017
 
 ↑

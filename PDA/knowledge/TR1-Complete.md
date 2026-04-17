@@ -651,49 +651,6 @@ Term usage may differ from company to company, and some terms may be subject to 
 
                         
 
-#### 
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| | (Overkill) | (Product-Specific) |
-| --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-| F0 | > 12 Fphysical Fbiological | PNSU ≤ 10–6 |
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-                            
-                        
-
-                    
-
-                    
-
-                        
-
 #### MAC vs Routine Cycle —
 
                         
@@ -863,45 +820,6 @@ Term usage may differ from company to company, and some terms may be subject to 
                     
 
 ### — ()
-
-                    
-
-                        
-
-#### 
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| Saturated Steam | | / |
-                                
-                                    
-                                    
-                                    
-                                
-| Steam-Air Mixture | - | |
-                                
-                                    
-                                    
-                                    
-                                
-| Superheated Water | | / |
-                            
-                        
-
-                    
 
                     
 
@@ -1236,21 +1154,6 @@ DT-value determination studies are usually necessary for:
                         
 
                         
-                            
-| --- | --- | --- |
-                            
-| 0 min | 1,000,000 (106) | |
-                            
-| 1 × D | 100,000 (105) | 90% |
-                            
-| 2 × D | 10,000 (104) | 90% |
-                            
-| 6 × D | 1 (100) | 1 |
-                            
-| 12 × D | 10−6 | SAL 10−6 |
-                        
-
-                        
 
                     
 
@@ -1262,48 +1165,6 @@ DT-value determination studies are usually necessary for:
 
                         
 
-                        
-
-                    
-
-                    
-
-                        
-
-#### D
-
-                        
-                            
-                                
-                                
-                                
-                            
-| | | Fraction-Negative |
-| --- | --- | --- |
-                            
-                                
-                                
-                                
-                            
-| | | quantal range |
-                            
-                                
-                                
-                                
-                            
-| | | / |
-                            
-                                
-                                
-                                
-                            
-| | | HSK |
-                            
-                                
-                                
-                                
-                            
-| | D | BI |
                         
 
                     
@@ -1417,18 +1278,6 @@ Like the D-value, the z-value is the negative reciprocal of the slope of this li
 
 #### z
 
-                        
-
-                        
-                            
-| | D | |
-| --- | --- | --- |
-                            
-| 104°C | 16.0 min | ↑ 8°CD ×10 |
-                            
-| 112°C | 1.6 min | |
-                            
-| 120°C | 0.16 min | ↑ 8°CD ÷10 |
                         
 
                         
@@ -1665,107 +1514,7 @@ FBIO = DT × LR
 
                         
 
-#### L
-
-                        
-
-                        
-                            
-| | L (z=10°C, Tref=121°C) |
-| --- | --- |
-                            
-| 100°C | 0.001 |
-                            
-| 110°C | 0.079 |
-                            
-| 121°C | 1.000 |
-                            
-| 130°C | 7.943 |
-                        
-
-                        
-
-                    
-
-                    
-
-                        
-
-#### F-
-
-                        
-
-                        
-                            
-                                
-                                
-                                
-                                
-                            
-| (min) | (°C) | L | F (min) |
-| --- | --- | --- | --- |
-                            
-| 0–4 | <100 | ≈0 | 0.000 |
-                            
-| 5 | 102 | 0.012 | 0.012 |
-                            
-| 6 | 112 | 0.123 | 0.135 |
-                            
-| 10 | 121 | 0.977 | 2.747 |
-                            
-| 11–12 | 121.5 | 1.096 | 4.939 |
-                            
-| 14 | 91 | 0.001 | 5.038 |
-                        
-
-                        
-
-                    
-
-                    
-
-                        
-
 #### F0 vs FBIO
-
-                        
-                            
-                                
-                                
-                                
-                            
-| | F0 () | FBIO () |
-| --- | --- | --- |
-                            
-                                
-                                
-                                
-                            
-| | - | BI/ |
-                            
-                                
-                                
-                                
-                            
-| | F = d × ΣL | FBIO = DT × LR |
-                            
-                                
-                                
-                                
-                            
-| Tref | 121°C | BID |
-                            
-                                
-                                
-                                
-                            
-| z | 10°C | BIz |
-                            
-                                
-                                
-                                
-                            
-                        
 
                         
 
@@ -1788,6 +1537,30 @@ FBIO = DT × LR
             
 
         
+
+                        
+
+#### L
+
+                        
+
+                        
+
+                    
+
+                    
+
+                        
+
+#### F-
+
+                        
+
+                        
+
+                    
+
+                    
 
     
 
@@ -1843,62 +1616,6 @@ The SAL (Sterility Assurance Level) of 10−6 is the internationally accepted st
                 
 
                 
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
-                            
-                                
-                                
-                                
-                            
-| | (Overkill) | (Bioburden-based) |
-| --- | --- | --- |
-                            
-                                
-                                
-                                
-                            
-| | FF0 ≥ 12 min | + D → F |
-                            
-                                
-                                
-                                
-                            
-                            
-                                
-                                
-                                
-                            
-| SAL | 10−6 | 10−6 |
-                            
-                                
-                                
-                                
-                            
-                            
-                                
-                                
-                                
-                            
-                            
-                                
-                                **
-                                
-                            
-| BI | G. stearothermophilus (D121 ≥ 1.5 min) | |
-                            
-                                
-                                
-                                
-                            
-                        
 
                     
 
@@ -2140,35 +1857,6 @@ Compendia (e.g., USP, PhEur) contain monographs defining BIs that may be used in
 
                         
 
-#### 
-
-                        
-                            
-                                
-                                
-                                
-                            
-| --- | --- | --- |
-                            
-                                
-                                **
-                                
-                            
-| Overkill | G. stearothermophilus | |
-                            
-                                
-                                ******
-                                
-                            
-| | C. sporogenesB. smithiiB. subtilis 5230 | |
-                        
-
-                    
-
-                    
-
-                        
-
 #### D-value —
 
                         
@@ -2297,58 +1985,6 @@ When chemical integrators are used, their advantages and limitations should be c
 #### 
 
                         
-                            
-                                
-                                  
-
-                                  
-
-                            
-| | Chemical Indicator | Chemical Integrator |
-| --- | --- | --- |
-                            
-                                ****
-                                
-                                
-                            
-                            
-                                ****
-                                
-                                
-                            
-| | | + + |
-                            
-                                ****
-                                
-                                
-                            
-                            
-                                ****
-                                
-                                
-                            
-                            
-                                ****
-                                
-                                
-                            
-| BI | | |
-                            
-                                ****
-                                
-                                
-                            
-                        
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
 
                     
 
@@ -2435,32 +2071,6 @@ At 2.0 atmospheres, when the temperature of the water reaches 121°C, it does no
 ### Saturated Steam Table (Key Excerpts)
 
                     
-                        
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| Temp (°C) | Pressure (bar) | Water hf (J/g) | Latent hfg (J/g) | Steam hg (J/g) |
-| --- | --- | --- | --- | --- |
-                        
-                        
-                            
-| 100 | 1.013 | 419 | 2256 | 2675 |
-                            
-| 115 | 1.692 | 483 | 2216 | 2699 |
-                            
-| 120 | 1.987 | 504 | 2202 | 2706 |
-                            
-| 121 | 2.026 | 508 | 2199 | 2707 |
-                            
-| 125 | 2.322 | 525 | 2188 | 2713 |
-                        
-                    
-
-                    
 
 * 1.0 Atmosphere = 1.013 bar = 14.71 psia. Latent heat = hg – hf
 
@@ -2505,54 +2115,6 @@ Radiation is the transfer of energy through electromagnetic waves. Radiant heat 
                     
 
 The flow of heat from the heating media to a sealed container is dependent on a number of factors including the temperature difference, the geometry and characteristics of the container, and the overall heat transfer coefficient.
-
-                    
-                        
-                            
-                                
-                                
-                                
-                                
-                                
-                            
-| Sterilization Process | Heat Transfer Rate | Circulation Required | Distribution Challenges | Load Considerations |
-| --- | --- | --- | --- | --- |
-                        
-                        
-                            
-                                ****
-                                
-                                
-                                
-                                
-                            
-| Saturated Steam | High | No | Low | P/HG & liquid loads not requiring overpressure |
-                            
-                                ****
-                                
-                                
-                                
-                                
-                            
-| Steam-Air Mixtures | Function of steam-to-air ratio & flow velocity | Yes | High | Liquid and P/HG loads requiring total pressure > saturated steam pressure |
-                            
-                                ****
-                                
-                                
-                                
-                                
-                            
-| Superheated Water (spray) | Moderately high (function of flow velocity) | Yes | Moderate | Liquid loads requiring overpressure |
-                            
-                                ****
-                                
-                                
-                                
-                                
-                            
-| Superheated Water (submersion) | High (function of flow velocity) | Yes | Moderate | Liquid loads requiring overpressure; large flexible packages |
-                        
-                    
 
                     
 
@@ -2634,48 +2196,6 @@ Softened, deionized, and purified water as defined in current compendia have all
                     
 
 ### | Commentary
-
-                    
-
-                        
-
-#### 
-
-                        
-                            
-                                
-                                
-                                
-                                
-                            
-| --- | --- | --- | --- |
-                            
-                                ****  
-
-                                
-                                
-                                
-                            
-| Plant Steam | | | |
-                            
-                                ****  
-
-                                
-                                
-                                
-                            
-| Process Steam | | | WFI |
-                            
-                                ****  
-
-                                
-                                ****
-                                
-                            
-| Pure Steam | WFI | / | |
-                        
-
-                    
 
                     
 
@@ -2833,48 +2353,6 @@ The principal causes of superheat are:
 #### 
 
                         
-                            
-                                
-                                
-                                
-                                
-                            
-| --- | --- | --- | --- |
-                            
-                                ****  
-
-                                
-                                
-                                
-                            
-| Noncondensable Gases | N₂CO₂ | < 3.5% (EN 285) | |
-                            
-                                ****  
-
-                                
-                                
-                                
-                            
-| Dryness Fraction | 0=1= | ≥ 0.95 (EN 285) | 0.95 |
-                            
-                                ****  
-
-                                
-                                
-                                
-                            
-| Superheat | | ≤ 25°CEN 285 | |
-                        
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
 
                         
 
@@ -2908,34 +2386,6 @@ The principal causes of superheat are:
 
                         
 
-                        
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
-                            
-                                
-                                
-                            
-| --- | --- |
-                            
-                                
-                                
-                            
-                            
-                                
-                                
-                            
-                            
-                                
-                                
-                            
                         
 
                     
@@ -3045,18 +2495,6 @@ Key takeaways from process indicators and thermal science
         
 
     
-
-    
-
-PDA Technical Report No. 1 (Revised 2007): Validation of Moist Heat Sterilization Processes
-
-    
-
-SterileGMP Knowledge Hub — Bilingual Educational Series
-
-    
-
-Section 2: Process Indicators & Thermal Science | Sections 3.2–3.3 | Pages 15–23
 
 ⇧
 
@@ -3233,61 +2671,6 @@ Using a lower thermal input also has the added benefit of providing greater stab
                     
 
 ### 
-
-                    
-
-                        
-
-#### 
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| | (Overkill) | (Product-Specific) |
-| --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| | | heat-labile |
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-| | | DN₀ |
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-| PNSU | 10⁻⁶ | 10⁻⁶ |
-                            
-                        
-
-                    
 
                     
 
@@ -3810,44 +3193,6 @@ Porous/hard goods loads, as used in the pharmaceutical industry, encompass true 
 
                         
 
-#### 
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| (Porous) | | |
-                                
-                                    
-                                    
-                                    
-                                
-| (Hard Goods) | | |
-                                
-                                    
-                                    
-                                    
-                                
-                            
-                        
-
-                    
-
-                    
-
-                        
-
 #### Cold Spot
 
                         
@@ -4024,39 +3369,6 @@ For moist heat sterilization, two major types of processes are typically used: s
 
                     
 
-                        
-
-#### vs.
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| | / | SFPP |
-                                
-                                    
-                                    
-                                    
-                                
-| | | -SAM |
-                            
-                        
-
-                    
-
-                
-
             
 
         
@@ -4135,61 +3447,6 @@ Gravity displacement sterilizers are less efficient in air removal than other de
                     
 
 ### 
-
-                    
-
-                        
-
-#### vs.
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| | /SFPP | |
-| --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-| | 399.9% | |
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-| | TR1 | |
-                                
-                                    
-                                    
-                                    
-                                
-| | → → → → | → → |
-                                
-                                    
-                                    
-                                    
-                                
-                            
-                        
-
-                    
 
                     
 
@@ -4337,65 +3594,6 @@ The primary quality attribute of the water used is the microbial content. The wa
                     
 
 ### 
-
-                    
-
-                    
-
-                        
-
-#### SAM vs.
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| | - (SAM) | / |
-| --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| | + | |
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-| / | | |
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-                            
-                        
 
                     
 
@@ -4788,28 +3986,6 @@ After the operational qualification and prior to beginning the performance quali
 
                         
 
-#### 
-
-                        
-                            
-                                
-| --- | --- |
-                            
-                            
-                                
-                                
-                                
-                                
-| / | |
-                            
-                        
-
-                    
-
-                    
-
-                        
-
 #### Bracketing Approach
 
                         
@@ -4846,68 +4022,12 @@ One of the more crucial aspects of cycle development is to identify operating pa
 **Key parameters** assure the ongoing "state of control" of sterilization runs. The failure to meet a key process parameter should result in an investigation with a documented rationale for the disposition of the load.
 
                     
-                        
-                            
-| Phase | Parameter | Classification |
-| --- | --- | --- |
-                        
-                        
-                            
-| All | Jacket Temperature / Pressure | Key |
-                            
-| Heat-Up | Number & Range of Vacuum Pulses | Critical |
-                            
-| Heat-Up | Number & Range of Positive Pulses | Key |
-                            
-| Heat-Up | Chamber Heat-Up Time | Monitored |
-                            
-| Exposure | Exposure Time | Critical |
-                            
-| Exposure | Exposure Phase Temperature Set Point | Critical |
-                            
-| Exposure | Independent Drain/Chamber Temperature | Critical |
-                            
-| Exposure | Chamber Pressure During Exposure | Potentially Critical |
-                            
-| Exposure | Minimum Load Probe F0 | Critical (if probes used) |
-                            
-| Cool-Down | Drying Time | Key |
-                            
-| Cool-Down | Vacuum Break Rate | Potentially Key |
-                        
-                    
-
-                
 
                 
 
                     
 
 ### vs
-
-                    
-
-                        
-
-#### 
-
-                        
-                            
-                                
-| | (Critical) | (Key) |
-| --- | --- | --- |
-                            
-                            
-                                
-| | / | |
-                                
-| | Reject Load | + |
-                                
-| | F₀ | |
-                            
-                        
-
-                    
 
                     
 
@@ -5256,30 +4376,6 @@ The following factors should be considered when developing sterilization cycles 
 
                     
 
-                        
-
-#### vs
-
-                        
-                            
-                                
-| | | / |
-| --- | --- | --- |
-                            
-                            
-                                
-                                
-| | + | |
-                                
-| | | Drying |
-                                
-                            
-                        
-
-                    
-
-                
-
             
 
             
@@ -5480,48 +4576,6 @@ At the conclusion of these trials, load patterns and qualification monitoring lo
 An important aspect of cycle development is to identify operating parameters in order to meet process design objectives and to determine if they are critical or key parameters. Table 4.4.2.3-1 lists various parameter considerations for liquid loads.
 
                     
-                        
-                            
-| Phase | Parameter | Classification |
-| --- | --- | --- |
-                        
-                        
-                            
-| All | Jacket Temp / Pressure | Monitored |
-                            
-| All | Fan RPM (SAM Process) | Key |
-                            
-| All | Agitation/Rotation Rate | Key |
-                            
-| All | Superheated Water Recirculation Flow Rate | Key |
-                            
-| Heat-Up | Chamber Water Level (Superheated Water) | Potentially Key |
-                            
-| Heat-Up | Chamber Heat-Up Time | Potentially Key |
-                            
-| Heat-Up | Chamber Heat-Up Rate (°C/min) | Potentially Key |
-                            
-| Heat-Up | Pressure Increase Rate | Potentially Key |
-                            
-| Exposure | Temperature Set Point | Critical |
-                            
-| Exposure | Exposure Time | Critical |
-                            
-| Exposure | Chamber Pressure During Exposure | Potentially Critical |
-                            
-| Exposure | Independent Heating Media Temp | Critical |
-                            
-| Exposure | Minimum Load Probe F0 | Critical (if probes used) |
-                            
-| Cool-Down | Maximum Load Probe F0 | Potentially Key |
-                            
-| Cool-Down | Temperature Decrease Rate (°C/min) | Controller Function |
-                            
-| Cool-Down | Pressure Decrease Rate | Potentially Key |
-                        
-                    
-
-                
 
                 
 
@@ -6302,41 +5356,6 @@ To evaluate the correlation between Fphys and Fbio, biological indicators should
 
                         
 
-#### 
-
-                        
-                            
-                                
-                                
-                                
-                            
-| --- | --- | --- |
-                            
-                                
-                                
-                                
-                            
-| Total Kill | MAC | NF = 0 BI |
-                            
-                                
-                                
-                                
-                            
-| Fractional | MAC | NF < |
-                            
-                                
-                                
-                                
-                            
-| Half-Cycle | 50% MAC | BI |
-                        
-
-                    
-
-                    
-
-                        
-
 #### BI
 
                         
@@ -6494,56 +5513,6 @@ In addition to meeting the above acceptance criteria, the overall qualification 
 
 #### 
 
-                        
-
-                    
-
-                    
-
-                        
-
-#### vs
-
-                        
-                            
-                                
-                                
-                                
-                            
-| --- | --- | --- |
-                            
-                                
-                                
-                                
-                            
-| | F0 | |
-                            
-                                
-                                
-                                
-                            
-| | F0 | |
-                            
-                                
-                                
-                                
-                            
-                            
-                                
-                                
-                                
-                            
-                            
-                                
-                                
-                                
-                            
-                            
-                                
-                                
-                                
-                            
-| | / | |
                         
 
                     
@@ -6831,47 +5800,6 @@ In the event that load size is expected to vary for operational flexibility, **m
 
                         
 
-#### 
-
-                        
-                            
-                                
-                                
-                                
-                            
-| --- | --- | --- |
-                            
-                                
-                                
-                                
-                            
-| | BI / | |
-                            
-                                
-                                
-                                
-                            
-| / | + AND + | |
-                            
-                                
-                                
-                                
-                            
-| | | / |
-                            
-                                
-                                
-                                
-                            
-| | AND | |
-                        
-
-                    
-
-                    
-
-                        
-
 #### vs
 
                         
@@ -6940,52 +5868,6 @@ Physical vs Biological Qualification — Key Differences and Interdependencies
                     
 
 ### Physical vs Biological Qualification — Comparison
-
-                    
-                        
-                            
-                            
-                            
-                        
-| Aspect | Physical Qualification | Biological Qualification |
-| --- | --- | --- |
-                        
-                            
-                            
-                            
-                        
-| Primary Tool | Temperature probes (thermocouples) | Biological indicators (BIs) |
-                        
-                            
-                            
-                            
-                        
-| What It Measures | Heat input (F0 calculated) | Actual microbial kill (log reduction) |
-                        
-                            
-                            
-                            
-                        
-| Probe Placement | Cold spots; not touching sterilizer hardware | Slowest-to-heat locations; near thermal probes |
-                        
-                            
-                            
-                            
-                        
-| Key Output | Fphys distribution across load | Fbio and spore log reduction |
-                        
-                            
-                            
-                            
-                        
-| Alone Sufficient? | No — must be paired with biological data | No — must be paired with physical data |
-                        
-                            
-                            
-                            
-                        
-| Acceptance Criteria | Minimum F0, max variation, equilibration time | Log reduction target, positive/negative controls |
-                    
 
                     
 
@@ -7102,40 +5984,6 @@ Log N0 = Log NF + F/D
 #### 
 
                         
-                            
-                                
-                                
-                                
-                            
-| --- | --- | --- |
-                            
-                                
-                                
-                                
-                            
-| | // | |
-                            
-                                
-                                
-                                
-                            
-| | | + IQ/OQ |
-                            
-                                
-                                
-                                
-                            
-                        
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
 
                         
 
@@ -7156,16 +6004,6 @@ Log N0 = Log NF + F/D
         
 
     
-
-    
-
-PDA Technical Report No. 1 (Revised 2007): Validation of Moist Heat Sterilization Processes
-
-    
-
-    
-
-SterileGMP Knowledge Hub — Educational Reference Only
 
 ⇧
 
@@ -7349,95 +6187,6 @@ Operational parameter review is essential, regardless of whether the materials p
 
                         
 
-#### vs.
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-                                    **  
-**
-                                    
-                                    
-                                
-| Critical Parameter | | |
-                                
-                                    **  
-**
-                                    
-                                    
-                                
-| Key Parameter | | |
-                            
-                        
-
-                    
-
-                    
-
-                        
-
-#### vs. BI —
-
-                        
-                            
-                                
-                                    
-                                      
-
-                                      
-
-                                
-| | Parametric Release | BIBI Sterility Testing |
-| --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| | F0 | |
-                                
-                                    
-                                    
-                                    
-                                
-| | FDA/EMA | |
-                                
-                                    
-                                    
-                                    
-                                
-| | LVP | |
-                                
-                                    
-                                    
-                                    
-                                
-| | | 7–14 |
-                                
-                                    
-                                    
-                                    
-                                
-| | FDA CFR 211.167(b) | USP <71> |
-                            
-                        
-
-                    
-
-                    
-
-                        
-
 #### 
 
                         
@@ -7526,55 +6275,6 @@ Examples of system suitability evaluations include:
                     
 
 ### 
-
-                    
-
-                        
-
-#### 
-
-                        
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-                                    ****  
-
-                                    
-                                    
-                                
-| Air Removal Test | | |
-                                
-                                    ****  
-
-                                    
-                                    
-                                
-| Chamber Leak Test | | |
-                                
-                                    ****  
-
-                                    
-                                    
-                                
-| Air Detector Device | | / |
-                                
-                                    ****  
-
-                                    
-                                    
-                                
-| /CI / Integrator | / | |
-                            
-                        
-
-                    
 
                     
 
@@ -7717,61 +6417,6 @@ A change control package should identify qualification documents affected by the
 #### 
 
                         
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                    
-                                
-| / | | |
-                                
-                                    
-                                    
-                                    
-                                
-| / | | |
-                                
-                                    
-                                    
-                                    
-                                
-| / | | |
-                                
-                                    
-                                    
-                                    
-                                
-| // | | |
-                                
-                                    
-                                    
-                                    
-                                
-                            
-                        
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
 
                             
 
@@ -7875,53 +6520,6 @@ A review of change control documentation should be conducted as part of the requ
                     
 
 ### 
-
-                    
-
-                        
-
-#### 
-
-                        
-                            
-                                
-                                    
-                                    
-                                
-| --- | --- |
-                            
-                            
-                                
-                                    ****
-                                    
-                                
-| | 12 |
-                                
-                                    ****
-                                    
-                                
-                                
-                                    ****
-                                    
-                                
-                                
-                                    ****
-                                    
-                                
-| | / |
-                                
-                                    ****
-                                    
-                                
-                                
-                                    ****
-                                    
-                                
-| | 6.3 |
-                            
-                        
-
-                    
 
                     
 
@@ -8067,63 +6665,6 @@ Standards, textbooks, and regulatory guidance cited in PDA TR1 (2007)
 #### 
 
                         
-                            
-                                
-                                    
-                                    
-                                    
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-                                    ****
-                                    
-                                    
-                                
-| ISO | 1–3, 5–8, 12, 23 | / |
-                                
-                                    ****
-                                    
-                                    
-                                
-| USP | 4, 11, 22 | |
-                                
-                                    ****
-                                    
-                                    
-                                
-| PDA/Pflug | 13, 16, 17, 21 | |
-                                
-                                    ****
-                                    
-                                    
-                                
-| FDA | 24 | cGMP 2004 |
-                                
-                                    ****
-                                    
-                                    
-                                
-| | 18, 19, 20 | |
-                                
-                                    ****
-                                    
-                                    
-                                
-| | 9, 10, 14, 15, 25, 26 | D/z |
-                            
-                        
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
 
                             
 
@@ -8152,17 +6693,5 @@ Standards, textbooks, and regulatory guidance cited in PDA TR1 (2007)
         
 
     
-
-    
-
-PDA Technical Report No. 1 (Revised 2007): Validation of Moist Heat Sterilization Processes
-
-    
-
-SterileGMP Knowledge Hub — Educational Reference Material
-
-    
-
-Section 6: Ongoing Process Control & References | For training purposes only
 
 ⇧

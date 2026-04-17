@@ -462,60 +462,6 @@ Standard abbreviations used in TR65
 ### 2.1 Abbreviations
 
                     
-                        
-                            
-| Abbreviation | Full Term |
-| --- | --- |
-                        
-                        
-                            
-| APR | Annual product report |
-                            
-| CAR | Capital appropriation request |
-                            
-| CDMO | Contract development and manufacturing organization |
-                            
-| CMC | Chemical, manufacturing, and controls |
-                            
-| CMO | Contract manufacturing organization |
-                            
-| EHS | Environment, health, and safety |
-                            
-| FAT | Factory acceptance test |
-                            
-| GMP | Good manufacturing practices |
-                            
-| KM | Knowledge management |
-                            
-| KT | Knowledge transfer |
-                            
-| MAH | Marketing authorization holder |
-                            
-| PAI | Preapproval inspection |
-                            
-| PM | Project manager |
-                            
-| PPQ | Process performance qualification |
-                            
-| QTPP | Quality target product profile |
-                            
-| RU | Receiving unit |
-                            
-| SAT | Site acceptance test |
-                            
-| SME | Subject matter expert |
-                            
-| SU | Sending unit |
-                            
-| TT | Technology transfer |
-                            
-| URS | User requirements specification |
-                            
-| VMP | Validation master plan |
-                        
-                    
-
-                
 
                 
 
@@ -698,7 +644,7 @@ Although this section describes all types of TTs, this technical report focuses 
 
                     
 
-Figure 3.1-1: Pharmaceutical Product Lifecycle
+Figure 3.1-1🔍: Pharmaceutical Product Lifecycle
 
                     
 
@@ -759,7 +705,7 @@ Post-Market
 
                 
 
-Figure 3.1-1: Technology transfers occur at multiple transition points throughout the pharmaceutical product lifecycle.
+Figure 3.1-1🔍: Technology transfers occur at multiple transition points throughout the pharmaceutical product lifecycle.
 
             
 
@@ -806,30 +752,6 @@ In TTs involving a marketed product, the original or current manufacturing locat
                     
 
 ### Commentary
-
-                    
-
-                        
-
-#### 
-
-                        
-                            
-                                
-| | CMC | | TR65 |
-| --- | --- | --- | --- |
-                            
-                            
-                                
-| Clinical-Clinical | | + | |
-                                
-| Development-Commercial | | + | |
-                                
-| Commercial-Commercial | | vs. | |
-                            
-                        
-
-                    
 
                     
 
@@ -1217,18 +1139,6 @@ Key takeaways from Section 0 (p1–p5)
 
     
 
-    
-
-PDA Technical Report No. 65 (Revised 2022): Technology Transfer
-
-    
-
-Section 0: Introduction, Glossary & TT Types | p1–p5
-
-    
-
-Educational material for internal training use. Source: © 2022 Parenteral Drug Association, Inc.
-
 ⇧
 
 ## Section 1: TT Process & Oversight (p6-p9)
@@ -1467,35 +1377,6 @@ In every TT, assessing and managing risks is essential. A mature quality risk ma
 #### 
 
                         
-                            
-                                
-| --- | --- | --- |
-                            
-                            
-                                ****
-| 1. Initiation | | Facility Fit TT |
-                                ****
-| 2. Planning | | TT Charter |
-                                ****
-| 3. KT | | |
-                                ****
-| 4. Readiness | | |
-                                ****
-| 5. Execution | | PPQ |
-                                ****
-| 6. Handover | | |
-                            
-                        
-
-                    
-
-                    
-
-                        
-
-#### 
-
-                        
 
                     
 
@@ -1556,7 +1437,7 @@ In every TT, assessing and managing risks is essential. A mature quality risk ma
 
                 
 
-Table 4.1-1: TT cross-functional roles matrix
+Table 4.1-1🔍: TT cross-functional roles matrix
 
             
 
@@ -1574,7 +1455,7 @@ Table 4.1-1: TT cross-functional roles matrix
 
                     
 
-A successful TT requires the engagement of experts from cross-functional areas as well as strong project management. Table 4.1-1 outlines the basic functional roles that maintain responsibilities throughout a TT and should be represented on a TT team. Because each company is organized differently, the labels for these functions may differ from one organization to the next.
+A successful TT requires the engagement of experts from cross-functional areas as well as strong project management. Table 4.1-1🔍 outlines the basic functional roles that maintain responsibilities throughout a TT and should be represented on a TT team. Because each company is organized differently, the labels for these functions may differ from one organization to the next.
 
                     
 
@@ -1582,65 +1463,7 @@ More detailed information about these roles is provided in Section 5.0, and the 
 
                     
 
-#### Table 4.1-1: TT Cross-Functional Roles
-
-                    
-                        
-                            
-                                
-                                
-                            
-| Function | Description |
-| --- | --- |
-                        
-                        
-                            
-                                ****
-                                
-                            
-| Business | Strategy, marketing, finance, legal, sales |
-                            
-                                ****
-                                
-                            
-| TT PM | Leads the overall TT effort. There also should be PMs at each involved site to support the TT |
-                            
-                                ****
-                                
-                            
-| Process | Process chemistry and engineering, process performance qualification, validation1 |
-                            
-                                ****
-                                
-                            
-| Analytical | Raw material, in-process controls, product, stability (development and quality control) |
-                            
-                                ****
-                                
-                            
-| Engineering | Capital installation and qualification, equipment maintenance |
-                            
-                                ****
-                                
-                            
-| Manufacturing | Plant operations and EHS (environment, health, and safety regulations) |
-                            
-                                ****
-                                
-                            
-| Regulatory | Health authority strategy and filing |
-                            
-                                ****
-                                
-                            
-| Quality | QMS requirements, inspection readiness (i.e., PAI) |
-                            
-                                ****
-                                
-                            
-| Sourcing/Supply Chain | Material sourcing, production planning, logistics |
-                        
-                    
+#### Table 4.1-1🔍: TT Cross-Functional Roles
 
                     
 
@@ -1783,7 +1606,7 @@ One PM must be the primary coordinator for the project. This technical report re
 
                 
 
-Figure 4.2-1: Typical TT project structure and governance
+Figure 4.2-1🔍: Typical TT project structure and governance
 
             
 
@@ -1798,7 +1621,7 @@ Figure 4.2-1: Typical TT project structure and governance
 
                     
 
-Figure 4.2-1: Typical TT Project Structure
+Figure 4.2-1🔍: Typical TT Project Structure
 
                     
 
@@ -1856,7 +1679,7 @@ Primary implementer: Planning through Handover
 
                         
 
-Each team has cross-functional representation (Table 4.1-1)
+Each team has cross-functional representation (Table 4.1-1🔍)
 
                     
 
@@ -1864,7 +1687,7 @@ Each team has cross-functional representation (Table 4.1-1)
 
                 
 
-Figure 4.2-1: Typical TT project governance structure showing accountability from Project Sponsor through Steering Committee to TT Teams (TR65, p9)
+Figure 4.2-1🔍: Typical TT project governance structure showing accountability from Project Sponsor through Steering Committee to TT Teams (TR65, p9)
 
             
 
@@ -1911,29 +1734,6 @@ When a TT Team finds information during a stage that may change the TT boundarie
                     
 
 ### Commentary
-
-                    
-
-                        
-
-#### 
-
-                        
-                            
-                                
-| --- | --- | --- |
-                            
-                            
-                                ****
-| Project Sponsor | | TT |
-                                ****
-| Steering Committee | | Stage Gate |
-                                ****
-| TT PM + Teams | | |
-                            
-                        
-
-                    
 
                     
 
@@ -2242,75 +2042,6 @@ Figure 5.0-1: Reference Guide to TT Activities and Deliverables (Schematic)
                     
 
                         
-                            
-                                
-                                    
-                                      
-
-                                      
-
-                                      
-
-                                      
-
-                                      
-
-                                      
-
-                                
-| Function | Stage 1Initiation | Stage 2Planning | Stage 3KT | Stage 4Readiness | Stage 5Execution | Stage 6Handover |
-| --- | --- | --- | --- | --- | --- | --- |
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| Business | Business case & site selection | TT Charter inputs | — | — | Regulatory filing strategy | Market launch |
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| Process | Capability assessment | Risk assessment | Process documents transfer | Eng. batches | PPQ batches | Handover package |
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| Analytical | — | Method inventory | Method transfer protocols | Method qualification | Release testing | Stability program |
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                
-| Quality | QMS gap assessment | Quality agreement | SOPs / batch records | Training & audit readiness | PAI readiness | Handover QA sign-off |
-                                
-                                    
-                                    
-                                
-| ...etc. | Engineering, Manufacturing, Regulatory, Business, Sourcing/Supply Chain — each with activities per stage |
-                            
-                        
-
-                    
 
                     
 
@@ -2463,10 +2194,10 @@ Key takeaways from Section 1 (p6–p9)
 - **4.0 Six-Stage Process:** Initiation → Planning → Knowledge Transfer → Readiness → Execution → Handover. Each stage has a Stage Gate requiring Steering Committee approval.
 
                         
-- **4.1 Cross-Functional Roles (Table 4.1-1):** Nine functions: Business, TT PM, Process, Analytical, Engineering, Manufacturing, Regulatory, Quality, Sourcing/Supply Chain. TT agreement documents responsibilities.
+- **4.1 Cross-Functional Roles (Table 4.1-1🔍):** Nine functions: Business, TT PM, Process, Analytical, Engineering, Manufacturing, Regulatory, Quality, Sourcing/Supply Chain. TT agreement documents responsibilities.
 
                         
-- **4.2 Governance Structure (Figure 4.2-1):** Three levels — Project Sponsor (accountability to business), Steering Committee (decision authority), TT Teams at SU and RU. Immediate escalation of boundary-changing information required.
+- **4.2 Governance Structure (Figure 4.2-1🔍):** Three levels — Project Sponsor (accountability to business), Steering Committee (decision authority), TT Teams at SU and RU. Immediate escalation of boundary-changing information required.
 
                         
 - **4.3 TT Charter:** 11 elements including success factors, business assumptions, timeline, regulatory strategy. Charter changes after Planning require Steering Committee approval.
@@ -2534,18 +2265,6 @@ Key takeaways from Section 1 (p6–p9)
 
     
 
-    
-
-PDA Technical Report No. 65 (Revised 2022): Technology Transfer
-
-    
-
-Section 1: TT Process & Oversight | p6–p9
-
-    
-
-Educational material for internal training use. Source: © 2022 Parenteral Drug Association, Inc.
-
 ⇧
 
 ## Section 2a: Initiation Stage (p10-p18)
@@ -2571,7 +2290,7 @@ The Initiation stage covers the process of determining whether the TT of CMC act
 
             
 
-A PM should be assigned to facilitate RU site selection and to develop the initial charter. This stage results in a decision on whether to perform the TT, the choice of an RU site, the formation of a steering committee, and the development of an initial TT charter as well as an overall product strategy, including business and regulatory considerations. Table 5.1-1, excerpted from the Reference Guide (Figure 5.0-1), shows the activities and deliverables for the Initiation stage.
+A PM should be assigned to facilitate RU site selection and to develop the initial charter. This stage results in a decision on whether to perform the TT, the choice of an RU site, the formation of a steering committee, and the development of an initial TT charter as well as an overall product strategy, including business and regulatory considerations. Table 5.1-1🔍, excerpted from the Reference Guide (Figure 5.0-1), shows the activities and deliverables for the Initiation stage.
 
         
 
@@ -3393,7 +3112,7 @@ The Sourcing/Supply Chain function develops initial capacity-planning models usi
 
             
 
-Table 5.1.10-1 details additional ideas for consideration as well as best practices for the Initiation stage.
+Table 5.1.10-1🔍 details additional ideas for consideration as well as best practices for the Initiation stage.
 
         
 
@@ -3422,7 +3141,7 @@ Table 5.1.10-1 details additional ideas for consideration as well as best practi
 
         
 
-## Table 5.1-1: Initiation Stage Activities and Deliverables
+## Table 5.1-1🔍: Initiation Stage Activities and Deliverables
 
         
 
@@ -3431,129 +3150,6 @@ Excerpted from Figure 5.0-1 — Reference Guide to Technology Transfer Activitie
         
 
         
-            
-                
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                
-| Stage | Business | TT PM | Process | Analytical | Engineering | Manufacturing | Regulatory | Quality | Sourcing / Supply Chain |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-            
-            
-                
-                      
-
-                    
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-
-                    
-- 
-- 
-- 
-- 
-
-                    
-- 
-- 
-- 
-- 
-
-                    
-- 
-- 
-
-                    
-- 
-- 
-- 
-- 
-
-                    
-- 
-- 
-
-                    
-- 
-
-                    
-- 
-
-                    
-- 
-- 
-- 
-
-                
-| InitiationActivities | Develop Business Case                             Evaluate Market Requirements                             Perform Patent Review                             Perform Due Diligence                             Develop Product Strategy                             Drive RU Selection Decision                             Obtain NDA / Confidentiality Agreements | Coordinate SME Assessments                             Identify TT Project Manager                             Perform Initial Risk Assessment                             Develop/Update Project Plan | Determine Preliminary Process Flow                             Define Batch Size                             Develop/Obtain SU QTPP and Product Specifications                             Identify Scale-Up Needs | Perform Initial Method Evaluation                             Evaluate Laboratory Capabilities | Perform Permit Reviews (Licenses, Construction)                             Evaluate SU and RU Site Capabilities                             Estimate Capital Requirements                             Evaluate Manufacturing Process Equipment Requirements | Perform Permit Reviews (EHS)                             Assess EHS Requirements | Develop Regulatory Strategy | Perform RU Quality Assessment(s) | Perform RU Capacity Analysis                             Evaluate Material Sourcing                             Determine Requirements for Tightly Regulated Materials |
-                
-                    
-                
-|  |
-                
-                    
-                    
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-
-                    
-- 
-- 
-- 
-
-                    
-- 
-- 
-- 
-
-                    
-- 
-- 
-
-                    
-- 
-- 
-- 
-
-                    
-- 
-- 
-
-                    
-- 
-- 
-
-                    
-- 
-
-                    
-- 
-- 
-
-                
-| Deliverables | Business Case                             Product Strategy                             Patent Review Report                             RU Due Diligence Report                             Non-Disclosure and/or Confidentiality Agreements                             RU Site Selection                             Steering Committee Formed | Initial TT Charter                             High-Level Project Plan                             Risk Assessment Report | Process Flow / Description                             Process Fit / Gap Assessment                             Product QTPP | Laboratory Evaluation Report                             Methods Evaluation Report | Facility Fit Assessment                             Capital Estimate                             Permit Requirements | EHS Viability Report                             Permit Requirements | Regulatory Strategy                             Regulatory Approval Timing | Quality Assessment(s) | Preliminary Product Supply Chain Strategy, Including Map                             Critical Material List |
-            
-        
-
-        
 
     
 
@@ -3562,112 +3158,8 @@ Excerpted from Figure 5.0-1 — Reference Guide to Technology Transfer Activitie
 
         
 
-## Table 5.1.10-1: Best Practices and Additional Suggestions for the Initiation Stage
+## Table 5.1.10-1🔍: Best Practices and Additional Suggestions for the Initiation Stage
 
-        
-
-        
-            
-                
-                    
-                    
-                    
-                
-| Topic | Details | |
-| --- | --- | --- |
-            
-            
-                
-                    
-                    
-                    
-                
-| Establish a steering committee | Establish the steering committee early to ensure that the steering committee, site leadership (if applicable), and executive leadership understand the project scope and requirements and that the steering committee is ready to respond as the primary escalation channel early in the project. | |
-                
-                    
-                    
-                    
-                
-| Develop project charter | At this stage, the project charter may be a simplified document summarizing the project's key requirements and scope that can be further defined as the project progresses. | |
-                
-                    
-                    
-- 
-- 
-- 
-- 
-
-                    
-                
-| Document agreements and contracts | Ensure a documented plan specifies who is responsible and accountable for specific activities to avoid assumptions, missed requirements, or misalignment. Describe strategies in the charter that represent the full scope of the project — avoid documenting only short-term needs. Some aspects of the charter may be included in contractual agreements for clarity. Draft an initial regulatory strategy, including the expected approval timeline for the submission. | |
-                
-                    
-                    
-- 
-- 
-
-                    
-                
-| Involve key functions early | Involve key functions and personnel early during the Initiation stage to review the project requirements. This can help avoid missed requirements or changes to scope later in the project. Leverage expertise and lessons learned, if possible, from personnel with experience transferring products and with experience in the existing process. | |
-                
-                    
-                    
-- 
-- 
-- 
-
-                    
-                
-| Ensure adequate talent, expertise, and focus on TT team | Ensure the TT Team includes all key functions and expertise pertinent to the project and that team members have appropriate experience with transferring a product. Ensure personnel on the TT Team are either dedicated to the project or are held strictly accountable for their deliverables to prevent inattention to key details at critical times. Develop a backup plan to mitigate the potential loss of key personnel. | TT |
-                
-                    
-                    
-- 
-- 
-
-                    
-                
-| Utilize risk management | Use risk management tools to assess and document risks related to the process requirements, facility selection (e.g., gap assessment with process requirements), safety assessment, and quality requirements. Document formally the assessment of project and company requirements for the product being transferred, record any risks identified, standardize the risk classification of findings, and describe mitigation strategies or actions required. Include formal alignment of the steering committee and/or TT Team. | |
-                
-                    
-                    
-- 
-- 
-- 
-- 
-
-                    
-                
-| Identify and plan for long-lead items | Consider use of process analytical technology (PAT) as a component of the process control strategy and implement PAT as early in development as possible for new products. Identify long-lead equipment. Ensure critical path workstreams have a clear plan for the start and completion of activities. Identify and develop a plan for filling key project leadership positions to ensure personnel are in place and trained in time. | |
-                
-                    
-                    
-- 
-- 
-- 
-- 
-
-                    
-                
-| Develop checklists | Prepare a checklist to assist in leveraging lessons learned from previous TTs. Use checklists for (1) requirements pertaining to capability, equipment, material, quality, safety, or personnel, and (2) documentation of procedural, physical, automation, and process requirements. A checklist may define documents or information to collect from facilities, teams, or third parties. Another checklist may define included documents to share across SU and RU to compare needs as the TT project launches. | ///// SU-RU |
-                
-                    
-                    
-                    
-                
-| Arrange adequate funding | Ensure that the project budget takes into account contingencies, such as changes to the scope of the project or the addition of any equipment, activity, resource, or requirement that may have been missed in planning. Revisit the budget assumptions regularly. | |
-                
-                    
-                    
-- 
-- 
-- 
-- 
-
-                    
-                
-| Consider other concurrent and near-future projects in planning | Check how other projects might impact the project timeline and plan accordingly, paying special attention to shared work centers (e.g., Analytical, Regulatory). Forecast resource capacity requirements and confirm timeline expectations as early as possible, covering the full scope of the project. Verify internal and external (as applicable) commitment to the project and identify any risks with resources and timing. Ensure that all involved parties are transparent in their needs for the key milestones, drivers, and ability to deliver. | |
-            
         
 
         
@@ -3727,44 +3219,7 @@ The Initiation Stage answers the fundamental question: *Should we perform this T
 
             
 
-                
-
-                    
-
-#### The 9 Functional Areas — Quick Reference ()
-
-                    
-                        
-                            
-                                
-                                
-                            
-| Function | Core Task in Initiation |
-| --- | --- |
-                        
-                        
-                            
-| Business | Business case, RU selection, NDA/CDA |
-                            
-| TT PM | Charter establishment, risk assessment coordination, site selection facilitation |
-                            
-| Process | Preliminary process flow, QTPP, batch size, process fit/gap assessment |
-                            
-| Analytical | Method evaluation, lab capability assessment |
-                            
-| Engineering | Facility fit assessment, capital estimate |
-                            
-| Manufacturing | Capability assessment, EHS evaluation |
-                            
-| Regulatory | Regulatory strategy, filing category, RU regulatory due diligence |
-                            
-| Quality | Quality/GMP due diligence of potential RUs |
-                            
-| Sourcing/SC | Capacity model, critical material list, supply chain strategy |
-                        
-                    
-
-                
+    
 
                 
 
@@ -3787,20 +3242,6 @@ The Initiation Stage answers the fundamental question: *Should we perform this T
             
 
         
-
-    
-
-    
-
-PDA Technical Report No. 65 (Revised 2022): Technology Transfer
-
-    
-
-Section 2a: Initiation Stage (5.1) | p10–p21
-
-    
-
-Educational material — Licensed content for internal learning use only.
 
 ⇧
 
@@ -3831,7 +3272,7 @@ Building on the risk assessments developed in the Initiation stage, the TT Team 
 
             
 
-Once the Planning stage activities and deliverables have been completed, the TT team should hold a stage gate meeting with the steering committee to obtain agreement for moving to the Knowledge Transfer stage. At this stage gate, the steering committee will approve the final charter and the project plan, which signals acceptance of the risks defined for the TT. Table 5.2-1, excerpted from the Reference Guide (Figure 5.0-1), shows the activities and deliverables for the Planning stage.
+Once the Planning stage activities and deliverables have been completed, the TT team should hold a stage gate meeting with the steering committee to obtain agreement for moving to the Knowledge Transfer stage. At this stage gate, the steering committee will approve the final charter and the project plan, which signals acceptance of the risks defined for the TT. Table 5.2-1🔍, excerpted from the Reference Guide (Figure 5.0-1), shows the activities and deliverables for the Planning stage.
 
         
 
@@ -3891,172 +3332,11 @@ The Business function should provide input on the regulatory strategy, including
 
                 
 
-### Table 5.2-1: Activities and Deliverables for the Planning Stage
+### Table 5.2-1🔍: Activities and Deliverables for the Planning Stage
 
             
 
                 
-                    
-                        
-                            
-                            
-                            
-                        
-| Function | Activities | Deliverables |
-| --- | --- | --- |
-                    
-                    
-                        
-                            ****
-                            
-- 
-- 
-- 
-- 
-- 
-
-                            
-- 
-- 
-- 
-- 
-
-                        
-| Business | Approve Resource Needs                                     Approve Capital Plan                                     Interact With Customers                                     Sponsoring Steering Committee                                     Hold Steering Committee Meetings | RU Supply Agreement                                     External Lab Supply Agreement                                     Resource Plan                                     Stage Gate Approval |
-                        
-                            ****
-                            
-- 
-- 
-- 
-- 
-- 
-
-                            
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-
-                        
-| TT PM | Define Resource Requirements                                     Define Critical Path Items                                     Develop Detailed Project Plan                                     Create Communication Plan                                     Implement Documentation Sharing | Final TT Charter                                     Project Plan                                     TT Agreement between SU/RU                                     Critical Paths Identified                                     RACI                                     Communication Plan                                     Final TT Team Formed                                     Kickoff Event |
-                        
-                            ****
-                            
-- 
-- 
-- 
-- 
-- 
-- 
-
-                            
-- 
-- 
-- 
-- 
-- 
-- 
-
-                        
-| Process | Detailed Process Risk Assessment                                     Align QTPP and Product Specification with RU                                     Define Material Handling Requirements                                     Define Commercial Process at RU                                     Define Bill of Materials                                     Write Change Controls | TT Change Control                                     Process Risk Assessment Report                                     Commercial Process Established                                     Initial Bill of Materials                                     Change Controls                                     Comparability Plan |
-                        
-                            ****
-                            
-- 
-- 
-- 
-- 
-- 
-
-                            
-- 
-- 
-- 
-- 
-- 
-
-                        
-| Analytical | Detailed Analytical Risk Assessment                                     Define Analytical Equipment Requirements                                     Determine External Lab Needs                                     Define Sampling Plan                                     Develop Stability Plan | Analytical Risk Assessment Report                                     Sampling Plan                                     Current Compendial Specifications                                     Comparability Protocol                                     Stability Plan |
-                        
-                            ****
-                            
-- 
-- 
-- 
-- 
-
-                            
-- 
-- 
-- 
-
-                        
-| Engineering | Define RU Requirements                                     Develop Capital Plan                                     Write Capital Appropriation Request (CAR)                                     Initiate Permits | Capital Project Plan                                     Equipment/Facility Change Controls                                     CAR Approval |
-                        
-                            ****
-                            
-- 
-- 
-- 
-
-                            
-- 
-- 
-
-                        
-| Manufacturing | Operational Requirements Analysis                                     Perform EHS Assessment                                     Define Comparability Requirements | Operational Requirements Report                                     EHS Assessment Report |
-                        
-                            ****
-                            
-- 
-- 
-- 
-
-                            
-- 
-- 
-- 
-
-                        
-| Regulatory | Obtain Current Dossiers                                     Interact with RU Regulatory Affairs Function                                     Interact with Health Authorities if Necessary | Current Product Filings and Annual Product Reports                                     Current Compendial Specifications                                     TT QMS |
-                        
-                            ****
-                            
-- 
-- 
-- 
-
-                            
-- 
-- 
-- 
-
-                        
-| Quality | Perform RU Quality Audit                                     Define SU/RU/MAH QMS Responsibilities                                     Define Documentation Requirements | RU Audit Report                                     Quality Agreements SU/RU/MAH/External Labs                                     Quality Improvement Plan |
-                        
-                            ****
-                            
-- 
-- 
-- 
-- 
-
-                            
-- 
-- 
-- 
-
-                        
-| Sourcing / Supply Chain | Production Planning                                     Determine Product Logistics                                     Source Materials/Disposables/Packaging/Consumables                                     Order Long-Lead Materials | Product Supply Chain Strategy                                     Plant Schedule Availability                                     Long Lead Material Plan |
-                    
-                
-
-            
 
         
 
@@ -4341,7 +3621,7 @@ The Sourcing/Supply Chain function also evaluates overall product logistics to f
 
             
 
-Table 5.2.10-1 describes additional ideas for consideration and best practices for the Planning stage.
+Table 5.2.10-1🔍 describes additional ideas for consideration and best practices for the Planning stage.
 
         
 
@@ -4355,65 +3635,11 @@ Table 5.2.10-1 describes additional ideas for consideration and best practices f
 
                 
 
-### Table 5.2.10-1: Best Practices and Additional Suggestions for the Planning Stage
+### Table 5.2.10-1🔍: Best Practices and Additional Suggestions for the Planning Stage
 
             
 
                 
-                    
-                        
-                            
-                            
-                        
-| Topic | Details |
-| --- | --- |
-                    
-                    
-                        
-                            ****
-                            
-- 
-- 
-- 
-
-                        
-| Hold a well-organized project kick-off | Kick-off meeting should be well organized to cover all relevant activities and functions                                     Meet face to face with the TT Team if possible. In the absence of a face-to-face meeting, allow adequate time (e.g., 1-2 days or half-days) for discussion and alignment around the project plan and key milestones                                     Establish an online repository for document-sharing |
-                        
-                            ****
-                            
-- 
-- 
-
-                        
-| Understand established conditions | Identify and share with the RU the existing manufacturing process conditions at the SU, including material, people, and process flows                                     Determine and communicate the changes that may need to be made at the RU |
-                        
-                            ****
-                            
-- 
-- 
-- 
-
-                        
-| Define prerequisites for introduction of product to new site | Ensure that the proposed process, development data, and control strategy meet all expectations and requirements before proceeding                                     Ensure requirements for the RU and SU are well understood for all processes, analytical methods, documents, and forms required to initiate activities related to the project start, e.g., change control, material setup                                     Ensure key timelines/actions necessary to meet each requirement are understood |
-                        
-                            ****
-                            
-- 
-
-                        
-| Perform risk assessments | Conduct or update detailed process and analytical risk assessments so the TT Team will be well informed about the primary areas of risk in this transfer, allowing them to create risk mitigation strategies |
-                        
-                            ****
-                            
-- 
-- 
-
-                        
-| Ensure project oversight and team engagement | Assign one person from both the RU and SU as team leads/PMs to be accountable for the project throughout its lifecycle and to be ultimately accountable to the steering committee                                     Ensure that team members are participating, engaged, following through with their assigned actions, and meeting timelines |
-                    
-                
-
-            
 
         
 
@@ -4499,18 +3725,6 @@ Table 5.2.10-1 describes additional ideas for consideration and best practices f
 
     
 
-    
-
-PDA Technical Report No. 65 (Revised 2022): Technology Transfer
-
-    
-
-Section 5.2: Planning Stage | Pages 22–28
-
-    
-
-SterileGMP Knowledge Hub — Educational Reference Material
-
 ⇧
 
 ## Section 3: Knowledge Transfer & Readiness (p29-p40)
@@ -4564,7 +3778,7 @@ PPQ is performed in the Execution stage, during which all operational readiness 
 
                     
 
-Table 5.5-1 shows the activities and deliverables for the Execution stage, as excerpted from the Reference Guide (Figure 5.0-1). One major deliverable of the Execution stage is the submission of the regulatory filing. After the PPQ batches are complete, the TT Team usually will provide support for both the regulatory filing and the expected regulatory inspections.
+Table 5.5-1🔍 shows the activities and deliverables for the Execution stage, as excerpted from the Reference Guide (Figure 5.0-1). One major deliverable of the Execution stage is the submission of the regulatory filing. After the PPQ batches are complete, the TT Team usually will provide support for both the regulatory filing and the expected regulatory inspections.
 
                 
 
@@ -4625,7 +3839,7 @@ T
 
                 
 
-## Table 5.5-1: Activities and Deliverables — Execution Stage
+## Table 5.5-1🔍: Activities and Deliverables — Execution Stage
 
                 
 
@@ -4641,77 +3855,9 @@ T
 
                     
 
-### Table 5.5-1: Activities and Deliverables in the Execution Stage
+### Table 5.5-1🔍: Activities and Deliverables in the Execution Stage
 
                     
-                        
-                            
-                                
-                                
-                                
-                            
-| Function | Activities | Deliverables |
-| --- | --- | --- |
-                        
-                        
-                            
-                                ****
-                                
-                                
-                            
-| Business | Develop Launch Strategy; Participate in PAI Audit | Launch Strategy; Approval for Regulatory Filing |
-                            
-                                ****
-                                
-                                
-                            
-| TT PM | Ensure All GMP Documentation Is Complete; Review Documentation Package; Lead Execution of PAI Readiness Plan | Stage Gate Approval; TT Report; Close Change Controls; PAI Approval |
-                            
-                                ****
-                                
-                                
-                            
-| Process | Oversee Production Runs; Investigate Deviations; Gather/Analyze Process Data; Perform Shipping Validation | Equivalency Study; Process Validation Report; VMP Closure; Deviation Reports/CAPAs; Cycle Time, Yield; Shipping Validation Report |
-                            
-                                ****
-                                
-                                
-                            
-| Analytical | Perform Materials Testing; Perform In-Process Testing; Perform Batch Release Testing; Perform Cleaning Testing; Test Demo/Engineering Batch; Package Stability Samples | Approved Test Results; Stability Program; Deviation Reports/CAPAs |
-                            
-                                ****
-                                
-                                
-                            
-| Engineering | Support Process Performance Qualification (PPQ); Write Deviations; Execute Cleaning from PPQ; Review Documentation | Deviation Reports/CAPAs; Cleaning Validation Report; Validation Documents Approval |
-                            
-                                ****
-                                
-                                
-                            
-| Manufacturing | Perform Demo/Engineering Batch; Execute PPQ Batches; Review Batch Data; Review Materials Data | Executed Batch Records; Clean Equipment; Deviation/CAPA Resolution |
-                            
-                                ****
-                                
-                                
-                            
-| Regulatory | Coordinate Regulatory Filing; Assess Deviations/CAPAs | Submit Regulatory Filing |
-                            
-                                ****
-                                
-                                
-                            
-| Quality | Manage Product Storage Requirements Prior to Release | Materials Release; Product Release; Prepare Release & Distribution Plan |
-                            
-                                ****
-                                
-                                
-                            
-| Sourcing/Supply Chain | Manage Product Storage Requirements Prior to Release | Store Product |
-                        
-                    
-
-                
 
                 
 
@@ -5516,7 +4662,7 @@ During the Execution stage, the Sourcing/Supply Chain function will work closely
 
                 
 
-## Table 5.5.10-1: Best Practices — Execution Stage
+## Table 5.5.10-1🔍: Best Practices — Execution Stage
 
                 
 
@@ -5532,108 +4678,9 @@ During the Execution stage, the Sourcing/Supply Chain function will work closely
 
                     
 
-### Table 5.5.10-1: Best Practices and Additional Suggestions for the Execution Stage
+### Table 5.5.10-1🔍: Best Practices and Additional Suggestions for the Execution Stage
 
                     
-                        
-                            
-| Topic | Details |
-| --- | --- |
-                        
-                        
-                            
-                                ****
-                                
-- 
-- 
-
-                            
-| Create a technical support plan for qualification | Ensure SMEs are on the floor prior to Execution to provide training, to support personnel should any technical challenges arise, to ensure KT from SU to RU, and to provide quick availability to resolve issues or escalations in a timely manner to prevent delay to schedule                                         Involve technical personnel during qualification for technical support of new equipment if issues arise and to monitor for future improvements |
-                            
-                                ****
-                                
-- 
-- 
-
-                            
-| Ensure the team involved in qualification is trained adequately prior to the first engineering run | Ensure that technical representatives and SMEs from the TT Team provide formal training on any new equipment and processes to the production personnel who will execute qualification batches                                         Ensure sufficient time to train personnel if technology or process steps are new or otherwise present a high risk for human error |
-                            
-                                ****
-                                
-- 
-- 
-- 
-
-                            
-| Perform a trial run | Conduct a mock or trial run with a water batch or rejected material to ensure equipment readiness and adequacy of operations training                                         Ensure the production team has sufficient time to practice using new equipment, parameters, batch record, and process steps before using qualification material                                         Provide opportunities to ask questions, improve training, incorporate process improvements and lessons learned, and reduce any human error on new process |
-                            
-                                ****
-                                
-- 
-- 
-- 
-- 
-- 
-
-                            
-| Call a readiness meeting before running qualification batches | Ensure the production team is clear on process requirements prior to execution                                         Review and/or update the control strategy                                         Avoid introducing new variables not challenged in previous stages                                         Plan ahead and reference best practices on the engineering run, in pre-batch readiness meetings, and during operator training                                         Use risk assessment to address any new variables that cannot be avoided |
-                            
-                                ****
-                                
-- 
-- 
-- 
-
-                            
-| Prepare filing and plan for questions from regulatory authorities | Provide Regulatory with documents that support the filing as they become available, in alignment with the submission tracker                                         Begin rolling review of drafted sections of regulatory filings as sections are (nearly) completed to manage resources and avoid unexpected delays due to reviewer availability                                         Identify and prepare SMEs to address questions received from regulatory authorities after initial submission |
-                            
-                                ****
-                                
-- 
-- 
-
-                            
-| Ensure adequate development testing from the previous stage | Provide robust supporting data and rationale from the previous stage through adequate testing to support recommended parameters, process, and instructions                                         Ensure a repeatable process that is controlled within its recommended operating parameters |
-                            
-                                ****
-                                
-- 
-- 
-
-                            
-| Provide adequate batch record instructions | Ensure all requirements and expectations are clearly defined in the batch record, and that training has been conducted and documented                                         Use the engineering batch to help identify any missing instructions that can be incorporated prior to the start of qualification |
-                            
-                                ****
-                                
-- 
-
-                            
-| Ensure adequate training of production personnel | Ensure hands-on training of personnel on the post-transfer operations team. Operator qualification is recommended over read-only training |
-                            
-                                ****
-                                
-- 
-- 
-- 
-- 
-- 
-
-                            
-| Ensure process performs as expected within requirements and control strategy | Ensure no changes are made to the final process prior to qualification without first revisiting the Readiness stage or performing an engineering run                                         Reference best practices for risk management and use the stage gate to review any uncertainties in final intended process to determine if process is ready for qualification                                         Review the control strategy and ensure all variables are adequately controlled with sufficient monitoring, sampling, and other mechanisms                                         Monitor data from engineering and PPQ batches and assess against the control strategy. At a minimum, this review should include critical parameters. Consider reviewing all parameters that meet the risk threshold                                         Reduce sources of variability where possible, e.g., people, materials, components |
-                            
-                                ****
-                                
-- 
-- 
-- 
-- 
-
-                            
-| Hold stage gates before proceeding to next phase | Hold a stage gate meeting with the TT Team upon completion of qualification to verify the Execution stage meets all requirements and expectations, and to verify readiness to proceed to the next stage (handover to post-transfer operations team)                                         Ensure that all functions are aligned and that the process meets all requirements, is well controlled and repeatable, and is ready for Handover                                         Review any process improvements/learnings from qualification before Handover                                         Review risk management plan and appropriateness of mitigations |
-                        
-                    
-
-                
 
                 
 
@@ -5746,7 +4793,7 @@ Ensuring that all lessons learned from the TT are incorporated into the existing
 
                     
 
-Table 5.6-1 shows the activities and deliverables described in the Reference Guide for the Handover stage. A stage gate is held with the steering committee and RU site management to approve formal handover of the process to the RU for routine operations.
+Table 5.6-1🔍 shows the activities and deliverables described in the Reference Guide for the Handover stage. A stage gate is held with the steering committee and RU site management to approve formal handover of the process to the RU for routine operations.
 
                 
 
@@ -5807,7 +4854,7 @@ T
 
                 
 
-## Table 5.6-1: Activities and Deliverables — Handover Stage
+## Table 5.6-1🔍: Activities and Deliverables — Handover Stage
 
                 
 
@@ -5823,77 +4870,9 @@ T
 
                     
 
-### Table 5.6-1: Activities and Deliverables in the Handover Stage
+### Table 5.6-1🔍: Activities and Deliverables in the Handover Stage
 
                     
-                        
-                            
-                                
-                                
-                                
-                            
-| Function | Activities | Deliverables |
-| --- | --- | --- |
-                        
-                        
-                            
-                                ****
-                                
-                                
-                            
-| Business | Determine Changes Needed for Commercial Production | Commercial Resourcing to Implement Changes |
-                            
-                                ****
-                                
-                                
-                            
-| TT PM | Coordinate Knowledge Transfer to Post-Transfer Operations Team; Document Lessons Learned in TT | Full Handover of Product; Stage Gate Approval |
-                            
-                                ****
-                                
-                                
-                            
-| Process | Set up Continued Process Validation (CPV); Document Potential Process Improvements | CPV Program, Report Template (or initial report when sufficient batches produced) |
-                            
-                                ****
-                                
-                                
-                            
-| Analytical | Maintain Stability Program; Monitor Stability Data | Stability Results/Report |
-                            
-                                ****
-                                
-                                
-                            
-| Engineering | Define Changeover Requirements for Future Production; Maintain Validation Batch Storage | Product Changeover Plan |
-                            
-                                ****
-                                
-                                
-                            
-| Manufacturing | Knowledge Transfer to Post-Transfer Operations Team | Trained Personnel |
-                            
-                                ****
-                                
-                                
-                            
-| Regulatory | Obtain Regulatory Approval; Consider Post-Approval Changes | Regulatory Approval |
-                            
-                                ****
-                                
-                                
-                            
-| Quality | Set up Quality Management Review Requirements; Lead Quality Management Reviews | Commercial QMS; Commercial Quality Agreement |
-                            
-                                ****
-                                
-                                
-                            
-| Sourcing/Supply Chain | Coordinate Transportation Strategy; Validation Batch Distribution | — |
-                        
-                    
-
-                
 
                 
 
@@ -6603,7 +5582,7 @@ Following qualification, any lessons learned should be implemented prior to hand
 
                 
 
-## Table 5.6.10-1: Best Practices — Handover Stage
+## Table 5.6.10-1🔍: Best Practices — Handover Stage
 
                 
 
@@ -6619,87 +5598,9 @@ Following qualification, any lessons learned should be implemented prior to hand
 
                     
 
-### Table 5.6.10-1: Best Practices and Additional Suggestions for the Handover Stage
+### Table 5.6.10-1🔍: Best Practices and Additional Suggestions for the Handover Stage
 
                     
-                        
-                            
-| Topic | Details |
-| --- | --- |
-                        
-                        
-                            
-                                ****
-                                
-- 
-- 
-- 
-- 
-- 
-- 
-
-                            
-| Host a formal Handover meeting | Hold a formal meeting between the TT Team and the post-transfer operations team to ensure overall readiness of process                                         Provide a Handover package including key documents, process understanding, and learnings                                         Provide the regulatory dossier and any critical knowledge to the commercial regulatory group and communicate any post-marketing commitments made to regulatory authorities                                         Have the TT Team provide an overview of new equipment, unique requirements, launch timeline, commercial forecast, labor requirements, procurement needs, open actions from risk assessment, process improvement, and lessons learned                                         If applicable, have the TT Team provide customer introductions                                         Be aware of potential issues: Without an adequate handover, additional risks may arise if the post-transfer operations team is unable to execute production effectively |
-                            
-                                ****
-                                
-- 
-- 
-- 
-- 
-
-                            
-| Create a formal long-term training plan for production | Prior to Handover, assess whether the production team needs additional training on the process and equipment                                         Use final lessons learned to revise and maintain the training program, which should include adequate hands-on training with batch records and SOPs, not only classroom presentation                                         Consider use of demonstrated hands-on training to verify understanding                                         Be aware of potential issues: Without proper training, the team runs the risk of requiring additional technical support or potentially experiencing human error, deviations, downtime, or delays upon commercial start |
-                            
-                                ****
-                                
-- 
-- 
-- 
-- 
-
-                            
-| Perform a lessons-learned meeting | Set up a formal meeting to discuss lessons learned at project closure, inviting the entire TT Team and involving key supporting team members (e.g., production, labs)                                         Discuss successes as well as opportunities for improvement, considering such areas as processes, people, communication, and documentation                                         Determine root causes of any challenging areas, obstacles, failures, scope changes, and deviations and discuss how to prevent them in the future                                         Capture a summary of lessons learned that the TT PM can drive to the rest of the team. The SU, RU, and MAH should incorporate these learnings into future projects where possible |
-                            
-                                ****
-                                
-- 
-- 
-- 
-- 
-
-                            
-| Ensure all commercial needs are planned and ready for commercial start | Verify that the post-transfer operations team has everything needed to begin commercial production                                         Work with the key functions at the RU site prior to closure of the project to ensure that key systems of the post-transfer production plan are in place and needs are met                                         Include such key functions as site software systems, inventory, procurement plan, resource/labor needs, scheduling standards and equipment capacity needs, spare parts, preventive maintenance, equipment requalification and routine monitoring, vendor/supplier needs, and forecasting per the commercial needs                                         Ensure all key aspects are ready, including procurement of materials, spare parts, lead times, scheduling, and third-party planning |
-                            
-                                ****
-                                
-- 
-- 
-
-                            
-| Transfer knowledge from TT Team to post-transfer operations team | Ensure formal training, robust batch-record updates, SOP instruction revisions, and simulation runs as needed are completed prior to commercial start                                         Ensure that knowledge has been effectively transferred through experience gained during the TT process, through lessons learned, and through Handover meetings |
-                            
-                                ****
-                                
-- 
-- 
-- 
-- 
-
-                            
-| Ensure capacity meets commercial needs | Throughout the project, monitor the commercial forecast and actual cycle times on equipment, including commercial, laboratory, and any support systems at the RU site, to ensure the final process can meet the intended project and commercial requirements                                         If this product shares personnel and/or equipment with other products at the site, consider the impacts on equipment capacity, labor capacity, or support (e.g., lab testing, materials)                                         Ensure that the TT Team assesses the product's long-term needs throughout the project, involves appropriate commercial personnel and leadership early, and evaluates the commercial forecast to verify requirements are met in the lead-up to launch and Handover                                         Ensure all lessons learned from the project are considered in planning for commercial needs |
-                            
-                                ****
-                                
-- 
-- 
-
-                            
-| Ensure process turned over performs as expected and is well controlled within specifications/QTPP | Ensure an adequate process qualification that meets all acceptance criteria is well controlled within the operating ranges specified in the control strategy and is supported by sufficient data                                         Ensure that robust monitoring and a control plan are in place to monitor for any out-of-control events that may occur and require attention |
-                        
-                    
-
-                
 
                 
 
@@ -6849,31 +5750,6 @@ Execution & Handover Stages key takeaways
 
                         
 
-#### vs.
-
-                        
-                            
-                                
-| --- | --- | --- |
-                            
-                            
-                                
-| | PPQ + | + |
-                                
-| | TT TeamSU + RU | RU |
-                                
-| | TT Report | CPV |
-                                
-| | PAI / Stage Gate | Handover + |
-                            
-                        
-
-                    
-
-                    
-
-                        
-
 #### 
 
                         
@@ -6887,18 +5763,6 @@ Execution & Handover Stages key takeaways
         
 
     
-
-    
-
-PDA Technical Report No. 65 (Revised 2022): Technology Transfer
-
-    
-
-Section 4: Execution & Handover Stages | p41–p49
-
-    
-
-Educational material for internal training purposes
 
 ↑
 
@@ -7138,60 +6002,6 @@ This section contains two reference subsections from TR65: **Section 6.0 Referen
                 
 
                 
-                    
-                        
-                            
-                            
-                            
-                        
-| | | TT |
-| --- | --- | --- |
-                    
-                    
-                        
-                            
-                            
-                            
-                        
-| ICH | Q1AQ2Q6AQ7Q9Q11Q12 | TT |
-                        
-                            
-                            
-                            
-                        
-| FDA SUPAC | SUPAC-IRMRSS | |
-                        
-                            
-                            
-                            
-                        
-| | FDAEMA MAH | CDMOMAH |
-                        
-                            
-                            
-                            
-                        
-| WHO | TRS 961 Annex 72021 | TTWHO GMP |
-                        
-                            
-                            
-                            
-                        
-| | ISPE GPG TT 3rd Ed.PDA TR57Gibson | TT |
-                    
-                
-
-            
-
-            
-
-                
-
-#### 
-
-                
-
-                
 
             
 
@@ -7244,6 +6054,16 @@ This section contains two reference subsections from TR65: **Section 6.0 Referen
     
 
     
+
+                
+
+#### 
+
+                
+
+                
+
+            
     
 
         
@@ -7269,18 +6089,6 @@ TR65's reference framework reflects a deliberate layering: the 5 cited reference
         
 
     
-
-    
-
-PDA Technical Report No. 65 (Revised 2022): Technology Transfer
-
-    
-
-Section 5: References & Additional Reading | p50–p51
-
-    
-
-Educational material for internal training use. Source: PDA TR65 (2022).
 
 ⇧
 
@@ -9216,113 +8024,6 @@ In hindsight, if the TT Reference Guide approach had been used, critical knowled
 
                 
 
-### Pattern Analysis: What Made TTs Succeed or Fail
-
-                
-                    
-                        
-                            
-                            
-                            
-                            
-                        
-| Case | Topic | Outcome | Root Cause |
-| --- | --- | --- | --- |
-                    
-                    
-                        
-                            
-                            
-                            
-                            
-                        
-| 8.1 | Charter & Governance | Success (recovered) | No governance → chaos; governance added → stabilized |
-                        
-                            
-                            
-                            
-                            
-                        
-| 8.2 | Team Selection | Success (recovered) | Understaffed MAH → decision vacuum; team rebuilt mid-project |
-                        
-                            
-                            
-                            
-                            
-                        
-| 8.3 | Initiation/Planning | Struggle | Risk underestimated; no gap/risk assessment; part-time staffing |
-                        
-                            
-                            
-                            
-                            
-                        
-| 8.4 | Regulatory Strategy | Success | Regulatory complexity drove CMO selection; realistic timeline chosen |
-                        
-                            
-                            
-                            
-                            
-                        
-| 8.5 | KT Tools | Success (on time) | Mature CMO with KT Playbook; tacit knowledge captured on-floor |
-                        
-                            
-                            
-                            
-                            
-                        
-| 8.6 | Process Fit | Success | Two-phase fit assessment; scale-up risk managed with CFD modeling |
-                        
-                            
-                            
-                            
-                            
-                        
-| 8.7 | Commercial Planning | Success (on time) | 18-month forecast maintained; Handover as formal structured activity |
-                        
-                            
-                            
-                            
-                            
-                        
-| 8.8 | Ownership & Capital | Success (with lessons) | Document ownership & capital cost not pre-agreed; resolved post-hoc |
-                        
-                            
-                            
-                            
-                            
-                        
-| 8.9 | Failed PQ | Failure → 6 months late | Supply pressure overrode readiness; compromise failed |
-                        
-                            
-                            
-                            
-                            
-                        
-| 8.10 | Effective KT | Success | Prior TT knowledge leveraged; facility-fit & gap assessment central |
-                        
-                            
-                            
-                            
-                            
-                        
-| 8.11 | Stage Gates | Success (right first time) | Stage gates aligned management; mock run prevented PQ failure |
-                        
-                            
-                            
-                            
-                            
-                        
-| 8.12 | Handover | PQ success → commercial failure | Knowledge stayed with TT Team, not transferred to operators |
-                    
-                
-
-            
-
-            
-
-                
-
 ### —
 
                 
@@ -9370,6 +8071,14 @@ In hindsight, if the TT Reference Guide approach had been used, critical knowled
         
 
         
+
+                
+
+### Pattern Analysis: What Made TTs Succeed or Fail
+
+                
+
+            
         
 
             
@@ -9501,17 +8210,5 @@ In hindsight, if the TT Reference Guide approach had been used, critical knowled
         
 
     
-
-    
-
-PDA Technical Report No. 65 (Revised 2022): Technology Transfer
-
-    
-
-Section 6: Appendix — Case Studies | p52–p62
-
-    
-
-Educational material for internal training use. Source: PDA TR65 (2022).
 
 ⇧

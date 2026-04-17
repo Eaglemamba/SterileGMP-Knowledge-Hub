@@ -92,7 +92,7 @@ PDA Points to Consider No. 13: Materials in ATMP Manufacturing | p4 – p10
 
         
 
-There is no health authority guideline that clearly defines ATMP material categories nor an aligned definition across countries or regions. The material categories listed in **Table 1.1-1** reflect existing regulatory guidance relevant to ATMPs and common industry vernacular.
+There is no health authority guideline that clearly defines ATMP material categories nor an aligned definition across countries or regions. The material categories listed in **Table 1.1-1🔍** reflect existing regulatory guidance relevant to ATMPs and common industry vernacular.
 
         
 
@@ -100,7 +100,7 @@ The term critical raw material is used by European Union (EU) health authorities
 
         
 
-The term material is a general term used to describe manufacturing ingredients, raw materials (e.g., starting and ancillary materials, excipients, primary packaging) consumed in the process that may or may not be present in the final drug product. The material categories given in Table 1.1-1, as well as "critical raw materials," fall under "materials."
+The term material is a general term used to describe manufacturing ingredients, raw materials (e.g., starting and ancillary materials, excipients, primary packaging) consumed in the process that may or may not be present in the final drug product. The material categories given in Table 1.1-1🔍, as well as "critical raw materials," fall under "materials."
 
         
 
@@ -216,100 +216,12 @@ Any material free of human-derived components that has been manufactured using s
 
         
 
-Any of the material categories presented in Table 1.1-1 could also be subclassified as primary, secondary, or tertiary animal-derived or primary, secondary, or tertiary human-derived materials.
+Any of the material categories presented in Table 1.1-1🔍 could also be subclassified as primary, secondary, or tertiary animal-derived or primary, secondary, or tertiary human-derived materials.
 
         
         
 
 ### Table 1.1-1. Commonly Used ATMP Material Categories
-
-        
-
-        
-            
-                
-                    
-                    
-                    
-                    
-                
-| Material Category | Definition | Reference Document | Examples |
-| --- | --- | --- | --- |
-            
-            
-                
-                    ****
-                    
-                    
-                    
-                
-| Ancillary Raw Materials | Raw materials used during the medicinal product processing that are not intended to be a part of the final product formulation | Modified from: USP <1043>, ISO 20399 | Feeder cells; Growth factors; Cell differentiation reagents; Expansion Media |
-                
-                    ****
-                    
-                    
-                    **  
-**  
-**  
-**
-                
-| Starting Materials | ATMP starting materials are defined as all the materials from which the active substance is manufactured | EMA/CAT/22473/2025; EMA/246400/2021 | mRNA-based: DNA template; mRNA capping reagent; RNA ribonucleotides                         AAV-based: Plasmids; Cell banks (e.g., HEK293)                         CAR T-cell: Patient leukapheresis material; Cell Banks; Packaging/transfer plasmids; Viral/non-viral vectors; Gene editing reagents (gRNA, CAS nuclease)                         TIL therapy: Tumor specimen |
-                
-                    ****
-                    
-                    
-                    
-                
-| Excipients | Any ingredient or substance intentionally added to a drug that is not part of the active substance (e.g., to aid in protection, support, stability, bioavailability, or patient acceptability) | EMEA/CHMP/QWP/396951/2006; FDA 2005 Guidance for Industry | HEPES — liposomes and lipid nanoparticles for mRNA therapeutics; DMSO — biological preservative for cell therapies |
-                
-                    ****
-                    
-                    
-                    
-                
-| Novel Excipient (Subcategory) | A novel excipient is one used for the first time in a drug product or by a new route of administration. It may be a new chemical entity or a well-established one not yet used for human administration and/or a particular administration pathway. | EMEA/CHMP/QWP/396951/2006; FDA 2005 Guidance | PF68 in AAV formulation for intra-cisternal magna injection |
-                
-                    ****
-                    
-                    
-                    
-                
-| Single-Use Components | Components directly contacting the process stream in product manufacturing for a single purpose and discarded | BioPhorum 2019 Raw Material Risk Assessments | Bioprocess bags; Tubing; Filters; Connectors; Microcarriers; Magnetic beads |
-                
-                    ****
-                    
-                    
-                    
-                
-| GMP Support Materials | Procured materials supporting GMP manufacturing without direct product contact | BioPhorum 2019 Raw Material Risk Assessments | Clean-in-place; Cleaning agents/disinfectants; Aseptic gowning materials; Process equipment gaskets; Process-simulation media |
-                
-                    ****
-                    
-                    
-                    
-                
-| Laboratory Reagents (Testing Materials) | Used as part of analytical testing either in-line, in-process or off-line, with no contact with the process stream | BioPhorum 2019 Raw Material Risk Assessments | Analytical reference standards; Assay controls and materials; Assay-specific critical reagents; Cell lines; Positive control test material |
-                
-                    ****
-                    
-                    
-                    
-                
-| Primary Packaging Components / Container–Closure Systems | Container–closure systems and device components directly in contact with the final drug product or directly employed for the delivery of the final drug product | USP <659> | Cryo bags; Vials; Stoppers; Caps; Prefilled syringes |
-                
-                    ****
-                    
-                    
-                    
-                
-| Process Aids | Materials used to facilitate the manufacturing process that are not consumed during processing and may or may not be multiuse (primarily a physical function) | BioPhorum 2019 Raw Material Risk Assessments | Resins; Chromatography columns; Process filters; In-process containers |
-                
-                    ****
-                    
-                    
-                    
-                
-| Process Gasses | Gases that come in direct contact with the product or primary container surfaces | EU GMP Annex 1: Manufacture of Sterile Medicinal Products | Material transfer ports integrated into rigid barrier |
 
 ## Topic 3a: Topic 3 (Q3.1-Q3.2): Risk-Based Qualification (p11-p21)
 
@@ -403,40 +315,6 @@ Leachables and extractables and/or chemical compatibility might be challenged (e
 
 ATMP final containers span a range of formats, each with distinct considerations:
 
-        
-
-        
-            
-                
-                
-                
-            
-| Container Type | Typical ATMP Use | Key Qualification Focus |
-| --- | --- | --- |
-            
-                
-                
-                
-            
-| Cryopreservation bag (e.g., CryoMACS, Origen) | Autologous/allogeneic cell therapies (stored at −80°C or LN₂) | Integrity under cryogenic stress; E&L with DMSO; weld-seal integrity |
-            
-                
-                
-                
-            
-| Vial (glass or polymer) | Viral vectors, mRNA LNPs, some cell suspensions | Headspace, stopper compatibility, container closure integrity (CCI) |
-            
-                
-                
-                
-            
-| Prefilled syringe | Direct-to-patient autologous cells, CAR-T infusion bags drawn down to syringe | Silicone oil impact on cells; tip-cap integrity; plunger lubrication compatibility |
-            
-                
-                
-                
-            
-| Infusion bag (IV bag) | Allogeneic cell therapies diluted for infusion | E&L with plasticizers (e.g., DEHP); compatibility with cell media |
         
 
         

@@ -431,51 +431,6 @@ Management review **outputs** must include decisions and actions related to: imp
 
                 
 
-#### vs ——
-
-                
-                    
-                        
-                        
-                        
-                    
-| | (Controlled Document) | (Record) |
-| --- | --- | --- |
-                    
-                        
-                        
-                        
-                    
-                    
-                        
-                        
-                        
-                    
-                    
-                        
-                        
-                        
-                    
-                    
-                        
-                        
-                        
-                    
-| | / | |
-                    
-                        
-                        
-                        
-                    
-| | SOPWI | CAPA |
-                
-
-            
-
-            
-
-                
-
 #### 
 
                 
@@ -931,68 +886,6 @@ Appendix A establishes that CAPA activities under ISO 13485 §8.5.2 and §8.5.3 
             
 
 The original QSR (1996/2002 Quality System Regulation) had a self-contained §820.20 addressing management responsibility. The QMSR replaces those provisions by incorporating ISO 13485 §5 and §6. The table below maps old §820.20 provisions to their QMSR equivalents.
-
-            
-                
-                    
-                        
-                        
-                        
-                    
-| Old QSR §820.20 Provision | QMSR / ISO 13485:2016 Equivalent | Change Summary |
-| --- | --- | --- |
-                
-                
-                    
-                        ****
-                        
-                        
-                    
-| §820.20(a) — Quality policy: Top management shall establish a quality policy | ISO 13485 §5.1 + §5.3 | Substantially similar; ISO 13485 adds requirement that quality policy provide a framework for quality objectives |
-                    
-                        ****
-                        
-                        
-                    
-| §820.20(b)(1) — Organizational structure: Organizational chart and responsibility/authority | ISO 13485 §5.5.1 | Essentially identical; ISO 13485 uses "defined and communicated" language |
-                    
-                        ****
-                        
-                        
-                    
-| §820.20(b)(2) — Management representative with authority over QS | ISO 13485 §5.5.2 | ISO 13485 adds explicit requirement to promote awareness of applicable regulatory requirements |
-                    
-                        ****
-                        
-                        
-                    
-| §820.20(b)(3) — Adequate resources (personnel, equipment) | ISO 13485 §6.1 + §6.2 + §6.3 | ISO 13485 significantly expands this — adds competence assessment, training effectiveness evaluation, infrastructure maintenance, work environment management |
-                    
-                        ****
-                        
-                        
-                    
-| §820.20(c) — Management review at defined intervals with defined records | ISO 13485 §5.6 | ISO 13485 specifies mandatory inputs and outputs; old QSR was less prescriptive on content |
-                    
-                        ****
-                        
-                        
-                    
-| §820.20(d) — Quality planning: quality plans, quality objectives | ISO 13485 §5.4 | Essentially equivalent; ISO 13485 adds requirement for QMS planning to maintain integrity during changes |
-                    
-                        ****
-                        
-                        
-                    
-| §820.20(e) — Quality system procedures established and maintained | ISO 13485 §4.1 + §4.2 | ISO 13485 adds Medical Device File requirement (§4.2.3) and is more explicit about documentation hierarchy |
-                    
-                        **
-                        
-                        
-                    
-| No equivalent in old QSR §820.20 | ISO 13485 §6.4 — Work environment and contamination control | New explicit requirement for documenting work environment requirements and contamination control arrangements |
-                
-            
 
             
 
