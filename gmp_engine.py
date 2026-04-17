@@ -1051,10 +1051,11 @@ MIN_TBL_WIDTH = 200       # Minimum table bbox width (pts)
 TBL_ZOOM = 2              # Render zoom factor for table screenshots
 CAPTION_Y_THRESHOLD = 300  # Max pts distance for caption matching
 
-# Regex for figure/table labels: "Figure 3.1-1", "Fig. 1", "Table A.1", etc.
+# Regex for figure/table labels: "Figure 3.1-1", "Fig. 1", "Table A.1",
+# "Table ZA.1", "Figure F.1", etc.  Supports 1-2 letter annex prefixes.
 import re as _re
 CAPTION_RE = _re.compile(
-    r'(?i)\b((?:figure|fig\.?|table|tbl\.?)\s*[A-Z]?\d[\d.\-]*)',
+    r'(?i)\b((?:figure|fig\.?|table|tbl\.?)\s*(?:[A-Z]{1,2}\.?)?\d[\d.\-]*)',
 )
 
 
@@ -1571,6 +1572,34 @@ def cmd_extract_figs(args):
                         if cap:
                             tbl_e["caption"] = cap
 
+        # --- Filter out front-matter decorative images ---
+        # Pages 2-6 often contain cover collages, TOC art, logos with no
+        # figure/table labels.  Remove unlabeled images on those pages when
+        # the page contains many small embedded images (a collage heuristic).
+        FRONT_MATTER_MAX_PAGE = 6  # check pages 2..6 (page 1 already skipped)
+        front_pages_to_clean: set[int] = set()
+        for pg1 in range(2, FRONT_MATTER_MAX_PAGE + 1):
+            pg_entries = [f for f in figures if f["page"] == pg1]
+            unlabeled = [f for f in pg_entries if "label" not in f]
+            # Heuristic: if >=4 unlabeled images on a front page, it's a collage
+            if len(unlabeled) >= 4:
+                front_pages_to_clean.add(pg1)
+        if front_pages_to_clean:
+            before = len(figures)
+            removed_front = [f for f in figures
+                             if f["page"] in front_pages_to_clean and "label" not in f]
+            figures = [f for f in figures
+                       if not (f["page"] in front_pages_to_clean and "label" not in f)]
+            removed_cnt = before - len(figures)
+            if removed_cnt:
+                print(f"    [FILTER] Removed {removed_cnt} front-matter decorative images from pages {sorted(front_pages_to_clean)}")
+                for rf in removed_front:
+                    fp = figs_dir / rf["file"]
+                    try:
+                        fp.unlink()
+                    except Exception:
+                        pass
+
         # --- Filter out back-matter pages (PDA Officers, ads, etc.) ---
         # Check the last few pages for non-content text markers
         back_matter_pages = set()
@@ -1672,7 +1701,17 @@ def cmd_extract_figs(args):
         print(f"\n  [LOGO] Removed {logos_removed} cross-document images "
               f"({len(logo_hashes)} unique hashes, threshold={LOGO_THRESHOLD})")
 
-    # Write manifest
+    # Write manifest — merge into existing when running single-report mode
+    is_single = not args.all
+    if is_single and MANIFEST_FILE.exists():
+        with open(MANIFEST_FILE, "r", encoding="utf-8") as f:
+            existing_manifest = json.load(f)
+        existing_manifest.update(manifest)
+        # Remove entries for docs that produced 0 figures this run
+        for rid in report_ids:
+            if rid not in manifest and rid in existing_manifest:
+                del existing_manifest[rid]
+        manifest = existing_manifest
     with open(MANIFEST_FILE, "w", encoding="utf-8") as f:
         json.dump(manifest, f, indent=2, ensure_ascii=False)
     print(f"\n[SUCCESS] figures-manifest.json written")
@@ -1689,9 +1728,10 @@ def cmd_extract_figs(args):
     with open(REPORTS_JSON, "r", encoding="utf-8") as f:
         data = json.load(f)
     changed = 0
-    # Reset all to 0, then overwrite from manifest
-    for rid in data["reports"]:
-        data["reports"][rid]["figures_count"] = 0
+    if args.all:
+        # Full run: reset all to 0, then overwrite from manifest
+        for rid in data["reports"]:
+            data["reports"][rid]["figures_count"] = 0
     for rid, fig_data in manifest.items():
         if rid in data["reports"]:
             data["reports"][rid]["figures_count"] = fig_data["total"]
