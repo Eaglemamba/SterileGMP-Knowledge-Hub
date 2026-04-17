@@ -87,9 +87,9 @@ Existing reports can be upgraded incrementally by re-generating individual repor
 </div>
 ```
 
-## Section Headings Must Be Bilingual & Bold (Added 2026-04)
+## Section Headings Must Be Bilingual, Bold & Aligned (Updated 2026-04-17)
 
-**Problem**: Many section headings are English-only, missing Chinese translations. Some lack bold formatting.
+**Problem**: Section headings rendered flush-left against the page container while the two-column content below starts 1.5rem inside (`.left-column { padding: 1.5rem }`). Visually the title floated left of "原文 Original Text", looking detached. Older merged `-Complete.html` files also lacked `font-weight: 700`, so the title appeared thin.
 
 **Rule**: Every `.section-title` heading MUST follow this format:
 ```html
@@ -97,7 +97,20 @@ Existing reports can be upgraded incrementally by re-generating individual repor
 ```
 - Always bilingual: English first, Chinese after
 - Always wrapped in `<strong>` for consistent bold weight
-- CSS `.section-title` must include `font-weight: 700`
+- CSS `.section-title` must be:
+  ```css
+  .section-title, .section-divider {
+      font-size: 1.1rem;
+      color: var(--primary-blue);
+      margin: 1.5rem 0 1rem;
+      padding: 0 1.5rem 0.5rem 1.5rem;   /* left/right = .left-column padding so title text aligns with "原文 Original Text" */
+      border-bottom: 2px solid #e2e8f0;   /* stays full-width as divider */
+      font-weight: 700;
+  }
+  ```
+- Never add inline styles that override `.section-title`. Rely on the shared class so a single CSS edit propagates across all reports.
+
+**Batch patcher**: `_fix_section_title_align.py` at repo root retrofits this CSS block in all `*-Complete.html` / `*-complete.html` files. Handles both the multi-line (`.section-title, .section-divider { ... }`) and single-line (USP `.section-title { ... }`) forms. Idempotent — safe to re-run after any future tweak.
 
 **Examples**:
 - `1.0 Introduction 導論`
