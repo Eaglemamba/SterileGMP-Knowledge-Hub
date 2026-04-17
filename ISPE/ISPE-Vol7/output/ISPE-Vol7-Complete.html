@@ -628,14 +628,22 @@ tr:nth-child(even) {
     font-size: 0.9rem;
 }
 
-/* ===== SECTION TITLES ===== */
+/* ===== SECTION TITLES =====
+   padding-left matches .left-column padding (1.5rem) so the
+   section title text aligns with the start of "原文 Original Text".
+   Border-bottom stays full-width as a visual separator. */
 .section-title,
 .section-divider {
     font-size: 1.1rem;
     color: var(--primary-blue);
     margin: 1.5rem 0 1rem;
-    padding-bottom: 0.5rem;
+    padding: 0 1.5rem 0.5rem 1.5rem;
     border-bottom: 2px solid #e2e8f0;
+    font-weight: 700;
+}
+
+.section-title strong,
+.section-divider strong {
     font-weight: 700;
 }
 
@@ -1935,19 +1943,6 @@ tr:nth-child(even) {
 </div>
 
 </div><!-- end main-content -->
-
-<script>
-    // Back to top button
-    const btn = document.createElement('button');
-    btn.innerHTML = '↑';
-    btn.style.cssText = 'position:fixed;bottom:1.5rem;right:1.5rem;width:45px;height:45px;background:#27ae60;color:white;border:none;border-radius:50%;cursor:pointer;font-size:1.3rem;box-shadow:0 3px 12px rgba(39,174,96,0.4);z-index:999;opacity:0;visibility:hidden;transition:all 0.3s ease;';
-    document.body.appendChild(btn);
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) { btn.style.opacity = '1'; btn.style.visibility = 'visible'; }
-        else { btn.style.opacity = '0'; btn.style.visibility = 'hidden'; }
-    });
-    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-</script>
         </div>
     </section>
 
@@ -1962,10 +1957,7 @@ tr:nth-child(even) {
         </div>
         <div class="chapter-body">
             <!-- HEADER -->
-<header class="header">
-    <h1>ISPE Baseline® Guide Volume 7 (2nd Ed.): Risk-Based Manufacture of Pharmaceutical Products</h1>
-    <div class="subtitle">Chapter 3 — Quality System Requirements</div>
-    <div class="page-info">ISPE Baseline® Guide Volume 7 (2nd Ed.): Risk-Based Manufacture | p23–p36</div>
+<div class="page-info">ISPE Baseline® Guide Volume 7 (2nd Ed.): Risk-Based Manufacture | p23–p36</div>
 </header>
 
 <!-- LEARNING OBJECTIVES -->
@@ -2892,19 +2884,6 @@ tr:nth-child(even) {
 </div><!-- end .main-content -->
 
 <!-- FOOTER -->
-<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0, behavior:'smooth'})">⇧</button>
-
-<script>
-// Back to Top button
-window.addEventListener('scroll', function() {
-    const btn = document.getElementById('backToTop');
-    if (window.scrollY > 400) {
-        btn.classList.add('visible');
-    } else {
-        btn.classList.remove('visible');
-    }
-});
-</script>
         </div>
     </section>
 
@@ -3770,18 +3749,6 @@ ADE = (5 × 50) / (150 × 1 × 1) = 250/150 ≈ 1.67 mg/day</pre>
     </div>
 
 </div><!-- end main-content -->
-
-<button class="back-to-top" id="backToTop" title="Back to top">↑</button>
-
-<script>
-    const btn = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-        btn.classList.toggle('visible', window.scrollY > 300);
-    });
-    btn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-</script>
         </div>
     </section>
 
@@ -3806,45 +3773,6 @@ ADE = (5 × 50) / (150 × 1 × 1) = 250/150 ≈ 1.67 mg/day</pre>
 </div>
 
 <!-- ===== NAVIGATION ===== -->
-<nav class="top-nav">
-    <button class="nav-scroll-btn hidden" id="navLeft">‹</button>
-    <div class="nav-container" id="navContainer">
-        <a href="#sec-overview" class="nav-item active">
-            <span class="nav-num">6</span>
-            <span class="nav-label">風險分析概述</span>
-        </a>
-        <a href="#sec-holistic" class="nav-item">
-            <span class="nav-num">6.1</span>
-            <span class="nav-label">整體性方法</span>
-        </a>
-        <a href="#sec-tools" class="nav-item">
-            <span class="nav-num">6.2</span>
-            <span class="nav-label">風險工具</span>
-        </a>
-        <a href="#sec-routes-intro" class="nav-item">
-            <span class="nav-num">6.3</span>
-            <span class="nav-label">交叉污染途徑</span>
-        </a>
-        <a href="#sec-mixup" class="nav-item">
-            <span class="nav-num">6.3.1</span>
-            <span class="nav-label">混淆 Mix-up</span>
-        </a>
-        <a href="#sec-retention" class="nav-item">
-            <span class="nav-num">6.3.2</span>
-            <span class="nav-label">殘留 Retention</span>
-        </a>
-        <a href="#sec-mechanical" class="nav-item">
-            <span class="nav-num">6.3.3</span>
-            <span class="nav-label">機械轉移</span>
-        </a>
-        <a href="#sec-airborne" class="nav-item">
-            <span class="nav-num">6.3.4</span>
-            <span class="nav-label">空氣傳播</span>
-        </a>
-    </div>
-    <button class="nav-scroll-btn hidden" id="navRight">›</button>
-</nav>
-
 <!-- ===== MAIN CONTENT ===== -->
 <div class="main-content">
 
@@ -4694,85 +4622,11 @@ ADE = (5 × 50) / (150 × 1 × 1) = 250/150 ≈ 1.67 mg/day</pre>
 </div><!-- end main-content -->
 
 <!-- ===== BACK TO TOP ===== -->
-<button class="back-to-top" id="backToTop" title="Back to top">⇧</button>
-
-<!-- ===== SCRIPTS ===== -->
-<script>
-    // Back to top
-    const btn = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-        btn.classList.toggle('visible', window.scrollY > 400);
-    });
-    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-    // Nav scroll arrows
-    const nav = document.getElementById('navContainer');
-    const leftBtn = document.getElementById('navLeft');
-    const rightBtn = document.getElementById('navRight');
-
-    function updateNavArrows() {
-        if (!nav) return;
-        leftBtn.classList.toggle('hidden', nav.scrollLeft <= 10);
-        rightBtn.classList.toggle('hidden', nav.scrollLeft + nav.clientWidth >= nav.scrollWidth - 10);
-    }
-
-    if (leftBtn) leftBtn.addEventListener('click', () => { nav.scrollBy({ left: -200, behavior: 'smooth' }); setTimeout(updateNavArrows, 300); });
-    if (rightBtn) rightBtn.addEventListener('click', () => { nav.scrollBy({ left: 200, behavior: 'smooth' }); setTimeout(updateNavArrows, 300); });
-    if (nav) { nav.addEventListener('scroll', updateNavArrows); updateNavArrows(); }
-
-    // Active nav on scroll
-    const sections = document.querySelectorAll('.chapter-section');
-    const navItems = document.querySelectorAll('.nav-item');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const id = entry.target.id;
-                navItems.forEach(item => {
-                    item.classList.toggle('active', item.getAttribute('href') === '#' + id);
-                });
-            }
-        });
-    }, { threshold: 0.3 });
-    sections.forEach(s => observer.observe(s));
-</script><!-- ===== SECTION HEADER ===== -->
-<header class="header">
-    <h1>ISPE Baseline® Guide Volume 7 (2nd Ed.): Risk-Based Manufacture of Pharmaceutical Products</h1>
-    <div class="subtitle">Chapter 6 Risk Analysis (Part B) — Probability of Occurrence, Non-Product Contact Areas &amp; Detection</div>
-    <div class="page-info">ISPE Baseline® Guide Volume 7 (2nd Ed.): Risk-Based Manufacture | p69–p78</div>
+<!-- ===== SCRIPTS ===== --><!-- ===== SECTION HEADER ===== -->
+<div class="page-info">ISPE Baseline® Guide Volume 7 (2nd Ed.): Risk-Based Manufacture | p69–p78</div>
 </header>
 
 <!-- ===== NAVIGATION ===== -->
-<nav class="top-nav">
-    <button class="nav-scroll-btn" id="navLeft">‹</button>
-    <div class="nav-container" id="navContainer">
-        <a class="nav-item active" href="#sec-6-4">
-            <span class="nav-num">6.4</span>
-            <span class="nav-label">Probability of Occurrence</span>
-        </a>
-        <a class="nav-item" href="#sec-6-4-1">
-            <span class="nav-num">6.4.1</span>
-            <span class="nav-label">Production Activities</span>
-        </a>
-        <a class="nav-item" href="#sec-6-4-2">
-            <span class="nav-num">6.4.2</span>
-            <span class="nav-label">Non-Processing Activities</span>
-        </a>
-        <a class="nav-item" href="#sec-6-4-3">
-            <span class="nav-num">6.4.3</span>
-            <span class="nav-label">Facility &amp; Equipment Design</span>
-        </a>
-        <a class="nav-item" href="#sec-6-5">
-            <span class="nav-num">6.5</span>
-            <span class="nav-label">Non-Product Contact Areas</span>
-        </a>
-        <a class="nav-item" href="#sec-6-6">
-            <span class="nav-num">6.6</span>
-            <span class="nav-label">Detection</span>
-        </a>
-    </div>
-    <button class="nav-scroll-btn" id="navRight">›</button>
-</nav>
-
 <!-- ===== MAIN CONTENT ===== -->
 <main class="main-content">
 
@@ -5426,46 +5280,6 @@ ADE = (5 × 50) / (150 × 1 × 1) = 250/150 ≈ 1.67 mg/day</pre>
 </main>
 
 <!-- ===== BACK TO TOP ===== -->
-<button class="back-to-top" id="backToTop" title="Back to top">⇧</button>
-
-<script>
-// Back to top
-const backToTop = document.getElementById('backToTop');
-window.addEventListener('scroll', () => {
-    backToTop.classList.toggle('visible', window.scrollY > 400);
-});
-backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-// Nav scroll arrows
-const navContainer = document.getElementById('navContainer');
-const navLeft = document.getElementById('navLeft');
-const navRight = document.getElementById('navRight');
-
-function updateNavArrows() {
-    navLeft.classList.toggle('hidden', navContainer.scrollLeft <= 10);
-    navRight.classList.toggle('hidden', navContainer.scrollLeft + navContainer.clientWidth >= navContainer.scrollWidth - 10);
-}
-navLeft.addEventListener('click', () => { navContainer.scrollBy({ left: -200, behavior: 'smooth' }); });
-navRight.addEventListener('click', () => { navContainer.scrollBy({ left: 200, behavior: 'smooth' }); });
-navContainer.addEventListener('scroll', updateNavArrows);
-window.addEventListener('resize', updateNavArrows);
-updateNavArrows();
-
-// Active nav highlighting on scroll
-const sections = document.querySelectorAll('.chapter-section');
-const navItems = document.querySelectorAll('.nav-item');
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const id = entry.target.getAttribute('id');
-            navItems.forEach(item => {
-                item.classList.toggle('active', item.getAttribute('href') === '#' + id);
-            });
-        }
-    });
-}, { rootMargin: '-20% 0px -60% 0px' });
-sections.forEach(s => observer.observe(s));
-</script>
         </div>
     </section>
 
@@ -5480,10 +5294,7 @@ sections.forEach(s => observer.observe(s));
         </div>
         <div class="chapter-body">
             <!-- SECTION HEADER -->
-<header class="header">
-    <h1>Section 4: Risk Evaluation &amp; Risk Control</h1>
-    <div class="subtitle">Chapter 7: Risk Evaluation  |  Chapter 8: Risk Control</div>
-    <div class="page-info">ISPE Baseline® Guide Volume 7 (2nd Ed.): Risk-Based Manufacture of Pharmaceutical Products | p79–p84</div>
+<div class="page-info">ISPE Baseline® Guide Volume 7 (2nd Ed.): Risk-Based Manufacture of Pharmaceutical Products | p79–p84</div>
 </header>
 
 <!-- MAIN CONTENT -->
@@ -6071,18 +5882,6 @@ sections.forEach(s => observer.observe(s));
 
 <!-- FOOTER -->
 <!-- BACK TO TOP -->
-<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">⇧</button>
-
-<script>
-window.addEventListener('scroll', function() {
-    const btn = document.getElementById('backToTop');
-    if (window.scrollY > 300) {
-        btn.classList.add('visible');
-    } else {
-        btn.classList.remove('visible');
-    }
-});
-</script>
         </div>
     </section>
 
@@ -6845,16 +6644,7 @@ window.addEventListener('scroll', function() {
 
 </div><!-- end main-content -->
 
-<!-- Back to Top -->
-<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">⇧</button>
-
-<script>
-    const btn = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) btn.classList.add('visible');
-        else btn.classList.remove('visible');
-    });
-</script><!-- STANDALONE HEADER (hidden in merged view) -->
+<!-- Back to Top --><!-- STANDALONE HEADER (hidden in merged view) -->
 <div class="page-info">ISPE Baseline® Guide Volume 7 (2nd Ed.): Risk-Based Manufacture | p99-p108</div>
 </div>
 
@@ -7478,15 +7268,6 @@ window.addEventListener('scroll', function() {
 </div><!-- end .main-content -->
 
 <!-- FOOTER -->
-<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">⇧</button>
-
-<script>
-window.addEventListener('scroll', function() {
-    const btn = document.getElementById('backToTop');
-    if (window.scrollY > 300) { btn.classList.add('visible'); }
-    else { btn.classList.remove('visible'); }
-});
-</script>
         </div>
     </section>
 
@@ -8326,22 +8107,6 @@ Ppk（長期製程績效）：
     </div>
 
 </div><!-- end main-content -->
-
-<button class="back-to-top" id="backToTop" title="Back to top">⇧</button>
-
-<script>
-    const backToTop = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 300) {
-            backToTop.classList.add('visible');
-        } else {
-            backToTop.classList.remove('visible');
-        }
-    });
-    backToTop.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-</script>
         </div>
     </section>
 
@@ -9015,17 +8780,7 @@ Ppk（長期製程績效）：
         </div>
     </div>
 
-</div><!-- /main-content -->
-
-<button class="back-to-top" id="backToTop" title="Back to top">↑</button>
-
-<script>
-    const btn = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-        btn.classList.toggle('visible', window.scrollY > 300);
-    });
-    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-</script><div class="page-info">ISPE Baseline® Guide Volume 7 (2nd Ed.): Risk-Based Manufacture of Pharmaceutical Products | p139–p162</div>
+</div><!-- /main-content --><div class="page-info">ISPE Baseline® Guide Volume 7 (2nd Ed.): Risk-Based Manufacture of Pharmaceutical Products | p139–p162</div>
 </div>
 
 <div class="main-content">
@@ -9922,16 +9677,6 @@ Ppk（長期製程績效）：
     </div>
 
 </div><!-- end main-content -->
-
-<button class="back-to-top" id="backToTop" title="Back to top">⇧</button>
-
-<script>
-const btn = document.getElementById('backToTop');
-window.addEventListener('scroll', () => {
-    btn.classList.toggle('visible', window.scrollY > 400);
-});
-btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-</script>
         </div>
     </section>
 
@@ -10601,19 +10346,6 @@ btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth'
     </div><!-- end 16.2 -->
 
 </div><!-- end main-content -->
-
-<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
-
-<script>
-    window.addEventListener('scroll', function() {
-        const btn = document.getElementById('backToTop');
-        if (window.scrollY > 300) {
-            btn.classList.add('visible');
-        } else {
-            btn.classList.remove('visible');
-        }
-    });
-</script>
         </div>
     </section>
 

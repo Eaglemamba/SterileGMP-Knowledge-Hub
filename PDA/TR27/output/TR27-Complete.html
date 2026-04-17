@@ -628,14 +628,23 @@ tr:nth-child(even) {
     font-size: 0.9rem;
 }
 
-/* ===== SECTION TITLES ===== */
+/* ===== SECTION TITLES =====
+   padding-left matches .left-column padding (1.5rem) so the
+   section title text aligns with the start of "原文 Original Text".
+   Border-bottom stays full-width as a visual separator. */
 .section-title,
 .section-divider {
     font-size: 1.1rem;
     color: var(--primary-blue);
     margin: 1.5rem 0 1rem;
-    padding-bottom: 0.5rem;
+    padding: 0 1.5rem 0.5rem 1.5rem;
     border-bottom: 2px solid #e2e8f0;
+    font-weight: 700;
+}
+
+.section-title strong,
+.section-divider strong {
+    font-weight: 700;
 }
 
 .section-divider {
@@ -956,19 +965,19 @@ tr:nth-child(even) {
     </header>
 
     <nav class="top-nav" id="topNav">
-        <button class="nav-scroll-btn hidden" id="navScrollLeft">‹</button>
+        <button class="nav-scroll-btn hidden" id="navScrollLeft">&#8249;</button>
         <div class="nav-container" id="navContainer">
             <a href="#sec0" class="nav-item" data-section="sec0">
                 <span class="nav-num">0</span>
-                <span class="nav-label">Preface &amp; Introduction</span>
+                <span class="nav-label">Preface & Introduction</span>
             </a>
             <a href="#sec1" class="nav-item" data-section="sec1">
                 <span class="nav-num">1</span>
-                <span class="nav-label">Integrity Assurance, Specifications &amp; Test Method Selection</span>
+                <span class="nav-label">Integrity Assurance, Specifications & Test Method Selection</span>
             </a>
             <a href="#sec2" class="nav-item" data-section="sec2">
                 <span class="nav-num">2</span>
-                <span class="nav-label">Microbial Methods &amp; Decision Tree</span>
+                <span class="nav-label">Microbial Methods & Decision Tree</span>
             </a>
             <a href="#sec3" class="nav-item" data-section="sec3">
                 <span class="nav-num">3</span>
@@ -979,7 +988,7 @@ tr:nth-child(even) {
                 <span class="nav-label">References</span>
             </a>
         </div>
-        <button class="nav-scroll-btn" id="navScrollRight">›</button>
+        <button class="nav-scroll-btn" id="navScrollRight">&#8250;</button>
     </nav>
 
 <main class="main-content">
@@ -989,16 +998,13 @@ tr:nth-child(even) {
         <div class="chapter-divider">
             <div class="chapter-badge">0</div>
             <div class="chapter-info">
-                <h2>Section 0: Preface &amp; Introduction</h2>
+                <h2>Section 0: Preface & Introduction</h2>
                 <p>前言與導論 | p1-p3</p>
             </div>
         </div>
         <div class="chapter-body">
             <!-- ===== PAGE HEADER ===== -->
-<header class="header">
-    <h1>Section 0: Preface &amp; Introduction | 前言與導論</h1>
-    <div class="subtitle">PDA Technical Report No. 27 (1998): Pharmaceutical Package Integrity</div>
-    <div class="page-info">Preface · Section 2 Introduction · Section 3 Integrity Assurance Overview</div>
+<div class="page-info">Preface · Section 2 Introduction · Section 3 Integrity Assurance Overview</div>
 </header>
 
 <!-- ===== MAIN CONTENT ===== -->
@@ -1309,21 +1315,7 @@ tr:nth-child(even) {
 
 </div><!-- end main-content -->
 
-<!-- ===== FOOTER ===== -->
-
-
 <!-- ===== BACK TO TOP ===== -->
-<button class="back-to-top" id="backToTop" title="Back to top">↑</button>
-
-<script>
-    const btn = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-        btn.classList.toggle('visible', window.scrollY > 400);
-    });
-    btn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-</script>
         </div>
     </section>
 
@@ -1332,16 +1324,13 @@ tr:nth-child(even) {
         <div class="chapter-divider">
             <div class="chapter-badge">1</div>
             <div class="chapter-info">
-                <h2>Section 1: Integrity Assurance, Specifications &amp; Test Method Selection</h2>
+                <h2>Section 1: Integrity Assurance, Specifications & Test Method Selection</h2>
                 <p>完整性保證、規格與試驗方法選擇 | p3-p10</p>
             </div>
         </div>
         <div class="chapter-body">
             <!-- ===== HEADER ===== -->
-<header class="header">
-    <h1>Section 1: Integrity Assurance, Specifications &amp; Test Method Selection</h1>
-    <div class="subtitle">完整性保證、規格與試驗方法選擇</div>
-    <div class="page-info">PDA Technical Report No. 27 (1998) — Sections 3, 4 &amp; 5</div>
+<div class="page-info">PDA Technical Report No. 27 (1998) — Sections 3, 4 &amp; 5</div>
 </header>
 
 <!-- ===== MAIN CONTENT ===== -->
@@ -1712,11 +1701,6 @@ Pa m³/s（SI 單位）
                 <div class="right-column">
                     <p class="column-header">中文解說 — Commentary</p>
 
-                    <div class="concept-box">
-                        <h4>試驗方法靈敏度 vs. 特異性 — Sensitivity vs. Specificity</h4>
-                        <p>在洩漏測試中，靈敏度 (sensitivity) 與特異性 (specificity) 的概念如下：</p>
-                        </div>
-
                     <div class="note-box">
                         <h4>靈敏度過高也是問題</h4>
                         <p>TR27 明確警告：過度靈敏的方法同樣不適當，且代價高昂。</p>
@@ -1733,7 +1717,12 @@ Pa m³/s（SI 單位）
                     </div>
                 </div>
             </div>
-        </div>
+        <div class="concept-box">
+                        <h4>試驗方法靈敏度 vs. 特異性 — Sensitivity vs. Specificity</h4>
+                        <p>在洩漏測試中，靈敏度 (sensitivity) 與特異性 (specificity) 的概念如下：</p>
+                        </div>
+
+                    </div>
     </div>
 
     <!-- ===================================================== -->
@@ -1845,26 +1834,7 @@ Pa m³/s（SI 單位）
 
 </main>
 
-<!-- ===== FOOTER ===== -->
-
-
 <!-- ===== BACK TO TOP ===== -->
-<button class="back-to-top" id="backToTop" title="Back to top">⇧</button>
-
-<script>
-    // Back to top button
-    const btn = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-            btn.classList.add('visible');
-        } else {
-            btn.classList.remove('visible');
-        }
-    });
-    btn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-</script>
         </div>
     </section>
 
@@ -1873,16 +1843,13 @@ Pa m³/s（SI 單位）
         <div class="chapter-divider">
             <div class="chapter-badge">2</div>
             <div class="chapter-info">
-                <h2>Section 2: Microbial Methods &amp; Decision Tree</h2>
+                <h2>Section 2: Microbial Methods & Decision Tree</h2>
                 <p>微生物方法與決策樹 | p10-p15</p>
             </div>
         </div>
         <div class="chapter-body">
             <!-- ===== HEADER ===== -->
-<header class="header">
-    <h1>Section 2: Microbial Methods &amp; Decision Tree | 微生物方法與決策樹</h1>
-    <div class="subtitle">PDA Technical Report No. 27 (1998): Pharmaceutical Package Integrity</div>
-    <div class="page-info">Sections 6–7  |  Source: PDA J. Pharm. Sci. &amp; Tech., Vol. 52, No. 4, July–August 1998 Supplement</div>
+<div class="page-info">Sections 6–7  |  Source: PDA J. Pharm. Sci. &amp; Tech., Vol. 52, No. 4, July–August 1998 Supplement</div>
 </header>
 
 <!-- ===== MAIN CONTENT ===== -->
@@ -2038,17 +2005,17 @@ Pa m³/s（SI 單位）
                 </div>
                 <div class="right-column">
                     <h3>中文解析 Commentary</h3>
-                    <div class="concept-box">
-                        <h4>液體浸漬試驗設計要素</h4>
-                        <p><strong>液體浸漬微生物挑戰試驗（Liquid Immersion Microbial Challenge Test）</strong>目前無標準化方法，需依照以下原則設計：</p>
-                        </div>
                     <div class="note-box">
                         <h4>重點：為何需要陽性對照組？</h4>
                         <p>陽性對照（Positive Control）用於確認試驗方法有效——即挑戰菌株確實能在培養基中生長，且試驗條件能夠偵測到有缺陷的包裝。若陽性對照未能長菌，整個試驗結果無效。</p>
                     </div>
                 </div>
             </div>
-        </div>
+        <div class="concept-box">
+                        <h4>液體浸漬試驗設計要素</h4>
+                        <p><strong>液體浸漬微生物挑戰試驗（Liquid Immersion Microbial Challenge Test）</strong>目前無標準化方法，需依照以下原則設計：</p>
+                        </div>
+                    </div>
     </div>
 
     <!-- ===== 6.3 Airborne Challenge ===== -->
@@ -2076,10 +2043,6 @@ Pa m³/s（SI 單位）
                 </div>
                 <div class="right-column">
                     <h3>中文解析 Commentary</h3>
-                    <div class="concept-box">
-                        <h4>氣載挑戰試驗（Airborne Challenge Test）設計關鍵</h4>
-                        <p>氣載挑戰試驗模擬空氣中懸浮微生物的侵入，特別適用於<strong>迂迴路徑型密封（tortuous path closures）</strong>，如鋁管捲封或螺旋蓋。</p>
-                        </div>
                     <div class="analogy-box">
                         <h4>比喻：氣載 vs. 液態挑戰的差異</h4>
                         <p>液態浸漬試驗 = 把容器泡在菌液裡，看菌液是否滲入密封介面。氣載試驗 = 把容器放在充滿懸浮菌的空間裡，看空氣中的菌是否能穿過密封路徑進入容器。後者模擬的是實際儲存/使用環境中更常見的暴露情境。</p>
@@ -2090,7 +2053,11 @@ Pa m³/s（SI 單位）
                     </div>
                 </div>
             </div>
-        </div>
+        <div class="concept-box">
+                        <h4>氣載挑戰試驗（Airborne Challenge Test）設計關鍵</h4>
+                        <p>氣載挑戰試驗模擬空氣中懸浮微生物的侵入，特別適用於<strong>迂迴路徑型密封（tortuous path closures）</strong>，如鋁管捲封或螺旋蓋。</p>
+                        </div>
+                    </div>
     </div>
 
     <!-- ===== 6.4 Physical Methods ===== -->
@@ -2155,10 +2122,6 @@ Pa m³/s（SI 單位）
                         </ol>
                         <p>透過交叉比對兩種結果，確認物理測試的洩漏率與微生物侵入之間的定量關係。</p>
                     </div>
-                    <div class="concept-box">
-                        <h4>四個必須証明的結果（以示蹤劑 vs. 微生物為例）</h4>
-                        <p style="margin-top:0.5rem;font-size:0.85rem;color:#555;">注意：情境④（無示蹤劑但有微生物侵入）為直接相關性建立的最大風險，必須透過試驗証明不發生。</p>
-                    </div>
                     <div class="note-box">
                         <h4>干擾因素注意事項</h4>
                         <ul>
@@ -2168,7 +2131,11 @@ Pa m³/s（SI 單位）
                     </div>
                 </div>
             </div>
-        </div>
+        <div class="concept-box">
+                        <h4>四個必須証明的結果（以示蹤劑 vs. 微生物為例）</h4>
+                        <p style="margin-top:0.5rem;font-size:0.85rem;color:#555;">注意：情境④（無示蹤劑但有微生物侵入）為直接相關性建立的最大風險，必須透過試驗証明不發生。</p>
+                    </div>
+                    </div>
     </div>
 
     <!-- ===== 6.4.2 Indirect Correlation ===== -->
@@ -2398,23 +2365,7 @@ Pa m³/s（SI 單位）
 
 </div><!-- end main-content -->
 
-<!-- ===== FOOTER ===== -->
-
-
 <!-- Back to Top -->
-<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">⇧</button>
-
-<script>
-    // Back to Top visibility
-    window.addEventListener('scroll', function() {
-        const btn = document.getElementById('backToTop');
-        if (window.scrollY > 400) {
-            btn.classList.add('visible');
-        } else {
-            btn.classList.remove('visible');
-        }
-    });
-</script>
         </div>
     </section>
 
@@ -3170,18 +3121,18 @@ Pa m³/s（SI 單位）
                         <p><span class="key-term">液體微生物挑戰試驗</span>是無菌包裝完整性試驗的「黃金標準」方法之一（尤其用於一次性使用無菌包裝、小瓶、安瓿等能耐液體浸泡的容器）。將充填培養基的包裝浸入高濃度菌液，若包裝有缺陷，細菌進入，培養後培養基混濁（turbid）即判為失敗。</p>
                     </div>
 
-                    <div class="concept-box">
-                        <h4>挑戰菌株選擇依據</h4>
-                        <p>挑戰菌濃度在試驗結束時需維持 ≥10⁷ CFU/mL，確保挑戰強度足夠。</p>
-                    </div>
-
                     <div class="analogy-box">
                         <h4>偵測依據：培養基混濁</h4>
                         <p>判定標準非常直觀：培養後，包裝內培養基若<strong>混濁（turbid）</strong>，代表細菌進入並增殖 → 包裝失敗。清澈 → 包裝完整。這是無菌性檢驗（Sterility Test）概念的延伸應用。</p>
                     </div>
                 </div>
             </div>
-        </div>
+        <div class="concept-box">
+                        <h4>挑戰菌株選擇依據</h4>
+                        <p>挑戰菌濃度在試驗結束時需維持 ≥10⁷ CFU/mL，確保挑戰強度足夠。</p>
+                    </div>
+
+                    </div>
     </div>
 
     <!-- ===== METHOD 8.8 ===== -->
@@ -3413,23 +3364,8 @@ Pa m³/s（SI 單位）
 </div><!-- end main-content -->
 
 <!-- FOOTER -->
-
-
-<!-- BACK TO TOP -->
-<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">⇧</button>
-
-<script>
-    // Back to top visibility
-    window.addEventListener('scroll', function() {
-        const btn = document.getElementById('backToTop');
-        if (window.scrollY > 300) {
-            btn.classList.add('visible');
-        } else {
-            btn.classList.remove('visible');
-        }
-    });
-</script><div class="page-info">Methods: Residual Gas Ionization · Tracer Gas · Ultrasonic · Vacuum/Pressure Decay · Visual · Volumetric · Weight Loss/Gain</div>
-
+<!-- BACK TO TOP --><div class="page-info">Methods: Residual Gas Ionization · Tracer Gas · Ultrasonic · Vacuum/Pressure Decay · Visual · Volumetric · Weight Loss/Gain</div>
+</div>
 
 <div class="main-content">
 
@@ -4402,19 +4338,7 @@ Pa m³/s（SI 單位）
     </div>
 
 </div><!-- end main-content -->
-
-
-
-<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">⇧</button>
-
-<script>
-window.addEventListener('scroll', function() {
-    var btn = document.getElementById('backToTop');
-    if (window.scrollY > 300) { btn.classList.add('visible'); }
-    else { btn.classList.remove('visible'); }
-});
-</script>
-        
+        </div>
     </section>
 
     <!-- ========== Section 4: References ========== -->
@@ -4930,29 +4854,17 @@ window.addEventListener('scroll', function() {
 
 </div><!-- end main-content -->
 
-<!-- ===== FOOTER ===== -->
-
-
 <!-- Back to Top -->
-<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">⇧</button>
-
-<script>
-    // Back to Top visibility
-    window.addEventListener('scroll', function() {
-        const btn = document.getElementById('backToTop');
-        if (window.scrollY > 300) {
-            btn.classList.add('visible');
-        } else {
-            btn.classList.remove('visible');
-        }
-    });
-</script>
-        
+        </div>
     </section>
 
 </main>
 
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">⇧</button>
+    <footer class="main-footer">
+        <p>SterileGMP Knowledge Hub — 僅供學習參考</p>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -5065,11 +4977,6 @@ window.addEventListener('scroll', function() {
         });
     });
     </script>
-
-
-<footer class="main-footer">
-    <p>SterileGMP Knowledge Hub — 僅供學習參考</p>
-</footer>
 
 </body>
 </html>

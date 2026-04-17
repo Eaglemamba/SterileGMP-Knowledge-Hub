@@ -628,14 +628,23 @@ tr:nth-child(even) {
     font-size: 0.9rem;
 }
 
-/* ===== SECTION TITLES ===== */
+/* ===== SECTION TITLES =====
+   padding-left matches .left-column padding (1.5rem) so the
+   section title text aligns with the start of "原文 Original Text".
+   Border-bottom stays full-width as a visual separator. */
 .section-title,
 .section-divider {
     font-size: 1.1rem;
     color: var(--primary-blue);
     margin: 1.5rem 0 1rem;
-    padding-bottom: 0.5rem;
+    padding: 0 1.5rem 0.5rem 1.5rem;
     border-bottom: 2px solid #e2e8f0;
+    font-weight: 700;
+}
+
+.section-title strong,
+.section-divider strong {
+    font-weight: 700;
 }
 
 .section-divider {
@@ -956,14 +965,14 @@ tr:nth-child(even) {
     </header>
 
     <nav class="top-nav" id="topNav">
-        <button class="nav-scroll-btn hidden" id="navScrollLeft">‹</button>
+        <button class="nav-scroll-btn hidden" id="navScrollLeft">&#8249;</button>
         <div class="nav-container" id="navContainer">
             <a href="#sec1" class="nav-item" data-section="sec1">
                 <span class="nav-num">1</span>
-                <span class="nav-label">Scope, Terms, Symbol Development &amp; Validation Process</span>
+                <span class="nav-label">Scope, Terms, Symbol Development & Validation Process</span>
             </a>
         </div>
-        <button class="nav-scroll-btn" id="navScrollRight">›</button>
+        <button class="nav-scroll-btn" id="navScrollRight">&#8250;</button>
     </nav>
 
 <main class="main-content">
@@ -973,7 +982,7 @@ tr:nth-child(even) {
         <div class="chapter-divider">
             <div class="chapter-badge">1</div>
             <div class="chapter-info">
-                <h2>Section 1: Scope, Terms, Symbol Development &amp; Validation Process</h2>
+                <h2>Section 1: Scope, Terms, Symbol Development & Validation Process</h2>
                 <p>範圍、術語、符號開發與驗證流程 | p1-p24</p>
             </div>
         </div>
@@ -983,46 +992,6 @@ tr:nth-child(even) {
 </div>
 
 <!-- NAVIGATION -->
-<nav class="top-nav">
-    <button class="nav-scroll-btn" id="navLeft" onclick="scrollNav(-200)">‹</button>
-    <div class="nav-container" id="navContainer">
-        <a class="nav-item active" href="#sec-intro">
-            <span class="nav-num">I</span><span class="nav-label">Introduction</span>
-        </a>
-        <a class="nav-item" href="#sec-scope">
-            <span class="nav-num">1</span><span class="nav-label">Scope</span>
-        </a>
-        <a class="nav-item" href="#sec-references">
-            <span class="nav-num">2</span><span class="nav-label">References</span>
-        </a>
-        <a class="nav-item" href="#sec-terms">
-            <span class="nav-num">3</span><span class="nav-label">Terms</span>
-        </a>
-        <a class="nav-item" href="#sec-principles">
-            <span class="nav-num">4</span><span class="nav-label">Principles</span>
-        </a>
-        <a class="nav-item" href="#sec-selection">
-            <span class="nav-num">5</span><span class="nav-label">Selection Process</span>
-        </a>
-        <a class="nav-item" href="#sec-risk">
-            <span class="nav-num">6</span><span class="nav-label">Risk Classification</span>
-        </a>
-        <a class="nav-item" href="#sec-concept">
-            <span class="nav-num">7</span><span class="nav-label">Concept Dev.</span>
-        </a>
-        <a class="nav-item" href="#sec-evaluation">
-            <span class="nav-num">8</span><span class="nav-label">Evaluation</span>
-        </a>
-        <a class="nav-item" href="#sec-acceptance">
-            <span class="nav-num">9</span><span class="nav-label">Acceptance Criteria</span>
-        </a>
-        <a class="nav-item" href="#sec-annexes">
-            <span class="nav-num">A</span><span class="nav-label">Annexes</span>
-        </a>
-    </div>
-    <button class="nav-scroll-btn" id="navRight" onclick="scrollNav(200)">›</button>
-</nav>
-
 <!-- MAIN CONTENT -->
 <div class="main-content">
 
@@ -1936,72 +1905,16 @@ tr:nth-child(even) {
 
 <!-- FOOTER -->
 <!-- BACK TO TOP -->
-<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">⇧</button>
-
-<script>
-// Back to top button
-window.addEventListener('scroll', function() {
-    const btn = document.getElementById('backToTop');
-    if (window.scrollY > 300) {
-        btn.classList.add('visible');
-    } else {
-        btn.classList.remove('visible');
-    }
-});
-
-// Nav scroll
-function scrollNav(amount) {
-    const container = document.getElementById('navContainer');
-    container.scrollLeft += amount;
-    updateNavBtns();
-}
-
-function updateNavBtns() {
-    const container = document.getElementById('navContainer');
-    const leftBtn = document.getElementById('navLeft');
-    const rightBtn = document.getElementById('navRight');
-    if (container.scrollLeft <= 0) {
-        leftBtn.classList.add('hidden');
-    } else {
-        leftBtn.classList.remove('hidden');
-    }
-    if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 1) {
-        rightBtn.classList.add('hidden');
-    } else {
-        rightBtn.classList.remove('hidden');
-    }
-}
-
-document.getElementById('navContainer').addEventListener('scroll', updateNavBtns);
-updateNavBtns();
-
-// Active nav highlight on scroll
-const sections = document.querySelectorAll('.chapter-section');
-const navItems = document.querySelectorAll('.nav-item');
-
-window.addEventListener('scroll', function() {
-    let current = '';
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop - 80;
-        if (window.scrollY >= sectionTop) {
-            current = section.getAttribute('id');
-        }
-    });
-    navItems.forEach(item => {
-        item.classList.remove('active');
-        const href = item.getAttribute('href').substring(1);
-        if (href === current) {
-            item.classList.add('active');
-        }
-    });
-});
-</script>
-        
+        </div>
     </section>
 
 </main>
 
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">⇧</button>
+    <footer class="main-footer">
+        <p>SterileGMP Knowledge Hub — 僅供學習參考</p>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -2114,11 +2027,6 @@ window.addEventListener('scroll', function() {
         });
     });
     </script>
-
-
-<footer class="main-footer">
-    <p>SterileGMP Knowledge Hub — 僅供學習參考</p>
-</footer>
 
 </body>
 </html>
