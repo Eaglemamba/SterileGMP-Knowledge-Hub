@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR73 - Section 6: Glass Barrel Requirements</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== CUSTOM: CCI comparison table ===== */
+.cci-table-wrapper {
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+.cci-table-wrapper table {
+    min-width: 900px;
+    font-size: 0.82rem;
+}
+.cci-table-wrapper th {
+    font-size: 0.8rem;
+    position: sticky;
+    top: 0;
+}
+.cci-table-wrapper td {
+    vertical-align: top;
+    padding: 0.5rem 0.6rem;
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 6: Glass Barrel Requirements</h1>
+    <div class="subtitle">玻璃筒身需求：法蘭幾何、法蘭強度、筒身幾何、肩部設計與其他考量</div>
+    <div class="page-info">PDA Technical Report No. 73: Prefilled Syringes | p34 - p36</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 ISO 11040-4 對預充填注射器玻璃筒身尺寸的規範框架，以及客製化修改的邊界。</li>
+        <li>掌握 Finger Flange（手指法蘭）幾何形狀與強度對充填/包裝製程及自動注射器應用的影響。</li>
+        <li>說明 Barrel Geometry（筒身幾何）各參數（內徑、外徑、壁厚）與劑量準確性的關聯。</li>
+        <li>理解 Shoulder Design（肩部設計）對 Hold-up Volume（殘留體積）的影響及補償策略。</li>
+        <li>辨識不同應用情境（手動 vs. 自動注射器）下的附加測試考量。</li>
+    </ul>
+</div>
+
+<!-- ==================== SECTION 6.0 INTRO ==================== -->
+<div class="section-title"><strong>6.0 Glass Barrel Requirements 玻璃筒身需求</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The dimensions of a <span class="key-term">1 mL long syringe</span> are defined in <span class="key-term">ISO 11040-4</span>, Prefilled Syringes, but may be modified as necessary by the manufacturer or customer. Variations in dimensions are not uncommon since most syringes are used for "platform" purposes and originally designed for a specific use. Different areas of the syringe, including the <span class="key-term">finger flange</span>, <span class="key-term">barrel</span>, <span class="key-term">shoulder</span>, and <span class="key-term">cone</span> are defined, but can be changed due to handling requirements for use and overall customer requirements. The syringe can be used by manual application or device application (using autoinjectors, safety devices, or other devices).</p>
+        <p>In most cases, the barrel dimensions are as defined in ISO 11040-4. Changes are not common in these dimensions because most suppliers of glass tubes use this dimension of tubing only for their product. The dimension with the greatest influence is the <span class="key-term">inner diameter</span>. This parameter affects the filling height, dose accuracy, graduation or dose markings, and dead or hold-up volumes.</p>
+        <p>ISO 11040-4 can be used as a guideline to define the dimensions; the design of the finger flange and the diameter of the bore inside the cone (related to the use of the specified needle type) should be aligned between customer and manufacturer.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>ISO 11040-4:</strong> 預充填注射器的國際尺寸標準，定義了 1 mL long 注射器的各部件尺寸與公差。它是製造商與客戶溝通的共同語言，但並非強制不可更改的規格——客戶與製造商可協商修改。</p>
+            <p><strong>Platform Syringe（平台型注射器）:</strong> 指同一款注射器設計被多種藥品、多個客戶共用的概念。這帶來了高度的規格穩定性，但也意味著某些尺寸客製化空間受限。</p>
+            <p><strong>Inner Diameter（內徑）:</strong> 所有幾何參數中影響最大的一個——它直接決定充填高度、劑量準確性、刻度標示位置，以及殘留死體積。CDMO 在接受新產品時，必須確認客戶規格中的內徑是否與標準一致。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>注射器的玻璃筒身就像一根精密的量筒。內徑差了 0.1 mm，藥液的充填高度就會明顯偏移，劑量刻度也會失準——就像用一個刻度印錯的量杯量藥，誤差從一開始就注定了。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>ISO 11040-4 是指引（guideline），不是強制法規。但在 GMP 環境中，任何偏離標準尺寸的設計都需要有技術理由並記錄於產品規格書中，且必須經過設計驗證（Design Qualification）。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為何玻璃管供應商鮮少更改筒身尺寸？這對 CDMO 的供應鏈管理有何意義？</li>
+                <li>內徑（Inner Diameter）改變 0.2 mm，對 1 mL 注射器的劑量精確性會有多大影響？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION 6.1 FLANGE GEOMETRY ==================== -->
+<div class="section-title"><strong>6.1 Flange Geometry 法蘭幾何形狀</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Flange dimensions and tolerances should be defined in the technical portion of the <span class="key-term">product specification</span>. Flange dimensions and tolerances can influence the main design parameters, including handling, combination with devices, and strength of the flange. ISO 11040-4 describes two types of flanges (<span class="key-term">cut</span> and <span class="key-term">round finger flanges</span>) that can be used as guidelines.</p>
+        <p>ISO 11040-4 provides descriptions for Dimensions and Tolerances, but these may differ according to customer requirements. Dimensions should be verified according to product specifications by inspection controls during manufacturing.</p>
+        <h3>6.1.1 Finger Flange Thickness</h3>
+        <p>ISO 11040-4 describes a flange thickness of <span class="key-term">1.9 mm</span> with a tolerance of ± 0.5 mm. Different dimensions may be used based on the definitions and application requirements of the customer and intended use of the syringe. Flange thicknesses in use range between <span class="key-term">1.65 mm and 2.2 mm</span>; the most common tolerance is ± 0.25 mm. These should be provided as part of the product specification.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Cut Flange（切割法蘭）vs. Round Flange（圓形法蘭）:</strong> Cut flange 是玻璃管切割後直接形成的法蘭，邊緣較鋒利；Round flange 經過額外的成形工序，具有較高的對稱性與平面度。兩者各有應用場景，需在規格書中明確指定。</p>
+            <p><strong>Flange Thickness（法蘭厚度）:</strong> ISO 標準值為 1.9 mm，公差 ±0.5 mm，但業界實際使用範圍為 1.65–2.2 mm，常用公差收緊至 ±0.25 mm。在自動注射器應用中，法蘭厚度直接影響裝配的可靠性。</p>
+        </div>
+        <div class="formula-box">
+            <h4>公式與計算 Specification Range</h4>
+            <pre>
+ISO 標準法蘭厚度：
+  標稱值：1.9 mm
+  ISO 公差：± 0.5 mm → 範圍：1.4 – 2.4 mm
+
+業界實際使用範圍：
+  最小：1.65 mm
+  最大：2.20 mm
+  常用公差：± 0.25 mm → 標稱 1.9 mm 時範圍：1.65 – 2.15 mm
+
+CDMO 建議：於產品規格書中明確指定
+  法蘭厚度標稱值 + 公差，並與玻璃供應商確認。
+            </pre>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>法蘭尺寸必須寫入產品規格書（Product Specification）的技術部分，並在製造過程中透過檢驗管控（Inspection Controls）加以驗證。若客戶使用自動注射器，法蘭公差的要求通常比手動使用更嚴格。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>Cut flange 與 Round flange 在視覺外觀與結構上的主要差異是什麼？各自適用哪類應用？</li>
+                <li>為何業界普遍將法蘭厚度公差從 ±0.5 mm 收緊至 ±0.25 mm？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION 6.2 FLANGE STRENGTH ==================== -->
+<div class="section-title"><strong>6.2 Flange Strength 法蘭強度</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The process to define the <span class="key-term">flange strength</span>, which is dependent on the final use of the syringe, should align with the customer and manufacturer requirements. The required flange strength depends on the <span class="key-term">mechanical load</span> that the syringes are subjected to during the filling and packaging process. <span class="key-term">Flange breakage</span> can result in problems, such as equipment downtime, glass particle contamination of the equipment, and additional cleaning steps during the filling and packaging process.</p>
+        <p>Additionally, it is necessary to consider the application and use requirements of the syringe (manual versus autoinjector application) when determining the appropriate design to use.</p>
+        <p>For autoinjectors, <span class="key-term">shoulder-oriented</span> (in which finger flange strength is less important) and <span class="key-term">finger flange-oriented systems</span> (in which finger flange strength is more important) are often used. For either configuration, detailed tests are commonly performed to investigate the range of force required for the assembly and application phase (time of use of the syringe).</p>
+        <p>Round (noncut) finger flanges have a high degree of planarity and symmetry of form. However, the cutting process can negatively affect the finger flange. To control for this possibility, the technical drawings must specify the tolerances of form, orientation, location, and run-out, in addition to dimensional tolerances.</p>
+        <p>The measurements and use of devices should be representative of the real impact of the insertion or assembly process.</p>
+        <p>It is not uncommon to experience differences in test results due to the occurrence of <span class="key-term">flange cracks</span>, <span class="key-term">shoulder cracks</span>, and <span class="key-term">burst syringe bodies</span>—possibly in combination—rather than on an individual structural basis. Therefore, only specifically trained individuals should conduct an evaluation of the breakage (e.g., to determine its origin).</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Flange Strength（法蘭強度）:</strong> 法蘭承受機械負載的能力，在充填線、包裝線及最終使用時都會受到考驗。強度不足會導致法蘭斷裂，引發設備停機與玻璃碎屑污染。</p>
+            <p><strong>Shoulder-oriented vs. Finger flange-oriented systems:</strong> 自動注射器設計的兩大類型。Shoulder-oriented 系統以注射器肩部作為驅動支撐點，對法蘭強度要求相對低；Finger flange-oriented 系統以法蘭為支撐，法蘭強度則成為關鍵設計參數。</p>
+            <p><strong>破損模式分析:</strong> 法蘭裂縫（flange crack）、肩部裂縫（shoulder crack）、筒身爆裂（burst body）可能單獨或同時發生，需要受過專業訓練的人員才能正確判斷破損起源。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>法蘭強度測試就像對橋樑進行載重測試——不只要知道橋能承受多少噸，還要知道它在反覆震動（充填線振動）與極端條件（自動注射器彈射力道）下的疲勞破損模式。玻璃的破壞往往不是孤立的——一個點的弱化可能引發連鎖破壞。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>GMP 關注點：法蘭斷裂造成的玻璃顆粒（Glass Particles）屬於可見微粒污染，直接威脅注射劑的無菌安全性與患者安全。CDMO 在充填線設計與設備選型時，必須評估注射器在各工序所受到的機械力，並要求玻璃供應商提供相應的強度數據。</p>
+            <p>Technical Drawing 中除尺寸公差外，還必須指定：形狀公差（form）、方向公差（orientation）、位置公差（location）、圓跳動（run-out）。</p>
+        </div>
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>當 CDMO 客戶將產品從手動注射切換為自動注射器（Autoinjector）平台時，必須重新評估現有玻璃注射器的法蘭強度是否符合新裝置的組裝與使用力道要求。這通常需要重新進行設計驗證（Design Qualification），並更新產品規格書中的法蘭強度測試方法與接受標準。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為何法蘭斷裂的根本原因分析（Root Cause Analysis）需要受過專業訓練的人員執行？</li>
+                <li>Shoulder-oriented 與 Finger flange-oriented 自動注射器系統在設計上的核心差異是什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION 6.3 BARREL GEOMETRY ==================== -->
+<div class="section-title"><strong>6.3 Barrel Geometry 筒身幾何形狀</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>ISO 11040-4 defines the glass barrel geometry and describes the <span class="key-term">inner diameter</span>, <span class="key-term">outer diameter</span>, <span class="key-term">wall thickness</span>, <span class="key-term">inner length</span>, and <span class="key-term">total length</span> with dimensions and tolerances. Glass with tighter tolerances is available for all dimensions and may be used if required for dose accuracy or small injection volumes.</p>
+        <p>Both dimensions (cylindrical length and total length to the top of the barrel-glass) must be verified during manufacturing because both influence other parameters and the functionality of the syringe when implemented into a device. The customer and manufacturer agree on precise dimensions based upon capabilities and intended uses.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>筒身幾何五大參數:</strong></p>
+            <ul>
+                <li><strong>Inner Diameter（內徑）:</strong> 影響充填高度與劑量準確性最大的參數</li>
+                <li><strong>Outer Diameter（外徑）:</strong> 影響裝置相容性與握持舒適度</li>
+                <li><strong>Wall Thickness（壁厚）:</strong> 影響機械強度與耐壓性</li>
+                <li><strong>Inner Length（內部有效長度）:</strong> 影響活塞行程與最大充填量</li>
+                <li><strong>Total Length（總長）:</strong> 影響裝置整合尺寸</li>
+            </ul>
+            <p><strong>Tighter Tolerance Glass（高精度玻璃）:</strong> 標準公差無法滿足小容量或高精度劑量要求時，可向玻璃供應商訂購更嚴格公差的玻璃管，但通常會提高成本與採購前置時間。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>製造過程中，圓柱長度（Cylindrical Length）與總長（Total Length to top of barrel-glass）兩者都必須驗證，因為兩者都會影響注射器在裝置中的功能性。這兩個參數是設計驗證與製程管控的關鍵量測點，必須列入 IPC（製程中管控）計畫。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>筒身幾何就像子彈的藥筒尺寸——每一個參數都環環相扣。內徑決定了「彈頭的粗細」（活塞）能否順暢滑動；壁厚決定了能否承受充填壓力；而總長則決定了「槍管」能否容納它。任何一個參數超出公差，整個系統就無法可靠運作。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>什麼情況下 CDMO 應考慮向玻璃供應商採購「高精度公差」（tighter tolerance）玻璃管？</li>
+                <li>圓柱長度（Cylindrical Length）與總長（Total Length）兩個參數在功能上分別影響注射器的哪些面向？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION 6.4 SHOULDER DESIGN ==================== -->
+<div class="section-title"><strong>6.4 Syringe Shoulder Design: Impact on Hold-up Volume 注射器肩部設計：對殘留體積的影響</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Shoulder design is not described in ISO 11040-4 and is generally based on manufacturers' procedures. Shoulder and cone formation often involve different steps. The <span class="key-term">shoulder forming operation</span> is only an outside forming step; the inside shape of the shoulder area is not established by a forming tool. Therefore, variations in tolerances and shapes are accounted for in production processes at the converting sites. The effect on <span class="key-term">hold-up volume</span> should be evaluated and measured in accordance with the existing guidelines and international standards, such as Chapter 2.9.17 of <span class="key-term">European Pharmacopeia (EP)</span>.</p>
+        <p>An adequate <span class="key-term">overfill</span> can compensate for the hold-up volume of the syringe system. However, product viscosity and the needle itself affect this volume, and the hold-up volume should be verified during <span class="key-term">design qualification</span>. ISO documents do not provide cone dimensions; however, all manufacturers use the same base for the cone design. Some variation in certain dimensions is possible.</p>
+        <p>The <span class="key-term">cone bore design</span> depends on the type of needle used and the specific manufacturing and needle assembly process. The outside dimensions are the same in all cone bores. Dimensions and tolerances for the shoulder can vary by customer need (Figure 6.4-1).</p>
+        <p><em>Figure 6.4-1: Glass Syringe Cone with Needle Inserted</em></p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Hold-up Volume（殘留體積）:</strong> 注射完成後仍殘留在注射器系統（主要在肩部與針頭內）無法注入患者體內的藥液體積。殘留體積過大會導致實際輸送劑量低於標示劑量。</p>
+            <p><strong>Overfill（超充量）:</strong> 為補償 Hold-up Volume 而額外充填的藥液量。計算公式：標示劑量 + Hold-up Volume + 充填工藝損失 = 充填目標量。過度 Overfill 會浪費昂貴的藥品；不足則違反劑量標示。</p>
+            <p><strong>Shoulder Forming（肩部成形）:</strong> 只有外部成形，內部形狀無法精確控制，因此肩部尺寸的變異性通常比筒身大，需在設計驗證時充分評估其對 Hold-up Volume 的影響範圍。</p>
+            <p><strong>EP 2.9.17:</strong> 歐洲藥典關於注射器殘留體積的測定方法章節，為 Hold-up Volume 測量提供標準程序。</p>
+        </div>
+        <div class="formula-box">
+            <h4>公式與計算 Hold-up Volume Compensation</h4>
+            <pre>
+充填目標量計算（概念示意）：
+
+Target Fill Volume =
+  Labeled Dose Volume
+  + Hold-up Volume (肩部 + 針頭)
+  + Process Variation Buffer
+
+影響 Hold-up Volume 的因素：
+  1. 肩部幾何形狀（內腔形狀變異）
+  2. 產品黏度（viscosity）—— 黏度越高，殘留越多
+  3. 針頭型號與內腔尺寸
+  4. 注射速度與患者技術
+
+驗證時機：Design Qualification（設計驗證）階段
+測量標準：EP 2.9.17
+            </pre>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>肩部設計不在 ISO 11040-4 規範範圍內——這表示各玻璃製造商的肩部形狀存在合理差異，且沒有統一的「標準形狀」。CDMO 在切換玻璃供應商時，必須重新評估 Hold-up Volume 是否有顯著變化，這可能需要調整充填量設定（Fill Volume Setting）並更新批次記錄。</p>
+        </div>
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>在 CDMO 為新客戶開發充填方法時，Hold-up Volume 的量測應在設計驗證（Design Qualification）階段完成，並使用客戶實際產品（或具代表性的模擬液）進行測試——因為黏度直接影響殘留量。這個數值將成為充填設備參數設定的基礎，也是產品規格書中 Overfill 規格的依據。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為何高黏度生物製劑（如單株抗體）的 Hold-up Volume 通常比低黏度小分子藥物更大？</li>
+                <li>若 CDMO 將玻璃供應商從 A 換為 B，哪些驗證活動必須重新執行以確認 Hold-up Volume 未發生顯著改變？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION 6.5 ADDITIONAL CONSIDERATIONS ==================== -->
+<div class="section-title"><strong>6.5 Additional Considerations 其他考量事項</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Depending on the product's presentation and fill/finish process, other attributes to consider include <span class="key-term">barrel compression strength</span> related to the labeling processes, <span class="key-term">cone tip strength</span> during manual use, and <span class="key-term">flange compression testing</span> for specific add-on assembly processes. These considerations must align between the producer and the customer based on the application requirements (e.g., manual versus autoinjector application).</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Barrel Compression Strength（筒身壓縮強度）:</strong> 貼標籤（Labeling）製程中，貼標機的滾輪或夾具會對玻璃筒身施加壓力。若強度不足，會導致玻璃破裂或外觀缺陷，影響整條充填線的良率。</p>
+            <p><strong>Cone Tip Strength（錐尖強度）:</strong> 手動使用時，操作者可能對針頭施加側向力，這個力會傳導至玻璃錐尖。強度不足可能導致錐尖斷裂，產生玻璃顆粒，直接危害患者安全。</p>
+            <p><strong>Flange Compression Testing（法蘭壓縮測試）:</strong> 針對特定附加組裝製程（如安全裝置安裝）所需的專項測試，確認法蘭在組裝壓力下不會破損。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>Section 6.5 列出的附加考量事項都是「製程相關」的機械強度測試，不同於純粹的尺寸規格。這些測試需求取決於：(1) 充填/包裝製程的設計，(2) 最終產品的應用方式（手動 vs. 裝置）。CDMO 應在產品開發初期（如 Feasibility Study 階段）與客戶確認哪些測試是必要的，並納入開發計畫。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>這就像在選購行李箱時，除了看容量（內徑）和重量（壁厚），還要測試它能否承受托運輸送帶的壓力（Barrel Compression）、拉桿能否反覆伸縮（法蘭壓縮）、以及角落碰撞強度（Cone Tip）。不同使用場景（隨身 vs. 托運）決定了哪些測試是必要的。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為何「barrel compression strength」與「貼標籤製程」有關？貼標製程中玻璃受到了哪些機械力？</li>
+                <li>CDMO 在開發新產品充填方法時，應在哪個開發階段確認需要進行哪些附加機械強度測試？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>ISO 11040-4</strong> 是玻璃筒身尺寸的基準標準，但客戶與製造商可基於應用需求協商修改。<strong>內徑（Inner Diameter）</strong>是影響最大的單一參數，直接決定劑量準確性。</li>
+        <li><strong>法蘭幾何（Flange Geometry）</strong>包含 Cut 與 Round 兩種類型，法蘭厚度業界常用 1.65–2.2 mm，公差收緊至 ±0.25 mm，必須於產品規格書中明確定義並在製造時驗證。</li>
+        <li><strong>法蘭強度（Flange Strength）</strong>影響充填線可靠性與患者安全。自動注射器應用中，應明確區分 shoulder-oriented 與 finger flange-oriented 系統，並根據組裝力道要求進行詳細測試。</li>
+        <li><strong>筒身幾何（Barrel Geometry）</strong>的五大參數（內徑、外徑、壁厚、內部長度、總長）都須在製造中驗證；高精度公差玻璃可用於小容量或高精度劑量需求。</li>
+        <li><strong>肩部設計（Shoulder Design）</strong>不在 ISO 規範內，其變異性對 <strong>Hold-up Volume</strong> 有直接影響。充填時應設計適當 Overfill，並於設計驗證時依據 <strong>EP 2.9.17</strong> 測量。</li>
+        <li>依產品與製程特性，還需考量<strong>筒身壓縮強度</strong>（貼標製程）、<strong>錐尖強度</strong>（手動使用）及<strong>法蘭壓縮測試</strong>（附加組裝製程）等附加機械強度測試。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+</body>
+</html>

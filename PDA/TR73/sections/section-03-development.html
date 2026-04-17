@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR73 - Section 3: PFS Development and Licensing</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== CUSTOM: CCI comparison table ===== */
+.cci-table-wrapper {
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+.cci-table-wrapper table {
+    min-width: 900px;
+    font-size: 0.82rem;
+}
+.cci-table-wrapper th {
+    font-size: 0.8rem;
+    position: sticky;
+    top: 0;
+}
+.cci-table-wrapper td {
+    vertical-align: top;
+    padding: 0.5rem 0.6rem;
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 3: PFS Development and Licensing</h1>
+    <div class="subtitle">PFS開發與註冊：系統功能、法規考量與申請策略</div>
+    <div class="page-info">PDA Technical Report No. 73: Prefilled Syringes | p6 - p11 (PDF p13-p18)</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本節學習目標</h3>
+    <ul>
+        <li>掌握預充填注射器 (PFS) 在美國與歐盟的法規定位，理解「組合產品 (combination product)」的監管架構與 PMOA 原則</li>
+        <li>理解 PFS 三大關鍵系統功能：治療病患、取得市場許可、生產與配送藥物遞送系統</li>
+        <li>瞭解藥廠與供應商在 DMF 申請中各自的角色與責任，包括 Type III 及 Type V DMF 的適用情境</li>
+        <li>掌握 CTD Module 3 中 PFS 組合產品所需的申請內容要素，包括設計管控、相容性、穩定性及 CCI 要求</li>
+        <li>認識適用於 PFS 開發的主要標準與技術參考文獻體系</li>
+    </ul>
+</div>
+
+<!-- ============================================================= -->
+<!-- 3.0 PFS Development and Licensing - Introduction -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec-3-0"><strong>3.0 PFS Development and Licensing PFS開發與註冊</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>This section discusses considerations for planning the development of the <span class="key-term">PFS</span> and eventual marketing approval.</p>
+
+        <p>A developer of a PFS must define its purpose, evaluate the supplier, and adhere to <span class="key-term">regulatory and marketing requirements</span>. For example, in the United States, a finished PFS is considered a <span class="key-term">combination product</span> and regulated by the Center for Drug Evaluation and Research (<span class="key-term">CDER</span>), the Center for Biologics Evaluation and Research (<span class="key-term">CBER</span>), or the Center for Device and Radiological Health (<span class="key-term">CDRH</span>) of the U.S. FDA, depending on its <span class="key-term">primary/principal mode of action (PMOA)</span>. Based on the same principle of PMOA, products in the European Union (EU) that incorporate or administer a drug may be regulated as either medical devices or medicinal products as the term combination product per se does not exist yet in EU regulations. A <span class="key-term">container/closure (C/C) system</span>, such as a PFS used in the packaging of a medicinal product for human use, is approved as part of the medicinal product application.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Combination Product（組合產品）：</strong>PFS 在美國被定性為「組合產品」，因為它同時具有藥品（drug）和醫療器材（device）的特性。監管主導機構取決於 PMOA（主要作用模式）：</p>
+            <ul>
+                <li><strong>CDER</strong>：主導小分子藥物 PFS</li>
+                <li><strong>CBER</strong>：主導生物製品 PFS（如單株抗體、疫苗）</li>
+                <li><strong>CDRH</strong>：當器材功能為主時</li>
+            </ul>
+            <p><strong>歐盟情況：</strong>EU 目前沒有「combination product」的明確定義，PFS 依主要功能歸類為藥品或醫材，受 Directive 2001/83/EC 或 MDD 93/42/EEC 管轄。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你開發了一種「預裝咖啡的保溫杯」。監管機關會問：這個產品的主要功能是「咖啡（藥品）」還是「保溫杯（器材）」？如果主要目的是讓咖啡安全到達消費者手中（藥品功能主導），就由食品局管；如果主要賣點是保溫功能，就由消費品安全委員會管。PFS 的 PMOA 判斷就是這個邏輯 — 誰主導，誰審。對 CDMO 而言，這個判斷在接受委託開發前就必須釐清，直接影響法規策略與申請時程。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>CDMO 實務影響：</strong>作為受託製造方，必須在合約中明確規定由 License Holder（藥廠）負責確認 PMOA 及主管機關，CDMO 不應自行假設。不同主管機關的 cGMP 要求（21 CFR 820 vs 21 CFR 211）對廠房認證、文件體系影響巨大。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一支含有胰島素的預充填注射器，其 PMOA 如何判定？會由 CDER 還是 CBER 主管？</li>
+                <li>為什麼歐盟沒有「combination product」的正式定義對 PFS 開發者而言是一個挑戰？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 3.1 High-Level Overview of Key System Functions -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec-3-1"><strong>3.1 High-Level Overview of Key System Functions PFS關鍵系統功能總覽</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>In order to have a comprehensive understanding of the PFS up to the end of its <span class="key-term">shelf life</span>, it is necessary to consider the ability of the PFS to provide an integral <span class="key-term">C/C system</span> and to consider the interaction of the related subsystems. These considerations should support the goal of treating the patient, obtaining <span class="key-term">market approval</span> for a drug, and producing and supplying the drug delivery system. These three goals holistically comprise the <span class="key-term">key system functions</span> of the PFS life cycle.</p>
+
+        <h3>3.1.1 Key System Function: Treating the Patient</h3>
+
+        <p>The ultimate purpose of the PFS subsystem is to contain the drug and administer the expected dose within the expected timeframe to the patient. Administration of the drug delivery system is achieved through various avenues, such as the following:</p>
+        <ul>
+            <li>self-administration with a plunger rod PFS or with additional device accessories</li>
+            <li>healthcare provider administration with or without safety systems</li>
+        </ul>
+
+        <p>Subsequently, to ensure proper administration of the drug, it is necessary to address multiple factors when treating the patient. Factors include the following:</p>
+        <ul>
+            <li>drug dose volume, viscosity, and temperature</li>
+            <li>duration of injection</li>
+            <li>targeted tissue and route of administration</li>
+            <li>injection technique (pinch, angle, or region)</li>
+        </ul>
+
+        <h3>3.1.2 Key System Function: Enabling Market Approval</h3>
+
+        <p>The <span class="key-term">license holder</span> must generate a comprehensive data package to ensure the suitability of the PFS for the intended use as prescribed by various regulatory authorities, such as the FDA and <span class="key-term">European Medicines Agency</span>, and in accordance with applicable guidance documents to receive regulatory approval for the drug product.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>PFS 三大關鍵系統功能：</strong></p>
+            <ul>
+                <li><strong>治療病患</strong>：確保藥品在正確時間、正確劑量、正確途徑到達目標組織</li>
+                <li><strong>取得市場許可</strong>：提供完整的資料包，證明 PFS 適用於預期用途</li>
+                <li><strong>生產與配送</strong>：確保系統與充填、組裝、配送流程相容</li>
+            </ul>
+            <p>這三個功能並非獨立存在，而是相互制約。例如：為了治療病患所選擇的高黏度製劑，可能對充填製程（生產功能）和注射力道（人體因素）產生重大影響。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>影響注射的關鍵變數：</strong>藥液黏度 (viscosity) 直接影響注射時間和所需推桿力。對蛋白質藥物（如單株抗體）而言，高濃度製劑的黏度往往是開發挑戰，這在 3.1.1 提到的「duration of injection」和「injection technique」因素中有所體現。</p>
+            <p><strong>License Holder 的資料責任：</strong>3.1.2 強調 license holder 必須生成「comprehensive data package」。對 CDMO 而言，需在服務協議中明確哪些數據由 CDMO 生成、哪些由 License Holder 負責整合提交。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果一個單株抗體 PFS 產品的黏度非常高（>50 cP），這會如何同時影響三個關鍵系統功能？</li>
+                <li>為什麼需要同時考慮「自我注射」和「醫護人員注射」兩種情境？這對 PFS 設計有何影響？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 3.1.3 Key System Function: Enabling Production and Distribution -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec-3-1-3"><strong>3.1.3 Key System Function: Enabling Production and Distribution of the Delivery System 生產與配送系統功能</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>To produce and distribute the combined drug and delivery system, the system should be:</p>
+        <ul>
+            <li>compatible with the <span class="key-term">filling and inspection process</span>, including the plunging process (e.g., Ventube™ or vacuum)</li>
+            <li>compatible with the <span class="key-term">assembly process</span> (plunger rod insertion, labeling, and secondary packaging)</li>
+            <li>suitable for delivery to end users, including factors such as <span class="key-term">cold chain requirements</span>, <span class="key-term">transport conditions</span> (shock, vibration, and pressure), and protection provided by the secondary and tertiary packaging</li>
+        </ul>
+
+        <p>Table 3.1.3-1 below provides a high-level view of the interactions between subsystem components or stakeholders in relation to key system functions.</p>
+
+        <div class="figure-container">
+            <img src="../figures/fig-p14-1.png" alt="Figure 3.1: PFS Section Structure Diagram showing Section 3.0 at center with surrounding sections 4.0-14.0" style="max-width:100%; border-radius:8px; border:1px solid #e2e8f0;">
+            <p class="figure-caption">Figure 3.1: PDA TR73 Section Structure — Section 3.0 PFS Development &amp; Licensing within the broader TR73 framework (PDF p14)</p>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Ventube™ / Vacuum 灌塞法：</strong>活塞插入（plunging）有兩種主要方法。Vacuum plunging 在低壓環境下插入活塞，可有效避免注射器內殘留空氣，對某些敏感藥品（如蛋白質製劑）至關重要。選擇何種方法直接影響設備投資和製程驗證策略。</p>
+            <p><strong>三層包裝的冷鏈保護：</strong></p>
+            <ul>
+                <li><strong>一次包裝 (primary)：</strong>玻璃管身 + 活塞 + 針頭護套</li>
+                <li><strong>二次包裝 (secondary)：</strong>泡殼或托盤，提供機械保護</li>
+                <li><strong>三次包裝 (tertiary)：</strong>外箱，用於配送運輸</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>PFS 的生產相容性就像「食品工廠的包裝線設計」。如果你開發了一種特殊形狀的果凍，但現有的充填機無法處理這種形狀，你就面臨兩個選擇：重新設計果凍（修改產品設計）或購買新設備（增加資本投入）。對 CDMO 而言，在評估新客戶產品時，首先要確認現有充填線與目標 PFS 規格的相容性 — 這是接單可行性評估的第一步。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>圖表解讀 Figure Analysis</h4>
+            <p>Section 3.0 在 TR73 中的位置圖（fig-p14-1）顯示本節（3.0 PFS Development &amp; Licensing）是整份技術報告的「起點」，周圍是 4.0 Human Factors、5.0 E&amp;L、6.0-8.0 Glass/Needle、9.0 Cosmetic、10.0 Siliconization、11.0 Plunger Stopper、12.0 CCI、13.0 Manufacturing、14.0 Drug Compatibility 等各主題節。這個結構圖傳達了一個重要訊息：開發決策（Section 3）會牽動後續所有技術節的考量，必須從整體生命週期視角規劃。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若一個客戶要求使用 Vacuum plunging 工藝，但 CDMO 現有設備只支援 Ventube™，應如何在合約談判階段評估這個需求？</li>
+                <li>冷鏈產品（如需 2-8°C 儲存的生物製品）的二次和三次包裝設計需要考慮哪些額外的驗證要求？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- TABLE 3.1.3-1: Full width, outside two-column -->
+<div style="margin: 1rem 0;">
+    <h3 style="font-weight:600; color:var(--primary-blue); margin-bottom:0.5rem;">Table 3.1.3-1: Overview of Interactions Between Key System Functions &amp; Components in the PFS Life Cycle</h3>
+    <p style="font-size:0.88rem; color:var(--text-medium); margin-bottom:0.75rem;">各關鍵系統功能與 PFS 生命週期中相關組件/利害關係人的交互關係總覽</p>
+    <div style="overflow-x:auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th rowspan="2">Key System Functions 關鍵系統功能</th>
+                    <th colspan="6">Contributors and Stakeholders 貢獻者與利害關係人</th>
+                </tr>
+                <tr>
+                    <th>Drug 藥品</th>
+                    <th>PFS Subsystem PFS子系統</th>
+                    <th>Fill/Finish Manufacturing Equipment 充填/完成製造設備</th>
+                    <th>Ancillary Devices 輔助裝置</th>
+                    <th>Distribution 配送</th>
+                    <th>Patient 病患</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="7" style="background:#edf2f7; font-weight:600; color:var(--primary-blue);">Treating the Patient 治療病患</td>
+                </tr>
+                <tr>
+                    <td>Allows the transfer of the expected dose within the expected time frame in the targeted tissue 在目標組織中於預期時間內輸送預期劑量</td>
+                    <td style="text-align:center;">•</td>
+                    <td style="text-align:center;">•</td>
+                    <td style="text-align:center;">•</td>
+                    <td style="text-align:center;">•</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Contains drug 容納藥品</td>
+                    <td style="text-align:center;">•</td>
+                    <td style="text-align:center;">•</td>
+                    <td style="text-align:center;">•</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="7" style="background:#edf2f7; font-weight:600; color:var(--primary-blue);">Obtaining Approval for Drug 取得藥品許可</td>
+                </tr>
+                <tr>
+                    <td>Adequately protect the dosage form 充分保護劑型</td>
+                    <td style="text-align:center;">•</td>
+                    <td style="text-align:center;">•</td>
+                    <td style="text-align:center;">•</td>
+                    <td style="text-align:center;">•</td>
+                    <td style="text-align:center;">•</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Composed of materials that are considered safe 由被認定安全的材料組成</td>
+                    <td style="text-align:center;">•</td>
+                    <td style="text-align:center;">•</td>
+                    <td style="text-align:center;">•</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="7" style="background:#edf2f7; font-weight:600; color:var(--primary-blue);">Producing and Delivering the Drug Delivery System 生產與配送藥物遞送系統</td>
+                </tr>
+                <tr>
+                    <td>Be compatible with the filling and inspection process 與充填及檢驗製程相容</td>
+                    <td style="text-align:center;">•</td>
+                    <td style="text-align:center;">•</td>
+                    <td style="text-align:center;">•</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Be compatible with the assembly process 與組裝製程相容</td>
+                    <td style="text-align:center;">•</td>
+                    <td style="text-align:center;">•</td>
+                    <td style="text-align:center;">•</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Be suitable for delivery to end user 適合配送至終端使用者</td>
+                    <td style="text-align:center;">•</td>
+                    <td style="text-align:center;">•</td>
+                    <td style="text-align:center;">•</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div style="margin-top:0.75rem; padding:0.75rem 1rem; background:#f0f7ff; border-left:4px solid #3498db; border-radius:0 8px 8px 0; font-size:0.88rem;">
+        <strong style="color:#2c5282;">表格解讀：</strong>此表格以「•」標示各功能的責任方。注意「充填/完成製造設備」（即 CDMO 的角色）在三大系統功能的所有項目中均有參與，凸顯了 CDMO 在整個 PFS 生命週期中的核心地位。而「Distribution（配送）」和「Patient（病患）」的參與相對有限，主要集中在「充分保護劑型」這一要求。
+    </div>
+</div>
+
+<!-- Notes on Contributors -->
+<div style="margin: 0.5rem 0 1.5rem 0; padding:0.75rem 1rem; background:#fafafa; border:1px solid #e2e8f0; border-radius:8px; font-size:0.85rem;">
+    <strong style="color:var(--primary-blue);">Notes on Contributors and Stakeholders（貢獻者與利害關係人說明）：</strong>
+    <ol style="margin:0.5rem 0 0 1.25rem;">
+        <li>"Drug" refers to the medicine delivered in the PFS.</li>
+        <li>The PFS subsystem includes a packaged glass barrel with an attached needle that is protected with a needle shield and a plunger stopper.</li>
+        <li>"Manufacturing equipment" refers to the different machines used to process the subsystem to produce a full drug delivery system. Tasks include filling, stoppering, inspecting, or preparing secondary packaging.</li>
+        <li>Ancillary devices include autoinjectors, safety devices, plunger rods, backstops, and other assistive devices.</li>
+        <li>"Distribution" refers to the outbound distribution channel from the license holder to the patient.</li>
+        <li>The patient is the person who ultimately receives the treatment.</li>
+    </ol>
+</div>
+
+<!-- ============================================================= -->
+<!-- 3.2 Regulatory Considerations -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec-3-2"><strong>3.2 Regulatory Considerations 法規考量</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>The following sections provide considerations for manufacturer, supplier, instructions for healthcare provider, regulatory submission/eCTD content format, standards, and technical references applicable to the PFS.</p>
+
+        <h3>3.2.1 Manufacturer Considerations</h3>
+
+        <p>A drug product manufacturer must follow the <span class="key-term">marketing requirements</span> in the country where the product is marketed. In the United States, a PFS is considered to be a combination product as defined by <span class="key-term">21 CFR 3.2(e)</span>. These combination products are assigned to the lead center based on the PMOA. Both CDER and CBER provide guidance on PFS drugs and biologics.</p>
+
+        <p>Drug manufacturers must comply with <span class="key-term">cGMPs</span> to ensure that the PFS product is safe and efficacious. Each constituent part of the PFS product is subject to its applicable cGMP requirements. The device constituent is subject to the quality system regulations for devices as described in <span class="key-term">21 CFR 820</span>, whereas the drug or biological product constituent is subject to the regulations under <span class="key-term">21 CFR 211</span>. For biological products, the regulations described in <span class="key-term">21 CFR 610</span> also apply. The cGMP requirements for combination products are codified under the final rule in <span class="key-term">21 CFR 4</span>, which provides guidelines on how to achieve compliance under one operating principle with additional provisions under another. These include:</p>
+        <ul>
+            <li>demonstration of compliance with all cGMP regulations applicable to each of the constituent parts included in the combination product, or</li>
+            <li>demonstration of compliance with either the drug cGMP or the quality system regulations for devices, and with provisions that are not shared by both regulations</li>
+        </ul>
+
+        <p>Products that incorporate a drug or administer a drug may be regulated in the European Union as either medical devices or medicinal products, depending on the principal intended function of the product and the method by which this function is achieved. PFSs are categorized as devices for administering a medicinal product when the device and the medicinal product form a single integral product designed for exclusive use in the given combination, and the device is not reusable or refillable. These products are covered by the regulations for medicinal products, such as <span class="key-term">Directive 2001/83/EC</span>. However, relevant essential requirements in Annex 1 of <span class="key-term">Medical Devices Directive (MDD) 93/42/EEC</span> apply to the safety and performance-related features of the device. Guidelines related to drug delivery products regulated as medicinal products, such as PFSs, are provided in medical devices guidance document <span class="key-term">MEDDEV 2.1/3, Revision 3</span>.</p>
+
+        <p>Following standards like <span class="key-term">ISO 13485</span> (Medical Devices – Quality Management Systems) and <span class="key-term">ISO 14971</span> (Medical Devices – Application of Risk Management to Medical Devices) will allow companies to demonstrate compliance with Annex 1 of the MDD.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>21 CFR 4 的「一主一輔」合規原則：</strong>對 PFS 組合產品，21 CFR 4 提供兩種合規路徑：</p>
+            <ul>
+                <li><strong>全合規路徑：</strong>同時滿足 21 CFR 211（藥品）和 21 CFR 820（器材）的所有要求</li>
+                <li><strong>精簡路徑：</strong>選擇其中一套為主要依循，再補充另一套中不重疊的要求</li>
+            </ul>
+            <p>21 CFR 820 特別要求的「額外規定」包括：management responsibility（管理層責任）、design controls（設計管控）、purchasing controls（採購管控）、CAPA（矯正與預防措施）。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>21 CFR 4 的合規策略就像「跨國工作簽證」。若你同時在台灣和日本工作，有兩種方式：一是取得兩個國家的完整工作許可（全合規路徑，成本最高但最保險）；二是以一個國家的許可為主，再補辦另一國要求的特定附加文件（精簡路徑，適合主要在一個司法管轄區運作的廠商）。CDMO 在接受組合產品委託前，必須與 License Holder 確認採用哪種合規策略，因為這直接影響品質系統建置的成本與時程。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>ISO 13485 vs 21 CFR 820：</strong>ISO 13485 是歐盟 MDD 認可的品質管理系統標準，在全球多個市場廣泛接受。21 CFR 820 是美國 FDA 的器材品質系統法規。兩者高度相似但有差異。CDMO 若已取得 ISO 13485 認證，在進入 EU 市場時具有明顯優勢。</p>
+            <p><strong>ISO 14971 風險管理：</strong>此標準要求廠商對器材的整個生命週期進行系統性風險管理，需產生完整的風險管理檔案 (Risk Management File)，與 ICH Q9 的 QRM 原則高度互補。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一家台灣 CDMO 要接受美國客戶的單株抗體 PFS 委託製造，需要同時符合 21 CFR 211 和 21 CFR 820 的哪些特定要求？</li>
+                <li>歐盟 Directive 2001/83/EC 與 MDD 93/42/EEC 對 PFS 的適用範圍如何區分？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 3.2.2 Supplier Considerations for Filing -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec-3-2-2"><strong>3.2.2 Supplier Considerations for Filing 供應商申請考量</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Suppliers of PFS components can include information related to the manufacturing of the syringe, needle, and accessory components in the <span class="key-term">drug master file (DMF)</span> for applications submitted to the FDA in the United States. The manufacturer's supplier agreement should define the roles and responsibilities of each party. In other countries, such information may be submitted in the marketing application dossier to the health authorities. Additionally, filing requirements for different regulatory agency jurisdictions may vary, and applicants should be aware of the proper procedures for the intended market.</p>
+
+        <p>Elements to be included in the DMF include:</p>
+        <ul>
+            <li>overall description of the C/C system, packaging component diagram, dimensional specifications</li>
+            <li>information on the manufacturing and processing facility (washing, siliconization, sterilization, and environmental controls)</li>
+            <li>component suppliers [of glass barrels, ceramic paint, plunger stoppers, needles, silicone, needle adhesive, needle shields, plunger rods, flange extenders, or backstops]</li>
+            <li>suitability (protection from light, compatibility, and sterility) and component safety</li>
+            <li>quality controls during syringe barrel manufacture, lubrication, needle assembly, sterilization, and transport</li>
+            <li>stability of syringe components without any product, and a list of regulatory requirements fulfilled, plus revalidation plan</li>
+            <li>mechanism for communication of quality issues and customer notification</li>
+        </ul>
+
+        <p>Elastomeric closure components for PFS systems (e.g., <span class="key-term">tip caps</span> and <span class="key-term">plunger stoppers</span>) must meet current U.S. and European regulatory requirements for compendial compliance. Component suppliers should ensure that adequate information is provided to the health authorities for proper review of sponsors' drug applications, including:</p>
+        <ul>
+            <li>elastomer formulation ingredients and appropriate certifications (e.g., BSE/TSE, dry natural rubber latex, and animal-derived raw materials)</li>
+            <li>compendial testing results for physicochemical properties</li>
+            <li>biological reactivity assessment</li>
+        </ul>
+        <p>In the United States, suppliers typically elect to compile this information in a <span class="key-term">Type III DMF</span>.</p>
+
+        <p>In some instances, post-processing of elastomeric components (e.g., washing or sterilization) may be performed by a third party, such as the component supplier. In such cases, adequate supporting data should be made available to enable proper agency review of these processes. This information can be contained within a <span class="key-term">Type V DMF</span> in the United States and should include supporting information on process validation, process controls, testing, and packaging qualification.</p>
+
+        <p>As DMF owners, suppliers can provide sponsors with <span class="key-term">letters of authorization</span> to applicable DMFs for use in sponsor applications. Per 21 CFR 314.420(c), suppliers in the United States are required to notify their letter of authorization holders when significant changes are made to the DMFs. Refer to <span class="key-term">21 CFR 4</span> for further guidance on compliance with design control expectations.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>DMF 類型對照：</strong></p>
+            <ul>
+                <li><strong>Type III DMF：</strong>包裝材料（如彈性體封口元件）—— 涵蓋橡膠配方、BSE/TSE 認證、理化特性及生物反應性測試</li>
+                <li><strong>Type V DMF：</strong>FDA 接受的特定製造設施、製程或文章 —— 供應商對彈性體元件進行後處理（如清洗、滅菌）時，相關製程驗證資料可放入此類型</li>
+            </ul>
+            <p><strong>授權信函 (Letter of Authorization)：</strong>DMF 擁有者（供應商）授權藥廠（sponsor）在其申請案中引用該 DMF 的機制。一旦 DMF 有重大變更，供應商必須主動通知所有授權信持有人。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>DMF 制度就像「建材供應商提交給建管局的技術規格檔案」。你要蓋一棟建築，不需要親自測試每一根鋼筋的品質 —— 你引用鋼筋廠商已預先提交給建管局的材料認證檔案（DMF），並取得廠商的「授權使用書」（Letter of Authorization）即可。若鋼筋廠商後來更換了鋼材配方（DMF 重大變更），他們必須通知所有使用其授權書的建築業者 —— 這就是 21 CFR 314.420(c) 的精神。對 CDMO 而言，在供應商合約中明確要求「DMF 重大變更需提前 X 天通知」是風險管控的基本要求。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>BSE/TSE 認證的重要性：</strong>牛海綿狀腦病 (BSE) / 傳播性海綿狀腦病 (TSE) 認證是生物來源原料的必要文件。彈性體元件（如橡膠活塞）的配方中若含有動物來源成分，必須提供相關認證，這是 EU 和 FDA 的共同要求。</p>
+            <p><strong>CDMO 在供應鏈管理中的角色：</strong>當 CDMO 採購 RTU（即用型）的已清洗/已滅菌元件時，需確認供應商是否已在其 DMF 中涵蓋後處理製程的驗證資料。若供應商使用 Type V DMF 涵蓋這些製程，CDMO 需取得相應授權。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若 CDMO 採用 RTU 的預清洗活塞，供應商提交了 Type V DMF，CDMO 在申請材料中需要如何引用這個 DMF？</li>
+                <li>供應商的 DMF 發生「重大變更」，CDMO 應在多快時間內評估其對現有客戶產品的影響？應建立什麼樣的 SOP？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 3.2.3 Healthcare Provider Instruction -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec-3-2-3"><strong>3.2.3 Healthcare Provider Instruction for Use of PFSs 醫療人員使用說明</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>The <span class="key-term">license holder</span> must provide healthcare providers with instructions for use and disposal of PFSs. <span class="key-term">Needlestick injuries</span> have the potential to expose PSF users, such as healthcare providers, to blood-borne pathogens. The Occupational Safety and Health Administration (<span class="key-term">OSHA</span>) and Centers for Disease Control and Prevention (<span class="key-term">CDC</span>) guidelines describe the requirements and practices in the United States to prevent such injuries. The disposal requirements for PFSs may vary between countries, and suggested storage conditions for the PFSs should be followed.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>使用說明書 (Instructions for Use, IFU) 的法規要求：</strong>License Holder 有義務提供完整的 IFU，內容必須涵蓋：正確使用步驟、棄置要求（針頭廢棄物管理）、儲存條件。各國棄置法規不同，IFU 必須針對目標市場個別化。</p>
+            <p><strong>針刺傷害預防：</strong>OSHA 和 CDC 均有相關指引。主動安全注射器（active safety syringes）和被動安全系統的設計目的之一即為降低針刺傷害風險，這與 Section 4.0 Human Factors 高度相關。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>台灣廠商的注意事項：</strong>台灣的醫療廢棄物處置受衛生福利部規範，與美國 OSHA 要求不同。若 CDMO 協助客戶開發台灣市場的 IFU，需確認符合台灣本地法規要求，而非直接套用美國版本。</p>
+            <p><strong>CDMO 的責任範圍：</strong>IFU 的撰寫通常由 License Holder 負責。CDMO 應確認合約中清楚界定 IFU 責任歸屬，避免因此承擔未預期的法規責任。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若同一 PFS 產品需要在美國、歐盟和台灣三個市場上市，IFU 需要有幾個版本？各版本的主要差異可能在哪裡？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 3.2.4 Regulatory Submission Content for PFS Combination Products -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec-3-2-4"><strong>3.2.4 Regulatory Submission Content for PFS Combination Products PFS組合產品的法規申請內容</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>In the United States, the marketing application for PFS combination products could be a <span class="key-term">new drug application (NDA)</span>, or a <span class="key-term">biologic license application (BLA)</span>, depending on whether the product is defined as a drug or biologic. Proprietary information about the device can be submitted in a master file and in letters of authorization to the master file provided in the application. Important considerations for evaluating <span class="key-term">human factors</span> affecting the use of the PFSs include the intended patient population for the proposed indication and the condition of use, and whether the PFS is self-administered or administered by a healthcare provider.</p>
+
+        <p>The application should contain:</p>
+        <ul>
+            <li>a description of the <span class="key-term">dosage form</span>, composition, primary C/C system, and any ancillary component/plunger rod information</li>
+            <li>manufacturing and processing facility information</li>
+            <li>description of all primary packaging components (syringe barrel with staked needle, adhesive used to bond the needle to the glass tip of the barrel, needle shield, and plunger stopper) with drawings, specifications, quality details, and supplier information</li>
+            <li>description of the manufacturing process, including lubrication of the primary packaging components and material/components inspection, in-process controls, and release operations (in the supplier's DMF)</li>
+            <li>additional details on validation of syringe marking process if syringe markings and fill lines are present</li>
+            <li>a summary containing details of the <span class="key-term">sterilization method</span> and validation providing a <span class="key-term">sterility assurance level of 10⁻⁶</span></li>
+            <li>evaluation of the integrity and compatibility of the C/C system</li>
+            <li>assessment of the potential for leachables and particulates due to interaction of the syringe components with the product</li>
+            <li>assessment of the impact of shipping on the C/C system</li>
+        </ul>
+
+        <p>PFSs have the potential to introduce new impurities or components, such as <span class="key-term">adhesive</span>, <span class="key-term">tungsten</span>, and <span class="key-term">silicone</span>, which can impact product quality. The impact of such components should be carefully assessed. Syringe barrels and plunger stoppers are typically <span class="key-term">siliconized</span> for use in PFS applications. A thorough assessment of the impact of component variability on product quality and stability is performed. Stability data to demonstrate that the commercial C/C system does not affect product stability is required. Temperature is a general concern given that most protein drugs are quite labile. Moisture is a concern for <span class="key-term">lyophilized dosage forms</span> in syringes (or vials).</p>
+
+        <p>The final finished product after filling and assembling should be tested for performance. Testing of the PFS includes testing of delivered (extractable) volume, <span class="key-term">break-loose and glide forces</span>, and <span class="key-term">CCI</span>. In addition, a range of physicochemical and microbiological parameters should be tested.</p>
+
+        <p>In Europe, the marketing application could be a medicinal product application. At the time of this writing, the FDA and European Commission have not published guidance on the electronic version of the common technical document (CTD) for devices that are part of a combination product. A template for <span class="key-term">ICH CTD Module 3</span> is attached (refer to Appendix I) as a guide for providing information about a drug delivery device in a BLA/NDA. An example of a completed CTD Module 3 of a combination product application is provided in Appendix II.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>NDA vs BLA 的選擇：</strong></p>
+            <ul>
+                <li><strong>NDA（新藥申請）：</strong>適用於化學合成藥物 PFS，主導機關通常為 CDER</li>
+                <li><strong>BLA（生物製品許可申請）：</strong>適用於生物製品 PFS（抗體、疫苗等），主導機關為 CBER 或 CDER（視產品類型）</li>
+            </ul>
+            <p><strong>Tungsten（鎢）污染的重要性：</strong>在製造注射針頭時，鎢針芯（tungsten pin）用於形成玻璃管的出口孔，之後移除。殘留的鎢氧化物可能與蛋白質藥物（如抗體）反應，誘發蛋白質聚集（aggregation）—— 這是一個直接影響產品安全性的關鍵品質問題。</p>
+            <p><strong>SAL 10⁻⁶ 的法規要求：</strong>無菌保證水準 (Sterility Assurance Level) 10⁻⁶ 意謂每百萬件產品中非無菌品的機率不超過 1 件。這是 PFS 滅菌驗證的基本法規門檻。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>CTD Module 3 對 PFS 的申請內容，就像「房屋交屋時的完整文件包」。你蓋了一棟房子（製造了 PFS），要取得使用執照（市場許可），必須提交：建材規格（包裝元件說明）、施工圖（製程圖）、防火驗收（滅菌驗證）、防水測試（CCI 評估）、環境安全評估（E&amp;L 研究）、結構安全報告（穩定性數據）。每一份文件對應到 CTD Module 3 的一個章節。對 CDMO 而言，熟悉這個「文件地圖」能幫助在接受委託時精準評估需要產生哪些數據，並在合約中明確分工。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>Break-loose 和 Glide Force 測試：</strong></p>
+            <ul>
+                <li><strong>Break-loose force（啟動力）：</strong>初次推動活塞所需的力，通常高於持續推動力</li>
+                <li><strong>Glide force（滑動力）：</strong>活塞在持續移動過程中的阻力</li>
+            </ul>
+            <p>這兩個參數直接影響使用者體驗和劑量準確性，是 PFS 放行測試的必要項目，也受矽化（siliconization）程度影響。</p>
+            <p><strong>矽化（Siliconization）的雙面性：</strong>矽油提供潤滑（降低 glide force），但同時可能導致矽油顆粒污染藥液，對蛋白質藥物引發免疫反應。矽化量的控制需要精確優化，詳見 TR73 Section 10.0。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一個凍乾 (lyophilized) 藥物的 PFS 版本在穩定性測試中需要特別監測哪些指標？水分控制的關鍵點在哪裡？</li>
+                <li>若在 E&amp;L 研究中發現鎢含量偏高，有哪些可能的解決方案？（考慮設計、製程和規格三個層面）</li>
+                <li>Break-loose force 規格的設定應考慮哪些使用情境？（自我注射 vs 自動注射器）</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 3.2.5 Standards and Technical References Applicable to PFS -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec-3-2-5"><strong>3.2.5 Standards and Technical References Applicable to PFS 適用於PFS的標準與技術參考</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>A <span class="key-term">C/C system</span> (constituent parts of a combination product), such as a PFS used in the packaging of a human drug or biologic, is approved as part of the drug application. A successful licensure application requires multiple tests and studies according to various <span class="key-term">industrial and compendial standards</span> to demonstrate the suitability of the selected C/C system, which can be validated for its intended use based on the <span class="key-term">target product profile</span>.</p>
+
+        <p>Suitability is defined in the United States to cover four aspects: <span class="key-term">protection</span>, <span class="key-term">safety</span>, <span class="key-term">compatibility</span>, and <span class="key-term">performance</span>, according to the FDA.</p>
+
+        <p>Different regulatory bodies may recognize different standards. Appendix III lists the standards, guidance, compendial methods, and technical reports to assist with the development of a PFS combination product. The FDA recognizes consensus standards, and EU harmonized standards are available online. The various testing standards help ensure regulatory compliance. Other PDA technical reports provide useful information related to sterilization, CCI test methods, and glass defects.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>PFS C/C System 適用性四要素：</strong>FDA 定義的四個評估面向：</p>
+            <ul>
+                <li><strong>Protection（保護性）：</strong>能否保護藥品免受外部污染（微生物、環境）</li>
+                <li><strong>Safety（安全性）：</strong>包裝材料本身不會對病患造成傷害（E&amp;L 安全評估）</li>
+                <li><strong>Compatibility（相容性）：</strong>包裝材料與藥品之間不發生不良相互作用（不吸附、不催化降解）</li>
+                <li><strong>Performance（性能）：</strong>能正常執行預期功能（功能性測試，如注射力、CCI）</li>
+            </ul>
+            <p><strong>Target Product Profile (TPP)：</strong>目標產品概況是開發早期定義「理想產品應該是什麼樣子」的文件，驅動後續所有開發決策，包括 C/C system 的選擇與驗證策略。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>TR73 與其他 PDA 技術報告的關聯：</strong>Section 3.2.5 提及其他 PDA TR 提供滅菌、CCI、玻璃缺陷相關資訊。主要關聯：</p>
+            <ul>
+                <li>滅菌：PDA TR1（輻射滅菌）、TR22（過濾滅菌）、TR26（蒸汽滅菌）</li>
+                <li>CCI：PDA TR27（微生物 CCI 測試）、TR51（確定性 CCI 測試）</li>
+                <li>玻璃缺陷：PDA TR43（玻璃容器製造）</li>
+            </ul>
+            <p>在台灣 CDMO 的實務中，建議建立這些 TR 的內部學習資源庫（如本知識平台），讓工程師在遇到特定問題時能快速找到對應參考文獻。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 的標準文件矩陣建議：</strong>在接受每個新 PFS 委託時，建議建立一個「適用標準矩陣」，對應 FDA 四要素：</p>
+            <ul>
+                <li><strong>Protection：</strong>CCI 測試方法選擇 → PDA TR51/TR27</li>
+                <li><strong>Safety：</strong>E&amp;L 研究計畫 → ICH Q3C/Q3D + USP &lt;661&gt;</li>
+                <li><strong>Compatibility：</strong>藥品-包材相容性研究 → USP &lt;1664&gt; + PDA TR26</li>
+                <li><strong>Performance：</strong>功能性測試 → ISO 11040 系列</li>
+            </ul>
+            <p>這個矩陣可作為技術審查會議的基礎文件，確保在開發早期就識別所有必要的測試項目。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼「compatibility（相容性）」和「safety（安全性）」在概念上不同，但在實務研究中又高度相關？各自需要哪些測試支撐？</li>
+                <li>一個蛋白質生物製品 PFS 的 Target Product Profile 中，關於 C/C system 的主要需求可能包括哪些？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>法規定位：</strong>PFS 在美國為組合產品，由 PMOA 決定主管機關（CDER/CBER/CDRH）；21 CFR 4 提供「一主一輔」的雙重 GMP 合規路徑</li>
+        <li><strong>三大系統功能：</strong>治療病患（劑量、給藥途徑）、取得市場許可（完整資料包）、生產與配送（製程相容性與冷鏈）— 三者相互牽動，必須整體規劃</li>
+        <li><strong>DMF 架構：</strong>Type III DMF 涵蓋彈性體元件的材料資訊；Type V DMF 涵蓋後處理製程驗證；授權信函機制確保供應鏈資訊流通</li>
+        <li><strong>申請內容要素：</strong>SAL 10⁻⁶ 滅菌驗證、CCI 評估、E&amp;L 研究（特別注意鎢、矽油、黏合劑）、break-loose/glide force 測試是 PFS 申請的核心數據</li>
+        <li><strong>C/C 適用性四要素：</strong>Protection、Safety、Compatibility、Performance — 此框架應貫穿 PFS 開發的整個生命週期，從 TPP 定義到放行測試均需對應</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>

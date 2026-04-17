@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR73 - Section 4A: PFS Human Factors Engineering (Part A)</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== CUSTOM: CCI comparison table ===== */
+.cci-table-wrapper {
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+.cci-table-wrapper table {
+    min-width: 900px;
+    font-size: 0.82rem;
+}
+.cci-table-wrapper th {
+    font-size: 0.8rem;
+    position: sticky;
+    top: 0;
+}
+.cci-table-wrapper td {
+    vertical-align: top;
+    padding: 0.5rem 0.6rem;
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 4 (Part A): PFS Human Factors Engineering</h1>
+    <div class="subtitle">PFS 人因工程（上）</div>
+    <div class="page-info">PDA Technical Report No. 73 (2015) | PDF p19–p22 (Print p12–p15)</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+<div class="learning-objectives">
+    <h3>本章學習目標 Learning Objectives</h3>
+    <ul>
+        <li>說明人因工程（Human Factors Engineering, HFE）的核心目的，以及其在 PFS 產品開發中的作用</li>
+        <li>識別主要 HFE 相關法規標準與指引（Section 4.1），並理解不符合要求的後果</li>
+        <li>區分「形成性研究（formative study）」與「總結性/驗證性研究（summative/validation study）」的差異（Section 4.2）</li>
+        <li>描述裝置使用特性的三個面向：用戶族群、使用環境、預期使用場景（Section 4.3）</li>
+        <li>說明如何收集並定義終端使用者需求，作為使用者需求規格（User Requirements）的依據（Section 4.4）</li>
+    </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 4.0 INTRO -->
+<!-- ============================================================ -->
+<div class="section-title"><strong>4.0 PFS Human Factors Engineering 人因工程 (Part A)</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><span class="key-term">Human factors engineering (HFE)</span> considers a product's design, intended uses, users, and use environments, which can affect the safe and effective use of a product. The intent of HFE is to improve the quality of a product's <span class="key-term">user interface design</span> to eliminate or minimize errors during use.</p>
+        <p>This section describes best practices related to the application of HFE and <span class="key-term">use-related risk management</span> to the development of PFSs, including:</p>
+        <ul>
+            <li>key principles of HFE as they apply to PFSs (intended to supplement and not to replace the current health authority guidance and approaches described within recognized consensus standards)</li>
+            <li>key considerations in understanding the use of PFSs</li>
+            <li>typical areas of usability issues (known issues) to consider in the development of PFSs</li>
+        </ul>
+        <div class="figure-container">
+            <img src="../figures/fig-p12-1.png" alt="Figure 4.0: PFS TR73 Section Map" style="max-width:100%; border-radius:8px; border:1px solid #e2e8f0;">
+            <p class="figure-caption">Figure 4.0: TR73 section relationship diagram — Section 4.0 Human Factors sits alongside 5.0 E&amp;L, 3.0 Development &amp; Licensing, and feeds into downstream sections (glass barrel, needle, siliconization, etc.)</p>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 What Is HFE?</h4>
+            <p><strong>Human Factors Engineering (人因工程, HFE)：</strong>一門研究「人」與「產品/系統/環境」交互作用的工程學科。對 PFS 而言，核心問題是：真實使用者在真實情境下操作這支針筒時，會犯什麼錯誤？</p>
+            <p><strong>User Interface (使用者介面)：</strong>不限於軟體。PFS 的使用者介面包括：針頭護套的拔除力道、標籤文字大小、活塞推力、注射終點的觸覺/視覺反饋。</p>
+            <p><strong>Use-related risk management (使用相關風險管理)：</strong>識別、評估並控制因使用錯誤（use error）導致患者傷害的風險。與 ICH Q9 的品質風險管理互補，但聚焦在「人操作裝置」這個介面點。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>把 PFS 想成一台醫院用的血壓計：就算量測原理完全正確，若顯示字體太小、操作按鍵太難按、充氣聲音太吵讓護理師分心，這台機器仍然不合格。HFE 就是確保「正確的設計被正確地使用」的那門學問。</p>
+            <p>對 CDMO 而言，這提醒我們：光是通過 GMP 製程驗證，還不夠——最終產品能否被患者或護理人員正確使用，是同樣重要的合規要求。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Note</h4>
+            <p>本 TR73 Section 4 的 HFE 內容「補充」（supplement）而非「取代」現行法規指引（如 FDA CDRH 文件、IEC 62366）。CDMO 在做 HFE 計畫時，必須同時參照主管機關的正式指引，不能僅依賴 TR73。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>PFS 的「使用者介面」包含哪些實體元素？請舉三個例子。</li>
+                <li>「use error（使用錯誤）」與「device defect（裝置缺陷）」有何差異？為什麼兩者對法規申請同等重要？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 4.1 -->
+<!-- ============================================================ -->
+<div class="section-title"><strong>4.1 Current Standards and Guidance 現行標準與指引</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><span class="key-term">Regulatory bodies</span> may request evidence of acceptable human factors <span class="key-term">summative/validation testing</span> results and supporting processes during premarket application or submission reviews.</p>
+        <p>The failure of manufacturers to apply a compliant and adequate HFE process can lead to serious consequences, including:</p>
+        <ul>
+            <li>product approval delays/nonapprovals</li>
+            <li>negative audit and inspection findings</li>
+            <li>clinical and market complaints</li>
+            <li>ultimately an unsafe, ineffective, and unsuccessful product</li>
+        </ul>
+        <p>Available HFE standards and guidances include those listed in Table 4.1-1 (see below).</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Regulatory Landscape</h4>
+            <p><strong>Summative/Validation study (總結性/驗證性研究)：</strong>模擬真實使用條件，以代表性使用者族群驗證產品設計是否安全有效的正式研究。類似 PQ（Performance Qualification）——是最終的合格確認。</p>
+            <p><strong>Premarket submission (上市前申請)：</strong>FDA 510(k)、PMA，或 EMA 的 MAA 等。主管機關在審查時，可能直接要求 HFE summative study 報告。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy — HFE 研究 vs. 驗證階段</h4>
+            <p>從 CDMO 驗證邏輯來看，HFE 的研究層次與廠房設備驗證高度對應：</p>
+            <ul>
+                <li><strong>Formative study (形成性研究)</strong> → 如同 <strong>OQ</strong>（操作確效）：在設計迭代期間，反覆測試並修正，目的是找出問題並改善設計。</li>
+                <li><strong>Summative/Validation study (總結性研究)</strong> → 如同 <strong>PQ</strong>（性能確效）：在最終設計凍結後，以正式受試者族群確認產品符合使用安全要求，結果必須呈交主管機關。</li>
+            </ul>
+            <p>就像不能跳過 OQ 直接做 PQ，也不能省略 formative study 直接做 summative study。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Regulatory Consequences</h4>
+            <p>HFE 流程不合規的後果非常具體：核准延誤、查廠缺失、市場投訴。對 CDMO 而言，這意味著客戶的上市時間表（timeline）直接受影響，合約中的里程碑付款也可能延遲。HFE 絕非「軟性需求」。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若 CDMO 客戶未在開發初期規劃 HFE formative study，可能在哪個開發階段才會發現問題？後果是什麼？</li>
+                <li>Table 4.1-1 中，哪個標準最直接規範「醫療器材可用性工程」？它的全名是什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- Table 4.1-1: OUTSIDE two-column, full width -->
+<div class="full-width-table" style="margin: 1rem 0;">
+    <h3 style="font-weight:600; color:var(--primary-blue); margin-bottom:0.5rem;">Table 4.1-1: Human Factors Engineering-related Standards and Guidances 人因工程相關標準與指引</h3>
+    <div style="overflow-x:auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th style="min-width:220px;">Standard / Guidance ID</th>
+                    <th>Title</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>ANSI/AAMI/IEC/EN 62366-1:2015</td>
+                    <td>Medical devices – Application of usability engineering to medical devices</td>
+                </tr>
+                <tr>
+                    <td>AAMI/ANSI HE75:2009</td>
+                    <td>Human Factors Engineering – Design of Medical Devices</td>
+                </tr>
+                <tr>
+                    <td>ISO 14971:2007/(R) 2012</td>
+                    <td>Medical Devices – Application of risk management to medical devices</td>
+                </tr>
+                <tr>
+                    <td>IEC 60601-1-6:2010</td>
+                    <td>Medical electrical equipment – Part 1-6: General requirements for basic safety and essential performance – Collateral standard: Usability</td>
+                </tr>
+                <tr>
+                    <td>IEC 60601-1-8 Edition 2.1 2012-11</td>
+                    <td>Medical electrical equipment – Part 1-8: General requirements for basic safety and essential performance – Collateral Standard: General requirements, tests and guidance for alarm systems in medical electrical equipment and medical electrical systems</td>
+                </tr>
+                <tr>
+                    <td>IEC 60601-1-11:2010</td>
+                    <td>Medical electrical equipment – Part 1-11: General requirements for basic safety and essential performance – Collateral Standard: Requirements for medical electrical equipment and medical electrical systems used in the home healthcare environment</td>
+                </tr>
+                <tr>
+                    <td>FDA/CDRH document # 1497</td>
+                    <td>Medical Device Use – Safety: Incorporating Human Factors Engineering into Risk Management (2000)</td>
+                </tr>
+                <tr>
+                    <td>FDA/CDRH document # 1128</td>
+                    <td>Guidance on Medical Device Patient Labeling (2001)</td>
+                </tr>
+                <tr>
+                    <td>FDA/CDRH document # 1757</td>
+                    <td>Applying Human Factors and Usability Engineering to Optimize Medical Devices (2011, draft*)</td>
+                </tr>
+                <tr>
+                    <td>FDA/CDRH document # 1750</td>
+                    <td>Design Considerations for Devices Intended for Home Use (2014)</td>
+                </tr>
+                <tr>
+                    <td>FDA/CDRH docket # HFA-305</td>
+                    <td>Safety Considerations for Product Design to Minimize Medication Errors (2012 draft*)</td>
+                </tr>
+                <tr>
+                    <td>21 CFR 820.30, Subparts A-D</td>
+                    <td>Human Factors Implications of the New GMP Rule Overall Requirements of the New Quality System Regulation</td>
+                </tr>
+                <tr>
+                    <td>EMA/606103/2014</td>
+                    <td>EMA Guidance – April 2015, Good practice guide on risk minimization and prevention of medication errors. Pharmacovigilance Risk Assessment Committee (PRAC).</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p style="font-size:0.85rem; color:var(--text-medium); margin-top:0.5rem; font-style:italic;">* FDA draft guidance documents marked with * are not intended for implementation until finalized and are subject to change.</p>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 4.2 -->
+<!-- ============================================================ -->
+<div class="section-title"><strong>4.2 Human Factors Evaluation 人因工程評估</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The application of HFE throughout the product development process can optimize product design and minimize <span class="key-term">use-related failures</span> and difficulties.</p>
+        <p>The need to perform a human factors <span class="key-term">summative/validation study</span> and include human factors data in premarket submissions can be determined based on whether there are <span class="key-term">potential use errors that could cause harm</span>.</p>
+        <p>For PFSs, there are known use errors that can result in delayed therapy (<span class="key-term">overdosing</span>, <span class="key-term">underdosing</span>, <span class="key-term">needle-stick injuries</span>) and cause harm, such as reduced efficacy, infection, etc.</p>
+        <p>A human factors summative/validation study can demonstrate that representative users can use the device under simulated use conditions without producing patterns of failures that could result in negative clinical impact to patients or injury to device users (refer to Section 4.8).</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Evaluation Framework</h4>
+            <p><strong>Use-related failure (使用相關失效)：</strong>不是裝置本身壞了，而是因使用者操作錯誤造成的失效。例如：患者未完整推到底（underdosing）、針頭護套未完全移除（dose blocking）。</p>
+            <p><strong>Summative study 的觸發條件：</strong>只要存在「可能造成傷害的使用錯誤（potential use errors that could cause harm）」就必須進行。PFS 已有已知傷害模式（overdosing / underdosing / needle-stick），因此 summative study 幾乎是必要的。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>將 HFE 全流程套入 CDMO 開發邏輯：</p>
+            <ul>
+                <li><strong>早期 formative studies</strong> = 設計確認（Design Qualification, DQ）+ OQ 階段：識別問題、修正設計，反覆迭代。</li>
+                <li><strong>Summative/Validation study</strong> = PQ 階段：最終凍結設計後，用真實代表性使用者在模擬條件下執行，確認「無系統性失效模式」後才能提交申請。</li>
+            </ul>
+            <p>PQ 報告不合格，產品無法放行。Summative study 失敗，上市申請將被拒。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 PFS-specific Known Use Errors</h4>
+            <p>TR73 明確點出 PFS 的三大已知使用錯誤風險：</p>
+            <ul>
+                <li><strong>Overdosing / Underdosing（過量/劑量不足）</strong>：活塞未完全推到底，或推過頭。</li>
+                <li><strong>Needle-stick injuries（針刺傷）</strong>：使用後針頭未安全遮蔽。</li>
+            </ul>
+            <p>這三點直接決定 FDA/EMA 是否要求 summative study，CDMO 必須在開發早期就識別並記錄這些風險。</p>
+        </div>
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 CDMO Application</h4>
+            <p>在 Amaran 進行 PFS 產品 CDMO 服務時，若客戶未提供完整 HFE 計畫，CDMO 應在技術轉移（Tech Transfer）階段主動確認：「是否已完成 formative studies？Summative study 何時排程？」缺乏此文件，可能導致 TFDA 或 FDA 查廠時出現缺失。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為何 PFS 幾乎必然需要進行 summative/validation study？</li>
+                <li>Summative study 的「模擬使用條件」與真實臨床使用有何相同和不同之處？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 4.3 -->
+<!-- ============================================================ -->
+<div class="section-title"><strong>4.3 Device-Use Characterization 裝置使用特性描述</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The HFE process begins with <span class="key-term">characterizing device use</span>. This includes consideration of <span class="key-term">user populations</span>, <span class="key-term">use environment</span>, and <span class="key-term">intended use scenarios</span> as discussed below.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 三大面向</h4>
+            <p>Device-use characterization（裝置使用特性描述）是 HFE 流程的起點，必須在設計開始前完成。三個面向缺一不可：</p>
+            <ul>
+                <li><strong>User populations（用戶族群）</strong>：誰在使用？</li>
+                <li><strong>Use environment（使用環境）</strong>：在哪裡使用？什麼條件下？</li>
+                <li><strong>Intended use scenarios（預期使用場景）</strong>：怎麼使用？用於什麼目的？</li>
+            </ul>
+            <p>這三個面向共同構成 HFE 風險評估的輸入，也是後續 formative 和 summative study 的設計依據。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Note</h4>
+            <p>HFE 流程必須「從使用者出發」。這與傳統 CDMO 開發邏輯（從製程出發）不同。先定義「誰用、在哪用、怎麼用」，才能反向推導產品設計規格。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 4.3.1 -->
+<!-- ============================================================ -->
+<div class="section-title"><strong>4.3.1 User Populations 用戶族群</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Common users of PFSs are <span class="key-term">healthcare providers</span>, <span class="key-term">lay caregivers</span>, and <span class="key-term">patients</span>. User groups often have unique characteristics that are capable of affecting the user's ability to learn and use the product safely and effectively.</p>
+        <p>The generally accepted term for a distinct group of users with unique characteristics in HFE is <span class="key-term">"user population."</span></p>
+        <p>Within each user population, individual user characteristics may vary. Key areas of differences between users or user populations include:</p>
+        <ul>
+            <li>knowledge, skills, abilities, experience</li>
+            <li>cognitive functioning, perceptual acuity, and manual dexterity</li>
+            <li>user attitudes, emotions, and expectations</li>
+            <li>gender, age, disease-related impairments, previous device experience and literacy, and education levels</li>
+        </ul>
+        <p>The design of the device should be evaluated with individual users who are <span class="key-term">representative of the intended users</span>.</p>
+        <p>Key considerations for users of injection devices in a <span class="key-term">home-use environment</span> include:</p>
+        <ul>
+            <li><strong>Injection-related anxiety/phobia:</strong> anxieties and phobias can make the task of self-injection difficult and may cause users to withdraw the needle before the injection is complete.</li>
+            <li><strong>Disease-related impairments:</strong> the same disease that the injection is intended to treat can impair the ability of users to inject the product by reducing hand and finger strength, impairing sensory abilities, and reducing manual coordination and dexterity.</li>
+            <li><strong>Negative transfer of learning between different products:</strong> users with prior experience with injection devices that operate in a specific way may incorrectly use a device that operates differently due to the assumption that the devices operate in the same way.</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 User Population 定義</h4>
+            <p><strong>User population（用戶族群）：</strong>具有共同特徵、且這些特徵會影響其使用裝置能力的一群人。PFS 的主要三族群：</p>
+            <ul>
+                <li><strong>Healthcare providers（醫療專業人員）</strong>：醫師、護理師——受過正式訓練，但在高壓工作環境下可能分心。</li>
+                <li><strong>Lay caregivers（非專業照護者）</strong>：家屬——有照護意願，但技術能力和心理準備度差異大。</li>
+                <li><strong>Patients（患者）</strong>：本人自我注射——可能同時受疾病影響，例如類風濕關節炎患者手指無力。</li>
+            </ul>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy — 操作員族群 vs. 用戶族群</h4>
+            <p>在 CDMO 廠房，我們為不同班次、資歷的操作員設計 SOP 和培訓計畫。HFE 的「用戶族群」思維類似：</p>
+            <ul>
+                <li>新進操作員（類比 naive patient）：需要更直觀的步驟和防呆設計。</li>
+                <li>資深操作員（類比 experienced HCP）：可能因「慣性操作」發生 negative transfer of learning，例如舊設備換新設備後仍用舊習慣操作。</li>
+            </ul>
+            <p>CDMO 的 SOP 修訂（change control）就是管理「負向學習轉移」的工具。同樣地，PFS 設計若改變操作邏輯，必須評估用戶的 negative transfer 風險。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Home-Use 三大特殊風險</h4>
+            <p>Home-use 環境（居家使用）的 HFE 挑戰遠高於醫療機構：</p>
+            <ol>
+                <li><strong>注射恐懼症（Injection anxiety/phobia）</strong>：患者可能在針頭刺入後立即縮手，造成劑量不足（underdosing）。設計上需考慮注射完成的明確反饋（tactile click, visual indicator）。</li>
+                <li><strong>疾病本身的功能損傷（Disease-related impairments）</strong>：類風濕關節炎、多發性硬化症的患者，正好是最常需要自我注射的族群，但其手部功能已受損。矛盾性極高，設計必須極度容錯。</li>
+                <li><strong>負向學習轉移（Negative transfer of learning）</strong>：患者從某品牌針筆換到另一品牌後，直覺操作方式可能完全錯誤。上市後的 IFU（Instructions for Use）設計和用戶培訓計畫必須特別說明差異。</li>
+            </ol>
+        </div>
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 CDMO Application</h4>
+            <p>CDMO 在執行 tech transfer 時，應向客戶確認目標用戶族群（target user populations）的 HFE 文件是否完備。若客戶計畫將同一 PFS 用於「醫院 HCP 注射」和「居家患者自我注射」兩種場景，則兩個族群必須分開進行 formative 和 summative study——這會顯著影響開發時間軸和成本。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>某生物製劑客戶的 PFS 目標使用者為「類風濕關節炎患者（自我注射）」，設計時需特別考量哪三個 HFE 風險？</li>
+                <li>「Negative transfer of learning」在 PFS 設計上，可以透過哪些設計手段降低風險？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 4.3.2 -->
+<!-- ============================================================ -->
+<div class="section-title"><strong>4.3.2 Use Environment 使用環境</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The <span class="key-term">use environment</span> can affect the user's ability to use a device safely and effectively. Specific considerations for HFE may include the following:</p>
+        <ul>
+            <li><strong>Lighting</strong> (e.g., ambient, direct, and reflective light) that might affect the user's ability to see the syringe components, markings, and accessories</li>
+            <li><strong>Thermal factors</strong> (e.g., air temperature, humidity, heat, moisture, and air flow) that might affect how well the user can grip, hold, and inject the syringe</li>
+            <li><strong>Auditory factors</strong> (e.g., background noise and alarms) that might cause distractions and an inability to hear feedback from the syringe (if present)</li>
+            <li><strong>Workload</strong> (e.g., distraction and interruptions) that may cause difficulty, especially for users with cognitive, sensory, and/or manual dexterity impairment</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 四大環境因素</h4>
+            <p>使用環境（Use Environment）不只是「在哪裡注射」，而是影響使用者感知和操作能力的所有物理、社會、認知因素的總和：</p>
+            <ul>
+                <li><strong>光照（Lighting）</strong>：視覺辨識——看得到刻度嗎？看得到氣泡嗎？</li>
+                <li><strong>熱/濕度（Thermal factors）</strong>：握持能力——潮濕的手掌能握住玻璃針筒嗎？</li>
+                <li><strong>聽覺（Auditory factors）</strong>：若 PFS 或自動注射器設計有聲音反饋（如 click 聲），在吵雜環境下能聽到嗎？</li>
+                <li><strong>工作負荷（Workload）</strong>：認知負擔——急診護理師在分心狀態下操作的失誤率遠高於安靜環境。</li>
+            </ul>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy — 環境因素 vs. CDMO 廠房人因</h4>
+            <p>CDMO 在廠房設計的人因工程其實和 PFS 的 HFE 同源：</p>
+            <ul>
+                <li>Grade C/D 更衣室的照明設計（看得清楚操作嗎？）</li>
+                <li>無塵衣手套的觸感（帶手套仍能操作小零件嗎？）</li>
+                <li>設備警報聲音在高背景噪音環境中是否能被聽見？</li>
+            </ul>
+            <p>廠房 HFE 研究（如 ergonomic assessment）與 PFS 使用環境評估是相同的方法論，只是應用場景不同。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Home vs. Clinic Environment</h4>
+            <p>醫療機構（controlled environment）vs. 居家使用（uncontrolled environment）的環境差異極大：</p>
+            <ul>
+                <li>醫院：標準化照明、恆溫、低噪音。</li>
+                <li>居家：可能在昏暗廚房、浴室、移動中的車上使用；溫濕度不固定；寵物、孩童造成干擾。</li>
+            </ul>
+            <p>若 PFS 計畫用於居家環境，使用環境的 HFE 評估必須涵蓋最差情境（worst-case scenario）。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>某 PFS 設計了「push-and-click」的注射終點確認機制（依靠聲音反饋）。在居家使用環境中，這個設計有何 HFE 風險？</li>
+                <li>濕潤或出汗的手掌對 PFS 玻璃針筒的握持有何影響？設計上如何緩解？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 4.3.3 -->
+<!-- ============================================================ -->
+<div class="section-title"><strong>4.3.3 Intended Use Scenarios 預期使用場景</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><span class="key-term">Intended use scenarios</span> describe how the user is expected to use the device. A device may also have multiple <span class="key-term">reasonably foreseeable use scenarios</span> that may differ by user group.</p>
+        <p>For example, a healthcare provider may be required to select the appropriate product for a patient; the same healthcare provider may need to visually identify and select a PFS among PFSs containing different drug strengths or different drugs. Alternatively, it may be necessary for the patient to possess the ability to self-administer the drug in the selected PFS.</p>
+        <p>Use scenarios are determined in part by the intended use of the product, and may include such factors as:</p>
+        <ul>
+            <li><span class="key-term">dosing regimen</span> (e.g., variable dosing or fix dosing)</li>
+            <li><span class="key-term">dose frequency</span> (e.g., once a day or once a month)</li>
+            <li><span class="key-term">type of medication</span> (e.g., emergency versus routine)</li>
+            <li><span class="key-term">extent of training</span> (e.g., naïve or experienced user)</li>
+            <li>clinical supervision prior to or during use</li>
+        </ul>
+        <p>Foreseeable scenarios involving <span class="key-term">misuse or use error</span> (including stress, performing the tasks within a specific time limit, or the need to wear gloves when using the PFS) should be identified and considered part of the application of human factors' techniques during design of the user interface.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Intended vs. Foreseeable Use</h4>
+            <p><strong>Intended use scenarios（預期使用場景）：</strong>製造商設計時預期的使用方式。例如：「由護理師在門診環境中注射」。</p>
+            <p><strong>Reasonably foreseeable use scenarios（合理可預見使用場景）：</strong>超出預期但現實中可能發生的使用方式。例如：「患者在緊急情況下自行注射、戴著厚手套注射、在昏暗環境下注射」。</p>
+            <p>HFE 要求製造商同時考慮兩者。忽視 foreseeable misuse，等同於放棄了一大塊風險控制。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy — Use Scenario vs. 批次記錄設計</h4>
+            <p>在 CDMO，批次記錄（Batch Record）設計時，我們會考慮「操作員在最差條件下仍能正確操作」——例如：戴著雙層手套書寫、在 C 級區穿著全套防護服確認標籤。</p>
+            <p>PFS 的 use scenario 設計邏輯相同：「最差使用情境下，患者仍能安全完成注射」。包括：戴手套（gloves）降低靈活度、壓力狀態下（stress）認知能力下降、時間限制（time limit）下操作。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Foreseeable Misuse 的 HFE 義務</h4>
+            <p>「合理可預見的誤用（reasonably foreseeable misuse）」必須納入 HFE 評估，這是 FDA 和 IEC 62366 的明確要求。若製造商能預見某使用錯誤模式但未採取設計防範，在產品傷害訴訟中將面臨重大法律責任。</p>
+            <p>舉例：如果 PFS 設計的針頭護套在使用後容易重新套上（recapping），但重新套上可能造成針刺傷，製造商必須評估並記錄此風險，並採取設計對策（如防重蓋機構）。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>某腫瘤科藥物的 PFS 設計，目標使用場景為「腫瘤科護理師在門診靜脈注射」。請列出三個「合理可預見」但非預期的使用場景。</li>
+                <li>為何「戴手套操作 PFS」是 HFE 必須評估的 foreseeable scenario？在設計上如何回應？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 4.4 -->
+<!-- ============================================================ -->
+<div class="section-title"><strong>4.4 Defining User Needs 定義使用者需求</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>After characterization of device use and prior to initiation of the design process, manufacturers should investigate and define <span class="key-term">end-user needs</span>. End-user needs can be documented as <span class="key-term">user requirements</span>, and as such, validated (i.e., are testable).</p>
+        <p>Multiple sources exist for defining user needs, such as the following:</p>
+        <ul>
+            <li>user group-specific needs (Section 4.3.1)</li>
+            <li>use environment (Section 4.3.2)</li>
+            <li>intended use (Section 4.3.3)</li>
+            <li>potential hazardous situations that may arise (Section 4.6.1)</li>
+            <li>reviews of relevant published material (Section 4.6.1.1)</li>
+            <li>empirical research conducted by interviews or observations of potential users (Section 4.6.1.2)</li>
+            <li>known use-related problems with the same or similar products</li>
+            <li>health authority guidance(s) and consensus standards (Section 4.1)</li>
+        </ul>
+        <p>User requirements may be further refined as new information is evaluated during device development.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 User Needs → User Requirements</h4>
+            <p><strong>End-user needs（終端使用者需求）：</strong>使用者在使用情境中真正需要的能力或體驗。例如：「患者在關節炎狀態下，單手就能移除針頭護套」。</p>
+            <p><strong>User requirements（使用者需求規格）：</strong>將 end-user needs 轉化為可測試（testable）的工程規格。例如：「針頭護套移除力不超過 X 牛頓，並在去除手套靈活度 Y% 的條件下測試」。</p>
+            <p>這個轉化過程是 HFE 與 QbD（Quality by Design）的交匯點：先定義使用者需求，再反向推導設計規格，最後驗證規格是否真正解決使用者問題。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy — User Needs vs. URS</h4>
+            <p>在 CDMO 設備採購中，我們先寫 URS（User Requirement Specification，使用者需求規格書），再讓廠商提案。PFS 的 User Requirements 邏輯完全相同：</p>
+            <ul>
+                <li>URS（設備）= User Requirements（PFS）</li>
+                <li>FAT/SAT 驗收測試 = HFE summative validation study</li>
+                <li>廠商設計合規性 = PFS 設計合規性</li>
+            </ul>
+            <p>差別在於：PFS 的 URS 是從「患者能力限制」出發，而不是從「製程需求」出發。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 八大使用者需求來源</h4>
+            <p>TR73 列出八個定義 user needs 的資料來源，CDMO 在 tech transfer 時應確認客戶已涵蓋所有相關來源：</p>
+            <ul>
+                <li>用戶族群特定需求（4.3.1）</li>
+                <li>使用環境（4.3.2）</li>
+                <li>預期用途（4.3.3）</li>
+                <li>潛在危害情境（4.6.1）</li>
+                <li>文獻回顧（4.6.1.1）</li>
+                <li>使用者訪談/觀察實證研究（4.6.1.2）</li>
+                <li>同類或類似產品的已知使用問題</li>
+                <li>法規機關指引及共識標準（4.1）</li>
+            </ul>
+            <p>遺漏任何一項，都可能在 FDA/EMA 審查時被要求補充資料（deficiency letter）。</p>
+        </div>
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 CDMO Application</h4>
+            <p>若 Amaran 承接一個新的 PFS 技術轉移案，客戶應在 tech transfer package 中提供「User Requirements Specification（URS）」文件。CDMO 的責任是確認製程能生產出符合這些 user requirements 的產品——例如，活塞推力（glide force）規格範圍必須涵蓋最差情境用戶（手部無力的患者）的操作能力上限。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>「User needs（使用者需求）」和「User requirements（使用者需求規格）」的關鍵差異是什麼？為何後者必須是 testable？</li>
+                <li>CDMO 在承接 tech transfer 時，應如何利用 Section 4.4 的八大來源核查客戶的 HFE 文件完整性？</li>
+                <li>若客戶的 user requirements 沒有考慮「使用者關節炎導致手部無力」這個場景，作為 CDMO 技術人員，你會如何提出質疑？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary (4.0–4.4)</h3>
+    <ul>
+        <li><strong>HFE 的核心目的</strong>：透過考慮產品設計、用途、使用者及使用環境，消除或最小化使用錯誤，保障患者安全。</li>
+        <li><strong>Standards (4.1)</strong>：IEC 62366-1、AAMI HE75、ISO 14971 等是主要 HFE 標準；FDA CDRH 文件和 21 CFR 820.30 是法規要求。不符規定的後果包括核准延誤、查廠缺失、市場投訴。</li>
+        <li><strong>HFE Evaluation (4.2)</strong>：PFS 存在已知使用錯誤（overdosing、underdosing、針刺傷），幾乎必然需要 summative/validation study。Formative study ≈ OQ；Summative study ≈ PQ。</li>
+        <li><strong>Device-Use Characterization (4.3)</strong>：三面向——用戶族群（誰用）、使用環境（哪裡用）、預期場景（怎麼用）。Home-use 環境特別需要考量注射恐懼、疾病損傷、負向學習轉移三大風險。</li>
+        <li><strong>User Needs (4.4)</strong>：先定義 end-user needs，再轉化為 testable 的 user requirements。來源涵蓋八個面向，並應隨開發進展持續精煉。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>

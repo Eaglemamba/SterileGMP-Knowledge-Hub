@@ -1,0 +1,1563 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR73 - Section 5A: Extractables and Leachables Evaluation (Part A)</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== CUSTOM: CCI comparison table ===== */
+.cci-table-wrapper {
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+.cci-table-wrapper table {
+    min-width: 900px;
+    font-size: 0.82rem;
+}
+.cci-table-wrapper th {
+    font-size: 0.8rem;
+    position: sticky;
+    top: 0;
+}
+.cci-table-wrapper td {
+    vertical-align: top;
+    padding: 0.5rem 0.6rem;
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 5 (Part A): Extractables and Leachables Evaluation</h1>
+    <div class="subtitle">萃取物與浸出物評估（上）</div>
+    <div class="page-info">PDA Technical Report No. 73 (2015) | PDF p31–p37 (Print p24–p30)</div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+
+<!-- TOC -->
+<div class="toc">
+    <h3>本節內容 Contents (Part A)</h3>
+    <div class="toc-grid">
+        <a href="#sec50">5.0 Introduction 導論</a>
+        <a href="#sec51">5.1 Syringe Barrels 針筒管製造</a>
+        <a href="#sec52">5.2 Sterilization Impact 滅菌影響</a>
+        <a href="#sec53">5.3 Sources of E&amp;L E&amp;L 來源</a>
+        <a href="#sec54">5.4 Extraction Conditions 萃取條件</a>
+    </div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標 Learning Objectives</h3>
+    <ul>
+        <li>區分 Extractables（萃取物）與 Leachables（浸出物）的定義差異，並理解兩者的包含關係。</li>
+        <li>說明預充填注射器（PFS）針筒管製造的四個步驟，及各步驟對 E&amp;L 的潛在貢獻。</li>
+        <li>識別 EO 與 Gamma 輻射滅菌對包材萃取物/浸出物特性的影響。</li>
+        <li>比較三種萃取研究類型（Controlled / Simulated / Leachables），並理解各自適用情境。</li>
+        <li>連結 E&amp;L 評估設計與 PIC/S Annex 1 容器密封完整性（CCI）要求，以及清潔驗證的方法論邏輯。</li>
+    </ul>
+</div>
+
+<!-- ===================== SECTION 5.0 ===================== -->
+<div class="section-title" id="sec50"><strong>5.0 Extractables and Leachables Evaluation 萃取物與浸出物評估</strong></div>
+
+<!-- tbl-p31-1: chapter wheel figure (full-width) -->
+<div style="overflow-x:auto; margin:1rem 0; text-align:center;">
+    <img src="../figures/tbl-p31-1.png" alt="Figure: TR73 Chapter Relationship Wheel (p31)" style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+    <p style="font-size:0.85rem; color:#4a5568; font-style:italic; margin-top:0.5rem;">Figure 5.0-1: TR73 章節關聯圖（Section 5.0 之定位）— TR73 Chapter Relationship Wheel showing Section 5.0 context (PDF p31)</p>
+</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The characterization of <span class="key-term">extractables</span> and <span class="key-term">leachables</span> presents an important component in drug product development. <span class="key-term">Extractables</span> are compounds that are forced out of a respective material or component under laboratory experimental conditions (i.e., high extraction power of the solvent, increased extraction temperature, but shorter exposure time than during normal use). <span class="key-term">Leachables</span> are those compounds that actually migrate from the respective material or component (e.g., the pharmaceutical C/C system) into the drug product formulation during its intended storage and use conditions.</p>
+        <p>Typically, leachables represent a subset of the amount of extractables (3). The following questions are essential to consider in the course of characterization:</p>
+        <ul>
+            <li>Which compounds can migrate out of the C/C materials (extractables)?</li>
+            <li>Which compounds and how much of each compound do in fact migrate into the drug product solution (leachables)?</li>
+            <li>What is the impact of these compounds on patient safety?</li>
+            <li>Do any of these compounds have a direct critical impact on the quality of the drug product?</li>
+        </ul>
+        <p>Resolution of these questions requires knowledge of materials science, the component manufacturing process, analytical chemistry, and drug product manufacturing processes. The quantity and frequency of dosing are critical factors required for a thorough, expert review of the quality and safety implications, and requires a toxicologist to provide input into the evaluation.</p>
+        <p>This section describes considerations for evaluating extractables and leachables that may migrate from a PFS. Although this section may provide useful information to the pharmaceutical manufacturer, this technical report is not a regulatory guidance document, and manufacturers should be prepared to justify their evaluation approach to regulatory reviewers/inspectors.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 E&amp;L 雙層定義</h4>
+            <p><strong>Extractables（萃取物）：</strong>在實驗室強制條件下（高強度溶劑、高溫、短時間）被萃出的化合物——代表最壞情境的「潛力庫」。</p>
+            <p><strong>Leachables（浸出物）：</strong>在實際使用/儲存條件下，真正遷移至藥品溶液中的化合物——是患者實際暴露的物質。</p>
+            <p>關係式：Leachables ⊆ Extractables。Extractables 是上界估計；Leachables 是實際風險。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>把 Extractables 想像成「清潔驗證棉棒取樣（最壞情境擦拭）」——刻意用最強方式採集表面殘留物，得到理論最大值。Leachables 則像「實際生產批次中量測到的產品殘留」——真實環境下的實際移轉量，永遠小於等於前者。E&amp;L 研究的邏輯，與清潔驗證 coupon study 如出一轍：先建立最壞情境上界，再確認實際條件下是否達標。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Regulatory Context</h4>
+            <p>TR73 明確聲明本報告「非法規指引文件」，製造商需自行對主管機關論證評估方法的合理性。此一立場意味著，稽查時需備妥完整的科學風險評估論述——而非僅引用本 TR 作為依據。</p>
+            <p>毒理學家的參與不可或缺：劑量與頻率是安全性評估的核心輸入，需由毒理學家提供 TTC（Threshold of Toxicological Concern）判斷。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 Leachables 通常是 Extractables 的「子集合」？在何種情況下兩者數量可能接近？</li>
+                <li>若某化合物在 Extractables 研究中被檢出，但在 Leachables 研究中未被偵測，代表什麼意義？是否可直接排除安全風險？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== SECTION 5.1 ===================== -->
+<div class="section-title" id="sec51"><strong>5.1 Production of Syringe Barrels 針筒管製造</strong></div>
+
+<!-- tbl-p32-1: syringe barrel manufacturing steps (full-width) -->
+<div style="overflow-x:auto; margin:1rem 0; text-align:center;">
+    <img src="../figures/tbl-p32-1.png" alt="Table/Figure: Syringe Barrel Manufacturing Steps (p32)" style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+    <p style="font-size:0.85rem; color:#4a5568; font-style:italic; margin-top:0.5rem;">Figure 5.1-1: 針筒管製造步驟示意（PDF p32）— Syringe barrel manufacturing process overview</p>
+</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The choice of the glass raw material is the first driver for controlling potential leachables in drug products. The pharmaceutical industry uses <span class="key-term">Borosilicate Type 1 glass</span> tubes as raw material for manufacturing syringe barrels. Type 1 glass has the highest hydrolytic resistance and chemical stability of available glass formulations, and therefore limits migration of glass component raw materials into the drug product. Glass quality for hydrolytic resistance must meet the testing requirements in the relevant pharmacopeias (e.g., European Pharmacopoeia, USP, or Japanese Pharmacopoeia).</p>
+        <p><span class="key-term">Delamination</span> (the scaling off of very thin, visible-to-subvisible glass flakes) of glass surfaces contacting the product has been reported for some products packaged in glass vials, whereas delamination has not been reported in glass syringes so far. However, this possibility cannot be fully excluded during the storage of certain formulations. USP &lt;1660&gt; Evaluation of the Inner Surface Durability of Glass Containers addresses delamination and contributing factors in more detail (49).</p>
+        <p>The syringe barrel manufacturing process consists of <strong>four main steps</strong>, each of which can generate or introduce compounds that may later become extractables and/or leachables.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念：Type 1 Borosilicate Glass 的選擇理由</h4>
+            <p>Type 1 玻璃（硼矽玻璃）是藥用注射器的唯一選擇，其核心優勢在於最高水解抗性（hydrolytic resistance）——即在注射用水（WFI）或液體製劑接觸下，玻璃表面不易溶出離子。相比 Type 2（鈉鈣玻璃，表面處理）或 Type 3（一般鈉鈣玻璃），Type 1 的化學惰性顯著更高。</p>
+            <p>各藥典對水解抗性的測試要求（歐洲藥典、USP、日本藥典）是最低門檻，廠商通常需在此基礎上提供更嚴格的內部規格。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示：Delamination 風險不可完全排除</h4>
+            <p>玻璃層離（delamination）在注射瓶中已有報告，在注射器中雖尚未報告，但 TR73 明確指出「不能完全排除」。特定製劑（高 pH、螯合劑、緩衝鹽）可能誘發此現象。USP &lt;1660&gt; 提供評估框架。</p>
+            <p>對 CDMO 的實務意義：客戶若使用高 pH 或含 EDTA 製劑，應將 delamination 風險評估納入相容性研究（compatibility study）。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明：四步驟製造 = 四個污染引入點</h4>
+            <p>把針筒管製造想像成四道廚房工序：切割（無熱影響，風險最低）→ 成型（高溫加工，化學表面改變）→ 針頭組裝（黏著劑引入）→ 清洗/矽化/滅菌（最終清潔但也引入矽油）。每一道工序都是潛在的 E&amp;L 貢獻點，必須逐一評估。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果客戶要求使用 Type 2 玻璃針筒，你會如何評估並回應？</li>
+                <li>Delamination 與一般玻璃離子溶出（leaching）在臨床風險上有何不同？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== SECTION 5.1.1 ===================== -->
+<div class="section-title"><strong>5.1.1 Cutting Step (Horizontal Forming) 切割步驟</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>In the first step of the syringe barrel manufacturing process, glass tubing is cut to the appropriate size. The cut tubing pieces are then washed to remove glass particles and transferred to a forming machine. During this step, the glass does not undergo any treatment that could affect its physicochemical stability. This step has <strong>little impact</strong> on the generation of extractable or leachable substances.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念：切割步驟的低風險性</h4>
+            <p>切割為純機械操作，無熱處理，不改變玻璃表面化學組成。切割後的沖洗步驟去除玻璃微粒，進一步降低污染風險。此步驟在 E&amp;L 風險矩陣中評分最低，不需要針對萃取物/浸出物進行特別的評估研究。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示</h4>
+            <p>切割步驟雖低風險，但切割產生的玻璃微粒若未完全去除，仍可能成為可見/不可見微粒（visible/subvisible particles）的來源，對注射劑品質有直接影響。這是 CCI 以外另一個品質屬性的關注點。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== SECTION 5.1.2 ===================== -->
+<div class="section-title"><strong>5.1.2 Forming Step (Horizontal/Vertical Forming) 成型步驟</strong></div>
+
+<!-- vec-p33-1: forming step vector graphic (full-width) -->
+<div style="overflow-x:auto; margin:1rem 0; text-align:center;">
+    <img src="../figures/vec-p33-1.png" alt="Figure: Syringe Forming Step Detail (p33)" style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+    <p style="font-size:0.85rem; color:#4a5568; font-style:italic; margin-top:0.5rem;">Figure 5.1.2-1: 針筒成型步驟細節示意（PDF p33）— Syringe barrel forming step detail</p>
+</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>In the second step, the syringe tip and flange are sequentially formed by local heating of the glass cut/tube. <span class="key-term">Annealing</span> and forming steps can locally modify the surface composition of the glass, and consequently, influence the leachable chemical profile. Some manufacturers may use <span class="key-term">tooling lubricants</span> during the manufacturing process, which could subsequently be viewed as a process leachable.</p>
+        <p><span class="key-term">Tungsten pins</span> are commonly used to form the tip channel. Tungsten residuals have received attention due to some cases of product incompatibility reported in the literature (50). Such sensitivity must be evaluated through testing and compatibility studies (e.g., spiking studies as appropriate). Residual tungsten levels may be controlled or minimized during the formation step by use of process parameters and washing, and possibly eliminated through use of substitute pin materials if a drug has significant sensitivity to tungsten.</p>
+        <p>In addition to sensitivity to tungsten, some drugs may possibly exhibit sensitivity to other metals. Therefore, if pins made out of substitute metals—such as iridium or platinum—are employed, then give consideration to employing the same control or minimization processes as those used for tungsten to reduce possible interactions between the drug and pin residues on the inner surface of the syringe.</p>
+        <p>It is known that in areas where formation occurs (such as the tip area), a higher concentration of pin-derived compounds may occur than in the areas that are not in direct contact with heat (i.e., hot flames) (51). Once formed, the syringe barrel passes through an <span class="key-term">annealing oven</span> to release stress in the glass; then the needle is affixed.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念：成型步驟的高風險性</h4>
+            <p>成型步驟是四個步驟中 E&amp;L 風險最高的一環：</p>
+            <ul>
+                <li><strong>局部高溫</strong>改變玻璃表面化學組成（鈉離子富集），影響後續浸出物特性</li>
+                <li><strong>鎢針（tungsten pin）</strong>殘留與蛋白質藥物的不相容性（aggregation）已有文獻記錄</li>
+                <li><strong>工具潤滑劑</strong>可能成為製程浸出物</li>
+                <li><strong>退火爐</strong>雖消除應力，但仍在熱處理條件下進行</li>
+            </ul>
+        </div>
+        <div class="note-box">
+            <h4>重點提示：鎢殘留的臨床意義</h4>
+            <p>鎢殘留誘發蛋白質聚集（aggregation）的風險在生物製劑（monoclonal antibody、insulin 等）中尤為關鍵。FDA 曾針對此議題發出警告。控制策略包括：製程參數優化、清洗強化、或替換為銥（iridium）/鉑（platinum）針——但替換材料同樣需要評估其殘留風險，不能假設「換掉鎢就沒問題」。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明：成型步驟的局部污染效應</h4>
+            <p>如同焊接作業後焊點附近金屬成分會有局部富集，針筒錐頭（tip area）因高溫直接接觸鎢針，其針孔周邊的鎢濃度遠高於桶身其他部位。這說明採樣位置的選擇在 E&amp;L 研究中至關重要——若只取桶身中段，將大幅低估真實風險。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>某客戶的 IgG 製劑對鎢敏感，你會建議哪些控制措施？各有何優缺點？</li>
+                <li>改用鉑針後，是否就不需要進行鉑殘留的相容性評估？請說明理由。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== SECTION 5.1.3 ===================== -->
+<div class="section-title"><strong>5.1.3 Needle Assembly Step 針頭組裝步驟</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>In the third step, the glass barrel and needle are assembled. Some manufacturing operations conduct this step in line with the formation process. The needle is mechanically placed into the tip to a predefined depth; then <span class="key-term">adhesive</span> is added and polymerized by ultraviolet (UV) light exposure.</p>
+        <p>The adhesive used to bond the needle into the glass syringe is a possible source of extractables and leachables, such as <span class="key-term">photoinitiator byproducts</span>, <span class="key-term">residual monomers</span>, and <span class="key-term">adhesion promoters</span> (52, 53). After needle assembly, the syringes are packed into trays or other support/containers for further processing.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念：UV 固化黏著劑的 E&amp;L 貢獻</h4>
+            <p>針頭固定使用 UV 光固化黏著劑（acrylate-based），其潛在 E&amp;L 貢獻物包括：</p>
+            <ul>
+                <li><strong>光引發劑副產物（photoinitiator byproducts）：</strong>UV 固化不完全時殘存，可遷移至製劑</li>
+                <li><strong>殘餘單體（residual monomers）：</strong>低分子量，遷移性高</li>
+                <li><strong>黏著促進劑（adhesion promoters）：</strong>矽烷類化合物，可能與蛋白質交互作用</li>
+            </ul>
+            <p>此步驟使 E&amp;L 研究必須納入針頭黏著劑作為獨立評估組件。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示：UV 固化條件需驗證</h4>
+            <p>黏著劑的 UV 固化程度（degree of cure）直接決定殘餘單體量。固化參數（能量劑量、波長、時間）需經過驗證，並納入製程管控（IPC）。對 CDMO 而言，若更換黏著劑供應商，應重新評估 E&amp;L 特性。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== SECTION 5.1.4 ===================== -->
+<div class="section-title"><strong>5.1.4 Washing, Siliconization, Needle-Shield Positioning, and Packaging 清洗、矽化、針帽定位與包裝</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The syringe supplier, pharmaceutical company, or contract fillers for bulk syringes perform the final step of the syringe barrel manufacturing process, which includes washing, siliconization, and sterilization. In this step, the bulk syringes are packaged into trays and cartoned.</p>
+        <p>Whether processed by the supplier or the pharmaceutical company, the syringes are washed in a controlled environment with hot WFI. After the syringes are dried and lubricated with <span class="key-term">medical-grade silicone oil</span>, the needle shield is assembled. The washing process significantly reduces residual levels of process impurities.</p>
+        <p><span class="key-term">Silicone oil</span> is not formally considered to be extractable or leachable, but it is known to emulsify or migrate as very small droplets into liquid drug formulations. It is possible to analytically assess silicone oil migration using <span class="key-term">particulate counting systems</span> that can discriminate silicone oil droplets from other particulate impurities (e.g., microflow imaging), or quantified (e.g., atomic absorption spectroscopy). Compatibility of the drug molecule and the formulation with the siliconized syringe should be evaluated as part of long-term compatibility testing.</p>
+        <p>After siliconization, the syringe barrels are nested (tip downward) and visually inspected. The nest is placed into a tub and packaged prior to sterilization. Refer to Section 11.8 for additional details related to secondary packaging in the packaging process.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念：矽油的特殊地位</h4>
+            <p>矽油（silicone oil，主要為 polydimethylsiloxane, PDMS）在 E&amp;L 分類上具有特殊性：</p>
+            <ul>
+                <li>正式上不被歸類為 extractable 或 leachable</li>
+                <li>但已知會以微小液滴形式（silicone oil droplets）遷移至製劑中</li>
+                <li>對蛋白質製劑的穩定性有潛在影響（aggregation 誘發）</li>
+            </ul>
+            <p>分析方法：微流成像（MFI, microflow imaging）可區分矽油液滴與其他微粒；AAS 可定量矽元素。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明：清洗步驟的角色</h4>
+            <p>針筒清洗（WFI 熱水洗滌）相當於清潔驗證後的「沖洗步驟」——顯著降低製程殘留，但不能歸零。清洗後的殘留水準決定了後續 leachables 研究的起始背景值。這與清潔驗證的 residual acceptance criteria 邏輯完全對應：清洗不是消除，而是降低至可接受水準。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示：矽化量的雙面性</h4>
+            <p>矽油用量需在「足夠潤滑（減少活塞推力）」與「最小化矽油遷移（降低蛋白質聚集風險）」之間取得平衡。PIC/S Annex 1 要求容器密封系統的所有組件均應針對預期用途進行適當性評估，矽化量的驗證屬於此範疇。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼矽油不被歸類為 extractable/leachable，但仍需在相容性研究中評估？</li>
+                <li>客戶要求降低針筒矽化量以減少蛋白質聚集風險，可能帶來哪些操作性後果？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== SECTION 5.2 ===================== -->
+<div class="section-title" id="sec52"><strong>5.2 Ethylene Oxide and Gamma Irradiation Sterilization and Decontamination Processes 環氧乙烷與加瑪輻射滅菌對 E&amp;L 的影響</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>As described in Section 13.0, several sterile barrier systems in one or two bag(s) are used in the final packaging of the washed and siliconized syringes (e.g., cardboard or plastic cases), depending on the customer requirements. These packages are placed on a pallet and undergo a sterilization cycle or a suitable alternative process.</p>
+        <p>The needle shield elastomer formulations are designed to allow sufficient gas penetration to achieve gas sterilization (e.g., <span class="key-term">ethylene oxide</span>), especially at the material interfaces. The drawback of this property is the retention via absorption of ethylene oxide (EO) and its potential desorption over time.</p>
+        <p><span class="key-term">Ethylene oxide</span> and <span class="key-term">ethylene chlorohydrin</span> residuals must comply with <span class="key-term">ISO 10993-7</span>, Biological Evaluation of Medical Devices, and with the limits of <strong>1 µg/mL residual EO</strong> and <strong>50 µg/mL ethylene chlorohydrin</strong> per container established in EMA CPMP/QWP 159/01 (54–56). These are acceptance criteria for the batch release of empty syringes.</p>
+        <p>Clean, lubricated plunger stoppers packaged in nests or in bulk are frequently sterilized by <span class="key-term">gamma irradiation</span> in plastic bags at validated doses. Moist heat may also be used for sterilization depending upon the requirements of the pharmaceutical company.</p>
+        <p>The sterilization process may affect extractables and leachables (e.g., depletion of volatile compounds by autoclaving, generation of new compounds by <span class="key-term">radiolysis</span> during irradiation). Therefore, the method used to sterilize the component for evaluation is important and should represent the intended conditions of use.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念：滅菌方法對 E&amp;L 特性的不同影響</h4>
+            <p>不同滅菌方式對包材 E&amp;L 特性有根本性的影響：</p>
+            <ul>
+                <li><strong>EO 滅菌：</strong>EO 及其副產物（ethylene chlorohydrin）被彈性體吸收，需監控脫附（desorption）時間。限制：EO &lt;1 µg/mL，ethylene chlorohydrin &lt;50 µg/mL（EMA CPMP/QWP 159/01）。</li>
+                <li><strong>Gamma 輻射：</strong>輻射分解（radiolysis）可能產生新的有機化合物——這些化合物在未輻射樣品中不存在，需以輻射後樣品進行 E&amp;L 研究。</li>
+                <li><strong>高壓蒸氣滅菌（autoclaving）：</strong>高溫蒸氣可揮發並耗盡某些揮發性化合物，改變萃取物輪廓。</li>
+            </ul>
+        </div>
+        <div class="note-box">
+            <h4>重點提示：研究樣品必須與實際使用條件一致</h4>
+            <p>這是 E&amp;L 研究設計的黃金原則：用於 extractables 研究的組件，必須以與最終產品相同的方式進行滅菌處理（same sterilization method, same dose）。若使用未滅菌或不同方式滅菌的樣品，所得數據不具代表性，無法支持上市申請。</p>
+            <p>此原則與 PIC/S Annex 1 §4.3 對容器密封系統 qualification 的要求一致：評估條件需代表預期使用條件（representative of intended conditions of use）。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明：滅菌改變 E&amp;L 輪廓</h4>
+            <p>把橡膠塞想像成一塊海綿：EO 滅菌後，海綿吸飽了 EO 氣體，需要「透氣時間（aeration）」讓 EO 逸散；輻射則像高能量射線將海綿的部分分子鏈打斷，生成原本不存在的碎片化合物。兩種方式都改變了「海綿的成分」，因此研究前必須先確定你要研究的是「哪種狀態的海綿」。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼在 extractables 研究的樣品準備中，滅菌方法必須與最終產品一致？</li>
+                <li>某供應商提供的橡膠塞 E&amp;L 資料是以 gamma 輻射滅菌取得，但你的工廠計畫改用 EO 滅菌。這份數據是否可以直接使用？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== SECTION 5.3 ===================== -->
+<div class="section-title" id="sec53"><strong>5.3 Sources of Extractable and Leachable Substances E&amp;L 物質來源</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Possible extractables and leachables from a 1 mL long ready-to-fill syringe are chemicals introduced by various components and processes, including:</p>
+        <ul>
+            <li>glass tubing composition</li>
+            <li>glass converting process</li>
+            <li>injection needle</li>
+            <li>adhesive used for needle bonding</li>
+            <li>elastomeric components</li>
+            <li>labeling inks or adhesives</li>
+            <li>residual ethylene oxide</li>
+            <li>other process residuals</li>
+        </ul>
+        <p>The primary sources of packaging component extractables and leachables for 1 mL long staked needle PFSs are <span class="key-term">glass</span> and <span class="key-term">elastomeric components</span> (plunger stopper and needle shield).</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念：E&amp;L 來源優先排序</h4>
+            <p>TR73 明確指出，1 mL long staked-needle PFS 的主要 E&amp;L 來源為：</p>
+            <ol>
+                <li><strong>玻璃（glass）：</strong>金屬離子（硼、鈉、鉀、鋁、鎢）</li>
+                <li><strong>彈性體（elastomeric）：</strong>橡膠塞（plunger stopper）與針帽（needle shield）</li>
+            </ol>
+            <p>其他來源（黏著劑、標籤油墨、EO 殘留等）為次要但不可忽略的貢獻項。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示：CCI 與 E&amp;L 的交叉點</h4>
+            <p>容器密封完整性（CCI，PIC/S Annex 1 §8.89-8.92）與 E&amp;L 在彈性體的選擇上存在張力：高透氣性彈性體有助於 EO 滅菌穿透，但同時也更容易吸收並釋出 EO 及其副產物。這意味著材料選擇必須在 CCI 性能與 E&amp;L 風險之間做系統性取捨。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明：多來源的 E&amp;L 研究 = 汙水溯源</h4>
+            <p>E&amp;L 研究的來源識別，類似工廠廢水溯源調查：面對多個可能的排放源（玻璃、橡膠、黏著劑…），必須逐一取樣分析，才能確定哪個「管線」是主要貢獻者，哪些是次要貢獻者。採用「組件分離萃取（individual component extraction）」策略正是這個邏輯。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== SECTION 5.3.1 ===================== -->
+<div class="section-title"><strong>5.3.1 Elastomeric Components 彈性體組件</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The majority of elastomeric components are made from rubber materials that are composed of several different ingredients and are subjected to <span class="key-term">chemical cross-linking (curing)</span> in a process that takes place at an elevated temperature (thermoset rubber). The primary ingredients in pharmaceutical rubber are the elastomer (high-molecular-weight polymer), filler (inorganic mineral-based material), pigment (inorganic or organic), and curing system for cross-linking. Other frequently used ingredients are <span class="key-term">antioxidants</span>, <span class="key-term">plasticizers</span>, waxes, and <span class="key-term">accelerators</span> that help accelerate the curing reaction.</p>
+        <p>Examples of potential extractables are polymer stabilizers, antioxidants and their degradation products, low-molecular-weight fractions of elastomers and plasticizers, metal ions, accelerators, and side products generated during the curing reaction.</p>
+        <p>Some thermoplastic rubber formulations used in manufacturing needle shields do not require a curing step; thus, extractables related to curing are avoided. However, the extractables not related to curing remain.</p>
+        <p><span class="key-term">Plunger stopper</span> formulations typically use a bromobutyl or chlorobutyl polymer as the elastomer. Plunger stoppers typically have a higher level of chemical cleanliness than needle-shield formulations. This is because needle-shield formulations typically made of polyisoprene or styrene-butadiene rubber have more complicated curing systems.</p>
+        <p>Another design parameter to investigate is whether using <span class="key-term">polymeric coatings</span> that act as barriers between the plunger stopper and the drug product solution can further reduce the levels of potential leachables from the plunger stopper.</p>
+        <p>Suppliers of elastomeric components can provide packages of extractables information ranging from potential extractables lists to qualitative and quantitative determinations of extractables after extraction with model solvents under model conditions. The extractable information provided by the supplier may supplement the pharmaceutical company's evaluation but <strong>cannot replace</strong> drug compatibility studies for which the pharmaceutical company remains responsible.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念：橡膠成分的 E&amp;L 貢獻機制</h4>
+            <p>熱固性橡膠（thermoset rubber）的 E&amp;L 來源層次：</p>
+            <ul>
+                <li>原料本身（彈性體主鏈、填充劑、顏料）</li>
+                <li>硫化劑/促進劑（accelerators）及其固化反應副產物</li>
+                <li>抗氧化劑及其降解產物</li>
+                <li>低分子量增塑劑</li>
+                <li>金屬離子（來自礦物填充劑）</li>
+            </ul>
+            <p>熱塑性橡膠（thermoplastic）無固化步驟，省去固化相關 extractables，但其他類別仍存在。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示：供應商數據不能取代藥廠自身的相容性研究</h4>
+            <p>TR73 明確指出：供應商提供的 E&amp;L 數據「僅供補充，不能取代」藥廠對自身製劑的相容性研究。這與 FDA/EMA 的監管立場一致——藥廠是最終負責人（MAH），不能將責任外包給供應商。</p>
+            <p>實務上，供應商的 extractables 數據包（data package）是研究的起始點，而非終點。藥廠需以實際製劑條件（pH、溶劑、溫度、時間）進行 leachables 研究確認。</p>
+        </div>
+        <div class="concept-box">
+            <h4>核心概念：Polymeric Coating 的屏障功能</h4>
+            <p>聚合物塗層（如 Flurotec® B2 coating）可在橡膠塞與藥液之間形成物理屏障，顯著降低 leachables 遷移量。這是高風險製劑（如蛋白質、pH &gt; 8 製劑）的重要選項。需注意：塗層本身也需進行 E&amp;L 評估，且塗層完整性（coating integrity）須在整個有效期內維持。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 needle shield 的化學清潔度通常低於 plunger stopper？</li>
+                <li>若供應商提供了完整的 extractables 定量數據包，藥廠是否還需要進行 leachables 研究？為什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== SECTION 5.3.2 ===================== -->
+<div class="section-title"><strong>5.3.2 Glass Components 玻璃組件</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Extractables related to glass are primarily <span class="key-term">metallic ions</span> from mineral materials in the glass raw materials. The glass typically used for syringes consists mainly of silicon oxide, aluminum oxide, and boron oxide as network-forming components (e.g., borosilicate glasses) spiked with network-modifying components, such as sodium or potassium oxides.</p>
+        <p>High concentrations of leachable glass components, such as sodium or potassium, may cause the <span class="key-term">pH shift</span> in unbuffered solution formulations, and thus become critical and affect the quality and stability of the drug product, and/or the stability of the glass surface.</p>
+        <p>Some glass also contains calcium, barium, magnesium, titanium, iron, or cerium to provide certain characteristics, such as color, strength, or formability (melting temperature). Potential contaminators during glass production or forming are <span class="key-term">refining agents</span>, such as arsenic oxide, antimony oxide, alkali halides, and alkaline earth halides.</p>
+        <p>During syringe formation, <span class="key-term">tungsten contamination</span> may occur when using tungsten pins to form the syringe cone (see Sections 5.1.2 and 14.6.2.1). Trace elements may also be present as contaminants from the added compounds listed above.</p>
+        <p>Within siliconized syringes, silicone may be present as <span class="key-term">polydimethylsiloxanes (PDMS)</span>. Silicone and tungsten species have the potential to interact with protein-based active pharmaceutical ingredients, and therefore need to be assessed (50).</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念：玻璃 E&amp;L 的化學本質</h4>
+            <p>硼矽玻璃的網狀結構由 SiO2、Al2O3、B2O3 組成（network formers），Na2O/K2O 作為網狀修飾劑（network modifiers）填充於空隙中。Na+、K+ 是最易溶出的離子：</p>
+            <ul>
+                <li><strong>pH 影響：</strong>Na+/K+ 溶出使無緩衝製劑 pH 升高，可能破壞蛋白質或 API 穩定性</li>
+                <li><strong>精煉劑殘留：</strong>As2O3、Sb2O3 是高毒性雜質，玻璃製造過程中使用但需嚴格控制殘留</li>
+                <li><strong>鎢污染：</strong>來自成型步驟，在錐頭部位濃度最高</li>
+            </ul>
+        </div>
+        <div class="note-box">
+            <h4>重點提示：矽油 + 鎢對蛋白質的協同風險</h4>
+            <p>TR73（參照文獻 50）指出，矽油（PDMS）與鎢離子均可與蛋白質藥物相互作用，誘發聚集（aggregation）。對生物製劑填充 CDMO 而言，這意味著相容性研究必須同時考慮兩者的聯合效應，而非分別獨立評估。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明：玻璃 E&amp;L 類比清潔驗證殘留</h4>
+            <p>玻璃組件的金屬離子溶出，類似清潔驗證中的 API 殘留監控：兩者都需要識別「哪種物質在何種條件下會遷移多少」，並設定科學合理的接受標準。差異在於清潔驗證的殘留來自上一批製劑，而玻璃 E&amp;L 的「殘留」來自容器本身的材料。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>某製劑為無緩衝水溶液（pH 6.0），為何玻璃鈉離子溶出需要特別關注？如何在 leachables 研究設計中體現這一風險？</li>
+                <li>如何透過分析方法區分玻璃組件中的鎢污染（來自製程）與鎢合金針頭本身的貢獻？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== SECTION 5.4 ===================== -->
+<div class="section-title" id="sec54"><strong>5.4 Extraction Conditions and Sample Preparation 萃取條件與樣品製備</strong></div>
+
+<!-- fig-p35-1: extraction study design figure (full-width) -->
+<div style="overflow-x:auto; margin:1rem 0; text-align:center;">
+    <img src="../figures/fig-p35-1.png" alt="Figure: Extraction Study Design (p35)" style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+    <p style="font-size:0.85rem; color:#4a5568; font-style:italic; margin-top:0.5rem;">Figure 5.4-1: 萃取研究設計概覽（PDF p35）— Extraction study design overview</p>
+</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>An important step for the evaluation of potential leachable substances is the choice of adequate extraction techniques and conditions. The current practice is to generate separate <span class="key-term">extraction profiles</span> on each PFS device component (e.g., rubber stopper, syringe barrel, needle shield, and staked needle adhesive), and the assembled PFS device system.</p>
+        <p>The extractables profiles of each PFS device component help to identify issues related to individual components and the source of the extractables. An alternative approach involves extraction on the assembled syringe system. By exposing solvents only to the product contact surfaces of the PFS device, this technique provides a truly accurate extraction profile representative of the PFS device system.</p>
+        <p>A <span class="key-term">risk-based approach</span> should be used to ensure detection of all critical substances that might migrate into a pharmaceutical formulation from the packaging material. Various extraction strategies may be used to force the migration of substances out of the packaging material, including different solvents, sample preparation, accelerated temperatures, and time. The most commonly accepted practices include a series of studies: the <span class="key-term">controlled extraction study</span>, <span class="key-term">simulated extraction study</span>, and <span class="key-term">leachable study</span>. These studies are useful for defining the set of target leachables needed to develop the appropriate quantitative analytical methods.</p>
+        <p>Before being tested, components must be prepared (washed, siliconized, and/or sterilized) in a manner <strong>representative of expected usage</strong>. In addition, the extraction time should be optimized at least once for each basic material, such as for the elastomeric rubber or adhesive. USP &lt;381&gt; Elastomeric Closures for Injections (21) details such evaluation parameters.</p>
+        <p>Tables 5.4-1 and 5.4-2 outline considerations for proper extractables study design. Complete information on how to conduct these studies is available in other guidances and publications (21,22,49–52).</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念：三層萃取研究架構</h4>
+            <p>E&amp;L 研究採用漸進式三層設計：</p>
+            <ol>
+                <li><strong>Controlled Extraction Study（管控萃取研究）：</strong>強化條件（有機溶劑、高溫）→ 識別所有潛在 extractables（最大化萃出）</li>
+                <li><strong>Simulated Extraction Study（模擬萃取研究）：</strong>接近製劑的溶劑、加速穩定性條件 → 篩選最可能的 leachables 候選物</li>
+                <li><strong>Leachable Study（浸出物研究）：</strong>實際製劑或安慰劑、正常儲存條件 → 確認真實遷移量與患者暴露量</li>
+            </ol>
+            <p>三層研究是連續的：前一層識別目標化合物，後一層量化實際風險。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明：三層研究類比清潔驗證 Coupon Study</h4>
+            <p>Controlled extraction = 最差情境棉棒（coupon）取樣：使用最強溶劑、最高溫度，找出「最多能殘留多少」。Simulated extraction = 以 rinse solvent 模擬實際清洗液萃取。Leachable study = 實際產品批次中量測殘留。邏輯完全對應清潔驗證的三步驟：worst-case identification → representative conditions → actual batch verification。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示：組件分離 vs. 整機萃取的策略選擇</h4>
+            <p>兩種萃取策略各有優劣：</p>
+            <ul>
+                <li><strong>組件分離萃取：</strong>可溯源識別個別組件的 E&amp;L 貢獻，利於問題排查，但可能遺漏組件間的交互作用</li>
+                <li><strong>整機萃取（assembled system）：</strong>只暴露產品接觸表面，更真實代表實際使用情境，但無法區分各組件貢獻</li>
+            </ul>
+            <p>TR73 建議兩種策略並用。PIC/S Annex 1 §2.5 要求容器密封系統整體考慮（holistic approach），支持整機萃取的必要性。</p>
+        </div>
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>CDMO 場景：客戶委託充填一款 anti-VEGF mAb，使用 1 mL PFS，計畫在歐盟上市。你需要設計 E&amp;L 研究方案。需考量：（1）哪些組件需分離萃取？（2）使用 EO 還是 gamma 滅菌樣品？（3）三層研究分別採用哪些溶劑條件？（4）毒理學家何時介入評估？</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼「萃取時間優化」（extraction time optimization）是 E&amp;L 研究設計的必要前置步驟？</li>
+                <li>若 controlled extraction study 發現了 10 種潛在 extractables，是否需要對所有 10 種都開發定量方法？判斷依據是什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- Table 5.4-1: Extraction study types (full-width, OUTSIDE two-column) -->
+<div class="full-width-table" style="margin:1rem 0;">
+    <h3 style="font-weight:600; color:var(--primary-blue); margin-bottom:0.5rem;">Table 5.4-1: Extraction Study Types 萃取研究類型</h3>
+    <p style="font-size:0.88rem; color:#4a5568; margin-bottom:0.5rem;">Source: PDA TR73 Table 5.4-1 (PDF p35–p36) | 參照 tbl-p36-1 原始圖表</p>
+    <div style="overflow-x:auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Study Type 研究類型</th>
+                    <th>Extraction Medium 萃取介質</th>
+                    <th>Temperature / Storage Time 溫度／儲存時間</th>
+                    <th>Purpose 目的</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Controlled Extraction 管控萃取</strong></td>
+                    <td>Model solvents, including organic solvents and/or aqueous/organic mixtures（模型溶劑，含有機溶劑及/或水性/有機混合物）</td>
+                    <td>Exaggerated high temperatures（誇大高溫條件）</td>
+                    <td>識別所有潛在萃取物（最大化萃出），建立 extractables 全貌</td>
+                </tr>
+                <tr>
+                    <td><strong>Simulated Extraction 模擬萃取</strong></td>
+                    <td>Solvent representative of the intended formulation（代表預期製劑的溶劑）</td>
+                    <td>Similar to accelerated stability study（接近加速穩定性研究條件）</td>
+                    <td>篩選最可能遷移至製劑的化合物，定義 leachable 目標清單</td>
+                </tr>
+                <tr>
+                    <td><strong>Leachables Study 浸出物研究</strong></td>
+                    <td>Intended drug product or a buffer without the active component（實際藥品或不含活性成分的緩衝液）</td>
+                    <td>Typical stability study values（正常穩定性研究條件）</td>
+                    <td>量化患者實際暴露量，支持安全性評估與上市申請</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- tbl-p36-1: original Table 5.4-2 image reference (full-width) -->
+<div style="overflow-x:auto; margin:1rem 0; text-align:center;">
+    <img src="../figures/tbl-p36-1.png" alt="Table 5.4-2: Potential Extraction Study Considerations (p36)" style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+    <p style="font-size:0.85rem; color:#4a5568; font-style:italic; margin-top:0.5rem;">Table 5.4-2: Potential Extraction Study Considerations 潛在萃取研究考量事項（PDF p36）</p>
+</div>
+
+<!-- Table 5.4-2: HTML reconstruction (full-width) -->
+<div class="full-width-table" style="margin:1rem 0;">
+    <h3 style="font-weight:600; color:var(--primary-blue); margin-bottom:0.5rem;">Table 5.4-2: Potential Extraction Study Considerations 萃取研究設計考量（重建）</h3>
+    <div style="overflow-x:auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Category 類別</th>
+                    <th>Items 項目</th>
+                    <th>Commentary 說明</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Materials to Evaluate 待評估材料</strong></td>
+                    <td>
+                        Syringe glass（注射器玻璃）<br>
+                        Silicone（矽油）<br>
+                        Needle（針頭）<br>
+                        Needle adhesive（針頭黏著劑）<br>
+                        Plunger stopper and needle shield elastomers（橡膠塞與針帽彈性體）
+                    </td>
+                    <td>各組件需分離評估，以識別個別 E&amp;L 來源；整機萃取補充確認整體輪廓</td>
+                </tr>
+                <tr>
+                    <td><strong>Extraction Techniques 萃取技術</strong></td>
+                    <td>
+                        Reflux Soxhlet extraction（索式迴流萃取）<br>
+                        Ultrasonication（超音波萃取）<br>
+                        Maceration / soaking（浸泡萃取）
+                    </td>
+                    <td>不同技術萃取效率不同。Soxhlet 效率最高（適用 controlled study）；浸泡最接近實際條件（適用 simulated/leachable study）</td>
+                </tr>
+                <tr>
+                    <td><strong>Parameters to Modify 可調整參數</strong></td>
+                    <td>
+                        Time（時間）<br>
+                        Temperature（溫度）<br>
+                        Solvent composition — pH / Polarity / Ionic strength / Surfactant concentration / Aqueous:organic ratio（溶劑組成：pH / 極性 / 離子強度 / 界面活性劑濃度 / 水性-有機比例）
+                    </td>
+                    <td>各參數需系統性優化。時間優化（time optimization）應對每種基本材料至少進行一次，以確認萃取達到平衡（plateau）。pH 選擇需涵蓋製劑的 pH 範圍，確保涵蓋極性與非極性化合物的萃取</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section 5A Summary</h3>
+    <ul>
+        <li><strong>E&amp;L 定義：</strong>Extractables 為實驗室強制條件下萃出的化合物（上界）；Leachables 為實際使用中遷移至製劑的化合物（真實暴露）——後者是前者的子集合。</li>
+        <li><strong>針筒管製造四步驟的 E&amp;L 風險：</strong>切割（低）→ 成型（高，鎢殘留、熱改表面）→ 針頭組裝（中，黏著劑）→ 清洗矽化（矽油遷移）。</li>
+        <li><strong>滅菌方法影響 E&amp;L 特性：</strong>EO 殘留（需符合 ISO 10993-7 限制）、輻射分解產物（radiolysis）、熱揮發損失——研究樣品必須與預期使用條件一致。</li>
+        <li><strong>主要 E&amp;L 來源：</strong>玻璃（金屬離子、pH 影響）與彈性體（固化劑、抗氧化劑、增塑劑及其降解產物）為 PFS 主要來源。</li>
+        <li><strong>三層萃取研究：</strong>Controlled（強化條件識別）→ Simulated（模擬製劑篩選）→ Leachables（實際製劑量化），設計邏輯與清潔驗證 coupon study 一致。</li>
+        <li><strong>供應商數據補充但不取代：</strong>藥廠對自身製劑的相容性研究負有最終責任，不能依賴供應商 E&amp;L 數據包直接上市申請。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>

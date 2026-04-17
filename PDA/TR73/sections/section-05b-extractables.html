@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR73 - Section 5 (Part B): Extractables and Leachables Evaluation</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== CUSTOM: CCI comparison table ===== */
+.cci-table-wrapper {
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+.cci-table-wrapper table {
+    min-width: 900px;
+    font-size: 0.82rem;
+}
+.cci-table-wrapper th {
+    font-size: 0.8rem;
+    position: sticky;
+    top: 0;
+}
+.cci-table-wrapper td {
+    vertical-align: top;
+    padding: 0.5rem 0.6rem;
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 5: Extractables and Leachables Evaluation (Part B)</h1>
+    <div class="subtitle">萃取物與浸出物評估（下）：數據評估、閾值安全評估與結論</div>
+    <div class="page-info">PDA Technical Report No. 73: Prefilled Syringes | p31 - p33 (PDF p38 - p40)</div>
+</div>
+
+<div class="main-content">
+
+<!-- TOP-LEVEL SECTION TITLE -->
+<div class="section-title"><strong>5.0 Extractables and Leachables Evaluation 萃取物與浸出物評估 (Part B)</strong></div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標（下篇）</h3>
+    <ul>
+        <li>了解萃取物研究中半定量評估的方法適用性要求（5.6節）</li>
+        <li>掌握浸出物識別的分類架構：unknown、tentative、confirmed（5.6節）</li>
+        <li>理解 AET（Analytical Evaluation Threshold）的定義及其與 ICH Q3D 元素雜質閾值框架的對應關係（5.7節）</li>
+        <li>區分三類化合物對應的三個閾值層級，並理解 SCT 與 TTC 的概念連結（5.7節）</li>
+        <li>掌握完整 E&amp;L 評估結論的要素，及持續製程驗證在 E&amp;L 管理中的應用（5.8節）</li>
+    </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- 5.6 DATA EVALUATION -->
+<!-- ============================================================ -->
+<div class="section-title"><strong>5.6 Data Evaluation 數據評估</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>For <span class="key-term">extractables studies</span>, a semiquantitative evaluation of substances compared to suitable internal reference substances or relative response factors is considered appropriate. Even so, for each analytical technique, <span class="key-term">method suitability tests</span> should be conducted during the analysis using a suitable mix of test substances (e.g., stabilizers, antioxidants, filling materials, and element standards). Even for screening studies, an analysis of appropriate spiking samples is recommended to confirm method performance in the given sample matrix.</p>
+
+        <p>For evaluation of <span class="key-term">leachable substances</span>, (e.g., long-term exposure studies), methods should be developed and validated according to suitable guidelines or compendia, such as ICH Q2 (R1). The current recommendation is to pay particular attention to product and method interference, especially during leachable determinations.</p>
+
+        <p>Additional leachable substances may also be identified that were not detected during extractables studies. This may be due to an interaction of leached substances with components of the pharmaceutical matrix (e.g., oxidation/reduction processes, degradation, or formation of <span class="key-term">drug-extractable complexes</span>). The structure elucidation of such interaction products can sometimes be difficult. Since the compound structure of these substances is sometimes difficult to identify, a <span class="key-term">threshold approach</span> (Section 5.7) should be considered to balance resource requirements in a risk-based approach to compound identification.</p>
+
+        <p>The use of <span class="key-term">mass spectrometry (MS)</span> instrumentation with high resolution, different ionization techniques (e.g., chemical or electrospray ionization), or capability to perform multiple MS experiments is sometimes helpful for identification challenges. For example, signals with low molecular masses are often connected to oxidation of polymer additives, such as antioxidants [e.g., BHT or Tris (2,4-di-tert-butylphenyl) phosphite]. In some cases, adequate analytical reference materials for substances like these are not commercially available. If reference materials are unavailable, then consider using a component with a similar structure (e.g., original antioxidant) or additional breakdown products to quantify the leachable substances.</p>
+
+        <p>If it is not possible to identify the compound, then it is suggested to report MS spectra or other important facts, such as UV/visible spectrometry data (if available). In addition, it is possible to report the chemical substance class of an unknown signal to the extent possible through MS interpretation. A classification of extracted compounds can be proposed based on the level of knowledge collected from the analytical work; compounds can be classified as <span class="key-term">unknown</span>, <span class="key-term">tentative</span>, or <span class="key-term">confirmed</span> structures.</p>
+
+        <p>Once leachable substances are identified and quantified, the impact of the leachable substance(s) on the drug molecule must be evaluated. This can be done on an overall basis through long-term stability studies using the PFS components as they are intended to be used. Furthermore, it is possible for leachable substances to interact with the drug molecules in such a way as to cause the drug molecules to <span class="key-term">oxidize</span>, <span class="key-term">aggregate</span>, or even form <span class="key-term">drug-leachable adducts</span>, all of which have the potential to cause an immunogenic response.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>半定量評估 (Semiquantitative Evaluation):</strong> 萃取物研究不要求每個峰都有對照標準品精確定量，而是以相對響應因子（relative response factors）或內標進行估算。這在「偵測全貌」階段已足夠，降低了分析資源投入。</p>
+            <p><strong>浸出物識別三階層：</strong></p>
+            <ul>
+                <li><strong>Unknown（未知）：</strong> 無法確認結構，僅知 MS 特徵或化學物質類別</li>
+                <li><strong>Tentative（暫定）：</strong> 有合理推測但缺乏標準品確認</li>
+                <li><strong>Confirmed（確認）：</strong> 有對照標準品與保留時間雙重確認</li>
+            </ul>
+            <p>這三個層級決定了後續毒理評估的路徑與優先順序。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>把浸出物分析想像成<strong>犯罪現場鑑識</strong>：</p>
+            <ul>
+                <li>萃取物研究 = 採集所有可能的嫌疑人（controlled conditions，條件誇張但全面）</li>
+                <li>MS 偵測 = 採集指紋（偵測訊號）</li>
+                <li>標準品比對 = 比對指紋資料庫（confirmed）</li>
+                <li>無標準品時 = 嫌疑人描述（tentative/unknown）</li>
+            </ul>
+            <p>沒有找到完整身分的化合物，並不等於安全，而是必須用閾值方法（Section 5.7）決定是否需要進一步調查。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>浸出物可出現萃取物未偵測到的新物質！</strong> 原因是藥品基質的化學環境可誘發氧化、降解或藥物-浸出物加合物（drug-leachable adducts）生成。這類交互作用產物若引發免疫原性反應，將是生物製劑最嚴重的安全風險之一。</p>
+            <p>方法驗證須符合 ICH Q2(R1)，特別注意<strong>藥品基質干擾</strong>（product &amp; method interference）——生物製劑中蛋白質本身可能遮蔽或放大訊號。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用 Practical Application</h4>
+            <p>在 Amaran 的 CDMO 情境中，當客戶提供彈性體組件的供應商萃取物資料包時，應確認：</p>
+            <ul>
+                <li>方法適用性試驗（method suitability）是否在代表性基質中執行？</li>
+                <li>報告中每個峰的識別層級是 unknown / tentative / confirmed？</li>
+                <li>是否有 drug-leachable adduct 的評估（尤其對抗體類藥物）？</li>
+            </ul>
+            <p>這些是 regulatory reviewer 必問的三個問題。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼萃取物研究可接受半定量，而浸出物研究需要完整方法驗證（ICH Q2(R1)）？</li>
+                <li>若某浸出物為 "tentative" 識別，且濃度高於閾值，下一步應如何處理？</li>
+                <li>drug-leachable adduct 對蛋白質藥物的潛在免疫原性風險機轉是什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 5.7 THRESHOLD EVALUATION -->
+<!-- ============================================================ -->
+<div class="section-title"><strong>5.7 Threshold Evaluation 閾值評估</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>In 2006, the <span class="key-term">Product Quality Research Institute (PQRI)</span> working group developed the threshold concept for safety considerations of extractables and leachable compounds for the primary packaging of orally inhaled and nasal drug products. Subsequently, a new PQRI working group, the <span class="key-term">Parenteral and Ophthalmic Drug Products (PODP)</span> Leachables and Extractables Working Group was formed to extrapolate these conclusions to the packaging/delivery systems of parenteral and ophthalmic drug product applications. Although the PQRI-PODP toxicology team's recommendations have not yet been finalized, the group's intermediate recommendations were published in the PDA Journal of Pharmaceutical Science and Technology.</p>
+
+        <p>The potential approach for the threshold evaluation of the extractables and leachable evaluation for a PFS system (Appendix IV) is based on the preliminary conclusions of the PQRI-PODP team. However, the following should not be construed as an endorsement by regulatory agencies, and each manufacturer must apply a sound scientific approach (including expertise from a toxicologist) to evaluate leachables in their products to ensure appropriate thresholds are established prior to seeking regulatory approval.</p>
+
+        <p>There are two different levels in which to use the threshold approach to evaluate the safety qualification of pharmaceutical containers and closures. First, a threshold evaluation of the analytical results of a <span class="key-term">controlled extraction study</span> will facilitate the safety qualification of the constituent parts of the C/C system. Extractables studies on different parts of a PFS often result in long lists of impurities present in a material used in the manufacture of a packaging component. The identification status of a compound can range from confirmed identity with a high level of confidence to only tentative identification and some remaining unknowns. Applying the threshold approach to the results of a controlled extraction study also helps determine the subsequent steps to take in the leachable study (e.g., target leachables to study, additional identification efforts to make, and concentration ranges to consider when performing quantitative leachable studies).</p>
+
+        <p>Second, applying the threshold approach to the results of a <span class="key-term">leachable study</span> could substantially reduce the level of effort in the leachable risk evaluation; leachable compounds present at less than their respective thresholds may not require any further individual safety assessment. Only the leachable compounds present at a concentration level that is higher than their respective threshold may need to be considered for further chemical and risk assessment.</p>
+
+        <p>For compounds that have been identified, the PQRI-PODP has defined in its preliminary conclusions three different classes of compounds with three different associated threshold levels outlined in Appendix IV. These three classes of compounds can be converted into <span class="key-term">analytical evaluation thresholds (AETs)</span> that allow direct assessment of analytical results in relation to their respective toxicological thresholds. The <span class="key-term">AET</span> is the threshold at or above which a particular extractable and/or leachable should be identified, quantified, and reported for further toxicological assessment.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>閾值評估的兩個應用層面：</strong></p>
+            <ul>
+                <li><strong>第一層（萃取物研究）：</strong> 利用閾值篩選出需要進一步識別和毒理評估的化合物，減少不必要的詳細鑑定工作</li>
+                <li><strong>第二層（浸出物研究）：</strong> 低於閾值的浸出物無需個別毒理評估，大幅降低評估工作量</li>
+            </ul>
+            <p><strong>AET（Analytical Evaluation Threshold，分析評估閾值）：</strong> 將毒理閾值轉換為可直接比對分析數據的濃度限值。≥AET 的化合物必須被識別、定量並提交毒理評估。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy — AET 與 ICH Q3D 的框架對比</h4>
+            <p>AET 的設計邏輯與 <strong>ICH Q3D 元素雜質</strong>（Elemental Impurities）閾值框架高度相似：</p>
+            <ul>
+                <li>ICH Q3D 為每種元素（如鉛、鎘、鎳）設定 <strong>PDE（Permitted Daily Exposure）</strong>，再由給藥量換算出製劑中的濃度限值（J3 值）</li>
+                <li>AET 同理：從 PQRI-PODP 的毒理閾值出發 → 除以每日劑量與暴露體積 → 得到可直接比對 LC/GC 數據的分析濃度限值</li>
+            </ul>
+            <p>兩者都是「從患者安全出發，反推至分析方法的靈敏度要求」的風險基礎框架。</p>
+            <p>而 <strong>SCT（Safety Concern Threshold，安全關注閾值）</strong> 的概念則類似 <strong>TTC（Threshold of Toxicological Concern，毒理關注閾值）</strong>——即在缺乏化合物特異性毒理資料時，以一個保守的通用暴露值作為可接受的安全下限，對於低於該閾值的未知化合物，假設其不構成安全顧慮。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>PQRI-PODP 結論尚未最終確定！</strong> TR73（2015）出版時，PODP 的閾值建議仍屬 intermediate（中期）建議，尚未獲得 FDA/EMA 正式背書。製藥廠商必須自行建立科學合理的閾值方案，並納入毒理學專家意見，不能直接引用 PQRI-PODP 數值作為法規依據。</p>
+            <p>三類化合物對應的三個閾值層級詳見原報告 Appendix IV；AET 的計算還需考慮給藥途徑、劑量頻率與暴露容積，方法學計算見 Appendix IV。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與概念 Formula / Framework</h4>
+            <pre>
+PQRI-PODP 閾值分類框架（概念示意）：
+
+Class 1 (已識別，有毒理資料)
+  → 以化合物特定 TDI / ADI 計算個別 AET
+
+Class 2 (已識別，無充分毒理資料)
+  → 以 SCT（類似 TTC）作為安全下限，計算 AET
+
+Class 3 (未識別 / Unknown)
+  → 以最保守閾值處理，或要求進一步識別
+
+AET 概念換算：
+  AET (μg/mL) = 毒理閾值 (μg/day) ÷ 每日給藥量 (mL/day)
+
+類比 ICH Q3D：
+  J3 (μg/g) = PDE (μg/day) ÷ 最大日劑量 (g/day)
+            </pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若某浸出物濃度低於其 AET，是否意味著絕對安全？請說明閾值方法的局限性。</li>
+                <li>AET 和 ICH Q3D 的 PDE/J3 框架在邏輯上有何相似之處？有何差異（化合物種類、資料來源）？</li>
+                <li>SCT 與 TTC 都是「保守通用限值」，在什麼情況下需要用化合物特異性毒理資料取代？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 5.8 CONCLUSION -->
+<!-- ============================================================ -->
+<div class="section-title"><strong>5.8 Conclusion 結論</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Extractable and leachable substances in the C/C system must be evaluated to provide an acceptable level of safety to the patient. This can be determined once the leachable substances have been identified and quantified, the safety of the compounds has been established, and the impact on drug product quality and safety has been evaluated (via regular stability studies). If it is determined that lower levels of leachable substances are required, then the drug company may ask its vendor for another component or work with the vendor to develop a process that has decreased levels of the undesirable leachable substance.</p>
+
+        <p>It must be noted, however, that a change in a component or manufacturing process will necessitate additional assessments to ensure that the desired outcome (i.e., decreased quantities of leachable substances or of a particular substance) has been achieved. When materials or processes are changed, it is necessary to ensure that no additional, unintended leachable substances have been introduced because of that change.</p>
+
+        <p><span class="key-term">Leachables testing</span> should be conducted along with drug product <span class="key-term">stability testing</span>. Periodic review of the extractables/leachables package is suggested due to changes in manufacturing processes and analytical technology. The <span class="key-term">continued process validation</span> concept may be integrated into this approach and aligned with applicable regulatory guidance.</p>
+
+        <p>The goal of this section was to provide a description of how the extractables and leachables profile can be established for a PFS, plunger stopper, needle shield, and assembled PFS syringe device. This effort is required for a drug company to demonstrate the appropriate controls and knowledge of the C/C system expected by regulatory agencies.</p>
+
+        <p>Even after the initial evaluation of the extractable and leachable substances profile has been completed, the drug company must maintain a system of <span class="key-term">change controls</span> with the component vendor and drug product manufacturing site to ensure that all changes to the manufacturing and/or processing steps are evaluated for their potential to affect the extractable and leachable substances.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>E&amp;L 評估的完整閉環必須包含三要素：</strong></p>
+            <ol>
+                <li><strong>識別與定量（Identify &amp; Quantify）：</strong> 確認所有相關浸出物的化學身分與濃度</li>
+                <li><strong>安全性建立（Safety Establishment）：</strong> 透過閾值或化合物特異性毒理評估確認患者安全</li>
+                <li><strong>品質影響評估（Quality Impact）：</strong> 透過長期穩定性試驗確認浸出物不影響藥品有效性與 CQA</li>
+            </ol>
+            <p><strong>變更管理是 E&amp;L 管理的核心陷阱：</strong> 任何容器/供應商/製程變更，都可能引入新的浸出物或改變既有浸出物的濃度水準。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>E&amp;L 的持續管理就像<strong>餐廳食材供應商管理</strong>：</p>
+            <ul>
+                <li>初次評估 = 對每種食材做完整食安檢測（extractables 全面偵測）</li>
+                <li>穩定性試驗 = 長期追蹤料理後的安全性（leachables in real formulation）</li>
+                <li>供應商換原料 = 必須重新評估（change control → reassessment）</li>
+                <li>定期審查 = 食安標準更新時（新技術、新法規 → periodic review）</li>
+            </ul>
+            <p>在餐廳無法「假設原料沒變」；在 CDMO，供應商的任何製程微調都必須透過<strong>變更管理系統</strong>觸發重新評估。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>Continued Process Validation（持續製程驗證）整合 E&amp;L：</strong> 這是 TR73（2015）對後續法規趨勢的前瞻性指引。FDA 2011 Process Validation Guidance 將驗證從一次性活動擴展為持續監控（Stage 3：Continued Process Verification）。E&amp;L 的定期審查正好可以整合進此框架——並非僅在上市前執行一次，而是商業生命週期中的<strong>持續品質保證活動</strong>。</p>
+            <p>這與 ICH Q10 藥品品質系統（PQS）的精神完全一致：<em>Change Management + Continual Improvement</em>。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用 Practical Application</h4>
+            <p>在 Amaran 的 CDMO 作業中，E&amp;L 管理的操作要點：</p>
+            <ul>
+                <li><strong>供應商審計（Vendor Audit）：</strong> 建立供應商變更通知協議（Change Notification Agreement），確保任何配方或製程微調即時觸發 E&amp;L 重評估</li>
+                <li><strong>穩定性方案整合：</strong> 在客戶穩定性測試計畫中明確納入浸出物測試時間點（通常 T=0, 6M, 12M, 24M, 36M）</li>
+                <li><strong>E&amp;L Package 週期審查：</strong> 建議每 3 年或有重大製程/法規變更時進行一次全面審查</li>
+                <li><strong>GMP 文件控制：</strong> E&amp;L 評估報告屬受控文件，任何更新須依變更控制程序執行，並在批次記錄中追溯</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>當彈性體供應商從 Formulation A 換至 Formulation B（宣稱等效），E&amp;L 評估是否需要重頭做？為什麼？</li>
+                <li>浸出物測試與穩定性測試整合的好處是什麼？各有哪些局限性？</li>
+                <li>「持續製程驗證」概念如何具體應用於 E&amp;L 的商業生命週期管理？請設計一個簡單的監控計畫框架。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION SUMMARY -->
+<!-- ============================================================ -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary (5.6–5.8)</h3>
+    <ul>
+        <li><strong>5.6 數據評估：</strong> 萃取物可半定量；浸出物需 ICH Q2(R1) 完整驗證；化合物識別分三層（unknown / tentative / confirmed）；浸出物可能在藥品基質中形成新物種（drug-leachable adducts），需評估免疫原性風險</li>
+        <li><strong>5.7 閾值評估：</strong> PQRI-PODP 建立三類閾值框架（尚非正式法規）；AET 是毒理閾值的分析轉換值，邏輯類似 ICH Q3D 元素雜質 PDE 框架；SCT 類似 TTC，為缺乏特定毒理資料時的保守通用下限；閾值應用可大幅減少不必要的個別毒理評估工作</li>
+        <li><strong>5.8 結論：</strong> 完整 E&amp;L 評估需涵蓋識別、定量、安全評估、品質影響四大要素；變更管理是 E&amp;L 持續合規的核心機制；E&amp;L 定期審查可整合至持續製程驗證（Continued Process Validation）框架</li>
+        <li><strong>監管核心：</strong> E&amp;L 不是一次性上市前活動，而是貫穿產品生命週期的持續責任，體現 ICH Q10 持續改善精神</li>
+    </ul>
+</div>
+
+</div><!-- /.main-content -->
+
+</body>
+</html>

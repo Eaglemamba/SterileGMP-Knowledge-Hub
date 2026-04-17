@@ -1,14 +1,498 @@
-# PDA Technical Report No. 73 (2015): Prefilled Syringes (Sections 12-18, p81-109)
+# PDA Technical Report No. 73 (2015): Prefilled Syringe User Requirements for Biotechnology Applications
 
-## Section 12: Container Closure Integrity (p74-p76)
+## Section 1: Introduction (p1-p2)
 
-# Section 12: Container Closure Integrity (CCI) — Continued
+# Section 1 Introduction
+
+    
+
+    
+
+PDA Technical Report No. 73: Prefilled Syringes | p1 - p2
+
+    
+
+### 
+
+    
+
+        
+
+        
+
+        
+
+        
+
+        
 
     
 
     
 
-PDA Technical Report No. 73: Prefilled Syringes | p74 - p76
+        
+
+        
+
+Since the mid-2000's, a large number of subcutaneously injected biotechnology drug products have been packaged in prefilled syringes (PFSs) because of significant benefits compared to vials or ampules. PFSs reduce medical dosing errors and the risk of microbial contamination by decreasing the number of necessary manipulations prior to injection, and they improve compliance due to ease of use. In addition to the patient benefits, PFSs often have lower overfill regulatory requirements than vials, thereby reducing product waste.
+
+        
+
+### 1.1 Purpose/Scope
+
+        
+
+The purpose of this technical report is to present a discussion of requirements for the 1 mL long glass PFS for biotechnology applications (Figure 1.1-1). Topics covered are material selection and evaluation for suitability, syringe preparation and handling (including human factors), and drug product compatibility (physical and chemical) with the syringe materials and mode of delivery. Plastic syringes and ancillary devices, such as autoinjectors, are not within scope.
+
+        
+
+The terms "end user," "customer," and "user" are used interchangeably throughout this report. However, the definitions of these terms change according to the topic under discussion as the report progresses through the product life cycle of the PFS. For example, during development, the end user or target population may be the target patient, while the customer or user during production and delivery may be the supplier or manufacturer. Additionally, while this technical report provides more specific information related to the U.S. and European regions, requirements for different regulatory agency jurisdictions may vary, and applicants and manufacturers should be aware of the proper qualification and validation expectations for the intended market.
+
+        
+
+While the focus of this report is on 1 mL long glass PFSs for biotechnology (large molecule) drug products, the concepts presented may be applied to other products and applications (e.g., small molecule drug products, luer, luer-lock, and plastic syringes). Every attempt has been made to provide comprehensive content, but some particular techniques and technologies may not be included.
+
+        
+
+The task force that prepared this report consisted of members representing global companies and representatives from regulatory bodies to ensure a consensus on the methods, terminology, and practices described. Experts in PFSs and PFS manufacturing performed technical reviews.
+
+        
+
+The information in this technical report appears in the general order of operations for developing and manufacturing 1 mL long glass PFSs. Throughout the report, the chevron diagram (below) serves as a guide for the reader and reflects the focus of each chapter.
+
+        
+
+The glossary contains a list of definitions and acronyms used in this report. When available, same or similar definitions to those included in FDA or ICH guidelines are used.
+
+        
+
+### Figure 1.1-1: Schematic Drawing of a PFS
+
+        
+
+A typical 1 mL long staked needle syringe consists of a Type I borosilicate glass barrel. For a staked needle syringe, a stainless-steel needle is affixed to the syringe cone with adhesive, and the needle is embedded in an elastomeric needle shield. The inside of the syringe is siliconized to allow the plunger to be easily depressed during administration of the injectable.
+
+## Section 2: Glossary of Terms (p3-p5)
+
+# Section 2: Glossary of Terms
+
+    
+
+    
+
+PDA Technical Report No. 73: Prefilled Syringes | p3 - p5 (PDF p10–p12)
+
+    
+
+### 
+
+    
+
+        
+
+        
+
+        
+
+        
+
+        
+
+    
+
+    
+
+        
+
+        
+
+The following terms are used throughout PDA Technical Report No. 73 in the context of prefilled syringes (PFS), their components, assembly, and associated testing and human factors considerations. Definitions reflect usage as applied in this report. See Table 2.0-1 below for the complete glossary.
+
+## Section 3: PFS Development and Licensing (p6-p11)
+
+# Section 3: PFS Development and Licensing
+
+    
+
+    
+
+PDA Technical Report No. 73: Prefilled Syringes | p6 - p11 (PDF p13-p18)
+
+    
+
+### 
+
+    
+
+        
+
+        
+
+        
+
+        
+
+        
+
+    
+
+    
+
+        
+
+        
+
+This section discusses considerations for planning the development of the PFS and eventual marketing approval.
+
+        
+
+A developer of a PFS must define its purpose, evaluate the supplier, and adhere to regulatory and marketing requirements. For example, in the United States, a finished PFS is considered a combination product and regulated by the Center for Drug Evaluation and Research (CDER), the Center for Biologics Evaluation and Research (CBER), or the Center for Device and Radiological Health (CDRH) of the U.S. FDA, depending on its primary/principal mode of action (PMOA). Based on the same principle of PMOA, products in the European Union (EU) that incorporate or administer a drug may be regulated as either medical devices or medicinal products as the term combination product per se does not exist yet in EU regulations. A container/closure (C/C) system, such as a PFS used in the packaging of a medicinal product for human use, is approved as part of the medicinal product application.
+
+## Section 4: PFS Human Factors Engineering (p12-p23)
+
+# Section 4 (Part A): PFS Human Factors Engineering
+
+    
+
+    
+
+PDA Technical Report No. 73 (2015) | PDF p19–p22 (Print p12–p15)
+
+    
+
+        
+
+Human factors engineering (HFE) considers a product's design, intended uses, users, and use environments, which can affect the safe and effective use of a product. The intent of HFE is to improve the quality of a product's user interface design to eliminate or minimize errors during use.
+
+        
+
+This section describes best practices related to the application of HFE and use-related risk management to the development of PFSs, including:
+
+        
+
+            
+- key principles of HFE as they apply to PFSs (intended to supplement and not to replace the current health authority guidance and approaches described within recognized consensus standards)
+
+            
+- key considerations in understanding the use of PFSs
+
+            
+- typical areas of usability issues (known issues) to consider in the development of PFSs
+
+        
+
+        
+
+            
+            
+
+Figure 4.0: TR73 section relationship diagram — Section 4.0 Human Factors sits alongside 5.0 E&L, 3.0 Development & Licensing, and feeds into downstream sections (glass barrel, needle, siliconization, etc.)
+
+# Section 4 (Part B): PFS Human Factors Engineering
+
+    
+
+PDA Technical Report No. 73 (2015)
+
+    
+
+Subsections 4.5–4.9 | PDF p23–p30 (Print p16–p23)
+
+    
+
+        
+
+To enable the product design process, user requirements are translated into engineering design requirements. Design requirements are comprehensive, clear, quantifiable, and verifiable. For example, a user requirement might state, "The user needs to be able to remove the needle cap." This might correspond to a specific design input requirement specifying the use of a suitable cap removal force or cap/syringe geometry. Design requirements related to the user-device interface may be derived from a range of sources, including anthropometric size and strength data or product-specific industry guidelines and standards.
+
+        
+
+Once a design prototype has been developed, requirements may be further refined through a process of iterative usability evaluation and risk analysis. In most cases, such evaluations should include early formative testing with users (Section 4.7) in which the suitability of the design input requirement may be assessed and adapted as necessary.
+
+## Section 5: Extractables and Leachables Evaluation (p24-p33)
+
+# Section 5 (Part A): Extractables and Leachables Evaluation
+
+    
+
+    
+
+PDA Technical Report No. 73 (2015) | PDF p31–p37 (Print p24–p30)
+
+    
+
+### Contents (Part A)
+
+    
+
+    
+
+    
+
+        
+
+The characterization of extractables and leachables presents an important component in drug product development. Extractables are compounds that are forced out of a respective material or component under laboratory experimental conditions (i.e., high extraction power of the solvent, increased extraction temperature, but shorter exposure time than during normal use). Leachables are those compounds that actually migrate from the respective material or component (e.g., the pharmaceutical C/C system) into the drug product formulation during its intended storage and use conditions.
+
+        
+
+Typically, leachables represent a subset of the amount of extractables (3). The following questions are essential to consider in the course of characterization:
+
+        
+
+            
+- Which compounds can migrate out of the C/C materials (extractables)?
+
+            
+- Which compounds and how much of each compound do in fact migrate into the drug product solution (leachables)?
+
+            
+- What is the impact of these compounds on patient safety?
+
+            
+- Do any of these compounds have a direct critical impact on the quality of the drug product?
+
+        
+
+        
+
+Resolution of these questions requires knowledge of materials science, the component manufacturing process, analytical chemistry, and drug product manufacturing processes. The quantity and frequency of dosing are critical factors required for a thorough, expert review of the quality and safety implications, and requires a toxicologist to provide input into the evaluation.
+
+        
+
+This section describes considerations for evaluating extractables and leachables that may migrate from a PFS. Although this section may provide useful information to the pharmaceutical manufacturer, this technical report is not a regulatory guidance document, and manufacturers should be prepared to justify their evaluation approach to regulatory reviewers/inspectors.
+
+# Section 5: Extractables and Leachables Evaluation (Part B)
+
+    
+
+    
+
+PDA Technical Report No. 73: Prefilled Syringes | p31 - p33 (PDF p38 - p40)
+
+    
+
+        
+
+For extractables studies, a semiquantitative evaluation of substances compared to suitable internal reference substances or relative response factors is considered appropriate. Even so, for each analytical technique, method suitability tests should be conducted during the analysis using a suitable mix of test substances (e.g., stabilizers, antioxidants, filling materials, and element standards). Even for screening studies, an analysis of appropriate spiking samples is recommended to confirm method performance in the given sample matrix.
+
+        
+
+For evaluation of leachable substances, (e.g., long-term exposure studies), methods should be developed and validated according to suitable guidelines or compendia, such as ICH Q2 (R1). The current recommendation is to pay particular attention to product and method interference, especially during leachable determinations.
+
+        
+
+Additional leachable substances may also be identified that were not detected during extractables studies. This may be due to an interaction of leached substances with components of the pharmaceutical matrix (e.g., oxidation/reduction processes, degradation, or formation of drug-extractable complexes). The structure elucidation of such interaction products can sometimes be difficult. Since the compound structure of these substances is sometimes difficult to identify, a threshold approach (Section 5.7) should be considered to balance resource requirements in a risk-based approach to compound identification.
+
+        
+
+The use of mass spectrometry (MS) instrumentation with high resolution, different ionization techniques (e.g., chemical or electrospray ionization), or capability to perform multiple MS experiments is sometimes helpful for identification challenges. For example, signals with low molecular masses are often connected to oxidation of polymer additives, such as antioxidants [e.g., BHT or Tris (2,4-di-tert-butylphenyl) phosphite]. In some cases, adequate analytical reference materials for substances like these are not commercially available. If reference materials are unavailable, then consider using a component with a similar structure (e.g., original antioxidant) or additional breakdown products to quantify the leachable substances.
+
+        
+
+If it is not possible to identify the compound, then it is suggested to report MS spectra or other important facts, such as UV/visible spectrometry data (if available). In addition, it is possible to report the chemical substance class of an unknown signal to the extent possible through MS interpretation. A classification of extracted compounds can be proposed based on the level of knowledge collected from the analytical work; compounds can be classified as unknown, tentative, or confirmed structures.
+
+        
+
+Once leachable substances are identified and quantified, the impact of the leachable substance(s) on the drug molecule must be evaluated. This can be done on an overall basis through long-term stability studies using the PFS components as they are intended to be used. Furthermore, it is possible for leachable substances to interact with the drug molecules in such a way as to cause the drug molecules to oxidize, aggregate, or even form drug-leachable adducts, all of which have the potential to cause an immunogenic response.
+
+## Section 6: Glass Barrel Requirements (p34-p36)
+
+# Section 6: Glass Barrel Requirements
+
+    
+
+    
+
+PDA Technical Report No. 73: Prefilled Syringes | p34 - p36
+
+    
+
+        
+
+The dimensions of a 1 mL long syringe are defined in ISO 11040-4, Prefilled Syringes, but may be modified as necessary by the manufacturer or customer. Variations in dimensions are not uncommon since most syringes are used for "platform" purposes and originally designed for a specific use. Different areas of the syringe, including the finger flange, barrel, shoulder, and cone are defined, but can be changed due to handling requirements for use and overall customer requirements. The syringe can be used by manual application or device application (using autoinjectors, safety devices, or other devices).
+
+        
+
+In most cases, the barrel dimensions are as defined in ISO 11040-4. Changes are not common in these dimensions because most suppliers of glass tubes use this dimension of tubing only for their product. The dimension with the greatest influence is the inner diameter. This parameter affects the filling height, dose accuracy, graduation or dose markings, and dead or hold-up volumes.
+
+        
+
+ISO 11040-4 can be used as a guideline to define the dimensions; the design of the finger flange and the diameter of the bore inside the cone (related to the use of the specified needle type) should be aligned between customer and manufacturer.
+
+## Section 7: Needle Requirements (p37-p41)
+
+# Section 7: Needle Requirements
+
+    
+
+    
+
+PDA Technical Report No. 73: Prefilled Syringes | p37 - p41 (PDF p44-p48)
+
+    
+
+        
+
+The staked needle used in a PFS for a biotechnology product is made from AISI 304 or AISI 304L stainless steel and covered with a needle shield (Figure 7.0-1). The needle is manufactured from an elongated stainless steel tube consistent with applicable requirements in ISO 7864, Sterile Hypodermic Needles for Single Use, ISO 11608-2, Needle-Based Injection Systems for Medical Use—Requirements and Test Methods, and ISO 9626, Stainless Steel Needle Tubing for the Manufacture of Medical Devices.
+
+        
+
+The tip is made by grinding the tube, and the bevels are made by changing the angles of the needle to the equipment. The bevel is the slanted surface of the needle tip and can have varying numbers and angularities of tip facets (Figure 7.1.1-1). The needle tip is beveled to create a sharp, pointed tip, which facilitates skin penetration.
+
+        
+
+The bonding of the needles in the finished syringe barrels is performed in suitable assembling automats. The needles are affixed by a UV-cured adhesive.
+
+        
+
+Factors to consider when selecting a needle for a 1 mL long PFS include:
+
+        
+
+            
+- minimizing injection site experiences or reactions (ISEs)
+
+            
+- needle material compatibility with drug product
+
+        
+
+        
+
+These factors are the topic of discussion for this section of the report.
+
+## Section 8: Needle-Shield Requirements (p42-p46)
+
+# Section 8: Needle-Shield Requirements
+
+    
+
+    
+
+PDA Technical Report No. 73: Prefilled Syringes | p42–p46 (PDF p49–p53)
+
+    
+
+        
+
+This section describes the functions, materials, and formulations used by manufacturers and suppliers to develop the needle shield.
+
+## Section 9: Cosmetic Imperfections (p47-p50)
+
+# Section 9: Cosmetic Imperfections
+
+    
+
+    
+
+PDA Technical Report No. 73: Prefilled Syringes | p47 - p50
+
+    
+
+        
+
+The focus of this section is on visual imperfections in unfilled glass syringes with staked needles and other components (i.e., needle shields, plunger stoppers, and plunger rods). Dimensional nonconformities, printing imperfections, and defects in packaging are out of scope for this section. Visual inspection to detect imperfections on filled glass syringes is described in Section 13.4.
+
+        
+
+Cosmetic imperfections in PFS components may increase the defect rate detected in the final visual inspection of the filled containers, so each component contributes to the overall cosmetic result of the filled syringe at the end. Imperfections not detected during the final inspection (i.e., imperfections with a direct impact on container integrity or drug integrity and delivery) may lead to severe issues in the market, including risk to the patient during use.
+
+        
+
+Each part of the process outlined in Figure 9.0-1 can create specific defects, but all processes can have a common list of identified and classified defects.
+
+        
+
+The PFS system can be divided into two subassembly parts:
+
+        
+
+            
+- **Primary components** in contact with the drug (glass barrel, plunger stopper, and tip closure)
+
+            
+- **Secondary components** (plunger rod, backstop, and safety system in the combination product) interacting with the primary components and providing complete functionality to the healthcare provider
+
+        
+
+        
+
+The defect evaluation list should be available and comprehensible to all stakeholders (manufacturers and suppliers). Different approaches to classify various imperfections exist, and companies should have the capability and applicable methods in place for inspection.
+
+        
+
+A final visual inspection should be included in the process to ensure adequate quality output at the completion of syringe manufacturing. Any defective syringes found will result in a nonconformance requiring root-cause investigations of the unexpected event.
+
+        
+
+As noted above, imperfections not detected during the final inspection may lead to severe issues in the market linked to risk to the patient during use. To minimize this risk, pharmaceutical companies and producers of PFSs should implement agreed-on processes and methods to minimize cosmetic imperfections.
+
+## Section 10: Siliconization (p51-p59)
+
+# Section 10: Siliconization
+
+    
+
+    
+
+PDA Technical Report No. 73: Prefilled Syringes | p51–p59 (PDF p58–p66)
+
+    
+
+        
+
+Major suppliers of glass syringes have advanced capabilities now to provide a wide variety of siliconization solutions for lubrication purposes. The reader is advised to work closely with the supplier to identify the appropriate solution. This section provides a collection of best practices for siliconization from industry leaders. Alternative methods for achieving lubrication and silicone oil-free systems are not discussed here.
+
+        
+
+Current standard glass syringe systems rely on lubrication for syringe functionality. Lubrication enables the plunger stopper to move in the glass barrel when the plunger is depressed. The standard method of lubrication is to apply (liquid) silicone oil to the plunger stopper and barrel. In some functional cases, the silicone oil layer acts as a barrier to prevent interactions or side reactions with the glass. In addition to the plunger stopper and barrel, the supplier lubricates the needle to facilitate needle insertion and retraction.
+
+        
+
+Overall, the goal of lubricating glass syringe systems is to apply the optimal quantity of oil without exposing the patient to unnecessary processing aids, and yet apply enough oil to guarantee process functionality throughout the product's shelf life. Additionally, potential interactions of silicone oil with rubber compounds and the drug product must be assessed as part of the stability and functional studies.
+
+## Section 11: Plunger Stopper Suitability (p60-p70)
+
+# Section 11 (Part A): Plunger Stopper Suitability
+
+    
+
+    
+
+PDA Technical Report No. 73 (2015) | PDF p67–p72 (Print p60–p65)
+
+    
+
+        
+
+After the syringe body is filled with the drug substance, the plunger stopper is inserted to complete the seal and provide the mechanism for dispensing the drug product. This chapter focuses on the design and selection of the plunger rod and plunger stopper combination.
+
+# Section 11 (Part B): Plunger Stopper Suitability
+
+    
+
+    
+
+PDA Technical Report No. 73 (2015) | PDF p73–p77 (Print p66–p70)
+
+    
+
+        
+
+The geometric design of the inner syringe shoulder area mainly defines the hold-up volume (or dead volume). However, it is possible for an optimized plunger-stopper design (light taper/cone instead of a flat top of the plunger stopper, as shown in Figure 11.5-1) to affect accurate delivery of the syringe contents by minimizing the hold-up volume.
+
+        
+
+Figure 11.5-1: Plunger Stopper with Lightly Tapered Tip — schematic available in printed TR73 report.
+
+## Section 12: Container Closure Integrity (p71-p76)
+
+# Section 12 Container Closure Integrity (CCI)
+
+    
+
+    
+
+PDA Technical Report No. 73: Prefilled Syringes | p71 - p76
 
     
 
