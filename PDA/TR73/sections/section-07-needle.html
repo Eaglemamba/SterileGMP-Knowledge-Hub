@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR73 - Section 7: Needle Requirements 針頭需求</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== CUSTOM: CCI comparison table ===== */
+.cci-table-wrapper {
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+.cci-table-wrapper table {
+    min-width: 900px;
+    font-size: 0.82rem;
+}
+.cci-table-wrapper th {
+    font-size: 0.8rem;
+    position: sticky;
+    top: 0;
+}
+.cci-table-wrapper td {
+    vertical-align: top;
+    padding: 0.5rem 0.6rem;
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 7: Needle Requirements 針頭需求</h1>
+    <div class="subtitle">注射針頭的幾何設計、潤滑、缺陷管控與藥品相容性</div>
+    <div class="page-info">PDA Technical Report No. 73: Prefilled Syringes | p37 - p41 (PDF p44-p48)</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解預充填注射器 (Prefilled Syringe, PFS) 針頭的材質規格與適用 ISO 標準（ISO 7864、ISO 11608-2、ISO 9626）</li>
+        <li>掌握影響注射部位體驗 (Injection Site Experience, ISE) 的針頭參數：幾何設計、潤滑、表面光滑度、缺陷</li>
+        <li>能夠解釋針頭規格（Gauge、壁厚、exposed length）與推注力、流速、疼痛感之間的取捨關係</li>
+        <li>了解矽油潤滑、製造缺陷（hook、軸向偏差）對 CCI 及患者安全的影響</li>
+        <li>認識針頭相關化合物（金屬離子、矽油、黏著劑、鎢）對藥品純度與相容性的風險</li>
+    </ul>
+</div>
+
+<!-- ==================== SECTION 7.0 INTRO ==================== -->
+<div class="section-title"><strong>7.0 Needle Requirements 針頭需求</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The <span class="key-term">staked needle</span> used in a PFS for a biotechnology product is made from <span class="key-term">AISI 304 or AISI 304L stainless steel</span> and covered with a needle shield (Figure 7.0-1). The needle is manufactured from an elongated stainless steel tube consistent with applicable requirements in <span class="key-term">ISO 7864</span>, Sterile Hypodermic Needles for Single Use, <span class="key-term">ISO 11608-2</span>, Needle-Based Injection Systems for Medical Use—Requirements and Test Methods, and <span class="key-term">ISO 9626</span>, Stainless Steel Needle Tubing for the Manufacture of Medical Devices.</p>
+        <p>The tip is made by grinding the tube, and the <span class="key-term">bevels</span> are made by changing the angles of the needle to the equipment. The bevel is the slanted surface of the needle tip and can have varying numbers and angularities of tip facets (Figure 7.1.1-1). The needle tip is beveled to create a sharp, pointed tip, which facilitates skin penetration.</p>
+        <p>The bonding of the needles in the finished syringe barrels is performed in suitable assembling automats. The needles are affixed by a <span class="key-term">UV-cured adhesive</span>.</p>
+        <p>Factors to consider when selecting a needle for a 1 mL long PFS include:</p>
+        <ul>
+            <li>minimizing injection site experiences or reactions (ISEs)</li>
+            <li>needle material compatibility with drug product</li>
+        </ul>
+        <p>These factors are the topic of discussion for this section of the report.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Staked Needle（固定式針頭）：</strong>針頭在出廠前即永久固定於注射筒桶身，不可拆卸，是生技藥品 PFS 的標準設計。與 Luer 接頭式針頭不同，staked needle 在組裝過程中以 UV 固化黏著劑黏合，確保針頭在運輸、儲存、使用全程的穩固性。</p>
+            <p><strong>AISI 304 / 304L：</strong>醫療級不銹鋼，304L 碳含量更低，焊接性更佳，耐蝕性更優，適用於直接接觸注射液的針管。</p>
+            <p><strong>Bevel（斜切面）：</strong>針尖的斜磨面。三斜面（three-bevel）或五斜面（five-bevel）設計直接影響穿刺力與患者疼痛感，是針頭設計的核心工藝參數。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>Staked needle 就像廚師刀的刀片——出廠時刀片已固定於刀柄，無法更換。UV 固化黏著劑相當於高強度環氧樹脂，確保針頭在推注壓力下不鬆動。Bevel 的研磨角度則如同刀刃的磨製角度：角度越銳利（如五斜面），切入阻力越小。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>針頭選型需同時考量兩個主軸：<strong>（1）最小化 ISE</strong>（注射體驗），<strong>（2）藥品相容性</strong>。這兩個因素貫穿整個 Section 7，在 Amaran 承接生技客戶的針頭規格評估時，兩者均需納入 Design History File。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼生技 PFS 選擇 AISI 304L 而非 304？碳含量差異對藥品相容性有何潛在意義？</li>
+                <li>UV 固化黏著劑固化不完全，對 CCI 與藥品相容性各有哪些風險？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION 7.1 ==================== -->
+<div class="section-title"><strong>7.1 Minimizing Injection Site Experiences 最小化注射部位體驗</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><span class="key-term">Injection site experiences (ISEs)</span> are characterized by pain, redness, or inflammation, and can affect the patient's adherence to a treatment regimen. As a result, many studies have focused on evaluating needle designs that could decrease ISEs.</p>
+        <p>Several parameters may play a role in ISEs, including:</p>
+        <ul>
+            <li>needle geometry</li>
+            <li>needle lubrication</li>
+            <li>needle surface smoothness</li>
+            <li>needle defects</li>
+        </ul>
+        <p>Sections 7.1.1, 7.1.2, and 7.1.3 provide a discussion of these parameters.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>ISE (Injection Site Experience)：</strong>注射後患者在注射部位的主觀與客觀反應，包含疼痛（pain）、紅腫（redness）、發炎（inflammation）。ISE 的嚴重程度直接影響患者對長期治療方案的依從性（adherence），是生技藥品臨床開發的重要 CQA 指標。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>ISE 就像抽血時針頭造成的瘀青——即使藥效完美，若每次注射都留下明顯疼痛感，患者可能自行停藥。對於需要每週或每月自我注射（self-injection）的慢性病生技藥品，ISE 管控是商業成功的關鍵因素，不只是品質問題。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>ISE 受四個參數交叉影響：幾何設計（§7.1.1）、潤滑（§7.1.2）、表面光滑度與缺陷（§7.1.3）。在 Amaran 接受客戶委託製造時，客戶的針頭規格書應明確涵蓋這四個面向的驗收標準。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>ISE 作為 CQA，應在 PFS 開發的哪個階段（Phase I/II/III）被正式量化？</li>
+                <li>若一個客戶在臨床階段發現 ISE 偏高，Amaran 作為 CDMO 可以從哪些針頭參數著手協助改善？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION 7.1.1 ==================== -->
+<div class="section-title"><strong>7.1.1 Needle Geometry 針頭幾何設計</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Injection needles are identified by their <span class="key-term">bevel</span>, outer diameter or gauge, and length. Needles using <span class="key-term">thin-walled technology</span> where the inner diameter of the needles is larger than that of standard needles are also available. This technology is included in ISO 11608-2 and allows patients to use smaller-diameter needles without a negative impact on flow rate, speed of injection, or penetration force.</p>
+        <p>Multiple studies in models and patients have shown a positive relationship between ISE, needle gauge and bevel, as well as a positive relationship between penetration force and pain.</p>
+        <p>Needles for 1 mL long PFSs typically have a <span class="key-term">three- or five-bevel tip</span> (Figure 7.1.1-1). Various studies have compared the designs of three- and five-bevel needles.</p>
+        <p>A number of factors determine needle diameter and length, including desired penetration length (route of administration), drug product formulation characteristics (e.g., pH and viscosity), and patient population. ISO 7864 and ISO 9626 cover needle dimensions and materials. The dimensions of most needles used for 1 mL long PFSs are <span class="key-term">27G 1/2 inch and 29G 1/2 inch</span>.</p>
+        <p>The abbreviations "27G" and "29G" describe the outer diameter of the needle. For example, a 27G needle has a nominal outside diameter of 0.40 mm, whereas a 29G needle has a nominal outside diameter of 0.33 mm. The outer diameter does not indicate the inside diameter of the needle.</p>
+        <p>In cases where the manufacturer selects a needle with dimensions that deviate from ISO standards to improve product performance, the manufacturer should demonstrate the needle's fitness for its intended use through <span class="key-term">design control activities</span>. The manufacturer should also identify designs that deviate from ISO standards in product designation and customer technical documentation.</p>
+        <p>The <span class="key-term">1/2 inch</span> in the needle descriptor refers to the exposed needle length or the part of the needle outside the needle channel (Figure 7.1.1-2). Half-inch-long needles are commonly used for subcutaneous application. However, needles of other lengths may also be available.</p>
+        <p>Needle diameter and length may affect the <span class="key-term">injectability</span> (ability to inject the product) of the syringe; injectability is mainly characterized by the time, pressure, and force required for completion of an injection at a constant flow.</p>
+        <p>A needle with a smaller outside diameter may require lower penetration force. Such a needle, however, may also result in longer injection times and higher extrusion forces. Therefore, the inner diameter of a needle or its wall thickness is a factor for consideration. Currently, some 27G needles have a larger inside diameter. A 27G normal-walled needle has a nominal inside diameter of 0.20 mm; a 27G thin-walled needle has a nominal inside diameter of 0.26 mm. Therefore, the inside diameter of a 27G thin-walled needle is 30% larger than that of a 27G normal-walled needle. In a study that compared pen needles of similar outer diameters but different inner diameters, a <span class="key-term">49% reduction in flow resistance</span> was observed with the needles that had larger inner diameters.</p>
+        <p>The drug product formulation, including volume and viscosity, also becomes critical in selecting needle diameter and length to minimize ISE risk (Figure 7.1.1-3). For the rapid delivery of large volumes or high-viscosity products, larger needles may be required or the injection time may increase if a small-diameter needle is chosen. If the needle's outer diameter is increased to decrease injection time and force, then ISE risk could increase.</p>
+        <p>Using first principles of engineering, a model has been developed to predict the potential impact of critical parameters, such as needle length and inner diameter, on extrusion force or injection time. Based on the <span class="key-term">Hagen-Poiseuille equation</span>, the authors of this model predicted that the injection forces would decrease as the inside radius of the needle increased. The model has been evaluated using different syringe types and vendors by measuring the pressure drop for a liquid flowing across the syringe barrel and the needle at a constant rate to determine the impact of several parameters on injectability. The researchers found that the inner diameters of the needles can greatly affect injection times and forces.</p>
+        <p>Thin-walled technology may be used to maintain the functionality of the needle with respect to flow rate, speed of injection, and the force applied on the syringe and drug solution. When designing a needle, a balance must be achieved between the drug product formulation, desired penetration length, injection time, and needle dimensions to minimize ISE risk and increase patient physical comfort and adherence to the treatment.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Gauge（規格號）：</strong>針頭外徑的標準化表示。數字越大，針頭越細。27G (0.40 mm OD) 和 29G (0.33 mm OD) 是 1 mL long PFS 最常見規格，用於皮下注射 (subcutaneous injection)。</p>
+            <p><strong>Thin-walled (TW) vs Normal-walled (NW)：</strong>壁厚設計影響內徑。相同外徑下，TW 針頭內徑更大，流阻更低。27G TW 內徑 0.26 mm vs 27G NW 0.20 mm，差距 30%，流阻差距可達 49%。</p>
+            <p><strong>Injectability（注射性）：</strong>完成一次等速注射所需的時間、壓力與力量的綜合評估指標，是 PFS 設計驗收的關鍵測試項目。</p>
+            <p><strong>Exposed needle length（暴露針長）：</strong>1/2 inch (12.7 mm) 為皮下注射標準長度，指針頭從針頭座外露的部分，與「總針長」不同。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>Gauge 與壁厚的取捨，就像水管規格選型：外徑相同的管子，選擇薄壁管（TW）可以讓水流更大、阻力更小，但管壁強度較低，容易變形。針頭設計亦然——TW 針頭流阻低，但針壁較薄，需評估在穿刺過程中是否有彎曲（needle bending）的風險。</p>
+        </div>
+        <div class="formula-box">
+            <h4>公式與計算 Hagen-Poiseuille Equation</h4>
+            <pre>
+ΔP = (8 × η × L × Q) / (π × r⁴)
+
+其中：
+ΔP = 壓力降 (Pa)
+η  = 藥液黏度 (Pa·s)
+L  = 針頭長度 (m)
+Q  = 體積流量 (m³/s)
+r  = 針頭內半徑 (m)
+
+關鍵洞見：
+流阻與內半徑的四次方成反比。
+內徑增加 30%（0.20→0.26 mm），
+理論流阻降低 ~58%，
+實測降低約 49%，與模型吻合。
+            </pre>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>非 ISO 規格的設計控制義務：</strong>若客戶選擇偏離 ISO 標準的針頭規格（例如更細的 31G TW），製造商必須透過設計控制（Design Control）正式證明其適用性，並在產品規格書與技術文件中明確標注偏離事項。這是 21 CFR Part 820 的直接要求，Amaran 在客戶技術協議審查時須確認此點。</p>
+            <p><strong>高黏度藥品的針頭選型難題：</strong>高濃度單株抗體 (mAb) 黏度可達 50–200 cP，使用細針頭時推注力可能超過患者可接受範圍（通常 &lt;25 N）。選型需以 Hagen-Poiseuille 模型預先計算。</p>
+        </div>
+        <div class="concept-box application">
+            <h4>實務應用 Amaran CDMO Scenario</h4>
+            <p>Amaran 在承接高濃度 mAb 皮下注射 PFS 時，客戶提出以 27G NW 針頭降低穿刺疼痛。工程師應先以 Hagen-Poiseuille 模型計算：若藥液黏度 80 cP、體積 1 mL、注射時間目標 &lt;10 秒，27G NW 是否滿足推注力規格？若推注力超標，可建議改用 27G TW（內徑從 0.20 增至 0.26 mm，流阻降 ~49%），在維持穿刺外徑不變的前提下解決問題。此分析應納入 Design Review 記錄。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若藥品黏度從 10 cP 提高至 40 cP，在同一針頭規格下推注力如何變化？請用 Hagen-Poiseuille 定性說明。</li>
+                <li>客戶要求從 27G 換成 29G 以減少 ISE，請說明這項更改對推注時間與推注力的影響方向，並指出需要補充哪些驗證測試。</li>
+                <li>三斜面與五斜面針頭在穿刺力上各有什麼預期差異？五斜面設計的製造複雜度如何影響成本？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- Inner diameter comparison table — placed OUTSIDE two-column per pitfalls.md rule -->
+<div style="overflow-x:auto; margin: 1rem 0;">
+    <h3 style="font-weight:600; color:var(--primary-blue); margin-bottom:0.5rem;">Table 7.1.1-A: Needle Gauge vs. Inner Diameter Comparison 針頭規格與內徑對照</h3>
+    <p style="font-size:0.85rem; color:var(--text-medium); margin-bottom:0.75rem;">Source: ISO 9626:1991/Amd. 1:2001 (as cited in TR73 Figure 7.1.1-3)</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Gauge / Wall</th>
+                <th>Nominal OD (mm)</th>
+                <th>Nominal ID — min (mm)</th>
+                <th>Comparable needle ID</th>
+                <th>Typical use in PFS</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>23G NW</td>
+                <td>0.64</td>
+                <td>~0.34</td>
+                <td>≈ 25G or 26G TW</td>
+                <td>IM, high-viscosity</td>
+            </tr>
+            <tr>
+                <td>25G / 26G TW</td>
+                <td>~0.50</td>
+                <td>~0.34</td>
+                <td>≈ 23G NW</td>
+                <td>SC, mid-viscosity</td>
+            </tr>
+            <tr>
+                <td>25G / 26G NW</td>
+                <td>~0.50</td>
+                <td>~0.26</td>
+                <td>≈ 27G TW</td>
+                <td>SC standard</td>
+            </tr>
+            <tr>
+                <td><strong>27G TW</strong></td>
+                <td><strong>0.40</strong></td>
+                <td><strong>0.26</strong></td>
+                <td>≈ 25G or 26G NW</td>
+                <td><strong>SC preferred (biotech PFS)</strong></td>
+            </tr>
+            <tr>
+                <td>27G NW</td>
+                <td>0.40</td>
+                <td>0.20</td>
+                <td>≈ 29G TW</td>
+                <td>SC standard</td>
+            </tr>
+            <tr>
+                <td>29G TW</td>
+                <td>0.33</td>
+                <td>~0.20</td>
+                <td>≈ 27G NW</td>
+                <td>SC, low pain priority</td>
+            </tr>
+            <tr>
+                <td>29G NW</td>
+                <td>0.33</td>
+                <td>~0.15</td>
+                <td>—</td>
+                <td>SC, low-viscosity only</td>
+            </tr>
+        </tbody>
+    </table>
+    <p style="font-size:0.82rem; color:var(--text-medium); margin-top:0.4rem;">NW = Normal-walled; TW = Thin-walled; SC = Subcutaneous; IM = Intramuscular</p>
+</div>
+
+<!-- ==================== SECTION 7.1.2 ==================== -->
+<div class="section-title"><strong>7.1.2 Needle Lubrication 針頭潤滑</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Staked needles are treated to reduce penetration force during insertion. This treatment takes place after washing and immediately prior to mounting of the needle shield. Penetration force may be assessed following the requirements of <span class="key-term">Deutsches Institut für Normung (DIN) 13097-4</span>.</p>
+        <p>The typical lubricant is <span class="key-term">medical-grade silicone oil</span> with a viscosity of 12,500 cSt. Applying the silicone occurs by wiping the needle with a sponge carrying silicone oil before assembling the rubber needle shield. The needle tip may pierce the needle shield during the process resulting in removal of silicone oil from the needle tip or compromising CCI. Removal of the silicone from the needle tip can be mitigated with the use of <span class="key-term">alternative silicone formulations and application methods</span> (i.e., humidity-cured and heat-cured formulations). Proper design of the components is required to avoid breaches in CCI. <span class="key-term">Intelligent (advanced) needle-shield systems</span> in which the needle tip is free inside the needle shield are available.</p>
+        <p>For <span class="key-term">bulk syringes</span>, the pharmaceutical company or the contract filler applies the silicone to the needles (Section 10.0). Needles are attached to the barrel prior to siliconization and checked for plugs or clogs. For <span class="key-term">presterilized syringes</span>, the syringe manufacturer applies the silicone to the needles after the assembled syringes are washed and before the needle shield is mounted onto the syringe. An evaluation to ensure that lubrication is present and effective is necessary. Syringes are then packed into nests and tubs, and subjected to sterilization.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>針頭潤滑目的：</strong>在針頭插入皮膚的瞬間降低穿刺力（penetration force），進而減少疼痛感。12,500 cSt 的醫療級矽油是業界標準，在針頭表面形成均勻膜層。</p>
+            <p><strong>Bulk vs. Presterilized Syringe 的矽油施用差異：</strong></p>
+            <ul>
+                <li><strong>Bulk（散裝）：</strong>矽油由藥廠或充填廠（如 Amaran）在充填前施用，屬於 Amaran 的製程控制範圍。</li>
+                <li><strong>Presterilized（預滅菌）：</strong>矽油由注射器製造商在出廠前施用，Amaran 收到的 RTU 注射器已含矽油，驗收時需確認潤滑有效性。</li>
+            </ul>
+            <p><strong>DIN 13097-4：</strong>德國標準，用於評估針頭穿刺力，等效於 ISO 測試方法，常用於針頭進料檢驗 (incoming QC)。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>針頭矽油潤滑就像手術縫合針的表面塗層——出廠前的細緻塗層確保每一次穿刺都同樣順滑，但若針頭在穿刺護針帽時刮除了矽油，就如同縫合針失去潤滑，下一個患者的注射體驗會明顯變差。Intelligent needle shield（智能護針帽）的設計，就是讓針尖懸在護針帽空腔中，完全不接觸膠塞壁，從根本解決矽油被刮除的問題。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>矽油刮除 → 雙重風險：</strong>（1）針尖矽油缺失，穿刺力上升，ISE 增加；（2）針尖穿透護針帽側壁，CCI 失效，無菌屏障破壞。兩者均為嚴重品質缺陷。</p>
+            <p><strong>Amaran 進料 QC 要點：</strong>對於 RTU 預滅菌注射器，驗收時應依 DIN 13097-4 或等效方法抽樣測試穿刺力，確認矽油有效。若發現穿刺力異常偏高，須啟動偏差調查，確認是矽油施用量不足或護針帽設計問題。</p>
+            <p><strong>替代矽油固化技術：</strong>濕固化（humidity-cured）與熱固化（heat-cured）矽油可在針頭表面形成更穩固的鍵結，不易被刮除，但製程控制要求更高，需納入針頭驗收規格協議。</p>
+        </div>
+        <div class="concept-box application">
+            <h4>實務應用 Amaran CDMO Scenario</h4>
+            <p>Amaran 收到 RTU PFS 批次，進料穿刺力測試 (DIN 13097-4) 發現部分樣品穿刺力超過上限規格 (e.g., &gt;15 N)。調查路徑：（1）確認矽油施用記錄是否完整；（2）目視 / AVI 檢查護針帽組裝狀態，排除針尖偏斜穿透護針帽；（3）與注射器供應商技術協議比對，確認矽油規格是否符合合約要求。此偏差若未及時處理，可能影響整批次 CCI 合格率，進而延誤 batch release。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>Bulk 與 Presterilized PFS 的矽油施用責任劃分不同，Amaran 作為充填廠，在哪種供應型態下需要自行管理矽油施用製程？</li>
+                <li>使用智能護針帽（Intelligent needle shield）後，矽油刮除問題獲得解決，但對 CCI 測試計畫有何影響？是否因此可以降低 CCI 測試頻率？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION 7.1.3 ==================== -->
+<div class="section-title"><strong>7.1.3 Needle Defects 針頭缺陷</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Typical needle defects are <span class="key-term">axial deviations</span> (from the longitudinal axis of the syringe), damage or dulling at the tip, and clogs. If the needle has an axial deviation and is therefore positioned at an angle in the needle shield, then there is a risk of formation of rubber particles from the needle shield (<span class="key-term">fragmentation</span>). In the worst case, the needle penetrates the needle shield sideways resulting in a loss of sterility of the entire system. Damage to needle tips (so-called <span class="key-term">"hooks"</span>), dull needle tips, and burs can result in painful injections (Figure 7.1.3-1).</p>
+        <p>Needle polishing is an important step in needle manufacturing because it removes burs generated during cutting and grinding.</p>
+        <p>The needle-shield material may be important in the protection of the needle by decreasing the likelihood of needle bending. The creation of a "hook" due to needle bending is a known defect and can increase ISE risk.</p>
+        <p>Section 14.3 provides a discussion on clogs—another defect caused by several factors. This type of defect affects the injectability of the drug product.</p>
+        <p>The construction material of the needle shield—whether rigid or nonrigid—should be evaluated during needle design. Additional factors to consider should include the smoothness of the needle and any possible blockage of the needle. Needle, needle shield, and syringe manufacturers must ensure that processes are in place to control the potential for defects (Section 9.2).</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>三類主要針頭缺陷：</strong></p>
+            <ul>
+                <li><strong>軸向偏差 (Axial Deviation)：</strong>針頭偏離注射筒中心軸線。輕則磨擦護針帽產生橡膠碎屑（fragmentation），重則側向穿透護針帽，導致 CCI 失效與無菌性喪失。</li>
+                <li><strong>針尖損傷 (Hook / Bur)：</strong>研磨切割過程產生的倒刺或彎鉤。穿刺時如魚鉤拉扯皮膚組織，顯著增加疼痛感。</li>
+                <li><strong>堵塞 (Clog)：</strong>針腔阻塞，影響 injectability，詳見 Section 14.3。</li>
+            </ul>
+            <p><strong>針頭研磨拋光 (Polishing)：</strong>針頭製造中去除毛刺的必要工序，是控制 hook/bur 缺陷的關鍵製程步驟。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>軸向偏差的針頭就像歪裝的門鉸鏈——門（針頭）無法正確進入門框（護針帽），每次開關（插拔）都會刮傷門框（橡膠護針帽），日積月累產生橡膠碎屑（fragmentation），最終門框（護針帽）被刮穿。Hook 則像漁鉤的倒刺——正向穿入容易，但拔出時會撕裂組織，造成傷害。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>缺陷的雙重危害路徑：</strong></p>
+            <ul>
+                <li>軸向偏差 → 橡膠碎屑（可見異物） → 患者安全風險</li>
+                <li>軸向偏差 → 護針帽側穿 → CCI 失效 → 無菌性喪失</li>
+                <li>Hook/Bur → 穿刺力增加 → ISE 上升 → 患者依從性降低</li>
+                <li>Clog → 注射性失效 → 藥品無法給藥</li>
+            </ul>
+            <p><strong>缺陷控制責任鏈：</strong>TR73 明確指出，針頭製造商、護針帽製造商與注射器製造商均有責任建立製程管控（Section 9.2 cosmetic inspection），Amaran 作為充填廠需在驗收規格中明確要求供應商提供缺陷控制證據。</p>
+            <p><strong>護針帽剛性 vs. 非剛性：</strong>剛性護針帽（如 PP）對針頭提供較好的機械保護，降低運輸中針頭彎曲形成 hook 的風險；非剛性（如橡膠）CCI 密封性通常更好，但對針頭保護較弱。設計選型需在兩者之間權衡。</p>
+        </div>
+        <div class="concept-box application">
+            <h4>實務應用 Amaran CDMO Scenario</h4>
+            <p>Amaran 在 AVI（自動目視檢查）設備設定針頭缺陷拒絕條件時，應明確定義：（1）軸向偏差的接受角度範圍（通常 &lt;1°–2°）；（2）Hook / bur 的 SEM 或光學影像標準樣品；（3）護針帽完整性的 AVI 影像判斷邏輯。這些標準應寫入 Inspection SOP 並於 Process Validation 中確認 AVI 的偵測靈敏度（detection sensitivity）。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>針頭軸向偏差在充填生產線的哪個工站最容易發生？Amaran 應在哪個環節設置管控點？</li>
+                <li>若 AVI 無法可靠偵測 hook 缺陷（因針尖太細），有哪些替代性 IPC 方法可以管控此風險？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION 7.2 ==================== -->
+<div class="section-title"><strong>7.2 Material Compatibility with Drug Products 針頭材料與藥品相容性</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>There are several needle-related compounds that can affect the purity, efficacy, and safety of the drug product as discussed in <span class="key-term">Section 5.0</span>. These compounds include:</p>
+        <ul>
+            <li><span class="key-term">metal ions</span></li>
+            <li><span class="key-term">silicone oil</span></li>
+            <li>the <span class="key-term">adhesive</span> used to connect the staked needle to the barrel</li>
+            <li><span class="key-term">tungsten (W salts residues)</span></li>
+        </ul>
+        <p>The compatibility between these compounds and the drug product is assessed during <span class="key-term">long-term stability studies</span>.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>四類針頭相關可浸出物 (Leachables)：</strong></p>
+            <ul>
+                <li><strong>金屬離子 (Metal Ions)：</strong>不銹鋼中的 Cr、Ni、Fe 等離子可能在酸性或螯合性藥液中溶出，影響蛋白質穩定性。</li>
+                <li><strong>矽油 (Silicone Oil)：</strong>針頭潤滑矽油可接觸藥液，可能導致蛋白質聚集（protein aggregation），是生技藥品的重要相容性風險。</li>
+                <li><strong>黏著劑 (Adhesive)：</strong>UV 固化黏著劑固化不完全時，可能釋放未反應的單體或光引發劑進入藥液。</li>
+                <li><strong>鎢殘留 (W Salts)：</strong>注射器桶身在製造時以鎢棒成型（tungsten-pin forming），鎢離子殘留是已知的蛋白質聚集誘因，已有文獻記載與生技藥品失活相關。</li>
+            </ul>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>針頭相容性評估就像餐廳選擇食器材質——不銹鋼鍋（針頭）在高溫酸性環境（藥液）下可能釋出微量金屬，影響食材（藥品）品質。矽油就像食用油殘留在鍋壁，少量可能改變下一道菜的風味（蛋白質穩定性）。評估相容性就是確認這些「殘留」在整個保存期限內不超過安全閾值。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>長期穩定性研究是唯一正式評估管道：</strong>相容性的最終確認必須透過長期穩定性研究（通常 ICH Q1A 條件：25°C/60%RH 及 40°C/75%RH，最長 36 個月），不能單靠材料規格書推論。</p>
+            <p><strong>鎢殘留的法規關注度：</strong>FDA 及 EMA 對 PFS 中鎢離子均有明確關注，FDA 在 2013 年發布相關 letter。Amaran 驗收生技 PFS 時，應要求注射器供應商提供鎢殘留量規格及批次數據（通常以 ICP-MS 測定，限度通常 &lt;1 ppb）。</p>
+            <p><strong>交叉參照 Section 5.0：</strong>詳細的 Extractables &amp; Leachables (E&amp;L) 測試方法與接受標準在 TR73 Section 5.0 中討論，本節僅提示風險來源。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一個高濃度 IgG4 mAb (150 mg/mL) 客戶詢問 Amaran 關於矽油對其藥品聚集的影響，請說明評估矽油相容性的測試策略。</li>
+                <li>UV 固化黏著劑的相容性評估應包含哪些測試項目？固化度（degree of cure）不足時如何影響 leachable profile？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION 7.3 ==================== -->
+<div class="section-title"><strong>7.3 Conclusion 結語</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>There are multiple factors to consider when selecting a needle for a 1 mL long PFS, including minimizing ISE risk to increase patient comfort based on the desired penetration length, injection time, injection force required, and compatibility with the drug product. A careful balance between all of these factors should be evaluated for each drug application.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p>Section 7 的核心邏輯是「多因素平衡（multi-factor balance）」：針頭選型沒有放諸四海皆準的答案，每個藥品應用都需要在以下維度之間做出最優取捨：</p>
+            <ul>
+                <li>穿刺深度（penetration length）→ route of administration</li>
+                <li>注射時間（injection time）→ 患者舒適度</li>
+                <li>推注力（injection force）→ 患者可操作性</li>
+                <li>藥品相容性（drug compatibility）→ 穩定性與安全性</li>
+                <li>製造可行性（manufacturability）→ 生產成本與良率</li>
+            </ul>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>在 Amaran 的 CDMO 業務場景中，客戶在提出針頭規格時，往往只關注某一個維度（如「越細越好」）而忽略其他因素。技術評估應系統性地涵蓋 ISE、injectability、相容性三個面向，並在 Feasibility Study 或 Technical Agreement 階段就形成書面共識，避免後期因針頭規格問題導致臨床試驗受阻。</p>
+        </div>
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>綜合應用情境 Capstone Scenario</h4>
+            <p>客戶委託 Amaran 充填一款皮下注射 PFS，藥液黏度 120 cP、體積 1 mL、患者為老年人（手握力弱）。客戶希望最小化穿刺疼痛。請綜合 Section 7.1.1、7.1.2、7.1.3 與 7.2，為客戶提出針頭規格建議，並說明需要完成的評估測試清單。</p>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section 7 Summary</h3>
+    <ul>
+        <li>Staked needle 以 AISI 304/304L 不銹鋼製成，依 ISO 7864、ISO 11608-2、ISO 9626 規範，以 UV 固化黏著劑固定於桶身。</li>
+        <li>ISE（注射部位體驗）受針頭幾何設計、潤滑、表面光滑度、缺陷四大參數影響，直接影響患者治療依從性。</li>
+        <li>針頭選型核心取捨：細針穿刺力低但流阻高；TW 設計可在維持外徑下擴大內徑，流阻降幅達 49%（Hagen-Poiseuille 模型預測）。</li>
+        <li>矽油施用必須在護針帽組裝前完成，並評估是否因針尖刺穿護針帽而導致矽油剝除與 CCI 失效。</li>
+        <li>主要針頭缺陷：軸向偏差（→fragmentation/CCI failure）、Hook/Bur（→ISE 增加）、堵塞（→injectability 失效）。</li>
+        <li>針頭相關可浸出物（金屬離子、矽油、黏著劑、鎢殘留）須透過長期穩定性研究正式評估相容性。</li>
+        <li>偏離 ISO 標準的針頭規格需透過設計控制正式證明適用性，並在技術文件中明確標注。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+</body>
+</html>

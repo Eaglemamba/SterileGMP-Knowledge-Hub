@@ -2,7 +2,7 @@
 
 This document summarizes the current coverage status, gap analysis, and expansion roadmap for building a comprehensive sterile pharmaceutical manufacturing knowledge hub suitable for COO-level operational decision-making.
 
-Last updated: 2026-04-17 — 182 documents complete (PDA 42, USP 76, ISPE 14, FDA 15, ICH 6, PIC/S 5, ISO 17, Ph.Eur. 7); added topic synthesis `knowledge/topics/depyrogenation-tunnel-validation.md`
+Last updated: 2026-04-17 — 182 documents complete (PDA 42, USP 76, ISPE 14, FDA 15, ICH 6, PIC/S 5, ISO 17, Ph.Eur. 7). TR73 expanded from Sections 12–18 partial to full 18-section complete version (+11 bilingual sections, p1–p102); added topic synthesis `knowledge/topics/depyrogenation-tunnel-validation.md`.
 
 ---
 

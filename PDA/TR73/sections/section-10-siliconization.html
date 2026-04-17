@@ -1,0 +1,1521 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR73 - Section 10: Siliconization 矽化處理</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== CUSTOM: CCI comparison table ===== */
+.cci-table-wrapper {
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+.cci-table-wrapper table {
+    min-width: 900px;
+    font-size: 0.82rem;
+}
+.cci-table-wrapper th {
+    font-size: 0.8rem;
+    position: sticky;
+    top: 0;
+}
+.cci-table-wrapper td {
+    vertical-align: top;
+    padding: 0.5rem 0.6rem;
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 10: Siliconization 矽化處理</h1>
+    <div class="subtitle">矽油種類、噴塗技術、活塞與針頭矽化、藥品相容性與次可見微粒分析</div>
+    <div class="page-info">PDA Technical Report No. 73: Prefilled Syringes | p51–p59 (PDF p58–p66)</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解矽化處理（Siliconization）在 PFS 玻璃注射器中的功能角色：潤滑、屏障與功能性保障</li>
+        <li>區分固定噴嘴（Fixed Nozzle）與潛入式噴嘴（Diving Nozzle）矽化方式的分佈均一性與力學性能差異</li>
+        <li>掌握 Break-loose Force（起動力）與 Gliding Force（滑動力）的測量原理及規格平衡邏輯</li>
+        <li>了解活塞橡膠塞矽化量與次可見微粒（Sub-visible Particles, USP &lt;788&gt;）計數的關聯性</li>
+        <li>認識矽油特性表徵方法：FTIR、粉末測試、反射量測法（Reflectometry）、Schlieren 效應分析</li>
+        <li>評估矽油對藥品穩定性的潛在影響，包括蛋白質/矽油交互作用與 ICP-OES 定量分析</li>
+        <li>理解矽化處理與 CCI、保存期限（Shelf Life）及功能性之間的多重平衡關係</li>
+    </ul>
+</div>
+
+<!-- ==================== SECTION 10.0 INTRO ==================== -->
+<div class="section-title"><strong>10.0 Siliconization 矽化處理</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Major suppliers of glass syringes have advanced capabilities now to provide a wide variety of siliconization solutions for lubrication purposes. The reader is advised to work closely with the supplier to identify the appropriate solution. This section provides a collection of best practices for siliconization from industry leaders. Alternative methods for achieving lubrication and silicone oil-free systems are not discussed here.</p>
+        <p>Current standard glass syringe systems rely on lubrication for syringe functionality. Lubrication enables the plunger stopper to move in the glass barrel when the plunger is depressed. The standard method of lubrication is to apply (liquid) silicone oil to the plunger stopper and barrel. In some functional cases, the silicone oil layer acts as a barrier to prevent interactions or side reactions with the glass. In addition to the plunger stopper and barrel, the supplier lubricates the needle to facilitate needle insertion and retraction.</p>
+        <p>Overall, the goal of lubricating glass syringe systems is to apply the optimal quantity of oil without exposing the patient to unnecessary processing aids, and yet apply enough oil to guarantee process functionality throughout the product's shelf life. Additionally, potential interactions of silicone oil with rubber compounds and the drug product must be assessed as part of the stability and functional studies.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>矽化處理（Siliconization）</strong>是 PFS 製程中的關鍵潤滑步驟，主要功能有三：</p>
+            <ul>
+                <li><strong>功能性潤滑：</strong>確保活塞在玻璃筒身內順暢移動，達到可接受的 Break-loose Force 與 Gliding Force</li>
+                <li><strong>屏障作用：</strong>矽油膜可隔絕藥液與玻璃直接接觸，降低玻璃析出物（leachables）風險</li>
+                <li><strong>針頭潤滑：</strong>降低插針摩擦力，改善注射體驗</li>
+            </ul>
+            <p>Section 10 的核心挑戰在於：矽油量過少則功能失效，過多則引發藥品相容性問題（次可見微粒、蛋白質聚集）。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>矽油膜就像製藥版的「成膜劑」（film-forming agent）——劑量過低，薄膜不連續，無法潤滑；劑量過高，薄膜脫落，產生「雜質顆粒」。這與外用藥膏的基質用量優化邏輯如出一轍：找到 Minimum Effective Quantity，即最少足量原則。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>本 section 不涵蓋<strong>無矽油系統</strong>（silicone oil-free systems）。若 Amaran 承接對矽油零容忍的生物製劑（如某些單株抗體），需另行參考替代潤滑或預塗層（pre-coated）解決方案，TR73 不提供該等內容。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION 10.1 ==================== -->
+<div class="section-title"><strong>10.1 Type of Silicone and Areas of Application 矽油種類與施用部位</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The silicone oil (polydimethylsiloxane) used for lubrication must be of medical grade and appropriate viscosity. Application of the silicone oil can occur in various viscosity ranges (typically 1,000 and 12,500 cSt) in compliance with monographs from the USP, European Pharmacopeia, Japanese Pharmacopeia, and the regulations of other countries as required.</p>
+        <h3>10.1.1 Empty Staked Needle Syringe Barrel</h3>
+        <p>Processing to date involves spraying silicone oil, either with a static spraying nozzle (spraying into the barrel from the finger flange), or by means of a more advanced, dynamic-diving nozzle that enters the syringe barrel and distributes silicone oil more evenly. Spraying with dynamic nozzles results in a very even distribution of the silicone oil, an overall reduction in the quantity of the silicone oil used, precision dosing, and maintains low and consistent break-loose and gliding forces. Diving nozzle systems improve the control of siliconization, which can be tailored to improve not only the syringe's functional performance, but also its suitability for filling and finishing processes.</p>
+        <p>To optimize the filling process, it is possible to program the silicone oil application system to apply the silicone oil in specific patterns. For example, vacuum plunger stopper placement may require more silicone near the flange than in the product area. The specific profile for this requirement can be programmed with a diving nozzle system. Similarly, for mechanical placement (e.g., vent tube placement), the profile can be optimized to deliver more silicone oil where the plunger stopper is placed.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>矽油化學品種：</strong>聚二甲基矽氧烷（PDMS）為標準矽油，需為醫藥級。黏度選擇依用途而定：</p>
+            <ul>
+                <li><strong>1,000 cSt：</strong>低黏度，適用於筒身噴塗，流動性佳，分布較均勻</li>
+                <li><strong>12,500 cSt：</strong>高黏度，適用於針頭擦塗，附著力強，不易流失</li>
+            </ul>
+            <p><strong>法規合規性：</strong>需符合 USP、Ph. Eur.、JP 各藥典專論（monograph）要求，是 CMC 文件中矽油規格的法規依據。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>固定噴嘴（Fixed Nozzle）就像從罐口向下噴漆——靠近噴嘴處漆厚，遠端漆薄，分布高度不均。潛入式噴嘴（Diving Nozzle）則像油漆滾筒從底部向上均勻滾塗——整個筒身每一節的矽油量都可精確控制，且可依活塞放置位置設計分布profile（矽油劑量分布圖）。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>Diving Nozzle 的戰略優勢：</strong>不僅分布均勻，更可<strong>程式化設定矽油分布 Profile</strong>。例如：真空放塞工藝在法蘭端需要較多矽油；通氣管（vent tube）放塞工藝在活塞放置區需要較多矽油。這種彈性使 Diving Nozzle 成為現代 PFS 填充線的主流選擇。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION 10.1.2 ==================== -->
+<div class="section-title"><strong>10.1.2 Effects of Fixed-Nozzle Systems 固定噴嘴系統的影響</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Figure 10.1.2-1 depicts a siliconization profile based on a fixed-nozzle system. The different sections (based on the setup of the ZebraSci® system) show the uneven silicone profile inside the syringe. Sections 1, 2 and 3 have the most silicone as evidenced by the "Schlieren" patterns. Section 4 is the first section covered with only a small amount of silicone oil. Single droplets are detectable in this area. The single droplets in sections 5 and 6 cannot spread all over and build up a homogeneous silicone layer inside. Section 7 demonstrates the major disadvantage of a fixed-nozzle system because only single droplets are located in this area.</p>
+        <p>Figure 10.1.2-2 reflects a typical break-loose and gliding force profile of a syringe siliconized with a fixed-nozzle system. Break-loose force and the first millimeter of the path have good gliding force results. Section 3, which represents approximately the area of a 25 mm path, shows the increase in gliding force due to the reduced silicone overlay in this area and worsens through the end of Section 7.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Schlieren 效應（施利倫條紋）：</strong>矽油厚度局部不均勻時，在特定背景圖案下，光線因折射率差異產生可見干涉條紋。這是矽油分布可視化的光學方法，是 ZebraSci® 等商用系統的工作原理之一。</p>
+            <p><strong>固定噴嘴的力學後果：</strong>矽油分布不均直接導致 Gliding Force 曲線在行程後段急劇上升——注射後半段阻力增大，對自動注射器尤其不利，可能導致劑量不準或裝置卡頓。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>固定噴嘴的典型失效模式：</strong>Sections 1-3 矽油過多（Schlieren 模式明顯）→ Sections 5-7 矽油嚴重不足（僅有孤立液滴）→ Gliding Force 在行程 25 mm 後顯著上升。這在自動注射器注射行程完整度評估中是高風險失效點，Amaran 接收供應商矽化筒身時應確認噴嘴類型。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>固定噴嘴系統在哪種充填工藝條件下可能仍然可接受？請從活塞行程長度和注射速度角度分析。</li>
+                <li>若 Break-loose Force 合格但 Gliding Force 在行程後段超規，應採取哪些矯正措施？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION 10.1.3 ==================== -->
+<div class="section-title"><strong>10.1.3 Effects of Diving Nozzle Systems 潛入式噴嘴系統的影響</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Figure 10.1.3-1 shows a siliconization profile based on a diving/movable nozzle system. The different sections show the even silicone profile inside the syringe. All sections show the same profile of silicone distribution (e.g., spraying parameters and velocity) and diving parameters based on a special design of parameters for this type of syringe.</p>
+        <p>Figure 10.1.3-2 shows the optimal break-loose and gliding force profile of a syringe siliconized with a diving/movable nozzle system. There is a more homogenous distribution of silicone within this syringe than the one depicted in Figure 10.1.2-1, resulting in a constant gliding force.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>潛入式噴嘴的關鍵性能指標：</strong></p>
+            <ul>
+                <li><strong>均一的 Gliding Force：</strong>整個注射行程（0–50 mm）力值穩定，無行程後段突增</li>
+                <li><strong>低 Break-loose Force：</strong>初始起動力小，符合 Usability/Human Factors 要求（特別是老年人、關節炎患者）</li>
+                <li><strong>矽油總量減少：</strong>均勻分布意味著相同功能效果下可減少矽油施用量，降低次可見微粒風險</li>
+            </ul>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>Gliding Force 曲線就像抽屜的開合阻力——固定噴嘴系統的抽屜越拉越重（後段阻力激增），而潛入式噴嘴系統的抽屜全程阻力均勻。對自動注射器而言，均勻的力值是裝置可靠性（Device Reliability）的基本前提。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在自動注射器（Autoinjector）驗證中，Gliding Force 的可接受範圍如何與彈簧力設計關聯？</li>
+                <li>若相同注射器改用 Diving Nozzle 後 Break-loose Force 降低 30%，對 CCI 是否有潛在影響？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- Force Comparison Table — OUTSIDE two-column wrapper -->
+<div style="overflow-x:auto; margin:1rem 0;">
+    <table>
+        <caption style="font-weight:600; color:var(--primary-blue); margin-bottom:0.5rem; text-align:left;">Table 10.1 — Fixed vs Diving Nozzle Siliconization Comparison 固定噴嘴 vs 潛入式噴嘴比較</caption>
+        <thead>
+            <tr>
+                <th>特性 Parameter</th>
+                <th>固定噴嘴 Fixed Nozzle</th>
+                <th>潛入式噴嘴 Diving Nozzle</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>矽油分布均一性 Distribution Uniformity</td>
+                <td>不均一（法蘭端多、筒身末端少）</td>
+                <td>均一（全筒身可程式控制）</td>
+            </tr>
+            <tr>
+                <td>Gliding Force 一致性</td>
+                <td>行程後段顯著增大</td>
+                <td>全行程穩定均勻</td>
+            </tr>
+            <tr>
+                <td>Break-loose Force</td>
+                <td>尚可接受（法蘭端矽油充足）</td>
+                <td>低且一致</td>
+            </tr>
+            <tr>
+                <td>矽油總用量</td>
+                <td>較高（補償分布不均）</td>
+                <td>較低（精確劑量）</td>
+            </tr>
+            <tr>
+                <td>次可見微粒風險</td>
+                <td>較高</td>
+                <td>較低</td>
+            </tr>
+            <tr>
+                <td>製程彈性（Profile 編程）</td>
+                <td>無</td>
+                <td>高（可依工藝設計分布 Profile）</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- ==================== SECTION 10.2 ==================== -->
+<div class="section-title"><strong>10.2 PFS Barrel and Plunger Stopper Combination 筒身與活塞橡膠塞組合</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The combination of a well-lubricated barrel and plunger stopper as defined in the user requirement ensures consistent force for delivering the drug product during injection and easy assembly of the plunger into the syringe barrel.</p>
+        <p>Typically, plunger stoppers are lubricated with silicone oil. The lubrication serves multiple purposes by ensuring machinability (in vibrator bowls and tracks), lubrication of insertion tubes, and plunger stopper functionality in the syringe.</p>
+        <p>The oil for the plunger stoppers is commonly added during the final washing steps of component preparation. Studies are necessary to establish suitable siliconization levels that balance machinability and break-loose/extrusion force. Silicone oil can also contribute to the level of subvisible particles in the drug product solution and may affect subvisible particle test results. Subvisible particles are routinely monitored during drug product release and stability studies for PFS products. Additional characterization techniques that differentiate silicone particles from other particles may enhance product characterization. The reader is encouraged to start with the highest level of silicone oil and slowly reduce the amount applied to find the optimum level that achieves this required balance.</p>
+        <p>An alternative solution is precoated plunger stoppers that do not require the addition of silicone oil. The coating applied is cross-linked silicone oil with or without polytetrafluoroethylene coating.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>活塞橡膠塞矽化的雙重功能：</strong></p>
+            <ul>
+                <li><strong>機械性（Machinability）：</strong>活塞在振動碗（vibrator bowl）和軌道（track）中的自動送料需要矽油潤滑，否則卡料率上升，影響生產效率</li>
+                <li><strong>功能性：</strong>活塞插入筒身後的 Break-loose Force 與 Gliding Force 需符合 URS 規格</li>
+            </ul>
+            <p><strong>優化策略——高開低走原則：</strong>從最高矽油量開始，逐步降低，直至找到既能保障機械性又能符合力學規格且次可見微粒最低的最佳量。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>活塞矽油量優化就像調整發動機機油量——過多機油（矽油）造成油封漏油（次可見微粒進入藥液）；過少機油導致引擎卡頓（機械性不足、Break-loose Force 過高）。「高開低走」找到最佳潤滑量，正是工程師的核心任務。</p>
+        </div>
+        <div class="note-box">
+            <h4>次可見微粒 USP &lt;788&gt; 的關聯性</h4>
+            <p>矽油從活塞橡膠塞釋放進入藥液後，形成微小矽油液滴（silicone oil droplets），這些液滴會被光遮蔽法（Light Obscuration）計數，貢獻至 USP &lt;788&gt; 的 ≥10 μm 和 ≥25 μm 粒子計數。由於光遮蔽法無法區分矽油液滴與其他顆粒類型，PFS 產品的粒子計數往往高於同等藥液的玻璃瓶裝（vial）產品，且變異性更大。這在 Amaran 進行 PFS 放行檢驗時需特別注意，應建立針對 PFS 的粒子計數可接受標準。</p>
+        </div>
+        <div class="note-box">
+            <h4>預塗層活塞的替代方案</h4>
+            <p><strong>預塗層活塞橡膠塞（Pre-coated Plunger Stopper）：</strong>以交聯矽油（cross-linked silicone）± PTFE（聚四氟乙烯）塗層取代液態矽油，可大幅降低矽油液滴釋放。適用於對矽油敏感的蛋白質藥品，但成本較高，需重新進行相容性驗證。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若客戶產品的 USP &lt;788&gt; ≥10 μm 粒子計數在 PFS 格式下明顯偏高，如何設計降低矽油貢獻的研究方案？</li>
+                <li>預塗層活塞橡膠塞相比液態矽油活塞，在 CCI 和 E&amp;L 評估上有何差異需要額外考慮？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION 10.3 ==================== -->
+<div class="section-title"><strong>10.3 PFS Barrel and Needle-Shield Combination 筒身與針頭護罩組合</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The combination of a barrel and needle shield ensures an appropriate pull-off force for the patient or healthcare provider to remove the needle shield and allow the injection. Care must be taken not to overlubricate the plunger stopper, which could compromise CCI during shipping and throughout shelf life.</p>
+        <p>For an RNS, additional balancing of siliconization and the force required for plastic overcap removal must be considered. If the deshielding or separation force is lower than the pull-off force, the rigid plastic cover may separate from the rubber needle shield. Typically, the syringe suppliers have already optimized this careful balance of siliconization with other requirements.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>矽化處理的三向力學平衡（針頭護罩端）：</strong></p>
+            <ul>
+                <li><strong>Pull-off Force（拔除力）：</strong>患者/HCP 拔除護罩所需的力，需在人因工程（Human Factors）可接受範圍</li>
+                <li><strong>CCI 保障：</strong>活塞過度潤滑會導致活塞在運輸振動中向前滑動，破壞針頭端密封完整性</li>
+                <li><strong>RNS 分離力 vs 拔除力：</strong>RNS 的塑料外殼拔除力必須小於彈性體護罩整體拔除力，否則「脫帽不拔針」，造成使用者傷害</li>
+            </ul>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>供應商通常已完成此三向平衡優化，但當 Amaran 變更矽化參數（如提高活塞矽油量以改善機械性時），必須重新評估對針頭護罩拔除力和 CCI 的影響。這是典型的<strong>連鎖變更風險</strong>（change cascade risk），應納入變更管控程序（Change Control）。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若活塞矽油量增加 20%，預期對針頭護罩 Pull-off Force 有何影響？請說明機理。</li>
+                <li>RNS 的塑料外殼脫帽力如何在設計上確保始終小於彈性體拔除力？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION 10.4 ==================== -->
+<div class="section-title"><strong>10.4 Siliconization of the Injection Needle 注射針頭矽化</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The injection needle is often siliconized to manage the friction during needle insertion and removal during drug administration. Typically, 12,500 cSt (high viscosity) silicone oil is applied using a wiping process. However, the wiping process requires frequent replenishing of silicone oil.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>針頭矽化的技術特點：</strong></p>
+            <ul>
+                <li><strong>高黏度矽油（12,500 cSt）：</strong>附著力強，不易在針頭表面流失；低黏度矽油在細針頭（如 29G、30G）上容易在儲存中流向針尖甚至阻塞針頭</li>
+                <li><strong>擦塗工藝（Wiping Process）：</strong>為主流工藝，但矽油消耗快，需頻繁補充——這是製程中的 GMP 管控點，應建立補充頻率的標準操作程序（SOP）</li>
+            </ul>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>針頭矽化直接影響<strong>穿刺力（Penetration Force）</strong>，是 Human Factors 研究中的重要評估指標。在 Amaran 進行 PFS 功能性驗證時，針頭矽化量的一致性需納入過程中控制（IPC）參數。擦塗工藝的矽油消耗速率應建立警戒限與行動限。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION 10.5 ==================== -->
+<div class="section-title"><strong>10.5 Drug Product Requirements 藥品需求</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The PFS with all its components (including siliconization) is—like any primary packaging—an integral part of the drug product. Therefore, development (including stability testing of the drug product) should be performed in packaging systems representative of the final commercial configuration. This should include assessing the compatibility of primary container components and associated process-related impurities with the active ingredient in its formulation. Interaction may also affect the functionality of the syringe system. Therefore, it is necessary to assess functionality during development (extended characterization) and in the final drug product configuration to determine the effects of such factors as manufacturing operations, storage, and transportation. Appropriate testing for functionality can include break-loose forces, gliding forces, and injection time (e.g., for autoinjectors).</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>矽化處理是藥品的一部分：</strong>PFS 的矽化條件屬於一次包裝系統規格，必須在代表商業化最終配置的包材條件下完成穩定性研究。這意味著：</p>
+            <ul>
+                <li>穩定性樣品的矽油種類、用量、分布必須與商業批次一致</li>
+                <li>若開發期間更改矽化供應商或工藝，需評估對穩定性研究代表性的影響</li>
+            </ul>
+            <p><strong>功能性評估的觸發節點：</strong>開發期（Extended Characterization）、製造操作、儲存、運輸後均需評估功能性。Amaran 應在技術協議中明確各節點的功能測試計畫。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>矽油與活性成分的交互作用（drug/silicone interaction）是 Section 14.0（藥品相容性）的重點內容。蛋白質藥物（如 mAb）可能因矽油界面誘發蛋白質聚集（protein aggregation），這是監管機構在生物製劑 PFS CMC 審查時的必查項目。Amaran 作為 CDMO 必須要求客戶提供藥品與矽油相容性研究的技術文件。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION 10.6 ==================== -->
+<div class="section-title"><strong>10.6 Shelf-life Effects 保存期限效應</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Filled syringe stability programs should consider all endpoints routinely assessed for parenteral products, such as CCI, visible and subvisible particles, physicochemical stability, and microbiological quality (e.g., sterility and endotoxins). Control of the orientation of empty syringes during storage and shipment is a relevant factor. Empty syringes are typically stored and shipped with the needle pointing up to prevent the silicone from accumulating in the needle opening.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>空針儲存方向的 GMP 管控要點：</strong></p>
+            <ul>
+                <li><strong>針尖朝上儲存：</strong>防止矽油因重力積聚在針頭開口，導致針頭阻塞或矽油栓塞</li>
+                <li><strong>穩定性項目清單：</strong>CCI、可見異物（Visible Particles）、次可見微粒（USP &lt;788&gt;）、理化穩定性、微生物品質（無菌試驗、內毒素）均需納入</li>
+            </ul>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>矽油在儲存期間的<strong>再分布（redistribution）</strong>是關鍵風險。Section 10.7.3（反射量測法）顯示，水平儲存的注射器底部矽油量可達頂部的 10 倍以上。Amaran 在空針接收和中間儲存的 SOP 中，必須明確規定儲存方向並記錄，以確保矽化分布的一致性延續至填充前。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION 10.7 ==================== -->
+<div class="section-title"><strong>10.7 Methods Toolbox 分析方法工具箱</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>This section provides a discussion on available analytical methods suited for characterizing/assessing the silicone content of an empty syringe.</p>
+        <h3>10.7.1 Fourier Transform Infrared Spectroscopy</h3>
+        <p>Fourier Transform Infrared Spectroscopy is one method used to identify the silicone oil content of an empty syringe. In this method, silicone oil identification occurs through organic extraction from the glass and elastomer surfaces of the syringe followed by solvent evaporation under vacuum. In some applications, it is also possible to measure the silicone oil directly on the rubber surface with an infrared probe.</p>
+        <p>It is possible to measure break-loose and gliding forces in empty syringe barrels indirectly using mechanical force systems. This method is advantageous because it is quick and also suitable for in-process controls.</p>
+        <h3>10.7.2 Powder Tests</h3>
+        <p>Other methods described add glass powder or flour to the siliconized syringe, and the dry powder's adherence to siliconized surfaces provides an approximate visualization of the silicone oil distribution. The images show the powder distribution within syringes sprayed with silicone oil via fixed nozzles and diving nozzles.</p>
+        <h3>10.7.3 Reflectometry Measurements</h3>
+        <p>Reflectometry is based upon the different refractive indices of the syringe glass and the silicone. Reflectometry measurements can determine the distribution and thickness of the silicone oil layer. Figure 10.7.3-1 shows the radial silicone oil distribution on the barrel of the empty syringe when stored horizontally — on the lower part of the barrel, more than 10 times the amount of silicone is visible due to redistribution. This method is used primarily for silicone layer characterization during research and development, but not for batch release or incoming goods control.</p>
+        <h3>10.7.4 Schlieren Effect Analysis</h3>
+        <p>This method uses high-resolution cameras, special lighting, and software to visualize oil droplets that form at the interface of glass and product solution. This method is qualitative, fast, and mainly used for R&amp;D characterization, but not for batch release or incoming goods control. Key considerations include plunger stopper selection, age, sterilization, placement, position, timing after placement, and velocity.</p>
+        <p>Measuring break-loose force and gliding force in an empty syringe requires different test procedures. It is possible to measure gliding force results directly after siliconization of the barrel, whereas break-loose force measurement requires preparation time — the plunger stopper must be placed in the correct/defined position using vent tube equipment, and the syringe must be stored for at least 24 hours up to 72 hours in real-time conditions, or undergo accelerated aging in a climate chamber. A common setup for the measuring devices is 100 mm/min up to 150 mm/min speed.</p>
+        <h3>10.7.5 Break-loose and Extrusion Force</h3>
+        <p>It is possible to measure break-loose and gliding forces in empty syringe barrels indirectly using mechanical force measurement systems. Advantages to this method are that it is fast and suitable for in-process controls. Major disadvantages are that the test is performed into air (not into tissue or any material more closely representing tissue), and test conditions are artificial and often do not reflect actual product use conditions (e.g., injection force, speed, and time).</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts — 五種方法速覽</h4>
+            <ul>
+                <li><strong>FTIR（傅里葉紅外光譜）：</strong>定量矽油含量，可用於橡膠表面直接測量；萃取法較準確但耗時</li>
+                <li><strong>粉末測試（Powder Test）：</strong>最直觀的可視化方法，低成本，適合 R&amp;D 篩選；無法定量</li>
+                <li><strong>反射量測法（Reflectometry）：</strong>可測量矽油層厚度與徑向分布，用於 R&amp;D；不適用批次放行</li>
+                <li><strong>Schlieren 效應分析：</strong>快速、定性，可視化矽油液滴界面；僅用於 R&amp;D</li>
+                <li><strong>Break-loose / Gliding Force 測量：</strong>最直接的功能評估方法；Break-loose 需要 24–72 hr 平衡時間</li>
+            </ul>
+        </div>
+        <div class="note-box">
+            <h4>Break-loose Force 測量的時間陷阱</h4>
+            <p>Break-loose Force <strong>不能在活塞放置後立即測量</strong>，必須等待 24–72 小時（實時條件）或使用氣候箱加速老化。原因：活塞在放置後會繼續「適應」矽油膜及玻璃筒身，力值在初期持續變化。若測量時間點不一致，數據無法比較。Amaran 在建立 IPC 方法時，必須在 SOP 中明確規定測量時間窗口。</p>
+        </div>
+        <div class="note-box">
+            <h4>空氣中測量的局限性</h4>
+            <p>Break-loose/Gliding Force 測試是在空針（注入空氣）條件下進行，而非注入組織或其他接近組織的介質。實際注射時的阻力受流體黏度、注射速度、皮下組織阻力的影響，與空氣測試結果有系統性偏差。這是 Specification 設定時需要工程判斷的關鍵認知。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>Amaran 在接收供應商矽化筒身時，應選擇哪種方法進行入廠（Incoming Goods）管制？請評估各方法的適用性。</li>
+                <li>若反射量測法顯示水平儲存筒身的底部矽油量是頂部的 10 倍，這對 Break-loose Force 的測量方向有何啟示？應如何在測試 SOP 中規定測量位置？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- Methods Comparison Table — OUTSIDE two-column wrapper -->
+<div style="overflow-x:auto; margin:1rem 0;">
+    <table>
+        <caption style="font-weight:600; color:var(--primary-blue); margin-bottom:0.5rem; text-align:left;">Table 10.7 — Siliconization Characterization Methods Comparison 矽化表徵方法比較</caption>
+        <thead>
+            <tr>
+                <th>方法 Method</th>
+                <th>定量/定性 Q/QL</th>
+                <th>適用階段</th>
+                <th>批次放行 Batch Release</th>
+                <th>主要限制</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>FTIR</td>
+                <td>定量</td>
+                <td>R&amp;D、例行</td>
+                <td>可</td>
+                <td>需萃取步驟，耗時</td>
+            </tr>
+            <tr>
+                <td>粉末測試 Powder Test</td>
+                <td>定性（可視化）</td>
+                <td>R&amp;D</td>
+                <td>否</td>
+                <td>無法定量，僅近似視覺化</td>
+            </tr>
+            <tr>
+                <td>反射量測法 Reflectometry</td>
+                <td>定量（厚度/分布）</td>
+                <td>R&amp;D</td>
+                <td>否</td>
+                <td>設備昂貴，不適用例行管控</td>
+            </tr>
+            <tr>
+                <td>Schlieren 效應分析</td>
+                <td>定性（快速）</td>
+                <td>R&amp;D</td>
+                <td>否</td>
+                <td>受活塞條件影響，不適用批次放行</td>
+            </tr>
+            <tr>
+                <td>Break-loose / Gliding Force</td>
+                <td>定量（功能性）</td>
+                <td>R&amp;D、IPC、放行</td>
+                <td>可（IPC）</td>
+                <td>需 24–72 hr 平衡；空氣中測量與實際注射有差異</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- ==================== SECTION 10.8 ==================== -->
+<div class="section-title"><strong>10.8 Measuring Silicone Oil in Solutions 藥液中矽油量測</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Silicone oil can mechanically detach from the wall during filling operations, storage through vibration, or as a result of plunger movement during injection. This last scenario occurs because the plunger stopper not only glides upon a silicone layer, but also pushes silicone oil toward the needle upon injection. In water-based drug product formulations, the partitioned silicone oil may enter the solution as dispersed microscopic silicone oil droplets. The droplets may be stabilized in the aqueous dispersion aided by surface-active drug product formulation ingredients, such as proteins and surfactants. In many parenteral drug product formulations, especially in therapeutic protein drug products, surfactants are used as stabilizers. This silicone oil partitioning effect, observed in systems lubricated by free silicone oil and to a lesser extent, in systems lubricated by baked on silicone oil, must be evaluated carefully for product interactions.</p>
+        <p>One method for determining the amount of silicone oil dispersed in the drug product solution is inductively coupled plasma optical emission spectrometry (ICP-OES). The amount of silicone oil in the drug solution may be of interest from a patient safety perspective because one must assume that the dispersed silicone oil—together with the drug solution—will be injected into the patient. However, the potential amount of silicone oil that could be injected using siliconized syringe presentations—even with repeated applications—is typically much lower than any toxicologically relevant doses.</p>
+        <p>Another area of interest is the potential interaction of silicone oil with the active ingredient or stabilizing formulation excipients. Drug/silicone oil or excipient/silicone oil interactions are very product specific and the drug product development program of any PFS presentation should address this (see Section 14.0).</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>矽油進入藥液的三種途徑：</strong></p>
+            <ul>
+                <li><strong>充填操作機械脫落：</strong>充填針頭衝擊、泵浦脈衝造成筒壁矽油薄膜局部剝落</li>
+                <li><strong>振動儲存脫落：</strong>運輸振動使矽油膜破裂，形成液滴釋放</li>
+                <li><strong>活塞推進推擠：</strong>注射時活塞推壓矽油薄膜，將矽油推向針頭，部分進入藥液</li>
+            </ul>
+            <p><strong>ICP-OES 定量矽油：</strong>矽（Si）是矽油的特徵元素，ICP-OES 可偵測藥液中的溶解矽，間接反映矽油分散量。靈敏度高，是目前主流的藥液矽油定量方法。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>矽油進入藥液就像炒鍋的不沾塗層在高溫翻炒中的局部剝落——翻炒（振動、衝擊）越激烈，剝落的塗層顆粒越多，最終進入食物（藥液）。ICP-OES 就像用化學方法檢測食物中的特氟龍成分，判斷是否超標。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>毒理學角度的安全性評估：</strong>即使矽油液滴進入藥液並被注射入患者體內，在正常 PFS 矽化水平下，矽油量遠低於毒理學相關劑量（toxicologically relevant dose）。但監管機構仍要求進行評估並在 CTD 中提供文件。</p>
+            <p><strong>蛋白質 / 界面活性劑 / 矽油的三角交互作用：</strong>治療性蛋白質（mAb、融合蛋白）及其製劑中的界面活性劑（如 PS80）可穩定矽油液滴的分散態，使矽油液滴更難沉降（更難被過濾或檢測除去）。這種穩定效應是 PFS 蛋白質製劑特有的風險，需在配方開發階段評估。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION 10.8.1 ==================== -->
+<div class="section-title"><strong>10.8.1 Subvisible Particle Analysis 次可見微粒分析</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Subvisible particle analysis of particles larger than 10 µm and 25 µm by light obscuration is a mandatory compendial test method for any injectable drug. In recent years, testing of particles smaller than 10 µm has also gained interest from regulatory bodies. Silicone oil droplets dispersed in solution typically contribute to these subvisible particle counts because the droplets are often in the relevant size ranges, and the light-obscuration technique cannot differentiate particle counts by particle composition. As a result, subvisible particle counts by compendial methods for PFS products are often higher and more variable than counts in corresponding presentations using less or no silicone oil (e.g., vial presentations).</p>
+        <p>To gain insight into particle type, particle number, size distribution, and particle variability, it may be useful to apply extended characterization techniques that help differentiate silicone oil droplets from other particles. For particles and silicone oil droplets in the micrometer size range, flow-microscopy techniques are useful and commercially available from several vendors. The differentiation of particle types is based on morphological differences between spherical silicone oil droplets and oddly shaped or amorphous other particles. A visual assessment of images provides an estimate of particle type and distribution. This technique is time consuming and not suitable for routine operations. A higher degree of automation may be achievable with software filters for automated counting of different particle types.</p>
+        <p>Other exploratory techniques (such as resonant mass measurement) for studying particles in submicron size ranges are under development. However, these methods are currently in the research and feasibility stage and are far from routine use.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>USP &lt;788&gt; 的強制性要求：</strong>所有注射用藥品均需進行光遮蔽法次可見微粒測試（≥10 µm 和 ≥25 µm 計數）。PFS 產品因矽油液滴貢獻，計數通常高於同等藥液的玻璃瓶產品，且批次間變異性更大。</p>
+            <p><strong>流動顯微鏡（Flow Microscopy / MFI）的鑑別優勢：</strong>矽油液滴呈球形（Spherical），其他粒子（蛋白質聚集體、玻璃碎片）呈不規則形（Amorphous）。MFI 的形態學分析可區分兩者，提供「矽油液滴計數」vs「其他粒子計數」的分解數據，是 PFS 產品擴展表徵（Extended Characterization）的重要工具。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>光遮蔽法就像用手電筒照汽車排氣管——只能感測到「有顆粒」，但無法區分是煤灰（蛋白質聚集體）還是油滴（矽油液滴）。流動顯微鏡則像高畫質攝影機——可以看清每顆粒子的形狀，從而分類計數。對於 PFS 的法規申報，監管機構越來越要求提供這種「形態學鑑別」的擴展數據。</p>
+        </div>
+        <div class="note-box">
+            <h4>台灣 CDMO 實務重點</h4>
+            <p>Amaran 在接受 PFS 填充產品時，應在技術協議中要求客戶提供：</p>
+            <ul>
+                <li><strong>次可見微粒可接受標準</strong>（需考慮矽油液滴貢獻的 PFS 特定標準）</li>
+                <li><strong>流動顯微鏡（MFI/Flow Imaging）擴展表徵計畫</strong>（若為蛋白質製劑）</li>
+                <li><strong>矽油液滴與其他粒子的分解計數</strong>作為穩定性研究的監測項目</li>
+            </ul>
+            <p>次可見微粒超規是 PFS 批次拒絕的常見原因，且矽油液滴計數的高變異性使規格制定具有挑戰性，應在工藝驗證前充分積累數據。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若 MFI 分析顯示某批 PFS 的球形粒子（矽油液滴）佔總次可見微粒的 80%，光遮蔽法計數超規，應如何處理？這是否必然導致批次拒絕？</li>
+                <li>「烘烤矽油（Baked-on Silicone）」系統相比游離矽油（Free Silicone Oil）系統，在矽油液滴釋放量上有何優勢？其對次可見微粒計數有何影響？</li>
+                <li>在設定 PFS 產品的 USP &lt;788&gt; 可接受標準時，應收集哪些基準數據？與相同藥液玻璃瓶裝的標準如何對應？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>矽化處理目標</strong>是在最少矽油量下確保全棚架生命週期（Shelf Life）的功能性，同時最小化對藥品的衝擊。固定噴嘴系統因分布不均，已逐漸被潛入式噴嘴系統取代。</li>
+        <li><strong>Break-loose Force 與 Gliding Force</strong> 是矽化質量的核心功能指標。潛入式噴嘴可實現均勻力值曲線，是自動注射器的必要條件。Break-loose Force 測量需 24–72 hr 平衡時間，不可省略。</li>
+        <li><strong>活塞矽油量</strong>需平衡機械性（Machinability）、功能性（Force）與次可見微粒（USP &lt;788&gt;）三者。優化策略為「高開低走」——從最高量逐步降低至最佳量。</li>
+        <li><strong>矽油分布會隨儲存方向和時間再分布</strong>——空針須針尖朝上儲存；水平儲存可使底部矽油量達頂部 10 倍以上。</li>
+        <li><strong>藥液中矽油的影響</strong>分兩個維度：（1）次可見微粒計數偏高（USP &lt;788&gt; 合規風險）；（2）蛋白質/矽油交互作用（聚集風險）。MFI 流動顯微鏡是鑑別矽油液滴與其他粒子的關鍵擴展表徵工具。</li>
+        <li><strong>分析方法選擇</strong>依用途而異：FTIR 和力學測試可用於批次放行；反射量測法和 Schlieren 分析僅限 R&amp;D；ICP-OES 用於藥液矽油定量。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- FOOTER -->
+<footer class="main-footer">
+    <p>PDA Technical Report No. 73 (2015): Prefilled Syringes</p>
+    <p>Section 10: Siliconization 矽化處理 | p51–p59 (PDF p58–p66)</p>
+    <p>Bilingual Educational Edition — For Internal Training Use Only</p>
+</footer>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+    window.addEventListener('scroll', function() {
+        var btn = document.getElementById('backToTop');
+        if (window.scrollY > 300) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+</script>
+
+</body>
+</html>

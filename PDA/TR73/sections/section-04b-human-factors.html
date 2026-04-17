@@ -1,0 +1,1511 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR73 - Section 4 (Part B): PFS Human Factors Engineering</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== CUSTOM: CCI comparison table ===== */
+.cci-table-wrapper {
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+.cci-table-wrapper table {
+    min-width: 900px;
+    font-size: 0.82rem;
+}
+.cci-table-wrapper th {
+    font-size: 0.8rem;
+    position: sticky;
+    top: 0;
+}
+.cci-table-wrapper td {
+    vertical-align: top;
+    padding: 0.5rem 0.6rem;
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 4 (Part B): PFS Human Factors Engineering 人因工程（下）</h1>
+    <div class="subtitle">PDA Technical Report No. 73 (2015)</div>
+    <div class="page-info">Subsections 4.5–4.9 | PDF p23–p30 (Print p16–p23)</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+<div class="learning-objectives">
+    <h3>本章學習目標（Part B）</h3>
+    <ul>
+        <li>理解設計需求（Design Requirements）如何從使用者需求轉化為可量化、可驗證的工程規格</li>
+        <li>掌握使用相關風險管理（Use-Related Risk Management）的完整流程：危害識別、風險分析、緩解策略</li>
+        <li>區分形成性評估（Formative Evaluation）與總結性/驗證性測試（Summative/Validation Testing）的目的與方法</li>
+        <li>說明標籤（Labeling）在人因工程中的角色及其對使用安全的影響</li>
+        <li>辨別必要任務（Essential Tasks）與安全關鍵任務（Safety-Critical Tasks）的差異及其在驗證測試中的意義</li>
+    </ul>
+</div>
+
+<!-- ==================== SECTION 4.5 ==================== -->
+<div class="section-title"><strong>4.5 Design Requirements 設計需求</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>To enable the product design process, <span class="key-term">user requirements</span> are translated into <span class="key-term">engineering design requirements</span>. Design requirements are comprehensive, clear, quantifiable, and verifiable. For example, a user requirement might state, "The user needs to be able to remove the needle cap." This might correspond to a specific design input requirement specifying the use of a suitable cap removal force or cap/syringe geometry. Design requirements related to the user-device interface may be derived from a range of sources, including anthropometric size and strength data or product-specific industry guidelines and standards.</p>
+        <p>Once a design prototype has been developed, requirements may be further refined through a process of iterative usability evaluation and <span class="key-term">risk analysis</span>. In most cases, such evaluations should include early <span class="key-term">formative testing</span> with users (Section 4.7) in which the suitability of the design input requirement may be assessed and adapted as necessary.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>User Requirements（使用者需求）vs. Design Requirements（設計需求）：</strong>使用者需求描述「使用者想做什麼」（例：能拔除針帽），設計需求則將其轉化為「裝置必須達到什麼規格」（例：針帽拔除力 ≤ X Newton、幾何尺寸符合人體工學）。</p>
+            <p><strong>Anthropometric data（人體測量數據）：</strong>來自於目標使用族群的手部尺寸、握力等統計數據，用於設定設計參數上下限。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>設計需求的轉化過程，就像建築師把客戶說「我要一個採光好的客廳」，轉化成「南向窗戶面積 ≥ 地板面積的 15%、玻璃透光率 ≥ 70%」。模糊的需求變成可以量測、可以驗收的工程規格。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>設計需求必須是 <strong>quantifiable（可量化）</strong> 且 <strong>verifiable（可驗證）</strong>。在 CDMO 環境中，這意味著每一條設計需求都必須有對應的驗收方法（test method）——否則在 DMF/MAA 審查時無法自圓其說。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>請舉一個 PFS 設計需求的實例，說明它如何從使用者需求衍生，以及如何驗證。</li>
+                <li>若使用者族群涵蓋老年患者與醫護人員，人體測量數據應如何涵蓋這兩個群體的差異？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION 4.6 ==================== -->
+<div class="section-title"><strong>4.6 Risk Management 風險管理</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><span class="key-term">Use-related risk management</span> is an integral part of the HFE process in the development of medical devices and combination products. This includes <span class="key-term">use-related hazard identification</span>, <span class="key-term">risk analysis</span>, identification and implementation of <span class="key-term">mitigation strategies</span>. For further information on risk evaluation, analysis, and management refer to PDA Technical Report No. 54: Implementation of Quality Risk Management for Pharmaceutical and Biotechnology Manufacturing Operations.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Use-Related Risk Management（使用相關風險管理）：</strong>不同於製程風險管理（QRM），此處聚焦於「人-裝置介面」本身可能造成的傷害。核心框架來自 ISO 14971（醫療器材風險管理）。</p>
+            <p>三大支柱：危害識別 → 風險分析 → 緩解策略實施。每個步驟均需書面記錄。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>對 CDMO 而言，combination product（藥械組合產品，如藥廠委託充填的 PFS+自動注射器）同時適用 FDA 21 CFR Part 4 及 HFE 要求。風險管理檔案（Risk Management File）是 NDA/BLA 遞交的必要組成。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION 4.6.1 ==================== -->
+<div class="section-title"><strong>4.6.1 Hazard Identification 危害識別</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>A <span class="key-term">hazard</span> is a potential source of harm. Use errors and difficulties related to the product/user-interface design can lead to <span class="key-term">hazardous situations</span>. All known and foreseeable use-related hazards associated with products are typically identified and documented within the <span class="key-term">use-related risk analysis</span> (see Section 4.6.2). Early in the design process, it is best practice to identify and investigate potential hazards based on a systematic review of all known information related to the type of product under development. This information is typically acquired through literature searches, empirical research, and analytical methods.</p>
+
+        <h3>4.6.1.1 Literature Search</h3>
+        <p>Conduct a literature search to investigate known use-related issues with previous models or similar products. Typical sources of information include the following:</p>
+        <ul>
+            <li>scientific literature (e.g., study findings published in HFE and clinical journals)</li>
+            <li>health authority complaints databases and reports (e.g., Manufacturer and User Facility Device Experience [MAUDE] and Medical Device Reporting [MDR] databases and adverse reporting data files)</li>
+            <li>health authority alerts and/or warnings</li>
+            <li>postmarketing product complaints for previous variants or similar devices</li>
+            <li>clinical experience data, including clinical complaint records</li>
+            <li>specialist support organizations (e.g., disease-specific patient support groups and associations)</li>
+            <li>published standards and guidance</li>
+            <li>previous formative and summative/validation studies of the device or similar device(s)</li>
+            <li>support organization websites, social media, and blogs</li>
+        </ul>
+
+        <h3>4.6.1.2 Empirical Research</h3>
+        <p>Empirical research is an approach to identify and specify user needs, identify potential use-related hazards of the device, and analyze behaviors in end-use contexts. Empirical research methods may include the following:</p>
+        <ul>
+            <li><strong>Contextual inquiry:</strong> this ethnographic research method is used to observe and analyze behaviors in actual end-use contexts. Contextual inquiry can reveal important use-related behaviors in actual use that may not be present in a controlled or artificial test environment.</li>
+            <li><strong>User or expert interviews and focus groups:</strong> eliciting input from users through open-ended and/or semi-structured interviews or conducting focus groups is a valuable means of attaining user insight.</li>
+            <li><strong>Formative HFE:</strong> simulated use of early prototypes are effective for identifying product use-related hazards and assessing the adequacy of implemented risk controls.</li>
+        </ul>
+
+        <h3>4.6.1.3 Analytical Use Error Identification Methods</h3>
+        <p>Analytical methods are useful in assessing user interfaces and key components of use-related risk analysis. A common analytical method is <span class="key-term">Hierarchical Task Analysis (HTA)</span>. This method systematically decomposes the steps necessary to attain the overall goal of the user into sub-goals and ultimately to the lowest-level tasks deemed appropriate for analysis. HTA suggests how to organize related tasks, identifies sequence of specific tasks, and generates a clear structure for risk analysis.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Hazard（危害）vs. Harm（傷害）vs. Risk（風險）：</strong></p>
+            <ul>
+                <li>Hazard = 潛在傷害來源（例：針帽不易移除）</li>
+                <li>Hazardous Situation = 危害暴露情境（使用者強行扯拔針帽）</li>
+                <li>Harm = 實際造成的傷害（針頭損毀、藥液外洩）</li>
+                <li>Risk = 傷害嚴重度 × 發生機率</li>
+            </ul>
+            <p><strong>MAUDE 資料庫：</strong>FDA 維護的醫療器材不良事件報告系統，是文獻查找的核心資源，可識別市售同類器材已知的使用問題。</p>
+        </div>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Hierarchical Task Analysis (HTA，階層式任務分析)：</strong>將使用情境分解為「目標 → 子目標 → 具體任務」的樹狀結構。例如：「自行注射生物製劑」可分解為準備 → 組裝 → 給藥 → 廢棄等層級，每個末端任務再評估潛在使用錯誤。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>危害識別的三條路徑，就像醫院感染管控的情報來源：文獻查找 = 查閱文獻與疾管署報告；實證研究 = 到病房直接觀察護理師操作；分析方法 = 用 FMEA 系統拆解每個護理步驟的潛在失效點。三管齊下，才能涵蓋全部已知與可預見的風險。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>Contextual inquiry（情境詢問法）強調在「真實使用環境」中觀察，不是在實驗室。對 CDMO 來說，若客戶計畫讓患者居家自行注射，則實地觀察（home-use study）是必要的，而非只做模擬注射台研究。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>MAUDE 資料庫的查找結果，如何用於指導新 PFS 的設計需求？</li>
+                <li>對一個需居家自行注射的單株抗體 PFS，contextual inquiry 應在哪些場域進行？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION 4.6.2 ==================== -->
+<div class="section-title"><strong>4.6.2 Use-Related Risk Analysis 使用相關風險分析</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Employ a <span class="key-term">use-related risk analysis</span> to systematically assess all of the steps involved in using the device, the errors that users might commit or the tasks users might fail to perform, potential negative clinical consequences of use errors and task failures, risk-mitigation strategies to reduce any moderate or high risks to acceptable levels, and the method of validating the risk-mitigation strategies.</p>
+        <p>The potential use errors can be assessed for <span class="key-term">severity</span>, <span class="key-term">occurrence</span>, and <span class="key-term">detectability</span> as described below:</p>
+        <ul>
+            <li><strong>Severity rating</strong> defines the potential impact of the hazardous situation on the user. The severity rating is determined based on product knowledge, customer interface, previous usability test results, and product complaints. When more than one hazard is identified, the most severe rating should be used. ISO 14971 (2012) presents a description of each severity level.</li>
+            <li><strong>Occurrence rating</strong> is an estimate of the frequency with which the identified harm occurs. Because it is difficult to determine accurately, estimates of severity should be used as the primary indicator of use error criticality.</li>
+            <li><strong>Detectability</strong> is the ability to detect, discover, or determine the existence, presence, or fact of a hazard. Detectability must be factored in the estimate of overall risks, together with the likelihood of occurrence and severity of harm.</li>
+        </ul>
+        <p>After severity and occurrence are rated, risk mitigation strategies are developed to minimize identified use-related hazards. These may include the following, in order of priority:</p>
+        <ol>
+            <li>Design the device to remove the hazard, thereby reducing the likelihood that the user will encounter the hazard, or reduce the consequences if hazard occurs</li>
+            <li>Make the user interface—including its operating logic—error resistant or error tolerant</li>
+            <li>Alert the user to the hazard through the user interface (e.g., labeling/IFU)</li>
+            <li>Develop written procedures and training that inform the user of the hazard, and provide steps to avoid the hazard</li>
+        </ol>
+        <p>Formative evaluations and human factors summative/validation testing are methods that demonstrate the effectiveness of the implemented risk mitigation strategies. Justification for residual risks may take into account whether to eliminate these risks, or if eliminating/reducing these risks is highly impractical and the residual risk is clearly outweighed by the benefits of the device.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>使用相關 FMEA（Use-FMEA）：</strong>與傳統製程 FMEA 相同框架（Severity × Occurrence × Detectability），但分析對象是「使用者操作行為」而非「製程步驟」。RPN 高者優先處理。</p>
+            <p>關鍵差異：傳統 FMEA 中 detectability 是指製造檢查能否發現缺陷；Use-FMEA 中 detectability 是指使用者能否察覺危害正在發生。</p>
+        </div>
+        <div class="formula-box">
+            <h4>公式與概念 Risk Priority</h4>
+            <pre>
+風險優先度（RPN）= Severity × Occurrence × Detectability
+
+緩解策略優先順序：
+1st: 設計消除危害（Eliminate by design）
+2nd: 設計防錯/容錯（Error-resistant / tolerant UI）
+3rd: 標籤警示（Labeling / IFU alert）
+4th: 訓練與操作規程（Training / SOP）
+
+注意：訓練是最後手段，不能替代設計改善。
+            </pre>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>FDA HFE Guidance（2016）明確指出：Severity 是判斷使用錯誤關鍵性的主要指標，因為 Occurrence 在上市前難以精確估計。因此，嚴重度高的使用錯誤，即使發生率看似低，也必須優先處理。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>「針頭刺傷自己」這個危害，其 Severity、Occurrence、Detectability 各應如何評估？</li>
+                <li>若緩解策略是在 IFU 上加警語，為何這被列為第三優先而非第一優先？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION 4.6.2.1 ==================== -->
+<div class="section-title"><strong>4.6.2.1 Essential and Safety-Critical Task Identification 必要任務與安全關鍵任務識別</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Employ the use-related risk analysis to identify <span class="key-term">essential tasks</span> and <span class="key-term">safety-critical tasks</span>. Essential tasks are those that are necessary for successful use of the device for its intended purposes. Examples of typical essential tasks are removing a PFS from packaging, removing a needle shield or cap, inserting a needle into an injection site, and fully depressing the plunger. Safety-critical tasks are those that, if omitted or the user performs incorrectly, could have a negative clinical impact. A task may be both safety-critical and essential simultaneously. Examples of safety-critical tasks typically include full depression of the syringe plunger rod and activation of the safety needle-device mechanism. In addition, user understanding of all safety-critical warnings and caution statements in the device labeling is essential.</p>
+        <p>Each task is assessed for <span class="key-term">device dependency</span>:</p>
+        <ul>
+            <li>In <strong>device-dependent tasks</strong>, interaction with the device is required (e.g., removing a cap, depressing a plunger, or activating a needle-safety device). If a user successfully completes a task, then this is an indication that the success of the task completed is reasonably controlled by the design of the device.</li>
+            <li><strong>Device-independent ("ancillary") tasks</strong> include preparation tasks and are broadly defined as those that support the successful operation of the device (e.g., washing hands or checking the expiration date). These are often highly dependent on compliance with instructions; validation may occur through user comprehension of the labeling materials in summative/validation testing.</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Essential Task（必要任務）：</strong>成功完成裝置預期使用所必須完成的任務。缺一不可。</p>
+            <p><strong>Safety-Critical Task（安全關鍵任務）：</strong>若遺漏或執行錯誤，會對患者產生負面臨床影響的任務。是 summative testing 的測試重點。</p>
+            <p><strong>Device-Dependent Task（裝置相依任務）：</strong>任務的成功與否由裝置設計直接控制，因此是設計驗證的核心對象。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像一臺自動提款機（ATM）：「插入金融卡」是 essential task（必要）；「輸入正確密碼」是 safety-critical（輸錯有害）且 essential；「找到最近的 ATM」是 device-independent ancillary task（準備動作，ATM 本身不控制）。HFE 的重點是讓 ATM 介面本身協助使用者正確完成 device-dependent tasks。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>在 summative/validation testing 中，device-dependent 且 safety-critical 的任務必須全數納入測試情境（test scenarios）。Device-independent tasks 則通常透過標籤理解度評估（labeling comprehension assessment）來驗證。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>「啟動針頭安全裝置」是 essential、safety-critical、device-dependent，三者皆是嗎？請說明理由。</li>
+                <li>「核對藥品有效期限」是哪類任務？如何在 validation 中驗證？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION 4.6.2.2 - intro text OUTSIDE table ==================== -->
+<div class="section-title"><strong>4.6.2.2 Common PFS Use-Related Hazards 常見 PFS 使用相關危害</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Table 4.6.2.2-1 offers several examples of common use-related hazards and harm associated with PFS use. The table is not intended to be exhaustive, and certain hazards and harms may not apply to all situations. Once use-related hazards have been comprehensively identified, the risks associated with those hazards are assessed. It is the manufacturer's responsibility to identify, implement, and validate risk mitigation strategies that effectively minimize risk (refer to Section 4.6.2 for the priority order of risk controls).</p>
+        <p>See Table 4.6.2.2-1 below for a structured list of common PFS use-related hazards.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p>此表格提供 PFS 最常見的使用錯誤情境與潛在傷害，是 Use-FMEA 的起點參考。重要認識：</p>
+            <ul>
+                <li>同一使用錯誤可能導致多種傷害（如「不完整活塞押注」→ 劑量不足 → 療效下降）</li>
+                <li>部分危害源自使用者合理但錯誤的行為（如針頭重新蓋帽 recapping）</li>
+            </ul>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>製造商必須針對每一條危害，評估其對應的風險緩解策略是否落實並經驗證。此責任不因委外（CDMO 生產）而轉移——MAH（上市許可持有人）最終負責，但 CDMO 的設計輸入與製程控制直接影響這些風險能否被有效緩解。</p>
+        </div>
+        <div class="figure-container">
+            <img src="../figures/tbl-p27-1.png" alt="Table 4.6.2.2-1: Examples of Common Use-Related Hazards (PDF p27)" style="max-width:100%; border-radius:8px; border:1px solid #e2e8f0;">
+            <p class="figure-caption">Table 4.6.2.2-1 (PDF p27): 原始圖像供對照參考</p>
+        </div>
+    </div>
+</div>
+
+<!-- Table 4.6.2.2-1: FULL WIDTH outside two-column -->
+<div style="overflow-x:auto; margin: 1rem 0;">
+    <h3 style="font-weight:600; color:var(--primary-blue); margin-bottom:0.5rem;">Table 4.6.2.2-1: Examples of Common Use-Related Hazards and Harms Associated with PFS</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Use Error 使用錯誤</th>
+                <th>Example of a Hazard 危害示例</th>
+                <th>Example of Harm(s) 傷害示例</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Inability to open packaging</td>
+                <td>Inability to use device</td>
+                <td>Reduced efficacy</td>
+            </tr>
+            <tr>
+                <td>Inability to remove needle shield</td>
+                <td>Incorrect removal of needle shield</td>
+                <td>Damaged needle; Injury</td>
+            </tr>
+            <tr>
+                <td>Incomplete plunger depression</td>
+                <td>Partial injection or no dose administered</td>
+                <td>Reduced efficacy</td>
+            </tr>
+            <tr>
+                <td>Premature removal of device from injection site</td>
+                <td>Failure to engage or activate a needle-safety feature</td>
+                <td>Exposed used needle; Injury</td>
+            </tr>
+            <tr>
+                <td>Reuse of a syringe or needle</td>
+                <td>Contaminated syringe or needle</td>
+                <td>Infection</td>
+            </tr>
+            <tr>
+                <td>Inability to attach needle (if applicable to device type)</td>
+                <td>No dose administered</td>
+                <td>Reduced efficacy</td>
+            </tr>
+            <tr>
+                <td>Inability to set an accurate dose for devices requiring dose adjustment</td>
+                <td>Inaccurate dose set</td>
+                <td>Overdose; Reduced efficacy (Underdose)</td>
+            </tr>
+            <tr>
+                <td>Removal of plunger from syringe</td>
+                <td>Damaged device</td>
+                <td>Reduced efficacy</td>
+            </tr>
+            <tr>
+                <td>Failure to clean injection site prior to injection or contamination of injection site after cleaning</td>
+                <td>Unclean injection site</td>
+                <td>Infection</td>
+            </tr>
+            <tr>
+                <td>Touching by needle to other surface (e.g., of a table) prior to injection</td>
+                <td>Contaminated needle</td>
+                <td>Infection (implied)</td>
+            </tr>
+            <tr>
+                <td>Failure to examine the product label</td>
+                <td>Administration of incorrect drug product or expired drug product</td>
+                <td>Injury; Reduced efficacy</td>
+            </tr>
+            <tr>
+                <td>Failure to examine the syringe prior to use</td>
+                <td>Damaged device</td>
+                <td>Injury</td>
+            </tr>
+            <tr>
+                <td>Failure to check the expiration date</td>
+                <td>Expired product</td>
+                <td>Reduced efficacy and safety</td>
+            </tr>
+            <tr>
+                <td>Failure to wait for the PFS to warm up to room temperature</td>
+                <td>Cold injection</td>
+                <td>Discomfort or pain</td>
+            </tr>
+            <tr>
+                <td>Recapping of the needle</td>
+                <td>Handling of unprotected needle</td>
+                <td>Injury</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- ==================== SECTION 4.7 ==================== -->
+<div class="section-title"><strong>4.7 Formative Usability Evaluation 形成性使用性評估</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>After the user and design requirements have been defined and the risk management documentation process has been initiated, the user interface design is integrated into the product design and then implemented. <span class="key-term">Formative human factors evaluations</span> assess the usability and use safety of the device, its packaging, labeling (including instructions for use), and training programs using product prototypes. The intent of formative usability studies is to optimize the user interface by "designing out" any usability problems or potential use-related hazards during the development of the product. The type and number of formative evaluations varies depending on the development effort and on the use-related risk analyses. The goal of this stage is to reduce use-related risks as much as is reasonably possible before the implementation of the design verification and summative/validation stage of development.</p>
+        <p>A written study protocol and report provides the necessary documentation for each formative human factors evaluation. Typical content for the protocol includes a description of the scope and objectives of the study, as well as a description of the participants, use environment, and prototype product. In addition, the formative study report provides a description and evaluation of any variants (e.g., different rigid needle shields or different versions of the instructions for use) along with any actionable conclusions from the study noted. Using the results and analyses from the formative study report, the use-related risk analysis is updated accordingly to ensure that any new risks and risk mitigations are appropriately captured.</p>
+        <p>According to human factors best practices, a formative human factors study typically includes a minimum of <span class="key-term">five to eight participants</span>.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Formative Usability Evaluation（形成性使用性評估）：</strong>在產品開發中期，使用原型（prototype）進行的迭代測試，目的是「設計優化」——找出問題並修正設計。</p>
+            <p>關鍵輸入：Use-FMEA 識別的高風險任務<br>
+            關鍵輸出：設計修改建議 + 更新的 Use-FMEA</p>
+            <p>每次形成性研究須有書面研究協議（study protocol）及研究報告（study report）。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy — CDMO 視角</h4>
+            <p>形成性評估 vs. 總結性測試，就像 CDMO 的 <strong>試製批（pilot run）vs. 製程驗證批（PPQ batch）</strong>：</p>
+            <ul>
+                <li><strong>Formative（形成性）</strong> = pilot run：反覆試做、反覆調整，目的是「找問題」並改善設計，允許失敗與迭代。測試對象是原型或早期樣品，最少 5–8 人。</li>
+                <li><strong>Summative（總結性）</strong> = PPQ batch：設計凍結後的正式驗證，目的是「證明設計可行」，結果須達到預設合格標準，使用正式生產等效品，每個使用族群 ≥ 15 人。</li>
+            </ul>
+            <p>試製批失敗可調整，PPQ 失敗則需偏差調查與重新驗證——代價截然不同。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>形成性研究的參與者最少 5–8 人（業界慣例），但應涵蓋代表性使用族群。每次研究結束後，Use-FMEA 必須更新，以反映新識別的風險或已有效緩解的風險。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若形成性研究發現 60% 受試者無法正確啟動針頭安全裝置，下一步應採取什麼行動？</li>
+                <li>形成性研究的書面協議中，至少需包含哪些要素？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION 4.8 ==================== -->
+<div class="section-title"><strong>4.8 Summative/Validation Testing 總結性／驗證性測試</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The <span class="key-term">summative/validation test</span> is intended to be the culmination of all prior HFE analyses and formative testing. At this point, modifications to the user interface and product design are complete based on the results of iterative testing. The product is ready for validation testing.</p>
+        <p>With the appropriate design, execution, and acceptable results, the human factors summative/validation test provides evidence that the device is safe and effective for intended use. This decision is based on the following two considerations:</p>
+        <ol>
+            <li>a representative sample of users satisfactorily completing all essential and critical tasks under expected use conditions, and</li>
+            <li>there are no additional patterns of use errors resulting from design deficiencies.</li>
+        </ol>
+        <p>If this study is the first HFE effort (e.g., no formative evaluations were performed), or if the formative evaluations were not sufficiently robust, the summative/validation testing often uncovers user interface design problems that may result in use errors. When this happens, these new errors are evaluated to determine if additional user interface modifications are necessary. If the device is modified as a result of observed use errors, then the <span class="key-term">modified device is revalidated</span> to demonstrate that the modifications effectively address the observed use errors and do not introduce new use errors.</p>
+        <p>Since modifications to devices can be made during scale-up, the validation/summative testing is conducted using <span class="key-term">production equivalent devices</span> (final production units or demonstrable equivalents). The participants and test environment is expected to be representative of intended user populations and use environment. If there will be more than one user population (e.g., caregivers, patients, and/or healthcare professionals), then the summative/validation study should be performed with <span class="key-term">n ≥ 15 in each distinct user group</span>.</p>
+        <p>For products intended for submission to the U.S. FDA, study participants are typically representative of the intended user population in the United States. The tasks selected for testing are typically derived from the results of a comprehensive assessment of use-related hazards. Training provided in the study is typically representative of the end-user training for actual use. To account for <span class="key-term">"training decay,"</span> time is allowed to elapse between the training and the test session — at least 30 minutes for daily-use devices, at least one day for less-frequent-use devices.</p>
+        <p>The testing captures both objective (observational/performance) data and subjective data (narrative responses to open-ended questions). For the purposes of assessing performance, a <span class="key-term">use error</span> is generally defined as action or lack of action that was different from that expected by the manufacturer and can lead to patient harm. Performance success criteria are typically predefined prior to the summative/validation testing.</p>
+
+        <h3>Summative/Validation Study Report Elements</h3>
+        <ul>
+            <li>Rationale for the study design, including the data collected, number and description of distinct user populations and test participants, and critical and essential tasks</li>
+            <li>Materials used within the study</li>
+            <li>Summary of the test methods used</li>
+            <li>Summary of both objective task performance and subjective results</li>
+            <li>Detailed root-cause analysis for all use errors and difficulties that occurred</li>
+            <li>Conclusion about safe and effective use</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Summative/Validation Testing（總結性/驗證性測試）：</strong>設計凍結後的最終人因驗證，相當於 IQ/OQ/PQ 中的 PQ 概念——在最接近實際使用條件下，確認裝置可安全有效使用。</p>
+            <p>兩個關鍵判斷標準：</p>
+            <ul>
+                <li>代表性使用者成功完成所有必要任務與安全關鍵任務</li>
+                <li>不存在源於設計缺陷的使用錯誤模式</li>
+            </ul>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy — PPQ 比喻延伸</h4>
+            <p>Summative testing 使用「生產等效品（production equivalent devices）」，就像 PPQ 批必須使用正式生產設備與工藝——不能用實驗室樣品替代。若測試期間發現缺陷並修改設計，就必須重新驗證，就如同 PPQ 批失敗後需調查根因、修正製程、重新執行 PPQ。</p>
+        </div>
+        <div class="formula-box">
+            <h4>關鍵數字 Key Numbers</h4>
+            <pre>
+最低樣本數：
+  每個獨立使用族群 n ≥ 15 人
+  （例：患者族群 ≥ 15 人 + 護理師族群 ≥ 15 人）
+
+訓練衰退期（Training Decay）：
+  每日使用裝置：≥ 30 分鐘
+  低頻使用裝置：≥ 1 天（或更長，模擬實際使用間隔）
+
+Use Error 定義：
+  與製造商預期行為不符且可導致患者傷害的行為
+  或「不作為」（lack of action）
+            </pre>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>Training Decay（訓練衰退）</strong>是 summative testing 設計的重要考量。若實際使用者收到訓練後幾週才開始注射，測試中讓受試者接受訓練後立即測試，會低估真實使用錯誤率，導致驗證結果失真。</p>
+            <p>Objective data = 觀察者直接記錄的任務完成行為；Subjective data = 受試者事後對自己行為的解釋（root cause analysis 的重要來源）。</p>
+        </div>
+        <div class="concept-box application">
+            <h4>實務應用 CDMO Application</h4>
+            <p>對 CDMO 而言，summative testing 通常由客戶（MAH）委託 HFE 顧問執行，CDMO 的責任是確保提供給測試的 PFS 樣品是「production equivalent」——即使用正式生產管線、正式組件、正式充填工藝生產，並通過所有放行檢驗。若 CDMO 提供非代表性樣品（如試製批），會使測試結果無效。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若 summative testing 中 15 位患者有 3 位無法完成「完整活塞押注」，應如何判斷該結果是否可接受？</li>
+                <li>測試報告中「詳細根因分析」對後續監管審查有何意義？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION 4.9 ==================== -->
+<div class="section-title"><strong>4.9 Labeling 標籤</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><span class="key-term">Labeling</span> includes device labels, instructions for use, information provided on the device, package inserts, package labels, and any accompanying informational materials. Labeling is considered part of the <span class="key-term">product user interface</span>. As with the device design, labeling development starts with characterization of the user and use environment. It is important to consider the physical and cognitive abilities of users, as well as the limitations of the environment during label development, especially for self-administered devices. The workload or stress level of the user population should be a consideration because these can limit users' ability to understand and remember complex, multistep instructions.</p>
+        <p>Consider using several best-practice principles when developing instructional materials to ensure that the layout, content, and organization support safe and effective use of the device. <span class="key-term">Use short, declarative, active-voice sentences</span> to describe specific tasks for users. Enhance user instructions further with additional graphics or diagrams.</p>
+        <p>The use of formative evaluations can ensure that product labeling is ready for validation. As previously noted in Section 4.7, this can include expert reviews as well as testing with representative users. Warnings and other risk mitigations implemented as part of labeling can also be evaluated. Finally, labeling represents a part of the user interface and is included in summative/validation testing to confirm safe and effective use. Information such as warnings and precautions are considered <span class="key-term">critical tasks</span> and tested through assessments of users' ability to read and understand the information.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Labeling（標籤）的廣義定義：</strong>不只是瓶身標籤，而是涵蓋所有使用者可接觸到的資訊介面：</p>
+            <ul>
+                <li>Device label（裝置標籤）</li>
+                <li>Instructions for Use, IFU（使用說明書）</li>
+                <li>Package insert（仿單）</li>
+                <li>Package label（外盒標籤）</li>
+                <li>附帶資訊材料（如快速參考卡）</li>
+            </ul>
+            <p>標籤是使用者介面（User Interface）的一部分，同樣需要 HFE 方法設計與驗證。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>藥品標籤就像飛機的緊急逃生說明卡：必須在高壓、慌亂的情境下讓從未操作過的人能立即理解並執行。若說明太複雜、字體太小、缺乏圖示，使用者在緊急情況下根本無法遵循——設計再好的裝置也救不了誤讀說明書造成的錯誤。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>標籤撰寫的最佳實踐：<strong>短句 + 主動語態 + 具體動作詞</strong>。例如：「用拇指和食指握住針管」優於「確保注射器以適當方式持握」。</p>
+            <p>警語（warnings）和注意事項（precautions）在 summative testing 中被視為「critical tasks」，測試方式是評估使用者閱讀後是否能正確理解並說出其含義（labeling comprehension assessment）。</p>
+        </div>
+        <div class="concept-box application">
+            <h4>實務應用 CDMO Application</h4>
+            <p>CDMO 在確認 artwork（版稿）及 IFU 時，應確認：</p>
+            <ul>
+                <li>字體大小符合可讀性要求（尤其老年患者族群）</li>
+                <li>步驟圖示清晰且與實際操作對應</li>
+                <li>警語位置顯著，不被其他資訊淹沒</li>
+                <li>標籤內容是否已通過 formative evaluation 或 labeling comprehension testing</li>
+            </ul>
+            <p>這些要求應納入 CDMO 與客戶的技術協議（Technical Agreement）中明確分工。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一個居家自行注射的類風濕性關節炎患者，其標籤設計需特別考慮哪些認知與生理限制？</li>
+                <li>若 summative testing 中有受試者未注意到關鍵警語，這對標籤設計意味著什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section 4 (Part B) Summary</h3>
+    <ul>
+        <li><strong>4.5 設計需求：</strong>使用者需求必須轉化為可量化、可驗證的工程設計需求；數據來源包括人體測量數據及產品標準。</li>
+        <li><strong>4.6 風險管理：</strong>使用相關風險分析（Use-FMEA）涵蓋危害識別（文獻/實證/分析三路徑）、嚴重度/發生率/可偵測性評估，以及依優先順序選擇緩解策略。</li>
+        <li><strong>4.6.2.1 任務分類：</strong>必要任務（Essential）與安全關鍵任務（Safety-Critical）是 summative testing 的核心測試對象；裝置相依任務由設計直接控制。</li>
+        <li><strong>4.7 形成性評估：</strong>使用原型、反覆迭代、最少 5–8 人；目的是「設計優化」，類比 CDMO 的 pilot run。</li>
+        <li><strong>4.8 總結性測試：</strong>設計凍結後用生產等效品進行正式驗證；每使用族群 n ≥ 15 人；結果驅動 Use-FMEA 最終版本，類比 CDMO 的 PPQ。</li>
+        <li><strong>4.9 標籤：</strong>標籤是使用者介面的組成部分，需 HFE 方法設計；警語理解度是 summative testing 中的 critical task。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) { btn.classList.add('visible'); }
+    else { btn.classList.remove('visible'); }
+});
+</script>
+
+</body>
+</html>

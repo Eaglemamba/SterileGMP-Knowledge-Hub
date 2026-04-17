@@ -144,7 +144,7 @@ Use these mappings to translate user questions before routing:
 | CCIT in stability protocol / 穩定性 CCIT 替代無菌檢驗 | FDA-CCIT (§0 Purpose, §1 Alternatives+Implementation) | USP-1207, TR86 |
 | Container closure systems CMC / 容器密封 CMC 文件 | FDA-ContainerClosure (§0-§1 Qualification, §2 Injectable, §4 Post-approval) | FDA-GlassVial, USP-660, USP-661 |
 | Glass vial & stopper changes / 玻璃瓶膠塞變更 | FDA-GlassVial (§0 Regulatory, §1 Common changes, §2 Tools, §3 Tables) | FDA-ContainerClosure §4 |
-| Prefilled syringe / 預充填注射器 | TR73 (§12-§15) · TR73-2 (EU MDR) | TR43 §4 (syringe defects), Guide-No1 |
+| Prefilled syringe / 預充填注射器 | TR73 (§1-§15 full report: development, HFE, E&L, glass/needle/shield, cosmetic, siliconization, plunger, CCI, manufacturing, compatibility) · TR73-2 (EU MDR) | TR43 §4 (syringe defects), Guide-No1, ISO-11608-1 |
 | Needle-based injection systems / 針筒系統 | ISO-11608-1 (§3 Requirements, §4 Dose accuracy, §5 Test matrix) | TR73, TR73-2 |
 | Primary packaging GMP / 一次包材 GMP | ISO-15378 (§2 Context, §3a-§3b Operations, §4 Annex) | USP-660, USP-661, USP-381, FDA-ContainerClosure |
 | Extractables & leachables (packaging) / 包材萃取物 | FDA-ContainerClosure (§1 General, §5 Attachment C) | USP-661, ISPE-SUT §1a |
@@ -158,7 +158,7 @@ Use these mappings to translate user questions before routing:
 | Topic | ★★★ Primary (section hint) | ★★ Secondary |
 |---|---|---|
 | SUS / single-use systems | ISPE-SUT (§0-§3 Full guide) · TR66 (§1-§5 Strategy) | ISPE-Vol6, PtC-15, PtC-14 |
-| E&L / extractables & leachables | ISPE-SUT §1a · TR26 §4 (filter E&L) · TR66 §3 | TR73 |
+| E&L / extractables & leachables | ISPE-SUT §1a · TR26 §4 (filter E&L) · TR66 §3 · TR73 §5 (PFS E&L: AET, SCT, TTC thresholds) | — |
 | SUS supplier qualification | ISPE-SUT §1c · TR66 §5 | — |
 
 ### Risk, Quality & Data
@@ -214,7 +214,7 @@ Use these mappings to translate user questions before routing:
 | OOS out-of-specification §211.194 / Phase I Phase II investigation / invalid assay criteria / Barr Laboratories | FDA-21CFR-211 (§5 Subparts I–K §211.194) | — |
 | QRM regulatory perspective / PIC/S Annex 20 | PICS-Annex20 (§1-§3 QRM process, risk tools) | ICH-Q9R1, TR60 |
 | Combination products CGMP / 組合產品 | FDA-ComboProd-CGMP (§1-§3 CGMP requirements) | FDA-ComboProd-HF |
-| Human factors / combination products | FDA-ComboProd-HF (§1-§2 HF process, clinical) | FDA-ComboProd-CGMP |
+| Human factors / combination products | FDA-ComboProd-HF (§1-§2 HF process, clinical) · TR73 (§4 PFS HFE: formative vs summative, IEC 62366, ISO 11608) | FDA-ComboProd-CGMP |
 | Medical device QMS / ISO 13485 | ISO-13485 (§2 QMS, §3 Resources/Design, §4 Purchasing) | ICH-Q10, FDA-21CFR-820 |
 | QMSR 2024 final rule / QSR to QMSR transition / Part 820 effective Feb 2026 | FDA-21CFR-820 (§0 Overview & transition) | ISO-13485 |
 | Part 820 scope / who must comply / Class I exemptions / combination product QMSR | FDA-21CFR-820 (§1 Scope & definitions) | FDA-ComboProd-CGMP |
