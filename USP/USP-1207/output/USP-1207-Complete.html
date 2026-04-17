@@ -628,14 +628,23 @@ tr:nth-child(even) {
     font-size: 0.9rem;
 }
 
-/* ===== SECTION TITLES ===== */
+/* ===== SECTION TITLES =====
+   padding-left matches .left-column padding (1.5rem) so the
+   section title text aligns with the start of "原文 Original Text".
+   Border-bottom stays full-width as a visual separator. */
 .section-title,
 .section-divider {
     font-size: 1.1rem;
     color: var(--primary-blue);
     margin: 1.5rem 0 1rem;
-    padding-bottom: 0.5rem;
+    padding: 0 1.5rem 0.5rem 1.5rem;
     border-bottom: 2px solid #e2e8f0;
+    font-weight: 700;
+}
+
+.section-title strong,
+.section-divider strong {
+    font-weight: 700;
 }
 
 .section-divider {
@@ -956,11 +965,11 @@ tr:nth-child(even) {
     </header>
 
     <nav class="top-nav" id="topNav">
-        <button class="nav-scroll-btn hidden" id="navScrollLeft">‹</button>
+        <button class="nav-scroll-btn hidden" id="navScrollLeft">&#8249;</button>
         <div class="nav-container" id="navContainer">
             <a href="#sec0" class="nav-item" data-section="sec0">
                 <span class="nav-num">0</span>
-                <span class="nav-label">Introduction &amp; Integrity Testing Framework</span>
+                <span class="nav-label">Introduction & Integrity Testing Framework</span>
             </a>
             <a href="#sec1" class="nav-item" data-section="sec1">
                 <span class="nav-num">1</span>
@@ -968,10 +977,10 @@ tr:nth-child(even) {
             </a>
             <a href="#sec2" class="nav-item" data-section="sec2">
                 <span class="nav-num">2</span>
-                <span class="nav-label">Probabilistic Methods &amp; Validation</span>
+                <span class="nav-label">Probabilistic Methods & Validation</span>
             </a>
         </div>
-        <button class="nav-scroll-btn" id="navScrollRight">›</button>
+        <button class="nav-scroll-btn" id="navScrollRight">&#8250;</button>
     </nav>
 
 <main class="main-content">
@@ -981,7 +990,7 @@ tr:nth-child(even) {
         <div class="chapter-divider">
             <div class="chapter-badge">0</div>
             <div class="chapter-info">
-                <h2>Section 0: Introduction &amp; Integrity Testing Framework</h2>
+                <h2>Section 0: Introduction & Integrity Testing Framework</h2>
                 <p>簡介與完整性試驗框架 | p1-p2</p>
             </div>
         </div>
@@ -1408,7 +1417,10 @@ MALL &lt; 6 × 10⁻⁶ mbar · L/s
 </div><!-- end main-content -->
 
 <!-- FOOTER -->
-        
+<div class="main-footer">
+    <p>SterileGMP Knowledge Hub | USP 〈1207〉 Package Integrity Evaluation—Sterile Products | Section 0</p>
+</div>
+        </div>
     </section>
 
     <!-- ========== Section 1: Deterministic Test Methods ========== -->
@@ -1898,7 +1910,10 @@ MALL（類別1剛性容器）：&lt; 6×10⁻⁶ mbar·L/s
 </div><!-- end main-content -->
 
 <!-- FOOTER -->
-        
+<div class="main-footer">
+    <p>SterileGMP Knowledge Hub | USP 〈1207〉 Package Integrity Evaluation—Sterile Products | Section 1</p>
+</div>
+        </div>
     </section>
 
     <!-- ========== Section 2: Probabilistic Methods & Validation ========== -->
@@ -1906,7 +1921,7 @@ MALL（類別1剛性容器）：&lt; 6×10⁻⁶ mbar·L/s
         <div class="chapter-divider">
             <div class="chapter-badge">2</div>
             <div class="chapter-info">
-                <h2>Section 2: Probabilistic Methods &amp; Validation</h2>
+                <h2>Section 2: Probabilistic Methods & Validation</h2>
                 <p>概率性方法與驗證 | p5-p8</p>
             </div>
         </div>
@@ -2291,10 +2306,129 @@ System Suitability（系統適用性）：
             <p>典型的 CDMO 方法轉移場景：客戶的藥品已在另一家 CMO 生產，CCI 方法是真空衰減法，驗證文件由原 CMO 持有。轉到你的工廠時，你需要：①取得原有驗證數據和正對照規格；②進行 IQ/OQ/PQ 確認你的設備性能等效；③進行橋接研究（Bridging Study），確認你的設備在使用相同正對照時得到相同結果；④如果客戶有 NDA/BLA，評估是否需要法規申報。</p>
         </div>
 
-        </div></div></div></section></main>
+        </div></div></div>
+        </div>
+    </section>
 
-<footer class="main-footer">
-    <p>SterileGMP Knowledge Hub — 僅供學習參考</p>
-</footer>
+</main>
 
-</body></html>
+    <footer class="main-footer">
+        <p>SterileGMP Knowledge Hub — 僅供學習參考</p>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const sections = document.querySelectorAll('.chapter-section');
+        const navItems = document.querySelectorAll('.nav-item');
+        const backToTop = document.getElementById('backToTop');
+        const navContainer = document.getElementById('navContainer');
+        const btnLeft = document.getElementById('navScrollLeft');
+        const btnRight = document.getElementById('navScrollRight');
+
+        // Reading progress — high-water mark (furthest section reached, never goes back)
+        const _pKey = 'sgk_progress_' + location.pathname.split('/').pop().replace('.html','');
+        let _saveTimer = null;
+        let _current = '';
+        let _maxIdx = -1;
+
+        // Init: restore existing max index from storage
+        (function() {
+            try {
+                var ex = JSON.parse(localStorage.getItem(_pKey) || 'null');
+                if (ex && ex.maxId) {
+                    sections.forEach(function(s, i) {
+                        if (s.getAttribute('id') === ex.maxId) _maxIdx = i;
+                    });
+                }
+            } catch(e) {}
+        })();
+
+        function _saveProgress() {
+            if (!_current) return;
+            var curIdx = -1;
+            sections.forEach(function(s, i) {
+                if (s.getAttribute('id') === _current) curIdx = i;
+            });
+            if (curIdx > _maxIdx) _maxIdx = curIdx; // only advance
+            var maxSec = sections[_maxIdx];
+            if (!maxSec) return;
+            var maxId = maxSec.getAttribute('id');
+            var maxNav = document.querySelector('.nav-item[data-section="' + maxId + '"]');
+            var isComplete = _maxIdx >= sections.length - 1;
+            try {
+                localStorage.setItem(_pKey, JSON.stringify({
+                    id:       maxId,
+                    maxId:    maxId,
+                    label:    maxNav ? (maxNav.querySelector('.nav-label')||{}).textContent||'' : '',
+                    num:      maxNav ? (maxNav.querySelector('.nav-num')||{}).textContent||'' : '',
+                    complete: isComplete,
+                    ts:       Date.now()
+                }));
+            } catch(e) {}
+        }
+
+        // Restore progress: honor URL hash first, then jump to furthest section reached
+        function _restoreProgress() {
+            var targetId = location.hash ? location.hash.substring(1) : null;
+            if (!targetId) {
+                try {
+                    var saved = JSON.parse(localStorage.getItem(_pKey) || 'null');
+                    if (saved && saved.id) targetId = saved.id;
+                } catch(e) {}
+            }
+            if (targetId) {
+                var el = document.getElementById(targetId);
+                if (el) {
+                    setTimeout(function() { el.scrollIntoView({ behavior: 'smooth' }); }, 300);
+                }
+            }
+        }
+        _restoreProgress();
+
+        function updateNavArrows() {
+            btnLeft.classList.toggle('hidden', navContainer.scrollLeft <= 0);
+            btnRight.classList.toggle('hidden',
+                navContainer.scrollLeft + navContainer.clientWidth >= navContainer.scrollWidth - 1);
+        }
+        btnLeft.addEventListener('click', function() {
+            navContainer.scrollBy({ left: -300, behavior: 'smooth' });
+        });
+        btnRight.addEventListener('click', function() {
+            navContainer.scrollBy({ left: 300, behavior: 'smooth' });
+        });
+        navContainer.addEventListener('scroll', updateNavArrows);
+        updateNavArrows();
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+
+            _current = '';
+            sections.forEach(function(section) {
+                var sectionTop = section.offsetTop - 100;
+                if (window.scrollY >= sectionTop) {
+                    _current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(function(item) {
+                item.classList.remove('active');
+                if (item.getAttribute('data-section') === _current) {
+                    item.classList.add('active');
+                    item.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+                }
+            });
+
+            clearTimeout(_saveTimer);
+            _saveTimer = setTimeout(_saveProgress, 500);
+        });
+    });
+    </script>
+
+</body>
+</html>

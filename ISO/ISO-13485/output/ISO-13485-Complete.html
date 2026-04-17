@@ -628,14 +628,23 @@ tr:nth-child(even) {
     font-size: 0.9rem;
 }
 
-/* ===== SECTION TITLES ===== */
+/* ===== SECTION TITLES =====
+   padding-left matches .left-column padding (1.5rem) so the
+   section title text aligns with the start of "原文 Original Text".
+   Border-bottom stays full-width as a visual separator. */
 .section-title,
 .section-divider {
     font-size: 1.1rem;
     color: var(--primary-blue);
     margin: 1.5rem 0 1rem;
-    padding-bottom: 0.5rem;
+    padding: 0 1.5rem 0.5rem 1.5rem;
     border-bottom: 2px solid #e2e8f0;
+    font-weight: 700;
+}
+
+.section-title strong,
+.section-divider strong {
+    font-weight: 700;
 }
 
 .section-divider {
@@ -956,30 +965,30 @@ tr:nth-child(even) {
     </header>
 
     <nav class="top-nav" id="topNav">
-        <button class="nav-scroll-btn hidden" id="navScrollLeft">‹</button>
+        <button class="nav-scroll-btn hidden" id="navScrollLeft">&#8249;</button>
         <div class="nav-container" id="navContainer">
             <a href="#sec1" class="nav-item" data-section="sec1">
                 <span class="nav-num">1</span>
-                <span class="nav-label">Foreword, Introduction &amp; Terms</span>
+                <span class="nav-label">Foreword, Introduction & Terms</span>
             </a>
             <a href="#sec2" class="nav-item" data-section="sec2">
                 <span class="nav-num">2</span>
-                <span class="nav-label">QMS Requirements &amp; Management Responsibility</span>
+                <span class="nav-label">QMS Requirements & Management Responsibility</span>
             </a>
             <a href="#sec3" class="nav-item" data-section="sec3">
                 <span class="nav-num">3</span>
-                <span class="nav-label">Resource Management &amp; Design Controls</span>
+                <span class="nav-label">Resource Management & Design Controls</span>
             </a>
             <a href="#sec4" class="nav-item" data-section="sec4">
                 <span class="nav-num">4</span>
-                <span class="nav-label">Purchasing, Production &amp; Sterile Device Requirements</span>
+                <span class="nav-label">Purchasing, Production & Sterile Device Requirements</span>
             </a>
             <a href="#sec5" class="nav-item" data-section="sec5">
                 <span class="nav-num">5</span>
-                <span class="nav-label">Measurement, Analysis &amp; Improvement + Annexes</span>
+                <span class="nav-label">Measurement, Analysis & Improvement + Annexes</span>
             </a>
         </div>
-        <button class="nav-scroll-btn" id="navScrollRight">›</button>
+        <button class="nav-scroll-btn" id="navScrollRight">&#8250;</button>
     </nav>
 
 <main class="main-content">
@@ -989,92 +998,12 @@ tr:nth-child(even) {
         <div class="chapter-divider">
             <div class="chapter-badge">1</div>
             <div class="chapter-info">
-                <h2>Section 1: Foreword, Introduction &amp; Terms</h2>
+                <h2>Section 1: Foreword, Introduction & Terms</h2>
                 <p>前言、導論與術語定義 | p1-p14</p>
             </div>
         </div>
         <div class="chapter-body">
-            <style>
-/* =============================================================
-   SterileGMP Knowledge Hub - ISO 13485 Section CSS
-   ============================================================= */
-:root {
-    --primary-blue: #1e3a5f;
-    --accent-blue: #3498db;
-    --light-gray: #fafafa;
-    --light-blue: #f0f7ff;
-    --yellow-start: #fff9e6;
-    --yellow-end: #fff3cd;
-    --green-bg: #e8f5e9;
-    --green-border: #4caf50;
-    --orange-bg: #fff3e0;
-    --orange-border: #ff9800;
-    --purple-bg: #f3e5f5;
-    --purple-border: #9c27b0;
-    --text-dark: #2d3748;
-    --text-medium: #4a5568;
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif; line-height: 1.75; color: var(--text-dark); background: #f0f2f5; }
-.header { background: linear-gradient(135deg, #4c1d95 0%, #6d28d9 100%); color: white; padding: 2rem; text-align: center; }
-.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
-.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
-.header .page-info { font-size: 0.8rem; opacity: 0.7; }
-.source-badge { display: inline-block; background: #7c3aed; color: white; font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 4px; letter-spacing: 0.05em; margin-top: 0.4rem; }
-.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
-.two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
-.left-column { background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; }
-.left-column h2 { color: var(--primary-blue); border-bottom: 2px solid #6d28d9; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
-.left-column h3 { color: var(--primary-blue); margin: 1rem 0 0.5rem; font-size: 1rem; }
-.left-column h4 { color: var(--primary-blue); margin: 0.75rem 0 0.4rem; font-size: 0.95rem; }
-.left-column p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
-.left-column ul, .left-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
-.left-column li { margin-bottom: 0.5rem; }
-.right-column { background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #c4b5fd; }
-.right-column h2 { color: #4c1d95; border-bottom: 2px solid #7c3aed; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
-.right-column p { margin-bottom: 0.85rem; font-size: 0.95rem; }
-.section-title { font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
-.key-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
-.quote-box { background: linear-gradient(to right, #e7f3ff, #d6e9ff); border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem; }
-.concept-box { background: var(--green-bg); border-left: 4px solid var(--green-border); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 0.92rem; line-height: 1.7; }
-.concept-box h4 { color: #2e7d32; margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600; }
-.concept-box p, .concept-box ul { margin-bottom: 0.5rem; font-size: 0.92rem; }
-.concept-box ul { margin-left: 1.25rem; }
-.analogy-box { background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%); border-left: 4px solid #f6ad55; border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 0.92rem; line-height: 1.7; }
-.analogy-box h4 { color: #856404; margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600; }
-.analogy-box p { margin-bottom: 0.5rem; font-size: 0.92rem; }
-.note-box { background: var(--orange-bg); border-left: 4px solid var(--orange-border); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 0.92rem; line-height: 1.7; }
-.note-box h4 { color: #c65102; margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600; }
-.note-box p, .note-box ul { margin-bottom: 0.5rem; font-size: 0.92rem; }
-.note-box ul { margin-left: 1.25rem; }
-.practice-box { background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%); border: 2px dashed #3182ce; border-radius: 10px; padding: 1.25rem; margin: 1.25rem 0; font-size: 0.92rem; }
-.practice-box h4 { color: #2c5282; margin-bottom: 0.75rem; font-size: 0.95rem; font-weight: 600; }
-.practice-box ol { margin-left: 1.25rem; }
-.practice-box li { margin-bottom: 0.5rem; font-size: 0.92rem; }
-.learning-objectives { background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
-.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
-.learning-objectives ul { margin-left: 1.25rem; }
-.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
-.term-entry { margin-bottom: 1.25rem; padding: 0.85rem 1rem; background: white; border-radius: 8px; border-left: 3px solid #7c3aed; }
-.term-entry .term-num { font-size: 0.8rem; color: #7c3aed; font-weight: 700; display: block; margin-bottom: 0.2rem; }
-.term-entry .term-name { font-size: 1rem; font-weight: 700; color: var(--primary-blue); display: block; margin-bottom: 0.4rem; }
-.term-entry p { font-size: 0.9rem; margin-bottom: 0.3rem; color: var(--text-medium); }
-.term-entry .term-note { font-size: 0.85rem; color: #718096; font-style: italic; }
-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
-th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
-th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
-tr:nth-child(even) { background: #f7fafc; }
-.main-footer { background: var(--primary-blue); color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
-.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
-@media (max-width: 900px) { .two-column { grid-template-columns: 1fr; } }
-</style>
-
-<!-- SECTION HEADER -->
-<div class="header">
-    <h1>Section 1: Foreword, Introduction, Scope &amp; Terms</h1>
-    <div class="subtitle">前言、導論、範圍與術語定義 — 醫療器械品質管理系統的規範框架</div>
-    <div class="page-info">ISO 13485:2016 | p.v – p.5 | ISO/TC 210</div>
+            <div class="page-info">ISO 13485:2016 | p.v – p.5 | ISO/TC 210</div>
     <div><span class="source-badge">ISO 13485</span></div>
 </div>
 
@@ -1224,10 +1153,6 @@ tr:nth-child(even) { background: #f7fafc; }
             </ul>
             <p>三個條件缺一不可。</p>
         </div>
-        <div class="concept-box">
-            <h4>概念解析：ISO 13485 vs. ISO 9001 的關鍵差異</h4>
-            <p style="margin-top:0.5rem; font-size:0.88rem;"><strong>關鍵：</strong>符合 ISO 13485 <em>不等於</em>符合 ISO 9001；反之亦然。兩者是並行的獨立標準。</p>
-        </div>
         <div class="analogy-box">
             <h4>類比說明："shall" vs. "should" 的實務意義</h4>
             <p>在 ISO 標準語言中，這個區別至關重要：</p>
@@ -1246,7 +1171,11 @@ tr:nth-child(even) { background: #f7fafc; }
     </div>
 </div>
 
-<!-- ====== SCOPE ====== -->
+<div class="concept-box">
+            <h4>概念解析：ISO 13485 vs. ISO 9001 的關鍵差異</h4>
+            <p style="margin-top:0.5rem; font-size:0.88rem;"><strong>關鍵：</strong>符合 ISO 13485 <em>不等於</em>符合 ISO 9001；反之亦然。兩者是並行的獨立標準。</p>
+        </div>
+        <!-- ====== SCOPE ====== -->
 <div class="section-title">Clause 1: Scope — 適用範圍與排除條款</div>
 
 <div class="two-column">
@@ -1554,7 +1483,6 @@ tr:nth-child(even) { background: #f7fafc; }
 </div>
 
 </div><!-- end main-content -->
-
         </div>
     </section>
 
@@ -1563,91 +1491,12 @@ tr:nth-child(even) { background: #f7fafc; }
         <div class="chapter-divider">
             <div class="chapter-badge">2</div>
             <div class="chapter-info">
-                <h2>Section 2: QMS Requirements &amp; Management Responsibility</h2>
+                <h2>Section 2: QMS Requirements & Management Responsibility</h2>
                 <p>QMS要求與管理責任 | p15-p20</p>
             </div>
         </div>
         <div class="chapter-body">
-            <style>
-/* =============================================================
-   SterileGMP Knowledge Hub - ISO 13485 Section CSS
-   ============================================================= */
-:root {
-    --primary-blue: #1e3a5f;
-    --accent-blue: #3498db;
-    --light-gray: #fafafa;
-    --light-blue: #f0f7ff;
-    --yellow-start: #fff9e6;
-    --yellow-end: #fff3cd;
-    --green-bg: #e8f5e9;
-    --green-border: #4caf50;
-    --orange-bg: #fff3e0;
-    --orange-border: #ff9800;
-    --purple-bg: #f3e5f5;
-    --purple-border: #9c27b0;
-    --text-dark: #2d3748;
-    --text-medium: #4a5568;
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif; line-height: 1.75; color: var(--text-dark); background: #f0f2f5; }
-.header { background: linear-gradient(135deg, #4c1d95 0%, #6d28d9 100%); color: white; padding: 2rem; text-align: center; }
-.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
-.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
-.header .page-info { font-size: 0.8rem; opacity: 0.7; }
-.source-badge { display: inline-block; background: #7c3aed; color: white; font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 4px; letter-spacing: 0.05em; margin-top: 0.4rem; }
-.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
-.two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
-.left-column { background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; }
-.left-column h2 { color: var(--primary-blue); border-bottom: 2px solid #6d28d9; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
-.left-column h3 { color: var(--primary-blue); margin: 1rem 0 0.5rem; font-size: 1rem; }
-.left-column h4 { color: var(--primary-blue); margin: 0.75rem 0 0.4rem; font-size: 0.95rem; }
-.left-column p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
-.left-column ul, .left-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
-.left-column li { margin-bottom: 0.5rem; }
-.right-column { background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #c4b5fd; }
-.right-column h2 { color: #4c1d95; border-bottom: 2px solid #7c3aed; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
-.right-column p { margin-bottom: 0.85rem; font-size: 0.95rem; }
-.section-title { font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
-.key-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
-.quote-box { background: linear-gradient(to right, #e7f3ff, #d6e9ff); border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem; }
-.concept-box { background: var(--green-bg); border-left: 4px solid var(--green-border); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 0.92rem; line-height: 1.7; }
-.concept-box h4 { color: #2e7d32; margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600; }
-.concept-box p, .concept-box ul { margin-bottom: 0.5rem; font-size: 0.92rem; }
-.concept-box ul { margin-left: 1.25rem; }
-.analogy-box { background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%); border-left: 4px solid #f6ad55; border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 0.92rem; line-height: 1.7; }
-.analogy-box h4 { color: #856404; margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600; }
-.analogy-box p { margin-bottom: 0.5rem; font-size: 0.92rem; }
-.note-box { background: var(--orange-bg); border-left: 4px solid var(--orange-border); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 0.92rem; line-height: 1.7; }
-.note-box h4 { color: #c65102; margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600; }
-.note-box p, .note-box ul { margin-bottom: 0.5rem; font-size: 0.92rem; }
-.note-box ul { margin-left: 1.25rem; }
-.practice-box { background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%); border: 2px dashed #3182ce; border-radius: 10px; padding: 1.25rem; margin: 1.25rem 0; font-size: 0.92rem; }
-.practice-box h4 { color: #2c5282; margin-bottom: 0.75rem; font-size: 0.95rem; font-weight: 600; }
-.practice-box ol { margin-left: 1.25rem; }
-.practice-box li { margin-bottom: 0.5rem; font-size: 0.92rem; }
-.learning-objectives { background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
-.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
-.learning-objectives ul { margin-left: 1.25rem; }
-.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
-.req-block { background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem; margin-bottom: 0.75rem; }
-.req-block .req-id { display: inline-block; background: #7c3aed; color: white; font-size: 0.75rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 3px; margin-bottom: 0.4rem; }
-.req-block p { font-size: 0.9rem; margin-bottom: 0.3rem; }
-.req-block ul { margin-left: 1.25rem; font-size: 0.9rem; }
-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
-th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
-th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
-tr:nth-child(even) { background: #f7fafc; }
-.main-footer { background: var(--primary-blue); color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
-.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
-@media (max-width: 900px) { .two-column { grid-template-columns: 1fr; } }
-</style>
-
-<!-- SECTION HEADER -->
-<div class="header">
-    <h1>Section 2: QMS Requirements &amp; Management Responsibility</h1>
-    <div class="subtitle">品質管理系統要求與管理責任 — Clauses 4 &amp; 5</div>
-    <div class="page-info">ISO 13485:2016 | p.6 – p.11 | Clauses 4.1–5.6</div>
+            <div class="page-info">ISO 13485:2016 | p.6 – p.11 | Clauses 4.1–5.6</div>
     <div><span class="source-badge">ISO 13485</span></div>
 </div>
 
@@ -1833,11 +1682,6 @@ tr:nth-child(even) { background: #f7fafc; }
     <div class="right-column">
         <h2>導師解析 Tutorial Commentary</h2>
         <div class="concept-box">
-            <h4>概念解析：QMS 文件層次架構</h4>
-            <p>ISO 13485 的文件體系構成一個金字塔：</p>
-            <p>ISO 13485 比 ISO 9001 更嚴格的地方在於：<strong>Legal 4 適用法規文件</strong>（如 FDA 法規、CE 技術文件）也是文件體系的一部分，需納入管制。</p>
-        </div>
-        <div class="concept-box">
             <h4>概念解析：Medical Device File（4.2.3）— ISO 13485 的核心創新</h4>
             <p>MDF 是 ISO 13485 相對於 ISO 9001 最具特色的獨特要求。它不是一份單一文件，而是<strong>一套文件集合</strong>：</p>
             <ul>
@@ -1899,7 +1743,12 @@ tr:nth-child(even) { background: #f7fafc; }
     </div>
 </div>
 
-<!-- ====== CLAUSE 5.1-5.4 ====== -->
+<div class="concept-box">
+            <h4>概念解析：QMS 文件層次架構</h4>
+            <p>ISO 13485 的文件體系構成一個金字塔：</p>
+            <p>ISO 13485 比 ISO 9001 更嚴格的地方在於：<strong>Legal 4 適用法規文件</strong>（如 FDA 法規、CE 技術文件）也是文件體系的一部分，需納入管制。</p>
+        </div>
+        <!-- ====== CLAUSE 5.1-5.4 ====== -->
 <div class="section-title">Clause 5.1–5.4 — 管理責任：承諾、客戶焦點、方針與規劃</div>
 
 <div class="two-column">
@@ -1953,11 +1802,6 @@ tr:nth-child(even) { background: #f7fafc; }
             </ul>
             <p>若稽核員發現管理審查由 QA 副理代替 CEO 主持，這可能構成 5.1 的 Observation——「Top Management 未直接提供承諾的證據」。</p>
         </div>
-        <div class="concept-box">
-            <h4>概念解析：5.3 品質方針 — 與 ISO 9001 的關鍵差異</h4>
-            <p>這是一個微妙但重要的差異：</p>
-            <p><strong>實務意義</strong>：ISO 13485 的品質方針不必承諾「持續改進」——這反映了監管邏輯：法規要的是<strong>一致性合規</strong>，而非開放式的改善承諾。但若組織的品質方針同時聲稱符合 ISO 9001，則必須加回持續改進承諾。</p>
-        </div>
         <div class="note-box">
             <h4>重點提示：5.4.1 品質目標必須包含法規要求</h4>
             <p>ISO 13485 在 5.4.1 明確要求品質目標需包含「適用法規要求所需的目標」。這意味著：</p>
@@ -1975,7 +1819,12 @@ tr:nth-child(even) { background: #f7fafc; }
     </div>
 </div>
 
-<!-- ====== CLAUSE 5.5-5.6 ====== -->
+<div class="concept-box">
+            <h4>概念解析：5.3 品質方針 — 與 ISO 9001 的關鍵差異</h4>
+            <p>這是一個微妙但重要的差異：</p>
+            <p><strong>實務意義</strong>：ISO 13485 的品質方針不必承諾「持續改進」——這反映了監管邏輯：法規要的是<strong>一致性合規</strong>，而非開放式的改善承諾。但若組織的品質方針同時聲稱符合 ISO 9001，則必須加回持續改進承諾。</p>
+        </div>
+        <!-- ====== CLAUSE 5.5-5.6 ====== -->
 <div class="section-title">Clause 5.5–5.6 — 責任與授權、內部溝通、管理審查</div>
 
 <div class="two-column">
@@ -2089,7 +1938,6 @@ tr:nth-child(even) { background: #f7fafc; }
 </div>
 
 </div><!-- end main-content -->
-
         </div>
     </section>
 
@@ -2098,7 +1946,7 @@ tr:nth-child(even) { background: #f7fafc; }
         <div class="chapter-divider">
             <div class="chapter-badge">3</div>
             <div class="chapter-info">
-                <h2>Section 3: Resource Management &amp; Design Controls</h2>
+                <h2>Section 3: Resource Management & Design Controls</h2>
                 <p>資源管理與設計管制 | p21-p25</p>
             </div>
         </div>
@@ -2155,11 +2003,6 @@ tr:nth-child(even) { background: #f7fafc; }
     </div>
     <div class="right-column">
         <h2>導師解析 Tutorial Commentary</h2>
-        <div class="concept-box">
-            <h4>概念解析：6.2 的「勝任能力」要求 vs. ISO 9001</h4>
-            <p>ISO 13485 的 6.2 在文字上與 ISO 9001 相近，但實務要求更嚴格：</p>
-            <p>對無菌 CDMO：潔淨室操作員、滅菌驗證工程師、QC 分析員的培訓記錄必須包含初始鑑定、定期重新培訓、有效性評估三個層次。</p>
-        </div>
         <div class="note-box">
             <h4>6.3 Infrastructure：CDMO 的重要細節</h4>
             <p>「防止產品混淆（prevent product mix-up）」是 ISO 13485 6.3 特別提及的要求，在 ISO 9001 中沒有此明確措辭。</p>
@@ -2177,7 +2020,12 @@ tr:nth-child(even) { background: #f7fafc; }
     </div>
 </div>
 
-<!-- ====== 6.4 WORK ENVIRONMENT & CONTAMINATION CONTROL ====== -->
+<div class="concept-box">
+            <h4>概念解析：6.2 的「勝任能力」要求 vs. ISO 9001</h4>
+            <p>ISO 13485 的 6.2 在文字上與 ISO 9001 相近，但實務要求更嚴格：</p>
+            <p>對無菌 CDMO：潔淨室操作員、滅菌驗證工程師、QC 分析員的培訓記錄必須包含初始鑑定、定期重新培訓、有效性評估三個層次。</p>
+        </div>
+        <!-- ====== 6.4 WORK ENVIRONMENT & CONTAMINATION CONTROL ====== -->
 <div class="section-title">Clause 6.4: Work Environment and Contamination Control — 工作環境與污染管制</div>
 
 <div class="two-column">
@@ -2199,11 +2047,6 @@ tr:nth-child(even) { background: #f7fafc; }
     </div>
     <div class="right-column">
         <h2>導師解析 Tutorial Commentary</h2>
-        <div class="concept-box">
-            <h4>概念解析：6.4.2 — ISO 13485 獨有的污染管制條款</h4>
-            <p>6.4.2 是 ISO 13485 特有的條款，ISO 9001 中不存在。它有兩個層次的要求：</p>
-            <p>實務涵義：無菌醫療器材製造商必須書面定義：在哪些製程步驟、需要維持哪個潔淨等級（如 ISO 5 / ISO 7 / ISO 8），以及如何監控（如 EM 計劃、微粒監測）。</p>
-        </div>
         <div class="note-box">
             <h4>CDMO 關鍵：6.4.2 連結至整個無菌作業體系</h4>
             <p>對無菌充填 CDMO，6.4.2 是最直接相關的資源管理條款：</p>
@@ -2229,7 +2072,12 @@ tr:nth-child(even) { background: #f7fafc; }
     </div>
 </div>
 
-<!-- ====== 7.1 PRODUCT REALIZATION PLANNING ====== -->
+<div class="concept-box">
+            <h4>概念解析：6.4.2 — ISO 13485 獨有的污染管制條款</h4>
+            <p>6.4.2 是 ISO 13485 特有的條款，ISO 9001 中不存在。它有兩個層次的要求：</p>
+            <p>實務涵義：無菌醫療器材製造商必須書面定義：在哪些製程步驟、需要維持哪個潔淨等級（如 ISO 5 / ISO 7 / ISO 8），以及如何監控（如 EM 計劃、微粒監測）。</p>
+        </div>
+        <!-- ====== 7.1 PRODUCT REALIZATION PLANNING ====== -->
 <div class="section-title">Clause 7.1–7.2: Product Realization Planning &amp; Customer-Related Processes — 產品實現規劃與客戶相關流程</div>
 
 <div class="two-column">
@@ -2356,11 +2204,6 @@ tr:nth-child(even) { background: #f7fafc; }
     </div>
     <div class="right-column">
         <h2>導師解析 Tutorial Commentary</h2>
-        <div class="concept-box">
-            <h4>概念解析：ISO 13485 的 7.3 為何是所有 ISO 標準中最嚴格的設計管制？</h4>
-            <p>ISO 13485 的 7.3 共有 10 個子條款，遠超 ISO 9001（僅 7.3.1–7.3.7 共 7 項）。額外要求包括：</p>
-            <p>7.3.2 的規劃文件必須隨設計進展持續更新，意味著 D&amp;D Plan 不是靜態文件，而是動態管理工具。</p>
-        </div>
         <div class="note-box">
             <h4>7.3.3 輸入 vs. 7.3.4 輸出：可追溯矩陣的重要性</h4>
             <p>7.3.3 輸入（設計需求）必須能在 7.3.4 輸出（規格/圖面/程序）中一一對應。業界用<strong>設計追溯矩陣（Design Traceability Matrix / RTM）</strong>記錄此對應關係：</p>
@@ -2380,8 +2223,13 @@ tr:nth-child(even) { background: #f7fafc; }
     </div>
 </div>
 
-<!-- ====== 7.3.6 to 7.3.10 ====== -->
-<div class="section-title">Clause 7.3.6–7.3.10: Verification, Validation, Transfer, Change Control &amp; D&amp;D File</div>
+<div class="concept-box">
+            <h4>概念解析：ISO 13485 的 7.3 為何是所有 ISO 標準中最嚴格的設計管制？</h4>
+            <p>ISO 13485 的 7.3 共有 10 個子條款，遠超 ISO 9001（僅 7.3.1–7.3.7 共 7 項）。額外要求包括：</p>
+            <p>7.3.2 的規劃文件必須隨設計進展持續更新，意味著 D&amp;D Plan 不是靜態文件，而是動態管理工具。</p>
+        </div>
+        <!-- ====== 7.3.6 to 7.3.10 ====== -->
+<div class="section-title"><strong>Clause 7.3.6–7.3.10: Verification, Validation, Transfer, Change Control &amp; D&amp;D File Clause 7.3.6–7.3.10：驗證、確認、移轉、變更控制與設計開發檔案</strong></div>
 
 <div class="two-column">
     <div class="left-column">
@@ -2412,11 +2260,6 @@ tr:nth-child(even) { background: #f7fafc; }
     </div>
     <div class="right-column">
         <h2>導師解析 Tutorial Commentary</h2>
-        <div class="concept-box">
-            <h4>概念解析：驗證（Verification）vs. 確認（Validation）的本質區別</h4>
-            <p>這是醫療器材法規中最常被混淆的兩個概念：</p>
-            <p>7.3.7 明確規定：確認必須使用「代表性產品，包括初期生產批次或相當品」。這意味著不能用手工樣品做設計確認——必須是接近最終生產條件的批次。</p>
-        </div>
         <div class="note-box">
             <h4>7.3.8 設計轉移：CDMO 最直接的相關條款</h4>
             <p>對 CDMO 而言，7.3.8 是整個 7.3 最直接相關的條款：</p>
@@ -2464,7 +2307,12 @@ tr:nth-child(even) { background: #f7fafc; }
     </div>
 </div>
 
-<!-- SECTION SUMMARY -->
+<div class="concept-box">
+            <h4>概念解析：驗證（Verification）vs. 確認（Validation）的本質區別</h4>
+            <p>這是醫療器材法規中最常被混淆的兩個概念：</p>
+            <p>7.3.7 明確規定：確認必須使用「代表性產品，包括初期生產批次或相當品」。這意味著不能用手工樣品做設計確認——必須是接近最終生產條件的批次。</p>
+        </div>
+        <!-- SECTION SUMMARY -->
 <div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
     <h3>本節重點回顧 Section Summary</h3>
     <ul>
@@ -2478,8 +2326,7 @@ tr:nth-child(even) { background: #f7fafc; }
 </div>
 
 </div>
-
-        
+        </div>
     </section>
 
     <!-- ========== Section 4: Purchasing, Production & Sterile Device Requirements ========== -->
@@ -2487,7 +2334,7 @@ tr:nth-child(even) { background: #f7fafc; }
         <div class="chapter-divider">
             <div class="chapter-badge">4</div>
             <div class="chapter-info">
-                <h2>Section 4: Purchasing, Production &amp; Sterile Device Requirements</h2>
+                <h2>Section 4: Purchasing, Production & Sterile Device Requirements</h2>
                 <p>採購、生產及無菌器材特殊要求 | p26-p34</p>
             </div>
         </div>
@@ -2546,11 +2393,6 @@ tr:nth-child(even) { background: #f7fafc; }
     </div>
     <div class="right-column">
         <h2>導師解析 Tutorial Commentary</h2>
-        <div class="concept-box">
-            <h4>概念解析：7.4.1 的「風險比例」原則 — 分級供應商管理的法規依據</h4>
-            <p>ISO 13485 在 7.4.1 明確要求評鑑標準「與醫療器材相關風險成比例」，這直接支持業界廣泛採用的<strong>分級供應商管理（Tiered Supplier Management）</strong>體系：</p>
-            <p>7.4.1 同時要求「非履行採購要求」的處理也需與風險成比例——對關鍵供應商的重大不符合，可能觸發供應商暫停或取消資格。</p>
-        </div>
         <div class="note-box">
             <h4>7.4.2 的「變更通知協議」：供應商管理的關鍵保障</h4>
             <p>7.4.2 要求採購文件中包含<strong>供應商變更通知書面協議（Change Notification Agreement）</strong>，這在實務中通常以<strong>品質技術協議（Quality Technical Agreement, QTA）</strong>的形式落實。</p>
@@ -2577,7 +2419,12 @@ tr:nth-child(even) { background: #f7fafc; }
     </div>
 </div>
 
-<!-- ====== 7.5.1 to 7.5.5 ====== -->
+<div class="concept-box">
+            <h4>概念解析：7.4.1 的「風險比例」原則 — 分級供應商管理的法規依據</h4>
+            <p>ISO 13485 在 7.4.1 明確要求評鑑標準「與醫療器材相關風險成比例」，這直接支持業界廣泛採用的<strong>分級供應商管理（Tiered Supplier Management）</strong>體系：</p>
+            <p>7.4.1 同時要求「非履行採購要求」的處理也需與風險成比例——對關鍵供應商的重大不符合，可能觸發供應商暫停或取消資格。</p>
+        </div>
+        <!-- ====== 7.5.1 to 7.5.5 ====== -->
 <div class="section-title">Clause 7.5.1–7.5.5: Production Control &amp; Sterile Medical Device Requirements — 生產管制與無菌器材要求</div>
 
 <div class="two-column">
@@ -2676,11 +2523,6 @@ tr:nth-child(even) { background: #f7fafc; }
     </div>
     <div class="right-column">
         <h2>導師解析 Tutorial Commentary</h2>
-        <div class="concept-box">
-            <h4>概念解析：7.5.6 特殊製程 — 哪些製程必須驗證？</h4>
-            <p>7.5.6 的核心定義：「輸出無法或未以後續監控或量測驗證」的製程即為特殊製程（Special Process），必須進行製程驗證。無菌醫療器材製造中的特殊製程包括：</p>
-            <p>7.5.6 的驗證文件體系（IQ → OQ → PQ）是對應要求 (b)（設備鑑定）+ (c)（方法與接受標準）+ (f)（再驗證準則）的直接實踐。</p>
-        </div>
         <div class="note-box">
             <h4>7.5.7 滅菌及無菌屏障驗證的再驗證觸發條件</h4>
             <p>7.5.7 要求「實施前」及「產品或製程變更後（適當情況下）」進行驗證。業界根據此要求定義再驗證觸發事件（Revalidation Triggers）：</p>
@@ -2713,8 +2555,13 @@ tr:nth-child(even) { background: #f7fafc; }
     </div>
 </div>
 
-<!-- ====== 7.5.8 to 7.5.11 ====== -->
-<div class="section-title">Clause 7.5.8–7.5.11: Identification, Traceability, Customer Property &amp; Preservation</div>
+<div class="concept-box">
+            <h4>概念解析：7.5.6 特殊製程 — 哪些製程必須驗證？</h4>
+            <p>7.5.6 的核心定義：「輸出無法或未以後續監控或量測驗證」的製程即為特殊製程（Special Process），必須進行製程驗證。無菌醫療器材製造中的特殊製程包括：</p>
+            <p>7.5.6 的驗證文件體系（IQ → OQ → PQ）是對應要求 (b)（設備鑑定）+ (c)（方法與接受標準）+ (f)（再驗證準則）的直接實踐。</p>
+        </div>
+        <!-- ====== 7.5.8 to 7.5.11 ====== -->
+<div class="section-title"><strong>Clause 7.5.8–7.5.11: Identification, Traceability, Customer Property &amp; Preservation Clause 7.5.8–7.5.11：識別、追溯性、顧客財產與防護</strong></div>
 
 <div class="two-column">
     <div class="left-column">
@@ -2745,11 +2592,6 @@ tr:nth-child(even) { background: #f7fafc; }
     </div>
     <div class="right-column">
         <h2>導師解析 Tutorial Commentary</h2>
-        <div class="concept-box">
-            <h4>概念解析：7.5.9 可追溯性要求 — ISO 13485 vs. ISO 9001 的關鍵差異</h4>
-            <p>ISO 13485 的追溯性要求明顯強於 ISO 9001：</p>
-            <p>對植入式醫療器材（如骨科植入物、心臟支架等）：CDMO 的批次記錄必須包含每個組件的批號、每種材料的規格與批號、生產時的環境條件（溫度、濕度、潔淨度記錄）。</p>
-        </div>
         <div class="note-box">
             <h4>7.5.8 UDI（唯一設備識別碼）的合規要求</h4>
             <p>7.5.8 提到「如法規要求，應建立 UDI 系統」。目前主要法規要求：</p>
@@ -2785,7 +2627,12 @@ tr:nth-child(even) { background: #f7fafc; }
     </div>
 </div>
 
-<!-- ====== 7.6 MONITORING AND MEASURING EQUIPMENT ====== -->
+<div class="concept-box">
+            <h4>概念解析：7.5.9 可追溯性要求 — ISO 13485 vs. ISO 9001 的關鍵差異</h4>
+            <p>ISO 13485 的追溯性要求明顯強於 ISO 9001：</p>
+            <p>對植入式醫療器材（如骨科植入物、心臟支架等）：CDMO 的批次記錄必須包含每個組件的批號、每種材料的規格與批號、生產時的環境條件（溫度、濕度、潔淨度記錄）。</p>
+        </div>
+        <!-- ====== 7.6 MONITORING AND MEASURING EQUIPMENT ====== -->
 <div class="section-title">Clause 7.6: Control of Monitoring and Measuring Equipment — 監控與量測設備管制</div>
 
 <div class="two-column">
@@ -2823,11 +2670,6 @@ tr:nth-child(even) { background: #f7fafc; }
             </ul>
             <p>這是 GMP 中「設備可疑狀態（Equipment Out-of-Tolerance）」事件處理的法規依據，必須以 CAPA 或偏差調查文件化。</p>
         </div>
-        <div class="note-box">
-            <h4>7.6 量測軟體驗證：與 7.5.6 的區別</h4>
-            <p>7.5.6 要求驗證「生產製程用軟體」；7.6 要求驗證「監控與量測用軟體」。兩者範疇不同：</p>
-            <p>7.6 的軟體驗證重點是：確保軟體輸出的量測數據是準確、完整且不可偽造的。LIMS（實驗室資訊管理系統）是最典型的 7.6 驗證對象。</p>
-        </div>
         <div class="analogy-box">
             <h4>類比說明：校正追溯與「可疑批次」評估</h4>
             <p>想像一家每天使用體重秤測量食品重量的工廠。如果某天發現秤少稱了 5%（超出容許誤差），必須追問：「這台秤上次合格校正是什麼時候？上次合格到發現失效之間，有多少批產品用這台秤放行了？」這些產品的重量記錄現在需要被質疑。醫療器材的量測設備失效處理完全相同——而且後果更嚴重，因為量測結果直接關係到患者安全。7.6 要求的「回溯評估」正是確保品質系統能發現並糾正這類漏網之魚。</p>
@@ -2843,7 +2685,12 @@ tr:nth-child(even) { background: #f7fafc; }
     </div>
 </div>
 
-<!-- SECTION SUMMARY -->
+<div class="note-box">
+            <h4>7.6 量測軟體驗證：與 7.5.6 的區別</h4>
+            <p>7.5.6 要求驗證「生產製程用軟體」；7.6 要求驗證「監控與量測用軟體」。兩者範疇不同：</p>
+            <p>7.6 的軟體驗證重點是：確保軟體輸出的量測數據是準確、完整且不可偽造的。LIMS（實驗室資訊管理系統）是最典型的 7.6 驗證對象。</p>
+        </div>
+        <!-- SECTION SUMMARY -->
 <div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
     <h3>本節重點回顧 Section Summary</h3>
     <ul>
@@ -2857,8 +2704,7 @@ tr:nth-child(even) { background: #f7fafc; }
 </div>
 
 </div>
-
-        
+        </div>
     </section>
 
     <!-- ========== Section 5: Measurement, Analysis & Improvement + Annexes ========== -->
@@ -2866,7 +2712,7 @@ tr:nth-child(even) { background: #f7fafc; }
         <div class="chapter-divider">
             <div class="chapter-badge">5</div>
             <div class="chapter-info">
-                <h2>Section 5: Measurement, Analysis &amp; Improvement + Annexes</h2>
+                <h2>Section 5: Measurement, Analysis & Improvement + Annexes</h2>
                 <p>量測分析改善與附錄 | p35-p44</p>
             </div>
         </div>
@@ -2991,12 +2837,6 @@ tr:nth-child(even) { background: #f7fafc; }
             <p><strong>注意「alleges」這個詞</strong>：不需要投訴被證實為事實，只要有人聲稱有缺陷，就構成 complaint。即使最終調查發現是使用者操作錯誤，仍必須作為 complaint 記錄並完成調查流程。</p>
             <p><strong>Near miss 的挑戰</strong>：用戶回報「差一點就出問題」是否構成 complaint？ISO 13485 的回答是：如果溝通「聲稱」裝置有安全性或性能缺陷，即使事故未實際發生，也可能構成 complaint。</p>
         </div>
-        <div class="note-box">
-            <h4>投訴 vs. 通報的決策流程</h4>
-            <p>收到投訴後，需要做兩個獨立判斷：</p>
-            <p><strong>重要</strong>：「已上市的裝置」不包括還在 CDMO 廠內的在製品。CDMO 移交給客戶（品牌製造商）後，如果客戶尚未出貨，通報義務由品牌製造商判斷，而非 CDMO。</p>
-            <p>即使不需通報，投訴記錄仍是強制的。「<strong>Records shall be maintained for each complaint received</strong>」是絕對要求。</p>
-        </div>
         <div class="practice-box">
             <h4>實務思考：CDMO 的投訴處理架構</h4>
             <p>CDMO 是「受委託製造商」，通常不是法規意義上的「製造商（legal manufacturer）」。但投訴處理程序仍必須建立，因為：</p>
@@ -3010,7 +2850,13 @@ tr:nth-child(even) { background: #f7fafc; }
     </div>
 </div>
 
-<!-- ====== CLAUSE 8.2.3 ====== -->
+<div class="note-box">
+            <h4>投訴 vs. 通報的決策流程</h4>
+            <p>收到投訴後，需要做兩個獨立判斷：</p>
+            <p><strong>重要</strong>：「已上市的裝置」不包括還在 CDMO 廠內的在製品。CDMO 移交給客戶（品牌製造商）後，如果客戶尚未出貨，通報義務由品牌製造商判斷，而非 CDMO。</p>
+            <p>即使不需通報，投訴記錄仍是強制的。「<strong>Records shall be maintained for each complaint received</strong>」是絕對要求。</p>
+        </div>
+        <!-- ====== CLAUSE 8.2.3 ====== -->
 <div class="section-title">Clause 8.2.3: 向法規當局通報（Vigilance Reporting）</div>
 
 <div class="two-column">
@@ -3036,11 +2882,6 @@ tr:nth-child(even) { background: #f7fafc; }
     </div>
     <div class="right-column">
         <h2>導師解析 Tutorial Commentary</h2>
-        <div class="concept-box">
-            <h4>概念解析：Vigilance Reporting 的管轄差異</h4>
-            <p>ISO 13485:2016 的 8.2.3 刻意保持「jurisdiction-neutral」——它不規定具體時限，而是要求組織了解並遵從各地法規。主要市場的要求：</p>
-            <p>CDMO 面對多市場客戶時，程序文件需明確規定「如何判斷適用哪個市場的通報要求」——通常依據產品的目標市場（intended market）和品牌製造商的法規主體所在地。</p>
-        </div>
         <div class="note-box">
             <h4>CDMO 的 Vigilance 責任邊界</h4>
             <p>關鍵區別：</p>
@@ -3063,7 +2904,12 @@ tr:nth-child(even) { background: #f7fafc; }
     </div>
 </div>
 
-<!-- ====== CLAUSE 8.2.4 ====== -->
+<div class="concept-box">
+            <h4>概念解析：Vigilance Reporting 的管轄差異</h4>
+            <p>ISO 13485:2016 的 8.2.3 刻意保持「jurisdiction-neutral」——它不規定具體時限，而是要求組織了解並遵從各地法規。主要市場的要求：</p>
+            <p>CDMO 面對多市場客戶時，程序文件需明確規定「如何判斷適用哪個市場的通報要求」——通常依據產品的目標市場（intended market）和品牌製造商的法規主體所在地。</p>
+        </div>
+        <!-- ====== CLAUSE 8.2.4 ====== -->
 <div class="section-title">Clause 8.2.4–8.2.6: 內部稽核與製程/產品監控</div>
 
 <div class="two-column">
@@ -3115,14 +2961,14 @@ tr:nth-child(even) { background: #f7fafc; }
             </ul>
             <p>2016 版新增要求：記錄中還需識別用於量測的「測試設備」（identify the test equipment used）。這確保設備校驗記錄可以和放行決定連結。</p>
         </div>
-        <div class="practice-box">
+        </div>
+</div>
+
+<div class="practice-box">
             <h4>實務思考：CDMO 的稽核計劃設計</h4>
             <p>ISO 13485 要求稽核頻率依「風險」和「上次稽核結果」動態調整。CDMO 可用以下矩陣：</p>
             </div>
-    </div>
-</div>
-
-<!-- ====== CLAUSE 8.3 ====== -->
+    <!-- ====== CLAUSE 8.3 ====== -->
 <div class="section-title">Clause 8.3: 不符合品管制（Control of Nonconforming Product）</div>
 
 <div class="two-column">
@@ -3157,11 +3003,6 @@ tr:nth-child(even) { background: #f7fafc; }
     </div>
     <div class="right-column">
         <h2>導師解析 Tutorial Commentary</h2>
-        <div class="concept-box">
-            <h4>概念解析：8.3 的四層架構</h4>
-            <p>2016 版將 8.3 從一個整合條款拆分為四個子條款，清晰對應四種情境：</p>
-            <p>2016 版相比 2003 版的核心新增：將「讓步（concession）」和「諮詢通知（advisory notice）」的記錄要求明文化，以及強制返工前做風險分析。</p>
-        </div>
         <div class="note-box">
             <h4>8.3.3 交貨後不符合品 = Field Action 的法律框架</h4>
             <p>8.3.3 是整個 Clause 8 中「法律後果最重大」的條款。一旦觸發，可能涉及：</p>
@@ -3193,7 +3034,12 @@ tr:nth-child(even) { background: #f7fafc; }
     </div>
 </div>
 
-<!-- ====== CLAUSE 8.4 ====== -->
+<div class="concept-box">
+            <h4>概念解析：8.3 的四層架構</h4>
+            <p>2016 版將 8.3 從一個整合條款拆分為四個子條款，清晰對應四種情境：</p>
+            <p>2016 版相比 2003 版的核心新增：將「讓步（concession）」和「諮詢通知（advisory notice）」的記錄要求明文化，以及強制返工前做風險分析。</p>
+        </div>
+        <!-- ====== CLAUSE 8.4 ====== -->
 <div class="section-title">Clause 8.4: 數據分析（Analysis of Data）</div>
 
 <div class="two-column">
@@ -3426,10 +3272,6 @@ Preventive Action（預防措施）：
     </div>
     <div class="right-column">
         <h2>導師解析 Tutorial Commentary</h2>
-        <div class="concept-box">
-            <h4>概念解析：兩個標準的「設計哲學差異」</h4>
-            <p>ISO 9001 和 ISO 13485 雖然外形相似，但設計哲學不同：</p>
-            </div>
         <div class="note-box">
             <h4>為什麼 ISO 13485 保留了 8.5.3 Preventive Action？</h4>
             <p>ISO 9001:2015 移除了獨立的 Preventive Action 條款，將其整合入「risk-based thinking」（6.1）的廣泛框架。ISO 13485:2016 選擇<strong>保留</strong> 8.5.3，原因：</p>
@@ -3459,7 +3301,11 @@ Preventive Action（預防措施）：
     </div>
 </div>
 
-<!-- ====== FINAL SUMMARY ====== -->
+<div class="concept-box">
+            <h4>概念解析：兩個標準的「設計哲學差異」</h4>
+            <p>ISO 9001 和 ISO 13485 雖然外形相似，但設計哲學不同：</p>
+            </div>
+        <!-- ====== FINAL SUMMARY ====== -->
 <div class="learning-objectives" style="background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%);">
     <h3>ISO 13485:2016 Clause 8 + Annexes — 整體學習總結</h3>
     <ul>
@@ -3473,13 +3319,16 @@ Preventive Action（預防措施）：
 </div>
 
 </div>
-
-        
+        </div>
     </section>
 
 </main>
 
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">⇧</button>
+    <footer class="main-footer">
+        <p>SterileGMP Knowledge Hub — 僅供學習參考</p>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -3592,11 +3441,6 @@ Preventive Action（預防措施）：
         });
     });
     </script>
-
-
-<footer class="main-footer">
-    <p>SterileGMP Knowledge Hub — 僅供學習參考</p>
-</footer>
 
 </body>
 </html>

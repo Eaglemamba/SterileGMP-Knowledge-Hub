@@ -628,14 +628,23 @@ tr:nth-child(even) {
     font-size: 0.9rem;
 }
 
-/* ===== SECTION TITLES ===== */
+/* ===== SECTION TITLES =====
+   padding-left matches .left-column padding (1.5rem) so the
+   section title text aligns with the start of "原文 Original Text".
+   Border-bottom stays full-width as a visual separator. */
 .section-title,
 .section-divider {
     font-size: 1.1rem;
     color: var(--primary-blue);
     margin: 1.5rem 0 1rem;
-    padding-bottom: 0.5rem;
+    padding: 0 1.5rem 0.5rem 1.5rem;
     border-bottom: 2px solid #e2e8f0;
+    font-weight: 700;
+}
+
+.section-title strong,
+.section-divider strong {
+    font-weight: 700;
 }
 
 .section-divider {
@@ -956,11 +965,11 @@ tr:nth-child(even) {
     </header>
 
     <nav class="top-nav" id="topNav">
-        <button class="nav-scroll-btn hidden" id="navScrollLeft">‹</button>
+        <button class="nav-scroll-btn hidden" id="navScrollLeft">&#8249;</button>
         <div class="nav-container" id="navContainer">
             <a href="#sec0" class="nav-item" data-section="sec0">
                 <span class="nav-num">0</span>
-                <span class="nav-label">Intro &amp; Glossary</span>
+                <span class="nav-label">Intro & Glossary</span>
             </a>
             <a href="#sec1" class="nav-item" data-section="sec1">
                 <span class="nav-num">1</span>
@@ -968,10 +977,10 @@ tr:nth-child(even) {
             </a>
             <a href="#sec2" class="nav-item" data-section="sec2">
                 <span class="nav-num">2-3</span>
-                <span class="nav-label">Regulatory &amp; Implementation</span>
+                <span class="nav-label">Regulatory & Implementation</span>
             </a>
         </div>
-        <button class="nav-scroll-btn" id="navScrollRight">›</button>
+        <button class="nav-scroll-btn" id="navScrollRight">&#8250;</button>
     </nav>
 
 <main class="main-content">
@@ -981,7 +990,7 @@ tr:nth-child(even) {
         <div class="chapter-divider">
             <div class="chapter-badge">0</div>
             <div class="chapter-info">
-                <h2>Topic 0: Intro &amp; Glossary</h2>
+                <h2>Topic 0: Intro & Glossary</h2>
                 <p>導論與術語 | p1-p4</p>
             </div>
         </div>
@@ -1326,23 +1335,7 @@ MMU（行動製造單元）
 </div><!-- end .main-content -->
 
 <!-- ===== BACK TO TOP ===== -->
-<button class="back-to-top" id="backToTop" title="回到頂部">⇧</button>
-
-<script>
-    // Back to top button
-    const backToTopBtn = document.getElementById('backToTop');
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 300) {
-            backToTopBtn.classList.add('visible');
-        } else {
-            backToTopBtn.classList.remove('visible');
-        }
-    });
-    backToTopBtn.addEventListener('click', function() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-</script>
-        
+        </div>
     </section>
 
     <!-- ========== Topic 1: Technology ========== -->
@@ -2015,23 +2008,7 @@ MMU（行動製造單元）
 </div><!-- end .main-content -->
 
 <!-- ===== BACK TO TOP ===== -->
-<button class="back-to-top" id="backToTop" title="Back to top">⇧</button>
-
-<script>
-    // Back to top button
-    const backToTop = document.getElementById('backToTop');
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 400) {
-            backToTop.classList.add('visible');
-        } else {
-            backToTop.classList.remove('visible');
-        }
-    });
-    backToTop.addEventListener('click', function() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-</script>
-        
+        </div>
     </section>
 
     <!-- ========== Topic 2-3: Regulatory & Implementation ========== -->
@@ -2039,7 +2016,7 @@ MMU（行動製造單元）
         <div class="chapter-divider">
             <div class="chapter-badge">2-3</div>
             <div class="chapter-info">
-                <h2>Topic 2-3: Regulatory &amp; Implementation</h2>
+                <h2>Topic 2-3: Regulatory & Implementation</h2>
                 <p>法規與實施 | p10-p16</p>
             </div>
         </div>
@@ -2221,11 +2198,6 @@ MMU（行動製造單元）
         <div class="right-column">
             <h3>申報機制深度解析 — 繁體中文</h3>
 
-            <div class="concept-box">
-                <h4>美國 FDA 申報類型對照</h4>
-                <p>MMU 若頻繁搬遷，每次移動都可能觸發 PAS，6–12 個月的審查時間完全抵消了「快速部署」的商業優勢。</p>
-            </div>
-
             <div class="formula-box">
                 <h4>法規申報負擔計算</h4>
                 <pre>
@@ -2261,7 +2233,12 @@ MMU（行動製造單元）
         </div>
     </div>
 
-    <!-- ============================================================ -->
+    <div class="concept-box">
+                <h4>美國 FDA 申報類型對照</h4>
+                <p>MMU 若頻繁搬遷，每次移動都可能觸發 PAS，6–12 個月的審查時間完全抵消了「快速部署」的商業優勢。</p>
+            </div>
+
+            <!-- ============================================================ -->
     <!-- Q2.2 SECTION                                                  -->
     <!-- ============================================================ -->
     <div id="q22">
@@ -2809,25 +2786,16 @@ Output: Validation scope = systems in Steps 1+2+3
 </div>
 
 <!-- ===== BACK TO TOP ===== -->
-<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0, behavior:'smooth'})">⇧</button>
-
-<script>
-    // Back to top button visibility
-    window.addEventListener('scroll', function() {
-        var btn = document.getElementById('backToTop');
-        if (window.scrollY > 400) {
-            btn.classList.add('visible');
-        } else {
-            btn.classList.remove('visible');
-        }
-    });
-</script>
-        
+        </div>
     </section>
 
 </main>
 
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">⇧</button>
+    <footer class="main-footer">
+        <p>SterileGMP Knowledge Hub — 僅供學習參考</p>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -2940,11 +2908,6 @@ Output: Validation scope = systems in Steps 1+2+3
         });
     });
     </script>
-
-
-<footer class="main-footer">
-    <p>SterileGMP Knowledge Hub — 僅供學習參考</p>
-</footer>
 
 </body>
 </html>
