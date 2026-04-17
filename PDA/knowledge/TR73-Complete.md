@@ -510,6 +510,8 @@ PDA Technical Report No. 73: Prefilled Syringes | p71 - p76
 
         
 
+        
+
     
 
     
@@ -518,27 +520,15 @@ PDA Technical Report No. 73: Prefilled Syringes | p71 - p76
 
         
 
-The incoming testing strategy should identify the quality attributes to measure, the sampling plan and the acceptance criteria. A statistical analysis should provide the basis for these, including AQL or process capability. The testing methods should be appropriately validated and harmonized with supplier test methods. Upon initial implementation, the control strategy should be closely monitored and improved as needed to ensure its continued suitability.
+Container closure integrity is an important element of the overall sterility assurance program for sterile products. Various layers of controls, including design verification, stacked tolerance, qualification, manufacturing process controls, inspection and handling, process simulation (media fills), microbial challenge testing, and physical challenge testing ensure the integrity of the C/C system. CCI testing should ultimately demonstrate that the PFS can maintain the integrity of its microbial barrier, which is typically a product design criterion.
 
         
 
-### 12.3.3 Semifinished Syringes
+Consideration should be given to CCI testing for the PFS during C/C design, development, and qualification phases, in addition to routine product manufacturing and product shelf-life stability programs. A risk-based, phase-appropriate approach should be used to identify the suitable application of CCI testing.
 
         
 
-A semifinished syringe is one lacking a plunger rod. This term refers to the primary packaging in which the product is filled and sealed. CCI requirements are directly associated with the life cycle of a sterile product. During the development phase, which includes the process parameters, the product design and its specifications, the initial assessment of CCI should encompass worst-case conditions that may explore the limits of the final product and process. This can include the use of components that have undergone preparation process steps (e.g., washing and sterilization) with parameters exceeding the ones that have been defined. For example, a higher irradiation dose for sterilization can be used to demonstrate the absence of impact on the mechanical properties of the elastomeric compounds, and therefore, on the CCI of the product. The use of components from different batches and of different ages is also recommended to ensure that batch-to-batch variability and component degradation over time are adequately addressed. During this development phase, these attributes are commonly assessed via a formal risk assessment of how CCI may be affected and/or whether further evaluations are required. As per regulatory guidance, a robust rationale should be built when the actual product is not used to justify the use of these alternatives (98, 99).
-
-        
-
-The assessment of CCI should follow the evolution of the product/process development. It should encompass any change in the critical parameters of the process or in the primary packaging components. Any change in the process or product should be assessed using a risk-based approach to identify any potential impact on the CCI of the final product and to conduct the appropriate studies.
-
-        
-
-When the product reaches the routine production stage, CCI should be monitored on a predefined basis. Depending on the validation strategy used and the risks identified in the process, this can include in-process checks of the integrity or release testing for integrity of the product. Additionally, it may be necessary to consider the aging of the packaging components until the end of the primary packaging shelf life to determine the potential impact on CCI, depending on applicable regulatory requirements. CCI assessment may also replace sterility testing on stability studies, which is in line with the recommendation from the FDA on CCI testing for sterile products (5).
-
-        
-
-Finally, distribution aspects should receive consideration at any stage of product development. A risk evaluation associated with the different distribution channels of the product should provide the basis for the evaluation (100). Temperatures, vibrations, pressure differences, and the sizes of the air bubbles within finished syringes should also be considered. These variables can have an impact on excessive plunger movement that could lead to a loss of sterility of the product, and should therefore receive a careful assessment, especially for semifinished syringes in which it can be more difficult to prevent plunger movement.
+This section addresses best-practice approaches and considerations for control-strategy development related to CCI and the application of CCI testing to the PFS. The scope spans the temporal continuum, including component manufacturing at suppliers, through the pharmaceutical process of receipt, inspection, primary packaging assembly, secondary packaging, and distribution. It also presents a toolbox approach with the most useful available test methods and approaches to method selection, development, and validation.
 
 ## Section 13: Manufacturing Requirements (p77-p86)
 
