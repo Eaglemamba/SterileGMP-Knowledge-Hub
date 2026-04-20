@@ -31,6 +31,9 @@
 │       ├── workflow-checklist.md   # Post-completion + git push checklists
 │       ├── naming-conventions.md   # This file
 │       └── pitfalls.md             # Known pitfalls catalog
+├── scripts/                # Utility / audit scripts (_lint.py, _fix_section_title_align.py, _analyze_anchors.py, audit .md outputs)
+│   └── legacy/             # One-off / deprecated local scripts (untracked)
+├── archive/                # Superseded files kept for reference (e.g. index-v2.html)
 ├── PDA/                    # PDA documents (each: source/ + sections/ + output/)
 ├── ISPE/                   # ISPE documents (same structure)
 ├── FDA/                    # FDA documents

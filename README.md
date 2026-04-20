@@ -2,7 +2,7 @@
 
 A multi-source GMP knowledge base for sterile pharmaceutical manufacturing — combining human-readable HTML educational guides with a chatbot-ready Markdown knowledge base and a Claude Code skill for conversational access.
 
-Covers **PDA Technical Reports**, **ISPE Guidelines**, **FDA Guidance**, **PIC/S Annexes**, **ICH Guidelines**, **USP Chapters**, **ISO Standards**, and **European Pharmacopoeia (Ph.Eur.)** — all focused on sterile/injectable pharmaceutical manufacturing. **170 documents** across 8 source organizations.
+Covers **PDA Technical Reports**, **ISPE Guidelines**, **FDA Guidance**, **PIC/S Annexes**, **ICH Guidelines**, **USP Chapters**, **ISO Standards**, and **European Pharmacopoeia (Ph.Eur.)** — all focused on sterile/injectable pharmaceutical manufacturing. **182 documents** across 8 source organizations.
 
 ## What's in Here
 
@@ -16,7 +16,7 @@ Covers **PDA Technical Reports**, **ISPE Guidelines**, **FDA Guidance**, **PIC/S
 
 ## Documents Covered
 
-### PDA Technical Reports & Points to Consider (41 complete)
+### PDA Technical Reports & Points to Consider (42 complete)
 
 | Document | Topic |
 |----------|-------|

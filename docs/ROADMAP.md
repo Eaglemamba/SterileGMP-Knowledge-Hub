@@ -2,7 +2,7 @@
 
 This document summarizes the current coverage status, gap analysis, and expansion roadmap for building a comprehensive sterile pharmaceutical manufacturing knowledge hub suitable for COO-level operational decision-making.
 
-Last updated: 2026-04-17 — 182 documents complete (PDA 42, USP 76, ISPE 14, FDA 15, ICH 6, PIC/S 5, ISO 17, Ph.Eur. 7). TR73 expanded from Sections 12–18 partial to full 18-section complete version (+11 bilingual sections, p1–p102); added topic synthesis `knowledge/topics/depyrogenation-tunnel-validation.md`.
+Last updated: 2026-04-20 — 182 documents complete (PDA 42, USP 76, ISPE 14, FDA 15, ICH 6, PIC/S 5, ISO 17, Ph.Eur. 7); renovated root folder structure (utility scripts → `scripts/`, legacy `index-v2.html` → `archive/`). Previously: TR73 expanded from Sections 12–18 partial to full 18-section complete version (+11 bilingual sections, p1–p102); added topic synthesis `knowledge/topics/depyrogenation-tunnel-validation.md`.
 
 ---
 
@@ -167,7 +167,7 @@ Single source of truth for learning path structure. Consumed by `learning-path.h
 | **PIC/S** | 5 | Annex 1 (2022), Annex 2 (ATMPs + Biologics), Annex 15 (Qualification 2023), Annex 20 (QRM), PE 011 (GDP 2014) | ✅ Complete |
 | **ISO** | 17 | 11040 (×8), 13408 (×7), 14644 (Parts 1/5/7), 11608-1, 13485, 10993-1, TR 24971, 15378, 9001, 9000, 2859-1, 15223-1/2, 15394, 13926-1/2/3 | ✅ Complete (2 blocked: 14971 scanned, 15225 font) |
 | **Ph.Eur.** | 7 | 2.6.1, 2.6.14, 2.9.19, 2.9.20, 3.2.1, 3.3.8, 5.1.1 | ✅ Complete |
-| **Total** | **181** | | |
+| **Total** | **182** | | |
 
 ### USP Batch History
 
