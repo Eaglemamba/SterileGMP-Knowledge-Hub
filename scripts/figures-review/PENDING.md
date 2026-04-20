@@ -1,36 +1,36 @@
-# Figures Review — Pending Work
+# Figures Review — COMPLETE
 
-**Status as of 2026-04-20 14:18**
+**Final status 2026-04-20 16:15**
 
-## Completed shards (merged into manifest)
+## All 8 shards complete
 
 | Shard | Docs | Reviewed | Fakes |
 |-------|------|----------|-------|
+| 1a (TR43 first half, pages 18-125) | 1 | 347 | 0 |
+| 1b (TR43 second half, pages 126-195) | 1 | 347 | 0 |
 | 2 | 18 | 339 | 53 |
 | 3 | 20 | 339 | 56 |
 | 4 | 20 | 339 | 66 |
 | 5 | 19 | 338 | 75 |
 | 6 | 18 | 338 | 113 |
-| 8 | 19 | 338 | 97 |
-| **Sub-total** | 114 | 2,031 | **460** |
+| 7 | 19 | 338 | 43 |
+| 8 | 19 | 338 | 98 |
+| **Total** | **135** | **3,063** | **504** |
 
-**Manifest state**: 3063 → 2603 items. Backup at `figures-manifest.backup.json`.
+**Manifest: 3063 → 2559 items** (−504 fakes, −16.5%)
 
-## Pending shards (NOT YET REVIEWED — originals kept in manifest)
+**Backup:** `figures-manifest.backup.json`
 
-| Shard | Docs | Items | Status |
-|-------|------|-------|--------|
-| 1 | TR43 | 694 | Agent still running since 13:55, no output yet |
-| 7 | TR60, ISPE-TechTransfer, TR91 + 16 more | 338 | Rate-limited twice; retry scheduled 14:36 |
+## Notes
 
-## Retry instructions
+- TR43 (PDA Glass Defect Lexicon) — entire 694-item set is legitimate (photos, schematics, defect-catalog table strips). 0 fakes.
+- PtC-Isolators — all 66 original "figures" were blank pages with PDA logo watermark; all removed.
+- ISPE-GAMP5 had highest fake rate among the smaller docs (24 fakes).
+- Fakes are overwhelmingly `vec-*.png` fallback renders — the PDF extractor's fallback pass captured prose regions when it couldn't find a real image for a caption label.
 
-- Shard 7: use `shard-7-input-v2.json` (thumb paths baked in).
-- Shard 8: use `shard-8-input-v2.json`.
-- Shard 1: if it fails, rebuild with thumbnails via `_prep_shard_v2.py` (to be created) then relaunch.
+## Post-completion
 
-## Post-completion steps
-
-1. Run `scripts/figures-review/_merge.py` with all 8 shards present → writes `figures-manifest.json`.
-2. Delete the now-orphaned PNG files listed in the combined `to_remove` (or keep on disk as safety — manifest removal hides them from gallery).
-3. Re-merge each affected doc's `*-Complete.html` via `python gmp_engine.py merge <ID>` if section files reference removed images (unlikely — sections don't embed vec-*.png).
+- Each doc's figures sorted by (type: figure < table, label number ascending).
+- Gallery UI (figures-gallery.html) is entirely driven by manifest order — changes take effect immediately.
+- No HTML section files need modification; sections did not embed vec-*.png.
+- The orphaned PNG files remain on disk (safe). To delete them, compare `backup` vs current manifest and `rm` files not listed.
