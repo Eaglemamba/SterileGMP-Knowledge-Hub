@@ -145,7 +145,7 @@ Entries are marked `"render": "fallback"` in manifest for identification.
   ```
 - Never add inline styles that override `.section-title`. Rely on the shared class so a single CSS edit propagates across all reports.
 
-**Batch patcher**: `_fix_section_title_align.py` at repo root retrofits this CSS block in all `*-Complete.html` / `*-complete.html` files. Handles both the multi-line (`.section-title, .section-divider { ... }`) and single-line (USP `.section-title { ... }`) forms. Idempotent — safe to re-run after any future tweak.
+**Batch patcher**: `scripts/_fix_section_title_align.py` retrofits this CSS block in all `*-Complete.html` / `*-complete.html` files. Handles both the multi-line (`.section-title, .section-divider { ... }`) and single-line (USP `.section-title { ... }`) forms. Idempotent — safe to re-run after any future tweak.
 
 **Examples**:
 - `1.0 Introduction 導論`
