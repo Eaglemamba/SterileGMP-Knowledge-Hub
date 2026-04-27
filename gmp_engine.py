@@ -1391,9 +1391,17 @@ def cmd_extract_figs(args):
                         # image bounds and caption text bounds so labels aren't clipped
                         clip_x0 = min(img_x0, cap_x0) if cap_x0 is not None else img_x0
                         clip_x1 = max(img_x1, cap_x1) if cap_x1 is not None else img_x1
+                        # Extend strip top up to the image bottom so any axis
+                        # tick labels / legend rendered as separate text between
+                        # the image and caption are captured (avoids clipped axes).
+                        # Cap extension at 60pt — beyond that the gap likely
+                        # contains unrelated body text rather than axis labels.
+                        strip_top = cap_y_top - 6
+                        if img_y1 is not None and img_y1 < strip_top:
+                            strip_top = max(img_y1 - 2, strip_top - 60)
                         cap_clip = fitz.Rect(
                             max(0, clip_x0 - 10),
-                            max(0, cap_y_top - 6),
+                            max(0, strip_top),
                             min(page.rect.width, clip_x1 + 10),
                             min(page.rect.height, cap_y_bottom + 6),
                         )
@@ -1519,7 +1527,59 @@ def cmd_extract_figs(args):
                 else:
                     clip.y0 = max(0, clip.y0 - 15)
                 clip.x1 = min(page.rect.width, clip_right + 15)
-                clip.y1 = min(page.rect.height, clip.y1 + 15)
+                # Extend bottom to include note / source / footnote lines
+                # printed below the table grid (find_tables() doesn't return
+                # them). Walk text lines below bbox[3], extending while line
+                # gaps stay within ~1.8x line height. Capped by next caption
+                # top or page-bottom margin, max 140pt extension.
+                upper_limit = page.rect.height - 20
+                for _c in tbl_captions:
+                    _c_y_top = _c[1]
+                    if _c_y_top > bbox[3] + 2:
+                        upper_limit = min(upper_limit, _c_y_top - 4)
+                        break
+                try:
+                    _td = page.get_text("dict")
+                except Exception:
+                    _td = {"blocks": []}
+                _below = []
+                for _b in _td.get("blocks", []):
+                    if _b.get("type") != 0:
+                        continue
+                    for _ln in _b.get("lines", []):
+                        _lb = _ln.get("bbox", (0, 0, 0, 0))
+                        if _lb[1] <= bbox[3] + 1 or _lb[3] >= upper_limit:
+                            continue
+                        # Skip lines outside the table's horizontal band — left
+                        # column body text on multi-column pages would otherwise
+                        # extend the clip incorrectly.
+                        _lx_mid = (_lb[0] + _lb[2]) / 2
+                        if _lx_mid < clip.x0 - 5 or _lx_mid > clip.x1 + 5:
+                            continue
+                        _txt = "".join(s.get("text", "") for s in _ln.get("spans", [])).strip()
+                        if not _txt:
+                            continue
+                        _below.append((_lb[1], _lb[3], _txt))
+                _below.sort(key=lambda t: t[0])
+                _notes_bottom = clip.y1
+                _last_y1 = bbox[3]
+                _line_h = 12
+                for _ly0, _ly1, _txt in _below:
+                    _gap = _ly0 - _last_y1
+                    _line_h = max(_line_h, _ly1 - _ly0)
+                    # First line: allow up to ~30pt gap from table grid
+                    # Subsequent lines: gap must be < 1.8 * line height
+                    if _last_y1 == bbox[3]:
+                        if _gap > 30:
+                            break
+                    else:
+                        if _gap > _line_h * 1.8:
+                            break
+                    _notes_bottom = _ly1
+                    _last_y1 = _ly1
+                    if _notes_bottom - bbox[3] > 140:
+                        break
+                clip.y1 = min(page.rect.height, max(clip.y1 + 15, _notes_bottom + 8))
                 mat = fitz.Matrix(TBL_ZOOM, TBL_ZOOM)
                 try:
                     pix = page.get_pixmap(matrix=mat, clip=clip)
