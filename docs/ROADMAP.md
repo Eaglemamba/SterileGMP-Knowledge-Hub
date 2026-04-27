@@ -2,7 +2,7 @@
 
 This document summarizes the current coverage status, gap analysis, and expansion roadmap for building a comprehensive sterile pharmaceutical manufacturing knowledge hub suitable for COO-level operational decision-making.
 
-Last updated: 2026-04-22 — 182 documents complete (PDA 42, USP 76, ISPE 14, FDA 15, ICH 6, PIC/S 5, ISO 17, Ph.Eur. 7); Figures & Tables Gallery revamp complete — full-corpus gap-fill audit across 132 docs recovered 73 figures (2559 → 2632 entries, 96% recovery); 4 residual not-founds accepted as precision/recall trade-offs. Previously: renovated root folder structure (utility scripts → `scripts/`, legacy `index-v2.html` → `archive/`); TR73 expanded from Sections 12–18 partial to full 18-section complete version (+11 bilingual sections, p1–p102); added topic synthesis `knowledge/topics/depyrogenation-tunnel-validation.md`.
+Last updated: 2026-04-27 — 182 documents complete (PDA 42, USP 76, ISPE 14, FDA 15, ICH 6, PIC/S 5, ISO 17, Ph.Eur. 7); extract-figs clipping fixes: figure caption strip extends up to image bottom (axis labels no longer cut), table clip extends downward through note/source/footnote lines (capped 140pt). Re-extracted full corpus: 1688 figures + 1505 tables = 3193 entries (was 2632). Previously (2026-04-22): Figures & Tables Gallery revamp complete — full-corpus gap-fill audit across 132 docs recovered 73 figures (2559 → 2632 entries, 96% recovery); 4 residual not-founds accepted as precision/recall trade-offs. Renovated root folder structure (utility scripts → `scripts/`, legacy `index-v2.html` → `archive/`); TR73 expanded from Sections 12–18 partial to full 18-section complete version (+11 bilingual sections, p1–p102); added topic synthesis `knowledge/topics/depyrogenation-tunnel-validation.md`.
 
 ---
 
