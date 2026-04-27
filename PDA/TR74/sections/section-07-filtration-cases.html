@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR74 - Section 7 Appendix II: Filtration Case Studies</title>
+    <link rel="stylesheet" href="../../../template.css">
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 7 Appendix II: Filtration Case Studies 附錄二：過濾再過濾案例</h1>
+    <div class="page-info">PDA Technical Report No. 74 (Revised 2026) | p75-p77</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解過濾再過濾（refiltration）在生物製劑再處理中的監管地位，以及其與其他單元操作（如層析）的風險比較。</li>
+        <li>能區分「允許再過濾」與「不允許再過濾」的情境邊界——尤其是 bioburden 超規格與超行動限兩者的法規差異。</li>
+        <li>掌握 Drug Substance 主動式再過濾（Case Study 1）的驗證路徑，並能應用於 CDMO master batch record（MBR）的預授權設計。</li>
+        <li>理解病毒去除過濾器（virus-removal filter）完整性測試失敗後的再過濾策略，包含小規模驗證模型與法規申報路徑。</li>
+        <li>能回答台灣 CDMO 最實際的場景問題：DP 充填期間 0.22 µm 過濾器 post-use integrity test 失敗，在 PIC/S Annex 1 下，能否再過濾？監管路徑為何？</li>
+    </ul>
+</div>
+
+<!-- ==================== 7.0 Appendix II Intro ==================== -->
+<div class="section-title"><strong>7.0 Appendix II: Case Study — Filtration 案例研究導論：過濾操作</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><span class="key-term">Filtration</span> is among the more likely unit operations to be subjected to reprocessing; therefore, it is discussed separately in this case study. The complexity and quality impact of <span class="key-term">filtration reprocessing</span> (referred to hereon as <span class="key-term">refiltration</span>) tend to be low compared to other unit operations, such as the chromatography example discussed in Section 6.0 (Appendix I).</p>
+
+        <p>The most common refiltration scenarios would include <span class="key-term">bioburden-reduction filters</span> and <span class="key-term">virus-reduction filters</span>, as further elaborated in Section 7.2 and Section 7.3. Reprocessing of <span class="key-term">tangential flow filtration</span> is more complex and would tend to follow a framework more similar to chromatography (as described in Section 6.0). Refiltration for nonproduct-containing solutions, such as media and buffer, is generally acceptable and could be desirable (e.g., due to supply constraints on certain ingredients), in which case, potential impact (such as adsorption) should also be evaluated. For most refiltration steps, additional nonroutine product and stability testing of the drug substance and drug product may not be required.</p>
+
+        <ul>
+            <li>For refiltration of an in-process <span class="key-term">bioburden-reduction filter</span> that is used throughout the process, routine release and hold-time stability data may be adequate to support validation of reprocessing.</li>
+            <li>Refiltration may also occur during bulk drug substance filling, where the final container was found compromised (e.g., <span class="key-term">bioprocess container</span> (Single Use systems) found to be leaking). Reprocessing at that point may require additional validation, such as pooling of filtered and unfiltered bulk drug substance and additional bioburden-testing.</li>
+            <li>Validation of reprocessing using a <span class="key-term">viral filter</span> could be performed using routine product-testing, assuming the hold-time data is adequate and <span class="key-term">viral segregation</span> is maintained.</li>
+        </ul>
+
+        <div class="quote-box">
+            "Scenarios where product quality is compromised, such as if the drug substance or drug product exceeds a bioburden specification, if unexpected precipitation is observed in the drug substance or drug product, or if viral segregation is compromised, then reprocessing is unlikely to be an option."
+        </div>
+
+        <p>The following case studies are based upon the experience of the PDA Technical Report Team members.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Refiltration（再過濾）</strong>：指對已過濾或待過濾的批次物料，因特定失效模式（如 integrity test 失敗、bioburden 超出行動限、SU bag 洩漏）再次通過過濾器的操作。TR74 明確將其定位為低複雜度的再處理單元操作。</p>
+            <p><strong>Bioburden-reduction filter（生物負荷去除過濾器）</strong>：去除微生物的過濾器，常見於 DS 製程中段；其再過濾風險通常低於病毒去除過濾器。</p>
+            <p><strong>Virus-reduction filter（病毒去除過濾器）</strong>：如 Planova、Viresolve 系列，用於確保病毒清除步驟。完整性測試失敗的後果更為嚴重，因為涉及 viral clearance 的驗證連貫性。</p>
+            <p><strong>Viral segregation（病毒隔離）</strong>：指病毒過濾前後的物料流嚴格分開，確保 pre-filtrate 不回汙染 post-filtrate。一旦 viral segregation 遭破壞，再過濾不能解決問題。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>過濾再過濾就像廚師發現餐廳的一道高湯不夠乾淨，決定再過一次細網：若只是有少量雜質（bioburden 超行動限），再過一次完全可行；但若高湯本身已經腐敗（bioburden 超規格、或有沉澱析出），再過濾也無法救回——只能廢棄。</p>
+            <p>這個「可再過」vs「必須廢棄」的判斷，是 TR74 Section 7.0 整個框架的核心邏輯。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>決策層級（Decision Hierarchy）強化：</strong></p>
+            <ol>
+                <li><strong>Sterility Assurance（無菌保證）</strong> ← 永遠第一優先</li>
+                <li><strong>CQA（關鍵品質屬性）</strong> ← 病人安全</li>
+                <li><strong>Business（商業彈性）</strong> ← 產能救回</li>
+            </ol>
+            <p>注意：TR74 明確指出「超出 bioburden specification」或「unexpected precipitation」或「viral segregation 遭破壞」時，reprocessing 不是選項。這就是 Sterility > CQA > Business 層級的體現——不能因為商業壓力就試圖再過濾一批已超規格的批次。</p>
+            <p><strong>「超行動限（exceed action limit）但未超規格」vs「超規格（exceed specification）」</strong> 是法規上的關鍵分野：前者可依驗證方案進行再過濾；後者必須廢棄。(PDA TR74, Section 7.0)</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>TR74 指出 tangential flow filtration（切向流過濾）的再處理框架更接近層析，而非一般過濾——為什麼？這對您公司設計 TFF 再處理 SOP 有何涵義？</li>
+                <li>SU bag 洩漏後的再過濾，TR74 建議需評估 filtered 與 unfiltered bulk DS 的混合（pooling）——這個設計是基於什麼風險考量？</li>
+                <li>若非含藥物的溶液（如 buffer）過濾失敗，TR74 認為再過濾通常可接受，但需評估 adsorption——請舉一例說明何種 buffer 成分最可能發生 adsorption 問題。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 7.1 Case Study 1 Parent Heading ==================== -->
+<div class="section-title"><strong>7.1 Case Study 1: Proactive Drug Substance Refiltration 主動式藥物原料再過濾案例</strong></div>
+
+<!-- ==================== 7.1.1 Issue ==================== -->
+<div class="section-title"><strong>7.1.1 Issue 問題描述</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>The manufacturer validated the process for filling a liquid biologic <span class="key-term">drug substance</span> into the drug substance containers (e.g., carboys, single-use bags). Prior to validating the filling process, a <span class="key-term">failure modes analysis</span> was performed to identify potential failures that could occur during the filling process. Three potential failures were identified:</p>
+
+        <ul>
+            <li><strong>Mechanical failures</strong> during bulk fill (e.g., structural failure such as leakage in the feed vessel, pinholes in the feed tubing, and/or single-use bags, <span class="key-term">post-use filter-test failure</span>, failure in the filling apparatus)</li>
+            <li><strong>Out-of-range results of protein concentration</strong> (e.g., higher than specification, which requires further dilution with formulation buffer and refiltration) and/or spiked excipients (e.g., lower than specification polysorbate, which requires additional spiking and refiltration)</li>
+            <li><strong>Bioburden limits exceeded the action limit</strong> but were less than the specification</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Failure Modes Analysis（失效模式分析）</strong>：製程驗證前，系統性識別各充填步驟可能發生的失效，對應 ICH Q9(R1) 的 QRM（品質風險管理）工具——FMEA（Failure Mode and Effects Analysis）。</p>
+            <p><strong>Post-use filter-test failure（使用後過濾器測試失敗）</strong>：充填完畢後，對 sterilizing-grade filter（0.22 µm）執行 integrity test（如 bubble point 或 forward flow test），若結果不合格，代表無法確認充填全程過濾器完整性。這是無菌充填（aseptic filling）中最嚴重的失效情境之一。</p>
+            <p><strong>三類失效模式對應的再過濾邏輯：</strong></p>
+            <ol>
+                <li>機械性失效（SU bag 洩漏、管路破損）→ 需評估是否 bioburden 或 contamination 已影響批次</li>
+                <li>蛋白質濃度或賦形劑超規格 → 稀釋或補加後可再過濾，屬 formulation adjustment + refiltration</li>
+                <li>Bioburden 超行動限但未超規格 → 可啟動預先驗證的再過濾方案</li>
+            </ol>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>製藥廠在驗證充填流程前做 failure modes analysis，就像飛行員在起飛前進行模擬緊急程序訓練：不是因為相信飛機一定會出問題，而是為了讓失效發生時有明確的決策路徑，而不是臨場即興。</p>
+            <p>Case Study 1 的精髓在於：失效模式在<strong>批次生產之前</strong>就被識別出來，並且對應的再過濾方案<strong>提前驗證、提前納入 license</strong>。這就是「主動式（proactive）」的意義。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>CDMO 實務觀點：</strong>對於 CDMO 而言，DS 充填的 failure modes analysis 通常要在 PPQ（製程性能確認）前完成。若廠商未預先識別這三類失效模式，一旦發生 post-use integrity test failure 或 protein concentration OOS，將面臨「無預先核准再過濾方案」的困境，只能緊急進行 deviation 調查，延誤放行時程。</p>
+            <p>預先定義失效模式 → 預先驗證再過濾方案 → 納入 MBR / 法規申報，是 CDMO 在接受新客戶 DS 製程時應主動要求完成的設計步驟。(PDA TR74, Section 7.1.1)</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若某批次 DS 充填後發現 SU bag 破損，同時 post-use integrity test 失敗，這兩種失效模式同時發生——您如何決定是否可以對該批次物料進行再過濾？哪個失效更為決定性？</li>
+                <li>Polysorbate 80（PS80）濃度低於規格，TR74 認為可以補加後再過濾——為什麼再過濾是必要的，而不是僅補加 PS80 即可？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 7.1.2 Considerations ==================== -->
+<div class="section-title"><strong>7.1.2 Considerations 考量要點</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Up to three full-scale <span class="key-term">refiltration validation</span> runs would be performed against a preapproved protocol capturing the failure mode, of which at least one run evaluated the failure mode of interest. Each individual refiltration protocol would be performed on a separate lot of drug substance. Samples from the validation runs would then be tested according to the specification to confirm meeting release criteria, and if necessary, placed on <span class="key-term">GMP stability</span> for the shelf life of the drug substance. The resultant data package would provide additional confirmation that refiltration had no impact on product quality at release as well as on stability.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Full-scale refiltration validation（全規模再過濾驗證）</strong>：與 lab-scale 模型不同，此處明確要求使用<strong>全規模（manufacturing scale）</strong>進行驗證，且每個再過濾 protocol 使用獨立批次的 DS，以避免批次間交叉干擾。</p>
+            <p><strong>Preapproved protocol（預核准方案）</strong>：驗證方案必須在執行前獲得 Quality Assurance Unit 核准，確保每個失效模式均有對應的方案。這對應到 MBR 中應有「附件」或「conditional step」形式的再過濾操作指令。</p>
+            <p><strong>GMP stability（GMP 穩定性試驗）</strong>：再過濾後的樣品若需放上正式穩定性架，代表需要評估再過濾對保存期限（shelf life）的影響，即確認再過濾不加速降解。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>「最多三批次」的設計邏輯：</strong>TR74 使用「up to three」，代表驗證批次數量需根據失效模式的數量與複雜度決定。一個 full-scale 批次對應一個失效模式的評估。若失效模式只有一種（如單純 bioburden 超行動限），一批完整驗證即可足夠。</p>
+            <p>在 CDMO 環境下，若客戶 DS 批次量有限（如 Phase I/II 臨床試驗物料），進行三批全規模驗證可能不切實際。此時，應在 QRM（品質風險管理）文件中記錄批次數量不足的理由，並搭配更嚴格的 release testing 作為補償措施。(PDA TR74, Section 7.1.2; ICH Q9(R1))</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>TR74 要求每個 refiltration protocol 使用「separate lot of drug substance」——為什麼不能在同一批次上重複三次再過濾來完成驗證？</li>
+                <li>若再過濾後的 GMP stability 樣品在第 6 個月加速試驗出現降解，但 real-time stability 正常，您會如何解讀這個結果？是否影響再過濾方案的核准？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 7.1.3 Resolution ==================== -->
+<div class="section-title"><strong>7.1.3 Resolution 結論與法規申報</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>The results generated during the validation would then be filed in the <span class="key-term">BLA</span>. The application would indicate that refiltration could only be performed once and that it must occur within a specified time period supported by the validations (e.g., validated <span class="key-term">hold stability</span>). The application should specify that the <span class="key-term">Quality Assurance Unit</span> must be notified and provide approval of refiltration. The refiltration procedure could be deemed as acceptable for approval as part of the license.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>BLA（Biologics License Application）</strong>：美國 FDA 對生物製劑的上市許可申請。對應台灣 TFDA 的「生物製劑查驗登記」。核心邏輯相同：再過濾方案需<strong>作為批准 license 的一部分</strong>預先申報，才能在臨床批次或商業批次中合法執行。</p>
+            <p><strong>Hold stability（保存穩定性）</strong>：DS 或 DP 在特定保存條件下的時間穩定性數據，用於定義再過濾的最長允許時間窗口。例如，驗證顯示再過濾必須在 DS 製備後 72 小時內完成。</p>
+            <p><strong>「Only once」限制</strong>：再過濾只能執行一次——這是 TR74 明確的限制，防止多次再過濾累積品質風險。任何需要第二次再過濾的情境，應視為批次廢棄的觸發條件。</p>
+        </div>
+
+        <div class="note-box" style="border-color:#e74c3c; background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);">
+            <h4>CDMO 關鍵實務：MBR 預授權設計</h4>
+            <p>TR74 第 7.1.3 節的監管路徑直接映射到 CDMO 的批次記錄（MBR）設計：</p>
+            <ol>
+                <li><strong>在 MBR 中設計「Conditional Step」</strong>：以 IF/THEN 格式記錄觸發再過濾的條件（如 bioburden 超行動限、integrity test fail、OOS 蛋白質濃度）及對應操作步驟。</li>
+                <li><strong>QA Unit 授權欄位</strong>：MBR 的再過濾條件步驟必須包含「QA Approval Signature」欄位，確保每次執行前 QA 已書面核准，符合 21 CFR Part 11 與 PIC/S GMP Part II 的電子記錄要求。</li>
+                <li><strong>時間窗口記錄</strong>：MBR 應記載「再過濾最晚完成時間點」（以 hold stability 驗證數據為依據），操作人員在批次記錄中填入實際執行時間戳。</li>
+                <li><strong>法規申報連結</strong>：MBR 中應有交叉參考，指向已申報的再過濾驗證報告或 CTD Module 3 的相關章節。</li>
+            </ol>
+            <p>若 MBR 未預先設計再過濾條件，一旦發生失效，只能走 deviation 報告路徑——耗時、高風險、且可能無法救回批次。(PDA TR74, Section 7.1.3)</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>台灣 CDMO 場景（TFDA / PIC/S 框架）：</strong></p>
+            <p>若 CDMO 正在為客戶執行 Phase III 臨床批次的 DS 充填，MBR 中沒有預先核准的再過濾條件，充填過程中發生 SU bag 微滲漏，bioburden 結果超出行動限（但未超規格）——此時能否緊急啟動再過濾？</p>
+            <p><strong>答案：依 PIC/S Annex 1 2022 精神，不建議。</strong> PIC/S Annex 1 2022 強調所有再處理步驟應預先定義、驗證並獲得授權（§9.37）。臨時啟動未預先核准的再過濾，屬於 unvalidated reprocessing，需走完整的 Change Control + Validation + TFDA 補充申請流程，方可在後續批次中合法使用。對於當前失效批次，需進行 full risk assessment 後由 QA 決定是否放行。</p>
+            <p><strong>預防方法</strong>：在接受每位新客戶 DS 製程時，CDMO 應主動要求客戶或共同完成 failure modes analysis，並在 MBR 設計階段即納入 conditional refiltration steps，後續透過 TFDA 的 Minor Amendment 路徑提前申報。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 7.2 Case Study 2 Parent Heading ==================== -->
+<div class="section-title"><strong>7.2 Case Study 2: Proactive Virus-Removal Refiltration 主動式病毒去除再過濾案例</strong></div>
+
+<!-- ==================== 7.2.1 Issue ==================== -->
+<div class="section-title"><strong>7.2.1 Issue 問題描述</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Post-use <span class="key-term">integrity test failures</span> of a <span class="key-term">normal-flow virus-retentive filter</span> are a known failure mode affecting lot release. Refiltration of the virus-filtered pool through a new integral virus filter can be performed to ensure the validated clearance of virus; however, this reprocessing procedure has the potential to impact product quality due to extended processing times, for which the <span class="key-term">product load</span> and/or <span class="key-term">pool stability</span> should be considered.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Normal-flow virus-retentive filter（法向流病毒截留過濾器）</strong>：如 Asahi Kasei 的 Planova 系列（20N, BioEX）或 Merck Millipore 的 Viresolve Pro。這些過濾器使用 normal flow（dead-end）模式，依靠孔徑截留 parvovirus（細小病毒，~18-20 nm）。</p>
+            <p><strong>Post-use integrity test failure（使用後完整性測試失敗）</strong>：virus filter 在過濾完成後進行完整性測試（如 diffusion test 或 pressure hold test），若結果不符合製造商規格，代表無法確認過濾期間過濾器始終維持完整性，從而無法保證 viral clearance 驗證的連貫性。</p>
+            <p><strong>Pool stability（混合池穩定性）</strong>：virus filter 的流速低、處理時間長（數小時至十數小時），再過濾進一步延長處理時間，需評估蛋白質在 load 條件下的聚集（aggregation）與降解（degradation）風險。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>Virus filter 的 post-use integrity test failure 就像飛機降落後發現機翼的某個密封件測試不過——即使飛行過程看起來一切正常，也無法確認那個密封件在全程飛行中都是完整的。</p>
+            <p>對於 virus filter，這意味著：即使最終產品的病毒檢測為陰性，由於無法確認過濾器完整性，viral clearance 的法規論述（regulatory justification）存在漏洞。再過濾（使用新的完整過濾器）是補救的選項，但前提是 pool stability 允許延長處理時間。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>Single-use vs Reusable Virus Filter 的影響：</strong></p>
+            <ul>
+                <li><strong>Single-use（一次性）</strong>系統（如 Planova BioEX capsule）：過濾後直接棄置，post-use integrity test 若失敗，只需更換新過濾器進行再過濾，不涉及清洗驗證問題。</li>
+                <li><strong>Reusable（可重複使用）</strong>系統（如傳統 Planova 30N 在某些設施中使用）：失效後若要再過濾，需先確認清洗是否會影響下次使用的截留性能，且需評估是否影響 viral clearance 的驗證連貫性。</li>
+            </ul>
+            <p>CDMO 目前主流選擇 single-use virus filter，再過濾操作更簡單，且 viral segregation 風險更低。但更換 vendor 或 filter 型號時，需重新評估 viral clearance validation。(PDA TR74, Section 7.2.1)</p>
+        </div>
+
+        <div class="note-box" style="border-color:#e67e22; background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);">
+            <h4>台灣 CDMO 關鍵問題解答</h4>
+            <p><strong>Q：在 DP 充填期間，0.22 µm sterilizing-grade filter 的 post-use integrity test 失敗，能否進行再過濾？台灣 PIC/S 框架下的監管路徑為何？</strong></p>
+            <p><strong>A（依 PIC/S Annex 1 2022 與 TR74 框架）：</strong></p>
+            <p><strong>技術上「能否」：</strong>DP 最終過濾步驟（sterilizing filtration）的 integrity test 失敗，屬於無菌保證的核心問題，其再過濾比 DS 階段的 bioburden-reduction filter 更為嚴格。關鍵判斷點：</p>
+            <ol>
+                <li>若批次已部分充填至 vials，無法對已充填部分執行再過濾——受影響 vials 必須廢棄。</li>
+                <li>若物料尚在 bulk 容器中未開始充填，且有預先驗證的再過濾方案，理論上可執行再過濾；但需確認 DP pool stability 允許延長操作時間。</li>
+                <li>PIC/S Annex 1 2022 §8.86 要求：sterilizing filter 的完整性應在過濾前（PUPSIT）及過濾後均進行測試。Post-use failure 必須啟動 deviation 調查，並評估是否有任何已充填批次受影響。</li>
+            </ol>
+            <p><strong>台灣 TFDA 監管路徑：</strong></p>
+            <ol>
+                <li><strong>立即行動</strong>：啟動 deviation 報告，隔離受影響批次，通知 QA。</li>
+                <li><strong>Root Cause Investigation</strong>：查明 integrity test 失敗原因（過濾器破損、測試程序錯誤、壓力設備問題等）。</li>
+                <li><strong>若有預核准再過濾方案</strong>（已納入 CTD Module 3 並獲 TFDA 核准）：可依 MBR conditional step 執行再過濾，並記錄 QA 書面授權。</li>
+                <li><strong>若無預核准方案</strong>：批次應予廢棄或扣留，不得放行，直至完成完整的 change control + validation + TFDA 補充申請。</li>
+                <li><strong>TFDA 通報要求</strong>：若為商業批次且已有流向市場的疑慮，依《藥事法》第 68 條及 TFDA 藥品 GMP 管理規定，可能需要主動通報。</li>
+            </ol>
+            <p>底線：DP 的 integrity test failure 應在 MBR 設計階段即預先規劃——預防重於補救。(PIC/S Annex 1 2022, §8.86; PDA TR74, Section 7.2.1)</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>Virus filter 的 post-use integrity test failure 與 sterilizing-grade filter（0.22 µm）的 post-use integrity test failure，兩者的監管後果有何本質差異？哪個更難補救，為什麼？</li>
+                <li>若 virus filter 的 pre-use integrity test（PUPSIT 概念應用）通過，但 post-use 失敗，您如何評估充填期間的 viral clearance 是否仍然有效？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 7.2.2 Considerations ==================== -->
+<div class="section-title"><strong>7.2.2 Considerations 考量要點</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Small-scale validation studies can be performed using a representative <span class="key-term">scaled-down model</span> to assess the potential impact to product quality resulting from refiltration of virus-filtered pools. For these studies, samples of <span class="key-term">virus-filtration load</span> can be obtained from different lots at manufacturing scale. Each of these virus-filtration loads should be refiltered at laboratory-scale through two sets of new, integral virus filters to represent <span class="key-term">worst-case</span>. The validation studies can help to confirm that refiltration had no impact on product quality.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Scaled-down model（小規模模型）</strong>：使用與商業規模幾何相似（geometrically similar）的小型過濾器（通常面積比約 1:50 至 1:200），模擬商業規模的流量密度（flux）、操作壓力、與處理時間，以預測大規模製程的行為。</p>
+            <p><strong>兩套過濾器模擬 worst-case</strong>：再過濾需要通過<strong>兩個</strong>新的完整 virus filter，原因在於模擬最壞情況——如果第一次過濾的過濾器在使用中破損（導致 integrity test failure），則再過濾需要確保兩次完整的病毒截留，以補足第一次可能的截留損失。這是法規上「worst-case bracketing」的設計。</p>
+            <p><strong>不同批次的 filtration load samples</strong>：從不同商業批次取得 virus-filtration load 樣品，確保驗證結果涵蓋批次間的天然變異（如蛋白質聚集體含量、糖基化差異），而非偶然一批次的良好性能。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>Small-scale vs Full-scale 驗證策略的選擇：</strong></p>
+            <p>Case Study 1（DS bioburden 再過濾）使用 full-scale validation；Case Study 2（virus filter 再過濾）使用 small-scale validation。差異的理由：</p>
+            <ul>
+                <li>Virus filter 的 scaled-down model 已是業界成熟做法，因為 virus clearance 驗證本身（依 ICH Q5A）就是以 small-scale spike study 完成——再過濾的 small-scale 驗證與既有框架一致。</li>
+                <li>DS 的 bioburden 再過濾較難用 small-scale 完整模擬充填設備（SU bag、管路幾何形狀）的機械失效情境，故選擇 full-scale。</li>
+            </ul>
+            <p>CDMO 在設計再過濾驗證計畫時，應先確認 regulatory precedent（法規前例）——若主管機關（TFDA、FDA）對特定過濾步驟已有 small-scale 接受度，不必要的 full-scale 驗證只增加成本與物料消耗。(PDA TR74, Section 7.2.2; ICH Q5A(R2))</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為何 virus filter 再過濾的 small-scale 驗證需要「兩套」（two sets）新的完整過濾器，而非一套？若只用一套，代表什麼假設？</li>
+                <li>在設計 small-scale model 時，如何確認您的模型能「代表」商業規模？哪些參數必須控制為相似（scaled equivalently）？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 7.2.3 Resolution ==================== -->
+<div class="section-title"><strong>7.2.3 Resolution 結論與法規申報</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Results from the small-scale study of refiltration through a <span class="key-term">virus-retentive filter</span> were reported in a <span class="key-term">regulatory submission</span>. Validation of the refiltration unit operation would be completed for one full-scale batch and would include data on product yield, quality, and stability. Upon completion of the validation study and submission of the data, the refiltration procedure would become an <span class="key-term">amendment to the license</span>.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>兩階段提交策略（Two-Phase Submission Strategy）：</strong></p>
+            <ol>
+                <li><strong>Phase 1 — Small-scale study 報告</strong>：在 regulatory submission 中提供小規模驗證的品質數據，作為「科學合理性」的基礎。</li>
+                <li><strong>Phase 2 — Full-scale validation（一批次）</strong>：確認製程規模下，再過濾對 yield、品質（純度、效價、聚集體）及穩定性無不良影響，完成後成為 license amendment 的支持數據。</li>
+            </ol>
+            <p><strong>Amendment to the license（許可修正案）</strong>：在 FDA BLA 體系下，通常為 Prior Approval Supplement（PAS）或 CBE-30（Changes Being Effected in 30 days），取決於改變的重大程度。對 TFDA，對應「藥品查驗登記許可證變更申請」。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>Yield、Quality、Stability 三維數據要求：</strong></p>
+            <ul>
+                <li><strong>Yield（收率）</strong>：virus filter 本身已有蛋白質吸附損失（通常 5-15%），再過濾通過第二套過濾器進一步損失。Full-scale 驗證需量化累積損失，確認仍在商業可接受範圍。</li>
+                <li><strong>Quality（品質）</strong>：聚集體（HMW species）、降解碎片（LMW species）、效價（potency）是再過濾後最需監測的 CQA。</li>
+                <li><strong>Stability（穩定性）</strong>：再過濾延長了 DS 的操作時間（hold time），需確認不影響後續放行穩定性與保存期限。</li>
+            </ul>
+            <p>CDMO 在接受客戶 DS 時，若發現客戶尚未完成 virus filter refiltration 的法規申報，應在技術轉移（Tech Transfer）階段即提出，避免未來發生 integrity test failure 時無法合法補救。(PDA TR74, Section 7.2.3)</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 技術轉移清單（Tech Transfer Checklist）新增項目：</strong></p>
+            <p>基於 TR74 Case Study 1 與 Case Study 2 的教訓，CDMO 在接受新 DS 製程技術轉移時，應主動確認：</p>
+            <ol>
+                <li>客戶是否已完成 DS 充填的 failure modes analysis，並識別出所有可能觸發再過濾的情境？</li>
+                <li>MBR 是否已設計包含 conditional refiltration steps，且 QA 授權流程已定義？</li>
+                <li>Virus filter post-use integrity test failure 的再過濾方案是否已完成 small-scale 驗證並納入 regulatory submission？</li>
+                <li>Refiltration 的 hold stability（時間窗口）是否已由驗證數據定義並記錄於 MBR？</li>
+                <li>TFDA 的 license 中是否已包含再過濾相關的 amendment？若無，技術轉移計畫中應包含申報時程。</li>
+            </ol>
+            <p>這份清單的目的是：<strong>將再過濾從「臨時救火措施」轉變為「預先設計的品質保護機制」</strong>，真正實現 TR74 所倡導的「proactive」精神。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>Case Study 2 採用「small-scale study + 一批 full-scale 確認」的兩階段策略，而 Case Study 1 採用「up to three full-scale validation runs」。若您是審查員，您如何評估這兩種策略在科學嚴謹性上的等效性？</li>
+                <li>Virus filter 再過濾後的 license amendment，若 TFDA 要求 Prior Approval（事前核准），在核准期間若實際發生 integrity test failure，您的公司應如何處理那批批次？有哪些合規選項？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>過濾再過濾（refiltration）是再處理中相對低複雜度的操作</strong>，但需嚴格區分「可再過濾」（bioburden 超行動限）與「不可再過濾」（超規格、unexpected precipitation、viral segregation 破壞）的情境邊界。</li>
+        <li><strong>Case Study 1 的核心教訓：主動式（proactive）失效模式分析</strong>應在批次生產前完成，再過濾方案需預先驗證（full-scale，up to 3 批次），並納入 BLA/TFDA 許可為 license 的一部分，且 QA 書面核准為強制要求。</li>
+        <li><strong>MBR 預授權設計是 CDMO 的關鍵競爭力</strong>：在 MBR 中設計 conditional refiltration steps（含觸發條件、時間窗口、QA 授權欄位），可將再過濾從「臨時 deviation」轉化為「預先核准的品質保護機制」，顯著提升批次救回率與客戶信任。</li>
+        <li><strong>Case Study 2 的核心教訓：Virus filter 的 post-use integrity test failure</strong> 是已知失效模式，可用 small-scale model（兩套新過濾器，worst-case）完成驗證，再以一批 full-scale 確認，最終透過 license amendment 取得合法授權。</li>
+        <li><strong>DP 充填的 0.22 µm filter post-use integrity test failure</strong>：依 PIC/S Annex 1 2022 §8.86，無論是否有預核准方案，均需啟動 deviation 調查，且已充填 vials 不可再過濾；只有尚在 bulk 中的物料，且有預核准方案，方可考慮再過濾。預防優於補救。</li>
+        <li><strong>決策層級永遠適用</strong>：Sterility > CQA > Business——任何因商業壓力試圖對已超規格批次執行再過濾的決策，均違背此層級，必須被 QA 否決。</li>
+    </ul>
+</div>
+
+</body>
+</html>

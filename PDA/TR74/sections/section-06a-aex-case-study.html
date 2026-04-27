@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR74 - Section 6 Appendix I: AEX Reprocessing Case Study</title>
+    <link rel="stylesheet" href="../../../template.css">
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 6 Appendix I: AEX Reprocessing Case Study 附錄一:陰離子交換層析再處理案例</h1>
+    <div class="subtitle">Part A: 6.0–6.4 | PDA Technical Report No. 74 (Revised 2026) | p55–p67</div>
+    <div class="page-info">PDA Technical Report No. 74 (Revised 2026) | p55 - p67</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 Anion Exchange Chromatography (AEX, 陰離子交換層析) 作為 mAb 純化平台工具的單元操作特性，以及其在 HCP、DNA 清除上的關鍵角色。</li>
+        <li>掌握 6.2 Points to Consider（考量要點）：Column Packing、Cleaning/Sanitization、Performance、Regeneration/Lifecycle、Validation/Filings 五個評估維度，判斷再處理的技術可行性。</li>
+        <li>運用 FMEA（Failure Mode and Effects Analysis, 失效模式與影響分析）工具，以 RPN = Severity × Occurrence × Detection 系統性評分，識別 AEX 步驟為最高風險候選再處理步驟（RPN = 125）。</li>
+        <li>建立再處理的商業決策框架（Option 1 廢棄批次 vs Option 2 重新設計 vs Option 3 再處理），理解 Option 3 在品質與成本之間的平衡邏輯。</li>
+        <li>熟悉 6.4 Quality Considerations 中的可比性標準（Comparability Criteria）、分析方法矩陣（Analytical Methods）及監控觸發點（Monitor Triggers），作為再處理決策的品質把關依據。</li>
+    </ul>
+</div>
+
+<!-- ======================== SECTION 6.0 ======================== -->
+<div class="section-title"><strong>6.0 Appendix I: Hypothetical Case Study (Reprocessing Framework) — Anion Exchange Chromatography 附錄一：假設性案例研究（再處理框架）— 陰離子交換層析</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Section 6.0 (Appendix I) focuses on the design and implementation considerations for a
+        <span class="key-term">reprocessing step</span>. Adapted from the published monoclonal antibody
+        manufacturing (mAb) process, <em>A-Mab: A Case Study in Bioprocess Development</em>, for this case
+        study, a reprocessing framework has been created using an <span class="key-term">anion exchange
+        chromatography (AEX)</span> step (19). This reprocessing framework is intentionally designed to
+        require a more comprehensive analysis than a simpler reprocessing step, such as refiltration described
+        in Section 7.0.</p>
+
+        <p>Reprocessing of a major unit operation, such as an AEX chromatography column, requires a
+        detailed assessment, significant resources, planning, and commitment. Simpler unit operations require
+        a subset of the planning and activities outlined here. Regardless, <span class="key-term">quality
+        management systems</span>, <span class="key-term">regulatory requirements</span>, and a
+        comprehensive <span class="key-term">process understanding</span> should drive the overall design of
+        the reprocessing procedure.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Reprocessing（再處理）：</strong>將不符合中間品 (intermediate) 規格的批次，在相同製程步驟重新處理一次，以達到可接受的品質標準。與 Reworking（重新加工，改用不同方法）不同。</p>
+            <p><strong>AEX（Anion Exchange Chromatography，陰離子交換層析）：</strong>利用蛋白質表面負電荷與陽性樹脂之間的靜電作用進行分離。mAb 在 flow-through 模式下直接通過，而 HCP（Host Cell Proteins，宿主細胞蛋白）、DNA、內毒素、病毒等帶負電雜質則吸附於樹脂上被清除。</p>
+            <p><strong>A-Mab Case Study：</strong>業界標竿性的假設性 mAb 生產案例，由多家公司聯合撰寫，廣泛用於 CMC 開發框架示範。TR74 借用此框架設計 AEX 再處理情境。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>AEX 再處理就像工廠品管員在出貨前發現某批零件表面殘留油污超標（相當於 HCP 超標），不是直接廢棄這批零件，而是把整批零件再送一次清洗線重新清洗。但這麼做必須先確認：清洗設備還在規格範圍內嗎？清洗次數有沒有超過驗證上限？清洗後零件品質不會變差？——這就是 6.2 Points to Consider 要回答的問題。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>TR74 刻意選擇 AEX 作為示範案例，因為它比「重新過濾」（Section 7.0 refiltration）更複雜：涉及樹脂壽命、柱床完整性、病毒清除驗證等多個面向。熟悉本節後，處理較簡單的再處理步驟時只需套用其子集即可。</p>
+            <p>決策層級提醒：品質管理系統與法規要求永遠優先於商業考量。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>AEX 是 flow-through 模式還是 bind-and-elute 模式？這對再處理設計有什麼影響？</li>
+                <li>為什麼 TR74 要用「假設性」案例（hypothetical case study）而非真實批次資料？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ======================== SECTION 6.1 ======================== -->
+<div class="section-title"><strong>6.1 Unit Operation Characteristics 單元操作特性</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Chromatography is used to purify a product (e.g., mAb, target proteins, compounds) considering the
+        properties of the target solute, feed stream, required purity level, productivity, costs, process sequence,
+        process parameters, and implementation of the designed purification process. Biomolecules are purified
+        using chromatography techniques that separate them according to the difference in their specific
+        properties as summarized in Table 6.1-1. In <span class="key-term">ion exchange chromatography
+        (IEX)</span>, biomolecules are separated according to the difference in their net surface charges.</p>
+
+        <p>See Table 6.1-1 (Chromatography Techniques) and Table 6.1-2 (Quality Attribute Risk Assessment Topics) below.</p>
+
+        <p>The overall goal of a chromatographic step is to remove impurities, such as
+        <span class="key-term">host-cell-derived proteins (HCP)</span>, nucleic acids, carbohydrates, and
+        other undesired compounds.</p>
+
+        <p>In general, a full-scale chromatography system will consist of the following components:</p>
+        <ul>
+            <li><strong>Buffer and Product Reservoirs:</strong> Containers (hard-piped or single use
+            disposables) used to supply the buffers, product feed, and for elution collection required during
+            the chromatography operation.</li>
+            <li><strong>Pumps:</strong> Peristaltic pumps used to feed the buffers into chromatography columns.
+            Depending on scale, other types of pumps may be utilized considering process requirements and
+            equipment design.</li>
+            <li><strong>Column:</strong> The chamber where the chromatographic media is loaded. The size
+            (diameter and height) of the column will be defined based on the process requirements. The
+            material of construction (e.g., glass, polycarbonate, steel) is selected based on process
+            conditions (e.g., pressure and flow rates).</li>
+            <li><strong>Resin:</strong> Chromatography media intended for the purification process. The
+            packaging of the columns is commonly conducted by creating a slurry where the particles are
+            suspended, that is, poured into the column.</li>
+            <li><strong>Valves:</strong> Sanitary systems used to control the flow of materials during the
+            operation of the chromatography system. These may be manual or pneumatic units.</li>
+            <li><strong>Sensors:</strong> Applications intended to monitor process parameters required for
+            the chromatography process. These may include pH, air, temperature, flow, pressure, and UV
+            monitor.</li>
+            <li><strong>Controller/Computer:</strong> Used to control and monitor the operation of the system.</li>
+        </ul>
+
+        <p>The purification strategy involving a chromatography step is based on the characteristics (e.g.,
+        properties and stability) of the product under different conditions, final specifications, feed
+        properties (e.g., concentration of product and impurities), nature of the process (e.g., continuous
+        or discontinuous), and nature of the substances (e.g., hazardous). When designing the reprocessing
+        step for the AEX chromatography case study, consideration was given to the quality attributes for
+        mAbs listed in Table 6.1-2 (19).</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>四大層析原理（見 Table 6.1-1）：</strong></p>
+            <ul>
+                <li><strong>電荷（Charge）→ IEX：</strong>AEX（陰離子交換）、CEX（陽離子交換）</li>
+                <li><strong>大小（Size）→ SEC：</strong>Size Exclusion Chromatography，用於聚集體分析</li>
+                <li><strong>疏水性（Hydrophobicity）→ HIC / RPC：</strong>Hydrophobic Interaction / Reversed Phase Chromatography</li>
+                <li><strong>生物辨識（Biorecognition）→ Affinity：</strong>Protein A 親和層析為 mAb 第一步純化主力</li>
+            </ul>
+            <p><strong>Flow-Through Mode（流穿模式）：</strong>AEX 通常以 flow-through 操作。mAb 在目標 pH/conductivity 下帶正電或中性，不與陰離子樹脂結合，直接流過；而 HCP、DNA、內毒素帶負電，吸附於樹脂，藉此清除雜質。這與 Protein A（bind-and-elute 模式）截然不同。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>Table 6.1-2 關鍵品質屬性（CQA）標記（*）：</strong>Aggregation、Galactose content、Afucosylation、High mannose content、Nonglycosylated heavy chain、Sialic acid content、Host-cell proteins (HCP)、DNA 均被標記為 CQA。再處理設計必須證明對這些 CQA 無不良影響，這是監管機關的核心關注點。</p>
+            <p><strong>DS（Drug Substance，原料藥）層次：</strong>本案例為 DS/上游純化流程，與 DP（Drug Product，製劑）的無菌充填不同，但相同的品質風險管理邏輯適用。CDMO 在與 Sponsor 或 DS CMO 討論時，此框架提供共同語言。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>把層析柱想像成濾水器的濾芯，不同濾芯設計攔截不同種類的雜質（依大小、電荷、疏水性或特異性識別）。AEX 的 flow-through 模式就像用帶負電的濾網：帶負電的雜質（HCP、DNA）會被吸住，而目標蛋白（mAb）帶正電，直接通過濾網，達到純化目的。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>對於 Fill-Finish CDMO 而言，雖然 AEX 屬於 DS 端製程，但在 Tech Transfer 審查 DS CMO 的 Manufacturing Process Description（Section 3.2.S.2.2）時，了解 AEX 的 flow-through 原理與 HCP 清除機制，有助於評估 Sponsor 提供的 CQA 合理性及批次放行規格的風險等級。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>AEX 在 flow-through 模式下，若進料溶液的 pH 或電導率（conductivity）超出設定範圍，HCP 清除效果會如何改變？</li>
+                <li>Table 6.1-2 中，哪些 CQA 與 AEX 步驟最直接相關？為什麼 HCP 和 DNA 被列為 CQA？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- TABLE 6.1-1: Full Width -->
+<div class="full-width-table" style="margin: 1rem 0;">
+    <h3 style="font-weight:600; color:var(--primary-blue); margin-bottom:0.5rem;">Table 6.1-1: Chromatography Techniques 層析技術分類</h3>
+    <div style="overflow-x:auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Property 分離依據</th>
+                    <th>Techniques 層析技術</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Charge 電荷</td>
+                    <td>Ion exchange chromatography（離子交換層析，IEX）— includes AEX &amp; CEX</td>
+                </tr>
+                <tr>
+                    <td>Size 大小</td>
+                    <td>Size exclusion chromatography（尺寸排阻層析，SEC），also called gel filtration</td>
+                </tr>
+                <tr>
+                    <td>Hydrophobicity 疏水性</td>
+                    <td>Hydrophobic interaction chromatography（疏水性相互作用層析，HIC）; Reversed phase chromatography（逆相層析，RPC）</td>
+                </tr>
+                <tr>
+                    <td>Biorecognition (ligand specificity) 生物辨識（配體特異性）</td>
+                    <td>Affinity chromatography（親和層析）— e.g., Protein A for mAb capture</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- TABLE 6.1-2: Full Width -->
+<div class="full-width-table" style="margin: 1rem 0;">
+    <h3 style="font-weight:600; color:var(--primary-blue); margin-bottom:0.5rem;">Table 6.1-2: Summary of Quality Attribute Risk Assessment Topics 品質屬性風險評估主題摘要</h3>
+    <div style="overflow-x:auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="3">Product Quality Attributes 產品品質屬性 （* = Considered CQA 關鍵品質屬性）</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Aggregation* （聚集體）</td>
+                    <td>Galactose content* （半乳糖含量）</td>
+                    <td>Afucosylation* （去岩藻糖基化）</td>
+                </tr>
+                <tr>
+                    <td>Oxidation （氧化）</td>
+                    <td>Protein A （Protein A 殘留）</td>
+                    <td>High mannose content* （高甘露糖含量）</td>
+                </tr>
+                <tr>
+                    <td>Nonglycosylated heavy chain* （非醣基化重鏈）</td>
+                    <td>C-terminal lysine （C 端離胺酸）</td>
+                    <td>Deamidated isoforms （去醯胺異構體）</td>
+                </tr>
+                <tr>
+                    <td>Host-cell proteins* (HCP, 宿主細胞蛋白)</td>
+                    <td>Sialic acid content* （唾液酸含量）</td>
+                    <td>DNA （宿主細胞 DNA）</td>
+                </tr>
+                <tr>
+                    <td>Methotrexate （甲胺蝶呤，製程殘留）</td>
+                    <td colspan="2">—</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p style="font-size:0.85rem; color:#4a5568; margin-top:0.5rem;">* Considered CQA — 標記星號者為關鍵品質屬性，再處理必須確保不對其產生不良影響。</p>
+</div>
+
+<!-- ======================== SECTION 6.2 ======================== -->
+<div class="section-title"><strong>6.2 Points to Consider 考量要點</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>The elements in Section 6.2 should be considered as part of reprocessing a chromatography column.
+        These elements are further discussed in <span class="key-term">PDA Technical Report No. 14 (Revised
+        2008): Validation of Column-Based Chromatography Processes for the Purification of Proteins</span>.</p>
+
+        <h3>6.2.1 Column Packing 柱填充</h3>
+        <p>The resin utilized for chromatography is loaded into the column in a controlled manner to ensure a
+        uniform distribution while preventing the formation of channels that will affect the performance of the
+        unit operation. Commonly, a slurry containing resin in a process buffer is poured into the column.
+        Once the resin is settled, the integrity of the packaged column is confirmed. In the case of
+        <span class="key-term">reprocessing</span>, the integrity of the column bed should be verified and
+        confirmed prior to its use. Any issue affecting the bed should be solved prior to reprocessing,
+        considering resuspension and repacking of the resin if applicable.</p>
+
+        <h3>6.2.2 Cleaning and Sanitization 清洗與消毒</h3>
+        <p>Full cleaning and sanitization of the column must be conducted in preparation for reprocessing.
+        Cleaning and sanitization will follow existing procedures and practices, including the
+        <span class="key-term">regeneration</span> of the resin. (These elements are discussed further in
+        (68, 69).)</p>
+
+        <h3>6.2.3 Performance 操作性能</h3>
+        <p>Performance of the chromatography step must be monitored according to the routine established
+        procedures and must satisfy predefined acceptance criteria. The criteria should include, but not be
+        limited to, the operational conditions (e.g., <span class="key-term">asymmetry</span>,
+        <span class="key-term">height equivalent to the theoretical plate</span>, and/or
+        <span class="key-term">transition analysis</span>) and quality attributes (65).</p>
+
+        <h3>6.2.4 Regeneration and Lifecycle 再生與生命週期</h3>
+        <p>The resin must be regenerated consistent with established procedures and must satisfy the acceptance
+        criteria defined and validated. The use of the resin for a reprocessing activity will be within the
+        <span class="key-term">validated number of reuses</span> if the reprocessing activity is not
+        associated with a malfunction of the chromatography column and resin.</p>
+
+        <h3>6.2.5 Validation and Filings 驗證與法規申報</h3>
+        <p>Validation of reprocessing will be performed under a <span class="key-term">prospective
+        protocol</span>. Detailed guidance for validation activities of chromatography processes for the
+        purification of proteins is provided in PDA TR 14 (68). In the event that changes are required to an
+        existing filing, guidance is provided in <span class="key-term">PDA Technical Report No. 38:
+        Manufacturing Chromatography Systems Post-Approval Changes (ChromPAC)</span>.</p>
+
+        <p>In this example, a protocol for prospective validation of reprocessing at the manufacturing scale
+        was written and approved; however, the potential of a <span class="key-term">concurrent
+        validation</span> could be considered if the frequency for reprocessing did not justify a prospective
+        protocol. The protocol required a single GMP run at manufacturing scale, including all routine
+        in-process and release testing as well as additional nonroutine testing, for example, analysis of HCP,
+        acidic variants, aggregate levels, fragmentation, oxidation, and potency in reprocessed material. The
+        protocol also required placing the resulting drug substance in the stability program. The protocol
+        acceptance criteria for nonroutine testing were based on the comparability criteria established in
+        Section 6.4.3 and demonstrated at small-scale. (See Section 6.5.6.)</p>
+
+        <p>Yet, a full prospective validation approach may not be feasible or practical for reprocessing in
+        all cases. Instead, a <span class="key-term">concurrent validation</span> strategy may be more
+        appropriate, allowing the manufacture and testing of products and only reprocessing when and if
+        necessary. In the case of concurrent validation, the acceptance criteria shall be aligned with the
+        approved specifications for the process.</p>
+
+        <p>The initial BLA to the FDA and MAA to the EMA for this new biologic included a complete
+        manufacturing process development section for the AEX unit operation within
+        <span class="key-term">Section 3.2.S.2.6</span> of the CTD. A comparability protocol was provided
+        post-licensure to gain agreement with FDA on the implementation strategy and to request a reduction
+        in reporting requirements from a <span class="key-term">PAS</span> to a
+        <span class="key-term">CBE-30</span> (i.e., documentation of changes being effected, 30-day response
+        from FDA required). In the EU MAA, a
+        <span class="key-term">Change Management Protocol</span> was included that also outlined the
+        implementation strategy to seek a reduction in reporting requirements from a
+        <span class="key-term">Type II Variation</span> to a
+        <span class="key-term">Type IB Variation</span> upon successful completion of the protocol.</p>
+
+        <p>Table 6.2.5-1 details the content required to support this type of regulatory strategy. The
+        approach described is primarily focused on the U.S. and EU regulatory authorities that have defined
+        regulatory pathways for this type of submission; however, the information described is also useful for
+        regulatory filings in other countries.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>五大考量要點（6.2.1–6.2.5）決定再處理技術可行性：</strong></p>
+            <ul>
+                <li><strong>6.2.1 Column Packing（柱填充）：</strong>再處理前必須重新確認柱床（column bed）完整性。常用指標：HETP（Height Equivalent to Theoretical Plate，理論板高當量）、Asymmetry（不對稱因子）、transition analysis（轉換分析）。柱床若出現裂縫或通道，再處理毫無意義。</li>
+                <li><strong>6.2.2 Cleaning/Sanitization（清洗/消毒）：</strong>NaOH（sodium hydroxide，氫氧化鈉）是最常用的樹脂 sanitization 試劑；清洗 SOP 必須完整執行，不能因「趕時間再處理」而縮短。</li>
+                <li><strong>6.2.3 Performance（性能）：</strong>柱效測試不只看外觀，必須符合預定接受標準。</li>
+                <li><strong>6.2.4 Regeneration/Lifecycle（再生/生命週期）：</strong>再處理使用次數必須計入已驗證的樹脂壽命（resin lifetime）。若再處理導致超過驗證使用次數，需額外驗證延壽。</li>
+                <li><strong>6.2.5 Validation/Filings（驗證/申報）：</strong>再處理本身是一個製程變更，需要驗證並依 CTD 結構提交。FDA（美國）對應 CBE-30/PAS；EMA（歐盟）對應 Type IB/Type II Variation。</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <pre>
+HETP（理論板高當量）= L / N
+  L = 柱長（cm）
+  N = 理論板數（由峰寬計算）
+
+Asymmetry（不對稱因子）= b / a
+  a = 從峰頂垂線到前峰半峰寬
+  b = 從峰頂垂線到後峰半峰寬
+  接受標準通常：0.8 ≤ Asymmetry ≤ 1.5
+
+再生使用計數規則：
+  Total use count = Normal runs + Reprocessing runs
+  必須 ≤ Validated lifetime（已驗證生命週期）
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>Prospective vs Concurrent Validation（前瞻性 vs 同步驗證）：</strong></p>
+            <ul>
+                <li><strong>Prospective（前瞻性）：</strong>事先設計、執行、取得數據後才放行。再處理頻率高時適用。本案例採用 1 批 GMP 規模確認批。</li>
+                <li><strong>Concurrent（同步）：</strong>允許在驗證執行期間放行批次，適用於再處理頻率極低、難以累積足夠批次的情境。接受標準必須對應已核准規格。</li>
+            </ul>
+            <p><strong>監管申報等級：</strong>FDA PAS（Prior Approval Supplement，事前核准補充申請）> CBE-30（Changes Being Effected，30 天通知）。透過 Comparability Protocol 預先取得 FDA 同意，可在驗證完成後改用 CBE-30，大幅縮短商業化時程。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>6.2.5 的監管策略就像先向主管機關「預告」一個工程變更計畫：「我打算在特定條件下執行再處理，以下是我的驗證方案和接受標準，請提前審核並同意未來改用簡化申報程序。」這樣當再處理真正發生時，只需遞交 CBE-30（30 天通知），而不必等待 PAS 的 6–12 個月審查，避免產品斷貨。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若一根 AEX 樹脂的驗證壽命是 200 次，已正常使用 185 次，現在需要再處理 1 次，是否符合 6.2.4 的要求？如果需要第 2 次再處理呢？</li>
+                <li>在 EMA 框架下，Type II Variation 與 Type IB Variation 的主要差異是什麼？Change Management Protocol 如何幫助降低申報等級？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- TABLE 6.2.5-1: Full Width -->
+<div class="full-width-table" style="margin: 1rem 0;">
+    <h3 style="font-weight:600; color:var(--primary-blue); margin-bottom:0.5rem;">Table 6.2.5-1: Regulatory Submission Content 法規申報內容架構</h3>
+    <div style="overflow-x:auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Common Technical Document (CTD) Section</th>
+                    <th>Content 申報內容</th>
+                    <th>Reference to Specific Section 參照章節</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="4"><strong>3.2.S.2.6</strong><br>（製程發展）</td>
+                    <td>For each step that will include reprocessing, provide the following:<br>Identify in-process tests or manufacturing data that will be used to detect the failure.</td>
+                    <td>6.5.2</td>
+                </tr>
+                <tr>
+                    <td>Summarize the design of the unit operation including step purpose.</td>
+                    <td>6.5.3</td>
+                </tr>
+                <tr>
+                    <td>Provide risk analysis of the unit operation in detail and demonstrate that reprocessing would not negatively impact CQAs.</td>
+                    <td>6.5.4 / 6.4.1 / 6.5.5</td>
+                </tr>
+                <tr>
+                    <td>（See full CTD 3.2.S.2.6 requirements above）</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td rowspan="7"><strong>3.2.R</strong><br>（Comparability Protocol FDA BLA / Change Management Protocol EU MAA）</td>
+                    <td>Provide a purpose statement indicating in which situations reprocessing may be used.</td>
+                    <td>6.4.3</td>
+                </tr>
+                <tr>
+                    <td>Provide a high-level description of the proposed reprocessing operation.</td>
+                    <td>6.5.2</td>
+                </tr>
+                <tr>
+                    <td>List any additional in-process controls or extensions to intermediate hold times.</td>
+                    <td>6.5.3</td>
+                </tr>
+                <tr>
+                    <td>Outline the strategy for process validation (e.g., single confirmatory batch at production scale).</td>
+                    <td>6.5.4 / 6.5.8 / 6.2.5</td>
+                </tr>
+                <tr>
+                    <td>Provide the tests and acceptance criteria that will be used to evaluate the impact on CQAs or provide a cross-reference to appropriate content in other sections (e.g., 3.2.S.4.1, 3.2.S.2.4).</td>
+                    <td>6.2.5 / 6.4.1 / 6.4.5</td>
+                </tr>
+                <tr>
+                    <td>Include a specific reference to the section in 3.2.S.2.6 that contains the risk assessment and laboratory-scale data already obtained for reprocessed batches.</td>
+                    <td>6.4.1 / 6.5.5 / 6.4.2 / 6.5.1</td>
+                </tr>
+                <tr>
+                    <td>Include an evaluation of the effect of the reprocessing step on the subsequent virus removal where applicable (3.2.A.2 Adventitious Agents).</td>
+                    <td>6.5.4 / 6.4.1 / 6.5.5 / 6.5.8 / 6.5.9</td>
+                </tr>
+                <tr>
+                    <td rowspan="3"><strong>Commitment Data</strong><br>（CBE-30 / Type IB Variation）</td>
+                    <td>3.2.S.2.5 Process Validation</td>
+                    <td>6.2.5 / 6.4.5</td>
+                </tr>
+                <tr>
+                    <td>3.2.S.4.4 Batch Analysis</td>
+                    <td>6.2.5 / 6.4.5</td>
+                </tr>
+                <tr>
+                    <td>3.2.S.7 Stability (part of the Annual Report)</td>
+                    <td>6.4.3</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p style="font-size:0.85rem; color:#4a5568; margin-top:0.5rem;">CTD = Common Technical Document；BLA = Biologics License Application（FDA）；MAA = Marketing Authorisation Application（EMA）；PAS = Prior Approval Supplement；CBE-30 = Changes Being Effected within 30 days。</p>
+</div>
+
+<!-- ======================== SECTION 6.3 ======================== -->
+<div class="section-title"><strong>6.3 Scope of Reprocessing 再處理範疇</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>6.3.1 Determining the Need for Reprocessing 確定再處理的必要性</h3>
+
+        <p>Table 6.3.1-1 describes the scoring criteria for prospectively assessing the potential need for
+        reprocessing in the hypothetical A-Mab process using an
+        <span class="key-term">FMEA approach</span>. The FMEA assesses the severity and detection of CQAs
+        and how readily they are detected during unit operations. Scores are determined for Sections 6.5.2–
+        6.5.5 and Sections 6.4.1–6.4.3 according to the criteria below.</p>
+
+        <p>See Table 6.3.1-1 (FMEA Scoring Criteria) and Table 6.3.1-2 (FMEA Application Example 1) below.</p>
+
+        <p>The AEX chromatography step was operated in the <span class="key-term">flow-through mode</span>,
+        binding impurities such as DNA, HCP, endotoxin, and viruses to the resin while the antibody passed
+        through. In addition, this step was designed to reduce levels of
+        <span class="key-term">aggregate</span> and <span class="key-term">acidic variants</span>. Within
+        the operating parameters of the AEX step, in this example, high levels of HCP in the column effluent
+        are possible on rare occasions, and therefore, HCP is the quality attribute most likely to trigger
+        reprocessing.</p>
+
+        <p>The risk assessment identified the AEX column (Table 6.3.1-2) as the step with the highest
+        <span class="key-term">RPN</span>. Development data indicated that the risk of high HCP levels was
+        an inherent process risk and a rare event attributable to multiple, interacting sources of variability
+        in the unit operation. Thus, the conclusion was that the AEX unit operation was a candidate for
+        reprocessing.</p>
+
+        <p>The assigned scores are multiplied together (<strong>S × O × D = RPN</strong>) to determine the
+        <span class="key-term">risk priority number (RPN)</span>. For example, for the "anion exchange
+        chromatography" reprocessing step in Table 6.3.1-2, S × O × D = 5 × 5 × 5 = <strong>125</strong>.</p>
+
+        <div class="quote-box">
+            "Note: For HCP limits in Table 6.3.1-2: an appropriate IPC limit for DS HCP would typically be set at 70–80% of the action limit (approximately 70–80 ng/mg; a practical choice is 80 ng/mg). This provides a buffer to account for assay variability and process drift, enabling corrective actions before reaching the &lt;100 ng/mg action limit."
+        </div>
+
+        <h3>6.3.2 Business Case and Project Charter 商業案例與專案章程</h3>
+
+        <p>Three options were considered in assessing the business case for reprocessing at the AEX step:</p>
+        <ol>
+            <li>Discarding the batch upon failure to meet the <span class="key-term">HCP in-process control requirement</span> of ≤80 ng/mg</li>
+            <li>Redesigning the AEX step or adding additional steps</li>
+            <li><span class="key-term">Reprocessing</span> during the AEX step</li>
+        </ol>
+
+        <p>From a business perspective, it was confirmed that all three options could be managed to ensure
+        acceptable product quality at release, but <strong>Option 3 was the most cost-effective</strong> and
+        could be designed to meet quality and regulatory requirements. A project charter was created, and a
+        cross-functional team was formed to develop a reprocessing step.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>FMEA（Failure Mode and Effects Analysis，失效模式與影響分析）：</strong>一種前瞻性的結構化風險評估工具，ICH Q9(R1) 推薦方法之一。三個評分維度：</p>
+            <ul>
+                <li><strong>S — Severity（嚴重性）：</strong>評估失效對 CQA 的潛在影響程度（1/3/5 三級）</li>
+                <li><strong>O — Occurrence（發生頻率）：</strong>評估失效模式的發生概率（1/3/5 三級）</li>
+                <li><strong>D — Detection（可偵測性）：</strong>評估在步驟完成前能否及時偵測到失效（1/3/5 三級）</li>
+            </ul>
+            <p><strong>RPN = S × O × D</strong>，範圍 1–125（本案例三個維度均為最高分 5）。</p>
+            <p><strong>IPC（In-Process Control，製程中管控）：</strong>本案例中 AEX eluate HCP 的 IPC 限度設定為 ≤80 ng/mg（action limit ≤100 ng/mg 的 80%），作為再處理觸發點的警戒值。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>FMEA 評分就像汽車定期保養的風險檢查表：技師會為每個零件評估「壞了有多嚴重（S）」× 「多容易壞（O）」× 「壞了能不能及時發現（D）」= 整體風險分數。剎車片壞了很嚴重（S=5）、長期不換容易磨損（O=5）、但有警示燈可以偵測（D=1），RPN = 25；而 AEX 步驟的 HCP 問題：嚴重（S=5）× 偶爾發生（O=5）× 無法在步驟完成前即時偵測（D=5）= RPN 125，是所有步驟中最高的，因此被選為再處理候選步驟。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <pre>
+FMEA 評分邏輯（本案例）：
+
+AEX 步驟 HCP 問題：
+  S = 5（HCP 超標 → 直接影響 CQA）
+  O = 5（每 &lt;100 批中發生 1 次）
+  D = 5（AEX eluate 無法在步驟完成前偵測 HCP）
+  RPN = 5 × 5 × 5 = 125  ← 最高分，確認為候選步驟
+
+對比：Protein A 步驟：
+  S = 3, O = 1, D = 1 → RPN = 3（低風險）
+
+對比：CEX 步驟：
+  S = 5, O = 3, D = 1 → RPN = 15（中等風險）
+
+IPC 觸發點設計：
+  Action limit：HCP &lt;100 ng/mg
+  IPC alert limit：≤80 ng/mg（= action limit × 80%）
+  → 80 ng/mg 超標 → 觸發再處理調查
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>D = 5（無法偵測）是 AEX 選為再處理步驟的關鍵：</strong>HCP 需要專門的分析方法（ELISA 或 LC-MS），無法在製程中即時監控，只能在步驟完成後採樣分析。這就是為什麼 D = 5，也是為什麼需要預先設計再處理方案，而不是等到問題發生再臨時應對。</p>
+            <p><strong>三選項決策框架：</strong>品質（CQA 合規性）是所有選項的前提，在三個選項都能確保產品品質的情況下，Option 3（再處理）因成本最低且不需要製程重新開發，成為首選。決策層級：CQA → Business。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>作為 CDMO，在與 Sponsor 或 DS CMO 進行技術轉移審查時，若 Sponsor 的 DS 製程包含 AEX 步驟，可以主動詢問：「是否已有再處理的 FMEA 評估？HCP 的 IPC alert limit 設定在何處？再處理觸發條件是否已寫入 BLA/MAA？」這展示了 CDMO 對上游製程的深度理解，有助於建立信任。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果 Virus-Retentive Filtration 步驟的 RPN = 25（S=5, O=5, D=1），為什麼不選它作為再處理候選步驟？（提示：考慮 D 值的含義）</li>
+                <li>為什麼 IPC alert limit 要設定在 action limit 的 70–80%（如 80 ng/mg），而不是直接用 100 ng/mg 作為觸發點？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- TABLE 6.3.1-1: Full Width -->
+<div class="full-width-table" style="margin: 1rem 0;">
+    <h3 style="font-weight:600; color:var(--primary-blue); margin-bottom:0.5rem;">Table 6.3.1-1: FMEA Scoring Criteria FMEA 評分標準</h3>
+    <div style="overflow-x:auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Scoring Category 評分類別</th>
+                    <th>Score 1（低）</th>
+                    <th>Score 3（中）</th>
+                    <th>Score 5（高）</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Severity (S) 嚴重性</strong><br>Scored based on the potential of the failure to adversely affect a critical quality attribute</td>
+                    <td>Will not affect a CQA<br>（不影響 CQA）</td>
+                    <td>May lead to an effect on a CQA<br>（可能影響 CQA）</td>
+                    <td>Will lead to an effect on a CQA, possibly resulting in CQA failure<br>（將導致 CQA 失效）</td>
+                </tr>
+                <tr>
+                    <td><strong>Occurrence (O) 發生頻率</strong><br>Scored based on the probability of the failure mode occurring</td>
+                    <td>1 in &gt;1000 batches<br>（每千批以上 1 次）</td>
+                    <td>1 in 100 to 1000 batches<br>（每百至千批 1 次）</td>
+                    <td>1 in &lt;100 batches<br>（每百批以內 1 次）</td>
+                </tr>
+                <tr>
+                    <td><strong>Detection (D) 可偵測性</strong><br>How readily the failure mode could be detected prior to completion of the step</td>
+                    <td>Can readily detect<br>（可即時偵測）</td>
+                    <td>Indirect ability to detect<br>（間接偵測能力）</td>
+                    <td>Cannot readily detect<br>（無法即時偵測）</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p style="font-size:0.85rem; color:#4a5568; margin-top:0.5rem;">RPN (Risk Priority Number，風險優先數) = S × O × D，範圍 1–125。RPN 越高，優先級越高，越需要採取再處理或其他控制措施。</p>
+</div>
+
+<!-- TABLE 6.3.1-2: Full Width -->
+<div class="full-width-table" style="margin: 1rem 0;">
+    <h3 style="font-weight:600; color:var(--primary-blue); margin-bottom:0.5rem;">Table 6.3.1-2: Application of FMEA to the AEX Reprocessing Step (Example 1) FMEA 應用於 AEX 再處理步驟（範例一）</h3>
+    <div style="overflow-x:auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Reprocessing Step 製程步驟</th>
+                    <th>S</th>
+                    <th>S Comments</th>
+                    <th>O</th>
+                    <th>O Comments</th>
+                    <th>D</th>
+                    <th>D Comments</th>
+                    <th>RPN</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Protein A Chromatography</strong><br>（Protein A 親和層析）</td>
+                    <td>3</td>
+                    <td>HCP may be affected by loading and elution pH.</td>
+                    <td>1</td>
+                    <td>Based upon manufacturing experience, pH or loading excursions outside the normal operating range (NOR) may occur in 1 of &gt;1000 batches.</td>
+                    <td>1</td>
+                    <td>Automated process control skids and batch record checks would readily detect a CPP excursion.</td>
+                    <td><strong>3</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Low pH Inactivation</strong><br>（低 pH 病毒滅活）</td>
+                    <td>5</td>
+                    <td>Aggregation and viral inactivation may be affected by the pH, temperature, and time.</td>
+                    <td>1</td>
+                    <td>Based upon manufacturing experience, pH or loading excursions outside the NOR may occur in 1 of &gt;1000 batches.</td>
+                    <td>1</td>
+                    <td>Batch record checks would readily detect a CPP excursion.</td>
+                    <td><strong>5</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Cation Exchange Chromatography</strong><br>（CEX，陽離子交換層析）</td>
+                    <td>5</td>
+                    <td>Aggregate and HCP may be affected by loading, load/wash conductivity, elution pH, and elution collection.</td>
+                    <td>3</td>
+                    <td>Based upon manufacturing experience, excursions outside the NOR may occur in 1 of 100–1000 batches.</td>
+                    <td>1</td>
+                    <td>Automated process control skids and batch record checks would readily detect a CPP excursion.</td>
+                    <td><strong>15</strong></td>
+                </tr>
+                <tr style="background:#fff3cd;">
+                    <td><strong>Anion Exchange Chromatography</strong><br>（AEX，陰離子交換層析）⭐ 最高 RPN</td>
+                    <td><strong>5</strong></td>
+                    <td>HCP removal may be impacted by equilibrium/wash conductivity and load pH within the NOR. High conductivity and low pH are maximum challenge conditions.</td>
+                    <td><strong>5</strong></td>
+                    <td>Variability in this chromatography step occasionally leads to reduced HCP removal in 1 in &lt;100 batches.</td>
+                    <td><strong>5</strong></td>
+                    <td>Failing levels of HCP at this step would not be detected.</td>
+                    <td><strong>125</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Small-virus Retentive Filtration</strong><br>（小病毒截留過濾）— 完整性失效</td>
+                    <td>5</td>
+                    <td>An integrity failure of the virus retentive filter would impact the viral safety claim.</td>
+                    <td>5</td>
+                    <td>Based upon manufacturing experience, integrity test failures will occur in 1 of 50 virus filters.</td>
+                    <td>1</td>
+                    <td>Integrity testing of the virus retentive filters will identify a failure mode.</td>
+                    <td><strong>25</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Small-virus Retentive Filtration</strong><br>（小病毒截留過濾）— CPP 超限</td>
+                    <td>5</td>
+                    <td>Exceeding a CPP limit would impact the viral safety claim.</td>
+                    <td>3</td>
+                    <td>Based upon manufacturing experience, overloading errors will occur in 1 of 100 batches.</td>
+                    <td>1</td>
+                    <td>Automated process control skids would readily detect a CPP excursion.</td>
+                    <td><strong>15</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Formulation: Ultrafiltration/Diafiltration (UF/DF)</strong><br>（配方：超濾/透濾）</td>
+                    <td>5</td>
+                    <td>Product concentration will be affected by drug substance final dilution. Reconcentration may be required.</td>
+                    <td>3</td>
+                    <td>Based upon manufacturing experience, dilution errors will occur in 1 of 100 batches.</td>
+                    <td>1</td>
+                    <td>Concentration testing of the preformulated bulk will identify a failure mode.</td>
+                    <td><strong>15</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p style="font-size:0.85rem; color:#4a5568; margin-top:0.5rem;">RPN = S × O × D。AEX 步驟 RPN = 125（最高），確認為優先再處理候選步驟。NOR = Normal Operating Range（正常操作範圍）；CPP = Critical Process Parameter（關鍵製程參數）。</p>
+</div>
+
+<!-- ======================== SECTION 6.4 ======================== -->
+<div class="section-title"><strong>6.4 Quality Considerations 品質考量</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>6.4.1 Quality Attribute Impact Assessment 品質屬性影響評估</h3>
+
+        <p>A risk analysis was performed to assess the effect of repeating the AEX chromatography step on
+        the quality attributes (Table 6.4.1-1). The potential effect of the reprocessing step on both drug
+        substance and intermediate quality attributes was assessed. For all quality attributes listed, it is
+        assumed that the company has previously developed analytical techniques able to detect each,
+        resulting in <span class="key-term">Detectability scores of 1</span>. Attributes impacted by the AEX
+        step were identified and included in Table 6.4.1-1. Attributes with an
+        <span class="key-term">RPN ≥ 15</span> were identified for further evaluation.</p>
+
+        <p>See Table 6.4.1-1 (FMEA Application Example 2) below.</p>
+
+        <h3>6.4.2 Analytical Methods 分析方法</h3>
+
+        <p>In addition to routine drug substance release-testing, additional nonroutine analytical tests were
+        identified as necessary for the development and implementation of reprocessing. In this case, an
+        analysis of <span class="key-term">HCP</span>, <span class="key-term">acidic variants</span>,
+        <span class="key-term">aggregate levels</span>, <span class="key-term">fragmentation</span>,
+        <span class="key-term">oxidation</span>, and <span class="key-term">potency</span> in reprocessed
+        material was performed during reduced-scale development studies. All of these characterization assays
+        were either validated or qualified as appropriate for use with samples from the AEX eluate.</p>
+
+        <p>The same analytical methods performed during the laboratory-scale models were planned for
+        subsequent full-scale verification runs (comparability protocol). In addition to routine release and
+        stability-testing, the same nonroutine testing performed on AEX eluate in laboratory-scale models
+        would be performed at manufacturing scale.</p>
+
+        <p>See Table 6.4.2-1 (Analytical Methods Summary) below.</p>
+
+        <h3>6.4.3 Comparability Criteria 可比性標準</h3>
+
+        <p>For <span class="key-term">laboratory-scale models</span>, the intermediate quality attributes had
+        to remain consistent with AEX eluate that had not been reprocessed, with the exception of
+        <span class="key-term">HCP</span>, which was expected to be reduced by the reprocessing event.</p>
+
+        <p>For <span class="key-term">manufacturing-scale studies</span>, all drug substance release
+        specifications continued to be met. Additionally, the intermediate quality attributes remained
+        consistent with AEX eluate that had not been reprocessed, with the exception of HCP, which was
+        expected to be reduced by the reprocessing event.</p>
+
+        <p>Drug substance from the first reprocessed batch was placed on the established real-time and
+        accelerated stability protocols. It was determined that evaluation of the resulting drug product
+        stability was not required.</p>
+
+        <h3>6.4.4 Monitor Triggers 監控觸發點</h3>
+
+        <p>The company continued to monitor the <span class="key-term">HCP in-process control test</span>
+        (action limit &lt;100 ng/mg) at AEX eluate. (See Section 6.5.2.)</p>
+
+        <h3>6.4.5 Investigate, Execute Protocols, Analyze Data, Document Results, and Complete Commitments 調查、執行方案、分析數據、記錄結果及履行承諾</h3>
+
+        <p>Should the trigger described in Section 6.4.4 be reached, the event would prompt the company to
+        investigate, execute protocols, analyze data, document results, and complete commitments. In all
+        cases where reprocessing occurred, an <span class="key-term">investigation</span> would be conducted
+        evaluating the root cause, product quality impact, and corrective actions.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>6.4.1 第二輪 FMEA（Example 2）— 評估再處理本身對 CQA 的影響：</strong>與 6.3.1 的 FMEA（評估哪個步驟需要再處理）不同，6.4.1 的 FMEA 專門評估「如果執行 AEX 再處理，每個品質屬性會受到什麼影響」。由於假設公司已有完整分析方法，D = 1（均可偵測）。</p>
+            <p><strong>RPN ≥ 15 的屬性需要進一步評估：</strong>包括 Protein concentration（蛋白質濃度）、Aggregate（聚集體）、Acidic variants（酸性異構體）、Fragmentation（碎片）、Potency（效力）、Oxidation（氧化）、HCP（宿主細胞蛋白）。這些屬性在 6.4.2 的分析方法中均需有對應檢測方法。</p>
+            <p><strong>Comparability Criteria（可比性標準）：</strong>再處理後的中間品品質屬性必須與未再處理的 AEX eluate 「一致（consistent）」，唯一例外是 HCP——預期 HCP 水平因再處理而降低（這正是再處理的目的）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>6.4.2 分析方法矩陣的深度：</strong>Table 6.4.2-1 涵蓋從聚集體（SEC、RP-HPLC、Fluorimetry）到糖基化（LC-MS、HPLC）的完整分析工具箱。非常規測試（nonroutine testing）需要在 AEX eluate 基質（matrix）中驗證（validated）或確認（qualified），不能直接借用 DS release 方法。</p>
+            <p><strong>6.4.3 穩定性計畫：</strong>再處理的第一批 DS 必須納入已建立的實時穩定性（real-time stability）和加速穩定性（accelerated stability）方案。穩定性數據是後續 CBE-30/Type IB 提交的重要組成部分（見 Table 6.2.5-1，3.2.S.7）。</p>
+            <p><strong>6.4.4 監控觸發機制設計原則：</strong>Action limit（動作限度）&lt;100 ng/mg，alert limit（警戒限度）≤80 ng/mg（20% 緩衝帶，用於考慮分析變異度和製程漂移）。觸發點必須明確寫入 SOP 和批次記錄，確保 GMP 可追溯性。</p>
+            <p><strong>6.4.5 調查義務（CAPA）：</strong>每次觸發再處理都必須進行正式調查，記錄根本原因（root cause）、對產品品質的影響評估（quality impact assessment）和糾正預防措施（CAPA）。這是 GMP 合規的基本要求，不能省略。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>6.4 的品質考量就像醫院的急救流程設計：在病人真正送達之前（= 再處理真正發生之前），醫院已預先設計好「哪些生命徵象需要監控（6.4.4）」、「哪些數值超標就啟動緊急程序（6.4.4 觸發點）」、「緊急手術的標準做法是什麼（6.4.5 執行方案）」、「手術後如何確認病人恢復正常（6.4.3 可比性標準）」。這種前瞻性設計讓真正的緊急事件發生時，每個人都知道該做什麼。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <pre>
+6.4.1 FMEA Example 2 關鍵數字：
+  所有屬性 D = 1（假設均可偵測）
+  RPN ≥ 15 → 需進一步評估
+
+  Leachables/Extractables：S=3, O=3, D=3 → RPN=27
+  （是唯一 D≠1 的項目，因第二次接觸樹脂/過濾器）
+
+  Buffer/Solution supply：S=5, O=5, D=1 → RPN=25
+  Equipment cleaning：S=5, O=5, D=1 → RPN=25
+  （兩者為操作層面的風險，非品質屬性風險）
+
+HCP 監控觸發設計：
+  Release spec：&lt;12 ng/mg（DS 放行規格）
+  Action limit：&lt;100 ng/mg（AEX eluate IPC）
+  Alert limit：≤80 ng/mg（= 100 × 80%）
+  再處理觸發：HCP &gt;100 ng/mg → 啟動調查 + 再處理方案
+            </pre>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>若 CDMO 負責 DP 端（Fill-Finish），而 Sponsor 的 DS CMO 執行了 AEX 再處理，CDMO 需要確認：(1) Sponsor 已按 6.4.3 完成可比性評估，DS 放行規格全部符合；(2) Sponsor 提供了正式調查報告（根本原因 + CAPA）；(3) 穩定性計畫包含再處理批次。這些是 DS/DP 介面品質協議（Quality Agreement）中應明確規定的 Sponsor 義務。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在 6.4.1 的 FMEA 中，Leachables and Extractables 的 D 值為 3（非 1），這是什麼原因？在再處理設計中如何降低這個風險？</li>
+                <li>6.4.3 說「HCP 預期會降低（expected to be reduced）」——這是再處理的預期效果。如果再處理後 HCP 反而升高，應如何解讀？這批批次可以放行嗎？</li>
+                <li>6.4.5 要求每次再處理都要進行調查。調查應包含哪些必要元素，才能滿足 PIC/S GMP 的要求？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- TABLE 6.4.1-1: Full Width -->
+<div class="full-width-table" style="margin: 1rem 0;">
+    <h3 style="font-weight:600; color:var(--primary-blue); margin-bottom:0.5rem;">Table 6.4.1-1: Application of FMEA to the AEX Reprocessing Step (Example 2) FMEA 應用於 AEX 再處理步驟（範例二）— 品質屬性影響評估</h3>
+    <div style="overflow-x:auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Category 類別</th>
+                    <th>Process Parameter or Other Consideration 製程參數或其他考量</th>
+                    <th>S</th>
+                    <th>O</th>
+                    <th>D</th>
+                    <th>RPN</th>
+                    <th>Comments (S, O, D) 說明</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="8"><strong>Output AEX-related Quality Attributes</strong><br>（AEX 相關輸出品質屬性）</td>
+                    <td>Protein concentration 蛋白質濃度<br>（7–8 g/L）</td>
+                    <td>3</td>
+                    <td>5</td>
+                    <td>1</td>
+                    <td><strong>15</strong></td>
+                    <td>Quality attribute; reprocessing will affect eluate concentration, detectable.</td>
+                </tr>
+                <tr>
+                    <td>pH<br>（7.4–7.6）</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td><strong>1</strong></td>
+                    <td>Quality attribute; reprocessing will not affect pH, detectable.</td>
+                </tr>
+                <tr>
+                    <td>Aggregate 聚集體<br>（&lt;0.8%）</td>
+                    <td>5</td>
+                    <td>3</td>
+                    <td>1</td>
+                    <td><strong>15</strong></td>
+                    <td>Quality attribute; reprocessing may affect eluate aggregate, detectable.</td>
+                </tr>
+                <tr>
+                    <td>Acidic variants 酸性異構體<br>（≈10%）</td>
+                    <td>5</td>
+                    <td>3</td>
+                    <td>1</td>
+                    <td><strong>15</strong></td>
+                    <td>Quality attribute; reprocessing may affect eluate acidic variants, detectable.</td>
+                </tr>
+                <tr>
+                    <td>Fragmentation 碎片化</td>
+                    <td>5</td>
+                    <td>3</td>
+                    <td>1</td>
+                    <td><strong>15</strong></td>
+                    <td>Quality attribute; reprocessing may affect fragmentation, detectable.</td>
+                </tr>
+                <tr>
+                    <td>Potency 效力</td>
+                    <td>5</td>
+                    <td>3</td>
+                    <td>1</td>
+                    <td><strong>15</strong></td>
+                    <td>Quality attribute; reprocessing may affect potency, detectable.</td>
+                </tr>
+                <tr>
+                    <td>Oxidation 氧化</td>
+                    <td>5</td>
+                    <td>3</td>
+                    <td>1</td>
+                    <td><strong>15</strong></td>
+                    <td>Quality attribute; reprocessing may affect oxidation, detectable.</td>
+                </tr>
+                <tr>
+                    <td>HCP 宿主細胞蛋白<br>（&lt;12 ng/mg）</td>
+                    <td>5</td>
+                    <td>3</td>
+                    <td>1</td>
+                    <td><strong>15</strong></td>
+                    <td>Quality attribute; reprocessing may affect HCP, detectable.</td>
+                </tr>
+                <tr>
+                    <td rowspan="3"><strong>Other<br>其他考量</strong></td>
+                    <td>Leachables and extractables 可瀝出物與可萃取物</td>
+                    <td>3</td>
+                    <td>3</td>
+                    <td>3</td>
+                    <td><strong>27</strong></td>
+                    <td>Exposure of the API to the resin/filters a second time may increase potential extractables and leachables load.</td>
+                </tr>
+                <tr>
+                    <td>Buffer/solution supply 緩衝液/溶液供應</td>
+                    <td>5</td>
+                    <td>5</td>
+                    <td>1</td>
+                    <td><strong>25</strong></td>
+                    <td>Manufacturing may not have sufficient buffer to execute reprocessing; buffer-generation timing and impact on hold time need to be considered.</td>
+                </tr>
+                <tr>
+                    <td>Filter sizing 過濾器尺寸</td>
+                    <td>3</td>
+                    <td>3</td>
+                    <td>1</td>
+                    <td><strong>9</strong></td>
+                    <td>Risk of aggregate formation during ambient storage is a concern; need to determine sufficient filtration area.</td>
+                </tr>
+                <tr>
+                    <td><strong>Other<br>其他考量</strong></td>
+                    <td>Equipment cleaning 設備清洗</td>
+                    <td>5</td>
+                    <td>5</td>
+                    <td>1</td>
+                    <td><strong>25</strong></td>
+                    <td>Equipment cleaning turnaround time and impact on hold time need to be considered.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p style="font-size:0.85rem; color:#4a5568; margin-top:0.5rem;">D = 1（所有品質屬性均假設可偵測）。RPN ≥ 15 的屬性需進一步評估。Leachables/Extractables 的 D = 3 為唯一例外，因第二次接觸樹脂/過濾器的風險難以即時監控。API = Active Pharmaceutical Ingredient（活性藥物成分）。</p>
+</div>
+
+<!-- TABLE 6.4.2-1: Full Width -->
+<div class="full-width-table" style="margin: 1rem 0;">
+    <h3 style="font-weight:600; color:var(--primary-blue); margin-bottom:0.5rem;">Table 6.4.2-1: Summary of Analytical Methods to Assess the Product Quality Attribute 產品品質屬性評估分析方法總表</h3>
+    <div style="overflow-x:auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Attribute 品質屬性</th>
+                    <th>Analytical Test 分析方法</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Aggregates 聚集體</strong></td>
+                    <td>Size-exclusion chromatography (SEC, 尺寸排阻層析)<br>Reverse-phase HPLC (RP-HPLC, 逆相高效液相層析)<br>Fluorimetry (螢光光度法)</td>
+                </tr>
+                <tr>
+                    <td><strong>HCP 宿主細胞蛋白</strong></td>
+                    <td>Liquid chromatography-mass spectrometry (LC-MS, 液相層析質譜法)<br>Enzyme-linked immunosorbent assay (ELISA, 酶聯免疫吸附測定)</td>
+                </tr>
+                <tr>
+                    <td><strong>Fragments 碎片</strong></td>
+                    <td>SEC<br>RP-HPLC<br>Isoelectric focusing (IEF, 等電點聚焦)</td>
+                </tr>
+                <tr>
+                    <td><strong>High Molecular Species 高分子量物種</strong></td>
+                    <td>SEC</td>
+                </tr>
+                <tr>
+                    <td><strong>Low Molecular Species 低分子量物種</strong></td>
+                    <td>Capillary electrophoresis-sodium dodecyl sulfate (CE-SDS, 毛細管電泳-SDS)</td>
+                </tr>
+                <tr>
+                    <td><strong>Acidic variants 酸性異構體</strong></td>
+                    <td>Ion Exchange Chromatography (IEX, 離子交換層析)<br>Capillary isoelectric focusing (cIEF, 毛細管等電點聚焦)<br>Imaged capillary isoelectric focusing (icIEF, 成像毛細管等電點聚焦)</td>
+                </tr>
+                <tr>
+                    <td><strong>Galactose content 半乳糖含量</strong></td>
+                    <td>HPLC</td>
+                </tr>
+                <tr>
+                    <td><strong>Afucosylation 去岩藻糖基化</strong></td>
+                    <td>LC-MS</td>
+                </tr>
+                <tr>
+                    <td><strong>Oxidation 氧化</strong></td>
+                    <td>Peptide mass fingerprinting (胜肽質量指紋圖譜)</td>
+                </tr>
+                <tr>
+                    <td><strong>C-terminal lysine C 端離胺酸</strong></td>
+                    <td>LC-MS</td>
+                </tr>
+                <tr>
+                    <td><strong>Deamidated isoforms 去醯胺異構體</strong></td>
+                    <td>Capillary zone electrophoresis (CZE, 毛細管區帶電泳)<br>Mass spectroscopy (質譜法)</td>
+                </tr>
+                <tr>
+                    <td><strong>Sialic acid content 唾液酸含量</strong></td>
+                    <td>HPLC-based fluorometric assay（HPLC 螢光法）</td>
+                </tr>
+                <tr>
+                    <td><strong>Methotrexate 甲胺蝶呤</strong></td>
+                    <td>HPLC<br>LC-MS/MS（液相層析串聯質譜）<br>UV-Vis spectrophotometry (UV-Vis 分光光度法)</td>
+                </tr>
+                <tr>
+                    <td><strong>Subvisible particles 次可見微粒</strong></td>
+                    <td>Light obscuration method（光遮蔽法）</td>
+                </tr>
+                <tr>
+                    <td><strong>Visible particles 可見異物</strong></td>
+                    <td>Visual method（目視法）<br>Micro-flow imaging (MFI, 微流成像)<br>Dynamic light scattering (DLS, 動態光散射)</td>
+                </tr>
+                <tr>
+                    <td><strong>Unfolding 蛋白質解折疊</strong></td>
+                    <td>Differential scanning fluorimetry (DSF, 差示掃描螢光法)<br>Protein conformational array（蛋白質構型陣列）</td>
+                </tr>
+                <tr>
+                    <td><strong>Disulfide Bonds 雙硫鍵</strong></td>
+                    <td>Gel electrophoresis (SDS-PAGE, 凝膠電泳)<br>Capillary electrophoresis (CE-SDS, 毛細管電泳)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p style="font-size:0.85rem; color:#4a5568; margin-top:0.5rem;">非常規測試（nonroutine testing）需在 AEX eluate 基質中完成方法驗證（validated）或確認（qualified）。常規放行方法（routine release testing）基礎上，再處理時需額外執行非常規測試：HCP、acidic variants、aggregates、fragmentation、oxidation、potency。</p>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary (Part A: 6.0–6.4)</h3>
+    <ul>
+        <li><strong>6.0 框架定位：</strong>AEX 再處理案例是 TR74 最複雜的示範情境，刻意設計以涵蓋完整的再處理分析框架。品質管理系統、法規要求、製程理解是設計驅動力，商業考量排第三。</li>
+        <li><strong>6.1 單元操作理解：</strong>AEX 以 flow-through 模式清除 HCP/DNA/病毒，mAb 直接通過。系統組件（buffer reservoirs、pumps、column、resin、valves、sensors、controller）共同確保層析系統的可靠性。</li>
+        <li><strong>6.2 技術可行性評估五要點：</strong>柱填充完整性（6.2.1）→ 清洗/消毒（6.2.2）→ 性能測試（6.2.3）→ 樹脂壽命管理（6.2.4）→ 驗證與申報策略（6.2.5）。每個要點都是「再處理可以執行」的先決條件。</li>
+        <li><strong>6.3 FMEA Example 1（步驟層面）：</strong>AEX 步驟 RPN = 125（S=5, O=5, D=5），是所有純化步驟中唯一同時具有高嚴重性、高發生頻率、高不可偵測性的步驟，因此被確認為再處理候選步驟。三選項中，Option 3（再處理）在確保品質的前提下最具成本效益。</li>
+        <li><strong>6.4 FMEA Example 2（屬性層面）+ 品質把關機制：</strong>再處理對 Protein concentration、Aggregates、Acidic variants、Fragmentation、Potency、Oxidation、HCP 均可能有影響（RPN ≥ 15），需用 Table 6.4.2-1 的完整分析方法矩陣進行評估。可比性標準（6.4.3）、監控觸發點（6.4.4，HCP &gt;100 ng/mg）和調查義務（6.4.5）形成完整的品質閉環。</li>
+        <li><strong>決策層級：</strong>CQA 合規性 → 業務可行性（Business Case）→ 操作執行（Project Charter）。品質永遠是第一道關卡。</li>
+    </ul>
+</div>
+
+</body>
+</html>

@@ -2,7 +2,7 @@
 
 A multi-source GMP knowledge base for sterile pharmaceutical manufacturing — combining human-readable HTML educational guides with a chatbot-ready Markdown knowledge base and a Claude Code skill for conversational access.
 
-Covers **PDA Technical Reports**, **ISPE Guidelines**, **FDA Guidance**, **PIC/S Annexes**, **ICH Guidelines**, **USP Chapters**, **ISO Standards**, and **European Pharmacopoeia (Ph.Eur.)** — all focused on sterile/injectable pharmaceutical manufacturing. **182 documents** across 8 source organizations.
+Covers **PDA Technical Reports**, **ISPE Guidelines**, **FDA Guidance**, **PIC/S Annexes**, **ICH Guidelines**, **USP Chapters**, **ISO Standards**, and **European Pharmacopoeia (Ph.Eur.)** — all focused on sterile/injectable pharmaceutical manufacturing. **183 documents** across 8 source organizations.
 
 ## What's in Here
 
@@ -16,7 +16,7 @@ Covers **PDA Technical Reports**, **ISPE Guidelines**, **FDA Guidance**, **PIC/S
 
 ## Documents Covered
 
-### PDA Technical Reports & Points to Consider (42 complete)
+### PDA Technical Reports & Points to Consider (43 complete)
 
 | Document | Topic |
 |----------|-------|
@@ -44,6 +44,7 @@ Covers **PDA Technical Reports**, **ISPE Guidelines**, **FDA Guidance**, **PIC/S
 | PDA TR70 | Cleaning and Disinfection for Aseptic Facilities |
 | PDA TR73 | Prefilled Syringe (Sections 12–18) |
 | PDA TR73-2 | MDR Annex I for Staked Needle Systems |
+| PDA TR74 | Reprocessing and Reworking of Biologicals (Revised 2026) |
 | PDA TR84 | Data Integrity in Manufacturing and Packaging (2020) |
 | PDA TR85 | Enhanced Test Methods for Visible Particle Detection |
 | PDA TR86 | Industry Challenges and Current Technologies for Pharmaceutical Package Integrity Testing (2021) |
