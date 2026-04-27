@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR74 - Section 6 Appendix I: AEX Case Study (Part B)</title>
+    <link rel="stylesheet" href="../../../template.css">
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 6 Appendix I: AEX Reprocessing Case Study 附錄一：陰離子交換層析再處理案例</h1>
+    <div class="subtitle">Part B: 6.5–6.6 | PDA Technical Report No. 74 (Revised 2026) | p68–p74</div>
+    <div class="page-info">PDA Technical Report No. 74 (Revised 2026) | Part B covers 6.5 Process Considerations &amp; 6.6 Conclusions</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 AEX 再處理步驟的設計與執行流程，包括從開發歷史回顧到製造移轉的完整路徑</li>
+        <li>掌握 Reprocessing Trigger（再處理觸發條件）的設計邏輯，以及 IPC 測試如何作為再處理決策的客觀依據</li>
+        <li>評估 Scaled-Down Model（縮小比例模型）在再處理驗證中的適用性，以及何時需要全規模確認批次</li>
+        <li>了解如何透過雙重再處理（Double Reprocessing）作為最壞情境挑戰，建立保守的安全裕度</li>
+        <li>體認 6.6 結論的核心訊息：再處理在技術上可行，但必須以嚴謹的開發工作與文件管理作為基礎</li>
+    </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- 6.5 Process Considerations -->
+<!-- ============================================================ -->
+
+<div class="section-title"><strong>6.5 Process Considerations 製程考量</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>
+            <span class="key-term">6.5 Process Considerations</span> encompasses the full design-and-execute
+            phase for an AEX reprocessing procedure, from revisiting original development data through to
+            technology transfer into manufacturing. Eleven sub-sections (6.5.1–6.5.11) walk through each
+            stage of a disciplined, risk-based development programme.
+        </p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Process Considerations（製程考量）</strong>：這一大節是整個 Appendix I 的執行核心。
+            前面的 6.3–6.4 完成了風險評估與品質屬性評估；6.5 則負責將這些分析轉化為
+            可執行的再處理程序，並驗證其有效性。</p>
+            <p><strong>PPQ 思維（製程性能資格）</strong>：6.5 的整體架構與
+            Process Performance Qualification (PPQ) 的邏輯高度一致——先在縮小比例模型確認設計，
+            再在全規模進行確認性批次。</p>
+        </div>
+        <div class="note-box">
+            <h4>決策層次 Decision Hierarchy</h4>
+            <p>在 6.5 所有設計決策中，優先順序不變：</p>
+            <ol>
+                <li>無菌保證 Sterility Assurance</li>
+                <li>產品 CQA（HCP、Aggregate、病毒去除能力）</li>
+                <li>商業可行性（成本、時程）</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 6.5.1 Development History -->
+<!-- ============================================================ -->
+
+<div class="section-title"><strong>6.5.1 Development History 開發歷史回顧</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>
+            The development history of the <span class="key-term">AEX-column step</span> should be reviewed
+            to understand the purpose(s) of the original unit operation and the proposed reprocessing step.
+            Control of <span class="key-term">CQAs</span> and the potential impact to subsequent processing
+            steps should be examined. Development studies that should be repeated or augmented to support
+            reprocessing should be identified and discussed as described in Sections 6.5.2–6.5.4.
+        </p>
+        <p>
+            When considering a step for reprocessing, the original criticality assessment
+            (<span class="key-term">Table 6.5.1-1</span>) and an understanding of the original
+            <span class="key-term">design parameters</span> (<span class="key-term">Table 6.5.1-2</span>)
+            served as the technical basis for the design of the reprocessing procedure described in
+            Section 6.5.3.
+        </p>
+        <p><em>See Table 6.5.1-1 and Table 6.5.1-2 below (full-width).</em></p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Development History Review（開發歷史回顧）</strong>：不是重新做實驗，
+            而是系統性翻閱原始 AEX 步驟的開發資料——多變量研究、病毒清除模組試驗、
+            製程範圍研究——判斷哪些資料可以直接沿用，哪些需要補充。</p>
+            <p>Table 6.5.1-1 列出 HCP Clearance 相關的 <strong>CPP 分類與可接受範圍</strong>；
+            Table 6.5.1-2 則進一步提供各參數的支持資料來源與管控策略，
+            是設計再處理步驟的技術地基。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>這就像修繕一棟建築前，先翻閱原始建築圖紙，確認哪些承重牆不能動、
+            哪些隔間可以調整。省略這步驟直接動工，後果可能是結構崩塌。
+            AEX 再處理設計亦同：跳過開發歷史回顧，便可能誤判哪些 CPP 在第二次通過時
+            仍有保護能力。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>Table 6.5.1-1 中 <strong>Operating Flow Rate ≤450 cm/h</strong> 和
+            <strong>AEX Load Conductivity ≤15 mS/cm</strong> 均為 CPP。
+            這些上限在再處理設計（6.5.3）中必須維持不變——因為它們直接影響
+            HCP 的結合與去除效率。</p>
+        </div>
+    </div>
+</div>
+
+<!-- TABLE 6.5.1-1 — Full Width -->
+<div style="overflow-x:auto; margin:1rem 0;">
+    <h3 style="font-weight:600; color:var(--primary-blue); margin-bottom:0.5rem; padding-left:1.5rem;">
+        Table 6.5.1-1: Summary of Process Parameter Classification and Ranges Affecting Host Cell-derived Protein Clearance
+        宿主細胞蛋白去除能力相關製程參數分類與範圍
+    </h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Variable 變數</th>
+                <th>HCP Clearance Acceptable Ranges HCP 去除可接受範圍</th>
+                <th>Classification (for HCP Clearance) 分類</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>AEX load pH</td><td>≥7.0</td><td>CPP</td></tr>
+            <tr><td>Protein load (AEX Resin)</td><td>≤300 mg protein/mL resin</td><td>CPP</td></tr>
+            <tr><td>Protein load (AEX Membrane)</td><td>≤10 g protein/mL membrane</td><td>CPP</td></tr>
+            <tr><td>Operating flow rate</td><td>≤450 cm/h</td><td>CPP</td></tr>
+            <tr><td>AEX load conductivity</td><td>≤15 mS/cm</td><td>CPP</td></tr>
+            <tr><td>Equilibration/Wash 1 buffer conductivity</td><td>≤15 mS/cm</td><td>Noncritical</td></tr>
+            <tr><td>Equilibration/Wash 1 buffer pH</td><td>≥7.0</td><td>Noncritical</td></tr>
+            <tr><td>Peak collection start</td><td>≥0.1 OD* (UV)</td><td>Noncritical</td></tr>
+            <tr><td>Peak collection end</td><td>≥0.1 OD* (UV)</td><td>Noncritical</td></tr>
+            <tr><td>Load buffering salt system</td><td>Citrate, phosphate, or tris</td><td>Noncritical</td></tr>
+            <tr><td>Protein concentration in load</td><td>≤50 mg/mL</td><td>Noncritical</td></tr>
+            <tr>
+                <td>Claimed log reduction factor (LRF) values</td>
+                <td>≥5.5 LRF for xenotropic murine leukemia virus<br>≥4.0 LRF for minute virus of mice</td>
+                <td>—</td>
+            </tr>
+        </tbody>
+    </table>
+    <p style="font-size:0.8rem; color:#666; padding-left:1.5rem; margin-top:0.3rem;">*OD = Optical Density 光密度</p>
+</div>
+
+<!-- TABLE 6.5.1-2 — Full Width -->
+<div style="overflow-x:auto; margin:1rem 0;">
+    <h3 style="font-weight:600; color:var(--primary-blue); margin-bottom:0.5rem; padding-left:1.5rem;">
+        Table 6.5.1-2: Summary of Design Parameter for AEX Step
+        AEX 步驟設計參數摘要
+    </h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Process Parameter 製程參數</th>
+                <th>Acceptable Ranges for AEX Step AEX 可接受範圍</th>
+                <th>Acceptable Ranges for HCP Clearance HCP 去除可接受範圍</th>
+                <th>Parameter Classification 參數分類</th>
+                <th>Supporting Data 支持資料</th>
+                <th>Control Strategy 管控策略</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Equilibration/Wash Buffer Conductivity (mS/cm)</td>
+                <td>1.6–3.6</td><td>≤15</td><td>CPP</td>
+                <td>Multivariate study</td><td>Batch record procedure</td>
+            </tr>
+            <tr>
+                <td>AEX Load pH</td>
+                <td>7.2–7.8</td><td>≥7.0</td><td>CPP</td>
+                <td>Multivariate study, modular viral clearance</td><td>Batch record procedure</td>
+            </tr>
+            <tr>
+                <td>Protein Load (g/L resin)</td>
+                <td>50–300</td><td>≤300</td><td>CPP</td>
+                <td>Modular viral clearance study</td><td>Batch record procedure</td>
+            </tr>
+            <tr>
+                <td>Operating Flow Rate (cm/h)</td>
+                <td>≤450</td><td>≤450</td><td>CPP</td>
+                <td>Modular viral clearance study</td><td>Skid control</td>
+            </tr>
+            <tr>
+                <td>AEX Load Conductivity (mS/cm)</td>
+                <td>3.0–8.0</td><td>≤15</td><td>CPP</td>
+                <td>Modular viral clearance study</td><td>Batch record procedure</td>
+            </tr>
+            <tr>
+                <td>Equilibration/Wash 1 buffer pH</td>
+                <td>7.2–7.8</td><td>≥7.0</td><td>Noncritical</td>
+                <td>Multivariate study</td><td>Batch record procedure</td>
+            </tr>
+            <tr>
+                <td>Peak Collection Start A280</td>
+                <td>0.1–2 OD ascending</td><td>≥0.1 OD ascending</td><td>Noncritical</td>
+                <td>Multivariate study</td><td>Skid control</td>
+            </tr>
+            <tr>
+                <td>Peak Collection End A280</td>
+                <td>0.1–2 OD descending</td><td>≥0.1 OD descending</td><td>Noncritical</td>
+                <td>Multivariate study</td><td>Skid control</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- TABLE COMMENTARY -->
+<div class="two-column" style="margin-top:0.5rem;">
+    <div class="left-column"></div>
+    <div class="right-column">
+        <div class="note-box">
+            <h4>圖表解讀 Table Analysis — Tables 6.5.1-1 &amp; 6.5.1-2</h4>
+            <p>兩張表格的關鍵訊息：AEX 步驟有 <strong>5 個 CPP</strong>（pH、蛋白載量、流速、電導度），
+            這些在再處理設計中必須維持在驗證範圍內。
+            Table 6.5.1-2 額外揭示每個 CPP 背後的支持資料（多變量研究 vs 病毒清除模組試驗），
+            以及管控方式（批次紀錄程序 vs 製程控制系統），
+            為後續 6.5.8 開發研究提供明確目標。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 6.5.2 Reprocessing Triggers -->
+<!-- ============================================================ -->
+
+<div class="section-title"><strong>6.5.2 Reprocessing Triggers 再處理觸發條件</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>
+            Based on a review of the development history and the prior risk assessment, an
+            <span class="key-term">HCP critical in-process test</span> following the AEX step was
+            designed and implemented to serve as the <span class="key-term">trigger</span> for an
+            investigation (i.e., if HCP is &gt;100 ng/mg). The test results were available within
+            eight (8) hours of sampling.
+        </p>
+        <p>
+            The requirement for this additional <span class="key-term">eight-hour hold time</span>
+            was considered when designing the reprocessing step, as described in Section 6.4.3 and
+            Sections 6.5.6–6.5.9. The introduction of this IPC test was a permanent process change
+            that affected <em>all production batches</em> and not just the reprocessed batches.
+        </p>
+        <p>
+            The investigation procedure was defined in an SOP. If the investigation confirmed the
+            positive result, then the reprocessing step would be initiated.
+        </p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Reprocessing Trigger（再處理觸發條件）</strong>：再處理不是自動執行的，
+            必須由客觀的量化指標啟動。本案例中，觸發條件是 AEX 洗出液 HCP &gt;100 ng/mg。
+            這個閾值在 6.5.8 中被縮小比例模型支持，也在 6.3 的 FMEA 分析中被識別為高風險失效模式。</p>
+            <p><strong>永久性製程變更（Permanent Process Change）</strong>：新增 HCP IPC 測試並非只用於
+            再處理批次，而是所有批次都必須執行。這是一個重要的監管邏輯——再處理機制的建立，
+            同時強化了整體製程的品質監控。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像工廠在產線末端加裝一個金屬探測器：它不是只為了處理特定批次才開機，
+            而是對每一件產品都進行掃描。觸發警報後，才啟動特定的處理程序。
+            AEX 後的 HCP IPC 測試邏輯相同——常態監控，異常才啟動再處理。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>8 小時結果等待時間直接影響了 AEX 洗出液的保留時間設計。
+            6.5.4 因此要求將最長保留時間從 72 小時延長至 120 小時（增加 48 小時緩衝），
+            需要另行進行保留時間研究（6.5.9.1）。
+            這是設計牽一髮動全身的典型案例。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 6.5.3 Reprocessing Design -->
+<!-- ============================================================ -->
+
+<div class="section-title"><strong>6.5.3 Reprocessing Design 再處理設計</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>
+            The design of the AEX reprocessing step took into consideration the issues described in
+            Sections 6.3.1, 6.3.2, 6.5.1, and 6.5.2. Since the step operated in
+            <span class="key-term">flow-through mode</span>, the AEX eluate was considered to be
+            suitable as a <span class="key-term">feed-stream for AEX reprocessing</span> without any
+            adjustments.
+        </p>
+        <p>
+            Prior development studies reviewed in Section 6.5.1 showed that all ranges for feed-stream
+            conditions expected for the reprocessing operation were evaluated and shown to produce drug
+            substance with acceptable quality. Studies for the reprocessing step demonstrated that the
+            AEX column—after being <span class="key-term">stripped, cleaned, and re-equilibrated</span>—would
+            readily remove HCP to well below acceptable levels.
+        </p>
+        <p>
+            All other aspects of the design of the reprocessing step, including operating conditions,
+            buffer solution, equipment sizes, and others were <span class="key-term">similar to the
+            design of the original AEX step</span>.
+        </p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Flow-Through Mode（流通模式）的優勢</strong>：AEX 以流通模式操作（抗體不結合於樹脂，
+            雜質結合），使得洗出液（eluate）本身就是合適的再進料（feed-stream），
+            無需調整緩衝液或蛋白質濃度。這大大簡化了再處理設計。</p>
+            <p>相比之下，若為結合-洗脫模式（bind-and-elute），再進料則需重新調整 pH 與電導度，
+            設計複雜度遠高於此。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>再處理設計的成功關鍵在於：<strong>不改變原始 AEX 步驟的操作條件</strong>。
+            這意味著原有的驗證資料（CPP 範圍、病毒清除 LRF）仍然有效，
+            毋需從頭驗證所有參數，大幅降低法規申報的負擔。</p>
+            <p>Column 在兩次操作間須完整執行：Stripping → CIP → Re-equilibration。
+            這是樹脂管理（Resin Management）的核心要求，確保第二次進料時
+            HCP 結合容量已完全恢復。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若 AEX 步驟改為結合-洗脫模式，再處理設計會增加哪些複雜度？
+                需要新增哪些研究？</li>
+                <li>AEX 柱在再處理前須完成 Strip/CIP/Re-equilibration，
+                這對批次週期時間（batch cycle time）有何影響？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 6.5.4 Design Impact Assessment -->
+<!-- ============================================================ -->
+
+<div class="section-title"><strong>6.5.4 Design Impact Assessment 設計影響評估</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>
+            After completing the design of the reprocessing step, the broader impact of the design on
+            manufacturing operations was assessed. Since the AEX is a flow-through step, no adjustment
+            to the buffer composition was required. The <span class="key-term">protein concentration</span>
+            was expected to be 30% lower than the original feed-stream but still within acceptable limits.
+            The AEX load concentration is not considered a CPP.
+        </p>
+        <p>
+            A summary of the design impact assessment is included in Table 6.4.1-1 in the "Other" category.
+            The two most significant areas of concern identified were
+            <span class="key-term">Buffer/Solution Supply</span> and
+            <span class="key-term">Equipment Cleaning</span>.
+        </p>
+        <p>
+            The maximum <span class="key-term">hold time for AEX eluate</span> had to be increased by
+            48 hours to allow for completion of the HCP IPC test and to complete preparation of equipment
+            and buffers in the event that the reprocessing trigger occurred. An evaluation of the
+            manufacturing-scale microbial hold studies supported the longer hold time.
+        </p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Design Impact Assessment（設計影響評估）</strong>：再處理設計完成後，
+            必須評估其對製造現場的連鎖影響。本案例揭示兩大實務挑戰：</p>
+            <ul>
+                <li><strong>Buffer/Solution Supply</strong>：再處理需要額外的緩衝液，
+                必須確認生產現場的緩衝液準備能力與備品量。</li>
+                <li><strong>Equipment Cleaning</strong>：設備清洗週轉時間影響保留時間，
+                需同步確認現有清洗程序能在再處理觸發後及時完成。</li>
+            </ul>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>設計影響評估就像餐廳在原有菜單外新增一道菜後，必須評估：
+            廚房是否有足夠的食材備料（Buffer Supply）？
+            清洗設備的時間是否允許（Equipment Cleaning）？
+            否則新菜上線時，整個廚房的節奏可能會被打亂。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>蛋白質濃度降低 30%（因稀釋效應）雖低於原始進料，
+            但因為 AEX 載量濃度（Load Concentration）在此案例中屬非關鍵參數，
+            不影響 HCP 去除效能。這是一個重要的判斷：<strong>非所有參數變化都需要補充研究</strong>，
+            關鍵是先確認分類（CPP or not）。</p>
+            <p>保留時間從 ≤72 小時延長至 ≤120 小時，新增 48 小時是為了容納：
+            HCP 測試（8 小時）+ 設備/緩衝液準備時間。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 6.5.5 Reassess Criticality of Process Inputs -->
+<!-- ============================================================ -->
+
+<div class="section-title"><strong>6.5.5 Reassess Criticality of Process Inputs 重新評估製程輸入的關鍵性</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>
+            A risk analysis was also performed to assess the effect of repeating the AEX chromatography
+            step on the <span class="key-term">criticality of process parameters</span> in Table 6.4.1-1.
+            For all parameters listed, it is assumed that the company has the ability to routinely detect
+            an exceedance resulting in <span class="key-term">Detectability scores of 1</span>.
+        </p>
+        <p>
+            The risk associated with one input process parameter
+            (<span class="key-term">hold time at pH 7.5</span> in Table 6.5.5-1) was determined to require
+            additional development work to support longer hold times. A selection of other process inputs
+            unrelated to operating parameters (e.g., raw materials, equipment cleaning) was also included
+            in the FMEA assessment.
+        </p>
+        <p><em>See Table 6.5.5-1 below (full-width).</em></p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Reassess Criticality（重新評估關鍵性）</strong>：再處理是一個額外的操作步驟，
+            會改變某些製程參數的 Occurrence（發生率）與 Severity（嚴重性）。
+            因此必須以再處理的角度重新執行 FMEA——
+            即使是原本被分類為「非關鍵」的參數，也可能因為再處理而升級。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>Table 6.5.5-1 的關鍵發現：<strong>Hold at pH 7.5</strong> 的 RPN = 15
+            （S=3, O=5, D=1），是唯一需要額外研究的參數。
+            因為再處理後保留時間延長（從 72 小時到最多 120 小時），
+            蛋白質在此 pH 下停留更長時間，潛在影響 Aggregate、Deamidation 等 CQA，
+            Occurrence 分數因此升至 5。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為何 Table 6.5.5-1 中大多數 CPP（AEX load pH、Protein load 等）的 RPN 均為 5，
+                而非 15 或更高？提示：思考 Occurrence 分數為何設定為 1。</li>
+                <li>如果「Protein concentration in load」從 Noncritical 改分類為 CPP，
+                對再處理設計會有何影響？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- TABLE 6.5.5-1 — Full Width -->
+<div style="overflow-x:auto; margin:1rem 0;">
+    <h3 style="font-weight:600; color:var(--primary-blue); margin-bottom:0.5rem; padding-left:1.5rem;">
+        Table 6.5.5-1: AEX Reprocessing Step Process Parameter FMEA
+        AEX 再處理步驟製程參數 FMEA
+    </h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Category 類別</th>
+                <th>Process Parameter or Other Consideration 製程參數或其他考量</th>
+                <th>S 嚴重性</th>
+                <th>O 發生率</th>
+                <th>D 可偵測性</th>
+                <th>RPN 風險優先數</th>
+                <th>Comments 說明</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td rowspan="10" style="vertical-align:middle; font-weight:600;">Input AEX Process Parameters 輸入製程參數</td>
+                <td>AEX load pH</td><td>5</td><td>1</td><td>1</td><td>5</td>
+                <td>CPP, low occurrence, detectable</td>
+            </tr>
+            <tr>
+                <td>Protein load (AEX resin)</td><td>5</td><td>1</td><td>1</td><td>5</td>
+                <td>CPP, low occurrence, detectable</td>
+            </tr>
+            <tr>
+                <td>Operating flow rate</td><td>5</td><td>1</td><td>1</td><td>5</td>
+                <td>CPP, low occurrence, detectable</td>
+            </tr>
+            <tr>
+                <td>AEX load conductivity</td><td>5</td><td>1</td><td>1</td><td>5</td>
+                <td>CPP, low occurrence, detectable</td>
+            </tr>
+            <tr>
+                <td>Equilibration/Wash 1 buffer conductivity</td><td>1</td><td>1</td><td>1</td><td>1</td>
+                <td>GPP, low occurrence, detectable</td>
+            </tr>
+            <tr>
+                <td>Equilibration/Wash 1 buffer pH</td><td>1</td><td>1</td><td>1</td><td>1</td>
+                <td>Noncritical, low occurrence, detectable</td>
+            </tr>
+            <tr>
+                <td>Peak collection start</td><td>1</td><td>1</td><td>1</td><td>1</td>
+                <td>Noncritical, low occurrence, detectable</td>
+            </tr>
+            <tr>
+                <td>Peak collection end</td><td>1</td><td>1</td><td>1</td><td>1</td>
+                <td>Noncritical, low occurrence, detectable</td>
+            </tr>
+            <tr>
+                <td>Load-buffering salt system</td><td>1</td><td>1</td><td>1</td><td>1</td>
+                <td>Noncritical, low occurrence, detectable</td>
+            </tr>
+            <tr>
+                <td>Protein concentration in load</td><td>1</td><td>5</td><td>1</td><td>5</td>
+                <td>Noncritical, reprocessing will affect load concentration, detectable</td>
+            </tr>
+            <tr>
+                <td style="font-weight:600;">Hold Time</td>
+                <td><strong>Hold at pH 7.5 <sup>1</sup></strong></td>
+                <td><strong>3</strong></td><td><strong>5</strong></td><td><strong>1</strong></td>
+                <td style="background:#fff3e0;"><strong>15</strong></td>
+                <td>Noncritical, reprocessing will affect hold time, detectable — requires additional study</td>
+            </tr>
+        </tbody>
+    </table>
+    <p style="font-size:0.8rem; color:#666; padding-left:1.5rem; margin-top:0.3rem;">
+        <sup>1</sup> Included from the A-Mab process cause and effect matrix (Table 4.28)
+    </p>
+</div>
+
+<!-- ============================================================ -->
+<!-- 6.5.6 Scaled-Down Models -->
+<!-- ============================================================ -->
+
+<div class="section-title"><strong>6.5.6 Scaled-Down Models 縮小比例模型</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>
+            The qualified <span class="key-term">scaled-down (laboratory-scale) models</span> used in
+            original AEX development studies were appropriate for reprocessing development. Data
+            demonstrating the validity of the laboratory-scale models were available, and the model was
+            shown to be <span class="key-term">predictive of manufacturing-scale behavior</span>.
+        </p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Scaled-Down Model（縮小比例模型）</strong>：在生物製藥開發中，
+            使用實驗室規模（例如 1 mL 管柱取代 50 L 工廠管柱）進行代表性研究，
+            前提是已驗證縮小比例模型能夠預測全規模行為（predictive of manufacturing scale）。</p>
+            <p>在本案例中，原始 AEX 開發已建立合格的 SDM，可直接沿用於再處理開發，
+            無需重新資格化——這是關鍵的時間與資源節省。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>縮小比例模型就像建築師用 1:100 的模型測試新設計。
+            只要已驗證模型與實際建築物行為一致，就能在小規模上評估各種設計變更，
+            而不必每次都蓋一棟真正的建築物。AEX SDM 亦同——
+            先在實驗室確認再處理可行，再到工廠執行確認性批次。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>SDM 何時足夠？何時需要全規模？</strong></p>
+            <ul>
+                <li>SDM 適用於：產品品質屬性評估（Aggregate、HCP、病毒清除）、
+                製程參數探索、最壞情境設計（Double Reprocessing）</li>
+                <li>仍需全規模確認批次（1 批 GMP run）：用於驗證協議的確認性執行，
+                提交 CBE-30/Type IB 報告所需</li>
+            </ul>
+            <p>法規要求的最終確認必須在製造規模下進行——SDM 提供開發信心，
+            但無法取代製造規模的 GMP 批次。（PDA TR74, Section 6.2.5）</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 6.5.7 Representative Materials -->
+<!-- ============================================================ -->
+
+<div class="section-title"><strong>6.5.7 Representative Materials 代表性材料</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>
+            Since the <span class="key-term">anion-exchange load-intermediate feed-stream</span> from
+            manufacturing was not available, the load for laboratory-scale models was obtained from a
+            representative <span class="key-term">pilot-scale run</span> that was spiked with HCP derived
+            from the host cell line.
+        </p>
+        <p>
+            In addition, it was possible to run the pilot-scale process under conditions that could
+            intentionally deliver a <span class="key-term">higher-than-normal level of HCP</span> as
+            source material for the laboratory-scale models. All buffers and reagents were equivalent to
+            those used in GMP manufacturing.
+        </p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Representative Materials（代表性材料）</strong>：再處理的觸發情境是 HCP 高於正常值，
+            但工廠失敗批次的物料無法預先取得。解決方案是：
+            <strong>使用 Pilot 批次物料 + HCP Spike（強化添加）</strong>，
+            模擬真實觸發情境下的進料組成。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>HCP Spike 的邏輯：若測試物料的 HCP 水準已接近正常，
+            就無法評估再處理步驟的 HCP 清除能力。
+            刻意提高進料 HCP 濃度，才能模擬最壞情境（再處理觸發時的真實狀況）。</p>
+            <p>所有緩衝液與試劑須與 GMP 製造用者等效（equivalent）——
+            若使用不同等級的試劑，SDM 資料將失去對全規模的預測效力。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若無法從 Pilot 批次取得足夠物料，還有哪些替代方案獲取代表性進料？</li>
+                <li>HCP Spike 的量要多少才算合理的「最壞情境」？依據什麼數據決定 Spike 量？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 6.5.8 Development Studies -->
+<!-- ============================================================ -->
+
+<div class="section-title"><strong>6.5.8 Development Studies 開發研究</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>
+            Based on the AEX reprocessing risk assessment in Section 6.5.5, additional development
+            studies were performed to achieve the following:
+        </p>
+        <ul>
+            <li>
+                Expand the maximum acceptable <span class="key-term">hold-time process acceptable
+                range (PAR)</span> at ambient temperature
+            </li>
+            <li>
+                Evaluate at laboratory-scale the effect of the reprocessing AEX column chromatography
+                on product quality:
+                <ul>
+                    <li>
+                        Consider reprocessing the material through the step twice (i.e.,
+                        <span class="key-term">double-reprocessing</span>) as a
+                        <span class="key-term">worst-case challenge</span>.
+                    </li>
+                    <li>
+                        Verify that the use of reprocessed AEX eluate did not have an impact on
+                        <span class="key-term">virus removal LRF</span> in the virus-retentive filter
+                        (subsequent processing step).
+                    </li>
+                    <li>
+                        Evaluate the need for this viral-clearance study based on development data
+                        encompassing relevant process conditions.
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Development Studies（開發研究）</strong>：這三個研究方向直接對應前述 FMEA 中
+            RPN ≥15 的風險項目：</p>
+            <ol>
+                <li><strong>Hold Time PAR 延伸</strong> → 對應 Table 6.5.5-1 中 Hold at pH 7.5 RPN=15</li>
+                <li><strong>雙重再處理（Double Reprocessing）</strong> → 最壞情境設計，
+                評估若觸發兩次再處理時產品品質是否仍可接受</li>
+                <li><strong>病毒清除 LRF 影響評估</strong> → 對應 Table 6.4.1-1 中
+                病毒滯留過濾步驟的 RPN 考量</li>
+            </ol>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>Double Reprocessing（雙重再處理）就像壓力測試：
+            工程師不會只測試橋梁能承受正常荷重，還會施加 150% 或 200% 的負荷。
+            通過最壞情境的設計，才能對正常再處理情境建立充足的安全裕度（safety margin）。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>病毒清除研究的必要性評估</strong>：再處理後的洗出液進入後續病毒滯留過濾步驟時，
+            若其 pH、電導度、蛋白質濃度仍在原始驗證範圍內，則無需重新執行病毒清除研究。
+            這是「先評估、再決定是否執行」的 Risk-Based Approach——
+            避免不必要的昂貴研究，同時確保不遺漏真實風險。（PDA TR74, §6.5.9.3）</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 6.5.9 Development Data Assessment -->
+<!-- ============================================================ -->
+
+<div class="section-title"><strong>6.5.9 Development Data Assessment 開發資料評估</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>
+            The data from the development studies outlined in Section 6.5.8 were evaluated to determine
+            whether product quality and process performance of the newly designed reprocessing step met
+            all the <span class="key-term">comparability criteria</span> described in Section 6.4.3.
+        </p>
+
+        <p><strong>6.5.9.1 Intermediate Hold-Time Study</strong></p>
+        <p>
+            Based on the design impact evaluation in Section 6.5.4, it was determined that the maximum
+            <span class="key-term">hold time for AEX eluate</span> had to be increased by 48 hours.
+            The original PAR for ambient hold time was <span class="key-term">≤72 hours</span>. A study
+            was therefore performed to extend this ambient hold-time PAR to
+            <span class="key-term">≤120 hours</span>. The resulting evaluation of the relevant
+            intermediate quality attributes showed that the PAR extension was acceptable. No additional
+            CPPs were identified as a result of this study.
+        </p>
+
+        <p><strong>6.5.9.2 Reprocessing at Laboratory Scale</strong></p>
+        <p>
+            AEX eluate from the pilot run was collected and tested for all relevant intermediate quality
+            attributes. This material (with elevated HCP) was reprocessed <span class="key-term">twice
+            through the qualified reduced-scale AEX step</span> (double-reprocessed — worst-case).
+            The double-reprocessing was performed in duplicate (four reduced-scale AEX runs in total).
+        </p>
+        <p>
+            Acceptance criteria required demonstrating the reprocessed AEX eluate quality attributes
+            were <span class="key-term">consistent with nonreprocessed material</span>, except for HCP
+            (which was expected to be reduced). These acceptance criteria were met. No additional CPPs
+            were identified.
+        </p>
+
+        <p><strong>6.5.9.3 Virus Removal Verification</strong></p>
+        <p>
+            It was found that the minor changes to the virus filter step
+            <span class="key-term">load pH, conductivity, and product concentration</span> were within
+            the originally studied virus filter step parameter ranges. Therefore,
+            <span class="key-term">no additional virus removal studies were required</span> for the
+            implementation of this AEX reprocessing step.
+        </p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Comparability Criteria（可比性標準）</strong>：再處理後的產品品質屬性，
+            必須與未再處理的材料保持「可比性」。本案例的判斷標準：</p>
+            <ul>
+                <li>除 HCP 外，所有中間體品質屬性維持一致</li>
+                <li>HCP 水準必須在第一次再處理後符合藥物原料放行規格</li>
+                <li>雙重再處理後仍滿足上述標準 → 確立充足的設計保守性</li>
+            </ul>
+        </div>
+        <div class="formula-box">
+            <h4>公式與數據 Key Numbers</h4>
+            <pre>
+Hold Time PAR 延伸：
+  原始 PAR：≤72 小時
+  延伸後：≤120 小時
+  增加量：+48 小時
+
+雙重再處理實驗設計：
+  批次：Pilot 批次 × 1（HCP Spiked）
+  再處理次數：2 次（雙重 = 最壞情境）
+  重複數：2 組（共 4 次縮小比例 AEX 運行）
+  採樣點：原始洗出液、第 1 次再處理後、第 2 次再處理後
+
+病毒清除結論：
+  Load pH / Conductivity / 蛋白質濃度
+  → 均在原始驗證範圍內
+  → 無需新增病毒清除研究
+            </pre>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>6.5.9.2 的設計巧思</strong>：雙重再處理在「目標條件」下執行，
+            且兩次運行間不調整物料（no manipulation between runs）——
+            這確保了數據的真實性，避免人為優化掩蓋潛在問題。
+            此外，以「重複 2 組」（4 次 AEX 運行）增加統計穩健性。</p>
+            <p><strong>6.5.9.3 的結論效力</strong>：病毒清除不需額外研究，
+            這不是「省略」，而是基於數據評估的正當結論。
+            法規上需要充分記錄「評估過了、因此不需要」的理由，
+            而非僅說「不需要」。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 6.5.10 Finalize Design -->
+<!-- ============================================================ -->
+
+<div class="section-title"><strong>6.5.10 Finalize Design 設計定案</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>
+            Based on the outcomes of laboratory-scale development, the proposed manufacturing-scale
+            procedures were finalized. This included:
+        </p>
+        <ul>
+            <li>Creation of an <span class="key-term">SOP describing reprocessing</span></li>
+            <li>An <span class="key-term">SOP describing the new HCP IPC test</span></li>
+            <li>Creation of a <span class="key-term">batch record</span> to be used in the event of a
+                GMP reprocessing step</li>
+        </ul>
+        <p>
+            No operating ranges were changed except for the maximum AEX eluate
+            <span class="key-term">hold time at ambient temperature</span>, which was extended from
+            72 to 120 hours.
+        </p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Finalize Design（設計定案）</strong>：實驗室開發完成後，
+            將研究成果轉化為可供製造現場使用的 GMP 文件，
+            是從「研發模式」過渡到「GMP 執行模式」的關鍵里程碑。</p>
+            <p>需要建立的三類核心文件：</p>
+            <ol>
+                <li><strong>再處理 SOP</strong>：描述再處理步驟的執行程序</li>
+                <li><strong>HCP IPC Test SOP</strong>：描述觸發測試的執行方式（包含結果判讀與調查觸發）</li>
+                <li><strong>再處理批次紀錄（Batch Record）</strong>：GMP 執行的書面依據，
+                含所有簽核與數據記錄欄位</li>
+            </ol>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>注意：<strong>唯一被修改的操作範圍是 Hold Time</strong>（72 → 120 小時）。
+            所有 CPP 範圍（pH、流速、電導度、載量）均維持不變。
+            這印證了 6.5.3 的設計原則——最大程度保留原始驗證的有效性，
+            最小化法規申報的範圍與複雜度。</p>
+            <p>GMP 文件準備完成後，方可進行 6.5.11 的技術移轉。
+            「先文件、後執行」是 GMP 的基本原則。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 6.5.11 Transfer to Manufacturing -->
+<!-- ============================================================ -->
+
+<div class="section-title"><strong>6.5.11 Transfer to Manufacturing 技術移轉至製造</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>
+            A <span class="key-term">technology transfer project team</span>, including all relevant
+            stakeholders, was formed. All standard company guidelines and procedures for technology
+            transfer were followed.
+        </p>
+        <p>
+            As part of the technology transfer project, one intermediate
+            <span class="key-term">pilot-scale run</span> was executed by manufacturing personnel under
+            draft procedures and batch records. A <span class="key-term">technology transfer report</span>
+            was written and approved, and all relevant staff was formally
+            <span class="key-term">trained</span> on the new procedures.
+        </p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Technology Transfer（技術移轉）</strong>：再處理步驟的技術移轉，
+            與一般製程移轉並無本質差異，但特別強調：</p>
+            <ul>
+                <li><strong>跨功能團隊</strong>（Cross-functional Team）：需涵蓋品管、製造、品保、
+                法規等所有相關利害關係人</li>
+                <li><strong>製造人員執行試運行</strong>：由未來執行此步驟的製造人員親自操作，
+                在草稿程序下進行 Pilot Run，確保程序的可操作性</li>
+                <li><strong>正式訓練記錄</strong>：所有相關人員完成訓練並留存記錄，
+                是 GMP 合規的基本要求</li>
+            </ul>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>技術移轉中有一個重要細節：Pilot Run 是使用「草稿程序（draft procedures）」執行，
+            而非最終程序。這提供了一個機會，在正式 GMP 批次前發現並修正程序的執行缺陷，
+            兼顧效率與嚴謹性。</p>
+            <p>技術移轉報告（Technology Transfer Report）完成後，
+            才能啟動 6.2.5 所述的 GMP 確認批次（製造規模前瞻性驗證）。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>技術移轉跨功能團隊中，哪些角色是最不可缺少的？各自的核心貢獻是什麼？</li>
+                <li>若 Pilot Run 發現程序存在操作困難（如緩衝液準備時間不足），
+                應如何處理而不影響法規申報的時程？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 6.6 Conclusions -->
+<!-- ============================================================ -->
+
+<div class="section-title"><strong>6.6 Conclusions 結論</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>
+            Reprocessing activities involving AEX is a
+            <span class="key-term">feasible option</span> during routine manufacturing. However,
+            proper documentation aligned with <span class="key-term">GMPs</span> is required to
+            demonstrate the controls in place and effectiveness of the step.
+        </p>
+        <p>Among the considerations for reprocessing are:</p>
+        <ul>
+            <li><span class="key-term">Prospective or concurrent validation protocol</span></li>
+            <li>Clear rationale for reprocessing (e.g., reason for reprocessing)</li>
+            <li>Proper management of the <span class="key-term">column and resin</span></li>
+            <li>Proper management of the <span class="key-term">intermediate material</span>
+                requiring reprocessing</li>
+            <li>Proper documentation (e.g., procedures and
+                <span class="key-term">batch records</span> in place)</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>結論的核心訊息</strong>：AEX 再處理在技術上可行（feasible），
+            但這個「可行」是有前提條件的——必須具備：</p>
+            <ol>
+                <li>扎實的開發工作（6.5.1–6.5.9 所述的全套研究）</li>
+                <li>完整的 GMP 文件體系（SOP、Batch Record、訓練記錄）</li>
+                <li>清晰的法規申報策略（前瞻性或並行驗證、CTD 內容、CBE-30/Type IB）</li>
+            </ol>
+            <p>缺少任一要素，「可行」就變成「不合規」。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>AEX 再處理就像一張「可以補考」的制度：
+            系統承認考試偶爾可能因外部因素失常，所以設計了補考機制。
+            但補考不是默認的，必須符合申請條件（調查、HCP IPC 觸發），
+            且補考的題目（再處理設計）、評分標準（Comparability Criteria）、
+            考試紀錄（Batch Record）都必須事先準備好。
+            沒有準備就臨時補考，不被認可。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>Column &amp; Resin Management（管柱與樹脂管理）</strong>：
+            這一點在結論中特別提及，是因為 AEX 樹脂的使用次數有驗證上限。
+            再處理增加了一次使用次數——必須確認不超出驗證的最大重複使用次數（Lifecycle Validation），
+            並正確記錄在批次紀錄中。（PDA TR74, §6.2.4）</p>
+            <p><strong>CDMO 應用場景</strong>：對於多產品 CDMO，
+            若客戶製程包含 AEX 步驟且 HCP 清除偶有挑戰，
+            在 CMC 開發階段就主動設計再處理框架（而非等到失敗後才應急），
+            可大幅降低商業化後的批次報廢風險。</p>
+        </div>
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application — CDMO 場景</h4>
+            <p>Amaran 承接一個新 mAb 製程，客戶在 AEX 步驟有 HCP 清除不穩定的歷史記錄。
+            以本節框架，在技術移轉早期應：</p>
+            <ol>
+                <li>確認 AEX FMEA 是否已識別 HCP 為高 RPN 項目</li>
+                <li>評估是否需要前瞻性設計再處理框架（而非等批次失敗後再應急）</li>
+                <li>如決定設計再處理，則在 SDM 研究（6.5.6）中同步執行 Double Reprocessing 評估</li>
+                <li>在 CTD 3.2.S.2.6 和 3.2.R 中提前規劃再處理相關內容，避免後期 PAS 申報負擔</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION SUMMARY -->
+<!-- ============================================================ -->
+
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary — 6.5–6.6</h3>
+    <ul>
+        <li><strong>6.5.1 開發歷史</strong>：回顧 AEX 原始開發資料（Tables 6.5.1-1 &amp; 6.5.1-2），
+        識別 5 個 CPP 並確認其範圍，作為再處理設計的技術地基。</li>
+        <li><strong>6.5.2 觸發條件</strong>：以 HCP &gt;100 ng/mg 作為 IPC 觸發門檻；
+        此測試成為所有批次的永久性製程變更，8 小時結果等待時間驅動保留時間延伸。</li>
+        <li><strong>6.5.3–6.5.4 設計與影響評估</strong>：流通模式允許洗出液直接再進料，
+        無需調整緩衝液；最大影響為保留時間（+48 小時）與設備清洗週轉。</li>
+        <li><strong>6.5.5 FMEA 重評</strong>：多數 CPP 的 RPN 維持低分；
+        Hold at pH 7.5 因 Occurrence 升高至 RPN=15，觸發保留時間延伸研究。</li>
+        <li><strong>6.5.6–6.5.7 SDM 與代表性材料</strong>：沿用已資格化的 SDM；
+        以 HCP-Spiked Pilot 物料模擬觸發情境。</li>
+        <li><strong>6.5.8–6.5.9 開發研究與評估</strong>：三項研究（Hold Time、Double Reprocessing、
+        病毒清除）全數通過；僅 Hold Time PAR 從 72 → 120 小時為唯一製程範圍變更。</li>
+        <li><strong>6.5.10–6.5.11 定案與移轉</strong>：建立 SOP × 2 + Batch Record；
+        Pilot Run 由製造人員在草稿程序下執行後完成技術移轉。</li>
+        <li><strong>6.6 結論</strong>：AEX 再處理可行，但必須以完整的開發工作、
+        GMP 文件體系與法規申報策略為前提，缺一不可。</li>
+    </ul>
+</div>
+
+</body>
+</html>

@@ -276,11 +276,14 @@ Use these mappings to translate user questions before routing:
 
 | Topic | ★★★ Primary (section hint) | ★★ Secondary |
 |---|---|---|
-| Change control / 變更管制 | ICH-Q12 (§2 ECs, §4 PACMP, §5 PLCM) · TR91 §3-§4 · TR60 | TR66, TR90, TR68, PtC-9 |
-| Post-approval change management | ICH-Q12 (§2-§5 full framework) · TR91 (§3 Tools: ECs, PACMP, PLCM) | TR68, ICH-Q10 §3 |
-| Established conditions / ECs / 已確立條件 | ICH-Q12 (§2 EC identification, §3 Reporting categories, §Annex I examples) | TR91 §2, TR60 |
-| PACMP / change management protocol | ICH-Q12 (§4 PACMP design + regulatory treatment, §Annex II examples) | TR91 §3 |
+| Change control / 變更管制 | ICH-Q12 (§2 ECs, §4 PACMP, §5 PLCM) · TR91 §3-§4 · TR60 | TR66, TR90, TR68, PtC-9, TR74 |
+| Post-approval change management | ICH-Q12 (§2-§5 full framework) · TR91 (§3 Tools: ECs, PACMP, PLCM) | TR68, ICH-Q10 §3, TR74 §4-§5 |
+| Established conditions / ECs / 已確立條件 | ICH-Q12 (§2 EC identification, §3 Reporting categories, §Annex I examples) | TR91 §2, TR60, TR74 §5.7 |
+| PACMP / change management protocol | ICH-Q12 (§4 PACMP design + regulatory treatment, §Annex II examples) | TR91 §3, TR74 §5.8 |
 | Product lifecycle management / PLCM | ICH-Q12 (§5 PLCM document structure and contents) · ICH-Q10 (§3 Lifecycle) | TR60, TR91 |
+| Reprocessing biologicals / DS DP repeat step / 生物製劑再處理 | TR74 (§3 Reprocessing Considerations, §6 AEX Case Study) | — |
+| Reworking biologicals / process change after deviation / 生物製劑返工 | TR74 (§5 Reworking Concepts, §7 Filtration Cases) | TR91, ICH-Q12 |
+| FMEA reprocessing / 製程再處理風險評估 | TR74 (§6.3 FMEA scoring, §6.4-§6.5 application examples) | ICH-Q9, TR60 |
 
 ### Continuous Manufacturing (ICH Q13)
 

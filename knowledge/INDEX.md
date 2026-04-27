@@ -55,6 +55,14 @@ Terms: MDR (EU Medical Device Regulation), Annex I, GSPR (General Safety and Per
 
 ---
 
+## PDA/TR74-Complete.md
+PDA TR74: Reprocessing and Reworking of Biologicals (Revised 2026) | p1–p77 | 7
+Question types: reprocessing vs reworking distinction, proactive vs reactive license inclusion, MoSCoW prioritization for reworking, post-approval change classification (PAS / CBE-30 / Annual Report / EU Type I-II variations), Established Conditions and PACMP scope (ICH Q12), AEX chromatography reprocessing FMEA design, scaled-down model representativeness, comparability protocol triggers, virus-removal refiltration validation, CDMO Quality Agreement responsibility split, Risk Knowledge Infinity Cycle application, Quality Unit preparedness for rework events
+Terms: reprocessing, reworking, biological drug substance (DS), biological drug product (DP), proactive approach, reactive approach, post-approval change (PAC), Established Conditions (EC), Post-Approval Change Management Protocol (PACMP), comparability protocol (CP), MoSCoW prioritization, Risk Knowledge Infinity Cycle, FMEA (Failure Modes and Effects Analysis), AEX (anion exchange chromatography), host cell protein (HCP), residual DNA, dynamic binding capacity (DBC), HETP, scaled-down model (SDM), refiltration, sterilizing-grade filter, virus retention filter, CBE-30, PAS (Prior Approval Supplement), Annual Report, ICH Q9(R1), ICH Q12, MAH (Marketing Authorization Holder), Quality Agreement (QAA)
+Sections: 1 Introduction | 2 Glossary and Abbreviations | 3 Reprocessing Considerations | 4 Regulatory Framework | 5 Introduction to Reworking | 6 Appendix I: AEX Reprocessing Case Study | 7 Appendix II: Filtration Case Studies
+
+---
+
 ## PDA/TR90-Complete.md
 PDA TR90: Contamination Control Strategy (CCS) Development in Pharmaceutical Manufacturing | p1–p65 | 15
 Terms: contamination control strategy (CCS), cleanroom, environmental monitoring (EM), bioburden, endotoxin, particulate, gowning, HVAC, unidirectional airflow (UDAF), first air, disinfection, personnel qualification, Annex 1 (2022), microbial excursion, root cause analysis, CCS governance
@@ -1021,9 +1029,14 @@ Terms: quality culture, root cause analysis (RCA), human error, skill-based erro
 | Sterility test invalidation, BET investigation, mycoplasma OOS / 無菌試驗失效判定、內毒素調查、黴漿菌OOS | TR88 |
 | Phase I lab investigation, Phase II manufacturing investigation / 第一階段實驗室調查、第二階段製造調查 | TR88 |
 | Water system microbiology, pharmaceutical water OOS trending / 製藥用水微生物、水系統OOS趨勢分析 | TR88 + TR13 |
-| Post-approval change, PAC, established conditions, ICH Q12 / 上市後變更、已確立條件、ICH Q12 | TR91 + ICH-Q12 |
-| PACMP, comparability protocol, product lifecycle management / 上市後變更管理方案、比較性方案、產品生命週期管理 | TR91 + ICH-Q12 |
+| Post-approval change, PAC, established conditions, ICH Q12 / 上市後變更、已確立條件、ICH Q12 | TR91 + ICH-Q12 + TR74 |
+| PACMP, comparability protocol, product lifecycle management / 上市後變更管理方案、比較性方案、產品生命週期管理 | TR91 + ICH-Q12 + TR74 |
 | Regulatory harmonization, global change categories, non-ICH filing / 法規協調、全球變更分類、非ICH區域申報 | TR91 |
+| Reprocessing biologicals, repeat process step in-license, proactive vs reactive reprocessing / 生物製劑再處理、重複製程步驟、主動vs被動再處理 | TR74 |
+| Reworking biologicals, manufacturing change after deviation, MoSCoW prioritization / 生物製劑返工、偏差後製程變更、MoSCoW優先序 | TR74 |
+| AEX chromatography reprocessing, FMEA case study, anion exchange column lifecycle / AEX陰離子交換層析再處理、FMEA案例、層析柱壽命 | TR74 (Appendix I) |
+| Filtration refiltration drug substance drug product, virus removal refilter, integrity test fail / 過濾再過濾、病毒清除再過濾、完整性測試失敗 | TR74 (Appendix II) |
+| Risk Knowledge Infinity Cycle RKI ICH Q9R1 framework / 風險知識無限循環、RKI、ICH Q9R1框架 | TR74 + ICH-Q9 |
 | ICH Q12 established conditions EC identification categorization reporting / ICH Q12已確立條件識別分類申報類別 | ICH-Q12 |
 | Product lifecycle management document PLCM post-approval change management protocol PACMP / 產品生命週期管理文件、上市後變更管理方案、法規申報類別 | ICH-Q12 |
 | Continuous manufacturing CM drug substance drug product ICH Q13 / 連續製造藥品原料藥製劑ICH Q13 | ICH-Q13 |
