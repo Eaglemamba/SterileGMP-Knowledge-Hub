@@ -921,6 +921,7 @@ Terms: quality culture, root cause analysis (RCA), human error, skill-based erro
 | Terminal sterilisation vs aseptic, sterilisation methods, autoclave F0, depyrogenation Fh / 最終滅菌與無菌操作、滅菌方法、F0值、去熱原 | PICS-Annex1 |
 | PUPSIT, pre-use post-sterilization integrity test, filter integrity exemption / 使用前滅菌後完整性測試 | PICS-Annex1 + TR26 |
 | BFS blow-fill-seal, FFS form-fill-seal, lyophilization annex 1 requirements / 吹塑充填密封、成型充填密封、冷凍乾燥Annex 1要求 | PICS-Annex1 |
+| Intrinsic sterile connection device ISCD, aseptic connection vs ISCD, fusion sealing tube welder, mechanical sterile connector, Annex 1 §8.14 §8.128–8.130 §8.137 / 內建式無菌連接裝置ISCD、無菌連接與ISCD區別、熱融合管路焊接、機械式無菌連接器 | topics/intrinsic-sterile-connection-vs-aseptic-connection.md + PICS-Annex1 + Guide-No1 + PtC-14 |
 | Environmental monitoring limits, EM alert action limits, Table 5 Table 6, viable non-viable / 環境監測限值、警戒限、行動限 | PICS-Annex1 + TR13 |
 | RABS, isolator, glove port, VHP / 限制進出屏障系統、隔離器、手套口、去污 | PtC-12 + TR70 |
 | Container closure integrity CCI, package integrity, leak testing pharmaceutical / 容器密封完整性、包裝完整性、洩漏試驗 | TR27 + TR73 + TR90 + TR86 |
@@ -1281,6 +1282,9 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 
 **Annex 1 (2022) EU GMP / PIC/S Annex 1**
 → PICS-Annex1 ★★★ (primary source: full 2022 revised text, all 11 sections, Tables 1–6, all sterilisation methods, APS, PUPSIT, BFS/FFS/Lyo, EM, QC) | PtC-1 ★★★ (comprehensive PDA Annex 1 alignment: EM, APS, PUPSIT, RABS/Isolator, BFS, personnel) | TR90 ★★★ (CCS aligned to Annex 1) | PtC-12 ★★★ (RABS requirements under Annex 1) | TR13 ★★★ (EM limits and classification per Annex 1) | TR22 ★★ (APS under Annex 1) | TR70 ★★ (C&D under Annex 1)
+
+**Aseptic Connection vs Intrinsic Sterile Connection Device / ISCD (無菌連接 vs 內建式無菌連接裝置)**
+→ topics/intrinsic-sterile-connection-vs-aseptic-connection.md ★★★ (cross-document synthesis: definitional distinction, two ISCD types — mechanical vs fusion sealing, Annex 1 differential treatment §8.14/§8.15/§8.128–§8.130/§8.137, closed system implications, CCS integration, decision tree, common misclassification scenarios, CDMO operational implications) | PICS-Annex1 ★★★ (regulatory anchor: §8.14 grade requirements, §8.15 manipulation minimization, §8.128 post-final-filter ISCD preference, §8.129 CCS integrity strategy, §8.130 closed system background grade, §8.137 SUS integrity verification, Glossary definition) | Guide-No1 ★★ (Glossary: mechanical vs fusion sealing types; closed system + ISCD examples) | PtC-14 ★★ (§3 — "intrinsic sterile connectors should be used, when possible, to avoid multiple aseptic connections") | ICH-Q9R1 ★ (§6.4 risk control hierarchy: engineering > procedural — rationale for Annex 1 §8.15 mandate)
 
 **Sterilization in Place / SIP (就地滅菌)**
 → ISO-13408-5 ★★★ (primary ISO standard: full requirements for SIP validation, DQ/IQ/OQ/PQ, steam SIP guidelines, biological indicators, dead leg design, routine monitoring) | ISPE-Vol3 ★★ (clean steam and utility systems for SIP in sterile facilities) | ISPE-Vol4 ★★ (clean steam generation and WFI for SIP condensate) | ISPE-SUT ★★ (CIP/SIP elimination advantages of single-use systems) | PICS-Annex1 ★★ (regulatory context for SIP in sterile manufacturing) | Guide-No1 ★★ (SIP for filling line fluid path) | ISO-13408-4 ★★ (CIP precedes SIP in typical workflow; dead leg design, drainability, equipment design shared requirements)
