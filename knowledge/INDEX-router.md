@@ -17,6 +17,7 @@ Use these mappings to translate user questions before routing:
 | 製程驗證 / process validation | process validation, CPV, PPQ, design space |
 | 一次性 / 拋棄式 | single-use, SUS, SUT, disposable |
 | 隔離器 / 屏障 / RABS | RABS, isolator, barrier system |
+| 無菌連接 / ISCD / 內建式無菌連接裝置 / 無菌焊接 / 熱熔接 | intrinsic sterile connection device, ISCD, aseptic connection, fusion sealing, tube welder, mechanical connector |
 | 預充填針 | prefilled syringe, PFS, CCI |
 | 細胞治療 / 基因治療 / 先進療法 | ATMP, cell therapy, gene therapy, CAR-T |
 | 運銷 / 配送 / 冷鏈 | GDP, cold chain, distribution |
@@ -54,6 +55,7 @@ Use these mappings to translate user questions before routing:
 | BFS / blow-fill-seal | PtC-1 §1b (K.1-K.3) · PICS-Annex1 §8 | FDA-Aseptic §07 |
 | Manual aseptic / 手動無菌 | TR62 (§1 Facilities, §2 Equipment, §3 APS) | PtC-1 |
 | Filling machine / 充填機 | Guide-No1 (§1 Design, §2A-§2C Pumps, §4A-§4B Functionality) | TR22, PtC-12 |
+| Aseptic connection vs ISCD / 無菌連接與 ISCD 區別 / 熱熔接管路 / 機械式無菌連接器 | topics/intrinsic-sterile-connection-vs-aseptic-connection.md · PICS-Annex1 §8.14, §8.128–§8.130, §8.137, Glossary | Guide-No1 (Glossary), PtC-14 §3, ICH-Q9R1 §6.4 |
 
 ### Barriers & Isolators
 
