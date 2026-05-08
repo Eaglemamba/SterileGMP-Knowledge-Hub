@@ -1087,7 +1087,7 @@ def _extract_caption_lines(page) -> list[tuple[float, float, float, str, str, fl
             # Concatenate all spans in the line
             text = "".join(s.get("text", "") for s in line.get("spans", []))
             text = text.strip()
-            m = CAPTION_RE.search(text)
+            m = CAPTION_RE.match(text)
             if not m:
                 continue
             bbox = line.get("bbox", (0, 0, 0, 0))
@@ -1107,7 +1107,7 @@ def _extract_caption_lines(page) -> list[tuple[float, float, float, str, str, fl
                 cont_text = cont_text.strip()
                 if not cont_text:
                     break  # blank line ends caption
-                if CAPTION_RE.search(cont_text):
+                if CAPTION_RE.match(cont_text):
                     break  # next caption label starts
                 cont_bbox = cont_line.get("bbox", (0, 0, 0, 0))
                 # Check vertical gap -- if too far, not a continuation
