@@ -1050,12 +1050,31 @@ MIN_TBL_HEIGHT = 60       # Minimum table bbox height (pts)
 MIN_TBL_WIDTH = 200       # Minimum table bbox width (pts)
 TBL_ZOOM = 2              # Render zoom factor for table screenshots
 CAPTION_Y_THRESHOLD = 300  # Max pts distance for caption matching
+# Bug-fix thresholds (2026-06):
+MIN_FALLBACK_CLIP_HEIGHT = 80   # Min raw pts height for fallback clip; below this is a TOC line
+MIN_FALLBACK_RENDERED_H = 120   # Min rendered height (px at TBL_ZOOM) for fallback pixmap
+# Bug-fix thresholds (2026-06-11):
+# Bug 1 – Ghost suppression
+TOC_DENSITY_THRESHOLD = 8       # Pages with >= this many caption labels are TOC pages → skip fallback
+GHOST_RASTER_DROP_NON_PDA = True  # Drop unlabeled rasters in non-PDA docs (no caption = not real figure)
+PAGE_FURNITURE_MIN_REPEAT = 8   # Unlabeled figures with same exact (w,h) repeated >= this many times → page furniture
+FURNITURE_MAX_KB = 40           # ...AND only if small: TR43 defect photos are >=57KB, PtC page furniture <=26KB
 
 # Regex for figure/table labels: "Figure 3.1-1", "Fig. 1", "Table A.1",
 # "Table ZA.1", "Figure F.1", etc.  Supports 1-2 letter annex prefixes.
 import re as _re
 CAPTION_RE = _re.compile(
     r'(?i)\b((?:figure|fig\.?|table|tbl\.?)\s*(?:[A-Z]{1,2}\.?)?\d[\d.\-]*)',
+)
+# Inline TOC detection: caption lines whose text (after the label) contains
+# dot-leader runs, control characters (backspace/tab used as TOC fillers),
+# or ends with a standalone page-number suffix are TOC references, not real
+# figure/table captions.
+TOC_DOTS_RE = _re.compile(
+    r'\.{3,}'           # "......2"
+    r'|(?:\.\s){3,}'    # ". . . 2"
+    r'|\s{2,}\d{1,4}\s*$'  # trailing "  42" page-number
+    r'|[\x00-\x08\x0b\x0c\x0e-\x1f]'  # control chars (incl. \x08 backspace TOC filler)
 )
 
 
@@ -1612,6 +1631,8 @@ def cmd_extract_figs(args):
                     "height": tbl_h,
                     "size_kb": round(tbl_size / 1024, 1),
                     "type": "table",
+                    "cols": int(table.col_count),
+                    "rows": int(table.row_count),
                 }
                 if tbl_label:
                     tbl_entry["label"] = tbl_label
@@ -1658,6 +1679,17 @@ def cmd_extract_figs(args):
                     except Exception:
                         pass
 
+        # --- Bug-fix (2026-06-11): Filter unlabeled raster figures in non-PDA docs ---
+        # The raster pass (Pass 1) extracts ALL embedded images above MIN_IMG_SIZE/
+        # MIN_IMG_DIM; it does NOT require a caption label.  In non-PDA sources
+        # this produces two kinds of ghosts:
+        #   a) Tiny icon/symbol images (e.g. ISO-15223-1 symbols, ~152px) that
+        #      pass MIN_IMG_DIM=80 but are decorative.
+        #   b) Whole-page scanned rasters (e.g. ISO-2859-1 scanned pages
+        #      ~1529x2783) that absorb the entire page and have no selectable
+        #      caption text.
+        # PDA docs are allowed unlabeled figures (continuation images, large
+        # defect catalogs, etc.); non-PDA docs should be suppressed.
         # --- Pass 3: Fallback rendering for unmatched captions ---
         # Detect pages where a figure/table caption exists but no
         # corresponding embedded image or table was extracted (vector
@@ -1681,6 +1713,26 @@ def cmd_extract_figs(args):
             fb_captions = _extract_caption_lines(page)
             if not fb_captions:
                 continue
+            # Bug-fix (2026-06-11): TOC pages have many caption-like labels in
+            # tight 2-column layouts.  The after-label text is often empty (split
+            # across blocks), so TOC_DOTS_RE cannot detect them.  Count ALL raw
+            # CAPTION_RE matches on the page; if the density exceeds
+            # TOC_DENSITY_THRESHOLD, every "caption" here is a TOC entry — skip
+            # the whole page for fallback rendering.
+            _raw_cap_count = 0
+            try:
+                _td_raw = page.get_text("dict")
+                for _blk in _td_raw.get("blocks", []):
+                    if _blk.get("type") != 0:
+                        continue
+                    for _ln in _blk.get("lines", []):
+                        _t = "".join(s.get("text", "") for s in _ln.get("spans", [])).strip()
+                        if CAPTION_RE.match(_t):
+                            _raw_cap_count += 1
+            except Exception:
+                pass
+            if _raw_cap_count >= TOC_DENSITY_THRESHOLD:
+                continue  # TOC page — skip all fallback rendering
             # Find captions on this page that have no corresponding extraction
             fb_idx = 0
             for cap_i, (y_mid, cy_top, cy_bottom, label, caption, cx0, cx1) in enumerate(fb_captions):
@@ -1691,6 +1743,19 @@ def cmd_extract_figs(args):
                 is_table_cap = any(lbl_lower.startswith(p) for p in ("table", "tbl"))
                 is_fig_cap = any(lbl_lower.startswith(p) for p in ("fig", "figure"))
                 if not is_table_cap and not is_fig_cap:
+                    continue
+
+                # Bug-fix: Skip TOC lines — captions whose full_text (the part
+                # after the label) contains "...N" leaders or ends with a bare
+                # page number are Table-of-Contents references, not real captions.
+                if TOC_DOTS_RE.search(caption or ""):
+                    continue
+                # Also skip when the caption bbox is extremely narrow vertically
+                # (artifact / zero-height line).  TOC lines vary widely in font
+                # size; the TOC density check above is the primary defence.
+                # Use 8pt rather than 15pt to avoid rejecting small-font captions
+                # (e.g. ISO-2859-1 Table 6-A at 12pt).
+                if (cy_bottom - cy_top) < 8:
                     continue
 
                 # Estimate clip region:
@@ -1726,14 +1791,22 @@ def cmd_extract_figs(args):
                     )
                     ftype = "table"
 
-                # Skip tiny regions (likely false positives)
-                if clip_rect.height < 40 or clip_rect.width < 100:
+                # Bug-fix: Skip tiny clip regions — raised from 40 to
+                # MIN_FALLBACK_CLIP_HEIGHT to reject TOC-origin false positives
+                # whose clip collapses to just the TOC line itself.
+                if clip_rect.height < MIN_FALLBACK_CLIP_HEIGHT or clip_rect.width < 100:
                     continue
 
                 try:
                     mat = fitz.Matrix(TBL_ZOOM, TBL_ZOOM)
                     pix = page.get_pixmap(matrix=mat, clip=clip_rect)
                 except Exception:
+                    continue
+
+                # Bug-fix: After rendering, reject if the pixmap is still too
+                # short — this catches edge cases where the clip was valid but
+                # the actual rendered content is a single line (TOC or header).
+                if pix.height < MIN_FALLBACK_RENDERED_H:
                     continue
 
                 fb_idx += 1
@@ -1828,6 +1901,65 @@ def cmd_extract_figs(args):
         if relaxed_matched:
             print(f"    [RELAXED] Matched {relaxed_matched} raster images with relaxed caption search")
 
+        # --- Bug-fix (2026-06-11): Filter unlabeled raster figures in non-PDA docs ---
+        # Runs AFTER all four passes (including relaxed) so only images that
+        # truly couldn't be matched to any caption are dropped.
+        # In non-PDA sources, every Figure must have a numbered caption; an
+        # uncaptioned raster is an icon, a TOC figure, a full-page scan, or
+        # other page furniture.  PDA docs exempt (continuation images, defect
+        # catalog plates, etc.).
+        if GHOST_RASTER_DROP_NON_PDA and not is_pda:
+            ghost_rasters = [
+                f for f in figures
+                if f.get("type") == "figure"
+                and "label" not in f
+                and f.get("render") != "fallback"
+            ]
+            if ghost_rasters:
+                before_ghost = len(figures)
+                figures = [f for f in figures if f not in ghost_rasters]
+                removed_ghost_cnt = before_ghost - len(figures)
+                print(f"    [GHOST-FILTER] Removed {removed_ghost_cnt} unlabeled rasters "
+                      f"(non-PDA ghosts: icons/whole-page-scans/decorations)")
+                total_extracted -= removed_ghost_cnt
+                for rf in ghost_rasters:
+                    try:
+                        (figs_dir / rf["file"]).unlink()
+                    except Exception:
+                        pass
+
+        # --- Bug-fix (2026-06-11): Within-doc page-furniture filter (all docs incl. PDA) ---
+        # Repeating header/footer graphics appear in PDA PtC docs (e.g. PtC-Isolators)
+        # as one unlabeled figure per page at identical dimensions.  Hash-based
+        # cross-doc logo filter misses within-doc repeats.  If >= PAGE_FURNITURE_MIN_REPEAT
+        # unlabeled non-fallback figures share the exact same (width, height), treat
+        # them as page furniture and drop all of them.
+        from collections import defaultdict as _defaultdict
+        _dim_groups: dict = _defaultdict(list)
+        for _f in figures:
+            if (_f.get("type") == "figure"
+                    and "label" not in _f
+                    and _f.get("render") != "fallback"
+                    and _f.get("size_kb", 999) < FURNITURE_MAX_KB):
+                _dim_key = (_f.get("width"), _f.get("height"))
+                _dim_groups[_dim_key].append(_f)
+        _furniture = []
+        for _dim_key, _group in _dim_groups.items():
+            if len(_group) >= PAGE_FURNITURE_MIN_REPEAT:
+                _furniture.extend(_group)
+        if _furniture:
+            _furniture_set = set(id(x) for x in _furniture)
+            figures = [f for f in figures if id(f) not in _furniture_set]
+            _furniture_cnt = len(_furniture)
+            print(f"    [FURNITURE-FILTER] Removed {_furniture_cnt} page-furniture figures "
+                  f"(same dimensions, {PAGE_FURNITURE_MIN_REPEAT}+ repeats)")
+            total_extracted -= _furniture_cnt
+            for _rf in _furniture:
+                try:
+                    (figs_dir / _rf["file"]).unlink()
+                except Exception:
+                    pass
+
         # --- Filter out front-matter decorative images ---
         # Pages 2-6 often contain cover collages, TOC art, logos with no
         # figure/table labels.  Remove unlabeled images on those pages when
@@ -1885,6 +2017,32 @@ def cmd_extract_figs(args):
                             old_f.unlink()
                         except Exception:
                             pass
+
+        # Bug-fix: Sort all extracted items by (page, vertical slot) so that
+        # figures and tables are interleaved in document reading order.
+        # Pass 1 (raster) and Pass 2 (table) both iterate all pages independently,
+        # so without sorting the list is [all figs p1..pN, all tables p1..pN].
+        # Sort key: primary = page number; secondary = numeric index in filename
+        # (fig-pP-I → I used as proxy for top-to-bottom order on the same page).
+        import re as _sort_re
+
+        def _sort_key(entry):
+            pg = entry.get("page", 0)
+            fname = entry.get("file", "")
+            # Extract the per-page extraction index from filename.
+            # Standard names: fig-pPG-IDX.ext  tbl-pPG-IDX.ext  vec-pPG-IDX.png
+            # Audit names:    vec-pPG-figure-N-N-IDX.png  (last -IDX. before ext)
+            # Strategy: match -pPG-(\d+) first (standard); fall back to last
+            # occurrence of -(\d+)\. in the name (handles audit names).
+            m2 = _sort_re.search(r'-p\d+-(\d+)\.', fname)
+            if not m2:
+                # Fallback: find last -digits. before extension
+                all_matches = list(_sort_re.finditer(r'-(\d+)\.', fname))
+                m2 = all_matches[-1] if all_matches else None
+            idx = int(m2.group(1)) if m2 else 0
+            return (pg, idx)
+
+        figures.sort(key=_sort_key)
 
         # Cross-page inheritance: unlabeled items inherit label from the
         # last labeled item of the same type (continuation pages)
