@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR33 - Section 6.0: Implementation — Secondary-Site Commissioning vs. Initial Validation</title>
+    <link rel="stylesheet" href="../../../template.css">
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 6.0 Implementation: Guidance on Secondary-Site Commissioning Versus Initial Validation</h1>
+    <div class="subtitle">建置實務：次級場址啟用 vs. 初始驗證指引</div>
+    <div class="page-info">PDA Technical Report No. 33 (Revised 2026) | p76-p77</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 <strong>Primary Validation Site（主要驗證廠）</strong>與 <strong>Secondary Site（次級場址）</strong>的定義差異，及兩者在 AMM/RMM 生命週期管理中扮演的角色</li>
+        <li>掌握次級場址執行設備 IQ（Installation Qualification，安裝確效）與 OQ（Operational Qualification，操作確效）時，何時可沿用原始確效套件（qualification package）、何時必須額外測試</li>
+        <li>了解為何次級場址的 PQ（Performance Qualification，性能確效）可採「縮減式微生物挑戰測試」而非全套重複測試，以及其成立前提</li>
+        <li>釐清次級場址執行方法適用性測試（method suitability）與新產品風險評估（risk assessment）的觸發時機與判斷邏輯</li>
+        <li>建立多廠區 CDMO 技術轉移（tech transfer）情境下的文件、法規遵循與稽核準備邏輯，避免重工或驗證不足</li>
+    </ul>
+</div>
+
+<!-- ===================== SECTION 6.0 ===================== -->
+<div class="section-title"><strong>6.0 Implementation: Guidance on Secondary-Site Commissioning Versus Initial Validation 建置概論：次級場址啟用 vs. 初始驗證</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Section 6.0 provides an overview and points to consider for transferring a validated <span class="key-term">AMM/RMM</span> from a <span class="key-term">primary validation site</span> to a <span class="key-term">secondary site</span>. For the purposes of this document, the "primary validation site" is defined as the site performing the initial validation of the AMM/RMM, including <span class="key-term">equipment qualification</span> and <span class="key-term">method validation</span>. The "secondary site" is defined as the site to which the method is transferred.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Primary Validation Site（主要驗證廠）：</strong>第一次對 AMM/RMM（Alternative/Rapid Microbiological Method，替代/快速微生物檢測方法）執行完整驗證的場址，涵蓋設備確效（equipment qualification，即 IQ/OQ/PQ）與方法確效（method validation）兩大主軸。</p>
+            <p><strong>Secondary Site（次級場址）：</strong>方法「被移轉過去」的場址，可能是另一座生產廠、另一個檢測實驗室，甚至同集團不同國家的據點。第 6 章的核心問題是：<strong>次級場址是否要「重做一次」初始驗證，還是可以「站在巨人肩膀上」做較輕量的啟用確認？</strong></p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>可以把這一章想像成「連鎖餐廳展店」的邏輯。旗艦店（primary validation site）已經花了半年時間，把每一道菜的配方、火候、擺盤都驗證到位（method validation），廚房設備也逐台確認運作正常（equipment qualification）。現在要在第二座城市開分店（secondary site），你不需要從零重新研發菜單——但你仍然要確認：新廚房的爐具是否安裝正確、運作正常（IQ/OQ）、新主廚做出來的菜是否跟旗艦店一樣道地（method suitability）、當地的水質與食材是否會影響口味（environmental/local isolate considerations）。這就是「次級場址啟用」與「從頭開一家全新餐廳」的本質差異。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>本章與 Section 5（Method Validation 全套驗證要求）互為表裡：Section 5 訂出「第一次要做到什麼程度」的黃金標準，Section 6 則回答「已經做過一次之後，第二個場址要重做多少」。兩者的關係是<strong>風險為本的漸進式簡化（risk-based reduction）</strong>，而非「次級場址可以隨便做」。監管機關稽核時，最常見的缺失就是誤把「可簡化」讀成「可省略」。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果 Amaran 在同一廠區內把一台快速微生物檢測儀從 A 廠房移到 B 廠房，這算是「次級場址移轉」嗎？為什麼？</li>
+                <li>「主要驗證廠」與「次級場址」的角色是否可以互換？如果次級場址日後想把同一設備再轉移到第三個場址，第 6 章的邏輯還適用嗎？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== SECTION 6.1 ===================== -->
+<div class="section-title"><strong>6.1 Guidance for the Transfer of an Alternative/Rapid Microbiological Method from a Primary Validation Site to a Secondary Validation Site AMM/RMM 由主要驗證廠移轉至次級驗證廠之指引</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The first time an <span class="key-term">AMM/RMM</span> is qualified, it is expected that a comprehensive validation plan, as that recommended in TR 33, is appropriately performed. When the AMM/RMM is transferred from a <span class="key-term">primary validation site</span> to a <span class="key-term">secondary site</span> (e.g., testing or manufacturing facility), a copy of the original <span class="key-term">validation package</span> should be provided to the secondary site. Each new installation must be separately evaluated to determine the extent of additional <span class="key-term">IQ</span>, <span class="key-term">OQ</span>, <span class="key-term">PQ</span>, or method validation testing that may need to be performed. As part of the installation, qualification, and method transfer activities at the secondary site, all necessary training will be conducted, relevant procedures will be written and approved, and maintenance and calibration programs will be developed prior to performing the analyst qualification and subsequent routine use.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Validation Package（驗證套件）：</strong>包含 IQ/OQ/PQ 報告、方法確效報告（method validation report）、風險評估、可接受標準（acceptance criteria）等完整文件組合。原文明確要求：這份套件必須「原封不動地複製」給次級場址，作為其後續評估的基礎——次級場址不是從一張白紙開始，而是站在已驗證資料的基礎上做「差異分析」。</p>
+            <p><strong>Method Transfer（方法移轉）：</strong>不只是「把儀器搬過去」，而是包含教育訓練、SOP 撰寫核准、保養與校正計畫建立、分析師資格確認（analyst qualification）等一整套系統性活動，最終才進入常規使用（routine use）。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>這就像連鎖加盟總部把「完整的加盟手冊」（validation package）交給新分店，而不是只給一份菜單。手冊裡有設備規格、SOP、保養排程、員工訓練教材——分店店長要做的，是逐項核對「我的廚房跟手冊描述的是否一致」，而不是自己重新寫一本新手冊。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>原文的關鍵動詞是 <strong>"must be separately evaluated"</strong>——每一個新安裝都必須「個別評估」需要多少額外的 IQ/OQ/PQ 或方法確效測試。這是一個<strong>強制性的風險評估步驟</strong>，不能用「反正跟主要驗證廠一樣」一句話帶過，也絕對不能省略此評估直接沿用原確效結論。書面紀錄這份差異評估（gap assessment）本身就是稽核時的關鍵證據。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>對於像 Amaran 這樣的多廠區、多客戶 CDMO 而言，Section 6.1 的邏輯直接對應到「技術轉移（tech transfer）」的日常實務：當客戶要求把某個 AMM/RMM（例如快速生物負荷檢測系統）從研發實驗室移轉到 GMP 生產場域，或從台灣廠移轉到海外姊妹廠時，QA 應建立標準化的「次級場址啟用評估表」（差異分析 checklist），內容至少涵蓋：(1) 設備是否為同型號同版本、(2) 使用目的與操作模式是否相同（standalone vs. LIMS 整合）、(3) 環境條件差異（溫濕度、海拔）、(4) 本地菌株代表性、(5) 分析師資格與訓練紀錄。此評估表可作為次級場址驗證方案（validation protocol）的附件，讓稽核員清楚看到「簡化的理由」而非「省略的藉口」——這是多廠區 CDMO 在客戶稽核與法規稽查中建立信任的關鍵文件。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>次級場址收到「原始驗證套件」後，QA 應該優先檢查哪三項內容，才能判斷需要做多少額外測試？</li>
+                <li>「分析師資格確認（analyst qualification）」為什麼要排在訓練、SOP、保養校正計畫之後才進行？這個順序反映了什麼品質邏輯？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== SECTION 6.2 ===================== -->
+<div class="section-title"><strong>6.2 Equipment Installation and Operational Qualification at the Secondary Site 次級場址之設備安裝確效與操作確效</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>When an <span class="key-term">identical technology</span> is installed at the secondary site, it is expected that a standard equipment IQ and OQ will be performed following the original qualification package (see Section 5.2.8 and Section 5.2.9). However, if the AMM/RMM is used at a secondary site for a <span class="key-term">different purpose</span> or in a <span class="key-term">different manner</span> (e.g., standalone or LIMS integrated) than at the primary site, additional IQ, OQ and method validation may be needed. There may also exist <span class="key-term">environmental or physical conditions</span> related to the secondary location that could warrant additional qualification or validation considerations, such as extremes in altitude, relative humidity, or temperature.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Identical Technology（相同技術/同型設備）：</strong>指次級場址安裝的是與主要驗證廠完全一致的設備型號與組態。此情況下，標準做法是「沿用原確效套件執行標準 IQ/OQ」——不需要重新設計測試方案。</p>
+            <p><strong>Different Purpose / Different Manner（不同用途/不同操作模式）：</strong>原文舉例 standalone（獨立作業）vs. LIMS integrated（與實驗室資訊管理系統整合）。即使硬體相同，只要「使用方式」改變，系統的資料流、警報邏輯、電子紀錄產生方式都可能不同，因此觸發額外的 IQ/OQ 甚至方法確效。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>就像同一款咖啡機，總部旗艦店是「手動沖泡、店員按表操作」，分店卻要接上中央 POS 系統自動記帳與扣庫存——機器本身沒變，但接上系統之後的「行為」完全不同，你必須重新測試這套整合是否運作正常。這正是 standalone 與 LIMS integrated 之間確效要求不同的原因。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>原文特別點名<strong>環境或物理條件（environmental or physical conditions）</strong>——海拔（altitude）、相對濕度（relative humidity）、溫度（temperature）的極端值——可能需要額外確效考量。對跨國、跨氣候帶營運的 CDMO 而言（例如台灣廠 vs. 高海拔或高濕熱地區的姊妹廠），這一點不可忽略：儀器供應商的操作規格書（operating specification）通常會標示適用的溫濕度/海拔範圍，次級場址的環境監測數據應主動比對此規格範圍，並列入 OQ 的環境確認項目。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若次級場址安裝的儀器與主要驗證廠型號完全相同，但改為與 LIMS 整合以自動上傳結果，是否仍可省略額外 IQ/OQ？為什麼？</li>
+                <li>台灣的亞熱帶高濕氣候，對某些 AMM/RMM 設備（例如需要精密光學讀取的系統）可能帶來哪些額外的 OQ 考量？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== SECTION 6.3 ===================== -->
+<div class="section-title"><strong>6.3 Equipment Performance Qualification at the Secondary Site 次級場址之設備性能確效</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Because an <span class="key-term">exhaustive microbiological testing plan</span> will be completed during method validation at the primary site, when a <span class="key-term">like-for-like instrument</span> (e.g., the exact same model and components with the exact same version numbers for all software, microprocessors, and computers) is installed, it may not be necessary for the secondary site to repeat this testing in its entirety. However, it is recommended that a <span class="key-term">reduced microbiological challenge</span> from the original PQ, in addition to representative isolates recovered at the secondary site, be performed to demonstrate that the system is operating as intended. A review of locally recovered microbial isolates should indicate if the reference strains used during the qualification performed at the primary site are representative of the isolates recovered at the secondary site. If they are not, then the qualification plan should include a list of microbial isolates to be evaluated and what qualification requirements they will be tested against. Additionally, it may be appropriate to determine if the original qualification will meet current GMPs and internal requirements, taking into consideration the date the original qualification was completed.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Like-for-Like Instrument（同型同款儀器）：</strong>不只是「同一款型號」，原文的定義非常嚴格——包含所有軟體、微處理器、電腦的<strong>版本號完全相同</strong>。這是「可以縮減測試」的先決條件，任何一項版本不同都可能使「like-for-like」不成立。</p>
+            <p><strong>Reduced Microbiological Challenge（縮減式微生物挑戰測試）：</strong>不是「不做」PQ，而是從原始 PQ 的完整菌株挑戰清單中，取一個「有代表性的子集合」，加上次級場址「當地實際分離到的代表性菌株（representative isolates）」，共同驗證系統運作如預期。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>如同同一款汽車引擎已經在原廠通過上千公里的耐久測試（exhaustive testing），組裝廠若換了一模一樣的引擎型號、韌體版本也完全相同，就不需要重新跑一次上千公里測試——但仍要開幾百公里做「驗收測試」，確認這台新組裝的車沒有異常，同時檢查當地路況（local isolates，如濕熱氣候中常見的環境菌）是否會帶來原廠測試沒涵蓋的狀況。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>本節有兩個容易被忽略但非常關鍵的判斷點：<strong>(1) 菌株代表性比對</strong>——次級場址必須主動比對「當地實際分離到的微生物」與「主要驗證廠使用的參考菌株（reference strains）」是否一致；若不一致，必須把當地菌株納入新的確效測試清單，而非直接沿用舊清單。<strong>(2) 法規時效性（current GMPs）</strong>——原始確效完成的時間點也要納入考量：如果原確效是多年前完成，次級場址啟用時應評估該確效是否仍符合「目前」的 GMP 與內部要求，避免用過時的確效邏輯背書一個新場址。這兩點合起來，正是稽核員最常追問的「你怎麼證明可以縮減測試」的答案來源。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>次級場址在做本地分離株比對時，如果發現當地菌相與主要驗證廠的參考菌株明顯不同，QA 應該如何調整確效計畫？</li>
+                <li>若主要驗證廠的原始確效是 8 年前完成的，次級場址在引進同款儀器時，應該檢視哪些面向以確認「原確效仍符合現行 GMP」？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== SECTION 6.4 ===================== -->
+<div class="section-title"><strong>6.4 Implementation of the Alternative/Rapid Microbiological Method at the Secondary Site 次級場址之 AMM/RMM 導入實施</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><span class="key-term">Method suitability</span> in the presence of product must be repeated at the secondary site to demonstrate that the method will provide the expected results when performed by the analysts at the secondary site. As part of the method suitability test, <span class="key-term">local isolates</span> from the secondary site (if it is a secondary manufacturing site), especially those that were not tested at the primary site, must be included. See Section 5.3.2 for further information on method suitability.</p>
+        <p>Once the AMM/RMM has been successfully installed and qualified for use at a secondary site and required <span class="key-term">regulatory approval</span> is obtained, the system may be used routinely.</p>
+        <p>In the event the secondary site intends to qualify the same instrument for use with a <span class="key-term">new product or process material</span> that was not assessed by the primary site, a <span class="key-term">risk assessment</span> should be performed to determine if a <span class="key-term">full-method validation</span>, including method suitability testing and comparability testing, is required to be performed (see Section 5.2.1). Section 5.3 discusses the use of test plans and acceptance criteria.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Method Suitability（方法適用性）：</strong>本節唯一標明「must be repeated（必須重做）」、沒有任何簡化空間的項目——不論儀器是否 like-for-like，只要換了場址、換了分析師、換了本地菌相，就必須在有產品基質存在的條件下重新證明方法可行。這是與 6.3 節「設備 PQ 可縮減」形成鮮明對比的規定。</p>
+            <p><strong>Risk Assessment 觸發全套驗證的情境：</strong>如果次級場址要把同一台儀器用於「主要驗證廠沒評估過的新產品或製程物料」，則必須做風險評估，判斷是否需要啟動「全套方法確效（full-method validation）」，包含方法適用性與可比性測試（comparability testing）。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>就像同一套配方在分店由當地主廚重新試做，即使爐具、食材供應商都跟總部一樣，主廚的手藝與當地水質仍可能讓成品味道有落差——所以「試菜（method suitability）」這關無論如何都要重做，不能因為廚房設備驗收合格就跳過。但如果分店老闆決定用這套廚房去做一道全新料理（新產品/新物料），那就不只是試菜了，而是要重新評估整個菜色是否可行（risk assessment → full-method validation）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>原文的邏輯層次很清楚：<strong>設備層面（6.2、6.3）可以因 like-for-like 而縮減測試；但方法適用性（method suitability）永遠不能因為設備相同而省略</strong>，因為它驗證的是「人（分析師）＋基質（product）＋當地菌相（local isolates）」三者交互作用下的結果，這些變數在跨場址移轉時本質上就是「新的」。此外，常規使用（routine use）的前提除了確效完成，還必須取得<strong>法規核准（regulatory approval）</strong>——兩者缺一不可。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>對 CDMO 而言，第 6.4 節精確對應到「同一套快速微生物檢測平台，服務不同客戶產品」的真實場景：假設 Amaran 已在某條產線用某 AMM/RMM 平台完成生物負荷檢測方法確效，現在有新客戶帶著全新配方（例如高黏度生物製劑或含防腐劑處方）進廠——即使儀器與操作人員都相同，仍必須依原文邏輯執行：(1) 針對新產品基質重做方法適用性測試、(2) 評估新配方是否可能抑制或干擾檢測（interference/inhibition risk）、(3) 進行風險評估判斷是否需要全套方法確效與可比性測試。把這個判斷邏輯寫入 CDMO 的「新產品導入（NPI）SOP」中，可以避免業務端為了縮短交期而跳過必要的方法適用性驗證，同時也是向客戶與稽核員展示品質風險管理（QRM）落地的具體證據。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼「方法適用性測試」在本文中被列為次級場址「必須重做」而非「可縮減」的項目？這反映了它驗證的對象與 PQ 有何本質不同？</li>
+                <li>若次級場址要用同一台儀器檢測一個全新客戶的全新產品配方，QA 應該依序做哪些評估，才能判斷是否需要啟動「全套方法確效」？</li>
+                <li>「常規使用（routine use）」為何同時需要「確效完成」與「法規核准」兩個條件？少了其中一項會發生什麼問題？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li>Primary Validation Site（主要驗證廠）完成 AMM/RMM 的初始完整驗證；Secondary Site（次級場址）接收原始驗證套件後，必須「個別評估」而非直接沿用結論，決定所需的額外 IQ/OQ/PQ 或方法確效範圍。</li>
+        <li>設備層面（IQ/OQ/PQ）在 Identical Technology（相同技術）且 Like-for-Like Instrument（同型同款，含軟體版本）條件下可採縮減式測試策略，但操作模式改變（如 LIMS 整合）或環境條件（海拔、濕度、溫度）差異仍可能觸發額外確效。</li>
+        <li>次級場址的 PQ 可用「縮減式微生物挑戰測試」+ 當地代表性菌株執行，但須主動比對本地菌相與原參考菌株的代表性，並評估原確效是否符合現行 GMP 時效性要求。</li>
+        <li>方法適用性測試（method suitability）不論設備是否相同，在次級場址永遠必須重做，且須納入未經主要驗證廠測試過的本地菌株。</li>
+        <li>常規使用需同時滿足「確效與資格確認完成」及「取得法規核准」；若導入未經評估的新產品或製程物料，須執行風險評估以判斷是否需要全套方法確效與可比性測試。</li>
+    </ul>
+</div>
+
+</body>
+</html>

@@ -2,7 +2,7 @@
 
 This document summarizes the current coverage status, gap analysis, and expansion roadmap for building a comprehensive sterile pharmaceutical manufacturing knowledge hub suitable for COO-level operational decision-making.
 
-Last updated: 2026-05-06 — added topic synthesis `knowledge/topics/intrinsic-sterile-connection-vs-aseptic-connection.md` (cross-document distinction between aseptic connection and ISCD: PIC/S Annex 1 2022 §8.14/§8.15/§8.128–§8.130/§8.137 + Glossary, PDA Guide No.1 Glossary, PDA PtC-14 §3, ICH Q9(R1) §6.4); INDEX.md (Quick Topic Routing Guide row + Cross-Report Topics entry) and INDEX-router.md (Synonym Table row + Aseptic & Sterile Processing row) updated. Previously (2026-04-27): 183 documents complete (PDA 43, USP 76, ISPE 14, FDA 15, ICH 6, PIC/S 5, ISO 17, Ph.Eur. 7); added PDA TR74 (Revised 2026) "Reprocessing and Reworking of Biologicals" — 7 sections, 9 HTML files (sec5/sec6 A/B split), 41 figures+tables extracted; generated via parallel agent dispatch. Earlier on 2026-04-27: extract-figs clipping fixes — figure caption strip extends up to image bottom (axis labels no longer cut), table clip extends downward through note/source/footnote lines (capped 140pt). Re-extracted full corpus: 1688 figures + 1505 tables = 3193 entries (was 2632). Previously (2026-04-22): Figures & Tables Gallery revamp complete — full-corpus gap-fill audit across 132 docs recovered 73 figures (2559 → 2632 entries, 96% recovery); 4 residual not-founds accepted as precision/recall trade-offs. Renovated root folder structure (utility scripts → `scripts/`, legacy `index-v2.html` → `archive/`); TR73 expanded from Sections 12–18 partial to full 18-section complete version (+11 bilingual sections, p1–p102); added topic synthesis `knowledge/topics/depyrogenation-tunnel-validation.md`.
+Last updated: 2026-07-13 — added PDA TR33 (Revised 2026) "Evaluation, Validation, and Implementation of Alternative and Rapid Microbiological Methods" — 11 sections, 26 bilingual HTML files (§3/§4/§5/§7/§9/§10/§11 split), 89 figures+tables extracted, English-only knowledge MD, INDEX.md + INDEX-router.md rows added; generated via parallel agent dispatch. Corpus now 184 documents complete (PDA 44, USP 76, ISPE 14, FDA 15, ICH 6, PIC/S 5, ISO 17, Ph.Eur. 7). Previously (2026-05-06): added topic synthesis `knowledge/topics/intrinsic-sterile-connection-vs-aseptic-connection.md` (cross-document distinction between aseptic connection and ISCD: PIC/S Annex 1 2022 §8.14/§8.15/§8.128–§8.130/§8.137 + Glossary, PDA Guide No.1 Glossary, PDA PtC-14 §3, ICH Q9(R1) §6.4); INDEX.md (Quick Topic Routing Guide row + Cross-Report Topics entry) and INDEX-router.md (Synonym Table row + Aseptic & Sterile Processing row) updated. Previously (2026-04-27): 183 documents complete (PDA 43, USP 76, ISPE 14, FDA 15, ICH 6, PIC/S 5, ISO 17, Ph.Eur. 7); added PDA TR74 (Revised 2026) "Reprocessing and Reworking of Biologicals" — 7 sections, 9 HTML files (sec5/sec6 A/B split), 41 figures+tables extracted; generated via parallel agent dispatch. Earlier on 2026-04-27: extract-figs clipping fixes — figure caption strip extends up to image bottom (axis labels no longer cut), table clip extends downward through note/source/footnote lines (capped 140pt). Re-extracted full corpus: 1688 figures + 1505 tables = 3193 entries (was 2632). Previously (2026-04-22): Figures & Tables Gallery revamp complete — full-corpus gap-fill audit across 132 docs recovered 73 figures (2559 → 2632 entries, 96% recovery); 4 residual not-founds accepted as precision/recall trade-offs. Renovated root folder structure (utility scripts → `scripts/`, legacy `index-v2.html` → `archive/`); TR73 expanded from Sections 12–18 partial to full 18-section complete version (+11 bilingual sections, p1–p102); added topic synthesis `knowledge/topics/depyrogenation-tunnel-validation.md`.
 
 ---
 
@@ -52,7 +52,7 @@ This architecture is not a one-way pipeline from reference → practice. It oper
 | Education Layer — Dashboard & Learning UI | ✅ Complete | 4 tools (index.html, learning-path.html, mindmap.html, quiz.html) |
 | Education Layer — Curriculum Data | ✅ Complete | 8 departments × 3 tiers (gmp-curriculum-data.js) |
 | Education Layer — Quiz System | ✅ Complete | /quiz skill + quiz.html tracker + knowledge/exams/ bank |
-| Layer 1 — Regulatory Reference | ✅ Complete | 182 documents |
+| Layer 1 — Regulatory Reference | ✅ Complete | 184 documents |
 | Expert Knowledge Base | ⬜ Not started | 9 files planned |
 | Layer 2 — Operational Frameworks | ⬜ Not started | ~27 files planned |
 | Layer 2 — Skills System | ⬜ Not started | 26 slash commands planned |
@@ -140,7 +140,7 @@ Interactive D3.js + Markmap-powered visualization of the entire knowledge base. 
 |------|-------------|
 | By Department | Shows 8 department tracks with Foundation → Core → Advanced hierarchy |
 | By Topic | Groups documents into 10 thematic clusters (Aseptic Processing, Sterilization & Filtration, Container Closure, Quality Systems, Environmental Monitoring, Testing Methods, Facilities & Utilities, Advanced Therapies, Regulatory & Compliance, Emerging Technologies) |
-| By Source | Organizes all 182 documents by issuing organization (PDA, ISPE, FDA, ICH, PIC/S, USP, ISO, Ph.Eur.) |
+| By Source | Organizes all 184 documents by issuing organization (PDA, ISPE, FDA, ICH, PIC/S, USP, ISO, Ph.Eur.) |
 
 ### gmp-curriculum-data.js — Curriculum Data File
 
@@ -153,13 +153,13 @@ Single source of truth for learning path structure. Consumed by `learning-path.h
 
 ---
 
-## Layer 1: Regulatory Reference — ✅ COMPLETE (182 documents)
+## Layer 1: Regulatory Reference — ✅ COMPLETE (184 documents)
 
 ### Completion Summary
 
 | Source | Count | Scope | Status |
 |--------|-------|-------|--------|
-| **PDA** | 42 | Technical Reports, Points to Consider, Guides | ✅ Complete |
+| **PDA** | 44 | Technical Reports, Points to Consider, Guides | ✅ Complete |
 | **USP** | 76 | General Chapters — sterility, endotoxin, particulates, microbial, CCI, E&L, water, validation, analytical | ✅ Complete |
 | **ISPE** | 14 | Baseline Guides, Good Practice Guides, GAMP | ✅ Complete (1 pending OCR) |
 | **FDA** | 15 | Aseptic Processing, Process Validation, Process Inspection, Combination Products CGMP, HF for Combo Products, 21 CFR 600–680 Biologics, 21 CFR Parts 210/211, 21 CFR Part 11, 21 CFR Part 820 (QMSR), 21 CFR Part 4, 21 CFR Part 312 (IND), CCIT (2008), Container Closure CMC (1999), Glass Vials & Stoppers (2024), Parametric Release (2010) | ✅ Complete |
@@ -167,7 +167,7 @@ Single source of truth for learning path structure. Consumed by `learning-path.h
 | **PIC/S** | 5 | Annex 1 (2022), Annex 2 (ATMPs + Biologics), Annex 15 (Qualification 2023), Annex 20 (QRM), PE 011 (GDP 2014) | ✅ Complete |
 | **ISO** | 17 | 11040 (×8), 13408 (×7), 14644 (Parts 1/5/7), 11608-1, 13485, 10993-1, TR 24971, 15378, 9001, 9000, 2859-1, 15223-1/2, 15394, 13926-1/2/3 | ✅ Complete (2 blocked: 14971 scanned, 15225 font) |
 | **Ph.Eur.** | 7 | 2.6.1, 2.6.14, 2.9.19, 2.9.20, 3.2.1, 3.3.8, 5.1.1 | ✅ Complete |
-| **Total** | **182** | | |
+| **Total** | **184** | | |
 
 ### USP Batch History
 
@@ -191,7 +191,7 @@ Single source of truth for learning path structure. Consumed by `learning-path.h
 | FDA — Design Considerations for Combination Products (2019 Draft) | Phase 5 | Medium | Small | ⬜ Need PDF |
 | PDA TR76 — CCI Testing Technology | Phase 5 | Medium | Medium | ⬜ Need PDF |
 | PDA TR74 — Prefilled Syringe User Requirement Specifications | Phase 5 | Medium | Medium | ⬜ Need PDF |
-| PDA TR33 (Rev 2013) — Alternative & Rapid Microbiological Methods | Phase 5 | **High** | Medium | ⬜ Need PDF |
+| PDA TR33 (Revised 2026) — Alternative & Rapid Microbiological Methods | Phase 5 | **High** | Medium | ✅ Done (2026-07-13) |
 | PDA TR57 — Analytical Method Validation & Transfer | Phase 5 | Medium | Medium | ⬜ Need PDF |
 | PDA TR69 (2014) — Bioburden & Biofilm in Pharma Water Systems | Phase 5 | Medium | Medium | ⬜ Need PDF |
 | EU GMP Annex 15 — Qualification and Validation | Phase 6 | High | Small | ⬜ Future |
@@ -415,7 +415,7 @@ Layer 3 is fed by the Amaran AI SOP project (`~/Amaran-AI-SOP/`), which already 
 
 ### Phases 1–3: COMPLETE (archived 2026-04)
 
-All PDA TRs (42), top ISPE guides (14), PIC/S documents (5, incl. PE 011 Guide), FDA guidances + CFR chapters (15), ICH Q8–Q14 (6), USP 76 chapters, ISO 17 standards, and Ph.Eur. 7 chapters are fully processed (bilingual HTML + knowledge MD). Infrastructure (dashboard, tooling, workflow) is complete and stable.
+All PDA TRs (44), top ISPE guides (14), PIC/S documents (5, incl. PE 011 Guide), FDA guidances + CFR chapters (15), ICH Q8–Q14 (6), USP 76 chapters, ISO 17 standards, and Ph.Eur. 7 chapters are fully processed (bilingual HTML + knowledge MD). Infrastructure (dashboard, tooling, workflow) is complete and stable.
 
 ### Phase 4: Active — Topic Gap-Fillers
 
@@ -441,7 +441,7 @@ All PDA TRs (42), top ISPE guides (14), PIC/S documents (5, incl. PE 011 Guide),
 | FDA addition | Design Considerations for Combination Products (2019 Draft) | Small | ⬜ Need PDF |
 | PDA addition | TR76 — CCI Testing Technology | Medium | ⬜ Need PDF |
 | PDA addition | TR74 — Prefilled Syringe User Requirement Specifications | Medium | ⬜ Need PDF |
-| PDA addition | TR33 (Rev 2013) — Alternative & Rapid Microbiological Methods | Medium | ⬜ Need PDF |
+| PDA addition | TR33 (Revised 2026) — Alternative & Rapid Microbiological Methods | Medium | ✅ Done (2026-07-13) |
 | PDA addition | TR57 — Analytical Method Validation & Transfer | Medium | ⬜ Need PDF |
 | PDA addition | TR69 (2014) — Bioburden & Biofilm in Pharma Water Systems | Medium | ⬜ Need PDF |
 
@@ -535,7 +535,7 @@ Add only when client mix justifies:
 
 ```
 /
-├── PDA/                    # 42 PDA documents complete
+├── PDA/                    # 44 PDA documents complete
 │   ├── TR13/, TR22/, TR26/, TR27/, TR39/, TR41/, TR43/
 │   ├── TR44/, TR46/, TR49/, TR52/, TR54-6/, TR56/, TR60/
 │   ├── TR62/, TR65/, TR66/, TR68/, TR70/, TR73/, TR73-2/
@@ -599,7 +599,7 @@ Add only when client mix justifies:
 
 | Source | Current | Phase 4–5 Additions | Phase 6 Additions | Notes |
 |--------|---------|--------------------|--------------------|-------|
-| PDA | 42 | +5 (TR33, TR36, TR57, TR69, TR74, TR76) | +2 (TR47, TR81) | |
+| PDA | 44 | +4 (TR36, TR57, TR69, TR76) | +2 (TR47, TR81) | TR33, TR74 ✅ done |
 | ISPE | 14 | +0 | — | GEP ❌ blocked (OCR) |
 | PIC/S | 5 | ~~+1 (PE 011 GDP)~~ ✅ | — | PE 011 done |
 | FDA | 15 | — | — | +1 if Design Considerations |
@@ -610,6 +610,6 @@ Add only when client mix justifies:
 | EU GMP | 0 | — | +3 (Annex 15, 2, 20) | |
 | Ph.Eur. | 7 | — | +1 (EP 5.1.6) | |
 | WHO GMP | 0 | +1 (TRS 961 Annex 6) | +1 (TRS 1010) | TRS 961 moved to Phase 4b |
-| **Total** | **182** | **~189** | **~199** | |
+| **Total** | **184** | **~189** | **~199** | |
 
-The infrastructure (tooling, workflow, dashboard, chatbot) is built and serving 182 documents. All uploaded Raw PDFs have been processed or marked blocked. Active focus shifts to Expert Knowledge Base and Layer 2 Operational Frameworks, with Phase 4–5 content additions when new PDFs are sourced.
+The infrastructure (tooling, workflow, dashboard, chatbot) is built and serving 184 documents. All uploaded Raw PDFs have been processed or marked blocked. Active focus shifts to Expert Knowledge Base and Layer 2 Operational Frameworks, with Phase 4–5 content additions when new PDFs are sourced.

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR33 - Section 9.0-9.1: Appendix 1 &amp; False-Positive Rates (Qualitative AMM/RMM)</title>
+    <link rel="stylesheet" href="../../../template.css">
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 9.0 Appendix 1: Validation of AMM/RMM — Statistical Analysis (Qualitative Methods)</h1>
+    <div class="subtitle">附錄一：替代/快速微生物學方法驗證之統計分析（定性方法）</div>
+    <div class="page-info">PDA Technical Report No. 33 (Revised 2026) | p93-p99</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 Appendix 1（附錄一）的定位——為何 TR 33 需要一份獨立的統計附錄，以及其使用範圍與前提假設</li>
+        <li>熟悉 Table 9.0-1 所定義的全套統計符號（λ、p、θ、R、LCL、UCL 等），作為閱讀後續統計章節的共同語言</li>
+        <li>掌握 false-positive rate（偽陽性率）的定義、估計方法，以及 asymptotic（漸近／Wald）與 exact（精確／Clopper-Pearson）兩種 95% confidence interval（信賴區間，CI）的計算方式與適用時機</li>
+        <li>能夠依據目標偽陽性率上限，運用樣本數公式反推所需的最小測試樣本數，並向客戶/稽核單位說明其統計邏輯</li>
+    </ul>
+</div>
+
+<!-- SECTION 9.0 -->
+<div class="section-title"><strong>9.0 Appendix 1: Validation of Alternative and Rapid Microbiological Methods: Statistical Analysis-Qualitative Methods 附錄一：替代/快速微生物學方法驗證之統計分析—定性方法</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>
+            The content provided in Section 9.0 (Appendix 1) through Section 11.0 (Appendix 3) has been written in a manner that a
+            microbiologist or an analysist with similar training would be able to understand the fundamental (statistical) concepts
+            described. However, stakeholders may want to engage the expertise of a <span class="key-term">statistician</span> to ensure
+            the recommendations in these sections are appropriately executed.
+        </p>
+        <p>
+            Section 9.0 (Appendix 1) and Section 10.0 (Appendix 2) provide several acceptable statistical analyses for the validation of
+            alternative <span class="key-term">qualitative</span> and <span class="key-term">quantitative</span> microbiological methods,
+            respectively, while Section 11.0 (Appendix 3) focuses on additional considerations for
+            <span class="key-term">non-colony forming units (CFU)</span> qualitative and quantitative alternative/rapid microbiological
+            methods (AMM/RMMs). The statistical analyses recommended in the body of PDA Technical Report No. 33 (Revised 2026):
+            Evaluation, Validation, and Implementation of Alternative and Rapid Microbiological Methods are restated with example data to
+            illustrate how the analyses can be used. Although the example data is artificial, the data is based on real validation
+            experiments previously conducted by the authors. Since these methods are presented only as examples, the stakeholder is
+            responsible for selecting the most appropriate statistical analyses to use based on the data to be analyzed and the
+            validation criteria being assessed. It is recommended to align the validation approach with the firm's
+            <span class="key-term">quality management system (QMS)</span>.
+        </p>
+        <p>
+            The choice of statistical analysis depends on the type of experiment that is being performed and on the type of data
+            analyzed (i.e., binary or positive/negative results versus recovered counts). In each example, multiple options for a
+            statistical analysis based on the observed data will be presented, as the option selected will depend on the statistical
+            assumptions being made to describe the characteristics of the data. As such, Section 9.0 (Appendix 1) through Section 11.0
+            (Appendix 3) will recommend several alternative statistical analyses for a given dataset while explaining the advantages
+            and/or disadvantages of each.
+        </p>
+        <p>
+            Furthermore, Section 9.0 (Appendix 1) through Section 11.0 (Appendix 3) recommend statistical analyses that are feasible for
+            use without specialized software specifically designed for microbiological methods as much as possible. Should specific
+            calculations be needed that are not readily available through user-friendly, general-purpose statistical software (e.g.,
+            Minitab®, SPSS, STATA), Section 9.0 (Appendix 1) through Section 11.0 (Appendix 3) provides mathematical formulas that can be
+            used manually, imported into an appropriate spreadsheet with calculation capabilities (e.g., Microsoft Excel), conducted with
+            programmable statistical software (e.g., SAS®, R), or implemented in electronic systems using
+            <span class="key-term">attributable, legible, contemporaneous, original, and accurate (ALCOA)</span> principles. For these
+            reasons, the text may appear significantly technical in nature.
+        </p>
+        <p>
+            Finally, where possible, Section 9.0 (Appendix 1) through Section 11.0 (Appendix 3) discusses sample size in relation to the
+            specific validation criteria and statistical analyses. Certain statistical analyses require a relevant number of data points
+            to be valid for validation studies, which may present a challenge for stakeholders if large amounts of test sample are not
+            readily available. Consequently, Section 9.0 (Appendix 1) through Section 11.0 (Appendix 3) discusses the importance of
+            <span class="key-term">test power</span> and provides examples of how to pool the data from multiple organism experiments to
+            increase the total sample size (where needed). Because the results associated with pooling data may come at the expense of
+            additional statistical assumptions, the limitations of this practice are discussed.
+        </p>
+        <p>
+            Section 9.0 (Appendix 1) contains many formulas, Table 9.0-1 provides a key of all the symbols used in the formulas and
+            their meaning.
+        </p>
+        <div class="quote-box">
+            Note: The notation log will be used for the natural logarithm in Section 9.0 (Appendix 1).
+        </div>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Appendix 1（附錄一）的定位:</strong> 這不是選讀章節，而是 TR 33 本文（尤其 Section 5.0-7.0 驗證章節）所引用之統計方法的「數學後盾」。本文用文字描述「需要做非劣性檢定」，附錄則提供實際公式、範例數據與計算過程，讓實驗室人員即使沒有專屬微生物統計軟體，也能用 Excel 或一般統計軟體（Minitab、SPSS、STATA、SAS、R）重現結果。</p>
+            <p><strong>ALCOA 原則:</strong> Attributable（可歸屬）、Legible（可讀）、Contemporaneous（即時）、Original（原始）、Accurate（準確）——這是 21 CFR Part 11 電子記錄與資料誠信（data integrity）的核心要求。本節特別提醒：若統計計算以電子系統執行，仍須符合 ALCOA，等同提醒讀者這些統計輸出未來可能是稽核焦點。</p>
+            <p><strong>Test Power（檢定力）與 Pooling（數據合併）:</strong> 附錄預告了貫穿 Section 9.0-11.0 的一個重複主題——驗證研究常受限於可用檢體量，因此需要合併多個菌種實驗的數據以提高總樣本數，但合併會引入額外統計假設，須謹慎評估其限制（詳見 Section 9.2.5）。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>把 TR 33 本文比喻成一份「手術同意書」——告訴病人（讀者）要做什麼手術（統計檢定）、為什麼需要做；而 Appendix 1 就像是「手術室裡的詳細術式手冊」——列出每一刀（每一條公式）該怎麼下、用什麼工具（Excel、SAS、R）、預期會看到什麼數字。兩者搭配，才能讓執行者（微生物學家）與監督者（統計師/QA）站在同一個知識基礎上溝通。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>原文明確建議：即使本附錄以「微生物學家或同等訓練分析師能理解」的方式撰寫，仍應視情況諮詢統計師（statistician）以確保建議被正確執行。這是一項重要的品質風險提醒——統計方法選錯（如誤用 Wald CI 於小樣本），會直接導致驗證結論錯誤，進而影響產品放行決策的科學正確性。</p>
+            <p>本附錄的所有範例數據雖為「artificial（人工模擬）」，但明確聲明「based on real validation experiments（基於作者實際執行過的真實驗證實驗）」——這代表範例中的數字量級（如 20 個空白樣本、5% 偽陽性率）具有實務參考價值，而非隨意虛構。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 TR 33 選擇把統計細節獨立成附錄，而非直接寫入本文的驗證章節？這樣的架構對你所屬單位的 SOP 撰寫有何啟發？</li>
+                <li>若貴公司內部沒有專職統計師，你會如何規劃「必要時諮詢統計專家」的品質管理流程（例如寫入 QMS 的哪一層文件）？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- FULL-WIDTH TABLE 9.0-1 -->
+<div class="full-width-table" style="margin: 1rem 0;">
+    <h3 style="font-weight:600; color:var(--primary-blue); margin-bottom:0.5rem;">Table 9.0-1: Nomenclature for Symbols Used in Section 9.0 (Appendix 1)</h3>
+    <div style="overflow-x:auto;">
+        <table>
+            <thead>
+                <tr><th>Symbol</th><th>Meaning</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Δ</td><td>The non-inferiority margin that is selected a priori to do a non-inferiority test. In some other texts, the notation δ is used.</td></tr>
+                <tr><td>λ</td><td>The mean number of microorganisms or the bacterial density in a set of test samples or in a suspension. When we apply the MPN method for the AMM/RMM and CMM we may denote λ<sub>A</sub> and λ<sub>C</sub> as theoretical bacterial densities for AMM/RMM and CMM, respectively. When we apply logistic regression, λ<sub>LOD</sub> represents the mean number of microorganisms in the test samples that provide a positive rate of 95%.</td></tr>
+                <tr><td>p</td><td>The proportion of independent test samples that were tested positively for the presence of viable microorganisms with the microbiological method, also called the positive rate. p<sub>A</sub> and p<sub>C</sub> are the positive rates for the AMM/RMM and the CMM, respectively. When the test samples are only blank samples, the positive rate is referred to as the false-positive rate.</td></tr>
+                <tr><td>θ</td><td>The detection proportion for the microbiological method, which indicates the probability for a presence test for test samples with exactly one microorganism present in the test sample. θ<sub>A</sub> and θ<sub>C</sub> indicate the detection proportions for the AMM/RMM and CMM, respectively.</td></tr>
+                <tr><td>R</td><td>The ratio of a statistic for the AMM/RMM and CMM and is viewed as a measure for accuracy or recovery. The ratio R<sub>pr</sub> is the ratio of positive rates p<sub>A</sub>/p<sub>C</sub>. R<sub>gMPN</sub> is the ratio of detection proportions θ<sub>A</sub>/θ<sub>C</sub>. R<sub>MPN</sub> is the ratio of bacterial densities λ<sub>A</sub>/λ<sub>C</sub>. R<sub>Pool</sub> is a pooled ratio taken from multiple ratio estimates.</td></tr>
+                <tr><td>L</td><td>The limit of detection (LoD).</td></tr>
+                <tr><td>α</td><td>The intercept for a logistic regression analysis on the positive rate with log concentration as the independent variable for a microbiological method.</td></tr>
+                <tr><td>β</td><td>The slope for a logistic regression analysis on the positive rate with log concentration as the independent variable for a microbiological method.</td></tr>
+                <tr><td>LCL</td><td>The lower confidence limit. Often there will be an index X attached to it, i.e., LCL<sub>X</sub>, to indicate for what (validation) parameter or statistic the confidence limit is calculated.</td></tr>
+                <tr><td>UCL</td><td>The upper confidence limit. Often there will be an index X attached to it, i.e., UCL<sub>X</sub>, to indicate for what (validation) parameter or statistic the confidence limit is calculated.</td></tr>
+                <tr><td>n</td><td>The number of independent test samples for a single concentration tested with the microbiological method. n<sub>A</sub> and n<sub>C</sub> are the number of test samples for AMM/RMM and CMM, respectively.</td></tr>
+                <tr><td>m</td><td>The number of species tested for a specific validation parameter.</td></tr>
+                <tr><td>x̄</td><td>The average log-transformed MPN estimates from multiple MPN runs. x̄<sub>A</sub> and x̄<sub>C</sub> are the average log-transformed MPN estimates for the AMM/RMM and CMM, respectively.</td></tr>
+                <tr><td>X̄<sub>log(R)</sub></td><td>The average of the log-transformed ratios R.</td></tr>
+                <tr><td>S<sub>log(R)</sub></td><td>The standard deviation of the log-transformed ratios R.</td></tr>
+                <tr><td>χ²<sub>p</sub></td><td>Pearson's chi-square statistic calculated for contingency tables.</td></tr>
+                <tr><td>C<sub>m</sub></td><td>The t-value that depends on the number of species m and the confidence level of 90%.</td></tr>
+                <tr><td>P<sub>m</sub></td><td>The t-value that depends on the number of species m and the confidence level of 95%.</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- SECTION 9.1 -->
+<div class="section-title"><strong>9.1 False-Positive Rates for Qualitative Alternative/Rapid Microbiological Methods 定性替代/快速微生物學方法之偽陽性率</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>
+            One aspect of method suitability studies is to demonstrate that <span class="key-term">false positives</span> or background
+            interference signals are not detected in an AMM/RMM when the test sample is known not to contain any viable microorganisms.
+            However, some level of false positives may be acceptable, depending on how this information is used (e.g., when establishing
+            a baseline level or an acceptable signal to noise ratio) (see Section 5.3.2). The
+            <span class="key-term">false-positive rate</span> can be quantified by testing several independent
+            <span class="key-term">blank samples</span> (i.e., samples that are not expected to contain any viable microorganisms) and
+            by observing the number of positive and negative detection events. Table 9.1-1 provides artificial data for illustrating how
+            to quantify the false-positive rate. The data show that of twenty (20) independent blank samples tested for the presence of
+            a viable microorganism detection event in a single AMM/RMM, only one sample (#6) tested positive.
+        </p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>False-Positive Rate (偽陽性率):</strong> 對已知不含活菌的空白樣本（blank samples）進行測試時，AMM/RMM 錯誤判讀為「陽性」的比例。這是 method suitability（方法適用性）研究的核心指標之一，直接反映方法的特異性（specificity）。</p>
+            <p><strong>Blank Samples (空白樣本):</strong> 經確認不含活性微生物的對照樣本，用於評估方法本身的背景干擾訊號（background interference signal），而非用於評估偵測能力。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>偽陽性率的概念就像機場的金屬探測門——即使沒有攜帶任何違禁品的旅客通過，探測門偶爾仍可能因為皮帶扣、拉鍊而「誤鳴」。這種誤鳴率必須被量化並控制在可接受範圍內，而非要求「零誤鳴」，因為過度追求零誤鳴（極高靈敏度）反而可能犧牲對真正違禁品的偵測能力。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>原文特別強調：「some level of false positives may be acceptable（一定程度的偽陽性可能是可接受的）」——這與無菌測試中「零容忍偽陽性」的直覺不同。關鍵在於偽陽性率的資訊將如何被使用（例如訂定 baseline 或 signal-to-noise ratio），而非單純以「有沒有偽陽性」作二分判斷。這呼應 Section 5.3.2 對訊號雜訊比的討論，規劃驗證方案時應交叉參照。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼「偽陽性率為零」不一定是驗證 AMM/RMM 時最理想的目標？過度追求零偽陽性可能付出什麼代價？</li>
+                <li>貴實驗室目前的 AMM/RMM（或既有 EM 快速檢測系統）是否曾記錄過空白樣本的偽陽性數據？這些數據足以支撐後續統計分析嗎？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- FULL-WIDTH TABLE 9.1-1 -->
+<div class="full-width-table" style="margin: 1rem 0;">
+    <h3 style="font-weight:600; color:var(--primary-blue); margin-bottom:0.5rem;">Table 9.1-1: Presence/Absence Results on 20 Blank Samples</h3>
+    <div style="overflow-x:auto;">
+        <table>
+            <thead>
+                <tr><th>Sample</th><th>Presence</th><th>Sample</th><th>Presence</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>0</td><td>11</td><td>0</td></tr>
+                <tr><td>2</td><td>0</td><td>12</td><td>0</td></tr>
+                <tr><td>3</td><td>0</td><td>13</td><td>0</td></tr>
+                <tr><td>4</td><td>0</td><td>14</td><td>0</td></tr>
+                <tr><td>5</td><td>0</td><td>15</td><td>0</td></tr>
+                <tr><td>6</td><td>1</td><td>16</td><td>0</td></tr>
+                <tr><td>7</td><td>0</td><td>17</td><td>0</td></tr>
+                <tr><td>8</td><td>0</td><td>18</td><td>0</td></tr>
+                <tr><td>9</td><td>0</td><td>19</td><td>0</td></tr>
+                <tr><td>10</td><td>0</td><td>20</td><td>0</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- SECTION 9.1.1 -->
+<div class="section-title"><strong>9.1.1 Estimation and Confidence Intervals 估計值與信賴區間</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>
+            Using the data in Table 9.1-1, the false-positive rate of the AMM/RMM, denoted by p<sub>A</sub>, is estimated as 0.05 or 5%
+            (i.e., 1 positive/20 samples). This false-positive rate is based on only one experiment using 20 test samples. However, if
+            the same experiment is repeated multiple times, it may result in a different, but valid, false-positive rate for each
+            repeated experiment. A <span class="key-term">95% confidence interval</span> can quantify the range of valid estimates
+            without having to repeat the experiments. In other words, the interpretation of the interval is a range of false positives
+            that captures the true false-positive rate of the AMM/RMM with 95% confidence. The smaller the experiment or the higher the
+            confidence level, the wider the confidence interval. If the goal was to obtain the absolute true false-positive rate with
+            100% confidence, an unrealistically large experiment would need to be conducted. This is why the use of an appropriate
+            confidence interval, such as 95%, is more practical and acceptable.
+        </p>
+        <p>
+            Many different methods exist for constructing a confidence interval for analyzing proportions (1). The simplest 95%
+            confidence interval is the <span class="key-term">asymptotic or Wald confidence interval</span>, which is based on a normal
+            approximation and calculated using the following formula:
+        </p>
+        <pre>
+p_A ± 1.96 × sqrt( p_A (1 − p_A) / n )
+        </pre>
+        <p>Where:</p>
+        <pre>
+n  =  number of samples tested (from Table 9.1-1, n = 20)
+        </pre>
+        <p>
+            Using the formula above, the asymptotic 95% confidence interval for the false-positive rate based on the 20 samples is then
+            estimated as (0, 0.146). Because the lower value of the interval was estimated below zero, the result was truncated to zero,
+            since negative false-positive rates do not exist. The asymptotic 95% confidence interval indicates that the true
+            false-positive rate of the AMM/RMM, when 20 samples are tested, lies between 0% and 14.6%, with 95% confidence.
+        </p>
+        <p>
+            One limitation in using the asymptotic confidence interval is that the number of samples tested should be above, for
+            example, 50, and the number of events (here defined by the number of positive test samples) should not be close to/not
+            approaching zero, for example, above 5. Because the example in Table 9.1-1 used 20 samples and the number of positive test
+            samples was one, it would be more appropriate to use an alternative confidence interval known as the
+            <span class="key-term">exact or Clopper-Pearson confidence interval</span> (1), which is better suited for a smaller number
+            of samples and low number of events. This interval is based on a <span class="key-term">binomial distribution</span>
+            (instead of a normal distribution for the asymptotic confidence interval), but the mathematical expression is far more
+            complicated.
+        </p>
+        <p>
+            General-purpose statistical software packages can easily perform the exact confidence interval. Using the data in Table
+            9.1-1, the confidence interval becomes (0.001, 0.249). Thus, the exact 95% confidence interval implies that the true
+            false-positive rate of the AMM/RMM lies between 0.1% and 24.9%, with 95% confidence. Due to the limitations of the
+            asymptotic confidence interval, using the exact confidence interval when estimating a false-positive rate is recommended.
+        </p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Point Estimate（點估計）vs. Confidence Interval（信賴區間, CI）:</strong> 1/20 = 5% 只是「這一次實驗」觀察到的點估計值；若重複實驗，每次都可能得到不同但同樣有效的偽陽性率。95% CI 的作用，是不必真的重複實驗，就能用統計理論量化「真實偽陽性率」最可能落在的範圍。</p>
+            <p><strong>Asymptotic / Wald CI（漸近／Wald 信賴區間）:</strong> 以常態分布（normal approximation）近似二項分布所建構的信賴區間，公式簡單、可手算，但在小樣本或極端比例（接近 0 或 1）時準確度不佳。</p>
+            <p><strong>Exact / Clopper-Pearson CI（精確／Clopper-Pearson 信賴區間）:</strong> 直接以二項分布（binomial distribution）為基礎推導，公式複雜但在小樣本情境下更為準確，是 TR 33 推薦的預設方法。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>信賴區間就像天氣預報的「降雨機率區間」——氣象局不會說「明天絕對會下雨」，而是說「明天降雨機率的合理範圍是 0%–14.6%（95% 信心）」。實驗次數越少（樣本數越小）或要求的信心程度越高，這個範圍就必須越寬，才能涵蓋各種可能的真實情況；反之，若堅持要 100% 確定真實值，就必須做近乎無限大的實驗，這在現實中不可行。</p>
+            <p>Wald CI 與 Exact CI 的差異，好比用「捲尺目測」與「雷射測距儀」量測一段極短的距離：捲尺（Wald，常態近似）在測量大範圍距離時夠用又快速，但測量極短距離（小樣本、事件數趨近於零）時誤差比例會被放大甚至出現負值（如本例下限低於 0，需要截斷為 0）；雷射測距儀（Exact，二項分布）雖然計算更複雜，但在極短距離下依然準確可靠。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>Wald CI 出現「下限為負」的現象（本例中下限需截斷為 0），正是其在小樣本、低事件數情境下失效的典型徵兆。TR 33 明確指出：樣本數應大於約 50、且陽性事件數應大於約 5，Wald CI 才算適用；本例僅 20 個樣本、1 個陽性事件，遠低於此門檻，因此 Wald 的 (0, 0.146) 區間不應作為最終驗證依據。</p>
+            <p>比較兩種區間：Wald 給出 (0, 0.146)，Exact 給出 (0.001, 0.249)——Exact 區間的上限明顯更寬（24.9% vs 14.6%），代表 Wald 低估了不確定性。若稽核單位或客戶依賴較窄的 Wald 區間做決策，可能對方法的實際偽陽性風險過度樂觀。TR 33 建議：估計偽陽性率時應優先採用 Exact CI，而非 Wald CI。</p>
+        </div>
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <p><strong>Asymptotic (Wald) 95% Confidence Interval：</strong></p>
+            <pre>
+p_A ± 1.96 × sqrt( p_A (1 − p_A) / n )
+            </pre>
+            <p>變數定義：</p>
+            <ul>
+                <li><strong>p_A</strong> = AMM/RMM 的偽陽性率（本例 = 1/20 = 0.05）</li>
+                <li><strong>n</strong> = 測試樣本數（本例 = 20）</li>
+                <li><strong>1.96</strong> = 標準常態分布對應 95% 信心水準的臨界值</li>
+            </ul>
+            <p><strong>代入計算：</strong> 0.05 ± 1.96 × sqrt(0.05 × 0.95 / 20) = 0.05 ± 0.0956 → 下限為負，截斷為 0 → 區間 = <strong>(0, 0.146)</strong></p>
+            <p><strong>Exact (Clopper-Pearson) 95% Confidence Interval：</strong>基於二項分布之精確反函數推導，公式複雜、不建議手算，須以統計軟體（Minitab、R、SAS 等）計算。本例結果為 <strong>(0.001, 0.249)</strong>。</p>
+        </div>
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>假設 Amaran 為某客戶執行一款 AMM/RMM 快速無菌測試平台的方法適用性研究，測試 20 個空白樣本，其中 1 個呈陽性。若僅以 Wald CI 計算並向客戶回報「偽陽性率上限為 14.6%」，此數字可能低估真實風險；正確做法應改用 Exact CI 回報「上限為 24.9%」，並在驗證報告中明確說明選擇 Exact CI 而非 Wald CI 的統計理由（樣本數與事件數皆低於 Wald 適用門檻），以避免稽核時被要求重新分析。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼樣本數與陽性事件數偏低時，Wald CI 會系統性低估真實的不確定性範圍？</li>
+                <li>如果驗證報告中只呈現點估計值（5%）而未附上信賴區間，可能造成什麼樣的誤導或稽核缺失？</li>
+                <li>你會如何向不熟悉統計的內部稽核員，用一句話解釋「Exact CI 比 Wald CI 更保守、也更適合小樣本」？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 9.1.2 -->
+<div class="section-title"><strong>9.1.2 Sample Size Considerations When Estimating False-Positive Rates 估計偽陽性率時之樣本數考量</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>
+            If the length of the confidence interval for the false-positive rate is too large and a smaller confidence interval is
+            needed, the <span class="key-term">sample size</span> must be larger. Table 9.1.2-1 shows the minimum sample size with an
+            upper 95% confidence limit for a false-positive rate when the experiment does not contain any positive results.
+        </p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>樣本數與信賴區間寬度的關係:</strong> 若需要更窄（更精確）的信賴區間，唯一的解法是增加測試樣本數。Table 9.1.2-1 提供了「當實驗中完全沒有出現陽性結果時」，不同樣本數所對應的偽陽性率 95% 上限（UCL）。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>這就像民調機構要縮小「誤差範圍（margin of error）」，唯一辦法就是訪問更多受訪者——訪問 5 人得到的誤差範圍必然遠大於訪問 300 人。Table 9.1.2-1 正是微生物版本的「樣本數 vs. 誤差範圍」對照表：測試樣本數從 5 增加到 300，在全部呈陰性的前提下，偽陽性率的 95% 上限則從 45.1% 一路收斂到 0.99%。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>Table 9.1.2-1 有一個關鍵前提：「when the experiment does not contain any positive results（假設實驗全數呈陰性）」。一旦出現任何一個陽性結果，UCL 就會顯著上升（如 Section 9.1.1 中 20 個樣本、1 個陽性的 Exact CI 上限是 24.9%，遠高於全陰性時 20 個樣本對應的 13.9%）。規劃驗證方案樣本數時，務必以「最壞情境（可能出現 1 次陽性）」預留緩衝，而非僅套用全陰性情境的樣本數。</p>
+            <p>原文提供的實例極具參考價值：若要證明偽陽性率低於 1%（95% 信心），需測試 300 個空白樣本且全數陰性；若僅測試 30 個樣本且全陰性，則偽陽性率上限僅能宣稱不高於 9.5%。這對規劃驗證資源（檢體量、時程、成本）有直接的商業影響——越嚴格的偽陽性率宣稱，需要指數級增加的樣本投入。</p>
+        </div>
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <p><strong>給定目標偽陽性率上限 p，反推所需最小樣本數 n（假設全部樣本皆為陰性）：</strong></p>
+            <pre>
+n ≥ log(0.05) / log(1 − p)
+            </pre>
+            <p>變數定義：</p>
+            <ul>
+                <li><strong>p</strong> = 可接受的最大偽陽性率（例如欲宣稱 &lt;1% 則 p = 0.01）</li>
+                <li><strong>n</strong> = 需測試且全數為陰性的最小樣本數</li>
+                <li><strong>log</strong> = 自然對數（如 Table 9.0-1 所定義）</li>
+                <li>此公式的信心水準固定為 95%（對應 log(0.05) 中的 0.05 = 1 − 0.95）</li>
+            </ul>
+            <p><strong>反向公式——已知樣本數 n，回推可宣稱的最大偽陽性率上限：</strong></p>
+            <pre>
+Maximum allowable false-positive rate = 1 − (0.05)^(1/n)   (with 95% confidence)
+            </pre>
+            <p><strong>範例驗算：</strong>若欲證明偽陽性率 &lt;1%（p = 0.01），代入 n ≥ log(0.05)/log(0.99) ≈ 298.1 → 取整數並依 Table 9.1.2-1 對照，需 <strong>n = 300</strong> 個樣本且全數陰性。反向驗證：n = 30 時，1 − (0.05)^(1/30) ≈ <strong>9.5%</strong>，與表列數值一致。</p>
+        </div>
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>假設某客戶要求 Amaran 的 AMM/RMM 平台必須證明偽陽性率低於 2%（95% 信心）。以公式反推：n ≥ log(0.05)/log(0.98) ≈ 148.3，故需準備至少 149 個空白樣本並確保全數陰性。若實驗室僅有 30 個空白檢體可用，只能宣稱偽陽性率不高於 9.5%——此時應提前與客戶溝通樣本數與可宣稱指標之間的統計限制，避免驗證計畫書送審後才發現無法達成原訂目標。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若客戶要求偽陽性率上限為 0.5%（95% 信心），估算所需的最小空白樣本數，並思考這在實務上是否可行。</li>
+                <li>Table 9.1.2-1 的所有數值都假設「實驗全數陰性」，如果測試 50 個樣本中出現 1 個陽性，你會如何調整原本的樣本數規劃或改用哪一種信賴區間方法（提示：回顧 Section 9.1.1 的 Exact CI）？</li>
+                <li>從商業角度思考：若客戶要求的偽陽性率宣稱越嚴格，對驗證所需的檢體量、人力與時程會造成什麼樣的非線性成本增加？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- FULL-WIDTH TABLE 9.1.2-1 -->
+<div class="full-width-table" style="margin: 1rem 0;">
+    <h3 style="font-weight:600; color:var(--primary-blue); margin-bottom:0.5rem;">Table 9.1.2-1: Sample Size and 95% Upper Confidence Limit for Experiments with no Presence Tests</h3>
+    <div style="overflow-x:auto;">
+        <table>
+            <thead>
+                <tr><th>n</th><th>UCL</th><th>n</th><th>UCL</th><th>n</th><th>UCL</th><th>n</th><th>UCL</th><th>n</th><th>UCL</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>5</td><td>45.1</td><td>30</td><td>9.50</td><td>55</td><td>5.30</td><td>80</td><td>3.68</td><td>120</td><td>2.47</td></tr>
+                <tr><td>10</td><td>25.9</td><td>35</td><td>8.20</td><td>60</td><td>4.87</td><td>85</td><td>3.46</td><td>150</td><td>1.98</td></tr>
+                <tr><td>15</td><td>18.1</td><td>40</td><td>7.22</td><td>65</td><td>4.50</td><td>90</td><td>3.17</td><td>200</td><td>1.49</td></tr>
+                <tr><td>20</td><td>13.9</td><td>45</td><td>6.44</td><td>70</td><td>4.19</td><td>95</td><td>3.10</td><td>250</td><td>1.19</td></tr>
+                <tr><td>25</td><td>11.3</td><td>50</td><td>5.82</td><td>75</td><td>3.92</td><td>100</td><td>2.95</td><td>300</td><td>0.99</td></tr>
+            </tbody>
+        </table>
+    </div>
+    <p style="font-size:0.85rem; color:#4a5568; margin-top:0.5rem;">UCL values expressed as percentage (%). All figures assume zero positive results across n test samples, at 95% confidence.</p>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li>Appendix 1（Section 9.0-11.0）是 TR 33 本文統計建議的數學後盾，提供公式、範例數據與軟體對照，讓微生物學家在必要時可諮詢統計師以正確執行分析</li>
+        <li>Table 9.0-1 建立了貫穿整份附錄的統一符號系統（λ、p、θ、R、LCL/UCL、n、m 等），是閱讀 Section 9.1-11.0 各項統計方法的必備基礎</li>
+        <li>False-positive rate（偽陽性率）以獨立空白樣本的陽性事件比例估計，並非追求「零偽陽性」，而是量化並控制在可接受範圍內</li>
+        <li>估計偽陽性率的 95% 信賴區間有兩種主要方法：Asymptotic (Wald) CI 公式簡單但在小樣本/低事件數時失準；Exact (Clopper-Pearson) CI 較準確、為 TR 33 建議的預設做法</li>
+        <li>信賴區間寬度與樣本數呈反向關係——欲宣稱更低的偽陽性率上限，需要以 n ≥ log(0.05)/log(1−p) 計算出遠更大的樣本數（如 &lt;1% 需 300 個全陰性樣本）</li>
+        <li>樣本數規劃應以「可能出現陽性事件」的情境預留緩衝，而非僅套用 Table 9.1.2-1 假設「全數陰性」的最小樣本數</li>
+    </ul>
+</div>
+
+</body>
+</html>

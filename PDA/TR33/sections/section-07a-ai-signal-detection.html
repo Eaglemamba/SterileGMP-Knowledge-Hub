@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR33 - Section 7.0-7.1: The Role of AI in Microbiological Testing &amp; Signal Detection</title>
+    <link rel="stylesheet" href="../../../template.css">
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 7.0-7.1 The Role of Artificial Intelligence in Microbiological Testing &amp; Signal Detection</h1>
+    <div class="subtitle">AI 於微生物學檢測中的角色與訊號偵測應用</div>
+    <div class="page-info">PDA Technical Report No. 33 (Revised 2026) | p78-p82</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 <span class="key-term">Artificial Intelligence (AI, 人工智慧)</span> 與 <span class="key-term">Machine Learning (ML, 機器學習)</span> 的定義差異，以及 AI 在微生物檢測中三大應用場景：儀器內訊號判讀、儀器外數據分析、EM（環境監測）程式</li>
+        <li>掌握 FDA 與 EMA 對於 AI 於藥品製造應用的最新法規動態，包括 FDA 2023 討論文件、FDA 2025 風險基礎可信度評估草案指引，以及 EMA Annex 22: Artificial Intelligence 草案</li>
+        <li>區分 <span class="key-term">Static (locked) AI models（靜態/鎖定式模型）</span> 與 <span class="key-term">Dynamic (adaptive) AI models（動態/自適應模型）</span> 的技術差異、驗證要求，以及各監管機關對兩者的態度分歧</li>
+        <li>熟悉 AI 於訊號偵測中的核心技術（Computer Vision、YOLO 物件偵測、Flow Cytometry、基因體序列比對）與可解釋性工具（SHAP、LIME、ONNX）在 GMP 環境下的角色與重要性</li>
+    </ul>
+</div>
+
+<!-- SECTION 7.0 -->
+<div class="section-title"><strong>7.0 The Role of Artificial Intelligence in Microbiological Testing AI 於微生物學檢測中的角色</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>
+            <span class="key-term">AI</span> is a scientific discipline established at the intersection of computer science, applied
+            mathematics, and engineering, dedicated to the development of systems capable of performing tasks traditionally requiring
+            human intelligence. From a functional perspective, AI can be defined as the simulation or approximation of human intelligence
+            in machines (90). Although AI incorporates <span class="key-term">ML</span> and statistical methodologies, it remains an
+            independent and multidisciplinary field based on <span class="key-term">algorithm design, optimization, and logic-based
+            modeling</span> (91).
+        </p>
+        <p>
+            In pharmaceutical manufacturing, AI is applied to support <span class="key-term">process control</span>, enhance
+            decision-making, and strengthen quality operations. Within microbiological testing, AI contributes to improving the
+            precision, consistency, and efficiency of testing instruments, data analysis, and trending.
+        </p>
+        <p>Applications of AI in microbiological testing include:</p>
+        <ul>
+            <li>Within microbiological testing instruments, where it assists in interpreting signals for the enumeration, detection,
+                and identification of microorganisms, particularly in <span class="key-term">AMM/RMMs</span> and
+                <span class="key-term">imaging-based technologies</span>.</li>
+            <li>Outside the testing instruments, where it is used to analyze microbiological data (enumeration, detection, and
+                identification results) and to assist in decision-making, including trend analysis, deviation detection, and
+                contamination risk assessment.</li>
+            <li>In <span class="key-term">EM</span> programs, where AI models process historical and real-time data to identify
+                patterns associated with microbial excursions and guide data-driven contamination control strategies.</li>
+        </ul>
+        <p>
+            From a regulatory perspective, the FDA has initiated several efforts to clarify expectations for the use of AI in
+            pharmaceutical development and manufacturing. In 2023, the FDA published the discussion paper
+            <span class="key-term">Artificial Intelligence in Drug Manufacturing</span> which outlined potential regulatory
+            considerations and invited stakeholder feedback on how existing regulatory frameworks and current GMP requirements could
+            apply to AI-based models used in pharmaceutical manufacturing. This discussion paper served as an early step toward
+            developing a regulatory approach to AI-enabled technologies. Building on these efforts, the FDA released the draft guidance
+            <span class="key-term">Considerations for the Use of Artificial Intelligence to Support Regulatory Decision-Making for Drug
+            and Biological Products</span> in 2025, which proposes a risk-based credibility assessment framework for AI models used to
+            generate data or information submitted in regulatory applications. In parallel, the EMA published the draft guidance
+            <span class="key-term">Annex 22: Artificial Intelligence</span>, which addresses the use of static AI systems in
+            GMP-related processes where outputs may affect product quality, patient safety, or data integrity. The document emphasizes
+            clearly defined intended use, validation using independent datasets, <span class="key-term">explainability</span>,
+            <span class="key-term">human oversight</span>, and <span class="key-term">lifecycle monitoring</span> to ensure that AI
+            systems remain controlled, auditable, and compliant within the GMP environment (92-94).
+        </p>
+        <p>
+            These published guidance documents reflect a growing recognition of the need to define clear expectations for the
+            validation, governance, and application of AI technologies within pharmaceutical development and manufacturing. In this
+            context, microbiological testing represents a critical area where AI can be responsibly adopted in alignment with both
+            scientific standards and evolving regulatory guidance. The integration of AI into microbiological testing aligns with
+            established scientific and regulatory frameworks, contributing to improved data management, enhanced process
+            understanding, and more robust microbial control.
+        </p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>AI (人工智慧) vs. ML (機器學習):</strong> 原文特別釐清兩者關係——AI 是一個更大的學門，涵蓋電腦科學、應用數學與工程，目標是讓機器執行「傳統上需要人類智慧」的任務；ML 只是 AI 底下的其中一種實作手法（讓系統從資料中「學習」規律），AI 本身還包含演算法設計、最佳化、邏輯建模等非 ML 的技術路線。換言之，<strong>所有 ML 都是 AI，但不是所有 AI 都是 ML</strong>。</p>
+            <p><strong>AI 在微生物檢測的三大應用場景：</strong> ① 儀器內（in-instrument）——協助判讀原始訊號（影像、散射圖）以產出 enumeration/detection/identification 結果；② 儀器外（data analysis）——針對已產出的微生物數據做趨勢分析、偏差偵測、污染風險評估；③ EM 專案——處理歷史與即時數據，辨識與微生物異常事件相關的模式，支援數據驅動的污染管控策略。這三層級由「訊號」到「數據」到「策略」，正是 AI 導入微生物 QC 的完整價值鏈。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>可以把 AI 在微生物檢測中的角色想像成<strong>一位經驗豐富的資深檢驗員 vs. 剛入職只會照 SOP 的新人</strong>：傳統的 deterministic, rule-based（決定論式、規則式）判讀系統，就像新人嚴格按照檢核表操作——遇到手冊裡寫的情況才能判斷，遇到模糊或未知的樣本容易卡關；而 AI 模型則像看過成千上萬個樣本的資深員工，能從大量歷史資料中歸納出規律，即使遇到手冊沒寫過的「非典型」訊號，也能憑經驗做出合理判斷。但也正因為如此，「這位資深員工是怎麼被訓練出來的、訓練教材夠不夠完整具代表性」，就成為 GMP 驗證必須追問的重點。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>本節列出三份關鍵法規文件，CDMO 品質與法規人員應建立追蹤機制：① <strong>FDA (2023) Artificial Intelligence in Drug Manufacturing</strong>（討論文件，徵詢意見階段）；② <strong>FDA (2025) 草案指引</strong>——針對 AI 用於支持法規決策資料，提出 risk-based credibility assessment framework（風險基礎可信度評估框架）；③ <strong>EMA (2025) 草案 Annex 22: Artificial Intelligence</strong>——聚焦 static AI 系統於 GMP 流程的應用，強調 intended use 界定、獨立資料集驗證、explainability（可解釋性）、human oversight（人為監督）與 lifecycle monitoring（生命週期監控）。這些要求與 <strong>21 CFR Part 11</strong> 對電子記錄可稽核性（auditable）、數據完整性（data integrity）的精神高度一致——AI 模型輸出若涉及放行決策，其訓練資料、版本、驗證紀錄都必須可追溯、可稽核。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為何原文強調「AI 是獨立且多學門的領域」，而非單純等同於 ML？這對 CDMO 評估供應商的 AMM/RMM 系統時有何實務意義？</li>
+                <li>FDA 與 EMA 目前對 AI 的規範進度並不完全同步（討論文件 vs. 草案指引 vs. 草案 Annex），身為品質主管，應如何在法規尚未定案前，為導入 AI 輔助的微生物檢測系統做好準備？</li>
+                <li>若某 AMM/RMM 供應商的儀器內建 AI 訊號判讀功能，你在稽核時會優先索取哪些文件來確認其 explainability 與 human oversight？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 7.1 -->
+<div class="section-title"><strong>7.1 Use of Artificial Intelligence in Signal Detection AI 於訊號偵測的應用</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>
+            Suppliers of microbiological methods have incorporated AI into the microbiological system to generate a
+            <span class="key-term">"reportable value"</span> (e.g., microbial count, absent/present result, or identification)
+            directly from raw instrument data such as images or scatterplots.
+        </p>
+        <p>
+            For example, search algorithms are being used to screen databases with DNA patterns of known microorganisms to map the
+            observed DNA pattern from a test sample to one of the known DNA patterns in a data library. Another example is the
+            <span class="key-term">flow cytometry</span> technology that provides two signals: <span class="key-term">light-scattering
+            and fluorescence</span> from the individual microbial cells moving through the activators and detectors. The detected
+            signals are presented on a screen as a <span class="key-term">scatterplot</span> that is used to define the enumeration of
+            microorganisms.
+        </p>
+        <p>
+            Traditional microbiological quality control methods rely on manual interpretation of culture plates, colony morphology, or
+            other analog signals generated during microbial detection assays. In many rapid microbiological methods, signal
+            interpretation has historically been performed using <span class="key-term">deterministic, rule-based algorithms</span>
+            embedded in analytical instruments. In contrast, AI models learn patterns directly from large datasets rather than relying
+            solely on predefined rules, enabling the identification of complex relationships and subtle variations in digital
+            microbiological data. When properly trained and validated, these models support more consistent and scalable analysis of
+            signals generated by modern microbiological technologies.
+        </p>
+        <p>
+            Many rapid microbiological methods produce digital image data that are analyzed computationally. In image-based detection
+            systems, microbial colonies or cells are represented as arrays of pixels describing variations in light intensity or color.
+            <span class="key-term">Computer-vision algorithms</span> analyze these pixel patterns to recognize shapes, textures, and
+            spatial features associated with microbial cells or colonies. Because microbial structures exhibit characteristic
+            morphological patterns, AI-based image analysis improves the consistency and throughput of microbial detection compared
+            with manual counting, particularly when large image datasets are analyzed (95, 96).
+        </p>
+        <p>
+            Other rapid microbiological technologies generate multidimensional optical or molecular signals that also benefit from
+            AI-assisted interpretation. Flow cytometry–based microbial detection systems, for example, measure light-scattering and
+            fluorescence signals emitted by individual cells as they pass through optical detectors. Machine-learning models analyze
+            these signal patterns to differentiate microbial cells from background particles and support automated enumeration of
+            microbial populations (97, 98). Similarly, genomic identification methods compare DNA sequences obtained from a test
+            sample with reference databases of known microorganisms; machine-learning approaches enhance these analyses by
+            identifying complex sequence patterns and improving classification performance within large genomic datasets (99).
+        </p>
+        <p>
+            Among computer-vision techniques used in microbiological image analysis, object-detection models such as the
+            <span class="key-term">"You Only Look Once" (YOLO)</span> architecture are widely applied. YOLO analyzes an image by
+            dividing it into regions and simultaneously predicting the location and classification of objects within each region,
+            enabling rapid identification of microbial cells or colonies in complex images. Because the model evaluates the entire
+            image in a single computational step, it efficiently recognizes biological structures and spatial patterns within
+            pixel-based microscopy images (100).
+        </p>
+        <p>
+            For the validation of AMM/RMM, it is important to distinguish between two types of AI model approaches that may be
+            implemented within the instrument's software: <span class="key-term">static (locked)</span> and
+            <span class="key-term">dynamic (adaptive)</span> AI models.
+        </p>
+        <p>
+            <span class="key-term">Static AI models</span> are trained once on a fixed dataset and remain unchanged during the
+            operational use of the microbiological method unless the software and its embedded models are formally updated. These
+            models are typically built using algorithms trained on extensive datasets to distinguish between "noise" and true
+            microbial signals. The performance and reliability of a static model depend on the quality, representativeness, and
+            diversity of the data used during its initial training, which remains the responsibility of the supplier. Because these
+            models do not modify their parameters during routine use, their validation follows the established experimentation and
+            data analysis recommendations provided in this technical report. If the instrument software is updated and the AI model
+            is retrained, for example, by incorporating new data to enhance performance, the changes must be assessed, and
+            revalidation of the microbiological method may be required to ensure continued compliance and reliability (93, 101).
+        </p>
+        <p>
+            <span class="key-term">Dynamic AI models</span>, in contrast, are designed to continuously learn and adapt by updating
+            their parameters as new data is generated during routine use of the microbiological method. This ongoing learning process
+            can potentially enhance the model's ability to accurately detect microbial signals over time, especially as the dataset
+            expands beyond the initial training population. While dynamic models offer the advantage of adaptability and potential
+            performance improvements, they also introduce additional validation challenges. Continuous updates may lead to
+            <span class="key-term">model drift</span> or unintended shifts in performance, particularly affecting the detection of
+            less-represented or newly emerging microbial subpopulations (93). Consequently, microbiological methods employing dynamic
+            AI models require ongoing monitoring to confirm that model performance is improving or remaining stable and not
+            deteriorating in critical areas.
+        </p>
+        <p>
+            Actual AI development routinely incorporates <span class="key-term">explainability</span> techniques to ensure that model
+            predictions remain interpretable and transparent, especially in regulated environments. Methods such as the
+            <span class="key-term">Shapley Additive Explanations (SHAP)</span> and <span class="key-term">Local Interpretable
+            Model-Agnostic Explanations (LIME)</span> help clarify how complex models reach their conclusions by identifying the
+            contribution of each input variable to the final prediction (102). Additionally, frameworks like the
+            <span class="key-term">Open Neural Network Exchange (ONNX)</span> provide a standardized format for representing AI
+            models across platforms, supporting both model portability and explainability (103). These tools are particularly
+            valuable for dynamic AI models in microbiological testing, ensuring reliable performance monitoring and regulatory
+            transparency.
+        </p>
+        <p>
+            The current guidance provided in this document can be applied to determine the performance of a microbiological method
+            employing AI models at a given point in time. However, dynamic AI models additionally require regular verification of
+            their operational behavior and performance trends. Defining standardized procedures for ongoing monitoring, acceptance
+            criteria, and revalidation for dynamic AI models remains an active area of research, and specific regulatory expectations
+            for this type of application are still evolving (93, 104). It should be noted that certain regulatory bodies have adopted
+            a more conservative preliminary position regarding dynamic AI models in GMP-critical applications; notably, the draft
+            <span class="key-term">EU GMP Annex 22: Artificial Intelligence</span> (EMA, 2025) currently limits its scope to static,
+            deterministic models and recommends that dynamic models should not be used in critical GMP applications. Regulatory
+            expectations in this area, however, continue to evolve, and other frameworks, such as the FDA draft guidance on the use
+            of AI to support regulatory decision-making (85) and the <span class="key-term">FDA Total Product Lifecycle</span>
+            approach for AI/ML-based Software as a Medical Device, do not preclude the use of dynamic models provided that
+            appropriate validation, monitoring, and lifecycle controls are in place.
+        </p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Reportable Value（可報告值）:</strong> 指最終呈現給操作者、可用於放行決策的結果，例如「菌落數 = 5 CFU」或「Present/Absent」。原文的重點在於：這個數值現在可能是由 AI 直接從<strong>原始訊號</strong>（影像、散射圖）運算產出，而非人工目視判讀——這代表 AI 模型本身就是「檢測方法的一部分」，必須納入方法確效（method validation）的範疇。</p>
+            <p><strong>Deterministic Rule-Based（決定論式規則演算法） vs. AI 學習模式:</strong> 傳統演算法是工程師預先寫死判斷邏輯（if-then 規則），AI 模型則是從大量資料中<strong>自行歸納規律</strong>，因此能處理規則沒寫到的「灰色地帶」訊號，但代價是模型的判斷邏輯較不透明，這正是為何 explainability（可解釋性）工具變得重要。</p>
+            <p><strong>Static (locked) AI models（靜態/鎖定式模型） vs. Dynamic (adaptive) AI models（動態/自適應模型）:</strong> 這是本節最核心、也是 GMP 驗證與稽核最關鍵的分類。<strong>Static model</strong>——一次訓練完成後「凍結」參數，除非正式軟體更新否則不再改變，其確效遵循 TR33 既有的實驗設計與數據分析建議；供應商對初始訓練資料的品質、代表性、多樣性負全責。<strong>Dynamic model</strong>——上線後持續用新產生的資料「邊用邊學」，理論上效能可隨時間提升，但也帶來 <strong>Model Drift（模型飄移）</strong> 風險，即模型行為在不知不覺中偏離原始驗證基準，對少見或新興菌種的偵測尤其敏感，因此需要持續監控（ongoing monitoring）確認效能沒有劣化。</p>
+            <p><strong>可解釋性 AI 工具（Explainable AI, XAI）:</strong> <strong>SHAP (Shapley Additive Explanations)</strong> 與 <strong>LIME (Local Interpretable Model-Agnostic Explanations)</strong> 都是事後解釋工具，用來拆解「這個輸入變數對最終判斷結果貢獻了多少」，讓黑箱模型的決策具備可追溯性；<strong>ONNX (Open Neural Network Exchange)</strong> 則是跨平台的模型交換格式標準，讓模型可攜、可比對，間接支援稽核與驗證。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p><strong>Static vs. Dynamic AI Model：</strong>就像<strong>「鎖死的食譜」vs.「會自我調整配方的主廚」</strong>——Static model 像是一本經過反覆試驗、最終定案並封存的食譜，只要沒有正式改版，每次做出來的味道都一樣，這種「可預期性」正是 GMP 最重視的特質；Dynamic model 則像一位不斷根據顧客回饋調整調味的主廚，菜色可能因此愈做愈好吃，但也可能在某次「創意發揮」中悄悄變了調（model drift），而顧客（病人/法規機關）未必能立刻察覺。這也是為何 EMA 目前對「會自己調整配方的主廚」（Dynamic model）在 GMP 關鍵應用上採取較保守的態度。</p>
+            <p><strong>YOLO 物件偵測：</strong>可比喻為<strong>機場安檢的全景 X 光掃描</strong>——傳統做法是逐格檢查每個行李（逐區掃描比對），YOLO 則像是一次性掃描整個畫面、同時標出所有可疑物件的位置與類別，效率大幅提升，這正是其在顯微影像中快速標記多個微生物群落的優勢所在。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>法規對 Dynamic Model 的保守立場：</strong>草案 <strong>EU GMP Annex 22: Artificial Intelligence (EMA, 2025)</strong> 目前僅涵蓋 static, deterministic models，並建議 Dynamic model <strong>不應</strong>用於 GMP 關鍵應用（critical GMP applications）。相對地，FDA 的草案指引與 Total Product Lifecycle（TPLC，全生命週期）方法對 AI/ML-based SaMD 則採取較開放的態度，只要具備適當的驗證、監控與生命週期控制，並不排除 Dynamic model 的使用。CDMO 在跨地區（如同時供應歐盟與美國市場）導入 AI 輔助 AMM/RMM 時，<strong>應以最嚴格的法規要求（EMA 對 Dynamic model 的限制）作為內部政策基準</strong>，避免單一批次因法規轄區不同而產生放行爭議。</p>
+            <p><strong>21 CFR Part 11 與模型生命週期治理：</strong>無論 static 或 dynamic model，只要其輸出（reportable value）影響批次放行或品質決策，就必須被視為 GMP 關鍵運算，比照電子記錄要求：訓練資料集版本、模型版本、驗證報告、任何再訓練（retraining）事件都必須有稽核軌跡（audit trail）、可追溯、防止未經授權竄改。Dynamic model 的「持續學習」特性與 Part 11 要求的「記錄不可回溯竄改」存在天然張力——這正是目前 static model 較容易被監管機關接受的根本原因。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <pre>
+AI Model 驗證決策框架 (簡化邏輯)
+
+  IF 模型上線後參數「不會」隨新資料改變
+      → Static (locked) model
+      → 依 TR33 既有實驗設計/數據分析建議確效
+      → 軟體/模型更新 = 變更控制 (Change Control) → 觸發再驗證評估
+
+  IF 模型上線後參數「會」隨新資料持續更新
+      → Dynamic (adaptive) model
+      → 除初始確效外，需額外建立：
+           1) 持續監控計畫 (ongoing performance monitoring)
+           2) Model Drift 偵測指標與警戒/行動限
+           3) 可解釋性文件 (SHAP/LIME/ONNX 佐證)
+           4) 依轄區法規判斷是否適用於關鍵 GMP 應用
+              (EMA Annex 22 草案：目前不建議用於 critical GMP applications)
+            </pre>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>假設 Amaran 評估導入一套內建 AI 影像判讀功能的 rapid sterility testing 系統：稽核時應先確認供應商的 AI 模型屬於 <strong>static 或 dynamic</strong>。若為 static model，重點審查其<strong>初始訓練資料集</strong>的代表性（是否涵蓋公司實際生產環境常見的菌種光譜、培養基背景干擾等），並要求供應商提供任何軟體/模型更新的變更歷史與對應再驗證證據；若供應商聲稱系統具備「持續學習」能力（dynamic model），則必須額外要求：模型飄移監控報告、SHAP/LIME 等可解釋性佐證文件、以及該功能在歐盟市場是否符合 EMA Annex 22 草案對 critical GMP applications 的限制——若不符合，應要求供應商提供「可關閉持續學習、鎖定為 static 模式」的選項，以確保跨市場放行的一致性與可稽核性。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若一套 AMM/RMM 儀器的 AI 模組被供應商更新（例如加入新的訓練資料以提升偵測靈敏度），身為品質主管，你認為這是否構成需要重新驗證的「變更」？依據為何？</li>
+                <li>Dynamic AI model 的「Model Drift」風險，與傳統分析方法中的「儀器漂移 (instrument drift)」在管理邏輯上有何異同？可否借用既有的校驗（calibration）思維來管理 model drift？</li>
+                <li>面對 EMA 與 FDA 對 Dynamic model 態度不一致的現況，若貴公司產品同時銷往歐盟與美國市場，你會如何設計內部的 AI 模型治理政策，以兼顧法規差異與營運效率？</li>
+                <li>SHAP、LIME 這類可解釋性工具，對稽核員／法規查廠而言，實際上能解決什麼問題？又有哪些侷限（例如：能否完全還原模型的決策邏輯）？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li>AI 是涵蓋 ML 與統計方法的多學門領域，於微生物檢測中扮演三種角色：儀器內訊號判讀、儀器外數據分析、EM 程式異常偵測；FDA 與 EMA 已分別發布討論文件/草案指引/草案 Annex 22 回應此趨勢。</li>
+        <li>AI 於訊號偵測的應用已從傳統 deterministic, rule-based 演算法，演進為從大量資料中學習規律的模型，涵蓋 computer-vision（含 YOLO 物件偵測）、flow cytometry 訊號分析與基因體序列比對等技術。</li>
+        <li><strong>Static (locked) AI model</strong> 與 <strong>Dynamic (adaptive) AI model</strong> 的區分，是 AMM/RMM 驗證策略的關鍵分岔點：前者比照既有確效框架處理、變更需觸發再驗證；後者需額外建立持續監控與 model drift 管理機制，且 EMA Annex 22 草案目前不建議用於 critical GMP applications。</li>
+        <li>SHAP、LIME、ONNX 等可解釋性 (explainability) 工具，是 Dynamic model 能否被監管機關與稽核員信任的關鍵佐證，也呼應 21 CFR Part 11 對 AI 模型生命週期治理與稽核軌跡的要求。</li>
+    </ul>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR33 - Section 4.0-4.2: Technology Review &amp; Qualitative Detection Methods</title>
+    <link rel="stylesheet" href="../../../template.css">
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 4.0–4.2 Technology Review &amp; Qualitative Detection Principles and Approaches</h1>
+    <div class="subtitle">技術總覽與定性偵測原理及方法</div>
+    <div class="page-info">PDA Technical Report No. 33 (Revised 2026) | p26-p31</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 Section 4.0 為何將本章定位為「介紹性、指引性」而非「產品別規範」，以及 AMM/RMM 技術分類的整體邏輯（單細胞偵測、早期分裂、代謝活性、微生物副產物）</li>
+        <li>掌握 Sample Effect（樣本效應）對新技術驗證的影響，包括背景 ATP、自體螢光、抗微生物劑干擾等，以及如何透過陰陽性對照與可接受基準來管控</li>
+        <li>逐一理解 4.2 節九種定性偵測技術的偵測原理：Microcalorimetry、Respiration-Based Detection、Electrochemical Measurement、Single-Cell Detection、Attachment Detection、ATP Bioluminescence、Alternative Biomarkers、Endotoxin Detection、MAT</li>
+        <li>能夠依據 CDMO 產線特性（無菌充填、環境監測、細胞治療產品）判斷哪些定性技術最適合導入，以及其驗證與導入時應留意的限制</li>
+    </ul>
+</div>
+
+<!-- SECTION 4.0 -->
+<div class="section-title"><strong>4.0 Technology Review 技術總覽</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>
+            Compendial microbiological techniques are still widely and appropriately used to assess the sterility and microbiological
+            quality of finished products and their associated processes (see Section 3.1). The move to biologically derived therapies,
+            parametric release, and improved detection capability has led to a range of <span class="key-term">AMM/RMMs</span>. With
+            improvements in optics, digital imaging, and molecular/genetic, localized thermal, chemical, and electrophoretic techniques
+            for measuring the presence, identity, and viability of microbes, a range of technologies have emerged or matured since the
+            2013 TR 33 revision. New technologies are now capable of either directly measuring a single cell, its activation, or
+            alternatively, the early stages of cell division, active metabolism, or the presence of microbial by-products.
+        </p>
+        <p>
+            While technology dependent, AMM/RMMs may offer the promise of improved <span class="key-term">sensitivity, accuracy,
+            automation, objectivity, precision, operational and data integrity</span>, improved operational efficiency, and potentially
+            shorter time to result. These new methods have not only increased the need for the modern industrial microbiologist to
+            embrace digital, optical, and statistical expertise relative to interpretation and validation, but also include additional
+            considerations in suitability testing and appropriate sample preparation of both biological and chemical samples for these
+            new metrics.
+        </p>
+        <p>
+            The scope of use of AMM/RMMs can span <span class="key-term">in-line, on-line, at-line, and off-line</span> use with data
+            being either directly related to the release specification, for example, presence or absence of viable organisms for
+            sterility or, for process monitoring purposes, rendering of viable cell levels in nonsterile applications or the
+            verification of an aberrant result off-line.
+        </p>
+        <p>
+            More conventional, growth-dependent techniques have also benefited from these developments through either improved methods
+            for detecting the conventional end point (e.g., the digital detection of microcolony formation) or by combining alternative
+            technologies to increase method sensitivity and data integrity or to decrease <span class="key-term">TTR</span> and analyst
+            subjectivity (see Section 3.8). The application of automation has also benefited AMM/RMMs in a similar way to more
+            conventional approaches, reducing errors in the procedure, improving the statistical robustness of the generated data, and
+            increasing testing capacity while reducing the variability associated with direct handling of the samples in the laboratory
+            (see Section 3.6).
+        </p>
+        <p>
+            The selection, validation, and use of AMM/RMMs is very process- and product-dependent and, ultimately, focused on providing
+            the best assessment of product quality to minimize the risk of use for the safety of the patient or consumer. See Section
+            4.1 for more information on sample effect considerations. Given the different product forms, processes, specifications
+            (nonsterile, sterile), and controls used in pharmaceutical, medical device, and cell-and-gene-therapy manufacturing, the
+            contents of Section 4.0 can only be informative and guiding, not specific to product type or categories. Beyond the quality
+            and safety requirements, the use of AMM/RMMs will be decided based on the release specification and a balance of improved
+            risk management, production efficiency, validation cost, implementation, and regulatory compliance (59).
+        </p>
+        <p>
+            Section 4.0 introduces the technical principles and considerations for adopting these AMM/RMMs.
+        </p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Time to Result (TTR, 檢測所需時間):</strong> 從樣品進入儀器到取得可判讀結果的時間長度，是 AMM/RMM 相對於傳統培養法最核心的商業價值來源之一——TTR 越短，代表放行決策越快，庫存與冷鏈成本越低。</p>
+            <p><strong>四大偵測層次:</strong> 本節開宗明義點出新技術可偵測「單一細胞本身」「細胞活化」「早期細胞分裂」或「代謝副產物」——這其實是後面 4.2 到 4.4 節所有技術的分類骨架，讀者可以把它當作一張心智地圖：先判斷某技術量的是什麼訊號，就能推論它的靈敏度、限制與適用場景。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>可以把「in-line、on-line、at-line、off-line」想像成工廠品管站的距離遠近：in-line 就像裝在生產線上的感測器，即時讀數、完全不離開產線；at-line 像是產線旁邊的快篩站，樣品要拿過去但幾分鐘內回來；off-line 則像是送到中央實驗室，需要額外運送與排程。距離越近、即時性越高，但儀器成本與驗證複雜度通常也越高。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>本節特別強調 Section 4.0 的內容「only be informative and guiding, not specific to product type or categories」——換言之，TR 33 不會告訴你「無菌充填該選哪一台儀器」，最終選擇必須回到 <span class="key-term">Decision Hierarchy</span>：先滿足無菌保證與病人安全，再考量風險管理、生產效率、驗證成本與法規遵循的平衡（citation 59）。這對 CDMO 尤其重要，因為同一套 AMM/RMM 平台可能要同時服務不同客戶、不同產品型態（無菌 vs. 非無菌、小分子 vs. 細胞治療）。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果貴公司同時服務無菌針劑與細胞治療產品客戶，Section 4.0 提到「產品型態、製程、規格不同」這一點，對於選擇同一套 AMM/RMM 平台會帶來哪些限制？</li>
+                <li>「in-line / on-line / at-line / off-line」四種導入模式，哪一種最適合用在製程中管控（IPC），哪一種較適合放行測試？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 4.1 -->
+<div class="section-title"><strong>4.1 Sample Effect Considerations 樣本效應考量</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>
+            For the validation and suitability qualification of any new method, or its application to the test product, additional
+            consideration of what might affect the accuracy, sensitivity, and <span class="key-term">LoD</span> for these new
+            technologies is required as they are likely to differ from those used for conventional (growth-based) methods. The primary
+            analytes for these methods range from particulate evaluation, fluorescence, spectral analysis of chemistry, and optical
+            assessment and can often be combined in current AMM/RMMs (e.g., optic for counting and fluorescence for viability).
+        </p>
+        <p>
+            The impact of <span class="key-term">sample effects</span> on AMM/RMMs needs to be evaluated, for example during method
+            suitability studies (see Section 5.3.2). These sample effects can include the presence of background ATP or
+            autofluorescence of particulates present in lab reagents, materials, or the sample matrix itself. Suppliers may provide
+            guidance for overcoming known interference with their technology. This consideration may also require the evaluation of
+            more conventional suitability criteria, such as the presence of any antimicrobials that previously affected culture
+            techniques and cell growth but may now interfere with microbial metabolism and cell activation. Consideration of these
+            factors and their impact on measurement will be system-dependent and may require additional reagent and sample processing
+            (e.g., filtration to remove reagent particulates or the specific enrichment of any microbial content present relative to
+            interfering moieties). To ensure method robustness, specific <span class="key-term">negative and positive controls</span>
+            must be established to mitigate these matrix effects, accompanied by explicit method suitability acceptance criteria that
+            define permissible false-positive thresholds and signal-to-noise ratios.
+        </p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Limit of Detection (LoD, 偵測極限):</strong> 方法能可靠偵測到的最低微生物濃度或訊號強度。AMM/RMM 的 LoD 受「樣本基質」影響極大——同一台儀器測緩衝液和測含蛋白質、脂質賦形劑的實際藥品，靈敏度可能完全不同。</p>
+            <p><strong>Sample Effect (樣本效應):</strong> 泛指測試基質本身（而非目標微生物）對訊號產生的干擾，例如試劑本身帶有背景 ATP、賦形劑產生自體螢光、或抗微生物防腐劑抑制了微生物代謝訊號，導致假陰性或假陽性。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>樣本效應就像在吵雜的餐廳裡講電話：你想聽到的是對方的聲音（微生物訊號），但餐廳的背景音樂、鄰桌交談（賦形劑螢光、背景 ATP）會蓋過或混淆你要聽的內容。方法驗證要做的，就是先確認「這支手機在這間餐廳裡，還聽得清楚對方在說什麼」——這正是陰性對照（沒有人講話時的背景噪音有多大）與陽性對照（訊號夠不夠強，蓋過噪音）的作用。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>許多 CDMO 在轉換到 AMM/RMM 時容易忽略「抗微生物劑」的雙重影響：在傳統培養法中，防腐劑或抗生素殘留會抑制菌落生長，造成假陰性；但在代謝活性類技術（如 ATP 生物發光、呼吸偵測）中，同樣的抗微生物劑可能直接干擾微生物代謝或細胞活化路徑，產生完全不同型態的干擾。因此舊有的「抗菌活性中和」驗證資料不能直接沿用，必須針對新技術的偵測機轉重新評估。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若貴公司產品含界面活性劑（可能產生自體螢光），要導入以螢光為基礎的 AMM/RMM，你會建議在方法適用性研究中增加哪些對照組？</li>
+                <li>「signal-to-noise ratio（訊號雜訊比）」與「false-positive threshold（假陽性閾值）」這兩個驗收標準，分別對應防範哪一種風險？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 4.2 -->
+<div class="section-title"><strong>4.2 Qualitative Detection Principles and Approaches 定性偵測原理與方法</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>
+            The primary objective of <span class="key-term">qualitative detection methods</span> is to identify the presence of
+            contaminating microorganisms that could render the material or product unusable.
+        </p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Qualitative Detection (定性偵測):</strong> 只回答「有沒有」（presence/absence）而非「有多少」的檢測邏輯。無菌測試（Sterility Test）正是典型的定性檢測——只要偵測到任何存活微生物，產品就判定不合格，不需要知道確切菌數。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>定性偵測就像居家用的驗孕棒：只回答「有」或「沒有」，一條線或兩條線，不會告訴你濃度確切數字。相對地，4.3 節的定量方法則像抽血檢驗，會給出精確數值。兩種邏輯適用的決策情境不同——無菌放行只需要「有沒有」，但製程趨勢監控往往需要「有多少」。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>接下來 4.2.1–4.2.9 介紹的九種技術，雖然偵測原理天差地遠（熱能、氣體、電性、光學、生物冷光、代謝體學、內毒素、熱原），但共同目的都收斂在同一句話：偵測「會讓產品不能用」的污染是否存在。閱讀每個子節時，建議聚焦三個問題：(1) 它量的是什麼物理/化學訊號？(2) 訊號跟微生物存活之間的因果關係是什麼？(3) 什麼樣本情境會讓這個因果關係失真？</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼無菌測試偏好定性方法而非定量方法？如果無菌測試改成定量，會產生什麼決策上的困難？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 4.2.1 -->
+<div class="section-title"><strong>4.2.1 Microcalorimetry 微量熱法</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>
+            <span class="key-term">Microcalorimetry</span> offers a non-destructive, direct inoculation method for continuous
+            measurement of heat generated by metabolic activity. Microbial growth produces heat that can be detected by
+            <span class="key-term">isothermal microcalorimetry</span> with very high sensitivity. The signal is measured directly in
+            the system without additional reagents. The sample is directly inoculated into a growth medium without additional
+            manipulation and loaded into a vial for measurement. Microbial growth is determined from changes in heat flow over time,
+            enabling earlier detection than turbidity-based methods. Continuous monitoring of heat production can detect and, under
+            controlled conditions, quantify microbial growth/activity.
+        </p>
+        <p>
+            Beyond the research environment where conditions can be tightly controlled to enable quantification by comparison to
+            reference growth curves-manufacturing-derived samples are most often assessed qualitatively (presence/absence). Heat
+            output and signal dynamics can vary depending on organism physiology, stress state, and the sample matrix, making absolute
+            quantification less reliable (60).
+        </p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Isothermal Microcalorimetry (等溫微量熱法):</strong> 在恆溫環境下，連續量測微生物代謝所釋放的極微量熱能（微瓦等級），不需加任何顯色劑或螢光染劑，直接把樣品接種進培養基、放入量熱儀的小瓶（vial）即可持續監測。</p>
+            <p><strong>與濁度法比較:</strong> 傳統濁度法（turbidity）要等菌群數量多到「看得見混濁」才能偵測，微量熱法則能在菌落數量還很少、尚未產生可見濁度前，就先偵測到代謝放熱訊號，因此偵測時間點更早。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>微量熱法就像用紅外線熱像儀偵測黑暗房間裡有沒有人——即使房間太暗看不到人影（濁度法看不到菌落），只要有人在裡面呼吸活動就會散發體溫（代謝熱），熱像儀立刻能感應到，而且不需要開燈（不需要額外試劑）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>原文特別區分「研究環境下可定量」與「製造現場樣本通常僅作定性評估」——這點對 CDMO 品管實務很關鍵：即使供應商展示了漂亮的定量生長曲線，實際上線時仍應以偵測「有/無」熱訊號變化作為放行判斷依據，而非直接引用實驗室對照曲線去反推菌數，因為熱訊號動態會因菌株生理狀態、壓力狀態與樣品基質而大幅波動。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>微量熱法「不需額外試劑、直接量測代謝熱」的特性，對於樣本效應（4.1 節）的風險是降低還是提高？為什麼？</li>
+                <li>如果客戶要求提供「精確菌落數」而非「有/無」判定，微量熱法能否直接滿足？需要哪些額外條件？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 4.2.2 -->
+<div class="section-title"><strong>4.2.2 Respiration-Based Detection 呼吸作用偵測</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>
+            Microorganisms growing in liquid culture produce <span class="key-term">carbon dioxide (CO2)</span>, volatile organic
+            compounds (VOCs) and other respiratory gases, along with various metabolites. These products can be detected through
+            several methods, including monitoring specific analytes (e.g., pH), changes in pressure using transducers in a sealed
+            container, or by analyzing the concentration of gases in the headspace of sealed containers when using culture
+            <span class="key-term">tunable diode laser absorption spectroscopy (TDLAS)</span>, all of which indicate microbial growth
+            and a putative identification (e.g., indole) (61).
+        </p>
+        <p>
+            The amount of CO2 and other respiratory gases produced serve as a crucial indicator of organism viability. Test samples
+            are added to media bottles containing a liquid emulsion or silicone sensor. During microbial growth, CO2 diffuses from the
+            medium into the sensor, where it interacts with hydrogen ions, leading to a decrease in pH and resulting in a color change
+            of the sensor (e.g., from grey to yellow).
+        </p>
+        <p>
+            Additionally, respiratory gases can be sampled from the headspace and analyzed using gas sensors. The detection rate of
+            CO2 and respiratory gases is influenced by the initial concentration of microorganisms; a higher initial concentration
+            results in a faster detection response. Moreover, the distinct profiles of respirator gages produced by different
+            microorganisms serve as unique metabolic fingerprints, facilitating high-resolution detection and early identification of
+            specific microbial species (62).
+        </p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Respiration-Based Detection (呼吸作用偵測):</strong> 微生物生長過程中會呼吸產氣（CO2、VOCs），這類技術改偵測「氣體代謝副產物」而非直接看菌落，常見於自動化血液培養系統的原理延伸。</p>
+            <p><strong>TDLAS（可調諧雷射二極體吸收光譜）:</strong> 利用特定波長雷射穿透密閉容器頂空氣體，依氣體吸收光譜比對出特定氣體成分與濃度，可同時做初步菌種判別（例如吲哚陽性菌）。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>這就像密閉房間裡放一杯石蕊試劑水，透過「房間裡的人有沒有呼出二氧化碳讓水變色」來判斷房間裡是否有人，不需要打開門親眼確認。感測器顏色從灰轉黃，就相當於水變色的瞬間——你不用看見人（菌落），就能推論人在裡面活動。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>原文指出「初始菌濃度越高，偵測反應越快」——這是所有生長依賴型 AMM/RMM 的共同物理限制：低濃度污染（例如僅 1-2 CFU 的邊緣污染）仍需要一定的生長增殖時間才能產生足夠氣體訊號被偵測到，TTR 縮短的效果對極低濃度污染的邊際效益會遞減，驗證時應特別關注低接種量下的偵測時間分布。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>「不同微生物的呼吸氣體圖譜可作為代謝指紋」這個特性，可以如何應用在污染調查（deviation investigation）的初步菌種篩檢上？</li>
+                <li>本技術偵測到訊號的前提是微生物必須「活著且持續代謝產氣」，這對 VBNC（存活但不可培養）菌株的偵測能力有何限制？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 4.2.3 -->
+<div class="section-title"><strong>4.2.3 Electrochemical Measurement 電化學測量</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>
+            <span class="key-term">Electrochemical methods</span> measure changes in the electrical properties (conductivity) of
+            microbiological media due to microbial metabolism. Liquid-growth media comprise relatively large uncharged or weakly
+            charged molecules, and microorganisms growing in this media will break down the large molecules into smaller, more highly
+            charged components (e.g., proteins into amino acids, fats into fatty acids, polysaccharides or sugars into lactic acid).
+            These technologies can rapidly detect changes in measurable electrical threshold during microbial growth by monitoring the
+            movement of ions between electrodes (<span class="key-term">conductance</span>) or the storage of charge at the electrode
+            surface (<span class="key-term">capacitance</span>). This allows for faster detection of growing microorganisms compared
+            to turbidity observations.
+        </p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Conductance（電導）vs. Capacitance（電容）:</strong> 電導量測離子在電極間移動的難易程度；電容則量測電極表面儲存電荷的能力。兩者都會隨著微生物把大分子（蛋白質、脂肪、多醣）代謝分解成帶電更強的小分子（胺基酸、脂肪酸、乳酸）而改變，訊號變化即代表生長正在發生。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>可以把培養基想像成一鍋清水（電流不容易通過的大分子湯），微生物生長就像不斷把大鹽塊敲碎成細鹽粒溶入水中——水越來越容易導電。電化學偵測器就是那支放進水裡量電阻的探針，一旦導電度開始明顯改變，就代表「敲碎鹽塊」的代謝反應正在進行中。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>這項技術的偵測基礎是「培養基化學組成的改變」，因此培養基配方本身（例如原本就含有高濃度離子的緩衝液）會直接影響背景訊號與靈敏度——這正呼應 4.1 節提到的樣本效應：驗證時必須針對「所用的特定培養基批次」建立陰性對照基線，不能假設所有培養基批次背景電性都一致。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>電化學法與濁度法相比，為何能更早偵測到微生物生長？兩者偵測的物理現象本質差異是什麼？</li>
+                <li>若某產品的賦形劑本身含高鹽濃度緩衝液，你認為對電化學偵測平台的驗證會產生什麼挑戰？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 4.2.4 -->
+<div class="section-title"><strong>4.2.4 Single-Cell Detection/Method Development 單細胞偵測與方法開發</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>
+            <span class="key-term">Dielectrophoresis</span> can be used as a selective separation method to capture microorganisms
+            based on their size and dielectric properties. A combination of microfluidics and microelectronics is used to capture
+            microorganisms followed by <span class="key-term">lab-on-a-chip</span> quantification via optical or electrical sensing.
+            The sample is pumped through the microfluidic chip with a system of electrodes. The electrodes in the chip generate an
+            inhomogeneous electric field. As microorganisms enter the chip, the electric field selectively captures the microorganisms
+            on the electrodes based on their frequency-dependent polarizability, which is then observed with a fluorescent microscope
+            or measured via impedance changes.
+        </p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Dielectrophoresis (介電泳):</strong> 利用不均勻電場對帶電或可極化粒子施力，依粒子大小與介電特性的不同，選擇性地把微生物「吸附」到電極上，再搭配光學（螢光顯微鏡）或電性（阻抗變化）方式偵測捕獲到的微生物。</p>
+            <p><strong>Lab-on-a-chip（晶片實驗室）:</strong> 把捕獲、濃縮、偵測等多個實驗步驟微縮整合在一片微流體晶片上完成，大幅縮小樣品體積與操作時間。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>這項技術就像機場的磁性分揀系統：讓行李（樣品中所有粒子）通過一個特殊磁場區域，依材質特性（介電特性）不同，把金屬物品（目標微生物）自動吸附分流到特定通道，而其他非金屬物品直接通過不受影響。介電泳就是利用電場而非磁場，做到選擇性「抓住」微生物。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>本節標題同時涵蓋「Single-Cell Detection」與「Method Development」，顯示此類技術目前仍偏向新興、客製化程度高的方法開發階段，而非已標準化的商用平台。導入時應預期需要較多的方法開發與供應商協作工作，而非直接套用既有 SOP。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>介電泳依「頻率相關極化率（frequency-dependent polarizability）」選擇性捕獲微生物，若樣品中存在大小相近的非生物微粒（如賦形劑結晶），可能造成什麼干擾？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 4.2.5 -->
+<div class="section-title"><strong>4.2.5 Attachment Detection Technologies 附著偵測技術</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>
+            Surface-based detection technologies respond to changes in conductance/resistivity or near-surface optical chemistry
+            (e.g., <span class="key-term">guided mode resonance</span>) due to microbial attachment and biofilm development (63).
+            Resistivity (ρ) is the inverse of conductivity (ρ = 1 / σ), which can be altered by inducing a small electrical current in
+            the sensor to measure the changes in the electrical properties of process-fluid chemistry at the surface of a pipe.
+            Microbial attachment, propagation, and the formation of extracellular matrix on the surface of the sensor indicates the
+            presence of microbes.
+        </p>
+        <p>
+            Guided-mode resonance is an optical technique that uses a sensor or grating responsive to changes in the refractive index
+            caused by a microbial attachment, providing qualitative data suited for process-monitoring and early warnings.
+        </p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Resistivity（電阻率, ρ）:</strong> 電導率（σ）的倒數（ρ = 1/σ），透過在感測器上施加微弱電流，量測管路表面製程流體化學性質的變化，藉此偵測微生物附著、繁殖與生物膜（biofilm）胞外基質形成。</p>
+            <p><strong>Guided-Mode Resonance (導模共振):</strong> 一種光學感測技術，利用感測器或光柵對折射率變化的敏感反應，偵測微生物附著造成的表面折射率改變，屬於定性訊號，適合製程監控與早期示警。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>附著偵測技術就像在水管內壁裝設「積垢感應貼片」：水管本身沒有變化時，貼片讀數穩定；一旦內壁開始長出黏膜（生物膜），貼片上的電性或光學反射訊號就會偏移，及早示警「該清洗管路了」，而不必等到堵塞或肉眼可見的髒污才發現問題。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>本技術鎖定的目標是「附著在表面的微生物與生物膜」，這使其特別適合用在製藥用水系統（Water for Injection/Purified Water）的管路生物膜早期監測，而非直接取代批次放行的無菌測試——原文明確定位為「process-monitoring and early warnings（製程監控與早期示警）」，屬於預防性訊號而非最終品質判定。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>對於製藥用水系統的生物膜風險管控，附著偵測技術與傳統定期取樣培養法相比，各自的優勢與局限是什麼？</li>
+                <li>導模共振技術的訊號只反映「表面折射率變化」，這代表它無法直接區分附著物是「微生物」還是其他非生物性積垢，實務上該如何補強判讀信心？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 4.2.6 -->
+<div class="section-title"><strong>4.2.6 Adenosine Triphosphate Bioluminescence ATP 生物發光</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>
+            <span class="key-term">ATP bioluminescence</span> is the generation of light by a biological process. In the presence of
+            the enzyme <span class="key-term">luciferase</span> and the substrate <span class="key-term">luciferin</span>, ATP is
+            enzymatically broken down to produce photons of light. An instrument equipped with a photomultiplier tube can detect these
+            photons. Because ATP is a key intracellular energy source in all metabolically active cells and is rapidly degraded upon
+            loss of viability, measurement of ATP is a marker for viable organisms. To ensure analytical specificity, the method
+            requires the selective removal of non-microbial extracellular ATP from the sample matrix prior to microbial lysis.
+        </p>
+        <p>
+            Depending on the technology, some systems will detect the general presence of microorganisms by measuring the total
+            relative light units from the test sample, while other systems can detect ATP bioluminescence from individual
+            microcolonies following a shortened incubation period, thereby providing a quantitative assessment of the number of
+            microorganisms from the original sample under evaluation.
+        </p>
+        <p>
+            The sensitivity and TTR of the ATP bioluminescence assay may also be improved with a two-phase reaction that begins by
+            using an enzyme-catalyzed reaction to generate ATP to levels significantly higher than what is naturally contained in the
+            microorganism. In the presence of microorganisms, specific microbial enzymes (<span class="key-term">adenylate kinase</span>)
+            can be used to convert the adenosine diphosphate (ADP) provided to the reaction into ATP and adenosine monophosphate. The
+            enzymes are not consumed by the reaction; therefore, if ADP is present, ATP is continuously generated. The amplified ATP
+            levels are then detected using the typical ATP bioluminescence reaction initially described in the prior paragraph.
+        </p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>ATP (腺苷三磷酸):</strong> 所有活細胞的核心能量分子，細胞一旦死亡便會迅速分解消失，因此偵測到 ATP 幾乎等同於偵測到「存活」的細胞——這是 ATP 生物發光技術的科學基礎。</p>
+            <p><strong>Luciferase（螢光素酶）/ Luciferin（螢光素）反應:</strong> 螢光素酶催化螢光素與 ATP 反應產生光子，光子數量與 ATP 濃度成正比，由光電倍增管（photomultiplier tube）偵測發光強度（以 Relative Light Units, RLU 表示）。</p>
+            <p><strong>Adenylate Kinase (AK, 腺苷酸激酶) 二階段放大法:</strong> 先用微生物特有的 AK 酶把反應中額外提供的 ADP 轉化為 ATP，由於酶本身不被消耗、可持續催化，使 ATP 訊號被大幅放大，藉此提升靈敏度並縮短 TTR。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>ATP 生物發光就像螢火蟲發光的原理搬進實驗室：螢火蟲體內的螢光素酶與螢光素反應消耗 ATP 而發光，光亮強度反映體內能量代謝的活躍程度。同樣道理，實驗室先把樣品中「非微生物來源的 ATP」（背景雜訊，例如殘留的細胞碎片）清除乾淨，再讓細菌破裂釋出胞內 ATP 與試劑反應發光——光越亮，代表活菌 ATP 越多。而 AK 兩階段放大法，則像是先用一個小型「發電機」（AK 酶）把訊號源源不絕地放大，讓原本微弱的光訊號變得清楚可辨。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>原文特別強調「selective removal of non-microbial extracellular ATP prior to microbial lysis（在破菌前先選擇性去除非微生物的胞外 ATP）」——這是 ATP 生物發光方法能否具有分析專一性（analytical specificity）的關鍵前處理步驟。若樣品基質本身含有大量游離 ATP（例如培養基成分、細胞碎片殘留），未先去除就直接偵測，將導致嚴重假陽性，這正是 4.1 節「樣本效應」在本技術上最典型的實務體現。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>對於 CDMO 環境監測（EM）而言，總 ATP 發光（total RLU）版本可以快速篩檢工作台面、手套或空氣濾網上是否存在「任何活性生物負荷」，作為即時警示工具；但若客戶要求提供「精確活菌數」用於製程趨勢分析，則需選用能偵測個別菌落發光訊號的定量版本，並搭配較長的短暫增菌培養時間。兩者驗證重點與導入場景完全不同，選型時務必先釐清客戶的資料用途。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果樣品前處理沒有徹底去除非微生物胞外 ATP，可能對放行決策造成什麼後果？</li>
+                <li>AK 兩階段放大法為何能同時改善「靈敏度」與「TTR」？酶不被消耗這個特性扮演了什麼角色？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 4.2.7 -->
+<div class="section-title"><strong>4.2.7 Alternative Biomarkers for Sterility Testing 無菌測試替代生物標記</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>
+            Existing definitions of <span class="key-term">biomarkers</span> generally relate to the detection of host-related
+            proteins and associated analytes in the clinical settings (64). Specifically in clinical microbiology, the use of
+            biomarkers for detecting infectious diseases is becoming increasingly common. Notable examples of biomarkers for
+            identifying life-threatening sepsis and systemic infections include <span class="key-term">C-reactive protein</span>,
+            <span class="key-term">procalcitonin</span>, presepsin, interleukin-6, and CD64 (65).
+        </p>
+        <p>
+            In addition to the description provided regarding biomarkers in this section, researchers recently conducted a study to
+            explore microbial biomarkers for sterility testing. They compared the exometabolomic profiles of uncontaminated and
+            contaminated <span class="key-term">mesenchymal stromal cells</span> and microbial culture supernatants using liquid
+            chromatography-mass spectrometry. The study found that metabolically derived <span class="key-term">nicotinic acid</span>
+            was specifically present in bacterial-contaminated cell-therapy products with the ratio of nicotinic acid to nicotinamide
+            in laboratory-contaminated cultures after a 24-hour incubation proved to be a useful biomarker for contamination in
+            cell-therapy products (66). This study serves as a <span class="key-term">proof of concept (POC)</span>, demonstrating the
+            potential of novel biomarkers being suitable determinants of microbial contamination.
+        </p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Biomarker（生物標記）:</strong> 傳統定義多用於臨床上偵測宿主蛋白（如敗血症指標 C 反應蛋白、Procalcitonin、Presepsin、IL-6、CD64），本節則把這個概念延伸到「微生物污染代謝體學指標」——即污染菌代謝所產生、可被特異性偵測的小分子。</p>
+            <p><strong>Nicotinic Acid（菸鹼酸）指標:</strong> 研究團隊比對受污染與未受污染間質基質細胞（MSC）培養液的外泌代謝體（exometabolome），發現細菌污染會使菸鹼酸相對於菸鹼醯胺的比例產生特徵性改變，可作為 24 小時內判斷細胞治療產品是否遭細菌污染的候選生物標記。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>這就像法醫從犯罪現場的化學痕跡反推「有沒有人來過」：即使看不到嫌疑人本人，只要現場某種特定化學物質的濃度比例出現異常變化，就能推論「有外來者活動過」。菸鹼酸/菸鹼醯胺比例的改變，就是細菌污染留下的「代謝痕跡」，不必直接培養出菌落也能提供污染線索。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>原文明確標註這只是「proof of concept（概念驗證）」，尚未是成熟、可直接導入常規放行的商用方法。對於處理細胞治療（cell therapy）產品線的 CDMO，這代表：(1) 短期內不能以此類生物標記取代藥典無菌測試或 MAT 等既定方法；(2) 但對於保存期極短、無法等待傳統 14 天無菌測試結果的活細胞產品，這類代謝體學指標代表未來快速放行的潛在方向，值得持續追蹤文獻與法規進展。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼「概念驗證（POC）」等級的研究成果，還不能直接拿來取代藥典規定的無菌測試方法？導入前還需要哪些驗證里程碑？</li>
+                <li>對於保存期僅有數天的細胞治療產品，24 小時內即可得知的代謝體學指標，可能如何改變產品放行的時間軸與病人可及性？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 4.2.8 -->
+<div class="section-title"><strong>4.2.8 Endotoxin Detection 內毒素偵測</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>
+            The detection of bacterial endotoxins (i.e., <span class="key-term">lipopolysaccharide</span>) has evolved with
+            additional technologies such as:
+        </p>
+        <ul>
+            <li>Cartridge- and microfluidic-based handheld systems that replicate quantitative, kinetic chromogenic methods with
+                results in as quickly as 15 minutes.</li>
+            <li><span class="key-term">ELISA</span>-based methods, where phage-derived protein binds lipopolysaccharide, in which the
+                complex can be washed to remove interfering conditions.</li>
+            <li><span class="key-term">Recombinant Factor C</span>/recombinant cascade reagent, in which synthetic but identical
+                components in the conventional <span class="key-term">Limulus amoebocyte lysate</span> bacterial endotoxins assay. The
+                sensitivity of the Bacterial Endotoxin Test can be from 0.001 and 0.25 EU/mL.</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Lipopolysaccharide (LPS, 脂多醣/內毒素):</strong> 革蘭氏陰性菌細胞壁的組成成分，即使菌體已死亡，游離的 LPS 仍可能引起人體發熱反應（熱原反應），因此內毒素檢測不等同於活菌檢測，是獨立於無菌測試之外的另一道品質關卡。</p>
+            <p><strong>三種新興偵測技術:</strong> (1) 卡匣式/微流體手持系統，複製定量動力學色原法（kinetic chromogenic），15 分鐘內出結果；(2) ELISA 法，利用噬菌體衍生蛋白專一性結合 LPS，再以清洗步驟去除干擾物；(3) <span class="key-term">Recombinant Factor C (rFC, 重組C因子)</span> / 重組串聯試劑，以合成但功能等同的成分取代傳統 <span class="key-term">Limulus Amoebocyte Lysate (LAL, 鱟變形細胞溶解物)</span> 反應級聯，靈敏度範圍可達 0.001–0.25 EU/mL。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>傳統 LAL 試劑就像取用「野生鱟血」這種天然資源做檢測——供應會受生態與捕撈限制；rFC/重組串聯試劑則像用基因工程「複製」出功能一模一樣的關鍵蛋白，不再依賴野生資源，且品質批次間更穩定一致，這也是近年法規（如 USP 及 Ph. Eur.）逐步認可 rFC 作為替代方法的重要背景。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>內毒素檢測的靈敏度可達 0.001–0.25 EU/mL，數值範圍橫跨近三個數量級，代表不同技術平台、不同試劑組合之間靈敏度差異極大——選型時務必依據產品的內毒素限值規格（依患者體重、給藥途徑計算之 Endotoxin Limit）反推所需的最低可偵測靈敏度，而非只看供應商宣傳的「最佳」數字。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼即使無菌測試合格，仍須額外執行內毒素檢測？兩者防範的病人風險有何不同？</li>
+                <li>rFC 相較於傳統 LAL 試劑，除了永續性（不依賴野生鱟）之外，在批次穩定性與法規可接受度上分別有哪些考量？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 4.2.9 -->
+<div class="section-title"><strong>4.2.9 Alternative Pyrogen Testing / Monocyte Activation Test 替代熱原測試／單核球活化測試</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>
+            The <span class="key-term">MAT</span> was developed as an in-vitro assay alternative to the in-vivo rabbit pyrogen test.
+            The test utilizes monocytic cell sources (e.g., whole blood or human <span class="key-term">peripheral blood mononuclear
+            cells (PBMC)</span>, mononuclear cell lines, or recombinant cell lines) which, in the presence of bacterial endotoxins and
+            other non-endotoxin pyrogens, will stimulate cytokine release, the latter of which can then be detected and quantified in
+            an ELISA assay (58).
+        </p>
+        <p>
+            Several microfluidic or rapid-readout approaches exist that replace traditional plate-based ELISA in MAT workflows.
+            Microfluidic immunoassay systems use cartridge-based nanochannels to perform automated sandwich immunoassays for cytokines
+            like IL-6 or IL-1β with much lower reagent volumes and faster read times. Reporter-gene assays instead detect NF-kB
+            activation in engineered monocytic cells using luminescent or fluorescent reporters, providing earlier pathway-level
+            detection without antibody assays. <span class="key-term">Nucleic-acid–based MAT (NAT-MAT)</span> measures cytokine mRNA
+            induction using qPCR or digital PCR as a rapid transcriptional readout of monocyte activation. Emerging microfluidic and
+            single-cell platforms further miniaturize these concepts, integrating immune stimulation and cytokine detection on chip to
+            reduce assay time and sample volume while enabling higher-throughput pyrogen screening.
+        </p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Monocyte Activation Test (MAT, 單核球活化測試):</strong> 以人類單核球細胞來源（全血、PBMC、單核細胞株或重組細胞株）取代活體兔熱原測試（Rabbit Pyrogen Test）。當樣品中含有內毒素或非內毒素熱原時，單核球會釋放細胞激素（cytokine），再以 ELISA 偵測定量，藉此判斷樣品的致熱原風險。</p>
+            <p><strong>非內毒素熱原 (non-endotoxin pyrogens):</strong> MAT 相較於僅能偵測內毒素的 LAL/rFC 方法的最大優勢，在於它能同時偵測革蘭氏陽性菌、黴菌等來源的非內毒素熱原物質，涵蓋更廣的致熱風險光譜。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念解析（新興讀取技術）Key Concepts (Emerging Readouts)</h4>
+            <p><strong>微流體免疫分析:</strong> 以卡匣式奈米通道進行自動化三明治免疫分析（sandwich immunoassay），偵測 IL-6、IL-1β 等細胞激素，試劑用量更少、讀取更快。</p>
+            <p><strong>Reporter-Gene Assay（報告基因分析）:</strong> 於工程化單核球細胞中偵測 <span class="key-term">NF-κB</span> 活化訊號（以冷光或螢光報告基因呈現），能在細胞激素蛋白產生「之前」的訊息傳遞路徑層級即偵測到活化反應，且不需抗體分析。</p>
+            <p><strong>NAT-MAT:</strong> 以 qPCR 或 digital PCR 偵測細胞激素 mRNA 誘導表現量，作為單核球活化的快速轉錄層級讀值，比等待蛋白質產生更早取得結果。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>MAT 就像找「人體免疫哨兵」來把關——把病人自身的免疫細胞（單核球）搬到體外，模擬「如果這批藥打進人體，免疫系統會不會發炎反應」。傳統 ELISA 讀取細胞激素蛋白，就像等哨兵「大聲呼喊警報」才聽得到；而 Reporter-Gene 或 NAT-MAT 則是提早在哨兵「按下警報按鈕的瞬間」（訊息傳遞路徑或 mRNA 轉錄階段）就偵測到，因此能更早取得結果。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>MAT 已被多國藥典（如 Ph. Eur. 2.6.30）納入正式方法，並被視為替代兔熱原試驗（動物試驗）的 3R（Replacement, Reduction, Refinement）原則實踐。對於同時銷售歐盟與美國市場的 CDMO，需留意兩地藥典對於「MAT 何時可完全取代兔熱原試驗/LAL」的接受度可能存在差異，導入前應與目標市場法規事務團隊確認。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>MAT 相較於 LAL/rFC 內毒素檢測，多偵測了哪一類致熱原風險？這對哪些原料藥或製程（例如含革蘭氏陽性菌風險的製程）特別重要？</li>
+                <li>Reporter-Gene Assay 與 NAT-MAT 都比傳統 ELISA-based MAT 更早取得訊號，但它們偵測的分子層級（訊息傳遞蛋白活化 vs. mRNA 轉錄）不同，這對結果解讀與確效（validation）分別帶來什麼考量？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li>Section 4.0 定調 AMM/RMM 技術選型必須回到 Decision Hierarchy——先滿足無菌保證與病人安全，才權衡風險管理、效率與成本；4.0 節內容僅提供指引，不指定特定產品該用哪種技術</li>
+        <li>4.1 節的樣本效應（背景 ATP、自體螢光、抗微生物劑干擾）是所有 AMM/RMM 驗證共同的挑戰，必須透過陰陽性對照與明確驗收基準（假陽性閾值、訊噪比）加以管控</li>
+        <li>4.2 節九種定性技術涵蓋熱能（微量熱法）、氣體（呼吸偵測）、電性（電化學測量、附著偵測）、機械/光學（介電泳單細胞偵測）、生物冷光（ATP）、代謝體學（替代生物標記）、以及熱原相關（內毒素偵測、MAT）等多元原理，各有不同的偵測極限、干擾風險與適用場域</li>
+        <li>ATP 生物發光與 MAT 已是相對成熟、廣泛商用化的技術；代謝體學生物標記則仍屬概念驗證階段，短期內無法取代藥典規定的無菌測試</li>
+        <li>rFC 等重組試劑正逐步取代傳統 LAL，呼應法規對永續性與批次一致性的期待；MAT 的新興讀取技術（微流體、Reporter-Gene、NAT-MAT）持續朝更短 TTR、更低樣品用量的方向發展</li>
+    </ul>
+</div>
+
+</body>
+</html>
