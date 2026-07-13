@@ -35,6 +35,7 @@ Use these mappings to translate user questions before routing:
 | 已確立條件 / 法規彈性 | established conditions, EC, PACMP, PLCM, post-approval change |
 | 分析方法開發 / 分析目標概況 | analytical procedure development, ATP, MODR, PAR, ACS, SST |
 | 即時放行 / RTRT | real-time release testing, RTRT, multivariate model, PAT |
+| 快速微生物 / 替代微生物方法 / RMM / AMM | rapid microbiological method, RMM, alternative microbiological method, AMM, conventional method CMM, method suitability, comparability, LoD, LoQ |
 
 ---
 
@@ -83,7 +84,10 @@ Use these mappings to translate user questions before routing:
 | EM program / 環境監控 | TR13 (§3 Regulatory, §4 Qualification, §5a Trending) | TR90, PtC-12 §5, PtC-Isolators §3, PICS-Annex1 §9 |
 | EM for low bioburden / biologics | TR13-2 (§4a Framework, §4b Worked examples) | TR13, ISPE-Vol6 |
 | EM alert/action levels | TR13 §5a · PICS-Annex1 §9 (Tables 5-6) | FDA-Aseptic §02 |
-| RMM / rapid microbial methods | TR13 §5b | PICS-Annex1 §9 |
+| RMM / AMM / rapid / alternative microbial methods / 快速替代微生物方法 | TR33 (§4 Technology review, §5 Validation, §6 Secondary-site, §9-§11 Statistics) | TR13 §5b, PICS-Annex1 §9 |
+| RMM method validation (specificity/accuracy/LoD/LoQ/comparability) / 快速微生物方法驗證 | TR33 (§5.4 all characteristics, §9-§11 statistical methods) | — |
+| Rapid micro technologies (ATP/flow cytometry/rFC/MAT/MALDI-TOF) / 快速微生物技術 | TR33 (§4.2 Qualitative, §4.3 Quantitative, §4.4 Identification) | — |
+| AI / ML in microbiological testing / 人工智慧於微生物檢測 | TR33 (§7.1 Signal detection, §7.2 EM) | — |
 | Microbial investigation / OOS | TR88 (§4a-§4b Phase I, §5a-§5b Phase II) | TR13 §5b, TR70 |
 
 ### Contamination Control

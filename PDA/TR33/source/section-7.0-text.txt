@@ -1,0 +1,342 @@
+ Technical Report No. 33 (Revised 2026) © 2026 Parenteral Drug Association, Inc. 
+78 
+7.0 The Role of Artificial Intelligence in Microbiological Testing 
+AI is a scientific discipline established at the intersection of computer science, applied mathematics, and 
+engineering, dedicated to the development of systems capable of performing tasks traditionally requiring 
+human intelligence. From a functional perspective, AI can be defined as the simulation or approximation of 
+human intelligence in machines (90). Although AI incorporates ML and statistical methodologies, it remains 
+an independent and multidisciplinary field based on algorithm design, optimization, and logic-based 
+modeling (91). 
+In pharmaceutical manufacturing, AI is applied to support process control, enhance decision-making, and 
+strengthen quality operations. Within microbiological testing, AI contributes to improving the precision, 
+consistency, and efficiency of testing instruments, data analysis, and trending. 
+Applications of AI in microbiological testing include: 
+• 
+Within microbiological testing instruments, where it assists in interpreting signals for the 
+enumeration, detection, and identification of microorganisms, particularly in AMM/RMMs and 
+imaging-based technologies. 
+• 
+Outside the testing instruments, where it is used to analyze microbiological data (enumeration, 
+detection, and identification results) and to assist in decision-making, including trend analysis, 
+deviation detection, and contamination risk assessment. 
+• 
+In EM programs, where AI models process historical and real-time data to identify patterns 
+associated with microbial excursions and guide data-driven contamination control strategies. 
+From a regulatory perspective, the FDA has initiated several efforts to clarify expectations for the use of AI 
+in pharmaceutical development and manufacturing. In 2023, the FDA published the discussion paper 
+Artificial Intelligence in Drug Manufacturing which outlined potential regulatory considerations and invited 
+stakeholder feedback on how existing regulatory frameworks and current GMP requirements could apply to 
+AI-based models used in pharmaceutical manufacturing. This discussion paper served as an early step 
+toward developing a regulatory approach to AI-enabled technologies. Building on these efforts, the FDA 
+released the draft guidance Considerations for the Use of Artificial Intelligence to Support Regulatory 
+Decision-Making for Drug and Biological Products in 2025, which proposes a risk-based credibility 
+assessment framework for AI models used to generate data or information submitted in regulatory 
+applications. In parallel, the EMA published the draft guidance Annex 22: Artificial Intelligence, which 
+addresses the use of static AI systems in GMP-related processes where outputs may affect product quality, 
+patient safety, or data integrity. The document emphasizes clearly defined intended use, validation using 
+independent datasets, explainability, human oversight, and lifecycle monitoring to ensure that AI systems 
+remain controlled, auditable, and compliant within the GMP environment (92-94). 
+These published guidance documents reflect a growing recognition of the need to define clear expectations 
+for the validation, governance, and application of AI technologies within pharmaceutical development and 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+Technical Report No. 33 (Revised 2026) 
+© 2026 Parenteral Drug Association, Inc. 
+79 
+manufacturing. In this context, microbiological testing represents a critical area where AI can be responsibly 
+adopted in alignment with both scientific standards and evolving regulatory guidance. The integration of AI 
+into microbiological testing aligns with established scientific and regulatory frameworks, contributing to 
+improved data management, enhanced process understanding, and more robust microbial control. 
+7.1  Use of Artificial Intelligence in Signal Detection 
+Suppliers of microbiological methods have incorporated AI into the microbiological system to generate a 
+“reportable value” (e.g., microbial count, absent/present result, or identification) directly from raw 
+instrument data such as images or scatterplots.  
+For example, search algorithms are being used to screen databases with DNA patterns of known 
+microorganisms to map the observed DNA pattern from a test sample to one of the known DNA patterns in 
+a data library. Another example is the flow cytometry technology that provides two signals: light-scattering 
+and fluorescence from the individual microbial cells moving through the activators and detectors. The 
+detected signals are presented on a screen as a scatterplot that is used to define the enumeration of 
+microorganisms.  
+Traditional microbiological quality control methods rely on manual interpretation of culture plates, colony 
+morphology, or other analog signals generated during microbial detection assays. In many rapid 
+microbiological methods, signal interpretation has historically been performed using deterministic, rule-
+based algorithms embedded in analytical instruments. In contrast, AI models learn patterns directly from 
+large datasets rather than relying solely on predefined rules, enabling the identification of complex 
+relationships and subtle variations in digital microbiological data. When properly trained and validated, 
+these models support more consistent and scalable analysis of signals generated by modern microbiological 
+technologies. 
+Many rapid microbiological methods produce digital image data that are analyzed computationally. In 
+image-based detection systems, microbial colonies or cells are represented as arrays of pixels describing 
+variations in light intensity or color. Computer-vision algorithms analyze these pixel patterns to recognize 
+shapes, textures, and spatial features associated with microbial cells or colonies. Because microbial 
+structures exhibit characteristic morphological patterns, AI-based image analysis improves the consistency 
+and throughput of microbial detection compared with manual counting, particularly when large image 
+datasets are analyzed (95, 96). 
+Other rapid microbiological technologies generate multidimensional optical or molecular signals that also 
+benefit from AI-assisted interpretation. Flow cytometry–based microbial detection systems, for example, 
+measure light-scattering and fluorescence signals emitted by individual cells as they pass through optical 
+detectors. Machine-learning models analyze these signal patterns to differentiate microbial cells from 
+background particles and support automated enumeration of microbial populations (97, 98). Similarly, 
+genomic identification methods compare DNA sequences obtained from a test sample with reference 
+databases of known microorganisms; machine-learning approaches enhance these analyses by identifying 
+complex sequence patterns and improving classification performance within large genomic datasets (99). 
+Among computer-vision techniques used in microbiological image analysis, object-detection models such as 
+the “You Only Look Once” (YOLO) architecture are widely applied. YOLO analyzes an image by dividing 
+it into regions and simultaneously predicting the location and classification of objects within each region, 
+enabling rapid identification of microbial cells or colonies in complex images. Because the model evaluates 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+ Technical Report No. 33 (Revised 2026) © 2026 Parenteral Drug Association, Inc. 
+80 
+the entire image in a single computational step, it efficiently recognizes biological structures and spatial 
+patterns within pixel-based microscopy images (100). 
+For the validation of AMM/RMM, it is important to distinguish between two types of AI model approaches 
+that may be implemented within the instrument’s software: static (locked) and dynamic (adaptive) AI 
+models. 
+Static AI models are trained once on a fixed dataset and remain unchanged during the operational use of the 
+microbiological method unless the software and its embedded models are formally updated. These models 
+are typically built using algorithms trained on extensive datasets to distinguish between “noise” and true 
+microbial signals. The performance and reliability of a static model depend on the quality, 
+representativeness, and diversity of the data used during its initial training, which remains the responsibility 
+of the supplier. Because these models do not modify their parameters during routine use, their validation 
+follows the established experimentation and data analysis recommendations provided in this technical 
+report. If the instrument software is updated and the AI model is retrained, for example, by incorporating 
+new data to enhance performance, the changes must be assessed, and revalidation of the microbiological 
+method may be required to ensure continued compliance and reliability (93, 101). 
+Dynamic AI models, in contrast, are designed to continuously learn and adapt by updating their parameters 
+as new data is generated during routine use of the microbiological method. This ongoing learning process 
+can potentially enhance the model’s ability to accurately detect microbial signals over time, especially as the 
+dataset expands beyond the initial training population. While dynamic models offer the advantage of 
+adaptability and potential performance improvements, they also introduce additional validation challenges. 
+Continuous updates may lead to model drift or unintended shifts in performance, particularly affecting the 
+detection of less-represented or newly emerging microbial subpopulations (93). Consequently, 
+microbiological methods employing dynamic AI models require ongoing monitoring to confirm that model 
+performance is improving or remaining stable and not deteriorating in critical areas. 
+Actual AI development routinely incorporates explainability techniques to ensure that model predictions 
+remain interpretable and transparent, especially in regulated environments. Methods such as the Shapley 
+Additive Explanations and Local Interpretable Model-Agnostic Explanations help clarify how complex 
+models reach their conclusions by identifying the contribution of each input variable to the final prediction 
+(102). Additionally, frameworks like the Open Neural Network Exchange provide a standardized format for 
+representing AI models across platforms, supporting both model portability and explainability (103). These 
+tools are particularly valuable for dynamic AI models in microbiological testing, ensuring reliable 
+performance monitoring and regulatory transparency. 
+The current guidance provided in this document can be applied to determine the performance of a 
+microbiological method employing AI models at a given point in time. However, dynamic AI models 
+additionally require regular verification of their operational behavior and performance trends. Defining 
+standardized procedures for ongoing monitoring, acceptance criteria, and revalidation for dynamic AI 
+models remains an active area of research, and specific regulatory expectations for this type of application 
+are still evolving (93, 104). It should be noted that certain regulatory bodies have adopted a more 
+conservative preliminary position regarding dynamic AI models in GMP-critical applications; notably, the 
+draft EU GMP Annex 22: Artificial Intelligence (EMA, 2025) currently limits its scope to static, 
+deterministic models and recommends that dynamic models should not be used in critical GMP 
+applications. Regulatory expectations in this area, however, continue to evolve, and other frameworks, such 
+as the FDA draft guidance on the use of AI to support regulatory decision-making (85) and the FDA Total 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+Technical Report No. 33 (Revised 2026) 
+© 2026 Parenteral Drug Association, Inc. 
+81 
+Product Lifecycle approach for AI/ML-based Software as a Medical Device, do not preclude the use of 
+dynamic models provided that appropriate validation, monitoring, and lifecycle controls are in place. 
+7.2 Use of Artificial Intelligence in Environmental Monitoring  
+AI is also being used on sets of data (or reportable values) that are generated by the microbiological method 
+to obtain a better understanding of the observed data and to assist with the decision-making process. An 
+active application area is EM, where it is important to know when a production or testing environment is 
+starting to show a number of microorganisms that is unlikely to occur under normal use of the environment. 
+An upward change in the number of microorganisms may increase the risk of product contamination. 
+Indeed, Section 2.1 of EU GMP Annex 1 states that:  
+Facility, equipment and process should be appropriately designed, qualified and/or 
+validated and where applicable, subjected to ongoing verification according to the relevant 
+sections of the Good Manufacturing Practices (GMP) guidelines. The use of appropriate 
+technologies (e.g. Restricted Access Barriers Systems (RABS), isolators, robotic systems, 
+rapid/alternative methods and continuous monitoring systems) should be considered to 
+increase the protection of the product from potential extraneous sources of 
+endotoxin/pyrogen, particulate and microbial contamination such as personnel, materials 
+and the surrounding environment, and assist in the rapid detection of potential contaminants 
+in the environment and the product.  
+EM is part of the field of statistical process control, where three main activities are being implemented 
+(105):  
+1. Monitoring the process (here, the environment)  
+2. Detecting deviations from what is considered in-control 
+3. Taking corrective action in response to an alarm signal to bring the environment back in control 
+Thus, part of EM can be viewed as a rule-based decision system for detecting an abnormal situation, and 
+specific AI techniques for anomaly detection can be used, such as:  
+• 
+Isolation Forests (effective for outlier detection in microbial count trends) 
+• 
+Autoencoders (unsupervised learning for anomaly detection in complex datasets) 
+• 
+Bayesian Networks (probabilistic models for uncertainty management in EM) 
+The primary AI approaches for EM, including their use cases, data requirements, and validation 
+considerations, are summarized in Table 7.2-1.
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+ Technical Report No. 33 (Revised 2026) © 2026 Parenteral Drug Association, Inc. 
+82 
+Table 7.2-1 Artificial Intelligence Approaches for Environmental Monitoring 
+Summary of AI Approaches for Environmental Monitoring 
+Supervised Learning (e.g., Random Forest, Gradient Boosting) 
+Typical EM Use Case 
+Predicting out-of-trend (OOT)/out-of-action (OOA) events, prioritizing investigations, multivariable risk scoring from 
+historical EM metadata. 
+When Most 
+Appropriate 
+When a site has sufficient labeled historical events and stable definitions of excursions/deviations. 
+Main Advantages 
+Good predictive performance on complex multivariable data; tree-based models are often favored in manufacturing QA 
+because they handle high-dimensional sensor/process data well; some interpretability is possible through feature 
+importance. 
+Main Trade-Offs 
+Requires enough representative labeled data; can overfit site-specific patterns; false positives may rise if the event class is 
+rare or process conditions shift. 
+Validation 
+Considerations 
+Use temporally separated training/test data or cross-validation; assess precision/recall, not accuracy alone; perform 
+external/site-specific revalidation and lifecycle review because pharmaceutical models require risk-based validation and 
+maintenance. 
+Peer Reviewed 
+Reference Examples 
+Explainable Machine Learning for the Regulatory Environment: A Case Study in Micro-droplet Printing by D. Ryan, E. Harris, and 
+G. O’Connor (2024) 
+Machine Learning Algorithms for Manufacturing Quality Assurance: A Systematic Review of Performance Metrics and 
+Systematic Review of Performance Metrics and Applications by A. Karim Kausik, A. Bin Rashid, R. Baki, and M. Maktum 
+(2025) 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+Technical Report No. 33 (Revised 2026) 
+© 2026 Parenteral Drug Association, Inc. 
+83 
+Summary of AI Approaches for Environmental Monitoring 
+Unsupervised Learning (e.g., k-means, DBSCAN, clustering-based anomaly detection) 
+Typical EM Use Case 
+Detecting novel anomalies, shifts in contamination patterns, spatial or temporal clustering of atypical EM behavior when 
+labels are limited. 
+When Most 
+Appropriate 
+When labeled OOT events are scarce, inconsistent, or unavailable; useful for exploratory surveillance and early signal 
+detection. 
+Main Advantages 
+Does not require labeled deviations; can identify previously unrecognized patterns or rare states; useful when excursions 
+are infrequent. 
+Main Trade-Offs 
+More sensitive to preprocessing and parameter choices; cluster meaning is not always obvious; higher review burden 
+because anomalies still need SME interpretation. DBSCAN is attractive when noise/outliers are expected, whereas k-
+means is simpler but requires choosing cluster number and assumes more compact cluster structure. 
+Validation 
+Considerations 
+Predefine anomaly-review rules; test robustness to hyperparameters and time windows; compare outputs against known 
+historical excursions/trends and expert assessment before routine deployment. 
+Peer Reviewed 
+Reference Examples 
+Detection and Diagnosis of Process Fault Using Unsupervised Learning Methods and Unlabeled Data by A. Rahoma, S. Imtiaz, 
+S. Ahmed, and F. Khan (2023). 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+ Technical Report No. 33 (Revised 2026) © 2026 Parenteral Drug Association, Inc. 
+84 
+Summary of AI Approaches for Environmental Monitoring 
+Hybrid/Staged Strategy (e.g., unsupervised detection followed by supervised classification or transfer learning) 
+Typical EM Use Case 
+Early detection of atypical states followed by risk ranking or classification; adapting models across lines, rooms, or 
+equipment with data shifts. 
+When Most 
+Appropriate 
+When sites have mixed data maturity: many unlabeled records, few confirmed events, or changing operating conditions 
+between campaigns/areas. 
+Main Advantages 
+Combines strengths of both approaches: unsupervised methods discover new patterns, while supervised or transfer 
+components improve prioritization and robustness under data shift. Hybrid methods are also discussed as promising for 
+better prediction in bioprocess settings. 
+Main Trade-Offs 
+More complex to implement and govern; more moving parts means more documentation, change control, and validation 
+effort. 
+Validation 
+Considerations 
+Validate each stage separately and end-to-end; assess transferability across equipment/contexts; include model 
+maintenance, drift monitoring, and retraining triggers in the lifecycle plan. 
+Peer Reviewed 
+Reference Examples 
+Anomaly Detection for Drug Product Manufacturing Considering Data Limitations and Shifts: A Case Study on Industrial Freeze-
+dryers by G. Lombardini et. al. (2025) 
+Explainable Machine Learning for the Regulatory Environment: A Case Study in Micro-droplet Printing by D. Ryan, E. Harris, and 
+G. O’Connor (2024) 
+Review on Machine Learning-based Bioprocess Optimization, Monitoring, and Control Systems by P. Pratim Mondal et. al. 
+(2023) 
+ 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+Technical Report No. 33 (Revised 2026) 
+© 2026 Parenteral Drug Association, Inc. 
+85 
+Conventionally, EM data is collected through various sampling methods, including active air, surface 
+contact plates, settle plates, and personnel monitoring. The collected data is typically evaluated using control 
+charts based on the Poisson or negative-binomial distribution, which incorporate statistically derived limits 
+reflecting the natural variation inherent in production or testing environments due to common causes. When, 
+at a specific point in time, the enumeration exceeds the action limit (generating an out-of-control (OOC) 
+signal) or shows an adverse trend (OOT signal), for example, through a higher frequency of alert limit 
+excursions or a systematic increase in counts, it may indicate a change in the state of the controlled 
+environment (106). However, AI models can offer a more flexible and predictive approach by analyzing 
+complex, high-dimensional, and time-dependent patterns in EM data that conventional Poisson-based 
+control charts may not detect. 
+The cause of a potential change in the microbial burden depends on the characteristics of the environment 
+under investigation. For example, OOC or OOT signals in a cleanroom may be caused by such factors as the 
+opening of a barrier system, a HEPA-filter integrity failure, or a reduction in laminar airflow velocity. In 
+pharmaceutical water systems, potential causes may include diminished UV lamp performance, biofilm 
+formation, or leaks in the distribution system since the last sanitization. 
+To enhance the early detection and characterization of such deviations, AI techniques are increasingly being 
+applied in EM data analysis. A practical way to present these methods is to distinguish them by data 
+availability and intended use. Supervised models, such as Random Forest and Gradient Boosting, are most 
+appropriate when large, well-labeled historical EM datasets are available for excursion prediction or risk 
+scoring (107). In contrast, unsupervised approaches like k-means or Density-Based Spatial Clustering of 
+Applications with Noise (DBSCAN) are more suitable when labeled OOT events are scarce and the goal is 
+to detect unrecognized anomalies (108). Hybrid strategies may be preferable for mature EM programs as 
+they combine exploratory detection with targeted classification, though they require more rigorous lifecycle 
+validation. 
+Moreover, recurrent neural networks, particularly Long Short-Term Memory (LSTM) models, are well 
+suited for analyzing sequential EM datasets, enabling the prediction of future excursions or trends by 
+capturing temporal dependencies and latent trends in microbial counts. These AI-driven methods support 
+proactive contamination control by identifying potential system disturbances before traditional control 
+charts would signal an alert. Integrating these AI techniques into EM programs offers the potential to move 
+from reactive deviation management to predictive risk-based control strategies. Their application enhances 
+sensitivity to subtle environmental changes while reducing false positives caused by expected background 
+variability, thus improving contamination risk management and overall operational robustness. 
+Many companies are considering or are transitioning to microbial particle-counters for EM that generate 
+counts in an almost continuous manner, providing real-time and high-frequency data. High-frequency data 
+is often considerably more erratic than data obtained from conventional approaches, which is typically 
+collected at much lower frequencies (e.g., daily). In continuous monitoring, small and transient changes to 
+the environment immediately affect the datastream and would not be captured when data is accumulated 
+over longer intervals as such fluctuations tend to average out. As a result, these minor, short-term 
+aberrations complicate the application of conventional control charts on continuous datastreams, as they 
+may generate frequent OOT or OOC signals. Control charts typically assume a Poisson or negative-
+binomial distribution for the observed data that remains constant over time while the environment is in 
+control. However, normal operational activities often introduce additional peaks and fluctuations that violate 
+this assumption of a stable, time-independent distribution. 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+ Technical Report No. 33 (Revised 2026) © 2026 Parenteral Drug Association, Inc. 
+86 
+To address these challenges, AI algorithms specifically designed for automatic anomaly detection in high-
+frequency time-series data are increasingly applied in industrial and pharmaceutical monitoring 
+environments. One widely used method is the Isolation Forest technique, which isolates anomalies by 
+randomly selecting features and splitting the dataset into a tree-like structure. Since outliers differ markedly 
+from normal patterns, they require fewer splits to be isolated, making this approach highly efficient for real-
+time anomaly detection in continuous monitoring systems (109). Another effective method involves LSTM 
+Autoencoders, which are neural-network architectures trained to learn and reconstruct normal sequential 
+patterns. When unexpected anomalies occur, these models fail to reconstruct the sequence accurately, 
+resulting in elevated reconstruction errors that act as reliable signals for deviations. This approach is 
+particularly suitable for detecting subtle or emergent shifts in continuous industrial process-monitoring, 
+environmental-contamination data, network security, and biomedical signals (110). 
+One approach for monitoring environments with high-frequency data is to aggregate the data to a larger 
+period of time (total or average number of counts per day) and then use conventional control charts. The 
+small aberrations will be averaged out over longer periods, assuming a constant distribution is more likely. 
+However, aggregation would not maximize the available information. Instead, ML methods may be applied 
+to the high-frequency datastream to learn what patterns of data are considered in-control (i.e., normal 
+variation even if it would lead to signals in conventional control charts) and what patterns of data are 
+considered OOC (i.e., signals beyond the normal aberrations or outlier results). The most suitable ML 
+approaches for EM are approaches that could detect outliers in data sets. The reason is that separating in-
+control from OOC situations is very similar to detecting outliers or erratic data patterns. 
+ 
+ 
+ 
+ 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.

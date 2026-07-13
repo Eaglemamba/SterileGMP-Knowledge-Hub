@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR33 - Section 5.2-5.4: Equipment Qualification, Primary Validation & Comparability Testing</title>
+    <link rel="stylesheet" href="../../../template.css">
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 5.2-5.4 Equipment Qualification, Primary Validation &amp; Comparability Testing</h1>
+    <div class="subtitle">設備與軟體確效、初級驗證、方法適用性與比對測試</div>
+    <div class="page-info">PDA Technical Report No. 33 (Revised 2026) | p43-p50</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 AMM/RMM（Alternative or Rapid Microbiological Method，替代/快速微生物方法）系統在正式方法驗證前，必須先完成 Equipment Qualification（設備確效，IQ/OQ/PQ）與 Computer System Validation（CSV，電腦系統驗證）的整體框架與文件要求</li>
+        <li>釐清 Primary Validation（初級驗證）、Method Suitability（方法適用性）、Comparability Testing（比對測試）三個驗證階段各自的責任歸屬（供應商 vs 終端使用者）、執行時機與驗證標準的差異</li>
+        <li>掌握定性（qualitative）與定量（quantitative）AMM/RMM 各自需要評估的驗證指標（specificity、LoD、LoQ、accuracy、repeatability、ruggedness、robustness 等）</li>
+        <li>建立對「何時需要終端使用者自行重做初級驗證」「何時可援引供應商數據」的風險判斷邏輯，並理解統計比對方法（TOST、非劣性檢定）在準確度評估中的角色</li>
+    </ul>
+</div>
+
+<!-- ============================================ -->
+<!-- 5.2 EQUIPMENT AND SOFTWARE QUALIFICATION AND VALIDATION (INTRO) -->
+<!-- ============================================ -->
+<div class="section-title"><strong>5.2 Equipment and Software Qualification and Validation 設備與軟體確效與驗證</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>The functionality of an <span class="key-term">AMM/RMM</span> involves the entire system; therefore, prior to validating the AMM/RMM, the testing equipment or instrumentation should be <span class="key-term">qualified</span>, and the associated software/computer system should be <span class="key-term">validated</span>. For this process, an adaptation to the Analytical Equipment Qualification Model may be used (76).</p>
+
+        <p>The steps described in Section 5.2 provide a useful framework that can be applied to the equipment qualification and method validation of a complete system, that is, all the components of the new test method including any instrumentation, software, firmware, and reagents. This will guide the end user through the process steps involved both in the decision-making and the practical work required for implementing a new AMM/RMM analytical instrument and associated method(s).</p>
+
+        <div class="quote-box">
+            Note: The framework provided here reflects a highly detailed approach, and some end users may not consider some of the deliverables a requirement for commercial off-the-shelf equipment (e.g., conducting a <span class="key-term">design qualification</span>). As such, the overall validation strategy for a particular method should be evaluated in a risk assessment and documented in the validation plan (see Section 5.2.1).
+        </div>
+
+        <p>Not all the activities in each section need to be carried out in serial order; as such, parallel path activities can occur (e.g., combining the <span class="key-term">installation qualification (IQ)</span> and <span class="key-term">operational qualification (OQ)</span>, if appropriate). However, some activities should not begin until previous activities have been completed, for example, the <span class="key-term">PQ</span> should be initiated only after the OQ acceptance criteria have been met, and this phase of the validation plan has been reviewed and approved.</p>
+
+        <p>Finally, it may not be possible to verify every feature associated with every piece of equipment. Therefore, a decision should be made regarding the relevance of testing those features of the system (e.g., during the IQ and OQ) that will not be used during the routine use of the new test method. One way to address this type of concern is to obtain a certificate of conformance for those features within the instrument received from the supplier of the system. Alternately, the validation plan should specifically exclude those features and the reason they will not be tested. For example, a system may offer the option to document assay parameters via a thermal printer or a regular printer. Depending on which option an end user decides to pursue, the other may not be applicable and, therefore, not in scope for testing. Similarly, if a computer function will not be used routinely, then that computer function may not need to be tested during computerized system validation.</p>
+
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Equipment Qualification（設備確效）vs Method Validation（方法驗證）：</strong>這是兩個層級不同但緊密相扣的活動。設備確效證明的是「這台儀器/軟體本身」符合規格、能可靠運作；方法驗證證明的是「用這台已確效的儀器所執行的微生物方法」能達到預期的偵測、計數或鑑別目的。TR 33 的邏輯是：先確效硬體與軟體平台（5.2 節），再驗證架構在其上的分析方法（5.3-5.4 節）——順序不能顛倒，否則驗證結論會建立在一個未經證實可靠的平台上。</p>
+            <p><strong>為何不必逐項循序驗證：</strong>原文明確指出 IQ 與 OQ 可以並行（parallel path），但 PQ 必須等 OQ 驗收合格且經審核核准後才能啟動。這反映了確效邏輯的因果順序——設備先「裝對」，才能證明「操作範圍內正確運作」，最後才能證明「長期持續產出正確結果」。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>把整套 AMM/RMM 系統想像成一輛要投入營運的計程車：<strong>設備確效（IQ/OQ/PQ）</strong>就像「驗車」——先確認車子照規格正確組裝交車（IQ），再上路試驗煞車、轉向、儀表板功能是否在安全範圍內運作（OQ），最後長期載客觀察油耗與故障率是否穩定達標（PQ）。而<strong>方法驗證</strong>則是這輛車「能不能勝任載客生意」——即使車子本身驗車合格，也還要證明司機的駕駛技術、路線規劃（也就是微生物偵測方法本身）能安全準確地把乘客（微生物訊號）送到目的地。車子驗車不合格，討論駕駛技術毫無意義；同理，設備未確效，方法驗證的結論也站不住腳。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>原文特別提醒：「不需要驗證每一項功能」——只要那項功能在日常操作中不會被使用（例如熱感應印表機 vs 一般印表機二選一時，未採用的那項可不必測試），就可以在驗證計畫中明確排除並說明理由，或改為取得供應商的「符合性證明」（certificate of conformance）。這是<span class="key-term">Quality Risk Management (QRM)</span> 原則在確效範疇界定上的實際應用——把驗證資源集中在真正會被使用、會影響病人安全與產品品質的功能上，而非機械式地測試每一個按鈕。對 CDMO 而言，這也直接影響驗證方案（Validation Protocol）的篇幅與執行時程，範疇界定不清楚往往是稽核時最常被挑戰的缺失之一。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若某 AMM/RMM 儀器同時支援藍牙資料傳輸與 USB 隨身碟匯出兩種資料輸出方式，但貴公司僅計畫使用 USB 匯出，應如何在驗證計畫中處理藍牙功能的測試範疇？</li>
+                <li>為什麼 PQ 必須等到 OQ 驗收標準通過且經審核核准後才能啟動，而不能與 OQ 同時並行執行？</li>
+            </ol>
+        </div>
+
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- 5.2.1 -->
+<!-- ============================================ -->
+<div class="section-title"><strong>5.2.1 Documentation of the Validation Protocol 驗證方案之文件化</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>The execution of the validation plan, test results, and verification that acceptance criteria have been met must be adequately documented. Accordingly, relevant worksheets or checklists may be incorporated into each of the validation plan phases (i.e., <span class="key-term">IQ, OQ, PQ</span>).</p>
+
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Validation Protocol（驗證方案）：</strong>是一份預先核准的文件，載明驗證的目的、範疇、測試方法、驗收標準與責任分工。原文雖然只有短短一段，但背後的規範重點是「執行結果必須被完整記錄下來，且能追溯回驗收標準」——這是 <span class="key-term">Good Documentation Practice (GDocP)</span> 良好文件管理規範在確效領域的具體展現。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>就像考駕照時監考官手上的評分表——每一個測試項目（倒車入庫、路邊停車）都有預先訂好的通過標準，監考官必須逐項打勾記錄，而不是憑印象口頭說「你及格了」。IQ/OQ/PQ 各階段的 worksheet/checklist 就是這張評分表，確保每個驗收標準都有白紙黑字的證據支持。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>稽核員審查確效資料時，最常見的缺失並非「測試沒做」，而是「做了但沒留下可追溯的紀錄」——例如缺少簽名日期、缺少原始數據附件、或驗收標準與方案不一致。將 worksheet/checklist 直接嵌入 IQ/OQ/PQ 各階段的方案中，可以強迫執行人員在測試當下就完成紀錄，降低事後回補（back-filling，屬於資料完整性風險）的機率。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若某 OQ 測試在執行當下未使用 checklist、而是測試完成數週後才憑記憶補寫報告，這會產生哪些資料完整性（data integrity）風險？</li>
+            </ol>
+        </div>
+
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- 5.2.2 -->
+<!-- ============================================ -->
+<div class="section-title"><strong>5.2.2 Documentation of the Working Procedure 操作程序之文件化</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Written procedures should be developed that specify the appropriate use of equipment or instrumentation, method workflow, and other work instructions to allow for the proper and consistent execution of the validation plan. These procedures may be captured in qualification protocols or standard operating procedures, depending on the end user's policies. Certain procedures may need to be in place and approved for certain phases of the validation plan. The need for effective instructions is important so that personnel can understand exactly how to perform the new test and operate and maintain the associated instrumentation.</p>
+
+        <p>Additionally, the analysts who will conduct the validation and/or operate the system should be appropriately qualified for these purposes. Therefore, training and developmental studies should be completed before the validation activities begin; such training may be conducted in-house (usually during the initial commissioning of the equipment) and/or at the supplier's own training facility, when available. Appropriate documentation of personnel training is important to verify compliance with regulatory requirements.</p>
+
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Working Procedure（操作程序）：</strong>指的是 Standard Operating Procedure (SOP，標準作業程序) 層級的書面指引，說明如何正確操作設備、執行方法工作流程。與 5.2.1 的 Validation Protocol 不同，這裡談的不是「如何驗證」，而是「日常怎麼操作」——兩者必須一致，否則驗證時所用的操作方式與日後例行操作方式不同，驗證結論就無法外推到常規使用。</p>
+            <p><strong>人員資格確效（Personnel Qualification）：</strong>原文特別強調操作人員本身也需要「適當資格化」，且訓練必須在驗證活動開始前完成——這意味著人員訓練紀錄本身就是驗證套件（validation package）不可或缺的一部分證據。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>如同醫院引進一台新的洗腎機：光是機器通過安裝與功能測試還不夠，醫院還必須有書面的操作手冊（SOP）教護理人員如何正確使用，並且要求每一位操作護理師先完成原廠或院內認證訓練並簽署紀錄，才能上線操作病人。沒有受訓紀錄的護理師即使技術再好，稽核時仍會被視為「未經確效授權的操作人員」。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>訓練必須「先於」驗證活動開始，而非驗證結束後才補訓——因為如果操作人員在 PQ 階段才第一次接觸儀器，任何操作失誤產生的數據偏差，將無法判斷究竟是儀器/方法本身的問題，還是人員操作不熟練造成的干擾，進而污染整個驗證結論。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若驗證方案中使用的操作步驟，與日後 QC 實驗室日常執行的 SOP 步驟不完全一致，會產生什麼問題？</li>
+                <li>為什麼供應商原廠訓練紀錄也需要被納入驗證套件的文件範圍？</li>
+            </ol>
+        </div>
+
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- 5.2.3 -->
+<!-- ============================================ -->
+<div class="section-title"><strong>5.2.3 Computer System Validation and System Integration 電腦系統驗證與系統整合</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>For equipment or instruments that contain a computerized system, a <span class="key-term">computerized system validation</span> must be included during the equipment qualification. As per FDA Guidance for Industry and Food and Drug Administrative Staff: Computer Software Assurance for Production and Quality System Software, software validation is:</p>
+
+        <div class="quote-box">
+            &hellip;confirmation by examination and provision of objective evidence that software specifications conform to user needs and intended uses, and that the particular requirements implemented through software can be consistently fulfilled (77).
+        </div>
+
+        <p><span class="key-term">System integration</span> usually refers to information technology (IT), or computer systems, and involves bringing together all of the component subsystems into a single operating system and ensuring that all of the components of the system function appropriately. If the AMM/RMM technology requires connection to a separate data management storage and retrieval system, such as a <span class="key-term">LIMS</span> or similar platform, system integration and validation between those various components may be required. In cases where the LIMS supplier assumes responsibility for the interface, the instrument supplier may provide only the instrument output in a predefined, documented format, while the LIMS supplier develops, configures, and validates the interface logic independently.</p>
+
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Computer System Validation (CSV，電腦系統驗證)：</strong>凡儀器內含電腦化系統，就必須進行 CSV，證明軟體規格符合使用者需求與預期用途，且透過軟體實作的特定需求能被「持續一致地達成」。這與單純的軟體測試不同——CSV 強調的是「一致性」與「可重現性」，而非只是一次性通過測試。</p>
+            <p><strong>System Integration（系統整合）：</strong>當 AMM/RMM 儀器需要與 <span class="key-term">Laboratory Information Management System (LIMS)</span> 等資料管理平台對接時，除了儀器本身的 CSV，還需驗證「介面」本身——資料從儀器傳輸到 LIMS 的過程是否正確、完整、未遭竄改。原文特別指出責任可能分工：儀器供應商只需提供預先定義格式的輸出，介面邏輯的開發與驗證則由 LIMS 供應商獨立完成——這種責任劃分必須在 URS 與驗證計畫中清楚界定，避免出現「介面到底誰負責驗證」的責任真空地帶。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像銀行的 ATM 提款機系統：ATM 主機本身的軟體（計算金額、判讀晶片卡）需要驗證（相當於 CSV），但 ATM 還要把交易紀錄即時傳送到銀行後端的核心帳務系統——這段「傳輸介面」也必須單獨驗證，確保金額不會在傳輸過程中被錯誤加總或遺失。如果 ATM 由甲廠商製造、核心帳務系統由乙廠商開發，兩者之間「誰負責驗證這段介面」就必須事先明確約定，否則出現金額對不上的問題時，兩家廠商可能互踢皮球。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>CSV 與系統整合驗證常見的稽核缺失，是企業只驗證了儀器本身的軟體，卻忽略了「儀器 → LIMS」這段資料傳輸介面的驗證——一旦數據在傳輸過程中發生截斷、格式錯位或延遲，即使儀器端數據正確，最終記錄在 LIMS 裡的結果仍可能是錯的，而這正是 <span class="key-term">21 CFR Part 11</span> 電子紀錄可靠性所關注的核心風險之一。此議題與 Section 5.2.5（OQ 階段的資料完整性、稽核軌跡測試）緊密相關。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>某 CDMO 引進一台快速微生物偵測儀，並要求其結果自動上傳至公司 LIMS 供 QC 放行使用。若儀器供應商僅承諾驗證儀器本身的軟體，而未對「儀器輸出格式與 LIMS 讀取邏輯」的介面進行驗證，該 CDMO 的 QA 應在 URS 階段就明確要求：（1）介面驗證責任歸屬（供應商或 LIMS 廠商或雙方共同執行）、（2）介面測試腳本涵蓋資料傳輸完整性與異常情境（如斷線重傳）、（3）最終由終端使用者審查並核准介面驗證報告，才能將該儀器數據用於批放行決策。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若某 AMM/RMM 儀器僅獨立使用、不連接任何 LIMS 或外部資料庫，是否仍需要進行系統整合驗證？為什麼？</li>
+                <li>當儀器供應商與 LIMS 供應商對介面驗證責任認知不一致時，終端使用者應如何在 URS/驗證計畫中預先釐清？</li>
+            </ol>
+        </div>
+
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- 5.2.4 -->
+<!-- ============================================ -->
+<div class="section-title"><strong>5.2.4 Equipment Installation Qualification 設備安裝確效</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><span class="key-term">IQ</span> studies should establish that the equipment is properly and safely installed with the correct utilities in an appropriate laboratory or, in some cases, in a manufacturing environment. A significant part of IQ is a verification that all new equipment was received and meets the design specifications for the equipment ordered. Any exceptions to the original specifications should be documented, showing the corrected specification and approvals. Also, it should note that an IQ is instrument-specific and portions of an IQ may need to be repeated if the equipment is moved within the laboratory or to another user site. An exception to this rule may be for instrumentation designed to be portable.</p>
+
+        <p>IQ studies should be performed in accordance with an approved protocol. Examples of the fundamental types of information to be included in an IQ document include system descriptions, utility requirements, operating environmental conditions, safety features, calibration requirements, software to be installed, and supporting documentation (e.g., technical manuals, blueprints, drawings).</p>
+
+        <p>Computerized or microprocessor-controlled systems should also document important features such as dip-switch settings, cabling connections, microprocessor chips used, computer configuration, any special features of the equipment required, printer connections, buffers, files, and memory requirements. In addition, the software required and its appropriate version numbers should be documented, including any operating systems used by the computer.</p>
+
+        <p>The IQ may be carried out by the supplier during the initial installation or system integration of the equipment and witnessed by the end user. However, depending on the extent of the supplier's IQ, as compared with receiving the end user's validation requirements, a separate and more extensive IQ may also be performed by the end user.</p>
+
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Installation Qualification (IQ，安裝確效)：</strong>證明設備已「正確且安全地」安裝，公用設施（utilities）配置正確，且收到的設備符合原始訂購規格。IQ 具有「儀器專屬性」（instrument-specific）——同型號的兩台儀器仍須各自完成 IQ，且若設備日後被搬動到實驗室內其他位置或另一使用場所，部分 IQ 項目可能需要重做（可攜式設計的儀器例外）。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>好比新家裝設中央空調：師傅安裝完成後，需要確認的不是「冷氣冷不冷」（那是後續的操作測試），而是「機型與訂單規格一致嗎？電源電壓對嗎？排水管接對了嗎？說明書、保固文件都在嗎？」。如果日後把室內機搬到另一個房間，這些安裝確認（電源、排水、配管）通常需要重新檢查一次，因為安裝環境改變了；但如果買的是一台可攜式移動空調，設計上本來就是要到處搬，就不需要每次搬動都重新走一遍安裝檢查流程。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>對於內含電腦化系統或微處理器控制的設備，IQ 文件必須記錄軟體版本號、作業系統版本、韌體設定等資訊——這份紀錄之後會成為變更管理（change control）的基準線（baseline）：日後若供應商釋出軟體更新，QA 可以立即比對「這次更新是否偏離了原始 IQ 建立的版本基準」，進而判斷是否需要重新確效（見 Section 5.2.3 CSV 與軟體更新管理的關聯）。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>某公司向供應商採購兩台相同型號的 AMM/RMM 儀器，分別安裝於 A、B 兩間實驗室。是否可以只對其中一台執行 IQ，另一台援引相同報告？為什麼？</li>
+                <li>若儀器的 IQ 由供應商執行並由終端使用者「見證」（witnessed），這與終端使用者「獨立執行」一份更完整的 IQ，兩者的差異與各自風險為何？</li>
+            </ol>
+        </div>
+
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- 5.2.5 -->
+<!-- ============================================ -->
+<div class="section-title"><strong>5.2.5 Equipment Operational Qualification 設備操作確效</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>The <span class="key-term">OQ</span> verifies and documents that relevant system parts or functionalities (and, if applicable, associated software) work within predetermined limits when operated in accordance with its operational procedures. Typical OQ parameters may, for instance, be verification of specified heating or cooling rates and adequate performance of probes, sensors, and optical systems or proper functioning of the user interface.</p>
+
+        <p>Furthermore, there is an expectation that any system that will be used to generate electronic records or electronic signatures is appropriately validated for this use, for example, to generate records that are accurate and reliable and can be appropriately maintained and accessed in compliance with the expectations in <span class="key-term">21 CFR Part 11</span>: Electronic Records; Electronic Signatures. Other examples of computer testing that may be performed during the OQ include, but are not limited to, administrator control and operator access, user ID and password setup, user and system lockout, data integrity, audit trails, report generation, system integration, data transfer and server communication, data backup and recovery, database management and integrity, and interference (radio frequency, electromagnetic or wireless). In addition to 21 CFR Part 11, guidance and requirements regarding the validation of computer systems may be found in <span class="key-term">EU Annex 11</span>: Computerised Systems and ISPE Good Automated Manufacturing Practice (<span class="key-term">GAMP</span>) (78-80).</p>
+
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Operational Qualification (OQ，操作確效)：</strong>證明設備相關組件與功能（包括軟體）在依照操作程序運作時，能在「預先設定的限度內」正常運作。與 IQ 不同，OQ 關注的是「動態運作表現」而非「靜態安裝正確性」——例如加熱/冷卻速率、感測器與光學系統效能、使用者介面功能等。</p>
+            <p><strong>電腦系統相關 OQ 項目：</strong>原文列出了一份相當完整的電腦系統測試清單，涵蓋管理員權限與操作員存取控制、使用者帳號密碼設定、使用者/系統鎖定機制、<span class="key-term">data integrity（資料完整性）</span>、<span class="key-term">audit trails（稽核軌跡）</span>、報告產出、系統整合、資料傳輸與伺服器通訊、資料備份與復原、資料庫管理與完整性，以及無線/射頻/電磁干擾測試。這份清單本質上就是把 <span class="key-term">21 CFR Part 11</span> 對電子紀錄與電子簽章的要求，逐項轉譯成可執行的 OQ 測試項目。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>延續空調安裝的比喻：IQ 只確認「裝對了」，OQ 則是實際開機，測試冷氣是否能在設定溫度範圍內穩定製冷、風扇轉速是否符合各檔位規格、遙控器每個按鈕功能是否正確反應。若這台空調還具備「連網記錄用電量」的智慧功能，OQ 還必須測試帳號登入、資料是否正確回傳雲端、資料是否會被竄改——這就相當於原文中電子紀錄/電子簽章、稽核軌跡、資料備份等一長串電腦系統測試項目。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>凡是會產生電子紀錄或電子簽章的系統，21 CFR Part 11 要求其必須被「適當驗證」，確保紀錄「準確、可靠，且能依規定被維護與存取」。稽核軌跡（audit trail）的測試尤其關鍵——必須驗證系統能記錄「誰、何時、修改了什麼」，且該紀錄本身不可被使用者刪除或竄改。此外，原文也提醒需考慮無線電/電磁干擾測試，這在無塵室或多台儀器並存的實驗室環境中，是容易被忽略但實際會影響數據可靠性的風險來源。EU Annex 11 與 ISPE GAMP 提供了與 21 CFR Part 11 互補、但各有側重的電腦系統驗證框架，跨國營運的 CDMO 應同時參照兩者，以滿足不同法規機關的期待。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若某 AMM/RMM 儀器的軟體僅供內部記錄用途、不會產生任何提交給法規機關的電子紀錄，是否仍需要進行完整的 21 CFR Part 11 相關 OQ 測試？</li>
+                <li>為什麼「使用者鎖定機制」與「稽核軌跡」被特別列為 OQ 階段必須測試的電腦系統項目？若這些功能測試失敗，可能造成什麼後果？</li>
+            </ol>
+        </div>
+
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- 5.2.6 -->
+<!-- ============================================ -->
+<div class="section-title"><strong>5.2.6 Equipment Performance Qualification 設備性能確效</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><span class="key-term">PQ</span> provides documented confirmation that the equipment, as installed and operated in accordance with operational procedures, consistently performs in accordance with predetermined criteria to yield appropriate results. This may be demonstrated, for instance, through application of an experimental setup that may encompass an appropriate selection and detection limit of test microorganisms.</p>
+
+        <p>Qualification can also be demonstrated by running assay controls depending on the technology (e.g., nucleic acid standards such as exogenous and endogenous positive controls, no template, no amplification controls). For the purposes of PQ, the assay controls may be considered representative samples of actual product testing for the method. The parameters selected should be based on the method's detection system and suitability acceptance criteria. Normally, the supplier of the equipment will perform these types of studies to generate &ldquo;<span class="key-term">primary validation</span>&rdquo; data to demonstrate that the equipment is capable of detecting, enumerating, and identifying microorganisms, depending on the intended application(s).</p>
+
+        <p>Microorganisms suspended in a suitable diluent are used during primary validation studies and are not actual test samples or product, the latter of which are used during method suitability and comparability testing.</p>
+
+        <p>An end user may choose to perform additional testing to verify or supplement supplier-provided primary validation data. It is the end user's responsibility to determine when this type of additional testing is warranted, for example, if an end user plans to use the method with different organisms of interest than the supplier's testing, if different incubation conditions (time/temperature) are desired, or if the end user's application is different from its original design or intended use (using a quantitative method as a presence/absence method).</p>
+
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Performance Qualification (PQ，性能確效)：</strong>證明設備在依操作程序安裝與運作時，能「持續」依預定標準產出正確結果——關鍵字是「consistently（持續）」，這與 OQ 的一次性功能驗證不同，PQ 更強調長期穩定性。原文指出 PQ 可透過 assay controls（分析對照組，如核酸標準品的外源/內源陽性對照、無模板對照、無擴增對照）來執行，而這些對照組在 PQ 目的下可被視為「實際產品測試的代表性樣本」。</p>
+            <p><strong>PQ 與 Primary Validation 的橋接：</strong>本節是理解全篇最關鍵的轉折點——原文明確指出，供應商通常就是透過執行這類 PQ 型研究，來產生「初級驗證（Primary Validation）」數據，證明設備有能力偵測、計數、鑑別微生物。也就是說，5.2.6（設備確效的最後一步）與 5.3.1（方法驗證的第一步）在實務上經常是同一套實驗數據——差別在於審視的角度：PQ 問「這台設備能不能穩定產出正確結果」，Primary Validation 問「這個方法本身的分析性能是否達標」。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>回到空調的例子：PQ 相當於「連續運轉三個月，每天記錄室溫是否穩定維持在設定範圍內」——不是裝完當天測一次就結束，而是要證明長期使用下依然可靠。而原文提到「用稀釋液中懸浮的微生物，而非真正的產品」進行初級驗證，就像測試這台空調時先用「空房間」測試溫控是否準確，還沒有把家具、寵物、日照等真實居住情境（產品基質）放進來測試——那些「真實情境下的相容性測試」，要留到後面的方法適用性（5.3.2）與比對測試（5.3.3）階段才進行。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>原文清楚劃出一條界線：初級驗證使用的是「懸浮於適當稀釋液中的微生物」，<strong>不是</strong>實際的測試樣品或產品——真正的產品/樣品要等到方法適用性測試（Method Suitability, 5.3.2）與比對測試（Comparability Testing, 5.3.3）階段才會被引入。這個順序邏輯貫穿整個 5.3 節：先在「乾淨」的環境下證明方法本身有能力偵測目標微生物，再逐步加入產品基質，觀察是否產生訊號增強、遮蔽或干擾。若在初級驗證階段就混入產品基質，反而會讓「方法本身能力」與「產品基質干擾」兩個變因無法區分，使驗證邏輯失去意義。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>某終端使用者打算把原本設計為「定量計數」的 AMM/RMM，改用於「存在/不存在」(presence/absence) 的定性判讀用途。根據原文，這是否屬於必須額外執行驗證的情境？為什麼？</li>
+                <li>為什麼供應商在 PQ 階段使用的「分析對照組」（如陽性對照、無模板對照）可以被視為「實際產品測試的代表性樣本」？這個邏輯的前提假設是什麼？</li>
+            </ol>
+        </div>
+
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- 5.3 PRIMARY VALIDATION, METHOD SUITABILITY, AND COMPARABILITY TESTING (INTRO) -->
+<!-- ============================================ -->
+<div class="section-title"><strong>5.3 Primary Validation, Method Suitability, and Comparability Testing 初級驗證、方法適用性與比對測試</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>The validation process for AMM/RMMs should result in documented evidence that the equipment or instrumentation, as installed and operated in accordance with established sample preparation and workflow procedures, consistently performs in accordance with predetermined criteria and thereby yields correct and appropriate results.</p>
+
+        <p>Validation is performed in phases by both suppliers of AMM/RMM and stakeholders who will implement the methods for routine use. These phases include <span class="key-term">primary validation</span> by the supplier, <span class="key-term">method suitability</span> in the presence of the test sample, and <span class="key-term">comparability</span> in the presence of the test sample. Each of these phases are summarized in Sections 5.3.1-5.3.3.</p>
+
+        <div class="quote-box">
+            Note: When a previously validated AMM/RMM is to be replaced by a new generation of the method or by another AMM/RMM, which impacts the original validated state of the AMM/RMM or the previously validated AMM/RMM's comparability to the original CMM, then the new AMM/RMM to be implemented must be validated against the CMM, not against the established AMM/RMM.
+        </div>
+
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>驗證三部曲：</strong>Primary Validation（初級驗證，通常由供應商在無測試樣品情況下執行）→ Method Suitability（方法適用性，終端使用者在有測試樣品情況下執行，確認樣品基質不會干擾方法訊號）→ Comparability Testing（比對測試，終端使用者在有測試樣品情況下，將 AMM/RMM 與 <span class="key-term">Conventional Microbiological Method (CMM，傳統微生物方法)</span> 並列比較）。三者由「供應商責任」逐步過渡到「終端使用者責任」，也由「無樣品」逐步過渡到「有樣品」。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像一間餐廳要導入一套新的自動炒菜機取代老師傅炒菜：初級驗證就像廠商在自己的測試廚房，用標準食材證明機器「炒得出這道菜」；方法適用性則是餐廳把「自己店裡實際使用的食材」（可能帶有特殊醬料、特定產地食材）放進機器測試，確認這些食材不會讓機器誤判火候或卡住；比對測試則是讓機器與老師傅同時用同一批食材各炒一盤，比較兩盤菜的味道是否相當——只有通過這三關，餐廳才能安心讓機器全面取代老師傅的位置。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>原文的 Note 提出一個容易被忽略但影響深遠的規則：當已驗證的 AMM/RMM 要被「新一代方法」或「另一個 AMM/RMM」取代時，新方法必須與 <strong>CMM（傳統方法）</strong> 重新比對驗證，<strong>而不是</strong>與「目前已驗證的舊 AMM/RMM」比對。這避免了「新方法只需比舊方法好一點點」的漂移風險（validation drift）——如果每次新一代方法都只跟上一代比較，經過多次世代更迭後，最終方法的表現可能已經悄悄偏離了最初與藥典傳統方法建立的可比性基準，卻沒有人注意到。這對長期使用 AMM/RMM 的 CDMO 尤其重要：技術世代更新是常態，但比對的「錨點」永遠應該是 CMM，而非上一代 AMM/RMM。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若貴公司計畫將現行已驗證的 AMM/RMM 升級為同供應商的新一代機型，根據原文的 Note，驗證比對的對象應該是誰？</li>
+                <li>為什麼「與 CMM 比對」而非「與舊版 AMM/RMM 比對」能避免長期的驗證漂移風險？</li>
+            </ol>
+        </div>
+
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- 5.3.1 -->
+<!-- ============================================ -->
+<div class="section-title"><strong>5.3.1 Primary Validation 初級驗證</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Primary validation is usually performed by the supplier, customarily in the absence of a test sample; however, some suppliers may include common or universal test sample matrices to demonstrate test sample suitability when introduced into the instrument or workflow. Suppliers should also provide the end user with primary validation test data demonstrating the system and method that will detect, enumerate, and/or identify microorganisms.</p>
+
+        <p>Primary validation should demonstrate that the workflow is adequate in obtaining the intended target to be detected by the technology. This may include, for example, procedures for extracting cellular targets from viable microorganisms, establishing minimum incubation times for enrichment steps, or activation conditions for the uptake of viability stains. The use of surrogate targets, such as purified nucleic acids, ATP, or standardized fluorescent beads, may also be used to demonstrate that the technology is capable of detecting the intended target, as long as the target is appropriate for the technology.</p>
+
+        <p>The end user is responsible for reviewing and verifying the primary validation data to determine if the information is sufficient to support the end user's validation plan.</p>
+
+        <p>Normally, the end user is not required to repeat a supplier's primary validation studies unless one or more of the following apply:</p>
+        <ul>
+            <li>Test method is employed differently than what is defined by the supplier</li>
+            <li>Equipment parameters are altered by the end user</li>
+            <li>Panel of organisms used by the supplier are not representative of the organisms relevant to the end user's requirements</li>
+            <li>Supplier did not conduct any primary validation studies</li>
+        </ul>
+
+        <p>In these instances, the end user would need to perform the primary validation using relevant microorganisms and in the absence of product or actual test samples. End users may consider using surrogate analytes, as appropriate for the technology, to demonstrate that alterations to the AMM/RMM still detect the intended cellular target, as long as the method will continue to capture the target from viable cells for analysis.</p>
+
+        <p>When performing primary validation, the supplier should select the appropriate validation criteria to evaluate (e.g., pertaining to a qualitative or quantitative method). However, because some AMM/RMM applications may overlap (e.g., a method may offer both quantitative and qualitative capabilities), suppliers should assess relevant validation criteria to demonstrate all of the intended applications.</p>
+
+        <p>For qualitative applications, the supplier should assess <span class="key-term">specificity</span> (using an appropriate number of relevant organisms), <span class="key-term">LoD</span>, <span class="key-term">ruggedness</span> (e.g., intermediate precision), and <span class="key-term">robustness</span>.</p>
+
+        <p>For quantitative applications, the supplier should assess specificity (using an appropriate number of relevant organisms), <span class="key-term">accuracy</span>, <span class="key-term">repeatability</span> (within-run variability), limit of quantification (<span class="key-term">LoQ</span>), <span class="key-term">range</span>, <span class="key-term">linearity</span>, ruggedness (e.g., intermediate precision), and robustness.</p>
+
+        <p>The supplier can also evaluate relevant validation criteria, in both the AMM/RMM and a CMM, which can demonstrate, at a minimum, comparability. This information may provide the end user with a level of confidence that the AMM/RMM will be an appropriate alternative to a CMM intended to be replaced by the AMM/RMM.</p>
+
+        <p>For AMM/RMMs that rely on the growth of microorganisms, the supplier should establish minimum incubation times when performing studies against the relevant validation criteria.</p>
+
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Primary Validation（初級驗證）：</strong>通常由供應商在「無測試樣品」情況下執行，目的是證明系統/方法本身有能力偵測、計數或鑑別微生物，且工作流程能有效取得預期偵測目標（例如從活菌中萃取細胞標的、建立增菌步驟的最短培養時間、活性染劑吸收所需的活化條件）。也可使用替代標的（surrogate targets，如純化核酸、ATP、標準化螢光微珠）來證明技術能力，只要該標的適用於該技術。</p>
+            <p><strong>定性 vs 定量方法的驗證指標矩陣：</strong>這是本節最重要的技術重點——<br>定性方法（qualitative）：specificity（特異性）、LoD（偵測極限）、ruggedness（穩健度/中間精密度）、robustness（耐用性）。<br>定量方法（quantitative）：specificity、accuracy（準確度）、repeatability（重複性）、LoQ（定量極限）、range（範圍）、linearity（線性）、ruggedness、robustness——比定性方法多了 accuracy、repeatability、LoQ、range、linearity 五項。這個差異反映了兩類方法的本質：定性方法只需回答「有沒有」，定量方法必須回答「有多少，而且測得準不準、穩不穩」。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>延續前段餐廳自動炒菜機的比喻：定性驗證就像測試機器「能不能正確判斷這道菜有沒有放辣椒」（有/沒有二選一）；定量驗證則像測試機器「能不能量出這道菜到底放了幾克辣椒，而且每次量測結果都要一致、在合理範圍內線性反應辣度」。後者需要驗證的項目自然比前者多更多，因為「量出正確數字」比「判斷有沒有」複雜得多。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>原文列出的四個「終端使用者必須自行重做初級驗證」的觸發情境，是這一節對 CDMO 實務最直接的風險判斷工具：（1）使用方式與供應商定義不同、（2）終端使用者更動了設備參數、（3）供應商測試的菌種組合不能代表終端使用者實際需求、（4）供應商根本沒做過初級驗證。任何一項成立，終端使用者就不能單純援引供應商數據，必須自行以相關微生物、在無產品/樣品情況下重新執行初級驗證——可考慮使用替代標的物（surrogate analytes）作為簡化手段，但前提是方法仍能持續從活菌中擷取目標。這四項觸發條件應該被納入 CDMO 內部「AMM/RMM 導入風險評估表」的標準檢核項目。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>某 CDMO 採購一台快速微生物偵測儀，供應商提供的初級驗證數據涵蓋了標準藥典指標菌株（如 <em>E. coli</em>、<em>S. aureus</em>），但該 CDMO 生產的細胞治療產品環境監測歷史顯示，廠區常見分離株包含特定的環境黴菌菌種，並未涵蓋在供應商的驗證菌種清單中。根據原文第三項觸發情境（供應商菌種組合不具代表性），該 CDMO 應規劃自行執行針對性的初級驗證，納入這些廠區特有的分離株，而不能直接援引供應商的原始數據作為完整驗證依據。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>某快速微生物方法同時具備定量計數與定性存在/不存在兩種應用模式，供應商應如何規劃初級驗證的範疇？</li>
+                <li>如果終端使用者只是把儀器的預設培養溫度從供應商建議的 30-35°C 調整為 20-25°C（因應黴菌培養需求），這算不算「equipment parameters are altered」而需要重做初級驗證？</li>
+                <li>為什麼「使用替代標的物」（如純化核酸、ATP）可以作為簡化初級驗證的手段，但前提是「方法仍能從活菌中擷取目標」？</li>
+            </ol>
+        </div>
+
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- 5.3.2 -->
+<!-- ============================================ -->
+<div class="section-title"><strong>5.3.2 Method Suitability 方法適用性</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><span class="key-term">Method suitability</span> testing is a product or test sample-specific validation that should be performed in the presence of the test sample using the intended sample preparation steps and workflow for the AMM/RMM. Each novel test sample or product formulation should be assessed for suitability (i.e., compatibility with the workflow and instrumentation) unless otherwise justified via a risk assessment (e.g., when a prior study was performed on a similar sample matrix, or a formulation with a higher concentration of a sample component, such as an API). Where applicable, method suitability should account for product batch-to-batch variability. The number of distinct batches evaluated should be scientifically justified, as differences in raw materials, manufacturing conditions, or product age may influence microbial recovery, signal interference, or matrix effects. In general, evaluation of three (3) independent batches is commonly considered appropriate, if available, unless otherwise justified based on risk assessment and product knowledge.</p>
+
+        <p>Validated methods that are addressed in a compendial test chapter may necessitate specific method suitability studies to be performed. End users should consult with the relevant pharmacopeias for additional guidance and testing requirements.</p>
+
+        <p>Method suitability testing should be performed on a sample matrix prior to conducting intended use or comparability studies using a relevant panel of microorganisms that have been chosen based on the type of test being validated (e.g., compendial strains), frequency and type of previously recovered organisms from the test sample (using the CMM), process, or the manufacturing environment or organisms that may present a risk to product, process, and/or the patient). These studies demonstrate the suitability of the method to detect and/or quantify microorganisms in the presence of the test sample.</p>
+
+        <p>A justification may be used to support not evaluating facility or environmental isolates or organisms naturally occurring in the test sample if these are similar to compendial indicator organisms.</p>
+
+        <p>Alternatively, a separate method suitability study may not be required if the sample matrix is evaluated during intended use or comparability testing, as long as a relevant panel of microorganisms is and the concentration of the challenge organisms is within a numerical range usually used during method suitability testing (e.g., less than 100 CFU, but not necessarily at the AMM/RMM's purported LoD or LoQ).</p>
+
+        <p>Method suitability testing should be performed during transfer of the method to a different facility to demonstrate that the facility can perform the method appropriately. Additional method suitability studies may be required, especially if local facility isolates pose a risk to the product, processes, or patient, and those same isolates were not assessed by the initial test validation site. A risk assessment should be performed to determine whether additional studies by the secondary facility are warranted (e.g., whether local isolates not represented in the initial validation studies should be considered or to perform a limited method suitability test to verify the method transfer was executed appropriately) (see Section 6.4).</p>
+
+        <p>Method suitability testing should demonstrate an absence of unacceptable enhancement of signals or background noise (e.g., false positives) or the inhibition, masking, occlusion, or interference in detecting viable microorganisms (e.g., false negatives). These studies are usually performed by the end user, but may be contracted to an external party, such as the AMM/RMM supplier or a contract facility. For AMM/RMMs that cannot be directly challenged by the end user (e.g., air-monitoring biofluorescent particle counters), method suitability may be carried out under actual-use conditions, such as in a controlled environment where the challenge levels are consistent, or by the supplier who has the capability of performing standardized testing using a panel of microorganisms.</p>
+
+        <p><span class="key-term">False-positive testing</span> is performed in the presence of the test sample but in the absence of challenge organisms.</p>
+
+        <p><span class="key-term">False-negative testing</span> is performed using a relevant panel of challenge organisms under actual-use conditions.</p>
+
+        <p>Qualitative methods should demonstrate a positive response in the presence of challenge microorganisms. Quantitative methods should recover at least <span class="key-term">50%</span> of the challenge microorganisms inoculated into the test sample when compared with a control sample (e.g., a suitable diluent).</p>
+
+        <p>For AMM/RMMs that rely on the growth of microorganisms, the minimum incubation times established during primary validation should be verified; otherwise, incubation times may need to be revised based on the results obtained during method suitability or comparability testing (whichever incubation time is greater) in the presence of the test sample.</p>
+
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Method Suitability（方法適用性）：</strong>是「產品/樣品專屬」的驗證，必須在測試樣品存在的情況下、依預定的樣品前處理步驟與工作流程執行。每一個新的測試樣品或產品配方原則上都應評估適用性，除非能透過風險評估提出正當理由（例如已在類似樣品基質上做過研究，或該配方僅是某成分如 API 濃度較高的變化版本）。</p>
+            <p><strong>批次數量與統計依據：</strong>原文給出明確的數字基準——通常評估三 (3) 個獨立批次即被視為合適的做法（若可取得），除非有風險評估與產品知識支持的其他理由。批次間差異（原料、製程條件、產品放置時間）都可能影響微生物回收率、訊號干擾或基質效應。</p>
+            <p><strong>False-positive vs False-negative 測試設計：</strong>False-positive testing 是「有樣品、無挑戰菌」的情境，用來確認樣品本身不會產生假訊號或背景噪音；False-negative testing 則是「在實際使用條件下、用相關菌種組合挑戰」，確認樣品基質不會遮蔽、抑制或干擾對活菌的偵測。定性方法必須在挑戰菌存在下呈現陽性反應；定量方法則必須相較於對照組（如適當稀釋液）回收至少 <strong>50%</strong> 的接種挑戰菌——這是一個具體、可稽核的數字門檻。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>回到自動炒菜機的比喻：方法適用性測試就是把「這家餐廳實際會用的食材」（帶有特定醬料、油脂、辛香料）放進機器，測試兩件事——第一，光是這批食材本身，機器會不會誤判成「有加辣椒」（false positive，即使廚房根本沒加辣椒粉，某種醬料顏色或氣味卻讓感測器誤判）；第二，如果真的加入標準劑量的辣椒粉，機器在這批食材的干擾下，是否仍能偵測到至少一半的辣度訊號（false negative 測試，量化方法要求至少回收 50%）。而「評估三個獨立批次」就像不只測試一批進貨的食材，而是分別測試三批不同產地、不同時間進貨的同款食材，確認結果不會因為食材批次波動而失準。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>原文提出一個實務上非常有價值的「效率捷徑」：如果樣品基質已經在「預期用途測試」或「比對測試」中被評估過，且挑戰菌濃度落在方法適用性測試常用的數值範圍內（例如低於 100 CFU，但不一定要落在方法宣稱的 LoD 或 LoQ），則可以不必另外執行獨立的方法適用性研究——這代表 TR 33 鼓勵合理的實驗設計整合，避免重複測試消耗寶貴的產品樣品。另一個關鍵重點是「方法轉移」（method transfer）：當方法轉移到不同廠址時，仍需執行方法適用性測試以證明該廠址能正確操作方法，且若當地廠區特有的分離株對產品、製程或病人構成風險、又未被原始驗證場址評估過，可能需要額外研究——這與 Section 6.4（方法轉移）直接相關，CDMO 跨廠區複製驗證方法時必須特別留意。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <pre>
+定量方法之方法適用性接受標準（原文明定）：
+
+回收率 = (AMM/RMM 於樣品中回收之挑戰菌數 / 對照組[稀釋液]中回收之挑戰菌數) × 100%
+
+接受標準：回收率 ≥ 50%
+
+批次評估數量基準：
+獨立批次數 = 3（若可取得），
+              除非風險評估與產品知識可佐證合理的減量或加量
+            </pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>某 CDMO 有一項新產品配方，僅是既有已驗證配方中 API 濃度提高兩倍。根據原文，是否可以豁免重新執行方法適用性測試？需要什麼樣的支持文件？</li>
+                <li>為什麼定量方法的方法適用性接受標準是「至少回收 50%」，而非要求 100% 完全回收？這個門檻背後隱含了什麼樣的風險容忍邏輯？</li>
+                <li>對於無法被終端使用者直接以挑戰菌接種的 AMM/RMM（例如空氣監測用生物螢光微粒計數器），原文建議如何執行方法適用性測試？</li>
+            </ol>
+        </div>
+
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- 5.3.3 -->
+<!-- ============================================ -->
+<div class="section-title"><strong>5.3.3 Comparability Testing in the Presence of the Test Sample 樣品存在下之比對測試</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><span class="key-term">Comparability testing</span> is usually performed by the end user in the presence of the test sample using the AMM/RMM and the CMM. The intent of comparability testing is to demonstrate that the detection of microorganisms in a qualitative method or the enumeration of recovered microorganisms in a quantitative AMM/RMM is comparable, not statistically different than or superior to, the detection of microorganisms in the CMM, depending on the statistical method used to compare the data (81). The validation criteria assessed during comparability testing will be based on the AMM/RMM's application (e.g., LoD and specificity for qualitative methods, accuracy, repeatability, LoQ and specificity for quantitative methods).</p>
+
+        <p>The choice of organisms used during comparability studies should be clearly justified by the end user and based on a sound scientific rationale. This may be based on the frequency and type of previously recovered organisms from the test sample (using the CMM), the type of test being validated (e.g., compendial strains for pharmacopeial procedures monograph tests), environmental or facility isolates, organisms that are relevant to challenging the AMM/RMM and the different workflows that may be required (e.g., different media for growth-based methods), and/or organisms that may present a risk to the product, the process or the patient.</p>
+
+        <p>A justification may be used to support not evaluating facility or environmental isolates or organisms naturally occurring in the test sample, if these are similar to compendial indicator organisms.</p>
+
+        <p>It may be appropriate to justify reduced testing during comparability studies (e.g., when the availability of test sample is limited). In this instance, the validation of an AMM/RMM to detect microorganisms in the presence of the test sample would only require a comparison with the CMM at the detection limit of the AMM/RMM in lieu of executing comparability studies covering all validation parameters. However, if method suitability and full comparability tests are able to be performed on the test sample, this alternative testing strategy would not be necessary.</p>
+
+        <p>Using an appropriate panel of microorganisms, an assessment against relevant validation criteria is conducted in the presence of the test sample and only in the AMM/RMM. The selection of validation criteria to be assessed can mirror what is performed during the primary validation for qualitative and quantitative methods.</p>
+
+        <p>When a prior method-suitability test has been performed on the test sample using a relevant panel of microorganisms, the end user may justify selecting a limited number of these same challenge organisms for comparability studies (e.g., all the method-suitability test organisms do not need to be evaluated during comparability studies). However, if a prior method-suitability test was never performed or the data generated during comparability studies will also be used to support method suitability, the end user should consider an appropriate panel of relevant microorganisms to support these studies.</p>
+
+        <p>The actual challenge level(s) for these studies are determined by the end user and may be based on the intended test procedure or the required level of microorganism detection or recovery. For example, testing at the AMM/RMM's purported LoD or LoQ may require a challenge level of 1&ndash;5 microbial cells or, alternatively, a series of dilutions into the fractional range could be evaluated.</p>
+
+        <p>When the test sample is expected to contain naturally occurring bioburden, these organisms may also be considered, given the target of the test.</p>
+
+        <p>Comparability testing for qualitative applications should be performed in the presence of the test sample and should address specificity and LoD in the AMM/RMM and the method to which it is being compared.</p>
+
+        <p>Comparability testing for quantitative applications should be performed in the presence of the test sample and should address specificity. The challenge concentration(s) employed should be relevant to the level of microorganisms required to be recovered and quantified, which could be at or near the LoQ and/or at a particular specification level.</p>
+
+        <p>For qualitative and quantitative applications, ruggedness (intermediate precision) may also be assessed. Based on the AMM/RMM, however, depending on the type of product or test sample and the manufacturing process, the results from ruggedness studies performed by the supplier during primary validation (in the absence of product) may be used.</p>
+
+        <p>For AMM/RMMs that rely on the growth of microorganisms, the minimum incubation times established during primary validation and/or method suitability testing should be verified; otherwise, incubation times may need to be revised based on the results obtained during comparability testing (e.g., whichever incubation time is greater).</p>
+
+        <p>When a test sample has successfully met the acceptance criteria for comparability, it may not be necessary to repeat comparability testing for new samples that have a similar formulation or matrix. However, new test samples that are fundamentally different in composition, may introduce background noise or interference, or may affect the AMM/RMM to detect microorganisms may require comparability testing. An example may be the difference between a human cell-based therapy versus an oligopeptide-based product.</p>
+
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Comparability Testing（比對測試）：</strong>通常由終端使用者在測試樣品存在下，同時使用 AMM/RMM 與 CMM 執行，目的是證明 AMM/RMM 的偵測（定性）或計數（定量）結果與 CMM「相當」——注意原文精確的用字：不是「統計上無差異」也不是「優於」，而是依所採用的統計方法而定，可能是 <span class="key-term">equivalence（等效性）</span>、<span class="key-term">non-inferiority（非劣性）</span>或 <span class="key-term">superiority（優越性）</span>三種假設檢定框架之一。</p>
+            <p><strong>菌種選擇的科學依據：</strong>比對測試所用菌種應有明確科學理由，可能來自 CMM 歷史上實際回收菌種的頻率與類型、藥典法要求的指標菌株、環境/廠區分離株，或對產品/製程/病人具風險的菌種。若廠區分離株與藥典指標菌株相似，可提出正當理由不予評估。</p>
+            <p><strong>挑戰濃度設計：</strong>實際挑戰濃度由終端使用者決定，測試方法宣稱的 LoD 或 LoQ 時，挑戰濃度可能只需 1-5 個微生物細胞，或評估一系列分數範圍（fractional range）的稀釋液——這是低濃度挑戰測試設計上常見的操作方式。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>比對測試就是讓自動炒菜機與老師傅，用同一批實際店內食材、同一批調味料，各自炒出一盤菜，然後用「盲測評審」（統計檢定）比較兩盤菜的鹹淡是否相當——評審不是要證明機器炒得比師傅「更好吃」，而是要證明兩者「差不到哪去」（相當、非劣或優越，視預先設定的檢定框架而定）。若店裡食材有限、不能反覆重炒測試，主廚（終端使用者）可以合理縮減測試範圍，只在「最難炒的臨界火候」（偵測極限）比較一次，而不必每個火候都比對一輪——前提是這個縮減範圍的理由要站得住腳。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>本節提供了三個重要的「效率整合」原則，值得 CDMO 在設計驗證計畫時特別留意：（1）若方法適用性測試已用相關菌種組合測試過，比對測試可合理選用「部分」相同挑戰菌，不必全部重新評估；（2）供應商在初級驗證階段（無產品情況下）所做的穩健度（ruggedness）研究結果，視產品/樣品類型與製程而定，可能可以直接援引，不必在比對測試階段重複；（3）當某測試樣品已成功通過比對測試接受標準後，配方或基質相似的「新樣品」不必重複比對測試——但成分本質上不同的新樣品（原文舉例：細胞治療產品 vs 寡肽類產品）仍可能需要重新執行。這三項原則的共同精神，是把驗證資源集中在真正具有科學不確定性的地方，而非機械式地對每個新樣品重複整套測試。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <pre>
+低濃度挑戰測試設計範例（於 LoD/LoQ 附近）：
+
+挑戰濃度 = 1-5 個微生物細胞
+          或
+          一系列分數稀釋（fractional dilution series）
+
+比對測試驗證指標對照表：
+  定性方法（qualitative）  → specificity, LoD
+  定量方法（quantitative） → specificity, accuracy,
+                              repeatability, LoQ
+  （定性/定量皆可）        → ruggedness（可援引供應商
+                              初級驗證數據，視情況而定）
+            </pre>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>某 CDMO 承接一項細胞治療產品的微生物快篩導入案，先前已針對某一款寡肽類產品完成該 AMM/RMM 的完整比對測試並通過接受標準。若直接將該比對測試結果套用到細胞治療產品，是不恰當的——根據原文明確舉例的差異情境（human cell-based therapy vs oligopeptide-based product），兩者組成本質上截然不同，細胞治療產品可能含有更複雜的基質成分、蛋白質濃度與細胞碎片，可能對 AMM/RMM 訊號產生原本寡肽產品不會出現的干擾或遮蔽效應，因此必須針對細胞治療產品重新執行完整的比對測試，而非援引既有寡肽產品的驗證結論。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>當測試樣品供應有限（例如珍貴的細胞治療批次），原文允許何種「縮減測試」的替代策略？這個策略的適用前提是什麼？</li>
+                <li>若某廠區分離株的出現頻率與藥典指標菌株非常相似，是否可以此為由，不將該廠區分離株納入比對測試的挑戰菌種組合？需要什麼樣的佐證？</li>
+                <li>供應商在初級驗證階段（無產品情況下）執行的穩健度研究，在什麼情況下可以直接援引用於比對測試階段，而不需要終端使用者重新執行？</li>
+            </ol>
+        </div>
+
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- 5.3.4 -->
+<!-- ============================================ -->
+<div class="section-title"><strong>5.3.4 Unique Methods Requiring Additional or Modified Validation Strategies 需要額外或修改驗證策略之特殊方法</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>The method validation testing strategies discussed in TR 33 primarily use standardized microbial cultures in liquid suspension. The possibility exists, however, that some AMM/RMM detection systems may need to consider different approaches, especially if a liquid suspension cannot physically be introduced into the detection system for analysis. Technologies that use <span class="key-term">airborne, aerosol, or other nonliquid-based samples</span> may fall into this category. Therefore, expanding or adapting these validation strategies may be appropriate, as long as the testing methods are scientifically justified. Because the end user may not possess the expertise or specialized equipment to conduct such studies, the vendor may need to play a greater role in supporting the end user during the validation of these types of technologies.</p>
+
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>特殊驗證策略的適用情境：</strong>TR 33 全篇討論的驗證策略，預設分析對象是「液態懸浮液中標準化培養的微生物」。但當偵測系統物理上無法引入液態懸浮液進行分析時（例如空氣監測、氣膠或其他非液態樣品的技術），標準驗證策略就不完全適用，需要擴充或調整——前提是調整後的測試方法仍具備科學正當性。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>好比一般的水質檢測儀是把水樣直接倒進機器測量，但空氣品質監測儀無法把「一杯空氣」倒進去化驗——它必須用完全不同的採樣與偵測原理（例如持續抽氣、雷射粒子計數、生物螢光偵測）。因此空氣監測設備的驗證邏輯，不能照搬水質檢測儀「倒入標準液體樣品」的驗證方式，必須重新設計符合其物理特性的驗證策略。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>本節與 5.3.2 提到的「空氣監測用生物螢光微粒計數器」呼應——這類終端使用者難以直接以挑戰菌接種的技術，往往需要供應商在驗證過程中扮演更吃重的角色，因為終端使用者通常不具備開發此類特殊驗證方法所需的專業知識或特殊設備。對 CDMO 而言，導入這類非傳統偵測技術（如即時空氣微生物監測）時，應在採購階段的 URS 與供應商評估中，明確要求供應商提供充分的驗證支援承諾與技術文件，而非假設可以套用標準的液態懸浮液驗證流程。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼氣膠或空氣監測類的 AMM/RMM 技術，無法直接套用 TR 33 針對液態懸浮液微生物所設計的標準驗證策略？</li>
+                <li>對於這類特殊技術，終端使用者在供應商評估與 URS 階段，應該特別要求供應商提供哪些支援？</li>
+            </ol>
+        </div>
+
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- 5.4 RECOMMENDATIONS FOR CONDUCTING VALIDATION STUDIES (INTRO ONLY) -->
+<!-- ============================================ -->
+<div class="section-title"><strong>5.4 Recommendations for Conducting Validation Studies 執行驗證研究之建議（導論）</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Sections 5.4.1-5.4.11 provide recommendations for each of the validation criteria, including testing procedures, acceptance criteria, and statistical analyses for quantitative and qualitative AMM/RMMs. Validation testing may also be designed and executed where the data from one validation criteria study may be used for several other validation criteria requirements. For example, the data derived during the test for linearity may also be used for the test for accuracy.</p>
+
+        <div class="quote-box">
+            Note: These recommendations are not all-inclusive, and suppliers and stakeholders may find alternative strategies (e.g., revised, additional, or reduced testing based on risk assessments) that are also satisfactory for use and accepted by regulators. In this instance, stakeholders are encouraged to discuss their validation strategies with relevant regulatory authorities prior to initiating their proposed validation plan.
+        </div>
+
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Section 5.4 的定位：</strong>從本節起（5.4.1 至 5.4.11，將於後續章節逐一展開），TR 33 針對每一項驗證指標（specificity、accuracy、repeatability、LoD、LoQ、range、linearity、ruggedness、robustness 等）分別提供測試程序、接受標準與統計分析方法的具體建議。原文特別提醒一項效率原則：不同驗證指標的研究設計可以「共用數據」——例如線性測試取得的數據，也可以同時用於準確度測試的分析，避免重複消耗珍貴的微生物與樣品資源。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>好比做一次體檢抽血，一管血樣可以同時送檢驗肝功能、血脂、血糖多項指標，不需要為每一項檢查都重新抽一次血。同理，設計驗證實驗時，若在不同稀釋濃度下測試線性關係，這批數據本身也能拿來分析準確度——聰明的實驗設計可以讓一次性投入（微生物、樣品、人力）產出多重驗證證據。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>原文的 Note 傳達了 TR 33 一貫的彈性精神：後續 5.4.1-5.4.11 提出的建議「並非窮盡所有可能」，供應商與利益關係人可以基於風險評估提出替代策略（修改、增加或減少測試），只要能被法規機關接受即可。TR 33 明確鼓勵利益關係人在啟動驗證計畫前，主動與相關法規機關討論所提出的驗證策略——這呼應了 Section 5.0 導論中「及早與法規機關溝通」的建議，也再次提醒讀者：本技術報告提供的是「科學合理的參考框架」，而非僵化不可變動的強制規範清單。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>舉一個原文以外、你認為可以「一次實驗、多重指標共用數據」的驗證設計範例（例如結合哪兩項驗證指標的測試）？</li>
+                <li>當 CDMO 打算採用與 TR 33 建議不同的驗證策略（例如減少測試批次數）時，原文建議的正確做法是什麼？</li>
+            </ol>
+        </div>
+
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li>AMM/RMM 系統的確效必須先完成設備確效（IQ → OQ → PQ，可視情況並行 IQ/OQ，但 PQ 須待 OQ 驗收核准後才能啟動）與電腦系統驗證（CSV，涵蓋 21 CFR Part 11、EU Annex 11、GAMP 要求），才能進入方法驗證階段</li>
+        <li>PQ 與 Primary Validation 經常共用同一套實驗數據——PQ 問「設備能否持續產出正確結果」，Primary Validation 問「方法本身的分析性能是否達標」，兩者皆在「無產品/樣品」情況下以懸浮液中微生物執行</li>
+        <li>驗證三部曲由供應商責任逐步過渡至終端使用者責任、由無樣品逐步過渡至有樣品：Primary Validation（供應商，無樣品）→ Method Suitability（終端使用者，有樣品，確認基質不干擾訊號，定量方法須回收 ≥50% 挑戰菌）→ Comparability Testing（終端使用者，有樣品，與 CMM 比較，須具科學正當性選定菌種與濃度）</li>
+        <li>定性方法驗證指標為 specificity、LoD、ruggedness、robustness；定量方法額外需要 accuracy、repeatability、LoQ、range、linearity；當已驗證的 AMM/RMM 被新一代方法取代時，新方法必須與 CMM（而非舊 AMM/RMM）重新比對驗證，以避免驗證漂移</li>
+        <li>特殊非液態樣品技術（如空氣/氣膠監測）需要調整或擴充標準驗證策略，且供應商須扮演更吃重的支援角色；後續 5.4.1-5.4.11 將針對各驗證指標提供具體測試程序與統計分析建議，允許基於風險評估的替代策略，並鼓勵及早與法規機關溝通</li>
+    </ul>
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1409 @@
+Technical Report No. 33 (Revised 2026) 
+© 2026 Parenteral Drug Association, Inc. 
+93 
+9.0 Appendix 1: Validation of Alternative and Rapid 
+Microbiological Methods: Statistical Analysis-Qualitative 
+Methods 
+The content provided in Section 9.0 (Appendix 1) through Section 11.0 (Appendix 3) has been written in a 
+manner that a microbiologist or an analysist with similar training would be able to understand the 
+fundamental (statistical) concepts described. However, stakeholders may want to engage the expertise of a 
+statistician to ensure the recommendations in these sections are appropriately executed. 
+Section 9.0 (Appendix 1) and Section 10.0 (Appendix 2) provide several acceptable statistical analyses for 
+the validation of alternative qualitative and quantitative microbiological methods, respectively, while 
+Section 11.0 (Appendix 3) focuses on additional considerations for non-colony forming units (CFU) 
+qualitative and quantitative alternative/rapid microbiological methods (AMM/RMMs). The statistical 
+analyses recommended in the body of PDA Technical Report No. 33 (Revised 2026): Evaluation, 
+Validation, and Implementation of Alternative and Rapid Microbiological Methods are restated with 
+example data to illustrate how the analyses can be used. Although the example data is artificial, the data is 
+based on real validation experiments previously conducted by the authors. Since these methods are 
+presented only as examples, the stakeholder is responsible for selecting the most appropriate statistical 
+analyses to use based on the data to be analyzed and the validation criteria being assessed. It is 
+recommended to align the validation approach with the firm’s quality management system (QMS). 
+The choice of statistical analysis depends on the type of experiment that is being performed and on the type 
+of data analyzed (i.e., binary or positive/negative results versus recovered counts). In each example, multiple 
+options for a statistical analysis based on the observed data will be presented, as the option selected will 
+depend on the statistical assumptions being made to describe the characteristics of the data. As such, Section 
+9.0 (Appendix 1) through Section 11.0 (Appendix 3) will recommend several alternative statistical analyses 
+for a given dataset while explaining the advantages and/or disadvantages of each.  
+Furthermore, Section 9.0 (Appendix 1) through Section 11.0 (Appendix 3) recommend statistical analyses 
+that are feasible for use without specialized software specifically designed for microbiological methods as 
+much as possible. Should specific calculations be needed that are not readily available through user-friendly, 
+general-purpose statistical software (e.g., Minitab®, SPSS, STATA), Section 9.0 (Appendix 1) through 
+Section 11.0 (Appendix 3) provides mathematical formulas that can be used manually, imported into an 
+appropriate spreadsheet with calculation capabilities (e.g., Microsoft Excel), conducted with programmable 
+statistical software (e.g., SAS®, R), or implemented in electronic systems using attributable, legible, 
+contemporaneous, original, and accurate (ALCOA) principles. For these reasons, the text may appear 
+significantly technical in nature.  
+ 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+ Technical Report No. 33 (Revised 2026) © 2026 Parenteral Drug Association, Inc. 
+94 
+Finally, where possible, Section 9.0 (Appendix 1) through Section 11.0 (Appendix 3) discusses sample size 
+in relation to the specific validation criteria and statistical analyses. Certain statistical analyses require a 
+relevant number of data points to be valid for validation studies, which may present a challenge for 
+stakeholders if large amounts of test sample are not readily available. Consequently, Section 9.0 (Appendix 
+1) through Section 11.0 (Appendix 3) discusses the importance of test power and provides examples of how 
+to pool the data from multiple organism experiments to increase the total sample size (where needed). 
+Because the results associated with pooling data may come at the expense of additional statistical 
+assumptions, the limitations of this practice are discussed.  
+Section 9.0 (Appendix 1) contains many formulas, Table 9.0-1 provides a key of all the symbols used in the 
+formulas and their meaning. 
+Note: The notation log will be used for the natural logarithm in Section 9.0 (Appendix 1). 
+Table 9.0-1 Nomenclature for Symbols Used in Section 9.0 (Appendix 1) 
+Symbol 
+Meaning 
+Δ 
+The non-inferiority margin that is selected a priori to do a non-inferiority test. In some other 
+texts, the notation 𝛿𝛿 is used. 
+𝜆𝜆 
+The mean number of microorganisms or the bacterial density in a set of test samples or in a 
+suspension. When we apply the MPN method for the AMM/RMM and CMM we may 
+denote 𝜆𝜆𝐴𝐴 and 𝜆𝜆𝐶𝐶 as theoretical bacterial densities for AMM/RMM and CMM, respectively. 
+When we apply logistic regression, 𝜆𝜆LOD represents the mean number of microorganisms in 
+the test samples that provide a positive rate of 95%. 
+𝑝𝑝 
+The proportion of independent test samples that were tested positively for the presence of 
+viable microorganisms with the microbiological method, also called the positive rate. 𝑝𝑝𝐴𝐴 and 
+𝑝𝑝𝐶𝐶 are the positive rates for the AMM/RMM and the CMM, respectively. When the test 
+samples are only blank samples, the positive rate is referred to as the false positive rate. 
+𝜃𝜃 
+The detection proportion for the microbiological method, which indicates the probability for a 
+presence test for test samples with exactly one microorganism present in the test sample. 𝜃𝜃𝐴𝐴 
+and 𝜃𝜃𝐶𝐶 indicate the detection proportions for the AMM/RMM and CMM, respectively. 
+𝑅𝑅 
+The ratio of a statistic for the AMM/RMM and CMM and is viewed as a measure for 
+accuracy or recovery. The ratio 𝑅𝑅pr is the ratio of positive rates 𝑝𝑝𝐴𝐴/𝑝𝑝𝐶𝐶. 𝑅𝑅gMPN is the ratio of 
+detection proportions 𝜃𝜃𝐴𝐴/𝜃𝜃𝐶𝐶. 𝑅𝑅MPN is the ratio of bacterial densities 𝜆𝜆𝐴𝐴/𝜆𝜆𝐶𝐶. 𝑅𝑅Pool is a pooled 
+ratio taken from multiple ratio estimates. 
+𝐿𝐿 
+The limit of detection (LoD). 
+𝛼𝛼 
+The intercept for a logistic regression analysis on the positive rate with log concentration as 
+the independent variable for a microbiological method. 
+𝛽𝛽 
+The slope for a logistic regression analysis on the positive rate with log concentration as the 
+independent variable for a microbiological method. 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+Technical Report No. 33 (Revised 2026) 
+© 2026 Parenteral Drug Association, Inc. 
+95 
+Symbol 
+Meaning 
+𝐿𝐿𝐿𝐿𝐿𝐿 
+The lower confidence limit. Often there will be an index 𝑋𝑋 attached to it, i.e., 𝐿𝐿𝐿𝐿𝐿𝐿𝑋𝑋, to indicate 
+for what (validation) parameter or statistic the confidence limit is calculated. 
+𝑈𝑈𝑈𝑈𝑈𝑈 
+The upper confidence limit. Often there will be an index 𝑋𝑋 attached to it, i.e., 𝑈𝑈𝑈𝑈𝑈𝑈𝑋𝑋, to 
+indicate for what (validation) parameter or statistic the confidence limit is calculated. 
+𝑛𝑛 
+The number of independent test samples for a single concentration tested with the 
+microbiological method. 𝑛𝑛𝐴𝐴 and 𝑛𝑛𝐶𝐶 are the number of test samples for AMM/RMM and 
+CMM, respectively. 
+𝑚𝑚 
+The number of species tested for a specific validation parameter. 
+𝑥𝑥̅ 
+The average log-transformed MPN estimates from multiple MPN runs. 𝑥𝑥̅𝐴𝐴 and 𝑥𝑥̅𝐶𝐶 are the 
+average log-transformed MPN estimates for the AMM/RMM and CMM, respectively. 
+𝑋𝑋തlog(𝑅𝑅) 
+The average of the log-transformed ratios 𝑅𝑅. 
+𝑆𝑆log(𝑅𝑅) 
+The standard deviation of the log-transformed ratios 𝑅𝑅. 
+𝜒𝜒𝑝𝑝2 
+Pearson’s chi-square statistic calculated for contingency tables. 
+𝐶𝐶𝑚𝑚 
+The 𝑡𝑡-value that depends on the number of species 𝑚𝑚 and the confidence level of 90%. 
+𝑃𝑃𝑚𝑚 
+The 𝑡𝑡-value that depends on the number of species 𝑚𝑚 and the confidence level of 95%. 
+9.1 False-Positive Rates for Qualitative Alternative/Rapid Microbiological 
+Methods 
+One aspect of method suitability studies is to demonstrate that false positives or background interference 
+signals are not detected in an AMM/RMM when the test sample is known not to contain any viable 
+microorganisms. However, some level of false positives may be acceptable, depending on how this 
+information is used (e.g., when establishing a baseline level or an acceptable signal to noise ratio) (see 
+Section 5.3.2). The false-positive rate can be quantified by testing several independent blank samples (i.e., 
+samples that are not expected to contain any viable microorganisms) and by observing the number of 
+positive and negative detection events. Table 9.1-1 provides artificial data for illustrating how to quantify 
+the false-positive rate. The data show that of twenty (20) independent blank samples tested for the presence 
+of a viable microorganism detection event in a single AMM/RMM, only one sample (#6) tested positive. 
+ 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+ Technical Report No. 33 (Revised 2026) © 2026 Parenteral Drug Association, Inc. 
+96 
+Table 9.1-1 Presence/Absence Results on 20 Blank Samples  
+Sample 
+Presence 
+Sample 
+Presence 
+1 
+0 
+11 
+0 
+2 
+0 
+12 
+0 
+3 
+0 
+13 
+0 
+4 
+0 
+14 
+0 
+5 
+0 
+15 
+0 
+6 
+1 
+16 
+0 
+7 
+0 
+17 
+0 
+8 
+0 
+18 
+0 
+9 
+0 
+19 
+0 
+10 
+0 
+20 
+0 
+9.1.1 Estimation and Confidence Intervals 
+Using the data in Table 9.1-1, the false-positive rate of the AMM/RMM, denoted by 𝑝𝑝𝐴𝐴, is estimated as 
+0.05 or 5% (i.e., 1 positive/20 samples). This false-positive rate is based on only one experiment using 20 
+test samples. However, if the same experiment is repeated multiple times, it may result in a different, but 
+valid, false-positive rate for each repeated experiment. A 95% confidence interval can quantify the range of 
+valid estimates without having to repeat the experiments. In other words, the interpretation of the interval is 
+a range of false positives that captures the true false positive rate of the AMM/RMM with 95% confidence. 
+The smaller the experiment or the higher the confidence level, the wider the confidence interval. If the goal 
+was to obtain the absolute true false-positive rate with 100% confidence, an unrealistically large experiment 
+would need to be conducted. This is why the use of an appropriate confidence interval, such as 95%, is more 
+practical and acceptable. 
+Many different methods exist for constructing a confidence interval for analyzing proportions (1). The 
+simplest 95% confidence interval is the asymptotic or Wald confidence interval, which is based on a normal 
+approximation and calculated using the following formula: 
+𝑝𝑝𝐴𝐴± 1.96ඨ𝑝𝑝𝐴𝐴(1 −𝑝𝑝𝐴𝐴)
+𝑛𝑛
+ 
+Where: 
+n   
+=  number of samples tested (from Table 9.1-1, n = 20) 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+Technical Report No. 33 (Revised 2026) 
+© 2026 Parenteral Drug Association, Inc. 
+97 
+Using the formula above, the asymptotic 95% confidence interval for the false-positive rate based on the 20 
+samples is then estimated as (0, 0.146). Because the lower value of the interval was estimated below zero, 
+the result was truncated to zero, since negative false-positive rates do not exist. The asymptotic 95% 
+confidence interval indicates that the true false-positive rate of the AMM/RMM, when 20 samples are 
+tested, lies between 0% and 14.6%, with 95% confidence. 
+One limitation in using the asymptotic confidence interval is that the number of samples tested should be 
+above, for example, 50, and the number of events (here defined by the number of positive test samples) 
+should not be close to/not approaching zero, for example, above 5. Because the example in Table 9.1-1 used 
+20 samples and the number of positive test samples was one, it would be more appropriate to use an 
+alternative confidence interval known as the exact or Clopper-Pearson confidence interval (1), which is 
+better suited for a smaller number of samples and low number of events. This interval is based on a binomial 
+distribution (instead of a normal distribution for the asymptotic confidence interval), but the mathematical 
+expression is far more complicated.  
+General-purpose statistical software packages can easily perform the exact confidence interval. Using the 
+data in Table 9.1-1, the confidence interval becomes (0.001, 0.249). Thus, the exact 95% confidence 
+interval implies that the true false-positive rate of the AMM/RMM lies between 0.1% and 24.9%, with 95% 
+confidence. Due to the limitations of the asymptotic confidence interval, using the exact confidence interval 
+when estimating a false-positive rate is recommended.  
+9.1.2 Sample Size Considerations When Estimating False-Positive Rates 
+If the length of the confidence interval for the false-positive rate is too large and a smaller confidence 
+interval is needed, the sample size must be larger. Table 9.1.2-1 shows the minimum sample size with an 
+upper 95% confidence limit for a false-positive rate when the experiment does not contain any positive 
+results.  
+Table 9.1.2-1 Sample Size and 95% Upper Confidence Limit for Experiments with no Presence 
+Tests 
+n 
+UCL 
+n 
+UCL 
+n 
+UCL 
+n 
+UCL 
+n 
+UCL 
+5 
+45.1 
+30 
+9.50 
+55 
+5.30 
+80 
+3.68 
+120 
+2.47 
+10 
+25.9 
+35 
+8.20 
+60 
+4.87 
+85 
+3.46 
+150 
+1.98 
+15 
+18.1 
+40 
+7.22 
+65 
+4.50 
+90 
+3.17 
+200 
+1.49 
+20 
+13.9 
+45 
+6.44 
+70 
+4.19 
+95 
+3.10 
+250 
+1.19 
+25 
+11.3 
+50 
+5.82 
+75 
+3.92 
+100 
+2.95 
+300 
+0.99 
+To demonstrate that the false-positive rate is less than 1%, with 95% confidence, 300 blank samples would 
+need to be tested, and all of the results must be negative. Alternatively, if 30 test samples tested negative, the 
+false positive rate would not be higher than 9.5% with 95% confidence. Given a maximum allowable false 
+positive rate 𝑝𝑝, for all experiments with no positive test results, the sample size can be calculated as: 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+ Technical Report No. 33 (Revised 2026) © 2026 Parenteral Drug Association, Inc. 
+98 
+𝑛𝑛≥log(0.05)
+log(1 − 𝑝𝑝) 
+While given the sample size n, the maximum allowable false positive rate is given by 1 − (0.05)1/𝑛𝑛 , with 
+95% confidence. 
+9.2 Comparability on the Limit of Detection of Qualitative Alternative/ 
+Rapid Microbiological Methods 
+For a comparability evaluation of a qualitative AMM/RMM, the detection of microorganisms in the 
+AMM/RMM must be compared with the conventional microbiological method (CMM). Such a comparison 
+does not require an estimation of the limit of detection (LoD); however, this appendix provides guidance on 
+how to perform this analysis. Indeed, by demonstrating the AMM/RMM provides similar detection results 
+as the CMM, the conclusion that the AMM/RMM has a LoD that is not inferior to the LoD of the CMM can 
+be reached, even without specifying what the LoD is in each method. 
+Table 9.2-1 illustrates an example dataset that can be used to demonstrate comparability of a qualitative 
+AMM/RMM. An experiment with a single suspension of microorganisms was used in which the challenge 
+concentration was adjusted to provide a positive rate of approximately 50%, as recommended in USP 
+⟨1223⟩. The AMM/RMM and the CMM were each allocated 40 random test samples (i.e., 80 samples in 
+total) and these were assayed for the presence or absence of microorganisms. 
+Table 9.2-1 Presence/Absence Results of Alternative/Rapid Microbiological Method and 
+Conventional Methods on a Single Type of Microorganism 
+Microbiological 
+Method 
+Test Result 
+Presence 
+Absence 
+Total 
+AMM/RMM 
+25 
+15 
+40 
+CMM 
+28 
+12 
+40 
+Total 
+53 
+27 
+80 
+These samples are representative of independent test samples, even though the samples are taken as separate 
+aliquots from the same microbial suspension, because each sample cannot be tested in both methods. The 
+data is considered paired if both microbiological methods measure the exact same test sample. Additionally, 
+there is a probability for a test sample to contain a specific number of microorganisms, and test samples may 
+differ in the number of microorganisms (irrespective of whether the sample is enumerated or tested for 
+absence/presence with the microbiological method). For example, Figure 9.2-1 illustrates the probabilities 
+(the vertical axis) for some number of microorganisms (the horizontal axis) in the test sample when the 
+mean number of microorganisms in the test sample (often denoted with λ) is equal to 2 and the number of 
+microorganism in the test samples follows a Poisson distribution. Figure 9.2-1 shows that almost 55% of all 
+the test samples will contain just one or two microorganisms, 13.5% of the test samples do not contain any 
+microorganisms, and more than 5% of the test samples have five or more microorganisms in the test 
+samples. 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+Technical Report No. 33 (Revised 2026) 
+© 2026 Parenteral Drug Association, Inc. 
+99 
+Figure 9.2-1 Probabilities for the Number of Microorganisms in Test Samples when the Average 
+Number of Microorganisms in the Test Samples is Equal to 2 
+It is important to emphasize that a random allocation of test samples to the AMM/RMM and CMM is 
+essential to guarantee that both microbiological methods would test samples with different numbers of 
+microorganisms in the same ratios. For example, if 22 of the 80 test samples in Table 9.2-1 contains a single 
+microorganism, it can be assumed that both the AMM/RMM and CMM would analyze 11 test samples with 
+a single microorganism when random allocation is applied. An imbalance in these ratios could severely 
+affect the comparison of detecting microorganisms between the AMM/RMM and CMM, because it would 
+be easier to detect test samples that contain more microorganisms. Thus, if the AMM/RMM is testing 
+samples with higher numbers of microorganisms than the CMM, the test results could lead to a conclusion 
+that the AMM/RMM is superior in detecting microorganisms than the CMM, whereas this was actually just 
+a result of an incorrectly executed experiment (e.g., of not applying random allocation). Conversely, if the 
+CMM received test samples with a higher number of microorganisms, the noninferiority in the AMM/RMM 
+could not be demonstrated. Since the exact number of microorganisms in the test samples is unknown, the 
+test samples cannot be perfectly allocated with the same number of microorganisms to both microbiological 
+methods and, as a result, the outcome relies on the randomization described above for all experiments. 
+Consequently, it is important to ensure the homogeneity of microbial suspensions as best as possible. 
+ 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+ Technical Report No. 33 (Revised 2026) © 2026 Parenteral Drug Association, Inc. 
+100 
+9.2.1 Demonstrating Comparability Using Ratios of Positive Rates 
+Using the data summarized in Table 9-2.1, the positive rates for the AMM/RMM and CMM can be 
+calculated, together with their 95% exact confidence interval, as described in Section 9.1.1. The proportion 
+and confidence interval for the AMM/RMM (𝑝𝑝𝐴𝐴) is estimated at 0.625 (0.458, 0.773); the proportion and 
+confidence interval for the CMM (𝑝𝑝𝐶𝐶) is estimated at 0.700 (0.535, 0.834).  
+Considering these results, two conclusions are clear. First, the positive rate for the CMM is statistically 
+larger than the planned or intended 50% positive detection rate, since the confidence interval falls above the 
+value 0.5. Thus, the goal of achieving an approximate 50% positive rate was rejected with the collected data, 
+indicating that the spike used in the suspension was possibly higher than originally designed. Second, the 
+positive rate for the CMM appears somewhat larger than the positive rate for the AMM/RMM. Testing the 
+null hypothesis that the microbiological methods have the same positive rates (𝐻𝐻0: 𝑝𝑝𝐴𝐴= 𝑝𝑝𝐶𝐶) can be 
+performed with the Pearson’s chi-square test, which is available in many general-purpose statistical software 
+packages. The data can be entered in a 2x2 contingency table as presence and absence values for each 
+method.  
+Using the data in Table 9.2-1, the Pearson’s chi-square statistic is equal to 0.503, and the two-tailed p-value 
+is equal to 0.478, indicating that the null hypothesis, 𝐻𝐻0:𝑝𝑝𝐴𝐴= 𝑝𝑝𝐶𝐶, cannot be rejected. Because the p-value is 
+>0.05, the association between the number of positives between the AMM/RMM and the CMM is 
+considered to be not statistically significant. Another option for testing the null hypothesis 𝐻𝐻0:𝑝𝑝𝐴𝐴= 𝑝𝑝𝐶𝐶, is to 
+use the Fisher’s exact test, which is more accurate for small sample sizes (e.g., <50) or when the counts in 
+the contingency table are low (e.g., <5). Using the same data in Table 9.2-1, the two-tailed p-value is equal 
+to 0.637, also indicating that the null hypothesis cannot be rejected. Although both tests seem to provide a 
+good result (equality of the positive rates for AMM/RMM and CMM cannot be rejected), some care is 
+needed, because sample size plays an important role in accepting the conclusion when using traditional 
+hypothesis tests. The smaller the number of test samples, the less likely the null hypothesis of equal positive 
+rates will be rejected even if a large difference in positive rates is present. On the other hand, if many more 
+samples had been tested, only a small irrelevant difference in positive rates would already be rejected.  
+Although the Pearson’s chi-square or Fisher’s exact test provide valuable information, in particular when the 
+null hypothesis is being rejected, performing a non-inferiority test is preferred, where the primary goal is to 
+demonstrate that the AMM/RMM is "not worse" than the CMM. A key element of a non-inferiority test is 
+the use of a prespecified “non-inferiority margin,” which defines the largest acceptable difference or ratio in 
+positive rates between the AMM/RMM and the CMM. The non-inferiority hypothesis is then formulated as 
+𝐻𝐻0: 𝑝𝑝𝐴𝐴
+𝑝𝑝𝐶𝐶
+< ∆ 
+Where: 
+Δ   
+=  non-inferiority margin (or 𝛿𝛿 in some statistical applications) that must be 
+               stated at the beginning of the experiment 
+𝑝𝑝𝐴𝐴   
+=  positive rate for the AMM/RMM 
+𝑝𝑝𝐶𝐶   
+=  positive rate for the CMM 
+ 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+Technical Report No. 33 (Revised 2026) 
+© 2026 Parenteral Drug Association, Inc. 
+101 
+Using this ratio of positive rates approach is most appropriate when the positive rates are expected to be low 
+(e.g., <50%). Furthermore, a Δ equal to 0.7 is commonly used, unless a stricter margin is desired (e.g., Δ = 
+0.8). The null hypothesis for non-inferiority indicates that the AMM/RMM is inferior to the CMM and that 
+this hypothesis should be rejected with the observed data to demonstrate non-inferiority. To execute the 
+non-inferiority test, a 90% confidence interval on the ratio of positive rates should be calculated. This 
+approach is often referred to as the Two-One-Sided Test (TOST), where an upper (UCL) and a lower (LCL) 
+95% confidence limit is calculated. However, for non-inferiority, only the lower 95% confidence limit 
+(which would be provided by the 90% confidence interval) needs to be calculated. When the lower 95% 
+confidence limit is above the non-inferiority margin, the null hypothesis of inferiority is rejected.  
+Similar to the confidence interval utilized when estimating false-positive rates, there are different ways of 
+constructing a confidence interval on the ratio of positive rates, and this may be related to the statistical 
+software package being used. For a qualitative microbiological method, USP ⟨1223⟩ refers to a confidence 
+interval developed by Farrington and Manning in 1990 (2). The Farrington and Manning approach is 
+programmed in the software package SAS® using the FREQ procedure, however, this may not be available 
+in all general-purpose software packages. In Minitab, the 2-Sample Equivalency Test for numerical data 
+may be used, as long as the two positive rates are away from the boundaries (e.g., 0.2 < positive rate < 0.8).  
+Alternative approaches for confidence intervals on ratios of proportions may also be used. For example, in 
+clinical trials the ratio of proportions is referred to as relative risk, and several calculation approaches exists 
+to determine non-inferiority as alternatives to the Farrington and Manning approach. These calculation 
+approaches are essentially different ways of constructing the confidence interval on the relative risk, and 
+there is no approach superior to all other approaches. These approaches can be calculated from a logistic 
+regression approach essentially using an asymptotic confidence interval, a Bayesian approach where prior 
+information can be used, or a direct approach making use of explicit formulas (3-6). 
+Applying the Farrington and Manning approach to the data in Table 9.2-1, the ratio of positive rates is 
+estimated with Rpr = 𝑝𝑝𝐴𝐴/𝑝𝑝𝐶𝐶= 0.893, and its lower 95% confidence limit is determined at 0.676. Since this 
+lower 95% confidence limit of 0.676 is below the margin 0.7, the null hypothesis of inferiority cannot be 
+rejected. Even though the null hypothesis of equal positive rates could not be rejected with Pearson’s chi-
+square or Fisher’s exact tests, there is not enough evidence to show that the AMM/RMM is non-inferior to 
+the CMM for non-inferiority margins of at least 0.7.  
+9.2.2 Justifying for Comparability with the Most Probable Number 
+It was demonstrated in 2022 that the comparison of positive rates may be unreliable if the experiment is not 
+properly executed (2). For example, if higher numbers of microorganisms are spiked in a test suspension, a 
+greater number of positive test responses will be observed in both methods, regardless of each method’s 
+detection limits. Conversely, if very low numbers are spiked in a test suspension, and there are differences in 
+the detection limits for each method, the analysis may lead to incorrect results. To illustrate this, assuming 
+the average number of microorganisms in test samples is four (4), and the Poisson probability distribution 
+are calculated similarly as that shown in Figure 9.2.2-1, only 7.3% of all test samples would contain exactly 
+one organism and 76.2% of all test samples would contain three or more microorganisms. If it is further 
+assumed that the CMM has a detection limit of 1 (resulting in a probability of 0.95 of a positive test when a 
+single microorganism is present) and the AMM/RMM has a detection limit of 4 (resulting in an inferior 
+probability of 0.527 = 1 - (1 - 0.95)1/4 for a positive test when a single microorganism is present)*, a 
+comparison of positive rates would not be able to detect a difference in recovery when the average spike in 
+the test samples is four or more, while the ratio of probabilities for samples with a single microorganism is 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+ Technical Report No. 33 (Revised 2026) © 2026 Parenteral Drug Association, Inc. 
+102 
+equal to 0.555 (= 0.527/0.95) and much lower than the non-inferiority margin of 0.70. For this situation with 
+higher number of microorganisms in test samples, the experiment may result in 39 positives for the CMM 
+and 35 positives for the AMM/RMM (still assuming 40 samples are tested in both methods as was done in 
+Table 9.2-1). Conducting a non-inferiority test with positive rates as in Section 9.2.1 leads to a rejection of 
+the null hypothesis of inferiority, since the results will be equal to Rpr = 𝑝𝑝𝐴𝐴/𝑝𝑝𝐶𝐶 = 0.897 (0.781, 0.997) 
+and the lower 95% confidence limit is far above the non-inferiority margin of 0.70. This is counterintuitive 
+compared to the ratio of 0.555 for test samples with single microorganisms and to the conclusion of not 
+rejecting inferiority in Section 9.2.1, where results were closer to each other (28 positives for the CMM and 
+25 positives for the AMM/RMM) when samples containing, on average, fewer organisms (around two) 
+were observed. Therefore, the conclusion derived with the ratio of positive rates when positive rates are 
+close to the boundary of one would be incorrect.  
+*Note: The formula used to calculate the inferiority probability in this example is:  
+𝜃𝜃≤1 − exp ቆlog(0.05)
+LoD
+ቇ 
+Where: 
+θ 
+ 
+= 
+detection proportion 
+Alternatively, if the detection proportion is known, the LoD can be calculated using this 
+formula:  
+LoD ≥ log 0.05
+log(1 −𝜃𝜃) 
+To graphically illustrate how the positive rates would be affected by the change in the average number of 
+microorganisms, Figure 9.2.2-1 shows the positive rates for a CMM with a detection limit of one, and an 
+AMM/RMM with a detection limit of 4. The positive rates and their ratio converge to one when the average 
+number of microorganisms in a test sample increases. Thus, no matter how large the difference in the 
+detection limit, the ratio of positive rates will pass the inferiority margin when enough organisms are spiked 
+in the test samples. When the average number of microorganisms goes to zero, the positive rates of the 
+AMM/RMM and CMM also go to zero. However, mathematical peculiarities occur when the ratio of these 
+positive rates (as a consequence of dividing by zero) are examined. Consequently, the ratio of positive rates 
+converges to the true accuracy for testing test samples with only single microorganisms when the average 
+number of microorganisms converges to zero (under certain mathematical assumptions). Thus, only when 
+the observed positive rate for the CMM in the experiment is low, for example, below 50%, would the non-
+inferiority approach discussed in Section 9.2.1, when comparing positive rates, be appropriate to use (2). 
+ 
+ 
+ 
+ 
+ 
+ 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+Technical Report No. 33 (Revised 2026) 
+© 2026 Parenteral Drug Association, Inc. 
+103 
+Figure 9.2.2-1 Visualization of Positive Rates as Function of the Average Number of 
+Microorganisms in Test Samples 
+A more reliable approach less affected by the spiked concentration of microorganisms, is to calculate the 
+most probable number (MPN) for both the AMM/RMM and CMM. This would require an experiment, 
+where multiple MPN values derived from the presence/absence data across multiple challenge 
+concentrations would be obtained for both microbiological methods. A non-inferiority analysis based on the 
+t-test could then be applied (see Section 9.2.3). Alternatively, literature has provided the so-called 
+generalized MPN (gMPN) method that could be conducted on a single concentration without repeating the 
+experiment, such that the data in Table 9.2-1 could be analyzed. This method is currently only programmed 
+in the specialized statistical software TriMSA (7). As such, the mathematical details for this type of analysis 
+are described in Section 9.2.3 so stakeholders can use this approach without the specialized software. 
+9.2.3 Demonstrating Compatibility with the Generalized Most-Probable-Number 
+Approach 
+The MPN is based on the premise that the probability of a positive test result is equal to 1 −exp{−𝜆𝜆}, with 
+𝜆𝜆 being the average number of microorganisms in the test samples. When a number of test samples are 
+taken from a single suspension and tested for presence/absence with the AMM/RMM, the parameter 𝜆𝜆 can 
+be estimated by: 
+𝜆𝜆= −log(1 −𝑝𝑝𝐴𝐴) 
+Where: 
+𝑝𝑝𝐴𝐴  
+= 
+positive rate for the AMM/RMM 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+ Technical Report No. 33 (Revised 2026) © 2026 Parenteral Drug Association, Inc. 
+104 
+The MPN is then calculated by: 
+MPN = 𝑉𝑉𝑉𝑉
+𝑣𝑣 
+Where: 
+V  
+= 
+volume of the suspension from which the test samples were taken 
+v 
+ 
+= 
+volume of the test sample (8) 
+The gMPN assumes that the probability of a positive test result is equal to 1 −exp{−𝜃𝜃𝜃𝜃}, with 𝜃𝜃 the 
+probability of a positive test for a test sample with exactly one microorganism. The MPN approach assumes 
+this probability is equal to one. The parameter 𝜃𝜃 is referred to as the detection proportion. Non-inferiority of 
+the AMM/RMM with respect to the CMM is then conducted on the detection proportions of the 
+AMM/RMM and CMM, that is, the null hypothesis of inferiority is: 
+𝐻𝐻0: 𝜃𝜃𝐴𝐴
+𝜃𝜃𝐶𝐶
+< ∆ 
+Where: 
+𝜃𝜃𝐴𝐴  
+= 
+detection proportion of the AMM/RMM 
+𝜃𝜃𝐶𝐶  
+= 
+detection proportion of the CMM 
+∆   
+= 
+non-inferiority margin 
+The ratio RgMPN = 𝜃𝜃𝐴𝐴/𝜃𝜃𝐶𝐶 of detection proportions can be viewed as a kind of “accuracy” or “recovery”. 
+Since the detection proportion is the probability that test samples with a single microorganism are tested 
+positively, the ratio would indicate how much of the positive-tested samples of the CMM would be 
+recovered with the AMM/RMM. A ratio less than one would indicate that not all of the positively tested 
+samples of the CMM are being recovered (8, 9). 
+The ratio RgMPN = 𝜃𝜃𝐴𝐴/𝜃𝜃𝐶𝐶 of detection proportions, when the test samples are all collected from a single 
+suspension (like in Table 9.2-1), can be estimated by: 
+𝑅𝑅gMPN = log( 1 − 𝑝𝑝𝐴𝐴)
+log(1 − 𝑝𝑝𝐶𝐶) 
+Where: 
+𝑝𝑝𝐴𝐴  
+=  positive rate for the AMM/RMM 
+𝑝𝑝𝐶𝐶  
+= 
+positive rate for the CMM 
+ 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+Technical Report No. 33 (Revised 2026) 
+© 2026 Parenteral Drug Association, Inc. 
+105 
+Its asymptotic lower 95% confidence limit (an exact confidence interval does not exist) can then be 
+calculated by: 
+𝐿𝐿𝐿𝐿𝐿𝐿gMPN = 𝑅𝑅gMPN ∙exp ቌ−1.645ඨ
+𝑝𝑝𝐴𝐴
+𝑛𝑛(1 − 𝑝𝑝𝐴𝐴)[log(1 −𝑝𝑝𝐴𝐴)]2 +
+𝑝𝑝𝐶𝐶
+𝑛𝑛(1 − 𝑝𝑝𝑐𝑐)[log(1 − 𝑝𝑝𝐶𝐶)]2)ቍ 
+Where: 
+𝑅𝑅𝑔𝑔𝑔𝑔𝑔𝑔𝑔𝑔 =  ratio of detection proportions 
+𝑝𝑝𝐴𝐴  
+= 
+positive rate for the AMM/RMM 
+𝑝𝑝𝐶𝐶  
+=  positive rate for the CMM  
+n 
+ 
+= 
+number of test samples offered to each microbiological method 
+ 
+ 
+𝑒𝑒𝑒𝑒𝑒𝑒 
+= 
+inverse of the natural logarithm 
+Applying the gMPN non-inferiority approach to the data obtained in Table 9.2-1, obtains RgMPN = 0.815, 
+with a lower 95% confidence limit equal to LCLgMPN = 0.506.  
+To illustrate that the gMPN is not affected by the average number of microorganisms in the test samples, the 
+gMPN approach was also applied to the data with 35 positives for the AMM/RMM and 39 positives for the 
+CMM, where the AMM/RMM is inferior to the CMM for a non-inferiority margin of Δ = 0.70. This data 
+would fit with the situation where the detection proportions are equal to 𝜃𝜃𝐶𝐶= 0.95 (an LoD equal to one) 
+and 𝜃𝜃𝐴𝐴= 0.527 (an LoD equal to 4) for the CMM and AMM/RMM, respectively, that is, a theoretical ratio 
+of 0.555 indicating the AMM/RMM is inferior to the CMM. The gMPN provides an estimate of RgMPN = 
+0.564 close to the true ratio, with a lower 95% confidence limit equal to LCLgMPN = 0.325. The gMPN 
+approach does not reject the null hypothesis of inferiority as it should, implying that the AMM/RMM is 
+inferior. 
+9.2.4 Demonstrating Comparability Using Multiple Most Probable Number Experiments 
+To determine the non-inferiority of the AMM/RMM with respect to the CMM on detecting microorganisms, 
+multiple standard MPN experiments can be applied. The multiple MPN results obtained from both 
+microbiological methods can then be compared to demonstrate non-inferiority. Table 9.2.4-1 provides the 
+results of six (6) MPN runs in both microbiological methods where the same suspension was used to make 
+three (3) 10-fold dilutions in each of the runs. Three (3) replicates per dilution are analyzed. The two (2) 
+MPN values per run, derived from FDA tables, are considered independent (similar to the discussion for the 
+data of Table 9.2-1), and a two-sample t-test can be used to determine non-inferiority. However, if each run 
+had come from a separate suspension (e.g., different suspension preparations, tested on different days or by 
+different analysts), the two MPN values per run would be considered paired, and a paired t-test should be 
+applied. The last row in Table 9.2.4-1 presents the MPN results derived from the FDA MPN tables (10). 
+ 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+ Technical Report No. 33 (Revised 2026) © 2026 Parenteral Drug Association, Inc. 
+106 
+Table 9.2.4-1 Six Standard Most-Probable-Number Runs on a Single Microorganism Tested by 
+Two Microbiological Methods 
+Dilution 
+Run 1 
+Run 2 
+Run 3 
+Run 4 
+Run 5 
+Run 6 
+CMM 
+AMM/ 
+RMM 
+CMM 
+AMM/ 
+RMM 
+CMM 
+AMM/ 
+RMM 
+CMM 
+AMM/ 
+RMM 
+CMM 
+AMM/ 
+RMM 
+CMM 
+AMM/ 
+RMM 
+1.00 
+3 
+3 
+3 
+3 
+3 
+3 
+3 
+3 
+3 
+3 
+3 
+3 
+0.10 
+2 
+3 
+2 
+2 
+1 
+3 
+1 
+2 
+2 
+2 
+2 
+1 
+0.01 
+0 
+1 
+1 
+0 
+1 
+0 
+1 
+0 
+0 
+2 
+2 
+1 
+MPN 
+9.3 
+46.0 
+15.0 
+9.3 
+7.5 
+24.0 
+7.5 
+9.3 
+9.3 
+21.0 
+21.0 
+7.5 
+The MPN values can be considered estimates of the bacterial density of the suspension. Although the 
+suspension contained just one true number of organisms, both microbiological methods should provide 
+similar estimates when the methods would detect microorganisms in the same way. If the microbiological 
+methods were different, it could be conceptually formulated that the AMM/RMM would estimate bacterial 
+density 𝜆𝜆𝐴𝐴, and the CMM would estimate 𝜆𝜆𝐶𝐶. Non-inferiority would then be formulated by: 
+𝐻𝐻0: 𝜆𝜆𝐴𝐴
+𝜆𝜆𝐶𝐶
+< Δ 
+Where: 
+Δ   
+=  non-inferiority margin (equal to 0.7 in this example) 
+𝜆𝜆𝐴𝐴   
+=  bacterial density for the AMM/RMM 
+𝜆𝜆𝐶𝐶   
+=  bacterial density for the CMM 
+A natural logarithmic transformation of the MPN values, that is, 𝑥𝑥= log(𝑀𝑀𝑀𝑀𝑀𝑀), is preferred, as this would 
+reduce skewness in the MPN values (i.e., thicker right tail) and make the data more normally distributed. 
+The non-inferiority hypothesis would also be simplified, since it would become a difference in log-
+transformed bacterial densities, that is, 𝐻𝐻0:log(λA) −log(λC) < log(Δ), instead of a ratio in bacterial 
+densities. For the transformed MPNs, then the TOST could be used that results from the t-test (available in 
+almost any general-purpose statistics software), since the difference log(𝜆𝜆𝐴𝐴) −log(𝜆𝜆𝐶𝐶) is estimated with the 
+difference in averages of the log-transformed MPNs, and a confidence interval can be calculated with the t-
+distribution. 
+Applying the t-test to the logarithmically transformed MPNs leads to an average (standard deviation) 𝑥𝑥̅𝐶𝐶= 
+2.374 (0.415) for the CMM and 𝑥𝑥̅𝐴𝐴= 2.754 (0.709) for the AMM/RMM. Traditional hypothesis-testing 
+with the two-sample t-test does not reject the null hypothesis, 𝐻𝐻0:log(𝜆𝜆𝐴𝐴) = log(𝜆𝜆𝐶𝐶), for equality in log-
+transformed bacterial densities (p-value = 0.289). The difference in means is now estimated at 0.381 with a 
+90% confidence interval equal to (-0.227, 0.989). Since the lower limit of the 90% confidence interval is 
+larger than log(0.7) ≈ -0.3567, the null hypothesis of inferiority is rejected, and the AMM/RMM is 
+considered non-inferior to the CMM. The mean difference between the two methods in the logarithmic scale 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+Technical Report No. 33 (Revised 2026) 
+© 2026 Parenteral Drug Association, Inc. 
+107 
+can be exponentiated (reverted to the original scale where the mean difference becomes a ratio) to obtain an 
+accuracy estimate 𝑅𝑅MPN = 𝜆𝜆𝐴𝐴/𝜆𝜆𝐶𝐶. Furthermore, if the traditional null hypothesis of 𝐻𝐻0: log(𝜆𝜆𝐴𝐴) =
+log(𝜆𝜆𝐶𝐶) had been rejected and the AMM/RMM recovers more microorganisms than the CMM (i.e., the 
+AMM/RMM MPN is higher than the CMM MPN), the AMM/RMM can be claimed superior, although this 
+is not required. 
+Although the comparison of multiple MPNs between the AMM/RMM and CMM is an appropriate analysis 
+approach, an alternative analysis on the aggregated data (ignoring the run structure) is also possible. Table 
+9.2.4-2 presents the aggregated data according to a concentration and microbiological method from the data 
+in Table 9.2.4-1. This approach is somewhat more powerful than the comparison of multiple MPNs, but is 
+more difficult to analyze with general-purpose statistical software (2). There is no closed mathematical 
+formula for the ratio RgMPN 𝑅𝑅gMPN = 𝜃𝜃𝐴𝐴/𝜃𝜃𝐶𝐶 when multiple concentrations are involved. The analysis is 
+programmed in the specialized software TriMSA, and it can be programmed in the SAS® software or in the 
+open-access software [R]. Applying the gMPN approach to the aggregated data in Table 9.2.4-2, the ratio is 
+estimated at 𝑅𝑅gMPN = 1.338 with a 90% confidence interval equal to (0.726, 2.466). Thus, the gMPN 
+approach also shows that the AMM/RMM is non-inferior to the CMM at a non-inferiority margin Δ = 0.70. 
+Table 9.2.4-2 Aggregated Data Per Concentration and Microbiological Method for the Multiple 
+Most-Probable-Number Study 
+Dilution 
+CMM 
+AMM/RMM 
+Count 
+Total 
+Count 
+Total 
+1.00 
+18 
+18 
+18 
+18 
+0.10 
+10 
+18 
+13 
+18 
+0.01 
+5 
+18 
+4 
+18 
+9.2.5 Sample Size Considerations: Combining Multiple Species 
+Demonstrating non-inferiority in detecting microorganisms between the AMM/RMM and CMM requires a 
+substantial number of test samples per microbiological method. For traditional hypothesis testing, where the 
+null hypothesis is that the detection limits are identical, at least 200 test samples per microbiological method 
+are needed (2,9). 
+For the gMPN approach, the minimal sample sizes are provided in Table 9.2.5-1. These sample sizes do not 
+yet incorporate the uncertainty that comes from estimating the parameters, implying that (substantial) larger 
+sample sizes are needed. 
+ 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+ Technical Report No. 33 (Revised 2026) © 2026 Parenteral Drug Association, Inc. 
+108 
+Table 9.2.5-1 Minimal Theoretical Sample Size per Microbiological Method for the gMPN 
+Approach 
+𝜃𝜃𝐶𝐶 
+𝜃𝜃𝐴𝐴
+𝜃𝜃𝐶𝐶
+ 
+Non-Inferiority Margin 0.7 
+Non-Inferiority Margin 0.8 
+Average number of microorganisms (λ) 
+Average number of microorganisms (λ) 
+1.5 
+2.0 
+2.5 
+3.0 
+3.5 
+1.5 
+2.0 
+2.5 
+3.0 
+3.5 
+0.35 
+0.90 
+224 
+184 
+162 
+148 
+140 
+1017 
+835 
+734 
+673 
+636 
+0.55 
+0.90 
+167 
+145 
+136 
+133 
+135 
+757 
+660 
+617 
+604 
+611 
+0.75 
+0.90 
+144 
+134 
+134 
+141 
+154 
+655 
+608 
+609 
+640 
+699 
+0.95 
+0.90 
+135 
+134 
+145 
+165 
+195 
+613 
+610 
+657 
+747 
+886 
+0.35 
+1.00 
+107 
+89 
+78 
+72 
+69 
+273 
+225 
+199 
+184 
+175 
+0.55 
+1.00 
+81 
+71 
+67 
+66 
+68 
+205 
+181 
+170 
+168 
+172 
+0.75 
+1.00 
+70 
+66 
+67 
+72 
+80 
+179 
+169 
+171 
+183 
+202 
+0.95 
+1.00 
+67 
+68 
+74 
+86 
+104 
+170 
+172 
+188 
+218 
+264 
+0.35 
+1.10 
+65 
+54 
+48 
+44 
+42 
+130 
+108 
+96 
+89 
+85 
+0.55 
+1.10 
+49 
+44 
+42 
+42 
+43 
+99 
+88 
+83 
+83 
+89 
+0.75 
+1.10 
+43 
+41 
+43 
+46 
+52 
+87 
+83 
+85 
+93 
+104 
+0.95 
+1.10 
+42 
+43 
+48 
+57 
+70 
+83 
+86 
+96 
+114 
+141 
+The sample size depends on the detection proportion of the CMM (𝜃𝜃𝐶𝐶), the true accuracy (𝜃𝜃𝐴𝐴/𝜃𝜃𝐶𝐶), the 
+average number of microorganisms (𝜆𝜆) in the test samples, and the non-inferiority margin (Δ). When the 
+AMM/RMM is superior to the CMM (𝜃𝜃𝐴𝐴/𝜃𝜃𝐶𝐶> 1), the minimal number of test samples in Table 9.2.5-1 
+may be reasonable in practice when the non-inferiority margin can be taken equal to 0.7. However, in most 
+other cases, an unrealistically large sample size is needed. Indeed, in case the true accuracy (𝜃𝜃𝐴𝐴/𝜃𝜃𝐶𝐶) is close 
+to the non-inferiority margin, the sample size can increase to hundreds of test samples per microbiological 
+method. Moreover, when spiking a suspension is imprecise, the required sample size must be robust against 
+deviations in the average number of microorganisms. In most settings, where the true accuracy may not be 
+known and spiking can vary substantially, a sample size of 200 samples (that was also needed for traditional 
+hypothesis) may be needed, even when the non-inferiority margin can be taken equal to 0.7. Since testing 
+200 test samples for a single species is often too much of a burden, creative approaches should be 
+considered.  
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+Technical Report No. 33 (Revised 2026) 
+© 2026 Parenteral Drug Association, Inc. 
+109 
+One approach is to combine the results from multiple species to obtain a total sample size of at least 200 test 
+samples per microbiological method for a single dilution. However, to maintain a reliable estimate per 
+species, using at least 30 test samples per species is recommended, otherwise the risk is too high to obtain 
+positive rates at the boundary (i.e., equal to zero or one), and the width of the confidence interval becomes 
+very large. For example, if six species are being investigated on the LoD, a total of 34 test samples per 
+species and microbiological method is needed, to make the total sample size larger than 200 and the sample 
+size per species larger than 30. When meeting these sample-size recommendations is not possible (e.g., 
+when enough test material is not available), it does not mean the studies cannot be conducted. Rather, 
+stakeholders will need to accept that the confidence interval may be too wide to demonstrate 70% non-
+inferiority, unless the AMM/RMM is superior to the CMM.  
+Combining the results from different species would then be necessary to achieve enough power for non-
+inferiority testing, but some statistical considerations should be mentioned, because a mistake in the analysis 
+could lead to incorrect conclusions. The simplest approach is to analyze the total data as one set, ignoring 
+the structure obtained by the species. An analysis as presented in Section 9.2.2 would then be appropriate 
+or, alternatively, the analysis in Section 9.2.1 if the conditions of the positive rate for the CMM is satisfied. 
+However, ignoring the species in the analysis is only acceptable when the ratios RgMPN = 𝜃𝜃𝐴𝐴/𝜃𝜃𝐶𝐶 for the 
+different species would be very similar across the species. Without this assumption, the AMM/RMM can be 
+inferior for one species, but this may not be detected because the data is masked by the data of the other 
+species where non-inferiority may be the truth. A somewhat more cumbersome alternative approach is 
+making use of the analysis shown in Section 9.2.2 for each species separately and then pooling the 
+estimated ratios. Both approaches are illustrated in Table 9.2.5-2 using presence/absence data. 
+Table 9.2.5-2 Present Results of the Alternative/Rapid Microbiological Method and 
+Conventional Microbiological Method for Seven Different Species 
+Species 
+CMM 
+AMM/RMM 
+Count 
+Total 
+Count 
+Total 
+B. subtilis 
+23 
+30 
+22 
+30 
+C. sporogenes 
+27 
+30 
+26 
+30 
+C.albicans 
+20 
+29 
+22 
+30 
+S. aureus 
+25 
+30 
+24 
+30 
+A. brasiliensis 
+21 
+30 
+19 
+30 
+P. aeruginosa 
+15 
+30 
+8 
+30 
+E.coli 
+25 
+28 
+26 
+29 
+Total 
+156 
+207 
+147 
+209 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+ Technical Report No. 33 (Revised 2026) © 2026 Parenteral Drug Association, Inc. 
+110 
+Ignoring the structure of species, just the numbers at the last row of Table 9.2.5-2 can be used for analysis. 
+The positive rates are then estimated by 𝑝𝑝𝐴𝐴= 0.703 (0.636, 0.764) and 𝑝𝑝𝐶𝐶= 0.753 (0.689, 0.811) for the 
+AMM/RMM and CMM, respectively, using the exact approach for confidence intervals. The positive rate 
+for the CMM is too high for a reliable analysis with the positive rates directly (see Section 9.2.3). With the 
+gMPN analysis of Section 9.2.3, a ratio of RgMPN = 𝜃𝜃𝐴𝐴/𝜃𝜃𝐶𝐶= 0.867 can be obtained with a lower 95% 
+confidence limit of LCLgMPN = 0.708. Thus, the gMPN analysis on all counts together shows that the 
+AMM/RMM is non-inferior to the CMM for a non-inferiority margin of Δ = 0.7. However, if each species 
+were analyzed separately with the gMPN analysis, the results in Table 9.2.5-3 (number of microorganisms 
+in 1 mL) would be obtained. For each species, the null hypothesis of inferiority at the non-inferiority margin 
+of Δ = 0.7 cannot be rejected. This is not unexpected, since 30 test samples (or less) is too low a number for 
+non-inferiority testing per species (Table 9.2.5-1 demonstrates this even if the AMM/RMM would be 
+slightly superior to the CMM). Moreover, the ratio for P. aeruginosa is different from the other six species, 
+which all vary around 0.90. This somewhat lower ratio would not be detected by a gMPN analysis of the 
+total counts. 
+Table 9.2.5-3 Most Probable Number Estimates and the gMPN Ratio Estimates for Multi-
+Species Experiment 
+Species 
+MPN 
+AMM 
+MPN 
+CMM 
+RgMPN 
+LCLgMPN 
+log (RgMPN) 
+B. subtilis 
+1.32 
+1.46 
+0.908 
+0.534 
+-0.09624 
+C. 
+sporogenes 
+2.02 
+2.30 
+0.875 
+0.507 
+-0.13346 
+C. albicans 
+1.32 
+1.17 
+1.130 
+0.657 
+0.12190 
+S. aureus 
+1.61 
+1.79 
+0.898 
+0.529 
+-0.10731 
+A. 
+brasiliensis 
+1.00 
+1.20 
+0.833 
+0.482 
+-0.18233 
+P. 
+aeruginosa 
+0.31 
+0.69 
+0.447 
+0.216 
+-0.80417 
+E. coli 
+2.27 
+2.23 
+1.016 
+0.578 
+0.01559 
+The individual ratios for the species in Table 9.2.5-3 can be combined or pooled using different meta-
+analyses methods but here, one of the simplest methods though perhaps not the most powerful technique, 
+has been used (11). All the meta-analyses methods for pooling a certain statistic across different groups, also 
+called a “measure of effect,” assume that the statistic is normally distributed. To best satisfy this assumption, 
+the log transformation of the ratios RgMPN in Table 9.2.5-3 is recommended as the measure of effect for 
+accuracy that is pooled. The log transformed ratios are also listed in Table 9.2.5-3.  
+The simplest meta-analysis method is to calculate the arithmetic average and the standard deviation of the 
+log-transformed ratios and then calculate a standard 90% confidence interval for normally distributed data 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+Technical Report No. 33 (Revised 2026) 
+© 2026 Parenteral Drug Association, Inc. 
+111 
+(available in any general-purpose statistical software package). Since this interval is in the log-transformed 
+scale, it must be transformed back to the ratio scale. Thus, for the confidence interval, the following must be 
+calculated: 
+exp ൜𝑋𝑋തlog(𝑅𝑅) ± 𝐶𝐶𝑚𝑚
+𝑆𝑆log(𝑅𝑅)
+√𝑚𝑚ൠ 
+Where: 
+𝑋𝑋തlog(𝑅𝑅) =  average value of the log transformed ratios of detection proportions (see below) 
+𝑆𝑆log(𝑅𝑅) =  standard deviation of the log transformed ratio of detection proportions (see below) 
+𝑅𝑅gMPN
+𝑘𝑘
+ =  ratio of detection proportions for species k (see below) 
+𝐶𝐶𝑚𝑚   
+= 
+ 𝑡𝑡-value (see Table 9.2.5-4) that depends on the number of species and the 
+               confidence level chosen (here 90%) 
+m   
+=  number of species being pooled 
+𝑒𝑒𝑒𝑒𝑒𝑒 
+=  inverse of the natural logarithm 
+𝑋𝑋തlog(𝑅𝑅) = ෍
+ቈ
+log൫𝑅𝑅gMPN
+𝑘𝑘
+൯
+𝑚𝑚
+቉
+𝑚𝑚
+𝑘𝑘 = 1
+and 𝑆𝑆log(𝑅𝑅)
+2
+= ෍
+൥
+൫log൫𝑅𝑅gMPN
+𝑘𝑘
+൯ − 𝑋𝑋തlog(𝑅𝑅)൯
+2
+(𝑚𝑚 − 1)
+൩
+𝑚𝑚
+𝑘𝑘 = 1
+ 
+Using the data in Table 9.2.5-3, the numbers can be calculated as 𝑋𝑋തlog(𝑅𝑅) = -0.16943, 𝑆𝑆log(𝑅𝑅) = 0.29796, 
+and 𝐶𝐶𝑚𝑚= 1.94318. The pooled ratio and its 90% confidence interval are then estimated at 𝑅𝑅Pool = 0.844 
+(0.678, 1.051). 
+Table 9.2.5-4 Critical Values Rejecting Homogeneity 
+Number of Species 
+Cm 
+Pm 
+3 
+2.91999 
+4.30265 
+4 
+2.35336 
+3.18245 
+5 
+2.13185 
+2.77645 
+6 
+2.01505 
+2.57058 
+7 
+1.94318 
+2.44691 
+8 
+1.89458 
+2.36462 
+9 
+1.85955 
+2.30600 
+10 
+1.83311 
+2.26216 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+ Technical Report No. 33 (Revised 2026) © 2026 Parenteral Drug Association, Inc. 
+112 
+In this pooled analysis, the null hypothesis of inferiority at margin Δ = 0.70 cannot be rejected because the 
+lower limit is below this value. The reason is that the result of P. aeruginosa is less masked in the pooled 
+analysis, since the result on P. aeruginosa pulls the pooled ratio down and increases the variability. 
+Removing the results of P. aeruginosa, which seems to be an outlier, the pooled ratio with its 90% 
+confidence interval is equal to 𝑅𝑅Pool = 0.938 (0.856, 1.029). Thus, non-inferiority is attained for the species 
+B. subtilis, C. sporogenes, C. albicans, S. aureus, A. brasiliensis, and E. coli; but, this cannot be 
+demonstrated for P. aeruginosa with the collected data. 
+To demonstrate that the result for P. aeruginosa is an outlier, 95% prediction limits for the ratios can be 
+calculated. A prediction limit is calculated similar to the confidence limit: 
+exp ቐ𝑋𝑋തlog(𝑅𝑅) ± 𝑃𝑃𝑚𝑚∙𝑆𝑆log(𝑅𝑅) ∙ඨ൬1 + 1
+𝑚𝑚൰ቑ 
+Where: 
+𝑋𝑋തlog(𝑅𝑅) =  average value of the log transformed ratios of detection proportions 
+𝑆𝑆log(𝑅𝑅) = 
+standard deviation of the log transformed ratios of detection proportions 
+Pm   
+= 
+t-value (listed in Table 9.2.5-4) that depends on the number of species and the 
+              choice of confidence level (here selected equal to 95%) 
+m  
+= 
+number of species being pooled 
+𝑒𝑒𝑒𝑒𝑒𝑒  
+=  inverse of the natural logarithm 
+The prediction limits should be calculated without the extreme value (minimum or maximum ratio) to judge 
+if the extreme value falls within the prediction interval. If the extreme value does not fall inside the 
+prediction interval, the result is considered unexpected and could be qualified as an outlier. Thus, after 
+excluding the results of P. aeruginosa in the analysis, the prediction interval for a new ratio 𝑅𝑅gMPN is 
+determined at (0.688, 1.280). The result of 0.447 for P. aeruginosa is clearly outside the prediction interval 
+and can therefore be viewed as an outlier. This confirms the conclusion that the detection of P. aeruginosa 
+with the AMM/RMM, compared to the detection of P. aeruginosa with the CMM, cannot be viewed 
+similarly to the other species. 
+9.3 Estimation of the Detection Limit 
+Table 9.3-1 contains the results of an experiment set up to determine the LoD of the AMM/RMM, without 
+making a direct comparison with the CMM. The data was collected for one type of microorganism or 
+species with one suspension created and spiked with a known number of microorganisms that is close to the 
+AMM/RMM’s purported LoD (e.g., <10 cells). Five (5) additional suspensions, using different 
+concentrations from the initial suspension, were created. From each suspension, twenty (20) samples were 
+drawn and tested on the presence/absence with the AMM/RMM. The concentrations listed in Table 9.3-1 
+represent the expected average number of microorganisms present in the test sample. 
+Different statistical approaches exist for estimating the LoD based on the data in Table 9.3-1. The logistic 
+regression approach with different risk curves and the most probable limit (MPL) is described here (12-15). 
+ 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+Technical Report No. 33 (Revised 2026) 
+© 2026 Parenteral Drug Association, Inc. 
+113 
+Table 9.3-1 Number of Positives and Total Tested Test Samples for Different Concentrations 
+Concentration 
+Counts 
+Total 
+Positive Rate 
+2.2059 
+18 
+20 
+0.90 
+1.1691 
+15 
+20 
+0.75 
+0.6177 
+8 
+20 
+0.40 
+0.3309 
+5 
+20 
+0.25 
+0.1765 
+2 
+20 
+0.10 
+9.3.1 Logistic Regression Analysis 
+The logistic regression approach models the positive rate as a function of concentration. Often the following 
+relationship is proposed (12, 13): 
+log ൬
+𝑝𝑝𝐴𝐴
+(1 − 𝑝𝑝𝐴𝐴)൰ = 𝛼𝛼 + 𝛽𝛽∙log(𝜆𝜆) 
+Where: 
+𝑝𝑝𝐴𝐴  
+= 
+positive rate for the AMM/RMM 
+𝜆𝜆   
+= 
+average number or concentration of microorganisms in the test samples 
+𝛼𝛼   
+= 
+intercept 
+𝛽𝛽   
+= 
+slope indicating how quickly the positive rate changes with the changes in log 
+  
+              concentration log(𝜆𝜆) 
+The value log(𝑝𝑝𝐴𝐴/(1 −𝑝𝑝𝐴𝐴)) is called the “logit” of positive rate 𝑝𝑝𝐴𝐴. The value exp{−𝛼𝛼/𝛽𝛽} is the 
+concentration at which a positive rate of 50% is obtained. 
+This model assumes that the probability of a presence test for a blank test sample is equal to zero, since it 
+forces the positive rate to zero when no microorganisms are present in the test sample. Additionally, the 
+positive rate as a function of the log concentration has a nice S-shape (blue curve on the right of Figure 
+9.3.1-1) but, as the function of the concentration, the positive rate quickly rises to a high probability and 
+then flattens (blue curve on the left in Figure 9.3.1-1). This latter curve may be considered as a function of 
+the negative rate (i.e., one minus the positive rate), because the slow increase with decreasing concentration 
+and rapid increase when the concentration reaches zero seems like an exponential function. This alternative 
+model may be formulated as: 
+log(1 − 𝑝𝑝𝐴𝐴) = −𝜃𝜃∙𝜆𝜆 
+Where: 
+𝑝𝑝𝐴𝐴  
+= 
+positive rate for the AMM/RMM 
+𝜃𝜃   
+=  detection proportion 
+𝜆𝜆 
+ 
+=  average number or concentration of microorganisms in the test samples 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+ Technical Report No. 33 (Revised 2026) © 2026 Parenteral Drug Association, Inc. 
+114 
+In this expression we only have a single parameter 𝜃𝜃 instead of the intercept 𝛼𝛼 and slope 𝛽𝛽 for the logistic 
+regression analysis. In this exponential model, the positive rate would then be formulated as 𝑝𝑝𝐴𝐴= 1 −
+exp{−𝜃𝜃𝜃𝜃}, which resembles the function for the gMPN approach*. The red curves in Figure 9.3.1-1 show 
+this alternative model and seems very close to the two-parameter logistic curve. 
+*Note: This gMPN-related curve has been shown in Figure 9.2.2-1 as well. 
+Figure 9.3.1-1 Visualization of the Positive Rate as Function of the Concentration (left) and Log 
+Concentration (right) 
+Both curves in Figure 9.3.1-1 can be estimated on multi-concentration data using logistic regression 
+analysis programmed in general-purpose statistical software but fitting the curve related to the gMPN 
+approach requires a deeper understanding of the options for the logistic regression function. Thus, the two-
+parameter logistic function is more straightforward in practice and, therefore, easier to fit with general-
+purpose statistical software. Nevertheless, the gMPN-related curve has only one parameter and is therefore a 
+simpler model, and it has a direct connection to the MPN approach, making it easier to determine the LoD.  
+Fitting both curves to the data in Table 9.3-1 results in the following parameter estimation with its 
+asymptotic 95% confidence (an exact confidence interval does not exist): 
+Logistic curve: 𝛼𝛼 = 0.707 (0.140, 1.275) and 𝛽𝛽 = 1.746 (1.081, 2.412) 
+gMPN-related curve: 𝜃𝜃 = 0.972 (0.673, 1.000) 
+The curves with the estimated parameters were already visualized in Figure 9.3.1-1. If the LoD is the 
+smallest number of organisms in a test sample that can be detected with at least 95% probability, the fitted 
+curves can be used to establish these limits. 
+ 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+Technical Report No. 33 (Revised 2026) 
+© 2026 Parenteral Drug Association, Inc. 
+115 
+The average concentration in test samples that can be detected with exactly 95% probability are given by:  
+Logistic curve: 𝜆𝜆LoD = exp ቀ
+−𝛼𝛼
+𝛽𝛽ቁ∙(19)
+1
+𝛽𝛽 = 3.60 (1.04, 6.16) 
+gMPN-related curve: 𝜆𝜆LoD = 
+−log(0.05)
+𝜃𝜃
+ = 3.08 (2.13, 4.03) 
+These limits are not the LoD, but an average concentration in test samples, which is typically an 
+overestimation of the LoD. An illustration of this is to assume that test samples with an average 
+concentration of 3.6 CFU’s per test sample have been created. If, additionally, the distribution of the number 
+of microorganisms in the test samples equals a Poisson distribution (with mean 3.6), 2.73% of the test 
+samples will be blank test samples and 97.27% of the test samples contain one or more microorganisms. 
+Something similar has already been visualized in Figure 9.2-1, but with an average number of 2 CFUs per 
+test sample. If, in addition, the AMM/RMM does not produce any false positives, all blank samples will be 
+tested as absent, which is approximately 2.7%. To obtain a 95% probability for all test samples, the 
+AMM/RMM should produce a presence test for almost all test samples that do contain at least one 
+microorganism. Thus, the 𝜆𝜆LoD = 3.60 implies that the LoD is most likely equal to one. This conclusion is 
+supported by the gMPN-related curve, because the parameter 𝜃𝜃 represents the detection probability, which 
+is the probability of a positive test for a test sample containing a single microorganism. The parameter 𝜃𝜃 is 
+estimated at 𝜃𝜃= 0.972, which is above 95%, indicating that the LoD is one. This can be confirmed by 
+calculating the cumulative 5% (0.05) probability for a Poisson distribution plot with a mean value = 3.60 
+(i.e., adding the individual probabilities and reporting the first number in the plot that passes the cumulative 
+5% threshold).  
+9.3.2 Most-Probable Limit Analysis 
+The analyses so far have made use of statistical models where presence tests occur with a certain 
+probability. Although these models are reasonable statistical models, the mechanism of detection may also 
+be deterministic. This means that all test samples with a number of microorganisms below the LoD will be 
+tested negatively with 100% certainty, while test samples containing a number of microorganisms equal to 
+or greater than the LoD will test positive with 100% certainty. This model has been described in literature 
+and has been used for estimation of the LoD of AMM/RMMs. It is referred to as the MPL and extends the 
+MPN approach in a different way. The MPN approach assumes that the LoD is equal to one and then 
+provides an estimate of the number of organisms in a suspension using a serial-dilution experiment. The 
+MPL approach assumes that the LoD is equal to an unknown value 𝐿𝐿 and estimates both the LoD and the 
+number of microorganisms in the suspension (14, 15). The MPL approach is programmed in the specialized 
+software TriMSA and can be programmed in SAS® and [R]. Applying the MPL approach to the data in 
+Table 9.2.5-4, an estimate of the LoD of L = 1 with 95% confidence interval of [1, 2] and an estimate of the 
+number of microorganisms in the initial suspension of MPN = 87 with 95% confidence interval of [56, 126] 
+is obtained. If the LoD was equal to two, the MPN estimate would become MPN = 197 [160, 235]. The 
+MPL approach applied to the data in Table 9.2.5-4, shows that the LoD is either one or two. 
+ 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.

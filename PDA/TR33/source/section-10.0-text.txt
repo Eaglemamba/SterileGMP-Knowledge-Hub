@@ -1,0 +1,2330 @@
+ Technical Report No. 33 (Revised 2026) © 2026 Parenteral Drug Association, Inc. 
+116 
+10.0 Appendix 2: Validation of Alternative and Rapid 
+Microbiological Methods: Statistical Analysis-Quantitative 
+Methods 
+As mentioned at the beginning of Section 9.0 (Appendix 1), that section and Section 10.0 (Appendix 2) 
+provide several acceptable statistical analyses for the validation of alternative qualitative and quantitative 
+microbiological methods, respectively, while Section 11.0 (Appendix 3) focuses on additional 
+considerations for non-CFU AMM/RMMs. The statistical analyses recommended in the body of PDA 
+Technical Report No. 33 (Revised 2026): Evaluation, Validation, and Implementation of Alternative and 
+Rapid Microbiological Methods will be restated with example data to illustrate how the analyses can be 
+used. Although the example data is artificial, the data is based on real validation experiments previously 
+conducted by the authors. While these methods are presented as examples, the stakeholder is responsible for 
+selecting the most appropriate statistical analyses to use based on the data to be analyzed and the validation 
+criteria being assessed. 
+Section 10.0 (Appendix 2) contains many formulas, Table 10.0-1 provides a key of all the symbols used in 
+the formulas and their meaning. 
+Note: The notation log will be used for the natural logarithm in Section 10.0 (Appendix 2). 
+Table 10.0-1 Nomenclature for Symbols Used in Section 10.0 (Appendix 2) 
+Symbol 
+Meaning 
+Δ 
+The non-inferiority margin that is selected a priori to do a non-inferiority test. In some other 
+texts the notation 𝛿𝛿 is used. 
+Φ 
+The standard normal distribution function. 
+𝜆𝜆 
+The mean number of microorganisms or the bacterial density in a set of test samples or in a 
+suspension. We also use 𝜆𝜆 for a spiked level of microorganisms in an accuracy, linearity, or 
+precision experiment. In some settings we may use an index to illustrate the purpose of the 
+concentration level, e.g., 𝜆𝜆LoQ is the concentration at which the microbiological method 
+produces an average count at the upper tail for blank samples. 
+𝜃𝜃 
+The parameter used to quantify the accuracy (often in terms of recovery) of the 
+microbiological method. 𝜃𝜃𝐴𝐴 and 𝜃𝜃𝐶𝐶 are sometimes used as accuracy for the AMM/RMM and 
+CMM against the spiked concentration level, while 𝜃𝜃𝐴𝐴 can also be the accuracy of the 
+AMM/RMM against the CMM. 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+Technical Report No. 33 (Revised 2026) 
+© 2026 Parenteral Drug Association, Inc. 
+117 
+Symbol 
+Meaning 
+𝑛𝑛 
+The number of samples tested typically for a single concentration with the microbiological 
+method. 𝑛𝑛𝐴𝐴 and 𝑛𝑛𝐶𝐶 are the number of samples tested with the AMM/RMM and CMM, 
+respectively. 𝑛𝑛 can play the role of all samples tested, i.e., 𝑛𝑛= 𝑛𝑛𝐴𝐴+ 𝑛𝑛𝐶𝐶 or represent 𝑛𝑛𝐴𝐴 or 𝑛𝑛𝐶𝐶 
+if we only do an analysis for a single microbiological method. 
+𝑚𝑚 
+The number of runs in a precision experiment (per microbiological method). 
+𝑦𝑦𝑖𝑖 
+A count for test sample 𝑖𝑖 with the microbiological method. In some cases, the index 𝑖𝑖 is 
+eliminated to make notations clearer, but it still represents a count for a test sample. In other 
+cases, multiple indices may be used to indicate test samples for different subgroups, e.g., 𝑦𝑦𝑖𝑖𝑖𝑖 is 
+the count of test sample 𝑗𝑗 for group (e.g., run) 𝑖𝑖. 
+𝑦𝑦ത 
+The mean count for a set of test samples at the same concentration level for the 
+microbiological method, i.e., 𝑦𝑦ത= ∑
+(𝑦𝑦𝑖𝑖/𝑛𝑛
+𝑛𝑛
+𝑖𝑖=1
+). The means 𝑦𝑦ത𝐴𝐴 and 𝑦𝑦ത𝐶𝐶 are the mean counts for 
+test samples tested with the AMM/RMM and CMM, respectively. 
+𝑟𝑟𝑖𝑖 
+The recovery for test sample 𝑖𝑖, where the recovery is equal to the observed count 𝑦𝑦𝑖𝑖 for the 
+sample divided by the spiked concentration 𝜆𝜆 for the sample. 
+𝑟𝑟̅log 
+The mean value of the (natural) log-transformed recoveries, i.e., 𝑟𝑟̅log = ∑
+log(𝑟𝑟𝑖𝑖) /𝑛𝑛
+𝑛𝑛
+𝑖𝑖=1
+ and 
+with 𝑛𝑛 the number of samples tested. 
+𝑧𝑧𝑖𝑖 
+Used as latent variable in a generalized linear mixed effects model for group 𝑖𝑖 (e.g., run in a 
+precision experiment). 
+𝛽𝛽0 
+The intercept in a (linear) concentration-recovery curve and the slope in a (linear or log-linear) 
+concentration-response curve. 
+𝛽𝛽1 
+The slope in a concentration-recovery curve, but plays the role of intercept in the non-linear 
+Mitscherlich function. 
+𝛽𝛽2 
+The “slope” in the non-linear Mitscherlich function, i.e., the coefficient of the power of the 
+concentration level. 
+𝛽𝛽3 
+The power parameter in the non-linear Mitscherlich function. 
+𝛼𝛼 
+The intercept in a (linear) concentration-response curve or in a Poisson regression analysis. 𝛼𝛼𝐴𝐴 
+and 𝛼𝛼𝐶𝐶 are the intercepts in the (linear) concentration-response curve obtained with the 
+AMM/RMM and CMM, respectively. 
+𝛽𝛽 
+The slope in a (linear) concentration-response curve or in a Poisson regression analysis. 𝛽𝛽𝐴𝐴 
+and 𝛽𝛽𝐶𝐶 are the slopes in the linear concentration-response curve obtained with the 
+AMM/RMM and CMM, respectively. 
+𝛾𝛾 
+The coefficient for a quadratic concentration-response curve. 
+𝜀𝜀 
+The residual in a regression equation. It represents the unexplained variability from the 
+regression equation that was fitted through the observed data (counts or recoveries). It is 
+typically assumed that the residual follows a normal distribution with a variance that may 
+depend on the concentration level. 
+𝜇𝜇 
+The notation for a mean count in the ANOVA approach for precision. 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+ Technical Report No. 33 (Revised 2026) © 2026 Parenteral Drug Association, Inc. 
+118 
+Symbol 
+Meaning 
+𝜎𝜎2 
+A variance component and indicates the variation in counts. It is used for the variance of the 
+residual and for variation sources in an ANOVA. We may use indices to indicate for what part 
+of variation the variance belongs. For instance, it could represent a variance for the residuals 
+at a specific concentration level, e.g., 𝜎𝜎0
+2 is the residual variance for blank samples, or it could 
+represent the variance within (𝜎𝜎𝑊𝑊
+2 ) and between runs (𝜎𝜎𝐵𝐵
+2). 
+𝜏𝜏2 
+A variance component used to quantify the variability of the latent variable in a generalized 
+linear mixed effects model that quantifies the between run variability in the logarithmic scale 
+of a precision experiment. 
+𝜂𝜂2 
+The variance of the estimator for the total variability calculated from a one-way random 
+effects ANOVA. 𝜂𝜂𝐴𝐴
+2 and 𝜂𝜂𝐶𝐶
+2 are the variances for AMM/RMM and CMM, respectively. 
+𝑚𝑚(𝜆𝜆) 
+The concentration-response curve for the microbiological method in (spiked) concentration 
+level 𝜆𝜆. 𝑚𝑚𝐴𝐴(𝜆𝜆) and 𝑚𝑚𝐶𝐶(𝜆𝜆) are the concentration-response curves for the AMM/RMM and 
+CMM, respectively. 
+𝜏𝜏(𝜆𝜆) 
+The standard deviation of the log-transformed estimated concentration-response curve for 
+the microbiological method at concentration level 𝜆𝜆. 𝜏𝜏𝐴𝐴(𝜆𝜆) and 𝜏𝜏𝐶𝐶(𝜆𝜆) are the standard 
+deviations for the log-transformed estimated concentration-response curves for the 
+AMM/RMM and CMM, respectively. 
+𝑆𝑆𝑆𝑆 
+The abbreviation of standard error and represents the standard deviation of an estimate of a 
+parameter. In some cases, an index is used to indicate the parameter of interest, e.g., 𝑆𝑆𝑆𝑆𝛼𝛼 the 
+standard deviation of the estimate of the intercept 𝛼𝛼 in a regression equation. 
+𝐿𝐿𝐿𝐿𝐿𝐿 
+The lower confidence limit. Often there will be an index 𝑋𝑋 attached to it, i.e., 𝐿𝐿𝐿𝐿𝐿𝐿𝑋𝑋, to indicate 
+for what (validation) parameter or statistic the confidence limit is calculated. 
+𝑈𝑈𝑈𝑈𝑈𝑈 
+The upper confidence limit. Often there will be an index 𝑋𝑋 attached to it, i.e., 𝑈𝑈𝑈𝑈𝑈𝑈𝑋𝑋, to 
+indicate for what (validation) parameter or statistic the confidence limit is calculated. 
+𝑈𝑈𝑈𝑈 
+The abbreviation for upper quantile and represents a value in the upper tail of the distribution 
+of observations, in particular the upper quantile for the distribution of counts of blank test 
+samples. 
+𝑀𝑀𝑀𝑀 
+The abbreviation of mean squares used in ANOVA. We may use indices to identify for which 
+factor the mean squares is calculated, e.g., 𝑀𝑀𝑀𝑀𝑊𝑊 and 𝑀𝑀𝑀𝑀𝐵𝐵 are the mean squares within and 
+between the runs of a one-way ANOVA. 
+𝑅𝑅𝑅𝑅𝑅𝑅 
+The abbreviation of relative standard deviation for enumeration of a microbiological method. 
+We will use an index to indicate what relative standard deviation we are referring to, e.g., 
+𝑅𝑅𝑅𝑅𝑅𝑅𝑅𝑅 and 𝑅𝑅𝑅𝑅𝑅𝑅𝐼𝐼𝐼𝐼 are the relative standard deviations for repeatability and intermediate 
+precision of a microbiological method. To be able to indicate the measures of precision for 
+AMM/RMM or CMM, we may write 𝑅𝑅𝑅𝑅𝑅𝑅𝑅𝑅
+𝐴𝐴 or 𝑅𝑅𝑅𝑅𝑅𝑅𝑅𝑅
+𝐶𝐶 for repeatability and 𝑅𝑅𝑅𝑅𝑅𝑅𝐼𝐼𝐼𝐼
+𝐴𝐴 or 𝑅𝑅𝑅𝑅𝑅𝑅𝐼𝐼𝐼𝐼
+𝐶𝐶 for 
+intermediate precision. In case we want to express the relative standard deviation in 
+percentages we use 𝑅𝑅𝑅𝑅𝑅𝑅(%). 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+Technical Report No. 33 (Revised 2026) 
+© 2026 Parenteral Drug Association, Inc. 
+119 
+10.1 Accuracy of Quantitative Microbiological Methods 
+When the quantitative or enumeration data of an AMM/RMM is analyzed, different ways of investigating 
+the accuracy of the AMM/RMM exist. The three different approaches discussed in this section are typically 
+related to the type of data-analytic assumptions one is willing to make. 
+The first assumption is related to the spiked concentration levels used in the accuracy experiment. An 
+important question about the spiked concentration levels is whether they can be used as a known and precise 
+concentration level, like that done for analytical measurement systems. If the spiked concentration levels are 
+considered precise, the recovery of the microbiological method(s) could be investigated at each 
+concentration level with respect to the spiked concentration levels (see Section 10.1.1). The recovery is here 
+defined as the ratio between the observed count and the spiked concentration level. This approach is typical 
+for analytical measurement systems, and also suitable for microbiological methods. However, in case the 
+spiked concentration levels are considered less precise, a comparison in counts between the two 
+microbiological methods may be more appropriate (also Section 10.1.1). 
+The second assumption is related to the count distribution for the replicated results. Often, it is appropriate 
+to assume that these counts are from a Poisson distribution (see Section 10.1.1). Indeed, if samples from a 
+larger suspension were collected and the microorganisms are randomly distributed throughout the full 
+suspension, the number of organisms in the test samples may be considered Poisson-distributed (8). 
+However, in practice, the replicated counts may sometimes show more variation than can be expected from 
+the Poisson distribution (e.g., when microorganisms are clustered in the suspension). For Poisson data, the 
+mean should be approximately equal to the variance. When more variation is present, this feature is referred 
+to as overdispersion. In such cases, the use of a Poisson distribution should be avoided and an overdispersed 
+Poisson distribution should be used on the counts directly, like the negative binomial distribution or, 
+alternatively, a normal distribution typically on the logarithmically transformed counts should be used (see 
+Section 10.1.1). 
+The logarithmic transformation on the counts is beneficial to correct for the skewness in the counts and 
+make the transformed counts more normal. Counts may often show positive skewness, in particular at lower 
+concentration levels where the tail of the distribution of the counts is longer on the right side of the 
+distribution than on the left side of the distribution. At higher concentration levels, replicated counts (at the 
+same concentration level) often show more symmetry in the distribution of the counts. Figure 10.1-1 
+provides examples of two histograms with five hundred (500) replicated counts spiked at concentration 
+levels 10 CFU and 50 CFU, respectively. The right tail of the histogram at 10 CFU (left histogram) is larger 
+than the left tail, while the histogram at 50 CFU (right histogram) does not show this skewness. 
+ 
+ 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+ Technical Report No. 33 (Revised 2026) © 2026 Parenteral Drug Association, Inc. 
+120 
+Figure 10.1-1 Visualization of Skewness for Counts at 10 CFU (left) and 50 CFU (right) 
+The third and final assumption is related to how the count data from all spiked concentrations could be 
+analyzed simultaneously. In some cases, it may be beneficial to build a regression equation between the 
+counts and the spiked concentrations to establish accuracy. Such an approach is also necessary for the 
+validation parameter linearity. An advantage of using regression models is that they can determine the level 
+of accuracy at concentration levels other than the spiked concentrations levels used in the experiment. 
+Moreover, the regression models can be used to determine the set of concentration levels for which non-
+inferiority is appropriate between the two microbiological methods (see Section 10.2). However, this benefit 
+would only be useful when the spiked levels are considered known and precise. 
+Some of the proposed analyses can be demonstrated by using the data of an accuracy experiment provided 
+in Table 10.1-1. The experiment consists of six concentration levels (5, 25, 50, 100, 150, 250 CFU) for a 
+specific microorganism for both the AMM/RMM and CMM. At each spiked concentration, five replicates 
+were considered. Table 10.1-1 also contains the mean count and the variance in counts for each 
+concentration level and microbiological method. 
+ 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+Technical Report No. 33 (Revised 2026) 
+© 2026 Parenteral Drug Association, Inc. 
+121 
+Table 10.1-1 Counts for a Specific Microorganism for the Alternative/Rapid Microbiological 
+Method and the Conventional Method at Different Concentration Levels 
+Replicate 
+AMM/RMM 
+CMM 
+5 
+25 
+50 
+100 
+150 
+250 
+5 
+25 
+50 
+100 
+150 
+250 
+1 
+6 
+20 
+42 
+72 
+138 
+213 
+6 
+19 
+47 
+91 
+118 
+201 
+2 
+3 
+14 
+52 
+77 
+120 
+197 
+4 
+20 
+42 
+86 
+130 
+194 
+3 
+4 
+22 
+34 
+83 
+110 
+209 
+6 
+24 
+46 
+103 
+139 
+203 
+4 
+8 
+24 
+39 
+80 
+119 
+193 
+8 
+21 
+53 
+84 
+112 
+209 
+5 
+3 
+19 
+44 
+69 
+121 
+163 
+5 
+25 
+36 
+69 
+136 
+200 
+Mean 
+4.8 
+19.8 
+42.2 
+76.2 
+121.6 
+195.0 
+5.8 
+21.8 
+44.8 
+86.6 
+127.0 
+201.4 
+Variance 
+4.7 
+14.2 
+44.2 
+32.7 
+103.3 
+388.0 
+2.2 
+6.7 
+39.7 
+151.3 
+135.0 
+29.3 
+10.1.1 Comparability of the Alternative/Rapid Microbiological Method for Each 
+Concentration Against the Spiked Concentrations 
+Section 10.1.1 will demonstrate the normal and the Poisson distribution approach for accuracy of the 
+AMM/RMM against the spiked concentration levels. These approaches make sense when the spiked 
+concentrations have been determined reliably. Non-inferiority of the accuracy of the AMM/RMM is 
+determined by investigating the recoveries. The recovery results are the observed counts divided by the 
+spiked level at which the count was obtained and then multiplied by 100% to calculate the so-called 
+“observed recoveries.” The ideal outcome of the accuracy experiment is to obtain 100% recovery for each 
+sample. 
+10.1.1.1 Using the Normal Distribution Approach 
+The normal distribution approach makes sense when either the recoveries or the logarithmically transformed 
+recoveries follow a normal distribution. The mean recovery per spiked concentration, together with its 90% 
+confidence intervals (calculated directly from the replicated recoveries at the spiked concentration or 
+through the inverse logarithm of the logarithmically transformed recoveries), is then established using the 
+normal distribution. To establish non-inferiority at a spiked concentration, the lower 95% confidence limit 
+should remain above the non-inferiority margin (e.g., 70%). The approach is illustrated here, in Section 
+10.1.1.1, on the logarithmically transformed recoveries. A standard fixed-effects ANOVA approach, where 
+the recoveries from multiple spiked concentrations are used simultaneously, is not recommended for the 
+accuracy of quantitative microbiological methods, although it is commonly used for analytical measurement 
+systems. The reason is that the standard fixed-effects, one-way ANOVA approach assumes that the within-
+concentration variability across all spiked concentration levels is constant, that is, homoscedastic within-
+concentration variances, an aspect that is typically violated for microbiological methods. Microbiological 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+ Technical Report No. 33 (Revised 2026) © 2026 Parenteral Drug Association, Inc. 
+122 
+methods need to accommodate the presence of what is called heteroscedasticity—the within-concentration 
+variance of the recoveries becomes smaller when the spiked concentration is increasing. 
+Using the normal distribution per spiked concentration may be appropriate when the recoveries or 
+logarithmically transformed recoveries follow a normal distribution; when the counts (on which the 
+recoveries are calculated) within each spiked concentration level shows overdispersion; and when the counts 
+are non-zero. When assessing counts, it is often expected that some right skewness may be present (more 
+variability to the right than to the left), and the normality for the recoveries may not hold. Therefore, using 
+the normal distribution approach on the logarithmically transformed recoveries is recommended. Due to the 
+presence of heteroscedasticity, the confidence interval per spiked concentration level is best calculated using 
+the variability per concentration level. This analysis can be easily done using any general-purpose statistical 
+software package. Following this, the calculated 90% confidence intervals in the log scale must be 
+transformed back to the original scale, though this back-transformation to the original scale may need to be 
+conducted manually. Although software packages can easily provide the results, the formulae are provided 
+here: 
+The mean recovery for one of the spiked concentrations is obtained by: 
+𝜃𝜃𝐴𝐴= exp൛𝑟𝑟̅logൟ= exp ቊ෍
+ቈlog(𝑟𝑟𝑖𝑖)
+𝑛𝑛𝐴𝐴
+቉
+𝑛𝑛𝐴𝐴
+𝑖𝑖=1
+ቋ 
+Where: 
+𝑟𝑟𝑖𝑖   
+= 
+the recovery (i.e., the count divided by the spiked concentration level) 
+𝑟𝑟̅log  
+=  mean of the logarithmically transformed recoveries 
+𝑛𝑛𝐴𝐴   
+=  number of counts for the specific spiked concentration of the AMM/RMM 
+The lower 95% confidence limit is obtained by: 
+𝐿𝐿𝐿𝐿𝐿𝐿= 𝜃𝜃𝐴𝐴∙exp ൜𝑡𝑡𝑛𝑛𝐴𝐴−1
+−1 (0.95) ∙
+𝑠𝑠log
+√𝑛𝑛𝐴𝐴
+ൠ, 
+with 𝑠𝑠log the standard deviation on the log transformed recoveries defined by its variance: 
+𝑠𝑠log
+2
+= ෍
+൥
+൫log(𝑟𝑟𝑖𝑖) −𝑟𝑟̅log൯
+(𝑛𝑛𝐴𝐴−1)
+2
+൩
+𝑛𝑛𝐴𝐴
+𝑖𝑖=1
+ 
+and with 𝑡𝑡𝑛𝑛−1
+−1 (0.95) the 95% upper quantile of the 𝑡𝑡-distribution with 𝑛𝑛𝐴𝐴−1 degrees of freedom. See the 
+constants 𝐶𝐶𝑚𝑚 in Table 9.2.5-4, where the number of species m in Table 9.2.5-4 plays the role of 𝑛𝑛𝐴𝐴. In case 
+sample size 𝑛𝑛𝐴𝐴 is large, the value 𝑡𝑡𝑛𝑛𝐴𝐴−1
+−1
+(0.95) is approximately equal to 1.645. 
+The results of the approach with the normal distribution on the logarithmically transformed recoveries are 
+presented in Table 10.1.1.1-1 under the column heading “Normal Distribution.” The results show that non-
+inferiority (when comparing the observed counts to the spiked or expected counts) for a non-inferiority 
+margin of 70% is achieved for the concentration levels 50, 100, 150, and 250 CFUs. Although the mean 
+recovery is above 70% for the lower two concentrations (5 and 25 CFU), the amount of variability in 
+relation to the number of replicates is not small enough. In this instance, if more test samples had been 
+tested at these two lower concentrations, non-inferiority may have been achieved as well, but with the 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+Technical Report No. 33 (Revised 2026) 
+© 2026 Parenteral Drug Association, Inc. 
+123 
+current data collected, inferiority at 70% recovery cannot be rejected. Conversely, when more replicates are 
+conducted, the mean recovery may change as well, and it would not be certain that non-inferiority can be 
+reached at those lower concentrations. 
+Table 10.1.1.1-1 Comparability of the Alternative/Rapid Microbiological Method on Recovery 
+(%) per Concentration Level Using Different Data Analytic Approaches 
+Spike 
+Normal Distribution 
+One-Way ANOVA 
+Poisson Distribution 
+Mean % 
+Recovery 
+LCL 
+Mean % 
+Recovery 
+LCL 
+Mean % 
+Recovery 
+LCL 
+5 
+88.8 
+58.7 
+88.8 
+75.3 
+96.0 
+68.6 
+25 
+77.9 
+64.1 
+77.9 
+66.1 
+79.2 
+67.1 
+50 
+83.6 
+72.0 
+83.6 
+70.9 
+84.4 
+75.4 
+100 
+76.0 
+70.7 
+76.0 
+64.5 
+76.2 
+70.0 
+150 
+80.8 
+74.8 
+80.8 
+68.5 
+81.1 
+75.8 
+250 
+77.7 
+70.2 
+77.7 
+65.8 
+78.0 
+74.0 
+Table 10.1.1.1-1 also contains the results from a standard fixed-effects, one-way ANOVA analysis on the 
+logarithmically transformed recoveries, where the variability within concentration is pooled, to show that 
+such an analysis approach is less appropriate. For the one-way ANOVA approach, the non-inferiority is 
+achieved at 5 CFU and 50 CFU, but not at the largest three concentrations where the normal distribution 
+approach showed non-inferiority. The pooled variance for the within-concentration variability in the 
+ANOVA approach is too small for the lower concentrations and too large for the higher concentrations, 
+making the results from the one-way ANOVA analysis unreliable. 
+10.1.1.2 Using the Poisson Distribution Approach 
+An alternative approach, which would make use of the Poisson distribution, is to first calculate the mean 
+counts and a lower 95% confidence limit for the mean counts using the Poisson distribution, and then 
+changing these values to recoveries by dividing the mean count and its lower 95% confidence limit by the 
+spiked concentration levels. The asymptotic or approximate lower 95% lower confidence limit on the mean 
+count that makes use of the Poisson distribution is equal to: 
+𝐿𝐿𝐿𝐿𝐿𝐿= 𝑦𝑦ത𝐴𝐴∙exp ቐ−1.645 ∙ඨ
+1
+(𝑛𝑛𝐴𝐴∙𝑦𝑦ത𝐴𝐴)ቑ 
+Where: 
+𝑦𝑦ത𝐴𝐴  
+= 
+mean count at a single concentration 
+𝑛𝑛𝐴𝐴  
+= 
+number of counts for the AMM/RMM at the same concentration 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+ Technical Report No. 33 (Revised 2026) © 2026 Parenteral Drug Association, Inc. 
+124 
+To determine recoveries with the Poisson approach, the mean count 𝑦𝑦ത𝐴𝐴 and the 𝐿𝐿𝐿𝐿𝐿𝐿 are both divided by the 
+spiked concentration level. 
+This analysis can easily be programmed with MS Excel but can also be done using any general-purpose 
+statistical software where a Poisson regression analysis is available. When using statistical software, the 
+counts of the AMM/RMM are the dependent variable, and the spiked concentration levels are the 
+independent variable that should be accounted for in the analysis as the categorical variable. The default link 
+function, which is the logarithmic link function, should be used. Statistical software requires a procedure 
+that can fit a generalized linear model. In SAS®, this is done with the procedure GENMOD, but in Minitab 
+the operation is accomplished via the “Stat > Regression > Poisson Regression > Fit Poisson Model” 
+Function. Note that the confidence limits are approximate or asymptotic and not exact confidence limits.* 
+*Note: For data analysts experienced in Poisson regression, the recoveries could also be obtained directly 
+from the Poisson regression analysis by including what is called an “offset” parameter. If the logarithmically 
+transformed spiked concentration level is chosen as the offset, the mean counts are expressed as a ratio of 
+the spiked concentration level, which are then the mean recoveries. 
+The output of a Poisson analysis as described above is provided in Table 10.1.1.2-1. It provides an intercept 
+which represents the expected count at (in this case) the highest concentration level, but on the logarithmic 
+scale. Transforming this back to the original scale, an expected count of 195 is obtained, which is the 
+average count provided in Table 10.1.1-1 for the 250 CFU concentration for the AMM/RMM. The other 
+coefficients represent the difference in expected counts between the highest concentration and the other 
+concentrations in the logarithmic scale. Thus, the difference in counts between the concentrations of 5 and 
+250 CFUs is -3.7044 in the log scale, which means that the mean count at 5 CFU is equal to 2.46% of the 
+mean count in the 250 CFU concentration. This can also be determined from Table 10.1.1-1, because 2.46% 
+is equal to 100% × 4.8/195. The p-value for this difference (which is <0.001) indicates that the equality in 
+the mean count between the two spiked concentrations is rejected at the significance level of 𝛼𝛼= 0.05. 
+Table 10.1.1.2-1 Output of Poisson Analysis for all Concentration Levels 
+Effect 
+Estimate 
+SE 
+95% CI 
+Chi-Square 
+p-Value 
+Intercept 
+5.2730 
+0.0320 
+(5.2102 ,5.3358) 
+27109.4 
+<0.001 
+Conc. 5 
+-3.7044 
+0.2066 
+(-4.1093, -3.2994) 
+321.43 
+<0.001 
+Conc. 25 
+-2.2873 
+0.1055 
+(-2.4941, -2.0806) 
+470.21 
+<0.001 
+Conc. 50 
+-1.5306 
+0.0759 
+(-1.6794, -1.3818) 
+406.36 
+<0.001 
+Conc. 100 
+-0.9396 
+0.0604 
+(-1.0581, -0.8212) 
+241.88 
+<0.001 
+Conc. 150 
+-0.4723 
+0.0517 
+(-0.5735, -0.3710) 
+83.52 
+<0.001 
+Conc. 250 
+0.0000 
+0.0000 
+(0.0000, 0.0000) 
+- 
+<0.001 
+The recovery estimates from this Poisson analysis can be calculated with general-purpose statistical 
+software, but the instructions will depend on the package used. For instance, in SAS®, the option 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+Technical Report No. 33 (Revised 2026) 
+© 2026 Parenteral Drug Association, Inc. 
+125 
+“LSMEANS” may be used with the procedure instructed to use exponentiated means with a significance 
+level of 0.1. On the other hand, in Minitab, after the Poisson regression analysis was conducted, the Predict 
+option from the Poisson regression analysis must first be used to obtain predicted counts and lower 95% 
+confidence limits at each spiked concentration level. Then these predicted values and lower limits must be 
+divided by the spiked concentration level. The results are presented in Table 10.1.1-1. 
+When comparing the results from the normal and Poisson distribution approaches, the mean recoveries 
+deviate from the normal distribution approach (and the fixed-effects, one-way ANOVA approach) on the 
+logarithmically transformed recoveries because the Poisson distribution is based on the arithmetic mean of 
+the recoveries, while the normal distribution is based on the geometric mean of the observed recoveries.  
+Nevertheless, the lower confidence limits for the normal distribution and the Poisson distribution are 
+relatively close, and they lead to the same conclusion on non-inferiority. Using the results from Table 
+10.1.1-1, non-inferiority at the margin of 70% is achieved for concentrations of 50, 100, 150, and 250 CFUs, 
+but not for 5 CFU and 25 CFU, because the LCL is lower than 70%. 
+10.1.1.3 Lack-of-Fit Analyses 
+As discussed in Section 10.1.1.1, the one-way ANOVA method is not reliable, and either the Poisson 
+distribution or the normal distribution approach should be considered for non-inferiority testing. While it 
+may not be easy to decide between these two analyses, the Poisson distribution would be preferred over the 
+normal distribution approach when the number of microorganisms in the test samples follow the Poisson 
+distribution. But often there may be violations (e.g., clustering of microorganisms), and these violations 
+would typically increase the variability, so the confidence limits from the Poisson distribution will then be 
+too narrow. Thus, when the Poisson distribution is violated, due to overdispersion, it is better to use an 
+alternative distribution than the Poisson distribution, and the normal distribution approach may be a suitable 
+alternative. 
+Demonstrating that the distribution of the counts violates the Poisson distribution is not straightforward. 
+Alternatively, checking the residuals for the normal distribution on the recoveries or the log-transformed 
+recoveries is not recommended due to the heterogeneity in variability across spiked concentrations. 
+Moreover, an evaluation of normality per concentration is not appropriate either due to the small number of 
+replicates.  
+One way of investigating the violation of the Poisson distribution is to evaluate overdispersion. This lack-of-
+fit test may be done qualitatively, by investigating the ratio of the variance/mean per concentration. This 
+ratio should be approximately one (1) when no overdispersion is present, while the presence of 
+overdispersion would make this ratio larger than one. Table 10.1.1-1 also shows the variances per 
+concentration, and the only concentration that is questionable is the highest concentration for the 
+AMM/RMM, since the ratio is around the value of two (2). This larger variation is most likely due to the 
+outlying value of 163 counts for replicate #5. Thus, taking all of the concentrations into consideration, this 
+qualitative analysis does not indicate strong evidence for overdispersion.  
+A more formal analysis is to rerun the Poisson regression analysis with a negative binomial distribution. The 
+negative binomial distribution can be viewed as a Poisson distribution with additional variability; it 
+estimates an additional overdispersion parameter. Thus, comparing these two regression models on their fit-
+to-the-count data investigates whether a violation of the Poisson distribution is related to overdispersion. 
+The two regression models can be compared using Akaike’s corrected information criterion (AICC). 
+Essentially, AICC describes the trade-off between the goodness of fit of a statistical model and the 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+ Technical Report No. 33 (Revised 2026) © 2026 Parenteral Drug Association, Inc. 
+126 
+simplicity of the model, and it is typically useful in comparing different statistical models. The AICC value 
+on its own does not provide relevant information rather it is typically provided by the general-purpose 
+software in the output of the Poisson and negative-binomial regression analyses. Thus, for statistical 
+software programs with the capability of performing both a Poisson and negative-binomial regression 
+analysis (like SAS®), the results of the AMM/RMM in Table 10.1.1-1 shows an AICC of 208.2 for the 
+Poisson regression analysis and 211.6 for the negative-binomial regression analysis. Since the Poisson 
+regression analysis has a smaller AICC, the Poisson model is considered more appropriate than the 
+negative-binomial. 
+Some statistical programs cannot extend the Poisson distribution to the negative-binomial distribution in the 
+regression analysis for counts, but they may provide generic tests for the lack-of-fit of the Poisson 
+distribution, like the deviance goodness-of-fit test or the Pearson chi-square test. The deviance test compares 
+the “selected model” to the data against the “saturated Poisson model” (when a Poisson distribution is used). 
+The saturated Poisson model for the current data is the model in which it is assumed that the count at each 
+concentration comes from the Poisson distribution. The Pearson goodness-of-fit test investigates how well 
+the predicted counts resemble the observed counts. These goodness-of-fit tests come with a p-value. For the 
+AMM/RMM counts in Table 10.1.1-1, the p-value of the deviance test is equal to 0.452 and, for the 
+Pearson’s goodness-of-fit test, the p-value is equal to 0.459. The results show that a violation of the Poisson 
+distribution was not demonstrated at a significance level of 𝛼𝛼= 0.05.  
+10.1.1.4 Sample Size Considerations 
+An appropriate number of replicates or sample size for each concentration can be determined when the 
+logarithmically transformed counts follow the normal distribution with a variance that is equal to the mean. 
+The sample size depends on the concentration level, and it is typically larger when the concentration is 
+lower. Table 10.1.1.4-1 shows the sample sizes for different concentration levels under different truths (i.e., 
+the true recovery rate) when the non-inferiority margin is equal to 70% (for a significance level of 𝛼𝛼= 0.05 
+and a power of 1− 𝛽𝛽= 0.8). Here the truth is determined by the true recovery being 100%, 90%, or 80%. 
+The lower the true recovery of the AMM/RMM, the more samples must be determined to demonstrate it is 
+away from the 70% margin. Never using less than three replicates is recommended, so the lowest sample 
+size has been set to three (3). 
+Table 10.1.1.4-1 Sample Sizes for Non-Inferiority per Concentration at a Non-Inferiority 
+Margin of 70% Using the Normal Distribution 
+True 
+Recovery 
+Spiked Concentration Level 
+5 
+10 
+15 
+20 
+25 
+50 
+75 
+100 
+150 
+200 
+250 
+300 
+100% 
+20 
+10 
+7 
+5 
+4 
+3 
+3 
+3 
+3 
+3 
+3 
+3 
+90% 
+42 
+21 
+14 
+11 
+9 
+5 
+3 
+3 
+3 
+3 
+3 
+3 
+80% 
+157 
+79 
+53 
+40 
+32 
+16 
+11 
+8 
+6 
+4 
+4 
+3 
+ 
+ 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+Technical Report No. 33 (Revised 2026) 
+© 2026 Parenteral Drug Association, Inc. 
+127 
+To calculate the values in Table 10.1.1.4-1 or to calculate other settings, the smallest sample size 𝑛𝑛𝐴𝐴 (>2) 
+that provides a value of 0.8 for the following probability is the sample size that can be used: 
+Power = 1 − Φ
+⎝
+⎛Φ−1(0.95) + log(∆) − log(𝜃𝜃)
+ට𝜆𝜆−1 + (𝜃𝜃𝜃𝜃)−1
+𝑛𝑛𝐴𝐴
+⎠
+⎞ 
+Where: 
+Ф   
+= 
+cumulative standard normal distribution function 
+Ф-1  
+= 
+quantile of the standard normal distribution function 
+𝑛𝑛𝐴𝐴  
+= 
+number of test samples 
+θ   
+=  true recovery (not expressed in percentages) 
+λ   
+=  spiked concentration level 
+Δ   
+=  non-inferiority margin (e.g., 0.7) 
+10.1.2 Comparability of the Conventional Microbiological Method per Concentration 
+Against the Spike Concentrations 
+When a Poisson distribution (and normal distribution) approach is used for accuracy, the analysis on the 
+recoveries of the AMM/RMM with respect to the spiked concentration levels in Section 10.1.1. 
+demonstrates that inferiority is not rejected for the concentrations of 5 CFU and 25 CFU. However, the 
+CMM also shows somewhat lower recoveries compared to what has been considered the true spiked 
+concentration level, except for the lowest concentration level. Hypothetically, we expect the recovery for the 
+CMM to be 100% for each spiked concentration level when using the conventional/compendial method. In 
+practice, it is understood there will always be some variability in microbiological testing, and it may be 
+appropriate to investigate the accuracy of the CMM against the spiked concentration levels.  
+Using the Poisson distribution on the counts of the CMM, the mean recoveries with their lower 95% 
+confidence limits are presented in Table 10.1.2-1. For the CMM, inferiority is rejected for all concentrations 
+at the non-inferiority margin of 70%, but the estimated recoveries are still lower than 100% (when compared 
+with the spike levels) for the concentrations 25 CFU and beyond. Testing the traditional null hypothesis 
+𝐻𝐻0: Recovery = 100% for the CMM on each spiked concentration level separately using the Poisson 
+regression analysis, shows that the null hypothesis is rejected for the three concentration levels 100, 150, 
+and 250 CFUs, see the column “p-Value*” in Table 10.1.2-1. 
+ 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+ Technical Report No. 33 (Revised 2026) © 2026 Parenteral Drug Association, Inc. 
+128 
+*Note: To obtain this p-value, the following p-value could be programmed (into MS Excel, for instance) 
+using the following formula: 
+𝑝𝑝=
+⎩
+⎪
+⎪
+⎪
+⎨
+⎪
+⎪
+⎪
+⎧
+2 ∗
+⎝
+⎜
+⎛1 −Φ
+⎝
+⎛log ቀ𝑦𝑦ത𝐶𝐶
+𝜆𝜆ቁ
+ට
+1
+(𝑛𝑛𝐶𝐶𝑦𝑦ത𝐶𝐶)⎠
+⎞
+⎠
+⎟
+⎞     if     𝑦𝑦ത𝐶𝐶> 𝜆𝜆
+2 ∗Φ
+⎝
+⎛log ቀ𝑦𝑦ത𝐶𝐶
+𝜆𝜆ቁ
+ට
+1
+(𝑛𝑛𝐶𝐶𝑦𝑦ത𝐶𝐶)⎠
+⎞                    if     𝑦𝑦ത𝐶𝐶≤𝜆𝜆
+ 
+Where: 
+𝑦𝑦ത𝐶𝐶  
+= 
+mean count of the CMM at the spiked concentration 
+𝜆𝜆 
+ 
+= 
+spiked concentration level 
+𝑛𝑛𝐶𝐶  
+= 
+number of replicates 
+Table 10.1.2-1 Non-Inferiority of the Conventional Method on Recovery per Concentration 
+Level Using the Poisson Distribution 
+Spike 
+Mean % Recovery 
+LCL 
+p-Value 
+5 
+116.0 
+85.5 
+0.424 
+25 
+87.2 
+74.5 
+0.153 
+50 
+89.6 
+80.3 
+0.100 
+100 
+86.6 
+80.0 
+0.003 
+150 
+84.7 
+79.3 
+<0.001 
+250 
+80.6 
+76.5 
+<0.001 
+Alternatively, these p-values may be obtained from the Poisson regression analysis where the 
+logarithmically transformed concentration is used as an offset parameter and where an LSMEANS 
+statement is used to obtain the predicted recoveries for each spiked concentration (this is possible with SAS® 
+but not with Minitab). Using this offset parameter normalizes the counts to rates expressed as ratios of the 
+spiked concentration. 
+When both the CMM and the AMM/RMM show lower recoveries than 100%, it may be a sign that the 
+spiked concentrations are not very reliable (i.e., there is too much variability). Thus, it may be better to 
+compare the AMM/RMM against the CMM to see if the AMM/RMM is non-inferior to the CMM when it 
+comes to enumeration. Clearly, for accuracy, it would be best to compare the AMM/RMM against the 
+CMM, but when the CMM shows a recovery of 100% for each spiked concentration level, a comparison of 
+the AMM/RMM against the spiked concentration levels could be more powerful since only the variability in 
+counts of the AMM/RMM are incorporated in the non-inferiority test.  
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+Technical Report No. 33 (Revised 2026) 
+© 2026 Parenteral Drug Association, Inc. 
+129 
+10.1.3 Comparability of the Alternative/Rapid Microbiological Method with Respect to 
+the Conventional Method per Concentration 
+A comparison can be conducted using a Poisson regression analysis again using the logarithmic link 
+function, where the variables “method” and “concentration” are included as categorical variables and where 
+the interaction between method and concentration level is considered. The inclusion of the interaction term 
+makes it possible to investigate differences between the two methods for each spiked concentration 
+separately. Differences between the mean counts of the AMM/RMM and CMM per concentration can only 
+be obtained with general-purpose statistical software that can calculate least-squares means (as already 
+applied in Section 10.1.1 for Poisson regression). SAS® and [R] have this option, but Minitab does not have 
+this option for Poisson regression. When the logarithmic link function is applied, differences in means 
+between the AMM/RMM and CMM calculated with the least-squares means are determined in the 
+logarithmic scale and they must be exponentiated. These exponentiated mean differences can then be 
+viewed as a recovery of the AMM/RMM compared to the CMM (instead of a recovery against the spiked 
+concentrations, as previously described for each method in Section 10.1.2). Table 10.1.3-1 presents the 
+recoveries of the AMM/RMM against the CMM and the lower 95% confidence limit. Although they were 
+obtained with the Poisson regression analysis of the counts of AMM/RMM and CMM, the recoveries are 
+just the ratios of the two means of the two microbiological methods multiplied by 100%. For example, using 
+the data in Table 10.1-1, the recovery of 82.8% for concentration 5 CFU is obtained by multiplying the ratio 
+4.8/5.8 by 100%. The calculation of the lower 95% confidence limit is more difficult, but can be calculated 
+by the following expression: 
+൬𝑥𝑥̅𝐴𝐴
+𝑥𝑥̅𝐶𝐶
+൰∙exp ቐ−1.645 ∙ඨ
+1
+(𝑛𝑛𝐴𝐴∙𝑥𝑥̅𝐴𝐴) +
+1
+(𝑛𝑛𝐶𝐶∙𝑥𝑥̅𝐶𝐶)ቑ 
+Where: 
+𝑥𝑥̅𝐴𝐴  
+= 
+average count for the AMM/RMM 
+𝑥𝑥̅𝐶𝐶  
+= 
+average count for the CMM 
+𝑛𝑛𝐴𝐴  
+= 
+number of samples tested with AMM/RMM 
+𝑛𝑛𝐶𝐶  
+= 
+number of samples tested with CMM 
+The results show that the null hypothesis of inferiority of the AMM/RMM compared to the CMM is rejected 
+for all spiked concentrations in the experiment, when a non-inferiority margin of 70% is being used, except 
+for the spiked concentration at 5 CFU. 
+Looking at the recoveries of AMM/RMM versus CMM in Table 10.1.3-1, all the values are close to each 
+other (around 90%) which may suggest that the recovery is constant across the spiked concentrations and a 
+pooled recovery can also be obtained. Pooling has the advantage that the power for the non-inferiority test 
+can be increased, because all counts are now used to calculate one recovery value. The lack of sample size 
+for non-inferiority at the lower spiked concentrations is compensated for by the other concentrations, if it 
+can be assumed that the recovery is constant across spiked concentrations (see Table 10.1.1-2). However, 
+pooling may have a disadvantage in that it can mask inferior results for one (1) concentration when all of the 
+other concentrations non-inferior results (similar to the discussion of pooling accuracy from multiple 
+microorganisms in Section 9.0. The lower confidence limit at the lower spiked concentration may just 
+indicate that the recovery is much lower than the non-inferiority margin, and pooling may be considered as 
+“testing into compliance.” Thus, pooling should not be conducted automatically and should be substantiated 
+by microbiological arguments and additional statistical analysis.  
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+ Technical Report No. 33 (Revised 2026) © 2026 Parenteral Drug Association, Inc. 
+130 
+Table 10.1.3-1 Non-Inferiority of Alternative/Rapid Microbiological Method versus the 
+Conventional Method per Concentration Level Using the Poisson Distribution 
+Spike 
+Mean % Recovery 
+LCL 
+5 
+82.8 
+52.6 
+25 
+90.8 
+72.3 
+50 
+94.2 
+80.5 
+100 
+88.0 
+78.4 
+150 
+95.8 
+87.2 
+250 
+96.8 
+89.9 
+To demonstrate the estimation of the pooled recovery, a Poisson regression analysis can be used again, 
+where concentration and method can be used in the analysis as categorical variables, but now not 
+incorporating the interaction term. The interaction term makes the recoveries different across the spiked 
+concentration levels, but now the goal is to obtain a single-recovery estimate. The output of this Poisson 
+analysis is provided in Table 10.2.3-2. 
+Using the results from the output, the pooled percent recovery is then estimated at: 
+94.3% (= 100 · exp (-0.0587)) with a 95% lower confidence limit (or the lower boundary of 
+the 90% confidence interval) equal to 89.9% (= 100 · exp (-0.1066)). 
+Thus, when the recovery of the AMM/RMM compared to the CMM is assumed to be homogeneous across 
+spiked concentration levels, inferiority is rejected for all concentrations levels between 5 CFU and 250 CFU 
+at the non-inferiority margin of 70%. Thus, an investigation of constant accuracy across the concentration 
+levels may be beneficial to achieve a wider range of concentrations for which accuracy would be satisfied. 
+Note that the p-value of 0.0434 in the output of the Poisson analysis demonstrates that the AMM/RMM 
+does enumerate fewer microorganisms than the CMM (the null hypothesis of equal means is rejected at 
+significance level 0.05), but the accuracy is still far above the non-inferiority margin. 
+ 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+Technical Report No. 33 (Revised 2026) 
+© 2026 Parenteral Drug Association, Inc. 
+131 
+Table 10.1.3-2 Poisson Analysis Output 
+Effect 
+Estimate 
+SE 
+90% CI 
+Chi-Square 
+p-Value 
+Intercept 
+5.3182 
+0.0265 
+(5.2746, 5.3618) 
+40193.0 
+<0.001 
+Method: AMM/RMM 
+-0.0587 
+0.0291 
+(-0.1066, -0.0109) 
+4.08 
+0.0434 
+Method: CMM 
+0 
+0 
+(0.0000, 0.0000) 
+- 
+- 
+Conc. 5 
+-3.6216 
+0.1392 
+(-3.8505, -3.3926) 
+677.03 
+<0.001 
+Conc. 25 
+-2.2534 
+0.0729 
+(-2.374, -2.1344) 
+956.66 
+<0.001 
+Conc. 50 
+-1.5168 
+0.0529 
+(-1.6036, -1.4294) 
+820.37 
+<0.001 
+Conc. 100 
+-0.8899 
+0.0416 
+(-0.9584, -0.8214) 
+456.96 
+<0.001 
+Conc. 150 
+-0.4666 
+0.0362 
+(-0.5261. -0.4071) 
+166.30 
+<0.001 
+Conc. 250 
+0.0000 
+0.0000 
+(0.0000, 0.0000) 
+- 
+- 
+Checking the assumption of a constant difference between the AMM/RMM and CMM statistically, the 
+AICC can be used to determine which Poisson regression model describes the data best, that is, the Poisson 
+model with a recovery per spiked concentration or the Poisson model with a constant recovery across spiked 
+concentrations. The AICC value for the Poisson model with a constant recovery across the spiked 
+concentrations is equal to 400.0, while the AICC for the Poisson model with a recovery estimate per spiked 
+concentration is 412.8. Thus, the AICC (smaller is better) suggests that the recovery is constant across the 
+concentration levels. If no other substantiated knowledge contradicts this result, the pooled analysis is 
+appropriate to use, and a calculation per concentration is not necessary. Then, non-inferiority can be claimed 
+for all concentrations levels, including the 5 CFU spike. 
+10.2 Linearity and Accuracy 
+For analytical measurement systems, linearity is an important validation parameter, because the analytical 
+measurement system makes use of a reference sample in routine analysis to determine the concentration 
+value of an unknown sample. The reference and unknown sample are being tested in one analytical run and, 
+for each run, a run-specific single-point calibration line is created that goes through the origin and through 
+the response of the reference sample (the green line and dot in Figure 10.2-1). Since the true concentration 
+value of the reference sample is known (𝑥𝑥𝑅𝑅), the observed concentration value of the unknown sample is 
+obtained by the concentration of the calibration line (𝑥𝑥𝑈𝑈) that matches the value of the line to the response of 
+the unknown sample (the red arrows and dot in Figure 10.2-1). To be able to use such a procedure in 
+routine analysis for analytical measurement systems, it is imperative that the concentration-response curve is 
+linear and goes through the origin. Thus, for single-point calibration models for analytical measurement 
+systems what is needed is proportionality. 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+ Technical Report No. 33 (Revised 2026) © 2026 Parenteral Drug Association, Inc. 
+132 
+Figure 10.2-1 Visualization of the Estimated Concentration for an Unknown Sample Using a 
+Linear Calibration Line for the Reference Sample in Analytical Measurement Systems 
+In microbiology, linearity has a different purpose, and should support the validation parameter accuracy as 
+conducted in Section 10.1. If accuracy is achieved at each concentration level that has been tested in an 
+accuracy experiment (Sections 10.1.1, 10.1.2, and 10.1.3), that accuracy only applies for the tested 
+concentration levels and cannot automatically be guaranteed (and may fail) at non-tested concentration 
+levels within the full interval. In order to extend the accuracy at specific concentration levels to all non-
+tested concentration levels within the spiked interval, a linear or, more precisely, a monotonic concentration-
+recovery curve is required. This operation is a smooth concentration curve that is nondecreasing or 
+nonincreasing over the interval of interest where the recovery is defined as the mean count of the 
+AMM/RMM divided by the true concentration level (often the spiked concentration level or a precise 
+estimate of the concentration level with the CMM) at which the mean count is observed. A linear or 
+monotonic concentration-recovery curve guarantees that the worst bias or lack of accuracy is attained at the 
+two outer concentration levels in the experiment (the green dots and green line in Figure 10.2-2). The ideal 
+recovery for the AMM/RMM is 100%, or more if non-CFU signals are generated in the AMM/RMM. 
+Therefore, the worst accuracy for the green recovery results in Figure 10.2-2 occurs at the last (or sixth) 
+spiked concentration, as it is the lowest recovery across the range of concentration levels in the interval of 
+the experiment (the green dots and green line in Figure 10.2-2). 
+ 
+ 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+Technical Report No. 33 (Revised 2026) 
+© 2026 Parenteral Drug Association, Inc. 
+133 
+Figure 10.2-2 Visualization of Results from a Linear Concentration Response Curve (Green) and 
+Results from a Non-linear Concentration Response Curve (Blue) Expressed in the Spiked 
+Concentration and its Consequence for Accuracy 
+The blue dots in Figure 10.2-2, on the other hand, show that accuracy may potentially hold for each spiked 
+concentration level in the experiment separately. In this case, the blue dots (the mean recoveries) are all 
+away from the non-inferiority margin of 70%, even though some results are still close to this boundary. 
+Following the expected recovery of the blue nonlinear concentration-recovery curve in Figure 10.2-2, 
+however, the accuracy would most likely fail at specific untested concentration levels between the fourth 
+and fifth spiked concentration levels. Indeed, the expected recovery reaches below the non-inferiority 
+margin of 70%. Thus, without linearity or monotonicity of the concentration-recovery curve, there is no 
+guarantee that accuracy holds across the full range of spiked concentration levels even if it has been 
+demonstrated that non-inferiority holds at all the spiked concentration levels in the accuracy experiment. 
+To determine linearity for the concentration-recovery curve, the following mathematical formula is used: 
+𝔼𝔼(𝑦𝑦|𝜆𝜆)
+𝜆𝜆
+ = 𝛽𝛽0 + 𝛽𝛽1𝜆𝜆 
+Where: 
+𝐸𝐸(𝑦𝑦|𝜆𝜆)   
+= 
+expected concentration of the AMM/RMM of an arbitrary test sample that 
+                     is tested at the true concentration level 𝜆𝜆 
+𝜆𝜆 
+ 
+ 
+= 
+true concentration level 
+𝔼𝔼(𝑦𝑦|𝜆𝜆)/𝜆𝜆 =  would represent the recovery (not expressed in percentages) 
+𝛽𝛽0   
+ 
+= 
+intercept of the linear concentration-recovery curve 
+𝛽𝛽1  
+ 
+= 
+slope of the linear concentration-recovery curve 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+ Technical Report No. 33 (Revised 2026) © 2026 Parenteral Drug Association, Inc. 
+134 
+The expected concentration 𝔼𝔼(𝑦𝑦|𝜆𝜆) would be estimated with the mean counts at the spiked concentration 
+level observed in the experiment, and the true concentration level would either be estimated by a precise 
+estimate from the CMM* or taken by the spiked concentration level. If a stricter assumption is made and it is 
+assumed that the slope 𝛽𝛽1 is equal to zero, the concentration-recovery curve becomes a horizontal line, and 
+the intercept represents the expected recovery for all concentration levels. This was demonstrated in Section 
+10.1.3 when the recovery of the AMM/RMM against the CMM was constant. Under this stricter 
+assumption, the concentration-response curve for the AMM/RMM is then proportional to the true 
+concentration level 𝜆𝜆, that is, 𝔼𝔼(𝑦𝑦|𝜆𝜆) = 𝛽𝛽0𝜆𝜆 as was discussed regarding the single-point calibration model 
+of an analytical measurement system. Thus, if proportionality can be shown for the concentration-response 
+curve, this demonstrates a more defined linearity needed to support that accuracy has been demonstrated 
+across the full interval of spike levels. 
+*Note: In many linearity experiments, the number of replicates taken at each concentration for the CMM is 
+often too small to be able to obtain a precise estimate of the true concentration (too much variability), and a 
+regression analysis where the mean counts of the CMM are used as independent variables and the mean 
+counts of the AMM/RMM are considered the dependent variable may lead to incorrect estimates of the 
+intercept and slope of the regression line. 
+In microbiology, however, it is common to demonstrate a linear concentration-response curve, that is, 
+𝔼𝔼(𝑦𝑦|𝜆𝜆) = 𝛼𝛼+ 𝛽𝛽0𝜆𝜆, where the mean counts of the AMM/RMM are modeled as a function of the true 
+concentration. Unfortunately, this concentration-response curve does not lead to a linear concentration-
+recovery curve, since the concentration-recovery curve becomes 𝔼𝔼(𝑦𝑦|𝜆𝜆)/𝜆𝜆= 𝛽𝛽0 + 𝛼𝛼/𝜆𝜆 which is no longer 
+a linear function of the true concentration 𝜆𝜆. Demonstrating a linear concentration-response curve is still 
+appropriate, however, because the concentration-recovery function remains monotonic (i.e., it is a non-
+increasing function when 𝛼𝛼 is positive), which is necessary for the concentration-recovery curve to support 
+the validation parameter accuracy. Additionally, demonstrating a log-linear concentration-response curve 
+(i.e., log(𝔼𝔼(𝑦𝑦|𝜆𝜆)) = 𝛼𝛼+ 𝛽𝛽0log(𝜆𝜆) with logthe natural logarithm) also leads to a monotonic concentration-
+recovery curve: 𝔼𝔼(𝑦𝑦|𝜆𝜆)/𝜆𝜆= exp{𝛼𝛼} ∙𝜆𝜆𝛽𝛽0−1. 
+Thus, when it can be shown that the concentration response curve is linear or even log-linear, there is no 
+need to evaluate the concentration-recovery curve due to the explanation given here. However, when other 
+forms of concentration response curves, which are discussed in the text above, are identified, the 
+concentration-recovery curve may need to be studied directly to be able to support the validation parameter 
+accuracy (see Section 10.2.3).  
+Using the data from Table 10.1-1 to illustrate the evaluation of concentration-response and concentration-
+recovery curves, visualizing the mean counts against the spiked concentration levels in Figure 10.2-3A and 
+Figure 10.2-3B will help evaluate the possible choices in curves. The mean counts have been linearly 
+connected without building a regression equation at this point. Qualitatively, the concentration-response 
+curves (top two figures) show what would likely be a linear function of the spiked concentration level, but 
+the concentration-recovery curves may deviate from linearity, mostly because the results at the lowest 
+concentration level seem to be somewhat higher than what can be expected from linearity of the other 
+concentrations. However, the variation in the replicated recoveries at the lowest concentration level is also 
+relatively large, which makes this determination difficult. Finally, it can also be seen that the variability in 
+the replicated counts is nonconstant across the spiked concentrations levels (heteroscedasticity), and this 
+should be addressed when an appropriate regression equation is being constructed from the observed data. 
+ 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+Technical Report No. 33 (Revised 2026) 
+© 2026 Parenteral Drug Association, Inc. 
+135 
+Figure 10.2-3A Visualization of the Mean Counts with Respect to the Spiked Concentration 
+Levels 
+Figure 10.2-3B Visualization of the Mean Counts with Respect to the Spiked Concentration 
+Levels  
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+ Technical Report No. 33 (Revised 2026) © 2026 Parenteral Drug Association, Inc. 
+136 
+10.2.1 Weighted Linear Regression Analysis on the Counts 
+To create a concentration-response curve, it must first be assumed that the counts can be approximately 
+modelled by the following linear regression equation: 
+𝑦𝑦= 𝛼𝛼+ 𝛽𝛽𝛽𝛽+ 𝜀𝜀 
+Where: 
+𝑦𝑦   
+=  a count that is observed at spiked concentration level 𝜆𝜆 
+𝛼𝛼   
+= 
+intercept of the line 
+𝛽𝛽   
+=  slope of the regression line 
+𝜆𝜆 
+ 
+=  spiked concentration level 
+𝜀𝜀   
+=  residual having a normal distribution with mean zero and variance 𝜎𝜎2(𝜆𝜆) 
+Here, it is assumed that the variance in the replicated counts at spiked concentration level 𝜆𝜆 also depends on 
+the spiked concentration (as seen from the data). If the residual variance varies with the concentration, the 
+regression analysis should weight the observed value with the inverse variance. This type of analyses is 
+programmed in any general-purpose software package.  
+Table 10.2.1-1 shows the estimates of the intercept and slope with a 95% confidence interval, if this 
+weighted linear regression analysis is applied to the counts of the AMM/RMM and CMM separately. 
+Table 10.2.1-1 Estimated Intercept and Slope Found with Weighted Linear Regression Analysis 
+Parameter 
+AMM/RMM 
+CMM 
+Intercept α (95% Confidence Interval) 
+0.829 (-0.975, 2.634) 
+1.922 (0.721, 3.122) 
+Slope β (95% Confidence Interval) 
+0.778 (0.740, 0.816) 
+0.803 (0.783, 0.822) 
+Based on the estimated results, it follows that the intercept of the regression line for the AMM/RMM is not 
+statistically different from zero (0) (the 95% confidence interval contains the value zero (0)). If linearity is 
+satisfied for the AMM/RMM, that is, no better relations describe the data, the AMM/RMM satisfies 
+proportionality, implying a constant concentration-recovery curve with a recovery close to 77.8% (i.e., the 
+slope multiplied with 100, for every concentration (see Section 10.2 and Section 10.2.2). On the other hand, 
+the 95% confidence interval for the intercept of the CMM positively indicates that the intercept deviates 
+from zero (since the number zero (0) is not contained in the 95% confidence interval), implying that the 
+CMM has a nonzero background enumeration level of 1.922 CFUs for blank samples if linearity holds true. 
+In other words, based on the estimated intercept, the CMM would generate false positives when test samples 
+do not contain microorganisms. 
+To investigate the linearity, the explained variation (𝑅𝑅2) with the fitted regression line is equal to 98.4 for 
+the AMM/RMM and 99.6 for the CMM. These values can be obtained from the output of general-purpose 
+software packages when the weighted linear regression analyses are performed. These high values for the 
+𝑅𝑅2 are often considered as evidence for satisfying linearity, since there seems hardly any variation left that 
+could be explained by possible nonlinearity. While there is some truth in this, a high 𝑅𝑅2 can also be 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+Technical Report No. 33 (Revised 2026) 
+© 2026 Parenteral Drug Association, Inc. 
+137 
+achieved when a wide range of concentrations is used and linearity is violated. A more formal way of 
+investigating linearity is to test for a deviation from linearity, where a quadratic term for concentration level 
+is included by using the regression equation 𝑦𝑦= 𝛼𝛼+ 𝛽𝛽𝛽𝛽+ 𝛾𝛾𝜆𝜆2 + 𝜀𝜀, and then testing whether the coefficient 
+𝛾𝛾 is equal to zero. When this extended regression model is applied, the p-values of 0.821 and 0.189 for the 
+AMM/RMM and CMM, respectively, can be obtained, indicating that there is no evidence for nonlinearity 
+for both microbiological methods. Thus, the conclusion is that both microbiological methods satisfy 
+linearity. 
+The conclusion of linearity for the AMM/RMM with the attained non-inferiority of accuracy for 
+concentration levels 50, 100, 150, and 250 CFU with the normal distribution in Table 10.1.1-1 implies that 
+non-inferiority is attained for any concentration level between 50 and 250 CFU. 
+10.2.2 Poisson Regression Analysis on the Counts 
+An alternative analysis on the count data that would also deal with the heteroscedasticity is Poisson 
+regression. Instead of assuming normality for the counts, the counts are assumed to be Poisson-distributed. 
+Furthermore, Poisson regression typically uses a logarithmic link function, which would guarantee that the 
+intercept can never become negative. This is different in a weighted linear regression analysis, where the 
+intercept can become negative. Additionally, Poisson regression does not require weights, since the Poisson-
+distribution dictates that the variance in the replicates equal the mean of the replicates. (Poisson regression 
+analysis is available in many general-purpose statistical software packages.) 
+In Poisson regression (with the default log-link function), the concentration-response curve is assumed to 
+take the following form: 
+𝔼𝔼(𝑦𝑦|𝜆𝜆) = exp{𝛼𝛼+ 𝛽𝛽∙𝜓𝜓(𝜆𝜆)} 
+Where: 
+𝔼𝔼(𝑦𝑦|𝜆𝜆)  =  expected concentration of the AMM/RMM of an arbitrary test sample that is 
+       tested at the true concentration level 𝜆𝜆 
+𝜆𝜆 
+ 
+=  spiked concentration level 
+𝜓𝜓(𝜆𝜆) 
+= 
+transformed concentration level 
+𝛼𝛼   
+= 
+intercept 
+𝛽𝛽   
+=  slope  
+For validation of microbiological methods, the two typical transformations are the logarithmic 
+transformation (𝜓𝜓(𝜆𝜆) = log(𝜆𝜆)) and no transformation (i.e., the identity function 𝜓𝜓(𝜆𝜆) = 𝜆𝜆). For the 
+logarithmic transformation, the concentration-response curve is forced through the origin (when the slope 
+β > 0), implying no false-positive rate or background noise. Moreover, when the slope is close to one 
+(β ≈ 1), the value 100% · exp{α} represents the recovery of the microbiological method with respect to all 
+spiked concentration levels. When the slope is larger than one (β > 1), the microbiological method has 
+difficulty in enumerating microorganisms at a lower concentration, but it improves the enumeration when 
+concentrations are getting higher. When the slope is less than one (β < 1), the microbiological method has 
+more difficulty in enumerating microorganism at higher concentration, often due to saturation problems. If 
+the identity function is taken, the value exp{α} represents the mean count or background noise at blank 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+ Technical Report No. 33 (Revised 2026) © 2026 Parenteral Drug Association, Inc. 
+138 
+samples, which is always positive, although this does not guarantee a more sensitive enumeration at the 
+lower concentration. 
+Fitting the Poisson regression model to the data of Table 10.1-1 for both microbiological methods 
+separately, using the logarithm of the concentration level (i.e., 𝜓𝜓(𝜆𝜆) = log(𝜆𝜆)), leads to the estimates of the 
+parameters and their 95% confidence intervals shown in Table 10.2.2-1. 
+Table 10.2.2-1 Estimates of the Parameters and 95% Confidence Intervals Using the Poisson 
+Regression Model 
+Parameter 
+AMM/RMM 
+CMM 
+Intercept α (95% Confidence Interval) 
+-0.0999 (-0.3898, 0.1901) 
+0.1386 (-0.1358, 0.4131) 
+Slope β (95% Confidence Interval) 
+0.9732 (0.9152, 1.0312) 
+0.9368 (0.8817, 0.9919) 
+Both microbiological methods show a slope that is less than one, indicating some saturation at higher 
+concentration levels. The CMM has a slope that deviates from one, since one is not contained in the 95% 
+confidence interval. However, the slope for AMM/RMM cannot be demonstrated to be different from one, 
+since the value one is contained in the 95% confidence interval, indicating that the AMM/RMM may satisfy 
+proportionality. Assuming the assumption of proportionality holds, the recovery of the AMM/RMM against 
+the spiked concentration levels is approximately equal to 90.5% (= 100 · exp (-0.0999)) for all concentration 
+levels within 5 to 250 CFUs, although a better estimate is obtained when the slope is fixed to the value one 
+in the Poisson regression analysis. 
+10.2.3 Comparability on Accuracy of Alternative/Rapid Microbiological Methods Against 
+Conventional Methods Using Concentration-Response Curves 
+The analyses of accuracy in Section 10.1 treated the spiked concentration levels as a categorical variable, 
+while the spiked concentration levels were treated as a continuous variable for the linearity assessment in 
+Section 10.2.1 and Section 10.2.2. The two analyses on accuracy and linearity together can then be used to 
+make a statement about the accuracy for concentration levels other than those tested in the experiment. An 
+alternative approach is to model accuracy as a function of the concentration level and to establish a 90% 
+confidence interval at each concentration that can be compared with the non-inferiority margin. Section 
+10.2.3 discusses the data analysis approach that models the concentration-response curves for the 
+AMM/RMM and CMM separately and then uses these curves to calculate the accuracy of the AMM/RMM 
+with respect to the CMM.  
+Note: This type of data analysis is rather technical and may require the help of a statistician to be able to 
+program it in a programmable statistical software package such as SAS®, R, or Python; the software 
+TriMSA has already implemented such an analysis. To aid readers, Section 10.3.3 provides some formulae 
+that could be implemented in their preferred software package using the data shown in Table 10.2.3-1. 
+ 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+Technical Report No. 33 (Revised 2026) 
+© 2026 Parenteral Drug Association, Inc. 
+139 
+Table 10.2.3-1 Counts of a Specific Microorganism for the Alternative/Rapid Microbiological 
+Method and Conventional Method at Different Concentration Levels 
+Observation 
+AMM/RMM 
+CMM 
+5 
+25 
+50 
+100 
+150 
+250 
+5 
+25 
+50 
+100 
+150 
+250 
+1 
+7 
+31 
+48 
+70 
+119 
+210 
+3 
+18 
+36 
+77 
+92 
+215 
+2 
+4 
+22 
+59 
+74 
+102 
+194 
+1 
+18 
+32 
+73 
+103 
+205 
+3 
+4 
+33 
+39 
+80 
+93 
+206 
+3 
+22 
+35 
+88 
+111 
+217 
+4 
+9 
+36 
+45 
+77 
+101 
+190 
+4 
+20 
+41 
+71 
+87 
+224 
+5 
+4 
+29 
+49 
+66 
+103 
+160 
+2 
+24 
+27 
+57 
+109 
+215 
+Mean 
+5.6 
+30.2 
+48.0 
+73.4 
+103.6 
+192.0 
+2.6 
+20.4 
+34.2 
+73.2 
+100.4 
+215.2 
+The data from Table 10.2.3-1 will be used to illustrate this approach of calculating accuracy through 
+concentration-response curves. It is assumed that the counts for both the AMM/RMM and CMM are either 
+normally or otherwise Poisson-distributed. The counts have been visualized in Figure 10.2.3-1, where the 
+mean counts per spiked concentration are connected. The figure shows that the concentration-response 
+curve is nonlinear in spiked concentration. 
+Figure 10.2.3-1 Visualization of the Counts per Concentration and Connecting the Mean 
+Counts  
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+ Technical Report No. 33 (Revised 2026) © 2026 Parenteral Drug Association, Inc. 
+140 
+For both microbiological methods, the Mitscherlich function is appropriate to use to extend the 
+concentration-response curves to nonlinear relationships in spiked concentrations: 
+𝑚𝑚(𝜆𝜆) ≡𝔼𝔼(𝑦𝑦|𝜆𝜆) = 𝛽𝛽1 + 𝛽𝛽2exp{𝛽𝛽3 log(𝜆𝜆)} 
+Where: 
+𝔼𝔼(𝑦𝑦|𝜆𝜆)  =  expected concentration 
+𝜆𝜆   
+= 
+concentration level 
+𝛽𝛽1  
+= 
+intercept 
+𝛽𝛽2   
+=  slope 
+𝛽𝛽3   
+= 
+power parameter  
+The Mitscherlich function is a so-called nonlinear regression model and requires specific regression analysis 
+tools to estimate this function. It is relatively flexible in modeling concentration-response curves and has 
+broad applicability. When the intercept is zero (𝛽𝛽1 = 0), the Mitscherlich function becomes log-linear: 
+log൫𝔼𝔼(𝑦𝑦|𝜆𝜆)൯= log(𝛽𝛽2) + 𝛽𝛽3 log(𝜆𝜆) 
+When the power parameter is equal to one (𝛽𝛽3 = 1), the Mitscherlich function becomes a linear function in 
+the concentration 𝜆𝜆: 
+𝔼𝔼(𝑦𝑦|𝜆𝜆) = 𝛽𝛽1 + 𝛽𝛽2𝜆𝜆 
+Finally, when both the intercept is zero and the power parameter is equal to one, the relation between the 
+mean count and concentration level becomes proportional. Thus, under certain conditions, the nonlinear 
+Mitscherlich function becomes a (log-) linear function, and it can also take the shape of a proportional linear 
+model. 
+When the counts are Poisson-distributed, a nonlinear Poisson regression analysis must be applied. Most 
+general-purpose statistical software cannot manage the nonlinear aspect, and specialized software is 
+required. The Mitscherlich function with Poisson-distributed counts can be run in SAS®, R, and TriMSA. If 
+the counts are assumed to be normally distributed, the Mitscherlich function should be estimated with a 
+weighted nonlinear regression analysis. The weights are needed to address the heteroscedasticity in the 
+counts across concentrations (which is not needed with a Poisson regression analysis), and the nonlinearity 
+is needed to fit the Mitscherlich function. Such regression analysis is available in SAS®, R, and Minitab. 
+While the results of both regression analyses can be obtained, calculating the accuracy of the AMM/RMM 
+against CMM is even more complicated with the weighted nonlinear regression analysis than with the 
+nonlinear Poisson regression analysis, because a model for the variance of the counts across the spiked 
+concentrations must be determined. In the Poisson analysis, this variance function is determined by the 
+Poisson-distribution. This technical report illustrates the accuracy for the nonlinear Poisson regression 
+analysis in Section 10.2.3.1 and the weighted nonlinear regression analysis in Section 10.2.3.2. 
+10.2.3.1 Using Nonlinear Poisson Regression Analysis 
+Fitting the Mitscherlich function to the data in Table 10.2.3-1 for both microbiological methods separately, 
+results in the estimates of the parameters of the Mitscherlich function and its 95% confidence intervals 
+shown in Table 10.2.3.1-1. 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+Technical Report No. 33 (Revised 2026) 
+© 2026 Parenteral Drug Association, Inc. 
+141 
+Table 10.2.3.1-1 Results Using Nonlinear Poisson Regression Analysis 
+Parameter 
+AMM/RMM 
+CMM 
+Intercept β1 (95% Confidence Interval) 
+0.5780 (-0.37396, 4.8957) 
+0.7096 (-1.6797, 3.0989) 
+Slope β2 (95% Confidence Interval) 
+1.4908 (0.6423, 2.3393) 
+0.4150 (0.1952, 0.6348) 
+Power β3 (95% Confidence Interval) 
+0.8671 (0.7611, 0.9731) 
+1.1217 (1.0213, 1.2222) 
+The fitted Mitscherlich functions have been plotted to the observed counts in Figure 10.2.3.1-1. 
+Figure 10.2.3.1-1 Visualization of the Estimated Mitscherlich Functions with Respect to the 
+Observed Counts  
+The two microbiological methods show a different concentration-response curve. The CMM has some 
+difficulty enumerating microorganisms at lower concentrations but improves when the concentration 
+increases. This can be seen from a slope less than one and a power parameter larger than one. The 
+AMM/RMM shows an opposite pattern, where enumeration is good at lower concentrations but worsens 
+when concentrations increase. This pattern reflects a slope larger than one and a power parameter smaller 
+than one.  
+Both power parameter estimates deviate from one significantly (the value one does not fall in the 95% 
+confidence interval), but the intercepts may be equal to zero, which may suggest a log-linear model. This 
+model can be fitted with the same procedure, by setting the intercept to zero and locking this as the value so 
+that it will no longer be estimated and, therefore, remains equal to zero. The estimated parameters for the 
+log-linear model are shown in Table 10.2.3.1-2. 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+ Technical Report No. 33 (Revised 2026) © 2026 Parenteral Drug Association, Inc. 
+142 
+Table 10.2.3.1-2 Estimated Parameters 
+Parameter 
+AMM/RMM 
+CMM 
+Intercept β1 
+0 
+0 
+Slope β2 (95% Confidence Interval) 
+1.5924 (1.1470, 2.0378) 
+0.4693 (0.3125, 0.6262) 
+Power β3 (95% Confidence Interval) 
+0.8552 (0.7986, 0.9118) 
+1.0991 (1.0329, 1.1653) 
+By comparing Akaike’s corrected information criterion for the log-linear and the Mitscherlich function for 
+both microbiological methods separately, the log-linear model appears to be a better fit (AMM/RMM: 
+Mitscherlich 224.8 versus log-linear 222.4; CMM: Mitscherlich 208.9 versus log-linear 206.8). Thus, using 
+the log-linear concentration-response curves can be continued. 
+To determine non-inferiority in enumeration between the AMM/RMM and CMM, the recovery or ratio of 
+the two estimated concentration-response curves can be calculated for each concentration in the 
+experimental range [5, 250]: 𝑚𝑚ෝA(𝜆𝜆)/𝑚𝑚ෝC(𝜆𝜆). For this ratio, a lower 95% confidence limit can be calculated 
+and then compared to the lower limit with the non-inferiority margin.  
+The lower 95% confidence limit is best calculated in the logarithmic scale: 
+ቈ𝑚𝑚ෝ𝐴𝐴(𝜆𝜆)
+𝑚𝑚ෝ𝐶𝐶(𝜆𝜆)቉∙exp ቊ−1.645ට𝜏𝜏̂𝐴𝐴
+2(𝜆𝜆) + 𝜏𝜏̂𝐶𝐶
+2(𝜆𝜆)ቋ, 
+with 𝜏𝜏𝐴𝐴
+2(𝜆𝜆) = VAR(log൫𝑚𝑚ෝ𝐴𝐴(𝜆𝜆)൯) and 𝜏𝜏𝐶𝐶
+2(𝜆𝜆) = VAR(log൫𝑚𝑚ෝ𝐶𝐶(𝜆𝜆)൯) the variance of the estimated log 
+transformed Mitscherlich function of the AMM/RMM and CMM, respectively. 
+The variance of the estimated logarithmically transformed Mitscherlich function is quite elaborative and can 
+be found in Heidari et al. (2022) (16). For the log-linear model, the variance 𝜏𝜏2(𝜆𝜆) is somewhat less 
+elaborate and is equal to: 
+𝜏𝜏2(𝜆𝜆) = 𝑉𝑉𝑉𝑉𝑉𝑉൫log൫𝛽𝛽̂2൯൯+ [log(𝜆𝜆)]2𝑉𝑉𝑉𝑉𝑉𝑉൫𝛽𝛽̂3൯+ 2 log(𝜆𝜆) 𝐶𝐶𝐶𝐶𝐶𝐶൫log൫𝛽𝛽̂2൯, 𝛽𝛽̂3൯. 
+To obtain this variance, it is easier to model the slope parameter in the log scale (as is provided in TriMSA). 
+The estimated recovery (solid line) and the lower 95% confidence limit (dotted line) is shown in Figure 
+10.2.3.1-2 (left figure). The procedure NLMIXED in SAS® for the analysis and the visualization was used 
+for Figure 10.2.3.1-2, but TriMSA can provide the same results. The data show that the AMM/RMM is 
+non-inferior to the CMM (at non-inferiority margin of 70%), but the recovery of the AMM/RMM is much 
+better at the lower end of the concentration range than at the upper range. This is due to the enumeration 
+pattern seen from the two microbiological methods separately. Finally, the lower 95% confidence limit at 
+250 CFU is estimated at 82.7%, so non-inferiority would not have been rejected at 80% non-inferiority 
+margin either. 
+ 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+Technical Report No. 33 (Revised 2026) 
+© 2026 Parenteral Drug Association, Inc. 
+143 
+Figure 10.2.3.1-2 Visualization of the Estimated Recovery for the Log-Linear Concentration 
+Response Curves of the Microbiological Methods 
+This model-based analysis for accuracy could sometimes help reduce variation compared to a per 
+concentration analysis and, therefore, can be more efficient than the analyses between the AMM/RMM and 
+CMM with concentration used as categorical variable. The data in Table 10.1-1 is used to illustrate this. The 
+analysis in Section 10.1.2 with the results presented in Table 10.1.3-1 shows that non-inferiority between 
+AMM/RMM and CMM occurs at 25 CFU for the first time. However, since proportionality for both the 
+AMM/RMM and CMM on the concentration-response curves was demonstrated, consistent accuracy across 
+the full range of 5 to 250 CFU was also demonstrated. Therefore, non-inferiority could be extended across 
+the full experimental range. But if proportionality did not hold for at least one of the microbiological 
+methods, non-inferiority below 25 CFU could not be claimed (see Table 10.1.3-1). If the log-linear models 
+were the appropriate models for the concentration-response curves and the model-based approach for 
+accuracy is applied, it would show that non-inferiority would begin from 8.4 CFU (see Figure 10.2.3.1-2), 
+which is below the 25 CFU. 
+10.2.3.2 Using Weighted Nonlinear Regression Analysis 
+Using the data in Table 10.2.3-1 for both microbiological methods separately and using weighted nonlinear 
+regression the estimated results of the parameters of the Mitscherlich function and its 95% confidence 
+intervals are shown in Table 10.2.3.2-1.  
+ 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+ Technical Report No. 33 (Revised 2026) © 2026 Parenteral Drug Association, Inc. 
+144 
+Table 10.2.3.2-1 Estimates of Parameters Using Weighted Nonlinear Regression 
+Parameter 
+AMM/RMM 
+CMM 
+Intercept β1 (95% Confidence Interval) 
+0.0270 (-5.1512, 5.2052) 
+0.2723 (-1.7477, 2.2923) 
+Slope β2 (95% Confidence Interval) 
+1.6468 (0.3034, 2.9938) 
+0.4686 (0.2295, 0.7078) 
+Power β3 (95% Confidence Interval) 
+0.8371 (0.6783, 0.9958) 
+1.1065 (1.0130, 1.2001) 
+Here, the weights have been selected equal to one over the variance of the counts for each spiked 
+concentration, the same as was done for weighted linear regression in Section 10.2.1. Figure 10.2.3-4 
+provides a visualization of the data and the fitted Mitscherlich function. 
+Figure 10.2.3-4 Visualization of the Estimated Mitscherlich Functions Using Weighted Non-
+Linear Regression with Respect to the Observed Counts  
+The coefficients are rather different from the coefficients estimated by the nonlinear Poisson regression, 
+particularly for the intercept and slope, but the conclusion about the enumeration patterns do not change. 
+The CMM still has more enumeration issues at lower concentration levels, while the AMM/RMM has more 
+enumeration issues at higher concentration levels. Also, the conclusions that the intercept may be equal to 
+zero and that the power parameters deviate from one are the same as with the nonlinear Poisson regression 
+analysis.  
+Furthermore, the predicted curves are not so different from the nonlinear Poisson regression analysis in 
+Figure 10.2.3-2, even though the coefficients of the Mitscherlich function are somewhat different. 
+However, visually, the nonlinear Poisson regression analysis seems to fit slightly better than the weighted 
+nonlinear regression analysis and, therefore, may be preferred over the weighted nonlinear regression. 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+Technical Report No. 33 (Revised 2026) 
+© 2026 Parenteral Drug Association, Inc. 
+145 
+10.3 Limit of Quantitation 
+Determining the concentration of a specific chemical component with analytical measurement systems is 
+always affected by random errors, even if the chemical component is not present in the sample. Only 
+measurements that exceed a specific threshold, that is, the limit of quantitation (LoQ), can be considered a 
+reliable quantification of the concentration. For analytical measurement systems, the LoQ is often 
+established in two steps. In the first step, an upper quantile for the noise of a blank sample is calculated. 
+Then, in the second step, the upper quantile is interpolated on the concentration-response curve to determine 
+the concentration level that would provide, on average, a result above the noise of a blank sample. The LoQ 
+is often quantified during a linearity experiment for the measurement system where the upper quantile is 
+calculated from the unexplained variability of the concentration-response curve and the normal or log-
+normal distribution. For the analytical measurement methods, the LoQ is often set at 10 standard deviations 
+away from zero when the normal distribution is used; but for count data, this seems excessive due to the 
+skewness of the distribution of the counts at lower concentration levels. Instead, an upper quantile at the 
+level of 0.001 has been chosen. Figure 10.3-1 shows the calculation approach. 
+Figure 10.3-1 A Determination of the LoQ for Analytical Measurement Systems 
+This calculation approach applied to analytical measurements makes sense for microbiological methods if 
+the method generates background noise or false positives for blank samples. This approach will be 
+illustrated in Section 10.3.1. If the microbiological method does not produce any positive counts for blank 
+samples, the LoQ cannot be calculated using the analytical measurement method, because there is no noise 
+present at blank samples. An alternative approach is suggested in Section 10.3.2. 
+ 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+ Technical Report No. 33 (Revised 2026) © 2026 Parenteral Drug Association, Inc. 
+146 
+10.3.1 Microbiological Methods with Positive Counts at Blank Samples 
+The data in Table 10.1-1 of the AMM/RMM will be used to illustrate the calculation approach used for 
+analytical methods and follows the weighted regression analysis that was applied in Section 10.2.1. Most of 
+the analysis can be done with general-purpose statistical software, but will likely also require some 
+additional manual calculations. The coefficients for the linear concentration-response curves were estimated 
+at 𝛼𝛼= 0.829 (intercept) and 𝛽𝛽= 0.778 (slope). The standard error of the intercept was determined as 𝑆𝑆𝑆𝑆𝛼𝛼=
+ 0.881, which can be found from the regression analysis output that was described, but not reported in 
+Section 10.2.1. The residual variance 𝜎𝜎2, which can normally be found under the “Mean Squared” or 
+“Adjusted Mean Squared Error” function (depending on the software package being used), for the residual 
+error in the ANOVA table produced by the weighted regression analysis, was estimated at 𝜎𝜎ො2 = 0.946. This 
+residual variance is a “corrected variance” which is corrected for the weights used in the regression analysis. 
+To get the variance around the concentration-response curve at each level of the concentrations, the 
+estimated residual variance of 0.946 should be multiplied with the sample variance that was calculated at 
+each of the concentrations. 
+To obtain the variance for an individual count at a blank sample, the sample variance for blank samples 
+must be known; but a blank concentration was not included in this experiment (nor was it required) and, 
+therefore, an observed sample variance is not provided. Therefore, to predict the variance at concentration 
+level zero, a (standard) linear regression analysis must be conducted on the sample standard deviations 
+calculated for the six concentrations (see Table 10.1-1). The linear regression analysis on the sample 
+standard deviations leads to an intercept of 1.590 and a slope of 0.067, which is obtainable with any general-
+purpose statistical software package. This estimated intercept is the predicted sample standard deviation for 
+the counts at blank samples. The value needs to be squared (2.5281 = 1.590 · 1.590) to get a variance and 
+multiplied with the residual variance 𝜎𝜎ො2 = 0.946 from the weighted regression analysis manually to obtain 
+the final variance at the zero concentration for the AMM/RMM: 
+𝜎𝜎ො0
+2 = 2.5281 ∙0.946 = 2.3916. 
+To obtain the total variability at a zero concentration, also taking into account the uncertainty in estimating 
+the intercept of the concentration-response curve, the squared uncertainty (𝑆𝑆𝑆𝑆𝛼𝛼2 = 0.8812 or 0.7762) of the 
+estimated intercept 0.829 must be added to the variance 𝜎𝜎ො0
+2: 
+𝑆𝑆𝑆𝑆𝛼𝛼2 + 𝜎𝜎ො0
+2 = 3.1677. 
+By taking the square root of this variance 3.1677, the standard deviation is then 1.7798. The upper quantile 
+is then determined at three times the standard deviation (approximately at the significance level of 0.1%) 
+away from the intercept 0.829 (upwards). Thus, the upper quantile (represented as the vertical axis in Figure 
+10.3-1) is then calculated at: 
+𝑈𝑈𝑈𝑈= 0.829 + 3 ∙1.7798 = 6.168. 
+Translating this upper quantile to a concentration level (as illustrated in Figure 10.1.1-2) using the weighted 
+regression line 0.829 + 0.778λ from Section 10.2.1, gives an estimated LoQ equal to: 
+𝜆𝜆LoQ =
+[6.168 −0.829]
+0.778
+= 6.863 
+represented at the horizontal axis in Figure 10.3-1.  
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+Technical Report No. 33 (Revised 2026) 
+© 2026 Parenteral Drug Association, Inc. 
+147 
+Thus, contaminated samples with a concentration level ≥ 6.86 CFU most likely will not produce typical 
+counts at blank samples when background noise is present in the AMM/RMM (for blank samples), 
+indicating that 6.86 CFU is the LoQ and that the sample cannot be confused with a blank sample.  
+10.3.2 Microbiological Methods with Zero Counts at Blank Samples 
+When the blank sample does not generate any signal for the AMM/RMM, an approach can be used that is 
+aligned with the calculation of the detection limit for qualitative microbiological methods. Assuming that 
+the concentration-response curve for the AMM/RMM is given by: 
+𝑚𝑚𝐴𝐴(𝜆𝜆), 
+where 𝜆𝜆 is the concentration level and 𝑚𝑚𝐴𝐴(0) = 0, the concentration level LoQ = 𝜆𝜆LoQ may be found for 
+which it is (highly) likely to obtain enumerations that are away from zero (the result at a blank sample). In 
+this way, a zero result would not be obtained when the test sample contains more than the LoQ, and the test 
+sample is no longer believed to be sterile. In mathematical terms, the LoQ is defined by: 
+min
+𝜆𝜆𝑃𝑃൫𝑌𝑌> 0ห𝑚𝑚𝐴𝐴(𝜆𝜆)൯≥1 −𝛼𝛼, 
+with 1− 𝛼𝛼 being the level of certainty to be chosen. 
+In other words, the search is for the minimal concentration that does not produce zero counts with a 
+predefined confidence level of 1 − 𝛼𝛼. As discussed for qualitative methods, the LoD was selected with a 
+confidence level equal to 0.95 (or 95%). Taking a confidence level of 99.9% for the LoQ, as selected in 
+Section 10.3.1, there would be only 0.1% risk of producing a result that would fit with a result of a blank 
+sample. The Poisson regression analysis of the data in Table 10.2.3-1 for the AMM/RMM in Section 10.2.3 
+has been used to illustrate this approach. 
+The Poisson regression analysis described in Section 10.2.3 demonstrated that the log-linear concentration-
+response curve was an appropriate curve that described the relationship. This relationship forces the 
+concentration-response curve through the origin, indicating a zero mean for blank samples (and no noise or 
+signal expected at blank samples). The coefficients were estimated at slope 𝛽𝛽2 = 1.5924 and power 𝛽𝛽3 =
+ 0.8552 (see Section 10.2 for the notation and formulation of the log-linear concentration-response curve), 
+leading to the concentration-response curve equal to: 
+𝑚𝑚A(𝜆𝜆) = 1.5924 ∙𝜆𝜆0.8552 
+The probability of obtaining a zero count when the mean value of the Poisson distribution is 𝑚𝑚A(𝜆𝜆) is equal 
+to exp{−𝑚𝑚A(𝜆𝜆)}. With some simple algebra, the maximum value 𝜆𝜆LoQ can be obtained that would give 
+exp{−𝑚𝑚A൫𝜆𝜆LoQ൯} ≤ 0.001. This value is: 
+𝜆𝜆LoQ = exp ൞
+log ൬−log(0.001)
+1.5924
+൰
+0.8552ൢ
+= 5.56 
+Thus, for concentration levels ≥ 5.56 CFU, it is unlikely to obtain zero enumerations, indicating that test 
+samples will not be confused with blank test samples in routine practice. Note that this value is not so 
+different from the estimated LoQ with weighted linear regression, but the value in Section 10.3.1 is higher 
+due, at least in part, to the expected positive mean signal at blank samples. 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+ Technical Report No. 33 (Revised 2026) © 2026 Parenteral Drug Association, Inc. 
+148 
+10.4 Precision 
+For the validation of analytical measurement systems, precision is quantified by two measures: a relative 
+standard deviation for repeatability and a relative standard deviation for intermediate precision. 
+Repeatability quantifies within run variability (i.e., variability in enumerations under identical 
+circumstances), and intermediate precision quantifies the sum of within and between run variability (i.e., 
+variation in enumerations under routine varying conditions).  
+The analytical run is determined by factors that can change (e.g., analysts, test days, different instruments) 
+every time a new set of enumerations is collected. The standard data-analytic approach to calculate these 
+two relative standard deviations for the measures of precision is analysis of variance (ANOVA). For the 
+estimation of the measures of precision, ANOVA does not make any distributional assumptions, but it often 
+requires normality assumptions if additional features (e.g., confidence intervals, hypothesis testing for run 
+variability) are being used with ANOVA. For validation of microbiological methods, it is common to follow 
+the experimental setup of analytical measurement systems and apply ANOVA to quantify the within and 
+between run variability. This approach is demonstrated in Section 10.4.1 using the data from Table 10.4-1. 
+The run structure of the precision experiment is formed by the combinations of analysts and days (thus eight 
+(8) runs in total). 
+Table 10.4-1 Precision Experiment for the Alternative/Rapid Microbiological Method Using 
+Multiple Runs and Replicates 
+Replicate 
+Analyst 1 
+Analyst 2 
+Day 1 
+Day 2 
+Day 3 
+Day 4 
+Day 1 
+Day 2 
+Day 3 
+Day 4 
+1 
+65 
+71 
+72 
+60 
+68 
+75 
+53 
+62 
+2 
+67 
+76 
+69 
+76 
+73 
+74 
+70 
+62 
+3 
+79 
+64 
+63 
+68 
+67 
+68 
+61 
+53 
+4 
+71 
+69 
+66 
+76 
+68 
+87 
+66 
+69 
+Although ANOVA can quantify variability within and between runs without making any distributional 
+assumptions, there are considerations when the counts would follow a Poisson distribution. The Poisson 
+distribution has only one parameter 𝜆𝜆 that quantifies both the mean value and the variance of the counts, and 
+this fixes the value for the relative standard deviation to 100%/√𝜆𝜆 (when replicated counts are collected at 
+the same concentration). This value of relative standard deviation of the Poisson distribution is depicted in 
+Figure 10.4-1, which shows that the relative standard deviation becomes small only when the mean value 
+gets large. The relative standard deviation is never smaller than 10% for mean counts below 100 CFU. Thus, 
+for mean counts less than 100 CFU, repeatability that is (much) less than 10% is not expected to be found 
+when the counts follow a Poisson distribution and replicates are collected from different samples. 
+ 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+Technical Report No. 33 (Revised 2026) 
+© 2026 Parenteral Drug Association, Inc. 
+149 
+Figure 10.4-1 Visualization of the Relative Standard Deviation of a Poisson Distribution 
+In case the counts within runs (i.e., multiple enumerations from the same diluted suspension) follow a 
+Poisson distribution, the relative standard deviation can be estimated by using the mean value of the counts 
+instead of using ANOVA, which would estimate a separate variance parameter. In such situations, where the 
+counts within runs follow a Poisson distribution, it would be better to analyze the precision experiment with 
+a generalized linear mixed-effects model (GLMM) using the Poisson distribution. The repeatability is then 
+determined by the estimated Poisson distribution, while the run-to-run variability is separately modeled with 
+a latent variable that varies with the runs. This approach is illustrated in Section 10.4.2. 
+In the validation experiment for precision represented in Table 10.4-1, samples have been created at 
+approximately the same spiked level for each day and each analyst. Precision experiments are often 
+conducted this way, but typically at two or more spiked levels, to be able to quantify the precision at 
+different microbial concentrations. At each spiked level, the data could be analyzed as demonstrated here, 
+but there would also be options to analyze the full data simultaneously with ANOVA and GLMM. 
+The choice between ANOVA and GLMM depends mostly on a violation of using the Poisson distribution. 
+If it appears that the counts at each run follow a Poisson distribution, the GLMM is preferred; however, 
+when the variances of the counts within runs deviates (either larger or smaller) from the mean counts, the 
+ANOVA approach may be preferred over the GLMM approach based on Poisson. This is similar to the 
+approach for calculating accuracy at each concentration, where the choice was between a Poisson or a 
+normal distribution (see Section 10.1.1 and Section 10.1.3). 
+10.4.1 Analysis of Variance for Precision 
+The ANOVA approach calculates the mean squares for within and between runs, denoted here by 𝑀𝑀𝑀𝑀𝑊𝑊 and 
+𝑀𝑀𝑀𝑀𝐵𝐵, respectively. Any general-purpose statistical software package can determine these statistics from the 
+data presented in Table 10.4-1. The mean square for the within-run variability (𝑀𝑀𝑀𝑀𝑊𝑊) is a direct estimate of 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+ Technical Report No. 33 (Revised 2026) © 2026 Parenteral Drug Association, Inc. 
+150 
+the variance component (𝜎𝜎𝑊𝑊
+2 ) for the replicates within each run (as was used for linearity and the LoQ from 
+the weighted linear regression analysis). The assumption is that this variance is the same for each run 
+produced with the microbiological method. The mean square for the between-run variability (𝑀𝑀𝑀𝑀𝐵𝐵) is an 
+estimate of: 
+𝑛𝑛𝑛𝑛𝐵𝐵
+2 + 𝜎𝜎𝑊𝑊
+2 
+Where: 
+𝜎𝜎𝐵𝐵
+2   
+=  variance component for the between-run variability 
+𝜎𝜎𝑊𝑊
+2   
+=  variance component for the within-run variability 
+ n   
+=  number of replicates in each run  
+When the number of replicates vary from run-to-run, the 𝑀𝑀𝑀𝑀𝐵𝐵 estimates: 
+𝑐𝑐∙𝜎𝜎𝐵𝐵
+2 + 𝜎𝜎𝑊𝑊
+2 
+Where: 
+c 
+ 
+ =  a function of the different sample sizes in the runs (17). 
+Furthermore, if the software package has the option to choose a random effects model, the two variance 
+components will be estimated directly. 
+The two measures of precision, repeatability and intermediate precision, are now defined by: 
+Repeatability: 𝑅𝑅𝑅𝑅𝑅𝑅𝑅𝑅(%) = 100% ∙
+𝜎𝜎𝑊𝑊
+𝜇𝜇 
+Intermediate Precision: 𝑅𝑅𝑅𝑅𝑅𝑅𝐼𝐼𝐼𝐼(%) = 100% ∙
+ට𝜎𝜎B
+2+𝜎𝜎W
+2
+𝜇𝜇
+ 
+with 𝜇𝜇 estimated by the average value of the counts. 
+Repeatability and intermediate precision are divided by the mean 𝜇𝜇 to obtain a measure of precision as a 
+percentage of the average value. These measures of precision are typically not provided by standard 
+software packages and should be calculated manually when the two variance components of 𝜎𝜎𝑊𝑊
+2 and 𝜎𝜎𝐵𝐵
+2 
+have been determined. 
+Sometimes, it is better to analyze the precision experiment on the logarithm of the counts, when the 
+distribution in the replicated counts within a run show skewness, as counts often show positive skewness 
+(see Section 10.1). 
+If the skewness suggests transforming the counts to the logarithmic scale, the measures of precision for the 
+counts itself are estimated in the following way: 
+Repeatability: 𝑅𝑅𝑅𝑅𝑅𝑅𝑅𝑅(%) = 100% ∙ඥexp{𝜎𝜎𝑊𝑊
+2 } −1 
+Intermediate Precision: 𝑅𝑅𝑅𝑅𝑅𝑅𝐼𝐼𝐼𝐼(%) = 100% ∙ඥexp{𝜎𝜎𝑊𝑊
+2 + 𝜎𝜎𝐵𝐵
+2} −1 
+This calculation assumes that the logarithmically transformed counts are approximately normally 
+distributed. The advantage is that the mean value of the counts no longer plays a role in the calculation of 
+the measures of precision. However, to compare these measures of precision with what can be expected 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+Technical Report No. 33 (Revised 2026) 
+© 2026 Parenteral Drug Association, Inc. 
+151 
+from a Poisson distribution, the mean count is still required to be able to determine the relative standard 
+deviation depicted in Figure 10.4-1. 
+10.4.1.1 Analysis of the Counts 
+Using the count data from Table 10.4-1, the mean value is estimated at 68.375 CFUs and the mean squares 
+(rounded to two decimals) are determined at 𝑀𝑀𝑀𝑀𝐵𝐵= 86.21 and 𝑀𝑀𝑀𝑀𝑊𝑊= 38.00. The variance component for 
+the between-run variability is then equal to 𝜎𝜎𝐵𝐵
+2 = 12.0536 (not using rounded mean squares). This results in 
+the following values for the measures of precision: 
+𝑅𝑅𝑅𝑅𝑅𝑅𝑅𝑅(%) = 9.02%
+𝑅𝑅𝑅𝑅𝑅𝑅𝐼𝐼𝐼𝐼(%) = 10.35% 
+10.4.1.2 Analysis of the Log Counts 
+Using the logarithmically transformed count data from the data in Table 10.4-1, the mean value is estimated 
+at 4.2199, which translates into a median count of 68.03 (= exp {4.2199}). The mean squares are estimated 
+at 𝑀𝑀𝑀𝑀𝐵𝐵= 0.018993 and 𝑀𝑀𝑀𝑀𝑊𝑊= 0.008339 using a general-purpose statistical software package. The 
+variance component for the between-run variability is then estimated at 𝜎𝜎ො𝐵𝐵
+2 = 0.002664. This results in the 
+following values for the measures of precision: 
+𝑅𝑅𝑅𝑅𝑅𝑅𝑅𝑅(%) = 9.15%
+𝑅𝑅𝑅𝑅𝑅𝑅𝐼𝐼𝐼𝐼(%) = 10.52% 
+These measures of precision are very close to the measures of precision calculated from the counts directly. 
+To make a choice between the precision measurement, the residuals of the ANOVA model could be 
+evaluated (see Figure 10.4.1.2-1; most statistical software packages can generate this type of probability 
+plot of the residuals as an output of the calculations). The probability plots show that both analyses (on 
+counts and logarithmically transformed counts) would make sense, but the plot from the counts seems 
+slightly closer to normality than the plot from the log counts (i.e., the data points appear visually closer to 
+the lines), which is a marginal difference. Thus, based on this small distinction, the measures of precision 
+calculated from the counts would be reported. 
+Figure 10.4.1.2-1 Probability Plot of the Residuals (Analysis of the Counts (left); Analysis of the 
+Log Counts (right)) 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+ Technical Report No. 33 (Revised 2026) © 2026 Parenteral Drug Association, Inc. 
+152 
+10.4.2 Generalized Linear Mixed Effects Model 
+Assuming the counts in Table 10.4-1 within a run would follow the Poisson distribution, a generalized 
+linear mixed effects analysis could be used. In such a model, it is assumed that there exists a latent variable 
+𝑧𝑧𝑖𝑖 for run 𝑖𝑖 that affects the mean count in the run. The expected count given this latent variable 𝑧𝑧𝑖𝑖 is then 
+formulated as: 
+𝔼𝔼൫𝑦𝑦𝑖𝑖𝑖𝑖ห𝑧𝑧𝑖𝑖൯= exp{𝛼𝛼+ 𝑧𝑧𝑖𝑖} 
+Where: 
+𝜆𝜆𝛼𝛼  
+= 
+𝑒𝑒𝑒𝑒𝑒𝑒{𝛼𝛼}: the median count over all possible runs for the spike level used in the 
+              precision experiment 
+𝑧𝑧𝑖𝑖   
+= 
+latent variable for run i often assumed normally distributed with zero mean and 
+              variance 𝜏𝜏2 
+𝛼𝛼  
+= 
+intercept 
+The variance 𝜏𝜏2 for the latent variable 𝑧𝑧𝑖𝑖 would represent the variability between the runs in the logarithmic 
+scale.  
+Based on this Poisson model, the measures of precision for the counts in their original scale can be 
+calculated as follows: 
+Repeatability: 𝑅𝑅𝑅𝑅𝑅𝑅𝑅𝑅(%) = 100% ∙exp ቄ
+−𝛼𝛼
+2 ቅ 
+Intermediate Precision: 𝑅𝑅𝑅𝑅𝑅𝑅𝐼𝐼𝐼𝐼(%) = 100% ∙ቂexp ቄ−𝛼𝛼−
+𝜏𝜏2
+2 ቅ+ exp{𝜏𝜏2} −1ቃ
+1
+2 
+Fitting the GLMM may not be common in all general-purpose statistical software packages, but it could be 
+determined with [R] and SAS®. In SAS®, the analysis can be determined by the procedure GLIMMIX. Such 
+packages provide the estimates for 𝛼𝛼 and 𝜏𝜏2, from which the measures of precision can be manually 
+determined (by using the formulas above). The TriMSA software provides these measures of precision 
+directly in the output of the analysis. 
+The GLMM analysis on the data of Table 10.4-1, gives an estimate of 𝛼𝛼 that is equal to 4.2248 and an 
+estimate of 𝜏𝜏2 equal to 0.000378. In case the variance component 𝜏𝜏2 is equal to zero, the intermediate 
+precision becomes equal to the repeatability, but here the intermediate precision is slightly larger than the 
+repeatability. Thus, the two measures of precision are now (manually) estimated at: 
+Repeatability: 𝑅𝑅𝑅𝑅𝑅𝑅𝑅𝑅(%) = 12.09% 
+Intermediate Precision: 𝑅𝑅𝑅𝑅𝑅𝑅𝐼𝐼𝐼𝐼(%) = 12.25% 
+These values are slightly larger than the calculations from ANOVA, because the Poisson distribution fixes 
+the repeatability to 100%/√λ, with 𝜆𝜆 as the median value. Thus, the repeatability is now exactly equal to the 
+relative standard deviation of the Poisson distribution for an average of 𝜆𝜆= 68.36 (= exp{4.2248}), since a 
+Poisson distribution was assumed for the replicated counts conditionally on the executed run. Thus, the 
+repeatability is what we can be expected from Poisson distribution, and the intermediate precision is only 
+slightly higher than the repeatability. Overall, the measures of precision are satisfactory. 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+Technical Report No. 33 (Revised 2026) 
+© 2026 Parenteral Drug Association, Inc. 
+153 
+10.4.3 Comparing Precision of the Alternative/Rapid Microbiological Method with the 
+Conventional Method 
+In addition to the data collection for the AMM/RMM in Table 10.4-1, precision data was also collected for 
+the CMM so the AMM/RMM could be compared with the CMM. It is assumed here that the data was 
+collected on other days and possibly with analysts other than those for the AMM/RMM. This means that the 
+runs for the CMM are runs other than those for the AMM/RMM. The data for the CMM are presented in 
+Table 10.4.3-1. 
+Table 10.4.3-1 Precision Experiment for the CMM Using Multiple Runs and Replicates 
+Replicates 
+Analyst 1 
+Analyst 2 
+Day 1 
+Day 2 
+Day 3 
+Day 4 
+Day 1 
+Day 2 
+Day 3 
+Day 4 
+1 
+70 
+70 
+60 
+78 
+69 
+69 
+69 
+71 
+2 
+82 
+75 
+54 
+55 
+84 
+65 
+65 
+74 
+3 
+69 
+73 
+69 
+59 
+88 
+74 
+76 
+76 
+4 
+64 
+89 
+65 
+68 
+81 
+55 
+57 
+61 
+It should be noted that comparing precision measures between the AMM/RMM and CMM often requires an 
+unrealistic large number of test samples. Table 10.4.3-2 shows the sample size per microbiological method 
+(i.e., replicated counts when all data is collected within a single run) for traditional hypothesis-testing, 
+assuming a specific ratio between the variance components 𝜎𝜎A
+2/𝜎𝜎C
+2 (type 1 error rate is 0.05 and the power is 
+0.80). Table 10.4.3-2 clearly shows that an increase in the variance of less than 50% from the CMM to the 
+AMM/RMM is difficult to conduct for each species separately. Thus, most of the time, traditional 
+hypothesis-testing would show that there is no difference in variance components. On the other hand, non-
+inferiority testing would typically lead to a wide confidence interval that would hardly ever satisfy a non-
+inferiority margins of 0.7 when the variance of the CMM is compared to the variance of the AMM/RMM 
+or, alternatively, margins of 1.3 if the variance of the AMM/RMM is divided by the variance of the CMM. 
+It is therefore recommended to either accept less strict non-inferiority margins on the ratio of variances or to 
+compare the two microbiological methods more qualitatively. A non-inferiority margin of 2 on the ratio 
+𝜎𝜎A
+2/𝜎𝜎C
+2 (or 0.5 on the ratio 𝜎𝜎C
+2/𝜎𝜎A
+2) may be considered reasonable, since it leads to a non-inferiority margin 
+of approximately 0.7 on the ratio of precisions 𝜎𝜎C/𝜎𝜎A and seems practical considering the information in 
+Table 10.4.3-2. 
+ 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+ Technical Report No. 33 (Revised 2026) © 2026 Parenteral Drug Association, Inc. 
+154 
+Table 10.4.3-2 Minimum Sample Size for Two Variances 
+Ratio Variances 
+Sample Size 
+1.25 
+633 
+1.50 
+193 
+1.75 
+103 
+2.00 
+68 
+2.25 
+50 
+2.50 
+40 
+It is common to compare the precision estimates of the AMM/RMM and CMM in a ratio where the 
+precision of the CMM is put in the denominator. This means that a non-inferiority margin becomes a value 
+above one, like 1.3, instead of a value below one, like 0.7, which has been used for other validation 
+parameters so far. Indeed, when the precision of the AMM/RMM gets too large, the AMM/RMM may be 
+considered inferior to the CMM and the ratio 𝜎𝜎A/𝜎𝜎C becomes too far beyond one. It is important to realize 
+that 0.7 and 1.3 are not the same non-inferiority margins in case the ratio is reversed and the precision of the 
+AMM/RMM is put in the denominator. A non-inferiority margin of 1.3 on the ratio 𝜎𝜎A/𝜎𝜎C would lead to a 
+non-inferiority margin of 0.769 (=1/1.3) on the ratio 𝜎𝜎C/𝜎𝜎A. Finally, putting a non-inferiority margin on the 
+ratio of the precisions is not the same as putting a non-inferiority margin on the ratio of the variances (i.e., 
+the ratio of squared precisions) as discussed in previous paragraph. Indeed, a non-inferiority margin of 1.3 
+on the ratio 𝜎𝜎A/𝜎𝜎C is the same as putting a non-inferiority margin of 1.69 on the ratio 𝜎𝜎A
+2/𝜎𝜎C
+2 or 0.592 on the 
+ratio 𝜎𝜎C
+2/𝜎𝜎A
+2. 
+The approach to compare the precision of the AMM/RMM with the precision of the CMM again depends 
+on the distributional assumptions. If it is assumed that the counts per run are Poisson-distributed, the 
+repeatability is determined by the mean count exp{𝛼𝛼}. Comparing this parameter between the AMM/RMM 
+and CMM is then better done in an accuracy experiment as discussed in Section 10.1. Thus, for the GLMM 
+approach, it would not make sense to compare the repeatability between the microbiological methods if an 
+accuracy study is also conducted. The only comparison between the AMM/RMM and the CMM that would 
+possibly make sense is the comparison of the parameter 𝜏𝜏2 that describes the between-run variability. 
+However, a difference in 𝜏𝜏2 between the two microbiological methods may not have a strong effect on the 
+ratio of the intermediate precision, since it also contains the within-run variability. To illustrate this, the ratio 
+100% ∙𝑅𝑅𝑅𝑅𝑅𝑅𝐼𝐼𝐼𝐼
+A (%)/𝑅𝑅𝑅𝑅𝑅𝑅𝐼𝐼𝐼𝐼
+C (%) of the two intermediate precisions for the microbiological methods can be 
+visualized as a function of the ratio 100% ∙𝜏𝜏A/𝜏𝜏C for different values of the mean count exp{𝛼𝛼}. Here, it is 
+assumed that both microbiological methods have the same mean count (or repeatability). Figure 10.4-1 
+shows that when the standard deviation 𝜏𝜏A of the AMM/RMM is twice as large as the standard deviation 𝜏𝜏C 
+of the CMM (and the variance is thus four times larger), the intermediate precision of the AMM/RMM is 
+only 31% (or much less) larger than the intermediate precision of the CMM for enumerations less than 90 
+CFU. When the repeatability is large, the repeatability dominates the intermediate precision, and a strong 
+difference in variance components (as a factor 4, as noted previously) is not picked up. Thus, to understand 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+Technical Report No. 33 (Revised 2026) 
+© 2026 Parenteral Drug Association, Inc. 
+155 
+the differences between the two microbiological methods when the Poisson distribution is used, comparing 
+the two standard deviations 𝜏𝜏A and 𝜏𝜏C from the GLMM analysis is recommended. 
+If the replicates within the runs of the precision experiment do not demonstrate a Poisson distribution, the 
+counts or the log counts with the ANOVA can be modelled, assuming that the counts follow a normal 
+distribution. The decision not to use the Poisson distribution is mainly driven by a violation of the relation 
+between the mean and the variance of the replicated counts within runs (see also Section 10.1.3). When the 
+variances for the runs deviate from the means of the runs, an alternative distribution to the Poisson 
+distribution should be used. This evaluation is not always easy to conduct due to the relatively small number 
+of replicates per run, and it may be necessary to do it qualitatively. If the Poisson distribution is rejected and 
+the normal distribution describes either the counts or log counts properly for each microbiological method, 
+which can be evaluated through a residuals plot (Figure 10.4-2) after conducting an ANOVA, the ANOVA 
+approach can be used to compare both the repeatability and the intermediate precision. 
+10.4.3.1 ANOVA Method on the Counts 
+To compare the measures of precision for AMM/RMM with CMM, the values for repeatability and 
+intermediate precision for the two methods separately can be calculated as described in Section 10.4.1 
+(using counts). The calculation of the two ratios 𝑅𝑅𝑅𝑅𝑅𝑅𝑅𝑅
+A(%)/𝑅𝑅𝑅𝑅𝑅𝑅𝑅𝑅
+C(%) and 𝑅𝑅𝑅𝑅𝑅𝑅𝐼𝐼𝐼𝐼
+A (%)/𝑅𝑅𝑅𝑅𝑅𝑅𝐼𝐼𝐼𝐼
+C (%) are then 
+straightforward to calculate.  
+Applying the ANOVA approach to the count data in Table 10.4.3-1 for the CMM results in a mean square 
+𝑀𝑀𝑀𝑀𝐵𝐵= 64.375 and 𝑀𝑀𝑀𝑀𝑊𝑊= 157.125. The variance component for the between-run variability is then 
+estimated at 𝜎𝜎ො𝐵𝐵
+2 = 23.19. The mean count was determined at 69.81. Thus, the measures of precision for the 
+CMM are now estimated at 𝑅𝑅𝑅𝑅𝑅𝑅𝑅𝑅
+𝐶𝐶(%) = 11.49% and 𝑅𝑅𝑅𝑅𝑅𝑅𝐼𝐼𝐼𝐼
+𝐶𝐶(%) = 13.40%. Comparing the measures of 
+precision of the AMM/RMM with the measures of precision of the CMM, leads to the following ratios 
+(expressed in percentages): 
+Ratio for Repeatability: 100% ∙
+𝑅𝑅𝑅𝑅𝑅𝑅𝑅𝑅
+A(%)
+𝑅𝑅𝑅𝑅𝑅𝑅𝑅𝑅
+C(%) = 78.45 
+Ratio for Intermediate Precision: 100% ∙
+𝑅𝑅𝑅𝑅𝑅𝑅𝐼𝐼𝐼𝐼
+A (%)
+𝑅𝑅𝑅𝑅𝑅𝑅𝐼𝐼𝐼𝐼
+C (%) = 77.20 
+Clearly, these ratios show that the estimated precision of the AMM/RMM is less than the estimated 
+precision of the CMM. To better understand this ratio, it is recommended to calculate an upper 95% 
+confidence limit for these two ratios using the logarithmic scale. Unfortunately, confidence intervals on 
+ratios of variance components are mathematically not straightforward, particularly for the intermediate 
+precision. 
+The variance of a mean square 𝑀𝑀𝑀𝑀 in a random effects ANOVA model can be estimated by: 
+2𝑀𝑀𝑀𝑀2
+𝑑𝑑𝑑𝑑 
+with 𝑑𝑑𝑑𝑑 as the degrees of freedom in the ANOVA table for the specific mean square.  
+ 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+ Technical Report No. 33 (Revised 2026) © 2026 Parenteral Drug Association, Inc. 
+156 
+The degrees of freedom of the within-run mean square 𝑚𝑚(𝑛𝑛−1) is equal to the number of runs (𝑚𝑚) 
+multiplied with the number of degrees of freedom of (𝑛𝑛−1) for the 𝑛𝑛 replicated counts in one run. The 
+asymptotic variance of the logarithmically transformed standard deviation for the within-run variability 0.5 ∙
+log(𝑀𝑀𝑀𝑀𝑊𝑊) is then equal to [2𝑚𝑚(𝑛𝑛−1)]−1. Hence, the asymptotic upper 95% confidence limit for the ratio 
+𝑅𝑅𝑅𝑅𝑅𝑅𝑅𝑅
+A(%)/𝑅𝑅𝑅𝑅𝑅𝑅𝑅𝑅
+C(%) is then determined by: 
+𝑈𝑈𝑈𝑈𝑈𝑈𝑅𝑅= ቈ𝑅𝑅𝑅𝑅𝑅𝑅𝑅𝑅
+𝐴𝐴(%)
+𝑅𝑅𝑅𝑅𝑅𝑅𝑅𝑅
+𝐶𝐶(%)቉exp ቊ
+1.645
+ඥ𝑚𝑚(𝑛𝑛−1)
+ቋ, 
+where the uncertainty in the mean count was not taken into account.  
+For the example data in Table 10.4-1 and Table 10.4.3-1, the degrees of freedom is equal to 24 (= 8 · (4 – 
+1)) for the within-run mean square for both microbiological methods. The upper 95% confidence limit for 
+the ratio of repeatability is now determined by: 
+𝑈𝑈𝑈𝑈𝑈𝑈𝑅𝑅= 109.7% 
+The estimate for the sum of the two variance components 𝜎𝜎𝐵𝐵
+2 + 𝜎𝜎𝑊𝑊
+2 is equal to [𝑀𝑀𝑀𝑀𝐵𝐵+ (𝑛𝑛−1)𝑀𝑀𝑀𝑀𝑊𝑊]/𝑛𝑛. 
+The estimated variance of this estimator is equal to: 
+2
+൤𝑀𝑀𝑀𝑀𝐵𝐵
+2
+𝑑𝑑𝑑𝑑𝐵𝐵+ (𝑛𝑛−1)2𝑀𝑀𝑀𝑀𝑊𝑊
+2
+𝑑𝑑𝑑𝑑𝑊𝑊
+൨
+𝑛𝑛2
+ 
+because the two mean squares are independent for balanced data (i.e., the same number of replicates per 
+run). 
+The degrees of freedom for the mean square between-runs equal the number of runs minus one (𝑑𝑑𝑑𝑑𝐵𝐵= 𝑚𝑚−
+1). The variance of the total variability of within- and between-runs, 0.5 ∙log([𝑀𝑀𝑀𝑀𝐵𝐵+ (𝑛𝑛−1)𝑀𝑀𝑀𝑀𝑊𝑊]/𝑛𝑛), is 
+then approximately equal to: 
+𝜂𝜂2 = 0.5
+൤𝑀𝑀𝑀𝑀𝐵𝐵
+2
+𝑑𝑑𝑑𝑑𝐵𝐵+ (𝑛𝑛−1)2𝑀𝑀𝑀𝑀𝑊𝑊
+2
+𝑑𝑑𝑑𝑑𝑊𝑊
+൨
+[𝑀𝑀𝑀𝑀𝐵𝐵+ (𝑛𝑛−1)𝑀𝑀𝑀𝑀𝑊𝑊]2 
+The upper 95% confidence limit for the ratio 𝑅𝑅𝑅𝑅𝑅𝑅𝐼𝐼𝐼𝐼
+A (%)/𝑅𝑅𝑅𝑅𝑅𝑅𝐼𝐼𝐼𝐼
+C (%) is now determined by: 
+𝑈𝑈𝑈𝑈𝑈𝑈𝐼𝐼𝐼𝐼= ቈ𝑅𝑅𝑅𝑅𝑅𝑅𝐼𝐼𝐼𝐼
+A (%)
+𝑅𝑅𝑅𝑅𝑅𝑅𝐼𝐼𝐼𝐼
+C (%)቉exp ቊ1.645ට𝜂𝜂A
+2 + 𝜂𝜂C
+2ቋ 
+Applying these formulas to the observed results, the upper 95% confidence limit for the ratio of intermediate 
+precisions becomes equal to 𝑈𝑈𝑈𝑈𝑈𝑈𝐼𝐼𝐼𝐼= 107.6%. 
+The formulas for the upper 95% control limits of the ratio of repeatability and intermediate precision for the 
+two microbiological methods can be programmed in Excel. The only input that is needed for each 
+microbiological method is the mean, the two mean squares, and their degrees of freedom.  
+The upper 95% confidence limits for the ratios of both the repeatability and the intermediate precision are 
+less than the non-inferiority limit of 141% (= 100%√2) assuming a non-inferiority margin of 2 for the 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+Technical Report No. 33 (Revised 2026) 
+© 2026 Parenteral Drug Association, Inc. 
+157 
+corresponding variances. Thus, the precision measures of the AMM/RMM is non-inferior to the precision of 
+the CMM when a non-inferiority margin (e.g., 2) is used on the variance for the relative standard deviations.  
+10.4.3.2 GLMM Poisson Approach 
+Assuming that the counts within the runs are Poisson-distributed and the runs add additional variation to the 
+counts, the same analysis can be used for the CMM as was done for the AMM/RMM. The estimates and 
+standard error for the parameters in the Poisson model for both the AMM/RMM and CMM are shown in 
+Table 10.4.3.2-1. 
+Table 10.4.3.2-1 Estimates and Standard Error for the Poisson Model 
+Method 
+𝛼𝛼 (𝑆𝑆𝑆𝑆𝛼𝛼) 
+𝜏𝜏2 (𝑆𝑆𝑆𝑆𝜏𝜏2) 
+AMM/RMM 
+4.2248 (0.02248) 
+0.000378 (0.002022) 
+CMM 
+4.2441 (0.02960) 
+0.003408 (0.003468) 
+As mentioned earlier, the ratio of the two variance components 𝜏𝜏A
+2 and 𝜏𝜏C
+2 for the between-run variability of 
+the two microbiological methods should be investigated. The estimator of the variance component will be 
+approximated with a chi-square distribution and then using the F-distribution to calculate an upper 
+confidence limit on the ratio of the variance components. This upper limit can then be used to determine 
+non-inferiority if a non-inferiority margin, say 2, is prescribed for the precision experiment.  
+To approximate the estimators of the variance component with a chi-square distribution, only the degrees of 
+freedom need to be estimated. Making use of the Satterthwaite approach (an approach that is used for t-tests 
+with unequal variances as well), the formula for the degrees of freedom for the estimator 𝜏𝜏̂2 for the variance 
+component 𝜏𝜏2 is given by: 
+𝑑𝑑𝑑𝑑= 2𝜏𝜏̂4
+𝑆𝑆𝑆𝑆𝜏𝜏ො2
+2 ,  
+with 𝑆𝑆𝑆𝑆𝜏𝜏ො2 the standard error of the estimator 𝜏𝜏̂2. 
+In practice, such degrees of freedom can sometimes become small when variance components are relatively 
+small, so degrees of freedom will not be accepted less than the degrees of freedom for the between-run 
+variability, which is defined by the number of runs minus one (similar to ANOVA). 
+ 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.
+
+ Technical Report No. 33 (Revised 2026) © 2026 Parenteral Drug Association, Inc. 
+158 
+To first determine an upper 95% confidence limit on the ratio of the two variance components 𝜏𝜏𝐴𝐴
+2/𝜏𝜏𝐶𝐶
+2, the 
+upper 95% confidence limit is given by: 
+𝑈𝑈𝑈𝑈𝑈𝑈VC = ቆ𝜏𝜏𝐴𝐴
+2
+𝜏𝜏𝐶𝐶
+2ቇ𝐹𝐹𝑑𝑑𝑑𝑑A,𝑑𝑑𝑑𝑑C
+−1
+(0.95) 
+Where: 
+𝜏𝜏𝐴𝐴
+2  
+= 
+between-run variance component for AMM/RMM 
+𝜏𝜏𝐶𝐶
+2  
+=  between-run variance component for CMM 
+𝑑𝑑𝑑𝑑A  
+=  degrees of freedom for AMM/RMM 
+𝑑𝑑𝑑𝑑C  
+=  degrees of freedom for CMM 
+𝐹𝐹𝑑𝑑𝑑𝑑𝐴𝐴,𝑑𝑑𝑑𝑑𝐶𝐶
+−1
+ =  quantile function of the F-distribution with 𝑑𝑑𝑑𝑑1and 𝑑𝑑𝑑𝑑2 degrees of freedom 
+Using the result from the analyses, a ratio of the two variance components is obtained that is equal to 
+𝜏𝜏𝐴𝐴
+2/𝜏𝜏𝐶𝐶
+2 = 0.1109. The degrees of freedom for the AMM/RMM and CMM, based on Satterthwaite approach, 
+are determined at 0.07 and 1.93, respectively, but the number of runs for each microbiological method was 
+set at eight (8). Thus, the degrees of freedom for calculation of the upper 95% confidence limit on the ratio 
+of the estimated variance components will be equal to seven (7). The upper limit 𝑈𝑈𝑈𝑈𝑈𝑈VC is then determined 
+at 0.4200. By taking the square root, the ratio of standard deviations 𝜏𝜏A/𝜏𝜏C, expressed in percentages, is 
+equal to 33.3%, and the corresponding upper 95% confidence limit on the ratio of standard deviations (also 
+expressed in percentages) is then equal to 64.8%. This upper limit is lower than a non-inferiority margin of 
+141% (corresponding to a factor of 2 for the variance components), making the AMM/RMM non-inferior 
+on the between-run variability (i.e., intermediate precision) compared to CMM. 
+ 
+Licensed to Kuo, Li-Hung/Amaran Biotechnology, Inc.: Copying and Distribution Prohibited.

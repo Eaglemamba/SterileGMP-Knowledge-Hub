@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR33 - Section 5.4.5-5.4.11: LoQ, Linearity, Range, Ruggedness, Robustness, Method Suitability &amp; Comparability</title>
+    <link rel="stylesheet" href="../../../template.css">
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 5.4.5-5.4.11 Validation Criteria: LoQ, Linearity, Range, Ruggedness, Robustness, Method Suitability &amp; Comparability</h1>
+    <div class="subtitle">驗證準則：定量極限、線性、範圍、堅牢性、耐用性、方法適用性與可比性</div>
+    <div class="page-info">PDA Technical Report No. 33 (Revised 2026) | p58-p69</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 <span class="key-term">Limit of Quantification (LoQ)</span> 如何從 accuracy 或 linearity 研究推導，並掌握以 Poisson 分佈與 99% 下限信賴界限決定 LoQ 的統計邏輯</li>
+        <li>掌握 <span class="key-term">Linearity（線性）</span>的兩種評估角度（絕對讀數 vs. 相對讀數）與其對應的迴歸分析判定準則（斜率、截距、R²、適合度檢定）</li>
+        <li>理解 <span class="key-term">Range（範圍）</span>如何直接沿用 accuracy、repeatability、linearity 的既有數據，而非另立新試驗</li>
+        <li>掌握 <span class="key-term">Ruggedness（堅牢性）</span>的 ANOVA 隨機效應模型與相對標準差（RSD）五步驟計算法，並能依 Table 5.4.8.3-1 判讀不同 CFU 範圍的可接受 RSD</li>
+        <li>理解 <span class="key-term">Robustness（耐用性）</span>如何評估關鍵參數（試劑濃度、環境條件、儀器操作極限）微幅變動對方法表現的影響</li>
+        <li>掌握 <span class="key-term">Method Suitability（方法適用性）</span>中偽陽性/偽陰性測試設計，以及如何與後續 <span class="key-term">Comparability（可比性）</span>研究銜接，建立 AMM/RMM 導入的完整統計驗證邏輯鏈</li>
+    </ul>
+</div>
+
+<!-- ============================================ -->
+<!-- 5.4.5 LIMIT OF QUANTIFICATION -->
+<!-- ============================================ -->
+<div class="section-title"><strong>5.4.5 Limit of Quantification 定量極限</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>See the definition of <span class="key-term">LoQ</span> in Section 2.0.</p>
+        <p>LoQ is usually evaluated using <span class="key-term">quantitative methods</span>.</p>
+
+        <h3>5.4.5.1 Limit of Quantification Testing Procedure</h3>
+        <p>LoQ can be determined from the <span class="key-term">accuracy</span> or <span class="key-term">linearity</span> studies.</p>
+        <p>Several serial dilutions, for which one should be close to the purported LoQ, should be prepared across the desired range of the assay in order to ensure that microorganisms are enumerated close to the true quantification limit.</p>
+        <p>An appropriate panel of microorganisms should be utilized, similar to what would be used during accuracy testing. Ideally, the organisms selected would be expected to be quantified by the AMM/RMM at very low concentrations.</p>
+        <p>The number of replicates used per dilution should be appropriate to reduce the potential for variability at very low challenge concentrations.</p>
+        <p>Alternatively, the concentration of microorganisms used can also be defined differently, for example, in a certificate of analysis from a supplier for commercially prepared microbial challenges, as long as these are very accurate at low concentrations.</p>
+        <p>The procedures used during accuracy or linearity studies can be followed for reporting recovered microorganisms. If recovered counts are less than the challenge concentration, the recovered counts should be reported as less than the dilution level and not used to calculate the true LoQ (e.g., if the lowest dilution is expected to contain 10 CFU, any count recovered that is less than 10 should be reported as "&lt;10").</p>
+
+        <h3>5.4.5.2 Limit of Quantification Statistical Analysis</h3>
+        <p>The lowest concentration in the practical range of the assay that meets the acceptance criteria for accuracy and/or linearity is considered to be the quantitation limit of the method.</p>
+        <p>Data analysis may be based on the fact that microorganisms in an inoculation suspension approximately follow a <span class="key-term">Poisson distribution</span>.</p>
+        <p>The most appropriate concentration-response curve (possibly linear or proportional to the spikes) using <span class="key-term">Poisson (or linear) regression</span> should be determined, and the lowest concentration level for which the <span class="key-term">99% lower confidence limit</span> is above zero on all higher concentrations should be calculated.</p>
+        <p>This lowest level is considered the LoQ if accuracy (and possibly repeatability) has been demonstrated at this concentration or lower. If not, the LoQ becomes the lowest concentration at which accuracy has been demonstrated.</p>
+
+        <h3>5.4.5.3 Limit of Quantification Acceptance Criteria</h3>
+        <p>There is no acceptance criterion for LoQ testing, unless a certain level for the LoQ is required for the purpose of the AMM/RMM. In that case, the estimated LoQ in the AMM/RMM should be at or below the target or intended LoQ.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Limit of Quantification（LoQ，定量極限）：</strong>在既定實驗條件下，可以「可接受的準確度與精密度」被計數的微生物最低數量。這與前一節提到的 <strong>LoD（偵測極限，Limit of Detection）</strong>不同——LoD 只問「有沒有偵測到」，LoQ 則進一步問「這個數字可不可信、準不準」。因此 LoQ 的門檻通常高於 LoD。</p>
+            <p><strong>LoQ 的推導邏輯：</strong>TR 33 並未要求另立一套全新試驗，而是直接「借用」accuracy（準確度）或 linearity（線性）研究已產生的數據——在已測試的多個稀釋濃度中，找出「最低且仍符合 accuracy/linearity 允收準則」的那個濃度，即為 LoQ。這是一種資源效率導向（reuse existing data）的設計哲學，貫穿本章多個驗證參數。</p>
+            <p><strong>Poisson 分佈與統計推導：</strong>微生物在稀釋懸浮液中的分佈近似 <span class="key-term">Poisson distribution（卜瓦松分佈）</span>——這是描述「單位時間或單位體積內離散事件發生次數」的機率分佈，特別適合極低濃度（個位數 CFU）情境。統計方法是計算每個濃度點的 <strong>99% 下限信賴界限（99% lower confidence limit）</strong>：只要這個下限在所有「更高濃度」都顯著大於零，該濃度即可視為方法能可靠量化的最低點。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>LoQ 就像家用體重計的「可信讀數下限」：把一枚硬幣放上體重計，指針可能會抖動、顯示 0 或亂跳的數字（這是 LoD 層次——偵測到「有東西」，但讀數不可靠）；但當放上一顆蘋果（假設 150 克），體重計能穩定、準確地顯示 150 克 ± 可接受誤差，這才是 LoQ——不只「偵測到」，而是「這個數字你可以拿去做決策」。同理，AMM/RMM 在極低濃度下可能感應到訊號，但唯有在 LoQ 以上的濃度，其計數結果才具備法規決策等級的準確度與精密度。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>原文特別強調一個常被忽略的細節：<strong>低於挑戰濃度的回收計數，應以「小於稀釋濃度」（例如 "&lt;10"）表示，而不能直接拿來計算真正的 LoQ</strong>。這是資料誠信（data integrity）與統計正確性的重要提醒——把一個「未偵測到真值」的截尾數據（censored data）當作實際觀測值代入迴歸分析，會嚴重扭曲 LoQ 的估計結果。QA 審閱驗證報告時，應特別檢查原始數據是否有此類截尾值被誤用。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <pre>
+LoQ 判定邏輯（Poisson / 線性迴歸法）：
+
+1. 針對每一個稀釋濃度層級，建立濃度-反應迴歸模型
+   （Poisson regression 或 linear regression）
+
+2. 對每一濃度層級，計算 99% 下限信賴界限（99% LCL）
+
+3. 由低濃度往高濃度檢視：
+   找出最低的濃度層級，使其 99% LCL 在該層級「以上所有
+   更高濃度」皆顯著大於零 → 此為統計上的最低可定量濃度
+
+4. 最終 LoQ =
+   若該濃度亦符合 accuracy（必要時含 repeatability）允收準則
+     → LoQ = 該濃度
+   若不符合
+     → LoQ = 「已證實符合 accuracy 允收準則」的最低濃度
+
+範例：稀釋序列預期含量 5, 10, 20, 50, 100 CFU，
+若 5 CFU 濃度的 99% LCL 未能大於零，但 10 CFU 濃度可以，
+且 10 CFU 濃度亦通過 accuracy 允收準則
+→ 該方法的 LoQ = 10 CFU
+            </pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若某 AMM/RMM 在 5 CFU 稀釋層級量測到的計數為 "&lt;5"（低於預期挑戰濃度），這筆數據能否直接代入 LoQ 的迴歸分析？為什麼？</li>
+                <li>為什麼 LoQ 的統計判定要同時參照 accuracy 的允收準則，而不能僅憑迴歸分析本身的信賴界限來決定？</li>
+                <li>如果客戶對某 AMM/RMM 要求「LoQ 必須低於 10 CFU」作為技術規格，這會如何改變驗證試驗設計中稀釋序列的安排？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- 5.4.6 LINEARITY -->
+<!-- ============================================ -->
+<div class="section-title"><strong>5.4.6 Linearity 線性</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>See the definition of <span class="key-term">linearity</span> in Section 2.0.</p>
+        <p>Linearity is usually evaluated using quantitative methods.</p>
+
+        <h3>5.4.6.1 Linearity Testing Procedure</h3>
+        <p>Linearity is a parameter that must be evaluated in relation to <span class="key-term">accuracy</span>, in particular when accuracy is conducted at several concentrations separately (without assuming a concentration-response curve). Satisfying linearity would then guarantee that accuracy also holds for each concentration in between any two concentrations for which accuracy was demonstrated.</p>
+        <p>When accuracy is evaluated using concentration-response curves, the test for linearity is less important and may even be unnecessary.</p>
+        <p>To be able to investigate linearity, a minimum of <span class="key-term">three concentrations</span> (across the range of the method) is required, but more concentrations are preferred.</p>
+        <p>Linearity can be visualized by examining either the actual counts obtained in the AMM/RMM or by examining the relative counts with respect to the (true) amount of microorganisms in the dilution (e.g., using the spiked concentration level or the expected or mean counts of the CMM). When performed properly, both approaches would lead to the same conclusions on linearity.</p>
+
+        <h3>5.4.6.2 Linearity of the Actual Counts Obtained in the Alternative/Rapid Microbiological Method</h3>
+        <p>The expected or mean counts of the AMM/RMM is a straight line in the number of microorganisms with a nonzero slope. The ideal linear function is a straight line through the origin, in which case linearity is referred to as <span class="key-term">proportionality</span>. Under proportionality, the slope represents the recovery of the AMM/RMM across the investigated range of concentration levels.</p>
+
+        <h3>5.4.6.3 Linearity of the Relative Counts of Alternative/Rapid Microbiological Method</h3>
+        <p>The relative counts of the AMM/RMM (e.g., calculated from the dilutions using an initial spiked concentration) is a straight line. The ideal straight line is a horizontal line with a slope equal to zero, since the average relative count over all spiked concentrations is an estimate for the recovery of the AMM/RMM.</p>
+
+        <h3>5.4.6.4 Linearity Statistical Analysis</h3>
+        <p>Linearity of the actual counts or the relative count of the AMM/RMM is best evaluated with an appropriate <span class="key-term">regression analysis</span> (e.g., standard linear regression, weighted linear regression, Poisson regression), considering the following options:</p>
+        <ul>
+            <li>Use the p-value of the slope to test that the slope is nonzero. A nonzero slope means that the response (counts or relative counts) is dependent on the number of microorganisms. For a regression analysis of the AMM/RMM counts, a nonzero slope is required while, for a regression analysis of the relative counts, a zero slope is preferable.</li>
+            <li>Use the p-value of the intercept to test that the intercept is nonzero. For a regression analysis of the AMM/RMM counts, an intercept that is not distinguishable from zero supports proportionality (i.e., the slope then represents the mean recovery). For a regression analysis of the relative counts (or recoveries), the intercept represents the estimated mean recovery (where the slope should not differ significantly from zero) and should be significantly different from zero.</li>
+            <li>Apply a <span class="key-term">goodness-of-fit test</span> to evaluate the appropriateness of linearity by comparing the regression line with a more extensive model. For instance, add a quadratic term to the regression analysis or compare the regression line with the saturated model (a model that estimates the mean at each spiked concentration). The goodness-of-fit test should not be statistically significant.</li>
+            <li>The <span class="key-term">R2</span> value is only an indirect measure of linearity. The larger the R2 value, the less likely linearity is violated, but it is no guarantee that linearity is true since it also depends on the range of spike levels being tested.</li>
+        </ul>
+        <p>Transformation of the counts (e.g., log 10) and/or the concentration level may be a suitable approach for the purpose of demonstrating linearity, but the interpretation of the parameters of the regression line will change.</p>
+        <p>The use of more complex statistical analyses, where the counts of the AMM/RMM and CMM are jointly analyzed, are also appropriate. See Section 10.0 (Appendix 2) for additional information.</p>
+
+        <h3>5.4.6.5 Linearity Acceptance Criteria</h3>
+        <p>The criteria on the model parameters are described within the statistical analysis (nonzero intercept and slope), and the acceptance criteria depend on what type of outcome (absolute counts, relative counts, or transformation) is being studied. A lack-of-fit of the regression line requires a deeper investigation of accuracy. For a regression analysis of the AMM/RMM counts as a function of the number of microorganisms (e.g., the concentration level or the expected or mean counts of the CMM), it is recommended to also require a high <span class="key-term">R2 value (at least 90%)</span> to show that the AMM/RMM can appropriately predict the number of microorganisms in a dilution appropriately.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Linearity（線性）：</strong>方法產生的結果，在特定範圍內，是否與樣品中微生物濃度（或相關分析物、量測訊號）成比例。與 accuracy 的關係是「互補」的——若 accuracy 是逐點驗證，linearity 則能證明「兩個已驗證點之間」的任何濃度也同樣準確，等於用較少的試驗點涵蓋整個範圍。</p>
+            <p><strong>兩種線性視角：</strong>① <strong>絕對讀數線性（5.4.6.2）</strong>——AMM/RMM 的計數對微生物數量作圖，理想情況是「通過原點、斜率非零」的直線，此時稱為 <strong>proportionality（比例性）</strong>，斜率即代表方法在該濃度範圍的回收率（recovery）。② <strong>相對讀數線性（5.4.6.3）</strong>——把每次計數換算成相對於初始 spike 濃度的比例，理想情況是一條「斜率為零的水平線」，因為所有濃度下的平均相對回收率應該一致。兩者殊途同歸：只要方法確實線性，兩種畫法都會得到相同結論。</p>
+            <p><strong>迴歸分析四項檢定：</strong>① 斜率 p 值（判斷斜率是否顯著非零——絕對計數要非零、相對計數則要接近零）② 截距 p 值（絕對計數理想是截距不顯著異於零以支持比例性；相對計數則截距代表平均回收率，理應顯著不為零）③ 適合度檢定（goodness-of-fit，不應顯著，否則代表模型與資料不吻合）④ <strong>R2（決定係數）</strong>——僅是線性的「間接」指標，R2 高不保證線性成立，因為 R2 也受測試濃度範圍影響（範圍越窄，R2 越容易偏高）。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>Linearity 就像體溫計的刻度設計：好的體溫計必須「每上升 1°C，指針或數字顯示就穩定地多跳動固定的格數」，不會在 37°C 附近很準、但在 40°C 附近突然壓縮或膨脹刻度。若你把每次量測結果除以「真實體溫」畫成一條線（相對讀數法），理想上應該是一條水平線——不管量 36°C 還是 40°C，量測值與真實值的比例應該維持一致。反之，若某體溫計在低溫時準、但發燒的高溫區間開始失真，就代表這支溫度計的 linearity 只在部分範圍內成立，臨床上使用時必須註明其有效量測區間（也就是下一節的 Range）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>原文提醒：<strong>R2 只是線性的間接證據，不是充分證據</strong>——即使 R2 高達 0.99，也可能是因為測試的濃度範圍太窄（例如只測了彼此接近的三個濃度），掩蓋了真實的非線性關係。因此驗證方案設計時，應優先確保測試濃度「涵蓋方法宣稱的完整範圍」，並搭配適合度檢定（goodness-of-fit test）而非只看 R2，才能真正證明線性成立。這也解釋了為什麼原文要求「至少 3 個濃度、建議更多」——濃度點越多、越分散，線性判定才越可靠。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <pre>
+絕對讀數迴歸模型（Proportionality）：
+  Count(AMM/RMM) = a + b × (微生物數量)
+  理想情況：a ≈ 0（截距不顯著異於零）， b ≠ 0 且顯著
+  → b 即代表方法在此範圍內的平均回收率（recovery）
+
+相對讀數迴歸模型：
+  Relative Count = Count(AMM/RMM) / 已知/預期濃度
+  Relative Count = a + b × (微生物數量)
+  理想情況：b ≈ 0（斜率不顯著異於零，水平線）
+            a 顯著不為零 → a 即為平均回收率估計值
+
+允收準則（5.4.6.5）：
+  1. 斜率、截距符合上述方向與顯著性要求
+  2. 適合度檢定（goodness-of-fit）不顯著
+  3. 絕對讀數迴歸：R2 ≥ 90%（建議門檻）
+            </pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若某 AMM/RMM 的絕對計數迴歸分析得到 R2 = 0.95，但適合度檢定（goodness-of-fit test）顯著（p &lt; 0.05），這代表什麼？該方法的線性可以宣稱成立嗎？</li>
+                <li>為什麼「相對讀數」線性分析理想上要求斜率趨近於零，而「絕對讀數」分析卻要求斜率顯著不為零？兩者矛盾嗎？</li>
+                <li>若某方法只在 10-50 CFU 範圍內做了 3 個濃度測試，但供應商宣稱方法適用範圍為 1-1000 CFU，這樣的線性研究設計是否足夠支持宣稱範圍？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- 5.4.7 RANGE -->
+<!-- ============================================ -->
+<div class="section-title"><strong>5.4.7 Range 範圍</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>See the definition of <span class="key-term">range</span> in Section 2.0.</p>
+        <p>Range is usually evaluated using quantitative methods.</p>
+
+        <h3>5.4.7.1 Range Testing Procedure</h3>
+        <p>Suppliers and stakeholders can use the same data generated during <span class="key-term">accuracy, repeatability, and linearity</span> studies, as long as the concentrations tested are consistent with the intended range of the assay.</p>
+
+        <h3>5.4.7.2 Range Statistical Analysis</h3>
+        <p>There is no statistical analysis associated with demonstrating range.</p>
+
+        <h3>5.4.7.3 Range Acceptance Criteria</h3>
+        <p>The information that accuracy, repeatability, and linearity are demonstrated within the intended range of the assay should be reported.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Range（範圍）：</strong>已證實方法具備 accuracy（準確度）、precision（精密度）與 linearity（線性）的微生物數量（或相關分析物、量測訊號）上下限區間。這是本章最「精簡」的一個驗證參數——它沒有獨立的試驗程序、沒有專屬的統計分析、也沒有另立的允收準則，而是完全「繼承」前面三個參數（accuracy、repeatability、linearity）已經產生的數據。</p>
+            <p><strong>為什麼 Range 不需要新試驗？</strong>邏輯上，Range 的本質是一個「宣告」而非「試驗」——只要 accuracy、repeatability、linearity 三者都已經在某個濃度區間內被證實成立，這個區間就自動成為方法的 Range。因此 Range 章節在驗證報告中的角色，是彙整並清楚陳述「這個方法在哪個濃度區間內是可信的」，而不是設計新的挑戰試驗。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>Range 就像汽車儀表板上的「時速計可靠區間」：車廠不會為了「證明時速計在 200 km/h 時準確」而另外設計一套全新試驗，而是直接引用煞車測試、風阻測試、輪胎耐久測試中，各個速度區間下時速計讀數與實際 GPS 測速的比對數據。只要 20-180 km/h 之間的準確度、重複性、線性都已在其他測試中被證實，車廠就可以宣稱「時速計在 20-180 km/h 範圍內可靠」——這正是 Range 章節「彙整既有證據、宣告可信區間」而非「另做新試驗」的精神。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>雖然 Range 本身不需要統計分析，但驗證報告中仍必須<strong>明確陳述</strong>該範圍是由哪些 accuracy、repeatability、linearity 數據支持，並確保「實際測試過的濃度」與「方法宣稱的適用範圍」一致。常見稽核缺失是：報告中宣稱的 Range 超出實際測試涵蓋的濃度區間——例如只測試了 10-100 CFU，卻在方法書中宣稱適用於 1-1000 CFU，這會被稽核員視為證據不足。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果某方法的 accuracy 研究測試了 10-500 CFU，但 linearity 研究只測試了 50-500 CFU，這個方法最終可宣稱的 Range 應該是多少？</li>
+                <li>為什麼 Range 不需要獨立的允收準則，而是直接引用 accuracy、repeatability、linearity 的允收結果？這種設計對驗證文件的可追溯性（traceability）有什麼要求？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- 5.4.8 RUGGEDNESS -->
+<!-- ============================================ -->
+<div class="section-title"><strong>5.4.8 Ruggedness 堅牢性</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>See the definition of <span class="key-term">ruggedness</span> in Section 2.0.</p>
+        <p>Test conditions to be examined in a ruggedness study include the use of different analysts, different instruments, different lots of reagent, or on different days. When performing a ruggedness study, <span class="key-term">intermediate precision</span> is performed within the same laboratory, and <span class="key-term">reproducibility</span> is performed between laboratories. Ruggedness can also be considered the intrinsic resistance to the influences exerted by operational and environmental variables on the results of the method. Ruggedness is usually evaluated using both quantitative and qualitative methods.</p>
+        <p>Ruggedness is usually performed by the supplier, and the data may be accepted by the end user to support the validation program and regulatory submissions. The end user should perform a risk assessment of the supplier's data to identify any ruggedness gaps for their intended use of the AMM/RMM and determine if additional studies are needed. Ruggedness testing may need to be repeated by the end user if there are modifications to the instrument or workflow made by the end user that could render testing by the supplier obsolete.</p>
+
+        <h3>5.4.8.1 Ruggedness Testing Procedure</h3>
+        <p>Ruggedness is performed on a set of samples that would naturally vary with routine practice, including, but possibly not limited to different analysts, instruments, lots of reagents, and days.</p>
+        <p>There is no need to repeat all challenge organisms for ruggedness; it should be performed using the most relevant challenge organisms that are most difficult to enumerate.</p>
+        <p>Concentrations should be considered similarly as done with repeatability (see Section 5.4.3).</p>
+        <p>For a comparison of ruggedness with the CMM, it is preferred that both microbiological methods enumerate samples from the same suspension, and the results are used for a comparability test.</p>
+        <p>The appropriate number of runs and replicates per run should be calculated to meet the requirements for the intended data analysis and/or test power, but it should never be below the <span class="key-term">six runs and three replicates per run</span>.</p>
+        <p>Data can be pooled from different microorganisms when the variability in detection or enumerations is (almost) independent of the type of microorganisms.</p>
+        <p>If the variety of testing conditions are already included during the testing of certain other validation parameters, such as accuracy, then a separate ruggedness study may not be needed if the ruggedness can be appropriately determined from the data of this other validation parameter.</p>
+
+        <h3>5.4.8.2 Ruggedness Statistical Analysis</h3>
+        <p>For the estimation of ruggedness for quantitative methods, for each microorganism, concentration level, and microbiological method (when both microbiological methods are included in the study), the <span class="key-term">random effects ANOVA</span> (where run is the random factor) is used in case the expected counts (or concentration levels) are above five (5) CFUs.</p>
+        <p>From the ANOVA, collect the variance components of the within and between-run variability and the mean counts. Calculate the ruggedness or intermediate precision as a <span class="key-term">relative standard deviation (RSD)</span> (expressed in percentages) and conduct the following steps:</p>
+        <ol>
+            <li>Add up the two variance components.</li>
+            <li>Take the square root of the sum of variance components.</li>
+            <li>Divide the square root by the mean count.</li>
+            <li>Multiply by 100%.</li>
+            <li>Calculate a 95% confidence interval on the sum of the variance components using the <span class="key-term">Satterthwaite approach</span>; take the square root, divide by the mean count, and multiply by 100%.</li>
+            <li>In case a comparison with the quantitative CMM is needed, use the ruggedness or intermediate precision estimates and their standard errors to calculate a 95% lower confidence limit on the ratio of the estimates (CMM divided by the AMM/RMM) per microorganism and concentration level. This may be evaluated, possibly in the logarithmic scale.</li>
+        </ol>
+        <p>For the estimation of ruggedness for qualitative methods, demonstrate that the detection of microorganisms under the different conditions is independent of or almost unaffected by these different conditions. <span class="key-term">Logistic regression</span> approaches should be used for each microorganism and concentration level to demonstrate that a lack-of-effect of these conditions exists (although a combined analysis of microorganisms and concentrations is allowed).</p>
+        <p>Demonstrating the lack-of-effect can be done for the AMM/RMM separately using comparability or conventional hypothesis testing approaches on the coefficients of the logistic regression.</p>
+        <p>Demonstrating the lack-of-effect in comparison to the CMM should demonstrate that comparability with the CMM is independent of the testing conditions, that is, it should demonstrate that there are no interaction effects present.</p>
+        <p>More sophisticated statistical analyses (such as a generalized linear mixed model) may be applied as an alternative to ANOVA (when counts are less than 5 CFU or when normality of the counts are violated) or logistic regression to estimate ruggedness and conduct comparability between the AMM/RMM and CMM.</p>
+
+        <h3>5.4.8.3 Ruggedness Acceptance Criteria</h3>
+        <p>Absolute criteria on ruggedness depends on the purpose of the method. For quantitative methods, the set of criteria in <strong>Table 5.4.8.3-1</strong> may be useful for the estimate of ruggedness.</p>
+        <p>See Table 5.4.8.3-1 below for the acceptance criteria by mean count range.</p>
+        <p>For a comparison of two quantitative microbiological methods, a comparability margin of <span class="key-term">0.5</span> on the ratio of CMM/AMM or <span class="key-term">0.693</span> in the natural-log scale on the relative standard deviations is common practice. For qualitative methods, a comparability margin of 0.7 on the detection probability is common practice.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Ruggedness（堅牢性）：</strong>在「各種正常測試條件」下（不同分析員、不同儀器、不同試劑批號、不同日期）重複測試同一樣品所得結果的 intermediate precision 或 reproducibility 程度。可視為方法對「操作面與環境面變異」的內在抵抗力。</p>
+            <p><strong>Intermediate Precision vs. Reproducibility：</strong>原文明確區分——<strong>同一實驗室內</strong>做的變異性測試稱為 intermediate precision（含不同分析員、不同儀器、不同日期）；<strong>跨實驗室</strong>做的則稱為 reproducibility。Ruggedness 是這兩者的統稱概念，實際執行時要看試驗是在單一或多個實驗室進行。</p>
+            <p><strong>供應商與使用端的責任分工：</strong>Ruggedness 通常由供應商執行，使用端（end user）可接受供應商數據支持驗證與法規送審，但使用端仍須對供應商數據做<strong>風險評估</strong>，確認是否涵蓋自身實際使用情境（例如使用端修改了儀器或工作流程，供應商的原始 ruggedness 數據可能已不再適用，須重做）。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>Ruggedness 就像米其林餐廳評鑑同一道招牌菜的穩定度：不管是週一還是週五（不同天）、由主廚或副主廚掌鍋（不同分析員）、用新到貨的還是庫存的食材批號（不同試劑批號）、用 A 廚房還是 B 廚房的爐具（不同儀器），這道菜的鹹淡與品質都應該維持在可接受的一致水準內。若某天菜的鹹度忽然大幅波動，代表這道菜的「配方」對日常操作變異的抵抗力不足——這正是 ruggedness 想要量化的：方法本身對這些「正常會發生的操作變異」有多穩健。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>原文設下明確的試驗設計下限：<strong>run 數不得少於 6、每個 run 至少 3 重複</strong>——這是統計上估計「run 間變異」與「run 內變異」兩個變異成分所需的最低樣本規模，QA 審閱驗證方案時應優先檢查此下限是否被滿足。此外，若 accuracy 等其他驗證試驗「本身已涵蓋」不同分析員、儀器、日期等條件，則可直接從該數據反推 ruggedness，<strong>不必重複進行獨立試驗</strong>——這再次呼應本章「數據重複利用、避免過度測試」的設計思維。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <pre>
+Ruggedness／Intermediate Precision 之 RSD 計算（5 CFU 以上，隨機效應 ANOVA）：
+
+  步驟 1：Var(within-run) + Var(between-run) = 總變異
+  步驟 2：SD = √(總變異)
+  步驟 3：SD ÷ 平均計數（mean count）
+  步驟 4：× 100%  → 得到 RSD (%)
+
+  步驟 5（95% 信賴區間）：
+     以 Satterthwaite 法計算「總變異」的 95% CI
+     → 取平方根 → 除以平均計數 → × 100%
+
+  步驟 6（與 CMM 比較，選用）：
+     以 ruggedness 估計值及其標準誤，計算
+     比值 (CMM ÷ AMM/RMM) 的 95% 下限信賴界限
+     （可於對數尺度下評估）
+
+數值範例：
+  假設 within-run variance = 4, between-run variance = 5
+  總變異 = 9 → SD = 3
+  平均計數 = 30 CFU
+  RSD = 3 ÷ 30 × 100% = 10%
+  → 對照 Table 5.4.8.3-1，101-400 CFU 範圍容許 RSD ≤ 10%
+     若平均計數落在此區間，10% 即為臨界值，需檢視信賴區間
+
+比較兩定量方法之 Comparability Margin：
+  CMM/AMM 比值容許邊界 = 0.5
+  自然對數尺度容許邊界 = 0.693（≈ ln(2)）
+  定性方法偵測機率之 Comparability Margin = 0.7
+            </pre>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>某 CDMO 在導入一套快速微生物偵測系統（AMM）用於原液無菌試驗前的生物負荷（bioburden）監測。供應商提供的 ruggedness 數據僅涵蓋「原廠標準操作流程」下的 6 個 run。但該 CDMO 實際導入後，因廠內 SOP 要求額外的樣品前處理步驟（供應商原始流程沒有），且改用不同廠牌的離心機。依照本節「使用端風險評估」原則，該 CDMO 必須另外執行 ruggedness 確效，涵蓋這些「使用端特有」的操作變異來源，才能主張供應商數據可支持其驗證程序——這也是 QA 在審閱供應商確效包（validation package）時最常見的落差項目。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若某方法的平均計數為 60 CFU，計算得到的 RSD 為 18%，依 Table 5.4.8.3-1，這是否符合允收準則？</li>
+                <li>為什麼計數低於 5 CFU 時不建議使用一般 ANOVA，而應考慮 generalized linear mixed model？這與 Poisson 分佈在低計數區的特性有何關聯？</li>
+                <li>使用端接手供應商的 ruggedness 數據時，應該檢查哪些「操作條件差異」以判斷是否需要補做試驗？</li>
+            </ol>
+        </div>
+
+        <div class="note-box">
+            <h4>圖表解讀 Figure Analysis — Table 5.4.8.3-1</h4>
+            <p>此表格呈現一個重要規律：<strong>平均計數（CFU）越低，容許的 RSD 百分比越高</strong>（例如 5-9 CFU 容許高達 45%，101-400 CFU 則收緊至 10%）。這是因為微生物計數在低濃度區間本質上服從 Poisson 分佈，其變異係數（CV）隨計數值降低而自然升高——換言之，同樣是「±2 CFU」的絕對誤差，在平均 5 CFU 時是 40% 的相對誤差，但在平均 200 CFU 時只是 1% 的相對誤差。因此允收準則必須「隨計數區間分級」，而不能用單一固定的 RSD 門檻套用到所有濃度範圍，否則低濃度區間會被不合理地判定為不合格。實務上，QA 在審閱 ruggedness 報告時，應先確認「平均計數落在哪個區間」，再對照該區間專屬的 RSD 門檻，而非直接套用最嚴格（10%）的標準。</p>
+        </div>
+    </div>
+</div>
+
+<!-- FULL-WIDTH TABLE: TABLE 5.4.8.3-1 -->
+<div class="full-width-table" style="margin: 1rem 0;">
+    <h3 style="font-weight:600; color:var(--primary-blue); margin-bottom:0.5rem;">Table 5.4.8.3-1: Relative Standard Deviation for CFU Ranges</h3>
+    <div style="overflow-x:auto;">
+        <table>
+            <thead>
+                <tr><th>Mean Count Range (CFU)</th><th>Relative Standard Deviation</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>5 – 9</td><td>45%</td></tr>
+                <tr><td>10 – 16</td><td>35%</td></tr>
+                <tr><td>17 – 45</td><td>25%</td></tr>
+                <tr><td>46 – 100</td><td>15%</td></tr>
+                <tr><td>101 – 400</td><td>10%</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- 5.4.9 ROBUSTNESS -->
+<!-- ============================================ -->
+<div class="section-title"><strong>5.4.9 Robustness 耐用性</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>See the definition of <span class="key-term">robustness</span> in Section 2.0.</p>
+        <p>Robustness is usually performed by the supplier, and the data may be accepted by the end user to support the validation program and regulatory submissions. The end user should perform a risk assessment of the supplier's data to identify any robustness gaps in their intended use of the AMM/RMM and determine if additional studies are needed. Robustness may need to be repeated by the end user if there are modifications made to the instrument or workflow that could render testing by the supplier obsolete. Robustness is usually evaluated using both quantitative and qualitative methods (see Section 9.0 (Appendix 1) through Section 11.0 (Appendix 3)).</p>
+
+        <h3>5.4.9.1 Robustness Testing Procedure</h3>
+        <p>The supplier should determine the impact of variations on <span class="key-term">critical method and system parameters</span>. These may include, but are not limited to, reagent concentrations/volume, environmental conditions (e.g., temperature, humidity), instrument operational limits, physical conditions (e.g., vibration), extraction methods (where applicable), sample volumes, and incubation parameters. This information provides an indication of the limitations of the test method and associated instrumentation.</p>
+        <p>A suspension of relevant microorganisms should be prepared, and the recovery (detection or enumeration, depending on the test method) should be evaluated against relevant validation criteria (e.g., accuracy, repeatability, LoD, LoQ, linearity) after changes to critical parameters have been made.</p>
+        <p>For qualitative methods, the supplier can perform LoD testing; for quantitative methods, the supplier can perform accuracy and precision testing. The supplier can also perform a study for a specific robustness evaluation without having to do a full validation criteria experiment. For example, recovery counts would be within <span class="key-term">70%</span> or with no statistical difference in accuracy but with the critical parameter in question; if not, then the final parameter should be used for full accuracy studies.</p>
+
+        <h3>5.4.9.2 Robustness Statistical Analysis</h3>
+        <p>Similar statistical analyses and data evaluation approaches for validation criteria (e.g., accuracy, repeatability, LoD, LoQ, linearity) may be applied when assessing robustness.</p>
+
+        <h3>5.4.9.3 Robustness Acceptance Criteria</h3>
+        <p>Acceptance criteria for validation criteria (e.g., accuracy, repeatability, LoD, LoQ, linearity) may be applied when assessing robustness. Other criteria may be used; for example, for <span class="key-term">nucleic acid amplification technologies</span>, demonstrating the threshold cycle or crossing point values are within acceptable ranges. For each test condition, a range should be demonstrated within which the AMM/RMM operates in a robust manner. The results should be used to define adequate precautions or limitations when the method is used routinely.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Robustness（耐用性）：</strong>方法在其操作參數發生「刻意的微幅變動」時，仍能維持結果不受影響的能力，同時反映方法在正常使用下的可靠程度。與 Ruggedness 的差異在於：Ruggedness 測的是「操作者、儀器、日期、試劑批號」等<strong>不可完全控制</strong>的日常變異；Robustness 測的則是「試劑濃度、環境條件、儀器操作極限」等<strong>可被刻意調整</strong>的方法/系統參數的耐受度。</p>
+            <p><strong>關鍵參數（Critical Method and System Parameters）：</strong>原文列舉了具體範例——試劑濃度/體積、環境條件（溫度、濕度）、儀器操作極限、物理條件（震動）、萃取方法、樣品體積、培養參數。這些都是方法開發時應納入「刻意變動測試」的候選參數，用意是預先摸清方法的「容錯邊界」，而非等到常規使用時才發現問題。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>Robustness 就像手機廠商的「壓力測試」：刻意在極端溫度（-10°C 或 45°C）、低電量、訊號不佳等條件下測試手機是否仍能正常運作。這與「不同使用者天天用手機」（類似 ruggedness，測的是自然發生的使用差異）不同——Robustness 是工程師「主動、刻意」調整操作邊界條件，找出手機在哪些條件組合下開始出現異常（例如電池溫度過高會降頻），進而在使用手冊上明確標示「建議操作溫度範圍」。同理，AMM/RMM 供應商透過 robustness 研究，明確定義試劑濃度、溫度、震動等參數的可接受操作窗（design space），提供給使用端作為日常操作的安全邊界依據。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>原文允許 robustness 以「簡化試驗」進行，而非每次都跑完整的 accuracy/precision 全套實驗——例如只需證明「在某關鍵參數變動後，回收計數仍落在 70% 以內、或與原設定無統計差異」即可。但若簡化試驗顯示參數變動確實造成顯著影響，則<strong>必須</strong>針對該參數的最終設定值，執行完整的 accuracy 研究。這是一個「先篩檢、後確認」的分層試驗策略，能有效節省驗證資源，但也要求使用端在審閱報告時，確認每個關鍵參數是否都有明確的「篩檢通過」或「已完整驗證」的證據軌跡。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>Robustness 與 Ruggedness 都涉及「變異對結果的影響」，兩者最核心的差異是什麼？請各舉一個屬於 robustness、一個屬於 ruggedness 的參數變動範例。</li>
+                <li>若某核酸增幅技術（NAT）在 robustness 研究中，某一試劑批次的 Ct 值（threshold cycle）超出可接受範圍，這代表什麼？下一步該怎麼做？</li>
+                <li>為什麼原文特別提醒「使用端如果修改了儀器或工作流程，可能使供應商的 robustness 數據失效」？這對 CDMO 導入他廠 AMM/RMM 系統時的技術移轉（tech transfer）流程有何啟示？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- 5.4.10 METHOD SUITABILITY -->
+<!-- ============================================ -->
+<div class="section-title"><strong>5.4.10 Method Suitability 方法適用性</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>See the definition of <span class="key-term">method suitability</span> in Section 2.0.</p>
+        <p>To demonstrate that an AMM/RMM is compatible with specific product formulation or a sample matrix that will be routinely assayed, each material should be evaluated for suitability. The potential to produce interfering or abnormal results, such as <span class="key-term">false positives</span> or <span class="key-term">false negatives</span> needs to be understood. This may also include evaluating whether cellular debris, dead microorganisms, or other viable entities, such as mammalian cell cultures, have any impact on the ability of the AMM/RMM and accompanying system to operate as it is intended. Accordingly, method suitability is evaluated in both quantitative and qualitative methods.</p>
+        <p>Although it is possible that certain classes of materials will produce similar results, the end user is responsible for ensuring that all test samples will be compatible with the new method (see Section 9.0 (Appendix 1) through Section 11.0 (Appendix 3).</p>
+
+        <h3>5.4.10.1 Method Suitability Testing Procedure</h3>
+        <p>The test sample should be the same as what would be used during routine testing. In some cases, the stakeholder may consider using the most challenging matrices, in terms of formulation, potency, and/or quantity required for testing, to avoid having to repeat method suitability for similar formulations that would not require analysis (e.g., same product classes, matrix with the same formulation composition but using a smaller quantity, similar formulations with the exception of a lower concentration of API or excipient).</p>
+        <div class="quote-box">
+            Note: The end-user should determine any impact that final packaging may have on the assay prior to performing any product grouping approach. For example, modifying final package material may impact the number of background particles detected in some non-growth-based AMM/RMMs.
+        </div>
+        <p>The test sample should undergo the same specific workflow for the AMM/RMM under evaluation (e.g., nucleic acid extraction and amplification steps, organism capture, sample concentration, addition of reagents).</p>
+        <p>The number of distinct test samples or product batches used to demonstrate method suitability should be justified; for example, <span class="key-term">three (3) separate batches</span> are commonly used, if available.</p>
+        <ul>
+            <li><strong>False-positive testing:</strong> Challenge the test sample, which does not contain any challenge microorganisms, into the AMM/RMM using the same amount of material and workflow the stakeholder intends to use for routine testing. A negative control in the absence of the test sample should also be challenged in the AMM/RMM.</li>
+            <li><strong>False-negative testing:</strong> Using a relevant panel of microorganisms (e.g., similar to what was used for other validation criteria-testing, including specificity), inoculate &lt;100 CFU into the same amount of material the stakeholder intends to use for routine testing. If the workflow or sample preparation steps could affect the viability of microorganisms during these studies, the stakeholder should inoculate the test sample prior to performing these steps. A positive control in the absence of the test sample, but with microorganisms, should also be challenged in the AMM/RMM. Surrogate markers specific to the AMM/RMM may also be added to the test samples; however, the stakeholder should demonstrate that these markers would be obtained from viable organisms during sample preparation or when using the intended method workflow and be used at a concentration that would correlate with a &lt;100 CFU viable cell concentration. Although a &lt;100 CFU challenge is specified, this does not necessarily mean the challenge should be at the LoD or LoQ level.</li>
+        </ul>
+        <p>Stakeholders who perform validation for the intended-use studies (i.e., where microorganisms are challenged in actual test samples and assessed against validation criteria but not compared with the CMM), method suitability will need to be demonstrated in support of these studies.</p>
+        <p>For organism-specific detection methods, the test sample should be spiked with the intended target organism (or surrogate target material) for <span class="key-term">inclusivity</span> testing. The test sample should be spiked with nontarget or closely related target organisms (or surrogate target material) for <span class="key-term">exclusivity</span> testing.</p>
+        <p>Additional studies to assess potential interfering materials may also need to be considered. For example, certain AMM/RMMs that rely on the detection of microorganisms via biofluorescence may illicit a false-positive response in the presence of extrinsic particles, disinfectants, or other substances that could fluoresce in the AMM/RMM instrument. When applicable, the stakeholder should identify these types of substances and challenge the AMM/RMM to determine the potential for false-positive detection events. Similarly, if dead cells could illicit a positive detection event in the AMM/RMM, stakeholders may want to consider challenging the AMM/RMM with dead or recently killed cells to understand whether the resulting signals could be interpreted as a false-positive event.</p>
+
+        <h3>5.4.10.2 Method Suitability Statistical Analysis</h3>
+        <p>There is no statistical analysis associated with demonstrating method suitability.</p>
+
+        <h3>5.4.10.3 Method Suitability Acceptance Criteria</h3>
+        <p>There should be no false positives unless the stakeholder determines some level of positives (or background interference) is acceptable for routine use. For example, a baseline measurement in the presence of the test sample (but no microorganisms) may be determined. The baseline measurement may then be used to determine when a true-positive detection event is observed (e.g., when the result is above an acceptable signal-to-noise ratio).</p>
+        <p>To minimize the occurrence of false negatives, the detection of microorganisms in the presence of the test sample, based on a predefined positive threshold, should be observed for qualitative methods. Similarly, at least a <span class="key-term">50% recovery (or a factor of 2)</span> for AMM/RMMs that can be directly and quantitatively compared with the positive control (organisms or surrogate material in the absence of the test sample) should be observed. For quantitative AMM/RMM signals that cannot be directly compared with a CMM (e.g., plate count), alternative strategies may be considered. For additional guidance, see comparability testing in Section 5.4.11.1.</p>
+        <p>Inclusivity testing should show a positive detection event in the presence of the target organism; exclusivity testing should show a negative detection event in the presence of nontarget or closely related organisms.</p>
+        <p>If potentially interfering materials are shown to provide a false-positive response, the stakeholder should ensure these are absent during routine testing of the sample. Alternatively, strategies for minimizing exposure of the AMM/RMM to interfering materials should be considered. For example, when an AMM/RMM is used for EM and certain disinfectants are known to cause a false-positive event, sampling should commence only after the disinfection activity has ended and residual disinfectant has been cleared from the sampling area.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Method Suitability（方法適用性）：</strong>證明產品本身（配方、基質）對方法產生的訊號「沒有增強或抑制作用」。白話來說：方法在無菌水中測試很準，不代表放進真正的藥品配方（可能含防腐劑、蛋白質、脂質、界面活性劑）後仍然準——因為配方成分本身可能干擾偵測訊號，產生偽陽性或偽陰性。</p>
+            <p><strong>Inclusivity vs. Exclusivity：</strong>Inclusivity（納入性）測試方法是否能偵測到「目標微生物」；Exclusivity（排除性）測試方法是否能正確排除「非目標或近緣微生物」而不誤判為陽性。兩者合稱特異性驗證的操作性延伸，在方法適用性研究中，需分別用目標菌與近緣菌加以驗證。</p>
+            <p><strong>偽陽性 vs. 偽陰性試驗設計：</strong>①<strong>偽陽性試驗</strong>——不含任何挑戰菌的樣品基質，直接進行常規流程，觀察是否「無中生有」出現陽性訊號（同時應設無樣品基質的陰性對照）。②<strong>偽陰性試驗</strong>——在樣品基質中接種 &lt;100 CFU 的相關菌株，觀察方法是否能正確偵測到，同時設無樣品基質的陽性對照組作比對基準。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>Method Suitability 就像機場行李金屬探測儀在偵測不同材質行李箱時的表現：探測儀本身經過校正沒問題，但如果某款行李箱內襯含有金屬纖維（干擾物質），可能導致「行李箱本身」觸發警報，即使裡面根本沒有違禁品——這就是偽陽性。反過來，如果某款軟殼行李箱的材質會吸收訊號、遮蔽内部真正藏有的金屬物品，導致探測儀沒有反應，這就是偽陰性。因此機場安檢不能只驗證探測儀「對空氣」的靈敏度，還必須針對不同材質行李箱（product matrix）逐一驗證「探測儀＋行李箱組合」是否仍然可靠——這正是 method suitability 的精神：驗證的對象不只是方法本身，而是「方法＋產品基質」的組合表現。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>原文特別點名一個容易被忽略的干擾來源：<strong>最終包材（final packaging）</strong>——例如某些非生長型 AMM/RMM（如生物螢光粒子計數）可能因包材材質改變而影響背景粒子偵測數量，因此在做「產品分組」（product grouping，以相似配方減少重複試驗）之前，必須先確認包材本身是否會造成干擾。此外，死菌（dead cells）或消毒劑殘留也可能誘發偽陽性訊號——這對於採用生物螢光原理的 AMM/RMM 尤其關鍵，直接關聯到環境監測（EM）取樣時機的實務安排（例如須待消毒劑揮發完畢後才能取樣）。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <pre>
+方法適用性允收準則（定量方法，可直接與陽性對照比較時）：
+
+  最低回收率 = 50%（即「係數 2」）
+
+  回收率(%) = (含樣品基質之計數 ÷ 陽性對照計數) × 100%
+
+  範例：
+    陽性對照（無樣品基質）計數 = 80 CFU
+    含樣品基質之計數 = 45 CFU
+    回收率 = 45 ÷ 80 × 100% = 56.25% → 符合 ≥50% 允收準則
+
+  若無法直接與 CMM 比較（如 non-CFU 訊號），
+  則改採 Section 5.4.11.1 之 comparability 統計方法評估
+            </pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>某產品的三個批次配方僅在賦形劑濃度上略有差異，是否可以引用「最具挑戰性」的那一批次數據，來代表其他批次的方法適用性？需要滿足什麼前提？</li>
+                <li>為什麼偽陰性試驗的挑戰濃度規定為 &lt;100 CFU，但原文特別聲明「這不代表挑戰濃度必須設在 LoD 或 LoQ 層級」？兩者的試驗目的有何不同？</li>
+                <li>若某 AMM/RMM 用於環境監測，且已知某款消毒劑會引發偽陽性，除了方法適用性試驗本身，還應該從哪些操作面（如取樣時機、SOP 設計）著手降低風險？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- 5.4.11 COMPARABILITY -->
+<!-- ============================================ -->
+<div class="section-title"><strong>5.4.11 Comparability 可比性</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>See the definition of <span class="key-term">comparability</span> in Section 2.0.</p>
+        <p>The signal from a growth-based CMM will usually be reported as a <span class="key-term">CFU</span> on solid agar or on a membrane and as visual turbidity in liquid media. Examples of methods that produce a signal other than the CFU or turbidity are fluorescent units from a viability-staining and laser-excitation method, relative light units or microcolony detection counts from ATP measurements, a positive response from a nucleic acid amplification technique, or intrinsic, autofluorescent bioparticle counts. While many AMM/RMMs analyze individual samples at one time, resulting in a single-data signal, other methods have the capability to produce large amounts of data over a longer sampling period, even under continuous sampling conditions.</p>
+        <p>As such, the manner in which comparability testing is performed will depend on a number of factors, including whether the signals from the AMM/RMM and the CMM can be directly or indirectly compared. For example, AMM/RMMs that produce a CFU signal can be directly compared with conventional CFU-based methods using similar validation criteria as that used during primary validation. However, AMM/RMMs that produce a non-CFU signal may or may not be directly compared with a CFU, and this may be reflected in the manner in which the data is obtained, the samples analyzed in both methods, and other factors. Section 5.4.11 provides guidance on options for comparing the same or different signals and addressing the need to separate out nonmicrobiological detection events such as true false positives.</p>
+        <p>Ideally, test samples should not cause interference, false-positive or false-negative outcomes. This can be assessed during method suitability studies, preferably prior to conducting comparability testing (see Section 5.4.10).</p>
+        <p>When the AMM/RMM and CMM use the same microorganism-related signal, comparability should typically focus on <span class="key-term">noninferiority</span> using similar validation criteria as that used during primary validation. When the AMM/RMM produces a non-CFU signal and the CMM produces a CFU, comparability should focus on noninferiority or <span class="key-term">superiority</span>, as it is commonly accepted that non-CFU or nongrowth-based signals can provide greater recovery or detection events due to the ability to recovery stressed, injured, or VBNC organisms. This aligns with the decision-equivalence concept described in USP &lt;1223&gt;.</p>
+
+        <h3>5.4.11.1 Comparability Testing Procedure</h3>
+        <p>The amount of test sample used and the number of independent determinations for comparability studies should be justified and explained. For example, at least three (3) lots of product, if available, or a practical number of tests performed over some period of time may be considered. When a statistical analysis is performed on the resulting data, the number of independent determinations should be adequate for the intended analysis (e.g., to meet a certain test power). Depending on the type of study, the test plan should consider what has already been performed during prior studies (e.g., primary validation) to potentially reduce the amount of testing and test material required to demonstrate comparability.</p>
+        <p>If a consistent level of natural bioburden is present in the test sample, then the methods should be directly challenged with the test samples. If the samples are not expected to contain microorganisms, however, or if the natural bioburden is not consistent or adequately controlled, laboratory studies using inoculated challenge organisms, similar to validation criteria-testing in absence of the test sample, may be performed.</p>
+        <p>When using challenge organisms, an adequate panel and concentration of relevant strains appropriate for the AMM/RMM being evaluated should be selected. For example, growth-based AMM/RMMs should consider the use of slow-growing microorganisms and/or strains specific to testing the required media employed in the AMM/RMM procedure; nongrowth-based methods may consider more difficult types of organisms to detect, such as spores. If there is a low availability of test sample, the end user may justify performing comparability testing with a limited number of organism strains. Alternatively, the end user may justify using a similar sample matrix to test all of the relevant challenge organisms.</p>
+        <p>Alternative challenge material may be considered when viable microorganisms would not provide a set of results that can be compared with the AMM/RMM. Examples may include purified nucleic acid, cellular components such as ATP, or standardized biofluorescent beads. When alternative challenge material is used, it must be appropriate for the AMM/RMM under evaluation.</p>
+        <p>Some AMM/RMMs may produce data representative of multiple or continuous sampling events, making it more challenging to compare the data with a CMM that produces only a single test-sample result. For these reasons, the stakeholder may not be able to numerically correlate non-CFU signals to the CFU. The goal is then to determine ranges of CFU signals for the CMM for given levels of non-CFU signals. Section 5.4.11.2 provides guidance on how to demonstrate comparability and how to make a quality decision about the test sample in this regard.</p>
+
+        <h3>5.4.11.2 Comparability Statistical Analysis</h3>
+        <p>Statistical analyses should be commensurate with the intent of the study and the expected results (comparability, equivalence, or superiority). If the AMM/RMM is using a non-CFU signal, it could be necessary to obtain either a prediction model from non-CFU-to-CFU signals or otherwise obtain an upper limit on the CFU signal, given the non-CFU signal.</p>
+
+        <h3>5.4.11.2.1 Comparability of Qualitative Methods</h3>
+        <p>Because the data will always be presented as a positive or negative result, the data from different methods can be directly compared, regardless of the detection-event signal. As such, comparability may be demonstrated in similar ways LoD and specificity are assessed in the absence of test sample (i.e., using an appropriate conventional hypothesis or a comparability statistical test).</p>
+
+        <h3>5.4.11.2.2 Comparability of Quantitative Methods</h3>
+        <p>When individual test samples can be evaluated in the AMM/RMM and numerical values are obtained in each method, comparability can be conducted using similar testing procedures and statistical analyses to those for accuracy, repeatability, and specificity during primary validation or validation-for-intended-use to demonstrate comparability or superiority, depending on the comparison of signals (85). Obtaining a prediction model using some form of regression analysis to be able to predict CFU-signals from non-CFU signals or to obtain a natural range of CFU signals may be beneficial (see Section 9.0 (Appendix 1) through Section 11.0 (Appendix 3). A prediction model requires a specific study with different CFU concentrations and multiple samples per concentration.</p>
+        <p>For AMM/RMMs that do not analyze individual samples but operate continuously or cannot be challenged with known microorganisms (i.e., using artificially inoculated test samples), other strategies for demonstrating comparability to a CMM can be employed. Examples of this include <span class="key-term">BFPCs</span> which are used for environmental or water monitoring. For AMM/RMM such as these, the following options may be considered:</p>
+        <ul>
+            <li>Initial studies using only the AMM/RMM may help to define the normal or expected baseline levels for the AMM/RMM in the presence of the test sample or the test environment. The environmental conditions of the area under investigation should be well defined and be expected to represent routine operations. Activities that are not considered routine when monitoring should be identified and excluded from baseline studies. Excursions from baseline levels may help define what an <span class="key-term">out-of-expectation (OOE)</span> result is in the AMM/RMM. This is done by calculating the upper control limits for the normal signals (e.g., two or three times the acceptable signal-to-noise ratio, as described in ICH Q2(R2) and USP &lt;1225&gt;).</li>
+            <li>Parallel testing of the test sample or in the test environment with the CMM and the AMM/RMM could be performed; this is most meaningful with quantitative methods when the microbiological methods are testing separate samples. The stakeholder should determine an appropriate number of test samples or a predefined testing period to obtain meaningful data (e.g., nonzero detection events or numerical values) to determine comparability. When non-CFU continuous-monitoring methods are compared with conventional growth-based episodic or single-sample methods, the number of test runs for the CMM may need to be increased. For example, a new active air sampler may need to be initiated when a prior sampler has finished its sampling; alternatively, a new agar plate is added to a slit-to-agar sampler to simulate "continuous" conventional sampling.</li>
+            <li>In instances where positive detection events are not expected or observed (e.g., Grade A environments), comparability studies may need to be evaluated where microbial recovery is expected (e.g., lower-classified cleanroom environments). The main goal is to determine the distribution or range of CFUs for the CMM based on the results of the AMM/RMM. These distributions can be used to determine acceptable ranges for the signal of the AMM/RMM. The results from both methods may be compared in the following manner:
+                <ul>
+                    <li>If signals are consistent, use regression analysis (linear, nonlinear, weighted, or Poisson regression) to determine a calibration model. This approach may require analyzing microbial concentrations across the practical range of the test instead of performing parallel testing on a sample.</li>
+                    <li>Compare the ratio of recovered counts between the two datasets. Demonstrate comparability if the same microorganism-related signals are being used for the AMM/RMM and the CMM, or superiority when the AMM/RMM is using a more-sensitive microorganism-related signal and the CMM provides a CFU signal.</li>
+                    <li>Compare the frequency of detectable events in both methods. The stakeholder should define what a detectable event or OOE event is in the AMM/RMM, and what CFU levels in the CMM are relevant for comparability studies (which may include alert or action levels in the CMM). The AMM/RMM should detect at least the same frequency of detection events (e.g., deviations from expected baseline values in the AMM/RMM) as the CMM produces in OOE events. Demonstrate this using statistical tests for the comparison of proportions (either noninferiority or superiority).</li>
+                    <li>Quantify the distribution of CFU counts in the CMM for each level of AMM/RMM counts. Based on the OOE CFU counts, an upper level on AMM/RMM counts can be translated.</li>
+                </ul>
+            </li>
+        </ul>
+        <p>See Section 9.0 (Appendix 1) through Section 11.0 (Appendix 2) for additional guidance.</p>
+
+        <h3>5.4.11.3 Comparability Acceptance Criteria</h3>
+        <p>Similar acceptance criteria should be used as was used during the assessment of validation criteria in the primary validation when similar statistical approaches are being used. When a noninferiority statistical method is used, the recovery of organisms in the AMM/RMM should be noninferior to the recovery of organisms in the CMM. When a superiority statistical method is used, criteria for conventional hypothesis testing can be applied. Criteria for prediction models and setting upper-control limits should be based on the uncertainty of estimating the range of CFU levels, but this is usually translated to a proper number of test samples, batches, and/or concentration levels. See Section 9.0 (Appendix 1) through Section 11.0 (Appendix 3) for additional guidance.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Comparability（可比性）：</strong>證明 AMM/RMM 對微生物的定性或定量偵測結果，與既有方法（CMM）相比，達到「相等（equivalent）、不劣（non-inferior）或無統計差異」——具體採用哪一種統計架構，取決於比較的統計方法。這是本章「驗證邏輯鏈」的最後一環：前面 accuracy、precision、LoD、LoQ、linearity、range、ruggedness、robustness、method suitability 都是針對 AMM/RMM「自身」的表現特性，而 Comparability 則是把 AMM/RMM 直接放到 CMM 旁邊做「頭對頭」比較。</p>
+            <p><strong>訊號可比性的三種情境：</strong>① AMM/RMM 產生 <strong>CFU 訊號</strong>——可直接與傳統 CFU 法比較，統計架構與主要驗證相同。② AMM/RMM 產生 <strong>non-CFU 訊號</strong>（如螢光單位、ATP 相對光單位、NAT 陽性反應）——訊號無法直接換算成 CFU，須建立「預測模型」或求出「CFU 訊號的上限」。③ AMM/RMM 為<strong>連續/多次取樣型</strong>（如 BFPC 生物螢光粒子計數器）——CMM 通常只能做單次、片段式取樣，兩者資料結構本質不同，須採取基準值（baseline）、平行測試或分布比對等替代策略。</p>
+            <p><strong>Noninferiority vs. Superiority：</strong>當 AMM/RMM 與 CMM 使用「相同微生物相關訊號」時，比較重點通常是 <strong>noninferiority（不劣性）</strong>——證明 AMM/RMM 不會明顯比 CMM 差。但當 AMM/RMM 產生 non-CFU 或非生長型訊號時，因為這類方法常能回收「受損、受壓迫或 VBNC（viable but nonculturable，存活但不可培養）」的微生物，反而可能比傳統方法「偵測到更多」，此時應改採 <strong>superiority（優越性）</strong>框架評估——這正呼應 USP &lt;1223&gt; 提出的 <strong>decision-equivalence（決策等效性）</strong>概念：只要兩種方法導向相同的品質決策（放行/拒收），即使絕對訊號數值不同，也可視為可比。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>Comparability 就像用新舊兩款體重計比較準確度：如果新舊體重計都是以「公斤」為單位（相同訊號類型 = CFU vs CFU），只要新體重計量出的數字「不明顯低於」舊體重計（noninferiority），就可以放心換用新體重計。但如果新體重計改用「體脂肪感應電流」這種全新的訊號型態（non-CFU 訊號），就不能直接拿「電流值」跟「公斤數」比大小，而必須先建立一套「電流值 → 預估體重」的換算模型（prediction model），或至少證明「電流值超過某個門檻時，體重必然落在某個安全範圍內」（上限對應關係）。若新體重計號稱能偵測到「舊體重計量不到的水腫水分」（如同 AMM/RMM 偵測 VBNC 微生物），則評估重點就從「兩者一樣準」轉為「新體重計偵測得更全面」（superiority）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>原文特別強調，Comparability 研究應<strong>優先於 Method Suitability 之後</strong>進行——先確認樣品基質不會造成干擾或偽陽性/偽陰性，再進行方法間的頭對頭比較，避免將「基質干擾」誤判為「方法間的訊號差異」。此外，對於連續取樣型 AMM/RMM（如環境監測用的 BFPC），原文提出了一個關鍵洞見：<strong>Grade A 環境下通常偵測不到陽性事件</strong>，因此必須改在「預期會有微生物回收」的較低分級潔淨室環境中執行比較性研究，才能取得有意義的統計數據——這對於無菌製劑 CDMO 規劃 AMM/RMM 環境監測導入試驗的場域選擇，具有直接的實務指導意義。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <pre>
+Decision-Equivalence 概念（USP &lt;1223&gt;）：
+  即使 AMM/RMM 訊號（如螢光單位、ATP 相對光單位）
+  與 CMM 訊號（CFU）數值上不可直接互換，
+  只要兩者導向「相同的品質決策」（放行 / 拒收 / OOE 警示），
+  即可視為 Comparable。
+
+Out-of-Expectation (OOE) 上限控制界限設定：
+  Upper Control Limit = 2～3 × 可接受訊噪比 (S/N)
+  （依 ICH Q2(R2) 與 USP &lt;1225&gt; 之建議）
+
+比較策略選擇邏輯：
+  訊號類型相同（CFU vs CFU）        → Noninferiority 檢定
+  Non-CFU 訊號、預期回收率更高      → Superiority 檢定
+  連續監測型（如 BFPC）、訊號不連續對應 CFU
+      → 基準值(baseline)法 或 平行測試法 或
+        CFU 分布比對法 或 偵測頻率比對法
+            </pre>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>某無菌針劑 CDMO 導入一套連續生物螢光粒子計數器（BFPC）取代傳統主動空氣採樣器，用於 Grade B 走廊的即時環境監測。由於 Grade A/B 環境下傳統方法本來就極少偵測到陽性事件，直接做「頭對頭平行測試」難以取得有意義的比較數據。依本節建議，該 CDMO 改在偵測率較高的 Grade C 或 Grade D 區域先建立 BFPC 的基準訊號分布，再以迴歸分析求出「BFPC 訊號」與「CMM CFU 計數」的對應關係，進而反推出 Grade B 走廊使用時，BFPC 訊號應設定在何種閾值以觸發 OOE 警示——這正是原文所述「決定 non-CFU 訊號給定下 CFU 分布範圍」的實務應用路徑。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼原文建議 Comparability 測試應在 Method Suitability 之後進行，而不是同時或提前進行？</li>
+                <li>某 AMM/RMM 使用 ATP 生物冷光訊號（非 CFU），且已知其能回收部分 VBNC 微生物，此時應採用 noninferiority 還是 superiority 統計架構？為什麼？</li>
+                <li>若某連續監測型 AMM/RMM 部署於 Grade A 環境，長期沒有偵測到任何陽性事件，該如何設計一個有統計意義的 comparability 研究？</li>
+                <li>Decision-equivalence（決策等效性）概念與傳統「數值上完全對應」的可比性思維有何本質差異？這對法規機關審查 AMM/RMM 導入案的角度會有什麼影響？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>LoQ</strong> 借用 accuracy/linearity 既有數據，以 Poisson 迴歸求出「99% 下限信賴界限大於零」的最低濃度作為定量極限，且低於挑戰濃度的計數須以截尾值（"&lt;N"）表示、不得誤用於統計推導</li>
+        <li><strong>Linearity</strong> 可從絕對計數（理想通過原點的比例性直線）或相對計數（理想水平線）兩種角度評估，須以斜率/截距顯著性、適合度檢定與 R2（絕對計數建議 ≥90%）綜合判定，R2 高不等於線性成立</li>
+        <li><strong>Range</strong> 完全繼承 accuracy、repeatability、linearity 已驗證的數據區間，無需另立試驗或統計分析，僅需彙整並陳述宣稱範圍與實際測試範圍的一致性</li>
+        <li><strong>Ruggedness</strong> 以隨機效應 ANOVA 拆解 run 內/run 間變異，透過五步驟公式換算為 RSD(%)，並依 <strong>Table 5.4.8.3-1</strong> 隨 CFU 平均計數區間分級套用允收門檻（5-9 CFU 容許 45%，101-400 CFU 收緊至 10%）</li>
+        <li><strong>Robustness</strong> 聚焦「刻意調整」的關鍵方法/系統參數（試劑濃度、環境條件、儀器操作極限等）耐受度，可用簡化篩檢試驗（如 70% 回收率門檻）取代全套驗證，但篩檢未過須補做完整 accuracy 研究</li>
+        <li><strong>Method Suitability</strong> 驗證產品配方/基質是否干擾方法訊號，須分別設計偽陽性與偽陰性試驗，並涵蓋 inclusivity/exclusivity 與潛在干擾物質（如消毒劑、死菌）評估，允收準則要求無偽陽性、至少 50% 回收率</li>
+        <li><strong>Comparability</strong> 依訊號型態（CFU / non-CFU / 連續監測）選擇 noninferiority 或 superiority 統計框架，並可援引 USP &lt;1223&gt; 的 decision-equivalence 概念，處理無法直接數值對應的訊號比較情境</li>
+        <li>整章驗證參數彼此環環相扣、大量共用數據——體現 TR 33「以科學論證與統計嚴謹性為核心、避免重複過度測試」的整體設計哲學</li>
+    </ul>
+</div>
+
+</body>
+</html>

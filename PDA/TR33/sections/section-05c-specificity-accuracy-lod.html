@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR33 - Section 5.4.1-5.4.4: Specificity, Accuracy, Repeatability, Limit of Detection</title>
+    <link rel="stylesheet" href="../../../template.css">
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 5.4.1 - 5.4.4 Specificity, Accuracy, Repeatability, Limit of Detection</h1>
+    <div class="subtitle">特異性、準確度、重複性與偵測極限</div>
+    <div class="page-info">PDA Technical Report No. 33 (Revised 2026) | p51-p58</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 <strong>Specificity（特異性）</strong>、<strong>Accuracy（準確度）</strong>、<strong>Repeatability（重複性）</strong>、<strong>Limit of Detection（LoD，偵測極限）</strong>四項驗證參數的定義、彼此關係，以及為何 Specificity 不需要獨立試驗</li>
+        <li>掌握 <strong>TOST（Two One-Sided Equivalence Test）</strong>、<strong>Levene's test</strong>、<strong>probit/logit analysis</strong>、<strong>MPN（Most Probable Number）</strong>等統計方法如何套用在 AMM/RMM 與 CMM 的比對設計上</li>
+        <li>學會判讀常見允收標準背後的統計意義，例如 comparability margin（Δ = 0.3 對應比值區間 [0.7, 1.3]）與重複性的 0.5 / 0.693 界線</li>
+        <li>能將本節內容連結到 CDMO 實務中 AMM/RMM 導入驗證計畫的試驗設計、樣本數規劃與法規溝通策略</li>
+    </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- 5.4.1 SPECIFICITY -->
+<!-- ============================================================ -->
+<div class="section-title"><strong>5.4.1 Specificity 特異性</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>See the definition of <span class="key-term">specificity</span> in Section 2.0.</p>
+        <p><span class="key-term">Specificity</span> is demonstrated when a relevant panel of microorganisms is used to challenge the AMM/RMM during the assessment of other validation criteria (e.g., accuracy, repeatability, LoD, LoQ), and when conducting method suitability and comparability testing. As such, there is <span class="key-term">no requirement to perform a separate or dedicated specificity study</span>.</p>
+
+        <h3>5.4.1.1 Specificity Testing Procedure</h3>
+        <p>An AMM/RMM is generally expected to detect and/or enumerate a wide range of microorganisms unless the AMM/RMM is specifically designed to detect a single target of interest (e.g., <em>Staphylococcus aureus</em>). When selecting a panel of microorganisms, consideration should be given to the type of test being validated (e.g., strains required for a CMM), limitations to the AMM/RMM under evaluation, the frequency and type of organisms previously recovered from the test sample (using the CMM), the manufacturing process and environment, and the organisms that may present a risk to the product quality, the process, or the patient. Accordingly, microorganisms can include a variety of Gram-negative and Gram-positive rods, Gram-positive sporulating bacteria, Gram-positive cocci, yeast, and mold.</p>
+        <p>For growth-based methods, the selection of organisms may need to demonstrate microbial detection in different media and incubation conditions, based on the technology being assessed.</p>
+        <p>The concentration of microorganisms used will be dictated by the validation criteria being assessed.</p>
+        <p>For AMM/RMMs that will detect the presence/absence of specific target microorganisms, a relevant panel should include the target microorganism and appropriate nontarget, unrelated, and closely related species to demonstrate <span class="key-term">inclusivity</span> and <span class="key-term">exclusivity</span>, respectively.</p>
+        <p>An appropriate low concentration for inclusivity and an appropriate high concentration for exclusivity testing must be used.</p>
+        <p>Organisms may be commercially sourced or established within the end user's laboratory.</p>
+        <p>Pure cultures of a specific microorganism are generally utilized; however, if an AMM/RMM has multiplexing or simultaneous detection capabilities, the use of mixed cultures may be considered to assess this capability.</p>
+        <p>Specificity may also include demonstrating that <span class="key-term">nonviable cells</span> are not detected by the AMM/RMM, particularly for nongrowth-based technologies where detection of nonviable cells could be interpreted as a false-positive result depending on the intended use. These types of studies may be most relevant during the establishment of method suitability. End users should consider practical and appropriate procedures for preparing nonviable cells (e.g., temperature treatment, exposure to biocidal agents).</p>
+        <p>The use of <span class="key-term">stressed organisms</span> is not recommended, as there are no currently accepted global standards for generating cultures in a stressed state.</p>
+
+        <h3>5.4.1.2 Specificity Statistical Analysis</h3>
+        <p>The selection of appropriate statistical analyses will be dependent on the validation criteria the microorganisms are being used to assess.</p>
+
+        <h3>5.4.1.3 Specificity Acceptance Criteria</h3>
+        <p>Acceptance criteria will be based on the requirements of the validation criteria being evaluated.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Specificity（特異性）：</strong>指方法能正確辨識「該偵測的微生物」（inclusivity，涵蓋性）並排除「不該被誤判為陽性的物種」（exclusivity，排他性）的能力。這裡最關鍵的一句話是：<strong>Specificity 不需要獨立設計一個試驗</strong>——它是「附掛」在 Accuracy、Repeatability、LoD、LoQ、Method Suitability、Comparability 等其他試驗上一併展示的。也就是說，只要你在做這些試驗時，選用了一組具代表性的微生物 panel（Gram 陰性/陽性桿菌、產孢菌、Gram 陽性球菌、酵母菌、黴菌），Specificity 就已經被證明了，不必額外燒錢燒時間再開一個試驗。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>把 AMM/RMM 想像成夜店門口的保全：<strong>Inclusivity</strong>（涵蓋性）是「賓客名單上的人都要能順利進場」，<strong>Exclusivity</strong>（排他性）是「名單外的人、甚至長得很像賓客的人都不能混進去」。保全不需要另外辦一場「認人測試日」——他每天站崗值勤（也就是做 Accuracy、Repeatability、LoD 等其他任務）時，自然而然就在持續驗證自己認人的能力。這就是為什麼 Specificity 不用獨立試驗的道理。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>兩個常被忽略卻很重要的操作限制：(1) <strong>Nonviable cells（非存活細胞）</strong>不應被偵測為陽性——對非生長型（nongrowth-based）技術特別關鍵，因為這類技術可能偵測到「屍體」訊號而產生 false-positive；驗證非存活細胞的製備方式（熱處理、殺菌劑處理）通常放在 Method Suitability 階段執行，而非 Specificity 本身。(2) <strong>Stressed organisms（逆境菌株）不建議使用</strong>，因為目前全球沒有公認的「逆境菌株製備標準」——換句話說，用了逆境菌株做出來的數據，你在法規機關面前可能無法自圓其說「這個逆境程度具有科學代表性」。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>對 CDMO 而言，這條規則其實是「省成本」的關鍵設計：如果你在規劃 AMM/RMM 驗證方案時，把 Specificity panel 直接嵌入 Accuracy 與 LoD 試驗的菌株選擇中（例如兩個試驗共用同一組 8-10 株代表性微生物），就能一次滿足多個驗證準則的數據需求，減少重複備菌、重複跑批的人力與物料成本。這也是 PROMPT.md 開頭提到「一份試驗數據可支援多個驗證準則」精神的具體實例（見 5.4 節前言：linearity 的數據也可用於 accuracy）。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果你的 AMM/RMM 是設計來偵測單一目標菌（如 <em>S. aureus</em>）的專一性方法，Specificity panel 的設計邏輯會和「廣譜型」方法有何不同？</li>
+                <li>為什麼「非存活細胞不應被偵測」這件事對非生長型技術特別重要，對生長型（growth-based）技術反而不是核心考量？</li>
+                <li>若監管單位質疑你「沒有做獨立的 Specificity 試驗」，你會如何用 5.4.1 的原文邏輯來回應？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 5.4.2 ACCURACY -->
+<!-- ============================================================ -->
+<div class="section-title"><strong>5.4.2 Accuracy 準確度</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>See the definition of <span class="key-term">accuracy</span> in Section 2.0.</p>
+
+        <h3>5.4.2.1 Accuracy Testing Procedure</h3>
+        <p>Separate dilutions of a relevant panel of microorganisms must be prepared within the practical range of the quantitative test or to the enumeration levels required for the intended application. The number of separate dilutions prepared should be justified. Examples of what may be considered include:</p>
+        <ul>
+            <li>The end user's microbial specifications, based on compendial requirements or internal acceptance levels</li>
+            <li>The suppliers purported lower-to-upper quantitation range</li>
+            <li>A practical range as defined in published literature</li>
+            <li>If one dilution is used, it should be in the middle of the practical range of the test. If the range of the test is different for specific organisms (e.g., bacteria versus fungi), then that dilution may be used for each</li>
+            <li>If the practical range of the test is broad, more than one dilution should be considered</li>
+        </ul>
+        <p>See Section 5.4.1 for examples of what relevant microorganisms should be considered.</p>
+        <p>An appropriate number of replicates per test organism should be used (e.g., a minimum of <span class="key-term">five (5) replicates</span> per organism) to meet the requirements for the intended data analysis and/or test power. See Section 9.0 (Appendix 1) through Section 11.0 (Appendix 3) for additional guidance.</p>
+        <p>A greater number of replicates or test runs may be used when combining accuracy with other validation tests (e.g., precision, range, linearity). Accuracy may also be combined with <span class="key-term">ruggedness (intermediate precision)</span> by testing on different days, with different analysts, and/or using different instruments.</p>
+        <p>For each organism, the same number of cells or volume from each dilution into the AMM/RMM and the CMM in parallel must be challenged. <span class="key-term">Parallel testing</span> using the same suspension is preferable; however, if parallel testing is not performed, the experiment and statistical analysis need to address the possible differences in spikes across suspensions. Parallel testing may suggest a statistically "paired" analysis (e.g., paired t-test), because the samples tested with the AMM/RMM and CMM come from the same suspension, but such statistical approaches only apply when the enumeration of both methods are conducted on the same samples, not the same suspension.</p>
+        <p>The recovery count from each replicate must be determined and the mean recovery for each organism and in each method calculated.</p>
+
+        <h3>5.4.2.2 Accuracy Statistical Analysis</h3>
+        <p>A test to demonstrate equivalence, comparability, or statistical difference between the recovered counts in both methods should be used, for example:</p>
+        <p>A <span class="key-term">two one-sided equivalence test (TOST)</span> that uses a proper 90% confidence interval on the difference in or ratio between the method's expected values (or mean count) can demonstrate statistical equivalence between the two methods, given a suitable equivalence margin. However, if the AMM/RMM is more sensitive than the CMM and may generate statistically higher counts, a <span class="key-term">noninferiority test</span> that uses a proper one-sided 95% confidence limit on the difference in or ratio between the expected values should be used. Depending on the probability distribution assumption for the underlying enumerations, the following approaches can be used when the AMM/RMM is compared to the CMM for one microorganism using one concentration:</p>
+        <ul>
+            <li>If the counts can be assumed to be <span class="key-term">Poisson- or Negative-Binomial-distributed</span>, closed-form asymptotic confidence limits can be used on the ratio of the expected values of the two methods using Poisson or Negative-Binomial regression analysis (and the logarithmic link function).</li>
+            <li>If no parametric distribution can be assumed (on the original or transformed count data), then nonparametric confidence limits can be considered (e.g., those that are developed for comparing differences in medians), but nonparametric approaches usually have poorer power and require a larger number of replicates than parametric approaches.</li>
+            <li>Making use of confidence limits based on regression-modeling approaches (linear regression or nonlinear modeling approaches (Poisson regression)) for the estimation of concentration-response curves when multiple concentrations are considered simultaneously may also be considered.</li>
+            <li>If mean values are considered and a normal distribution can be assumed, approximately (possibly after suitable transformation) normal or conventional confidence limits can be used for TOST (either from a dependent- or independent-samples t-test for paired or independent samples, respectively). However, it is important to confirm that the number of test runs is of adequate size to ensure the results are representative of the true condition of the data populations and, hence, will provide more accurate or reliable test results.</li>
+        </ul>
+        <p>The data from different challenge-organism replicate tests may need to be pooled to achieve the desired test power. If this is done, the results from individual challenge organisms should be reviewed to determine whether the pooled results are acceptable (e.g., the results for a specific organism are not masked by pooling all of the replicates across multiple-challenge organisms). Accordingly, a justification for the statistical method used (e.g., pooling versus individual organism analyses) should be performed.</p>
+        <p>See Section 9.0 (Appendix 1) through Section 11.0 (Appendix 3) for additional guidance on the selection of an appropriate statistical analysis method based on the desired test power and number of replicates.</p>
+
+        <h3>5.4.2.3 Accuracy Acceptance Criteria</h3>
+        <p>Specific acceptance criteria will depend on the statistical method used to compare the data from the two methods. For example, the mean recovery obtained in the AMM/RMM should be noninferior to, or comparable to, the mean recovery obtained in the CMM. If the ratio in the expected counts is being compared between the two methods, a <span class="key-term">comparability margin of 0.7</span> is often considered. It is common to denote this as <span class="key-term">Δ = 0.3</span>, but this value is not the comparability margin itself, it is one minus the comparability margin. In case of equivalence, Δ = 0.3 means that the 90% confidence interval on the ratio of expected counts falls within the interval [1 – Δ, 1 + Δ] = [0.7, 1.3].</p>
+        <p>See Section 9.0 (Appendix 1) through Section 11.0 (Appendix 3) for additional guidance on acceptance criteria based on the statistical method used.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Accuracy（準確度）：</strong>衡量 AMM/RMM 的計數結果和參考方法 CMM（Compendial Microbiological Method，藥典微生物方法）之間有多接近「真值」。做法是準備一系列稀釋濃度，每株菌至少 5 重複，AMM/RMM 與 CMM 平行（parallel）挑戰同一批菌液，比較兩者的平均回收率（mean recovery）。<strong>Parallel testing（平行測試）</strong>是關鍵設計：同一批菌液同時餵給兩種方法，才能用「配對」（paired）統計檢定，排除批次間差異這個干擾因子。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>Accuracy 驗證就像拿一把新的體重計（AMM/RMM）跟醫院認證過的體重計（CMM）比較：你不會只秤一次就下結論，而是找同一個人，在同一天、用同一組人（平行測試），分別在兩台秤上量體重，看兩邊數字是否「在合理誤差內一致」。如果新秤系統性地偏高或偏低超過可接受範圍，就代表新秤不準確。TOST 就是那把「合理誤差內」的量尺。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <pre>
+TOST（Two One-Sided Equivalence Test）等效性判定：
+
+  比較 AMM/RMM 與 CMM 的期望計數比值 (ratio)
+  comparability margin = 0.7   →   Δ = 1 - 0.7 = 0.3
+
+  等效區間：[ 1 - Δ , 1 + Δ ]  =  [ 0.7 , 1.3 ]
+
+  判定規則：
+    若 90% CI（雙邊等效）或 95% CI（單邊 noninferiority）
+    完全落在 [0.7, 1.3] 之內  → 判定「comparable / equivalent」
+    落在區間外                → 判定「不具可比性」
+
+  分布假設對應統計方法：
+    Poisson / Negative-Binomial 分布  → 對數連結函數的迴歸分析
+    無母數（無法假設分布）            → nonparametric CI（檢定力較低）
+    多濃度同時考量                    → 濃度-反應曲線迴歸模型
+    常態分布（近似）                  → paired 或 independent t-test 的 TOST
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>常見誤解：<strong>Δ = 0.3 不是「30% 的容許誤差」本身，而是「1 減去 comparability margin（0.7）」</strong>。原文特別強調這點澄清，因為很多人會把 Δ 直接誤讀為容許誤差百分比。此外，AMM/RMM 若「比 CMM 更敏感、計數統計上顯著更高」，應該改用 <strong>noninferiority test（非劣性檢定）</strong>而非雙邊等效性檢定——因為此時目標不是「證明兩者一樣」，而是「證明新方法不會比較差」，方向性不同，統計設計也不同。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>在 CDMO 導入新型 AMM/RMM（如自動化菌落計數系統取代傳統平板培養）時，Accuracy 試驗的統計方法選擇直接牽動驗證時程與樣本數：選錯統計模型（例如硬套常態分布 t-test 到低濃度、右偏的菌落計數資料）可能導致檢定力不足、需要重做試驗，拖延方法上線時程並增加委託客戶等待成本。及早根據資料分布特性（Poisson vs. Negative-Binomial vs. 無母數）選對統計工具，是縮短驗證週期、降低返工風險的關鍵決策點。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果你的菌落計數資料在低濃度時變異度特別大（overdispersion），你會選擇 Poisson 還是 Negative-Binomial 迴歸？為什麼？</li>
+                <li>為什麼「同一批菌液平行測試」比「不同批菌液分別測試」更適合用 paired t-test？</li>
+                <li>假設你的 90% CI 落在 [0.65, 1.1]，這樣的結果會被判定為 comparable 嗎？該如何跟品保部門解釋原因？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 5.4.3 REPEATABILITY -->
+<!-- ============================================================ -->
+<div class="section-title"><strong>5.4.3 Repeatability 重複性</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>See the definition of <span class="key-term">repeatability</span> in Section 2.0.</p>
+        <p>The <span class="key-term">repeatability (or within-run variability)</span> of an AMM/RMM is the degree of agreement among individual test results when the procedure is applied repeatedly to multiple samplings of the same suspension of microorganisms. Repeatability is usually evaluated in quantitative methods.</p>
+
+        <h3>5.4.3.1 Repeatability Testing Procedure</h3>
+        <p>Repeatability (also known as within-run variability) testing is performed on a set of samples collected from the same suspension (replicates) by a single analyst using the same equipment in the same laboratory. <span class="key-term">Intermediate precision (also known as ruggedness)</span> is performed on a set of samples under different conditions that would naturally vary during routine use of the AMM/RMM method (e.g., multiple suspensions, analysts, days, different instruments). Section 5.4.3.1 focuses on repeatability while Section 5.4.8 will address intermediate precision (ruggedness).</p>
+        <p>At least one dilution should be prepared of a relevant panel of microorganisms within the practical range of the quantitative test or what enumeration levels are required for the intended application. The number of separate dilutions prepared should be justified. Examples of what may be considered include:</p>
+        <ul>
+            <li>The end user's microbial specifications, based on compendial requirements or internal acceptance levels.</li>
+            <li>The suppliers purported lower-to-upper quantitation range.</li>
+            <li>A practical range as defined in published literature.</li>
+            <li>If one dilution is used, this should be in the middle of the practical range of the test. If the range of the test is different for specific organisms (e.g., bacteria versus fungi), then a particular dilution may be used for each.</li>
+            <li>If the practical range of the test is large, then more than one dilution should be considered.</li>
+        </ul>
+        <p>See Section 5.4.1 for examples of what relevant microorganisms should be considered.</p>
+        <p>An appropriate number of replicates per test organism should be used, but no fewer than <span class="key-term">five (5) replicates</span> per organism (in alignment with analytical assays), to meet the requirements for the intended data analysis and/or test power. A relevant number of replicates or test runs may be used when combining repeatability with other validation tests, for example, accuracy, range, or linearity). See Section 9.0 (Appendix 1) through Section 11.0 (Appendix 3) for additional guidance.</p>
+        <p>Repeatability may preferably be combined with ruggedness (intermediate precision) by testing on different days with different analysts and/or using different instruments.</p>
+        <p>For each organism, the same number of cells or volume from each dilution into the AMM/RMM should be challenged and the CMM should be challenged in parallel. Parallel testing using the same suspension is preferable; however, each aliquot from the same suspension will represent an independent sample. If the same aliquot can be analyzed in both methods, then these would be treated as dependent samples. The manner in which aliquots are used will dictate the appropriate statistical test to utilize, as described in Section 5.4.3.2.</p>
+
+        <h3>5.4.3.2 Repeatability Statistical Analysis</h3>
+        <p>Repeatability is best expressed in terms of a <span class="key-term">relative standard deviation (%)</span> or <span class="key-term">coefficient of variation</span> per suspension, either with respect to the spiked level or with respect to the mean count, together with an approximate 95% confidence interval for variances using, for instance, the chi-square distribution (not addressing the uncertainty in the denominator). Repeatability is best calculated for mean counts larger than 5 CFU. Due to the variability in counts between test samples as a result of the sampling of test samples, the repeatability is expected to be at least in the range of the reciprocal of the square root of the mean count. A <span class="key-term">McKay approximation</span> may possibly be used when the distribution of the counts is approximately normal (82).</p>
+        <p>A comparison with the CMM can be conducted by demonstrating equal variance between the recovered counts in both methods. To demonstrate superiority of the AMM/RMM compared to the CMM, <span class="key-term">Levene's test</span> (preferably Brown and Forsythe's version using medians instead of means) can be applied (83). When a comparability analysis is desired, an upper 95% confidence limit can be applied on the difference in the logarithmically transformed variances (e.g., AMM/RMM less than CMM).</p>
+        <p>Depending on the statistical test used, the data from different challenge-organism replicate tests could possibly be pooled to achieve the desired test power. If this is done, the results from individual challenge organisms should be reviewed to determine whether pooling is acceptable (e.g., the results for a specific organism are not masked by the pooling all of the replicates across multiple-challenge organisms). Accordingly, a justification for the statistical method used (e.g., pooling versus individual organism analyses) should be documented.</p>
+        <p>See Section 9.0 (Appendix 1) through Section 11.0 (Appendix 3) for additional guidance on the selection of an appropriate statistical analysis method based on the desired test power and number of replicates.</p>
+        <p>Note: For the lower concentration of organisms used during these studies (e.g., &lt;10 CFU), the repeatability is anticipated to be lower due to the relatively higher variability in counts at these levels. However, this would be expected in both the AMM/RMM and the CMM.</p>
+
+        <h3>5.4.3.3 Repeatability Acceptance Criteria</h3>
+        <p>Specific acceptance criteria will depend on the statistical method used to compare the data from the two methods. For example, the variance obtained in the AMM/RMM should not be statistically different, is noninferior to, or is comparable to the variance obtained in the CMM. A <span class="key-term">comparability margin of 0.5</span> on the ratio (CMM/AMM) or <span class="key-term">0.693</span> in the natural-log scale on relative standard deviations is common practice.</p>
+        <p>See Section 9.0 (Appendix 1) through Section 11.0 (Appendix 3) for additional guidance on acceptance criteria based on the statistical method used.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Repeatability（重複性，又稱 within-run variability 批內變異）：</strong>指同一位分析師、同一台設備、同一實驗室，對「同一批菌液」重複取樣測試時，結果之間的一致程度。務必區分它跟 <strong>Intermediate Precision（中間精密度，又稱 ruggedness 穩健性）</strong>的差別——後者是刻意讓「不同天、不同人、不同設備」這些會在日常操作中自然變動的條件介入，測試方法在這些變動下是否依然穩定（本節只談 Repeatability，Intermediate Precision 留到 5.4.8）。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>Repeatability 就像同一位廚師、同一天、用同一鍋高湯，連續做五碗一樣的湯，嚐起來鹹淡是否一致——這測試的是「同一個人同一次做的穩定度」。Intermediate Precision 則是換成不同廚師、不同天、甚至不同廚房來做同一道菜，看味道是否還能維持水準——這測的是「換了條件之後還可靠嗎」。兩者都重要，但驗證設計和數據解讀方式不同。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <pre>
+Repeatability 統計指標：
+
+  RSD (%) 或 CV = (標準差 SD / 平均計數 mean count) × 100%
+  （可用 spiked level 或 mean count 作分母）
+
+  適用前提：mean count > 5 CFU
+  低濃度時的下限估計：repeatability ≳ 1 / sqrt(mean count)
+
+  95% CI（變異數）：以 chi-square 分布計算近似信賴區間
+  常態分布資料：可用 McKay approximation
+
+與 CMM 比較：
+  等變異假設檢定 → Levene's test
+                    （建議用 Brown-Forsythe 版本，以中位數取代平均數）
+
+  AMM/RMM 允收標準（comparability margin）：
+    比值 (CMM/AMM) 之 margin = 0.5
+    或
+    ln(RSD) 差異之 margin = 0.693  (= ln(2)，即比值 2 倍的對數)
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>兩個容易忽略的統計前提：(1) Repeatability 計算「最好在 mean count > 5 CFU」時才穩定，濃度太低（&lt;10 CFU）時變異本來就會偏大——<strong>這是統計本質使然，不代表方法有問題</strong>，而且 AMM/RMM 與 CMM 都會受到相同影響，因此低濃度下的重複性數字要用相對比較（跟 CMM 比），而非用絕對數字評斷方法好壞。(2) Brown-Forsythe 版本的 Levene's test 用「中位數」而非「平均數」計算離差，對偏態（skewed）的菌落計數資料更穩健，這也是為什麼原文特別加註「preferably」。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>對 CDMO 品保與 QC 主管來說，Repeatability 與 Intermediate Precision 若能合併設計（同一組樣本，安排不同天、不同分析師執行），可以用一套試驗方案同時滿足兩項驗證準則的數據需求，這正是原文建議「Repeatability may preferably be combined with ruggedness」的商業意涵：減少額外跑批次數、縮短驗證時程、降低委託客戶等待成本，同時仍完整覆蓋法規要求的統計檢定力。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼在低濃度（&lt;10 CFU）挑戰時，重複性數字變差不必然代表方法失敗？</li>
+                <li>比值 margin 0.5 跟自然對數 margin 0.693 這兩種允收標準，本質上是同一件事的兩種表示方式嗎？試著用 ln(2) ≈ 0.693 的關係說明。</li>
+                <li>若你的 AMM/RMM 樣本間變異明顯小於 CMM（方法更穩定），這對商業銷售或內部效益溝通會是什麼樣的賣點？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 5.4.4 LIMIT OF DETECTION -->
+<!-- ============================================================ -->
+<div class="section-title"><strong>5.4.4 Limit of Detection 偵測極限</strong></div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>See the definition of <span class="key-term">LoD</span> in Section 2.0.</p>
+        <p>The LoD is usually evaluated through qualitative or presence/absence methods.</p>
+
+        <h3>5.4.4.1 Limit of Detection Testing Procedure</h3>
+        <p>The intent of the LoD validation criterion is to establish the lowest level at which positive samples are detected (commonly at 95% probability (i.e., <span class="key-term">LoD95</span>)) for the AMM/RMM and the CMM, and to demonstrate the AMM/RMM LoD is comparable from the CMM LoD. The LoD may also be used to justify the challenge level of target organisms during inclusivity testing.</p>
+        <p>A relevant panel of microorganisms is used when performing LoD studies. See Section 5.4.1 on specificity for examples of what relevant microorganisms should be considered.</p>
+        <p>The LoD95 should be established as follows:</p>
+        <ol>
+            <li>An LoD established by a single point (e.g., the lowest level detected, such as a single CFU) has limited utility because the certainty aspect (e.g., a 95% confidence level) may not be precisely determined. Modeling approaches based on empirical data, such as <span class="key-term">probit analysis</span>, allow the calculation of an LoD at a desired level of certainty (e.g., 95%) and is recommended when establishing the LoD for an AMM/RMM.</li>
+            <li>For each microorganism, a series of serial dilutions into the fractional range should be prepared, with the first dilution having a microbial concentration expected to give all positive results. The dilutions should include a level that represents the purported LoD from the AMM/RMM supplier. For example, dilutions of 10, 1, and 0.1 CFU, or 5, 0.5, and 0.05 CFU, or 2, 1.2, 0.7, 0.4, and 0.25 CFUs may be considered. For precise estimation of the LoD, it is better to use five concentrations.</li>
+            <li>For an appropriate test power, each dilution should be composed of at least <span class="key-term">20 to 40 replicates</span>. Data from multiple challenge organisms can be pooled to reduce the replicates per dilution when the statistical analysis approach incorporates the different microorganisms.</li>
+            <li>The same number of cells or volume from each prepared suspension should be challenged into the AMM/RMM and the CMM in parallel. If parallel testing cannot be performed (i.e., different suspensions used in each method), then differences in spiked levels between the suspensions should be accounted for during the subsequent analyses.</li>
+            <li>The number of positive and negative detection-events must be determined for each microorganism replicate in the AMM/RMM and in the CMM.</li>
+            <li>If the fraction of positive replicates equals 1 or 0 for two dilution concentrations, other appropriate dilution levels should be selected.</li>
+        </ol>
+        <p>The AMM/RMM LoD should be compared to the CMM LoD as follows:</p>
+        <ol>
+            <li>The data generated when establishing the LoD95 can be used to compare the LoD in the AMM/RMM and in the CMM.</li>
+            <li>Comparisons of LoDs between methods can be conducted for a single suspension when the challenge level can be chosen, such that the same (or similar) number of positives and negatives are present in both methods. The stakeholder should choose an appropriate challenge level for the intended application, and the data of multiple organisms may be pooled in the analysis.</li>
+            <li>A <span class="key-term">most probable number (MPN)</span> method may also be used if the number of replicates and the dilution concentration used are consistent with the requirements in the FDA MPN tables (84). The stakeholder should determine the number of replicates per dilution concentration that is practical to perform the analysis. Most importantly, the number of MPN runs should be sufficient to adequately apply the intended statistical analysis. Calculate the MPN and the upper and lower 95% confidence intervals for each challenge organism and for each method. Refer to the FDA MPN table relevant to the number of replicates used and instructions for selecting dilutions for the calculations. Dilutions other than those prescribed in the FDA method may also be considered, although the FDA tables should not be used to calculate the final MPN (e.g., using spike levels of 4, 2, 1 CFU rather than the FDA-recommended 10-fold dilutions, such as 10, 1, 0.1 CFU).</li>
+            <li>Parallel testing using the same suspension is preferable; however, if parallel testing is not performed, a statistical analysis must be used that could address the potential differences in spiked levels between suspensions and multiple suspensions for each method.</li>
+        </ol>
+
+        <h3>5.4.4.2 Limit of Detection Statistical Analysis</h3>
+        <p>When determining the LoD95 in each method, a probit/logit analysis is performed using the positive and negative results for the dilution levels assessed. This may also be performed using natural logarithms of the dilution levels.</p>
+        <p>The data from all microorganism dilutions and replicates are used to achieve the desired test power, but pooling data from multiple organisms requires a specialized analysis approach. However, the results from individual challenge organisms should be reviewed to determine whether the pooled results are acceptable (e.g., the results for a specific organism are not masked by pooling all the replicates across multiple challenge organisms). Poolability can be evaluated with hypothesis tests, outlier tests, or goodness-of-fit measures (see Section 9.0 (Appendix 1)).</p>
+        <p>If the model fit is sufficient according to the <span class="key-term">chi-square goodness-of-fit test</span>, the analyte concentration at which the estimated positive rate equals 95% is the estimated mean number of organisms in the test samples that provides a positive result with 95% confidence. The LoD95, which is the exact lowest number of organisms that leads to a detection probability of 95%, is typically below this estimated mean number of organisms. If the model fit is insufficient, additional replicates or dilutions must be analyzed.</p>
+        <p>The method of <span class="key-term">Most Probable Limit (MPL)</span> can be used when the AMM/RMM is expected to provide a LoD of one or two CFUs to demonstrate an almost-perfect method of detection, implying that a direct comparison with the CMM is not needed.</p>
+        <p>When comparing the AMM/RMM and the CMM LoDs, and depending on the statistical test used, the data from different challenge organisms replicate tests may need to be pooled to achieve the desired test power. If this is done, the results from individual challenge organisms should be reviewed to determine whether the pooled results are acceptable (e.g., the results for a specific organism are not masked by pooling all of the replicates across multiple-challenge organisms). Accordingly, a justification for the statistical method used (e.g., pooling versus individual organism analyses) should be presented.</p>
+        <p>Two statistical approaches provide a reliable comparison: one which uses the well-known standard MPN approach repeatedly (i.e., multiple executions of the MPN experiment with possibly adapted spike levels for the three dilutions), while a <span class="key-term">generalized MPN (gMPN)</span> approach can be used for a single dilution. Both approaches are suitable to incorporate or pool data from multiple microorganisms.</p>
+        <p>If an MPN approach is used for a single microorganism, it is suggested to calculate confidence limits on the mean difference in the repeated log-transformed MPNs to demonstrate comparability between the methods (similar to accuracy for quantitative methods). In case multiple microorganisms are being pooled, the repeated log-transformed MPNs per microorganism are being used in a two-way fixed-effects analysis of variance (ANOVA) model to estimate the mean differences in MPNs across microorganisms between both methods.</p>
+        <p>An alternative, more-specialized analysis approach exists, referred to as the gMPN approach, that can compare the detection proportions (i.e., the probability of detecting samples with exactly one microorganism) between the two microbiological methods for individual microorganisms and for pooled data from multiple microorganisms. When the total number of test samples is identical, the gMPN approach, which uses a single dilution, is more powerful than the MPN approach, but the MPN approach is more robust to spiking errors due to the use of multiple dilutions. The gMPN approach is a less straightforward analysis than the MPN approach.</p>
+        <p>See Section 9.0 (Appendix 1) through Section 11.0 (Appendix 3) for additional guidance on the selection of an appropriate statistical analysis method based on the desired test power and number of replicates.</p>
+
+        <h3>5.4.4.3 Limit of Detection Acceptance Criteria</h3>
+        <p>The LoD95 values for each method should be reported.</p>
+        <p>When comparing the LoDs, specific acceptance criteria will depend on the statistical method used to compare the data from the two methods. For the comparison of MPNs and detection proportions, a comparability margin of 0.7, commonly denoted as Δ = 0.3, is common practice. This value is not the comparability margin itself, it is one (1) minus the comparability margin. In case of equivalence, Δ = 0.3 means that the 90% confidence interval on the ratio of expected counts falls within the interval [1 – Δ, 1 + Δ] = [0.7, 1.3].</p>
+        <p>See Section 9.0 (Appendix 1) through Section 11.0 (Appendix 3) for additional guidance on acceptance criteria based on the statistical method utilized.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>LoD（Limit of Detection，偵測極限）：</strong>指方法能以特定信心水準（通常是 95%，記作 <strong>LoD95</strong>）偵測到陽性樣本的「最低微生物濃度」。它主要用於定性（qualitative / presence-absence）方法。重點在於：<strong>單點式 LoD（只憑「最低一次測到的濃度」）不夠嚴謹</strong>，因為缺乏信心水準的統計基礎；原文建議用 <strong>probit analysis（機率單位分析）</strong>這種以經驗數據建模的方法，才能算出「在 95% 信心水準下」真正的 LoD95 數值。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>LoD 就像測試金屬探測器「最微弱能穩定偵測到的訊號強度」：你不會只埋一枚硬幣測一次就說「這台機器可以測到 5 元硬幣大小的金屬」，而是要在不同深度（不同濃度）埋很多次（20-40 重複），統計出「在這個深度下，有 95% 的機率會被偵測到」的那個臨界深度。稀釋序列的設計（10, 1, 0.1 CFU 或更精細的 5 個濃度點）就像是逐步調整埋藏深度，找出那條 95% 偵測率的分界線。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <pre>
+LoD95 試驗設計要點：
+  稀釋序列範例： 10, 1, 0.1 CFU
+              或  5, 0.5, 0.05 CFU
+              或  2, 1.2, 0.7, 0.4, 0.25 CFU（建議用 5 個濃度點，估計較精確）
+  每濃度重複數： 至少 20-40 replicates
+  若某兩濃度的陽性率剛好是 1 或 0 → 需重新選擇稀釋濃度
+
+統計模型：
+  probit / logit analysis（可用稀釋濃度的自然對數）
+    → 求出「估計陽性率 = 95%」對應的濃度
+    → 以 chi-square goodness-of-fit test 檢驗模型配適度
+    → LoD95（實際偵測機率達 95% 的最低菌數）通常低於此估計平均菌數
+
+  特例： LoD 為 1-2 CFU 時 → 可用 Most Probable Limit (MPL) 法，
+         視為「近乎完美偵測」，不需再與 CMM 直接比較
+
+AMM/RMM vs. CMM 之 LoD 比較方法：
+  ① 標準 MPN（Most Probable Number）法：多次執行、可調整 3 個稀釋濃度
+  ② 廣義 gMPN 法：單一稀釋濃度即可比較「偵測比例」
+      - gMPN：檢定力較高，但對加菌誤差較不穩健
+      - MPN： 較穩健，但需要多個稀釋濃度
+
+允收標準（comparability margin）：
+  MPN / 偵測比例比較之 margin = 0.7   →   Δ = 0.3
+  等效區間：[1-Δ, 1+Δ] = [0.7, 1.3]（與 Accuracy 的邏輯一致）
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>本節的允收標準（Δ = 0.3 → [0.7, 1.3]）與 5.4.2.3 Accuracy 的允收標準<strong>公式完全一致</strong>，只是套用的統計量不同（LoD 比的是 MPN 或偵測比例，Accuracy 比的是期望計數比值）——這是 TR33 刻意設計的一致性，方便驗證團隊用同一套統計邏輯思維橫跨不同驗證準則。另外要特別留意：<strong>當某濃度的陽性率恰好是 100% 或 0% 時，代表這個濃度點沒有提供足夠的資訊量給 probit 模型去估計曲線斜率</strong>，必須重新設計稀釋濃度，否則模型配適度會不足。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>對 CDMO 引進新一代 AMM/RMM（例如以自動化影像偵測取代傳統無菌試驗培養）而言，LoD95 是最常被監管機關（TFDA、FDA）追問的數字之一，因為它直接關係到「這台機器是否可能漏掉低濃度污染」這種病人安全（Patient Safety）議題——對應到決策階層第 2 順位「Product CQAs 產品關鍵品質屬性」。選擇 probit 分析而非單點式 LoD，能在遞交驗證報告時提供具統計嚴謹度的證據，減少法規審查往返次數，加快新方法上線時程。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼「只測一次、測到最低濃度就是 LoD」這種做法在統計上站不住腳？probit analysis 解決了什麼問題？</li>
+                <li>MPN 法與 gMPN 法各自的優缺點是什麼？在加菌誤差風險較高的實驗室環境，你會傾向選哪一種？</li>
+                <li>若你的 AMM/RMM LoD95 落在 1-2 CFU，你還需要花時間跟 CMM 做直接比較嗎？原文的 MPL 概念如何簡化這個決策？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>Specificity（特異性）</strong>不需要獨立試驗，只要在 Accuracy、Repeatability、LoD、LoQ、Method Suitability、Comparability 等試驗中使用具代表性的微生物 panel（涵蓋 Gram 陰性/陽性桿菌、產孢菌、球菌、酵母菌、黴菌），即已一併證明；非存活細胞不應被誤判為陽性，逆境菌株不建議使用。</li>
+        <li><strong>Accuracy（準確度）</strong>透過平行測試（parallel testing）比較 AMM/RMM 與 CMM 的平均回收率，統計方法依資料分布選用 TOST、Poisson/Negative-Binomial 迴歸或無母數方法；允收標準常用 comparability margin 0.7（Δ = 0.3），等效區間 [0.7, 1.3]。</li>
+        <li><strong>Repeatability（重複性）</strong>評估同批菌液、同分析師、同設備下的批內變異，以 RSD/CV 表示，並用 Levene's test（建議 Brown-Forsythe 版本）與 CMM 比較變異數；允收標準常用比值 margin 0.5 或自然對數尺度 margin 0.693。</li>
+        <li><strong>Limit of Detection（LoD，偵測極限）</strong>建議用 probit/logit analysis 估算 LoD95，每濃度至少 20-40 重複；與 CMM 比較可用 MPN 或 gMPN 法，允收標準同樣採用 Δ = 0.3、等效區間 [0.7, 1.3] 的邏輯；LoD 為 1-2 CFU 時可用 MPL 法簡化流程。</li>
+        <li>四項參數的允收標準設計呈現一致的統計哲學：以「比值型 comparability margin」搭配信賴區間判定，讓驗證團隊能用同一套邏輯思維橫跨不同驗證準則，也便於向多國法規機關溝通同一套科學論證。</li>
+    </ul>
+</div>
+
+</body>
+</html>
