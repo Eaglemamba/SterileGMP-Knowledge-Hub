@@ -115,7 +115,21 @@
   }
   function deptById(id) { for (var i = 0; i < DEPTS.length; i++) if (DEPTS[i].id === id) return DEPTS[i]; return null; }
   function classImg(id) { var d = deptById(id); return asset('class-' + id) || placeholderPortrait(d ? d.color : '#64748b'); }
-  function avatarImg(id) { return asset('avatar-' + id) || classImg(id); }   // square head crop if the artwork exists
+  function avatarImg(id) { return asset('avatar-' + id) || classImg(id.split('-')[0]); }   // square head crop if the artwork exists
+  /* Every avatar the visitor can pick: one per class, plus alternate looks (avatar-<class>-2.webp, ...) that have artwork. */
+  function avatarChoices() {
+    var ids = DEPTS.map(function (d) { return d.id; });
+    (M.assets || []).forEach(function (f) {
+      var m = /^avatar-(.+)\.webp$/.exec(f);
+      if (m && ids.indexOf(m[1]) < 0) ids.push(m[1]);
+    });
+    return ids;
+  }
+  /* Full portrait for the character: the alternate look if the chosen avatar belongs to the current class. */
+  function heroImg() {
+    var a = S.profile.avatar, cls = S.profile.cls;
+    return (a !== cls && a.indexOf(cls + '-') === 0 && asset('class-' + a)) || classImg(cls);
+  }
   function petImg(line, stage) { return asset('pet-' + line + '-' + stage) || placeholderPet(PETS[line].color, stage); }
   function eggImg() { return asset('egg') || placeholderEgg(); }
   function petCls(base) { return base + (S.pet && S.pet.shiny ? ' rpg-shiny' : ''); }
@@ -454,7 +468,7 @@
     }
     var q = nextQuest();
     var c = G.classes[S.profile.cls];
-    var portrait = h('img', { class: 'rpg-quest-portrait', src: classImg(S.profile.cls), alt: '' });
+    var portrait = h('img', { class: 'rpg-quest-portrait', src: heroImg(), alt: '' });
     if (!q || q.done) {
       mount.appendChild(h('div', { class: 'rpg-quest' }, [portrait, h('div', { class: 'rpg-quest-body' }, [
         h('span', { class: 'rpg-tag', text: 'COMPLETE' }),
@@ -542,10 +556,13 @@
           h('span', { text: dep.nameZh }),
           h('small', { text: M.docs && hasQuiz(dep) ? '有章節挑戰' : '閱讀通關' })
         ]));
+      });
+      avatarChoices().forEach(function (id) {
+        var base = deptById(id.split('-')[0]);
         avatarGrid.appendChild(h('button', {
-          type: 'button', class: 'rpg-pick-avatar' + (pick.avatar === dep.id ? ' is-on' : ''), 'aria-label': CLASS_META[dep.id].job + '頭像',
-          onclick: function () { pick.avatar = dep.id; avatarTouched = true; draw(); }
-        }, [h('img', { src: avatarImg(dep.id), alt: '' })]));
+          type: 'button', class: 'rpg-pick-avatar' + (pick.avatar === id ? ' is-on' : ''), 'aria-label': (base ? CLASS_META[base.id].job : '') + '頭像',
+          onclick: function () { pick.avatar = id; avatarTouched = true; draw(); }
+        }, [h('img', { src: avatarImg(id), alt: '' })]));
       });
       var dep = deptById(pick.cls);
       hint.textContent = dep.nameZh + '：' + dep.description;
@@ -1008,7 +1025,7 @@
 
     /* hero */
     mount.appendChild(h('section', { class: 'rpg-hero', style: '--c:' + dep.color }, [
-      h('img', { class: 'rpg-hero-art', src: classImg(S.profile.cls), alt: CLASS_META[dep.id].job }),
+      h('img', { class: 'rpg-hero-art', src: heroImg(), alt: CLASS_META[dep.id].job }),
       h('div', { class: 'rpg-hero-info' }, [
         h('span', { class: 'rpg-tag', text: RANKS[c.rank].en.toUpperCase() }),
         h('h1', {}, [avatarEl('lg'), h('span', { text: S.profile.nick })]),
