@@ -65,10 +65,32 @@ After `/project-sync`, manually verify: `INDEX-router.md` new rows, and whether 
 ## Critical Rules
 
 - **Never** manually edit `index.html` — it reads from `reports.json`
+  (one exception already in place: the `#rpg-quest` mount and the `rpg/rpg.js` script tag — leave them)
 - **Never** add inventory tables here — `reports.json` is the single source of truth
 - Knowledge MDs in `knowledge/` must be **English-only** (no Chinese)
 - Plan **A/B section splits** upfront for any source text file over ~800 lines
 - `INDEX-router.md` only gets rows for ★★★ and ★★ sources — not every document
+
+---
+
+## RPG Learning Layer (`rpg/`)
+
+Optional game layer: character, XP/level/rank, next-quest card, document cards, pet, and in-page
+section challenges. Off by default; `?rpg=1` switches it on in that browser, `?rpg=0` off
+(`DEFAULT_ON` in `rpg/rpg.js` flips the default).
+
+- `rpg/rpg.js` + `rpg/rpg.css` — the whole feature. Loaded by `index.html`, `learning-path.html`,
+  `quiz.html`, `character.html`, and every merged page (one `<script>` line emitted by `merge_engine.py`).
+- `rpg/manifest.json` — **generated**. Rebuild after adding/merging a document or editing a question bank:
+  `python scripts/build_rpg_manifest.py` (`--check` verifies it is current).
+- `rpg/quiz/<KEY>.json` — in-page question bank (MCQ only). Same per-question fields as
+  `knowledge/exams/*.json` plus `"section": "<section_map id>"`. Aim for 5 questions per section; pass mark is 80%.
+  Kept out of `knowledge/exams/` on purpose so `/quiz` behaviour is unchanged.
+- `rpg/assets/*.webp` — class portraits (`class-<deptId>`), pets (`pet-<a|b|c>-<1..3>`), `egg`.
+  Missing files fall back to silhouettes.
+- Storage: reads `sgk_progress_*`, `gmp-quiz-results`; writes only `sgk_rpg_v1` and one
+  `source: "inpage"` record per document in `gmp-quiz-results`.
+- Never edit `*-Complete.html` for this — change `merge_engine.py` / `rpg/` and re-merge.
 
 ---
 

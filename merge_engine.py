@@ -641,6 +641,11 @@ def run_merge(
         css_path = os.path.join(base_dir, '..', 'template.css')  # fallback (original)
     output_dir = os.path.join(base_dir, 'output')
     output_path = os.path.join(output_dir, output_filename)
+    # Relative path from <report>/output/ back to the repo root, used to load
+    # the shared RPG learning layer (rpg/rpg.js). The script is inert unless the
+    # visitor has switched it on, so pages behave as before without it.
+    _repo_root = os.path.dirname(os.path.abspath(css_path))
+    rpg_root = os.path.relpath(_repo_root, os.path.abspath(output_dir)).replace(os.sep, '/') + '/'
 
     print("=" * 60)
     print(f"Merging: {output_filename}")
@@ -736,6 +741,7 @@ def run_merge(
     <button class="back-to-top" id="backToTop" onclick="window.scrollTo({{top:0,behavior:'smooth'}})">&#8679;</button>
 
 {STANDARD_JS}
+    <script src="{rpg_root}rpg/rpg.js" defer></script>
 
 </body>
 </html>'''
