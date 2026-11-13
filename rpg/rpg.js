@@ -141,6 +141,7 @@
     s.review = s.review || { last: {}, day: '', ok: 0 };
     s.today = s.today || { d: '', docs: [] };                 // documents with a challenge passed today
     s.flags = s.flags || {};
+    s.mapSeen = s.mapSeen || {};                              // class id -> stages revealed on the 3D map last time
     return s;
   }
   function saveState() { lsSet(STATE_KEY, JSON.stringify(S)); }
@@ -1141,9 +1142,9 @@
      zone (the rank-up). Stages snake left-to-right then right-to-left. Nothing
      is hard-locked: later zones are fogged but every document stays readable. */
   var ZONES = [
-    { zh: '外圍區', en: 'Grade D', cls: 'rpg-z0', boss: '微粒魔' },
-    { zh: '潔淨走廊', en: 'Grade C', cls: 'rpg-z1', boss: '生物膜王' },
-    { zh: '核心區', en: 'Grade A', cls: 'rpg-z2', boss: '內毒素龍' }
+    { zh: '啟程之島', en: 'Isle of Beginnings', cls: 'rpg-z0', boss: '微粒魔' },
+    { zh: '修練之島', en: 'Isle of Practice', cls: 'rpg-z1', boss: '生物膜王' },
+    { zh: '核心之島', en: 'Isle of Mastery', cls: 'rpg-z2', boss: '內毒素龍' }
   ];
   var mapCols = 0;
   function mapColsFor(w) { return w < 520 ? 3 : w < 820 ? 4 : 5; }
@@ -1236,7 +1237,50 @@
 
   function stat(v, l) { return h('div', { class: 'rpg-stat' }, [h('b', { text: v }), h('span', { text: l })]); }
 
-  function renderAll() { renderBar(); renderQuest(); renderCharacter(); renderMap(); palDraw(); }
+  function renderAll() {
+    renderBar(); renderQuest(); renderCharacter(); renderMap(); palDraw();
+    listeners.forEach(function (cb) { try { cb(); } catch (e) { console.warn('[rpg] listener failed', e); } });
+  }
+
+  /* ---------- API for rpg/map3d.js ---------- */
+  var listeners = [];
+  function mapData() {
+    if (!S || !S.profile || !G) return null;
+    var c = G.classes[S.profile.cls], dep = c.dep, q = nextQuest();
+    var curKey = q && !q.done ? q.st.key : null;
+    return {
+      cls: dep.id, name: dep.nameZh, color: dep.color, rank: c.rank,
+      avatar: avatarImg(S.profile.avatar),
+      pet: S.pet ? petImg(S.pet.line, G.petStage) : null,
+      zones: c.tiers.map(function (t, ti) {
+        var zone = ZONES[ti] || ZONES[ZONES.length - 1];
+        return {
+          zh: zone.zh, boss: zone.boss, bossImg: asset('boss-' + (ti + 1)), rankName: RANKS[ti + 1].zh + CLASS_META[dep.id].job,
+          unlocked: ti <= c.rank, done: t.done, got: t.got, need: t.need, anyOf: t.anyOf,
+          stages: t.tier.docs.filter(function (x) { return M.docs[x.key]; }).map(function (x) {
+            var d = M.docs[x.key], st = G.docs[x.key], here = x.key === curKey;
+            return {
+              key: x.key, title: d.titleZh || d.title, main: x.required || t.anyOf, shell: d.shell, quiz: !!d.quiz,
+              cleared: st.cleared, started: st.started, read: st.read, total: st.total, shiny: st.shiny, here: here,
+              stars: (st.readAll || st.cleared ? 1 : 0) + (d.quiz && st.cleared ? 1 : 0) + (st.shiny ? 1 : 0), maxStars: d.quiz ? 3 : 1,
+              href: here ? q.href : ROOT + d.file
+            };
+          })
+        };
+      })
+    };
+  }
+  window.SGKRpg = {
+    ready: false,
+    mapData: mapData,
+    onChange: function (cb) { listeners.push(cb); },
+    /* Remember how many stages the 3D map showed; returns the previous count (null on the first visit). */
+    mapSeen: function (n) {
+      var id = S.profile.cls, prev = id in S.mapSeen ? S.mapSeen[id] : null;
+      if (prev !== n) { S.mapSeen[id] = n; saveState(); }
+      return prev;
+    }
+  };
 
   /* ---------- boot ---------- */
   function loadScript(src) {
@@ -1262,6 +1306,8 @@
       if (S.profile && !deptById(S.profile.cls)) S.profile.cls = DEPTS[0].id;
       refresh(!S.seen);
       initDocPage();
+      window.SGKRpg.ready = true;
+      document.dispatchEvent(new Event('sgk-rpg-ready'));
       setTimeout(maybeReview, 1200);
       window.addEventListener('storage', function (e) {
         if (e.key && (e.key === STATE_KEY || e.key.indexOf('sgk_progress_') === 0)) { S = loadState(); refresh(); }

@@ -81,6 +81,7 @@ section challenges. Off by default; `?rpg=1` switches it on in that browser, `?r
 
 - `rpg/rpg.js` + `rpg/rpg.css` — the whole feature. Loaded by `index.html`, `learning-path.html`,
   `quiz.html`, `character.html`, `map.html`, and every merged page (one `<script>` line emitted by `merge_engine.py`).
+- `rpg/map3d.js` — 3D stage map on `map.html` only (three.js r128 from cdnjs). Reads everything through `window.SGKRpg`; the flat list rendered by `rpg.js` below it is the fallback.
 - `rpg/manifest.json` — **generated**. Rebuild after adding/merging a document or editing a question bank:
   `python scripts/build_rpg_manifest.py` (`--check` verifies it is current).
 - `rpg/quiz/<KEY>.json` — in-page question bank (MCQ only). Same per-question fields as
