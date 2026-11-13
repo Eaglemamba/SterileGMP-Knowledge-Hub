@@ -59,6 +59,9 @@
   };
   var CLUSTER_ZH = ['無菌製程', '滅菌過濾', '容器密封', '品質系統', '環境監測', '檢驗方法', '廠房設備', '先進療法', '法規遵循', '新興技術'];
   var RARITY = ['N', 'R', 'SR', 'SSR'];
+  // One crafting material per topic cluster (crafting itself comes later; drops are recorded now).
+  var MATS = ['無菌結晶', '濾膜碎片', '硼矽玻片', '簽核印記', '培養皿之塵', '試劑滴', '不鏽鋼鉚釘', '細胞微光', '法典書頁', '電路晶片'];
+  var XP_REVIEW = 15, REVIEW_GAP = 7 * 24 * 3600 * 1000;
   var GROUP_LABEL = { PDA: 'PDA', ISPE: 'ISPE', FDA: 'FDA', PICS: 'PIC/S', ICH: 'ICH', USP: 'USP', ISO: 'ISO', PHEUR: 'Ph.Eur.' };
 
   var M = null;        // manifest
@@ -112,6 +115,7 @@
   function classImg(id) { var d = deptById(id); return asset('class-' + id) || placeholderPortrait(d ? d.color : '#64748b'); }
   function petImg(line, stage) { return asset('pet-' + line + '-' + stage) || placeholderPet(PETS[line].color, stage); }
   function eggImg() { return asset('egg') || placeholderEgg(); }
+  function petCls(base) { return base + (S.pet && S.pet.shiny ? ' rpg-shiny' : ''); }
 
   /* ---------- state ---------- */
   function loadState() {
@@ -130,6 +134,12 @@
     s.earned.rank = s.earned.rank || {};
     s.earned.titles = s.earned.titles || {};
     s.earned.pet = s.earned.pet || 0;
+    s.secrets = s.secrets || {};                              // hidden titles: id -> timestamp
+    s.mats = s.mats || {};                                    // crafting materials: 'c<cluster>' -> count
+    s.bonus = s.bonus || 0;                                   // XP from review ambushes
+    s.review = s.review || { last: {}, day: '', ok: 0 };
+    s.today = s.today || { d: '', docs: [] };                 // documents with a challenge passed today
+    s.flags = s.flags || {};
     return s;
   }
   function saveState() { lsSet(STATE_KEY, JSON.stringify(S)); }
@@ -162,28 +172,30 @@
 
     var secs = d.quiz ? Object.keys(d.quiz) : [];
     var q = S.quiz[key] || {};
-    var passed = 0, tried = 0;
+    var passed = 0, tried = 0, perfect = 0;
     secs.forEach(function (sid) {
       var r = q[sid];
       if (!r) return;
       tried++;
       if (r.total > 0 && r.best / r.total >= PASS) passed++;
+      if (r.total > 0 && r.first === r.total) perfect++;      // full marks on the very first attempt
     });
+    var shiny = secs.length > 0 && perfect === secs.length;
     var cleared = !d.shell && (secs.length ? passed === secs.length : all);
     var n = d.top.length;
     return {
       key: key, doc: d, maxIdx: maxIdx, started: !!p, readAll: all, read: read, total: n,
-      quizSecs: secs, passed: passed, tried: tried, cleared: cleared,
+      quizSecs: secs, passed: passed, tried: tried, cleared: cleared, perfect: perfect, shiny: shiny,
       xp: read * XP_READ + passed * XP_QUIZ + (cleared ? XP_DOC : 0),
-      card: (all || cleared) ? { rarity: n >= 10 ? 3 : n >= 6 ? 2 : n >= 3 ? 1 : 0, awakened: secs.length > 0 && cleared } : null
+      card: (all || cleared) ? { rarity: n >= 10 ? 3 : n >= 6 ? 2 : n >= 3 ? 1 : 0, awakened: secs.length > 0 && cleared, shiny: shiny } : null
     };
   }
 
   function compute() {
-    var docs = {}, xp = 0, activity = 0, cards = 0;
+    var docs = {}, xp = S.bonus || 0, activity = 0, cards = 0, perfect = 0;
     Object.keys(M.docs).forEach(function (k) {
       var st = docState(k);
-      docs[k] = st; xp += st.xp; activity += st.read + st.passed;
+      docs[k] = st; xp += st.xp; activity += st.read + st.passed; perfect += st.perfect;
       if (st.card) cards++;
     });
     var level = 1;
@@ -220,7 +232,7 @@
 
     return {
       docs: docs, xp: xp, level: level, lo: needXp(level), hi: needXp(level + 1),
-      activity: activity, cards: cards, classes: classes, maxRank: maxRank, titles: titles,
+      activity: activity, cards: cards, perfect: perfect, classes: classes, maxRank: maxRank, titles: titles,
       petStage: S.pet ? Math.max(1 + (maxRank >= 1 ? 1 : 0) + (maxRank >= 2 ? 1 : 0), S.earned.pet) : 0,
       sectionsRead: Object.keys(docs).reduce(function (a, k) { return a + docs[k].read; }, 0)
     };
@@ -228,10 +240,60 @@
 
   function snapshot(g) {
     var cards = {}, titles = {}, rank = {};
-    Object.keys(g.docs).forEach(function (k) { var c = g.docs[k].card; if (c) cards[k] = c.awakened ? 2 : 1; });
+    Object.keys(g.docs).forEach(function (k) { var c = g.docs[k].card; if (c) cards[k] = c.shiny ? 3 : c.awakened ? 2 : 1; });
     g.titles.forEach(function (t) { if (t.lv) titles[t.id] = t.lv; });
     Object.keys(g.classes).forEach(function (id) { rank[id] = g.classes[id].rank; });
     return { xp: g.xp, level: g.level, activity: g.activity, cards: cards, titles: titles, rank: rank, pet: g.petStage };
+  }
+
+  /* A pet turns shiny when, at the moment of a rank-up, at least half of that
+     tier's challenge documents were cleared with full marks on the first try. */
+  function shinyTier(cls, idx) {
+    var t = G.classes[cls] && G.classes[cls].tiers[idx];
+    if (!t) return false;
+    var pool = (t.req.length ? t.req : t.list).filter(function (x) { return M.docs[x.key].quiz; });
+    if (!pool.length) return false;
+    return pool.filter(function (x) { return G.docs[x.key].shiny; }).length >= Math.ceil(pool.length / 2);
+  }
+
+  /* Hidden titles. The conditions are not shown until earned. */
+  function anyDoc(g, fn) { return Object.keys(g.docs).some(function (k) { return fn(g.docs[k]); }); }
+  var SECRETS = [
+    { id: 'tome', zh: '大部頭征服者', how: '通關一份 200 頁以上的文件',
+      test: function (g) { return anyDoc(g, function (st) { return st.cleared && (st.doc.pages || 0) >= 200; }); } },
+    { id: 'streak7', zh: '七日修行', how: '連續學習 7 天', test: function () { return liveStreak() >= 7; } },
+    { id: 'streak30', zh: '三十日不滅', how: '連續學習 30 天', test: function () { return liveStreak() >= 30; } },
+    { id: 'trio', zh: '一日三修', how: '同一天通過三份不同文件的章節挑戰',
+      test: function () { return S.today.d === dayKey(new Date()) && S.today.docs.length >= 3; } },
+    { id: 'dawn', zh: '晨型人', how: '清晨 4 點到 6 點之間完成學習',
+      test: function (g, grew) { var hr = new Date().getHours(); return grew && hr >= 4 && hr < 6; } },
+    { id: 'night', zh: '夜貓子', how: '午夜到凌晨 4 點之間完成學習',
+      test: function (g, grew) { return grew && new Date().getHours() < 4; } },
+    { id: 'perfect5', zh: '一發入魂', how: '累計 5 節第一次挑戰就全對', test: function (g) { return g.perfect >= 5; } },
+    { id: 'comeback', zh: '不屈', how: '同一節失敗兩次以上後通過', test: function () { return !!S.flags.comeback; } },
+    { id: 'sources', zh: '博覽群籍', how: '八個來源各通關至少一份文件',
+      test: function (g) { return Object.keys(GROUP_LABEL).every(function (grp) { return anyDoc(g, function (st) { return st.cleared && st.doc.group === grp; }); }); } },
+    { id: 'dual', zh: '雙修', how: '兩個職業達到初階',
+      test: function (g) { return Object.keys(g.classes).filter(function (id) { return g.classes[id].rank >= 1; }).length >= 2; } },
+    { id: 'allclass', zh: '全職制霸', how: '八個職業全部達到專家',
+      test: function (g) { return Object.keys(g.classes).every(function (id) { return g.classes[id].rank >= 3; }); } },
+    { id: 'cards50', zh: '收藏家', how: '收集 50 張文件卡', test: function (g) { return g.cards >= 50; } },
+    { id: 'review10', zh: '溫故知新', how: '複習突擊答對 10 次', test: function () { return S.review.ok >= 10; } }
+  ];
+
+  /* Materials: one per topic cluster, dropped when a section challenge is passed
+     for the first time or a review ambush is answered correctly. */
+  function clusterOf(doc) {
+    for (var t = 0; t < doc.tags.length; t++)
+      for (var i = 0; i < CLUSTERS.length; i++)
+        if (CLUSTERS[i].tags.indexOf(doc.tags[t]) >= 0) return i;
+    return -1;
+  }
+  function dropMat(key) {
+    var i = clusterOf(M.docs[key]);
+    if (i < 0) return;
+    S.mats['c' + i] = (S.mats['c' + i] || 0) + 1;
+    toast('獲得素材：' + (MATS[i] || CLUSTERS[i].name));
   }
 
   /* Compare with what the learner has already been shown and queue rewards. */
@@ -244,16 +306,25 @@
       if (now.xp > prev.xp) events.push({ kind: 'xp', n: now.xp - prev.xp });
       if (now.level > prev.level) events.push({ kind: 'level', n: now.level });
       Object.keys(now.cards).forEach(function (k) {
-        if (!prev.cards[k]) events.push({ kind: 'card', key: k, awakened: now.cards[k] === 2 });
-        else if (now.cards[k] > prev.cards[k]) events.push({ kind: 'card', key: k, awakened: true, upgrade: true });
+        if (!prev.cards[k]) events.push({ kind: 'card', key: k, awakened: now.cards[k] >= 2, shiny: now.cards[k] === 3 });
+        else if (now.cards[k] > prev.cards[k]) events.push({ kind: 'card', key: k, awakened: true, upgrade: true, shiny: now.cards[k] === 3 });
       });
       Object.keys(now.titles).forEach(function (id) {
         if ((prev.titles[id] || 0) < now.titles[id]) events.push({ kind: 'title', id: id, lv: now.titles[id] });
       });
       var cls = S.profile.cls;
-      if ((now.rank[cls] || 0) > (prev.rank[cls] || 0)) events.push({ kind: 'rank', n: now.rank[cls] });
+      if ((now.rank[cls] || 0) > (prev.rank[cls] || 0)) {
+        events.push({ kind: 'rank', n: now.rank[cls] });
+        if (S.pet && !S.pet.shiny && shinyTier(cls, now.rank[cls] - 1)) { S.pet.shiny = true; events.push({ kind: 'shinypet' }); }
+      }
       if (prev.pet && now.pet > prev.pet) events.push({ kind: 'pet', n: now.pet });
     }
+    var grew = !!prev && now.activity > (prev.activity || 0);
+    SECRETS.forEach(function (sec) {
+      if (S.secrets[sec.id] || !sec.test(G, grew && !silent)) return;
+      S.secrets[sec.id] = Date.now();
+      if (prev && !silent) events.push({ kind: 'secret', id: sec.id });
+    });
     S.seen = now;
     Object.keys(now.rank).forEach(function (id) { S.earned.rank[id] = Math.max(S.earned.rank[id] || 0, now.rank[id]); });
     Object.keys(now.titles).forEach(function (id) { S.earned.titles[id] = Math.max(S.earned.titles[id] || 0, now.titles[id]); });
@@ -336,7 +407,7 @@
       document.body.classList.add('rpg-on');
     }
     var sig = !S.profile ? 'new' : [S.profile.nick, S.profile.cls, S.profile.avatar, G.classes[S.profile.cls].rank, bestTitle(),
-      G.level, G.xp, liveStreak(), S.pet ? S.pet.line + G.petStage : ''].join('|');
+      G.level, G.xp, liveStreak(), S.pet ? S.pet.line + G.petStage + (S.pet.shiny ? 's' : '') : ''].join('|');
     if (bar.getAttribute('data-sig') === sig) return;
     bar.setAttribute('data-sig', sig);
     clear(bar);
@@ -356,7 +427,7 @@
       h('span', { class: 'rpg-bar-lv' }, [h('small', { text: 'Lv' }), String(G.level)]),
       h('span', { class: 'rpg-bar-xp' }, [xpBar(), h('small', { text: G.xp + ' / ' + G.hi + ' XP' })]),
       streak ? h('span', { class: 'rpg-bar-streak', title: '連續學習天數' }, [h('b', { text: String(streak) }), h('small', { text: '天連續' })]) : null,
-      S.pet ? h('img', { class: 'rpg-bar-pet rpg-idle', src: petImg(S.pet.line, G.petStage), alt: PETS[S.pet.line].stages[G.petStage - 1] }) : null
+      S.pet ? h('img', { class: petCls('rpg-bar-pet rpg-idle'), src: petImg(S.pet.line, G.petStage), alt: PETS[S.pet.line].stages[G.petStage - 1] }) : null
     ]);
     bar.appendChild(link);
   }
@@ -415,14 +486,14 @@
   /* ---------- rendering: cards ---------- */
   function cardEl(st, locked) {
     var d = st.doc, c = st.card;
-    var cls = 'rpg-card' + (locked ? ' rpg-card-locked' : ' rpg-card-r' + c.rarity + (c.awakened ? ' rpg-card-awakened' : ''));
+    var cls = 'rpg-card' + (locked ? ' rpg-card-locked' : ' rpg-card-r' + c.rarity + (c.awakened ? ' rpg-card-awakened' : '') + (c.shiny ? ' rpg-card-shiny' : ''));
     return h('a', { class: cls, href: ROOT + d.file, style: '--bar:' + d.bar, title: d.title }, [
       h('span', { class: 'rpg-card-top' }, [
         h('span', { class: 'rpg-card-short', text: d.short }),
         locked ? null : h('span', { class: 'rpg-card-rarity', text: RARITY[c.rarity] })
       ]),
       h('span', { class: 'rpg-card-title', text: locked ? '？？？' : (d.titleZh || d.title) }),
-      h('span', { class: 'rpg-card-foot', text: locked ? (GROUP_LABEL[d.group] || d.group) : (c.awakened ? '覺醒' : (d.quiz ? '可挑戰' : '已讀完')) })
+      h('span', { class: 'rpg-card-foot', text: locked ? (GROUP_LABEL[d.group] || d.group) : (c.shiny ? '異色' : c.awakened ? '覺醒' : (d.quiz ? '可挑戰' : '已讀完')) })
     ]);
   }
 
@@ -560,14 +631,21 @@
       art = h('img', { src: classImg(S.profile.cls), alt: '' });
     } else if (e.kind === 'card') {
       var st = G.docs[e.key];
-      kicker = e.upgrade ? 'AWAKENED' : 'NEW CARD'; title = st.doc.short; sub = e.awakened ? '文件卡覺醒' : '獲得文件卡';
+      kicker = e.shiny ? 'SHINY' : e.upgrade ? 'AWAKENED' : 'NEW CARD'; title = st.doc.short;
+      sub = e.shiny ? '異色文件卡：每一節都一次全對' : e.awakened ? '文件卡覺醒' : '獲得文件卡';
       art = h('div', { class: 'rpg-cut-card rpg-flip' }, [cardEl(st, false)]);
     } else if (e.kind === 'title') {
       var t = G.titles.filter(function (x) { return x.id === e.id; })[0];
       kicker = 'TITLE'; title = t.zh + (e.lv === 2 ? '大師' : '修習者'); sub = '獲得稱號';
     } else if (e.kind === 'pet') {
       kicker = 'EVOLUTION'; title = PETS[S.pet.line].stages[e.n - 1]; sub = '夥伴進化了';
-      art = h('img', { class: 'rpg-pop', src: petImg(S.pet.line, e.n), alt: '' });
+      art = h('img', { class: petCls('rpg-pop'), src: petImg(S.pet.line, e.n), alt: '' });
+    } else if (e.kind === 'shinypet') {
+      kicker = 'SHINY'; title = PETS[S.pet.line].stages[G.petStage - 1]; sub = '夥伴變成異色型態';
+      art = h('img', { class: 'rpg-pop rpg-shiny', src: petImg(S.pet.line, G.petStage), alt: '' });
+    } else if (e.kind === 'secret') {
+      var sc = SECRETS.filter(function (x) { return x.id === e.id; })[0];
+      kicker = 'SECRET'; title = sc.zh; sub = '隱藏稱號：' + sc.how;
     } else if (e.kind === 'hatch') {
       kicker = 'HATCHED'; title = PETS[S.pet.line].stages[0]; sub = '新的夥伴加入';
       art = h('img', { class: 'rpg-pop', src: petImg(S.pet.line, 1), alt: '' });
@@ -689,7 +767,19 @@
 
       var dq = S.quiz[pageDocKey] = S.quiz[pageDocKey] || {};
       var old = dq[sid];
-      dq[sid] = { best: Math.max(score, old ? old.best : 0), total: questions.length, tries: (old ? old.tries : 0) + 1, last: last, ts: Date.now() };
+      var wasPass = !!(old && old.total && old.best / old.total >= PASS);
+      dq[sid] = {
+        best: Math.max(score, old ? old.best : 0), total: questions.length, tries: (old ? old.tries : 0) + 1, last: last, ts: Date.now(),
+        first: old ? old.first : score,                        // score of the very first attempt (decides shiny cards)
+        pt: old && old.pt ? old.pt : (ok ? Date.now() : 0)      // when it was first passed (decides review ambushes)
+      };
+      if (ok && !wasPass) {
+        dropMat(pageDocKey);
+        var today = dayKey(new Date());
+        if (S.today.d !== today) S.today = { d: today, docs: [] };
+        if (S.today.docs.indexOf(pageDocKey) < 0) S.today.docs.push(pageDocKey);
+        if (old && old.tries >= 2) S.flags.comeback = 1;
+      }
       saveState();
       status.textContent = (dq[sid].best / dq[sid].total >= PASS ? '已通過　' : '') + '最佳 ' + dq[sid].best + ' / ' + dq[sid].total;
       status.classList.toggle('is-pass', dq[sid].best / dq[sid].total >= PASS);
@@ -729,6 +819,64 @@
     lsSet(QUIZ_KEY, JSON.stringify(all));
   }
 
+  /* ---------- review ambush (spaced review of a section passed a week ago) ---------- */
+  var reviewTries = 0;
+  function maybeReview() {
+    if (!S.profile || pageDocKey) return;                       // never interrupt reading
+    if (!document.getElementById('rpg-quest') && !document.getElementById('rpg-character')) return;
+    var today = dayKey(new Date()), now = Date.now();
+    if (S.review.day === today) return;
+    if (document.querySelector('.rpg-modal, .rpg-cutin')) {    // wait for rewards / dialogs to finish
+      if (reviewTries++ < 5) setTimeout(maybeReview, 3000);
+      return;
+    }
+    var pool = [];
+    Object.keys(S.quiz).forEach(function (key) {
+      if (!M.docs[key] || !M.docs[key].quiz) return;
+      Object.keys(S.quiz[key]).forEach(function (sid) {
+        var r = S.quiz[key][sid];
+        if (r.pt && now - r.pt >= REVIEW_GAP && now - (S.review.last[key + '#' + sid] || 0) >= REVIEW_GAP) pool.push({ key: key, sid: sid });
+      });
+    });
+    if (!pool.length) return;
+    var pick = pool[Math.floor(Math.random() * pool.length)];
+    fetch(ROOT + 'rpg/quiz/' + pick.key + '.json').then(function (r) { return r.json(); }).then(function (bank) {
+      var qs = (bank.questions || []).filter(function (q) { return q.section === pick.sid; });
+      if (!qs.length || document.querySelector('.rpg-modal, .rpg-cutin')) return;
+      S.review.day = today; saveState();                        // at most one ambush a day, even if dismissed
+      openReview(pick, qs[Math.floor(Math.random() * qs.length)]);
+    }).catch(function () {});
+  }
+  function openReview(pick, q) {
+    var d = M.docs[pick.key], done = false;
+    var opts = h('div', { class: 'rpg-quiz-opts' });
+    var exp = h('div', { class: 'rpg-quiz-exp', hidden: true }, [h('p', { text: q.explanation || '' }), q.reference ? h('small', { text: '出處：' + q.reference }) : null]);
+    var result = h('p', { class: 'rpg-quiz-result', 'aria-live': 'polite' });
+    Object.keys(q.options).forEach(function (letter) {
+      opts.appendChild(h('button', { type: 'button', class: 'rpg-opt', 'data-l': letter, onclick: function () {
+        if (done) return; done = true;
+        var ok = letter === q.correct;
+        Array.prototype.forEach.call(opts.children, function (b) {
+          b.disabled = true;
+          if (b.getAttribute('data-l') === q.correct) b.classList.add('is-right');
+          else if (b.getAttribute('data-l') === letter) b.classList.add('is-wrong');
+        });
+        exp.hidden = false;
+        S.review.last[pick.key + '#' + pick.sid] = Date.now();
+        if (ok) { S.bonus += XP_REVIEW; S.review.ok++; dropMat(pick.key); }
+        result.textContent = ok ? '答對了，+' + XP_REVIEW + ' XP' : '這題忘了。看一下解析，一週後還會再遇到。';
+        result.className = 'rpg-quiz-result ' + (ok ? 'is-pass' : 'is-fail');
+        saveState(); refresh();
+      } }, [h('b', { text: letter }), h('span', { text: q.options[letter] })]));
+    });
+    modal([
+      h('span', { class: 'rpg-tag', text: 'REVIEW' }),
+      h('h2', { text: '複習突擊' }),
+      h('p', { class: 'rpg-modal-lead', text: '你一週前通過了「' + (d.titleZh || d.title) + '」的章節挑戰，還記得嗎？答錯不扣分。' }),
+      h('p', { class: 'rpg-quiz-q rpg-review-q', text: q.question }), opts, exp, result
+    ], { cls: 'rpg-modal-wide' });
+  }
+
   /* ---------- character page ---------- */
   var cardFilter = 'ALL';
   function renderCharacter() {
@@ -766,9 +914,9 @@
     if (S.pet) {
       var line = PETS[S.pet.line];
       petPanel.appendChild(h('div', { class: 'rpg-pet-now' }, [
-        h('img', { class: 'rpg-idle', src: petImg(S.pet.line, G.petStage), alt: line.stages[G.petStage - 1] }),
+        h('img', { class: petCls('rpg-idle'), src: petImg(S.pet.line, G.petStage), alt: line.stages[G.petStage - 1] }),
         h('div', {}, [
-          h('b', { text: line.stages[G.petStage - 1] }),
+          h('b', { text: line.stages[G.petStage - 1] + (S.pet.shiny ? '（異色）' : '') }),
           h('p', { text: G.petStage >= 3 ? '已經是最終型態。' : '下一次進化：任一職業升到「' + RANKS[G.petStage].zh + '」階級，進化為' + line.stages[G.petStage] + '。' })
         ])
       ]));
@@ -818,7 +966,31 @@
       ]));
     });
     titles.appendChild(tl);
+    var gotSecrets = SECRETS.filter(function (x) { return S.secrets[x.id]; }).length;
+    titles.appendChild(h('h3', { class: 'rpg-sub', text: '隱藏稱號　' + gotSecrets + ' / ' + SECRETS.length }));
+    var sl = h('ul', { class: 'rpg-titles' });
+    SECRETS.forEach(function (x) {
+      var on = !!S.secrets[x.id];
+      sl.appendChild(h('li', { class: on ? 'is-on' : '', style: '--c:#ff3d81' }, [
+        h('b', { text: on ? x.zh : '？？？' }), h('span', { text: on ? x.how : '條件未知' })
+      ]));
+    });
+    titles.appendChild(sl);
     mount.appendChild(titles);
+
+    /* materials */
+    var ml = h('ul', { class: 'rpg-mats' });
+    CLUSTERS.forEach(function (c2, i) {
+      var n = S.mats['c' + i] || 0;
+      ml.appendChild(h('li', { class: n ? 'is-on' : '', style: '--c:' + c2.color }, [
+        h('b', { text: String(n) }), h('span', { text: MATS[i] || c2.name }), h('small', { text: CLUSTER_ZH[i] || '' })
+      ]));
+    });
+    mount.appendChild(h('section', { class: 'rpg-panel' }, [
+      h('h2', { text: '素材' }),
+      h('p', { class: 'rpg-note', text: '第一次通過章節挑戰、或答對複習突擊時，會得到該文件主題的素材。素材之後可以合成夥伴的裝備，合成功能尚未開放。' }),
+      ml
+    ]));
 
     /* collection */
     var groups = ['ALL'].concat(Object.keys(GROUP_LABEL));
@@ -833,7 +1005,7 @@
     keys.forEach(function (k) { grid.appendChild(cardEl(G.docs[k], !G.docs[k].card)); });
     mount.appendChild(h('section', { class: 'rpg-panel' }, [
       h('h2', { text: '文件卡圖鑑　' + keys.filter(function (k) { return G.docs[k].card; }).length + ' / ' + keys.length }),
-      h('p', { class: 'rpg-note', text: '讀完一份文件得到文件卡；有章節挑戰的文件全部過關後，卡片會覺醒。稀有度依文件的章節數決定。' }),
+      h('p', { class: 'rpg-note', text: '讀完一份文件得到文件卡；有章節挑戰的文件全部過關後，卡片會覺醒；每一節都第一次挑戰就全對，會變成異色卡。稀有度依文件的章節數決定。' }),
       filt, grid
     ]));
 
@@ -884,6 +1056,7 @@
       if (S.profile && !deptById(S.profile.cls)) S.profile.cls = DEPTS[0].id;
       refresh(!S.seen);
       initDocPage();
+      setTimeout(maybeReview, 1200);
       window.addEventListener('storage', function (e) {
         if (e.key && (e.key === STATE_KEY || e.key.indexOf('sgk_progress_') === 0)) { S = loadState(); refresh(); }
       });
