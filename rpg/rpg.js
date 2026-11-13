@@ -519,6 +519,7 @@
         h('span', { class: 'rpg-card-short', text: d.short }),
         locked ? null : h('span', { class: 'rpg-card-rarity', text: RARITY[c.rarity] })
       ]),
+      !locked && asset('card-' + d.group) ? h('img', { class: 'rpg-card-art', src: asset('card-' + d.group), alt: '', loading: 'lazy' }) : null,
       h('span', { class: 'rpg-card-title', text: locked ? '？？？' : (d.titleZh || d.title) }),
       h('span', { class: 'rpg-card-foot', text: locked ? (GROUP_LABEL[d.group] || d.group) : (c.shiny ? '異色' : c.awakened ? '覺醒' : (d.quiz ? '可挑戰' : '已讀完')) })
     ]);
@@ -1122,6 +1123,7 @@
     CLUSTERS.forEach(function (c2, i) {
       var n = S.mats['c' + i] || 0;
       ml.appendChild(h('li', { class: n ? 'is-on' : '', style: '--c:' + c2.color }, [
+        asset('mat-' + i) ? h('img', { class: 'rpg-mat-img', src: asset('mat-' + i), alt: '' }) : null,
         h('b', { text: String(n) }), h('span', { text: MATS[i] || c2.name }), h('small', { text: CLUSTER_ZH[i] || '' })
       ]));
     });
