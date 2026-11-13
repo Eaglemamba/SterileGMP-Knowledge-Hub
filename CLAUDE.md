@@ -87,7 +87,7 @@ section challenges. Off by default; `?rpg=1` switches it on in that browser, `?r
 - `rpg/quiz/<KEY>.json` — in-page question bank (MCQ only). Same per-question fields as
   `knowledge/exams/*.json` plus `"section": "<section_map id>"`. Aim for 5 questions per section; pass mark is 80%.
   Kept out of `knowledge/exams/` on purpose so `/quiz` behaviour is unchanged.
-- `rpg/assets/*.webp` — class portraits (`class-<deptId>`), head crops (`avatar-<deptId>`), pets (`pet-<a|b|c>-<1..4>`), zone bosses (`boss-<1..3>`), `egg`.
+- `rpg/assets/*.webp` — class portraits (`class-<deptId>`), head crops (`avatar-<deptId>`), pets (`pet-<a|b|c>-<1..4>`), zone bosses (`boss-<1..3>`), section-challenge monsters (`mob-<0..9>`, one per topic cluster), `egg`.
   Missing files fall back to silhouettes.
 - Storage: reads `sgk_progress_*`, `gmp-quiz-results`; writes only `sgk_rpg_v1` and one
   `source: "inpage"` record per document in `gmp-quiz-results`.

@@ -62,6 +62,8 @@
   // One crafting material per topic cluster (crafting itself comes later; drops are recorded now).
   var MATS = ['無菌結晶', '濾膜碎片', '硼矽玻片', '簽核印記', '培養皿之塵', '試劑滴', '不鏽鋼鉚釘', '細胞微光', '法典書頁', '電路晶片'];
   var XP_REVIEW = 15, REVIEW_GAP = 7 * 24 * 3600 * 1000;
+  // Small monsters met in section challenges, one per topic cluster (art: rpg/assets/mob-<cluster>.webp).
+  var MOBS = ['破洞手套鬼', '芽孢彈', '裂瓶蟹', '漏簽幽靈', '落菌菇', '混濁史萊姆', '死角鰻', '混種雙子', '缺失紙蝠', '當機機器人'];
   var GROUP_LABEL = { PDA: 'PDA', ISPE: 'ISPE', FDA: 'FDA', PICS: 'PIC/S', ICH: 'ICH', USP: 'USP', ISO: 'ISO', PHEUR: 'Ph.Eur.' };
 
   var M = null;        // manifest
@@ -796,8 +798,11 @@
       refresh();
     } });
 
-    block.appendChild(h('div', { class: 'rpg-quiz-head' }, [
-      h('span', { class: 'rpg-tag', text: 'CHALLENGE' }), h('h3', { text: '章節挑戰' }), status
+    var mi = clusterOf(M.docs[pageDocKey]), mobSrc = mi >= 0 ? asset('mob-' + mi) : null;
+    block.appendChild(h('div', { class: 'rpg-quiz-head' + (passed ? ' is-beaten' : '') }, [
+      mobSrc ? h('img', { class: 'rpg-quiz-mob', src: mobSrc, alt: '' }) : null,
+      h('span', { class: 'rpg-tag', text: 'CHALLENGE' }),
+      h('h3', { text: mi >= 0 ? (passed ? '已擊敗　' : '遭遇　') + MOBS[mi] : '章節挑戰' }), status
     ]));
     block.appendChild(h('p', { class: 'rpg-quiz-lead', text: '共 ' + questions.length + ' 題單選，答對 80% 過關。可以重複挑戰，只記最佳成績。' }));
     block.appendChild(list);
