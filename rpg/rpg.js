@@ -130,7 +130,15 @@
     var a = S.profile.avatar, cls = S.profile.cls;
     return (a !== cls && a.indexOf(cls + '-') === 0 && asset('class-' + a)) || classImg(cls);
   }
-  function petImg(line, stage) { return asset('pet-' + line + '-' + stage) || placeholderPet(PETS[line].color, stage); }
+  /* Pet artwork for a stage. If that stage has no artwork yet, use the nearest earlier stage
+     (then a later one) so the companion never falls back to a blank shape mid-evolution. */
+  function petImg(line, stage) {
+    var order = [stage];
+    for (var a = stage - 1; a >= 1; a--) order.push(a);
+    for (var b = stage + 1; b <= 4; b++) order.push(b);
+    for (var i = 0; i < order.length; i++) { var src = asset('pet-' + line + '-' + order[i]); if (src) return src; }
+    return placeholderPet(PETS[line].color, stage);
+  }
   function eggImg() { return asset('egg') || placeholderEgg(); }
   function petCls(base) { return base + (S.pet && S.pet.shiny ? ' rpg-shiny' : ''); }
 
