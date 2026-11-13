@@ -123,6 +123,13 @@
     s.end = s.end || {};
     s.streak = s.streak || { last: '', count: 0, best: 0 };
     s.seen = s.seen || null;
+    // Highest rank / pet stage / title level ever reached. These never go back
+    // down, e.g. when a question bank is later added to a document that was
+    // cleared by reading alone.
+    s.earned = s.earned || {};
+    s.earned.rank = s.earned.rank || {};
+    s.earned.titles = s.earned.titles || {};
+    s.earned.pet = s.earned.pet || 0;
     return s;
   }
   function saveState() { lsSet(STATE_KEY, JSON.stringify(S)); }
@@ -195,6 +202,7 @@
         if (open && done) rank++; else open = false;
         return { tier: t, list: list, req: req, need: need, got: Math.min(got, need), done: done, anyOf: !req.length };
       });
+      rank = Math.max(rank, S.earned.rank[dep.id] || 0);
       classes[dep.id] = { dep: dep, rank: rank, tiers: tiers };
       if (rank > maxRank) maxRank = rank;
     });
@@ -206,13 +214,14 @@
       });
       var got = keys.filter(function (k) { return docs[k].cleared; }).length;
       var lv = keys.length && got === keys.length ? 2 : (keys.length && got >= Math.min(5, keys.length) ? 1 : 0);
+      lv = Math.max(lv, S.earned.titles['c' + i] || 0);
       return { id: 'c' + i, zh: CLUSTER_ZH[i] || c.name, en: c.name, color: c.color, n: keys.length, got: got, lv: lv };
     });
 
     return {
       docs: docs, xp: xp, level: level, lo: needXp(level), hi: needXp(level + 1),
       activity: activity, cards: cards, classes: classes, maxRank: maxRank, titles: titles,
-      petStage: S.pet ? 1 + (maxRank >= 1 ? 1 : 0) + (maxRank >= 2 ? 1 : 0) : 0,
+      petStage: S.pet ? Math.max(1 + (maxRank >= 1 ? 1 : 0) + (maxRank >= 2 ? 1 : 0), S.earned.pet) : 0,
       sectionsRead: Object.keys(docs).reduce(function (a, k) { return a + docs[k].read; }, 0)
     };
   }
@@ -246,6 +255,9 @@
       if (prev.pet && now.pet > prev.pet) events.push({ kind: 'pet', n: now.pet });
     }
     S.seen = now;
+    Object.keys(now.rank).forEach(function (id) { S.earned.rank[id] = Math.max(S.earned.rank[id] || 0, now.rank[id]); });
+    Object.keys(now.titles).forEach(function (id) { S.earned.titles[id] = Math.max(S.earned.titles[id] || 0, now.titles[id]); });
+    S.earned.pet = Math.max(S.earned.pet, now.pet);
     saveState();
     renderAll();
     if (events.length) showRewards(events);
@@ -323,6 +335,10 @@
       document.body.appendChild(bar);
       document.body.classList.add('rpg-on');
     }
+    var sig = !S.profile ? 'new' : [S.profile.nick, S.profile.cls, S.profile.avatar, G.classes[S.profile.cls].rank, bestTitle(),
+      G.level, G.xp, liveStreak(), S.pet ? S.pet.line + G.petStage : ''].join('|');
+    if (bar.getAttribute('data-sig') === sig) return;
+    bar.setAttribute('data-sig', sig);
     clear(bar);
     if (!S.profile) {
       bar.appendChild(h('button', { class: 'rpg-bar-cta', type: 'button', onclick: openOnboarding }, [
@@ -419,7 +435,12 @@
       wrap.addEventListener('click', function (e) { if (e.target === wrap) close(); });
       box.insertBefore(h('button', { class: 'rpg-modal-x', type: 'button', 'aria-label': '關閉', text: '×', onclick: close }), box.firstChild);
     }
-    function close() { if (wrap.parentNode) wrap.parentNode.removeChild(wrap); }
+    function onKey(e) { if (e.key === 'Escape' && !(opts && opts.sticky)) close(); }
+    function close() {
+      document.removeEventListener('keydown', onKey);
+      if (wrap.parentNode) wrap.parentNode.removeChild(wrap);
+    }
+    document.addEventListener('keydown', onKey);
     document.body.appendChild(wrap);
     return { el: wrap, close: close };
   }
@@ -478,7 +499,7 @@
           if (first && G.xp > 0) toast('已帶入你之前的閱讀紀錄：' + G.xp + ' XP');
         }
       })
-    ], { sticky: !editing, cls: 'rpg-modal-wide' });
+    ], { cls: 'rpg-modal-wide' });
     nick.focus();
   }
 
