@@ -113,6 +113,7 @@
   }
   function deptById(id) { for (var i = 0; i < DEPTS.length; i++) if (DEPTS[i].id === id) return DEPTS[i]; return null; }
   function classImg(id) { var d = deptById(id); return asset('class-' + id) || placeholderPortrait(d ? d.color : '#64748b'); }
+  function avatarImg(id) { return asset('avatar-' + id) || classImg(id); }   // square head crop if the artwork exists
   function petImg(line, stage) { return asset('pet-' + line + '-' + stage) || placeholderPet(PETS[line].color, stage); }
   function eggImg() { return asset('egg') || placeholderEgg(); }
   function petCls(base) { return base + (S.pet && S.pet.shiny ? ' rpg-shiny' : ''); }
@@ -385,7 +386,7 @@
   }
   function avatarEl(size) {
     return h('span', { class: frameClass() + ' rpg-avatar' + (size ? ' rpg-avatar-' + size : '') }, [
-      h('img', { src: classImg(S.profile.avatar), alt: '', loading: 'lazy' })
+      h('img', { src: avatarImg(S.profile.avatar), alt: '', loading: 'lazy' })
     ]);
   }
   function bestTitle() {
@@ -476,6 +477,7 @@
         q.entry.why ? h('p', { class: 'rpg-quest-why', text: q.entry.why }) : null,
         h('div', { class: 'rpg-quest-foot' }, [
           a,
+          h('a', { class: 'rpg-quest-map', href: ROOT + 'map.html', text: '闖關地圖' }),
           h('span', { class: 'rpg-quest-meta', text: tierText }),
           h('span', { class: 'rpg-quest-meta', text: '本文件 ' + q.st.read + ' / ' + q.st.total + ' 節' })
         ])
@@ -540,7 +542,7 @@
         avatarGrid.appendChild(h('button', {
           type: 'button', class: 'rpg-pick-avatar' + (pick.avatar === dep.id ? ' is-on' : ''), 'aria-label': CLASS_META[dep.id].job + '頭像',
           onclick: function () { pick.avatar = dep.id; avatarTouched = true; draw(); }
-        }, [h('img', { src: classImg(dep.id), alt: '' })]));
+        }, [h('img', { src: avatarImg(dep.id), alt: '' })]));
       });
       var dep = deptById(pick.cls);
       hint.textContent = dep.nameZh + '：' + dep.description;
@@ -928,7 +930,7 @@
   var reviewTries = 0;
   function maybeReview() {
     if (!S.profile || pageDocKey) return;                       // never interrupt reading
-    if (!document.getElementById('rpg-quest') && !document.getElementById('rpg-character')) return;
+    if (!document.getElementById('rpg-quest') && !document.getElementById('rpg-character') && !document.getElementById('rpg-map')) return;
     var today = dayKey(new Date()), now = Date.now();
     if (S.review.day === today) return;
     if (document.querySelector('.rpg-modal, .rpg-cutin')) {    // wait for rewards / dialogs to finish
@@ -1010,7 +1012,8 @@
           stat(G.cards + ' / ' + Object.keys(G.docs).filter(function (k) { return !G.docs[k].doc.shell; }).length, '文件卡')
         ]),
         h('div', { class: 'rpg-hero-xp' }, [xpBar(), h('small', { text: '距離 Lv ' + (G.level + 1) + ' 還差 ' + (G.hi - G.xp) + ' XP' })]),
-        h('button', { class: 'rpg-btn rpg-btn-ghost', type: 'button', onclick: openOnboarding, text: '編輯角色／轉職' })
+        h('button', { class: 'rpg-btn rpg-btn-ghost', type: 'button', onclick: openOnboarding, text: '編輯角色／轉職' }),
+        h('a', { class: 'rpg-btn rpg-btn-ghost rpg-hero-map', href: ROOT + 'map.html', text: '闖關地圖' })
       ])
     ]));
 
@@ -1133,9 +1136,107 @@
       } })
     ]));
   }
+  /* ---------- stage map ----------
+     One zone per tier, one stage per document, a boss gate at the end of each
+     zone (the rank-up). Stages snake left-to-right then right-to-left. Nothing
+     is hard-locked: later zones are fogged but every document stays readable. */
+  var ZONES = [
+    { zh: '外圍區', en: 'Grade D', cls: 'rpg-z0', boss: '微粒魔' },
+    { zh: '潔淨走廊', en: 'Grade C', cls: 'rpg-z1', boss: '生物膜王' },
+    { zh: '核心區', en: 'Grade A', cls: 'rpg-z2', boss: '內毒素龍' }
+  ];
+  var mapCols = 0;
+  function mapColsFor(w) { return w < 520 ? 3 : w < 820 ? 4 : 5; }
+  function renderMap() {
+    var mount = document.getElementById('rpg-map');
+    if (!mount) return;
+    clear(mount);
+    if (!S.profile) {
+      mount.appendChild(h('div', { class: 'rpg-panel rpg-empty' }, [
+        h('h2', { text: '還沒有角色' }),
+        h('p', { text: '建立角色、選一個職業，這裡就會出現那個職業的闖關地圖。' }),
+        h('button', { class: 'rpg-btn', type: 'button', onclick: openOnboarding, text: '建立角色' })
+      ]));
+      return;
+    }
+    var c = G.classes[S.profile.cls], dep = c.dep, q = nextQuest();
+    var curKey = q && !q.done ? q.st.key : null;
+    var cols = mapCols = mapColsFor(mount.clientWidth || window.innerWidth);
+
+    mount.appendChild(h('header', { class: 'rpg-map-head', style: '--c:' + dep.color }, [
+      h('span', { class: 'rpg-tag', text: 'WORLD MAP' }),
+      h('h1', { text: dep.nameZh + '　闖關地圖' }),
+      h('p', { text: '目前階級：' + RANKS[c.rank].zh + CLASS_META[dep.id].job + '。每一關是一份文件，走到區域盡頭通過升階試煉就能進下一區。' }),
+      h('button', { class: 'rpg-btn rpg-btn-ghost', type: 'button', onclick: openOnboarding, text: '換職業看別的地圖' })
+    ]));
+
+    c.tiers.forEach(function (t, ti) {
+      var zone = ZONES[ti] || ZONES[ZONES.length - 1];
+      var stages = t.tier.docs.filter(function (x) { return M.docs[x.key]; });
+      stages = stages.filter(function (x) { return x.required; }).concat(stages.filter(function (x) { return !x.required; }));
+      var fog = ti > c.rank;
+      var list = h('ol', { class: 'rpg-stages', style: '--cols:' + cols });
+      var total = stages.length + 1;                              // + boss gate
+
+      function place(li, i) {
+        var row = Math.floor(i / cols), col = i % cols, last = i === total - 1;
+        var dir = last ? '' : (col === cols - 1 ? ' to-down' : (row % 2 ? ' to-left' : ' to-right'));
+        if (row % 2) col = cols - 1 - col;
+        li.style.gridRow = String(row + 1);
+        li.style.gridColumn = String(col + 1);
+        li.className += dir;
+        list.appendChild(li);
+      }
+
+      stages.forEach(function (x, i) {
+        var d = M.docs[x.key], st = G.docs[x.key], here = x.key === curKey;
+        var pct = d.shell ? 0 : Math.round(st.read / Math.max(1, st.total) * 100);
+        var maxStars = d.quiz ? 3 : 1;
+        var stars = (st.readAll || st.cleared ? 1 : 0) + (d.quiz && st.cleared ? 1 : 0) + (st.shiny ? 1 : 0);
+        var starText = '';
+        for (var k = 0; k < maxStars; k++) starText += k < stars ? '★' : '☆';
+        var cls = 'rpg-stage' + (st.cleared ? ' is-clear' : '') + (here ? ' is-here' : '') + (x.required ? '' : ' is-side') + (d.shell ? ' is-shell' : '');
+        var inner = [
+          here ? h('span', { class: 'rpg-stage-you' }, [avatarEl(), S.pet ? h('img', { class: petCls('rpg-idle'), src: petImg(S.pet.line, G.petStage), alt: '' }) : null]) : null,
+          h('span', { class: 'rpg-stage-dot', style: '--p:' + pct + '%;--bar:' + d.bar }, [h('b', { text: st.cleared ? '✓' : String(i + 1) })]),
+          h('span', { class: 'rpg-stage-stars', 'aria-label': stars + ' / ' + maxStars + ' 星', text: d.shell ? '準備中' : starText }),
+          h('span', { class: 'rpg-stage-name', text: d.titleZh || d.title }),
+          h('span', { class: 'rpg-stage-meta', text: d.shell ? '' : (x.required ? '' : '支線・') + (st.cleared ? '通關' : st.started ? st.read + ' / ' + st.total + ' 節' : st.total + ' 節') + (d.quiz ? '・有挑戰' : '') })
+        ];
+        var node = d.shell ? h('span', { class: 'rpg-stage-link' }, inner)
+          : h('a', { class: 'rpg-stage-link', href: here ? q.href : ROOT + d.file, title: d.title }, inner);
+        place(h('li', { class: cls + (st.cleared ? ' path-done' : '') }, [node]), i);
+      });
+
+      place(h('li', { class: 'rpg-stage rpg-boss' + (t.done ? ' is-clear' : '') }, [
+        h('span', { class: 'rpg-stage-link' }, [
+          asset('boss-' + (ti + 1))
+            ? h('img', { class: 'rpg-boss-img', src: asset('boss-' + (ti + 1)), alt: zone.boss })
+            : h('span', { class: 'rpg-stage-dot' }, [h('b', { text: t.done ? '✓' : 'BOSS' })]),
+          h('span', { class: 'rpg-stage-name', text: (t.done ? '已擊敗　' : '魔王　') + zone.boss }),
+          h('span', { class: 'rpg-stage-meta', text: '升階試煉：' + RANKS[ti + 1].zh + CLASS_META[dep.id].job }),
+          h('span', { class: 'rpg-stage-meta', text: (t.anyOf ? '任選通關 ' : '必讀通關 ') + t.got + ' / ' + t.need })
+        ])
+      ]), total - 1);
+
+      mount.appendChild(h('section', { class: 'rpg-zone ' + zone.cls + (t.done ? ' is-done' : '') + (fog ? ' is-fog' : '') }, [
+        h('div', { class: 'rpg-zone-head' }, [
+          h('span', { class: 'rpg-zone-no', text: 'ZONE ' + (ti + 1) }),
+          h('h2', {}, [zone.zh, h('small', { text: zone.en + '　' + t.tier.labelZh + ' ' + t.tier.label })]),
+          h('span', { class: 'rpg-zone-state', text: t.done ? '已攻略' : fog ? '完成前一區的升階試煉後正式開放（文件仍可先讀）' : '攻略中 ' + t.got + ' / ' + t.need })
+        ]),
+        list
+      ]));
+    });
+  }
+  window.addEventListener('resize', function () {
+    var mount = document.getElementById('rpg-map');
+    if (mount && G && mapColsFor(mount.clientWidth) !== mapCols) renderMap();
+  });
+
   function stat(v, l) { return h('div', { class: 'rpg-stat' }, [h('b', { text: v }), h('span', { text: l })]); }
 
-  function renderAll() { renderBar(); renderQuest(); renderCharacter(); palDraw(); }
+  function renderAll() { renderBar(); renderQuest(); renderCharacter(); renderMap(); palDraw(); }
 
   /* ---------- boot ---------- */
   function loadScript(src) {

@@ -80,13 +80,13 @@ section challenges. Off by default; `?rpg=1` switches it on in that browser, `?r
 (`DEFAULT_ON` in `rpg/rpg.js` flips the default).
 
 - `rpg/rpg.js` + `rpg/rpg.css` — the whole feature. Loaded by `index.html`, `learning-path.html`,
-  `quiz.html`, `character.html`, and every merged page (one `<script>` line emitted by `merge_engine.py`).
+  `quiz.html`, `character.html`, `map.html`, and every merged page (one `<script>` line emitted by `merge_engine.py`).
 - `rpg/manifest.json` — **generated**. Rebuild after adding/merging a document or editing a question bank:
   `python scripts/build_rpg_manifest.py` (`--check` verifies it is current).
 - `rpg/quiz/<KEY>.json` — in-page question bank (MCQ only). Same per-question fields as
   `knowledge/exams/*.json` plus `"section": "<section_map id>"`. Aim for 5 questions per section; pass mark is 80%.
   Kept out of `knowledge/exams/` on purpose so `/quiz` behaviour is unchanged.
-- `rpg/assets/*.webp` — class portraits (`class-<deptId>`), pets (`pet-<a|b|c>-<1..3>`), `egg`.
+- `rpg/assets/*.webp` — class portraits (`class-<deptId>`), head crops (`avatar-<deptId>`), pets (`pet-<a|b|c>-<1..4>`), zone bosses (`boss-<1..3>`), `egg`.
   Missing files fall back to silhouettes.
 - Storage: reads `sgk_progress_*`, `gmp-quiz-results`; writes only `sgk_rpg_v1` and one
   `source: "inpage"` record per document in `gmp-quiz-results`.
