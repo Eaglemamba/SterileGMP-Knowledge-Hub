@@ -53,9 +53,9 @@
     { zh: '中堅', en: 'Core' }, { zh: '專家', en: 'Advanced' }
   ];
   var PETS = {
-    a: { color: '#38bdf8', stages: ['水滴精靈', '霧氣精靈', '蒸氣小龍'] },
-    b: { color: '#34d399', stages: ['雛梟', '風梟', '層流大梟'] },
-    c: { color: '#a78bfa', stages: ['玻瓶史萊姆', '晶體獸', '琉璃守衛獸'] }
+    a: { color: '#38bdf8', voice: '咕嚕', stages: ['水滴精靈', '霧氣精靈', '蒸氣小龍', '雲海龍王'] },
+    b: { color: '#34d399', voice: '呼呼', stages: ['雛梟', '風梟', '層流大梟', '無塵天梟'] },
+    c: { color: '#a78bfa', voice: '啵', stages: ['玻瓶史萊姆', '晶體獸', '琉璃守衛獸', '琉璃聖獸'] }
   };
   var CLUSTER_ZH = ['無菌製程', '滅菌過濾', '容器密封', '品質系統', '環境監測', '檢驗方法', '廠房設備', '先進療法', '法規遵循', '新興技術'];
   var RARITY = ['N', 'R', 'SR', 'SSR'];
@@ -233,7 +233,7 @@
     return {
       docs: docs, xp: xp, level: level, lo: needXp(level), hi: needXp(level + 1),
       activity: activity, cards: cards, perfect: perfect, classes: classes, maxRank: maxRank, titles: titles,
-      petStage: S.pet ? Math.max(1 + (maxRank >= 1 ? 1 : 0) + (maxRank >= 2 ? 1 : 0), S.earned.pet) : 0,
+      petStage: S.pet ? Math.max(1 + Math.min(maxRank, 3), S.earned.pet) : 0,   // hatch, then one stage per rank
       sectionsRead: Object.keys(docs).reduce(function (a, k) { return a + docs[k].read; }, 0)
     };
   }
@@ -593,7 +593,7 @@
           showRewards([{ kind: 'hatch' }]);
         }
       }, [h('img', { src: petImg(line, 1), alt: '' }), h('b', { text: PETS[line].stages[0] }),
-        h('small', { text: '→ ' + PETS[line].stages[1] + ' → ' + PETS[line].stages[2] })]));
+        h('small', { text: '→ ' + PETS[line].stages.slice(1).join(' → ') })]));
     });
   }
 
@@ -609,7 +609,7 @@
   function showRewards(events) {
     var big = [];
     events.forEach(function (e) {
-      if (e.kind === 'xp') toast('+' + e.n + ' XP');
+      if (e.kind === 'xp') { toast('+' + e.n + ' XP'); palCheer(); }
       else big.push(e);
     });
     if (big.length > 4) {   // many at once (e.g. several docs cleared elsewhere): one summary
@@ -683,12 +683,17 @@
       if (S.end[pageDocKey] || d.shell) return;
       var main = document.querySelector('.main-content');
       if (!main) return;
-      if (main.getBoundingClientRect().bottom - window.innerHeight < 240) { S.end[pageDocKey] = 1; saveState(); }
+      if (main.getBoundingClientRect().bottom - window.innerHeight < 240) {
+        S.end[pageDocKey] = 1; saveState();
+        palSay('整份讀到最後了，辛苦了！', 1);
+      }
     }
     window.addEventListener('scroll', function () {
       clearTimeout(timer);
-      timer = setTimeout(function () { checkEnd(); refresh(); }, 900);  // after the page's own 500 ms save
+      timer = setTimeout(function () { checkEnd(); refresh(); palTick(); }, 900);  // after the page's own 500 ms save
     }, { passive: true });
+
+    initPal(d);
 
     if (d.quiz) {
       fetch(ROOT + 'rpg/quiz/' + pageDocKey + '.json').then(function (r) { return r.json(); }).then(function (bank) {
@@ -764,6 +769,7 @@
       result.textContent = '答對 ' + score + ' / ' + questions.length + (ok ? '，通過！' : '，未達 80%，看完解析可以再挑戰一次。');
       result.className = 'rpg-quiz-result ' + (ok ? 'is-pass' : 'is-fail');
       submit.textContent = '再挑戰一次';
+      palSay(ok ? (score === questions.length ? '全對！漂亮。' : '過關了！') : '差一點。看完解析再來一次，我等你。', 1);
 
       var dq = S.quiz[pageDocKey] = S.quiz[pageDocKey] || {};
       var old = dq[sid];
@@ -817,6 +823,105 @@
     all = all.filter(function (r) { return !(r && r.source === 'inpage' && r.doc_key === pageDocKey); });
     all.unshift(rec);
     lsSet(QUIZ_KEY, JSON.stringify(all));
+  }
+
+  /* ---------- reading companion (document pages) ----------
+     The pet (or the egg, before hatching) sits in the corner while reading. It
+     speaks when a new section starts (with that section's first learning
+     objective), on XP, on challenge results, when idle, and when poked.
+     priority: 0 = rate-limited chatter, 1 = important, 2 = asked for (click). */
+  var pal = null, palImg = null, palBubble = null, palDoc = null, palSec = null;
+  var palHideT = null, palIdleT = null, palSleepT = null, palLast = 0, palAwakeAt = 0, palPokes = 0;
+
+  function initPal(d) {
+    if (!S.profile || pal) return;
+    palDoc = d;
+    document.body.classList.add('rpg-doc');
+    palBubble = h('div', { class: 'rpg-pal-bubble', role: 'status', hidden: true });
+    palImg = h('img', { alt: '' });
+    pal = h('div', { class: 'rpg-pal', id: 'rpg-pal' }, [
+      palBubble, h('button', { type: 'button', class: 'rpg-pal-btn', 'aria-label': '夥伴，點一下跟牠說話', onclick: palPoke }, [palImg])
+    ]);
+    document.body.appendChild(pal);
+    palDraw();
+    ['scroll', 'keydown', 'pointerdown'].forEach(function (ev) { window.addEventListener(ev, palAwake, { passive: true }); });
+    palAwake();
+    setTimeout(function () { palSay(palGreeting(), 1); }, 1500);
+  }
+  function palDraw() {
+    if (!pal) return;
+    var src = S.pet ? petImg(S.pet.line, G.petStage) : eggImg();
+    if (palImg.getAttribute('src') !== src) palImg.setAttribute('src', src);
+    palImg.className = 'rpg-pal-img ' + (S.pet ? petCls('rpg-idle') : 'rpg-wobble');
+  }
+  function palVoice() { return S.pet ? PETS[S.pet.line].voice + '，' : ''; }
+  function palSay(text, priority) {
+    if (!pal || !text) return;
+    var now = Date.now();
+    if (S.palQuiet && priority < 2) return;
+    if (!priority && now - palLast < 15000) return;
+    palLast = now;
+    clear(palBubble);
+    palBubble.appendChild(h('span', { text: text }));
+    palBubble.appendChild(h('button', { type: 'button', class: 'rpg-pal-mute', text: S.palQuiet ? '恢復說話' : '安靜一點', onclick: function (e) {
+      e.stopPropagation();
+      S.palQuiet = !S.palQuiet; saveState();
+      palSay(S.palQuiet ? '好，我安靜陪你。點我才會說話。' : palVoice() + '我回來了。', 2);
+    } }));
+    palBubble.hidden = false;
+    pal.classList.remove('is-talking'); void pal.offsetWidth; pal.classList.add('is-talking');
+    clearTimeout(palHideT);
+    palHideT = setTimeout(function () { palBubble.hidden = true; pal.classList.remove('is-talking'); }, 6000 + text.length * 60);
+  }
+  function palGreeting() {
+    if (!S.pet) return '讀完第一節，蛋就會孵化。';
+    var hr = new Date().getHours(), st = G.docs[pageDocKey];
+    var hi = hr < 5 ? '這麼晚還在讀，辛苦了' : hr < 11 ? '早安' : hr < 14 ? '午安' : hr < 18 ? '下午好' : '晚上好';
+    var where = st.cleared ? '這份你已經通關了，來複習嗎？' : st.read ? '這份讀到第 ' + st.read + ' / ' + st.total + ' 節了，接著讀吧。' : '這份有 ' + st.total + ' 節，我們從頭開始。';
+    return palVoice() + hi + '。' + where;
+  }
+  /* Called after each scroll pause: announce the section that just came into view. */
+  function palTick() {
+    if (!pal) return;
+    var cur = null;
+    palDoc.top.forEach(function (t) {
+      var el = document.getElementById(t.id);
+      if (el && el.getBoundingClientRect().top <= 170) cur = t;
+    });
+    if (!cur || cur.id === palSec) return;
+    var first = palSec === null;
+    palSec = cur.id;
+    if (first) return;                                           // the greeting covers the starting section
+    var li = document.getElementById(cur.id).querySelector('.learning-objectives li');
+    var goal = li ? li.textContent.replace(/\s+/g, ' ').trim() : '';
+    if (goal.length > 64) goal = goal.slice(0, 62) + '…';
+    palSay('Section ' + cur.num + '「' + (cur.zh || cur.en) + '」。' + (goal ? '先抓這個重點：' + goal : '') +
+      (palDoc.quiz && palDoc.quiz[cur.id] ? '　這節最後有挑戰。' : ''), 1);
+  }
+  function palCheer() {
+    if (!pal) return;
+    pal.classList.remove('rpg-hop'); void pal.offsetWidth; pal.classList.add('rpg-hop');
+    palSay(palVoice() + ['又前進一點了。', '這節收下了。', '穩穩地讀。'][Math.floor(Math.random() * 3)], 0);
+  }
+  function palPoke() {
+    var st = G.docs[pageDocKey], lines = [
+      '這份文件讀了 ' + st.read + ' / ' + st.total + ' 節' + (st.quizSecs.length ? '，挑戰過了 ' + st.passed + ' / ' + st.quizSecs.length + ' 節。' : '。'),
+      '離 Lv ' + (G.level + 1) + ' 還差 ' + (G.hi - G.xp) + ' XP。',
+      liveStreak() ? '已經連續 ' + liveStreak() + ' 天了，今天也算數。' : '今天讀完一節，連續天數就開始算。',
+      S.pet ? (G.petStage >= 4 ? '我已經是最終型態了，接下來換你變強。' : '等你升到「' + RANKS[G.petStage].zh + '」，我就會進化。') : '我還在蛋裡，讀完第一節就出來。'
+    ];
+    palAwake();
+    palSay(palVoice() + lines[palPokes++ % lines.length], 2);
+  }
+  /* Idle handling: a nudge after 2 minutes without input, asleep after 5. */
+  function palAwake() {
+    var now = Date.now();
+    if (now - palAwakeAt < 1000) return;
+    palAwakeAt = now;
+    if (pal.classList.contains('is-sleep')) { pal.classList.remove('is-sleep'); palSay(palVoice() + '你回來了。', 1); }
+    clearTimeout(palIdleT); clearTimeout(palSleepT);
+    palIdleT = setTimeout(function () { palSay(['看累了嗎？站起來動一下再回來。', '卡住的話，先看右邊的導師解析。', '喝口水，我在這裡等。'][Math.floor(Math.random() * 3)], 0); }, 120000);
+    palSleepT = setTimeout(function () { pal.classList.add('is-sleep'); palSay('Zzz…', 1); }, 300000);
   }
 
   /* ---------- review ambush (spaced review of a section passed a week ago) ---------- */
@@ -917,7 +1022,7 @@
         h('img', { class: petCls('rpg-idle'), src: petImg(S.pet.line, G.petStage), alt: line.stages[G.petStage - 1] }),
         h('div', {}, [
           h('b', { text: line.stages[G.petStage - 1] + (S.pet.shiny ? '（異色）' : '') }),
-          h('p', { text: G.petStage >= 3 ? '已經是最終型態。' : '下一次進化：任一職業升到「' + RANKS[G.petStage].zh + '」階級，進化為' + line.stages[G.petStage] + '。' })
+          h('p', { text: G.petStage >= 4 ? '已經是最終型態。' : '下一次進化：任一職業升到「' + RANKS[G.petStage].zh + '」階級，進化為' + line.stages[G.petStage] + '。' })
         ])
       ]));
     } else {
@@ -1030,7 +1135,7 @@
   }
   function stat(v, l) { return h('div', { class: 'rpg-stat' }, [h('b', { text: v }), h('span', { text: l })]); }
 
-  function renderAll() { renderBar(); renderQuest(); renderCharacter(); }
+  function renderAll() { renderBar(); renderQuest(); renderCharacter(); palDraw(); }
 
   /* ---------- boot ---------- */
   function loadScript(src) {
