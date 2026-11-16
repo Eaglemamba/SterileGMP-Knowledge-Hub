@@ -62,6 +62,12 @@
   // One crafting material per topic cluster (crafting itself comes later; drops are recorded now).
   var MATS = ['無菌結晶', '濾膜碎片', '硼矽玻片', '簽核印記', '培養皿之塵', '試劑滴', '不鏽鋼鉚釘', '細胞微光', '法典書頁', '電路晶片'];
   var XP_REVIEW = 15, REVIEW_GAP = 7 * 24 * 3600 * 1000;
+  var XP_BOSS = 100, BOSS_Q = 10;     // boss battle: bonus XP on the first win, questions per fight
+  var BOSS_LINES = [
+    '「一粒灰塵就夠了。你的無菌區守得住嗎？」',
+    '「我在管線死角住得很舒服，你清不掉我的。」',
+    '「就算把菌全滅了，我也還在。看你擋不擋得住熱原。」'
+  ];
   // Small monsters met in section challenges, one per topic cluster (art: rpg/assets/mob-<cluster>.webp).
   var MOBS = ['破洞手套鬼', '芽孢彈', '裂瓶蟹', '漏簽幽靈', '落菌菇', '混濁史萊姆', '死角鰻', '混種雙子', '缺失紙蝠', '當機機器人'];
   var GROUP_LABEL = { PDA: 'PDA', ISPE: 'ISPE', FDA: 'FDA', PICS: 'PIC/S', ICH: 'ICH', USP: 'USP', ISO: 'ISO', PHEUR: 'Ph.Eur.' };
@@ -165,7 +171,9 @@
     s.review = s.review || { last: {}, day: '', ok: 0 };
     s.today = s.today || { d: '', docs: [] };                 // documents with a challenge passed today
     s.flags = s.flags || {};
-    s.mapSeen = s.mapSeen || {};                              // class id -> stages revealed on the 3D map last time
+    s.mapSeen = s.mapSeen || {};
+    s.bossWin = s.bossWin || {};                              // '<class>:<zone>' -> { best, total, ts }
+    s.bossTry = s.bossTry || {};                              // '<class>:<zone>' -> attempts                              // class id -> stages revealed on the 3D map last time
     return s;
   }
   function saveState() { lsSet(STATE_KEY, JSON.stringify(S)); }
@@ -230,15 +238,21 @@
     var classes = {}, maxRank = 0;
     DEPTS.forEach(function (dep) {
       var rank = 0, open = true;
-      var tiers = dep.tiers.map(function (t) {
+      var tiers = dep.tiers.map(function (t, ti) {
         var list = t.docs.filter(function (x) { return M.docs[x.key] && !M.docs[x.key].shell; });
         var req = list.filter(function (x) { return x.required; });
         var pool = req.length ? req : list;
         var need = req.length ? req.length : Math.min(3, list.length);
         var got = pool.filter(function (x) { return docs[x.key].cleared; }).length;
-        var done = got >= need;
+        var ready = got >= need;
+        // A zone whose documents have question banks ends in a boss battle; the rank-up waits for the win.
+        // Zones without banks rank up on reading alone, as before.
+        var banked = list.filter(function (x) { return M.docs[x.key].quiz; });
+        var win = S.bossWin[dep.id + ':' + ti] || null;
+        var done = ready && (!banked.length || !!win);
         if (open && done) rank++; else open = false;
-        return { tier: t, list: list, req: req, need: need, got: Math.min(got, need), done: done, anyOf: !req.length };
+        return { tier: t, idx: ti, list: list, req: req, need: need, got: Math.min(got, need), ready: ready, done: done, anyOf: !req.length,
+          banked: banked, hasBoss: banked.length > 0, beaten: !!win, win: win };
       });
       rank = Math.max(rank, S.earned.rank[dep.id] || 0);
       classes[dep.id] = { dep: dep, rank: rank, tiers: tiers };
@@ -375,6 +389,7 @@
           var st = G.docs[list[j].key];
           if (!st.cleared) { pick = { st: st, tier: t, tierIdx: i, entry: list[j] }; break; }
         }
+        if (requiredOnly && !pick && t.ready && t.hasBoss && !t.beaten) pick = { boss: true, tier: t, tierIdx: i };
         if (requiredOnly && !t.done && !pick && t.anyOf) {
           for (var k = 0; k < t.list.length; k++) {
             var s2 = G.docs[t.list[k].key];
@@ -386,6 +401,7 @@
     scan(true);
     if (!pick) scan(false);
     if (!pick) return { done: true, cls: c };
+    if (pick.boss) { pick.cls = c; pick.mode = 'boss'; pick.href = ROOT + 'map.html?boss=' + pick.tierIdx; return pick; }
 
     var st = pick.st, d = st.doc, target, mode;
     if (!st.readAll) {
@@ -484,6 +500,23 @@
         h('p', { text: '可以到角色頁轉職，挑戰另一個部門的主線。' }),
         h('a', { class: 'rpg-btn', href: ROOT + 'character.html', text: '前往角色頁' })
       ])]));
+      return;
+    }
+    if (q.boss) {
+      var bz = ZONES[q.tierIdx] || ZONES[ZONES.length - 1], bimg = asset('boss-' + (q.tierIdx + 1));
+      mount.appendChild(h('div', { class: 'rpg-quest rpg-quest-boss' }, [
+        bimg ? h('img', { class: 'rpg-quest-portrait rpg-quest-bossimg', src: bimg, alt: bz.boss }) : portrait,
+        h('div', { class: 'rpg-quest-body' }, [
+          h('span', { class: 'rpg-tag', text: '魔王戰' }),
+          h('h2', { text: bz.zh + '的魔王　' + bz.boss }),
+          h('p', { class: 'rpg-quest-sec', text: '升階試煉：' + RANKS[q.tierIdx + 1].zh + CLASS_META[c.dep.id].job + '。從這一區讀過的文件隨機出 ' + Math.min(BOSS_Q, bossCount(q.tier)) + ' 題，答對 80% 擊敗牠。' }),
+          h('p', { class: 'rpg-quest-why', text: BOSS_LINES[q.tierIdx] || '' }),
+          h('div', { class: 'rpg-quest-foot' }, [
+            h('a', { class: 'rpg-btn', href: q.href, text: '挑戰魔王' }),
+            h('a', { class: 'rpg-quest-map', href: ROOT + 'map.html', text: '闖關地圖' })
+          ])
+        ])
+      ]));
       return;
     }
     var d = q.st.doc, main = q.entry.required || q.tier.anyOf;
@@ -677,6 +710,10 @@
     } else if (e.kind === 'secret') {
       var sc = SECRETS.filter(function (x) { return x.id === e.id; })[0];
       kicker = 'SECRET'; title = sc.zh; sub = '隱藏稱號：' + sc.how;
+    } else if (e.kind === 'bossdown') {
+      var dz = ZONES[e.ti] || ZONES[ZONES.length - 1], dimg = asset('boss-' + (e.ti + 1));
+      kicker = 'BOSS DEFEATED'; title = dz.boss; sub = '升階試煉通過　+' + XP_BOSS + ' XP';
+      art = dimg ? h('img', { class: 'rpg-pop rpg-defeated', src: dimg, alt: '' }) : null;
     } else if (e.kind === 'hatch') {
       kicker = 'HATCHED'; title = PETS[S.pet.line].stages[0]; sub = '新的夥伴加入';
       art = h('img', { class: 'rpg-pop', src: petImg(S.pet.line, 1), alt: '' });
@@ -749,64 +786,124 @@
     });
   }
 
-  function drawQuiz(block, sid, questions, bank) {
-    clear(block);
-    var rec = (S.quiz[pageDocKey] || {})[sid];
-    var passed = rec && rec.total && rec.best / rec.total >= PASS;
-    var answers = {};
-    var status = h('span', { class: 'rpg-quiz-best' + (passed ? ' is-pass' : ''), text: rec ? (passed ? '已通過　' : '') + '最佳 ' + rec.best + ' / ' + rec.total : '尚未挑戰' });
-    var result = h('p', { class: 'rpg-quiz-result', 'aria-live': 'polite' });
-    var list = h('ol', { class: 'rpg-quiz-list' });
-    var items = [];
+  /* ---------- battles (section challenges and boss fights) ----------
+     One question at a time. A right answer takes one HP off the foe, a wrong one
+     takes a heart off the player. Hearts = mistakes the 80 % pass mark allows + 1,
+     so running out of hearts is exactly failing the pass mark. */
+  function heartsFor(n) { return n - Math.ceil(n * PASS) + 1; }
+  function shuffle(a) {
+    for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t; }
+    return a;
+  }
+  function runBattle(host, o) {
+    var n = o.questions.length, hearts = heartsFor(n), i = 0, score = 0, wrong = 0, last = [];
+    var foeImg = o.foeImg ? h('img', { class: 'rpg-foe-img', src: o.foeImg, alt: o.foe }) : h('span', { class: 'rpg-foe-img rpg-foe-blank', text: '？' });
+    var hp = h('span', { class: 'rpg-hp', role: 'meter', 'aria-label': o.foe + '的血量', 'aria-valuemin': 0, 'aria-valuemax': n });
+    var heartsEl = h('span', { class: 'rpg-hearts', 'aria-label': '你的生命' });
+    var foeBox = h('div', { class: 'rpg-foe' }, [foeImg, h('b', { text: o.foe }), hp]);
+    var you = h('div', { class: 'rpg-you' }, [avatarEl(), h('b', { text: S.profile ? S.profile.nick : '你' }), heartsEl]);
+    var stage = h('div', { class: 'rpg-battle-stage' });
+    clear(host);
+    host.appendChild(h('div', { class: 'rpg-battle' }, [
+      h('div', { class: 'rpg-arena' + (o.kind === 'boss' ? ' is-boss' : '') }, [foeBox, h('span', { class: 'rpg-vs', text: 'VS' }), you]),
+      stage
+    ]));
 
-    questions.forEach(function (q, qi) {
-      var opts = h('div', { class: 'rpg-quiz-opts', role: 'radiogroup', 'aria-label': '第 ' + (qi + 1) + ' 題選項' });
-      var buttons = {};
-      Object.keys(q.options).forEach(function (letter) {
-        var b = h('button', { type: 'button', class: 'rpg-opt', role: 'radio', 'aria-checked': 'false', onclick: function () {
-          if (block.classList.contains('is-marked')) return;
-          answers[qi] = letter;
-          Object.keys(buttons).forEach(function (l) {
-            buttons[l].classList.toggle('is-picked', l === letter);
-            buttons[l].setAttribute('aria-checked', l === letter ? 'true' : 'false');
-          });
-        } }, [h('b', { text: letter }), h('span', { text: q.options[letter] })]);
-        buttons[letter] = b; opts.appendChild(b);
-      });
+    function meters() {
+      clear(hp);
+      for (var k = 0; k < n; k++) hp.appendChild(h('i', { class: k < n - score ? 'is-on' : '' }));
+      hp.setAttribute('aria-valuenow', String(n - score));
+      clear(heartsEl);
+      for (var j = 0; j < hearts; j++) heartsEl.appendChild(h('i', { class: j < hearts - wrong ? 'is-on' : '', text: '♥' }));
+      heartsEl.setAttribute('aria-label', '你的生命 ' + (hearts - wrong) + ' / ' + hearts);
+    }
+    function hit(el, cls, text) {
+      el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls);
+      var f = h('span', { class: 'rpg-dmg', text: text });
+      el.appendChild(f);
+      setTimeout(function () { if (f.parentNode) f.parentNode.removeChild(f); }, 900);
+    }
+    function ask() {
+      var q = o.questions[i], answered = false;
+      clear(stage);
+      var opts = h('div', { class: 'rpg-quiz-opts' });
       var exp = h('div', { class: 'rpg-quiz-exp', hidden: true }, [
         h('p', { text: q.explanation || '' }),
         q.reference ? h('small', { text: '出處：' + q.reference }) : null
       ]);
-      items.push({ q: q, buttons: buttons, exp: exp });
-      list.appendChild(h('li', {}, [h('p', { class: 'rpg-quiz-q', text: q.question }), opts, exp]));
-    });
-
-    var submit = h('button', { class: 'rpg-btn', type: 'button', text: '交卷', onclick: function () {
-      if (block.classList.contains('is-marked')) { drawQuiz(block, sid, questions, bank); return; }
-      if (Object.keys(answers).length < questions.length) { result.textContent = '還有 ' + (questions.length - Object.keys(answers).length) + ' 題沒作答。'; return; }
-      var score = 0, last = [];
-      items.forEach(function (it, i) {
-        var ok = answers[i] === it.q.correct;
-        last.push(ok ? 1 : 0); if (ok) score++;
-        Object.keys(it.buttons).forEach(function (l) {
-          it.buttons[l].disabled = true;
-          if (l === it.q.correct) it.buttons[l].classList.add('is-right');
-          else if (l === answers[i]) it.buttons[l].classList.add('is-wrong');
-        });
-        it.exp.hidden = false;
+      var next = h('button', { class: 'rpg-btn', type: 'button', hidden: true, onclick: function () {
+        i++;
+        if (i >= n || wrong >= hearts) finish(); else ask();
+      } });
+      Object.keys(q.options).forEach(function (letter) {
+        opts.appendChild(h('button', { type: 'button', class: 'rpg-opt', 'data-l': letter, onclick: function () {
+          if (answered) return;
+          answered = true;
+          var ok = letter === q.correct;
+          Array.prototype.forEach.call(opts.children, function (btn) {
+            btn.disabled = true;
+            if (btn.getAttribute('data-l') === q.correct) btn.classList.add('is-right');
+            else if (btn.getAttribute('data-l') === letter) btn.classList.add('is-wrong');
+          });
+          last.push(ok ? 1 : 0);
+          if (ok) { score++; hit(foeBox, 'is-hit', '-1'); } else { wrong++; hit(you, 'is-hurt', '♥-1'); }
+          meters();
+          exp.hidden = false;
+          next.textContent = i + 1 >= n || wrong >= hearts ? '看結果' : '下一題';
+          next.hidden = false;
+          try { next.focus({ preventScroll: true }); } catch (e) {}
+        } }, [h('b', { text: letter }), h('span', { text: q.options[letter] })]));
       });
-      block.classList.add('is-marked');
-      var ok = score / questions.length >= PASS;
-      result.textContent = '答對 ' + score + ' / ' + questions.length + (ok ? '，通過！' : '，未達 80%，看完解析可以再挑戰一次。');
-      result.className = 'rpg-quiz-result ' + (ok ? 'is-pass' : 'is-fail');
-      submit.textContent = '再挑戰一次';
-      palSay(ok ? (score === questions.length ? '全對！漂亮。' : '過關了！') : '差一點。看完解析再來一次，我等你。', 1);
+      stage.appendChild(h('p', { class: 'rpg-battle-count', text: '第 ' + (i + 1) + ' / ' + n + ' 題' + (q.docTitle ? '　出自：' + q.docTitle : '') }));
+      stage.appendChild(h('p', { class: 'rpg-quiz-q', text: q.question }));
+      stage.appendChild(opts);
+      stage.appendChild(exp);
+      stage.appendChild(h('div', { class: 'rpg-quiz-foot' }, [next]));
+    }
+    function finish() {
+      var won = score / n >= PASS, early = i < n;
+      foeBox.classList.toggle('is-down', won);
+      clear(stage);
+      stage.appendChild(h('div', { class: 'rpg-battle-end ' + (won ? 'is-win' : 'is-lose'), role: 'status' }, [
+        h('strong', { text: won ? '擊敗' + o.foe + '！' : '被' + o.foe + '擊退了' }),
+        h('p', { text: '答對 ' + score + ' / ' + n + (won ? (score === n ? '，全對。' : '。') : early ? '。心扣完了，剩下 ' + (n - i) + ' 題下次再戰。' : '，還差一點。') }),
+        h('button', { class: 'rpg-btn', type: 'button', text: '再戰一次', onclick: function () { if (o.again) o.again(); else runBattle(host, o); } })
+      ]));
+      o.onEnd({ score: score, total: n, last: last, won: won });
+    }
+    meters();
+    ask();
+  }
 
+  function drawQuiz(block, sid, questions, bank) {
+    clear(block);
+    var n = questions.length;
+    var rec = (S.quiz[pageDocKey] || {})[sid];
+    var passed = !!(rec && rec.total && rec.best / rec.total >= PASS);
+    var mi = clusterOf(M.docs[pageDocKey]), mobSrc = mi >= 0 ? asset('mob-' + mi) : null, foe = mi >= 0 ? MOBS[mi] : '章節守門怪';
+    var status = h('span', { class: 'rpg-quiz-best' + (passed ? ' is-pass' : ''), text: rec ? (passed ? '已通過　' : '') + '最佳 ' + rec.best + ' / ' + rec.total : '尚未挑戰' });
+    var title = h('h3', { text: (passed ? '已擊敗　' : '遭遇　') + foe });
+    var head = h('div', { class: 'rpg-quiz-head' + (passed ? ' is-beaten' : '') }, [
+      mobSrc ? h('img', { class: 'rpg-quiz-mob', src: mobSrc, alt: '' }) : null,
+      h('span', { class: 'rpg-tag', text: 'CHALLENGE' }), title, status
+    ]);
+    var area = h('div', { class: 'rpg-quiz-area' });
+    block.appendChild(head);
+    block.appendChild(h('p', { class: 'rpg-quiz-lead', text: '共 ' + n + ' 題，一題一題打：答對打掉牠一格血，答錯你扣一顆心（你有 ' + heartsFor(n) + ' 顆）。答對 80% 就擊敗牠。可以重複挑戰，只記最佳成績。' }));
+    block.appendChild(area);
+    area.appendChild(h('button', { class: 'rpg-btn', type: 'button', text: rec ? '再戰' : '迎戰', onclick: fight }));
+
+    function fight() {
+      runBattle(area, { kind: 'mob', foe: foe, foeImg: mobSrc, questions: questions, onEnd: save });
+    }
+    function save(r) {
+      var score = r.score, ok = r.won;
+      palSay(ok ? (score === n ? '全對！漂亮。' : '打倒了！') : '被打回來了。看完解析再上，我等你。', 1);
       var dq = S.quiz[pageDocKey] = S.quiz[pageDocKey] || {};
       var old = dq[sid];
       var wasPass = !!(old && old.total && old.best / old.total >= PASS);
       dq[sid] = {
-        best: Math.max(score, old ? old.best : 0), total: questions.length, tries: (old ? old.tries : 0) + 1, last: last, ts: Date.now(),
+        best: Math.max(score, old ? old.best : 0), total: n, tries: (old ? old.tries : 0) + 1, last: r.last, ts: Date.now(),
         first: old ? old.first : score,                        // score of the very first attempt (decides shiny cards)
         pt: old && old.pt ? old.pt : (ok ? Date.now() : 0)      // when it was first passed (decides review ambushes)
       };
@@ -818,21 +915,70 @@
         if (old && old.tries >= 2) S.flags.comeback = 1;
       }
       saveState();
-      status.textContent = (dq[sid].best / dq[sid].total >= PASS ? '已通過　' : '') + '最佳 ' + dq[sid].best + ' / ' + dq[sid].total;
-      status.classList.toggle('is-pass', dq[sid].best / dq[sid].total >= PASS);
+      var nowPass = dq[sid].best / dq[sid].total >= PASS;
+      status.textContent = (nowPass ? '已通過　' : '') + '最佳 ' + dq[sid].best + ' / ' + dq[sid].total;
+      status.classList.toggle('is-pass', nowPass);
+      title.textContent = (nowPass ? '已擊敗　' : '遭遇　') + foe;
+      head.classList.toggle('is-beaten', nowPass);
       recordQuizResult(bank);
       refresh();
-    } });
+    }
+  }
 
-    var mi = clusterOf(M.docs[pageDocKey]), mobSrc = mi >= 0 ? asset('mob-' + mi) : null;
-    block.appendChild(h('div', { class: 'rpg-quiz-head' + (passed ? ' is-beaten' : '') }, [
-      mobSrc ? h('img', { class: 'rpg-quiz-mob', src: mobSrc, alt: '' }) : null,
-      h('span', { class: 'rpg-tag', text: 'CHALLENGE' }),
-      h('h3', { text: mi >= 0 ? (passed ? '已擊敗　' : '遭遇　') + MOBS[mi] : '章節挑戰' }), status
-    ]));
-    block.appendChild(h('p', { class: 'rpg-quiz-lead', text: '共 ' + questions.length + ' 題單選，答對 80% 過關。可以重複挑戰，只記最佳成績。' }));
-    block.appendChild(list);
-    block.appendChild(h('div', { class: 'rpg-quiz-foot' }, [submit, result]));
+  /* ---------- boss battle (map page) ---------- */
+  function bossCount(t) {
+    return t.banked.reduce(function (a, x) {
+      var qz = M.docs[x.key].quiz || {};
+      return a + Object.keys(qz).reduce(function (b, k) { return b + qz[k]; }, 0);
+    }, 0);
+  }
+  function openBoss(ti) {
+    if (!S || !S.profile || !G) return;
+    var c = G.classes[S.profile.cls], t = c && c.tiers[ti];
+    if (!t) return;
+    var zone = ZONES[ti] || ZONES[ZONES.length - 1], img = asset('boss-' + (ti + 1));
+    if (!t.hasBoss) { toast('這一區還沒有題庫，沒有魔王戰。'); return; }
+    if (!t.ready) {
+      modal([
+        h('span', { class: 'rpg-tag', text: 'BOSS' }),
+        h('h2', { text: zone.boss + '還沒現身' }),
+        h('p', { class: 'rpg-modal-lead', text: '先通關這一區' + (t.anyOf ? '任 ' + t.need + ' 份文件' : '的必讀文件') + '（目前 ' + t.got + ' / ' + t.need + '），魔王才會出來。' })
+      ]);
+      return;
+    }
+    Promise.all(t.banked.map(function (x) {
+      var d = M.docs[x.key];
+      return fetch(ROOT + 'rpg/quiz/' + x.key + '.json').then(function (r) { return r.json(); }).then(function (b) {
+        return (b.questions || []).map(function (q) { return Object.assign({}, q, { docTitle: d.titleZh || d.title }); });
+      });
+    })).then(function (lists) {
+      var pool = [].concat.apply([], lists);
+      if (!pool.length) { toast('題庫讀不到，請稍後再試。'); return; }
+      var key = S.profile.cls + ':' + ti, box = h('div', { class: 'rpg-boss-fight' });
+      modal([
+        h('span', { class: 'rpg-tag', text: 'BOSS BATTLE' }),
+        h('h2', { text: zone.zh + '的魔王　' + zone.boss }),
+        h('p', { class: 'rpg-modal-lead', text: (BOSS_LINES[ti] || '') + '　從這一區的文件隨機出 ' + Math.min(BOSS_Q, pool.length) + ' 題，答對 80% 擊敗牠' + (t.beaten ? '。' : '，就能升階。') }),
+        box
+      ], { cls: 'rpg-modal-wide rpg-modal-boss' });
+      function go() {
+        runBattle(box, {
+          kind: 'boss', foe: zone.boss, foeImg: img, again: go,
+          questions: shuffle(pool.slice()).slice(0, BOSS_Q),
+          onEnd: function (r) {
+            S.bossTry[key] = (S.bossTry[key] || 0) + 1;
+            if (!r.won) { saveState(); return; }
+            var first = !S.bossWin[key];
+            S.bossWin[key] = { best: Math.max(r.score, first ? 0 : S.bossWin[key].best), total: r.total, ts: Date.now() };
+            if (first) S.bonus += XP_BOSS;
+            saveState();
+            if (first) showRewards([{ kind: 'bossdown', ti: ti }]);
+            refresh();
+          }
+        });
+      }
+      go();
+    }).catch(function (e) { console.warn('[rpg] boss battle failed to load', e); toast('題庫讀不到，請稍後再試。'); });
   }
 
   /* Once every section of a document has been attempted, mirror the best
@@ -1089,7 +1235,7 @@
       main.appendChild(h('details', { class: 'rpg-tier' + (t.done ? ' is-done' : ''), open: i === Math.min(c.rank, c.tiers.length - 1) }, [
         h('summary', {}, [
           h('b', { text: t.tier.labelZh + '　' + t.tier.label }),
-          h('span', { text: (t.anyOf ? '任選 ' : '必讀 ') + t.got + ' / ' + t.need + (t.done ? '　完成' : '') })
+          h('span', { text: (t.anyOf ? '任選 ' : '必讀 ') + t.got + ' / ' + t.need + (t.done ? '　完成' : t.ready && t.hasBoss ? '　魔王待挑戰' : '') })
         ]), rows
       ]));
     });
@@ -1193,7 +1339,7 @@
       return;
     }
     var c = G.classes[S.profile.cls], dep = c.dep, q = nextQuest();
-    var curKey = q && !q.done ? q.st.key : null;
+    var curKey = q && !q.done && q.st ? q.st.key : null;
     var cols = mapCols = mapColsFor(mount.clientWidth || window.innerWidth);
 
     mount.appendChild(h('header', { class: 'rpg-map-head', style: '--c:' + dep.color }, [
@@ -1241,22 +1387,27 @@
         place(h('li', { class: cls + (st.cleared ? ' path-done' : '') }, [node]), i);
       });
 
-      place(h('li', { class: 'rpg-stage rpg-boss' + (t.done ? ' is-clear' : '') }, [
-        h('span', { class: 'rpg-stage-link' }, [
-          asset('boss-' + (ti + 1))
-            ? h('img', { class: 'rpg-boss-img', src: asset('boss-' + (ti + 1)), alt: zone.boss })
-            : h('span', { class: 'rpg-stage-dot' }, [h('b', { text: t.done ? '✓' : 'BOSS' })]),
-          h('span', { class: 'rpg-stage-name', text: (t.done ? '已擊敗　' : '魔王　') + zone.boss }),
-          h('span', { class: 'rpg-stage-meta', text: '升階試煉：' + RANKS[ti + 1].zh + CLASS_META[dep.id].job }),
-          h('span', { class: 'rpg-stage-meta', text: (t.anyOf ? '任選通關 ' : '必讀通關 ') + t.got + ' / ' + t.need })
-        ])
+      var canFight = t.ready && t.hasBoss && !t.beaten;
+      var bossInner = [
+        asset('boss-' + (ti + 1))
+          ? h('img', { class: 'rpg-boss-img', src: asset('boss-' + (ti + 1)), alt: zone.boss })
+          : h('span', { class: 'rpg-stage-dot' }, [h('b', { text: t.done ? '✓' : 'BOSS' })]),
+        h('span', { class: 'rpg-stage-name', text: (t.done ? '已擊敗　' : '魔王　') + zone.boss }),
+        h('span', { class: 'rpg-stage-meta', text: '升階試煉：' + RANKS[ti + 1].zh + CLASS_META[dep.id].job }),
+        h('span', { class: 'rpg-stage-meta', text: (t.anyOf ? '任選通關 ' : '必讀通關 ') + t.got + ' / ' + t.need +
+          (!t.hasBoss ? '・本區沒有魔王戰' : t.beaten ? '・魔王已擊敗' : t.ready ? '・魔王現身了' : '・通關後魔王現身') }),
+        canFight ? h('span', { class: 'rpg-btn rpg-btn-sm', text: '挑戰' }) : null
+      ];
+      place(h('li', { class: 'rpg-stage rpg-boss' + (t.done ? ' is-clear' : '') + (canFight ? ' is-ready' : '') }, [
+        canFight ? h('button', { type: 'button', class: 'rpg-stage-link', onclick: function () { openBoss(ti); } }, bossInner)
+          : h('span', { class: 'rpg-stage-link' }, bossInner)
       ]), total - 1);
 
       mount.appendChild(h('section', { class: 'rpg-zone ' + zone.cls + (t.done ? ' is-done' : '') + (fog ? ' is-fog' : '') }, [
         h('div', { class: 'rpg-zone-head' }, [
           h('span', { class: 'rpg-zone-no', text: 'ZONE ' + (ti + 1) }),
           h('h2', {}, [zone.zh, h('small', { text: zone.en + '　' + t.tier.labelZh + ' ' + t.tier.label })]),
-          h('span', { class: 'rpg-zone-state', text: t.done ? '已攻略' : fog ? '完成前一區的升階試煉後正式開放（文件仍可先讀）' : '攻略中 ' + t.got + ' / ' + t.need })
+          h('span', { class: 'rpg-zone-state', text: t.done ? '已攻略' : t.ready && t.hasBoss ? '魔王現身了，擊敗牠就能升階' : fog ? '完成前一區的升階試煉後正式開放（文件仍可先讀）' : '攻略中 ' + t.got + ' / ' + t.need })
         ]),
         list
       ]));
@@ -1279,7 +1430,7 @@
   function mapData() {
     if (!S || !S.profile || !G) return null;
     var c = G.classes[S.profile.cls], dep = c.dep, q = nextQuest();
-    var curKey = q && !q.done ? q.st.key : null;
+    var curKey = q && !q.done && q.st ? q.st.key : null;
     return {
       cls: dep.id, name: dep.nameZh, color: dep.color, rank: c.rank,
       avatar: avatarImg(S.profile.avatar),
@@ -1288,7 +1439,8 @@
         var zone = ZONES[ti] || ZONES[ZONES.length - 1];
         return {
           zh: zone.zh, boss: zone.boss, bossImg: asset('boss-' + (ti + 1)), rankName: RANKS[ti + 1].zh + CLASS_META[dep.id].job,
-          unlocked: ti <= c.rank, done: t.done, got: t.got, need: t.need, anyOf: t.anyOf,
+          ti: ti, unlocked: ti <= c.rank, done: t.done, ready: t.ready, hasBoss: t.hasBoss, beaten: t.beaten,
+          got: t.got, need: t.need, anyOf: t.anyOf,
           stages: t.tier.docs.filter(function (x) { return M.docs[x.key]; }).map(function (x) {
             var d = M.docs[x.key], st = G.docs[x.key], here = x.key === curKey;
             return {
@@ -1305,6 +1457,7 @@
   window.SGKRpg = {
     ready: false,
     mapData: mapData,
+    fightBoss: function (ti) { openBoss(ti); },
     onChange: function (cb) { listeners.push(cb); },
     /* Remember how many stages the 3D map showed; returns the previous count (null on the first visit). */
     mapSeen: function (n) {
@@ -1341,6 +1494,10 @@
       window.SGKRpg.ready = true;
       document.dispatchEvent(new Event('sgk-rpg-ready'));
       setTimeout(maybeReview, 1200);
+      try {
+        var bq = new URLSearchParams(location.search).get('boss');
+        if (bq !== null && document.getElementById('rpg-map')) setTimeout(function () { openBoss(parseInt(bq, 10) || 0); }, 300);
+      } catch (e) {}
       window.addEventListener('storage', function (e) {
         if (e.key && (e.key === STATE_KEY || e.key.indexOf('sgk_progress_') === 0)) { S = loadState(); refresh(); }
       });
