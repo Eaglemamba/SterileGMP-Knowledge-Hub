@@ -305,7 +305,13 @@
       var z = u.boss;
       card.appendChild(el('span', 'rpg-tag', 'BOSS'));
       card.appendChild(el('h3', '', z.boss + (z.done ? '（已擊敗）' : '')));
-      card.appendChild(el('p', 'rpg-map3d-meta', '升階試煉：' + z.rankName + '。' + (z.anyOf ? '任選通關 ' : '必讀通關 ') + z.got + ' / ' + z.need + (z.done ? '，通往下一座島的橋已經架好。' : '，全部通關後擊敗魔王。')));
+      var tail = z.done ? '，通往下一座島的橋已經架好。' : !z.hasBoss ? '。這一區還沒有題庫，通關即升階。' : z.ready ? '。魔王現身了，擊敗牠就能升階。' : '，全部通關後魔王現身。';
+      card.appendChild(el('p', 'rpg-map3d-meta', '升階試煉：' + z.rankName + '。' + (z.anyOf ? '任選通關 ' : '必讀通關 ') + z.got + ' / ' + z.need + tail));
+      if (z.ready && z.hasBoss && !z.beaten) {
+        var fb = el('button', 'rpg-btn', '挑戰魔王'); fb.type = 'button';
+        fb.onclick = function () { card.hidden = true; window.SGKRpg.fightBoss(z.ti); };
+        card.appendChild(fb);
+      }
     }
     var x = el('button', 'rpg-map3d-x', '×'); x.type = 'button'; x.setAttribute('aria-label', '關閉'); x.onclick = function () { card.hidden = true; };
     card.appendChild(x);

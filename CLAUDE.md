@@ -84,6 +84,7 @@ section challenges. Off by default; `?rpg=1` switches it on in that browser, `?r
 - `rpg/map3d.js` — 3D stage map on `map.html` only (three.js r128 from cdnjs). Reads everything through `window.SGKRpg`; the flat list rendered by `rpg.js` below it is the fallback.
 - `rpg/manifest.json` — **generated**. Rebuild after adding/merging a document or editing a question bank:
   `python scripts/build_rpg_manifest.py` (`--check` verifies it is current).
+- Battles: a section challenge is a turn-based fight against the topic's small monster (right answer = foe -1 HP, wrong = player -1 heart; hearts = mistakes the 80% mark allows + 1). A zone (tier) whose documents have question banks ends in a boss battle (10 random questions from those banks, `map.html?boss=<zone>`); its rank-up waits for the win. Zones without banks rank up on reading alone.
 - `rpg/quiz/<KEY>.json` — in-page question bank (MCQ only). Same per-question fields as
   `knowledge/exams/*.json` plus `"section": "<section_map id>"`. Aim for 5 questions per section; pass mark is 80%.
   Kept out of `knowledge/exams/` on purpose so `/quiz` behaviour is unchanged.
