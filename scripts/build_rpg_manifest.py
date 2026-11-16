@@ -42,6 +42,63 @@ def page_count(pages):
     return None
 
 
+# Card label: the document's own number as people cite it (USP〈71〉, EP 2.6.1, ISO 14644, PDA TR13 ...).
+FDA_CODES = {
+    'FDA-Aseptic': 'FDA Aseptic Guidance 2004',
+    'FDA-CCIT': 'FDA CCIT Guidance 2008',
+    'FDA-ComboProd-CGMP': 'FDA Combination CGMP 2017',
+    'FDA-ComboProd-HF': 'FDA Combination HF 2016',
+    'FDA-ContainerClosure': 'FDA Container Closure 1999',
+    'FDA-GlassVial': 'FDA Glass Vial & Stopper 2024',
+    'FDA-ParametricRelease': 'FDA Parametric Release 2010',
+    'FDA-ProcessInspection': 'FDA CPGM 7356.002A',
+    'FDA-ProcessVal': 'FDA Process Validation 2011',
+    'FDA-21CFR-211': '21 CFR 210/211',
+    'FDA-21CFR-820': '21 CFR 820',
+    'FDA-21CFR-Biologics': '21 CFR 600–680',
+    'FDA-21CFR-Part11': '21 CFR Part 11',
+    'FDA-21CFR-Part312': '21 CFR Part 312',
+    'FDA-21CFR-Part4': '21 CFR Part 4',
+}
+ISPE_CODES = {
+    'ISPE-Vol3': 'ISPE Baseline Vol.3', 'ISPE-Vol4': 'ISPE Baseline Vol.4', 'ISPE-Vol5': 'ISPE Baseline Vol.5',
+    'ISPE-Vol6': 'ISPE Baseline Vol.6', 'ISPE-Vol7': 'ISPE Baseline Vol.7', 'ISPE-GAMP5': 'ISPE GAMP 5',
+    'ISPE-HVAC': 'ISPE GPG HVAC', 'ISPE-CTC': 'ISPE GPG Temp. Mapping', 'ISPE-IT': 'ISPE GAMP GPG IT',
+    'ISPE-ProcessGas': 'ISPE GPG Process Gases', 'ISPE-QC': 'ISPE-PDA Quality Culture', 'ISPE-SUT': 'ISPE GPG SUT',
+    'ISPE-Sampling': 'ISPE GPG Sampling', 'ISPE-TechTransfer': 'ISPE GPG Tech Transfer',
+}
+
+
+def doc_code(key, r, group):
+    src = (r.get('source') or '').strip()
+    if group == 'USP':                                   # USP 〈1229.1〉 -> USP〈1229.1〉
+        m = re.search(r'[〈⟨<]\s*([0-9.]+)\s*[〉⟩>]', src) or re.search(r'USP-([0-9-]+)', key)
+        return 'USP〈' + m.group(1).replace('-', '.') + '〉' if m else src
+    if group == 'PHEUR':                                 # Ph.Eur. 2.6.1 -> EP 2.6.1
+        m = re.search(r'(\d+(?:\.\d+)+)', src)
+        return 'EP ' + m.group(1) if m else src
+    if group == 'ISO':                                   # ISO-10993-1 -> ISO 10993-1, ISO-TR-24971 -> ISO/TR 24971
+        if key.startswith('ISO-TR-'):
+            return 'ISO/TR ' + key[len('ISO-TR-'):]
+        return 'ISO ' + key[len('ISO-'):]
+    if group == 'PICS':
+        m = re.match(r'PICS-Annex(\d+)$', key)
+        if m:
+            return 'PIC/S Annex ' + m.group(1)
+        if key == 'PICS-PE011':
+            return 'PIC/S PE 011'
+        return src
+    if group == 'FDA':
+        return FDA_CODES.get(key, src)
+    if group == 'ISPE':
+        return ISPE_CODES.get(key, src)
+    if group == 'ICH':                                   # ICH Q9(R1)
+        return src or key.replace('-', ' ')
+    if group == 'PDA':                                   # PDA TR13-2, PDA PtC-1
+        return src or ('PDA ' + key)
+    return src or key
+
+
 def section_ids(html_path):
     """Ids of every .chapter-section in document order (matches the page's own
     querySelectorAll('.chapter-section'), which drives sgk_progress_*)."""
@@ -106,6 +163,7 @@ def build():
             'titleZh': r.get('titleZh') or '',
             'group': folder.split('/')[0],
             'short': color.get('short') or key,
+            'code': doc_code(key, r, folder.split('/')[0]),
             'bar': color.get('bar') or '#64748b',
             'tags': r.get('tags') or [],
             'pages': page_count(r.get('pages')),
