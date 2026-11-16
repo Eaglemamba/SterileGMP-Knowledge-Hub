@@ -549,12 +549,13 @@
     var cls = 'rpg-card' + (locked ? ' rpg-card-locked' : ' rpg-card-r' + c.rarity + (c.awakened ? ' rpg-card-awakened' : '') + (c.shiny ? ' rpg-card-shiny' : ''));
     return h('a', { class: cls, href: ROOT + d.file, style: '--bar:' + d.bar, title: d.title }, [
       h('span', { class: 'rpg-card-top' }, [
-        h('span', { class: 'rpg-card-short', text: d.short }),
+        h('span', { class: 'rpg-card-short', text: GROUP_LABEL[d.group] || d.group }),
         locked ? null : h('span', { class: 'rpg-card-rarity', text: RARITY[c.rarity] })
       ]),
       !locked && asset('card-' + d.group) ? h('img', { class: 'rpg-card-art', src: asset('card-' + d.group), alt: '', loading: 'lazy' }) : null,
+      h('span', { class: 'rpg-card-code', text: d.code || d.short }),
       h('span', { class: 'rpg-card-title', text: locked ? '？？？' : (d.titleZh || d.title) }),
-      h('span', { class: 'rpg-card-foot', text: locked ? (GROUP_LABEL[d.group] || d.group) : (c.shiny ? '異色' : c.awakened ? '覺醒' : (d.quiz ? '可挑戰' : '已讀完')) })
+      h('span', { class: 'rpg-card-foot', text: locked ? '未收集' : (c.shiny ? '異色' : c.awakened ? '覺醒' : (d.quiz ? '可挑戰' : '已讀完')) })
     ]);
   }
 
@@ -695,7 +696,7 @@
       art = h('img', { src: classImg(S.profile.cls), alt: '' });
     } else if (e.kind === 'card') {
       var st = G.docs[e.key];
-      kicker = e.shiny ? 'SHINY' : e.upgrade ? 'AWAKENED' : 'NEW CARD'; title = st.doc.short;
+      kicker = e.shiny ? 'SHINY' : e.upgrade ? 'AWAKENED' : 'NEW CARD'; title = st.doc.code || st.doc.short;
       sub = e.shiny ? '異色文件卡：每一節都一次全對' : e.awakened ? '文件卡覺醒' : '獲得文件卡';
       art = h('div', { class: 'rpg-cut-card rpg-flip' }, [cardEl(st, false)]);
     } else if (e.kind === 'title') {
