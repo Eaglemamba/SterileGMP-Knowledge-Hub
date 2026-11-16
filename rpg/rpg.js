@@ -89,6 +89,11 @@
     '「我在管線死角住得很舒服，你清不掉我的。」',
     '「就算把菌全滅了，我也還在。看你擋不擋得住熱原。」'
   ];
+  var BOSS_RAGE = [
+    '「這點程度就想清場？我還有整個高壓區的落塵！」',
+    '「刷得掉表面，刷不掉我築好的膜！」',
+    '「滅菌又怎樣？我是死了也還在的熱原！」'
+  ];
   // Small monsters met in section challenges, one per topic cluster (art: rpg/assets/mob-<cluster>.webp).
   var MOBS = ['破洞手套鬼', '芽孢彈', '裂瓶蟹', '漏簽幽靈', '落菌菇', '混濁史萊姆', '死角鰻', '混種雙子', '缺失紙蝠', '當機機器人'];
   var GROUP_LABEL = { PDA: 'PDA', ISPE: 'ISPE', FDA: 'FDA', PICS: 'PIC/S', ICH: 'ICH', USP: 'USP', ISO: 'ISO', PHEUR: 'Ph.Eur.' };
@@ -202,7 +207,8 @@
     s.bossTry = s.bossTry || {};
     s.gear = s.gear || {};
     s.gear.own = s.gear.own || {};                            // gear id -> time crafted
-    s.gear.on = s.gear.on || {};                              // slot -> gear id                              // '<class>:<zone>' -> attempts                              // class id -> stages revealed on the 3D map last time
+    s.gear.on = s.gear.on || {};                              // slot -> gear id
+    s.weak = s.weak || {};                                    // mistake book: '<key>#<qid>' -> { s: section, n: times wrong, t: last wrong }                              // '<class>:<zone>' -> attempts                              // class id -> stages revealed on the 3D map last time
     return s;
   }
   function saveState() { lsSet(STATE_KEY, JSON.stringify(S)); }
@@ -364,6 +370,27 @@
     S.mats['c' + i] = (S.mats['c' + i] || 0) + 1;
     toast('獲得素材：' + (MATS[i] || CLUSTERS[i].name));
   }
+
+  /* ---------- mistake book ----------
+     A question answered wrong in any battle or review stays in S.weak until it
+     is answered right on a LATER day than the last miss (re-answering right after
+     reading the explanation does not count). Clearing one drops a material. */
+  function weakKey(id) { return id.slice(0, id.lastIndexOf('#')); }
+  function noteAnswer(key, q, ok) {
+    if (!key || q.id == null || !M.docs[key]) return false;
+    var id = key + '#' + q.id, w = S.weak[id];
+    if (!ok) { S.weak[id] = { s: q.section, n: (w ? w.n : 0) + 1, t: Date.now() }; saveState(); return false; }
+    if (!w || dayKey(new Date(w.t)) === dayKey(new Date())) return false;
+    delete S.weak[id];
+    S.flags.cleansed = (S.flags.cleansed || 0) + 1;
+    dropMat(key);
+    saveState();
+    return true;
+  }
+  function weakIds(key) {
+    return Object.keys(S.weak).filter(function (id) { return M.docs[weakKey(id)] && (!key || weakKey(id) === key); });
+  }
+  function weakDue(id) { return dayKey(new Date(S.weak[id].t)) !== dayKey(new Date()); }
 
   /* Compare with what the learner has already been shown and queue rewards. */
   function refresh(silent) {
@@ -607,8 +634,87 @@
     return { el: wrap, close: close };
   }
 
+  /* ---------- prologue: a short storyboard before the first character sheet ---------- */
+  var CALM = (function () { try { return matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { return false; } })();
+  /* Types `text` into `el` one character at a time; returns a function that finishes it at once. */
+  function typewrite(el, text, done) {
+    var k = 0, timer = null;
+    function stop() { if (timer) clearInterval(timer); timer = null; el.textContent = text; el.classList.remove('is-typing'); if (done) { var d = done; done = null; d(); } }
+    if (CALM) { stop(); return function () {}; }
+    el.textContent = ''; el.classList.add('is-typing');
+    timer = setInterval(function () { k++; el.textContent = text.slice(0, k); if (k >= text.length) stop(); }, 38);
+    return stop;
+  }
+  function storyArt(kind) {
+    function imgs(list, cls) {
+      return h('div', { class: 'rpg-story-row ' + (cls || '') }, list.filter(Boolean).map(function (src, j) {
+        return h('img', { src: src, alt: '', style: '--d:' + (j * 0.18) + 's' });
+      }));
+    }
+    if (kind === 'plant') return h('div', { class: 'rpg-story-plant', 'aria-hidden': 'true' }, [h('i'), h('i'), h('i'), h('i')]);
+    if (kind === 'mobs') return imgs([asset('mob-0'), asset('mob-4'), asset('mob-1'), asset('mob-6'), asset('mob-3')], 'is-mobs');
+    if (kind === 'bosses') return imgs([asset('boss-1'), asset('boss-2'), asset('boss-3')], 'is-bosses');
+    if (kind === 'heroes') return imgs(DEPTS.slice(0, 8).map(function (d) { return asset('avatar-' + d.id); }), 'is-heroes');
+    if (kind === 'egg') return h('img', { class: 'rpg-egg rpg-wobble rpg-story-egg', src: eggImg(), alt: '' });
+    return null;
+  }
+  var STORY = [
+    { art: 'plant', kicker: 'PROLOGUE', text: '這裡是一座無菌藥廠。潔淨室日夜運轉，每一瓶藥都要在看不見的戰場上，守住「無菌」兩個字。' },
+    { art: 'mobs', kicker: 'ALERT', alarm: true, text: '某天夜裡，警報響起。破洞手套、落菌、漏簽……污染魔物從每一個被忽略的細節裡爬了出來。' },
+    { art: 'bosses', kicker: 'THREE ISLES', text: '牠們的首領盤據在三座島上：微粒魔、生物膜王、內毒素龍。不打倒牠們，廠區就無法放行任何一批產品。' },
+    { art: 'heroes', kicker: 'YOU', text: '你是剛報到的新進人員。武器不是劍，是法規和指引：讀懂一份文件，就多一份收復廠區的力量。' },
+    { art: 'egg', kicker: 'PARTNER', text: '報到第一天，有人塞給你一顆蛋。「讀完第一節，牠就會孵化，陪你一路打上去。」' }
+  ];
+  function openPrologue(done) {
+    var i = 0, finishType = null, ended = false;
+    var art = h('div', { class: 'rpg-story-art' });
+    var kicker = h('span', { class: 'rpg-story-kicker' });
+    var text = h('p', { class: 'rpg-story-text', 'aria-live': 'polite' });
+    var dots = h('div', { class: 'rpg-story-dots', 'aria-hidden': 'true' });
+    var hint = h('span', { class: 'rpg-story-hint', text: '點一下繼續' });
+    var skip = h('button', { class: 'rpg-story-skip', type: 'button', text: '跳過 ▸▸', onclick: function (e) { e.stopPropagation(); end(); } });
+    var wrap = h('div', { class: 'rpg-story', role: 'dialog', 'aria-modal': 'true', 'aria-label': '序章' }, [
+      skip, h('div', { class: 'rpg-story-panel' }, [art, h('div', { class: 'rpg-story-box' }, [kicker, text, h('div', { class: 'rpg-story-foot' }, [dots, hint])])])
+    ]);
+    function show() {
+      var p = STORY[i];
+      clear(art); clear(dots);
+      var a = storyArt(p.art); if (a) art.appendChild(a);
+      kicker.textContent = p.kicker;
+      wrap.classList.toggle('is-alarm', !!p.alarm);
+      wrap.classList.remove('is-in'); void wrap.offsetWidth; wrap.classList.add('is-in');
+      STORY.forEach(function (_, k) { dots.appendChild(h('i', { class: k === i ? 'is-on' : '' })); });
+      hint.textContent = i === STORY.length - 1 ? '點一下建立角色' : '點一下繼續';
+      finishType = typewrite(text, p.text);
+    }
+    function advance() {
+      if (text.classList.contains('is-typing')) { finishType(); return; }   // first tap finishes the line
+      if (++i >= STORY.length) end(); else show();
+    }
+    function onKey(e) {
+      if (e.key === 'Escape') end();
+      else if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowRight') { e.preventDefault(); advance(); }
+    }
+    function end() {
+      if (ended) return; ended = true;
+      if (finishType) finishType();
+      document.removeEventListener('keydown', onKey);
+      wrap.classList.add('is-out');
+      setTimeout(function () { if (wrap.parentNode) wrap.parentNode.removeChild(wrap); if (done) done(); }, CALM ? 0 : 380);
+    }
+    wrap.addEventListener('click', advance);
+    document.addEventListener('keydown', onKey);
+    document.body.appendChild(wrap);
+    show();
+    try { skip.focus({ preventScroll: true }); } catch (e) {}
+  }
+
   /* ---------- onboarding / edit character ---------- */
   function openOnboarding() {
+    if (!S.profile && !S.flags.prologue) {
+      openPrologue(function () { S.flags.prologue = 1; saveState(); openOnboarding(); });
+      return;
+    }
     var editing = !!S.profile;
     var pick = { cls: editing ? S.profile.cls : 'production', avatar: editing ? S.profile.avatar : 'production' };
     var nick = h('input', { class: 'rpg-input', type: 'text', maxlength: '16', placeholder: '暱稱（最多 16 字）', value: editing ? S.profile.nick : '' });
@@ -839,8 +945,27 @@
     if (!d || !q.section) return null;
     return key === pageDocKey ? '#' + q.section : ROOT + d.file + '#' + q.section;
   }
+  /* The questions just missed, with the right answer and the explanation. */
+  function missedList(qs, open) {
+    return h('details', { class: 'rpg-missed', open: open }, [
+      h('summary', { text: '這次答錯的 ' + qs.length + ' 題' }),
+      h('ol', {}, qs.map(function (q) {
+        var src = sourceHref(q);
+        return h('li', {}, [
+          h('p', { class: 'rpg-missed-q', text: q.question }),
+          h('p', { class: 'rpg-missed-a', text: '正解 ' + q.correct + '：' + q.options[q.correct] }),
+          h('p', { class: 'rpg-missed-e', text: q.explanation || '' }),
+          q.reference || src ? h('small', {}, [
+            q.reference ? h('span', { text: '出處：' + q.reference + '　' }) : null,
+            src ? h('a', { href: src, text: '回原文 →' }) : null
+          ]) : null
+        ]);
+      }))
+    ]);
+  }
   function runBattle(host, o) {
-    var n = o.questions.length, hearts = battleHearts(o.kind, n), i = 0, score = 0, wrong = 0, lost = 0, last = [];
+    var n = o.questions.length, hearts = o.hearts || battleHearts(o.kind, n), i = 0, score = 0, wrong = 0, lost = 0, last = [];
+    var missed = [], cleansed = 0;
     var shield = wearing('gloves') ? 1 : 0;
     var foeImg = o.foeImg ? h('img', { class: 'rpg-foe-img', src: o.foeImg, alt: o.foe }) : h('span', { class: 'rpg-foe-img rpg-foe-blank', text: '？' });
     var hp = h('span', { class: 'rpg-hp', role: 'meter', 'aria-label': o.foe + '的血量', 'aria-valuemin': 0, 'aria-valuemax': n });
@@ -850,11 +975,48 @@
     var you = h('div', { class: 'rpg-you' }, [avatarEl(), h('b', { text: S.profile ? S.profile.nick : '你' }), heartsEl,
       worn.length ? h('span', { class: 'rpg-worn' }, worn.map(function (g) { return h('img', { src: gearImg(g), alt: g.zh, title: g.zh + '：' + g.eff }); })) : null]);
     var stage = h('div', { class: 'rpg-battle-stage' });
+    var arena = h('div', { class: 'rpg-arena' + (o.kind === 'boss' ? ' is-boss' : '') }, [foeBox, h('span', { class: 'rpg-vs', text: 'VS' }), you]);
+    var raged = false;
     clear(host);
-    host.appendChild(h('div', { class: 'rpg-battle' }, [
-      h('div', { class: 'rpg-arena' + (o.kind === 'boss' ? ' is-boss' : '') }, [foeBox, h('span', { class: 'rpg-vs', text: 'VS' }), you]),
-      stage
-    ]));
+    host.appendChild(h('div', { class: 'rpg-battle' }, [arena, stage]));
+
+    /* A banner across the arena: the entrance, the boss's mid-fight line. Tap to skip. */
+    function banner(kicker, line, ms, then) {
+      var b = h('div', { class: 'rpg-arena-banner' + (o.kind === 'boss' ? ' is-boss' : '') }, [
+        h('span', { text: kicker }), line ? h('p', {}) : null
+      ]);
+      var over = false, finishLine = function () {};
+      function out() {
+        if (over) return; over = true; finishLine();
+        b.classList.add('is-out');
+        setTimeout(function () { if (b.parentNode) b.parentNode.removeChild(b); if (then) then(); }, CALM ? 0 : 260);
+      }
+      b.addEventListener('click', out);
+      arena.appendChild(b);
+      if (line) finishLine = typewrite(b.lastChild, line);
+      setTimeout(out, CALM ? Math.min(ms, 1400) : ms);
+    }
+    function intro() {
+      if (o.kind === 'drill') { ask(); return; }
+      arena.classList.add('is-intro');
+      stage.appendChild(h('p', { class: 'rpg-battle-count', text: '戰鬥即將開始…（點橫幅可略過）' }));
+      setTimeout(function () { arena.classList.remove('is-intro'); }, 900);
+      // let the foe finish charging in before the banner covers the top of the arena
+      setTimeout(function () {
+        if (o.kind === 'boss') banner('WARNING　魔王 ' + o.foe + ' 現身', o.line || '', 3200, ask);
+        else banner('野生的 ' + o.foe + ' 出現了！', null, 1400, ask);
+      }, CALM ? 0 : 750);
+    }
+    function burst(el) {
+      if (CALM) return;
+      var box = h('span', { class: 'rpg-burst', 'aria-hidden': 'true' });
+      for (var k = 0; k < 14; k++) {
+        var ang = k / 14 * Math.PI * 2, r = 50 + Math.random() * 50;
+        box.appendChild(h('i', { style: '--x:' + Math.round(Math.cos(ang) * r) + 'px;--y:' + Math.round(Math.sin(ang) * r - 20) + 'px;--d:' + (Math.random() * 0.2).toFixed(2) + 's' }));
+      }
+      el.appendChild(box);
+      setTimeout(function () { if (box.parentNode) box.parentNode.removeChild(box); }, 1400);
+    }
 
     function meters() {
       clear(hp);
@@ -870,6 +1032,12 @@
       var f = h('span', { class: 'rpg-dmg', text: text });
       el.appendChild(f);
       setTimeout(function () { if (f.parentNode) f.parentNode.removeChild(f); }, 900);
+    }
+    function slash() {
+      if (CALM) return;
+      var s = h('span', { class: 'rpg-slash', 'aria-hidden': 'true' });
+      foeBox.appendChild(s);
+      setTimeout(function () { if (s.parentNode) s.parentNode.removeChild(s); }, 500);
     }
     function ask() {
       var q = o.questions[i], answered = false;
@@ -897,11 +1065,18 @@
             else if (btn.getAttribute('data-l') === letter) btn.classList.add('is-wrong');
           });
           last.push(ok ? 1 : 0);
-          if (ok) { score++; hit(foeBox, 'is-hit', '-1'); }
+          if (!ok) missed.push(q);
+          var clean = noteAnswer(q.docKey || pageDocKey, q, ok);
+          if (clean) cleansed++;
+          if (ok) { score++; hit(foeBox, 'is-hit', clean ? '淨化' : '-1'); slash(); }
           else if (shield) { wrong++; shield = 0; hit(you, 'is-hurt', '護盾'); }
           else { wrong++; lost++; hit(you, 'is-hurt', '♥-1'); }
           if (!ok && backLink) backLink.hidden = false;
           meters();
+          if (o.kind === 'boss' && !raged && score >= Math.ceil(n / 2) && score < n) {
+            raged = true; arena.classList.add('is-rage');
+            banner('魔王暴走！', o.rage || '', 2600, null);
+          }
           exp.hidden = false;
           next.textContent = i + 1 >= n || lost >= hearts ? '看結果' : '下一題';
           next.hidden = false;
@@ -916,18 +1091,26 @@
       stage.appendChild(h('div', { class: 'rpg-quiz-foot' }, [next]));
     }
     function finish() {
-      var won = score / n >= PASS, early = i < n;
-      foeBox.classList.toggle('is-down', won);
+      var won = score / n >= PASS, early = i < n, drill = o.kind === 'drill';
+      foeBox.classList.toggle('is-down', won && drill);
+      if (won && !drill) { foeBox.classList.add('is-dissolve'); burst(foeBox); }
+      arena.classList.toggle('is-lost', !won && !drill);
+      arena.classList.remove('is-rage');
       clear(stage);
-      stage.appendChild(h('div', { class: 'rpg-battle-end ' + (won ? 'is-win' : 'is-lose'), role: 'status' }, [
-        h('strong', { text: won ? '擊敗' + o.foe + '！' : '被' + o.foe + '擊退了' }),
-        h('p', { text: '答對 ' + score + ' / ' + n + (won ? (score === n ? '，全對。' : '。') : early ? '。心扣完了，剩下 ' + (n - i) + ' 題下次再戰。' : '，還差一點。') }),
-        h('button', { class: 'rpg-btn', type: 'button', text: '再戰一次', onclick: function () { if (o.again) o.again(); else runBattle(host, o); } })
+      var head = drill ? '練習結束' : won ? '擊敗' + o.foe + '！' : '被' + o.foe + '擊退了';
+      var line = '答對 ' + score + ' / ' + (drill ? i : n) + (drill ? '' : won ? (score === n ? '，全對。' : '。') : early ? '。心扣完了，剩下 ' + (n - i) + ' 題下次再戰。' : '，還差一點。');
+      if (cleansed) line += '　淨化了 ' + cleansed + ' 道錯題。';
+      if (missed.length) line += '　答錯的題已記進錯題本，明天起答對就能淨化。';
+      stage.appendChild(h('div', { class: 'rpg-battle-end ' + (won || drill ? 'is-win' : 'is-lose'), role: 'status' }, [
+        h('strong', { text: head }),
+        h('p', { text: line }),
+        missed.length ? missedList(missed, !won && !drill) : null,
+        h('button', { class: 'rpg-btn', type: 'button', text: drill ? '再練一次' : '再戰一次', onclick: function () { if (o.again) o.again(); else runBattle(host, o); } })
       ]));
       o.onEnd({ score: score, total: n, last: last, won: won });
     }
     meters();
-    ask();
+    intro();
   }
 
   function drawQuiz(block, sid, questions, bank) {
@@ -949,7 +1132,7 @@
     area.appendChild(h('button', { class: 'rpg-btn', type: 'button', text: rec ? '再戰' : '迎戰', onclick: fight }));
 
     function fight() {
-      runBattle(area, { kind: 'mob', foe: foe, foeImg: mobSrc, questions: questions, onEnd: save });
+      runBattle(area, { kind: 'mob', foe: foe, foeImg: mobSrc, questions: shuffle(questions.slice()), onEnd: save });
     }
     function save(r) {
       var score = r.score, ok = r.won;
@@ -1013,12 +1196,12 @@
       modal([
         h('span', { class: 'rpg-tag', text: 'BOSS BATTLE' }),
         h('h2', { text: zone.zh + '的魔王　' + zone.boss }),
-        h('p', { class: 'rpg-modal-lead', text: (BOSS_LINES[ti] || '') + '　從這一區的文件隨機出 ' + Math.min(BOSS_Q, pool.length) + ' 題，答對 80% 擊敗牠' + (t.beaten ? '。' : '，就能升階。') }),
+        h('p', { class: 'rpg-modal-lead', text: '從這一區的文件隨機出 ' + Math.min(BOSS_Q, pool.length) + ' 題，答對 80% 擊敗牠' + (t.beaten ? '。' : '，就能升階。') }),
         box
       ], { cls: 'rpg-modal-wide rpg-modal-boss' });
       function go() {
         runBattle(box, {
-          kind: 'boss', foe: zone.boss, foeImg: img, again: go,
+          kind: 'boss', foe: zone.boss, foeImg: img, again: go, line: BOSS_LINES[ti], rage: BOSS_RAGE[ti],
           questions: shuffle(pool.slice()).slice(0, BOSS_Q),
           onEnd: function (r) {
             S.bossTry[key] = (S.bossTry[key] || 0) + 1;
@@ -1173,6 +1356,19 @@
       if (reviewTries++ < 5) setTimeout(maybeReview, 3000);
       return;
     }
+    // A due mistake (missed on an earlier day) comes first.
+    var due = weakIds().filter(weakDue);
+    if (due.length) {
+      var wid = due[Math.floor(Math.random() * due.length)], wkey = weakKey(wid), qid = wid.slice(wkey.length + 1);
+      fetch(ROOT + 'rpg/quiz/' + wkey + '.json').then(function (r) { return r.json(); }).then(function (bank) {
+        var q = (bank.questions || []).filter(function (x) { return String(x.id) === qid; })[0];
+        if (!q) { delete S.weak[wid]; saveState(); return; }   // bank was edited; drop the stale entry
+        if (document.querySelector('.rpg-modal, .rpg-cutin')) return;
+        S.review.day = today; saveState();
+        openReview({ key: wkey, sid: q.section, weak: true }, q);
+      }).catch(function () {});
+      return;
+    }
     var pool = [];
     Object.keys(S.quiz).forEach(function (key) {
       if (!M.docs[key] || !M.docs[key].quiz) return;
@@ -1206,8 +1402,11 @@
         });
         exp.hidden = false;
         S.review.last[pick.key + '#' + pick.sid] = Date.now();
-        if (ok) { S.bonus += reviewXp(); S.review.ok++; dropMat(pick.key); }
-        result.textContent = ok ? '答對了，+' + reviewXp() + ' XP' : '這題忘了。看一下解析，' + (wearing('watch') ? '5 天' : '一週') + '後還會再遇到。';
+        var clean = noteAnswer(pick.key, q, ok);                // clearing a mistake already drops a material
+        if (ok) { S.bonus += reviewXp(); S.review.ok++; if (!clean) dropMat(pick.key); }
+        result.textContent = ok ? (clean ? '淨化了這道錯題！+' : '答對了，+') + reviewXp() + ' XP'
+          : pick.weak ? '還是錯了。看一下解析，它會留在錯題本裡。'
+          : '這題忘了。看一下解析，已記進錯題本，' + (wearing('watch') ? '5 天' : '一週') + '後也還會再遇到。';
         result.className = 'rpg-quiz-result ' + (ok ? 'is-pass' : 'is-fail');
         saveState(); refresh();
       } }, [h('b', { text: letter }), h('span', { text: q.options[letter] })]));
@@ -1215,9 +1414,11 @@
     modal([
       h('span', { class: 'rpg-tag', text: 'REVIEW' }),
       h('h2', { text: '複習突擊' }),
-      h('p', { class: 'rpg-modal-lead', text: '你之前通過了「' + (d.titleZh || d.title) + '」的章節挑戰，還記得嗎？答錯不扣分。' }),
+      h('p', { class: 'rpg-modal-lead', text: pick.weak
+        ? '錯題本裡的一題，出自「' + (d.titleZh || d.title) + '」。這次答對就能淨化它。答錯不扣分。'
+        : '你之前通過了「' + (d.titleZh || d.title) + '」的章節挑戰，還記得嗎？答錯不扣分。' }),
       h('p', { class: 'rpg-quiz-q rpg-review-q', text: q.question }), opts, exp, result
-    ], { cls: 'rpg-modal-wide' });
+    ], { cls: 'rpg-modal-wide rpg-modal-alarm' });
   }
 
   /* ---------- workshop (character page) ---------- */
@@ -1296,6 +1497,64 @@
     ]);
   }
 
+  /* ---------- mistake book panel (character page) ---------- */
+  function mistakeBook() {
+    var ids = weakIds(), byDoc = {};
+    ids.forEach(function (id) { (byDoc[weakKey(id)] = byDoc[weakKey(id)] || []).push(id); });
+    var keys = Object.keys(byDoc).sort(function (a, b) { return byDoc[b].length - byDoc[a].length; });
+    var list = h('div', { class: 'rpg-weak-list' });
+    keys.forEach(function (key) {
+      var d = M.docs[key], all = byDoc[key], due = all.filter(weakDue).length;
+      list.appendChild(h('div', { class: 'rpg-weak-row' }, [
+        h('div', { class: 'rpg-weak-info' }, [
+          h('b', { text: d.titleZh || d.title }),
+          h('span', { text: d.code + '　' + all.length + ' 題' + (due < all.length ? '（今天答錯 ' + (all.length - due) + ' 題，明天起可淨化）' : '') })
+        ]),
+        h('button', { class: 'rpg-btn', type: 'button', text: '練習', onclick: function () { openDrill(key); } })
+      ]));
+    });
+    var cleared = S.flags.cleansed || 0;
+    return h('section', { class: 'rpg-panel rpg-weakbook' }, [
+      h('h2', { text: '錯題本　' + ids.length }),
+      h('p', { class: 'rpg-note', text: ids.length
+        ? '戰鬥或複習突擊答錯的題都會記在這裡。隔天以後再答對就能淨化，每淨化一題掉一份素材。複習突擊會優先出這裡的題。'
+        : (cleared ? '錯題本是空的，累計淨化 ' + cleared + ' 題。' : '目前沒有錯題。戰鬥中答錯的題會記在這裡，隔天再來淨化。') }),
+      ids.length ? list : null
+    ]);
+  }
+  function openDrill(key) {
+    var d = M.docs[key];
+    fetch(ROOT + 'rpg/quiz/' + key + '.json').then(function (r) { return r.json(); }).then(function (bank) {
+      var want = {};
+      weakIds(key).forEach(function (id) { want[id.slice(key.length + 1)] = id; });
+      var qs = (bank.questions || []).filter(function (q) { return want[String(q.id)]; }).map(function (q) {
+        delete want[String(q.id)];
+        return Object.assign({}, q, { docKey: key, docTitle: d.titleZh || d.title });
+      });
+      Object.keys(want).forEach(function (k) { delete S.weak[want[k]]; });   // bank was edited; drop stale entries
+      saveState();
+      if (!qs.length) { renderAll(); toast('這份文件沒有錯題了。'); return; }
+      var mi = clusterOf(d), box = h('div', { class: 'rpg-boss-fight' });
+      modal([
+        h('span', { class: 'rpg-tag', text: 'MISTAKE BOOK' }),
+        h('h2', { text: '錯題練習　' + (d.titleZh || d.title) }),
+        h('p', { class: 'rpg-modal-lead', text: '共 ' + qs.length + ' 題，不扣分、不會被擊退。昨天以前答錯的題，這次答對就淨化。' }),
+        box
+      ], { cls: 'rpg-modal-wide' });
+      function go() {
+        runBattle(box, {
+          kind: 'drill', foe: mi >= 0 ? MOBS[mi] : '錯題幽靈', foeImg: mi >= 0 ? asset('mob-' + mi) : null,
+          hearts: qs.length + 1, questions: shuffle(qs.slice()), again: function () {
+            qs = qs.filter(function (q) { return S.weak[key + '#' + q.id]; });
+            if (qs.length) go(); else toast('這份文件的錯題都淨化了！');
+          },
+          onEnd: function () { saveState(); refresh(); }
+        });
+      }
+      go();
+    }).catch(function (e) { console.warn('[rpg] mistake drill failed to load', e); toast('題庫讀不到，請稍後再試。'); });
+  }
+
   /* ---------- character page ---------- */
   var cardFilter = 'ALL';
   function renderCharacter() {
@@ -1325,7 +1584,8 @@
         ]),
         h('div', { class: 'rpg-hero-xp' }, [xpBar(), h('small', { text: '距離 Lv ' + (G.level + 1) + ' 還差 ' + (G.hi - G.xp) + ' XP' })]),
         h('button', { class: 'rpg-btn rpg-btn-ghost', type: 'button', onclick: openOnboarding, text: '編輯角色／轉職' }),
-        h('a', { class: 'rpg-btn rpg-btn-ghost rpg-hero-map', href: ROOT + 'map.html', text: '闖關地圖' })
+        h('a', { class: 'rpg-btn rpg-btn-ghost rpg-hero-map', href: ROOT + 'map.html', text: '闖關地圖' }),
+        h('button', { class: 'rpg-btn rpg-btn-ghost', type: 'button', onclick: function () { openPrologue(null); }, text: '重看序章' })
       ])
     ]));
 
@@ -1418,6 +1678,7 @@
       ml, convertRow()
     ]));
     mount.appendChild(workshop());
+    mount.appendChild(mistakeBook());
 
     /* collection */
     var groups = ['ALL'].concat(Object.keys(GROUP_LABEL));
