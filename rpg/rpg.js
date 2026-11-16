@@ -805,6 +805,93 @@
     setTimeout(function () { t.classList.add('is-out'); setTimeout(function () { if (t.parentNode) t.parentNode.removeChild(t); }, 400); }, 2600);
   }
 
+  /* ---------- full-screen scenes for the two big moments: pet evolution, rank-up ---------- */
+  var RANK_LINES = [
+    '',
+    '你不再是只會照著 SOP 做的新人了。啟程之島的霧散開，修練之島在前方等你。',
+    '同事開始拿問題來問你。偏差、變更、稽核，你都知道該翻哪一份文件。核心之島浮現了。',
+    '你成了大家口中「那個專家」。整座廠區的無菌防線，有一段是你守住的。'
+  ];
+  function scene(e, done) {
+    var steps = [], timers = [], over = false;
+    var art = h('div', { class: 'rpg-scene-art' });
+    var kicker = h('span', { class: 'rpg-story-kicker' });
+    var title = h('strong', { class: 'rpg-scene-title' });
+    var text = h('p', { class: 'rpg-story-text' });
+    var hint = h('span', { class: 'rpg-story-hint', text: '點一下繼續' });
+    var wrap = h('div', { class: 'rpg-story rpg-scene is-' + e.kind, role: 'dialog', 'aria-modal': 'true', 'aria-live': 'polite' }, [
+      h('button', { class: 'rpg-story-skip', type: 'button', text: '跳過 ▸▸', onclick: function (ev) { ev.stopPropagation(); end(); } }),
+      h('div', { class: 'rpg-story-panel' }, [art, h('div', { class: 'rpg-story-box' }, [kicker, title, text, h('div', { class: 'rpg-story-foot' }, [h('span'), hint])])])
+    ]);
+    var finishType = function () {};
+    function say(k, t, line) { kicker.textContent = k; title.textContent = t; finishType = typewrite(text, line); }
+
+    if (e.kind === 'pet') {
+      var pet = PETS[S.pet.line], from = pet.stages[e.n - 2] || pet.stages[0], to = pet.stages[e.n - 1];
+      var oldImg = h('img', { class: 'rpg-scene-old', src: petImg(S.pet.line, Math.max(1, e.n - 1)), alt: '' });
+      var newImg = h('img', { class: petCls('rpg-scene-new'), src: petImg(S.pet.line, e.n), alt: to });
+      art.appendChild(h('div', { class: 'rpg-scene-evo', style: '--c:' + pet.color }, [h('i', { class: 'rpg-scene-ring' }), oldImg, newImg, h('i', { class: 'rpg-scene-flash' })]));
+      steps = [
+        function () { say('……？', from, '「' + pet.voice + '……」' + from + '的身體開始發光了。'); },
+        function () { wrap.classList.add('is-glow'); say('EVOLVING', from, '光越來越亮——'); },
+        function () { wrap.classList.add('is-burst'); say('EVOLUTION', to, from + '進化成了' + to + '！「' + pet.voice + pet.voice + '！」'); burstIn(art); }
+      ];
+    } else {
+      var dep = deptById(S.profile.cls), job = CLASS_META[S.profile.cls].job, zone = ZONES[Math.min(e.n, ZONES.length - 1)];
+      art.appendChild(h('div', { class: 'rpg-scene-rank', style: '--c:' + (dep ? dep.color : '#fbbf24') }, [
+        h('i', { class: 'rpg-scene-rays' }),
+        h('img', { class: 'rpg-scene-hero', src: classImg(S.profile.avatar), alt: '' }),
+        h('span', { class: 'rpg-scene-badge' }, [h('b', { text: RANKS[e.n].zh }), h('small', { text: RANKS[e.n].en })])
+      ]));
+      steps = [
+        function () { say('RANK UP', RANKS[e.n - 1].zh + job + '　→', S.profile.nick + '，你的努力被看見了。'); },
+        function () { wrap.classList.add('is-stamp'); say('RANK UP', RANKS[e.n].zh + job, RANK_LINES[e.n] || ''); burstIn(art); },
+        function () { say('NEXT', zone.zh, e.n < ZONES.length ? '下一站：' + zone.zh + '。守在那裡的是「' + zone.boss + '」。' : '所有島嶼都收復了。接下來，換你帶新人。'); }
+      ];
+    }
+    steps[0].auto = 2000;
+    if (e.kind === 'pet') steps[1].auto = 1700;
+    var i = 0;
+    function run() {
+      steps[i]();
+      hint.textContent = i === steps.length - 1 ? '點一下關閉' : '點一下繼續';
+      var me = i;
+      if (steps[i].auto && !CALM) timers.push(setTimeout(function () { if (i === me && !over) { finishType(); go(); } }, steps[i].auto));
+    }
+    function go() { if (++i >= steps.length) end(); else run(); }
+    function burstIn(host) {
+      if (CALM) return;
+      var box = h('span', { class: 'rpg-burst rpg-scene-burst', 'aria-hidden': 'true' });
+      for (var k = 0; k < 22; k++) {
+        var ang = k / 22 * Math.PI * 2, r = 90 + Math.random() * 90;
+        box.appendChild(h('i', { style: '--x:' + Math.round(Math.cos(ang) * r) + 'px;--y:' + Math.round(Math.sin(ang) * r) + 'px;--d:' + (Math.random() * 0.25).toFixed(2) + 's' }));
+      }
+      host.appendChild(box);
+      timers.push(setTimeout(function () { if (box.parentNode) box.parentNode.removeChild(box); }, 1500));
+    }
+    function advance() {
+      if (text.classList.contains('is-typing')) { finishType(); return; }
+      go();
+    }
+    function onKey(ev) {
+      if (ev.key === 'Escape') end();
+      else if (ev.key === 'Enter' || ev.key === ' ' || ev.key === 'ArrowRight') { ev.preventDefault(); advance(); }
+    }
+    function end() {
+      if (over) return; over = true;
+      finishType();
+      timers.forEach(clearTimeout);
+      document.removeEventListener('keydown', onKey);
+      wrap.classList.add('is-out');
+      setTimeout(function () { if (wrap.parentNode) wrap.parentNode.removeChild(wrap); done(); }, CALM ? 0 : 380);
+    }
+    wrap.addEventListener('click', advance);
+    document.addEventListener('keydown', onKey);
+    document.body.appendChild(wrap);
+    if (CALM) wrap.classList.add('is-glow', 'is-burst', 'is-stamp');
+    run();   // the transformation steps play on their own; taps only speed them up
+  }
+
   var cutQueue = [], cutBusy = false;
   function showRewards(events) {
     var big = [];
@@ -824,6 +911,8 @@
     var e = cutQueue.shift();
     if (!e) { cutBusy = false; return; }
     cutBusy = true;
+    if ((e.kind === 'pet' || e.kind === 'shinypet' || e.kind === 'hatch') && !S.pet) { nextCut(); return; }
+    if ((e.kind === 'pet' && e.n > 1) || (e.kind === 'rank' && e.n > 0)) { scene(e, nextCut); return; }
     var kicker = '', title = '', sub = '', art = null;
     if (e.kind === 'level') { kicker = 'LEVEL UP'; title = 'Lv ' + e.n; sub = '等級提升'; art = h('img', { src: classImg(S.profile.avatar), alt: '' }); }
     else if (e.kind === 'rank') {
