@@ -59,9 +59,30 @@
   };
   var CLUSTER_ZH = ['無菌製程', '滅菌過濾', '容器密封', '品質系統', '環境監測', '檢驗方法', '廠房設備', '先進療法', '法規遵循', '新興技術'];
   var RARITY = ['N', 'R', 'SR', 'SSR'];
-  // One crafting material per topic cluster (crafting itself comes later; drops are recorded now).
+  // One crafting material per topic cluster ('c<i>'), plus 魔王結晶 ('boss') from each boss's first defeat.
   var MATS = ['無菌結晶', '濾膜碎片', '硼矽玻片', '簽核印記', '培養皿之塵', '試劑滴', '不鏽鋼鉚釘', '細胞微光', '法典書頁', '電路晶片'];
+  var BOSS_MAT = '魔王結晶', CONVERT = 3;          // workshop: CONVERT of one material -> 1 of another (not boss crystals)
   var XP_REVIEW = 15, REVIEW_GAP = 7 * 24 * 3600 * 1000;
+  /* Equipment, crafted once each from materials, one item per slot. Effects help you
+     stay in a fight or find the source again; none of them changes how a fight is
+     scored (80 % right is still the pass mark). Art: rpg/assets/gear-<id>.webp. */
+  var SLOTS = { head: '頭部', body: '身體', hand: '手', charm: '飾品', pet: '夥伴', frame: '外框' };
+  var GEAR = [
+    { id: 'gloves', slot: 'hand', zh: '無菌手套', eff: '每場戰鬥第一次答錯不扣心（仍算答錯）', need: { c0: 2, c6: 1 } },
+    { id: 'goggles', slot: 'head', zh: '防霧護目鏡', eff: '作答前先顯示這題的出處章節', need: { c2: 2, c5: 1 } },
+    { id: 'cape', slot: 'body', zh: '層流披風', eff: '魔王戰多 1 顆心', need: { c1: 2, c0: 1, c4: 1 } },
+    { id: 'bookmark', slot: 'charm', zh: '法典書籤', eff: '答錯時出現「回原文」，直接跳到那一節', need: { c8: 2, c3: 1 } },
+    { id: 'amulet', slot: 'charm', zh: '培養皿護符', eff: '複習突擊答對多 +5 XP', need: { c4: 2, c7: 1 } },
+    { id: 'watch', slot: 'charm', zh: '晶片懷錶', eff: '複習突擊提早到 5 天後出現', need: { c9: 2, c6: 1 } },
+    { id: 'ribbon', slot: 'pet', zh: '夥伴領巾', eff: '夥伴戴上領巾，閱讀時會多說幾句', need: { c7: 2, c2: 1 } },
+    { id: 'gemframe', slot: 'frame', zh: '結晶外框', eff: '頭像換成會發光的結晶外框', need: { c0: 3, boss: 1 } },
+    { id: 'armor', slot: 'body', zh: '無塵聖甲', eff: '魔王戰多 2 顆心，小怪戰多 1 顆心', need: { boss: 2, c1: 2, c6: 2 } }
+  ];
+  function gearById(id) { for (var i = 0; i < GEAR.length; i++) if (GEAR[i].id === id) return GEAR[i]; return null; }
+  function wearing(id) { var g = gearById(id); return !!(g && S && S.gear && S.gear.on[g.slot] === id); }
+  function matName(k) { return k === 'boss' ? BOSS_MAT : (MATS[+k.slice(1)] || k); }
+  function reviewGap() { return wearing('watch') ? 5 * 24 * 3600 * 1000 : REVIEW_GAP; }
+  function reviewXp() { return XP_REVIEW + (wearing('amulet') ? 5 : 0); }
   var XP_BOSS = 100, BOSS_Q = 10;     // boss battle: bonus XP on the first win, questions per fight
   var BOSS_LINES = [
     '「一粒灰塵就夠了。你的無菌區守得住嗎？」',
@@ -146,6 +167,11 @@
     return placeholderPet(PETS[line].color, stage);
   }
   function eggImg() { return asset('egg') || placeholderEgg(); }
+  function gearImg(g) {
+    return asset('gear-' + g.id) || svgUri('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="M32 4l24 14v28L32 60 8 46V18z" fill="#e0f2fe" stroke="#38bdf8" stroke-width="3"/>' +
+      '<text x="32" y="41" font-size="22" text-anchor="middle" font-family="sans-serif" font-weight="700" fill="#0369a1">' + g.zh.charAt(g.zh.length - 1) + '</text></svg>');
+  }
+  function matImg(k) { return asset(k === 'boss' ? 'mat-boss' : 'mat-' + k.slice(1)); }
   function petCls(base) { return base + (S.pet && S.pet.shiny ? ' rpg-shiny' : ''); }
 
   /* ---------- state ---------- */
@@ -173,7 +199,10 @@
     s.flags = s.flags || {};
     s.mapSeen = s.mapSeen || {};
     s.bossWin = s.bossWin || {};                              // '<class>:<zone>' -> { best, total, ts }
-    s.bossTry = s.bossTry || {};                              // '<class>:<zone>' -> attempts                              // class id -> stages revealed on the 3D map last time
+    s.bossTry = s.bossTry || {};
+    s.gear = s.gear || {};
+    s.gear.own = s.gear.own || {};                            // gear id -> time crafted
+    s.gear.on = s.gear.on || {};                              // slot -> gear id                              // '<class>:<zone>' -> attempts                              // class id -> stages revealed on the 3D map last time
     return s;
   }
   function saveState() { lsSet(STATE_KEY, JSON.stringify(S)); }
@@ -423,7 +452,7 @@
   function frameClass() {
     var r = G.classes[S.profile.cls] ? G.classes[S.profile.cls].rank : 0;
     var s = liveStreak();
-    return 'rpg-frame rpg-frame-' + r + (s >= 30 ? ' rpg-frame-s30' : s >= 7 ? ' rpg-frame-s7' : '');
+    return 'rpg-frame rpg-frame-' + r + (s >= 30 ? ' rpg-frame-s30' : s >= 7 ? ' rpg-frame-s7' : '') + (wearing('gemframe') ? ' rpg-frame-gem' : '');
   }
   function avatarEl(size) {
     return h('span', { class: frameClass() + ' rpg-avatar' + (size ? ' rpg-avatar-' + size : '') }, [
@@ -715,6 +744,10 @@
       var dz = ZONES[e.ti] || ZONES[ZONES.length - 1], dimg = asset('boss-' + (e.ti + 1));
       kicker = 'BOSS DEFEATED'; title = dz.boss; sub = '升階試煉通過　+' + XP_BOSS + ' XP';
       art = dimg ? h('img', { class: 'rpg-pop rpg-defeated', src: dimg, alt: '' }) : null;
+    } else if (e.kind === 'craft') {
+      var cg = gearById(e.id);
+      kicker = 'CRAFTED'; title = cg.zh; sub = cg.eff;
+      art = h('img', { class: 'rpg-pop', src: gearImg(cg), alt: '' });
     } else if (e.kind === 'hatch') {
       kicker = 'HATCHED'; title = PETS[S.pet.line].stages[0]; sub = '新的夥伴加入';
       art = h('img', { class: 'rpg-pop', src: petImg(S.pet.line, 1), alt: '' });
@@ -796,13 +829,26 @@
     for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t; }
     return a;
   }
+  function battleHearts(kind, n) {
+    var extra = kind === 'boss' ? (wearing('armor') ? 2 : wearing('cape') ? 1 : 0) : (wearing('armor') ? 1 : 0);
+    return heartsFor(n) + extra;
+  }
+  /* Where a question's source section lives: on this page, or on its document page. */
+  function sourceHref(q) {
+    var key = q.docKey || pageDocKey, d = key && M.docs[key];
+    if (!d || !q.section) return null;
+    return key === pageDocKey ? '#' + q.section : ROOT + d.file + '#' + q.section;
+  }
   function runBattle(host, o) {
-    var n = o.questions.length, hearts = heartsFor(n), i = 0, score = 0, wrong = 0, last = [];
+    var n = o.questions.length, hearts = battleHearts(o.kind, n), i = 0, score = 0, wrong = 0, lost = 0, last = [];
+    var shield = wearing('gloves') ? 1 : 0;
     var foeImg = o.foeImg ? h('img', { class: 'rpg-foe-img', src: o.foeImg, alt: o.foe }) : h('span', { class: 'rpg-foe-img rpg-foe-blank', text: '？' });
     var hp = h('span', { class: 'rpg-hp', role: 'meter', 'aria-label': o.foe + '的血量', 'aria-valuemin': 0, 'aria-valuemax': n });
     var heartsEl = h('span', { class: 'rpg-hearts', 'aria-label': '你的生命' });
     var foeBox = h('div', { class: 'rpg-foe' }, [foeImg, h('b', { text: o.foe }), hp]);
-    var you = h('div', { class: 'rpg-you' }, [avatarEl(), h('b', { text: S.profile ? S.profile.nick : '你' }), heartsEl]);
+    var worn = Object.keys(SLOTS).map(function (sl) { return S.gear.on[sl] && gearById(S.gear.on[sl]); }).filter(Boolean);
+    var you = h('div', { class: 'rpg-you' }, [avatarEl(), h('b', { text: S.profile ? S.profile.nick : '你' }), heartsEl,
+      worn.length ? h('span', { class: 'rpg-worn' }, worn.map(function (g) { return h('img', { src: gearImg(g), alt: g.zh, title: g.zh + '：' + g.eff }); })) : null]);
     var stage = h('div', { class: 'rpg-battle-stage' });
     clear(host);
     host.appendChild(h('div', { class: 'rpg-battle' }, [
@@ -815,8 +861,9 @@
       for (var k = 0; k < n; k++) hp.appendChild(h('i', { class: k < n - score ? 'is-on' : '' }));
       hp.setAttribute('aria-valuenow', String(n - score));
       clear(heartsEl);
-      for (var j = 0; j < hearts; j++) heartsEl.appendChild(h('i', { class: j < hearts - wrong ? 'is-on' : '', text: '♥' }));
-      heartsEl.setAttribute('aria-label', '你的生命 ' + (hearts - wrong) + ' / ' + hearts);
+      for (var j = 0; j < hearts; j++) heartsEl.appendChild(h('i', { class: j < hearts - lost ? 'is-on' : '', text: '♥' }));
+      if (shield) heartsEl.appendChild(h('i', { class: 'rpg-shield', text: '◆', title: '無菌手套：下一次答錯不扣心' }));
+      heartsEl.setAttribute('aria-label', '你的生命 ' + (hearts - lost) + ' / ' + hearts + (shield ? '，手套護盾 1' : ''));
     }
     function hit(el, cls, text) {
       el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls);
@@ -828,13 +875,16 @@
       var q = o.questions[i], answered = false;
       clear(stage);
       var opts = h('div', { class: 'rpg-quiz-opts' });
+      var back = wearing('bookmark') && sourceHref(q);
+      var backLink = back ? h('a', { class: 'rpg-backsrc', href: back, hidden: true, text: '法典書籤：回原文看這一節 →' }) : null;
       var exp = h('div', { class: 'rpg-quiz-exp', hidden: true }, [
         h('p', { text: q.explanation || '' }),
-        q.reference ? h('small', { text: '出處：' + q.reference }) : null
+        q.reference ? h('small', { text: '出處：' + q.reference }) : null,
+        backLink
       ]);
       var next = h('button', { class: 'rpg-btn', type: 'button', hidden: true, onclick: function () {
         i++;
-        if (i >= n || wrong >= hearts) finish(); else ask();
+        if (i >= n || lost >= hearts) finish(); else ask();
       } });
       Object.keys(q.options).forEach(function (letter) {
         opts.appendChild(h('button', { type: 'button', class: 'rpg-opt', 'data-l': letter, onclick: function () {
@@ -847,16 +897,20 @@
             else if (btn.getAttribute('data-l') === letter) btn.classList.add('is-wrong');
           });
           last.push(ok ? 1 : 0);
-          if (ok) { score++; hit(foeBox, 'is-hit', '-1'); } else { wrong++; hit(you, 'is-hurt', '♥-1'); }
+          if (ok) { score++; hit(foeBox, 'is-hit', '-1'); }
+          else if (shield) { wrong++; shield = 0; hit(you, 'is-hurt', '護盾'); }
+          else { wrong++; lost++; hit(you, 'is-hurt', '♥-1'); }
+          if (!ok && backLink) backLink.hidden = false;
           meters();
           exp.hidden = false;
-          next.textContent = i + 1 >= n || wrong >= hearts ? '看結果' : '下一題';
+          next.textContent = i + 1 >= n || lost >= hearts ? '看結果' : '下一題';
           next.hidden = false;
           try { next.focus({ preventScroll: true }); } catch (e) {}
         } }, [h('b', { text: letter }), h('span', { text: q.options[letter] })]));
       });
       stage.appendChild(h('p', { class: 'rpg-battle-count', text: '第 ' + (i + 1) + ' / ' + n + ' 題' + (q.docTitle ? '　出自：' + q.docTitle : '') }));
       stage.appendChild(h('p', { class: 'rpg-quiz-q', text: q.question }));
+      if (wearing('goggles') && q.reference) stage.appendChild(h('p', { class: 'rpg-hint', text: '護目鏡提示：答案在 ' + q.reference }));
       stage.appendChild(opts);
       stage.appendChild(exp);
       stage.appendChild(h('div', { class: 'rpg-quiz-foot' }, [next]));
@@ -890,7 +944,7 @@
     ]);
     var area = h('div', { class: 'rpg-quiz-area' });
     block.appendChild(head);
-    block.appendChild(h('p', { class: 'rpg-quiz-lead', text: '共 ' + n + ' 題，一題一題打：答對打掉牠一格血，答錯你扣一顆心（你有 ' + heartsFor(n) + ' 顆）。答對 80% 就擊敗牠。可以重複挑戰，只記最佳成績。' }));
+    block.appendChild(h('p', { class: 'rpg-quiz-lead', text: '共 ' + n + ' 題，一題一題打：答對打掉牠一格血，答錯你扣一顆心（你有 ' + battleHearts('mob', n) + ' 顆）。答對 80% 就擊敗牠。可以重複挑戰，只記最佳成績。' }));
     block.appendChild(area);
     area.appendChild(h('button', { class: 'rpg-btn', type: 'button', text: rec ? '再戰' : '迎戰', onclick: fight }));
 
@@ -950,7 +1004,7 @@
     Promise.all(t.banked.map(function (x) {
       var d = M.docs[x.key];
       return fetch(ROOT + 'rpg/quiz/' + x.key + '.json').then(function (r) { return r.json(); }).then(function (b) {
-        return (b.questions || []).map(function (q) { return Object.assign({}, q, { docTitle: d.titleZh || d.title }); });
+        return (b.questions || []).map(function (q) { return Object.assign({}, q, { docTitle: d.titleZh || d.title, docKey: x.key }); });
       });
     })).then(function (lists) {
       var pool = [].concat.apply([], lists);
@@ -971,8 +1025,9 @@
             if (!r.won) { saveState(); return; }
             var first = !S.bossWin[key];
             S.bossWin[key] = { best: Math.max(r.score, first ? 0 : S.bossWin[key].best), total: r.total, ts: Date.now() };
-            if (first) S.bonus += XP_BOSS;
+            if (first) { S.bonus += XP_BOSS; S.mats.boss = (S.mats.boss || 0) + 1; }
             saveState();
+            if (first) toast('獲得素材：' + BOSS_MAT);
             if (first) showRewards([{ kind: 'bossdown', ti: ti }]);
             refresh();
           }
@@ -1021,7 +1076,8 @@
     palBubble = h('div', { class: 'rpg-pal-bubble', role: 'status', hidden: true });
     palImg = h('img', { alt: '' });
     pal = h('div', { class: 'rpg-pal', id: 'rpg-pal' }, [
-      palBubble, h('button', { type: 'button', class: 'rpg-pal-btn', 'aria-label': '夥伴，點一下跟牠說話', onclick: palPoke }, [palImg])
+      palBubble, h('button', { type: 'button', class: 'rpg-pal-btn', 'aria-label': '夥伴，點一下跟牠說話', onclick: palPoke }, [palImg,
+        wearing('ribbon') ? h('img', { class: 'rpg-pal-ribbon', src: gearImg(gearById('ribbon')), alt: '' }) : null])
     ]);
     document.body.appendChild(pal);
     palDraw();
@@ -1091,6 +1147,7 @@
       liveStreak() ? '已經連續 ' + liveStreak() + ' 天了，今天也算數。' : '今天讀完一節，連續天數就開始算。',
       S.pet ? (G.petStage >= 4 ? '我已經是最終型態了，接下來換你變強。' : '等你升到「' + RANKS[G.petStage].zh + '」，我就會進化。') : '我還在蛋裡，讀完第一節就出來。'
     ];
+    if (wearing('ribbon') && S.pet) lines.push('這條領巾好看嗎？是你做給我的。', '戴著領巾，覺得自己也變專業了。', '素材再多一點，工坊還能做別的裝備喔。');
     palAwake();
     palSay(palVoice() + lines[palPokes++ % lines.length], 2);
   }
@@ -1121,7 +1178,7 @@
       if (!M.docs[key] || !M.docs[key].quiz) return;
       Object.keys(S.quiz[key]).forEach(function (sid) {
         var r = S.quiz[key][sid];
-        if (r.pt && now - r.pt >= REVIEW_GAP && now - (S.review.last[key + '#' + sid] || 0) >= REVIEW_GAP) pool.push({ key: key, sid: sid });
+        if (r.pt && now - r.pt >= reviewGap() && now - (S.review.last[key + '#' + sid] || 0) >= reviewGap()) pool.push({ key: key, sid: sid });
       });
     });
     if (!pool.length) return;
@@ -1149,8 +1206,8 @@
         });
         exp.hidden = false;
         S.review.last[pick.key + '#' + pick.sid] = Date.now();
-        if (ok) { S.bonus += XP_REVIEW; S.review.ok++; dropMat(pick.key); }
-        result.textContent = ok ? '答對了，+' + XP_REVIEW + ' XP' : '這題忘了。看一下解析，一週後還會再遇到。';
+        if (ok) { S.bonus += reviewXp(); S.review.ok++; dropMat(pick.key); }
+        result.textContent = ok ? '答對了，+' + reviewXp() + ' XP' : '這題忘了。看一下解析，' + (wearing('watch') ? '5 天' : '一週') + '後還會再遇到。';
         result.className = 'rpg-quiz-result ' + (ok ? 'is-pass' : 'is-fail');
         saveState(); refresh();
       } }, [h('b', { text: letter }), h('span', { text: q.options[letter] })]));
@@ -1158,9 +1215,85 @@
     modal([
       h('span', { class: 'rpg-tag', text: 'REVIEW' }),
       h('h2', { text: '複習突擊' }),
-      h('p', { class: 'rpg-modal-lead', text: '你一週前通過了「' + (d.titleZh || d.title) + '」的章節挑戰，還記得嗎？答錯不扣分。' }),
+      h('p', { class: 'rpg-modal-lead', text: '你之前通過了「' + (d.titleZh || d.title) + '」的章節挑戰，還記得嗎？答錯不扣分。' }),
       h('p', { class: 'rpg-quiz-q rpg-review-q', text: q.question }), opts, exp, result
     ], { cls: 'rpg-modal-wide' });
+  }
+
+  /* ---------- workshop (character page) ---------- */
+  function canCraft(g) { return Object.keys(g.need).every(function (k) { return (S.mats[k] || 0) >= g.need[k]; }); }
+  function craft(g) {
+    if (S.gear.own[g.id] || !canCraft(g)) return;
+    Object.keys(g.need).forEach(function (k) { S.mats[k] -= g.need[k]; });
+    S.gear.own[g.id] = Date.now();
+    if (!S.gear.on[g.slot]) S.gear.on[g.slot] = g.id;        // wear it right away if the slot is free
+    saveState();
+    renderAll();
+    showRewards([{ kind: 'craft', id: g.id }]);
+  }
+  function equip(g) {
+    S.gear.on[g.slot] = S.gear.on[g.slot] === g.id ? null : g.id;
+    if (!S.gear.on[g.slot]) delete S.gear.on[g.slot];
+    saveState();
+    renderAll();
+    toast(S.gear.on[g.slot] ? '裝備：' + g.zh : '卸下：' + g.zh);
+  }
+  /* Turn CONVERT of a material you have plenty of into one you are missing. */
+  function convertRow() {
+    var have = Object.keys(S.mats).filter(function (k) { return k !== 'boss' && S.mats[k] >= CONVERT; });
+    var from = h('select', { class: 'rpg-select', 'aria-label': '拿哪一種素材去換' });
+    var to = h('select', { class: 'rpg-select', 'aria-label': '換成哪一種素材' });
+    have.forEach(function (k) { from.appendChild(h('option', { value: k, text: matName(k) + '（' + S.mats[k] + '）' })); });
+    MATS.forEach(function (m, i) { to.appendChild(h('option', { value: 'c' + i, text: m })); });
+    var go = h('button', { class: 'rpg-btn rpg-btn-ghost', type: 'button', text: '煉成', disabled: !have.length, onclick: function () {
+      var a = from.value, b = to.value;
+      if (!a || a === b || (S.mats[a] || 0) < CONVERT) { toast(a === b ? '換成同一種素材沒有意義。' : '素材不夠。'); return; }
+      S.mats[a] -= CONVERT; S.mats[b] = (S.mats[b] || 0) + 1;
+      saveState(); renderAll();
+      toast(CONVERT + ' 個' + matName(a) + ' → 1 個' + matName(b));
+    } });
+    return h('div', { class: 'rpg-convert' }, [
+      h('b', { text: '煉成陣' }),
+      h('span', { class: 'rpg-note', text: have.length ? CONVERT + ' 個同種素材換 1 個別的素材（魔王結晶不能換）：' : '同一種素材有 ' + CONVERT + ' 個以上時，可以換成別的素材。' }),
+      have.length ? from : null, have.length ? h('span', { text: '→' }) : null, have.length ? to : null, go
+    ]);
+  }
+  function workshop() {
+    var owned = GEAR.filter(function (g) { return S.gear.own[g.id]; }).length;
+    var slots = h('ul', { class: 'rpg-slots' });
+    Object.keys(SLOTS).forEach(function (sl) {
+      var g = S.gear.on[sl] && gearById(S.gear.on[sl]);
+      slots.appendChild(h('li', { class: g ? 'is-on' : '' }, [
+        h('small', { text: SLOTS[sl] }),
+        g ? h('img', { src: gearImg(g), alt: '' }) : h('span', { class: 'rpg-slot-empty', text: '空' }),
+        h('b', { text: g ? g.zh : '—' })
+      ]));
+    });
+    var list = h('ul', { class: 'rpg-gear' });
+    GEAR.forEach(function (g) {
+      var own = !!S.gear.own[g.id], on = S.gear.on[g.slot] === g.id, ok = canCraft(g);
+      var need = h('span', { class: 'rpg-need' }, Object.keys(g.need).map(function (k) {
+        var have = S.mats[k] || 0, src = matImg(k);
+        return h('span', { class: have >= g.need[k] || own ? 'is-ok' : 'is-short' }, [
+          src ? h('img', { src: src, alt: '' }) : null, matName(k) + ' ' + Math.min(have, g.need[k]) + '/' + g.need[k]
+        ]);
+      }));
+      list.appendChild(h('li', { class: (own ? 'is-own' : '') + (on ? ' is-worn' : '') }, [
+        h('img', { class: 'rpg-gear-img' + (own ? '' : ' is-locked'), src: gearImg(g), alt: '' }),
+        h('div', { class: 'rpg-gear-body' }, [
+          h('b', { text: g.zh }), h('small', { class: 'rpg-chip', text: SLOTS[g.slot] }),
+          h('p', { text: g.eff }),
+          own ? null : need
+        ]),
+        own ? h('button', { class: 'rpg-btn' + (on ? ' rpg-btn-ghost' : ''), type: 'button', text: on ? '卸下' : '裝備', onclick: function () { equip(g); } })
+          : h('button', { class: 'rpg-btn', type: 'button', text: '合成', disabled: !ok, onclick: function () { craft(g); } })
+      ]));
+    });
+    return h('section', { class: 'rpg-panel rpg-workshop' }, [
+      h('h2', { text: '工坊　' + owned + ' / ' + GEAR.length }),
+      h('p', { class: 'rpg-note', text: '每件裝備合成一次，同一個部位一次穿一件。裝備只幫你多撐一下、或更快找回原文；過關標準一樣是答對 80%。' }),
+      slots, list
+    ]);
   }
 
   /* ---------- character page ---------- */
@@ -1274,11 +1407,17 @@
         h('b', { text: String(n) }), h('span', { text: MATS[i] || c2.name }), h('small', { text: CLUSTER_ZH[i] || '' })
       ]));
     });
+    var nb = S.mats.boss || 0;
+    ml.appendChild(h('li', { class: 'rpg-mat-boss' + (nb ? ' is-on' : ''), style: '--c:#ff3d81' }, [
+      matImg('boss') ? h('img', { class: 'rpg-mat-img', src: matImg('boss'), alt: '' }) : null,
+      h('b', { text: String(nb) }), h('span', { text: BOSS_MAT }), h('small', { text: '第一次打倒魔王' })
+    ]));
     mount.appendChild(h('section', { class: 'rpg-panel' }, [
       h('h2', { text: '素材' }),
-      h('p', { class: 'rpg-note', text: '第一次通過章節挑戰、或答對複習突擊時，會得到該文件主題的素材。素材之後可以合成夥伴的裝備，合成功能尚未開放。' }),
-      ml
+      h('p', { class: 'rpg-note', text: '第一次通過章節挑戰、或答對複習突擊時，會得到該文件主題的素材；第一次打倒每個魔王，得到一顆魔王結晶。素材拿到下面的工坊合成裝備。' }),
+      ml, convertRow()
     ]));
+    mount.appendChild(workshop());
 
     /* collection */
     var groups = ['ALL'].concat(Object.keys(GROUP_LABEL));

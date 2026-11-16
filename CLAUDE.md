@@ -89,7 +89,9 @@ section challenges. Off by default; `?rpg=1` switches it on in that browser, `?r
   `knowledge/exams/*.json` plus `"section": "<section_map id>"`. Aim for 5 questions per section; pass mark is 80%.
   Kept out of `knowledge/exams/` on purpose so `/quiz` behaviour is unchanged.
 - `rpg/assets/*.webp` — class portraits (`class-<deptId>`), head crops (`avatar-<deptId>`), alternate looks (`class-<deptId>-2`, `avatar-<deptId>-2`), NPCs (`npc-<name>`), pets (`pet-<a|b|c>-<1..4>`), zone bosses (`boss-<1..3>`), section-challenge monsters (`mob-<0..9>`, one per topic cluster), material icons (`mat-<0..9>`), card illustrations per source (`card-<PDA|ISPE|FDA|PICS|ICH|USP|ISO|PHEUR>`), `egg`.
+  Also `mat-boss` (boss crystal) and equipment icons `gear-<id>` (ids in `GEAR` in `rpg.js`).
   Missing files fall back to silhouettes.
+- Workshop (character page): materials drop on a section's first pass, a correct review ambush, and a boss's first defeat (`mats.boss`). `GEAR` items are crafted once from materials and worn one per slot (`gear.own` / `gear.on`); 3 of one material convert to 1 of another. Gear effects must never change scoring — only hearts, hints, links back to the source, review timing/XP, and cosmetics.
 - Storage: reads `sgk_progress_*`, `gmp-quiz-results`; writes only `sgk_rpg_v1` and one
   `source: "inpage"` record per document in `gmp-quiz-results`.
 - Never edit `*-Complete.html` for this — change `merge_engine.py` / `rpg/` and re-merge.
