@@ -1,0 +1,689 @@
+{
+  "doc_key": "TR84",
+  "title": "PDA TR84: Data Integrity in Manufacturing & Packaging",
+  "source_md": "knowledge/PDA/TR84-Complete.md",
+  "generated": "2026-11-17",
+  "note": "In-page section challenges for rpg/rpg.js. MCQ only; each question belongs to one top-level section id.",
+  "questions": [
+    {
+      "id": 1,
+      "section": "sec0",
+      "type": "mcq",
+      "topic": "Scope of TR84",
+      "question": "下列哪一項明確不在 TR84 的適用範圍內？",
+      "options": {
+        "A": "生產臨床試驗用藥的製造設施",
+        "B": "臨床執業與臨床試驗執行過程的資料完整性管理",
+        "C": "包裝與標示作業的資料，包括 in-process control",
+        "D": "製造、包裝或儲存 API 與中間體的設施"
+      },
+      "correct": "B",
+      "explanation": "TR84 適用於製造、加工、包裝或儲存成品、API、中間體的設施，臨床試驗用藥與商業品的製造都包含在內，也涵蓋包裝標示與 IPC 資料。但它明確表示不適用於臨床執業與臨床試驗執行的 DI 管理；實驗室 DI 則另見 TR80。",
+      "reference": "PDA TR84 §1.2",
+      "max": 1
+    },
+    {
+      "id": 2,
+      "section": "sec0",
+      "type": "mcq",
+      "topic": "Purpose — risk-based controls",
+      "question": "TR84 想解決業界的什麼困擾？它提出的做法是什麼？",
+      "options": {
+        "A": "不確定生產資料是否也需要 DI 控制；做法是所有製造步驟一律套用最高等級的控制與審核",
+        "B": "電子系統成本太高；做法是全面回到紙本紀錄並增加第二人見證來降低風險",
+        "C": "審核人力不足；做法是依產品售價決定各步驟的審核層級",
+        "D": "不清楚每步要多少控制；用 QRM 依 criticality 與 vulnerability 決定"
+      },
+      "correct": "D",
+      "explanation": "業界都知道資料要正確完整，但不清楚每個製造步驟需要多強的 DI 控制與審核。TR84 以 QRM 依資料對其預定用途的 criticality 與 vulnerability 來決定控制是否適當；它也指出 one-size-fits-all 的做法未必有價值或可行。回到紙本、依售價分級都不是文件的主張。",
+      "reference": "PDA TR84 §1.0–1.1",
+      "max": 1
+    },
+    {
+      "id": 3,
+      "section": "sec0",
+      "type": "mcq",
+      "topic": "Glossary — ALCOA+ Original",
+      "question": "依 ALCOA+ 中「Original」的定義，原本以 dynamic 狀態（可搜尋、查詢、做趨勢）擷取的電子資料應如何保存？",
+      "options": {
+        "A": "應繼續以 dynamic 狀態保持可用",
+        "B": "列印成紙本並簽名後即可視為 original",
+        "C": "轉存為靜態 PDF 後即可刪除原始電子檔",
+        "D": "只需保留最終報告值，不必保留 metadata"
+      },
+      "correct": "A",
+      "explanation": "Original 是資訊的首次擷取，可能是紙本（static）或電子（通常是 dynamic）。原本以 dynamic 狀態擷取的資訊應維持在該狀態可用，所以列印或轉成靜態檔都不能取代原始電子資料；Complete 的定義也要求電子資料包含相關 metadata。",
+      "reference": "PDA TR84 §2.0 Glossary（ALCOA+：Original、Complete）",
+      "max": 1
+    },
+    {
+      "id": 4,
+      "section": "sec0",
+      "type": "mcq",
+      "topic": "Glossary — Data vulnerability",
+      "question": "TR84 定義的 Data Vulnerability，是指資料因為哪些方面的內在弱點而暴露於 DI 失效的程度？",
+      "options": {
+        "A": "資料偵測性、發生機率、嚴重度",
+        "B": "稽核頻率、訓練紀錄、偏差件數與 CAPA",
+        "C": "製程、資料擷取技術、人因，或其組合",
+        "D": "SOP 版本、確效狀態、變更管制"
+      },
+      "correct": "C",
+      "explanation": "Data vulnerability 是資料因製程、資料擷取技術與人因（或其組合）的內在弱點而暴露於 DI 失效的指標，後面 9-Box 也是從這三個面向（data management、human factors、GMP process）評估。偵測性、機率、嚴重度是 ATRA 評分因子，不是這個定義。",
+      "reference": "PDA TR84 §2.0 Glossary（Data Vulnerability）",
+      "max": 1
+    },
+    {
+      "id": 5,
+      "section": "sec0",
+      "type": "mcq",
+      "topic": "Glossary — True copy",
+      "question": "依詞彙表中 FDA 對 True Copy 的說明，電子副本要能當作紙本或電子紀錄的 true copy，需要符合什麼條件？",
+      "options": {
+        "A": "保留原始內容與意義，含所需 metadata 與原紀錄的 static/dynamic 性質",
+        "B": "只要 QA 在副本上簽名並註明日期即可，是否保留 metadata 與原始格式都不影響效力",
+        "C": "只能是影印本或微縮膠片，電子檔一律不能作為 true copy",
+        "D": "保留最終結果的畫面截圖並註明截圖日期即可"
+      },
+      "correct": "A",
+      "explanation": "FDA 引用 21 CFR 211.180(d)，允許以影印、微縮等準確複製品保存，電子副本也可以，但必須保留原始內容與意義，包括重建 CGMP 活動所需的 metadata 及原紀錄的 static 或 dynamic 性質。只有簽名或截圖不足以保留這些資訊。",
+      "reference": "PDA TR84 §2.0 Glossary（True Copy）",
+      "max": 1
+    },
+    {
+      "id": 6,
+      "section": "sec1",
+      "type": "mcq",
+      "topic": "FDA warning letter statistics",
+      "question": "TR84 檢視 2012 年 2 月至 2019 年 8 月約 393 封 FDA warning letter。含 DI citation 的比例，以及其中與生產作業相關的比例大約是？",
+      "options": {
+        "A": "約 25%；其中約 80% 與生產作業相關，其餘為實驗室",
+        "B": "約 75%；其中約 20% 與生產作業相關",
+        "C": "約 53%；其中約 45% 與生產作業相關",
+        "D": "約 45%；其中約 53% 與生產作業相關"
+      },
+      "correct": "C",
+      "explanation": "393 封中有 212 封含 DI citation（53%）；其中 96 封（45%）與生產作業有關，116 封（55%）與實驗室及品質作業有關。D 把兩個數字對調了。",
+      "reference": "PDA TR84 §3.1.1",
+      "max": 1
+    },
+    {
+      "id": 7,
+      "section": "sec1",
+      "type": "mcq",
+      "topic": "Generic drug scandal",
+      "question": "1980 年代末到 1990 年代初的「generic drug scandal」直接促成 FDA 建立了什麼制度？",
+      "options": {
+        "A": "1990 年的 pre-approval inspection program",
+        "B": "1978 年 21 CFR Part 211 的 CGMP 重大修訂與擴充",
+        "C": "1997 年發布的 21 CFR Part 11 電子紀錄與電子簽章法規",
+        "D": "2018 年的 DI Q&A guidance for industry"
+      },
+      "correct": "A",
+      "explanation": "FDA 發現大量學名藥廠偽造生產與管制紀錄，ANDA 也含偽造資料，隨後在 1990 年建立 pre-approval inspection program，要求通過核准前查廠才能核准，這個制度沿用至今。Part 211 修訂（1978）早於醜聞；Part 11（1997）與 2018 Q&A 是之後的發展。",
+      "reference": "PDA TR84 §3.1",
+      "max": 1
+    },
+    {
+      "id": 8,
+      "section": "sec1",
+      "type": "mcq",
+      "topic": "Four themes of production DI citations",
+      "question": "TR84 歸納 2012–2019 年 FDA WL 與 EU NCR 中影響製造的 DI citation，可分成哪四大主題？",
+      "options": {
+        "A": "偽造紀錄、刪除資料、資料遺失、延遲或拒絕提供紀錄",
+        "B": "人員、機器、物料、方法",
+        "C": "存取控制、稽核軌跡、資料備份、資料匯出與報表",
+        "D": "文件規範不良、資料審查不足、監督無效、系統控制無效"
+      },
+      "correct": "D",
+      "explanation": "影響製造的 citation 歸成四個主題：poor documentation practices、insufficient data review、ineffective oversight、ineffective system control。A、C 是 Table 3.1.3-1 裡的個別類別或控制項目，B 是 4M 魚骨圖分類，都不是這四大主題。",
+      "reference": "PDA TR84 §3.1.3",
+      "max": 1
+    },
+    {
+      "id": 9,
+      "section": "sec1",
+      "type": "mcq",
+      "topic": "EU NCR falsification split",
+      "question": "2012 年 1 月至 2018 年 8 月含 DI citation 的 82 份 EU NCR 中，偽造相關問題的分布為何？",
+      "options": {
+        "A": "生產 22%、實驗室 46%、兩者皆有 32%",
+        "B": "生產 46%、實驗室 22%、兩者皆有 32%",
+        "C": "生產 32%、實驗室 46%、兩者皆有 22%",
+        "D": "生產 50%、實驗室 50%、兩者皆有 0%（無重疊）"
+      },
+      "correct": "B",
+      "explanation": "163 份 NCR 中有 82 份（50%）含 DI citation；這 82 份中約 46% 涉及生產系統的偽造，22% 涉及實驗室系統，32% 兩者皆有。可見生產端的偽造問題比實驗室更常見，這也是 TR84 聚焦製造的原因之一。",
+      "reference": "PDA TR84 §3.1.2",
+      "max": 1
+    },
+    {
+      "id": 10,
+      "section": "sec1",
+      "type": "mcq",
+      "topic": "Warning letter example — PLC vs batch record",
+      "question": "TR84 引用的 2019 年 7 月 FDA warning letter，指出了什麼生產 DI 問題？",
+      "options": {
+        "A": "打錠機 PLC 的 audit trail 功能被停用",
+        "B": "操作員在批紀錄中刪除了 HMI 的數據",
+        "C": "批紀錄中的數據變更是用鉛筆寫的",
+        "D": "批紀錄手寫值都在範圍內，PLC 紀錄值卻常超出"
+      },
+      "correct": "D",
+      "explanation": "該 WL 指出批紀錄的手寫數值總是在製程參數範圍內，但打錠機 PLC 記錄的數值卻經常超出既定範圍。另一封 2019 年 12 月的 WL 則是 HMI 資料與操作員批紀錄填寫內容多處不符。停用 audit trail、鉛筆紀錄是 Table 3.1.3-1 的其他例子，不是這封信的內容。",
+      "reference": "PDA TR84 §3.1.1",
+      "max": 1
+    },
+    {
+      "id": 11,
+      "section": "sec2",
+      "type": "mcq",
+      "topic": "When to assess DI risk",
+      "question": "依 §4.1，導入新的資料管理系統時，DI 風險評估應在何時進行？",
+      "options": {
+        "A": "導入時主動進行，並納入該系統的 change control",
+        "B": "系統上線並穩定運作滿一年之後，再做一次回顧性的風險評估",
+        "C": "只有在官方查廠或內部稽核發現缺失之後才需要評估",
+        "D": "於年度產品回顧（APR）時一併評估即可"
+      },
+      "correct": "A",
+      "explanation": "風險評估應在新系統導入時主動進行並納入 overarching change control，作為預防措施。對既有系統、發生偏差或事件後、以及系統變更時，也都應評估。等上線一年、等查廠或 APR 才做，都失去預防的意義。",
+      "reference": "PDA TR84 §4.1",
+      "max": 1
+    },
+    {
+      "id": 12,
+      "section": "sec2",
+      "type": "mcq",
+      "topic": "Human factors matrix",
+      "question": "操作員沒注意混合操作，讓它跑超過確效時間，卻在紀錄寫上範圍內的數值。依 TR84 的 human factors 分類，這屬於哪一種？",
+      "options": {
+        "A": "Attention failure：非故意的 action error",
+        "B": "Knowledge gap：訓練不足造成的 thinking error",
+        "C": "Misconduct：故意行為，為掩蓋錯誤寫假紀錄",
+        "D": "Memory failure：忘記步驟順序的 action error"
+      },
+      "correct": "C",
+      "explanation": "沒注意混合時間本身是疏忽，但事後寫入範圍內的假數值是刻意掩蓋，TR84 把這個情境列為 misconduct（故意行為）。故意行為需要完整調查，可能要用 forensic 技術；非故意錯誤（attention、memory、knowledge、procedure gap）則以風險評估找出可能出錯之處。",
+      "reference": "PDA TR84 §4.1.1",
+      "max": 1
+    },
+    {
+      "id": 13,
+      "section": "sec2",
+      "type": "mcq",
+      "topic": "Data criticality classification",
+      "question": "某製程參數不是 CQA/CPP，但必須嚴格控制以確保製程一致性。依 Table 4.2.1-1，它的資料 criticality 是？",
+      "options": {
+        "A": "High，因為所有製造資料都是 critical",
+        "B": "Medium，與製程穩健與一致性相關",
+        "C": "Low，因為它不影響任何 CQA",
+        "D": "不屬於 GMP 資料，不需要分級"
+      },
+      "correct": "B",
+      "explanation": "直接影響產品品質或安全（CQA、CPP）的資料是 High；與製程穩健及一致性相關、非 CQA/CP/CPP 但需嚴格控制的是 Medium；兩者皆非、只是證明 GMP 符合性的是 Low。TR84 雖說所有製造資料都 critical，但 criticality 等級仍會因用途不同而有差異。",
+      "reference": "PDA TR84 §4.2.1",
+      "max": 1
+    },
+    {
+      "id": 14,
+      "section": "sec2",
+      "type": "mcq",
+      "topic": "9-Box mitigation direction",
+      "question": "某操作在 9-Box 中落在 orange box（H/M：High criticality、Medium 控制）。TR84 的改善方向是？",
+      "options": {
+        "A": "把資料重新分類為 Medium criticality，移出 orange",
+        "B": "降低這個操作的審核頻率，把資源移去 red box",
+        "C": "在格子中由下往上移，提高資料的 criticality",
+        "D": "提高資料控制等級，在格子中由右往左移"
+      },
+      "correct": "D",
+      "explanation": "目標是讓控制與資料 criticality 相稱、避免落在 red 或 orange；緩解策略是增加控制、由右往左移。Criticality 由資料用途決定，不能為了移出格子而降級。資源轉移是 blue box（控制可能多於需要）的情況，而且也不代表要減少控制。",
+      "reference": "PDA TR84 §4.3–4.4",
+      "max": 1
+    },
+    {
+      "id": 15,
+      "section": "sec2",
+      "type": "mcq",
+      "topic": "Granulation case 1 vs case 2",
+      "question": "Case 2 中，造粒總時間寫入 QU 核准的 recipe，由已確效 PLC 控制，超出確效範圍時會在列印報表上自動警示。下列何者正確？",
+      "options": {
+        "A": "控制等級仍是 Low，每批仍要做 peer review 與 QU 審查",
+        "B": "控制等級為 High，不需第二人確認，QU 仍審完整 BPR",
+        "C": "控制等級為 High，QU 放行時也不必再審 BPR",
+        "D": "控制等級為 Medium，需改由主管即時見證"
+      },
+      "correct": "B",
+      "explanation": "Case 1 全手動、靠第二人確認與 QU 審查，控制等級為 Low。Case 2 改由已確效 PLC 自動擷取資料，不依賴人為介入，控制等級為 High，加上 PLC 報表與超限警示，不再需要第二人逐批確認；但 QU 仍會在放行時審查完整的 BPR。",
+      "reference": "PDA TR84 §4.5.1",
+      "max": 1
+    },
+    {
+      "id": 16,
+      "section": "sec3",
+      "type": "mcq",
+      "topic": "Intentional falsification",
+      "question": "TR84 對故意造假與刻意操弄資料的立場是什麼？",
+      "options": {
+        "A": "落在 blue box 的 Low criticality 資料可以容許",
+        "B": "只要已具備 High 等級的資料控制，殘餘的造假風險就可以接受",
+        "C": "只要在批次放行前被偵測到，就可以接受",
+        "D": "不論 criticality、vulnerability 或既有控制，都不可接受"
+      },
+      "correct": "D",
+      "explanation": "TR84 的風險分級是用來決定控制強度，不是用來容許造假。§5.0 明言故意詐欺與資料操弄在任何情況下都不可接受，與資料 criticality、vulnerability 或既有控制等級無關；§4.3 也說 9-Box 不為造假提供任何空間。",
+      "reference": "PDA TR84 §5.0",
+      "max": 1
+    },
+    {
+      "id": 17,
+      "section": "sec3",
+      "type": "mcq",
+      "topic": "Regulations = what, controls = how",
+      "question": "§5.0 怎麼描述法規指引與 DI 控制之間的關係？",
+      "options": {
+        "A": "法規指引說明「how」，DI 控制則說明要達成的「what」",
+        "B": "法規指引說明「what」，DI 控制是落實的「how」",
+        "C": "兩者都只適用於電子系統，紙本不在範圍內",
+        "D": "法規指引管實驗室，DI 控制只管生產現場"
+      },
+      "correct": "B",
+      "explanation": "WHO、FDA、MHRA、PIC/S 等文件說明確保 DI 需要達到什麼（the what）；DI 控制則是如何在實務上落實這些要求（the how），可以寫進作業程序，或納入電腦化系統確效與設備確認。控制適用於紙本、電子與 hybrid 系統。",
+      "reference": "PDA TR84 §5.0",
+      "max": 1
+    },
+    {
+      "id": 18,
+      "section": "sec3",
+      "type": "mcq",
+      "topic": "Non-differentiated controls — corrections",
+      "question": "一人在無菌充填關鍵參數的紀錄上打錯字，另一人在訓練紀錄上打錯字。依 §5.1，兩者的更正要求有何不同？",
+      "options": {
+        "A": "充填紀錄要 QA 見證更正，訓練紀錄可直接塗改",
+        "B": "訓練紀錄屬 Low criticality，不必說明更正理由",
+        "C": "沒有差別，都要簽名、註明時間與理由並保留原內容",
+        "D": "充填紀錄要作廢重寫，訓練紀錄才可以單線劃改"
+      },
+      "correct": "C",
+      "explanation": "TR84 用這個例子說明，有些控制不因 criticality 而不同：兩人都要做必要更正、說明理由、簽名並記錄時間，原始內容仍要可辨識。這類一致適用的要求屬於 QMS 的基本要素，不在 TR84 討論的差異化控制範圍內。",
+      "reference": "PDA TR84 §5.1",
+      "max": 1
+    },
+    {
+      "id": 19,
+      "section": "sec3",
+      "type": "mcq",
+      "topic": "What can be differentiated",
+      "question": "依 §5.1–5.2，下列哪一組是 TR84 認為可依 criticality 差異化的控制面向？",
+      "options": {
+        "A": "控制頻率、由誰執行、要審查多詳細",
+        "B": "是否需要 SOP、訓練、系統確效",
+        "C": "電子簽章是否需要時間戳記與永久連結",
+        "D": "誰可以修改系統的日期與時間"
+      },
+      "correct": "A",
+      "explanation": "可差異化的是控制的程度，例如頻率（每日或每月）、執行者（製造或 QU）、審查細節多寡。SOP、訓練、確效、電子簽章要求是法規核心要素，不分 criticality；修改系統日期時間的權限，不論是造粒或次級包裝系統都應同樣嚴格限制。",
+      "reference": "PDA TR84 §5.1–5.2",
+      "max": 1
+    },
+    {
+      "id": 20,
+      "section": "sec3",
+      "type": "mcq",
+      "topic": "Seven categories — hybrid",
+      "question": "Table 5.2-1 列出 7 個可依 criticality 差異化的控制類別。下列哪一個屬於 hybrid 系統？",
+      "options": {
+        "A": "已完成或歸檔紙本紀錄的保存與存取",
+        "B": "電子資料的備份",
+        "C": "紙本與電子之間的人工記錄或轉換（含 true copy）",
+        "D": "文件的發行（generation）與核對（reconciliation）"
+      },
+      "correct": "C",
+      "explanation": "7 類中，紙本有 2 類（紙本紀錄保存與存取、文件發行與核對）；hybrid 有 1 類（紙本與電子格式之間的人工記錄或轉換，含 true copy）；電子有 4 類（存取控制、audit trail review、備份、電子資料的使用）。無法差異化的要求視為 QMS 核心要素，不在本 TR 範圍。",
+      "reference": "PDA TR84 §5.2（Table 5.2-1）",
+      "max": 1
+    },
+    {
+      "id": 21,
+      "section": "sec4",
+      "type": "mcq",
+      "topic": "Access controls — High criticality",
+      "question": "對儲存 High criticality 資料的系統（例如 MES、historian、無菌充填用的 filter integrity tester），TR84 舉例的帳密控制是？",
+      "options": {
+        "A": "每 180 天換密碼、錯 10 次鎖定、5 代內不得重複",
+        "B": "每 90 天換密碼、錯 5 次鎖定、10 代內不得重複",
+        "C": "每年換密碼、不鎖定、可使用群組帳號",
+        "D": "每 90 天換密碼、錯 10 次鎖定、5 代內不得重複"
+      },
+      "correct": "B",
+      "explanation": "High：每位使用者唯一 ID 與密碼、每 90 天換密碼、錯 5 次鎖定、10 代後才能重複使用、每年審查帳號。A 是 Medium 的數字；C 是 Low 的做法（例如不儲存資料的包裝線 HMI，可用 passcode 或群組帳號、每年更換、不鎖定）。這些頻率僅供說明，各公司應以風險為基礎自行決定。",
+      "reference": "PDA TR84 §5.3.4（Table 5.3.4-1）",
+      "max": 1
+    },
+    {
+      "id": 22,
+      "section": "sec4",
+      "type": "mcq",
+      "topic": "Manual recording without second format",
+      "question": "投料重量無法電子擷取，天平也沒有接印表機，此數據屬 High criticality。依 Table 5.3.3.1-1 應如何確認？",
+      "options": {
+        "A": "同儕在投料當下即時確認（four-eyes），QU 於放行前審查",
+        "B": "由同儕在下一個關鍵步驟前或批次放行前，事後核對紀錄即可",
+        "C": "同儕只需一般性檢查 GDP，不必核對數值準確性",
+        "D": "由操作員本人在批次結束時自行複核數值並簽名確認"
+      },
+      "correct": "A",
+      "explanation": "沒有受控第二格式（audit trail、printout、照片等）時，High criticality 資料要由同儕即時確認數量正確、記錄無誤（four-eyes），之後 QU 依程序規定的時限審查。B 是 Medium 的做法（事後由同儕核對），C 是 Low 的做法；自我複核不算第二人確認。",
+      "reference": "PDA TR84 §5.3.3.1",
+      "max": 1
+    },
+    {
+      "id": 23,
+      "section": "sec4",
+      "type": "mcq",
+      "topic": "ATRA scoring",
+      "question": "一台每天使用的 filter integrity tester，對「recipe 變更」這個 audit trail 元素的評分是 Detectability 1、Severity 10、Probability 2。依 ATRA，總分與 review 頻率為何？",
+      "options": {
+        "A": "0 分；不需要做 audit trail review",
+        "B": "100 分；屬最高風險，需要逐批做 audit trail review",
+        "C": "40 分；需要每週做 audit trail review",
+        "D": "20 分；需要每年做兩次 audit trail review"
+      },
+      "correct": "D",
+      "explanation": "ATRA 總分是三個分數相乘：1×10×2 = 20。系統每日或每週使用時，11–20 分對應每年兩次 review（0–10 分 event-based、40 分每週、100 分逐批）。Probability 給 2，是因為只有獨立管理員能改 recipe，操作員不行。",
+      "reference": "PDA TR84 §5.3.5.1–5.3.5.2",
+      "max": 1
+    },
+    {
+      "id": 24,
+      "section": "sec4",
+      "type": "mcq",
+      "topic": "Looped memory backup",
+      "question": "某設備的記憶體只能存 10 批資料，第 11 批會自動覆蓋第 1 批。若它存的是 Low criticality 資料（例如不存效期等品質資料的次級包裝系統），備份要求是？",
+      "options": {
+        "A": "與 High 相同，必須在資料被覆蓋前備份",
+        "B": "必須每天自動備份一次，與產生頻率無關",
+        "C": "確保資料在批次處置完成前不會被覆蓋",
+        "D": "屬 Low criticality，完全不需要考慮備份"
+      },
+      "correct": "C",
+      "explanation": "Looped memory 的系統，High（如部分 filter integrity tester）與 Medium（如現場 pH meter）都要在資料被覆蓋前備份；Low 則只要確保資料在 batch disposition 完成前仍可取得。另外，可自動備份的設備建議依資料產生頻率備份，例如 MES 每天產生資料就每天備份。",
+      "reference": "PDA TR84 §5.3.6（Table 5.3.6-1）",
+      "max": 1
+    },
+    {
+      "id": 25,
+      "section": "sec4",
+      "type": "mcq",
+      "topic": "Data transfer and migration",
+      "question": "要把 CPP、校正紀錄、EM 資料從單機系統定期傳到 MES 或 data historian，TR84 建議的控制是？",
+      "options": {
+        "A": "在 change control 下執行並有 test plan，以 checksum 確認完整送達",
+        "B": "這屬於定期的例行性傳輸，只需要以 procedural control 描述傳輸步驟即可",
+        "C": "由 IT 人員目視比對傳輸後的前幾筆資料，確認格式與數值正確即可",
+        "D": "由業務單位依 work instruction 自行設定傳輸條件並執行資料傳輸"
+      },
+      "correct": "A",
+      "explanation": "High 與 Medium criticality 的資料傳輸或移轉（包括軟硬體升級的一次性移轉，以及定期傳到上層系統）都應在 change control 下進行，有 test plan，並用 checksum 或同等工具確認送出的資料全部收到。只有為趨勢分析傳到 data lake 這類 Low 傳輸，才用 procedural control 即可。",
+      "reference": "PDA TR84 §5.3.7.2",
+      "max": 1
+    },
+    {
+      "id": 26,
+      "section": "sec5",
+      "type": "mcq",
+      "topic": "Big data challenge",
+      "question": "§6.0 指出製藥 big data 帶來什麼挑戰，因而需要治理與主動控制？",
+      "options": {
+        "A": "資料量太少，不足以支持統計分析與趨勢",
+        "B": "法規禁止 GMP 資料存放在雲端",
+        "C": "資料累積速度已超過傳統人力處理能力",
+        "D": "電子資料天生比紙本更容易被竄改"
+      },
+      "correct": "C",
+      "explanation": "製造資料的收集速度不斷加快，已超出人用傳統方式處理的能力，因此更需要對資料與資訊進行治理與主動控制。TR84 沒有說法規禁止雲端；§5.3.7.2 甚至把移轉到雲端列為一種資料移轉的例子。",
+      "reference": "PDA TR84 §6.0",
+      "max": 1
+    },
+    {
+      "id": 27,
+      "section": "sec5",
+      "type": "mcq",
+      "topic": "Forthcoming big data TR",
+      "question": "§6.0 預告的 PDA big data 技術報告，將涵蓋哪些主題？",
+      "options": {
+        "A": "無菌充填、凍乾與包裝確效",
+        "B": "微生物鑑定、EM 趨勢與警戒限",
+        "C": "實驗室 OOS 調查與層析資料審查",
+        "D": "資料分類、所有權、存取管理與變更管理"
+      },
+      "correct": "D",
+      "explanation": "預告的 TR 將在製造 big data 治理與控制的架構下，討論資料分類、資料所有權、存取管理、來源資料、結果與資料洞見，以及 change management。其他選項不是 §6.0 列出的主題；實驗室 DI 由 TR80 處理。",
+      "reference": "PDA TR84 §6.0",
+      "max": 1
+    },
+    {
+      "id": 28,
+      "section": "sec5",
+      "type": "mcq",
+      "topic": "Governance elements",
+      "question": "依 §6.0，組織要有效率地運用資訊與技術工具來達成目標，必須建立什麼？",
+      "options": {
+        "A": "流程、角色與標準",
+        "B": "更大容量的 historian",
+        "C": "把所有資料移進 data lake",
+        "D": "由 QA 人工逐筆審核全部資料"
+      },
+      "correct": "A",
+      "explanation": "§6.0 說必須建立流程（processes）、角色（roles）與標準（standards），才能有效且有效率地使用資訊與技術工具。單靠加大儲存或集中資料都不是治理；資料量已超過人力處理能力，逐筆人工審核也不可行。TR84 和預告的 big data TR 合起來，將涵蓋資料與 big data 的管理。",
+      "reference": "PDA TR84 §6.0",
+      "max": 1
+    },
+    {
+      "id": 29,
+      "section": "sec5",
+      "type": "mcq",
+      "topic": "Reference — Annex 11",
+      "question": "§4.5 說 data process flow map 在世界某些地區是 GMP 要求。它引用的參考文獻（ref 29）是哪一份？",
+      "options": {
+        "A": "21 CFR Part 11：Electronic Records; Electronic Signatures",
+        "B": "EU GMP Annex 11：Computerised Systems",
+        "C": "ICH Q9：Quality Risk Management（2005）",
+        "D": "WHO TRS 996 Annex 5：資料與紀錄管理規範"
+      },
+      "correct": "B",
+      "explanation": "§4.5 的 ref 29 是歐盟 GMP（EudraLex Volume 4）Annex 11 Computerised Systems（2011）。21 CFR Part 11 是 ref 13，ICH Q9 是 ref 8，WHO 的資料與紀錄管理指引是 ref 4。",
+      "reference": "PDA TR84 §4.5；§7.0 ref 29",
+      "max": 1
+    },
+    {
+      "id": 30,
+      "section": "sec5",
+      "type": "mcq",
+      "topic": "Reference — QRM background",
+      "question": "TR84 要讀者去哪裡查 QRM 的一般做法（例如如何執行風險評估、擬定緩解策略、risk communication）？",
+      "options": {
+        "A": "PDA TR80 與 ISPE GAMP Guide",
+        "B": "ICH Q10 與 EU GMP Annex 1",
+        "C": "PDA TR13 與 FDA 無菌製程指引",
+        "D": "PDA TR54 系列與 ICH Q9"
+      },
+      "correct": "D",
+      "explanation": "§4.0 指出 PDA TR54 系列較完整地說明 QRM，包括如何進行風險評估與擬定緩解策略；QRM 一般原則與 risk communication 則參考 TR54 系列與 ICH Q9（ref 8、26）。TR80 是實驗室 DI，ICH Q10 是品質系統，Annex 1 與 FDA 無菌指引只在 Appendix I 的濾器例子中引用。",
+      "reference": "PDA TR84 §4.0；§7.0 ref 8、26",
+      "max": 1
+    },
+    {
+      "id": 31,
+      "section": "sec6a",
+      "type": "mcq",
+      "topic": "Example 1b — PLC reactor, paper BPR",
+      "question": "Example 1b：影響雜質（CQA）的 High criticality 反應器改用已確效 PLC 控制，PLC printout 附在紙本 BPR，但操作員仍要從 HMI 手抄數據。資料 vulnerability 為何？",
+      "options": {
+        "A": "Moderate（Orange）",
+        "B": "Significant（Red）",
+        "C": "Acceptable（Green）",
+        "D": "Negligible（Blue）"
+      },
+      "correct": "A",
+      "explanation": "1a 全手動加紙本 BPR，High criticality 配 Low 控制，是 Significant（Red）。1b 加了已確效 PLC 與 printout，控制提升到 Medium，變成 Moderate（Orange）。要到 1c 採用已確效 EBR（自動擷取、不能刪除、存取控制、audit trail、自動歸檔）才是 Acceptable（Green）。High criticality 資料不會落在 Blue。",
+      "reference": "PDA TR84 §8.1（Table 8.1-1）",
+      "max": 1
+    },
+    {
+      "id": 32,
+      "section": "sec6a",
+      "type": "mcq",
+      "topic": "Example 2 — LOD criticality",
+      "question": "API 烘乾的 LOD 不是 CQA，烘乾也不是 CPP，但 LOD 會影響 API 流動性與下游製劑加工。這筆資料的 criticality 是？",
+      "options": {
+        "A": "High，因為它會影響下游的成品",
+        "B": "Medium，位於 9-Box 的中間列",
+        "C": "Low，因為與 CQA、CPP 都無關",
+        "D": "API 階段的資料，不需做 DI 評估"
+      },
+      "correct": "B",
+      "explanation": "LOD 雖然不是 CQA/CPP，但會影響流動性與下游加工，屬於需要嚴格控制以確保製程一致性的資料，所以是 Medium，放在 9-Box 中間列。Low 是與 CQA/CPP 直接間接都無關的例行 GMP 資料，例如 Example 3 的 campaign 內批間清潔。",
+      "reference": "PDA TR84 §8.1（Table 8.1-2）",
+      "max": 1
+    },
+    {
+      "id": 33,
+      "section": "sec6a",
+      "type": "mcq",
+      "topic": "Example 3a — manual cleaning",
+      "question": "Example 3a：在確效 campaign 長度內，小分子 API 設備批間清潔以人工進行，操作員把資料抄進紙本紀錄。資料 vulnerability 為何？",
+      "options": {
+        "A": "Significant（Red），因為全程人工",
+        "B": "Moderate（Orange），因為缺少 audit trail",
+        "C": "Acceptable（Green），Low 資料配 Low 控制",
+        "D": "Negligible（Blue），因為清潔程序已確效"
+      },
+      "correct": "C",
+      "explanation": "campaign 內批間殘留不影響最終 API 品質，屬 Low criticality。Low 資料配 Low 控制（第二人見證、人員監督、放行審查）就是 Acceptable（Green）。改用 CIP 加 PLC printout（3b）或 EBR（3c）都是 Negligible（Blue），代表控制多於所需。",
+      "reference": "PDA TR84 §8.1（Table 8.1-3）",
+      "max": 1
+    },
+    {
+      "id": 34,
+      "section": "sec6a",
+      "type": "mcq",
+      "topic": "How to read the 9-Box",
+      "question": "依 Appendix I 對 9-Box 的說明，下列何者正確？",
+      "options": {
+        "A": "欄代表資料 criticality，列代表控制等級",
+        "B": "降低 vulnerability 的方法是重新評估、把資料 criticality 降級處理",
+        "C": "在格子中由左往右移動，代表資料控制等級逐步提高",
+        "D": "列為 criticality、欄為控制；靠加強控制來降低 vulnerability"
+      },
+      "correct": "D",
+      "explanation": "Criticality 決定資料在哪一列（High 在上、Low 在下），控制等級決定在哪一欄（電腦化控制在第一欄，hybrid 第二欄，人工紀錄第三欄）。由左往右是控制減少。降低 vulnerability 與資料 criticality 無關，要靠增加控制。",
+      "reference": "PDA TR84 §8.1",
+      "max": 1
+    },
+    {
+      "id": 35,
+      "section": "sec6a",
+      "type": "mcq",
+      "topic": "Examples 4b vs 5b — same controls",
+      "question": "篩分時的濕度以已確效 BMS（有 audit trail 與存取控制）記錄，printout 附在紙本紀錄。若濕度是 CPP（藥物吸濕會降解）vs. 只影響流動性、不是 CPP，vulnerability 分別為？",
+      "options": {
+        "A": "兩者都是 Acceptable（Green）",
+        "B": "CPP 為 Moderate（Orange），非 CPP 為 Acceptable（Green）",
+        "C": "CPP 為 Significant（Red），非 CPP 為 Moderate（Orange）",
+        "D": "CPP 為 Acceptable（Green），非 CPP 為 Negligible（Blue）"
+      },
+      "correct": "B",
+      "explanation": "同樣的 BMS 加 printout 屬於 Medium 等級控制。濕度是 CPP 時為 High criticality（Example 4b），H/M 是 Moderate（Orange）；只影響流動性時為 Medium criticality（Example 5b），M/M 是 Acceptable（Green）。同樣的控制，資料 criticality 不同，結果就不同。",
+      "reference": "PDA TR84 §8.2（Tables 8.2-1、8.2-2）",
+      "max": 1
+    },
+    {
+      "id": 36,
+      "section": "sec6b",
+      "type": "mcq",
+      "topic": "Filter integrity test — FDA vs EU",
+      "question": "§8.3 對 sterilizing filter integrity test 的法規說明，下列何者正確？",
+      "options": {
+        "A": "FDA 與 EU 都只要求使用後測試，使用前一律不需要做",
+        "B": "FDA 要求使用前與使用後都必須測試，EU 則只要求在使用後進行測試",
+        "C": "兩地都只建議做測試，沒有使用後測試的期待",
+        "D": "FDA：使用前可做、使用後應例行做；EU：使用前驗證、使用後立即確認"
+      },
+      "correct": "D",
+      "explanation": "FDA 無菌製程指引說濾器完整性測試可在製程前執行，且應例行在使用後執行；美國沒有在滅菌前做身分確認測試的法規要求。EU Annex 1 則要求滅菌後的濾器在使用前驗證完整性，並在使用後立即確認。TR84 提醒要遵守當地法規。",
+      "reference": "PDA TR84 §8.3",
+      "max": 1
+    },
+    {
+      "id": 37,
+      "section": "sec6b",
+      "type": "mcq",
+      "topic": "Examples 7–9 — criticality of filter tests",
+      "question": "依 Examples 7–9，在美國法規下，各種濾器測試資料的 criticality 如何區分？",
+      "options": {
+        "A": "三者都是 High，因為都和無菌有關",
+        "B": "使用前（滅菌後）High、使用後 Medium、身分確認 Low",
+        "C": "使用後 High、使用前（滅菌後）Medium、身分確認 Low",
+        "D": "使用後 Medium、使用前（滅菌後）High、身分確認 Medium"
+      },
+      "correct": "C",
+      "explanation": "使用後的 FIT 影響 CQA（無菌），也是確認充填後濾器完整的 CPP，屬 High（Example 7）。滅菌後、充填前的使用前測試在美國是法規建議，屬 Medium（Example 8），其他地區可能不同。滅菌前用來確認濾器裝對的身分驗證不是法規要求，屬 Low（Example 9）。",
+      "reference": "PDA TR84 §8.3（Tables 8.3-1 至 8.3-3）",
+      "max": 1
+    },
+    {
+      "id": 38,
+      "section": "sec6b",
+      "type": "mcq",
+      "topic": "Example 7c — end-to-end automation",
+      "question": "Example 7c：使用後 FIT 改為 end-to-end 自動化，濾器 in-line 測試、不需操作員手動啟動，結果自動傳到安全儲存模組。資料 vulnerability 為何？",
+      "options": {
+        "A": "Negligible（Blue），因為已沒有人為介入",
+        "B": "Acceptable（Green），控制與 High 資料相稱",
+        "C": "Moderate（Orange），因為主管仍需審查",
+        "D": "Significant（Red），因為仍是 legacy tester"
+      },
+      "correct": "B",
+      "explanation": "7a 用 legacy tester 加紙本 printout 是 Significant（Red）；7b 改用具自動擷取、安全儲存與 audit trail 的新型 tester 是 Moderate（Orange）；7c 做到 end-to-end 自動化才是 Acceptable（Green）。Blue 只適用於非 High criticality 的資料，所以 High 資料再怎麼加強也只到 Green。",
+      "reference": "PDA TR84 §8.3（Table 8.3-1）；§4.3",
+      "max": 1
+    },
+    {
+      "id": 39,
+      "section": "sec6b",
+      "type": "mcq",
+      "topic": "Example 10 — adequate stages",
+      "question": "Example 10 用 9-Box 評估錠劑包裝流程，哪幾個階段的現有控制被判定為足夠？",
+      "options": {
+        "A": "Planning、line clearance、IPC testing",
+        "B": "Dispensing、equipment setup、packaging",
+        "C": "Equipment setup、batch reconciliation、IPC",
+        "D": "Planning、dispensing、batch reconciliation"
+      },
+      "correct": "A",
+      "explanation": "Planning（Negligible）、line clearance（Acceptable）、IPC testing（Acceptable）的控制足夠；dispensing 與 equipment setup 是 Significant，packaging operation 與 batch reconciliation 是 Moderate，需要採取緩解措施。",
+      "reference": "PDA TR84 §8.4（Table 8.4-1）",
+      "max": 1
+    },
+    {
+      "id": 40,
+      "section": "sec6b",
+      "type": "mcq",
+      "topic": "Example 10d — equipment setup mitigation",
+      "question": "Example 10d：包裝設備用群組帳號，操作員可選任何 recipe、修改設定參數與感測器容許範圍，被評為 Significant。TR84 建議怎麼改善？",
+      "options": {
+        "A": "增加 QU 在包裝結束後審查批紀錄的頻率",
+        "B": "改用試算表記錄設定值，再由主管簽核",
+        "C": "每人唯一帳號，並設操作員不能改的產品專屬上下限",
+        "D": "保留群組帳號，但改為每年更換一次密碼"
+      },
+      "correct": "C",
+      "explanation": "Equipment setup 與 packaging operation 都建議加強存取控制，讓每位使用者有唯一帳號，或在感測器容許範圍加上操作員不能修改的產品專屬最小–最大限值。事後審查不能防止錯誤設定；試算表在 dispensing 例子中反而被視為風險（容易在列印前被修改）；群組帳號只適用於 Low criticality 的系統。",
+      "reference": "PDA TR84 §8.4（Table 8.4-1）",
+      "max": 1
+    }
+  ]
+}
