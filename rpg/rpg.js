@@ -1052,6 +1052,158 @@
       }))
     ]);
   }
+  /* ---------- Battle attack effects, themed by each side's attribute ----------
+     Visual only: the answer is already scored when an attack starts. */
+  var FXG = {   // projectile glyphs (inline SVG, painted in the attacker's colour)
+    seal: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="17" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="20" cy="20" r="12" fill="currentColor" opacity=".3"/><path d="M20 9l3.2 6.6 7.3 1-5.3 5.1 1.3 7.2L20 25.5l-6.5 3.4 1.3-7.2-5.3-5.1 7.3-1z" fill="currentColor"/></svg>',
+    drop: '<svg viewBox="0 0 24 24"><path d="M12 2C8.5 7.5 5 11 5 15a7 7 0 0 0 14 0c0-4-3.5-7.5-7-13z" fill="currentColor"/><ellipse cx="9.5" cy="14" rx="1.6" ry="2.6" fill="#fff" opacity=".75"/></svg>',
+    gear: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="15" fill="none" stroke="currentColor" stroke-width="6" stroke-dasharray="5.89 5.89"/><circle cx="20" cy="20" r="12" fill="currentColor"/><circle cx="20" cy="20" r="4.5" fill="#fff"/></svg>',
+    page: '<svg viewBox="0 0 24 30"><path d="M2 2h14l6 6v20H2z" fill="#fff" stroke="currentColor" stroke-width="2"/><path d="M6 12h12M6 17h12M6 22h8" stroke="currentColor" stroke-width="2"/></svg>',
+    crate: '<svg viewBox="0 0 40 40"><rect x="3" y="3" width="34" height="34" rx="3" fill="#c98a2b" stroke="#5c3d0e" stroke-width="3"/><path d="M5 5l30 30M35 5L5 35" stroke="#5c3d0e" stroke-width="3"/><rect x="1.5" y="1.5" width="37" height="37" rx="4" fill="none" stroke="currentColor" stroke-width="2"/></svg>',
+    wave: '<svg viewBox="0 0 30 40"><path d="M8 6a18 18 0 0 1 0 28M16 2a24 24 0 0 1 0 36" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg>',
+    bubble: '<svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="currentColor" fill-opacity=".3" stroke="currentColor" stroke-width="2"/><circle cx="7" cy="7" r="2" fill="#fff"/></svg>',
+    spore: '<svg viewBox="0 0 24 24"><path d="M12 1v5M12 18v5M1 12h5M18 12h5M4 4l3.5 3.5M16.5 16.5L20 20M20 4l-3.5 3.5M7.5 16.5L4 20" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><circle cx="12" cy="12" r="6" fill="currentColor"/></svg>',
+    shard: '<svg viewBox="0 0 24 24"><path d="M3 20L10 2l11 9-8 3z" fill="currentColor" fill-opacity=".6" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></svg>',
+    ghost: '<svg viewBox="0 0 40 44"><path d="M6 42V18a14 14 0 0 1 28 0v24l-4.6-4-4.7 4-4.7-4-4.7 4-4.7-4z" fill="currentColor" fill-opacity=".85"/><circle cx="15" cy="18" r="3" fill="#1e1b4b"/><circle cx="25" cy="18" r="3" fill="#1e1b4b"/><path d="M15 28q5-4 10 0" stroke="#1e1b4b" stroke-width="2" fill="none"/></svg>',
+    blob: '<svg viewBox="0 0 40 40"><path d="M20 3c9 0 16 6 16 15 0 6-3 9-2 14 1 4-4 6-7 4-3-2-5 2-9 2S9 38 7 35c-3-4 0-7-2-12C2 13 10 3 20 3z" fill="currentColor"/><circle cx="14" cy="14" r="3.5" fill="#fff" opacity=".6"/></svg>',
+    orb: '<svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="8.5" fill="currentColor"/><circle cx="10" cy="10" r="4" fill="#fff" opacity=".75"/></svg>',
+    bat: '<svg viewBox="0 0 40 24"><path d="M20 6l3-5 1 6 6-4 10 3-6 4 2 7-7-3-4 6-5-5-5 5-4-6-7 3 2-7-6-4 10-3 6 4 1-6z" fill="#fff" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 10h12" stroke="currentColor" stroke-width="1.5"/></svg>',
+    dust: '<svg viewBox="0 0 10 10"><circle cx="5" cy="5" r="4" fill="currentColor"/></svg>'
+  };
+  var FXM = {   // marks stamped over the target on impact
+    stamp: '<svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="34" fill="none" stroke="currentColor" stroke-width="5"/><circle cx="40" cy="40" r="26" fill="none" stroke="currentColor" stroke-width="2"/><path d="M26 41l10 10 20-22" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    cut: '<svg viewBox="0 0 80 80"><path d="M10 16L70 64M70 16L10 64" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M10 16L70 64M70 16L10 64" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>',
+    claw: '<svg viewBox="0 0 80 80"><g fill="none" stroke-linecap="round"><path d="M18 8q10 30-2 64M40 4q10 34-2 72M62 8q10 30-2 64" stroke="currentColor" stroke-width="7"/><path d="M18 8q10 30-2 64M40 4q10 34-2 72M62 8q10 30-2 64" stroke="#fff" stroke-width="2"/></g></svg>',
+    cross: '<svg viewBox="0 0 80 80"><rect x="6" y="6" width="68" height="68" rx="8" fill="none" stroke="currentColor" stroke-width="5"/><path d="M24 24l32 32M56 24L24 56" stroke="currentColor" stroke-width="9" stroke-linecap="round"/></svg>',
+    crack: '<svg viewBox="0 0 80 80"><path d="M40 4l-6 20 10 8-14 14 8 10-6 20M44 32l18-6 10 8M30 46l-18 4-6 12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M40 4l-6 20 10 8-14 14 8 10-6 20" fill="none" stroke="#fff" stroke-width="1.2"/></svg>',
+    bolt: '<svg viewBox="0 0 80 80"><path d="M46 2L18 44h18l-8 34 34-46H44l10-30z" fill="currentColor" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/></svg>',
+    gear: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="15" fill="none" stroke="currentColor" stroke-width="6" stroke-dasharray="5.89 5.89"/><circle cx="20" cy="20" r="11" fill="none" stroke="currentColor" stroke-width="3"/></svg>',
+    film: '<svg viewBox="0 0 80 80"><path d="M40 6c18 0 32 10 32 28 0 10-6 14-4 24 2 8-8 14-16 10-6-3-8 4-14 4s-10-6-16-4c-8 3-14-4-11-12 3-7-3-12-3-22C8 16 22 6 40 6z" fill="currentColor" fill-opacity=".45" stroke="currentColor" stroke-width="2.5"/><circle cx="28" cy="28" r="4" fill="#fff" opacity=".5"/><circle cx="52" cy="46" r="3" fill="#fff" opacity=".4"/></svg>',
+    shield: '<svg viewBox="0 0 80 80"><path d="M40 4l32 18v36L40 76 8 58V22z" fill="#7dd3fc" fill-opacity=".35" stroke="#38bdf8" stroke-width="4"/><path d="M40 16l22 12v24L40 64 18 52V28z" fill="none" stroke="#fff" stroke-width="2" opacity=".8"/></svg>'
+  };
+  // m (motion): arc | fly | stream | swarm | helix | drop | beam | cone | strike
+  var FX_YOU = {
+    qa:          { el: '品保系', c: '#2563eb', skill: '品質封印', m: 'arc', g: 'seal', n: 1, size: 48, spin: 1, imp: { mark: 'stamp', ring: 1, dots: 10 } },
+    qc:          { el: '品管系', c: '#7c3aed', skill: '試劑滴定', m: 'arc', g: 'drop', n: 3, size: 28, imp: { dots: 14, ring: 1, tint: 'stain' } },
+    production:  { el: '生產系', c: '#059669', skill: '無菌充填流', m: 'stream', g: 'bubble', n: 12, size: 15, imp: { dots: 12, tint: 'mist', flash: 1 } },
+    engineering: { el: '工程系', c: '#d97706', skill: '齒輪迴旋斬', m: 'fly', g: 'gear', n: 2, size: 42, spin: 1, imp: { mark: 'gear', dots: 14, dc: '#fde047', ring: 1 } },
+    ra:          { el: '法規系', c: '#dc2626', skill: '法典頁刃', m: 'swarm', g: 'page', n: 6, size: 30, spin: 1, imp: { mark: 'cut', dots: 6 } },
+    warehouse:   { el: '倉儲系', c: '#0891b2', skill: '物料空投', m: 'drop', g: 'crate', n: 1, size: 58, imp: { ring: 2, dots: 12, dc: '#c98a2b', quake: 1 } },
+    techservice: { el: '技服系', c: '#8b5cf6', skill: '調律聲波', m: 'stream', g: 'wave', n: 4, size: 42, aim: 1, imp: { ring: 3, flash: 1 } },
+    bt:          { el: '數位系', c: '#0f766e', skill: '數據洪流', m: 'stream', g: 'bits', n: 14, size: 16, imp: { tint: 'glitch', dots: 8 } }
+  };
+  var FX_MOB = [
+    { skill: '破洞抓擊', c: '#64748b', m: 'strike', imp: { mark: 'claw', dots: 6 } },
+    { skill: '芽孢連射', c: '#65a30d', m: 'fly', g: 'spore', n: 5, size: 24, spin: 1, imp: { dots: 12, tint: 'stain' } },
+    { skill: '碎玻璃投擲', c: '#0ea5e9', m: 'arc', g: 'shard', n: 4, size: 30, spin: 1, imp: { mark: 'crack', dots: 8, dc: '#bae6fd' } },
+    { skill: '漏簽詛咒', c: '#a855f7', m: 'swarm', g: 'ghost', n: 1, size: 56, imp: { mark: 'cross', dc: '#ef4444', ring: 1 } },
+    { skill: '落菌孢雨', c: '#d97706', m: 'drop', g: 'spore', n: 8, size: 18, imp: { dots: 10, tint: 'stain' } },
+    { skill: '混濁黏液彈', c: '#84cc16', m: 'arc', g: 'blob', n: 1, size: 40, imp: { mark: 'film', dots: 10 } },
+    { skill: '死角電擊', c: '#eab308', m: 'beam', beam: 'bolt', imp: { mark: 'bolt', tint: 'zap', flash: 1 } },
+    { skill: '交叉污染', c: '#ec4899', m: 'helix', g: 'orb', n: 2, size: 28, imp: { ring: 2, dots: 10, tint: 'stain' } },
+    { skill: '缺失通知', c: '#ef4444', m: 'swarm', g: 'bat', n: 5, size: 36, imp: { mark: 'cut', dots: 6 } },
+    { skill: '系統當機', c: '#06b6d4', m: 'beam', beam: 'glitch', imp: { tint: 'glitch', dots: 8 } }
+  ];
+  var FX_BOSS = [
+    { el: '微粒系', skill: '微粒風暴', c: '#94a3b8', m: 'stream', g: 'dust', n: 30, size: 7, imp: { tint: 'mist', dots: 18, quake: 1 } },
+    { el: '生物膜系', skill: '生物膜吞噬', c: '#65a30d', m: 'arc', g: 'blob', n: 3, size: 36, imp: { mark: 'film', tint: 'film', dots: 12, quake: 1 } },
+    { el: '熱原系', skill: '熱原吐息', c: '#f97316', m: 'cone', imp: { tint: 'burn', dots: 18, dc: '#fde047', flash: 1, quake: 1 } }
+  ];
+  var FX_PLAIN = { skill: '衝撞', c: '#64748b', m: 'strike', imp: { dots: 8 } };
+  function fxYou() {
+    var cls = S.profile && S.profile.cls, sp = FX_YOU[cls] || FX_YOU.qa, d = deptById(cls);
+    return d && d.color ? fxWith(sp, { c: d.color }) : sp;
+  }
+  function fxWith(a, b) { var r = {}, k; for (k in a) r[k] = a[k]; for (k in b) r[k] = b[k]; return r; }
+
+  /* One attack: wind-up on the attacker, a projectile (or beam / breath / lunge) to the target,
+     then the impact. onHit runs at impact — or straight away when motion is reduced. */
+  function attackFx(f, onHit) {
+    var arena = f.arena, sp = f.sp;
+    if (CALM || !arena.isConnected) { onHit(); return; }
+    var A = arena.getBoundingClientRect(), a = f.from.getBoundingClientRect(), b = f.to.getBoundingClientRect();
+    var x0 = a.left + a.width / 2 - A.left, y0 = a.top + a.height / 2 - A.top;
+    var x1 = b.left + b.width / 2 - A.left, y1 = b.top + b.height / 2 - A.top;
+    var dx = x1 - x0, dy = y1 - y0, dist = Math.sqrt(dx * dx + dy * dy), ang = Math.atan2(dy, dx) * 180 / Math.PI;
+    var layer = h('div', { class: 'rpg-fx', 'aria-hidden': 'true', style: '--c:' + sp.c });
+    arena.appendChild(layer);
+    function px(v) { return Math.round(v) + 'px'; }
+    function add(el, life) { layer.appendChild(el); return el; }
+
+    // skill name over the attacker + wind-up
+    layer.appendChild(h('span', { class: 'rpg-fx-skill', style: 'left:' + px(x0) + ';top:' + px(Math.max(16, a.top - A.top + 6)), text: sp.skill }));
+    var caster = f.fromBox;
+    var lunge = sp.m === 'strike';
+    caster.style.setProperty('--lx', px(dx * 0.42));
+    caster.classList.remove('rpg-fx-cast', 'rpg-fx-lunge'); void caster.offsetWidth;
+    caster.classList.add(lunge ? 'rpg-fx-lunge' : 'rpg-fx-cast');
+    setTimeout(function () { caster.classList.remove('rpg-fx-cast', 'rpg-fx-lunge'); }, 700);
+
+    var lead = lunge ? 160 : 220, travel, last = 0;
+    if (sp.m === 'beam' || sp.m === 'cone') {
+      travel = sp.m === 'cone' ? 420 : 260;
+      var beam = h('span', { class: 'rpg-fx-beam is-' + (sp.beam || sp.m), style: 'left:' + px(x0) + ';top:' + px(y0) + ';width:' + px(dist) +
+        ';--ang:' + ang.toFixed(1) + 'deg;--d:' + lead + 'ms;--t:' + travel + 'ms' });
+      if (sp.beam === 'bolt') {
+        var pts = [], segs = Math.max(5, Math.round(dist / 26));
+        for (var s = 0; s <= segs; s++) pts.push((s / segs * 100).toFixed(1) + ',' + (s === 0 || s === segs ? 20 : 20 + (Math.random() - 0.5) * 30).toFixed(1));
+        beam.innerHTML = '<svg viewBox="0 0 100 40" preserveAspectRatio="none"><polyline points="' + pts.join(' ') + '" fill="none" stroke="currentColor" stroke-width="5" vector-effect="non-scaling-stroke" stroke-linejoin="round"/><polyline points="' + pts.join(' ') + '" fill="none" stroke="#fff" stroke-width="2" vector-effect="non-scaling-stroke" stroke-linejoin="round"/></svg>';
+      }
+      add(beam);
+    } else if (!lunge) {
+      travel = sp.m === 'drop' ? 560 : sp.m === 'stream' ? 440 : 500;
+      var n = sp.n || 1, gap = sp.m === 'stream' ? (n > 16 ? 22 : 45) : sp.m === 'drop' ? 70 : sp.m === 'swarm' ? 80 : 110;
+      for (var k = 0; k < n; k++) {
+        var d = lead + k * gap, sx = x0, sy = y0, ex = x1 + (Math.random() - 0.5) * 22, ey = y1 + (Math.random() - 0.5) * 26, hgt = -12;
+        if (sp.m === 'arc') hgt = -Math.min(100, dist * 0.4) - k * 10;
+        else if (sp.m === 'swarm') hgt = (Math.random() - 0.5) * 140;
+        else if (sp.m === 'helix') hgt = k % 2 ? 70 : -70;
+        else if (sp.m === 'stream') { hgt = (Math.random() - 0.5) * 18; sy = y0 + (Math.random() - 0.5) * 16; }
+        else if (sp.m === 'drop') { ex = x1 + (Math.random() - 0.5) * (n > 1 ? 90 : 0); sx = ex + (Math.random() - 0.5) * 30; sy = -sp.size; hgt = 0; }
+        if (sp.m !== 'drop') {   // keep the whole flight inside the arena
+          var top = sp.size / 2 + 4, bot = A.height - sp.size / 2 - 4;
+          hgt = Math.max(top - Math.min(sy, ey), Math.min(bot - Math.max(sy, ey), hgt));
+        }
+        var p = h('span', { class: 'rpg-fx-p' + (sp.m === 'drop' ? ' is-drop' : '') + (sp.spin ? ' is-spin' : '') + (sp.m === 'swarm' ? ' is-flap' : ''),
+          style: '--x0:' + px(sx) + ';--y0:' + px(sy) + ';--x1:' + px(ex) + ';--y1:' + px(ey) + ';--h:' + px(hgt) + ';--s:' + sp.size + 'px;--t:' + travel + 'ms;--d:' + d + 'ms;--a:' + (sp.aim ? ang.toFixed(1) : 0) + 'deg' });
+        var core = h('i', {});
+        if (sp.g === 'bits') { core.className = 'is-bits'; core.textContent = Math.random() < 0.5 ? '1' : '0'; }
+        else core.innerHTML = FXG[sp.g] || FXG.orb;
+        p.appendChild(h('b', {}, [core]));
+        add(p);
+        last = Math.max(last, k * gap);
+      }
+    }
+    var at = lead + (lunge ? 120 : travel) + (sp.m === 'stream' ? last * 0.5 : sp.m === 'drop' ? last * 0.5 : 0);
+    setTimeout(function () { impact(); onHit(); }, at);
+    setTimeout(function () { if (layer.parentNode) layer.parentNode.removeChild(layer); }, at + 1300 + last);
+
+    function impact() {
+      var imp = f.blocked ? { mark: 'shield', ring: 1, dots: 8, dc: '#7dd3fc' } : sp.imp || {};
+      var size = Math.max(64, Math.min(170, b.width * 0.95)), at0 = 'left:' + px(x1) + ';top:' + px(y1);
+      if (imp.flash) add(h('span', { class: 'rpg-fx-flash', style: at0 + ';--m:' + px(size * 1.6) }));
+      for (var r = 0; r < (imp.ring || 0); r++) add(h('span', { class: 'rpg-fx-ring', style: at0 + ';--m:' + px(size) + ';--d:' + (r * 110) + 'ms' + (imp.dc ? ';--c:' + imp.dc : '') }));
+      if (imp.mark) {
+        var mk = h('span', { class: 'rpg-fx-mark is-' + imp.mark, style: at0 + ';--m:' + px(size) + (imp.dc && !f.blocked ? ';--c:' + imp.dc : '') });
+        mk.innerHTML = FXM[imp.mark];
+        add(mk);
+      }
+      for (var q = 0; q < (imp.dots || 0); q++) {
+        var t = q / imp.dots * Math.PI * 2 + Math.random() * 0.4, rr = size * (0.45 + Math.random() * 0.4);
+        add(h('span', { class: 'rpg-fx-dot', style: at0 + ';--x:' + px(Math.cos(t) * rr) + ';--y:' + px(Math.sin(t) * rr) + ';--d:' + Math.round(Math.random() * 90) + 'ms' + (imp.dc ? ';--c:' + imp.dc : '') }));
+      }
+      if (imp.tint && !f.blocked && !f.tint.closest('.is-dissolve')) {
+        var te = f.tint, cl = 'rpg-fx-t-' + imp.tint;
+        te.classList.remove(cl); void te.offsetWidth; te.classList.add(cl);
+        setTimeout(function () { te.classList.remove(cl); }, 1300);
+      }
+      if (imp.quake && f.root) {
+        f.root.classList.remove('rpg-fx-quake'); void f.root.offsetWidth; f.root.classList.add('rpg-fx-quake');
+        setTimeout(function () { f.root.classList.remove('rpg-fx-quake'); }, 500);
+      }
+    }
+  }
+
   function runBattle(host, o) {
     var n = o.questions.length, hearts = o.hearts || battleHearts(o.kind, n), i = 0, score = 0, wrong = 0, lost = 0, last = [];
     var missed = [], cleansed = 0;
@@ -1059,15 +1211,20 @@
     var foeImg = o.foeImg ? h('img', { class: 'rpg-foe-img', src: o.foeImg, alt: o.foe }) : h('span', { class: 'rpg-foe-img rpg-foe-blank', text: '？' });
     var hp = h('span', { class: 'rpg-hp', role: 'meter', 'aria-label': o.foe + '的血量', 'aria-valuemin': 0, 'aria-valuemax': n });
     var heartsEl = h('span', { class: 'rpg-hearts', 'aria-label': '你的生命' });
-    var foeBox = h('div', { class: 'rpg-foe' }, [foeImg, h('b', { text: o.foe }), hp]);
+    var foeFx = (o.kind === 'boss' ? FX_BOSS[o.zone] : FX_MOB[o.cluster]) || FX_PLAIN, youFx = fxYou();
+    var foeEl = o.kind === 'boss' ? (foeFx.el || '魔王') : o.cluster >= 0 ? CLUSTER_ZH[o.cluster] + '系' : '無屬性';
+    var foeBox = h('div', { class: 'rpg-foe' }, [foeImg, h('b', { text: o.foe }),
+      h('span', { class: 'rpg-elem', style: '--c:' + foeFx.c, text: foeEl + '・' + foeFx.skill }), hp]);
     var worn = Object.keys(SLOTS).map(function (sl) { return S.gear.on[sl] && gearById(S.gear.on[sl]); }).filter(Boolean);
-    var you = h('div', { class: 'rpg-you' }, [avatarEl(), h('b', { text: S.profile ? S.profile.nick : '你' }), heartsEl,
+    var youAv = avatarEl();
+    var you = h('div', { class: 'rpg-you' }, [youAv, h('b', { text: S.profile ? S.profile.nick : '你' }),
+      h('span', { class: 'rpg-elem', style: '--c:' + youFx.c, text: youFx.el + '・' + youFx.skill }), heartsEl,
       worn.length ? h('span', { class: 'rpg-worn' }, worn.map(function (g) { return h('img', { src: gearImg(g), alt: g.zh, title: g.zh + '：' + g.eff }); })) : null]);
     var stage = h('div', { class: 'rpg-battle-stage' });
     var arena = h('div', { class: 'rpg-arena' + (o.kind === 'boss' ? ' is-boss' : '') }, [foeBox, h('span', { class: 'rpg-vs', text: 'VS' }), you]);
-    var raged = false;
+    var raged = false, battleEl = h('div', { class: 'rpg-battle' }, [arena, stage]);
     clear(host);
-    host.appendChild(h('div', { class: 'rpg-battle' }, [arena, stage]));
+    host.appendChild(battleEl);
 
     /* A banner across the arena: the entrance, the boss's mid-fight line. Tap to skip. */
     function banner(kicker, line, ms, then) {
@@ -1117,16 +1274,18 @@
       heartsEl.setAttribute('aria-label', '你的生命 ' + (hearts - lost) + ' / ' + hearts + (shield ? '，手套護盾 1' : ''));
     }
     function hit(el, cls, text) {
+      if (el.classList.contains('is-dissolve')) return;
       el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls);
+      setTimeout(function () { el.classList.remove(cls); }, 500);
       var f = h('span', { class: 'rpg-dmg', text: text });
       el.appendChild(f);
       setTimeout(function () { if (f.parentNode) f.parentNode.removeChild(f); }, 900);
     }
-    function slash() {
-      if (CALM) return;
-      var s = h('span', { class: 'rpg-slash', 'aria-hidden': 'true' });
-      foeBox.appendChild(s);
-      setTimeout(function () { if (s.parentNode) s.parentNode.removeChild(s); }, 500);
+    /* Both sides attack in their own attribute; the HP / heart meters drop when the blow lands. */
+    function strike(mine, then, blocked) {
+      attackFx({ arena: arena, root: battleEl, sp: mine ? youFx : foeFx, blocked: blocked,
+        from: mine ? youAv : foeImg, fromBox: mine ? you : foeBox,
+        to: mine ? foeImg : youAv, tint: mine ? foeImg : youAv }, function () { then(); meters(); });
     }
     function ask() {
       var q = o.questions[i], answered = false;
@@ -1157,11 +1316,11 @@
           if (!ok) missed.push(q);
           var clean = noteAnswer(q.docKey || pageDocKey, q, ok);
           if (clean) cleansed++;
-          if (ok) { score++; hit(foeBox, 'is-hit', clean ? '淨化' : '-1'); slash(); }
-          else if (shield) { wrong++; shield = 0; hit(you, 'is-hurt', '護盾'); }
-          else { wrong++; lost++; hit(you, 'is-hurt', '♥-1'); }
+          var dmg = clean ? '淨化' : '-1';
+          if (ok) { score++; strike(true, function () { hit(foeBox, 'is-hit', dmg); }); }
+          else if (shield) { wrong++; shield = 0; strike(false, function () { hit(you, 'is-hurt', '護盾'); }, true); }
+          else { wrong++; lost++; strike(false, function () { hit(you, 'is-hurt', '♥-1'); }); }
           if (!ok && backLink) backLink.hidden = false;
-          meters();
           if (o.kind === 'boss' && !raged && score >= Math.ceil(n / 2) && score < n) {
             raged = true; arena.classList.add('is-rage');
             banner('魔王暴走！', o.rage || '', 2600, null);
@@ -1221,7 +1380,7 @@
     area.appendChild(h('button', { class: 'rpg-btn', type: 'button', text: rec ? '再戰' : '迎戰', onclick: fight }));
 
     function fight() {
-      runBattle(area, { kind: 'mob', foe: foe, foeImg: mobSrc, questions: shuffle(questions.slice()), onEnd: save });
+      runBattle(area, { kind: 'mob', foe: foe, foeImg: mobSrc, cluster: mi, questions: shuffle(questions.slice()), onEnd: save });
     }
     function save(r) {
       var score = r.score, ok = r.won;
@@ -1290,7 +1449,7 @@
       ], { cls: 'rpg-modal-wide rpg-modal-boss' });
       function go() {
         runBattle(box, {
-          kind: 'boss', foe: zone.boss, foeImg: img, again: go, line: BOSS_LINES[ti], rage: BOSS_RAGE[ti],
+          kind: 'boss', foe: zone.boss, foeImg: img, zone: ti, again: go, line: BOSS_LINES[ti], rage: BOSS_RAGE[ti],
           questions: shuffle(pool.slice()).slice(0, BOSS_Q),
           onEnd: function (r) {
             S.bossTry[key] = (S.bossTry[key] || 0) + 1;
@@ -1632,7 +1791,7 @@
       ], { cls: 'rpg-modal-wide' });
       function go() {
         runBattle(box, {
-          kind: 'drill', foe: mi >= 0 ? MOBS[mi] : '錯題幽靈', foeImg: mi >= 0 ? asset('mob-' + mi) : null,
+          kind: 'drill', foe: mi >= 0 ? MOBS[mi] : '錯題幽靈', foeImg: mi >= 0 ? asset('mob-' + mi) : null, cluster: mi,
           hearts: qs.length + 1, questions: shuffle(qs.slice()), again: function () {
             qs = qs.filter(function (q) { return S.weak[key + '#' + q.id]; });
             if (qs.length) go(); else toast('這份文件的錯題都淨化了！');
