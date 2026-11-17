@@ -335,6 +335,9 @@
       card.appendChild(el('h3', '', s.title));
       card.appendChild(el('p', 'rpg-map3d-meta', s.shell ? '內容準備中' : (s.cleared ? '已通關' : s.started ? '已讀 ' + s.read + ' / ' + s.total + ' 節' : '共 ' + s.total + ' 節') + (s.quiz ? '・有章節挑戰' : '') + '　' + stars));
       if (!s.shell) { var a = el('a', 'rpg-btn', s.cleared ? '再讀一次' : s.started ? '繼續' : '出發'); a.href = s.href; card.appendChild(a); }
+      if (s.guard === 'ready') { var g = el('a', 'rpg-btn rpg-btn-ghost', '挑戰守關者'); g.href = s.guardHref; card.appendChild(g); }
+      else if (s.guard === 'wait') card.appendChild(el('p', 'rpg-map3d-meta', '守關者明天現身'));
+      else if (s.guard === 'won') card.appendChild(el('p', 'rpg-map3d-meta', '守關者已擊敗'));
     } else if (u.boss) {
       var z = u.boss;
       card.appendChild(el('span', 'rpg-tag', 'BOSS'));

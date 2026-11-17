@@ -89,13 +89,13 @@
   var GEAR = [
     { id: 'gloves', slot: 'hand', zh: '無菌手套', eff: '每場戰鬥第一次答錯不扣心（仍算答錯）', need: { c0: 2, c6: 1 } },
     { id: 'goggles', slot: 'head', zh: '防霧護目鏡', eff: '作答前先顯示這題的出處章節', need: { c2: 2, c5: 1 } },
-    { id: 'cape', slot: 'body', zh: '層流披風', eff: '魔王戰多 1 顆心', need: { c1: 2, c0: 1, c4: 1 } },
+    { id: 'cape', slot: 'body', zh: '層流披風', eff: '魔王戰多 1 顆心：更容易撐完 10 題，多看新題、拿撐完素材', need: { c1: 2, c0: 1, c4: 1 } },
     { id: 'bookmark', slot: 'charm', zh: '法典書籤', eff: '答錯時出現「回原文」，直接跳到那一節', need: { c8: 2, c3: 1 } },
     { id: 'amulet', slot: 'charm', zh: '培養皿護符', eff: '複習突擊答對多 +5 XP', need: { c4: 2, c7: 1 } },
     { id: 'watch', slot: 'charm', zh: '晶片懷錶', eff: '複習突擊提早到 5 天後出現', need: { c9: 2, c6: 1 } },
     { id: 'ribbon', slot: 'pet', zh: '夥伴領巾', eff: '夥伴戴上領巾，閱讀時會多說幾句', need: { c7: 2, c2: 1 } },
     { id: 'gemframe', slot: 'frame', zh: '結晶外框', eff: '頭像換成會發光的結晶外框', need: { c0: 3, boss: 1 } },
-    { id: 'armor', slot: 'body', zh: '無塵聖甲', eff: '魔王戰多 2 顆心，小怪戰多 1 顆心', need: { boss: 2, c1: 2, c6: 2 } }
+    { id: 'armor', slot: 'body', zh: '無塵聖甲', eff: '魔王戰多 2 顆心，小怪戰多 1 顆心：更容易撐完全場，多拿新題 XP 和撐完素材', need: { boss: 2, c1: 2, c6: 2 } }
   ];
   function gearById(id) { for (var i = 0; i < GEAR.length; i++) if (GEAR[i].id === id) return GEAR[i]; return null; }
   function wearing(id) { var g = gearById(id); return !!(g && S && S.gear && S.gear.on[g.slot] === id); }
@@ -231,6 +231,8 @@
     var main = S.profile.cls;
     return [main].concat(DEPTS.map(function (d) { return d.id; }).filter(function (id) { return id !== main && G.skills[id] && G.skills[id].learned; }));
   }
+  var XP_FRESH = 3;                  // boss / elite / guard fights: each question answered right for the first time ever
+  var XP_GUARD = 40, GUARD_Q = 5;     // document guardian: first-win XP, questions per fight
   var XP_BOSS = 100, BOSS_Q = 10;     // boss battle: bonus XP on the first win, questions per fight
   var BOSS_LINES = [
     '「一粒灰塵就夠了。你的無菌區守得住嗎？」',
@@ -361,6 +363,9 @@
     s.gear = s.gear || {};
     s.gear.own = s.gear.own || {};                            // gear id -> time crafted
     s.gear.on = s.gear.on || {};                              // slot -> gear id
+    s.bossSeen = s.bossSeen || {};                            // '<key>#<qid>' answered right in a boss / elite / guard fight
+    s.runDay = s.runDay || {};                                // boss or elite target -> day its finish-all-10 material dropped
+    s.guardWin = s.guardWin || {};                            // doc key -> { best, total, ts }: document guardian beaten
     s.weak = s.weak || {};                                    // mistake book: '<key>#<qid>' -> { s: section, n: times wrong, t: last wrong }                              // '<class>:<zone>' -> attempts                              // class id -> stages revealed on the 3D map last time
     return s;
   }
@@ -394,10 +399,11 @@
 
     var secs = d.quiz ? Object.keys(d.quiz) : [];
     var q = S.quiz[key] || {};
-    var passed = 0, tried = 0, perfect = 0;
+    var passed = 0, tried = 0, perfect = 0, clearedAt = 0;
     secs.forEach(function (sid) {
       var r = q[sid];
       if (!r) return;
+      if (r.pt > clearedAt) clearedAt = r.pt;
       tried++;
       if (r.total > 0 && r.best / r.total >= PASS) passed++;
       if (r.total > 0 && r.first === r.total) perfect++;      // full marks on the very first attempt
@@ -408,6 +414,10 @@
     return {
       key: key, doc: d, maxIdx: maxIdx, started: !!p, readAll: all, read: read, total: n,
       quizSecs: secs, passed: passed, tried: tried, cleared: cleared, perfect: perfect, shiny: shiny,
+      // Document guardian: a 5-question mixed fight over the whole document, from the day AFTER it was cleared
+      // (recall after a night's gap, not right after reading). Old saves without pass times count as long ago.
+      clearedAt: secs.length && cleared ? clearedAt : 0, guardWon: !!S.guardWin[key],
+      guard: !secs.length || !cleared ? '' : S.guardWin[key] ? 'won' : clearedAt && dayKey(new Date(clearedAt)) === dayKey(new Date()) ? 'wait' : 'ready',
       xp: read * XP_READ + passed * XP_QUIZ + (cleared ? XP_DOC : 0),
       card: (all || cleared) ? { rarity: n >= 10 ? 3 : n >= 6 ? 2 : n >= 3 ? 1 : 0, awakened: secs.length > 0 && cleared, shiny: shiny } : null
     };
@@ -627,6 +637,17 @@
         }
       }
     }
+    // A guardian that showed up for a document cleared in the last two weeks goes first: it is short,
+    // and it is the spaced recall of something just finished. Older ones wait on the map.
+    var gPick = null;
+    c.tiers.forEach(function (t, i) {
+      t.list.forEach(function (x) {
+        var g = G.docs[x.key];
+        if (g.guard === 'ready' && g.clearedAt && Date.now() - g.clearedAt < 14 * 864e5 && (!gPick || g.clearedAt > gPick.st.clearedAt))
+          gPick = { guard: true, st: g, tier: t, tierIdx: i, entry: x, cls: c, mode: 'guard', href: ROOT + 'map.html?guard=' + encodeURIComponent(x.key) };
+      });
+    });
+    if (gPick) return gPick;
     scan(true);
     if (!pick) scan(false);
     if (!pick) return { done: true, cls: c };
@@ -730,6 +751,22 @@
         h('p', { text: '可以到角色頁轉職，挑戰另一個部門的主線。' }),
         h('a', { class: 'rpg-btn', href: ROOT + 'character.html', text: '前往角色頁' })
       ])]));
+      return;
+    }
+    if (q.guard) {
+      var gd = q.st.doc, gmi = clusterOf(gd), gimg = gmi >= 0 ? asset('mob-' + gmi) : null;
+      mount.appendChild(h('div', { class: 'rpg-quest rpg-quest-guard' }, [
+        gimg ? h('img', { class: 'rpg-quest-portrait rpg-quest-bossimg', src: gimg, alt: '' }) : portrait,
+        h('div', { class: 'rpg-quest-body' }, [
+          h('span', { class: 'rpg-tag', text: '守關者' }),
+          h('h2', { text: '「' + (gd.titleZh || gd.title) + '」的守關者現身了' }),
+          h('p', { class: 'rpg-quest-sec', text: '昨天以前通關的文件，今天來驗收：跨章節 ' + GUARD_Q + ' 題，答對 80% 擊敗牠，得 ' + XP_GUARD + ' XP、2 個素材和地圖上的一顆守關星。選打，不影響升階。' }),
+          h('div', { class: 'rpg-quest-foot' }, [
+            h('a', { class: 'rpg-btn', href: q.href, text: '挑戰守關者' }),
+            h('a', { class: 'rpg-quest-map', href: ROOT + 'map.html', text: '闖關地圖' })
+          ])
+        ])
+      ]));
       return;
     }
     if (q.boss) {
@@ -1559,7 +1596,10 @@
 
   function runBattle(host, o) {
     var n = o.questions.length, hearts = o.hearts || battleHearts(o.kind, n), i = 0, score = 0, wrong = 0, lost = 0, last = [];
-    var missed = [], cleansed = 0;
+    var missed = [], cleansed = 0, fresh = 0;
+    // Boss, elite and guardian fights pay for every question answered right for the first time, won or lost,
+    // so the extra hearts and shields from gear, skills and items mean more of the pool gets seen.
+    var payFresh = o.kind === 'boss' || o.kind === 'guard';
     var weak = o.kind === 'boss' && (o.weak != null ? !!o.weak : isWeak(o.zone, o.skill));
     var shield = (wearing('gloves') ? 1 : 0) + (weak ? 1 : 0);
     if (weak) hearts++;
@@ -1578,7 +1618,7 @@
       h('span', { class: 'rpg-elem' + (weak ? ' is-weak' : ''), style: '--c:' + youFx.c, text: (weak ? '弱點 ' : '') + youFx.el + '・' + youFx.skill }), heartsEl,
       worn.length ? h('span', { class: 'rpg-worn' }, worn.map(function (g) { return h('img', { src: gearImg(g), alt: g.zh, title: g.zh + '：' + g.eff }); })) : null]);
     var stage = h('div', { class: 'rpg-battle-stage' });
-    var arena = h('div', { class: 'rpg-arena' + (o.kind === 'boss' ? ' is-boss' : '') }, [foeBox, h('span', { class: 'rpg-vs', text: 'VS' }), you,
+    var arena = h('div', { class: 'rpg-arena' + (o.kind === 'boss' ? ' is-boss' : o.kind === 'guard' ? ' is-guard' : '') }, [foeBox, h('span', { class: 'rpg-vs', text: 'VS' }), you,
       o.kind === 'drill' ? null : soundBtn('rpg-sound-arena')]);
     var raged = false, battleEl = h('div', { class: 'rpg-battle' }, [arena, stage]);
     clear(host);
@@ -1681,6 +1721,8 @@
           var clean = noteAnswer(q.docKey || pageDocKey, q, ok);
           if (clean) cleansed++;
           var dmg = clean ? '淨化' : weak ? '弱點 -1' : '-1';
+          var qk = (q.docKey || pageDocKey) + '#' + q.id;
+          if (ok && payFresh && q.id != null && !S.bossSeen[qk]) { S.bossSeen[qk] = 1; fresh++; S.bonus += XP_FRESH; saveState(); dmg = '新題 +' + XP_FRESH + ' XP'; }
           if (ok) { score++; strike(true, function () { hit(foeBox, 'is-hit', dmg); }); }
           else if (shield) { wrong++; shield--; strike(false, function () { hit(you, 'is-hurt', '護盾'); }, true); }
           else { wrong++; lost++; strike(false, function () { hit(you, 'is-hurt', '♥-1'); }); }
@@ -1713,6 +1755,16 @@
       var head = drill ? '練習結束' : won ? '擊敗' + o.foe + '！' : '被' + o.foe + '擊退了';
       var line = '答對 ' + score + ' / ' + (drill ? i : n) + (drill ? '' : won ? (score === n ? '，全對。' : '。') : early ? '。心扣完了，剩下 ' + (n - i) + ' 題下次再戰。' : '，還差一點。');
       if (cleansed) line += '　淨化了 ' + cleansed + ' 道錯題。';
+      if (fresh) line += '　新答對 ' + fresh + ' 題，+' + fresh * XP_FRESH + ' XP。';
+      // Finishing all questions of a boss / elite fight, won or lost, drops one material (once a day per foe).
+      if (o.kind === 'boss' && !early && o.target != null && S.runDay[o.target] !== dayKey(new Date())) {
+        var src = o.questions[Math.floor(Math.random() * n)];
+        if (src && src.docKey && clusterOf(M.docs[src.docKey]) >= 0) {
+          S.runDay[o.target] = dayKey(new Date()); saveState();
+          dropMat(src.docKey);
+          line += '　撐完全部 ' + n + ' 題，掉落 1 個素材（每天一次）。';
+        }
+      }
       if (missed.length) line += '　答錯的題已記進錯題本，明天起答對就能淨化。';
       stage.appendChild(h('div', { class: 'rpg-battle-end ' + (won || drill ? 'is-win' : 'is-lose'), role: 'status' }, [
         h('strong', { text: head }),
@@ -1907,6 +1959,51 @@
         });
       }
     }).catch(function (e) { console.warn('[rpg] boss battle failed to load', e); toast('題庫讀不到，請稍後再試。'); });
+  }
+
+  /* Document guardian: optional mid-boss after a document's section challenges are all passed.
+     5 questions mixed across the whole document, from the next day on. Never gates rank-up. */
+  function openGuard(key) {
+    if (!S || !S.profile || !G) return;
+    var st = G.docs[key], d = M.docs[key];
+    if (!st || !d || !d.quiz) { toast('這份文件沒有題庫，沒有守關者。'); return; }
+    var mi = clusterOf(d), foe = (mi >= 0 ? MOBS[mi] : '章節守門怪') + '・守關者', img = mi >= 0 ? asset('mob-' + mi) : null;
+    if (st.guard === '' || st.guard === 'wait') {
+      modal([
+        h('span', { class: 'rpg-tag', text: 'GUARDIAN' }),
+        h('h2', { text: '「' + (d.titleZh || d.title) + '」的守關者還沒現身' }),
+        h('p', { class: 'rpg-modal-lead', text: st.guard === 'wait'
+          ? '今天剛通關，守關者明天才會出現。隔一天再回想，才測得出真正記住了多少。'
+          : '先通過這份文件每一節的章節挑戰（目前 ' + st.passed + ' / ' + st.quizSecs.length + '）。' })
+      ]);
+      return;
+    }
+    fetch(ROOT + 'rpg/quiz/' + key + '.json').then(function (r) { return r.json(); }).then(function (b) {
+      var pool = (b.questions || []).map(function (q) { return Object.assign({}, q, { docKey: key }); });
+      if (!pool.length) { toast('題庫讀不到，請稍後再試。'); return; }
+      var box = h('div', { class: 'rpg-boss-fight' }), won = !!S.guardWin[key];
+      modal([
+        h('span', { class: 'rpg-tag', text: 'GUARDIAN' }),
+        h('h2', { text: foe }),
+        h('p', { class: 'rpg-modal-lead', text: '從「' + (d.titleZh || d.title) + '」整份題庫跨章節出 ' + Math.min(GUARD_Q, pool.length) + ' 題，答對 80% 擊敗牠。選打，不影響升階' +
+          (won ? '。' : '；第一次擊敗得 ' + XP_GUARD + ' XP、2 個素材，地圖上這份文件多一顆守關星。') }),
+        box
+      ], { cls: 'rpg-modal-wide' });
+      function go() {
+        runBattle(box, {
+          kind: 'guard', foe: foe, foeImg: img, cluster: mi, again: go,
+          questions: shuffle(pool.slice()).slice(0, GUARD_Q),
+          onEnd: function (r) {
+            if (!r.won) { saveState(); return; }
+            var first = !S.guardWin[key];
+            S.guardWin[key] = { best: Math.max(r.score, first ? 0 : S.guardWin[key].best), total: r.total, ts: Date.now() };
+            if (first) { S.bonus += XP_GUARD; saveState(); dropMat(key); dropMat(key); toast('擊敗守關者！+' + XP_GUARD + ' XP'); }
+            saveState(); refresh();
+          }
+        });
+      }
+      go();
+    }).catch(function (e) { console.warn('[rpg] guardian battle failed to load', e); toast('題庫讀不到，請稍後再試。'); });
   }
 
   /* Elite boss: optional, cross-class, never gates rank-up. */
@@ -2577,8 +2674,8 @@
       stages.forEach(function (x, i) {
         var d = M.docs[x.key], st = G.docs[x.key], here = x.key === curKey;
         var pct = d.shell ? 0 : Math.round(st.read / Math.max(1, st.total) * 100);
-        var maxStars = d.quiz ? 3 : 1;
-        var stars = (st.readAll || st.cleared ? 1 : 0) + (d.quiz && st.cleared ? 1 : 0) + (st.shiny ? 1 : 0);
+        var maxStars = d.quiz ? 4 : 1;
+        var stars = (st.readAll || st.cleared ? 1 : 0) + (d.quiz && st.cleared ? 1 : 0) + (st.shiny ? 1 : 0) + (st.guardWon ? 1 : 0);
         var starText = '';
         for (var k = 0; k < maxStars; k++) starText += k < stars ? '★' : '☆';
         var cls = 'rpg-stage' + (st.cleared ? ' is-clear' : '') + (here ? ' is-here' : '') + (x.required || isRec(x) ? '' : ' is-side') + (d.shell ? ' is-shell' : '');
@@ -2591,7 +2688,10 @@
         ];
         var node = d.shell ? h('span', { class: 'rpg-stage-link' }, inner)
           : h('a', { class: 'rpg-stage-link', href: here ? q.href : ROOT + d.file, title: d.title }, inner);
-        place(h('li', { class: cls + (st.cleared ? ' path-done' : '') }, [node]), i);
+        var gBtn = st.guard === 'ready' ? h('button', { type: 'button', class: 'rpg-btn rpg-btn-sm rpg-guard-btn', text: '守關者現身', onclick: function () { openGuard(x.key); } })
+          : st.guard === 'wait' ? h('span', { class: 'rpg-stage-meta rpg-guard-wait', text: '守關者明天現身' })
+          : st.guard === 'won' ? h('span', { class: 'rpg-stage-meta', text: '守關者已擊敗' }) : null;
+        place(h('li', { class: cls + (st.cleared ? ' path-done' : '') }, [node, gBtn]), i);
       });
 
       var canFight = t.ready && t.hasBoss && !t.beaten;
@@ -2707,7 +2807,8 @@
             return {
               key: x.key, title: d.titleZh || d.title, main: x.required || t.rec.indexOf(x.key) >= 0, rec: t.rec.indexOf(x.key) >= 0, shell: d.shell, quiz: !!d.quiz,
               cleared: st.cleared, started: st.started, read: st.read, total: st.total, shiny: st.shiny, here: here,
-              stars: (st.readAll || st.cleared ? 1 : 0) + (d.quiz && st.cleared ? 1 : 0) + (st.shiny ? 1 : 0), maxStars: d.quiz ? 3 : 1,
+              guard: st.guard, guardHref: ROOT + 'map.html?guard=' + encodeURIComponent(x.key),
+              stars: (st.guardWon ? 1 : 0) + (st.readAll || st.cleared ? 1 : 0) + (d.quiz && st.cleared ? 1 : 0) + (st.shiny ? 1 : 0), maxStars: d.quiz ? 4 : 1,
               href: here ? q.href : ROOT + d.file
             };
           })
@@ -2769,6 +2870,8 @@
         if (bq !== null && document.getElementById('rpg-map')) setTimeout(function () { openBoss(parseInt(bq, 10) || 0); }, 300);
         var eq = new URLSearchParams(location.search).get('elite');
         if (eq && document.getElementById('rpg-map')) setTimeout(function () { openElite(eq); }, 300);
+        var gq = new URLSearchParams(location.search).get('guard');
+        if (gq && document.getElementById('rpg-map') && M.docs[gq]) setTimeout(function () { openGuard(gq); }, 300);
       } catch (e) {}
       window.addEventListener('storage', function (e) {
         if (e.key && (e.key === STATE_KEY || e.key.indexOf('sgk_progress_') === 0)) { S = loadState(); refresh(); }
