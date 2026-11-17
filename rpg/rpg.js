@@ -685,7 +685,8 @@
           h('span', { class: 'rpg-tag', text: 'START' }),
           h('h2', { text: '選一個職業，從第一個任務開始' }),
           h('p', { text: '184 份文件不知道從哪裡讀起？建立角色後，這裡會告訴你下一步。' }),
-          h('button', { class: 'rpg-btn', type: 'button', onclick: openOnboarding, text: '建立角色' })
+          h('button', { class: 'rpg-btn', type: 'button', onclick: openOnboarding, text: '建立角色' }),
+          h('a', { class: 'rpg-btn rpg-btn-ghost rpg-guide-link', href: ROOT + 'rpg-guide.html', text: '新手指南' })
         ])
       ]));
       return;
@@ -2173,6 +2174,7 @@
         h('div', { class: 'rpg-hero-xp' }, [xpBar(), h('small', { text: '距離 Lv ' + (G.level + 1) + ' 還差 ' + (G.hi - G.xp) + ' XP' })]),
         h('button', { class: 'rpg-btn rpg-btn-ghost', type: 'button', onclick: openOnboarding, text: '編輯角色／轉職' }),
         h('a', { class: 'rpg-btn rpg-btn-ghost rpg-hero-map', href: ROOT + 'map.html', text: '闖關地圖' }),
+        h('a', { class: 'rpg-btn rpg-btn-ghost rpg-guide-link', href: ROOT + 'rpg-guide.html', text: '新手指南' }),
         h('button', { class: 'rpg-btn rpg-btn-ghost', type: 'button', onclick: function () { openPrologue(null); }, text: '重看序章' })
       ])
     ]));
@@ -2336,7 +2338,8 @@
       h('span', { class: 'rpg-tag', text: 'WORLD MAP' }),
       h('h1', { text: dep.nameZh + '　闖關地圖' }),
       h('p', { text: '目前階級：' + RANKS[c.rank].zh + CLASS_META[dep.id].job + '。每一關是一份文件，走到區域盡頭通過升階試煉就能進下一區。' }),
-      h('button', { class: 'rpg-btn rpg-btn-ghost', type: 'button', onclick: openOnboarding, text: '換職業看別的地圖' })
+      h('button', { class: 'rpg-btn rpg-btn-ghost', type: 'button', onclick: openOnboarding, text: '換職業看別的地圖' }),
+      h('a', { class: 'rpg-btn rpg-btn-ghost rpg-guide-link', href: ROOT + 'rpg-guide.html', text: '新手指南' })
     ]));
 
     c.tiers.forEach(function (t, ti) {
