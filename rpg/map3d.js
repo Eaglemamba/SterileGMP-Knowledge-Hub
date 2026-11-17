@@ -196,6 +196,8 @@
       }
     });
 
+    addElites(L);
+
     /* the path grows when a new stage has appeared since the last visit */
     var prev = window.SGKRpg.mapSeen(revealed);
     if (lastSeg && prev !== null && revealed > prev && !reduced) {
@@ -241,6 +243,38 @@
     }
     world.add(sp);
     var tag = textSprite(Z.z.boss, { size: 48, scale: 2.2, bg: done ? 'rgba(23,166,115,.92)' : 'rgba(20,21,26,.9)', stroke: 0 }); tag.position.set(b.x, 11.6, b.z); world.add(tag);
+  }
+
+  /* Elite bosses: a dark archipelago behind the first island; under cloud until the class reaches ELITE_RANK. */
+  function addElites(L) {
+    var list = data.elites || [];
+    if (!list.length) return;
+    var dark = { ground: 0x3b3355, side: 0x1c1729 }, x0 = L[0].x0 + 2, Z0 = -38;
+    var head = textSprite('ELITE　精英魔王', { size: 56, scale: 3.2, bg: 'rgba(120,20,60,.9)', stroke: 0 });
+    head.position.set(x0 - 13, 5, Z0 + 2); world.add(head);
+    list.forEach(function (e, i) {
+      var x = x0 + i * 16, z = Z0 + (i % 2) * 5;
+      disc(world, x, z, 6.4, dark, 4001 + i * 37);
+      if (!e.open) {
+        cloud(world, x, z + 1, 3.6);
+        var q = textSprite('？', { size: 96, scale: 4.2, color: '#14151a', strokeColor: '#ffffff' }); q.position.set(x, 6.5, z); world.add(q);
+        var lock = new THREE.Mesh(new THREE.CylinderGeometry(3.2, 3.2, 0.4, 6), new THREE.MeshBasicMaterial({ transparent: true, opacity: 0, depthWrite: false }));
+        lock.position.set(x, 1.5, z); lock.userData = { elite: e }; world.add(lock); pads.push(lock);
+        return;
+      }
+      var col = new THREE.Color(e.color);
+      var base = new THREE.Mesh(new THREE.CylinderGeometry(3, 3.4, 0.9, 6), new THREE.MeshLambertMaterial({ color: e.won ? 0x17a673 : 0x14151a, emissive: e.won ? 0x17a673 : col, emissiveIntensity: 0.35, flatShading: true }));
+      base.position.set(x, 0.45, z); base.userData = { elite: e }; world.add(base); pads.push(base);
+      var sp;
+      if (e.img) { sp = imageSprite(e.img, 8.5, false); sp.userData.opacity = e.won ? 0.45 : 1; sp.position.set(x, 5, z); }
+      else {
+        var gem = new THREE.Mesh(new THREE.OctahedronGeometry(2.2), new THREE.MeshLambertMaterial({ color: e.won ? 0x9aa0ad : 0x1a1024, emissive: e.won ? 0x000000 : col, emissiveIntensity: 0.7, flatShading: true }));
+        gem.position.set(x, 4, z); gem.scale.y = 1.4; gem.userData = { spin: !e.won, elite: e }; world.add(gem); pads.push(gem);
+        sp = textSprite(e.won ? '已擊敗' : 'ELITE', { size: 60, scale: 2.1, color: e.won ? '#ffffff' : '#ffd23f' }); sp.position.set(x, 8.6, z);
+      }
+      world.add(sp);
+      var tag = textSprite(e.name, { size: 48, scale: 2.1, bg: e.won ? 'rgba(23,166,115,.92)' : 'rgba(20,21,26,.9)', stroke: 0 }); tag.position.set(x, 10.6, z); world.add(tag);
+    });
   }
 
   /* ---------- camera, render loop ---------- */
@@ -313,6 +347,18 @@
         fb.onclick = function () { card.hidden = true; window.SGKRpg.fightBoss(z.ti); };
         card.appendChild(fb);
       }
+    } else if (u.elite) {
+      var e = u.elite;
+      card.appendChild(el('span', 'rpg-tag', 'ELITE'));
+      card.appendChild(el('h3', '', e.open ? e.name + (e.won ? '（已擊敗）' : '') : '？？？'));
+      card.appendChild(el('p', 'rpg-map3d-meta', e.open ? '針劑風險：' + e.risk + '。選打，不影響升階。' : '升到「' + e.unlock + '」後現身。'));
+      if (e.open) {
+        card.appendChild(el('p', 'rpg-map3d-meta', '弱點：' + e.weak + (e.weakWon ? '（已弱點擊破）' : '')));
+        if (e.needName) card.appendChild(el('p', 'rpg-map3d-meta', '入場條件：攜帶' + e.needName + (e.hasItem ? '（已持有）' : '（到工坊合成）')));
+        var eb = el('button', 'rpg-btn', !e.won ? '挑戰' : !e.weakWon && e.canCounter ? '弱點擊破' : '再戰'); eb.type = 'button';
+        eb.onclick = function () { card.hidden = true; window.SGKRpg.fightElite(e.id); };
+        card.appendChild(eb);
+      }
     }
     var x = el('button', 'rpg-map3d-x', '×'); x.type = 'button'; x.setAttribute('aria-label', '關閉'); x.onclick = function () { card.hidden = true; };
     card.appendChild(x);
@@ -340,7 +386,7 @@
       if (Math.abs(dx) + Math.abs(dy) > 6) down.moved = true;
       var k = 0.085 * zoom * (900 / Math.max(480, cv.clientWidth));
       target.x = Math.max(bounds.min, Math.min(bounds.max, down.tx - dx * k));
-      target.z = Math.max(-14, Math.min(10, down.tz - dy * k));
+      target.z = Math.max(-30, Math.min(10, down.tz - dy * k));
       if (hint) hint.hidden = true;
       draw();
     });
