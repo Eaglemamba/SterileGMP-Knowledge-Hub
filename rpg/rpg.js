@@ -83,6 +83,25 @@
   function matName(k) { return k === 'boss' ? BOSS_MAT : (MATS[+k.slice(1)] || k); }
   function reviewGap() { return wearing('watch') ? 5 * 24 * 3600 * 1000 : REVIEW_GAP; }
   function reviewXp() { return XP_REVIEW + (wearing('amulet') ? 5 : 0); }
+  /* Second specialty. Finishing every required document (必讀) of another department teaches
+     that department's skill. Each boss is weak to some departments' skills: bringing one into the
+     fight is a 弱點擊破 (+1 heart, +1 shield, a heavier hit, and a one-time bonus on the first such
+     win). Like gear, it never changes scoring — 80 % right is still the pass mark. */
+  var WEAK = [
+    { production: '無菌操作與更衣紀律，從源頭擋住落塵', engineering: 'HVAC 與 HEPA 把微粒抽走', warehouse: '物料進出潔淨區的除污與傳遞，不把微粒帶進來' },
+    { qc: '微生物鑑定與環境監測，抓出生物膜的蹤跡', techservice: '清潔確效與 CIP／SIP，刷掉築好的膜', bt: '水系統與監測數據的趨勢，提早看見生物膜成形' },
+    { qa: '去熱原確效與放行把關，熱原出不了廠', ra: '藥典內毒素限值與法規要求，劃清紅線' }
+  ];
+  var XP_WEAK = 50;
+  function weakTo(ti) { return Object.keys(WEAK[ti] || {}); }
+  function isWeak(ti, cls) { return !!(WEAK[ti] && WEAK[ti][cls]); }
+  function elName(cls) { return (FX_YOU[cls] || {}).el || cls; }
+  function weakText(ti) { return weakTo(ti).map(elName).join('、'); }
+  /* Skills the player can bring: the main class first, then every learned second specialty. */
+  function learnedSkills() {
+    var main = S.profile.cls;
+    return [main].concat(DEPTS.map(function (d) { return d.id; }).filter(function (id) { return id !== main && G.skills[id] && G.skills[id].learned; }));
+  }
   var XP_BOSS = 100, BOSS_Q = 10;     // boss battle: bonus XP on the first win, questions per fight
   var BOSS_LINES = [
     '「一粒灰塵就夠了。你的無菌區守得住嗎？」',
@@ -205,6 +224,8 @@
     s.mapSeen = s.mapSeen || {};
     s.bossWin = s.bossWin || {};                              // '<class>:<zone>' -> { best, total, ts }
     s.bossTry = s.bossTry || {};
+    s.weakWin = s.weakWin || {};                              // '<class>:<zone>' -> time of the first 弱點擊破 win
+    s.skillPick = s.skillPick || {};                          // '<class>:<zone>' -> skill last brought to that boss
     s.gear = s.gear || {};
     s.gear.own = s.gear.own || {};                            // gear id -> time crafted
     s.gear.on = s.gear.on || {};                              // slot -> gear id
@@ -294,6 +315,14 @@
       if (rank > maxRank) maxRank = rank;
     });
 
+    var skills = {};
+    DEPTS.forEach(function (dep) {
+      var req = [];
+      dep.tiers.forEach(function (t) { t.docs.forEach(function (x) { if (x.required && M.docs[x.key] && !M.docs[x.key].shell && req.indexOf(x.key) < 0) req.push(x.key); }); });
+      var got = req.filter(function (k) { return docs[k].cleared; }).length;
+      skills[dep.id] = { req: req, got: got, need: req.length, learned: req.length > 0 && got === req.length };
+    });
+
     var titles = CLUSTERS.map(function (c, i) {
       var keys = Object.keys(M.docs).filter(function (k) {
         var d = M.docs[k];
@@ -307,7 +336,7 @@
 
     return {
       docs: docs, xp: xp, level: level, lo: needXp(level), hi: needXp(level + 1),
-      activity: activity, cards: cards, perfect: perfect, classes: classes, maxRank: maxRank, titles: titles,
+      activity: activity, cards: cards, perfect: perfect, classes: classes, maxRank: maxRank, titles: titles, skills: skills,
       petStage: S.pet ? Math.max(1 + Math.min(maxRank, 3), S.earned.pet) : 0,   // hatch, then one stage per rank
       sectionsRead: Object.keys(docs).reduce(function (a, k) { return a + docs[k].read; }, 0)
     };
@@ -1110,8 +1139,8 @@
     { el: '熱原系', skill: '熱原吐息', c: '#f97316', m: 'cone', imp: { tint: 'burn', dots: 18, dc: '#fde047', flash: 1, quake: 1 } }
   ];
   var FX_PLAIN = { skill: '衝撞', c: '#64748b', m: 'strike', imp: { dots: 8 } };
-  function fxYou() {
-    var cls = S.profile && S.profile.cls, sp = FX_YOU[cls] || FX_YOU.qa, d = deptById(cls);
+  function fxYou(skill) {
+    var cls = skill || (S.profile && S.profile.cls), sp = FX_YOU[cls] || FX_YOU.qa, d = deptById(cls);
     return d && d.color ? fxWith(sp, { c: d.color }) : sp;
   }
   function fxWith(a, b) { var r = {}, k; for (k in a) r[k] = a[k]; for (k in b) r[k] = b[k]; return r; }
@@ -1192,6 +1221,10 @@
         var t = q / imp.dots * Math.PI * 2 + Math.random() * 0.4, rr = size * (0.45 + Math.random() * 0.4);
         add(h('span', { class: 'rpg-fx-dot', style: at0 + ';--x:' + px(Math.cos(t) * rr) + ';--y:' + px(Math.sin(t) * rr) + ';--d:' + Math.round(Math.random() * 90) + 'ms' + (imp.dc ? ';--c:' + imp.dc : '') }));
       }
+      if (f.crit && !f.blocked) {
+        for (var cr = 0; cr < 2; cr++) add(h('span', { class: 'rpg-fx-ring', style: at0 + ';--m:' + px(size * 1.3) + ';--d:' + (160 + cr * 120) + 'ms;--c:#facc15' }));
+        add(h('span', { class: 'rpg-fx-crit', style: 'left:' + px(x1) + ';top:' + px(Math.max(18, y1 - size * 0.62)), text: '弱點！效果絕佳' }));
+      }
       if (imp.tint && !f.blocked && !f.tint.closest('.is-dissolve')) {
         var te = f.tint, cl = 'rpg-fx-t-' + imp.tint;
         te.classList.remove(cl); void te.offsetWidth; te.classList.add(cl);
@@ -1207,18 +1240,20 @@
   function runBattle(host, o) {
     var n = o.questions.length, hearts = o.hearts || battleHearts(o.kind, n), i = 0, score = 0, wrong = 0, lost = 0, last = [];
     var missed = [], cleansed = 0;
-    var shield = wearing('gloves') ? 1 : 0;
+    var weak = o.kind === 'boss' && isWeak(o.zone, o.skill);
+    var shield = (wearing('gloves') ? 1 : 0) + (weak ? 1 : 0);
+    if (weak) hearts++;
     var foeImg = o.foeImg ? h('img', { class: 'rpg-foe-img', src: o.foeImg, alt: o.foe }) : h('span', { class: 'rpg-foe-img rpg-foe-blank', text: '？' });
     var hp = h('span', { class: 'rpg-hp', role: 'meter', 'aria-label': o.foe + '的血量', 'aria-valuemin': 0, 'aria-valuemax': n });
     var heartsEl = h('span', { class: 'rpg-hearts', 'aria-label': '你的生命' });
-    var foeFx = (o.kind === 'boss' ? FX_BOSS[o.zone] : FX_MOB[o.cluster]) || FX_PLAIN, youFx = fxYou();
+    var foeFx = (o.kind === 'boss' ? FX_BOSS[o.zone] : FX_MOB[o.cluster]) || FX_PLAIN, youFx = fxYou(o.skill);
     var foeEl = o.kind === 'boss' ? (foeFx.el || '魔王') : o.cluster >= 0 ? CLUSTER_ZH[o.cluster] + '系' : '無屬性';
     var foeBox = h('div', { class: 'rpg-foe' }, [foeImg, h('b', { text: o.foe }),
       h('span', { class: 'rpg-elem', style: '--c:' + foeFx.c, text: foeEl + '・' + foeFx.skill }), hp]);
     var worn = Object.keys(SLOTS).map(function (sl) { return S.gear.on[sl] && gearById(S.gear.on[sl]); }).filter(Boolean);
     var youAv = avatarEl();
     var you = h('div', { class: 'rpg-you' }, [youAv, h('b', { text: S.profile ? S.profile.nick : '你' }),
-      h('span', { class: 'rpg-elem', style: '--c:' + youFx.c, text: youFx.el + '・' + youFx.skill }), heartsEl,
+      h('span', { class: 'rpg-elem' + (weak ? ' is-weak' : ''), style: '--c:' + youFx.c, text: (weak ? '弱點 ' : '') + youFx.el + '・' + youFx.skill }), heartsEl,
       worn.length ? h('span', { class: 'rpg-worn' }, worn.map(function (g) { return h('img', { src: gearImg(g), alt: g.zh, title: g.zh + '：' + g.eff }); })) : null]);
     var stage = h('div', { class: 'rpg-battle-stage' });
     var arena = h('div', { class: 'rpg-arena' + (o.kind === 'boss' ? ' is-boss' : '') }, [foeBox, h('span', { class: 'rpg-vs', text: 'VS' }), you]);
@@ -1249,7 +1284,7 @@
       setTimeout(function () { arena.classList.remove('is-intro'); }, 900);
       // let the foe finish charging in before the banner covers the top of the arena
       setTimeout(function () {
-        if (o.kind === 'boss') banner('WARNING　魔王 ' + o.foe + ' 現身', o.line || '', 3200, ask);
+        if (o.kind === 'boss') banner('WARNING　魔王 ' + o.foe + ' 現身' + (weak ? '　｜　弱點擊破：' + youFx.skill : ''), o.line || '', 3200, ask);
         else banner('野生的 ' + o.foe + ' 出現了！', null, 1400, ask);
       }, CALM ? 0 : 750);
     }
@@ -1270,8 +1305,8 @@
       hp.setAttribute('aria-valuenow', String(n - score));
       clear(heartsEl);
       for (var j = 0; j < hearts; j++) heartsEl.appendChild(h('i', { class: j < hearts - lost ? 'is-on' : '', text: '♥' }));
-      if (shield) heartsEl.appendChild(h('i', { class: 'rpg-shield', text: '◆', title: '無菌手套：下一次答錯不扣心' }));
-      heartsEl.setAttribute('aria-label', '你的生命 ' + (hearts - lost) + ' / ' + hearts + (shield ? '，手套護盾 1' : ''));
+      for (var sh = 0; sh < shield; sh++) heartsEl.appendChild(h('i', { class: 'rpg-shield', text: '◆', title: '護盾：答錯一次不扣心（仍算答錯）' }));
+      heartsEl.setAttribute('aria-label', '你的生命 ' + (hearts - lost) + ' / ' + hearts + (shield ? '，護盾 ' + shield : ''));
     }
     function hit(el, cls, text) {
       if (el.classList.contains('is-dissolve')) return;
@@ -1283,7 +1318,7 @@
     }
     /* Both sides attack in their own attribute; the HP / heart meters drop when the blow lands. */
     function strike(mine, then, blocked) {
-      attackFx({ arena: arena, root: battleEl, sp: mine ? youFx : foeFx, blocked: blocked,
+      attackFx({ arena: arena, root: battleEl, sp: mine ? youFx : foeFx, blocked: blocked, crit: mine && weak,
         from: mine ? youAv : foeImg, fromBox: mine ? you : foeBox,
         to: mine ? foeImg : youAv, tint: mine ? foeImg : youAv }, function () { then(); meters(); });
     }
@@ -1316,9 +1351,9 @@
           if (!ok) missed.push(q);
           var clean = noteAnswer(q.docKey || pageDocKey, q, ok);
           if (clean) cleansed++;
-          var dmg = clean ? '淨化' : '-1';
+          var dmg = clean ? '淨化' : weak ? '弱點 -1' : '-1';
           if (ok) { score++; strike(true, function () { hit(foeBox, 'is-hit', dmg); }); }
-          else if (shield) { wrong++; shield = 0; strike(false, function () { hit(you, 'is-hurt', '護盾'); }, true); }
+          else if (shield) { wrong++; shield--; strike(false, function () { hit(you, 'is-hurt', '護盾'); }, true); }
           else { wrong++; lost++; strike(false, function () { hit(you, 'is-hurt', '♥-1'); }); }
           if (!ok && backLink) backLink.hidden = false;
           if (o.kind === 'boss' && !raged && score >= Math.ceil(n / 2) && score < n) {
@@ -1418,6 +1453,17 @@
       return a + Object.keys(qz).reduce(function (b, k) { return b + qz[k]; }, 0);
     }, 0);
   }
+  /* Which departments this boss is weak to, and which of those the player still has to learn. */
+  function weakHint(ti) {
+    var todo = weakTo(ti).filter(function (id) { return learnedSkills().indexOf(id) < 0; });
+    if (!weakTo(ti).length) return null;
+    return h('p', { class: 'rpg-weakhint' }, [
+      h('b', { text: '弱點：' + weakText(ti) }),
+      todo.length ? h('span', { text: '　修完' + todo.map(function (id) {
+        var k = G.skills[id]; return deptById(id).nameZh + '的必讀（' + k.got + ' / ' + k.need + '）';
+      }).join('、或') + '，就能習得剋制技能。' }) : null
+    ]);
+  }
   function openBoss(ti) {
     if (!S || !S.profile || !G) return;
     var c = G.classes[S.profile.cls], t = c && c.tiers[ti];
@@ -1428,7 +1474,8 @@
       modal([
         h('span', { class: 'rpg-tag', text: 'BOSS' }),
         h('h2', { text: zone.boss + '還沒現身' }),
-        h('p', { class: 'rpg-modal-lead', text: '先通關這一區' + (t.anyOf ? '任 ' + t.need + ' 份文件' : '的必讀文件') + '（目前 ' + t.got + ' / ' + t.need + '），魔王才會出來。' })
+        h('p', { class: 'rpg-modal-lead', text: '先通關這一區' + (t.anyOf ? '任 ' + t.need + ' 份文件' : '的必讀文件') + '（目前 ' + t.got + ' / ' + t.need + '），魔王才會出來。' }),
+        weakHint(ti)
       ]);
       return;
     }
@@ -1447,9 +1494,37 @@
         h('p', { class: 'rpg-modal-lead', text: '從這一區的文件隨機出 ' + Math.min(BOSS_Q, pool.length) + ' 題，答對 80% 擊敗牠' + (t.beaten ? '。' : '，就能升階。') }),
         box
       ], { cls: 'rpg-modal-wide rpg-modal-boss' });
+      var skill = S.skillPick[key];
+      if (learnedSkills().indexOf(skill) < 0) skill = learnedSkills().filter(function (id) { return isWeak(ti, id); })[0] || S.profile.cls;
+      pickSkill();
+      /* Before the fight: choose which learned skill to bring. */
+      function pickSkill() {
+        clear(box);
+        var row = h('div', { class: 'rpg-skillpick', role: 'radiogroup', 'aria-label': '出戰技能' });
+        learnedSkills().forEach(function (id) {
+          var sp = fxYou(id), w = isWeak(ti, id);
+          row.appendChild(h('button', { type: 'button', role: 'radio', 'aria-checked': String(id === skill),
+            class: 'rpg-skill' + (id === skill ? ' is-on' : '') + (w ? ' is-weak' : ''), style: '--c:' + sp.c,
+            onclick: function () { skill = id; pickSkill(); } }, [
+            h('b', { text: sp.skill }),
+            h('span', { text: sp.el + (id === S.profile.cls ? '・主技能' : '・第二專長') }),
+            w ? h('em', { text: '弱點' }) : null
+          ]));
+        });
+        var w = isWeak(ti, skill);
+        box.appendChild(h('div', { class: 'rpg-skillbox' }, [
+          h('h3', { class: 'rpg-sub', text: '選擇出戰技能' }), row,
+          h('p', { class: 'rpg-note', text: w ? '弱點擊破：' + WEAK[ti][skill] + '。這場多 1 顆心、多 1 面護盾' +
+            (S.weakWin[key] ? '。' : '；第一次用弱點技能打倒牠，再得 ' + XP_WEAK + ' XP 和 1 顆' + BOSS_MAT + '。')
+            : '這個技能對' + zone.boss + '沒有特別效果。' }),
+          weakHint(ti),
+          h('button', { class: 'rpg-btn', type: 'button', text: '開戰', onclick: function () { S.skillPick[key] = skill; saveState(); go(); } })
+        ]));
+      }
       function go() {
+        var weak = isWeak(ti, skill);
         runBattle(box, {
-          kind: 'boss', foe: zone.boss, foeImg: img, zone: ti, again: go, line: BOSS_LINES[ti], rage: BOSS_RAGE[ti],
+          kind: 'boss', foe: zone.boss, foeImg: img, zone: ti, skill: skill, again: pickSkill, line: BOSS_LINES[ti], rage: BOSS_RAGE[ti],
           questions: shuffle(pool.slice()).slice(0, BOSS_Q),
           onEnd: function (r) {
             S.bossTry[key] = (S.bossTry[key] || 0) + 1;
@@ -1458,13 +1533,16 @@
             S.bossWin[key] = { best: Math.max(r.score, first ? 0 : S.bossWin[key].best), total: r.total, ts: Date.now() };
             if (first) { S.bonus += XP_BOSS; S.mats.boss = (S.mats.boss || 0) + 1; }
             saveState();
-            if (first) toast('獲得素材：' + BOSS_MAT);
+            var weakFirst = weak && !S.weakWin[key];
+            if (weakFirst) { S.weakWin[key] = Date.now(); S.bonus += XP_WEAK; S.mats.boss = (S.mats.boss || 0) + 1; }
+            saveState();
+            if (weakFirst) toast('弱點擊破！+' + XP_WEAK + ' XP，獲得素材：' + BOSS_MAT);
+            else if (first) toast('獲得素材：' + BOSS_MAT);
             if (first) showRewards([{ kind: 'bossdown', ti: ti }]);
             refresh();
           }
         });
       }
-      go();
     }).catch(function (e) { console.warn('[rpg] boss battle failed to load', e); toast('題庫讀不到，請稍後再試。'); });
   }
 
@@ -1882,6 +1960,7 @@
       ]));
     });
     mount.appendChild(main);
+    mount.appendChild(skillPanel(dep));
 
     /* titles */
     var titles = h('section', { class: 'rpg-panel' }, [h('h2', { text: '稱號' })]);
@@ -2037,6 +2116,7 @@
       });
 
       var canFight = t.ready && t.hasBoss && !t.beaten;
+      var canWeak = t.hasBoss && t.beaten && !S.weakWin[dep.id + ':' + ti];   // already beaten: come back with a counter skill
       var bossInner = [
         asset('boss-' + (ti + 1))
           ? h('img', { class: 'rpg-boss-img', src: asset('boss-' + (ti + 1)), alt: zone.boss })
@@ -2045,10 +2125,11 @@
         h('span', { class: 'rpg-stage-meta', text: '升階試煉：' + RANKS[ti + 1].zh + CLASS_META[dep.id].job }),
         h('span', { class: 'rpg-stage-meta', text: (t.anyOf ? '任選通關 ' : '必讀通關 ') + t.got + ' / ' + t.need +
           (!t.hasBoss ? '・本區沒有魔王戰' : t.beaten ? '・魔王已擊敗' : t.ready ? '・魔王現身了' : '・通關後魔王現身') }),
-        canFight ? h('span', { class: 'rpg-btn rpg-btn-sm', text: '挑戰' }) : null
+        t.hasBoss ? h('span', { class: 'rpg-stage-meta rpg-weak-meta', text: '弱點：' + weakText(ti) + (S.weakWin[dep.id + ':' + ti] ? '・已弱點擊破' : '') }) : null,
+        canFight ? h('span', { class: 'rpg-btn rpg-btn-sm', text: '挑戰' }) : canWeak ? h('span', { class: 'rpg-btn rpg-btn-sm rpg-btn-ghost', text: '弱點擊破' }) : null
       ];
       place(h('li', { class: 'rpg-stage rpg-boss' + (t.done ? ' is-clear' : '') + (canFight ? ' is-ready' : '') }, [
-        canFight ? h('button', { type: 'button', class: 'rpg-stage-link', onclick: function () { openBoss(ti); } }, bossInner)
+        canFight || canWeak ? h('button', { type: 'button', class: 'rpg-stage-link', onclick: function () { openBoss(ti); } }, bossInner)
           : h('span', { class: 'rpg-stage-link' }, bossInner)
       ]), total - 1);
 
@@ -2067,6 +2148,28 @@
     if (mount && G && mapColsFor(mount.clientWidth) !== mapCols) renderMap();
   });
 
+  /* Skills: the main class's, plus one per other department, learned by finishing its required documents. */
+  function skillPanel(dep) {
+    var ul = h('ul', { class: 'rpg-skills' });
+    var ids = [dep.id].concat(DEPTS.map(function (d) { return d.id; }).filter(function (id) { return id !== dep.id; }));
+    ids.forEach(function (id) {
+      var d = deptById(id), sp = fxYou(id), k = G.skills[id], main = id === dep.id, on = main || k.learned;
+      var beats = ZONES.map(function (z, ti) { return isWeak(ti, id) ? z.boss : null; }).filter(Boolean);
+      ul.appendChild(h('li', { class: on ? 'is-on' : '', style: '--c:' + sp.c }, [
+        h('b', { text: sp.skill }),
+        h('span', { text: sp.el + '　' + d.nameZh }),
+        h('span', { class: 'rpg-skill-beats', text: beats.length ? '剋 ' + beats.join('、') : '' }),
+        h('small', { text: main ? '主技能' : k.learned ? '已習得' : k.need ? '必讀 ' + k.got + ' / ' + k.need : '尚無必讀文件' }),
+        !on && k.need ? h('i', { class: 'rpg-skill-bar', style: '--p:' + Math.round(k.got / k.need * 100) + '%' }) : null
+      ]));
+    });
+    return h('section', { class: 'rpg-panel' }, [
+      h('h2', { text: '技能與第二專長' }),
+      h('p', { class: 'rpg-note', text: '讀完其他部門的全部必讀文件（有挑戰的要過關），就能習得該部門的技能。魔王戰前可以選一個技能出戰；' +
+        '帶著魔王怕的技能是「弱點擊破」：多 1 顆心、多 1 面護盾，第一次用弱點技能打倒牠再得 ' + XP_WEAK + ' XP 和 1 顆' + BOSS_MAT + '。及格線一樣是 80%。' }),
+      ul
+    ]);
+  }
   function stat(v, l) { return h('div', { class: 'rpg-stat' }, [h('b', { text: v }), h('span', { text: l })]); }
 
   function renderAll() {
@@ -2088,7 +2191,7 @@
         var zone = ZONES[ti] || ZONES[ZONES.length - 1];
         return {
           zh: zone.zh, boss: zone.boss, bossImg: asset('boss-' + (ti + 1)), rankName: RANKS[ti + 1].zh + CLASS_META[dep.id].job,
-          ti: ti, unlocked: ti <= c.rank, done: t.done, ready: t.ready, hasBoss: t.hasBoss, beaten: t.beaten,
+          ti: ti, unlocked: ti <= c.rank, done: t.done, ready: t.ready, hasBoss: t.hasBoss, beaten: t.beaten, weak: weakText(ti), weakWon: !!S.weakWin[c.dep.id + ':' + ti],
           got: t.got, need: t.need, anyOf: t.anyOf,
           stages: t.tier.docs.filter(function (x) { return M.docs[x.key]; }).map(function (x) {
             var d = M.docs[x.key], st = G.docs[x.key], here = x.key === curKey;
