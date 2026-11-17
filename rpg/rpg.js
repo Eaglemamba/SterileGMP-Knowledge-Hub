@@ -124,11 +124,37 @@
       weak: { bt: '個人帳號、權限分級與稽核軌跡設定，每筆修改都留下誰、何時、改了什麼', qa: 'ALCOA+ 與批紀錄審查，放行前看過稽核軌跡',
               qc: '實驗室數據審查，層析圖重積分與重複測試逃不過' },
       needTag: 'trace', needName: '追溯工具', needText: '竄改魅影躲在共用帳號和關掉的稽核軌跡後面：看不出是誰、何時、改了什麼，你連牠在哪都找不到。帶一件能追溯修改的道具才進得了這場戰鬥',
-      line: '「數字改一下就好，反正沒人看得出來。」', rage: '「群組帳號登入，誰改的？你查不到！」', title: '數據守誓者' }
+      line: '「數字改一下就好，反正沒人看得出來。」', rage: '「群組帳號登入，誰改的？你查不到！」', title: '數據守誓者' },
+    { id: 'mixup', name: '混淆魔', risk: '混淆與錯標：貼錯標籤、混批、清線不徹底、狀態標示不清',
+      fx: { el: '混淆系', skill: '標籤調包', c: '#d946ef', m: 'swarm', g: 'page', n: 6, size: 28, spin: 1, imp: { mark: 'cross', dots: 10, flash: 1 } },
+      src: [{ key: 'FDA-21CFR-211', secs: ['sec4'] }, { key: 'FDA-ProcessInspection', ids: [21] }, { key: 'PICS-PE011', ids: [16] },
+            { key: 'TR52', ids: [11, 15] }, { key: 'ISPE-Vol3', ids: [7, 18] }, { key: 'ISPE-Vol6', ids: [9, 21, 27] }, { key: 'pda-guide-no1', ids: [75] }],
+      srcText: '21 CFR 211 包裝與標示管制、FDA 無菌製程檢查未貼標容器、PIC/S PE011 與 TR52 的隔離與狀態管制、ISPE Vol.3/Vol.6 混淆與多產品隔離、PDA Guide No.1 清場',
+      weak: { production: '清場、換線與貼標核對，每一瓶都貼對、每條線都清空', warehouse: '物料狀態標示與隔離，待驗、合格、退貨各歸其位',
+              qa: '清場覆核、標籤發放與數量核算，放行前最後把關' },
+      needTag: 'ident', needName: '辨識工具', needText: '混淆魔和正確的產品長得一模一樣，光靠肉眼核對分不出來。帶一件能逐一辨識標籤與物料的道具才進得了這場戰鬥',
+      line: '「兩個品項標籤長得一樣，換一下誰會發現？」', rage: '「清場沒做完，上一批的標籤還留在線上！」', title: '辨識之眼' },
+    { id: 'leach', name: '溶出妖', risk: '萃取物與溶出物：膠塞、管路、容器的化學物質溶進藥液',
+      fx: { el: '溶出系', skill: '析出毒滴', c: '#65a30d', m: 'drop', g: 'drop', n: 4, size: 26, imp: { tint: 'stain', dots: 12, ring: 1 } },
+      src: [{ key: 'USP-1663' }, { key: 'USP-1664' }, { key: 'USP-381' }, { key: 'TR66', ids: [2, 10] }, { key: 'TR26', ids: [8] }],
+      srcText: 'USP 〈1663〉 萃取物評估、〈1664〉 溶出物評估、〈381〉 彈性體組件，以及 TR66、TR26 的 E&L 題',
+      weak: { qc: '萃取與溶出物的分析篩檢，找出並鑑定溶進來的化合物', techservice: '材料與組件評估，依接觸條件設計萃取研究',
+              ra: '安全閾值與毒理評估，判斷溶出量是否可接受' },
+      line: '「我藏在膠塞和管路裡，跟著藥液一起上架。」', rage: '「接觸越久、溫度越高，我溶得越多！」', title: '溶出鑑識者' },
+    { id: 'frost', name: '溫度巨人', risk: '冷鏈失效：運輸與倉儲的溫度偏離、未確效的保溫箱、沒有溫度紀錄',
+      fx: { el: '溫控系', skill: '溫度偏離衝擊', c: '#f97316', m: 'cone', g: 'shard', n: 8, size: 22, imp: { tint: 'burn', dots: 12, quake: 1 } },
+      src: [{ key: 'TR39', ids: [1, 3, 4, 6, 7, 10, 11, 12, 14, 18] }, { key: 'TR46', ids: [3, 9, 14, 17, 18, 19, 23] },
+            { key: 'TR52', ids: [6, 7, 8, 9, 10, 14, 21, 22] }, { key: 'USP-1079', ids: [3, 4, 5] }, { key: 'PICS-PE011', ids: [17, 33, 47, 49, 50] }],
+      srcText: 'PDA TR39 溫控運輸確效、TR46 最後一哩與 MKT、TR52 GDP 儲運溫控、USP 〈1079〉 溫度偏離與 mapping、PIC/S PE011 冷藏運輸與倉儲',
+      weak: { warehouse: '冷庫 mapping、收發與退貨管控，偏離當下第一線把關', techservice: '保溫箱確效與季節挑戰，證明運輸撐得住',
+              qa: '偏離調查與 MKT、穩定性評估，決定產品能不能放行' },
+      needTag: 'cold', needName: '溫度紀錄工具', needText: '溫度巨人只在運輸途中出沒：沒有全程溫度紀錄，你連牠來過都證明不了。帶一件能記錄或守住運輸溫度的道具才進得了這場戰鬥',
+      line: '「2–8 °C？卡車在大太陽下停兩個小時，看你怎麼辦。」', rage: '「沒有溫度紀錄，你證明不了我沒來過！」', title: '冷鏈守護者' }
   ];
   /* Special items (道具): crafted once in the workshop, one brought into each boss fight from the
      skill picker. vs: targets ('z<zone>' for zone bosses, elite ids) — against a target the item
-     adds shields; tags let a boss demand a kind of item (孢子騎士 needs a sporicide, 竄改魅影 a trace tool).
+     adds shields; tags let a boss demand a kind of item (孢子騎士 needs a sporicide, 竄改魅影 a trace tool,
+     混淆魔 an ident tool, 溫度巨人 a cold-chain tool).
      Like gear: never changes scoring. Art: rpg/assets/item-<id>.webp (drawn badge until then). */
   var ITEMS = [
     { id: 'paa', zh: '過氧乙酸殺孢劑', cat: '殺孢劑', c: '#84cc16', vs: ['spore'], tags: ['sporicide'], shield: 1, need: { c5: 2, c4: 1 },
@@ -154,7 +180,22 @@
       eff: '進入竄改魅影戰的通行證，戰鬥中多 1 面護盾。稽核軌跡要記下誰、何時、改了什麼、為什麼改，而且要依資料 criticality 定期審查，不是開了就算數。' },
     { id: 'uam', zh: '個人帳號權限矩陣', cat: '追溯工具', c: '#14b8a6', vs: ['forge'], tags: ['trace'], shield: 2, need: { boss: 1, c9: 1, c3: 2 },
       use: '收回群組帳號，每個人只能用自己的身分',
-      eff: '高階追溯道具，也能進入竄改魅影戰，戰鬥中多 2 面護盾。共用帳號讓稽核軌跡失去意義；一人一帳號、權限分級、操作員不能改 recipe 和警報範圍。' }
+      eff: '高階追溯道具，也能進入竄改魅影戰，戰鬥中多 2 面護盾。共用帳號讓稽核軌跡失去意義；一人一帳號、權限分級、操作員不能改 recipe 和警報範圍。' },
+    { id: 'scan', zh: '條碼核對掃描器', cat: '辨識工具', c: '#d946ef', vs: ['mixup'], tags: ['ident'], shield: 1, need: { c3: 2, c2: 1 },
+      use: '逐一掃碼核對，錯標的那一瓶當場現形',
+      eff: '進入混淆魔戰的通行證，戰鬥中多 1 面護盾。標籤和物料在每個交接點核對身分；標籤的發放、使用、退回要做數量核算，對不上就要調查。' },
+    { id: 'vision', zh: '線上視覺檢測系統', cat: '辨識工具', c: '#a855f7', vs: ['mixup'], tags: ['ident'], shield: 2, need: { boss: 1, c9: 2, c3: 1 },
+      use: '相機逐瓶比對標籤、批號與效期',
+      eff: '高階辨識道具，也能進入混淆魔戰，戰鬥中多 2 面護盾。電子或自動化的標籤檢查設備本身也要驗證運作正常；換批前仍要清場並覆核。' },
+    { id: 'elscreen', zh: '萃取物篩檢分析組', cat: '檢測儀器', c: '#65a30d', vs: ['leach'], shield: 1, need: { c5: 2, c2: 1 },
+      use: '篩檢萃取液，把可能溶出的化合物一一標出',
+      eff: '溶出妖戰多 1 面護盾。先用萃取研究找出材料可能釋出的化合物，再用溶出物研究確認實際進入藥品的量，兩者對照才能判斷風險。' },
+    { id: 'logger', zh: '溫度記錄器', cat: '監測儀器', c: '#f97316', vs: ['frost'], tags: ['cold'], shield: 1, need: { c4: 2, c6: 1 },
+      use: '全程記錄溫度，偏離的那一段無所遁形',
+      eff: '進入溫度巨人戰的通行證，戰鬥中多 1 面護盾。記錄器要校正，放在 mapping 找出的冷熱點；有了全程數據，偏離時才能評估對產品的影響。' },
+    { id: 'shipper', zh: '已確效保溫運輸箱', cat: '包材', c: '#fb923c', vs: ['frost'], tags: ['cold'], shield: 2, need: { boss: 1, c6: 2, c4: 1 },
+      use: '確效過的裝箱方式，夏冬兩季都撐得住',
+      eff: '高階溫控道具，也能進入溫度巨人戰，戰鬥中多 2 面護盾。保溫箱要依路線的極端溫度與最長運輸時間確效，冷媒不可直接接觸產品，以免凍傷。' }
   ];
   function itemById(id) { return ITEMS.filter(function (x) { return x.id === id; })[0] || null; }
   function itemVs(it, target) { return !!(it && it.vs.indexOf(target) >= 0); }
