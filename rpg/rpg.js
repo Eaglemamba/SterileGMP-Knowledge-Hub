@@ -2453,6 +2453,14 @@
             };
           })
         };
+      }),
+      elites: ELITES.map(function (e) {
+        return {
+          id: e.id, name: e.name, risk: e.risk, color: e.fx.c, img: asset('elite-' + e.id), open: eliteOpen(),
+          won: !!S.eliteWin[e.id], weakWon: !!S.weakWin['elite:' + e.id], canCounter: canCounterMap(e.weak),
+          weak: Object.keys(e.weak).map(elName).join('、'), title: e.title, unlock: RANKS[ELITE_RANK].zh + CLASS_META[dep.id].job,
+          needName: e.needName || '', hasItem: !e.needTag || ITEMS.some(function (x) { return itemTag(x, e.needTag) && S.items[x.id]; })
+        };
       })
     };
   }
