@@ -96,6 +96,7 @@
   function weakTo(ti) { return Object.keys(WEAK[ti] || {}); }
   function isWeak(ti, cls) { return !!(WEAK[ti] && WEAK[ti][cls]); }
   function elName(cls) { return (FX_YOU[cls] || {}).el || cls; }
+  function canCounter(ti) { return learnedSkills().some(function (id) { return isWeak(ti, id); }); }
   function weakText(ti) { return weakTo(ti).map(elName).join('、'); }
   /* Skills the player can bring: the main class first, then every learned second specialty. */
   function learnedSkills() {
@@ -2116,7 +2117,7 @@
       });
 
       var canFight = t.ready && t.hasBoss && !t.beaten;
-      var canWeak = t.hasBoss && t.beaten && !S.weakWin[dep.id + ':' + ti];   // already beaten: come back with a counter skill
+      var canWeak = t.hasBoss && t.beaten && !S.weakWin[dep.id + ':' + ti] && canCounter(ti);   // already beaten: come back with a counter skill
       var bossInner = [
         asset('boss-' + (ti + 1))
           ? h('img', { class: 'rpg-boss-img', src: asset('boss-' + (ti + 1)), alt: zone.boss })
@@ -2191,7 +2192,7 @@
         var zone = ZONES[ti] || ZONES[ZONES.length - 1];
         return {
           zh: zone.zh, boss: zone.boss, bossImg: asset('boss-' + (ti + 1)), rankName: RANKS[ti + 1].zh + CLASS_META[dep.id].job,
-          ti: ti, unlocked: ti <= c.rank, done: t.done, ready: t.ready, hasBoss: t.hasBoss, beaten: t.beaten, weak: weakText(ti), weakWon: !!S.weakWin[c.dep.id + ':' + ti],
+          ti: ti, unlocked: ti <= c.rank, done: t.done, ready: t.ready, hasBoss: t.hasBoss, beaten: t.beaten, weak: weakText(ti), weakWon: !!S.weakWin[c.dep.id + ':' + ti], canCounter: canCounter(ti),
           got: t.got, need: t.need, anyOf: t.anyOf,
           stages: t.tier.docs.filter(function (x) { return M.docs[x.key]; }).map(function (x) {
             var d = M.docs[x.key], st = G.docs[x.key], here = x.key === curKey;
