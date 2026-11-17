@@ -107,7 +107,7 @@
       src: [{ key: 'TR1' }, { key: 'pda-guide-no1', secs: ['sec10', 'sec11'] }],
       srcText: 'PDA TR1 濕熱滅菌確效、PDA Guide No.1 滅菌與無菌流路',
       weak: { engineering: '滅菌器設計與熱分布，讓每個冷點都達到 F0', techservice: '滅菌確效與生物指示劑挑戰，證明孢子活不下來', qc: 'BI 培養與無菌試驗，抓出漏網的芽孢' },
-      needTag: 'sporicide', needText: '芽孢殼太硬：75% 酒精和季銨鹽只殺得死營養型細菌，殺不死芽孢。帶一瓶殺孢劑才進得了這場戰鬥',
+      needTag: 'sporicide', needName: '殺孢劑', needText: '芽孢殼太硬：75% 酒精和季銨鹽只殺得死營養型細菌，殺不死芽孢。帶一瓶殺孢劑才進得了這場戰鬥',
       line: '「121 °C 才 15 分鐘？我的芽孢殼耐得住。」', rage: '「冷點在哪你找得到嗎？我就躲在那裡！」', title: '孢子獵人' },
     { id: 'crack', name: '裂隙幽靈', risk: '容器密封失效：微漏、膠塞、軋蓋',
       fx: { el: '裂隙系', skill: '微漏穿隙', c: '#0ea5e9', m: 'swarm', g: 'ghost', n: 3, size: 40, imp: { mark: 'crack', dots: 10, dc: '#bae6fd', quake: 1 } },
@@ -115,11 +115,19 @@
             { key: 'PICS-Annex1', ids: [37] }, { key: 'TR22', ids: [12, 18, 25] }],
       srcText: 'PDA Guide No.1 容器密封與封蓋、Annex 1、FDA 無菌製程、TR22 的密封相關題',
       weak: { production: '加塞與軋蓋的製程管控，每一瓶都蓋好封緊', qc: '容器密封完整性測試，找出看不見的微漏', warehouse: '包材進料檢驗與搬運保護，裂瓶和變形膠塞上不了線' },
-      line: '「只要一道你看不見的縫，我就進得去。」', rage: '「膠塞歪一點、軋蓋鬆一點，就夠了！」', title: '封緘守門人' }
+      line: '「只要一道你看不見的縫，我就進得去。」', rage: '「膠塞歪一點、軋蓋鬆一點，就夠了！」', title: '封緘守門人' },
+    { id: 'forge', name: '竄改魅影', risk: '資料完整性失效：共用帳號、補登、改數據、關稽核軌跡',
+      fx: { el: '竄改系', skill: '數據改寫', c: '#e11d48', m: 'stream', g: 'bits', n: 12, size: 18, imp: { tint: 'glitch', dots: 10, flash: 1 } },
+      src: [{ key: 'TR84', ids: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40] }],
+      srcText: 'PDA TR84 資料完整性：ALCOA+、資料 criticality 與 vulnerability、9-Box、稽核軌跡',
+      weak: { bt: '個人帳號、權限分級與稽核軌跡設定，每筆修改都留下誰、何時、改了什麼', qa: 'ALCOA+ 與批紀錄審查，放行前看過稽核軌跡',
+              qc: '實驗室數據審查，層析圖重積分與重複測試逃不過' },
+      needTag: 'trace', needName: '追溯工具', needText: '竄改魅影躲在共用帳號和關掉的稽核軌跡後面：看不出是誰、何時、改了什麼，你連牠在哪都找不到。帶一件能追溯修改的道具才進得了這場戰鬥',
+      line: '「數字改一下就好，反正沒人看得出來。」', rage: '「群組帳號登入，誰改的？你查不到！」', title: '數據守誓者' }
   ];
   /* Special items (道具): crafted once in the workshop, one brought into each boss fight from the
      skill picker. vs: targets ('z<zone>' for zone bosses, elite ids) — against a target the item
-     adds shields; tags let a boss demand a kind of item (孢子騎士 only lets you in with a sporicide).
+     adds shields; tags let a boss demand a kind of item (孢子騎士 needs a sporicide, 竄改魅影 a trace tool).
      Like gear: never changes scoring. Art: rpg/assets/item-<id>.webp (drawn badge until then). */
   var ITEMS = [
     { id: 'paa', zh: '過氧乙酸殺孢劑', cat: '殺孢劑', c: '#84cc16', vs: ['spore'], tags: ['sporicide'], shield: 1, need: { c5: 2, c4: 1 },
@@ -139,7 +147,13 @@
       eff: '內毒素龍戰多 1 面護盾。濕熱滅菌殺得死菌，卻去不掉內毒素；乾熱去熱原要證明內毒素至少降低 3 log。' },
     { id: 'ccit', zh: '真空衰減測漏儀', cat: '檢測儀器', c: '#0ea5e9', vs: ['crack'], shield: 1, need: { c2: 2, c9: 1 },
       use: '真空衰減測試，微漏無所遁形',
-      eff: '裂隙幽靈戰多 1 面護盾。真空衰減是確定性的 CCI 測試方法（USP <1207>），比染色入侵法更靈敏、可重複。' }
+      eff: '裂隙幽靈戰多 1 面護盾。真空衰減是確定性的 CCI 測試方法（USP <1207>），比染色入侵法更靈敏、可重複。' },
+    { id: 'atr', zh: '稽核軌跡審查工具', cat: '追溯工具', c: '#f43f5e', vs: ['forge'], tags: ['trace'], shield: 1, need: { c9: 2, c3: 1 },
+      use: '展開稽核軌跡，每一筆修改都現形',
+      eff: '進入竄改魅影戰的通行證，戰鬥中多 1 面護盾。稽核軌跡要記下誰、何時、改了什麼、為什麼改，而且要依資料 criticality 定期審查，不是開了就算數。' },
+    { id: 'uam', zh: '個人帳號權限矩陣', cat: '追溯工具', c: '#14b8a6', vs: ['forge'], tags: ['trace'], shield: 2, need: { boss: 1, c9: 1, c3: 2 },
+      use: '收回群組帳號，每個人只能用自己的身分',
+      eff: '高階追溯道具，也能進入竄改魅影戰，戰鬥中多 2 面護盾。共用帳號讓稽核軌跡失去意義；一人一帳號、權限分級、操作員不能改 recipe 和警報範圍。' }
   ];
   function itemById(id) { return ITEMS.filter(function (x) { return x.id === id; })[0] || null; }
   function itemVs(it, target) { return !!(it && it.vs.indexOf(target) >= 0); }
@@ -1564,7 +1578,7 @@
       h('h3', { class: 'rpg-sub', text: '選擇出戰技能' }), row,
       h('h3', { class: 'rpg-sub', text: '攜帶道具' }), irow,
       gated ? h('p', { class: 'rpg-weakhint rpg-gate' }, [h('b', { text: '進不了戰場：' }), h('span', { text: a.needText + (ITEMS.some(function (x) { return itemTag(x, a.needTag) && S.items[x.id]; })
-        ? '。在上面選一個殺孢劑。' : '。到角色頁的工坊合成「' + ITEMS.filter(function (x) { return itemTag(x, a.needTag); }).map(function (x) { return x.zh; }).join('」或「') + '」。') })]) : null,
+        ? '。在上面選一個' + (a.needName || '對應道具') + '。' : '。到角色頁的工坊合成「' + ITEMS.filter(function (x) { return itemTag(x, a.needTag); }).map(function (x) { return x.zh; }).join('」或「') + '」。') })]) : null,
       h('p', { class: 'rpg-note', text: w ? '弱點擊破：' + w + '。這場多 1 顆心、多 1 面護盾' +
         (a.done ? '。' : '；第一次用弱點技能打倒牠，再得 ' + XP_WEAK + ' XP 和 1 顆' + BOSS_MAT + '。')
         : '這個技能對' + a.foe + '沒有特別效果。' }),
@@ -1685,7 +1699,7 @@
       var skill = bestSkill(S.skillPick[key], e.weak), item = bestItem(S.itemPick[key], e.id, e.needTag);
       pickSkill();
       function pickSkill() {
-        skillPicker(box, { cur: skill, map: e.weak, foe: e.name, done: !!S.weakWin[key], target: e.id, item: item, needTag: e.needTag, needText: e.needText,
+        skillPicker(box, { cur: skill, map: e.weak, foe: e.name, done: !!S.weakWin[key], target: e.id, item: item, needTag: e.needTag, needName: e.needName, needText: e.needText,
           pick: function (id) { skill = id; pickSkill(); }, pickItem: function (id) { item = id; pickSkill(); },
           go: function () { S.skillPick[key] = skill; S.itemPick[key] = item; saveState(); go(); } });
       }
@@ -2369,7 +2383,7 @@
               h('b', { text: (won ? '已擊敗　' : '') + e.name }),
               h('span', { class: 'rpg-stage-meta', text: e.risk }),
               h('span', { class: 'rpg-stage-meta rpg-weak-meta', text: '弱點：' + Object.keys(e.weak).map(elName).join('、') + (wk ? '・已弱點擊破' : '') }),
-              e.needTag ? h('span', { class: 'rpg-stage-meta rpg-weak-meta', text: '入場條件：攜帶殺孢劑' + (ITEMS.some(function (x) { return itemTag(x, e.needTag) && S.items[x.id]; }) ? '（已持有）' : '（到工坊合成）') }) : null,
+              e.needTag ? h('span', { class: 'rpg-stage-meta rpg-weak-meta', text: '入場條件：攜帶' + (e.needName || '對應道具') + (ITEMS.some(function (x) { return itemTag(x, e.needTag) && S.items[x.id]; }) ? '（已持有）' : '（到工坊合成）') }) : null,
               h('span', { class: 'rpg-stage-meta', text: won ? '稱號：' + e.title + '・最佳 ' + won.best + ' / ' + won.total : '擊敗得稱號「' + e.title + '」' })
             ]),
             h('span', { class: 'rpg-btn rpg-btn-sm' + (act === '挑戰' ? '' : ' rpg-btn-ghost'), text: act })
