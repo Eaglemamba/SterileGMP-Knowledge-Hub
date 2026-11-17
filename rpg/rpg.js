@@ -902,7 +902,7 @@
       h('h3', { text: '1. 職業' }), classGrid, hint,
       h('h3', { text: '2. 頭像' }), avatarGrid,
       h('h3', { text: '3. 暱稱' }), nick,
-      h('p', { class: 'rpg-note', text: '角色和進度只存在這台裝置的瀏覽器裡，不會上傳。清除瀏覽器資料會一併清掉。目前只有「生產製造部」的必讀文件有章節挑戰，其他職業先以讀完通關。' }),
+      h('p', { class: 'rpg-note', text: '角色和進度只存在這台裝置的瀏覽器裡，不會上傳。清除瀏覽器資料會一併清掉。' }),
       h('button', {
         class: 'rpg-btn rpg-btn-wide', type: 'button', text: editing ? '儲存' : '開始冒險',
         onclick: function () {
@@ -1538,6 +1538,7 @@
     area.appendChild(h('button', { class: 'rpg-btn', type: 'button', text: rec ? '再戰' : '迎戰', onclick: fight }));
 
     function fight() {
+      if (!S.profile) { openOnboarding(); return; }   // battles need a character (avatar, hearts, rewards)
       runBattle(area, { kind: 'mob', foe: foe, foeImg: mobSrc, cluster: mi, questions: shuffle(questions.slice()), onEnd: save });
     }
     function save(r) {
