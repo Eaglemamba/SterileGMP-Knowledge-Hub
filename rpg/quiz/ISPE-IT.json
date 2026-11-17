@@ -1,0 +1,689 @@
+{
+  "doc_key": "ISPE-IT",
+  "title": "ISPE GAMP: IT Infrastructure",
+  "source_md": "knowledge/ISPE/ISPE-IT-Complete.md",
+  "generated": "2026-11-17",
+  "note": "In-page section challenges for rpg/rpg.js. MCQ only; each question belongs to one top-level section id.",
+  "questions": [
+    {
+      "id": 1,
+      "section": "sec0",
+      "type": "mcq",
+      "topic": "Horizontal vs vertical approach",
+      "question": "指南為何建議以「水平（平台式）」而非「垂直（系統式）」方式進行 IT 基礎設施的確認與稽核？",
+      "options": {
+        "A": "水平式讓每套應用程式各自擁有獨立的基礎設施，可降低不同系統之間的相互影響",
+        "B": "垂直式會對重疊甚至相同的平台元件重複處理，水平式則可減少文件、確認與稽核的重疊",
+        "C": "水平式要求每個平台元件都逐一完成完整的 PQ，因此在長期運作上比垂直式更能降低成本",
+        "D": "垂直式不適用於任何 GxP 系統，因此指南規定平台元件一律只能以水平式的方法處理"
+      },
+      "correct": "B",
+      "explanation": "垂直（系統式）做法會讓重疊或相同的平台元件被一再處理，效率低且不切實際；水平（平台式）做法可提高標準化，並使文件、qualification 與稽核的重疊降到最低。",
+      "reference": "ISPE GAMP IT §1.4",
+      "max": 1
+    },
+    {
+      "id": 2,
+      "section": "sec0",
+      "type": "mcq",
+      "topic": "Qualification vs validation",
+      "question": "在 IT 基礎設施的脈絡下，「validation」與「qualification」的用法應如何區分？",
+      "options": {
+        "A": "validation 用於伺服器與網路等平台元件，qualification 則專用於運行其上的 GxP 應用程式",
+        "B": "兩者完全等義，平台與應用程式都須做完整的 validation，只是文件名稱的用詞不同而已",
+        "C": "qualification 僅限於新建的平台，已上線的既有平台則改以 validation 處理並採相同測試",
+        "D": "validation 適用於運行其上的 GxP 應用程式，而平台本身的重點應放在各元件的 qualification"
+      },
+      "correct": "D",
+      "explanation": "指南將 validation 保留給 GxP 應用程式，平台則聚焦於元件 qualification。有些公司對關鍵的基礎設施應用（如密碼管理、電子簽章驗證）也使用 validation 一詞，但實質的合規活動仍須與指南一致。",
+      "reference": "ISPE GAMP IT §1.7.2 Key Terminology › Validation; Qualification",
+      "max": 1
+    },
+    {
+      "id": 3,
+      "section": "sec0",
+      "type": "mcq",
+      "topic": "Adding an application to a qualified platform",
+      "question": "某公司已將伺服器與網路平台獨立完成 qualification，現在要在其上新增一套 LIMS。依水平式做法，主要需要做什麼？",
+      "options": {
+        "A": "只需確效該 LIMS 應用程式，已 qualified 的平台不必重做；日後平台若有變更，仍須評估對 GxP 應用的風險",
+        "B": "必須連同整個平台重新執行完整的 IQ 與 OQ，因為新增任何應用程式都會改變基礎設施的 qualified 狀態，並且日後每次變更任何業務應用程式時都要重複此做法",
+        "C": "只需由 IT 部門通知 QA 即可，因為平台已 qualified，新增應用程式本身不需要任何的確效活動",
+        "D": "必須先把平台拆成專屬於該 LIMS 的獨立基礎設施，才能分別對其進行 qualification 與稽核作業"
+      },
+      "correct": "A",
+      "explanation": "平台與應用程式分開 qualification，新增或變更業務應用程式時只需確效該應用程式。反過來，變更基礎設施元件不一定要重新確效應用程式，但每項受控變更對 GxP 應用的風險仍須評估。",
+      "reference": "ISPE GAMP IT §1.7.1",
+      "max": 1
+    },
+    {
+      "id": 4,
+      "section": "sec0",
+      "type": "mcq",
+      "topic": "GAMP categories of platform components",
+      "question": "依 Table 2.1，下列對「網路建構模組」與「應用程式」之 GAMP 分類的描述，何者正確？",
+      "options": {
+        "A": "網路元件多為 HW category 3，而應用程式則屬於 SW category 1 或 2",
+        "B": "網路元件多為 SW category 3 或 4，而應用程式則屬於 SW category 1 或 2",
+        "C": "網路建構模組多為 HW category 1 與 SW category 1 或 2，應用程式則為 SW category 3、4 或 5",
+        "D": "網路建構模組多為 HW category 1，應用程式與網路相同，同樣為 SW category 1 或 2"
+      },
+      "correct": "C",
+      "explanation": "多數網路建構模組是 HW category 1 與 SW category 1 或 2（客製化纜線例外，為 HW category 2）；應用程式則是 SW category 3、4 或 5，其確效不在本指南範圍內。",
+      "reference": "ISPE GAMP IT §2.1 Table 2.1",
+      "max": 1
+    },
+    {
+      "id": 5,
+      "section": "sec0",
+      "type": "mcq",
+      "topic": "Scope of the Guide",
+      "question": "下列何者屬於本指南明確納入討論的範圍？",
+      "options": {
+        "A": "由業務使用者主導的整體 Business Continuity Planning",
+        "B": "基礎設施故障時，業務流程所需要的替代作業程序",
+        "C": "建立在平台之上的 GxP 應用程式的確效方法",
+        "D": "IT 基礎設施本身的 disaster recovery 與應變規劃"
+      },
+      "correct": "D",
+      "explanation": "指南考慮 IT 基礎設施的 disaster recovery 與 contingency planning。但 Business Continuity Planning 應由業務使用者與系統/資料擁有者主導，不在範圍內；故障時的替代作業程序與應用程式確效也都在範圍之外。",
+      "reference": "ISPE GAMP IT §1.3",
+      "max": 1
+    },
+    {
+      "id": 6,
+      "section": "sec1",
+      "type": "mcq",
+      "topic": "Correcting test records",
+      "question": "依 §3.5，qualification 測試紀錄填寫錯誤時，下列哪一種更正方式符合要求？",
+      "options": {
+        "A": "以修正液覆蓋原本的記載，並在測試報告的摘要中統一註明曾經有過修正，且不需要由執行人員簽名或註明日期，只要版面看起來整齊即可",
+        "B": "另行重新填寫整份測試表單，並銷毀原表單，以確保測試紀錄的版面整潔一致",
+        "C": "不遮蓋原記載，並清楚留下更正的日期、原因與更正者，或由電腦化工具自動產生 audit trail",
+        "D": "由 QA 在審閱階段統一更正，測試執行人員不得在現場自行修改任何已填寫的內容"
+      },
+      "correct": "C",
+      "explanation": "更正時不得蓋掉原記載，且須清楚呈現日期、原因與更正者身分，或使用具自動 audit trail 的電腦化工具。另外，記錄應反映實際觀察結果，不只是 pass/fail。",
+      "reference": "ISPE GAMP IT §3.5",
+      "max": 1
+    },
+    {
+      "id": 7,
+      "section": "sec1",
+      "type": "mcq",
+      "topic": "Periodic Review vs QA audit",
+      "question": "比較 §3.8 Periodic Review 與 §3.9 QA 稽核，下列敘述何者正確？",
+      "options": {
+        "A": "Periodic Review 可由 SME 或 IT Quality and Compliance 執行，範圍與頻率依風險決定；稽核須由獨立於被稽核單位的 QA 人員執行",
+        "B": "Periodic Review 必須由獨立 QA 執行，而稽核則可由被稽核單位的 SME 自行進行，以便掌握所有的細節，且兩者的結論都不需要經過 QA 的審閱或核准，即可直接生效",
+        "C": "兩者的頻率都固定為每年一次，且範圍由被審查單位的主管決定，不需要考量風險或過去的問題歷史",
+        "D": "Periodic Review 只在重大升級後以事件驅動方式進行，稽核則只依固定排程在每個週期執行一次"
+      },
+      "correct": "A",
+      "explanation": "Periodic Review 由 SME 或 IT Quality and Compliance 進行，範圍、深度與頻率依影響與風險決定，也可由事件驅動；稽核則須由獨立於被稽核群組的 QA 人員執行，範圍、頻率與目的由 QA 決定。",
+      "reference": "ISPE GAMP IT §3.8, §3.9",
+      "max": 1
+    },
+    {
+      "id": 8,
+      "section": "sec1",
+      "type": "mcq",
+      "topic": "Legacy platform — Experience Report",
+      "question": "某 legacy 平台多年來穩定運作但從未正式 qualification，密集測試可能影響其持續運作。指南建議以什麼作為後續規劃的基礎？",
+      "options": {
+        "A": "立即把所有運作中的元件重新安裝一遍，以便蒐集完整的 IQ 文件作為補件依據",
+        "B": "編製「Experience Report」，彙整平台的清單、運作狀態與歷史，作為進一步規劃的基礎",
+        "C": "對整個平台優先執行全面的壓力與負載測試，以確認其在極端狀況下仍能維持運作",
+        "D": "直接停用並以新平台取代，因為未經 qualification 的舊平台不可能符合 GxP 要求"
+      },
+      "correct": "B",
+      "explanation": "對運作穩定的 legacy 平台，強度大的測試可能反而影響運作，故建議先寫 Experience Report。為取得 IQ 文件而重新安裝正常運作的元件未必適當，穩定運作者也不以壓力/負載測試為優先。",
+      "reference": "ISPE GAMP IT §5.3.2, §5.3.2.3",
+      "max": 1
+    },
+    {
+      "id": 9,
+      "section": "sec1",
+      "type": "mcq",
+      "topic": "Identifying critical components",
+      "question": "平台管理群組不確定哪些基礎設施元件需要 qualification，也不確定各元件的重要性。依 §4.1，應如何處理？",
+      "options": {
+        "A": "由基礎設施人員自行獨立判斷各元件的 GxP 衝擊，因為他們最了解平台的技術細節，而不需要應用程式或資料擁有者提供意見，也不需要 QA 參與",
+        "B": "先不做 qualification，等稽查員指出缺失之後，再補做風險評估與相關的測試作業",
+        "C": "只評估 GxP 應用所用的元件，非 GxP 應用在同一基礎設施上運作並不需要特別考慮",
+        "D": "由應用程式/資料擁有者與 QA 界定；若未指定重要性，平台群組可對所有元件與資料採同樣高的標準"
+      },
+      "correct": "D",
+      "explanation": "應用程式/資料擁有者與 QA 定義哪些元件需要 qualification；基礎設施人員不應被期待獨立評估 GxP 合規。同一基礎設施上的非 GxP 應用也可能影響 GxP 應用，須在風險評估中識別並加以控制。",
+      "reference": "ISPE GAMP IT §4.1",
+      "max": 1
+    },
+    {
+      "id": 10,
+      "section": "sec1",
+      "type": "mcq",
+      "topic": "Two qualification strategy scenarios",
+      "question": "關於 §5.1 的兩種 qualification 策略情境，下列何者正確？",
+      "options": {
+        "A": "平台需求逐案由應用系統規格推導時，building block 概念難以充分發揮，需與系統擁有者密切互動，qualification 多為一次性",
+        "B": "平台需求逐案由應用系統規格推導時，qualified 平台被視為 commodity，qualification 計畫多寫在 SOP，與擁有者互動很少",
+        "C": "平台規格獨立於應用程式時，每個平台都須針對特定應用逐一量身設計，qualification 也大多是一次性的工作",
+        "D": "平台規格獨立於應用程式時，需求主要由應用系統規格推導，必須先和系統擁有者密切互動後才能開始 qualification"
+      },
+      "correct": "A",
+      "explanation": "情境 1（規格獨立於應用）適用 building block，計畫通常寫在 SOP，與系統擁有者互動少，平台被視為 commodity；情境 2（需求由應用規格逐案推導）互動多，平台 qualification 大多是一次性。",
+      "reference": "ISPE GAMP IT §5.1",
+      "max": 1
+    },
+    {
+      "id": 11,
+      "section": "sec2",
+      "type": "mcq",
+      "topic": "Configuration Items List (CIL)",
+      "question": "為何 §5.6.2.3 建議為伺服器準備並維護「Configuration Items List（CIL）」？",
+      "options": {
+        "A": "取代 IQ 的角色，因為 CIL 一旦核准，就不需要再查證伺服器實際安裝的參數與版本",
+        "B": "供使用者記錄每日的操作與登入紀錄，並作為 Periodic Review 時唯一的證據來源",
+        "C": "僅用於採購階段比價與驗收，對後續伺服器的複製、重建或 IQ 查證沒有實質影響",
+        "D": "讓已驗證的組態可被安全重建或複製成相同的伺服器，並供 IQ 時據以查證版本與設定"
+      },
+      "correct": "D",
+      "explanation": "CIL 記錄硬體（廠牌型號、記憶體、CPU 與磁碟數等）與軟體（作業系統、service pack、修補程式、存取與網路設定等）項目，並以版本編號識別，使伺服器可被安全重建或複製，IQ 時也據以查證。",
+      "reference": "ISPE GAMP IT §5.6.2.3",
+      "max": 1
+    },
+    {
+      "id": 12,
+      "section": "sec2",
+      "type": "mcq",
+      "topic": "System time management",
+      "question": "在全球性的 IT 基礎設施中，依 §5.4.2.3，系統時間同步至少應可追溯到什麼？",
+      "options": {
+        "A": "各地區所在時區的當地時間，並由各廠區各自管理夏令與冬令時間的偏移",
+        "B": "每台伺服器內建時鐘的出廠設定值，並由使用者在發現誤差時自行調整",
+        "C": "國際標準（如 UTC 或 TAI），或至少追溯到公司的時間標準",
+        "D": "應用程式供應商所指定的時間來源，不需要與其他系統的時間互相比對"
+      },
+      "correct": "C",
+      "explanation": "指南要求時間同步可追溯到國際標準（如 UTC、TAI），最低限度為公司時間標準；時間管理規格須於 IQ 與 OQ 驗證，且設定或重設系統時間的責任與存取權限必須文件化。",
+      "reference": "ISPE GAMP IT §5.4.2.3",
+      "max": 1
+    },
+    {
+      "id": 13,
+      "section": "sec2",
+      "type": "mcq",
+      "topic": "SAN vs NAS",
+      "question": "關於儲存系統，下列何者正確區分 SAN 與 NAS？",
+      "options": {
+        "A": "SAN 是掛在一般網路上的單一伺服器加磁碟陣列；NAS 則擁有專屬的高速網路與專用網路元件",
+        "B": "SAN 擁有自己的高速網路與專用網路元件；NAS 不接在獨立網路，而是專用伺服器加磁碟陣列",
+        "C": "兩者的 IQ 與 OQ 都可直接在儲存設備本體上完成，完全不需透過任何已連接的伺服器",
+        "D": "SAN 與 NAS 的設計都與預估負載及網路拓樸無關，只依供應商建議的標準型號選用即可"
+      },
+      "correct": "B",
+      "explanation": "SAN 有自己的高速網路（路由器、hub、交換器、gateway）；NAS 不附屬於獨立網路，是專用伺服器加磁碟陣列。設計取決於預估負載與網路拓樸，OQ 實務上只能經由已連接的伺服器進行。",
+      "reference": "ISPE GAMP IT §5.4.2.4",
+      "max": 1
+    },
+    {
+      "id": 14,
+      "section": "sec2",
+      "type": "mcq",
+      "topic": "Client classification scenario",
+      "question": "某台客戶端安裝了 GxP 應用程式，管理上要求：除高優先的安全修補外，任何修改都必須經過正式變更管理並完成變更的 qualification。它應歸類為哪一類？",
+      "options": {
+        "A": "‘controlled’：除了高優先安全修補之外，所有修改都須經正式變更管理與變更的 qualification",
+        "B": "‘restricted’：不開放使用者修改，但仍接受由中央控制的更新，變更不需另行 qualification，因此該客戶端的所有軟體變更都不需要經過任何的審核或測試",
+        "C": "‘un-restricted’：允許使用者修改，只要符合公司安全與一般軟體政策並接受中央更新即可",
+        "D": "‘thin’：以網頁介面存取，所有資料與軟體皆在伺服器端，因此客戶端不需要任何變更管理"
+      },
+      "correct": "A",
+      "explanation": "指南典型分類為 un-restricted、restricted、controlled 三種；controlled 對所有修改（除可能的高優先安全修補外）都須走正式變更管理與變更 qualification。承載 GxP 應用者應比僅供 email 者管理更嚴格。",
+      "reference": "ISPE GAMP IT §5.4.3",
+      "max": 1
+    },
+    {
+      "id": 15,
+      "section": "sec2",
+      "type": "mcq",
+      "topic": "Supplier evaluation classification",
+      "question": "評估委員會審視某供應商的交貨紀錄與蒐集到的資訊，發現並不完全令人滿意，但尚未到不可接受。依 §5.6.1，最適合的分類與處置為何？",
+      "options": {
+        "A": "Approved：因為該供應商已有交貨紀錄，可直接納入核准名單並免除額外的測試與見證",
+        "B": "Not approved：只要資訊不完全令人滿意，就必須立即停止所有採購與往來，不得再交貨，並且須通知所有現有客戶，同時終止既有合約與所有進行中的訂單",
+        "C": "Conditionally approved：可透過更密切的追蹤，以及比原先更密集的測試與見證來降低風險",
+        "D": "暫不分類：須等第二次稽核完成後才能決定是否採購，期間所有已交貨品項一律退回供應商"
+      },
+      "correct": "C",
+      "explanation": "資訊或交貨紀錄不完全令人滿意時為 Conditionally approved，風險可透過更密切的追蹤與更密集的測試/見證來緩解；Not approved 則是資訊或紀錄不足或不令人滿意的情形。首次稽核後尚有待改善事項並不一定是問題。",
+      "reference": "ISPE GAMP IT §5.6.1",
+      "max": 1
+    },
+    {
+      "id": 16,
+      "section": "sec3",
+      "type": "mcq",
+      "topic": "Focus of OQ for standard platforms",
+      "question": "若平台全為市售的標準產品，§5.7 建議 OQ 的重點應放在哪裡？",
+      "options": {
+        "A": "以內建或附加的電腦化工具測試連線能力，並於適用時測試容量，而不是測試核心功能",
+        "B": "對每個標準產品的核心功能逐項進行完整的功能測試，以取代供應商本身的出廠測試，並要求公司必須自行重做供應商已完成的所有出廠測試與認證程序",
+        "C": "僅檢視供應商出具的證書與手冊，公司本身不需要進行任何操作面的測試或驗證",
+        "D": "以大量使用者同時登入進行壓力測試，作為所有標準平台都必須執行的 OQ 項目"
+      },
+      "correct": "A",
+      "explanation": "對市售標準產品，OQ 重點在連線能力（適用時含容量），而非核心功能。OQ 至少應有一組說明測試步驟、預期結果與須蒐集證據的指示，並依先前風險評估的結果設計。",
+      "reference": "ISPE GAMP IT §5.7",
+      "max": 1
+    },
+    {
+      "id": 17,
+      "section": "sec3",
+      "type": "mcq",
+      "topic": "Firewall OQ — positive and negative testing",
+      "question": "OQ 要驗證防火牆的關鍵功能時，§5.7 建議的測試方式為何？",
+      "options": {
+        "A": "只測試應被允許通過的流量能正常通過，因為被阻擋的流量由供應商負責確認",
+        "B": "正向與反向都要測：應通過的流量能通過，且應被阻擋的流量確實被阻擋",
+        "C": "只核對防火牆規則清單與設計文件相符即可，不需要實際送出任何網路封包",
+        "D": "只在應用程式的 PQ 階段才測試防火牆，基礎設施的 OQ 不處理防火牆功能"
+      },
+      "correct": "B",
+      "explanation": "指南要求防火牆 OQ 做 positive 與 negative testing，即允許該通過的流量，也阻擋該阻擋的流量。同一節的其他典型測試還包括確認預設密碼已更改與時間同步。",
+      "reference": "ISPE GAMP IT §5.7",
+      "max": 1
+    },
+    {
+      "id": 18,
+      "section": "sec3",
+      "type": "mcq",
+      "topic": "Configuration Items (CIs)",
+      "question": "依 §6.2，Configuration Items（CIs）通常定義到什麼層級？",
+      "options": {
+        "A": "以整個機房或整套平台為單位，不需拆分到個別元件，以免管理變得過於繁瑣，並且禁止任何人另外針對個別元件建立版本或變更的紀錄資料",
+        "B": "僅限硬體與軟體本身，不含關鍵參數設定與文件，因為後兩者由變更管理另行處理",
+        "C": "以各應用程式為單位，由應用程式擁有者自行決定是否納入基礎設施的管理範圍",
+        "D": "定義到元件可被獨立安裝、更換或修改的最低層級，涵蓋硬體、軟體、關鍵參數與文件"
+      },
+      "correct": "D",
+      "explanation": "CI 包含硬體、軟體、關鍵參數設定、文件及任何公司想控制的基礎設施部分，通常定義到可被獨立安裝、更換或修改的最低層級。至少應把對維持 qualified 狀態具關鍵性的項目納入 CM，以提供經核准的基準。",
+      "reference": "ISPE GAMP IT §6.2",
+      "max": 1
+    },
+    {
+      "id": 19,
+      "section": "sec3",
+      "type": "mcq",
+      "topic": "Problem vs known error",
+      "question": "依 §6.7 Problem Management，「problem」與「known error」的差別為何？",
+      "options": {
+        "A": "problem 是已找到暫行解決方法的故障；known error 則是尚未知道根本原因的一個事件",
+        "B": "problem 是使用者在 Help Desk 登記的所有來電；known error 是其中已經結案的來電，而且任何 problem 都不得由 Help Desk 登錄，只能由管理階層直接建立",
+        "C": "problem 是一個或多個 incident 背後未知的根本原因；known error 是已成功診斷且已有 workaround 的 problem",
+        "D": "problem 指硬體故障，known error 指軟體故障，兩者都必須透過變更管理群組才可處理"
+      },
+      "correct": "C",
+      "explanation": "problem 是一個或多個 incident 的未知根本原因；已成功診斷並找到 workaround 的 problem 才稱為 known error。所有登錄的 problem 須經核准管道追蹤與解決，需要變更者轉交 Change Management Group。",
+      "reference": "ISPE GAMP IT §6.7",
+      "max": 1
+    },
+    {
+      "id": 20,
+      "section": "sec3",
+      "type": "mcq",
+      "topic": "Platform retirement — data migration assurance",
+      "question": "舊平台汰換、資料須遷移到新平台時，下列何者屬於指南要求須有書面保證的事項？",
+      "options": {
+        "A": "舊平台上的每一筆資料都必須由人工逐筆比對，不得使用統計方法或電腦化工具，並且舊平台的資料在遷移完成後必須立即全部銷毀，不得保留任何備份",
+        "B": "所有資料元素皆已遷移，重要的資料屬性（如安全設定）已保留，也沒有多出非預期的資料元素",
+        "C": "新平台上的資料筆數可以比舊平台多，只要遷移後新增的資料經過使用者事後口頭確認即可",
+        "D": "只需確認主要業務資料已遷移，輔助資料與資料轉換的結果不在書面保證的範圍之內"
+      },
+      "correct": "B",
+      "explanation": "指南列出需有書面保證的事項：所有資料元素皆已遷移、關鍵屬性保留、輔助資料正確轉移、沒有意外多出資料元素，且指定的轉換結果一致。驗證方式依風險而定，可用統計方法或自動化工具，並不一定要逐筆人工比對。",
+      "reference": "ISPE GAMP IT Retirement of Platforms (following §6.13)",
+      "max": 1
+    },
+    {
+      "id": 21,
+      "section": "sec4",
+      "type": "mcq",
+      "topic": "Responsibility when infrastructure is leased",
+      "question": "某公司向服務供應商租用 IT 基礎設施服務。依 Appendix 1，下列何者正確？",
+      "options": {
+        "A": "因為設施由供應商持有，qualification 狀態的責任隨合約轉移給供應商，公司只需按時付費",
+        "B": "公司只要把系統與資料的擁有權及品質保證外包，就能降低自身的 Control and Compliance 負擔",
+        "C": "公司仍須對 qualification 狀態負責，須訂定期望並持續監控，例如協商、同意、出資並監控 SLA",
+        "D": "公司只需在簽約時審核供應商一次，之後由供應商自行確保 SLA 的達成，公司不必再追蹤"
+      },
+      "correct": "C",
+      "explanation": "無論自有或租用基礎設施，受規管公司都對 qualification 狀態負責，須明訂期望並持續監控。系統與資料的擁有權及 QA，基於 Control and Compliance 的理由不應外包。",
+      "reference": "ISPE GAMP IT Appendix 1 › Executive Management (Project Sponsorship)",
+      "max": 1
+    },
+    {
+      "id": 22,
+      "section": "sec4",
+      "type": "mcq",
+      "topic": "When to appoint a Data Owner",
+      "question": "某檔案儲存服務為許多使用者代管資料，這些資料並非由應用程式擁有者在邏輯上所擁有。依 Appendix 1，較適當的做法是什麼？",
+      "options": {
+        "A": "由平台管理者直接成為所有資料的擁有者，使用者只負責輸入資料，不必負任何的責任，並由其單獨決定所有資料的保存期限與刪除方式，不需要任何人核准",
+        "B": "不指定任何擁有者，因為資料只在伺服器上存放，品質與安全都交由供應商全權處理",
+        "C": "由 Independent QA 擔任資料擁有者，並負責備份、還原與封存等日常的實際作業",
+        "D": "指定 data owner，由其確保品質與安全措施足夠，例如備份還原、封存、audit trail、存取限制與可用性"
+      },
+      "correct": "D",
+      "explanation": "當系統所存資料在邏輯上不歸應用程式擁有者時，公司可指定 data owner；他們須確保已建立的品質與安全措施足夠，並被告知責任且具備履行責任的方法。",
+      "reference": "ISPE GAMP IT Appendix 1 › Data Owner",
+      "max": 1
+    },
+    {
+      "id": 23,
+      "section": "sec4",
+      "type": "mcq",
+      "topic": "Independent QA vs IT Quality and Compliance",
+      "question": "比較 Independent QA 與 IT Quality and Compliance，下列何者符合 Appendix 1？",
+      "options": {
+        "A": "Independent QA 對合規的達成與維持負最終責任；IT Quality and Compliance 對關鍵文件等事項須上呈 QA 核准",
+        "B": "IT Quality and Compliance 獨立於 QA，對關鍵變更與紀錄保存期限的決定擁有最終核准權限",
+        "C": "兩者的角色其實相同，因此不需要另外以書面記錄兩者的關係以及彼此間活動的委派情形，因此完全不需要由 QA 核准任何的文件、紀錄保存期限或重大變更",
+        "D": "Independent QA 負責日常平台操作與技術支援；IT Quality and Compliance 則負責最終的稽核結論"
+      },
+      "correct": "A",
+      "explanation": "獨立於 IT 的 QA 對合規是否達成與維持負最終責任；IT Quality and Compliance 提供專業支援，並對關鍵文件核准、技術紀錄保存期限與關鍵變更等事項上呈 QA 核准。兩者的關係與委派應文件化。",
+      "reference": "ISPE GAMP IT Appendix 1 › Independent Quality Assurance; IT Quality and Compliance",
+      "max": 1
+    },
+    {
+      "id": 24,
+      "section": "sec4",
+      "type": "mcq",
+      "topic": "Two-stage GAMP risk assessment",
+      "question": "Appendix 2 的 GAMP 風險評估分為兩個階段，其輸出分別是什麼？",
+      "options": {
+        "A": "階段 1 產出風險優先順序；階段 2 再把各危害分類為三個等級之一",
+        "B": "階段 1 將各危害分類為三個等級之一；階段 2 納入偵測機率等緩解因素後得出風險優先順序",
+        "C": "兩個階段都只輸出 high/medium/low 的單一評分，不需考量偵測機率或其他緩解因素",
+        "D": "階段 1 決定測試案例的數量；階段 2 決定由哪一位平台擁有者負責核准最終的報告"
+      },
+      "correct": "B",
+      "explanation": "Stage 1 依影響、發生可能性等因素把每個危害分為三級之一；Stage 2 再評估緩解因素（如危害發生前被偵測到的機率），輸出為風險優先順序。之後還要做風險評估，判斷風險是否可接受，並記錄結果與假設。",
+      "reference": "ISPE GAMP IT Appendix 2 › Risk Analysis (Figures A2.1, A2.2)",
+      "max": 1
+    },
+    {
+      "id": 25,
+      "section": "sec4",
+      "type": "mcq",
+      "topic": "Type vs instance qualification",
+      "question": "依 Appendix 3 對 type 與 instance 的說明，下列何者正確？",
+      "options": {
+        "A": "instance qualification 包含所有的交付文件，type qualification 則只包含 instance IQ 與 OQ",
+        "B": "type 與 instance 只是名稱不同，兩者都須由 PO、SME 與 QA 共同完成所有文件的審核",
+        "C": "每個 instance 都必須重新撰寫完整的需求與設計規格，且不可引用 building block 的文件",
+        "D": "type qualification 涵蓋除 instance IQ 與 OQ 之外的所有項目；instance 只含 instance IQ 與 OQ，並引用 type 文件"
+      },
+      "correct": "D",
+      "explanation": "type 指 building block（標準組態）的通用規格與衍生文件，其 qualification 涵蓋 instance IQ 與 OQ 以外的所有項目；instance qualification 只做 instance IQ 與 OQ，並引用 type 文件。Table A3.1 中 instance IQ/OQ 的責任單位為 SME。",
+      "reference": "ISPE GAMP IT Appendix 3 Table A3.1 (footnotes 2, 3)",
+      "max": 1
+    },
+    {
+      "id": 26,
+      "section": "sec5",
+      "type": "mcq",
+      "topic": "Authorization to restore in SOP table",
+      "question": "依 Table A4.1，「Restore process（包含 authorization to restore，授權還原）」屬於哪一類 SOP 的範疇？",
+      "options": {
+        "A": "Security（安全）中的 logical security，與帳號及密碼管理放在一起規範",
+        "B": "Data management（資料管理）中的 data backup and restore，與備份排程及媒體管理並列",
+        "C": "Continuity management（連續性管理）中的 disaster recovery，與業務持續計畫一併規範",
+        "D": "Client management（用戶端管理）中的 client 安裝，與標準 client 的演進放在一起"
+      },
+      "correct": "B",
+      "explanation": "Table A4.1 把備份排程、記錄、驗證、媒體標示與儲存、風險分析，以及包含授權還原的 restore process 都列在 Data management 的 data backup and restore。要還原資料，須確認要求者有權還原，也有權檢視該資料。",
+      "reference": "ISPE GAMP IT Appendix 4 Table A4.1 › Data Management",
+      "max": 1
+    },
+    {
+      "id": 27,
+      "section": "sec5",
+      "type": "mcq",
+      "topic": "Deliverables for continuity management",
+      "question": "Table A4.1 中，「Continuity management（災難復原與應變規劃）」的典型交付文件是什麼？",
+      "options": {
+        "A": "Disaster Recovery Plan（屬業務持續計畫的一部分）與 Disaster Recovery Test Reports",
+        "B": "備份日誌、還原日誌與資料刪除日誌，作為每日營運紀錄與資料管理的主要憑證",
+        "C": "組織圖、職務說明與訓練紀錄，用以證明相關人員具備執行災難復原所需的資格",
+        "D": "存取控制日誌與密碼更新日誌，用以證明未經授權的存取嘗試已被偵測並處理完畢"
+      },
+      "correct": "A",
+      "explanation": "Continuity management 的典型交付文件為 Disaster Recovery Plan（作為 business continuity planning 的一部分）與 Disaster Recovery Test Reports。其他選項分別屬於資料管理、一般管理（人員）或安全類別的文件。",
+      "reference": "ISPE GAMP IT Appendix 4 Table A4.1 › Continuity Management",
+      "max": 1
+    },
+    {
+      "id": 28,
+      "section": "sec5",
+      "type": "mcq",
+      "topic": "Periodic Review — adjusting system time",
+      "question": "Table A5.1 提到，應有程序確保設定系統時間時不會打亂任何紀錄（log）的先後順序。其範例做法為何？",
+      "options": {
+        "A": "一次性將時間往前或往後調整到正確值，並在日誌中以手寫備註這次調整的原因",
+        "B": "僅在每年夏令與冬令時間切換時調整，其餘時間任由各系統的時鐘自行運作",
+        "C": "一律往前調整，並以小幅度、頻繁的方式進行，避免打斷 log 的順序",
+        "D": "任何時候都可以回調，只要事後由 QA 在 Periodic Review 時核對 log 即可"
+      },
+      "correct": "C",
+      "explanation": "範例做法是往前（ahead）、以小幅度且頻繁的增量調整，避免時間倒退或大幅跳動而破壞 log 順序。同一檢核表也問及是否有專屬時間伺服器可追溯到 BIPM 等可靠來源，以及夏令/冬令時間設定對時間戳記的影響是否已評估。",
+      "reference": "ISPE GAMP IT Appendix 5 Table A5.1 › Server Management › System Time",
+      "max": 1
+    },
+    {
+      "id": 29,
+      "section": "sec5",
+      "type": "mcq",
+      "topic": "Using the Periodic Review checklist",
+      "question": "依 Appendix 5，公司應如何使用 Table A5.1 的 Periodic Review 檢核表？",
+      "options": {
+        "A": "每次 Periodic Review 都必須逐題完整執行，任何一題省略都視為未完成審查",
+        "B": "只用於 GxP 要素，非 GxP 的基礎設施要素絕不可納入 Periodic Review 的範圍",
+        "C": "由被審查單位於審查當天臨時決定要回答哪些題目，不需事先與相關人員取得共識",
+        "D": "事前考量可能的危害與風險，先定義並同意要涵蓋的主題，再視情況從清單中挑選適用者"
+      },
+      "correct": "D",
+      "explanation": "Appendix 5 指出公司應事先定義並同意各次 Periodic Review 要涵蓋的主題，並考量危害與風險；完整清單不一定總是需要或適用，可依情況選擇。公司也可基於業務理由，把非 GxP 要素納入審查。",
+      "reference": "ISPE GAMP IT Appendix 5 (intro), Table A5.1",
+      "max": 1
+    },
+    {
+      "id": 30,
+      "section": "sec5",
+      "type": "mcq",
+      "topic": "Contract staff accounts",
+      "question": "外部合約人員需要暫時存取網路。Table A5.1 的檢核項目期望這類帳號如何處理？",
+      "options": {
+        "A": "設定到期日，並與正式員工一樣納入離職/轉調的移除程序及對休眠帳號的 Periodic Review",
+        "B": "與正式員工共用同一組帳號與密碼，以免增加使用者清單與帳號管理的整體負擔，且帳號無論人員是否離職都永久有效，也不須定期檢視是否仍在使用",
+        "C": "不設到期日，待合約結案後由部門主管自行記得通知 IT 部門再以人工方式停用帳號",
+        "D": "不建立任何邏輯帳號，只發放實體門禁卡，讓其藉由他人的帳號登入並完成系統作業"
+      },
+      "correct": "A",
+      "explanation": "檢核表問到：程序是否同時涵蓋正式與臨時/合約人員、臨時帳號是否設有到期日、人員離職或轉調時是否移除，以及是否定期檢視過時或休眠帳號。邏輯存取也應至少由兩個要素組成，且組合對每人唯一。",
+      "reference": "ISPE GAMP IT Appendix 5 Table A5.1 › Security Management › Logical Access Controls",
+      "max": 1
+    },
+    {
+      "id": 31,
+      "section": "sec6",
+      "type": "mcq",
+      "topic": "Security update urgency categories",
+      "question": "某個安全弱點被供應商與使用者群組確認，對公司業務構成立即且真實的威脅。依 Appendix 6，應將修補歸為哪一類？",
+      "options": {
+        "A": "Update：沒有立即威脅，可考慮納入下一次排定的平台升級中一併處理",
+        "B": "Urgent Update：威脅可能發生，須在指定的時間範圍內完成修補作業",
+        "C": "Routine Change：不需要變更管制，但事後應通知所有相關的系統擁有者知悉",
+        "D": "Emergency Fix：威脅立即且真實，應盡快套用，變更文件可於事後補齊"
+      },
+      "correct": "D",
+      "explanation": "指南將安全更新緊急度分為三類：Emergency Fix（立即且真實的威脅，盡快套用）、Urgent Update（可能的威脅，於指定時間內套用）、Update（無立即威脅，納入下次排定的升級）。緊急變更的 change control 可事後補，但須在最短期間內完成。",
+      "reference": "ISPE GAMP IT Appendix 6 §3.1; Appendix 7 › Fundamental Principles",
+      "max": 1
+    },
+    {
+      "id": 32,
+      "section": "sec6",
+      "type": "mcq",
+      "topic": "Level of testing after a platform upgrade",
+      "question": "某 GxP 系統所在平台要升級；技術評估認為此為重大（major）變更，很可能影響應用程式，且不屬緊急變更。依 Appendix 7，應採何種測試層級？",
+      "options": {
+        "A": "No Testing：因為平台升級屬基礎設施範疇，不需對上層應用程式進行任何測試",
+        "B": "Confirmation Testing：只做最低限度的文件化測試，確認應用程式在更新後的平台上能執行",
+        "C": "Full Testing：在更新後的平台上對應用程式進行完整的 regression testing",
+        "D": "Confidence Testing：針對預先定義的規格，只測試具代表性的功能子集合即可"
+      },
+      "correct": "C",
+      "explanation": "更新屬重大、很可能影響應用程式，尤其是業務關鍵或 GxP 系統時，應進行 full（regression）testing。次要更新可只做 confirmation testing；高度關鍵系統或顯著更新，至少應考慮 confidence testing。",
+      "reference": "ISPE GAMP IT Appendix 7 › Level of Application Testing",
+      "max": 1
+    },
+    {
+      "id": 33,
+      "section": "sec6",
+      "type": "mcq",
+      "topic": "Administrative, technical and physical controls",
+      "question": "依 Appendix 6 §2.3，下列對三類安全控制的配對何者正確？",
+      "options": {
+        "A": "行政控制：安全意識訓練與事件管理；技術控制：存取控制機制與密碼管理；實體控制：控管人員進出設施與周界保護",
+        "B": "行政控制：密碼管理與身分驗證方法；技術控制：政策、標準與程序書；實體控制：安全意識訓練與事件管理的安排",
+        "C": "行政控制：控管人員進出設施與周界保護；技術控制：安全意識訓練與事件管理；實體控制：存取控制機制與資源管理",
+        "D": "行政控制：周界保護與入侵監控；技術控制：控管人員進出設施的門禁；實體控制：政策、標準、程序書與指引的制定"
+      },
+      "correct": "A",
+      "explanation": "Administrative controls 含政策、標準、程序、指引、安全意識訓練與事件管理；technical controls 含存取控制機制、密碼與資源管理、識別與驗證、安全設備；physical controls 含控管人員進出設施、上鎖、周界保護與入侵監控、移除不必要的光碟機等。",
+      "reference": "ISPE GAMP IT Appendix 6 §2.3",
+      "max": 1
+    },
+    {
+      "id": 34,
+      "section": "sec6",
+      "type": "mcq",
+      "topic": "Audit findings at an outsourcing provider",
+      "question": "稽核外包服務供應商時發現不符合事項。依 Appendix 8，下列何者正確？",
+      "options": {
+        "A": "由供應商自行決定是否矯正，受規管公司只需在年度報告中記錄結果即可",
+        "B": "受規管公司負責授權適當的解決或緩解措施，並納入自己的 CAPA 計畫追蹤至結案",
+        "C": "稽核發現屬供應商內部事務，受規管公司的 QA 不得在之後重複進行相同的稽核",
+        "D": "供應商不需提出書面回應，只要在口頭討論時同意改善，即視為已經完成矯正"
+      },
+      "correct": "B",
+      "explanation": "受規管公司須授權適當的解決或緩解措施，並以 CAPA 追蹤到結案以顯示受控；供應商則應提供正式書面回應，並視需要擬訂並執行改善計畫。公司 QA 也應被允許在適當間隔或特定情況下重複稽核。",
+      "reference": "ISPE GAMP IT Appendix 8 › Audits",
+      "max": 1
+    },
+    {
+      "id": 35,
+      "section": "sec6",
+      "type": "mcq",
+      "topic": "Backup minimum requirements",
+      "question": "Appendix 9 對備份建議的最低要求為何？",
+      "options": {
+        "A": "每天都進行完整備份，不需要增量或差異備份，也不必保留任何歷史備份",
+        "B": "每月一次完整備份，其餘時間完全不備份，改由使用者自行保存重要檔案的副本",
+        "C": "每週選一天進行完整備份，其餘日子進行增量或差異備份，並依需要保留歷史備份",
+        "D": "每日增量備份，完整備份只在系統上線與退役時各做一次，中間不再進行任何備份"
+      },
+      "correct": "C",
+      "explanation": "建議的最低要求是每週一天完整備份、其餘日子增量或差異備份，並視情況保留歷史備份。備份應被監控，包括審閱備份日誌、定期確認所有需要的系統都納入排程，以及管理備份媒體。",
+      "reference": "ISPE GAMP IT Appendix 9 §2.1",
+      "max": 1
+    },
+    {
+      "id": 36,
+      "section": "sec7",
+      "type": "mcq",
+      "topic": "Client security patch testing",
+      "question": "依 Appendix 10，客戶端的安全修補程式在全面推行前，建議如何驗證相容性？",
+      "options": {
+        "A": "在具代表性軟硬體的測試實驗室測試，並於無衝擊的實際環境做 pilot 安裝，納入 qualification plan",
+        "B": "由供應商保證相容即可，公司不需要另行測試，以免延誤安全修補程式的導入速度，同時一律不需要通知業務關鍵應用程式的擁有者，由 IT 單獨決定即可",
+        "C": "先對全公司所有客戶端同時安裝，出現問題後再逐台回復，以最快的速度完成覆蓋",
+        "D": "僅由使用者自行決定是否安裝，客戶端管理群組只負責在事後蒐集使用者的意見"
+      },
+      "correct": "A",
+      "explanation": "修補程式須測試與作業系統、辦公軟體及客戶端軟體的相容性，應有測試實驗室與 pilot 安裝，以便在全面推行前發現問題。供應商的修補資訊也要提供給業務關鍵應用的擁有者，使其能在推行前測試。",
+      "reference": "ISPE GAMP IT Appendix 10 › Patch Management",
+      "max": 1
+    },
+    {
+      "id": 37,
+      "section": "sec7",
+      "type": "mcq",
+      "topic": "Thick vs thin client and user modifications",
+      "question": "關於 Appendix 10 對客戶端 user modifications 的說明，下列何者正確？",
+      "options": {
+        "A": "執行 thin client 的 PC 風險較高，因此 GxP 應用一律須將 thin client 設為受控",
+        "B": "不論 thick 或 thin，所有客戶端都應開放使用者自行修改，以維持使用者的工作效率",
+        "C": "修改一組客戶端的風險與修改單一客戶端相同，因此不需要另外依 SOP 做管理",
+        "D": "執行 thick client 的 PC 在 GxP 應用下常須限制甚至受控；thin client（如網頁式）較不易造成資料被修改或可用性問題"
+      },
+      "correct": "D",
+      "explanation": "許多 GxP 應用要求執行 thick client 的 PC 受到限制甚至受控，以確保資料不會遺失或被未授權修改；thin client（如網頁式技術）較不容易造成資料修改或可用性問題。修改一組客戶端的風險高於修改單一客戶端，所有修改都應依 SOP 管理。",
+      "reference": "ISPE GAMP IT Appendix 10 › Operating System Platform; User Modifications",
+      "max": 1
+    },
+    {
+      "id": 38,
+      "section": "sec7",
+      "type": "mcq",
+      "topic": "SNMP architecture",
+      "question": "依 Appendix 11 §6.1，SNMP 網路管理系統的兩個主要元素是什麼？",
+      "options": {
+        "A": "Server 與 Client：Server 負責儲存設備資料，Client 負責向使用者顯示報表",
+        "B": "Manager 與 Agents：Manager 是管理者操作的主控台，Agents 則介接被管理的裝置",
+        "C": "Collector 與 Probe：Collector 負責蒐集事件訊息，Probe 負責將訊息轉成報表",
+        "D": "Router 與 Switch：Router 負責管理網路的設定，Switch 負責回報裝置的性能資料"
+      },
+      "correct": "B",
+      "explanation": "SNMP 的兩個主要元素是 Manager 與 Agents。Manager 是網路管理者的主控台，常搭配資料管理系統儲存組態、警報（traps）與性能歷史；Agents 與被管理的裝置（橋接器、hub、路由器、伺服器等）介接。SNMP 因簡單而成為事實標準。",
+      "reference": "ISPE GAMP IT Appendix 11 §6.1",
+      "max": 1
+    },
+    {
+      "id": 39,
+      "section": "sec7",
+      "type": "mcq",
+      "topic": "Example network performance limits",
+      "question": "Table A11.1 的網路性能範例中，「Collision rate（佔網路時間的百分比）」的 alert limit 與 action limit 分別為何？",
+      "options": {
+        "A": "alert limit > 10%，action limit > 20%",
+        "B": "alert limit > 0.5%，action limit > 5%",
+        "C": "alert limit > 0.1%，action limit > 1.0%",
+        "D": "alert limit > 2%，action limit > 5%"
+      },
+      "correct": "C",
+      "explanation": "Collision rate 範例為 alert >0.1%、action >1.0%。A 是 24 小時平均負載的範例，D 是 BCast/MCast 的範例。這些量化值源自實際情況，只供公司訂定自己的 metrics 與限值之參考，並非規定的絕對數值。",
+      "reference": "ISPE GAMP IT Appendix 11 › Network Performance Metrics (Table A11.1)",
+      "max": 1
+    },
+    {
+      "id": 40,
+      "section": "sec7",
+      "type": "mcq",
+      "topic": "Glossary — assessment vs audit",
+      "question": "依 Appendix 12 Glossary，「assessment」與「audit」的差別為何？",
+      "options": {
+        "A": "兩者都必須由獨立於被評核對象的人員執行；assessment 只是比 audit 的文件要求更少",
+        "B": "assessment 由 SME 或 IT Quality and Compliance 進行，不需獨立；audit 是系統性、獨立且文件化的過程",
+        "C": "assessment 必須由外部機構進行，audit 則僅限於公司內部人員，且不需要有文件化的紀錄",
+        "D": "兩者定義相同，只是 assessment 用於硬體平台，audit 用於軟體應用程式的審查"
+      },
+      "correct": "B",
+      "explanation": "Assessment 是由 SME 或 IT Quality and Compliance 對流程、系統或平台所做的調查，不需獨立；Audit（ISO/GAMP）則是系統性、獨立且文件化、客觀評估證據以判斷議定準則被符合程度的過程。",
+      "reference": "ISPE GAMP IT Appendix 12 Glossary: Assessment; Glossary: Audit (ISO/GAMP)",
+      "max": 1
+    }
+  ]
+}
