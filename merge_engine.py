@@ -494,7 +494,9 @@ def _filter_original_only(md: str) -> str:
         m = re.match(r'^(#{1,6}) ', line)
 
         if skip_until_depth is not None:
-            if m and len(m.group(1)) < skip_until_depth:
+            # a sibling heading (same depth) also ends the removed block, so a
+            # later '## Regulatory Text' after '## Tutorial Commentary' is kept
+            if m and len(m.group(1)) <= skip_until_depth:
                 skip_until_depth = None
             else:
                 continue
