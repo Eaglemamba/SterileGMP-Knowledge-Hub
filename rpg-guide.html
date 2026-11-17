@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SterileGMP 冒險新手指南</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f5f5f7;--card:#fff;--ink:#1d1d1f;--mute:#6e6e73;--line:rgba(0,0,0,.08);--blue:#0071e3;--soft:#f0f5ff;--warn:#fff7ed;--warnline:#fdba74}
+@media (prefers-color-scheme: dark){:root{--bg:#111113;--card:#1c1c1f;--ink:#f2f2f4;--mute:#a1a1a6;--line:rgba(255,255,255,.1);--blue:#4ea1ff;--soft:#16233a;--warn:#2a1d10;--warnline:#9a5b1e}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","Microsoft JhengHei","PingFang TC",system-ui,-apple-system,sans-serif;line-height:1.7}
+a{color:var(--blue)}
+.page-head{background:var(--card);border-bottom:1px solid var(--line);padding:28px 16px;text-align:center}
+.page-head h1{margin:0;font-size:28px;font-weight:900;letter-spacing:-.02em;line-height:1.2}
+.page-head p{margin:6px 0 0;font-size:14px;color:var(--mute)}
+.page-head nav{margin-top:10px;font-size:12px}
+.page-head nav a{text-decoration:none;font-weight:500}
+.page-head nav span{color:#aeaeb2;margin:0 6px}
+main{max-width:860px;margin:0 auto;padding:24px 16px 48px}
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px}
+.toc a{font-size:13px;text-decoration:none;background:var(--card);border:1px solid var(--line);padding:5px 12px;border-radius:980px;color:var(--ink)}
+section{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 22px 18px;margin:0 0 18px}
+h2{margin:0 0 12px;font-size:21px;font-weight:900;display:flex;align-items:center;gap:10px}
+h2 .n{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--blue);color:#fff;font-size:14px;flex:none}
+h3{margin:18px 0 6px;font-size:16px}
+p{margin:6px 0}
+ul,ol{margin:6px 0;padding-left:1.3em}
+li{margin:3px 0}
+.lead{font-size:15px;color:var(--mute)}
+.steps{counter-reset:s;list-style:none;padding:0;display:grid;gap:10px}
+.steps li{counter-increment:s;background:var(--soft);border-radius:12px;padding:12px 14px 12px 52px;position:relative;margin:0}
+.steps li::before{content:counter(s);position:absolute;left:14px;top:12px;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-weight:700;display:grid;place-items:center;font-size:13px}
+code{background:var(--soft);padding:1px 6px;border-radius:6px;font-size:.92em}
+.tip{background:var(--warn);border-left:4px solid var(--warnline);border-radius:8px;padding:10px 14px;margin:12px 0;font-size:14px}
+.grid{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.tile{border:1px solid var(--line);border-radius:12px;padding:10px;text-align:center;font-size:13px}
+.tile img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px;background:var(--soft);display:block;margin-bottom:6px}
+.tile b{display:block;font-size:14px}
+.tile small{color:var(--mute)}
+.tbl{width:100%;overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+td:first-child b{white-space:nowrap}
+th{font-size:12px;color:var(--mute);font-weight:700;letter-spacing:.04em}
+.pill{display:inline-block;font-size:12px;padding:1px 8px;border-radius:980px;background:var(--soft);margin:1px 2px 1px 0;white-space:nowrap}
+.cta{display:inline-block;background:var(--blue);color:#fff;text-decoration:none;font-weight:700;padding:10px 22px;border-radius:980px;margin:6px 8px 0 0}
+.cta.alt{background:transparent;color:var(--blue);border:1px solid var(--blue)}
+.page-foot{text-align:center;font-size:12px;color:var(--mute);padding:8px 16px 32px}
+@media (max-width:520px){section{padding:18px 16px 14px}h2{font-size:19px}}
+</style>
+</head>
+<body>
+
+<header class="page-head">
+    <h1>SterileGMP 冒險新手指南</h1>
+    <p>邊讀法規、邊打怪升級。五分鐘看懂怎麼玩。</p>
+    <nav>
+        <a href="index.html">Dashboard</a><span>·</span>
+        <a href="learning-path.html">Learning Path</a><span>·</span>
+        <a href="map.html">Map</a><span>·</span>
+        <a href="character.html">Character</a>
+    </nav>
+</header>
+
+<main>
+<nav class="toc">
+    <a href="#start">快速開始</a><a href="#loop">怎麼變強</a><a href="#battle">戰鬥規則</a><a href="#map">地圖與魔王</a>
+    <a href="#elite">精英魔王</a><a href="#workshop">工坊</a><a href="#extra">其他系統</a><a href="#faq">常見問題</a>
+</nav>
+
+<section id="start">
+    <h2><span class="n">1</span>快速開始</h2>
+    <p class="lead">這是知識庫上的一層遊戲。內容和平常讀的文件一模一樣，只是多了經驗值、關卡和魔王，讓你知道下一步該讀什麼。</p>
+    <ol class="steps">
+        <li><b>打開遊戲模式：</b>在任何頁面網址後面加上 <code>?rpg=1</code>，例如 <a href="map.html?rpg=1">map.html?rpg=1</a>。同一個瀏覽器之後都會記得；加 <code>?rpg=0</code> 就關掉。</li>
+        <li><b>建立角色：</b>選一個職業，也就是你的部門。職業決定你的「必讀清單」和地圖路線。</li>
+        <li><b>照著「下一個任務」讀：</b>首頁和地圖上會提示下一份該讀的文件。讀完一節就拿經驗值。</li>
+        <li><b>打章節挑戰：</b>每節讀完，頁面上有該節的小怪戰。答對 80% 就算通過。</li>
+        <li><b>打倒區域魔王、升階：</b>一個區域的必讀文件都通關後，挑戰魔王；贏了就升一階。</li>
+    </ol>
+    <div class="tip">進度存在你自己的瀏覽器裡（不需登入）。換電腦或清除瀏覽資料，進度會從頭開始。</div>
+    <a class="cta" href="map.html?rpg=1">開始冒險</a><a class="cta alt" href="character.html?rpg=1">看我的角色</a>
+</section>
+
+<section id="loop">
+    <h2><span class="n">2</span>怎麼變強</h2>
+    <h3>八個職業</h3>
+    <div class="grid">
+        <div class="tile"><img src="rpg/assets/class-qa.webp" alt="" loading="lazy"><b>守護者</b><small>品質保證部 QA</small></div>
+        <div class="tile"><img src="rpg/assets/class-qc.webp" alt="" loading="lazy"><b>鑑定師</b><small>品質控制部 QC</small></div>
+        <div class="tile"><img src="rpg/assets/class-production.webp" alt="" loading="lazy"><b>充填師</b><small>生產製造部</small></div>
+        <div class="tile"><img src="rpg/assets/class-engineering.webp" alt="" loading="lazy"><b>機工</b><small>工程維護部</small></div>
+        <div class="tile"><img src="rpg/assets/class-ra.webp" alt="" loading="lazy"><b>書記官</b><small>法規事務部 RA</small></div>
+        <div class="tile"><img src="rpg/assets/class-warehouse.webp" alt="" loading="lazy"><b>補給官</b><small>倉儲部</small></div>
+        <div class="tile"><img src="rpg/assets/class-techservice.webp" alt="" loading="lazy"><b>調律師</b><small>技術服務部</small></div>
+        <div class="tile"><img src="rpg/assets/class-bt.webp" alt="" loading="lazy"><b>資料術士</b><small>資訊技術部</small></div>
+    </div>
+
+    <h3>經驗值從哪來</h3>
+    <div class="tbl"><table>
+        <tr><th>做什麼</th><th>經驗值</th></tr>
+        <tr><td>讀完一節</td><td>+10</td></tr>
+        <tr><td>通過一節的章節挑戰（答對 ≥ 80%）</td><td>+30</td></tr>
+        <tr><td>整份文件通關</td><td>+50</td></tr>
+        <tr><td>複習突擊答對</td><td>+15</td></tr>
+        <tr><td>第一次打倒區域魔王</td><td>+100</td></tr>
+        <tr><td>第一次打倒精英魔王</td><td>+80</td></tr>
+        <tr><td>第一次帶剋制技能打贏魔王</td><td>+50</td></tr>
+    </table></div>
+
+    <h3>等級和階級不一樣</h3>
+    <ul>
+        <li><b>等級（Lv）</b>：經驗值累積就會升，代表你讀了多少。</li>
+        <li><b>階級</b>：見習 → 初階 → 中堅 → 專家，代表你的職業必讀清單完成到哪。每一階要把該區的必讀文件都通關，而且打倒那一區的魔王。</li>
+        <li><b>文件卡</b>：讀完或通關一份文件就收進圖鑑。章節越多，卡越稀有（N / R / SR / SSR）；每節第一次就全對，卡會閃亮。</li>
+    </ul>
+</section>
+
+<section id="battle">
+    <h2><span class="n">3</span>戰鬥規則</h2>
+    <p>所有戰鬥都是選擇題，回合制：</p>
+    <ul>
+        <li><b>答對</b>：敵人扣 1 滴血。</li>
+        <li><b>答錯</b>：你扣 1 顆心。</li>
+        <li><b>心的數量</b> = 80% 及格線允許答錯的題數 + 1。例如 10 題的戰鬥能錯 2 題，所以有 3 顆心。</li>
+        <li>不管輸贏，每題按完都會顯示<b>解說和出處（到小節）</b>，可以直接回原文看。</li>
+    </ul>
+    <div class="tbl"><table>
+        <tr><th>戰鬥</th><th>題目</th><th>在哪裡</th></tr>
+        <tr><td>章節挑戰（小怪）</td><td>這一節的全部題目</td><td>每份文件的各節頁面上</td></tr>
+        <tr><td>區域魔王</td><td>從該區題庫隨機 10 題</td><td>地圖上該區的終點</td></tr>
+        <tr><td>精英魔王</td><td>從主題題池隨機 10 題</td><td>地圖上的精英群島</td></tr>
+        <tr><td>複習突擊</td><td>錯題本的題目，或 7 天前通過的章節</td><td>打開首頁、地圖或角色頁時跳出，一天一次</td></tr>
+    </table></div>
+    <div class="tip">道具、裝備、技能只會多給心、護盾或提示，<b>不會改變計分</b>。及格永遠是答對 80%。</div>
+</section>
+
+<section id="map">
+    <h2><span class="n">4</span>地圖與區域魔王</h2>
+    <p>在 <a href="map.html?rpg=1">地圖</a> 上，你的職業路線分成三座島。每座島的必讀文件都通關後，終點的魔王才會出現。</p>
+    <div class="grid">
+        <div class="tile"><img src="rpg/assets/boss-1.webp" alt="" loading="lazy"><b>微粒魔</b><small>啟程之島：見習 → 初階</small></div>
+        <div class="tile"><img src="rpg/assets/boss-2.webp" alt="" loading="lazy"><b>生物膜王</b><small>修練之島：初階 → 中堅</small></div>
+        <div class="tile"><img src="rpg/assets/boss-3.webp" alt="" loading="lazy"><b>內毒素龍</b><small>核心之島：中堅 → 專家</small></div>
+    </div>
+    <h3>弱點與第二專長</h3>
+    <p>把<b>別的部門</b>的必讀文件全部通關，就學會那個部門的技能。每隻魔王怕某些部門的技能，開戰前帶上剋制技能，會多 1 顆心、1 面護盾，第一次這樣打贏還有額外經驗值和魔王結晶。</p>
+    <div class="tbl"><table>
+        <tr><th>魔王</th><th>怕哪些部門</th></tr>
+        <tr><td>微粒魔</td><td><span class="pill">生產</span><span class="pill">工程</span><span class="pill">倉儲</span><span class="pill">QA</span></td></tr>
+        <tr><td>生物膜王</td><td><span class="pill">QC</span><span class="pill">技術服務</span><span class="pill">資訊技術</span><span class="pill">RA</span></td></tr>
+        <tr><td>內毒素龍</td><td><span class="pill">QA</span><span class="pill">RA</span><span class="pill">QC</span><span class="pill">技術服務</span></td></tr>
+    </table></div>
+</section>
+
+<section id="elite">
+    <h2><span class="n">5</span>精英魔王（選打）</h2>
+    <p>升到<b>初階</b>後，地圖上的精英群島會散開雲霧。精英魔王跨部門出題，代表針劑廠常見的失效模式。不影響升階，打贏第一次會拿到一個隱藏稱號。有些精英要<b>帶特定道具才能進場</b>。</p>
+    <div class="tbl"><table>
+        <tr><th>精英</th><th>主題</th><th>入場條件</th></tr>
+        <tr><td><b>孢子騎士</b></td><td>滅菌不足：耐熱芽孢、BI 存活、F0 不夠</td><td>殺孢劑</td></tr>
+        <tr><td><b>裂隙幽靈</b></td><td>容器密封失效：微漏、膠塞、軋蓋</td><td>無</td></tr>
+        <tr><td><b>竄改魅影</b></td><td>資料完整性：共用帳號、補登、改數據</td><td>追溯工具</td></tr>
+        <tr><td><b>混淆魔</b></td><td>錯標、混批、清線不徹底</td><td>辨識工具</td></tr>
+        <tr><td><b>溶出妖</b></td><td>萃取物與溶出物（E&amp;L）</td><td>無</td></tr>
+        <tr><td><b>溫度巨人</b></td><td>冷鏈溫度偏離</td><td>溫度紀錄工具</td></tr>
+    </table></div>
+    </section>
+
+<section id="workshop">
+    <h2><span class="n">6</span>工坊：素材、裝備、道具</h2>
+    <p>在 <a href="character.html?rpg=1">角色頁</a> 的工坊裡，用素材打造東西。</p>
+    <h3>素材怎麼來</h3>
+    <ul>
+        <li>第一次通過某節挑戰：掉一個該主題的素材（共 10 種，例如無菌結晶、濾膜碎片、法典書頁）。</li>
+        <li>複習突擊答對、錯題本裡的題目「隔天」答對：也會掉素材。</li>
+        <li>第一次打倒區域魔王：掉<b>魔王結晶</b>，做高階裝備和道具用。</li>
+        <li>素材不夠時，3 個同種素材可以換 1 個別種（魔王結晶不能換）。</li>
+    </ul>
+    <h3>裝備（穿在身上，一直有效）</h3>
+    <div class="tbl"><table>
+        <tr><th>裝備</th><th>效果</th></tr>
+        <tr><td>無菌手套</td><td>每場戰鬥第一次答錯不扣心（仍算答錯）</td></tr>
+        <tr><td>防霧護目鏡</td><td>作答前先顯示這題出自哪一節</td></tr>
+        <tr><td>層流披風</td><td>魔王戰多 1 顆心</td></tr>
+        <tr><td>無塵聖甲</td><td>魔王戰多 2 顆心，小怪戰多 1 顆心</td></tr>
+        <tr><td>法典書籤</td><td>答錯時出現「回原文」，直接跳到那一節</td></tr>
+        <tr><td>培養皿護符／晶片懷錶</td><td>複習突擊多 5 XP／提早到 5 天後出現</td></tr>
+        <tr><td>夥伴領巾、結晶外框</td><td>外觀類</td></tr>
+    </table></div>
+    <h3>特殊道具（每場魔王戰帶一件）</h3>
+    <p>開戰前的選單裡挑一件帶進場。對上它專剋的魔王會多護盾；有些精英一定要帶對的道具才能開打。道具名稱都是通用名詞，用法說明也是真實的 GMP 觀念。</p>
+    <div class="tbl"><table>
+        <tr><th>對手</th><th>道具</th></tr>
+        <tr><td>微粒魔</td><td>手持粒子計數器</td></tr>
+        <tr><td>生物膜王</td><td>鹼性 CIP 清潔劑</td></tr>
+        <tr><td>內毒素龍</td><td>去熱原隧道烘箱</td></tr>
+        <tr><td>孢子騎士</td><td>過氧乙酸殺孢劑、汽化過氧化氫產生器（高階）</td></tr>
+        <tr><td>裂隙幽靈</td><td>真空衰減測漏儀</td></tr>
+        <tr><td>竄改魅影</td><td>稽核軌跡審查工具、個人帳號權限矩陣（高階）</td></tr>
+        <tr><td>混淆魔</td><td>條碼核對掃描器、線上視覺檢測系統（高階）</td></tr>
+        <tr><td>溶出妖</td><td>萃取物篩檢分析組</td></tr>
+        <tr><td>溫度巨人</td><td>溫度記錄器、已確效保溫運輸箱（高階）</td></tr>
+    </table></div>
+</section>
+
+<section id="extra">
+    <h2><span class="n">7</span>其他系統</h2>
+    <h3>夥伴</h3>
+    <p>讀完第一節後，蛋會孵化，從三隻夥伴中選一隻。你每升一階，夥伴就進化一次（共 4 段），閱讀時會陪你說話。</p>
+    <div class="grid">
+        <div class="tile"><img src="rpg/assets/pet-a-1.webp" alt="" loading="lazy"><b>水滴精靈</b><small>→ 雲海龍王</small></div>
+        <div class="tile"><img src="rpg/assets/pet-b-1.webp" alt="" loading="lazy"><b>雛梟</b><small>→ 無塵天梟</small></div>
+        <div class="tile"><img src="rpg/assets/pet-c-1.webp" alt="" loading="lazy"><b>玻瓶史萊姆</b><small>→ 琉璃聖獸</small></div>
+    </div>
+    <h3>錯題本</h3>
+    <p>任何戰鬥答錯的題目都會記下來。要等到<b>隔天以後</b>再答對才算淨化（看完解說馬上重答不算），淨化一題掉一個素材。</p>
+    <h3>複習突擊</h3>
+    <p>每天第一次打開首頁、地圖或角色頁時，可能跳出一題突擊你：優先出錯題本裡該複習的題目，沒有的話就出 7 天前通過的章節。答對 +15 XP 和素材。閱讀文件時不會打擾你。</p>
+    <h3>稱號與連續學習</h3>
+    <p>主題稱號會隨著你通關某主題的文件升級；另外還有隱藏稱號，例如連續學習 7 天、同一天通過三份文件、每節第一次就全對累計 5 次。畫面下方的狀態列會顯示連續學習天數。</p>
+</section>
+
+<section id="faq">
+    <h2><span class="n">8</span>常見問題</h2>
+    <h3>章節挑戰沒過怎麼辦？</h3>
+    <p>沒有懲罰，看完解說回去讀原文，隨時可以再挑戰。失敗兩次以上後通過，還會拿到隱藏稱號「不屈」。</p>
+    <h3>魔王為什麼還沒出現？</h3>
+    <p>該區的必讀文件要<b>全部通關</b>（每節挑戰都過），魔王才會出現。地圖或角色頁會顯示還差哪幾份。</p>
+    <h3>精英魔王的「開戰」按鈕是灰的？</h3>
+    <p>那隻精英有入場條件。到工坊打造對應類型的道具，開戰前選它帶進場。</p>
+    <h3>為什麼有些文件沒有題目？</h3>
+    <p>題庫還在陸續補。沒有題庫的文件讀完就算通關，所屬區域只靠閱讀就能升階。</p>
+    <h3>會影響正式的訓練紀錄嗎？</h3>
+    <p>不會。遊戲只在你的瀏覽器裡記錄，及格標準和 Quiz Tracker 一樣是 80%。</p>
+</section>
+</main>
+
+<footer class="page-foot">SterileGMP Knowledge Hub · 冒險新手指南</footer>
+</body>
+</html>

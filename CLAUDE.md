@@ -82,6 +82,7 @@ section challenges. Off by default; `?rpg=1` switches it on in that browser, `?r
 - `rpg/rpg.js` + `rpg/rpg.css` — the whole feature. Loaded by `index.html`, `learning-path.html`,
   `quiz.html`, `character.html`, `map.html`, and every merged page (one `<script>` line emitted by `merge_engine.py`).
 - `rpg/map3d.js` — 3D stage map on `map.html` only (three.js r128 from cdnjs). Reads everything through `window.SGKRpg`; the flat list rendered by `rpg.js` below it is the fallback.
+- `rpg-guide.html` — static beginner guide (Traditional Chinese) to the game rules. Hand-written: update it when XP values, battle rules, bosses, elites, gear or items change.
 - `rpg/manifest.json` — **generated**. Rebuild after adding/merging a document or editing a question bank:
   `python scripts/build_rpg_manifest.py` (`--check` verifies it is current).
 - Battles: a section challenge is a turn-based fight against the topic's small monster (right answer = foe -1 HP, wrong = player -1 heart; hearts = mistakes the 80% mark allows + 1). A zone (tier) whose documents have question banks ends in a boss battle (10 random questions from those banks, `map.html?boss=<zone>`); its rank-up waits for the win. Zones without banks rank up on reading alone.
