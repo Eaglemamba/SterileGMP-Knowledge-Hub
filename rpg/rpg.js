@@ -87,9 +87,12 @@
      that department's skill. Each boss is weak to some departments' skills: bringing one into the
      fight is a 弱點擊破 (+1 heart, +1 shield, a heavier hit, and a one-time bonus on the first such
      win). Like gear, it never changes scoring — 80 % right is still the pass mark. */
+  /* qa/ra also counter a zone-0/1 boss until zone-2 banks exist (內毒素龍 cannot be fought yet). */
   var WEAK = [
-    { production: '無菌操作與更衣紀律，從源頭擋住落塵', engineering: 'HVAC 與 HEPA 把微粒抽走', warehouse: '物料進出潔淨區的除污與傳遞，不把微粒帶進來' },
-    { qc: '微生物鑑定與環境監測，抓出生物膜的蹤跡', techservice: '清潔確效與 CIP／SIP，刷掉築好的膜', bt: '水系統與監測數據的趨勢，提早看見生物膜成形' },
+    { production: '無菌操作與更衣紀律，從源頭擋住落塵', engineering: 'HVAC 與 HEPA 把微粒抽走', warehouse: '物料進出潔淨區的除污與傳遞，不把微粒帶進來',
+      qa: '可見異物檢查與批次放行，有微粒的產品出不了廠' },
+    { qc: '微生物鑑定與環境監測，抓出生物膜的蹤跡', techservice: '清潔確效與 CIP／SIP，刷掉築好的膜', bt: '水系統與監測數據的趨勢，提早看見生物膜成形',
+      ra: '藥典製藥用水規格與微生物限值，劃清水質紅線' },
     { qa: '去熱原確效與放行把關，熱原出不了廠', ra: '藥典內毒素限值與法規要求，劃清紅線' }
   ];
   var XP_WEAK = 50;
