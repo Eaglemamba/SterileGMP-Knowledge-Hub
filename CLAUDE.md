@@ -92,7 +92,7 @@ section challenges. Off by default; `?rpg=1` switches it on in that browser, `?r
 - `rpg/quiz/<KEY>.json` — in-page question bank (MCQ only). Same per-question fields as
   `knowledge/exams/*.json` plus `"section": "<section_map id>"`. Aim for 5 questions per section; pass mark is 80%.
   Kept out of `knowledge/exams/` on purpose so `/quiz` behaviour is unchanged.
-- `rpg/assets/*.webp` — class portraits (`class-<deptId>`), head crops (`avatar-<deptId>`), alternate looks (`class-<deptId>-2`, `avatar-<deptId>-2`), NPCs (`npc-<name>`), pets (`pet-<a|b|c>-<1..4>`), zone bosses (`boss-<1..3>`), section-challenge monsters (`mob-<0..9>`, one per topic cluster), material icons (`mat-<0..9>`), card illustrations per source (`card-<PDA|ISPE|FDA|PICS|ICH|USP|ISO|PHEUR>`), `egg`.
+- `rpg/assets/*.webp` — class portraits (`class-<deptId>`), head crops (`avatar-<deptId>`), alternate looks (`class-<deptId>-2`, `avatar-<deptId>-2`), pets (`pet-<a|b|c>-<1..4>`), zone bosses (`boss-<1..3>`), section-challenge monsters (`mob-<0..9>`, one per topic cluster), material icons (`mat-<0..9>`), card illustrations per source (`card-<PDA|ISPE|FDA|PICS|ICH|USP|ISO|PHEUR>`), `egg`.
   Also `mat-boss` (boss crystal) and equipment icons `gear-<id>` (ids in `GEAR` in `rpg.js`).
   Missing files fall back to silhouettes.
 - Sound (`bgm` / `sfx` / `soundBtn` in `rpg.js`): chiptune synthesized with Web Audio, no audio files. Background music only during the prologue (one theme per page in `THEMES`); short jingles (`JINGLES`) on scenes, cut-ins and battle intro / rage / result. On by default, `S.sound = 0` mutes (toggle on the story overlay and the battle arena). Never changes scoring.
