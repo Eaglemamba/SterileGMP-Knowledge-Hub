@@ -803,6 +803,119 @@
     if (kind === 'egg') return h('img', { class: 'rpg-egg rpg-wobble rpg-story-egg', src: eggImg(), alt: '' });
     return null;
   }
+  /* ---------- sound: chiptune music + jingles, synthesized with Web Audio (no audio files) ----------
+     Plays only around the animated moments (prologue, scenes, cut-ins, battle intros). S.sound === 0 mutes.
+     Browsers allow audio only after a tap, which every one of these moments follows. Never touches scoring. */
+  var AC = null, master = null, seq = null, wantTheme = null;
+  var THEMES = {   // 8th-note steps; 0 = rest. MIDI numbers (60 = middle C)
+    plant: { bpm: 84, lw: 'triangle', lv: 0.13, bw: 'triangle', bv: 0.16,
+      lead: [72,0,76,0,79,0,76,0, 74,0,77,0,81,0,77,0, 72,0,76,0,79,0,84,0, 83,0,79,0,74,0,0,0],
+      bass: [48,0,0,0,55,0,0,0, 50,0,0,0,57,0,0,0, 48,0,0,0,55,0,0,0, 43,0,0,0,50,0,0,0] },
+    alarm: { bpm: 150, lw: 'square', lv: 0.06, bw: 'square', bv: 0.05, siren: 16,
+      lead: [69,69,0,69,72,0,71,0, 69,69,0,69,76,0,75,0],
+      bass: [45,45,45,45,45,45,45,45, 41,41,41,41,40,40,40,40] },
+    bosses: { bpm: 92, lw: 'square', lv: 0.05, bw: 'triangle', bv: 0.2,
+      lead: [69,0,72,0,71,0,68,0, 69,0,0,0,64,0,0,0, 65,0,69,0,68,0,64,0, 63,0,0,0,64,0,0,0],
+      bass: [33,0,33,0,33,0,33,0, 32,0,32,0,32,0,32,0, 29,0,29,0,29,0,29,0, 28,0,28,0,28,0,28,0] },
+    heroes: { bpm: 120, lw: 'square', lv: 0.055, bw: 'triangle', bv: 0.17,
+      lead: [67,0,72,0,76,0,79,0, 77,76,74,0,72,0,0,0, 69,0,74,0,77,0,81,0, 79,77,76,0,79,0,0,0],
+      bass: [48,0,55,0,48,0,55,0, 53,0,60,0,53,0,60,0, 50,0,57,0,50,0,57,0, 55,0,62,0,55,0,62,0] },
+    egg: { bpm: 100, lw: 'triangle', lv: 0.11, bw: 'triangle', bv: 0.13, short: true,
+      lead: [84,0,88,0,91,88,84,0, 86,0,89,0,93,89,86,0, 84,0,88,0,91,0,96,0, 95,0,91,0,86,0,0,0],
+      bass: [60,0,0,0,67,0,0,0, 62,0,0,0,65,0,0,0, 60,0,0,0,67,0,0,0, 55,0,0,0,59,0,0,0] }
+  };
+  var JINGLES = {   // [start (s), midi, length (s), wave]
+    appear: [[0,72,.09,'square'],[.08,76,.09,'square'],[.16,79,.09,'square'],[.24,84,.25,'square']],
+    warning: [[0,45,.5,'square'],[.55,44,.7,'square']],
+    item: [[0,84,.12,'triangle'],[.07,88,.12,'triangle'],[.14,91,.12,'triangle'],[.21,96,.35,'triangle']],
+    rage: [[0,57,.18,'square'],[.18,56,.18,'square'],[.36,55,.5,'square']],
+    victory: [[0,72,.1,'square'],[.1,72,.1,'square'],[.2,72,.1,'square'],[.3,72,.3,'square'],[.62,68,.3,'square'],[.94,70,.3,'square'],[1.26,72,.7,'square']],
+    defeat: [[0,67,.3,'triangle'],[.3,64,.3,'triangle'],[.6,60,.3,'triangle'],[.9,55,.8,'triangle']],
+    level: [[0,72,.08,'square'],[.08,76,.08,'square'],[.16,79,.08,'square'],[.24,84,.12,'square'],[.38,79,.08,'square'],[.46,84,.4,'square']],
+    rank: [[0,67,.12,'square'],[.14,67,.12,'square'],[.28,67,.12,'square'],[.42,72,.5,'square'],[.42,76,.5,'triangle'],[.95,79,.6,'square'],[.95,84,.6,'triangle']],
+    card: [[0,88,.15,'triangle'],[.1,93,.4,'triangle']],
+    evolve: [[0,60,.1,'triangle'],[.08,64,.1,'triangle'],[.16,67,.1,'triangle'],[.24,72,.1,'triangle'],[.32,76,.1,'triangle'],[.4,79,.1,'triangle'],[.48,84,.5,'square']]
+  };
+  function soundOn() { return !!S && S.sound !== 0; }
+  function audio() {
+    if (!soundOn()) return null;
+    if (!AC) {
+      var C = window.AudioContext || window.webkitAudioContext;
+      if (!C) return null;
+      try { AC = new C(); } catch (e) { return null; }
+      master = AC.createGain(); master.gain.value = 0.9; master.connect(AC.destination);
+      document.addEventListener('visibilitychange', function () { if (AC) { if (document.hidden) AC.suspend(); else if (seq) AC.resume(); } });
+    }
+    if (AC.state === 'suspended') AC.resume();
+    return AC;
+  }
+  function tone(t, midi, dur, wave, vol, out) {
+    var o = AC.createOscillator(), g = AC.createGain();
+    o.type = wave; o.frequency.value = 440 * Math.pow(2, (midi - 69) / 12);
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(vol, t + 0.012);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    o.connect(g); g.connect(out || master);
+    o.start(t); o.stop(t + dur + 0.03);
+  }
+  function siren(t, out) {   // two rising-falling sweeps
+    var o = AC.createOscillator(), g = AC.createGain();
+    o.type = 'sawtooth';
+    o.frequency.setValueAtTime(520, t);
+    o.frequency.linearRampToValueAtTime(880, t + 0.45); o.frequency.linearRampToValueAtTime(520, t + 0.9);
+    o.frequency.linearRampToValueAtTime(880, t + 1.35); o.frequency.linearRampToValueAtTime(520, t + 1.8);
+    g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.03, t + 0.05);
+    g.gain.setValueAtTime(0.03, t + 1.7); g.gain.exponentialRampToValueAtTime(0.0001, t + 1.85);
+    o.connect(g); g.connect(out || master); o.start(t); o.stop(t + 1.9);
+  }
+  function bgm(name) {
+    wantTheme = name;
+    if (!audio() || (seq && seq.name === name)) return;
+    bgmFade();
+    var th = THEMES[name], bus = AC.createGain(), step = 60 / th.bpm / 2;
+    bus.gain.setValueAtTime(0.0001, AC.currentTime);
+    bus.gain.exponentialRampToValueAtTime(1, AC.currentTime + 0.4);
+    bus.connect(master);
+    var s = seq = { name: name, bus: bus, n: 0, next: AC.currentTime + 0.08 };
+    s.timer = setInterval(function () {
+      while (s.next < AC.currentTime + 0.2) {
+        var L = th.lead[s.n % th.lead.length], B = th.bass[s.n % th.bass.length];
+        if (L) tone(s.next, L, th.short ? step * 1.6 : step * 0.9, th.lw, th.lv, bus);
+        if (B) tone(s.next, B, step * 1.8, th.bw, th.bv, bus);
+        if (th.siren && s.n % th.siren === 0) siren(s.next, bus);
+        s.next += step; s.n++;
+      }
+    }, 50);
+  }
+  function bgmFade() {
+    if (!seq) return;
+    var s = seq; seq = null;
+    clearInterval(s.timer);
+    try { s.bus.gain.cancelScheduledValues(AC.currentTime); s.bus.gain.setValueAtTime(s.bus.gain.value || 0.5, AC.currentTime);
+      s.bus.gain.exponentialRampToValueAtTime(0.0001, AC.currentTime + 0.6); } catch (e) {}
+    setTimeout(function () { try { s.bus.disconnect(); } catch (e) {} }, 800);
+  }
+  function bgmStop() { wantTheme = null; bgmFade(); }
+  function sfx(name) {
+    var j = JINGLES[name];
+    if (!j || !audio()) return;
+    var t0 = AC.currentTime + 0.03;
+    j.forEach(function (n) { tone(t0 + n[0], n[1], n[2], n[3], n[3] === 'square' ? 0.07 : 0.14); });
+    if (name === 'warning' || name === 'rage') siren(t0);
+  }
+  function soundBtn(cls) {
+    var b = h('button', { class: 'rpg-sound' + (cls ? ' ' + cls : ''), type: 'button' });
+    function paint() { var on = soundOn(); b.textContent = on ? '♪ 音樂開' : '♪ 靜音'; b.setAttribute('aria-pressed', on ? 'true' : 'false'); b.title = on ? '關掉音樂和音效' : '打開音樂和音效'; }
+    b.addEventListener('click', function (ev) {
+      ev.stopPropagation();
+      S.sound = soundOn() ? 0 : 1; saveState(); paint();
+      if (!soundOn()) { var keep = wantTheme; bgmFade(); wantTheme = keep; }
+      else if (wantTheme) bgm(wantTheme);
+    });
+    paint();
+    return b;
+  }
+
   var STORY = [
     { art: 'plant', kicker: 'PROLOGUE', text: '這裡是一座無菌藥廠。潔淨室日夜運轉，每一瓶藥都要在看不見的戰場上，守住「無菌」兩個字。' },
     { art: 'mobs', kicker: 'ALERT', alarm: true, text: '某天夜裡，警報響起。破洞手套、落菌、漏簽……污染魔物從每一個被忽略的細節裡爬了出來。' },
@@ -819,13 +932,14 @@
     var hint = h('span', { class: 'rpg-story-hint', text: '點一下繼續' });
     var skip = h('button', { class: 'rpg-story-skip', type: 'button', text: '跳過 ▸▸', onclick: function (e) { e.stopPropagation(); end(); } });
     var wrap = h('div', { class: 'rpg-story', role: 'dialog', 'aria-modal': 'true', 'aria-label': '序章' }, [
-      skip, h('div', { class: 'rpg-story-panel' }, [art, h('div', { class: 'rpg-story-box' }, [kicker, text, h('div', { class: 'rpg-story-foot' }, [dots, hint])])])
+      skip, soundBtn(), h('div', { class: 'rpg-story-panel' }, [art, h('div', { class: 'rpg-story-box' }, [kicker, text, h('div', { class: 'rpg-story-foot' }, [dots, hint])])])
     ]);
     function show() {
       var p = STORY[i];
       clear(art); clear(dots);
       var a = storyArt(p.art); if (a) art.appendChild(a);
       kicker.textContent = p.kicker;
+      bgm(p.art === 'mobs' ? 'alarm' : p.art);   // one theme per page: plant, alarm, bosses, heroes, egg
       wrap.classList.toggle('is-alarm', !!p.alarm);
       wrap.classList.remove('is-in'); void wrap.offsetWidth; wrap.classList.add('is-in');
       STORY.forEach(function (_, k) { dots.appendChild(h('i', { class: k === i ? 'is-on' : '' })); });
@@ -843,6 +957,7 @@
     function end() {
       if (ended) return; ended = true;
       if (finishType) finishType();
+      bgmStop();
       document.removeEventListener('keydown', onKey);
       wrap.classList.add('is-out');
       setTimeout(function () { if (wrap.parentNode) wrap.parentNode.removeChild(wrap); if (done) done(); }, CALM ? 0 : 380);
@@ -966,6 +1081,7 @@
     var hint = h('span', { class: 'rpg-story-hint', text: '點一下繼續' });
     var wrap = h('div', { class: 'rpg-story rpg-scene is-' + e.kind, role: 'dialog', 'aria-modal': 'true', 'aria-live': 'polite' }, [
       h('button', { class: 'rpg-story-skip', type: 'button', text: '跳過 ▸▸', onclick: function (ev) { ev.stopPropagation(); end(); } }),
+      soundBtn(),
       h('div', { class: 'rpg-story-panel' }, [art, h('div', { class: 'rpg-story-box' }, [kicker, title, text, h('div', { class: 'rpg-story-foot' }, [h('span'), hint])])])
     ]);
     var finishType = function () {};
@@ -979,7 +1095,7 @@
       steps = [
         function () { say('……？', from, '「' + pet.voice + '……」' + from + '的身體開始發光了。'); },
         function () { wrap.classList.add('is-glow'); say('EVOLVING', from, '光越來越亮——'); },
-        function () { wrap.classList.add('is-burst'); say('EVOLUTION', to, from + '進化成了' + to + '！「' + pet.voice + pet.voice + '！」'); burstIn(art); }
+        function () { wrap.classList.add('is-burst'); sfx('evolve'); say('EVOLUTION', to, from + '進化成了' + to + '！「' + pet.voice + pet.voice + '！」'); burstIn(art); }
       ];
     } else {
       var dep = deptById(S.profile.cls), job = CLASS_META[S.profile.cls].job, zone = ZONES[Math.min(e.n, ZONES.length - 1)];
@@ -990,7 +1106,7 @@
       ]));
       steps = [
         function () { say('RANK UP', RANKS[e.n - 1].zh + job + '　→', S.profile.nick + '，你的努力被看見了。'); },
-        function () { wrap.classList.add('is-stamp'); say('RANK UP', RANKS[e.n].zh + job, RANK_LINES[e.n] || ''); burstIn(art); },
+        function () { wrap.classList.add('is-stamp'); sfx('rank'); say('RANK UP', RANKS[e.n].zh + job, RANK_LINES[e.n] || ''); burstIn(art); },
         function () { say('NEXT', zone.zh, e.n < ZONES.length ? '下一站：' + zone.zh + '。守在那裡的是「' + zone.boss + '」。' : '所有島嶼都收復了。接下來，換你帶新人。'); }
       ];
     }
@@ -1110,6 +1226,8 @@
     }
     cut.addEventListener('click', end);
     document.body.appendChild(cut);
+    sfx({ level: 'level', rank: 'rank', card: 'card', title: 'card', secret: 'rank', pet: 'evolve', shinypet: 'evolve',
+      hatch: 'evolve', bossdown: 'victory', craft: 'item' }[e.kind]);
     setTimeout(end, 2400);
   }
 
@@ -1374,7 +1492,8 @@
       h('span', { class: 'rpg-elem' + (weak ? ' is-weak' : ''), style: '--c:' + youFx.c, text: (weak ? '弱點 ' : '') + youFx.el + '・' + youFx.skill }), heartsEl,
       worn.length ? h('span', { class: 'rpg-worn' }, worn.map(function (g) { return h('img', { src: gearImg(g), alt: g.zh, title: g.zh + '：' + g.eff }); })) : null]);
     var stage = h('div', { class: 'rpg-battle-stage' });
-    var arena = h('div', { class: 'rpg-arena' + (o.kind === 'boss' ? ' is-boss' : '') }, [foeBox, h('span', { class: 'rpg-vs', text: 'VS' }), you]);
+    var arena = h('div', { class: 'rpg-arena' + (o.kind === 'boss' ? ' is-boss' : '') }, [foeBox, h('span', { class: 'rpg-vs', text: 'VS' }), you,
+      o.kind === 'drill' ? null : soundBtn('rpg-sound-arena')]);
     var raged = false, battleEl = h('div', { class: 'rpg-battle' }, [arena, stage]);
     clear(host);
     host.appendChild(battleEl);
@@ -1402,10 +1521,11 @@
       setTimeout(function () { arena.classList.remove('is-intro'); }, 900);
       // let the foe finish charging in before the banner covers the top of the arena
       setTimeout(function () {
+        sfx(o.kind === 'boss' ? 'warning' : 'appear');
         if (o.kind === 'boss') banner('WARNING　魔王 ' + o.foe + ' 現身' + (weak ? '　｜　弱點擊破：' + youFx.skill : ''), o.line || '', 3200, function () {
           if (!item) { ask(); return; }
           var fx = h('span', { class: 'rpg-item-fx', style: '--c:' + item.c }, [itemImgEl(item), h('b', { text: item.zh })]);
-          arena.appendChild(fx);
+          arena.appendChild(fx); sfx('item');
           banner('使用道具：' + item.zh, item.use + '（護盾 +' + (item.shield || 1) + '）', 2000, function () { if (fx.parentNode) fx.parentNode.removeChild(fx); ask(); });
         });
         else banner('野生的 ' + o.foe + ' 出現了！', null, 1400, ask);
@@ -1480,7 +1600,7 @@
           else { wrong++; lost++; strike(false, function () { hit(you, 'is-hurt', '♥-1'); }); }
           if (!ok && backLink) backLink.hidden = false;
           if (o.kind === 'boss' && !raged && score >= Math.ceil(n / 2) && score < n) {
-            raged = true; arena.classList.add('is-rage');
+            raged = true; arena.classList.add('is-rage'); sfx('rage');
             banner('魔王暴走！', o.rage || '', 2600, null);
           }
           exp.hidden = false;
@@ -1502,6 +1622,7 @@
       if (won && !drill) { foeBox.classList.add('is-dissolve'); burst(foeBox); }
       arena.classList.toggle('is-lost', !won && !drill);
       arena.classList.remove('is-rage');
+      if (!drill) sfx(won ? 'victory' : 'defeat');
       clear(stage);
       var head = drill ? '練習結束' : won ? '擊敗' + o.foe + '！' : '被' + o.foe + '擊退了';
       var line = '答對 ' + score + ' / ' + (drill ? i : n) + (drill ? '' : won ? (score === n ? '，全對。' : '。') : early ? '。心扣完了，剩下 ' + (n - i) + ' 題下次再戰。' : '，還差一點。');

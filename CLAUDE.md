@@ -95,6 +95,7 @@ section challenges. Off by default; `?rpg=1` switches it on in that browser, `?r
 - `rpg/assets/*.webp` — class portraits (`class-<deptId>`), head crops (`avatar-<deptId>`), alternate looks (`class-<deptId>-2`, `avatar-<deptId>-2`), NPCs (`npc-<name>`), pets (`pet-<a|b|c>-<1..4>`), zone bosses (`boss-<1..3>`), section-challenge monsters (`mob-<0..9>`, one per topic cluster), material icons (`mat-<0..9>`), card illustrations per source (`card-<PDA|ISPE|FDA|PICS|ICH|USP|ISO|PHEUR>`), `egg`.
   Also `mat-boss` (boss crystal) and equipment icons `gear-<id>` (ids in `GEAR` in `rpg.js`).
   Missing files fall back to silhouettes.
+- Sound (`bgm` / `sfx` / `soundBtn` in `rpg.js`): chiptune synthesized with Web Audio, no audio files. Background music only during the prologue (one theme per page in `THEMES`); short jingles (`JINGLES`) on scenes, cut-ins and battle intro / rage / result. On by default, `S.sound = 0` mutes (toggle on the story overlay and the battle arena). Never changes scoring.
 - Workshop (character page): materials drop on a section's first pass, a correct review ambush, and a boss's first defeat (`mats.boss`). `GEAR` items are crafted once from materials and worn one per slot (`gear.own` / `gear.on`); 3 of one material convert to 1 of another. Gear effects must never change scoring — only hearts, hints, links back to the source, review timing/XP, and cosmetics.
 - Storage: reads `sgk_progress_*`, `gmp-quiz-results`; writes only `sgk_rpg_v1` and one
   `source: "inpage"` record per document in `gmp-quiz-results`.
