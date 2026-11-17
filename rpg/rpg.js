@@ -96,6 +96,28 @@
     { qa: '去熱原確效與放行把關，熱原出不了廠', ra: '藥典內毒素限值與法規要求，劃清紅線' }
   ];
   var XP_WEAK = 50;
+  /* Elite bosses: optional fights about other injectable failure modes (the zone bosses cover what
+     gets into the product; these cover where the process breaks). Questions come from every bank
+     that covers the topic, whatever the player's class, so classes without zone bosses can fight
+     too. They never gate rank-up. src: { key, secs: [section ids], ids: [question ids] } — a doc
+     with neither takes its whole bank. Art: rpg/assets/elite-<id>.webp (silhouette until then). */
+  var ELITES = [
+    { id: 'spore', name: '孢子騎士', risk: '滅菌不足：耐熱芽孢、BI 存活、F0 不夠',
+      fx: { el: '芽孢系', skill: '耐熱芽孢槍', c: '#b45309', m: 'fly', g: 'spore', n: 6, size: 26, spin: 1, imp: { dots: 14, tint: 'burn', quake: 1 } },
+      src: [{ key: 'TR1' }, { key: 'pda-guide-no1', secs: ['sec10', 'sec11'] }],
+      srcText: 'PDA TR1 濕熱滅菌確效、PDA Guide No.1 滅菌與無菌流路',
+      weak: { engineering: '滅菌器設計與熱分布，讓每個冷點都達到 F0', techservice: '滅菌確效與生物指示劑挑戰，證明孢子活不下來', qc: 'BI 培養與無菌試驗，抓出漏網的芽孢' },
+      line: '「121 °C 才 15 分鐘？我的芽孢殼耐得住。」', rage: '「冷點在哪你找得到嗎？我就躲在那裡！」', title: '孢子獵人' },
+    { id: 'crack', name: '裂隙幽靈', risk: '容器密封失效：微漏、膠塞、軋蓋',
+      fx: { el: '裂隙系', skill: '微漏穿隙', c: '#0ea5e9', m: 'swarm', g: 'ghost', n: 3, size: 40, imp: { mark: 'crack', dots: 10, dc: '#bae6fd', quake: 1 } },
+      src: [{ key: 'pda-guide-no1', secs: ['sec6', 'sec7', 'sec9'], ids: [2, 9, 93] }, { key: 'FDA-Aseptic', ids: [13, 15] },
+            { key: 'PICS-Annex1', ids: [37] }, { key: 'TR22', ids: [12, 18, 25] }],
+      srcText: 'PDA Guide No.1 容器密封與封蓋、Annex 1、FDA 無菌製程、TR22 的密封相關題',
+      weak: { production: '加塞與軋蓋的製程管控，每一瓶都蓋好封緊', qc: '容器密封完整性測試，找出看不見的微漏', warehouse: '包材進料檢驗與搬運保護，裂瓶和變形膠塞上不了線' },
+      line: '「只要一道你看不見的縫，我就進得去。」', rage: '「膠塞歪一點、軋蓋鬆一點，就夠了！」', title: '封緘守門人' }
+  ];
+  var XP_ELITE = 80, ELITE_RANK = 1;      // first-win XP; class rank at which elites appear
+  function eliteById(id) { return ELITES.filter(function (e) { return e.id === id; })[0]; }
   function weakTo(ti) { return Object.keys(WEAK[ti] || {}); }
   function isWeak(ti, cls) { return !!(WEAK[ti] && WEAK[ti][cls]); }
   function elName(cls) { return (FX_YOU[cls] || {}).el || cls; }
@@ -229,6 +251,7 @@
     s.bossWin = s.bossWin || {};                              // '<class>:<zone>' -> { best, total, ts }
     s.bossTry = s.bossTry || {};
     s.weakWin = s.weakWin || {};                              // '<class>:<zone>' -> time of the first 弱點擊破 win
+    s.eliteWin = s.eliteWin || {};                            // elite id -> { best, total, ts }
     s.skillPick = s.skillPick || {};                          // '<class>:<zone>' -> skill last brought to that boss
     s.gear = s.gear || {};
     s.gear.own = s.gear.own || {};                            // gear id -> time crafted
@@ -387,7 +410,9 @@
       test: function (g) { return Object.keys(g.classes).every(function (id) { return g.classes[id].rank >= 3; }); } },
     { id: 'cards50', zh: '收藏家', how: '收集 50 張文件卡', test: function (g) { return g.cards >= 50; } },
     { id: 'review10', zh: '溫故知新', how: '複習突擊答對 10 次', test: function () { return S.review.ok >= 10; } }
-  ];
+  ].concat(ELITES.map(function (e) {
+    return { id: 'elite-' + e.id, zh: e.title, how: '擊敗精英魔王' + e.name, test: function () { return !!(S.eliteWin || {})[e.id]; } };
+  }));
 
   /* Materials: one per topic cluster, dropped when a section challenge is passed
      for the first time or a review ambush is answered correctly. */
@@ -1244,13 +1269,13 @@
   function runBattle(host, o) {
     var n = o.questions.length, hearts = o.hearts || battleHearts(o.kind, n), i = 0, score = 0, wrong = 0, lost = 0, last = [];
     var missed = [], cleansed = 0;
-    var weak = o.kind === 'boss' && isWeak(o.zone, o.skill);
+    var weak = o.kind === 'boss' && (o.weak != null ? !!o.weak : isWeak(o.zone, o.skill));
     var shield = (wearing('gloves') ? 1 : 0) + (weak ? 1 : 0);
     if (weak) hearts++;
-    var foeImg = o.foeImg ? h('img', { class: 'rpg-foe-img', src: o.foeImg, alt: o.foe }) : h('span', { class: 'rpg-foe-img rpg-foe-blank', text: '？' });
+    var foeImg = o.foeImg ? h('img', { class: 'rpg-foe-img', src: o.foeImg, alt: o.foe }) : h('span', { class: 'rpg-foe-img rpg-foe-blank', style: o.fx ? '--c:' + o.fx.c : null, text: '？' });
     var hp = h('span', { class: 'rpg-hp', role: 'meter', 'aria-label': o.foe + '的血量', 'aria-valuemin': 0, 'aria-valuemax': n });
     var heartsEl = h('span', { class: 'rpg-hearts', 'aria-label': '你的生命' });
-    var foeFx = (o.kind === 'boss' ? FX_BOSS[o.zone] : FX_MOB[o.cluster]) || FX_PLAIN, youFx = fxYou(o.skill);
+    var foeFx = o.fx || (o.kind === 'boss' ? FX_BOSS[o.zone] : FX_MOB[o.cluster]) || FX_PLAIN, youFx = fxYou(o.skill);
     var foeEl = o.kind === 'boss' ? (foeFx.el || '魔王') : o.cluster >= 0 ? CLUSTER_ZH[o.cluster] + '系' : '無屬性';
     var foeBox = h('div', { class: 'rpg-foe' }, [foeImg, h('b', { text: o.foe }),
       h('span', { class: 'rpg-elem', style: '--c:' + foeFx.c, text: foeEl + '・' + foeFx.skill }), hp]);
@@ -1458,15 +1483,44 @@
     }, 0);
   }
   /* Which departments this boss is weak to, and which of those the player still has to learn. */
-  function weakHint(ti) {
-    var todo = weakTo(ti).filter(function (id) { return learnedSkills().indexOf(id) < 0; });
-    if (!weakTo(ti).length) return null;
+  function weakHint(ti) { return weakHintFor(WEAK[ti] || {}); }
+  function weakHintFor(map) {
+    var ids = Object.keys(map), todo = ids.filter(function (id) { return learnedSkills().indexOf(id) < 0; });
+    if (!ids.length) return null;
     return h('p', { class: 'rpg-weakhint' }, [
-      h('b', { text: '弱點：' + weakText(ti) }),
+      h('b', { text: '弱點：' + ids.map(elName).join('、') }),
       todo.length ? h('span', { text: '　修完' + todo.map(function (id) {
         var k = G.skills[id]; return deptById(id).nameZh + '的必讀（' + k.got + ' / ' + k.need + '）';
       }).join('、或') + '，就能習得剋制技能。' }) : null
     ]);
+  }
+  /* Before a boss fight: choose which learned skill to bring. a: { cur, map (weakness reasons), foe, done, pick, go } */
+  function skillPicker(box, a) {
+    clear(box);
+    var row = h('div', { class: 'rpg-skillpick', role: 'radiogroup', 'aria-label': '出戰技能' });
+    learnedSkills().forEach(function (id) {
+      var sp = fxYou(id), w = !!a.map[id];
+      row.appendChild(h('button', { type: 'button', role: 'radio', 'aria-checked': String(id === a.cur),
+        class: 'rpg-skill' + (id === a.cur ? ' is-on' : '') + (w ? ' is-weak' : ''), style: '--c:' + sp.c,
+        onclick: function () { a.pick(id); } }, [
+        h('b', { text: sp.skill }),
+        h('span', { text: sp.el + (id === S.profile.cls ? '・主技能' : '・第二專長') }),
+        w ? h('em', { text: '弱點' }) : null
+      ]));
+    });
+    var w = a.map[a.cur];
+    box.appendChild(h('div', { class: 'rpg-skillbox' }, [
+      h('h3', { class: 'rpg-sub', text: '選擇出戰技能' }), row,
+      h('p', { class: 'rpg-note', text: w ? '弱點擊破：' + w + '。這場多 1 顆心、多 1 面護盾' +
+        (a.done ? '。' : '；第一次用弱點技能打倒牠，再得 ' + XP_WEAK + ' XP 和 1 顆' + BOSS_MAT + '。')
+        : '這個技能對' + a.foe + '沒有特別效果。' }),
+      weakHintFor(a.map),
+      h('button', { class: 'rpg-btn', type: 'button', text: '開戰', onclick: a.go })
+    ]));
+  }
+  function bestSkill(saved, map) {
+    if (learnedSkills().indexOf(saved) >= 0) return saved;
+    return learnedSkills().filter(function (id) { return map[id]; })[0] || S.profile.cls;
   }
   function openBoss(ti) {
     if (!S || !S.profile || !G) return;
@@ -1498,32 +1552,12 @@
         h('p', { class: 'rpg-modal-lead', text: '從這一區的文件隨機出 ' + Math.min(BOSS_Q, pool.length) + ' 題，答對 80% 擊敗牠' + (t.beaten ? '。' : '，就能升階。') }),
         box
       ], { cls: 'rpg-modal-wide rpg-modal-boss' });
-      var skill = S.skillPick[key];
-      if (learnedSkills().indexOf(skill) < 0) skill = learnedSkills().filter(function (id) { return isWeak(ti, id); })[0] || S.profile.cls;
+      var skill = bestSkill(S.skillPick[key], WEAK[ti] || {});
       pickSkill();
-      /* Before the fight: choose which learned skill to bring. */
       function pickSkill() {
-        clear(box);
-        var row = h('div', { class: 'rpg-skillpick', role: 'radiogroup', 'aria-label': '出戰技能' });
-        learnedSkills().forEach(function (id) {
-          var sp = fxYou(id), w = isWeak(ti, id);
-          row.appendChild(h('button', { type: 'button', role: 'radio', 'aria-checked': String(id === skill),
-            class: 'rpg-skill' + (id === skill ? ' is-on' : '') + (w ? ' is-weak' : ''), style: '--c:' + sp.c,
-            onclick: function () { skill = id; pickSkill(); } }, [
-            h('b', { text: sp.skill }),
-            h('span', { text: sp.el + (id === S.profile.cls ? '・主技能' : '・第二專長') }),
-            w ? h('em', { text: '弱點' }) : null
-          ]));
-        });
-        var w = isWeak(ti, skill);
-        box.appendChild(h('div', { class: 'rpg-skillbox' }, [
-          h('h3', { class: 'rpg-sub', text: '選擇出戰技能' }), row,
-          h('p', { class: 'rpg-note', text: w ? '弱點擊破：' + WEAK[ti][skill] + '。這場多 1 顆心、多 1 面護盾' +
-            (S.weakWin[key] ? '。' : '；第一次用弱點技能打倒牠，再得 ' + XP_WEAK + ' XP 和 1 顆' + BOSS_MAT + '。')
-            : '這個技能對' + zone.boss + '沒有特別效果。' }),
-          weakHint(ti),
-          h('button', { class: 'rpg-btn', type: 'button', text: '開戰', onclick: function () { S.skillPick[key] = skill; saveState(); go(); } })
-        ]));
+        skillPicker(box, { cur: skill, map: WEAK[ti] || {}, foe: zone.boss, done: !!S.weakWin[key],
+          pick: function (id) { skill = id; pickSkill(); },
+          go: function () { S.skillPick[key] = skill; saveState(); go(); } });
       }
       function go() {
         var weak = isWeak(ti, skill);
@@ -1548,6 +1582,74 @@
         });
       }
     }).catch(function (e) { console.warn('[rpg] boss battle failed to load', e); toast('題庫讀不到，請稍後再試。'); });
+  }
+
+  /* Elite boss: optional, cross-class, never gates rank-up. */
+  function eliteOpen() { return !!(S && S.profile && G && G.classes[S.profile.cls].rank >= ELITE_RANK); }
+  function canCounterMap(map) { return learnedSkills().some(function (id) { return map[id]; }); }
+  function openElite(id) {
+    var e = eliteById(id);
+    if (!e || !S || !S.profile || !G) return;
+    var img = asset('elite-' + e.id), key = 'elite:' + e.id;
+    if (!eliteOpen()) {
+      modal([
+        h('span', { class: 'rpg-tag', text: 'ELITE' }),
+        h('h2', { text: e.name + '還沒現身' }),
+        h('p', { class: 'rpg-modal-lead', text: '主職業升到' + RANKS[ELITE_RANK].zh + '後，精英魔王就會在地圖出沒。' }),
+        h('p', { class: 'rpg-note', text: '針劑風險：' + e.risk + '。出題範圍：' + e.srcText + '。' }),
+        weakHintFor(e.weak)
+      ]);
+      return;
+    }
+    Promise.all(e.src.map(function (x) {
+      var d = M.docs[x.key];
+      if (!d || !d.quiz) return [];
+      return fetch(ROOT + 'rpg/quiz/' + x.key + '.json').then(function (r) { return r.json(); }).then(function (b) {
+        var ids = (x.ids || []).map(String), whole = !x.secs && !x.ids;
+        return (b.questions || []).filter(function (q) {
+          return whole || (x.secs || []).indexOf(q.section) >= 0 || ids.indexOf(String(q.id)) >= 0;
+        }).map(function (q) { return Object.assign({}, q, { docTitle: d.titleZh || d.title, docKey: x.key }); });
+      });
+    })).then(function (lists) {
+      var pool = [].concat.apply([], lists);
+      if (!pool.length) { toast('題庫讀不到，請稍後再試。'); return; }
+      var box = h('div', { class: 'rpg-boss-fight' }), won = S.eliteWin[e.id];
+      modal([
+        h('span', { class: 'rpg-tag rpg-tag-elite', text: 'ELITE BOSS' }),
+        h('h2', { text: '精英魔王　' + e.name }),
+        h('p', { class: 'rpg-modal-lead', text: '針劑風險：' + e.risk + '。從相關文件隨機出 ' + Math.min(BOSS_Q, pool.length) +
+          ' 題，答對 80% 擊敗牠。選打，不影響升階' + (won ? '。' : '；第一次擊敗得 ' + XP_ELITE + ' XP、1 顆' + BOSS_MAT + '和稱號「' + e.title + '」。') }),
+        h('p', { class: 'rpg-note', text: '出題範圍：' + e.srcText + '（' + pool.length + ' 題）' }),
+        box
+      ], { cls: 'rpg-modal-wide rpg-modal-boss' });
+      var skill = bestSkill(S.skillPick[key], e.weak);
+      pickSkill();
+      function pickSkill() {
+        skillPicker(box, { cur: skill, map: e.weak, foe: e.name, done: !!S.weakWin[key],
+          pick: function (id) { skill = id; pickSkill(); },
+          go: function () { S.skillPick[key] = skill; saveState(); go(); } });
+      }
+      function go() {
+        var weak = !!e.weak[skill];
+        runBattle(box, {
+          kind: 'boss', foe: e.name, foeImg: img, zone: -1, weak: weak, fx: e.fx, skill: skill, again: pickSkill, line: e.line, rage: e.rage,
+          questions: shuffle(pool.slice()).slice(0, BOSS_Q),
+          onEnd: function (r) {
+            S.bossTry[key] = (S.bossTry[key] || 0) + 1;
+            if (!r.won) { saveState(); return; }
+            var first = !S.eliteWin[e.id];
+            S.eliteWin[e.id] = { best: Math.max(r.score, first ? 0 : S.eliteWin[e.id].best), total: r.total, ts: Date.now() };
+            if (first) { S.bonus += XP_ELITE; S.mats.boss = (S.mats.boss || 0) + 1; }
+            var weakFirst = weak && !S.weakWin[key];
+            if (weakFirst) { S.weakWin[key] = Date.now(); S.bonus += XP_WEAK; S.mats.boss = (S.mats.boss || 0) + 1; }
+            saveState();
+            if (weakFirst) toast('弱點擊破！+' + XP_WEAK + ' XP，獲得素材：' + BOSS_MAT);
+            else if (first) toast('擊敗精英魔王！+' + XP_ELITE + ' XP，獲得素材：' + BOSS_MAT);
+            refresh();
+          }
+        });
+      }
+    }).catch(function (err) { console.warn('[rpg] elite battle failed to load', err); toast('題庫讀不到，請稍後再試。'); });
   }
 
   /* Once every section of a document has been attempted, mirror the best
@@ -2146,6 +2248,34 @@
         list
       ]));
     });
+    mount.appendChild(eliteSection());
+  }
+  /* Elite bosses below the zones: optional, open to every class from ELITE_RANK. */
+  function eliteSection() {
+    var open = eliteOpen();
+    return h('section', { class: 'rpg-elites' + (open ? '' : ' is-fog') }, [
+      h('div', { class: 'rpg-zone-head' }, [
+        h('span', { class: 'rpg-zone-no', text: 'ELITE' }),
+        h('h2', {}, ['精英魔王', h('small', { text: 'Elite Bosses　針劑的其他失敗模式' })]),
+        h('span', { class: 'rpg-zone-state', text: open ? '選打，不影響升階；題目來自全站相關文件' : '主職業升到' + RANKS[ELITE_RANK].zh + '後出沒' })
+      ]),
+      h('ul', { class: 'rpg-elite-list' }, ELITES.map(function (e) {
+        var won = S.eliteWin[e.id], wk = S.weakWin['elite:' + e.id], img = asset('elite-' + e.id);
+        var act = !open ? '查看' : !won ? '挑戰' : !wk && canCounterMap(e.weak) ? '弱點擊破' : '再戰';
+        return h('li', { class: 'rpg-elite' + (won ? ' is-clear' : '') + (open && !won ? ' is-ready' : ''), style: '--c:' + e.fx.c }, [
+          h('button', { type: 'button', class: 'rpg-elite-btn', onclick: function () { openElite(e.id); } }, [
+            img ? h('img', { class: 'rpg-boss-img', src: img, alt: e.name }) : h('span', { class: 'rpg-elite-sil', 'aria-hidden': 'true', text: '？' }),
+            h('span', { class: 'rpg-elite-body' }, [
+              h('b', { text: (won ? '已擊敗　' : '') + e.name }),
+              h('span', { class: 'rpg-stage-meta', text: e.risk }),
+              h('span', { class: 'rpg-stage-meta rpg-weak-meta', text: '弱點：' + Object.keys(e.weak).map(elName).join('、') + (wk ? '・已弱點擊破' : '') }),
+              h('span', { class: 'rpg-stage-meta', text: won ? '稱號：' + e.title + '・最佳 ' + won.best + ' / ' + won.total : '擊敗得稱號「' + e.title + '」' })
+            ]),
+            h('span', { class: 'rpg-btn rpg-btn-sm' + (act === '挑戰' ? '' : ' rpg-btn-ghost'), text: act })
+          ])
+        ]);
+      }))
+    ]);
   }
   window.addEventListener('resize', function () {
     var mount = document.getElementById('rpg-map');
@@ -2158,7 +2288,8 @@
     var ids = [dep.id].concat(DEPTS.map(function (d) { return d.id; }).filter(function (id) { return id !== dep.id; }));
     ids.forEach(function (id) {
       var d = deptById(id), sp = fxYou(id), k = G.skills[id], main = id === dep.id, on = main || k.learned;
-      var beats = ZONES.map(function (z, ti) { return isWeak(ti, id) ? z.boss : null; }).filter(Boolean);
+      var beats = ZONES.map(function (z, ti) { return isWeak(ti, id) ? z.boss : null; })
+        .concat(ELITES.map(function (e) { return e.weak[id] ? e.name : null; })).filter(Boolean);
       ul.appendChild(h('li', { class: on ? 'is-on' : '', style: '--c:' + sp.c }, [
         h('b', { text: sp.skill }),
         h('span', { text: sp.el + '　' + d.nameZh }),
@@ -2214,6 +2345,7 @@
     ready: false,
     mapData: mapData,
     fightBoss: function (ti) { openBoss(ti); },
+    fightElite: function (id) { openElite(id); },
     onChange: function (cb) { listeners.push(cb); },
     /* Remember how many stages the 3D map showed; returns the previous count (null on the first visit). */
     mapSeen: function (n) {
@@ -2253,6 +2385,8 @@
       try {
         var bq = new URLSearchParams(location.search).get('boss');
         if (bq !== null && document.getElementById('rpg-map')) setTimeout(function () { openBoss(parseInt(bq, 10) || 0); }, 300);
+        var eq = new URLSearchParams(location.search).get('elite');
+        if (eq && document.getElementById('rpg-map')) setTimeout(function () { openElite(eq); }, 300);
       } catch (e) {}
       window.addEventListener('storage', function (e) {
         if (e.key && (e.key === STATE_KEY || e.key.indexOf('sgk_progress_') === 0)) { S = loadState(); refresh(); }
