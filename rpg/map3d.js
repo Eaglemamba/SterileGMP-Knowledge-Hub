@@ -331,7 +331,7 @@
     if (u.stage) {
       var s = u.stage, stars = '';
       for (var i = 0; i < s.maxStars; i++) stars += i < s.stars ? '★' : '☆';
-      card.appendChild(el('span', 'rpg-tag', s.main ? '主線關卡' : '支線關卡'));
+      card.appendChild(el('span', 'rpg-tag', s.rec ? '推薦關卡' : s.main ? '主線關卡' : '支線關卡'));
       card.appendChild(el('h3', '', s.title));
       card.appendChild(el('p', 'rpg-map3d-meta', s.shell ? '內容準備中' : (s.cleared ? '已通關' : s.started ? '已讀 ' + s.read + ' / ' + s.total + ' 節' : '共 ' + s.total + ' 節') + (s.quiz ? '・有章節挑戰' : '') + '　' + stars));
       if (!s.shell) { var a = el('a', 'rpg-btn', s.cleared ? '再讀一次' : s.started ? '繼續' : '出發'); a.href = s.href; card.appendChild(a); }

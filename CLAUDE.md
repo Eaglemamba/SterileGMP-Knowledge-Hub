@@ -77,7 +77,7 @@ After `/project-sync`, manually verify: `INDEX-router.md` new rows, and whether 
 
 Optional game layer: character, XP/level/rank, next-quest card, document cards, pet, and in-page
 section challenges. Off by default; `?rpg=1` switches it on in that browser, `?rpg=0` off
-(`DEFAULT_ON` in `rpg/rpg.js` flips the default).
+(`DEFAULT_ON` in `rpg/rpg.js` flips the default). While off, the dashboard `#rpg-quest` mount shows a small inline-styled "開啟冒險模式" card; the character page has "關閉冒險模式".
 
 - `rpg/rpg.js` + `rpg/rpg.css` — the whole feature. Loaded by `index.html`, `learning-path.html`,
   `quiz.html`, `character.html`, `map.html`, and every merged page (one `<script>` line emitted by `merge_engine.py`).
@@ -98,7 +98,9 @@ section challenges. Off by default; `?rpg=1` switches it on in that browser, `?r
 - Sound (`bgm` / `sfx` / `soundBtn` in `rpg.js`): chiptune synthesized with Web Audio, no audio files. Background music only during the prologue (one theme per page in `THEMES`); short jingles (`JINGLES`) on scenes, cut-ins and battle intro / rage / result. On by default, `S.sound = 0` mutes (toggle on the story overlay and the battle arena). Never changes scoring.
 - Workshop (character page): materials drop on a section's first pass, a correct review ambush, and a boss's first defeat (`mats.boss`). `GEAR` items are crafted once from materials and worn one per slot (`gear.own` / `gear.on`); 3 of one material convert to 1 of another. Gear effects must never change scoring — only hearts, hints, links back to the source, review timing/XP, and cosmetics.
 - Storage: reads `sgk_progress_*`, `gmp-quiz-results`; writes only `sgk_rpg_v1` and one
-  `source: "inpage"` record per document in `gmp-quiz-results`.
+  `source: "inpage"` record per document in `gmp-quiz-results`. Character page "下載存檔 / 讀取存檔" exports / restores those keys (+ `gmp-learning-progress`) as one JSON file (`exportSave` / `importSave`, whitelist in `saveKey`).
+- Option order: `mixOpts` shuffles A–D per attempt and relabels; questions whose explanation or options name a letter (`LETTER_REF`, e.g. "B 錯在…", "Grade A", "以上皆是") keep their order. Write new explanations without letter references so they can shuffle.
+- "Pick any N" zones (no required docs) get `tier.rec`: N recommended docs (cleared first, then banked, curriculum order); the quest card and map follow them, the rest are side stages.
 - Never edit `*-Complete.html` for this — change `merge_engine.py` / `rpg/` and re-merge.
 
 ---

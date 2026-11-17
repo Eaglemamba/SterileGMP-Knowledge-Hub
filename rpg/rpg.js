@@ -40,7 +40,26 @@
     if (flag === '0') lsSet(FLAG_KEY, '0');
   } catch (e) {}
   var stored = lsGet(FLAG_KEY);
-  if (!(stored === '1' || (DEFAULT_ON && stored !== '0'))) return;
+  if (!(stored === '1' || (DEFAULT_ON && stored !== '0'))) {
+    // Off: the dashboard still offers a one-click way in (no rpg.css loaded, so styles are inline).
+    var invite = function () {
+      var mount = document.getElementById('rpg-quest');
+      if (!mount || mount.firstChild) return;
+      var box = document.createElement('div');
+      box.style.cssText = 'display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:12px 0;padding:12px 16px;border:1px dashed #94a3b8;border-radius:12px;font-size:.92rem;color:#334155;background:rgba(148,163,184,.08)';
+      var txt = document.createElement('span');
+      txt.style.flex = '1 1 240px';
+      txt.textContent = stored === '0' ? '冒險模式已關閉。' : '想把閱讀變成闖關？冒險模式會幫你選職業、排路線，讀完章節打小怪、通關打魔王。成績照常計算。';
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.textContent = '開啟冒險模式';
+      btn.style.cssText = 'padding:6px 14px;border-radius:999px;border:0;background:#0ea5e9;color:#fff;font-weight:700;cursor:pointer';
+      btn.onclick = function () { lsSet(FLAG_KEY, '1'); location.reload(); };
+      box.appendChild(txt); box.appendChild(btn); mount.appendChild(box);
+    };
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', invite); else invite();
+    return;
+  }
 
   /* ---------- static game data ---------- */
   var CLASS_META = {
@@ -419,8 +438,17 @@
         var banked = list.filter(function (x) { return M.docs[x.key].quiz; });
         var win = S.bossWin[dep.id + ':' + ti] || null;
         var done = ready && (!banked.length || !!win);
+        // "Pick any N" zones: recommend N documents so a long optional list has a clear route.
+        // Already-cleared ones count first, then documents with a question bank, in curriculum order.
+        var rec = [];
+        if (!req.length) {
+          var byCleared = list.filter(function (x) { return docs[x.key].cleared; });
+          var byBank = list.filter(function (x) { return !docs[x.key].cleared && M.docs[x.key].quiz; });
+          var rest = list.filter(function (x) { return !docs[x.key].cleared && !M.docs[x.key].quiz; });
+          rec = byCleared.concat(byBank, rest).slice(0, need).map(function (x) { return x.key; });
+        }
         if (open && done) rank++; else open = false;
-        return { tier: t, idx: ti, list: list, req: req, need: need, got: Math.min(got, need), ready: ready, done: done, anyOf: !req.length,
+        return { tier: t, idx: ti, list: list, req: req, need: need, got: Math.min(got, need), ready: ready, done: done, anyOf: !req.length, rec: rec,
           banked: banked, hasBoss: banked.length > 0, beaten: !!win, win: win };
       });
       rank = Math.max(rank, S.earned.rank[dep.id] || 0);
@@ -591,9 +619,10 @@
         }
         if (requiredOnly && !pick && t.ready && t.hasBoss && !t.beaten) pick = { boss: true, tier: t, tierIdx: i };
         if (requiredOnly && !t.done && !pick && t.anyOf) {
-          for (var k = 0; k < t.list.length; k++) {
-            var s2 = G.docs[t.list[k].key];
-            if (!s2.cleared) { pick = { st: s2, tier: t, tierIdx: i, entry: t.list[k] }; break; }
+          var route = t.list.filter(function (x) { return t.rec.indexOf(x.key) >= 0; }).concat(t.list.filter(function (x) { return t.rec.indexOf(x.key) < 0; }));
+          for (var k = 0; k < route.length; k++) {
+            var s2 = G.docs[route[k].key];
+            if (!s2.cleared) { pick = { st: s2, tier: t, tierIdx: i, entry: route[k] }; break; }
           }
         }
       }
@@ -777,6 +806,48 @@
     document.addEventListener('keydown', onKey);
     document.body.appendChild(wrap);
     return { el: wrap, close: close };
+  }
+
+  /* ---------- save file: download / restore every key the game reads ---------- */
+  function saveKey(k) { return k === STATE_KEY || k === QUIZ_KEY || k === 'gmp-learning-progress' || k.indexOf('sgk_progress_') === 0; }
+  function exportSave() {
+    var data = {};
+    try { for (var i = 0; i < localStorage.length; i++) { var k = localStorage.key(i); if (saveKey(k)) data[k] = localStorage.getItem(k); } } catch (e) {}
+    var blob = new Blob([JSON.stringify({ app: 'sgk-rpg', v: 1, at: new Date().toISOString(), data: data })], { type: 'application/json' });
+    var a = h('a', { href: URL.createObjectURL(blob), download: 'sgk-rpg-save-' + dayKey(new Date()) + '.json' });
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+    toast('存檔已下載。換電腦時用「讀取存檔」放回來。');
+  }
+  function importSave() {
+    var inp = h('input', { type: 'file', accept: '.json,application/json', style: 'display:none' });
+    inp.addEventListener('change', function () {
+      var f = inp.files && inp.files[0]; if (!f) return;
+      var rd = new FileReader();
+      rd.onload = function () {
+        var pack = null;
+        try { pack = JSON.parse(rd.result); } catch (e) {}
+        var keys = pack && pack.app === 'sgk-rpg' && pack.data && typeof pack.data === 'object'
+          ? Object.keys(pack.data).filter(function (k) { return saveKey(k) && typeof pack.data[k] === 'string'; }) : [];
+        if (!keys.length) { toast('這不是有效的存檔檔案。'); return; }
+        var st = null; try { st = JSON.parse(pack.data[STATE_KEY] || 'null'); } catch (e) {}
+        var m = modal([
+          h('h2', { text: '讀取存檔' }),
+          h('p', { class: 'rpg-modal-lead', text: '存檔時間 ' + String(pack.at || '').slice(0, 10) + (st && st.profile ? '，角色「' + st.profile.nick + '」' : '') +
+            '。讀取後會取代這個瀏覽器目前的冒險進度與閱讀紀錄，建議先下載一份目前的存檔。' }),
+          h('div', { class: 'rpg-modal-actions' }, [
+            h('button', { class: 'rpg-btn', type: 'button', text: '取代並讀取', onclick: function () {
+              try { for (var i = localStorage.length - 1; i >= 0; i--) { var k = localStorage.key(i); if (saveKey(k)) localStorage.removeItem(k); } } catch (e) {}
+              keys.forEach(function (k) { lsSet(k, pack.data[k]); });
+              m.close(); location.reload();
+            } }),
+            h('button', { class: 'rpg-btn rpg-btn-ghost', type: 'button', text: '取消', onclick: function () { m.close(); } })
+          ])
+        ]);
+      };
+      rd.readAsText(f);
+    });
+    document.body.appendChild(inp); inp.click(); setTimeout(function () { if (inp.parentNode) inp.parentNode.removeChild(inp); }, 60000);
   }
 
   /* ---------- prologue: a short storyboard before the first character sheet ---------- */
@@ -1287,6 +1358,21 @@
     for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t; }
     return a;
   }
+  /* A copy of the question with its options in a fresh order, relabelled A, B, C ... so a retry
+     cannot be passed by remembering letters. Questions whose explanation or options name a letter
+     ("B 錯在…", "A、C 的數值", "以上皆是") keep their order, since relabelling would break that text. */
+  var LETTER_REF = /(^|[^A-Za-z0-9(\-.\/])[A-E](?=$|[^A-Za-z0-9)\-.\/])|以上|皆是|皆非|above/i;
+  function mixOpts(q) {
+    var keys = Object.keys(q.options || {});
+    if (keys.length < 2 || !q.options[q.correct]) return q;
+    var text = (q.explanation || '') + ' ' + keys.map(function (k) { return q.options[k]; }).join(' ');
+    if (LETTER_REF.test(text)) return q;
+    var order = shuffle(keys.slice()), out = {}, c = {};
+    for (var k in q) c[k] = q[k];
+    order.forEach(function (from, i) { out[keys[i]] = q.options[from]; if (from === q.correct) c.correct = keys[i]; });
+    c.options = out;
+    return c;
+  }
   function battleHearts(kind, n) {
     var extra = kind === 'boss' ? (wearing('armor') ? 2 : wearing('cape') ? 1 : 0) : (wearing('armor') ? 1 : 0);
     return heartsFor(n) + extra;
@@ -1566,7 +1652,7 @@
         to: mine ? foeImg : youAv, tint: mine ? foeImg : youAv }, function () { then(); meters(); });
     }
     function ask() {
-      var q = o.questions[i], answered = false;
+      var q = mixOpts(o.questions[i]), answered = false;
       clear(stage);
       var opts = h('div', { class: 'rpg-quiz-opts' });
       var back = wearing('bookmark') && sourceHref(q);
@@ -2058,6 +2144,7 @@
     }).catch(function () {});
   }
   function openReview(pick, q) {
+    q = mixOpts(q);
     var d = M.docs[pick.key], done = false;
     var opts = h('div', { class: 'rpg-quiz-opts' });
     var exp = h('div', { class: 'rpg-quiz-exp', hidden: true }, [h('p', { text: q.explanation || '' }), q.reference ? h('small', { text: '出處：' + q.reference }) : null]);
@@ -2297,7 +2384,10 @@
         h('button', { class: 'rpg-btn rpg-btn-ghost', type: 'button', onclick: openOnboarding, text: '編輯角色／轉職' }),
         h('a', { class: 'rpg-btn rpg-btn-ghost rpg-hero-map', href: ROOT + 'map.html', text: '闖關地圖' }),
         h('a', { class: 'rpg-btn rpg-btn-ghost rpg-guide-link', href: ROOT + 'rpg-guide.html', text: '新手指南' }),
-        h('button', { class: 'rpg-btn rpg-btn-ghost', type: 'button', onclick: function () { openPrologue(null); }, text: '重看序章' })
+        h('button', { class: 'rpg-btn rpg-btn-ghost', type: 'button', onclick: function () { openPrologue(null); }, text: '重看序章' }),
+        h('button', { class: 'rpg-btn rpg-btn-ghost', type: 'button', onclick: exportSave, text: '下載存檔' }),
+        h('button', { class: 'rpg-btn rpg-btn-ghost', type: 'button', onclick: importSave, text: '讀取存檔' }),
+        h('button', { class: 'rpg-btn rpg-btn-ghost', type: 'button', text: '關閉冒險模式', onclick: function () { lsSet(FLAG_KEY, '0'); location.href = ROOT + 'index.html'; } })
       ])
     ]));
 
@@ -2467,7 +2557,9 @@
     c.tiers.forEach(function (t, ti) {
       var zone = ZONES[ti] || ZONES[ZONES.length - 1];
       var stages = t.tier.docs.filter(function (x) { return M.docs[x.key]; });
-      stages = stages.filter(function (x) { return x.required; }).concat(stages.filter(function (x) { return !x.required; }));
+      var isRec = function (x) { return t.rec.indexOf(x.key) >= 0; };
+      stages = stages.filter(function (x) { return x.required; })
+        .concat(stages.filter(function (x) { return !x.required && isRec(x); }), stages.filter(function (x) { return !x.required && !isRec(x); }));
       var fog = ti > c.rank;
       var list = h('ol', { class: 'rpg-stages', style: '--cols:' + cols });
       var total = stages.length + 1;                              // + boss gate
@@ -2489,13 +2581,13 @@
         var stars = (st.readAll || st.cleared ? 1 : 0) + (d.quiz && st.cleared ? 1 : 0) + (st.shiny ? 1 : 0);
         var starText = '';
         for (var k = 0; k < maxStars; k++) starText += k < stars ? '★' : '☆';
-        var cls = 'rpg-stage' + (st.cleared ? ' is-clear' : '') + (here ? ' is-here' : '') + (x.required ? '' : ' is-side') + (d.shell ? ' is-shell' : '');
+        var cls = 'rpg-stage' + (st.cleared ? ' is-clear' : '') + (here ? ' is-here' : '') + (x.required || isRec(x) ? '' : ' is-side') + (d.shell ? ' is-shell' : '');
         var inner = [
           here ? h('span', { class: 'rpg-stage-you' }, [avatarEl(), S.pet ? h('img', { class: petCls('rpg-idle'), src: petImg(S.pet.line, G.petStage), alt: '' }) : null]) : null,
           h('span', { class: 'rpg-stage-dot', style: '--p:' + pct + '%;--bar:' + d.bar }, [h('b', { text: st.cleared ? '✓' : String(i + 1) })]),
           h('span', { class: 'rpg-stage-stars', 'aria-label': stars + ' / ' + maxStars + ' 星', text: d.shell ? '準備中' : starText }),
           h('span', { class: 'rpg-stage-name', text: d.titleZh || d.title }),
-          h('span', { class: 'rpg-stage-meta', text: d.shell ? '' : (x.required ? '' : '支線・') + (st.cleared ? '通關' : st.started ? st.read + ' / ' + st.total + ' 節' : st.total + ' 節') + (d.quiz ? '・有挑戰' : '') })
+          h('span', { class: 'rpg-stage-meta', text: d.shell ? '' : (x.required ? '' : isRec(x) ? '推薦・' : '支線・') + (st.cleared ? '通關' : st.started ? st.read + ' / ' + st.total + ' 節' : st.total + ' 節') + (d.quiz ? '・有挑戰' : '') })
         ];
         var node = d.shell ? h('span', { class: 'rpg-stage-link' }, inner)
           : h('a', { class: 'rpg-stage-link', href: here ? q.href : ROOT + d.file, title: d.title }, inner);
@@ -2613,7 +2705,7 @@
           stages: t.tier.docs.filter(function (x) { return M.docs[x.key]; }).map(function (x) {
             var d = M.docs[x.key], st = G.docs[x.key], here = x.key === curKey;
             return {
-              key: x.key, title: d.titleZh || d.title, main: x.required || t.anyOf, shell: d.shell, quiz: !!d.quiz,
+              key: x.key, title: d.titleZh || d.title, main: x.required || t.rec.indexOf(x.key) >= 0, rec: t.rec.indexOf(x.key) >= 0, shell: d.shell, quiz: !!d.quiz,
               cleared: st.cleared, started: st.started, read: st.read, total: st.total, shiny: st.shiny, here: here,
               stars: (st.readAll || st.cleared ? 1 : 0) + (d.quiz && st.cleared ? 1 : 0) + (st.shiny ? 1 : 0), maxStars: d.quiz ? 3 : 1,
               href: here ? q.href : ROOT + d.file
