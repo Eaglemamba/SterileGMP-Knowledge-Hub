@@ -107,6 +107,7 @@
       src: [{ key: 'TR1' }, { key: 'pda-guide-no1', secs: ['sec10', 'sec11'] }],
       srcText: 'PDA TR1 濕熱滅菌確效、PDA Guide No.1 滅菌與無菌流路',
       weak: { engineering: '滅菌器設計與熱分布，讓每個冷點都達到 F0', techservice: '滅菌確效與生物指示劑挑戰，證明孢子活不下來', qc: 'BI 培養與無菌試驗，抓出漏網的芽孢' },
+      needTag: 'sporicide', needText: '芽孢殼太硬：75% 酒精和季銨鹽只殺得死營養型細菌，殺不死芽孢。帶一瓶殺孢劑才進得了這場戰鬥',
       line: '「121 °C 才 15 分鐘？我的芽孢殼耐得住。」', rage: '「冷點在哪你找得到嗎？我就躲在那裡！」', title: '孢子獵人' },
     { id: 'crack', name: '裂隙幽靈', risk: '容器密封失效：微漏、膠塞、軋蓋',
       fx: { el: '裂隙系', skill: '微漏穿隙', c: '#0ea5e9', m: 'swarm', g: 'ghost', n: 3, size: 40, imp: { mark: 'crack', dots: 10, dc: '#bae6fd', quake: 1 } },
@@ -116,6 +117,33 @@
       weak: { production: '加塞與軋蓋的製程管控，每一瓶都蓋好封緊', qc: '容器密封完整性測試，找出看不見的微漏', warehouse: '包材進料檢驗與搬運保護，裂瓶和變形膠塞上不了線' },
       line: '「只要一道你看不見的縫，我就進得去。」', rage: '「膠塞歪一點、軋蓋鬆一點，就夠了！」', title: '封緘守門人' }
   ];
+  /* Special items (道具): crafted once in the workshop, one brought into each boss fight from the
+     skill picker. vs: targets ('z<zone>' for zone bosses, elite ids) — against a target the item
+     adds shields; tags let a boss demand a kind of item (孢子騎士 only lets you in with a sporicide).
+     Like gear: never changes scoring. Art: rpg/assets/item-<id>.webp (drawn badge until then). */
+  var ITEMS = [
+    { id: 'paa', zh: '過氧乙酸殺孢劑', cat: '殺孢劑', c: '#84cc16', vs: ['spore'], tags: ['sporicide'], shield: 1, need: { c5: 2, c4: 1 },
+      use: '噴灑過氧乙酸，芽孢殼開始崩解',
+      eff: '進入孢子騎士戰的通行證，戰鬥中多 1 面護盾。過氧乙酸加過氧化氫，是殺得死芽孢的消毒劑；Annex 1 要求消毒計畫定期輪用殺孢劑。' },
+    { id: 'vhp', zh: '汽化過氧化氫產生器', cat: '殺孢劑', c: '#22d3ee', vs: ['spore'], tags: ['sporicide'], shield: 2, need: { boss: 1, c6: 2, c5: 1 },
+      use: 'VHP 灌滿隔離器，芽孢無處可躲',
+      eff: '高階殺孢道具，也能進入孢子騎士戰，戰鬥中多 2 面護盾。隔離器和 RABS 的表面除污多半用 VHP，要用生物指示劑證明 6 log 的殺滅。' },
+    { id: 'cip', zh: '鹼性 CIP 清潔劑', cat: '清潔劑', c: '#a78bfa', vs: ['z1'], shield: 1, need: { c5: 2, c6: 1 },
+      use: '熱鹼循環沖洗，剝掉生物膜的基質',
+      eff: '生物膜王戰多 1 面護盾。生物膜要先用清潔劑和流速剝掉基質，消毒劑才碰得到裡面的菌：先清潔，再消毒。' },
+    { id: 'counter', zh: '手持粒子計數器', cat: '監測儀器', c: '#94a3b8', vs: ['z0'], shield: 1, need: { c9: 1, c0: 2 },
+      use: '粒子計數器鎖定落塵來源',
+      eff: '微粒魔戰多 1 面護盾。≥0.5 µm 與 ≥5 µm 分開計數，A 級區要連續監測，才抓得到短暫的微粒爆量。' },
+    { id: 'oven', zh: '去熱原隧道烘箱', cat: '設備', c: '#f97316', vs: ['z2'], shield: 1, need: { c6: 2, c2: 1 },
+      use: '250 °C 乾熱，內毒素降 3 個 log',
+      eff: '內毒素龍戰多 1 面護盾。濕熱滅菌殺得死菌，卻去不掉內毒素；乾熱去熱原要證明內毒素至少降低 3 log。' },
+    { id: 'ccit', zh: '真空衰減測漏儀', cat: '檢測儀器', c: '#0ea5e9', vs: ['crack'], shield: 1, need: { c2: 2, c9: 1 },
+      use: '真空衰減測試，微漏無所遁形',
+      eff: '裂隙幽靈戰多 1 面護盾。真空衰減是確定性的 CCI 測試方法（USP <1207>），比染色入侵法更靈敏、可重複。' }
+  ];
+  function itemById(id) { return ITEMS.filter(function (x) { return x.id === id; })[0] || null; }
+  function itemVs(it, target) { return !!(it && it.vs.indexOf(target) >= 0); }
+  function itemTag(it, tag) { return !!(it && it.tags && it.tags.indexOf(tag) >= 0); }
   var XP_ELITE = 80, ELITE_RANK = 1;      // first-win XP; class rank at which elites appear
   function eliteById(id) { return ELITES.filter(function (e) { return e.id === id; })[0]; }
   function weakTo(ti) { return Object.keys(WEAK[ti] || {}); }
@@ -251,7 +279,9 @@
     s.bossWin = s.bossWin || {};                              // '<class>:<zone>' -> { best, total, ts }
     s.bossTry = s.bossTry || {};
     s.weakWin = s.weakWin || {};                              // '<class>:<zone>' -> time of the first 弱點擊破 win
-    s.eliteWin = s.eliteWin || {};                            // elite id -> { best, total, ts }
+    s.eliteWin = s.eliteWin || {};
+    s.items = s.items || {};                                  // item id -> time crafted
+    s.itemPick = s.itemPick || {};                            // boss key -> item id last brought ('' = none)                            // elite id -> { best, total, ts }
     s.skillPick = s.skillPick || {};                          // '<class>:<zone>' -> skill last brought to that boss
     s.gear = s.gear || {};
     s.gear.own = s.gear.own || {};                            // gear id -> time crafted
@@ -1272,6 +1302,8 @@
     var weak = o.kind === 'boss' && (o.weak != null ? !!o.weak : isWeak(o.zone, o.skill));
     var shield = (wearing('gloves') ? 1 : 0) + (weak ? 1 : 0);
     if (weak) hearts++;
+    var item = o.item && itemVs(o.item, o.target) ? o.item : null;
+    if (item) shield += item.shield || 1;
     var foeImg = o.foeImg ? h('img', { class: 'rpg-foe-img', src: o.foeImg, alt: o.foe }) : h('span', { class: 'rpg-foe-img rpg-foe-blank', style: o.fx ? '--c:' + o.fx.c : null, text: '？' });
     var hp = h('span', { class: 'rpg-hp', role: 'meter', 'aria-label': o.foe + '的血量', 'aria-valuemin': 0, 'aria-valuemax': n });
     var heartsEl = h('span', { class: 'rpg-hearts', 'aria-label': '你的生命' });
@@ -1313,7 +1345,12 @@
       setTimeout(function () { arena.classList.remove('is-intro'); }, 900);
       // let the foe finish charging in before the banner covers the top of the arena
       setTimeout(function () {
-        if (o.kind === 'boss') banner('WARNING　魔王 ' + o.foe + ' 現身' + (weak ? '　｜　弱點擊破：' + youFx.skill : ''), o.line || '', 3200, ask);
+        if (o.kind === 'boss') banner('WARNING　魔王 ' + o.foe + ' 現身' + (weak ? '　｜　弱點擊破：' + youFx.skill : ''), o.line || '', 3200, function () {
+          if (!item) { ask(); return; }
+          var fx = h('span', { class: 'rpg-item-fx', style: '--c:' + item.c }, [itemImgEl(item), h('b', { text: item.zh })]);
+          arena.appendChild(fx);
+          banner('使用道具：' + item.zh, item.use + '（護盾 +' + (item.shield || 1) + '）', 2000, function () { if (fx.parentNode) fx.parentNode.removeChild(fx); ask(); });
+        });
         else banner('野生的 ' + o.foe + ' 出現了！', null, 1400, ask);
       }, CALM ? 0 : 750);
     }
@@ -1494,7 +1531,8 @@
       }).join('、或') + '，就能習得剋制技能。' }) : null
     ]);
   }
-  /* Before a boss fight: choose which learned skill to bring. a: { cur, map (weakness reasons), foe, done, pick, go } */
+  /* Before a boss fight: choose which learned skill and which item to bring.
+     a: { cur, map (weakness reasons), foe, done, pick, go, target, item, pickItem, needTag, needText } */
   function skillPicker(box, a) {
     clear(box);
     var row = h('div', { class: 'rpg-skillpick', role: 'radiogroup', 'aria-label': '出戰技能' });
@@ -1509,14 +1547,36 @@
       ]));
     });
     var w = a.map[a.cur];
+    var owned = ITEMS.filter(function (x) { return S.items[x.id]; });
+    var it = itemById(a.item), gated = a.needTag && !itemTag(it, a.needTag);
+    var irow = h('div', { class: 'rpg-skillpick rpg-itempick', role: 'radiogroup', 'aria-label': '攜帶道具' });
+    [null].concat(owned).forEach(function (x) {
+      var on = (x ? x.id : '') === (it ? it.id : ''), hit = x && itemVs(x, a.target);
+      irow.appendChild(h('button', { type: 'button', role: 'radio', 'aria-checked': String(on),
+        class: 'rpg-skill' + (on ? ' is-on' : '') + (hit ? ' is-weak' : ''), style: '--c:' + (x ? x.c : '#94a3b8'),
+        onclick: function () { a.pickItem(x ? x.id : ''); } }, [
+        h('b', { text: x ? x.zh : '不帶道具' }),
+        h('span', { text: x ? x.cat + (hit ? '・護盾 +' + (x.shield || 1) : '・對牠無效') : '空手上陣' }),
+        hit ? h('em', { text: '有效' }) : null
+      ]));
+    });
     box.appendChild(h('div', { class: 'rpg-skillbox' }, [
       h('h3', { class: 'rpg-sub', text: '選擇出戰技能' }), row,
+      h('h3', { class: 'rpg-sub', text: '攜帶道具' }), irow,
+      gated ? h('p', { class: 'rpg-weakhint rpg-gate' }, [h('b', { text: '進不了戰場：' }), h('span', { text: a.needText + (ITEMS.some(function (x) { return itemTag(x, a.needTag) && S.items[x.id]; })
+        ? '。在上面選一個殺孢劑。' : '。到角色頁的工坊合成「' + ITEMS.filter(function (x) { return itemTag(x, a.needTag); }).map(function (x) { return x.zh; }).join('」或「') + '」。') })]) : null,
       h('p', { class: 'rpg-note', text: w ? '弱點擊破：' + w + '。這場多 1 顆心、多 1 面護盾' +
         (a.done ? '。' : '；第一次用弱點技能打倒牠，再得 ' + XP_WEAK + ' XP 和 1 顆' + BOSS_MAT + '。')
         : '這個技能對' + a.foe + '沒有特別效果。' }),
       weakHintFor(a.map),
-      h('button', { class: 'rpg-btn', type: 'button', text: '開戰', onclick: a.go })
+      h('button', { class: 'rpg-btn', type: 'button', text: '開戰', disabled: gated, onclick: a.go })
     ]));
+  }
+  function bestItem(saved, target, needTag) {
+    if (saved != null && (saved === '' || S.items[saved]) && !(needTag && !itemTag(itemById(saved), needTag))) return saved;
+    var hit = ITEMS.filter(function (x) { return S.items[x.id] && itemVs(x, target) && (!needTag || itemTag(x, needTag)); });
+    hit.sort(function (p, q) { return (q.shield || 1) - (p.shield || 1); });
+    return hit.length ? hit[0].id : '';
   }
   function bestSkill(saved, map) {
     if (learnedSkills().indexOf(saved) >= 0) return saved;
@@ -1552,17 +1612,17 @@
         h('p', { class: 'rpg-modal-lead', text: '從這一區的文件隨機出 ' + Math.min(BOSS_Q, pool.length) + ' 題，答對 80% 擊敗牠' + (t.beaten ? '。' : '，就能升階。') }),
         box
       ], { cls: 'rpg-modal-wide rpg-modal-boss' });
-      var skill = bestSkill(S.skillPick[key], WEAK[ti] || {});
+      var skill = bestSkill(S.skillPick[key], WEAK[ti] || {}), item = bestItem(S.itemPick[key], 'z' + ti);
       pickSkill();
       function pickSkill() {
-        skillPicker(box, { cur: skill, map: WEAK[ti] || {}, foe: zone.boss, done: !!S.weakWin[key],
-          pick: function (id) { skill = id; pickSkill(); },
-          go: function () { S.skillPick[key] = skill; saveState(); go(); } });
+        skillPicker(box, { cur: skill, map: WEAK[ti] || {}, foe: zone.boss, done: !!S.weakWin[key], target: 'z' + ti, item: item,
+          pick: function (id) { skill = id; pickSkill(); }, pickItem: function (id) { item = id; pickSkill(); },
+          go: function () { S.skillPick[key] = skill; S.itemPick[key] = item; saveState(); go(); } });
       }
       function go() {
         var weak = isWeak(ti, skill);
         runBattle(box, {
-          kind: 'boss', foe: zone.boss, foeImg: img, zone: ti, skill: skill, again: pickSkill, line: BOSS_LINES[ti], rage: BOSS_RAGE[ti],
+          kind: 'boss', foe: zone.boss, foeImg: img, zone: ti, skill: skill, again: pickSkill, target: 'z' + ti, item: itemById(item), line: BOSS_LINES[ti], rage: BOSS_RAGE[ti],
           questions: shuffle(pool.slice()).slice(0, BOSS_Q),
           onEnd: function (r) {
             S.bossTry[key] = (S.bossTry[key] || 0) + 1;
@@ -1622,17 +1682,17 @@
         h('p', { class: 'rpg-note', text: '出題範圍：' + e.srcText + '（' + pool.length + ' 題）' }),
         box
       ], { cls: 'rpg-modal-wide rpg-modal-boss' });
-      var skill = bestSkill(S.skillPick[key], e.weak);
+      var skill = bestSkill(S.skillPick[key], e.weak), item = bestItem(S.itemPick[key], e.id, e.needTag);
       pickSkill();
       function pickSkill() {
-        skillPicker(box, { cur: skill, map: e.weak, foe: e.name, done: !!S.weakWin[key],
-          pick: function (id) { skill = id; pickSkill(); },
-          go: function () { S.skillPick[key] = skill; saveState(); go(); } });
+        skillPicker(box, { cur: skill, map: e.weak, foe: e.name, done: !!S.weakWin[key], target: e.id, item: item, needTag: e.needTag, needText: e.needText,
+          pick: function (id) { skill = id; pickSkill(); }, pickItem: function (id) { item = id; pickSkill(); },
+          go: function () { S.skillPick[key] = skill; S.itemPick[key] = item; saveState(); go(); } });
       }
       function go() {
         var weak = !!e.weak[skill];
         runBattle(box, {
-          kind: 'boss', foe: e.name, foeImg: img, zone: -1, weak: weak, fx: e.fx, skill: skill, again: pickSkill, line: e.line, rage: e.rage,
+          kind: 'boss', foe: e.name, foeImg: img, zone: -1, weak: weak, fx: e.fx, skill: skill, again: pickSkill, target: e.id, item: itemById(item), line: e.line, rage: e.rage,
           questions: shuffle(pool.slice()).slice(0, BOSS_Q),
           onEnd: function (r) {
             S.bossTry[key] = (S.bossTry[key] || 0) + 1;
@@ -1891,6 +1951,46 @@
       have.length ? from : null, have.length ? h('span', { text: '→' }) : null, have.length ? to : null, go
     ]);
   }
+  function itemImgEl(it) {
+    var src = asset('item-' + it.id);
+    return src ? h('img', { class: 'rpg-item-img', src: src, alt: '' }) : h('span', { class: 'rpg-item-img rpg-item-badge', style: '--c:' + it.c, 'aria-hidden': 'true', text: it.zh.charAt(0) });
+  }
+  function craftItem(it) {
+    if (S.items[it.id] || !canCraft(it)) return;
+    Object.keys(it.need).forEach(function (k) { S.mats[k] -= it.need[k]; });
+    S.items[it.id] = Date.now();
+    saveState(); renderAll();
+    toast('合成道具：' + it.zh + '。魔王戰前可以選它帶上場。');
+  }
+  function targetName(t) {
+    if (t.charAt(0) === 'z') return (ZONES[+t.slice(1)] || {}).boss || t;
+    var e = eliteById(t); return e ? e.name : t;
+  }
+  function itemPanel() {
+    var list = h('ul', { class: 'rpg-gear rpg-items' });
+    ITEMS.forEach(function (it) {
+      var own = !!S.items[it.id];
+      var need = h('span', { class: 'rpg-need' }, Object.keys(it.need).map(function (k) {
+        var have = S.mats[k] || 0, src = matImg(k);
+        return h('span', { class: have >= it.need[k] ? 'is-ok' : 'is-short' }, [src ? h('img', { src: src, alt: '' }) : null, matName(k) + ' ' + Math.min(have, it.need[k]) + '/' + it.need[k]]);
+      }));
+      list.appendChild(h('li', { class: own ? 'is-own' : '' }, [
+        itemImgEl(it),
+        h('div', { class: 'rpg-gear-body' }, [
+          h('b', { text: it.zh }), h('small', { class: 'rpg-chip', text: it.cat + '・對 ' + it.vs.map(targetName).join('、') }),
+          h('p', { text: it.eff }),
+          own ? null : need
+        ]),
+        own ? h('span', { class: 'rpg-chip rpg-item-own', text: '已持有' })
+          : h('button', { class: 'rpg-btn', type: 'button', text: '合成', disabled: !canCraft(it), onclick: function () { craftItem(it); } })
+      ]));
+    });
+    return h('div', { class: 'rpg-itembox' }, [
+      h('h3', { class: 'rpg-sub', text: '特殊道具　' + ITEMS.filter(function (x) { return S.items[x.id]; }).length + ' / ' + ITEMS.length }),
+      h('p', { class: 'rpg-note', text: '道具不用穿戴，魔王戰前從背包選一個帶上場。用對魔王，護盾就會變多；有些魔王沒帶對的道具根本打不進去。' }),
+      list
+    ]);
+  }
   function workshop() {
     var owned = GEAR.filter(function (g) { return S.gear.own[g.id]; }).length;
     var slots = h('ul', { class: 'rpg-slots' });
@@ -1925,7 +2025,7 @@
     return h('section', { class: 'rpg-panel rpg-workshop' }, [
       h('h2', { text: '工坊　' + owned + ' / ' + GEAR.length }),
       h('p', { class: 'rpg-note', text: '每件裝備合成一次，同一個部位一次穿一件。裝備只幫你多撐一下、或更快找回原文；過關標準一樣是答對 80%。' }),
-      slots, list
+      slots, list, itemPanel()
     ]);
   }
 
@@ -2269,6 +2369,7 @@
               h('b', { text: (won ? '已擊敗　' : '') + e.name }),
               h('span', { class: 'rpg-stage-meta', text: e.risk }),
               h('span', { class: 'rpg-stage-meta rpg-weak-meta', text: '弱點：' + Object.keys(e.weak).map(elName).join('、') + (wk ? '・已弱點擊破' : '') }),
+              e.needTag ? h('span', { class: 'rpg-stage-meta rpg-weak-meta', text: '入場條件：攜帶殺孢劑' + (ITEMS.some(function (x) { return itemTag(x, e.needTag) && S.items[x.id]; }) ? '（已持有）' : '（到工坊合成）') }) : null,
               h('span', { class: 'rpg-stage-meta', text: won ? '稱號：' + e.title + '・最佳 ' + won.best + ' / ' + won.total : '擊敗得稱號「' + e.title + '」' })
             ]),
             h('span', { class: 'rpg-btn rpg-btn-sm' + (act === '挑戰' ? '' : ' rpg-btn-ghost'), text: act })
