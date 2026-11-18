@@ -14,6 +14,7 @@ const departments = [
     icon: '🛡️',
     color: '#2563eb',
     description: 'GMP foundations, quality systems, risk management, contamination control strategy, validation lifecycle, and regulatory compliance.',
+    descriptionZh: 'GMP 基礎、品質系統、風險管理、汙染控制策略（CCS）、確效生命週期與法規遵循。',
     tiers: [
       {
         level: 1, label: 'Foundation', labelZh: '基礎必讀',
@@ -58,6 +59,7 @@ const departments = [
     icon: '🔬',
     color: '#7c3aed',
     description: 'Laboratory testing methods, pharmacopoeial chapters, microbiology, endotoxin, particulates, EM programs, water testing, and deviation investigations.',
+    descriptionZh: '實驗室檢驗方法、藥典章節、微生物、內毒素、微粒、環境監測（EM）計畫、水質檢驗與偏差調查。',
     tiers: [
       {
         level: 1, label: 'Foundation', labelZh: '基礎必讀',
@@ -148,6 +150,7 @@ const departments = [
     icon: '⚙️',
     color: '#059669',
     description: 'Aseptic filling operations, sterilization, lyophilization, process controls, and day-to-day production excellence.',
+    descriptionZh: '無菌充填作業、滅菌、凍晶乾燥、製程管控，以及日常生產的穩定運作。',
     tiers: [
       {
         level: 1, label: 'Foundation', labelZh: '基礎必讀',
@@ -203,6 +206,7 @@ const departments = [
     icon: '🔧',
     color: '#d97706',
     description: 'Facility design, HVAC, water systems, equipment qualification, cleanroom validation, and preventive maintenance.',
+    descriptionZh: '廠房設計、HVAC 空調、水系統、設備確效、無塵室確效與預防保養。',
     tiers: [
       {
         level: 1, label: 'Foundation', labelZh: '基礎必讀',
@@ -252,6 +256,7 @@ const departments = [
     icon: '📋',
     color: '#dc2626',
     description: 'Regulatory expectations, global guidelines, submission requirements, and compliance strategy for sterile products.',
+    descriptionZh: '法規要求、全球指引、送審文件要求，以及無菌產品的法規遵循策略。',
     tiers: [
       {
         level: 1, label: 'Foundation', labelZh: '基礎必讀',
@@ -303,6 +308,7 @@ const departments = [
     icon: '🏗️',
     color: '#0891b2',
     description: 'Material storage & handling, GDP, cold chain management, container closure integrity, and inventory management.',
+    descriptionZh: '物料儲存與搬運、GDP 優良運銷、冷鏈管理、容器密封完整性與庫存管理。',
     tiers: [
       {
         level: 1, label: 'Foundation', labelZh: '基礎必讀',
@@ -356,6 +362,7 @@ const departments = [
     icon: '🛠️',
     color: '#8b5cf6',
     description: 'Process support, troubleshooting, technology transfer (receiving site), validation execution, and continuous process improvement.',
+    descriptionZh: '製程支援、問題排除、技術移轉（接收端）、確效執行與持續製程改善。',
     tiers: [
       {
         level: 1, label: 'Foundation', labelZh: '基礎必讀',
@@ -411,6 +418,7 @@ const departments = [
     icon: '💻',
     color: '#0f766e',
     description: 'Computerized system validation (CSV/GAMP), data integrity, GxP IT infrastructure qualification, analytical instrument qualification, and emerging digital technologies in pharmaceutical manufacturing.',
+    descriptionZh: '電腦化系統確效（CSV／GAMP）、資料完整性、GxP IT 基礎設施確效、分析儀器確效，以及製藥業的新興數位技術。',
     tiers: [
       {
         level: 1, label: 'Foundation', labelZh: '基礎必讀',

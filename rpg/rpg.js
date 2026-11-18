@@ -1264,7 +1264,7 @@
       var dep = deptById(pick.cls);
       sexNote.hidden = sexOf(artFor(pick.cls, pick.sex)) === pick.sex;
       sexNote.textContent = CLASS_META[dep.id].job + T('還沒有男性立繪，角色頁暫時顯示女性版本。', ' has no male artwork yet; the character page shows the female look for now.');
-      hint.textContent = dName(dep) + T('：', ': ') + dep.description;
+      hint.textContent = dName(dep) + T('：', ': ') + (EN ? dep.description : dep.descriptionZh || dep.description);
     }
     function hasQuiz(dep) {
       return dep.tiers.some(function (t) { return t.docs.some(function (x) { return M.docs[x.key] && M.docs[x.key].quiz; }); });
