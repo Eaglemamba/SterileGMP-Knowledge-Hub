@@ -52,7 +52,7 @@ This architecture is not a one-way pipeline from reference → practice. It oper
 | Education Layer — Dashboard & Learning UI | ✅ Complete | 4 tools (index.html, learning-path.html, mindmap.html, quiz.html) |
 | Education Layer — Curriculum Data | ✅ Complete | 8 departments × 3 tiers (gmp-curriculum-data.js) |
 | Education Layer — Quiz System | ✅ Complete | /quiz skill + quiz.html tracker + knowledge/exams/ bank |
-| Layer 1 — Regulatory Reference | ✅ Complete | 184 documents |
+| Layer 1 — Regulatory Reference | ✅ Complete | 181 documents |
 | Expert Knowledge Base | ⬜ Not started | 9 files planned |
 | Layer 2 — Operational Frameworks | ⬜ Not started | ~27 files planned |
 | Layer 2 — Skills System | ⬜ Not started | 26 slash commands planned |
@@ -140,7 +140,7 @@ Interactive D3.js + Markmap-powered visualization of the entire knowledge base. 
 |------|-------------|
 | By Department | Shows 8 department tracks with Foundation → Core → Advanced hierarchy |
 | By Topic | Groups documents into 10 thematic clusters (Aseptic Processing, Sterilization & Filtration, Container Closure, Quality Systems, Environmental Monitoring, Testing Methods, Facilities & Utilities, Advanced Therapies, Regulatory & Compliance, Emerging Technologies) |
-| By Source | Organizes all 184 documents by issuing organization (PDA, ISPE, FDA, ICH, PIC/S, USP, ISO, Ph.Eur.) |
+| By Source | Organizes all 181 documents by issuing organization (PDA, ISPE, FDA, ICH, PIC/S, USP, ISO, Ph.Eur.) |
 
 ### gmp-curriculum-data.js — Curriculum Data File
 
@@ -153,13 +153,13 @@ Single source of truth for learning path structure. Consumed by `learning-path.h
 
 ---
 
-## Layer 1: Regulatory Reference — ✅ COMPLETE (184 documents)
+## Layer 1: Regulatory Reference — ✅ COMPLETE (181 documents)
 
 ### Completion Summary
 
 | Source | Count | Scope | Status |
 |--------|-------|-------|--------|
-| **PDA** | 44 | Technical Reports, Points to Consider, Guides | ✅ Complete |
+| **PDA** | 41 | Technical Reports, Points to Consider, Guides | ✅ Complete |
 | **USP** | 76 | General Chapters — sterility, endotoxin, particulates, microbial, CCI, E&L, water, validation, analytical | ✅ Complete |
 | **ISPE** | 14 | Baseline Guides, Good Practice Guides, GAMP | ✅ Complete (1 pending OCR) |
 | **FDA** | 15 | Aseptic Processing, Process Validation, Process Inspection, Combination Products CGMP, HF for Combo Products, 21 CFR 600–680 Biologics, 21 CFR Parts 210/211, 21 CFR Part 11, 21 CFR Part 820 (QMSR), 21 CFR Part 4, 21 CFR Part 312 (IND), CCIT (2008), Container Closure CMC (1999), Glass Vials & Stoppers (2024), Parametric Release (2010) | ✅ Complete |
@@ -167,7 +167,7 @@ Single source of truth for learning path structure. Consumed by `learning-path.h
 | **PIC/S** | 5 | Annex 1 (2022), Annex 2 (ATMPs + Biologics), Annex 15 (Qualification 2023), Annex 20 (QRM), PE 011 (GDP 2014) | ✅ Complete |
 | **ISO** | 17 | 11040 (×8), 13408 (×7), 14644 (Parts 1/5/7), 11608-1, 13485, 10993-1, TR 24971, 15378, 9001, 9000, 2859-1, 15223-1/2, 15394, 13926-1/2/3 | ✅ Complete (2 blocked: 14971 scanned, 15225 font) |
 | **Ph.Eur.** | 7 | 2.6.1, 2.6.14, 2.9.19, 2.9.20, 3.2.1, 3.3.8, 5.1.1 | ✅ Complete |
-| **Total** | **184** | | |
+| **Total** | **181** | | |
 
 ### USP Batch History
 
@@ -599,7 +599,7 @@ Add only when client mix justifies:
 
 | Source | Current | Phase 4–5 Additions | Phase 6 Additions | Notes |
 |--------|---------|--------------------|--------------------|-------|
-| PDA | 44 | +4 (TR36, TR57, TR69, TR76) | +2 (TR47, TR81) | TR33, TR74 ✅ done |
+| PDA | 41 | +4 (TR36, TR57, TR69, TR76) | +2 (TR47, TR81) | TR33, TR74 ✅ done |
 | ISPE | 14 | +0 | — | GEP ❌ blocked (OCR) |
 | PIC/S | 5 | ~~+1 (PE 011 GDP)~~ ✅ | — | PE 011 done |
 | FDA | 15 | — | — | +1 if Design Considerations |
@@ -610,6 +610,6 @@ Add only when client mix justifies:
 | EU GMP | 0 | — | +3 (Annex 15, 2, 20) | |
 | Ph.Eur. | 7 | — | +1 (EP 5.1.6) | |
 | WHO GMP | 0 | +1 (TRS 961 Annex 6) | +1 (TRS 1010) | TRS 961 moved to Phase 4b |
-| **Total** | **184** | **~189** | **~199** | |
+| **Total** | **181** | **~186** | **~196** | |
 
-The infrastructure (tooling, workflow, dashboard, chatbot) is built and serving 184 documents. All uploaded Raw PDFs have been processed or marked blocked. Active focus shifts to Expert Knowledge Base and Layer 2 Operational Frameworks, with Phase 4–5 content additions when new PDFs are sourced.
+The infrastructure (tooling, workflow, dashboard, chatbot) is built and serving 181 documents. All uploaded Raw PDFs have been processed or marked blocked. Active focus shifts to Expert Knowledge Base and Layer 2 Operational Frameworks, with Phase 4–5 content additions when new PDFs are sourced.
