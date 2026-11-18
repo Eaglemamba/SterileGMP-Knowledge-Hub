@@ -141,10 +141,15 @@ PDF_NOISE_PATTERNS = [
     re.compile(r'^©\s*Copyright\s+ISPE'),
     # ISPE document license/download watermark (appears on every page)
     re.compile(r'^This Document is licensed to'),
-    re.compile(r'^(Mr|Ms|Mrs|Dr)\.?\s+.{3,50},?\s*(Sr|Jr)?\.?\s*$'),
+    re.compile(r'^(Mr|Ms|Mrs|Miss|Dr)\.?\s+.{3,50},?\s*(Sr|Jr)?\.?\s*$'),
     re.compile(r'^[A-Z][a-z]+,\s+[A-Z]{2}'),  # "Mexico, DF" / "City, ST" pattern
     re.compile(r'^ID number:\s*\d+'),
     re.compile(r'^Downloaded on:'),
+    # IHS reseller watermark on ISO standards (licensee, user, timestamp)
+    re.compile(r'Provided by IHS Markit'),
+    re.compile(r'Licensee=.*User='),
+    re.compile(r'Not for Resale, \d\d/\d\d/\d{4}'),
+    re.compile(r'^No reprodu.*IHS'),
 ]
 
 # Heading patterns in PDA source text: "3.0 Title", "3.1.2 Subtitle", "Appendix I: Title"

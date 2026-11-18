@@ -6051,7 +6051,7 @@ DPC Dissolved Oxygen
 EBR
 EMA         Discrete Particle Counter
 FMEA
-FOI         Electronic Batch RMecordiss Mei-Chun Chou
+FOI         Electronic Batch Record
 FTA         Taiwan, European Medicines Agency
 GDP
 GEP         Failure Mode and Effects Analysis

@@ -35,7 +35,7 @@ python gmp_engine.py merge TRXX
 mv "Raw pdfs/PDA_TRXX_....pdf" "Raw pdfs/processed/"
 
 # 9. Verify in browser, then commit + push
-git add <SOURCE>/TRXX/ reports.json knowledge/ "Raw pdfs/processed/"
+git add <SOURCE>/TRXX/ reports.json knowledge/   # PDFs stay local (git-ignored)
 git commit -m "Add TRXX: [title]"
 ```
 
