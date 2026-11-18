@@ -726,20 +726,23 @@ a.rpg-stage-link:focus-visible { outline: 3px solid var(--rpg-cyan); outline-off
 .rpg-elites.is-fog .rpg-elite { opacity: .6; }
 .rpg-elite-list { list-style: none; margin: 14px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); grid-auto-rows: 1fr; gap: 14px; }
 .rpg-elite { display: flex; }
-.rpg-elite-btn { width: 100%; height: 100%; display: flex; align-items: flex-start; gap: 14px; padding: 12px 14px; text-align: left; cursor: pointer; font: inherit;
+.rpg-elite-btn { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: stretch; gap: 10px; padding: 14px; text-align: left; cursor: pointer; font: inherit;
   color: #f8fafc; background: rgba(255,255,255,.06); border: 2px solid var(--c); border-radius: 14px; }
 .rpg-elite-btn:hover, .rpg-elite-btn:focus-visible { background: rgba(255,255,255,.12); }
-.rpg-elite .rpg-boss-img { width: 84px; height: 84px; margin: 0; flex: none; }
-.rpg-elite.is-clear .rpg-boss-img { filter: grayscale(1) opacity(.55); }
-.rpg-elite-sil { width: 72px; height: 72px; flex: none; display: grid; place-items: center; border-radius: 50%; font-size: 30px; font-weight: 900;
+.rpg-elite .rpg-boss-img { width: 140px; height: 140px; margin: 0 auto; flex: none; }
+/* Not defeated yet: black silhouette with a glow in the boss colour. Defeated: full colour. */
+.rpg-elite:not(.is-clear) .rpg-boss-img { filter: brightness(0) drop-shadow(0 0 1px var(--c)) drop-shadow(0 0 10px var(--c)); }
+.rpg-elite.is-clear .rpg-boss-img { filter: drop-shadow(0 4px 6px rgba(0,0,0,.45)); }
+.rpg-elite-btn > .rpg-btn { align-self: flex-start; margin-top: auto; }
+.rpg-elite-sil { width: 72px; height: 72px; flex: none; margin: 0 auto; display: grid; place-items: center; border-radius: 50%; font-size: 30px; font-weight: 900;
   color: var(--c); background: radial-gradient(circle, rgba(255,255,255,.12), rgba(0,0,0,.35)); border: 2px dashed var(--c); }
 .rpg-elite.is-ready .rpg-elite-sil, .rpg-elite.is-ready .rpg-boss-img { animation: rpg-pulse 1.4s ease-in-out infinite; }
-.rpg-elite-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.rpg-elite-body { flex: none; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
 .rpg-elite-body b { font-size: 17px; }
 .rpg-elite-body .rpg-stage-meta { color: #cbd5e1; white-space: normal; }
 .rpg-elite-body .rpg-weak-meta { color: #fbbf24; }
 .rpg-tag-elite { background: #f59e0b; }
-@media (max-width: 520px) { .rpg-elites { padding: 14px 12px 16px; } .rpg-elite-btn { gap: 10px; padding: 10px; } .rpg-elite-sil { width: 52px; height: 52px; font-size: 22px; } .rpg-elite .rpg-boss-img { width: 60px; height: 60px; } .rpg-arena.is-boss .rpg-foe-blank { width: 96px; height: 96px; } }
+@media (max-width: 520px) { .rpg-elites { padding: 14px 12px 16px; } .rpg-elite-btn { gap: 10px; padding: 10px; } .rpg-elite-sil { width: 52px; height: 52px; font-size: 22px; } .rpg-elite .rpg-boss-img { width: 110px; height: 110px; } .rpg-arena.is-boss .rpg-foe-blank { width: 96px; height: 96px; } }
 .rpg-arena.is-boss .rpg-foe-blank { width: 150px; height: 150px; margin: 0 auto; color: var(--c, #f59e0b); border: 3px dashed var(--c, #f59e0b);
   background: radial-gradient(circle, rgba(255,255,255,.14), rgba(0,0,0,.45)); box-shadow: 0 0 28px var(--c, #f59e0b); }
 
@@ -890,7 +893,7 @@ a.rpg-stage-link:focus-visible { outline: 3px solid var(--rpg-cyan); outline-off
 .rpg-intel-list li { display: flex; gap: 10px; align-items: flex-start; padding: 10px; border: 1px solid var(--rpg-line); border-radius: 12px; opacity: .7; }
 .rpg-intel-list li.is-known { opacity: 1; border-color: var(--rpg-pink); }
 .rpg-intel-list img, .rpg-intel-q { width: 52px; height: 52px; flex: none; object-fit: contain; border-radius: 10px; background: rgba(148, 163, 184, .15); }
-.rpg-intel-list li:not(.is-known) img { filter: grayscale(1) brightness(.6); }
+.rpg-intel-list li:not(.is-known) img { filter: brightness(0) opacity(.75); }
 .rpg-intel-q { display: grid; place-items: center; font-size: 24px; font-weight: 800; color: #94a3b8; }
 .rpg-intel-list b { display: block; font-size: 15px; }
 .rpg-intel-list small { color: #64748b; font-size: 12px; }
