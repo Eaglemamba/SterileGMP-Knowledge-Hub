@@ -1475,7 +1475,7 @@
   var OPT_REF = /以上|皆是|皆非|all of the above|none of the above|both [A-E]\b/i;
   /* Letters that are names, not option references: "Grade A 或 B", "Annex A", "Type C", "D 值",
      "膠塞 A 批", "B. diminuta", an English sentence starting with the article "A". */
-  var LETTER_NAME = /\b(Grades?|Annex|Appendix|Type|Tests?|Level|Diagram|Fluid|Attachment|Company|Method|Process|Table|Class|Zone|Part|Category|Schedule|Site|Lot|Batch|Product|Supplier|Room|Line|Area|Phase|Stage|Step|Condition|Case|Scenario|Sample|查核表|ALCOA\s*的)\s*([A-E](\s*(\/|,|、|和|與|及|或|or|and|to)\s*)?)+|(^|[.。]\s*)A (?=[a-z])|[A-E]\. [a-z]|[A-E]\s*(value|_T|值|批)|中 A =/gi;
+  var LETTER_NAME = /\b(Grades?|Annex|Appendix|Type|Tests?|Level|Diagram|Fluid|Attachment|Company|Method|Process|Table|Class|Zone|Part|Category|Schedule|Site|Lot|Batch|Product|Supplier|Room|Line|Area|Phase|Stage|Step|Condition|Case|Scenario|Sample|ALCOA\s*的)\s*([A-E](\s*(\/|,|、|和|與|及|或|or|and|to)\s*)?)+|(查核表|標示為|分類為)\s*[A-E]|(^|[.。「"]\s*)A (?=[a-z])|[A-E](?=\s*[=×])|[A-E]\. [a-z]|[A-E]\s*(value|_T|值|批)|中 A =/gi;
   function mixOpts(q) {
     var keys = Object.keys(q.options || {});
     if (keys.length < 2 || !q.options[q.correct]) return q;

@@ -13,6 +13,11 @@ Usage (from the repo root):
     python scripts/build_rpg_manifest.py
     python scripts/build_rpg_manifest.py --check   # exit 1 if manifest is stale
 
+Both modes also lint the question banks: an explanation that still names an
+option letter ("B 錯在…") stops that question's options from shuffling in
+rpg.js (mixOpts). The rule is read from rpg.js (LETTER / LETTER_NAME), so the
+two never drift. Warnings only; quote the option text instead.
+
 The output is deterministic (no timestamps) so re-running produces no diff.
 """
 import json
@@ -179,7 +184,39 @@ def build():
     return {'version': 1, 'assets': assets, 'docs': docs}
 
 
+def js_regex(src, name):
+    m = re.search(r'var ' + name + r' = /(.+)/([gi]*);', src)
+    flags = re.ASCII | (re.I if 'i' in m.group(2) else 0)   # ASCII: JS \b and \s match like this
+    return re.compile(m.group(1).replace('\\/', '/'), flags)
+
+
+def lint_letters():
+    """Questions whose explanation names an option letter (so mixOpts keeps their order)."""
+    with open(os.path.join(ROOT, 'rpg', 'rpg.js'), 'r', encoding='utf-8') as f:
+        src = f.read()
+    letter, opt_ref, name = js_regex(src, 'LETTER'), js_regex(src, 'OPT_REF'), js_regex(src, 'LETTER_NAME')
+    hits = []
+    for fn in sorted(os.listdir(QUIZ_DIR)):
+        if not fn.endswith('.json'):
+            continue
+        with open(os.path.join(QUIZ_DIR, fn), 'r', encoding='utf-8') as f:
+            qs = json.load(f).get('questions', [])
+        for q in qs:
+            opts = ' '.join((q.get('options') or {}).values())
+            if opt_ref.search(opts) or letter.search(opts):
+                continue   # options themselves name a letter / 以上皆是: order must stay, nothing to fix
+            exp = name.sub(' ', q.get('explanation') or '')
+            m = letter.search(exp)
+            if m:
+                hits.append(f'  rpg/quiz/{fn} id {q.get("id")}: ...{exp[max(0, m.start() - 15):m.end() + 15]}...')
+    if hits:
+        print(f'Note: {len(hits)} explanation(s) name an option letter, so those questions will not shuffle '
+              '(quote the option text instead of "B 錯在…"):')
+        print('\n'.join(hits))
+
+
 def main():
+    lint_letters()
     manifest = build()
     text = json.dumps(manifest, ensure_ascii=False, separators=(',', ':'), sort_keys=True) + '\n'
     docs = manifest['docs']
