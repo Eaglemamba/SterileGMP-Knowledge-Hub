@@ -2715,7 +2715,9 @@
       mount.appendChild(h('div', { class: 'rpg-panel rpg-empty' }, [
         h('h2', { text: '還沒有角色' }),
         h('p', { text: '建立角色後，這裡會顯示你的等級、夥伴、稱號和文件卡圖鑑。' }),
-        h('button', { class: 'rpg-btn', type: 'button', onclick: openOnboarding, text: '建立角色' })
+        h('button', { class: 'rpg-btn', type: 'button', onclick: openOnboarding, text: '建立角色' }),
+        h('p', { class: 'rpg-note', text: '在別台電腦玩過？用「讀取存檔」把下載的存檔放回來。' }),
+        h('button', { class: 'rpg-btn rpg-btn-ghost', type: 'button', onclick: importSave, text: '讀取存檔' })
       ]));
       return;
     }
