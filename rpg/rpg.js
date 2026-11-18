@@ -107,6 +107,38 @@
      fight is a 弱點擊破 (+1 heart, +1 shield, a heavier hit, and a one-time bonus on the first such
      win). Like gear, it never changes scoring — 80 % right is still the pass mark. */
   /* qa/ra also counter a zone-0/1 boss so every class has at least one counter on the main path. */
+  /* 屬性相剋 for status effects. Each skill has a status specialty; each boss / elite resists or is
+     weak to some statuses. Hearts and shields only, never the score. Mob and guardian fights use the
+     learner's main skill against a plain foe. */
+  var STATUS_SKILL = {
+    qc: { psn: 1, zh: '毒專長：對手中毒後每回合都幫你回心' },
+    bt: { psn: 1, zh: '毒專長：對手中毒後每回合都幫你回心' },
+    engineering: { par: 1, zh: '麻痺專長：連對 2 題就麻痺，動不了的機率更高' },
+    techservice: { par: 1, zh: '麻痺專長：連對 2 題就麻痺，動不了的機率更高' },
+    production: { slp: 1, zh: '催眠專長：開場就讓對手睡著' },
+    ra: { slp: 1, zh: '催眠專長：開場就讓對手睡著（條文太長，對手讀到睡著）' },
+    qa: { guard: 1, zh: '封印護體：你不會中毒' },
+    warehouse: { aid: 1, zh: '急救補給：你解毒時回 1 顆心' }
+  };
+  var FOE_TRAIT = {
+    z0: { psn: 'immune', par: 'weak', why: '微粒不是活的，毒對牠無效；靜電一吸就動彈不得' },
+    z1: { psn: 'resist', slp: 'resist', why: '生物膜的基質擋住藥劑，毒效減弱；菌群輪班，很難睡著' },
+    z2: { psn: 'immune', par: 'resist', why: '內毒素不是活菌，毒殺不了；耐熱又耐操，不太會麻痺' },
+    spore: { psn: 'resist', slp: 'weak', why: '芽孢殼耐消毒劑，毒效減弱；本來就愛休眠，一睡就很久' },
+    crack: { par: 'immune', why: '幽靈沒有實體，麻痺不了' },
+    forge: { par: 'weak', why: '稽核軌跡一開，牠就被釘在原地' },
+    mixup: { psn: 'weak', slp: 'resist', why: '身分一亂就自己中毒；到處換標籤，睡不著' },
+    leach: { psn: 'immune', par: 'weak', why: '牠自己就是化學物質，毒對牠無效；碰到萃取研究就僵住' },
+    frost: { slp: 'weak', par: 'weak', why: '低溫讓牠冬眠又凍僵' }
+  };
+  var TRAIT_ZH = { psn: '中毒', par: '麻痺', slp: '睡眠' }, LVL_ZH = { immune: '免疫', resist: '抗', weak: '易' };
+  function traitText(target) {
+    var t = FOE_TRAIT[target];
+    if (!t) return '';
+    return ['psn', 'par', 'slp'].filter(function (k) { return t[k]; }).map(function (k) {
+      return t[k] === 'immune' ? '免疫' + TRAIT_ZH[k] : t[k] === 'weak' ? '容易' + TRAIT_ZH[k] : '抗' + TRAIT_ZH[k];
+    }).join('、') + '（' + t.why + '）';
+  }
   var WEAK = [
     { production: '無菌操作與更衣紀律，從源頭擋住落塵', engineering: 'HVAC 與 HEPA 把微粒抽走', warehouse: '物料進出潔淨區的除污與傳遞，不把微粒帶進來',
       qa: '可見異物檢查與批次放行，有微粒的產品出不了廠' },
@@ -1650,7 +1682,11 @@
        you 中毒 (2 wrong in a row): each turn eats a shield, else every 2nd tick 1 heart, but only spare hearts
        (never the ones you need to still reach 80%, never the last one); a right answer cures it. */
     var STAT = o.kind !== 'drill', allowed = n - Math.ceil(PASS * n);
-    var st = { fp: 0, fpt: 0, par: false, slp: STAT && weak, yp: 0, ypt: 0, runR: 0, runW: 0 };
+    var ss = STATUS_SKILL[o.skill || (S.profile && S.profile.cls)] || {}, ft = FOE_TRAIT[o.target] || {};
+    var psnEvery = ft.psn === 'immune' ? 0 : (ss.psn || ft.psn === 'weak') ? 1 : ft.psn === 'resist' ? 3 : 2;
+    var parChance = ft.par === 'immune' ? 0 : (ss.par ? 0.4 : 0.25) + (ft.par === 'weak' ? 0.15 : ft.par === 'resist' ? -0.13 : 0);
+    var parAt = ss.par ? 2 : 3, wakeChance = ft.slp === 'weak' ? 1 / 5 : ft.slp === 'resist' ? 1 / 2 : 1 / 3, told = {};
+    var st = { fp: 0, fpt: 0, par: false, slp: STAT && (weak || !!ss.slp), yp: 0, ypt: 0, runR: 0, runW: 0 };
     var foeStat = h('span', { class: 'rpg-status' }), youStat = h('span', { class: 'rpg-status' });
     if (weak) hearts++;
     var item = o.item && itemVs(o.item, o.target) ? o.item : null;
@@ -1698,7 +1734,7 @@
       // let the foe finish charging in before the banner covers the top of the arena
       setTimeout(function () {
         sfx(o.kind === 'boss' ? 'warning' : 'appear');
-        if (o.kind === 'boss') banner('WARNING　魔王 ' + o.foe + ' 現身' + (weak ? '　｜　弱點擊破：' + youFx.skill + '，對手睡著了' : ''), o.line || '', 3200, function () {
+        if (o.kind === 'boss') banner('WARNING　魔王 ' + o.foe + ' 現身' + (weak ? '　｜　弱點擊破：' + youFx.skill + '，對手睡著了' : st.slp ? '　｜　催眠：對手睡著了' : ''), o.line || '', 3200, function () {
           if (!item) { ask(); return; }
           var fx = h('span', { class: 'rpg-item-fx', style: '--c:' + item.c }, [itemImgEl(item), h('b', { text: item.zh })]);
           arena.appendChild(fx); sfx('item');
@@ -1728,9 +1764,9 @@
       heartsEl.setAttribute('aria-label', '你的生命 ' + (hearts - lost) + ' / ' + hearts + (shield ? '，護盾 ' + shield : ''));
       if (!STAT) return;
       clear(foeStat); clear(youStat);
-      if (st.fp) foeStat.appendChild(h('i', { class: 'is-psn', text: '中毒', title: '每 2 回合幫你回 1 顆心；你答錯就解毒' }));
-      if (st.par) foeStat.appendChild(h('i', { class: 'is-par', text: '麻痺', title: '你答錯時 25% 對手動不了' }));
-      if (st.slp) foeStat.appendChild(h('i', { class: 'is-slp', text: '睡眠', title: '睡著時你答錯不扣心；每回合 1/3 機率醒來' }));
+      if (st.fp) foeStat.appendChild(h('i', { class: 'is-psn', text: '中毒', title: (psnEvery === 1 ? '每回合' : '每 ' + psnEvery + ' 回合') + '幫你回 1 顆心；你答錯就解毒' }));
+      if (st.par) foeStat.appendChild(h('i', { class: 'is-par', text: '麻痺', title: '你答錯時 ' + Math.round(parChance * 100) + '% 對手動不了' }));
+      if (st.slp) foeStat.appendChild(h('i', { class: 'is-slp', text: '睡眠', title: '睡著時你答錯不扣心；每回合 ' + Math.round(wakeChance * 100) + '% 機率醒來' }));
       if (st.yp) youStat.appendChild(h('i', { class: 'is-psn', text: '中毒', title: '每回合侵蝕護盾或多出來的心；答對 1 題解毒' }));
       foeImg.classList.toggle('st-psn', !!st.fp); foeImg.classList.toggle('st-par', st.par); foeImg.classList.toggle('st-slp', st.slp);
       youAv.classList.toggle('st-psn', !!st.yp);
@@ -1739,11 +1775,11 @@
     function tick() {
       var msg = [];
       if (!STAT || i === 0) return msg;
-      if (st.slp && Math.random() < 1 / 3) { st.slp = false; msg.push(o.foe + ' 醒來了！'); hit(foeBox, 'is-hit', '醒來'); }
+      if (st.slp && Math.random() < wakeChance) { st.slp = false; msg.push(o.foe + ' 醒來了！'); hit(foeBox, 'is-hit', '醒來'); }
       else if (st.slp) { msg.push(o.foe + ' 還在睡。'); hit(foeBox, 'is-zz', 'Zzz'); }
       if (st.fp) {
         st.fpt++;
-        if (st.fpt % 2 === 0 && lost > 0) { lost--; msg.push(o.foe + ' 受到毒傷，你吸回 1 顆心！'); hit(you, 'is-heal', '♥+1'); }
+        if (st.fpt % psnEvery === 0 && lost > 0) { lost--; msg.push(o.foe + ' 受到毒傷，你吸回 1 顆心！'); hit(you, 'is-heal', '♥+1'); }
         else msg.push(o.foe + ' 受到毒傷。');
         hit(foeBox, 'is-psn', '毒');
         sfx('poison');
@@ -1766,13 +1802,25 @@
       if (!STAT) return msg;
       if (ok) {
         st.runR++; st.runW = 0;
-        if (st.yp) { st.yp = 0; st.ypt = 0; msg.push('你解毒了！'); sfx('cure'); }
-        if (st.runR === 2 && !st.fp) { st.fp = 1; st.fpt = 0; msg.push('連續答對！' + o.foe + ' 中毒了！'); sfx('poison'); }
-        else if (st.runR === 3 && !st.par) { st.par = true; msg.push('三連對！' + o.foe + ' 麻痺了，可能動不了！'); sfx('zap'); }
+        if (st.yp) {
+          st.yp = 0; st.ypt = 0; msg.push('你解毒了！'); sfx('cure');
+          if (ss.aid && lost > 0) { lost--; msg.push('急救補給：回 1 顆心！'); hit(you, 'is-heal', '♥+1'); }
+        }
+        if (st.runR === 2 && !st.fp) {
+          if (!psnEvery) { if (!told.psn) { told.psn = 1; msg.push(o.foe + ' 免疫中毒！'); } }
+          else { st.fp = 1; st.fpt = 0; msg.push('連續答對！' + o.foe + ' 中毒了！' + (psnEvery === 1 ? '效果絕佳！' : psnEvery === 3 ? '效果不太好…' : '')); sfx('poison'); }
+        }
+        if (st.runR === parAt && !st.par) {
+          if (parChance <= 0) { if (!told.par) { told.par = 1; msg.push(o.foe + ' 免疫麻痺！'); } }
+          else { st.par = true; msg.push((parAt === 2 ? '連續答對！' : '三連對！') + o.foe + ' 麻痺了，可能動不了！' + (parChance >= 0.4 ? '效果絕佳！' : parChance < 0.2 ? '效果不太好…' : '')); sfx('zap'); }
+        }
       } else {
         st.runW++; st.runR = 0;
         if (st.fp) { st.fp = 0; st.fpt = 0; msg.push(o.foe + ' 趁機解毒了。'); }
-        if (st.runW === 2 && !st.yp) { st.yp = 1; st.ypt = 0; msg.push('連續答錯，你中毒了！答對一題就能解毒。'); sfx('poison'); }
+        if (st.runW === 2 && !st.yp) {
+          if (ss.guard) { if (!told.yp) { told.yp = 1; msg.push('封印護體：毒對你無效！'); } }
+          else { st.yp = 1; st.ypt = 0; msg.push('連續答錯，你中毒了！答對一題就能解毒。'); sfx('poison'); }
+        }
       }
       setTimeout(meters, CALM ? 0 : 700);
       return msg;
@@ -1991,6 +2039,8 @@
       h('p', { class: 'rpg-note', text: w ? '弱點擊破：' + w + '。這場多 1 顆心，魔王開場就睡著' +
         (a.done ? '。' : '；第一次用弱點技能打倒牠，再得 ' + XP_WEAK + ' XP 和 1 顆' + BOSS_MAT + '。')
         : '這個技能對' + a.foe + '沒有特別效果。' }),
+      STATUS_SKILL[a.cur] ? h('p', { class: 'rpg-note', text: fxYou(a.cur).skill + '・' + STATUS_SKILL[a.cur].zh + '。' }) : null,
+      traitText(a.target) ? h('p', { class: 'rpg-note rpg-intel' }, [h('b', { text: '情報：' }), h('span', { text: a.foe + ' ' + traitText(a.target) })]) : null,
       weakHintFor(a.map),
       h('button', { class: 'rpg-btn', type: 'button', text: '開戰', disabled: gated, onclick: a.go })
     ]));
