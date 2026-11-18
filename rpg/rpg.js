@@ -381,12 +381,30 @@
       var m = /^avatar-(.+)\.webp$/.exec(f);
       if (m && ids.indexOf(m[1]) < 0) ids.push(m[1]);
     });
-    return ids;
+    var rank = DEPTS.map(function (d) { return d.id; });
+    return ids.slice(0, rank.length).concat(ids.slice(rank.length).sort(function (a, b) {
+      return rank.indexOf(a.split('-')[0]) - rank.indexOf(b.split('-')[0]) || (a < b ? -1 : 1);
+    }));
   }
-  /* Full portrait for the character: the alternate look if the chosen avatar belongs to the current class. */
+  /* Look gender. Base art (class-<id>) is female; alternates (-2, ...) are male unless listed here. */
+  var FEMALE_ALT = { 'production-2': 1 };
+  function sexOf(id) { return id.indexOf('-') < 0 || FEMALE_ALT[id] ? 'f' : 'm'; }
+  function profileSex() { return S.profile.sex || sexOf(S.profile.avatar); }
+  /* The class look that matches a gender: base or alternate. Falls back to the base art when that gender has none. */
+  function artFor(cls, sex) {
+    var ids = [cls];
+    (M.assets || []).forEach(function (f) {
+      var m = /^class-(.+)\.webp$/.exec(f);
+      if (m && m[1].indexOf(cls + '-') === 0) ids.push(m[1]);
+    });
+    for (var i = 0; i < ids.length; i++) if (sexOf(ids[i]) === sex) return ids[i];
+    return cls;
+  }
+  /* Full portrait for the character: the chosen avatar's look if it belongs to the current class,
+     otherwise the current class drawn in the character's gender. */
   function heroImg() {
     var a = S.profile.avatar, cls = S.profile.cls;
-    return (a !== cls && a.indexOf(cls + '-') === 0 && asset('class-' + a)) || classImg(cls);
+    return (a !== cls && a.indexOf(cls + '-') === 0 && asset('class-' + a)) || classImg(artFor(cls, profileSex()));
   }
   /* Pet artwork for a stage. If that stage has no artwork yet, use the nearest earlier stage
      (then a later one) so the companion never falls back to a blank shape mid-evolution. */
@@ -1209,26 +1227,34 @@
       return;
     }
     var editing = !!S.profile;
-    var pick = { cls: editing ? S.profile.cls : 'production', avatar: editing ? S.profile.avatar : 'production' };
+    var pick = { cls: editing ? S.profile.cls : 'production', avatar: editing ? S.profile.avatar : 'production', sex: editing ? profileSex() : 'f' };
     var nick = h('input', { class: 'rpg-input', type: 'text', maxlength: '16', placeholder: T('暱稱（最多 16 字）', 'Nickname (up to 16 characters)'), value: editing ? S.profile.nick : '' });
     var classGrid = h('div', { class: 'rpg-pick-grid' });
     var avatarGrid = h('div', { class: 'rpg-pick-grid rpg-pick-avatars' });
+    var sexRow = h('div', { class: 'rpg-modal-actions rpg-pick-sex' });
+    var sexNote = h('p', { class: 'rpg-note' });
     var hint = h('p', { class: 'rpg-hint' });
     var avatarTouched = editing;
 
     function draw() {
-      clear(classGrid); clear(avatarGrid);
+      clear(classGrid); clear(avatarGrid); clear(sexRow);
+      [['f', T('女性', 'Female')], ['m', T('男性', 'Male')]].forEach(function (o) {
+        sexRow.appendChild(h('button', {
+          type: 'button', class: 'rpg-btn' + (pick.sex === o[0] ? '' : ' rpg-btn-ghost'), 'aria-pressed': pick.sex === o[0] ? 'true' : 'false',
+          onclick: function () { if (pick.sex === o[0]) return; pick.sex = o[0]; pick.avatar = artFor(pick.cls, o[0]); avatarTouched = false; draw(); }
+        }, [o[1]]));
+      });
       DEPTS.forEach(function (dep) {
         classGrid.appendChild(h('button', {
           type: 'button', class: 'rpg-pick' + (pick.cls === dep.id ? ' is-on' : ''), style: '--c:' + dep.color,
-          onclick: function () { pick.cls = dep.id; if (!avatarTouched) pick.avatar = dep.id; draw(); }
+          onclick: function () { pick.cls = dep.id; if (!avatarTouched) pick.avatar = artFor(dep.id, pick.sex); draw(); }
         }, [
           h('b', { text: CLASS_META[dep.id].job }),
           h('span', { text: dName(dep) }),
           h('small', { text: M.docs && hasQuiz(dep) ? T('有章節挑戰', 'Section challenges') : T('閱讀通關', 'Reading only') })
         ]));
       });
-      avatarChoices().forEach(function (id) {
+      avatarChoices().filter(function (id) { return sexOf(id) === pick.sex; }).forEach(function (id) {
         var base = deptById(id.split('-')[0]);
         avatarGrid.appendChild(h('button', {
           type: 'button', class: 'rpg-pick-avatar' + (pick.avatar === id ? ' is-on' : ''), 'aria-label': (base ? CLASS_META[base.id].job : '') + T('頭像', ' avatar'),
@@ -1236,6 +1262,8 @@
         }, [h('img', { src: avatarImg(id), alt: '' })]));
       });
       var dep = deptById(pick.cls);
+      sexNote.hidden = sexOf(artFor(pick.cls, pick.sex)) === pick.sex;
+      sexNote.textContent = CLASS_META[dep.id].job + T('還沒有男性立繪，角色頁暫時顯示女性版本。', ' has no male artwork yet; the character page shows the female look for now.');
       hint.textContent = dName(dep) + T('：', ': ') + dep.description;
     }
     function hasQuiz(dep) {
@@ -1248,15 +1276,16 @@
       h('h2', { text: editing ? T('編輯角色', 'Edit character') : T('建立你的角色', 'Create your character') }),
       h('p', { class: 'rpg-modal-lead', text: editing ? T('轉職不會清掉進度，只會換主線任務。', 'Changing class keeps your progress; only the main quest changes.') : T('選一個職業決定主線任務，之後可以隨時轉職。讀完章節、通過章節挑戰都會得到經驗值、文件卡和寵物進化。', 'Your class sets your main quest, and you can switch any time. Reading sections and passing section challenges earn XP, document cards and companion evolutions.') }),
       h('h3', { text: T('1. 職業', '1. Class') }), classGrid, hint,
-      h('h3', { text: T('2. 頭像', '2. Avatar') }), avatarGrid,
-      h('h3', { text: T('3. 暱稱', '3. Nickname') }), nick,
+      h('h3', { text: T('2. 性別', '2. Gender') }), sexRow, sexNote,
+      h('h3', { text: T('3. 頭像', '3. Avatar') }), avatarGrid,
+      h('h3', { text: T('4. 暱稱', '4. Nickname') }), nick,
       h('p', { class: 'rpg-note', text: T('角色和進度只存在這台裝置的瀏覽器裡，不會上傳。清除瀏覽器資料會一併清掉。', 'Your character and progress live only in this device\'s browser and are never uploaded. Clearing browser data erases them too.') }),
       h('button', {
         class: 'rpg-btn rpg-btn-wide', type: 'button', text: editing ? T('儲存', 'Save') : T('開始冒險', 'Start adventure'),
         onclick: function () {
           var name = (nick.value || '').trim().slice(0, 16) || T('見習生', 'Trainee');
           var first = !S.profile;
-          S.profile = { nick: name, cls: pick.cls, avatar: pick.avatar };
+          S.profile = { nick: name, cls: pick.cls, avatar: pick.avatar, sex: pick.sex };
           saveState();
           m.close();
           refresh(first);   // first time: adopt existing history without a flood of rewards
@@ -1412,7 +1441,7 @@
     else if (e.kind === 'mile') { kicker = 'MILESTONE'; title = 'Lv ' + e.lv + T(' 里程碑', ' milestone'); sub = T('獲得 ', 'Reward: ') + e.text; art = matImg('boss') ? h('img', { src: matImg('boss'), alt: '' }) : h('img', { src: classImg(S.profile.avatar), alt: '' }); }
     else if (e.kind === 'rank') {
       kicker = 'RANK UP'; title = L(RANKS[e.n]) + (EN ? ' ' : '') + CLASS_META[S.profile.cls].job; sub = T(RANKS[e.n].en + ' 階級達成', RANKS[e.n].en + ' rank reached');
-      art = h('img', { src: classImg(S.profile.cls), alt: '' });
+      art = h('img', { src: heroImg(), alt: '' });
     } else if (e.kind === 'card') {
       var st = G.docs[e.key];
       kicker = e.shiny ? 'SHINY' : e.upgrade ? 'AWAKENED' : 'NEW CARD'; title = st.doc.code || st.doc.short;
