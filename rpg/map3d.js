@@ -15,6 +15,9 @@
   var host = document.getElementById('rpg-map3d');
   if (!host) return;
 
+  var EN = (function () { try { return localStorage.getItem('sgk_rpg_lang') === 'en'; } catch (e) { return false; } })();
+  function T(zh, en) { return EN ? en : zh; }
+
   var ZONE_STYLE = [
     { ground: 0x8fb0cf, side: 0x55718f, accent: 0x2f6fb5, prop: 0xe8eef5 },
     { ground: 0x74cdb9, side: 0x3c8f7f, accent: 0x0f8a7e, prop: 0xe6fbf6 },
@@ -185,7 +188,7 @@
       });
       Z.sides.forEach(function (n, j) {
         revealed++;
-        addPad(n, '支', style, true);
+        addPad(n, T('支', 'S'), style, true);
         if (n.s.here) here = n;
       });
       if (Z.boss.shown) { line.push(Z.boss); addBoss(Z, style); } else cloud(world, Z.boss.x, Z.boss.z, 3.4);
@@ -239,7 +242,7 @@
     else {
       var gem = new THREE.Mesh(new THREE.OctahedronGeometry(2.6), new THREE.MeshLambertMaterial({ color: done ? 0x9aa0ad : 0x3a1030, emissive: done ? 0x000000 : 0xff3d81, emissiveIntensity: 0.6, flatShading: true }));
       gem.position.set(b.x, 4.4, b.z); gem.scale.y = 1.4; gem.userData.spin = !done; world.add(gem); pads.push(gem); gem.userData.boss = Z.z;
-      sp = textSprite(done ? '已擊敗' : 'BOSS', { size: 60, scale: 2.4, color: done ? '#ffffff' : '#ffd23f' }); sp.position.set(b.x, 9.4, b.z);
+      sp = textSprite(done ? T('已擊敗', 'DEFEATED') : 'BOSS', { size: 60, scale: 2.4, color: done ? '#ffffff' : '#ffd23f' }); sp.position.set(b.x, 9.4, b.z);
     }
     world.add(sp);
     var tag = textSprite(Z.z.boss, { size: 48, scale: 2.2, bg: done ? 'rgba(23,166,115,.92)' : 'rgba(20,21,26,.9)', stroke: 0 }); tag.position.set(b.x, 11.6, b.z); world.add(tag);
@@ -250,7 +253,7 @@
     var list = data.elites || [];
     if (!list.length) return;
     var dark = { ground: 0x3b3355, side: 0x1c1729 }, x0 = L[0].x0 + 2, Z0 = -38;
-    var head = textSprite('ELITE　精英魔王', { size: 56, scale: 3.2, bg: 'rgba(120,20,60,.9)', stroke: 0 });
+    var head = textSprite(T('ELITE　精英魔王', 'ELITE BOSSES'), { size: 56, scale: 3.2, bg: 'rgba(120,20,60,.9)', stroke: 0 });
     head.position.set(x0 - 13, 5, Z0 + 2); world.add(head);
     list.forEach(function (e, i) {
       var x = x0 + i * 16, z = Z0 + (i % 2) * 5;
@@ -270,7 +273,7 @@
       else {
         var gem = new THREE.Mesh(new THREE.OctahedronGeometry(2.2), new THREE.MeshLambertMaterial({ color: e.won ? 0x9aa0ad : 0x1a1024, emissive: e.won ? 0x000000 : col, emissiveIntensity: 0.7, flatShading: true }));
         gem.position.set(x, 4, z); gem.scale.y = 1.4; gem.userData = { spin: !e.won, elite: e }; world.add(gem); pads.push(gem);
-        sp = textSprite(e.won ? '已擊敗' : 'ELITE', { size: 60, scale: 2.1, color: e.won ? '#ffffff' : '#ffd23f' }); sp.position.set(x, 8.6, z);
+        sp = textSprite(e.won ? T('已擊敗', 'DEFEATED') : 'ELITE', { size: 60, scale: 2.1, color: e.won ? '#ffffff' : '#ffd23f' }); sp.position.set(x, 8.6, z);
       }
       world.add(sp);
       var tag = textSprite(e.name, { size: 48, scale: 2.1, bg: e.won ? 'rgba(23,166,115,.92)' : 'rgba(20,21,26,.9)', stroke: 0 }); tag.position.set(x, 10.6, z); world.add(tag);
@@ -331,39 +334,39 @@
     if (u.stage) {
       var s = u.stage, stars = '';
       for (var i = 0; i < s.maxStars; i++) stars += i < s.stars ? '★' : '☆';
-      card.appendChild(el('span', 'rpg-tag', s.rec ? '推薦關卡' : s.main ? '主線關卡' : '支線關卡'));
+      card.appendChild(el('span', 'rpg-tag', s.rec ? T('推薦關卡', 'Recommended') : s.main ? T('主線關卡', 'Main stage') : T('支線關卡', 'Side stage')));
       card.appendChild(el('h3', '', s.title));
-      card.appendChild(el('p', 'rpg-map3d-meta', s.shell ? '內容準備中' : (s.cleared ? '已通關' : s.started ? '已讀 ' + s.read + ' / ' + s.total + ' 節' : '共 ' + s.total + ' 節') + (s.quiz ? '・有章節挑戰' : '') + '　' + stars));
-      if (!s.shell) { var a = el('a', 'rpg-btn', s.cleared ? '再讀一次' : s.started ? '繼續' : '出發'); a.href = s.href; card.appendChild(a); }
-      if (s.guard === 'ready') { var g = el('a', 'rpg-btn rpg-btn-ghost', '挑戰守關者'); g.href = s.guardHref; card.appendChild(g); }
-      else if (s.guard === 'wait') card.appendChild(el('p', 'rpg-map3d-meta', '守關者明天現身'));
-      else if (s.guard === 'won') card.appendChild(el('p', 'rpg-map3d-meta', '守關者已擊敗'));
+      card.appendChild(el('p', 'rpg-map3d-meta', s.shell ? T('內容準備中', 'Coming soon') : (s.cleared ? T('已通關', 'Cleared') : s.started ? T('已讀 ' + s.read + ' / ' + s.total + ' 節', s.read + ' / ' + s.total + ' sections read') : T('共 ' + s.total + ' 節', s.total + ' sections')) + (s.quiz ? T('・有章節挑戰', ' · section challenges') : '') + T('　', ' · ') + stars));
+      if (!s.shell) { var a = el('a', 'rpg-btn', s.cleared ? T('再讀一次', 'Read again') : s.started ? T('繼續', 'Continue') : T('出發', 'Start')); a.href = s.href; card.appendChild(a); }
+      if (s.guard === 'ready') { var g = el('a', 'rpg-btn rpg-btn-ghost', T('挑戰守關者', 'Fight the Gatekeeper')); g.href = s.guardHref; card.appendChild(g); }
+      else if (s.guard === 'wait') card.appendChild(el('p', 'rpg-map3d-meta', T('守關者明天現身', 'The Gatekeeper appears tomorrow')));
+      else if (s.guard === 'won') card.appendChild(el('p', 'rpg-map3d-meta', T('守關者已擊敗', 'Gatekeeper defeated')));
     } else if (u.boss) {
       var z = u.boss;
       card.appendChild(el('span', 'rpg-tag', 'BOSS'));
-      card.appendChild(el('h3', '', z.boss + (z.done ? '（已擊敗）' : '')));
-      var tail = z.done ? '，通往下一座島的橋已經架好。' : !z.hasBoss ? '。這一區還沒有題庫，通關即升階。' : z.ready ? '。魔王現身了，擊敗牠就能升階。' : '，全部通關後魔王現身。';
-      card.appendChild(el('p', 'rpg-map3d-meta', '升階試煉：' + z.rankName + '。' + (z.anyOf ? '任選通關 ' : '必讀通關 ') + z.got + ' / ' + z.need + tail));
-      if (z.hasBoss && z.weak) card.appendChild(el('p', 'rpg-map3d-meta', '弱點：' + z.weak + (z.weakWon ? '（已弱點擊破）' : '')));
+      card.appendChild(el('h3', '', z.boss + (z.done ? T('（已擊敗）', ' (defeated)') : '')));
+      var tail = z.done ? T('，通往下一座島的橋已經架好。', '. The bridge to the next island is built.') : !z.hasBoss ? T('。這一區還沒有題庫，通關即升階。', '. This zone has no question bank yet; clearing it ranks you up.') : z.ready ? T('。魔王現身了，擊敗牠就能升階。', '. The boss has appeared: defeat it to rank up.') : T('，全部通關後魔王現身。', '. Clear them all and the boss appears.');
+      card.appendChild(el('p', 'rpg-map3d-meta', T('升階試煉：', 'Rank trial: ') + z.rankName + T('。', '. ') + (z.anyOf ? T('任選通關 ', 'Any cleared ') : T('必讀通關 ', 'Required cleared ')) + z.got + ' / ' + z.need + tail));
+      if (z.hasBoss && z.weak) card.appendChild(el('p', 'rpg-map3d-meta', T('弱點：', 'Weak to: ') + z.weak + (z.weakWon ? T('（已弱點擊破）', ' (weak point broken)') : '')));
       if (z.hasBoss && (z.ready && !z.beaten || z.beaten && !z.weakWon && z.canCounter)) {
-        var fb = el('button', 'rpg-btn', z.beaten ? '弱點擊破' : '挑戰魔王'); fb.type = 'button';
+        var fb = el('button', 'rpg-btn', z.beaten ? T('弱點擊破', 'Weak-Point Break') : T('挑戰魔王', 'Fight the boss')); fb.type = 'button';
         fb.onclick = function () { card.hidden = true; window.SGKRpg.fightBoss(z.ti); };
         card.appendChild(fb);
       }
     } else if (u.elite) {
       var e = u.elite;
       card.appendChild(el('span', 'rpg-tag', 'ELITE'));
-      card.appendChild(el('h3', '', e.open ? e.name + (e.won ? '（已擊敗）' : '') : '？？？'));
-      card.appendChild(el('p', 'rpg-map3d-meta', e.open ? '針劑風險：' + e.risk + '。選打，不影響升階。' : '升到「' + e.unlock + '」後現身。'));
+      card.appendChild(el('h3', '', e.open ? e.name + (e.won ? T('（已擊敗）', ' (defeated)') : '') : '？？？'));
+      card.appendChild(el('p', 'rpg-map3d-meta', e.open ? T('針劑風險：', 'Injectable risk: ') + e.risk + T('。選打，不影響升階。', '. Optional; does not affect rank.') : T('升到「' + e.unlock + '」後現身。', 'Appears once you reach ' + e.unlock + '.')));
       if (e.open) {
-        card.appendChild(el('p', 'rpg-map3d-meta', '弱點：' + e.weak + (e.weakWon ? '（已弱點擊破）' : '')));
-        if (e.needName) card.appendChild(el('p', 'rpg-map3d-meta', '入場條件：攜帶' + e.needName + (e.hasItem ? '（已持有）' : '（到工坊合成）')));
-        var eb = el('button', 'rpg-btn', !e.won ? '挑戰' : !e.weakWon && e.canCounter ? '弱點擊破' : '再戰'); eb.type = 'button';
+        card.appendChild(el('p', 'rpg-map3d-meta', T('弱點：', 'Weak to: ') + e.weak + (e.weakWon ? T('（已弱點擊破）', ' (weak point broken)') : '')));
+        if (e.needName) card.appendChild(el('p', 'rpg-map3d-meta', T('入場條件：攜帶', 'Entry: bring a ') + e.needName + (e.hasItem ? T('（已持有）', ' (you have one)') : T('（到工坊合成）', ' (craft one at the Workshop)'))));
+        var eb = el('button', 'rpg-btn', !e.won ? T('挑戰', 'Fight') : !e.weakWon && e.canCounter ? T('弱點擊破', 'Weak-Point Break') : T('再戰', 'Rematch')); eb.type = 'button';
         eb.onclick = function () { card.hidden = true; window.SGKRpg.fightElite(e.id); };
         card.appendChild(eb);
       }
     }
-    var x = el('button', 'rpg-map3d-x', '×'); x.type = 'button'; x.setAttribute('aria-label', '關閉'); x.onclick = function () { card.hidden = true; };
+    var x = el('button', 'rpg-map3d-x', '×'); x.type = 'button'; x.setAttribute('aria-label', T('關閉', 'Close')); x.onclick = function () { card.hidden = true; };
     card.appendChild(x);
     card.hidden = false;
   }
@@ -422,10 +425,10 @@
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
     host.setAttribute('tabindex', '0');
     host.setAttribute('role', 'application');
-    host.setAttribute('aria-label', '3D 闖關地圖。左右方向鍵移動，下方有相同內容的關卡列表。');
+    host.setAttribute('aria-label', T('3D 闖關地圖。左右方向鍵移動，下方有相同內容的關卡列表。', '3D stage map. Use the arrow keys to move; the same stages are listed below.'));
     host.appendChild(renderer.domElement);
     card = document.createElement('div'); card.className = 'rpg-map3d-card'; card.hidden = true; host.appendChild(card);
-    hint = document.createElement('p'); hint.className = 'rpg-map3d-hint'; hint.textContent = '拖曳移動・滾輪或雙指縮放・點關卡看內容'; host.appendChild(hint);
+    hint = document.createElement('p'); hint.className = 'rpg-map3d-hint'; hint.textContent = T('拖曳移動・滾輪或雙指縮放・點關卡看內容', 'Drag to move · scroll or pinch to zoom · tap a stage for details'); host.appendChild(hint);
 
     scene = new THREE.Scene();
     scene.fog = new THREE.Fog(0xcfe6ff, 70, 190);

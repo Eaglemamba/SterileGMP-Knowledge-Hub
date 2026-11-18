@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="title-en" content="SterileGMP Map — Stage Map">
 <title>SterileGMP Map — 闖關地圖</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -26,7 +27,7 @@ body{margin:0;background:#f5f5f7;color:#1d1d1f;font-family:"Noto Sans TC","Micro
 
 <header class="page-head">
     <h1>SterileGMP Map</h1>
-    <p>一關一關往核心區前進</p>
+    <p data-en="Advance stage by stage toward the core">一關一關往核心區前進</p>
     <nav>
         <a href="index.html">Dashboard</a><span>·</span>
         <a href="learning-path.html">Learning Path</a><span>·</span>
@@ -42,15 +43,24 @@ body{margin:0;background:#f5f5f7;color:#1d1d1f;font-family:"Noto Sans TC","Micro
 <main id="rpg-map">
     <!-- Replaced by rpg/rpg.js when the learning-adventure mode is switched on -->
     <div class="off">
-        <h2>學習冒險模式尚未開啟</h2>
-        <p>開啟後，閱讀章節和通過章節挑戰會累積經驗值、文件卡和夥伴。角色和進度只存在這台裝置的瀏覽器裡。</p>
-        <a href="map.html?rpg=1">開啟學習冒險模式</a>
+        <h2 data-en="Adventure mode is off">學習冒險模式尚未開啟</h2>
+        <p data-en="Turn it on and reading sections and passing section challenges earn XP, document cards and a companion. Your character and progress are stored only in this device's browser.">開啟後，閱讀章節和通過章節挑戰會累積經驗值、文件卡和夥伴。角色和進度只存在這台裝置的瀏覽器裡。</p>
+        <a href="map.html?rpg=1" data-en="Start adventure mode">開啟學習冒險模式</a>
     </div>
 </main>
 
-<footer class="page-foot">SterileGMP Knowledge Hub · 角色資料只存在你的瀏覽器</footer>
+<footer class="page-foot" data-en="SterileGMP Knowledge Hub · Character data stays in your browser">SterileGMP Knowledge Hub · 角色資料只存在你的瀏覽器</footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+<script>
+/* English UI when the adventure language is set to English (sgk_rpg_lang). */
+(function () {
+  try { if (localStorage.getItem('sgk_rpg_lang') !== 'en') return; } catch (e) { return; }
+  document.documentElement.lang = 'en';
+  var t = document.querySelector('meta[name="title-en"]'); if (t) document.title = t.content;
+  document.querySelectorAll('[data-en]').forEach(function (el) { el.textContent = el.getAttribute('data-en'); });
+})();
+</script>
 <script src="rpg/rpg.js" defer></script>
 <script src="rpg/map3d.js" defer></script>
 </body>

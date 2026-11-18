@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SterileGMP Adventure Guide</title>
+<style>
+:root{--bg:#f5f5f7;--card:#fff;--ink:#1d1d1f;--mute:#6e6e73;--line:rgba(0,0,0,.08);--blue:#0071e3;--soft:#f0f5ff;--warn:#fff7ed;--warnline:#fdba74}
+@media (prefers-color-scheme: dark){:root{--bg:#111113;--card:#1c1c1f;--ink:#f2f2f4;--mute:#a1a1a6;--line:rgba(255,255,255,.1);--blue:#4ea1ff;--soft:#16233a;--warn:#2a1d10;--warnline:#9a5b1e}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,"PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.7}
+a{color:var(--blue)}
+.page-head{background:var(--card);border-bottom:1px solid var(--line);padding:28px 16px;text-align:center}
+.page-head h1{margin:0;font-size:28px;font-weight:900;letter-spacing:-.02em;line-height:1.2}
+.page-head p{margin:6px 0 0;font-size:14px;color:var(--mute)}
+.page-head nav{margin-top:10px;font-size:12px}
+.page-head nav a{text-decoration:none;font-weight:500}
+.page-head nav span{color:#aeaeb2;margin:0 6px}
+main{max-width:860px;margin:0 auto;padding:24px 16px 48px}
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px}
+.toc a{font-size:13px;text-decoration:none;background:var(--card);border:1px solid var(--line);padding:5px 12px;border-radius:980px;color:var(--ink)}
+section{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 22px 18px;margin:0 0 18px}
+h2{margin:0 0 12px;font-size:21px;font-weight:900;display:flex;align-items:center;gap:10px}
+h2 .n{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--blue);color:#fff;font-size:14px;flex:none}
+h3{margin:18px 0 6px;font-size:16px}
+p{margin:6px 0}
+ul,ol{margin:6px 0;padding-left:1.3em}
+li{margin:3px 0}
+.lead{font-size:15px;color:var(--mute)}
+.steps{counter-reset:s;list-style:none;padding:0;display:grid;gap:10px}
+.steps li{counter-increment:s;background:var(--soft);border-radius:12px;padding:12px 14px 12px 52px;position:relative;margin:0}
+.steps li::before{content:counter(s);position:absolute;left:14px;top:12px;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-weight:700;display:grid;place-items:center;font-size:13px}
+code{background:var(--soft);padding:1px 6px;border-radius:6px;font-size:.92em}
+.tip{background:var(--warn);border-left:4px solid var(--warnline);border-radius:8px;padding:10px 14px;margin:12px 0;font-size:14px}
+.grid{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.tile{border:1px solid var(--line);border-radius:12px;padding:10px;text-align:center;font-size:13px}
+.tile img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px;background:var(--soft);display:block;margin-bottom:6px}
+.tile b{display:block;font-size:14px}
+.tile small{color:var(--mute)}
+.tbl{width:100%;overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+td:first-child b{white-space:nowrap}
+th{font-size:12px;color:var(--mute);font-weight:700;letter-spacing:.04em}
+.pill{display:inline-block;font-size:12px;padding:1px 8px;border-radius:980px;background:var(--soft);margin:1px 2px 1px 0;white-space:nowrap}
+.cta{display:inline-block;background:var(--blue);color:#fff;text-decoration:none;font-weight:700;padding:10px 22px;border-radius:980px;margin:6px 8px 0 0}
+.cta.alt{background:transparent;color:var(--blue);border:1px solid var(--blue)}
+.page-foot{text-align:center;font-size:12px;color:var(--mute);padding:8px 16px 32px}
+@media (max-width:520px){section{padding:18px 16px 14px}h2{font-size:19px}}
+</style>
+</head>
+<body>
+
+<header class="page-head">
+    <h1>SterileGMP Adventure Guide</h1>
+    <p>Read the regulations, fight monsters, level up. Learn how to play in five minutes.</p>
+    <nav>
+        <a href="index.html">Dashboard</a><span>·</span>
+        <a href="learning-path.html">Learning Path</a><span>·</span>
+        <a href="map.html">Map</a><span>·</span>
+        <a href="character.html">Character</a><span>·</span>
+        <a href="rpg-guide.html" lang="zh-TW" onclick="try{localStorage.setItem('sgk_rpg_lang','zh')}catch(e){}">繁體中文</a>
+    </nav>
+</header>
+
+<main>
+<nav class="toc">
+    <a href="#start">Quick start</a><a href="#loop">Getting stronger</a><a href="#battle">Battle rules</a><a href="#map">Map &amp; bosses</a>
+    <a href="#elite">Elite bosses</a><a href="#workshop">Workshop</a><a href="#extra">Other systems</a><a href="#faq">FAQ</a>
+</nav>
+
+<section id="start">
+    <h2><span class="n">1</span>Quick start</h2>
+    <p class="lead">This is a game layer on top of the knowledge hub. The content is exactly the same documents you normally read; it just adds XP, stages and bosses, so you always know what to read next.</p>
+    <ol class="steps">
+        <li><b>Turn on adventure mode:</b> press "Start adventure mode" on the dashboard, or add <code>?rpg=1</code> to any page URL, for example <a href="map.html?rpg=1">map.html?rpg=1</a>. The same browser remembers it from then on. To turn it off, press "Turn off adventure mode" on the character page or add <code>?rpg=0</code>.</li>
+        <li><b>Create a character:</b> pick a class, which is your department. Your class sets your required reading list and your route on the map.</li>
+        <li><b>Follow "Next quest":</b> the dashboard and the map point to the next document to read. Each section you finish earns XP.</li>
+        <li><b>Take the section challenges:</b> after each section, the page has a minion fight for it. Answer 80% correctly to pass.</li>
+        <li><b>Defeat the zone boss and rank up:</b> once every required document in a zone is cleared, challenge the boss. Win and you go up one rank.</li>
+    </ol>
+    <div class="tip">Progress is stored in your own browser (no login needed). Before you switch computers or clear browsing data, press "Download save" on the character page to get a .json file. On the new computer, press "Load save" to bring it back; your adventure progress and reading history are restored.</div>
+    <a class="cta" href="map.html?rpg=1">Start the adventure</a><a class="cta alt" href="character.html?rpg=1">View my character</a>
+</section>
+
+<section id="loop">
+    <h2><span class="n">2</span>Getting stronger</h2>
+    <h3>Eight classes</h3>
+    <div class="grid">
+        <div class="tile"><img src="rpg/assets/class-qa.webp" alt="" loading="lazy"><b>Guardian</b><small>Quality Assurance (QA)</small></div>
+        <div class="tile"><img src="rpg/assets/class-qc.webp" alt="" loading="lazy"><b>Assessor</b><small>Quality Control (QC)</small></div>
+        <div class="tile"><img src="rpg/assets/class-production.webp" alt="" loading="lazy"><b>Filler</b><small>Production</small></div>
+        <div class="tile"><img src="rpg/assets/class-engineering.webp" alt="" loading="lazy"><b>Machinist</b><small>Engineering &amp; Maintenance</small></div>
+        <div class="tile"><img src="rpg/assets/class-ra.webp" alt="" loading="lazy"><b>Scribe</b><small>Regulatory Affairs (RA)</small></div>
+        <div class="tile"><img src="rpg/assets/class-warehouse.webp" alt="" loading="lazy"><b>Quartermaster</b><small>Warehouse</small></div>
+        <div class="tile"><img src="rpg/assets/class-techservice.webp" alt="" loading="lazy"><b>Tuner</b><small>Technical Services</small></div>
+        <div class="tile"><img src="rpg/assets/class-bt.webp" alt="" loading="lazy"><b>Datamancer</b><small>Information Technology</small></div>
+    </div>
+
+    <h3>Where XP comes from</h3>
+    <div class="tbl"><table>
+        <tr><th>Action</th><th>XP</th></tr>
+        <tr><td>Finish a section</td><td>+10</td></tr>
+        <tr><td>Pass a section challenge (≥ 80% correct)</td><td>+30</td></tr>
+        <tr><td>Clear a whole document</td><td>+50</td></tr>
+        <tr><td>Right answer in a Review Ambush or Daily Patrol</td><td>+15 each</td></tr>
+        <tr><td>First win against a zone boss</td><td>+100</td></tr>
+        <tr><td>First win against an elite boss</td><td>+80</td></tr>
+        <tr><td>First boss win with a counter skill</td><td>+50</td></tr>
+        <tr><td>First win against a document Gatekeeper</td><td>+40</td></tr>
+        <tr><td>A question answered right for the first time in a boss, elite or Gatekeeper fight (counts even if you lose)</td><td>+3 each</td></tr>
+    </table></div>
+
+    <h3>Level and rank are different</h3>
+    <ul>
+        <li><b>Level (Lv)</b>: rises as XP adds up. It shows how much you have read.</li>
+        <li><b>Rank</b>: Trainee → Foundation → Core → Advanced. It shows how far you are through your class's required reading. Each rank needs every required document in that zone cleared, plus a win against that zone's boss.</li>
+        <li><b>Level milestones</b>: reaching certain levels gives a one-time reward that never affects scores. The character page shows the next milestone under the XP bar.</li>
+    </ul>
+    <div class="tbl"><table>
+        <tr><th>Level</th><th>Reward</th></tr>
+        <tr><td>Lv 3</td><td>2 materials (of the kind you have least)</td></tr>
+        <tr><td>Lv 5</td><td>1 Boss Crystal + the title "Diligent Learner"</td></tr>
+        <tr><td>Lv 7</td><td>2 materials</td></tr>
+        <tr><td>Lv 10</td><td>1 Boss Crystal + the title "Well-Read"</td></tr>
+        <tr><td>Lv 13</td><td>3 materials</td></tr>
+        <tr><td>Lv 15</td><td>1 Boss Crystal + the title "Walking Encyclopedia"</td></tr>
+        <tr><td>Lv 20</td><td>2 Boss Crystals + the title "Living Reference"</td></tr>
+    </table></div>
+    <p>Level titles only show while you have no topic title; once you earn a topic title, it takes priority.</p>
+    <ul>
+        <li><b>Document cards</b>: finishing or clearing a document adds its card to your collection. The more sections, the rarer the card (N / R / SR / SSR). Get every section right on the first try and the card turns shiny.</li>
+    </ul>
+</section>
+
+<section id="battle">
+    <h2><span class="n">3</span>Battle rules</h2>
+    <p>Every battle is turn-based multiple choice:</p>
+    <ul>
+        <li><b>Right answer</b>: the enemy loses 1 HP.</li>
+        <li><b>Wrong answer</b>: you lose 1 heart.</li>
+        <li><b>Hearts</b> = the number of wrong answers the 80% pass mark allows + 1. For example, a 10-question fight allows 2 wrong, so you get 3 hearts.</li>
+        <li>Win or lose, every question shows its <b>explanation and source (down to the subsection)</b>, so you can jump straight back to the original text.</li>
+    </ul>
+    <div class="tbl"><table>
+        <tr><th>Battle</th><th>Questions</th><th>Where</th></tr>
+        <tr><td>Section challenge (minion)</td><td>All questions for that section</td><td>On each section page of a document</td></tr>
+        <tr><td>Gatekeeper (optional)</td><td>5 random questions across the whole document's bank</td><td>On the map and quest card, <b>the day after</b> you pass every section of the document</td></tr>
+        <tr><td>Zone boss</td><td>10 random questions from the zone's banks</td><td>At the end of the zone on the map</td></tr>
+        <tr><td>Elite boss</td><td>10 random questions from a topic pool</td><td>The elite archipelago on the map</td></tr>
+        <tr><td>Review Ambush</td><td>Questions from your Mistake Book, or a section you passed 7 days ago</td><td>Pops up when you open the dashboard, map or character page, once a day</td></tr>
+        <tr><td>Daily Patrol</td><td>Up to 5 questions: due mistakes first, then sections you have read (least recently reviewed first)</td><td>"Start patrol" on the dashboard and character page, once a day; you cannot be knocked out</td></tr>
+    </table></div>
+    <h3>Status effects</h3>
+    <p>Statuses appear in section challenges and in boss, elite and Gatekeeper fights. They only affect hearts and shields and <b>never change the score</b>; the pass mark is still 80%. Mistake practice and Daily Patrol have no statuses.</p>
+    <div class="tbl"><table>
+        <tr><th>Status</th><th>Trigger</th><th>Effect</th></tr>
+        <tr><td>Foe poisoned</td><td>2 right answers in a row</td><td>Poison ticks once per turn; every 2 ticks restore 1 of your hearts. If you answer wrong, the foe uses the opening to cure itself.</td></tr>
+        <tr><td>Foe paralyzed</td><td>3 right answers in a row</td><td>Until the fight ends, each wrong answer has a 25% chance that the foe cannot move, so you lose no heart.</td></tr>
+        <tr><td>Foe asleep</td><td>Fighting a boss with a counter skill (Weak-Point Break)</td><td>While it sleeps, wrong answers cost no heart; each turn it has a 1/3 chance to wake.</td></tr>
+        <tr><td>You poisoned</td><td>2 wrong answers in a row</td><td>Each turn the poison eats 1 shield first; with no shield, you lose 1 heart every 2 turns. One right answer cures it.</td></tr>
+    </table></div>
+    <p class="tip">When you are poisoned, the poison only takes your "spare" hearts: while you can still reach 80%, poison will never knock you out or take your last heart.</p>
+    <h3>Strengths and weaknesses</h3>
+    <p>Each department skill has one status specialty, and every boss and elite is immune to, resists, or is especially weak to certain statuses. Before your first fight, a foe's resistances are unknown; after one fight they are recorded in the <b>Intel Codex</b> on the character page, and the skill menu before each fight shows the "Intel". Switch skills to try different strategies. Section challenges and Gatekeeper fights use your main skill.</p>
+    <div class="tbl"><table>
+        <tr><th>Skill</th><th>Specialty</th></tr>
+        <tr><td>QC, Digital</td><td>Poison specialty: 1 right answer poisons the foe (normally 2 in a row)</td></tr>
+        <tr><td>Engineering, Tech Services</td><td>Paralysis specialty: 2 right in a row paralyzes, with a 40% chance the foe cannot move</td></tr>
+        <tr><td>Production, Regulatory</td><td>Sleep specialty: the foe starts the fight asleep, but sleeps lightly (twice the chance to wake)</td></tr>
+        <tr><td>QA</td><td>Sealed Guard: you cannot be poisoned; your first 2-wrong streak gives you 1 shield instead</td></tr>
+        <tr><td>Warehouse</td><td>First Aid: your first 3-right streak restores 1 heart, and curing poison restores 1 heart</td></tr>
+    </table></div>
+    <div class="tbl"><table>
+        <tr><th>Foe</th><th>Intel</th></tr>
+        <tr><td>Particle Fiend</td><td>Immune to poison, weak to paralysis</td></tr>
+        <tr><td>Biofilm King</td><td>Resists poison (heals you only every 3 turns), resists sleep (wakes easily)</td></tr>
+        <tr><td>Endotoxin Dragon</td><td>Immune to poison, resists paralysis</td></tr>
+        <tr><td>Spore Knight</td><td>Resists poison, weak to sleep (1/5 chance to wake)</td></tr>
+        <tr><td>Crack Phantom</td><td>Immune to paralysis</td></tr>
+        <tr><td>Tamper Wraith</td><td>Weak to paralysis</td></tr>
+        <tr><td>Mix-up Fiend</td><td>Weak to poison (heals you every turn while poisoned), resists sleep</td></tr>
+        <tr><td>Leachable Imp</td><td>Immune to poison, weak to paralysis</td></tr>
+        <tr><td>Temperature Giant</td><td>Weak to sleep, weak to paralysis</td></tr>
+    </table></div>
+    <p class="tip">Against ordinary foes, every specialty helps about the same; the difference is the foe's resistances. QA and Warehouse are defensive and ignore resistances; the other three do nothing against an immune foe. Example: a poison specialty is useless against the Particle Fiend, which is immune to poison. Switch to the Engineering paralysis specialty instead: combined with its weakness to paralysis, more than half of your wrong answers cost no heart.</p>
+    <h3>Losing still pays</h3>
+    <ul>
+        <li><b>New-question bonus</b>: in boss, elite and Gatekeeper fights, every question you answer right for the <b>first time</b> gives +3 XP, whether you win or lose. The same question never pays again, so farming one boss gives no XP; you need to see questions you have not met.</li>
+        <li><b>Finish bonus</b>: answer all 10 questions of a boss or elite fight (without running out of hearts) and you get 1 material, win or lose, once per foe per day.</li>
+        <li><b>Gatekeeper</b>: your first win gives +40 XP and 2 materials, and the document gets a Gatekeeper star on the map (up to 4 stars). Why wait a day? A test right after reading measures short-term memory; recalling a day later shows what you really kept.</li>
+    </ul>
+    <div class="tip">Items, gear and skills only add hearts, shields or hints; they <b>never change scoring</b>. Passing always means 80% correct. Extra hearts will not pass you, but they help you last the whole fight, see more new questions and earn the finish material.</div>
+</section>
+
+<section id="map">
+    <h2><span class="n">4</span>Map &amp; zone bosses</h2>
+    <p>On the <a href="map.html?rpg=1">map</a>, your class route is split across three islands. The boss at the end of an island appears once every required document there is cleared. Some islands have no required documents and ask for "any 3" instead; the map marks 3 "Recommended" stages (favoring documents with question banks, and counting ones you already cleared). Follow those; the rest are side stages to read if you like.</p>
+    <div class="grid">
+        <div class="tile"><img src="rpg/assets/boss-1.webp" alt="" loading="lazy"><b>Particle Fiend</b><small>Starter Isle: Trainee → Foundation</small></div>
+        <div class="tile"><img src="rpg/assets/boss-2.webp" alt="" loading="lazy"><b>Biofilm King</b><small>Training Isle: Foundation → Core</small></div>
+        <div class="tile"><img src="rpg/assets/boss-3.webp" alt="" loading="lazy"><b>Endotoxin Dragon</b><small>Core Isle: Core → Advanced</small></div>
+    </div>
+    <h3>Weak points and second specialties</h3>
+    <p>Clear every required document of <b>another department</b> and you learn that department's skill. Each boss fears certain departments' skills. Bring a counter skill into the fight and you get 1 extra heart and the boss starts asleep; your first win this way also gives bonus XP and a Boss Crystal.</p>
+    <div class="tbl"><table>
+        <tr><th>Boss</th><th>Weak to</th></tr>
+        <tr><td>Particle Fiend</td><td><span class="pill">Production</span><span class="pill">Engineering</span><span class="pill">Warehouse</span><span class="pill">QA</span></td></tr>
+        <tr><td>Biofilm King</td><td><span class="pill">QC</span><span class="pill">Tech Services</span><span class="pill">IT</span><span class="pill">RA</span></td></tr>
+        <tr><td>Endotoxin Dragon</td><td><span class="pill">QA</span><span class="pill">RA</span><span class="pill">QC</span><span class="pill">Tech Services</span></td></tr>
+    </table></div>
+</section>
+
+<section id="elite">
+    <h2><span class="n">5</span>Elite bosses (optional)</h2>
+    <p>Once you reach <b>Foundation</b>, the clouds over the elite archipelago clear. Elite bosses ask questions across departments and stand for common failure modes in an injectables plant. They do not affect rank, and your first win earns a hidden title. Some elites <b>require a specific item to enter</b>.</p>
+    <div class="tbl"><table>
+        <tr><th>Elite</th><th>Theme</th><th>Entry requirement</th></tr>
+        <tr><td><b>Spore Knight</b></td><td>Inadequate sterilization: heat-resistant spores, surviving BIs, too little F0</td><td>Sporicide</td></tr>
+        <tr><td><b>Crack Phantom</b></td><td>Container closure failure: micro-leaks, stoppers, crimping</td><td>None</td></tr>
+        <tr><td><b>Tamper Wraith</b></td><td>Data integrity: shared accounts, back-dating, altered data</td><td>Traceability tool</td></tr>
+        <tr><td><b>Mix-up Fiend</b></td><td>Mislabeling, mixed batches, incomplete line clearance</td><td>Identification tool</td></tr>
+        <tr><td><b>Leachable Imp</b></td><td>Extractables and leachables (E&amp;L)</td><td>None</td></tr>
+        <tr><td><b>Temperature Giant</b></td><td>Cold chain temperature excursions</td><td>Temperature recording tool</td></tr>
+    </table></div>
+    </section>
+
+<section id="workshop">
+    <h2><span class="n">6</span>Workshop: materials, gear, items</h2>
+    <p>Craft things from materials in the Workshop on the <a href="character.html?rpg=1">character page</a>.</p>
+    <h3>Where materials come from</h3>
+    <ul>
+        <li>Passing a section challenge for the first time drops a material for that topic (10 kinds, such as Aseptic Crystal, Membrane Shard and Codex Page).</li>
+        <li>Right answers in a Review Ambush, and Mistake Book questions answered right "the next day" or later, also drop materials.</li>
+        <li>Your first win against a zone boss drops a <b>Boss Crystal</b>, used for high-tier gear and items.</li>
+        <li>Short on something? Trade 3 of one material for 1 of another (Boss Crystals cannot be traded).</li>
+    </ul>
+    <h3>Gear (worn, always active)</h3>
+    <div class="tbl"><table>
+        <tr><th>Gear</th><th>Effect</th></tr>
+        <tr><td>Sterile Gloves</td><td>The first wrong answer in each fight costs no heart (it still counts as wrong)</td></tr>
+        <tr><td>Anti-Fog Goggles</td><td>Shows which section a question comes from before you answer</td></tr>
+        <tr><td>Laminar Cape</td><td>+1 heart in boss fights</td></tr>
+        <tr><td>Cleanroom Armor</td><td>+2 hearts in boss fights, +1 in minion fights</td></tr>
+        <tr><td>Codex Bookmark</td><td>After a wrong answer, a "Back to source" link jumps straight to that section</td></tr>
+        <tr><td>Petri Dish Amulet / Chip Pocket Watch</td><td>+5 XP in Review Ambushes / ambushes come back after 5 days</td></tr>
+        <tr><td>Companion Scarf, Crystal Frame</td><td>Cosmetic</td></tr>
+    </table></div>
+    <h3>Special items (bring one per boss fight)</h3>
+    <p>Pick one from the menu before a fight. Against the foe it counters, it gives extra shields; some elites can only be fought with the right item. Item names are generic terms, and their descriptions are real GMP concepts.</p>
+    <div class="tbl"><table>
+        <tr><th>Foe</th><th>Item</th></tr>
+        <tr><td>Particle Fiend</td><td>Handheld Particle Counter</td></tr>
+        <tr><td>Biofilm King</td><td>Alkaline CIP Detergent</td></tr>
+        <tr><td>Endotoxin Dragon</td><td>Depyrogenation Tunnel</td></tr>
+        <tr><td>Spore Knight</td><td>Peracetic Acid Sporicide, VHP Generator (high tier)</td></tr>
+        <tr><td>Crack Phantom</td><td>Vacuum Decay Leak Tester</td></tr>
+        <tr><td>Tamper Wraith</td><td>Audit Trail Review Tool, User Access Matrix (high tier)</td></tr>
+        <tr><td>Mix-up Fiend</td><td>Barcode Verification Scanner, Inline Vision System (high tier)</td></tr>
+        <tr><td>Leachable Imp</td><td>Extractables Screening Kit</td></tr>
+        <tr><td>Temperature Giant</td><td>Temperature Data Logger, Qualified Insulated Shipper (high tier)</td></tr>
+    </table></div>
+</section>
+
+<section id="extra">
+    <h2><span class="n">7</span>Other systems</h2>
+    <h3>Companions</h3>
+    <p>After your first section, an egg hatches and you pick one of three companions. Each time you rank up, your companion evolves (4 stages in all), and it chats with you while you read.</p>
+    <div class="grid">
+        <div class="tile"><img src="rpg/assets/pet-a-1.webp" alt="" loading="lazy"><b>Droplet Sprite</b><small>→ Cloudsea Dragon</small></div>
+        <div class="tile"><img src="rpg/assets/pet-b-1.webp" alt="" loading="lazy"><b>Owlet</b><small>→ Cleanroom Sky Owl</small></div>
+        <div class="tile"><img src="rpg/assets/pet-c-1.webp" alt="" loading="lazy"><b>Vial Slime</b><small>→ Glass Sentinel</small></div>
+    </div>
+    <h3>Mistake Book</h3>
+    <p>Every question you miss in any fight is recorded. It is only cleansed when you answer it right <b>on a later day</b> (re-answering right after reading the explanation does not count), and each cleansed question drops a material.</p>
+    <h3>Review Ambush</h3>
+    <p>The first time each day you open the dashboard, map or character page, a question may ambush you: due Mistake Book questions first, otherwise a section you passed 7 days ago. A right answer gives +15 XP and a material. It never interrupts you while you are reading a document.</p>
+    <h3>Daily Patrol</h3>
+    <p>An ambush is one random question; a patrol is a set you choose to spend three minutes on. "Daily Patrol" appears under the quest card on the dashboard and on the character page: up to 5 questions a day, drawn from sections you have passed and from your Mistake Book. Each right answer gives +15 XP; wrong answers cost nothing and go into the Mistake Book. Finishing it counts toward your learning streak for the day, drops 1 material, and stops that day's ambush. On days you read nothing new, a patrol still keeps your streak alive.</p>
+    <h3>Titles and streaks</h3>
+    <p>Topic titles level up as you clear documents on a topic. There are also hidden titles, such as a 7-day learning streak, passing three documents in one day, or getting every section right on the first try 5 times. The status bar at the bottom of the screen shows your streak.</p>
+    <h3>Music and sound</h3>
+    <p>The opening story has background music, with a new melody on each page; level-ups, rank-ups, new cards, boss entrances and battle results play short sound effects. Everything is synthesized live in the browser, so there are no audio files to download. To mute it, press "♪ Music on" in the corner of the opening or battle screen; your choice is remembered. Sound never affects any score.</p>
+</section>
+
+<section id="faq">
+    <h2><span class="n">8</span>FAQ</h2>
+    <h3>Are the questions the same when I retake a challenge?</h3>
+    <p>The questions are the same, but the option order of most questions is reshuffled every time, so you have to understand the content rather than remember "question 3 is C". Questions whose explanation names a letter (such as "option B") keep their original order so the explanation still matches.</p>
+    <h3>What if I fail a section challenge?</h3>
+    <p>There is no penalty. Read the explanations, go back to the source, and try again any time. Passing after failing twice or more earns the hidden title "Unyielding".</p>
+    <h3>Why hasn't the boss appeared yet?</h3>
+    <p>Every required document in the zone must be <b>fully cleared</b> (every section challenge passed) before the boss appears. The map or character page shows which ones are left.</p>
+    <h3>Why is an elite boss's "Fight" button grayed out?</h3>
+    <p>That elite has an entry requirement. Craft an item of the matching type at the Workshop and pick it before the fight.</p>
+    <h3>Why do some documents have no questions?</h3>
+    <p>Question banks are still being added. A document without one counts as cleared once you finish reading it, and its zone can be ranked up by reading alone.</p>
+    <h3>Does this affect official training records?</h3>
+    <p>No. The game only records progress in your browser, and the pass mark is 80%, the same as the Quiz Tracker.</p>
+</section>
+</main>
+
+<footer class="page-foot">SterileGMP Knowledge Hub · Adventure Guide</footer>
+</body>
+</html>

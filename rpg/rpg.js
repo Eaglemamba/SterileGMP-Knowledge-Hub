@@ -33,6 +33,31 @@
     try { var v = JSON.parse(lsGet(k) || 'null'); return v === null ? fallback : v; } catch (e) { return fallback; }
   }
 
+  /* ---------- language: 'zh' (default) or 'en'. Picked on the invite, the prologue, or the character page;
+     switching reloads the page, so every T(zh, en) below is evaluated once with the right language. ---------- */
+  var LANG_KEY = 'sgk_rpg_lang';
+  var LANG = lsGet(LANG_KEY) === 'en' ? 'en' : 'zh';
+  var EN = LANG === 'en';
+  function T(zh, en) { return EN ? en : zh; }
+  function setLang(l) { lsSet(LANG_KEY, l === 'en' ? 'en' : 'zh'); }
+  var LIST = T('、', ', '), SEP = T('　', ' · ');
+  function langSwitch() {
+    if (document.getElementById('rpg-lang')) return;
+    var b = document.createElement('button');
+    b.id = 'rpg-lang'; b.type = 'button';
+    b.textContent = EN ? '中文' : 'EN';
+    b.title = EN ? '切換為繁體中文' : 'Switch to English';
+    b.setAttribute('aria-label', b.title);
+    b.style.cssText = 'position:fixed;top:12px;right:12px;z-index:980;min-width:44px;padding:6px 12px;border-radius:999px;border:1px solid rgba(15,23,42,.18);background:rgba(255,255,255,.92);color:#0f172a;font:700 13px/1.2 system-ui,-apple-system,"Noto Sans TC",sans-serif;box-shadow:0 2px 8px rgba(15,23,42,.12);cursor:pointer;backdrop-filter:blur(6px)';
+    if (window.innerWidth < 640) b.style.cssText += ';position:absolute;top:4px;right:8px;min-width:0;padding:3px 10px;font-size:12px';
+    b.onclick = function () { setLang(EN ? 'zh' : 'en'); location.reload(); };
+    document.body.appendChild(b);
+  }
+  function L(o) { return o ? (EN && o.en ? o.en : o.zh) : ''; }                // {zh, en} records: RANKS, ZONES, ...
+  function dName(d) { return d ? (EN ? d.name : d.nameZh || d.name) : ''; }        // curriculum departments
+  function docT(d) { return d ? (EN ? d.title : d.titleZh || d.title) : ''; }       // manifest docs
+  function tierL(t) { return t ? (EN ? t.label : t.labelZh || t.label) : ''; }      // curriculum tiers
+
   /* ---------- on/off switch ---------- */
   try {
     var flag = new URLSearchParams(location.search).get('rpg');
@@ -49,13 +74,14 @@
       box.style.cssText = 'display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:12px 0;padding:12px 16px;border:1px dashed #94a3b8;border-radius:12px;font-size:.92rem;color:#334155;background:rgba(148,163,184,.08)';
       var txt = document.createElement('span');
       txt.style.flex = '1 1 240px';
-      txt.textContent = stored === '0' ? '冒險模式已關閉。' : '想把閱讀變成闖關？冒險模式會幫你選職業、排路線，讀完章節打小怪、通關打魔王。成績照常計算。';
+      txt.textContent = stored === '0' ? T('冒險模式已關閉。', 'Adventure mode is off.') : T('想把閱讀變成闖關？冒險模式會幫你選職業、排路線，讀完章節打小怪、通關打魔王。成績照常計算。', 'Want to turn reading into a quest? Adventure mode gives you a class and a route: finish a section to fight a minion, clear a zone to face its boss. Scores count as usual.');
       var btn = document.createElement('button');
       btn.type = 'button';
-      btn.textContent = '開啟冒險模式';
+      btn.textContent = T('開啟冒險模式', 'Start adventure mode');
       btn.style.cssText = 'padding:6px 14px;border-radius:999px;border:0;background:#0ea5e9;color:#fff;font-weight:700;cursor:pointer';
       btn.onclick = function () { lsSet(FLAG_KEY, '1'); location.reload(); };
       box.appendChild(txt); box.appendChild(btn); mount.appendChild(box);
+      langSwitch();
     };
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', invite); else invite();
     return;
@@ -63,39 +89,41 @@
 
   /* ---------- static game data ---------- */
   var CLASS_META = {
-    qa: { job: '守護者' }, qc: { job: '鑑定師' }, production: { job: '充填師' },
-    engineering: { job: '機工' }, ra: { job: '書記官' }, warehouse: { job: '補給官' },
-    techservice: { job: '調律師' }, bt: { job: '資料術士' }
+    qa: { job: T('守護者', 'Guardian') }, qc: { job: T('鑑定師', 'Assessor') }, production: { job: T('充填師', 'Filler') },
+    engineering: { job: T('機工', 'Machinist') }, ra: { job: T('書記官', 'Scribe') }, warehouse: { job: T('補給官', 'Quartermaster') },
+    techservice: { job: T('調律師', 'Tuner') }, bt: { job: T('資料術士', 'Datamancer') }
   };
   var RANKS = [
     { zh: '見習', en: 'Trainee' }, { zh: '初階', en: 'Foundation' },
     { zh: '中堅', en: 'Core' }, { zh: '專家', en: 'Advanced' }
   ];
   var PETS = {
-    a: { color: '#38bdf8', voice: '咕嚕', stages: ['水滴精靈', '霧氣精靈', '蒸氣小龍', '雲海龍王'] },
-    b: { color: '#34d399', voice: '呼呼', stages: ['雛梟', '風梟', '層流大梟', '無塵天梟'] },
-    c: { color: '#a78bfa', voice: '啵', stages: ['玻瓶史萊姆', '晶體獸', '琉璃守衛獸', '琉璃聖獸'] }
+    a: { color: '#38bdf8', voice: T('咕嚕', 'Bloop'), stages: T(['水滴精靈', '霧氣精靈', '蒸氣小龍', '雲海龍王'], ['Droplet Sprite', 'Mist Sprite', 'Steam Drake', 'Cloudsea Dragon']) },
+    b: { color: '#34d399', voice: T('呼呼', 'Hoo-hoo'), stages: T(['雛梟', '風梟', '層流大梟', '無塵天梟'], ['Owlet', 'Breeze Owl', 'Laminar Owl', 'Cleanroom Sky Owl']) },
+    c: { color: '#a78bfa', voice: T('啵', 'Plink'), stages: T(['玻瓶史萊姆', '晶體獸', '琉璃守衛獸', '琉璃聖獸'], ['Vial Slime', 'Crystal Beast', 'Glass Warden', 'Glass Sentinel']) }
   };
-  var CLUSTER_ZH = ['無菌製程', '滅菌過濾', '容器密封', '品質系統', '環境監測', '檢驗方法', '廠房設備', '先進療法', '法規遵循', '新興技術'];
+  var CLUSTER_ZH = T(['無菌製程', '滅菌過濾', '容器密封', '品質系統', '環境監測', '檢驗方法', '廠房設備', '先進療法', '法規遵循', '新興技術'],
+    ['Aseptic Processing', 'Sterile Filtration', 'Container Closure', 'Quality Systems', 'Environmental Monitoring', 'Test Methods', 'Facilities & Equipment', 'Advanced Therapies', 'Regulatory Compliance', 'Emerging Technologies']);
   var RARITY = ['N', 'R', 'SR', 'SSR'];
   // One crafting material per topic cluster ('c<i>'), plus 魔王結晶 ('boss') from each boss's first defeat.
-  var MATS = ['無菌結晶', '濾膜碎片', '硼矽玻片', '簽核印記', '培養皿之塵', '試劑滴', '不鏽鋼鉚釘', '細胞微光', '法典書頁', '電路晶片'];
-  var BOSS_MAT = '魔王結晶', CONVERT = 3;          // workshop: CONVERT of one material -> 1 of another (not boss crystals)
+  var MATS = T(['無菌結晶', '濾膜碎片', '硼矽玻片', '簽核印記', '培養皿之塵', '試劑滴', '不鏽鋼鉚釘', '細胞微光', '法典書頁', '電路晶片'],
+    ['Aseptic Crystal', 'Membrane Shard', 'Borosilicate Chip', 'Approval Seal', 'Petri Dish Dust', 'Reagent Drop', 'Steel Rivet', 'Cell Glimmer', 'Codex Page', 'Circuit Chip']);
+  var BOSS_MAT = T('魔王結晶', 'Boss Crystal'), CONVERT = 3;          // workshop: CONVERT of one material -> 1 of another (not boss crystals)
   var XP_REVIEW = 15, REVIEW_GAP = 7 * 24 * 3600 * 1000;
   /* Equipment, crafted once each from materials, one item per slot. Effects help you
      stay in a fight or find the source again; none of them changes how a fight is
      scored (80 % right is still the pass mark). Art: rpg/assets/gear-<id>.webp. */
-  var SLOTS = { head: '頭部', body: '身體', hand: '手', charm: '飾品', pet: '夥伴', frame: '外框' };
+  var SLOTS = { head: T('頭部', 'Head'), body: T('身體', 'Body'), hand: T('手', 'Hands'), charm: T('飾品', 'Charm'), pet: T('夥伴', 'Companion'), frame: T('外框', 'Frame') };
   var GEAR = [
-    { id: 'gloves', slot: 'hand', zh: '無菌手套', eff: '每場戰鬥第一次答錯不扣心（仍算答錯）', need: { c0: 2, c6: 1 } },
-    { id: 'goggles', slot: 'head', zh: '防霧護目鏡', eff: '作答前先顯示這題的出處章節', need: { c2: 2, c5: 1 } },
-    { id: 'cape', slot: 'body', zh: '層流披風', eff: '魔王戰多 1 顆心：更容易撐完 10 題，多看新題、拿撐完素材', need: { c1: 2, c0: 1, c4: 1 } },
-    { id: 'bookmark', slot: 'charm', zh: '法典書籤', eff: '答錯時出現「回原文」，直接跳到那一節', need: { c8: 2, c3: 1 } },
-    { id: 'amulet', slot: 'charm', zh: '培養皿護符', eff: '複習突擊答對多 +5 XP', need: { c4: 2, c7: 1 } },
-    { id: 'watch', slot: 'charm', zh: '晶片懷錶', eff: '複習突擊提早到 5 天後出現', need: { c9: 2, c6: 1 } },
-    { id: 'ribbon', slot: 'pet', zh: '夥伴領巾', eff: '夥伴戴上領巾，閱讀時會多說幾句', need: { c7: 2, c2: 1 } },
-    { id: 'gemframe', slot: 'frame', zh: '結晶外框', eff: '頭像換成會發光的結晶外框', need: { c0: 3, boss: 1 } },
-    { id: 'armor', slot: 'body', zh: '無塵聖甲', eff: '魔王戰多 2 顆心，小怪戰多 1 顆心：更容易撐完全場，多拿新題 XP 和撐完素材', need: { boss: 2, c1: 2, c6: 2 } }
+    { id: 'gloves', slot: 'hand', zh: T('無菌手套', 'Sterile Gloves'), eff: T('每場戰鬥第一次答錯不扣心（仍算答錯）', 'The first wrong answer in each fight costs no heart (it still counts as wrong)'), need: { c0: 2, c6: 1 } },
+    { id: 'goggles', slot: 'head', zh: T('防霧護目鏡', 'Anti-Fog Goggles'), eff: T('作答前先顯示這題的出處章節', 'Shows the source section of each question before you answer'), need: { c2: 2, c5: 1 } },
+    { id: 'cape', slot: 'body', zh: T('層流披風', 'Laminar Cape'), eff: T('魔王戰多 1 顆心：更容易撐完 10 題，多看新題、拿撐完素材', '+1 heart in boss fights: easier to last all 10 questions, see new ones and earn the finish material'), need: { c1: 2, c0: 1, c4: 1 } },
+    { id: 'bookmark', slot: 'charm', zh: T('法典書籤', 'Codex Bookmark'), eff: T('答錯時出現「回原文」，直接跳到那一節', 'After a wrong answer, a "Back to source" link jumps straight to that section'), need: { c8: 2, c3: 1 } },
+    { id: 'amulet', slot: 'charm', zh: T('培養皿護符', 'Petri Dish Amulet'), eff: T('複習突擊答對多 +5 XP', '+5 XP for each right answer in a review ambush'), need: { c4: 2, c7: 1 } },
+    { id: 'watch', slot: 'charm', zh: T('晶片懷錶', 'Chip Pocket Watch'), eff: T('複習突擊提早到 5 天後出現', 'Review ambushes come back after 5 days instead of 7'), need: { c9: 2, c6: 1 } },
+    { id: 'ribbon', slot: 'pet', zh: T('夥伴領巾', 'Companion Scarf'), eff: T('夥伴戴上領巾，閱讀時會多說幾句', 'Your companion wears a scarf and chats a little more while you read'), need: { c7: 2, c2: 1 } },
+    { id: 'gemframe', slot: 'frame', zh: T('結晶外框', 'Crystal Frame'), eff: T('頭像換成會發光的結晶外框', 'Your portrait gets a glowing crystal frame'), need: { c0: 3, boss: 1 } },
+    { id: 'armor', slot: 'body', zh: T('無塵聖甲', 'Cleanroom Armor'), eff: T('魔王戰多 2 顆心，小怪戰多 1 顆心：更容易撐完全場，多拿新題 XP 和撐完素材', '+2 hearts in boss fights, +1 in minion fights: easier to finish, so more new-question XP and finish materials'), need: { boss: 2, c1: 2, c6: 2 } }
   ];
   function gearById(id) { for (var i = 0; i < GEAR.length; i++) if (GEAR[i].id === id) return GEAR[i]; return null; }
   function wearing(id) { var g = gearById(id); return !!(g && S && S.gear && S.gear.on[g.slot] === id); }
@@ -111,41 +139,41 @@
      weak to some statuses. Hearts and shields only, never the score. Mob and guardian fights use the
      learner's main skill against a plain foe. */
   var STATUS_SKILL = {
-    qc: { psn: 1, zh: '毒專長：答對 1 題就讓對手中毒' },
-    bt: { psn: 1, zh: '毒專長：答對 1 題就讓對手中毒' },
-    engineering: { par: 1, zh: '麻痺專長：連對 2 題就麻痺，動不了的機率更高' },
-    techservice: { par: 1, zh: '麻痺專長：連對 2 題就麻痺，動不了的機率更高' },
-    production: { slp: 1, zh: '催眠專長：開場就讓對手睡著，但睡得淺（醒來機率加倍）' },
-    ra: { slp: 1, zh: '催眠專長：開場就讓對手睡著，但睡得淺（條文太長，對手讀到打瞌睡）' },
-    qa: { guard: 1, zh: '封印護體：你不會中毒；第一次連錯 2 題時改得 1 面護盾' },
-    warehouse: { aid: 1, zh: '急救補給：第一次連對 3 題回 1 顆心，解毒時也回 1 顆心' }
+    qc: { psn: 1, zh: T('毒專長：答對 1 題就讓對手中毒', 'Poison specialty: 1 right answer poisons the foe') },
+    bt: { psn: 1, zh: T('毒專長：答對 1 題就讓對手中毒', 'Poison specialty: 1 right answer poisons the foe') },
+    engineering: { par: 1, zh: T('麻痺專長：連對 2 題就麻痺，動不了的機率更高', 'Paralysis specialty: 2 right in a row paralyzes, with a higher chance the foe cannot move') },
+    techservice: { par: 1, zh: T('麻痺專長：連對 2 題就麻痺，動不了的機率更高', 'Paralysis specialty: 2 right in a row paralyzes, with a higher chance the foe cannot move') },
+    production: { slp: 1, zh: T('催眠專長：開場就讓對手睡著，但睡得淺（醒來機率加倍）', 'Sleep specialty: the foe starts the fight asleep, but sleeps lightly (twice the chance to wake)') },
+    ra: { slp: 1, zh: T('催眠專長：開場就讓對手睡著，但睡得淺（條文太長，對手讀到打瞌睡）', 'Sleep specialty: the foe starts the fight asleep, but sleeps lightly (the clauses are so long it nods off)') },
+    qa: { guard: 1, zh: T('封印護體：你不會中毒；第一次連錯 2 題時改得 1 面護盾', 'Sealed Guard: you cannot be poisoned; your first 2-wrong streak gives you 1 shield instead') },
+    warehouse: { aid: 1, zh: T('急救補給：第一次連對 3 題回 1 顆心，解毒時也回 1 顆心', 'First Aid: your first 3-right streak restores 1 heart, and curing poison restores 1 heart') }
   };
   var FOE_TRAIT = {
-    z0: { psn: 'immune', par: 'weak', why: '微粒不是活的，毒對牠無效；靜電一吸就動彈不得' },
-    z1: { psn: 'resist', slp: 'resist', why: '生物膜的基質擋住藥劑，毒效減弱；菌群輪班，很難睡著' },
-    z2: { psn: 'immune', par: 'resist', why: '內毒素不是活菌，毒殺不了；耐熱又耐操，不太會麻痺' },
-    spore: { psn: 'resist', slp: 'weak', why: '芽孢殼耐消毒劑，毒效減弱；本來就愛休眠，一睡就很久' },
-    crack: { par: 'immune', why: '幽靈沒有實體，麻痺不了' },
-    forge: { par: 'weak', why: '稽核軌跡一開，牠就被釘在原地' },
-    mixup: { psn: 'weak', slp: 'resist', why: '身分一亂就自己中毒；到處換標籤，睡不著' },
-    leach: { psn: 'immune', par: 'weak', why: '牠自己就是化學物質，毒對牠無效；碰到萃取研究就僵住' },
-    frost: { slp: 'weak', par: 'weak', why: '低溫讓牠冬眠又凍僵' }
+    z0: { psn: 'immune', par: 'weak', why: T('微粒不是活的，毒對牠無效；靜電一吸就動彈不得', 'particles are not alive, so poison does nothing; static cling pins them in place') },
+    z1: { psn: 'resist', slp: 'resist', why: T('生物膜的基質擋住藥劑，毒效減弱；菌群輪班，很難睡著', 'the biofilm matrix blocks agents, weakening poison; the colony works in shifts and hardly sleeps') },
+    z2: { psn: 'immune', par: 'resist', why: T('內毒素不是活菌，毒殺不了；耐熱又耐操，不太會麻痺', 'endotoxin is not a living cell, so poison cannot kill it; heat-stable and tough, it rarely freezes up') },
+    spore: { psn: 'resist', slp: 'weak', why: T('芽孢殼耐消毒劑，毒效減弱；本來就愛休眠，一睡就很久', 'the spore coat resists disinfectants, weakening poison; it loves dormancy and sleeps long') },
+    crack: { par: 'immune', why: T('幽靈沒有實體，麻痺不了', 'a phantom has no body to paralyze') },
+    forge: { par: 'weak', why: T('稽核軌跡一開，牠就被釘在原地', 'switch on the audit trail and it is pinned in place') },
+    mixup: { psn: 'weak', slp: 'resist', why: T('身分一亂就自己中毒；到處換標籤，睡不著', 'confused identities poison it from inside; too busy swapping labels to sleep') },
+    leach: { psn: 'immune', par: 'weak', why: T('牠自己就是化學物質，毒對牠無效；碰到萃取研究就僵住', 'it is a chemical itself, so poison does nothing; an extraction study freezes it') },
+    frost: { slp: 'weak', par: 'weak', why: T('低溫讓牠冬眠又凍僵', 'the cold makes it hibernate and go stiff') }
   };
-  var TRAIT_ZH = { psn: '中毒', par: '麻痺', slp: '睡眠' }, LVL_ZH = { immune: '免疫', resist: '抗', weak: '易' };
+  var TRAIT_ZH = T({ psn: '中毒', par: '麻痺', slp: '睡眠' }, { psn: 'poison', par: 'paralysis', slp: 'sleep' });
   function traitText(target) {
     var t = FOE_TRAIT[target];
     if (!t) return '';
     return ['psn', 'par', 'slp'].filter(function (k) { return t[k]; }).map(function (k) {
-      return t[k] === 'immune' ? '免疫' + TRAIT_ZH[k] : t[k] === 'weak' ? '容易' + TRAIT_ZH[k] : '抗' + TRAIT_ZH[k];
-    }).join('、') + '（' + t.why + '）';
+      return t[k] === 'immune' ? T('免疫', 'immune to ') + TRAIT_ZH[k] : t[k] === 'weak' ? T('容易', 'weak to ') + TRAIT_ZH[k] : T('抗', 'resists ') + TRAIT_ZH[k];
+    }).join(LIST) + T('（' + t.why + '）', ' (' + t.why + ')');
   }
   var WEAK = [
-    { production: '無菌操作與更衣紀律，從源頭擋住落塵', engineering: 'HVAC 與 HEPA 把微粒抽走', warehouse: '物料進出潔淨區的除污與傳遞，不把微粒帶進來',
-      qa: '可見異物檢查與批次放行，有微粒的產品出不了廠' },
-    { qc: '微生物鑑定與環境監測，抓出生物膜的蹤跡', techservice: '清潔確效與 CIP／SIP，刷掉築好的膜', bt: '水系統與監測數據的趨勢，提早看見生物膜成形',
-      ra: '藥典製藥用水規格與微生物限值，劃清水質紅線' },
-    { qa: '去熱原確效與放行把關，熱原出不了廠', ra: '藥典內毒素限值與法規要求，劃清紅線',
-      qc: '細菌內毒素試驗與熱原試驗，量出牠藏了多少', techservice: '除熱原確效與內毒素指標物挑戰，證明降了 3 log' }
+    { production: T('無菌操作與更衣紀律，從源頭擋住落塵', 'aseptic technique and gowning discipline stop fallout at the source'), engineering: T('HVAC 與 HEPA 把微粒抽走', 'HVAC and HEPA filters pull particles away'), warehouse: T('物料進出潔淨區的除污與傳遞，不把微粒帶進來', 'decontaminating and transferring materials into the clean area keeps particles out'),
+      qa: T('可見異物檢查與批次放行，有微粒的產品出不了廠', 'visible particle inspection and batch release keep particulate product from leaving the site') },
+    { qc: T('微生物鑑定與環境監測，抓出生物膜的蹤跡', 'microbial identification and environmental monitoring track the biofilm down'), techservice: T('清潔確效與 CIP／SIP，刷掉築好的膜', 'cleaning validation and CIP/SIP scrub off the established film'), bt: T('水系統與監測數據的趨勢，提早看見生物膜成形', 'trending water system and monitoring data spots biofilm forming early'),
+      ra: T('藥典製藥用水規格與微生物限值，劃清水質紅線', 'pharmacopoeial water specifications and microbial limits draw the red line for water quality') },
+    { qa: T('去熱原確效與放行把關，熱原出不了廠', 'depyrogenation validation and release control keep pyrogens from leaving the site'), ra: T('藥典內毒素限值與法規要求，劃清紅線', 'pharmacopoeial endotoxin limits and regulatory requirements draw the red line'),
+      qc: T('細菌內毒素試驗與熱原試驗，量出牠藏了多少', 'bacterial endotoxin and pyrogen tests measure how much it hides'), techservice: T('除熱原確效與內毒素指標物挑戰，證明降了 3 log', 'depyrogenation validation with endotoxin indicator challenges proves a 3-log reduction') }
   ];
   var XP_WEAK = 50;
   /* Elite bosses: optional fights about other injectable failure modes (the zone bosses cover what
@@ -154,53 +182,53 @@
      too. They never gate rank-up. src: { key, secs: [section ids], ids: [question ids] } — a doc
      with neither takes its whole bank. Art: rpg/assets/elite-<id>.webp (silhouette until then). */
   var ELITES = [
-    { id: 'spore', name: '孢子騎士', risk: '滅菌不足：耐熱芽孢、BI 存活、F0 不夠',
-      fx: { el: '芽孢系', skill: '耐熱芽孢槍', c: '#b45309', m: 'fly', g: 'spore', n: 6, size: 26, spin: 1, imp: { dots: 14, tint: 'burn', quake: 1 } },
+    { id: 'spore', name: T('孢子騎士', 'Spore Knight'), risk: T('滅菌不足：耐熱芽孢、BI 存活、F0 不夠', 'Inadequate sterilization: heat-resistant spores, surviving BIs, too little F0'),
+      fx: { el: T('芽孢系', 'Spore'), skill: T('耐熱芽孢槍', 'Heat-Proof Spore Lance'), c: '#b45309', m: 'fly', g: 'spore', n: 6, size: 26, spin: 1, imp: { dots: 14, tint: 'burn', quake: 1 } },
       src: [{ key: 'TR1' }, { key: 'pda-guide-no1', secs: ['sec10', 'sec11'] }],
-      srcText: 'PDA TR1 濕熱滅菌確效、PDA Guide No.1 滅菌與無菌流路',
-      weak: { engineering: '滅菌器設計與熱分布，讓每個冷點都達到 F0', techservice: '滅菌確效與生物指示劑挑戰，證明孢子活不下來', qc: 'BI 培養與無菌試驗，抓出漏網的芽孢' },
-      needTag: 'sporicide', needName: '殺孢劑', needText: '芽孢殼太硬：75% 酒精和季銨鹽只殺得死營養型細菌，殺不死芽孢。帶一瓶殺孢劑才進得了這場戰鬥',
-      line: '「121 °C 才 15 分鐘？我的芽孢殼耐得住。」', rage: '「冷點在哪你找得到嗎？我就躲在那裡！」', title: '孢子獵人' },
-    { id: 'crack', name: '裂隙幽靈', risk: '容器密封失效：微漏、膠塞、軋蓋',
-      fx: { el: '裂隙系', skill: '微漏穿隙', c: '#0ea5e9', m: 'swarm', g: 'ghost', n: 3, size: 40, imp: { mark: 'crack', dots: 10, dc: '#bae6fd', quake: 1 } },
+      srcText: T('PDA TR1 濕熱滅菌確效、PDA Guide No.1 滅菌與無菌流路', 'PDA TR1 moist heat sterilization validation; PDA Guide No.1 sterilization and sterile fluid paths'),
+      weak: { engineering: T('滅菌器設計與熱分布，讓每個冷點都達到 F0', 'sterilizer design and heat distribution bring every cold spot up to F0'), techservice: T('滅菌確效與生物指示劑挑戰，證明孢子活不下來', 'sterilization validation with biological indicator challenges proves spores cannot survive'), qc: T('BI 培養與無菌試驗，抓出漏網的芽孢', 'BI incubation and sterility testing catch spores that slipped through') },
+      needTag: 'sporicide', needName: T('殺孢劑', 'sporicide'), needText: T('芽孢殼太硬：75% 酒精和季銨鹽只殺得死營養型細菌，殺不死芽孢。帶一瓶殺孢劑才進得了這場戰鬥', 'The spore coat is too tough: 70-75% alcohol and quats kill vegetative bacteria, not spores. Bring a sporicide to enter this fight'),
+      line: T('「121 °C 才 15 分鐘？我的芽孢殼耐得住。」', '"121 °C for just 15 minutes? My spore coat can take it."'), rage: T('「冷點在哪你找得到嗎？我就躲在那裡！」', '"Can you even find the cold spot? That is where I hide!"'), title: T('孢子獵人', 'Spore Hunter') },
+    { id: 'crack', name: T('裂隙幽靈', 'Crack Phantom'), risk: T('容器密封失效：微漏、膠塞、軋蓋', 'Container closure failure: micro-leaks, stoppers, crimping'),
+      fx: { el: T('裂隙系', 'Breach'), skill: T('微漏穿隙', 'Micro-Leak Seep'), c: '#0ea5e9', m: 'swarm', g: 'ghost', n: 3, size: 40, imp: { mark: 'crack', dots: 10, dc: '#bae6fd', quake: 1 } },
       src: [{ key: 'pda-guide-no1', secs: ['sec6', 'sec7', 'sec9'], ids: [2, 9, 93] }, { key: 'FDA-Aseptic', ids: [13, 15] },
             { key: 'PICS-Annex1', ids: [37] }, { key: 'TR22', ids: [12, 18, 25] }],
-      srcText: 'PDA Guide No.1 容器密封與封蓋、Annex 1、FDA 無菌製程、TR22 的密封相關題',
-      weak: { production: '加塞與軋蓋的製程管控，每一瓶都蓋好封緊', qc: '容器密封完整性測試，找出看不見的微漏', warehouse: '包材進料檢驗與搬運保護，裂瓶和變形膠塞上不了線' },
-      line: '「只要一道你看不見的縫，我就進得去。」', rage: '「膠塞歪一點、軋蓋鬆一點，就夠了！」', title: '封緘守門人' },
-    { id: 'forge', name: '竄改魅影', risk: '資料完整性失效：共用帳號、補登、改數據、關稽核軌跡',
-      fx: { el: '竄改系', skill: '數據改寫', c: '#e11d48', m: 'stream', g: 'bits', n: 12, size: 18, imp: { tint: 'glitch', dots: 10, flash: 1 } },
+      srcText: T('PDA Guide No.1 容器密封與封蓋、Annex 1、FDA 無菌製程、TR22 的密封相關題', 'PDA Guide No.1 container closure and capping, Annex 1, FDA aseptic processing, and the closure questions in TR22'),
+      weak: { production: T('加塞與軋蓋的製程管控，每一瓶都蓋好封緊', 'stoppering and crimping process controls seal every vial tight'), qc: T('容器密封完整性測試，找出看不見的微漏', 'container closure integrity testing finds the invisible micro-leaks'), warehouse: T('包材進料檢驗與搬運保護，裂瓶和變形膠塞上不了線', 'incoming inspection and careful handling keep cracked vials and warped stoppers off the line') },
+      line: T('「只要一道你看不見的縫，我就進得去。」', '"One gap you cannot see is all I need."'), rage: T('「膠塞歪一點、軋蓋鬆一點，就夠了！」', '"A stopper a bit crooked, a crimp a bit loose, that is enough!"'), title: T('封緘守門人', 'Seal Keeper') },
+    { id: 'forge', name: T('竄改魅影', 'Tamper Wraith'), risk: T('資料完整性失效：共用帳號、補登、改數據、關稽核軌跡', 'Data integrity failure: shared accounts, back-dating, altered data, audit trail switched off'),
+      fx: { el: T('竄改系', 'Tamper'), skill: T('數據改寫', 'Data Rewrite'), c: '#e11d48', m: 'stream', g: 'bits', n: 12, size: 18, imp: { tint: 'glitch', dots: 10, flash: 1 } },
       src: [{ key: 'TR84', ids: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40] }],
-      srcText: 'PDA TR84 資料完整性：ALCOA+、資料 criticality 與 vulnerability、9-Box、稽核軌跡',
-      weak: { bt: '個人帳號、權限分級與稽核軌跡設定，每筆修改都留下誰、何時、改了什麼', qa: 'ALCOA+ 與批紀錄審查，放行前看過稽核軌跡',
-              qc: '實驗室數據審查，層析圖重積分與重複測試逃不過' },
-      needTag: 'trace', needName: '追溯工具', needText: '竄改魅影躲在共用帳號和關掉的稽核軌跡後面：看不出是誰、何時、改了什麼，你連牠在哪都找不到。帶一件能追溯修改的道具才進得了這場戰鬥',
-      line: '「數字改一下就好，反正沒人看得出來。」', rage: '「群組帳號登入，誰改的？你查不到！」', title: '數據守誓者' },
-    { id: 'mixup', name: '混淆魔', risk: '混淆與錯標：貼錯標籤、混批、清線不徹底、狀態標示不清',
-      fx: { el: '混淆系', skill: '標籤調包', c: '#d946ef', m: 'swarm', g: 'page', n: 6, size: 28, spin: 1, imp: { mark: 'cross', dots: 10, flash: 1 } },
+      srcText: T('PDA TR84 資料完整性：ALCOA+、資料 criticality 與 vulnerability、9-Box、稽核軌跡', 'PDA TR84 data integrity: ALCOA+, data criticality and vulnerability, the 9-box, audit trails'),
+      weak: { bt: T('個人帳號、權限分級與稽核軌跡設定，每筆修改都留下誰、何時、改了什麼', 'personal accounts, role-based access and audit trail settings record who changed what, and when'), qa: T('ALCOA+ 與批紀錄審查，放行前看過稽核軌跡', 'ALCOA+ and batch record review, with the audit trail checked before release'),
+              qc: T('實驗室數據審查，層析圖重積分與重複測試逃不過', 'laboratory data review catches chromatogram reintegration and test-into-compliance') },
+      needTag: 'trace', needName: T('追溯工具', 'traceability tool'), needText: T('竄改魅影躲在共用帳號和關掉的稽核軌跡後面：看不出是誰、何時、改了什麼，你連牠在哪都找不到。帶一件能追溯修改的道具才進得了這場戰鬥', 'The Tamper Wraith hides behind shared accounts and a disabled audit trail: with no record of who changed what and when, you cannot even find it. Bring an item that traces changes to enter this fight'),
+      line: T('「數字改一下就好，反正沒人看得出來。」', '"Just tweak the number. Nobody will ever notice."'), rage: T('「群組帳號登入，誰改的？你查不到！」', '"Logged in on a group account. Who changed it? You will never know!"'), title: T('數據守誓者', 'Data Oathkeeper') },
+    { id: 'mixup', name: T('混淆魔', 'Mix-up Fiend'), risk: T('混淆與錯標：貼錯標籤、混批、清線不徹底、狀態標示不清', 'Mix-ups and mislabeling: wrong labels, mixed batches, incomplete line clearance, unclear status labels'),
+      fx: { el: T('混淆系', 'Mix-up'), skill: T('標籤調包', 'Label Swap'), c: '#d946ef', m: 'swarm', g: 'page', n: 6, size: 28, spin: 1, imp: { mark: 'cross', dots: 10, flash: 1 } },
       src: [{ key: 'FDA-21CFR-211', secs: ['sec4'] }, { key: 'FDA-ProcessInspection', ids: [21] }, { key: 'PICS-PE011', ids: [16] },
             { key: 'TR52', ids: [11, 15] }, { key: 'ISPE-Vol3', ids: [7, 18] }, { key: 'ISPE-Vol6', ids: [9, 21, 27] }, { key: 'pda-guide-no1', ids: [75] }],
-      srcText: '21 CFR 211 包裝與標示管制、FDA 無菌製程檢查未貼標容器、PIC/S PE011 與 TR52 的隔離與狀態管制、ISPE Vol.3/Vol.6 混淆與多產品隔離、PDA Guide No.1 清場',
-      weak: { production: '清場、換線與貼標核對，每一瓶都貼對、每條線都清空', warehouse: '物料狀態標示與隔離，待驗、合格、退貨各歸其位',
-              qa: '清場覆核、標籤發放與數量核算，放行前最後把關' },
-      needTag: 'ident', needName: '辨識工具', needText: '混淆魔和正確的產品長得一模一樣，光靠肉眼核對分不出來。帶一件能逐一辨識標籤與物料的道具才進得了這場戰鬥',
-      line: '「兩個品項標籤長得一樣，換一下誰會發現？」', rage: '「清場沒做完，上一批的標籤還留在線上！」', title: '辨識之眼' },
-    { id: 'leach', name: '溶出妖', risk: '萃取物與溶出物：膠塞、管路、容器的化學物質溶進藥液',
-      fx: { el: '溶出系', skill: '析出毒滴', c: '#65a30d', m: 'drop', g: 'drop', n: 4, size: 26, imp: { tint: 'stain', dots: 12, ring: 1 } },
+      srcText: T('21 CFR 211 包裝與標示管制、FDA 無菌製程檢查未貼標容器、PIC/S PE011 與 TR52 的隔離與狀態管制、ISPE Vol.3/Vol.6 混淆與多產品隔離、PDA Guide No.1 清場', '21 CFR 211 packaging and labeling control, unlabeled containers in FDA inspections, segregation and status control in PIC/S PE011 and TR52, mix-ups and multi-product segregation in ISPE Vol.3/Vol.6, line clearance in PDA Guide No.1'),
+      weak: { production: T('清場、換線與貼標核對，每一瓶都貼對、每條線都清空', 'line clearance, changeover and label checks: every vial labeled right, every line cleared'), warehouse: T('物料狀態標示與隔離，待驗、合格、退貨各歸其位', 'material status labels and segregation keep quarantined, released and returned goods apart'),
+              qa: T('清場覆核、標籤發放與數量核算，放行前最後把關', 'line clearance checks, label issuance and reconciliation as the last gate before release') },
+      needTag: 'ident', needName: T('辨識工具', 'identification tool'), needText: T('混淆魔和正確的產品長得一模一樣，光靠肉眼核對分不出來。帶一件能逐一辨識標籤與物料的道具才進得了這場戰鬥', 'The Mix-up Fiend looks exactly like the right product, and a visual check cannot tell them apart. Bring an item that identifies each label and material to enter this fight'),
+      line: T('「兩個品項標籤長得一樣，換一下誰會發現？」', '"Two products, two labels that look the same. Who would notice a swap?"'), rage: T('「清場沒做完，上一批的標籤還留在線上！」', '"Line clearance was skipped. Last batch\'s labels are still on the line!"'), title: T('辨識之眼', 'Eye of Identity') },
+    { id: 'leach', name: T('溶出妖', 'Leachable Imp'), risk: T('萃取物與溶出物：膠塞、管路、容器的化學物質溶進藥液', 'Extractables and leachables: chemicals from stoppers, tubing and containers migrating into the drug'),
+      fx: { el: T('溶出系', 'Leachable'), skill: T('析出毒滴', 'Leaching Drip'), c: '#65a30d', m: 'drop', g: 'drop', n: 4, size: 26, imp: { tint: 'stain', dots: 12, ring: 1 } },
       src: [{ key: 'USP-1663' }, { key: 'USP-1664' }, { key: 'USP-381' }, { key: 'TR66', ids: [2, 10] }, { key: 'TR26', ids: [8] }],
-      srcText: 'USP 〈1663〉 萃取物評估、〈1664〉 溶出物評估、〈381〉 彈性體組件，以及 TR66、TR26 的 E&L 題',
-      weak: { qc: '萃取與溶出物的分析篩檢，找出並鑑定溶進來的化合物', techservice: '材料與組件評估，依接觸條件設計萃取研究',
-              ra: '安全閾值與毒理評估，判斷溶出量是否可接受' },
-      line: '「我藏在膠塞和管路裡，跟著藥液一起上架。」', rage: '「接觸越久、溫度越高，我溶得越多！」', title: '溶出鑑識者' },
-    { id: 'frost', name: '溫度巨人', risk: '冷鏈失效：運輸與倉儲的溫度偏離、未確效的保溫箱、沒有溫度紀錄',
-      fx: { el: '溫控系', skill: '溫度偏離衝擊', c: '#f97316', m: 'cone', g: 'shard', n: 8, size: 22, imp: { tint: 'burn', dots: 12, quake: 1 } },
+      srcText: T('USP 〈1663〉 萃取物評估、〈1664〉 溶出物評估、〈381〉 彈性體組件，以及 TR66、TR26 的 E&L 題', 'USP <1663> extractables assessment, <1664> leachables assessment, <381> elastomeric components, and the E&L questions in TR66 and TR26'),
+      weak: { qc: T('萃取與溶出物的分析篩檢，找出並鑑定溶進來的化合物', 'analytical screening of extractables and leachables finds and identifies migrated compounds'), techservice: T('材料與組件評估，依接觸條件設計萃取研究', 'material and component assessment designs extraction studies around contact conditions'),
+              ra: T('安全閾值與毒理評估，判斷溶出量是否可接受', 'safety thresholds and toxicological assessment decide whether leachable levels are acceptable') },
+      line: T('「我藏在膠塞和管路裡，跟著藥液一起上架。」', '"I hide in stoppers and tubing, and ship out with the drug."'), rage: T('「接觸越久、溫度越高，我溶得越多！」', '"The longer the contact and the hotter it gets, the more of me leaches out!"'), title: T('溶出鑑識者', 'Leachables Sleuth') },
+    { id: 'frost', name: T('溫度巨人', 'Temperature Giant'), risk: T('冷鏈失效：運輸與倉儲的溫度偏離、未確效的保溫箱、沒有溫度紀錄', 'Cold chain failure: temperature excursions in transport and storage, unqualified shippers, no temperature records'),
+      fx: { el: T('溫控系', 'Thermal'), skill: T('溫度偏離衝擊', 'Excursion Shock'), c: '#f97316', m: 'cone', g: 'shard', n: 8, size: 22, imp: { tint: 'burn', dots: 12, quake: 1 } },
       src: [{ key: 'TR39', ids: [1, 3, 4, 6, 7, 10, 11, 12, 14, 18] }, { key: 'TR46', ids: [3, 9, 14, 17, 18, 19, 23] },
             { key: 'TR52', ids: [6, 7, 8, 9, 10, 14, 21, 22] }, { key: 'USP-1079', ids: [3, 4, 5] }, { key: 'PICS-PE011', ids: [17, 33, 47, 49, 50] }],
-      srcText: 'PDA TR39 溫控運輸確效、TR46 最後一哩與 MKT、TR52 GDP 儲運溫控、USP 〈1079〉 溫度偏離與 mapping、PIC/S PE011 冷藏運輸與倉儲',
-      weak: { warehouse: '冷庫 mapping、收發與退貨管控，偏離當下第一線把關', techservice: '保溫箱確效與季節挑戰，證明運輸撐得住',
-              qa: '偏離調查與 MKT、穩定性評估，決定產品能不能放行' },
-      needTag: 'cold', needName: '溫度紀錄工具', needText: '溫度巨人只在運輸途中出沒：沒有全程溫度紀錄，你連牠來過都證明不了。帶一件能記錄或守住運輸溫度的道具才進得了這場戰鬥',
-      line: '「2–8 °C？卡車在大太陽下停兩個小時，看你怎麼辦。」', rage: '「沒有溫度紀錄，你證明不了我沒來過！」', title: '冷鏈守護者' }
+      srcText: T('PDA TR39 溫控運輸確效、TR46 最後一哩與 MKT、TR52 GDP 儲運溫控、USP 〈1079〉 溫度偏離與 mapping、PIC/S PE011 冷藏運輸與倉儲', 'PDA TR39 temperature-controlled transport qualification, TR46 last mile and MKT, TR52 GDP temperature control, USP <1079> excursions and mapping, PIC/S PE011 cold storage and transport'),
+      weak: { warehouse: T('冷庫 mapping、收發與退貨管控，偏離當下第一線把關', 'cold room mapping and control of receipt, dispatch and returns catch excursions first-hand'), techservice: T('保溫箱確效與季節挑戰，證明運輸撐得住', 'shipper qualification with seasonal challenges proves the shipment holds up'),
+              qa: T('偏離調查與 MKT、穩定性評估，決定產品能不能放行', 'excursion investigation, MKT and stability assessment decide whether the product can be released') },
+      needTag: 'cold', needName: T('溫度紀錄工具', 'temperature recording tool'), needText: T('溫度巨人只在運輸途中出沒：沒有全程溫度紀錄，你連牠來過都證明不了。帶一件能記錄或守住運輸溫度的道具才進得了這場戰鬥', 'The Temperature Giant only appears in transit: without a full temperature record you cannot even prove it was there. Bring an item that records or holds the shipping temperature to enter this fight'),
+      line: T('「2–8 °C？卡車在大太陽下停兩個小時，看你怎麼辦。」', '"2-8 °C? The truck just sat in the sun for two hours. Now what?"'), rage: T('「沒有溫度紀錄，你證明不了我沒來過！」', '"No temperature record, no proof I was never here!"'), title: T('冷鏈守護者', 'Cold Chain Warden') }
   ];
   /* Special items (道具): crafted once in the workshop, one brought into each boss fight from the
      skill picker. vs: targets ('z<zone>' for zone bosses, elite ids) — against a target the item
@@ -208,45 +236,45 @@
      混淆魔 an ident tool, 溫度巨人 a cold-chain tool).
      Like gear: never changes scoring. Art: rpg/assets/item-<id>.webp (drawn badge until then). */
   var ITEMS = [
-    { id: 'paa', zh: '過氧乙酸殺孢劑', cat: '殺孢劑', c: '#84cc16', vs: ['spore'], tags: ['sporicide'], shield: 1, need: { c5: 2, c4: 1 },
-      use: '噴灑過氧乙酸，芽孢殼開始崩解',
-      eff: '進入孢子騎士戰的通行證，戰鬥中多 1 面護盾。過氧乙酸加過氧化氫，是殺得死芽孢的消毒劑；Annex 1 要求消毒計畫定期輪用殺孢劑。' },
-    { id: 'vhp', zh: '汽化過氧化氫產生器', cat: '殺孢劑', c: '#22d3ee', vs: ['spore'], tags: ['sporicide'], shield: 2, need: { boss: 1, c6: 2, c5: 1 },
-      use: 'VHP 灌滿隔離器，芽孢無處可躲',
-      eff: '高階殺孢道具，也能進入孢子騎士戰，戰鬥中多 2 面護盾。隔離器和 RABS 的表面除污多半用 VHP，要用生物指示劑證明 6 log 的殺滅。' },
-    { id: 'cip', zh: '鹼性 CIP 清潔劑', cat: '清潔劑', c: '#a78bfa', vs: ['z1'], shield: 1, need: { c5: 2, c6: 1 },
-      use: '熱鹼循環沖洗，剝掉生物膜的基質',
-      eff: '生物膜王戰多 1 面護盾。生物膜要先用清潔劑和流速剝掉基質，消毒劑才碰得到裡面的菌：先清潔，再消毒。' },
-    { id: 'counter', zh: '手持粒子計數器', cat: '監測儀器', c: '#94a3b8', vs: ['z0'], shield: 1, need: { c9: 1, c0: 2 },
-      use: '粒子計數器鎖定落塵來源',
-      eff: '微粒魔戰多 1 面護盾。≥0.5 µm 與 ≥5 µm 分開計數，A 級區要連續監測，才抓得到短暫的微粒爆量。' },
-    { id: 'oven', zh: '去熱原隧道烘箱', cat: '設備', c: '#f97316', vs: ['z2'], shield: 1, need: { c6: 2, c2: 1 },
-      use: '250 °C 乾熱，內毒素降 3 個 log',
-      eff: '內毒素龍戰多 1 面護盾。濕熱滅菌殺得死菌，卻去不掉內毒素；乾熱去熱原要證明內毒素至少降低 3 log。' },
-    { id: 'ccit', zh: '真空衰減測漏儀', cat: '檢測儀器', c: '#0ea5e9', vs: ['crack'], shield: 1, need: { c2: 2, c9: 1 },
-      use: '真空衰減測試，微漏無所遁形',
-      eff: '裂隙幽靈戰多 1 面護盾。真空衰減是確定性的 CCI 測試方法（USP <1207>），比染色入侵法更靈敏、可重複。' },
-    { id: 'atr', zh: '稽核軌跡審查工具', cat: '追溯工具', c: '#f43f5e', vs: ['forge'], tags: ['trace'], shield: 1, need: { c9: 2, c3: 1 },
-      use: '展開稽核軌跡，每一筆修改都現形',
-      eff: '進入竄改魅影戰的通行證，戰鬥中多 1 面護盾。稽核軌跡要記下誰、何時、改了什麼、為什麼改，而且要依資料 criticality 定期審查，不是開了就算數。' },
-    { id: 'uam', zh: '個人帳號權限矩陣', cat: '追溯工具', c: '#14b8a6', vs: ['forge'], tags: ['trace'], shield: 2, need: { boss: 1, c9: 1, c3: 2 },
-      use: '收回群組帳號，每個人只能用自己的身分',
-      eff: '高階追溯道具，也能進入竄改魅影戰，戰鬥中多 2 面護盾。共用帳號讓稽核軌跡失去意義；一人一帳號、權限分級、操作員不能改 recipe 和警報範圍。' },
-    { id: 'scan', zh: '條碼核對掃描器', cat: '辨識工具', c: '#d946ef', vs: ['mixup'], tags: ['ident'], shield: 1, need: { c3: 2, c2: 1 },
-      use: '逐一掃碼核對，錯標的那一瓶當場現形',
-      eff: '進入混淆魔戰的通行證，戰鬥中多 1 面護盾。標籤和物料在每個交接點核對身分；標籤的發放、使用、退回要做數量核算，對不上就要調查。' },
-    { id: 'vision', zh: '線上視覺檢測系統', cat: '辨識工具', c: '#a855f7', vs: ['mixup'], tags: ['ident'], shield: 2, need: { boss: 1, c9: 2, c3: 1 },
-      use: '相機逐瓶比對標籤、批號與效期',
-      eff: '高階辨識道具，也能進入混淆魔戰，戰鬥中多 2 面護盾。電子或自動化的標籤檢查設備本身也要驗證運作正常；換批前仍要清場並覆核。' },
-    { id: 'elscreen', zh: '萃取物篩檢分析組', cat: '檢測儀器', c: '#65a30d', vs: ['leach'], shield: 1, need: { c5: 2, c2: 1 },
-      use: '篩檢萃取液，把可能溶出的化合物一一標出',
-      eff: '溶出妖戰多 1 面護盾。先用萃取研究找出材料可能釋出的化合物，再用溶出物研究確認實際進入藥品的量，兩者對照才能判斷風險。' },
-    { id: 'logger', zh: '溫度記錄器', cat: '監測儀器', c: '#f97316', vs: ['frost'], tags: ['cold'], shield: 1, need: { c4: 2, c6: 1 },
-      use: '全程記錄溫度，偏離的那一段無所遁形',
-      eff: '進入溫度巨人戰的通行證，戰鬥中多 1 面護盾。記錄器要校正，放在 mapping 找出的冷熱點；有了全程數據，偏離時才能評估對產品的影響。' },
-    { id: 'shipper', zh: '已確效保溫運輸箱', cat: '包材', c: '#fb923c', vs: ['frost'], tags: ['cold'], shield: 2, need: { boss: 1, c6: 2, c4: 1 },
-      use: '確效過的裝箱方式，夏冬兩季都撐得住',
-      eff: '高階溫控道具，也能進入溫度巨人戰，戰鬥中多 2 面護盾。保溫箱要依路線的極端溫度與最長運輸時間確效，冷媒不可直接接觸產品，以免凍傷。' }
+    { id: 'paa', zh: T('過氧乙酸殺孢劑', 'Peracetic Acid Sporicide'), cat: T('殺孢劑', 'Sporicide'), c: '#84cc16', vs: ['spore'], tags: ['sporicide'], shield: 1, need: { c5: 2, c4: 1 },
+      use: T('噴灑過氧乙酸，芽孢殼開始崩解', 'A spray of peracetic acid, and the spore coat starts to break down'),
+      eff: T('進入孢子騎士戰的通行證，戰鬥中多 1 面護盾。過氧乙酸加過氧化氫，是殺得死芽孢的消毒劑；Annex 1 要求消毒計畫定期輪用殺孢劑。', 'Your pass into the Spore Knight fight, plus 1 shield in battle. Peracetic acid with hydrogen peroxide is a disinfectant that kills spores; Annex 1 expects the disinfection program to include a sporicide used regularly.') },
+    { id: 'vhp', zh: T('汽化過氧化氫產生器', 'VHP Generator'), cat: T('殺孢劑', 'Sporicide'), c: '#22d3ee', vs: ['spore'], tags: ['sporicide'], shield: 2, need: { boss: 1, c6: 2, c5: 1 },
+      use: T('VHP 灌滿隔離器，芽孢無處可躲', 'VHP fills the isolator, and the spores have nowhere to hide'),
+      eff: T('高階殺孢道具，也能進入孢子騎士戰，戰鬥中多 2 面護盾。隔離器和 RABS 的表面除污多半用 VHP，要用生物指示劑證明 6 log 的殺滅。', 'A higher-tier sporicide: also gets you into the Spore Knight fight, with 2 shields in battle. Isolator and RABS surfaces are usually decontaminated with VHP, and biological indicators must show a 6-log kill.') },
+    { id: 'cip', zh: T('鹼性 CIP 清潔劑', 'Alkaline CIP Detergent'), cat: T('清潔劑', 'Detergent'), c: '#a78bfa', vs: ['z1'], shield: 1, need: { c5: 2, c6: 1 },
+      use: T('熱鹼循環沖洗，剝掉生物膜的基質', 'A hot caustic cycle strips away the biofilm matrix'),
+      eff: T('生物膜王戰多 1 面護盾。生物膜要先用清潔劑和流速剝掉基質，消毒劑才碰得到裡面的菌：先清潔，再消毒。', '+1 shield against the Biofilm King. Detergent and flow must strip the matrix before a disinfectant can reach the cells inside: clean first, then disinfect.') },
+    { id: 'counter', zh: T('手持粒子計數器', 'Handheld Particle Counter'), cat: T('監測儀器', 'Monitoring instrument'), c: '#94a3b8', vs: ['z0'], shield: 1, need: { c9: 1, c0: 2 },
+      use: T('粒子計數器鎖定落塵來源', 'The particle counter locks onto the source of fallout'),
+      eff: T('微粒魔戰多 1 面護盾。≥0.5 µm 與 ≥5 µm 分開計數，A 級區要連續監測，才抓得到短暫的微粒爆量。', '+1 shield against the Particle Fiend. Count ≥0.5 µm and ≥5 µm separately, and monitor Grade A continuously, or short particle bursts will be missed.') },
+    { id: 'oven', zh: T('去熱原隧道烘箱', 'Depyrogenation Tunnel'), cat: T('設備', 'Equipment'), c: '#f97316', vs: ['z2'], shield: 1, need: { c6: 2, c2: 1 },
+      use: T('250 °C 乾熱，內毒素降 3 個 log', '250 °C dry heat cuts endotoxin by 3 logs'),
+      eff: T('內毒素龍戰多 1 面護盾。濕熱滅菌殺得死菌，卻去不掉內毒素；乾熱去熱原要證明內毒素至少降低 3 log。', '+1 shield against the Endotoxin Dragon. Moist heat kills bacteria but does not remove endotoxin; dry-heat depyrogenation must show at least a 3-log endotoxin reduction.') },
+    { id: 'ccit', zh: T('真空衰減測漏儀', 'Vacuum Decay Leak Tester'), cat: T('檢測儀器', 'Test instrument'), c: '#0ea5e9', vs: ['crack'], shield: 1, need: { c2: 2, c9: 1 },
+      use: T('真空衰減測試，微漏無所遁形', 'A vacuum decay test leaves micro-leaks nowhere to hide'),
+      eff: T('裂隙幽靈戰多 1 面護盾。真空衰減是確定性的 CCI 測試方法（USP <1207>），比染色入侵法更靈敏、可重複。', '+1 shield against the Crack Phantom. Vacuum decay is a deterministic CCI test method (USP <1207>), more sensitive and repeatable than dye ingress.') },
+    { id: 'atr', zh: T('稽核軌跡審查工具', 'Audit Trail Review Tool'), cat: T('追溯工具', 'Traceability tool'), c: '#f43f5e', vs: ['forge'], tags: ['trace'], shield: 1, need: { c9: 2, c3: 1 },
+      use: T('展開稽核軌跡，每一筆修改都現形', 'Open the audit trail and every change shows itself'),
+      eff: T('進入竄改魅影戰的通行證，戰鬥中多 1 面護盾。稽核軌跡要記下誰、何時、改了什麼、為什麼改，而且要依資料 criticality 定期審查，不是開了就算數。', 'Your pass into the Tamper Wraith fight, plus 1 shield in battle. An audit trail must record who changed what, when and why, and be reviewed on a schedule set by data criticality; switching it on is not enough.') },
+    { id: 'uam', zh: T('個人帳號權限矩陣', 'User Access Matrix'), cat: T('追溯工具', 'Traceability tool'), c: '#14b8a6', vs: ['forge'], tags: ['trace'], shield: 2, need: { boss: 1, c9: 1, c3: 2 },
+      use: T('收回群組帳號，每個人只能用自己的身分', 'Shared accounts revoked: everyone works under their own identity'),
+      eff: T('高階追溯道具，也能進入竄改魅影戰，戰鬥中多 2 面護盾。共用帳號讓稽核軌跡失去意義；一人一帳號、權限分級、操作員不能改 recipe 和警報範圍。', 'A higher-tier traceability tool: also gets you into the Tamper Wraith fight, with 2 shields in battle. Shared accounts make an audit trail meaningless; one person per account, role-based access, and operators cannot change recipes or alarm limits.') },
+    { id: 'scan', zh: T('條碼核對掃描器', 'Barcode Verification Scanner'), cat: T('辨識工具', 'Identification tool'), c: '#d946ef', vs: ['mixup'], tags: ['ident'], shield: 1, need: { c3: 2, c2: 1 },
+      use: T('逐一掃碼核對，錯標的那一瓶當場現形', 'Scan every code and the mislabeled vial is caught on the spot'),
+      eff: T('進入混淆魔戰的通行證，戰鬥中多 1 面護盾。標籤和物料在每個交接點核對身分；標籤的發放、使用、退回要做數量核算，對不上就要調查。', 'Your pass into the Mix-up Fiend fight, plus 1 shield in battle. Verify the identity of labels and materials at every handover; reconcile labels issued, used and returned, and investigate any discrepancy.') },
+    { id: 'vision', zh: T('線上視覺檢測系統', 'Inline Vision System'), cat: T('辨識工具', 'Identification tool'), c: '#a855f7', vs: ['mixup'], tags: ['ident'], shield: 2, need: { boss: 1, c9: 2, c3: 1 },
+      use: T('相機逐瓶比對標籤、批號與效期', 'Cameras check the label, lot number and expiry on every vial'),
+      eff: T('高階辨識道具，也能進入混淆魔戰，戰鬥中多 2 面護盾。電子或自動化的標籤檢查設備本身也要驗證運作正常；換批前仍要清場並覆核。', 'A higher-tier identification tool: also gets you into the Mix-up Fiend fight, with 2 shields in battle. Electronic or automated label checkers must themselves be verified to work; line clearance and a second check are still required between batches.') },
+    { id: 'elscreen', zh: T('萃取物篩檢分析組', 'Extractables Screening Kit'), cat: T('檢測儀器', 'Test instrument'), c: '#65a30d', vs: ['leach'], shield: 1, need: { c5: 2, c2: 1 },
+      use: T('篩檢萃取液，把可能溶出的化合物一一標出', 'Screen the extract and flag every compound that could leach'),
+      eff: T('溶出妖戰多 1 面護盾。先用萃取研究找出材料可能釋出的化合物，再用溶出物研究確認實際進入藥品的量，兩者對照才能判斷風險。', '+1 shield against the Leachable Imp. An extraction study finds what a material could release; a leachables study confirms what actually reaches the drug. Compare the two to judge the risk.') },
+    { id: 'logger', zh: T('溫度記錄器', 'Temperature Data Logger'), cat: T('監測儀器', 'Monitoring instrument'), c: '#f97316', vs: ['frost'], tags: ['cold'], shield: 1, need: { c4: 2, c6: 1 },
+      use: T('全程記錄溫度，偏離的那一段無所遁形', 'A full temperature record leaves no excursion unseen'),
+      eff: T('進入溫度巨人戰的通行證，戰鬥中多 1 面護盾。記錄器要校正，放在 mapping 找出的冷熱點；有了全程數據，偏離時才能評估對產品的影響。', 'Your pass into the Temperature Giant fight, plus 1 shield in battle. Loggers must be calibrated and placed at the hot and cold spots found by mapping; only a full record lets you assess an excursion\'s impact on the product.') },
+    { id: 'shipper', zh: T('已確效保溫運輸箱', 'Qualified Insulated Shipper'), cat: T('包材', 'Packaging'), c: '#fb923c', vs: ['frost'], tags: ['cold'], shield: 2, need: { boss: 1, c6: 2, c4: 1 },
+      use: T('確效過的裝箱方式，夏冬兩季都撐得住', 'A qualified pack-out that holds through summer and winter'),
+      eff: T('高階溫控道具，也能進入溫度巨人戰，戰鬥中多 2 面護盾。保溫箱要依路線的極端溫度與最長運輸時間確效，冷媒不可直接接觸產品，以免凍傷。', 'A higher-tier cold chain item: also gets you into the Temperature Giant fight, with 2 shields in battle. Shippers are qualified against the lane\'s temperature extremes and longest transit time, and coolant must never touch the product directly, or it may freeze.') }
   ];
   function itemById(id) { return ITEMS.filter(function (x) { return x.id === id; })[0] || null; }
   function itemVs(it, target) { return !!(it && it.vs.indexOf(target) >= 0); }
@@ -257,7 +285,7 @@
   function isWeak(ti, cls) { return !!(WEAK[ti] && WEAK[ti][cls]); }
   function elName(cls) { return (FX_YOU[cls] || {}).el || cls; }
   function canCounter(ti) { return learnedSkills().some(function (id) { return isWeak(ti, id); }); }
-  function weakText(ti) { return weakTo(ti).map(elName).join('、'); }
+  function weakText(ti) { return weakTo(ti).map(elName).join(LIST); }
   /* Skills the player can bring: the main class first, then every learned second specialty. */
   function learnedSkills() {
     var main = S.profile.cls;
@@ -268,31 +296,32 @@
      and some give a level title shown when there is no topic title yet. Never touches scoring. */
   var LEVEL_MILES = [
     { lv: 3, mats: 2 },
-    { lv: 5, boss: 1, title: '勤學者' },
+    { lv: 5, boss: 1, title: T('勤學者', 'Diligent Learner') },
     { lv: 7, mats: 2 },
-    { lv: 10, boss: 1, title: '博覽者' },
+    { lv: 10, boss: 1, title: T('博覽者', 'Well-Read') },
     { lv: 13, mats: 3 },
-    { lv: 15, boss: 1, title: '百科行者' },
-    { lv: 20, boss: 2, title: '活字典' }
+    { lv: 15, boss: 1, title: T('百科行者', 'Walking Encyclopedia') },
+    { lv: 20, boss: 2, title: T('活字典', 'Living Reference') }
   ];
   function mileText(m) {
-    return [m.mats ? m.mats + ' 個素材' : '', m.boss ? m.boss + ' 顆魔王結晶' : '', m.title ? '稱號「' + m.title + '」' : ''].filter(Boolean).join('、');
+    return [m.mats ? m.mats + T(' 個素材', m.mats > 1 ? ' materials' : ' material') : '', m.boss ? m.boss + T(' 顆魔王結晶', m.boss > 1 ? ' Boss Crystals' : ' Boss Crystal') : '', m.title ? T('稱號「' + m.title + '」', 'the title "' + m.title + '"') : ''].filter(Boolean).join(LIST);
   }
   var XP_FRESH = 3;                  // boss / elite / guard fights: each question answered right for the first time ever
   var XP_GUARD = 40, GUARD_Q = 5;     // document guardian: first-win XP, questions per fight
   var XP_BOSS = 100, BOSS_Q = 10;     // boss battle: bonus XP on the first win, questions per fight
   var BOSS_LINES = [
-    '「一粒灰塵就夠了。你的無菌區守得住嗎？」',
-    '「我在管線死角住得很舒服，你清不掉我的。」',
-    '「就算把菌全滅了，我也還在。看你擋不擋得住熱原。」'
+    T('「一粒灰塵就夠了。你的無菌區守得住嗎？」', '"One speck of dust is all it takes. Can you hold your aseptic zone?"'),
+    T('「我在管線死角住得很舒服，你清不掉我的。」', '"I live comfortably in your dead legs. You will never clean me out."'),
+    T('「就算把菌全滅了，我也還在。看你擋不擋得住熱原。」', '"Kill every bacterium and I am still here. Let us see you stop a pyrogen."')
   ];
   var BOSS_RAGE = [
-    '「這點程度就想清場？我還有整個高壓區的落塵！」',
-    '「刷得掉表面，刷不掉我築好的膜！」',
-    '「滅菌又怎樣？我是死了也還在的熱原！」'
+    T('「這點程度就想清場？我還有整個高壓區的落塵！」', '"You call that clearance? I have a whole high-pressure zone of fallout left!"'),
+    T('「刷得掉表面，刷不掉我築好的膜！」', '"You can scrub the surface, but not the film I have built!"'),
+    T('「滅菌又怎樣？我是死了也還在的熱原！」', '"Sterilized? So what. I am the pyrogen that stays even after death!"')
   ];
   // Small monsters met in section challenges, one per topic cluster (art: rpg/assets/mob-<cluster>.webp).
-  var MOBS = ['破洞手套鬼', '芽孢彈', '裂瓶蟹', '漏簽幽靈', '落菌菇', '混濁史萊姆', '死角鰻', '混種雙子', '缺失紙蝠', '當機機器人'];
+  var MOBS = T(['破洞手套鬼', '芽孢彈', '裂瓶蟹', '漏簽幽靈', '落菌菇', '混濁史萊姆', '死角鰻', '混種雙子', '缺失紙蝠', '當機機器人'],
+    ['Torn Glove Ghoul', 'Spore Bomb', 'Cracked Vial Crab', 'Missing Signature Ghost', 'Fallout Mushroom', 'Turbid Slime', 'Dead-Leg Eel', 'Crossbred Twins', 'Finding Bat', 'Crashed Robot']);
   var GROUP_LABEL = { PDA: 'PDA', ISPE: 'ISPE', FDA: 'FDA', PICS: 'PIC/S', ICH: 'ICH', USP: 'USP', ISO: 'ISO', PHEUR: 'Ph.Eur.' };
 
   var M = null;        // manifest
@@ -371,7 +400,7 @@
   function eggImg() { return asset('egg') || placeholderEgg(); }
   function gearImg(g) {
     return asset('gear-' + g.id) || svgUri('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="M32 4l24 14v28L32 60 8 46V18z" fill="#e0f2fe" stroke="#38bdf8" stroke-width="3"/>' +
-      '<text x="32" y="41" font-size="22" text-anchor="middle" font-family="sans-serif" font-weight="700" fill="#0369a1">' + g.zh.charAt(g.zh.length - 1) + '</text></svg>');
+      '<text x="32" y="41" font-size="22" text-anchor="middle" font-family="sans-serif" font-weight="700" fill="#0369a1">' + (EN ? g.zh.charAt(0) : g.zh.charAt(g.zh.length - 1)) + '</text></svg>');
   }
   function matImg(k) { return asset(k === 'boss' ? 'mat-boss' : 'mat-' + k.slice(1)); }
   function petCls(base) { return base + (S.pet && S.pet.shiny ? ' rpg-shiny' : ''); }
@@ -564,28 +593,28 @@
   /* Hidden titles. The conditions are not shown until earned. */
   function anyDoc(g, fn) { return Object.keys(g.docs).some(function (k) { return fn(g.docs[k]); }); }
   var SECRETS = [
-    { id: 'tome', zh: '大部頭征服者', how: '通關一份 200 頁以上的文件',
+    { id: 'tome', zh: T('大部頭征服者', 'Tome Conqueror'), how: T('通關一份 200 頁以上的文件', 'Clear a document of 200+ pages'),
       test: function (g) { return anyDoc(g, function (st) { return st.cleared && (st.doc.pages || 0) >= 200; }); } },
-    { id: 'streak7', zh: '七日修行', how: '連續學習 7 天', test: function () { return liveStreak() >= 7; } },
-    { id: 'streak30', zh: '三十日不滅', how: '連續學習 30 天', test: function () { return liveStreak() >= 30; } },
-    { id: 'trio', zh: '一日三修', how: '同一天通過三份不同文件的章節挑戰',
+    { id: 'streak7', zh: T('七日修行', 'Seven-Day Discipline'), how: T('連續學習 7 天', 'Study 7 days in a row'), test: function () { return liveStreak() >= 7; } },
+    { id: 'streak30', zh: T('三十日不滅', 'Thirty-Day Flame'), how: T('連續學習 30 天', 'Study 30 days in a row'), test: function () { return liveStreak() >= 30; } },
+    { id: 'trio', zh: T('一日三修', 'Triple Session'), how: T('同一天通過三份不同文件的章節挑戰', 'Pass section challenges in three different documents on the same day'),
       test: function () { return S.today.d === dayKey(new Date()) && S.today.docs.length >= 3; } },
-    { id: 'dawn', zh: '晨型人', how: '清晨 4 點到 6 點之間完成學習',
+    { id: 'dawn', zh: T('晨型人', 'Early Bird'), how: T('清晨 4 點到 6 點之間完成學習', 'Study between 4 and 6 a.m.'),
       test: function (g, grew) { var hr = new Date().getHours(); return grew && hr >= 4 && hr < 6; } },
-    { id: 'night', zh: '夜貓子', how: '午夜到凌晨 4 點之間完成學習',
+    { id: 'night', zh: T('夜貓子', 'Night Owl'), how: T('午夜到凌晨 4 點之間完成學習', 'Study between midnight and 4 a.m.'),
       test: function (g, grew) { return grew && new Date().getHours() < 4; } },
-    { id: 'perfect5', zh: '一發入魂', how: '累計 5 節第一次挑戰就全對', test: function (g) { return g.perfect >= 5; } },
-    { id: 'comeback', zh: '不屈', how: '同一節失敗兩次以上後通過', test: function () { return !!S.flags.comeback; } },
-    { id: 'sources', zh: '博覽群籍', how: '八個來源各通關至少一份文件',
+    { id: 'perfect5', zh: T('一發入魂', 'First-Try Ace'), how: T('累計 5 節第一次挑戰就全對', 'Ace 5 sections on the first try'), test: function (g) { return g.perfect >= 5; } },
+    { id: 'comeback', zh: T('不屈', 'Unbowed'), how: T('同一節失敗兩次以上後通過', 'Pass a section after failing it twice or more'), test: function () { return !!S.flags.comeback; } },
+    { id: 'sources', zh: T('博覽群籍', 'Widely Read'), how: T('八個來源各通關至少一份文件', 'Clear at least one document from each of the eight sources'),
       test: function (g) { return Object.keys(GROUP_LABEL).every(function (grp) { return anyDoc(g, function (st) { return st.cleared && st.doc.group === grp; }); }); } },
-    { id: 'dual', zh: '雙修', how: '兩個職業達到初階',
+    { id: 'dual', zh: T('雙修', 'Dual Class'), how: T('兩個職業達到初階', 'Reach Foundation in two classes'),
       test: function (g) { return Object.keys(g.classes).filter(function (id) { return g.classes[id].rank >= 1; }).length >= 2; } },
-    { id: 'allclass', zh: '全職制霸', how: '八個職業全部達到專家',
+    { id: 'allclass', zh: T('全職制霸', 'Master of All Trades'), how: T('八個職業全部達到專家', 'Reach Advanced in all eight classes'),
       test: function (g) { return Object.keys(g.classes).every(function (id) { return g.classes[id].rank >= 3; }); } },
-    { id: 'cards50', zh: '收藏家', how: '收集 50 張文件卡', test: function (g) { return g.cards >= 50; } },
-    { id: 'review10', zh: '溫故知新', how: '複習突擊答對 10 次', test: function () { return S.review.ok >= 10; } }
+    { id: 'cards50', zh: T('收藏家', 'Collector'), how: T('收集 50 張文件卡', 'Collect 50 document cards'), test: function (g) { return g.cards >= 50; } },
+    { id: 'review10', zh: T('溫故知新', 'Lessons Retained'), how: T('複習突擊答對 10 次', 'Win 10 review ambushes'), test: function () { return S.review.ok >= 10; } }
   ].concat(ELITES.map(function (e) {
-    return { id: 'elite-' + e.id, zh: e.title, how: '擊敗精英魔王' + e.name, test: function () { return !!(S.eliteWin || {})[e.id]; } };
+    return { id: 'elite-' + e.id, zh: e.title, how: T('擊敗精英魔王' + e.name, 'Defeat the elite boss ' + e.name), test: function () { return !!(S.eliteWin || {})[e.id]; } };
   }));
 
   /* Materials: one per topic cluster, dropped when a section challenge is passed
@@ -600,7 +629,7 @@
     var i = clusterOf(M.docs[key]);
     if (i < 0) return;
     S.mats['c' + i] = (S.mats['c' + i] || 0) + 1;
-    toast('獲得素材：' + (MATS[i] || CLUSTERS[i].name));
+    toast(T('獲得素材：', 'Material found: ') + (MATS[i] || CLUSTERS[i].name));
   }
 
   /* ---------- mistake book ----------
@@ -734,7 +763,7 @@
   }
   function bestTitle() {
     var t = G.titles.filter(function (x) { return x.lv; }).sort(function (a, b) { return b.lv - a.lv; })[0];
-    if (t) return t.zh + (t.lv === 2 ? '大師' : '修習者');
+    if (t) return EN ? t.zh + (t.lv === 2 ? ' Master' : ' Adept') : t.zh + (t.lv === 2 ? '大師' : '修習者');
     var lt = LEVEL_MILES.filter(function (m) { return m.title && S.earned.lvl[m.lv]; }).pop();
     return lt ? lt.title : '';
   }
@@ -755,7 +784,7 @@
   function nextMile() { return LEVEL_MILES.filter(function (m) { return G.level < m.lv; })[0] || null; }
   function xpBar() {
     var pct = Math.max(0, Math.min(100, Math.round((G.xp - G.lo) / (G.hi - G.lo) * 100)));
-    return h('span', { class: 'rpg-xp', role: 'progressbar', 'aria-valuenow': pct, 'aria-valuemin': 0, 'aria-valuemax': 100, 'aria-label': '經驗值' }, [
+    return h('span', { class: 'rpg-xp', role: 'progressbar', 'aria-valuenow': pct, 'aria-valuemin': 0, 'aria-valuemax': 100, 'aria-label': T('經驗值', 'Experience') }, [
       h('span', { class: 'rpg-xp-fill', style: 'width:' + pct + '%' })
     ]);
   }
@@ -774,20 +803,20 @@
     clear(bar);
     if (!S.profile) {
       bar.appendChild(h('button', { class: 'rpg-bar-cta', type: 'button', onclick: openOnboarding }, [
-        h('span', { class: 'rpg-bar-cta-tag', text: 'NEW' }), '建立你的角色，開始學習冒險'
+        h('span', { class: 'rpg-bar-cta-tag', text: 'NEW' }), T('建立你的角色，開始學習冒險', 'Create your character and start the learning quest')
       ]));
       return;
     }
     var c = G.classes[S.profile.cls], dep = c.dep, title = bestTitle(), streak = liveStreak();
-    var link = h('a', { class: 'rpg-bar-main', href: ROOT + 'character.html', 'aria-label': '開啟角色頁' }, [
+    var link = h('a', { class: 'rpg-bar-main', href: ROOT + 'character.html', 'aria-label': T('開啟角色頁', 'Open character page') }, [
       avatarEl(),
       h('span', { class: 'rpg-bar-id' }, [
         h('span', { class: 'rpg-bar-name', text: S.profile.nick }),
-        h('span', { class: 'rpg-bar-job', text: (title ? title + '・' : '') + RANKS[c.rank].zh + CLASS_META[dep.id].job })
+        h('span', { class: 'rpg-bar-job', text: (title ? title + T('・', ' · ') : '') + L(RANKS[c.rank]) + (EN ? ' ' : '') + CLASS_META[dep.id].job })
       ]),
       h('span', { class: 'rpg-bar-lv' }, [h('small', { text: 'Lv' }), String(G.level)]),
       h('span', { class: 'rpg-bar-xp' }, [xpBar(), h('small', { text: G.xp + ' / ' + G.hi + ' XP' })]),
-      streak ? h('span', { class: 'rpg-bar-streak', title: '連續學習天數' }, [h('b', { text: String(streak) }), h('small', { text: '天連續' })]) : null,
+      streak ? h('span', { class: 'rpg-bar-streak', title: T('連續學習天數', 'Study streak (days)') }, [h('b', { text: String(streak) }), h('small', { text: T('天連續', '-day streak') })]) : null,
       S.pet ? h('img', { class: petCls('rpg-bar-pet rpg-idle'), src: petImg(S.pet.line, G.petStage), alt: PETS[S.pet.line].stages[G.petStage - 1] }) : null
     ]);
     bar.appendChild(link);
@@ -802,10 +831,10 @@
       mount.appendChild(h('div', { class: 'rpg-quest rpg-quest-new' }, [
         h('div', { class: 'rpg-quest-body' }, [
           h('span', { class: 'rpg-tag', text: 'START' }),
-          h('h2', { text: '選一個職業，從第一個任務開始' }),
-          h('p', { text: '184 份文件不知道從哪裡讀起？建立角色後，這裡會告訴你下一步。' }),
-          h('button', { class: 'rpg-btn', type: 'button', onclick: openOnboarding, text: '建立角色' }),
-          h('a', { class: 'rpg-btn rpg-btn-ghost rpg-guide-link', href: ROOT + 'rpg-guide.html', text: '新手指南' })
+          h('h2', { text: T('選一個職業，從第一個任務開始', 'Pick a class and start your first quest') }),
+          h('p', { text: T('184 份文件不知道從哪裡讀起？建立角色後，這裡會告訴你下一步。', 'Not sure where to start among 184 documents? Create a character and this panel will show your next step.') }),
+          h('button', { class: 'rpg-btn', type: 'button', onclick: openOnboarding, text: T('建立角色', 'Create character') }),
+          h('a', { class: 'rpg-btn rpg-btn-ghost rpg-guide-link', href: ROOT + T('rpg-guide.html', 'rpg-guide-en.html'), text: T('新手指南', 'Beginner\'s guide') })
         ])
       ]));
       return;
@@ -816,9 +845,9 @@
     if (!q || q.done) {
       mount.appendChild(h('div', { class: 'rpg-quest' }, [portrait, h('div', { class: 'rpg-quest-body' }, [
         h('span', { class: 'rpg-tag', text: 'COMPLETE' }),
-        h('h2', { text: c.dep.nameZh + '的任務全部完成' }),
-        h('p', { text: '可以到角色頁轉職，挑戰另一個部門的主線。' }),
-        h('a', { class: 'rpg-btn', href: ROOT + 'character.html', text: '前往角色頁' })
+        h('h2', { text: T(c.dep.nameZh + '的任務全部完成', 'All ' + dName(c.dep) + ' quests complete') }),
+        h('p', { text: T('可以到角色頁轉職，挑戰另一個部門的主線。', 'Switch class on the character page to take on another department\'s main quest.') }),
+        h('a', { class: 'rpg-btn', href: ROOT + 'character.html', text: T('前往角色頁', 'Go to character page') })
       ])]));
       return;
     }
@@ -827,12 +856,12 @@
       mount.appendChild(h('div', { class: 'rpg-quest rpg-quest-guard' }, [
         gimg ? h('img', { class: 'rpg-quest-portrait rpg-quest-bossimg', src: gimg, alt: '' }) : portrait,
         h('div', { class: 'rpg-quest-body' }, [
-          h('span', { class: 'rpg-tag', text: '守關者' }),
-          h('h2', { text: '「' + (gd.titleZh || gd.title) + '」的守關者現身了' }),
-          h('p', { class: 'rpg-quest-sec', text: '昨天以前通關的文件，今天來驗收：跨章節 ' + GUARD_Q + ' 題，答對 80% 擊敗牠，得 ' + XP_GUARD + ' XP、2 個素材和地圖上的一顆守關星。選打，不影響升階。' }),
+          h('span', { class: 'rpg-tag', text: T('守關者', 'Gatekeeper') }),
+          h('h2', { text: T('「' + (gd.titleZh || gd.title) + '」的守關者現身了', 'The Gatekeeper of "' + docT(gd) + '" has appeared') }),
+          h('p', { class: 'rpg-quest-sec', text: T('昨天以前通關的文件，今天來驗收：跨章節 ' + GUARD_Q + ' 題，答對 80% 擊敗牠，得 ' + XP_GUARD + ' XP、2 個素材和地圖上的一顆守關星。選打，不影響升階。', 'Time to prove what you cleared before today: ' + GUARD_Q + ' questions across sections. Score 80% to win ' + XP_GUARD + ' XP, 2 materials and a Gatekeeper star on the map. Optional; it does not affect rank-ups.') }),
           h('div', { class: 'rpg-quest-foot' }, [
-            h('a', { class: 'rpg-btn', href: q.href, text: '挑戰守關者' }),
-            h('a', { class: 'rpg-quest-map', href: ROOT + 'map.html', text: '闖關地圖' })
+            h('a', { class: 'rpg-btn', href: q.href, text: T('挑戰守關者', 'Challenge the Gatekeeper') }),
+            h('a', { class: 'rpg-quest-map', href: ROOT + 'map.html', text: T('闖關地圖', 'Quest map') })
           ])
         ])
       ]));
@@ -843,37 +872,37 @@
       mount.appendChild(h('div', { class: 'rpg-quest rpg-quest-boss' }, [
         bimg ? h('img', { class: 'rpg-quest-portrait rpg-quest-bossimg', src: bimg, alt: bz.boss }) : portrait,
         h('div', { class: 'rpg-quest-body' }, [
-          h('span', { class: 'rpg-tag', text: '魔王戰' }),
-          h('h2', { text: bz.zh + '的魔王　' + bz.boss }),
-          h('p', { class: 'rpg-quest-sec', text: '升階試煉：' + RANKS[q.tierIdx + 1].zh + CLASS_META[c.dep.id].job + '。從這一區讀過的文件隨機出 ' + Math.min(BOSS_Q, bossCount(q.tier)) + ' 題，答對 80% 擊敗牠。' }),
+          h('span', { class: 'rpg-tag', text: T('魔王戰', 'Boss fight') }),
+          h('h2', { text: T(bz.zh + '的魔王　' + bz.boss, L(bz) + ' boss · ' + bz.boss) }),
+          h('p', { class: 'rpg-quest-sec', text: T('升階試煉：' + RANKS[q.tierIdx + 1].zh + CLASS_META[c.dep.id].job + '。從這一區讀過的文件隨機出 ' + Math.min(BOSS_Q, bossCount(q.tier)) + ' 題，答對 80% 擊敗牠。', 'Rank trial: ' + L(RANKS[q.tierIdx + 1]) + ' ' + CLASS_META[c.dep.id].job + '. ' + Math.min(BOSS_Q, bossCount(q.tier)) + ' random questions from the documents you read in this zone; score 80% to win.') }),
           h('p', { class: 'rpg-quest-why', text: BOSS_LINES[q.tierIdx] || '' }),
           h('div', { class: 'rpg-quest-foot' }, [
-            h('a', { class: 'rpg-btn', href: q.href, text: '挑戰魔王' }),
-            h('a', { class: 'rpg-quest-map', href: ROOT + 'map.html', text: '闖關地圖' })
+            h('a', { class: 'rpg-btn', href: q.href, text: T('挑戰魔王', 'Challenge the boss') }),
+            h('a', { class: 'rpg-quest-map', href: ROOT + 'map.html', text: T('闖關地圖', 'Quest map') })
           ])
         ])
       ]));
       return;
     }
     var d = q.st.doc, main = q.entry.required || q.tier.anyOf;
-    var tierText = q.tier.tier.labelZh + '　' + q.tier.got + ' / ' + q.tier.need;
+    var tierText = tierL(q.tier.tier) + SEP + q.tier.got + ' / ' + q.tier.need;
     var a = h('a', {
       class: 'rpg-btn track-open', href: q.href,
       'data-track-file': d.file, 'data-track-title': d.title, 'data-track-zh': d.titleZh,
-      text: q.mode === 'quiz' ? '前往挑戰' : (q.st.started ? '繼續閱讀' : '出發')
+      text: q.mode === 'quiz' ? T('前往挑戰', 'Take the challenge') : (q.st.started ? T('繼續閱讀', 'Keep reading') : T('出發', 'Set out'))
     });
     mount.appendChild(h('div', { class: 'rpg-quest' }, [
       portrait,
       h('div', { class: 'rpg-quest-body' }, [
-        h('span', { class: 'rpg-tag', text: main ? '主線任務' : '支線任務' }),
-        h('h2', { text: d.titleZh || d.title }),
-        h('p', { class: 'rpg-quest-sec', text: (q.mode === 'quiz' ? '章節挑戰：' : '閱讀：') + 'Section ' + q.target.num + '　' + (q.target.zh || q.target.en) }),
+        h('span', { class: 'rpg-tag', text: main ? T('主線任務', 'Main quest') : T('支線任務', 'Side quest') }),
+        h('h2', { text: docT(d) }),
+        h('p', { class: 'rpg-quest-sec', text: (q.mode === 'quiz' ? T('章節挑戰：', 'Section challenge: ') : T('閱讀：', 'Read: ')) + 'Section ' + q.target.num + SEP + (EN ? (q.target.en || q.target.zh) : (q.target.zh || q.target.en)) }),
         q.entry.why ? h('p', { class: 'rpg-quest-why', text: q.entry.why }) : null,
         h('div', { class: 'rpg-quest-foot' }, [
           a,
-          h('a', { class: 'rpg-quest-map', href: ROOT + 'map.html', text: '闖關地圖' }),
+          h('a', { class: 'rpg-quest-map', href: ROOT + 'map.html', text: T('闖關地圖', 'Quest map') }),
           h('span', { class: 'rpg-quest-meta', text: tierText }),
-          h('span', { class: 'rpg-quest-meta', text: '本文件 ' + q.st.read + ' / ' + q.st.total + ' 節' })
+          h('span', { class: 'rpg-quest-meta', text: T('本文件 ' + q.st.read + ' / ' + q.st.total + ' 節', q.st.read + ' / ' + q.st.total + ' sections read') })
         ])
       ])
     ]));
@@ -890,8 +919,8 @@
       ]),
       !locked && asset('card-' + d.group) ? h('img', { class: 'rpg-card-art', src: asset('card-' + d.group), alt: '', loading: 'lazy' }) : null,
       h('span', { class: 'rpg-card-code', text: d.code || d.short }),
-      h('span', { class: 'rpg-card-title', text: locked ? '？？？' : (d.titleZh || d.title) }),
-      h('span', { class: 'rpg-card-foot', text: locked ? '未收集' : (c.shiny ? '異色' : c.awakened ? '覺醒' : (d.quiz ? '可挑戰' : '已讀完')) })
+      h('span', { class: 'rpg-card-title', text: locked ? '？？？' : docT(d) }),
+      h('span', { class: 'rpg-card-foot', text: locked ? T('未收集', 'Not collected') : (c.shiny ? T('異色', 'Shiny') : c.awakened ? T('覺醒', 'Awakened') : (d.quiz ? T('可挑戰', 'Challenge ready') : T('已讀完', 'Read'))) })
     ]);
   }
 
@@ -902,7 +931,7 @@
     wrap.appendChild(box);
     if (!(opts && opts.sticky)) {
       wrap.addEventListener('click', function (e) { if (e.target === wrap) close(); });
-      box.insertBefore(h('button', { class: 'rpg-modal-x', type: 'button', 'aria-label': '關閉', text: '×', onclick: close }), box.firstChild);
+      box.insertBefore(h('button', { class: 'rpg-modal-x', type: 'button', 'aria-label': T('關閉', 'Close'), text: '×', onclick: close }), box.firstChild);
     }
     function onKey(e) { if (e.key === 'Escape' && !(opts && opts.sticky)) close(); }
     function close() {
@@ -923,7 +952,7 @@
     var a = h('a', { href: URL.createObjectURL(blob), download: 'sgk-rpg-save-' + dayKey(new Date()) + '.json' });
     document.body.appendChild(a); a.click(); document.body.removeChild(a);
     setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
-    toast('存檔已下載。換電腦時用「讀取存檔」放回來。');
+    toast(T('存檔已下載。換電腦時用「讀取存檔」放回來。', 'Save file downloaded. On another computer, use "Load save" to restore it.'));
   }
   function importSave() {
     var inp = h('input', { type: 'file', accept: '.json,application/json', style: 'display:none' });
@@ -935,19 +964,20 @@
         try { pack = JSON.parse(rd.result); } catch (e) {}
         var keys = pack && pack.app === 'sgk-rpg' && pack.data && typeof pack.data === 'object'
           ? Object.keys(pack.data).filter(function (k) { return saveKey(k) && typeof pack.data[k] === 'string'; }) : [];
-        if (!keys.length) { toast('這不是有效的存檔檔案。'); return; }
+        if (!keys.length) { toast(T('這不是有效的存檔檔案。', 'This is not a valid save file.')); return; }
         var st = null; try { st = JSON.parse(pack.data[STATE_KEY] || 'null'); } catch (e) {}
         var m = modal([
-          h('h2', { text: '讀取存檔' }),
-          h('p', { class: 'rpg-modal-lead', text: '存檔時間 ' + String(pack.at || '').slice(0, 10) + (st && st.profile ? '，角色「' + st.profile.nick + '」' : '') +
-            '。讀取後會取代這個瀏覽器目前的冒險進度與閱讀紀錄，建議先下載一份目前的存檔。' }),
+          h('h2', { text: T('讀取存檔', 'Load save') }),
+          h('p', { class: 'rpg-modal-lead', text: T('存檔時間 ' + String(pack.at || '').slice(0, 10) + (st && st.profile ? '，角色「' + st.profile.nick + '」' : '') +
+            '。讀取後會取代這個瀏覽器目前的冒險進度與閱讀紀錄，建議先下載一份目前的存檔。', 'Saved on ' + String(pack.at || '').slice(0, 10) + (st && st.profile ? ', character "' + st.profile.nick + '"' : '') +
+            '. Loading replaces the adventure progress and reading history in this browser, so download a save of your current progress first.') }),
           h('div', { class: 'rpg-modal-actions' }, [
-            h('button', { class: 'rpg-btn', type: 'button', text: '取代並讀取', onclick: function () {
+            h('button', { class: 'rpg-btn', type: 'button', text: T('取代並讀取', 'Replace and load'), onclick: function () {
               try { for (var i = localStorage.length - 1; i >= 0; i--) { var k = localStorage.key(i); if (saveKey(k)) localStorage.removeItem(k); } } catch (e) {}
               keys.forEach(function (k) { lsSet(k, pack.data[k]); });
               m.close(); location.reload();
             } }),
-            h('button', { class: 'rpg-btn rpg-btn-ghost', type: 'button', text: '取消', onclick: function () { m.close(); } })
+            h('button', { class: 'rpg-btn rpg-btn-ghost', type: 'button', text: T('取消', 'Cancel'), onclick: function () { m.close(); } })
           ])
         ]);
       };
@@ -1086,7 +1116,7 @@
   }
   function soundBtn(cls) {
     var b = h('button', { class: 'rpg-sound' + (cls ? ' ' + cls : ''), type: 'button' });
-    function paint() { var on = soundOn(); b.textContent = on ? '♪ 音樂開' : '♪ 靜音'; b.setAttribute('aria-pressed', on ? 'true' : 'false'); b.title = on ? '關掉音樂和音效' : '打開音樂和音效'; }
+    function paint() { var on = soundOn(); b.textContent = on ? T('♪ 音樂開', '♪ Music on') : T('♪ 靜音', '♪ Muted'); b.setAttribute('aria-pressed', on ? 'true' : 'false'); b.title = on ? T('關掉音樂和音效', 'Turn off music and sound') : T('打開音樂和音效', 'Turn on music and sound'); }
     b.addEventListener('click', function (ev) {
       ev.stopPropagation();
       S.sound = soundOn() ? 0 : 1; saveState(); paint();
@@ -1098,11 +1128,11 @@
   }
 
   var STORY = [
-    { art: 'plant', kicker: 'PROLOGUE', text: '這裡是一座無菌藥廠。潔淨室日夜運轉，每一瓶藥都要在看不見的戰場上，守住「無菌」兩個字。' },
-    { art: 'mobs', kicker: 'ALERT', alarm: true, text: '某天夜裡，警報響起。破洞手套、落菌、漏簽……污染魔物從每一個被忽略的細節裡爬了出來。' },
-    { art: 'bosses', kicker: 'THREE ISLES', text: '牠們的首領盤據在三座島上：微粒魔、生物膜王、內毒素龍。不打倒牠們，廠區就無法放行任何一批產品。' },
-    { art: 'heroes', kicker: 'YOU', text: '你是剛報到的新進人員。武器不是劍，是法規和指引：讀懂一份文件，就多一份收復廠區的力量。' },
-    { art: 'egg', kicker: 'PARTNER', text: '報到第一天，有人塞給你一顆蛋。「讀完第一節，牠就會孵化，陪你一路打上去。」' }
+    { art: 'plant', kicker: 'PROLOGUE', text: T('這裡是一座無菌藥廠。潔淨室日夜運轉，每一瓶藥都要在看不見的戰場上，守住「無菌」兩個字。', 'This is a sterile drug plant. Its cleanrooms run day and night, and every vial must hold one word on an invisible battlefield: sterile.') },
+    { art: 'mobs', kicker: 'ALERT', alarm: true, text: T('某天夜裡，警報響起。破洞手套、落菌、漏簽……污染魔物從每一個被忽略的細節裡爬了出來。', 'One night, the alarms went off. Torn gloves, settling microbes, missing signatures... contamination monsters crawled out of every detail anyone had ignored.') },
+    { art: 'bosses', kicker: 'THREE ISLES', text: T('牠們的首領盤據在三座島上：微粒魔、生物膜王、內毒素龍。不打倒牠們，廠區就無法放行任何一批產品。', 'Their leaders hold three islands: the Particle Fiend, the Biofilm King and the Endotoxin Dragon. Until they fall, the plant cannot release a single batch.') },
+    { art: 'heroes', kicker: 'YOU', text: T('你是剛報到的新進人員。武器不是劍，是法規和指引：讀懂一份文件，就多一份收復廠區的力量。', 'You are the new hire, just reporting for duty. Your weapons are not swords but regulations and guidance: every document you understand is more power to take the plant back.') },
+    { art: 'egg', kicker: 'PARTNER', text: T('報到第一天，有人塞給你一顆蛋。「讀完第一節，牠就會孵化，陪你一路打上去。」', 'On your first day, someone hands you an egg. "Finish your first section and it will hatch. It will fight beside you all the way."') }
   ];
   function openPrologue(done) {
     var i = 0, finishType = null, ended = false;
@@ -1110,9 +1140,9 @@
     var kicker = h('span', { class: 'rpg-story-kicker' });
     var text = h('p', { class: 'rpg-story-text', 'aria-live': 'polite' });
     var dots = h('div', { class: 'rpg-story-dots', 'aria-hidden': 'true' });
-    var hint = h('span', { class: 'rpg-story-hint', text: '點一下繼續' });
-    var skip = h('button', { class: 'rpg-story-skip', type: 'button', text: '跳過 ▸▸', onclick: function (e) { e.stopPropagation(); end(); } });
-    var wrap = h('div', { class: 'rpg-story', role: 'dialog', 'aria-modal': 'true', 'aria-label': '序章' }, [
+    var hint = h('span', { class: 'rpg-story-hint', text: T('點一下繼續', 'Tap to continue') });
+    var skip = h('button', { class: 'rpg-story-skip', type: 'button', text: T('跳過 ▸▸', 'Skip ▸▸'), onclick: function (e) { e.stopPropagation(); end(); } });
+    var wrap = h('div', { class: 'rpg-story', role: 'dialog', 'aria-modal': 'true', 'aria-label': T('序章', 'Prologue') }, [
       skip, soundBtn(), h('div', { class: 'rpg-story-panel' }, [art, h('div', { class: 'rpg-story-box' }, [kicker, text, h('div', { class: 'rpg-story-foot' }, [dots, hint])])])
     ]);
     function show() {
@@ -1124,7 +1154,7 @@
       wrap.classList.toggle('is-alarm', !!p.alarm);
       wrap.classList.remove('is-in'); void wrap.offsetWidth; wrap.classList.add('is-in');
       STORY.forEach(function (_, k) { dots.appendChild(h('i', { class: k === i ? 'is-on' : '' })); });
-      hint.textContent = i === STORY.length - 1 ? '點一下建立角色' : '點一下繼續';
+      hint.textContent = i === STORY.length - 1 ? T('點一下建立角色', 'Tap to create your character') : T('點一下繼續', 'Tap to continue');
       finishType = typewrite(text, p.text);
     }
     function advance() {
@@ -1150,15 +1180,37 @@
     try { skip.focus({ preventScroll: true }); } catch (e) {}
   }
 
+  /* ---------- language picker: shown once, before the prologue ---------- */
+  function openLangPicker(next) {
+    var m;
+    function pick(l) {
+      setLang(l);
+      if ((l === 'en') !== EN) { location.reload(); return; }
+      m.close(); next();
+    }
+    m = modal([
+      h('h2', { text: '選擇語言 · Choose your language' }),
+      h('p', { text: '遊戲介面、劇情和題目都會使用這個語言，之後隨時可以按右上角的按鈕切換。 The interface, story and questions use this language. You can switch any time with the button in the top-right corner.' }),
+      h('div', { class: 'rpg-modal-actions' }, [
+        h('button', { class: 'rpg-btn', type: 'button', text: '繁體中文', onclick: function () { pick('zh'); } }),
+        h('button', { class: 'rpg-btn', type: 'button', text: 'English', onclick: function () { pick('en'); } })
+      ])
+    ], { sticky: true });
+  }
+
   /* ---------- onboarding / edit character ---------- */
   function openOnboarding() {
+    if (!S.profile && !S.flags.prologue && lsGet(LANG_KEY) == null) {
+      openLangPicker(openOnboarding);
+      return;
+    }
     if (!S.profile && !S.flags.prologue) {
       openPrologue(function () { S.flags.prologue = 1; saveState(); openOnboarding(); });
       return;
     }
     var editing = !!S.profile;
     var pick = { cls: editing ? S.profile.cls : 'production', avatar: editing ? S.profile.avatar : 'production' };
-    var nick = h('input', { class: 'rpg-input', type: 'text', maxlength: '16', placeholder: '暱稱（最多 16 字）', value: editing ? S.profile.nick : '' });
+    var nick = h('input', { class: 'rpg-input', type: 'text', maxlength: '16', placeholder: T('暱稱（最多 16 字）', 'Nickname (up to 16 characters)'), value: editing ? S.profile.nick : '' });
     var classGrid = h('div', { class: 'rpg-pick-grid' });
     var avatarGrid = h('div', { class: 'rpg-pick-grid rpg-pick-avatars' });
     var hint = h('p', { class: 'rpg-hint' });
@@ -1172,19 +1224,19 @@
           onclick: function () { pick.cls = dep.id; if (!avatarTouched) pick.avatar = dep.id; draw(); }
         }, [
           h('b', { text: CLASS_META[dep.id].job }),
-          h('span', { text: dep.nameZh }),
-          h('small', { text: M.docs && hasQuiz(dep) ? '有章節挑戰' : '閱讀通關' })
+          h('span', { text: dName(dep) }),
+          h('small', { text: M.docs && hasQuiz(dep) ? T('有章節挑戰', 'Section challenges') : T('閱讀通關', 'Reading only') })
         ]));
       });
       avatarChoices().forEach(function (id) {
         var base = deptById(id.split('-')[0]);
         avatarGrid.appendChild(h('button', {
-          type: 'button', class: 'rpg-pick-avatar' + (pick.avatar === id ? ' is-on' : ''), 'aria-label': (base ? CLASS_META[base.id].job : '') + '頭像',
+          type: 'button', class: 'rpg-pick-avatar' + (pick.avatar === id ? ' is-on' : ''), 'aria-label': (base ? CLASS_META[base.id].job : '') + T('頭像', ' avatar'),
           onclick: function () { pick.avatar = id; avatarTouched = true; draw(); }
         }, [h('img', { src: avatarImg(id), alt: '' })]));
       });
       var dep = deptById(pick.cls);
-      hint.textContent = dep.nameZh + '：' + dep.description;
+      hint.textContent = dName(dep) + T('：', ': ') + dep.description;
     }
     function hasQuiz(dep) {
       return dep.tiers.some(function (t) { return t.docs.some(function (x) { return M.docs[x.key] && M.docs[x.key].quiz; }); });
@@ -1193,22 +1245,22 @@
 
     var m = modal([
       h('span', { class: 'rpg-tag', text: editing ? 'CHARACTER' : 'WELCOME' }),
-      h('h2', { text: editing ? '編輯角色' : '建立你的角色' }),
-      h('p', { class: 'rpg-modal-lead', text: editing ? '轉職不會清掉進度，只會換主線任務。' : '選一個職業決定主線任務，之後可以隨時轉職。讀完章節、通過章節挑戰都會得到經驗值、文件卡和寵物進化。' }),
-      h('h3', { text: '1. 職業' }), classGrid, hint,
-      h('h3', { text: '2. 頭像' }), avatarGrid,
-      h('h3', { text: '3. 暱稱' }), nick,
-      h('p', { class: 'rpg-note', text: '角色和進度只存在這台裝置的瀏覽器裡，不會上傳。清除瀏覽器資料會一併清掉。' }),
+      h('h2', { text: editing ? T('編輯角色', 'Edit character') : T('建立你的角色', 'Create your character') }),
+      h('p', { class: 'rpg-modal-lead', text: editing ? T('轉職不會清掉進度，只會換主線任務。', 'Changing class keeps your progress; only the main quest changes.') : T('選一個職業決定主線任務，之後可以隨時轉職。讀完章節、通過章節挑戰都會得到經驗值、文件卡和寵物進化。', 'Your class sets your main quest, and you can switch any time. Reading sections and passing section challenges earn XP, document cards and companion evolutions.') }),
+      h('h3', { text: T('1. 職業', '1. Class') }), classGrid, hint,
+      h('h3', { text: T('2. 頭像', '2. Avatar') }), avatarGrid,
+      h('h3', { text: T('3. 暱稱', '3. Nickname') }), nick,
+      h('p', { class: 'rpg-note', text: T('角色和進度只存在這台裝置的瀏覽器裡，不會上傳。清除瀏覽器資料會一併清掉。', 'Your character and progress live only in this device\'s browser and are never uploaded. Clearing browser data erases them too.') }),
       h('button', {
-        class: 'rpg-btn rpg-btn-wide', type: 'button', text: editing ? '儲存' : '開始冒險',
+        class: 'rpg-btn rpg-btn-wide', type: 'button', text: editing ? T('儲存', 'Save') : T('開始冒險', 'Start adventure'),
         onclick: function () {
-          var name = (nick.value || '').trim().slice(0, 16) || '見習生';
+          var name = (nick.value || '').trim().slice(0, 16) || T('見習生', 'Trainee');
           var first = !S.profile;
           S.profile = { nick: name, cls: pick.cls, avatar: pick.avatar };
           saveState();
           m.close();
           refresh(first);   // first time: adopt existing history without a flood of rewards
-          if (first && G.xp > 0) toast('已帶入你之前的閱讀紀錄：' + G.xp + ' XP');
+          if (first && G.xp > 0) toast(T('已帶入你之前的閱讀紀錄：', 'Imported your earlier reading history: ') + G.xp + ' XP');
         }
       })
     ], { cls: 'rpg-modal-wide' });
@@ -1220,9 +1272,9 @@
     var grid = h('div', { class: 'rpg-pet-grid' });
     var m = modal([
       h('span', { class: 'rpg-tag', text: 'HATCH' }),
-      h('h2', { text: '蛋有動靜了' }),
-      h('p', { class: 'rpg-modal-lead', text: '你讀完了第一節。選一隻夥伴，牠會隨著你升階而進化。' }),
-      h('img', { class: 'rpg-egg rpg-wobble', src: eggImg(), alt: '蛋' }),
+      h('h2', { text: T('蛋有動靜了', 'The egg is stirring') }),
+      h('p', { class: 'rpg-modal-lead', text: T('你讀完了第一節。選一隻夥伴，牠會隨著你升階而進化。', 'You finished your first section. Choose a companion; it evolves as you rank up.') }),
+      h('img', { class: 'rpg-egg rpg-wobble', src: eggImg(), alt: T('蛋', 'Egg') }),
       grid
     ], { sticky: true });
     Object.keys(PETS).forEach(function (line) {
@@ -1249,9 +1301,9 @@
   /* ---------- full-screen scenes for the two big moments: pet evolution, rank-up ---------- */
   var RANK_LINES = [
     '',
-    '你不再是只會照著 SOP 做的新人了。啟程之島的霧散開，修練之島在前方等你。',
-    '同事開始拿問題來問你。偏差、變更、稽核，你都知道該翻哪一份文件。核心之島浮現了。',
-    '你成了大家口中「那個專家」。整座廠區的無菌防線，有一段是你守住的。'
+    T('你不再是只會照著 SOP 做的新人了。啟程之島的霧散開，修練之島在前方等你。', 'You are no longer the new hire who just follows the SOP. The mist over the Isle of Beginnings lifts, and the Isle of Training waits ahead.'),
+    T('同事開始拿問題來問你。偏差、變更、稽核，你都知道該翻哪一份文件。核心之島浮現了。', 'Colleagues start bringing you their questions. Deviations, changes, audits: you know which document to open. The Core Isle rises into view.'),
+    T('你成了大家口中「那個專家」。整座廠區的無菌防線，有一段是你守住的。', 'You have become "the expert" everyone mentions. Part of the plant\'s sterile defense line is yours to hold.')
   ];
   function scene(e, done) {
     var steps = [], timers = [], over = false;
@@ -1259,9 +1311,9 @@
     var kicker = h('span', { class: 'rpg-story-kicker' });
     var title = h('strong', { class: 'rpg-scene-title' });
     var text = h('p', { class: 'rpg-story-text' });
-    var hint = h('span', { class: 'rpg-story-hint', text: '點一下繼續' });
+    var hint = h('span', { class: 'rpg-story-hint', text: T('點一下繼續', 'Tap to continue') });
     var wrap = h('div', { class: 'rpg-story rpg-scene is-' + e.kind, role: 'dialog', 'aria-modal': 'true', 'aria-live': 'polite' }, [
-      h('button', { class: 'rpg-story-skip', type: 'button', text: '跳過 ▸▸', onclick: function (ev) { ev.stopPropagation(); end(); } }),
+      h('button', { class: 'rpg-story-skip', type: 'button', text: T('跳過 ▸▸', 'Skip ▸▸'), onclick: function (ev) { ev.stopPropagation(); end(); } }),
       soundBtn(),
       h('div', { class: 'rpg-story-panel' }, [art, h('div', { class: 'rpg-story-box' }, [kicker, title, text, h('div', { class: 'rpg-story-foot' }, [h('span'), hint])])])
     ]);
@@ -1274,21 +1326,21 @@
       var newImg = h('img', { class: petCls('rpg-scene-new'), src: petImg(S.pet.line, e.n), alt: to });
       art.appendChild(h('div', { class: 'rpg-scene-evo', style: '--c:' + pet.color }, [h('i', { class: 'rpg-scene-ring' }), oldImg, newImg, h('i', { class: 'rpg-scene-flash' })]));
       steps = [
-        function () { say('……？', from, '「' + pet.voice + '……」' + from + '的身體開始發光了。'); },
-        function () { wrap.classList.add('is-glow'); say('EVOLVING', from, '光越來越亮——'); },
-        function () { wrap.classList.add('is-burst'); sfx('evolve'); say('EVOLUTION', to, from + '進化成了' + to + '！「' + pet.voice + pet.voice + '！」'); burstIn(art); }
+        function () { say(T('……？', '...?'), from, T('「' + pet.voice + '……」' + from + '的身體開始發光了。', '"' + pet.voice + '..." ' + from + ' begins to glow.')); },
+        function () { wrap.classList.add('is-glow'); say('EVOLVING', from, T('光越來越亮——', 'The light grows brighter...')); },
+        function () { wrap.classList.add('is-burst'); sfx('evolve'); say('EVOLUTION', to, T(from + '進化成了' + to + '！「' + pet.voice + pet.voice + '！」', from + ' evolved into ' + to + '! "' + pet.voice + ' ' + pet.voice + '!"')); burstIn(art); }
       ];
     } else {
       var dep = deptById(S.profile.cls), job = CLASS_META[S.profile.cls].job, zone = ZONES[Math.min(e.n, ZONES.length - 1)];
       art.appendChild(h('div', { class: 'rpg-scene-rank', style: '--c:' + (dep ? dep.color : '#fbbf24') }, [
         h('i', { class: 'rpg-scene-rays' }),
         h('img', { class: 'rpg-scene-hero', src: classImg(S.profile.avatar), alt: '' }),
-        h('span', { class: 'rpg-scene-badge' }, [h('b', { text: RANKS[e.n].zh }), h('small', { text: RANKS[e.n].en })])
+        h('span', { class: 'rpg-scene-badge' }, [h('b', { text: L(RANKS[e.n]) }), h('small', { text: EN ? RANKS[e.n].zh : RANKS[e.n].en })])
       ]));
       steps = [
-        function () { say('RANK UP', RANKS[e.n - 1].zh + job + '　→', S.profile.nick + '，你的努力被看見了。'); },
-        function () { wrap.classList.add('is-stamp'); sfx('rank'); say('RANK UP', RANKS[e.n].zh + job, RANK_LINES[e.n] || ''); burstIn(art); },
-        function () { say('NEXT', zone.zh, e.n < ZONES.length ? '下一站：' + zone.zh + '。守在那裡的是「' + zone.boss + '」。' : '所有島嶼都收復了。接下來，換你帶新人。'); }
+        function () { say('RANK UP', T(RANKS[e.n - 1].zh + job + '　→', L(RANKS[e.n - 1]) + ' ' + job + ' →'), T(S.profile.nick + '，你的努力被看見了。', S.profile.nick + ', your hard work has been noticed.')); },
+        function () { wrap.classList.add('is-stamp'); sfx('rank'); say('RANK UP', L(RANKS[e.n]) + (EN ? ' ' : '') + job, RANK_LINES[e.n] || ''); burstIn(art); },
+        function () { say('NEXT', L(zone), e.n < ZONES.length ? T('下一站：' + zone.zh + '。守在那裡的是「' + zone.boss + '」。', 'Next stop: ' + L(zone) + '. Guarding it is the ' + zone.boss + '.') : T('所有島嶼都收復了。接下來，換你帶新人。', 'Every island has been reclaimed. Now it is your turn to train the new hires.')); }
       ];
     }
     steps[0].auto = 2000;
@@ -1296,7 +1348,7 @@
     var i = 0;
     function run() {
       steps[i]();
-      hint.textContent = i === steps.length - 1 ? '點一下關閉' : '點一下繼續';
+      hint.textContent = i === steps.length - 1 ? T('點一下關閉', 'Tap to close') : T('點一下繼續', 'Tap to continue');
       var me = i;
       if (steps[i].auto && !CALM) timers.push(setTimeout(function () { if (i === me && !over) { finishType(); go(); } }, steps[i].auto));
     }
@@ -1344,7 +1396,7 @@
     if (big.length > 4) {   // many at once (e.g. several docs cleared elsewhere): one summary
       var cards = big.filter(function (e) { return e.kind === 'card'; }).length;
       big = big.filter(function (e) { return e.kind !== 'card'; }).slice(0, 3);
-      if (cards) toast('獲得 ' + cards + ' 張文件卡');
+      if (cards) toast(T('獲得 ' + cards + ' 張文件卡', 'Got ' + cards + ' document card' + (cards > 1 ? 's' : '')));
     }
     big.forEach(function (e) { cutQueue.push(e); });
     if (!cutBusy) nextCut();
@@ -1356,38 +1408,38 @@
     if ((e.kind === 'pet' || e.kind === 'shinypet' || e.kind === 'hatch') && !S.pet) { nextCut(); return; }
     if ((e.kind === 'pet' && e.n > 1) || (e.kind === 'rank' && e.n > 0)) { scene(e, nextCut); return; }
     var kicker = '', title = '', sub = '', art = null;
-    if (e.kind === 'level') { kicker = 'LEVEL UP'; title = 'Lv ' + e.n; sub = '等級提升'; art = h('img', { src: classImg(S.profile.avatar), alt: '' }); }
-    else if (e.kind === 'mile') { kicker = 'MILESTONE'; title = 'Lv ' + e.lv + ' 里程碑'; sub = '獲得 ' + e.text; art = matImg('boss') ? h('img', { src: matImg('boss'), alt: '' }) : h('img', { src: classImg(S.profile.avatar), alt: '' }); }
+    if (e.kind === 'level') { kicker = 'LEVEL UP'; title = 'Lv ' + e.n; sub = T('等級提升', 'Level up'); art = h('img', { src: classImg(S.profile.avatar), alt: '' }); }
+    else if (e.kind === 'mile') { kicker = 'MILESTONE'; title = 'Lv ' + e.lv + T(' 里程碑', ' milestone'); sub = T('獲得 ', 'Reward: ') + e.text; art = matImg('boss') ? h('img', { src: matImg('boss'), alt: '' }) : h('img', { src: classImg(S.profile.avatar), alt: '' }); }
     else if (e.kind === 'rank') {
-      kicker = 'RANK UP'; title = RANKS[e.n].zh + CLASS_META[S.profile.cls].job; sub = RANKS[e.n].en + ' 階級達成';
+      kicker = 'RANK UP'; title = L(RANKS[e.n]) + (EN ? ' ' : '') + CLASS_META[S.profile.cls].job; sub = T(RANKS[e.n].en + ' 階級達成', RANKS[e.n].en + ' rank reached');
       art = h('img', { src: classImg(S.profile.cls), alt: '' });
     } else if (e.kind === 'card') {
       var st = G.docs[e.key];
       kicker = e.shiny ? 'SHINY' : e.upgrade ? 'AWAKENED' : 'NEW CARD'; title = st.doc.code || st.doc.short;
-      sub = e.shiny ? '異色文件卡：每一節都一次全對' : e.awakened ? '文件卡覺醒' : '獲得文件卡';
+      sub = e.shiny ? T('異色文件卡：每一節都一次全對', 'Shiny card: every section aced on the first try') : e.awakened ? T('文件卡覺醒', 'Card awakened') : T('獲得文件卡', 'New document card');
       art = h('div', { class: 'rpg-cut-card rpg-flip' }, [cardEl(st, false)]);
     } else if (e.kind === 'title') {
       var t = G.titles.filter(function (x) { return x.id === e.id; })[0];
-      kicker = 'TITLE'; title = t.zh + (e.lv === 2 ? '大師' : '修習者'); sub = '獲得稱號';
+      kicker = 'TITLE'; title = EN ? t.zh + (e.lv === 2 ? ' Master' : ' Adept') : t.zh + (e.lv === 2 ? '大師' : '修習者'); sub = T('獲得稱號', 'Title earned');
     } else if (e.kind === 'pet') {
-      kicker = 'EVOLUTION'; title = PETS[S.pet.line].stages[e.n - 1]; sub = '夥伴進化了';
+      kicker = 'EVOLUTION'; title = PETS[S.pet.line].stages[e.n - 1]; sub = T('夥伴進化了', 'Your companion evolved');
       art = h('img', { class: petCls('rpg-pop'), src: petImg(S.pet.line, e.n), alt: '' });
     } else if (e.kind === 'shinypet') {
-      kicker = 'SHINY'; title = PETS[S.pet.line].stages[G.petStage - 1]; sub = '夥伴變成異色型態';
+      kicker = 'SHINY'; title = PETS[S.pet.line].stages[G.petStage - 1]; sub = T('夥伴變成異色型態', 'Your companion turned shiny');
       art = h('img', { class: 'rpg-pop rpg-shiny', src: petImg(S.pet.line, G.petStage), alt: '' });
     } else if (e.kind === 'secret') {
       var sc = SECRETS.filter(function (x) { return x.id === e.id; })[0];
-      kicker = 'SECRET'; title = sc.zh; sub = '隱藏稱號：' + sc.how;
+      kicker = 'SECRET'; title = sc.zh; sub = T('隱藏稱號：', 'Hidden title: ') + sc.how;
     } else if (e.kind === 'bossdown') {
       var dz = ZONES[e.ti] || ZONES[ZONES.length - 1], dimg = asset('boss-' + (e.ti + 1));
-      kicker = 'BOSS DEFEATED'; title = dz.boss; sub = '升階試煉通過　+' + XP_BOSS + ' XP';
+      kicker = 'BOSS DEFEATED'; title = dz.boss; sub = T('升階試煉通過　+', 'Rank trial passed · +') + XP_BOSS + ' XP';
       art = dimg ? h('img', { class: 'rpg-pop rpg-defeated', src: dimg, alt: '' }) : null;
     } else if (e.kind === 'craft') {
       var cg = gearById(e.id);
       kicker = 'CRAFTED'; title = cg.zh; sub = cg.eff;
       art = h('img', { class: 'rpg-pop', src: gearImg(cg), alt: '' });
     } else if (e.kind === 'hatch') {
-      kicker = 'HATCHED'; title = PETS[S.pet.line].stages[0]; sub = '新的夥伴加入';
+      kicker = 'HATCHED'; title = PETS[S.pet.line].stages[0]; sub = T('新的夥伴加入', 'A new companion joins you');
       art = h('img', { class: 'rpg-pop', src: petImg(S.pet.line, 1), alt: '' });
     }
     var cut = h('div', { class: 'rpg-cutin', role: 'status' }, [
@@ -1427,7 +1479,7 @@
       if (!main) return;
       if (main.getBoundingClientRect().bottom - window.innerHeight < 240) {
         S.end[pageDocKey] = 1; saveState();
-        palSay('整份讀到最後了，辛苦了！', 1);
+        palSay(T('整份讀到最後了，辛苦了！', 'You made it to the very end. Nice work!'), 1);
       }
     }
     window.addEventListener('scroll', function () {
@@ -1438,7 +1490,7 @@
     initPal(d);
 
     if (d.quiz) {
-      fetch(ROOT + 'rpg/quiz/' + pageDocKey + '.json').then(function (r) { return r.json(); }).then(function (bank) {
+      loadBank(pageDocKey).then(function (bank) {
         renderQuizzes(bank);
         if (location.hash.indexOf('#rpgq-') === 0) {
           var el = document.getElementById(location.hash.slice(1));
@@ -1477,11 +1529,34 @@
   /* Letters that are names, not option references: "Grade A 或 B", "Annex A", "Type C", "D 值",
      "膠塞 A 批", "B. diminuta", an English sentence starting with the article "A". */
   var LETTER_NAME = /\b(Grades?|Annex|Appendix|Type|Tests?|Level|Diagram|Fluid|Attachment|Company|Method|Process|Table|Class|Zone|Part|Category|Schedule|Site|Lot|Batch|Product|Supplier|Room|Line|Area|Phase|Stage|Step|Condition|Case|Scenario|Sample|ALCOA\s*的)\s*([A-E](\s*(\/|,|、|和|與|及|或|or|and|to)\s*)?)+|(查核表|標示為|分類為)\s*[A-E]|(^|[.。「"]\s*)A (?=[a-z])|[A-E](?=\s*[=×])|[A-E]\. [a-z]|[A-E]\s*(value|_T|值|批)|中 A =/gi;
+  function loadBank(key) {
+    var zh = fetch(ROOT + 'rpg/quiz/' + key + '.json').then(function (res) { return res.json(); });
+    if (!EN) return zh;
+    var en = fetch(ROOT + 'rpg/quiz/en/' + key + '.json').then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; });
+    return Promise.all([zh, en]).then(function (v) {
+      var bank = v[0], tr = {};
+      ((v[1] && v[1].questions) || []).forEach(function (t) { tr[t.id] = t; });
+      bank.questions = (bank.questions || []).map(function (q) {
+        var t = tr[q.id], c = {};
+        for (var k in q) c[k] = q[k];
+        c._keep = keepOrder(q);
+        if (!t) return c;
+        ['topic', 'question', 'explanation', 'reference'].forEach(function (k) { if (t[k]) c[k] = t[k]; });
+        if (t.options) { c.options = {}; Object.keys(q.options || {}).forEach(function (k) { c.options[k] = t.options[k] || q.options[k]; }); }
+        return c;
+      });
+      return bank;
+    });
+  }
+  function keepOrder(q) {
+    var keys = Object.keys(q.options || {});
+    var opts = keys.map(function (k) { return q.options[k]; }).join(' ');
+    return OPT_REF.test(opts) || LETTER.test(opts) || LETTER.test((q.explanation || '').replace(LETTER_NAME, ' '));
+  }
   function mixOpts(q) {
     var keys = Object.keys(q.options || {});
     if (keys.length < 2 || !q.options[q.correct]) return q;
-    var opts = keys.map(function (k) { return q.options[k]; }).join(' ');
-    if (OPT_REF.test(opts) || LETTER.test(opts) || LETTER.test((q.explanation || '').replace(LETTER_NAME, ' '))) return q;
+    if (q._keep !== undefined ? q._keep : keepOrder(q)) return q;
     var order = shuffle(keys.slice()), out = {}, c = {};
     for (var k in q) c[k] = q[k];
     order.forEach(function (from, i) { out[keys[i]] = q.options[from]; if (from === q.correct) c.correct = keys[i]; });
@@ -1501,16 +1576,16 @@
   /* The questions just missed, with the right answer and the explanation. */
   function missedList(qs, open) {
     return h('details', { class: 'rpg-missed', open: open }, [
-      h('summary', { text: '這次答錯的 ' + qs.length + ' 題' }),
+      h('summary', { text: T('這次答錯的 ' + qs.length + ' 題', qs.length + (qs.length > 1 ? ' questions' : ' question') + ' missed this time') }),
       h('ol', {}, qs.map(function (q) {
         var src = sourceHref(q);
         return h('li', {}, [
           h('p', { class: 'rpg-missed-q', text: q.question }),
-          h('p', { class: 'rpg-missed-a', text: '正解 ' + q.correct + '：' + q.options[q.correct] }),
+          h('p', { class: 'rpg-missed-a', text: T('正解 ', 'Answer ') + q.correct + T('：', ': ') + q.options[q.correct] }),
           h('p', { class: 'rpg-missed-e', text: q.explanation || '' }),
           q.reference || src ? h('small', {}, [
-            q.reference ? h('span', { text: '出處：' + q.reference + '　' }) : null,
-            src ? h('a', { href: src, text: '回原文 →' }) : null
+            q.reference ? h('span', { text: T('出處：', 'Source: ') + q.reference + T('　', '  ') }) : null,
+            src ? h('a', { href: src, text: T('回原文 →', 'Back to source →') }) : null
           ]) : null
         ]);
       }))
@@ -1547,33 +1622,33 @@
   };
   // m (motion): arc | fly | stream | swarm | helix | drop | beam | cone | strike
   var FX_YOU = {
-    qa:          { el: '品保系', c: '#2563eb', skill: '品質封印', m: 'arc', g: 'seal', n: 1, size: 48, spin: 1, imp: { mark: 'stamp', ring: 1, dots: 10 } },
-    qc:          { el: '品管系', c: '#7c3aed', skill: '試劑滴定', m: 'arc', g: 'drop', n: 3, size: 28, imp: { dots: 14, ring: 1, tint: 'stain' } },
-    production:  { el: '生產系', c: '#059669', skill: '無菌充填流', m: 'stream', g: 'bubble', n: 12, size: 15, imp: { dots: 12, tint: 'mist', flash: 1 } },
-    engineering: { el: '工程系', c: '#d97706', skill: '齒輪迴旋斬', m: 'fly', g: 'gear', n: 2, size: 42, spin: 1, imp: { mark: 'gear', dots: 14, dc: '#fde047', ring: 1 } },
-    ra:          { el: '法規系', c: '#dc2626', skill: '法典頁刃', m: 'swarm', g: 'page', n: 6, size: 30, spin: 1, imp: { mark: 'cut', dots: 6 } },
-    warehouse:   { el: '倉儲系', c: '#0891b2', skill: '物料空投', m: 'drop', g: 'crate', n: 1, size: 58, imp: { ring: 2, dots: 12, dc: '#c98a2b', quake: 1 } },
-    techservice: { el: '技服系', c: '#8b5cf6', skill: '調律聲波', m: 'stream', g: 'wave', n: 4, size: 42, aim: 1, imp: { ring: 3, flash: 1 } },
-    bt:          { el: '數位系', c: '#0f766e', skill: '數據洪流', m: 'stream', g: 'bits', n: 14, size: 16, imp: { tint: 'glitch', dots: 8 } }
+    qa:          { el: T('品保系', 'Quality'), c: '#2563eb', skill: T('品質封印', 'Quality Seal'), m: 'arc', g: 'seal', n: 1, size: 48, spin: 1, imp: { mark: 'stamp', ring: 1, dots: 10 } },
+    qc:          { el: T('品管系', 'Lab'), c: '#7c3aed', skill: T('試劑滴定', 'Reagent Titration'), m: 'arc', g: 'drop', n: 3, size: 28, imp: { dots: 14, ring: 1, tint: 'stain' } },
+    production:  { el: T('生產系', 'Production'), c: '#059669', skill: T('無菌充填流', 'Aseptic Fill Stream'), m: 'stream', g: 'bubble', n: 12, size: 15, imp: { dots: 12, tint: 'mist', flash: 1 } },
+    engineering: { el: T('工程系', 'Engineering'), c: '#d97706', skill: T('齒輪迴旋斬', 'Gear Spin Slash'), m: 'fly', g: 'gear', n: 2, size: 42, spin: 1, imp: { mark: 'gear', dots: 14, dc: '#fde047', ring: 1 } },
+    ra:          { el: T('法規系', 'Regulatory'), c: '#dc2626', skill: T('法典頁刃', 'Codex Page Blade'), m: 'swarm', g: 'page', n: 6, size: 30, spin: 1, imp: { mark: 'cut', dots: 6 } },
+    warehouse:   { el: T('倉儲系', 'Logistics'), c: '#0891b2', skill: T('物料空投', 'Supply Drop'), m: 'drop', g: 'crate', n: 1, size: 58, imp: { ring: 2, dots: 12, dc: '#c98a2b', quake: 1 } },
+    techservice: { el: T('技服系', 'Tech Service'), c: '#8b5cf6', skill: T('調律聲波', 'Tuning Wave'), m: 'stream', g: 'wave', n: 4, size: 42, aim: 1, imp: { ring: 3, flash: 1 } },
+    bt:          { el: T('數位系', 'Digital'), c: '#0f766e', skill: T('數據洪流', 'Data Flood'), m: 'stream', g: 'bits', n: 14, size: 16, imp: { tint: 'glitch', dots: 8 } }
   };
   var FX_MOB = [
-    { skill: '破洞抓擊', c: '#64748b', m: 'strike', imp: { mark: 'claw', dots: 6 } },
-    { skill: '芽孢連射', c: '#65a30d', m: 'fly', g: 'spore', n: 5, size: 24, spin: 1, imp: { dots: 12, tint: 'stain' } },
-    { skill: '碎玻璃投擲', c: '#0ea5e9', m: 'arc', g: 'shard', n: 4, size: 30, spin: 1, imp: { mark: 'crack', dots: 8, dc: '#bae6fd' } },
-    { skill: '漏簽詛咒', c: '#a855f7', m: 'swarm', g: 'ghost', n: 1, size: 56, imp: { mark: 'cross', dc: '#ef4444', ring: 1 } },
-    { skill: '落菌孢雨', c: '#d97706', m: 'drop', g: 'spore', n: 8, size: 18, imp: { dots: 10, tint: 'stain' } },
-    { skill: '混濁黏液彈', c: '#84cc16', m: 'arc', g: 'blob', n: 1, size: 40, imp: { mark: 'film', dots: 10 } },
-    { skill: '死角電擊', c: '#eab308', m: 'beam', beam: 'bolt', imp: { mark: 'bolt', tint: 'zap', flash: 1 } },
-    { skill: '交叉污染', c: '#ec4899', m: 'helix', g: 'orb', n: 2, size: 28, imp: { ring: 2, dots: 10, tint: 'stain' } },
-    { skill: '缺失通知', c: '#ef4444', m: 'swarm', g: 'bat', n: 5, size: 36, imp: { mark: 'cut', dots: 6 } },
-    { skill: '系統當機', c: '#06b6d4', m: 'beam', beam: 'glitch', imp: { tint: 'glitch', dots: 8 } }
+    { skill: T('破洞抓擊', 'Torn Claw'), c: '#64748b', m: 'strike', imp: { mark: 'claw', dots: 6 } },
+    { skill: T('芽孢連射', 'Spore Barrage'), c: '#65a30d', m: 'fly', g: 'spore', n: 5, size: 24, spin: 1, imp: { dots: 12, tint: 'stain' } },
+    { skill: T('碎玻璃投擲', 'Glass Shard Toss'), c: '#0ea5e9', m: 'arc', g: 'shard', n: 4, size: 30, spin: 1, imp: { mark: 'crack', dots: 8, dc: '#bae6fd' } },
+    { skill: T('漏簽詛咒', 'Unsigned Curse'), c: '#a855f7', m: 'swarm', g: 'ghost', n: 1, size: 56, imp: { mark: 'cross', dc: '#ef4444', ring: 1 } },
+    { skill: T('落菌孢雨', 'Fallout Spore Rain'), c: '#d97706', m: 'drop', g: 'spore', n: 8, size: 18, imp: { dots: 10, tint: 'stain' } },
+    { skill: T('混濁黏液彈', 'Turbid Slime Shot'), c: '#84cc16', m: 'arc', g: 'blob', n: 1, size: 40, imp: { mark: 'film', dots: 10 } },
+    { skill: T('死角電擊', 'Dead-Leg Shock'), c: '#eab308', m: 'beam', beam: 'bolt', imp: { mark: 'bolt', tint: 'zap', flash: 1 } },
+    { skill: T('交叉污染', 'Cross-Contamination'), c: '#ec4899', m: 'helix', g: 'orb', n: 2, size: 28, imp: { ring: 2, dots: 10, tint: 'stain' } },
+    { skill: T('缺失通知', 'Finding Notice'), c: '#ef4444', m: 'swarm', g: 'bat', n: 5, size: 36, imp: { mark: 'cut', dots: 6 } },
+    { skill: T('系統當機', 'System Crash'), c: '#06b6d4', m: 'beam', beam: 'glitch', imp: { tint: 'glitch', dots: 8 } }
   ];
   var FX_BOSS = [
-    { el: '微粒系', skill: '微粒風暴', c: '#94a3b8', m: 'stream', g: 'dust', n: 30, size: 7, imp: { tint: 'mist', dots: 18, quake: 1 } },
-    { el: '生物膜系', skill: '生物膜吞噬', c: '#65a30d', m: 'arc', g: 'blob', n: 3, size: 36, imp: { mark: 'film', tint: 'film', dots: 12, quake: 1 } },
-    { el: '熱原系', skill: '熱原吐息', c: '#f97316', m: 'cone', imp: { tint: 'burn', dots: 18, dc: '#fde047', flash: 1, quake: 1 } }
+    { el: T('微粒系', 'Particle'), skill: T('微粒風暴', 'Particle Storm'), c: '#94a3b8', m: 'stream', g: 'dust', n: 30, size: 7, imp: { tint: 'mist', dots: 18, quake: 1 } },
+    { el: T('生物膜系', 'Biofilm'), skill: T('生物膜吞噬', 'Biofilm Engulf'), c: '#65a30d', m: 'arc', g: 'blob', n: 3, size: 36, imp: { mark: 'film', tint: 'film', dots: 12, quake: 1 } },
+    { el: T('熱原系', 'Pyrogen'), skill: T('熱原吐息', 'Pyrogen Breath'), c: '#f97316', m: 'cone', imp: { tint: 'burn', dots: 18, dc: '#fde047', flash: 1, quake: 1 } }
   ];
-  var FX_PLAIN = { skill: '衝撞', c: '#64748b', m: 'strike', imp: { dots: 8 } };
+  var FX_PLAIN = { skill: T('衝撞', 'Tackle'), c: '#64748b', m: 'strike', imp: { dots: 8 } };
   function fxYou(skill) {
     var cls = skill || (S.profile && S.profile.cls), sp = FX_YOU[cls] || FX_YOU.qa, d = deptById(cls);
     return d && d.color ? fxWith(sp, { c: d.color }) : sp;
@@ -1658,7 +1733,7 @@
       }
       if (f.crit && !f.blocked) {
         for (var cr = 0; cr < 2; cr++) add(h('span', { class: 'rpg-fx-ring', style: at0 + ';--m:' + px(size * 1.3) + ';--d:' + (160 + cr * 120) + 'ms;--c:#facc15' }));
-        add(h('span', { class: 'rpg-fx-crit', style: 'left:' + px(x1) + ';top:' + px(Math.max(18, y1 - size * 0.62)), text: '弱點！效果絕佳' }));
+        add(h('span', { class: 'rpg-fx-crit', style: 'left:' + px(x1) + ';top:' + px(Math.max(18, y1 - size * 0.62)), text: T('弱點！效果絕佳', 'Weak point! Critical hit') }));
       }
       if (imp.tint && !f.blocked && !f.tint.closest('.is-dissolve')) {
         var te = f.tint, cl = 'rpg-fx-t-' + imp.tint;
@@ -1698,18 +1773,18 @@
     if (weak) hearts++;
     var item = o.item && itemVs(o.item, o.target) ? o.item : null;
     if (item) shield += item.shield || 1;
-    var foeImg = o.foeImg ? h('img', { class: 'rpg-foe-img', src: o.foeImg, alt: o.foe }) : h('span', { class: 'rpg-foe-img rpg-foe-blank', style: o.fx ? '--c:' + o.fx.c : null, text: '？' });
-    var hp = h('span', { class: 'rpg-hp', role: 'meter', 'aria-label': o.foe + '的血量', 'aria-valuemin': 0, 'aria-valuemax': n });
-    var heartsEl = h('span', { class: 'rpg-hearts', 'aria-label': '你的生命' });
+    var foeImg = o.foeImg ? h('img', { class: 'rpg-foe-img', src: o.foeImg, alt: o.foe }) : h('span', { class: 'rpg-foe-img rpg-foe-blank', style: o.fx ? '--c:' + o.fx.c : null, text: T('？', '?') });
+    var hp = h('span', { class: 'rpg-hp', role: 'meter', 'aria-label': T(o.foe + '的血量', o.foe + ' HP'), 'aria-valuemin': 0, 'aria-valuemax': n });
+    var heartsEl = h('span', { class: 'rpg-hearts', 'aria-label': T('你的生命', 'Your hearts') });
     var foeFx = o.fx || (o.kind === 'boss' ? FX_BOSS[o.zone] : FX_MOB[o.cluster]) || FX_PLAIN, youFx = fxYou(o.skill);
-    var foeEl = o.kind === 'boss' ? (foeFx.el || '魔王') : o.cluster >= 0 ? CLUSTER_ZH[o.cluster] + '系' : '無屬性';
+    var foeEl = o.kind === 'boss' ? (foeFx.el || T('魔王', 'Boss')) : o.cluster >= 0 ? T(CLUSTER_ZH[o.cluster] + '系', CLUSTER_ZH[o.cluster]) : T('無屬性', 'Neutral');
     var foeBox = h('div', { class: 'rpg-foe' }, [foeImg, h('b', { text: o.foe }),
-      h('span', { class: 'rpg-elem', style: '--c:' + foeFx.c, text: foeEl + '・' + foeFx.skill }), hp, foeStat]);
+      h('span', { class: 'rpg-elem', style: '--c:' + foeFx.c, text: foeEl + T('・', ' · ') + foeFx.skill }), hp, foeStat]);
     var worn = Object.keys(SLOTS).map(function (sl) { return S.gear.on[sl] && gearById(S.gear.on[sl]); }).filter(Boolean);
     var youAv = avatarEl();
-    var you = h('div', { class: 'rpg-you' }, [youAv, h('b', { text: S.profile ? S.profile.nick : '你' }),
-      h('span', { class: 'rpg-elem' + (weak ? ' is-weak' : ''), style: '--c:' + youFx.c, text: (weak ? '弱點 ' : '') + youFx.el + '・' + youFx.skill }), heartsEl, youStat,
-      worn.length ? h('span', { class: 'rpg-worn' }, worn.map(function (g) { return h('img', { src: gearImg(g), alt: g.zh, title: g.zh + '：' + g.eff }); })) : null]);
+    var you = h('div', { class: 'rpg-you' }, [youAv, h('b', { text: S.profile ? S.profile.nick : T('你', 'You') }),
+      h('span', { class: 'rpg-elem' + (weak ? ' is-weak' : ''), style: '--c:' + youFx.c, text: (weak ? T('弱點 ', 'Weak point · ') : '') + youFx.el + T('・', ' · ') + youFx.skill }), heartsEl, youStat,
+      worn.length ? h('span', { class: 'rpg-worn' }, worn.map(function (g) { return h('img', { src: gearImg(g), alt: g.zh, title: g.zh + T('：', ': ') + g.eff }); })) : null]);
     var stage = h('div', { class: 'rpg-battle-stage' });
     var arena = h('div', { class: 'rpg-arena' + (o.kind === 'boss' ? ' is-boss' : o.kind === 'guard' ? ' is-guard' : '') }, [foeBox, h('span', { class: 'rpg-vs', text: 'VS' }), you,
       o.kind === 'drill' ? null : soundBtn('rpg-sound-arena')]);
@@ -1736,18 +1811,18 @@
     function intro() {
       if (o.kind === 'drill') { ask(); return; }
       arena.classList.add('is-intro');
-      stage.appendChild(h('p', { class: 'rpg-battle-count', text: '戰鬥即將開始…（點橫幅可略過）' }));
+      stage.appendChild(h('p', { class: 'rpg-battle-count', text: T('戰鬥即將開始…（點橫幅可略過）', 'The battle is about to begin... (tap the banner to skip)') }));
       setTimeout(function () { arena.classList.remove('is-intro'); }, 900);
       // let the foe finish charging in before the banner covers the top of the arena
       setTimeout(function () {
         sfx(o.kind === 'boss' ? 'warning' : 'appear');
-        if (o.kind === 'boss') banner('WARNING　魔王 ' + o.foe + ' 現身' + (weak ? '　｜　弱點擊破：' + youFx.skill + '，對手睡著了' : st.slp ? '　｜　催眠：對手睡著了' : ''), o.line || '', 3200, function () {
+        if (o.kind === 'boss') banner(T('WARNING　魔王 ' + o.foe + ' 現身' + (weak ? '　｜　弱點擊破：' + youFx.skill + '，對手睡著了' : st.slp ? '　｜　催眠：對手睡著了' : ''), 'WARNING · Boss ' + o.foe + ' appears' + (weak ? ' | Weak-Point Break: ' + youFx.skill + ', the foe is asleep' : st.slp ? ' | Sleep: the foe is asleep' : '')), o.line || '', 3200, function () {
           if (!item) { ask(); return; }
           var fx = h('span', { class: 'rpg-item-fx', style: '--c:' + item.c }, [itemImgEl(item), h('b', { text: item.zh })]);
           arena.appendChild(fx); sfx('item');
-          banner('使用道具：' + item.zh, item.use + '（護盾 +' + (item.shield || 1) + '）', 2000, function () { if (fx.parentNode) fx.parentNode.removeChild(fx); ask(); });
+          banner(T('使用道具：', 'Item used: ') + item.zh, item.use + T('（護盾 +' + (item.shield || 1) + '）', ' (shield +' + (item.shield || 1) + ')'), 2000, function () { if (fx.parentNode) fx.parentNode.removeChild(fx); ask(); });
         });
-        else banner('野生的 ' + o.foe + ' 出現了！', null, 1400, ask);
+        else banner(T('野生的 ' + o.foe + ' 出現了！', 'A wild ' + o.foe + ' appears!'), null, 1400, ask);
       }, CALM ? 0 : 750);
     }
     function burst(el) {
@@ -1767,14 +1842,14 @@
       hp.setAttribute('aria-valuenow', String(n - score));
       clear(heartsEl);
       for (var j = 0; j < hearts; j++) heartsEl.appendChild(h('i', { class: j < hearts - lost ? 'is-on' : '', text: '♥' }));
-      for (var sh = 0; sh < shield; sh++) heartsEl.appendChild(h('i', { class: 'rpg-shield', text: '◆', title: '護盾：答錯一次不扣心（仍算答錯）' }));
-      heartsEl.setAttribute('aria-label', '你的生命 ' + (hearts - lost) + ' / ' + hearts + (shield ? '，護盾 ' + shield : ''));
+      for (var sh = 0; sh < shield; sh++) heartsEl.appendChild(h('i', { class: 'rpg-shield', text: '◆', title: T('護盾：答錯一次不扣心（仍算答錯）', 'Shield: one wrong answer costs no heart (it still counts as wrong)') }));
+      heartsEl.setAttribute('aria-label', T('你的生命 ' + (hearts - lost) + ' / ' + hearts + (shield ? '，護盾 ' + shield : ''), 'Your hearts ' + (hearts - lost) + ' / ' + hearts + (shield ? ', shields ' + shield : '')));
       if (!STAT) return;
       clear(foeStat); clear(youStat);
-      if (st.fp) foeStat.appendChild(h('i', { class: 'is-psn', text: '中毒', title: (psnEvery === 1 ? '每回合' : '每 ' + psnEvery + ' 回合') + '幫你回 1 顆心；你答錯就解毒' }));
-      if (st.par) foeStat.appendChild(h('i', { class: 'is-par', text: '麻痺', title: '你答錯時 ' + Math.round(parChance * 100) + '% 對手動不了' }));
-      if (st.slp) foeStat.appendChild(h('i', { class: 'is-slp', text: '睡眠', title: '睡著時你答錯不扣心；每回合 ' + Math.round(wakeChance * 100) + '% 機率醒來' }));
-      if (st.yp) youStat.appendChild(h('i', { class: 'is-psn', text: '中毒', title: '每回合侵蝕護盾或多出來的心；答對 1 題解毒' }));
+      if (st.fp) foeStat.appendChild(h('i', { class: 'is-psn', text: T('中毒', 'Poison'), title: T((psnEvery === 1 ? '每回合' : '每 ' + psnEvery + ' 回合') + '幫你回 1 顆心；你答錯就解毒', 'Heals you 1 heart ' + (psnEvery === 1 ? 'every turn' : 'every ' + psnEvery + ' turns') + '; a wrong answer cures it') }));
+      if (st.par) foeStat.appendChild(h('i', { class: 'is-par', text: T('麻痺', 'Paralysis'), title: T('你答錯時 ' + Math.round(parChance * 100) + '% 對手動不了', 'When you answer wrong, ' + Math.round(parChance * 100) + '% chance the foe cannot move') }));
+      if (st.slp) foeStat.appendChild(h('i', { class: 'is-slp', text: T('睡眠', 'Sleep'), title: T('睡著時你答錯不扣心；每回合 ' + Math.round(wakeChance * 100) + '% 機率醒來', 'While it sleeps, wrong answers cost no heart; ' + Math.round(wakeChance * 100) + '% chance to wake each turn') }));
+      if (st.yp) youStat.appendChild(h('i', { class: 'is-psn', text: T('中毒', 'Poison'), title: T('每回合侵蝕護盾或多出來的心；答對 1 題解毒', 'Each turn eats a shield or a spare heart; 1 right answer cures it') }));
       foeImg.classList.toggle('st-psn', !!st.fp); foeImg.classList.toggle('st-par', st.par); foeImg.classList.toggle('st-slp', st.slp);
       youAv.classList.toggle('st-psn', !!st.yp);
     }
@@ -1782,22 +1857,22 @@
     function tick() {
       var msg = [];
       if (!STAT || i === 0) return msg;
-      if (st.slp && Math.random() < wakeChance) { st.slp = false; msg.push(o.foe + ' 醒來了！'); hit(foeBox, 'is-hit', '醒來'); }
-      else if (st.slp) { msg.push(o.foe + ' 還在睡。'); hit(foeBox, 'is-zz', 'Zzz'); }
+      if (st.slp && Math.random() < wakeChance) { st.slp = false; msg.push(o.foe + T(' 醒來了！', ' woke up!')); hit(foeBox, 'is-hit', T('醒來', 'Awake')); }
+      else if (st.slp) { msg.push(o.foe + T(' 還在睡。', ' is still asleep.')); hit(foeBox, 'is-zz', 'Zzz'); }
       if (st.fp) {
         st.fpt++;
-        if (st.fpt % psnEvery === 0 && lost > 0) { lost--; msg.push(o.foe + ' 受到毒傷，你吸回 1 顆心！'); hit(you, 'is-heal', '♥+1'); }
-        else msg.push(o.foe + ' 受到毒傷。');
-        hit(foeBox, 'is-psn', '毒');
+        if (st.fpt % psnEvery === 0 && lost > 0) { lost--; msg.push(o.foe + T(' 受到毒傷，你吸回 1 顆心！', ' is hurt by poison. You drain back 1 heart!')); hit(you, 'is-heal', '♥+1'); }
+        else msg.push(o.foe + T(' 受到毒傷。', ' is hurt by poison.'));
+        hit(foeBox, 'is-psn', T('毒', 'PSN'));
         sfx('poison');
       }
       if (st.yp) {
         st.ypt++;
         var spare = (hearts - lost) - Math.max(1, allowed - wrong + 1);
-        if (shield) { shield--; msg.push('毒素侵蝕了 1 面護盾。'); hit(you, 'is-psn', '◆-1'); }
-        else if (st.ypt % 2 === 0 && spare > 0 && hearts - lost >= 2) { lost++; msg.push('你受到毒傷，失去 1 顆心。'); hit(you, 'is-psn', '♥-1'); }
-        else if (st.ypt % 2 === 0) msg.push('你咬牙撐住了毒傷。');
-        else msg.push('毒在你身上蔓延……答對一題就能解毒。');
+        if (shield) { shield--; msg.push(T('毒素侵蝕了 1 面護盾。', 'Poison ate away 1 shield.')); hit(you, 'is-psn', '◆-1'); }
+        else if (st.ypt % 2 === 0 && spare > 0 && hearts - lost >= 2) { lost++; msg.push(T('你受到毒傷，失去 1 顆心。', 'Poison hurts you. You lose 1 heart.')); hit(you, 'is-psn', '♥-1'); }
+        else if (st.ypt % 2 === 0) msg.push(T('你咬牙撐住了毒傷。', 'You grit your teeth through the poison.'));
+        else msg.push(T('毒在你身上蔓延……答對一題就能解毒。', 'The poison spreads... One right answer will cure it.'));
         sfx('poison');
       }
       meters();
@@ -1810,27 +1885,27 @@
       if (ok) {
         st.runR++; st.runW = 0;
         if (st.yp) {
-          st.yp = 0; st.ypt = 0; msg.push('你解毒了！'); sfx('cure');
-          if (ss.aid && lost > 0) { lost--; msg.push('急救補給：回 1 顆心！'); hit(you, 'is-heal', '♥+1'); }
+          st.yp = 0; st.ypt = 0; msg.push(T('你解毒了！', 'You are cured!')); sfx('cure');
+          if (ss.aid && lost > 0) { lost--; msg.push(T('急救補給：回 1 顆心！', 'First Aid: +1 heart!')); hit(you, 'is-heal', '♥+1'); }
         }
-        if (ss.aid && st.runR === 3 && once.aid && lost > 0) { once.aid = 0; lost--; msg.push('急救補給：三連對，回 1 顆心！'); hit(you, 'is-heal', '♥+1'); }
+        if (ss.aid && st.runR === 3 && once.aid && lost > 0) { once.aid = 0; lost--; msg.push(T('急救補給：三連對，回 1 顆心！', 'First Aid: 3 in a row, +1 heart!')); hit(you, 'is-heal', '♥+1'); }
         if (st.runR === psnAt && !st.fp) {
-          if (!psnEvery) { if (!told.psn) { told.psn = 1; msg.push(o.foe + ' 免疫中毒！'); } }
-          else { st.fp = 1; st.fpt = 0; msg.push((psnAt === 1 ? '毒專長！' : '連續答對！') + o.foe + ' 中毒了！' + (psnEvery === 1 ? '效果絕佳！' : psnEvery === 3 ? '效果不太好…' : '')); sfx('poison'); }
+          if (!psnEvery) { if (!told.psn) { told.psn = 1; msg.push(o.foe + T(' 免疫中毒！', ' is immune to poison!')); } }
+          else { st.fp = 1; st.fpt = 0; msg.push(T((psnAt === 1 ? '毒專長！' : '連續答對！') + o.foe + ' 中毒了！' + (psnEvery === 1 ? '效果絕佳！' : psnEvery === 3 ? '效果不太好…' : ''), (psnAt === 1 ? 'Poison specialty! ' : 'Streak! ') + o.foe + ' is poisoned!' + (psnEvery === 1 ? ' Highly effective!' : psnEvery === 3 ? ' Not very effective...' : ''))); sfx('poison'); }
         }
         if (st.runR === parAt && !st.par) {
-          if (parChance <= 0) { if (!told.par) { told.par = 1; msg.push(o.foe + ' 免疫麻痺！'); } }
-          else { st.par = true; msg.push((parAt === 2 ? '連續答對！' : '三連對！') + o.foe + ' 麻痺了，可能動不了！' + (parChance >= 0.4 ? '效果絕佳！' : parChance < 0.2 ? '效果不太好…' : '')); sfx('zap'); }
+          if (parChance <= 0) { if (!told.par) { told.par = 1; msg.push(o.foe + T(' 免疫麻痺！', ' is immune to paralysis!')); } }
+          else { st.par = true; msg.push(T((parAt === 2 ? '連續答對！' : '三連對！') + o.foe + ' 麻痺了，可能動不了！' + (parChance >= 0.4 ? '效果絕佳！' : parChance < 0.2 ? '效果不太好…' : ''), (parAt === 2 ? 'Streak! ' : '3 in a row! ') + o.foe + ' is paralyzed and may not move!' + (parChance >= 0.4 ? ' Highly effective!' : parChance < 0.2 ? ' Not very effective...' : ''))); sfx('zap'); }
         }
       } else {
         st.runW++; st.runR = 0;
-        if (st.fp) { st.fp = 0; st.fpt = 0; msg.push(o.foe + ' 趁機解毒了。'); }
+        if (st.fp) { st.fp = 0; st.fpt = 0; msg.push(o.foe + T(' 趁機解毒了。', ' took the chance to cure itself.')); }
         if (st.runW === 2 && !st.yp) {
           if (ss.guard) {
-            if (once.guard) { once.guard = 0; shield++; msg.push('封印護體：毒對你無效，還化成 1 面護盾！'); hit(you, 'is-heal', '◆+1'); meters(); }
-            else if (!told.yp) { told.yp = 1; msg.push('封印護體：毒對你無效！'); }
+            if (once.guard) { once.guard = 0; shield++; msg.push(T('封印護體：毒對你無效，還化成 1 面護盾！', 'Sealed Guard: poison has no effect and turns into 1 shield!')); hit(you, 'is-heal', '◆+1'); meters(); }
+            else if (!told.yp) { told.yp = 1; msg.push(T('封印護體：毒對你無效！', 'Sealed Guard: poison has no effect on you!')); }
           }
-          else { st.yp = 1; st.ypt = 0; msg.push('連續答錯，你中毒了！答對一題就能解毒。'); sfx('poison'); }
+          else { st.yp = 1; st.ypt = 0; msg.push(T('連續答錯，你中毒了！答對一題就能解毒。', 'Two wrong in a row: you are poisoned! One right answer will cure it.')); sfx('poison'); }
         }
       }
       setTimeout(meters, CALM ? 0 : 700);
@@ -1855,10 +1930,10 @@
       clear(stage);
       var opts = h('div', { class: 'rpg-quiz-opts' });
       var back = wearing('bookmark') && sourceHref(q);
-      var backLink = back ? h('a', { class: 'rpg-backsrc', href: back, hidden: true, text: '法典書籤：回原文看這一節 →' }) : null;
+      var backLink = back ? h('a', { class: 'rpg-backsrc', href: back, hidden: true, text: T('法典書籤：回原文看這一節 →', 'Codex Bookmark: read this section in the source →') }) : null;
       var exp = h('div', { class: 'rpg-quiz-exp', hidden: true }, [
         h('p', { text: q.explanation || '' }),
-        q.reference ? h('small', { text: '出處：' + q.reference }) : null,
+        q.reference ? h('small', { text: T('出處：', 'Source: ') + q.reference }) : null,
         backLink
       ]);
       var next = h('button', { class: 'rpg-btn', type: 'button', hidden: true, onclick: function () {
@@ -1880,31 +1955,31 @@
           var clean = noteAnswer(q.docKey || pageDocKey, q, ok);
           if (clean) cleansed++;
           if (o.onAnswer) o.onAnswer(q, ok, clean);
-          var dmg = clean ? '淨化' : weak ? '弱點 -1' : '-1', amsg = [];
+          var dmg = clean ? T('淨化', 'Cleansed') : weak ? T('弱點 -1', 'Weak -1') : '-1', amsg = [];
           var qk = (q.docKey || pageDocKey) + '#' + q.id;
-          if (ok && payFresh && q.id != null && !S.bossSeen[qk]) { S.bossSeen[qk] = 1; fresh++; S.bonus += XP_FRESH; saveState(); dmg = '新題 +' + XP_FRESH + ' XP'; }
+          if (ok && payFresh && q.id != null && !S.bossSeen[qk]) { S.bossSeen[qk] = 1; fresh++; S.bonus += XP_FRESH; saveState(); dmg = T('新題 +', 'New +') + XP_FRESH + ' XP'; }
           if (ok) { score++; strike(true, function () { hit(foeBox, 'is-hit', dmg); }); }
-          else if (st.slp) { wrong++; hit(foeBox, 'is-zz', 'Zzz'); amsg.push(o.foe + ' 睡著了，沒有反擊。'); }
-          else if (st.par && Math.random() < parChance) { wrong++; hit(foeBox, 'is-par', '麻痺'); sfx('zap'); amsg.push(o.foe + ' 麻痺了，動不了！'); }
-          else if (shield) { wrong++; shield--; strike(false, function () { hit(you, 'is-hurt', '護盾'); }, true); }
+          else if (st.slp) { wrong++; hit(foeBox, 'is-zz', 'Zzz'); amsg.push(o.foe + T(' 睡著了，沒有反擊。', ' is asleep and does not strike back.')); }
+          else if (st.par && Math.random() < parChance) { wrong++; hit(foeBox, 'is-par', T('麻痺', 'Paralyzed')); sfx('zap'); amsg.push(o.foe + T(' 麻痺了，動不了！', ' is paralyzed and cannot move!')); }
+          else if (shield) { wrong++; shield--; strike(false, function () { hit(you, 'is-hurt', T('護盾', 'Shield')); }, true); }
           else { wrong++; lost++; strike(false, function () { hit(you, 'is-hurt', '♥-1'); }); }
           amsg = amsg.concat(afterAnswer(ok));
-          if (amsg.length) exp.insertBefore(h('p', { class: 'rpg-status-msg', text: amsg.join('　') }), exp.firstChild);
+          if (amsg.length) exp.insertBefore(h('p', { class: 'rpg-status-msg', text: amsg.join(T('　', ' ')) }), exp.firstChild);
           if (!ok && backLink) backLink.hidden = false;
           if (o.kind === 'boss' && !raged && score >= Math.ceil(n / 2) && score < n) {
             raged = true; arena.classList.add('is-rage'); sfx('rage');
-            banner('魔王暴走！', o.rage || '', 2600, null);
+            banner(T('魔王暴走！', 'The boss goes berserk!'), o.rage || '', 2600, null);
           }
           exp.hidden = false;
-          next.textContent = i + 1 >= n || lost >= hearts ? '看結果' : '下一題';
+          next.textContent = i + 1 >= n || lost >= hearts ? T('看結果', 'See results') : T('下一題', 'Next question');
           next.hidden = false;
           try { next.focus({ preventScroll: true }); } catch (e) {}
         } }, [h('b', { text: letter }), h('span', { text: q.options[letter] })]));
       });
-      stage.appendChild(h('p', { class: 'rpg-battle-count', text: '第 ' + (i + 1) + ' / ' + n + ' 題' + (q.docTitle ? '　出自：' + q.docTitle : '') }));
-      if (tmsg.length) stage.appendChild(h('p', { class: 'rpg-status-msg', text: tmsg.join('　') }));
+      stage.appendChild(h('p', { class: 'rpg-battle-count', text: T('第 ' + (i + 1) + ' / ' + n + ' 題' + (q.docTitle ? '　出自：' + q.docTitle : ''), 'Question ' + (i + 1) + ' / ' + n + (q.docTitle ? ' · From: ' + q.docTitle : '')) }));
+      if (tmsg.length) stage.appendChild(h('p', { class: 'rpg-status-msg', text: tmsg.join(T('　', ' ')) }));
       stage.appendChild(h('p', { class: 'rpg-quiz-q', text: q.question }));
-      if (wearing('goggles') && q.reference) stage.appendChild(h('p', { class: 'rpg-hint', text: '護目鏡提示：答案在 ' + q.reference }));
+      if (wearing('goggles') && q.reference) stage.appendChild(h('p', { class: 'rpg-hint', text: T('護目鏡提示：答案在 ', 'Goggles hint: the answer is in ') + q.reference }));
       stage.appendChild(opts);
       stage.appendChild(exp);
       stage.appendChild(h('div', { class: 'rpg-quiz-foot' }, [next]));
@@ -1917,25 +1992,26 @@
       arena.classList.remove('is-rage');
       if (!drill) sfx(won ? 'victory' : 'defeat');
       clear(stage);
-      var head = o.endHead || (drill ? '練習結束' : won ? '擊敗' + o.foe + '！' : '被' + o.foe + '擊退了');
-      var line = (typeof o.endLine === 'function' ? o.endLine(score, i) : o.endLine || '') + '答對 ' + score + ' / ' + (drill ? i : n) + (drill ? '' : won ? (score === n ? '，全對。' : '。') : early ? '。心扣完了，剩下 ' + (n - i) + ' 題下次再戰。' : '，還差一點。');
-      if (cleansed) line += '　淨化了 ' + cleansed + ' 道錯題。';
-      if (fresh) line += '　新答對 ' + fresh + ' 題，+' + fresh * XP_FRESH + ' XP。';
+      var head = o.endHead || (drill ? T('練習結束', 'Practice over') : won ? T('擊敗' + o.foe + '！', 'You defeated ' + o.foe + '!') : T('被' + o.foe + '擊退了', o.foe + ' drove you back'));
+      var line = (typeof o.endLine === 'function' ? o.endLine(score, i) : o.endLine || '') + T('答對 ' + score + ' / ' + (drill ? i : n) + (drill ? '' : won ? (score === n ? '，全對。' : '。') : early ? '。心扣完了，剩下 ' + (n - i) + ' 題下次再戰。' : '，還差一點。'),
+        'Correct: ' + score + ' / ' + (drill ? i : n) + (drill ? '' : won ? (score === n ? '. A perfect run.' : '.') : early ? '. Out of hearts: ' + (n - i) + ' question' + (n - i > 1 ? 's' : '') + ' left for next time.' : '. So close.'));
+      if (cleansed) line += T('　淨化了 ' + cleansed + ' 道錯題。', ' Cleansed ' + cleansed + ' past mistake' + (cleansed > 1 ? 's' : '') + '.');
+      if (fresh) line += T('　新答對 ' + fresh + ' 題，+' + fresh * XP_FRESH + ' XP。', ' ' + fresh + ' new question' + (fresh > 1 ? 's' : '') + ' right, +' + fresh * XP_FRESH + ' XP.');
       // Finishing all questions of a boss / elite fight, won or lost, drops one material (once a day per foe).
       if (o.kind === 'boss' && !early && o.target != null && S.runDay[o.target] !== dayKey(new Date())) {
         var src = o.questions[Math.floor(Math.random() * n)];
         if (src && src.docKey && clusterOf(M.docs[src.docKey]) >= 0) {
           S.runDay[o.target] = dayKey(new Date()); saveState();
           dropMat(src.docKey);
-          line += '　撐完全部 ' + n + ' 題，掉落 1 個素材（每天一次）。';
+          line += T('　撐完全部 ' + n + ' 題，掉落 1 個素材（每天一次）。', ' You lasted all ' + n + ' questions and found 1 material (once a day).');
         }
       }
-      if (missed.length) line += '　答錯的題已記進錯題本，明天起答對就能淨化。';
+      if (missed.length) line += T('　答錯的題已記進錯題本，明天起答對就能淨化。', ' Missed questions went into your Mistake Book. From tomorrow, answer them right to cleanse them.');
       stage.appendChild(h('div', { class: 'rpg-battle-end ' + (won || drill ? 'is-win' : 'is-lose'), role: 'status' }, [
         h('strong', { text: head }),
         h('p', { text: line }),
         missed.length ? missedList(missed, !won && !drill) : null,
-        o.noAgain ? null : h('button', { class: 'rpg-btn', type: 'button', text: drill ? '再練一次' : '再戰一次', onclick: function () { if (o.again) o.again(); else runBattle(host, o); } })
+        o.noAgain ? null : h('button', { class: 'rpg-btn', type: 'button', text: drill ? T('再練一次', 'Practice again') : T('再戰一次', 'Fight again'), onclick: function () { if (o.again) o.again(); else runBattle(host, o); } })
       ]));
       o.onEnd({ score: score, total: n, last: last, won: won });
     }
@@ -1948,18 +2024,18 @@
     var n = questions.length;
     var rec = (S.quiz[pageDocKey] || {})[sid];
     var passed = !!(rec && rec.total && rec.best / rec.total >= PASS);
-    var mi = clusterOf(M.docs[pageDocKey]), mobSrc = mi >= 0 ? asset('mob-' + mi) : null, foe = mi >= 0 ? MOBS[mi] : '章節守門怪';
-    var status = h('span', { class: 'rpg-quiz-best' + (passed ? ' is-pass' : ''), text: rec ? (passed ? '已通過　' : '') + '最佳 ' + rec.best + ' / ' + rec.total : '尚未挑戰' });
-    var title = h('h3', { text: (passed ? '已擊敗　' : '遭遇　') + foe });
+    var mi = clusterOf(M.docs[pageDocKey]), mobSrc = mi >= 0 ? asset('mob-' + mi) : null, foe = mi >= 0 ? MOBS[mi] : T('章節守門怪', 'Section Sentry');
+    var status = h('span', { class: 'rpg-quiz-best' + (passed ? ' is-pass' : ''), text: rec ? (passed ? T('已通過　', 'Passed · ') : '') + T('最佳 ', 'Best ') + rec.best + ' / ' + rec.total : T('尚未挑戰', 'Not tried yet') });
+    var title = h('h3', { text: (passed ? T('已擊敗　', 'Defeated: ') : T('遭遇　', 'Encounter: ')) + foe });
     var head = h('div', { class: 'rpg-quiz-head' + (passed ? ' is-beaten' : '') }, [
       mobSrc ? h('img', { class: 'rpg-quiz-mob', src: mobSrc, alt: '' }) : null,
       h('span', { class: 'rpg-tag', text: 'CHALLENGE' }), title, status
     ]);
     var area = h('div', { class: 'rpg-quiz-area' });
     block.appendChild(head);
-    block.appendChild(h('p', { class: 'rpg-quiz-lead', text: '共 ' + n + ' 題，一題一題打：答對打掉牠一格血，答錯你扣一顆心（你有 ' + battleHearts('mob', n) + ' 顆）。答對 80% 就擊敗牠。可以重複挑戰，只記最佳成績。' }));
+    block.appendChild(h('p', { class: 'rpg-quiz-lead', text: T('共 ' + n + ' 題，一題一題打：答對打掉牠一格血，答錯你扣一顆心（你有 ' + battleHearts('mob', n) + ' 顆）。答對 80% 就擊敗牠。可以重複挑戰，只記最佳成績。', n + ' questions, one at a time: a right answer knocks off one HP bar, a wrong one costs you a heart (you have ' + battleHearts('mob', n) + '). Get 80% right to win. Retry as often as you like; only your best score counts.') }));
     block.appendChild(area);
-    area.appendChild(h('button', { class: 'rpg-btn', type: 'button', text: rec ? '再戰' : '迎戰', onclick: fight }));
+    area.appendChild(h('button', { class: 'rpg-btn', type: 'button', text: rec ? T('再戰', 'Fight again') : T('迎戰', 'Fight'), onclick: fight }));
 
     function fight() {
       if (!S.profile) { openOnboarding(); return; }   // battles need a character (avatar, hearts, rewards)
@@ -1967,7 +2043,7 @@
     }
     function save(r) {
       var score = r.score, ok = r.won;
-      palSay(ok ? (score === n ? '全對！漂亮。' : '打倒了！') : '被打回來了。看完解析再上，我等你。', 1);
+      palSay(ok ? (score === n ? T('全對！漂亮。', 'All correct! Beautiful.') : T('打倒了！', 'Knocked it down!')) : T('被打回來了。看完解析再上，我等你。', 'It pushed us back. Read the explanations and try again. I will wait.'), 1);
       var dq = S.quiz[pageDocKey] = S.quiz[pageDocKey] || {};
       var old = dq[sid];
       var wasPass = !!(old && old.total && old.best / old.total >= PASS);
@@ -1985,9 +2061,9 @@
       }
       saveState();
       var nowPass = dq[sid].best / dq[sid].total >= PASS;
-      status.textContent = (nowPass ? '已通過　' : '') + '最佳 ' + dq[sid].best + ' / ' + dq[sid].total;
+      status.textContent = (nowPass ? T('已通過　', 'Passed · ') : '') + T('最佳 ', 'Best ') + dq[sid].best + ' / ' + dq[sid].total;
       status.classList.toggle('is-pass', nowPass);
-      title.textContent = (nowPass ? '已擊敗　' : '遭遇　') + foe;
+      title.textContent = (nowPass ? T('已擊敗　', 'Defeated: ') : T('遭遇　', 'Encounter: ')) + foe;
       head.classList.toggle('is-beaten', nowPass);
       recordQuizResult(bank);
       refresh();
@@ -2007,54 +2083,56 @@
     var ids = Object.keys(map), todo = ids.filter(function (id) { return learnedSkills().indexOf(id) < 0; });
     if (!ids.length) return null;
     return h('p', { class: 'rpg-weakhint' }, [
-      h('b', { text: '弱點：' + ids.map(elName).join('、') }),
-      todo.length ? h('span', { text: '　修完' + todo.map(function (id) {
-        var k = G.skills[id]; return deptById(id).nameZh + '的必讀（' + k.got + ' / ' + k.need + '）';
-      }).join('、或') + '，就能習得剋制技能。' }) : null
+      h('b', { text: T('弱點：', 'Weak to: ') + ids.map(elName).join(LIST) }),
+      todo.length ? h('span', { text: T('　修完', ' Finish ') + todo.map(function (id) {
+        var k = G.skills[id]; return T(dName(deptById(id)) + '的必讀（' + k.got + ' / ' + k.need + '）', dName(deptById(id)) + ' required reading (' + k.got + ' / ' + k.need + ')');
+      }).join(T('、或', ', or ')) + T('，就能習得剋制技能。', ' to learn a counter skill.') }) : null
     ]);
   }
   /* Before a boss fight: choose which learned skill and which item to bring.
      a: { cur, map (weakness reasons), foe, done, pick, go, target, item, pickItem, needTag, needText } */
   function skillPicker(box, a) {
     clear(box);
-    var row = h('div', { class: 'rpg-skillpick', role: 'radiogroup', 'aria-label': '出戰技能' });
+    var row = h('div', { class: 'rpg-skillpick', role: 'radiogroup', 'aria-label': T('出戰技能', 'Battle skill') });
     learnedSkills().forEach(function (id) {
       var sp = fxYou(id), w = !!a.map[id];
       row.appendChild(h('button', { type: 'button', role: 'radio', 'aria-checked': String(id === a.cur),
         class: 'rpg-skill' + (id === a.cur ? ' is-on' : '') + (w ? ' is-weak' : ''), style: '--c:' + sp.c,
         onclick: function () { a.pick(id); } }, [
         h('b', { text: sp.skill }),
-        h('span', { text: sp.el + (id === S.profile.cls ? '・主技能' : '・第二專長') }),
-        w ? h('em', { text: '弱點' }) : null
+        h('span', { text: sp.el + (id === S.profile.cls ? T('・主技能', ' · Main skill') : T('・第二專長', ' · Second specialty')) }),
+        w ? h('em', { text: T('弱點', 'Weak point') }) : null
       ]));
     });
     var w = a.map[a.cur];
     var owned = ITEMS.filter(function (x) { return S.items[x.id]; });
     var it = itemById(a.item), gated = a.needTag && !itemTag(it, a.needTag);
-    var irow = h('div', { class: 'rpg-skillpick rpg-itempick', role: 'radiogroup', 'aria-label': '攜帶道具' });
+    var irow = h('div', { class: 'rpg-skillpick rpg-itempick', role: 'radiogroup', 'aria-label': T('攜帶道具', 'Item to bring') });
     [null].concat(owned).forEach(function (x) {
       var on = (x ? x.id : '') === (it ? it.id : ''), hit = x && itemVs(x, a.target);
       irow.appendChild(h('button', { type: 'button', role: 'radio', 'aria-checked': String(on),
         class: 'rpg-skill' + (on ? ' is-on' : '') + (hit ? ' is-weak' : ''), style: '--c:' + (x ? x.c : '#94a3b8'),
         onclick: function () { a.pickItem(x ? x.id : ''); } }, [
-        h('b', { text: x ? x.zh : '不帶道具' }),
-        h('span', { text: x ? x.cat + (hit ? '・護盾 +' + (x.shield || 1) : '・對牠無效') : '空手上陣' }),
-        hit ? h('em', { text: '有效' }) : null
+        h('b', { text: x ? x.zh : T('不帶道具', 'No item') }),
+        h('span', { text: x ? x.cat + (hit ? T('・護盾 +', ' · Shield +') + (x.shield || 1) : T('・對牠無效', ' · No effect on it')) : T('空手上陣', 'Going in empty-handed') }),
+        hit ? h('em', { text: T('有效', 'Effective') }) : null
       ]));
     });
     box.appendChild(h('div', { class: 'rpg-skillbox' }, [
-      h('h3', { class: 'rpg-sub', text: '選擇出戰技能' }), row,
-      h('h3', { class: 'rpg-sub', text: '攜帶道具' }), irow,
-      gated ? h('p', { class: 'rpg-weakhint rpg-gate' }, [h('b', { text: '進不了戰場：' }), h('span', { text: a.needText + (ITEMS.some(function (x) { return itemTag(x, a.needTag) && S.items[x.id]; })
-        ? '。在上面選一個' + (a.needName || '對應道具') + '。' : '。到角色頁的工坊合成「' + ITEMS.filter(function (x) { return itemTag(x, a.needTag); }).map(function (x) { return x.zh; }).join('」或「') + '」。') })]) : null,
-      h('p', { class: 'rpg-note', text: w ? '弱點擊破：' + w + '。這場多 1 顆心，魔王開場就睡著' +
-        (a.done ? '。' : '；第一次用弱點技能打倒牠，再得 ' + XP_WEAK + ' XP 和 1 顆' + BOSS_MAT + '。')
-        : '這個技能對' + a.foe + '沒有特別效果。' }),
-      STATUS_SKILL[a.cur] ? h('p', { class: 'rpg-note', text: fxYou(a.cur).skill + '・' + STATUS_SKILL[a.cur].zh + '。' }) : null,
-      traitText(a.target) ? h('p', { class: 'rpg-note rpg-intel' }, [h('b', { text: '情報：' }), h('span', { text: S.intel[a.target]
-        ? a.foe + ' ' + traitText(a.target) : '未知。交手一次，就會知道' + a.foe + '怕什麼狀態，並記進角色頁的情報圖鑑。' })]) : null,
+      h('h3', { class: 'rpg-sub', text: T('選擇出戰技能', 'Choose your skill') }), row,
+      h('h3', { class: 'rpg-sub', text: T('攜帶道具', 'Bring an item') }), irow,
+      gated ? h('p', { class: 'rpg-weakhint rpg-gate' }, [h('b', { text: T('進不了戰場：', 'Locked out: ') }), h('span', { text: a.needText + (ITEMS.some(function (x) { return itemTag(x, a.needTag) && S.items[x.id]; })
+        ? T('。在上面選一個' + (a.needName || '對應道具') + '。', '. Pick a ' + (a.needName || 'matching item') + ' above.') : T('。到角色頁的工坊合成「', '. Craft "') + ITEMS.filter(function (x) { return itemTag(x, a.needTag); }).map(function (x) { return x.zh; }).join(T('」或「', '" or "')) + T('」。', '" in the Workshop on the character page.')) })]) : null,
+      h('p', { class: 'rpg-note', text: w ? T('弱點擊破：' + w + '。這場多 1 顆心，魔王開場就睡著' +
+        (a.done ? '。' : '；第一次用弱點技能打倒牠，再得 ' + XP_WEAK + ' XP 和 1 顆' + BOSS_MAT + '。'),
+        'Weak-Point Break: ' + w + '. You get +1 heart this fight and the boss starts asleep' +
+        (a.done ? '.' : '; defeat it with a weak-point skill for the first time to earn ' + XP_WEAK + ' XP and 1 ' + BOSS_MAT + '.'))
+        : T('這個技能對' + a.foe + '沒有特別效果。', 'This skill has no special effect on ' + a.foe + '.') }),
+      STATUS_SKILL[a.cur] ? h('p', { class: 'rpg-note', text: fxYou(a.cur).skill + T('・', ' · ') + STATUS_SKILL[a.cur].zh + T('。', '.') }) : null,
+      traitText(a.target) ? h('p', { class: 'rpg-note rpg-intel' }, [h('b', { text: T('情報：', 'Intel: ') }), h('span', { text: S.intel[a.target]
+        ? a.foe + ' ' + traitText(a.target) : T('未知。交手一次，就會知道' + a.foe + '怕什麼狀態，並記進角色頁的情報圖鑑。', 'Unknown. Fight ' + a.foe + ' once to learn which statuses it fears; the Intel Codex on the character page keeps the record.') })]) : null,
       weakHintFor(a.map),
-      h('button', { class: 'rpg-btn', type: 'button', text: '開戰', disabled: gated, onclick: a.go })
+      h('button', { class: 'rpg-btn', type: 'button', text: T('開戰', 'Fight'), disabled: gated, onclick: a.go })
     ]));
   }
   function bestItem(saved, target, needTag) {
@@ -2072,29 +2150,31 @@
     var c = G.classes[S.profile.cls], t = c && c.tiers[ti];
     if (!t) return;
     var zone = ZONES[ti] || ZONES[ZONES.length - 1], img = asset('boss-' + (ti + 1));
-    if (!t.hasBoss) { toast('這一區還沒有題庫，沒有魔王戰。'); return; }
+    if (!t.hasBoss) { toast(T('這一區還沒有題庫，沒有魔王戰。', 'This zone has no question bank yet, so there is no boss fight.')); return; }
     if (!t.ready) {
       modal([
         h('span', { class: 'rpg-tag', text: 'BOSS' }),
-        h('h2', { text: zone.boss + '還沒現身' }),
-        h('p', { class: 'rpg-modal-lead', text: '先通關這一區' + (t.anyOf ? '任 ' + t.need + ' 份文件' : '的必讀文件') + '（目前 ' + t.got + ' / ' + t.need + '），魔王才會出來。' }),
+        h('h2', { text: T(zone.boss + '還沒現身', zone.boss + ' has not appeared yet') }),
+        h('p', { class: 'rpg-modal-lead', text: T('先通關這一區' + (t.anyOf ? '任 ' + t.need + ' 份文件' : '的必讀文件') + '（目前 ' + t.got + ' / ' + t.need + '），魔王才會出來。',
+          'Clear ' + (t.anyOf ? 'any ' + t.need + ' documents' : 'the required documents') + ' in this zone first (now ' + t.got + ' / ' + t.need + ') and the boss will come out.') }),
         weakHint(ti)
       ]);
       return;
     }
     Promise.all(t.banked.map(function (x) {
       var d = M.docs[x.key];
-      return fetch(ROOT + 'rpg/quiz/' + x.key + '.json').then(function (r) { return r.json(); }).then(function (b) {
-        return (b.questions || []).map(function (q) { return Object.assign({}, q, { docTitle: d.titleZh || d.title, docKey: x.key }); });
+      return loadBank(x.key).then(function (b) {
+        return (b.questions || []).map(function (q) { return Object.assign({}, q, { docTitle: docT(d), docKey: x.key }); });
       });
     })).then(function (lists) {
       var pool = [].concat.apply([], lists);
-      if (!pool.length) { toast('題庫讀不到，請稍後再試。'); return; }
+      if (!pool.length) { toast(T('題庫讀不到，請稍後再試。', 'Could not load the question bank. Please try again later.')); return; }
       var key = S.profile.cls + ':' + ti, box = h('div', { class: 'rpg-boss-fight' });
       modal([
         h('span', { class: 'rpg-tag', text: 'BOSS BATTLE' }),
-        h('h2', { text: zone.zh + '的魔王　' + zone.boss }),
-        h('p', { class: 'rpg-modal-lead', text: '從這一區的文件隨機出 ' + Math.min(BOSS_Q, pool.length) + ' 題，答對 80% 擊敗牠' + (t.beaten ? '。' : '，就能升階。') }),
+        h('h2', { text: T(zone.zh + '的魔王　' + zone.boss, 'Boss of ' + zone.en + ' · ' + zone.boss) }),
+        h('p', { class: 'rpg-modal-lead', text: T('從這一區的文件隨機出 ' + Math.min(BOSS_Q, pool.length) + ' 題，答對 80% 擊敗牠' + (t.beaten ? '。' : '，就能升階。'),
+          Math.min(BOSS_Q, pool.length) + ' random questions from this zone\'s documents. Get 80% right to defeat it' + (t.beaten ? '.' : ' and rank up.')) }),
         box
       ], { cls: 'rpg-modal-wide rpg-modal-boss' });
       var skill = bestSkill(S.skillPick[key], WEAK[ti] || {}), item = bestItem(S.itemPick[key], 'z' + ti);
@@ -2119,14 +2199,14 @@
             var weakFirst = weak && !S.weakWin[key];
             if (weakFirst) { S.weakWin[key] = Date.now(); S.bonus += XP_WEAK; S.mats.boss = (S.mats.boss || 0) + 1; }
             saveState();
-            if (weakFirst) toast('弱點擊破！+' + XP_WEAK + ' XP，獲得素材：' + BOSS_MAT);
-            else if (first) toast('獲得素材：' + BOSS_MAT);
+            if (weakFirst) toast(T('弱點擊破！+', 'Weak-Point Break! +') + XP_WEAK + T(' XP，獲得素材：', ' XP. Material earned: ') + BOSS_MAT);
+            else if (first) toast(T('獲得素材：', 'Material earned: ') + BOSS_MAT);
             if (first) showRewards([{ kind: 'bossdown', ti: ti }]);
             refresh();
           }
         });
       }
-    }).catch(function (e) { console.warn('[rpg] boss battle failed to load', e); toast('題庫讀不到，請稍後再試。'); });
+    }).catch(function (e) { console.warn('[rpg] boss battle failed to load', e); toast(T('題庫讀不到，請稍後再試。', 'Could not load the question bank. Please try again later.')); });
   }
 
   /* Document guardian: optional mid-boss after a document's section challenges are all passed.
@@ -2134,27 +2214,29 @@
   function openGuard(key) {
     if (!S || !S.profile || !G) return;
     var st = G.docs[key], d = M.docs[key];
-    if (!st || !d || !d.quiz) { toast('這份文件沒有題庫，沒有守關者。'); return; }
-    var mi = clusterOf(d), foe = (mi >= 0 ? MOBS[mi] : '章節守門怪') + '・守關者', img = mi >= 0 ? asset('mob-' + mi) : null;
+    if (!st || !d || !d.quiz) { toast(T('這份文件沒有題庫，沒有守關者。', 'This document has no question bank, so there is no Gatekeeper.')); return; }
+    var mi = clusterOf(d), foe = (mi >= 0 ? MOBS[mi] : T('章節守門怪', 'Section Gate Beast')) + T('・守關者', ' · Gatekeeper'), img = mi >= 0 ? asset('mob-' + mi) : null;
     if (st.guard === '' || st.guard === 'wait') {
       modal([
         h('span', { class: 'rpg-tag', text: 'GUARDIAN' }),
-        h('h2', { text: '「' + (d.titleZh || d.title) + '」的守關者還沒現身' }),
+        h('h2', { text: T('「' + docT(d) + '」的守關者還沒現身', 'The Gatekeeper of "' + docT(d) + '" has not appeared yet') }),
         h('p', { class: 'rpg-modal-lead', text: st.guard === 'wait'
-          ? '今天剛通關，守關者明天才會出現。隔一天再回想，才測得出真正記住了多少。'
-          : '先通過這份文件每一節的章節挑戰（目前 ' + st.passed + ' / ' + st.quizSecs.length + '）。' })
+          ? T('今天剛通關，守關者明天才會出現。隔一天再回想，才測得出真正記住了多少。', 'You cleared it today; the Gatekeeper appears tomorrow. Recalling after a day shows how much really stuck.')
+          : T('先通過這份文件每一節的章節挑戰（目前 ' + st.passed + ' / ' + st.quizSecs.length + '）。', 'First pass the section challenge in every section of this document (now ' + st.passed + ' / ' + st.quizSecs.length + ').') })
       ]);
       return;
     }
-    fetch(ROOT + 'rpg/quiz/' + key + '.json').then(function (r) { return r.json(); }).then(function (b) {
+    loadBank(key).then(function (b) {
       var pool = (b.questions || []).map(function (q) { return Object.assign({}, q, { docKey: key }); });
-      if (!pool.length) { toast('題庫讀不到，請稍後再試。'); return; }
+      if (!pool.length) { toast(T('題庫讀不到，請稍後再試。', 'Could not load the question bank. Please try again later.')); return; }
       var box = h('div', { class: 'rpg-boss-fight' }), won = !!S.guardWin[key];
       modal([
         h('span', { class: 'rpg-tag', text: 'GUARDIAN' }),
         h('h2', { text: foe }),
-        h('p', { class: 'rpg-modal-lead', text: '從「' + (d.titleZh || d.title) + '」整份題庫跨章節出 ' + Math.min(GUARD_Q, pool.length) + ' 題，答對 80% 擊敗牠。選打，不影響升階' +
-          (won ? '。' : '；第一次擊敗得 ' + XP_GUARD + ' XP、2 個素材，地圖上這份文件多一顆守關星。') }),
+        h('p', { class: 'rpg-modal-lead', text: T('從「' + docT(d) + '」整份題庫跨章節出 ' + Math.min(GUARD_Q, pool.length) + ' 題，答對 80% 擊敗牠。選打，不影響升階' +
+          (won ? '。' : '；第一次擊敗得 ' + XP_GUARD + ' XP、2 個素材，地圖上這份文件多一顆守關星。'),
+          Math.min(GUARD_Q, pool.length) + ' questions drawn across all sections of "' + docT(d) + '". Get 80% right to defeat it. Optional: it does not affect ranking' +
+          (won ? '.' : '; your first win earns ' + XP_GUARD + ' XP, 2 materials, and a Gatekeeper star on this document on the map.')) }),
         box
       ], { cls: 'rpg-modal-wide' });
       function go() {
@@ -2165,13 +2247,13 @@
             if (!r.won) { saveState(); return; }
             var first = !S.guardWin[key];
             S.guardWin[key] = { best: Math.max(r.score, first ? 0 : S.guardWin[key].best), total: r.total, ts: Date.now() };
-            if (first) { S.bonus += XP_GUARD; saveState(); dropMat(key); dropMat(key); toast('擊敗守關者！+' + XP_GUARD + ' XP'); }
+            if (first) { S.bonus += XP_GUARD; saveState(); dropMat(key); dropMat(key); toast(T('擊敗守關者！+', 'Gatekeeper defeated! +') + XP_GUARD + ' XP'); }
             saveState(); refresh();
           }
         });
       }
       go();
-    }).catch(function (e) { console.warn('[rpg] guardian battle failed to load', e); toast('題庫讀不到，請稍後再試。'); });
+    }).catch(function (e) { console.warn('[rpg] guardian battle failed to load', e); toast(T('題庫讀不到，請稍後再試。', 'Could not load the question bank. Please try again later.')); });
   }
 
   /* Elite boss: optional, cross-class, never gates rank-up. */
@@ -2184,9 +2266,9 @@
     if (!eliteOpen()) {
       modal([
         h('span', { class: 'rpg-tag', text: 'ELITE' }),
-        h('h2', { text: e.name + '還沒現身' }),
-        h('p', { class: 'rpg-modal-lead', text: '主職業升到' + RANKS[ELITE_RANK].zh + '後，精英魔王就會在地圖出沒。' }),
-        h('p', { class: 'rpg-note', text: '針劑風險：' + e.risk + '。出題範圍：' + e.srcText + '。' }),
+        h('h2', { text: T(e.name + '還沒現身', e.name + ' has not appeared yet') }),
+        h('p', { class: 'rpg-modal-lead', text: T('主職業升到' + RANKS[ELITE_RANK].zh + '後，精英魔王就會在地圖出沒。', 'Elite bosses roam the map once your main class reaches ' + RANKS[ELITE_RANK].en + '.') }),
+        h('p', { class: 'rpg-note', text: T('針劑風險：' + e.risk + '。出題範圍：' + e.srcText + '。', 'Injectable risk: ' + e.risk + '. Questions from: ' + e.srcText + '.') }),
         weakHintFor(e.weak)
       ]);
       return;
@@ -2194,22 +2276,24 @@
     Promise.all(e.src.map(function (x) {
       var d = M.docs[x.key];
       if (!d || !d.quiz) return [];
-      return fetch(ROOT + 'rpg/quiz/' + x.key + '.json').then(function (r) { return r.json(); }).then(function (b) {
+      return loadBank(x.key).then(function (b) {
         var ids = (x.ids || []).map(String), whole = !x.secs && !x.ids;
         return (b.questions || []).filter(function (q) {
           return whole || (x.secs || []).indexOf(q.section) >= 0 || ids.indexOf(String(q.id)) >= 0;
-        }).map(function (q) { return Object.assign({}, q, { docTitle: d.titleZh || d.title, docKey: x.key }); });
+        }).map(function (q) { return Object.assign({}, q, { docTitle: docT(d), docKey: x.key }); });
       });
     })).then(function (lists) {
       var pool = [].concat.apply([], lists);
-      if (!pool.length) { toast('題庫讀不到，請稍後再試。'); return; }
+      if (!pool.length) { toast(T('題庫讀不到，請稍後再試。', 'Could not load the question bank. Please try again later.')); return; }
       var box = h('div', { class: 'rpg-boss-fight' }), won = S.eliteWin[e.id];
       modal([
         h('span', { class: 'rpg-tag rpg-tag-elite', text: 'ELITE BOSS' }),
-        h('h2', { text: '精英魔王　' + e.name }),
-        h('p', { class: 'rpg-modal-lead', text: '針劑風險：' + e.risk + '。從相關文件隨機出 ' + Math.min(BOSS_Q, pool.length) +
-          ' 題，答對 80% 擊敗牠。選打，不影響升階' + (won ? '。' : '；第一次擊敗得 ' + XP_ELITE + ' XP、1 顆' + BOSS_MAT + '和稱號「' + e.title + '」。') }),
-        h('p', { class: 'rpg-note', text: '出題範圍：' + e.srcText + '（' + pool.length + ' 題）' }),
+        h('h2', { text: T('精英魔王　', 'Elite Boss · ') + e.name }),
+        h('p', { class: 'rpg-modal-lead', text: T('針劑風險：' + e.risk + '。從相關文件隨機出 ' + Math.min(BOSS_Q, pool.length) +
+          ' 題，答對 80% 擊敗牠。選打，不影響升階' + (won ? '。' : '；第一次擊敗得 ' + XP_ELITE + ' XP、1 顆' + BOSS_MAT + '和稱號「' + e.title + '」。'),
+          'Injectable risk: ' + e.risk + '. ' + Math.min(BOSS_Q, pool.length) +
+          ' random questions from related documents. Get 80% right to defeat it. Optional: it does not affect ranking' + (won ? '.' : '; your first win earns ' + XP_ELITE + ' XP, 1 ' + BOSS_MAT + ' and the title "' + e.title + '".')) }),
+        h('p', { class: 'rpg-note', text: T('出題範圍：' + e.srcText + '（' + pool.length + ' 題）', 'Questions from: ' + e.srcText + ' (' + pool.length + ' questions)') }),
         box
       ], { cls: 'rpg-modal-wide rpg-modal-boss' });
       var skill = bestSkill(S.skillPick[key], e.weak), item = bestItem(S.itemPick[key], e.id, e.needTag);
@@ -2233,13 +2317,13 @@
             var weakFirst = weak && !S.weakWin[key];
             if (weakFirst) { S.weakWin[key] = Date.now(); S.bonus += XP_WEAK; S.mats.boss = (S.mats.boss || 0) + 1; }
             saveState();
-            if (weakFirst) toast('弱點擊破！+' + XP_WEAK + ' XP，獲得素材：' + BOSS_MAT);
-            else if (first) toast('擊敗精英魔王！+' + XP_ELITE + ' XP，獲得素材：' + BOSS_MAT);
+            if (weakFirst) toast(T('弱點擊破！+', 'Weak-Point Break! +') + XP_WEAK + T(' XP，獲得素材：', ' XP. Material earned: ') + BOSS_MAT);
+            else if (first) toast(T('擊敗精英魔王！+', 'Elite boss defeated! +') + XP_ELITE + T(' XP，獲得素材：', ' XP. Material earned: ') + BOSS_MAT);
             refresh();
           }
         });
       }
-    }).catch(function (err) { console.warn('[rpg] elite battle failed to load', err); toast('題庫讀不到，請稍後再試。'); });
+    }).catch(function (err) { console.warn('[rpg] elite battle failed to load', err); toast(T('題庫讀不到，請稍後再試。', 'Could not load the question bank. Please try again later.')); });
   }
 
   /* Once every section of a document has been attempted, mirror the best
@@ -2281,7 +2365,7 @@
     palBubble = h('div', { class: 'rpg-pal-bubble', role: 'status', hidden: true });
     palImg = h('img', { alt: '' });
     pal = h('div', { class: 'rpg-pal', id: 'rpg-pal' }, [
-      palBubble, h('button', { type: 'button', class: 'rpg-pal-btn', 'aria-label': '夥伴，點一下跟牠說話', onclick: palPoke }, [palImg,
+      palBubble, h('button', { type: 'button', class: 'rpg-pal-btn', 'aria-label': T('夥伴，點一下跟牠說話', 'Companion: tap to talk'), onclick: palPoke }, [palImg,
         wearing('ribbon') ? h('img', { class: 'rpg-pal-ribbon', src: gearImg(gearById('ribbon')), alt: '' }) : null])
     ]);
     document.body.appendChild(pal);
@@ -2296,7 +2380,7 @@
     if (palImg.getAttribute('src') !== src) palImg.setAttribute('src', src);
     palImg.className = 'rpg-pal-img ' + (S.pet ? petCls('rpg-idle') : 'rpg-wobble');
   }
-  function palVoice() { return S.pet ? PETS[S.pet.line].voice + '，' : ''; }
+  function palVoice() { return S.pet ? PETS[S.pet.line].voice + T('，', '! ') : ''; }
   function palSay(text, priority) {
     if (!pal || !text) return;
     var now = Date.now();
@@ -2305,10 +2389,10 @@
     palLast = now;
     clear(palBubble);
     palBubble.appendChild(h('span', { text: text }));
-    palBubble.appendChild(h('button', { type: 'button', class: 'rpg-pal-mute', text: S.palQuiet ? '恢復說話' : '安靜一點', onclick: function (e) {
+    palBubble.appendChild(h('button', { type: 'button', class: 'rpg-pal-mute', text: S.palQuiet ? T('恢復說話', 'Talk again') : T('安靜一點', 'Hush'), onclick: function (e) {
       e.stopPropagation();
       S.palQuiet = !S.palQuiet; saveState();
-      palSay(S.palQuiet ? '好，我安靜陪你。點我才會說話。' : palVoice() + '我回來了。', 2);
+      palSay(S.palQuiet ? T('好，我安靜陪你。點我才會說話。', 'Okay, I will keep you quiet company. Tap me when you want to talk.') : palVoice() + T('我回來了。', 'I am back.'), 2);
     } }));
     palBubble.hidden = false;
     pal.classList.remove('is-talking'); void pal.offsetWidth; pal.classList.add('is-talking');
@@ -2316,11 +2400,11 @@
     palHideT = setTimeout(function () { palBubble.hidden = true; pal.classList.remove('is-talking'); }, 6000 + text.length * 60);
   }
   function palGreeting() {
-    if (!S.pet) return '讀完第一節，蛋就會孵化。';
+    if (!S.pet) return T('讀完第一節，蛋就會孵化。', 'Finish your first section and the egg will hatch.');
     var hr = new Date().getHours(), st = G.docs[pageDocKey];
-    var hi = hr < 5 ? '這麼晚還在讀，辛苦了' : hr < 11 ? '早安' : hr < 14 ? '午安' : hr < 18 ? '下午好' : '晚上好';
-    var where = st.cleared ? '這份你已經通關了，來複習嗎？' : st.read ? '這份讀到第 ' + st.read + ' / ' + st.total + ' 節了，接著讀吧。' : '這份有 ' + st.total + ' 節，我們從頭開始。';
-    return palVoice() + hi + '。' + where;
+    var hi = hr < 5 ? T('這麼晚還在讀，辛苦了', 'Studying this late? Thank you for the effort') : hr < 11 ? T('早安', 'Good morning') : hr < 14 ? T('午安', 'Good afternoon') : hr < 18 ? T('下午好', 'Good afternoon') : T('晚上好', 'Good evening');
+    var where = st.cleared ? T('這份你已經通關了，來複習嗎？', 'You already cleared this one. Here for a review?') : st.read ? T('這份讀到第 ' + st.read + ' / ' + st.total + ' 節了，接著讀吧。', 'You are on section ' + st.read + ' / ' + st.total + ' of this one. Let us keep going.') : T('這份有 ' + st.total + ' 節，我們從頭開始。', 'This one has ' + st.total + ' sections. Let us start from the top.');
+    return palVoice() + hi + T('。', '. ') + where;
   }
   /* Called after each scroll pause: announce the section that just came into view. */
   function palTick() {
@@ -2337,22 +2421,23 @@
     var li = document.getElementById(cur.id).querySelector('.learning-objectives li');
     var goal = li ? li.textContent.replace(/\s+/g, ' ').trim() : '';
     if (goal.length > 64) goal = goal.slice(0, 62) + '…';
-    palSay('Section ' + cur.num + '「' + (cur.zh || cur.en) + '」。' + (goal ? '先抓這個重點：' + goal : '') +
-      (palDoc.quiz && palDoc.quiz[cur.id] ? '　這節最後有挑戰。' : ''), 1);
+    palSay('Section ' + cur.num + T('「' + (cur.zh || cur.en) + '」。', ' "' + (cur.en || cur.zh) + '". ') + (goal ? T('先抓這個重點：', 'Focus on this first: ') + goal : '') +
+      (palDoc.quiz && palDoc.quiz[cur.id] ? T('　這節最後有挑戰。', ' This section ends with a challenge.') : ''), 1);
   }
   function palCheer() {
     if (!pal) return;
     pal.classList.remove('rpg-hop'); void pal.offsetWidth; pal.classList.add('rpg-hop');
-    palSay(palVoice() + ['又前進一點了。', '這節收下了。', '穩穩地讀。'][Math.floor(Math.random() * 3)], 0);
+    palSay(palVoice() + T(['又前進一點了。', '這節收下了。', '穩穩地讀。'], ['A little further.', 'Section done.', 'Steady reading.'])[Math.floor(Math.random() * 3)], 0);
   }
   function palPoke() {
     var st = G.docs[pageDocKey], lines = [
-      '這份文件讀了 ' + st.read + ' / ' + st.total + ' 節' + (st.quizSecs.length ? '，挑戰過了 ' + st.passed + ' / ' + st.quizSecs.length + ' 節。' : '。'),
-      '離 Lv ' + (G.level + 1) + ' 還差 ' + (G.hi - G.xp) + ' XP。',
-      liveStreak() ? '已經連續 ' + liveStreak() + ' 天了，今天也算數。' : '今天讀完一節，連續天數就開始算。',
-      S.pet ? (G.petStage >= 4 ? '我已經是最終型態了，接下來換你變強。' : '等你升到「' + RANKS[G.petStage].zh + '」，我就會進化。') : '我還在蛋裡，讀完第一節就出來。'
+      T('這份文件讀了 ' + st.read + ' / ' + st.total + ' 節' + (st.quizSecs.length ? '，挑戰過了 ' + st.passed + ' / ' + st.quizSecs.length + ' 節。' : '。'),
+        'You have read ' + st.read + ' / ' + st.total + ' sections of this document' + (st.quizSecs.length ? ' and passed ' + st.passed + ' / ' + st.quizSecs.length + ' challenges.' : '.')),
+      T('離 Lv ' + (G.level + 1) + ' 還差 ' + (G.hi - G.xp) + ' XP。', (G.hi - G.xp) + ' XP to Lv ' + (G.level + 1) + '.'),
+      liveStreak() ? T('已經連續 ' + liveStreak() + ' 天了，今天也算數。', liveStreak() + '-day streak, and today counts too.') : T('今天讀完一節，連續天數就開始算。', 'Finish a section today to start your streak.'),
+      S.pet ? (G.petStage >= 4 ? T('我已經是最終型態了，接下來換你變強。', 'I am in my final form. Now it is your turn to grow.') : T('等你升到「' + RANKS[G.petStage].zh + '」，我就會進化。', 'When you reach ' + RANKS[G.petStage].en + ', I will evolve.')) : T('我還在蛋裡，讀完第一節就出來。', 'I am still in my egg. Finish the first section and I will come out.')
     ];
-    if (wearing('ribbon') && S.pet) lines.push('這條領巾好看嗎？是你做給我的。', '戴著領巾，覺得自己也變專業了。', '素材再多一點，工坊還能做別的裝備喔。');
+    if (wearing('ribbon') && S.pet) lines.push.apply(lines, T(['這條領巾好看嗎？是你做給我的。', '戴著領巾，覺得自己也變專業了。', '素材再多一點，工坊還能做別的裝備喔。'], ['Do you like my scarf? You made it for me.', 'With this scarf on, I feel like a professional too.', 'Gather a few more materials and the Workshop can make other gear.']));
     palAwake();
     palSay(palVoice() + lines[palPokes++ % lines.length], 2);
   }
@@ -2361,9 +2446,9 @@
     var now = Date.now();
     if (now - palAwakeAt < 1000) return;
     palAwakeAt = now;
-    if (pal.classList.contains('is-sleep')) { pal.classList.remove('is-sleep'); palSay(palVoice() + '你回來了。', 1); }
+    if (pal.classList.contains('is-sleep')) { pal.classList.remove('is-sleep'); palSay(palVoice() + T('你回來了。', 'You are back.'), 1); }
     clearTimeout(palIdleT); clearTimeout(palSleepT);
-    palIdleT = setTimeout(function () { palSay(['看累了嗎？站起來動一下再回來。', '卡住的話，先看右邊的導師解析。', '喝口水，我在這裡等。'][Math.floor(Math.random() * 3)], 0); }, 120000);
+    palIdleT = setTimeout(function () { palSay(T(['看累了嗎？站起來動一下再回來。', '卡住的話，先看右邊的導師解析。', '喝口水，我在這裡等。'], ['Tired? Stand up, stretch, then come back.', 'Stuck? Check the mentor notes on the right first.', 'Have some water. I will wait here.'])[Math.floor(Math.random() * 3)], 0); }, 120000);
     palSleepT = setTimeout(function () { pal.classList.add('is-sleep'); palSay('Zzz…', 1); }, 300000);
   }
 
@@ -2385,7 +2470,7 @@
     var due = weakIds().filter(weakDue);
     if (due.length) {
       var wid = due[Math.floor(Math.random() * due.length)], wkey = weakKey(wid), qid = wid.slice(wkey.length + 1);
-      fetch(ROOT + 'rpg/quiz/' + wkey + '.json').then(function (r) { return r.json(); }).then(function (bank) {
+      loadBank(wkey).then(function (bank) {
         var q = (bank.questions || []).filter(function (x) { return String(x.id) === qid; })[0];
         if (!q) { delete S.weak[wid]; saveState(); return; }   // bank was edited; drop the stale entry
         if (document.querySelector('.rpg-modal, .rpg-cutin')) return;
@@ -2404,7 +2489,7 @@
     });
     if (!pool.length) return;
     var pick = pool[Math.floor(Math.random() * pool.length)];
-    fetch(ROOT + 'rpg/quiz/' + pick.key + '.json').then(function (r) { return r.json(); }).then(function (bank) {
+    loadBank(pick.key).then(function (bank) {
       var qs = (bank.questions || []).filter(function (q) { return q.section === pick.sid; });
       if (!qs.length || document.querySelector('.rpg-modal, .rpg-cutin')) return;
       S.review.day = today; saveState();                        // at most one ambush a day, even if dismissed
@@ -2415,7 +2500,7 @@
     q = mixOpts(q);
     var d = M.docs[pick.key], done = false;
     var opts = h('div', { class: 'rpg-quiz-opts' });
-    var exp = h('div', { class: 'rpg-quiz-exp', hidden: true }, [h('p', { text: q.explanation || '' }), q.reference ? h('small', { text: '出處：' + q.reference }) : null]);
+    var exp = h('div', { class: 'rpg-quiz-exp', hidden: true }, [h('p', { text: q.explanation || '' }), q.reference ? h('small', { text: T('出處：', 'Source: ') + q.reference }) : null]);
     var result = h('p', { class: 'rpg-quiz-result', 'aria-live': 'polite' });
     Object.keys(q.options).forEach(function (letter) {
       opts.appendChild(h('button', { type: 'button', class: 'rpg-opt', 'data-l': letter, onclick: function () {
@@ -2430,19 +2515,19 @@
         S.review.last[pick.key + '#' + pick.sid] = Date.now();
         var clean = noteAnswer(pick.key, q, ok);                // clearing a mistake already drops a material
         if (ok) { S.bonus += reviewXp(); S.review.ok++; if (!clean) dropMat(pick.key); }
-        result.textContent = ok ? (clean ? '淨化了這道錯題！+' : '答對了，+') + reviewXp() + ' XP'
-          : pick.weak ? '還是錯了。看一下解析，它會留在錯題本裡。'
-          : '這題忘了。看一下解析，已記進錯題本，' + (wearing('watch') ? '5 天' : '一週') + '後也還會再遇到。';
+        result.textContent = ok ? (clean ? T('淨化了這道錯題！+', 'Mistake cleansed! +') : T('答對了，+', 'Correct! +')) + reviewXp() + ' XP'
+          : pick.weak ? T('還是錯了。看一下解析，它會留在錯題本裡。', 'Still wrong. Read the explanation; it stays in your Mistake Book.')
+          : T('這題忘了。看一下解析，已記進錯題本，' + (wearing('watch') ? '5 天' : '一週') + '後也還會再遇到。', 'Forgotten. Read the explanation; it is now in your Mistake Book and will come back in ' + (wearing('watch') ? '5 days' : 'a week') + '.');
         result.className = 'rpg-quiz-result ' + (ok ? 'is-pass' : 'is-fail');
         saveState(); refresh();
       } }, [h('b', { text: letter }), h('span', { text: q.options[letter] })]));
     });
     modal([
       h('span', { class: 'rpg-tag', text: 'REVIEW' }),
-      h('h2', { text: '複習突擊' }),
+      h('h2', { text: T('複習突擊', 'Review Ambush') }),
       h('p', { class: 'rpg-modal-lead', text: pick.weak
-        ? '錯題本裡的一題，出自「' + (d.titleZh || d.title) + '」。這次答對就能淨化它。答錯不扣分。'
-        : '你之前通過了「' + (d.titleZh || d.title) + '」的章節挑戰，還記得嗎？答錯不扣分。' }),
+        ? T('錯題本裡的一題，出自「' + docT(d) + '」。這次答對就能淨化它。答錯不扣分。', 'A question from your Mistake Book, from "' + docT(d) + '". Get it right to cleanse it. A wrong answer costs nothing.')
+        : T('你之前通過了「' + docT(d) + '」的章節挑戰，還記得嗎？答錯不扣分。', 'You passed a section challenge in "' + docT(d) + '" earlier. Do you still remember? A wrong answer costs nothing.') }),
       h('p', { class: 'rpg-quiz-q rpg-review-q', text: q.question }), opts, exp, result
     ], { cls: 'rpg-modal-wide rpg-modal-alarm' });
   }
@@ -2463,25 +2548,25 @@
     if (!S.gear.on[g.slot]) delete S.gear.on[g.slot];
     saveState();
     renderAll();
-    toast(S.gear.on[g.slot] ? '裝備：' + g.zh : '卸下：' + g.zh);
+    toast(S.gear.on[g.slot] ? T('裝備：', 'Equipped: ') + g.zh : T('卸下：', 'Removed: ') + g.zh);
   }
   /* Turn CONVERT of a material you have plenty of into one you are missing. */
   function convertRow() {
     var have = Object.keys(S.mats).filter(function (k) { return k !== 'boss' && S.mats[k] >= CONVERT; });
-    var from = h('select', { class: 'rpg-select', 'aria-label': '拿哪一種素材去換' });
-    var to = h('select', { class: 'rpg-select', 'aria-label': '換成哪一種素材' });
-    have.forEach(function (k) { from.appendChild(h('option', { value: k, text: matName(k) + '（' + S.mats[k] + '）' })); });
+    var from = h('select', { class: 'rpg-select', 'aria-label': T('拿哪一種素材去換', 'Material to trade in') });
+    var to = h('select', { class: 'rpg-select', 'aria-label': T('換成哪一種素材', 'Material to receive') });
+    have.forEach(function (k) { from.appendChild(h('option', { value: k, text: matName(k) + T('（' + S.mats[k] + '）', ' (' + S.mats[k] + ')') })); });
     MATS.forEach(function (m, i) { to.appendChild(h('option', { value: 'c' + i, text: m })); });
-    var go = h('button', { class: 'rpg-btn rpg-btn-ghost', type: 'button', text: '煉成', disabled: !have.length, onclick: function () {
+    var go = h('button', { class: 'rpg-btn rpg-btn-ghost', type: 'button', text: T('煉成', 'Transmute'), disabled: !have.length, onclick: function () {
       var a = from.value, b = to.value;
-      if (!a || a === b || (S.mats[a] || 0) < CONVERT) { toast(a === b ? '換成同一種素材沒有意義。' : '素材不夠。'); return; }
+      if (!a || a === b || (S.mats[a] || 0) < CONVERT) { toast(a === b ? T('換成同一種素材沒有意義。', 'Trading for the same material does nothing.') : T('素材不夠。', 'Not enough materials.')); return; }
       S.mats[a] -= CONVERT; S.mats[b] = (S.mats[b] || 0) + 1;
       saveState(); renderAll();
-      toast(CONVERT + ' 個' + matName(a) + ' → 1 個' + matName(b));
+      toast(T(CONVERT + ' 個' + matName(a) + ' → 1 個' + matName(b), CONVERT + ' ' + matName(a) + ' → 1 ' + matName(b)));
     } });
     return h('div', { class: 'rpg-convert' }, [
-      h('b', { text: '煉成陣' }),
-      h('span', { class: 'rpg-note', text: have.length ? CONVERT + ' 個同種素材換 1 個別的素材（魔王結晶不能換）：' : '同一種素材有 ' + CONVERT + ' 個以上時，可以換成別的素材。' }),
+      h('b', { text: T('煉成陣', 'Transmutation Circle') }),
+      h('span', { class: 'rpg-note', text: have.length ? T(CONVERT + ' 個同種素材換 1 個別的素材（魔王結晶不能換）：', 'Trade ' + CONVERT + ' of one material for 1 of another (Boss Crystals cannot be traded):') : T('同一種素材有 ' + CONVERT + ' 個以上時，可以換成別的素材。', 'Once you have ' + CONVERT + ' or more of one material, you can trade it for another.') }),
       have.length ? from : null, have.length ? h('span', { text: '→' }) : null, have.length ? to : null, go
     ]);
   }
@@ -2494,7 +2579,7 @@
     Object.keys(it.need).forEach(function (k) { S.mats[k] -= it.need[k]; });
     S.items[it.id] = Date.now();
     saveState(); renderAll();
-    toast('合成道具：' + it.zh + '。魔王戰前可以選它帶上場。');
+    toast(T('合成道具：' + it.zh + '。魔王戰前可以選它帶上場。', 'Item crafted: ' + it.zh + '. Choose it before a boss fight to bring it along.'));
   }
   function targetName(t) {
     if (t.charAt(0) === 'z') return (ZONES[+t.slice(1)] || {}).boss || t;
@@ -2511,17 +2596,17 @@
       list.appendChild(h('li', { class: own ? 'is-own' : '' }, [
         itemImgEl(it),
         h('div', { class: 'rpg-gear-body' }, [
-          h('b', { text: it.zh }), h('small', { class: 'rpg-chip', text: it.cat + '・對 ' + it.vs.map(targetName).join('、') }),
+          h('b', { text: it.zh }), h('small', { class: 'rpg-chip', text: it.cat + T('・對 ', ' · vs ') + it.vs.map(targetName).join(LIST) }),
           h('p', { text: it.eff }),
           own ? null : need
         ]),
-        own ? h('span', { class: 'rpg-chip rpg-item-own', text: '已持有' })
-          : h('button', { class: 'rpg-btn', type: 'button', text: '合成', disabled: !canCraft(it), onclick: function () { craftItem(it); } })
+        own ? h('span', { class: 'rpg-chip rpg-item-own', text: T('已持有', 'Owned') })
+          : h('button', { class: 'rpg-btn', type: 'button', text: T('合成', 'Craft'), disabled: !canCraft(it), onclick: function () { craftItem(it); } })
       ]));
     });
     return h('div', { class: 'rpg-itembox' }, [
-      h('h3', { class: 'rpg-sub', text: '特殊道具　' + ITEMS.filter(function (x) { return S.items[x.id]; }).length + ' / ' + ITEMS.length }),
-      h('p', { class: 'rpg-note', text: '道具不用穿戴，魔王戰前從背包選一個帶上場。用對魔王，護盾就會變多；有些魔王沒帶對的道具根本打不進去。' }),
+      h('h3', { class: 'rpg-sub', text: T('特殊道具　', 'Special Items · ') + ITEMS.filter(function (x) { return S.items[x.id]; }).length + ' / ' + ITEMS.length }),
+      h('p', { class: 'rpg-note', text: T('道具不用穿戴，魔王戰前從背包選一個帶上場。用對魔王，護盾就會變多；有些魔王沒帶對的道具根本打不進去。', 'Items are not worn: pick one from your bag before a boss fight. Use the right one for the boss and you get more shields; some bosses cannot be fought at all without the right item.') }),
       list
     ]);
   }
@@ -2532,7 +2617,7 @@
       var g = S.gear.on[sl] && gearById(S.gear.on[sl]);
       slots.appendChild(h('li', { class: g ? 'is-on' : '' }, [
         h('small', { text: SLOTS[sl] }),
-        g ? h('img', { src: gearImg(g), alt: '' }) : h('span', { class: 'rpg-slot-empty', text: '空' }),
+        g ? h('img', { src: gearImg(g), alt: '' }) : h('span', { class: 'rpg-slot-empty', text: T('空', 'Empty') }),
         h('b', { text: g ? g.zh : '—' })
       ]));
     });
@@ -2552,13 +2637,13 @@
           h('p', { text: g.eff }),
           own ? null : need
         ]),
-        own ? h('button', { class: 'rpg-btn' + (on ? ' rpg-btn-ghost' : ''), type: 'button', text: on ? '卸下' : '裝備', onclick: function () { equip(g); } })
-          : h('button', { class: 'rpg-btn', type: 'button', text: '合成', disabled: !ok, onclick: function () { craft(g); } })
+        own ? h('button', { class: 'rpg-btn' + (on ? ' rpg-btn-ghost' : ''), type: 'button', text: on ? T('卸下', 'Remove') : T('裝備', 'Equip'), onclick: function () { equip(g); } })
+          : h('button', { class: 'rpg-btn', type: 'button', text: T('合成', 'Craft'), disabled: !ok, onclick: function () { craft(g); } })
       ]));
     });
     return h('section', { class: 'rpg-panel rpg-workshop' }, [
-      h('h2', { text: '工坊　' + owned + ' / ' + GEAR.length }),
-      h('p', { class: 'rpg-note', text: '每件裝備合成一次，同一個部位一次穿一件。裝備只幫你多撐一下、或更快找回原文；過關標準一樣是答對 80%。' }),
+      h('h2', { text: T('工坊　', 'Workshop · ') + owned + ' / ' + GEAR.length }),
+      h('p', { class: 'rpg-note', text: T('每件裝備合成一次，同一個部位一次穿一件。裝備只幫你多撐一下、或更快找回原文；過關標準一樣是答對 80%。', 'Each piece of gear is crafted once, and you wear one per slot. Gear only helps you last longer or find the source faster; the pass mark is still 80%.') }),
       slots, list, itemPanel()
     ]);
   }
@@ -2573,52 +2658,52 @@
       var d = M.docs[key], all = byDoc[key], due = all.filter(weakDue).length;
       list.appendChild(h('div', { class: 'rpg-weak-row' }, [
         h('div', { class: 'rpg-weak-info' }, [
-          h('b', { text: d.titleZh || d.title }),
-          h('span', { text: d.code + '　' + all.length + ' 題' + (due < all.length ? '（今天答錯 ' + (all.length - due) + ' 題，明天起可淨化）' : '') })
+          h('b', { text: docT(d) }),
+          h('span', { text: d.code + SEP + all.length + T(' 題', all.length === 1 ? ' question' : ' questions') + (due < all.length ? T('（今天答錯 ' + (all.length - due) + ' 題，明天起可淨化）', ' (' + (all.length - due) + ' missed today, cleansable from tomorrow)') : '') })
         ]),
-        h('button', { class: 'rpg-btn', type: 'button', text: '練習', onclick: function () { openDrill(key); } })
+        h('button', { class: 'rpg-btn', type: 'button', text: T('練習', 'Practice'), onclick: function () { openDrill(key); } })
       ]));
     });
     var cleared = S.flags.cleansed || 0;
     return h('section', { class: 'rpg-panel rpg-weakbook' }, [
-      h('h2', { text: '錯題本　' + ids.length }),
+      h('h2', { text: T('錯題本　', 'Mistake Book · ') + ids.length }),
       h('p', { class: 'rpg-note', text: ids.length
-        ? '戰鬥或複習突擊答錯的題都會記在這裡。隔天以後再答對就能淨化，每淨化一題掉一份素材。複習突擊會優先出這裡的題。'
-        : (cleared ? '錯題本是空的，累計淨化 ' + cleared + ' 題。' : '目前沒有錯題。戰鬥中答錯的題會記在這裡，隔天再來淨化。') }),
+        ? T('戰鬥或複習突擊答錯的題都會記在這裡。隔天以後再答對就能淨化，每淨化一題掉一份素材。複習突擊會優先出這裡的題。', 'Questions you miss in battles or review ambushes are kept here. Answer one correctly on a later day to cleanse it; each cleanse drops a material. Review ambushes draw from here first.')
+        : (cleared ? T('錯題本是空的，累計淨化 ' + cleared + ' 題。', 'Your Mistake Book is empty. ' + cleared + ' cleansed so far.') : T('目前沒有錯題。戰鬥中答錯的題會記在這裡，隔天再來淨化。', 'No mistakes yet. Questions you miss in battle land here; come back the next day to cleanse them.')) }),
       ids.length ? list : null
     ]);
   }
   function openDrill(key) {
     var d = M.docs[key];
-    fetch(ROOT + 'rpg/quiz/' + key + '.json').then(function (r) { return r.json(); }).then(function (bank) {
+    loadBank(key).then(function (bank) {
       var want = {};
       weakIds(key).forEach(function (id) { want[id.slice(key.length + 1)] = id; });
       var qs = (bank.questions || []).filter(function (q) { return want[String(q.id)]; }).map(function (q) {
         delete want[String(q.id)];
-        return Object.assign({}, q, { docKey: key, docTitle: d.titleZh || d.title });
+        return Object.assign({}, q, { docKey: key, docTitle: docT(d) });
       });
       Object.keys(want).forEach(function (k) { delete S.weak[want[k]]; });   // bank was edited; drop stale entries
       saveState();
-      if (!qs.length) { renderAll(); toast('這份文件沒有錯題了。'); return; }
+      if (!qs.length) { renderAll(); toast(T('這份文件沒有錯題了。', 'No mistakes left in this document.')); return; }
       var mi = clusterOf(d), box = h('div', { class: 'rpg-boss-fight' });
       modal([
         h('span', { class: 'rpg-tag', text: 'MISTAKE BOOK' }),
-        h('h2', { text: '錯題練習　' + (d.titleZh || d.title) }),
-        h('p', { class: 'rpg-modal-lead', text: '共 ' + qs.length + ' 題，不扣分、不會被擊退。昨天以前答錯的題，這次答對就淨化。' }),
+        h('h2', { text: T('錯題練習　', 'Mistake Practice · ') + docT(d) }),
+        h('p', { class: 'rpg-modal-lead', text: T('共 ' + qs.length + ' 題，不扣分、不會被擊退。昨天以前答錯的題，這次答對就淨化。', qs.length + ' questions. No penalty and no knockout. Questions missed before today are cleansed when you get them right.') }),
         box
       ], { cls: 'rpg-modal-wide' });
       function go() {
         runBattle(box, {
-          kind: 'drill', foe: mi >= 0 ? MOBS[mi] : '錯題幽靈', foeImg: mi >= 0 ? asset('mob-' + mi) : null, cluster: mi,
+          kind: 'drill', foe: mi >= 0 ? MOBS[mi] : T('錯題幽靈', 'Mistake Ghost'), foeImg: mi >= 0 ? asset('mob-' + mi) : null, cluster: mi,
           hearts: qs.length + 1, questions: shuffle(qs.slice()), again: function () {
             qs = qs.filter(function (q) { return S.weak[key + '#' + q.id]; });
-            if (qs.length) go(); else toast('這份文件的錯題都淨化了！');
+            if (qs.length) go(); else toast(T('這份文件的錯題都淨化了！', 'Every mistake in this document is cleansed!'));
           },
           onEnd: function () { saveState(); refresh(); }
         });
       }
       go();
-    }).catch(function (e) { console.warn('[rpg] mistake drill failed to load', e); toast('題庫讀不到，請稍後再試。'); });
+    }).catch(function (e) { console.warn('[rpg] mistake drill failed to load', e); toast(T('題庫讀不到，請稍後再試。', 'Could not load the question bank. Please try again later.')); });
   }
 
   /* ---------- daily patrol: a short, deliberate review set ----------
@@ -2648,26 +2733,28 @@
   function patrolStrip() {
     if (!S.profile) return null;
     if (patrolDone()) return h('div', { class: 'rpg-patrol is-done' }, [
-      h('span', { class: 'rpg-tag', text: '每日巡邏' }),
-      h('span', { class: 'rpg-patrol-text', text: '今天的巡邏完成了：答對 ' + S.patrol.ok + ' / ' + S.patrol.n + '。明天再來。' })
+      h('span', { class: 'rpg-tag', text: T('每日巡邏', 'Daily Patrol') }),
+      h('span', { class: 'rpg-patrol-text', text: T('今天的巡邏完成了：答對 ' + S.patrol.ok + ' / ' + S.patrol.n + '。明天再來。', 'Today\'s patrol is done: ' + S.patrol.ok + ' / ' + S.patrol.n + ' correct. Come back tomorrow.') })
     ]);
     var plan = patrolPlan();
     if (!plan.length) return null;
     var nw = plan.filter(function (x) { return x.qid; }).length;
     return h('div', { class: 'rpg-patrol' }, [
-      h('span', { class: 'rpg-tag', text: '每日巡邏' }),
-      h('span', { class: 'rpg-patrol-text', text: '今天 ' + plan.length + ' 題' + (nw ? '（錯題 ' + nw + '、複習 ' + (plan.length - nw) + '）' : '（複習讀過的章節）') +
-        '。每題答對 +' + reviewXp() + ' XP，不會被擊退；完成算進連續天數，再掉 1 個素材。' }),
-      h('button', { class: 'rpg-btn rpg-btn-sm', type: 'button', text: '出發巡邏', onclick: openPatrol })
+      h('span', { class: 'rpg-tag', text: T('每日巡邏', 'Daily Patrol') }),
+      h('span', { class: 'rpg-patrol-text', text: T('今天 ' + plan.length + ' 題' + (nw ? '（錯題 ' + nw + '、複習 ' + (plan.length - nw) + '）' : '（複習讀過的章節）') +
+        '。每題答對 +' + reviewXp() + ' XP，不會被擊退；完成算進連續天數，再掉 1 個素材。',
+        plan.length + ' questions today' + (nw ? ' (' + nw + ' mistakes, ' + (plan.length - nw) + ' review)' : ' (review of sections you have read)') +
+        '. +' + reviewXp() + ' XP per right answer and no knockout; finishing counts toward your streak and drops 1 material.') }),
+      h('button', { class: 'rpg-btn rpg-btn-sm', type: 'button', text: T('出發巡邏', 'Start patrol'), onclick: openPatrol })
     ]);
   }
   function openPatrol() {
     if (!S.profile || patrolDone()) return;
     var plan = patrolPlan();
-    if (!plan.length) { toast('還沒有可以複習的章節。先通過一節章節挑戰吧。'); return; }
+    if (!plan.length) { toast(T('還沒有可以複習的章節。先通過一節章節挑戰吧。', 'Nothing to review yet. Pass a section challenge first.')); return; }
     var keys = plan.map(function (x) { return x.key; }).filter(function (k, i, a) { return a.indexOf(k) === i; });
     Promise.all(keys.map(function (k) {
-      return fetch(ROOT + 'rpg/quiz/' + k + '.json').then(function (r) { return r.json(); }).then(function (b) { return [k, b.questions || []]; });
+      return loadBank(k).then(function (b) { return [k, b.questions || []]; });
     })).then(function (pairs) {
       var banks = {}; pairs.forEach(function (p) { banks[p[0]] = p[1]; });
       var qs = [];
@@ -2680,21 +2767,21 @@
           var pool = bank.filter(function (y) { return y.section === x.sid; });
           q = pool[Math.floor(Math.random() * pool.length)];
         }
-        if (q) qs.push(Object.assign({}, q, { docKey: x.key, docTitle: d.titleZh || d.title }));
+        if (q) qs.push(Object.assign({}, q, { docKey: x.key, docTitle: docT(d) }));
       });
       saveState();
-      if (!qs.length) { toast('題庫讀不到，請稍後再試。'); return; }
+      if (!qs.length) { toast(T('題庫讀不到，請稍後再試。', 'Could not load the question bank. Please try again later.')); return; }
       var box = h('div', { class: 'rpg-boss-fight' }), xp = 0;
       modal([
         h('span', { class: 'rpg-tag', text: 'PATROL' }),
-        h('h2', { text: '每日巡邏' }),
-        h('p', { class: 'rpg-modal-lead', text: '共 ' + qs.length + ' 題，來自你讀過的文件。答錯不扣分，會留在錯題本，明天起答對就能淨化。' }),
+        h('h2', { text: T('每日巡邏', 'Daily Patrol') }),
+        h('p', { class: 'rpg-modal-lead', text: T('共 ' + qs.length + ' 題，來自你讀過的文件。答錯不扣分，會留在錯題本，明天起答對就能淨化。', qs.length + (qs.length > 1 ? ' questions' : ' question') + ' from documents you have read. Wrong answers cost nothing; they go to the Mistake Book, and answering them right from tomorrow on clears them.') }),
         box
       ], { cls: 'rpg-modal-wide' });
       runBattle(box, {
-        kind: 'drill', foe: '巡邏中的遺忘霧', foeImg: null, cluster: -1, hearts: qs.length + 1, questions: qs, noAgain: true,
-        endHead: '今日巡邏完成',
-        endLine: function () { return '+' + xp + ' XP。'; },
+        kind: 'drill', foe: T('巡邏中的遺忘霧', 'Fog of Forgetting'), foeImg: null, cluster: -1, hearts: qs.length + 1, questions: qs, noAgain: true,
+        endHead: T('今日巡邏完成', 'Patrol complete for today'),
+        endLine: function () { return '+' + xp + T(' XP。', ' XP.'); },
         onAnswer: function (q, ok) {
           if (q.section) S.review.last[q.docKey + '#' + q.section] = Date.now();
           if (ok) { S.bonus += reviewXp(); S.review.ok++; xp += reviewXp(); }
@@ -2710,15 +2797,15 @@
           saveState(); refresh();
         }
       });
-    }).catch(function (e) { console.warn('[rpg] patrol failed to load', e); toast('題庫讀不到，請稍後再試。'); });
+    }).catch(function (e) { console.warn('[rpg] patrol failed to load', e); toast(T('題庫讀不到，請稍後再試。', 'Could not load the question bank. Please try again later.')); });
   }
 
   /* ---------- character page ---------- */
   var cardFilter = 'ALL';
   /* 情報圖鑑: status traits of every boss / elite, revealed by the first fight against it (S.intel). */
   function intelPanel() {
-    var foes = ZONES.map(function (z, i) { return { id: 'z' + i, name: z.boss, img: asset('boss-' + (i + 1)), where: z.zh + '魔王' }; })
-      .concat(ELITES.map(function (e) { return { id: e.id, name: e.name, img: asset('elite-' + e.id), where: '精英', elite: 1 }; }));
+    var foes = ZONES.map(function (z, i) { return { id: 'z' + i, name: z.boss, img: asset('boss-' + (i + 1)), where: T(z.zh + '魔王', z.en + ' boss') }; })
+      .concat(ELITES.map(function (e) { return { id: e.id, name: e.name, img: asset('elite-' + e.id), where: T('精英', 'Elite'), elite: 1 }; }));
     var seen = foes.filter(function (f) { return S.intel[f.id]; }).length, open = eliteOpen();
     var list = h('ul', { class: 'rpg-intel-list' });
     foes.forEach(function (f) {
@@ -2726,14 +2813,14 @@
       list.appendChild(h('li', { class: known ? 'is-known' : '' }, [
         f.img && named ? h('img', { src: f.img, alt: '', loading: 'lazy' }) : h('span', { class: 'rpg-intel-q', text: '?' }),
         h('div', {}, [
-          h('b', { text: named ? f.name : '？？？' }), h('small', { text: f.where }),
-          h('p', { text: known ? traitText(f.id) : named ? '尚未交手。打一次就會記下牠的狀態抗性。' : '主職業升到「' + RANKS[ELITE_RANK].zh + '」後現身。' })
+          h('b', { text: named ? f.name : T('？？？', '???') }), h('small', { text: f.where }),
+          h('p', { text: known ? traitText(f.id) : named ? T('尚未交手。打一次就會記下牠的狀態抗性。', 'Not fought yet. One fight records its status resistances.') : T('主職業升到「' + RANKS[ELITE_RANK].zh + '」後現身。', 'Appears once your main class reaches ' + RANKS[ELITE_RANK].en + '.') })
         ])
       ]));
     });
     return h('section', { class: 'rpg-panel rpg-intelpanel' }, [
-      h('h2', { text: '情報圖鑑　' + seen + ' / ' + foes.length }),
-      h('p', { class: 'rpg-note', text: '每個部門技能有一項狀態專長，每隻魔王對中毒、麻痺、睡眠各有抗性。開戰前對照這裡挑技能。' }),
+      h('h2', { text: T('情報圖鑑　', 'Intel Codex · ') + seen + ' / ' + foes.length }),
+      h('p', { class: 'rpg-note', text: T('每個部門技能有一項狀態專長，每隻魔王對中毒、麻痺、睡眠各有抗性。開戰前對照這裡挑技能。', 'Each department skill has one status specialty, and every boss has its own resistances to poison, paralysis and sleep. Check here before a fight to pick your skill.') }),
       list
     ]);
   }
@@ -2743,11 +2830,11 @@
     clear(mount);
     if (!S.profile) {
       mount.appendChild(h('div', { class: 'rpg-panel rpg-empty' }, [
-        h('h2', { text: '還沒有角色' }),
-        h('p', { text: '建立角色後，這裡會顯示你的等級、夥伴、稱號和文件卡圖鑑。' }),
-        h('button', { class: 'rpg-btn', type: 'button', onclick: openOnboarding, text: '建立角色' }),
-        h('p', { class: 'rpg-note', text: '在別台電腦玩過？用「讀取存檔」把下載的存檔放回來。' }),
-        h('button', { class: 'rpg-btn rpg-btn-ghost', type: 'button', onclick: importSave, text: '讀取存檔' })
+        h('h2', { text: T('還沒有角色', 'No character yet') }),
+        h('p', { text: T('建立角色後，這裡會顯示你的等級、夥伴、稱號和文件卡圖鑑。', 'Once you create a character, this page shows your level, companion, titles and document card collection.') }),
+        h('button', { class: 'rpg-btn', type: 'button', onclick: openOnboarding, text: T('建立角色', 'Create character') }),
+        h('p', { class: 'rpg-note', text: T('在別台電腦玩過？用「讀取存檔」把下載的存檔放回來。', 'Played on another computer? Use "Load save" to bring back the save file you downloaded.') }),
+        h('button', { class: 'rpg-btn rpg-btn-ghost', type: 'button', onclick: importSave, text: T('讀取存檔', 'Load save') })
       ]));
       return;
     }
@@ -2759,20 +2846,21 @@
       h('div', { class: 'rpg-hero-info' }, [
         h('span', { class: 'rpg-tag', text: RANKS[c.rank].en.toUpperCase() }),
         h('h1', {}, [avatarEl('lg'), h('span', { text: S.profile.nick })]),
-        h('p', { class: 'rpg-hero-job', text: RANKS[c.rank].zh + CLASS_META[dep.id].job + '　' + dep.nameZh + (bestTitle() ? '　｜　' + bestTitle() : '') }),
+        h('p', { class: 'rpg-hero-job', text: T(RANKS[c.rank].zh + CLASS_META[dep.id].job + '　' + dep.nameZh + (bestTitle() ? '　｜　' + bestTitle() : ''), RANKS[c.rank].en + ' ' + CLASS_META[dep.id].job + SEP + dName(dep) + (bestTitle() ? ' | ' + bestTitle() : '')) }),
         h('div', { class: 'rpg-stats' }, [
-          stat('Lv ' + G.level, '等級'), stat(String(G.xp), '經驗值'), stat(String(streak), '連續天數'),
-          stat(G.cards + ' / ' + Object.keys(G.docs).filter(function (k) { return !G.docs[k].doc.shell; }).length, '文件卡')
+          stat('Lv ' + G.level, T('等級', 'Level')), stat(String(G.xp), T('經驗值', 'XP')), stat(String(streak), T('連續天數', 'Day streak')),
+          stat(G.cards + ' / ' + Object.keys(G.docs).filter(function (k) { return !G.docs[k].doc.shell; }).length, T('文件卡', 'Cards'))
         ]),
-        h('div', { class: 'rpg-hero-xp' }, [xpBar(), h('small', { text: '距離 Lv ' + (G.level + 1) + ' 還差 ' + (G.hi - G.xp) + ' XP' +
-          (nextMile() ? '　｜　Lv ' + nextMile().lv + ' 里程碑：' + mileText(nextMile()) : '') })]),
-        h('button', { class: 'rpg-btn rpg-btn-ghost', type: 'button', onclick: openOnboarding, text: '編輯角色／轉職' }),
-        h('a', { class: 'rpg-btn rpg-btn-ghost rpg-hero-map', href: ROOT + 'map.html', text: '闖關地圖' }),
-        h('a', { class: 'rpg-btn rpg-btn-ghost rpg-guide-link', href: ROOT + 'rpg-guide.html', text: '新手指南' }),
-        h('button', { class: 'rpg-btn rpg-btn-ghost', type: 'button', onclick: function () { openPrologue(null); }, text: '重看序章' }),
-        h('button', { class: 'rpg-btn rpg-btn-ghost', type: 'button', onclick: exportSave, text: '下載存檔' }),
-        h('button', { class: 'rpg-btn rpg-btn-ghost', type: 'button', onclick: importSave, text: '讀取存檔' }),
-        h('button', { class: 'rpg-btn rpg-btn-ghost', type: 'button', text: '關閉冒險模式', onclick: function () { lsSet(FLAG_KEY, '0'); location.href = ROOT + 'index.html'; } })
+        h('div', { class: 'rpg-hero-xp' }, [xpBar(), h('small', { text: T('距離 Lv ' + (G.level + 1) + ' 還差 ' + (G.hi - G.xp) + ' XP' +
+          (nextMile() ? '　｜　Lv ' + nextMile().lv + ' 里程碑：' + mileText(nextMile()) : ''),
+          (G.hi - G.xp) + ' XP to Lv ' + (G.level + 1) + (nextMile() ? ' | Lv ' + nextMile().lv + ' milestone: ' + mileText(nextMile()) : '')) })]),
+        h('button', { class: 'rpg-btn rpg-btn-ghost', type: 'button', onclick: openOnboarding, text: T('編輯角色／轉職', 'Edit character / change class') }),
+        h('a', { class: 'rpg-btn rpg-btn-ghost rpg-hero-map', href: ROOT + 'map.html', text: T('闖關地圖', 'Quest Map') }),
+        h('a', { class: 'rpg-btn rpg-btn-ghost rpg-guide-link', href: ROOT + T('rpg-guide.html', 'rpg-guide-en.html'), text: T('新手指南', 'Guide') }),
+        h('button', { class: 'rpg-btn rpg-btn-ghost', type: 'button', onclick: function () { openPrologue(null); }, text: T('重看序章', 'Replay prologue') }),
+        h('button', { class: 'rpg-btn rpg-btn-ghost', type: 'button', onclick: exportSave, text: T('下載存檔', 'Download save') }),
+        h('button', { class: 'rpg-btn rpg-btn-ghost', type: 'button', onclick: importSave, text: T('讀取存檔', 'Load save') }),
+        h('button', { class: 'rpg-btn rpg-btn-ghost', type: 'button', text: T('關閉冒險模式', 'Turn off adventure mode'), onclick: function () { lsSet(FLAG_KEY, '0'); location.href = ROOT + 'index.html'; } })
       ])
     ]));
 
@@ -2781,46 +2869,46 @@
     mount.appendChild(intelPanel());
 
     /* pet */
-    var petPanel = h('section', { class: 'rpg-panel rpg-petpanel' }, [h('h2', { text: '夥伴' })]);
+    var petPanel = h('section', { class: 'rpg-panel rpg-petpanel' }, [h('h2', { text: T('夥伴', 'Companion') })]);
     if (S.pet) {
       var line = PETS[S.pet.line];
       petPanel.appendChild(h('div', { class: 'rpg-pet-now' }, [
         h('img', { class: petCls('rpg-idle'), src: petImg(S.pet.line, G.petStage), alt: line.stages[G.petStage - 1] }),
         h('div', {}, [
-          h('b', { text: line.stages[G.petStage - 1] + (S.pet.shiny ? '（異色）' : '') }),
-          h('p', { text: G.petStage >= 4 ? '已經是最終型態。' : '下一次進化：任一職業升到「' + RANKS[G.petStage].zh + '」階級，進化為' + line.stages[G.petStage] + '。' })
+          h('b', { text: line.stages[G.petStage - 1] + (S.pet.shiny ? T('（異色）', ' (shiny)') : '') }),
+          h('p', { text: G.petStage >= 4 ? T('已經是最終型態。', 'Already at its final form.') : T('下一次進化：任一職業升到「' + RANKS[G.petStage].zh + '」階級，進化為' + line.stages[G.petStage] + '。', 'Next evolution: when any class reaches ' + RANKS[G.petStage].en + ', it evolves into ' + line.stages[G.petStage] + '.') })
         ])
       ]));
     } else {
       petPanel.appendChild(h('div', { class: 'rpg-pet-now' }, [
-        h('img', { class: 'rpg-wobble', src: eggImg(), alt: '蛋' }),
-        h('div', {}, [h('b', { text: '還沒孵化' }), h('p', { text: '讀完任何一節，蛋就會孵化。' })])
+        h('img', { class: 'rpg-wobble', src: eggImg(), alt: T('蛋', 'Egg') }),
+        h('div', {}, [h('b', { text: T('還沒孵化', 'Not hatched yet') }), h('p', { text: T('讀完任何一節，蛋就會孵化。', 'Finish reading any section and the egg will hatch.') })])
       ]));
     }
     mount.appendChild(petPanel);
 
     /* main line */
-    var main = h('section', { class: 'rpg-panel' }, [h('h2', { text: '主線：' + dep.nameZh })]);
+    var main = h('section', { class: 'rpg-panel' }, [h('h2', { text: T('主線：' + dep.nameZh, 'Main quest: ' + dName(dep)) })]);
     c.tiers.forEach(function (t, i) {
       var rows = h('ul', { class: 'rpg-docrows' });
       t.tier.docs.forEach(function (x) {
         var d = M.docs[x.key], st = G.docs[x.key];
         var state, cls = '';
-        if (!d || d.shell) { state = '內容準備中'; cls = 'is-na'; }
-        else if (st.cleared) { state = '通關'; cls = 'is-done'; }
-        else if (st.quizSecs.length && st.readAll) state = '挑戰 ' + st.passed + ' / ' + st.quizSecs.length;
-        else state = st.started ? '閱讀 ' + st.read + ' / ' + st.total : '未開始';
+        if (!d || d.shell) { state = T('內容準備中', 'Coming soon'); cls = 'is-na'; }
+        else if (st.cleared) { state = T('通關', 'Cleared'); cls = 'is-done'; }
+        else if (st.quizSecs.length && st.readAll) state = T('挑戰 ', 'Challenges ') + st.passed + ' / ' + st.quizSecs.length;
+        else state = st.started ? T('閱讀 ', 'Read ') + st.read + ' / ' + st.total : T('未開始', 'Not started');
         rows.appendChild(h('li', { class: cls }, [
-          h('span', { class: 'rpg-chip' + (x.required ? ' is-req' : ''), text: x.required ? '必讀' : '選讀' }),
-          d ? h('a', { href: ROOT + d.file, text: d.titleZh || d.title }) : h('span', { text: x.key }),
-          d && d.quiz ? h('span', { class: 'rpg-chip is-quiz', text: '有挑戰' }) : null,
+          h('span', { class: 'rpg-chip' + (x.required ? ' is-req' : ''), text: x.required ? T('必讀', 'Required') : T('選讀', 'Optional') }),
+          d ? h('a', { href: ROOT + d.file, text: docT(d) }) : h('span', { text: x.key }),
+          d && d.quiz ? h('span', { class: 'rpg-chip is-quiz', text: T('有挑戰', 'Challenge') }) : null,
           h('span', { class: 'rpg-docstate', text: state })
         ]));
       });
       main.appendChild(h('details', { class: 'rpg-tier' + (t.done ? ' is-done' : ''), open: i === Math.min(c.rank, c.tiers.length - 1) }, [
         h('summary', {}, [
-          h('b', { text: t.tier.labelZh + '　' + t.tier.label }),
-          h('span', { text: (t.anyOf ? '任選 ' : '必讀 ') + t.got + ' / ' + t.need + (t.done ? '　完成' : t.ready && t.hasBoss ? '　魔王待挑戰' : '') })
+          h('b', { text: T(t.tier.labelZh + '　' + t.tier.label, t.tier.label) }),
+          h('span', { text: T((t.anyOf ? '任選 ' : '必讀 ') + t.got + ' / ' + t.need + (t.done ? '　完成' : t.ready && t.hasBoss ? '　魔王待挑戰' : ''), (t.anyOf ? 'Any ' : 'Required ') + t.got + ' / ' + t.need + (t.done ? ' · Complete' : t.ready && t.hasBoss ? ' · Boss awaits' : '')) })
         ]), rows
       ]));
     });
@@ -2828,23 +2916,23 @@
     mount.appendChild(skillPanel(dep));
 
     /* titles */
-    var titles = h('section', { class: 'rpg-panel' }, [h('h2', { text: '稱號' })]);
+    var titles = h('section', { class: 'rpg-panel' }, [h('h2', { text: T('稱號', 'Titles') })]);
     var tl = h('ul', { class: 'rpg-titles' });
     G.titles.forEach(function (t) {
       if (!t.n) return;
       tl.appendChild(h('li', { class: t.lv ? 'is-on' : '', style: '--c:' + t.color }, [
-        h('b', { text: t.zh + (t.lv === 2 ? '大師' : '修習者') }),
-        h('span', { text: t.got + ' / ' + t.n + ' 份通關' + (t.lv === 0 ? '（' + Math.min(5, t.n) + ' 份取得）' : t.lv === 1 ? '（全部通關升為大師）' : '') })
+        h('b', { text: T(t.zh + (t.lv === 2 ? '大師' : '修習者'), t.zh + (t.lv === 2 ? ' Master' : ' Adept')) }),
+        h('span', { text: T(t.got + ' / ' + t.n + ' 份通關' + (t.lv === 0 ? '（' + Math.min(5, t.n) + ' 份取得）' : t.lv === 1 ? '（全部通關升為大師）' : ''), t.got + ' / ' + t.n + ' cleared' + (t.lv === 0 ? ' (clear ' + Math.min(5, t.n) + ' to earn)' : t.lv === 1 ? ' (clear all to become Master)' : '')) })
       ]));
     });
     titles.appendChild(tl);
     var gotSecrets = SECRETS.filter(function (x) { return S.secrets[x.id]; }).length;
-    titles.appendChild(h('h3', { class: 'rpg-sub', text: '隱藏稱號　' + gotSecrets + ' / ' + SECRETS.length }));
+    titles.appendChild(h('h3', { class: 'rpg-sub', text: T('隱藏稱號　', 'Hidden Titles · ') + gotSecrets + ' / ' + SECRETS.length }));
     var sl = h('ul', { class: 'rpg-titles' });
     SECRETS.forEach(function (x) {
       var on = !!S.secrets[x.id];
       sl.appendChild(h('li', { class: on ? 'is-on' : '', style: '--c:#ff3d81' }, [
-        h('b', { text: on ? x.zh : '？？？' }), h('span', { text: on ? x.how : '條件未知' })
+        h('b', { text: on ? x.zh : T('？？？', '???') }), h('span', { text: on ? x.how : T('條件未知', 'Unknown condition') })
       ]));
     });
     titles.appendChild(sl);
@@ -2862,11 +2950,11 @@
     var nb = S.mats.boss || 0;
     ml.appendChild(h('li', { class: 'rpg-mat-boss' + (nb ? ' is-on' : ''), style: '--c:#ff3d81' }, [
       matImg('boss') ? h('img', { class: 'rpg-mat-img', src: matImg('boss'), alt: '' }) : null,
-      h('b', { text: String(nb) }), h('span', { text: BOSS_MAT }), h('small', { text: '第一次打倒魔王' })
+      h('b', { text: String(nb) }), h('span', { text: BOSS_MAT }), h('small', { text: T('第一次打倒魔王', 'First win against each boss') })
     ]));
     mount.appendChild(h('section', { class: 'rpg-panel' }, [
-      h('h2', { text: '素材' }),
-      h('p', { class: 'rpg-note', text: '第一次通過章節挑戰、或答對複習突擊時，會得到該文件主題的素材；第一次打倒每個魔王，得到一顆魔王結晶。素材拿到下面的工坊合成裝備。' }),
+      h('h2', { text: T('素材', 'Materials') }),
+      h('p', { class: 'rpg-note', text: T('第一次通過章節挑戰、或答對複習突擊時，會得到該文件主題的素材；第一次打倒每個魔王，得到一顆魔王結晶。素材拿到下面的工坊合成裝備。', 'Pass a section challenge for the first time, or answer a review ambush right, to earn a material from that document\'s topic. Your first win against each boss gives a Boss Crystal. Take materials to the Workshop below to craft gear.') }),
       ml, convertRow()
     ]));
     mount.appendChild(workshop());
@@ -2876,7 +2964,7 @@
     var groups = ['ALL'].concat(Object.keys(GROUP_LABEL));
     var filt = h('div', { class: 'rpg-filter', role: 'tablist' });
     groups.forEach(function (g) {
-      filt.appendChild(h('button', { type: 'button', class: cardFilter === g ? 'is-on' : '', text: g === 'ALL' ? '全部' : GROUP_LABEL[g],
+      filt.appendChild(h('button', { type: 'button', class: cardFilter === g ? 'is-on' : '', text: g === 'ALL' ? T('全部', 'All') : GROUP_LABEL[g],
         onclick: function () { cardFilter = g; renderCharacter(); } }));
     });
     var grid = h('div', { class: 'rpg-cards' });
@@ -2884,8 +2972,8 @@
     keys.sort(function (a, b) { return (G.docs[b].card ? 1 : 0) - (G.docs[a].card ? 1 : 0) || a.localeCompare(b); });
     keys.forEach(function (k) { grid.appendChild(cardEl(G.docs[k], !G.docs[k].card)); });
     mount.appendChild(h('section', { class: 'rpg-panel' }, [
-      h('h2', { text: '文件卡圖鑑　' + keys.filter(function (k) { return G.docs[k].card; }).length + ' / ' + keys.length }),
-      h('p', { class: 'rpg-note', text: '讀完一份文件得到文件卡；有章節挑戰的文件全部過關後，卡片會覺醒；每一節都第一次挑戰就全對，會變成異色卡。稀有度依文件的章節數決定。' }),
+      h('h2', { text: T('文件卡圖鑑　', 'Document Cards · ') + keys.filter(function (k) { return G.docs[k].card; }).length + ' / ' + keys.length }),
+      h('p', { class: 'rpg-note', text: T('讀完一份文件得到文件卡；有章節挑戰的文件全部過關後，卡片會覺醒；每一節都第一次挑戰就全對，會變成異色卡。稀有度依文件的章節數決定。', 'Finish reading a document to get its card. Pass every section challenge of a document and the card awakens; get every section right on the first try and it turns shiny. Rarity depends on how many sections the document has.') }),
       filt, grid
     ]));
 
@@ -2894,16 +2982,16 @@
     DEPTS.forEach(function (d2) {
       var r = G.classes[d2.id].rank;
       others.appendChild(h('li', { class: d2.id === dep.id ? 'is-on' : '', style: '--c:' + d2.color }, [
-        h('b', { text: CLASS_META[d2.id].job }), h('span', { text: d2.nameZh }), h('small', { text: RANKS[r].zh })
+        h('b', { text: CLASS_META[d2.id].job }), h('span', { text: dName(d2) }), h('small', { text: L(RANKS[r]) })
       ]));
     });
     mount.appendChild(h('section', { class: 'rpg-panel' }, [
-      h('h2', { text: '各職業階級' }), others,
-      h('button', { class: 'rpg-link-danger', type: 'button', text: '清除角色資料（不影響閱讀紀錄與測驗紀錄）', onclick: function () {
+      h('h2', { text: T('各職業階級', 'Class ranks') }), others,
+      h('button', { class: 'rpg-link-danger', type: 'button', text: T('清除角色資料（不影響閱讀紀錄與測驗紀錄）', 'Delete character data (reading progress and quiz records are kept)'), onclick: function () {
         var m = modal([
-          h('h2', { text: '清除角色資料？' }),
-          h('p', { class: 'rpg-modal-lead', text: '會清掉暱稱、職業、夥伴、章節挑戰成績和連續天數，無法復原。閱讀進度和 Quiz Tracker 的紀錄會保留。' }),
-          h('button', { class: 'rpg-btn rpg-btn-danger', type: 'button', text: '清除', onclick: function () { lsDel(STATE_KEY); S = loadState(); m.close(); refresh(true); } })
+          h('h2', { text: T('清除角色資料？', 'Delete character data?') }),
+          h('p', { class: 'rpg-modal-lead', text: T('會清掉暱稱、職業、夥伴、章節挑戰成績和連續天數，無法復原。閱讀進度和 Quiz Tracker 的紀錄會保留。', 'This erases your nickname, class, companion, section challenge scores and streak, and cannot be undone. Reading progress and Quiz Tracker records are kept.') }),
+          h('button', { class: 'rpg-btn rpg-btn-danger', type: 'button', text: T('清除', 'Delete'), onclick: function () { lsDel(STATE_KEY); S = loadState(); m.close(); refresh(true); } })
         ]);
       } })
     ]));
@@ -2913,9 +3001,9 @@
      zone (the rank-up). Stages snake left-to-right then right-to-left. Nothing
      is hard-locked: later zones are fogged but every document stays readable. */
   var ZONES = [
-    { zh: '啟程之島', en: 'Isle of Beginnings', cls: 'rpg-z0', boss: '微粒魔' },
-    { zh: '修練之島', en: 'Isle of Practice', cls: 'rpg-z1', boss: '生物膜王' },
-    { zh: '核心之島', en: 'Isle of Mastery', cls: 'rpg-z2', boss: '內毒素龍' }
+    { zh: '啟程之島', en: 'Isle of Beginnings', cls: 'rpg-z0', boss: T('微粒魔', 'Particle Fiend') },
+    { zh: '修練之島', en: 'Isle of Practice', cls: 'rpg-z1', boss: T('生物膜王', 'Biofilm King') },
+    { zh: '核心之島', en: 'Isle of Mastery', cls: 'rpg-z2', boss: T('內毒素龍', 'Endotoxin Dragon') }
   ];
   var mapCols = 0;
   function mapColsFor(w) { return w < 520 ? 3 : w < 820 ? 4 : 5; }
@@ -2925,9 +3013,9 @@
     clear(mount);
     if (!S.profile) {
       mount.appendChild(h('div', { class: 'rpg-panel rpg-empty' }, [
-        h('h2', { text: '還沒有角色' }),
-        h('p', { text: '建立角色、選一個職業，這裡就會出現那個職業的闖關地圖。' }),
-        h('button', { class: 'rpg-btn', type: 'button', onclick: openOnboarding, text: '建立角色' })
+        h('h2', { text: T('還沒有角色', 'No character yet') }),
+        h('p', { text: T('建立角色、選一個職業，這裡就會出現那個職業的闖關地圖。', 'Create a character and pick a class, and that class\'s quest map will appear here.') }),
+        h('button', { class: 'rpg-btn', type: 'button', onclick: openOnboarding, text: T('建立角色', 'Create character') })
       ]));
       return;
     }
@@ -2937,10 +3025,10 @@
 
     mount.appendChild(h('header', { class: 'rpg-map-head', style: '--c:' + dep.color }, [
       h('span', { class: 'rpg-tag', text: 'WORLD MAP' }),
-      h('h1', { text: dep.nameZh + '　闖關地圖' }),
-      h('p', { text: '目前階級：' + RANKS[c.rank].zh + CLASS_META[dep.id].job + '。每一關是一份文件，走到區域盡頭通過升階試煉就能進下一區。' }),
-      h('button', { class: 'rpg-btn rpg-btn-ghost', type: 'button', onclick: openOnboarding, text: '換職業看別的地圖' }),
-      h('a', { class: 'rpg-btn rpg-btn-ghost rpg-guide-link', href: ROOT + 'rpg-guide.html', text: '新手指南' })
+      h('h1', { text: T(dep.nameZh + '　闖關地圖', dName(dep) + ' Quest Map') }),
+      h('p', { text: T('目前階級：' + RANKS[c.rank].zh + CLASS_META[dep.id].job + '。每一關是一份文件，走到區域盡頭通過升階試煉就能進下一區。', 'Current rank: ' + RANKS[c.rank].en + ' ' + CLASS_META[dep.id].job + '. Each stage is one document; pass the rank trial at the end of a zone to move on to the next.') }),
+      h('button', { class: 'rpg-btn rpg-btn-ghost', type: 'button', onclick: openOnboarding, text: T('換職業看別的地圖', 'Switch class to see another map') }),
+      h('a', { class: 'rpg-btn rpg-btn-ghost rpg-guide-link', href: ROOT + T('rpg-guide.html', 'rpg-guide-en.html'), text: T('新手指南', 'Guide') })
     ]));
 
     c.tiers.forEach(function (t, ti) {
@@ -2974,15 +3062,16 @@
         var inner = [
           here ? h('span', { class: 'rpg-stage-you' }, [avatarEl(), S.pet ? h('img', { class: petCls('rpg-idle'), src: petImg(S.pet.line, G.petStage), alt: '' }) : null]) : null,
           h('span', { class: 'rpg-stage-dot', style: '--p:' + pct + '%;--bar:' + d.bar }, [h('b', { text: st.cleared ? '✓' : String(i + 1) })]),
-          h('span', { class: 'rpg-stage-stars', 'aria-label': stars + ' / ' + maxStars + ' 星', text: d.shell ? '準備中' : starText }),
-          h('span', { class: 'rpg-stage-name', text: d.titleZh || d.title }),
-          h('span', { class: 'rpg-stage-meta', text: d.shell ? '' : (x.required ? '' : isRec(x) ? '推薦・' : '支線・') + (st.cleared ? '通關' : st.started ? st.read + ' / ' + st.total + ' 節' : st.total + ' 節') + (d.quiz ? '・有挑戰' : '') })
+          h('span', { class: 'rpg-stage-stars', 'aria-label': stars + ' / ' + maxStars + T(' 星', ' stars'), text: d.shell ? T('準備中', 'Coming soon') : starText }),
+          h('span', { class: 'rpg-stage-name', text: docT(d) }),
+          h('span', { class: 'rpg-stage-meta', text: d.shell ? '' : T((x.required ? '' : isRec(x) ? '推薦・' : '支線・') + (st.cleared ? '通關' : st.started ? st.read + ' / ' + st.total + ' 節' : st.total + ' 節') + (d.quiz ? '・有挑戰' : ''),
+            (x.required ? '' : isRec(x) ? 'Recommended · ' : 'Side · ') + (st.cleared ? 'Cleared' : st.started ? st.read + ' / ' + st.total + ' sections' : st.total + ' sections') + (d.quiz ? ' · Challenge' : '')) })
         ];
         var node = d.shell ? h('span', { class: 'rpg-stage-link' }, inner)
           : h('a', { class: 'rpg-stage-link', href: here ? q.href : ROOT + d.file, title: d.title }, inner);
-        var gBtn = st.guard === 'ready' ? h('button', { type: 'button', class: 'rpg-btn rpg-btn-sm rpg-guard-btn', text: '守關者現身', onclick: function () { openGuard(x.key); } })
-          : st.guard === 'wait' ? h('span', { class: 'rpg-stage-meta rpg-guard-wait', text: '守關者明天現身' })
-          : st.guard === 'won' ? h('span', { class: 'rpg-stage-meta', text: '守關者已擊敗' }) : null;
+        var gBtn = st.guard === 'ready' ? h('button', { type: 'button', class: 'rpg-btn rpg-btn-sm rpg-guard-btn', text: T('守關者現身', 'Gatekeeper is here'), onclick: function () { openGuard(x.key); } })
+          : st.guard === 'wait' ? h('span', { class: 'rpg-stage-meta rpg-guard-wait', text: T('守關者明天現身', 'Gatekeeper appears tomorrow') })
+          : st.guard === 'won' ? h('span', { class: 'rpg-stage-meta', text: T('守關者已擊敗', 'Gatekeeper defeated') }) : null;
         place(h('li', { class: cls + (st.cleared ? ' path-done' : '') }, [node, gBtn]), i);
       });
 
@@ -2992,12 +3081,14 @@
         asset('boss-' + (ti + 1))
           ? h('img', { class: 'rpg-boss-img', src: asset('boss-' + (ti + 1)), alt: zone.boss })
           : h('span', { class: 'rpg-stage-dot' }, [h('b', { text: t.done ? '✓' : 'BOSS' })]),
-        h('span', { class: 'rpg-stage-name', text: (t.done ? '已擊敗　' : '魔王　') + zone.boss }),
-        h('span', { class: 'rpg-stage-meta', text: '升階試煉：' + RANKS[ti + 1].zh + CLASS_META[dep.id].job }),
-        h('span', { class: 'rpg-stage-meta', text: (t.anyOf ? '任選通關 ' : '必讀通關 ') + t.got + ' / ' + t.need +
-          (!t.hasBoss ? '・本區沒有魔王戰' : t.beaten ? '・魔王已擊敗' : t.ready ? '・魔王現身了' : '・通關後魔王現身') }),
-        t.hasBoss ? h('span', { class: 'rpg-stage-meta rpg-weak-meta', text: '弱點：' + weakText(ti) + (S.weakWin[dep.id + ':' + ti] ? '・已弱點擊破' : '') }) : null,
-        canFight ? h('span', { class: 'rpg-btn rpg-btn-sm', text: '挑戰' }) : canWeak ? h('span', { class: 'rpg-btn rpg-btn-sm rpg-btn-ghost', text: '弱點擊破' }) : null
+        h('span', { class: 'rpg-stage-name', text: T((t.done ? '已擊敗　' : '魔王　') + zone.boss, (t.done ? 'Defeated · ' : 'Boss · ') + zone.boss) }),
+        h('span', { class: 'rpg-stage-meta', text: T('升階試煉：' + RANKS[ti + 1].zh + CLASS_META[dep.id].job, 'Rank trial: ' + RANKS[ti + 1].en + ' ' + CLASS_META[dep.id].job) }),
+        h('span', { class: 'rpg-stage-meta', text: T((t.anyOf ? '任選通關 ' : '必讀通關 ') + t.got + ' / ' + t.need +
+          (!t.hasBoss ? '・本區沒有魔王戰' : t.beaten ? '・魔王已擊敗' : t.ready ? '・魔王現身了' : '・通關後魔王現身'),
+          (t.anyOf ? 'Cleared (any) ' : 'Required cleared ') + t.got + ' / ' + t.need +
+          (!t.hasBoss ? ' · No boss fight in this zone' : t.beaten ? ' · Boss defeated' : t.ready ? ' · The boss has appeared' : ' · The boss appears once these are cleared')) }),
+        t.hasBoss ? h('span', { class: 'rpg-stage-meta rpg-weak-meta', text: T('弱點：', 'Weak to: ') + weakText(ti) + (S.weakWin[dep.id + ':' + ti] ? T('・已弱點擊破', ' · Weak point broken') : '') }) : null,
+        canFight ? h('span', { class: 'rpg-btn rpg-btn-sm', text: T('挑戰', 'Fight') }) : canWeak ? h('span', { class: 'rpg-btn rpg-btn-sm rpg-btn-ghost', text: T('弱點擊破', 'Weak-Point Break') }) : null
       ];
       place(h('li', { class: 'rpg-stage rpg-boss' + (t.done ? ' is-clear' : '') + (canFight ? ' is-ready' : '') }, [
         canFight || canWeak ? h('button', { type: 'button', class: 'rpg-stage-link', onclick: function () { openBoss(ti); } }, bossInner)
@@ -3007,8 +3098,8 @@
       mount.appendChild(h('section', { class: 'rpg-zone ' + zone.cls + (t.done ? ' is-done' : '') + (fog ? ' is-fog' : '') }, [
         h('div', { class: 'rpg-zone-head' }, [
           h('span', { class: 'rpg-zone-no', text: 'ZONE ' + (ti + 1) }),
-          h('h2', {}, [zone.zh, h('small', { text: zone.en + '　' + t.tier.labelZh + ' ' + t.tier.label })]),
-          h('span', { class: 'rpg-zone-state', text: t.done ? '已攻略' : t.ready && t.hasBoss ? '魔王現身了，擊敗牠就能升階' : fog ? '完成前一區的升階試煉後正式開放（文件仍可先讀）' : '攻略中 ' + t.got + ' / ' + t.need })
+          h('h2', {}, [L(zone), h('small', { text: T(zone.en + '　' + t.tier.labelZh + ' ' + t.tier.label, t.tier.label) })]),
+          h('span', { class: 'rpg-zone-state', text: t.done ? T('已攻略', 'Conquered') : t.ready && t.hasBoss ? T('魔王現身了，擊敗牠就能升階', 'The boss has appeared. Defeat it to rank up') : fog ? T('完成前一區的升階試煉後正式開放（文件仍可先讀）', 'Opens after the previous zone\'s rank trial (you can still read the documents)') : T('攻略中 ', 'In progress ') + t.got + ' / ' + t.need })
         ]),
         list
       ]));
@@ -3021,23 +3112,24 @@
     return h('section', { class: 'rpg-elites' + (open ? '' : ' is-fog') }, [
       h('div', { class: 'rpg-zone-head' }, [
         h('span', { class: 'rpg-zone-no', text: 'ELITE' }),
-        h('h2', {}, ['精英魔王', h('small', { text: 'Elite Bosses　針劑的其他失敗模式' })]),
-        h('span', { class: 'rpg-zone-state', text: open ? '選打，不影響升階；題目來自全站相關文件' : '主職業升到' + RANKS[ELITE_RANK].zh + '後出沒' })
+        h('h2', {}, [T('精英魔王', 'Elite Bosses'), h('small', { text: T('Elite Bosses　針劑的其他失敗模式', 'Other ways an injectable can fail') })]),
+        h('span', { class: 'rpg-zone-state', text: open ? T('選打，不影響升階；題目來自全站相關文件', 'Optional and not needed to rank up; questions come from related documents across the site') : T('主職業升到' + RANKS[ELITE_RANK].zh + '後出沒', 'Appear once your main class reaches ' + RANKS[ELITE_RANK].en) })
       ]),
       h('ul', { class: 'rpg-elite-list' }, ELITES.map(function (e) {
         var won = S.eliteWin[e.id], wk = S.weakWin['elite:' + e.id], img = asset('elite-' + e.id);
-        var act = !open ? '查看' : !won ? '挑戰' : !wk && canCounterMap(e.weak) ? '弱點擊破' : '再戰';
+        var act = !open ? 'view' : !won ? 'fight' : !wk && canCounterMap(e.weak) ? 'weak' : 'again';   // key, not display text
+        var actL = { view: T('查看', 'View'), fight: T('挑戰', 'Fight'), weak: T('弱點擊破', 'Weak-Point Break'), again: T('再戰', 'Rematch') };
         return h('li', { class: 'rpg-elite' + (won ? ' is-clear' : '') + (open && !won ? ' is-ready' : ''), style: '--c:' + e.fx.c }, [
           h('button', { type: 'button', class: 'rpg-elite-btn', onclick: function () { openElite(e.id); } }, [
             img ? h('img', { class: 'rpg-boss-img', src: img, alt: e.name }) : h('span', { class: 'rpg-elite-sil', 'aria-hidden': 'true', text: '？' }),
             h('span', { class: 'rpg-elite-body' }, [
-              h('b', { text: (won ? '已擊敗　' : '') + e.name }),
+              h('b', { text: (won ? T('已擊敗　', 'Defeated · ') : '') + e.name }),
               h('span', { class: 'rpg-stage-meta', text: e.risk }),
-              h('span', { class: 'rpg-stage-meta rpg-weak-meta', text: '弱點：' + Object.keys(e.weak).map(elName).join('、') + (wk ? '・已弱點擊破' : '') }),
-              e.needTag ? h('span', { class: 'rpg-stage-meta rpg-weak-meta', text: '入場條件：攜帶' + (e.needName || '對應道具') + (ITEMS.some(function (x) { return itemTag(x, e.needTag) && S.items[x.id]; }) ? '（已持有）' : '（到工坊合成）') }) : null,
-              h('span', { class: 'rpg-stage-meta', text: won ? '稱號：' + e.title + '・最佳 ' + won.best + ' / ' + won.total : '擊敗得稱號「' + e.title + '」' })
+              h('span', { class: 'rpg-stage-meta rpg-weak-meta', text: T('弱點：', 'Weak to: ') + Object.keys(e.weak).map(elName).join(LIST) + (wk ? T('・已弱點擊破', ' · Weak point broken') : '') }),
+              e.needTag ? h('span', { class: 'rpg-stage-meta rpg-weak-meta', text: T('入場條件：攜帶', 'Entry requires: ') + (e.needName || T('對應道具', 'the matching item')) + (ITEMS.some(function (x) { return itemTag(x, e.needTag) && S.items[x.id]; }) ? T('（已持有）', ' (owned)') : T('（到工坊合成）', ' (craft it in the Workshop)')) }) : null,
+              h('span', { class: 'rpg-stage-meta', text: won ? T('稱號：' + e.title + '・最佳 ' + won.best + ' / ' + won.total, 'Title: ' + e.title + ' · Best ' + won.best + ' / ' + won.total) : T('擊敗得稱號「' + e.title + '」', 'Defeat it to earn the title "' + e.title + '"') })
             ]),
-            h('span', { class: 'rpg-btn rpg-btn-sm' + (act === '挑戰' ? '' : ' rpg-btn-ghost'), text: act })
+            h('span', { class: 'rpg-btn rpg-btn-sm' + (act === 'fight' ? '' : ' rpg-btn-ghost'), text: actL[act] })
           ])
         ]);
       }))
@@ -3058,16 +3150,18 @@
         .concat(ELITES.map(function (e) { return e.weak[id] ? e.name : null; })).filter(Boolean);
       ul.appendChild(h('li', { class: on ? 'is-on' : '', style: '--c:' + sp.c }, [
         h('b', { text: sp.skill }),
-        h('span', { text: sp.el + '　' + d.nameZh }),
-        h('span', { class: 'rpg-skill-beats', text: beats.length ? '剋 ' + beats.join('、') : '' }),
-        h('small', { text: main ? '主技能' : k.learned ? '已習得' : k.need ? '必讀 ' + k.got + ' / ' + k.need : '尚無必讀文件' }),
+        h('span', { text: sp.el + SEP + dName(d) }),
+        h('span', { class: 'rpg-skill-beats', text: beats.length ? T('剋 ', 'Beats ') + beats.join(LIST) : '' }),
+        h('small', { text: main ? T('主技能', 'Main skill') : k.learned ? T('已習得', 'Learned') : k.need ? T('必讀 ', 'Required ') + k.got + ' / ' + k.need : T('尚無必讀文件', 'No required documents yet') }),
         !on && k.need ? h('i', { class: 'rpg-skill-bar', style: '--p:' + Math.round(k.got / k.need * 100) + '%' }) : null
       ]));
     });
     return h('section', { class: 'rpg-panel' }, [
-      h('h2', { text: '技能與第二專長' }),
-      h('p', { class: 'rpg-note', text: '讀完其他部門的全部必讀文件（有挑戰的要過關），就能習得該部門的技能。魔王戰前可以選一個技能出戰；' +
-        '帶著魔王怕的技能是「弱點擊破」：多 1 顆心，魔王開場睡著（睡著時答錯不扣心，每回合 1/3 機率醒來），第一次用弱點技能打倒牠再得 ' + XP_WEAK + ' XP 和 1 顆' + BOSS_MAT + '。及格線一樣是 80%。' }),
+      h('h2', { text: T('技能與第二專長', 'Skills and second specialties') }),
+      h('p', { class: 'rpg-note', text: T('讀完其他部門的全部必讀文件（有挑戰的要過關），就能習得該部門的技能。魔王戰前可以選一個技能出戰；' +
+        '帶著魔王怕的技能是「弱點擊破」：多 1 顆心，魔王開場睡著（睡著時答錯不扣心，每回合 1/3 機率醒來），第一次用弱點技能打倒牠再得 ' + XP_WEAK + ' XP 和 1 顆' + BOSS_MAT + '。及格線一樣是 80%。',
+        'Finish all required documents of another department (passing any challenges) to learn its skill. Before a boss fight you pick one skill to bring. ' +
+        'Bringing a skill the boss fears is a "Weak-Point Break": +1 heart, and the boss starts asleep (wrong answers cost no heart while it sleeps; it has a 1/3 chance to wake each turn). Your first win with a weak-point skill gives another ' + XP_WEAK + ' XP and 1 ' + BOSS_MAT + '. The pass mark is still 80%.') }),
       ul
     ]);
   }
@@ -3087,19 +3181,19 @@
     var c = G.classes[S.profile.cls], dep = c.dep, q = nextQuest();
     var curKey = q && !q.done && q.st ? q.st.key : null;
     return {
-      cls: dep.id, name: dep.nameZh, color: dep.color, rank: c.rank,
+      cls: dep.id, name: dName(dep), color: dep.color, rank: c.rank,
       avatar: avatarImg(S.profile.avatar),
       pet: S.pet ? petImg(S.pet.line, G.petStage) : null,
       zones: c.tiers.map(function (t, ti) {
         var zone = ZONES[ti] || ZONES[ZONES.length - 1];
         return {
-          zh: zone.zh, boss: zone.boss, bossImg: asset('boss-' + (ti + 1)), rankName: RANKS[ti + 1].zh + CLASS_META[dep.id].job,
+          zh: L(zone), boss: zone.boss, bossImg: asset('boss-' + (ti + 1)), rankName: T(RANKS[ti + 1].zh + CLASS_META[dep.id].job, RANKS[ti + 1].en + ' ' + CLASS_META[dep.id].job),
           ti: ti, unlocked: ti <= c.rank, done: t.done, ready: t.ready, hasBoss: t.hasBoss, beaten: t.beaten, weak: weakText(ti), weakWon: !!S.weakWin[c.dep.id + ':' + ti], canCounter: canCounter(ti),
           got: t.got, need: t.need, anyOf: t.anyOf,
           stages: t.tier.docs.filter(function (x) { return M.docs[x.key]; }).map(function (x) {
             var d = M.docs[x.key], st = G.docs[x.key], here = x.key === curKey;
             return {
-              key: x.key, title: d.titleZh || d.title, main: x.required || t.rec.indexOf(x.key) >= 0, rec: t.rec.indexOf(x.key) >= 0, shell: d.shell, quiz: !!d.quiz,
+              key: x.key, title: docT(d), main: x.required || t.rec.indexOf(x.key) >= 0, rec: t.rec.indexOf(x.key) >= 0, shell: d.shell, quiz: !!d.quiz,
               cleared: st.cleared, started: st.started, read: st.read, total: st.total, shiny: st.shiny, here: here,
               guard: st.guard, guardHref: ROOT + 'map.html?guard=' + encodeURIComponent(x.key),
               stars: (st.guardWon ? 1 : 0) + (st.readAll || st.cleared ? 1 : 0) + (d.quiz && st.cleared ? 1 : 0) + (st.shiny ? 1 : 0), maxStars: d.quiz ? 4 : 1,
@@ -3112,7 +3206,7 @@
         return {
           id: e.id, name: e.name, risk: e.risk, color: e.fx.c, img: asset('elite-' + e.id), open: eliteOpen(),
           won: !!S.eliteWin[e.id], weakWon: !!S.weakWin['elite:' + e.id], canCounter: canCounterMap(e.weak),
-          weak: Object.keys(e.weak).map(elName).join('、'), title: e.title, unlock: RANKS[ELITE_RANK].zh + CLASS_META[dep.id].job,
+          weak: Object.keys(e.weak).map(elName).join(LIST), title: e.title, unlock: T(RANKS[ELITE_RANK].zh + CLASS_META[dep.id].job, RANKS[ELITE_RANK].en + ' ' + CLASS_META[dep.id].job),
           needName: e.needName || '', hasItem: !e.needTag || ITEMS.some(function (x) { return itemTag(x, e.needTag) && S.items[x.id]; })
         };
       })
@@ -3141,6 +3235,7 @@
     });
   }
   function boot() {
+    langSwitch();
     if (!document.querySelector('link[data-rpg-css]')) {
       document.head.appendChild(h('link', { rel: 'stylesheet', href: ROOT + 'rpg/rpg.css', 'data-rpg-css': '1' }));
     }
