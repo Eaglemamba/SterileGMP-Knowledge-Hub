@@ -1469,14 +1469,18 @@
     return a;
   }
   /* A copy of the question with its options in a fresh order, relabelled A, B, C ... so a retry
-     cannot be passed by remembering letters. Questions whose explanation or options name a letter
-     ("B 錯在…", "A、C 的數值", "以上皆是") keep their order, since relabelling would break that text. */
-  var LETTER_REF = /(^|[^A-Za-z0-9(\-.\/])[A-E](?=$|[^A-Za-z0-9)\-.\/])|以上|皆是|皆非|above/i;
+     cannot be passed by remembering letters. Questions whose options name a letter or "以上皆是", or whose
+     explanation still names an option letter ("B 錯在…") after names like "Grade A" are removed, keep their order. */
+  var LETTER = /(^|[^A-Za-z0-9(\-.\/§°&])[A-E](?=$|[^A-Za-z0-9)\-.\/&=])/;
+  var OPT_REF = /以上|皆是|皆非|all of the above|none of the above|both [A-E]\b/i;
+  /* Letters that are names, not option references: "Grade A 或 B", "Annex A", "Type C", "D 值",
+     "膠塞 A 批", "B. diminuta", an English sentence starting with the article "A". */
+  var LETTER_NAME = /\b(Grades?|Annex|Appendix|Type|Tests?|Level|Diagram|Fluid|Attachment|Company|Method|Process|Table|Class|Zone|Part|Category|Schedule|Site|Lot|Batch|Product|Supplier|Room|Line|Area|Phase|Stage|Step|Condition|Case|Scenario|Sample|查核表|ALCOA\s*的)\s*([A-E](\s*(\/|,|、|和|與|及|或|or|and|to)\s*)?)+|(^|[.。]\s*)A (?=[a-z])|[A-E]\. [a-z]|[A-E]\s*(value|_T|值|批)|中 A =/gi;
   function mixOpts(q) {
     var keys = Object.keys(q.options || {});
     if (keys.length < 2 || !q.options[q.correct]) return q;
-    var text = (q.explanation || '') + ' ' + keys.map(function (k) { return q.options[k]; }).join(' ');
-    if (LETTER_REF.test(text)) return q;
+    var opts = keys.map(function (k) { return q.options[k]; }).join(' ');
+    if (OPT_REF.test(opts) || LETTER.test(opts) || LETTER.test((q.explanation || '').replace(LETTER_NAME, ' '))) return q;
     var order = shuffle(keys.slice()), out = {}, c = {};
     for (var k in q) c[k] = q[k];
     order.forEach(function (from, i) { out[keys[i]] = q.options[from]; if (from === q.correct) c.correct = keys[i]; });
