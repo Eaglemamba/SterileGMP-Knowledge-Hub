@@ -111,14 +111,14 @@
      weak to some statuses. Hearts and shields only, never the score. Mob and guardian fights use the
      learner's main skill against a plain foe. */
   var STATUS_SKILL = {
-    qc: { psn: 1, zh: '毒專長：對手中毒後每回合都幫你回心' },
-    bt: { psn: 1, zh: '毒專長：對手中毒後每回合都幫你回心' },
+    qc: { psn: 1, zh: '毒專長：答對 1 題就讓對手中毒' },
+    bt: { psn: 1, zh: '毒專長：答對 1 題就讓對手中毒' },
     engineering: { par: 1, zh: '麻痺專長：連對 2 題就麻痺，動不了的機率更高' },
     techservice: { par: 1, zh: '麻痺專長：連對 2 題就麻痺，動不了的機率更高' },
-    production: { slp: 1, zh: '催眠專長：開場就讓對手睡著' },
-    ra: { slp: 1, zh: '催眠專長：開場就讓對手睡著（條文太長，對手讀到睡著）' },
-    qa: { guard: 1, zh: '封印護體：你不會中毒' },
-    warehouse: { aid: 1, zh: '急救補給：你解毒時回 1 顆心' }
+    production: { slp: 1, zh: '催眠專長：開場就讓對手睡著，但睡得淺（醒來機率加倍）' },
+    ra: { slp: 1, zh: '催眠專長：開場就讓對手睡著，但睡得淺（條文太長，對手讀到打瞌睡）' },
+    qa: { guard: 1, zh: '封印護體：你不會中毒；第一次連錯 2 題時改得 1 面護盾' },
+    warehouse: { aid: 1, zh: '急救補給：第一次連對 3 題回 1 顆心，解毒時也回 1 顆心' }
   };
   var FOE_TRAIT = {
     z0: { psn: 'immune', par: 'weak', why: '微粒不是活的，毒對牠無效；靜電一吸就動彈不得' },
@@ -1687,9 +1687,10 @@
        (never the ones you need to still reach 80%, never the last one); a right answer cures it. */
     var STAT = o.kind !== 'drill', allowed = n - Math.ceil(PASS * n);
     var ss = STATUS_SKILL[o.skill || (S.profile && S.profile.cls)] || {}, ft = FOE_TRAIT[o.target] || {};
-    var psnEvery = ft.psn === 'immune' ? 0 : (ss.psn || ft.psn === 'weak') ? 1 : ft.psn === 'resist' ? 3 : 2;
+    var psnEvery = ft.psn === 'immune' ? 0 : ft.psn === 'weak' ? 1 : ft.psn === 'resist' ? 3 : 2, psnAt = ss.psn ? 1 : 2;
     var parChance = ft.par === 'immune' ? 0 : (ss.par ? 0.4 : 0.25) + (ft.par === 'weak' ? 0.15 : ft.par === 'resist' ? -0.13 : 0);
-    var parAt = ss.par ? 2 : 3, wakeChance = ft.slp === 'weak' ? 1 / 5 : ft.slp === 'resist' ? 1 / 2 : 1 / 3, told = {};
+    var parAt = ss.par ? 2 : 3, wakeChance = ft.slp === 'weak' ? 1 / 5 : ft.slp === 'resist' ? 1 / 2 : 1 / 3, told = {}, once = { guard: 1, aid: 1 };
+    if (ss.slp && !weak) wakeChance = Math.min(0.75, wakeChance * 2);   // specialty sleep is light; a counter skill's sleep is not
     var st = { fp: 0, fpt: 0, par: false, slp: STAT && (weak || !!ss.slp), yp: 0, ypt: 0, runR: 0, runW: 0 };
     var foeStat = h('span', { class: 'rpg-status' }), youStat = h('span', { class: 'rpg-status' });
     if (weak) hearts++;
@@ -1810,9 +1811,10 @@
           st.yp = 0; st.ypt = 0; msg.push('你解毒了！'); sfx('cure');
           if (ss.aid && lost > 0) { lost--; msg.push('急救補給：回 1 顆心！'); hit(you, 'is-heal', '♥+1'); }
         }
-        if (st.runR === 2 && !st.fp) {
+        if (ss.aid && st.runR === 3 && once.aid && lost > 0) { once.aid = 0; lost--; msg.push('急救補給：三連對，回 1 顆心！'); hit(you, 'is-heal', '♥+1'); }
+        if (st.runR === psnAt && !st.fp) {
           if (!psnEvery) { if (!told.psn) { told.psn = 1; msg.push(o.foe + ' 免疫中毒！'); } }
-          else { st.fp = 1; st.fpt = 0; msg.push('連續答對！' + o.foe + ' 中毒了！' + (psnEvery === 1 ? '效果絕佳！' : psnEvery === 3 ? '效果不太好…' : '')); sfx('poison'); }
+          else { st.fp = 1; st.fpt = 0; msg.push((psnAt === 1 ? '毒專長！' : '連續答對！') + o.foe + ' 中毒了！' + (psnEvery === 1 ? '效果絕佳！' : psnEvery === 3 ? '效果不太好…' : '')); sfx('poison'); }
         }
         if (st.runR === parAt && !st.par) {
           if (parChance <= 0) { if (!told.par) { told.par = 1; msg.push(o.foe + ' 免疫麻痺！'); } }
@@ -1822,7 +1824,10 @@
         st.runW++; st.runR = 0;
         if (st.fp) { st.fp = 0; st.fpt = 0; msg.push(o.foe + ' 趁機解毒了。'); }
         if (st.runW === 2 && !st.yp) {
-          if (ss.guard) { if (!told.yp) { told.yp = 1; msg.push('封印護體：毒對你無效！'); } }
+          if (ss.guard) {
+            if (once.guard) { once.guard = 0; shield++; msg.push('封印護體：毒對你無效，還化成 1 面護盾！'); hit(you, 'is-heal', '◆+1'); meters(); }
+            else if (!told.yp) { told.yp = 1; msg.push('封印護體：毒對你無效！'); }
+          }
           else { st.yp = 1; st.ypt = 0; msg.push('連續答錯，你中毒了！答對一題就能解毒。'); sfx('poison'); }
         }
       }
@@ -1878,7 +1883,7 @@
           if (ok && payFresh && q.id != null && !S.bossSeen[qk]) { S.bossSeen[qk] = 1; fresh++; S.bonus += XP_FRESH; saveState(); dmg = '新題 +' + XP_FRESH + ' XP'; }
           if (ok) { score++; strike(true, function () { hit(foeBox, 'is-hit', dmg); }); }
           else if (st.slp) { wrong++; hit(foeBox, 'is-zz', 'Zzz'); amsg.push(o.foe + ' 睡著了，沒有反擊。'); }
-          else if (st.par && Math.random() < 0.25) { wrong++; hit(foeBox, 'is-par', '麻痺'); sfx('zap'); amsg.push(o.foe + ' 麻痺了，動不了！'); }
+          else if (st.par && Math.random() < parChance) { wrong++; hit(foeBox, 'is-par', '麻痺'); sfx('zap'); amsg.push(o.foe + ' 麻痺了，動不了！'); }
           else if (shield) { wrong++; shield--; strike(false, function () { hit(you, 'is-hurt', '護盾'); }, true); }
           else { wrong++; lost++; strike(false, function () { hit(you, 'is-hurt', '♥-1'); }); }
           amsg = amsg.concat(afterAnswer(ok));
