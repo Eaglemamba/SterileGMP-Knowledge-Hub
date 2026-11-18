@@ -412,6 +412,7 @@
     s.gear.on = s.gear.on || {};                              // slot -> gear id
     s.bossSeen = s.bossSeen || {};                            // '<key>#<qid>' answered right in a boss / elite / guard fight
     s.runDay = s.runDay || {};                                // boss or elite target -> day its finish-all-10 material dropped
+    s.intel = s.intel || {};                                  // boss / elite target -> first-fight ts: status traits revealed
     s.guardWin = s.guardWin || {};                            // doc key -> { best, total, ts }: document guardian beaten
     s.patrol = s.patrol || { d: '', n: 0, ok: 0 };             // daily patrol done on day d
     s.earned.lvl = s.earned.lvl || {};                        // level milestone -> time granted
@@ -1687,6 +1688,7 @@
        (never the ones you need to still reach 80%, never the last one); a right answer cures it. */
     var STAT = o.kind !== 'drill', allowed = n - Math.ceil(PASS * n);
     var ss = STATUS_SKILL[o.skill || (S.profile && S.profile.cls)] || {}, ft = FOE_TRAIT[o.target] || {};
+    if (FOE_TRAIT[o.target] && !S.intel[o.target]) { S.intel[o.target] = Date.now(); saveState(); }   // first fight reveals its traits
     var psnEvery = ft.psn === 'immune' ? 0 : ft.psn === 'weak' ? 1 : ft.psn === 'resist' ? 3 : 2, psnAt = ss.psn ? 1 : 2;
     var parChance = ft.par === 'immune' ? 0 : (ss.par ? 0.4 : 0.25) + (ft.par === 'weak' ? 0.15 : ft.par === 'resist' ? -0.13 : 0);
     var parAt = ss.par ? 2 : 3, wakeChance = ft.slp === 'weak' ? 1 / 5 : ft.slp === 'resist' ? 1 / 2 : 1 / 3, told = {}, once = { guard: 1, aid: 1 };
@@ -2049,7 +2051,8 @@
         (a.done ? '。' : '；第一次用弱點技能打倒牠，再得 ' + XP_WEAK + ' XP 和 1 顆' + BOSS_MAT + '。')
         : '這個技能對' + a.foe + '沒有特別效果。' }),
       STATUS_SKILL[a.cur] ? h('p', { class: 'rpg-note', text: fxYou(a.cur).skill + '・' + STATUS_SKILL[a.cur].zh + '。' }) : null,
-      traitText(a.target) ? h('p', { class: 'rpg-note rpg-intel' }, [h('b', { text: '情報：' }), h('span', { text: a.foe + ' ' + traitText(a.target) })]) : null,
+      traitText(a.target) ? h('p', { class: 'rpg-note rpg-intel' }, [h('b', { text: '情報：' }), h('span', { text: S.intel[a.target]
+        ? a.foe + ' ' + traitText(a.target) : '未知。交手一次，就會知道' + a.foe + '怕什麼狀態，並記進角色頁的情報圖鑑。' })]) : null,
       weakHintFor(a.map),
       h('button', { class: 'rpg-btn', type: 'button', text: '開戰', disabled: gated, onclick: a.go })
     ]));
@@ -2712,6 +2715,28 @@
 
   /* ---------- character page ---------- */
   var cardFilter = 'ALL';
+  /* 情報圖鑑: status traits of every boss / elite, revealed by the first fight against it (S.intel). */
+  function intelPanel() {
+    var foes = ZONES.map(function (z, i) { return { id: 'z' + i, name: z.boss, img: asset('boss-' + (i + 1)), where: z.zh + '魔王' }; })
+      .concat(ELITES.map(function (e) { return { id: e.id, name: e.name, img: asset('elite-' + e.id), where: '精英', elite: 1 }; }));
+    var seen = foes.filter(function (f) { return S.intel[f.id]; }).length, open = eliteOpen();
+    var list = h('ul', { class: 'rpg-intel-list' });
+    foes.forEach(function (f) {
+      var known = !!S.intel[f.id], named = known || !f.elite || open;
+      list.appendChild(h('li', { class: known ? 'is-known' : '' }, [
+        f.img && named ? h('img', { src: f.img, alt: '', loading: 'lazy' }) : h('span', { class: 'rpg-intel-q', text: '?' }),
+        h('div', {}, [
+          h('b', { text: named ? f.name : '？？？' }), h('small', { text: f.where }),
+          h('p', { text: known ? traitText(f.id) : named ? '尚未交手。打一次就會記下牠的狀態抗性。' : '主職業升到「' + RANKS[ELITE_RANK].zh + '」後現身。' })
+        ])
+      ]));
+    });
+    return h('section', { class: 'rpg-panel rpg-intelpanel' }, [
+      h('h2', { text: '情報圖鑑　' + seen + ' / ' + foes.length }),
+      h('p', { class: 'rpg-note', text: '每個部門技能有一項狀態專長，每隻魔王對中毒、麻痺、睡眠各有抗性。開戰前對照這裡挑技能。' }),
+      list
+    ]);
+  }
   function renderCharacter() {
     var mount = document.getElementById('rpg-character');
     if (!mount) return;
@@ -2753,6 +2778,7 @@
 
     var pst = patrolStrip();
     if (pst) mount.appendChild(pst);
+    mount.appendChild(intelPanel());
 
     /* pet */
     var petPanel = h('section', { class: 'rpg-panel rpg-petpanel' }, [h('h2', { text: '夥伴' })]);
