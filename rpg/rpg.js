@@ -402,10 +402,10 @@
   }
   /* Full portrait for the character: the chosen avatar's look if it belongs to the current class,
      otherwise the current class drawn in the character's gender. */
-  function heroImg() {
-    var a = S.profile.avatar, cls = S.profile.cls;
-    return (a !== cls && a.indexOf(cls + '-') === 0 && asset('class-' + a)) || classImg(artFor(cls, profileSex()));
+  function heroFor(cls, a, sex) {
+    return (a !== cls && a.indexOf(cls + '-') === 0 && asset('class-' + a)) || classImg(artFor(cls, sex));
   }
+  function heroImg() { return heroFor(S.profile.cls, S.profile.avatar, profileSex()); }
   /* Pet artwork for a stage. If that stage has no artwork yet, use the nearest earlier stage
      (then a later one) so the companion never falls back to a blank shape mid-evolution. */
   function petImg(line, stage) {
@@ -451,6 +451,7 @@
     s.bossTry = s.bossTry || {};
     s.weakWin = s.weakWin || {};                              // '<class>:<zone>' -> time of the first 弱點擊破 win
     s.eliteWin = s.eliteWin || {};
+    if (!s.eliteSeen) { s.eliteSeen = {}; Object.keys(s.eliteWin).forEach(function (k) { s.eliteSeen[k] = 1; }); }   // elite id -> silhouette reveal played
     s.items = s.items || {};                                  // item id -> time crafted
     s.itemPick = s.itemPick || {};                            // boss key -> item id last brought ('' = none)                            // elite id -> { best, total, ts }
     s.skillPick = s.skillPick || {};                          // '<class>:<zone>' -> skill last brought to that boss
@@ -1234,6 +1235,7 @@
     var sexRow = h('div', { class: 'rpg-modal-actions rpg-pick-sex' });
     var sexNote = h('p', { class: 'rpg-note' });
     var hint = h('p', { class: 'rpg-hint' });
+    var preview = h('img', { class: 'rpg-pick-hero', alt: '' });
     var avatarTouched = editing;
 
     function draw() {
@@ -1265,6 +1267,8 @@
       sexNote.hidden = sexOf(artFor(pick.cls, pick.sex)) === pick.sex;
       sexNote.textContent = CLASS_META[dep.id].job + T('還沒有男性立繪，角色頁暫時顯示女性版本。', ' has no male artwork yet; the character page shows the female look for now.');
       hint.textContent = dName(dep) + T('：', ': ') + (EN ? dep.description : dep.descriptionZh || dep.description);
+      preview.src = heroFor(pick.cls, pick.avatar, pick.sex);
+      preview.alt = CLASS_META[dep.id].job + T('立繪預覽', ' portrait preview');
     }
     function hasQuiz(dep) {
       return dep.tiers.some(function (t) { return t.docs.some(function (x) { return M.docs[x.key] && M.docs[x.key].quiz; }); });
@@ -1276,9 +1280,14 @@
       h('h2', { text: editing ? T('編輯角色', 'Edit character') : T('建立你的角色', 'Create your character') }),
       h('p', { class: 'rpg-modal-lead', text: editing ? T('轉職不會清掉進度，只會換主線任務。', 'Changing class keeps your progress; only the main quest changes.') : T('選一個職業決定主線任務，之後可以隨時轉職。讀完章節、通過章節挑戰都會得到經驗值、文件卡和寵物進化。', 'Your class sets your main quest, and you can switch any time. Reading sections and passing section challenges earn XP, document cards and companion evolutions.') }),
       h('h3', { text: T('1. 職業', '1. Class') }), classGrid, hint,
-      h('h3', { text: T('2. 性別', '2. Gender') }), sexRow, sexNote,
-      h('h3', { text: T('3. 頭像', '3. Avatar') }), avatarGrid,
-      h('h3', { text: T('4. 暱稱', '4. Nickname') }), nick,
+      h('div', { class: 'rpg-pick-split' }, [
+        h('div', { class: 'rpg-pick-main' }, [
+          h('h3', { text: T('2. 性別', '2. Gender') }), sexRow, sexNote,
+          h('h3', { text: T('3. 頭像', '3. Avatar') }), avatarGrid,
+          h('h3', { text: T('4. 暱稱', '4. Nickname') }), nick
+        ]),
+        h('figure', { class: 'rpg-pick-preview' }, [preview, h('figcaption', { text: T('角色頁立繪', 'Character portrait') })])
+      ]),
       h('p', { class: 'rpg-note', text: T('角色和進度只存在這台裝置的瀏覽器裡，不會上傳。清除瀏覽器資料會一併清掉。', 'Your character and progress live only in this device\'s browser and are never uploaded. Clearing browser data erases them too.') }),
       h('button', {
         class: 'rpg-btn rpg-btn-wide', type: 'button', text: editing ? T('儲存', 'Save') : T('開始冒險', 'Start adventure'),
@@ -3148,7 +3157,7 @@
         var won = S.eliteWin[e.id], wk = S.weakWin['elite:' + e.id], img = asset('elite-' + e.id);
         var act = !open ? 'view' : !won ? 'fight' : !wk && canCounterMap(e.weak) ? 'weak' : 'again';   // key, not display text
         var actL = { view: T('查看', 'View'), fight: T('挑戰', 'Fight'), weak: T('弱點擊破', 'Weak-Point Break'), again: T('再戰', 'Rematch') };
-        return h('li', { class: 'rpg-elite' + (won ? ' is-clear' : '') + (open && !won ? ' is-ready' : ''), style: '--c:' + e.fx.c }, [
+        var li = h('li', { class: 'rpg-elite' + (won ? ' is-clear' : '') + (won && img && !S.eliteSeen[e.id] ? ' is-reveal' : '') + (open && !won ? ' is-ready' : ''), style: '--c:' + e.fx.c }, [
           h('button', { type: 'button', class: 'rpg-elite-btn', onclick: function () { openElite(e.id); } }, [
             img ? h('img', { class: 'rpg-boss-img', src: img, alt: e.name }) : h('span', { class: 'rpg-elite-sil', 'aria-hidden': 'true', text: '？' }),
             h('span', { class: 'rpg-elite-body' }, [
@@ -3161,8 +3170,26 @@
             h('span', { class: 'rpg-btn rpg-btn-sm' + (act === 'fight' ? '' : ' rpg-btn-ghost'), text: actL[act] })
           ])
         ]);
+        if (/ is-reveal/.test(li.className)) playReveal(li, e);
+        return li;
       }))
     ]);
+  }
+  /* First defeat of an elite: the silhouette turns to full colour once, when the card is on screen
+     and no battle window covers it. eliteSeen keeps it from replaying. */
+  function playReveal(li, e) {
+    function go() {
+      if (!li.isConnected || S.eliteSeen[e.id]) return;
+      if (document.querySelector('.rpg-modal')) { setTimeout(go, 400); return; }
+      S.eliteSeen[e.id] = 1; saveState();
+      li.classList.add('is-go');
+      setTimeout(function () { li.classList.remove('is-reveal', 'is-go'); toast(T('圖鑑收錄：', 'Added to the codex: ') + e.name); }, 1000);
+    }
+    if (!('IntersectionObserver' in window)) { setTimeout(go, 0); return; }
+    var io = new IntersectionObserver(function (en) {
+      if (en.some(function (x) { return x.isIntersecting; })) { io.disconnect(); go(); }
+    }, { threshold: 0.6 });
+    setTimeout(function () { io.observe(li); }, 0);
   }
   window.addEventListener('resize', function () {
     var mount = document.getElementById('rpg-map');
