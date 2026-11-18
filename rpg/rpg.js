@@ -71,16 +71,21 @@
       var mount = document.getElementById('rpg-quest');
       if (!mount || mount.firstChild) return;
       var box = document.createElement('div');
-      box.style.cssText = 'display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:12px 0;padding:12px 16px;border:1px dashed #94a3b8;border-radius:12px;font-size:.92rem;color:#334155;background:rgba(148,163,184,.08)';
+      box.style.cssText = 'display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;margin:12px 0;padding:14px 18px;border:2px solid #14151a;border-radius:12px;box-shadow:4px 4px 0 #14151a;font-size:.92rem;line-height:1.6;color:#14151a;background:#fff';
+      var tag = document.createElement('span');
+      tag.textContent = 'ADVENTURE';
+      tag.style.cssText = 'font-size:11px;font-weight:800;font-style:italic;letter-spacing:.14em;background:#ffd23f;padding:2px 12px 2px 10px;clip-path:polygon(0 0,100% 0,calc(100% - 8px) 100%,0 100%)';
+      box.appendChild(tag);
       var txt = document.createElement('span');
       txt.style.flex = '1 1 240px';
       txt.textContent = stored === '0' ? T('冒險模式已關閉。', 'Adventure mode is off.') : T('想把閱讀變成闖關？冒險模式會幫你選職業、排路線，讀完章節打小怪、通關打魔王。成績照常計算。', 'Want to turn reading into a quest? Adventure mode gives you a class and a route: finish a section to fight a minion, clear a zone to face its boss. Scores count as usual.');
       var btn = document.createElement('button');
       btn.type = 'button';
       btn.textContent = T('開啟冒險模式', 'Start adventure mode');
-      btn.style.cssText = 'padding:6px 14px;border-radius:999px;border:0;background:#0ea5e9;color:#fff;font-weight:700;cursor:pointer';
+      btn.style.cssText = 'padding:8px 18px;border-radius:8px;border:2px solid #14151a;box-shadow:3px 3px 0 #14151a;background:#ff3d81;color:#fff;font-weight:700;font-size:14px;cursor:pointer';
       btn.onclick = function () { lsSet(FLAG_KEY, '1'); location.reload(); };
       box.appendChild(txt); box.appendChild(btn); mount.appendChild(box);
+      mount.style.cssText = 'max-width:72rem;margin:20px auto 0;padding:0 ' + (innerWidth < 640 ? 16 : 24) + 'px';   // same frame as the quest card (rpg.css is not loaded here)
       langSwitch();
     };
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', invite); else invite();
@@ -1208,12 +1213,13 @@
       m.close(); next();
     }
     m = modal([
-      h('h2', { text: '選擇語言 · Choose your language' }),
-      h('p', { text: '遊戲介面、劇情和題目都會使用這個語言，之後隨時可以按右上角的按鈕切換。 The interface, story and questions use this language. You can switch any time with the button in the top-right corner.' }),
-      h('div', { class: 'rpg-modal-actions' }, [
-        h('button', { class: 'rpg-btn', type: 'button', text: '繁體中文', onclick: function () { pick('zh'); } }),
-        h('button', { class: 'rpg-btn', type: 'button', text: 'English', onclick: function () { pick('en'); } })
-      ])
+      h('span', { class: 'rpg-tag', text: 'LANGUAGE' }),
+      h('h2', {}, ['選擇語言', h('small', { class: 'rpg-lang-sub', text: 'Choose your language' })]),
+      h('div', { class: 'rpg-lang-grid' }, [
+        h('button', { class: 'rpg-lang-pick', type: 'button', onclick: function () { pick('zh'); } }, [h('b', { text: '繁體中文' }), h('span', { text: '介面、劇情和題目都用中文' })]),
+        h('button', { class: 'rpg-lang-pick', type: 'button', onclick: function () { pick('en'); } }, [h('b', { text: 'English' }), h('span', { text: 'Interface, story and questions in English' })])
+      ]),
+      h('p', { class: 'rpg-note', text: '之後可以按右上角的按鈕切換。 You can switch later with the button in the top-right corner.' })
     ], { sticky: true });
   }
 
@@ -2863,18 +2869,39 @@
       list
     ]);
   }
+  /* Title screen shown before a character exists (character page and map). */
+  var CAST = ['qc-2', 'qa', 'production-3', 'engineering', 'warehouse-2'];
+  function titleScreen(o) {
+    return h('div', { class: 'rpg-title' }, [
+      h('div', { class: 'rpg-title-cast', 'aria-hidden': 'true' }, CAST.map(function (id, i) {
+        return h('img', { class: 'rpg-title-hero is-' + i, src: asset('class-' + id) || classImg(id.split('-')[0]), alt: '' });
+      })),
+      h('div', { class: 'rpg-title-body' }, [
+        h('span', { class: 'rpg-tag', text: 'NEW GAME' }),
+        h('h2', { text: o.title }),
+        h('p', { class: 'rpg-title-lead', text: o.lead }),
+        h('ul', { class: 'rpg-title-feats' }, o.feats.map(function (f) { return h('li', {}, [h('b', { text: f[0] }), f[1]]); })),
+        h('div', { class: 'rpg-title-actions' }, [
+          h('button', { class: 'rpg-btn', type: 'button', onclick: openOnboarding, text: T('建立角色', 'Create character') }),
+          o.load ? h('button', { class: 'rpg-btn rpg-btn-ghost', type: 'button', onclick: importSave, text: T('讀取存檔', 'Load save') }) : null,
+          h('a', { class: 'rpg-title-link', href: ROOT + T('rpg-guide.html', 'rpg-guide-en.html'), text: T('新手指南 →', 'Beginner\'s guide →') })
+        ]),
+        o.note ? h('p', { class: 'rpg-title-note', text: o.note }) : null
+      ])
+    ]);
+  }
   function renderCharacter() {
     var mount = document.getElementById('rpg-character');
     if (!mount) return;
     clear(mount);
     if (!S.profile) {
-      mount.appendChild(h('div', { class: 'rpg-panel rpg-empty' }, [
-        h('h2', { text: T('還沒有角色', 'No character yet') }),
-        h('p', { text: T('建立角色後，這裡會顯示你的等級、夥伴、稱號和文件卡圖鑑。', 'Once you create a character, this page shows your level, companion, titles and document card collection.') }),
-        h('button', { class: 'rpg-btn', type: 'button', onclick: openOnboarding, text: T('建立角色', 'Create character') }),
-        h('p', { class: 'rpg-note', text: T('在別台電腦玩過？用「讀取存檔」把下載的存檔放回來。', 'Played on another computer? Use "Load save" to bring back the save file you downloaded.') }),
-        h('button', { class: 'rpg-btn rpg-btn-ghost', type: 'button', onclick: importSave, text: T('讀取存檔', 'Load save') })
-      ]));
+      mount.appendChild(titleScreen({
+        title: T('你的無菌廠冒險還沒開始', 'Your cleanroom quest hasn\'t started'),
+        lead: T('選一個部門當職業，讀章節賺經驗值，通過章節挑戰升階。這一頁會變成你的角色卡。', 'Pick your department as a class, earn XP by reading sections, and rank up by passing section challenges. This page becomes your character sheet.'),
+        feats: [[String(DEPTS.length), T(' 個職業，男女立繪任選', ' classes, male or female look')], [T('文件卡', 'Document cards'), T('：每讀完一份就收進圖鑑', ': one for every document you finish')], [T('夥伴', 'Companion'), T('：跟著你升階一起進化', ': evolves as you rank up')]],
+        load: true,
+        note: T('在別台電腦玩過？按「讀取存檔」把下載的存檔放回來。', 'Played on another computer? Use "Load save" to bring back the save file you downloaded.')
+      }));
       return;
     }
     var c = G.classes[S.profile.cls], dep = c.dep, streak = liveStreak();
@@ -3051,11 +3078,11 @@
     if (!mount) return;
     clear(mount);
     if (!S.profile) {
-      mount.appendChild(h('div', { class: 'rpg-panel rpg-empty' }, [
-        h('h2', { text: T('還沒有角色', 'No character yet') }),
-        h('p', { text: T('建立角色、選一個職業，這裡就會出現那個職業的闖關地圖。', 'Create a character and pick a class, and that class\'s quest map will appear here.') }),
-        h('button', { class: 'rpg-btn', type: 'button', onclick: openOnboarding, text: T('建立角色', 'Create character') })
-      ]));
+      mount.appendChild(titleScreen({
+        title: T('地圖還在雲霧裡', 'The map is still under cloud'),
+        lead: T('建立角色、選一個職業，這裡就會展開那個職業的闖關路線，從入口一路打到核心區。', 'Create a character and pick a class, and its route opens here, from the entrance all the way to the core.'),
+        feats: [[T('小怪', 'Minions'), T('：每讀完一節打一隻', ': one per section you finish')], [T('區域魔王', 'Zone bosses'), T('：通關後現身', ': appear when you clear a zone')], [String(ELITES.length), T(' 隻精英魔王，選打不影響升階', ' optional elite bosses')]]
+      }));
       return;
     }
     var c = G.classes[S.profile.cls], dep = c.dep, q = nextQuest();
