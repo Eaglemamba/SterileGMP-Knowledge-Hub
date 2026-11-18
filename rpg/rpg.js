@@ -1301,8 +1301,9 @@
           if (first && G.xp > 0) toast(T('已帶入你之前的閱讀紀錄：', 'Imported your earlier reading history: ') + G.xp + ' XP');
         }
       })
-    ], { cls: 'rpg-modal-wide' });
-    nick.focus();
+    ], { cls: 'rpg-modal-wide rpg-modal-top' });
+    if (editing || !matchMedia('(max-width: 560px)').matches) nick.focus({ preventScroll: true });   // no keyboard pop-up on a phone's first screen
+    var box = document.querySelector('.rpg-modal-top .rpg-modal-box'); if (box) box.scrollTop = 0;
   }
 
   /* ---------- pet hatch ---------- */
