@@ -551,12 +551,15 @@ def generate_markdown(
 ):
     """
     Generate a clean Markdown version of a merged report for chatbot use.
-    Output is written to <repo_root>/knowledge/<stem>.md
+    Output is written to <repo_root>/knowledge/<SOURCE>/<stem>.md
     where <stem> is output_filename with .html replaced by .md.
     """
     sections_dir = os.path.join(base_dir, 'sections')
-    repo_root = os.path.join(base_dir, '..')
-    knowledge_dir = os.path.join(repo_root, 'knowledge')
+    # base_dir is the report folder (<repo>/<SOURCE>/<ID>). The MD belongs in
+    # <repo>/knowledge/<SOURCE>/, the same place gmp_engine._knowledge_subdir() uses.
+    repo_root = os.path.dirname(os.path.abspath(__file__))
+    source_name = os.path.basename(os.path.dirname(os.path.abspath(base_dir)))
+    knowledge_dir = os.path.join(repo_root, 'knowledge', source_name)
     os.makedirs(knowledge_dir, exist_ok=True)
 
     md_filename = output_filename.replace('.html', '.md')

@@ -19,7 +19,7 @@ from urllib.parse import unquote
 
 from bs4 import BeautifulSoup
 
-REPO = Path(__file__).parent
+REPO = Path(__file__).resolve().parent.parent  # repo root (this file lives in scripts/)
 SOURCES = ['FDA', 'ICH', 'ISO', 'ISPE', 'PDA', 'PHEUR', 'PICS', 'USP']
 
 # Check 1: double-encoded entities — any &amp;<word>;

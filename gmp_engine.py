@@ -25,6 +25,8 @@ Workflow:
     5. gmp_engine.py merge ID                       # merge HTML + refresh MD from source
 """
 
+from __future__ import annotations  # keeps `list[str] | str` hints working on the system Python 3.9
+
 import argparse
 import json
 import os

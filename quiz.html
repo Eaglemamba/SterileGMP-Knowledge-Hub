@@ -209,9 +209,16 @@ textarea { font-family: 'JetBrains Mono', monospace; font-size: 12px; resize: ve
 ═══════════════════════════════ */
 const QUIZ_KEY = 'gmp-quiz-results';
 
-function loadResults() {
-  try { return JSON.parse(localStorage.getItem(QUIZ_KEY)) || []; } catch { return []; }
+// A record is usable only if it has a doc key and a sane numeric score; anything else
+// (hand-edited storage, a bad imported save) is ignored instead of rendered.
+function validResult(r) {
+  return !!r && typeof r === 'object' && typeof r.doc_key === 'string' && r.doc_key !== '' &&
+    Number.isFinite(r.score) && Number.isFinite(r.total) && r.total > 0 && r.score >= 0 && r.score <= r.total;
 }
+function loadResults() {
+  try { const a = JSON.parse(localStorage.getItem(QUIZ_KEY)); return Array.isArray(a) ? a.filter(validResult) : []; } catch { return []; }
+}
+function esc(v) { return String(v == null ? '' : v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 function saveResults(arr) { localStorage.setItem(QUIZ_KEY, JSON.stringify(arr)); }
 
 /* ═══════════════════════════════
@@ -269,8 +276,8 @@ function saveResult() {
     return;
   }
 
-  if (!obj.doc_key || !obj.score === undefined || !obj.total) {
-    errEl.textContent = 'Missing required fields: doc_key, score, total';
+  if (!validResult(obj)) {
+    errEl.textContent = 'Missing or invalid fields: doc_key (text), score and total (numbers, 0 ≤ score ≤ total)';
     errEl.style.display = 'block';
     return;
   }
@@ -326,8 +333,8 @@ function render() {
 
     statsEl.innerHTML = statCards.map(s => `
       <div style="background:var(--c-surface);border-radius:12px;padding:14px;box-shadow:0 1px 3px rgba(0,0,0,0.07);text-align:center">
-        <div style="font-size:11px;color:var(--c-secondary);margin-bottom:4px">${s.label}</div>
-        <div class="${s.mono ? 'mono' : ''}" style="font-size:20px;font-weight:700;color:${s.color || 'var(--c-primary)'}">${s.value}</div>
+        <div style="font-size:11px;color:var(--c-secondary);margin-bottom:4px">${esc(s.label)}</div>
+        <div class="${s.mono ? 'mono' : ''}" style="font-size:20px;font-weight:700;color:${s.color || 'var(--c-primary)'}">${esc(s.value)}</div>
       </div>`).join('');
   }
 
@@ -356,11 +363,11 @@ function render() {
 
     const attemptsHtml = g.attempts.map((a, i) => {
       const pct = Math.round(a.score / a.total * 100);
-      const qRows = (a.questions || []).map(q =>
+      const qRows = (Array.isArray(a.questions) ? a.questions : []).filter(q => q && typeof q === 'object').map(q =>
         `<div class="q-row">
-          <span style="width:24px;color:var(--c-tertiary);flex-shrink:0">Q${q.q}</span>
-          <span style="flex:1;color:var(--c-secondary)">${q.topic || '—'}</span>
-          <span class="mono" style="font-size:11px;color:${q.score >= q.max ? '#34c759' : q.score >= q.max*0.6 ? '#ff9f0a' : '#ff3b30'}">${q.score}/${q.max}</span>
+          <span style="width:24px;color:var(--c-tertiary);flex-shrink:0">Q${esc(q.q)}</span>
+          <span style="flex:1;color:var(--c-secondary)">${esc(q.topic || '—')}</span>
+          <span class="mono" style="font-size:11px;color:${q.score >= q.max ? '#34c759' : q.score >= q.max*0.6 ? '#ff9f0a' : '#ff3b30'}">${esc(q.score)}/${esc(q.max)}</span>
         </div>`
       ).join('');
 
@@ -368,7 +375,7 @@ function render() {
       <div class="attempt-row">
         <div style="flex:1">
           <div style="font-size:12px;font-weight:600">Attempt ${g.attempts.length - i}
-            <span style="font-weight:400;color:var(--c-secondary);margin-left:6px">${formatDate(a.date)}</span>
+            <span style="font-weight:400;color:var(--c-secondary);margin-left:6px">${esc(formatDate(a.date))}</span>
           </div>
           ${qRows ? `<div style="margin-top:8px">${qRows}</div>` : ''}
         </div>
@@ -383,8 +390,8 @@ function render() {
     <div class="doc-group fade-up">
       <div class="doc-group-header" onclick="toggleGroup('${key.replace(/[^a-z0-9]/gi,'_')}')">
         <div style="flex:1">
-          <div style="font-size:14px;font-weight:700">${g.title || key}</div>
-          <div style="font-size:11px;color:var(--c-secondary);margin-top:2px">${key} · ${g.attempts.length} attempt${g.attempts.length > 1 ? 's' : ''} · Best: ${best}%</div>
+          <div style="font-size:14px;font-weight:700">${esc(g.title || key)}</div>
+          <div style="font-size:11px;color:var(--c-secondary);margin-top:2px">${esc(key)} · ${g.attempts.length} attempt${g.attempts.length > 1 ? 's' : ''} · Best: ${best}%</div>
         </div>
         <div class="flex items-center gap-3">
           <div>
@@ -424,7 +431,7 @@ fetch('reports.json')
       el.innerHTML = Object.entries(docs)
         .filter(([k, v]) => v.section_map && v.section_map.length > 0)
         .sort(([a],[b]) => a.localeCompare(b))
-        .map(([k, v]) => `<div><code style="background:#f5f5f7;padding:1px 5px;border-radius:4px">${k}</code></div>`)
+        .map(([k, v]) => `<div><code style="background:#f5f5f7;padding:1px 5px;border-radius:4px">${esc(k)}</code></div>`)
         .join('');
     }
   })

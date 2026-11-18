@@ -978,6 +978,15 @@
     setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
     toast(T('存檔已下載。換電腦時用「讀取存檔」放回來。', 'Save file downloaded. On another computer, use "Load save" to restore it.'));
   }
+  // Imported values are only accepted when they parse to the shape that key normally holds.
+  // The pages that read these keys escape what they render; this is the second line of defence.
+  function saveValueOk(k, raw) {
+    var v; try { v = JSON.parse(raw); } catch (e) { return false; }
+    if (k === QUIZ_KEY) return Array.isArray(v);
+    if (!v || typeof v !== 'object' || Array.isArray(v)) return false;
+    if (k === STATE_KEY) return v.v === 1 && (v.profile == null || typeof v.profile === 'object');
+    return true;
+  }
   function importSave() {
     var inp = h('input', { type: 'file', accept: '.json,application/json', style: 'display:none' });
     inp.addEventListener('change', function () {
@@ -987,7 +996,7 @@
         var pack = null;
         try { pack = JSON.parse(rd.result); } catch (e) {}
         var keys = pack && pack.app === 'sgk-rpg' && pack.data && typeof pack.data === 'object'
-          ? Object.keys(pack.data).filter(function (k) { return saveKey(k) && typeof pack.data[k] === 'string'; }) : [];
+          ? Object.keys(pack.data).filter(function (k) { return saveKey(k) && typeof pack.data[k] === 'string' && saveValueOk(k, pack.data[k]); }) : [];
         if (!keys.length) { toast(T('這不是有效的存檔檔案。', 'This is not a valid save file.')); return; }
         var st = null; try { st = JSON.parse(pack.data[STATE_KEY] || 'null'); } catch (e) {}
         var m = modal([

@@ -143,7 +143,7 @@ def build():
     for key, r in reports.items():
         fname = r.get('output_filename')
         smap = r.get('section_map') or []
-        if not (r.get('date') and fname and smap):
+        if not (r.get('date') and fname and smap and (r.get('title') or r.get('titleZh'))):
             continue  # same filter as index.html loadData()
         folder = r.get('folder') or key
         rel = f'{folder}/output/{fname}'

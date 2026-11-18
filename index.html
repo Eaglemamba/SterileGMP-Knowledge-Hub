@@ -156,7 +156,6 @@ body.search-active .site-header { padding-bottom: 20px !important; }
     </div>
 
 <script>window.searchIndex = window.searchIndex || [];</script>
-<script src="search-index.js" onerror=""></script>
 <script>
 // ============================================================
 // DATA — loaded dynamically from reports.json
@@ -170,7 +169,7 @@ async function loadData() {
         const data = await res.json();
 
         documents = Object.entries(data.reports)
-            .filter(([, r]) => r.date && r.output_filename && (r.section_map || []).length > 0)
+            .filter(([, r]) => r.date && r.output_filename && (r.title || r.titleZh) && (r.section_map || []).length > 0)  // untitled = scaffold placeholder, not shown
             .map(([key, r]) => ({
                 _key: key,
                 date: r.date,
@@ -604,9 +603,9 @@ function renderCards(){
         const statusBadge = isLV
             ? `<span class="last-viewed-badge">\u4e0a\u6b21\u95b1\u8b80</span>`
             : (readEntry && prog && prog.pct !== undefined)
-            ? `<span class="read-badge">${prog.pct >= 95 ? '\u2713 \u5b8c\u8b80' : '\u5df2\u8b80\u00a0' + prog.pct + '%'}</span>`
+            ? `<span class="read-badge">${prog.pct >= 95 ? '\u2713 \u5b8c\u8b80' : '\u5df2\u8b80\u00a0' + esc(prog.pct) + '%'}</span>`
             : (readEntry && prog && prog.num)
-            ? `<span class="read-badge">Sec\u00a0${prog.num}</span>`
+            ? `<span class="read-badge">Sec\u00a0${esc(prog.num)}</span>`
             : readEntry
             ? `<span class="read-badge">\u2713 \u5df2\u8b80</span>`
             : '';
@@ -659,8 +658,13 @@ function renderCards(){
 const LS_KEY = 'sgk_last_viewed';
 const LS_HISTORY = 'sgk_read_history';
 
+// Values read back from localStorage (history, progress) can come from an imported save: escape before innerHTML
+function esc(v) { return String(v == null ? '' : v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 function getReadHistory() {
-    try { return JSON.parse(localStorage.getItem(LS_HISTORY) || '[]'); } catch(e) { return []; }
+    try {
+        const a = JSON.parse(localStorage.getItem(LS_HISTORY) || '[]');
+        return Array.isArray(a) ? a.filter(h => h && typeof h.file === 'string') : [];
+    } catch(e) { return []; }
 }
 function getReadEntry(file) {
     return getReadHistory().find(x => x.file === file) || null;
@@ -753,12 +757,12 @@ function renderHistoryPanel() {
         const progSpan = isComplete
             ? `<span class="text-[10px] px-1.5 py-0.5 rounded border whitespace-nowrap text-emerald-700 bg-emerald-50 border-emerald-200 font-semibold">✓ 完讀</span>`
             : prog && prog.pct !== undefined
-            ? `<span class="text-[10px] px-1.5 py-0.5 rounded border whitespace-nowrap text-blue-700 bg-blue-50 border-blue-200" title="捲軸最高位置">已讀 ${prog.pct}%</span>`
+            ? `<span class="text-[10px] px-1.5 py-0.5 rounded border whitespace-nowrap text-blue-700 bg-blue-50 border-blue-200" title="捲軸最高位置">已讀 ${esc(prog.pct)}%</span>`
             : prog && prog.num
-            ? `<span class="text-[10px] text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200 whitespace-nowrap">&#9654; Sec ${prog.num}${prog.label ? ': ' + prog.label : ''}</span>`
+            ? `<span class="text-[10px] text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200 whitespace-nowrap">&#9654; Sec ${esc(prog.num)}${prog.label ? ': ' + esc(prog.label) : ''}</span>`
             : '';
         const markBtn = !isComplete
-            ? `<button onclick="markComplete('${h.file.replace(/'/g,"\\'")}');" title="標記為完讀"
+            ? `<button data-file="${esc(h.file)}" onclick="markComplete(this.dataset.file);" title="標記為完讀"
                        class="text-[10px] text-gray-300 hover:text-emerald-600 transition-colors flex-shrink-0 border border-gray-200 hover:border-emerald-300 rounded px-1.5 py-0.5 leading-none">✓</button>`
             : '';
         const href = h.file ? getOpenHref(h.file) : '#';
@@ -771,13 +775,13 @@ function renderHistoryPanel() {
         const btnStyle = isLatest ? 'background:#92400e' : 'background:#334155';
         return `<div class="flex items-center gap-2 px-4 py-2.5 transition-colors ${rowBg}">
             ${label}
-            <span class="text-xs text-gray-800 flex-1 min-w-0 truncate font-${isLatest?'medium':'normal'}" title="${displayTitle}">${displayTitle}</span>
+            <span class="text-xs text-gray-800 flex-1 min-w-0 truncate font-${isLatest?'medium':'normal'}" title="${esc(displayTitle)}">${esc(displayTitle)}</span>
             ${progSpan}
             ${markBtn}
             <span class="text-[10px] text-gray-400 whitespace-nowrap flex-shrink-0">${timeAgo(h.lastRead)}</span>
-            <a href="${href}" target="_blank" data-track-file="${h.file}" data-track-title="${h.title}" data-track-zh="${h.titleZh||''}"
+            <a href="${esc(href)}" target="_blank" rel="noopener" data-track-file="${esc(h.file)}" data-track-title="${esc(h.title)}" data-track-zh="${esc(h.titleZh||'')}"
                class="track-open text-[10px] text-white px-2 py-1 rounded no-underline flex-shrink-0 transition-colors" style="${btnStyle}">${btnLabel}</a>
-            <button onclick="removeReadEntry('${h.file.replace(/'/g, '\\')}');renderHistoryPanel();renderCards();"
+            <button data-file="${esc(h.file)}" onclick="removeReadEntry(this.dataset.file);renderHistoryPanel();renderCards();"
                     class="text-gray-300 hover:text-red-400 text-sm leading-none transition-colors flex-shrink-0">&times;</button>
         </div>`;
     }).join('');
