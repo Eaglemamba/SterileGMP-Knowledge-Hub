@@ -2312,6 +2312,9 @@
     if (!document.getElementById('rpg-quest') && !document.getElementById('rpg-character') && !document.getElementById('rpg-map')) return;
     var today = dayKey(new Date()), now = Date.now();
     if (S.review.day === today) return;
+    // The patrol strip on this page already invites a review set: no surprise pop-up on top of it
+    // (the map page has no strip, so the ambush still happens there).
+    if (!patrolDone() && document.querySelector('.rpg-patrol:not(.is-done)')) return;
     if (document.querySelector('.rpg-modal, .rpg-cutin')) {    // wait for rewards / dialogs to finish
       if (reviewTries++ < 5) setTimeout(maybeReview, 3000);
       return;
