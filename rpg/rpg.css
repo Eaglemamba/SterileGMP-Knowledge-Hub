@@ -858,3 +858,25 @@ a.rpg-stage-link:focus-visible { outline: 3px solid var(--rpg-cyan); outline-off
   border: 1px solid #7dd3fc; background: rgba(14, 165, 233, .08); font-size: .92rem; }
 .rpg-patrol.is-done { border-color: #86efac; background: rgba(34, 197, 94, .08); }
 .rpg-patrol-text { flex: 1 1 260px; }
+
+/* battle status effects: 中毒 / 麻痺 / 睡眠 */
+.rpg-status { display: flex; gap: 4px; justify-content: center; min-height: 18px; margin-top: 4px; }
+.rpg-status i { font-style: normal; font-size: 11px; font-weight: 800; padding: 1px 7px; border-radius: 9px; color: #fff; letter-spacing: .05em; }
+.rpg-status .is-psn { background: #9333ea; }
+.rpg-status .is-par { background: #ca8a04; }
+.rpg-status .is-slp { background: #2563eb; }
+.rpg-foe-img.st-psn, .rpg-you .st-psn { filter: drop-shadow(0 0 8px #a855f7) hue-rotate(250deg) saturate(1.4); }
+.rpg-foe-img.st-par { animation: rpg-zap 1.6s steps(1) infinite; }
+.rpg-foe-img.st-slp { filter: grayscale(.5) brightness(.85); animation: rpg-doze 2.4s ease-in-out infinite; }
+.rpg-foe-img.st-psn.st-par { filter: drop-shadow(0 0 8px #a855f7) hue-rotate(250deg) saturate(1.4); }
+@keyframes rpg-zap { 0%, 88% { filter: none; } 90% { filter: brightness(1.8) drop-shadow(0 0 10px #facc15); } 94% { filter: none; } 96% { filter: brightness(1.8) drop-shadow(0 0 10px #facc15); } }
+@keyframes rpg-doze { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(4px) rotate(-3deg); } }
+.rpg-foe.is-psn, .rpg-you.is-psn { animation: rpg-shake .45s; }
+.rpg-foe.is-psn .rpg-dmg, .rpg-you.is-psn .rpg-dmg { color: #a855f7; }
+.rpg-foe.is-zz .rpg-dmg { color: #60a5fa; }
+.rpg-foe.is-par .rpg-dmg { color: #eab308; }
+.rpg-you.is-heal .rpg-dmg { color: #22c55e; }
+.rpg-status-msg { margin: 6px 0; padding: 6px 10px; border-radius: 8px; background: rgba(147, 51, 234, .1); border-left: 3px solid #a855f7; font-size: .9rem; font-weight: 600; }
+@media (prefers-reduced-motion: reduce) {
+  .rpg-foe-img.st-par, .rpg-foe-img.st-slp, .rpg-foe.is-psn, .rpg-you.is-psn { animation: none; }
+}

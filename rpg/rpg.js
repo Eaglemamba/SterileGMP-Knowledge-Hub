@@ -971,6 +971,10 @@
   var JINGLES = {   // [start (s), midi, length (s), wave]
     appear: [[0,72,.09,'square'],[.08,76,.09,'square'],[.16,79,.09,'square'],[.24,84,.25,'square']],
     warning: [[0,45,.5,'square'],[.55,44,.7,'square']],
+    poison: [[0,62,.1,'triangle'],[.1,58,.1,'triangle'],[.2,55,.22,'triangle']],
+    zap: [[0,96,.05,'square'],[.06,91,.05,'square'],[.12,96,.05,'square'],[.18,91,.08,'square']],
+    sleep: [[0,79,.25,'triangle'],[.3,74,.25,'triangle'],[.6,67,.4,'triangle']],
+    cure: [[0,76,.08,'triangle'],[.08,81,.08,'triangle'],[.16,88,.2,'triangle']],
     item: [[0,84,.12,'triangle'],[.07,88,.12,'triangle'],[.14,91,.12,'triangle'],[.21,96,.35,'triangle']],
     rage: [[0,57,.18,'square'],[.18,56,.18,'square'],[.36,55,.5,'square']],
     victory: [[0,72,.1,'square'],[.1,72,.1,'square'],[.2,72,.1,'square'],[.3,72,.3,'square'],[.62,68,.3,'square'],[.94,70,.3,'square'],[1.26,72,.7,'square']],
@@ -1638,7 +1642,16 @@
     // so the extra hearts and shields from gear, skills and items mean more of the pool gets seen.
     var payFresh = o.kind === 'boss' || o.kind === 'guard';
     var weak = o.kind === 'boss' && (o.weak != null ? !!o.weak : isWeak(o.zone, o.skill));
-    var shield = (wearing('gloves') ? 1 : 0) + (weak ? 1 : 0);
+    var shield = wearing('gloves') ? 1 : 0;
+    /* Status effects (scored fights only; drills and patrol stay calm). Hearts and shields only, never the score:
+       foe 中毒 (2 right in a row): each turn ticks, every 2nd tick heals you 1 heart; a wrong answer clears it.
+       foe 麻痺 (3 right in a row): for the rest of the fight, 25% that a wrong answer costs nothing.
+       foe 睡眠 (counter skill): wrong answers cost nothing while asleep; 1/3 chance to wake each turn.
+       you 中毒 (2 wrong in a row): each turn eats a shield, else every 2nd tick 1 heart, but only spare hearts
+       (never the ones you need to still reach 80%, never the last one); a right answer cures it. */
+    var STAT = o.kind !== 'drill', allowed = n - Math.ceil(PASS * n);
+    var st = { fp: 0, fpt: 0, par: false, slp: STAT && weak, yp: 0, ypt: 0, runR: 0, runW: 0 };
+    var foeStat = h('span', { class: 'rpg-status' }), youStat = h('span', { class: 'rpg-status' });
     if (weak) hearts++;
     var item = o.item && itemVs(o.item, o.target) ? o.item : null;
     if (item) shield += item.shield || 1;
@@ -1648,11 +1661,11 @@
     var foeFx = o.fx || (o.kind === 'boss' ? FX_BOSS[o.zone] : FX_MOB[o.cluster]) || FX_PLAIN, youFx = fxYou(o.skill);
     var foeEl = o.kind === 'boss' ? (foeFx.el || '魔王') : o.cluster >= 0 ? CLUSTER_ZH[o.cluster] + '系' : '無屬性';
     var foeBox = h('div', { class: 'rpg-foe' }, [foeImg, h('b', { text: o.foe }),
-      h('span', { class: 'rpg-elem', style: '--c:' + foeFx.c, text: foeEl + '・' + foeFx.skill }), hp]);
+      h('span', { class: 'rpg-elem', style: '--c:' + foeFx.c, text: foeEl + '・' + foeFx.skill }), hp, foeStat]);
     var worn = Object.keys(SLOTS).map(function (sl) { return S.gear.on[sl] && gearById(S.gear.on[sl]); }).filter(Boolean);
     var youAv = avatarEl();
     var you = h('div', { class: 'rpg-you' }, [youAv, h('b', { text: S.profile ? S.profile.nick : '你' }),
-      h('span', { class: 'rpg-elem' + (weak ? ' is-weak' : ''), style: '--c:' + youFx.c, text: (weak ? '弱點 ' : '') + youFx.el + '・' + youFx.skill }), heartsEl,
+      h('span', { class: 'rpg-elem' + (weak ? ' is-weak' : ''), style: '--c:' + youFx.c, text: (weak ? '弱點 ' : '') + youFx.el + '・' + youFx.skill }), heartsEl, youStat,
       worn.length ? h('span', { class: 'rpg-worn' }, worn.map(function (g) { return h('img', { src: gearImg(g), alt: g.zh, title: g.zh + '：' + g.eff }); })) : null]);
     var stage = h('div', { class: 'rpg-battle-stage' });
     var arena = h('div', { class: 'rpg-arena' + (o.kind === 'boss' ? ' is-boss' : o.kind === 'guard' ? ' is-guard' : '') }, [foeBox, h('span', { class: 'rpg-vs', text: 'VS' }), you,
@@ -1685,7 +1698,7 @@
       // let the foe finish charging in before the banner covers the top of the arena
       setTimeout(function () {
         sfx(o.kind === 'boss' ? 'warning' : 'appear');
-        if (o.kind === 'boss') banner('WARNING　魔王 ' + o.foe + ' 現身' + (weak ? '　｜　弱點擊破：' + youFx.skill : ''), o.line || '', 3200, function () {
+        if (o.kind === 'boss') banner('WARNING　魔王 ' + o.foe + ' 現身' + (weak ? '　｜　弱點擊破：' + youFx.skill + '，對手睡著了' : ''), o.line || '', 3200, function () {
           if (!item) { ask(); return; }
           var fx = h('span', { class: 'rpg-item-fx', style: '--c:' + item.c }, [itemImgEl(item), h('b', { text: item.zh })]);
           arena.appendChild(fx); sfx('item');
@@ -1713,6 +1726,56 @@
       for (var j = 0; j < hearts; j++) heartsEl.appendChild(h('i', { class: j < hearts - lost ? 'is-on' : '', text: '♥' }));
       for (var sh = 0; sh < shield; sh++) heartsEl.appendChild(h('i', { class: 'rpg-shield', text: '◆', title: '護盾：答錯一次不扣心（仍算答錯）' }));
       heartsEl.setAttribute('aria-label', '你的生命 ' + (hearts - lost) + ' / ' + hearts + (shield ? '，護盾 ' + shield : ''));
+      if (!STAT) return;
+      clear(foeStat); clear(youStat);
+      if (st.fp) foeStat.appendChild(h('i', { class: 'is-psn', text: '中毒', title: '每 2 回合幫你回 1 顆心；你答錯就解毒' }));
+      if (st.par) foeStat.appendChild(h('i', { class: 'is-par', text: '麻痺', title: '你答錯時 25% 對手動不了' }));
+      if (st.slp) foeStat.appendChild(h('i', { class: 'is-slp', text: '睡眠', title: '睡著時你答錯不扣心；每回合 1/3 機率醒來' }));
+      if (st.yp) youStat.appendChild(h('i', { class: 'is-psn', text: '中毒', title: '每回合侵蝕護盾或多出來的心；答對 1 題解毒' }));
+      foeImg.classList.toggle('st-psn', !!st.fp); foeImg.classList.toggle('st-par', st.par); foeImg.classList.toggle('st-slp', st.slp);
+      youAv.classList.toggle('st-psn', !!st.yp);
+    }
+    /* Start of each turn after the first: statuses tick. Returns the lines to show above the question. */
+    function tick() {
+      var msg = [];
+      if (!STAT || i === 0) return msg;
+      if (st.slp && Math.random() < 1 / 3) { st.slp = false; msg.push(o.foe + ' 醒來了！'); hit(foeBox, 'is-hit', '醒來'); }
+      else if (st.slp) { msg.push(o.foe + ' 還在睡。'); hit(foeBox, 'is-zz', 'Zzz'); }
+      if (st.fp) {
+        st.fpt++;
+        if (st.fpt % 2 === 0 && lost > 0) { lost--; msg.push(o.foe + ' 受到毒傷，你吸回 1 顆心！'); hit(you, 'is-heal', '♥+1'); }
+        else msg.push(o.foe + ' 受到毒傷。');
+        hit(foeBox, 'is-psn', '毒');
+        sfx('poison');
+      }
+      if (st.yp) {
+        st.ypt++;
+        var spare = (hearts - lost) - Math.max(1, allowed - wrong + 1);
+        if (shield) { shield--; msg.push('毒素侵蝕了 1 面護盾。'); hit(you, 'is-psn', '◆-1'); }
+        else if (st.ypt % 2 === 0 && spare > 0 && hearts - lost >= 2) { lost++; msg.push('你受到毒傷，失去 1 顆心。'); hit(you, 'is-psn', '♥-1'); }
+        else if (st.ypt % 2 === 0) msg.push('你咬牙撐住了毒傷。');
+        else msg.push('毒在你身上蔓延……答對一題就能解毒。');
+        sfx('poison');
+      }
+      meters();
+      return msg;
+    }
+    /* After an answer: streaks apply / clear statuses. Returns lines to add under the explanation. */
+    function afterAnswer(ok) {
+      var msg = [];
+      if (!STAT) return msg;
+      if (ok) {
+        st.runR++; st.runW = 0;
+        if (st.yp) { st.yp = 0; st.ypt = 0; msg.push('你解毒了！'); sfx('cure'); }
+        if (st.runR === 2 && !st.fp) { st.fp = 1; st.fpt = 0; msg.push('連續答對！' + o.foe + ' 中毒了！'); sfx('poison'); }
+        else if (st.runR === 3 && !st.par) { st.par = true; msg.push('三連對！' + o.foe + ' 麻痺了，可能動不了！'); sfx('zap'); }
+      } else {
+        st.runW++; st.runR = 0;
+        if (st.fp) { st.fp = 0; st.fpt = 0; msg.push(o.foe + ' 趁機解毒了。'); }
+        if (st.runW === 2 && !st.yp) { st.yp = 1; st.ypt = 0; msg.push('連續答錯，你中毒了！答對一題就能解毒。'); sfx('poison'); }
+      }
+      setTimeout(meters, CALM ? 0 : 700);
+      return msg;
     }
     function hit(el, cls, text) {
       if (el.classList.contains('is-dissolve')) return;
@@ -1729,7 +1792,7 @@
         to: mine ? foeImg : youAv, tint: mine ? foeImg : youAv }, function () { then(); meters(); });
     }
     function ask() {
-      var q = mixOpts(o.questions[i]), answered = false;
+      var q = mixOpts(o.questions[i]), answered = false, tmsg = tick();
       clear(stage);
       var opts = h('div', { class: 'rpg-quiz-opts' });
       var back = wearing('bookmark') && sourceHref(q);
@@ -1758,12 +1821,16 @@
           var clean = noteAnswer(q.docKey || pageDocKey, q, ok);
           if (clean) cleansed++;
           if (o.onAnswer) o.onAnswer(q, ok, clean);
-          var dmg = clean ? '淨化' : weak ? '弱點 -1' : '-1';
+          var dmg = clean ? '淨化' : weak ? '弱點 -1' : '-1', amsg = [];
           var qk = (q.docKey || pageDocKey) + '#' + q.id;
           if (ok && payFresh && q.id != null && !S.bossSeen[qk]) { S.bossSeen[qk] = 1; fresh++; S.bonus += XP_FRESH; saveState(); dmg = '新題 +' + XP_FRESH + ' XP'; }
           if (ok) { score++; strike(true, function () { hit(foeBox, 'is-hit', dmg); }); }
+          else if (st.slp) { wrong++; hit(foeBox, 'is-zz', 'Zzz'); amsg.push(o.foe + ' 睡著了，沒有反擊。'); }
+          else if (st.par && Math.random() < 0.25) { wrong++; hit(foeBox, 'is-par', '麻痺'); sfx('zap'); amsg.push(o.foe + ' 麻痺了，動不了！'); }
           else if (shield) { wrong++; shield--; strike(false, function () { hit(you, 'is-hurt', '護盾'); }, true); }
           else { wrong++; lost++; strike(false, function () { hit(you, 'is-hurt', '♥-1'); }); }
+          amsg = amsg.concat(afterAnswer(ok));
+          if (amsg.length) exp.insertBefore(h('p', { class: 'rpg-status-msg', text: amsg.join('　') }), exp.firstChild);
           if (!ok && backLink) backLink.hidden = false;
           if (o.kind === 'boss' && !raged && score >= Math.ceil(n / 2) && score < n) {
             raged = true; arena.classList.add('is-rage'); sfx('rage');
@@ -1776,6 +1843,7 @@
         } }, [h('b', { text: letter }), h('span', { text: q.options[letter] })]));
       });
       stage.appendChild(h('p', { class: 'rpg-battle-count', text: '第 ' + (i + 1) + ' / ' + n + ' 題' + (q.docTitle ? '　出自：' + q.docTitle : '') }));
+      if (tmsg.length) stage.appendChild(h('p', { class: 'rpg-status-msg', text: tmsg.join('　') }));
       stage.appendChild(h('p', { class: 'rpg-quiz-q', text: q.question }));
       if (wearing('goggles') && q.reference) stage.appendChild(h('p', { class: 'rpg-hint', text: '護目鏡提示：答案在 ' + q.reference }));
       stage.appendChild(opts);
@@ -1920,7 +1988,7 @@
       h('h3', { class: 'rpg-sub', text: '攜帶道具' }), irow,
       gated ? h('p', { class: 'rpg-weakhint rpg-gate' }, [h('b', { text: '進不了戰場：' }), h('span', { text: a.needText + (ITEMS.some(function (x) { return itemTag(x, a.needTag) && S.items[x.id]; })
         ? '。在上面選一個' + (a.needName || '對應道具') + '。' : '。到角色頁的工坊合成「' + ITEMS.filter(function (x) { return itemTag(x, a.needTag); }).map(function (x) { return x.zh; }).join('」或「') + '」。') })]) : null,
-      h('p', { class: 'rpg-note', text: w ? '弱點擊破：' + w + '。這場多 1 顆心、多 1 面護盾' +
+      h('p', { class: 'rpg-note', text: w ? '弱點擊破：' + w + '。這場多 1 顆心，魔王開場就睡著' +
         (a.done ? '。' : '；第一次用弱點技能打倒牠，再得 ' + XP_WEAK + ' XP 和 1 顆' + BOSS_MAT + '。')
         : '這個技能對' + a.foe + '沒有特別效果。' }),
       weakHintFor(a.map),
@@ -2909,7 +2977,7 @@
     return h('section', { class: 'rpg-panel' }, [
       h('h2', { text: '技能與第二專長' }),
       h('p', { class: 'rpg-note', text: '讀完其他部門的全部必讀文件（有挑戰的要過關），就能習得該部門的技能。魔王戰前可以選一個技能出戰；' +
-        '帶著魔王怕的技能是「弱點擊破」：多 1 顆心、多 1 面護盾，第一次用弱點技能打倒牠再得 ' + XP_WEAK + ' XP 和 1 顆' + BOSS_MAT + '。及格線一樣是 80%。' }),
+        '帶著魔王怕的技能是「弱點擊破」：多 1 顆心，魔王開場睡著（睡著時答錯不扣心，每回合 1/3 機率醒來），第一次用弱點技能打倒牠再得 ' + XP_WEAK + ' XP 和 1 顆' + BOSS_MAT + '。及格線一樣是 80%。' }),
       ul
     ]);
   }
