@@ -1,0 +1,653 @@
+{
+ "source": "section-02b-aps-overview.html",
+ "blocks": [
+  {
+   "zh": "粉劑、其他劑型與設備技術之無菌製程模擬",
+   "en": "Aseptic Process Simulation for Powders, Other Dosage Forms and Equipment Technologies"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "了解凍乾產品 APS 的獨特製程步驟（包含部分加塞、裝載、真空模擬）及其特殊考量",
+   "en": "Understand the unique process steps of APS for lyophilized products (including partial stoppering, loading and vacuum simulation) and their special considerations"
+  },
+  {
+   "zh": "掌握懸浮液、半固體、粉劑等不同劑型的 APS 設計策略與替代物選擇原則",
+   "en": "Master the APS design strategies and surrogate selection principles for different dosage forms such as suspensions, semisolids and powders"
+  },
+  {
+   "zh": "理解粉劑充填的五種 APS 方法及各自的優缺點比較",
+   "en": "Understand the five APS approaches for powder filling and compare their advantages and disadvantages"
+  },
+  {
+   "zh": "認識基於設備技術（FFS/BFS、RABS、隔離器、封閉系統、SUS）的 APS 設計差異",
+   "en": "Recognize how APS design differs by equipment technology (FFS/BFS, RABS, isolators, closed systems, SUS)"
+  },
+  {
+   "zh": "掌握 ATMP 製造中手動操作 APS 設計的特殊要求",
+   "en": "Master the special requirements for designing APS of manual operations in ATMP manufacturing"
+  },
+  {
+   "zh": "本節目錄 Section Contents",
+   "en": "Section Contents"
+  },
+  {
+   "zh": "<strong>4.2.2 Lyophilized Products 4.2.2 凍乾產品</strong>",
+   "en": "<strong>4.2.2 Lyophilized Products</strong>"
+  },
+  {
+   "zh": "核心概念解析 Key Concepts",
+   "en": "Key Concepts"
+  },
+  {
+   "zh": "<strong>Lyophilization APS (凍乾製程模擬)：</strong>凍乾製程涉及充填、部分加塞 (partial stoppering)、轉移、裝載、真空抽氣、駐留、完全加塞與卸載等多個獨特步驟，每個步驟都可能暴露產品於污染風險中。APS 必須模擬這些步驟，但要避免凍結或過度抽真空導致培養基失去微生物生長能力。",
+   "en": "<strong>Lyophilization APS:</strong> The lyophilization process involves several unique steps, including filling, partial stoppering, transfer, loading, vacuum pull-down, hold, full stoppering and unloading, and each step can expose the product to contamination risk. The APS must simulate these steps, while avoiding freezing or excessive vacuum that would cause the medium to lose its ability to support microbial growth."
+  },
+  {
+   "zh": "<strong>Partial Stoppering (部分加塞)：</strong>凍乾製程中，瓶塞僅部分插入瓶口，讓水蒸氣在冷凍乾燥過程中能夠逸出。這意味著容器在整個凍乾週期中並非完全密封，增加了污染風險。",
+   "en": "<strong>Partial Stoppering:</strong> In lyophilization, the stopper is only partially inserted into the vial neck so that water vapor can escape during freeze-drying. This means the container is not fully sealed throughout the lyophilization cycle, which increases contamination risk."
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "凍乾 APS 就像模擬一場複雜的「搬家演習」：你需要將貴重易碎品（部分封蓋的瓶子）從包裝區（充填線）搬到特殊儲藏室（凍乾機），整個過程中貨物處於「半開」狀態。演習重點不是真的搬貨，而是確認搬運路線、開門動作、放置順序等每個環節都不會讓灰塵（微生物）進入。",
+   "en": "A lyophilization APS is like a complex \"moving-day drill\": you need to move valuable, fragile items (partially stoppered vials) from the packing area (filling line) to a special storeroom (the lyophilizer), and throughout the move the goods remain \"half open.\" The point of the drill is not to actually move the goods, but to confirm that every step, including the route, the door opening and the placement sequence, does not let dust (microorganisms) in."
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "<strong>真空控制是關鍵陷阱：</strong>APS 期間腔室壓力<strong>不可低於培養基在裝載溫度下的平衡蒸氣壓</strong>（例如水在 25°C 時為 32 mbar），否則培養基會沸騰溢出，導致模擬無效。最佳實踐是維持在 100-200 mbar。",
+   "en": "<strong>Vacuum control is the key pitfall:</strong> During the APS, chamber pressure must <strong>not fall below the equilibrium vapor pressure of the medium at the loading temperature</strong> (for example, 32 mbar for water at 25°C); otherwise the medium will boil and spill over, invalidating the simulation. Best practice is to maintain 100-200 mbar."
+  },
+  {
+   "zh": "<strong>氮氣 vs 空氣：</strong>除非環境監測或無菌試驗中已確認存在嚴格厭氧菌，否則凍乾 APS 應使用空氣（而非氮氣）破真空，並使用 SCDM 好氧培養基。這是一個常見的法規審查重點。",
+   "en": "<strong>Nitrogen vs. air:</strong> Unless strict anaerobes have been confirmed in environmental monitoring or sterility testing, a lyophilization APS should use air (not nitrogen) to break the vacuum and should use SCDM aerobic medium. This is a common focus of regulatory review."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "為什麼凍乾 APS 中不能使用全真空？如果誤用全真空會發生什麼後果？",
+   "en": "Why can full vacuum not be used in a lyophilization APS? What would happen if it were used by mistake?"
+  },
+  {
+   "zh": "在什麼條件下才需要在凍乾 APS 中使用厭氧培養基（如硫醇酸鹽培養基）？",
+   "en": "Under what conditions is an anaerobic medium (such as fluid thioglycollate medium) needed in a lyophilization APS?"
+  },
+  {
+   "zh": "凍乾 APS 的駐留時間不一定要等於生產批次的完整駐留時間，這是基於什麼邏輯？",
+   "en": "The hold time in a lyophilization APS does not have to equal the full hold time of a production batch. What is the logic behind this?"
+  },
+  {
+   "zh": "<strong>4.2.3 Suspensions 4.2.3 懸浮劑</strong>",
+   "en": "<strong>4.2.3 Suspensions</strong>"
+  },
+  {
+   "zh": "<strong>Suspension APS (懸浮液製程模擬)：</strong>懸浮液含有不溶性物質，可能無法進行過濾除菌或熱滅菌，因此製造過程中需要在無菌條件下添加已滅菌的組分。APS 必須模擬這些無菌添加操作。",
+   "en": "<strong>Suspension APS:</strong> Suspensions contain insoluble material and may not be amenable to sterile filtration or heat sterilization, so sterilized components must be added under aseptic conditions during manufacture. The APS must simulate these aseptic addition operations."
+  },
+  {
+   "zh": "<strong>End-to-End Process (端到端製程)：</strong>TR22 強調 APS 應從懸浮液配製一路模擬到充填結束，避免將製程分段。分段模擬可能導致遺漏關鍵製程變數。",
+   "en": "<strong>End-to-End Process:</strong> TR22 stresses that the APS should simulate the process from suspension preparation through to the end of filling, rather than splitting the process into segments. Segmented simulation can cause critical process variables to be overlooked."
+  },
+  {
+   "zh": "懸浮液 APS 就像排練一場完整的料理過程：你不能只演練「炒菜」不演練「備料」。因為在高級無菌廚房（Grade A 環境）中打開容器加入預先消毒的香料粉（無菌組分添加）本身就是最大的污染風險點。只有完整走一遍從備料到上菜的全流程，才能確保每個環節的無菌操作都受到驗證。",
+   "en": "A suspension APS is like rehearsing a complete cooking process: you cannot practice only the \"stir-frying\" and skip the \"ingredient preparation.\" In a high-grade aseptic kitchen (Grade A environment), opening a container to add pre-sterilized spice powder (aseptic component addition) is itself the biggest contamination risk point. Only by walking through the whole flow from preparation to serving can you make sure that the aseptic technique at every step is validated."
+  },
+  {
+   "zh": "<strong>分段 vs 端到端：</strong>常規操作應採用端到端模擬。只有在故障調查或初始驗證階段，才可考慮將配製和充填分開模擬，且必須有書面理由和風險評估來確保所有步驟都被涵蓋。",
+   "en": "<strong>Segmented vs. end-to-end:</strong> Routine practice should use end-to-end simulation. Only during failure investigations or initial validation may preparation and filling be simulated separately, and this must be supported by a documented rationale and risk assessment to ensure all steps are covered."
+  },
+  {
+   "zh": "<strong>顆粒狀培養基：</strong>使用顆粒狀培養基替代粉末可減少粉塵污染，改善流動性。這是實務上的重要技巧。",
+   "en": "<strong>Granulated medium:</strong> Using granulated medium instead of powder reduces dust contamination and improves flowability. This is an important practical tip."
+  },
+  {
+   "zh": "實務應用 Practical Application",
+   "en": "Practical Application"
+  },
+  {
+   "zh": "某 CDMO 同時生產抗生素懸浮液和疫苗懸浮液。兩者的配製過程不同（一個是在無菌環境中添加滅菌粉末，另一個是添加滅菌佐劑），但共用同一條充填線。在這種情況下，每個產品的 APS 都應端到端模擬其獨特的配製+充填流程，包括使用替代物模擬無菌組分添加步驟。",
+   "en": "A CDMO manufactures both an antibiotic suspension and a vaccine suspension. The preparation processes differ (one involves adding a sterilized powder in an aseptic environment, the other adding a sterilized adjuvant), but they share the same filling line. In this case, the APS for each product should simulate its own unique preparation + filling process end to end, including the use of surrogates to simulate the aseptic component addition steps."
+  },
+  {
+   "zh": "為什麼懸浮液 APS 強調「端到端」模擬比溶液 APS 更重要？",
+   "en": "Why is end-to-end simulation more important for a suspension APS than for a solution APS?"
+  },
+  {
+   "zh": "在什麼情況下可以將懸浮液 APS 分段進行？需要哪些文件支持？",
+   "en": "Under what circumstances can a suspension APS be performed in segments? What documentation is needed to support this?"
+  },
+  {
+   "zh": "<strong>4.2.4 Semisolids — Ointments, Creams, and Gels 4.2.4 半固體製劑 — 軟膏、乳膏與凝膠</strong>",
+   "en": "<strong>4.2.4 Semisolids — Ointments, Creams, and Gels</strong>"
+  },
+  {
+   "zh": "<strong>Semisolid APS (半固體製程模擬)：</strong>軟膏、乳膏、凝膠等半固體產品的無菌製造可能類似溶液或懸浮液製程。APS 的核心挑戰在於：(1) 是否需要增加培養基黏度以模擬實際充填特性；(2) 加熱步驟是否影響培養基的微生物生長能力；(3) 不透明容器如何進行培養後檢查。",
+   "en": "<strong>Semisolid APS:</strong> The aseptic manufacture of semisolid products such as ointments, creams and gels may resemble that of solutions or suspensions. The core challenges for the APS are: (1) whether the medium viscosity needs to be increased to simulate actual filling characteristics; (2) whether a heating step affects the ability of the medium to support microbial growth; and (3) how to inspect opaque containers after incubation."
+  },
+  {
+   "zh": "半固體 APS 就像用水代替蜂蜜來測試擠壓瓶包裝線：如果包裝線可以正常運作（充填時間相同），用水就夠了；但如果設備必須依賴液體的高黏度才能正常運轉，你就需要加入增稠劑讓水「表現得像蜂蜜」。但無論如何，增稠劑不能讓水變質（即不能抑制微生物生長）。",
+   "en": "A semisolid APS is like testing a squeeze-bottle packaging line with water instead of honey: if the line runs normally (same filling time), water is enough; but if the equipment can only run properly with the high viscosity of the liquid, you need to add a thickener so that the water \"behaves like honey.\" In any case, the thickener must not spoil the water (that is, it must not inhibit microbial growth)."
+  },
+  {
+   "zh": "<strong>不透明容器的檢查策略（二選一）：</strong>",
+   "en": "<strong>Inspection strategy for opaque containers (choose one of two):</strong>"
+  },
+  {
+   "zh": "<strong>方案 A（優先）：</strong>使用透明替代容器，但其尺寸、形狀、密封系統必須相似，且不能比正式容器更有利。",
+   "en": "<strong>Option A (preferred):</strong> Use a transparent surrogate container, but its size, shape and closure system must be similar, and it must not be more favorable than the actual container."
+  },
+  {
+   "zh": "<strong>方案 B：</strong>使用不透明容器培養後，無菌轉移培養基至透明容器檢查，但需避免轉移過程中的污染。",
+   "en": "<strong>Option B:</strong> Incubate in the opaque containers, then aseptically transfer the medium to transparent containers for inspection, taking care to avoid contamination during the transfer."
+  },
+  {
+   "zh": "<strong>加熱步驟原則：</strong>若常規製程需要加熱，APS 設計需評估加熱是否會影響培養基生長促進能力。如會影響，則不應在 APS 中包含加熱步驟，但可能需要調整培養基黏度來配合充填。",
+   "en": "<strong>Heating step principle:</strong> If the routine process requires heating, the APS design must evaluate whether heating affects the growth-promoting capability of the medium. If it does, the heating step should not be included in the APS, but the medium viscosity may need to be adjusted to suit filling."
+  },
+  {
+   "zh": "如果軟膏充填設備在低黏度下仍能正常運作，APS 是否需要添加瓊脂增加培養基黏度？為什麼？",
+   "en": "If the ointment filling equipment can still operate normally at low viscosity, does the APS need to add agar to increase the medium viscosity? Why?"
+  },
+  {
+   "zh": "使用透明替代容器進行半固體 APS 時，有哪些必須確認的條件？",
+   "en": "When using a transparent surrogate container for a semisolid APS, which conditions must be confirmed?"
+  },
+  {
+   "zh": "<strong>4.2.5 Powders 4.2.5 粉末製劑</strong>",
+   "en": "<strong>4.2.5 Powders</strong>"
+  },
+  {
+   "zh": "<strong>Sterile Powder APS (無菌粉劑製程模擬)：</strong>粉劑 APS 是所有劑型中最具挑戰性的，因為粉末充填設備與液體充填完全不同，而微生物回收仍然需要液體培養基。這導致了一個根本矛盾：需要用液體培養基來評估粉末充填的無菌性。",
+   "en": "<strong>Sterile Powder APS:</strong> The powder APS is the most challenging of all dosage forms, because powder filling equipment is completely different from liquid filling equipment, yet microbial recovery still requires a liquid medium. This creates a fundamental contradiction: a liquid medium is needed to assess the sterility of powder filling."
+  },
+  {
+   "zh": "<strong>Placebo Powder (安慰劑粉末)：</strong>常用的替代物包括滅菌 TSA、甘露醇 (mannitol)、乳糖 (lactose) 或聚乙二醇 (PEG)。選擇替代物時必須確保其物理特性接近實際產品粉末，且不會抑制微生物生長或影響濁度觀察。",
+   "en": "<strong>Placebo Powder:</strong> Commonly used surrogates include sterilized TSA, mannitol, lactose or polyethylene glycol (PEG). When selecting a surrogate, you must ensure that its physical properties are close to those of the actual product powder and that it does not inhibit microbial growth or interfere with turbidity observation."
+  },
+  {
+   "zh": "<strong>Two Filling Operations (雙重充填操作)：</strong>粉劑 APS 本質上需要兩次充填：一次充填液體培養基，一次充填安慰劑粉末。這增加了額外的污染風險，必須在 APS 設計中納入考量。",
+   "en": "<strong>Two Filling Operations:</strong> A powder APS inherently requires two fills: one with liquid medium and one with placebo powder. This adds extra contamination risk, which must be taken into account in the APS design."
+  },
+  {
+   "zh": "粉劑 APS 就像要在麵粉工廠做食品安全測試：你不能用水來測試麵粉包裝線（設備不同），但你又需要液體培養基才能檢測微生物。所以你必須想辦法把「乾的測試」和「濕的測試」結合在一起。這就像既要測試麵粉會不會被灰塵污染（粉末充填），又要在灌好麵粉的袋子裡加入營養液來培養看看（液體培養基），兩個步驟缺一不可。",
+   "en": "A powder APS is like running a food safety test in a flour mill: you cannot test a flour packaging line with water (the equipment is different), yet you need a liquid medium to detect microorganisms. So you must find a way to combine a \"dry test\" and a \"wet test.\" It is like testing whether the flour gets contaminated by dust (powder filling) and also adding nutrient solution to the filled bags to see what grows (liquid medium); neither step can be omitted."
+  },
+  {
+   "zh": "<strong>檢查人員訓練：</strong>安慰劑粉末在培養基中可能產生沉澱或渾濁外觀，容易與微生物生長混淆。檢查人員必須經過專門訓練，能區分「產品沉澱」和「微生物濁度」。任何疑似生長的樣品都需進一步隔離和檢測。",
+   "en": "<strong>Inspector training:</strong> Placebo powder in the medium may produce a sediment or a cloudy appearance that is easily confused with microbial growth. Inspectors must receive specific training so that they can distinguish \"product sediment\" from \"microbial turbidity.\" Any sample with suspected growth requires further isolation and testing."
+  },
+  {
+   "zh": "<strong>風險累積：</strong>由於需要兩次充填操作，粉劑 APS 的污染風險本質上高於單次充填的溶液 APS。APS 結果評估時必須考慮這一額外風險來源。",
+   "en": "<strong>Cumulative risk:</strong> Because two filling operations are needed, the contamination risk of a powder APS is inherently higher than that of a single-fill solution APS. This additional source of risk must be considered when evaluating APS results."
+  },
+  {
+   "zh": "為什麼粉劑 APS 需要兩次充填操作？這與溶液 APS 有什麼根本差異？",
+   "en": "Why does a powder APS require two filling operations? How does this fundamentally differ from a solution APS?"
+  },
+  {
+   "zh": "選擇安慰劑粉末時，有哪些關鍵考量因素？為什麼不能隨便選一種惰性粉末？",
+   "en": "What are the key considerations when selecting a placebo powder? Why can't you simply choose any inert powder?"
+  },
+  {
+   "zh": "粉劑 APS 中「兩次充填」帶來的額外污染風險應如何管理？",
+   "en": "How should the additional contamination risk from the \"two fills\" in a powder APS be managed?"
+  },
+  {
+   "zh": "<strong>4.2.5.1 - 4.2.5.5 Approaches for Sterile-Powder APS 4.2.5.1 - 4.2.5.5 無菌粉末無菌製程模擬（APS）的方法</strong>",
+   "en": "<strong>4.2.5.1 - 4.2.5.5 Approaches for Sterile-Powder APS</strong>"
+  },
+  {
+   "zh": "TR22 提供了五種粉劑 APS 執行方法，從最簡單到最複雜，每種方法都在「模擬真實性」與「操作可行性」之間取捨：",
+   "en": "TR22 describes five approaches for performing a powder APS, ranging from the simplest to the most complex, each trading off \"simulation realism\" against \"operational feasibility\":"
+  },
+  {
+   "zh": "<strong>方法 1（4.2.5.1）：</strong>直接用粉末充填機灌液體培養基 — 最簡單但最不真實",
+   "en": "<strong>Approach 1 (4.2.5.1):</strong> Fill liquid medium directly with the powder filling machine; the simplest but least realistic"
+  },
+  {
+   "zh": "<strong>方法 2（4.2.5.2）：</strong>粉末充填機加裝液體充填功能 — 單一設備但需改裝",
+   "en": "<strong>Approach 2 (4.2.5.2):</strong> Add a liquid-filling capability to the powder filling machine; a single piece of equipment, but modification is required"
+  },
+  {
+   "zh": "<strong>方法 3（4.2.5.3）：</strong>先灌液體再灌粉末（線上雙充填）— 更真實但增加暴露",
+   "en": "<strong>Approach 3 (4.2.5.3):</strong> Fill liquid first, then powder (in-line double filling); more realistic but increases exposure"
+  },
+  {
+   "zh": "<strong>方法 4（4.2.5.4）：</strong>先灌粉末再灌液體（線上雙充填）— 更真實但有粉末飛濺風險",
+   "en": "<strong>Approach 4 (4.2.5.4):</strong> Fill powder first, then liquid (in-line double filling); more realistic but with a risk of powder splashing"
+  },
+  {
+   "zh": "<strong>方法 5（4.2.5.5）：</strong>灌乾燥培養基粉末後加水復原 — <span style=\"color:#c62828;font-weight:600;\">不推薦</span>",
+   "en": "<strong>Approach 5 (4.2.5.5):</strong> Fill dry medium powder, then reconstitute with water; <span style=\"color:#c62828;font-weight:600;\">not recommended</span>"
+  },
+  {
+   "zh": "五種方法就像測試速食麵包裝線的不同策略：",
+   "en": "The five approaches are like different strategies for testing an instant-noodle packaging line:"
+  },
+  {
+   "zh": "<strong>方法 1：</strong>直接用湯包裝線灌水測試 — 快但沒測到裝麵的過程",
+   "en": "<strong>Approach 1:</strong> Test by filling water on the soup-sachet line; quick, but it does not test the noodle-filling step"
+  },
+  {
+   "zh": "<strong>方法 2：</strong>在麵條包裝機上加個小水龍頭 — 湊合但不太順手",
+   "en": "<strong>Approach 2:</strong> Add a small faucet to the noodle packaging machine; workable, but awkward"
+  },
+  {
+   "zh": "<strong>方法 3：</strong>先灌水再灌麵 — 都測到了但碗裡先有水",
+   "en": "<strong>Approach 3:</strong> Fill the water first, then the noodles; both are tested, but the bowl already contains water"
+  },
+  {
+   "zh": "<strong>方法 4：</strong>先灌麵再灌水 — 都測到了但水可能濺出麵粉",
+   "en": "<strong>Approach 4:</strong> Fill the noodles first, then the water; both are tested, but the water may splash the noodle powder"
+  },
+  {
+   "zh": "<strong>方法 5：</strong>灌完麵後手動一碗碗加水 — 太麻煩且風險太高",
+   "en": "<strong>Approach 5:</strong> After filling the noodles, add water to each bowl by hand; too cumbersome and too risky"
+  },
+  {
+   "zh": "<strong>方法 5 明確不推薦：</strong>因為充填後手動逐瓶添加無菌水的額外操作會帶來顯著且可能不可接受的污染風險。",
+   "en": "<strong>Approach 5 is explicitly not recommended:</strong> The additional operation of manually adding sterile water to each vial after filling introduces a significant and potentially unacceptable contamination risk."
+  },
+  {
+   "zh": "<strong>共同風險：</strong>無論使用哪種方法，當粉末和液體合併時，必須確認粉末能在培養基中適當分散和溶解。實務上通常在培養前將容器倒轉數次來實現。",
+   "en": "<strong>Common risk:</strong> Whichever approach is used, when the powder and liquid are combined you must confirm that the powder is properly dispersed and dissolved in the medium. In practice this is usually achieved by inverting the containers several times before incubation."
+  },
+  {
+   "zh": "<strong>選擇考量：</strong>方法的選擇取決於設備能力、空間限制、和風險評估。沒有「一體適用」的最佳方案，關鍵是充分評估每種方法帶來的額外風險。",
+   "en": "<strong>Selection considerations:</strong> The choice of approach depends on equipment capability, space constraints and risk assessment. There is no \"one-size-fits-all\" best solution; the key is to fully evaluate the additional risk each approach introduces."
+  },
+  {
+   "zh": "你的工廠使用螺桿式粉末充填機，該設備無法灌液體。你會選擇哪種粉劑 APS 方法？為什麼？",
+   "en": "Your plant uses an auger-type powder filling machine that cannot fill liquids. Which powder APS approach would you choose, and why?"
+  },
+  {
+   "zh": "方法 3 和方法 4 的主要差異是什麼？在什麼情況下你會選擇方法 4 而非方法 3？",
+   "en": "What is the main difference between Approach 3 and Approach 4? Under what circumstances would you choose Approach 4 over Approach 3?"
+  },
+  {
+   "zh": "為什麼方法 5 被明確標示為「不推薦」？它的「額外風險」具體指什麼？",
+   "en": "Why is Approach 5 explicitly labeled \"not recommended\"? What exactly does its \"additional risk\" refer to?"
+  },
+  {
+   "zh": "<strong>4.2.6 Other Dosage Forms and Drug/Device Combinations 4.2.6 其他劑型與藥品／器材組合</strong>",
+   "en": "<strong>4.2.6 Other Dosage Forms and Drug/Device Combinations</strong>"
+  },
+  {
+   "zh": "<strong>Special Dosage Forms (特殊劑型)：</strong>除了溶液、凍乾、懸浮液、半固體和粉劑之外，還有許多獨特的無菌產品需要 APS。每種產品都有其獨特的挑戰，但核心原則不變：模擬所有對無菌性構成風險的製程步驟。",
+   "en": "<strong>Special Dosage Forms:</strong> Beyond solutions, lyophilized products, suspensions, semisolids and powders, there are many other unique sterile products that require an APS. Each has its own challenges, but the core principle is unchanged: simulate all process steps that pose a risk to sterility."
+  },
+  {
+   "zh": "<strong>Terminal Sterilization (最終滅菌)：</strong>最終滅菌產品通常<strong>不需要 APS</strong>，因為其無菌保證並不依賴無菌製程。但如果製程中包含任何無菌操作步驟，APS 仍可作為評估工具。",
+   "en": "<strong>Terminal Sterilization:</strong> Terminally sterilized products generally <strong>do not require an APS</strong>, because their sterility assurance does not depend on an aseptic process. However, if the process includes any aseptic operation steps, an APS can still serve as an assessment tool."
+  },
+  {
+   "zh": "<strong>ATMP (先進治療藥品)：</strong>包括基因治療、細胞治療和組織工程產品。特點是批量小、手動操作多、通常在 BSC (Grade A) + Grade B 環境中製造。",
+   "en": "<strong>ATMP (Advanced Therapy Medicinal Products):</strong> These include gene therapy, cell therapy and tissue-engineered products. They are characterized by small batch sizes and many manual operations, and are typically manufactured in a BSC (Grade A) within a Grade B environment."
+  },
+  {
+   "zh": "ATMP 的 APS 就像為一家手工訂製巧克力店做食品安全驗證：每批只做幾盒（小批量），由師傅手工操作（手動製程），在一個小型無塵操作台（BSC）上完成。你不能用大工廠的自動化標準來要求它，但食品安全（無菌保證）的底線是一樣的。驗證重點放在師傅的操作技術、打開容器的每個瞬間、以及小空間中多人同時工作的最壞情境。",
+   "en": "An ATMP APS is like performing a food safety validation for a handcrafted custom chocolate shop: each batch makes only a few boxes (small batch size), the chocolatier works by hand (manual process), and the work is done at a small clean workbench (BSC). You cannot hold it to the automation standards of a large factory, but the baseline for food safety (sterility assurance) is the same. The validation focuses on the chocolatier's technique, every moment a container is opened, and the worst-case scenario of several people working at the same time in a small space."
+  },
+  {
+   "zh": "<strong>ATMP APS 設計的核心邏輯：</strong>",
+   "en": "<strong>Core logic of ATMP APS design:</strong>"
+  },
+  {
+   "zh": "封閉步驟（培養、離心）不需模擬 — 前提是沒有開放操作",
+   "en": "Closed steps (culture, centrifugation) do not need to be simulated, provided there are no open operations"
+  },
+  {
+   "zh": "所有開放操作、無菌連接、物料添加/取出必須模擬",
+   "en": "All open operations, aseptic connections, and material additions/removals must be simulated"
+  },
+  {
+   "zh": "多人同室作業時，APS 應包含最壞情境的人員密度",
+   "en": "When several people work in the same room, the APS should include the worst-case personnel density"
+  },
+  {
+   "zh": "廢液管線和收集容器也需要接觸培養基並培養",
+   "en": "Waste lines and collection containers must also come into contact with the medium and be incubated"
+  },
+  {
+   "zh": "若 APS 分段進行，中間容器也必須培養",
+   "en": "If the APS is performed in segments, the intermediate containers must also be incubated"
+  },
+  {
+   "zh": "<strong>參考文件：</strong>手動無菌操作應遵循 PDA TR62 的要求。",
+   "en": "<strong>Reference document:</strong> Manual aseptic operations should follow the requirements of PDA TR62."
+  },
+  {
+   "zh": "某 CDMO 正為客戶開發 CAR-T 細胞治療產品（一種 ATMP）。製程包含：細胞解凍(開放) → 基因修飾(封閉) → 擴增培養(封閉) → 收穫洗滌(半開放) → 手動充填至冷凍袋(開放)。APS 設計應聚焦在解凍、收穫洗滌和手動充填步驟，而基因修飾和擴增培養（完全封閉）可不模擬。每位操作員都必須通過 APS 資格認定。",
+   "en": "A CDMO is developing a CAR-T cell therapy product (a type of ATMP) for a client. The process comprises: cell thawing (open) → genetic modification (closed) → expansion culture (closed) → harvest and wash (semi-open) → manual filling into cryobags (open). The APS design should focus on the thawing, harvest and wash, and manual filling steps, while genetic modification and expansion culture (fully closed) need not be simulated. Every operator must be qualified through the APS."
+  },
+  {
+   "zh": "最終滅菌產品為什麼通常不需要 APS？在什麼情況下仍然有價值進行 APS？",
+   "en": "Why do terminally sterilized products generally not require an APS? In what situations is it still worthwhile to perform one?"
+  },
+  {
+   "zh": "氣霧劑產品的 APS 面臨哪些特殊挑戰？推進劑對微生物生長有什麼影響？",
+   "en": "What special challenges does an APS for aerosol products face? How does the propellant affect microbial growth?"
+  },
+  {
+   "zh": "設計 ATMP 的 APS 時，為什麼封閉的離心步驟可以不模擬，但無菌連接必須模擬？",
+   "en": "When designing an ATMP APS, why can a closed centrifugation step be left out of the simulation while aseptic connections must be simulated?"
+  },
+  {
+   "zh": "<strong>4.3 APS Design Based on Aseptic Processing Technologies 4.3 基於無菌製程技術的無菌製程模擬（APS）設計</strong>",
+   "en": "<strong>4.3 APS Design Based on Aseptic Processing Technologies</strong>"
+  },
+  {
+   "zh": "<strong>Technology-Based APS Design (基於技術的 APS 設計)：</strong>這是 TR22 的一個重要概念 — APS 設計不是「一刀切」的。使用更先進的屏障技術（如隔離器）時，由於其本身提供了更高的無菌保障，APS 的設計可以有更大的靈活性。但基本原則不變：所有對無菌性構成風險的步驟仍必須模擬。",
+   "en": "<strong>Technology-Based APS Design:</strong> This is an important concept in TR22: APS design is not \"one size fits all.\" When more advanced barrier technology (such as an isolator) is used, the technology itself provides a higher level of sterility assurance, so the APS design can have greater flexibility. The basic principle is unchanged, however: all steps that pose a risk to sterility must still be simulated."
+  },
+  {
+   "zh": "<strong>Contamination Control Strategy (CCS，污染控制策略)：</strong>APS 範圍的調整必須基於經過驗證的 CCS。不能僅因為「設備比較先進」就任意縮減 APS 範圍。",
+   "en": "<strong>Contamination Control Strategy (CCS):</strong> Any adjustment to the APS scope must be based on a validated CCS. The scope of the APS must not be arbitrarily reduced simply because \"the equipment is more advanced.\""
+  },
+  {
+   "zh": "這段開場白設定了一個關鍵框架：<strong>技術越先進，APS 彈性越大，但底線不變。</strong>以下各小節將分別討論每種技術的具體考量。",
+   "en": "This opening passage sets a key framework: <strong>the more advanced the technology, the greater the APS flexibility, but the baseline does not change.</strong> The following subsections discuss the specific considerations for each technology."
+  },
+  {
+   "zh": "<strong>4.3.1 Form-Fill-Seal and Blow-Fill-Seal 4.3.1 成型充填封合（FFS）與吹塑充填封合（BFS）</strong>",
+   "en": "<strong>4.3.1 Form-Fill-Seal and Blow-Fill-Seal</strong>"
+  },
+  {
+   "zh": "<strong>FFS/BFS (吹灌封/成灌封)：</strong>這些技術在同一台設備上完成容器成型、充填和密封，減少了容器暴露於環境的時間。但 APS 設計需要考慮：培養基的發泡特性可能影響密封、容器成型需要特定的充填量、以及半透明/不透明塑膠容器的檢查困難。",
+   "en": "<strong>FFS/BFS:</strong> These technologies perform container forming, filling and sealing on a single machine, reducing the time the container is exposed to the environment. However, the APS design needs to consider: the foaming characteristics of the medium, which can affect sealing; the specific fill volume required for container forming; and the difficulty of inspecting translucent/opaque plastic containers."
+  },
+  {
+   "zh": "<strong>BFS/FFS 特有考量：</strong>培養基的發泡性可能導致容器密封不良；充填量過低可能影響容器成型品質。此外，BFS/FFS 通常以較長的 campaign 模式運行，APS 設計需要反映這一特點。",
+   "en": "<strong>Considerations specific to BFS/FFS:</strong> Foaming of the medium can lead to poor container seals, and an excessively low fill volume can affect container forming quality. In addition, BFS/FFS usually runs in long campaigns, and the APS design needs to reflect this."
+  },
+  {
+   "zh": "BFS 製程中培養基的發泡特性為什麼需要特別關注？可能導致什麼後果？",
+   "en": "Why does the foaming behavior of the medium need special attention in a BFS process? What consequences can it have?"
+  },
+  {
+   "zh": "<strong>4.3.2 Restricted Access Barrier Systems 4.3.2 限制進出屏障系統</strong>",
+   "en": "<strong>4.3.2 Restricted Access Barrier Systems</strong>"
+  },
+  {
+   "zh": "<strong>RABS (限制進出屏障系統)：</strong>RABS 通過物理屏障將產品與操作人員分離，但並非完全隔絕。開門操作需經氣流可視化研究確認不會引入低級別空氣。APS 中必須模擬所有允許的干預操作。",
+   "en": "<strong>RABS (Restricted Access Barrier Systems):</strong> RABS separate the product from operators by a physical barrier, but the isolation is not complete. Door-opening operations must be confirmed by airflow visualization studies not to introduce lower-grade air. The APS must simulate all permitted interventions."
+  },
+  {
+   "zh": "<strong>重要警告：</strong>APS 不應被用來「合理化」頻繁開門操作。如果設備設計導致需要頻繁開門干預，這本身就是設計缺陷，不能通過 APS 來掩蓋。這是法規稽查時的常見關注點。",
+   "en": "<strong>Important warning:</strong> The APS should not be used to \"justify\" frequent door openings. If the equipment design requires frequent door-opening interventions, this is itself a design flaw and cannot be masked by an APS. This is a common focus during regulatory inspections."
+  },
+  {
+   "zh": "RABS 就像手術室的玻璃隔間：外科醫生透過手套口操作，通常不需要打開門。如果手術中經常需要打開門來拿工具，問題不在於「是否能安全開門」，而在於「為什麼手術室設計得需要常開門」。",
+   "en": "A RABS is like the glass partition in an operating room: the surgeon works through glove ports and normally does not need to open the door. If the door often has to be opened during surgery to fetch instruments, the problem is not \"whether the door can be opened safely\" but \"why the operating room was designed to need frequent door openings.\""
+  },
+  {
+   "zh": "RABS 開門干預需要滿足什麼前提條件？為什麼不能頻繁開門？",
+   "en": "What prerequisites must be met for door-opening interventions in a RABS? Why should doors not be opened frequently?"
+  },
+  {
+   "zh": "<strong>4.3.3 Isolator Technology 4.3.3 雔離器技術</strong>",
+   "en": "<strong>4.3.3 Isolator Technology</strong>"
+  },
+  {
+   "zh": "<strong>Isolator APS (隔離器 APS)：</strong>隔離器完全隔絕人員與無菌環境，因此某些傳統 APS 的最壞情境（如房間人數、換班影響）不再適用。但同時充填量可能非常大（campaign 模式），帶來新的挑戰。",
+   "en": "<strong>Isolator APS:</strong> An isolator completely separates personnel from the aseptic environment, so some of the traditional APS worst-case conditions (such as the number of people in the room and the effect of shift changes) no longer apply. At the same time, fill volumes can be very large (campaign mode), which brings new challenges."
+  },
+  {
+   "zh": "<strong>Empty Vials (空瓶處理)：</strong>大批量 APS 時可穿插處理空瓶，以模擬正常生產的機械和環境挑戰，同時避免 APS 培養和檢查量過於龐大。但空瓶期間的干預不計入 APS 的模擬要求。",
+   "en": "<strong>Empty Vials:</strong> In large-batch APS, empty vials can be interspersed to simulate the mechanical and environmental challenges of normal production while keeping the incubation and inspection volume of the APS from becoming excessive. Interventions performed during the empty-vial periods, however, do not count toward the APS simulation requirements."
+  },
+  {
+   "zh": "<strong>Piggyback APS (搭載式 APS)：</strong>在正常生產批次結束後緊接著進行的 APS。這不能作為獨立驗證，必須搭配涵蓋製程起始和設備設置的其他 APS 一起使用。",
+   "en": "<strong>Piggyback APS:</strong> An APS performed immediately after a normal production batch. It cannot serve as a standalone validation and must be used together with other APS that cover process start-up and equipment set-up."
+  },
+  {
+   "zh": "隔離器 APS 就像測試太空站的無菌操作：太空站（隔離器）與外部環境完全隔絕，所以外面有多少人走動根本不重要（不像普通無塵室）。但如果多位太空人同時伸手進實驗手套箱操作，可能影響內部氣壓平衡。而「搭載式 APS」就像在太空任務結束前做最後一次無菌測試 — 它測試了「長時間運行後」的狀態，但不能替代「發射前」的完整測試。",
+   "en": "An isolator APS is like testing aseptic operations on a space station: the station (isolator) is completely isolated from the outside environment, so how many people are walking around outside does not matter (unlike an ordinary cleanroom). But if several astronauts reach into the experiment glove box at the same time, the internal pressure balance may be affected. And a \"piggyback APS\" is like running a final aseptic test before the end of the space mission: it tests the state \"after long operation\" but cannot replace the complete test \"before launch.\""
+  },
+  {
+   "zh": "<strong>10,000 瓶最低門檻：</strong>即使隔離器的污染風險較低，APS 仍建議不少於 10,000 個完整充填單位（除非商業批量本身更小）。這確保了統計上足夠的檢測靈敏度。",
+   "en": "<strong>10,000-vial minimum:</strong> Even though the contamination risk of an isolator is lower, the APS is still recommended to include no fewer than 10,000 complete filled units (unless the commercial batch size is itself smaller). This ensures statistically adequate detection sensitivity."
+  },
+  {
+   "zh": "<strong>Piggyback APS 限制：</strong>",
+   "en": "<strong>Piggyback APS limitations:</strong>"
+  },
+  {
+   "zh": "不能單獨作為 APS 驗證策略",
+   "en": "Cannot be used alone as the APS validation strategy"
+  },
+  {
+   "zh": "必須搭配涵蓋「充填起始、產線設置」的完整 APS",
+   "en": "Must be combined with a complete APS covering \"fill start-up and line set-up\""
+  },
+  {
+   "zh": "主要用於驗證 campaign 長度的延伸",
+   "en": "Mainly used to validate extension of the campaign length"
+  },
+  {
+   "zh": "已從隔離器擴展到其他技術平台",
+   "en": "Has been extended from isolators to other technology platforms"
+  },
+  {
+   "zh": "某 CDMO 使用隔離器充填注射劑，商業批量為 50,000 瓶。APS 策略可以是：充填 15,000 瓶培養基 + 35,000 瓶空瓶穿插處理，以模擬完整批量的機械活動。另外每年至少進行一次涵蓋產線啟動的完整 APS，搭配一次 piggyback APS（接在商業批次後面）來驗證 campaign 後期的無菌保持能力。",
+   "en": "A CDMO fills injectables in an isolator, with a commercial batch size of 50,000 vials. The APS strategy could be: fill 15,000 vials with medium + 35,000 interspersed empty vials, to simulate the mechanical activity of the full batch size. In addition, perform a complete APS covering line start-up at least once a year, together with one piggyback APS (run after a commercial batch) to validate the ability to maintain sterility late in the campaign."
+  },
+  {
+   "zh": "為什麼隔離器 APS 中「房間最大人數」不再是相關的最壞情境？",
+   "en": "Why is the \"maximum number of people in the room\" no longer a relevant worst-case condition in an isolator APS?"
+  },
+  {
+   "zh": "空瓶期間進行的干預為什麼不能計入 APS 的模擬要求？",
+   "en": "Why can interventions performed during empty-vial periods not count toward the APS simulation requirements?"
+  },
+  {
+   "zh": "Piggyback APS 為什麼不能作為獨立的 APS 驗證策略？",
+   "en": "Why can a piggyback APS not serve as a standalone APS validation strategy?"
+  },
+  {
+   "zh": "<strong>4.3.4 Closed Systems 4.3.4 密閉系統</strong>",
+   "en": "<strong>4.3.4 Closed Systems</strong>"
+  },
+  {
+   "zh": "<strong>Closed System (封閉系統)：</strong>通過物理隔離和微生物完整性維護來防止產品暴露於環境中。其優勢是可在較低級別環境（如 Grade C）中進行無菌操作。但注意：<strong>封閉系統 ≠ RABS 或隔離器</strong>。",
+   "en": "<strong>Closed System:</strong> A closed system prevents product exposure to the environment through physical separation and maintenance of microbial integrity. Its advantage is that aseptic operations can be performed in a lower-grade environment (such as Grade C). Note, however: <strong>a closed system is not the same as a RABS or an isolator</strong>."
+  },
+  {
+   "zh": "<strong>TR22 vs TR28 的區別：</strong>TR28 中的封閉系統指的是無菌原料藥的封閉處理（用無菌安慰劑沖洗即可證明內部無菌）。TR22 中的封閉系統涉及從封閉系統向容器進行無菌充填，污染風險更高，因此 TR28 的方法不夠充分。",
+   "en": "<strong>TR22 vs. TR28:</strong> In TR28, a closed system refers to the closed processing of sterile active pharmaceutical ingredients (a rinse with sterile placebo is enough to demonstrate internal sterility). In TR22, the closed system involves aseptic filling from the closed system into containers, where the contamination risk is higher, so the TR28 approach is not sufficient."
+  },
+  {
+   "zh": "封閉系統就像城市的自來水管網：水從水廠（滅菌後）到你家水龍頭（充填），整個過程都在密封管路中。只要管路完整（integrity tested）、接頭安全（RTP），就算管路經過地下（Grade C 環境）也不會被污染。但如果你要從水龍頭倒水到杯子裡（充填到容器），這個「開口」瞬間就需要額外保護。",
+   "en": "A closed system is like a city's tap water network: the water goes from the waterworks (after sterilization) to the faucet in your home (filling) entirely within sealed pipes. As long as the pipes are intact (integrity tested) and the connections are secure (RTP), the water will not be contaminated even if the pipes run underground (a Grade C environment). But when you pour water from the faucet into a cup (filling into containers), that moment of \"opening\" needs additional protection."
+  },
+  {
+   "zh": "<strong>封閉系統 APS 的關鍵要素：</strong>",
+   "en": "<strong>Key elements of a closed system APS:</strong>"
+  },
+  {
+   "zh": "模擬製程流程和無菌充填到容器中",
+   "en": "Simulate the process flow and the aseptic filling into containers"
+  },
+  {
+   "zh": "使用 TSB 替代產品進行充填和培養",
+   "en": "Use TSB as the product surrogate for filling and incubation"
+  },
+  {
+   "zh": "系統完整性測試必須在有風險的時間點進行（運輸後、滅菌後、組裝後）",
+   "en": "System integrity tests must be performed at risk-bearing time points (after transport, after sterilization, after assembly)"
+  },
+  {
+   "zh": "使用正壓控制防止環境侵入",
+   "en": "Use positive pressure control to prevent ingress from the environment"
+  },
+  {
+   "zh": "所有無菌連接（如 RTP）必須在 APS 中模擬",
+   "en": "All aseptic connections (such as RTP) must be simulated in the APS"
+  },
+  {
+   "zh": "為什麼 TR28 中的封閉系統沖洗方法對 TR22 來說不夠充分？兩者的風險差異是什麼？",
+   "en": "Why is the closed-system rinse method in TR28 not sufficient for TR22? What is the difference in risk between the two?"
+  },
+  {
+   "zh": "封閉系統可以在 Grade C 環境中進行無菌操作，但需要哪些保障措施？",
+   "en": "A closed system can be used for aseptic operations in a Grade C environment, but what safeguards are required?"
+  },
+  {
+   "zh": "<strong>4.3.5 Single-Use Systems Technologies 4.3.5 單次使用系統技術</strong>",
+   "en": "<strong>4.3.5 Single-Use Systems Technologies</strong>"
+  },
+  {
+   "zh": "<strong>Single-Use Systems (一次性使用系統)：</strong>SUS 在業界日益普遍，因為它們減少了無菌操作需求、免除了 CIP/SIP 步驟、並防止交叉污染。APS 中應使用與生產相同的 SUS，重點模擬所有無菌連接操作。",
+   "en": "<strong>Single-Use Systems:</strong> SUS are increasingly common in the industry because they reduce the need for aseptic manipulations, eliminate CIP/SIP steps, and prevent cross-contamination. The APS should use the same SUS as production, with emphasis on simulating all aseptic connection operations."
+  },
+  {
+   "zh": "<strong>APS 使用相同 SUS：</strong>除非經過風險評估確認替代品（如更小尺寸或不同濾器）可接受，否則 APS 必須使用與生產相同的 SUS 組件。這確保模擬的真實性。",
+   "en": "<strong>Use the same SUS in the APS:</strong> Unless a risk assessment confirms that a substitute (such as a smaller size or a different filter) is acceptable, the APS must use the same SUS components as production. This ensures the realism of the simulation."
+  },
+  {
+   "zh": "<strong>4.3.6 Pre-Use Post-Sterilization Integrity Test Assembly 4.3.6 使用前滅菌後完整性測試組件</strong>",
+   "en": "<strong>4.3.6 Pre-Use Post-Sterilization Integrity Test Assembly</strong>"
+  },
+  {
+   "zh": "<strong>PUPSIT in APS (使用前滅菌後完整性測試)：</strong>APS 的目的不是驗證 PUPSIT 本身（那是 TR26 的範疇），而是模擬 PUPSIT 操作過程中發生在無菌過濾器下游的所有無菌操作（連接、閥門操作、測試條件等）。",
+   "en": "<strong>PUPSIT in APS (Pre-Use Post-Sterilization Integrity Testing):</strong> The purpose of the APS is not to validate PUPSIT itself (that falls within the scope of TR26), but to simulate all the aseptic operations that take place downstream of the sterilizing filter during PUPSIT (connections, valve operations, test conditions, etc.)."
+  },
+  {
+   "zh": "<strong>廢液也需培養：</strong>接觸產品接觸面但被丟棄的物料（如產品沖洗液）也必須用培養基模擬並培養。只有在能明確證明廢棄流程不影響產品無菌性的情況下，才可免除此要求。這是容易被忽略的合規重點。",
+   "en": "<strong>Waste fluids must also be incubated:</strong> Material that contacts product-contact surfaces but is discarded (such as product flush fluid) must also be simulated with medium and incubated. This requirement can be waived only where it can be clearly demonstrated that the waste stream does not affect product sterility. This is an easily overlooked compliance point."
+  },
+  {
+   "zh": "PUPSIT 和 APS 的關係就像「出門前檢查瓦斯」和「消防演習」的區別：PUPSIT 是確認過濾器本身沒問題（瓦斯沒漏），而 APS 是確認執行 PUPSIT 時的所有操作（開關閥門、連接管路）不會引入污染（消防演習中測試所有逃生路線）。",
+   "en": "The relationship between PUPSIT and the APS is like the difference between \"checking the gas before leaving home\" and a \"fire drill\": PUPSIT confirms that the filter itself is fine (no gas leak), while the APS confirms that all the operations performed during PUPSIT (opening and closing valves, connecting lines) do not introduce contamination (a fire drill tests all the escape routes)."
+  },
+  {
+   "zh": "APS 不驗證 PUPSIT 本身，那它模擬 PUPSIT 的哪些方面？",
+   "en": "The APS does not validate PUPSIT itself, so which aspects of PUPSIT does it simulate?"
+  },
+  {
+   "zh": "為什麼 APS 中的產品沖洗液也需要用培養基替代並培養？",
+   "en": "Why do product flush fluids in an APS also need to be replaced with medium and incubated?"
+  },
+  {
+   "zh": "<strong>4.3.7 Considerations for Advanced Therapy Medicinal Products 4.3.7 先進治療醫藥品（ATMP）的考量事項</strong>",
+   "en": "<strong>4.3.7 Considerations for Advanced Therapy Medicinal Products</strong>"
+  },
+  {
+   "zh": "<strong>ATMP Manual Operations APS (ATMP 手動操作 APS)：</strong>這是 TR22 最具前瞻性的內容之一。ATMP（如 CAR-T 療法）的製造特點：",
+   "en": "<strong>ATMP Manual Operations APS:</strong> This is one of the most forward-looking parts of TR22. ATMP (such as CAR-T therapies) manufacture is characterized by:"
+  },
+  {
+   "zh": "無法最終滅菌 — 活細胞不耐受",
+   "en": "Cannot be terminally sterilized, because living cells cannot tolerate it"
+  },
+  {
+   "zh": "小批量、患者專屬 — 可能每批只有 1-3 瓶",
+   "en": "Small, patient-specific batches, possibly only 1-3 vials per batch"
+  },
+  {
+   "zh": "大量手動操作 — 操作員就是「充填機」",
+   "en": "A large amount of manual work, where the operator is the \"filling machine\""
+  },
+  {
+   "zh": "在 BSC 中進行 — 空間受限",
+   "en": "Performed in a BSC, where space is limited"
+  },
+  {
+   "zh": "<strong>Operator Qualification (操作員資格認定)：</strong>手動充填的操作員必須初次通過至少 3 次 APS 資格認定，之後每年 2 次再認定。這比自動化充填線的人員要求更嚴格。",
+   "en": "<strong>Operator Qualification:</strong> Operators performing manual filling must initially pass at least 3 APS qualification runs, followed by requalification twice a year. This is stricter than the personnel requirements for automated filling lines."
+  },
+  {
+   "zh": "ATMP 操作員就像外科醫生：每位醫生必須獨立完成足夠次數的手術模擬（至少 3 次初始認定），才能獨立執刀。之後每年還需要定期考核（每年 2 次再認定）。因為在這個情境下，操作員的雙手就是「手術刀」（充填設備），無菌技術完全取決於個人。",
+   "en": "An ATMP operator is like a surgeon: each surgeon must independently complete enough simulated procedures (at least 3 initial qualification runs) before operating independently, and must then be assessed periodically (requalification twice a year). In this setting the operator's hands are the \"scalpel\" (the filling equipment), and aseptic technique depends entirely on the individual."
+  },
+  {
+   "zh": "某醫院附設細胞治療實驗室同時生產 CAR-T（自體基因修飾細胞治療）和幹細胞治療產品。兩者都在 BSC 中手動操作，共用同一間 Grade B 背景環境的無菌室。",
+   "en": "A hospital-affiliated cell therapy laboratory produces both a CAR-T (autologous gene-modified cell therapy) and a stem cell therapy product. Both are handled manually in BSCs and share the same aseptic suite with a Grade B background environment."
+  },
+  {
+   "zh": "<strong>APS 策略建議：</strong>",
+   "en": "<strong>Recommended APS strategy:</strong>"
+  },
+  {
+   "zh": "識別兩個產品的共同手動操作步驟（如無菌管路連接、手動移液）",
+   "en": "Identify the manual operation steps common to the two products (such as aseptic line connections and manual pipetting)"
+  },
+  {
+   "zh": "選擇操作步驟最多、最複雜的產品作為 worst-case APS",
+   "en": "Select the product with the most and most complex operation steps as the worst-case APS"
+  },
+  {
+   "zh": "每位操作員在代表性 BSC 中完成 APS 資格認定",
+   "en": "Have each operator complete the APS qualification in a representative BSC"
+  },
+  {
+   "zh": "APS 包含同室最大人員密度的模擬",
+   "en": "Include in the APS a simulation of the maximum personnel density in the room"
+  },
+  {
+   "zh": "中間容器（如生物反應器袋）也需培養",
+   "en": "Incubate intermediate containers (such as bioreactor bags) as well"
+  },
+  {
+   "zh": "為什麼 ATMP 手動充填操作員的初始資格認定要求至少 3 次 APS？這比自動化充填的要求更嚴格嗎？",
+   "en": "Why does the initial qualification of ATMP manual filling operators require at least 3 APS runs? Is this stricter than the requirement for automated filling?"
+  },
+  {
+   "zh": "ATMP 的小批量製造可能需要充填比實際生產更多的 APS 單位，原因是什麼？",
+   "en": "The small-batch manufacture of ATMP may require filling more APS units than the actual production quantity. What is the reason?"
+  },
+  {
+   "zh": "在多產品 ATMP 設施中使用 bracketing 策略設計 APS 時，需要注意哪些風險？",
+   "en": "What risks need to be considered when designing an APS with a bracketing strategy in a multi-product ATMP facility?"
+  },
+  {
+   "zh": "<strong>ATMP APS 設計要點速查：</strong>",
+   "en": "<strong>ATMP APS design quick reference:</strong>"
+  },
+  {
+   "zh": "<strong>Bracketing 策略：</strong>多產品設施中，如果不同產品的手動操作類似，可以將類似操作分組，用最具挑戰性的操作來代表整組，減少 APS 次數但確保涵蓋所有風險。",
+   "en": "<strong>Bracketing strategy:</strong> In a multi-product facility, if the manual operations of different products are similar, similar operations can be grouped and the most challenging operation used to represent the whole group, reducing the number of APS runs while still covering all risks."
+  },
+  {
+   "zh": "本節重點回顧 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "<strong>凍乾 APS（4.2.2）：</strong>需模擬充填、部分加塞、轉移、裝載、真空、駐留、完全加塞和卸載等步驟。真空壓力必須維持在 100-200 mbar 以避免培養基沸騰。除非已確認存在嚴格厭氧菌，否則使用好氧條件（SCDM + 空氣破真空）。",
+   "en": "<strong>Lyophilization APS (4.2.2):</strong> Must simulate the steps of filling, partial stoppering, transfer, loading, vacuum, hold, full stoppering and unloading. Vacuum pressure must be maintained at 100-200 mbar to prevent the medium from boiling. Unless strict anaerobes have been confirmed, use aerobic conditions (SCDM + air to break the vacuum)."
+  },
+  {
+   "zh": "<strong>懸浮液 APS（4.2.3）：</strong>必須模擬無菌組分的添加操作。原則上採用端到端模擬；分段模擬需有書面理由和風險評估支持。",
+   "en": "<strong>Suspension APS (4.2.3):</strong> Must simulate the aseptic addition of components. End-to-end simulation is the principle; segmented simulation requires a documented rationale and risk assessment."
+  },
+  {
+   "zh": "<strong>半固體 APS（4.2.4）：</strong>可能需要增加培養基黏度以配合設備操作；不透明容器需使用透明替代容器或培養後無菌轉移至透明容器檢查。",
+   "en": "<strong>Semisolid APS (4.2.4):</strong> The medium viscosity may need to be increased to suit equipment operation; opaque containers require a transparent surrogate container or aseptic transfer to transparent containers after incubation for inspection."
+  },
+  {
+   "zh": "<strong>粉劑 APS（4.2.5）：</strong>五種方法各有優缺點，核心挑戰是結合液體培養基和粉末充填。方法 5（乾燥培養基充填後加水復原）不推薦。安慰劑粉末不得抑制微生物生長，檢查人員需經專門訓練。",
+   "en": "<strong>Powder APS (4.2.5):</strong> Each of the five approaches has advantages and disadvantages, and the core challenge is to combine liquid medium with powder filling. Approach 5 (fill dry medium, then reconstitute with water) is not recommended. The placebo powder must not inhibit microbial growth, and inspectors need specific training."
+  },
+  {
+   "zh": "<strong>其他劑型（4.2.6）：</strong>最終滅菌產品通常不需 APS；組合產品可能需多個 APS；ATMP 重點在手動操作和開放步驟的模擬。",
+   "en": "<strong>Other dosage forms (4.2.6):</strong> Terminally sterilized products generally do not need an APS; combination products may need multiple APS; for ATMP the focus is on simulating manual operations and open steps."
+  },
+  {
+   "zh": "<strong>設備技術 APS（4.3）：</strong>技術越先進（RABS → 隔離器 → 封閉系統），APS 設計彈性越大，但基本原則不變。隔離器建議至少 10,000 瓶、可穿插空瓶、Piggyback APS 不能獨立使用。封閉系統的 APS 比 TR28 要求更嚴格。SUS 應使用與生產相同的組件。",
+   "en": "<strong>Equipment technology APS (4.3):</strong> The more advanced the technology (RABS → isolator → closed system), the greater the APS design flexibility, but the basic principles do not change. For isolators, at least 10,000 vials are recommended, empty vials may be interspersed, and a piggyback APS cannot be used alone. A closed system APS is more demanding than the TR28 requirements. SUS should use the same components as production."
+  },
+  {
+   "zh": "<strong>ATMP APS（4.3.7）：</strong>操作員即「充填機」，初始資格認定 ≥ 3 次 APS，每年再認定 2 次。封閉步驟可省略時長但須模擬連接操作。小批量可能需充填超過實際生產量的 APS 單位。",
+   "en": "<strong>ATMP APS (4.3.7):</strong> The operator is the \"filling machine\"; initial qualification requires ≥ 3 APS runs, with requalification twice a year. Duration of closed steps may be omitted but connection operations must be simulated. Small batches may require filling more APS units than the actual production quantity."
+  }
+ ]
+}

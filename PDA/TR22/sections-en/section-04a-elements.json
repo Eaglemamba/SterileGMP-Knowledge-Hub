@@ -1,0 +1,357 @@
+{
+ "source": "section-04a-elements.html",
+ "blocks": [
+  {
+   "zh": "無菌製程模擬要素（第一部分）",
+   "en": "Elements of Aseptic Process Simulation (Part 1)"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "瞭解 APS 設計時須考量的關鍵參數與其對模擬有效性的影響",
+   "en": "Understand the key parameters to consider when designing an APS and how they affect the validity of the simulation"
+  },
+  {
+   "zh": "掌握設施與充填機台評估的頻率及涵蓋範圍要求",
+   "en": "Master the frequency and scope requirements for evaluating the facility and filling machine"
+  },
+  {
+   "zh": "理解設備組裝 (Equipment Setup) 在 APS 中的重要性及其作為固有干預的角色",
+   "en": "Understand the importance of equipment setup in an APS and its role as an inherent intervention"
+  },
+  {
+   "zh": "學習培養基選擇原則，包含 SCDM (TSB) 的適用場景及厭氧條件的特殊考量",
+   "en": "Learn the principles of media selection, including when SCDM (TSB) is appropriate and the special considerations for anaerobic conditions"
+  },
+  {
+   "zh": "認識惰性氣體 (Inert Gassing) 對 APS 培養基微生物回收能力的影響及替代方案",
+   "en": "Recognize how inert gassing affects the ability of APS media to recover microorganisms, and the alternatives available"
+  },
+  {
+   "zh": "本部分章節導覽",
+   "en": "Section Navigation"
+  },
+  {
+   "zh": "<a href=\"#sec7-0\">7.0 總論</a>\n<a href=\"#sec7-1\">7.1 設施與充填機台</a>\n<a href=\"#sec7-2\">7.2 設備組裝</a>\n<a href=\"#sec7-3\">7.3 培養基選擇與製備</a>\n<a href=\"#sec7-4\">7.4 惰性氣體</a>",
+   "en": "<a href=\"#sec7-0\">7.0 Overview</a>\n<a href=\"#sec7-1\">7.1 Facility and Filling Machine</a>\n<a href=\"#sec7-2\">7.2 Equipment Setup</a>\n<a href=\"#sec7-3\">7.3 Media Selection and Preparation</a>\n<a href=\"#sec7-4\">7.4 Inert Gassing</a>"
+  },
+  {
+   "zh": "<strong>7.0 Elements of Aseptic Process Simulations 7.0 無菌製程模擬的要素</strong>",
+   "en": "<strong>7.0 Elements of Aseptic Process Simulations</strong>"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念解析 Key Concepts",
+   "en": "Key Concepts"
+  },
+  {
+   "zh": "<strong>Elements of APS (APS 要素)：</strong>本章是 TR22 的核心實務章節之一，涵蓋了從 7.1 到 7.18 共計 18 個關鍵參數。每一個參數都直接影響 APS 能否真正反映實際生產條件。",
+   "en": "<strong>Elements of APS:</strong> This is one of the core practical chapters of TR22. It covers 18 key parameters, from 7.1 to 7.18. Each parameter directly affects whether the APS truly reflects actual production conditions."
+  },
+  {
+   "zh": "TR22 特別強調：參數的選擇與合理性論述（justification）必須有完整的書面文件，並經品質單位（Quality Unit）批准。這意味著 APS 的設計不能「拍腦袋決定」，而是要有系統性的風險評估支撐。",
+   "en": "TR22 stresses that the selection of parameters and their justification must be fully documented and approved by the Quality Unit. In other words, an APS design cannot be decided off the cuff; it must be backed by a systematic risk assessment."
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "想像你要為一棟大樓做消防演練。你不能只測試一層樓、一種情境——你需要考慮每層樓的人數、逃生路線、電梯故障情境、特殊區域（如地下室）等。APS 的 18 個要素就像消防演練的檢查清單：每一項都是確保「模擬夠真實」的必要條件。",
+   "en": "Imagine you are running a fire drill for a large building. You cannot test just one floor or one scenario. You need to consider the number of people on each floor, the escape routes, an elevator failure, and special areas such as the basement. The 18 elements of an APS work like the checklist for that fire drill: each one is a necessary condition for making the simulation realistic enough."
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "本節（Section 4a）涵蓋 7.0 至 7.4，後續 Section 4b 將繼續涵蓋 7.5 以後的要素。兩部分合併後才是完整的 APS 要素全貌。",
+   "en": "This section (Section 4a) covers 7.0 to 7.4. Section 4b continues with the elements from 7.5 onward. Only the two parts together give the complete picture of the APS elements."
+  },
+  {
+   "zh": "請特別注意：Quality Unit 的批准是法規監管機構（如 FDA、EMA）查核 APS 時的第一個檢查點——沒有 QU 簽核的 APS 設計文件，在稽查時幾乎等同於「未執行」。",
+   "en": "Please note: Quality Unit approval is the first checkpoint when regulators (such as FDA and EMA) examine an APS. An APS design document without QU sign-off is, in an inspection, almost the same as an APS that was never performed."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "為什麼 TR22 將 APS 要素細分為 18 個參數，而不是僅給出一個通用指導原則？這樣的細分對 CDMO 有什麼實務好處？",
+   "en": "Why does TR22 break the APS elements down into 18 parameters instead of giving a single general principle? What practical benefit does this level of detail offer a CDMO?"
+  },
+  {
+   "zh": "如果 Quality Unit 未參與 APS 設計的審批，在稽查中可能引發哪些風險？",
+   "en": "If the Quality Unit is not involved in approving the APS design, what risks could arise during an inspection?"
+  },
+  {
+   "zh": "<strong>7.1 Facility and Filling Machine Considerations 7.1 廠房與充填機考量</strong>",
+   "en": "<strong>7.1 Facility and Filling Machine Considerations</strong>"
+  },
+  {
+   "zh": "<strong>Semi-annual APS (每半年執行 APS)：</strong>這是全球法規的基本要求——每條無菌充填線至少每六個月須執行一次 APS。但請注意，TR22 的用語是「each aseptic process...are evaluated every six months」，意味著如果一條線有多個不同的無菌製程，每個製程都需要被涵蓋。",
+   "en": "<strong>Semi-annual APS:</strong> This is a basic global regulatory requirement: every aseptic filling line must perform an APS at least once every six months. Note, however, that TR22 words it as \"each aseptic process...are evaluated every six months\", which means that if a line runs several different aseptic processes, each process must be covered."
+  },
+  {
+   "zh": "<strong>Bracketing / Matrix Approach (分群/矩陣方法)：</strong>當同一充填線可運行多種容器密封配置時，不一定每種都要獨立做完整 APS。可以透過 bracketing（選最大最小兩端）或 matrix（輪替涵蓋）來合理減少 APS 次數，但這需要風險評估支持。",
+   "en": "<strong>Bracketing / Matrix Approach:</strong> When the same filling line can run several container closure configurations, a full independent APS is not necessarily needed for each one. Bracketing (selecting the two extremes, largest and smallest) or a matrix (covering configurations on a rotating basis) can reasonably reduce the number of APS runs, but this must be supported by a risk assessment."
+  },
+  {
+   "zh": "<strong>評估對象是「製程」而非「產品」：</strong>這是一個關鍵觀念。APS 驗證的是無菌充填的操作能力，不是特定藥品的品質。因此同一條線生產的不同產品可以共用 APS 結果，前提是製程條件相似。",
+   "en": "<strong>The object of evaluation is the \"process\", not the \"product\":</strong> This is a key concept. An APS verifies the capability of the aseptic filling operation, not the quality of a specific drug product. Different products made on the same line can therefore share APS results, provided the process conditions are similar."
+  },
+  {
+   "zh": "就像餐廳的衛生檢查，稽查員檢查的是「廚房的衛生操作能力」，而不是針對「每一道菜」做獨立檢查。只要你的廚房環境、操作人員、清潔流程都合格，不同菜色都可以在合格的環境中製作。同理，APS 驗證的是你的無菌操作「廚房」，而不是某一支「菜」（藥品）。",
+   "en": "Think of a restaurant hygiene inspection. The inspector checks the kitchen's ability to operate hygienically, not each individual dish. As long as your kitchen environment, staff, and cleaning procedures are all acceptable, any dish can be prepared in that qualified environment. Likewise, an APS verifies your aseptic operation \"kitchen\", not any single \"dish\" (drug product)."
+  },
+  {
+   "zh": "<strong>CDMO 特別注意：</strong>對於 CDMO 而言，一條充填線可能服務多個客戶、多種容器規格。合理運用 bracketing/matrix 策略可以大幅降低 APS 的執行頻率與成本。但這需要：",
+   "en": "<strong>Special note for CDMOs:</strong> For a CDMO, one filling line may serve multiple clients and many container formats. Sensible use of a bracketing/matrix strategy can greatly reduce the frequency and cost of APS runs. This requires:"
+  },
+  {
+   "zh": "完整的風險評估文件",
+   "en": "Fully documented risk assessment"
+  },
+  {
+   "zh": "清楚的 worst-case 定義",
+   "en": "A clear definition of worst case"
+  },
+  {
+   "zh": "Quality Unit 的事先批准",
+   "en": "Prior approval by the Quality Unit"
+  },
+  {
+   "zh": "若分群策略設計不當，一次 APS 失敗可能同時影響所有被涵蓋的產品/配置，造成更大的商業衝擊。",
+   "en": "If the grouping strategy is poorly designed, a single APS failure may affect all the products/configurations it covers at the same time, causing a much larger commercial impact."
+  },
+  {
+   "zh": "實務應用 Practical Application",
+   "en": "Practical Application"
+  },
+  {
+   "zh": "假設你的 CDMO 有一條充填線，可使用 2mL、5mL、10mL、20mL 四種西林瓶。在 bracketing 策略下，你可以選擇 2mL（最小）和 20mL（最大）進行 APS，以涵蓋中間規格。但需確保中間規格的設備變更（如充填針頭、瓶塞規格）不會引入 worst case 未被涵蓋的風險。",
+   "en": "Suppose your CDMO has a filling line that can use four vial sizes: 2 mL, 5 mL, 10 mL, and 20 mL. Under a bracketing strategy, you could run the APS with the 2 mL (smallest) and 20 mL (largest) to cover the sizes in between. You must still ensure that equipment changes for the intermediate sizes (such as filling needles and stopper specifications) do not introduce a risk that the worst case does not cover."
+  },
+  {
+   "zh": "如果一條充填線在六個月內有三次重大設備變更，APS 的執行頻率是否仍然只需每半年一次？為什麼？",
+   "en": "If a filling line undergoes three major equipment changes within six months, is it still enough to perform the APS only every six months? Why?"
+  },
+  {
+   "zh": "「評估製程而非產品」的原則下，若某客戶要求其產品有獨立的 APS 結果，CDMO 應如何處理？",
+   "en": "Under the principle of \"evaluate the process, not the product\", how should a CDMO respond if a client asks for independent APS results for its product?"
+  },
+  {
+   "zh": "<strong>7.2 Equipment Setup 7.2 設備設置</strong>",
+   "en": "<strong>7.2 Equipment Setup</strong>"
+  },
+  {
+   "zh": "<strong>Inherent Intervention (固有干預)：</strong>指製程中不可避免的操作步驟，如設備組裝、管路連接等。這些是生產過程的一部分，每次都會發生。",
+   "en": "<strong>Inherent Intervention:</strong> These are operational steps that cannot be avoided in the process, such as equipment assembly and tubing connections. They are part of production and occur every time."
+  },
+  {
+   "zh": "<strong>Corrective Intervention (矯正干預)：</strong>指生產過程中為了維持運作而進行的非計畫性操作，如更換故障零件、調整充填量等。",
+   "en": "<strong>Corrective Intervention:</strong> These are unplanned actions performed during production to keep the operation running, such as replacing a faulty part or adjusting the fill volume."
+  },
+  {
+   "zh": "TR22 明確指出：設備組裝（Equipment Setup）是大多數無菌製程中「操作人員操作強度最高」的環節。因此它在 APS 中被歸類為固有干預，必須納入模擬。這不是可選的——是「must」。",
+   "en": "TR22 states clearly that equipment setup is the step in most aseptic processes with the highest level of operator manipulation. It is therefore classified as an inherent intervention in an APS and must be included in the simulation. This is not optional; it is a \"must\"."
+  },
+  {
+   "zh": "想像外科手術前的器械準備。護理師打開無菌包、擺放手術器械的過程，就是「固有干預」——每次手術都必須做。而手術中發現某把鉗子不好用需要更換，就是「矯正干預」。兩種情境都可能破壞無菌環境，因此消防演練（APS）必須同時模擬這兩種場景。",
+   "en": "Think of instrument preparation before surgery. The nurse opening sterile packs and laying out the instruments is an \"inherent intervention\", because it must be done for every operation. Discovering during surgery that a forceps is not working and needs replacing is a \"corrective intervention\". Both situations can compromise the sterile environment, so the fire drill (APS) must simulate both."
+  },
+  {
+   "zh": "<strong>關鍵觀察點：</strong>TR22 的腳註特別強調了設備組裝階段的重要性。在稽查中，這一階段往往是被特別關注的。建議：",
+   "en": "<strong>Key observation point:</strong> The TR22 footnote specifically stresses the importance of the equipment setup stage. In inspections, this stage often receives particular attention. We recommend:"
+  },
+  {
+   "zh": "APS 觀察員應對設備組裝階段給予<strong>最高關注度</strong>",
+   "en": "APS observers should give the equipment setup stage <strong>the highest level of attention</strong>"
+  },
+  {
+   "zh": "需記錄每一步的傳遞、處理、連接、放置細節",
+   "en": "Record the details of every transfer, handling, connection, and placement step"
+  },
+  {
+   "zh": "操作人員在 APS 中執行的組裝動作必須與日常生產一致",
+   "en": "The setup actions operators perform during the APS must be consistent with those in routine production"
+  },
+  {
+   "zh": "<strong>零件差異的處理：</strong>相似的零件（如同類型充填針頭）不需要分別做 APS，但如果來自不同供應商或有磨損差異，需要透過風險評估來判斷是否需要額外的 APS。這對 CDMO 來說是一個成本優化的機會點。",
+   "en": "<strong>Handling part differences:</strong> Similar parts (such as filling needles of the same type) do not need separate APS runs. However, if they come from different suppliers or differ in wear, a risk assessment is needed to decide whether an additional APS is required. For a CDMO this is a cost-optimization opportunity."
+  },
+  {
+   "zh": "重點提示 — 零件磨損考量",
+   "en": "Key Notes - Part Wear Considerations"
+  },
+  {
+   "zh": "TR22 特別提到要注意「實際生產中使用的零件」而非「僅在 APS 時使用的零件」。言下之意：有些工廠會為 APS 專門準備全新零件，但真正的風險來自日常生產中已有磨損的零件。APS 應盡量使用與實際生產條件一致的零件狀態。",
+   "en": "TR22 specifically points to the parts \"actually used in production\" rather than \"parts used only for the APS\". The implication is that some sites prepare brand-new parts specifically for the APS, but the real risk comes from the worn parts used in daily production. The APS should use parts in a condition as close as possible to actual production."
+  },
+  {
+   "zh": "為什麼 TR22 要求 APS 中的設備組裝由「日常負責該操作的人員」執行，而不是由最有經驗的人員執行？",
+   "en": "Why does TR22 require that equipment setup in an APS be performed by the personnel who routinely carry out that operation, rather than by the most experienced personnel?"
+  },
+  {
+   "zh": "如果你的工廠有來自 A、B 兩家供應商的充填針頭，在什麼條件下可以只用其中一家的針頭做 APS？在什麼條件下必須兩家都做？",
+   "en": "If your site has filling needles from two suppliers, A and B, under what conditions can you run the APS with only one supplier's needles? Under what conditions must both be covered?"
+  },
+  {
+   "zh": "「Bracketing 不應僅基於物理尺寸」這句話的言外之意是什麼？請舉出一個除了尺寸之外需要考慮的製程變數。",
+   "en": "What is the implication of the statement \"Bracketing should not be based on physical size alone\"? Give an example of a process variable, other than size, that needs to be considered."
+  },
+  {
+   "zh": "<strong>7.3 Media Selection and Preparation 7.3 培養基的選擇與製備</strong>",
+   "en": "<strong>7.3 Media Selection and Preparation</strong>"
+  },
+  {
+   "zh": "<strong>SCDM / TSB (大豆酪蛋白消化液體培養基)：</strong>全名為 Soybean-Casein Digest Medium，也稱為 Tryptic Soy Broth (TSB)。這是 APS 最常用的培養基，因為它能廣泛回收好氧微生物，特別是人體和環境來源的常見污染菌。",
+   "en": "<strong>SCDM / TSB (Soybean-Casein Digest Medium):</strong> Also known as Tryptic Soy Broth (TSB). It is the medium most commonly used in APS because it broadly recovers aerobic microorganisms, especially common contaminants of human and environmental origin."
+  },
+  {
+   "zh": "<strong>FTM (液體硫代乙醇酸培養基)：</strong>Fluid Thioglycolate Medium，專用於厭氧微生物的培養。只有在有證據顯示製程環境可能有厭氧菌污染風險時才需要使用。",
+   "en": "<strong>FTM (Fluid Thioglycolate Medium):</strong> Used specifically for culturing anaerobic microorganisms. It is needed only when there is evidence that the process environment may be at risk of contamination with anaerobes."
+  },
+  {
+   "zh": "<strong>BSE/TSE 風險考量：</strong>動物來源的培養基成分（如酪蛋白）必須確認不來自 BSE/TSE 風險區域。更安全的替代方案是使用植物性蛋白腖培養基。",
+   "en": "<strong>BSE/TSE risk considerations:</strong> For medium components of animal origin (such as casein), it must be confirmed that they do not come from BSE/TSE risk regions. A safer alternative is to use a plant-derived peptone medium."
+  },
+  {
+   "zh": "選擇 APS 培養基就像選擇「餌」去釣魚。SCDM/TSB 就像萬用餌——能吸引大多數常見的魚（好氧菌）。但如果你的池塘（製程環境）裡已知有深水魚（厭氧菌），你就需要加掛深水專用餌（FTM）。如果整個池塘都是深水區（純厭氧環境），那就只用深水餌就好了。",
+   "en": "Choosing an APS medium is like choosing bait for fishing. SCDM/TSB is the all-purpose bait: it attracts most common fish (aerobes). But if your pond (the process environment) is known to hold deep-water fish (anaerobes), you also need to add deep-water bait (FTM). If the whole pond is deep water (a purely anaerobic environment), then deep-water bait alone is enough."
+  },
+  {
+   "zh": "<strong>何時需要加做厭氧 APS？</strong>TR22 列出了三個觸發條件：",
+   "en": "<strong>When is an anaerobic APS also needed?</strong> TR22 lists three trigger conditions:"
+  },
+  {
+   "zh": "製程在嚴格厭氧環境下進行",
+   "en": "The process is carried out in a strictly anaerobic environment"
+  },
+  {
+   "zh": "定期環境監測中持續回收到厭氧菌",
+   "en": "Anaerobes are consistently recovered in routine environmental monitoring"
+  },
+  {
+   "zh": "在無菌試驗的 FTM 管中<strong>專一性地</strong>檢出兼性厭氧菌",
+   "en": "Facultative anaerobes are <strong>exclusively</strong> detected in the FTM tubes of the sterility test"
+  },
+  {
+   "zh": "關鍵字是「consistently」和「exclusively」——偶爾檢出不構成觸發條件，但持續性或專一性的檢出就必須認真對待。",
+   "en": "The key words are \"consistently\" and \"exclusively\". An occasional isolate is not a trigger, but a consistent or exclusive finding must be taken seriously."
+  },
+  {
+   "zh": "重點提示 — BSE/TSE 與植物性培養基",
+   "en": "Key Notes - BSE/TSE and Plant-Derived Media"
+  },
+  {
+   "zh": "對於 ATMP（先進治療醫藥產品）和細胞治療產品，BSE/TSE 風險是法規特別關注的議題。TR22 建議：凡有黴漿菌（mycoplasma）或普利昂蛋白（prion）傳播風險的製程，<strong>一律使用植物性培養基</strong>。這不僅是 APS 的選擇，也反映了 Section 13.2 中對培養基合規性的更廣泛要求。",
+   "en": "For ATMPs (advanced therapy medicinal products) and cell therapy products, BSE/TSE risk is a topic of particular regulatory concern. TR22 recommends: for any process with a risk of transmitting mycoplasma or prions, <strong>always use plant-derived media</strong>. This is not only a choice for the APS; it also reflects the broader requirements for media compliance in Section 13.2."
+  },
+  {
+   "zh": "情境：你的 CDMO 同時生產傳統注射劑和 CAR-T 細胞治療產品。傳統注射劑使用標準 SCDM 做 APS 沒有問題。但 CAR-T 產品線因為涉及人源細胞，有潛在的 mycoplasma 風險——你應該選擇植物性蛋白腖培養基（如 vegetable peptone broth）來執行 APS，避免引入額外的 BSE/TSE 法規風險。",
+   "en": "Scenario: Your CDMO manufactures both conventional injectables and CAR-T cell therapy products. For the conventional injectables, running the APS with standard SCDM is fine. But the CAR-T line involves human-derived cells and a potential mycoplasma risk, so you should choose a plant-derived peptone medium (such as vegetable peptone broth) for its APS, to avoid introducing additional BSE/TSE regulatory risk."
+  },
+  {
+   "zh": "為什麼 SCDM 被稱為「通用培養基」？它與環境監測中使用的 SCDM agar 有什麼關係？",
+   "en": "Why is SCDM called a \"universal medium\"? How does it relate to the SCDM agar used in environmental monitoring?"
+  },
+  {
+   "zh": "假設你的環境監測數據在過去 12 個月中有 2 次在 settle plate 上檢出厭氧菌，你是否需要在 APS 中加入 FTM？請用 TR22 的判斷標準進行分析。",
+   "en": "Suppose your environmental monitoring data show that anaerobes were detected on settle plates twice in the past 12 months. Do you need to include FTM in the APS? Analyze this using the TR22 criteria."
+  },
+  {
+   "zh": "植物性蛋白腖培養基的微生物促進生長能力是否與 SCDM 完全相同？在使用前需要確認什麼？",
+   "en": "Does a plant-derived peptone medium have exactly the same growth promotion capability as SCDM? What must be confirmed before it is used?"
+  },
+  {
+   "zh": "<strong>7.4 Inert Gassing 7.4 惰性氣體充填</strong>",
+   "en": "<strong>7.4 Inert Gassing</strong>"
+  },
+  {
+   "zh": "<strong>Inert Gassing (惰性氣體充填)：</strong>許多藥品（特別是蛋白質藥物）對氧氣敏感，生產時會使用氮氣或其他惰性氣體排除容器中的氧氣。惰性氣體也常用於提供正壓以推動溶液轉移。",
+   "en": "<strong>Inert Gassing:</strong> Many drug products (especially protein drugs) are oxygen-sensitive, so nitrogen or another inert gas is used during manufacture to displace oxygen from the container. Inert gas is also often used to provide positive pressure to drive solution transfer."
+  },
+  {
+   "zh": "<strong>核心矛盾：</strong>惰性氣體排氧雖然保護了產品，卻可能抑制 SCDM 中好氧微生物的生長，導致 APS 的微生物回收能力降低。這就產生了一個根本性矛盾：模擬製程的需要 vs. 培養基生長促進能力的需要。",
+   "en": "<strong>The core conflict:</strong> Although displacing oxygen with inert gas protects the product, it may inhibit the growth of aerobic microorganisms in SCDM and so reduce the APS's ability to recover microorganisms. This creates a fundamental conflict: the need to simulate the process versus the need for the medium to support growth."
+  },
+  {
+   "zh": "<strong>TR22 的解決方案：</strong>用無菌過濾空氣（filter-sterilized air）替代惰性氣體，但必須通過相同的輸送系統。這樣既保證了培養基的生長促進能力，又確保了氣體輸送系統的無菌性在 APS 中被驗證。",
+   "en": "<strong>The TR22 solution:</strong> Replace the inert gas with filter-sterilized air, but deliver it through the same delivery system. This preserves the growth promotion capability of the medium while ensuring that the sterility of the gas delivery system is verified in the APS."
+  },
+  {
+   "zh": "這就像消防演練中的煙霧問題。真正的火災會產生濃煙（惰性氣體），但演練時如果用真正的濃煙，參與者可能看不到逃生路線（微生物無法生長）。所以演練時用「無害的可見煙霧」（過濾空氣）來替代——它仍然從相同的煙霧發生器（氣體輸送系統）釋放，確保系統路徑被測試，但不會造成真正的傷害（不會抑制生長）。",
+   "en": "This is like the smoke problem in a fire drill. A real fire produces thick smoke (the inert gas), but if real thick smoke were used in the drill, participants might be unable to see the escape routes (microorganisms could not grow). So the drill uses \"harmless visible smoke\" (filtered air) instead. It is still released from the same smoke generator (the gas delivery system), so the system path is tested, but it causes no real harm (it does not inhibit growth)."
+  },
+  {
+   "zh": "<strong>三個關鍵原則：</strong>",
+   "en": "<strong>Three key principles:</strong>"
+  },
+  {
+   "zh": "<strong>替代不能增加風險：</strong>用空氣替代惰性氣體時，不能對設備、製程或人員造成額外風險（例如，某些對氧氣敏感的設備材質可能與空氣不相容）",
+   "en": "<strong>The substitution must not add risk:</strong> When air replaces inert gas, it must not create additional risk to equipment, process, or personnel (for example, some oxygen-sensitive equipment materials may be incompatible with air)"
+  },
+  {
+   "zh": "<strong>輸送系統完整評估：</strong>空氣必須通過與惰性氣體相同的管路、過濾器、接頭輸送，這是因為 APS 同時也在評估整個氣體供應系統的無菌性",
+   "en": "<strong>Full evaluation of the delivery system:</strong> The air must be delivered through the same piping, filters, and connections as the inert gas, because the APS also evaluates the sterility of the entire gas supply system"
+  },
+  {
+   "zh": "<strong>純厭氧製程的例外：</strong>如果是真正的無氧製程模擬，可以使用惰性氣體，但必須事先確認所選厭氧培養基在該惰性氣體條件下仍能促進微生物生長",
+   "en": "<strong>Exception for purely anaerobic processes:</strong> For a truly oxygen-free process simulation, inert gas may be used, but it must first be confirmed that the chosen anaerobic medium still supports microbial growth under that inert gas condition"
+  },
+  {
+   "zh": "重點提示 — 氣體系統的隱藏風險",
+   "en": "Key Notes - Hidden Risks in the Gas System"
+  },
+  {
+   "zh": "TR22 最後一句話常被忽略但極為重要：「the sterility of the inert gas supply, including filters, connections, and the piping system, is being evaluated as part of the APS.」",
+   "en": "The last sentence of the TR22 text is often overlooked but extremely important: \"the sterility of the inert gas supply, including filters, connections, and the piping system, is being evaluated as part of the APS.\""
+  },
+  {
+   "zh": "這意味著 APS 不僅僅是在測試充填操作——它同時也在驗證整個氣體供應系統（氣體過濾器、管路接頭、配管系統）的無菌性。如果在 APS 中完全跳過氣體系統（例如不通氣），等於遺漏了一個重要的無菌風險來源。",
+   "en": "This means the APS does not only test the filling operation; it also verifies the sterility of the entire gas supply system (gas filters, pipe connections, and piping). If the gas system is skipped entirely in the APS (for example, by not gassing at all), an important source of sterility risk is missed."
+  },
+  {
+   "zh": "情境：你的充填線生產一支蛋白質藥物，使用氮氣做 headspace purge。在執行 APS 時，你應該：",
+   "en": "Scenario: Your filling line produces a protein drug and uses nitrogen for a headspace purge. When performing the APS, you should:"
+  },
+  {
+   "zh": "將氮氣替換為無菌過濾空氣",
+   "en": "Replace the nitrogen with sterile filtered air"
+  },
+  {
+   "zh": "空氣通過相同的氮氣管路、過濾器和接頭輸送",
+   "en": "Deliver the air through the same nitrogen piping, filters, and connections"
+  },
+  {
+   "zh": "記錄氣體替換的合理性（justification）",
+   "en": "Document the justification for the gas substitution"
+  },
+  {
+   "zh": "確認空氣的引入不會對設備材質造成問題",
+   "en": "Confirm that introducing air does not cause problems for equipment materials"
+  },
+  {
+   "zh": "確保氣體過濾器的完整性測試 (integrity test) 仍在 APS 流程中執行",
+   "en": "Ensure that the gas filter integrity test is still performed as part of the APS procedure"
+  },
+  {
+   "zh": "為什麼不能在 APS 中簡單地「不通氣」來避免惰性氣體對培養基的影響？這樣做會遺漏什麼驗證目的？",
+   "en": "Why can't you simply \"not gas\" during the APS to avoid the effect of the inert gas on the medium? What validation purpose would be missed?"
+  },
+  {
+   "zh": "假設你的製程使用的不是氮氣而是二氧化碳（CO<sub>2</sub>），CO<sub>2</sub> 對 SCDM 的影響與氮氣有何不同？你會如何設計 APS？",
+   "en": "Suppose your process uses carbon dioxide (CO<sub>2</sub>) rather than nitrogen. How does the effect of CO<sub>2</sub> on SCDM differ from that of nitrogen? How would you design the APS?"
+  },
+  {
+   "zh": "如何驗證「替代不增加風險」？請列出至少三個需要評估的項目。",
+   "en": "How can you verify that \"the substitution does not add risk\"? List at least three items that need to be evaluated."
+  }
+ ]
+}

@@ -1,0 +1,501 @@
+{
+ "source": "section-03-documentation.html",
+ "blocks": [
+  {
+   "zh": "無菌製程模擬文件管理與環境監控",
+   "en": "Documentation and Environmental Monitoring for Aseptic Process Simulation"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "了解 APS 文件系統的完整架構，包括程序書、批次記錄、最終報告等各層級文件的功能與要求",
+   "en": "Understand the complete architecture of the APS documentation system, including the function and requirements of each level: procedures, batch records, final reports"
+  },
+  {
+   "zh": "掌握 APS 協議書 (Protocol) 應涵蓋的關鍵要素與審核流程",
+   "en": "Master the key elements and review process of an APS protocol"
+  },
+  {
+   "zh": "理解 APS 觀察 (Observation) 與錄影 (Video Recording) 在確保模擬品質中的角色",
+   "en": "Understand the role of observation and video recording in ensuring simulation quality"
+  },
+  {
+   "zh": "認識 Environmental Monitoring (EM) 在 APS 期間的執行原則及結果判讀邏輯",
+   "en": "Know the principles for performing Environmental Monitoring (EM) during an APS and the logic for interpreting results"
+  },
+  {
+   "zh": "本節內容導覽",
+   "en": "Section Overview"
+  },
+  {
+   "zh": "<strong>5.0 Aseptic Process Simulation Documentation 5.0 無菌製程模擬文件</strong>",
+   "en": "<strong>5.0 Aseptic Process Simulation Documentation</strong>"
+  },
+  {
+   "zh": "核心概念解析 Key Concepts",
+   "en": "Key Concepts"
+  },
+  {
+   "zh": "<strong>APS Documentation (APS 文件管理)：</strong>APS 不只是「做一次充填模擬」，它需要一套完整的文件體系來支撐。文件系統的目的有三：",
+   "en": "<strong>APS Documentation:</strong> An APS is not simply \"running a filling simulation once\"; it needs a complete documentation system behind it. The system has three purposes:"
+  },
+  {
+   "zh": "<strong>指導執行：</strong>提供明確的操作指引，確保每次 APS 都按照相同標準執行",
+   "en": "<strong>Direct execution:</strong> Provide clear operating instructions so every APS is performed to the same standard"
+  },
+  {
+   "zh": "<strong>記錄證據：</strong>留下可追溯的執行記錄，作為驗證完成的證明",
+   "en": "<strong>Record evidence:</strong> Leave a traceable record of execution as proof that the validation was completed"
+  },
+  {
+   "zh": "<strong>支援調查：</strong>當發生無菌失敗時，文件是回溯分析的重要依據",
+   "en": "<strong>Support investigations:</strong> When a sterility failure occurs, the documents are the key basis for retrospective analysis"
+  },
+  {
+   "zh": "<strong>Quality Unit (品質單位)：</strong>所有 APS 文件必須經品質單位審核與核准，這是 GMP 的基本要求。品質單位需確認 APS 設計合理、執行合規、結果可接受。",
+   "en": "<strong>Quality Unit:</strong> All APS documents must be reviewed and approved by the Quality Unit; this is a basic GMP requirement. The Quality Unit must confirm that the APS design is sound, execution is compliant and results are acceptable."
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "APS 文件體系就像一場<strong>法庭審判的完整記錄</strong>：你需要有「起訴書」(Protocol/協議書) 說明為什麼要做、怎麼做；需要有「庭審紀錄」(Batch Record/批次紀錄) 詳細記下每個步驟；最後還要有「判決書」(Final Report/最終報告) 做出結論。如果未來案件被「上訴」(法規審查)，這些文件就是你能提出的全部證據。",
+   "en": "The APS documentation system is like the <strong>complete record of a court trial</strong>: you need an \"indictment\" (Protocol) explaining why and how the study is done; \"trial transcripts\" (Batch Record) recording every step in detail; and finally a \"judgment\" (Final Report) stating the conclusion. If the case is later \"appealed\" (regulatory review), these documents are all the evidence you can present."
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "TR22 特別強調 APS 文件需包含 <strong>Master Plan (總體計畫)</strong>，這在許多公司容易被忽略。Master Plan 不是單次 APS 的文件，而是針對整個廠區或產品線的 APS 策略全覽，涵蓋：",
+   "en": "TR22 specifically emphasizes that APS documentation should include a <strong>Master Plan</strong>, which many companies tend to overlook. The Master Plan is not a document for a single APS; it is an overview of the APS strategy for the whole site or product line, covering:"
+  },
+  {
+   "zh": "所有需要執行 APS 的產線清單",
+   "en": "A list of all production lines that require an APS"
+  },
+  {
+   "zh": "各產線的 worst-case 配置邏輯",
+   "en": "The worst-case configuration logic for each line"
+  },
+  {
+   "zh": "執行頻率與輪替策略的理由",
+   "en": "The rationale for frequency and rotation strategy"
+  },
+  {
+   "zh": "與 Contamination Control Strategy (CCS) 的銜接",
+   "en": "The link to the Contamination Control Strategy (CCS)"
+  },
+  {
+   "zh": "<strong>5.1 Process Definition 5.1 製程定義</strong>",
+   "en": "<strong>5.1 Process Definition</strong>"
+  },
+  {
+   "zh": "<strong>Process Definition (製程定義)：</strong>這是 APS 設計的第一步 -- 你必須先清楚定義「哪些製程步驟需要被模擬」。關鍵判斷原則是：<strong>滅菌之後、密封之前</strong>所有可能影響無菌保證 (Sterility Assurance) 的步驟都應被納入。",
+   "en": "<strong>Process Definition:</strong> This is the first step of APS design: you must first define clearly \"which process steps need to be simulated\". The key principle is that <strong>all steps after sterilization and before sealing</strong> that may affect Sterility Assurance should be included."
+  },
+  {
+   "zh": "值得注意的是，TR22 擴展了傳統的範圍認知：即便容器已密封，如果後續的處理（如洩漏檢測、自動化檢查）可能損傷容器完整性，這些步驟也應被考慮。",
+   "en": "Note that TR22 extends the traditional scope: even after the container is sealed, subsequent handling (such as leak testing or automated inspection) that could damage container integrity should also be considered."
+  },
+  {
+   "zh": "許多公司在定義 APS 範圍時容易遺漏的步驟包括：",
+   "en": "Steps that companies often miss when defining APS scope include:"
+  },
+  {
+   "zh": "凍乾機 (Lyophilizer) 的裝載與卸載 -- 這是一個高風險的無菌操作",
+   "en": "Loading and unloading of the lyophilizer: a high-risk aseptic operation"
+  },
+  {
+   "zh": "無菌藥液的轉移與暫存 -- 管路連接和保存期間都有污染風險",
+   "en": "Transfer and holding of sterile drug solution: line connections and the holding period both carry contamination risk"
+  },
+  {
+   "zh": "密封後的檢查步驟 -- 如果搬運不當可能破壞密封完整性",
+   "en": "Post-sealing inspection steps: improper handling may compromise seal integrity"
+  },
+  {
+   "zh": "完整的 Process Definition 文件應該結合製程流程圖 (Process Flow Diagram)，標註每個步驟的風險等級。",
+   "en": "A complete Process Definition document should be combined with a Process Flow Diagram that marks the risk level of each step."
+  },
+  {
+   "zh": "<strong>5.2 Protocol and Procedure Preparation 5.2 方案與程序的準備</strong>",
+   "en": "<strong>5.2 Protocol and Procedure Preparation</strong>"
+  },
+  {
+   "zh": "<strong>APS Protocol (APS 協議書)：</strong>這是整個 APS 研究的「藍圖」。它必須在研究開始前經品質單位核准，並且具備可追溯性。TR22 列出了超過 20 項應包含的內容，顯示這份文件的重要性與複雜度。",
+   "en": "<strong>APS Protocol:</strong> This is the \"blueprint\" of the whole APS study. It must be approved by the Quality Unit before the study starts and must be traceable. TR22 lists more than 20 items that should be included, which shows the importance and complexity of this document."
+  },
+  {
+   "zh": "協議書的核心精神是：<strong>在動手之前，先把所有的「為什麼」和「怎麼做」都想清楚並記錄下來。</strong>",
+   "en": "The core principle of the protocol is: <strong>before starting, think through and document every \"why\" and \"how\".</strong>"
+  },
+  {
+   "zh": "APS 協議書就像建築的<strong>施工藍圖</strong>：蓋房子之前，你不會說「開始蓋了再看著辦」。你需要先畫好圖紙，標明用什麼材料 (培養基)、多大面積 (充填數量)、哪些工人參與 (操作人員)、怎麼檢查品質 (接受標準)。藍圖必須先過「建管處審核」(品質單位核准) 才能開工。",
+   "en": "The APS protocol is like the <strong>construction blueprint</strong> of a building: before building a house, you would not say \"let's start and figure it out as we go\". You first draw the plans, specifying the materials (media), the area (fill quantity), which workers take part (operators) and how quality is checked (acceptance criteria). The blueprint must pass the \"building authority review\" (Quality Unit approval) before work can begin."
+  },
+  {
+   "zh": "協議書中有幾項特別容易被忽略但非常重要的要素：",
+   "en": "Several elements of the protocol are particularly easy to overlook but very important:"
+  },
+  {
+   "zh": "<strong>Worst-case rationale (最差條件理由)：</strong>不能只列出條件，必須說明「為什麼這是最差條件」",
+   "en": "<strong>Worst-case rationale:</strong> It is not enough to list the conditions; you must explain \"why this is the worst case\""
+  },
+  {
+   "zh": "<strong>Differences from production (與生產的差異)：</strong>APS 與實際生產有任何不同之處都必須載明並說明理由，例如以空氣取代惰性氣體",
+   "en": "<strong>Differences from production:</strong> Any difference between the APS and actual production must be documented and justified, for example replacing inert gas with air"
+  },
+  {
+   "zh": "<strong>Invalidation criteria (判定無效的條件)：</strong>必須事先定義在什麼情況下可以宣告 APS 無效，避免事後「量身訂做」規則",
+   "en": "<strong>Invalidation criteria:</strong> The circumstances under which an APS may be declared invalid must be defined in advance, to avoid \"tailoring\" the rules after the fact"
+  },
+  {
+   "zh": "<strong>Pre-requisites (前提條件)：</strong>關鍵支援系統的確認 (qualification) 和製程驗證必須在 APS 執行前完成",
+   "en": "<strong>Pre-requisites:</strong> Qualification of critical support systems and process validation must be completed before the APS is performed"
+  },
+  {
+   "zh": "實務應用 Practical Application",
+   "en": "Practical Application"
+  },
+  {
+   "zh": "在 CDMO 營運中，不同客戶產品可能使用同一條充填線。一份好的 APS Protocol 需要考慮：",
+   "en": "In CDMO operations, products from different clients may use the same filling line. A good APS Protocol needs to consider:"
+  },
+  {
+   "zh": "是否可以用 bracketing approach 來涵蓋不同容器規格？",
+   "en": "Can a bracketing approach be used to cover different container formats?"
+  },
+  {
+   "zh": "不同產品的充填速度差異是否需要分別模擬？",
+   "en": "Do differences in filling speed between products require separate simulations?"
+  },
+  {
+   "zh": "客戶的特殊要求 (如特定介入操作) 是否已被納入？",
+   "en": "Have special client requirements (such as particular interventions) been included?"
+  },
+  {
+   "zh": "妥善設計協議書可以減少重複執行 APS 的次數，節省數十萬元的驗證成本。",
+   "en": "A well-designed protocol can reduce the number of repeat APS runs and save validation costs of several hundred thousand NT dollars."
+  },
+  {
+   "zh": "<strong>5.3 Aseptic Process Simulation Execution Record 5.3 無菌製程模擬執行紀錄</strong>",
+   "en": "<strong>5.3 Aseptic Process Simulation Execution Record</strong>"
+  },
+  {
+   "zh": "<strong>APS Batch Record (APS 批次紀錄)：</strong>這是 APS 執行時的「即時戰場日誌」，記錄所有實際發生的事情。關鍵要求：",
+   "en": "<strong>APS Batch Record:</strong> This is the \"real-time battlefield log\" of the APS execution, recording everything that actually happens. Key requirements:"
+  },
+  {
+   "zh": "格式必須與正式生產批次紀錄相同 -- 因為 APS 的目的就是模擬真實生產",
+   "en": "The format must be the same as the production batch record, because the purpose of an APS is to simulate real production"
+  },
+  {
+   "zh": "所有附件（清潔記錄、滅菌記錄、放行標籤）都必須附上",
+   "en": "All attachments (cleaning records, sterilization records, release labels) must be attached"
+  },
+  {
+   "zh": "必須遵循 Good Documentation Practice (GDocP，良好文件管理規範)",
+   "en": "Good Documentation Practice (GDocP) must be followed"
+  },
+  {
+   "zh": "<strong>Intervention 記錄是調查成敗的關鍵。</strong>每一個介入操作都必須詳細記載：",
+   "en": "<strong>Intervention records are the key to a successful investigation.</strong> Every intervention must be documented in detail:"
+  },
+  {
+   "zh": "<strong>類型</strong> -- 是 Inherent (固有介入，如設備組裝) 或 Corrective (矯正介入，如更換零件)？",
+   "en": "<strong>Type</strong>: Is it an Inherent intervention (such as equipment set-up) or a Corrective intervention (such as replacing a part)?"
+  },
+  {
+   "zh": "<strong>時間</strong> -- 精確到分鐘，何時發生？",
+   "en": "<strong>Time</strong>: Precisely when did it occur, to the minute?"
+  },
+  {
+   "zh": "<strong>人員</strong> -- 誰執行了這個介入？",
+   "en": "<strong>Personnel</strong>: Who performed the intervention?"
+  },
+  {
+   "zh": "<strong>持續時間</strong> -- 開放時間有多長？",
+   "en": "<strong>Duration</strong>: How long was the container or line open?"
+  },
+  {
+   "zh": "<strong>位置</strong> -- 當時充填到第幾箱/第幾盤？",
+   "en": "<strong>Location</strong>: Which tray or box was being filled at the time?"
+  },
+  {
+   "zh": "這些資訊在 APS 失敗調查時是不可或缺的：可以將陽性單位與特定介入操作進行時間比對，縮小根本原因的搜尋範圍。",
+   "en": "This information is indispensable in an APS failure investigation: positive units can be compared in time with specific interventions, narrowing the search for the root cause."
+  },
+  {
+   "zh": "APS 批次紀錄就像飛機的<strong>黑盒子 (Flight Data Recorder)</strong>：在正常情況下它只是一份記錄，但當「事故」(APS 失敗) 發生時，這些詳細的時間戳、操作記錄、人員資訊就成為還原事故現場的唯一依據。記錄越完整，調查就越有方向。",
+   "en": "The APS batch record is like an aircraft's <strong>black box (Flight Data Recorder)</strong>: normally it is just a record, but when an \"accident\" (APS failure) occurs, these detailed timestamps, operation records and personnel information become the only basis for reconstructing the scene. The more complete the record, the clearer the direction of the investigation."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "為什麼 APS 批次紀錄要求「與正式生產批次紀錄格式相同」？如果格式不同，會有什麼風險？",
+   "en": "Why does the APS batch record have to be in the same format as the production batch record? What risks arise if the formats differ?"
+  },
+  {
+   "zh": "一個 Corrective Intervention 發生在充填第 5,000 瓶時，但最終第 4,800-5,200 瓶中有一瓶陽性。你會如何利用批次紀錄中的資訊來進行調查？",
+   "en": "A Corrective Intervention occurred when the 5,000th vial was filled, but one vial between units 4,800 and 5,200 turned out positive. How would you use the information in the batch record to investigate?"
+  },
+  {
+   "zh": "為什麼需要記錄「充填室內的所有人員」，而不只是直接操作的人員？",
+   "en": "Why is it necessary to record all personnel in the filling room, and not only those directly performing the operation?"
+  },
+  {
+   "zh": "<strong>5.4 Final Report 5.4 最終報告</strong>",
+   "en": "<strong>5.4 Final Report</strong>"
+  },
+  {
+   "zh": "<strong>Final Report (最終報告)：</strong>這是 APS 文件體系的「總結論文」，整合批次紀錄與環境監控資料，做出「通過/失敗」的最終判定。其核心內容包含：",
+   "en": "<strong>Final Report:</strong> This is the \"concluding paper\" of the APS documentation system. It integrates the batch record and environmental monitoring data and makes the final \"pass/fail\" determination. Its core content includes:"
+  },
+  {
+   "zh": "研究結果的彙整",
+   "en": "A compilation of the study results"
+  },
+  {
+   "zh": "是否符合接受標準的判定",
+   "en": "A determination of whether the acceptance criteria were met"
+  },
+  {
+   "zh": "所有偏差或異常的處理結論",
+   "en": "Conclusions on the handling of all deviations or abnormalities"
+  },
+  {
+   "zh": "後續行動事項",
+   "en": "Follow-up actions"
+  },
+  {
+   "zh": "TR22 在此處提出一個重要的細微差別：<strong>非完整容器 (non-integral units) 中的污染不一定代表 APS 失敗。</strong>",
+   "en": "TR22 makes an important distinction here: <strong>contamination in non-integral units does not necessarily mean the APS has failed.</strong>"
+  },
+  {
+   "zh": "舉例：如果一瓶培養基出現混濁，但該瓶的瓶蓋有明顯缺陷（密封不良），且調查確認此缺陷與日常製程無關（例如是 APS 特有的操作造成），則可以判定這不是無菌製程的失敗。",
+   "en": "For example: if a vial of media becomes turbid, but the vial has an obvious closure defect (poor seal) and the investigation confirms that the defect is unrelated to the routine process (for example, it was caused by an operation specific to the APS), it can be concluded that this is not a failure of the aseptic process."
+  },
+  {
+   "zh": "但這個判定<strong>必須有充分的調查證據支持</strong>，不能隨意排除陽性結果。",
+   "en": "However, this conclusion <strong>must be supported by sufficient investigational evidence</strong>; positive results must not be excluded arbitrarily."
+  },
+  {
+   "zh": "在 CDMO 環境中，APS Final Report 通常是客戶審計和法規查廠的重點檢查對象。一份高品質的 Final Report 應該：",
+   "en": "In a CDMO setting, the APS Final Report is usually a focus of client audits and regulatory inspections. A high-quality Final Report should:"
+  },
+  {
+   "zh": "能讓審計員在 30 分鐘內了解 APS 的全貌",
+   "en": "Allow an auditor to understand the whole APS within 30 minutes"
+  },
+  {
+   "zh": "所有數據都有明確的來源和追溯路徑",
+   "en": "Give every data point a clear source and traceable path"
+  },
+  {
+   "zh": "偏差處理有邏輯嚴謹的調查結論",
+   "en": "Present a logically rigorous investigation conclusion for each deviation"
+  },
+  {
+   "zh": "與 CCS 的整體策略保持一致",
+   "en": "Remain consistent with the overall CCS strategy"
+  },
+  {
+   "zh": "<strong>5.5 Aseptic Process Simulation Observation 5.5 無菌製程模擬觀察</strong>",
+   "en": "<strong>5.5 Aseptic Process Simulation Observation</strong>"
+  },
+  {
+   "zh": "<strong>APS Observation (APS 觀察)：</strong>APS 不是「做完就好」，必須有合格的觀察員全程監看。觀察的三重目的：",
+   "en": "<strong>APS Observation:</strong> An APS is not \"done once it is finished\"; qualified observers must monitor it throughout. Observation has three purposes:"
+  },
+  {
+   "zh": "<strong>確認合規：</strong>所有計畫中的活動是否正確執行？",
+   "en": "<strong>Confirm compliance:</strong> Were all planned activities performed correctly?"
+  },
+  {
+   "zh": "<strong>訓練價值：</strong>觀察紀錄可用於加強無菌操作訓練",
+   "en": "<strong>Training value:</strong> Observation records can be used to strengthen aseptic technique training"
+  },
+  {
+   "zh": "<strong>調查支援：</strong>如果 APS 失敗，觀察紀錄是重建事件的關鍵",
+   "en": "<strong>Investigation support:</strong> If the APS fails, observation records are key to reconstructing events"
+  },
+  {
+   "zh": "觀察員必須具備<strong>無菌操作專業知識</strong>，能判斷操作是否符合 SOP、批次紀錄和協議書的要求。",
+   "en": "Observers must have <strong>aseptic operations expertise</strong> and be able to judge whether operations comply with the SOP, batch record and protocol."
+  },
+  {
+   "zh": "APS 觀察員就像足球比賽的<strong>VAR (Video Assistant Referee，影像輔助裁判)</strong>：他們不參與比賽（不干預製程），但全程監看每個動作，確保規則被遵守。如果出了問題，他們的紀錄就是「回放判定」的依據。關鍵是：觀察員<strong>不能指導操作員</strong>，就像 VAR 不能告訴球員怎麼踢球。",
+   "en": "An APS observer is like the <strong>VAR (Video Assistant Referee)</strong> in football: they do not take part in the match (they do not interfere with the process), but they watch every action throughout to make sure the rules are followed. If a problem arises, their records are the basis for the \"replay decision\". The key point: the observer <strong>must not coach the operator</strong>, just as the VAR cannot tell players how to kick the ball."
+  },
+  {
+   "zh": "三種觀察方式各有優缺點：",
+   "en": "The three observation methods each have advantages and disadvantages:"
+  },
+  {
+   "zh": "最佳做法是<strong>組合使用</strong>多種方式，確保全程無死角覆蓋。",
+   "en": "The best practice is to <strong>combine</strong> several methods to ensure coverage with no blind spots."
+  },
+  {
+   "zh": "<strong>5.5.1 Video Recording of Aseptic Process Simulations 5.5.1 無菌製程模擬的影像記錄</strong>",
+   "en": "<strong>5.5.1 Video Recording of Aseptic Process Simulations</strong>"
+  },
+  {
+   "zh": "<strong>Video Recording (錄影)：</strong>TR22 明確表示錄影「推薦但非法規強制要求」。然而，這是一個日益成為行業最佳實踐 (Best Practice) 的做法。",
+   "en": "<strong>Video Recording:</strong> TR22 states clearly that video recording is \"recommended but not a regulatory requirement\". However, it is increasingly becoming industry best practice."
+  },
+  {
+   "zh": "<strong>AI 應用於 APS：</strong>TR22 (2025版) 首次提及利用人工智慧 (AI) / 機器學習 (Machine Learning) 來分析錄影內容，自動偵測和分類介入操作，並判斷操作是否正確。這反映了製藥業正在積極擁抱數位化轉型。",
+   "en": "<strong>AI in APS:</strong> TR22 (2025 edition) mentions for the first time the use of artificial intelligence (AI) / machine learning to analyze video content, automatically detect and classify interventions, and judge whether operations were performed correctly. This reflects the pharmaceutical industry's active embrace of digital transformation."
+  },
+  {
+   "zh": "導入 APS 錄影時必須注意的事項：",
+   "en": "Points to note when introducing APS video recording:"
+  },
+  {
+   "zh": "<strong>隱私合規：</strong>各國對工作場所錄影有不同法規要求，特別是歐盟 GDPR 下可能需要員工同意",
+   "en": "<strong>Privacy compliance:</strong> Countries have different legal requirements for workplace recording; under the EU GDPR in particular, employee consent may be required"
+  },
+  {
+   "zh": "<strong>GMP 文件管理：</strong>如果錄影被用於調查，該段影片必須按照 GMP 文件要求保存和管理",
+   "en": "<strong>GMP document control:</strong> If video is used in an investigation, that footage must be retained and managed in accordance with GMP documentation requirements"
+  },
+  {
+   "zh": "<strong>時間戳準確性：</strong>錄影的時間戳必須與批次紀錄的時間同步，否則在調查時無法進行有效的時間比對",
+   "en": "<strong>Timestamp accuracy:</strong> Video timestamps must be synchronized with the times in the batch record; otherwise an effective time comparison cannot be made during an investigation"
+  },
+  {
+   "zh": "<strong>不能取代人員觀察：</strong>即使有錄影，仍需要有人進行即時觀察",
+   "en": "<strong>Cannot replace personnel observation:</strong> Even with video, someone must still observe in real time"
+  },
+  {
+   "zh": "APS 錄影就像高速公路上的<strong>行車記錄器 (Dashcam)</strong>：平常你不太會去看它，但一旦發生「事故」(APS 失敗)，它就成了還原真相的最佳證據。而 AI 分析錄影就像「智慧行車記錄器」自動標記出急煞車或異常變換車道 -- 幫助你從數小時的影片中快速定位關鍵事件。",
+   "en": "APS video is like a <strong>dashcam</strong> on a highway: normally you hardly look at it, but once an \"accident\" (APS failure) happens, it becomes the best evidence for reconstructing the truth. AI analysis of the video is like a \"smart dashcam\" that automatically flags hard braking or unusual lane changes, helping you quickly locate key events in hours of footage."
+  },
+  {
+   "zh": "為什麼 TR22 建議錄影但不將其列為法規強制要求？你認為未來這是否可能變成強制要求？",
+   "en": "Why does TR22 recommend video recording but not make it a regulatory requirement? Do you think it might become mandatory in the future?"
+  },
+  {
+   "zh": "AI 自動分析介入操作的技術可以如何幫助改善 APS 品質？你能想到哪些可能的應用場景？",
+   "en": "How can AI-based automatic analysis of interventions help improve APS quality? What possible application scenarios can you think of?"
+  },
+  {
+   "zh": "如果一家位於歐洲的 CDMO 想要導入 APS 錄影，在 GDPR 合規方面需要考慮什麼？",
+   "en": "If a CDMO in Europe wants to introduce APS video recording, what must it consider for GDPR compliance?"
+  },
+  {
+   "zh": "<strong>6.0 Environmental Monitoring 6.0 環境監測</strong>",
+   "en": "<strong>6.0 Environmental Monitoring</strong>"
+  },
+  {
+   "zh": "<strong>Environmental Monitoring, EM (環境監控)：</strong>EM 是 APS 期間評估無菌製程環境狀態的關鍵工具。它透過空氣微粒計數、浮游菌取樣、落菌計數、表面接觸取樣等方法，證明潔淨環境在整個無菌製程期間維持在可接受的水準。",
+   "en": "<strong>Environmental Monitoring (EM):</strong> EM is a key tool for assessing the state of the aseptic processing environment during an APS. Through methods such as airborne particle counting, viable air sampling, settle plates and surface contact sampling, it demonstrates that the clean environment remained at an acceptable level throughout the aseptic process."
+  },
+  {
+   "zh": "<strong>Alert Level (警示水準) vs Action Limit (行動限度)：</strong>",
+   "en": "<strong>Alert Level vs Action Limit:</strong>"
+  },
+  {
+   "zh": "<strong>Alert Level：</strong>早期預警，表示環境有偏離趨勢的跡象，需要加強關注",
+   "en": "<strong>Alert Level:</strong> An early warning that the environment shows signs of drifting from its normal state and needs closer attention"
+  },
+  {
+   "zh": "<strong>Action Limit：</strong>必須立即採取行動的閾值，超過即需調查和矯正",
+   "en": "<strong>Action Limit:</strong> The threshold at which action must be taken immediately; exceeding it requires investigation and correction"
+  },
+  {
+   "zh": "EM 就像手術室的<strong>生命體徵監護儀</strong>：在手術（APS）進行時，它持續監測環境的「健康狀態」。Alert Level 就像心率偏快的提醒 -- 需要關注但不必立即停止手術；Action Limit 就像心律不整的警報 -- 必須立即採取措施。但關鍵是：即使監護儀一度響了警報，只要手術（APS）最終成功完成，不代表以後手術都可以在警報狀態下進行。",
+   "en": "EM is like the <strong>vital signs monitor</strong> in an operating room: while the surgery (APS) is under way, it continuously monitors the \"health\" of the environment. The Alert Level is like a warning of a fast heart rate: it needs attention but the surgery need not stop immediately; the Action Limit is like an arrhythmia alarm: measures must be taken at once. But the key point is that even if the monitor sounded an alarm at some point, as long as the surgery (APS) was eventually completed successfully, it does not mean future surgeries can proceed in an alarm state."
+  },
+  {
+   "zh": "TR22 對 EM 在 APS 中的應用有三個<strong>至關重要</strong>的原則：",
+   "en": "TR22 sets out three <strong>critical</strong> principles for the use of EM in an APS:"
+  },
+  {
+   "zh": "<strong>使用常規 EM 程序：</strong>APS 期間的 EM 必須與日常生產完全相同。不可減少取樣（因為取樣本身就是一種 routine intervention），增加取樣則需要有正當理由。",
+   "en": "<strong>Use routine EM procedures:</strong> EM during an APS must be exactly the same as in routine production. Sampling must not be reduced (because sampling is itself a routine intervention), and any additional sampling needs justification."
+  },
+  {
+   "zh": "<strong>EM 偏差不等於 APS 失敗：</strong>EM 超出行動限度不會自動導致 APS 被拒絕，但必須完成調查並在 APS 報告核准前解決。",
+   "en": "<strong>An EM excursion does not equal APS failure:</strong> An EM result above the action limit does not automatically cause the APS to be rejected, but the investigation must be completed and resolved before the APS report is approved."
+  },
+  {
+   "zh": "EM 結果不可反向「設定」標準：",
+   "en": "EM results must not be used to \"set\" standards in reverse:"
+  },
+  {
+   "zh": "APS 通過 + EM 超標 ≠ 日常生產可以在超標環境下進行",
+   "en": "APS pass + EM excursion ≠ routine production may be run in an environment that exceeds limits"
+  },
+  {
+   "zh": "APS 通過 + EM 特別好 ≠ 需要把日常限度降到更嚴格的水準",
+   "en": "APS pass + exceptionally good EM ≠ routine limits need to be tightened"
+  },
+  {
+   "zh": "CDMO 日常營運中常見的 EM 相關困境：",
+   "en": "Common EM-related dilemmas in day-to-day CDMO operations:"
+  },
+  {
+   "zh": "<strong>情境 1：</strong>APS 執行中，一個空氣活菌取樣點超出 Action Limit。應繼續執行 APS 還是停止？-- 答案：通常繼續執行，但必須立即啟動調查，且在 APS 報告核准前完成調查。",
+   "en": "<strong>Scenario 1:</strong> During the APS, one viable air sampling point exceeds the Action Limit. Should the APS continue or be stopped? Answer: Usually continue, but an investigation must be started immediately and completed before the APS report is approved."
+  },
+  {
+   "zh": "<strong>情境 2：</strong>客戶審計時質疑「為什麼 APS 通過但 EM 有超標？」-- 答案：出示完整的調查報告，證明超標原因已查明、矯正措施已到位、且不影響無菌製程的整體控制。",
+   "en": "<strong>Scenario 2:</strong> During a client audit, the auditor asks \"Why did the APS pass when EM had an excursion?\" Answer: Present the complete investigation report showing that the cause of the excursion was identified, corrective actions are in place, and the overall control of the aseptic process is not affected."
+  },
+  {
+   "zh": "<strong>情境 3：</strong>新客戶要求 APS 期間增加 EM 取樣點。-- 答案：需評估額外取樣對製程的影響，並在協議書中載明理由。",
+   "en": "<strong>Scenario 3:</strong> A new client requests additional EM sampling points during the APS. Answer: Assess the impact of the extra sampling on the process and document the justification in the protocol."
+  },
+  {
+   "zh": "為什麼 TR22 強調「APS 期間的 EM 不可少於日常生產」？如果 EM 取樣是一種介入操作，減少取樣對 APS 模擬的代表性有什麼影響？",
+   "en": "Why does TR22 emphasize that \"EM during an APS must not be less than in routine production\"? If EM sampling is an intervention, how does reducing sampling affect how representative the APS is?"
+  },
+  {
+   "zh": "如果 APS 期間某個非常規取樣點出現超標，TR22 建議應如何處理？為什麼？",
+   "en": "If a non-routine sampling point exceeds its limit during an APS, how does TR22 recommend handling it, and why?"
+  },
+  {
+   "zh": "請解釋為什麼「APS 通過 + EM 特別好」不應被用來設定更嚴格的日常限度。從統計學和實務面各說明一個理由。",
+   "en": "Please explain why \"APS pass + exceptionally good EM\" should not be used to set tighter routine limits. Give one reason from a statistical perspective and one from a practical perspective."
+  },
+  {
+   "zh": "本節重點回顧 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "<strong>文件體系層次：</strong>APS 文件包含 Master Plan (總體計畫)、Protocol (協議書)、Batch Record (批次紀錄)、Final Report (最終報告) 四個層級，每一層都有明確的角色和品質單位審核要求。",
+   "en": "<strong>Documentation hierarchy:</strong> APS documentation comprises four levels: Master Plan, Protocol, Batch Record and Final Report; each level has a clear role and Quality Unit review requirement."
+  },
+  {
+   "zh": "<strong>Process Definition 範圍：</strong>APS 必須涵蓋滅菌後到密封前（甚至密封後可能影響完整性的）所有步驟，不可遺漏凍乾裝卸載、藥液轉移等高風險操作。",
+   "en": "<strong>Process Definition scope:</strong> An APS must cover all steps from after sterilization to before sealing (and even post-sealing steps that may affect integrity); high-risk operations such as lyophilizer loading and unloading and drug solution transfer must not be omitted."
+  },
+  {
+   "zh": "<strong>Protocol 完整性：</strong>APS 協議書應包含超過 20 項關鍵要素，特別是 worst-case 理由、與生產的差異說明、以及判定無效的預設條件。",
+   "en": "<strong>Protocol completeness:</strong> The APS protocol should include more than 20 key elements, especially the worst-case rationale, an explanation of differences from production, and predefined invalidation criteria."
+  },
+  {
+   "zh": "<strong>Intervention 記錄：</strong>每個介入操作必須記錄類型、時間、人員、持續時間、位置，這些資訊在失敗調查時至關重要。",
+   "en": "<strong>Intervention records:</strong> Each intervention must be recorded with its type, time, personnel, duration and location; this information is critical in a failure investigation."
+  },
+  {
+   "zh": "<strong>觀察與錄影：</strong>APS 必須全程由具備專業知識的人員觀察；錄影雖非強制但強烈推薦，AI 技術正開始被應用於分析。",
+   "en": "<strong>Observation and video recording:</strong> An APS must be observed throughout by personnel with the necessary expertise; video recording is not mandatory but strongly recommended, and AI technology is starting to be applied to its analysis."
+  },
+  {
+   "zh": "<strong>EM 三大原則：</strong>使用常規 EM 程序（不可減少取樣）、EM 偏差不自動等於 APS 失敗（但須完成調查）、EM 結果不可反向設定日常標準。",
+   "en": "<strong>Three principles of EM:</strong> use routine EM procedures (sampling must not be reduced); an EM excursion does not automatically equal APS failure (but the investigation must be completed); EM results must not be used to set routine standards in reverse."
+  },
+  {
+   "zh": "<strong>決策優先序：</strong>所有文件設計和 EM 判讀都必須以 Sterility Assurance (無菌保證) 為最高優先，不可因商業壓力而妥協文件品質或忽略 EM 偏差。",
+   "en": "<strong>Decision priority:</strong> All document design and EM interpretation must give top priority to Sterility Assurance; documentation quality must not be compromised, nor EM excursions ignored, because of commercial pressure."
+  }
+ ]
+}
