@@ -1,0 +1,369 @@
+{
+ "source": "section-00-complete.html",
+ "blocks": [
+  {
+   "zh": "包裝完整性洩漏測試技術 完整教學版",
+   "en": "Package Integrity Leak Test Technologies: Complete Tutorial"
+  },
+  {
+   "zh": "本章學習目標 Learning Objectives",
+   "en": "Chapter Learning Objectives"
+  },
+  {
+   "zh": "掌握六種確定性 (Deterministic) 洩漏測試技術的原理、應用條件與偵測限",
+   "en": "Master the principles, application conditions, and detection limits of the six deterministic leak test technologies"
+  },
+  {
+   "zh": "掌握四種機率性 (Probabilistic) 洩漏測試技術的原理與局限性",
+   "en": "Master the principles and limitations of the four probabilistic leak test technologies"
+  },
+  {
+   "zh": "理解每種技術的關鍵測試參數，以便在方法開發時進行優化",
+   "en": "Understand the key test parameters of each technology so they can be optimized during method development"
+  },
+  {
+   "zh": "能對照 USP〈1207.1〉Table 1（Row 1–6）正確定位各技術的偵測能力",
+   "en": "Correctly position each technology's detection capability against USP &lt;1207.1&gt; Table 1 (Rows 1–6)"
+  },
+  {
+   "zh": "理解為何 FDA 監管趨勢偏好確定性方法，並能在文件中論証方法選擇的合理性",
+   "en": "Understand why the FDA regulatory trend favors deterministic methods, and be able to justify the method selection in documentation"
+  },
+  {
+   "zh": "了解各技術在不同生命週期階段（開發/製造/穩定性）的適用性",
+   "en": "Understand the suitability of each technology at different lifecycle stages (development / manufacturing / stability)"
+  },
+  {
+   "zh": "Section 1 — Introduction &amp; Technology Overview 導論與技術總覽",
+   "en": "Section 1 — Introduction &amp; Technology Overview"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念解析：十種技術的全貌",
+   "en": "Core Concepts: The Big Picture of the Ten Technologies"
+  },
+  {
+   "zh": "USP〈1207.2〉收錄的 10 種技術可以用三個維度來理解：",
+   "en": "The 10 technologies covered in USP &lt;1207.2&gt; can be understood along three dimensions:"
+  },
+  {
+   "zh": "<strong>確定性 vs. 機率性</strong>：6 種確定性（優先）+ 4 種機率性",
+   "en": "<strong>Deterministic vs. probabilistic</strong>: 6 deterministic (preferred) + 4 probabilistic"
+  },
+  {
+   "zh": "<strong>偵測靈敏度</strong>：從 Row 1（最靈敏，&lt;0.1 µm）到 Row 4（5-10 µm）",
+   "en": "<strong>Detection sensitivity</strong>: from Row 1 (most sensitive, &lt;0.1 µm) to Row 4 (5-10 µm)"
+  },
+  {
+   "zh": "<strong>測試時間</strong>：秒級（HVLD、雷射分析）→ 分鐘級（大多數）→ 週級（微生物挑戰）",
+   "en": "<strong>Test time</strong>: seconds (HVLD, laser analysis) → minutes (most methods) → weeks (microbial challenge)"
+  },
+  {
+   "zh": "注意：偵測限標示的是<strong>典型值</strong>，實際驗證後的偵測限可能更好或更差，取決於特定產品-包裝系統。",
+   "en": "Note: the detection limits shown are <strong>typical values</strong>; the limits actually achieved after validation may be better or worse, depending on the specific product-package system."
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "表中「*」提醒重要細節：壓力衰減法若需穿刺包裝才能引入加壓氣體，則為破壞性；氦氣示蹤氣體法若通過穿刺引入氦氣，同樣為破壞性。<strong>非破壞性的前提是不破壞包裝屏障</strong>。",
+   "en": "The asterisk (*) in the table flags an important detail: pressure decay is destructive if the package must be punctured to introduce the pressurizing gas, and the helium tracer gas method is likewise destructive if helium is introduced through puncture. <strong>The prerequisite for non-destructive testing is that the package barrier is not breached</strong>."
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "這 10 種技術就像醫院的各種診斷儀器：有些快速（心電圖/X 光）但靈敏度有限，有些精確（MRI/基因測序）但費時昂貴。選擇哪種診斷工具取決於「要找什麼、在什麼情況下找」。CCI 方法選擇的邏輯完全相同。",
+   "en": "These 10 technologies are like the diagnostic instruments in a hospital: some are fast (ECG / X-ray) but of limited sensitivity, while others are precise (MRI / gene sequencing) but slow and expensive. Which diagnostic tool you choose depends on \"what you are looking for and under what circumstances.\" The logic of CCI method selection is exactly the same."
+  },
+  {
+   "zh": "Section 2.1 — Electrical Conductivity &amp; Capacitance (HVLD) 高電壓洩漏偵測",
+   "en": "Section 2.1 — Electrical Conductivity &amp; Capacitance (HVLD)"
+  },
+  {
+   "zh": "核心概念解析：HVLD 的物理原理",
+   "en": "Core Concepts: The Physics of HVLD"
+  },
+  {
+   "zh": "HVLD 利用「導電性差異」來偵測洩漏。簡化原理：",
+   "en": "HVLD uses differences in electrical conductivity to detect leaks. In simplified terms:"
+  },
+  {
+   "zh": "完好包裝：電極掃描時，電阻高（絕緣包裝材料）→ 電流信號低",
+   "en": "Intact package: as the electrode scans, resistance is high (insulating packaging material) → low current signal"
+  },
+  {
+   "zh": "有洩漏的包裝：導電液體產品靠近洩漏路徑 → 形成導電通道 → 電阻下降 → 電流突增 → 觸發警報",
+   "en": "Leaking package: conductive liquid product approaches the leak path → a conductive channel forms → resistance drops → current surges → alarm is triggered"
+  },
+  {
+   "zh": "這也解釋了為什麼鋁蓋<strong>有助於</strong>偵測：金屬蓋導電，可以把電流引導到蓋下的洩漏位置，提高靈敏度。",
+   "en": "This also explains why an aluminum cap <strong>helps</strong> detection: the metal cap conducts, so it can channel current to a leak located under the cap and increase sensitivity."
+  },
+  {
+   "zh": "重點提示：適用範圍限制",
+   "en": "Key Note: Limits of Applicability"
+  },
+  {
+   "zh": "HVLD 有幾個重要限制：",
+   "en": "HVLD has several important limitations:"
+  },
+  {
+   "zh": "<strong>不適用</strong>：凍乾粉末（無導電液體）、固體製劑、可燃性液體",
+   "en": "<strong>Not suitable</strong>: lyophilized powders (no conductive liquid), solid dosage forms, flammable liquids"
+  },
+  {
+   "zh": "<strong>不適用</strong>：鋁箔或金屬包裝（包裝本身導電）",
+   "en": "<strong>Not suitable</strong>: aluminum foil or metal packaging (the package itself is conductive)"
+  },
+  {
+   "zh": "<strong>注意</strong>：需確認電流暴露不影響產品穩定性（特別是蛋白質藥物）",
+   "en": "<strong>Caution</strong>: confirm that current exposure does not affect product stability (especially for protein drugs)"
+  },
+  {
+   "zh": "文獻記錄有少數案例：HVLD 電流觸發頭空間臭氧生成，導致產品氧化",
+   "en": "The literature documents a few cases in which HVLD current triggered ozone generation in the headspace, leading to product oxidation"
+  },
+  {
+   "zh": "HVLD 就像用導電筆檢測電路板上的斷路。完好的電路板（完好包裝）有絕緣層，電流無法通過；斷路位置（洩漏位置）如果有導電液體填充，就像「架橋」讓電流通過，儀器立即感測到異常。",
+   "en": "HVLD is like using a conductive pen to find a broken trace on a circuit board. An intact board (intact package) has an insulating layer, so current cannot pass; if the break (leak location) is filled with conductive liquid, it acts as a \"bridge\" that lets current through, and the instrument immediately senses the anomaly."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "為什麼蛋白質注射液使用 HVLD 前，必須評估電流暴露對產品的影響？",
+   "en": "Why must the effect of current exposure on the product be assessed before using HVLD on a protein injection?"
+  },
+  {
+   "zh": "如果灌裝線上的 HVLD 假陽性率突然增加，你會先檢查哪些參數？",
+   "en": "If the false-positive rate of an HVLD on a filling line suddenly increases, which parameters would you check first?"
+  },
+  {
+   "zh": "Section 2.2 — Laser-Based Gas Headspace Analysis 雷射氣體頭空間分析",
+   "en": "Section 2.2 — Laser-Based Gas Headspace Analysis"
+  },
+  {
+   "zh": "核心概念解析：雷射分析的獨特優勢",
+   "en": "Core Concepts: The Unique Advantages of Laser Analysis"
+  },
+  {
+   "zh": "雷射頭空間分析是目前唯一可達到 Row 1（&lt;0.1 µm）偵測限且同時為確定性方法的技術。其獨特優勢：",
+   "en": "Laser headspace analysis is currently the only technique that both reaches the Row 1 detection limit (&lt;0.1 µm) and is deterministic. Its unique advantages:"
+  },
+  {
+   "zh": "<strong>非侵入性</strong>：雷射穿過透明包裝，完全不接觸包裝",
+   "en": "<strong>Non-invasive</strong>: the laser passes through the transparent package and never touches it"
+  },
+  {
+   "zh": "<strong>直接量測頭空間</strong>：不依賴氣體流出，而是直接分析包裝內部氣體成分",
+   "en": "<strong>Direct headspace measurement</strong>: it does not rely on gas escaping; it analyzes the gas composition inside the package directly"
+  },
+  {
+   "zh": "<strong>可偵測超微小洩漏</strong>：通過觀察隨時間變化的氣體成分，偵測極小的洩漏速率",
+   "en": "<strong>Detects extremely small leaks</strong>: by observing the change in gas composition over time, it can detect very small leak rates"
+  },
+  {
+   "zh": "<strong>適用凍乾產品</strong>：HVLD 不適用，但雷射分析可測真空度",
+   "en": "<strong>Suitable for lyophilized products</strong>: HVLD is not applicable, but laser analysis can measure the vacuum level"
+  },
+  {
+   "zh": "重點提示：單點 vs. 時間序列測試",
+   "en": "Key Note: Single-Point vs. Time-Series Testing"
+  },
+  {
+   "zh": "<strong>重要區別</strong>：單一時間點的頭空間分析結果只反映「當前頭空間狀態」，<strong>不能</strong>直接証明包裝完整性。頭空間不合格可能是灌裝操作問題，而非洩漏。",
+   "en": "<strong>Important distinction</strong>: a headspace result at a single time point reflects only \"the current headspace state\" and <strong>cannot</strong> by itself demonstrate package integrity. An out-of-specification headspace may be a filling-operation problem rather than a leak."
+  },
+  {
+   "zh": "要証明完整性，必須進行<strong>時間序列測試</strong>（同一包裝在不同時間點重複測量），觀察氣體成分是否隨時間變化——這才是真正的 CCI 測試。",
+   "en": "To demonstrate integrity, you must perform <strong>time-series testing</strong> (repeated measurements of the same package at different time points) and observe whether the gas composition changes over time. This is the true CCI test."
+  },
+  {
+   "zh": "雷射頭空間分析就像對密封保鮮盒用雷射「透視」，不需要打開就能知道裡面的氣體狀態。如果今天量是 99% 氮氣，一週後量是 85% 氮氣，說明有氣體洩漏——這個趨勢就是 CCI 問題的証據。",
+   "en": "Laser headspace analysis is like using a laser to \"see through\" a sealed food container: you can tell the state of the gas inside without opening it. If today it measures 99% nitrogen and a week later 85% nitrogen, gas has leaked; this trend is evidence of a CCI problem."
+  },
+  {
+   "zh": "實務應用 Practical Application",
+   "en": "Practical Application"
+  },
+  {
+   "zh": "凍乾產品（lyophilized vials）的穩定性 CCI 方案最適合用雷射頭空間分析：測量頭空間殘氧量 (O₂) 和/或真空度 (absolute pressure) 的時間序列變化。若 12 個月穩定性樣品的頭空間真空度顯著下降，即可確認發生了洩漏，無需微生物挑戰試驗。",
+   "en": "For the stability CCI program of lyophilized products (lyophilized vials), laser headspace analysis is the best fit: measure the time-series change in headspace residual oxygen (O₂) and/or vacuum level (absolute pressure). If the headspace vacuum of 12-month stability samples drops significantly, a leak is confirmed without a microbial challenge test."
+  },
+  {
+   "zh": "<strong>Sections 2.3–2.6 — Mass Extraction, Pressure Decay, Tracer Gas (Vacuum Mode), Vacuum Decay Sections 2.3–2.6 — 質量萃取、壓力衰減、示蹤氣體（真空模式）、真空衰減</strong>",
+   "en": "<strong>Sections 2.3–2.6 — Mass Extraction, Pressure Decay, Tracer Gas (Vacuum Mode), Vacuum Decay</strong>"
+  },
+  {
+   "zh": "重點提示：真空衰減 vs. 質量萃取",
+   "en": "Key Note: Vacuum Decay vs. Mass Extraction"
+  },
+  {
+   "zh": "這兩種方法最為相似，關鍵區別：",
+   "en": "These two methods are the most similar; the key differences are:"
+  },
+  {
+   "zh": "<strong>真空衰減</strong>：量測腔室壓力回升（簡單、成本低）→ 業界最廣泛使用的 on-line CCI 技術",
+   "en": "<strong>Vacuum decay</strong>: measures the pressure rise in the chamber (simple, low cost) → the most widely used on-line CCI technology in industry"
+  },
+  {
+   "zh": "<strong>質量萃取</strong>：量測氣體質量流量（更精確、可量化洩漏速率）→ 適合實驗室精確定量",
+   "en": "<strong>Mass extraction</strong>: measures gas mass flow (more precise, can quantify the leak rate) → suited to precise laboratory quantification"
+  },
+  {
+   "zh": "兩者都不適用於會凝固堵塞洩漏路徑的產品（如某些蛋白質配方）",
+   "en": "Neither is suitable for products that solidify and block the leak path (e.g., some protein formulations)"
+  },
+  {
+   "zh": "真空衰減就像在汽車輪胎旁邊抽真空，然後等著看氣壓計是否上升——如果輪胎漏氣，氣壓計很快上升。示蹤氣體法則更像在輪胎充入氦氣後，用「氦氣探測器」掃描表面，直接感測洩出的氦氣分子。兩種方法各有場景。",
+   "en": "Vacuum decay is like pulling a vacuum around a car tire and then watching whether the pressure gauge rises: if the tire leaks, the gauge rises quickly. The tracer gas method is more like filling the tire with helium and scanning the surface with a \"helium detector\" to directly sense the escaping helium molecules. Each method has its own use cases."
+  },
+  {
+   "zh": "公式與計算 Formula — 壓力衰減溫度修正",
+   "en": "Formula and Calculation: Temperature Correction for Pressure Decay"
+  },
+  {
+   "zh": "問題：加壓後氣體溫度升高，溫度恢復後壓力自然下降\n→ 會被誤判為洩漏！\n\n緩解策略：\n1. 讓系統在開始計時前達到溫度平衡\n2. 最小化測試系統外部溫度變化\n3. 縮短測試時間\n4. 應用數學溫度校正係數：\n   ΔP(corrected) = ΔP(measured) - ΔP(thermal)\n\n在方法開發中，必須量化熱效應基線",
+   "en": "Problem: after pressurization the gas temperature rises, and as the temperature recovers the pressure naturally falls\n→ this can be misjudged as a leak!\n\nMitigation strategies:\n1. Let the system reach thermal equilibrium before starting the timer\n2. Minimize external temperature changes around the test system\n3. Shorten the test time\n4. Apply a mathematical temperature correction factor:\n   ΔP(corrected) = ΔP(measured) - ΔP(thermal)\n\nDuring method development, the thermal-effect baseline must be quantified"
+  },
+  {
+   "zh": "為什麼含有高濃度蛋白質的液態注射劑，在使用真空衰減法進行穩定性測試時需要特別注意？",
+   "en": "Why does a liquid injectable with a high protein concentration require special attention when tested for stability using vacuum decay?"
+  },
+  {
+   "zh": "如果你需要為一批 20mL 玻璃瓶（含凍乾粉末）選擇 CCI 方法，在示蹤氣體法（真空模式）和雷射頭空間分析之間，你會優先選哪個？理由是什麼？",
+   "en": "If you need to select a CCI method for a batch of 20 mL glass vials (containing lyophilized powder), which would you prioritize: the tracer gas method (vacuum mode) or laser headspace analysis? What is your rationale?"
+  },
+  {
+   "zh": "核心概念解析：四種技術的原理比較",
+   "en": "Core Concepts: Comparing the Principles of the Four Technologies"
+  },
+  {
+   "zh": "共同點：都是偵測氣體或物質從包裝內部流出的信號。都是確定性方法，偵測限主要在 Row 1–3。",
+   "en": "Common features: all detect a signal from gas or material escaping from inside the package. All are deterministic methods, with detection limits mainly in Rows 1–3."
+  },
+  {
+   "zh": "Section 3 — Probabilistic Leak Test Technologies 機率性洩漏測試技術",
+   "en": "Section 3 — Probabilistic Leak Test Technologies"
+  },
+  {
+   "zh": "核心概念解析：機率性方法的共同問題",
+   "en": "Core Concepts: The Shared Problem of Probabilistic Methods"
+  },
+  {
+   "zh": "四種機率性方法都面臨相同的根本挑戰：<strong>洩漏偵測依賴一連串不完全可控的事件</strong>。以染料侵入法為例，即使有洩漏，以下任一問題都可能導致假陰性：",
+   "en": "All four probabilistic methods face the same fundamental challenge: <strong>leak detection depends on a chain of events that are not fully controllable</strong>. Taking dye ingress as an example, even when a leak exists, any of the following can cause a false negative:"
+  },
+  {
+   "zh": "染料液體在洩漏路徑中被氣泡 (air lock) 阻塞",
+   "en": "The dye liquid is blocked in the leak path by an air bubble (air lock)"
+  },
+  {
+   "zh": "洩漏路徑被產品殘留物堵塞",
+   "en": "The leak path is plugged by product residue"
+  },
+  {
+   "zh": "液體表面張力阻礙進入微小洩漏路徑",
+   "en": "Liquid surface tension prevents entry into a very small leak path"
+  },
+  {
+   "zh": "差壓條件不足以驅動液體通過",
+   "en": "The differential pressure is insufficient to drive the liquid through"
+  },
+  {
+   "zh": "觀察者漏看（定性目視評估的人為誤差）",
+   "en": "The observer misses it (human error in qualitative visual assessment)"
+  },
+  {
+   "zh": "重點提示：微生物挑戰法的法規地位",
+   "en": "Key Note: Regulatory Status of Microbial Challenge"
+  },
+  {
+   "zh": "微生物挑戰法（浸泡暴露）在以下情況仍有其價值：",
+   "en": "Microbial challenge (immersion exposure) still has value in the following situations:"
+  },
+  {
+   "zh": "沒有合適的理化法時（特殊容器設計）",
+   "en": "When no suitable physicochemical method exists (special container designs)"
+  },
+  {
+   "zh": "方法結果必須<strong>直接証明</strong>防止微生物入侵的能力",
+   "en": "When the method result must <strong>directly demonstrate</strong> the ability to prevent microbial ingress"
+  },
+  {
+   "zh": "建立理化法與微生物風險的相關性研究（配合 USP〈1207.1〉4.4 節的要求）",
+   "en": "When establishing a correlation study between physicochemical methods and microbial risk (in line with the requirements of USP &lt;1207.1&gt; Section 4.4)"
+  },
+  {
+   "zh": "但 FDA 近年越來越傾向要求使用理化法作為<strong>主要驗証方法</strong>，微生物法作為補充。",
+   "en": "However, in recent years the FDA has increasingly tended to require physicochemical methods as the <strong>primary validation method</strong>, with microbial methods as a supplement."
+  },
+  {
+   "zh": "泡泡放射測試就像用「觀察洗碗精泡泡」來找水管漏洞——看到泡泡就確定有洞，沒看到不代表沒洞（可能泡泡太小、被水溶解了）。因此，「無泡泡」≠「無洩漏」，這就是機率性方法的核心問題。",
+   "en": "The bubble emission test is like using \"soap bubbles\" to find a hole in a water pipe: seeing bubbles confirms a hole, but seeing none does not mean there is no hole (the bubbles may be too small or dissolved in the water). Hence \"no bubbles\" ≠ \"no leak,\" which is the core problem of probabilistic methods."
+  },
+  {
+   "zh": "重點提示：染料侵入法 vs. 染料排出法",
+   "en": "Key Note: Dye Ingress vs. Dye Egress"
+  },
+  {
+   "zh": "追蹤液體法有兩個方向：",
+   "en": "The tracer liquid method works in two directions:"
+  },
+  {
+   "zh": "<strong>染料侵入 (Dye Ingress)</strong>：包裝浸在染料液中 → 檢查包裝內部是否有染料進入 → 較常見，但需透明容器或開啟包裝才能檢查",
+   "en": "<strong>Dye ingress</strong>: the package is immersed in dye solution → check whether dye has entered the package → more common, but requires a transparent container or opening the package for inspection"
+  },
+  {
+   "zh": "<strong>染料排出 (Dye Egress)</strong>：含染料的包裝浸在無染料液中 → 檢查外部液體是否有染料 → 適合不透明容器",
+   "en": "<strong>Dye egress</strong>: the dye-filled package is immersed in dye-free liquid → check whether the external liquid contains dye → suitable for opaque containers"
+  },
+  {
+   "zh": "定量偵測（分光光度計）優於定性目視，對小洩漏更可靠。",
+   "en": "Quantitative detection (spectrophotometer) is better than qualitative visual inspection and more reliable for small leaks."
+  },
+  {
+   "zh": "在 CDMO 的包裝開發階段，泡泡放射法仍常用於「快速可行性篩查」——它不需要昂貴儀器，可以在幾分鐘內找到洩漏位置。但它僅作為探索性工具，不能作為正式的 CCI 測試方法用於批次放行或穩定性研究。方法驗證必須轉向確定性技術。",
+   "en": "During package development at a CDMO, the bubble emission method is still commonly used for \"rapid feasibility screening\": it needs no expensive equipment and can locate a leak within minutes. However, it is only an exploratory tool and cannot be used as a formal CCI test method for batch release or stability studies. Method validation must move to deterministic technologies."
+  },
+  {
+   "zh": "本章重點回顧 Chapter Summary",
+   "en": "Chapter Summary"
+  },
+  {
+   "zh": "<strong>6 種確定性技術：</strong>HVLD（液態/導電）、雷射頭空間分析（氣體頭空間/透明）、質量萃取（通用）、壓力衰減（氣相）、示蹤氣體真空法（最靈敏 Row 1）、真空衰減（最廣泛使用）",
+   "en": "<strong>6 deterministic technologies:</strong> HVLD (liquid / conductive), laser headspace analysis (gas headspace / transparent), mass extraction (general purpose), pressure decay (gas phase), tracer gas vacuum method (most sensitive, Row 1), vacuum decay (most widely used)"
+  },
+  {
+   "zh": "<strong>4 種機率性技術：</strong>泡泡放射（定性/定位）、微生物挑戰（直接証明屏障）、示蹤氣體嗅探法（定位）、追蹤液體（定性/定量）",
+   "en": "<strong>4 probabilistic technologies:</strong> bubble emission (qualitative / leak location), microbial challenge (direct demonstration of barrier), tracer gas sniffer method (leak location), tracer liquid (qualitative / quantitative)"
+  },
+  {
+   "zh": "<strong>偵測限層次：</strong>Row 1（&lt;0.1 µm）= 示蹤氣體真空、雷射頭空間 → Row 2 = 示蹤氣體嗅探 → Row 3 = HVLD/質量萃取/真空衰減/壓力衰減 → Row 4 = 機率性方法",
+   "en": "<strong>Detection limit tiers:</strong> Row 1 (&lt;0.1 µm) = tracer gas vacuum, laser headspace → Row 2 = tracer gas sniffer → Row 3 = HVLD / mass extraction / vacuum decay / pressure decay → Row 4 = probabilistic methods"
+  },
+  {
+   "zh": "<strong>選方法的首要問題：</strong>產品是液態還是固態/凍乾？包裝是透明還是不透明？需要 100% 在線測試嗎？",
+   "en": "<strong>The first questions in method selection:</strong> Is the product liquid, solid, or lyophilized? Is the package transparent or opaque? Is 100% in-line testing needed?"
+  },
+  {
+   "zh": "<strong>機率性方法的核心缺陷：</strong>洩漏偵測依賴多個不可控事件的連鎖發生，需要大樣本量且假陰性風險高",
+   "en": "<strong>The core flaw of probabilistic methods:</strong> leak detection depends on a chain of several uncontrollable events, requiring large sample sizes and carrying a high risk of false negatives"
+  },
+  {
+   "zh": "<strong>法規趨勢：</strong>FDA 越來越傾向確定性方法作為主要 CCI 方法；機率性方法（特別是染料侵入法）在批次放行中的使用受到越來越嚴格的審查",
+   "en": "<strong>Regulatory trend:</strong> the FDA increasingly favors deterministic methods as the primary CCI method; the use of probabilistic methods (especially dye ingress) for batch release is under increasingly strict scrutiny"
+  }
+ ]
+}

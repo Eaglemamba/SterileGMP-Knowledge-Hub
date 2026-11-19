@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USP General Chapter 〈1207.1〉 - Package Integrity Testing — Test Method Selection and Validation</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box,
+.application-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4,
+.application-box h3, .application-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p,
+.application-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol,
+.application-box ul, .application-box ol {
+    margin: 0.5rem 0 0.5rem 0 !important;
+    padding-left: 1.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li,
+.application-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p {
+    font-size: 0.92rem !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.practice-box ul, .practice-box ol {
+    margin: 0.5rem 0 0.5rem 0 !important;
+    padding-left: 1.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box li {
+    font-size: 0.92rem !important;
+    margin-bottom: 0.35rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES =====
+   padding-left matches .left-column padding (1.5rem) so the
+   section title text aligns with the start of "原文 Original Text".
+   Border-bottom stays full-width as a visual separator. */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding: 0 1.5rem 0.5rem 1.5rem;
+    border-bottom: 2px solid #e2e8f0;
+    font-weight: 700;
+}
+
+.section-title strong,
+.section-divider strong {
+    font-weight: 700;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+    
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <header class="top-header">
+        <div class="header-brand">
+            <h1>USP General Chapter 〈1207.1〉</h1>
+            <p class="subtitle">Package Integrity Testing — Test Method Selection and Validation</p>
+        </div>
+        <a href="USP-1207-1-Complete.html" id="langSwitch" lang="zh-TW" onclick="try{localStorage.setItem('sgk_rpg_lang','zh')}catch(e){}" style="display:inline-block;margin-top:.45rem;padding:.2rem .8rem;border:1px solid currentColor;border-radius:6px;color:inherit;text-decoration:none;font-size:.85rem;white-space:nowrap;">中文</a>
+    </header>
+
+    <nav class="top-nav" id="topNav">
+        <button class="nav-scroll-btn hidden" id="navScrollLeft">&#8249;</button>
+        <div class="nav-container" id="navContainer">
+            <a href="#sec0" class="nav-item" data-section="sec0">
+                <span class="nav-num">0</span>
+                <span class="nav-label">Complete Chapter</span>
+            </a>
+        </div>
+        <button class="nav-scroll-btn" id="navScrollRight">&#8250;</button>
+    </nav>
+
+<main class="main-content">
+
+    <!-- ========== Section 0: Complete Chapter ========== -->
+    <section class="chapter-section" id="sec0">
+        <div class="chapter-divider">
+            <div class="chapter-badge">0</div>
+            <div class="chapter-info">
+                <h2>Section 0: Complete Chapter</h2>
+                <p>all</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="page-info">USP General Chapter 〈1207.1〉 | Official as of 01-Dec-2020 | Complete Chapter</div>
+</div>
+<div class="main-content">
+<div class="learning-objectives">
+<h3>Learning Objectives</h3>
+<ul>
+<li>Understand the role and requirements of container closure integrity (CCI) testing across the three stages of the drug product life cycle</li>
+<li>Master the 12 test method selection criteria and make a sound selection for a specific product-package system</li>
+<li>Distinguish the fundamental difference between deterministic and probabilistic leak test methods</li>
+<li>Understand the eight elements of method development and validation: accuracy, precision, specificity, detection limit, quantitation limit, linearity, range, and robustness</li>
+<li>Be able to design negative and positive controls, and understand how defects are created</li>
+<li>Understand the scientific rationale in the 2008 FDA stability guidance for replacing sterility testing with CCI testing</li>
+</ul>
+</div>
+<!-- SECTION 1: INTRODUCTION -->
+<div class="section-title">Section 1 — Introduction</div>
+<div class="two-column">
+<div class="left-column">
+<h2>Original Text</h2>
+<p><em>Package Integrity Evaluation—Sterile Products</em> <span class="key-term">〈1207〉</span> provides guidance in the integrity assurance of product packages. This chapter describes <span class="key-term">package integrity verification</span> during three product life cycle phases: 1) package development, and package processing and assembly validation; 2) product manufacturing; and 3) commercial product shelf-life stability assessments. Further, this chapter provides information on how to select, develop, and validate <span class="key-term">leak test methods</span>.</p>
+</div>
+<div class="right-column">
+<h2>Tutorial Commentary</h2>
+<div class="concept-box">
+<h4>Key Concepts</h4>
+<p>The USP &lt;1207&gt; series consists of three sub-chapters: &lt;1207.1&gt; Test Method Selection, &lt;1207.2&gt; Leak Technologies, and &lt;1207.3&gt; Seal Quality Technologies. Together, these three chapters form USP's complete guidance on CCI (container closure integrity).</p>
+<p>The central message of this chapter: <strong>package integrity must be demonstrated throughout the entire product life cycle</strong>, not just once before launch.</p>
+</div>
+<div class="analogy-box">
+<h4>Analogy</h4>
+<p>Imagine you have bought a new car. CCI testing is like a waterproofing test for the car: it is not done just once at the factory, but at the design stage (development), on the production line (manufacturing), and again after long-term storage (stability) to confirm that the seal is still intact. Drug product packaging follows the same logic.</p>
+</div>
+</div>
+</div>
+<!-- SECTION 2: PRODUCT LIFE CYCLE -->
+<div class="section-title">Section 2 — Package Integrity Testing in the Product Life Cycle</div>
+<div class="two-column">
+<div class="left-column">
+<h2>2.1 Development and Validation — Package Development</h2>
+<p>Package development begins with the preparation of a <span class="key-term">product–package profile</span> (e.g., user requirements specification), which considers the product end use, stability requirements, and method of manufacture, as well as the anticipated storage, shipment, and distribution environments. This profile also defines the proper product–package quality requirements and the package's <span class="key-term">maximum allowable leakage limit</span>.</p>
+<p>Assurance of package integrity originates from the use of appropriate materials, accurate and optimum closing properties, matching dimensional fit, appropriate multi-component stack heights and tolerances, and consistent control of processes used to assemble the closed package.</p>
+<p>A battery of integrity and seal quality test methods may be employed during product–package development, starting with techniques able to measure the product's <span class="key-term">inherent package integrity</span>. Inherent package integrity of a viable package system conforms to the product's maximum allowable leakage limit.</p>
+<p>Test package quantities for inherent package integrity verification may vary on the basis of: 1) the complexity of the product–package, 2) the specifics of the user specification requirements, and 3) the prior experience of the producer.</p>
+</div>
+<div class="right-column">
+<h2>Tutorial Commentary</h2>
+<div class="concept-box">
+<h4>Key Concepts: Product-Package Profile</h4>
+<p>The key output of the development stage is the user requirements specification (URS), which must cover:</p>
+<ul>
+<li>Intended use of the product and stability requirements</li>
+<li>Expected storage, transport, and distribution environments</li>
+<li><strong>Maximum allowable leakage limit (MALL)</strong>: the central number of the entire CCI strategy</li>
+<li>Critical physical attributes and dimensional tolerances</li>
+</ul>
+</div>
+<div class="note-box">
+<h4>Key Notes</h4>
+<p>The concept of <strong>inherent package integrity</strong> is very important: it refers to the level of integrity a package system can achieve by itself when it has no defects. This is the basis for setting the MALL.</p>
+<p>USP recommends using empty vials or placebo-filled containers for inherent integrity testing with large sample sizes, to avoid interference from the product formulation with the test method.</p>
+</div>
+<div class="practice-box">
+<h4>Practice Questions</h4>
+<ol>
+<li>Why must the MALL be set before the test method is selected?</li>
+<li>If you are responsible for package development of a lyophilized product, which environmental conditions must be included in the product-package profile?</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="two-column">
+<div class="left-column">
+<h2>2.1.2 Package Processing and Assembly Validation</h2>
+<p>Final confirmation of acceptable inherent package integrity is generally part of a larger <span class="key-term">process validation</span> activity for the overall production process. The scope depends upon the product type and whether the organization has previous experience with the container–closure system.</p>
+<p>All processes germane to the sterilization and formation of a package having integrity are to be evaluated against the user requirement specifications, including likely process extremes. For example, inherent package integrity verification may consider extremes of package assembly variables such as <span class="key-term">line speed</span>, <span class="key-term">heat-sealing temperature</span>, <span class="key-term">screw-cap application torque</span>, and <span class="key-term">vial-capping forces</span>.</p>
+<p>Successful validation will result in a package that meets its user requirement specifications. The primary objective is to arrive at a quality product–package prepared using processes that reliably and consistently run within specified operating parameters, yielding critical package defects at a <strong>satisfactorily low rate</strong>. When performed, in-process and end-product package integrity testing should complement, not replace, thorough package development efforts.</p>
+</div>
+<div class="right-column">
+<h2>Tutorial Commentary</h2>
+<div class="concept-box">
+<h4>Key Concepts: Critical Parameters for Package Assembly Validation</h4>
+<p>Package assembly validation must cover process extremes, not just the optimal conditions. For example, validation of glass vial capping must include:</p>
+<ul>
+<li>Minimum/maximum vial-capping forces</li>
+<li>Minimum/maximum line speed</li>
+<li>Integrity after re-sterilization</li>
+<li>Effects of secondary and tertiary packaging processes</li>
+</ul>
+</div>
+<div class="analogy-box">
+<h4>Analogy</h4>
+<p>Package assembly validation is like a car crash test: it does not test only normal driving, but confirms safety (package integrity) under the harshest impact conditions (process extremes). Only by passing extreme-condition testing can you have confidence in the packages produced in routine manufacturing.</p>
+</div>
+<div class="note-box">
+<h4>Key Notes</h4>
+<p>USP states explicitly that in-process and finished-product package integrity testing <strong>"supplements" rather than "replaces"</strong> adequate package development work. This is consistent with the FDA view: quality is not tested into a product, it is designed in.</p>
+</div>
+</div>
+</div>
+<div class="two-column">
+<div class="left-column">
+<h2>2.2 Product Manufacturing</h2>
+<p>To ensure the quality of the manufactured product–package, it is critical to specify components of sufficient quality and to select vendors carefully. The factors to consider include:</p>
+<ul>
+<li>Acceptable results of the initial vendor or supplier evaluation</li>
+<li>Appropriate <span class="key-term">vendor acceptance quality limits</span> and statistical sampling plan(s), or relevant certification</li>
+<li>Incoming component quality verification, including statistical assessment of quality against purchase specifications</li>
+<li>Appropriate procedure(s) for establishing <span class="key-term">corrective and preventive action</span> when a vendor falls short of quality expectations</li>
+</ul>
+<p>Package integrity re-evaluation is considered when changes occur in the product, package design, package materials, or manufacturing/processing conditions. The extent of <span class="key-term">change control</span> efforts are evaluated on a case-by-case basis.</p>
+<p>The proper combination of package leak tests, complementary package seal quality tests, and visual inspection is largely based on package failure results observed in earlier production validation and package development studies.</p>
+<p>For example, glass or plastic ampules closed by heat fusion are customarily subjected to <span class="key-term">100% nondestructive leak testing</span>.</p>
+</div>
+<div class="right-column">
+<h2>Tutorial Commentary</h2>
+<div class="concept-box">
+<h4>Key Concepts: Quality Strategy in the Manufacturing Stage</h4>
+<p>The CCI control strategy in the manufacturing stage has three layers:</p>
+<ul>
+<li><strong>Supplier management</strong>: statistical sampling and acceptance of incoming materials</li>
+<li><strong>Process monitoring</strong>: combining leak testing, seal quality testing, and visual inspection</li>
+<li><strong>Change control</strong>: any change to the product, package design, or process requires CCI to be re-evaluated</li>
+</ul>
+</div>
+<div class="note-box">
+<h4>Key Notes: 100% Nondestructive Testing</h4>
+<p>Glass ampoules (fusion-sealed) are the classic case requiring 100% nondestructive leak testing. This has a regulatory basis: the FDA aseptic processing guidance requires 100% integrity testing of ampoules. When designing a fill-finish facility, this is an important consideration for line equipment configuration.</p>
+</div>
+<div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+<h4>Practical Application</h4>
+<p>In aseptic fill-finish manufacturing at a CDMO, when a client proposes replacing a packaging material supplier, the impact on CCI must be assessed. Section 2.2 of USP &lt;1207.1&gt; provides a checklist: beyond supplier evaluation, you also need to statistically evaluate the incoming quality of the new components and update the CAPA procedure.</p>
+</div>
+</div>
+</div>
+<div class="two-column">
+<div class="left-column">
+<h2>2.3 Commercial Product Stability</h2>
+<p><span class="key-term">Container–closure integrity tests</span> have been recommended as alternatives to sterility testing as part of commercial product stability programs. The goal is to ensure package integrity as a function of long-term product storage. [Note—Package integrity tests do not replace product release sterility tests.]</p>
+<p>Testing product for sterility is a poor measure of product–package integrity and also will not ensure product–package integrity over the shelf life of the product when performed as part of the stability program. Validated package integrity test methods are more sensitive and reliable than product lot <span class="key-term">sterility testing</span> for detecting a breach in package integrity.</p>
+<p>Ideally, package integrity tests selected to support marketed-product stability studies are able to verify the absence of the smallest leaks of concern for a given product–package system. In other words, the product's <span class="key-term">maximum allowable leakage limit</span> falls within the chosen test method leak detection range.</p>
+<p>Stability test samples intended for package integrity evaluation are kept at labeled storage conditions for the marketed product. If an integrity test is nondestructive to the product or package, samples that pass package integrity testing may be further used in the stability testing for that specific test period or interval.</p>
+</div>
+<div class="right-column">
+<h2>Tutorial Commentary</h2>
+<div class="concept-box">
+<h4>Key Concepts: Replacing Stability Sterility Testing with CCI</h4>
+<p>The guidance FDA issued in 2008 allows CCI testing to replace sterility testing in the stability program. The reasons are:</p>
+<ul>
+<li>The sample size for sterility testing is too small to be statistically representative</li>
+<li>Sterility testing can only detect samples that are already contaminated; it cannot proactively assure integrity throughout the shelf life</li>
+<li>CCI methods (such as vacuum decay and laser-based gas headspace analysis) are more sensitive to small leaks</li>
+</ul>
+</div>
+<div class="analogy-box">
+<h4>Analogy</h4>
+<p>Stability sterility testing is like having a blood test once a year to check whether you are ill: small sample, limited time points. CCI testing is more like continuously monitoring your body temperature: it better reflects whether the container stays sealed throughout the storage period.</p>
+</div>
+<div class="note-box">
+<h4>Key Notes</h4>
+<p>Samples that pass nondestructive CCI testing can continue to be used for the stability testing of the current time point, but <strong>must not</strong> be tested at one time point (e.g., 12 months) and then stored for use at the next time point (e.g., 24 months). Each stability time point must have an independent sample set.</p>
+</div>
+<div class="practice-box">
+<h4>Practice Questions</h4>
+<ol>
+<li>Why does USP state explicitly that CCI testing "does not replace" sterility testing for lot release? How do the purposes of the two differ?</li>
+<li>If a product's MALL is below the lower detection limit of the test method, how should this be handled in the stability program?</li>
+</ol>
+</div>
+</div>
+</div>
+<!-- SECTION 3: TEST METHOD SELECTION -->
+<div class="section-title">Section 3 — Test Method Selection Criteria</div>
+<div class="two-column">
+<div class="left-column">
+<h2>3.1–3.4 Package Contents, Design, Materials &amp; Leakage Limit</h2>
+<p>No single package leak test or package seal quality test method is applicable to all product–package systems. Test method selection is made on a product–package on a <span class="key-term">case-by-case basis</span>.</p>
+<p><strong>3.1 Package Contents:</strong> Whether the package contains a liquid or solid formulation, and whether it contains a headspace of inert gas, air, vacuum, or even no headspace at all, will influence leak test method choice. For example, if testing liquid-filled packages by vacuum decay or mass extraction, test vacuum conditions may trigger some formulations to solidify inside leak paths.</p>
+<p><strong>3.2 Package Design:</strong></p>
+<ul>
+<li><em>Rigid or Flexible:</em> Rigid packages can tolerate pressure/vacuum-challenge conditions. Flexible packages may need special tooling to restrict expansion.</li>
+<li><em>Moveable Components:</em> Syringe stoppers may require restraint to prevent dislocation during differential pressure tests.</li>
+<li><em>Polymeric Materials:</em> Plastics and elastomers may outgas volatiles under vacuum, falsely implicating leakage.</li>
+<li><em>Metallic Materials:</em> Foil laminates may be incompatible with electrical conductivity tests.</li>
+<li><em>Transparent/Opaque:</em> Transparent materials allow laser-based headspace analysis; opaque packages are incompatible with visual inspection-based methods.</li>
+</ul>
+<p><strong>3.4 Maximum Allowable Leakage Limit (MALL):</strong></p>
+<ul>
+<li><em>3.4.1:</em> Sterility &amp; formulation preserved; no headspace requirement → tracer gas (vacuum mode), laser-based headspace analysis</li>
+<li><em>3.4.2:</em> Headspace content must also be preserved → laser-based gas headspace analysis</li>
+<li><em>3.4.3:</em> Multiple-dose packages with reseal requirement → physicochemical + microbiological methods</li>
+</ul>
+</div>
+<div class="right-column">
+<h2>Tutorial Commentary</h2>
+<div class="concept-box">
+<h4>Key Concepts: The MALL Is the Core of Method Selection</h4>
+<p>The maximum allowable leakage limit (MALL) determines the test sensitivity you need. The simple logic:</p>
+<ul>
+<li>Smaller (stricter) MALL → a more sensitive test method is needed (lower detection limit)</li>
+<li>Different product categories → different MALLs → different method choices</li>
+<li>Liquid injectables (which must be protected against microbial ingress) and lyophilized products (which must protect the vacuum headspace) have fundamentally different needs</li>
+</ul>
+</div>
+<div class="note-box">
+<h4>Key Notes: Material Compatibility Is the First Screen</h4>
+<p>Before choosing a method, first ask: "Is this method compatible with the packaging materials?"</p>
+<ul>
+<li>Plastic/elastomer + vacuum decay = possible outgassing interference</li>
+<li>Aluminum foil laminate + HVLD = incompatible (aluminum is conductive)</li>
+<li>Opaque container + laser analysis = incompatible</li>
+<li>Liquid-containing product + pressure decay = watch for liquid covering the leak site</li>
+</ul>
+</div>
+<div class="analogy-box">
+<h4>Analogy</h4>
+<p>Selecting a CCI test method is like selecting a medical imaging technique: X-ray (fast and cheap but with many limitations), ultrasound (suited to soft tissue), MRI (detailed but expensive and slow). No single method suits every situation; you must choose based on "what you are looking for and where you are looking".</p>
+</div>
+<div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+<h4>Practical Application</h4>
+<p>CDMO workflow for CCI method selection when receiving a new product: (1) confirm the product category (liquid/lyophilized/solid) → (2) confirm the container material (glass/plastic/aluminum foil) → (3) confirm headspace requirements → (4) check the MALL → (5) compare against the detection limits of each technology (see &lt;1207.2&gt; Table 1) → (6) confirm whether the method can be used on-line or only off-line.</p>
+</div>
+</div>
+</div>
+<div class="two-column">
+<div class="left-column">
+<h2>3.5–3.8 Deterministic vs. Probabilistic; Outcome; Quantitative vs. Qualitative</h2>
+<p><strong>3.5 Deterministic Methods:</strong> A "<span class="key-term">deterministic leak test method</span>" is one in which the leakage event is based on phenomena that follow a predictable chain of events, and leakage is measured using physicochemical technologies that are readily controlled and monitored, yielding <strong>objective quantitative data</strong>. Examples: tracer gas (vacuum mode), laser-based gas headspace analysis, pressure decay, vacuum decay, mass extraction.</p>
+<p>A "<span class="key-term">probabilistic leak test method</span>" relies on a series of sequential and/or simultaneous events each associated with uncertainties, yielding random outcomes described by probability distributions. Thus, the findings are associated with uncertainties that necessitate larger sample sizes. Examples: microbial challenge tests, bubble emission tests, tracer liquid tests, tracer gas sniffer probe.</p>
+<p>A deterministic leak test method having the ability to detect leaks at the product's <span class="key-term">maximum allowable leakage limit</span> is preferred when establishing the inherent integrity of a container–closure system.</p>
+<p><strong>3.7 Method Outcome</strong> — desired outcomes may include:</p>
+<ul>
+<li>Leak path presence detection</li>
+<li>Leak path location determination</li>
+<li>Leakage rate measurement</li>
+<li>Liquid egress/ingress potential</li>
+<li>Microbial ingress potential</li>
+</ul>
+<p><strong>3.8:</strong> When method considerations permit, leak test methods that yield <span class="key-term">quantitative measurements</span> are preferred over qualitative ones.</p>
+</div>
+<div class="right-column">
+<h2>Tutorial Commentary</h2>
+<div class="note-box">
+<h4>Key Notes: FDA/USP Regulatory Position</h4>
+<p>USP states explicitly that <strong>a deterministic method capable of detecting the MALL is preferred</strong>. This is consistent with the FDA's regulatory trend on CCI since 2016: a growing number of FDA warning letters have called out companies for using probabilistic methods (such as dye ingress) without adequate validation.</p>
+</div>
+<div class="analogy-box">
+<h4>Analogy</h4>
+<p>A deterministic method is like a digital bathroom scale: every measurement gives the same value, so you can record precisely whether someone is overweight (exceeds the MALL). A probabilistic method is like asking a passerby "does this person look overweight?": the answer depends on the observer's judgment, and it becomes more accurate only as the number of samples grows.</p>
+</div>
+<div class="practice-box">
+<h4>Practice Questions</h4>
+<ol>
+<li>Why is the dye ingress test classified as a probabilistic method? What are the sources of its uncertainty?</li>
+<li>Your client wants to use the bubble emission test for lot release. Explain why this carries regulatory risk.</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="concept-box">
+<h4>Key Concepts: Deterministic vs. Probabilistic</h4>
+<p>This is the most important classification concept in USP &lt;1207&gt;:</p>
+</div>
+<div class="two-column">
+<div class="left-column">
+<h2>3.9 Leak Test Detection Limit — Table 1</h2>
+<p>The detection limit of a leak test is the smallest leakage rate or leak size that the method can reliably detect, given the product–package of interest.</p>
+<p><em>Note: Dry air leakage rate measured at 1 atm differential pressure at 25°. Orifice sizes assume a leak path of negligible length. These are approximation ranges.</em></p>
+<p><strong>3.10 Leak Test Method Range:</strong> All leak test methods have an optimum detection range. Therefore, it is possible that additional tests may be needed to catch those leaks of concern that fall outside the chosen leak test method's detection range.</p>
+<p><strong>3.11 Nondestructive or Destructive:</strong> Only nondestructive test methods are appropriate for leak testing product–package units earmarked for commercial or clinical study distribution.</p>
+<p><strong>3.12 Off-Line or On-Line:</strong> On-line testing can potentially provide greater assurance that all packages have integrity and can yield instant feedback in the event of package misassembly or breakage, enabling real-time line corrections.</p>
+</div>
+<div class="right-column">
+<h2>Tutorial Commentary</h2>
+<div class="formula-box">
+<h4>Formula and Calculation: Applying the Leak Rate Reference Table</h4>
+<pre>Reference table of lower detection limits (for guidance only):
+Row 1 → Helium mass spectrometry (vacuum mode) → &lt;0.1 µm
+Row 2 → Tracer gas sniffer mode → 0.1-1.0 µm
+Row 3 → HVLD, vacuum decay, mass extraction, pressure decay → 1-5 µm
+Row 4 → Bubble emission, microbial challenge, tracer liquid → 5-10 µm
+Row 6 → Visual inspection (large defects) → &gt;50 µm
+
+The detection limit established in actual validation may deviate from the values above
+— it must be established for the specific product-package system</pre>
+</div>
+<div class="concept-box">
+<h4>Key Concepts: Detection Limit vs. Detection Range</h4>
+<p><strong>Detection limit</strong>: the smallest leak the method can reliably detect.</p>
+<p><strong>Detection range</strong>: the minimum to maximum detection capability of the method. Note: a method that can detect small leaks may not be able to detect very large breaches (such as a missing component), so a vision system may be needed as a supplement.</p>
+</div>
+<div class="note-box">
+<h4>Key Notes: On-line vs. Off-line Trade-offs</h4>
+<p>Advantages of on-line testing: 100% lot coverage and immediate feedback. Disadvantages: high line speed → short test cycle → reduced detection sensitivity. Off-line testing: sampling only, but higher sensitivity. This is not a question of "which is better" but of complementarity: the more complex the filling line, the more a combined strategy is needed.</p>
+</div>
+<div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+<h4>Practical Application</h4>
+<p>A common combined strategy in aseptic filling line design: on-line HVLD (fast, Row 3 detection) for 100% screening + off-line vacuum decay (slower, more sensitive) for stability study samples. The two methods complement each other and cover the full range from gross defects to very small leaks.</p>
+</div>
+</div>
+</div>
+<!-- SECTION 4: VALIDATION -->
+<div class="section-title">Section 4 — Test Instrument Qualification, Method Development, and Method Validation</div>
+<div class="two-column">
+<div class="left-column">
+<h2>4.1–4.2 Instrumentation Qualification and Method Validation Parameters</h2>
+<p><strong>4.1 Instrumentation and Equipment Qualification:</strong> includes: 1) evaluation of instrument/equipment functionality, and 2) determination of test system detection capabilities using appropriate calibration tools or reference standards to simulate with-leak test conditions.</p>
+<p><strong>4.2 Method Development and Validation</strong> — The following properties of a valid test method are defined:</p>
+<p><strong>4.2.1 Accuracy:</strong> a measure of the method's ability to correctly differentiate packages that leak above the claimed detection limit from those that leak below this limit (do not leak). Accuracy provides a measure of <span class="key-term">false positive</span> and <span class="key-term">false negative</span> occurrence.</p>
+<p><strong>4.2.2 Precision:</strong> the ability of the method to yield reliable, repeatable data. Includes <em>repeatability</em> (same instrument, same day), <em>ruggedness/intermediate precision</em> (multiple operators, multiple days, multiple instruments), and <em>reproducibility</em> (among laboratories).</p>
+<p><strong>4.2.3 Specificity:</strong> the ability to accurately differentiate between leaking and nonleaking packages despite interfering factors that may cause false detection. For example, helium permeation through the package wall may mask small leaks or be falsely interpreted as leakage.</p>
+<p><strong>4.2.4 Detection Limit:</strong> demonstrated by challenging packages with and without known defects by the leak test method for multiple test days by multiple operators.</p>
+<p><em>Example of detection limit expression: "The detection limit for method X was determined to be 5 ± 2 µm. Validation studies found defects of this nominal size were detected 95% of the time; all larger defects were detected 100% of the time. Studies included three replicate test series performed on multiple days by multiple operators in a single laboratory using one instrument."</em></p>
+<p><strong>4.2.8 Robustness:</strong> the method's ability to accurately identify leaking versus nonleaking packages despite small but deliberate variations in procedural parameters.</p>
+</div>
+<div class="right-column">
+<h2>Tutorial Commentary</h2>
+<div class="concept-box">
+<h4>Key Concepts: The Eight Elements of CCI Method Validation</h4>
+<p>Aligned with ICH Q2(R1) analytical method validation, the eight elements of CCI method validation are:</p>
+<ul>
+<li><strong>Accuracy</strong>: the ability to correctly distinguish leaking from non-leaking units → measured by the false positive and false negative rates</li>
+<li><strong>Precision</strong>: consistency of repeated tests (including repeatability, intermediate precision, and reproducibility)</li>
+<li><strong>Specificity</strong>: the ability to exclude interfering factors</li>
+<li><strong>Detection limit</strong>: the smallest detectable leak</li>
+<li><strong>Quantitation limit</strong>: the smallest leak rate that can be quantified</li>
+<li><strong>Linearity</strong>: the ability of the result to be proportional to leak size</li>
+<li><strong>Range</strong>: the upper and lower boundaries of the detection range</li>
+<li><strong>Robustness</strong>: the ability of the method to remain reliable under small deviations</li>
+</ul>
+</div>
+<div class="analogy-box">
+<h4>Analogy</h4>
+<p>CCI method validation is like calibrating a ruler: accuracy = the 10 cm this ruler shows is truly 10 cm; precision = the same person measuring three times gets the same result; specificity = temperature changes do not make the ruler stretch; detection limit = can this ruler resolve 0.1 mm or only 1 mm? Each element is a piece of the puzzle that ensures reliable measurement.</p>
+</div>
+<div class="note-box">
+<h4>Key Notes: False Negatives Are More Dangerous Than False Positives</h4>
+<p>In CCI validation, the risk of a <strong>false negative (missing a leak)</strong> is far greater than that of a false positive (wrongly calling a leak). The most common criticism in FDA warning letters related to CCI is that the method cannot reliably detect small leaks near the MALL. Validation should focus on ensuring that the probability of detecting defects near the MALL reaches an acceptable level (typically ≥ 95%).</p>
+</div>
+<div class="practice-box">
+<h4>Practice Questions</h4>
+<ol>
+<li>How would you design a robustness study in a CCI validation protocol? Using vacuum decay as an example, list three method parameter deviations that should be tested.</li>
+<li>What is the specificity issue with the helium tracer gas method? How would you evaluate this interference during validation?</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="two-column">
+<div class="left-column">
+<h2>4.3–4.5 System Suitability, Microbial Ingress Risk, Negative and Positive Controls</h2>
+<p><strong>4.3 System Suitability:</strong> a manner of ensuring that the leak test method, including all factors that may be subject to variability, is adequately controlled. System suitability is important for all leak test methods. Extra care may be required for probabilistic methods more prone to variability.</p>
+<p><strong>4.4 Microbial Ingress Risk Comparison:</strong> An experimental comparison of physicochemical leak test to microbiological challenge data may NOT be needed when:</p>
+<ul>
+<li>The validated physicochemical method has a proven detection limit at or below the product-package MALL.</li>
+<li>The method is used to find leaks notably larger than the MALL (e.g., for damaged package rejection).</li>
+</ul>
+<p>Comparison study MAY be useful when the method's limit of detection is notably greater than the MALL, or when the MALL is lacking or not well defined.</p>
+<p><strong>4.5 Negative and Positive Controls:</strong> "Negative controls" are packages with no known leak, and "positive controls" are packages with intentional or known leaks. A "<span class="key-term">master</span>" is a type of negative control — a no-leaking mock package used in system suitability verification.</p>
+<p><strong>4.5.1 Defect Creation Methods:</strong></p>
+<ul>
+<li><span class="key-term">Laser drilling</span>: creates defects as small as 2–3 µm in rigid glass or plastic; not ideal (non-cylindrical, asymmetric), but simulates actual defects</li>
+<li><span class="key-term">Glass micropipettes</span>: simulate single-orifice defects as small as ~0.1 µm</li>
+<li><span class="key-term">Microtubes (microcapillaries)</span>: can be as narrow as 2 µm; good for channel defects</li>
+<li>Needle insertion, wire/microfilament between sealing surfaces, holed metal plate: useful for larger defects in feasibility studies</li>
+</ul>
+<p><strong>4.5.2 Type Defects</strong> — realistic package flaws:</p>
+<ul>
+<li>Heat sealed bag: weak seal, wrinkled seal, seal gap, seal channel, product entrapment in seal</li>
+<li>Stoppered vial: vial finish channel defect, loosely capped stopper, product trapped between stopper and vial</li>
+<li>Prefilled syringe: needle shield punctured, defective plunger</li>
+<li>Ophthalmic dropper bottle: loose cap, missing/poorly inserted dropper tip</li>
+</ul>
+</div>
+<div class="right-column">
+<h2>Tutorial Commentary</h2>
+<div class="concept-box">
+<h4>Key Concepts: Tiers of Positive Control Design</h4>
+<p>USP requires positive controls to cover the full detection range:</p>
+<ul>
+<li><strong>Tier 1</strong>: small defects near the detection limit (most critical) → confirm whether the method can detect at the boundary</li>
+<li><strong>Tier 2</strong>: bracketing defects (slightly larger and slightly smaller than the detection limit) → establish the probability-of-detection curve</li>
+<li><strong>Tier 3</strong>: large defects (confirm the upper limit of the method) → ensure large defects are not missed</li>
+<li><strong>Type defects</strong>: defect forms that simulate those that may occur in real production</li>
+</ul>
+</div>
+<div class="note-box">
+<h4>Key Notes: Limitations of Laser Drilling</h4>
+<p>The "holes" produced by laser drilling are not perfectly round small orifices but asymmetric microcrack matrices. Therefore:</p>
+<ul>
+<li>Leak rate cannot be calculated directly from geometric formulas</li>
+<li>The nominal diameter must be assigned by comparing the gas leak rate against a standard orifice</li>
+<li>The advantage is that they closely resemble real defect morphology (such as cracks)</li>
+</ul>
+</div>
+<div class="analogy-box">
+<h4>Analogy</h4>
+<p>System suitability is like calibrating the office scale every morning before work. Before starting a test run, use known negative/positive controls to confirm that the instrument is operating properly today. This is a routine step that safeguards the reliability of the data from every test run.</p>
+</div>
+<div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+<h4>Practical Application</h4>
+<p>For CCI validation in aseptic vial filling, the design of type defects should include: (1) finish channel defects (simulating a chipped vial finish) → the most common real production defect; (2) stopper not fully seated (loosely capped stopper) → simulating a capping failure; (3) product trapped between the stopper and the vial finish (product trapped) → simulating overfilling. If the selected CCI method cannot detect these three types of defects, additional monitoring measures are needed.</p>
+</div>
+</div>
+</div>
+<!-- CHAPTER SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+<h3>Chapter Summary</h3>
+<ul>
+<li><strong>Three-stage life cycle:</strong> CCI testing spans three stages: development/validation, manufacturing, and commercial stability, each with different objectives and method requirements</li>
+<li><strong>MALL is the core:</strong> the maximum allowable leakage limit defines the sensitivity threshold the test method must achieve</li>
+<li><strong>Deterministic methods first:</strong> a deterministic method that can reach the MALL is preferred by FDA/USP; probabilistic methods are considered only when deterministic methods are not applicable</li>
+<li><strong>12 selection criteria:</strong> package contents, design and materials, seal type, MALL, deterministic/probabilistic, physicochemical/microbiological, result type, quantitative/qualitative, detection limit, detection range, destructive/nondestructive, off-line/on-line</li>
+<li><strong>Eight-element validation:</strong> accuracy (false positives/negatives), precision (three levels), specificity, detection limit, quantitation limit, linearity, range, robustness</li>
+<li><strong>Control design:</strong> negative controls (intact packages) + positive controls (known defects, covering a bracketing range around the detection limit) + type defects (real production scenarios)</li>
+<li><strong>Regulatory points:</strong> CCI testing can replace sterility testing in the stability program (FDA 2008), but does not replace lot release sterility testing</li>
+</ul>
+</div>
+</div><!-- end main-content -->
+<div class="main-footer">
+<p>USP 〈1207.1〉: Package Integrity Testing in the Product Life Cycle — Test Method Selection and Validation</p>
+<p>SterileGMP Knowledge Hub | Generated: 2026-04-06</p>
+</div>
+        </div>
+    </section>
+
+</main>
+
+    <footer class="main-footer">
+        <p>SterileGMP Knowledge Hub — For study reference only</p>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const sections = document.querySelectorAll('.chapter-section');
+        const navItems = document.querySelectorAll('.nav-item');
+        const backToTop = document.getElementById('backToTop');
+        const navContainer = document.getElementById('navContainer');
+        const btnLeft = document.getElementById('navScrollLeft');
+        const btnRight = document.getElementById('navScrollRight');
+
+        // Reading progress — high-water mark (furthest section reached, never goes back)
+        const _pKey = 'sgk_progress_' + location.pathname.split('/').pop().replace(/(\.en)?\.html$/,'');
+        let _saveTimer = null;
+        let _current = '';
+        let _maxIdx = -1;
+
+        // Init: restore existing max index from storage
+        (function() {
+            try {
+                var ex = JSON.parse(localStorage.getItem(_pKey) || 'null');
+                if (ex && ex.maxId) {
+                    sections.forEach(function(s, i) {
+                        if (s.getAttribute('id') === ex.maxId) _maxIdx = i;
+                    });
+                }
+            } catch(e) {}
+        })();
+
+        function _saveProgress() {
+            if (!_current) return;
+            var curIdx = -1;
+            sections.forEach(function(s, i) {
+                if (s.getAttribute('id') === _current) curIdx = i;
+            });
+            if (curIdx > _maxIdx) _maxIdx = curIdx; // only advance
+            var maxSec = sections[_maxIdx];
+            if (!maxSec) return;
+            var maxId = maxSec.getAttribute('id');
+            var maxNav = document.querySelector('.nav-item[data-section="' + maxId + '"]');
+            var isComplete = _maxIdx >= sections.length - 1;
+            try {
+                localStorage.setItem(_pKey, JSON.stringify({
+                    id:       maxId,
+                    maxId:    maxId,
+                    label:    maxNav ? (maxNav.querySelector('.nav-label')||{}).textContent||'' : '',
+                    num:      maxNav ? (maxNav.querySelector('.nav-num')||{}).textContent||'' : '',
+                    complete: isComplete,
+                    ts:       Date.now()
+                }));
+            } catch(e) {}
+        }
+
+        // Restore progress: honor URL hash first, then jump to furthest section reached
+        function _restoreProgress() {
+            var targetId = location.hash ? location.hash.substring(1) : null;
+            if (!targetId) {
+                try {
+                    var saved = JSON.parse(localStorage.getItem(_pKey) || 'null');
+                    if (saved && saved.id) targetId = saved.id;
+                } catch(e) {}
+            }
+            if (targetId) {
+                var el = document.getElementById(targetId);
+                if (el) {
+                    setTimeout(function() { el.scrollIntoView({ behavior: 'smooth' }); }, 300);
+                }
+            }
+        }
+        _restoreProgress();
+
+        function updateNavArrows() {
+            btnLeft.classList.toggle('hidden', navContainer.scrollLeft <= 0);
+            btnRight.classList.toggle('hidden',
+                navContainer.scrollLeft + navContainer.clientWidth >= navContainer.scrollWidth - 1);
+        }
+        btnLeft.addEventListener('click', function() {
+            navContainer.scrollBy({ left: -300, behavior: 'smooth' });
+        });
+        btnRight.addEventListener('click', function() {
+            navContainer.scrollBy({ left: 300, behavior: 'smooth' });
+        });
+        navContainer.addEventListener('scroll', updateNavArrows);
+        updateNavArrows();
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+
+            _current = '';
+            sections.forEach(function(section) {
+                var sectionTop = section.offsetTop - 100;
+                if (window.scrollY >= sectionTop) {
+                    _current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(function(item) {
+                item.classList.remove('active');
+                if (item.getAttribute('data-section') === _current) {
+                    item.classList.add('active');
+                    item.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+                }
+            });
+
+            clearTimeout(_saveTimer);
+            _saveTimer = setTimeout(_saveProgress, 500);
+        });
+    });
+    </script>
+    <script src="../../../rpg/rpg.js" defer></script>
+
+</body>
+</html>

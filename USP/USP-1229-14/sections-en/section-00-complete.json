@@ -1,0 +1,449 @@
+{
+ "source": "section-00-complete.html",
+ "blocks": [
+  {
+   "zh": "滅菌週期開發 — 完整教學版",
+   "en": "Sterilization Cycle Development: Complete Tutorial Edition"
+  },
+  {
+   "zh": "Chapter Contents 章節目錄",
+   "en": "Chapter Contents"
+  },
+  {
+   "zh": "<a href=\"#intro\">Introduction 導論</a>\n<a href=\"#screening\">Process Screening 製程篩選</a>\n<a href=\"#bioburden\">Bioburden Evaluation 生物負載評估</a>\n<a href=\"#duration\">Estimation of Process Duration 製程時間估算</a>\n<a href=\"#material\">Formal Material Evaluation 正式材料評估</a>\n<a href=\"#bi\">Biological Indicator Selection BI 選擇</a>\n<a href=\"#container-map\">Container &amp; Item Mapping 容器與品項熱分佈</a>\n<a href=\"#load-map\">Load Mapping 裝載熱分佈</a>",
+   "en": "<a href=\"#intro\">Introduction</a>\n<a href=\"#screening\">Process Screening</a>\n<a href=\"#bioburden\">Bioburden Evaluation</a>\n<a href=\"#duration\">Estimation of Process Duration</a>\n<a href=\"#material\">Formal Material Evaluation</a>\n<a href=\"#bi\">Biological Indicator Selection</a>\n<a href=\"#container-map\">Container &amp; Item Mapping</a>\n<a href=\"#load-map\">Load Mapping</a>"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解滅菌週期開發的完整流程：從製程篩選到裝載驗證的系統化步驟",
+   "en": "Understand the complete sterilization cycle development workflow: the systematic steps from process screening through load validation"
+  },
+  {
+   "zh": "掌握 PNSU（Probability of a Nonsterile Unit）的概念及其在週期設計中的角色",
+   "en": "Grasp the concept of PNSU (Probability of a Nonsterile Unit) and its role in cycle design"
+  },
+  {
+   "zh": "學會使用 D 值、F 值公式計算最低滅菌時間",
+   "en": "Learn to calculate the minimum sterilization time using the D value and F value equations"
+  },
+  {
+   "zh": "理解 Overkill Approach 與 Bioburden/BI Approach 的選擇邏輯",
+   "en": "Understand the logic for choosing between the Overkill approach and the Bioburden/BI approach"
+  },
+  {
+   "zh": "認識容器熱分佈（Container Mapping）與裝載熱分佈（Load Mapping）的差異與目的",
+   "en": "Recognize the differences and purposes of container mapping and load mapping"
+  },
+  {
+   "zh": "掌握 CDMO 場景下開發新客戶產品滅菌週期的實務考量",
+   "en": "Master the practical considerations of developing sterilization cycles for new client products in a CDMO setting"
+  },
+  {
+   "zh": "Introduction — 導論",
+   "en": "Introduction"
+  },
+  {
+   "zh": "Original Text 原文內容",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念 Key Concept",
+   "en": "Key Concept"
+  },
+  {
+   "zh": "<strong>滅菌週期開發的雙重目標：</strong>USP ⟨1229.14⟩ 開宗明義提出滅菌開發必須同時滿足兩個目標：",
+   "en": "<strong>The dual objectives of cycle development:</strong> USP ⟨1229.14⟩ states at the outset that sterilization development must satisfy two objectives at the same time:"
+  },
+  {
+   "zh": "<strong>微生物安全（Microbiological Safety）</strong> — 確保滅菌後產品達到所需的無菌保證水準（SAL）",
+   "en": "<strong>Microbiological safety</strong> - ensuring that the sterilized product achieves the required sterility assurance level (SAL)"
+  },
+  {
+   "zh": "<strong>產品適用性（Suitability for Intended Use）</strong> — 確保滅菌過程不會損壞產品品質或留下有害殘留物",
+   "en": "<strong>Suitability for intended use</strong> - ensuring that the sterilization process does not damage product quality or leave harmful residues"
+  },
+  {
+   "zh": "這兩個目標有時是衝突的：更強的滅菌條件能提高微生物安全，但可能損害產品。週期開發的藝術就在於找到最佳平衡點。",
+   "en": "These two objectives sometimes conflict: more aggressive sterilization conditions improve microbiological safety but may damage the product. The art of cycle development lies in finding the optimal balance."
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "<strong>CDMO 實務觀點：</strong>在 CDMO 環境中，每接到一個新客戶產品都可能需要開發或調整滅菌週期。你無法用「一個週期打天下」的方式處理所有產品。蛋白質藥物、小分子藥物、醫療器材各有不同的熱敏感性。開發前必須充分了解產品的關鍵品質屬性（CQA）和材料特性。",
+   "en": "<strong>CDMO perspective:</strong> In a CDMO environment, every new client product may require a sterilization cycle to be developed or adjusted. You cannot handle all products with a \"one cycle fits all\" approach. Protein drugs, small-molecule drugs, and medical devices each have different heat sensitivities. Before development, you must thoroughly understand the product's critical quality attributes (CQAs) and material properties."
+  },
+  {
+   "zh": "<strong>Leachables（可溶出物）：</strong>滅菌可能促使容器/包裝材料釋放化學物質進入產品。這在預充填注射器、塑膠包材中特別重要，也是 E&amp;L（Extractables &amp; Leachables）研究的核心議題。",
+   "en": "<strong>Leachables:</strong> Sterilization can cause container/packaging materials to release chemicals into the product. This is especially important for prefilled syringes and plastic packaging materials, and is a core topic of E&amp;L (Extractables &amp; Leachables) studies."
+  },
+  {
+   "zh": "Process Screening — 製程篩選",
+   "en": "Process Screening"
+  },
+  {
+   "zh": "重點提示 篩選原則",
+   "en": "Key Notes: Screening Principles"
+  },
+  {
+   "zh": "<strong>乾熱的 25°C 安全裕度：</strong>原文特別提到乾熱製程應在材料最低熔點以下 25°C 操作。這是一個實務性的安全裕度（Safety Margin）。例如：某塑膠組件熔點為 200°C，則乾熱除熱原（Depyrogenation）製程溫度應 ≤ 175°C。",
+   "en": "<strong>The 25°C safety margin for dry heat:</strong> The original text specifically states that dry heat processes should operate at least 25°C below the lowest melting point of the materials. This is a practical safety margin. For example, if a plastic component melts at 200°C, the dry heat depyrogenation process temperature should be ≤ 175°C."
+  },
+  {
+   "zh": "<strong>PNSU 的首次出現：</strong>這裡首次提到 PNSU（Probability of a Nonsterile Unit），這是整個滅菌驗證的核心指標。藥典要求終端滅菌產品的 PNSU ≤ 10<sup>−6</sup>，即每一百萬單位中不超過一個非無菌單位。",
+   "en": "<strong>First appearance of PNSU:</strong> PNSU (Probability of a Nonsterile Unit), the core metric of all sterilization validation, is mentioned here for the first time. The pharmacopeia requires a PNSU of ≤ 10<sup>−6</sup> for terminally sterilized products, i.e., no more than one nonsterile unit per million units."
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "<strong>選鞋的過程：</strong>製程篩選就像幫產品「選鞋」— 你不會直接買最貴的鞋（最強的滅菌條件），而是先看腳的尺寸（產品特性）、穿著場合（預期用途）、材質耐受度（材料相容性），然後選一雙既合腳又耐穿的鞋（平衡致死性與產品保護）。",
+   "en": "<strong>Choosing shoes:</strong> Process screening is like \"choosing shoes\" for the product. You would not simply buy the most expensive pair (the strongest sterilization conditions). Instead, you first look at the foot size (product characteristics), the occasion (intended use), and the durability of the material (material compatibility), and then pick a pair that both fits well and lasts (balancing lethality and product protection)."
+  },
+  {
+   "zh": "核心概念 製程篩選決策",
+   "en": "Key Concept: Process Screening Decisions"
+  },
+  {
+   "zh": "<strong>製程篩選的邏輯：</strong>USP 將滅菌方法分為三大類，每類的週期開發路徑不同：",
+   "en": "<strong>The logic of process screening:</strong> USP divides sterilization methods into three major categories, each with a different cycle development pathway:"
+  },
+  {
+   "zh": "本章主要針對「致死性滅菌」（Lethal Sterilization）的週期開發提供框架。過濾和輻射各有專門標準。",
+   "en": "This chapter mainly provides a framework for the cycle development of \"lethal sterilization.\" Filtration and radiation each have their own dedicated standards."
+  },
+  {
+   "zh": "Bioburden Evaluation — 生物負載評估",
+   "en": "Bioburden Evaluation"
+  },
+  {
+   "zh": "核心概念 生物負載兩大維度",
+   "en": "Key Concept: The Two Dimensions of Bioburden"
+  },
+  {
+   "zh": "生物負載評估有兩個關鍵維度，缺一不可：",
+   "en": "Bioburden evaluation has two key dimensions, and neither can be omitted:"
+  },
+  {
+   "zh": "<strong>族群數量（Population）</strong> — 滅菌前有多少微生物？用 N<sub>0</sub> 表示。數量越多，所需滅菌時間越長",
+   "en": "<strong>Population</strong> - How many microorganisms are present before sterilization? Expressed as N<sub>0</sub>. The higher the count, the longer the required sterilization time"
+  },
+  {
+   "zh": "<strong>抗性（Resistance）</strong> — 這些微生物有多耐熱/耐化學品？用 D 值表示。抗性越高，所需條件越嚴苛",
+   "en": "<strong>Resistance</strong> - How resistant are these microorganisms to heat or chemicals? Expressed as the D value. The higher the resistance, the more stringent the required conditions"
+  },
+  {
+   "zh": "公式解析 D Value (Decimal Reduction Time)",
+   "en": "Formula Explained: D Value (Decimal Reduction Time)"
+  },
+  {
+   "zh": "D value = 在特定溫度下，使微生物數量減少 90%（1 個 log）所需的時間（分鐘）\n\n例：D₁₂₁ = 1.5 min\n→ 在 121°C 下，每 1.5 分鐘微生物數量減少到原來的 1/10\n\n起始 10⁶ CFU：\n  1.5 min → 10⁵\n  3.0 min → 10⁴\n  4.5 min → 10³\n  6.0 min → 10²\n  7.5 min → 10¹\n  9.0 min → 10⁰ (1 CFU)\n  → 繼續加熱才能達到 PNSU 10⁻⁶",
+   "en": "D value = the time (in minutes) required at a specific temperature to reduce the microbial population by 90% (1 log)\n\nExample: D₁₂₁ = 1.5 min\n→ At 121°C, the microbial population falls to 1/10 of its previous level every 1.5 minutes\n\nStarting from 10⁶ CFU:\n  1.5 min → 10⁵\n  3.0 min → 10⁴\n  4.5 min → 10³\n  6.0 min → 10²\n  7.5 min → 10¹\n  9.0 min → 10⁰ (1 CFU)\n  → Heating must continue to reach a PNSU of 10⁻⁶"
+  },
+  {
+   "zh": "<strong>D 值越大</strong>，微生物越耐熱，需要越長的滅菌時間。",
+   "en": "<strong>The larger the D value</strong>, the more heat-resistant the microorganism and the longer the sterilization time required."
+  },
+  {
+   "zh": "重點提示 Boil Test 的角色",
+   "en": "Key Notes: The Role of the Boil Test"
+  },
+  {
+   "zh": "<strong>Boil Test（沸騰試驗）：</strong>100°C 加熱 10 分鐘 — 這是一個快速篩檢。營養型細菌（Non-spore-formers）會被殺死，芽孢菌（Spore-formers）則存活。",
+   "en": "<strong>Boil test:</strong> Heating at 100°C for 10 minutes is a rapid screening test. Vegetative bacteria (non-spore-formers) are killed, while spore-formers survive."
+  },
+  {
+   "zh": "<strong>結果判讀：</strong>",
+   "en": "<strong>Interpreting the results:</strong>"
+  },
+  {
+   "zh": "<strong>無存活菌</strong> → 生物負載主要是營養型細菌 → 滅菌條件可以較溫和 → 對產品衝擊較小",
+   "en": "<strong>No survivors</strong> → the bioburden is mainly vegetative bacteria → sterilization conditions can be milder → less impact on the product"
+  },
+  {
+   "zh": "<strong>有存活菌</strong> → 含芽孢菌 → 需建立其 D 值 → 滅菌條件需更嚴格",
+   "en": "<strong>Survivors present</strong> → spore-formers are present → their D value must be established → sterilization conditions must be more stringent"
+  },
+  {
+   "zh": "<strong>CDMO 實務：</strong>原料藥來源不同，生物負載差異極大。API 原料、賦形劑、包材各有不同的微生物風險。每個新產品轉入時都應重新評估。",
+   "en": "<strong>CDMO practice:</strong> Bioburden varies greatly with the source of the drug substance. API raw materials, excipients, and packaging materials each carry different microbial risks. Re-evaluate for every new product transferred in."
+  },
+  {
+   "zh": "Estimation of Process Duration — 製程時間估算",
+   "en": "Estimation of Process Duration"
+  },
+  {
+   "zh": "公式解析 PNSU &amp; F Value Calculation",
+   "en": "Formula Explained: PNSU &amp; F Value Calculation"
+  },
+  {
+   "zh": "Equation 1 — PNSU 估算公式：\n  log N_U = −F / D + log N₀\n\nEquation 2 — 解出 F（最低滅菌時間）：\n  F = D × (log N₀ − log N_U)\n\n各變數意義：\n  N₀  = 初始生物負載（CFU）\n  N_U = 目標 PNSU（通常 = 10⁻⁶）\n  D   = 生物負載的 D 值（min）\n  F   = 所需滅菌時間（min）",
+   "en": "Equation 1 - PNSU estimation:\n  log N_U = −F / D + log N₀\n\nEquation 2 - Solving for F (minimum sterilization time):\n  F = D × (log N₀ − log N_U)\n\nMeaning of the variables:\n  N₀  = initial bioburden (CFU)\n  N_U = target PNSU (usually = 10⁻⁶)\n  D   = D value of the bioburden (min)\n  F   = required sterilization time (min)"
+  },
+  {
+   "zh": "計算範例 Worked Example",
+   "en": "Worked Example"
+  },
+  {
+   "zh": "假設條件：\n  N₀ = 100 CFU (10²)\n  D  = 1.5 min (生物負載 D₁₂₁ 值)\n  目標 PNSU = 10⁻⁶\n\nF = D × (log N₀ − log N_U)\nF = 1.5 × (log 10² − log 10⁻⁶)\nF = 1.5 × (2 − (−6))\nF = 1.5 × 8\nF = 12 min\n\n→ 在 121°C 下至少需要 12 分鐘的保溫時間\n→ 這是 F₀ = 12 的意義",
+   "en": "Assumed conditions:\n  N₀ = 100 CFU (10²)\n  D  = 1.5 min (D₁₂₁ value of the bioburden)\n  Target PNSU = 10⁻⁶\n\nF = D × (log N₀ − log N_U)\nF = 1.5 × (log 10² − log 10⁻⁶)\nF = 1.5 × (2 − (−6))\nF = 1.5 × 8\nF = 12 min\n\n→ A hold time of at least 12 minutes at 121°C is required\n→ This is the meaning of F₀ = 12"
+  },
+  {
+   "zh": "<strong>安全裕度（Safety Factor）：</strong>實務上會在 D 值、N<sub>0</sub>、或 PNSU 上加入安全裕度。例如將 D 值假設為實測值的 2 倍，或將 N<sub>0</sub> 假設為實測值的 10 倍。",
+   "en": "<strong>Safety factor:</strong> In practice, a safety factor is applied to the D value, N<sub>0</sub>, or PNSU. For example, assume the D value is twice the measured value, or assume N<sub>0</sub> is 10 times the measured value."
+  },
+  {
+   "zh": "重點提示 驗證方法選擇",
+   "en": "Key Notes: Choosing the Validation Approach"
+  },
+  {
+   "zh": "<strong>三種驗證方法（Validation Approach）：</strong>",
+   "en": "<strong>Three validation approaches:</strong>"
+  },
+  {
+   "zh": "<strong>Overkill Approach（過殺法）</strong> — 首選。F<sub>0</sub> ≥ 12 min，可完全滅活高抗性 BI（如 <em>G. stearothermophilus</em>，D<sub>121</sub> ≥ 1.5 min，10<sup>6</sup> 孢子）。對材料要求最高",
+   "en": "<strong>Overkill approach</strong> - The preferred option. F<sub>0</sub> ≥ 12 min, which fully inactivates a highly resistant BI (such as <em>G. stearothermophilus</em>, D<sub>121</sub> ≥ 1.5 min, 10<sup>6</sup> spores). It places the greatest demands on the materials"
+  },
+  {
+   "zh": "<strong>Bioburden/BI Approach</strong> — 當產品無法承受 Overkill 條件時使用。需同時考慮實際生物負載和 BI 的滅活數據",
+   "en": "<strong>Bioburden/BI approach</strong> - Used when the product cannot withstand overkill conditions. Both the actual bioburden and the BI inactivation data must be considered"
+  },
+  {
+   "zh": "<strong>Bioburden Approach（純生物負載法）</strong> — 最溫和。僅基於實際生物負載數據設計週期。需要更嚴格的生物負載監控",
+   "en": "<strong>Bioburden approach (bioburden only)</strong> - The mildest. The cycle is designed solely on actual bioburden data. It requires more stringent bioburden monitoring"
+  },
+  {
+   "zh": "<strong>CDMO 策略：</strong>對於耐熱產品（如不銹鋼器具、玻璃瓶），優先採用 Overkill — 驗證最簡單、文件最少、監管機構最認可。對於熱敏感產品（如蛋白質藥物），則需採用 Bioburden/BI 方法，並加強日常生物負載監控。",
+   "en": "<strong>CDMO strategy:</strong> For heat-stable products (such as stainless steel instruments and glass vials), use overkill first: it is the simplest to validate, requires the least documentation, and is the most widely accepted by regulators. For heat-sensitive products (such as protein drugs), the Bioburden/BI approach is needed, together with enhanced routine bioburden monitoring."
+  },
+  {
+   "zh": "核心概念 F₀ vs F<sub>H</sub>",
+   "en": "Key Concept: F₀ vs F<sub>H</sub>"
+  },
+  {
+   "zh": "F 值會因滅菌方法不同而有不同的表示方式：",
+   "en": "The F value is expressed differently depending on the sterilization method:"
+  },
+  {
+   "zh": "Formal Material Evaluation — 正式材料評估",
+   "en": "Formal Material Evaluation"
+  },
+  {
+   "zh": "重點提示 化學滅菌殘留",
+   "en": "Key Notes: Chemical Sterilant Residues"
+  },
+  {
+   "zh": "<strong>EO（環氧乙烷）殘留：</strong>使用氣體或化學滅菌時，殘留滅菌劑是重大安全議題。例如 EO 滅菌後，產品上的 EO 殘留量和 ECH（Ethylene Chlorohydrin）副產物必須符合 ISO 10993-7 限量標準。Post-sterilization aeration（滅菌後通氣）是標準程序。",
+   "en": "<strong>EO (ethylene oxide) residues:</strong> When gas or chemical sterilization is used, residual sterilant is a major safety concern. For example, after EO sterilization, the EO residue on the product and the by-product ECH (ethylene chlorohydrin) must meet the limits in ISO 10993-7. Post-sterilization aeration is a standard procedure."
+  },
+  {
+   "zh": "<strong>CDMO 實務：</strong>接到新產品時，材料相容性研究是技術轉移（Tech Transfer）階段的關鍵活動。客戶通常會提供初步數據，但 CDMO 應在自己的設備和條件下重新驗證。這些研究可以在實驗室規模進行，但必須完整記錄（fully documented）— 這是 GMP 的基本要求。",
+   "en": "<strong>CDMO practice:</strong> When a new product is received, material compatibility studies are a key activity during the technology transfer stage. The client usually provides preliminary data, but the CDMO should re-verify it on its own equipment and under its own conditions. These studies can be performed at laboratory scale but must be fully documented, which is a basic GMP requirement."
+  },
+  {
+   "zh": "核心概念 材料評估分級",
+   "en": "Key Concept: Tiered Material Evaluation"
+  },
+  {
+   "zh": "USP 暗示了一個風險分級的概念 — 材料評估的深度取決於材料對滅菌的敏感性：",
+   "en": "USP implies a risk-tiered concept: the depth of material evaluation depends on how sensitive the material is to sterilization:"
+  },
+  {
+   "zh": "Biological Indicator Selection — 生物指示劑選擇",
+   "en": "Biological Indicator Selection"
+  },
+  {
+   "zh": "核心概念 BI 選擇原則",
+   "en": "Key Concept: BI Selection Principles"
+  },
+  {
+   "zh": "<strong>BI 的角色：</strong>生物指示劑是滅菌驗證的「量尺」— 它用來量測製程是否達到所需的致死性，而不是用來決定製程條件。",
+   "en": "<strong>The role of the BI:</strong> The biological indicator is the \"yardstick\" of sterilization validation. It is used to measure whether the process achieves the required lethality, not to decide the process conditions."
+  },
+  {
+   "zh": "<strong>關鍵原則：</strong>「製程不應遷就 BI」— 這是 USP 非常明確的立場。意思是：",
+   "en": "<strong>Key principle:</strong> \"The process should not be adapted to the BI.\" This is a very clear USP position. It means:"
+  },
+  {
+   "zh": "先根據產品和生物負載決定滅菌條件",
+   "en": "First determine the sterilization conditions based on the product and the bioburden"
+  },
+  {
+   "zh": "再選擇適合的 BI 來驗證該條件的致死性",
+   "en": "Then select a suitable BI to verify the lethality of those conditions"
+  },
+  {
+   "zh": "如果 BI 在該條件下無法被完全滅活，應選擇抗性較低的 BI，而非延長製程時間",
+   "en": "If the BI cannot be completely inactivated under those conditions, choose a less resistant BI rather than extending the process time"
+  },
+  {
+   "zh": "重點提示 常用 BI",
+   "en": "Key Notes: Commonly Used BIs"
+  },
+  {
+   "zh": "<strong>CDMO 注意事項：</strong>BI 的 D 值和孢子數量必須有供應商提供的 Certificate of Analysis（CoA）。不同批號的 BI 可能有不同的 D 值 — 驗證報告中應記錄所用 BI 的具體批號和特性。",
+   "en": "<strong>CDMO note:</strong> The D value and spore count of a BI must be supported by a Certificate of Analysis (CoA) from the supplier. Different BI lots may have different D values, so the validation report should record the specific lot number and characteristics of the BI used."
+  },
+  {
+   "zh": "Container and Item Mapping — 容器與品項熱分佈",
+   "en": "Container and Item Mapping"
+  },
+  {
+   "zh": "核心概念 Cold Spot 識別",
+   "en": "Key Concept: Identifying the Cold Spot"
+  },
+  {
+   "zh": "<strong>Container/Item Mapping 的目的：</strong>找到容器或品項內部的「最冷點」（Cold Spot）或「最難到達點」— 即滅菌條件最不容易達到的位置。如果最冷點都能達標，其他位置自然合格。",
+   "en": "<strong>Purpose of container/item mapping:</strong> To find the \"coldest point\" (cold spot) or \"most difficult-to-reach point\" inside the container or item, i.e., the location where sterilization conditions are least likely to be achieved. If the cold spot meets the target, all other locations will naturally meet it too."
+  },
+  {
+   "zh": "<strong>測量工具選擇：</strong>",
+   "en": "<strong>Choice of measurement tools:</strong>"
+  },
+  {
+   "zh": "<strong>熱電偶（Thermocouples）</strong> — 濕熱/乾熱滅菌的溫度分佈",
+   "en": "<strong>Thermocouples</strong> - temperature distribution in moist heat/dry heat sterilization"
+  },
+  {
+   "zh": "<strong>劑量計（Dosimeters）</strong> — 輻射滅菌的劑量分佈",
+   "en": "<strong>Dosimeters</strong> - dose distribution in radiation sterilization"
+  },
+  {
+   "zh": "<strong>BI / CI</strong> — 輔助驗證致死性達到各位置",
+   "en": "<strong>BI / CI</strong> - supplementary verification that lethality is achieved at each location"
+  },
+  {
+   "zh": "重點提示 測量不能改變結果",
+   "en": "Key Notes: Measurement Must Not Alter the Result"
+  },
+  {
+   "zh": "<strong>非侵入性原則：</strong>USP 特別強調：放置測量裝置時不能改變滅菌劑的穿透路徑。例如：",
+   "en": "<strong>Non-invasive principle:</strong> USP specifically emphasizes that placing measuring devices must not alter the penetration path of the sterilant. For example:"
+  },
+  {
+   "zh": "在密封包裝上穿孔放入熱電偶時，穿孔本身可能成為蒸汽進入的捷徑 — 這會讓測量結果偏樂觀",
+   "en": "Piercing a sealed package to insert a thermocouple may create a shortcut for steam to enter, which makes the measurement results overly optimistic"
+  },
+  {
+   "zh": "在瓶中放入大型溫度探頭可能排擠液體，改變熱傳導特性",
+   "en": "Placing a large temperature probe in a vial may displace liquid and change the heat transfer characteristics"
+  },
+  {
+   "zh": "<strong>Interpolation（內插法）：</strong>USP 允許對簡單幾何形狀的物品使用內插法減少研究範圍。例如：已驗證 100 mL 和 500 mL 瓶的 Cold Spot，可以合理推估 250 mL 瓶的行為。但此推估必須有科學依據並記錄在案。",
+   "en": "<strong>Interpolation:</strong> USP allows interpolation for items with simple geometries to reduce the scope of the study. For example, if the cold spots of 100 mL and 500 mL vials have been validated, the behavior of a 250 mL vial can reasonably be inferred. However, this inference must be scientifically justified and documented."
+  },
+  {
+   "zh": "Load Mapping — 裝載熱分佈",
+   "en": "Load Mapping"
+  },
+  {
+   "zh": "重點提示 CDMO Re-validation Triggers",
+   "en": "Key Notes: CDMO Re-validation Triggers"
+  },
+  {
+   "zh": "<strong>何時需要重新驗證（Re-validation）？</strong>",
+   "en": "<strong>When is re-validation needed?</strong>"
+  },
+  {
+   "zh": "新產品或新容器尺寸引入（新的 Container Mapping 需求）",
+   "en": "Introduction of a new product or container size (new container mapping needed)"
+  },
+  {
+   "zh": "裝載模式（Loading Pattern）變更",
+   "en": "Change in loading pattern"
+  },
+  {
+   "zh": "滅菌器設備維修或重大修改",
+   "en": "Sterilizer repair or major modification"
+  },
+  {
+   "zh": "生物負載趨勢出現異常（更高的族群或抗性）",
+   "en": "Abnormal bioburden trends (higher population or resistance)"
+  },
+  {
+   "zh": "容器封閉系統變更（可能影響蒸汽穿透）",
+   "en": "Change in the container closure system (may affect steam penetration)"
+  },
+  {
+   "zh": "定期再驗證（通常每年一次）",
+   "en": "Periodic re-validation (usually annually)"
+  },
+  {
+   "zh": "對 CDMO 而言，新客戶產品轉入幾乎必然觸發 Container Mapping 和可能的 Load Mapping 更新。",
+   "en": "For a CDMO, transferring in a new client product almost inevitably triggers container mapping and possibly a load mapping update."
+  },
+  {
+   "zh": "核心概念 Container Mapping vs Load Mapping",
+   "en": "Key Concept: Container Mapping vs Load Mapping"
+  },
+  {
+   "zh": "USP 將熱分佈研究分為兩個層次：",
+   "en": "USP divides heat distribution studies into two levels:"
+  },
+  {
+   "zh": "兩者都必須執行。Load Mapping 確保滅菌器腔體內沒有「死角」— 無論品項放在最上層、最下層、最角落，都能達到所需的滅菌條件。",
+   "en": "Both must be performed. Load mapping ensures there are no \"dead spots\" in the sterilizer chamber: whether an item is placed on the top shelf, the bottom shelf, or in a corner, the required sterilization conditions are achieved."
+  },
+  {
+   "zh": "本章重點回顧 Chapter Summary",
+   "en": "Chapter Summary"
+  },
+  {
+   "zh": "<strong>滅菌週期開發流程：</strong>製程篩選 → 生物負載評估 → 製程時間估算 → 材料評估 → BI 選擇 → Container Mapping → Load Mapping",
+   "en": "<strong>Sterilization cycle development workflow:</strong> process screening → bioburden evaluation → process duration estimation → material evaluation → BI selection → container mapping → load mapping"
+  },
+  {
+   "zh": "<strong>雙重平衡：</strong>微生物致死性 vs 產品/材料保護 — 過度滅菌可能損害產品品質",
+   "en": "<strong>Dual balance:</strong> microbial lethality vs product/material protection. Over-sterilization may damage product quality"
+  },
+  {
+   "zh": "<strong>PNSU 公式：</strong>F = D × (log N<sub>0</sub> − log N<sub>U</sub>)，其中 F<sub>0</sub> 用於濕熱、F<sub>H</sub> 用於乾熱",
+   "en": "<strong>PNSU formula:</strong> F = D × (log N<sub>0</sub> − log N<sub>U</sub>), where F<sub>0</sub> is used for moist heat and F<sub>H</sub> for dry heat"
+  },
+  {
+   "zh": "<strong>驗證方法選擇：</strong>Overkill（首選，最簡單）→ Bioburden/BI → Bioburden（最溫和，監控最嚴格）",
+   "en": "<strong>Choosing the validation approach:</strong> Overkill (preferred, simplest) → Bioburden/BI → Bioburden (mildest, most stringent monitoring)"
+  },
+  {
+   "zh": "<strong>BI 原則：</strong>製程不應遷就 BI；BI 是量尺，不是設計依據",
+   "en": "<strong>BI principle:</strong> The process should not be adapted to the BI; the BI is a yardstick, not a design basis"
+  },
+  {
+   "zh": "<strong>熱分佈兩層次：</strong>Container Mapping（品項內最冷點）+ Load Mapping（腔體內均勻性）",
+   "en": "<strong>Two levels of heat distribution:</strong> container mapping (cold spot within the item) + load mapping (uniformity within the chamber)"
+  },
+  {
+   "zh": "<strong>CDMO 關鍵：</strong>每個新產品轉入都是潛在的週期開發/再驗證觸發點",
+   "en": "<strong>CDMO key point:</strong> Every new product transfer is a potential trigger for cycle development/re-validation"
+  },
+  {
+   "zh": "綜合練習思考 Comprehensive Practice Questions",
+   "en": "Comprehensive Practice Questions"
+  },
+  {
+   "zh": "一個新客戶帶來一支蛋白質藥物（對熱極敏感），裝在預充填注射器中，需要終端滅菌。你會建議什麼驗證方法？如果 Overkill 不可行，你需要加強哪些日常監控？",
+   "en": "A new client brings a highly heat-sensitive protein drug in a prefilled syringe that requires terminal sterilization. Which validation approach would you recommend? If overkill is not feasible, which routine monitoring would you need to strengthen?"
+  },
+  {
+   "zh": "你的生物負載監控數據顯示某產品的 Boil Test 突然出現存活菌（之前一直無存活菌）。按照本章框架，你應該啟動哪些行動？",
+   "en": "Your bioburden monitoring data shows that a product's boil test suddenly has survivors (there had never been any before). Following the framework of this chapter, which actions should you initiate?"
+  },
+  {
+   "zh": "計算練習：某產品生物負載 N<sub>0</sub> = 50 CFU，D<sub>121</sub> = 2.0 min，目標 PNSU = 10<sup>−6</sup>。最低 F<sub>0</sub> 是多少？如果加上 2 倍安全裕度（D 值取 4.0 min），F<sub>0</sub> 會是多少？",
+   "en": "Calculation exercise: A product has bioburden N<sub>0</sub> = 50 CFU, D<sub>121</sub> = 2.0 min, and a target PNSU = 10<sup>−6</sup>. What is the minimum F<sub>0</sub>? If a 2x safety factor is applied (taking the D value as 4.0 min), what would F<sub>0</sub> be?"
+  },
+  {
+   "zh": "為什麼 USP 要求在放置熱電偶時不能改變滅菌劑的穿透路徑？請舉一個實際例子說明這可能如何導致錯誤的驗證結論。",
+   "en": "Why does USP require that placing thermocouples must not alter the penetration path of the sterilant? Give a practical example of how this could lead to an incorrect validation conclusion."
+  }
+ ]
+}

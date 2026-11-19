@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USP General Chapter 〈1229.14〉 - Sterilization Cycle Development</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box,
+.application-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4,
+.application-box h3, .application-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p,
+.application-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol,
+.application-box ul, .application-box ol {
+    margin: 0.5rem 0 0.5rem 0 !important;
+    padding-left: 1.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li,
+.application-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p {
+    font-size: 0.92rem !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.practice-box ul, .practice-box ol {
+    margin: 0.5rem 0 0.5rem 0 !important;
+    padding-left: 1.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box li {
+    font-size: 0.92rem !important;
+    margin-bottom: 0.35rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES =====
+   padding-left matches .left-column padding (1.5rem) so the
+   section title text aligns with the start of "原文 Original Text".
+   Border-bottom stays full-width as a visual separator. */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding: 0 1.5rem 0.5rem 1.5rem;
+    border-bottom: 2px solid #e2e8f0;
+    font-weight: 700;
+}
+
+.section-title strong,
+.section-divider strong {
+    font-weight: 700;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+    
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <header class="top-header">
+        <div class="header-brand">
+            <h1>USP General Chapter 〈1229.14〉</h1>
+            <p class="subtitle">Sterilization Cycle Development</p>
+        </div>
+        <a href="USP-1229-14-Complete.html" id="langSwitch" lang="zh-TW" onclick="try{localStorage.setItem('sgk_rpg_lang','zh')}catch(e){}" style="display:inline-block;margin-top:.45rem;padding:.2rem .8rem;border:1px solid currentColor;border-radius:6px;color:inherit;text-decoration:none;font-size:.85rem;white-space:nowrap;">中文</a>
+    </header>
+
+    <nav class="top-nav" id="topNav">
+        <button class="nav-scroll-btn hidden" id="navScrollLeft">&#8249;</button>
+        <div class="nav-container" id="navContainer">
+            <a href="#sec0" class="nav-item" data-section="sec0">
+                <span class="nav-num">0</span>
+                <span class="nav-label">Cycle Development — Complete</span>
+            </a>
+        </div>
+        <button class="nav-scroll-btn" id="navScrollRight">&#8250;</button>
+    </nav>
+
+<main class="main-content">
+
+    <!-- ========== Section 0: Cycle Development — Complete ========== -->
+    <section class="chapter-section" id="sec0">
+        <div class="chapter-divider">
+            <div class="chapter-badge">0</div>
+            <div class="chapter-info">
+                <h2>Section 0: Cycle Development — Complete</h2>
+                <p>p1-p3</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <!-- HEADER -->
+<div class="page-info">General Chapter | Pages 1–3 | Informational</div>
+</div>
+<div class="main-content">
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+<h3>Chapter Contents</h3>
+<div class="toc-grid"><a href="#section-00-complete-intro">Introduction</a>
+<a href="#section-00-complete-screening">Process Screening</a>
+<a href="#section-00-complete-bioburden">Bioburden Evaluation</a>
+<a href="#section-00-complete-duration">Estimation of Process Duration</a>
+<a href="#section-00-complete-material">Formal Material Evaluation</a>
+<a href="#section-00-complete-bi">Biological Indicator Selection</a>
+<a href="#section-00-complete-container-map">Container &amp; Item Mapping</a>
+<a href="#section-00-complete-load-map">Load Mapping</a></div>
+</div>
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+<h3>Learning Objectives</h3>
+<ul>
+<li>Understand the complete sterilization cycle development workflow: the systematic steps from process screening through load validation</li>
+<li>Grasp the concept of PNSU (Probability of a Nonsterile Unit) and its role in cycle design</li>
+<li>Learn to calculate the minimum sterilization time using the D value and F value equations</li>
+<li>Understand the logic for choosing between the Overkill approach and the Bioburden/BI approach</li>
+<li>Recognize the differences and purposes of container mapping and load mapping</li>
+<li>Master the practical considerations of developing sterilization cycles for new client products in a CDMO setting</li>
+</ul>
+</div>
+<!-- ============================================ -->
+<!-- INTRODUCTION                                  -->
+<!-- ============================================ -->
+<div class="section-title" id="section-00-complete-intro">Introduction</div>
+<div class="two-column">
+<div class="left-column">
+<h2>Original Text</h2>
+<p>The proper development and implementation of a <span class="key-term">sterilization process</span> requires a number of important sequential steps to ensure that an appropriate sterilization process results in materials and products that are both <span class="key-term">microbiologically safe</span> and suitable for their intended use.</p>
+<p>Sterilization technologies that rely on heat, ionizing radiation, and chemicals often have the potential to alter the <span class="key-term">physicochemical properties</span> of materials to which they are applied. In some cases, sterilization could either leave <span class="key-term">toxic residues</span> on materials that were sterilized or result in impurities (i.e., <span class="key-term">leachables</span>) being more readily released into products that contact them. Thus, it is necessary to consider sterilization not only as a means of eliminating microorganisms but also as a process that has the potential to change materials in a manner that impacts usefulness, safety, or both.</p>
+<p>A balance between the <span class="key-term">microbial lethality</span> of a sterilization process and other aspects of patient safety must be established. A robust sterilization process that satisfies both is the desired objective of the cycle development activities.</p>
+<div class="quote-box">
+            "A balance between the microbial lethality of a sterilization process and other aspects of patient safety must be established."
+        </div>
+</div>
+<div class="right-column">
+<h2>Tutorial Commentary</h2>
+<div class="concept-box">
+<h4>Key Concept</h4>
+<p><strong>The dual objectives of cycle development:</strong> USP ⟨1229.14⟩ states at the outset that sterilization development must satisfy two objectives at the same time:</p>
+<ul>
+<li><strong>Microbiological safety</strong> - ensuring that the sterilized product achieves the required sterility assurance level (SAL)</li>
+<li><strong>Suitability for intended use</strong> - ensuring that the sterilization process does not damage product quality or leave harmful residues</li>
+</ul>
+<p>These two objectives sometimes conflict: more aggressive sterilization conditions improve microbiological safety but may damage the product. The art of cycle development lies in finding the optimal balance.</p>
+</div>
+<div class="note-box">
+<h4>Key Notes</h4>
+<p><strong>CDMO perspective:</strong> In a CDMO environment, every new client product may require a sterilization cycle to be developed or adjusted. You cannot handle all products with a "one cycle fits all" approach. Protein drugs, small-molecule drugs, and medical devices each have different heat sensitivities. Before development, you must thoroughly understand the product's critical quality attributes (CQAs) and material properties.</p>
+<p><strong>Leachables:</strong> Sterilization can cause container/packaging materials to release chemicals into the product. This is especially important for prefilled syringes and plastic packaging materials, and is a core topic of E&amp;L (Extractables &amp; Leachables) studies.</p>
+</div>
+</div>
+</div>
+<!-- ============================================ -->
+<!-- PROCESS SCREENING                             -->
+<!-- ============================================ -->
+<div class="section-title" id="section-00-complete-screening">Process Screening</div>
+<div class="two-column">
+<div class="left-column">
+<h2>Original Text</h2>
+<p><strong>Radiation:</strong> The methods for establishment of <span class="key-term">radiation sterilization</span> are described in detail in ISO 11137, and adherence to the most recent version of that standard is recommended.</p>
+<p><strong>Sterilizing Filtration:</strong> Filtration sterilization processes rely on <span class="key-term">exclusion of microorganisms</span> and differ substantially from those that rely on lethality (see Sterilizing Filtration of Liquids ⟨1229.4⟩). Process development for filtration must consider many factors, such as adverse effects of the fluid on the filter (e.g., <span class="key-term">chemical compatibility</span>) and of the filter on the fluid (e.g., <span class="key-term">extractables and leachables</span>), as well as adsorption of fluid components. Physical interactions such as <span class="key-term">pressure differential</span>, hydraulic shock, flow rate, temperature, and filtration capacity must also be considered.</p>
+<p><strong>Other Sterilization Methods:</strong> The first step in the development of a sterilization cycle is exposing the materials to the sterilization process and evaluating the impact that the process has on them. Initially, this determination can be a general screening process in which gross changes in appearance may be sufficient to confirm incompatibility.</p>
+<p>Where appearance is unchanged, the material should be evaluated for changes to its physical and chemical attributes. If the results are marginal, reductions in those parameters that most impact lethality and/or material effects may be beneficial. Tests conducted over a range of process lethality that would result in microbiological destruction should be performed.</p>
+<p>The following conditions are merely examples for consideration when evaluating materials for compatibility with the sterilization processes indicated:</p>
+<ol>
+<li><strong>Moist heat</strong> — at conditions sufficient to reliably kill the expected bioburden (see ⟨1229.1⟩ and ⟨1229.2⟩)</li>
+<li><strong>Dry heat</strong> — check for the lowest melting point of materials and process at 25° below the lowest melting temperature (see ⟨1229.8⟩)</li>
+<li><strong>Liquids, gases, and vapors</strong> — at conditions sufficient to reliably kill the expected bioburden (see ⟨1229.6⟩, ⟨1229.7⟩, and ⟨1229.11⟩)</li>
+</ol>
+<p>The selected sterilization method should be the process that has the <span class="key-term">least impact on the essential quality attributes</span> of the material and delivers lethality sufficient to exceed the desired minimum <span class="key-term">probability of a nonsterile unit (PNSU)</span>.</p>
+</div>
+<div class="right-column">
+<h2>Tutorial Commentary</h2>
+<div class="note-box">
+<h4>Key Notes: Screening Principles</h4>
+<p><strong>The 25°C safety margin for dry heat:</strong> The original text specifically states that dry heat processes should operate at least 25°C below the lowest melting point of the materials. This is a practical safety margin. For example, if a plastic component melts at 200°C, the dry heat depyrogenation process temperature should be ≤ 175°C.</p>
+<p><strong>First appearance of PNSU:</strong> PNSU (Probability of a Nonsterile Unit), the core metric of all sterilization validation, is mentioned here for the first time. The pharmacopeia requires a PNSU of ≤ 10<sup>−6</sup> for terminally sterilized products, i.e., no more than one nonsterile unit per million units.</p>
+</div>
+<div class="analogy-box">
+<h4>Analogy</h4>
+<p><strong>Choosing shoes:</strong> Process screening is like "choosing shoes" for the product. You would not simply buy the most expensive pair (the strongest sterilization conditions). Instead, you first look at the foot size (product characteristics), the occasion (intended use), and the durability of the material (material compatibility), and then pick a pair that both fits well and lasts (balancing lethality and product protection).</p>
+</div>
+</div>
+</div>
+<div class="concept-box">
+<h4>Key Concept: Process Screening Decisions</h4>
+<p><strong>The logic of process screening:</strong> USP divides sterilization methods into three major categories, each with a different cycle development pathway:</p>
+<p>This chapter mainly provides a framework for the cycle development of "lethal sterilization." Filtration and radiation each have their own dedicated standards.</p>
+</div>
+<!-- ============================================ -->
+<!-- BIOBURDEN EVALUATION                          -->
+<!-- ============================================ -->
+<div class="section-title" id="section-00-complete-bioburden">Bioburden Evaluation</div>
+<div class="two-column">
+<div class="left-column">
+<h2>Original Text</h2>
+<p>In parallel with the process described above, an assessment of the <span class="key-term">bioburden</span> present in or on the items to be sterilized should be conducted (see Monitoring of Bioburden ⟨1229.3⟩). The initial evaluation should include an estimation of <span class="key-term">bioburden population</span> and <span class="key-term">resistance</span>. A control strategy for periodic bioburden monitoring for resistance and population should be instituted regardless of the results of the initial study.</p>
+<p><strong>Bioburden Resistance:</strong> For the remaining sterilization processes, the execution of a <span class="key-term">boil test</span> (100° for 10 min) can serve as a basic screen for <span class="key-term">spore-forming microorganisms</span>. The absence of survivors in a boil test greatly simplifies the sterilization cycle development as the sterilizing conditions for non-spore-formers are less stressful on the production materials. If microorganisms are determined to survive the boil test, their resistance to the chosen sterilization process should be established. The boil test allows for estimation of a <span class="key-term">D value</span> for a moist heat process.</p>
+<p><strong>Bioburden Population:</strong> If no microorganisms are recovered or only non-spore-formers are recovered, an estimation of bioburden population can be utilized to expedite selection of the appropriate process duration. As <span class="key-term">spore-forming bacteria</span> are ubiquitous, the potential presence of spores in the bioburden should be given consideration.</p>
+</div>
+<div class="right-column">
+<h2>Tutorial Commentary</h2>
+<div class="concept-box">
+<h4>Key Concept: The Two Dimensions of Bioburden</h4>
+<p>Bioburden evaluation has two key dimensions, and neither can be omitted:</p>
+<ul>
+<li><strong>Population</strong> - How many microorganisms are present before sterilization? Expressed as N<sub>0</sub>. The higher the count, the longer the required sterilization time</li>
+<li><strong>Resistance</strong> - How resistant are these microorganisms to heat or chemicals? Expressed as the D value. The higher the resistance, the more stringent the required conditions</li>
+</ul>
+</div>
+<div class="formula-box">
+<h4>Formula Explained: D Value (Decimal Reduction Time)</h4>
+<pre>D value = the time (in minutes) required at a specific temperature to reduce the microbial population by 90% (1 log)
+
+Example: D₁₂₁ = 1.5 min
+→ At 121°C, the microbial population falls to 1/10 of its previous level every 1.5 minutes
+
+Starting from 10⁶ CFU:
+  1.5 min → 10⁵
+  3.0 min → 10⁴
+  4.5 min → 10³
+  6.0 min → 10²
+  7.5 min → 10¹
+  9.0 min → 10⁰ (1 CFU)
+  → Heating must continue to reach a PNSU of 10⁻⁶</pre>
+<p><strong>The larger the D value</strong>, the more heat-resistant the microorganism and the longer the sterilization time required.</p>
+</div>
+<div class="note-box">
+<h4>Key Notes: The Role of the Boil Test</h4>
+<p><strong>Boil test:</strong> Heating at 100°C for 10 minutes is a rapid screening test. Vegetative bacteria (non-spore-formers) are killed, while spore-formers survive.</p>
+<p><strong>Interpreting the results:</strong></p>
+<ul>
+<li><strong>No survivors</strong> → the bioburden is mainly vegetative bacteria → sterilization conditions can be milder → less impact on the product</li>
+<li><strong>Survivors present</strong> → spore-formers are present → their D value must be established → sterilization conditions must be more stringent</li>
+</ul>
+<p><strong>CDMO practice:</strong> Bioburden varies greatly with the source of the drug substance. API raw materials, excipients, and packaging materials each carry different microbial risks. Re-evaluate for every new product transferred in.</p>
+</div>
+</div>
+</div>
+<!-- ============================================ -->
+<!-- ESTIMATION OF PROCESS DURATION                -->
+<!-- ============================================ -->
+<div class="section-title" id="section-00-complete-duration">Estimation of Process Duration</div>
+<div class="two-column">
+<div class="left-column">
+<h2>Original Text</h2>
+<p>The minimum duration of the sterilization dwell period can be determined once the sterilizing method has been selected and the bioburden (as determined or assumed) information has been obtained. This is accomplished by rearranging Equation 1, used to estimate the PNSU (see Sterilization of Compendial Articles ⟨1229⟩).</p>
+<p><strong>Equation 1 — PNSU Estimation:</strong></p>
+<div class="quote-box">
+            log N<sub>U</sub> = −F/D + log N<sub>0</sub>
+</div>
+<p>Rearrangement of the equation and solving for F results in <strong>Equation 2:</strong></p>
+<div class="quote-box">
+            F = D (log N<sub>0</sub> − log N<sub>U</sub>)
+        </div>
+<p>Where:</p>
+<ul>
+<li><strong>N<sub>U</sub></strong> = assumed PNSU (NMT 1 positive unit in 10<sup>6</sup> units)</li>
+<li><strong>F</strong> = dwell time of the sterilization process at a defined condition expressed in minutes</li>
+<li><strong>D</strong> = estimated D value of the bioburden in minutes</li>
+<li><strong>N<sub>0</sub></strong> = estimated maximum population of the bioburden</li>
+</ul>
+<p>The calculated F value represents the minimum duration of the process dwell period to reduce the assumed initial microbial population to less than the desired PNSU. <span class="key-term">Safety factors</span> can be added to the assumed D value of the bioburden, the minimum desired PNSU, and the bioburden population estimate.</p>
+<p>The F value is equivalent to <span class="key-term">F<sub>0</sub></span> for moist heat, <span class="key-term">F<sub>H</sub></span> for dry heat, or process dwell time L for other sterilization processes and is typically expressed in minutes.</p>
+<p>Depending on the F value (or process dwell time) selected, the validation approach for sterilization can be determined. The preferred, but not required, method is the use of an <span class="key-term">overkill approach</span> (see ⟨1229⟩) where the F value allows for complete inactivation of a resistant biological indicator. Where material limitations restrict the use of lengthy sterilizing conditions, the <span class="key-term">bioburden/biological indicator</span> or <span class="key-term">bioburden methods</span> may be more appropriate.</p>
+</div>
+<div class="right-column">
+<h2>Tutorial Commentary</h2>
+<div class="formula-box">
+<h4>Formula Explained: PNSU &amp; F Value Calculation</h4>
+<pre>Equation 1 - PNSU estimation:
+  log N_U = −F / D + log N₀
+
+Equation 2 - Solving for F (minimum sterilization time):
+  F = D × (log N₀ − log N_U)
+
+Meaning of the variables:
+  N₀  = initial bioburden (CFU)
+  N_U = target PNSU (usually = 10⁻⁶)
+  D   = D value of the bioburden (min)
+  F   = required sterilization time (min)</pre>
+</div>
+<div class="formula-box">
+<h4>Worked Example</h4>
+<pre>Assumed conditions:
+  N₀ = 100 CFU (10²)
+  D  = 1.5 min (D₁₂₁ value of the bioburden)
+  Target PNSU = 10⁻⁶
+
+F = D × (log N₀ − log N_U)
+F = 1.5 × (log 10² − log 10⁻⁶)
+F = 1.5 × (2 − (−6))
+F = 1.5 × 8
+F = 12 min
+
+→ A hold time of at least 12 minutes at 121°C is required
+→ This is the meaning of F₀ = 12</pre>
+<p><strong>Safety factor:</strong> In practice, a safety factor is applied to the D value, N<sub>0</sub>, or PNSU. For example, assume the D value is twice the measured value, or assume N<sub>0</sub> is 10 times the measured value.</p>
+</div>
+<div class="note-box">
+<h4>Key Notes: Choosing the Validation Approach</h4>
+<p><strong>Three validation approaches:</strong></p>
+<ul>
+<li><strong>Overkill approach</strong> - The preferred option. F<sub>0</sub> ≥ 12 min, which fully inactivates a highly resistant BI (such as <em>G. stearothermophilus</em>, D<sub>121</sub> ≥ 1.5 min, 10<sup>6</sup> spores). It places the greatest demands on the materials</li>
+<li><strong>Bioburden/BI approach</strong> - Used when the product cannot withstand overkill conditions. Both the actual bioburden and the BI inactivation data must be considered</li>
+<li><strong>Bioburden approach (bioburden only)</strong> - The mildest. The cycle is designed solely on actual bioburden data. It requires more stringent bioburden monitoring</li>
+</ul>
+<p><strong>CDMO strategy:</strong> For heat-stable products (such as stainless steel instruments and glass vials), use overkill first: it is the simplest to validate, requires the least documentation, and is the most widely accepted by regulators. For heat-sensitive products (such as protein drugs), the Bioburden/BI approach is needed, together with enhanced routine bioburden monitoring.</p>
+</div>
+</div>
+</div>
+<div class="concept-box">
+<h4>Key Concept: F₀ vs F<sub>H</sub></h4>
+<p>The F value is expressed differently depending on the sterilization method:</p>
+</div>
+<!-- ============================================ -->
+<!-- FORMAL MATERIAL EVALUATION                    -->
+<!-- ============================================ -->
+<div class="section-title" id="section-00-complete-material">Formal Material Evaluation</div>
+<div class="two-column">
+<div class="left-column">
+<h2>Original Text</h2>
+<p>Once the appropriate sterilization process has been chosen, the effects of that process on the materials should be reconfirmed. The requirements for this can vary from simple physical examinations for materials expected to be largely unaffected by the sterilization process, such as <span class="key-term">stainless steel or glass</span> with steam, to comprehensive <span class="key-term">stability examinations</span> for formulated products in their final <span class="key-term">container-closure configuration</span>.</p>
+<p>The criteria for these studies should be objective wherever possible. It is useful to do a <span class="key-term">literature search</span> for materials about which there is minimal experience, and to search and discuss potential material effects with suppliers.</p>
+<p>The preparation and sterilization of the test units for these formal studies can be conducted in a <span class="key-term">laboratory setting</span> and must be fully documented.</p>
+<p>When sterilizing using <span class="key-term">chemical agents</span>, the sterilized materials should be tested for the presence of <span class="key-term">residual sterilant</span> and its known degradation by-products. Post-sterilization cycle <span class="key-term">aeration</span> or other treatments may be necessary to reduce these to acceptable levels.</p>
+</div>
+<div class="right-column">
+<h2>Tutorial Commentary</h2>
+<div class="note-box">
+<h4>Key Notes: Chemical Sterilant Residues</h4>
+<p><strong>EO (ethylene oxide) residues:</strong> When gas or chemical sterilization is used, residual sterilant is a major safety concern. For example, after EO sterilization, the EO residue on the product and the by-product ECH (ethylene chlorohydrin) must meet the limits in ISO 10993-7. Post-sterilization aeration is a standard procedure.</p>
+<p><strong>CDMO practice:</strong> When a new product is received, material compatibility studies are a key activity during the technology transfer stage. The client usually provides preliminary data, but the CDMO should re-verify it on its own equipment and under its own conditions. These studies can be performed at laboratory scale but must be fully documented, which is a basic GMP requirement.</p>
+</div>
+</div>
+</div>
+<div class="concept-box">
+<h4>Key Concept: Tiered Material Evaluation</h4>
+<p>USP implies a risk-tiered concept: the depth of material evaluation depends on how sensitive the material is to sterilization:</p>
+</div>
+<!-- ============================================ -->
+<!-- BIOLOGICAL INDICATOR SELECTION                -->
+<!-- ============================================ -->
+<div class="section-title" id="section-00-complete-bi">Biological Indicator Selection</div>
+<div class="two-column">
+<div class="left-column">
+<h2>Original Text</h2>
+<p>A <span class="key-term">biological indicator</span> should be selected that is appropriate for the chosen sterilization process and its duration, as well as the intended <span class="key-term">validation approach</span> (see Biological Indicators for Sterilization ⟨1229.5⟩).</p>
+<p>The chosen biological indicator provides a means to measure the lethality of the process through the selection of biological indicator <span class="key-term">population</span> and <span class="key-term">resistance</span>.</p>
+<p>The <span class="key-term">sterilization process duration</span> should not be adapted to accommodate the specifics of any biological indicator.</p>
+<div class="quote-box">
+            "The sterilization process duration should not be adapted to accommodate the specifics of any biological indicator."
+        </div>
+</div>
+<div class="right-column">
+<h2>Tutorial Commentary</h2>
+<div class="concept-box">
+<h4>Key Concept: BI Selection Principles</h4>
+<p><strong>The role of the BI:</strong> The biological indicator is the "yardstick" of sterilization validation. It is used to measure whether the process achieves the required lethality, not to decide the process conditions.</p>
+<p><strong>Key principle:</strong> "The process should not be adapted to the BI." This is a very clear USP position. It means:</p>
+<ul>
+<li>First determine the sterilization conditions based on the product and the bioburden</li>
+<li>Then select a suitable BI to verify the lethality of those conditions</li>
+<li>If the BI cannot be completely inactivated under those conditions, choose a less resistant BI rather than extending the process time</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="note-box">
+<h4>Key Notes: Commonly Used BIs</h4>
+<p><strong>CDMO note:</strong> The D value and spore count of a BI must be supported by a Certificate of Analysis (CoA) from the supplier. Different BI lots may have different D values, so the validation report should record the specific lot number and characteristics of the BI used.</p>
+</div>
+<!-- ============================================ -->
+<!-- CONTAINER AND ITEM MAPPING                    -->
+<!-- ============================================ -->
+<div class="section-title" id="section-00-complete-container-map">Container and Item Mapping</div>
+<div class="two-column">
+<div class="left-column">
+<h2>Original Text</h2>
+<p>Studies should be performed to determine the location within the materials to be sterilized that is <span class="key-term">least likely to achieve sterilizing conditions</span>. The mapping can be conducted using <span class="key-term">thermocouples</span>, <span class="key-term">dosimeters</span>, <span class="key-term">biological indicators</span>, and/or <span class="key-term">chemical indicators</span> placed within the materials.</p>
+<p>The materials to be sterilized should be wrapped or packaged and oriented as intended for routine use of the sterilization process. The wrapping and packaging materials and methods should be controlled to ensure <span class="key-term">reproducibility</span>.</p>
+<p>It is essential when conducting these studies that the introduction of the measuring devices be accomplished in a manner that does not alter (positively or negatively) the <span class="key-term">penetration of the sterilant</span> through any wrapping and packaging or through the material itself.</p>
+<p>If the materials to be sterilized have <span class="key-term">simple geometry</span>, with minimal internal volume, and are sterilized with other more complex items, mapping of the simpler materials can be omitted. <span class="key-term">Interpolation</span> of volume, density, dimension, and mass may be possible to reduce the extent of studies required. Mapping studies should be documented for future reference.</p>
+</div>
+<div class="right-column">
+<h2>Tutorial Commentary</h2>
+<div class="concept-box">
+<h4>Key Concept: Identifying the Cold Spot</h4>
+<p><strong>Purpose of container/item mapping:</strong> To find the "coldest point" (cold spot) or "most difficult-to-reach point" inside the container or item, i.e., the location where sterilization conditions are least likely to be achieved. If the cold spot meets the target, all other locations will naturally meet it too.</p>
+<p><strong>Choice of measurement tools:</strong></p>
+<ul>
+<li><strong>Thermocouples</strong> - temperature distribution in moist heat/dry heat sterilization</li>
+<li><strong>Dosimeters</strong> - dose distribution in radiation sterilization</li>
+<li><strong>BI / CI</strong> - supplementary verification that lethality is achieved at each location</li>
+</ul>
+</div>
+<div class="note-box">
+<h4>Key Notes: Measurement Must Not Alter the Result</h4>
+<p><strong>Non-invasive principle:</strong> USP specifically emphasizes that placing measuring devices must not alter the penetration path of the sterilant. For example:</p>
+<ul>
+<li>Piercing a sealed package to insert a thermocouple may create a shortcut for steam to enter, which makes the measurement results overly optimistic</li>
+<li>Placing a large temperature probe in a vial may displace liquid and change the heat transfer characteristics</li>
+</ul>
+<p><strong>Interpolation:</strong> USP allows interpolation for items with simple geometries to reduce the scope of the study. For example, if the cold spots of 100 mL and 500 mL vials have been validated, the behavior of a 250 mL vial can reasonably be inferred. However, this inference must be scientifically justified and documented.</p>
+</div>
+</div>
+</div>
+<!-- ============================================ -->
+<!-- LOAD MAPPING                                  -->
+<!-- ============================================ -->
+<div class="section-title" id="section-00-complete-load-map">Load Mapping</div>
+<div class="two-column">
+<div class="left-column">
+<h2>Original Text</h2>
+<p>The initial use of a sterilization process should include confirmation that the <span class="key-term">sterilization conditions</span> can be delivered throughout the <span class="key-term">entire load</span>. Additional guidance on this, and the subsequent aspect of sterilization validation and process control, can be found in other chapters within the ⟨1229⟩ family of chapters.</p>
+</div>
+<div class="right-column">
+<h2>Tutorial Commentary</h2>
+<div class="note-box">
+<h4>Key Notes: CDMO Re-validation Triggers</h4>
+<p><strong>When is re-validation needed?</strong></p>
+<ul>
+<li>Introduction of a new product or container size (new container mapping needed)</li>
+<li>Change in loading pattern</li>
+<li>Sterilizer repair or major modification</li>
+<li>Abnormal bioburden trends (higher population or resistance)</li>
+<li>Change in the container closure system (may affect steam penetration)</li>
+<li>Periodic re-validation (usually annually)</li>
+</ul>
+<p>For a CDMO, transferring in a new client product almost inevitably triggers container mapping and possibly a load mapping update.</p>
+</div>
+</div>
+</div>
+<div class="concept-box">
+<h4>Key Concept: Container Mapping vs Load Mapping</h4>
+<p>USP divides heat distribution studies into two levels:</p>
+<p>Both must be performed. Load mapping ensures there are no "dead spots" in the sterilizer chamber: whether an item is placed on the top shelf, the bottom shelf, or in a corner, the required sterilization conditions are achieved.</p>
+</div>
+<!-- ============================================ -->
+<!-- SECTION SUMMARY                               -->
+<!-- ============================================ -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+<h3>Chapter Summary</h3>
+<ul>
+<li><strong>Sterilization cycle development workflow:</strong> process screening → bioburden evaluation → process duration estimation → material evaluation → BI selection → container mapping → load mapping</li>
+<li><strong>Dual balance:</strong> microbial lethality vs product/material protection. Over-sterilization may damage product quality</li>
+<li><strong>PNSU formula:</strong> F = D × (log N<sub>0</sub> − log N<sub>U</sub>), where F<sub>0</sub> is used for moist heat and F<sub>H</sub> for dry heat</li>
+<li><strong>Choosing the validation approach:</strong> Overkill (preferred, simplest) → Bioburden/BI → Bioburden (mildest, most stringent monitoring)</li>
+<li><strong>BI principle:</strong> The process should not be adapted to the BI; the BI is a yardstick, not a design basis</li>
+<li><strong>Two levels of heat distribution:</strong> container mapping (cold spot within the item) + load mapping (uniformity within the chamber)</li>
+<li><strong>CDMO key point:</strong> Every new product transfer is a potential trigger for cycle development/re-validation</li>
+</ul>
+</div>
+<!-- PRACTICE BOX -->
+<div class="practice-box">
+<h4>Comprehensive Practice Questions</h4>
+<ol>
+<li>A new client brings a highly heat-sensitive protein drug in a prefilled syringe that requires terminal sterilization. Which validation approach would you recommend? If overkill is not feasible, which routine monitoring would you need to strengthen?</li>
+<li>Your bioburden monitoring data shows that a product's boil test suddenly has survivors (there had never been any before). Following the framework of this chapter, which actions should you initiate?</li>
+<li>Calculation exercise: A product has bioburden N<sub>0</sub> = 50 CFU, D<sub>121</sub> = 2.0 min, and a target PNSU = 10<sup>−6</sup>. What is the minimum F<sub>0</sub>? If a 2x safety factor is applied (taking the D value as 4.0 min), what would F<sub>0</sub> be?</li>
+<li>Why does USP require that placing thermocouples must not alter the penetration path of the sterilant? Give a practical example of how this could lead to an incorrect validation conclusion.</li>
+</ol>
+</div>
+</div> <!-- end main-content -->
+<!-- FOOTER -->
+<div class="main-footer">
+<p>USP ⟨1229.14⟩: Sterilization Cycle Development</p>
+<p>SterileGMP Knowledge Hub — Bilingual Educational Reference</p>
+<p>For educational and training purposes only. Refer to the official USP–NF for regulatory compliance.</p>
+</div>
+        </div>
+    </section>
+
+</main>
+
+    <footer class="main-footer">
+        <p>SterileGMP Knowledge Hub — For study reference only</p>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const sections = document.querySelectorAll('.chapter-section');
+        const navItems = document.querySelectorAll('.nav-item');
+        const backToTop = document.getElementById('backToTop');
+        const navContainer = document.getElementById('navContainer');
+        const btnLeft = document.getElementById('navScrollLeft');
+        const btnRight = document.getElementById('navScrollRight');
+
+        // Reading progress — high-water mark (furthest section reached, never goes back)
+        const _pKey = 'sgk_progress_' + location.pathname.split('/').pop().replace(/(\.en)?\.html$/,'');
+        let _saveTimer = null;
+        let _current = '';
+        let _maxIdx = -1;
+
+        // Init: restore existing max index from storage
+        (function() {
+            try {
+                var ex = JSON.parse(localStorage.getItem(_pKey) || 'null');
+                if (ex && ex.maxId) {
+                    sections.forEach(function(s, i) {
+                        if (s.getAttribute('id') === ex.maxId) _maxIdx = i;
+                    });
+                }
+            } catch(e) {}
+        })();
+
+        function _saveProgress() {
+            if (!_current) return;
+            var curIdx = -1;
+            sections.forEach(function(s, i) {
+                if (s.getAttribute('id') === _current) curIdx = i;
+            });
+            if (curIdx > _maxIdx) _maxIdx = curIdx; // only advance
+            var maxSec = sections[_maxIdx];
+            if (!maxSec) return;
+            var maxId = maxSec.getAttribute('id');
+            var maxNav = document.querySelector('.nav-item[data-section="' + maxId + '"]');
+            var isComplete = _maxIdx >= sections.length - 1;
+            try {
+                localStorage.setItem(_pKey, JSON.stringify({
+                    id:       maxId,
+                    maxId:    maxId,
+                    label:    maxNav ? (maxNav.querySelector('.nav-label')||{}).textContent||'' : '',
+                    num:      maxNav ? (maxNav.querySelector('.nav-num')||{}).textContent||'' : '',
+                    complete: isComplete,
+                    ts:       Date.now()
+                }));
+            } catch(e) {}
+        }
+
+        // Restore progress: honor URL hash first, then jump to furthest section reached
+        function _restoreProgress() {
+            var targetId = location.hash ? location.hash.substring(1) : null;
+            if (!targetId) {
+                try {
+                    var saved = JSON.parse(localStorage.getItem(_pKey) || 'null');
+                    if (saved && saved.id) targetId = saved.id;
+                } catch(e) {}
+            }
+            if (targetId) {
+                var el = document.getElementById(targetId);
+                if (el) {
+                    setTimeout(function() { el.scrollIntoView({ behavior: 'smooth' }); }, 300);
+                }
+            }
+        }
+        _restoreProgress();
+
+        function updateNavArrows() {
+            btnLeft.classList.toggle('hidden', navContainer.scrollLeft <= 0);
+            btnRight.classList.toggle('hidden',
+                navContainer.scrollLeft + navContainer.clientWidth >= navContainer.scrollWidth - 1);
+        }
+        btnLeft.addEventListener('click', function() {
+            navContainer.scrollBy({ left: -300, behavior: 'smooth' });
+        });
+        btnRight.addEventListener('click', function() {
+            navContainer.scrollBy({ left: 300, behavior: 'smooth' });
+        });
+        navContainer.addEventListener('scroll', updateNavArrows);
+        updateNavArrows();
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+
+            _current = '';
+            sections.forEach(function(section) {
+                var sectionTop = section.offsetTop - 100;
+                if (window.scrollY >= sectionTop) {
+                    _current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(function(item) {
+                item.classList.remove('active');
+                if (item.getAttribute('data-section') === _current) {
+                    item.classList.add('active');
+                    item.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+                }
+            });
+
+            clearTimeout(_saveTimer);
+            _saveTimer = setTimeout(_saveProgress, 500);
+        });
+    });
+    </script>
+    <script src="../../../rpg/rpg.js" defer></script>
+
+</body>
+</html>

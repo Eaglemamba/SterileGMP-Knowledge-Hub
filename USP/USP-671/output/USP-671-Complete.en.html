@@ -1,0 +1,2027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USP General Chapter 〈671〉 - Containers—Performance Testing</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box,
+.application-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4,
+.application-box h3, .application-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p,
+.application-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol,
+.application-box ul, .application-box ol {
+    margin: 0.5rem 0 0.5rem 0 !important;
+    padding-left: 1.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li,
+.application-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p {
+    font-size: 0.92rem !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.practice-box ul, .practice-box ol {
+    margin: 0.5rem 0 0.5rem 0 !important;
+    padding-left: 1.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box li {
+    font-size: 0.92rem !important;
+    margin-bottom: 0.35rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES =====
+   padding-left matches .left-column padding (1.5rem) so the
+   section title text aligns with the start of "原文 Original Text".
+   Border-bottom stays full-width as a visual separator. */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding: 0 1.5rem 0.5rem 1.5rem;
+    border-bottom: 2px solid #e2e8f0;
+    font-weight: 700;
+}
+
+.section-title strong,
+.section-divider strong {
+    font-weight: 700;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+    
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <header class="top-header">
+        <div class="header-brand">
+            <h1>USP General Chapter 〈671〉</h1>
+            <p class="subtitle">Containers—Performance Testing</p>
+        </div>
+        <a href="USP-671-Complete.html" id="langSwitch" lang="zh-TW" onclick="try{localStorage.setItem('sgk_rpg_lang','zh')}catch(e){}" style="display:inline-block;margin-top:.45rem;padding:.2rem .8rem;border:1px solid currentColor;border-radius:6px;color:inherit;text-decoration:none;font-size:.85rem;white-space:nowrap;">中文</a>
+    </header>
+
+    <nav class="top-nav" id="topNav">
+        <button class="nav-scroll-btn hidden" id="navScrollLeft">&#8249;</button>
+        <div class="nav-container" id="navContainer">
+            <a href="#sec0" class="nav-item" data-section="sec0">
+                <span class="nav-num">0</span>
+                <span class="nav-label">Introduction & Container Types</span>
+            </a>
+            <a href="#sec1" class="nav-item" data-section="sec1">
+                <span class="nav-num">1</span>
+                <span class="nav-label">Light Transmission & Moisture Permeation Tests</span>
+            </a>
+            <a href="#sec2" class="nav-item" data-section="sec2">
+                <span class="nav-num">2</span>
+                <span class="nav-label">Additional Tests & Special Containers</span>
+            </a>
+        </div>
+        <button class="nav-scroll-btn" id="navScrollRight">&#8250;</button>
+    </nav>
+
+<main class="main-content">
+
+    <!-- ========== Section 0: Introduction & Container Types ========== -->
+    <section class="chapter-section" id="sec0">
+        <div class="chapter-divider">
+            <div class="chapter-badge">0</div>
+            <div class="chapter-info">
+                <h2>Section 0: Introduction & Container Types</h2>
+                <p>p1-p3</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <!-- SECTION HEADER -->
+<div class="page-info">USP General Chapter 〈671〉 | Pages 1–3</div>
+</div>
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives" style="max-width:1800px; margin:1.5rem auto; padding-left:1.5rem; padding-right:1.5rem;">
+<h3>Learning Objectives</h3>
+<ul>
+<li>Understand the purpose of USP &lt;671&gt;: to establish functional standards for packaging systems for solid and liquid oral dosage forms</li>
+<li>Understand the concept of Moisture Vapor Transmission Rate (MVTR) and why it matters for drug product stability</li>
+<li>Identify and distinguish the test method classifications for multiple-unit and unit-dose containers (Methods 1–8)</li>
+<li>Understand how the Classification System helps pharmacists and institutional repackagers select appropriate containers</li>
+<li>Understand the differences between the Desiccant Methods and the Water Method, and when each applies</li>
+</ul>
+</div>
+<div class="main-content">
+<!-- ==================== SUBSECTION: INTRODUCTION ==================== -->
+<div class="section-title">Introduction</div>
+<div class="two-column">
+<div class="left-column">
+<h2>Original Text</h2>
+<p>Status: Currently Official on 12-Feb-2025<br/>
+        Official Date: Official as of 01-Dec-2020<br/>
+        Document Type: General Chapter<br/>
+        © 2025 USPC</p>
+<h3>〈671〉 CONTAINERS—PERFORMANCE TESTING</h3>
+<h3>INTRODUCTION</h3>
+<p>It is the purpose of this chapter to provide standards for the functional properties of <span class="key-term">packaging systems</span> used for <span class="key-term">solid oral dosage forms (SODFs)</span> and <span class="key-term">liquid oral dosage forms (LODFs)</span>. The tests in this chapter may be applied to packaging systems for other dosage forms with the appropriate justification.</p>
+<p>These tests determine the <span class="key-term">moisture vapor transmission rate (MVTR)</span>, i.e., water vapor permeation rate, for plastic packaging systems for manufacturers, packagers, and repackagers (Table 1). This chapter also includes a <span class="key-term">classification system</span> that allows pharmacists and institutional repackagers to select appropriate containers to repackage SODFs and LODFs. Definitions that apply to this classification system are provided in <span class="key-term">Packaging and Storage Requirements 〈659〉</span>.</p>
+<p>Guidance on the application of these methods to determine the MVTR and the use of MVTR data to support the demonstration of the equivalence of plastic packaging systems when repackaging SODFs is contained in <span class="key-term">The Application of Moisture Vapor Transmission Rates for Solid Oral Dosage Forms in Plastic Packaging Systems 〈1671〉</span>. Definitions of a blister, blister card, barrier blister types, moisture vapor transmission rate, and test specimen are contained in 〈1671〉, Glossary.</p>
+<p>The chapter also contains a method for the determination of <span class="key-term">spectral transmission</span> of plastic containers.</p>
+<div class="quote-box">
+            "It is the purpose of this chapter to provide standards for the functional properties of packaging systems used for solid oral dosage forms (SODFs) and liquid oral dosage forms (LODFs)."
+        </div>
+</div>
+<div class="right-column">
+<h2>Tutorial Commentary</h2>
+<div class="concept-box">
+<h4>Key Concepts</h4>
+<p><strong>Positioning of USP &lt;671&gt;:</strong> This is a functional (performance) testing chapter that evaluates the "barrier performance" of a packaging system, that is, how well the package protects the drug product from moisture and light in the environment.</p>
+<p><strong>Two main target users:</strong></p>
+<ul>
+<li><strong>Manufacturers/packagers</strong>: need to know the MVTR values of their products for stability testing and marketing applications (NDA/ANDA)</li>
+<li><strong>Pharmacists/institutional repackagers</strong>: need to know how to select suitable containers for dispensing products from the original manufacturer's packaging</li>
+</ul>
+<p><strong>Moisture Vapor Transmission Rate (MVTR):</strong> The rate at which water vapor passes through a packaging system per unit time, usually expressed in mg/day/container or mg/day/cavity.</p>
+</div>
+<div class="analogy-box">
+<h4>Analogy</h4>
+<p>Imagine you have an insulated lunch box and an ordinary plastic bag. You store crackers in each. After a week, which ones are still crisp? The lunch box is like a "high-barrier" package: it keeps moisture in the air out, so the crackers stay dry.</p>
+<p>MVTR quantifies exactly this: "How many milligrams of water vapor pass through the container wall into the inside each day?" The lower the value, the stronger the barrier and the safer the drug product.</p>
+</div>
+<div class="note-box">
+<h4>Key Notes</h4>
+<p><strong>Division of roles among &lt;671&gt;, &lt;659&gt; and &lt;1671&gt;:</strong></p>
+<ul>
+<li><strong>&lt;659&gt;</strong>: defines container types (tight containers, well-closed containers, etc.) and provides terminology definitions</li>
+<li><strong>&lt;671&gt;</strong>: provides the actual test methods and numerical criteria (this chapter)</li>
+<li><strong>&lt;1671&gt;</strong>: provides guidance on how MVTR data are applied in SODF repackaging equivalence justifications</li>
+</ul>
+<p>The three chapters complement one another; when reading &lt;671&gt;, refer to the other two as well.</p>
+</div>
+<div class="practice-box">
+<h4>Practice Questions</h4>
+<ol>
+<li>A CDMO client's product is an oral solid tablet that is outsourced to a pharmacy for repackaging into small packs. Which part of &lt;671&gt; should the pharmacy use to select an appropriate container?</li>
+<li>What is the relationship between MVTR and drug product shelf life? Why might poor barrier packaging cause a product to fail early?</li>
+</ol>
+</div>
+</div>
+</div>
+<!-- ==================== SUBSECTION: TABLE 1 — METHOD OVERVIEW ==================== -->
+<div class="section-title">Table 1 — Moisture Vapor Transmission Test Methods Overview</div>
+<div class="two-column">
+<div class="left-column">
+<h2>Original Text</h2>
+<p><strong>Table 1. Moisture Vapor Transmission Test Methods for Plastic Packaging Systems</strong></p>
+<div style="overflow-x:auto;">
+</div>
+</div>
+<div class="right-column">
+<h2>Tutorial Commentary</h2>
+<div class="concept-box">
+<h4>Key Concepts — Structure of the Method System</h4>
+<p>The eight methods in &lt;671&gt; can be understood along two dimensions:</p>
+<ul>
+<li><strong>Purpose dimension:</strong> measuring MVTR values (Methods 1–4) vs classifying container grades (Methods 5–8)</li>
+<li><strong>Fill dimension:</strong> desiccant methods (a desiccant is placed in the container and the weight gain is measured) vs the water method (water is placed in the container and the weight loss is measured)</li>
+</ul>
+<p>The desiccant and water methods use "opposite" but equivalent test conditions: the desiccant method measures moisture ingress at 40°C/75% RH (high humidity), while the water method measures moisture egress at 40°C/25% RH (low humidity); the vapor pressure difference is the same in both.</p>
+</div>
+<div class="analogy-box">
+<h4>Analogy</h4>
+<p>Imagine testing how leak-proof a bucket is:</p>
+<ul>
+<li><strong>Desiccant method</strong>: put desiccant in the bucket, place the bucket in a humid environment, and observe how much water the desiccant absorbs (water enters from outside)</li>
+<li><strong>Water method</strong>: put water in the bucket, place the bucket in a dry environment, and observe how much water is lost (water escapes from inside)</li>
+</ul>
+<p>Both methods measure the same "leak"; only the direction differs.</p>
+</div>
+<div class="note-box">
+<h4>Key Notes</h4>
+<p><strong>Who needs which method?</strong></p>
+<ul>
+<li><strong>Original manufacturers</strong>: mainly use Methods 1–4 to obtain MVTR values for stability filings</li>
+<li><strong>Pharmacies/repackagers</strong>: mainly use Methods 5–8 for classification, to confirm that the container grade meets the original manufacturer's requirements</li>
+</ul>
+<p>This distinction is very important: Classification ≠ a precise MVTR value. Classification only confirms whether the container meets the threshold for grades such as "tight" or "well-closed".</p>
+</div>
+<div class="practice-box">
+<h4>Practice Questions</h4>
+<ol>
+<li>What type of packaging is Method 3 designed for? Why is its weighing interval much shorter than that of Method 2?</li>
+<li>Why does the water method (Method 4) use 40°C/25% RH rather than 40°C/75% RH? What is the logic behind this design?</li>
+</ol>
+</div>
+</div>
+</div>
+<!-- ==================== SUBSECTION: MOISTURE VAPOR TRANSMISSION INTRODUCTION ==================== -->
+<div class="section-title">Moisture Vapor Transmission — Introduction</div>
+<div class="two-column">
+<div class="left-column">
+<h2>Original Text</h2>
+<h3>MOISTURE VAPOR TRANSMISSION FOR PLASTIC PACKAGING SYSTEMS</h3>
+<h3>Introduction</h3>
+<p>The purpose of the <span class="key-term">moisture vapor transmission test method</span>, which is based upon American Society for Testing and Materials (<span class="key-term">ASTM</span>) method D7709, is to obtain reliable and specific MVTRs that can be used to distinguish barrier performance of packaging systems used for regulated articles by manufacturers, packagers, and repackagers. This test method will establish a value that represents the MVTR of the <span class="key-term">container–closure system</span> being evaluated.</p>
+<p>There may be additional packaging systems where the test methods in this section could be applied; however, any deviation should be described. If other methods are used to measure MVTR, these methods should be described in sufficient detail to justify their use.</p>
+<h3>Desiccant Methods for Packaging Systems</h3>
+<p>This section describes moisture vapor transmission test methods for <span class="key-term">multiple-unit containers</span> (see Method 1), <span class="key-term">high-barrier and ultra-high barrier</span> single-unit and unit-dose containers (see Method 2), and <span class="key-term">low-barrier</span> single-unit and unit-dose containers (see Method 3).</p>
+<p>These methods include the following characteristics:</p>
+<ul>
+<li>A specific moisture vapor transmission value for a container rather than a classification</li>
+<li>Sufficient sensitivity and precision to allow differentiation among moisture barrier performance for containers</li>
+<li>Conditions used for testing packaging systems that are the same as those used for <span class="key-term">accelerated stability testing</span> of the primary packaging of regulated articles [typically 40°/75% relative humidity (RH)]</li>
+</ul>
+<h3>Equipment</h3>
+<p>The following equipment should be used to complete the test method:</p>
+<ul>
+<li>A <span class="key-term">balance</span> for weighing the test specimens that has sufficient capacity. The balance must have sensitivity adequate to measure small differences in weight. The weighing uncertainty must be less than 5% of the weight gain from one time point to the next. The weighing uncertainty is typically three times the balance resolution/sensitivity. As an example, a balance with a resolution of 0.1 mg is acceptable for packaging systems whose weight gain per time interval is more than or equal to 6 mg [(0.1 × 3)/5%], which is 60 times the balance sensitivity.</li>
+<li>A <span class="key-term">chamber</span> capable of maintaining 40 ± 2° and 75 ± 5% RH. Other chamber conditions can be used, but should be noted in the report, as long as the balance sensitivity is adequate to measure small weight differences from one time point to the next time point.</li>
+</ul>
+</div>
+<div class="right-column">
+<h2>Tutorial Commentary</h2>
+<div class="concept-box">
+<h4>Key Concepts — ASTM D7709 Fundamentals</h4>
+<p><strong>ASTM D7709 (standard test method for water vapor transmission rate):</strong> The desiccant methods in USP &lt;671&gt; are based directly on ASTM D7709, a widely recognized gravimetric method that uses weight change to calculate the water vapor transmission rate.</p>
+<p>Logic of the gravimetric method: the container holds desiccant, water vapor passes from the outside through the container wall and is absorbed by the desiccant. The rate of weight gain of the whole container = MVTR.</p>
+<p><strong>Definitions of the three barrier grades:</strong></p>
+<ul>
+<li><strong>Low-barrier:</strong> MVTR &gt; 1.0 mg/cavity/day (use Method 3)</li>
+<li><strong>High-barrier:</strong> MVTR &lt; 1.0 mg/cavity/day (use Method 2)</li>
+<li><strong>Ultra-high barrier:</strong> MVTR &lt; 0.01 mg/cavity/day (use Method 2, but with more cavities)</li>
+</ul>
+</div>
+<div class="formula-box">
+<h4>Formula and Calculation — Balance Sensitivity Requirement</h4>
+<pre>Balance sensitivity requirement calculation:
+Minimum weight gain ≥ 60 × balance precision
+
+Example: balance resolution = 0.1 mg
+  Weighing uncertainty = 0.1 × 3 = 0.3 mg
+  Minimum weight gain = 0.3 / 5% = 6 mg
+
+  That is: the weight gain between
+  weighing time points must be ≥ 6 mg (= 60 × 0.1 mg)
+
+If the package barrier is very high (weight gain is very slow),
+a higher-resolution balance or a longer weighing interval is needed.</pre>
+</div>
+<div class="analogy-box">
+<h4>Analogy</h4>
+<p>The test condition of 40°C/75% RH is exactly the accelerated stability testing condition specified in ICH Q1A. This is not a coincidence: USP deliberately designed the MVTR test conditions to match accelerated stability testing, so that degradation seen in the package during stability studies can be directly correlated with MVTR data.</p>
+<p>It is like testing both an umbrella and car paint under the same "extreme weather", which makes it easy to compare the performance of different materials directly.</p>
+</div>
+<div class="note-box">
+<h4>Key Notes</h4>
+<p><strong>Practical considerations in balance selection:</strong> For ultra-high-barrier foil-foil blisters, water vapor barely penetrates, and the weight gain per weighing interval may be only on the order of 0.01–0.1 mg. A microbalance is then required, along with more cavities (&gt;10, up to 30) to accumulate enough signal.</p>
+<p>This is why the sensitivity design of the method is so important: the weighing uncertainty must be far smaller than the signal you want to measure.</p>
+</div>
+<div class="practice-box">
+<h4>Practice Questions</h4>
+<ol>
+<li>A packaging system is expected to gain 3 mg per weighing interval. What is the minimum balance resolution you need?</li>
+<li>Why is temperature/humidity control important during the weighing interval? What problems would the data have if the packages were not equilibrated before each weighing?</li>
+</ol>
+</div>
+</div>
+</div>
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+<h3>Section Summary</h3>
+<ul>
+<li>USP &lt;671&gt; provides functional testing standards for plastic packaging systems; the core metric is MVTR (moisture vapor transmission rate)</li>
+<li>The test methods fall into two categories: quantitative MVTR measurement (Methods 1–4) and container grade classification (Methods 5–8)</li>
+<li>The desiccant and water methods use the same vapor pressure difference but opposite directions: the former measures weight gain in a high-humidity environment, the latter measures weight loss in a low-humidity environment</li>
+<li>Balance sensitivity requirement: the weighing uncertainty must be &lt; 5% of the weight change per time point (minimum weight gain ≥ 60× balance precision)</li>
+<li>The 40°C/75% RH test condition matches the ICH accelerated stability testing condition, making it easy to correlate directly with stability data</li>
+</ul>
+</div>
+</div><!-- end main-content -->
+<!-- FOOTER -->
+<div class="main-footer">
+<p>SterileGMP Knowledge Hub — USP 〈671〉 Containers—Performance Testing | Section 0: Introduction &amp; Container Types</p>
+</div>
+        </div>
+    </section>
+
+    <!-- ========== Section 1: Light Transmission & Moisture Permeation Tests ========== -->
+    <section class="chapter-section" id="sec1">
+        <div class="chapter-divider">
+            <div class="chapter-badge">1</div>
+            <div class="chapter-info">
+                <h2>Section 1: Light Transmission & Moisture Permeation Tests</h2>
+                <p>p3-p7</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <!-- SECTION HEADER -->
+<div class="page-info">USP General Chapter 〈671〉 | Pages 3–7 (Lines 310–620)</div>
+</div>
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives" style="max-width:1800px; margin:1.5rem auto; padding-left:1.5rem; padding-right:1.5rem;">
+<h3>Learning Objectives</h3>
+<ul>
+<li>Master the specific procedures of the three desiccant sub-methods (Methods 1, 2 and 3) and the container types each applies to</li>
+<li>Understand the importance of closure torque specifications in Method 1 testing and how to look them up (Table 2)</li>
+<li>Master the application of linear regression analysis in MVTR calculation, and understand that the slope is the MVTR</li>
+<li>Understand the procedural logic of the water method (Method 4), including the water quantity calculation and the reverse-condition design</li>
+<li>Master the procedures of the classification system (Methods 5–8) and the classification criteria (tight, well-closed, Class A–D)</li>
+</ul>
+</div>
+<div class="main-content">
+<!-- ==================== SUBSECTION: DESICCANT — PROCEDURE ==================== -->
+<div class="section-title">Desiccant Methods — Desiccant Preparation &amp; Procedures</div>
+<div class="two-column">
+<div class="left-column">
+<h2>Original Text</h2>
+<h3>Desiccant</h3>
+<p><strong>Method 1:</strong> The desiccant is <span class="key-term">anhydrous calcium chloride</span> in granular form. Other desiccants, such as a molecular sieve or silica gel, may be suitable. If anhydrous calcium chloride is used, pre-dry at 215 ± 5° for 7¼ ± ¼ h to ensure that any hexahydrate present is fully converted to the anhydrate. Cool the desiccant in a desiccator for at least 2 h before use.</p>
+<div class="quote-box">
+            [Note—It has been shown that anhydrous calcium chloride may contain calcium hexahydrate, which loses water only when the temperature reaches 200°.]
+        </div>
+<p><strong>Methods 2 and 3:</strong> USP Desiccant, Small RS; USP Desiccant, Medium RS; and USP Desiccant, Large RS. The Reference Standards for desiccants are molecular sieves molded in a form to fit the size and shape of the blister cavity used. These desiccants should be at or near their original values when stored in their original and unopened containers, and thus drying should not be required. Prior to use, if the average weight of 10 tablets exceeds the weight specified on the USP certificate by more than 3%, drying shall be performed. Dry at 250 ± 5° for 1–2 h and cool in a desiccator for at least 2 h before use. Store desiccant in a tightly closed container in the driest conditions possible after being removed from original container.</p>
+<h3>Procedure — Method 1 (Multiple-Unit Containers)</h3>
+<p>Use 15 multiple-unit containers and 15 closures representative of the system to be tested. Prepare the test specimens by filling each multiple-unit container to two-thirds of its nominal volume with desiccant and then, for screw-type closures, applying the closure using the <span class="key-term">torque</span> that is within the range of tightness specified in Table 2. For other closure types, apply the closure according to the intended method.</p>
+<p>If the intended use of the container shall have an impervious seal, ensure that a proper seal has been made with the intended membrane to the land area of the bottle opening. Identify each multiple-unit container with indelible ink. Do not use a label.</p>
+<p>If there is a need to increase the precision of the method, the user can test the system without the closure as long as an impervious seal remains on the container. If desired, weigh each multiple-unit container at ambient temperature and RH. Record this weight for <span class="key-term">time 0</span>, but do not use it in the calculation of permeation.</p>
+<p>Place all containers in the test chamber (40°/75% RH) within 1 h of weighing. Weigh all multiple-unit containers at time intervals of <span class="key-term">7 days ± 1 h</span>. Weigh the multiple-unit containers at 7, 14, 21, 28, and 35 days to get <span class="key-term">five steady-state data points</span>. (The time interval from time 0 to day 7 is the period of equilibration.) Prior to weighing at each time interval, equilibrate the containers for about 30 min at the weighing temperature and RH. Limit the time out of the chamber to less than 2 h. Record the weights in an appropriate manner for later computation of the regression line.</p>
+</div>
+<div class="right-column">
+<h2>Tutorial Commentary</h2>
+<div class="concept-box">
+<h4>Key Concepts — Logic of Desiccant Selection</h4>
+<p><strong>Method 1 (calcium chloride, CaCl₂):</strong> Used for multiple-unit containers (bottles). Calcium chloride is a strong desiccant with a high moisture capacity, suited to long experiments of 14–35 days. However, it must first be dried at 215°C for 7.25 hours to ensure the hexahydrate is fully converted to the anhydrous form, because the hexahydrate does not lose its water until 200°C, so ordinary room-temperature drying is simply ineffective.</p>
+<p><strong>Methods 2 &amp; 3 (USP Molecular Sieve RS):</strong> Designed specifically for blisters, formed into tablets that match the cavity shape. Using a USP certified reference standard ensures reproducibility between different lots and different laboratories.</p>
+</div>
+<div class="analogy-box">
+<h4>Analogy</h4>
+<p>The desiccant is like a "sensor" for testing the packaging barrier. You put a precisely dried sensor into the container, close the lid, and place it in a humid environment. After a week you open it and weigh it; the amount of water the sensor has absorbed reflects how much water vapor has permeated in from outside.</p>
+<p>The sensor must start in a "completely dry" state, just as a scale must be zeroed before weighing. If the desiccant already contains residual moisture at the start, the data will be inaccurate, which is why the pre-drying step is so strict.</p>
+</div>
+<div class="note-box">
+<h4>Key Notes</h4>
+<p><strong>Significance of the five steady-state data points:</strong> Days 0–7 are the "equilibration period" and are not included in the calculation. The five weighing points on days 7, 14, 21, 28 and 35 are used for the linear regression, and the slope is the MVTR.</p>
+<p>Why wait for steady state? Because early on, the rate of water vapor diffusion is unstable, affected by temperature equilibration, adsorption by the packaging material and so on. Only once steady state is reached does the rate truly represent the barrier performance of the package.</p>
+<p><strong>Significance of the 30-minute equilibration:</strong> Before each weighing, let the containers equilibrate for 30 minutes under the temperature/humidity conditions of the weighing room, to avoid surface condensation caused by temperature differences affecting the weight reading.</p>
+</div>
+<div class="practice-box">
+<h4>Practice Questions</h4>
+<ol>
+<li>Why is the time 0 weight in Method 1 recorded but "not used in the calculation"? If time 0 were also included in the regression, what bias would the result have?</li>
+<li>Method 1 requires that containers be weighed and returned to the chamber within 2 hours of removal. Why is this limit in place?</li>
+</ol>
+</div>
+</div>
+</div>
+<!-- ==================== SUBSECTION: TABLE 2 — TORQUE ==================== -->
+<div class="section-title">Table 2 — Torque for Screw-Type Closures</div>
+<div class="two-column">
+<div class="left-column">
+<h2>Original Text</h2>
+<p><strong>Table 2. Torque Applicable to Screw-Type Container</strong></p>
+<p><em>Notes: (a) The torque designated for the next larger closure diameter is to be applied in testing containers having a closure diameter intermediate to the diameters listed. (b) A suitable apparatus is available from SecurePak, www.secure-pak.com.</em></p>
+<div style="overflow-x:auto;">
+</div>
+</div>
+<div class="right-column">
+<h2>Tutorial Commentary</h2>
+<div class="concept-box">
+<h4>Key Concepts — Significance of the Torque Specification</h4>
+<p><strong>Torque (tightening torque):</strong> The torque applied when tightening a bottle cap, in inch-pounds (imperial) or Newton-meters (metric). Torque directly affects how well the closure seals: too little torque gives an incomplete seal, while too much may damage the cap or the bottle finish.</p>
+<p>Table 2 specifies the "recommended manual torque range" so that the test conditions are standardized: when all laboratories test the same container using the same torque range, the results are comparable.</p>
+<p>For intermediate closure sizes, use the torque for the "next larger diameter". This is a conservative design that ensures borderline cases do not underestimate MVTR because of insufficient torque.</p>
+</div>
+<div class="analogy-box">
+<h4>Analogy</h4>
+<p>Imagine testing the caps of thermos flasks from different brands. If you tighten brand A hard (high torque) but screw on brand B casually (low torque), brand A will appear to seal better, but not because its material is better; it is because you tightened them differently.</p>
+<p>Table 2 exists to solve this problem: by giving a standardized "tightening force", it ensures the test result reflects the barrier performance of the container itself rather than differences in operator force.</p>
+</div>
+<div class="note-box">
+<h4>Key Notes</h4>
+<p><strong>CDMO practical implications:</strong> If a client sends samples for MVTR testing, you must confirm the container specification (closure diameter), look up Table 2 to determine the torque range, and use a calibrated torque tester (for example, a SecurePak MRA spring torque tester) to confirm that the force applied by the operator falls within the specified range. This is part of test method validation.</p>
+</div>
+<div class="practice-box">
+<h4>Practice Questions</h4>
+<ol>
+<li>A container has a closure diameter of 35 mm, which is not listed in Table 2. Which torque range should be used?</li>
+<li>If, in an MVTR test, the operator does not use a torque tester but tightens "by feel", what effect might this have on the test results? How can this risk be controlled in the SOP?</li>
+</ol>
+</div>
+</div>
+</div>
+<!-- ==================== SUBSECTION: METHOD 2 & 3 PROCEDURES ==================== -->
+<div class="section-title">Methods 2 &amp; 3 — Blister Procedures</div>
+<div class="two-column">
+<div class="left-column">
+<h2>Original Text</h2>
+<h3>Procedure — Method 2 (High/Ultra-High Barrier Blisters)</h3>
+<p>Use 10 test units for this method. Provide a minimum of 10 blister cavities for each test unit. If the blister card contains fewer than 10 cavities, bundle the cards to form a test unit of at least 10 cavities. This is required to provide sufficient weight gain at each time interval. Fill with predried desiccant, and seal the blisters on equipment that is capable of correctly filling and sealing the blister. The desiccant should fill the cavity. The total weight of the desiccant must be sufficient to meet the quantity required to avoid partial saturation of the desiccant before completion of the test. Fill the blisters in a low-humidity atmosphere (as low as possible, but not greater than 50% RH). Do not expose the desiccants to room humidity for more than 30 min before sealing. Identify each test specimen with indelible ink; do not use a label.</p>
+<p>It should be noted that bundling of the blisters during storage can impact air flow and correspondingly increase data variability.</p>
+<p>Weigh each test unit at ambient temperature and RH. Record this weight for time 0. Place all test units in the test chamber (40°/75% RH) within 1 h of weighing. Weigh all test units at time intervals of 7 days ± 1 h. Weigh the test units at 7, 14, 21, 28, and 35 days to get five steady-state data points. (The time interval from time 0 to day 7 is the period of equilibration.) Prior to weighing at each time interval, equilibrate the containers for 30 ± 5 min at the controlled weighing temperature and RH. Limit the time out of the chamber to less than 2 h.</p>
+<p><strong>Ultra-high barrier blisters</strong> may not show the full measure of precision and sensitivity this method can provide. For ultra-high barrier blisters, test units should have more than 10 cavities, but NMT 30 cavities. Examples are <span class="key-term">foil–foil blisters</span> or very small blisters formed from other materials. An alternative approach is to double or triple the length of weighing intervals to achieve at least a 6-mg weight gain per time interval by the test specimen.</p>
+<h3>Procedure — Method 3 (Low-Barrier Blisters)</h3>
+<p>Prepare the test units as directed in Method 2. Place all test units in the test chamber (40°/75% RH) within 1 h of weighing. Weigh the test units at the end of <span class="key-term">2 days (48 ± 1 h)</span>. At this time, the difference in weight (the weight gain) is divided by the number of blister cavities and days (2) in each test unit and this is taken as the MVTR in mg/day/cavity.</p>
+<div class="quote-box">
+            [Note—For low-barrier single-unit and unit-dose containers, the weight gain after the second day displays a curvilinear profile typical of approaching saturation of the desiccant. To obtain five weighings within 2 days is not viable and is likely to increase variability.]
+        </div>
+</div>
+<div class="right-column">
+<h2>Tutorial Commentary</h2>
+<div class="concept-box">
+<h4>Key Concepts — Design Differences Between Method 2 and Method 3</h4>
+<p>The core difference between the two methods lies in "how quickly the desiccant becomes saturated":</p>
+<ul>
+<li><strong>High/ultra-high barrier → Method 2 (35 days):</strong> Water vapor has difficulty entering and the desiccant saturates very slowly, so multi-point weighing over 35 days is possible, and regression analysis yields a precise slope</li>
+<li><strong>Low barrier → Method 3 (2 days):</strong> Water vapor enters easily and the desiccant is close to saturation after 2 days; data from continued testing would show a "curvilinear profile" and can no longer be used for linear regression. Therefore only one weighing (day 2) is made</li>
+</ul>
+</div>
+<div class="analogy-box">
+<h4>Analogy</h4>
+<p>An ultra-high-barrier foil-foil blister is like a water tank made of special bulletproof glass: water (water vapor) barely gets in, and you have to wait a very long time to accumulate a measurable weight change.</p>
+<p>A low-barrier ordinary PVC blister is like a water tank made of gauze: water vapor rushes in and the desiccant saturates quickly. You must complete the measurement before it is fully saturated (day 2), otherwise later data will be distorted.</p>
+</div>
+<div class="note-box">
+<h4>Key Notes</h4>
+<p><strong>Notes on "bundled" blisters:</strong> To accumulate enough weight-change signal, several blister cards can be bundled together as one "test unit". However, bundling obstructs airflow and may increase data variability; this is one of the parameters to evaluate during test method validation.</p>
+<p><strong>Flexibility for ultra-high barrier:</strong> For ultra-high-barrier packaging such as foil-foil, the weighing interval can be "extended to two or three times" (that is, once every 14 days) to ensure that the weight gain in each interval reaches at least the 6 mg detection threshold.</p>
+</div>
+<div class="practice-box">
+<h4>Practice Questions</h4>
+<ol>
+<li>Each card of a blister has only 6 cavities. What is the minimum number of cards that must be bundled for Method 2?</li>
+<li>What is the final MVTR calculation formula for Method 3? (weight gain ÷ number of cavities ÷ 2 days) What is the fundamental difference between this calculation and the regression approach of Method 2?</li>
+</ol>
+</div>
+</div>
+</div>
+<!-- ==================== SUBSECTION: CALCULATIONS ==================== -->
+<div class="section-title">Calculations — Methods 1, 2, 3 (Linear Regression)</div>
+<div class="two-column">
+<div class="left-column">
+<h2>Original Text</h2>
+<h3>Calculations — Methods 1 and 2</h3>
+<p>Perform the <span class="key-term">regression analysis</span> for each test unit. Typically, the initial data point (at day 0) is not included in fitting the regression line. The <span class="key-term">slope of the regression line</span> is the MVTR of each test unit. For Method 1, the slope is the MVTR for the corresponding multiple-unit container. For Method 2, the MVTR of each blister cavity is calculated by dividing the slope by the number of cavities in each test unit.</p>
+<h3>Method 3 Calculation</h3>
+<p>Calculate the weight gain in mg/day/cavity from day 0 to day 2 using the 10 test units. The MVTR of each blister cavity is calculated by dividing the weight gain by 2 (for 2 days) and the number of blister cavities in each test unit.</p>
+<h3>Regression Equation</h3>
+<p><strong>W = I + MT</strong></p>
+<p>Where:</p>
+<ul>
+<li><strong>W</strong> = measured weight (mg)</li>
+<li><strong>I</strong> = regression line intercept</li>
+<li><strong>M</strong> = regression line slope (= MVTR for Method 1)</li>
+<li><strong>T</strong> = time point (days)</li>
+<li><strong>N</strong> = number of data points</li>
+<li><strong>W̄</strong> = overall weight mean</li>
+<li><strong>T̄</strong> = overall time point mean</li>
+</ul>
+<p>Slope (M) = [Σ(Wᵢ − W̄)(Tᵢ − T̄)] / [Σ(Tᵢ − T̄)²]</p>
+<h3>Results Reporting</h3>
+<p><strong>Method 1:</strong> Report the MVTR as the average value, in mg/day/container, and the standard deviation of the 15 slopes. Properly describe the container–closure system tested (e.g., material, size, shape, and color).</p>
+<p><strong>Method 2:</strong> Report the MVTR as the average value, in mg/day/cavity, and the standard deviation of the 10 test unit slopes.</p>
+<p><strong>Method 3:</strong> Report the MVTR as the average value from day 0 to day 2, in mg/day/cavity, and the standard deviation of the 10 test unit slopes.</p>
+</div>
+<div class="right-column">
+<h2>Tutorial Commentary</h2>
+<div class="formula-box">
+<h4>Formula and Calculation — Linear Regression to Obtain MVTR</h4>
+<pre>Linear regression model: W = I + M × T
+  W = weight (mg)
+  T = time (days)
+  M = slope = MVTR (mg/day)
+
+Slope calculation:
+M = Σ[(Wᵢ - W̄)(Tᵢ - T̄)] / Σ[(Tᵢ - T̄)²]
+
+Example: 5 data points (days 7, 14, 21, 28, 35)
+Mean time point T̄ = (7+14+21+28+35)/5 = 21 days
+Weights (illustrative):
+  Day 7:  1002.3 mg
+  Day 14: 1004.8 mg
+  Day 21: 1007.2 mg
+  Day 28: 1009.9 mg
+  Day 35: 1012.4 mg
+W̄ = (1002.3+1004.8+1007.2+1009.9+1012.4)/5 = 1007.32
+
+M ≈ (1012.4-1002.3)/(35-7) ≈ 0.36 mg/day
+→ MVTR = 0.36 mg/day/container (Method 1)
+
+Method 2: MVTR/cavity = M / number of cavities
+Method 3: MVTR/cavity = ΔW / (2 days × number of cavities)</pre>
+</div>
+<div class="concept-box">
+<h4>Key Concepts — Why Use the Slope as the MVTR?</h4>
+<p>Ideally, at steady state, water vapor permeates the package at a constant rate (a linear relationship). The slope of the regression is this "daily permeation amount", unaffected by the starting weight or the intercept, and directly reflects the permeation rate itself.</p>
+<p>Using regression (the average trend of 5 points) rather than the difference between two single points removes the influence of individual weighing errors and improves precision. This is a basic principle of metrology: averaging over many points beats taking the difference between two.</p>
+</div>
+<div class="note-box">
+<h4>Key Notes</h4>
+<p><strong>Reporting elements:</strong> In addition to the MVTR value, the following must also be reported:</p>
+<ul>
+<li>The standard deviation (reflecting the within-lot variability among the 15 containers or 10 test units)</li>
+<li>A complete description of the container: material, specification, shape, color (essential for comparing packaging from different suppliers)</li>
+</ul>
+<p>These reporting requirements reflect regulatory expectations: when an MVTR is submitted, reviewers must be able to reproduce the test conditions.</p>
+</div>
+<div class="practice-box">
+<h4>Practice Questions</h4>
+<ol>
+<li>In Method 2, if a test unit contains 20 cavities and the slope (M) = 2.0 mg/day, what is the MVTR per cavity?</li>
+<li>If 2 of the 15 containers show clearly high MVTR slope data (outliers), what are the possible causes? How should they be handled?</li>
+</ol>
+</div>
+</div>
+</div>
+<!-- ==================== SUBSECTION: WATER METHOD ==================== -->
+<div class="section-title">Water Method for Packaging Systems (Method 4)</div>
+<div class="two-column">
+<div class="left-column">
+<h2>Original Text</h2>
+<h3>Water Method for Packaging Systems</h3>
+<p>This section describes moisture vapor transmission test methods (see <span class="key-term">Method 4</span>) for low-barrier, high-barrier, and ultra-high barrier single-unit and unit-dose containers.</p>
+<p>Method 4 includes the following:</p>
+<ul>
+<li>A specific moisture vapor transmission value for a packaging system rather than a classification</li>
+<li>Sufficient sensitivity and precision to allow differentiation among moisture barrier performance for plastic blister packaging systems</li>
+<li><span class="key-term">Inverse environmental conditions (40°/25% RH)</span> from those that are used for the desiccant method and stability testing of the primary packaging of regulated articles (40°/75% RH). These inverse conditions achieve the same pressure difference when water is used in place of desiccant.</li>
+<li>MVTR determination is based upon <span class="key-term">weight loss</span> instead of weight gain</li>
+</ul>
+<h3>Equipment</h3>
+<ul>
+<li>A <span class="key-term">humidity-controlled glove box</span> capable of maintaining relative humidity at 25% ± 5%</li>
+<li>A balance with sufficient sensitivity (weighing uncertainty &lt; 5% of weight loss per interval)</li>
+<li>A chamber capable of maintaining 40 ± 2°/25% ± 5% RH</li>
+</ul>
+<h3>Amount of Water for Test Containers</h3>
+<p>For blisters, approximately 10–100 mg of water per blister cavity (about 1–10 drops), depending upon expected MVTR, is adequate for all blister types at 40°/25% RH.</p>
+<p><strong>Water-based method equation:</strong></p>
+<p>Minimum water = MVTR × total test days + initial water for 100% RH<br/>
+        Example: 1.5 mg water/(day × cavity) × 35 days + 0.025 mg = 52.5 mg water/cavity</p>
+<p>The recommended amount of water for this blister system is about 100 mg per cavity. The water-based method equation can be used to determine the minimum amount of water for all blister types, and this amount should then be multiplied by a factor between 2 and 3 to achieve an excess.</p>
+<h3>Procedure — Method 4</h3>
+<p>Use 10 test units. Provide a minimum of 10 blister cavities for each test unit. Fill blister cavities with a sufficient quantity of water. Care should be taken to insure the cavities are not overfilled and that water does not end up on the seal area.</p>
+<p>Place test units in the humidity-controlled glove box at 25% RH for 60 min. Remove test units from the glove box and record initial weight to nearest 0.1 mg and time. Place all test units in the test chamber (40°/25% RH) and weigh at time intervals of 7 days ± 1 h. Weigh the test units at 7, 14, 21, 28, and 35 days to get five steady-state data points. Additional time points can be added for laboratory operations and higher barrier blisters.</p>
+<p>At each time point, place the test units in the humidity-controlled glove box and allow to equilibrate for 60 min, then weigh, and record the time.</p>
+<p>All test units should be inspected for the presence of water at each time point. Opaque and <span class="key-term">cold-form foil blisters</span> should be opened at the conclusion of the test to insure the presence of water in each cavity since visual inspection is not possible.</p>
+<h3>Calculations and Results — Method 4</h3>
+<p>Perform the linear regression analysis for each test unit following the calculations in Methods 1 and 2, except the slope in Water Method is <span class="key-term">negative</span> because of the moisture egresses and weight loss with time. The MVTR of each blister cavity is calculated by dividing the <span class="key-term">absolute value</span> of the slope by the number of cavities in each test unit.</p>
+<p>Report the MVTR as the average value, in mg/day/cavity, and the standard deviation of the 10 test unit slopes.</p>
+</div>
+<div class="right-column">
+<h2>Tutorial Commentary</h2>
+<div class="concept-box">
+<h4>Key Concepts — The Reverse Logic of the Water Method</h4>
+<p><strong>Why does the water method use 40°C/25% RH rather than 40°C/75% RH?</strong></p>
+<p>The key is the "water vapor pressure difference (pressure gradient)":</p>
+<ul>
+<li><strong>Desiccant method:</strong> desiccant inside the container (≈0% RH), 75% RH outside → pressure difference ≈ 75% RH (water enters from outside)</li>
+<li><strong>Water method:</strong> water inside the container (≈100% RH), 25% RH outside → pressure difference ≈ 75% RH (water leaves from inside)</li>
+</ul>
+<p>The driving force of the two methods is the same! This is why the MVTR measured by the water method can, in theory, be converted to and from the desiccant method.</p>
+</div>
+<div class="formula-box">
+<h4>Formula and Calculation — Minimum Water Quantity</h4>
+<pre>Minimum water quantity formula for the water method:
+Minimum water = MVTR × total test days + water needed to establish 100% RH
+
+PVC blister example:
+  MVTR = 1.5 mg/day/cavity
+  Test days = 35 days
+  Establishing saturated vapor = 0.025 mg (in a 0.5 mL volume)
+
+Minimum water = 1.5 × 35 + 0.025 = 52.5 mg/cavity
+
+Recommended water = 52.5 × 2 to 3 times
+                  = 100–150 mg/cavity (about 2–3 drops)
+
+Note: the excess ensures that liquid water
+is still present in the cavity at the end of the test,
+maintaining the ~100% RH driving condition.</pre>
+</div>
+<div class="analogy-box">
+<h4>Analogy</h4>
+<p>The desiccant method is like "placing a damp sponge in a dry room and observing how much water it absorbs": the sponge represents the desiccant, and water enters from the external environment.</p>
+<p>The water method is like "placing a glass of water in a humid room and observing how much of it evaporates": water evaporates from inside the container into the dry external environment.</p>
+<p>Both measure the same "permeability of the wall (the package wall)"; only the direction of observation is opposite.</p>
+</div>
+<div class="note-box">
+<h4>Key Notes</h4>
+<p><strong>Special note for cold-form foil blisters:</strong> Cold-form foil (aluminum/plastic laminate, cold-formed) blisters are opaque, so you cannot see by eye whether water remains. Each cavity must be opened and checked after the test to confirm that the premise "water was present throughout the test" holds. If the water evaporates completely partway through the test, the data from the second half are invalid.</p>
+<p><strong>Negative slope:</strong> In the water method the weight "decreases" over time (the water evaporates), so the regression slope is negative. The MVTR is its absolute value. This is the only calculation difference from the desiccant method (positive slope).</p>
+</div>
+<div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+<h4>Practical Application</h4>
+<p>In a CDMO setting, a client may ask you to verify their new aluminum-plastic laminate blister package. You can choose either the desiccant method (Method 2) or the water method (Method 4). The advantages of the water method are:</p>
+<ul>
+<li>No need to pre-dry the USP Molecular Sieve desiccant (saving a 250°C drying step)</li>
+<li>Distilled water is added directly, so the operation is relatively simple</li>
+<li>However, it requires additional humidity-controlled glove box equipment (25% RH control)</li>
+</ul>
+<p>Which method to choose depends on the laboratory's existing equipment, client requirements, and the need to align with ICH stability testing conditions.</p>
+</div>
+<div class="practice-box">
+<h4>Practice Questions</h4>
+<ol>
+<li>An ultra-high-barrier foil-foil blister has an estimated MVTR of about 0.005 mg/day/cavity. For the water method, what is the minimum amount of water per cavity that must be prepared (35-day test)?</li>
+<li>The MVTR obtained by the water method and the desiccant method should theoretically be the same, but in practice may differ slightly. List three factors that could cause the difference.</li>
+</ol>
+</div>
+</div>
+</div>
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+<h3>Section Summary</h3>
+<ul>
+<li>The three desiccant methods are selected by barrier grade and container type: Method 1 (multiple-unit bottles, 35 days), Method 2 (high/ultra-high-barrier blisters, 35 days), Method 3 (low-barrier blisters, 2 days)</li>
+<li>The Table 2 closure torque specification ensures standardized testing of multiple-unit containers, and a calibrated torque tester should be used</li>
+<li>MVTR is calculated from the slope of the linear regression: slope = weight gain per day (mg/day); for Method 2 it must be divided by the number of cavities</li>
+<li>The water method (Method 4) uses reverse conditions (40°C/25% RH) and measures weight "loss"; the absolute value of the slope is the MVTR; the pressure difference is equivalent to that of the desiccant method</li>
+<li>Ultra-high-barrier packaging requires more cavities (up to 30) or a longer weighing interval to ensure that the weight change in each interval reaches the 6 mg detection threshold</li>
+</ul>
+</div>
+</div><!-- end main-content -->
+<!-- FOOTER -->
+<div class="main-footer">
+<p>SterileGMP Knowledge Hub — USP 〈671〉 Containers—Performance Testing | Section 1: Light Transmission &amp; Moisture Permeation Tests</p>
+</div>
+        </div>
+    </section>
+
+    <!-- ========== Section 2: Additional Tests & Special Containers ========== -->
+    <section class="chapter-section" id="sec2">
+        <div class="chapter-divider">
+            <div class="chapter-badge">2</div>
+            <div class="chapter-info">
+                <h2>Section 2: Additional Tests & Special Containers</h2>
+                <p>p7-p10</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <!-- SECTION HEADER -->
+<div class="page-info">USP General Chapter 〈671〉 | Pages 7–10 (Lines 620–929)</div>
+</div>
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives" style="max-width:1800px; margin:1.5rem auto; padding-left:1.5rem; padding-right:1.5rem;">
+<h3>Learning Objectives</h3>
+<ul>
+<li>Master the complete procedures of classification Methods 5–8, including the desiccant calculation formula, control group design and classification criteria</li>
+<li>Understand the difference in MVTR classification thresholds between tight containers and well-closed containers</li>
+<li>Master the four-level classification system (Class A–D) of Method 7 (blister cards) and its MVTR criteria</li>
+<li>Understand the equipment requirements, procedure and Table 3 limits for Spectral Transmission testing</li>
+<li>Become familiar with the definitions of key terms in the &lt;671&gt; glossary, and be able to distinguish a test specimen from a test unit</li>
+</ul>
+</div>
+<div class="main-content">
+<!-- ==================== SUBSECTION: CLASSIFICATION SYSTEM INTRODUCTION ==================== -->
+<div class="section-title">Classification System — Introduction</div>
+<div class="two-column">
+<div class="left-column">
+<h2>Original Text</h2>
+<h3>CLASSIFICATION SYSTEM FOR PLASTIC PACKAGING SYSTEMS</h3>
+<h3>Introduction</h3>
+<p>A classification system is included to provide methods that allow pharmacists and institutional repackagers to select appropriate containers for <span class="key-term">repackaging</span>. Repackaging is the act of taking a finished drug product from the container in which it was distributed by the original manufacturer and placing it into a different container without further manipulation of the drug. The classification system provided can also be used by the drug product manufacturer for testing packaging systems that have had the <span class="key-term">primary seal broached</span>.</p>
+<h3>Classification Based on Desiccant Method for Solid Oral Dosage Forms</h3>
+<p>This section describes the methods for assigning the classification for <span class="key-term">multiple-unit containers (Method 5)</span>, multiple-unit containers with induction seals (Method 6), and single-unit and unit-dose containers (Method 7) used by pharmacists and institutional repackagers.</p>
+<h3>Desiccant — Methods 5 and 6</h3>
+<p>Place a quantity of 4- to 8-mesh, anhydrous calcium chloride in a shallow container, taking care to exclude any fine powder, dry at 215 ± 5° for 7¼ ± ¼ h, and cool in a desiccator for at least 2 h before use.</p>
+<h3>Desiccant — Method 7</h3>
+<p>Use USP Desiccant, Small RS; USP Desiccant, Medium RS; or USP Desiccant, Large RS. The USP Reference Standards for desiccants are molecular sieves molded in a form to fit the size and shape of the blister cavity used. Prior to use, if the average weight of 10 tablets exceeds the weight specified on the USP certificate by more than 3%, drying shall be performed. Dry at 250 ± 5° for 1–2 h, and cool in a desiccator for at least 2 h before use. Store desiccant in a tightly closed container in the driest conditions possible after being removed from original container.</p>
+</div>
+<div class="right-column">
+<h2>Tutorial Commentary</h2>
+<div class="concept-box">
+<h4>Key Concepts — Classification vs Quantitative Measurement</h4>
+<p>The purpose of the <strong>classification system (Methods 5–8)</strong> differs from that of quantitative MVTR measurement (Methods 1–4):</p>
+<ul>
+<li><strong>Quantitative measurement (Methods 1–4):</strong> gives a precise MVTR value (for example, 0.025 mg/day/cavity), used for filings and lot-to-lot comparison</li>
+<li><strong>Classification system (Methods 5–8):</strong> only needs to confirm whether the container meets a grade threshold (for example, "tight" or "well-closed"), and is used to select containers for repackaging</li>
+</ul>
+<p><strong>Repackaging:</strong> when a pharmacy or institution divides the manufacturer's 100-count pack into 30-count packs, that is repackaging. The classification system exists to ensure that the barrier performance of the dispensing container is no worse than the original manufacturer requires.</p>
+<p><strong>Primary seal broached:</strong> the original seal of the container (such as an aluminum foil induction seal) has been opened. The original manufacturer can also use the classification methods to test container performance in this situation.</p>
+</div>
+<div class="analogy-box">
+<h4>Analogy</h4>
+<p>Imagine buying coffee beans: the manufacturer packs them in a nitrogen-flushed vacuum bag (quantitative measurement confirms the barrier performance), and after you open the bag, you transfer the beans into your own airtight jar for storage (repackaging).</p>
+<p>The classification system helps you confirm: "Is your jar good enough?" It does not need to tell you exactly how many years the beans will keep; it only needs to confirm "does it reach the grade of a tight container?" Once it does, you can use it.</p>
+</div>
+<div class="note-box">
+<h4>Key Notes</h4>
+<p><strong>Reconfirming the logic for choosing between the two desiccants:</strong></p>
+<ul>
+<li>Methods 5 &amp; 6 use calcium chloride (multiple-unit bottles) → consistent with Method 1</li>
+<li>Method 7 uses USP Molecular Sieve RS (blisters) → consistent with Method 2</li>
+</ul>
+<p>This correspondence is not a coincidence: the classification methods and the quantitative methods use the same type of desiccant, ensuring a reliable correspondence between classification results and MVTR values.</p>
+</div>
+<div class="practice-box">
+<h4>Practice Questions</h4>
+<ol>
+<li>A pharmacy wants to repackage an oral solid drug product that the manufacturer labels "tight container". Which method should it use to verify the suitability of the dispensing container?</li>
+<li>What is the difference between Method 6 and Method 5? Why is the "tight" criterion for Method 6 (10 mg/day/L) 10 times stricter than that of Method 5 (100 mg/day/L)?</li>
+</ol>
+</div>
+</div>
+</div>
+<!-- ==================== SUBSECTION: METHODS 5, 6, 7 PROCEDURES ==================== -->
+<div class="section-title">Methods 5, 6, 7 — Procedures &amp; Classification Criteria</div>
+<div class="two-column">
+<div class="left-column">
+<h2>Original Text</h2>
+<h3>Procedure — Method 5 (Multiple-Unit Containers)</h3>
+<p>Select 12 containers of a uniform size and type. Clean the sealing surfaces with a lint-free cloth, and close and open each container 30 times within the range of tightness specified in Table 2. Add desiccant to 10 of the containers, designated <span class="key-term">"test containers"</span>, filling each to within 13 mm of the closure if the container volume is 20 mL or more, or filling each to two-thirds of its nominal volume if the container volume is less than 20 mL. Close each container immediately after adding desiccant, and apply the torque designated in Table 2 when closing screw-capped containers. To each of the remaining two containers, designated <span class="key-term">"controls"</span>, add a sufficient number of glass beads to attain a weight approximately equal to that of each of the test containers.</p>
+<p>Record the weight of the individual containers and store at <span class="key-term">75 ± 3% RH and a temperature of 23 ± 2°</span>.</p>
+<div class="quote-box">
+            [Note—A saturated system of 35 g of sodium chloride with each 100 mL of water placed in the bottom of a desiccator maintains the specified humidity. Other methods may be employed to maintain these conditions.]
+        </div>
+<p>After <span class="key-term">336 ± 1 h (14 days)</span>, record the weight of the individual containers. Completely fill 5 empty containers of the same size and type with water or a noncompressible, free-flowing solid to the level indicated by the closure surface when in place. Transfer the contents of each to a graduated cylinder, and determine the <span class="key-term">average container volume</span>, in milliliters.</p>
+<h3>Procedure — Method 6 (Containers with Induction Seals)</h3>
+<p>Proceed as directed under Method 5, except fit containers with <span class="key-term">impervious seals</span> obtained by heat-sealing the bottles with an aluminum foil–polyethylene laminate or other suitable seal. If there is a need to increase the precision of the method, the user can test the system without the closure as long as an impervious seal remains on the container. Keeping the cap on causes variation and the absorption of water by the cap liner is not part of the moisture permeation.</p>
+<h3>Procedure — Method 7 (Unit-Dose Containers — Blister Packs)</h3>
+<p>Use this procedure for packs (e.g., punch-out cards) and blister cards that incorporate one or more separately sealed unit-dose containers or blisters. Seal a sufficient number of packs, such that NLT 4 packs and a total of NLT 10 unit-dose containers or blisters filled with <span class="key-term">1 pellet in each unit</span> are tested. Seal a corresponding number of empty packs as controls. Store all of the containers at <span class="key-term">75 ± 3% RH and 23 ± 2°</span>.</p>
+<p>After 24 h, and at each multiple thereof (see Classification), remove the packs from the chamber, and allow them to equilibrate for about 45 min. Record the weights of the individual packs, and return them to the chamber. The test and control containers are weighed after every 24 h and after suitable test intervals for the final weighings. W and C are as follows: <span class="key-term">24 h for Class D, 48 h for Class C, 7 days for Class B, and NLT 28 days for Class A</span>.</p>
+</div>
+<div class="right-column">
+<h2>Tutorial Commentary</h2>
+<div class="concept-box">
+<h4>Key Concepts — The 10+2 Container Design (Control Group Logic)</h4>
+<p>Methods 5 &amp; 6 use 10 test containers + 2 control containers, which is a rigorous experimental design:</p>
+<ul>
+<li><strong>Test containers (10):</strong> filled with desiccant, to measure moisture absorbed in the 75% RH environment</li>
+<li><strong>Control containers (2):</strong> filled with an equal weight of glass beads, simulating the same weight but with no moisture uptake. They are used to correct for weight drift that may occur in the environment (systematic errors such as static on the balance pan and air buoyancy)</li>
+</ul>
+<p>The MVTR calculation formula is:<br/>
+            (1000/14V) × [(T_F − T_I) − (C_F − C_I)]<br/>
+            The term (C_F − C_I) in the brackets is the weight drift of the control group, used to correct for systematic error.</p>
+</div>
+<div class="analogy-box">
+<h4>Analogy</h4>
+<p>The "30 openings and closings" step simulates real-use conditions. Imagine a pharmacy medicine bottle that a customer or nurse opens every day to take out medication: 30 openings and closings let the closure seal "degrade to a normal in-use state" rather than a brand-new, unused state.</p>
+<p>If only the seal in its "brand-new" state were tested, the barrier performance measured would be too ideal and would not represent performance in actual use. This is the purpose of the 30-opening design: to measure real-world performance, not an idealized laboratory value.</p>
+</div>
+<div class="note-box">
+<h4>Key Notes</h4>
+<p><strong>How to maintain 75% RH:</strong> Saturated sodium chloride solution (35 g NaCl / 100 mL water) in a sealed system maintains about 75% RH. This is a classic laboratory technique that does not require a precision humidity chamber; a laboratory can do it with a desiccator and saturated salt solution.</p>
+<p><strong>The "pellet" indicator in Method 7:</strong> One indicator pellet is placed in each cavity (possibly a color-changing indicating desiccant). If the pellet turns pink or the average weight gain exceeds 10%, the test is terminated and only the earlier data are valid. This is a built-in "oversaturation alarm".</p>
+<p><strong>Weighing interval design for Class A–D:</strong> Class D (worst) reaches its determination endpoint in only 24 hours, while Class A (best) requires NLT 28 days. This reflects that the better the barrier performance, the longer it takes to accumulate a measurable weight change.</p>
+</div>
+<div class="practice-box">
+<h4>Practice Questions</h4>
+<ol>
+<li>In the Method 5 MVTR calculation formula, why is the numerator multiplied by 1000? (Hint: the volume unit is mL, and the MVTR unit is mg/day/L)</li>
+<li>In a Method 7 test, if the indicator pellet in one package turns pink on day 3, how should the data from that test package be handled?</li>
+</ol>
+</div>
+</div>
+</div>
+<!-- ==================== SUBSECTION: CLASSIFICATION CRITERIA ==================== -->
+<div class="section-title">Classification Criteria — Methods 5, 6, 7, 8</div>
+<div class="two-column">
+<div class="left-column">
+<h2>Original Text</h2>
+<h3>Calculations — Methods 5 and 6</h3>
+<p>Calculate the rate of moisture vapor transmission, in mg/day/L:</p>
+<p><strong>(1000/14V) × [(T_F − T_I) − (C_F − C_I)]</strong></p>
+<ul>
+<li>V = volume of the container (mL)</li>
+<li>T_F = final weight of each test container (mg)</li>
+<li>T_I = initial weight of each test container (mg)</li>
+<li>C_F = average final weight of the two controls (mg)</li>
+<li>C_I = average initial weight of the two controls (mg)</li>
+</ul>
+<h3>Calculations — Method 7</h3>
+<p>Calculate, to two significant figures, the average rate of moisture vapor transmission, in mg/day, for each unit-dose container or blister in each pack:</p>
+<p><strong>[1/(N × X)] × [(W_F − W_I) − (C_F − C_I)]</strong></p>
+<ul>
+<li>N = number of days expired in the test period (beginning after the initial 24-h equilibration period)</li>
+<li>X = number of separately sealed units per pack</li>
+<li>W_F = final weight of each test pack (mg)</li>
+<li>W_I = initial weight of each test pack (mg)</li>
+<li>C_F = final weight of the control packs (mg)</li>
+<li>C_I = initial weight of the control packs (mg)</li>
+</ul>
+<h3>Classification — Methods 5 and 6</h3>
+<p><strong>Method 5:</strong> Packaging systems are classified as <span class="key-term">"tight"</span> if NMT 1 of the 10 test containers exceeds 100 mg/day/L in moisture vapor transmission, and none exceeds 200 mg/day/L. Packaging systems are classified as <span class="key-term">"well-closed"</span> if NMT 1 of the 10 test containers exceeds 2000 mg/day/L in moisture vapor transmission, and none exceeds 3000 mg/day/L.</p>
+<p><strong>Method 6:</strong> Packaging systems are classified as <span class="key-term">"tight"</span> if the moisture vapor transmission exceeds 10 mg/day/L in NMT 1 of the 10 test containers, and none exceeds 25 mg/day/L.</p>
+<h3>Classification — Method 7</h3>
+<p><strong>Class A:</strong> No pack tested exceeds 0.5 mg/day/unit in average blister MVTR<br/>
+<strong>Class B:</strong> No pack tested exceeds 5 mg/day/unit in average blister MVTR<br/>
+<strong>Class C:</strong> No pack tested exceeds 20 mg/day/unit in average blister MVTR<br/>
+<strong>Class D:</strong> None of the packs tested meet any of the above average blister MVTR requirements</p>
+<h3>Classification Based on Water Method for Liquid Oral Dosage Forms</h3>
+<p>The following procedure and classification scheme (Method 8) is provided to classify multiple-unit containers as "tight" for liquid oral dosage forms.</p>
+<p>Select 12 bottles of a uniform size and type. Fill 10 bottles with water to the fill capacity. Fill two containers with glass beads, to the same weight as the filled test containers. Store sealed containers at a temperature of <span class="key-term">25 ± 2° and 40 ± 2% RH</span>. After 336 ± 1 h (14 days), record the weight of the individual containers, and calculate the water weight loss rate, in %/year.</p>
+<h3>Classification — Method 8</h3>
+<p>The packaging systems are classified as <span class="key-term">"tight"</span> if NMT 1 of the 10 test containers exceeds 2.5%/year percentage of water weight loss and does not exceed 5.0%/year in any of them.</p>
+</div>
+<div class="right-column">
+<h2>Tutorial Commentary</h2>
+<div class="formula-box">
+<h4>Formula and Calculation — Quick Reference of Classification Criteria</h4>
+<pre>Method 5 (multiple-unit bottles, no induction seal):
+  Tight: NMT 1 container &gt;100 mg/day/L, and none &gt;200
+  Well-closed: NMT 1 container &gt;2000 mg/day/L, and none &gt;3000
+
+Method 6 (multiple-unit bottles, with induction seal):
+  Tight: NMT 1 container &gt;10 mg/day/L, and none &gt;25
+  (10 times stricter than Method 5, because of the film seal)
+
+Method 7 (blister cards, unit-dose):
+  Class A: all packages ≤ 0.5 mg/day/unit (best barrier)
+  Class B: all packages ≤ 5 mg/day/unit
+  Class C: all packages ≤ 20 mg/day/unit
+  Class D: does not meet any of A, B, C (worst)
+
+Method 8 (multiple-unit bottles, liquid dosage forms):
+  Tight: NMT 1 container &gt;2.5%/year loss, and none &gt;5.0%/year</pre>
+</div>
+<div class="concept-box">
+<h4>Key Concepts — Well-closed vs Tight</h4>
+<p>These two container types are defined in &lt;659&gt;, but &lt;671&gt; provides the specific MVTR numerical thresholds:</p>
+<ul>
+<li><strong>Well-closed container:</strong> MVTR thresholds of 2000/3000 mg/day/L. The barrier requirement is low; the container mainly prevents entry of solid foreign matter and loss of liquid by evaporation, and does not emphasize a water vapor barrier. Suitable for products that are not moisture sensitive.</li>
+<li><strong>Tight container:</strong> MVTR thresholds of 100/200 mg/day/L. The barrier requirement is 20 times higher, and it is used for moisture-sensitive drug products (such as effervescent tablets and more hygroscopic solid dosage forms).</li>
+</ul>
+<p>The two grades differ by a factor of 20. Choosing the wrong container grade may cause the product to degrade within its shelf life!</p>
+</div>
+<div class="analogy-box">
+<h4>Analogy</h4>
+<p>The Class A–D classification of Method 7 is like the airtightness grades for windows in Taiwan (WT1 to WT4). A pharmaceutical company will state "Class A blisters required" in a specification, just as an architect specifies "WT3-grade airtight windows required". Everyone communicates in the same grade language, with no need to exchange the raw MVTR values every time.</p>
+</div>
+<div class="note-box">
+<h4>Key Notes</h4>
+<p><strong>The essential difference between Method 8 and Methods 5/6:</strong> Methods 5/6 test the water vapor taken up by a desiccant (for solid drug products) and are expressed in mg/day/L; Method 8 directly measures the evaporative loss of liquid water (for liquid drug products) and is expressed as %/year (percentage of the initial weight).</p>
+<p>The test conditions of Method 8 are also different: 25°C/40% RH (rather than 23°C/75% RH), close to room-temperature storage conditions and closer to the actual storage environment of liquid preparations.</p>
+<p><strong>The "NMT 1" acceptance principle:</strong> The classification criteria for Methods 5, 6 and 8 all allow "NMT 1 container" to exceed the limit; it is not zero tolerance. This reflects statistical reality: of 10 containers, 1 is allowed to slightly exceed the boundary value, but there is an absolute upper limit (none may exceed it).</p>
+</div>
+<div class="practice-box">
+<h4>Practice Questions</h4>
+<ol>
+<li>A set of Method 5 results: of 10 containers, 8 are at 50–90 mg/day/L, 1 is 150 mg/day/L and 1 is 180 mg/day/L. What is the classification of this set of containers? (Tight? Well-closed? Fail?)</li>
+<li>A product's labeling says "store in tight container", and the dispensing container is classified by Method 5 as well-closed rather than tight. Is such repackaging compliant? Why?</li>
+</ol>
+</div>
+</div>
+</div>
+<!-- ==================== SUBSECTION: SPECTRAL TRANSMISSION ==================== -->
+<div class="section-title">Spectral Transmission for Light-Resistant Packaging</div>
+<div class="two-column">
+<div class="left-column">
+<h2>Original Text</h2>
+<h3>SPECTRAL TRANSMISSION FOR LIGHT-RESISTANT PACKAGING COMPONENTS OR SYSTEMS</h3>
+<p>A packaging component or system intended to provide protection from light or offered as a <span class="key-term">light-resistant container</span> meets the requirements for Spectral Transmission for Light-Resistant Packaging Components or Systems, where such protection or resistance is by virtue of the specific properties of the material of which the plastic component or system is composed, including any coating. A clear and colorless or a translucent packaging system that has light protection by means of an opaque enclosure by application of a suitable coating or wrapping (see General Notices) is exempt from the requirements for Spectral Transmission for Light-Resistant Packaging Components or Systems.</p>
+<h3>Apparatus</h3>
+<p>If the suitability of the packaging system is demonstrated through <span class="key-term">stability testing</span>, spectral transmission testing is not required; otherwise, use a <span class="key-term">UV-visible spectrophotometer</span> of suitable sensitivity and accuracy (see 〈857〉), adapted for measuring the amount of light transmitted by plastic materials used for pharmaceutical containers.</p>
+<h3>Procedure</h3>
+<p>Select a section representing the average thickness. Cut a circular section from the packaging component or system, and trim as necessary to get a segment convenient for mounting in the spectrophotometer. After cutting, wash and dry the specimen, taking care to avoid scratching the surfaces. If the specimen is too small to cover the opening in the specimen holder, mask the uncovered portion of the opening with opaque paper or masking tape, provided that the length of the specimen is greater than that of the slit in the spectrophotometer.</p>
+<p>Immediately before mounting in the specimen holder, wipe the specimen with lens tissue. Mount the specimen with the aid of a tacky wax, or by other convenient means, taking care to avoid leaving fingerprints or other marks on the surfaces through which light must pass. Place the section in the spectrophotometer with its <span class="key-term">cylindrical axis parallel to the plane of the slit</span> and approximately centered with respect to the slit. When properly placed, the light beam is normal to the surface of the section and reflection losses are at a minimum.</p>
+<p>Continuously measure the transmittance of the section with reference to air in the <span class="key-term">spectral region of interest</span> with a recording instrument or at intervals of about 20 nm with a manual instrument, in the region of <span class="key-term">290–450 nm</span>.</p>
+<h3>Acceptance Criteria</h3>
+<p>The observed spectral transmission does not exceed the limits given in Table 3 for plastic components and systems for parenteral use. The observed spectral transmission for plastic containers for products intended for <span class="key-term">oral or topical administration</span> does not exceed <span class="key-term">10%</span> at any wavelength in the range of 290–450 nm.</p>
+<h3>Table 3. Spectral Transmission Limits for Plastic Packaging Components or Systems (Parenteral Use)</h3>
+<div style="overflow-x:auto;">
+</div>
+</div>
+<div class="right-column">
+<h2>Tutorial Commentary</h2>
+<div class="concept-box">
+<h4>Key Concepts — Test Logic for Light-Resistant Packaging</h4>
+<p><strong>Why is spectral transmission testing needed?</strong> Many drug products are photolabile; in particular, light in the UV and visible range (290–450 nm) can degrade the active ingredient, destroy potency or generate toxic degradation products.</p>
+<p><strong>The "exemption" condition is important:</strong> If the packaging system has passed stability testing and the stability study demonstrates that the drug product does not degrade, spectral transmission testing is not required. In other words, direct "functional proof" takes precedence over "physical testing". This is the spirit of ICH Q1B photostability testing: the ultimate goal is to confirm that the product is stable, not to test the packaging material itself.</p>
+<p><strong>Different limits for two product types:</strong></p>
+<ul>
+<li><strong>Oral/Topical:</strong> transmission ≤ 10% at all wavelengths (a fixed criterion)</li>
+<li><strong>Parenteral:</strong> different criteria depending on container capacity (Table 3, 1 mL → 25%, &gt;50 mL → 10%)</li>
+</ul>
+</div>
+<div class="analogy-box">
+<h4>Analogy</h4>
+<p>Spectral transmission testing is like testing the light-blocking effect of sunglasses. You place the lens in front of a spectrophotometer and measure what percentage of light at different wavelengths passes through.</p>
+<p>The logic of "small-volume parenterals → higher transmission allowed" is that the wall of a 1 mL injection vial is very thin (glass or plastic wall thickness of only 0.5–1 mm), so physically it cannot block as much light as a large bottle. USP therefore sets a relatively lenient but still controlled limit (25%) for small-volume parenterals.</p>
+</div>
+<div class="note-box">
+<h4>Key Notes</h4>
+<p><strong>Key details of sample preparation:</strong></p>
+<ul>
+<li><strong>Representative section:</strong> take a section of "average thickness", because uneven container wall thickness affects light transmission</li>
+<li><strong>Avoid fingerprints:</strong> the oil from fingerprints changes surface reflection and affects measurement accuracy; wear gloves or use lens tissue when handling</li>
+<li><strong>Perpendicular incidence of the beam:</strong> the cylinder axis is parallel to the slit, ensuring the beam strikes the section perpendicularly, minimizing reflection loss (Fresnel reflection), so that the measured value truly represents the light transmission of the material itself</li>
+</ul>
+<p><strong>Significance of the 290–450 nm range:</strong> 290 nm is the short-wavelength boundary at which glass/plastic begins to transmit light (below this wavelength it is almost completely absorbed by the material); 450 nm is the boundary of blue-violet visible light. This range covers the wavelengths most hazardous to most light-sensitive drug products.</p>
+</div>
+<div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+<h4>Practical Application</h4>
+<p>In a CDMO setting, a client may ask you to evaluate whether a new supplier's amber glass injection vials or brown PET plastic bottles meet light-resistance requirements. The spectral transmission testing workflow:</p>
+<ol>
+<li>Cut a section of representative thickness from the side wall of the bottle (avoiding the base and the neck)</li>
+<li>Scan 290–450 nm on a UV-Vis spectrophotometer, using air as the reference</li>
+<li>Compare against the capacity limits in Table 3 (or the uniform 10% limit for oral/topical)</li>
+<li>If the limit is exceeded, consider adding outer packaging (opaque secondary packaging, which exempts the primary container from testing)</li>
+</ol>
+</div>
+<div class="practice-box">
+<h4>Practice Questions</h4>
+<ol>
+<li>A 5 mL injection vial has a measured transmission of 18% at 320 nm. Does it meet the requirements of Table 3?</li>
+<li>If a clear, transparent plastic eye-drop bottle (topical, 5 mL) is placed in an opaque paper carton, does this eye-drop bottle need spectral transmission testing? Explain your reasoning.</li>
+</ol>
+</div>
+</div>
+</div>
+<!-- ==================== SUBSECTION: GLOSSARY ==================== -->
+<div class="section-title">Glossary</div>
+<div class="two-column">
+<div class="left-column">
+<h2>Original Text</h2>
+<h3>GLOSSARY</h3>
+<p><strong><span class="key-term">Blister:</span></strong> Formed, lidded, and sealed plastic or foil dome that contains the capsule or tablet (usually a single unit or unit dose).</p>
+<p><strong><span class="key-term">Low-barrier blister:</span></strong> Blisters made from low-barrier materials, formed and sealed so that the moisture vapor transmission rate when tested at 40°/75% RH is greater than 1.0 mg/cavity/day.</p>
+<p><strong><span class="key-term">High-barrier blister:</span></strong> Blisters made from high-barrier material, formed and sealed so that the moisture vapor transmission rate when tested at 40°/75% RH is less than 1.0 mg/cavity/day.</p>
+<p><strong><span class="key-term">Ultra-high barrier blister:</span></strong> Blisters made from ultra-high barrier material, formed and sealed so that the moisture vapor transmission rate when tested at 40°/75% RH is less than 0.01 mg/cavity/day.</p>
+<p><strong><span class="key-term">Blister card:</span></strong> A contiguous group of blisters formed and sealed with lid in place. The number of blisters per card commonly ranges from 1 to 10 but may be more. The blister card may sometimes be referred to as a packaging system.</p>
+<p><strong><span class="key-term">Cavity:</span></strong> Formed, lidded, and sealed plastic or foil dome (see Blister).</p>
+<p><strong><span class="key-term">Moisture vapor transmission rate:</span></strong> The steady-state moisture vapor transmission (in unit time) through a packaging system, under specific conditions of temperature and humidity. These test methods use gravimetric measurement to determine the rate of weight gain as a result of moisture vapor transmission into the packaging system and subsequent uptake by a desiccant enclosed within the packaging system.</p>
+<p><strong><span class="key-term">Test specimen (or specimen):</span></strong> For multiple-unit containers, the bottle is the test specimen, and for single-unit or unit-dose containers, the blister card containing multiple blister cavities is the test specimen. For blisters, more than 1 card (or specimen) may be grouped into a test unit for conducting the test.</p>
+<p><strong><span class="key-term">Test unit:</span></strong> For multiple-unit containers, the bottle is the test unit as well as being the test specimen, and for single-unit or unit-dose containers, the test unit is a group of test specimens (blister cards) processed together for temperature and humidity exposure and for weighing at each time point. The purpose of the test unit for single-unit or unit-dose containers is to gain the advantage of additive weight gain resulting from more blister cavities than are present on a single card.</p>
+</div>
+<div class="right-column">
+<h2>Tutorial Commentary</h2>
+<div class="concept-box">
+<h4>Key Concepts — Test Specimen vs Test Unit</h4>
+<p>These two terms appear frequently in the document and must be clearly distinguished:</p>
+<ul>
+<li><strong>Test specimen:</strong> the most basic packaging unit. For bottles, one bottle is one specimen. For blisters, one blister card containing multiple cavities is one specimen.</li>
+<li><strong>Test unit:</strong> the smallest grouping on which weighing is performed. For bottles, test unit = test specimen (the same). For blisters, test unit = several cards bundled together (to obtain sufficient weight gain).</li>
+</ul>
+<p>In short: the specimen is a material definition; the unit is an operational definition. For blisters, unit ≥ specimen.</p>
+</div>
+<div class="analogy-box">
+<h4>Analogy</h4>
+<p>A test specimen is like a "subject", and a test unit is like a "test group". When a scale has limited precision, you can weigh 5 subjects together as one group and then divide by 5 to get the average. This "group weighing" is the concept of the test unit: bundling multiple specimens together so that tiny weight changes accumulate to a detectable level.</p>
+</div>
+<div class="note-box">
+<h4>Key Notes — Chapter Cross-Reference Summary</h4>
+<p>Relationship between &lt;671&gt; and other USP chapters:</p>
+<ul>
+<li><strong>&lt;659&gt; Packaging and Storage Requirements:</strong> defines container type terms (well-closed, tight, hermetic, light-resistant, etc.) → &lt;671&gt; provides the test methods to verify these types</li>
+<li><strong>&lt;857&gt; UV-Vis Spectrophotometry:</strong> the spectrophotometer used for spectral transmission testing (&lt;671&gt;) must meet the requirements of &lt;857&gt;</li>
+<li><strong>&lt;1671&gt; MVTR Application:</strong> how to use the MVTR data from &lt;671&gt; to support repackaging equivalence justifications → advanced application guidance</li>
+<li><strong>ICH Q1B photostability testing:</strong> if photostability testing has been passed, spectral transmission testing may be waived (explicitly permitted by &lt;671&gt;)</li>
+</ul>
+</div>
+<div class="practice-box">
+<h4>Practice Questions</h4>
+<ol>
+<li>A new modified polyvinyl chloride (PVC) blister material has a tested MVTR of 0.08 mg/cavity/day (40°C/75% RH). Which barrier grade does it fall into? Which method should be used for subsequent classification testing?</li>
+<li>A regulatory submission needs to state that "this product is packaged in a tight container". How can the &lt;671&gt; test data be used to support this claim? Which method is needed, and what criterion must be met?</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="concept-box">
+<h4>Key Concepts — The Three Barrier Grades</h4>
+<p>The &lt;671&gt; glossary clearly defines three barrier grades, with boundaries based on MVTR under 40°C/75% RH conditions:</p>
+<div style="overflow-x:auto;">
+</div>
+<p>These three grades correspond to differences of orders of magnitude (1.0 vs 0.01), so the consequence of choosing the wrong material can differ by a factor of 100!</p>
+</div>
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+<h3>Section Summary</h3>
+<ul>
+<li>The classification system (Methods 5–8) is used by pharmacies and institutional repackagers to select containers; the goal is to confirm the grade (tight/well-closed/Class A–D) rather than to obtain a precise MVTR value</li>
+<li>The MVTR thresholds for tight and well-closed differ by a factor of 20 (100 vs 2000 mg/day/L); the limit for Method 6 (with induction seal) is 10 times stricter than for Method 5</li>
+<li>The spectral transmission test range is 290–450 nm; the uniform limit for oral/topical containers is 10%; for parenterals there are graded limits of 10–25% by capacity (Table 3); testing may be waived if photostability testing has been passed</li>
+<li>Three barrier grades: Low-barrier (&gt;1.0 mg/day/cavity) → Method 3; High-barrier (&lt;1.0) and Ultra-high barrier (&lt;0.01) → Method 2</li>
+<li>Test specimen (basic packaging unit) ≠ Test unit (operational weighing group); in blister testing, several cards are bundled into one test unit to accumulate sufficient weight change</li>
+</ul>
+</div>
+</div><!-- end main-content -->
+<!-- FOOTER -->
+<div class="main-footer">
+<p>SterileGMP Knowledge Hub — USP 〈671〉 Containers—Performance Testing | Section 2: Additional Tests &amp; Special Containers</p>
+</div>
+        </div>
+    </section>
+
+</main>
+
+    <footer class="main-footer">
+        <p>SterileGMP Knowledge Hub — For study reference only</p>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const sections = document.querySelectorAll('.chapter-section');
+        const navItems = document.querySelectorAll('.nav-item');
+        const backToTop = document.getElementById('backToTop');
+        const navContainer = document.getElementById('navContainer');
+        const btnLeft = document.getElementById('navScrollLeft');
+        const btnRight = document.getElementById('navScrollRight');
+
+        // Reading progress — high-water mark (furthest section reached, never goes back)
+        const _pKey = 'sgk_progress_' + location.pathname.split('/').pop().replace(/(\.en)?\.html$/,'');
+        let _saveTimer = null;
+        let _current = '';
+        let _maxIdx = -1;
+
+        // Init: restore existing max index from storage
+        (function() {
+            try {
+                var ex = JSON.parse(localStorage.getItem(_pKey) || 'null');
+                if (ex && ex.maxId) {
+                    sections.forEach(function(s, i) {
+                        if (s.getAttribute('id') === ex.maxId) _maxIdx = i;
+                    });
+                }
+            } catch(e) {}
+        })();
+
+        function _saveProgress() {
+            if (!_current) return;
+            var curIdx = -1;
+            sections.forEach(function(s, i) {
+                if (s.getAttribute('id') === _current) curIdx = i;
+            });
+            if (curIdx > _maxIdx) _maxIdx = curIdx; // only advance
+            var maxSec = sections[_maxIdx];
+            if (!maxSec) return;
+            var maxId = maxSec.getAttribute('id');
+            var maxNav = document.querySelector('.nav-item[data-section="' + maxId + '"]');
+            var isComplete = _maxIdx >= sections.length - 1;
+            try {
+                localStorage.setItem(_pKey, JSON.stringify({
+                    id:       maxId,
+                    maxId:    maxId,
+                    label:    maxNav ? (maxNav.querySelector('.nav-label')||{}).textContent||'' : '',
+                    num:      maxNav ? (maxNav.querySelector('.nav-num')||{}).textContent||'' : '',
+                    complete: isComplete,
+                    ts:       Date.now()
+                }));
+            } catch(e) {}
+        }
+
+        // Restore progress: honor URL hash first, then jump to furthest section reached
+        function _restoreProgress() {
+            var targetId = location.hash ? location.hash.substring(1) : null;
+            if (!targetId) {
+                try {
+                    var saved = JSON.parse(localStorage.getItem(_pKey) || 'null');
+                    if (saved && saved.id) targetId = saved.id;
+                } catch(e) {}
+            }
+            if (targetId) {
+                var el = document.getElementById(targetId);
+                if (el) {
+                    setTimeout(function() { el.scrollIntoView({ behavior: 'smooth' }); }, 300);
+                }
+            }
+        }
+        _restoreProgress();
+
+        function updateNavArrows() {
+            btnLeft.classList.toggle('hidden', navContainer.scrollLeft <= 0);
+            btnRight.classList.toggle('hidden',
+                navContainer.scrollLeft + navContainer.clientWidth >= navContainer.scrollWidth - 1);
+        }
+        btnLeft.addEventListener('click', function() {
+            navContainer.scrollBy({ left: -300, behavior: 'smooth' });
+        });
+        btnRight.addEventListener('click', function() {
+            navContainer.scrollBy({ left: 300, behavior: 'smooth' });
+        });
+        navContainer.addEventListener('scroll', updateNavArrows);
+        updateNavArrows();
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+
+            _current = '';
+            sections.forEach(function(section) {
+                var sectionTop = section.offsetTop - 100;
+                if (window.scrollY >= sectionTop) {
+                    _current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(function(item) {
+                item.classList.remove('active');
+                if (item.getAttribute('data-section') === _current) {
+                    item.classList.add('active');
+                    item.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+                }
+            });
+
+            clearTimeout(_saveTimer);
+            _saveTimer = setTimeout(_saveProgress, 500);
+        });
+    });
+    </script>
+    <script src="../../../rpg/rpg.js" defer></script>
+
+</body>
+</html>
