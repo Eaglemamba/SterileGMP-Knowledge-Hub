@@ -1,0 +1,613 @@
+{
+ "source": "section-01-urs-system-classification.html",
+ "blocks": [
+  {
+   "zh": "第二章：使用者需求規格 &amp; 第三章：系統分類",
+   "en": "Chapter 2: User Requirements Specification &amp; Chapter 3: System Classification"
+  },
+  {
+   "zh": "本節學習目標 Learning Objectives",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "說明 URS（使用者需求規格）在 C&amp;Q 流程中的角色，以及它與 CQA、CPP、系統風險評估的關聯。",
+   "en": "Explain the role of the URS (User Requirements Specification) in the C&amp;Q process and how it relates to CQAs, CPPs and the system risk assessment."
+  },
+  {
+   "zh": "區分 URS「應包含」與「不應包含」的內容，並能辨識常見的錯誤寫法。",
+   "en": "Distinguish what a URS \"should contain\" from what it \"should not contain\", and recognize common wording errors."
+  },
+  {
+   "zh": "理解 URS 核准流程、變更管理要求，以及遺留系統（Legacy Systems）的處置方式。",
+   "en": "Understand the URS approval process, change management requirements, and how legacy systems are handled."
+  },
+  {
+   "zh": "解釋「直接衝擊系統」與「非直接衝擊系統」兩類分類方式，並說明為何舊版元件分類已被系統風險評估取代。",
+   "en": "Explain the two classes, \"Direct Impact\" and \"Not Direct Impact\", and why the former component classification has been replaced by the system risk assessment."
+  },
+  {
+   "zh": "應用 Table 3.1 八個判定問題（Q1–Q8）對給定系統進行分類判斷。",
+   "en": "Apply the eight determination questions in Table 3.1 (Q1–Q8) to classify a given system."
+  },
+  {
+   "zh": "章節導覽 Section Navigator",
+   "en": "Section Navigator"
+  },
+  {
+   "zh": "第二章：使用者需求規格  |  pp. 19–22",
+   "en": "Chapter 2: User Requirements Specification  |  pp. 19–22"
+  },
+  {
+   "zh": "中文解析 Commentary",
+   "en": "Commentary"
+  },
+  {
+   "zh": "核心概念：URS 是什麼？",
+   "en": "Core Concept: What Is a URS?"
+  },
+  {
+   "zh": "<strong>URS（使用者需求規格）</strong>是整個 C&amp;Q 流程的起點文件，由多學科團隊共同制定，整合來自品質、工程、法規、HSE 等各方面的系統需求。",
+   "en": "<strong>The URS (User Requirements Specification)</strong> is the starting document of the whole C&amp;Q process. It is developed by a multidisciplinary team and consolidates system requirements from quality, engineering, regulatory, HSE and other functions."
+  },
+  {
+   "zh": "<strong>CQAs</strong>（關鍵品質屬性）→ 來自產品知識，定義最終產品必須符合的品質標準",
+   "en": "<strong>CQAs</strong> (critical quality attributes) → come from product knowledge and define the quality standards the final product must meet"
+  },
+  {
+   "zh": "<strong>CPPs</strong>（關鍵製程參數）→ 來自製程知識，定義必須被控制的製程變數",
+   "en": "<strong>CPPs</strong> (critical process parameters) → come from process knowledge and define the process variables that must be controlled"
+  },
+  {
+   "zh": "<strong>QRM</strong>（品質風險管理）→ URS 提供科學依據，使風險評估有所根據",
+   "en": "<strong>QRM</strong> (quality risk management) → the URS provides the scientific basis that makes the risk assessment well founded"
+  },
+  {
+   "zh": "URS 的核心價值：它告訴系統「要做什麼」，而不是「怎麼做」。",
+   "en": "The core value of a URS: it tells the system \"what to do\", not \"how to do it\"."
+  },
+  {
+   "zh": "日常比喻：蓋房子的需求清單",
+   "en": "Everyday Analogy: A Requirements List for Building a House"
+  },
+  {
+   "zh": "URS 就像屋主委託建築師前寫的需求清單：「我需要 4 個臥室、2 個浴室、開放式廚房、無障礙坡道」。這份清單說明<strong>要什麼</strong>，但不說「牆要用哪種磚」或「水管要走哪條路」——那是設計師的事（Basis of Design, BOD）。",
+   "en": "A URS is like the list an owner gives the architect before design starts: \"I need 4 bedrooms, 2 bathrooms, an open kitchen and an accessible ramp.\" The list says <strong>what is wanted</strong> but not \"which brick to use for the walls\" or \"which route the pipes take\". That is the designer's job (Basis of Design, BOD)."
+  },
+  {
+   "zh": "重點提示：URS 不一定要是獨立文件",
+   "en": "Key Point: A URS Does Not Have to Be a Standalone Document"
+  },
+  {
+   "zh": "對於標準現貨品或簡單設備，URS 可以是：採購申請單、廠商型錄頁、功能規格書、或變更申請單。重要的是：系統最終必須對照該文件進行驗證。",
+   "en": "For standard off-the-shelf items or simple equipment, the URS can be a purchase requisition, a vendor catalogue page, a functional specification, or a change request. What matters is that the system is ultimately verified against that document."
+  },
+  {
+   "zh": "思考練習",
+   "en": "Discussion Exercises"
+  },
+  {
+   "zh": "<strong>Q1：</strong>一家製藥廠採購一台新型生物反應器，URS 應該由哪些部門的人共同制定？各部門應提供哪類需求？",
+   "en": "<strong>Q1:</strong> A pharmaceutical plant is buying a new bioreactor. Which departments should jointly develop the URS, and what kind of requirements should each contribute?"
+  },
+  {
+   "zh": "<strong>Q2：</strong>為什麼 ISPE 說 URS 是「C&amp;Q 流程的基礎文件」？如果沒有 URS，會對後續的 FAT、IQ、OQ 造成什麼影響？",
+   "en": "<strong>Q2:</strong> Why does ISPE say the URS is the \"foundation document of the C&amp;Q process\"? Without a URS, what would be the impact on the later FAT, IQ and OQ?"
+  },
+  {
+   "zh": "URS 的制定方法  |  pp. 20–22",
+   "en": "How to Develop a URS  |  pp. 20–22"
+  },
+  {
+   "zh": "核心概念：URS 的三類需求分類",
+   "en": "Core Concept: Three Categories of URS Requirements"
+  },
+  {
+   "zh": "每條需求都應標明<strong>類別（Category）</strong>與<strong>來源（Source）</strong>：",
+   "en": "Each requirement should state its <strong>Category</strong> and its <strong>Source</strong>:"
+  },
+  {
+   "zh": "<strong>品質（Quality）</strong>：與 GMP 法規、CQA、CPP 相關的要求",
+   "en": "<strong>Quality</strong>: requirements related to GMP regulations, CQAs and CPPs"
+  },
+  {
+   "zh": "<strong>商業（Business）</strong>：產能、效率、成本相關要求",
+   "en": "<strong>Business</strong>: requirements related to capacity, efficiency and cost"
+  },
+  {
+   "zh": "<strong>HSE</strong>：健康、安全、環境相關要求",
+   "en": "<strong>HSE</strong>: requirements related to health, safety and environment"
+  },
+  {
+   "zh": "來源標註的重要性：若 QU（品質單位）已核准 CQA/CPP 來源文件，則 URS 可不需 QU 再次核准（見 2.3 節）。",
+   "en": "Why source tagging matters: if the Quality Unit (QU) has already approved the CQA/CPP source documents, the URS does not need to be approved again by the QU (see Section 2.3)."
+  },
+  {
+   "zh": "核心概念：CDE 與 CA 是什麼？",
+   "en": "Core Concept: What Are CDEs and CAs?"
+  },
+  {
+   "zh": "<strong>CA（關鍵特性, Critical Attribute）</strong>：系統的關鍵性質或特徵，若偏離可能影響產品品質。",
+   "en": "<strong>CA (Critical Attribute)</strong>: a key property or characteristic of the system whose deviation could affect product quality."
+  },
+  {
+   "zh": "<strong>CDE（關鍵設計要素, Critical Design Element）</strong>：系統中用來控制或達到 CA 的具體設計元素。來自系統風險評估（SRA）。",
+   "en": "<strong>CDE (Critical Design Element)</strong>: the specific design element in the system used to control or achieve a CA. CDEs come from the system risk assessment (SRA)."
+  },
+  {
+   "zh": "URS 應引用 SRA 的輸出結果（包含 CA 和相關 CDE），確保設計要求有科學風險依據。",
+   "en": "The URS should reference the output of the SRA (including CAs and the related CDEs) so that design requirements have a science- and risk-based rationale."
+  },
+  {
+   "zh": "日常比喻：餐廳點餐 vs. 廚房食譜",
+   "en": "Everyday Analogy: A Restaurant Order vs. the Kitchen Recipe"
+  },
+  {
+   "zh": "URS 是顧客的點餐單：「我要一份不加洋蔥、熟度五分的牛排」——這是<em>需求</em>，是可驗證的。廚師如何備料、用什麼鍋、醃幾分鐘，那是廚房的<em>設計規格（DS）</em>，不屬於 URS。把「使用鑄鐵鍋煎」寫進顧客點餐單，就是混淆了 URS 與 DS 的邊界。",
+   "en": "The URS is the customer's order: \"I want a steak, no onions, medium.\" That is a <em>requirement</em>, and it can be verified. How the chef prepares the ingredients, which pan is used and how many minutes it is marinated belong to the kitchen's <em>design specification (DS)</em>, not the URS. Writing \"pan-fry in a cast-iron pan\" on the customer's order blurs the boundary between URS and DS."
+  },
+  {
+   "zh": "CDMO 實務應用：制定 URS 的挑戰",
+   "en": "CDMO Practice: The Challenges of Writing a URS"
+  },
+  {
+   "zh": "在 CDMO（委託開發製造服務）環境中，URS 制定特別複雜，因為：",
+   "en": "In a CDMO (contract development and manufacturing organization) environment, writing a URS is especially complex because:"
+  },
+  {
+   "zh": "<strong>客戶知識不足</strong>：客戶可能對自己產品的 CPP 尚未完全確立（早期臨床階段），URS 需預留彈性。",
+   "en": "<strong>Limited client knowledge</strong>: the client may not yet have fully established the CPPs for its product (early clinical phase), so the URS must leave room for flexibility."
+  },
+  {
+   "zh": "<strong>多產品共用設備</strong>：同一系統服務多個客戶的不同分子，URS 需涵蓋最嚴格的需求（worst case）。",
+   "en": "<strong>Multi-product shared equipment</strong>: the same system serves different molecules for several clients, so the URS must cover the most stringent requirements (worst case)."
+  },
+  {
+   "zh": "<strong>資訊保密</strong>：客戶 CQA/CPP 屬商業機密，CDMO 需在 NDA 架構下取得足夠資訊以寫出正確 URS。",
+   "en": "<strong>Confidentiality</strong>: a client's CQAs/CPPs are trade secrets, and the CDMO must obtain enough information under an NDA to write a correct URS."
+  },
+  {
+   "zh": "<strong>實務建議</strong>：建立標準 URS 範本（含品質需求主清單），再依各客戶/產品需求調整，可大幅提升效率並確保一致性。",
+   "en": "<strong>Practical advice</strong>: build a standard URS template (with a master list of quality requirements) and adjust it for each client/product. This greatly improves efficiency and ensures consistency."
+  },
+  {
+   "zh": "<strong>Q1：</strong>以下哪些屬於合格的 URS 需求，哪些不符合規定？（a）「滅菌釜內腔溫度均一性應在設定點 ±1°C 以內」；（b）「滅菌釜應採用重力排氣式設計」；（c）「必須符合所有適用法規」；（d）「SIP 溫度 122°C 應維持至少 30 分鐘」。",
+   "en": "<strong>Q1:</strong> Which of the following are acceptable URS requirements and which are not? (a) \"Chamber temperature uniformity of the autoclave shall be within ±1°C of setpoint\"; (b) \"The autoclave shall use a gravity-displacement design\"; (c) \"Shall comply with all applicable regulations\"; (d) \"The SIP temperature of 122°C shall be maintained for at least 30 minutes.\""
+  },
+  {
+   "zh": "<strong>Q2：</strong>軟體與電腦化系統的開發和測試為何不在本指南範圍內？應參考哪份文件？這對 URS 的撰寫有何影響？",
+   "en": "<strong>Q2:</strong> Why are the development and testing of software and computerized systems outside the scope of this Guide? Which document should be consulted instead? How does this affect the writing of the URS?"
+  },
+  {
+   "zh": "重要對比：URS 應包含 vs. 不應包含",
+   "en": "Key Contrast: What a URS Should vs. Should Not Contain"
+  },
+  {
+   "zh": "<strong>關鍵原則</strong>：URS 說「要什麼結果」，不說「怎麼達到」。",
+   "en": "<strong>Key principle</strong>: a URS states \"what result is required\", not \"how to achieve it\"."
+  },
+  {
+   "zh": "URS 的核准與核准後變更  |  p. 22",
+   "en": "URS Approval and Post-Approval Changes  |  p. 22"
+  },
+  {
+   "zh": "核心概念：URS 的核准機制",
+   "en": "Core Concept: The URS Approval Mechanism"
+  },
+  {
+   "zh": "URS 通常需要三方簽核：",
+   "en": "A URS normally requires sign-off from three parties:"
+  },
+  {
+   "zh": "<strong>系統擁有者（System Owner）</strong>：通常是工程或製造部門主管，對系統的商業和技術需求負責",
+   "en": "<strong>System Owner</strong>: usually the head of engineering or manufacturing, responsible for the business and technical requirements of the system"
+  },
+  {
+   "zh": "<strong>SME（主題專家）</strong>：視系統類型，可能是製程工程師、設備工程師、自動化工程師等",
+   "en": "<strong>SME (Subject Matter Expert)</strong>: depending on the type of system, this may be a process engineer, equipment engineer, automation engineer, etc."
+  },
+  {
+   "zh": "<strong>Quality Unit（品質單位）</strong>：確認品質需求已被正確納入",
+   "en": "<strong>Quality Unit</strong>: confirms that the quality requirements have been correctly incorporated"
+  },
+  {
+   "zh": "<strong>例外條款</strong>：若 QU 已核准 CQA/CPP 等來源文件（例如製程描述文件），則 URS 可免 QU 核准。這是風險比例原則的體現。",
+   "en": "<strong>Exception</strong>: if the QU has already approved the source documents for CQAs/CPPs (for example, the process description document), the URS does not need QU approval. This reflects the risk-proportionate principle."
+  },
+  {
+   "zh": "重點提示：URS 是活文件",
+   "en": "Key Point: The URS Is a Living Document"
+  },
+  {
+   "zh": "URS 在系統整個生命週期中都應保持更新，直到系統退役（Decommissioning）。核准後若有變更：",
+   "en": "The URS should be kept up to date throughout the system lifecycle until decommissioning. If changes are made after approval:"
+  },
+  {
+   "zh": "凡可能影響產品品質的變更 → 須透過<strong>系統風險評估（SRA）</strong>評估影響",
+   "en": "Any change that may affect product quality → assess the impact through the <strong>system risk assessment (SRA)</strong>"
+  },
+  {
+   "zh": "所有變更 → 須走<strong>變更管理（Change Management）</strong>流程（見 Chapter 12）",
+   "en": "All changes → follow the <strong>change management</strong> process (see Chapter 12)"
+  },
+  {
+   "zh": "這確保 URS 始終反映系統的實際設計意圖，並與 QRM 掛鉤。",
+   "en": "This ensures the URS always reflects the actual design intent of the system and stays linked to QRM."
+  },
+  {
+   "zh": "<strong>Q1：</strong>一個純水系統在商業生產兩年後，業主希望將產水量從 500 L/hr 提升至 800 L/hr。這個變更是否需要更新 URS？應走哪些流程？",
+   "en": "<strong>Q1:</strong> Two years after commercial production began, the owner of a purified water system wants to raise output from 500 L/hr to 800 L/hr. Does this change require an update to the URS? Which processes should be followed?"
+  },
+  {
+   "zh": "<strong>Q2：</strong>何種情況下，QU 可以不需要核准 URS？這個例外條款的設計意圖是什麼？",
+   "en": "<strong>Q2:</strong> Under what circumstances may the QU be excused from approving the URS? What is the design intent of this exception?"
+  },
+  {
+   "zh": "遺留系統的處理  |  p. 22",
+   "en": "Handling Legacy Systems  |  p. 22"
+  },
+  {
+   "zh": "核心概念：Legacy System（遺留系統）的定義與挑戰",
+   "en": "Core Concept: Definition and Challenges of Legacy Systems"
+  },
+  {
+   "zh": "<strong>遺留系統</strong>是指在本指南方法論建立之前就已運行、且缺乏完整 C&amp;Q 文件（包括 URS）的既有系統。常見情境：",
+   "en": "A <strong>legacy system</strong> is an existing system that was in operation before the methodology of this Guide was established and lacks complete C&amp;Q documentation (including a URS). Common situations:"
+  },
+  {
+   "zh": "工廠收購或合併時繼承的設備",
+   "en": "Equipment inherited through a site acquisition or merger"
+  },
+  {
+   "zh": "舊版指南（如第一版 ISPE Vol.5）時期安裝的系統",
+   "en": "Systems installed under the earlier guide (e.g., the first edition of ISPE Vol. 5)"
+  },
+  {
+   "zh": "當時認為不需要正式文件的系統，後來被重新分類為 Direct Impact",
+   "en": "Systems that were originally judged not to need formal documentation and were later reclassified as Direct Impact"
+  },
+  {
+   "zh": "<strong>處理原則</strong>：不需要補全所有歷史文件，但針對任何範圍變更，應制定對應的 URS，並納入 C&amp;Q Plan 或變更記錄中。",
+   "en": "<strong>Handling principle</strong>: it is not necessary to backfill all historical documents, but for any change in scope a corresponding URS should be developed and included in the C&amp;Q Plan or the change record."
+  },
+  {
+   "zh": "日常比喻：老屋翻新的設計圖",
+   "en": "Everyday Analogy: Renovating an Old House Without Plans"
+  },
+  {
+   "zh": "遺留系統就像一棟沒有原始建築圖紙的老房子。你不需要重新繪製整棟房子的圖，但如果你要加蓋一間房間（範圍變更），就必須為那個新的部分畫設計圖，並且確保它符合現行建築法規（當前 GMP 要求）。",
+   "en": "A legacy system is like an old house with no original architectural drawings. You do not need to redraw the whole house, but if you want to add a room (a change in scope), you must draw plans for the new part and make sure it complies with current building codes (current GMP requirements)."
+  },
+  {
+   "zh": "重點提示：何時應建立全新 URS？",
+   "en": "Key Point: When Should a Brand-New URS Be Created?"
+  },
+  {
+   "zh": "若變更規模很大（例如：系統全面升級、從批次改為連續製程），建立一份全新的 URS 往往比在舊文件上修改更有效率、也更清晰。詳見 Chapter 14（實施建議）。",
+   "en": "If the change is large (for example, a full system upgrade or a switch from batch to continuous processing), creating a new URS is often more efficient and clearer than amending the old document. See Chapter 14 (Implementation Recommendations)."
+  },
+  {
+   "zh": "<strong>Q1：</strong>一家公司於 2008 年安裝了一套純蒸汽系統，當時沒有制定 URS。現在要更換熱交換器並新增一個使用點，應如何處理 URS 文件？",
+   "en": "<strong>Q1:</strong> A company installed a pure steam system in 2008 without developing a URS. It now needs to replace a heat exchanger and add a point of use. How should the URS documentation be handled?"
+  },
+  {
+   "zh": "<strong>Q2：</strong>遺留系統的重新評估應參考本指南哪個章節？決定是否建立全新 URS 的關鍵因素是什麼？",
+   "en": "<strong>Q2:</strong> Which chapter of this Guide should be referred to for re-evaluating a legacy system? What is the key factor in deciding whether to create a new URS?"
+  },
+  {
+   "zh": "第三章：系統分類  |  pp. 23–26",
+   "en": "Chapter 3: System Classification  |  pp. 23–26"
+  },
+  {
+   "zh": "重要變更：元件分類（Component Classification）已廢除",
+   "en": "Important Change: Component Classification Has Been Eliminated"
+  },
+  {
+   "zh": "舊版（第一版）ISPE Vol.5 允許在系統分類之後，進一步對系統內的元件進行分類（Critical / Non-critical）。",
+   "en": "In the first edition of ISPE Vol. 5, components within a system could be classified further (Critical / Non-critical) after the system classification."
+  },
+  {
+   "zh": "<strong>第二版已取消此做法</strong>，理由是：系統風險評估（SRA，第四章）以更有效率的方式識別出 CDE（關鍵設計要素），直接替代了元件分類的功能。",
+   "en": "<strong>The second edition has dropped this practice</strong>, because the system risk assessment (SRA, Chapter 4) identifies CDEs (Critical Design Elements) more efficiently and directly replaces the function of component classification."
+  },
+  {
+   "zh": "換言之：SRA 做得更細、更有科學依據，不需要再額外做元件分類這個中間步驟。",
+   "en": "In other words: the SRA is more detailed and more scientifically grounded, so the extra intermediate step of component classification is no longer needed."
+  },
+  {
+   "zh": "日常比喻：機場管制 vs. 停車場",
+   "en": "Everyday Analogy: Airport Control vs. the Car Park"
+  },
+  {
+   "zh": "機場的跑道燈光系統（直接影響飛機起降安全）= Direct Impact，需要嚴格的試車 + 確效。機場停車場的照明系統（不影響飛機安全）= Not Direct Impact，只需要基本試車（燈能亮就好）。兩者都是「燈光系統」，但因衝擊程度不同，監管要求完全不同。",
+   "en": "The runway lighting system at an airport (which directly affects the safety of takeoffs and landings) = Direct Impact, requiring rigorous commissioning + validation. The lighting in the airport car park (which does not affect aircraft safety) = Not Direct Impact, requiring only basic commissioning (the lights come on). Both are \"lighting systems\", but because their level of impact differs, the regulatory requirements are completely different."
+  },
+  {
+   "zh": "<strong>Q1：</strong>一套服務注射劑填充間的 HVAC 系統，與一套服務倉庫的 HVAC 系統，分類結果會相同嗎？為什麼？",
+   "en": "<strong>Q1:</strong> Would an HVAC system serving an injectables filling room and an HVAC system serving a warehouse be classified the same way? Why?"
+  },
+  {
+   "zh": "<strong>Q2：</strong>為什麼 ISPE 第二版取消了元件分類？SRA（系統風險評估）如何替代了這個功能？",
+   "en": "<strong>Q2:</strong> Why did the second edition of ISPE eliminate component classification? How does the SRA (system risk assessment) take over this function?"
+  },
+  {
+   "zh": "核心概念：兩類系統分類",
+   "en": "Core Concept: Two System Classes"
+  },
+  {
+   "zh": "ISPE Vol.5 第二版將系統分為兩類（取代舊版的三類）：",
+   "en": "The second edition of ISPE Vol. 5 divides systems into two classes (replacing the three classes of the earlier edition):"
+  },
+  {
+   "zh": "這個二分法的核心問題是：<strong>「這個系統的故障是否直接影響最終產品品質或病人安全？」</strong>",
+   "en": "The core question of this dichotomy is: <strong>\"Does a failure of this system directly affect final product quality or patient safety?\"</strong>"
+  },
+  {
+   "zh": "系統邊界的定義  |  pp. 23–24",
+   "en": "Defining System Boundaries  |  pp. 23–24"
+  },
+  {
+   "zh": "核心概念：系統邊界的定義",
+   "en": "Core Concept: Defining System Boundaries"
+  },
+  {
+   "zh": "<strong>系統邊界（System Boundaries）</strong>是在設計圖（P&amp;ID 或 PFD）上標示的範圍，明確界定：",
+   "en": "<strong>System boundaries</strong> are the limits marked on design drawings (P&amp;ID or PFD) that clearly define:"
+  },
+  {
+   "zh": "<strong>哪些設備、管道、儀表屬於這個系統</strong>（included）",
+   "en": "<strong>Which equipment, piping and instruments belong to this system</strong> (included)"
+  },
+  {
+   "zh": "<strong>哪些不屬於這個系統</strong>（excluded）",
+   "en": "<strong>Which do not belong to this system</strong> (excluded)"
+  },
+  {
+   "zh": "邊界應在 <strong>BOD（設計基準）階段</strong>就定義清楚，並列入 C&amp;Q Plan 的系統清單中。",
+   "en": "Boundaries should be clearly defined at the <strong>BOD (Basis of Design) stage</strong> and listed in the systems list of the C&amp;Q Plan."
+  },
+  {
+   "zh": "邊界定義直接影響：",
+   "en": "The boundary definition directly affects:"
+  },
+  {
+   "zh": "系統風險評估的範圍",
+   "en": "The scope of the system risk assessment"
+  },
+  {
+   "zh": "IQ/OQ 測試的範圍",
+   "en": "The scope of IQ/OQ testing"
+  },
+  {
+   "zh": "文件整包（C&amp;Q package）的責任歸屬",
+   "en": "Responsibility for the C&amp;Q document package"
+  },
+  {
+   "zh": "核心概念：P&amp;ID 與 PFD 的差異",
+   "en": "Core Concept: P&amp;ID vs. PFD"
+  },
+  {
+   "zh": "<strong>P&amp;ID（管道與儀表圖）</strong>：顯示所有管道、儀表、控制閥、設備連接關係，是系統邊界標示的主要圖面，細節程度高。",
+   "en": "<strong>P&amp;ID (Piping and Instrumentation Diagram)</strong>: shows all piping, instruments, control valves and equipment connections. It is the main drawing on which system boundaries are marked and has a high level of detail."
+  },
+  {
+   "zh": "<strong>PFD（製程流程圖）</strong>：顯示物料流向與主要設備，較概念性，用於早期設計階段。",
+   "en": "<strong>PFD (Process Flow Diagram)</strong>: shows material flow and major equipment. It is more conceptual and is used in the early design stage."
+  },
+  {
+   "zh": "系統邊界通常以<strong>雲線（cloud/bubble）</strong>或<strong>邊界線</strong>標示在 P&amp;ID 上。",
+   "en": "System boundaries are usually marked on the P&amp;ID with a <strong>revision cloud (bubble)</strong> or a <strong>boundary line</strong>."
+  },
+  {
+   "zh": "日常比喻：POU 過濾器的歸屬問題",
+   "en": "Everyday Analogy: Who Owns the POU Filter?"
+  },
+  {
+   "zh": "壓縮空氣末端使用點（POU）過濾器就像公寓大樓的電錶：它可以屬於「大樓公共系統」，也可以屬於「個別住戶系統」——兩種做法都合理，但必須明確選擇一種，不能模糊。ISPE 的核心訊息：<strong>邊界怎麼劃不是最重要的，重要的是必須清楚說明並記錄在 C&amp;Q Plan 中</strong>。",
+   "en": "A point-of-use (POU) filter on compressed air is like the electricity meter in an apartment building: it can belong to the \"building common system\" or to the \"individual unit system\". Either approach is reasonable, but one must be chosen explicitly and not left vague. ISPE's core message: <strong>where the boundary is drawn matters less than that it is clearly stated and recorded in the C&amp;Q Plan</strong>."
+  },
+  {
+   "zh": "實務警示：廠商供貨範圍 ≠ 系統邊界",
+   "en": "Practical Warning: Vendor Scope of Supply ≠ System Boundary"
+  },
+  {
+   "zh": "很多工程師直接用廠商的供貨範圍（Vendor Scope of Supply）當系統邊界，這可能造成問題：",
+   "en": "Many engineers simply use the vendor's scope of supply as the system boundary, which can cause problems:"
+  },
+  {
+   "zh": "POU 過濾器、管道接頭、控制面板等可能落在供貨範圍之外，但功能上屬於同一系統",
+   "en": "POU filters, pipe fittings, control panels and the like may fall outside the scope of supply but functionally belong to the same system"
+  },
+  {
+   "zh": "若邊界定義不清，驗證文件會出現「空白地帶」——沒有人負責的設備",
+   "en": "If the boundary is poorly defined, the qualification documentation will have \"gaps\": equipment for which nobody is responsible"
+  },
+  {
+   "zh": "建議：以<strong>功能完整性</strong>為原則定義邊界，再對照廠商供貨範圍調整。",
+   "en": "Recommendation: define the boundary on the principle of <strong>functional completeness</strong>, then adjust it against the vendor's scope of supply."
+  },
+  {
+   "zh": "CDMO 實務應用：多供應商系統的邊界管理",
+   "en": "CDMO Practice: Boundary Management for Multi-Supplier Systems"
+  },
+  {
+   "zh": "在 CDMO 新建廠或擴建案中，壓縮空氣系統往往由多個供應商分段建造（主機組 + 廠內管路 + POU 過濾器）。建議做法：",
+   "en": "In a new CDMO facility or an expansion project, the compressed air system is often built in sections by several suppliers (compressor package + in-plant piping + POU filters). Recommended approach:"
+  },
+  {
+   "zh": "在 C&amp;Q Plan 中明確列出每個子系統的邊界，並標示在 P&amp;ID 上",
+   "en": "List the boundary of each subsystem explicitly in the C&amp;Q Plan and mark it on the P&amp;ID"
+  },
+  {
+   "zh": "若分拆為多個 URS/C&amp;Q 包，確保各包的邊界相接處有明確的交接驗證要求",
+   "en": "If the system is split into several URSs/C&amp;Q packages, make sure there are clear handover verification requirements where the package boundaries meet"
+  },
+  {
+   "zh": "主系統 URS 中應說明各子系統 URS 的關係（例如：「壓縮空氣主機組 URS 見 DOC-001，配氣管路 URS 見 DOC-002」）",
+   "en": "The main system URS should state how the subsystem URSs relate to one another (for example: \"see DOC-001 for the compressed air compressor package URS and DOC-002 for the distribution piping URS\")"
+  },
+  {
+   "zh": "無論如何分拆，<strong>所有系統最終都必須符合其 URS</strong>",
+   "en": "However the system is split, <strong>every system must ultimately comply with its URS</strong>"
+  },
+  {
+   "zh": "<strong>Q1：</strong>一個注射用水（WFI）系統的 P&amp;ID 應在哪個設計階段被定義出系統邊界？邊界劃定後應記錄在哪份文件中？",
+   "en": "<strong>Q1:</strong> At which design stage should the system boundary be defined on the P&amp;ID of a water for injection (WFI) system? In which document should the boundary be recorded once drawn?"
+  },
+  {
+   "zh": "<strong>Q2：</strong>若 WFI 系統的 POU 取水點被劃入製程設備系統邊界，而非 WFI 分配系統邊界，會對 IQ/OQ 測試產生什麼影響？哪種做法更合理？",
+   "en": "<strong>Q2:</strong> If the POU outlets of a WFI system are included in the boundary of the process equipment system rather than the WFI distribution system, what is the effect on IQ/OQ testing? Which approach is more reasonable?"
+  },
+  {
+   "zh": "系統分類判定標準  |  pp. 24–26",
+   "en": "System Classification Criteria  |  pp. 24–26"
+  },
+  {
+   "zh": "核心概念：Q1–Q8 分類邏輯",
+   "en": "Core Concept: The Q1–Q8 Classification Logic"
+  },
+  {
+   "zh": "<strong>判定規則</strong>：任一題答「是（YES）」→ 直接衝擊系統（Direct Impact）。全部答「否（NO）」→ 非直接衝擊系統（Not Direct Impact）。",
+   "en": "<strong>Decision rule</strong>: a YES answer to any question → Direct Impact system. NO to all questions → Not Direct Impact system."
+  },
+  {
+   "zh": "<strong>八個問題涵蓋的風險維度</strong>：",
+   "en": "<strong>The risk dimensions covered by the eight questions</strong>:"
+  },
+  {
+   "zh": "<strong>Q1</strong>：系統功能是否控制/監測 CQA 或 CPP？（功能關聯）",
+   "en": "<strong>Q1</strong>: Does the system function control or monitor a CQA or CPP? (functional relevance)"
+  },
+  {
+   "zh": "<strong>Q2</strong>：系統與產品或製程物流是否直接接觸？（接觸污染）",
+   "en": "<strong>Q2</strong>: Is the system in direct contact with the product or process streams? (contact and contamination)"
+  },
+  {
+   "zh": "<strong>Q3</strong>：系統是否產製輔料、原料或溶劑？（供給品質）",
+   "en": "<strong>Q3</strong>: Does the system produce excipients, raw materials or solvents? (quality of supply)"
+  },
+  {
+   "zh": "<strong>Q4</strong>：系統是否用於清潔/消毒/滅菌？（清潔完整性）",
+   "en": "<strong>Q4</strong>: Is the system used for cleaning/sanitization/sterilization? (cleaning integrity)"
+  },
+  {
+   "zh": "<strong>Q5</strong>：系統是否建立受控環境？（環境控制）",
+   "en": "<strong>Q5</strong>: Does the system establish a controlled environment? (environmental control)"
+  },
+  {
+   "zh": "<strong>Q6</strong>：系統是否處理用於放行判定的資料？（數據完整性）",
+   "en": "<strong>Q6</strong>: Does the system process data used for batch release decisions? (data integrity)"
+  },
+  {
+   "zh": "<strong>Q7</strong>：系統是否提供容器密封或產品保護？（包裝完整性）",
+   "en": "<strong>Q7</strong>: Does the system provide container closure or product protection? (packaging integrity)"
+  },
+  {
+   "zh": "<strong>Q8</strong>：系統是否提供或驗證產品身分資訊？（產品標識）",
+   "en": "<strong>Q8</strong>: Does the system provide or verify product identity information? (product identification)"
+  },
+  {
+   "zh": "重點提示：分類須依賴專業判斷",
+   "en": "Key Point: Classification Depends on Professional Judgment"
+  },
+  {
+   "zh": "ISPE 明確聲明：Q1–Q8 是「輔助判斷的工具」，而非「機械式清單」。分類必須基於對<strong>產品、製程、系統本質</strong>的全面理解。",
+   "en": "ISPE states explicitly that Q1–Q8 are \"tools to support judgment\", not a \"mechanical checklist\". Classification must be based on a thorough understanding of the <strong>product, the process and the nature of the system</strong>."
+  },
+  {
+   "zh": "例如：同樣是冷凍水系統，服務行政大樓 → Not Direct Impact；服務生物反應器冷卻套管 → 需評估 Q1（CPP 溫度控制）→ 可能是 Direct Impact。",
+   "en": "For example: a chilled water system serving an administration building → Not Direct Impact; one serving the cooling jacket of a bioreactor → Q1 (CPP temperature control) must be evaluated → may be Direct Impact."
+  },
+  {
+   "zh": "分類應由「具備適當資格的人員」執行——不能只靠工程師，必須有品質與製程專家參與。",
+   "en": "Classification should be performed by \"appropriately qualified personnel\": engineers alone are not enough, and quality and process experts must be involved."
+  },
+  {
+   "zh": "日常比喻：醫院分診八問",
+   "en": "Everyday Analogy: Eight Triage Questions at the Hospital"
+  },
+  {
+   "zh": "Q1–Q8 就像急診室的分診問卷：護士依序問「有沒有胸痛？有沒有呼吸困難？有沒有昏迷？」——只要任一項「有」，就進急救室（= Direct Impact，需完整 C&amp;Q）。全部「沒有」，才能去普通候診區（= Not Direct Impact，只需試車）。分診問卷是輔助工具，最終還是需要醫師判斷。",
+   "en": "Q1–Q8 are like the triage questionnaire in an emergency room: the nurse asks in turn, \"Any chest pain? Any difficulty breathing? Any loss of consciousness?\" If any answer is \"yes\", the patient goes to the resuscitation room (= Direct Impact, requiring full C&amp;Q). Only if all answers are \"no\" does the patient go to the general waiting area (= Not Direct Impact, requiring only commissioning). The triage questionnaire is an aid, and in the end a physician's judgment is still needed."
+  },
+  {
+   "zh": "CDMO 實務應用：系統分類工作坊",
+   "en": "CDMO Practice: System Classification Workshops"
+  },
+  {
+   "zh": "在 CDMO 新建廠案中，系統分類通常透過跨部門工作坊進行：",
+   "en": "In a new CDMO facility project, system classification is usually carried out through a cross-functional workshop:"
+  },
+  {
+   "zh": "<strong>參與者</strong>：工程（設計）、製程開發、品質、法規事務、HSE",
+   "en": "<strong>Participants</strong>: engineering (design), process development, quality, regulatory affairs, HSE"
+  },
+  {
+   "zh": "<strong>工具</strong>：系統清單（Systems List）+ 分類表（Chapter 17 範本）+ P&amp;ID",
+   "en": "<strong>Tools</strong>: the systems list + classification form (Chapter 17 template) + P&amp;IDs"
+  },
+  {
+   "zh": "<strong>流程</strong>：逐一對每個系統回答 Q1–Q8，記錄判定依據（特別是 YES 的原因）",
+   "en": "<strong>Process</strong>: answer Q1–Q8 for each system in turn and record the rationale for each determination (especially the reasons for YES)"
+  },
+  {
+   "zh": "常見挑戰",
+   "en": "Common Challenges"
+  },
+  {
+   "zh": "壓縮空氣系統：工廠壓縮空氣（Not DI）vs. 製程壓縮空氣（DI）— 邊界劃分至關重要",
+   "en": "Compressed air systems: plant compressed air (Not DI) vs. process compressed air (DI): drawing the boundary is critical"
+  },
+  {
+   "zh": "HVAC：依區域等級不同，同一建築內可能有 DI 和 Non-DI 系統並存",
+   "en": "HVAC: depending on the area grade, DI and non-DI systems may coexist in the same building"
+  },
+  {
+   "zh": "BMS/SCADA：Q6 的觸發點是「用於放行判定的數據」，需確認數據流向",
+   "en": "BMS/SCADA: the trigger for Q6 is \"data used for release decisions\", so the data flow needs to be confirmed"
+  },
+  {
+   "zh": "<strong>文件輸出</strong>：系統分類紀錄，連同 Q&amp;A 依據，存入 C&amp;Q Plan 附件",
+   "en": "<strong>Documentation output</strong>: the system classification record, together with the Q&amp;A rationale, is filed as an appendix to the C&amp;Q Plan"
+  },
+  {
+   "zh": "<strong>Q1：</strong>一套氮氣保護系統（在原料藥結晶槽上方提供氮氣保護，防止氧化），應對 Q1–Q8 哪幾個問題回答「YES」？最終分類為何？請說明理由。",
+   "en": "<strong>Q1:</strong> A nitrogen blanketing system (providing a nitrogen blanket over an API crystallizer to prevent oxidation) should answer YES to which of Q1–Q8? What is its final classification? Explain your reasoning."
+  },
+  {
+   "zh": "<strong>Q2：</strong>一套倉庫溫濕度監控系統（監測成品儲存條件，數據用於批次放行決策），主要觸發哪個問題（Q1–Q8）？這與一般倉庫空調系統有何本質差異？",
+   "en": "<strong>Q2:</strong> A warehouse temperature and humidity monitoring system (monitoring finished product storage conditions, with the data used for batch release decisions) mainly triggers which question (Q1–Q8)? How does it differ in essence from an ordinary warehouse air-conditioning system?"
+  },
+  {
+   "zh": "本節重點摘要 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "<strong>URS</strong> 是 C&amp;Q 的基礎文件，整合 CQA、CPP、法規要求與組織品質需求，說明系統「要做什麼」而非「怎麼做」。",
+   "en": "The <strong>URS</strong> is the foundation document of C&amp;Q. It consolidates CQAs, CPPs, regulatory requirements and the organization's quality requirements, and states \"what the system must do\" rather than \"how it does it\"."
+  },
+  {
+   "zh": "URS <strong>應包含</strong>：意圖目的、可驗證需求、類別與來源標示（品質/商業/HSE）、數據完整性、關鍵警報等；<strong>不應包含</strong>：設計規格、操作順序、通用聲明、不可驗證參數。",
+   "en": "A URS <strong>should contain</strong>: intent and purpose, verifiable requirements, category and source tagging (quality/business/HSE), data integrity, critical alarms, etc.; it <strong>should not contain</strong>: design specifications, operating sequences, generic statements or unverifiable parameters."
+  },
+  {
+   "zh": "URS 須由系統擁有者、SME 及品質單位核准，並在系統整個生命週期中維持更新；變更須走 SRA 評估與變更管理流程。",
+   "en": "The URS must be approved by the system owner, SMEs and the Quality Unit and kept up to date throughout the system lifecycle; changes must go through SRA assessment and change management."
+  },
+  {
+   "zh": "<strong>遺留系統</strong>若無原始 URS，應針對任何範圍變更制定 URS，並納入 C&amp;Q Plan 或變更記錄。",
+   "en": "A <strong>legacy system</strong> without an original URS should have a URS developed for any change in scope, included in the C&amp;Q Plan or the change record."
+  },
+  {
+   "zh": "系統分類採用<strong>兩類制</strong>：直接衝擊系統（C+Q）vs. 非直接衝擊系統（C only）；第二版已廢除元件分類，由 SRA 替代。",
+   "en": "System classification uses <strong>two classes</strong>: Direct Impact systems (C+Q) vs. Not Direct Impact systems (C only); the second edition has eliminated component classification, replacing it with the SRA."
+  },
+  {
+   "zh": "<strong>系統邊界</strong>應在 BOD 階段定義，記錄於 P&amp;ID/PFD，並列入 C&amp;Q Plan；廠商供貨範圍不等於系統邊界。",
+   "en": "<strong>System boundaries</strong> should be defined at the BOD stage, recorded on the P&amp;ID/PFD and listed in the C&amp;Q Plan; the vendor's scope of supply is not the same as the system boundary."
+  },
+  {
+   "zh": "<strong>Q1–Q8</strong> 提供系統分類的判定架構：任一題 YES → Direct Impact；須結合專業判斷，不能機械式套用。",
+   "en": "<strong>Q1–Q8</strong> provide the decision framework for system classification: YES to any question → Direct Impact; it must be combined with professional judgment and not applied mechanically."
+  }
+ ]
+}

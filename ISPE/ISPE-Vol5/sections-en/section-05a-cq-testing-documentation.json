@@ -1,0 +1,693 @@
+{
+ "source": "section-05a-cq-testing-documentation.html",
+ "blocks": [
+  {
+   "zh": "📚 本節學習目標 Learning Objectives",
+   "en": "📚 Learning Objectives"
+  },
+  {
+   "zh": "理解 C&amp;Q 測試的整體方法與範疇——從設計階段起始、以系統驗收結束，靜態與動態測試的分工。",
+   "en": "Understand the overall approach and scope of C&amp;Q testing: it starts at the design stage, ends with system acceptance, and divides the work between static and dynamic testing."
+  },
+  {
+   "zh": "掌握七大測試原則（工程驅動、預定義標準、培訓、見證要求、供應商評估、變更管理、偏差管理），並能在實務中套用。",
+   "en": "Master the seven testing principles (engineering driven, predefined standards, training, witnessing requirements, vendor assessment, change management, deviation management) and apply them in practice."
+  },
+  {
+   "zh": "理解品保單位（Quality Unit）在 CDE 測試文件中的四種監督模式，以及多功能 C&amp;Q 團隊的四個角色定位。",
+   "en": "Understand the four ways the Quality Unit oversees CDE testing documentation, and the four roles in a multidisciplinary C&amp;Q team."
+  },
+  {
+   "zh": "掌握移交文件包（TOP）的目的、15 項典型內容與格式要求，以及「先期交貨檢查（PDI）」的時機與價值。",
+   "en": "Master the purpose, the 15 typical contents and the format requirements of the Turnover Package (TOP), and the timing and value of the Pre-Delivery Inspection (PDI)."
+  },
+  {
+   "zh": "能運用 Table 7.2 判斷不同設備類型（高壓滅菌器、HVAC、凍乾機、秤量器、WFI 製造/分配）應採用哪些測試/檢查文件組合。",
+   "en": "Use Table 7.2 to decide which combination of testing/inspection documents applies to different equipment types (autoclave, HVAC, freeze dryer, scale, WFI generation/distribution)."
+  },
+  {
+   "zh": "本節目錄",
+   "en": "Contents"
+  },
+  {
+   "zh": "中文解說 Commentary",
+   "en": "Commentary"
+  },
+  {
+   "zh": "📌 核心目標",
+   "en": "📌 Core Objective"
+  },
+  {
+   "zh": "本章聚焦於「測試與檢查」本身及其記錄文件。終極目標簡潔明確：<strong>確認系統已按規範安裝，且能按要求運作</strong>。",
+   "en": "This chapter focuses on testing and inspection themselves and the documents that record them. The ultimate goal is simple and clear: <strong>to confirm that the system has been installed as specified and operates as required</strong>."
+  },
+  {
+   "zh": "安全面向（如標示、門禁、MSDS）屬各地法規管轄，不在本指南討論範圍內——這是 ISPE 指南常見的「範疇劃定」做法，讀者應特別留意。",
+   "en": "Safety aspects (such as labeling, access control and MSDS) fall under local regulations and are outside the scope of this guide. This kind of scope-setting is common in ISPE guides, and readers should note it."
+  },
+  {
+   "zh": "💡 比喻說明",
+   "en": "💡 Analogy"
+  },
+  {
+   "zh": "C&amp;Q 測試就像新房屋的「竣工驗收」——水電管線有沒有接對、門窗能不能關緊、消防設備是否達標。「安裝符合規範」是 IQ 的任務，「運作符合要求」是 OQ/PQ 的任務，兩者都要有書面記錄才算完成。",
+   "en": "C&amp;Q testing is like the final inspection of a newly built house: are the plumbing and wiring connected correctly, do the doors and windows close tightly, do the fire protection systems meet requirements? \"Installed to specification\" is the job of IQ, and \"operates as required\" is the job of OQ/PQ. Both must be documented before the work counts as complete."
+  },
+  {
+   "zh": "📐 靜態 vs 動態測試",
+   "en": "📐 Static vs Dynamic Testing"
+  },
+  {
+   "zh": "<strong>靜態測試（Static Testing）</strong>：文件審查、圖面核對、材料符合性驗證——設備「靜止」狀態下的確認。",
+   "en": "<strong>Static testing</strong>: document review, drawing verification and verification of material compliance, that is, checks made while the equipment is at rest."
+  },
+  {
+   "zh": "<strong>動態測試（Dynamic Testing）</strong>：設備實際運轉，測試功能表現與最壞情境——設備「動起來」的確認。",
+   "en": "<strong>Dynamic testing</strong>: the equipment is actually operated to test functional performance and worst-case conditions, that is, checks made while the equipment is running."
+  },
+  {
+   "zh": "兩者都是 C&amp;Q 的一部分，不可偏廢。",
+   "en": "Both are part of C&amp;Q, and neither should be neglected."
+  },
+  {
+   "zh": "⚠️ 重點：避免重複測試",
+   "en": "⚠️ Key Point: Avoid Repeat Testing"
+  },
+  {
+   "zh": "計劃階段預先定義測試要求，是節省成本的關鍵。但以下情況<strong>必須</strong>重新測試：",
+   "en": "Defining test requirements in advance at the planning stage is the key to saving cost. However, retesting is <strong>required</strong> in the following cases:"
+  },
+  {
+   "zh": "FAT 後設備拆解出廠（斷開自控系統）",
+   "en": "The equipment is disassembled and shipped after FAT (control system disconnected)"
+  },
+  {
+   "zh": "現場公用設施規格與原設計不符",
+   "en": "The site utility specifications differ from the original design"
+  },
+  {
+   "zh": "任何可能影響測試結果的後續變更",
+   "en": "Any subsequent change that could affect test results"
+  },
+  {
+   "zh": "🔗 整合系統測試",
+   "en": "🔗 Integrated System Testing"
+  },
+  {
+   "zh": "WFI 分配系統（機械管路 + 電氣 + SCADA）必須作為一個整體來測試，不能只驗機械部分，因為控制邏輯才是實際運作的核心。ISPE 特別強調此點，因為工廠往往分包機械承包商與自動化承包商，容易出現「各自測試、整合漏洞」的問題。",
+   "en": "A WFI distribution system (mechanical piping + electrical + SCADA) must be tested as a whole. Verifying only the mechanical part is not enough, because the control logic is the core of actual operation. ISPE stresses this point because plants often subcontract the mechanical and automation work separately, which easily leads to \"each part tested on its own, gaps at the integration\"."
+  },
+  {
+   "zh": "<strong>Green field</strong>（綠地）：全新廠址，從零開始建設",
+   "en": "<strong>Green field</strong>: a brand-new site, built from scratch"
+  },
+  {
+   "zh": "<strong>Brown field</strong>（棕地）：既有廠址改建或擴建，舊有設備與新建工程並存",
+   "en": "<strong>Brown field</strong>: renovation or expansion of an existing site, where existing equipment and new construction coexist"
+  },
+  {
+   "zh": "<strong>Modular / Off-the-shelf</strong>：模組化採購或現成設備，測試深度相對較低",
+   "en": "<strong>Modular / Off-the-shelf</strong>: modular or ready-made equipment, where the depth of testing is relatively lower"
+  },
+  {
+   "zh": "專案類型直接影響測試嚴格程度（rigor）的設定。",
+   "en": "The project type directly affects how much rigor is set for testing."
+  },
+  {
+   "zh": "📋 七大 C&amp;Q 測試原則",
+   "en": "📋 The Seven C&amp;Q Testing Principles"
+  },
+  {
+   "zh": "<strong>工程驅動（Engineering Driven）</strong>：測試是工程活動，產生文件化證據——不是品保「事後審查」，而是工程實作的一部分。",
+   "en": "<strong>Engineering driven</strong>: testing is an engineering activity that generates documented evidence. It is not an after-the-fact review by QA but part of engineering execution."
+  },
+  {
+   "zh": "<strong>預定義文件標準</strong>：測試前必須確立文件規範（格式、簽名要求等），防止後期補救。",
+   "en": "<strong>Predefined documentation standards</strong>: documentation standards (format, signature requirements, etc.) must be established before testing to prevent remediation later."
+  },
+  {
+   "zh": "<strong>培訓先行</strong>：執行測試前，相關人員需完成文件標準的培訓。",
+   "en": "<strong>Training first</strong>: before testing is executed, the personnel involved must complete training on the documentation standards."
+  },
+  {
+   "zh": "<strong>見證與通知要求預定義</strong>：哪些測試需要 QA/客戶見證？通知期多長？都要事先書面規定。",
+   "en": "<strong>Predefined witnessing and notification requirements</strong>: which tests need QA/customer witnessing, and how much notice is required? All of this must be set out in writing beforehand."
+  },
+  {
+   "zh": "<strong>供應商評估（Vendor Assessment）</strong>：若採用廠商數據支持驗證，需先評估廠商能力（見第 10 章）。",
+   "en": "<strong>Vendor assessment</strong>: if vendor data will be used to support validation, the vendor's capability must be assessed first (see Chapter 10)."
+  },
+  {
+   "zh": "<strong>工程變更管理</strong>：設計批准後的所有更動，必須走正式的工程變更管理流程。",
+   "en": "<strong>Engineering change management</strong>: every change made after design approval must go through the formal engineering change management process."
+  },
+  {
+   "zh": "<strong>偏差管理流程預定義</strong>：測試失敗的處理程序需在執行前明確規定（見 7.4 節）。",
+   "en": "<strong>Predefined deviation management process</strong>: the procedure for handling test failures must be clearly defined before execution (see Section 7.4)."
+  },
+  {
+   "zh": "⚠️ Table 7.1 解讀：三層監督架構",
+   "en": "⚠️ Reading Table 7.1: A Three-Tier Oversight Structure"
+  },
+  {
+   "zh": "ISPE 用三種「監督深度」區分文件類型：",
+   "en": "ISPE uses three \"depths of oversight\" to distinguish document types:"
+  },
+  {
+   "zh": "<strong>文件審查</strong>（Document Review）：最基本，確認做了且有記錄",
+   "en": "<strong>Document review</strong>: the most basic level, confirming that the work was done and recorded"
+  },
+  {
+   "zh": "<strong>FAT/SAT</strong>：需要廠商參與 + 技術監督",
+   "en": "<strong>FAT/SAT</strong>: requires vendor participation + technical oversight"
+  },
+  {
+   "zh": "<strong>資格確認（Qualification）</strong>：需要品保單位監督——這是法規要求的核心",
+   "en": "<strong>Qualification</strong>: requires Quality Unit oversight, which is the core regulatory expectation"
+  },
+  {
+   "zh": "監督層級越高，代表對產品品質影響越直接（CDE 越重要）。",
+   "en": "The higher the level of oversight, the more directly the item affects product quality (the more important the CDE)."
+  },
+  {
+   "zh": "🏭 Table 7.2 實務應用指南",
+   "en": "🏭 Table 7.2: Practical Application Guide"
+  },
+  {
+   "zh": "這張表是 CDMO 採購/驗證規劃的實用參考工具：",
+   "en": "This table is a practical reference tool for CDMO procurement and validation planning:"
+  },
+  {
+   "zh": "<strong>高壓滅菌器 &amp; 凍乾機</strong>：複雜設備，兩個選項都需要 FAT + PQ；Option 2 以 「Installation and Operational Testing Summary」整合 SAT 功能。",
+   "en": "<strong>Autoclave &amp; freeze dryer</strong>: complex equipment; both options require FAT + PQ, and Option 2 uses an \"Installation and Operational Testing Summary\" to consolidate the SAT function."
+  },
+  {
+   "zh": "<strong>HVAC（AHU 至末端過濾器）</strong>：不一定需要正式 SAT/PQ，以 Turnover Package + Testing and Balancing Report 為主。",
+   "en": "<strong>HVAC (AHU to terminal filters)</strong>: a formal SAT/PQ is not necessarily required; the focus is the Turnover Package + Testing and Balancing Report."
+  },
+  {
+   "zh": "<strong>秤量器（Scale）</strong>：最簡單，Receipt Inspection + Calibration 即可，不需 FAT。",
+   "en": "<strong>Scale</strong>: the simplest case; Receipt Inspection + Calibration is enough, and no FAT is needed."
+  },
+  {
+   "zh": "<strong>WFI 製造系統</strong>：Option 2 可省略 FAT（若廠商能在廠內預先完成 SAT）。",
+   "en": "<strong>WFI generation system</strong>: Option 2 can omit FAT (if the vendor can complete SAT in advance at its own facility)."
+  },
+  {
+   "zh": "<strong>WFI 分配系統</strong>：以 TOP 為核心；Option 2 增加 Receipt Inspection 和 Operational Testing Summary，適合較複雜的迴路設計。",
+   "en": "<strong>WFI distribution system</strong>: centered on the TOP; Option 2 adds Receipt Inspection and an Operational Testing Summary, which suits more complex loop designs."
+  },
+  {
+   "zh": "<em>關鍵點：「哪個選項都可以」——重要的是在 C&amp;Q Plan 中提前決定並文件化。</em>",
+   "en": "<em>Key point: \"either option is acceptable\". What matters is to decide in advance and document the decision in the C&amp;Q Plan.</em>"
+  },
+  {
+   "zh": "💡 GEP（良好工程實踐）",
+   "en": "💡 GEP (Good Engineering Practice)"
+  },
+  {
+   "zh": "GEP = Good Engineering Practice，是 ISPE 的核心概念。它不是一份標準文件，而是業界認可的「工程常識」——確保系統設計、安裝、測試兼顧功能、成本、合規與文件品質。",
+   "en": "GEP = Good Engineering Practice, a core ISPE concept. It is not a single standard document but industry-recognized \"engineering common sense\", ensuring that system design, installation and testing balance functionality, cost, compliance and documentation quality."
+  },
+  {
+   "zh": "可參考 ISPE GPG: Good Engineering Practice 專刊（文中注 [22]）。",
+   "en": "See the ISPE GPG: Good Engineering Practice (reference [22] in the text)."
+  },
+  {
+   "zh": "📊 品保單位監督 CDE 測試的四種模式",
+   "en": "📊 Four Ways the Quality Unit Oversees CDE Testing"
+  },
+  {
+   "zh": "ISPE 明確提供四種不同深度的 QA 介入方式，企業可依組織規模與系統風險選擇：",
+   "en": "ISPE explicitly provides four QA involvement approaches of different depth, and a company can choose according to its size and system risk:"
+  },
+  {
+   "zh": "<strong>模式一：程序預核（GEP SOP + 測試腳本預批准）</strong><br/>\n                                QA 事先批准定義 GEP 的 SOP，以及標準測試程序（test scripts）與結果模板。測試期間 QA 不需逐一參與，事後審核結果即可。<br/>\n<span class=\"badge green\">適用：成熟廠房，已建立標準化測試程序的組織</span>",
+   "en": "<strong>Approach 1: Pre-approved procedures (GEP SOP + pre-approved test scripts)</strong><br/>\n                                QA approves in advance the SOP that defines GEP, as well as the standard test procedures (test scripts) and results templates. QA does not need to attend each test and simply reviews the results afterward.<br/>\n<span class=\"badge green\">Suitable for: mature sites with established standardized test procedures</span>"
+  },
+  {
+   "zh": "<strong>模式二：C&amp;Q Plan 批准 + 摘要報告審核</strong><br/>\n                                QA 批准 C&amp;Q Plan（含測試策略與接受標準），之後審核 C&amp;Q 摘要報告中的結果。<br/>\n<span class=\"badge blue\">適用：中型專案，QA 資源有限，希望分散介入時間點</span>",
+   "en": "<strong>Approach 2: C&amp;Q Plan approval + summary report review</strong><br/>\n                                QA approves the C&amp;Q Plan (including the test strategy and acceptance criteria) and later reviews the results in the C&amp;Q summary report.<br/>\n<span class=\"badge blue\">Suitable for: mid-sized projects where QA resources are limited and QA involvement should be spread over several points in time</span>"
+  },
+  {
+   "zh": "<strong>模式三：獨立 IOQ 協議（前後審批）</strong><br/>\n                                針對 SRA 識別的 CDE，單獨寫成 IOQ Protocol，QA 執行前批准、執行後審核。最傳統的驗證路徑。<br/>\n<span class=\"badge yellow\">適用：直接影響系統，法規審查風險較高的場合</span>",
+   "en": "<strong>Approach 3: Separate IOQ protocol (pre- and post-approval)</strong><br/>\n                                For the CDEs identified by the SRA, a separate IOQ Protocol is written, which QA approves before execution and reviews after execution. This is the most traditional validation path.<br/>\n<span class=\"badge yellow\">Suitable for: direct impact systems and situations with higher regulatory scrutiny risk</span>"
+  },
+  {
+   "zh": "<strong>模式四：標記法（Marking up）</strong><br/>\n                                在工程測試記錄上直接標注哪些測試涵蓋哪個 CDE，或將 CDE 相關測試集中於子章節，供 QA 前後批准。最輕量的整合模式。<br/>\n<span class=\"badge orange\">適用：商業化廠商設備，測試記錄已相當完整</span>",
+   "en": "<strong>Approach 4: Marking up</strong><br/>\n                                On the engineering test records, mark which tests cover which CDE, or group the CDE-related tests into subsections, for QA pre- and post-approval. This is the lightest integrated approach.<br/>\n<span class=\"badge orange\">Suitable for: commercial vendor equipment whose test records are already quite complete</span>"
+  },
+  {
+   "zh": "⚠️ 重點提醒",
+   "en": "⚠️ Key Reminder"
+  },
+  {
+   "zh": "四種模式並非互斥——同一個專案中，不同系統可採用不同模式。關鍵是在 C&amp;Q Plan 中明確說明選擇哪種模式以及理由。",
+   "en": "The four approaches are not mutually exclusive: different systems in the same project can use different approaches. The key is to state clearly in the C&amp;Q Plan which approach is chosen and why."
+  },
+  {
+   "zh": "「整合團隊（integrated team）」的概念貫穿本章：QA 不是在測試完成後才出現的「審判者」，而是從文件生成階段就參與的夥伴。",
+   "en": "The concept of an \"integrated team\" runs through this chapter: QA is not a \"judge\" who appears only after testing is complete, but a partner involved from the moment documentation is generated."
+  },
+  {
+   "zh": "💡 角色彈性：小專案 vs 大專案",
+   "en": "💡 Role Flexibility: Small vs Large Projects"
+  },
+  {
+   "zh": "ISPE 特別說明：小型專案中，Testing Coordinator 與 System Owner 可以是同一人。這體現了指南的務實精神——強調職責被履行，而非強制要求人員分設。",
+   "en": "ISPE notes specifically that in a small project the Testing Coordinator and the System Owner can be the same person. This reflects the pragmatic spirit of the guide: it emphasizes that responsibilities are fulfilled, not that separate people must be assigned."
+  },
+  {
+   "zh": "在 CDMO 場景中，測試協調員通常由驗證工程師（Validation Engineer）或專案工程師擔任，而 Production User 則由製造部門的製程工程師代表。",
+   "en": "In a CDMO setting, the testing coordinator is usually a Validation Engineer or a project engineer, while the Production User is represented by a process engineer from manufacturing."
+  },
+  {
+   "zh": "⚠️ 第三方執行測試時的注意事項",
+   "en": "⚠️ Points to Note When a Third Party Performs Testing"
+  },
+  {
+   "zh": "當廠商或第三方執行測試時，必須以書面定義雙方責任範圍（例如：誰簽名、誰見證、誰發現問題由誰負責 CAPA）。這通常寫入合約或測試計劃（Test Plan）的 Roles &amp; Responsibilities 章節中。",
+   "en": "When a vendor or third party performs testing, the scope of responsibility on each side must be defined in writing (for example, who signs, who witnesses, and who owns the CAPA when a problem is found). This is usually written into the contract or into the Roles &amp; Responsibilities section of the Test Plan."
+  },
+  {
+   "zh": "📋 測試前提條件概覽",
+   "en": "📋 Overview of Prerequisites for Testing"
+  },
+  {
+   "zh": "7.2 節涵蓋五項前提條件：計劃（7.2.1）、培訓（7.2.2）、設計審查/設計確認（7.2.3）、廠商文件運用（7.2.4）、變更管理（7.2.5）。這五項缺一不可，任何一項未完成都可能導致測試結果無效或需要重做。",
+   "en": "Section 7.2 covers five prerequisites: planning (7.2.1), training (7.2.2), design review/design qualification (7.2.3), use of vendor documentation (7.2.4) and change management (7.2.5). All five are essential, and if any one is incomplete the test results may be invalid or the testing may have to be repeated."
+  },
+  {
+   "zh": "🎯 「最佳測試策略」的核心邏輯",
+   "en": "🎯 The Logic of the \"Optimal Testing Strategy\""
+  },
+  {
+   "zh": "計劃階段的目標是設計一套能<strong>最小化重複測試</strong>的策略。關鍵工具是 PDI 和 FAT——在廠商廠房完成的測試，若有適當核准，可以作為現場資格確認的依據，不需要到現場重做。",
+   "en": "The goal of the planning stage is to design a strategy that <strong>minimizes repeat testing</strong>. The key tools are PDI and FAT: tests completed at the vendor's facility, with appropriate approvals, can serve as the basis for on-site qualification and need not be repeated on site."
+  },
+  {
+   "zh": "⚠️ 「不需重複」的前提條件",
+   "en": "⚠️ Preconditions for \"No Repetition\""
+  },
+  {
+   "zh": "PDI/FAT 數據可替代現場測試，必須滿足：",
+   "en": "For PDI/FAT data to replace on-site testing, the following must be met:"
+  },
+  {
+   "zh": "測試執行前取得適當批准（appropriate approvals prior to execution）",
+   "en": "Appropriate approvals obtained prior to execution"
+  },
+  {
+   "zh": "有書面理由說明：後續作業（如拆解運輸、現場重新組裝）不會影響已測試的功能",
+   "en": "A documented rationale that subsequent activities (such as disassembly for shipping and reassembly on site) will not affect the functionality already tested"
+  },
+  {
+   "zh": "若設備拆解出廠，功能性測試通常需要在現場重做。",
+   "en": "If the equipment is disassembled for shipping, functional testing usually has to be repeated on site."
+  },
+  {
+   "zh": "🏭 CDMO 採購實務應用",
+   "en": "🏭 Practical Application in CDMO Procurement"
+  },
+  {
+   "zh": "在採購合約中，應明確要求廠商提供 PDI 機會，並列明哪些項目可以在 PDI 期間完成驗證。這能節省現場啟動時間——在廠商廠房發現問題，修復成本遠低於設備到現場後才發現。",
+   "en": "The purchase contract should explicitly require the vendor to provide a PDI opportunity and list which items can be verified during PDI. This saves on-site start-up time: a problem found at the vendor's facility costs far less to fix than one found after the equipment arrives on site."
+  },
+  {
+   "zh": "🎓 7.2.2 培訓要求",
+   "en": "🎓 7.2.2 Training Requirements"
+  },
+  {
+   "zh": "「適當的培訓與經驗」是執行 C&amp;Q 測試的基本前提。培訓範圍包含：",
+   "en": "\"Appropriate training and experience\" is a basic prerequisite for performing C&amp;Q testing. Training covers:"
+  },
+  {
+   "zh": "特定系統的設置與操作（設備相關）",
+   "en": "Setup and operation of the specific system (equipment-related)"
+  },
+  {
+   "zh": "安全事項（safety）",
+   "en": "Safety"
+  },
+  {
+   "zh": "文件標準（documentation standards）",
+   "en": "Documentation standards"
+  },
+  {
+   "zh": "在法規稽查中，稽查員常會要求查看「執行測試人員的培訓記錄」。這是基本的文件要求，不可輕忽。",
+   "en": "In regulatory inspections, inspectors often ask to see the training records of the people who performed the testing. This is a basic documentation requirement and must not be overlooked."
+  },
+  {
+   "zh": "💡 7.2.3 DR/DQ 為變更管理的基準點",
+   "en": "💡 7.2.3 DR/DQ as the Baseline for Change Management"
+  },
+  {
+   "zh": "DR（Design Review）＝ 設計審查（工程內部）<br/>DQ（Design Qualification）＝ 設計確認（品保介入，適用直接影響系統）",
+   "en": "DR (Design Review) = design review (internal to engineering)<br/>DQ (Design Qualification) = design qualification (with QA involvement, for direct impact systems)"
+  },
+  {
+   "zh": "批准的設計文件是「基準線（baseline）」——此後所有變更都必須對照這份文件，走工程變更管理（ECM）程序。",
+   "en": "The approved design documents are the \"baseline\": from then on, every change must be assessed against these documents and go through the engineering change management (ECM) process."
+  },
+  {
+   "zh": "<strong>快速軌道（Fast Track）風險</strong>：若在設計批准前就開始採購或施工（「at risk」執行），組織必須清楚定義風險由誰承擔，且直接影響系統需 QA 批准。",
+   "en": "<strong>Fast Track risk</strong>: if procurement or construction starts before the design is approved (execution \"at risk\"), the organization must clearly define who bears the risk, and for direct impact systems QA approval is required."
+  },
+  {
+   "zh": "⚠️ 7.2.4 廠商文件的可接受條件",
+   "en": "⚠️ 7.2.4 Conditions for Accepting Vendor Documentation"
+  },
+  {
+   "zh": "廠商可以用自己的格式進行並記錄測試，但必須滿足：",
+   "en": "The vendor may perform and document testing in its own format, provided that:"
+  },
+  {
+   "zh": "廠商的文件標準是可接受的（需事先評估）",
+   "en": "The vendor's documentation standards are acceptable (assessed beforehand)"
+  },
+  {
+   "zh": "協議/測試計劃在測試開始<strong>前</strong>由業主和廠商雙方審核批准",
+   "en": "The protocol/test plan is reviewed and approved by both the owner and the vendor <strong>before</strong> testing begins"
+  },
+  {
+   "zh": "若必要，QA 也需批准（依 7.1.3 的四種模式判斷）",
+   "en": "If necessary, QA also approves (determined by the four approaches in 7.1.3)"
+  },
+  {
+   "zh": "「事後補簽」是稽查常見缺失，應極力避免。",
+   "en": "Signing after the fact (\"retroactive signature\") is a common inspection finding and should be avoided at all costs."
+  },
+  {
+   "zh": "🔄 7.2.5 測試前的變更審查",
+   "en": "🔄 7.2.5 Change Review Before Testing"
+  },
+  {
+   "zh": "執行測試前，必須回顧：",
+   "en": "Before testing is executed, the following must be reviewed:"
+  },
+  {
+   "zh": "<strong>系統風險評估（SRA）</strong>：確認 CDE 清單是否有更新",
+   "en": "<strong>System Risk Assessment (SRA)</strong>: confirm whether the CDE list has been updated"
+  },
+  {
+   "zh": "<strong>變更管理記錄</strong>：確認實際安裝的系統與測試文件所描述的一致",
+   "en": "<strong>Change management records</strong>: confirm that the system as actually installed matches what the test documents describe"
+  },
+  {
+   "zh": "這一步驟防止「測試文件版本落後於實際安裝狀態」的常見問題。",
+   "en": "This step prevents the common problem of \"test documents lagging behind the actual installed state\"."
+  },
+  {
+   "zh": "📋 階段轉換的彈性原則",
+   "en": "📋 Flexibility Principle for Phase Transitions"
+  },
+  {
+   "zh": "ISPE 允許在前一階段未完全結束時就進入下一階段（例如：安裝測試有少數未完項目，但可以先開始操作測試），前提是：",
+   "en": "ISPE allows the next phase to start before the previous phase is fully complete (for example, installation testing has a few open items but operational testing can begin), provided that:"
+  },
+  {
+   "zh": "<strong>所有未完項目</strong>必須被記錄並設定完成期限",
+   "en": "<strong>All open items</strong> are recorded and given completion deadlines"
+  },
+  {
+   "zh": "<strong>書面確認</strong>：這些未完項目不會影響後續工作",
+   "en": "<strong>Written confirmation</strong> that these open items will not affect subsequent work"
+  },
+  {
+   "zh": "<strong>直接影響系統</strong>：上述確認需 QA 批准",
+   "en": "<strong>Direct impact systems</strong>: the confirmation above requires QA approval"
+  },
+  {
+   "zh": "這體現了 ISPE 的風險基礎思維——不是教條式的「一定要完成才能繼續」，而是「有理由、有文件」地管理風險。",
+   "en": "This reflects ISPE's risk-based thinking: not a dogmatic \"it must be finished before we can proceed\", but managing risk \"with justification and documentation\"."
+  },
+  {
+   "zh": "⚠️ 「Punch List」管理",
+   "en": "⚠️ \"Punch List\" Management"
+  },
+  {
+   "zh": "未完成項目通常記錄在「Punch List（缺失清單）」中。CDMO 常見實務：分為「關鍵缺失（Critical）」和「非關鍵缺失（Non-Critical）」兩類——關鍵缺失須在下一階段開始前解決，非關鍵缺失可設定後續完成日期。",
+   "en": "Open items are usually recorded in a \"Punch List\". A common CDMO practice is to split it into \"Critical\" and \"Non-Critical\" items: critical items must be resolved before the next phase starts, while non-critical items can be given a later completion date."
+  },
+  {
+   "zh": "📦 TOP（移交文件包）是什麼？",
+   "en": "📦 What Is a TOP (Turnover Package)?"
+  },
+  {
+   "zh": "TOP 是系統從承包商/廠商移交給業主時所附帶的完整文件集合。它記錄了系統在移交當下的完整狀態，是系統全生命週期（安裝、操作、維護、變更、除役）的重要參考基礎。",
+   "en": "The TOP is the complete set of documents that accompanies the handover of a system from the contractor/vendor to the owner. It records the full state of the system at the moment of handover and is an important reference for the whole system life cycle (installation, operation, maintenance, change, decommissioning)."
+  },
+  {
+   "zh": "TOP 的核心價值：",
+   "en": "Core value of the TOP:"
+  },
+  {
+   "zh": "<strong>驗證基礎</strong>：As-built 圖面是 IQ 的重要依據",
+   "en": "<strong>Basis for validation</strong>: as-built drawings are an important basis for IQ"
+  },
+  {
+   "zh": "<strong>維護支援</strong>：備品清單、維護要求讓 PM 部門有所依循",
+   "en": "<strong>Maintenance support</strong>: spare parts lists and maintenance requirements give the PM department something to follow"
+  },
+  {
+   "zh": "<strong>變更管理</strong>：設備更改時，TOP 是基準文件",
+   "en": "<strong>Change management</strong>: when equipment is modified, the TOP is the baseline document"
+  },
+  {
+   "zh": "<strong>法規合規</strong>：材料符合性證書（CoC）支持法規申報",
+   "en": "<strong>Regulatory compliance</strong>: certificates of conformance (CoC) for materials support regulatory submissions"
+  },
+  {
+   "zh": "⚠️ 關鍵實務：合約下單前確認 TOP 內容",
+   "en": "⚠️ Key Practice: Confirm the TOP Contents Before Placing the Order"
+  },
+  {
+   "zh": "原文明確指出：「TOP 內容應在下訂單前清楚確定並由各方同意」。這是非常重要的採購管理原則：",
+   "en": "The source text states explicitly that \"TOP contents should be clearly defined and agreed by all parties before the order is placed\". This is a very important procurement management principle:"
+  },
+  {
+   "zh": "若等到設備快要交貨才要求廠商補充文件，往往面臨廠商不配合、文件不完整或延遲交付的問題",
+   "en": "If documents are requested from the vendor only when the equipment is almost ready for delivery, you often face an uncooperative vendor, incomplete documents or delayed delivery"
+  },
+  {
+   "zh": "建議：在 RFQ（報價邀請書）中即列出 TOP 文件清單作為合約要求",
+   "en": "Recommendation: list the TOP document list in the RFQ (request for quotation) as a contract requirement"
+  },
+  {
+   "zh": "付款條款可與 TOP 文件完整性掛鉤",
+   "en": "Payment terms can be tied to the completeness of the TOP documents"
+  },
+  {
+   "zh": "💡 Loop Calibration（迴路校正）是什麼？",
+   "en": "💡 What Is Loop Calibration?"
+  },
+  {
+   "zh": "Loop = 一個完整的量測/控制迴路，例如：溫度感測器 → 傳輸器 → DCS 訊號輸入卡 → 顯示值。",
+   "en": "Loop = a complete measurement/control loop, for example: temperature sensor → transmitter → DCS signal input card → displayed value."
+  },
+  {
+   "zh": "Loop Calibration 驗證的是這整個迴路的準確性，而非只是感測器本身。這對 CDE（如 WFI 系統溫度、高壓滅菌器壓力）尤其重要，因為任何環節的誤差都可能導致製程失控。",
+   "en": "Loop calibration verifies the accuracy of the whole loop, not just the sensor itself. This is especially important for CDEs (such as WFI system temperature and autoclave pressure), because an error at any point can cause loss of process control."
+  },
+  {
+   "zh": "🏭 TOP 15 項清單：CDMO 採購合約必備",
+   "en": "🏭 The 15-Item TOP List: Essential for CDMO Purchase Contracts"
+  },
+  {
+   "zh": "下表整理 TOP 典型內容，建議列入採購合約的「Document Requirements」章節：",
+   "en": "The table below summarizes the typical contents of a TOP, and we recommend including it in the \"Document Requirements\" section of the purchase contract:"
+  },
+  {
+   "zh": "<em>注意：原文清單共 13 項條目（部分合併計算），總體涵蓋上述所有面向。</em>",
+   "en": "<em>Note: the list in the source text has 13 entries (some are counted together), and overall it covers all the aspects above.</em>"
+  },
+  {
+   "zh": "⚠️ 進入潔淨區系統的特別注意",
+   "en": "⚠️ Special Attention for Systems Entering Cleanrooms"
+  },
+  {
+   "zh": "移入潔淨區的設備，必須事先進行清潔以防止污染——這不只是文件要求，也是防止整個潔淨區受損的預防措施。此要求應反映在「移入程序（Move-in Procedure）」中，並記錄清潔活動。",
+   "en": "Equipment moved into a cleanroom must be cleaned beforehand to prevent contamination. This is not only a documentation requirement but also a precaution against damage to the whole cleanroom. The requirement should be reflected in the \"Move-in Procedure\", and the cleaning activity should be recorded."
+  },
+  {
+   "zh": "🏗️ 安裝測試三大範疇",
+   "en": "🏗️ Three Areas of Installation Testing"
+  },
+  {
+   "zh": "安裝測試（Installation Testing）覆蓋三個面向，缺一不可：",
+   "en": "Installation Testing covers three aspects, and none can be left out:"
+  },
+  {
+   "zh": "<strong>機械面（Mechanical）</strong>：管線連接、坡度驗證、壓力測試——確認「裝好了」",
+   "en": "<strong>Mechanical</strong>: pipe connections, slope verification, pressure testing, confirming that it is \"installed\""
+  },
+  {
+   "zh": "<strong>施工記錄面（Construction Records）</strong>：建築完成度、焊接記錄、材料符合性——確認「裝得對」",
+   "en": "<strong>Construction Records</strong>: construction completion, welding records, material compliance, confirming that it is \"installed correctly\""
+  },
+  {
+   "zh": "<strong>自動化/電氣面（Automation &amp; Electrical）</strong>：軟體、接線、警報、資料完整性——確認「控制系統正確」",
+   "en": "<strong>Automation &amp; Electrical</strong>: software, wiring, alarms, data integrity, confirming that \"the control system is correct\""
+  },
+  {
+   "zh": "⚠️ 自動化 10 項清單重點解析",
+   "en": "⚠️ Key Points of the 10-Item Automation List"
+  },
+  {
+   "zh": "<strong>軟體版本與備份</strong>：必須記錄版本號並建立備份，這是 GAMP 5 的基本要求",
+   "en": "<strong>Software version and backup</strong>: the version number must be recorded and a backup made, a basic GAMP 5 requirement"
+  },
+  {
+   "zh": "<strong>Hard-wired alarm and interlock testing</strong>：硬接線警報（如超溫切斷）必須獨立於軟體測試，確認即使 PLC 故障也能動作",
+   "en": "<strong>Hard-wired alarm and interlock testing</strong>: hard-wired alarms (such as an over-temperature cut-out) must be tested independently of the software, to confirm they still work even if the PLC fails"
+  },
+  {
+   "zh": "<strong>Power/Communication loss and recovery</strong>：停電或通訊中斷後的系統恢復行為，是製藥設備的關鍵安全測試",
+   "en": "<strong>Power/Communication loss and recovery</strong>: how the system recovers after a power outage or communication interruption is a key safety test for pharmaceutical equipment"
+  },
+  {
+   "zh": "<strong>資料完整性 &amp; 稽核追蹤（Audit Trail）</strong>：FDA/EMA 法規重點，任何人工輸入或系統事件都必須有不可篡改的記錄",
+   "en": "<strong>Data integrity &amp; audit trail</strong>: a key focus of FDA/EMA regulation; any manual entry or system event must have a tamper-proof record"
+  },
+  {
+   "zh": "💡 Audit Trail（稽核追蹤）是什麼？",
+   "en": "💡 What Is an Audit Trail?"
+  },
+  {
+   "zh": "Audit Trail 是系統自動記錄的操作日誌，例如：「2026-01-15 14:32, 操作員 A 將溫度設定值從 121°C 改為 123°C」。",
+   "en": "An audit trail is an operation log recorded automatically by the system, for example: \"2026-01-15 14:32, Operator A changed the temperature set point from 121°C to 123°C\"."
+  },
+  {
+   "zh": "FDA 21 CFR Part 11 與 EMA Annex 11 都要求：",
+   "en": "Both FDA 21 CFR Part 11 and EMA Annex 11 require that:"
+  },
+  {
+   "zh": "記錄不可刪除或修改（只能新增，不能覆蓋）",
+   "en": "Records cannot be deleted or modified (entries can only be added, never overwritten)"
+  },
+  {
+   "zh": "記錄應包含：時間戳記、使用者 ID、舊值、新值、變更原因（若有）",
+   "en": "Records include: time stamp, user ID, old value, new value and reason for change (if any)"
+  },
+  {
+   "zh": "測試時必須驗證 Audit Trail 功能正確運作且防止篡改",
+   "en": "During testing, verify that the audit trail function works correctly and prevents tampering"
+  },
+  {
+   "zh": "🏭 FAT vs SAT vs Commissioning vs Qualification 的關係",
+   "en": "🏭 How FAT, SAT, Commissioning and Qualification Relate"
+  },
+  {
+   "zh": "安裝測試可以整合在一份文件中，也可以分散於各階段——由 C&amp;Q Plan 決定。",
+   "en": "Installation testing can be consolidated in one document or spread across the phases, as decided by the C&amp;Q Plan."
+  },
+  {
+   "zh": "🔍 PDI（交貨前檢查）：為什麼要去廠商工廠？",
+   "en": "🔍 PDI (Pre-Delivery Inspection): Why Go to the Vendor's Factory?"
+  },
+  {
+   "zh": "PDI 的核心邏輯是：<strong>「在問題最容易解決的地方發現問題」</strong>。",
+   "en": "The core logic of PDI is: <strong>\"find problems where they are easiest to solve\"</strong>."
+  },
+  {
+   "zh": "在廠商廠房發現缺陷：",
+   "en": "Defects found at the vendor's facility:"
+  },
+  {
+   "zh": "修復成本低（廠商設備、工具、人員齊全）",
+   "en": "Low repair cost (the vendor has the equipment, tools and people)"
+  },
+  {
+   "zh": "不影響現場施工進度",
+   "en": "No impact on site construction progress"
+  },
+  {
+   "zh": "可以檢查「交貨後就看不到」的隱藏部件（如加熱夾套內的擋板）",
+   "en": "Hidden components that \"cannot be seen after delivery\" can be inspected (such as baffles inside a heating jacket)"
+  },
+  {
+   "zh": "等設備到現場才發現問題：",
+   "en": "If problems are found only after the equipment reaches the site:"
+  },
+  {
+   "zh": "可能需要拆機返廠（高成本）",
+   "en": "The equipment may have to be dismantled and returned (high cost)"
+  },
+  {
+   "zh": "佔用現場空間與進度",
+   "en": "It takes up site space and schedule"
+  },
+  {
+   "zh": "可能拖延整個廠房啟動計劃",
+   "en": "It may delay the whole plant start-up plan"
+  },
+  {
+   "zh": "💡 比喻：PDI 像汽車出廠前的「出廠檢驗」",
+   "en": "💡 Analogy: PDI Is Like a Car's Factory Inspection"
+  },
+  {
+   "zh": "就像汽車在離開組裝線前進行全車品質檢驗，PDI 讓業主有機會在「設備出廠前」確認品質。差別在於：製藥設備往往是定製品，廠商不會庫存同型號備品，一旦出廠後發現問題，修復時間和成本都遠高於汽車行業。",
+   "en": "Just as a car undergoes a full quality inspection before leaving the assembly line, PDI gives the owner a chance to confirm quality before the equipment leaves the factory. The difference is that pharmaceutical equipment is often custom-made and the vendor does not stock spare units of the same model, so once a problem is found after shipment, the repair time and cost are far higher than in the automotive industry."
+  },
+  {
+   "zh": "🤔 思考題：PDI 的價值何時最高？",
+   "en": "🤔 Discussion Question: When Is the Value of PDI Highest?"
+  },
+  {
+   "zh": "以下哪種情況最值得安排 PDI？",
+   "en": "In which of the following situations is a PDI most worthwhile?"
+  },
+  {
+   "zh": "採購一台現成的蠕動泵（off-the-shelf peristaltic pump）",
+   "en": "Buying an off-the-shelf peristaltic pump"
+  },
+  {
+   "zh": "訂製一套 10,000L WFI 蒸餾水機（multi-column still，需定製設計）",
+   "en": "Ordering a 10,000 L WFI still (multi-column still, custom design required)"
+  },
+  {
+   "zh": "採購標準 316L 不鏽鋼管件和閥門",
+   "en": "Buying standard 316L stainless steel fittings and valves"
+  },
+  {
+   "zh": "<em>答案：情況 2 最值得安排 PDI。定製複雜設備的製造偏差風險高，且交貨後發現問題的修復成本極高。標準現成品（情況 1、3）風險相對低，PDI 的邊際效益較小。</em>",
+   "en": "<em>Answer: Case 2 is the one most worth a PDI. Custom, complex equipment carries a high risk of manufacturing deviations, and the cost of repair after delivery is extremely high. Standard off-the-shelf items (cases 1 and 3) carry relatively low risk, and the marginal benefit of a PDI is small.</em>"
+  },
+  {
+   "zh": "本節摘要 Section Summary (Chapter 7, Part 1: pp. 49–56)",
+   "en": "Section Summary (Chapter 7, Part 1: pp. 49–56)"
+  },
+  {
+   "zh": "<strong>C&amp;Q 測試定義</strong>：從設計到系統驗收的完整測試過程，涵蓋靜態測試（文件審查）與動態測試（實際運作），並以整合系統的方式進行（機械+電氣+自動化）。",
+   "en": "<strong>Definition of C&amp;Q testing</strong>: the complete testing process from design to system acceptance, covering static testing (document review) and dynamic testing (actual operation), carried out on the integrated system (mechanical + electrical + automation)."
+  },
+  {
+   "zh": "<strong>七大測試原則</strong>：工程驅動、預定義文件標準、培訓、見證要求預定義、廠商評估、變更管理、偏差管理程序預定義。",
+   "en": "<strong>Seven testing principles</strong>: engineering driven, predefined documentation standards, training, predefined witnessing requirements, vendor assessment, change management, predefined deviation management procedure."
+  },
+  {
+   "zh": "<strong>Table 7.1 &amp; 7.2</strong>：提供不同系統類型（高壓滅菌器、HVAC、凍乾機、秤量器、WFI）所需測試/檢查文件組合的參考選項——靈活選擇，重要的是在 C&amp;Q Plan 中預先定義。",
+   "en": "<strong>Tables 7.1 &amp; 7.2</strong>: provide reference options for the combination of testing/inspection documents needed for different system types (autoclave, HVAC, freeze dryer, scale, WFI). The choice is flexible; what matters is to define it in advance in the C&amp;Q Plan."
+  },
+  {
+   "zh": "<strong>QU 監督四種模式</strong>：程序預核、C&amp;Q Plan 批准+摘要報告審核、IOQ 協議前後審批、標記法整合工程記錄——依系統風險與組織能力靈活選用。",
+   "en": "<strong>Four QU oversight approaches</strong>: pre-approved procedures, C&amp;Q Plan approval + summary report review, pre- and post-approval of IOQ protocols, and marking up engineering records. Choose flexibly according to system risk and organizational capability."
+  },
+  {
+   "zh": "<strong>C&amp;Q 團隊四角色</strong>：測試協調員（進度管理）、生產使用者（系統所有人）、技術專家（SME 支援）、品保代表（CDE 確認監督）。",
+   "en": "<strong>Four roles in the C&amp;Q team</strong>: Testing Coordinator (schedule management), Production User (system owner), Technical Expert (SME support), QA Representative (CDE confirmation and oversight)."
+  },
+  {
+   "zh": "<strong>測試前提條件</strong>：計劃先行（PDI/FAT 策略）、培訓完成、DR/DQ 批准、廠商文件策略確認、SRA 和變更記錄審查——五項缺一不可。",
+   "en": "<strong>Prerequisites for testing</strong>: planning first (PDI/FAT strategy), training completed, DR/DQ approved, vendor documentation strategy confirmed, SRA and change records reviewed. All five are essential."
+  },
+  {
+   "zh": "<strong>TOP 移交文件包</strong>：系統生命週期基礎文件，13 類典型內容應在合約下訂前確認；Loop Calibration 文件是 CDE 驗證的重要支持。",
+   "en": "<strong>TOP (Turnover Package)</strong>: the foundation documents for the system life cycle; the 13 typical content categories should be confirmed before the contract order is placed, and loop calibration documents are important support for CDE verification."
+  },
+  {
+   "zh": "<strong>PDI（交貨前檢查）</strong>：在廠商廠房提前發現問題，可避免現場啟動延誤和高額修復成本；尤其對定製複雜設備（如 WFI 系統）效益最高。",
+   "en": "<strong>PDI (Pre-Delivery Inspection)</strong>: finding problems early at the vendor's facility avoids start-up delays on site and high repair costs; it is most valuable for custom, complex equipment (such as WFI systems)."
+  }
+ ]
+}

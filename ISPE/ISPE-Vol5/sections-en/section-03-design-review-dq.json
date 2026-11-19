@@ -1,0 +1,561 @@
+{
+ "source": "section-03-design-review-dq.html",
+ "blocks": [
+  {
+   "zh": "Chapter 5: Design Review and Design Qualification 設計審查與設計確認",
+   "en": "Chapter 5: Design Review and Design Qualification"
+  },
+  {
+   "zh": "🎓 本章學習目標 Learning Objectives",
+   "en": "🎓 Learning Objectives"
+  },
+  {
+   "zh": "理解設計審查（DR）與設計確認（DQ）的根本區別：DR 涵蓋所有設計面向，DQ 僅聚焦於直接影響系統的 CAs/CDEs，並需 Quality Unit 核准。",
+   "en": "Understand the fundamental difference between design review (DR) and design qualification (DQ): DR covers all design aspects, whereas DQ focuses only on the CAs/CDEs that directly affect the system and requires Quality Unit approval."
+  },
+  {
+   "zh": "掌握三階段設計流程（概念 → 設計基礎 BOD → 詳細設計）及各階段產出文件（IFD、IFC）的意義。",
+   "en": "Understand the three-stage design process (concept → basis of design (BOD) → detailed design) and the significance of the documents produced at each stage (IFD, IFC)."
+  },
+  {
+   "zh": "了解 ASTM E2500-13 對設計審查的定義，以及跨職能 SME 團隊在 DR 中的角色與 QA 出席建議。",
+   "en": "Understand how ASTM E2500-13 defines design review, the role of the cross-functional SME team in DR, and the recommendation on QA attendance."
+  },
+  {
+   "zh": "說明 DQ 的三大目標、前提要件（URS、SRA、completed DRs）及最終 DQ 報告應包含的內容。",
+   "en": "Explain the three objectives of DQ, its prerequisites (URS, SRA, completed DRs), and what the final DQ report should contain."
+  },
+  {
+   "zh": "能夠解讀 Table 5.1 所示的專案階段與 DR/DQ 交付成果時序，並應用於 CDMO 資本專案規劃。",
+   "en": "Be able to interpret the project stages and the timing of DR/DQ deliverables shown in Table 5.1, and apply them to CDMO capital project planning."
+  },
+  {
+   "zh": "📄 本章結構",
+   "en": "📄 Chapter Structure"
+  },
+  {
+   "zh": "<a href=\"#sec51\">5.1 Introduction</a>\n<a href=\"#sec52\">5.2 Design Process</a>\n<a href=\"#sec53\">5.3 Design Review</a>\n<a href=\"#sec54\">5.4 Design Qualification</a>\n<a href=\"#sec55\">5.5 Timing (Table 5.1)</a>\n<a href=\"#summary\">章節總結</a>",
+   "en": "<a href=\"#sec51\">5.1 Introduction</a>\n<a href=\"#sec52\">5.2 Design Process</a>\n<a href=\"#sec53\">5.3 Design Review</a>\n<a href=\"#sec54\">5.4 Design Qualification</a>\n<a href=\"#sec55\">5.5 Timing (Table 5.1)</a>\n<a href=\"#summary\">Chapter Summary</a>"
+  },
+  {
+   "zh": "Introduction — 簡介",
+   "en": "Introduction"
+  },
+  {
+   "zh": "解讀視观 Commentary",
+   "en": "Commentary"
+  },
+  {
+   "zh": "🔑 核心概念：DR vs. DQ 根本區別",
+   "en": "🔑 Core Concept: The Fundamental Difference Between DR and DQ"
+  },
+  {
+   "zh": "<strong>設計審查 DR（Design Review）</strong>：涵蓋所有設計面向，包含工程、操作、安全、品質——所有系統皆適用。",
+   "en": "<strong>Design Review (DR)</strong>: covers all design aspects, including engineering, operations, safety and quality, and applies to all systems."
+  },
+  {
+   "zh": "<strong>設計確認 DQ（Design Qualification）</strong>：只針對「直接影響系統（Direct Impact Systems）」，且聚焦於 CAs（關鍵特性）和 CDEs（關鍵設計要素）——需要 Quality Unit 核准，屬正式驗證文件。",
+   "en": "<strong>Design Qualification (DQ)</strong>: applies only to \"direct impact systems\" and focuses on CAs (critical aspects) and CDEs (critical design elements). It requires Quality Unit approval and is a formal qualification document."
+  },
+  {
+   "zh": "💡 <em>記憶口訣：DR 看全局；DQ 看品質關鍵點，只限直接影響系統。</em>",
+   "en": "💡 <em>Memory aid: DR looks at the whole picture; DQ looks at the quality-critical points, and only for direct impact systems.</em>"
+  },
+  {
+   "zh": "⚠ 重點提示：「非各別活動，而是各別文件」",
+   "en": "⚠ Key point: \"Not separate activities, but separate documents\""
+  },
+  {
+   "zh": "原文這句話在實務中的意思：<strong>DR 和 DQ 在時間上可以重疊，工程師不需要「做完 DR 再做 DQ」</strong>。",
+   "en": "What this sentence in the source means in practice: <strong>DR and DQ can overlap in time, and engineers do not need to \"finish DR before starting DQ\"</strong>."
+  },
+  {
+   "zh": "實務運作：DR 會議記錄 → 整理出 CAs/CDEs → DQ 報告直接引用 DR 結果，避免重複紀錄。DQ 不是另起爐灶，而是對 DR 的聚焦與升格（加入 QA 核准）。",
+   "en": "In practice: DR meeting minutes → CAs/CDEs are identified → the DQ report refers directly to the DR results, avoiding duplicate records. DQ is not a fresh start; it is a focusing and upgrading of the DR (with QA approval added)."
+  },
+  {
+   "zh": "📚 比喻：建築審查 vs. 消防安全認證",
+   "en": "📚 Analogy: Building Review vs. Fire Safety Certification"
+  },
+  {
+   "zh": "DR 如同<strong>全面建築審查</strong>：結構、水電、消防、美觀一起看。DQ 如同<strong>消防安全認證</strong>：只針對消防相關設計（逃生出口、噴淋系統）做正式認可，並由主管機關（Quality Unit）蓋章。兩者共用同一套建築圖，不需要畫兩次。",
+   "en": "DR is like a <strong>full building review</strong>: structure, utilities, fire protection and aesthetics are all examined together. DQ is like a <strong>fire safety certification</strong>: only the fire-related design (escape exits, sprinkler system) is formally approved, and the authority (the Quality Unit) stamps it. Both use the same set of building drawings, so there is no need to draw them twice."
+  },
+  {
+   "zh": "Design Process — 設計流程",
+   "en": "Design Process"
+  },
+  {
+   "zh": "🕐 三階段設計流程圖解",
+   "en": "🕐 The Three-Stage Design Process"
+  },
+  {
+   "zh": "<strong>1. 概念階段（Concept）</strong>：評估多種方案，選出最符合 URS、成本與品質風險平衡的方案。",
+   "en": "<strong>1. Concept stage</strong>: evaluate several options and select the one that best balances the URS, cost and quality risk."
+  },
+  {
+   "zh": "<strong>2. 設計基礎階段（BOD）</strong>：輸出 <em>IFD（Issued for Design，設計用圖）</em>，確立工程範圍（SOW）。",
+   "en": "<strong>2. Basis of design (BOD) stage</strong>: produces <em>IFD (Issued for Design) drawings</em> and establishes the scope of work (SOW)."
+  },
+  {
+   "zh": "<strong>3. 詳細設計階段（Detailed Design）</strong>：輸出 <em>IFC（Issued for Construction，建造用圖）</em>，可直接用於施工。",
+   "en": "<strong>3. Detailed design stage</strong>: produces <em>IFC (Issued for Construction) drawings</em>, which can be used directly for construction."
+  },
+  {
+   "zh": "DR 在三個階段都應執行；DQ 通常在詳細設計完成後正式執行。",
+   "en": "DR should be performed at all three stages; DQ is normally performed formally after detailed design is complete."
+  },
+  {
+   "zh": "🔧 術語解析：IFD vs. IFC",
+   "en": "🔧 Terminology: IFD vs. IFC"
+  },
+  {
+   "zh": "<strong>IFD（Issued for Design）</strong>：尚在設計階段，供工程師內部使用、審查，可能仍有修訂。",
+   "en": "<strong>IFD (Issued for Design)</strong>: still at the design stage, used internally by engineers and for review, and may still be revised."
+  },
+  {
+   "zh": "<strong>IFC（Issued for Construction）</strong>：已完成設計審查、凍結版本，可交付給承包商施工。",
+   "en": "<strong>IFC (Issued for Construction)</strong>: design review completed and the version frozen, ready to be released to the contractor for construction."
+  },
+  {
+   "zh": "IFD 是 DR 的主要審查對象；IFC 是 DQ 的最終確認對象。",
+   "en": "IFD is the main subject of DR; IFC is the final subject of DQ."
+  },
+  {
+   "zh": "📚 GEP 在設計審查中的角色",
+   "en": "📚 The Role of GEP in Design Review"
+  },
+  {
+   "zh": "<strong>GEP（良好工程規範）</strong>不是一份法規文件，而是工程界公認的最佳實踐標準。DR 的功能之一就是確認設計符合 GEP：對照業界規範（如 ASME、ASTM、ISO 標準）找出缺口並提出修正行動。",
+   "en": "<strong>GEP (Good Engineering Practice)</strong> is not a regulatory document but a set of best-practice standards recognized across the engineering profession. One function of DR is to confirm that the design complies with GEP: compare against industry standards (such as ASME, ASTM and ISO standards), identify gaps and propose corrective actions."
+  },
+  {
+   "zh": "GEP 加上良好文件實踐（GDP）= 確保「系統適合其預期用途」的基礎。",
+   "en": "GEP plus good documentation practice (GDP) = the foundation for ensuring that a system is \"fit for its intended use\"."
+  },
+  {
+   "zh": "🧠 5.2.2 迭代風險評估的重要性",
+   "en": "🧠 5.2.2 The Importance of Iterative Risk Assessment"
+  },
+  {
+   "zh": "設計階段的風險評估不是「做一次就結束」。隨著設計從概念演進到詳細設計，新的失效模式可能浮現。DR 應定期納入最新的系統風險評估（SRA）結果，確保設計決策與風險控制策略保持一致。",
+   "en": "Risk assessment during design is not a \"one and done\" exercise. As the design evolves from concept to detailed design, new failure modes may emerge. DR should regularly incorporate the latest system risk assessment (SRA) results to keep design decisions consistent with the risk control strategy."
+  },
+  {
+   "zh": "💡 <em>實務提示：將 SRA 版本號列入每次 DR 的審查範圍，確保可追溯性。</em>",
+   "en": "💡 <em>Practical tip: list the SRA version number in the scope of each DR to ensure traceability.</em>"
+  },
+  {
+   "zh": "Design Review — 設計審查",
+   "en": "Design Review"
+  },
+  {
+   "zh": "📚 ASTM E2500-13 定義解析",
+   "en": "📚 The ASTM E2500-13 Definition Explained"
+  },
+  {
+   "zh": "ASTM E2500-13 是美國材料試驗協會發布的製藥設備驗證標準，其 DR 定義強調三個關鍵詞：",
+   "en": "ASTM E2500-13 is the ASTM International standard for the specification, design and verification of pharmaceutical manufacturing systems. Its definition of DR stresses three key words:"
+  },
+  {
+   "zh": "<strong>Planned（計劃性）</strong>：非臨時性，應事先排程並有明確範圍。",
+   "en": "<strong>Planned</strong>: not ad hoc; scheduled in advance with a clear scope."
+  },
+  {
+   "zh": "<strong>Systematic（系統性）</strong>：有結構的審查方法，非隨意瀏覽文件。",
+   "en": "<strong>Systematic</strong>: a structured review method, not a casual skim of documents."
+  },
+  {
+   "zh": "<strong>Throughout the life-cycle（貫穿全生命週期）</strong>：包含新建、改造、持續改善。",
+   "en": "<strong>Throughout the life-cycle</strong>: includes new construction, modification and continual improvement."
+  },
+  {
+   "zh": "重點：DR <strong>涵蓋品質關鍵與非關鍵</strong>兩類設計面向，這與 DQ（只看 CAs/CDEs）形成對比。",
+   "en": "Key point: DR <strong>covers both quality-critical and non-critical</strong> design aspects, in contrast to DQ (which looks only at CAs/CDEs)."
+  },
+  {
+   "zh": "👥 SME 與 Quality Unit 的角色分工",
+   "en": "👥 Division of Roles Between SMEs and the Quality Unit"
+  },
+  {
+   "zh": "<strong>SME（主題專家）</strong>：來自工程、製程、設備、設施等各領域，確保設計技術上可行且符合操作需求。",
+   "en": "<strong>SMEs (subject matter experts)</strong>: drawn from engineering, process, equipment, facilities and other areas, ensuring that the design is technically feasible and meets operational needs."
+  },
+  {
+   "zh": "<strong>Quality Unit（品質部門）</strong>：",
+   "en": "<strong>Quality Unit</strong>:"
+  },
+  {
+   "zh": "工程技術導向 DR → 出席為<em>可選</em>（但有益）",
+   "en": "Engineering-oriented DR → attendance is <em>optional</em> (but beneficial)"
+  },
+  {
+   "zh": "品質合規導向 DR → <em>強烈建議出席</em>，並應記錄",
+   "en": "Quality/compliance-oriented DR → attendance is <em>strongly recommended</em> and should be documented"
+  },
+  {
+   "zh": "直接影響系統的 DR → <em>必須</em>有 QA 代表參與",
+   "en": "DR of a direct impact system → a QA representative <em>must</em> participate"
+  },
+  {
+   "zh": "💡 QA 提早介入 DR，可大幅簡化後續的 DQ 核准流程。",
+   "en": "💡 Early QA involvement in DR can greatly simplify the later DQ approval process."
+  },
+  {
+   "zh": "⚡ ICH Q9 原則在 DR 中的應用",
+   "en": "⚡ Applying ICH Q9 Principles in DR"
+  },
+  {
+   "zh": "DR 的投入程度（effort）、正式程度（formality）、記錄詳細度，應與<strong>系統風險等級相稱</strong>：",
+   "en": "The effort, formality and level of documentation of a DR should be <strong>commensurate with the risk level of the system</strong>:"
+  },
+  {
+   "zh": "低風險輔助系統 → 會議記錄即可（engineering meeting minutes）",
+   "en": "Low-risk support system → meeting minutes are sufficient (engineering meeting minutes)"
+  },
+  {
+   "zh": "高度關鍵新型系統 → 需要更聚焦、更詳細的 DR 文件",
+   "en": "Highly critical new system → a more focused and detailed DR document is needed"
+  },
+  {
+   "zh": "現貨設備（off-the-shelf）→ 以供應商文件為基礎進行審查",
+   "en": "Off-the-shelf equipment → review based on supplier documentation"
+  },
+  {
+   "zh": "這體現了 ISPE Vol.5「基於科學與風險」的核心哲學。",
+   "en": "This reflects the core ISPE Vol. 5 philosophy of being \"science- and risk-based\"."
+  },
+  {
+   "zh": "📄 Figure 5.1 流程說明（無圖版）",
+   "en": "📄 Figure 5.1 Process Description (text version)"
+  },
+  {
+   "zh": "雖然原文圖示無法嵌入，其流程可描述如下：",
+   "en": "Although the original figure cannot be embedded, the flow can be described as follows:"
+  },
+  {
+   "zh": "<strong>設計交付物</strong> → DR 規劃（確定範圍/參與者）→ <strong>DR 會議</strong>（SME + 可能含 QA）→ 產生行動項目/開放問題 → 問題解決/設計修訂 → <strong>DR 報告</strong>（記錄審查結果）→ 輸入至 <strong>DQ 流程</strong>（若為直接影響系統）",
+   "en": "<strong>Design deliverables</strong> → DR planning (define scope/participants) → <strong>DR meeting</strong> (SMEs + possibly QA) → action items/open issues generated → issue resolution/design revision → <strong>DR report</strong> (documents the review outcome) → input to the <strong>DQ process</strong> (if a direct impact system)"
+  },
+  {
+   "zh": "其中「追溯矩陣（Traceability Matrix）」在 DR 報告中用於比對 URS 需求與 CAs/CDEs。",
+   "en": "In the DR report, the traceability matrix is used to compare URS requirements with CAs/CDEs."
+  },
+  {
+   "zh": "🔍 追溯矩陣（Traceability Matrix）簡介",
+   "en": "🔍 Introduction to the Traceability Matrix"
+  },
+  {
+   "zh": "追溯矩陣是一個表格工具，橫向連結：",
+   "en": "A traceability matrix is a tabular tool that links, across the columns:"
+  },
+  {
+   "zh": "URS 中的產品/製程需求",
+   "en": "Product/process requirements in the URS"
+  },
+  {
+   "zh": "系統設計中對應的 CAs/CDEs",
+   "en": "The corresponding CAs/CDEs in the system design"
+  },
+  {
+   "zh": "驗收標準（acceptance criteria）",
+   "en": "Acceptance criteria"
+  },
+  {
+   "zh": "它<strong>不是法規強制要求</strong>，但是強大的專案管理工具，確保每個品質需求都有對應的設計控制，且不遺漏。",
+   "en": "It is <strong>not a regulatory requirement</strong>, but it is a powerful project management tool that ensures every quality requirement has a corresponding design control and nothing is missed."
+  },
+  {
+   "zh": "Design Qualification — 設計確認",
+   "en": "Design Qualification"
+  },
+  {
+   "zh": "🎯 DQ 三大目標深度解析",
+   "en": "🎯 The Three DQ Objectives in Depth"
+  },
+  {
+   "zh": "DQ 的三個目標形成一個完整的驗證邏輯鏈：",
+   "en": "The three objectives of DQ form a complete chain of qualification logic:"
+  },
+  {
+   "zh": "<strong>目標一（符合 URS）</strong>：連結 URS → 設計，確保每條品質需求都被「設計進去了」。",
+   "en": "<strong>Objective 1 (compliance with the URS)</strong>: links the URS to the design, ensuring that every quality requirement has been \"designed in\"."
+  },
+  {
+   "zh": "<strong>目標二（風險控制）</strong>：連結 SRA 識別的風險 → 設計中的控制措施（CAs/CDEs），確保無遺漏。",
+   "en": "<strong>Objective 2 (risk control)</strong>: links the risks identified in the SRA to the control measures in the design (CAs/CDEs), ensuring nothing is omitted."
+  },
+  {
+   "zh": "<strong>目標三（CAs/CDEs 確認）</strong>：明確列出哪些是關鍵特性/關鍵設計要素，為後續 IQ/OQ/PQ 的測試計劃奠基。",
+   "en": "<strong>Objective 3 (confirmation of CAs/CDEs)</strong>: explicitly lists which are the critical aspects/critical design elements, laying the foundation for the subsequent IQ/OQ/PQ test plans."
+  },
+  {
+   "zh": "💡 DQ 是「設計與驗證之橋」：它確保進入建造/採購前，品質需求已被完整設計進去。",
+   "en": "💡 DQ is the \"bridge between design and qualification\": it ensures that quality requirements have been fully designed in before construction/procurement begins."
+  },
+  {
+   "zh": "📋 DQ 前提要件清單",
+   "en": "📋 DQ Prerequisites Checklist"
+  },
+  {
+   "zh": "在啟動 DQ 前，專案經理必須確認以下文件已完成且可取得：",
+   "en": "Before DQ starts, the project manager must confirm that the following documents are complete and available:"
+  },
+  {
+   "zh": "✅ 已核准的 URS",
+   "en": "✅ Approved URS"
+  },
+  {
+   "zh": "✅ 功能需求（自動化系統適用）",
+   "en": "✅ Functional requirements (for automated systems)"
+  },
+  {
+   "zh": "✅ 含 CAs/CDEs 識別的系統風險評估（SRA）",
+   "en": "✅ System risk assessment (SRA) with CAs/CDEs identified"
+  },
+  {
+   "zh": "✅ 已完成的 DR，且所有影響 CAs/CDEs/CPPs/CQAs 的開放問題均已關閉",
+   "en": "✅ Completed DRs, with all open issues affecting CAs/CDEs/CPPs/CQAs closed"
+  },
+  {
+   "zh": "💡 <em>實務提示：建立 DQ 入場檢查表（DQ entry checklist），提前確認所有前提要件，避免 DQ 被迫中斷。</em>",
+   "en": "💡 <em>Practical tip: create a DQ entry checklist to confirm all prerequisites in advance, so that DQ is not forced to stop midway.</em>"
+  },
+  {
+   "zh": "📄 追溯矩陣在 DQ 中的應用",
+   "en": "📄 Using the Traceability Matrix in DQ"
+  },
+  {
+   "zh": "追溯矩陣在 DQ 中扮演核心工具角色，典型欄位包括：",
+   "en": "The traceability matrix is a core tool in DQ. Typical columns include:"
+  },
+  {
+   "zh": "URS 需求編號 &amp; 描述",
+   "en": "URS requirement number &amp; description"
+  },
+  {
+   "zh": "對應的 CA（關鍵特性）",
+   "en": "Corresponding CA (critical aspect)"
+  },
+  {
+   "zh": "對應的 CDE（關鍵設計要素）",
+   "en": "Corresponding CDE (critical design element)"
+  },
+  {
+   "zh": "CPP（關鍵製程參數）",
+   "en": "CPP (critical process parameter)"
+  },
+  {
+   "zh": "CQA（關鍵品質屬性）",
+   "en": "CQA (critical quality attribute)"
+  },
+  {
+   "zh": "後續測試引用（IQ/OQ/PQ 協議編號）",
+   "en": "Subsequent test references (IQ/OQ/PQ protocol numbers)"
+  },
+  {
+   "zh": "再次強調：<strong>非法規強制要求，但強烈建議使用</strong>。它讓稽核員一眼看清需求→設計→驗證的完整追溯鏈。",
+   "en": "To stress again: <strong>not a regulatory requirement, but strongly recommended</strong>. It lets an auditor see the complete traceability chain of requirement → design → qualification at a glance."
+  },
+  {
+   "zh": "🖊 最終 DQ 報告的三方核准",
+   "en": "🖊 Three-Party Approval of the Final DQ Report"
+  },
+  {
+   "zh": "DQ 報告需要由三個部門的適當層級代表核准：",
+   "en": "The DQ report must be approved by representatives of three departments at the appropriate level:"
+  },
+  {
+   "zh": "<strong>工程（Engineering）</strong>：確認設計技術上可行且完整",
+   "en": "<strong>Engineering</strong>: confirms the design is technically feasible and complete"
+  },
+  {
+   "zh": "<strong>生產（Manufacturing）</strong>：確認設計符合操作需求",
+   "en": "<strong>Manufacturing</strong>: confirms the design meets operational needs"
+  },
+  {
+   "zh": "<strong>品質（Quality Unit）</strong>：確認設計符合品質、法規要求",
+   "en": "<strong>Quality Unit</strong>: confirms the design meets quality and regulatory requirements"
+  },
+  {
+   "zh": "三方核准使 DQ 報告成為正式的「品質系統文件」，不同於 DR 報告（可能只是工程會議記錄）。",
+   "en": "Three-party approval makes the DQ report a formal \"quality system document\", unlike a DR report (which may be just engineering meeting minutes)."
+  },
+  {
+   "zh": "🏢 CDMO 應用：DQ 在資本專案中的定位",
+   "en": "🏢 CDMO Application: Where DQ Sits in a Capital Project"
+  },
+  {
+   "zh": "在 CDMO 的資本專案中，DQ 通常落在以下節點：",
+   "en": "In a CDMO capital project, DQ usually falls at the following points:"
+  },
+  {
+   "zh": "<strong>IFC 圖發布後</strong>：設計已凍結，可進行最終 DQ 審查。",
+   "en": "<strong>After IFC drawings are issued</strong>: the design is frozen and the final DQ review can be carried out."
+  },
+  {
+   "zh": "<strong>採購/長交期設備訂單前</strong>：確認設計中的 CAs/CDEs 已鎖定，避免事後設計變更（costly change orders）。",
+   "en": "<strong>Before procurement/long-lead equipment orders</strong>: confirm that the CAs/CDEs in the design are locked, avoiding costly change orders later."
+  },
+  {
+   "zh": "<strong>FAT 前</strong>：DQ 核准代表設計面已完整驗證，FAT 可聚焦於製造品質確認。",
+   "en": "<strong>Before FAT</strong>: DQ approval means the design aspects have been fully qualified, so FAT can focus on confirming manufacturing quality."
+  },
+  {
+   "zh": "DQ 報告也是 FDA/EMA 稽查時「設計文件包」的核心元件之一。",
+   "en": "The DQ report is also one of the core components of the \"design documentation package\" during FDA/EMA inspections."
+  },
+  {
+   "zh": "Timing of DR and DQ — 時序規劃",
+   "en": "Timing of DR and DQ"
+  },
+  {
+   "zh": "🕐 Table 5.1 關鍵洞察：時序的重要性",
+   "en": "🕐 Key Insight from Table 5.1: The Importance of Timing"
+  },
+  {
+   "zh": "Table 5.1 傳達了一個核心訊息：<strong>DR/DQ 活動要與設計進度同步推進，而非在設計完成後才補做。</strong>",
+   "en": "Table 5.1 conveys one core message: <strong>DR/DQ activities should advance in step with design progress, rather than being added after design is complete.</strong>"
+  },
+  {
+   "zh": "<strong>概念階段</strong>：已開始 URS 和概念 DR——早期識別設計方向的品質風險。",
+   "en": "<strong>Concept stage</strong>: the URS and concept DR have already begun, identifying quality risks in the design direction early."
+  },
+  {
+   "zh": "<strong>BOD 階段</strong>：以 IFD 文件進行 DR——這是最重要的 DR 時機，因為此時設計變更成本最低。",
+   "en": "<strong>BOD stage</strong>: DR is performed on IFD documents; this is the most important DR opportunity because the cost of design changes is lowest at this point."
+  },
+  {
+   "zh": "<strong>詳細設計階段</strong>：DR 確認最終 IFC 文件；DQ 正式執行——這是直接影響系統的品質「里程碑關卡」。",
+   "en": "<strong>Detailed design stage</strong>: DR confirms the final IFC documents; DQ is formally performed; this is the quality \"milestone gate\" for direct impact systems."
+  },
+  {
+   "zh": "⚠ 常見錯誤：過晚執行 DR",
+   "en": "⚠ Common Mistake: Performing DR Too Late"
+  },
+  {
+   "zh": "許多企業的 DR 只在 IFC（建造用圖）完成後才進行，此時發現設計缺陷的修改成本極高：",
+   "en": "At many companies, DR is performed only after the IFC (Issued for Construction) drawings are complete, when correcting any design defect found is extremely costly:"
+  },
+  {
+   "zh": "設計變更單（Change Orders）費用高昂",
+   "en": "Change orders are expensive"
+  },
+  {
+   "zh": "施工進度被迫延誤",
+   "en": "Construction schedule is forced to slip"
+  },
+  {
+   "zh": "可能觸發重新採購已訂購的設備",
+   "en": "May trigger re-procurement of equipment already ordered"
+  },
+  {
+   "zh": "💡 最佳實踐：<strong>在 IFD 階段即進行關鍵 DR</strong>，趁設計還有彈性時解決問題。",
+   "en": "💡 Best practice: <strong>perform the key DR at the IFD stage</strong>, while the design still has flexibility to resolve issues."
+  },
+  {
+   "zh": "🏢 CDMO 資本專案時序應用",
+   "en": "🏢 Applying the Timing to a CDMO Capital Project"
+  },
+  {
+   "zh": "典型 CDMO 新建工廠或改造專案的 DR/DQ 里程碑建議：",
+   "en": "Recommended DR/DQ milestones for a typical CDMO new-build or retrofit project:"
+  },
+  {
+   "zh": "<strong>FEL-1（Front-End Loading 1）</strong> = 概念階段 → 完成概念 DR",
+   "en": "<strong>FEL-1 (Front-End Loading 1)</strong> = concept stage → complete the concept DR"
+  },
+  {
+   "zh": "<strong>FEL-2（BOD 完成）</strong> → 完成 BOD DR，確認所有系統分類和 SRA",
+   "en": "<strong>FEL-2 (BOD complete)</strong> → complete the BOD DR and confirm all system classifications and the SRA"
+  },
+  {
+   "zh": "<strong>FEL-3（詳細設計完成）</strong> → 完成最終 DR；對直接影響系統執行 DQ；取得三方（Engineering/Mfg/QA）核准",
+   "en": "<strong>FEL-3 (detailed design complete)</strong> → complete the final DR; perform DQ for direct impact systems; obtain three-party (Engineering/Mfg/QA) approval"
+  },
+  {
+   "zh": "<strong>FAT/SAT 前</strong> → DQ 報告必須已核准，作為進入 IQ/OQ 的先決條件",
+   "en": "<strong>Before FAT/SAT</strong> → the DQ report must be approved, as a prerequisite for entering IQ/OQ"
+  },
+  {
+   "zh": "💰 思考練習",
+   "en": "💰 Reflection Exercise"
+  },
+  {
+   "zh": "在您的機構中，DR 是否有跟上設計進度？以下是自我評估問題：",
+   "en": "In your organization, does DR keep pace with design progress? Self-assessment questions:"
+  },
+  {
+   "zh": "上次 DR 是在 IFD 還是 IFC 之後才做？",
+   "en": "Was the last DR performed after IFD or after IFC?"
+  },
+  {
+   "zh": "DR 有 QA 代表參與嗎（至少品質導向的 DR）？",
+   "en": "Did a QA representative take part in the DR (at least in quality-oriented DRs)?"
+  },
+  {
+   "zh": "DR 結果有被整合進追溯矩陣，並連結到後續 IQ/OQ/PQ 測試嗎？",
+   "en": "Are DR results integrated into the traceability matrix and linked to subsequent IQ/OQ/PQ tests?"
+  },
+  {
+   "zh": "DQ 是正式的三方核准文件，還是只是一份工程報告？",
+   "en": "Is DQ a formal three-party approval document, or just an engineering report?"
+  },
+  {
+   "zh": "💡 整章總結比喻",
+   "en": "💡 Analogy for the Whole Chapter"
+  },
+  {
+   "zh": "把整個 C&amp;Q 設計驗證過程想像成蓋房子：",
+   "en": "Think of the whole C&amp;Q design qualification process as building a house:"
+  },
+  {
+   "zh": "<strong>URS</strong> = 屋主的需求清單（幾房幾廳、要有停車位）",
+   "en": "<strong>URS</strong> = the owner's list of needs (how many rooms, a parking space)"
+  },
+  {
+   "zh": "<strong>SRA</strong> = 風險評估（土地是否有問題、颱風設計標準）",
+   "en": "<strong>SRA</strong> = risk assessment (is there a problem with the land, typhoon design standards)"
+  },
+  {
+   "zh": "<strong>DR</strong> = 建築師審查圖紙（所有人一起看，確認沒有設計缺陷）",
+   "en": "<strong>DR</strong> = the architect reviewing the drawings (everyone looks together to confirm there are no design defects)"
+  },
+  {
+   "zh": "<strong>DQ</strong> = 消防局/結構技師的正式認可（只看安全關鍵項目，蓋章核准）",
+   "en": "<strong>DQ</strong> = formal approval by the fire department/structural engineer (looking only at safety-critical items, then stamping approval)"
+  },
+  {
+   "zh": "DQ 的「蓋章」讓建造得以正式啟動，後續 IQ/OQ/PQ 才能按計劃進行。",
+   "en": "The DQ \"stamp\" allows construction to formally start, so that the subsequent IQ/OQ/PQ can proceed as planned."
+  },
+  {
+   "zh": "📚 章節總結 — Chapter 5 Key Takeaways",
+   "en": "📚 Chapter Summary: Chapter 5 Key Takeaways"
+  },
+  {
+   "zh": "<strong>DR vs. DQ 的根本區別</strong>：DR 覆蓋所有設計面向，適用所有系統；DQ 只針對直接影響系統的 CAs/CDEs，需 Engineering + Manufacturing + QA 三方核准。兩者是「各別文件」而非「各別活動」，應最小化重複工作。",
+   "en": "<strong>The fundamental difference between DR and DQ</strong>: DR covers all design aspects and applies to all systems; DQ applies only to the CAs/CDEs of direct impact systems and requires approval by Engineering + Manufacturing + QA. They are \"separate documents\" rather than \"separate activities\", and duplicated work should be minimized."
+  },
+  {
+   "zh": "<strong>三階段設計流程</strong>：概念 → BOD（含 IFD 文件）→ 詳細設計（含 IFC 文件）。DR 應在每個階段進行，DQ 在詳細設計完成後正式執行。",
+   "en": "<strong>Three-stage design process</strong>: concept → BOD (with IFD documents) → detailed design (with IFC documents). DR should be performed at each stage, and DQ is formally performed after detailed design is complete."
+  },
+  {
+   "zh": "<strong>DR 基於 ICH Q9 原則</strong>：DR 的投入程度與記錄詳細度應與風險等級相稱。低風險系統可用會議記錄；高度關鍵系統需更詳細的 DR 文件。QA 應至少出席品質導向的 DR。",
+   "en": "<strong>DR is based on ICH Q9 principles</strong>: the effort and documentation detail of DR should be commensurate with the risk level. Low-risk systems can use meeting minutes; highly critical systems need more detailed DR documents. QA should attend at least the quality-oriented DRs."
+  },
+  {
+   "zh": "<strong>DQ 的四項前提要件</strong>：(1) 已核准 URS；(2) 功能需求（自動化系統）；(3) 含 CAs/CDEs 的 SRA；(4) 所有相關開放問題已關閉的 DR 記錄。",
+   "en": "<strong>The four DQ prerequisites</strong>: (1) approved URS; (2) functional requirements (automated systems); (3) SRA with CAs/CDEs; (4) DR records with all relevant open issues closed."
+  },
+  {
+   "zh": "<strong>追溯矩陣（Traceability Matrix）</strong>：非法規強制要求，但是連結 URS 需求 → CAs/CDEs → 驗收標準的最佳工具，在 DQ 中強烈建議使用，也為後續 IQ/OQ/PQ 奠定基礎。",
+   "en": "<strong>Traceability matrix</strong>: not a regulatory requirement, but the best tool for linking URS requirements → CAs/CDEs → acceptance criteria. It is strongly recommended in DQ and also lays the foundation for the subsequent IQ/OQ/PQ."
+  },
+  {
+   "zh": "<strong>時序是關鍵</strong>：Table 5.1 顯示 DR/DQ 應與設計進度同步，而非事後補做。在 BOD/IFD 階段即進行關鍵 DR，可大幅降低後期設計變更成本。",
+   "en": "<strong>Timing is the key</strong>: Table 5.1 shows that DR/DQ should advance in step with design progress rather than being added afterwards. Performing the key DR at the BOD/IFD stage greatly reduces the cost of late design changes."
+  }
+ ]
+}

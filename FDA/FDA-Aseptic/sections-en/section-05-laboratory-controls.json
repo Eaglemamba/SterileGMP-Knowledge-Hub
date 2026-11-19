@@ -1,0 +1,797 @@
+{
+ "source": "section-05-laboratory-controls.html",
+ "blocks": [
+  {
+   "zh": "實驗室管制",
+   "en": "Laboratory Controls"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "解釋環境監測計畫 (Environmental Monitoring Program) 的架構要素，包含取樣位置、頻率、方法與警示／行動水準",
+   "en": "Explain the structural elements of an environmental monitoring program, including sampling locations, frequency, methods, and alert/action levels"
+  },
+  {
+   "zh": "區分 Alert Level（警示水準）與 Action Level（行動水準）的差異，並說明各自應觸發的回應措施",
+   "en": "Distinguish between Alert Levels and Action Levels, and explain the response each should trigger"
+  },
+  {
+   "zh": "比較主動空氣取樣 (Active Air Monitoring)、被動空氣取樣 (Passive Air Monitoring / Settling Plates) 與表面取樣 (Surface Monitoring) 三種方法的優缺點",
+   "en": "Compare the advantages and disadvantages of active air monitoring, passive air monitoring (settling plates), and surface monitoring"
+  },
+  {
+   "zh": "說明消毒劑有效性評估的要求，包含對芽孢菌 (Sporeforming Organisms) 的特別考量",
+   "en": "Explain the requirements for evaluating disinfectant effectiveness, including special consideration of sporeforming organisms"
+  },
+  {
+   "zh": "理解微生物鑑定至種 (Species) 層級的重要性，以及基因型鑑定方法在調查中的應用",
+   "en": "Understand why microbial identification to the species level matters, and how genotypic identification methods are used in investigations"
+  },
+  {
+   "zh": "說明前過濾生物負載 (Prefiltration Bioburden)、替代試驗方法與微粒監測在無菌製程品管中的角色，並連結至 CDMO 實際操作情境",
+   "en": "Explain the role of prefiltration bioburden, alternate test methods, and particle monitoring in quality control of aseptic processes, and connect them to real CDMO operations"
+  },
+  {
+   "zh": "法規依據 Regulatory Foundation（21 CFR）",
+   "en": "Regulatory Foundation (21 CFR)"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念：第X章的法規地基",
+   "en": "Core Concept: The Regulatory Foundation of Section X"
+  },
+  {
+   "zh": "本章引用了多達九條 CFR 法規條文，這在整份 FDA 無菌製程指引中是密度最高的章節之一。\n                    這不是巧合——它清楚表明 FDA 認為<strong>實驗室管制是強制性義務</strong>，而非選擇性建議。",
+   "en": "This section cites as many as nine CFR provisions, making it one of the densest sections in the entire FDA aseptic processing guidance.\n                    This is no coincidence: it shows clearly that FDA regards <strong>laboratory controls as a mandatory obligation</strong>, not an optional recommendation."
+  },
+  {
+   "zh": "注意 211.22、211.42、211.56、211.113、211.160 使用的都是「<strong>shall</strong>」，\n                    代表法律強制要求，違反即構成 CGMP 缺失，可能導致 Warning Letter、consent decree 甚至進口禁令。",
+   "en": "Note that 211.22, 211.42, 211.56, 211.113, and 211.160 all use the word \"<strong>shall</strong>\",\n                    which signals a legal requirement. A violation constitutes a CGMP deficiency and can lead to a Warning Letter, a consent decree, or even an import ban."
+  },
+  {
+   "zh": "法規地圖：本章涵蓋哪些 CFR 條文？",
+   "en": "Regulatory Map: Which CFR Provisions Does This Section Cover?"
+  },
+  {
+   "zh": "<strong>211.22</strong>：QC 單位需有足夠實驗室設施",
+   "en": "<strong>211.22</strong>: the quality control unit must have adequate laboratory facilities"
+  },
+  {
+   "zh": "<strong>211.42</strong>：無菌區域需有環境監測系統",
+   "en": "<strong>211.42</strong>: aseptic areas must have an environmental monitoring system"
+  },
+  {
+   "zh": "<strong>211.56</strong>：書面清潔與消毒程序",
+   "en": "<strong>211.56</strong>: written cleaning and sanitation procedures"
+  },
+  {
+   "zh": "<strong>211.110</strong>：製程中管制與在製品取樣",
+   "en": "<strong>211.110</strong>: in-process controls and sampling of in-process materials"
+  },
+  {
+   "zh": "<strong>211.113</strong>：無菌製品微生物污染預防程序",
+   "en": "<strong>211.113</strong>: procedures to prevent microbiological contamination of sterile products"
+  },
+  {
+   "zh": "<strong>211.160</strong>：實驗室管制的科學性規格與取樣計畫",
+   "en": "<strong>211.160</strong>: scientifically sound laboratory specifications and sampling plans"
+  },
+  {
+   "zh": "<strong>211.165</strong>：試驗方法的準確度、靈敏度與再現性",
+   "en": "<strong>211.165</strong>: accuracy, sensitivity, and reproducibility of test methods"
+  },
+  {
+   "zh": "<strong>211.192</strong>：批次放行前 QC 審核",
+   "en": "<strong>211.192</strong>: QC review before batch release"
+  },
+  {
+   "zh": "CDMO 業務應用場景",
+   "en": "CDMO Business Application"
+  },
+  {
+   "zh": "接受新客戶委託時，品質協議 (Quality Agreement) 中必須明確雙方在實驗室管制上的分工：\n                    誰負責環境監測計畫的設計與執行？誰審核數據趨勢？誰核准警示/行動水準的設定？\n                    這些問題若在合約前未釐清，查廠時往往是 483 觀察項目的根源。",
+   "en": "When accepting a new client, the Quality Agreement must spell out how laboratory-control responsibilities are divided:\n                    Who designs and runs the environmental monitoring program? Who reviews data trends? Who approves the alert/action level settings?\n                    If these questions are not settled before the contract is signed, they are often the root of 483 observations during an inspection."
+  },
+  {
+   "zh": "A. Environmental Monitoring — 1. General Written Program 環境監測：書面計畫總則",
+   "en": "A. Environmental Monitoring — 1. General Written Program"
+  },
+  {
+   "zh": "核心概念：環境監測計畫 (EM Program) 的目的",
+   "en": "Core Concept: The Purpose of the EM Program"
+  },
+  {
+   "zh": "EM 計畫不只是合規形式，它是無菌製程的「即時健康追蹤系統」。\n                    FDA 明確指出，EM 計畫的兩個核心功能是：",
+   "en": "An EM program is more than a compliance formality; it is the \"real-time health tracking system\" of the aseptic process.\n                    FDA states clearly that the EM program has two core functions:"
+  },
+  {
+   "zh": "<strong>即時資訊</strong>：在特定批次生產時，確認環境符合無菌條件",
+   "en": "<strong>Real-time information</strong>: confirming that the environment meets aseptic conditions during the production of a specific batch"
+  },
+  {
+   "zh": "<strong>趨勢資料</strong>：長期追蹤輔助潔淨區（走廊、更衣室）的微生物狀況",
+   "en": "<strong>Trend data</strong>: tracking, over the long term, the microbial status of supporting clean areas (corridors, gowning rooms)"
+  },
+  {
+   "zh": "最重要的是「<strong>先發制人</strong>」——在污染發生前，透過趨勢識別潛在風險路徑。\n                    這與事後的產品無菌試驗 (Sterility Test) 性質完全不同：EM 是<em>製程監控工具</em>，\n                    不是批次放行的替代品。",
+   "en": "Most important is being \"<strong>proactive</strong>\": identifying potential risk pathways through trends before contamination occurs.\n                    This is fundamentally different from the after-the-fact sterility test of the product: EM is a <em>process monitoring tool</em>,\n                    not a substitute for batch release."
+  },
+  {
+   "zh": "類比：EM 計畫就像醫院的感染控制系統",
+   "en": "Analogy: An EM Program Is Like a Hospital's Infection Control System"
+  },
+  {
+   "zh": "想像一間醫院手術室：不是等病人感染了才消毒，而是持續監測環境菌落數、\n                    對空氣品質做週期性採樣，建立「正常基準值」，一旦偏離就立即調查原因。\n                    無菌製程的 EM 計畫邏輯完全相同——<strong>預防導向，趨勢驅動</strong>。",
+   "en": "Picture a hospital operating room: you do not wait for a patient to become infected before disinfecting. Instead, you continuously monitor colony counts in the environment,\n                    sample the air periodically, establish a \"normal baseline\", and investigate the cause immediately when readings deviate.\n                    The logic of an aseptic-process EM program is exactly the same: <strong>prevention-oriented and trend-driven</strong>."
+  },
+  {
+   "zh": "關鍵要點：關鍵表面取樣時機",
+   "en": "Key Point: Timing of Critical Surface Sampling"
+  },
+  {
+   "zh": "FDA 明確要求：<strong>關鍵表面 (Critical Surface) 的取樣必須在無菌操作「結束後」進行</strong>，\n                    而非操作中途，以避免取樣行為本身污染無菌接觸面。\n                    這在 CDMO 操作中常被誤解——有些廠商在無菌灌裝進行中途插入 contact plate 取樣，\n                    此舉反而構成污染風險，且 FDA 稽核員非常熟悉這個錯誤。",
+   "en": "FDA expressly requires that <strong>sampling of critical surfaces be performed \"after\" the aseptic operation is finished</strong>,\n                    not midway through it, to avoid the act of sampling itself contaminating sterile contact surfaces.\n                    This is often misunderstood in CDMO operations: some companies insert contact plate sampling in the middle of aseptic filling,\n                    which actually creates a contamination risk, and FDA auditors are very familiar with this mistake."
+  },
+  {
+   "zh": "關鍵要點：陰性結果不代表安全",
+   "en": "Key Point: A Negative Result Does Not Mean Safe"
+  },
+  {
+   "zh": "EM 方法的偵測效率本來就不完美——<strong>假陰性 (False Negative)</strong> 是結構性問題，\n                    不是特例。因此，FDA 要求不只追蹤「連續陽性」，更要追蹤：",
+   "en": "EM methods are inherently imperfect in detection efficiency, so <strong>false negatives</strong> are a structural problem,\n                    not an exception. FDA therefore requires tracking not only \"consecutive positives\" but also:"
+  },
+  {
+   "zh": "同一地點的<strong>污染頻率增加</strong>（即使每次都低於行動水準）",
+   "en": "An <strong>increase in contamination frequency</strong> at the same location (even if every result is below the action level)"
+  },
+  {
+   "zh": "跨班次、跨房間的<strong>空間擴散趨勢</strong>",
+   "en": "<strong>Spatial spread trends</strong> across shifts and rooms"
+  },
+  {
+   "zh": "菌種組成的<strong>質變</strong>（從常見皮膚菌轉為環境菌或產孢菌）",
+   "en": "<strong>Qualitative changes</strong> in the microbial flora (a shift from common skin flora to environmental or sporeforming organisms)"
+  },
+  {
+   "zh": "CDMO 操作落地：SOP 七要素",
+   "en": "CDMO Implementation: The Seven Elements of the SOP"
+  },
+  {
+   "zh": "FDA 明確列出 EM SOP 必須涵蓋的七個要素。稽核員在查廠時通常會逐條核對。\n                    以下是 CDMO 常見缺失：",
+   "en": "FDA explicitly lists seven elements that an EM SOP must cover. Auditors typically check them one by one during an inspection.\n                    The following are common CDMO shortcomings:"
+  },
+  {
+   "zh": "取樣位置圖不夠詳細，無法重複再現 → 補充含坐標的平面圖",
+   "en": "The sampling location map is not detailed enough to be reproducible → add a floor plan with coordinates"
+  },
+  {
+   "zh": "只寫「操作後取樣」但未定義「操作後多久內」→ 加入具體時限",
+   "en": "The SOP says only \"sample after operations\" without defining \"within how long after operations\" → add a specific time limit"
+  },
+  {
+   "zh": "警示/行動水準設定無科學依據文件 → 補充設定依據報告",
+   "en": "No documented scientific basis for the alert/action level settings → add a report supporting the settings"
+  },
+  {
+   "zh": "偏差回應程序未區分單點超標 vs 趨勢超標 → 分級處置流程",
+   "en": "The deviation response procedure does not distinguish a single-point excursion from a trend excursion → introduce a tiered response process"
+  },
+  {
+   "zh": "A.2 Establishing Levels and a Trending Program 建立水準值與趨勢計畫",
+   "en": "A.2 Establishing Levels and a Trending Program"
+  },
+  {
+   "zh": "核心概念：Alert Level vs Action Level 的本質差異",
+   "en": "Core Concept: The Essential Difference Between Alert Level and Action Level"
+  },
+  {
+   "zh": "這是 FDA 查廠中最常被考核的觀念之一，必須徹底理解：",
+   "en": "This is one of the concepts most frequently tested in FDA inspections and must be thoroughly understood:"
+  },
+  {
+   "zh": "重要警告：不可對EM結果取平均值",
+   "en": "Important Warning: Do Not Average EM Results"
+  },
+  {
+   "zh": "FDA 明確警告：<strong>不得對不同位置的EM數據取平均值</strong>（Averaging of results can mask unacceptable localized conditions）。\n                    這是稽核中常見的 483 觀察項目——某些廠商將同一房間多個取樣點的 CFU 數平均後評估，\n                    導致某個局部嚴重污染點被「稀釋」掩蓋。\n                    <br/><strong>每一個取樣位置的每一次結果都應獨立評估。</strong>",
+   "en": "FDA expressly warns that <strong>EM data from different locations must not be averaged</strong> (Averaging of results can mask unacceptable localized conditions).\n                    This is a common 483 observation in audits: some companies average the CFU counts from several sampling points in the same room before evaluating them,\n                    so that a severely contaminated local spot is \"diluted\" and masked.\n                    <br/><strong>Every result at every sampling location should be evaluated independently.</strong>"
+  },
+  {
+   "zh": "類比：水準值就像汽車的儀表板警示燈",
+   "en": "Analogy: Levels Are Like a Car's Dashboard Warning Lights"
+  },
+  {
+   "zh": "Alert Level 就像「油表快到 1/4 格」的橘燈——還可以繼續開，但應該找加油站了。\n                    Action Level 就像「油表亮紅燈」——必須立刻停車加油，繼續開可能會拋錨。\n                    而「取平均值」就像把駕駛員的油表讀數平均後才決定加不加油——完全失去即時告警的意義。",
+   "en": "The Alert Level is like the orange light that comes on when the fuel gauge nears a quarter tank: you can keep driving, but you should look for a gas station.\n                    The Action Level is like the fuel gauge turning red: you must stop and refuel immediately, or you may break down.\n                    And \"averaging\" is like averaging the driver's fuel gauge readings before deciding whether to refuel, which completely defeats the purpose of a real-time warning."
+  },
+  {
+   "zh": "CDMO 趨勢報告實務建議",
+   "en": "Practical Recommendations for CDMO Trend Reports"
+  },
+  {
+   "zh": "FDA 要求趨勢報告涵蓋：位置、班次、房間、操作員等多個維度。\n                    CDMO 的 EM 資料庫應能支援以下查詢類型：",
+   "en": "FDA expects trend reports to cover multiple dimensions: location, shift, room, operator, and more.\n                    A CDMO's EM database should support the following types of queries:"
+  },
+  {
+   "zh": "單一操作員在過去一年的個人採樣結果趨勢",
+   "en": "The trend of a single operator's personnel sampling results over the past year"
+  },
+  {
+   "zh": "特定菌種（如 <em>Bacillus cereus</em>）的時間分佈",
+   "en": "The time distribution of a specific organism (such as <em>Bacillus cereus</em>)"
+  },
+  {
+   "zh": "班次間差異分析（夜班 vs 白班的污染頻率）",
+   "en": "Shift-to-shift difference analysis (contamination frequency on night shift vs day shift)"
+  },
+  {
+   "zh": "媒填批次前後的環境數據對比",
+   "en": "A comparison of environmental data before and after media fill batches"
+  },
+  {
+   "zh": "此外，FDA 強調管理層需<strong>定期收到趨勢資訊更新</strong>，\n                    這意味著 EM 數據不只是 QC 的工作，而是廠務管理決策的依據。",
+   "en": "In addition, FDA emphasizes that management must <strong>receive trend updates regularly</strong>,\n                    which means EM data is not just QC's job but a basis for facility management decisions."
+  },
+  {
+   "zh": "A.3 Disinfection Efficacy 消毒劑有效性",
+   "en": "A.3 Disinfection Efficacy"
+  },
+  {
+   "zh": "核心概念：消毒劑計畫的三層架構",
+   "en": "Core Concept: The Three-Tier Structure of a Disinfectant Program"
+  },
+  {
+   "zh": "一個符合 FDA 期望的消毒劑計畫至少需要三層保護：",
+   "en": "A disinfectant program that meets FDA expectations needs at least three tiers of protection:"
+  },
+  {
+   "zh": "<strong>第一層：日常消毒劑</strong>——針對常見菌的基礎消毒（如 70% IPA）",
+   "en": "<strong>Tier 1: Routine disinfectant</strong>: baseline disinfection against common organisms (e.g., 70% IPA)"
+  },
+  {
+   "zh": "<strong>第二層：輪換消毒劑</strong>——定期更換作用機制，防止菌株適應（如換用季銨鹽）",
+   "en": "<strong>Tier 2: Rotational disinfectant</strong>: a periodic change of mode of action to prevent strain adaptation (e.g., switching to a quaternary ammonium compound)"
+  },
+  {
+   "zh": "<strong>第三層：殺孢劑 (Sporicide)</strong>——定期或依 EM 數據觸發使用（如過氧化氫蒸汽、二氧化氯）",
+   "en": "<strong>Tier 3: Sporicide</strong>: used periodically or triggered by EM data (e.g., hydrogen peroxide vapor, chlorine dioxide)"
+  },
+  {
+   "zh": "重要警示：70% IPA 無法殺死 <em>Bacillus</em> 芽孢",
+   "en": "Important Warning: 70% IPA Cannot Kill <em>Bacillus</em> Spores"
+  },
+  {
+   "zh": "這是 FDA 在指引中罕見地以<strong>具體例子</strong>指出的要點，代表 FDA 在稽核中非常重視此事。\n                    <em>Bacillus</em> 屬（如 <em>B. cereus</em>、<em>B. subtilis</em>）能形成高度耐受環境的芽孢，\n                    70% IPA 對其完全無效。",
+   "en": "This is a rare point where FDA cites a <strong>specific example</strong> in the guidance, which shows how seriously FDA takes it in inspections.\n                    The genus <em>Bacillus</em> (such as <em>B. cereus</em> and <em>B. subtilis</em>) forms spores that are highly resistant to the environment,\n                    and 70% IPA is completely ineffective against them."
+  },
+  {
+   "zh": "若 EM 數據出現 <em>Bacillus</em> spp.，這是立即觸發殺孢劑的信號。\n                    若廠房的消毒計畫中沒有殺孢劑輪換程序，FDA 幾乎必然列出 483 觀察項目。",
+   "en": "If EM data show <em>Bacillus</em> spp., this is an immediate signal to use a sporicide.\n                    If a facility's disinfection program has no sporicide rotation procedure, FDA will almost certainly issue a 483 observation."
+  },
+  {
+   "zh": "類比：消毒劑輪換就像抗生素療程設計",
+   "en": "Analogy: Disinfectant Rotation Is Like Designing an Antibiotic Course"
+  },
+  {
+   "zh": "長期只用同一種消毒劑，就像一直給同一種抗生素——細菌會「學習」並產生耐受性。\n                    消毒劑的輪換計畫 (Rotation Program) 就是用不同作用機制打擊微生物，\n                    防止特定菌株在潔淨室中建立生態優勢地位。\n                    而殺孢劑的使用則是「當普通藥效果不夠時的強效療程」。",
+   "en": "Using only one disinfectant over a long period is like always giving the same antibiotic: bacteria \"learn\" and develop resistance.\n                    A rotation program uses different modes of action against microorganisms,\n                    preventing particular strains from establishing ecological dominance in the cleanroom.\n                    Sporicide use is the \"intensive treatment for when ordinary agents are not enough\"."
+  },
+  {
+   "zh": "CDMO 消毒劑計畫稽核要點",
+   "en": "Audit Points for a CDMO Disinfectant Program"
+  },
+  {
+   "zh": "查廠員在審核消毒劑計畫時通常會核查：",
+   "en": "When reviewing a disinfectant program, inspectors typically check:"
+  },
+  {
+   "zh": "消毒劑的<strong>無菌性確認</strong>（是否有 COA 或自行過濾滅菌記錄？）",
+   "en": "<strong>Confirmation of sterility</strong> of the disinfectant (is there a COA or a record of in-house filter sterilization?)"
+  },
+  {
+   "zh": "消毒劑的<strong>有效期限與配製記錄</strong>（配製日期、有效至日期、配製人員）",
+   "en": "The disinfectant's <strong>expiry and preparation records</strong> (preparation date, expiry date, preparer)"
+  },
+  {
+   "zh": "<strong>接觸時間 (Contact Time)</strong> 是否有書面規定並可驗證",
+   "en": "Whether <strong>contact time</strong> is defined in writing and can be verified"
+  },
+  {
+   "zh": "殺孢劑使用<strong>觸發條件</strong>是否明確定義（如每季固定執行 + EM 陽性觸發）",
+   "en": "Whether the <strong>trigger conditions</strong> for sporicide use are clearly defined (e.g., a fixed quarterly application plus triggering by positive EM results)"
+  },
+  {
+   "zh": "消毒劑有效性<strong>驗證報告</strong>（Disinfectant Efficacy Study）是否涵蓋代表性菌株",
+   "en": "Whether the <strong>validation report</strong> (disinfectant efficacy study) covers representative organisms"
+  },
+  {
+   "zh": "當 EM 趨勢出現特定菌株時，是否評估其對現行消毒劑的<strong>敏感性</strong>",
+   "en": "When a particular strain appears in EM trends, whether its <strong>susceptibility</strong> to the current disinfectants is evaluated"
+  },
+  {
+   "zh": "A.4a Monitoring Methods — Surface Monitoring 監測方法：表面監測",
+   "en": "A.4a Monitoring Methods — Surface Monitoring"
+  },
+  {
+   "zh": "表面取樣後的清潔提醒",
+   "en": "Cleaning Reminder After Surface Sampling"
+  },
+  {
+   "zh": "使用 RODAC 板（接觸板）在無菌區取樣後，<strong>必須對取樣部位進行消毒處理</strong>，\n                    因為培養基本身可能提供微生物生長的養分，若殘留在潔淨室表面反而構成污染風險。\n                    這一步驟在 SOP 中常被遺漏，是稽核缺失的常見來源。",
+   "en": "After sampling in the aseptic area with RODAC plates (contact plates), <strong>the sampled site must be disinfected</strong>,\n                    because the culture medium itself can provide nutrients for microbial growth, and any residue left on cleanroom surfaces becomes a contamination risk.\n                    This step is often omitted from SOPs and is a common source of audit findings."
+  },
+  {
+   "zh": "A.4b Monitoring Methods — Active Air Monitoring 主動空氣監測",
+   "en": "A.4b Monitoring Methods — Active Air Monitoring"
+  },
+  {
+   "zh": "四項設備評估標準的實務意涵",
+   "en": "Practical Implications of the Four Equipment Evaluation Criteria"
+  },
+  {
+   "zh": "FDA 要求從四個維度評估主動式採樣設備，CDMO 常遇到的問題包括：",
+   "en": "FDA requires active sampling equipment to be evaluated on four dimensions. Common problems seen in CDMOs include:"
+  },
+  {
+   "zh": "<strong>Collection Efficiency（採集效率）</strong>：不同設備在低濃度環境的偵測敏感度差異大，ISO Class 5 的低濃度環境尤其重要",
+   "en": "<strong>Collection Efficiency</strong>: detection sensitivity differs greatly between devices in low-concentration environments, which matters especially in ISO Class 5 environments"
+  },
+  {
+   "zh": "<strong>Cleanability（可清潔性）</strong>：設備必須能在潔淨室內清潔且不留死角，設計複雜的設備往往難以確保清潔驗證",
+   "en": "<strong>Cleanability</strong>: the equipment must be cleanable inside the cleanroom with no dead spots; complex designs often make it hard to ensure cleaning validation"
+  },
+  {
+   "zh": "<strong>Ability to be Sterilized（可滅菌性）</strong>：進入 Grade A/ISO 5 區域的設備或其接觸部件必須能被滅菌",
+   "en": "<strong>Ability to be Sterilized</strong>: equipment entering a Grade A/ISO 5 area, or its product-contact parts, must be capable of being sterilized"
+  },
+  {
+   "zh": "<strong>Disruption of Unidirectional Airflow（氣流干擾）</strong>：設備體積、形狀不得破壞 UDAF（單向流），否則反而創造渦流污染點",
+   "en": "<strong>Disruption of Unidirectional Airflow</strong>: the size and shape of the equipment must not disrupt UDAF (unidirectional airflow), or it will create turbulence and contamination points"
+  },
+  {
+   "zh": "CDMO 主動採樣操作規範",
+   "en": "Operating Rules for CDMO Active Sampling"
+  },
+  {
+   "zh": "每個生產班次都應執行主動空氣取樣，FDA 強調的是「<strong>每班次</strong>」而非每天或每批次。\n                    這對 24 小時連續生產的 CDMO 而言意味著：夜班也需要受訓的操作員執行 EM 取樣，\n                    且夜班數據必須被同等審核，不能因人力不足而降低夜班監測頻率。",
+   "en": "Active air sampling should be performed during every production shift; FDA emphasizes \"<strong>every shift</strong>\" rather than every day or every batch.\n                    For a CDMO running 24-hour continuous production, this means that night shift also needs trained operators to perform EM sampling,\n                    and night-shift data must be reviewed to the same standard; monitoring frequency on night shift cannot be reduced because of a staffing shortage."
+  },
+  {
+   "zh": "設備校驗記錄（流量校驗、計時器校驗）必須完整，且校驗週期需有書面規定。\n                    稽核員查到設備校驗逾期而仍在使用，是即時開 483 的情況之一。",
+   "en": "Equipment calibration records (flow rate calibration, timer calibration) must be complete, and the calibration interval must be defined in writing.\n                    An inspector finding overdue calibration on equipment that is still in use is one of the situations that can draw an immediate 483."
+  },
+  {
+   "zh": "A.4c Monitoring Methods — Passive Air Monitoring (Settling Plates) 被動空氣監測（沉降碟）",
+   "en": "A.4c Monitoring Methods — Passive Air Monitoring (Settling Plates)"
+  },
+  {
+   "zh": "沉降碟 vs 主動採樣的關係",
+   "en": "Settling Plates vs Active Sampling"
+  },
+  {
+   "zh": "沉降碟是「<strong>只抓得到會自然落下的微生物</strong>」——依靠重力沉降，\n                    不能主動截獲懸浮微粒，因此 FDA 明確定性為<em>定性或半定量</em>工具，\n                    不能替代主動採樣成為主要監測方法。",
+   "en": "Settling plates \"<strong>capture only organisms that settle naturally</strong>\": they rely on gravity settling\n                    and cannot actively capture airborne particles, so FDA expressly characterizes them as <em>qualitative or semi-quantitative</em> tools\n                    that cannot replace active sampling as the primary monitoring method."
+  },
+  {
+   "zh": "但沉降碟有一個主動採樣器無法提供的優勢：它可以<strong>連續暴露整個操作期間</strong>，\n                    捕捉整個批次生產過程中任何時間點的落菌事件，而主動採樣通常只採幾分鐘。",
+   "en": "But settling plates have one advantage that active samplers cannot offer: they can be <strong>exposed continuously for the entire operation</strong>,\n                    capturing settling events at any point during the whole batch production, whereas active sampling usually lasts only a few minutes."
+  },
+  {
+   "zh": "乾燥化 (Desiccation) 問題——常被忽略的陷阱",
+   "en": "The Desiccation Problem: A Frequently Overlooked Trap"
+  },
+  {
+   "zh": "FDA 特別警告乾燥化問題：在 Grade A 區域，<strong>HEPA 過濾的高速氣流</strong>\n                    會在數小時內讓沉降碟的培養基表面快速乾燥，\n                    導致即使有微生物落下也無法生長，形成<strong>假陰性</strong>。",
+   "en": "FDA specifically warns about desiccation: in a Grade A area, the <strong>high-velocity HEPA-filtered airflow</strong>\n                    can dry out the medium surface of a settling plate within hours,\n                    so that even if organisms land on it, they cannot grow, producing a <strong>false negative</strong>."
+  },
+  {
+   "zh": "解決方案：在方法驗證時確定每個位置的最大安全暴露時間，\n                    超過此時限的沉降碟結果可能失去意義。\n                    部分廠商使用帶蓋、半開的設計或選用含中和劑的培養基來延緩乾燥。",
+   "en": "Solution: determine the maximum safe exposure time for each location during method validation;\n                    results from settling plates exposed longer than this limit may be meaningless.\n                    Some companies use lidded or half-open designs, or media containing neutralizers, to slow desiccation."
+  },
+  {
+   "zh": "沉降碟放置策略",
+   "en": "Settling Plate Placement Strategy"
+  },
+  {
+   "zh": "FDA 強調沉降碟應放置在「<strong>產品污染風險最高的位置</strong>」。\n                    在灌裝作業中，這通常意味著：",
+   "en": "FDA stresses that settling plates should be placed at \"<strong>the locations of highest product contamination risk</strong>\".\n                    In filling operations, this usually means:"
+  },
+  {
+   "zh": "灌裝針頭正下方區域（但需確保不干擾操作）",
+   "en": "The area directly beneath the filling needles (but without interfering with the operation)"
+  },
+  {
+   "zh": "瓶蓋上蓋區域附近",
+   "en": "Near the stoppering area"
+  },
+  {
+   "zh": "操作員雙手活動最頻繁的區域兩側",
+   "en": "Both sides of the area where the operator's hands move most frequently"
+  },
+  {
+   "zh": "機器人幹預動線的起點與終點",
+   "en": "The start and end points of robotic intervention paths"
+  },
+  {
+   "zh": "沉降碟的位置圖必須歸入 EM SOP，且實際放置位置需與圖紙一致，\n                    偏差需記錄說明。",
+   "en": "The settling plate location map must be included in the EM SOP, and actual placement must match the map;\n                    any deviation must be recorded and explained."
+  },
+  {
+   "zh": "B. Microbiological Media and Identification 微生物培養基與菌種鑑定",
+   "en": "B. Microbiological Media and Identification"
+  },
+  {
+   "zh": "核心概念：菌種鑑定為何重要？",
+   "en": "Core Concept: Why Is Organism Identification Important?"
+  },
+  {
+   "zh": "只記錄「CFU 數量」是不夠的——<strong>知道是什麼菌</strong>才能判斷：",
+   "en": "Recording only the \"CFU count\" is not enough: <strong>knowing which organism it is</strong> allows you to judge:"
+  },
+  {
+   "zh": "污染來自何處（皮膚菌？環境菌？外來汙染源？）",
+   "en": "Where the contamination comes from (skin flora? environmental flora? an external source?)"
+  },
+  {
+   "zh": "是否與媒填或無菌試驗失敗中發現的菌相同（關鍵鑑識工具）",
+   "en": "Whether it is the same organism found in a media fill or a sterility test failure (a key forensic tool)"
+  },
+  {
+   "zh": "是否有菌種從低管制區遷移進入無菌處理區",
+   "en": "Whether organisms are migrating from lower-control areas into the aseptic processing area"
+  },
+  {
+   "zh": "現行消毒劑是否對此菌有效",
+   "en": "Whether the current disinfectants are effective against this organism"
+  },
+  {
+   "zh": "FDA 要求常規鑑定至<strong>種 (Species) 層級</strong>，不只是屬 (Genus) 層級，\n                    因為即使是同屬的不同種菌，其致病性、消毒劑耐受性和溯源意義可能差異很大。",
+   "en": "FDA requires routine identification to the <strong>species level</strong>, not just the genus level,\n                    because even different species within the same genus can differ greatly in pathogenicity, disinfectant resistance, and value for tracing the source."
+  },
+  {
+   "zh": "基因型鑑定 vs 表現型鑑定的選擇",
+   "en": "Choosing Between Genotypic and Phenotypic Identification"
+  },
+  {
+   "zh": "<strong>常規 EM 監測</strong>：傳統生化/表現型方法（如 API strips、VITEK）可接受，\n                    成本低、速度快，適合日常大量鑑定。",
+   "en": "<strong>Routine EM monitoring</strong>: traditional biochemical/phenotypic methods (such as API strips and VITEK) are acceptable;\n                    they are low-cost and fast, suitable for large volumes of routine identification."
+  },
+  {
+   "zh": "<strong>調查失敗事件時</strong>：FDA 建議使用<strong>基因型鑑定</strong>\n                    （如 16S rRNA 定序、MALDI-TOF）——準確度更高，可提供菌株層級的比對，\n                    確認媒填污染菌與 EM 分離菌是否為同一來源，這是調查報告的關鍵證據。",
+   "en": "<strong>When investigating failures</strong>: FDA recommends <strong>genotypic identification</strong>\n                    (such as 16S rRNA sequencing or MALDI-TOF), which is more accurate and allows strain-level comparison,\n                    confirming whether the organism contaminating a media fill and the EM isolate come from the same source, which is key evidence in an investigation report."
+  },
+  {
+   "zh": "培養基收貨管制：Growth Promotion Test 的 CDMO 實務",
+   "en": "Incoming Media Control: Growth Promotion Testing in CDMO Practice"
+  },
+  {
+   "zh": "每批收到的 EM 培養基（如 TSA plates、SDA plates）必須執行\n                    <strong>促生長試驗 (GPT)</strong>，以確認培養基的回收能力。\n                    常見的 CDMO 問題：",
+   "en": "Each received lot of EM media (such as TSA plates and SDA plates) must undergo\n                    <strong>growth promotion testing (GPT)</strong> to confirm the medium's recovery capability.\n                    Common CDMO problems include:"
+  },
+  {
+   "zh": "GPT 菌株未包含環境中常見的菌種（只用 USP 標準菌株，未加入環境菌株）",
+   "en": "The GPT strains do not include organisms commonly found in the facility (only the USP standard strains are used, with no environmental isolates added)"
+  },
+  {
+   "zh": "含抗生素產品殘留的取樣環境中未加入<strong>中和劑 (Neutralizing Agent)</strong>\n                        （如 lecithin + polysorbate 80 中和季銨鹽），導致假陰性",
+   "en": "No <strong>neutralizing agent</strong> is added in sampling environments with residues of antibiotic products\n                        (such as lecithin + polysorbate 80 to neutralize quaternary ammonium compounds), resulting in false negatives"
+  },
+  {
+   "zh": "培養基有效期內未重新驗證，開封後未限定使用期限",
+   "en": "Media are not requalified during their shelf life, and no use-by time is set after opening"
+  },
+  {
+   "zh": "特別注意：若 CDMO 同時生產含抗生素的產品，<strong>抗生素殘留</strong>極可能抑制\n                    EM 培養基上的菌落生長。培養基中必須加入合適的中和劑，\n                    且中和效果需經過驗證。",
+   "en": "Special note: if the CDMO also manufactures antibiotic-containing products, <strong>antibiotic residues</strong> are very likely to inhibit\n                    colony growth on EM media. A suitable neutralizing agent must be added to the medium,\n                    and its neutralizing effectiveness must be validated."
+  },
+  {
+   "zh": "培養條件速查表",
+   "en": "Quick Reference: Incubation Conditions"
+  },
+  {
+   "zh": "注意：以上條件來自 FDA 指引，與 USP &lt;61&gt;、EP 2.6.12 的設定一致，\n                    但具體採用的培養條件需在 EM 方法驗證中確認並記錄。",
+   "en": "Note: the conditions above come from the FDA guidance and are consistent with the settings in USP &lt;61&gt; and EP 2.6.12,\n                    but the incubation conditions actually adopted must be confirmed and documented in the EM method validation."
+  },
+  {
+   "zh": "C. Prefiltration Bioburden 過濾前生物負載",
+   "en": "C. Prefiltration Bioburden"
+  },
+  {
+   "zh": "核心概念：為什麼要控制前過濾生物負載？",
+   "en": "Core Concept: Why Control Prefiltration Bioburden?"
+  },
+  {
+   "zh": "無菌過濾（滅菌過濾）的設計假設是：進入過濾器的微生物量（bioburden）\n                    在一個可合理管控的低水準。若 bioburden 過高，會有三個後果：",
+   "en": "The design assumption of sterile filtration is that the microbial load entering the filter (bioburden)\n                    is at a low level that can be reasonably controlled. If bioburden is too high, there are three consequences:"
+  },
+  {
+   "zh": "<strong>過濾器挑戰量增加</strong>：超過過濾器的設計容量，可能導致穿透失效",
+   "en": "<strong>Increased filter challenge</strong>: exceeding the filter's design capacity may lead to breakthrough failure"
+  },
+  {
+   "zh": "<strong>內毒素 (Endotoxin) 升高</strong>：即使微生物被過濾掉，\n                        革蘭氏陰性菌的細胞壁碎片（內毒素）可通過 0.22μm 過濾器進入產品",
+   "en": "<strong>Elevated endotoxin</strong>: even if the organisms are filtered out,\n                        cell wall fragments of Gram-negative bacteria (endotoxin) can pass through a 0.22μm filter into the product"
+  },
+  {
+   "zh": "<strong>產品降解</strong>：高 bioburden 代表高酶活性，\n                        某些菌可分泌蛋白酶、核酸酶，在過濾前就降解藥物原料",
+   "en": "<strong>Product degradation</strong>: high bioburden means high enzyme activity,\n                        and some organisms secrete proteases and nucleases that degrade the drug substance before filtration"
+  },
+  {
+   "zh": "類比：前過濾管制就像淨水前的沉澱池",
+   "en": "Analogy: Prefiltration Control Is Like a Sedimentation Tank Before Water Purification"
+  },
+  {
+   "zh": "自來水廠不會把污水直接推入精密過濾器——先要沉澱、前處理，\n                    降低懸浮物和微生物量，再讓精密膜過濾發揮最終把關作用。\n                    無菌過濾的道理完全相同：前過濾 bioburden 管制是<strong>過濾器壽命和效能的保護措施</strong>，\n                    也是產品品質的第一道防線。",
+   "en": "A waterworks does not push dirty water straight into a precision filter: it first lets it settle and pretreats it,\n                    reducing suspended solids and microbial load, so that the precision membrane can do its final job as the last barrier.\n                    Sterile filtration works the same way: prefiltration bioburden control is a <strong>measure that protects filter life and performance</strong>\n                    and is also the first line of defense for product quality."
+  },
+  {
+   "zh": "Prefiltration Bioburden Limit 設定依據",
+   "en": "Basis for Setting the Prefiltration Bioburden Limit"
+  },
+  {
+   "zh": "前過濾生物負載限值通常設定在 <strong>10 CFU/100 mL</strong>（依產品特性可能更嚴），\n                    且應基於過濾器驗證時所使用的挑戰菌量。\n                    FDA 要求此限值必須<strong>書面建立</strong>，且日常製程必須有相應的監測計畫。",
+   "en": "The prefiltration bioburden limit is usually set at <strong>10 CFU/100 mL</strong> (it may be stricter depending on the product),\n                    and should be based on the challenge level of organisms used during filter validation.\n                    FDA requires that this limit be <strong>established in writing</strong> and that routine production have a corresponding monitoring program."
+  },
+  {
+   "zh": "若 bioburden 結果超過設定限值，需立即調查原因：\n                    原料 bioburden 偏高？配製過程中暴露時間過長？配製用水 (WFI/PW) 微生物偏高？\n                    這些都是需要在偏差報告中系統性排查的項目。",
+   "en": "If a bioburden result exceeds the set limit, the cause must be investigated immediately:\n                    Is the raw material bioburden high? Was the exposure time during compounding too long? Is the compounding water (WFI/PW) microbiologically high?\n                    These are all items that must be systematically checked in the deviation report."
+  },
+  {
+   "zh": "CDMO 前過濾 Bioburden 監測計畫",
+   "en": "CDMO Prefiltration Bioburden Monitoring Program"
+  },
+  {
+   "zh": "在技術轉移或工藝開發階段，CDMO 應與客戶確認前過濾 bioburden 的：",
+   "en": "During technology transfer or process development, the CDMO should confirm with the client the following for prefiltration bioburden:"
+  },
+  {
+   "zh": "取樣時機（過濾前立即取樣，避免暴露時間延長）",
+   "en": "Sampling timing (sample immediately before filtration to avoid extended exposure time)"
+  },
+  {
+   "zh": "取樣體積（通常取 100 mL 以確保足夠靈敏度）",
+   "en": "Sample volume (usually 100 mL to ensure sufficient sensitivity)"
+  },
+  {
+   "zh": "限值設定依據（需有書面文件）",
+   "en": "Basis for setting the limit (must be documented)"
+  },
+  {
+   "zh": "偏差回應流程（超標時是否需要重新評估過濾驗證的有效性？）",
+   "en": "Deviation response process (when the limit is exceeded, must the validity of the filtration validation be re-evaluated?)"
+  },
+  {
+   "zh": "特別注意：生物製劑（蛋白質、抗體）配製液比化學藥品更容易受微生物影響，\n                    因為培養基成分豐富，bioburden 增長速度更快，需要更嚴格的配製時限管制。",
+   "en": "Special note: biologic formulations (proteins, antibodies) are more susceptible to microbial effects than chemical drugs,\n                    because they are rich in nutrients and bioburden grows faster, so stricter compounding hold-time limits are needed."
+  },
+  {
+   "zh": "D. Alternate Microbiological Test Methods 替代微生物試驗方法",
+   "en": "D. Alternate Microbiological Test Methods"
+  },
+  {
+   "zh": "核心概念：快速微生物方法 (Rapid Microbiological Methods, RMM)",
+   "en": "Core Concept: Rapid Microbiological Methods (RMM)"
+  },
+  {
+   "zh": "傳統無菌試驗需要 14 天；傳統 EM 計數需要 3–7 天。\n                    快速微生物方法 (RMM) 旨在大幅縮短這個時間——從數天縮短到數小時甚至即時結果。\n                    FDA 在 2004 年指引中已開放 RMM 用於：",
+   "en": "The traditional sterility test takes 14 days, and traditional EM counts take 3–7 days.\n                    Rapid microbiological methods (RMM) aim to cut this time sharply, from days to hours or even real-time results.\n                    In its 2004 guidance, FDA already permitted RMM for:"
+  },
+  {
+   "zh": "環境監測 (EM)",
+   "en": "Environmental monitoring (EM)"
+  },
+  {
+   "zh": "製程中管制測試 (In-Process Control Testing)",
+   "en": "In-process control testing"
+  },
+  {
+   "zh": "成品放行測試 (Finished Product Release Testing)",
+   "en": "Finished product release testing"
+  },
+  {
+   "zh": "採用 RMM 的前提：等效或更優",
+   "en": "Prerequisite for Adopting RMM: Equivalent or Better"
+  },
+  {
+   "zh": "FDA 的允許條件非常明確：<strong>必須證明新方法等效於或優於傳統方法</strong>（如 USP 標準方法）。\n                    這意味著需要完整的方法等效性驗證 (Method Equivalency Validation)，包括：",
+   "en": "FDA's condition is very clear: <strong>the new method must be shown to be equivalent or superior to the traditional method</strong> (such as the USP standard method).\n                    This requires a complete method equivalency validation, including:"
+  },
+  {
+   "zh": "準確度 (Accuracy)、精密度 (Precision)",
+   "en": "Accuracy and precision"
+  },
+  {
+   "zh": "靈敏度 (Sensitivity) 下限不低於傳統方法",
+   "en": "A lower limit of sensitivity no worse than the traditional method"
+  },
+  {
+   "zh": "特異性 (Specificity)——不誤判",
+   "en": "Specificity, with no misidentification"
+  },
+  {
+   "zh": "與傳統方法的比對數據（至少 30 組平行樣本）",
+   "en": "Comparative data against the traditional method (at least 30 parallel samples)"
+  },
+  {
+   "zh": "若用於成品放行，通常需要提交 NDA/ANDA/BLA 補充申請，\n                    在美國需經 FDA 核准後方可替代 USP 法定方法。",
+   "en": "If used for finished product release, a supplemental NDA/ANDA/BLA submission is usually required,\n                    and in the US it can replace the compendial USP method only after FDA approval."
+  },
+  {
+   "zh": "CDMO 導入 RMM 的商業考量",
+   "en": "Business Considerations for CDMOs Adopting RMM"
+  },
+  {
+   "zh": "快速微生物方法的潛在優勢對 CDMO 極具商業價值：",
+   "en": "The potential advantages of rapid microbiological methods are of great commercial value to a CDMO:"
+  },
+  {
+   "zh": "<strong>縮短批次放行時間</strong>：從傳統無菌試驗 14 天縮至數小時（如 BacT/ALERT, BACTEC）",
+   "en": "<strong>Shorter batch release time</strong>: from 14 days for the traditional sterility test to a few hours (e.g., BacT/ALERT, BACTEC)"
+  },
+  {
+   "zh": "<strong>更快的製程偏差響應</strong>：EM 數據次日即可取得，利於即時糾正",
+   "en": "<strong>Faster response to process deviations</strong>: EM data are available the next day, enabling immediate correction"
+  },
+  {
+   "zh": "<strong>競爭優勢</strong>：能提供更快速放行服務的 CDMO 對客戶更具吸引力",
+   "en": "<strong>Competitive advantage</strong>: a CDMO that can offer faster release is more attractive to clients"
+  },
+  {
+   "zh": "挑戰：初期驗證成本高、設備投資大、法規審查程序複雜。\n                    因此，CDMO 通常優先在 EM 用途導入 RMM（監管要求較寬鬆），\n                    再逐步擴展至成品放行測試。",
+   "en": "Challenges: high initial validation cost, large equipment investment, and a complex regulatory review process.\n                    CDMOs therefore usually adopt RMM first for EM applications (where regulatory requirements are more relaxed),\n                    and then gradually extend it to finished product release testing."
+  },
+  {
+   "zh": "E. Particle Monitoring 微粒監測",
+   "en": "E. Particle Monitoring"
+  },
+  {
+   "zh": "核心概念：微粒監測 vs 微生物監測",
+   "en": "Core Concept: Particle Monitoring vs Microbial Monitoring"
+  },
+  {
+   "zh": "微粒計數 (Particle Count) 和微生物 EM 是<strong>互補但獨立</strong>的監測系統：",
+   "en": "Particle counting and microbial EM are <strong>complementary but independent</strong> monitoring systems:"
+  },
+  {
+   "zh": "<strong>微粒監測</strong>：即時連續偵測 ≥0.5μm 和 ≥5μm 的非生物微粒，\n                        用於確認潔淨室分級、HEPA 過濾器完整性和氣流穩定性。可自動化即時監測。",
+   "en": "<strong>Particle monitoring</strong>: continuous real-time detection of non-viable particles ≥0.5μm and ≥5μm,\n                        used to confirm cleanroom classification, HEPA filter integrity, and airflow stability. It can be automated for real-time monitoring."
+  },
+  {
+   "zh": "<strong>微生物 EM</strong>：定期取樣偵測活微生物，結果需 48 小時至 7 天後才能獲得，\n                        提供直接的微生物污染風險資訊。",
+   "en": "<strong>Microbial EM</strong>: periodic sampling to detect viable microorganisms, with results available only after 48 hours to 7 days,\n                        providing direct information on microbial contamination risk."
+  },
+  {
+   "zh": "微粒偏高不一定代表微生物污染，但微粒偏高是微生物污染風險升高的警示信號，\n                    因為微粒可攜帶微生物。",
+   "en": "Elevated particle counts do not necessarily indicate microbial contamination, but they are a warning sign of increased contamination risk,\n                    because particles can carry microorganisms."
+  },
+  {
+   "zh": "CDMO 微粒監測系統整合",
+   "en": "Integrating Particle Monitoring Systems in a CDMO"
+  },
+  {
+   "zh": "現代 CDMO 通常配置<strong>連續線上微粒監測系統 (Continuous Particle Monitoring System)</strong>，\n                    在灌裝作業中實時監測 Grade A 區域的微粒數。主要考量：",
+   "en": "Modern CDMOs usually install a <strong>continuous particle monitoring system</strong>\n                    that monitors particle counts in the Grade A area in real time during filling operations. Main considerations:"
+  },
+  {
+   "zh": "監測點位的選擇需反映最高風險區域（如灌裝針頭附近）",
+   "en": "Monitoring points should be chosen to reflect the highest-risk areas (such as near the filling needles)"
+  },
+  {
+   "zh": "採樣管路設計需避免延伸過長（造成測量延遲）",
+   "en": "The sampling tubing design should avoid excessive length (which causes measurement delay)"
+  },
+  {
+   "zh": "系統警報水準 (Alert/Action) 需依潔淨室分級設定且有書面依據",
+   "en": "System alarm levels (Alert/Action) must be set according to the cleanroom grade and have a documented basis"
+  },
+  {
+   "zh": "微粒偏差記錄與 EM 數據需能進行關聯分析（同一批次、同一時段）",
+   "en": "Particle deviation records and EM data must be amenable to correlation analysis (same batch, same time period)"
+  },
+  {
+   "zh": "連線至 DCS/SCADA 的警報紀錄是 FDA 稽核中要求提供的關鍵電子記錄",
+   "en": "Alarm records from the connected DCS/SCADA are key electronic records that FDA requests during inspections"
+  },
+  {
+   "zh": "調查範圍應與偏差嚴重性相稱",
+   "en": "Investigation Scope Should Be Commensurate with Deviation Severity"
+  },
+  {
+   "zh": "FDA 明確指出：調查的深度應與偏差的嚴重程度相稱 (consistent with severity)。\n                    以下是分級調查的原則：",
+   "en": "FDA expressly states that the depth of an investigation should be consistent with the severity of the deviation.\n                    The principles of a tiered investigation are as follows:"
+  },
+  {
+   "zh": "本章總覽 Chapter Summary",
+   "en": "Chapter Summary"
+  },
+  {
+   "zh": "Section X 核心要點速查",
+   "en": "Section X Quick Reference of Key Points"
+  },
+  {
+   "zh": "CDMO 查廠準備重點",
+   "en": "CDMO Inspection Preparation Priorities"
+  },
+  {
+   "zh": "FDA 稽核中 Section X 最常見的 483 觀察項目",
+   "en": "Most Common 483 Observations on Section X in FDA Audits"
+  },
+  {
+   "zh": "EM 取樣位置 SOP 不夠詳細，無法再現取樣",
+   "en": "The EM sampling location SOP is not detailed enough to reproduce sampling"
+  },
+  {
+   "zh": "對 EM 結果取平均值評估，掩蓋局部污染",
+   "en": "EM results are averaged for evaluation, masking localized contamination"
+  },
+  {
+   "zh": "消毒劑計畫中缺乏殺孢劑輪換，或觸發條件不明確",
+   "en": "The disinfectant program lacks sporicide rotation, or the trigger conditions are unclear"
+  },
+  {
+   "zh": "主動採樣設備校驗逾期，或流量設定記錄缺失",
+   "en": "Active sampling equipment calibration is overdue, or flow setting records are missing"
+  },
+  {
+   "zh": "沉降碟暴露時間過長（乾燥化未評估）導致系統性假陰性",
+   "en": "Settling plate exposure time is too long (desiccation not evaluated), causing systematic false negatives"
+  },
+  {
+   "zh": "菌種未鑑定至種層級（僅記錄「Gram-positive cocci」）",
+   "en": "Organisms are not identified to the species level (only \"Gram-positive cocci\" is recorded)"
+  },
+  {
+   "zh": "EM 培養基批次未做 GPT，或中和劑未驗證",
+   "en": "EM media lots are not subjected to GPT, or neutralizers are not validated"
+  },
+  {
+   "zh": "前過濾 bioburden 限值未書面建立，或超標未調查",
+   "en": "The prefiltration bioburden limit is not established in writing, or excursions are not investigated"
+  },
+  {
+   "zh": "微粒超標後調查深度不足（只記錄「操作員活動增加」）",
+   "en": "Insufficient investigation depth after particle excursions (only \"increased operator activity\" is recorded)"
+  },
+  {
+   "zh": "管理層未定期收到 EM 趨勢更新報告",
+   "en": "Management does not regularly receive EM trend update reports"
+  },
+  {
+   "zh": "思考練習 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "若 ISO 7 走廊的某取樣點連續三週結果均在 Alert Level 的 80%，但未超過 Alert Level，你身為 QC 主管應採取什麼行動？為什麼？",
+   "en": "A sampling point in an ISO 7 corridor has had results at 80% of the Alert Level for three consecutive weeks, without exceeding the Alert Level. As QC head, what action should you take, and why?"
+  },
+  {
+   "zh": "媒填結果出現一個菌落（菌種為 <em>Bacillus subtilis</em>），而同批次填充期間 EM 結果均為零。調查方向應如何規劃？",
+   "en": "A media fill shows one colony (identified as <em>Bacillus subtilis</em>), while EM results during the same fill were all zero. How should the investigation be planned?"
+  },
+  {
+   "zh": "一位新進操作員的手套取樣連續三次超過 Action Level，請設計系統性調查流程。",
+   "en": "A new operator's glove sampling has exceeded the Action Level three times in a row. Design a systematic investigation process."
+  },
+  {
+   "zh": "客戶提議導入 ATP bioluminescence 快速法替代傳統 EM，你需要哪些驗證數據才能評估這個提案的可行性？",
+   "en": "A client proposes replacing traditional EM with an ATP bioluminescence rapid method. What validation data do you need to evaluate the feasibility of this proposal?"
+  },
+  {
+   "zh": "你的潔淨室消毒計畫只使用 70% IPA，EM 數據出現 <em>Bacillus cereus</em>，下一步如何處置？",
+   "en": "Your cleanroom disinfection program uses only 70% IPA, and EM data show <em>Bacillus cereus</em>. What is the next step?"
+  },
+  {
+   "zh": "前過濾 bioburden 結果突然升高至設定限值的 3 倍，生產部門建議繼續過濾灌裝，你的立場和理由是什麼？",
+   "en": "Prefiltration bioburden results suddenly rise to 3 times the set limit, and the production department suggests continuing to filter and fill. What is your position and your reasoning?"
+  }
+ ]
+}
