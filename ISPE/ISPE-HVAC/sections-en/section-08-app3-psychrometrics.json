@@ -1,0 +1,849 @@
+{
+ "source": "section-08-app3-psychrometrics.html",
+ "blocks": [
+  {
+   "zh": "附錄3：空氣線圖與濕度學",
+   "en": "Appendix 3: Psychrometrics"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解 Psychrometric Chart（空氣線圖）的基本結構，以及圖上各軸線代表的物理意義",
+   "en": "Understand the basic structure of the psychrometric chart and the physical meaning of each axis and line on it"
+  },
+  {
+   "zh": "掌握三種可量測溫度參數：Dry Bulb Temperature（乾球溫度）、Wet Bulb Temperature（濕球溫度）、Dew Point Temperature（露點溫度）的定義與差異",
+   "en": "Master the definitions of, and differences among, the three measurable temperature parameters: dry-bulb temperature, wet-bulb temperature and dew point temperature"
+  },
+  {
+   "zh": "學會區分可量測屬性（Measurable Properties）與可計算屬性（Calculable Properties），理解兩者在 HVAC 設計中的互補關係",
+   "en": "Distinguish measurable properties from calculable properties, and understand how the two complement each other in HVAC design"
+  },
+  {
+   "zh": "了解 Relative Humidity（相對濕度）、Enthalpy（焓）、Humidity Ratio（含濕量）、Specific Volume（比容）、Vapor Pressure（水蒸氣壓力）等計算參數的意義",
+   "en": "Understand the meaning of the calculated parameters: relative humidity, enthalpy, humidity ratio, specific volume and vapor pressure"
+  },
+  {
+   "zh": "熟悉八大基本向量（Eight Fundamental Vectors）及其在 HVAC 系統設計中的應用",
+   "en": "Become familiar with the Eight Fundamental Vectors and how they are applied in HVAC system design"
+  },
+  {
+   "zh": "掌握 System Mapping（系統映射）概念，能在空氣線圖上追蹤空調處理過程的每個階段",
+   "en": "Master the concept of system mapping, so that each stage of an air-conditioning process can be traced on the psychrometric chart"
+  },
+  {
+   "zh": "9.1 Introduction（導論）",
+   "en": "9.1 Introduction"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念：Psychrometrics（空氣線圖與濕度學）",
+   "en": "Key Concept: Psychrometrics"
+  },
+  {
+   "zh": "<strong>Psychrometrics（空氣線圖與濕度學）</strong>是研究空氣與水蒸氣混合物熱力學性質的科學。在製藥 HVAC 設計中，這門學問是一切溫濕度控制的理論基礎。",
+   "en": "<strong>Psychrometrics</strong> is the science of the thermodynamic properties of mixtures of air and water vapor. In pharmaceutical HVAC design, it is the theoretical foundation of all temperature and humidity control."
+  },
+  {
+   "zh": "空氣線圖（Psychrometric Chart）是將這些複雜的熱力學關係「視覺化」的工具。只要知道任意兩個獨立參數，就能在圖上確定空氣的完整狀態——溫度、濕度、焓值等所有資訊一目了然。",
+   "en": "The psychrometric chart \"visualizes\" these complex thermodynamic relationships. Once you know any two independent parameters, you can fix the complete state of the air on the chart: temperature, humidity, enthalpy and all other properties are visible at a glance."
+  },
+  {
+   "zh": "Table 9.1 將參數分為兩大類：",
+   "en": "Table 9.1 divides the parameters into two groups:"
+  },
+  {
+   "zh": "<strong>可量測屬性（Measurable）</strong>：可以用儀器直接量到的——溫度計量乾球、濕球，露點儀量露點，濕度計量 RH，氣壓計量氣壓",
+   "en": "<strong>Measurable properties</strong>: those read directly with instruments. A thermometer measures dry bulb and wet bulb, a dew point meter measures dew point, a hygrometer measures RH, and a barometer measures barometric pressure"
+  },
+  {
+   "zh": "<strong>可計算屬性（Calculable）</strong>：需要透過公式從量測值推導出來的——焓、比容、含濕量、水蒸氣壓力",
+   "en": "<strong>Calculable properties</strong>: those derived from measured values by formula: enthalpy, specific volume, humidity ratio and vapor pressure"
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "把空氣線圖想像成「空氣的健康檢查報告」。就像人的健檢報告上有體溫、血壓、心跳等指標，空氣線圖上也呈現了空氣的「體溫」（乾球溫度）、「含水量」（含濕量）、「飽和程度」（相對濕度）等。只要量到兩個數值，就能推算出完整的「體檢結果」。",
+   "en": "Think of the psychrometric chart as a \"health check report for air.\" Just as a person's checkup report lists body temperature, blood pressure and heart rate, the chart presents the air's \"body temperature\" (dry-bulb temperature), \"water content\" (humidity ratio) and \"degree of saturation\" (relative humidity). Measure any two values and you can work out the complete \"checkup result.\""
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "對 CDMO 工程師而言，空氣線圖不只是理論工具——它直接影響：",
+   "en": "For a CDMO engineer, the psychrometric chart is not just a theoretical tool; it directly affects:"
+  },
+  {
+   "zh": "<strong>AHU 選型</strong>：冷卻盤管的容量、加濕器的規格，都需要從空氣線圖上讀取焓差、含濕量差來計算",
+   "en": "<strong>AHU selection</strong>: cooling coil capacity and humidifier specifications are calculated from the enthalpy difference and humidity ratio difference read from the chart"
+  },
+  {
+   "zh": "<strong>能耗分析</strong>：夏季除濕、冬季加濕的能耗成本，根源就在空氣線圖上的狀態變化路徑",
+   "en": "<strong>Energy analysis</strong>: the energy cost of summer dehumidification and winter humidification originates in the state-change path on the chart"
+  },
+  {
+   "zh": "<strong>GMP 合規</strong>：藥廠對潔淨區的溫度（通常 18-25°C）和相對濕度（通常 30-65% RH）都有嚴格要求，空氣線圖幫助你理解如何同時達成這兩個目標",
+   "en": "<strong>GMP compliance</strong>: pharmaceutical plants have strict requirements for cleanroom temperature (typically 18-25°C) and relative humidity (typically 30-65% RH). The chart helps you understand how to achieve both targets at the same time"
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "為什麼在空氣線圖上，只需要兩個獨立參數就能確定空氣的完整狀態？這和熱力學中的「狀態公設」（State Postulate）有什麼關係？",
+   "en": "Why do only two independent parameters suffice to fix the complete state of air on the psychrometric chart? How does this relate to the \"State Postulate\" in thermodynamics?"
+  },
+  {
+   "zh": "Table 9.1 中哪些參數是在製藥潔淨區日常監測中最常用的？為什麼？",
+   "en": "Which parameters in Table 9.1 are most commonly used for routine monitoring of pharmaceutical cleanrooms, and why?"
+  },
+  {
+   "zh": "9.2 Dry-Bulb Temperature（乾球溫度）",
+   "en": "9.2 Dry-Bulb Temperature"
+  },
+  {
+   "zh": "核心概念：Dry Bulb Temperature（乾球溫度）",
+   "en": "Key Concept: Dry Bulb Temperature"
+  },
+  {
+   "zh": "<strong>Dry Bulb Temperature（乾球溫度，t<sub>DB</sub>）</strong>就是我們日常所說的「氣溫」——用普通溫度計（RTD 或熱電偶）在乾燥狀態下量到的溫度。之所以叫「乾球」，是為了和下一節的「濕球」溫度區分。",
+   "en": "<strong>Dry Bulb Temperature (t<sub>DB</sub>)</strong> is what we ordinarily call \"air temperature\": the temperature measured in the dry state with an ordinary thermometer (RTD or thermocouple). It is called \"dry bulb\" to distinguish it from the \"wet bulb\" temperature in the next section."
+  },
+  {
+   "zh": "關鍵概念：改變乾球溫度的過程叫做 <strong>Sensible Heating（顯熱加熱）</strong>或 <strong>Sensible Cooling（顯熱冷卻）</strong>。「顯熱」的意思是「看得到（感覺得到）的熱」——溫度計會有變化。相對的，改變濕度的過程涉及「潛熱」（Latent Heat），溫度計可能不會變化。",
+   "en": "Key concept: a process that changes dry-bulb temperature is called <strong>Sensible Heating</strong> or <strong>Sensible Cooling</strong>. \"Sensible\" heat is heat you can see (or feel): the thermometer reading changes. By contrast, a process that changes humidity involves \"latent heat,\" and the thermometer may not change."
+  },
+  {
+   "zh": "乾球溫度就像你在天氣 App 上看到的溫度。當氣象說「今天 30°C」，那就是乾球溫度。但你有沒有注意到，同樣 30°C，台北和沙漠的體感完全不同？那是因為濕度不一樣——這就是為什麼只有乾球溫度還不夠，我們還需要濕球溫度和露點。",
+   "en": "Dry-bulb temperature is the temperature you see in a weather app. When the forecast says \"30°C today,\" that is the dry-bulb temperature. But have you noticed that 30°C feels completely different in Taipei and in a desert? That is because the humidity differs. This is why dry-bulb temperature alone is not enough, and we also need wet-bulb temperature and dew point."
+  },
+  {
+   "zh": "圖表解讀 Figure Analysis",
+   "en": "Figure Analysis"
+  },
+  {
+   "zh": "<strong>Figure 9.2</strong> 顯示乾球溫度在空氣線圖上的表現方式：",
+   "en": "<strong>Figure 9.2</strong> shows how dry-bulb temperature appears on the psychrometric chart:"
+  },
+  {
+   "zh": "乾球溫度以<strong>垂直線</strong>表示，從左到右溫度遞增",
+   "en": "Dry-bulb temperature is shown as <strong>vertical lines</strong>, increasing from left to right"
+  },
+  {
+   "zh": "底部水平軸就是乾球溫度的刻度",
+   "en": "The horizontal axis at the bottom is the dry-bulb temperature scale"
+  },
+  {
+   "zh": "在空氣線圖上，沿著同一條垂直線移動，代表溫度不變但濕度在改變（加濕或除濕）",
+   "en": "Moving along the same vertical line on the chart means the temperature stays constant while the humidity changes (humidification or dehumidification)"
+  },
+  {
+   "zh": "沿著水平線移動（底部軸），代表溫度變化但含濕量不變——這就是純粹的「顯熱」過程",
+   "en": "Moving along a horizontal line (parallel to the bottom axis) means the temperature changes while the humidity ratio stays constant. This is a purely \"sensible\" process"
+  },
+  {
+   "zh": "公式與計算 Formula",
+   "en": "Formula"
+  },
+  {
+   "zh": "顯熱負荷計算（Sensible Heat Load）：",
+   "en": "Sensible heat load:"
+  },
+  {
+   "zh": "Q_sensible = m x c_p x (t_DB2 - t_DB1)\n\n其中：\n  Q = 顯熱量 (kW 或 BTU/hr)\n  m = 空氣質量流量 (kg/s 或 lb/hr)\n  c_p = 空氣比熱 ≈ 1.006 kJ/(kg·K)\n  t_DB = 乾球溫度 (°C 或 °F)",
+   "en": "Q_sensible = m x c_p x (t_DB2 - t_DB1)\n\nwhere:\n  Q = sensible heat (kW or BTU/hr)\n  m = air mass flow rate (kg/s or lb/hr)\n  c_p = specific heat of air ≈ 1.006 kJ/(kg·K)\n  t_DB = dry-bulb temperature (°C or °F)"
+  },
+  {
+   "zh": "在空氣線圖上，如果一個空氣狀態點沿水平線向右移動，代表什麼物理過程？溫度和含濕量分別如何變化？",
+   "en": "On the psychrometric chart, if an air state point moves horizontally to the right, what physical process does this represent? How do the temperature and humidity ratio each change?"
+  },
+  {
+   "zh": "為什麼製藥潔淨區通常設定 18-25°C？溫度太高或太低對生產有什麼影響？",
+   "en": "Why are pharmaceutical cleanrooms typically set at 18-25°C? What effects on production can result from temperatures that are too high or too low?"
+  },
+  {
+   "zh": "9.3 Wet-Bulb Temperature（濕球溫度）",
+   "en": "9.3 Wet-Bulb Temperature"
+  },
+  {
+   "zh": "核心概念：Wet Bulb Temperature（濕球溫度）",
+   "en": "Key Concept: Wet Bulb Temperature"
+  },
+  {
+   "zh": "<strong>Wet Bulb Temperature（濕球溫度，t<sub>WB</sub>）</strong>的量測原理非常巧妙：用一塊濕布包裹溫度計的感應頭，放在快速流動的空氣中。水分蒸發會「帶走熱量」（蒸發潛熱），使溫度計讀數降低。",
+   "en": "The measuring principle of <strong>Wet Bulb Temperature (t<sub>WB</sub>)</strong> is quite clever: the sensing bulb of a thermometer is wrapped in a wet cloth and placed in fast-moving air. Evaporation of water \"carries away heat\" (latent heat of evaporation), which lowers the thermometer reading."
+  },
+  {
+   "zh": "核心邏輯：",
+   "en": "Core logic:"
+  },
+  {
+   "zh": "<strong>空氣越乾</strong> → 蒸發越快 → 帶走越多熱 → 濕球溫度越低 → 乾濕球溫差越大",
+   "en": "<strong>Drier air</strong> → faster evaporation → more heat removed → lower wet-bulb temperature → larger difference between dry-bulb and wet-bulb temperatures"
+  },
+  {
+   "zh": "<strong>空氣越濕</strong> → 蒸發越慢 → 帶走較少熱 → 濕球溫度越接近乾球溫度",
+   "en": "<strong>Moister air</strong> → slower evaporation → less heat removed → wet-bulb temperature closer to dry-bulb temperature"
+  },
+  {
+   "zh": "<strong>100% RH（飽和）</strong> → 完全不蒸發 → t<sub>WB</sub> = t<sub>DB</sub>",
+   "en": "<strong>100% RH (saturation)</strong> → no evaporation at all → t<sub>WB</sub> = t<sub>DB</sub>"
+  },
+  {
+   "zh": "濕球溫度就像夏天從泳池出來的感覺。如果空氣很乾（比如沙漠），身上的水分快速蒸發，你會覺得很涼甚至發冷——這就是「乾濕球溫差大」的體感。但如果是在台灣夏天的高濕環境，水分蒸發很慢，出水後還是覺得很悶熱——因為乾濕球溫差很小。",
+   "en": "Wet-bulb temperature is like the feeling of stepping out of a swimming pool in summer. If the air is very dry (in a desert, for example), the water on your body evaporates quickly and you feel cool or even chilly. This is the sensation of a \"large wet-bulb depression.\" In the humid Taiwanese summer, however, water evaporates slowly and you still feel hot and stuffy after leaving the water, because the difference between dry-bulb and wet-bulb temperatures is small."
+  },
+  {
+   "zh": "濕球溫度在 HVAC 工程中的重要性：",
+   "en": "Why wet-bulb temperature matters in HVAC engineering:"
+  },
+  {
+   "zh": "<strong>冷卻塔設計</strong>：冷卻塔的理論最低出水溫度就是當地的濕球溫度。這是設計冷凍水系統的關鍵參數",
+   "en": "<strong>Cooling tower design</strong>: the theoretical lowest leaving-water temperature of a cooling tower is the local wet-bulb temperature. It is a key parameter for designing chilled water systems"
+  },
+  {
+   "zh": "<strong>總熱量指標</strong>：濕球溫度同時反映了顯熱（溫度）和潛熱（濕度），是衡量空氣「總能量」的近似指標",
+   "en": "<strong>Indicator of total heat</strong>: wet-bulb temperature reflects both sensible heat (temperature) and latent heat (moisture), so it is an approximate indicator of the air's \"total energy\""
+  },
+  {
+   "zh": "<strong>圖上特徵</strong>：Figure 9.3 顯示濕球溫度線在空氣線圖上從左上方向右下方傾斜延伸。注意這些線和焓線幾乎平行——因為兩者都反映空氣的總能量",
+   "en": "<strong>Appearance on the chart</strong>: Figure 9.3 shows wet-bulb lines running diagonally from upper left to lower right on the psychrometric chart. Note that they are almost parallel to the enthalpy lines, because both reflect the total energy of the air"
+  },
+  {
+   "zh": "實務應用 Practical Application",
+   "en": "Practical Application"
+  },
+  {
+   "zh": "在台灣地區，夏季設計濕球溫度通常取 27-28°C（ASHRAE 0.4% 設計條件）。這直接決定了冷卻塔的選型和冷凍水供應溫度。在 CDMO 廠房設計初期，必須取得當地氣象數據的設計濕球溫度，否則可能導致夏季冷卻能力不足，潔淨區溫濕度超標。",
+   "en": "In Taiwan, the summer design wet-bulb temperature is usually taken as 27-28°C (ASHRAE 0.4% design condition). This directly determines cooling tower selection and the chilled water supply temperature. In the early design of a CDMO facility, the design wet-bulb temperature from local weather data must be obtained; otherwise summer cooling capacity may be insufficient and cleanroom temperature and humidity may exceed limits."
+  },
+  {
+   "zh": "如果某地乾球溫度 35°C，濕球溫度 20°C，這代表空氣狀態偏乾還是偏濕？為什麼？",
+   "en": "If a location has a dry-bulb temperature of 35°C and a wet-bulb temperature of 20°C, is the air relatively dry or relatively humid? Why?"
+  },
+  {
+   "zh": "為什麼冷卻塔的出水溫度永遠無法低於環境的濕球溫度？",
+   "en": "Why can the leaving-water temperature of a cooling tower never go below the ambient wet-bulb temperature?"
+  },
+  {
+   "zh": "9.4 Dew-Point Temperature（露點溫度）",
+   "en": "9.4 Dew-Point Temperature"
+  },
+  {
+   "zh": "核心概念：Dew Point Temperature（露點溫度）",
+   "en": "Key Concept: Dew Point Temperature"
+  },
+  {
+   "zh": "<strong>Dew Point（露點，t<sub>DP</sub>）</strong>是空氣中的水蒸氣開始凝結成水滴的溫度。當你把空氣持續冷卻（不加不減水分），到了某個溫度，空氣「裝不下」那麼多水蒸氣，水就會以液態出現——在物體表面形成露珠，或在空中形成霧。",
+   "en": "<strong>Dew Point (t<sub>DP</sub>)</strong> is the temperature at which water vapor in the air begins to condense into liquid droplets. If you keep cooling air (without adding or removing moisture), at some temperature the air can no longer \"hold\" that much water vapor, and the water appears as liquid, forming dew on surfaces or fog in the air."
+  },
+  {
+   "zh": "關鍵關係：",
+   "en": "Key relationships:"
+  },
+  {
+   "zh": "露點只取決於空氣中的<strong>絕對含水量</strong>（含濕量 W），與溫度無關",
+   "en": "Dew point depends only on the <strong>absolute moisture content</strong> of the air (humidity ratio W), not on temperature"
+  },
+  {
+   "zh": "含水量越高 → 露點越高",
+   "en": "The higher the moisture content, the higher the dew point"
+  },
+  {
+   "zh": "在空氣線圖上，露點就是某狀態點水平向左延伸到飽和線（100% RH 曲線）的交點溫度",
+   "en": "On the psychrometric chart, the dew point is the temperature at the point where a horizontal line extended to the left from the state point meets the saturation curve (100% RH)"
+  },
+  {
+   "zh": "露點就像一杯冰水外面出現的水珠。夏天你拿一杯冰水，杯壁溫度低於周圍空氣的露點，空氣中的水蒸氣接觸到冷杯壁就凝結成水滴。如果房間裡非常乾燥（露點很低），杯壁要更冷才會出水珠；如果房間很潮濕（露點很高），杯壁稍微涼一點就會「冒汗」。",
+   "en": "Dew point is like the water droplets that appear on the outside of a glass of iced water. When you hold a glass of iced water in summer, the glass wall is colder than the dew point of the surrounding air, so water vapor touching the cold wall condenses into droplets. If the room is very dry (low dew point), the glass must be colder before droplets appear; if the room is very humid (high dew point), a slightly cool glass will already \"sweat.\""
+  },
+  {
+   "zh": "露點在製藥環境中的關鍵應用：",
+   "en": "Key applications of dew point in the pharmaceutical environment:"
+  },
+  {
+   "zh": "<strong>凝結風險控制</strong>：如果潔淨區內設備表面溫度（如冷卻水管、冷凍乾燥機外壁）低於室內空氣的露點，就會產生凝結水——這在 GMP 環境中是嚴重的污染風險",
+   "en": "<strong>Condensation risk control</strong>: if the surface temperature of equipment in a cleanroom (such as chilled water pipes or the outer wall of a freeze dryer) is below the dew point of the room air, condensation forms. In a GMP environment this is a serious contamination risk"
+  },
+  {
+   "zh": "<strong>除濕設計依據</strong>：冷卻除濕的原理就是把空氣冷卻到露點以下，讓水分凝結出來。冷卻盤管的設計溫度必須低於目標露點",
+   "en": "<strong>Basis for dehumidification design</strong>: the principle of cooling dehumidification is to cool the air below its dew point so that moisture condenses out. The design temperature of the cooling coil must be lower than the target dew point"
+  },
+  {
+   "zh": "<strong>凍乾（Lyophilization）</strong>：凍乾製程對環境露點有極嚴格要求，通常需要露點 ≤ -40°C 的乾燥空氣",
+   "en": "<strong>Lyophilization</strong>: lyophilization processes place very strict requirements on ambient dew point, and generally require dry air with a dew point ≤ -40°C"
+  },
+  {
+   "zh": "如果潔淨區空氣條件是 22°C / 50% RH，露點大約是多少？如果冷凍水管路表面溫度是 8°C，會不會凝結？",
+   "en": "If the cleanroom air condition is 22°C / 50% RH, what is the approximate dew point? If the surface temperature of a chilled water pipe is 8°C, will condensation occur?"
+  },
+  {
+   "zh": "為什麼露點比相對濕度更適合作為「絕對含水量」的指標？",
+   "en": "Why is dew point a better indicator of \"absolute moisture content\" than relative humidity?"
+  },
+  {
+   "zh": "9.5 Relative Humidity (Percent of Saturation)（相對濕度）",
+   "en": "9.5 Relative Humidity (Percent of Saturation)"
+  },
+  {
+   "zh": "核心概念：Relative Humidity（相對濕度）",
+   "en": "Key Concept: Relative Humidity"
+  },
+  {
+   "zh": "<strong>Relative Humidity（相對濕度，RH）</strong>是空氣中<em>實際</em>水蒸氣含量與同溫度下<em>最大</em>可容納水蒸氣含量的比值，以百分比表示。",
+   "en": "<strong>Relative Humidity (RH)</strong> is the ratio of the <em>actual</em> water vapor content of the air to the <em>maximum</em> water vapor content the air can hold at the same temperature, expressed as a percentage."
+  },
+  {
+   "zh": "關鍵字是「相對」——同樣的含水量，溫度不同，RH 就不同：",
+   "en": "The key word is \"relative\": for the same moisture content, RH differs at different temperatures:"
+  },
+  {
+   "zh": "30°C 的空氣能容納的最大水蒸氣量遠大於 10°C",
+   "en": "Air at 30°C can hold far more water vapor at saturation than air at 10°C"
+  },
+  {
+   "zh": "因此，含水量相同的空氣，加熱後 RH 降低，冷卻後 RH 升高",
+   "en": "Therefore, for air with a given moisture content, RH falls when it is heated and rises when it is cooled"
+  },
+  {
+   "zh": "這就是為什麼冬天開暖氣後室內會變得很乾燥（溫度升高但含水量不變，RH 下降）",
+   "en": "This is why indoor air becomes very dry when the heating is turned on in winter (temperature rises but moisture content is unchanged, so RH falls)"
+  },
+  {
+   "zh": "想像一個水杯。小杯子（冷空氣）裝半杯水就是 50%，大杯子（熱空氣）裝同樣多的水可能只佔 20%。RH 就像「杯子裝滿的程度」——溫度決定杯子大小，含水量決定水有多少。同樣的水量（含濕量），杯子越大（溫度越高），裝滿的比例（RH）就越低。",
+   "en": "Imagine a cup. A small cup (cold air) filled halfway is 50%, while the same amount of water in a large cup (hot air) may fill only 20%. RH is like \"how full the cup is\": temperature determines the size of the cup, and moisture content determines how much water there is. For the same amount of water (humidity ratio), the larger the cup (the higher the temperature), the lower the fill level (RH)."
+  },
+  {
+   "zh": "RH 在 GMP 環境中的重要性：",
+   "en": "Why RH matters in a GMP environment:"
+  },
+  {
+   "zh": "<strong>法規要求</strong>：大多數藥廠潔淨區要求 RH 在 30-65% 之間。過低（&lt;30%）會導致靜電問題和操作人員不適；過高（&gt;65%）會促進微生物生長和設備腐蝕",
+   "en": "<strong>Regulatory expectations</strong>: most pharmaceutical cleanrooms require RH between 30% and 65%. Too low (&lt;30%) causes static electricity problems and discomfort for operators; too high (&gt;65%) promotes microbial growth and equipment corrosion"
+  },
+  {
+   "zh": "<strong>產品穩定性</strong>：許多藥品（特別是固體劑型和凍乾產品）對環境濕度極度敏感。過高 RH 會導致吸潮、結塊、降解",
+   "en": "<strong>Product stability</strong>: many drug products (especially solid dosage forms and lyophilized products) are extremely sensitive to ambient humidity. Excessively high RH causes moisture uptake, caking and degradation"
+  },
+  {
+   "zh": "<strong>圖上特徵</strong>：RH 線在空氣線圖上是向上彎曲的弧線。最上方的弧線就是 100% RH（飽和線），也就是空氣線圖的左上邊界。底部水平軸代表 0% RH（完全乾燥的空氣）",
+   "en": "<strong>Appearance on the chart</strong>: RH lines on the psychrometric chart are upward-curving arcs. The uppermost arc is 100% RH (the saturation line), which is the upper-left boundary of the chart. The horizontal axis at the bottom represents 0% RH (completely dry air)"
+  },
+  {
+   "zh": "RH = (p_wv / p_ws) x 100%\n\n其中：\n  p_wv = 空氣中水蒸氣的實際分壓 (Pa)\n  p_ws = 同溫度下的飽和水蒸氣壓 (Pa)\n\n例：20°C 時飽和水蒸氣壓 p_ws = 2,338 Pa\n    若實際水蒸氣壓 p_wv = 1,169 Pa\n    則 RH = 1,169 / 2,338 x 100% = 50%",
+   "en": "RH = (p_wv / p_ws) x 100%\n\nwhere:\n  p_wv = actual partial pressure of water vapor in the air (Pa)\n  p_ws = saturation vapor pressure of water at the same temperature (Pa)\n\nExample: at 20°C the saturation vapor pressure p_ws = 2,338 Pa\n    If the actual vapor pressure p_wv = 1,169 Pa\n    then RH = 1,169 / 2,338 x 100% = 50%"
+  },
+  {
+   "zh": "某潔淨區空氣在 22°C 時 RH 為 55%。如果因為夜間溫度自然降到 18°C（含水量不變），RH 會變成多少？會不會超過 65% 的上限？",
+   "en": "The air in a cleanroom is at 55% RH at 22°C. If the temperature naturally falls to 18°C overnight (moisture content unchanged), what will the RH become? Will it exceed the 65% upper limit?"
+  },
+  {
+   "zh": "為什麼 ISPE 指南強調使用 RH 時「必須同時註明乾球溫度」？只說 50% RH 有什麼問題？",
+   "en": "Why does the ISPE Guide stress that when quoting RH, the dry-bulb temperature \"must be stated at the same time\"? What is the problem with saying only 50% RH?"
+  },
+  {
+   "zh": "9.6 Barometric or Total Pressure（大氣壓力）",
+   "en": "9.6 Barometric or Total Pressure"
+  },
+  {
+   "zh": "核心概念：Barometric Pressure（大氣壓力）",
+   "en": "Key Concept: Barometric Pressure"
+  },
+  {
+   "zh": "<strong>Barometric Pressure（大氣壓力，P<sub>BAR</sub>）</strong>是大氣對地表施加的壓力。標準海平面氣壓為 101.325 kPa（760 mmHg 或 29.92 inch Hg）。",
+   "en": "<strong>Barometric Pressure (P<sub>BAR</sub>)</strong> is the pressure the atmosphere exerts on the earth's surface. Standard sea-level pressure is 101.325 kPa (760 mmHg or 29.92 inch Hg)."
+  },
+  {
+   "zh": "重要：大多數空氣線圖都是基於<strong>標準海平面氣壓</strong>繪製的。如果你的藥廠位於高海拔地區，需要使用對應海拔的空氣線圖或進行修正計算。",
+   "en": "Important: most psychrometric charts are drawn for <strong>standard sea-level pressure</strong>. If your plant is at high altitude, you need to use a chart for the corresponding altitude or apply correction calculations."
+  },
+  {
+   "zh": "大氣壓力就像「空氣的重量」壓在你身上。在海平面上，頭頂有整個大氣層壓著（101.3 kPa）。上到高山，頭頂的空氣少了，壓力就小了。空氣線圖就像一張地圖——它是針對特定「海拔」畫的。如果你把海平面的地圖拿到山上用，路線可能會有偏差。",
+   "en": "Barometric pressure is like the \"weight of the air\" pressing on you. At sea level, the whole atmosphere above you presses down (101.3 kPa). Climb a mountain and there is less air overhead, so the pressure is lower. A psychrometric chart is like a map drawn for a specific \"altitude.\" If you take a sea-level map up the mountain, the route may be off."
+  },
+  {
+   "zh": "對製藥 HVAC 設計的影響：",
+   "en": "Impact on pharmaceutical HVAC design:"
+  },
+  {
+   "zh": "<strong>高海拔修正</strong>：在海拔 600m 以上的廠址（如墨西哥城、昆明），空氣密度降低，需要更大的風量才能達到同樣的質量流量，風機選型和風管尺寸都需要修正",
+   "en": "<strong>High-altitude correction</strong>: at sites above about 600 m (such as Mexico City or Kunming), air density is lower, so a larger airflow is needed to achieve the same mass flow rate, and fan selection and duct sizing must be corrected"
+  },
+  {
+   "zh": "<strong>壓差管理</strong>：GMP 要求的潔淨區壓差（如 15 Pa）是「表壓」——也就是相對於大氣壓的差值。大氣壓本身的變化（天氣、季節）不影響壓差的 GMP 合規判定",
+   "en": "<strong>Pressure differential management</strong>: the GMP cleanroom pressure differentials (such as 15 Pa) are gauge pressures, that is, differences relative to atmospheric pressure. Changes in barometric pressure itself (weather, season) do not affect GMP compliance assessment of the differential"
+  },
+  {
+   "zh": "<strong>空氣線圖上無刻度</strong>：因為整張圖都假定在同一個氣壓下，所以圖上不會有氣壓的軸線",
+   "en": "<strong>No scale on the chart</strong>: because the entire chart assumes a single barometric pressure, there is no pressure axis on it"
+  },
+  {
+   "zh": "如果你的 CDMO 廠房位在海拔 1,500m 的高原上，使用標準海平面空氣線圖會造成什麼樣的設計偏差？",
+   "en": "If your CDMO facility is on a plateau at 1,500 m altitude, what design error would result from using a standard sea-level psychrometric chart?"
+  },
+  {
+   "zh": "大氣壓力的日常波動（颱風、鋒面）會影響潔淨區的壓差讀數嗎？為什麼？",
+   "en": "Do everyday fluctuations in barometric pressure (typhoons, weather fronts) affect cleanroom differential pressure readings? Why or why not?"
+  },
+  {
+   "zh": "9.7 Specific Enthalpy（比焓）",
+   "en": "9.7 Specific Enthalpy"
+  },
+  {
+   "zh": "核心概念：Enthalpy（焓）",
+   "en": "Key Concept: Enthalpy"
+  },
+  {
+   "zh": "<strong>Enthalpy（焓，h）</strong>代表空氣的「總能量含量」，同時包含兩種熱量：",
+   "en": "<strong>Enthalpy (h)</strong> represents the \"total energy content\" of air, comprising two kinds of heat:"
+  },
+  {
+   "zh": "<strong>Sensible Heat（顯熱）</strong>：空氣溫度高低所帶的熱量。可以用溫度計「感覺到」",
+   "en": "<strong>Sensible Heat</strong>: the heat carried by the air temperature. It can be \"felt\" with a thermometer"
+  },
+  {
+   "zh": "<strong>Latent Heat（潛熱）</strong>：空氣中水蒸氣所攜帶的熱量。溫度計量不到，但水蒸氣確實帶著大量能量（水蒸發需要吸收 2,260 kJ/kg 的潛熱）",
+   "en": "<strong>Latent Heat</strong>: the heat carried by the water vapor in the air. A thermometer cannot measure it, but the water vapor does carry a large amount of energy (evaporating water absorbs 2,260 kJ/kg of latent heat)"
+  },
+  {
+   "zh": "焓差（Δh）是 HVAC 工程中計算冷卻/加熱負荷的核心參數。",
+   "en": "Enthalpy difference (Δh) is the core parameter for calculating cooling and heating loads in HVAC engineering."
+  },
+  {
+   "zh": "焓就像你的「總財富」——包含現金（顯熱，看得到摸得到）和投資（潛熱，帳面上看不到但確實存在）。當你要搬家（空調處理空氣），需要計算的是「總財富」的變化，不能只算現金（溫度）。同樣是 30°C 的空氣，濕潤空氣的焓值比乾燥空氣高很多——就像兩個人帳戶餘額一樣但投資組合完全不同。",
+   "en": "Enthalpy is like your \"total wealth,\" which includes cash (sensible heat, visible and tangible) and investments (latent heat, not visible in your wallet but definitely there). When you relocate (condition the air), what you must calculate is the change in \"total wealth,\" not just the cash (temperature). For air at the same 30°C, moist air has far higher enthalpy than dry air, like two people with the same bank balance but completely different investment portfolios."
+  },
+  {
+   "zh": "焓在 HVAC 設計中的核心應用：",
+   "en": "Core applications of enthalpy in HVAC design:"
+  },
+  {
+   "zh": "<strong>冷卻負荷計算</strong>：Q<sub>total</sub> = m × Δh。這個公式涵蓋了顯熱和潛熱，是冷凍主機選型的基礎",
+   "en": "<strong>Cooling load calculation</strong>: Q<sub>total</sub> = m × Δh. This formula covers both sensible and latent heat and is the basis for chiller selection"
+  },
+  {
+   "zh": "<strong>節能分析</strong>：比較回風焓值和新風焓值，可以判斷是否應該增加新風比例（經濟運轉模式）。當外氣焓值低於回風焓值時，增加新風比可以節省冷卻能耗",
+   "en": "<strong>Energy-saving analysis</strong>: comparing the enthalpy of return air and outdoor air shows whether the outdoor air fraction should be increased (economizer mode). When outdoor air enthalpy is lower than return air enthalpy, increasing the outdoor air fraction saves cooling energy"
+  },
+  {
+   "zh": "<strong>與濕球溫度的關係</strong>：焓線幾乎平行於濕球溫度線，這不是巧合——兩者都反映空氣的「總熱量」狀態",
+   "en": "<strong>Relationship to wet-bulb temperature</strong>: enthalpy lines are almost parallel to wet-bulb lines. This is no coincidence, because both reflect the \"total heat\" state of the air"
+  },
+  {
+   "zh": "h = c_p × t_DB + W × (h_fg + c_pv × t_DB)\n\n簡化近似（SI 單位）：\nh ≈ 1.006 × t_DB + W × (2,501 + 1.86 × t_DB) kJ/kg\n\n其中：\n  t_DB = 乾球溫度 (°C)\n  W = 含濕量 (kg/kg dry air)\n  2,501 kJ/kg = 0°C 時水的蒸發潛熱\n  1.006 kJ/(kg·K) = 乾空氣比熱\n  1.86 kJ/(kg·K) = 水蒸氣比熱\n\n例：t_DB = 22°C, W = 0.008 kg/kg\nh ≈ 1.006×22 + 0.008×(2501+1.86×22)\n  ≈ 22.13 + 0.008×2541.9\n  ≈ 22.13 + 20.34\n  ≈ 42.5 kJ/kg",
+   "en": "h = c_p × t_DB + W × (h_fg + c_pv × t_DB)\n\nSimplified approximation (SI units):\nh ≈ 1.006 × t_DB + W × (2,501 + 1.86 × t_DB) kJ/kg\n\nwhere:\n  t_DB = dry-bulb temperature (°C)\n  W = humidity ratio (kg/kg dry air)\n  2,501 kJ/kg = latent heat of vaporization of water at 0°C\n  1.006 kJ/(kg·K) = specific heat of dry air\n  1.86 kJ/(kg·K) = specific heat of water vapor\n\nExample: t_DB = 22°C, W = 0.008 kg/kg\nh ≈ 1.006×22 + 0.008×(2501+1.86×22)\n  ≈ 22.13 + 0.008×2541.9\n  ≈ 22.13 + 20.34\n  ≈ 42.5 kJ/kg"
+  },
+  {
+   "zh": "在空氣線圖上，焓線和濕球溫度線幾乎平行。這在物理上代表什麼意義？",
+   "en": "On the psychrometric chart, enthalpy lines and wet-bulb lines are almost parallel. What does this mean physically?"
+  },
+  {
+   "zh": "為什麼夏季台灣的冷卻負荷特別大？從焓的角度分析，外氣高溫高濕對冷凍主機造成什麼挑戰？",
+   "en": "Why is the cooling load in Taiwan especially large in summer? From the standpoint of enthalpy, what challenge does hot, humid outdoor air pose to the chiller?"
+  },
+  {
+   "zh": "9.8 Specific Volume（比容）",
+   "en": "9.8 Specific Volume"
+  },
+  {
+   "zh": "核心概念：Specific Volume（比容）",
+   "en": "Key Concept: Specific Volume"
+  },
+  {
+   "zh": "<strong>Specific Volume（比容，v）</strong>是單位質量空氣所佔的體積，是密度的倒數。",
+   "en": "<strong>Specific Volume (v)</strong> is the volume occupied by a unit mass of air, and is the reciprocal of density."
+  },
+  {
+   "zh": "比容 v = 1 / 密度 ρ",
+   "en": "Specific volume v = 1 / density ρ"
+  },
+  {
+   "zh": "單位：m³/kg（SI）或 ft³/lb（IP）",
+   "en": "Units: m³/kg (SI) or ft³/lb (IP)"
+  },
+  {
+   "zh": "標準條件下（20°C, 101.325 kPa），乾空氣比容約 0.84 m³/kg",
+   "en": "Under standard conditions (20°C, 101.325 kPa), the specific volume of dry air is about 0.84 m³/kg"
+  },
+  {
+   "zh": "核心原理：",
+   "en": "Core principles:"
+  },
+  {
+   "zh": "<strong>溫度升高</strong> → 空氣膨脹 → 比容增大 → 密度降低 → 熱空氣上升",
+   "en": "<strong>Higher temperature</strong> → air expands → specific volume increases → density decreases → hot air rises"
+  },
+  {
+   "zh": "<strong>海拔升高</strong> → 大氣壓降低 → 空氣「更薄」 → 比容更大",
+   "en": "<strong>Higher altitude</strong> → lower barometric pressure → air is \"thinner\" → specific volume is larger"
+  },
+  {
+   "zh": "比容就像氣球的大小。同一個氣球，加熱後會脹大（比容增加），帶到高山上也會脹大（氣壓降低）。雖然裡面的空氣質量沒變，但佔的空間更大了。在 HVAC 設計中，你需要的是「空氣的重量」（質量流量），而不是「空氣的體積」。如果空氣膨脹了，你就需要更大的管道和更大的風機才能送出同樣「重量」的空氣。",
+   "en": "Specific volume is like the size of a balloon. The same balloon swells when heated (specific volume increases) and also swells when taken up a mountain (pressure drops). The mass of air inside has not changed, but it takes up more space. In HVAC design, what you need is the \"weight of air\" (mass flow rate), not the \"volume of air.\" If the air expands, you need larger ducts and bigger fans to deliver the same \"weight\" of air."
+  },
+  {
+   "zh": "比容對 HVAC 設計的實務影響：",
+   "en": "Practical effects of specific volume on HVAC design:"
+  },
+  {
+   "zh": "<strong>高海拔設計修正</strong>：海拔 600m 以上時，空氣密度明顯降低。例如在海拔 2,000m（如墨西哥城），空氣密度約為海平面的 80%。風管截面積和風機能力都需要放大 20-25%",
+   "en": "<strong>High-altitude design correction</strong>: above about 600 m, air density drops noticeably. For example, at 2,000 m (such as Mexico City), air density is about 80% of that at sea level. Duct cross-sections and fan capacity must be increased by 20-25%"
+  },
+  {
+   "zh": "<strong>風機選型</strong>：風機規格通常以體積流量（CMH 或 CFM）標示，但 HVAC 設計需要的是質量流量。必須用比容做轉換：<br/>\n                質量流量 = 體積流量 / 比容",
+   "en": "<strong>Fan selection</strong>: fans are usually rated by volumetric flow (CMH or CFM), but HVAC design needs mass flow. Specific volume must be used for the conversion:<br/>\n                mass flow = volumetric flow / specific volume"
+  },
+  {
+   "zh": "<strong>熱氣上升效應</strong>：在高大廠房中，溫度分層（上方較熱、下方較冷）是因為熱空氣比容大、密度低而上浮。這影響氣流組織和溫度均勻性的設計",
+   "en": "<strong>Rising hot air effect</strong>: in tall buildings, temperature stratification (warmer above, cooler below) occurs because hot air has a larger specific volume and lower density and so rises. This affects the design of airflow patterns and temperature uniformity"
+  },
+  {
+   "zh": "某 CDMO 工廠位於海拔 1,800m。如果設計文件中的風量是基於海平面條件計算的 10,000 CMH，實際需要供應多少體積流量才能達到同樣的質量流量？",
+   "en": "A CDMO plant is located at 1,800 m altitude. If the design documents specify an airflow of 10,000 CMH calculated for sea-level conditions, how much volumetric flow actually needs to be supplied to achieve the same mass flow?"
+  },
+  {
+   "zh": "為什麼潔淨區的送風口通常設在天花板、回風口設在地板附近？從比容和密度的角度解釋。",
+   "en": "Why are cleanroom supply outlets usually in the ceiling and return outlets near the floor? Explain from the standpoint of specific volume and density."
+  },
+  {
+   "zh": "9.9 Humidity Ratio or Specific Humidity（含濕量／比濕度）",
+   "en": "9.9 Humidity Ratio or Specific Humidity"
+  },
+  {
+   "zh": "核心概念：Humidity Ratio（含濕量）",
+   "en": "Key Concept: Humidity Ratio"
+  },
+  {
+   "zh": "<strong>Humidity Ratio（含濕量，W）</strong>是空氣中水蒸氣的「絕對量」——每公斤乾空氣中含有多少公斤（或克）的水蒸氣。",
+   "en": "<strong>Humidity Ratio (W)</strong> is the \"absolute amount\" of water vapor in the air: how many kilograms (or grams) of water vapor are contained per kilogram of dry air."
+  },
+  {
+   "zh": "關鍵特性：含濕量<strong>與溫度無關</strong>。不管你把空氣加熱或冷卻（只要不凝結），W 值不變。這和 RH 完全不同——RH 會隨溫度變化。",
+   "en": "Key property: humidity ratio is <strong>independent of temperature</strong>. Whether you heat or cool the air (as long as there is no condensation), W does not change. This is completely different from RH, which changes with temperature."
+  },
+  {
+   "zh": "單位換算（IP 系統）：",
+   "en": "Unit conversion (IP system):"
+  },
+  {
+   "zh": "如果 RH 是「杯子裝滿的程度」，那含濕量就是「杯子裡水的實際重量」。不管杯子多大（溫度多高），水的重量不會變。當你要計算除濕量或加濕量時，用的是含濕量的差值（ΔW），而不是 RH 的差值——因為只有含濕量才是真正的「水分質量」。",
+   "en": "If RH is \"how full the cup is,\" then humidity ratio is \"the actual weight of water in the cup.\" No matter how large the cup is (how high the temperature), the weight of the water does not change. When you calculate the amount of dehumidification or humidification, you use the difference in humidity ratio (ΔW), not the difference in RH, because only humidity ratio represents the true \"mass of moisture.\""
+  },
+  {
+   "zh": "含濕量在 HVAC 工程中的應用：",
+   "en": "Applications of humidity ratio in HVAC engineering:"
+  },
+  {
+   "zh": "<strong>除濕量計算</strong>：凝結水量 = 風量 × ΔW。這是選擇冷卻盤管和計算排水量的基礎",
+   "en": "<strong>Dehumidification calculation</strong>: condensate = airflow × ΔW. This is the basis for selecting cooling coils and sizing drains"
+  },
+  {
+   "zh": "<strong>加濕器選型</strong>：加濕量 = 風量 × ΔW。蒸汽加濕器的產汽量直接從含濕量差算出",
+   "en": "<strong>Humidifier selection</strong>: humidification load = airflow × ΔW. The steam output of a steam humidifier is calculated directly from the humidity ratio difference"
+  },
+  {
+   "zh": "<strong>圖上讀法</strong>：從狀態點畫水平線到右側邊緣，讀取 Y 軸上的數值就是含濕量",
+   "en": "<strong>Reading it on the chart</strong>: draw a horizontal line from the state point to the right edge and read the value on the Y axis; that is the humidity ratio"
+  },
+  {
+   "zh": "<strong>與露點的關係</strong>：含濕量和露點是一一對應的——知道含濕量就知道露點，反之亦然",
+   "en": "<strong>Relationship to dew point</strong>: humidity ratio and dew point correspond one to one. Knowing the humidity ratio gives the dew point, and vice versa"
+  },
+  {
+   "zh": "潛熱負荷（Latent Heat Load）：\nQ_latent = m × h_fg × ΔW\n\n其中：\n  m = 空氣質量流量 (kg/s)\n  h_fg = 水的蒸發潛熱 ≈ 2,501 kJ/kg (at 0°C)\n  ΔW = 含濕量差 (kg/kg)\n\n例：風量 5 kg/s，從 W=0.012 除濕到 W=0.008\nQ_latent = 5 × 2,501 × (0.012 - 0.008)\n         = 5 × 2,501 × 0.004\n         = 50 kW\n\n單位換算：\n  1 grain = 1/7000 lb = 0.0648 g\n  85 grains/lb ÷ 7,000 = 0.012 lb/lb",
+   "en": "Latent heat load:\nQ_latent = m × h_fg × ΔW\n\nwhere:\n  m = air mass flow rate (kg/s)\n  h_fg = latent heat of vaporization of water ≈ 2,501 kJ/kg (at 0°C)\n  ΔW = humidity ratio difference (kg/kg)\n\nExample: airflow 5 kg/s, dehumidified from W=0.012 to W=0.008\nQ_latent = 5 × 2,501 × (0.012 - 0.008)\n         = 5 × 2,501 × 0.004\n         = 50 kW\n\nUnit conversion:\n  1 grain = 1/7000 lb = 0.0648 g\n  85 grains/lb ÷ 7,000 = 0.012 lb/lb"
+  },
+  {
+   "zh": "為什麼在計算加濕/除濕量時，應該用含濕量（W）的差值，而不是相對濕度（RH）的差值？",
+   "en": "Why should the difference in humidity ratio (W), rather than the difference in relative humidity (RH), be used when calculating humidification or dehumidification loads?"
+  },
+  {
+   "zh": "如果外氣條件是 35°C / 70% RH（W ≈ 25 g/kg），送風目標是 14°C / 95% RH（W ≈ 9.5 g/kg），每公斤空氣需要除掉多少克的水？",
+   "en": "If the outdoor condition is 35°C / 70% RH (W ≈ 25 g/kg) and the supply air target is 14°C / 95% RH (W ≈ 9.5 g/kg), how many grams of water must be removed per kilogram of air?"
+  },
+  {
+   "zh": "9.10 Vapor Pressure（水蒸氣壓力）",
+   "en": "9.10 Vapor Pressure"
+  },
+  {
+   "zh": "核心概念：Vapor Pressure（水蒸氣壓力）",
+   "en": "Key Concept: Vapor Pressure"
+  },
+  {
+   "zh": "<strong>Vapor Pressure（水蒸氣壓力，p<sub>WV</sub>）</strong>是空氣中水蒸氣分子施加的分壓力。根據 Dalton 定律，大氣壓力是所有成分氣體分壓的總和：P<sub>BAR</sub> = p<sub>dry air</sub> + p<sub>WV</sub>。",
+   "en": "<strong>Vapor Pressure (p<sub>WV</sub>)</strong> is the partial pressure exerted by water vapor molecules in the air. According to Dalton's law, barometric pressure is the sum of the partial pressures of all component gases: P<sub>BAR</sub> = p<sub>dry air</sub> + p<sub>WV</sub>."
+  },
+  {
+   "zh": "水蒸氣壓力和含濕量（W）成正比——空氣中的水蒸氣越多，分壓越大。這個參數是計算 RH 的數學基礎：RH = p<sub>WV</sub> / p<sub>WS</sub>（實際壓力 / 飽和壓力）。",
+   "en": "Vapor pressure is proportional to humidity ratio (W): the more water vapor in the air, the greater the partial pressure. This parameter is the mathematical basis for calculating RH: RH = p<sub>WV</sub> / p<sub>WS</sub> (actual pressure / saturation pressure)."
+  },
+  {
+   "zh": "水蒸氣壓力就像一個房間裡的「人口密度」。人越多（水蒸氣分子越多），每個人佔的空間就越擠（壓力越大）。當房間「擠滿了」（飽和蒸氣壓），就不能再塞更多人了（水蒸氣開始凝結）。",
+   "en": "Vapor pressure is like the \"population density\" of a room. The more people there are (the more water vapor molecules), the more crowded each person is (the higher the pressure). When the room is \"full\" (saturation vapor pressure), no more people can be squeezed in (water vapor begins to condense)."
+  },
+  {
+   "zh": "<strong>與 RH 的關係</strong>：水蒸氣壓力是 RH 計算的底層物理量。RH = (p<sub>WV</sub> / p<sub>WS</sub>) × 100%，其中 p<sub>WS</sub> 是飽和水蒸氣壓（只與溫度有關）",
+   "en": "<strong>Relationship to RH</strong>: vapor pressure is the underlying physical quantity in the RH calculation. RH = (p<sub>WV</sub> / p<sub>WS</sub>) × 100%, where p<sub>WS</sub> is the saturation vapor pressure (a function of temperature only)"
+  },
+  {
+   "zh": "<strong>圖上位置</strong>：有些空氣線圖在右側邊緣會標示水蒸氣壓力的刻度，從下到上線性增加",
+   "en": "<strong>Position on the chart</strong>: some psychrometric charts show a vapor pressure scale on the right-hand edge, increasing linearly from bottom to top"
+  },
+  {
+   "zh": "<strong>實務中較少直接使用</strong>：在日常 HVAC 設計中，工程師較少直接操作水蒸氣壓力，而是使用含濕量（W）或相對濕度（RH）。但理解它有助於掌握 RH 的物理本質",
+   "en": "<strong>Rarely used directly in practice</strong>: in day-to-day HVAC design, engineers seldom work with vapor pressure directly and use humidity ratio (W) or relative humidity (RH) instead. But understanding it helps you grasp the physical nature of RH"
+  },
+  {
+   "zh": "如果在空氣線圖右側讀到水蒸氣壓力為 1.2 kPa，而該溫度下的飽和水蒸氣壓為 2.4 kPa，相對濕度是多少？",
+   "en": "If you read a vapor pressure of 1.2 kPa on the right side of the psychrometric chart, and the saturation vapor pressure at that temperature is 2.4 kPa, what is the relative humidity?"
+  },
+  {
+   "zh": "為什麼水蒸氣壓力和含濕量幾乎成線性關係？（提示：想想道爾頓分壓定律）",
+   "en": "Why are vapor pressure and humidity ratio almost linearly related? (Hint: think about Dalton's law of partial pressures.)"
+  },
+  {
+   "zh": "9.11 Eight Fundamental Vectors（八大基本向量）",
+   "en": "9.11 Eight Fundamental Vectors"
+  },
+  {
+   "zh": "核心概念：Eight Fundamental Vectors（八大基本向量）",
+   "en": "Key Concept: Eight Fundamental Vectors"
+  },
+  {
+   "zh": "空氣線圖上的每一個空氣處理過程，都可以用一個「向量」（方向箭頭）來表示。所有可能的 HVAC 過程都可以分解為以下八個基本方向：",
+   "en": "Every air-handling process on the psychrometric chart can be represented by a \"vector\" (a directional arrow). All possible HVAC processes can be broken down into the following eight fundamental directions:"
+  },
+  {
+   "zh": "<strong>1. Humidification（加濕）</strong>：垂直向上。只增加水分，溫度不變",
+   "en": "<strong>1. Humidification</strong>: vertically upward. Only moisture is added; temperature is unchanged"
+  },
+  {
+   "zh": "<strong>2. Heating + Humidification（加熱加濕）</strong>：右上方向。同時升溫和增加水分",
+   "en": "<strong>2. Heating + Humidification</strong>: toward the upper right. Temperature rises and moisture is added at the same time"
+  },
+  {
+   "zh": "<strong>3. Sensible Heating（顯熱加熱）</strong>：水平向右。只升溫，含水量不變",
+   "en": "<strong>3. Sensible Heating</strong>: horizontally to the right. Only temperature rises; moisture content is unchanged"
+  },
+  {
+   "zh": "<strong>4. Chemical Dehumidification（化學除濕）</strong>：右下方向。用乾燥劑吸走水分，同時溫度略升（吸附放熱）",
+   "en": "<strong>4. Chemical Dehumidification</strong>: toward the lower right. A desiccant absorbs the moisture while the temperature rises slightly (heat of adsorption)"
+  },
+  {
+   "zh": "<strong>5. Dehumidification（除濕）</strong>：垂直向下。只去除水分，溫度不變",
+   "en": "<strong>5. Dehumidification</strong>: vertically downward. Only moisture is removed; temperature is unchanged"
+  },
+  {
+   "zh": "<strong>6. Sensible Cooling（顯熱冷卻）</strong>：水平向左。只降溫，含水量不變",
+   "en": "<strong>6. Sensible Cooling</strong>: horizontally to the left. Only temperature falls; moisture content is unchanged"
+  },
+  {
+   "zh": "<strong>7. Cooling + Dehumidification（冷卻除濕）</strong>：左下方向。同時降溫和除濕——這是最常見的夏季空調過程",
+   "en": "<strong>7. Cooling + Dehumidification</strong>: toward the lower left. Temperature falls and moisture is removed at the same time. This is the most common summer air-conditioning process"
+  },
+  {
+   "zh": "<strong>8. Evaporative Cooling（蒸發冷卻）</strong>：左上方向。水蒸發吸熱降溫，但增加了水分。沿等焓線移動",
+   "en": "<strong>8. Evaporative Cooling</strong>: toward the upper left. Water evaporates and absorbs heat, lowering the temperature but adding moisture. It follows a line of constant enthalpy"
+  },
+  {
+   "zh": "把這八個向量想像成「遙控器上的八個方向鍵」。空氣的狀態就是螢幕上的游標位置（溫度 = X 軸，含濕量 = Y 軸）。每按一個方向鍵，游標就朝對應方向移動。HVAC 系統設計就是選擇正確的「按鍵組合」，讓空氣從室外狀態移動到目標狀態。",
+   "en": "Think of these eight vectors as the \"eight arrow keys on a remote control.\" The state of the air is the cursor position on the screen (temperature = X axis, humidity ratio = Y axis). Each time you press an arrow key, the cursor moves in the corresponding direction. HVAC system design is choosing the right \"combination of key presses\" to move the air from the outdoor state to the target state."
+  },
+  {
+   "zh": "製藥 HVAC 中最常用的向量：",
+   "en": "The vectors most commonly used in pharmaceutical HVAC:"
+  },
+  {
+   "zh": "<strong>向量 7（Cooling + Dehumidification）</strong>：夏季最主要的處理過程。冷卻盤管將空氣冷到露點以下，同時降溫和除濕",
+   "en": "<strong>Vector 7 (Cooling + Dehumidification)</strong>: the main summer process. The cooling coil cools the air below its dew point, lowering temperature and removing moisture at the same time"
+  },
+  {
+   "zh": "<strong>向量 3（Sensible Heating）</strong>：冬季或除濕後的再熱過程。送風溫度太低時，用加熱盤管只升溫不加濕",
+   "en": "<strong>Vector 3 (Sensible Heating)</strong>: reheat in winter or after dehumidification. When the supply air temperature is too low, a heating coil raises the temperature only, without adding moisture"
+  },
+  {
+   "zh": "<strong>向量 1（Humidification）</strong>：冬季乾燥時需要加濕。蒸汽加濕幾乎是純加濕（垂直向上）",
+   "en": "<strong>Vector 1 (Humidification)</strong>: needed when the air is dry in winter. Steam humidification is almost pure humidification (vertically upward)"
+  },
+  {
+   "zh": "實際的 HVAC 過程是多個向量的組合——例如「先冷卻除濕（向量7）→ 再顯熱加熱（向量3）」就能精確控制溫度和濕度",
+   "en": "An actual HVAC process is a combination of several vectors. For example, \"cooling and dehumidification first (vector 7), then sensible heating (vector 3)\" gives precise control of both temperature and humidity"
+  },
+  {
+   "zh": "在 CDMO 無菌充填間設計中，典型的夏季空氣處理路徑：",
+   "en": "A typical summer air-handling path in a CDMO aseptic filling room design:"
+  },
+  {
+   "zh": "外氣（35°C, 70% RH） → 混合回風 → 混合狀態點",
+   "en": "Outdoor air (35°C, 70% RH) → mixed with return air → mixed-air state point"
+  },
+  {
+   "zh": "混合空氣通過冷卻盤管 → <strong>向量 7</strong>：冷卻除濕至 12°C/95% RH",
+   "en": "Mixed air passes through the cooling coil → <strong>Vector 7</strong>: cooled and dehumidified to 12°C/95% RH"
+  },
+  {
+   "zh": "通過風機後溫度略升 → <strong>向量 3</strong>：顯熱加熱約 1-2°C",
+   "en": "Temperature rises slightly after the fan → <strong>Vector 3</strong>: sensible heating of about 1-2°C"
+  },
+  {
+   "zh": "進入房間後吸收熱負荷 → <strong>向量 3</strong>：顯熱加熱至 22°C",
+   "en": "After entering the room, the air absorbs the heat load → <strong>Vector 3</strong>: sensible heating up to 22°C"
+  },
+  {
+   "zh": "最終達到目標：22°C / 45% RH",
+   "en": "Final target reached: 22°C / 45% RH"
+  },
+  {
+   "zh": "如果你需要將空氣從 30°C / 60% RH 處理到 22°C / 50% RH，需要用到哪幾個向量的組合？",
+   "en": "If you need to condition air from 30°C / 60% RH to 22°C / 50% RH, which combination of vectors is needed?"
+  },
+  {
+   "zh": "Evaporative Cooling（蒸發冷卻）為什麼是沿等焓線移動？這和冷卻塔的工作原理有什麼關聯？",
+   "en": "Why does Evaporative Cooling move along a line of constant enthalpy? How does this relate to the working principle of a cooling tower?"
+  },
+  {
+   "zh": "Chemical Dehumidification（化學除濕）的向量為什麼是向右下方？乾燥劑除濕過程中的溫度為什麼會升高？",
+   "en": "Why does the vector for Chemical Dehumidification point toward the lower right? Why does the temperature rise during desiccant dehumidification?"
+  },
+  {
+   "zh": "9.12 System Mapping（系統映射）",
+   "en": "9.12 System Mapping"
+  },
+  {
+   "zh": "核心概念：System Mapping（系統映射）",
+   "en": "Key Concept: System Mapping"
+  },
+  {
+   "zh": "<strong>System Mapping（系統映射）</strong>是將 AHU（Air Handling Unit，空調箱）的整個空氣處理過程，一步步「畫」在空氣線圖上。每一段線段代表一個具體的處理單元（混合、冷卻、加熱、加濕等），整條路徑就是空氣從「進入 AHU」到「送進房間」再到「回到 AHU」的完整旅程。",
+   "en": "<strong>System Mapping</strong> means plotting, step by step on the psychrometric chart, the whole air-handling process of an AHU (Air Handling Unit). Each line segment represents one specific processing component (mixing, cooling, heating, humidification and so on), and the whole path is the complete journey of the air from \"entering the AHU\" to \"being supplied to the room\" and then \"returning to the AHU.\""
+  },
+  {
+   "zh": "Figure 9.11 描述的典型夏季流程：",
+   "en": "The typical summer process described in Figure 9.11:"
+  },
+  {
+   "zh": "<strong>混合（Mixing）</strong>：回風（Room Air）和新風（Outdoor Air）在混合段混合，狀態點落在兩者的連線上",
+   "en": "<strong>Mixing</strong>: return air (Room Air) and outdoor air (Outdoor Air) are mixed in the mixing section, and the state point falls on the line connecting the two"
+  },
+  {
+   "zh": "<strong>冷卻至露點（Sensible Cooling）</strong>：混合空氣先降溫到露點——這段是水平向左移動",
+   "en": "<strong>Cooling to dew point (Sensible Cooling)</strong>: the mixed air is first cooled to its dew point. This segment moves horizontally to the left"
+  },
+  {
+   "zh": "<strong>冷卻除濕（Cooling + Dehumidification）</strong>：溫度低於露點後，水分開始凝結，空氣沿飽和線向左下移動",
+   "en": "<strong>Cooling + Dehumidification</strong>: once the temperature is below the dew point, moisture begins to condense and the air moves down and to the left along the saturation line"
+  },
+  {
+   "zh": "<strong>風機加熱（Fan Heat）</strong>：Draw-Through（抽吸式）風機消耗的電能轉化為熱量，使空氣溫度略升——純顯熱加熱，水平向右",
+   "en": "<strong>Fan Heat</strong>: the electrical energy consumed by a draw-through fan is converted to heat, raising the air temperature slightly. This is purely sensible heating, horizontally to the right"
+  },
+  {
+   "zh": "<strong>房間熱負荷（Room Heat Gain）</strong>：空氣進入房間後吸收設備、人員等散發的熱量，最終達到室內設計條件",
+   "en": "<strong>Room Heat Gain</strong>: after entering the room, the air absorbs heat released by equipment, personnel and so on, finally reaching the room design condition"
+  },
+  {
+   "zh": "System Mapping 就像 Google Maps 上的導航路線。起點是外氣狀態（你的出發地），終點是室內設計條件（你的目的地），中間每個轉彎點就是一個空調處理單元。你可以選擇不同的「路線」（不同的處理組合）到達同一個目的地，但每條路線的「距離」（能耗）和「通行費」（設備成本）不同。",
+   "en": "System mapping is like a navigation route on Google Maps. The starting point is the outdoor air state (where you set out from), the destination is the room design condition (where you are going), and each turn along the way is an air-handling component. You can choose different \"routes\" (different combinations of processes) to reach the same destination, but each route differs in \"distance\" (energy consumption) and \"tolls\" (equipment cost)."
+  },
+  {
+   "zh": "System Mapping 對 CDMO 工程師的價值：",
+   "en": "The value of system mapping to CDMO engineers:"
+  },
+  {
+   "zh": "<strong>設備選型依據</strong>：圖上每段線段的「長度」和「方向」，直接對應該處理單元的容量需求。冷卻段的焓差決定冷卻盤管容量，含濕量差決定凝結水量",
+   "en": "<strong>Basis for equipment selection</strong>: the \"length\" and \"direction\" of each segment on the chart correspond directly to the capacity required of that component. The enthalpy difference across the cooling section determines the cooling coil capacity, and the humidity ratio difference determines the condensate quantity"
+  },
+  {
+   "zh": "<strong>故障診斷工具</strong>：當室內溫濕度不達標時，可以量測 AHU 各段的溫濕度，在空氣線圖上標出實際的處理路徑，與設計路徑對比，快速定位是哪個處理單元出了問題",
+   "en": "<strong>Troubleshooting tool</strong>: when room temperature and humidity are out of specification, you can measure temperature and humidity at each stage of the AHU, plot the actual process path on the psychrometric chart, and compare it with the design path to quickly locate which component has a problem"
+  },
+  {
+   "zh": "<strong>能效優化</strong>：透過比較不同的處理路徑，找到能耗最低的組合。例如：增大回風比例可以降低混合點的焓值，從而減少冷卻負荷",
+   "en": "<strong>Energy efficiency optimization</strong>: by comparing different process paths, you can find the combination with the lowest energy consumption. For example, increasing the return air fraction lowers the enthalpy at the mixing point and so reduces the cooling load"
+  },
+  {
+   "zh": "<strong>Draw-Through vs Blow-Through</strong>：抽吸式（Draw-Through）AHU 的風機在冷卻盤管後面，風機熱會加在已冷卻的空氣上。吹送式（Blow-Through）風機在前面，風機熱會被冷卻盤管帶走。兩種配置在空氣線圖上的路徑不同",
+   "en": "<strong>Draw-Through vs Blow-Through</strong>: in a draw-through AHU the fan is downstream of the cooling coil, so fan heat is added to air that has already been cooled. In a blow-through AHU the fan is upstream, so fan heat is removed by the cooling coil. The two configurations follow different paths on the psychrometric chart"
+  },
+  {
+   "zh": "<strong>CDMO 潔淨區 AHU 設計案例：</strong>",
+   "en": "<strong>CDMO cleanroom AHU design example:</strong>"
+  },
+  {
+   "zh": "假設某 Grade B 無菌充填間的設計條件為 22°C ± 2°C / 45% ± 10% RH，夏季外氣條件為 35°C / 75% RH，回風比 80%：",
+   "en": "Assume a Grade B aseptic filling room with a design condition of 22°C ± 2°C / 45% ± 10% RH, a summer outdoor condition of 35°C / 75% RH, and a return air fraction of 80%:"
+  },
+  {
+   "zh": "<strong>混合點</strong>：回風 (22°C, 45% RH) 佔 80% + 外氣 (35°C, 75% RH) 佔 20% → 混合後約 24.6°C",
+   "en": "<strong>Mixing point</strong>: return air (22°C, 45% RH) at 80% + outdoor air (35°C, 75% RH) at 20% → about 24.6°C after mixing"
+  },
+  {
+   "zh": "<strong>冷卻除濕</strong>：將混合空氣冷卻至 12°C，含濕量從約 10 g/kg 降至 8.5 g/kg",
+   "en": "<strong>Cooling and dehumidification</strong>: the mixed air is cooled to 12°C, and the humidity ratio falls from about 10 g/kg to 8.5 g/kg"
+  },
+  {
+   "zh": "<strong>風機加熱</strong>：約 +1°C（13°C）",
+   "en": "<strong>Fan heat</strong>: about +1°C (13°C)"
+  },
+  {
+   "zh": "<strong>房間吸熱</strong>：送風 13°C → 回風 22°C，溫差 9°C 攜帶掉房間熱負荷",
+   "en": "<strong>Room heat gain</strong>: supply air at 13°C → return air at 22°C; the 9°C temperature difference carries away the room heat load"
+  },
+  {
+   "zh": "這整個路徑可以在空氣線圖上完整描繪出來，每段的焓差和含濕量差就是計算冷卻容量和除濕量的依據。",
+   "en": "This entire path can be fully plotted on the psychrometric chart, and the enthalpy difference and humidity ratio difference of each segment are the basis for calculating cooling capacity and dehumidification quantity."
+  },
+  {
+   "zh": "如果回風比從 80% 改為 60%，混合點在空氣線圖上會如何移動？對冷卻負荷有什麼影響？",
+   "en": "If the return air fraction is changed from 80% to 60%, how does the mixing point move on the psychrometric chart? What is the effect on the cooling load?"
+  },
+  {
+   "zh": "Draw-Through AHU 的風機熱約 2-3°C。在空氣線圖上，這段「風機加熱」的向量方向是什麼？如果改用 Blow-Through 配置，路徑會如何變化？",
+   "en": "The fan heat of a draw-through AHU is about 2-3°C. On the psychrometric chart, what is the direction of the \"fan heat\" vector? How would the path change if a blow-through configuration were used?"
+  },
+  {
+   "zh": "如果冬季外氣條件是 5°C / 60% RH，同一個潔淨區需要怎樣的處理路徑？需要用到哪些向量？",
+   "en": "If the winter outdoor condition is 5°C / 60% RH, what processing path does the same cleanroom need? Which vectors are used?"
+  },
+  {
+   "zh": "本節重點回顧 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "<strong>空氣線圖（Psychrometric Chart）</strong>是 HVAC 工程師的核心工具，將空氣的所有熱力學性質視覺化。掌握它就等於掌握了空調設計的「語言」",
+   "en": "The <strong>psychrometric chart</strong> is the core tool of the HVAC engineer, visualizing all thermodynamic properties of air. Mastering it means mastering the \"language\" of air-conditioning design"
+  },
+  {
+   "zh": "<strong>五個可量測參數</strong>：乾球溫度（t<sub>DB</sub>）、濕球溫度（t<sub>WB</sub>）、露點溫度（t<sub>DP</sub>）、相對濕度（RH）、大氣壓力（P<sub>BAR</sub>）——只需量到任意兩個，就能用空氣線圖找到其他所有參數",
+   "en": "<strong>Five measurable parameters</strong>: dry-bulb temperature (t<sub>DB</sub>), wet-bulb temperature (t<sub>WB</sub>), dew point temperature (t<sub>DP</sub>), relative humidity (RH) and barometric pressure (P<sub>BAR</sub>). Measuring any two is enough to find all the other parameters with the psychrometric chart"
+  },
+  {
+   "zh": "<strong>四個可計算參數</strong>：焓（h）、比容（v）、含濕量（W）、水蒸氣壓力（p<sub>WV</sub>）——這些是 AHU 選型、風管設計、能耗分析的計算基礎",
+   "en": "<strong>Four calculable parameters</strong>: enthalpy (h), specific volume (v), humidity ratio (W) and vapor pressure (p<sub>WV</sub>). These are the calculation basis for AHU selection, duct design and energy analysis"
+  },
+  {
+   "zh": "<strong>八大基本向量</strong>涵蓋了所有可能的空氣處理方向。製藥環境最常用的是 Cooling + Dehumidification（夏季）、Sensible Heating（再熱）和 Humidification（冬季加濕）",
+   "en": "The <strong>Eight Fundamental Vectors</strong> cover all possible air-handling directions. The ones most used in pharmaceutical environments are Cooling + Dehumidification (summer), Sensible Heating (reheat) and Humidification (winter)"
+  },
+  {
+   "zh": "<strong>System Mapping</strong>將 AHU 的完整處理流程「畫」在空氣線圖上，是設備選型、故障診斷和能效優化的強大工具",
+   "en": "<strong>System mapping</strong> plots the complete AHU process on the psychrometric chart and is a powerful tool for equipment selection, troubleshooting and energy efficiency optimization"
+  },
+  {
+   "zh": "在製藥 CDMO 環境中，空氣線圖的應用直接關係到<strong>潔淨區溫濕度合規、微生物控制、產品穩定性和能源成本</strong>——這些都是無菌保證和商業競爭力的核心要素",
+   "en": "In a pharmaceutical CDMO environment, the application of the psychrometric chart bears directly on <strong>cleanroom temperature and humidity compliance, microbial control, product stability and energy cost</strong>, which are core elements of sterility assurance and commercial competitiveness"
+  }
+ ]
+}

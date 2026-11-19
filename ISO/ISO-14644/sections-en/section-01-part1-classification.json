@@ -1,0 +1,1125 @@
+{
+ "source": "section-01-part1-classification.html",
+ "blocks": [
+  {
+   "zh": "潔淨室空氣潔淨度分級（依微粒濃度）",
+   "en": "Cleanroom Air Cleanliness Classification (by Particle Concentration)"
+  },
+  {
+   "zh": "本節目錄 Table of Contents",
+   "en": "Table of Contents"
+  },
+  {
+   "zh": "本章學習目標 Learning Objectives",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解 ISO 14644-1:2015 的核心目的：以微粒濃度為基準，建立潔淨室空氣潔淨度的國際分級體系",
+   "en": "Understand the core purpose of ISO 14644-1:2015: to establish an international system for classifying cleanroom air cleanliness based on particle concentration"
+  },
+  {
+   "zh": "熟記 Table 1 九個 ISO 等級（ISO Class 1–9）及其六個粒徑閾值的最大允許濃度數值",
+   "en": "Memorize the nine ISO classes (ISO Class 1–9) in Table 1 and the maximum permitted concentrations at each of the six particle size thresholds"
+  },
+  {
+   "zh": "掌握分類公式 C<sub>n</sub> = 10<sup>N</sup> × (0.1/D)<sup>2.08</sup> 的意義，並能應用於計算任意粒徑的濃度限值",
+   "en": "Understand the classification formula C<sub>n</sub> = 10<sup>N</sup> × (0.1/D)<sup>2.08</sup> and apply it to calculate the concentration limit for any particle size"
+  },
+  {
+   "zh": "了解三種佔用狀態（as-built / at-rest / operational）的定義及其在製藥環境中的應用",
+   "en": "Know the definitions of the three occupancy states (as-built / at-rest / operational) and how they are applied in the pharmaceutical environment"
+  },
+  {
+   "zh": "掌握 Annex A 參考測試方法：採樣點數量（Table A.1）、最小採樣體積公式、結果評估流程",
+   "en": "Master the Annex A reference test method: number of sampling locations (Table A.1), the minimum sample volume formula, and the process for evaluating results"
+  },
+  {
+   "zh": "理解 M descriptor（大粒子描述符）的格式與 ISO Class 5 潔淨室中 ≥5 µm 粒子限值的特殊處理",
+   "en": "Understand the format of the M descriptor (macroparticle descriptor) and the special handling of the ≥5 µm particle limit in ISO Class 5 cleanrooms"
+  },
+  {
+   "zh": "連結 EU GMP Annex 1 Grade A/B/C/D 與 ISO Class 5/7/8 的對應關係，應用於 CDMO 製藥廠驗證",
+   "en": "Link EU GMP Annex 1 Grade A/B/C/D to ISO Class 5/7/8 and apply this to validation at a CDMO pharmaceutical facility"
+  },
+  {
+   "zh": "了解順序採樣（Sequential Sampling）的原理及其在低濃度 ISO Class 3/4 環境中的優勢",
+   "en": "Understand the principle of sequential sampling and its advantage in low-concentration ISO Class 3/4 environments"
+  },
+  {
+   "zh": "Introduction — 前言",
+   "en": "Introduction"
+  },
+  {
+   "zh": "導讀解析 Commentary",
+   "en": "Commentary"
+  },
+  {
+   "zh": "為什麼需要 ISO 14644-1？",
+   "en": "Why do we need ISO 14644-1?"
+  },
+  {
+   "zh": "想像一下：如果每家藥廠、每個國家都用不同的方式定義「多乾淨才算乾淨」，國際間的合規驗證將一片混亂。ISO 14644-1 正是為了解決這個問題而生的——它提供了一套通用的語言，讓全球任何地方的潔淨室都能用相同的標準溝通。",
+   "en": "Imagine if every pharmaceutical company and every country defined \"how clean is clean\" in a different way: international compliance verification would be chaos. ISO 14644-1 was created to solve exactly this problem. It provides a common language so that cleanrooms anywhere in the world can be described by the same standard."
+  },
+  {
+   "zh": "本標準適用於：航空航天、微電子、製藥、醫療器材、食品等多個行業，但在製藥領域，它更與 EU GMP Annex 1、FDA 無菌指引、PIC/S 等法規密切連結。",
+   "en": "This standard applies to many industries, including aerospace, microelectronics, pharmaceuticals, medical devices and food, but in the pharmaceutical field it is closely linked to EU GMP Annex 1, the FDA aseptic processing guidance, PIC/S and other regulations."
+  },
+  {
+   "zh": "2015 版 vs. 1999 版：關鍵變化",
+   "en": "2015 edition vs. 1999 edition: key changes"
+  },
+  {
+   "zh": "2015 年第二版（現行版）的最重要改變：",
+   "en": "The most important changes in the 2015 second edition (the current version):"
+  },
+  {
+   "zh": "<strong>統計方法革新：</strong>捨棄 1999 版假設粒子計數呈常態分佈的前提，改採超幾何抽樣模型（Hypergeometric Sampling Model），每個採樣點獨立評估",
+   "en": "<strong>New statistical approach:</strong> The 1999 assumption that particle counts follow a normal distribution is dropped. A hypergeometric sampling model is adopted instead, and each sampling location is evaluated independently"
+  },
+  {
+   "zh": "<strong>信心水準明確化：</strong>95% 信心水準 + 90% 區域符合率，取代 1999 版不一致的 95% UCL 應用",
+   "en": "<strong>Explicit confidence level:</strong> A 95% confidence level plus 90% area compliance replaces the inconsistent application of the 95% UCL in the 1999 edition"
+  },
+  {
+   "zh": "<strong>採樣點數量改變：</strong>Table A.1 重新設計，最小採樣點數量有所調整",
+   "en": "<strong>Change in the number of sampling locations:</strong> Table A.1 was redesigned and the minimum number of sampling locations was adjusted"
+  },
+  {
+   "zh": "<strong>≥5 µm 粒子：</strong>透過 M descriptor 概念，明確處理 EU GMP Grade A 的 ≥5 µm 限值問題",
+   "en": "<strong>≥5 µm particles:</strong> Through the M descriptor concept, the standard explicitly addresses the ≥5 µm limit for EU GMP Grade A"
+  },
+  {
+   "zh": "比喻：ISO Class 就像飯店星級評定",
+   "en": "Analogy: ISO Classes are like hotel star ratings"
+  },
+  {
+   "zh": "就像五星飯店和三星飯店都有明確的服務標準一樣，ISO Class 1（最潔淨）到 ISO Class 9（最不嚴格）也有明確的粒子濃度標準。數字越小，代表空氣越乾淨，要求越嚴苛——就像五星飯店比三星飯店要求更高一樣。",
+   "en": "Just as five-star and three-star hotels each have clear service standards, ISO Class 1 (cleanest) to ISO Class 9 (least stringent) each have a clear particle concentration standard. The lower the number, the cleaner the air and the stricter the requirement, just as a five-star hotel is held to a higher standard than a three-star hotel."
+  },
+  {
+   "zh": "Section 1 — Scope 適用範圍",
+   "en": "Section 1 — Scope"
+  },
+  {
+   "zh": "重點解析 Commentary",
+   "en": "Key Points Commentary"
+  },
+  {
+   "zh": "適用範圍三要素",
+   "en": "Three elements of scope"
+  },
+  {
+   "zh": "本標準管轄的邊界非常明確，可以用三個問題來判斷是否適用：",
+   "en": "The boundary of this standard is very clear. You can decide whether it applies by asking three questions:"
+  },
+  {
+   "zh": "<strong>場所：</strong>是潔淨室（Cleanroom）、潔淨區（Clean Zone），還是隔離裝置（Separative Device）？→ 是",
+   "en": "<strong>Location:</strong> Is it a cleanroom, a clean zone, or a separative device? → Yes"
+  },
+  {
+   "zh": "<strong>粒徑範圍：</strong>粒子大小在 0.1 µm 到 5 µm 之間？→ 適用本標準；&lt;0.1 µm 或 &gt;5 µm → 分別使用其他方法",
+   "en": "<strong>Particle size range:</strong> Are the particles between 0.1 µm and 5 µm? → The standard applies; &lt;0.1 µm or &gt;5 µm → other methods are used respectively"
+  },
+  {
+   "zh": "<strong>測量方法：</strong>使用 LSAPC（光散射離散式空氣粒子計數器）？→ 是",
+   "en": "<strong>Measurement method:</strong> Is a LSAPC (light scattering airborne particle counter) used? → Yes"
+  },
+  {
+   "zh": "比喻：LSAPC 就像一台超精密「粒子照相機」",
+   "en": "Analogy: an LSAPC is like an ultra-precise \"particle camera\""
+  },
+  {
+   "zh": "LSAPC 的工作原理：讓空氣通過一道雷射光束，每當有粒子通過，就會散射出光信號。根據散射光的強度，計算粒子的大小與數量。就像交通攝影機會記錄每輛車的尺寸一樣，LSAPC 也會記錄每個「粒子車輛」的大小。",
+   "en": "How an LSAPC works: air passes through a laser beam, and each time a particle passes through it scatters a light signal. The particle size and number are calculated from the intensity of the scattered light. Just as a traffic camera records the size of every car, an LSAPC records the size of every \"particle vehicle\"."
+  },
+  {
+   "zh": "CDMO 實務場景",
+   "en": "CDMO practical scenario"
+  },
+  {
+   "zh": "在 CDMO 廠的潔淨室驗收（IQ/OQ/PQ）過程中，確認使用的粒子計數儀為 LSAPC，且具備有效校正證書（依 ISO 21501-4），是第一個合規查核點。所有分級報告必須明確聲明依據 ISO 14644-1:2015（注意年份，不是 1999 版）。",
+   "en": "During cleanroom qualification (IQ/OQ/PQ) at a CDMO facility, the first compliance check is to confirm that the particle counter used is an LSAPC with a valid calibration certificate (per ISO 21501-4). All classification reports must clearly state that they are based on ISO 14644-1:2015 (note the year; it is not the 1999 edition)."
+  },
+  {
+   "zh": "三個粒徑邊界：記住這張地圖",
+   "en": "Three particle size boundaries: remember this map"
+  },
+  {
+   "zh": "特別注意：ISO Class 5 的 ≥5 µm 粒子是 EU GMP Grade A/B 的關鍵指標，必須透過 M descriptor 另行說明。",
+   "en": "Note in particular: the ≥5 µm particles in ISO Class 5 are a key indicator for EU GMP Grade A/B and must be addressed separately through the M descriptor."
+  },
+  {
+   "zh": "Section 3 — Terms and Definitions 術語定義",
+   "en": "Section 3 — Terms and Definitions"
+  },
+  {
+   "zh": "<strong>3.1.1 cleanroom（潔淨室）:</strong> Room within which the number concentration of airborne particles is controlled and classified, and which is designed, constructed and operated in a manner to control the introduction, generation and retention of particles inside the room.",
+   "en": "<strong>3.1.1 cleanroom:</strong> Room within which the number concentration of airborne particles is controlled and classified, and which is designed, constructed and operated in a manner to control the introduction, generation and retention of particles inside the room."
+  },
+  {
+   "zh": "<strong>3.1.2 clean zone（潔淨區）:</strong> Defined space within which the number concentration of airborne particles is controlled and classified, and which is constructed and operated in a manner to control the introduction, generation and retention of contaminants inside the space.",
+   "en": "<strong>3.1.2 clean zone:</strong> Defined space within which the number concentration of airborne particles is controlled and classified, and which is constructed and operated in a manner to control the introduction, generation and retention of contaminants inside the space."
+  },
+  {
+   "zh": "<strong>3.1.3 installation（安裝設施）:</strong> Cleanroom or one or more clean zones, together with all associated structures, air-treatment systems, services and utilities.",
+   "en": "<strong>3.1.3 installation:</strong> Cleanroom or one or more clean zones, together with all associated structures, air-treatment systems, services and utilities."
+  },
+  {
+   "zh": "<strong>3.1.4 classification（分級）:</strong> Method of assessing level of cleanliness against a specification for a cleanroom or clean zone.",
+   "en": "<strong>3.1.4 classification:</strong> Method of assessing level of cleanliness against a specification for a cleanroom or clean zone."
+  },
+  {
+   "zh": "<strong>3.2.1 particle（微粒）:</strong> Minute piece of matter with defined physical boundaries.",
+   "en": "<strong>3.2.1 particle:</strong> Minute piece of matter with defined physical boundaries."
+  },
+  {
+   "zh": "<strong>3.2.2 particle size（粒徑）:</strong> Diameter of a sphere that produces a response, by a given particle-sizing instrument, that is equivalent to the response produced by the particle being measured. <em>Note: For discrete-particle light-scattering instruments, the equivalent optical diameter is used.</em>",
+   "en": "<strong>3.2.2 particle size:</strong> Diameter of a sphere that produces a response, by a given particle-sizing instrument, that is equivalent to the response produced by the particle being measured. <em>Note: For discrete-particle light-scattering instruments, the equivalent optical diameter is used.</em>"
+  },
+  {
+   "zh": "<strong>3.2.3 particle concentration（粒子濃度）:</strong> Number of individual particles per unit volume of air.",
+   "en": "<strong>3.2.3 particle concentration:</strong> Number of individual particles per unit volume of air."
+  },
+  {
+   "zh": "<strong>3.2.4 particle size distribution（粒徑分佈）:</strong> Cumulative distribution of particle concentration as a function of particle size.",
+   "en": "<strong>3.2.4 particle size distribution:</strong> Cumulative distribution of particle concentration as a function of particle size."
+  },
+  {
+   "zh": "<strong>3.2.5 macroparticle（大粒子）:</strong> Particle with an equivalent diameter <span class=\"key-term\">greater than 5 µm</span>.",
+   "en": "<strong>3.2.5 macroparticle:</strong> Particle with an equivalent diameter <span class=\"key-term\">greater than 5 µm</span>."
+  },
+  {
+   "zh": "<strong>3.2.7 unidirectional airflow（單向流）:</strong> Controlled airflow through the entire cross-section of a cleanroom or a clean zone with a steady velocity and airstreams that are considered to be parallel.",
+   "en": "<strong>3.2.7 unidirectional airflow:</strong> Controlled airflow through the entire cross-section of a cleanroom or a clean zone with a steady velocity and airstreams that are considered to be parallel."
+  },
+  {
+   "zh": "<strong>3.2.8 non-unidirectional airflow（非單向流）:</strong> Air distribution where the supply air entering the cleanroom or clean zone mixes with the internal air by means of induction.",
+   "en": "<strong>3.2.8 non-unidirectional airflow:</strong> Air distribution where the supply air entering the cleanroom or clean zone mixes with the internal air by means of induction."
+  },
+  {
+   "zh": "<strong>3.3.1 as-built（竣工狀態）:</strong> Condition where the cleanroom or clean zone is complete with all services connected and functioning but with <span class=\"key-term\">no equipment, furniture, materials or personnel present</span>.",
+   "en": "<strong>3.3.1 as-built:</strong> Condition where the cleanroom or clean zone is complete with all services connected and functioning but with <span class=\"key-term\">no equipment, furniture, materials or personnel present</span>."
+  },
+  {
+   "zh": "<strong>3.3.2 at-rest（靜止狀態）:</strong> Condition where the cleanroom or clean zone is complete with equipment installed and operating in a manner agreed upon, but with <span class=\"key-term\">no personnel present</span>.",
+   "en": "<strong>3.3.2 at-rest:</strong> Condition where the cleanroom or clean zone is complete with equipment installed and operating in a manner agreed upon, but with <span class=\"key-term\">no personnel present</span>."
+  },
+  {
+   "zh": "<strong>3.3.3 operational（運行狀態）:</strong> Agreed condition where the cleanroom or clean zone is functioning in the specified manner, with equipment operating and with the <span class=\"key-term\">specified number of personnel present</span>.",
+   "en": "<strong>3.3.3 operational:</strong> Agreed condition where the cleanroom or clean zone is functioning in the specified manner, with equipment operating and with the <span class=\"key-term\">specified number of personnel present</span>."
+  },
+  {
+   "zh": "術語深度解析 Commentary",
+   "en": "In-Depth Commentary on the Terms"
+  },
+  {
+   "zh": "潔淨室 vs. 潔淨區：有什麼差別？",
+   "en": "Cleanroom vs. clean zone: what is the difference?"
+  },
+  {
+   "zh": "<strong>Cleanroom（潔淨室）</strong>是一個獨立的房間，有實體牆壁和空調系統。",
+   "en": "<strong>A cleanroom</strong> is a separate room with physical walls and an air-handling system."
+  },
+  {
+   "zh": "<strong>Clean Zone（潔淨區）</strong>的範圍更廣——它可以是：",
+   "en": "<strong>A clean zone</strong> has a broader scope. It can be:"
+  },
+  {
+   "zh": "潔淨室內的特定區域（例如灌裝線附近的 Grade A 區）",
+   "en": "A specific area within a cleanroom (for example, the Grade A zone around a filling line)"
+  },
+  {
+   "zh": "隔離器（Isolator）或 RABS 所形成的保護空間",
+   "en": "The protected space created by an isolator or RABS"
+  },
+  {
+   "zh": "層流工作台（Laminar Flow Workstation）內部",
+   "en": "The interior of a laminar flow workstation"
+  },
+  {
+   "zh": "在 EU GMP Annex 1 的無菌製造環境中，Grade A 通常指的是「Clean Zone」，而不是整個房間。",
+   "en": "In the aseptic manufacturing environment of EU GMP Annex 1, Grade A usually refers to a \"clean zone\" rather than the whole room."
+  },
+  {
+   "zh": "比喻：三種狀態就像餐廳的三種情況",
+   "en": "Analogy: the three states are like three situations in a restaurant"
+  },
+  {
+   "zh": "<strong>As-built</strong> = 餐廳剛裝修完，還沒放桌椅，廚房設備也沒安裝，只有空調通風在運行。",
+   "en": "<strong>As-built</strong> = the restaurant has just been fitted out: no tables or chairs yet, the kitchen equipment is not installed, and only the HVAC is running."
+  },
+  {
+   "zh": "<strong>At-rest</strong> = 餐廳備餐完成，桌椅齊全、廚房設備全開，但還沒開門，廚師和服務員都還沒進來。",
+   "en": "<strong>At-rest</strong> = the restaurant is set up, the tables and chairs are in place and the kitchen equipment is fully on, but it has not opened yet and no chefs or waiters have come in."
+  },
+  {
+   "zh": "<strong>Operational</strong> = 餐廳正常營業，廚師在廚房炒菜，服務員穿梭其間——這才是真實生產環境！",
+   "en": "<strong>Operational</strong> = the restaurant is open for business, the chefs are cooking in the kitchen and the waiters are moving between tables. This is the real production environment!"
+  },
+  {
+   "zh": "LSAPC 校正的合規要求",
+   "en": "Compliance requirements for LSAPC calibration"
+  },
+  {
+   "zh": "LSAPC（光散射離散式空氣粒子計數儀）是本標準唯一認可的基準測量儀器。其校正要求：",
+   "en": "The LSAPC (light scattering airborne particle counter) is the only reference measurement instrument recognized by this standard. Its calibration requirements are:"
+  },
+  {
+   "zh": "必須依 ISO 21501-4:2007 進行校正",
+   "en": "Calibration must be performed per ISO 21501-4:2007"
+  },
+  {
+   "zh": "必須具備有效的校正證書",
+   "en": "A valid calibration certificate is required"
+  },
+  {
+   "zh": "每次測試前須進行零計數檢查（Zero Count Check）",
+   "en": "A zero count check must be performed before each test"
+  },
+  {
+   "zh": "在 FDA 查廠或 EU GMP 審查中，LSAPC 校正記錄是常見的查核項目。",
+   "en": "LSAPC calibration records are a common inspection item in FDA inspections and EU GMP reviews."
+  },
+  {
+   "zh": "思考題 1",
+   "en": "Review Question 1"
+  },
+  {
+   "zh": "某 CDMO 廠的灌裝室在 at-rest 狀態量測，≥0.5 µm 粒子濃度為 2,800 粒/m³，符合 ISO Class 5 限值（3,520 粒/m³）。但在 operational 狀態下測量為 4,100 粒/m³。請問：",
+   "en": "At a CDMO facility, the filling room was measured in the at-rest state, and the ≥0.5 µm particle concentration was 2,800 particles/m³, which meets the ISO Class 5 limit (3,520 particles/m³). In the operational state, however, the measurement was 4,100 particles/m³. Questions:"
+  },
+  {
+   "zh": "此灌裝室的 ISO 分級狀況如何？",
+   "en": "What is the ISO classification status of this filling room?"
+  },
+  {
+   "zh": "若此灌裝室申報為 EU GMP Grade A，是否符合要求？",
+   "en": "If this filling room is declared as EU GMP Grade A, does it meet the requirements?"
+  },
+  {
+   "zh": "若申報為 EU GMP Grade B，其 at-rest 狀態是否達標？",
+   "en": "If it is declared as EU GMP Grade B, does it meet the requirements in the at-rest state?"
+  },
+  {
+   "zh": "<em>（提示：Grade A 的 operational 狀態 ≥0.5 µm 限值為 3,520 粒/m³；Grade B 的 at-rest 限值也是 3,520 粒/m³）</em>",
+   "en": "<em>(Hint: the Grade A operational limit for ≥0.5 µm is 3,520 particles/m³; the Grade B at-rest limit is also 3,520 particles/m³)</em>"
+  },
+  {
+   "zh": "三種佔用狀態：製藥廠最重要的概念之一",
+   "en": "The three occupancy states: one of the most important concepts in a pharmaceutical facility"
+  },
+  {
+   "zh": "這三種狀態不是學術概念，而是直接關係到驗證測試的執行時機：",
+   "en": "These three states are not academic concepts; they directly determine when validation tests are performed:"
+  },
+  {
+   "zh": "<strong>EU GMP Annex 1 的特殊規定：</strong>Grade A 必須在 at-rest 和 operational 兩種狀態下均符合 ISO Class 5 標準。這是比 ISO 14644-1 更嚴格的要求。",
+   "en": "<strong>Special requirement of EU GMP Annex 1:</strong> Grade A must meet the ISO Class 5 standard in both the at-rest and operational states. This is stricter than ISO 14644-1."
+  },
+  {
+   "zh": "EU GMP Grade 與 ISO Class 對應表",
+   "en": "EU GMP Grade vs. ISO Class correspondence table"
+  },
+  {
+   "zh": "注意：EU GMP Annex 1 (2022) 同時規定了 ≥0.5 µm 和 ≥5 µm 的粒子限值，後者須用 M descriptor 表達。",
+   "en": "Note: EU GMP Annex 1 (2022) specifies particle limits for both ≥0.5 µm and ≥5 µm, and the latter must be expressed using the M descriptor."
+  },
+  {
+   "zh": "Section 4 — Classification 空氣潔淨度分級",
+   "en": "Section 4 — Classification of Air Cleanliness"
+  },
+  {
+   "zh": "分級核心概念",
+   "en": "Core Concepts of Classification"
+  },
+  {
+   "zh": "分級公式 Classification Formula",
+   "en": "Classification Formula"
+  },
+  {
+   "zh": "Table 1 中的所有數值均來自以下公式（公式 E.1）：",
+   "en": "All values in Table 1 come from the following formula (Formula E.1):"
+  },
+  {
+   "zh": "Cn = 10^N × (K/D)^2.08\n\n其中：\nCn = 最大允許濃度（粒子/m³），四捨五入至三位有效數字\nN  = ISO 等級編號（1 至 9）\nD  = 考慮的粒徑（µm）\nK  = 0.1 µm（常數）",
+   "en": "Cn = 10^N × (K/D)^2.08\n\nwhere:\nCn = maximum permitted concentration (particles/m³), rounded to three significant figures\nN  = ISO class number (1 to 9)\nD  = the particle size considered (µm)\nK  = 0.1 µm (constant)"
+  },
+  {
+   "zh": "<strong>驗證範例：</strong>ISO Class 5，D = 0.5 µm",
+   "en": "<strong>Worked example:</strong> ISO Class 5, D = 0.5 µm"
+  },
+  {
+   "zh": "Cn = 10^5 × (0.1/0.5)^2.08\n   = 100,000 × (0.2)^2.08\n   = 100,000 × 0.03520\n   = 3,520 粒子/m³  ✓（與 Table 1 吻合）",
+   "en": "Cn = 10^5 × (0.1/0.5)^2.08\n   = 100,000 × (0.2)^2.08\n   = 100,000 × 0.03520\n   = 3,520 particles/m³  ✓ (agrees with Table 1)"
+  },
+  {
+   "zh": "這個公式的物理意義：粒徑越大的粒子，在空氣中的允許濃度越低（因為大粒子更難被過濾，對產品的污染風險更直接）。",
+   "en": "The physical meaning of this formula: the larger the particle, the lower the permitted concentration in the air (because larger particles are harder to filter out and pose a more direct contamination risk to the product)."
+  },
+  {
+   "zh": "如何正確「指定」一個 ISO Class",
+   "en": "How to correctly \"designate\" an ISO Class"
+  },
+  {
+   "zh": "依據 4.4 Designation，完整的 ISO 分級指定必須包含三個要素：",
+   "en": "Per 4.4 Designation, a complete ISO class designation must include three elements:"
+  },
+  {
+   "zh": "<strong>ISO Class 編號</strong>：例如「ISO Class 5」",
+   "en": "<strong>ISO Class number:</strong> for example \"ISO Class 5\""
+  },
+  {
+   "zh": "<strong>佔用狀態</strong>：at-rest、operational 或 as-built",
+   "en": "<strong>Occupancy state:</strong> at-rest, operational or as-built"
+  },
+  {
+   "zh": "<strong>考慮的粒徑</strong>：例如 ≥0.5 µm",
+   "en": "<strong>Particle size(s) considered:</strong> for example ≥0.5 µm"
+  },
+  {
+   "zh": "<strong>完整範例：</strong>\"ISO Class 5; at-rest; ≥0.5 µm\"",
+   "en": "<strong>Complete example:</strong> \"ISO Class 5; at-rest; ≥0.5 µm\""
+  },
+  {
+   "zh": "若同時測量多個粒徑，較大粒徑必須是較小粒徑的至少 1.5 倍：D2 ≥ 1.5 × D1。例如可以選擇 0.3 µm 和 0.5 µm（0.5/0.3 = 1.67，符合），但不能選擇 0.3 µm 和 0.4 µm（0.4/0.3 = 1.33，不符合）。",
+   "en": "If several particle sizes are measured at the same time, the larger size must be at least 1.5 times the smaller one: D2 ≥ 1.5 × D1. For example, 0.3 µm and 0.5 µm can be selected (0.5/0.3 = 1.67, which complies), but 0.3 µm and 0.4 µm cannot (0.4/0.3 = 1.33, which does not comply)."
+  },
+  {
+   "zh": "ISO 空氣潔淨度等級表（依微粒濃度）— 核心分級表，必須熟記",
+   "en": "ISO Classes of Air Cleanliness by Particle Concentration: the core classification table, which must be memorized"
+  },
+  {
+   "zh": "閱讀本表前必知：",
+   "en": "Before reading this table, note that:"
+  },
+  {
+   "zh": "所有濃度值均為「累積值」：例如 ISO Class 5 在 0.3 µm 的 10,200 粒/m³，包含所有 ≥0.3 µm 的粒子。",
+   "en": "All concentration values are \"cumulative\": for example, the 10,200 particles/m³ at 0.3 µm for ISO Class 5 includes all particles ≥0.3 µm."
+  },
+  {
+   "zh": "\"d\" = 統計限制，不適合在此粒徑分級（低濃度環境計數不確定性過高）",
+   "en": "\"d\" = statistical limitation; classification is not appropriate at this particle size (counting uncertainty is too high in low-concentration environments)"
+  },
+  {
+   "zh": "\"e\" = 採樣限制，不適合在此粒徑分級（&gt;1 µm 粒子在管路中損失嚴重）",
+   "en": "\"e\" = sampling limitation; classification is not appropriate at this particle size (particles &gt;1 µm are lost heavily in the sampling tubing)"
+  },
+  {
+   "zh": "\"c\" = 不適用（濃度過高，無意義）",
+   "en": "\"c\" = not applicable (the concentration is too high to be meaningful)"
+  },
+  {
+   "zh": "ISO Class 9 僅適用於 operational（運行）狀態",
+   "en": "ISO Class 9 applies only to the operational state"
+  },
+  {
+   "zh": "比喻：Table 1 的數字規律",
+   "en": "Analogy: the pattern in the Table 1 numbers"
+  },
+  {
+   "zh": "觀察 ≥0.5 µm 這一欄：",
+   "en": "Look at the ≥0.5 µm column:"
+  },
+  {
+   "zh": "ISO Class 3: 35 粒/m³",
+   "en": "ISO Class 3: 35 particles/m³"
+  },
+  {
+   "zh": "ISO Class 4: 352 粒/m³（× 約 10）",
+   "en": "ISO Class 4: 352 particles/m³ (× approx. 10)"
+  },
+  {
+   "zh": "ISO Class 5: 3,520 粒/m³（× 約 10）",
+   "en": "ISO Class 5: 3,520 particles/m³ (× approx. 10)"
+  },
+  {
+   "zh": "ISO Class 6: 35,200 粒/m³（× 約 10）",
+   "en": "ISO Class 6: 35,200 particles/m³ (× approx. 10)"
+  },
+  {
+   "zh": "每升一個等級，限值大約乘以 10——這就是公式中 10<sup>N</sup> 的直觀體現。ISO Class 數字越大，允許的粒子越多，環境越「髒」。",
+   "en": "Each step up in class multiplies the limit by roughly 10, which is the intuitive meaning of 10<sup>N</sup> in the formula. The higher the ISO Class number, the more particles are permitted and the \"dirtier\" the environment."
+  },
+  {
+   "zh": "製藥廠必記的四個關鍵數值",
+   "en": "Four key values every pharmaceutical facility must remember"
+  },
+  {
+   "zh": "* 數值依 EU GMP Annex 1 (2022) 更新版。Grade A 的 ≥5 µm 限值 20 粒/m³ 是最嚴苛的要求。",
+   "en": "* Values per the updated EU GMP Annex 1 (2022). The Grade A ≥5 µm limit of 20 particles/m³ is the most stringent requirement."
+  },
+  {
+   "zh": "思考題 2：請用公式驗算",
+   "en": "Review Question 2: verify with the formula"
+  },
+  {
+   "zh": "請使用分級公式 C<sub>n</sub> = 10<sup>N</sup> × (0.1/D)<sup>2.08</sup> 計算以下數值，並對照 Table 1 確認：",
+   "en": "Use the classification formula C<sub>n</sub> = 10<sup>N</sup> × (0.1/D)<sup>2.08</sup> to calculate the following values, and check them against Table 1:"
+  },
+  {
+   "zh": "ISO Class 7，粒徑 ≥0.5 µm 的最大濃度",
+   "en": "Maximum concentration for ISO Class 7 at particle size ≥0.5 µm"
+  },
+  {
+   "zh": "ISO Class 4，粒徑 ≥1.0 µm 的最大濃度",
+   "en": "Maximum concentration for ISO Class 4 at particle size ≥1.0 µm"
+  },
+  {
+   "zh": "ISO Class 6，粒徑 ≥5.0 µm 的最大濃度（293 粒/m³）",
+   "en": "Maximum concentration for ISO Class 6 at particle size ≥5.0 µm (293 particles/m³)"
+  },
+  {
+   "zh": "<em>提示：計算結果四捨五入至三位有效數字</em>",
+   "en": "<em>Hint: round the result to three significant figures</em>"
+  },
+  {
+   "zh": "Section 5 — Demonstration of Compliance 合規性驗證",
+   "en": "Section 5 — Demonstration of Compliance"
+  },
+  {
+   "zh": "合規驗證解析 Commentary",
+   "en": "Commentary on Demonstrating Compliance"
+  },
+  {
+   "zh": "分級 vs. 監測：兩個不同的活動",
+   "en": "Classification vs. monitoring: two different activities"
+  },
+  {
+   "zh": "很多人容易混淆「分級」和「監測」：",
+   "en": "Many people confuse \"classification\" with \"monitoring\":"
+  },
+  {
+   "zh": "<strong>分級（Classification）</strong>：依據 ISO 14644-1，通常每年一次，使用 Annex A 規定的參考方法，是正式的「確認潔淨室等級」行為。",
+   "en": "<strong>Classification</strong>: performed per ISO 14644-1, usually once a year, using the reference method specified in Annex A. It is the formal act of \"confirming the cleanroom class\"."
+  },
+  {
+   "zh": "<strong>監測（Monitoring）</strong>：依據 ISO 14644-2，是日常或定期的「維持潔淨度確認」，頻率更高（可以是連續、每班、每批次等），不一定需要 Annex A 的完整程序。",
+   "en": "<strong>Monitoring</strong>: performed per ISO 14644-2. It is a routine or periodic check that \"maintains cleanliness\", at a higher frequency (it can be continuous, per shift, per batch, etc.) and does not necessarily require the full Annex A procedure."
+  },
+  {
+   "zh": "分級是「取得資格」，監測是「維持資格」。兩者都不可缺少。",
+   "en": "Classification is \"obtaining the qualification\"; monitoring is \"maintaining the qualification\". Both are indispensable."
+  },
+  {
+   "zh": "5.3 評估準則的核心：每個採樣點都必須達標",
+   "en": "5.3 The core of the evaluation criterion: every sampling location must pass"
+  },
+  {
+   "zh": "這是一個非常重要的合規原則：",
+   "en": "This is a very important compliance principle:"
+  },
+  {
+   "zh": "每個採樣點的（平均）濃度不得超過 Table 1 的限值",
+   "en": "The (average) concentration at each sampling location must not exceed the Table 1 limit"
+  },
+  {
+   "zh": "若多個樣本在同一採樣點採集，取平均值，但平均值仍不得超標",
+   "en": "If several samples are taken at the same sampling location, take the average, and the average must still not exceed the limit"
+  },
+  {
+   "zh": "<strong>不得</strong>以「所有採樣點的平均值」來判斷合規（必須逐點評估）",
+   "en": "You <strong>must not</strong> judge compliance using the \"average of all sampling locations\" (each location must be evaluated individually)"
+  },
+  {
+   "zh": "換句話說：10 個採樣點中有 1 個超標，整個潔淨室就判定不符合該 ISO Class，即使其他 9 個點的平均濃度遠低於限值。",
+   "en": "In other words: if 1 of 10 sampling locations exceeds the limit, the whole cleanroom is judged as not meeting that ISO Class, even if the average concentration at the other 9 locations is far below the limit."
+  },
+  {
+   "zh": "這與 1999 版使用 95% UCL 的方法完全不同，是 2015 版最實質性的改變之一。",
+   "en": "This is completely different from the 95% UCL approach used in the 1999 edition and is one of the most substantive changes in the 2015 edition."
+  },
+  {
+   "zh": "測試報告的六大要素（5.4）",
+   "en": "Six elements of the test report (5.4)"
+  },
+  {
+   "zh": "在 FDA 查廠或 EMA GMP 審查中，測試報告是首要審查文件。缺少任何一項都可能導致觀察事項：",
+   "en": "In an FDA inspection or EMA GMP review, the test report is the first document examined. Missing any one item can lead to an observation:"
+  },
+  {
+   "zh": "測試機構名稱、地址、日期",
+   "en": "Name, address and date of the testing organization"
+  },
+  {
+   "zh": "標準依據：明確標明「ISO 14644-1:<strong>2015</strong>」（年份不能遺漏）",
+   "en": "Reference to the standard: clearly state \"ISO 14644-1:<strong>2015</strong>\" (the year must not be omitted)"
+  },
+  {
+   "zh": "潔淨室位置及所有採樣點座標圖",
+   "en": "Location of the cleanroom and a map with the coordinates of all sampling locations"
+  },
+  {
+   "zh": "指定等級：ISO Class N + 佔用狀態 + 粒徑",
+   "en": "Designation: ISO Class N + occupancy state + particle size(s)"
+  },
+  {
+   "zh": "測試方法、特殊條件、儀器編號及校正證書編號",
+   "en": "Test method, any special conditions, instrument identification and calibration certificate number"
+  },
+  {
+   "zh": "所有採樣點的粒子濃度數據",
+   "en": "Particle concentration data for all sampling locations"
+  },
+  {
+   "zh": "CDMO 實務：年度分級計畫",
+   "en": "CDMO practice: annual classification plan"
+  },
+  {
+   "zh": "典型的 CDMO 廠年度分級計畫包含：",
+   "en": "A typical CDMO annual classification plan includes:"
+  },
+  {
+   "zh": "<strong>時機選擇：</strong>通常在年度維護停機後重新啟動時進行，確保在生產排程最少干擾的情況下完成",
+   "en": "<strong>Timing:</strong> usually performed when the facility restarts after the annual maintenance shutdown, so that it can be completed with minimal disruption to the production schedule"
+  },
+  {
+   "zh": "<strong>文件準備：</strong>SOP 需預先定義採樣計劃（Sampling Plan），包含採樣點位置圖（Floor Plan with Grid）",
+   "en": "<strong>Document preparation:</strong> the SOP should predefine the sampling plan, including a floor plan with grid showing the sampling locations"
+  },
+  {
+   "zh": "<strong>雙重驗證：</strong>若同一潔淨室同時申報多個客戶的產品，可能需要在不同佔用狀態下分別記錄",
+   "en": "<strong>Dual qualification:</strong> if the same cleanroom is declared for the products of several clients, results may need to be recorded separately under different occupancy states"
+  },
+  {
+   "zh": "<strong>偏差管理：</strong>任何超標點必須立即啟動偏差調查（Deviation Investigation），並在報告中記錄根本原因和糾正措施",
+   "en": "<strong>Deviation management:</strong> any location exceeding the limit must immediately trigger a deviation investigation, and the root cause and corrective actions must be recorded in the report"
+  },
+  {
+   "zh": "思考題 3：合規判定情境題",
+   "en": "Review Question 3: compliance determination scenario"
+  },
+  {
+   "zh": "一個 ISO Class 7 潔淨室（≥0.5 µm，限值 352,000 粒/m³），共設 10 個採樣點。其中 9 個點的濃度在 50,000 至 180,000 之間，但第 7 號採樣點測得 378,000 粒/m³。問：",
+   "en": "An ISO Class 7 cleanroom (≥0.5 µm, limit 352,000 particles/m³) has 10 sampling locations. Nine of them have concentrations between 50,000 and 180,000, but sampling location 7 measured 378,000 particles/m³. Questions:"
+  },
+  {
+   "zh": "此潔淨室是否符合 ISO Class 7 分級要求？為什麼？",
+   "en": "Does this cleanroom meet the ISO Class 7 classification requirement? Why?"
+  },
+  {
+   "zh": "若第 7 號點的兩次重複採樣分別為 378,000 和 295,000，平均值為 336,500，結果如何？",
+   "en": "If the two replicate samples at location 7 were 378,000 and 295,000, with an average of 336,500, what is the result?"
+  },
+  {
+   "zh": "下一步應如何處理？",
+   "en": "What should be done next?"
+  },
+  {
+   "zh": "Annex A (Normative) — Reference Method for Classification 分級參考方法",
+   "en": "Annex A (Normative) — Reference Method for Classification"
+  },
+  {
+   "zh": "Annex A 解析",
+   "en": "Annex A Commentary"
+  },
+  {
+   "zh": "Annex A 的地位：為什麼是「Normative」？",
+   "en": "The status of Annex A: why is it \"Normative\"?"
+  },
+  {
+   "zh": "ISO 標準的附件分兩種：",
+   "en": "ISO standards have two kinds of annexes:"
+  },
+  {
+   "zh": "<strong>Normative（規範性）</strong>：必須遵守，與正文具有同等法律效力",
+   "en": "<strong>Normative:</strong> must be followed and carries the same weight as the main text"
+  },
+  {
+   "zh": "<strong>Informative（資訊性）</strong>：提供指引，但非強制",
+   "en": "<strong>Informative:</strong> provides guidance but is not mandatory"
+  },
+  {
+   "zh": "Annex A 是「Normative」，意味著除非雙方同意使用替代方法（且替代方法性能不低於 Annex A），否則必須嚴格遵照 Annex A 的程序進行分級測試。在 FDA 和 EMA 的審查中，使用非規範性替代方法必須有充分的科學依據。",
+   "en": "Annex A is \"Normative\", which means that the classification test must follow the Annex A procedure strictly, unless both parties agree to use an alternative method (and the alternative performs no worse than Annex A). In FDA and EMA reviews, use of a non-normative alternative method must be backed by sound scientific justification."
+  },
+  {
+   "zh": "95% 信心水準 + 90% 區域符合率：什麼意思？",
+   "en": "95% confidence level + 90% area compliance: what does it mean?"
+  },
+  {
+   "zh": "這是 2015 版的核心統計概念，比 1999 版更嚴謹：",
+   "en": "This is the core statistical concept of the 2015 edition and is more rigorous than the 1999 edition:"
+  },
+  {
+   "zh": "<strong>95% 信心水準（Confidence Level）：</strong>測試結果的可靠性——如果反覆測試多次，95% 的情況下結論是正確的",
+   "en": "<strong>95% confidence level:</strong> the reliability of the test result. If the test were repeated many times, the conclusion would be correct 95% of the time"
+  },
+  {
+   "zh": "<strong>90% 區域符合率（Area Compliance）：</strong>整個潔淨室區域中，至少 90% 的面積符合等級要求",
+   "en": "<strong>90% area compliance:</strong> at least 90% of the area of the whole cleanroom meets the class requirement"
+  },
+  {
+   "zh": "這個統計模型基於「超幾何分佈」，不假設粒子在空間中均勻分佈——更接近真實情況。",
+   "en": "This statistical model is based on the hypergeometric distribution and does not assume that particles are evenly distributed in space, which is closer to real conditions."
+  },
+  {
+   "zh": "採樣點數量與潔淨室面積對照表",
+   "en": "Table of number of sampling locations vs. cleanroom area"
+  },
+  {
+   "zh": "超過 1,000 m² 的大潔淨室公式（A.1）",
+   "en": "Formula for large cleanrooms over 1,000 m² (A.1)"
+  },
+  {
+   "zh": "N_L = 27 × √(A/1000)\n\n其中：\nN_L = 最小採樣點數（進位至整數）\nA   = 潔淨室面積（m²）\n\n範例：A = 2,100 m²\nN_L = 27 × √(2100/1000)\n    = 27 × √2.1\n    = 27 × 1.449\n    = 39.1 → 進位至 40\n實際上 Annex B Example 6 的計算為 57 個點\n（27 × √(2100/1000) = 56.7 → 57）",
+   "en": "N_L = 27 × √(A/1000)\n\nwhere:\nN_L = minimum number of sampling locations (rounded up to a whole number)\nA   = cleanroom area (m²)\n\nExample: A = 2,100 m²\nN_L = 27 × √(2100/1000)\n    = 27 × √2.1\n    = 27 × 1.449\n    = 39.1 → rounded up to 40\nIn fact, the calculation in Annex B Example 6 gives 57 locations\n(27 × √(2100/1000) = 56.7 → 57)"
+  },
+  {
+   "zh": "最小採樣體積公式（A.2）",
+   "en": "Minimum sample volume formula (A.2)"
+  },
+  {
+   "zh": "Vs = (20 / C_n,m) × 1000\n\n其中：\nVs    = 每個採樣點的最小單次採樣體積（公升）\nC_n,m = 最大考慮粒徑的等級限值（粒子/m³）\n20    = 假設濃度恰好在等級限值時，期望計數到的粒子數\n\n範例：ISO Class 5，≥0.5 µm（限值 3,520 粒/m³）\nVs = (20 / 3,520) × 1000\n   = 0.005682 × 1000\n   = 5.68 公升\n\n最小採樣體積：max(Vs, 2 公升)，最短採樣時間：1 分鐘",
+   "en": "Vs = (20 / C_n,m) × 1000\n\nwhere:\nVs    = minimum single sample volume per sampling location (liters)\nC_n,m = class limit for the largest considered particle size (particles/m³)\n20    = number of particles expected to be counted if the concentration is exactly at the class limit\n\nExample: ISO Class 5, ≥0.5 µm (limit 3,520 particles/m³)\nVs = (20 / 3,520) × 1000\n   = 0.005682 × 1000\n   = 5.68 liters\n\nMinimum sample volume: max(Vs, 2 liters); minimum sampling time: 1 minute"
+  },
+  {
+   "zh": "若 Vs 很大（如 ISO Class 3 的 0.1 µm 採樣），可改用 Annex D 的順序採樣法節省時間。",
+   "en": "If Vs is very large (for example, sampling at 0.1 µm for ISO Class 3), the sequential sampling procedure in Annex D can be used instead to save time."
+  },
+  {
+   "zh": "採樣點定位的四個步驟（A.4.2）",
+   "en": "Four steps for locating sampling points (A.4.2)"
+  },
+  {
+   "zh": "從 Table A.1 確定最小採樣點數 N<sub>L</sub>",
+   "en": "Determine the minimum number of sampling locations N<sub>L</sub> from Table A.1"
+  },
+  {
+   "zh": "將潔淨室分割為 N<sub>L</sub> 個面積相等的格子",
+   "en": "Divide the cleanroom into N<sub>L</sub> grid cells of equal area"
+  },
+  {
+   "zh": "在每個格子中選擇一個有代表性的位置（考慮佈局、設備位置、氣流）",
+   "en": "Select a representative position within each cell (considering layout, equipment positions and airflow)"
+  },
+  {
+   "zh": "採樣探頭置於工作活動平面或另行指定的位置",
+   "en": "Place the sampling probe at the working activity level or at another specified position"
+  },
+  {
+   "zh": "非單向流環境中，採樣點不應直接位於未擴散的送風口正下方。",
+   "en": "In non-unidirectional airflow environments, sampling locations should not be placed directly under an undiffused air supply outlet."
+  },
+  {
+   "zh": "採樣程序重點",
+   "en": "Key Points of the Sampling Procedure"
+  },
+  {
+   "zh": "零計數檢查（Zero Count Check）：為什麼重要？",
+   "en": "Zero count check: why is it important?"
+  },
+  {
+   "zh": "在每次採樣前，必須先進行零計數檢查——將儀器抽取經 HEPA 過濾的清潔空氣，確認讀數接近於零。這個步驟驗證儀器本身沒有誤報粒子（如光學系統的電子雜訊或管路殘留）。若零計數檢查失敗，所有後續測量數據均無效。",
+   "en": "Before each sampling, a zero count check must be performed: the instrument draws clean HEPA-filtered air, and the reading is confirmed to be close to zero. This step verifies that the instrument itself does not generate false particle counts (such as electronic noise from the optical system or residue in the tubing). If the zero count check fails, all subsequent measurement data are invalid."
+  },
+  {
+   "zh": "OOS（Out-of-Specification）的兩種情況處理",
+   "en": "Handling two kinds of OOS (out-of-specification) results"
+  },
+  {
+   "zh": "<strong>情況 A：已識別的異常事件（A.5.5）</strong>",
+   "en": "<strong>Case A: an identified abnormal event (A.5.5)</strong>"
+  },
+  {
+   "zh": "例如：採樣期間有人打噴嚏、門被意外打開",
+   "en": "For example: someone sneezed during sampling, or a door was opened accidentally"
+  },
+  {
+   "zh": "可以：捨棄該數據，在報告中記錄，重新採樣",
+   "en": "Permitted: discard the data, record it in the report, and resample"
+  },
+  {
+   "zh": "前提：異常原因必須明確記錄，不能「選擇性」捨棄不利數據",
+   "en": "Condition: the cause of the abnormal event must be clearly documented; unfavorable data must not be discarded \"selectively\""
+  },
+  {
+   "zh": "<strong>情況 B：設備或潔淨室故障（A.5.6）</strong>",
+   "en": "<strong>Case B: equipment or cleanroom failure (A.5.6)</strong>"
+  },
+  {
+   "zh": "例如：HVAC 系統異常、HEPA 過濾器破損",
+   "en": "For example: an HVAC system malfunction or a damaged HEPA filter"
+  },
+  {
+   "zh": "必須：識別根本原因、採取糾正措施、重新測試超標點及周邊點",
+   "en": "Required: identify the root cause, take corrective action, and retest the failing location and the surrounding locations"
+  },
+  {
+   "zh": "不得：在未採取糾正措施的情況下繼續使用該潔淨室",
+   "en": "Prohibited: continuing to use the cleanroom without taking corrective action"
+  },
+  {
+   "zh": "濃度計算公式（A.6.1.2）詳解",
+   "en": "Detailed explanation of the concentration calculation formula (A.6.1.2)"
+  },
+  {
+   "zh": "C_i = (x̄_i / V_t) × 1000\n\n範例（Annex B Example 1 採樣點 1）：\n  計數：245 粒（於 28.3 公升中）\n  Vt = 28.3 公升\n  C_i = (245 / 28.3) × 1000\n      = 8.658 × 1000\n      = 8,649 粒/m³（≈ 8,649，Table 中為 8,649）\n\n換算關係：\n  1 m³ = 1,000 公升\n  因此：粒子/m³ = (計數/採樣體積L) × 1000\n\n或等效：\n  乘數 = 1000/28.3 ≈ 35.3\n  因此：8,649 = 245 × 35.3",
+   "en": "C_i = (x̄_i / V_t) × 1000\n\nExample (Annex B Example 1, sampling location 1):\n  Count: 245 particles (in 28.3 liters)\n  Vt = 28.3 liters\n  C_i = (245 / 28.3) × 1000\n      = 8.658 × 1000\n      = 8,649 particles/m³ (≈ 8,649, which is 8,649 in the Table)\n\nConversion:\n  1 m³ = 1,000 liters\n  Therefore: particles/m³ = (count / sample volume in L) × 1000\n\nOr equivalently:\n  multiplier = 1000/28.3 ≈ 35.3\n  Therefore: 8,649 = 245 × 35.3"
+  },
+  {
+   "zh": "這個 35.3 的乘數（1000/28.3）在 Annex B 的範例表格中反覆出現，請牢記其物理意義。",
+   "en": "This multiplier of 35.3 (1000/28.3) appears repeatedly in the Annex B example tables, so remember its physical meaning."
+  },
+  {
+   "zh": "思考題 4：採樣計畫設計",
+   "en": "Review Question 4: sampling plan design"
+  },
+  {
+   "zh": "一個新建 ISO Class 5 潔淨室（at-rest），面積 45 m²，擬使用 28.3 L/min 流量的 LSAPC，測量 ≥0.5 µm 粒徑。請計算：",
+   "en": "A newly built ISO Class 5 cleanroom (at-rest) has an area of 45 m². An LSAPC with a flow rate of 28.3 L/min is to be used to measure particles ≥0.5 µm. Calculate:"
+  },
+  {
+   "zh": "最少需要幾個採樣點？（查 Table A.1）",
+   "en": "What is the minimum number of sampling locations? (Look up Table A.1)"
+  },
+  {
+   "zh": "每個採樣點的最小單次採樣體積 Vs 是多少公升？",
+   "en": "What is the minimum single sample volume Vs at each sampling location, in liters?"
+  },
+  {
+   "zh": "實際採樣時間至少幾分鐘？（注意：最少 1 分鐘且必須達到 Vs）",
+   "en": "What is the minimum actual sampling time, in minutes? (Note: at least 1 minute, and Vs must be reached)"
+  },
+  {
+   "zh": "Annex B — Examples of Classification Calculations 分級計算範例",
+   "en": "Annex B — Examples of Classification Calculations"
+  },
+  {
+   "zh": "計算範例解析",
+   "en": "Commentary on the Calculation Examples"
+  },
+  {
+   "zh": "掌握範例 B.1 的計算流程",
+   "en": "Mastering the calculation flow of Example B.1"
+  },
+  {
+   "zh": "Annex B 的範例是考試和實務中最常用到的參考。以 B.1 為例，流程是：",
+   "en": "The Annex B examples are the references most often used in exams and in practice. Taking B.1 as an example, the flow is:"
+  },
+  {
+   "zh": "<strong>查 Table A.1</strong>：18 m² → N<sub>L</sub> = 6 個採樣點",
+   "en": "<strong>Look up Table A.1:</strong> 18 m² → N<sub>L</sub> = 6 sampling locations"
+  },
+  {
+   "zh": "<strong>確認限值</strong>：ISO Class 5，≥0.5 µm → 3,520 粒/m³",
+   "en": "<strong>Confirm the limit:</strong> ISO Class 5, ≥0.5 µm → 3,520 particles/m³"
+  },
+  {
+   "zh": "<strong>計算 Vs</strong>：(20/3,520) × 1,000 = 5.68 L",
+   "en": "<strong>Calculate Vs:</strong> (20/3,520) × 1,000 = 5.68 L"
+  },
+  {
+   "zh": "<strong>決定實際採樣量</strong>：儀器流量 28.3 L/min × 1 min = 28.3 L（≥ Vs 且 ≥ 2 L，符合要求）",
+   "en": "<strong>Decide the actual sample volume:</strong> instrument flow rate 28.3 L/min × 1 min = 28.3 L (≥ Vs and ≥ 2 L, so it meets the requirement)"
+  },
+  {
+   "zh": "<strong>計算濃度</strong>：計數 × (1,000/28.3) = 計數 × 35.3",
+   "en": "<strong>Calculate the concentration:</strong> count × (1,000/28.3) = count × 35.3"
+  },
+  {
+   "zh": "<strong>逐點比較</strong>：每個點的濃度不得超過限值",
+   "en": "<strong>Compare location by location:</strong> the concentration at each location must not exceed the limit"
+  },
+  {
+   "zh": "Example 4 的重要教訓：平均值不能掩蓋超標點",
+   "en": "The key lesson of Example 4: an average cannot mask a location that exceeds the limit"
+  },
+  {
+   "zh": "Example 4 中，採樣點 4 的平均濃度（4,165 粒/m³）超過了 ISO Class 5 的限值（3,520 粒/m³），儘管其他 9 個點都通過了。結果是整個潔淨室不符合要求。",
+   "en": "In Example 4, the average concentration at sampling location 4 (4,165 particles/m³) exceeded the ISO Class 5 limit (3,520 particles/m³), even though the other 9 locations all passed. The result is that the whole cleanroom does not meet the requirement."
+  },
+  {
+   "zh": "更值得注意的是採樣點 9：三次採樣分別為 54、159、78 粒，其中第二次 159 × 35.3 = 5,612 粒/m³，明顯超標。但三次的平均值 97 × 35.3 = 3,424 粒/m³，低於限值，所以通過。",
+   "en": "Even more noteworthy is sampling location 9: the three samples were 54, 159 and 78 particles. The second, 159 × 35.3 = 5,612 particles/m³, clearly exceeds the limit. But the average of the three, 97 × 35.3 = 3,424 particles/m³, is below the limit, so the location passes."
+  },
+  {
+   "zh": "<strong>結論：判斷以「採樣點的平均值」為準，而不是「每個單次樣品」。</strong>這與某些人的直覺相反。",
+   "en": "<strong>Conclusion: the judgement is based on the \"average at the sampling location\", not on \"each individual sample\".</strong> This is contrary to some people's intuition."
+  },
+  {
+   "zh": "中間等級計算（Example 5）驗算",
+   "en": "Verifying the intermediate class calculation (Example 5)"
+  },
+  {
+   "zh": "ISO Class 7.5，D = 0.5 µm\n\nCn = 10^7.5 × (0.1/0.5)^2.08\n   = 31,622,777 × (0.2)^2.08\n\n(0.2)^2.08 計算：\n  = exp(2.08 × ln(0.2))\n  = exp(2.08 × (-1.6094))\n  = exp(-3.3476)\n  = 0.03517\n\nCn = 31,622,777 × 0.03517\n   = 1,112,096\n   ≈ 1,110,000 粒/m³（三位有效數字）",
+   "en": "ISO Class 7.5, D = 0.5 µm\n\nCn = 10^7.5 × (0.1/0.5)^2.08\n   = 31,622,777 × (0.2)^2.08\n\nCalculation of (0.2)^2.08:\n  = exp(2.08 × ln(0.2))\n  = exp(2.08 × (-1.6094))\n  = exp(-3.3476)\n  = 0.03517\n\nCn = 31,622,777 × 0.03517\n   = 1,112,096\n   ≈ 1,110,000 particles/m³ (three significant figures)"
+  },
+  {
+   "zh": "比喻：大潔淨室的採樣點計算",
+   "en": "Analogy: calculating sampling locations for a large cleanroom"
+  },
+  {
+   "zh": "Example 6 的 2,100 m² 潔淨室需要 57 個採樣點。想像把這個潔淨室分成 57 個面積相等的格子（每格約 36.8 m²，大約是 6m × 6m 的正方形），然後在每個格子裡選一個代表性位置採樣。這就是「系統性採樣」的直觀含義。",
+   "en": "The 2,100 m² cleanroom in Example 6 needs 57 sampling locations. Imagine dividing this cleanroom into 57 grid cells of equal area (each about 36.8 m², roughly a 6 m × 6 m square) and selecting one representative position in each cell for sampling. This is the intuitive meaning of \"systematic sampling\"."
+  },
+  {
+   "zh": "CDMO 實務：多個客戶共用潔淨室",
+   "en": "CDMO practice: cleanrooms shared by several clients"
+  },
+  {
+   "zh": "當 CDMO 廠的一個潔淨室同時服務多個客戶時，分級報告必須反映最嚴格客戶的需求。如果客戶 A 要求 ISO Class 5 operational，客戶 B 要求 ISO Class 7 at-rest，則整個潔淨室必須在 ISO Class 5 operational 和 ISO Class 7 at-rest 兩種狀態下均通過分級，且文件必須分別記錄。",
+   "en": "When one cleanroom at a CDMO facility serves several clients at the same time, the classification report must reflect the needs of the most demanding client. If client A requires ISO Class 5 operational and client B requires ISO Class 7 at-rest, the whole cleanroom must pass classification in both states (ISO Class 5 operational and ISO Class 7 at-rest), and the documentation must record them separately."
+  },
+  {
+   "zh": "Annex C — Macroparticle Descriptor (M Descriptor) 大粒子描述符",
+   "en": "Annex C — Macroparticle Descriptor (M Descriptor)"
+  },
+  {
+   "zh": "M Descriptor 解析",
+   "en": "M Descriptor Commentary"
+  },
+  {
+   "zh": "為什麼 ≥5 µm 粒子需要 M Descriptor？",
+   "en": "Why do ≥5 µm particles need an M descriptor?"
+  },
+  {
+   "zh": "回顧 Table 1 的腳注 e：",
+   "en": "Recall footnote e of Table 1:"
+  },
+  {
+   "zh": "大粒子（&gt;1 µm，尤其是 &gt;5 µm）在採樣管路中容易因重力、慣性而沉積（撞擊採樣管壁），導致實際到達感測器的粒子數量偏低，測量結果不可靠。",
+   "en": "Macroparticles (&gt;1 µm, especially &gt;5 µm) tend to deposit in the sampling tubing through gravity and inertia (impacting the tubing wall), so the number of particles actually reaching the sensor is too low and the measurement is unreliable."
+  },
+  {
+   "zh": "因此，ISO 14644-1 規定 ≥5 µm 的粒子不納入 ISO Class 的正式分級，而是以「M descriptor」另行補充說明。",
+   "en": "For this reason, ISO 14644-1 does not include particles ≥5 µm in the formal ISO Class designation, and addresses them separately with the \"M descriptor\"."
+  },
+  {
+   "zh": "思考題 5：M Descriptor 表達",
+   "en": "Review Question 5: expressing an M descriptor"
+  },
+  {
+   "zh": "某 CDMO 廠將灌裝區申報為 EU GMP Grade A。在 operational 狀態下，使用 LSAPC 測量 ≥5.0 µm 粒子，所有採樣點的最大濃度為 18 粒/m³。請寫出完整的 M descriptor 表達，並說明是否符合 EU GMP Annex 1 要求。",
+   "en": "A CDMO facility declares its filling area as EU GMP Grade A. In the operational state, particles ≥5.0 µm were measured with an LSAPC, and the maximum concentration across all sampling locations was 18 particles/m³. Write out the complete M descriptor and state whether it meets the EU GMP Annex 1 requirement."
+  },
+  {
+   "zh": "EU GMP Annex 1 與 M Descriptor 的關係（重要！）",
+   "en": "The relationship between EU GMP Annex 1 and the M descriptor (important!)"
+  },
+  {
+   "zh": "EU GMP Annex 1 (2022) 對 Grade A/B 環境規定了 ≥5.0 µm 的粒子限值：",
+   "en": "EU GMP Annex 1 (2022) specifies limits for particles ≥5.0 µm in Grade A/B environments:"
+  },
+  {
+   "zh": "注意 C.7 節中 ISO 14644-1 明確引用了 20 和 29 這兩個數值，並說明對應 EU/PIC/S/WHO GMP 的 ≥5 µm 限值——這是本標準直接回應製藥法規需求的體現。",
+   "en": "Note that in clause C.7, ISO 14644-1 explicitly cites the two values 20 and 29 and states that they correspond to the ≥5 µm limits of EU/PIC/S/WHO GMP. This shows that the standard responds directly to pharmaceutical regulatory needs."
+  },
+  {
+   "zh": "四種大粒子測量方法比較",
+   "en": "Comparison of four macroparticle measurement methods"
+  },
+  {
+   "zh": "不同方法因測量原理不同，結果可能不具可比性——選定方法後必須在整個驗證期間保持一致。",
+   "en": "Because the measurement principles differ, results from different methods may not be comparable. Once a method is selected, it must be used consistently throughout the validation period."
+  },
+  {
+   "zh": "Annex D — Sequential Sampling Procedure 順序採樣程序",
+   "en": "Annex D — Sequential Sampling Procedure"
+  },
+  {
+   "zh": "順序採樣解析",
+   "en": "Sequential Sampling Commentary"
+  },
+  {
+   "zh": "比喻：順序採樣就像「中途計票」",
+   "en": "Analogy: sequential sampling is like an \"interim vote count\""
+  },
+  {
+   "zh": "想像你在選舉開票中——如果某候選人在計了 30% 的票後就遠遠領先，你可以有信心預測結果，不需要等到 100% 開完。順序採樣的邏輯相似：",
+   "en": "Imagine an election count: if one candidate is far ahead after 30% of the votes are counted, you can predict the result with confidence without waiting for 100% of the votes. Sequential sampling follows a similar logic:"
+  },
+  {
+   "zh": "空氣非常潔淨 → 粒子計數增長非常緩慢，很快觸及「通過線」，可以提前停止採樣",
+   "en": "Very clean air → the particle count grows very slowly and quickly reaches the \"pass line\", so sampling can stop early"
+  },
+  {
+   "zh": "空氣明顯污染 → 粒子計數快速增加，很快觸及「失敗線」，可以提前判定不合格",
+   "en": "Clearly contaminated air → the particle count rises quickly and soon reaches the \"fail line\", so a failure can be declared early"
+  },
+  {
+   "zh": "空氣接近臨界值 → 需要繼續採樣直到完整樣本量",
+   "en": "Air close to the limit → sampling must continue until the full sample volume is reached"
+  },
+  {
+   "zh": "順序採樣公式詳解",
+   "en": "Sequential sampling formulas explained"
+  },
+  {
+   "zh": "通過/失敗邊界（縱軸：累積觀測計數 C，橫軸：期望計數 E）：\n\n上限（FAIL）: C_fail = 3.96 + 1.03 × E\n下限（PASS）: C_pass = −3.96 + 1.03 × E\n\n期望計數（expected count）:\nE = Q × t × C_n,m / 1000\n\n其中：\nQ   = 採樣流速（公升/秒）\nt   = 採樣時間（秒）\nC_n,m = ISO Class 等級限值（粒/m³）\n\n例（D.4.1，ISO Class 3，0.1 µm，1,000 粒/m³）：\nQ = 28.3 L/min = 0.472 L/s\nt = 5 s → E = 0.472 × 5 × 1000 / 1000 = 2.4\n\n上限：C_fail = 3.96 + 1.03 × 2.4 = 3.96 + 2.47 = 6.43 → 7（上取整）\n下限：C_pass = −3.96 + 1.03 × 2.4 = −3.96 + 2.47 = −1.49 → N.A.（負數）",
+   "en": "Pass/fail boundaries (vertical axis: cumulative observed count C; horizontal axis: expected count E):\n\nUpper limit (FAIL): C_fail = 3.96 + 1.03 × E\nLower limit (PASS): C_pass = −3.96 + 1.03 × E\n\nExpected count:\nE = Q × t × C_n,m / 1000\n\nwhere:\nQ   = sampling flow rate (liters/second)\nt   = sampling time (seconds)\nC_n,m = ISO Class limit (particles/m³)\n\nExample (D.4.1, ISO Class 3, 0.1 µm, 1,000 particles/m³):\nQ = 28.3 L/min = 0.472 L/s\nt = 5 s → E = 0.472 × 5 × 1000 / 1000 = 2.4\n\nUpper limit: C_fail = 3.96 + 1.03 × 2.4 = 3.96 + 2.47 = 6.43 → 7 (rounded up)\nLower limit: C_pass = −3.96 + 1.03 × 2.4 = −3.96 + 2.47 = −1.49 → N.A. (negative)"
+  },
+  {
+   "zh": "何時應使用順序採樣？",
+   "en": "When should sequential sampling be used?"
+  },
+  {
+   "zh": "當常規採樣體積過大（採樣時間過長）時，順序採樣特別有用：",
+   "en": "Sequential sampling is particularly useful when the conventional sample volume is too large (the sampling time is too long):"
+  },
+  {
+   "zh": "對於 ISO Class 3 的 ≥0.5 µm 或更嚴格等級的測量，使用順序採樣可以大幅縮短驗證時間——在實際測試中，如果空氣遠比限值潔淨，可能只需幾分鐘就能判定通過。",
+   "en": "For ISO Class 3 at ≥0.5 µm, or stricter classes, sequential sampling can greatly shorten the validation time. In actual testing, if the air is much cleaner than the limit, a pass may be determined in only a few minutes."
+  },
+  {
+   "zh": "Annex E — Intermediate Decimal Cleanliness Classes 中間小數等級",
+   "en": "Annex E — Intermediate Decimal Cleanliness Classes"
+  },
+  {
+   "zh": "中間等級解析",
+   "en": "Commentary on Intermediate Classes"
+  },
+  {
+   "zh": "何時需要中間等級？",
+   "en": "When are intermediate classes needed?"
+  },
+  {
+   "zh": "九個整數 ISO Class（1–9）覆蓋了大多數應用場景。但在某些特殊情況下，客戶或法規可能要求介於兩個整數等級之間的清潔度，此時可使用中間等級（Intermediate Classes）。",
+   "en": "The nine whole ISO Classes (1–9) cover most applications. In some special cases, however, a customer or regulation may require a cleanliness level between two whole classes, and intermediate classes can then be used."
+  },
+  {
+   "zh": "常見案例：",
+   "en": "Common cases:"
+  },
+  {
+   "zh": "某些半導體製程需要比 ISO Class 7（352,000 粒/m³）嚴格，但不需要 ISO Class 6（35,200 粒/m³）的條件",
+   "en": "Some semiconductor processes need conditions stricter than ISO Class 7 (352,000 particles/m³) but do not require ISO Class 6 (35,200 particles/m³)"
+  },
+  {
+   "zh": "Annex B Example 5 就以 <strong>ISO Class 7.5</strong>（限值 1,110,000 粒/m³ at ≥0.5 µm）為示例",
+   "en": "Annex B Example 5 uses <strong>ISO Class 7.5</strong> (limit 1,110,000 particles/m³ at ≥0.5 µm) as its example"
+  },
+  {
+   "zh": "注意：增量不得小於 0.5（如 ISO Class 7.3 是不允許的），因為粒子測量的不確定性使更小增量失去意義。",
+   "en": "Note: the increment must not be smaller than 0.5 (for example, ISO Class 7.3 is not permitted), because measurement uncertainty in particle counting makes smaller increments meaningless."
+  },
+  {
+   "zh": "公式 E.1 的完整應用範例",
+   "en": "Complete worked example of Formula E.1"
+  },
+  {
+   "zh": "問題：計算 ISO Class 5 在 ≥0.4 µm（非 Table 1 標準粒徑）的限值\n\nCn = 10^5 × (0.1/0.4)^2.08\n   = 100,000 × (0.25)^2.08\n\n(0.25)^2.08：\n  = exp(2.08 × ln(0.25))\n  = exp(2.08 × (-1.3863))\n  = exp(-2.8834)\n  = 0.05612\n\nCn = 100,000 × 0.05612\n   = 5,612 粒/m³\n   ≈ 5,610 粒/m³（三位有效數字）\n\n注意：D2(0.4)/D1(0.3) = 1.33 &lt; 1.5，因此 0.3 和 0.4 µm\n不能同時被選為考慮粒徑（違反 4.4 節的要求）。\n但若只考慮 ≥0.4 µm 這單一粒徑，則使用此公式計算是合法的。",
+   "en": "Problem: calculate the ISO Class 5 limit at ≥0.4 µm (not a standard Table 1 particle size)\n\nCn = 10^5 × (0.1/0.4)^2.08\n   = 100,000 × (0.25)^2.08\n\n(0.25)^2.08:\n  = exp(2.08 × ln(0.25))\n  = exp(2.08 × (-1.3863))\n  = exp(-2.8834)\n  = 0.05612\n\nCn = 100,000 × 0.05612\n   = 5,612 particles/m³\n   ≈ 5,610 particles/m³ (three significant figures)\n\nNote: D2(0.4)/D1(0.3) = 1.33 &lt; 1.5, so 0.3 and 0.4 µm\ncannot be selected together as considered particle sizes (this violates the requirement in clause 4.4).\nBut if only the single particle size ≥0.4 µm is considered, calculating with this formula is legitimate."
+  },
+  {
+   "zh": "中間等級在製藥領域的實際意義",
+   "en": "Practical significance of intermediate classes in the pharmaceutical field"
+  },
+  {
+   "zh": "在 EU GMP Annex 1 和 ISO 14644-1 的對應關係中，製藥廠通常只使用 ISO Class 5、7、8 這三個整數等級，中間等級在製藥環境中並不常見。",
+   "en": "In the correspondence between EU GMP Annex 1 and ISO 14644-1, pharmaceutical facilities normally use only three whole classes, ISO Class 5, 7 and 8. Intermediate classes are not common in pharmaceutical environments."
+  },
+  {
+   "zh": "但理解中間等級的公式原理很重要——它揭示了 Table 1 的所有數值都來自同一個數學公式，理解公式比死記數值更有價值。",
+   "en": "Still, it is important to understand the principle behind the formula. It shows that all the values in Table 1 come from the same mathematical formula, and understanding the formula is more valuable than memorizing the values."
+  },
+  {
+   "zh": "Annex F — Test Instruments 測試儀器",
+   "en": "Annex F — Test Instruments"
+  },
+  {
+   "zh": "儀器規範解析",
+   "en": "Commentary on Instrument Specifications"
+  },
+  {
+   "zh": "LSAPC 的核心標準：ISO 21501-4:2007",
+   "en": "The core standard for LSAPC: ISO 21501-4:2007"
+  },
+  {
+   "zh": "LSAPC 的詳細技術規範（感測器靈敏度、計數效率、流量精確度、取樣速率等）在 <strong>ISO 21501-4:2007</strong> 中規定。ISO 14644-1 直接引用此標準，意味著：",
+   "en": "The detailed technical specifications of an LSAPC (sensor sensitivity, counting efficiency, flow rate accuracy, sampling rate, etc.) are specified in <strong>ISO 21501-4:2007</strong>. ISO 14644-1 cites this standard directly, which means:"
+  },
+  {
+   "zh": "儀器必須符合 ISO 21501-4 的所有技術要求",
+   "en": "The instrument must meet all the technical requirements of ISO 21501-4"
+  },
+  {
+   "zh": "校正必須依據 ISO 21501-4 的方法進行",
+   "en": "Calibration must be performed using the methods of ISO 21501-4"
+  },
+  {
+   "zh": "校正憑證必須明確說明依據此標準",
+   "en": "The calibration certificate must clearly state that it is based on this standard"
+  },
+  {
+   "zh": "在製藥廠的 GMP 審查中，查核員常會要求查看 LSAPC 的校正憑證，確認其包含 ISO 21501-4 的相關測試項目。",
+   "en": "In GMP inspections of pharmaceutical facilities, inspectors often ask to see the LSAPC calibration certificate and confirm that it includes the relevant ISO 21501-4 test items."
+  },
+  {
+   "zh": "為什麼 Annex F 是「Informative」而非「Normative」？",
+   "en": "Why is Annex F \"Informative\" rather than \"Normative\"?"
+  },
+  {
+   "zh": "儀器技術進步很快——今天最先進的 LSAPC 可能比 2015 年的規範更好。若將 Annex F 設為 Normative，可能限制使用性能更佳的新儀器。",
+   "en": "Instrument technology advances quickly, and today's best LSAPC may outperform the 2015 specification. Making Annex F normative could restrict the use of better-performing new instruments."
+  },
+  {
+   "zh": "因此 Annex F 只提供「最低要求參考」，允許使用者選擇性能更優的儀器（須經客戶/供應商同意），這體現了 ISO 標準靈活性的立法思路。",
+   "en": "Annex F therefore gives only a \"reference for minimum requirements\" and allows users to choose instruments with better performance (subject to agreement between customer and supplier). This reflects the flexible approach of ISO standards."
+  },
+  {
+   "zh": "CDMO 儀器管理實務",
+   "en": "CDMO instrument management practice"
+  },
+  {
+   "zh": "典型 CDMO 廠對 LSAPC 的管理要點：",
+   "en": "Key points in how a typical CDMO facility manages its LSAPCs:"
+  },
+  {
+   "zh": "<strong>校正頻率：</strong>通常每 12 個月一次，依 ISO 21501-4 要求",
+   "en": "<strong>Calibration frequency:</strong> usually every 12 months, per ISO 21501-4"
+  },
+  {
+   "zh": "<strong>使用前確認：</strong>每次分級測試前進行零計數檢查（Zero Count Check）",
+   "en": "<strong>Pre-use check:</strong> perform a zero count check before each classification test"
+  },
+  {
+   "zh": "<strong>流量驗證：</strong>定期驗證儀器實際流量符合規格（如 28.3 L/min ± 5%）",
+   "en": "<strong>Flow rate verification:</strong> periodically verify that the actual instrument flow rate meets the specification (for example, 28.3 L/min ± 5%)"
+  },
+  {
+   "zh": "<strong>管路長度限制：</strong>採樣管路越長，大粒子損失越多；一般 &gt;1 µm 的粒子採樣管路不超過廠商建議長度（通常 ≤ 1 m）",
+   "en": "<strong>Tubing length limit:</strong> the longer the sampling tubing, the more macroparticles are lost; for particles &gt;1 µm, the tubing generally should not exceed the length recommended by the manufacturer (usually ≤ 1 m)"
+  },
+  {
+   "zh": "<strong>校正追溯性：</strong>校正必須追溯至國家計量標準（NIST 或等效）",
+   "en": "<strong>Calibration traceability:</strong> calibration must be traceable to a national metrology standard (NIST or equivalent)"
+  },
+  {
+   "zh": "本節重點回顧 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "<strong>ISO 14644-1:2015 核心：</strong>以微粒濃度為基準，定義 ISO Class 1–9 九個等級，使用 LSAPC 測量 0.1–5 µm 範圍的粒子，&gt;5 µm 粒子用 M descriptor 補充。",
+   "en": "<strong>Core of ISO 14644-1:2015:</strong> Based on particle concentration, it defines nine classes, ISO Class 1–9, uses an LSAPC to measure particles in the 0.1–5 µm range, and uses the M descriptor to supplement for particles &gt;5 µm."
+  },
+  {
+   "zh": "<strong>分級公式：</strong>C<sub>n</sub> = 10<sup>N</sup> × (0.1/D)<sup>2.08</sup>，所有 Table 1 數值均來自此公式；每升一個等級，限值約乘以 10。",
+   "en": "<strong>Classification formula:</strong> C<sub>n</sub> = 10<sup>N</sup> × (0.1/D)<sup>2.08</sup>; all Table 1 values come from this formula, and each step up in class multiplies the limit by about 10."
+  },
+  {
+   "zh": "<strong>三種佔用狀態：</strong>as-built（無人無設備）→ at-rest（有設備無人）→ operational（有人有設備生產中）；製藥廠驗證必須分別記錄相應狀態。",
+   "en": "<strong>Three occupancy states:</strong> as-built (no personnel, no equipment) → at-rest (equipment, no personnel) → operational (personnel and equipment, in production); pharmaceutical validation must record the relevant states separately."
+  },
+  {
+   "zh": "<strong>EU GMP 對應關係：</strong>Grade A = ISO Class 5（at-rest &amp; operational）；Grade B = ISO Class 5（at-rest），ISO Class 7（operational）；Grade C = ISO Class 7（at-rest），ISO Class 8（operational）；Grade D = ISO Class 8（at-rest）。",
+   "en": "<strong>EU GMP correspondence:</strong> Grade A = ISO Class 5 (at-rest &amp; operational); Grade B = ISO Class 5 (at-rest), ISO Class 7 (operational); Grade C = ISO Class 7 (at-rest), ISO Class 8 (operational); Grade D = ISO Class 8 (at-rest)."
+  },
+  {
+   "zh": "<strong>採樣設計（Annex A）：</strong>採樣點數從 Table A.1 確定；Vs = (20/C<sub>n,m</sub>) × 1,000 L；每點最少採樣 2 L 或 1 分鐘，取較大值；每個採樣點的平均濃度均不得超標。",
+   "en": "<strong>Sampling design (Annex A):</strong> the number of sampling locations is determined from Table A.1; Vs = (20/C<sub>n,m</sub>) × 1,000 L; sample at least 2 L or 1 minute per location, whichever is greater; the average concentration at every sampling location must not exceed the limit."
+  },
+  {
+   "zh": "<strong>M Descriptor：</strong>格式為 \"ISO M (a; b); c\"，用於 &gt;5 µm 大粒子；ISO Class 5 搭配 EU GMP Grade A/B 的 ≥5 µm 限值（20 或 29 粒/m³）。",
+   "en": "<strong>M descriptor:</strong> the format is \"ISO M (a; b); c\" and is used for macroparticles &gt;5 µm; ISO Class 5 is paired with the EU GMP Grade A/B ≥5 µm limit (20 or 29 particles/m³)."
+  },
+  {
+   "zh": "<strong>順序採樣（Annex D）：</strong>適用於 ISO Class 4 或更嚴格的低濃度環境；利用計數速率即時預測通過/失敗，節省採樣時間；邊界公式：C<sub>fail</sub> = 3.96 + 1.03E，C<sub>pass</sub> = −3.96 + 1.03E。",
+   "en": "<strong>Sequential sampling (Annex D):</strong> suitable for low-concentration environments of ISO Class 4 or stricter; the count rate is used to predict pass/fail in real time, saving sampling time; boundary formulas: C<sub>fail</sub> = 3.96 + 1.03E, C<sub>pass</sub> = −3.96 + 1.03E."
+  },
+  {
+   "zh": "<strong>2015 版 vs. 1999 版關鍵差異：</strong>統計模型從假設常態分佈改為超幾何採樣模型；信心水準明確為 95% × 90%；取消 95% UCL；採樣點數量更新；M descriptor 正式納入標準。",
+   "en": "<strong>Key differences between the 2015 and 1999 editions:</strong> the statistical model changed from an assumed normal distribution to a hypergeometric sampling model; the confidence level is explicitly 95% × 90%; the 95% UCL was removed; the number of sampling locations was updated; the M descriptor was formally incorporated into the standard."
+  }
+ ]
+}

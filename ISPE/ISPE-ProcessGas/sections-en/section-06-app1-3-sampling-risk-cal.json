@@ -1,0 +1,393 @@
+{
+ "source": "section-06-app1-3-sampling-risk-cal.html",
+ "blocks": [
+  {
+   "zh": "附錄一至三：取樣策略、風險評估案例與校準策略",
+   "en": "Appendices 1-3: Sampling Strategy, Risk Assessment Examples and Calibration Strategy"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解如何從風險評估推導取樣策略——並非每個點都需要取樣，取樣位置的選擇需以關鍵性（Criticality）為依據",
+   "en": "Understand how a sampling strategy is derived from a risk assessment: not every point needs to be sampled, and sampling locations are selected on the basis of criticality"
+  },
+  {
+   "zh": "掌握壓縮空氣系統各品質屬性（濕度、烴類、微粒、微生物）的初始測試與持續監測框架",
+   "en": "Master the framework for initial testing and ongoing monitoring of each quality attribute of a compressed air system (moisture, hydrocarbons, particulates, microorganisms)"
+  },
+  {
+   "zh": "能閱讀並應用 FMEA 式風險評估，識別氣體系統失效模式並決定控制機制的範疇",
+   "en": "Be able to read and apply an FMEA-style risk assessment, identify gas system failure modes and decide the scope of control mechanisms"
+  },
+  {
+   "zh": "了解校準策略的分層邏輯：產品關鍵 → 製程關鍵 → 安全關鍵 → 非關鍵，並為不同類別設計適當的校準頻率",
+   "en": "Understand the tiered logic of a calibration strategy (product critical → process critical → safety critical → non-critical) and design appropriate calibration frequencies for each category"
+  },
+  {
+   "zh": "能撰寫同時滿足品質與工程需求的氣體品質監測 SOP",
+   "en": "Be able to write a gas quality monitoring SOP that meets both quality and engineering needs"
+  },
+  {
+   "zh": "附錄一 — 10.1 &amp; 10.2 系統描述與控制策略 (System Description &amp; Control Strategy)",
+   "en": "Appendix 1 - 10.1 &amp; 10.2 System Description &amp; Control Strategy"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念解析 Key Concepts",
+   "en": "Key Concepts"
+  },
+  {
+   "zh": "<strong>產品接觸氣體 (Product Contact Gas):</strong> 直接與產品、產品接觸表面、或初級包材接觸的氣體。這類氣體的品質屬性直接影響產品安全，因此受到最嚴格的控制與監測。",
+   "en": "<strong>Product Contact Gas:</strong> Gas that comes into direct contact with the product, product contact surfaces or primary packaging materials. The quality attributes of this gas directly affect product safety, so it is subject to the strictest control and monitoring."
+  },
+  {
+   "zh": "<strong>壓力露點 (Pressure Dewpoint, PDP):</strong> 在系統操作壓力下，空氣中水蒸氣開始凝結的溫度。-40°C PDP 代表空氣極乾燥——這是製藥氣體系統最常見的規格要求。",
+   "en": "<strong>Pressure Dewpoint (PDP):</strong> The temperature at which water vapor in the air begins to condense at the system operating pressure. A PDP of -40°C means very dry air; this is the most common specification for pharmaceutical gas systems."
+  },
+  {
+   "zh": "<strong>POU 過濾器 (Point Of Use Filter):</strong> 安裝在氣體最終使用點的過濾器，為直接接觸產品的氣體提供最後一道屏障。",
+   "en": "<strong>Point Of Use (POU) Filter:</strong> A filter installed at the final point of use of the gas, providing the last barrier for gas that contacts the product directly."
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "這個壓縮空氣系統就像一座城市的自來水網路：水廠（壓縮機）產出原水，經過初步處理（中間過濾器 A&amp;B）、精密過濾（乾燥機＋最終過濾器 C&amp;D）後進入配水網（管路），最後在每個用水點（POU）還有一道淨水器。城市中的醫院（產品接觸點）比家庭（非接觸點）需要更高品質的水，因此在醫院入口額外裝設更精密的過濾——這正是 POU 過濾器的概念。",
+   "en": "This compressed air system is like a city's tap water network: the waterworks (compressor) produces raw water, which goes through initial treatment (intermediate filters A&amp;B) and fine filtration (dryer plus final filters C&amp;D) before entering the distribution network (piping), and finally a water purifier sits at every point of use (POU). A hospital in the city (product contact point) needs higher quality water than a household (non-contact point), so an additional, finer filter is installed at the hospital entrance. That is exactly the concept of a POU filter."
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "<strong>水活性（a<sub>w</sub>）是微生物生長的門檻：</strong> 黴菌/酵母菌 a<sub>w</sub> &lt; 0.6 不生長；細菌 a<sub>w</sub> &lt; 0.85 不生長。在 -40°C PDP、6 bar 下，系統約在 5% RH（a<sub>w</sub> = 0.05），遠低於任何微生物生長門檻。這就是為何露點控制可同步管理微生物風險的關鍵科學依據。",
+   "en": "<strong>Water activity (a<sub>w</sub>) is the threshold for microbial growth:</strong> Molds/yeasts do not grow at a<sub>w</sub> &lt; 0.6; bacteria do not grow at a<sub>w</sub> &lt; 0.85. At -40°C PDP and 6 bar, the system sits at about 5% RH (a<sub>w</sub> = 0.05), far below any microbial growth threshold. This is the key scientific basis for why dewpoint control also manages microbial risk."
+  },
+  {
+   "zh": "露點從 -40°C 升至 0°C，在 6 bar 下 RH 從 4.8% 跳至 146.4%——這意味著乾燥機一旦失效，系統迅速進入微生物可能生長的範圍。",
+   "en": "When the dewpoint rises from -40°C to 0°C, RH at 6 bar jumps from 4.8% to 146.4%. This means that once the dryer fails, the system quickly enters a range in which microorganisms can grow."
+  },
+  {
+   "zh": "公式與計算 Formula",
+   "en": "Formula and Calculation"
+  },
+  {
+   "zh": "RH (%) = 100 × Actual Vapor Pressure\n                ─────────────────────\n                Saturation Vapor Pressure\n\n水活性 (aW) = RH / 100\n\n範例：-40°C PDP, 6 bar, 21°C 環境\n  → RH at 6 bar = 4.8%\n  → aW = 0.048\n  → 遠低於細菌生長下限 0.85",
+   "en": "RH (%) = 100 × Actual Vapor Pressure\n                ─────────────────────\n                Saturation Vapor Pressure\n\nWater activity (aW) = RH / 100\n\nExample: -40°C PDP, 6 bar, 21°C ambient\n  → RH at 6 bar = 4.8%\n  → aW = 0.048\n  → far below the bacterial growth lower limit of 0.85"
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "為什麼系統選擇銅材與黃銅作為管路材質？這對濕度與微生物管控有何意義？",
+   "en": "Why were copper and brass chosen as the piping materials for this system? What does this mean for moisture and microbial control?"
+  },
+  {
+   "zh": "如果乾燥機故障導致 PDP 升至 0°C，在 6 bar、21°C 下 RH 變成多少？對微生物風險有何影響？",
+   "en": "If a dryer failure causes the PDP to rise to 0°C, what does the RH become at 6 bar and 21°C? What is the effect on microbial risk?"
+  },
+  {
+   "zh": "附錄一 — 10.3 濕度含量 (Moisture Content)",
+   "en": "Appendix 1 - 10.3 Moisture Content"
+  },
+  {
+   "zh": "<strong>Index Run（最長管程）：</strong> 指從壓縮機到末端出口的最長管路。選此點取樣的邏輯是「最惡情況原則」——若最長路徑的氣體品質合格，所有較短路徑必然也合格。這是一種高效率、科學化的取樣策略，避免盲目在每個出口取樣。",
+   "en": "<strong>Index Run (longest pipe run):</strong> The longest piping path from the compressor to the end outlet. The logic for sampling at this point is the \"worst-case principle\": if the gas quality on the longest path is acceptable, all shorter paths must also be acceptable. This is an efficient, scientific sampling strategy that avoids blindly sampling at every outlet."
+  },
+  {
+   "zh": "<strong>持續監測 vs. 週期取樣：</strong> PDP 監測儀是持續的（continuous），而人工取樣是週期性的（periodic）。對於關鍵參數（如露點），應優先配置持續監測，並連接 BMS 報警——這比定期派人取樣更可靠。",
+   "en": "<strong>Continuous monitoring vs. periodic sampling:</strong> A PDP monitor is continuous, whereas manual sampling is periodic. For critical parameters (such as dewpoint), continuous monitoring should be given priority and connected to BMS alarms; this is more reliable than sending someone to sample periodically."
+  },
+  {
+   "zh": "想像你負責管理一棟大樓的熱水供應系統。只要進水溫度（熱水器出口）合格，加上最遠端的浴室（最長管程）出水也合格，就能推論整棟大樓的熱水品質都達標——你不需要在每間浴室都裝溫度計。這正是「Index Run」策略的精髓：用最惡情況點代表整個系統。",
+   "en": "Imagine you manage the hot water supply system of a building. As long as the inlet temperature (water heater outlet) is acceptable and the water at the farthest bathroom (longest pipe run) is also acceptable, you can infer that the hot water quality throughout the building is on target; you do not need a thermometer in every bathroom. This is the essence of the \"Index Run\" strategy: using the worst-case point to represent the whole system."
+  },
+  {
+   "zh": "<strong>金屬管路 = 天然濕度屏障：</strong> 銅/不鏽鋼管路本身就是極好的水分阻隔材料，幾乎不會讓外部濕度滲入。因此，一旦初始驗證確認管路完整性，濕度的日常監測可以依賴儀器而非人工取樣。",
+   "en": "<strong>Metal piping = a natural moisture barrier:</strong> Copper/stainless steel piping is itself an excellent moisture barrier and hardly lets external humidity permeate. Therefore, once the initial validation confirms pipe integrity, routine moisture monitoring can rely on instruments rather than manual sampling."
+  },
+  {
+   "zh": "<strong>修改系統需重新驗證：</strong> 「Modification of the system would require appropriate testing.」管路修改或延伸後，必須重新驗證 Index Run。這是系統變更管控（Change Control）的重要觸發點，在 CDMO 環境中尤其容易被工程人員忽視。",
+   "en": "<strong>System modifications require re-validation:</strong> \"Modification of the system would require appropriate testing.\" After piping is modified or extended, the Index Run must be re-validated. This is an important trigger point for change control, and in a CDMO environment it is especially easy for engineers to overlook."
+  },
+  {
+   "zh": "為什麼 PDP 監測選在「乾燥機出口」而非配管末端？這個設計決策的風險是什麼？",
+   "en": "Why is PDP monitoring located at the \"dryer outlet\" rather than at the end of the piping? What is the risk of this design decision?"
+  },
+  {
+   "zh": "若工廠擴建新增管路，哪些測試需要重新執行？依據是什麼法規或原則？",
+   "en": "If the plant is expanded and new piping is added, which tests need to be repeated? On what regulation or principle is this based?"
+  },
+  {
+   "zh": "附錄一 — 10.4 &amp; 10.5 烴類/油分與微粒 (Hydrocarbons/Oil &amp; Particulate)",
+   "en": "Appendix 1 - 10.4 &amp; 10.5 Hydrocarbons/Oil &amp; Particulate"
+  },
+  {
+   "zh": "<strong>聚合過濾器 (Coalescing Filter):</strong> 設計用來捕捉油霧（oil aerosol）的特殊過濾器。油霧液滴在過濾介質上聚合成較大液滴後，受重力滴落排出。這類過濾器同時去除微粒和液態油污。",
+   "en": "<strong>Coalescing Filter:</strong> A special filter designed to capture oil aerosol. Oil mist droplets coalesce on the filter media into larger droplets, which then drain away by gravity. This type of filter removes both particulates and liquid oil contamination."
+  },
+  {
+   "zh": "<strong>烴類來源的雙重性：</strong> 本節揭示烴類污染有兩個來源——(1) 外部環境空氣中的烴類，(2) 管路施工中殘留的潤滑劑或溶劑。初始取樣必須同時針對這兩個來源設計測試點。",
+   "en": "<strong>The dual source of hydrocarbons:</strong> This section reveals that hydrocarbon contamination has two sources: (1) hydrocarbons in the external ambient air, and (2) lubricants or solvents left over from pipe installation. The initial sampling must design test points for both sources."
+  },
+  {
+   "zh": "<strong>最終過濾器無法去除油蒸氣：</strong> Filters C &amp; D 是微粒過濾，不是油蒸氣過濾器。油蒸氣（vapor phase）只有中間過濾器 A&amp;B 能有效去除。若 A&amp;B 失效，油蒸氣可能穿透至 POU——這是設計驗證和持續監測需覆蓋的關鍵場景。",
+   "en": "<strong>Final filters cannot remove oil vapor:</strong> Filters C &amp; D are particulate filters, not oil vapor filters. Oil vapor (vapor phase) can only be effectively removed by the intermediate filters A&amp;B. If A&amp;B fail, oil vapor may break through to the POU; this is a key scenario that design verification and ongoing monitoring need to cover."
+  },
+  {
+   "zh": "<strong>0.45 µm POU 過濾器：</strong> 這是口服固體劑型（OSD）的典型規格，能截留大多數微生物。對無菌產品而言，POU 可能需要更高規格（0.2 µm 除菌級）。",
+   "en": "<strong>0.45 µm POU filter:</strong> This is a typical specification for oral solid dosage (OSD) forms and can retain most microorganisms. For sterile products, the POU may need a higher specification (0.2 µm sterilizing grade)."
+  },
+  {
+   "zh": "想像食品加工廠的通風系統：入口的粗濾網（壓縮機進氣過濾器）擋住樹葉和大塵粒，但細菌和廚房油煙（類比油霧）需要更精密的 HEPA 過濾器（類比 Filters A&amp;B）。而空調出風口的最終過濾器（類比 Filters C&amp;D）能再過濾微粒，但無法處理已氣化的油蒸氣——因此初期的管路清潔度（脫脂施工）至關重要。",
+   "en": "Imagine the ventilation system of a food processing plant: the coarse screen at the inlet (compressor intake filter) blocks leaves and large dust particles, but bacteria and cooking fumes (analogous to oil mist) need a finer HEPA filter (analogous to Filters A&amp;B). The final filter at the air conditioning outlet (analogous to Filters C&amp;D) can filter particulates again but cannot deal with oil that has already vaporized, so the cleanliness of the piping at the start (degreased installation) is critical."
+  },
+  {
+   "zh": "實務應用 CDMO Application",
+   "en": "CDMO Application"
+  },
+  {
+   "zh": "在 CDMO 承接新客戶或新產品時，工程師常被問：「現有壓縮空氣系統能否直接用於這個產品？」正確答案需要：確認 POU 過濾器規格是否符合該產品的接觸要求、查看最近一次 index run 的烴類和微粒測試結果、確認管路材質和施工記錄。這些資訊應整合進設備資格檔（URS/DQ）和系統監測檔案。",
+   "en": "When a CDMO takes on a new client or new product, engineers are often asked: \"Can the existing compressed air system be used directly for this product?\" A correct answer requires: confirming that the POU filter specification meets the contact requirements of the product, reviewing the hydrocarbon and particulate test results of the most recent index run, and confirming the piping material and installation records. This information should be integrated into the equipment qualification documents (URS/DQ) and the system monitoring file."
+  },
+  {
+   "zh": "若環境空氣烴類背景值偏高（如工業區），你會如何調整初始測試的取樣策略？",
+   "en": "If the ambient air hydrocarbon background is high (for example in an industrial area), how would you adjust the sampling strategy for initial testing?"
+  },
+  {
+   "zh": "為什麼施工規範要求「脫脂材料」且「螺紋連接不得使用含烴潤滑劑」？這涉及哪個品質屬性的風險？",
+   "en": "Why do the installation specifications require \"degreased materials\" and prohibit \"hydrocarbon-containing lubricants on threaded connections\"? Which quality attribute is at risk?"
+  },
+  {
+   "zh": "附錄一 — 10.6 微生物含量 (Microbial Levels)",
+   "en": "Appendix 1 - 10.6 Microbial Levels"
+  },
+  {
+   "zh": "<strong>露點作為微生物控制機制：</strong> 這是本節最重要的洞察。當系統保持在 -40°C PDP（a<sub>w</sub> = 0.05）時，微生物既無法在氣體中存活，也無法在管壁上增殖——因此微生物監測的設計邏輯與非活性微粒完全相同。這代表「維持 PDP 合規」等同於「維持微生物控制」，兩者是連動的。",
+   "en": "<strong>Dewpoint as a microbial control mechanism:</strong> This is the most important insight in this section. When the system is held at -40°C PDP (a<sub>w</sub> = 0.05), microorganisms can neither survive in the gas nor proliferate on the pipe walls, so the design logic for microbial monitoring is identical to that for non-viable particulates. This means that \"maintaining PDP compliance\" is equivalent to \"maintaining microbial control\"; the two are linked."
+  },
+  {
+   "zh": "<strong>氣體微生物監測常被忽視：</strong> 許多工廠的氣體資格確認（Gas Qualification）只做非活性微粒，未做活性微粒（cfu/ft³）測試。ISPE 明確要求活性微粒監測——這在查廠時是容易被稽核員指出的缺漏。",
+   "en": "<strong>Gas microbial monitoring is often neglected:</strong> In many plants, gas qualification covers only non-viable particulates and omits viable particulate (cfu/ft³) testing. ISPE explicitly requires viable particulate monitoring; this is a gap that auditors easily point out during inspections."
+  },
+  {
+   "zh": "<strong>驗收標準：</strong> 最終過濾器後 ≤ 0.03 cfu/ft³；POU 也是 ≤ 0.03 cfu/ft³。這個數字需在 SOP 和監測計畫中明確文件化。",
+   "en": "<strong>Acceptance criteria:</strong> ≤ 0.03 cfu/ft³ after the final filter; also ≤ 0.03 cfu/ft³ at the POU. This figure must be clearly documented in the SOP and the monitoring plan."
+  },
+  {
+   "zh": "露點控制微生物，就像沙漠氣候天然抑制細菌：撒哈拉沙漠的低濕度讓細菌幾乎無法在露天環境存活，即使沙塵中帶有少量孢子，也無法增殖。壓縮空氣系統通過將 RH 壓至 5%，人工創造了一個「沙漠環境」，從源頭切斷微生物生長的必要條件。",
+   "en": "Dewpoint control of microorganisms is like a desert climate naturally suppressing bacteria: the low humidity of the Sahara leaves bacteria almost unable to survive in the open, and even if the dust carries a few spores, they cannot multiply. By driving RH down to 5%, the compressed air system artificially creates a \"desert environment\" and cuts off the conditions microbial growth needs at the source."
+  },
+  {
+   "zh": "若 PDP 連續監測值突然從 -40°C 升至 -20°C，微生物風險如何改變？應觸發哪些 OOS 調查步驟？",
+   "en": "If the continuous PDP reading suddenly rises from -40°C to -20°C, how does the microbial risk change? Which OOS investigation steps should be triggered?"
+  },
+  {
+   "zh": "對無菌充填線使用的氮氣，微生物監測的驗收標準應比壓縮空氣更嚴還是相同？理由為何？",
+   "en": "For nitrogen used on a sterile filling line, should the microbial monitoring acceptance criteria be stricter than or the same as for compressed air? Why?"
+  },
+  {
+   "zh": "附錄一 — 初始測試提案 Table 10.2: Initial Testing Proposed",
+   "en": "Appendix 1 - Initial Testing Proposed (Table 10.2: Initial Testing Proposed)"
+  },
+  {
+   "zh": "<strong>初始測試（Initial Testing / PQ）vs. 持續監測（Ongoing Monitoring）：</strong> 初始測試是系統建置後的一次性驗證，目的是「證明系統設計足以達到規格」；持續監測則是長期的「確認系統維持合規狀態」。兩者的取樣點、頻率和目的都不同——這張表格呈現的是初始測試設計的完整邏輯。",
+   "en": "<strong>Initial testing (Initial Testing / PQ) vs. ongoing monitoring (Ongoing Monitoring):</strong> Initial testing is a one-time verification after the system is built, with the purpose of \"demonstrating that the system design is adequate to meet the specifications\"; ongoing monitoring is the long-term \"confirmation that the system remains in a compliant state\". The sampling points, frequencies and purposes of the two differ; this table presents the complete logic of the initial testing design."
+  },
+  {
+   "zh": "<strong>「3天」的意義：</strong> 連續或非連續3天的測試，目的是捕捉典型操作變異。一天的快照（snapshot）可能是最好或最差的情況，3天數據才能建立合理的基線（baseline）。這個邏輯適用於所有 PQ 驗收測試，不限於氣體系統。",
+   "en": "<strong>The significance of \"3 days\":</strong> Testing over 3 consecutive or non-consecutive days is intended to capture typical operating variation. A one-day snapshot may be the best or the worst case; only 3 days of data can establish a reasonable baseline. This logic applies to all PQ acceptance tests, not just gas systems."
+  },
+  {
+   "zh": "<strong>「Not to exceed」vs. 設定值：</strong> 乾燥機是按「不超過 -40°C PDP」設計，而非精確控制在 -40°C。因此測試結果預期會有波動（例如 -41°C 到 -45°C 之間），只要不超標即可接受。這影響如何撰寫驗收標準。",
+   "en": "<strong>\"Not to exceed\" vs. a set point:</strong> The dryer is designed to a \"not to exceed -40°C PDP\" and is not controlled precisely at -40°C. Test results are therefore expected to fluctuate (for example between -41°C and -45°C), and are acceptable as long as the limit is not exceeded. This affects how acceptance criteria are written."
+  },
+  {
+   "zh": "在撰寫氣體系統 Performance Qualification (PQ) 方案時，此表格是絕佳的參考框架。關鍵要素：(1) 明確列出每個 CQA 的測試點與理由；(2) 驗收標準需在執行前預先定義，不得事後修改；(3) 活性微粒（viable）與非活性微粒（total）必須分開記錄；(4) POU 前後都要測——POU 前後的數值對比是確認 POU 過濾器有效性的直接證據。",
+   "en": "This table is an excellent reference framework when writing a Performance Qualification (PQ) protocol for a gas system. The key elements are: (1) clearly list the test points and rationale for each CQA; (2) acceptance criteria must be predefined before execution and may not be changed afterwards; (3) viable and non-viable (total) particulates must be recorded separately; (4) test both before and after the POU: the comparison of values before and after the POU is direct evidence of POU filter effectiveness."
+  },
+  {
+   "zh": "此測試設計中，為什麼烴類要在「POU 過濾器前」取樣，而不是「POU 後」？這個設計選擇說明了什麼？",
+   "en": "In this test design, why are hydrocarbons sampled \"before the POU filter\" rather than \"after the POU\"? What does this design choice tell you?"
+  },
+  {
+   "zh": "如果初始測試某天烴類超標，但另外兩天合格，你的 PQ 報告應如何處理？",
+   "en": "If hydrocarbons exceed the limit on one day of initial testing but the other two days pass, how should your PQ report handle this?"
+  },
+  {
+   "zh": "附錄一 — 持續監測提案 Table 10.3: Ongoing Monitoring Proposed",
+   "en": "Appendix 1 - Ongoing Monitoring Proposed (Table 10.3: Ongoing Monitoring Proposed)"
+  },
+  {
+   "zh": "<strong>基於證據的監測頻率調整：</strong> ISPE 的方法論不是固定頻率，而是「連續3次過濾器更換週期中各測一次，然後根據結果重新評估」。這是 ICH Q9 品質風險管理（Quality Risk Management, QRM）在監測頻率設計上的直接應用——讓數據說話，不是盲目遵從固定排程。",
+   "en": "<strong>Evidence-based adjustment of monitoring frequency:</strong> ISPE's methodology is not a fixed frequency but \"test once in each of 3 consecutive filter change cycles, then re-evaluate based on the results\". This is a direct application of ICH Q9 Quality Risk Management (QRM) to the design of monitoring frequency: let the data speak, rather than blindly following a fixed schedule."
+  },
+  {
+   "zh": "<strong>修改後重新測試的觸發邏輯：</strong> 管路修改（extension, repair, material change）是系統完整性的潛在破壞點。ISPE 明確要求修改後重新執行 Index Run 測試——這應進入 Change Control 程序的必檢清單。",
+   "en": "<strong>Logic for re-testing after modification:</strong> Piping modifications (extension, repair, material change) are potential points of damage to system integrity. ISPE explicitly requires the Index Run test to be repeated after modification; this should be on the mandatory checklist of the change control procedure."
+  },
+  {
+   "zh": "<strong>烴類策略的「有無挑戰」分叉：</strong> 這是一個罕見但重要的差異化設計：若初始測試顯示環境烴類本底值低（無挑戰），每年一次即可；若本底值高（有挑戰），需更密集地在過濾器壽命中點和更換前後各測一次。這種設計充分體現了「基於風險的監測頻率」。",
+   "en": "<strong>The \"challenge / no challenge\" fork in the hydrocarbon strategy:</strong> This is a rare but important differentiated design: if initial testing shows a low ambient hydrocarbon background (no challenge), once a year is sufficient; if the background is high (challenge), testing is needed more intensively, at the midpoint of the filter life and before and after each change. This design fully reflects \"risk-based monitoring frequency\"."
+  },
+  {
+   "zh": "<strong>POU 過濾器的保護角色：</strong> 系統過濾器（C&amp;D）失效或降效時，POU 過濾器仍提供最後防線。這也是為什麼系統層面的監測可以使用較寬鬆的頻率，而不需要每次生產都取樣。",
+   "en": "<strong>The protective role of the POU filter:</strong> When the system filters (C&amp;D) fail or lose efficiency, the POU filter still provides the last line of defense. This is also why monitoring at the system level can use a less intensive frequency and does not require sampling with every production run."
+  },
+  {
+   "zh": "監測頻率決策框架",
+   "en": "Monitoring Frequency Decision Framework"
+  },
+  {
+   "zh": "初始狀態判斷：\n  ┌─ 無烴類挑戰 → 年度監測（環境年變化追蹤）\n  └─ 有烴類挑戰 → 每次過濾器更換前/中/後各測一次\n                    → 連續3次後重新評估頻率\n\n微粒與微生物：\n  → 每次過濾器更換的中點、更換前各測一次\n  → 連續3次後重新評估\n\n所有 CQA：\n  → 系統修改後必須重新執行 Index Run 測試",
+   "en": "Assess the initial state:\n  ┌─ No hydrocarbon challenge → annual monitoring (tracks annual ambient variation)\n  └─ Hydrocarbon challenge → test before/during/after each filter change\n                    → re-evaluate frequency after 3 consecutive cycles\n\nParticulates and microorganisms:\n  → test at the midpoint and before each filter change\n  → re-evaluate after 3 consecutive cycles\n\nAll CQAs:\n  → the Index Run test must be repeated after system modification"
+  },
+  {
+   "zh": "若三次過濾器更換的微粒測試結果皆遠低於驗收標準，你會如何調整後續監測頻率？依據什麼原則？",
+   "en": "If the particulate test results of all three filter changes are well below the acceptance criteria, how would you adjust the subsequent monitoring frequency? On what principle?"
+  },
+  {
+   "zh": "工廠決定將某樓層壓縮空氣管路延伸到新增生產間，需要執行哪些重新測試？哪些可以不測？",
+   "en": "The plant decides to extend the compressed air piping on one floor to a new production room. Which tests need to be repeated, and which can be omitted?"
+  },
+  {
+   "zh": "附錄二 — 風險評估案例 (Appendix 2: Risk Assessment Examples)",
+   "en": "Appendix 2 - Risk Assessment Examples (Appendix 2: Risk Assessment Examples)"
+  },
+  {
+   "zh": "<strong>系統監測檔案 (System Monitoring File)：</strong> 這是稽核時的核心文件包。P&amp;ID（管道儀表圖）標示測試點、過濾器測試數據、所有 CQA 的歷史監測數據，應整合成一份可追溯的「系統健康紀錄」。這不僅是品質要求，也是工程管理的最佳實踐。",
+   "en": "<strong>System Monitoring File:</strong> This is the core document package during an audit. The P&amp;ID (piping and instrumentation diagram) marking the test points, filter test data and the historical monitoring data of all CQAs should be consolidated into one traceable \"system health record\". This is not only a quality requirement but also an engineering management best practice."
+  },
+  {
+   "zh": "<strong>三步驟風險評估法：</strong> (1) 定義 CQA/CPP → (2) 定義監測方式 → (3) 定義如何達成並識別設備風險。這是一個結構化的、由需求到設計到監測的全鏈條方法，與 ICH Q9 的 FMEA 精神一致。",
+   "en": "<strong>Three-step risk assessment method:</strong> (1) define CQAs/CPPs → (2) define how they are monitored → (3) define how they are achieved and identify equipment risks. This is a structured, end-to-end approach from requirements to design to monitoring, consistent with the spirit of FMEA in ICH Q9."
+  },
+  {
+   "zh": "這個三步驟風險評估就像醫師診斷病人：Step 1 是確認病人的關鍵生命指標（血壓、體溫、血氧）；Step 2 是決定用哪些儀器持續監測（心電圖、血氧夾、定時量體溫）；Step 3 是確認如何維持這些指標正常（用藥、手術、輸液）並識別可能失效的設備（電池、校準問題）。只有進行變更管控（Change Control）的設備才是系統的「關鍵設備」，其餘靠良好工程實踐管理即可。",
+   "en": "This three-step risk assessment is like a doctor diagnosing a patient: Step 1 is confirming the patient's vital signs (blood pressure, temperature, blood oxygen); Step 2 is deciding which instruments to use for continuous monitoring (ECG, pulse oximeter, scheduled temperature checks); Step 3 is confirming how to keep these indicators normal (medication, surgery, infusion) and identifying equipment that could fail (batteries, calibration problems). Only equipment placed under change control is a \"critical piece of equipment\" of the system; the rest can be managed by good engineering practice."
+  },
+  {
+   "zh": "<strong>壓力不是關鍵參數——這個判斷需要理由：</strong> 「壓力非關鍵」的結論不是拍腦袋，而是基於「各使用點有自己的壓力監測設備，氣體系統本身無法精確控制每個 POU 的壓力」的工程邏輯。這個判斷和理由都必須文件化。",
+   "en": "<strong>Pressure is not a critical parameter, but this judgment needs a rationale:</strong> The conclusion that \"pressure is non-critical\" is not arbitrary; it is based on the engineering logic that \"each point of use has its own pressure monitoring equipment, and the gas system itself cannot precisely control the pressure at every POU\". Both the judgment and the rationale must be documented."
+  },
+  {
+   "zh": "<strong>Quality Change Control 的邊界：</strong> 只有被風險評估識別為「風險控制」或「偵測機制」的設備（PDP 監測儀、系統過濾器、管路）需要納入品質變更管控；其他設備（如壓縮機的一般機械部件）可歸類為工程管理。這個區分在資源有限的 CDMO 環境中具有重要的實務意義。",
+   "en": "<strong>The boundary of Quality Change Control:</strong> Only equipment identified by the risk assessment as a \"risk control\" or \"detection mechanism\" (PDP monitor, system filters, piping) needs to be brought under quality change control; other equipment (such as general mechanical parts of the compressor) can be classified as engineering-managed. This distinction has real practical significance in a resource-limited CDMO environment."
+  },
+  {
+   "zh": "CDMO 在接受客戶稽查時，最常被問的問題之一是：「你們怎麼知道這個氣體系統受控？」正確回答需要展示：(1) 有 P&amp;ID 標示取樣點；(2) 有已完成的 PQ 測試數據；(3) 有持續監測的 SOP 和趨勢分析；(4) 有 Change Control 程序涵蓋關鍵設備修改。這份系統監測檔案就是最好的回應工具。",
+   "en": "One of the questions a CDMO is most often asked during a customer audit is: \"How do you know this gas system is under control?\" A correct answer requires showing: (1) a P&amp;ID marking the sampling points; (2) completed PQ test data; (3) an SOP and trend analysis for ongoing monitoring; (4) a change control procedure covering modifications to critical equipment. This system monitoring file is the best tool for responding."
+  },
+  {
+   "zh": "若 PDP 監測儀的校準記錄顯示上次校準距今已 18 個月（設定為每年校準），稽核員會如何看待這份數據？你應如何回應？",
+   "en": "If the calibration records of the PDP monitor show that the last calibration was 18 months ago (set to annual calibration), how would an auditor view this data? How should you respond?"
+  },
+  {
+   "zh": "風險評估的 Step 3 結論是：PDP 儀和系統過濾器需要 Quality Change Control，而壓縮機機械部件不需要。若壓縮機升級為新型號，哪些驗證活動必須執行？",
+   "en": "The conclusion of Step 3 of the risk assessment is that the PDP monitor and system filters need Quality Change Control, while the compressor mechanical parts do not. If the compressor is upgraded to a new model, which validation activities must be performed?"
+  },
+  {
+   "zh": "附錄三 — 校準策略 (Appendix 3: Calibration Strategies)",
+   "en": "Appendix 3 - Calibration Strategies (Appendix 3: Calibration Strategies)"
+  },
+  {
+   "zh": "<strong>儀器分類層次 (Instrument Hierarchy)：</strong>",
+   "en": "<strong>Instrument Hierarchy:</strong>"
+  },
+  {
+   "zh": "<strong>產品關鍵 (Product Critical):</strong> 直接影響產品品質屬性，如 PDP 監測儀（影響濕度 CQA）。需最嚴格的校準計畫。",
+   "en": "<strong>Product Critical:</strong> Directly affects product quality attributes, such as the PDP monitor (affects the moisture CQA). Requires the strictest calibration program."
+  },
+  {
+   "zh": "<strong>製程/系統關鍵 (Process/System Critical):</strong> 影響系統正常運作，但不直接影響產品 CQA。如自動排水閥的感測器。",
+   "en": "<strong>Process/System Critical:</strong> Affects normal operation of the system but does not directly affect product CQAs, such as the sensor of an automatic drain valve."
+  },
+  {
+   "zh": "<strong>安全/環境關鍵 (Safety/Environmental Critical):</strong> 不影響產品品質，但影響人員安全或環境合規。如低壓報警開關。",
+   "en": "<strong>Safety/Environmental Critical:</strong> Does not affect product quality but affects personnel safety or environmental compliance, such as a low pressure alarm switch."
+  },
+  {
+   "zh": "<strong>非關鍵/資訊用 (Non-Critical):</strong> 僅供工程參考，不影響任何關鍵判斷。大多數現場顯示錶盤。",
+   "en": "<strong>Non-Critical/Informational:</strong> For engineering reference only and does not affect any critical decision. Most local display gauges."
+  },
+  {
+   "zh": "這個校準層次就像汽車儀表板的重要性分級：速度表（關鍵，影響安全）需要定期驗證；引擎水溫表（系統關鍵，影響車輛壽命）需要定期確認；車廂溫度顯示（非關鍵，舒適性資訊）壞了換掉就好，不需要校準。氣體系統中，PDP 監測儀是「速度表」，非關鍵流量計是「車廂溫度顯示」，各自有不同的維護策略。",
+   "en": "This calibration hierarchy is like the importance grading of a car dashboard: the speedometer (critical, affects safety) needs regular verification; the engine coolant temperature gauge (system critical, affects vehicle life) needs regular checking; the cabin temperature display (non-critical, comfort information) can simply be replaced when it breaks and does not need calibration. In a gas system, the PDP monitor is the \"speedometer\" and a non-critical flow meter is the \"cabin temperature display\"; each has a different maintenance strategy."
+  },
+  {
+   "zh": "<strong>「非關鍵」不代表不需管理：</strong> 非關鍵儀器雖不需定期校準，但仍需要：(1) 安裝驗證（確認安裝正確）；(2) 定期目視檢查（是否損壞）；(3) 損壞時替換。這些活動應列入預防性維護（PM）計畫，而非完全放任。",
+   "en": "<strong>\"Non-critical\" does not mean unmanaged:</strong> Non-critical instruments do not need periodic calibration, but they still need: (1) installation verification (confirming correct installation); (2) periodic visual inspection (for damage); (3) replacement when damaged. These activities should be included in the preventive maintenance (PM) program rather than left entirely unattended."
+  },
+  {
+   "zh": "<strong>安全關鍵 = 每年校準 + 功能測試：</strong> 低壓開關是保護使用者（穿戴呼吸面罩的人員）的安全設備，一旦失效可能導致缺氧。因此即使它不影響產品 CQA，也必須每年校準並附加功能測試（alarm test）。這是法規和工廠安全管理的雙重要求。",
+   "en": "<strong>Safety critical = annual calibration + functional test:</strong> The low pressure switch is a safety device protecting users (personnel wearing breathing masks), and its failure could lead to oxygen deficiency. Therefore, even though it does not affect product CQAs, it must be calibrated annually with an added functional test (alarm test). This is a dual requirement of regulation and plant safety management."
+  },
+  {
+   "zh": "<strong>「單點驗證」vs. 「完整校準」：</strong> 非關鍵的出口壓力計每年只做「中點單點確認」（40-50 psi 的中間值），而非完整的多點校準曲線。這是務實的資源分配——用最少的工作量確認儀器沒有明顯損壞，而非追求完整精度。",
+   "en": "<strong>\"Single-point verification\" vs. \"full calibration\":</strong> A non-critical outlet pressure gauge receives only a \"mid-point single-point check\" each year (the middle of 40-50 psi), rather than a full multi-point calibration curve. This is a pragmatic allocation of resources: use the minimum effort to confirm that the instrument is not obviously damaged, rather than pursuing full accuracy."
+  },
+  {
+   "zh": "校準策略分類決策表",
+   "en": "Calibration Strategy Classification Decision Table"
+  },
+  {
+   "zh": "儀器類別      校準要求         頻率        失效後果\n─────────────────────────────────────────────────\n產品關鍵      完整多點校準     定期（如半年/年） 產品 CQA 失控\n製程關鍵      多點校準         定期（如年度）   系統失控/停機\n安全關鍵      完整校準+功能測試 年度           人員傷亡/環境\n非關鍵        安裝確認+目視    PM 週期目視      工程資訊遺失\n              (+可選擇單點驗證)",
+   "en": "Instrument category   Calibration requirement   Frequency        Consequence of failure\n─────────────────────────────────────────────────\nProduct critical      Full multi-point calibration   Periodic (e.g. 6 months/annual)   Loss of control of product CQA\nProcess critical      Multi-point calibration        Periodic (e.g. annual)            System out of control/downtime\nSafety critical       Full calibration + functional test   Annual                      Personnel injury/environment\nNon-critical          Installation check + visual    Visual at PM interval             Loss of engineering information\n                      (+ optional single-point verification)"
+  },
+  {
+   "zh": "CDMO 在建立氣體系統校準計畫（Calibration Plan）時，最常見的錯誤是「一刀切」——所有儀器都套用相同頻率和方法。ISPE 的分層策略讓你可以：把有限的校準資源集中在產品關鍵和安全關鍵儀器上；對非關鍵儀器降低校準頻率（但不取消 PM 目視）；在稽查時用清晰的分類邏輯說明你的決策——這比「我們每6個月校準所有儀器」更有說服力，因為它展示了風險思維。",
+   "en": "The most common mistake when a CDMO builds a calibration plan for a gas system is a \"one size fits all\" approach: applying the same frequency and method to every instrument. The ISPE tiered strategy lets you: concentrate limited calibration resources on product critical and safety critical instruments; reduce the calibration frequency of non-critical instruments (without eliminating PM visual checks); and explain your decisions during an inspection with clear classification logic. This is more convincing than \"we calibrate all instruments every 6 months\" because it demonstrates risk-based thinking."
+  },
+  {
+   "zh": "若工廠新增一台 O₂ 分析儀用於監測惰性氣體環境（保護產品免受氧化），你會將它歸入哪個類別？校準頻率和方法如何設計？",
+   "en": "If the plant adds an O₂ analyzer to monitor an inert gas environment (protecting the product from oxidation), which category would you place it in? How would you design its calibration frequency and method?"
+  },
+  {
+   "zh": "PDP 監測儀的校準標準（reference standard）應追溯到哪個層次的標準？如何在校準記錄中呈現可追溯性？",
+   "en": "To what level of standard should the calibration reference standard of the PDP monitor be traceable? How would you show traceability in the calibration record?"
+  },
+  {
+   "zh": "一台非關鍵壓力錶在 PM 目視時發現指針卡住（偶爾不歸零），你應採取什麼行動？需要開 Deviation 報告嗎？",
+   "en": "During a PM visual check, you find that the needle of a non-critical pressure gauge is stuck (occasionally does not return to zero). What action should you take? Does a deviation report need to be opened?"
+  },
+  {
+   "zh": "本節重點回顧 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "<strong>取樣策略源於風險評估：</strong> 並非每個出口都需取樣——「Index Run」（最長管程）策略用最惡情況點代表整個系統，是科學且高效的設計方法。",
+   "en": "<strong>Sampling strategy derives from risk assessment:</strong> Not every outlet needs to be sampled. The \"Index Run\" (longest pipe run) strategy uses the worst-case point to represent the whole system and is a scientific and efficient design method."
+  },
+  {
+   "zh": "<strong>露點控制是微生物管控的根本：</strong> -40°C PDP 將系統 RH 壓至約 5%（a<sub>w</sub> = 0.05），遠低於任何微生物（細菌、黴菌）的生長下限，使微生物監測可以沿用非活性微粒的邏輯。",
+   "en": "<strong>Dewpoint control is the foundation of microbial control:</strong> A -40°C PDP drives system RH to about 5% (a<sub>w</sub> = 0.05), far below the growth lower limit of any microorganism (bacteria, mold), so microbial monitoring can follow the same logic as non-viable particulates."
+  },
+  {
+   "zh": "<strong>初始測試建立基線；持續監測確認維持：</strong> PQ 測試覆蓋所有 CQA（濕度、烴類、總微粒、活性微粒）；持續監測頻率基於過濾器更換週期動態調整，而非固定時間表。",
+   "en": "<strong>Initial testing establishes the baseline; ongoing monitoring confirms it is maintained:</strong> PQ testing covers all CQAs (moisture, hydrocarbons, total particulates, viable particulates); ongoing monitoring frequency is adjusted dynamically based on the filter change cycle rather than a fixed schedule."
+  },
+  {
+   "zh": "<strong>ISPE 三步驟風險評估：</strong> (1) 定義 CQA/CPP → (2) 定義監測方式 → (3) 定義如何達成及識別設備風險。只有被識別為風險控制或偵測機制的設備才納入品質變更管控。",
+   "en": "<strong>ISPE three-step risk assessment:</strong> (1) define CQAs/CPPs → (2) define how they are monitored → (3) define how they are achieved and identify equipment risks. Only equipment identified as a risk control or detection mechanism is brought under quality change control."
+  },
+  {
+   "zh": "<strong>儀器校準分四層：</strong> 產品關鍵 &gt; 製程關鍵 &gt; 安全關鍵 &gt; 非關鍵。分層策略讓有限資源集中在真正關鍵的儀器，非關鍵儀器以 PM 目視和替換管理，而非盲目套用全量校準。",
+   "en": "<strong>Instrument calibration has four tiers:</strong> product critical &gt; process critical &gt; safety critical &gt; non-critical. The tiered strategy concentrates limited resources on the truly critical instruments, and non-critical instruments are managed by PM visual checks and replacement rather than blindly applying full calibration."
+  },
+  {
+   "zh": "<strong>CDMO 應用：</strong> 氣體系統 SOP 需同時滿足品質（CQA 監測）和工程（PM、變更管控）需求；系統監測檔案（P&amp;ID + 所有測試數據）是稽查的核心文件包。",
+   "en": "<strong>CDMO application:</strong> A gas system SOP must meet both quality (CQA monitoring) and engineering (PM, change control) needs; the system monitoring file (P&amp;ID + all test data) is the core document package for inspections."
+  }
+ ]
+}

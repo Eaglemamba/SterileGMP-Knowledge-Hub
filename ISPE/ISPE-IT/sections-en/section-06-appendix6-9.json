@@ -1,0 +1,433 @@
+{
+ "source": "section-06-appendix6-9.html",
+ "blocks": [
+  {
+   "zh": "附錄六至九：資安管理、補丁策略、委外管控與伺服器維運",
+   "en": "Appendices 6-9: Security Management, Patch Strategy, Outsourcing Control and Server Operations"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "掌握 CIA 三角（機密性／完整性／可用性）在 GxP 資料系統中的實際意涵",
+   "en": "Understand what the CIA triad (confidentiality / integrity / availability) means in practice for GxP data systems"
+  },
+  {
+   "zh": "識別三種資安補丁緊急程度分類，並說明為何緊急修補仍需形式化變更控制",
+   "en": "Identify the three security patch urgency categories and explain why emergency patching still requires formal change control"
+  },
+  {
+   "zh": "比較平台升級後四種應用程式測試層級的適用時機與選擇標準",
+   "en": "Compare when each of the four application testing levels applies after a platform upgrade, and the criteria for choosing between them"
+  },
+  {
+   "zh": "解釋委外合規監督責任不可轉移的原則，及 SLA 必要元素對 CDMO 的啟示",
+   "en": "Explain the principle that compliance oversight responsibility cannot be transferred when outsourcing, and what the essential SLA elements mean for a CDMO"
+  },
+  {
+   "zh": "說明伺服器備份策略（全量 + 增量）、異地儲存理由，以及備份測試的合規要求",
+   "en": "Describe the server backup strategy (full + incremental), the rationale for off-site storage, and the compliance requirements for backup testing"
+  },
+  {
+   "zh": "<strong>Appendix 6 — Infrastructure Security (p84–p90) Appendix 6 — 基礎設施安全</strong>",
+   "en": "<strong>Appendix 6 — Infrastructure Security (p84–p90)</strong>"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念：CIA 三角 The CIA Triad",
+   "en": "Core Concept: The CIA Triad"
+  },
+  {
+   "zh": "<strong>Confidentiality（機密性）：</strong>資料只有授權人員可存取。GxP 系統中，批次紀錄不得被未授權人員讀取或下載。",
+   "en": "<strong>Confidentiality:</strong> Data can be accessed only by authorized personnel. In a GxP system, batch records must not be readable or downloadable by unauthorized people."
+  },
+  {
+   "zh": "<strong>Integrity（完整性）：</strong>資料必須準確且完整，任何修改都要留下稽核軌跡。這直接對應 21 CFR Part 11 的電子記錄要求。",
+   "en": "<strong>Integrity:</strong> Data must be accurate and complete, and any change must leave an audit trail. This maps directly to the electronic record requirements of 21 CFR Part 11."
+  },
+  {
+   "zh": "<strong>Availability（可用性）：</strong>授權使用者在需要時必須能存取系統。若生產線因 IT 系統停機無法取得批次記錄，即構成可用性失效。",
+   "en": "<strong>Availability:</strong> Authorized users must be able to access the system when they need it. If the production line cannot retrieve batch records because of an IT system outage, that is an availability failure."
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "把 CIA 三角想像成醫院的病歷管理系統。機密性 = 只有主治醫生能看完整病歷；完整性 = 任何人修改病歷都留記錄；可用性 = 急診時隨時能調出病歷。三者缺一不可，就像無菌製造中的環境控制——少了任何一環，產品安全就有風險。",
+   "en": "Think of the CIA triad as a hospital medical record system. Confidentiality = only the attending physician can see the full chart; integrity = every change to the chart is logged; availability = the chart can be pulled up at any moment in an emergency. You need all three, just like environmental control in sterile manufacturing: if any one link is missing, product safety is at risk."
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "ISO/IEC 17799 是推薦框架，法規不要求正式認證，但稽查時需要能展示「公司已將此框架映射至自身政策並完成內稽」。這是合規證明的基礎，不是選擇題。",
+   "en": "ISO/IEC 17799 is a recommended framework. Regulators do not require formal certification, but during an inspection you must be able to show that \"the company has mapped this framework to its own policies and completed internal audits\". This is the basis of compliance evidence, not an optional extra."
+  },
+  {
+   "zh": "「安全控制在需求規格設計階段納入，成本最低、效果最好」——這條原則與 GAMP 的 V-model 一致：後期補救的代價遠高於前期設計。",
+   "en": "\"Building security controls in at the requirements specification stage costs least and works best.\" This principle is consistent with the GAMP V-model: fixing things late costs far more than designing them in early."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "若 CDMO 的 MES 系統每天凌晨備份視窗期間無法登入，這違反 CIA 三角的哪個面向？該如何設計備援？",
+   "en": "If the CDMO's MES cannot be logged into during the nightly backup window, which aspect of the CIA triad is violated? How should redundancy be designed?"
+  },
+  {
+   "zh": "公司不需要取得 ISO/IEC 17799 認證，那稽查員要求什麼文件才能「證明公司在控制中」？",
+   "en": "The company does not need ISO/IEC 17799 certification, so what documents will an inspector ask for to \"prove the company is in control\"?"
+  },
+  {
+   "zh": "核心概念：三層安全控制架構",
+   "en": "Core Concept: The Three-Layer Security Control Architecture"
+  },
+  {
+   "zh": "行政控制（政策/培訓）→ 技術控制（存取權限/認證）→ 實體控制（門禁/設備），三層相互補強。GxP 稽查中，三層都要有對應的文件證據，不能只靠技術工具。",
+   "en": "Administrative controls (policies/training) → technical controls (access rights/authentication) → physical controls (access gates/equipment): the three layers reinforce one another. In a GxP inspection, all three layers need documentary evidence; technical tools alone are not enough."
+  },
+  {
+   "zh": "IDS（入侵偵測系統）就像無塵室的粒子計數器——防護網（防火牆）擋住大部分威脅，但計數器在背景持續監控，一旦異常立即發警報。計數器本身不阻擋污染，但讓你有時間在污染擴散前採取行動。",
+   "en": "An IDS (intrusion detection system) is like a particle counter in a cleanroom. The protective barrier (firewall) stops most threats, but the counter keeps monitoring in the background and raises an alarm the moment something abnormal appears. The counter does not block contamination itself, but it gives you time to act before the contamination spreads."
+  },
+  {
+   "zh": "<strong>帳號重複鎖定是資安事件，不是 IT 小問題。</strong>單次鎖定可能是忘記密碼，但重複發生可能是暴力破解攻擊。集中通報機制讓孤立事件變成可見的模式——這與 GMP 的品質趨勢分析原理相同。",
+   "en": "<strong>Repeated account lockouts are a security event, not a minor IT issue.</strong> A single lockout may just be a forgotten password, but repeated lockouts may indicate a brute-force attack. A central reporting mechanism turns isolated incidents into a visible pattern, which is the same principle as quality trend analysis in GMP."
+  },
+  {
+   "zh": "<strong>防毒軟體更新的兩難：</strong>受控更新可測試但反應慢；自動更新反應快但 Configuration Management 難追蹤。GxP 系統優先選受控更新，需以風險評估文件化決策理由。",
+   "en": "<strong>The antivirus update dilemma:</strong> controlled updates can be tested but respond slowly; automatic updates respond quickly but are hard to track under configuration management. GxP systems should prefer controlled updates, with the rationale documented through a risk assessment."
+  },
+  {
+   "zh": "<strong>開源軟體不等於免費風險：</strong>若軟體來源不明或無供應商維護承諾，在 GxP 環境中等同於使用未驗證的原材料——合規風險極高。",
+   "en": "<strong>Open-source software is not free of risk:</strong> if the software source is unknown or the vendor makes no maintenance commitment, using it in a GxP environment is equivalent to using an unqualified raw material, with very high compliance risk."
+  },
+  {
+   "zh": "CDMO 的 LIMS 使用開源資料庫，供應商無正式支援合約。稽查時查到這個狀況，你如何答覆稽查員？",
+   "en": "The CDMO's LIMS uses an open-source database and there is no formal support contract with the vendor. If the inspector finds this, how do you respond?"
+  },
+  {
+   "zh": "若要在 GxP 系統上採用自動防毒更新，風險評估應涵蓋哪些考量點？",
+   "en": "If automatic antivirus updates are to be adopted on a GxP system, what considerations should the risk assessment cover?"
+  },
+  {
+   "zh": "三種補丁緊急程度分類表",
+   "en": "Classification Table of the Three Patch Urgency Levels"
+  },
+  {
+   "zh": "緊急程度     | 定義              | GxP 要求\n-------------|-------------------|---------------------------\nEmergency    | 即時、真實威脅    | 事後補做變更控制文件\nFix          |                   | (retroactive change control)\n             |                   | 強化事件監控\n-------------|-------------------|---------------------------\nUrgent       | 可能威脅          | 在指定時間內完成\nUpdate       |                   | 正常變更控制流程\n-------------|-------------------|---------------------------\nUpdate       | 無即時威脅        | 納入下次定期升級\n             |                   | 完整變更控制與測試",
+   "en": "Urgency      | Definition        | GxP requirement\n-------------|-------------------|---------------------------\nEmergency    | Immediate, real   | Complete change control\nFix          | threat            | documentation afterwards\n             |                   | (retroactive change control)\n             |                   | Enhanced event monitoring\n-------------|-------------------|---------------------------\nUrgent       | Possible threat   | Complete within a specified time\nUpdate       |                   | Normal change control process\n-------------|-------------------|---------------------------\nUpdate       | No immediate      | Include in next scheduled upgrade\n             | threat            | Full change control and testing"
+  },
+  {
+   "zh": "重點提示：緊急補丁仍需變更控制",
+   "en": "Key Note: Emergency Patches Still Require Change Control"
+  },
+  {
+   "zh": "Emergency Fix 可以「先做後補文件」，但不是「做了就算」。事後補做的變更控制文件必須說明：為何緊急、評估了什麼風險、誰授權、做了什麼事後監控。這是 GxP 系統「qualified status」維護的底線。",
+   "en": "An Emergency Fix may be \"done first, documented afterwards\", but \"done\" does not mean \"finished\". The retroactive change control documentation must explain why it was urgent, what risks were assessed, who authorized it, and what post-implementation monitoring was carried out. This is the bottom line for maintaining the \"qualified status\" of a GxP system."
+  },
+  {
+   "zh": "CDMO 現場常見錯誤：在 21:00 緊急打了補丁，隔天沒有任何文件記錄，直到稽查才被發現——這是偏差，不是緊急程序。",
+   "en": "A common mistake at CDMO sites: an emergency patch is applied at 21:00, nothing is documented the next day, and the gap is only discovered at inspection. That is a deviation, not an emergency procedure."
+  },
+  {
+   "zh": "緊急補丁就像醫院的緊急手術——不能等標準排程，但手術後仍要寫完整手術記錄、填偏差報告、追蹤恢復狀況。「緊急」改變的是時序，不是文件化的義務。",
+   "en": "An emergency patch is like emergency surgery in a hospital: it cannot wait for the standard schedule, but afterwards the full operative record must still be written, the deviation report filed, and the patient's recovery tracked. \"Emergency\" changes the timing, not the obligation to document."
+  },
+  {
+   "zh": "補丁相容性困境 Compatibility Dilemma",
+   "en": "Compatibility Dilemma"
+  },
+  {
+   "zh": "當關鍵安全補丁無法安裝（因系統版本太舊或應用程式不相容），選項包括：",
+   "en": "When a critical security patch cannot be installed (because the system version is too old or the application is incompatible), the options include:"
+  },
+  {
+   "zh": "程序性控制（Procedural Controls）：限制網路存取、加強監控、限制使用者操作",
+   "en": "Procedural controls: restrict network access, strengthen monitoring, limit user operations"
+  },
+  {
+   "zh": "網路隔離（Isolation）：將系統從企業網路斷開，降低攻擊面",
+   "en": "Isolation: disconnect the system from the corporate network to reduce the attack surface"
+  },
+  {
+   "zh": "這兩個選項都必須透過風險評估文件化，並在 CAPA 中追蹤長期解決方案。",
+   "en": "Both options must be documented through a risk assessment, and a long-term solution must be tracked in a CAPA."
+  },
+  {
+   "zh": "Microsoft 宣布一個嚴重漏洞，影響你 CDMO 所有 Windows Server，但補丁與現有 LIMS 版本不相容。你會如何分類此補丁的緊急程度，並採取什麼臨時措施？",
+   "en": "Microsoft announces a serious vulnerability affecting all Windows Servers at your CDMO, but the patch is incompatible with the current LIMS version. How would you classify the urgency of this patch, and what interim measures would you take?"
+  },
+  {
+   "zh": "Emergency Fix 的「事後變更控制」最晚應在幾天內完成？請討論合理的期限設定原則。",
+   "en": "By how many days at the latest should the \"retroactive change control\" for an Emergency Fix be completed? Discuss the principles for setting a reasonable deadline."
+  },
+  {
+   "zh": "<strong>Appendix 7 — Upgrade and Patch Management (p91–p94) Appendix 7 — 升級與修補管理</strong>",
+   "en": "<strong>Appendix 7 — Upgrade and Patch Management (p91–p94)</strong>"
+  },
+  {
+   "zh": "核心概念：四級應用程式測試層級",
+   "en": "Core Concept: The Four Application Testing Levels"
+  },
+  {
+   "zh": "<strong>Level 1 — No Testing（無測試）：</strong>僅限緊急情況，必須搭配強化事件監控和事後測試計畫。絕非「永久免測」。",
+   "en": "<strong>Level 1 — No Testing:</strong> Only for emergencies, and must be accompanied by enhanced event monitoring and a post-implementation test plan. It is never \"permanently exempt from testing\"."
+  },
+  {
+   "zh": "<strong>Level 2 — Confirmation Testing（確認測試）：</strong>最低限度文件化測試，驗證應用程式在更新後平台仍能執行。適用：技術評估為「輕微」的升級。",
+   "en": "<strong>Level 2 — Confirmation Testing:</strong> Minimal documented testing to verify that the application still runs on the updated platform. Applies to upgrades the technical assessment rates as \"minor\"."
+  },
+  {
+   "zh": "<strong>Level 3 — Confidence Testing（信心測試）：</strong>以預定規格執行代表性功能子集測試。適用：顯著升級，或高度關鍵 GxP 系統。",
+   "en": "<strong>Level 3 — Confidence Testing:</strong> Testing of a representative subset of functions against predefined specifications. Applies to significant upgrades or highly critical GxP systems."
+  },
+  {
+   "zh": "<strong>Level 4 — Full Testing（完整回歸測試）：</strong>全面回歸測試。適用：主要升級且對應用程式有可能造成影響。",
+   "en": "<strong>Level 4 — Full Testing (full regression testing):</strong> Comprehensive regression testing. Applies to major upgrades that could plausibly affect the application."
+  },
+  {
+   "zh": "測試層級選擇決策矩陣",
+   "en": "Decision Matrix for Selecting the Testing Level"
+  },
+  {
+   "zh": "升級性質     | GxP/關鍵系統？ | 建議測試層級\n-------------|----------------|------------------\n緊急補丁     | 是/否          | Level 1 + 強化監控\n輕微升級     | 否             | Level 2\n輕微升級     | 是             | Level 2~3\n顯著升級     | 是/否          | Level 3 (最低)\n主要升級     | 是             | Level 4",
+   "en": "Nature of upgrade | GxP/critical system? | Recommended testing level\n------------------|----------------------|--------------------------\nEmergency patch   | Yes/No               | Level 1 + enhanced monitoring\nMinor upgrade     | No                   | Level 2\nMinor upgrade     | Yes                  | Level 2~3\nSignificant upgrade | Yes/No             | Level 3 (minimum)\nMajor upgrade     | Yes                  | Level 4"
+  },
+  {
+   "zh": "四級測試就像汽車出廠前的品質查驗等級：緊急出廠（Level 1）= 只看引擎能不能發動就交車；確認測試（Level 2）= 還會試踩煞車；信心測試（Level 3）= 在測試跑道跑幾圈；完整測試（Level 4）= 全面安全認證測試。交的車越貴、乘客越重要，測試等級越不能省。",
+   "en": "The four testing levels are like quality inspection grades before a car leaves the factory. Emergency release (Level 1) = just check the engine starts and hand over the car; confirmation testing (Level 2) = also test the brakes; confidence testing (Level 3) = run a few laps on the test track; full testing (Level 4) = complete safety certification testing. The more expensive the car and the more important the passengers, the less you can cut back on the testing level."
+  },
+  {
+   "zh": "<strong>版本落差陷阱：</strong>若系統長期未升級，緊急補丁反而可能無法安裝，或安裝後造成應用程式崩潰。這是 CDMO 常見的技術債——省下的升級維護費用，最終在緊急時刻加倍奉還。",
+   "en": "<strong>The version-gap trap:</strong> if a system has not been upgraded for a long time, an emergency patch may fail to install, or may crash the application after installation. This is a common technical debt at CDMOs: the upgrade and maintenance costs you saved come back at double the price in an emergency."
+  },
+  {
+   "zh": "<strong>部分退役系統（partially decommissioned）：</strong>仍需保留查閱能力的唯讀系統，若原廠已停止支援，網路隔離是必要的風險降低措施，不是可選項。",
+   "en": "<strong>Partially decommissioned systems:</strong> for a read-only system that must remain available for retrieval, network isolation is a necessary risk-reduction measure, not an option, if the original vendor has stopped supporting it."
+  },
+  {
+   "zh": "<strong>多廠區系統：</strong>在一個廠址完整測試後，其他廠址可以減少測試——但這需要在策略文件中明確規定，並有標準化平台作為前提。",
+   "en": "<strong>Multi-site systems:</strong> after full testing at one site, other sites may reduce their testing, but this must be explicitly specified in the strategy document and presupposes a standardized platform."
+  },
+  {
+   "zh": "你的 CDMO 有三個廠區共用同一 ERP 系統，IT 在總部測試了一個 OS 升級。其他兩個廠區應該做哪個層級的測試？需要什麼文件支持這個決策？",
+   "en": "Your CDMO has three sites sharing the same ERP system, and IT tested an OS upgrade at headquarters. What level of testing should the other two sites perform? What documentation is needed to support that decision?"
+  },
+  {
+   "zh": "若 MES 系統供應商宣布某版本將於 6 個月後停止安全補丁支援，你會如何制定升級策略？按本附錄的邏輯寫出行動步驟。",
+   "en": "If the MES vendor announces that a version will lose security patch support in 6 months, how would you develop the upgrade strategy? Write out the action steps following the logic of this appendix."
+  },
+  {
+   "zh": "<strong>Appendix 8 — Outsourcing (p95–p99) Appendix 8 — 委外管理</strong>",
+   "en": "<strong>Appendix 8 — Outsourcing (p95–p99)</strong>"
+  },
+  {
+   "zh": "重點提示：合規監督責任不可委外",
+   "en": "Key Note: Compliance Oversight Responsibility Cannot Be Outsourced"
+  },
+  {
+   "zh": "這是本附錄最關鍵的原則。無論 IT 系統由哪家供應商管理，法規責任永遠在受管制公司身上。就像藥廠委外生產，受託方（CMO）執行製造，但合規責任仍在委託方（MAH）。",
+   "en": "This is the most important principle of this appendix. No matter which supplier manages the IT system, regulatory responsibility always remains with the regulated company. It is like outsourced drug manufacturing: the contract manufacturer (CMO) carries out the manufacture, but compliance responsibility stays with the contract giver (MAH)."
+  },
+  {
+   "zh": "<strong>對 CDMO 的實際意涵：</strong>即便 IT 基礎設施完全委外給 AWS 或本地資服公司，FDA/EMA 稽查時，你仍需要能展示對供應商的有效監督——包括稽查紀錄、KPI 追蹤、CAPA 執行。「供應商說他們做了」不是合格答案。",
+   "en": "<strong>Practical implications for a CDMO:</strong> even if the IT infrastructure is fully outsourced to AWS or a local IT services company, at an FDA/EMA inspection you must still be able to demonstrate effective oversight of the supplier, including audit records, KPI tracking and CAPA execution. \"The supplier said they did it\" is not an acceptable answer."
+  },
+  {
+   "zh": "委外 IT 就像餐廳外包食材供應。廚師（受管制公司）對菜品安全負責，即使食材是供應商送來的。合約定義食材規格（KPI），定期稽查供應商的廚房（Supplier Audit），食材抵達時要驗貨（入廠查核）。若食材出問題，顧客告的是餐廳，不是供應商。",
+   "en": "Outsourcing IT is like a restaurant outsourcing its ingredient supply. The chef (the regulated company) is responsible for the safety of the dishes, even if the ingredients are delivered by a supplier. The contract defines the ingredient specifications (KPIs), the supplier's kitchen is audited regularly (supplier audit), and ingredients are checked on arrival (incoming verification). If the ingredients cause a problem, the customer sues the restaurant, not the supplier."
+  },
+  {
+   "zh": "SLA 必要元素清單 SLA Essential Elements",
+   "en": "SLA Essential Elements"
+  },
+  {
+   "zh": "合規相關必要項目（稽查重點）：\n1. KPIs 與接受標準（量化績效指標）\n2. 稽查權利條款（含法規機關現場稽查）\n3. 記錄保存所有權（合約結束後仍可取得）\n4. 事故通報等級與時效（Alert Levels）\n5. 培訓要求（供應商人員需受 GxP 訓練）\n6. 不合規時的處理程序與罰則",
+   "en": "Compliance-relevant essential items (inspection focus):\n1. KPIs and acceptance criteria (quantitative performance indicators)\n2. Audit rights clause (including on-site inspection by regulatory authorities)\n3. Ownership of record retention (records remain obtainable after the contract ends)\n4. Incident notification levels and timelines (Alert Levels)\n5. Training requirements (supplier personnel must receive GxP training)\n6. Procedures and penalties for non-compliance"
+  },
+  {
+   "zh": "核心概念：記錄保存所有權",
+   "en": "Core Concept: Ownership of Record Retention"
+  },
+  {
+   "zh": "合約必須明確規定：若終止合約，受管制公司仍可存取所有 GxP 相關記錄。這在實務中常被忽略，直到供應商倒閉或合約到期才發現記錄被「鎖住」，無法配合稽查——這是嚴重的合規風險。",
+   "en": "The contract must state explicitly that, if it is terminated, the regulated company can still access all GxP-relevant records. This is often overlooked in practice, until the supplier goes out of business or the contract expires and the records turn out to be \"locked\", so they cannot be produced for an inspection. This is a serious compliance risk."
+  },
+  {
+   "zh": "實務應用 Practical Application",
+   "en": "Practical Application"
+  },
+  {
+   "zh": "CDMO 委外雲端基礎設施給 AWS / Azure 時，必須在合約中明確：",
+   "en": "When a CDMO outsources cloud infrastructure to AWS / Azure, the contract must state clearly:"
+  },
+  {
+   "zh": "FDA 稽查人員能否要求現場查核雲端服務商的資料中心？（需寫入合約）",
+   "en": "Can FDA inspectors require an on-site inspection of the cloud provider's data center? (This must be written into the contract.)"
+  },
+  {
+   "zh": "CDMO 離開雲端平台時，所有 GxP 記錄如何移轉？格式？時限？",
+   "en": "When the CDMO leaves the cloud platform, how are all GxP records migrated? In what format? Within what time limit?"
+  },
+  {
+   "zh": "雲端供應商的安全事件通報義務（多少小時內必須告知客戶）？",
+   "en": "What are the cloud provider's security incident notification obligations (within how many hours must customers be told)?"
+  },
+  {
+   "zh": "這些都是合約談判時必須確認的項目，不是上線後再想。",
+   "en": "These must all be confirmed during contract negotiation, not worked out after go-live."
+  },
+  {
+   "zh": "你的 IT 供應商系統發生資料外洩事件，稽查員問你「你如何驗證供應商的合規性？」你能拿出哪些文件？",
+   "en": "A data breach occurs on your IT supplier's system, and the inspector asks \"How do you verify the supplier's compliance?\" What documents can you produce?"
+  },
+  {
+   "zh": "SLA 中的 KPI 應包含哪些具體指標？請為 CDMO 的 MES 雲端服務設計至少三個 GxP 相關 KPI。",
+   "en": "What specific indicators should the KPIs in an SLA include? Design at least three GxP-relevant KPIs for the CDMO's cloud-based MES service."
+  },
+  {
+   "zh": "<strong>Appendix 9 — Server Management (p99–p105) Appendix 9 — 伺服器管理</strong>",
+   "en": "<strong>Appendix 9 — Server Management (p99–p105)</strong>"
+  },
+  {
+   "zh": "核心概念：全量 vs. 增量備份策略",
+   "en": "Core Concept: Full vs. Incremental Backup Strategy"
+  },
+  {
+   "zh": "<strong>Full Backup（全量備份）：</strong>每週一次，備份所有資料。優點：還原簡單。缺點：時間長、佔空間。",
+   "en": "<strong>Full Backup:</strong> Once a week, backing up all data. Advantage: simple restore. Disadvantage: takes a long time and a lot of space."
+  },
+  {
+   "zh": "<strong>Incremental Backup（增量備份）：</strong>每日，只備份自上次備份後變更的資料。優點：快速、省空間。缺點：還原需要依序合併多個備份。",
+   "en": "<strong>Incremental Backup:</strong> Daily, backing up only data changed since the last backup. Advantage: fast and space-saving. Disadvantage: restore requires merging several backups in sequence."
+  },
+  {
+   "zh": "GxP 最低要求：全量每週一次 + 增量每日。這不是建議，是底線。",
+   "en": "GxP minimum requirement: full backup once a week + incremental backup daily. This is not a recommendation; it is the bottom line."
+  },
+  {
+   "zh": "備份策略就像工廠的照片記錄：每個月拍一次全廠大合照（全量備份），每天記錄今天哪裡有什麼變化（增量備份）。出事時，先找最近那張大合照，再依序套上之後每天的變化，就能還原到事故當天的狀態。",
+   "en": "A backup strategy is like a factory's photo record: once a month you take a group photo of the whole plant (full backup), and every day you record what has changed today (incremental backup). When something goes wrong, you find the latest group photo first, then apply the daily changes one after another, and you can restore the state to the day of the incident."
+  },
+  {
+   "zh": "異地儲存就像把大合照的副本存在另一棟建築——同棟著火時，備份還能倖存。",
+   "en": "Off-site storage is like keeping a copy of the group photo in another building: if one building burns down, the backup survives."
+  },
+  {
+   "zh": "<strong>備份記錄的查核不等於測試還原：</strong>光看 backup log 顯示「成功」不夠。GxP 要求定期實際執行還原測試，並驗證還原後的資料與原始資料一致。「能備份」和「能還原」是兩件事。",
+   "en": "<strong>Reviewing backup records is not the same as testing a restore:</strong> a backup log showing \"success\" is not enough. GxP requires restore tests to be actually performed periodically, with the restored data verified as identical to the original. \"Can back up\" and \"can restore\" are two different things."
+  },
+  {
+   "zh": "<strong>還原授權管控：</strong>資料還原操作必須驗證申請人身份及其查看資料的授權。在 21 CFR Part 11 系統中，未授權還原等同於未授權資料存取。",
+   "en": "<strong>Restore authorization control:</strong> a data restore operation must verify the requester's identity and their authorization to view the data. In a 21 CFR Part 11 system, an unauthorized restore is equivalent to unauthorized data access."
+  },
+  {
+   "zh": "<strong>媒體壽命陷阱：</strong>廠商標示的媒體壽命是空白媒體壽命，含資料的實際壽命遠較短。必須建立定期資料刷新（data refresh）計畫，避免長期備份資料自然損壞。",
+   "en": "<strong>The media lifetime trap:</strong> the media lifetime stated by the manufacturer is that of blank media; the actual lifetime once data is written is much shorter. A periodic data refresh plan must be established to prevent long-term backup data from degrading naturally."
+  },
+  {
+   "zh": "CDMO 的批次記錄系統週五晚上崩潰。使用週一全量備份 + 週二至週四增量備份，能否完整還原週四所有資料？還原順序是什麼？",
+   "en": "The CDMO's batch record system crashes on Friday night. Using the Monday full backup + Tuesday to Thursday incremental backups, can all of Thursday's data be fully restored? What is the restore sequence?"
+  },
+  {
+   "zh": "稽查員詢問：「你如何確認備份的 GxP 記錄在異地儲存設施中仍可讀取？」你的標準作業程序應包含哪些驗證步驟？",
+   "en": "The inspector asks: \"How do you confirm that the backed-up GxP records are still readable at the off-site storage facility?\" What verification steps should your SOP include?"
+  },
+  {
+   "zh": "核心概念：Alert Limit vs. Action Limit",
+   "en": "Core Concept: Alert Limit vs. Action Limit"
+  },
+  {
+   "zh": "<strong>Alert Limit（警戒限）：</strong>系統開始發出警報，但尚未到達必須立即行動的程度。對應製造環境的環境監控警戒限——需要調查，評估是否趨近行動限。",
+   "en": "<strong>Alert Limit:</strong> The system begins to raise an alarm, but the level has not yet reached the point where immediate action is required. It corresponds to the alert level in manufacturing environmental monitoring: investigation is needed to assess whether the action limit is being approached."
+  },
+  {
+   "zh": "<strong>Action Limit（行動限）：</strong>必須立即採取糾正措施，如重啟服務、擴充資源、啟動災難恢復程序。對應環境監控的行動限——超過即觸發 CAPA。",
+   "en": "<strong>Action Limit:</strong> Corrective action must be taken immediately, such as restarting a service, adding resources or initiating disaster recovery procedures. It corresponds to the action level in environmental monitoring: exceeding it triggers a CAPA."
+  },
+  {
+   "zh": "這個雙層限制結構（Alert → Action）與 GxP 製造中的 OOT / OOS 處理邏輯完全一致，對 CDMO 人員來說是熟悉的概念框架。",
+   "en": "This two-tier limit structure (Alert → Action) is fully consistent with the OOT / OOS handling logic in GxP manufacturing, and is a familiar conceptual framework for CDMO staff."
+  },
+  {
+   "zh": "重點提示 Table A9.1 解讀",
+   "en": "Key Note: Interpreting Table A9.1"
+  },
+  {
+   "zh": "表中數值僅供參考（非絕對規定），應在系統安裝時建立基準線（Baseline），再依實際環境調整限制值。",
+   "en": "The values in the table are for reference only (not absolute requirements). A baseline should be established when the system is installed, and the limit values then adjusted to the actual environment."
+  },
+  {
+   "zh": "對即時系統（Real-time system，如製程控制伺服器）而言，CPU &gt;80% 或可用記憶體 &lt;10 MB 是必須立即行動的警號——因為延遲回應直接影響製程控制，進而影響產品品質。",
+   "en": "For a real-time system (such as a process control server), CPU &gt;80% or available memory &lt;10 MB is a warning sign that requires immediate action, because a delayed response directly affects process control and, in turn, product quality."
+  },
+  {
+   "zh": "每日監控 + 自動化警報是合規要求，不是選擇。監控記錄本身就是 GxP 文件。",
+   "en": "Daily monitoring + automated alarms is a compliance requirement, not an option. The monitoring records themselves are GxP documents."
+  },
+  {
+   "zh": "伺服器效能監控就像無塵室的環境監控系統：設定警戒限和行動限，持續即時記錄，超標自動發警報，必須有 SOP 規定超標時的應對程序，且所有記錄都要保存以供稽查。兩者邏輯完全相同，只是監控對象從粒子計數換成了 CPU 使用率。",
+   "en": "Server performance monitoring is like a cleanroom environmental monitoring system: alert and action limits are set, data is recorded continuously in real time, an alarm is raised automatically when a limit is exceeded, an SOP must define the response to excursions, and all records must be retained for inspection. The logic is identical; only the monitored parameter changes from particle counts to CPU utilization."
+  },
+  {
+   "zh": "CDMO 遠端管理伺服器（例如總部 IT 管理分散在各廠的系統）時，安全要求包括：",
+   "en": "When a CDMO manages servers remotely (for example, headquarters IT managing systems at dispersed sites), the security requirements include:"
+  },
+  {
+   "zh": "使用加密通訊通道（如 VPN、SSH）——非加密的遠端存取是重大安全漏洞",
+   "en": "Use encrypted communication channels (such as VPN, SSH); unencrypted remote access is a major security vulnerability"
+  },
+  {
+   "zh": "遠端存取本身也需要存取控制記錄（WHO、WHEN、WHAT）",
+   "en": "Remote access itself also needs access control records (WHO, WHEN, WHAT)"
+  },
+  {
+   "zh": "若透過委外供應商遠端管理，合約中必須明確規定安全通訊標準",
+   "en": "If remote management is done through an outsourced supplier, the contract must clearly specify secure communication standards"
+  },
+  {
+   "zh": "稽查員要求查看過去 6 個月的伺服器效能監控記錄，以確認 MES 系統在批次生產期間的可用性。你的 IT 部門應提供哪些文件？記錄格式應如何設計才符合 GxP？",
+   "en": "The inspector asks to see the server performance monitoring records for the past 6 months to confirm MES availability during batch production. What documents should your IT department provide? How should the record format be designed to meet GxP requirements?"
+  },
+  {
+   "zh": "若 IT 供應商透過網際網路遠端管理你的 GxP 伺服器，你需要在合約和技術層面做哪些確認才能符合本附錄的安全要求？",
+   "en": "If an IT supplier manages your GxP servers remotely over the internet, what must you confirm at the contract and technical levels to meet the security requirements of this appendix?"
+  },
+  {
+   "zh": "本節重點回顧 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "<strong>附錄六 CIA 三角：</strong>機密性／完整性／可用性是 GxP IT 資安的三大支柱，ISO/IEC 17799 是框架基礎，不需正式認證但需映射至內部政策並完成內稽。",
+   "en": "<strong>Appendix 6 CIA triad:</strong> Confidentiality / integrity / availability are the three pillars of GxP IT security. ISO/IEC 17799 is the framework basis; formal certification is not required, but it must be mapped to internal policies and internally audited."
+  },
+  {
+   "zh": "<strong>附錄六 補丁分類：</strong>三種緊急程度（Emergency Fix / Urgent Update / Update）決定行動時序；緊急補丁可事後補做變更控制，但不能省略文件化義務。",
+   "en": "<strong>Appendix 6 patch classification:</strong> The three urgency levels (Emergency Fix / Urgent Update / Update) determine the timing of action. Emergency patches may have change control completed afterwards, but the documentation obligation cannot be skipped."
+  },
+  {
+   "zh": "<strong>附錄七 測試四級：</strong>No Testing（僅緊急）→ Confirmation（輕微升級）→ Confidence（顯著升級/GxP系統）→ Full Regression（主要升級）；多廠區可集中測試後減少其他廠區測試量。",
+   "en": "<strong>Appendix 7 four testing levels:</strong> No Testing (emergency only) → Confirmation (minor upgrade) → Confidence (significant upgrade / GxP system) → Full Regression (major upgrade). For multi-site operations, testing can be centralized and the testing effort at other sites reduced."
+  },
+  {
+   "zh": "<strong>附錄八 委外原則：</strong>合規監督責任永遠在受管制公司，不可委派給供應商；SLA 必須包含 KPI、稽查權利、記錄保存所有權三大合規要素。",
+   "en": "<strong>Appendix 8 outsourcing principle:</strong> Compliance oversight responsibility always remains with the regulated company and cannot be delegated to the supplier. The SLA must contain three compliance elements: KPIs, audit rights and ownership of record retention."
+  },
+  {
+   "zh": "<strong>附錄九 備份策略：</strong>全量（每週）＋增量（每日）是最低要求；異地儲存確保災難恢復；定期實際執行還原測試才能真正驗證備份有效性；效能監控採 Alert/Action 雙層限制，每日記錄並自動警報。",
+   "en": "<strong>Appendix 9 backup strategy:</strong> Full (weekly) + incremental (daily) is the minimum requirement; off-site storage ensures disaster recovery; only periodically performing actual restore tests truly verifies that backups are effective; performance monitoring uses two-tier Alert/Action limits, with daily records and automated alarms."
+  }
+ ]
+}

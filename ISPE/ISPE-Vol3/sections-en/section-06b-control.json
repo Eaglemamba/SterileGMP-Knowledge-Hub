@@ -1,0 +1,733 @@
+{
+ "source": "section-06b-control.html",
+ "blocks": [
+  {
+   "zh": "Chapter 8: Control and Instrumentation / 儀控系統",
+   "en": "Chapter 8: Control and Instrumentation"
+  },
+  {
+   "zh": "Learning Objectives / 本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "Understand the role of C&amp;I systems in sterile manufacturing and how they impact patient safety and product quality / 理解儀控系統在無菌製造中的角色及其對病患安全與產品品質的影響",
+   "en": "Understand the role of C&amp;I systems in sterile manufacturing and how they impact patient safety and product quality"
+  },
+  {
+   "zh": "Identify critical environmental process parameters (CPPs) and their monitoring requirements / 辨識關鍵環境製程參數及其監測要求",
+   "en": "Identify critical environmental process parameters (CPPs) and their monitoring requirements"
+  },
+  {
+   "zh": "Distinguish between active and passive control strategies for environmental parameters / 區分環境參數的主動式與被動式控制策略",
+   "en": "Distinguish between active and passive control strategies for environmental parameters"
+  },
+  {
+   "zh": "Apply the hierarchy of Process Limits, Alert Limits, and Normal Operating Conditions / 運用製程限值、警示限值與正常操作條件的層級關係",
+   "en": "Apply the hierarchy of Process Limits, Alert Limits, and Normal Operating Conditions"
+  },
+  {
+   "zh": "Understand instrument selection criteria: accuracy, location, and calibration / 理解儀器選擇標準：精確度、安裝位置與校正",
+   "en": "Understand instrument selection criteria: accuracy, location, and calibration"
+  },
+  {
+   "zh": "Evaluate HVAC control system choices: BMS/BAS vs. DCS/PLC/SCADA / 評估 HVAC 控制系統選擇：BMS/BAS 與 DCS/PLC/SCADA 的差異",
+   "en": "Evaluate HVAC control system choices: BMS/BAS vs. DCS/PLC/SCADA"
+  },
+  {
+   "zh": "Describe airborne particle counting configurations and monitoring considerations / 描述空氣中粒子計數系統架構與監測考量",
+   "en": "Describe airborne particle counting configurations and monitoring considerations"
+  },
+  {
+   "zh": "Section Index / 本節內容索引",
+   "en": "Section Index"
+  },
+  {
+   "zh": "<strong>8.1 Introduction — Control &amp; Instrumentation Overview 8.1 簡介 — 控制與儀表概述</strong>",
+   "en": "<strong>8.1 Introduction — Control &amp; Instrumentation Overview</strong>"
+  },
+  {
+   "zh": "導師解析",
+   "en": "Trainer's Analysis"
+  },
+  {
+   "zh": "核心概念：C&amp;I 系統在無菌廠的角色",
+   "en": "Core concept: the role of the C&amp;I system in a sterile facility"
+  },
+  {
+   "zh": "儀控系統 (C&amp;I) 是無菌製造設施的「神經系統」。它做三件事：",
+   "en": "The control and instrumentation (C&amp;I) system is the \"nervous system\" of a sterile manufacturing facility. It does three things:"
+  },
+  {
+   "zh": "<strong>控制 (Control)：</strong>讓溫度、壓差、濕度等參數維持在指定範圍內",
+   "en": "<strong>Control:</strong> keeps parameters such as temperature, differential pressure, and humidity within the specified range"
+  },
+  {
+   "zh": "<strong>監測 (Monitor)：</strong>持續或定期量測，確認參數在限值內",
+   "en": "<strong>Monitor:</strong> measures continuously or periodically to confirm parameters are within limits"
+  },
+  {
+   "zh": "<strong>記錄 (Record)：</strong>將數據保存以供追溯與合規查核",
+   "en": "<strong>Record:</strong> retains the data for traceability and compliance review"
+  },
+  {
+   "zh": "任何一個子系統，只要它控制、監測或記錄了一個 <strong>關鍵製程參數 (CPP)</strong> 或直接影響 <strong>關鍵品質屬性 (CQA)</strong>，就被認定為「可能影響病患安全與產品品質」。",
+   "en": "Any subsystem that controls, monitors, or records a <strong>critical process parameter (CPP)</strong> or directly affects a <strong>critical quality attribute (CQA)</strong> is regarded as \"potentially impacting patient safety and product quality.\""
+  },
+  {
+   "zh": "比喻說明：無菌廠的神經系統",
+   "en": "Analogy: the nervous system of a sterile facility"
+  },
+  {
+   "zh": "把無菌廠想成人體。HVAC 是呼吸系統（提供潔淨空氣），水系統是血液循環（輸送純水），而 C&amp;I 就是神經系統——感知環境（感測器）、傳遞訊號（訊號線與網路）、做出反應（控制器調整閥門或馬達）、留下記憶（資料記錄）。",
+   "en": "Think of a sterile facility as a human body. HVAC is the respiratory system (supplying clean air), the water systems are the circulatory system (carrying purified water), and C&amp;I is the nervous system: it senses the environment (sensors), carries signals (signal cables and networks), reacts (controllers adjust valves or motors), and keeps a memory (data records)."
+  },
+  {
+   "zh": "沒有神經系統，身體無法維持體溫恆定——無菌廠沒有 C&amp;I，也無法維持潔淨室的壓差、溫度與微粒等級。",
+   "en": "Without a nervous system, the body cannot hold a steady temperature. Without C&amp;I, a sterile facility cannot hold cleanroom differential pressure, temperature, and particle levels either."
+  },
+  {
+   "zh": "重點提示：Data Integrity 是設計標準之一",
+   "en": "Key point: data integrity is one of the design criteria"
+  },
+  {
+   "zh": "本節明確將「資料完整性 (Data Integrity)」列為設計考量。這表示在選擇或設計儀控系統時，不只要考慮「測得準」，還要確保「記得住且不可竄改」——這對 ALCOA+ 原則的落實至關重要。",
+   "en": "This section explicitly lists data integrity as a design consideration. When selecting or designing a C&amp;I system, it is not enough to measure accurately; the system must also ensure the data is retained and cannot be tampered with, which is essential to applying the ALCOA+ principles."
+  },
+  {
+   "zh": "<strong>8.2 Critical Process Parameters — Environmental Conditions 8.2 關鍵製程參數 — 環境條件</strong>",
+   "en": "<strong>8.2 Critical Process Parameters — Environmental Conditions</strong>"
+  },
+  {
+   "zh": "核心概念：主動控制 vs 被動控制",
+   "en": "Core concept: active control vs. passive control"
+  },
+  {
+   "zh": "這是本節最重要的分類框架：",
+   "en": "This is the most important classification framework in this section:"
+  },
+  {
+   "zh": "<strong>主動控制 (Active Control)：</strong>有控制迴路、有回饋 (feedback) 或前饋 (feedforward)。例如 AHU 送風溫度控制——感測器偵測到溫度偏高，控制器自動開大冷水閥。",
+   "en": "<strong>Active control:</strong> has a control loop with feedback or feedforward. Example: AHU supply air temperature control. When the sensor detects high temperature, the controller automatically opens the chilled water valve further."
+  },
+  {
+   "zh": "<strong>被動控制 (Passive Control)：</strong>沒有自動迴路。靠設計本身（如固定風量比例、HEPA 過濾器）來維持條件，偏差時由人員介入。",
+   "en": "<strong>Passive control:</strong> has no automatic loop. The condition is maintained by the design itself (for example a fixed airflow ratio or HEPA filters), and personnel intervene when there is a deviation."
+  },
+  {
+   "zh": "關鍵判斷原則：被動控制系統的可靠度通常比主動系統更高（零件少、不會故障），但一旦偏差，反應速度更慢。因此本指南對被動控制的監測頻率要求可以「較低」。",
+   "en": "Key principle: passive control systems are usually more reliable than active ones (fewer parts, less to fail), but once a deviation occurs they respond more slowly. For this reason the guide allows a \"lower\" monitoring frequency for passive control."
+  },
+  {
+   "zh": "重點提示：壓差控制的爭議",
+   "en": "Key point: the debate over pressure control"
+  },
+  {
+   "zh": "注意 Table 8.1 中一個關鍵建議：<strong>本指南不建議使用致動控制風門 (actuated control dampers) 來主動控制壓差。</strong>",
+   "en": "Note a key recommendation in Table 8.1: <strong>the guide does not recommend using actuated control dampers to actively control differential pressure.</strong>"
+  },
+  {
+   "zh": "原因：壓差對門的開關、人員進出極為敏感。用主動控制風門容易造成不同房間之間的「壓力振盪」——A 房升壓，B 房的控制器反應降壓，結果形成不穩定的來回震盪。",
+   "en": "Reason: differential pressure is extremely sensitive to door openings and personnel movement. Active control dampers easily cause \"pressure oscillation\" between rooms: room A's pressure rises, room B's controller reacts by lowering it, and the result is unstable back-and-forth hunting."
+  },
+  {
+   "zh": "技術基線 (Technical Baseline)：<strong>被動式鎖定風門 + 連續監測</strong>。簡單而可靠。",
+   "en": "Technical baseline: <strong>passive locked-in-position dampers + continuous monitoring</strong>. Simple and reliable."
+  },
+  {
+   "zh": "比喻說明：被動 vs 主動控制",
+   "en": "Analogy: passive vs. active control"
+  },
+  {
+   "zh": "被動控制像一條設計好坡度的水溝——水自然會流向正確方向，不需要泵浦。只要定期巡檢，確認沒有堵塞即可。",
+   "en": "Passive control is like a drainage ditch built to a designed slope: water naturally flows the right way and no pump is needed. Periodic walk-throughs to confirm there is no blockage are enough."
+  },
+  {
+   "zh": "主動控制像裝了泵浦的管路——能精確控制流量，但泵浦故障時水就不流了。需要更頻繁的監測和維護。",
+   "en": "Active control is like piping with a pump: it can control flow precisely, but when the pump fails the water stops flowing. It needs more frequent monitoring and maintenance."
+  },
+  {
+   "zh": "監測頻率的決策邏輯",
+   "en": "Decision logic for monitoring frequency"
+  },
+  {
+   "zh": "「多久量一次？」不是憑感覺決定的。ISPE 提出三個評估因素：",
+   "en": "\"How often should we measure?\" is not decided by gut feeling. ISPE proposes three evaluation factors:"
+  },
+  {
+   "zh": "<strong>偏差後果：</strong>製程限值外製造的嚴重程度（產品報廢？召回？病患風險？）",
+   "en": "<strong>Consequence of deviation:</strong> how serious it is to manufacture outside the process limits (scrapped product? recall? patient risk?)"
+  },
+  {
+   "zh": "<strong>失控機率：</strong>控制系統的可靠度與複雜度",
+   "en": "<strong>Probability of loss of control:</strong> the reliability and complexity of the control system"
+  },
+  {
+   "zh": "<strong>干預頻率：</strong>人員操作、門開關等可能擾動參數的活動頻率",
+   "en": "<strong>Frequency of intervention:</strong> how often activities that can disturb the parameter occur, such as operator actions and door openings"
+  },
+  {
+   "zh": "風險越高 → 監測越頻繁。Grade A/B 區域的壓差與溫度通常需要連續監測；Grade C/D 可以較低頻率。",
+   "en": "The higher the risk, the more frequent the monitoring. Differential pressure and temperature in grade A/B areas usually need continuous monitoring; grade C/D can use a lower frequency."
+  },
+  {
+   "zh": "實務應用：CDMO 多產品設計",
+   "en": "Practical application: multi-product design at a CDMO"
+  },
+  {
+   "zh": "本節提醒：如果同一區域要製造多種產品，設計必須滿足「最嚴格的產品需求」。對 CDMO 而言，這意味著：",
+   "en": "This section reminds us that if one area will make several products, the design must meet the \"most stringent product requirement.\" For a CDMO this means:"
+  },
+  {
+   "zh": "溫度範圍取所有產品中最窄的要求",
+   "en": "Take the narrowest temperature range among all products"
+  },
+  {
+   "zh": "壓差等級取最高分類要求",
+   "en": "Take the highest differential pressure classification requirement"
+  },
+  {
+   "zh": "監測系統要能在不同產品間切換警示限值",
+   "en": "The monitoring system must be able to switch alert limits between products"
+  },
+  {
+   "zh": "設計建議：預留 BMS 參數切換功能，讓操作人員依據不同產品批次快速載入對應的限值組態。",
+   "en": "Design recommendation: build in a BMS parameter-switching function so operators can quickly load the matching limit configuration for each product batch."
+  },
+  {
+   "zh": "8.2.3 Alert and Action Alarms / 警示與行動警報",
+   "en": "8.2.3 Alert and Action Alarms"
+  },
+  {
+   "zh": "雙層警報架構",
+   "en": "Two-tier alarm architecture"
+  },
+  {
+   "zh": "本節建立了 GMP 儀控系統的標準警報模型：",
+   "en": "This section establishes the standard alarm model for a GMP C&amp;I system:"
+  },
+  {
+   "zh": "Action Alarm（行動警報）— 逼近製程限值",
+   "en": "Action alarm: approaching the process limit"
+  },
+  {
+   "zh": "Alert Alarm（警示警報）— 偏離正常操作範圍",
+   "en": "Alert alarm: deviating from the normal operating range"
+  },
+  {
+   "zh": "Normal Operating Conditions（正常操作條件）",
+   "en": "Normal operating conditions"
+  },
+  {
+   "zh": "Alert = 早期預警，讓你有時間採取預防措施。Action = 已接近或超出製程限值，必須立即處理。",
+   "en": "Alert = early warning, giving you time to take preventive action. Action = the process limit is close to being reached or has been exceeded, and immediate response is required."
+  },
+  {
+   "zh": "重點提示：Alarm Latch（鎖存）原則",
+   "en": "Key point: the alarm latching principle"
+  },
+  {
+   "zh": "警報「鎖存且不自動取消」是 GMP 的核心設計要求。即使偏差條件已恢復正常，警報仍保持激活狀態，直到操作員手動確認。",
+   "en": "Alarms that \"latch and do not clear automatically\" are a core GMP design requirement. Even after the deviating condition has returned to normal, the alarm stays active until the operator acknowledges it manually."
+  },
+  {
+   "zh": "<strong>為什麼？</strong>確保每一次偏差都有人看到、有人判斷、有記錄。如果警報自動消失，操作員可能永遠不知道偏差發生過——這對產品品質判定和偏差調查是致命的。",
+   "en": "<strong>Why?</strong> It ensures every deviation is seen, assessed, and recorded by someone. If alarms cleared themselves, operators might never know a deviation had occurred, which is fatal for product quality decisions and deviation investigations."
+  },
+  {
+   "zh": "重點提示：Time Delay 的陷阱",
+   "en": "Key point: the time delay trap"
+  },
+  {
+   "zh": "允許短暫偏差的「時間延遲」邏輯聽起來合理（例如開門瞬間壓差短暫下降），但設定不當會隱藏真正的問題。",
+   "en": "\"Time delay\" logic that tolerates brief excursions sounds reasonable (for example a momentary pressure dip when a door opens), but if set improperly it can hide real problems."
+  },
+  {
+   "zh": "ISPE 要求：延遲邏輯必須經過「徹底測試」且「文件化理由」。稽核時，查核重點往往在：延遲設定依據是什麼？有沒有經過風險評估？",
+   "en": "ISPE requires that delay logic be \"thoroughly tested\" and have a \"documented rationale.\" At audit, the focus is often: what is the basis for the delay setting, and was it risk assessed?"
+  },
+  {
+   "zh": "8.2.4 Environmental Process Limits, Facility Design Limits, and Normal Operating Conditions / 限值層級架構",
+   "en": "8.2.4 Environmental Process Limits, Facility Design Limits, and Normal Operating Conditions"
+  },
+  {
+   "zh": "比喻說明：高速公路的速限",
+   "en": "Analogy: the speed limit on a highway"
+  },
+  {
+   "zh": "想像高速公路限速 110 km/h（Process Limit）。車子設計巡航速度 100 km/h（Facility Design Limit）。你通常開在 95-105 km/h（Normal Operating Conditions）。儀表板在 105 km/h 時亮黃燈提醒（Alert），超過 110 km/h 時響警報（Action Alarm）。",
+   "en": "Imagine a highway with a 110 km/h speed limit (Process Limit). The car is designed to cruise at 100 km/h (Facility Design Limit). You normally drive at 95-105 km/h (Normal Operating Conditions). The dashboard lights a yellow warning at 105 km/h (Alert) and sounds an alarm above 110 km/h (Action Alarm)."
+  },
+  {
+   "zh": "重點：每一層都有其存在的理由，缺一不可。如果直接用 Process Limit 當 Alert Limit，就沒有預警空間了。",
+   "en": "Key point: every tier exists for a reason and none can be omitted. If you use the Process Limit directly as the Alert Limit, there is no room left for early warning."
+  },
+  {
+   "zh": "練習思考",
+   "en": "Exercises for reflection"
+  },
+  {
+   "zh": "如果一個產品的製程限值是 22°C ± 2°C（很窄），而 HVAC 系統在夏天外部溫度 35°C 時只能控制到 ± 1.5°C，這代表什麼問題？該如何解決？",
+   "en": "If a product's process limit is 22°C ± 2°C (very narrow), and on a summer day with an outside temperature of 35°C the HVAC system can only control to ± 1.5°C, what problem does this indicate? How should it be solved?"
+  },
+  {
+   "zh": "為什麼 ISPE 強調「設施設計限值」要同時考慮操作員舒適度和節能？這和產品品質有什麼關聯？",
+   "en": "Why does ISPE stress that the \"facility design limits\" must consider both operator comfort and energy saving? How does this relate to product quality?"
+  },
+  {
+   "zh": "四層限值架構——從寬到窄",
+   "en": "The four-tier limit architecture, from wide to narrow"
+  },
+  {
+   "zh": "這是本章最重要的設計概念，用溫度的例子一層層解析：",
+   "en": "This is the most important design concept in the chapter, explained tier by tier using temperature as the example:"
+  },
+  {
+   "zh": "層與層之間的「留白」就是安全裕度。設計好的系統，各層之間有足夠空間，不會因為一點小擾動就觸發 Action Alarm。",
+   "en": "The \"white space\" between tiers is the safety margin. In a well-designed system there is enough room between the tiers that a minor disturbance does not trigger an Action Alarm."
+  },
+  {
+   "zh": "8.3 Instrumentation / 儀器設計與選擇",
+   "en": "8.3 Instrumentation"
+  },
+  {
+   "zh": "儀器物理設計四原則",
+   "en": "Four principles of physical instrument design"
+  },
+  {
+   "zh": "無菌區域的儀器不只要「量得準」，還要符合潔淨室設計原則：",
+   "en": "Instruments in sterile areas must not only \"measure accurately\" but also follow cleanroom design principles:"
+  },
+  {
+   "zh": "<strong>可清潔 (Cleanable)：</strong>表面光滑、無死角，能承受消毒劑",
+   "en": "<strong>Cleanable:</strong> smooth surfaces with no dead spots, able to withstand disinfectants"
+  },
+  {
+   "zh": "<strong>不積塵 (No Accumulation)：</strong>安裝方式避免水平凹槽或縫隙",
+   "en": "<strong>No accumulation:</strong> installed so as to avoid horizontal recesses or crevices where dust can collect"
+  },
+  {
+   "zh": "<strong>不污染 (No Contamination Risk)：</strong>與產品接觸的部分材質相容",
+   "en": "<strong>No contamination risk:</strong> product-contact parts are made of compatible materials"
+  },
+  {
+   "zh": "<strong>耐腐蝕 (Durable)：</strong>不被產品或清潔劑降解",
+   "en": "<strong>Durable:</strong> not degraded by the product or cleaning agents"
+  },
+  {
+   "zh": "實務上，越來越多儀器採用「感測端遠端分離」設計——只有一個小探頭在潔淨室內，電子處理元件在技術夾層，大幅降低清潔難度與污染風險。",
+   "en": "In practice, more and more instruments use a \"remote sensing\" design: only a small probe sits in the cleanroom while the electronics are in the technical interstitial space, greatly reducing cleaning difficulty and contamination risk."
+  },
+  {
+   "zh": "Instrument Permitted Limit（儀器允許限值）",
+   "en": "Instrument permitted limit"
+  },
+  {
+   "zh": "這是一個精妙的設計概念：",
+   "en": "This is an elegant design concept:"
+  },
+  {
+   "zh": "<strong>儀器允許限值 = 製程限值 - 警示限值</strong>",
+   "en": "<strong>Instrument permitted limit = process limit - alert limit</strong>"
+  },
+  {
+   "zh": "以溫度為例：",
+   "en": "Taking temperature as an example:"
+  },
+  {
+   "zh": "製程限值：22°C ± 2°C → 上限 24°C",
+   "en": "Process limit: 22°C ± 2°C → upper limit 24°C"
+  },
+  {
+   "zh": "警示限值：22°C ± 1°C → 上限 23°C",
+   "en": "Alert limit: 22°C ± 1°C → upper limit 23°C"
+  },
+  {
+   "zh": "儀器允許限值：24 - 23 = 1°C",
+   "en": "Instrument permitted limit: 24 - 23 = 1°C"
+  },
+  {
+   "zh": "因此儀器精確度至少需要 ± 0.5°C",
+   "en": "The instrument accuracy therefore needs to be at least ± 0.5°C"
+  },
+  {
+   "zh": "如果用更高精確度的儀器（例如 ± 0.1°C），就有更大的「漂移裕度」，校正週期可以拉長——長遠省錢。",
+   "en": "If a more accurate instrument is used (for example ± 0.1°C), there is a larger \"drift margin\" and the calibration interval can be extended, which saves money in the long run."
+  },
+  {
+   "zh": "重點提示：精確度 vs 成本的決策",
+   "en": "Key point: the accuracy vs. cost decision"
+  },
+  {
+   "zh": "精確度越高，儀器越貴，但帶來三個好處：",
+   "en": "The higher the accuracy, the more expensive the instrument, but it brings three benefits:"
+  },
+  {
+   "zh": "更大的漂移容許空間 → 校正頻率可降低",
+   "en": "A larger drift allowance → calibration frequency can be reduced"
+  },
+  {
+   "zh": "降低在不適當條件下生產的風險",
+   "en": "Lower risk of manufacturing under inappropriate conditions"
+  },
+  {
+   "zh": "減少偏差事件 → 減少調查和報廢成本",
+   "en": "Fewer deviation events → lower investigation and scrap costs"
+  },
+  {
+   "zh": "ISPE 建議：對關鍵支援系統 (critical support system) 的儀器選高精確度，非關鍵系統可用較低精確度。這符合「風險為基礎」的設計哲學。",
+   "en": "ISPE recommends choosing high-accuracy instruments for critical support systems and allowing lower accuracy for non-critical systems. This is consistent with a risk-based design philosophy."
+  },
+  {
+   "zh": "重點提示：感測器共置 (Co-location)",
+   "en": "Key point: sensor co-location"
+  },
+  {
+   "zh": "當「控制」和「監測」同一個 CPP 使用不同感測器時，兩者必須安裝在相同位置。否則可能出現：控制感測器顯示 21.5°C（正常），但監測感測器因為在不同位置讀到 23.5°C（超標），造成混淆和調查負擔。",
+   "en": "When different sensors are used to \"control\" and to \"monitor\" the same CPP, the two must be installed at the same location. Otherwise the control sensor may read 21.5°C (normal) while the monitoring sensor, at a different location, reads 23.5°C (out of limits), causing confusion and an investigation burden."
+  },
+  {
+   "zh": "一個溫度感測器安裝在回風口（較暖），另一個安裝在操作台面正上方（較冷）。哪一個更適合作為「代表性量測點」？為什麼？",
+   "en": "One temperature sensor is installed at the return air grille (warmer) and another directly above the work surface (cooler). Which is better as the \"representative measurement point\"? Why?"
+  },
+  {
+   "zh": "如果校正成本是選擇儀器的考量之一，一支難以現場校正的高精確度感測器和一支容易校正的中等精確度感測器，你如何取捨？",
+   "en": "If calibration cost is one of the factors in selecting instruments, how would you choose between a high-accuracy sensor that is hard to calibrate in situ and a medium-accuracy sensor that is easy to calibrate?"
+  },
+  {
+   "zh": "8.4 Production Process Parameters / 生產製程參數",
+   "en": "8.4 Production Process Parameters"
+  },
+  {
+   "zh": "本節為何簡短？——設計哲學的暗示",
+   "en": "Why is this section short? What it implies about design philosophy"
+  },
+  {
+   "zh": "本節刻意簡短，因為生產製程參數（如充填重量、壓塞位置、封蓋力矩等）因產品而異，無法一體適用。但它傳達了兩個重要訊息：",
+   "en": "This section is deliberately short because production process parameters (such as fill weight, stopper placement, and capping torque) vary by product and cannot be generalized. It does, however, convey two important messages:"
+  },
+  {
+   "zh": "<strong>PAT 是首選方法：</strong>使用即時分析技術來監測製程，而非依賴最終檢驗",
+   "en": "<strong>PAT is the preferred approach:</strong> use real-time analytical technology to monitor the process rather than relying on final testing"
+  },
+  {
+   "zh": "<strong>必須經過嚴格的設計審查：</strong>每一個生產製程的控制與監測系統，都需要透過風險評估來量身打造",
+   "en": "<strong>Rigorous design review is required:</strong> the control and monitoring system for each production process must be tailored through risk assessment"
+  },
+  {
+   "zh": "比喻說明：環境參數 vs 製程參數",
+   "en": "Analogy: environmental parameters vs. process parameters"
+  },
+  {
+   "zh": "如果環境參數（溫度、壓差、粒子數）是「舞台的燈光和空調」，那麼製程參數（充填量、壓塞深度、密封完整性）就是「演員的表演」。",
+   "en": "If the environmental parameters (temperature, differential pressure, particle counts) are the \"stage lighting and air conditioning,\" then the process parameters (fill volume, stoppering depth, seal integrity) are \"the actors' performance.\""
+  },
+  {
+   "zh": "ISPE Vol.3 主要在設計舞台——環境控制。演員的表演（製程控制）則需要配合特定劇目（產品）來設計，所以本指南只提方法論（PAT + 設計審查），不提具體參數。",
+   "en": "ISPE Vol.3 mainly designs the stage, which is environmental control. The actors' performance (process control) must be designed for the specific play (product), so this guide gives only the methodology (PAT + design review) and no specific parameters."
+  },
+  {
+   "zh": "實務應用：CDMO 常見的製程參數",
+   "en": "Practical application: common process parameters at a CDMO"
+  },
+  {
+   "zh": "雖然本節未列舉，以下是 CDMO 無菌充填線常見的 CPP：",
+   "en": "Although this section does not list them, the following are common CPPs on a CDMO aseptic filling line:"
+  },
+  {
+   "zh": "<strong>充填重量 (Fill Weight)：</strong>通常 ± 2-5% 範圍，取決於劑型與容器",
+   "en": "<strong>Fill weight:</strong> typically within ± 2-5%, depending on dosage form and container"
+  },
+  {
+   "zh": "<strong>壓塞位置 (Stopper Placement)：</strong>壓塞高度與歪斜度",
+   "en": "<strong>Stopper placement:</strong> stoppering height and tilt"
+  },
+  {
+   "zh": "<strong>密封完整性 (Seal Integrity)：</strong>鋁蓋壓合力矩",
+   "en": "<strong>Seal integrity:</strong> aluminum cap crimping torque"
+  },
+  {
+   "zh": "<strong>充填速度 (Fill Speed)：</strong>影響起泡與精確度",
+   "en": "<strong>Fill speed:</strong> affects foaming and accuracy"
+  },
+  {
+   "zh": "<strong>惰氣覆蓋 (Inert Gas Overlay)：</strong>殘氧量控制",
+   "en": "<strong>Inert gas overlay:</strong> control of residual oxygen"
+  },
+  {
+   "zh": "8.5 General Design Issues / 一般設計議題",
+   "en": "8.5 General Design Issues"
+  },
+  {
+   "zh": "核心概念：電腦化系統生命週期的「分級」原則",
+   "en": "Core concept: the graded approach to the computerized system lifecycle"
+  },
+  {
+   "zh": "不是所有儀控系統都需要同樣嚴格的驗證。ISPE 引用 GAMP 5 的核心理念：<strong>依風險分級 (Risk-Based Approach)</strong>。",
+   "en": "Not every C&amp;I system needs the same level of rigor in validation. ISPE draws on the core idea of GAMP 5: <strong>a risk-based approach</strong>."
+  },
+  {
+   "zh": "三個分級維度：",
+   "en": "Three grading dimensions:"
+  },
+  {
+   "zh": "<strong>影響程度：</strong>這個系統如果出錯，會影響病患安全嗎？會影響資料完整性嗎？",
+   "en": "<strong>Degree of impact:</strong> if this system fails, will it affect patient safety? Will it affect data integrity?"
+  },
+  {
+   "zh": "<strong>複雜程度：</strong>是簡單的單迴路控制器，還是整合多個子系統的 SCADA？",
+   "en": "<strong>Complexity:</strong> is it a simple single-loop controller, or a SCADA integrating several subsystems?"
+  },
+  {
+   "zh": "<strong>供應商可靠度：</strong>供應商有完善的品質管理系統嗎？軟體開發有遵循 SDLC 嗎？",
+   "en": "<strong>Supplier reliability:</strong> does the supplier have a sound quality management system? Does software development follow an SDLC?"
+  },
+  {
+   "zh": "影響高 + 複雜度高 + 供應商未經驗證 = 需要最完整的驗證文件。影響低 + 成熟簡單系統 + 知名供應商 = 可簡化驗證。",
+   "en": "High impact + high complexity + unqualified supplier = the most complete validation documentation is needed. Low impact + mature, simple system + well-known supplier = validation can be simplified."
+  },
+  {
+   "zh": "重點提示：監控與控制的分離",
+   "en": "Key point: separation of monitoring and control"
+  },
+  {
+   "zh": "本節暗示了一個重要的設計策略：將「控制」和「監測」功能分離到不同系統上。例如：",
+   "en": "This section implies an important design strategy: separate the \"control\" and \"monitoring\" functions onto different systems. For example:"
+  },
+  {
+   "zh": "<strong>控制：</strong>由 BMS/BAS 負責 HVAC 迴路控制",
+   "en": "<strong>Control:</strong> the BMS/BAS handles HVAC loop control"
+  },
+  {
+   "zh": "<strong>監測：</strong>由獨立的環境監測系統 (EMS) 負責記錄和警報",
+   "en": "<strong>Monitoring:</strong> an independent environmental monitoring system (EMS) handles recording and alarms"
+  },
+  {
+   "zh": "好處：監測系統獨立於控制系統，可作為「第二道防線」。控制系統故障時，監測系統仍能偵測到偏差。",
+   "en": "Benefit: the monitoring system is independent of the control system and acts as a \"second line of defense.\" If the control system fails, the monitoring system can still detect the deviation."
+  },
+  {
+   "zh": "8.6 HVAC Control System Choice / HVAC 控制系統選擇",
+   "en": "8.6 HVAC Control System Choice"
+  },
+  {
+   "zh": "重點提示：ISPE 明確推薦 BMS/BAS",
+   "en": "Key point: ISPE explicitly recommends BMS/BAS"
+  },
+  {
+   "zh": "本節的核心訊息很清楚：<strong>HVAC 用 BMS/BAS，不需要用 DCS 或 PLC。</strong>",
+   "en": "The core message of this section is clear: <strong>use a BMS/BAS for HVAC; a DCS or PLC is not needed.</strong>"
+  },
+  {
+   "zh": "理由：",
+   "en": "Reasons:"
+  },
+  {
+   "zh": "藥廠 HVAC 的「工業本質」不需要 DCS/PLC 的高速處理能力",
+   "en": "The \"industrial nature\" of pharmaceutical HVAC does not require the high-speed processing of a DCS/PLC"
+  },
+  {
+   "zh": "BMS/BAS 是 HVAC 產業的原生解決方案，供應商生態系統成熟",
+   "en": "BMS/BAS is the native solution of the HVAC industry, with a mature supplier ecosystem"
+  },
+  {
+   "zh": "隨著規模增長，BMS/BAS 的成本效益優勢越來越明顯",
+   "en": "As the scale grows, the cost-effectiveness advantage of BMS/BAS becomes more and more obvious"
+  },
+  {
+   "zh": "例外：如果涉及人員安全（如有毒氣體偵測、緊急排氣），則可能需要 PLC/DCS。",
+   "en": "Exception: where personnel safety is involved (such as toxic gas detection or emergency exhaust), a PLC/DCS may be needed."
+  },
+  {
+   "zh": "比喻說明：選車的邏輯",
+   "en": "Analogy: the logic of choosing a vehicle"
+  },
+  {
+   "zh": "用 DCS 控制 HVAC，就像用 F1 賽車送小孩上學——性能遠超需求，但維護成本高昂、操作複雜。",
+   "en": "Using a DCS to control HVAC is like driving a child to school in an F1 race car: performance far beyond the need, but high maintenance cost and complex operation."
+  },
+  {
+   "zh": "BMS/BAS 就像家用休旅車——功能完全滿足需求，維修容易，未來要加裝導航或倒車雷達（擴充功能）也很方便。",
+   "en": "A BMS/BAS is like a family SUV: it fully meets the need, is easy to maintain, and it is easy to add features later (such as navigation or parking sensors)."
+  },
+  {
+   "zh": "傳統單迴路控制器就像腳踏車——短距離很好用，但無法帶全家人出門。",
+   "en": "A traditional single-loop controller is like a bicycle: great for short distances, but it cannot take the whole family out."
+  },
+  {
+   "zh": "監測與控制分離策略",
+   "en": "Separation strategy for monitoring and control"
+  },
+  {
+   "zh": "ISPE 提出一個聰明的簡化策略：",
+   "en": "ISPE proposes a clever simplification strategy:"
+  },
+  {
+   "zh": "用已驗證的製程控制系統 (Process Control System) 來「監測」關鍵環境參數",
+   "en": "Use a validated process control system to \"monitor\" the critical environmental parameters"
+  },
+  {
+   "zh": "BMS/BAS 只負責「控制」HVAC",
+   "en": "The BMS/BAS is responsible only for \"controlling\" the HVAC"
+  },
+  {
+   "zh": "結果：BMS/BAS 的確認 (Qualification) 可以簡化，因為關鍵的 CPP 監測已由另一個已驗證的系統承擔",
+   "en": "Result: the qualification of the BMS/BAS can be simplified, because monitoring of the critical CPPs is already carried out by another validated system"
+  },
+  {
+   "zh": "這大幅降低了 BMS/BAS 的驗證範圍與成本，同時不犧牲合規性。",
+   "en": "This greatly reduces the validation scope and cost of the BMS/BAS without sacrificing compliance."
+  },
+  {
+   "zh": "8.6.2 Airborne Particle Counting / 空氣中粒子計數系統",
+   "en": "8.6.2 Airborne Particle Counting"
+  },
+  {
+   "zh": "重點提示：管路設計是隱藏的關鍵",
+   "en": "Key point: tubing design is the hidden critical factor"
+  },
+  {
+   "zh": "固定式歧管系統只能量 0.1-0.5 µm，因為 ≥ 0.5 µm 的大粒子在輸送管路中會「沉降」（drop out）。影響因素包括：",
+   "en": "A fixed manifold system can only measure 0.1-0.5 µm, because larger particles (≥ 0.5 µm) \"drop out\" in the transport tubing. Contributing factors include:"
+  },
+  {
+   "zh": "<strong>管路內徑：</strong>太細則流速過高產生紊流",
+   "en": "<strong>Tubing inner diameter:</strong> too narrow gives excessive flow velocity and turbulence"
+  },
+  {
+   "zh": "<strong>管路長度：</strong>越長，大粒子損失越多",
+   "en": "<strong>Tubing length:</strong> the longer it is, the more large particles are lost"
+  },
+  {
+   "zh": "<strong>管路材質：</strong>內壁粗糙度和靜電荷會吸附粒子",
+   "en": "<strong>Tubing material:</strong> inner wall roughness and static charge attract particles"
+  },
+  {
+   "zh": "<strong>彎頭與障礙物：</strong>銳角彎頭是粒子損失的主要原因",
+   "en": "<strong>Bends and obstructions:</strong> sharp bends are the main cause of particle loss"
+  },
+  {
+   "zh": "設計時必須計算雷諾數 (Reynolds Number)，確保管內流態在適當範圍內。",
+   "en": "The design must calculate the Reynolds number to ensure the flow regime in the tubing is within an appropriate range."
+  },
+  {
+   "zh": "重點提示：FDA vs EU Annex 1 的差異",
+   "en": "Key point: differences between FDA and EU Annex 1"
+  },
+  {
+   "zh": "兩大法規對粒子監測的要求有微妙差異：",
+   "en": "The two major regulations differ subtly in their particle monitoring requirements:"
+  },
+  {
+   "zh": "<strong>FDA：</strong>建議每班次監測，推薦使用遠端計數系統（侵入性低、資料更全面）",
+   "en": "<strong>FDA:</strong> recommends monitoring each shift, and recommends remote counting systems (less intrusive, more comprehensive data)"
+  },
+  {
+   "zh": "<strong>EU Annex 1：</strong>Grade A 區必須在整個關鍵製程期間全程監測（要求更嚴格），Grade B 可降低頻率",
+   "en": "<strong>EU Annex 1:</strong> grade A areas must be monitored for the full duration of critical processing (stricter), while grade B can be monitored less frequently"
+  },
+  {
+   "zh": "如果產品同時出口歐美，必須取兩者中的嚴格標準——即 Grade A 全程連續監測。",
+   "en": "If the product is exported to both the US and Europe, the stricter standard of the two must be adopted, namely continuous monitoring of grade A for the full duration."
+  },
+  {
+   "zh": "比喻說明：低計數的「頻率」表達法",
+   "en": "Analogy: expressing low counts as a \"frequency\""
+  },
+  {
+   "zh": "粒子數極低時（例如 Grade A 區經常是 0 或 1 個粒子），單純看數字沒有意義——0 和 1 的差異不具統計意義。",
+   "en": "When particle counts are extremely low (for example grade A areas often show 0 or 1 particles), looking at the raw number is meaningless: the difference between 0 and 1 has no statistical significance."
+  },
+  {
+   "zh": "ISPE 建議改用「頻率模式」：例如「每 100 次取樣中有 5 次偵測到 ≥ 1 個粒子」比「平均 0.05 個粒子/m³」更有資訊量。就像判斷一個地區是否安全，不是看「平均犯罪率 0.001」，而是看「過去一年有 3 次事件，集中在週末深夜」——模式比數字更有意義。",
+   "en": "ISPE suggests using a \"frequency mode\" instead: for example, \"≥ 1 particle detected in 5 of 100 samples\" is more informative than \"an average of 0.05 particles/m³.\" It is like judging whether an area is safe: you do not look at an \"average crime rate of 0.001\" but at \"3 incidents in the past year, all late on weekend nights.\" The pattern means more than the number."
+  },
+  {
+   "zh": "你正在為一條新的充填線選擇粒子監測系統。充填線在 Grade A 隔離器內，需同時滿足 FDA 和 EU Annex 1。你會選擇哪種系統配置？為什麼？",
+   "en": "You are selecting a particle monitoring system for a new filling line. The line is inside a grade A isolator and must satisfy both FDA and EU Annex 1. Which system configuration would you choose? Why?"
+  },
+  {
+   "zh": "如果歧管式系統的取樣管路從粒子計數器到最遠取樣點有 15 米，你會擔心什麼問題？如何驗證管路損失是否可接受？",
+   "en": "If the sampling tubing of a manifold system is 15 meters from the particle counter to the farthest sampling point, what would you worry about? How would you verify that the tubing loss is acceptable?"
+  },
+  {
+   "zh": "Room layout 變更後，為什麼必須重新評估取樣點位置？請舉一個具體例子。",
+   "en": "Why must sampling point locations be re-evaluated after a room layout change? Give a specific example."
+  },
+  {
+   "zh": "分類 (Classification) vs 監測 (Monitoring)——不可混淆",
+   "en": "Classification vs. monitoring: do not confuse them"
+  },
+  {
+   "zh": "這是法規稽核中常見的混淆點：",
+   "en": "This is a common point of confusion in regulatory audits:"
+  },
+  {
+   "zh": "Section Summary / 本章重點摘要",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "重點摘要",
+   "en": "Key Takeaways"
+  },
+  {
+   "zh": "第八章摘要",
+   "en": "Chapter 8 Summary"
+  },
+  {
+   "zh": "<strong>儀控系統 (C&amp;I)</strong> 是無菌廠的神經系統——控制、監測、記錄影響病患安全與產品品質的參數。",
+   "en": "<strong>The control and instrumentation (C&amp;I) system</strong> is the nervous system of a sterile facility: it controls, monitors, and records the parameters that affect patient safety and product quality."
+  },
+  {
+   "zh": "<strong>環境 CPP</strong>（溫度、濕度、壓差、粒子數）可透過主動或被動控制策略管理，監測頻率依策略而異。",
+   "en": "<strong>Environmental CPPs</strong> (temperature, humidity, differential pressure, particle counts) can be managed with active or passive control strategies, and the monitoring frequency varies with the strategy."
+  },
+  {
+   "zh": "<strong>Alert 與 Action 警報</strong>構成雙層預警系統。警報必須鎖存（不自動取消），時間延遲必須有合理依據且經過確認。",
+   "en": "<strong>Alert and Action alarms</strong> form a two-tier early warning system. Alarms must latch (not clear automatically), and time delays must have a sound rationale and be verified."
+  },
+  {
+   "zh": "<strong>四層限值架構</strong>（製程限值 &gt; 設施設計限值 &gt; 警示限值 &gt; 正常操作條件）確保每一層都有足夠的安全裕度。",
+   "en": "<strong>The four-tier limit architecture</strong> (process limit &gt; facility design limit &gt; alert limit &gt; normal operating conditions) ensures there is enough safety margin at every tier."
+  },
+  {
+   "zh": "<strong>儀器選擇</strong>必須平衡精確度與成本，「儀器允許限值」定義了最低可接受精確度。控制與監測同一 CPP 的感測器必須共置。",
+   "en": "<strong>Instrument selection</strong> must balance accuracy and cost, and the \"instrument permitted limit\" defines the minimum acceptable accuracy. Sensors that control and monitor the same CPP must be co-located."
+  },
+  {
+   "zh": "<strong>BMS/BAS</strong> 是藥廠 HVAC 的推薦控制系統。DCS/PLC/SCADA 應保留給安全關鍵或複雜製程控制。",
+   "en": "<strong>BMS/BAS</strong> is the recommended control system for pharmaceutical HVAC. DCS/PLC/SCADA should be reserved for safety-critical or complex process control."
+  },
+  {
+   "zh": "<strong>空氣中粒子計數</strong>必須區分「分類」（ISO 14644-1）和「監測」。系統配置必須考慮管路損失，同時供應全球市場須滿足 FDA 和 EU Annex 1 雙重要求。",
+   "en": "<strong>Airborne particle counting</strong> must distinguish \"classification\" (ISO 14644-1) from \"monitoring.\" The system configuration must account for tubing loss, and supplying global markets requires meeting both FDA and EU Annex 1."
+  },
+  {
+   "zh": "CDMO 營運關鍵行動項目",
+   "en": "Key action items for CDMO operations"
+  },
+  {
+   "zh": "確認所有環境 CPP 都有明確的四層限值架構文件",
+   "en": "Confirm that every environmental CPP has a documented four-tier limit architecture"
+  },
+  {
+   "zh": "審查 BMS 警報是否為鎖存式，時間延遲是否有文件化依據",
+   "en": "Review whether BMS alarms are latching and whether time delays have a documented basis"
+  },
+  {
+   "zh": "評估儀器精確度是否滿足「儀器允許限值」要求",
+   "en": "Assess whether instrument accuracy meets the \"instrument permitted limit\" requirement"
+  },
+  {
+   "zh": "確認控制與監測感測器的共置狀態",
+   "en": "Confirm the co-location status of control and monitoring sensors"
+  },
+  {
+   "zh": "審查粒子監測系統是否同時滿足 FDA 與 EU Annex 1 要求",
+   "en": "Review whether the particle monitoring system meets both FDA and EU Annex 1 requirements"
+  },
+  {
+   "zh": "確認歧管式系統的管路損失經過驗證",
+   "en": "Confirm that tubing loss in manifold systems has been verified"
+  }
+ ]
+}

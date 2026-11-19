@@ -1,0 +1,1301 @@
+{
+ "source": "section-01a-design-process-reqs.html",
+ "blocks": [
+  {
+   "zh": "設計流程（上）：導論與使用者需求",
+   "en": "Design Process (Part 1): Introduction and User Requirements"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解 HVAC（暖通空調）設計的四步驟流程：使用者需求 → 功能設計 → 詳細設計 → 施工文件，以及各步驟的交付物",
+   "en": "Understand the four-step HVAC design process: user requirements → functional design → detailed design → construction documents, and the deliverables of each step"
+  },
+  {
+   "zh": "掌握 URS（User Requirement Specification，使用者需求規格）的內容要素，以及它如何驅動整個 HVAC 設計策略",
+   "en": "Understand the content of the URS (User Requirement Specification) and how it drives the entire HVAC design strategy"
+  },
+  {
+   "zh": "了解關鍵 HVAC 參數（溫度、濕度、壓差、換氣次數、微粒控制）對不同設施類型的影響差異",
+   "en": "Understand how the key HVAC parameters (temperature, humidity, differential pressure, air change rate, particle control) affect different facility types differently"
+  },
+  {
+   "zh": "學會區分 Critical HVAC Parameters（關鍵 HVAC 參數）與 Non-Critical Parameters（非關鍵參數），以及對應的 Direct Impact / Indirect Impact 系統概念",
+   "en": "Learn to distinguish Critical HVAC Parameters from Non-Critical Parameters, and the corresponding Direct Impact / Indirect Impact system concepts"
+  },
+  {
+   "zh": "理解 DQ（Design Qualification，設計確效）在 HVAC 設計流程中的檢查重點",
+   "en": "Understand the focus of DQ (Design Qualification) in the HVAC design process"
+  },
+  {
+   "zh": "掌握警報與監控策略：Design Point、Design Tolerance、Alert Limit、Action Alarm Limit 的階層關係",
+   "en": "Master the alarm and monitoring strategy: the hierarchy of Design Point, Design Tolerance, Alert Limit and Action Alarm Limit"
+  },
+  {
+   "zh": "2.1 Introduction（導論）",
+   "en": "2.1 Introduction"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念：HVAC 設計的雙重目標",
+   "en": "Core Concept: The Dual Goals of HVAC Design"
+  },
+  {
+   "zh": "<strong>HVAC（暖通空調）</strong>設計在藥廠中承擔兩個核心使命：",
+   "en": "<strong>HVAC</strong> design in a pharmaceutical plant carries two core missions:"
+  },
+  {
+   "zh": "<strong>GMP 合規</strong>：確保產品品質——溫濕度、微粒、壓差等環境參數直接影響藥品無菌性與穩定性",
+   "en": "<strong>GMP compliance</strong>: protecting product quality. Environmental parameters such as temperature, humidity, particles and differential pressure directly affect the sterility and stability of the drug product"
+  },
+  {
+   "zh": "<strong>GEP（Good Engineering Practice，良好工程實務）</strong>：確保系統可靠、可維護、可持續且經濟——這是工程設計的本分",
+   "en": "<strong>GEP (Good Engineering Practice)</strong>: ensuring the system is reliable, maintainable, sustainable and economical. This is the basic duty of engineering design"
+  },
+  {
+   "zh": "本節開宗明義就點出：HVAC 設計不是只做到「法規要求」就好，還必須兼顧商業需求（reliability, maintainability, sustainability, flexibility, safety）。這正是 GEP 的精神。",
+   "en": "This section makes it clear from the outset that HVAC design is not finished once it meets \"regulatory requirements\"; it must also meet business needs (reliability, maintainability, sustainability, flexibility, safety). This is the spirit of GEP."
+  },
+  {
+   "zh": "比喻說明：HVAC 設計如同城市規劃",
+   "en": "Analogy: HVAC Design Is Like City Planning"
+  },
+  {
+   "zh": "把一座藥廠想像成一座小型城市：",
+   "en": "Imagine a pharmaceutical plant as a small city:"
+  },
+  {
+   "zh": "<strong>人員動線</strong> = 市民通勤路線——不能讓「髒區」的人流穿越「潔淨區」",
+   "en": "<strong>Personnel flow</strong> = citizens' commuting routes. People from the \"dirty zone\" must not cross the \"clean zone\""
+  },
+  {
+   "zh": "<strong>氣鎖策略</strong> = 城市安檢關卡——進入機場管制區必須通過安檢，進入潔淨室也必須通過氣鎖",
+   "en": "<strong>Airlock strategy</strong> = the city's security checkpoints. Just as you pass security to enter an airport restricted area, you must pass through an airlock to enter a cleanroom"
+  },
+  {
+   "zh": "<strong>壓差控制</strong> = 水流方向——水永遠從高處往低處流，空氣也必須從「乾淨區」流向「較髒區」",
+   "en": "<strong>Differential pressure control</strong> = the direction of water flow. Water always flows from high ground to low ground, and air must likewise flow from the \"clean area\" to the \"dirtier area\""
+  },
+  {
+   "zh": "HVAC 工程師就是這座「製藥城市」的城市規劃師，必須同時滿足「住民安全」（GMP）和「市政效率」（GEP）。",
+   "en": "The HVAC engineer is the city planner of this \"pharmaceutical city\" and must satisfy both \"resident safety\" (GMP) and \"municipal efficiency\" (GEP)."
+  },
+  {
+   "zh": "重點提示：GMP 與地方法規的衝突",
+   "en": "Key Point: Conflicts Between GMP and Local Codes"
+  },
+  {
+   "zh": "本節特別提醒設計團隊要處理 GMP 要求與當地建築法規之間的潛在衝突。例如：",
+   "en": "This section specifically reminds the design team to deal with potential conflicts between GMP requirements and local building codes. For example:"
+  },
+  {
+   "zh": "<strong>消防法規</strong>可能要求走廊保持正壓排煙，但 GMP 要求走廊相對潔淨室為負壓",
+   "en": "<strong>Fire codes</strong> may require corridors to be positively pressurized for smoke extraction, whereas GMP requires corridors to be negative relative to the cleanrooms"
+  },
+  {
+   "zh": "<strong>節能法規</strong>可能限制換氣量，但 GMP 要求高換氣次數",
+   "en": "<strong>Energy-saving codes</strong> may limit air change rates, whereas GMP requires high air change rates"
+  },
+  {
+   "zh": "<strong>地震法規</strong>可能影響風管路徑設計",
+   "en": "<strong>Seismic codes</strong> may affect ductwork routing"
+  },
+  {
+   "zh": "實務上，GMP 要求通常優先，但必須透過風險評估（Risk Assessment）來正式記錄取捨邏輯。",
+   "en": "In practice, GMP requirements usually take precedence, but the trade-off logic must be formally documented through a risk assessment."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "你的藥廠位於台灣，需要同時滿足 PIC/S GMP 和台灣建築法規。如果消防法規要求走廊正壓通風，但 GMP 要求走廊相對生產區為負壓，你會如何處理這個衝突？",
+   "en": "Your plant is in Taiwan and must meet both PIC/S GMP and Taiwan building codes. If the fire code requires positive-pressure ventilation of the corridor but GMP requires the corridor to be negative relative to the production area, how would you resolve the conflict?"
+  },
+  {
+   "zh": "為什麼 ISPE 特別強調 HVAC 設計需要「跨專業合作」？列出至少三個需要與 HVAC 工程師密切配合的專業角色。",
+   "en": "Why does ISPE specifically stress that HVAC design requires \"cross-disciplinary collaboration\"? List at least three professional roles that need to work closely with the HVAC engineer."
+  },
+  {
+   "zh": "HVAC Design Process（HVAC 設計流程）",
+   "en": "HVAC Design Process"
+  },
+  {
+   "zh": "核心概念：設計四步驟流程",
+   "en": "Core Concept: The Four-Step Design Process"
+  },
+  {
+   "zh": "HVAC 設計採用<strong>漸進細化</strong>的四階段流程，每一階段都有明確的交付物（deliverable）。這確保設計從「大方向」逐步收斂到「施工細節」：",
+   "en": "HVAC design follows a four-stage process of <strong>progressive refinement</strong>, and each stage has clear deliverables. This ensures the design converges step by step from the \"big picture\" to \"construction details\":"
+  },
+  {
+   "zh": "<strong>Step 1 — URS/CDR</strong>：定義「我要什麼」（What）——使用者需求",
+   "en": "<strong>Step 1 - URS/CDR</strong>: defines \"what I want\" (What), the user requirements"
+  },
+  {
+   "zh": "<strong>Step 2 — FDS/BOD</strong>：定義「怎麼做」（How）——功能設計方案",
+   "en": "<strong>Step 2 - FDS/BOD</strong>: defines \"how to do it\" (How), the functional design solution"
+  },
+  {
+   "zh": "<strong>Step 3 — Detailed Design</strong>：把「怎麼做」轉化為可施工的技術細節",
+   "en": "<strong>Step 3 - Detailed Design</strong>: turns the \"how\" into technical details that can be built"
+  },
+  {
+   "zh": "<strong>Step 4 — CDs</strong>：出圖、發包、現場支援",
+   "en": "<strong>Step 4 - CDs</strong>: drawings, bidding and site support"
+  },
+  {
+   "zh": "比喻說明：蓋房子的四個階段",
+   "en": "Analogy: The Four Stages of Building a House"
+  },
+  {
+   "zh": "這就像蓋一棟房子：",
+   "en": "It is like building a house:"
+  },
+  {
+   "zh": "<strong>Step 1</strong> = 跟建築師說「我要三房兩廳、朝南、有車庫」（需求）",
+   "en": "<strong>Step 1</strong> = telling the architect \"I want three bedrooms and two living rooms, facing south, with a garage\" (requirements)"
+  },
+  {
+   "zh": "<strong>Step 2</strong> = 建築師畫出平面配置圖和動線規劃（方案設計）",
+   "en": "<strong>Step 2</strong> = the architect draws the floor plan and circulation layout (conceptual design)"
+  },
+  {
+   "zh": "<strong>Step 3</strong> = 結構工程師算出樑柱尺寸、水電管線路徑（詳細設計）",
+   "en": "<strong>Step 3</strong> = the structural engineer calculates beam and column sizes and the routing of plumbing and electrical lines (detailed design)"
+  },
+  {
+   "zh": "<strong>Step 4</strong> = 發包給營造廠，工地監造（施工）",
+   "en": "<strong>Step 4</strong> = awarding the work to a contractor, with site supervision (construction)"
+  },
+  {
+   "zh": "藥廠 HVAC 的邏輯完全一樣，只是多了「GMP 合規」這個維度。",
+   "en": "The logic of pharmaceutical HVAC is exactly the same, with the added dimension of \"GMP compliance\"."
+  },
+  {
+   "zh": "重點提示：越早決定越省錢",
+   "en": "Key Point: The Earlier You Decide, the More You Save"
+  },
+  {
+   "zh": "注意 Step 1（使用者需求）的重要性——文件明確指出，需求定義階段「has the greatest effect on the size and complexity of the facility, and ultimately, the cost」。在 Step 1 增加一點潔淨度要求，可能導致後續成本倍增。這就是為什麼 URS 階段必須極其嚴謹。",
+   "en": "Note the importance of Step 1 (user requirements). The document states explicitly that the requirements definition stage \"has the greatest effect on the size and complexity of the facility, and ultimately, the cost\". A small increase in cleanliness requirements at Step 1 can multiply the cost later. This is why the URS stage must be extremely rigorous."
+  },
+  {
+   "zh": "2.1.1 User Requirements（使用者需求）",
+   "en": "2.1.1 User Requirements"
+  },
+  {
+   "zh": "核心概念：直接可控 vs. 間接可控參數",
+   "en": "Core Concept: Directly Controllable vs. Indirectly Controllable Parameters"
+  },
+  {
+   "zh": "本節引入一個重要的概念區分：",
+   "en": "This section introduces an important distinction:"
+  },
+  {
+   "zh": "<strong>直接可控參數</strong>：如溫度——可以直接設定空調溫度控制器",
+   "en": "<strong>Directly controllable parameters</strong>: such as temperature. You can set the HVAC temperature controller directly"
+  },
+  {
+   "zh": "<strong>間接可控參數</strong>：如微粒數——無法直接「設定」微粒數，必須透過控制壓差（DP）、換氣次數（Air Change Rate）、過濾效率等手段間接達成",
+   "en": "<strong>Indirectly controllable parameters</strong>: such as particle counts. You cannot \"set\" a particle count; it must be achieved indirectly by controlling differential pressure (DP), air change rate and filtration efficiency"
+  },
+  {
+   "zh": "這個區分對 HVAC 設計極為關鍵——間接可控參數的達成需要多個系統協同工作，設計複雜度和驗證工作量都高出許多。",
+   "en": "This distinction is critical for HVAC design. Achieving an indirectly controllable parameter requires several systems working together, so design complexity and validation effort are much higher."
+  },
+  {
+   "zh": "重點提示：潔淨度增加 = 成本指數上升",
+   "en": "Key Point: Higher Cleanliness = Exponentially Rising Cost"
+  },
+  {
+   "zh": "原文明確警告：<strong>「Small incremental increases in the level of cleanliness... can result in relatively large increases in the initial cost and ongoing operating costs.」</strong>",
+   "en": "The source text gives an explicit warning: <strong>\"Small incremental increases in the level of cleanliness... can result in relatively large increases in the initial cost and ongoing operating costs.\"</strong>"
+  },
+  {
+   "zh": "這是 HVAC 設計中最常見的陷阱——為了「保險起見」而過度提高潔淨等級。例如：",
+   "en": "This is the most common trap in HVAC design: raising the cleanliness grade excessively \"just to be safe\". For example:"
+  },
+  {
+   "zh": "將一個房間從 Grade D 提升到 Grade C，換氣次數可能從 6~20 AC/hr 提升到 20~40 AC/hr",
+   "en": "Raising a room from Grade D to Grade C may increase the air change rate from 6-20 AC/hr to 20-40 AC/hr"
+  },
+  {
+   "zh": "這意味著 AHU（空氣處理機組）尺寸加大、風管加粗、能源消耗翻倍",
+   "en": "This means a larger AHU (air handling unit), bigger ducts and double the energy consumption"
+  },
+  {
+   "zh": "每年多出的運營成本可能達數百萬台幣",
+   "en": "The extra annual operating cost can reach several million NT dollars"
+  },
+  {
+   "zh": "成本影響模型",
+   "en": "Cost Impact Model"
+  },
+  {
+   "zh": "潔淨度等級提升的成本影響（概估）：\n\nGrade D → Grade C：初始成本 +30~50%，營運成本 +40~60%\nGrade C → Grade B：初始成本 +50~80%，營運成本 +60~100%\nGrade B → Grade A：初始成本 +100~200%，營運成本 +150~300%\n\n關鍵變數：\n  - AHU 容量 ∝ 換氣次數 × 房間體積\n  - 能耗 ∝ 風量 × 壓降 × 運轉時間\n  - 維護成本 ∝ HEPA 數量 × 更換頻率",
+   "en": "Cost impact of raising the cleanliness grade (rough estimate):\n\nGrade D → Grade C: initial cost +30~50%, operating cost +40~60%\nGrade C → Grade B: initial cost +50~80%, operating cost +60~100%\nGrade B → Grade A: initial cost +100~200%, operating cost +150~300%\n\nKey variables:\n  - AHU capacity ∝ air change rate × room volume\n  - Energy consumption ∝ airflow × pressure drop × operating time\n  - Maintenance cost ∝ number of HEPA filters × replacement frequency"
+  },
+  {
+   "zh": "比喻說明：餐廳的衛生等級投資",
+   "en": "Analogy: Investing in a Restaurant's Hygiene Grade"
+  },
+  {
+   "zh": "這就像開餐廳決定要做到什麼衛生等級：",
+   "en": "It is like deciding what hygiene level to build into a restaurant:"
+  },
+  {
+   "zh": "<strong>一般餐廳</strong>（Grade D）：基本通風、定期清潔就夠",
+   "en": "<strong>An ordinary restaurant</strong> (Grade D): basic ventilation and regular cleaning are enough"
+  },
+  {
+   "zh": "<strong>高檔壽司店</strong>（Grade C）：需要空調恆溫、專用冷藏區",
+   "en": "<strong>A high-end sushi bar</strong> (Grade C): needs temperature-controlled air conditioning and a dedicated refrigerated area"
+  },
+  {
+   "zh": "<strong>手術室級別</strong>（Grade A/B）：HEPA 過濾、正壓控制、全身無塵衣——成本暴增",
+   "en": "<strong>Operating-theatre level</strong> (Grade A/B): HEPA filtration, positive pressure control and full cleanroom gowning, so costs soar"
+  },
+  {
+   "zh": "你不會為了做炒飯去建一間手術室廚房。同理，HVAC 設計必須根據<strong>實際產品需求</strong>決定潔淨等級，而非「預設最高標準」。",
+   "en": "You would not build an operating-theatre kitchen just to make fried rice. Likewise, HVAC design must set the cleanliness grade according to <strong>actual product needs</strong>, not \"default to the highest standard\"."
+  },
+  {
+   "zh": "實務應用 Practical Application",
+   "en": "Practical Application"
+  },
+  {
+   "zh": "作為 CDMO（委託開發暨製造組織）的營運主管，你在規劃新產線時，客戶要求「所有生產區域都要 Grade B」。根據本節的原則，你應該：",
+   "en": "As the operations head of a CDMO (contract development and manufacturing organization) planning a new line, your client demands \"Grade B for all production areas\". Based on the principles in this section, you should:"
+  },
+  {
+   "zh": "進行風險評估（Risk Assessment），確認哪些區域真正需要 Grade B",
+   "en": "Perform a risk assessment to confirm which areas truly need Grade B"
+  },
+  {
+   "zh": "與客戶的品質團隊溝通，說明 Grade B 的成本影響",
+   "en": "Communicate with the client's quality team and explain the cost impact of Grade B"
+  },
+  {
+   "zh": "提出替代方案：例如關鍵操作區 Grade B + 輔助區 Grade C/D",
+   "en": "Propose alternatives, for example Grade B for critical operation areas plus Grade C/D for support areas"
+  },
+  {
+   "zh": "用 TCO（總擁有成本）分析來支持你的建議",
+   "en": "Support your recommendation with a TCO (total cost of ownership) analysis"
+  },
+  {
+   "zh": "為什麼微粒數是「間接可控參數」而非「直接可控參數」？列出至少三個控制微粒數的手段。",
+   "en": "Why are particle counts an \"indirectly controllable parameter\" rather than a \"directly controllable parameter\"? List at least three means of controlling particle counts."
+  },
+  {
+   "zh": "如果你是 HVAC 工程師，客戶要求「所有倉儲區域都做 Grade D」，但你發現其中有些區域只存放密封容器中的成品，你會如何建議？",
+   "en": "If you are the HVAC engineer and the client asks for \"Grade D in all warehouse areas\", but you find that some of these areas only store finished product in sealed containers, what would you recommend?"
+  },
+  {
+   "zh": "2.1.2 Functional Design（功能設計）",
+   "en": "2.1.2 Functional Design"
+  },
+  {
+   "zh": "核心概念：功能設計的關鍵交付物",
+   "en": "Core Concept: Key Deliverables of Functional Design"
+  },
+  {
+   "zh": "功能設計階段將 URS 的「需求語言」轉化為「工程語言」。幾個關鍵交付物值得特別理解：",
+   "en": "The functional design stage translates the URS \"requirements language\" into \"engineering language\". Several key deliverables deserve particular attention:"
+  },
+  {
+   "zh": "<strong>AFD（Air Flow Diagram）</strong>：氣流方向圖——展示空氣如何在設施中流動",
+   "en": "<strong>AFD (Air Flow Diagram)</strong>: shows how air moves through the facility"
+  },
+  {
+   "zh": "<strong>AF&amp;ID（Air Flow &amp; Instrumentation Diagram）</strong>：類似 P&amp;ID，但專門針對 HVAC 系統——展示風管、閥門、感測器的配置",
+   "en": "<strong>AF&amp;ID (Air Flow &amp; Instrumentation Diagram)</strong>: similar to a P&amp;ID but specific to HVAC systems, showing the layout of ducts, dampers and sensors"
+  },
+  {
+   "zh": "<strong>AHU Zoning Map</strong>：空氣處理機組（AHU）分區圖——哪些房間由哪台 AHU 服務",
+   "en": "<strong>AHU Zoning Map</strong>: shows which rooms are served by which air handling unit (AHU)"
+  },
+  {
+   "zh": "<strong>Pressure Map</strong>：壓差分布圖——整個設施的壓力階梯設計",
+   "en": "<strong>Pressure Map</strong>: shows the differential pressure distribution, i.e. the pressure cascade design for the whole facility"
+  },
+  {
+   "zh": "重點提示：風險評估 + 經濟分析 = 最佳 TCO",
+   "en": "Key Point: Risk Assessment + Economic Analysis = Best TCO"
+  },
+  {
+   "zh": "ISPE 明確建議將<strong>風險評估（Risk Assessment）</strong>與<strong>經濟分析</strong>結合使用。這是非常實際的工程決策方法：",
+   "en": "ISPE explicitly recommends combining <strong>risk assessment</strong> with <strong>economic analysis</strong>. This is a very practical engineering decision method:"
+  },
+  {
+   "zh": "方案 A 可能風險最低但成本最高",
+   "en": "Option A may carry the lowest risk but the highest cost"
+  },
+  {
+   "zh": "方案 B 可能成本最低但需要更多監控",
+   "en": "Option B may have the lowest cost but require more monitoring"
+  },
+  {
+   "zh": "方案 C 可能是最佳平衡——合理風險 + 可接受成本",
+   "en": "Option C may be the best balance: reasonable risk plus acceptable cost"
+  },
+  {
+   "zh": "在 CDMO 環境中，這種分析對投資決策尤為關鍵——你需要用數據說服管理層和客戶。",
+   "en": "In a CDMO environment this analysis is especially critical for investment decisions, because you need data to persuade management and clients."
+  },
+  {
+   "zh": "比喻說明：裝修設計的方案選擇",
+   "en": "Analogy: Choosing Among Renovation Proposals"
+  },
+  {
+   "zh": "功能設計就像房屋裝修的「方案設計」階段——設計師不是只給你一個選項，而是給你 2~3 個不同的配置方案，分別標註預算和優缺點，讓你根據需求和預算做出最佳選擇。HVAC 的功能設計也是如此：提出多個替代方案，用風險評估和經濟分析來輔助決策。",
+   "en": "Functional design is like the \"concept proposal\" stage of a home renovation. The designer does not give you just one option but 2-3 different layouts, each marked with its budget and pros and cons, so you can choose the best one for your needs and budget. HVAC functional design works the same way: propose several alternatives and use risk assessment and economic analysis to support the decision."
+  },
+  {
+   "zh": "為什麼功能設計階段就需要考慮「qualification strategy」？如果等到詳細設計才考慮，可能會發生什麼問題？",
+   "en": "Why does the \"qualification strategy\" need to be considered already at the functional design stage? What problems could occur if it is only considered at detailed design?"
+  },
+  {
+   "zh": "AFD 和 AF&amp;ID 的關係是什麼？為什麼功能設計階段只需要「basic AFD」和「critical elements of AF&amp;ID」，而非完整的圖面？",
+   "en": "What is the relationship between the AFD and the AF&amp;ID? Why does the functional design stage need only a \"basic AFD\" and the \"critical elements of the AF&amp;ID\" rather than complete drawings?"
+  },
+  {
+   "zh": "2.1.3 Detailed Design（詳細設計）",
+   "en": "2.1.3 Detailed Design"
+  },
+  {
+   "zh": "核心概念：BOD 核准後才進入詳細設計",
+   "en": "Core Concept: Detailed Design Starts Only After BOD Approval"
+  },
+  {
+   "zh": "<strong>BOD（Basis of Design）</strong>是功能設計的最終交付物，相當於設計的「定案文件」。只有在 BOD 被所有利害關係人核准後，才應該進入詳細設計。這個門檻（gate）的設置是為了防止在詳細設計階段還在改需求——那是最昂貴的變更。",
+   "en": "The <strong>BOD (Basis of Design)</strong> is the final deliverable of functional design and serves as the design's \"locked document\". Detailed design should begin only after the BOD has been approved by all stakeholders. This gate exists to prevent requirements from still changing during detailed design, which is when changes are most expensive."
+  },
+  {
+   "zh": "重點提示：設計缺陷往往在試車時才浮現",
+   "en": "Key Point: Design Flaws Often Surface Only During Commissioning"
+  },
+  {
+   "zh": "原文的一句話非常重要：<strong>「flaws in HVAC system design often initially become apparent during commissioning」</strong>。",
+   "en": "One sentence in the source text is very important: <strong>\"flaws in HVAC system design often initially become apparent during commissioning\"</strong>."
+  },
+  {
+   "zh": "這意味著：",
+   "en": "This means:"
+  },
+  {
+   "zh": "如果等到試車才發現設計問題，修改成本可能是設計階段的 10~50 倍",
+   "en": "If design problems are discovered only at commissioning, the cost of correction can be 10-50 times that at the design stage"
+  },
+  {
+   "zh": "因此，ISPE 強烈建議在設計階段就準備好 C&amp;Q（Commissioning &amp; Qualification）草案方案",
+   "en": "ISPE therefore strongly recommends preparing a draft C&amp;Q (Commissioning &amp; Qualification) plan already during design"
+  },
+  {
+   "zh": "「為驗證而設計」（Design for Qualification）是最佳實踐",
+   "en": "\"Design for Qualification\" is the best practice"
+  },
+  {
+   "zh": "比喻說明：考試前先看考卷範圍",
+   "en": "Analogy: Look at the Exam Scope Before the Exam"
+  },
+  {
+   "zh": "在詳細設計階段就準備 C&amp;Q 方案，就像考試前先看考卷範圍——你知道最後要驗什麼，就能在設計時預留測試點、測量口、感測器位置。如果等到「考試當天」才發現需要在牆壁上鑽洞裝感測器，那代價就太大了。",
+   "en": "Preparing the C&amp;Q plan during detailed design is like checking the scope of an exam before sitting it. Once you know what will ultimately be tested, you can leave test points, measurement ports and sensor locations in the design. If you only discover \"on exam day\" that you need to drill holes in the wall to install sensors, the cost is far too high."
+  },
+  {
+   "zh": "為什麼「control system sequences of operation」必須在詳細設計階段完成？如果到施工階段才定義控制邏輯，會有什麼風險？",
+   "en": "Why must the \"control system sequences of operation\" be completed during detailed design? What risks arise if the control logic is defined only at the construction stage?"
+  },
+  {
+   "zh": "HVAC 系統的典型 commissioning 活動包含哪些？為什麼它常常是整個設施啟用中最具挑戰性的環節？",
+   "en": "What are the typical commissioning activities for an HVAC system? Why is it often the most challenging part of bringing a whole facility into operation?"
+  },
+  {
+   "zh": "2.1.4 Design Review and Qualification（設計審查與確效）",
+   "en": "2.1.4 Design Review and Qualification"
+  },
+  {
+   "zh": "核心概念：DQ 的雙重審查維度",
+   "en": "Core Concept: The Two Review Dimensions of DQ"
+  },
+  {
+   "zh": "<span class=\"key-term\">DQ（Design Qualification，設計確效）</span>不只是「看看圖紙對不對」，而是從兩個完全不同的角度進行系統性審查：",
+   "en": "<span class=\"key-term\">DQ (Design Qualification)</span> is not just \"checking whether the drawings are right\". It is a systematic review from two completely different perspectives:"
+  },
+  {
+   "zh": "<strong>GEP 維度</strong>（工程品質）：系統能不能造出來？好不好維護？使用者的偏好有沒有被滿足？",
+   "en": "<strong>GEP dimension</strong> (engineering quality): can the system be built? Is it easy to maintain? Have user preferences been met?"
+  },
+  {
+   "zh": "<strong>GMP 維度</strong>（法規合規）：產品品質能不能被保護？風險評估有沒有對齊？法規期待有沒有達到？",
+   "en": "<strong>GMP dimension</strong> (regulatory compliance): can product quality be protected? Is the risk assessment aligned? Have regulatory expectations been met?"
+  },
+  {
+   "zh": "只通過 GMP 審查但工程上不可行的設計是無用的；只通過 GEP 審查但不符合 GMP 的設計是違規的。<strong>兩者缺一不可。</strong>",
+   "en": "A design that passes the GMP review but is not feasible from an engineering standpoint is useless; a design that passes the GEP review but does not comply with GMP is a violation. <strong>Both are indispensable.</strong>"
+  },
+  {
+   "zh": "重點提示：DQ 的 11 項 HVAC 檢查清單",
+   "en": "Key Point: The 11-Item HVAC DQ Checklist"
+  },
+  {
+   "zh": "原文列出的 11 項 DQ 檢查重點是實務中非常有用的查核清單（checklist）。在 CDMO 環境中，建議你把這 11 項做成正式的 DQ 檢查表格，並要求設計工程師逐項簽核。特別注意：",
+   "en": "The 11 DQ review points listed in the source text make a very useful checklist in practice. In a CDMO environment, we recommend turning these 11 items into a formal DQ checklist form and requiring the design engineer to sign off each item. Pay particular attention to:"
+  },
+  {
+   "zh": "<strong>Cross-contamination controls</strong>——在多產品 CDMO 設施中，這是客戶和法規稽查的焦點",
+   "en": "<strong>Cross-contamination controls</strong>: in a multi-product CDMO facility, this is a focus for both clients and regulatory inspectors"
+  },
+  {
+   "zh": "<strong>Maintenance access and clearances</strong>——設計時忘記預留維護通道是最常見的設計缺陷之一",
+   "en": "<strong>Maintenance access and clearances</strong>: forgetting to provide maintenance access during design is one of the most common design defects"
+  },
+  {
+   "zh": "比喻說明：建築師與消防隊的雙重驗收",
+   "en": "Analogy: Dual Acceptance by the Architect and the Fire Department"
+  },
+  {
+   "zh": "DQ 的雙重審查就像新建築物的驗收：",
+   "en": "The dual review of DQ is like the acceptance of a new building:"
+  },
+  {
+   "zh": "<strong>建築師驗收（GEP）</strong>：結構安全嗎？動線合理嗎？施工品質好嗎？",
+   "en": "<strong>Architect's acceptance (GEP)</strong>: Is the structure safe? Is the circulation reasonable? Is the construction quality good?"
+  },
+  {
+   "zh": "<strong>消防隊驗收（GMP）</strong>：逃生通道符合消防法規嗎？灑水系統正常嗎？防火門到位嗎？",
+   "en": "<strong>Fire department's acceptance (GMP)</strong>: Do the escape routes comply with fire codes? Does the sprinkler system work? Are the fire doors in place?"
+  },
+  {
+   "zh": "兩個驗收都通過，建築物才能取得使用執照。藥廠的 DQ 也是同樣邏輯。",
+   "en": "Only when both acceptances are passed can the building obtain its occupancy permit. The DQ of a pharmaceutical plant follows the same logic."
+  },
+  {
+   "zh": "「AHU system map coordination with manufacturing activities」為什麼是 DQ 的檢查重點？如果一台 AHU 同時服務無菌充填區和包裝區，會有什麼潛在問題？",
+   "en": "Why is \"AHU system map coordination with manufacturing activities\" a DQ checkpoint? What potential problems arise if one AHU serves both the sterile filling area and the packaging area?"
+  },
+  {
+   "zh": "在多產品 CDMO 設施中，cross-contamination controls 的 DQ 審查應該特別關注哪些 HVAC 設計元素？",
+   "en": "In a multi-product CDMO facility, which HVAC design elements should the DQ review of cross-contamination controls pay particular attention to?"
+  },
+  {
+   "zh": "2.1.5 Construction Documents and Construction Support（施工文件與施工支援）",
+   "en": "2.1.5 Construction Documents and Construction Support"
+  },
+  {
+   "zh": "核心概念：設計到施工的銜接",
+   "en": "Core Concept: Bridging Design and Construction"
+  },
+  {
+   "zh": "這個階段雖然篇幅短，但實務中極為重要。HVAC 工程師在施工階段的角色包括：",
+   "en": "Although this stage is short on paper, it is extremely important in practice. The HVAC engineer's roles during construction include:"
+  },
+  {
+   "zh": "<strong>發包文件（Bid Documentation）</strong>：將設計轉化為施工商能理解的招標文件",
+   "en": "<strong>Bid documentation</strong>: converting the design into tender documents the contractor can understand"
+  },
+  {
+   "zh": "<strong>施工疑義解答（RFI）</strong>：現場施工遇到與設計圖不符的狀況時，提供技術指導",
+   "en": "<strong>Responding to requests for information (RFIs)</strong>: giving technical guidance when site conditions differ from the design drawings"
+  },
+  {
+   "zh": "<strong>現場巡檢</strong>：確認設備到貨和安裝品質符合設計意圖",
+   "en": "<strong>Site inspection</strong>: confirming that equipment delivery and installation quality match the design intent"
+  },
+  {
+   "zh": "在台灣 CDMO 實務中，這個階段經常因為設計團隊「撤場太早」而出問題——施工商自行解讀設計意圖，導致偏差。",
+   "en": "In Taiwanese CDMO practice, problems often arise at this stage because the design team \"leaves the project too early\". The contractor then interprets the design intent on their own, leading to deviations."
+  },
+  {
+   "zh": "重點提示：設計意圖的傳遞",
+   "en": "Key Point: Conveying the Design Intent"
+  },
+  {
+   "zh": "HVAC 系統的施工品質直接影響後續 C&amp;Q 的成敗。風管焊接品質、保溫厚度、閥門方向、感測器位置——任何一個施工偏差都可能導致試車失敗。因此，設計團隊在施工階段的持續參與（Construction Support）不是「額外服務」，而是確保設計意圖被忠實執行的必要環節。",
+   "en": "The construction quality of an HVAC system directly determines the success of the later C&amp;Q. Duct weld quality, insulation thickness, damper orientation and sensor locations: any single construction deviation can cause commissioning to fail. The design team's continued involvement during construction (Construction Support) is therefore not an \"extra service\" but a necessary step to ensure the design intent is faithfully executed."
+  },
+  {
+   "zh": "2.2 Developing User Requirements（發展使用者需求）",
+   "en": "2.2 Developing User Requirements"
+  },
+  {
+   "zh": "2.2.1 Introduction（導論）",
+   "en": "2.2.1 Introduction"
+  },
+  {
+   "zh": "核心概念：Direct Impact vs. Indirect Impact 系統",
+   "en": "Core Concept: The Direct Impact vs. Indirect Impact System Concept"
+  },
+  {
+   "zh": "這是 ISPE 確效框架中的核心分類概念：",
+   "en": "This is a core classification in the ISPE qualification framework:"
+  },
+  {
+   "zh": "<strong>Direct Impact System（直接影響系統）</strong>：提供關鍵 HVAC 參數的系統——必須經過 GEP commissioning + qualification（確效）",
+   "en": "<strong>Direct Impact System</strong>: a system that provides critical HVAC parameters; it must undergo GEP commissioning + qualification"
+  },
+  {
+   "zh": "<strong>Indirect Impact System（間接影響系統）</strong>：不直接影響產品品質，但支持直接影響系統運作——只需 GEP commissioning",
+   "en": "<strong>Indirect Impact System</strong>: does not directly affect product quality but supports the operation of Direct Impact systems; it needs only GEP commissioning"
+  },
+  {
+   "zh": "<strong>No Impact System（無影響系統）</strong>：與產品品質無關——依 GEP 管理即可",
+   "en": "<strong>No Impact System</strong>: unrelated to product quality; managed under GEP only"
+  },
+  {
+   "zh": "這個分類直接決定了 C&amp;Q 的範圍和深度——只有 Direct Impact 系統需要完整確效。",
+   "en": "This classification directly determines the scope and depth of C&amp;Q. Only Direct Impact systems require full qualification."
+  },
+  {
+   "zh": "重點提示：不要盲目複製「業界慣例」",
+   "en": "Key Point: Do Not Blindly Copy \"Industry Norms\""
+  },
+  {
+   "zh": "原文特別警告：<strong>「Using 'industry norms' or 'accepted industry practices' without understanding the variables involved should be avoided.」</strong>",
+   "en": "The source text specifically warns: <strong>\"Using 'industry norms' or 'accepted industry practices' without understanding the variables involved should be avoided.\"</strong>"
+  },
+  {
+   "zh": "這在實務中極為常見的錯誤——把 A 廠的溫濕度標準直接搬到 B 廠，卻忽略了兩廠的產品、製程、氣候、穿衣規定完全不同。每一個 HVAC 參數的設定都必須有<strong>可追溯的技術理由</strong>（rationale）。",
+   "en": "This is a very common mistake in practice: transplanting Plant A's temperature and humidity standards directly into Plant B while ignoring that the two plants differ completely in products, processes, climate and gowning rules. The setting of every HVAC parameter must have a <strong>traceable technical rationale</strong>."
+  },
+  {
+   "zh": "核心概念：系統分區策略——兩種方法",
+   "en": "Core Concept: System Zoning Strategy - Two Approaches"
+  },
+  {
+   "zh": "本節介紹了兩種截然不同的 HVAC 系統設計方法：",
+   "en": "This section presents two very different approaches to HVAC system design:"
+  },
+  {
+   "zh": "<strong>方法 1（傳統）</strong>：按 AHU 物理分區——Direct Impact AHU 服務製程區，Indirect Impact AHU 服務輔助區。清晰但可能成本較高。",
+   "en": "<strong>Approach 1 (traditional)</strong>: zoning by physical AHU. Direct Impact AHUs serve process areas and Indirect Impact AHUs serve support areas. Clear, but possibly more costly."
+  },
+  {
+   "zh": "<strong>方法 2（功能分區）</strong>：按功能分組——例如所有壓差監控器為一個 Direct Impact System，所有 AHU 本身為 Indirect Impact。更靈活但管理更複雜。",
+   "en": "<strong>Approach 2 (functional zoning)</strong>: grouping by function. For example, all differential pressure monitors form one Direct Impact System, while the AHUs themselves are Indirect Impact. More flexible but more complex to manage."
+  },
+  {
+   "zh": "方法 2 的核心邏輯：如果 DP 監控系統能偵測到 AHU 故障（因為壓差會偏移），那麼 AHU 本身可以視為 Indirect Impact——真正的 Direct Impact 是「監控系統」本身。",
+   "en": "The core logic of Approach 2: if the DP monitoring system can detect an AHU failure (because the differential pressure will drift), then the AHU itself can be treated as Indirect Impact. The true Direct Impact item is the \"monitoring system\" itself."
+  },
+  {
+   "zh": "比喻說明：保全系統 vs. 大門鎖",
+   "en": "Analogy: Security System vs. Door Locks"
+  },
+  {
+   "zh": "想像一棟大樓的安全系統：",
+   "en": "Imagine the security system of a building:"
+  },
+  {
+   "zh": "<strong>方法 1</strong>：每扇門都裝最好的鎖（每台 AHU 都做完整確效）——安全但昂貴",
+   "en": "<strong>Approach 1</strong>: install the best lock on every door (fully qualify every AHU). Safe but expensive"
+  },
+  {
+   "zh": "<strong>方法 2</strong>：門鎖用普通的就好，但裝一套監控攝影系統（DP 監控系統做確效，AHU 只做 commissioning）——如果有人闖入，攝影系統會立刻偵測到",
+   "en": "<strong>Approach 2</strong>: ordinary door locks are fine, but install a surveillance camera system (qualify the DP monitoring system, and only commission the AHUs). If someone breaks in, the cameras detect it immediately"
+  },
+  {
+   "zh": "方法 2 的前提是：你的「攝影系統」（監控系統）必須 100% 可靠。",
+   "en": "The premise of Approach 2 is that your \"camera system\" (the monitoring system) must be 100% reliable."
+  },
+  {
+   "zh": "在你的 CDMO 設施中，有一台 AHU 同時服務 Grade B 充填室和 Grade D 更衣室前區。根據本節的概念：",
+   "en": "In your CDMO facility, one AHU serves both a Grade B filling room and the Grade D gowning anteroom. Based on the concepts in this section:"
+  },
+  {
+   "zh": "這台 AHU 整體是 Direct Impact System（因為它服務 Grade B 區域）",
+   "en": "This AHU as a whole is a Direct Impact System (because it serves a Grade B area)"
+  },
+  {
+   "zh": "但服務 Grade D 區域的風管分支上的閥門和感測器可能是 Non-critical Components",
+   "en": "However, the dampers and sensors on the duct branch serving the Grade D area may be Non-critical Components"
+  },
+  {
+   "zh": "Impact Assessment 可以在元件層級識別哪些是 Critical、哪些是 Non-critical",
+   "en": "The Impact Assessment can identify at component level which are Critical and which are Non-critical"
+  },
+  {
+   "zh": "這樣可以避免對非關鍵元件做不必要的確效測試",
+   "en": "This avoids unnecessary qualification testing of non-critical components"
+  },
+  {
+   "zh": "假設你的工廠有 10 台 AHU，其中 3 台服務 Grade B/C 製程區，7 台服務非分級區域。使用功能分區方法（方法 2），你會如何定義 Direct Impact 系統？",
+   "en": "Suppose your plant has 10 AHUs, of which 3 serve Grade B/C process areas and 7 serve non-classified areas. Using the functional zoning approach (Approach 2), how would you define the Direct Impact systems?"
+  },
+  {
+   "zh": "為什麼 ISPE 說「not every room parameter affected by a direct impact system will be critical」？請舉一個具體例子。",
+   "en": "Why does ISPE say \"not every room parameter affected by a direct impact system will be critical\"? Give a specific example."
+  },
+  {
+   "zh": "2.2.2 HVAC Parameters（HVAC 參數）",
+   "en": "2.2.2 HVAC Parameters"
+  },
+  {
+   "zh": "核心概念：不同設施類型的 HVAC 參數需求差異",
+   "en": "Core Concept: HVAC Parameter Needs Differ by Facility Type"
+  },
+  {
+   "zh": "Table 2.1 是本章最重要的參考表之一。它清楚展示了一個關鍵事實：<strong>不是每種藥廠都需要控制所有 HVAC 參數</strong>。",
+   "en": "Table 2.1 is one of the most important reference tables in this chapter. It clearly shows a key fact: <strong>not every type of pharmaceutical plant needs to control every HVAC parameter</strong>."
+  },
+  {
+   "zh": "<strong>無菌製造設施（Sterile）</strong>：所有參數都是關鍵——這是最嚴格的",
+   "en": "<strong>Sterile manufacturing facilities</strong>: all parameters are critical, the most stringent case"
+  },
+  {
+   "zh": "<strong>固體劑型（OSD）</strong>：主要關注溫濕度和氣流方向（防交叉污染），但微粒和換氣次數不一定是關鍵參數",
+   "en": "<strong>Oral solid dosage (OSD)</strong>: the main concerns are temperature, humidity and airflow direction (to prevent cross-contamination), while particles and air change rates are not necessarily critical parameters"
+  },
+  {
+   "zh": "<strong>原料藥（API）</strong>：溫度關鍵，其他參數只在特定條件下重要",
+   "en": "<strong>Active pharmaceutical ingredients (API)</strong>: temperature is critical; other parameters matter only under specific conditions"
+  },
+  {
+   "zh": "<strong>倉儲/包裝</strong>：只有溫度（和暴露產品的濕度）需要控制",
+   "en": "<strong>Warehousing/packaging</strong>: only temperature (and humidity where product is exposed) needs to be controlled"
+  },
+  {
+   "zh": "圖表解讀 Table Analysis",
+   "en": "Table Analysis"
+  },
+  {
+   "zh": "閱讀 Table 2.1 時要注意兩個重點：",
+   "en": "Two points to note when reading Table 2.1:"
+  },
+  {
+   "zh": "<strong>「X」不等於「法規強制」</strong>——它只表示該參數「commonly have a product impact」。具體是否為 Critical Parameter，仍需透過風險評估決定。",
+   "en": "<strong>\"X\" does not mean \"mandated by regulation\"</strong>: it only indicates that the parameter will \"commonly have a product impact\". Whether it is a Critical Parameter still has to be determined by risk assessment."
+  },
+  {
+   "zh": "<strong>非關鍵不等於不需要</strong>——即使某參數不影響產品品質，local codes（如消防法規要求 API 設施負壓防爆）可能仍然要求控制。",
+   "en": "<strong>Non-critical does not mean not needed</strong>: even if a parameter does not affect product quality, local codes may still require it to be controlled (for example, fire codes requiring negative pressure for explosion protection in API facilities)."
+  },
+  {
+   "zh": "比喻說明：不同餐廳的衛生管控重點不同",
+   "en": "Analogy: Different Restaurants Focus on Different Hygiene Controls"
+  },
+  {
+   "zh": "不同類型的藥廠就像不同類型的餐廳：",
+   "en": "Different types of pharmaceutical plants are like different types of restaurants:"
+  },
+  {
+   "zh": "<strong>無菌製造</strong> = 手術室級無塵廚房——溫度、濕度、微粒、壓差、通風全部嚴格控制",
+   "en": "<strong>Sterile manufacturing</strong> = an operating-theatre-grade clean kitchen. Temperature, humidity, particles, differential pressure and ventilation are all tightly controlled"
+  },
+  {
+   "zh": "<strong>固體劑型</strong> = 烘焙坊——溫度和粉塵控制很重要，但不需要無塵環境",
+   "en": "<strong>Oral solid dosage</strong> = a bakery. Temperature and dust control matter, but a dust-free environment is not needed"
+  },
+  {
+   "zh": "<strong>倉儲</strong> = 食品冷藏庫——只要溫度對就好",
+   "en": "<strong>Warehousing</strong> = a food cold store. As long as the temperature is right, it is fine"
+  },
+  {
+   "zh": "不會用手術室的標準去管冷藏庫，同理也不該用無菌廠的 HVAC 標準去設計倉儲區。",
+   "en": "You would not manage a cold store to operating-theatre standards, and likewise you should not design a warehouse with the HVAC standards of a sterile plant."
+  },
+  {
+   "zh": "你的 CDMO 工廠同時有無菌充填線和固體劑型生產區。根據 Table 2.1，兩個區域的 HVAC 設計需求有哪些核心差異？",
+   "en": "Your CDMO plant has both a sterile filling line and an oral solid dosage production area. According to Table 2.1, what are the core differences in HVAC design needs between the two areas?"
+  },
+  {
+   "zh": "為什麼 API 設施的 Room Relative Pressure 標記為「Low」而非「X」？這對 HVAC 設計有什麼影響？",
+   "en": "Why is Room Relative Pressure marked \"Low\" rather than \"X\" for API facilities? What does this mean for HVAC design?"
+  },
+  {
+   "zh": "2.2.2.1 Temperature and Humidity（溫度與濕度）",
+   "en": "2.2.2.1 Temperature and Humidity"
+  },
+  {
+   "zh": "核心概念：溫濕度控制的三個驅動因素",
+   "en": "Core Concept: Three Drivers of Temperature and Humidity Control"
+  },
+  {
+   "zh": "溫濕度控制不是「統一一個標準」那麼簡單。驅動因素有三：",
+   "en": "Temperature and humidity control is not as simple as applying \"one uniform standard\". There are three drivers:"
+  },
+  {
+   "zh": "<strong>產品需求</strong>：stability study 數據決定了產品可接受的溫濕度範圍",
+   "en": "<strong>Product requirements</strong>: stability study data determine the acceptable temperature and humidity range for the product"
+  },
+  {
+   "zh": "<strong>製程需求</strong>：如吸濕性粉末需要低濕環境，否則會增重影響配方精度",
+   "en": "<strong>Process requirements</strong>: for example, hygroscopic powders need a low-humidity environment, otherwise they gain weight and compromise formulation accuracy"
+  },
+  {
+   "zh": "<strong>操作人員舒適度</strong>：穿著無塵衣工作的人，如果環境太熱太悶，會增加流汗→增加微粒脫落→影響潔淨度",
+   "en": "<strong>Operator comfort</strong>: people working in cleanroom garments sweat more if the environment is too hot and stuffy, which increases particle shedding and affects cleanliness"
+  },
+  {
+   "zh": "前兩者通常是「法規驅動」的關鍵參數，第三個看似「非關鍵」但在無菌環境中也可能影響產品品質。",
+   "en": "The first two are usually the \"regulation-driven\" critical parameters. The third looks \"non-critical\" but in a sterile environment can also affect product quality."
+  },
+  {
+   "zh": "重點提示：EU Annex 1 的「舒適度」要求",
+   "en": "Key Point: The \"Comfort\" Requirement in EU Annex 1"
+  },
+  {
+   "zh": "EU GMP Annex 1（原文引用的是舊版 Annex 12，新版已整合為 Annex 1）要求無菌設施維持「舒適」的溫濕度。這看似模糊，但背後有嚴謹的科學邏輯：",
+   "en": "EU GMP Annex 1 (the source text cites the old Annex 12; the new version has been consolidated into Annex 1) requires sterile facilities to maintain \"comfortable\" temperature and humidity. This may sound vague, but there is rigorous science behind it:"
+  },
+  {
+   "zh": "人體在不適環境下會<strong>大量流汗</strong>",
+   "en": "People in uncomfortable environments <strong>sweat heavily</strong>"
+  },
+  {
+   "zh": "汗水蒸發會釋放<strong>微粒和微生物</strong>",
+   "en": "Evaporating sweat releases <strong>particles and microorganisms</strong>"
+  },
+  {
+   "zh": "在 Grade A/B 環境中，這直接威脅<strong>無菌保證</strong>",
+   "en": "In a Grade A/B environment this directly threatens <strong>sterility assurance</strong>"
+  },
+  {
+   "zh": "因此，「操作員舒適度」在無菌設施中不只是人因工程問題，而是<strong>無菌保證策略</strong>的一部分。",
+   "en": "Therefore, \"operator comfort\" in a sterile facility is not merely a human-factors issue but part of the <strong>sterility assurance strategy</strong>."
+  },
+  {
+   "zh": "比喻說明：巧克力工廠的溫控",
+   "en": "Analogy: Temperature Control in a Chocolate Factory"
+  },
+  {
+   "zh": "吸濕性（Hygroscopic）粉末藥品就像巧克力工廠中的巧克力——如果環境濕度太高，巧克力表面會「出汗」（sugar bloom），品質完全報廢。藥品的吸濕性問題更嚴重，因為吸水增重會直接影響藥品劑量精確度（formulation weight），可能導致藥效偏移。",
+   "en": "Hygroscopic powder drugs are like the chocolate in a chocolate factory. If the ambient humidity is too high, the chocolate surface \"sweats\" (sugar bloom) and the quality is completely ruined. The hygroscopicity problem is even more serious for drugs, because water uptake and weight gain directly affect dose accuracy (formulation weight) and can cause potency shifts."
+  },
+  {
+   "zh": "一個 Grade A 區域的溫度控制精度要求是「plus/minus a few degrees」（如 20±2°C），而一般 Grade D 區域可能是 18-25°C。請解釋為什麼 Grade A 的溫度範圍必須更窄。",
+   "en": "The temperature control accuracy for a Grade A area is \"plus/minus a few degrees\" (e.g. 20±2°C), while a typical Grade D area may be 18-25°C. Explain why the temperature range for Grade A must be narrower."
+  },
+  {
+   "zh": "台灣地處亞熱帶，夏季高溫高濕。這對藥廠 HVAC 設計有什麼特殊挑戰？如何在 URS 中反映這些挑戰？",
+   "en": "Taiwan lies in the subtropics, with hot and humid summers. What special challenges does this pose for pharmaceutical HVAC design? How would you reflect these challenges in the URS?"
+  },
+  {
+   "zh": "2.2.2.2 Airborne Particles（氣載微粒）",
+   "en": "2.2.2.2 Airborne Particles"
+  },
+  {
+   "zh": "核心概念：微粒控制的層級策略",
+   "en": "Core Concept: A Tiered Strategy for Particle Control"
+  },
+  {
+   "zh": "微粒控制不是「到處裝 HEPA（高效微粒空氣過濾器）」那麼簡單。ISPE 提出的策略層級是：",
+   "en": "Particle control is not as simple as \"install HEPA (high-efficiency particulate air) filters everywhere\". The strategy hierarchy ISPE proposes is:"
+  },
+  {
+   "zh": "<strong>不需要分級的區域</strong>：只需基本過濾，降低微粒至低於外部環境即可",
+   "en": "<strong>Areas that do not need classification</strong>: only basic filtration is needed, reducing particles to below the level of the external environment"
+  },
+  {
+   "zh": "<strong>分級區域（Classified Space）</strong>：依 Grade 設定微粒限值，用 HEPA + 換氣次數 + 壓差達成",
+   "en": "<strong>Classified space</strong>: set particle limits by grade, achieved through HEPA + air change rate + differential pressure"
+  },
+  {
+   "zh": "<strong>產品暴露點</strong>：用 Isolator（隔離器）或 UFH（單向流罩）提供局部 Grade A 保護",
+   "en": "<strong>Product exposure points</strong>: use an isolator or UFH (unidirectional flow hood) to provide local Grade A protection"
+  },
+  {
+   "zh": "關鍵原則：<strong>user requirements should not specify space classification for applications that do not require them</strong>——不要過度分級。",
+   "en": "Key principle: <strong>user requirements should not specify space classification for applications that do not require them</strong>. Do not over-classify."
+  },
+  {
+   "zh": "重點提示：電梯的「活塞效應」",
+   "en": "Key Point: The Elevator \"Piston Effect\""
+  },
+  {
+   "zh": "這是一個在教科書中很少被討論但在實務中極為重要的問題。電梯轎廂在井道中移動時，就像一個巨大的活塞——往下移動時壓縮下方空氣、拉低上方壓力，導致相鄰走廊的壓差劇烈波動。",
+   "en": "This is a problem rarely discussed in textbooks but extremely important in practice. As an elevator car moves in its shaft it acts like a giant piston: moving down, it compresses the air below and lowers the pressure above, causing severe differential pressure fluctuations in the adjacent corridors."
+  },
+  {
+   "zh": "解決方案：",
+   "en": "Solutions:"
+  },
+  {
+   "zh": "電梯井不設為 classified space",
+   "en": "Do not make the elevator shaft a classified space"
+  },
+  {
+   "zh": "需要跨樓層傳遞物料時，使用<strong>密閉傳遞方式</strong>",
+   "en": "When materials must be transferred between floors, use a <strong>closed transfer method</strong>"
+  },
+  {
+   "zh": "在電梯前室設置氣鎖（airlock）以緩衝壓差波動",
+   "en": "Provide an airlock in the elevator vestibule to buffer pressure fluctuations"
+  },
+  {
+   "zh": "比喻說明：隔離器就像太空站",
+   "en": "Analogy: An Isolator Is Like a Space Station"
+  },
+  {
+   "zh": "Isolator（隔離器）的概念就像太空站——在充滿「微粒」的太空環境中（背景房間），創造一個完全密封的潔淨空間（Grade A），內部壓力高於外部，任何洩漏都是「從裡往外」而非「從外往裡」。",
+   "en": "The concept of an isolator is like a space station. In the \"particle-filled\" environment of space (the background room), it creates a completely sealed clean space (Grade A) whose internal pressure is higher than the outside, so any leakage goes \"from inside to outside\" rather than \"from outside to inside\"."
+  },
+  {
+   "zh": "UFH（Unidirectional Flow Hood，單向流罩）則像是一把「潔淨空氣雨傘」——從上方吹下一層穩定的潔淨空氣，把微粒推開，保護傘下的產品。",
+   "en": "A UFH (Unidirectional Flow Hood) is like a \"clean-air umbrella\": it blows a steady layer of clean air from above, pushing particles away and protecting the product under the umbrella."
+  },
+  {
+   "zh": "你的 CDMO 客戶要求「所有走廊都要 Grade C」。根據本節的原則，你會如何評估這個要求的合理性？",
+   "en": "Your CDMO client demands \"Grade C for all corridors\". Based on the principles in this section, how would you evaluate whether this requirement is reasonable?"
+  },
+  {
+   "zh": "連續微粒監測（Continuous Particle Monitoring）相比定期再確效（Periodic Re-qualification），在法規和經濟上各有什麼優勢？",
+   "en": "What are the regulatory and economic advantages of continuous particle monitoring compared with periodic re-qualification?"
+  },
+  {
+   "zh": "2.2.2.3 Room Relative Pressure/Direction of Airflow（房間相對壓力/氣流方向）",
+   "en": "2.2.2.3 Room Relative Pressure/Direction of Airflow"
+  },
+  {
+   "zh": "核心概念：壓差（DP）控制的關鍵數值",
+   "en": "Core Concept: Key Values for Differential Pressure (DP) Control"
+  },
+  {
+   "zh": "本節提供了三個極為重要的壓差數值，必須牢記：",
+   "en": "This section gives three extremely important differential pressure values that must be remembered:"
+  },
+  {
+   "zh": "<strong>10-15 Pa</strong>：不同等級房間之間的標準設計壓差（含氣鎖）",
+   "en": "<strong>10-15 Pa</strong>: the standard design differential pressure between rooms of different grades (including airlocks)"
+  },
+  {
+   "zh": "<strong>5 Pa</strong>：同等級但不同關鍵性房間之間的最小可控壓差",
+   "en": "<strong>5 Pa</strong>: the minimum controllable differential pressure between rooms of the same grade but different criticality"
+  },
+  {
+   "zh": "<strong>37 Pa</strong>：累積絕對壓力的上限——超過此值會導致開門困難、建築結構受損、漏氣增加",
+   "en": "<strong>37 Pa</strong>: the upper limit of cumulative absolute pressure. Beyond this, doors become hard to open, the building structure can be damaged and leakage increases"
+  },
+  {
+   "zh": "這些數值是設計 HVAC 壓差階梯的基礎。",
+   "en": "These values are the basis for designing the HVAC pressure cascade."
+  },
+  {
+   "zh": "壓差階梯計算範例",
+   "en": "Pressure Cascade Calculation Example"
+  },
+  {
+   "zh": "典型無菌設施壓差階梯（由外到內）：\n\n走廊（非分級）  →  氣鎖  →  Grade D  →  氣鎖  →  Grade C  →  氣鎖  →  Grade B  →  Grade A\n   0 Pa         +10Pa    +10Pa       +10Pa    +10Pa      +10Pa    +10Pa\n\n累積壓力：0 → 10 → 20 → 30 → 40 → 50 → 60 Pa ← 超過 37 Pa 上限！\n\n解決方案：\n- 減少壓差級距（如用 7.5 Pa 代替 10 Pa）\n- 設置「壓力中斷點」（pressure break）\n- 重新規劃分級數量，減少級距層數",
+   "en": "Typical sterile facility pressure cascade (from outside to inside):\n\nCorridor (non-classified) → Airlock → Grade D → Airlock → Grade C → Airlock → Grade B → Grade A\n   0 Pa         +10Pa    +10Pa       +10Pa    +10Pa      +10Pa    +10Pa\n\nCumulative pressure: 0 → 10 → 20 → 30 → 40 → 50 → 60 Pa ← exceeds the 37 Pa limit!\n\nSolutions:\n- Reduce the pressure step (e.g. use 7.5 Pa instead of 10 Pa)\n- Provide a \"pressure break\"\n- Re-plan the number of classifications to reduce the number of steps"
+  },
+  {
+   "zh": "重點提示：「Mouse Hole」問題",
+   "en": "Key Point: The \"Mouse Hole\" Problem"
+  },
+  {
+   "zh": "原文提到一個非常實務的問題：當產品輸送線（如西林瓶輸送帶）穿越高壓差牆面時，穿牆口（mouse hole）的高速氣流可能<strong>吹倒瓶子</strong>。這不只是品質問題，更是生產效率問題——倒瓶需要停線處理。",
+   "en": "The source text mentions a very practical problem: when a product conveyor (such as a vial conveyor) passes through a wall with a high differential pressure, the high-velocity airflow at the pass-through opening (mouse hole) can <strong>knock over the vials</strong>. This is not only a quality issue but also a production efficiency issue, because fallen vials require the line to be stopped."
+  },
+  {
+   "zh": "實務解決方案包括：",
+   "en": "Practical solutions include:"
+  },
+  {
+   "zh": "在穿牆口安裝可調節風簾",
+   "en": "Install adjustable air curtains at the pass-through opening"
+  },
+  {
+   "zh": "設計較大的穿牆口以降低氣流速度",
+   "en": "Design a larger opening to reduce the air velocity"
+  },
+  {
+   "zh": "使用壓力緩衝區域",
+   "en": "Use a pressure buffer zone"
+  },
+  {
+   "zh": "比喻說明：壓差控制如同水壩系統",
+   "en": "Analogy: Differential Pressure Control Is Like a Dam System"
+  },
+  {
+   "zh": "房間壓差就像一系列水壩：",
+   "en": "Room differential pressures are like a series of dams:"
+  },
+  {
+   "zh": "每道壩（牆壁）維持一定的水位差（壓差）",
+   "en": "Each dam (wall) maintains a certain water-level difference (differential pressure)"
+  },
+  {
+   "zh": "水永遠從高處流向低處（空氣從高壓流向低壓）",
+   "en": "Water always flows from high to low (air flows from high pressure to low pressure)"
+  },
+  {
+   "zh": "如果累積水位差太大（超過 37 Pa），壩體可能潰堤（建築結構受損）",
+   "en": "If the cumulative water-level difference is too large (over 37 Pa), the dam may burst (building structure damaged)"
+  },
+  {
+   "zh": "壩上的水閘門（門）必須能抵抗水壓差（門閉門器必須能克服壓差）",
+   "en": "The sluice gates in the dam (doors) must withstand the water pressure difference (door closers must overcome the differential pressure)"
+  },
+  {
+   "zh": "你的 CDMO 工廠正在規劃一條新的固體劑型生產線，將在同一設施中生產 5 種不同產品（campaigned）。根據本節內容，壓差策略應考慮：",
+   "en": "Your CDMO plant is planning a new oral solid dosage line that will manufacture 5 different products (campaigned) in the same facility. Based on this section, the pressure strategy should consider:"
+  },
+  {
+   "zh": "以「防止交叉污染」為主要目標設定氣流方向",
+   "en": "Setting the airflow direction with \"preventing cross-contamination\" as the primary goal"
+  },
+  {
+   "zh": "由於是多產品設施，建議採用<strong>動態壓差控制</strong>，以便在產品切換時調整壓差方向",
+   "en": "Because it is a multi-product facility, <strong>dynamic differential pressure control</strong> is recommended so that the pressure direction can be adjusted at product changeover"
+  },
+  {
+   "zh": "壓差量測採用<strong>直接量測（room-to-room）</strong>用於 Action Alarm，<strong>間接量測（room-to-reference）</strong>用於 Alert",
+   "en": "Using <strong>direct measurement (room-to-room)</strong> for the Action Alarm and <strong>indirect measurement (room-to-reference)</strong> for the Alert"
+  },
+  {
+   "zh": "在 URS 中明確定義每個房間的壓差目標值和 Alert/Action 限值",
+   "en": "Clearly defining the differential pressure target and the Alert/Action limits for each room in the URS"
+  },
+  {
+   "zh": "在含有活病毒的生物製劑設施中，為什麼需要「negative pressure sink」或「pressure bubble airlock」？請用污染控制的邏輯解釋。",
+   "en": "In a biologics facility handling live viruses, why is a \"negative pressure sink\" or \"pressure bubble airlock\" needed? Explain using contamination control logic."
+  },
+  {
+   "zh": "直接量測（room-to-room）和間接量測（room-to-reference）各有什麼優缺點？為什麼 Action Alarm 建議用直接量測？",
+   "en": "What are the advantages and disadvantages of direct measurement (room-to-room) and indirect measurement (room-to-reference)? Why is direct measurement recommended for the Action Alarm?"
+  },
+  {
+   "zh": "核心概念：手動平衡 vs. 全自動控制",
+   "en": "Core Concept: Manual Balancing vs. Fully Automatic Control"
+  },
+  {
+   "zh": "壓差控制有兩種極端方案：",
+   "en": "There are two extreme approaches to differential pressure control:"
+  },
+  {
+   "zh": "在 CDMO 多產品環境中，全自動系統通常更適合，因為頻繁的產品切換需要壓差策略的彈性調整。",
+   "en": "In a multi-product CDMO environment, a fully automatic system is usually more suitable, because frequent product changeovers require the pressure strategy to be adjusted flexibly."
+  },
+  {
+   "zh": "2.2.2.4 Air Changes（換氣次數）",
+   "en": "2.2.2.4 Air Changes"
+  },
+  {
+   "zh": "核心概念：換氣次數的經驗法則",
+   "en": "Core Concept: Rules of Thumb for Air Change Rates"
+  },
+  {
+   "zh": "換氣次數（Air Change Rate，AC/hr）是 HVAC 設計中最容易被「過度設計」的參數。本節給出的經驗法則（rules of thumb）：",
+   "en": "The air change rate (AC/hr) is the parameter most prone to \"over-design\" in HVAC. The rules of thumb given in this section are:"
+  },
+  {
+   "zh": "<strong>Grade A (ISO 5)</strong>：不論 AC/hr，而是看<strong>單向流速度和氣流型態</strong>",
+   "en": "<strong>Grade A (ISO 5)</strong>: regardless of AC/hr, what matters is the <strong>unidirectional airflow velocity and flow pattern</strong>"
+  },
+  {
+   "zh": "但 ISPE 特別強調：這些只是<strong>概念設計</strong>用的參考值，詳細設計時應根據實際製程需求計算。",
+   "en": "However, ISPE specifically stresses that these are reference values for <strong>conceptual design</strong> only; during detailed design they should be calculated from actual process requirements."
+  },
+  {
+   "zh": "Recovery Time 計算",
+   "en": "Recovery Time Calculation"
+  },
+  {
+   "zh": "Recovery（恢復）時間與換氣次數的關係：\n\n假設：完全均勻混合（ideal mixing）\n公式：C(t) = C₀ × e^(-n×t)\n\n其中：\n  C₀ = 初始微粒濃度（in-use 狀態）\n  C(t) = t 時間後的微粒濃度\n  n = 換氣次數（AC/hr）\n  t = 時間（hr）\n\n範例（Grade B，20 AC/hr）：\n  ISO 7 (in-use) → ISO 5 (at-rest)\n  需要降低約 100 倍\n  t = ln(100) / 20 = 4.6 / 20 = 0.23 hr ≈ 14 min\n\n  ✓ 符合 EU 要求的 15~20 分鐘恢復時間\n\n若 AC/hr 降至 15：\n  t = 4.6 / 15 = 0.31 hr ≈ 18.4 min（仍可接受）\n\n若 AC/hr 降至 10：\n  t = 4.6 / 10 = 0.46 hr ≈ 27.6 min（超出 EU 要求）",
+   "en": "Relationship between recovery time and air change rate:\n\nAssumption: perfect uniform mixing (ideal mixing)\nFormula: C(t) = C₀ × e^(-n×t)\n\nWhere:\n  C₀ = initial particle concentration (in-use state)\n  C(t) = particle concentration after time t\n  n = air change rate (AC/hr)\n  t = time (hr)\n\nExample (Grade B, 20 AC/hr):\n  ISO 7 (in-use) → ISO 5 (at-rest)\n  Requires a reduction of about 100 times\n  t = ln(100) / 20 = 4.6 / 20 = 0.23 hr ≈ 14 min\n\n  ✓ Meets the EU recovery time requirement of 15-20 minutes\n\nIf AC/hr drops to 15:\n  t = 4.6 / 15 = 0.31 hr ≈ 18.4 min (still acceptable)\n\nIf AC/hr drops to 10:\n  t = 4.6 / 10 = 0.46 hr ≈ 27.6 min (exceeds the EU requirement)"
+  },
+  {
+   "zh": "重點提示：避免「任意」設定換氣次數",
+   "en": "Key Point: Avoid \"Arbitrary\" Air Change Rates"
+  },
+  {
+   "zh": "原文中最重要的警告：<strong>「Utilizing arbitrary air change rates throughout a design should be avoided」</strong>。",
+   "en": "The most important warning in the source text: <strong>\"Utilizing arbitrary air change rates throughout a design should be avoided\"</strong>."
+  },
+  {
+   "zh": "為什麼？因為每增加 10 AC/hr：",
+   "en": "Why? Because every additional 10 AC/hr means:"
+  },
+  {
+   "zh": "AHU 風量增加 → AHU 尺寸和成本增加",
+   "en": "Higher AHU airflow, so larger AHU size and cost"
+  },
+  {
+   "zh": "風管尺寸增加 → 天花板空間需求增加",
+   "en": "Larger ducts, so more ceiling space required"
+  },
+  {
+   "zh": "能耗增加 → 年度運營成本顯著上升",
+   "en": "Higher energy consumption, so a significant rise in annual operating cost"
+  },
+  {
+   "zh": "噪音增加 → 可能需要額外消音措施",
+   "en": "More noise, possibly requiring additional attenuation measures"
+  },
+  {
+   "zh": "正確的做法是：用概念設計的經驗法則開始，在詳細設計階段根據實際 PGR（Particle Generation Rate，微粒產生率）和熱負荷數據來優化。",
+   "en": "The right approach is to start from the conceptual design rules of thumb and, in detailed design, optimize based on actual PGR (Particle Generation Rate) and heat load data."
+  },
+  {
+   "zh": "比喻說明：換氣次數如同抽水機流量",
+   "en": "Analogy: Air Change Rate Is Like Pump Flow"
+  },
+  {
+   "zh": "想像一個游泳池裡有人在持續丟垃圾（微粒產生）。換氣就是抽水機的工作——把髒水（含微粒的空氣）抽出去，灌入乾淨水（過濾後的空氣）。",
+   "en": "Imagine someone in a swimming pool continuously throwing in rubbish (particle generation). Air change is the pump's job: drawing out the dirty water (air containing particles) and pouring in clean water (filtered air)."
+  },
+  {
+   "zh": "<strong>AC/hr 太低</strong>：垃圾累積得比清理的快，水池會變髒",
+   "en": "<strong>AC/hr too low</strong>: rubbish accumulates faster than it is removed, and the pool gets dirty"
+  },
+  {
+   "zh": "<strong>AC/hr 剛好</strong>：垃圾清理速度等於產生速度，維持乾淨",
+   "en": "<strong>AC/hr just right</strong>: rubbish is removed as fast as it is generated, keeping the pool clean"
+  },
+  {
+   "zh": "<strong>AC/hr 過高</strong>：水池確實很乾淨，但電費帳單會讓你心痛——而且水流太急可能反而干擾游泳（氣流太強影響製程）",
+   "en": "<strong>AC/hr too high</strong>: the pool is certainly clean, but the electricity bill will hurt, and a current that is too strong may even disturb the swimmers (airflow too strong interferes with the process)"
+  },
+  {
+   "zh": "你在評估一個 Grade C 房間的 HVAC 設計。工程顧問提出 40 AC/hr 的設計，但這個房間只有一台自動密封的灌裝機（低微粒產生率）。根據本節原則：",
+   "en": "You are evaluating the HVAC design of a Grade C room. The engineering consultant proposes 40 AC/hr, but the room contains only one automated closed filling machine (low particle generation rate). Based on the principles in this section:"
+  },
+  {
+   "zh": "首先確認 20 AC/hr 是否能滿足 EU Annex 1 的 recovery 要求",
+   "en": "First confirm whether 20 AC/hr can meet the EU Annex 1 recovery requirement"
+  },
+  {
+   "zh": "如果製程微粒產生率低，20~25 AC/hr 可能就足夠",
+   "en": "If the process particle generation rate is low, 20-25 AC/hr may be sufficient"
+  },
+  {
+   "zh": "用 recovery test 數據來驗證降低 AC/hr 的合理性",
+   "en": "Use recovery test data to justify the reduced AC/hr"
+  },
+  {
+   "zh": "計算節省的能源成本：40→25 AC/hr 可能每年節省數十萬台幣",
+   "en": "Calculate the energy cost saving: going from 40 to 25 AC/hr may save several hundred thousand NT dollars per year"
+  },
+  {
+   "zh": "為什麼 Grade A（ISO 5）區域不討論「換氣次數」而是討論「氣流速度和型態」？這與單向流（unidirectional flow）有什麼關係？",
+   "en": "Why do Grade A (ISO 5) areas discuss \"airflow velocity and pattern\" rather than \"air change rate\"? How is this related to unidirectional flow?"
+  },
+  {
+   "zh": "一個 Grade B 房間的 recovery test 結果是 18 分鐘（從 in-use 恢復到 at-rest）。這是否符合 EU 要求？如果不符合，你會建議增加多少 AC/hr？",
+   "en": "A Grade B room has a recovery test result of 18 minutes (from in-use back to at-rest). Does this meet the EU requirement? If not, by how much would you recommend increasing AC/hr?"
+  },
+  {
+   "zh": "2.2.3 Managing Critical HVAC Criteria and Non-Critical HVAC Criteria（管理關鍵與非關鍵 HVAC 標準）",
+   "en": "2.2.3 Managing Critical HVAC Criteria and Non-Critical HVAC Criteria"
+  },
+  {
+   "zh": "2.2.3.1 Alarming of Parameters（參數警報）",
+   "en": "2.2.3.1 Alarming of Parameters"
+  },
+  {
+   "zh": "核心概念：五層參數控制架構",
+   "en": "Core Concept: A Five-Layer Parameter Control Architecture"
+  },
+  {
+   "zh": "ISPE 定義了一套從設計到營運的五層參數管控架構，從內到外依序為：",
+   "en": "ISPE defines a five-layer parameter control architecture running from design to operation, listed from the inside out:"
+  },
+  {
+   "zh": "<strong>Design Point（設計點）</strong>：控制系統的目標值，如壓差目標 12.5 Pa",
+   "en": "<strong>Design Point</strong>: the target value of the control system, e.g. a differential pressure target of 12.5 Pa"
+  },
+  {
+   "zh": "<strong>Design Tolerance（設計容差）</strong>：考慮儀器精度和正常波動的預期範圍，如 ±2.5 Pa",
+   "en": "<strong>Design Tolerance</strong>: the expected range allowing for instrument accuracy and normal fluctuation, e.g. ±2.5 Pa"
+  },
+  {
+   "zh": "<strong>Normal Operating Range（正常運行範圍）</strong>：實際運行中觀察到的正常波動範圍",
+   "en": "<strong>Normal Operating Range</strong>: the range of normal fluctuation actually observed in operation"
+  },
+  {
+   "zh": "<strong>Alert Limit（警告限值）</strong>：超出正常範圍的早期預警——通知維護/操作人員注意",
+   "en": "<strong>Alert Limit</strong>: an early warning of departure from the normal range, notifying maintenance/operating personnel to pay attention"
+  },
+  {
+   "zh": "<strong>Action (Alarm) Limit（行動限值）</strong>：接近或超出可接受範圍——必須立即採取行動",
+   "en": "<strong>Action (Alarm) Limit</strong>: near or beyond the acceptable range, requiring immediate action"
+  },
+  {
+   "zh": "關鍵原則：<strong>Alert 和 Action Limit 必須位於 Normal Operating Range 之外</strong>——否則會產生大量假警報。",
+   "en": "Key principle: <strong>the Alert and Action Limits must lie outside the Normal Operating Range</strong>, otherwise large numbers of false alarms will result."
+  },
+  {
+   "zh": "重點提示：壓差 vs. 溫度的警報策略差異",
+   "en": "Key Point: Different Alarm Strategies for Differential Pressure vs. Temperature"
+  },
+  {
+   "zh": "壓差和溫度的警報策略為什麼不同？",
+   "en": "Why do the alarm strategies for differential pressure and temperature differ?"
+  },
+  {
+   "zh": "<strong>壓差</strong>：變化<strong>快</strong>（開門幾秒就會偏移）→ Alert 和 Action 通常設在同一數值，靠<strong>時間延遲</strong>（time delay）來區分",
+   "en": "<strong>Differential pressure</strong>: changes <strong>fast</strong> (opening a door shifts it within seconds) → Alert and Action are usually set at the same value and distinguished by a <strong>time delay</strong>"
+  },
+  {
+   "zh": "<strong>溫度</strong>：變化<strong>慢</strong>（冷水機故障後可能需要 30 分鐘以上才會明顯升溫）→ Alert 和 Action 可以設在<strong>不同數值</strong>，提供「預警窗口」讓維護人員有時間反應",
+   "en": "<strong>Temperature</strong>: changes <strong>slowly</strong> (after a chiller failure it may take 30 minutes or more for the temperature to rise noticeably) → Alert and Action can be set at <strong>different values</strong>, providing an \"early warning window\" that gives maintenance staff time to respond"
+  },
+  {
+   "zh": "這個差異直接影響控制系統程式設計和 SOP 編寫。",
+   "en": "This difference directly affects control system programming and SOP writing."
+  },
+  {
+   "zh": "比喻說明：汽車儀表板的警示燈",
+   "en": "Analogy: Warning Lights on a Car Dashboard"
+  },
+  {
+   "zh": "這套五層架構就像汽車的溫度警示系統：",
+   "en": "This five-layer architecture is like a car's temperature warning system:"
+  },
+  {
+   "zh": "<strong>Design Point</strong> = 引擎正常工作溫度 90°C",
+   "en": "<strong>Design Point</strong> = normal engine operating temperature of 90°C"
+  },
+  {
+   "zh": "<strong>Design Tolerance</strong> = 正常波動 85~95°C",
+   "en": "<strong>Design Tolerance</strong> = normal fluctuation of 85-95°C"
+  },
+  {
+   "zh": "<strong>Normal Operating Range</strong> = 實際行駛觀察到的 82~98°C",
+   "en": "<strong>Normal Operating Range</strong> = 82-98°C actually observed while driving"
+  },
+  {
+   "zh": "<strong>Alert</strong> = 溫度表進入黃色區域 100°C——「注意，可能有問題」",
+   "en": "<strong>Alert</strong> = the gauge enters the yellow zone at 100°C: \"Attention, there may be a problem\""
+  },
+  {
+   "zh": "<strong>Action Alarm</strong> = 溫度表進入紅色區域 110°C——「立即停車檢查！」",
+   "en": "<strong>Action Alarm</strong> = the gauge enters the red zone at 110°C: \"Stop immediately and check!\""
+  },
+  {
+   "zh": "如果你把 Alert 設在 90°C，正常行駛就會一直響——這就是為什麼 Alert/Action 必須在 Normal Operating Range 之外。",
+   "en": "If you set the Alert at 90°C, it would sound constantly during normal driving. This is why the Alert/Action limits must lie outside the Normal Operating Range."
+  },
+  {
+   "zh": "你正在為一個 Grade B 房間設定壓差警報。Design Point 是 15 Pa，Design Tolerance 是 ±3 Pa。你會如何設定 Alert Limit 和 Action Limit？請說明你的理由。",
+   "en": "You are setting differential pressure alarms for a Grade B room. The Design Point is 15 Pa and the Design Tolerance is ±3 Pa. How would you set the Alert Limit and Action Limit? Explain your reasoning."
+  },
+  {
+   "zh": "為什麼原文說「如果產品要求有嚴格的環境限制，溫度的 Alert 和 Action 可能需要回歸壓差的策略（同一數值 + 時間延遲）」？在什麼情況下會發生這種狀況？",
+   "en": "Why does the source text say \"if the product has strict environmental limits, the temperature Alert and Action may need to revert to the differential pressure strategy (same value + time delay)\"? Under what circumstances would this happen?"
+  },
+  {
+   "zh": "2.2.3.2 Managing HVAC Parameters – Monitoring（HVAC 參數管理——監控）",
+   "en": "2.2.3.2 Managing HVAC Parameters - Monitoring"
+  },
+  {
+   "zh": "核心概念：監控系統設計的四大考量",
+   "en": "Core Concept: Four Considerations in Monitoring System Design"
+  },
+  {
+   "zh": "監控系統不只是「裝感測器」那麼簡單，需要回答四個關鍵問題：",
+   "en": "A monitoring system is more than just \"installing sensors\". It must answer four key questions:"
+  },
+  {
+   "zh": "<strong>誰負責（Accountability）</strong>：警報響了誰去處理？要有書面 SOP。警報顯示在哪裡——控制室？生產區？品保辦公室？",
+   "en": "<strong>Accountability (Who)</strong>: who responds when an alarm sounds? There must be a written SOP. Where is the alarm displayed: the control room, the production area, or the QA office?"
+  },
+  {
+   "zh": "<strong>延遲策略（Alarm Delays）</strong>：用歷史數據還是預設值來設定？歷史數據更精準但需要一段時間的營運數據收集。",
+   "en": "<strong>Alarm delays</strong>: set from historical data or from default values? Historical data is more precise but requires a period of operating data collection."
+  },
+  {
+   "zh": "<strong>監控平台（How）</strong>：用 DCS（分散式控制系統）、BAS（樓宇自動化系統）、手動巡檢、還是混合使用？",
+   "en": "<strong>Monitoring platform (How)</strong>: a DCS (distributed control system), a BAS (building automation system), manual rounds, or a combination?"
+  },
+  {
+   "zh": "<strong>監控範圍（What）</strong>：每個房間都監控，還是選擇代表性房間？",
+   "en": "<strong>Monitoring scope (What)</strong>: monitor every room, or select representative rooms?"
+  },
+  {
+   "zh": "重點提示：DCS vs. BAS 的選擇",
+   "en": "Key Point: Choosing Between DCS and BAS"
+  },
+  {
+   "zh": "在實務中，HVAC 監控常面臨一個系統整合問題：",
+   "en": "In practice, HVAC monitoring often faces a system integration problem:"
+  },
+  {
+   "zh": "<strong>DCS（Distributed Control System）</strong>：通常管理製程設備，有嚴格的 GMP 確效要求",
+   "en": "<strong>DCS (Distributed Control System)</strong>: usually manages process equipment and has strict GMP validation requirements"
+  },
+  {
+   "zh": "<strong>BAS（Building Automation System）</strong>：通常管理 HVAC 等設施設備，確效層級較低",
+   "en": "<strong>BAS (Building Automation System)</strong>: usually manages utilities such as HVAC, with a lower validation level"
+  },
+  {
+   "zh": "關鍵 HVAC 參數如果放在 BAS 中監控，BAS 可能需要提升到 Direct Impact 系統的確效層級。這個決策在設計初期就必須做出，因為它影響系統架構和整體成本。",
+   "en": "If critical HVAC parameters are monitored in the BAS, the BAS may need to be raised to the validation level of a Direct Impact system. This decision must be made at the very start of design because it affects the system architecture and overall cost."
+  },
+  {
+   "zh": "比喻說明：工廠的保全監控室",
+   "en": "Analogy: A Factory Security Control Room"
+  },
+  {
+   "zh": "監控系統就像工廠的保全監控室——你需要決定：",
+   "en": "A monitoring system is like a factory security control room, where you need to decide:"
+  },
+  {
+   "zh": "螢幕顯示哪些攝影機畫面（監控哪些房間）？",
+   "en": "Which camera feeds appear on the screens (which rooms are monitored)?"
+  },
+  {
+   "zh": "有人闖入時誰負責（警報誰處理）？",
+   "en": "Who is responsible when someone breaks in (who handles the alarm)?"
+  },
+  {
+   "zh": "是用中央監控還是各門口獨立警報器（DCS vs. BAS vs. 手動）？",
+   "en": "Central monitoring or independent alarms at each door (DCS vs. BAS vs. manual)?"
+  },
+  {
+   "zh": "所有門都裝感應器還是只裝主要出入口（每間房都監控還是代表性選擇）？",
+   "en": "Sensors on every door or only on the main entrances (monitor every room or a representative selection)?"
+  },
+  {
+   "zh": "你的工廠有 50 個生產房間。如果不是每個房間都做壓差監控，你會選擇哪些「代表性房間」？選擇的邏輯是什麼？",
+   "en": "Your plant has 50 production rooms. If differential pressure is not monitored in every room, which \"representative rooms\" would you choose? What is the logic behind your selection?"
+  },
+  {
+   "zh": "Alarm Delay 設定得太短和太長分別會造成什麼問題？如何找到適當的延遲時間？",
+   "en": "What problems result from setting the alarm delay too short and too long, respectively? How do you find a suitable delay time?"
+  },
+  {
+   "zh": "本節重點回顧 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "<strong>HVAC 設計四步驟</strong>：URS → Functional Design (FDS/BOD) → Detailed Design → Construction Documents。每一步都有明確交付物，越早的決策影響越大。",
+   "en": "<strong>The four-step HVAC design process</strong>: URS → Functional Design (FDS/BOD) → Detailed Design → Construction Documents. Each step has clear deliverables, and the earlier the decision, the greater its impact."
+  },
+  {
+   "zh": "<strong>URS 是 HVAC 設計的基石</strong>：小幅度提高潔淨等級就可能導致大幅成本增加。使用者需求必須基於風險評估，而非盲目套用「業界慣例」。",
+   "en": "<strong>The URS is the cornerstone of HVAC design</strong>: a small increase in the cleanliness grade can cause a large cost increase. User requirements must be based on risk assessment, not blind application of \"industry norms\"."
+  },
+  {
+   "zh": "<strong>Critical vs. Non-Critical 參數</strong>：只有 Critical HVAC Parameters 需要完整確效（Qualification），Non-Critical 只需 GEP Commissioning。系統分區策略（按 AHU 或按功能）直接影響確效範圍和成本。",
+   "en": "<strong>Critical vs. Non-Critical parameters</strong>: only Critical HVAC Parameters need full qualification; Non-Critical ones need only GEP commissioning. The system zoning strategy (by AHU or by function) directly affects the qualification scope and cost."
+  },
+  {
+   "zh": "<strong>壓差控制是最具挑戰性的 HVAC 參數</strong>：10-15 Pa 標準級距、37 Pa 累積上限、手動 vs. 自動控制的權衡。在 CDMO 多產品環境中，動態控制通常更適合。",
+   "en": "<strong>Differential pressure control is the most challenging HVAC parameter</strong>: the standard 10-15 Pa step, the 37 Pa cumulative limit, and the trade-off between manual and automatic control. In a multi-product CDMO environment, dynamic control is usually more suitable."
+  },
+  {
+   "zh": "<strong>換氣次數不應任意設定</strong>：20 AC/hr 是 Grade C/ISO 8 的最低設計目標（FDA 引用），但實際需求應根據 PGR、熱負荷、Recovery 要求計算。",
+   "en": "<strong>Air change rates should not be set arbitrarily</strong>: 20 AC/hr is the minimum design target for Grade C/ISO 8 (as cited by the FDA), but actual needs should be calculated from PGR, heat load and recovery requirements."
+  },
+  {
+   "zh": "<strong>五層警報架構</strong>：Design Point → Design Tolerance → Normal Operating Range → Alert → Action Alarm。壓差用時間延遲區分 Alert/Action，溫度可用不同數值。",
+   "en": "<strong>The five-layer alarm architecture</strong>: Design Point → Design Tolerance → Normal Operating Range → Alert → Action Alarm. For differential pressure, Alert and Action are distinguished by time delay; for temperature, different values can be used."
+  },
+  {
+   "zh": "<strong>DQ 的雙重審查</strong>：GEP（工程可行性）+ GMP（法規合規性）缺一不可。11 項 HVAC DQ 檢查清單是實務中的重要工具。",
+   "en": "<strong>The dual review of DQ</strong>: GEP (engineering feasibility) + GMP (regulatory compliance), and both are indispensable. The 11-item HVAC DQ checklist is an important practical tool."
+  }
+ ]
+}

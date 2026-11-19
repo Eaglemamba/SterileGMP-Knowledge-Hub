@@ -1,0 +1,761 @@
+{
+ "source": "section-02a-design-general-api.html",
+ "blocks": [
+  {
+   "zh": "設計考量（上）— 通則、原料藥濕段/乾段、生物製劑",
+   "en": "Design Considerations (Part 1) - General Principles, API Wet End/Dry End, Biologics"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解 HVAC 系統設計的核心原則——物理隔離、壓力梯度（Pressure Cascade）與專用空調機組（Dedicated AHU）如何防止交叉污染（Cross-contamination）",
+   "en": "Understand the core principles of HVAC design - how physical segregation, the pressure cascade and dedicated AHUs prevent cross-contamination"
+  },
+  {
+   "zh": "掌握加熱、冷卻、濕度控制的設計考量，以及為何溶劑區域必須採用 100% 外氣（Once-through）系統",
+   "en": "Master the design considerations for heating, cooling and humidity control, and why solvent areas must use 100% outside air (once-through) systems"
+  },
+  {
+   "zh": "了解危險物質（溶劑、高效化合物）的排風與密閉（Containment）策略，包含 LEV、bag-in/bag-out 過濾器及防爆要求",
+   "en": "Understand exhaust and containment strategies for hazardous materials (solvents, highly potent compounds), including LEV, bag-in/bag-out filters and explosion-protection requirements"
+  },
+  {
+   "zh": "區分原料藥（API）濕段（Wet End）與乾段（Dry End）的 HVAC 設計差異，理解何時需要潔淨室等級",
+   "en": "Distinguish the HVAC design differences between the API wet end and dry end, and understand when a cleanroom classification is needed"
+  },
+  {
+   "zh": "認識生物製劑（Biologics）上游與下游製程對 HVAC 的不同需求",
+   "en": "Recognize the different HVAC needs of upstream and downstream biologics processes"
+  },
+  {
+   "zh": "了解外氣預處理（Outside Air Pretreatment）的優缺點及適用場景",
+   "en": "Understand the advantages, disadvantages and suitable applications of outside air pretreatment"
+  },
+  {
+   "zh": "3.1 Introduction（導論）",
+   "en": "3.1 Introduction"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念：HVAC 隔離三策略",
+   "en": "Core Concept: Three HVAC Segregation Strategies"
+  },
+  {
+   "zh": "<strong>Cross-contamination（交叉污染）</strong>是 GMP 製造中最嚴重的風險之一。HVAC 系統防止交叉污染有三種主要策略：",
+   "en": "<strong>Cross-contamination</strong> is one of the most serious risks in GMP manufacturing. HVAC systems use three main strategies to prevent it:"
+  },
+  {
+   "zh": "<strong>嚴格空氣過濾</strong>：在迴風系統中使用 HEPA 過濾器，去除微粒與活性成分",
+   "en": "<strong>Rigorous air filtration</strong>: use HEPA filters in the recirculation system to remove particles and active ingredients"
+  },
+  {
+   "zh": "<strong>Once-through Air（全外氣系統）</strong>：空氣只用一次就排出，絕不回收，適用於溶劑或高效化合物區域",
+   "en": "<strong>Once-through air (100% outside air system)</strong>: air is used once and then exhausted, never recirculated; suitable for solvent or highly potent compound areas"
+  },
+  {
+   "zh": "<strong>Dedicated AHU（專用空調機組）</strong>：為不同產品區域配置獨立的空調系統，從風管層面杜絕交叉污染",
+   "en": "<strong>Dedicated AHU</strong>: provide independent air-handling systems for different product areas, eliminating cross-contamination at the ductwork level"
+  },
+  {
+   "zh": "在實務中，這三種策略常搭配使用，層層防護。",
+   "en": "In practice, these three strategies are often combined to give layered protection."
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "想像一棟醫院：手術室有獨立的空調系統（Dedicated AHU），不會和普通病房共用；感染科病房使用全外氣排放（Once-through），避免病原體透過風管擴散到其他樓層。製藥廠的 HVAC 邏輯完全相同——不同「風險等級」的區域需要不同等級的空氣隔離。",
+   "en": "Think of a hospital: the operating theater has its own air-handling system (dedicated AHU) and does not share it with general wards; infectious disease wards use once-through air exhaust to keep pathogens from spreading through the ductwork to other floors. A pharmaceutical plant follows exactly the same HVAC logic - areas of different \"risk levels\" need different levels of air segregation."
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "<strong>簡約設計 = 高可靠度</strong>：本指引特別強調「simplicity of design often assures greater uptime」。這是非常實務的建議——過度複雜的 HVAC 系統雖然看似完美，但維護頻率高、故障點多，反而降低產線穩定性。在 CDMO 環境中，AHU 停機直接影響客戶批次排程，損失可能遠超設備本身的成本。",
+   "en": "<strong>Simple design = high reliability</strong>: the guide specifically stresses that \"simplicity of design often assures greater uptime\". This is very practical advice - an over-complicated HVAC system may look perfect but needs frequent maintenance and has many failure points, which actually reduces production stability. In a CDMO, AHU downtime directly affects customer batch schedules, and the loss can far exceed the cost of the equipment itself."
+  },
+  {
+   "zh": "實務應用 Practical Application",
+   "en": "Practical Application"
+  },
+  {
+   "zh": "在 CDMO 接案評估時，HVAC 隔離能力直接決定能否同時生產多個客戶產品。如果只有一台共用 AHU，兩個不同 API 就無法同時在相鄰房間生產。因此，設施擴建時優先投資 Dedicated AHU，可以大幅提升產能利用率與排程彈性。",
+   "en": "When a CDMO evaluates a new project, its HVAC segregation capability directly determines whether it can run several customers' products at the same time. With only one shared AHU, two different APIs cannot be produced in adjacent rooms at the same time. Investing first in dedicated AHUs when expanding a facility can therefore greatly improve capacity utilization and scheduling flexibility."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "為什麼生物製劑工廠的上游培養區（upstream cell culture）與下游純化區（downstream purification）常使用不同的 AHU？",
+   "en": "Why do biologics plants often use different AHUs for the upstream cell culture area and the downstream purification area?"
+  },
+  {
+   "zh": "「partial operation during routine maintenance」具體而言如何實現？一台 AHU 要怎樣配置才能在維護時繼續部分運作？",
+   "en": "How is \"partial operation during routine maintenance\" achieved in practice? How should an AHU be configured so that part of it can keep running during maintenance?"
+  },
+  {
+   "zh": "3.2 General Design Considerations（通用設計考量）",
+   "en": "3.2 General Design Considerations"
+  },
+  {
+   "zh": "3.2.1 Heating and Cooling（加熱與冷卻）",
+   "en": "3.2.1 Heating and Cooling"
+  },
+  {
+   "zh": "核心概念：能效與 GMP 的平衡",
+   "en": "Core Concept: Balancing Energy Efficiency and GMP"
+  },
+  {
+   "zh": "<strong>Enthalpy Wheel（全熱交換輪）</strong>：一種能量回收裝置，可同時回收排氣中的溫度和濕度能量。但因為排氣與進氣可能有微量交叉，在生產區有交叉污染風險，所以僅建議用於非生產區域。",
+   "en": "<strong>Enthalpy wheel</strong>: an energy recovery device that recovers both temperature and humidity energy from the exhaust air. Because a small amount of cross-leakage between exhaust and supply air is possible, it carries a cross-contamination risk in production areas and is therefore recommended only for non-production areas."
+  },
+  {
+   "zh": "<strong>Glove Box（手套箱）</strong>：比整間房間密閉更節能的替代方案。只需要對小體積空間進行溫濕度控制和換氣，而非整個房間。",
+   "en": "<strong>Glove box</strong>: a more energy-efficient alternative to containing the whole room. Only a small volume needs temperature and humidity control and air exchange, rather than the entire room."
+  },
+  {
+   "zh": "全熱交換輪就像飯店的熱水回收系統——排出的熱水先經過換熱器預熱冷水，節省能源。但如果排水中可能含有污染物，你就不會讓它接觸飲用水管路。同理，生產區的排風可能含有產品微粒或溶劑，不適合用全熱交換輪回收。",
+   "en": "An enthalpy wheel is like a hotel's hot-water recovery system - the outgoing hot water first passes through a heat exchanger to preheat the cold water, saving energy. But if the drain water might contain contaminants, you would never let it touch the drinking water line. Likewise, exhaust air from a production area may contain product particles or solvents and is not suitable for recovery with an enthalpy wheel."
+  },
+  {
+   "zh": "UFH（Unidirectional Flow Hood，單向流罩）的風扇會產生熱量，長時間運轉後會使罩內溫度升高。小型 UFH 影響不大，但大型 UFH（如凍乾機裝載區）需要補充少量冷卻空氣，否則可能影響溫度敏感產品的品質。",
+   "en": "The fan of a UFH (unidirectional flow hood) generates heat, which raises the temperature inside the hood after long operation. The effect is minor for a small UFH, but a large UFH (for example, at a freeze dryer loading area) needs a small amount of supplementary cooling air, otherwise the quality of temperature-sensitive products may be affected."
+  },
+  {
+   "zh": "3.2.2 Humidity（濕度控制）",
+   "en": "3.2.2 Humidity"
+  },
+  {
+   "zh": "核心概念：濕度控制的上下限",
+   "en": "Core Concept: Upper and Lower Humidity Limits"
+  },
+  {
+   "zh": "<strong>RH（Relative Humidity，相對濕度）控制</strong>在粉末操作中至關重要：",
+   "en": "<strong>RH (relative humidity) control</strong> is critical in powder handling:"
+  },
+  {
+   "zh": "<strong>RH &gt; 40%</strong>：粉末產品吸潮、結塊，影響流動性和劑量均一性",
+   "en": "<strong>RH &gt; 40%</strong>: powder absorbs moisture and cakes, affecting flowability and dose uniformity"
+  },
+  {
+   "zh": "<strong>RH &lt; 20-30%</strong>：操作人員喉嚨和眼睛不適，且靜電問題加劇",
+   "en": "<strong>RH &lt; 20-30%</strong>: operators suffer throat and eye discomfort, and static electricity problems worsen"
+  },
+  {
+   "zh": "<strong>甜蜜區間</strong>：通常 30-40% RH 是粉末操作的理想範圍",
+   "en": "<strong>The sweet spot</strong>: 30-40% RH is usually the ideal range for powder handling"
+  },
+  {
+   "zh": "<strong>Desiccant Dehumidifier（乾燥劑除濕機）</strong>：當需要露點低於 5°C 時才考慮使用，因為資本與能源成本都很高。",
+   "en": "<strong>Desiccant dehumidifier</strong>: consider one only when a dew point below 5°C is required, because both capital and energy costs are high."
+  },
+  {
+   "zh": "<strong>回風管密封是隱藏殺手</strong>：指引特別提到回風管系統的密封問題——如果回風管有縫隙，非控制區域的高濕空氣會滲入，導致房間濕度失控。這在台灣的高濕環境中尤其重要，務必在 C&amp;Q 階段驗證回風管的氣密性。",
+   "en": "<strong>Return duct sealing is the hidden killer</strong>: the guide specifically mentions sealing of the return duct system - if the return ductwork has gaps, humid air from uncontrolled areas leaks in and the room humidity goes out of control. This is especially important in Taiwan's humid environment; be sure to verify the airtightness of return ducts during C&amp;Q."
+  },
+  {
+   "zh": "<strong>加濕器位置</strong>：最常見的位置是在 AHU 最終過濾器之後。如果放在風扇之前，水滴可能打到扇葉造成腐蝕——這是新手設計師常犯的錯誤。",
+   "en": "<strong>Humidifier location</strong>: the most common position is after the final filter of the AHU. If it is placed before the fan, water droplets may hit the fan blades and cause corrosion - a mistake new designers often make."
+  },
+  {
+   "zh": "公式與計算 Formula",
+   "en": "Formula and Calculation"
+  },
+  {
+   "zh": "粉末操作理想濕度範圍：\n  產品保護下限：RH ≤ 40%（防止吸潮）\n  人員舒適下限：RH ≥ 20-30%（防止黏膜刺激）\n  實務目標：30% ≤ RH ≤ 40%\n\n露點溫度換算參考：\n  40°F = 4.4°C（乾燥劑除濕啟用門檻）",
+   "en": "Ideal humidity range for powder handling:\n  Product protection limit: RH ≤ 40% (prevents moisture uptake)\n  Personnel comfort limit: RH ≥ 20-30% (prevents mucous membrane irritation)\n  Practical target: 30% ≤ RH ≤ 40%\n\nDew point conversion reference:\n  40°F = 4.4°C (threshold for using a desiccant dehumidifier)"
+  },
+  {
+   "zh": "為什麼在冷卻和加濕不太可能同時發生的氣候中，可以把加濕器放在冷卻盤管之前？",
+   "en": "In a climate where cooling and humidification are unlikely to occur at the same time, why can the humidifier be placed before the cooling coil?"
+  },
+  {
+   "zh": "台灣夏季室外 RH 常達 80-90%，如果一間粉末操作室需要 RH &lt; 35%，你會建議哪種除濕策略？為什麼？",
+   "en": "Summer outdoor RH in Taiwan often reaches 80-90%. If a powder handling room needs RH &lt; 35%, which dehumidification strategy would you recommend, and why?"
+  },
+  {
+   "zh": "3.2.3 Hazardous Materials and their Removal（危險物質及其排除）",
+   "en": "3.2.3 Hazardous Materials and their Removal"
+  },
+  {
+   "zh": "核心概念：危險物質排風層級",
+   "en": "Core Concept: Hierarchy of Hazardous Material Exhaust"
+  },
+  {
+   "zh": "本節涵蓋兩類風險——<strong>溶劑（易燃/爆炸風險）</strong>和<strong>高效化合物（人員暴露風險）</strong>，HVAC 應對策略不同但互補：",
+   "en": "This section covers two types of risk - <strong>solvents (flammability/explosion risk)</strong> and <strong>highly potent compounds (personnel exposure risk)</strong>. The HVAC responses differ but are complementary:"
+  },
+  {
+   "zh": "<strong>LEL（Lower Explosive Limit，爆炸下限）</strong>：溶劑蒸氣濃度達到 LEL 的 25% 以上就禁止迴風",
+   "en": "<strong>LEL (Lower Explosive Limit)</strong>: recirculation is prohibited once solvent vapor concentration reaches 25% or more of the LEL"
+  },
+  {
+   "zh": "<strong>LEV（Local Exhaust Ventilation，局部排風）</strong>：在粉塵或氣溶膠排放點直接抽排，防止擴散到整個房間",
+   "en": "<strong>LEV (Local Exhaust Ventilation)</strong>: extract directly at the point where dust or aerosol is released, preventing it from spreading through the whole room"
+  },
+  {
+   "zh": "<strong>OEL（Occupational Exposure Limit，職業暴露限值）</strong>：高效化合物需要密閉操作 + LEV + HEPA 排氣處理",
+   "en": "<strong>OEL (Occupational Exposure Limit)</strong>: highly potent compounds require closed handling + LEV + HEPA treatment of the exhaust"
+  },
+  {
+   "zh": "<strong>Bag-in/Bag-out Filter（袋進袋出過濾器）</strong>：更換過濾器時不需打開殼體，防止維護人員接觸有害粉塵",
+   "en": "<strong>Bag-in/bag-out filter</strong>: the filter can be changed without opening the housing, protecting maintenance staff from hazardous dust"
+  },
+  {
+   "zh": "想像廚房的抽油煙機：",
+   "en": "Think of a kitchen range hood:"
+  },
+  {
+   "zh": "<strong>LEV</strong> = 爐灶正上方的抽油煙機——在油煙產生的源頭直接排走",
+   "en": "<strong>LEV</strong> = the hood directly above the stove - removes the fumes right at the source"
+  },
+  {
+   "zh": "<strong>Once-through System</strong> = 整間廚房的空氣只進不出、不回收——當你炸東西（有溶劑蒸氣）時的做法",
+   "en": "<strong>Once-through system</strong> = all the air in the whole kitchen goes out and none is recirculated - what you do when frying (solvent vapor present)"
+  },
+  {
+   "zh": "<strong>Hard Connect</strong> = 固定管路連接 vs 可移動臂管——固定管路密封性好，可移動臂是在固定連接不可行時的退而求其次",
+   "en": "<strong>Hard connect</strong> = fixed duct connection vs. movable arm duct - a fixed connection seals better; a movable arm is the fallback when a fixed connection is not feasible"
+  },
+  {
+   "zh": "<strong>Bag-in/Bag-out</strong> = 醫院傳染廢棄物的密封袋更換——不讓處理人員接觸內容物",
+   "en": "<strong>Bag-in/bag-out</strong> = like replacing the sealed bag for hospital infectious waste - handlers never come into contact with the contents"
+  },
+  {
+   "zh": "<strong>緊急電力是生死攸關的決策</strong>：排風系統是否需要接緊急電源，要逐案評估。但指引明確建議：即使排風扇本身沒有接緊急電源，警報系統也必須接 UPS。原因很簡單——如果停電導致排風停止，卻沒有人知道，溶劑蒸氣可能累積到爆炸濃度。",
+   "en": "<strong>Emergency power is a life-or-death decision</strong>: whether exhaust systems need emergency power must be evaluated case by case. But the guide is clear: even if the exhaust fan itself is not on emergency power, the alarm system must be on a UPS. The reason is simple - if a power failure stops the exhaust and nobody knows, solvent vapor can build up to explosive concentrations."
+  },
+  {
+   "zh": "<strong>排氣處理不是可選項</strong>：所有排放到大氣的氣流都必須評估內容物，並視需要安裝洗滌器、HEPA、活性碳等處理設備。能量回收應安排在洗滌器之前，以最大化回收效率。",
+   "en": "<strong>Exhaust treatment is not optional</strong>: every airstream discharged to atmosphere must be evaluated for its contents, and scrubbers, HEPA filters, activated carbon or other treatment installed as needed. Energy recovery should be arranged before the scrubber to maximize recovery efficiency."
+  },
+  {
+   "zh": "在 CDMO 評估是否承接含溶劑反應的 API 合成案時，HVAC 改造成本往往是決策關鍵。如果現有設施是迴風系統，改為 Once-through 意味著：(1) 排風量大幅增加，需要更大的 AHU 和冷凍能力；(2) 需要增設防爆等級的電氣設備；(3) 排氣處理設備（如洗滌器或活性碳塔）的投資。這些成本必須反映在客戶報價中。",
+   "en": "When a CDMO evaluates whether to take on an API synthesis project involving solvent reactions, the HVAC retrofit cost is often the deciding factor. If the existing facility uses recirculated air, switching to once-through means: (1) a much larger exhaust volume, requiring a larger AHU and more chilling capacity; (2) additional explosion-proof electrical equipment; (3) investment in exhaust treatment equipment (such as scrubbers or activated carbon towers). These costs must be reflected in the quotation to the customer."
+  },
+  {
+   "zh": "為什麼排風管路通常不需要保溫，但含腐蝕性蒸氣時例外？",
+   "en": "Why does exhaust ductwork usually not need insulation, except when it carries corrosive vapors?"
+  },
+  {
+   "zh": "指引要求風扇至少達 AMCA Type B 防火花等級——請解釋為什麼普通風扇在易燃環境中不安全。",
+   "en": "The guide requires fans to be at least AMCA Type B spark-resistant - explain why an ordinary fan is unsafe in a flammable environment."
+  },
+  {
+   "zh": "「Re-entrainment into HVAC systems」是什麼意思？如何防止？",
+   "en": "What does \"re-entrainment into HVAC systems\" mean? How can it be prevented?"
+  },
+  {
+   "zh": "3.2.4 Product Contamination Control（產品污染控制）",
+   "en": "3.2.4 Product Contamination Control"
+  },
+  {
+   "zh": "核心概念：壓差與氣流方向控制",
+   "en": "Core Concept: Differential Pressure and Air Flow Direction Control"
+  },
+  {
+   "zh": "<strong>Pressure Cascade（壓力梯度）</strong>是製藥 HVAC 的核心設計原則——空氣永遠從「乾淨」流向「較不乾淨」。實現方式：",
+   "en": "<strong>Pressure cascade</strong> is the core design principle of pharmaceutical HVAC - air always flows from \"clean\" to \"less clean\". It is achieved through:"
+  },
+  {
+   "zh": "<strong>DP（Differential Pressure，壓差）</strong>：通常潔淨區比走廊高 10-15 Pa，確保開門時空氣向外流出而非向內滲入",
+   "en": "<strong>DP (differential pressure)</strong>: the clean area is usually 10-15 Pa higher than the corridor, ensuring that air flows outward when a door is opened rather than leaking inward"
+  },
+  {
+   "zh": "<strong>回風管風門控制</strong>：通過調整每間房間回風量來設定壓差。自動風門精確但複雜；手動風門簡單但需要防篡改（tamper-proof）",
+   "en": "<strong>Return duct damper control</strong>: differential pressure is set by adjusting the return air volume of each room. Automatic dampers are precise but complex; manual dampers are simple but must be tamper-proof"
+  },
+  {
+   "zh": "<strong>氣流方向監控與警報</strong>：分級區域必須持續監控壓差方向，一旦逆轉立即報警",
+   "en": "<strong>Air flow direction monitoring and alarms</strong>: classified areas must be continuously monitored for pressure differential direction, with an immediate alarm if it reverses"
+  },
+  {
+   "zh": "Pressure Cascade（壓力梯度）就像水往低處流的原理——只是這裡是「空氣往低壓處流」。想像一棟三層樓建築：頂樓（最潔淨區）水壓最高，二樓中等，一樓最低。每層之間有閥門（風門），開門時水只會從上往下流。如果某層的閥門被人亂調（tamper），水流方向就可能逆轉——這就是為什麼風門要上鎖。",
+   "en": "The pressure cascade works like water flowing downhill - except here \"air flows toward lower pressure\". Imagine a three-storey building: the top floor (cleanest area) has the highest water pressure, the second floor medium, the ground floor the lowest. Valves (dampers) sit between floors, so when a door opens, water only flows from top to bottom. If someone tampers with the valve on one floor, the flow direction could reverse - which is why dampers must be locked."
+  },
+  {
+   "zh": "<strong>Grade A 整房設計是不得已的選擇</strong>：指引明確表示 Grade 5（Grade A）整間房間「are not recommended」，列出三大理由：",
+   "en": "<strong>A Grade A whole room is a choice of last resort</strong>: the guide states clearly that Grade 5 (Grade A) for an entire room is \"not recommended\", and gives three main reasons:"
+  },
+  {
+   "zh": "<strong>人在產品旁</strong>：操作員是最大的微粒來源，必須用煙霧測試驗證氣流能有效隔開人與產品",
+   "en": "<strong>People next to the product</strong>: operators are the biggest source of particles, and smoke tests must verify that the air flow effectively separates people from the product"
+  },
+  {
+   "zh": "<strong>死區問題</strong>：房間中央（恰好是關鍵操作區）常出現氣流死角。電子業用穿孔地板解決，但在藥廠不可行（清潔問題 + 細菌滋生）",
+   "en": "<strong>Dead zones</strong>: air flow dead spots often occur in the middle of the room, which is exactly where the critical operation takes place. The electronics industry solves this with perforated floors, but this is not feasible in a pharmaceutical plant (cleaning difficulties + bacterial growth)"
+  },
+  {
+   "zh": "<strong>HEPA 高度</strong>：天花板越高，單向流到達操作面時越紊亂。HEPA 過濾器應盡量靠近關鍵操作面",
+   "en": "<strong>HEPA height</strong>: the higher the ceiling, the more turbulent the unidirectional flow when it reaches the working surface. HEPA filters should be as close to the critical working surface as possible"
+  },
+  {
+   "zh": "這就是為什麼現代趨勢是用 RABS 或 Isolator（隔離器）取代 Grade A 整房。",
+   "en": "This is why the modern trend is to replace Grade A whole rooms with RABS or isolators."
+  },
+  {
+   "zh": "術語辨析：CNC vs Classified",
+   "en": "Terminology: CNC vs Classified"
+  },
+  {
+   "zh": "<strong>CNC（Controlled Not Classified）</strong>：供氣有過濾、有人員管控，相當於 EU Grade D 水平，但不需要做粒子分級認證。與 Classified 區域的差別在於監控和驗證要求較低，但環境控制水準相似。這對 API 操作區域（非無菌）是務實的選擇。",
+   "en": "<strong>CNC (Controlled Not Classified)</strong>: the supply air is filtered and personnel are controlled, roughly equivalent to EU Grade D, but particle classification certification is not required. The difference from a Classified area is lower monitoring and verification requirements, while the level of environmental control is similar. This is a pragmatic choice for API handling areas (non-sterile)."
+  },
+  {
+   "zh": "Packed silencer（填充式消音器）為什麼不適合用在製藥環境？它的材質結構有什麼問題？",
+   "en": "Why is a packed silencer unsuitable for pharmaceutical environments? What is the problem with its material and construction?"
+  },
+  {
+   "zh": "為什麼指引建議低位回風口放在設備後方？如果放在操作員正對面會有什麼影響？",
+   "en": "Why does the guide recommend placing low-level return air grilles behind the equipment? What would be the effect of placing them directly opposite the operator?"
+  },
+  {
+   "zh": "當凍乾機裝載需要 Grade A 環境時，低位回風口為什麼要設在凍乾機門下方？",
+   "en": "When freeze dryer loading requires a Grade A environment, why should the low-level return be placed beneath the freeze dryer door?"
+  },
+  {
+   "zh": "3.2.5 General AHU and Control Considerations（空調機組與控制通則）",
+   "en": "3.2.5 General AHU and Control Considerations"
+  },
+  {
+   "zh": "核心概念：AHU 設計關鍵選擇",
+   "en": "Core Concept: Key AHU Design Choices"
+  },
+  {
+   "zh": "<strong>CV Terminal Reheat（定風量末端再熱）</strong>是藥廠最常見的 HVAC 型式：",
+   "en": "<strong>CV terminal reheat (constant volume with terminal reheat)</strong> is the most common HVAC type in pharmaceutical plants:"
+  },
+  {
+   "zh": "<strong>定風量</strong>：確保每間房間的換氣次數穩定",
+   "en": "<strong>Constant volume</strong>: ensures a stable air change rate in every room"
+  },
+  {
+   "zh": "<strong>末端再熱</strong>：AHU 先統一冷卻除濕到最低需求溫度，再在各房間末端加熱到目標溫度",
+   "en": "<strong>Terminal reheat</strong>: the AHU first cools and dehumidifies all air to the lowest required temperature, then heats it to the target temperature at the terminal of each room"
+  },
+  {
+   "zh": "優點：壓差穩定、控制簡單、可靠度高",
+   "en": "Advantages: stable differential pressure, simple control, high reliability"
+  },
+  {
+   "zh": "缺點：能耗較高（先冷再熱）",
+   "en": "Disadvantages: higher energy consumption (cool first, then reheat)"
+  },
+  {
+   "zh": "<strong>Fan Redundancy（風扇冗餘）</strong>：是否需要雙風扇或多風扇，取決於風險評估——如果 AHU 停機會導致批次報廢，冗餘設計就有經濟合理性。",
+   "en": "<strong>Fan redundancy</strong>: whether dual or multiple fans are needed depends on risk assessment - if AHU downtime would lead to batch rejection, redundancy is economically justified."
+  },
+  {
+   "zh": "CV Terminal Reheat 就像中央空調把整棟大樓先冷到 16°C，然後每間房間再各自用暖氣加熱到 22°C。看似浪費能源，但好處是每間房間的溫濕度互不影響，控制精確。這就像先把所有食材冷凍保存，再個別解凍烹調——多一道工序，但品質一致。",
+   "en": "CV terminal reheat is like a central air conditioner that first cools the whole building to 16°C, and then each room heats itself to 22°C. It looks like a waste of energy, but the benefit is that the temperature and humidity of each room do not affect one another, giving precise control. It is like freezing all the ingredients first and then thawing them individually for cooking - an extra step, but consistent quality."
+  },
+  {
+   "zh": "<strong>「Justify the complexity」</strong>——這句話值得刻在每位 HVAC 工程師的心上。指引直接說：成功的 HVAC 系統可能根本不需要壓差控制器、定風量箱或 HEPA 預過濾器。每增加一個元件就增加一個故障點和維護需求。在選擇方案時，永遠先問：「如果不加這個，會出什麼問題？」如果答案是「不會有問題」，那就不要加。",
+   "en": "<strong>\"Justify the complexity\"</strong> - this phrase deserves to be engraved on the heart of every HVAC engineer. The guide says directly that a successful HVAC system may not need pressure controllers, constant volume boxes or HEPA prefilters at all. Every added component adds a failure point and a maintenance requirement. When choosing a solution, always ask first: \"What problem would occur if we did not add this?\" If the answer is \"none\", do not add it."
+  },
+  {
+   "zh": "<strong>過濾器壓降隨時間增加</strong>：這是新手常忽略的問題。新過濾器壓降低，風量大；舊過濾器壓降高，風量小。如果風扇沒有變速或變風門，隨著過濾器使用，房間風量會逐漸下降，壓差也跟著變化。",
+   "en": "<strong>Filter pressure drop increases over time</strong>: this is a problem novices often overlook. A new filter has a low pressure drop and high air flow; an old filter has a high pressure drop and low air flow. If the fan has no variable speed drive or variable damper, room air flow gradually falls as the filter loads, and the differential pressure changes with it."
+  },
+  {
+   "zh": "在 CDMO 設施的年度維護計畫中，AHU 過濾器更換時機的判斷至關重要。過早更換浪費成本，過晚更換則風量不足影響壓差。建議建立「過濾器壓降趨勢圖」——定期記錄壓降值，當接近設計餘裕的 80% 時排程更換。這個數據也是能源管理的重要指標。",
+   "en": "In the annual maintenance plan of a CDMO facility, judging when to change AHU filters is critical. Changing too early wastes cost; changing too late gives insufficient air flow that affects differential pressure. We recommend building a \"filter pressure drop trend chart\" - record the pressure drop regularly and schedule replacement when it approaches 80% of the design margin. This data is also an important indicator for energy management."
+  },
+  {
+   "zh": "為什麼「生產區回風不應作為非生產區供氣」？如果倉庫用了生產區的回風，可能有什麼風險？",
+   "en": "Why should \"production area return air not be used as supply air for non-production areas\"? What risks might arise if a warehouse used return air from a production area?"
+  },
+  {
+   "zh": "100% 外氣 AHU 在寒冷氣候中為何容易凍管？IFB Steam Coil 如何解決這個問題？",
+   "en": "Why is a 100% outside air AHU prone to coil freezing in cold climates? How does the IFB steam coil solve this problem?"
+  },
+  {
+   "zh": "檢修門既需要但又是泄漏風險——如何在設計中平衡「可維護性」和「密封性」？",
+   "en": "Access doors are both necessary and a leakage risk - how can the design balance \"maintainability\" and \"tightness\"?"
+  },
+  {
+   "zh": "3.2.6 Application of Outside Air Pretreatment（外氣預處理應用）",
+   "en": "3.2.6 Application of Outside Air Pretreatment"
+  },
+  {
+   "zh": "核心概念：外氣預處理 vs 全流除濕",
+   "en": "Core Concept: Outside Air Pretreatment vs Full-flow Dehumidification"
+  },
+  {
+   "zh": "<strong>Outside Air Pretreatment（外氣預處理）</strong>的核心邏輯：",
+   "en": "The core logic of <strong>outside air pretreatment</strong>:"
+  },
+  {
+   "zh": "<strong>傳統做法</strong>：把所有迴風+外氣混合後一起冷卻除濕 → 過度冷卻 → 再加熱 = 高能耗",
+   "en": "<strong>Traditional approach</strong>: mix all the return air and outside air, then cool and dehumidify it together → overcooling → reheating = high energy consumption"
+  },
+  {
+   "zh": "<strong>預處理做法</strong>：只針對佔總風量 10-30% 的外氣做深度除濕處理，然後與「已經比較乾燥」的迴風混合 → 迴風盤管只需做顯熱冷卻 → 省能源",
+   "en": "<strong>Pretreatment approach</strong>: deeply dehumidify only the outside air, which makes up 10-30% of the total air volume, then mix it with return air that is \"already relatively dry\" → the return air coil only needs to do sensible cooling → energy saved"
+  },
+  {
+   "zh": "前提條件是<strong>室內潛熱負荷要低</strong>——也就是說房間內部不會產生大量水分（例如沒有開放性清洗作業）。",
+   "en": "The prerequisite is a <strong>low internal latent load</strong> - that is, the room itself does not generate a lot of moisture (for example, no open washing operations)."
+  },
+  {
+   "zh": "想像你有一鍋湯要控制鹹度：",
+   "en": "Imagine you have a pot of soup whose saltiness you need to control:"
+  },
+  {
+   "zh": "<strong>傳統做法</strong>：每次加水就把整鍋湯重新調味（相當於所有空氣一起除濕再加熱）",
+   "en": "<strong>Traditional approach</strong>: every time you add water, you re-season the whole pot (equivalent to dehumidifying all the air together and then reheating it)"
+  },
+  {
+   "zh": "<strong>預處理做法</strong>：新加的水（外氣）先單獨過濾淡化後再倒入湯中，湯本身只需微調（迴風只做溫度控制）",
+   "en": "<strong>Pretreatment approach</strong>: the newly added water (outside air) is first filtered and diluted separately before being poured into the soup, and the soup itself needs only slight adjustment (the return air only gets temperature control)"
+  },
+  {
+   "zh": "後者更有效率，但前提是「湯本身不會越煮越鹹」（室內不會持續產生潛熱負荷）。",
+   "en": "The latter is more efficient, but only if \"the soup itself does not get saltier as it cooks\" (the room does not continuously generate latent load)."
+  },
+  {
+   "zh": "<strong>台灣氣候特別適合外氣預處理</strong>：台灣夏季外氣含濕量極高（20+ g/kg），但室內迴風的含濕量通常較低。如果只針對外氣做深度除濕，能節省大量能源。不過要注意：",
+   "en": "<strong>Taiwan's climate is particularly suited to outside air pretreatment</strong>: summer outside air in Taiwan has a very high moisture content (20+ g/kg), whereas the moisture content of indoor return air is usually lower. Deeply dehumidifying only the outside air can save a great deal of energy. Note, however:"
+  },
+  {
+   "zh": "清洗操作（WFI 沖洗設備）會突然增加室內潛熱負荷，此時預處理系統可能來不及反應",
+   "en": "Washing operations (rinsing equipment with WFI) suddenly increase the room latent load, and the pretreatment system may not respond in time"
+  },
+  {
+   "zh": "回風管如果從非控制區域吸入潮濕空氣，整個策略會失效",
+   "en": "If the return ductwork draws in humid air from uncontrolled areas, the whole strategy fails"
+  },
+  {
+   "zh": "建議保留迴風盤管的排水盤，作為「異常恢復」的備用能力",
+   "en": "It is advisable to retain the drain pan of the return air coil as backup capacity for \"abnormal recovery\""
+  },
+  {
+   "zh": "能效比較 Energy Comparison",
+   "en": "Energy Comparison"
+  },
+  {
+   "zh": "傳統全流除濕（假設 20% 外氣，80% 迴風）：\n  冷卻負荷 = 100% 風量 × (混合焓 - 目標焓)\n  再熱負荷 = 100% 風量 × (目標溫度 - 冷卻溫度)\n\n外氣預處理：\n  預處理冷卻 = 20% 風量 × (外氣焓 - 目標焓)  ← 只處理外氣\n  迴風顯冷 = 80% 風量 × (迴風溫度 - 目標溫度)  ← 不需除濕\n  再熱 ≈ 0（因為不過度冷卻）\n\n節能潛力：通常可節省 30-50% 冷卻能耗",
+   "en": "Traditional full-flow dehumidification (assuming 20% outside air, 80% return air):\n  Cooling load = 100% air volume × (mixed enthalpy - target enthalpy)\n  Reheat load = 100% air volume × (target temperature - cooled temperature)\n\nOutside air pretreatment:\n  Pretreatment cooling = 20% air volume × (outside air enthalpy - target enthalpy)  ← treats outside air only\n  Return air sensible cooling = 80% air volume × (return air temperature - target temperature)  ← no dehumidification needed\n  Reheat ≈ 0 (because there is no overcooling)\n\nEnergy saving potential: typically 30-50% saving in cooling energy"
+  },
+  {
+   "zh": "為什麼指引建議將預處理空氣導入迴風機組的入口（inlet），而非出口（downstream）？從氣流混合和控制角度思考。",
+   "en": "Why does the guide recommend introducing pretreated air at the inlet of the recirculation unit rather than downstream of it? Think from the perspective of air mixing and control."
+  },
+  {
+   "zh": "如果一間 API 粉末操作室需要 RH &lt; 30%，但同時有定期 WFI 清洗作業（高潛熱負荷），外氣預處理方案是否可行？為什麼？",
+   "en": "If an API powder handling room needs RH &lt; 30% but also has regular WFI washing operations (high latent load), is an outside air pretreatment solution feasible? Why?"
+  },
+  {
+   "zh": "3.3 Air Flow Diagrams by Facility Type（各廠房類型氣流圖）",
+   "en": "3.3 Air Flow Diagrams by Facility Type"
+  },
+  {
+   "zh": "核心概念：AFD 與 AF&amp;ID",
+   "en": "Core Concept: AFD and AF&amp;ID"
+  },
+  {
+   "zh": "<strong>AFD（Air Flow Diagram，氣流圖）</strong>：簡化版的 HVAC 系統圖，只顯示氣流方向、過濾器位置和主要元件，用於概念設計階段。",
+   "en": "<strong>AFD (Air Flow Diagram)</strong>: a simplified HVAC system diagram showing only air flow direction, filter locations and major components, used at the conceptual design stage."
+  },
+  {
+   "zh": "<strong>AF&amp;ID（Air Flow &amp; Instrumentation Diagram，氣流與儀表圖）</strong>：詳細版，包含所有感測器、控制閥、風門位置、警報點等。相當於 P&amp;ID 在管路系統中的角色。",
+   "en": "<strong>AF&amp;ID (Air Flow &amp; Instrumentation Diagram)</strong>: the detailed version, including all sensors, control valves, damper positions, alarm points and so on. It plays the same role as the P&amp;ID does for piping systems."
+  },
+  {
+   "zh": "<strong>RHC（Reheat Coil，再熱盤管）</strong>：各房間末端的加熱元件。",
+   "en": "<strong>RHC (reheat coil)</strong>: the heating element at the terminal of each room."
+  },
+  {
+   "zh": "<strong>CVD（Constant Volume Damper，定風量風門）</strong>：自動調整開度以維持恆定風量的裝置。",
+   "en": "<strong>CVD (constant volume damper)</strong>: a device that automatically adjusts its opening to maintain a constant air volume."
+  },
+  {
+   "zh": "指引特別聲明這些圖表「do not constitute recommended practice」——它們只是教學範例，不能直接複製到實際設計中。每個專案都需要根據產品特性、法規要求、當地氣候和設施條件做客製化設計。",
+   "en": "The guide specifically states that these diagrams \"do not constitute recommended practice\" - they are teaching examples only and cannot be copied directly into an actual design. Every project needs a customized design based on product characteristics, regulatory requirements, local climate and facility conditions."
+  },
+  {
+   "zh": "3.4 Active Pharmaceutical Ingredients (APIs) – Wet End（原料藥—濕段）",
+   "en": "3.4 Active Pharmaceutical Ingredients (APIs) - Wet End"
+  },
+  {
+   "zh": "核心概念：API 濕段 HVAC 設計邏輯",
+   "en": "Core Concept: HVAC Design Logic for the API Wet End"
+  },
+  {
+   "zh": "<strong>API Wet End（原料藥濕段）</strong>是化學合成的反應段，通常涉及溶劑使用、化學反應和中間體處理。HVAC 設計的核心考量是<strong>安全性</strong>（溶劑爆炸風險）和<strong>人員保護</strong>（高效化合物暴露）：",
+   "en": "The <strong>API wet end</strong> is the chemical synthesis stage, typically involving solvent use, chemical reactions and intermediate handling. The core HVAC considerations are <strong>safety</strong> (solvent explosion risk) and <strong>personnel protection</strong> (exposure to highly potent compounds):"
+  },
+  {
+   "zh": "<strong>開放操作 + 溶劑</strong> → 必須 Once-through（100% 排風）",
+   "en": "<strong>Open operation + solvents</strong> → must be once-through (100% exhaust)"
+  },
+  {
+   "zh": "<strong>密閉製程</strong> → 可以迴風，但需要 LEL 監控作為安全網",
+   "en": "<strong>Closed process</strong> → recirculation is possible, but LEL monitoring is needed as a safety net"
+  },
+  {
+   "zh": "<strong>水相化學</strong> → 無溶劑風險，可用一般 OSD 級別的 HVAC",
+   "en": "<strong>Aqueous chemistry</strong> → no solvent risk; general OSD-level HVAC can be used"
+  },
+  {
+   "zh": "<strong>MERV 7 + MERV 13</strong> 是「Good Housekeeping」級別的過濾配置——不要求 HEPA，因為 API 濕段通常不是潔淨區。",
+   "en": "<strong>MERV 7 + MERV 13</strong> is a \"good housekeeping\" level filtration configuration - HEPA is not required because the API wet end is usually not a cleanroom."
+  },
+  {
+   "zh": "API Wet End 的 HVAC 就像加油站的通風設計：",
+   "en": "The HVAC of an API wet end is like the ventilation design of a gas station:"
+  },
+  {
+   "zh": "<strong>開放加油區</strong>（開放操作）：必須全通風、不迴風，因為汽油蒸氣有爆炸風險",
+   "en": "<strong>Open fueling area</strong> (open operation): full ventilation with no recirculation, because gasoline vapor poses an explosion risk"
+  },
+  {
+   "zh": "<strong>密封油槽區</strong>（密閉製程）：可以允許部分迴風，但需要氣體偵測器",
+   "en": "<strong>Sealed tank area</strong> (closed process): partial recirculation can be allowed, but gas detectors are needed"
+  },
+  {
+   "zh": "<strong>洗車區</strong>（水相化學）：只用水，無易燃風險，普通通風即可",
+   "en": "<strong>Car wash area</strong> (aqueous chemistry): only water, no flammability risk, ordinary ventilation is enough"
+  },
+  {
+   "zh": "<strong>Charging Isolator/Booth（投料隔離器/投料亭）</strong>是本節的關鍵概念。在 API 濕段，最危險的操作之一是「加料」——打開反應器人孔蓋投入固體原料。此時溶劑蒸氣大量逸出、粉塵也可能擴散。使用投料隔離器或投料亭可以把這個高風險操作限制在密閉空間內，大幅降低房間級別的 HVAC 負擔。",
+   "en": "<strong>Charging isolator/booth</strong> is a key concept in this section. In the API wet end, one of the most hazardous operations is charging - opening the reactor manway to add solid raw materials. At this point large amounts of solvent vapor escape and dust may also spread. Using a charging isolator or booth confines this high-risk operation to an enclosed space and greatly reduces the room-level HVAC burden."
+  },
+  {
+   "zh": "<strong>低位回風口</strong>是 API 區域的標配：因為溶劑蒸氣比空氣重（大多數有機溶劑的蒸氣密度 &gt; 1），會沉降到地面附近，低位回風口可以有效排除。",
+   "en": "<strong>Low-level return grilles</strong> are standard in API areas: because solvent vapors are heavier than air (most organic solvents have a vapor density &gt; 1), they settle near the floor, and low-level returns remove them effectively."
+  },
+  {
+   "zh": "CDMO 在接案評估 API 合成案時，必須確認製程中使用的溶劑種類和用量。如果主要反應是水相化學（如生物觸媒反應），HVAC 改造成本很低。但如果涉及大量有機溶劑（如 THF、DCM、甲醇），就需要 Once-through 系統、LEL 監控、防爆電氣和緊急排風——這些都是重大資本投入。務必在報價階段就將 HVAC 改造成本納入。",
+   "en": "When a CDMO evaluates an API synthesis project, it must confirm the types and quantities of solvents used in the process. If the main reaction is aqueous chemistry (such as a biocatalytic reaction), the HVAC retrofit cost is very low. But if large quantities of organic solvents (such as THF, DCM or methanol) are involved, a once-through system, LEL monitoring, explosion-proof electrical equipment and emergency exhaust are needed - all major capital investments. Be sure to include the HVAC retrofit cost at the quotation stage."
+  },
+  {
+   "zh": "為什麼 API 濕段只要 MERV 7 + MERV 13 過濾而非 HEPA？從產品風險角度思考。",
+   "en": "Why does the API wet end need only MERV 7 + MERV 13 filtration rather than HEPA? Think from the perspective of product risk."
+  },
+  {
+   "zh": "「Dilution ventilation on emergency power may minimize electrical classification requirements」——這句話的意思是什麼？為什麼充分稀釋通風可以降低防爆等級要求？",
+   "en": "What does the statement \"Dilution ventilation on emergency power may minimize electrical classification requirements\" mean? Why can adequate dilution ventilation lower the explosion-protection classification requirements?"
+  },
+  {
+   "zh": "3.5 Active Pharmaceutical Ingredients (APIs) – Dry End（原料藥—乾段）",
+   "en": "3.5 Active Pharmaceutical Ingredients (APIs) - Dry End"
+  },
+  {
+   "zh": "核心概念：乾段的雙軌設計原則",
+   "en": "Core Concept: Two-track Design Principle for the Dry End"
+  },
+  {
+   "zh": "<strong>API Dry End（原料藥乾段）</strong>是 API 的固態處理階段（離心、乾燥、混合、研磨、包裝）。設計邏輯取決於<strong>最終用途</strong>：",
+   "en": "The <strong>API dry end</strong> is the solid handling stage of the API (centrifugation, drying, blending, milling, packaging). The design logic depends on the <strong>end use</strong>:"
+  },
+  {
+   "zh": "<strong>口服固體製劑用 API</strong> → CNC 等級（≈ EU Grade D capable，ISO 8 靜態），不需要分級認證",
+   "en": "<strong>API for oral solid dosage</strong> → CNC level (≈ EU Grade D capable, ISO 8 at rest), no classification certification required"
+  },
+  {
+   "zh": "<strong>最終成為無菌產品的 API</strong>（包括生物製劑原液）→ Grade C（ISO 8），需要 HEPA、低位回風、氣閘（Airlock）、儀表監控",
+   "en": "<strong>API that will become a sterile product</strong> (including biologics drug substance) → Grade C (ISO 8), requiring HEPA, low-level returns, airlocks and instrumented monitoring"
+  },
+  {
+   "zh": "這就是「產品最終用途決定設計等級」的具體體現。",
+   "en": "This is a concrete example of \"the end use of the product determines the design level\"."
+  },
+  {
+   "zh": "API 乾段的設計等級就像食品加工廠的衛生等級：",
+   "en": "The design level of an API dry end is like hygiene levels in food processing plants:"
+  },
+  {
+   "zh": "<strong>做餅乾用的麵粉</strong>（口服 API）：工廠要乾淨，但不需要手術室等級",
+   "en": "<strong>Flour for making biscuits</strong> (oral API): the plant must be clean, but operating-theater standards are not needed"
+  },
+  {
+   "zh": "<strong>做嬰兒配方奶粉的原料</strong>（將成為無菌產品的 API）：必須在接近手術室的環境中操作，因為最終產品會直接注射到人體",
+   "en": "<strong>Raw material for infant formula</strong> (API that will become a sterile product): must be handled in an environment close to an operating theater, because the final product will be injected directly into the human body"
+  },
+  {
+   "zh": "同樣是處理粉末，因為終端用途不同，HVAC 投資可能差 3-5 倍。",
+   "en": "Even though both handle powder, the HVAC investment can differ by 3-5 times because of the different end use."
+  },
+  {
+   "zh": "<strong>Airlock（氣閘）</strong>在 API 乾段有雙重功能：",
+   "en": "<strong>Airlocks</strong> have a dual function in the API dry end:"
+  },
+  {
+   "zh": "<strong>防止粉塵外洩</strong>：氣閘形成壓力緩衝區，開門時粉塵不會擴散到走廊",
+   "en": "<strong>Preventing dust escape</strong>: the airlock forms a pressure buffer zone so that dust does not spread to the corridor when a door is opened"
+  },
+  {
+   "zh": "<strong>維持壓差穩定</strong>：沒有氣閘時，開門瞬間壓差歸零，如果走廊有其他產品的粉塵就可能被吸入",
+   "en": "<strong>Maintaining stable differential pressure</strong>: without an airlock, the differential pressure drops to zero the moment a door is opened, and dust from other products in the corridor might be drawn in"
+  },
+  {
+   "zh": "<strong>Containment Exhaust 的關鍵規則</strong>：高效 API 的密閉排風<strong>絕對不能回到房間</strong>。排風中含有高濃度活性成分，如果經過迴風系統再送回房間，操作人員會持續暴露。必須用 HEPA 或洗滌器處理後排到大氣。",
+   "en": "<strong>The key rule for containment exhaust</strong>: the containment exhaust of a highly potent API <strong>must never return to the room</strong>. The exhaust contains a high concentration of active ingredient, and if it passed through the recirculation system and back into the room, operators would be continuously exposed. It must be treated with HEPA or a scrubber and then discharged to atmosphere."
+  },
+  {
+   "zh": "CDMO 在規劃 API 乾段設施時，最重要的決策是：<strong>這個設施未來只做口服 API，還是也要服務注射劑 API？</strong>如果一開始只做口服 API（CNC 等級），後來想升級服務注射劑客戶（Grade C），改造成本非常高——需要增加 HEPA、氣閘、壓差監控系統。建議在初始設計階段就預留這些「升級路徑」：預留 HEPA 安裝空間、氣閘位置、管路接口等。",
+   "en": "When planning an API dry end facility, the most important decision for a CDMO is: <strong>will this facility make only oral APIs in the future, or also serve injectable APIs?</strong> If it starts with oral APIs only (CNC level) and later wants to upgrade to serve injectable customers (Grade C), the retrofit cost is very high - HEPA filters, airlocks and a differential pressure monitoring system must be added. We recommend reserving these \"upgrade paths\" at the initial design stage: space for HEPA installation, airlock locations, duct connection points and so on."
+  },
+  {
+   "zh": "為什麼口服 API 的操作區域只需要「capable of meeting ISO 8 AT REST, but not monitored」？「capable but not monitored」的實務含義是什麼？",
+   "en": "Why does the operating area for an oral API only need to be \"capable of meeting ISO 8 AT REST, but not monitored\"? What does \"capable but not monitored\" mean in practice?"
+  },
+  {
+   "zh": "高效 API 的排風為什麼推薦用 HEPA 而非只用洗滌器？從 OEL（職業暴露限值）角度思考。",
+   "en": "Why is HEPA rather than only a scrubber recommended for highly potent API exhaust? Think from the perspective of the OEL (occupational exposure limit)."
+  },
+  {
+   "zh": "如果一個 CDMO 同時生產口服 API 和注射劑 API，兩條產線的 HVAC 系統設計有哪些關鍵差異？",
+   "en": "If a CDMO produces both oral APIs and injectable APIs, what are the key differences in HVAC system design between the two lines?"
+  },
+  {
+   "zh": "3.6 Biologics（生物製劑）",
+   "en": "3.6 Biologics"
+  },
+  {
+   "zh": "核心概念：生物製劑 HVAC 的上下游差異",
+   "en": "Core Concept: Upstream vs Downstream HVAC Differences in Biologics"
+  },
+  {
+   "zh": "<strong>Biologics（生物製劑）</strong>的 HVAC 設計分為兩大段，需求截然不同：",
+   "en": "The HVAC design of <strong>biologics</strong> is divided into two main segments with very different needs:"
+  },
+  {
+   "zh": "Upstream（上游 — 細胞培養/發酵）",
+   "en": "Upstream (cell culture/fermentation)"
+  },
+  {
+   "zh": "主要在密閉生物反應器中進行",
+   "en": "Mainly carried out in closed bioreactors"
+  },
+  {
+   "zh": "環境需求：CNC 或 Grade D 等級即可",
+   "en": "Environmental requirement: CNC or Grade D is sufficient"
+  },
+  {
+   "zh": "關鍵考量：保護產品免受微生物污染、溫度控制（影響細胞生長）",
+   "en": "Key considerations: protecting the product from microbial contamination, and temperature control (which affects cell growth)"
+  },
+  {
+   "zh": "通常可使用迴風系統（無溶劑風險）",
+   "en": "Recirculation systems can usually be used (no solvent risk)"
+  },
+  {
+   "zh": "Downstream（下游 — 純化/濃縮）",
+   "en": "Downstream (purification/concentration)"
+  },
+  {
+   "zh": "包括離心、色譜、過濾、濃縮等步驟",
+   "en": "Includes centrifugation, chromatography, filtration, concentration and other steps"
+  },
+  {
+   "zh": "環境需求：Grade C 或 D，取決於是否有開放操作",
+   "en": "Environmental requirement: Grade C or D, depending on whether there are open operations"
+  },
+  {
+   "zh": "關鍵考量：如果涉及病毒滅活/去除步驟，<strong>Pre-viral 和 Post-viral 區域必須物理隔離</strong>，使用獨立 AHU",
+   "en": "Key considerations: if virus inactivation/removal steps are involved, <strong>pre-viral and post-viral areas must be physically segregated</strong>, using separate AHUs"
+  },
+  {
+   "zh": "生物製劑的上下游就像啤酒廠的「釀造」和「過濾/裝瓶」：",
+   "en": "Biologics upstream and downstream are like \"brewing\" and \"filtering/bottling\" in a brewery:"
+  },
+  {
+   "zh": "<strong>上游（釀造/發酵）</strong>：在密閉桶中進行，環境要求較低，但溫度控制很重要",
+   "en": "<strong>Upstream (brewing/fermentation)</strong>: carried out in closed tanks; the environmental requirements are lower, but temperature control is important"
+  },
+  {
+   "zh": "<strong>下游（過濾/裝瓶）</strong>：產品暴露的機會增加，需要更乾淨的環境",
+   "en": "<strong>Downstream (filtering/bottling)</strong>: there is more opportunity for product exposure, so a cleaner environment is needed"
+  },
+  {
+   "zh": "<strong>病毒去除步驟</strong> = 啤酒的巴氏殺菌——處理前後的產品必須完全分開，否則「未殺菌的」可能污染「已殺菌的」",
+   "en": "<strong>Virus removal step</strong> = the pasteurization of beer - the product before and after treatment must be completely separate, otherwise the \"unpasteurized\" product may contaminate the \"pasteurized\" one"
+  },
+  {
+   "zh": "<strong>Pre-viral vs Post-viral 隔離</strong>是生物製劑 HVAC 設計中最關鍵的要求之一。這不僅是空氣隔離，而是全面的物理隔離：",
+   "en": "<strong>Pre-viral vs post-viral segregation</strong> is one of the most critical requirements in biologics HVAC design. This is not only air segregation but comprehensive physical segregation:"
+  },
+  {
+   "zh": "獨立的 AHU（不能共用任何風管）",
+   "en": "Separate AHUs (no ductwork shared at all)"
+  },
+  {
+   "zh": "獨立的走廊和人員動線",
+   "en": "Separate corridors and personnel flows"
+  },
+  {
+   "zh": "壓差方向：post-viral 區域壓力 &gt; pre-viral 區域（防止病毒從「髒側」逸出到「乾淨側」）",
+   "en": "Differential pressure direction: post-viral area pressure &gt; pre-viral area pressure (to prevent virus escaping from the \"dirty side\" to the \"clean side\")"
+  },
+  {
+   "zh": "這個要求直接參照 3.1 節介紹的「分區隔離」原則，但在生物製劑中執行得更為嚴格。",
+   "en": "This requirement directly follows the \"zone segregation\" principle introduced in Section 3.1, but is enforced more strictly in biologics."
+  },
+  {
+   "zh": "對 CDMO 而言，生物製劑設施的 HVAC 投資通常是化學 API 設施的 2-3 倍，主要原因是：(1) 更多分區需要獨立 AHU；(2) 更高的潔淨等級要求；(3) Pre-/Post-viral 隔離的雙套系統。在設施規劃初期就必須確定是否要提供病毒去除/滅活能力——這會根本性地改變 HVAC 佈局和投資規模。",
+   "en": "For a CDMO, the HVAC investment for a biologics facility is typically 2-3 times that of a chemical API facility, mainly because: (1) more zones need separate AHUs; (2) higher cleanliness classification requirements; (3) dual systems for pre-/post-viral segregation. Whether to offer virus removal/inactivation capability must be decided at the very start of facility planning - it fundamentally changes the HVAC layout and the scale of investment."
+  },
+  {
+   "zh": "為什麼生物製劑上游培養區通常不需要 HEPA 過濾的高等級潔淨室？密閉反應器在其中扮演什麼角色？",
+   "en": "Why does the upstream culture area of a biologics plant usually not need a high-grade cleanroom with HEPA filtration? What role does the closed bioreactor play?"
+  },
+  {
+   "zh": "如果一間 CDMO 想要同時生產 mAb（單株抗體）和 ADC（抗體藥物複合體），HVAC 設計需要額外考量什麼？（提示：ADC 的 payload 通常是高效化合物）",
+   "en": "If a CDMO wants to produce both mAbs (monoclonal antibodies) and ADCs (antibody-drug conjugates), what additional HVAC design considerations are needed? (Hint: the ADC payload is usually a highly potent compound)"
+  },
+  {
+   "zh": "生物製劑下游純化步驟常使用色譜（chromatography）系統——這些系統是密閉的還是開放的？對 HVAC 等級需求有什麼影響？",
+   "en": "Downstream purification of biologics often uses chromatography systems - are these systems closed or open? What is the effect on the HVAC grade requirement?"
+  },
+  {
+   "zh": "本節重點回顧 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "<strong>HVAC 隔離三策略</strong>：嚴格過濾、全外氣（Once-through）、專用 AHU（Dedicated AHU），層層組合防止交叉污染",
+   "en": "<strong>Three HVAC segregation strategies</strong>: rigorous filtration, once-through air, and dedicated AHUs, combined in layers to prevent cross-contamination"
+  },
+  {
+   "zh": "<strong>溶劑與高效化合物</strong>：溶劑開放操作必須 Once-through + LEL 監控；高效化合物需要 LEV + 密閉 + Bag-in/Bag-out；兩者排風都不能回到房間",
+   "en": "<strong>Solvents and highly potent compounds</strong>: open solvent operations require once-through + LEL monitoring; highly potent compounds require LEV + containment + bag-in/bag-out; in both cases the exhaust must never return to the room"
+  },
+  {
+   "zh": "<strong>壓差控制</strong>：Pressure Cascade（壓力梯度）是防止交叉污染的核心機制，風門調整需防篡改，分級區域需持續監控",
+   "en": "<strong>Differential pressure control</strong>: the pressure cascade is the core mechanism for preventing cross-contamination; damper settings must be tamper-proof, and classified areas need continuous monitoring"
+  },
+  {
+   "zh": "<strong>設計簡約原則</strong>：每增加一個控制元件都要證明其必要性——「The need for complexity and its added cost should be justified」",
+   "en": "<strong>Simplicity in design</strong>: every added control component must be justified - \"The need for complexity and its added cost should be justified\""
+  },
+  {
+   "zh": "<strong>API 濕段 vs 乾段</strong>：濕段重安全（防爆、防溶劑暴露）；乾段重防塵與潔淨等級（取決於產品最終用途：口服 vs 注射）",
+   "en": "<strong>API wet end vs dry end</strong>: the wet end focuses on safety (explosion protection, protection from solvent exposure); the dry end focuses on dust control and cleanliness grade (depending on end use of the product: oral vs injectable)"
+  },
+  {
+   "zh": "<strong>生物製劑</strong>：上游可在較低等級操作（密閉反應器），下游視開放程度提高等級，Pre-/Post-viral 必須物理隔離",
+   "en": "<strong>Biologics</strong>: upstream can operate at a lower grade (closed bioreactors), downstream is raised in grade according to the degree of openness, and pre-/post-viral areas must be physically segregated"
+  },
+  {
+   "zh": "<strong>外氣預處理</strong>：在高濕氣候中可節省 30-50% 冷卻能耗，但前提是室內潛熱負荷低",
+   "en": "<strong>Outside air pretreatment</strong>: can save 30-50% of cooling energy in humid climates, but only if the room latent load is low"
+  },
+  {
+   "zh": "<strong>決策層級</strong>：HVAC 設計決策永遠以「無菌保證/產品安全」為最高優先，其次是「人員安全」，最後才是「能效與成本」",
+   "en": "<strong>Decision hierarchy</strong>: HVAC design decisions always give top priority to \"sterility assurance/product safety\", then \"personnel safety\", and \"energy efficiency and cost\" last"
+  }
+ ]
+}

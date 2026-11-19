@@ -1,0 +1,921 @@
+{
+ "source": "section-12a-app10-11-misc.html",
+ "blocks": [
+  {
+   "zh": "附錄10-11：醫療器材HVAC與雜項技術資訊",
+   "en": "Appendix 10-11: HVAC for Medical Devices and Miscellaneous Technical Information"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解醫療器材（Medical Devices）三級分類（Class I/II/III）及其對 HVAC 系統設計的差異化要求",
+   "en": "Understand the three-tier classification of medical devices (Class I/II/III) and how it drives differing HVAC system design requirements"
+  },
+  {
+   "zh": "掌握潔淨室核心方程式：理想氣體定律、Bernoulli 方程式、壓差-風速關係、粒子濃度方程式、恢復時間公式",
+   "en": "Master the core cleanroom equations: ideal gas law, Bernoulli equation, pressure differential-velocity relationship, particle concentration equation, and recovery time formula"
+  },
+  {
+   "zh": "瞭解串聯 HEPA 過濾器（Cascaded HEPA）的滲透計算及工程優勢",
+   "en": "Understand the leakage calculation and engineering advantages of cascaded HEPA filters"
+  },
+  {
+   "zh": "學習在無氣鎖（Airlock）條件下的壓差控制替代方案",
+   "en": "Learn alternative approaches to pressure differential control where no airlock is available"
+  },
+  {
+   "zh": "理解 HEPA 過濾器佈置策略與預過濾設計的工程考量",
+   "en": "Understand the engineering considerations behind HEPA filter arrangement strategies and pre-filter design"
+  },
+  {
+   "zh": "掌握恢復時間（Recovery Period）與換氣次數（Air Change Rate）的關係及設計應用",
+   "en": "Master the relationship between recovery period and air change rate, and its design application"
+  },
+  {
+   "zh": "認識控制閥選型（Valve Sizing）的基本原則，包括 Cv 計算與閥門權限（Valve Authority）",
+   "en": "Learn the basic principles of control valve sizing, including Cv calculation and valve authority"
+  },
+  {
+   "zh": "瞭解 HVAC 控制系統的典型描述範例與 I/O 點表設計",
+   "en": "Understand typical HVAC control system description examples and I/O point schedule design"
+  },
+  {
+   "zh": "掌握溫度分佈驗證（Temperature Mapping）的方法論與實務規劃",
+   "en": "Master the methodology and practical planning of temperature mapping"
+  },
+  {
+   "zh": "醫療器材區域的 HVAC 設計考量 | p246-p247",
+   "en": "HVAC Design Considerations for Medical Device Areas | p246-p247"
+  },
+  {
+   "zh": "教學解析",
+   "en": "Teaching Analysis"
+  },
+  {
+   "zh": "FDA 醫療器材三級分類與 HVAC 需求",
+   "en": "FDA Three-Class Medical Device Classification and HVAC Needs"
+  },
+  {
+   "zh": "FDA 將醫療器材依風險等級分為三類，HVAC 需求隨風險等級遞增：",
+   "en": "FDA classifies medical devices into three classes by risk level, and HVAC requirements increase with risk:"
+  },
+  {
+   "zh": "<strong>Class I（第一類）</strong>：彈性繃帶、檢查手套等低風險產品 → 一般舒適空調（Comfort HVAC）即可",
+   "en": "<strong>Class I</strong>: low-risk products such as elastic bandages and examination gloves → general comfort HVAC is sufficient"
+  },
+  {
+   "zh": "<strong>Class II（第二類）</strong>：電動輪椅、輸液幫浦等中風險產品 → HVAC 要求相對簡單",
+   "en": "<strong>Class II</strong>: medium-risk products such as powered wheelchairs and infusion pumps → relatively simple HVAC requirements"
+  },
+  {
+   "zh": "<strong>Class III（第三類）</strong>：心臟瓣膜、植入式裝置等高風險產品 → 可能需要 CNC（Controlled Not Classified，受控非分級）或分級潔淨空間",
+   "en": "<strong>Class III</strong>: high-risk products such as heart valves and implantable devices → may require CNC (Controlled Not Classified) or classified cleanroom space"
+  },
+  {
+   "zh": "比喻說明：器材分類如同料理衛生等級",
+   "en": "Analogy: Device Classes Are Like Food Hygiene Levels"
+  },
+  {
+   "zh": "想像三種不同的料理情境：",
+   "en": "Imagine three different food preparation situations:"
+  },
+  {
+   "zh": "<strong>Class I</strong> 像是包裝外帶咖啡 — 只需基本衛生就行",
+   "en": "<strong>Class I</strong> is like packaging takeaway coffee: basic hygiene is enough"
+  },
+  {
+   "zh": "<strong>Class II</strong> 像是餐廳廚房 — 需要適當的通風排煙設備",
+   "en": "<strong>Class II</strong> is like a restaurant kitchen: proper ventilation and smoke extraction are needed"
+  },
+  {
+   "zh": "<strong>Class III</strong> 像是手術室等級的無菌餐食（給移植患者吃的）— 需要最嚴格的潔淨環境",
+   "en": "<strong>Class III</strong> is like sterile meals prepared to operating-room standards (for transplant patients): the strictest clean environment is required"
+  },
+  {
+   "zh": "醫療器材越是「進入人體」，HVAC 環境要求就越高。",
+   "en": "The more a medical device goes \"into the body\", the higher the HVAC environmental requirements."
+  },
+  {
+   "zh": "關鍵法規觀念：「裁量性要求」",
+   "en": "Key Regulatory Concept: \"Discretionary Requirement\""
+  },
+  {
+   "zh": "FDA 的 21 CFR 820.70(c) 環境控制條款被視為<strong>「裁量性要求」（discretionary requirement）</strong>，意思是環境控制的程度由製造商自行決定，但必須與器材的預期用途一致。",
+   "en": "The environmental control provision of FDA 21 CFR 820.70(c) is regarded as a <strong>\"discretionary requirement\"</strong>, meaning the degree of environmental control is decided by the manufacturer but must be consistent with the intended use of the device."
+  },
+  {
+   "zh": "這代表：沒有一個固定的「器材 HVAC 標準」可以套用。製造商必須進行<strong>風險評估（Risk Assessment）</strong>，根據產品用途來定義合理的 HVAC 需求。",
+   "en": "This means there is no fixed \"device HVAC standard\" to apply. The manufacturer must perform a <strong>risk assessment</strong> and define reasonable HVAC requirements according to the product's use."
+  },
+  {
+   "zh": "CDMO 實務應用",
+   "en": "CDMO Practical Application"
+  },
+  {
+   "zh": "在同時承接藥品與醫療器材製造的 CDMO 中，常見的挑戰是：客戶（器材製造商）無法提供明確的 HVAC 規格。此時常見做法是引用 FDA 無菌藥品 GMP 指引作為環境標準，這雖然保守但安全。",
+   "en": "A common challenge in a CDMO that manufactures both drugs and medical devices is that the client (the device manufacturer) cannot provide clear HVAC specifications. A common approach is then to cite the FDA aseptic processing guidance as the environmental standard, which is conservative but safe."
+  },
+  {
+   "zh": "對於 Class III 植入式器材（如人工關節），在組裝過程中從「機加工」階段轉換到「可植入」階段時，HVAC 等級需要相應升級。設計時應規劃清楚的等級轉換區域與氣鎖。",
+   "en": "For Class III implantable devices (such as artificial joints), the HVAC grade must be upgraded accordingly when assembly moves from the \"machining\" stage to the \"implantable\" stage. The design should plan clear grade transition zones and airlocks."
+  },
+  {
+   "zh": "水平層流工作站（Horizontal Flow Clean Workstation）",
+   "en": "Horizontal Flow Clean Workstation"
+  },
+  {
+   "zh": "醫療器材通常不含高活性化合物（除了複合型器材），因此可以使用<strong>水平層流工作站</strong>：",
+   "en": "Medical devices generally do not contain highly potent compounds (except combination devices), so a <strong>horizontal laminar flow workstation</strong> can be used:"
+  },
+  {
+   "zh": "<strong>氣流方向</strong>：HEPA 過濾後的潔淨空氣從後方水平吹向操作者方向",
+   "en": "<strong>Airflow direction</strong>: HEPA-filtered clean air blows horizontally from the rear toward the operator"
+  },
+  {
+   "zh": "<strong>優點</strong>：提供產品保護，且組裝植入式元件時，操作者汙染產品的風險最低",
+   "en": "<strong>Advantage</strong>: provides product protection, and when assembling implantable components the risk of the operator contaminating the product is lowest"
+  },
+  {
+   "zh": "<strong>限制</strong>：不適用於含有毒性或高活性物質的複合型器材，因為氣流會將粉塵吹向操作者",
+   "en": "<strong>Limitation</strong>: not suitable for combination devices containing toxic or highly potent substances, because the airflow carries dust toward the operator"
+  },
+  {
+   "zh": "與藥品製造的對比",
+   "en": "Comparison with Pharmaceutical Manufacturing"
+  },
+  {
+   "zh": "在藥品製造中，若產品含高活性成分（HPAPI），通常使用<strong>垂直層流（Vertical UFH）</strong>或生物安全櫃（BSC）來同時保護產品和人員。醫療器材因為不含藥物活性成分，可以選擇效率更高的水平層流，這是器材與藥品 HVAC 設計的一個重要差異。",
+   "en": "In drug manufacturing, when a product contains a highly potent active ingredient (HPAPI), <strong>vertical laminar flow (vertical UFH)</strong> or a biological safety cabinet (BSC) is usually used to protect both product and personnel. Because medical devices contain no pharmacologically active ingredient, they can use the more efficient horizontal laminar flow. This is an important difference between device and drug HVAC design."
+  },
+  {
+   "zh": "Appendix 11 – Miscellaneous Information（附錄11 – 雜項技術資訊）",
+   "en": "Appendix 11 – Miscellaneous Information"
+  },
+  {
+   "zh": "HVAC 系統常用方程式與推導 | p248-p253",
+   "en": "Common HVAC Equations and Derivations | p248-p253"
+  },
+  {
+   "zh": "核心公式推導：壓差與風速的關係",
+   "en": "Core Derivation: Relationship between Pressure Differential and Air Velocity"
+  },
+  {
+   "zh": "理想氣體定律：PV = NRuT\n  （壓力 × 體積 = 莫耳數 × 氣體常數 × 溫度）\n\nBernoulli 方程式（HVAC 簡化版）：\n  P/ρ + V²/2 = 常數\n\n壓差-風速關係：\n  ΔP ∝ V²  （壓差與風速的平方成正比）\n\n門縫風速公式（ASHRAE）：\n  V = 4005 × √DP\n  V = 風速 (ft/min)\n  DP = 壓差 (inch wg)\n  4005 = 標準條件常數（68°F，海平面）\n\n風量公式：\n  Q = V × A\n  Q = 風量 (CFM)\n  A = 截面積 (ft²)",
+   "en": "Ideal gas law: PV = NRuT\n  (pressure × volume = number of moles × gas constant × temperature)\n\nBernoulli equation (HVAC simplified form):\n  P/ρ + V²/2 = constant\n\nPressure differential-velocity relationship:\n  ΔP ∝ V²  (pressure differential is proportional to the square of velocity)\n\nDoor-gap velocity formula (ASHRAE):\n  V = 4005 × √DP\n  V = velocity (ft/min)\n  DP = pressure differential (inch wg)\n  4005 = constant for standard conditions (68°F, sea level)\n\nAirflow formula:\n  Q = V × A\n  Q = airflow (CFM)\n  A = cross-sectional area (ft²)"
+  },
+  {
+   "zh": "關鍵物理概念",
+   "en": "Key Physical Concepts"
+  },
+  {
+   "zh": "<strong>壓差與風速的二次方關係</strong>：風速加倍 → 壓差需要增加四倍。這就是為什麼維持大面積開口（如開門）的壓差極為困難。",
+   "en": "<strong>Quadratic relationship between pressure differential and velocity</strong>: doubling the velocity requires four times the pressure differential. This is why maintaining a pressure differential across a large opening (such as an open door) is extremely difficult."
+  },
+  {
+   "zh": "<strong>4005 常數</strong>：此常數適用於海平面標準條件。在高海拔地區（如丹佛，空氣密度約低 15%），此常數需要修正。",
+   "en": "<strong>The 4005 constant</strong>: this constant applies to standard sea-level conditions. At high altitude (e.g., Denver, where air density is about 15% lower) the constant must be corrected."
+  },
+  {
+   "zh": "比喻說明：門縫壓差如同水壩洩洪",
+   "en": "Analogy: Pressure Differential across a Door Gap Is Like a Dam Spillway"
+  },
+  {
+   "zh": "想像一個水壩（潔淨室）。水壩的高度差（壓差）驅動水流通過洩洪口（門縫）：",
+   "en": "Imagine a dam (the cleanroom). The height difference of the water (pressure differential) drives flow through the spillway (the door gap):"
+  },
+  {
+   "zh": "<strong>門關閉時</strong>：洩洪口很小（0.3 ft²），只需少量水流（300 CFM）即可維持水位差",
+   "en": "<strong>Door closed</strong>: the spillway is tiny (0.3 ft²), and only a small flow (300 CFM) is needed to hold the level difference"
+  },
+  {
+   "zh": "<strong>門打開時</strong>：洩洪口巨大（20 ft²），需要超大流量（17,800 CFM）才能維持相同水位差 — 這通常超過整個系統的供水能力",
+   "en": "<strong>Door open</strong>: the spillway is huge (20 ft²), and an enormous flow (17,800 CFM) is needed to hold the same level difference, which usually exceeds the capacity of the whole system"
+  },
+  {
+   "zh": "這正是潔淨室需要<strong>氣鎖（Airlock）</strong>的物理原因！",
+   "en": "This is exactly the physical reason cleanrooms need <strong>airlocks</strong>!"
+  },
+  {
+   "zh": "實務要點：門的類型影響巨大",
+   "en": "Practical Point: Door Type Matters Greatly"
+  },
+  {
+   "zh": "緊密無菌室門（帶密封條）：在 10 Pa 壓差下洩漏量僅 50 CFM",
+   "en": "Tight sterile-room door (with gasket): leakage is only 50 CFM at a 10 Pa pressure differential"
+  },
+  {
+   "zh": "倉庫滑門（無密封）：洩漏量可超過 1,000 CFM",
+   "en": "Warehouse sliding door (no seal): leakage can exceed 1,000 CFM"
+  },
+  {
+   "zh": "設計空氣平衡時，必須知道將使用哪種類型的門 — 門封的小細節對空氣平衡有重大影響",
+   "en": "When designing the air balance, you must know which type of door will be used. Small details of door sealing have a major effect on the air balance"
+  },
+  {
+   "zh": "風機功率公式與三次方定律",
+   "en": "Fan Power Formula and the Cube Law"
+  },
+  {
+   "zh": "HP = η × P × Q\n\n風量加倍的影響：\n  Q → 2Q      （風量加倍）\n  P → 4P      （壓力增至 4 倍，因 ΔP ∝ V²）\n  HP → 2 × 4 = 8 倍馬力\n\n結論：風量加倍 → 馬力需增加 8 倍！",
+   "en": "HP = η × P × Q\n\nEffect of doubling airflow:\n  Q → 2Q      (airflow doubles)\n  P → 4P      (pressure rises to 4 times, because ΔP ∝ V²)\n  HP → 2 × 4 = 8 times the horsepower\n\nConclusion: doubling the airflow requires 8 times the horsepower!"
+  },
+  {
+   "zh": "工程設計原則：寧大勿小",
+   "en": "Engineering Design Principle: Better Oversized Than Undersized"
+  },
+  {
+   "zh": "指引建議<strong>風機和風管應適度超大設計</strong>：寧可裝了多餘馬力不用，也不要系統風量不足。因為事後增加風量的成本極高 — 需要更換風機、改裝風管，甚至加裝局部 FFU 單元。",
+   "en": "The guide recommends that <strong>fans and ductwork be moderately oversized</strong>: it is better to install unused horsepower than to have insufficient system airflow, because adding airflow afterwards is very costly: it means replacing fans, modifying ductwork, or even adding local FFU units."
+  },
+  {
+   "zh": "這是「設計裕度（Design Margin）」的典型應用。",
+   "en": "This is a typical application of \"design margin\"."
+  },
+  {
+   "zh": "空氣質量守恆（Air Mass Balance）",
+   "en": "Air Mass Balance"
+  },
+  {
+   "zh": "對任何固定體積的空間：",
+   "en": "For any fixed volume of space:"
+  },
+  {
+   "zh": "<strong>Supply（送風）</strong>：透過 AHU 和風管送入的空氣",
+   "en": "<strong>Supply</strong>: air delivered through the AHU and ductwork"
+  },
+  {
+   "zh": "<strong>Infiltration（滲入）</strong>：從較高壓力區域透過縫隙滲入的空氣",
+   "en": "<strong>Infiltration</strong>: air entering through gaps from a higher-pressure area"
+  },
+  {
+   "zh": "<strong>Return（回風）</strong>：透過回風口回到 AHU 的空氣",
+   "en": "<strong>Return</strong>: air returned to the AHU through return grilles"
+  },
+  {
+   "zh": "<strong>Exhaust（排風）</strong>：排出建築的空氣",
+   "en": "<strong>Exhaust</strong>: air discharged from the building"
+  },
+  {
+   "zh": "<strong>Exfiltration（滲出）</strong>：透過門縫、牆縫滲出到較低壓力區域的空氣",
+   "en": "<strong>Exfiltration</strong>: air leaving through door and wall gaps into a lower-pressure area"
+  },
+  {
+   "zh": "FFU 不影響房間空氣平衡",
+   "en": "FFUs Do Not Affect the Room Air Balance"
+  },
+  {
+   "zh": "天花板式 FFU（Fan Filter Unit，風機過濾單元）只在房間內部循環空氣，不引入或排出空氣，因此<strong>不影響房間與建築之間的空氣平衡</strong>。但 FFU 確實增加了房間內的有效換氣次數，有助於降低粒子水平和加快恢復時間。",
+   "en": "A ceiling FFU (Fan Filter Unit) only recirculates air within the room; it neither brings in nor discharges air, so it <strong>does not affect the air balance between the room and the building</strong>. However, an FFU does increase the effective air change rate in the room, which helps lower particle levels and speed up recovery."
+  },
+  {
+   "zh": "粒子濃度穩態方程式",
+   "en": "Steady-State Particle Concentration Equation"
+  },
+  {
+   "zh": "Cavg = Cs + PGR / Q\n\nCavg = 房間平均粒子濃度 (particles/ft³)\nCs   = 送風空氣粒子濃度（通常可忽略）\nPGR  = 粒子產生速率 (particles/min)\nQ    = 送風量 (CFM)\n\n關鍵洞察：\n  - Cavg 只與 Q 和 PGR 有關\n  - 與房間大小無關！\n  - 大房間與小房間跑同樣製程，\n    只要 Q 和 PGR 相同，粒子濃度相同",
+   "en": "Cavg = Cs + PGR / Q\n\nCavg = average room particle concentration (particles/ft³)\nCs   = particle concentration of supply air (usually negligible)\nPGR  = particle generation rate (particles/min)\nQ    = supply airflow (CFM)\n\nKey insight:\n  - Cavg depends only on Q and PGR\n  - It is independent of room size!\n  - A large room and a small room running the same process\n    have the same particle concentration\n    as long as Q and PGR are the same"
+  },
+  {
+   "zh": "比喻說明：粒子濃度如同水族箱的濁度",
+   "en": "Analogy: Particle Concentration Is Like the Cloudiness of an Aquarium"
+  },
+  {
+   "zh": "想像一個水族箱：魚不斷攪動沙子（PGR = 粒子產生），過濾器不斷淨化水（Q = 送風量）：",
+   "en": "Imagine an aquarium: the fish keep stirring up sand (PGR = particle generation), and the filter keeps cleaning the water (Q = supply airflow):"
+  },
+  {
+   "zh": "過濾器流量越大（Q 增加），水越清",
+   "en": "The higher the filter flow (Q increases), the clearer the water"
+  },
+  {
+   "zh": "魚越多/越活躍（PGR 增加），水越濁",
+   "en": "The more fish or the more active they are (PGR increases), the cloudier the water"
+  },
+  {
+   "zh": "不管水族箱大小，只要魚的活動量和過濾器流量相同，濁度就相同",
+   "en": "Regardless of aquarium size, the cloudiness is the same as long as fish activity and filter flow are the same"
+  },
+  {
+   "zh": "局部值可能與平均值差距極大",
+   "en": "Local Values Can Differ Greatly from the Average"
+  },
+  {
+   "zh": "如果房間內空氣混合不良（紊流不足），局部粒子濃度可能比平均值高或低<strong>數個數量級</strong>。這就是為什麼送風口和回風口的位置配置如此重要 — 良好的空氣分佈才能確保整個房間均勻。",
+   "en": "If air mixing in the room is poor (insufficient turbulence), the local particle concentration can be higher or lower than the average by <strong>several orders of magnitude</strong>. This is why the placement of supply and return grilles is so important: only good air distribution ensures uniformity throughout the room."
+  },
+  {
+   "zh": "換氣次數與恢復時間公式",
+   "en": "Air Change Rate and Recovery Time Formulas"
+  },
+  {
+   "zh": "換氣次數：\n  AC/hr = 60 × Q / Volume\n\n恢復時間（指數衰減模型）：\n  C(at rest) = (Cop - Cs) × e^(-Nt) + Cs\n\n  Cop = 運轉中粒子計數\n  Cs  = 送風粒子計數（≈0）\n  N   = 換氣次數 (per hour)\n  t   = 時間 (hours)\n\n範例：EU Grade B 100 倍恢復\n  從 10,000 → 100 particles\n  20 AC/hr → 約 14 分鐘\n  30 AC/hr → 約 9 分鐘",
+   "en": "Air changes:\n  AC/hr = 60 × Q / Volume\n\nRecovery time (exponential decay model):\n  C(at rest) = (Cop - Cs) × e^(-Nt) + Cs\n\n  Cop = particle count during operation\n  Cs  = supply air particle count (≈0)\n  N   = air change rate (per hour)\n  t   = time (hours)\n\nExample: EU Grade B 100-fold recovery\n  From 10,000 → 100 particles\n  20 AC/hr → about 14 minutes\n  30 AC/hr → about 9 minutes"
+  },
+  {
+   "zh": "換氣次數的兩個關鍵角色",
+   "en": "Two Key Roles of the Air Change Rate"
+  },
+  {
+   "zh": "<strong>確保充分混合</strong>：至少 10 次/hr（通常需 20 次以上）才能保證房間各處粒子濃度均勻",
+   "en": "<strong>Ensuring adequate mixing</strong>: at least 10 per hour (usually 20 or more is needed) to ensure uniform particle concentration throughout the room"
+  },
+  {
+   "zh": "<strong>決定恢復速度</strong>：EU GMP 要求恢復時間在 15-20 分鐘內，這直接決定了最低換氣次數",
+   "en": "<strong>Determining recovery speed</strong>: EU GMP requires a recovery time within 15-20 minutes, which directly determines the minimum air change rate"
+  },
+  {
+   "zh": "<strong>重要區別</strong>：穩態粒子濃度由 CFM（送風量）決定，而恢復速度由 AC/hr（換氣次數）決定。兩者數學上相關但概念不同。",
+   "en": "<strong>Important distinction</strong>: steady-state particle concentration is determined by CFM (supply airflow), while recovery speed is determined by AC/hr (air change rate). The two are mathematically related but conceptually different."
+  },
+  {
+   "zh": "送風口與回風口的配置影響恢復時間",
+   "en": "Supply and Return Layout Affects Recovery Time"
+  },
+  {
+   "zh": "即使換氣次數相同，<strong>送風口和回風口的佈局</strong>也會顯著影響恢復速度。單一送風口+單一回風口會造成「短路」— 兩者之間的路徑很乾淨，但房間其他區域混合不良、粒子偏高、恢復緩慢。",
+   "en": "Even at the same air change rate, the <strong>layout of supply and return grilles</strong> significantly affects recovery speed. A single supply with a single return creates \"short-circuiting\": the path between them is very clean, but the rest of the room is poorly mixed, with elevated particle levels and slow recovery."
+  },
+  {
+   "zh": "最佳做法：多個分散的送風口 + 低位回風口。",
+   "en": "Best practice: multiple distributed supply grilles plus low-level returns."
+  },
+  {
+   "zh": "串聯 HEPA 洩漏計算",
+   "en": "Cascaded HEPA Leakage Calculation"
+  },
+  {
+   "zh": "串聯 HEPA 總洩漏率：\n  Ltot = L1 × L2\n\n範例（兩個 99.97% HEPA）：\n  L1 = 0.03%，L2 = 0.03%\n  Ltot = 0.0003 × 0.0003 = 0.0000009\n       = 0.00009%\n  等效效率 = 99.99991%\n\nMPPS（最大穿透粒徑）：\n  傳統定義：0.3 μm\n  現代 HEPA：0.15 - 0.25 μm\n  ULPA：0.10 - 0.15 μm",
+   "en": "Total leakage of cascaded HEPA filters:\n  Ltot = L1 × L2\n\nExample (two 99.97% HEPA filters):\n  L1 = 0.03%, L2 = 0.03%\n  Ltot = 0.0003 × 0.0003 = 0.0000009\n       = 0.00009%\n  Equivalent efficiency = 99.99991%\n\nMPPS (most penetrating particle size):\n  Traditional definition: 0.3 μm\n  Modern HEPA: 0.15 - 0.25 μm\n  ULPA: 0.10 - 0.15 μm"
+  },
+  {
+   "zh": "串聯 HEPA 的雙重優勢",
+   "en": "Dual Advantages of Cascaded HEPA"
+  },
+  {
+   "zh": "<strong>粒子去除能力</strong>：兩個 99.97% HEPA 串聯等同於一個 99.9991% 的虛擬超級過濾器",
+   "en": "<strong>Particle removal capability</strong>: two 99.97% HEPA filters in series are equivalent to one virtual super-filter of 99.9991%"
+  },
+  {
+   "zh": "工程穩定性",
+   "en": "Engineering stability"
+  },
+  {
+   "zh": "主 HEPA 在 AHU 中承受大部分粒子挑戰",
+   "en": "The primary HEPA in the AHU takes most of the particle challenge"
+  },
+  {
+   "zh": "末端 HEPA（Terminal HEPA）幾乎無負載，壓降增長極慢",
+   "en": "The terminal HEPA is almost unloaded, and its pressure drop rises very slowly"
+  },
+  {
+   "zh": "風量衰減極小 → 空氣平衡更穩定，數月甚至數年免維護",
+   "en": "Airflow decay is minimal → the air balance is more stable, with months or even years free of maintenance"
+  },
+  {
+   "zh": "減少對恆風量裝置（CV devices）的需求，降低系統複雜度",
+   "en": "Reduces the need for constant volume (CV) devices, lowering system complexity"
+  },
+  {
+   "zh": "HEPA 效率的真相：MPPS 不等於 0.3 μm",
+   "en": "The Truth about HEPA Efficiency: MPPS Is Not 0.3 μm"
+  },
+  {
+   "zh": "99.97% 的效率是在 0.3 μm 測定的，但真正的 MPPS 可能在 0.1-0.2 μm 之間，此處的實際效率可能低至 99.9%。如果需要對病毒（通常小於 0.3 μm）進行防護，應考慮：",
+   "en": "The 99.97% efficiency is measured at 0.3 μm, but the true MPPS may lie between 0.1 and 0.2 μm, where the actual efficiency may be as low as 99.9%. If protection against viruses (typically smaller than 0.3 μm) is needed, consider:"
+  },
+  {
+   "zh": "使用更小氣溶膠（如熱產生 PAO）掃描至 99.99% 以上",
+   "en": "Scanning with a smaller aerosol (such as thermally generated PAO) to 99.99% or higher"
+  },
+  {
+   "zh": "改用 ULPA 過濾器",
+   "en": "Switching to ULPA filters"
+  },
+  {
+   "zh": "九大潔淨室公式速查表",
+   "en": "Quick Reference: Nine Cleanroom Equations"
+  },
+  {
+   "zh": "這些公式構成了潔淨室 HVAC 設計的數學基礎。日常最常用的三個公式：",
+   "en": "These equations form the mathematical basis of cleanroom HVAC design. The three most commonly used day to day are:"
+  },
+  {
+   "zh": "<strong>Q = V × A</strong>（風量 = 風速 × 面積）— 用於計算門洞風量、風管設計",
+   "en": "<strong>Q = V × A</strong> (airflow = velocity × area): used to calculate airflow through door openings and for ductwork design"
+  },
+  {
+   "zh": "<strong>AC/hr = 60 × Q / Volume</strong>（換氣次數）— 用於潔淨室等級設計",
+   "en": "<strong>AC/hr = 60 × Q / Volume</strong> (air change rate): used for cleanroom grade design"
+  },
+  {
+   "zh": "<strong>C<sub>avg</sub> = C<sub>s</sub> + PGR/Q</strong>（粒子濃度）— 用於評估製程對環境的影響",
+   "en": "<strong>C<sub>avg</sub> = C<sub>s</sub> + PGR/Q</strong> (particle concentration): used to assess the impact of a process on the environment"
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "一間 3m × 4m × 3m 的潔淨室，送風量為 2,000 CFM。計算換氣次數（AC/hr）。（提示：先換算體積為 ft³）",
+   "en": "A cleanroom measuring 3 m × 4 m × 3 m has a supply airflow of 2,000 CFM. Calculate the air change rate (AC/hr). (Hint: convert the volume to ft³ first.)"
+  },
+  {
+   "zh": "兩間潔淨室之間的壓差為 0.05 inch wg，門縫面積為 0.2 ft²。使用簡化公式計算洩漏風量（CFM）。",
+   "en": "The pressure differential between two cleanrooms is 0.05 inch wg and the door gap area is 0.2 ft². Use the simplified formula to calculate the leakage airflow (CFM)."
+  },
+  {
+   "zh": "為什麼粒子濃度公式說房間大小不影響穩態粒子水平？直覺上這似乎不對，請解釋其物理原因。",
+   "en": "Why does the particle concentration equation say that room size does not affect the steady-state particle level? Intuitively this seems wrong; explain the physical reason."
+  },
+  {
+   "zh": "無氣鎖條件下的壓差控制 | p253-p254",
+   "en": "Pressure Differential Control without Airlocks | p253-p254"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "無氣鎖壓差控制的兩難",
+   "en": "The Dilemma of Pressure Control without Airlocks"
+  },
+  {
+   "zh": "老舊設施改造時經常遇到的困境：",
+   "en": "A dilemma often met when retrofitting older facilities:"
+  },
+  {
+   "zh": "FDA 要求不同潔淨等級之間需有可測量的壓差",
+   "en": "FDA requires a measurable pressure differential between different cleanliness grades"
+  },
+  {
+   "zh": "開門時需要足夠的風速來阻止汙染進入",
+   "en": "When the door is open, sufficient air velocity is needed to prevent contamination from entering"
+  },
+  {
+   "zh": "但大風量在關門時會產生過高壓差（超過 15 Pa），導致門無法關閉或密封條過載",
+   "en": "But the large airflow produces an excessive pressure differential when the door is closed (over 15 Pa), so the door cannot close or the gasket is overloaded"
+  },
+  {
+   "zh": "CDMO 改造實務",
+   "en": "CDMO Retrofit Practice"
+  },
+  {
+   "zh": "在老舊 CDMO 廠房改造時，無法增設氣鎖是常見挑戰。替代方案包括：",
+   "en": "When retrofitting an older CDMO facility, being unable to add airlocks is a common challenge. Alternatives include:"
+  },
+  {
+   "zh": "安裝可變風量系統：開門時自動增加風量維持保護風速，關門時降低風量控制壓差在 15 Pa 以下",
+   "en": "Install a variable air volume system: automatically increase airflow when the door opens to maintain protective velocity, and reduce airflow when the door closes to hold the pressure differential below 15 Pa"
+  },
+  {
+   "zh": "使用門位感應器連動 BMS 控制邏輯",
+   "en": "Use door position sensors linked to BMS control logic"
+  },
+  {
+   "zh": "確保替代方案經過風險評估並獲得品質部門核准",
+   "en": "Ensure the alternative is risk assessed and approved by the quality unit"
+  },
+  {
+   "zh": "HEPA 過濾器佈置策略 | p254-p256",
+   "en": "HEPA Filter Arrangement Strategies | p254-p256"
+  },
+  {
+   "zh": "空氣過濾策略的核心考量",
+   "en": "Core Considerations for Air Filtration Strategy"
+  },
+  {
+   "zh": "<strong>空氣回風再利用</strong>：是常見且良好的做法 — 降低外氣處理成本，但在多品種設施中需注意交叉汙染風險",
+   "en": "<strong>Return air reuse</strong>: a common and good practice that lowers the cost of treating outside air, but cross-contamination risk must be considered in multi-product facilities"
+  },
+  {
+   "zh": "<strong>回風過濾器</strong>：若用於捕捉產品粉塵，必須使用「安全更換型」（Safe Change / Bag-in Bag-out），保護維護人員免受暴露",
+   "en": "<strong>Return air filters</strong>: if used to capture product dust, they must be \"safe change\" type (Safe Change / Bag-in Bag-out) to protect maintenance personnel from exposure"
+  },
+  {
+   "zh": "<strong>末端 HEPA 位置原則</strong>：HEPA 應安裝在空氣不會再被汙染的位置 — 因此推薦 Grade 7（ISO 7）及更高等級使用天花板末端 HEPA",
+   "en": "<strong>Terminal HEPA location principle</strong>: HEPA filters should be installed where the air cannot be contaminated again, so ceiling terminal HEPA is recommended for Grade 7 (ISO 7) and higher"
+  },
+  {
+   "zh": "末端 HEPA 的額外安全效益",
+   "en": "Additional Safety Benefit of Terminal HEPA"
+  },
+  {
+   "zh": "末端天花板 HEPA 在送風機故障時仍能維持製造區的「密封外殼」效應 — 過濾器本身就是一道物理屏障，阻止管道中的未過濾空氣進入潔淨室。這是單純在 AHU 中安裝 HEPA 無法提供的保護。",
+   "en": "A terminal ceiling HEPA maintains a \"sealed enclosure\" effect on the manufacturing area even when the supply fan fails: the filter itself is a physical barrier that stops unfiltered air in the ductwork from entering the cleanroom. HEPA filters installed only in the AHU cannot provide this protection."
+  },
+  {
+   "zh": "H13 vs. H14 過濾器（EN 1822）",
+   "en": "H13 vs. H14 Filters (EN 1822)"
+  },
+  {
+   "zh": "<strong>H14</strong>：必須通過穿透掃描測試（Penetration Scan Test），確保整個過濾面無局部洩漏",
+   "en": "<strong>H14</strong>: must pass a penetration scan test to ensure there is no local leakage across the whole filter face"
+  },
+  {
+   "zh": "<strong>H13</strong>：預設不需通過掃描測試 — 但採購時可以特別要求",
+   "en": "<strong>H13</strong>: a scan test is not required by default, but it can be specified at purchase"
+  },
+  {
+   "zh": "藥廠通常要求所有 HEPA 在安裝後進行現場完整性測試（In-situ Integrity Test），無論是 H13 或 H14",
+   "en": "Pharmaceutical plants usually require all HEPA filters to undergo an in-situ integrity test after installation, whether H13 or H14"
+  },
+  {
+   "zh": "過濾器阻塞（Filter Blinding）的連鎖效應",
+   "en": "Cascade Effect of Filter Blinding"
+  },
+  {
+   "zh": "當末端 HEPA 過濾器逐漸阻塞時：",
+   "en": "As the terminal HEPA filters gradually become blinded:"
+  },
+  {
+   "zh": "通過該過濾器的風量下降",
+   "en": "The airflow through that filter decreases"
+  },
+  {
+   "zh": "該房間送風減少 → 壓力降低",
+   "en": "Supply air to that room decreases → pressure drops"
+  },
+  {
+   "zh": "其他房間的末端 HEPA 阻塞速率不同 → 不同房間風量比例改變",
+   "en": "Terminal HEPA filters in other rooms blind at different rates → the airflow ratios between rooms change"
+  },
+  {
+   "zh": "設計壓差可能被<strong>反轉</strong> — 較低等級房間壓力反而高於較高等級房間！",
+   "en": "The design pressure differential may be <strong>reversed</strong>: a lower-grade room may end up at higher pressure than a higher-grade room!"
+  },
+  {
+   "zh": "這是一個嚴重的 GMP 風險。",
+   "en": "This is a serious GMP risk."
+  },
+  {
+   "zh": "預過濾設計建議（強烈推薦）",
+   "en": "Pre-filter Design Recommendation (Strongly Recommended)"
+  },
+  {
+   "zh": "指引明確建議：所有新建或改造設施，若使用末端 HEPA，都應在 AHU 中安裝高效預過濾器（至少 MERV 13 / F7）。",
+   "en": "The guide explicitly recommends that all new or renovated facilities using terminal HEPA filters install high-efficiency pre-filters (at least MERV 13 / F7) in the AHU."
+  },
+  {
+   "zh": "好處包括：",
+   "en": "Benefits include:"
+  },
+  {
+   "zh": "末端 HEPA 壽命延長數年，壓降變化極小",
+   "en": "Terminal HEPA life is extended by years, with minimal change in pressure drop"
+  },
+  {
+   "zh": "差異化阻塞最小化 → 各房間風量比例穩定 → 壓差穩定",
+   "en": "Differential blinding is minimized → room airflow ratios stay stable → pressure differentials stay stable"
+  },
+  {
+   "zh": "只需定期更換 AHU 中的預過濾器 → 降低維護成本和停機時間",
+   "en": "Only the pre-filters in the AHU need regular replacement → lower maintenance cost and downtime"
+  },
+  {
+   "zh": "減少對恆風量（CV）或主動壓力控制裝置的依賴",
+   "en": "Less reliance on constant volume (CV) or active pressure control devices"
+  },
+  {
+   "zh": "比喻說明：預過濾如同泳池的粗篩網",
+   "en": "Analogy: Pre-filters Are Like a Pool's Coarse Strainer"
+  },
+  {
+   "zh": "游泳池的過濾系統通常有粗篩網（攔截樹葉）和精濾器（過濾細小雜質）。如果沒有粗篩網，精濾器很快就會堵塞。HVAC 中的預過濾與末端 HEPA 正是這個關係 — 預過濾攔截大部分粒子，讓 HEPA 只處理最細小的粒子，大幅延長其使用壽命。",
+   "en": "A swimming pool filtration system usually has a coarse strainer (catching leaves) and a fine filter (removing small impurities). Without the coarse strainer, the fine filter would clog quickly. Pre-filters and terminal HEPA in HVAC have exactly this relationship: the pre-filter catches most particles so the HEPA only handles the finest ones, greatly extending its service life."
+  },
+  {
+   "zh": "恢復時間與換氣次數的關係 | p256-p257",
+   "en": "Relationship between Recovery Time and Air Change Rate | p256-p257"
+  },
+  {
+   "zh": "恢復時間優先於換氣次數",
+   "en": "Recovery Time Takes Priority over Air Change Rate"
+  },
+  {
+   "zh": "這是指引的一個<strong>關鍵設計原則</strong>：",
+   "en": "This is a <strong>key design principle</strong> of the guide:"
+  },
+  {
+   "zh": "換氣次數（如 20 AC/hr）只是一個手段",
+   "en": "The air change rate (e.g., 20 AC/hr) is only a means"
+  },
+  {
+   "zh": "真正的目標是「恢復時間」（如 15 分鐘內從運轉態恢復到靜態）",
+   "en": "The real goal is the \"recovery time\" (e.g., recovery from the operational state to the at-rest state within 15 minutes)"
+  },
+  {
+   "zh": "如果 15 AC/hr 就能在 15 分鐘內完成 100 倍恢復，就不需要刻意追求 20 AC/hr",
+   "en": "If 15 AC/hr can achieve 100-fold recovery within 15 minutes, there is no need to deliberately pursue 20 AC/hr"
+  },
+  {
+   "zh": "100 倍恢復的實際意義",
+   "en": "Practical Meaning of 100-fold Recovery"
+  },
+  {
+   "zh": "CDMO 在設計時應以目標恢復時間反推所需的最低換氣次數，而不是直接套用固定的換氣次數要求。",
+   "en": "When designing, a CDMO should work backward from the target recovery time to the minimum required air change rate, rather than directly applying a fixed air change requirement."
+  },
+  {
+   "zh": "控制系統補充資訊：致動器與控制閥 | p257-p260",
+   "en": "Supplementary Control System Information: Actuators and Control Valves | p257-p260"
+  },
+  {
+   "zh": "Fail Position 的重要性",
+   "en": "Importance of Fail Position"
+  },
+  {
+   "zh": "「失效位置」是 HVAC 安全設計的關鍵概念。當供電或供氣中斷時，閥門必須自動回到安全位置：",
+   "en": "\"Fail position\" is a key concept in HVAC safety design. When power or air supply is lost, the valve must automatically return to its safe position:"
+  },
+  {
+   "zh": "<strong>冷卻盤管閥</strong>：通常設為 Fail Closed（失效關閉），避免過度冷卻",
+   "en": "<strong>Cooling coil valve</strong>: usually set to Fail Closed to avoid overcooling"
+  },
+  {
+   "zh": "<strong>加熱盤管閥</strong>：在寒冷氣候可能設為 Fail Open（失效開啟），防止盤管凍裂",
+   "en": "<strong>Heating coil valve</strong>: in cold climates may be set to Fail Open to prevent the coil from freezing and bursting"
+  },
+  {
+   "zh": "每個閥門的 Fail Position 都應在設計階段明確定義並記錄",
+   "en": "The fail position of every valve should be clearly defined and documented at the design stage"
+  },
+  {
+   "zh": "控制閥選型三要素",
+   "en": "Three Elements of Control Valve Sizing"
+  },
+  {
+   "zh": "閥門特性（Characteristic）",
+   "en": "Valve characteristic"
+  },
+  {
+   "zh": "：根據應用選擇",
+   "en": ": choose according to the application"
+  },
+  {
+   "zh": "快開式：僅用於開/關控制",
+   "en": "Quick opening: used only for on/off control"
+  },
+  {
+   "zh": "線性式：流量與開度成正比 → 適合分流/混合應用",
+   "en": "Linear: flow is proportional to opening → suitable for diverting/mixing applications"
+  },
+  {
+   "zh": "等百分比式：流量與開度呈對數關係 → 適合蒸汽和水流控制",
+   "en": "Equal percentage: flow has a logarithmic relationship to opening → suitable for steam and water flow control"
+  },
+  {
+   "zh": "<strong>流量係數 Cv</strong>：選閥時所需 Cv 應在閥門行程的 30-80% 範圍內",
+   "en": "<strong>Flow coefficient Cv</strong>: the required Cv when selecting a valve should fall within 30-80% of valve travel"
+  },
+  {
+   "zh": "<strong>閥門權限（Authority）</strong>：閥門壓降占系統總壓降的比例，比例太低則控制能力不足",
+   "en": "<strong>Valve authority</strong>: the ratio of the valve pressure drop to the total system pressure drop; if the ratio is too low, control capability is insufficient"
+  },
+  {
+   "zh": "Cv 計算公式",
+   "en": "Cv Calculation Formulas"
+  },
+  {
+   "zh": "英制：Cv = gpm × √(SG / dp)\n  gpm = 流量（美制加侖/分鐘）\n  SG  = 比重（水 = 1）\n  dp  = 閥門壓降（psi）\n\nSI 制：Cv = 11.7 × CMH × √(SG / dp)\n  CMH = 流量（立方米/小時）\n  dp  = 閥門壓降（KPa）\n\n選型規則：\n  所需 Cv 應在閥門額定 Cv 的 30-80% 行程處\n  閥門太小（&lt; 管線尺寸一半）→ 控制粗糙\n  閥門太大（≥ 管線尺寸）→ 控制不穩定",
+   "en": "Imperial: Cv = gpm × √(SG / dp)\n  gpm = flow (US gallons/minute)\n  SG  = specific gravity (water = 1)\n  dp  = valve pressure drop (psi)\n\nSI: Cv = 11.7 × CMH × √(SG / dp)\n  CMH = flow (cubic meters/hour)\n  dp  = valve pressure drop (KPa)\n\nSizing rules:\n  The required Cv should fall at 30-80% of travel of the valve's rated Cv\n  Valve too small (&lt; half the line size) → coarse control\n  Valve too large (≥ line size) → unstable control"
+  },
+  {
+   "zh": "比喻說明：閥門權限如同水龍頭控制",
+   "en": "Analogy: Valve Authority Is Like a Water Tap"
+  },
+  {
+   "zh": "想像你家的水龍頭（控制閥）和整條水管系統的水壓損失。如果水管本身的摩擦損失很大（比如管線很長、很細），即使你把水龍頭從全開轉到半開，出水量變化也不大 — 因為水龍頭的壓降只占總壓降的一小部分。",
+   "en": "Imagine the tap in your home (the control valve) and the pressure loss of the whole piping system. If the pipe itself has large friction loss (for example, a long, narrow pipe), turning the tap from fully open to half open changes the output little, because the tap's pressure drop is only a small part of the total pressure drop."
+  },
+  {
+   "zh": "HVAC 控制閥的「權限」（Authority）就是同樣概念。閥門壓降至少要占系統總壓降的 30-50%，才能有效控制流量。",
+   "en": "The \"authority\" of an HVAC control valve is the same concept. The valve pressure drop should be at least 30-50% of the total system pressure drop to control flow effectively."
+  },
+  {
+   "zh": "HVAC 控制系統範例描述 | p260-p262",
+   "en": "Example HVAC Control System Description | p260-p262"
+  },
+  {
+   "zh": "HVAC 控制描述文件的結構",
+   "en": "Structure of an HVAC Control Description Document"
+  },
+  {
+   "zh": "一份完整的 HVAC 控制系統描述通常包含五個部分：",
+   "en": "A complete HVAC control system description usually contains five parts:"
+  },
+  {
+   "zh": "<strong>控制描述</strong>：系統啟停邏輯、溫度控制、濕度控制、風速控制、監控警報",
+   "en": "<strong>Control description</strong>: system start/stop logic, temperature control, humidity control, airflow control, monitoring and alarms"
+  },
+  {
+   "zh": "<strong>設計筆記</strong>：特殊設計考量",
+   "en": "<strong>Design notes</strong>: special design considerations"
+  },
+  {
+   "zh": "<strong>I/O 點表</strong>：所有輸入/輸出信號的清單",
+   "en": "<strong>I/O point schedule</strong>: a list of all input/output signals"
+  },
+  {
+   "zh": "<strong>系統示意圖</strong>：管路、設備、感測器位置",
+   "en": "<strong>System schematic</strong>: piping, equipment, and sensor locations"
+  },
+  {
+   "zh": "<strong>空氣線圖</strong>：Psychrometric Chart",
+   "en": "<strong>Psychrometric chart</strong>"
+  },
+  {
+   "zh": "關鍵控制邏輯要點",
+   "en": "Key Control Logic Points"
+  },
+  {
+   "zh": "<strong>低溫保護</strong>：混合空氣溫度（TX 1）低於 5°C 時必須報警並停機 — 這是防止加熱盤管凍裂的安全聯鎖",
+   "en": "<strong>Low-temperature protection</strong>: when the mixed air temperature (TX 1) falls below 5°C, an alarm and shutdown are required; this is a safety interlock to prevent the heating coil from freezing and bursting"
+  },
+  {
+   "zh": "<strong>序列控制</strong>：冷卻盤管閥（CVM 1）和加熱盤管閥（CVM 2）串聯調節 — 先冷後熱，避免同時加熱和冷卻浪費能源",
+   "en": "<strong>Sequence control</strong>: the cooling coil valve (CVM 1) and heating coil valve (CVM 2) are modulated in sequence: cooling first, then heating, to avoid wasting energy by heating and cooling at the same time"
+  },
+  {
+   "zh": "<strong>除濕策略</strong>：當濕度超標時，冷卻盤管閥接受「覆蓋控制」（Override Control），優先除濕而非溫控",
+   "en": "<strong>Dehumidification strategy</strong>: when humidity exceeds the limit, the cooling coil valve accepts \"override control\", giving priority to dehumidification over temperature control"
+  },
+  {
+   "zh": "<strong>恆風量控制</strong>：風機轉速由風量測量裝置（AFD 1）反饋調節，確保送風量穩定",
+   "en": "<strong>Constant airflow control</strong>: fan speed is adjusted by feedback from the airflow measuring device (AFD 1) to keep supply airflow stable"
+  },
+  {
+   "zh": "I/O 點表解讀",
+   "en": "Interpreting the I/O Point Schedule"
+  },
+  {
+   "zh": "I/O 點表（I/O Point Schedule）是 BMS（Building Management System，樓宇管理系統）程式設計的基礎文件：",
+   "en": "The I/O point schedule is the basic document for programming the BMS (Building Management System):"
+  },
+  {
+   "zh": "<strong>AI（類比輸入）</strong>：溫度、濕度等連續信號 → 需要 4-20mA 或 0-10V 輸入卡",
+   "en": "<strong>AI (analog input)</strong>: continuous signals such as temperature and humidity → require 4-20mA or 0-10V input cards"
+  },
+  {
+   "zh": "<strong>AO（類比輸出）</strong>：閥門開度、風機轉速等連續控制 → 需要類比輸出卡",
+   "en": "<strong>AO (analog output)</strong>: continuous control such as valve position and fan speed → require analog output cards"
+  },
+  {
+   "zh": "<strong>DI（數位輸入）</strong>：開關狀態、壓差開關 → 乾接點信號",
+   "en": "<strong>DI (digital input)</strong>: switch status, differential pressure switches → dry contact signals"
+  },
+  {
+   "zh": "<strong>DO（數位輸出）</strong>：風機啟停 → 繼電器輸出",
+   "en": "<strong>DO (digital output)</strong>: fan start/stop → relay outputs"
+  },
+  {
+   "zh": "<strong>CA（關鍵警報）</strong> vs. <strong>GA（一般警報）</strong>：決定警報的優先級和響應要求",
+   "en": "<strong>CA (critical alarm)</strong> vs. <strong>GA (general alarm)</strong>: determines alarm priority and response requirements"
+  },
+  {
+   "zh": "為什麼混合空氣溫度的低溫保護設定為 5°C 而不是 0°C？考慮感測器精度和響應延遲。",
+   "en": "Why is the low-temperature protection for mixed air temperature set at 5°C rather than 0°C? Consider sensor accuracy and response delay."
+  },
+  {
+   "zh": "解釋為什麼濕度控制使用「覆蓋控制」（Override）而非獨立控制迴路。在什麼氣候條件下這種設計特別重要？",
+   "en": "Explain why humidity control uses \"override control\" rather than an independent control loop. Under what climate conditions is this design especially important?"
+  },
+  {
+   "zh": "如果 HEPA 過濾器壓差開關（PDI 3）報警但風量正常，可能的原因是什麼？",
+   "en": "If the HEPA filter differential pressure switch (PDI 3) alarms but airflow is normal, what are the possible causes?"
+  },
+  {
+   "zh": "溫度分佈驗證 | p262-p265",
+   "en": "Temperature Mapping | p262-p265"
+  },
+  {
+   "zh": "溫度分佈驗證的雙重目的",
+   "en": "The Dual Purpose of Temperature Mapping"
+  },
+  {
+   "zh": "<strong>確認區域整體合規</strong>：驗證整個儲存區域在定義限值內",
+   "en": "<strong>Confirm overall compliance of the area</strong>: verify that the whole storage area stays within the defined limits"
+  },
+  {
+   "zh": "<strong>決定永久感測器位置</strong>：找出溫度極值點，作為品質記錄系統中永久監測感測器的安裝位置，用於計算 MKT（Mean Kinetic Temperature，平均動力學溫度）",
+   "en": "<strong>Determine permanent sensor locations</strong>: find the temperature extremes, which become the installation locations of the permanent monitoring sensors in the quality record system, used to calculate MKT (Mean Kinetic Temperature)"
+  },
+  {
+   "zh": "感測器佈局策略（NF X15-140 法國標準）",
+   "en": "Sensor Layout Strategy (NF X15-140, French Standard)"
+  },
+  {
+   "zh": "<strong>小型腔室（≤ 2 m³）</strong>：最少數量的感測器放置在工作區角落",
+   "en": "<strong>Small chambers (≤ 2 m³)</strong>: a minimum number of sensors placed at the corners of the working zone"
+  },
+  {
+   "zh": "<strong>中型腔室（≤ 20 m³）</strong>：增加感測器數量，覆蓋更多位置",
+   "en": "<strong>Medium chambers (≤ 20 m³)</strong>: more sensors, covering more locations"
+  },
+  {
+   "zh": "<strong>大型區域（&gt; 20 m³）</strong>：以每個 HVAC 出風口為一個「區域」，在每區應用標準佈局",
+   "en": "<strong>Large areas (&gt; 20 m³)</strong>: treat each HVAC supply outlet as a \"zone\" and apply the standard layout in each zone"
+  },
+  {
+   "zh": "必須在控制感測器附近放一個驗證感測器，以確認控制點的代表性",
+   "en": "A verification sensor must be placed near the control sensor to confirm the representativeness of the control point"
+  },
+  {
+   "zh": "季節性測試的必要性",
+   "en": "Necessity of Seasonal Testing"
+  },
+  {
+   "zh": "有外牆的區域<strong>必須在夏季和冬季極端條件下</strong>各做一次溫度分佈驗證，原因：",
+   "en": "An area with external walls <strong>must undergo temperature mapping once under summer and once under winter extreme conditions</strong>, because:"
+  },
+  {
+   "zh": "夏季：外牆傳熱使靠牆區域偏熱 → HVAC 冷卻負載增加",
+   "en": "Summer: heat transfer through external walls makes areas near the walls warmer → HVAC cooling load increases"
+  },
+  {
+   "zh": "冬季：外牆散熱使靠牆區域偏冷 → 可能出現局部低溫",
+   "en": "Winter: heat loss through external walls makes areas near the walls colder → local low temperatures may occur"
+  },
+  {
+   "zh": "結果可能截然不同，最高溫點和最低溫點的位置可能互換",
+   "en": "Results may be quite different, and the locations of the hottest and coldest points may swap"
+  },
+  {
+   "zh": "CDMO 倉庫溫度驗證實務",
+   "en": "Temperature Mapping Practice for a CDMO Warehouse"
+  },
+  {
+   "zh": "對於藥品倉庫的溫度驗證，以下實務要點尤其重要：",
+   "en": "For temperature mapping of a pharmaceutical warehouse, the following practical points are especially important:"
+  },
+  {
+   "zh": "<strong>負載測試</strong>：空倉 vs. 滿倉的氣流模式完全不同 — 滿倉時貨架阻擋氣流，風速增加但分佈可能不均",
+   "en": "<strong>Load testing</strong>: airflow patterns in an empty versus a full warehouse are completely different; when full, racking blocks airflow, and velocity increases but distribution may be uneven"
+  },
+  {
+   "zh": "<strong>進出貨影響</strong>：大量進出貨時外門開啟，會大量引入未調節外氣 → 需評估最長開門時間",
+   "en": "<strong>Effect of receiving and dispatch</strong>: during heavy receiving and dispatch, external doors open and bring in large amounts of unconditioned outside air → the maximum door-open time must be evaluated"
+  },
+  {
+   "zh": "<strong>產品溫度</strong>：冬天從室外運入的產品溫度可能遠低於儲存條件 → 需要額外的回溫監測",
+   "en": "<strong>Product temperature</strong>: in winter, product brought in from outdoors may be far below the storage condition → additional temperature recovery monitoring is needed"
+  },
+  {
+   "zh": "比喻說明：溫度驗證如同冰箱體檢",
+   "en": "Analogy: Temperature Mapping Is Like a Refrigerator Check-up"
+  },
+  {
+   "zh": "家用冰箱也有「溫度分佈」問題：門邊比較溫暖、後壁比較冷、上下層溫度不同。溫度驗證就像對冰箱做徹底體檢 — 找出最熱和最冷的點，確保所有儲存位置都在安全範圍內，然後在極端位置放一個溫度計長期監控。",
+   "en": "A household refrigerator also has a \"temperature distribution\" problem: it is warmer near the door, colder at the back wall, and different on upper and lower shelves. Temperature mapping is like giving the refrigerator a thorough check-up: find the hottest and coldest points, make sure every storage location is within the safe range, and then place a thermometer at the extreme location for long-term monitoring."
+  },
+  {
+   "zh": "你的 CDMO 要驗證一間 15°C-25°C 的成品倉庫。倉庫有一面是外牆。請列出你的溫度驗證計劃中至少 5 個要考慮的因素。",
+   "en": "Your CDMO needs to map a 15°C-25°C finished goods warehouse, and one side of the warehouse is an external wall. List at least 5 factors to consider in your temperature mapping plan."
+  },
+  {
+   "zh": "為什麼指引建議在空倉和半滿倉各做一次測試，而不是空倉和全滿倉？（提示：考慮空氣流動路徑）",
+   "en": "Why does the guide recommend testing in an empty and a half-full warehouse rather than an empty and a fully loaded one? (Hint: consider the airflow paths.)"
+  },
+  {
+   "zh": "MKT 和簡單的算術平均溫度有什麼不同？在什麼情況下 MKT 的計算更有意義？",
+   "en": "How does MKT differ from a simple arithmetic mean temperature? In what situations is calculating MKT more meaningful?"
+  },
+  {
+   "zh": "本節重點回顧 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "<strong>醫療器材 HVAC</strong>：FDA 三級分類（Class I/II/III）決定 HVAC 需求等級。環境控制是「裁量性要求」，由製造商透過風險評估自行定義。Class III 植入式器材可能需要分級潔淨空間，常參照 FDA 無菌藥品 GMP 作為環境標準",
+   "en": "<strong>Medical device HVAC</strong>: the FDA three-class system (Class I/II/III) determines the level of HVAC requirements. Environmental control is a \"discretionary requirement\" that the manufacturer defines through risk assessment. Class III implantable devices may require classified cleanroom space, often referencing FDA aseptic processing GMP as the environmental standard"
+  },
+  {
+   "zh": "<strong>九大潔淨室方程式</strong>：從理想氣體定律到串聯 HEPA 計算，這些公式構成 HVAC 設計的數學基礎。最實用的是 Q=VA（風量）、AC/hr=60Q/V（換氣次數）、Cavg=Cs+PGR/Q（粒子濃度）",
+   "en": "<strong>Nine cleanroom equations</strong>: from the ideal gas law to cascaded HEPA calculations, these equations form the mathematical basis of HVAC design. The most useful are Q=VA (airflow), AC/hr=60Q/V (air change rate), and Cavg=Cs+PGR/Q (particle concentration)"
+  },
+  {
+   "zh": "<strong>壓差與風速的二次方關係</strong>：風速加倍需壓差增四倍、馬力增八倍。這解釋了為什麼開門狀態難以維持壓差（需 17,800 CFM），也是氣鎖存在的物理基礎",
+   "en": "<strong>Quadratic relationship between pressure differential and velocity</strong>: doubling the velocity requires four times the pressure differential and eight times the horsepower. This explains why the pressure differential is hard to maintain with the door open (17,800 CFM needed) and is the physical basis for airlocks"
+  },
+  {
+   "zh": "<strong>恢復時間優先</strong>：設計應以目標恢復時間反推換氣次數，而非直接套用固定值。20 AC/hr 可在 14 分鐘內完成 100 倍恢復（EU Grade B 要求）",
+   "en": "<strong>Recovery time first</strong>: design should work backward from the target recovery time to the air change rate rather than apply a fixed value. 20 AC/hr achieves 100-fold recovery within 14 minutes (EU Grade B requirement)"
+  },
+  {
+   "zh": "<strong>串聯 HEPA 雙重優勢</strong>：兩個 99.97% HEPA 串聯可達 99.9991% 效率，且 AHU 主 HEPA 承擔大部分負載使末端 HEPA 壓降穩定數年，簡化空氣平衡",
+   "en": "<strong>Dual advantages of cascaded HEPA</strong>: two 99.97% HEPA filters in series can reach 99.9991% efficiency, and the primary AHU HEPA takes most of the load so the terminal HEPA pressure drop stays stable for years, simplifying the air balance"
+  },
+  {
+   "zh": "<strong>預過濾強烈建議</strong>：所有使用末端 HEPA 的設施應安裝高效預過濾（MERV 13/F7），防止差異化阻塞導致壓差反轉",
+   "en": "<strong>Pre-filters strongly recommended</strong>: all facilities using terminal HEPA should install high-efficiency pre-filters (MERV 13/F7) to prevent differential blinding from reversing pressure differentials"
+  },
+  {
+   "zh": "<strong>控制閥選型</strong>：需同時考慮閥門特性（快開/線性/等百分比）、Cv 流量係數（30-80% 行程範圍）和閥門權限（Authority）",
+   "en": "<strong>Control valve sizing</strong>: consider valve characteristic (quick opening/linear/equal percentage), Cv flow coefficient (30-80% travel range), and valve authority together"
+  },
+  {
+   "zh": "<strong>溫度驗證</strong>：雙重目的（確認區域合規 + 決定永久感測器位置），有外牆區域需在夏冬極端條件下各做一次，空倉與半滿倉各做一次負載測試",
+   "en": "<strong>Temperature mapping</strong>: dual purpose (confirm area compliance + determine permanent sensor locations); areas with external walls need one mapping under summer and one under winter extremes, and load tests are done in an empty and a half-full warehouse"
+  }
+ ]
+}

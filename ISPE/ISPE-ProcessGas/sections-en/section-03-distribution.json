@@ -1,0 +1,581 @@
+{
+ "source": "section-03-distribution.html",
+ "blocks": [
+  {
+   "zh": "第五章：配送系統設計選項",
+   "en": "Chapter 5: Distribution System Design Options"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解環形主管（ring main）與單向配送（one-way distribution）兩種架構的設計邏輯與GMP優劣比較",
+   "en": "Understand the design logic of ring main and one-way distribution architectures, and compare their GMP advantages and disadvantages"
+  },
+  {
+   "zh": "掌握非回流閥（non-return valve）防止逆流污染的原理及安裝規範，理解其在無菌產品系統中的法規必要性",
+   "en": "Understand how non-return valves prevent backflow contamination, their installation requirements, and why they are a regulatory necessity in sterile product systems"
+  },
+  {
+   "zh": "了解製程氣體過濾系統的完整層次：從源頭預過濾到使用點（POU）0.2 µm滅菌級過濾，以及三種完整性測試方法",
+   "en": "Understand the full layered structure of a process gas filtration system, from source pre-filtration to 0.2 µm sterilizing-grade filtration at the point of use (POU), plus the three integrity test methods"
+  },
+  {
+   "zh": "比較各種管路材質（不鏽鋼、銅、塑膠、碳鋼）的特性、適用情境與GxP限制，並能在CDMO現場做出有據可查的材質選擇決策",
+   "en": "Compare the characteristics, suitable applications and GxP limitations of piping materials (stainless steel, copper, plastic, carbon steel), and make a documented material selection decision on site at a CDMO"
+  },
+  {
+   "zh": "5.1 Concepts — 配送系統設計基本概念",
+   "en": "5.1 Concepts"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念解析 Key Concepts",
+   "en": "Key Concepts"
+  },
+  {
+   "zh": "<strong>配送系統設計 (Distribution System Design):</strong> 不是選一條管路接到設備就完成了。設計的起點是「使用端規格書（end user specification）」——你的製程需要多純的氣體、多大的流量、多少壓力，設計才從這裡往回推。",
+   "en": "<strong>Distribution System Design:</strong> Design is not simply choosing a pipe and connecting it to the equipment. The starting point is the end user specification: how pure the gas must be, how much flow and what pressure your process needs. The design works backward from there."
+  },
+  {
+   "zh": "<strong>CoA — Certificate of Analysis（分析證明書）:</strong> 每批次/每桶外購氣體的品質保證文件。ISPE強調：外購氣體供應商等同原料供應商，需要供應商稽核（supplier audit）、CoA審查，以及設備的校驗記錄。這在FDA查廠時必查。",
+   "en": "<strong>CoA (Certificate of Analysis):</strong> The quality assurance document for each batch or cylinder of purchased gas. ISPE stresses that a purchased-gas supplier is equivalent to a raw material supplier: it requires a supplier audit, CoA review and equipment calibration records. FDA inspectors always check this."
+  },
+  {
+   "zh": "<strong>內部製造氣體的盲區:</strong> 許多CDMO習慣把壓縮空氣視為「公用設施」而非「原料」，但ISPE明確要求：自製氣體（compressed air、nitrogen）需要與外購氣體完全相同的品質管理機制，包括污染物報告（如油份攜帶）。",
+   "en": "<strong>The blind spot of in-house generated gases:</strong> Many CDMOs treat compressed air as a \"utility\" rather than a \"raw material\", but ISPE is explicit that in-house gases (compressed air, nitrogen) need exactly the same quality management as purchased gases, including contaminant reporting (such as oil carry-over)."
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "把製程氣體配送系統想像成醫院的供氧管路。醫院不會隨便拉一條塑膠管就接到手術室的氧氣口——它需要材質驗證、壓力計算、備援系統、以及每個接頭的防回流設計。你的藥廠氣體配送系統也是如此：病人安全（= 產品品質）就建立在這套設計的嚴謹程度上。",
+   "en": "Think of a process gas distribution system as the oxygen piping in a hospital. A hospital would never run a piece of plastic tubing to the oxygen outlet in an operating room. It needs material verification, pressure calculations, backup systems, and backflow protection at every connection. Your plant's gas distribution system is the same: patient safety (= product quality) depends on the rigor of this design."
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "風險評估（risk assessment）是整個第5章的核心邏輯主軸。ISPE不規定你一定要做環形管路、一定要裝多少過濾器——它要求你透過風險評估來決定哪些工業標準做法在GMP環境中可以免除，哪些必須保留。這種「基於風險的彈性」正是現代法規的精神，也是你在工程設計時最重要的文件化工具。",
+   "en": "Risk assessment is the central logic running through all of Chapter 5. ISPE does not prescribe that you must build a ring main or install a given number of filters. It requires you to use risk assessment to decide which industrial-standard practices can be waived in a GMP environment and which must be kept. This \"risk-based flexibility\" is the spirit of modern regulation, and it is also the most important documentation tool you have in engineering design."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "你的廠區自製壓縮空氣目前有沒有CoA制度？如果沒有，這在法規上代表什麼風險？",
+   "en": "Does your site have a CoA system for in-house compressed air? If not, what regulatory risk does that represent?"
+  },
+  {
+   "zh": "為什麼ISPE說藥廠氣體通常「不需要設計排水斜度（pipe line fall）」？這與工業壓縮空氣系統的差異何在？",
+   "en": "Why does ISPE say pharmaceutical gas systems generally do not need a designed pipe line fall (drainage slope)? How does this differ from industrial compressed air systems?"
+  },
+  {
+   "zh": "5.1.2 Basic System Design Concepts — 基本系統設計概念",
+   "en": "5.1.2 Basic System Design Concepts"
+  },
+  {
+   "zh": "核心概念：Ring Main vs. One-Way 的設計哲學",
+   "en": "Core Concept: The Design Philosophy of Ring Main vs. One-Way"
+  },
+  {
+   "zh": "<strong>單向配送 (One-Way Distribution):</strong> 像一條單車道的馬路——起點到終點，氣體只有一條路走。好處是管路簡單、成本低；壞處是終端使用點的壓力會隨距離和需求波動而不穩定，且任何一段管路維修就影響所有下游用點。",
+   "en": "<strong>One-Way Distribution:</strong> Like a single-lane road: gas has only one path from start to end. The benefit is simple piping and low cost; the drawback is that pressure at the end use points fluctuates with distance and demand, and maintenance on any pipe section affects all downstream points of use."
+  },
+  {
+   "zh": "<strong>環形主管 (Ring Main):</strong> 像城市的環狀公路——氣體可以從左邊或右邊同時進入任何一個出口，壓力自動趨於平衡。這是藥廠大型生產線的首選，特別是當未來有擴產計畫時。",
+   "en": "<strong>Ring Main:</strong> Like a city ring road: gas can enter any outlet from the left or the right at the same time, and pressure balances itself automatically. This is the first choice for large pharmaceutical production lines, especially when future expansion is planned."
+  },
+  {
+   "zh": "Ring main就像台北的捷運環狀線。任何一個站發生問題，乘客可以繞另一半圓繼續走。相對地，單向系統就像只有一條路的公路——一旦中斷，所有車都堵死了。對於24小時連續生產的CDMO廠，「任何單點故障不影響全線生產」這個特性值多少錢，就是ring main設計費用的正當化基礎。",
+   "en": "A ring main is like the Taipei MRT circular line. If one station has a problem, passengers can go around the other half of the loop. A one-way system, by contrast, is like a road with only one lane: once it is blocked, every vehicle is stuck. For a CDMO running 24-hour continuous production, the value of the property \"no single-point failure stops the whole line\" is the justification for the cost of a ring main design."
+  },
+  {
+   "zh": "公式與計算 Pipe Sizing Reference",
+   "en": "Pipe Sizing Reference"
+  },
+  {
+   "zh": "管路尺寸設計兩種方法：\n\n方法一：最大流速法\n  典型流速上限：6–9 m/s（18–27 ft/sec）\n  超過此速度 → 壓降急增 + 噪音 + 管件磨損加速\n\n方法二：允許壓降法\n  允許壓降：3–5 psi（0.3–0.4 bar）全程\n  壓降增加 → 需提高供氣壓力\n  壓力增加遵循平方律（square law）：\n  能耗 ∝ P²\n  → 供氣壓力提高10%，能耗約增加21%\n\n注意事項：\n  過濾器壓降（clean + dirty）必須納入計算\n  峰值需求（peak load）而非平均值作為設計基準",
+   "en": "Two methods of pipe sizing:\n\nMethod 1: Maximum velocity method\n  Typical velocity limit: 6–9 m/s (18–27 ft/sec)\n  Above this velocity → sharp pressure drop + noise + accelerated fitting wear\n\nMethod 2: Allowable pressure drop method\n  Allowable pressure drop: 3–5 psi (0.3–0.4 bar) overall\n  Greater pressure drop → supply pressure must be raised\n  Energy use follows a square law:\n  Energy ∝ P²\n  → a 10% increase in supply pressure raises energy use by about 21%\n\nNotes:\n  Filter pressure drop (clean + dirty) must be included in the calculation\n  Design on peak load, not average load"
+  },
+  {
+   "zh": "重點提示：非GMP系統餵入GMP系統的風險",
+   "en": "Key Note: The Risk of Feeding a Non-GMP System into a GMP System"
+  },
+  {
+   "zh": "5.1.2.4的「系統分割」是很多大型藥廠實際採用的做法：讓工廠原有的大型工業壓縮空氣系統供氣給整廠，然後在進入GMP區前設一套「哨兵過濾組（policing filter set）」和非回流閥，把GMP段獨立出來。",
+   "en": "The \"system segregation\" described in 5.1.2.4 is what many large pharmaceutical plants actually do: the plant's existing large industrial compressed air system supplies the whole site, and a \"policing filter set\" and a non-return valve are installed before the GMP area to separate the GMP section."
+  },
+  {
+   "zh": "這個設計的關鍵在於：GMP段的品質必須能在「工業段品質惡化」的情況下依然受控。這意味著GMP段需要自己的監測、自己的記錄，以及足夠的冗餘過濾。",
+   "en": "The key to this design is that the quality of the GMP section must remain under control even when the quality of the industrial section deteriorates. This means the GMP section needs its own monitoring, its own records and sufficient redundant filtration."
+  },
+  {
+   "zh": "實務應用 CDMO Scenario",
+   "en": "CDMO Scenario"
+  },
+  {
+   "zh": "在CDMO的多客戶環境中，ring main設計特別重要。不同客戶的製程可能在同一天使用不同量的氮氣或壓縮空氣。Ring main的「自平衡」特性讓高用量製程不會影響其他區域的壓力穩定性。同時，ring main上設置足夠的隔離閥（isolation valves），使工程師可以在不停止全廠生產的情況下維護任何一段管路——這正是FDA查廠時關注的「可維護性（maintainability）」設計要素。",
+   "en": "In the multi-client environment of a CDMO, a ring main design is especially important. Different clients' processes may use very different amounts of nitrogen or compressed air on the same day. The self-balancing property of a ring main prevents a high-demand process from disturbing pressure stability in other areas. In addition, placing enough isolation valves on the ring main allows engineers to maintain any pipe section without stopping production across the whole site. This is the \"maintainability\" design element FDA inspectors pay attention to."
+  },
+  {
+   "zh": "如果你的廠區計畫5年後新增一條無菌充填線，現在設計氣體配送系統時應選擇ring main還是one-way？理由是什麼？",
+   "en": "If your site plans to add a sterile filling line in five years, should you choose a ring main or one-way distribution when designing the gas distribution system now? What is your reasoning?"
+  },
+  {
+   "zh": "為什麼管路設計不能用平均流量，而必須用峰值流量？用一個實際生產情境說明。",
+   "en": "Why must pipe sizing use peak flow rather than average flow? Explain with a real production scenario."
+  },
+  {
+   "zh": "「壓降與壓力成平方律關係」對日常運轉成本有什麼實際意義？",
+   "en": "What does the \"square-law relationship between pressure drop and pressure\" mean in practice for day-to-day running costs?"
+  },
+  {
+   "zh": "5.2 Non-Return or Check Valves — 非回流閥／止回閥",
+   "en": "5.2 Non-Return or Check Valves"
+  },
+  {
+   "zh": "<strong>非回流閥 / 止回閥 (Non-Return Valve / Check Valve):</strong> 氣體只能向一個方向流動的閥件。對無菌藥品來說，這是防止「產品污染物沿氣體管路逆流回供氣系統」的最後一道實體屏障。",
+   "en": "<strong>Non-Return Valve / Check Valve:</strong> A valve that allows gas to flow in only one direction. For sterile products, this is the last physical barrier preventing product contaminants from flowing back up the gas line into the supply system."
+  },
+  {
+   "zh": "<strong>彈簧式晶片止回閥 (Spring-Loaded Wafer Check Valve):</strong> ISPE推薦的製程氣體類型。其特點是：彈性密封材質確保氣密性、彈簧確保快速關閉、設計不依賴重力故可任意角度安裝。這三個特性在複雜管路佈局中非常實用。",
+   "en": "<strong>Spring-Loaded Wafer Check Valve:</strong> The type of valve ISPE recommends for process gases. Its features: the elastomeric seal ensures gas tightness, the spring ensures fast closure, and the design does not rely on gravity, so it can be installed at any angle. These three features are very practical in complex piping layouts."
+  },
+  {
+   "zh": "<strong>測試口 (Test Ports):</strong> 安裝在非回流閥兩側，讓維護人員可以在不拆閥的情況下進行功能驗證。這是高風險製程的必要設計——如果你的非回流閥是「關鍵功能」，就必須能夠被測試。",
+   "en": "<strong>Test Ports:</strong> Installed on both sides of the non-return valve so maintenance staff can verify its function without removing it. This is a necessary design for high-risk processes: if your non-return valve is a \"critical function\", it must be testable."
+  },
+  {
+   "zh": "重點提示：逆流污染的實際場景",
+   "en": "Key Note: Real-World Backflow Contamination Scenarios"
+  },
+  {
+   "zh": "想像一個凍乾機（lyophilizer）在充填氮氣進行頭空間保護時，如果下游閥件失效，產品蒸汽（含有機物或微生物）可能順著氮氣管路逆流進入整個供氣系統，污染後續批次的所有頭空間保護用氣。這正是為什麼ISPE要求非回流閥「盡可能靠近POU安裝」——逆流行進的距離越短，潛在污染範圍越小。",
+   "en": "Imagine a lyophilizer being filled with nitrogen for headspace protection. If a downstream valve fails, product vapor (containing organics or microorganisms) could flow back along the nitrogen line into the whole gas supply system and contaminate all later batches' headspace gas. This is exactly why ISPE requires non-return valves to be installed \"as close to the POU as possible\": the shorter the distance the backflow can travel, the smaller the potential area of contamination."
+  },
+  {
+   "zh": "FDA 21 CFR Part 211對製藥用公用設施的汙染防制有明確要求，非回流閥的設計和驗證記錄在查廠時是必查項目。",
+   "en": "FDA 21 CFR Part 211 has explicit requirements for preventing contamination from pharmaceutical utilities, and the design and verification records of non-return valves are always checked during inspections."
+  },
+  {
+   "zh": "非回流閥就像浴室排水管的P型彎管（存水彎）——它讓水只能向一個方向走，防止下水道的廢氣逆流進浴室。在藥廠氣體系統中，它防止的不是臭氣，而是可能危及藥品品質的微生物或有機污染物。而「需要測試口」的邏輯也很直觀：如果你家的P型彎管是安全關鍵設施，你應該能在不拆管的情況下測試它還有沒有在正常工作。",
+   "en": "A non-return valve is like the P-trap under a bathroom drain: it lets water go in only one direction and keeps sewer gas from flowing back into the bathroom. In a pharmaceutical gas system, what it stops is not odor but microorganisms or organic contaminants that could endanger drug quality. The logic of \"needing test ports\" is also intuitive: if the P-trap in your home were a safety-critical item, you would want to test whether it still works without taking the pipe apart."
+  },
+  {
+   "zh": "實務應用 CDMO Inspection Perspective",
+   "en": "CDMO Inspection Perspective"
+  },
+  {
+   "zh": "FDA查廠時，查察官對氣體系統非回流閥的關注點：",
+   "en": "What FDA inspectors focus on regarding non-return valves in gas systems:"
+  },
+  {
+   "zh": "安裝位置：是否緊鄰POU，而非安裝在遠端主管上？",
+   "en": "Installation location: Is it right next to the POU, rather than on a remote main?"
+  },
+  {
+   "zh": "材質兼容性：閥體密封材料是否與氣體及可能的製程側污染物兼容？",
+   "en": "Material compatibility: Is the valve body and seal material compatible with the gas and with possible process-side contaminants?"
+  },
+  {
+   "zh": "驗證記錄：非回流閥的功能是否有定期測試？測試方法、頻率、驗收標準是否記錄在SOP中？",
+   "en": "Verification records: Is the function of the non-return valve tested regularly? Are the test method, frequency and acceptance criteria documented in an SOP?"
+  },
+  {
+   "zh": "冗餘設計：高風險製程（如直接產品接觸氣體）是否有雙重非回流閥或其他備援？",
+   "en": "Redundancy: For high-risk processes (such as direct product-contact gas), is there a double non-return valve or other backup?"
+  },
+  {
+   "zh": "在什麼情況下單一非回流閥不夠，需要冗餘設計（redundancy）？",
+   "en": "Under what circumstances is a single non-return valve not enough, so that redundancy is needed?"
+  },
+  {
+   "zh": "非回流閥安裝在主管而非POU附近，會帶來什麼風險？",
+   "en": "What risk arises when the non-return valve is installed on the main rather than near the POU?"
+  },
+  {
+   "zh": "5.3 Pressure Reducing Valves — 減壓閥",
+   "en": "5.3 Pressure Reducing Valves"
+  },
+  {
+   "zh": "<strong>減壓閥 (Pressure Reducing Valve, PRV):</strong> 將高壓供氣降低至製程所需工作壓力的閥件。選型原則：正常操作壓力應落在閥的能力範圍中段（mid-point），而非接近最大或最小值——這就像汽車引擎在最大轉速60%–80%時效率最好、壽命最長。",
+   "en": "<strong>Pressure Reducing Valve (PRV):</strong> A valve that reduces high supply pressure to the working pressure the process needs. Selection principle: normal operating pressure should fall in the mid-range of the valve's capability, not near its maximum or minimum, just as a car engine is most efficient and lasts longest at 60%–80% of maximum rpm."
+  },
+  {
+   "zh": "<strong>兩段串聯減壓 (Two-Stage Serial Reduction):</strong> 當入口壓力 ≥ 200 psi，或減壓比 &gt; 4:1 時使用。邏輯是將大壓差分兩次承受，每個閥的壓差都在合理範圍內，精度更高、閥件壽命更長。",
+   "en": "<strong>Two-Stage Serial Reduction:</strong> Used when inlet pressure is ≥ 200 psi, or the reduction ratio is &gt; 4:1. The logic is to take the large pressure difference in two steps so that each valve's differential stays in a reasonable range, giving higher accuracy and longer valve life."
+  },
+  {
+   "zh": "<strong>並聯連接 (Parallel Connection):</strong> 多個小PRV並聯，用於需求量變化大的供氣點。好處是可在不停機的狀態下輪流維護各個閥，這是GMP環境持續生產的重要設計考量。",
+   "en": "<strong>Parallel Connection:</strong> Several small PRVs connected in parallel, used at supply points where demand varies widely. The benefit is that the valves can be maintained in rotation without shutting down, an important design consideration for continuous production in a GMP environment."
+  },
+  {
+   "zh": "重點提示：直接產品接觸氣體的材質要求",
+   "en": "Key Note: Material Requirements for Direct Product-Contact Gas"
+  },
+  {
+   "zh": "當氣體直接接觸藥品（如凍乾機頭空間充填氮氣），PRV的材質和表面處理（finish）就成為品質關鍵屬性（CQA）的一部分。此時需要考慮：316L不鏽鋼、電拋光（electropolished）內表面、無油脂裝配、以及材質相容性文件。ISPE指出這些對sterile operations是「critical」的——在法規意義上，這意味著需要有文件記錄的驗證依據。",
+   "en": "When gas directly contacts the drug product (for example nitrogen headspace filling of a lyophilizer), the PRV's material and surface finish become part of a critical quality attribute (CQA). Considerations then include 316L stainless steel, electropolished internal surfaces, oil-free assembly, and material compatibility documentation. ISPE states that these are \"critical\" for sterile operations; in regulatory terms, this means a documented basis for the verification is required."
+  },
+  {
+   "zh": "減壓比判斷標準",
+   "en": "Reduction Ratio Criteria"
+  },
+  {
+   "zh": "判斷是否需要兩段串聯減壓：\n\n條件1：入口壓力 ≥ 200 psi（14 bar）\n條件2：減壓比 &gt; 4:1\n        例：200 psi → 50 psi = 4:1（邊界）\n           200 psi → 40 psi = 5:1（需兩段）\n條件3：入口壓力波動大\n\n符合任一條件 → 建議採用兩段串聯減壓\n\n兩段設計原則：\n  第一段：從入口壓力降至中間壓力\n  第二段：從中間壓力降至最終工作壓力\n  每段壓差 ≤ 4:1 為佳",
+   "en": "Deciding whether two-stage serial reduction is needed:\n\nCondition 1: Inlet pressure ≥ 200 psi (14 bar)\nCondition 2: Reduction ratio &gt; 4:1\n        e.g. 200 psi → 50 psi = 4:1 (borderline)\n           200 psi → 40 psi = 5:1 (two stages needed)\nCondition 3: Large inlet pressure fluctuation\n\nIf any one condition is met → two-stage serial reduction is recommended\n\nTwo-stage design principles:\n  Stage 1: Reduce from inlet pressure to an intermediate pressure\n  Stage 2: Reduce from the intermediate pressure to the final working pressure\n  Preferably each stage has a ratio ≤ 4:1"
+  },
+  {
+   "zh": "你的廠區鋼瓶供氣（通常2000 psi）降壓到製程使用壓力（例如100 psi），需要幾段減壓？為什麼？",
+   "en": "Your site's cylinder gas supply (typically 2000 psi) is reduced to the process pressure (for example 100 psi). How many reduction stages are needed, and why?"
+  },
+  {
+   "zh": "並聯PRV設計為什麼特別適合CDMO環境？從連續生產的角度思考。",
+   "en": "Why is a parallel PRV design particularly suited to a CDMO environment? Think about it from the standpoint of continuous production."
+  },
+  {
+   "zh": "5.4 Mixing Valves — 混氣閥",
+   "en": "5.4 Mixing Valves"
+  },
+  {
+   "zh": "<strong>混氣閥系統 (Gas Mixing / Blending System):</strong> 在製程現場即時混合兩種或以上氣體，常見應用：CO₂/N₂混合（用於生物反應器pH控制）、O₂/N₂混合（用於細胞培養）、N₂/CO₂（用於incubator環境控制）。",
+   "en": "<strong>Gas Mixing / Blending System:</strong> Mixes two or more gases in real time at the point of use. Common applications: CO₂/N₂ mixing (for pH control in bioreactors), O₂/N₂ mixing (for cell culture), and N₂/CO₂ (for incubator environment control)."
+  },
+  {
+   "zh": "<strong>質量流量控制器 (Mass Flow Controller, MFC):</strong> 精確控制每種氣體質量流量的儀器，不受壓力和溫度變化影響（因為它測量的是質量，而非體積）。兩個MFC加上靜態混合器（static mixer）就構成基本的混氣系統。精度可達 ±1%。",
+   "en": "<strong>Mass Flow Controller (MFC):</strong> An instrument that precisely controls the mass flow of each gas, unaffected by changes in pressure and temperature (because it measures mass, not volume). Two MFCs plus a static mixer make up a basic gas mixing system. Accuracy can reach ±1%."
+  },
+  {
+   "zh": "<strong>預混 vs. 現場混合:</strong> 預混氣體（pre-mixed）方便，但每次換氣瓶的比例可能有批次差異；現場MFC混合精度高、可即時調整，適合比例需要頻繁變動的製程。",
+   "en": "<strong>Pre-mixed vs. on-site mixing:</strong> Pre-mixed gas is convenient, but the ratio may vary from cylinder to cylinder each time you change one. On-site MFC mixing is highly accurate and can be adjusted in real time, and suits processes whose ratio changes frequently."
+  },
+  {
+   "zh": "重點提示：混氣比例的驗證",
+   "en": "Key Note: Verifying the Mixing Ratio"
+  },
+  {
+   "zh": "在GMP環境中，混氣比例本身可能是一個關鍵製程參數（CPP）。例如，細胞培養基的CO₂濃度控制pH值，直接影響細胞生長和產品品質。因此，MFC的校驗記錄、靜態混合器的效能確認、以及混合後氣體的定期分析，都需要納入製程驗證計畫。±1%的精度聽起來很好，但需要有數據支持這個聲稱在你的特定條件下成立。",
+   "en": "In a GMP environment, the gas mixing ratio itself may be a critical process parameter (CPP). For example, the CO₂ concentration in a cell culture controls pH, which directly affects cell growth and product quality. The MFC calibration records, the performance qualification of the static mixer, and periodic analysis of the mixed gas therefore all need to be part of the process validation program. An accuracy of ±1% sounds good, but you need data to support that claim under your specific conditions."
+  },
+  {
+   "zh": "MFC混氣系統就像高精度的調酒機——每種「材料」（氣體）都有精確的流量控制，混合比例可以程式設定並記錄。預混氣體瓶則像買現成的調酒包——方便，但每包的比例你要相信供應商的CoA。在需要嚴格控制的GMP製程中，你會選哪個？答案取決於你的CPP設計和風險評估。",
+   "en": "An MFC mixing system is like a high-precision cocktail machine: each \"ingredient\" (gas) has precise flow control, and the mixing ratio can be programmed and recorded. A pre-mixed gas cylinder is like buying a ready-made cocktail kit: convenient, but you have to trust the supplier's CoA for the ratio in each kit. In a GMP process that needs tight control, which would you choose? The answer depends on your CPP design and risk assessment."
+  },
+  {
+   "zh": "CO₂/N₂混氣用於生物反應器，混氣比例偏差±5%對產品品質有什麼影響？這個參數應該歸類為CPP嗎？",
+   "en": "For CO₂/N₂ mixing in a bioreactor, what effect would a ±5% deviation in the mixing ratio have on product quality? Should this parameter be classified as a CPP?"
+  },
+  {
+   "zh": "「級聯控制（cascade control）」在混氣系統中的意思是什麼？它解決了什麼問題？",
+   "en": "What does \"cascade control\" mean in a gas mixing system? What problem does it solve?"
+  },
+  {
+   "zh": "5.5 Filtration — 過濾",
+   "en": "5.5 Filtration"
+  },
+  {
+   "zh": "核心概念：過濾的層次架構",
+   "en": "Core Concept: The Layered Structure of Filtration"
+  },
+  {
+   "zh": "<strong>製程氣體過濾系統是分層設計的——</strong>不是一個濾器解決所有問題，而是每個環節承擔不同的過濾任務：",
+   "en": "<strong>A process gas filtration system is designed in layers.</strong> No single filter solves every problem; each stage takes on a different filtration task:"
+  },
+  {
+   "zh": "<strong>源頭保護（≤1 µm）：</strong>在氣體產生源（如壓縮機出口）安裝，去除大顆粒，保護下游設備",
+   "en": "<strong>Source protection (≤1 µm):</strong> Installed at the gas generation source (such as the compressor outlet) to remove large particles and protect downstream equipment"
+  },
+  {
+   "zh": "<strong>使用點最終過濾（0.2 µm，無菌級）：</strong>產品接觸氣體的最後一道防線。這是「最後防線（last line of defense）」的意義——它是確保氣體無菌的主要屏障",
+   "en": "<strong>Final point-of-use filtration (0.2 µm, sterilizing grade):</strong> The last line of defense for product-contact gas. This is what \"last line of defense\" means: it is the primary barrier ensuring the gas is sterile"
+  },
+  {
+   "zh": "<strong>PTFE vs. PVDF膜：</strong>兩者都是疏水性材質，但PTFE不相容伽馬滅菌，單次性系統（single-use）需選PVDF",
+   "en": "<strong>PTFE vs. PVDF membranes:</strong> Both are hydrophobic materials, but PTFE is not compatible with gamma sterilization, so single-use systems need PVDF"
+  },
+  {
+   "zh": "重點提示：0.2 µm過濾器的「意外能力」",
+   "en": "Key Note: The \"Unexpected Capability\" of 0.2 µm Filters"
+  },
+  {
+   "zh": "0.2 µm的液相額定孔徑，在氣相中可以去除小至0.003 µm的粒子，甚至病毒（20 nm = 0.020 µm）。原因在於：氣體中的顆粒去除機制（衝擊、攔截、擴散、靜電）比液體中更多元，過濾效率遠高於液相額定值的預期。這對製藥氣體設計是個重要的安全餘量知識。",
+   "en": "A liquid-rated pore size of 0.2 µm can remove particles as small as 0.003 µm in the gas phase, and even viruses (20 nm = 0.020 µm). The reason is that particle removal mechanisms in gas (impaction, interception, diffusion, electrostatic attraction) are more varied than in liquid, so filtration efficiency is far higher than the liquid-phase rating would suggest. This is important safety-margin knowledge for pharmaceutical gas design."
+  },
+  {
+   "zh": "三種完整性測試方法比較",
+   "en": "Comparison of the Three Integrity Test Methods"
+  },
+  {
+   "zh": "方法              適用時機        優點              限制\n─────────────────────────────────────────────────────\n泡點壓力測試      滅菌前/使用後   直觀、易理解      需潤濕；手動法不\n(Bubble Point)                                      適用大濾芯；限滅\n                                                    菌前使用（手動）\n\n前向流測試        滅菌前/後均可   定量、可校驗；    需潤濕+乾燥復原；\n(Forward Flow)   （自動化）      適合大濾芯        較費時\n\n水侵入測試        原位滅菌後      無酒精；不污染    假失敗率較高；不\n(Water Intrusion) 首選           下游；原位測試    適合小濾芯；溫度\n                                                    敏感",
+   "en": "Method            When to use     Advantages        Limitations\n─────────────────────────────────────────────────────\nBubble point      Pre-sterilization/  Intuitive, easy to   Requires wetting; manual\n(Bubble Point)    post-use          understand           method unsuitable for large\n                                                       cartridges; manual use only\n                                                       before sterilization\n\nForward flow      Before or after     Quantitative,        Requires wetting + drying\n(Forward Flow)    sterilization       calibratable;        recovery; more time-\n                  (automated)         suits large          consuming\n                                      cartridges\n\nWater intrusion   Preferred after     No alcohol; does     Higher false-failure rate;\n(Water Intrusion) in-situ             not contaminate      unsuitable for small\n                  sterilization       downstream;          cartridges; temperature-\n                                      in-situ testing      sensitive"
+  },
+  {
+   "zh": "過濾器完整性測試就像出門前測試雨傘有沒有破洞。泡點測試是用嘴吹看有沒有漏氣（直觀但主觀）；前向流測試是用精密氣壓計量測洩漏量（客觀定量）；水侵入測試是把傘浸在水裡看有沒有水滲入（最適合現場原位測試，不用弄濕整支傘）。三種方法各有優缺點，GMP環境中根據時機和設備選擇最適合的。",
+   "en": "A filter integrity test is like checking an umbrella for holes before you go out. The bubble point test is like blowing into it to see if air leaks (intuitive but subjective). The forward flow test is like measuring the leak with a precise pressure gauge (objective and quantitative). The water intrusion test is like dipping the umbrella in water to see if any seeps through (best for in-situ testing on site, without wetting the whole umbrella). Each of the three methods has pros and cons, and in a GMP environment you choose the most suitable one based on timing and equipment."
+  },
+  {
+   "zh": "實務應用 CDMO Validation Perspective",
+   "en": "CDMO Validation Perspective"
+  },
+  {
+   "zh": "在無菌充填線，凍乾機和充填機的頭空間氮氣管路上的0.2 µm過濾器是「關鍵使用點過濾器」，需要：",
+   "en": "On a sterile filling line, the 0.2 µm filters on the headspace nitrogen lines of the lyophilizer and the filling machine are \"critical point-of-use filters\" and require:"
+  },
+  {
+   "zh": "使用前完整性測試（或供應商CoA確認）",
+   "en": "Pre-use integrity testing (or confirmation by supplier CoA)"
+  },
+  {
+   "zh": "SIP後的Water Intrusion Test（原位，不破壞下游無菌性）",
+   "en": "Water Intrusion Test after SIP (in situ, without compromising downstream sterility)"
+  },
+  {
+   "zh": "使用後（或每批次後）的Forward Flow Test確認",
+   "en": "Forward Flow Test confirmation after use (or after each batch)"
+  },
+  {
+   "zh": "完整的更換記錄：日期、批號、測試結果、操作員簽名",
+   "en": "Complete replacement records: date, lot number, test results, operator signature"
+  },
+  {
+   "zh": "過濾器使用壽命驗證：SIP次數、使用時間、通氣量的上限",
+   "en": "Filter service life validation: upper limits on SIP cycles, hours in service and gas throughput"
+  },
+  {
+   "zh": "這些都是FDA查廠時必查的文件，缺少任一項都可能導致483 observation。",
+   "en": "These are all documents FDA inspectors always check, and the absence of any one of them could lead to a 483 observation."
+  },
+  {
+   "zh": "為什麼PTFE膜濾器不能用伽馬射線滅菌？這對單次性生物反應器的設計意味著什麼？",
+   "en": "Why can PTFE membrane filters not be sterilized by gamma irradiation? What does this mean for the design of single-use bioreactors?"
+  },
+  {
+   "zh": "水侵入測試（Water Intrusion Test）最大的優點是什麼？在什麼場景下你會優先選擇它？",
+   "en": "What is the greatest advantage of the Water Intrusion Test? In what scenarios would you choose it first?"
+  },
+  {
+   "zh": "過濾器完整性測試失敗，下一步的標準作業程序應該包括哪些步驟？",
+   "en": "If a filter integrity test fails, what steps should the next-step SOP include?"
+  },
+  {
+   "zh": "5.6 Filters in Compressed Air Systems — 壓縮空氣系統的過濾配置",
+   "en": "5.6 Filters in Compressed Air Systems"
+  },
+  {
+   "zh": "核心概念：壓縮空氣過濾的五層架構",
+   "en": "Core Concept: The Five-Layer Architecture of Compressed Air Filtration"
+  },
+  {
+   "zh": "ISPE描述的是一個完整的「過濾縱深防禦」系統，每一層都有特定的目的：",
+   "en": "ISPE describes a complete \"defense-in-depth filtration\" system in which each layer has a specific purpose:"
+  },
+  {
+   "zh": "<strong>入口預過濾：</strong>低成本去除大顆粒，保護壓縮機本體",
+   "en": "<strong>Inlet pre-filtration:</strong> Low-cost removal of large particles to protect the compressor itself"
+  },
+  {
+   "zh": "<strong>壓縮機出口：</strong>去除壓縮冷凝後的水滴（聚結過濾器）+ 一般性顆粒",
+   "en": "<strong>Compressor outlet:</strong> Removes water droplets formed by compression condensation (coalescing filter) + general particulates"
+  },
+  {
+   "zh": "<strong>乾燥前過濾：</strong>保護乾燥劑不被油污和顆粒污染（0.01 µm油氣去除）",
+   "en": "<strong>Pre-dryer filtration:</strong> Protects the desiccant from oil and particle contamination (0.01 µm oil aerosol removal)"
+  },
+  {
+   "zh": "<strong>乾燥後過濾：</strong>防止乾燥劑顆粒遷移進入配送系統",
+   "en": "<strong>Post-dryer filtration:</strong> Prevents desiccant particles from migrating into the distribution system"
+  },
+  {
+   "zh": "<strong>儲槽後/進入配送前：</strong>最終的粒徑把關（0.2 µm for sterile）",
+   "en": "<strong>After the receiver / before entering distribution:</strong> Final particle-size gatekeeper (0.2 µm for sterile)"
+  },
+  {
+   "zh": "壓縮空氣的多層過濾就像城市的自來水淨化：水庫（粗濾/沉澱）→ 快濾池（去除懸浮物）→ 活性碳（去除有機物/味道）→ 加氯消毒→ 家用濾水器（最終使用點）。每一步都有特定的污染物目標，沒有哪一步是多餘的。在藥廠，0.2 µm的POU過濾器就是那個「家用濾水器」——它保護的是直接接觸藥品的最後一段路。",
+   "en": "The multi-layer filtration of compressed air is like municipal tap water purification: reservoir (coarse filtration/sedimentation) → rapid sand filter (removes suspended solids) → activated carbon (removes organics/taste) → chlorine disinfection → household water filter (final point of use). Each step targets a specific contaminant, and none is redundant. In a pharmaceutical plant, the 0.2 µm POU filter is that \"household water filter\": it protects the last stretch of the path that directly contacts the drug product."
+  },
+  {
+   "zh": "重點提示：並聯過濾器組的GMP意義",
+   "en": "Key Note: The GMP Significance of Parallel Filter Banks"
+  },
+  {
+   "zh": "儲槽後的過濾器「並聯設計」是一個重要的GMP操作彈性：一組在線運作，另一組可以在不停機的情況下更換。這解決了一個常見的CDMO痛點——更換過濾器通常需要排程停機，影響批次生產計畫。並聯設計讓過濾器更換變成一個「不需要停批的例行維護」。在過濾器更換記錄中，這種「在線更換」的設計也需要有對應的SOP和更換確認程序。",
+   "en": "The \"parallel design\" of the filters after the receiver is an important GMP operational flexibility: one bank operates on line while the other can be changed without shutting down. This solves a common CDMO pain point: changing filters usually requires scheduled downtime, which disrupts batch production plans. A parallel design turns a filter change into \"routine maintenance that does not stop the batch\". For filter replacement records, this kind of \"on-line change\" design also needs a corresponding SOP and a post-change verification procedure."
+  },
+  {
+   "zh": "實務應用：「哨兵過濾器」設計在CDMO的價值",
+   "en": "Practical Application: The Value of a \"Policing Filter\" Design for a CDMO"
+  },
+  {
+   "zh": "5.6.6的「雙重串聯（policing filter）」概念特別適合中小型CDMO或實驗室生產線：",
+   "en": "The \"double series (policing filter)\" concept in 5.6.6 is particularly suited to small and mid-sized CDMOs or laboratory production lines:"
+  },
+  {
+   "zh": "主過濾器失效時，哨兵過濾器自動接手，產品不受影響",
+   "en": "When the main filter fails, the policing filter takes over automatically and the product is unaffected"
+  },
+  {
+   "zh": "維護時輪換：舊的哨兵成為主濾，裝新過濾器成為新哨兵——Zero downtime",
+   "en": "Rotation at maintenance: the old policing filter becomes the main filter, and a new filter is installed as the new policing filter (zero downtime)"
+  },
+  {
+   "zh": "節省POU安裝過濾器的成本（某些情況下可以取消POU個別過濾）",
+   "en": "Saves the cost of installing POU filters (in some cases individual POU filtration can be eliminated)"
+  },
+  {
+   "zh": "前提是風險評估確認系統夠乾淨，且文件記錄完整。這個設計在查廠時需要能解釋清楚邏輯。",
+   "en": "The precondition is that risk assessment confirms the system is clean enough and documentation is complete. You must be able to explain the logic clearly during an inspection."
+  },
+  {
+   "zh": "無油壓縮機（oil-free compressor）相比油潤滑壓縮機，在過濾需求上有什麼差異？在GMP成本分析中如何評估？",
+   "en": "How do the filtration needs of an oil-free compressor differ from those of an oil-lubricated compressor? How would you evaluate this in a GMP cost analysis?"
+  },
+  {
+   "zh": "「哨兵過濾器」設計適合取代POU濾器的條件是什麼？什麼情況下無論如何都不能省略POU過濾？",
+   "en": "Under what conditions can a \"policing filter\" design replace POU filters? In what situations must POU filtration never be omitted?"
+  },
+  {
+   "zh": "5.7 Material Selection — 材質選擇",
+   "en": "5.7 Material Selection"
+  },
+  {
+   "zh": "核心概念：材質選擇的七個考量維度",
+   "en": "Core Concept: Seven Considerations in Material Selection"
+  },
+  {
+   "zh": "ISPE列出的七個因素（品質影響、法規、耐用性、安裝時間、在地習慣、保險要求、成本）不是等重的。在GMP環境中，決策優先順序必須遵循：",
+   "en": "The seven factors ISPE lists (quality impact, regulation, durability, installation time, local practice, insurance requirements, cost) are not equally weighted. In a GMP environment, decision priority must follow this order:"
+  },
+  {
+   "zh": "<span class=\"hierarchy-box level-1\">品質影響（對氣體CQA的影響）</span>",
+   "en": "<span class=\"hierarchy-box level-1\">Quality impact (effect on gas CQAs)</span>"
+  },
+  {
+   "zh": "<span class=\"hierarchy-box level-2\">法規與安全合規</span>",
+   "en": "<span class=\"hierarchy-box level-2\">Regulatory and safety compliance</span>"
+  },
+  {
+   "zh": "<span class=\"hierarchy-box level-3\">耐用性、安裝便利性、成本</span>",
+   "en": "<span class=\"hierarchy-box level-3\">Durability, ease of installation, cost</span>"
+  },
+  {
+   "zh": "材質選擇的文件記錄（decision documentation）必須反映這個優先順序，否則在查廠時很難解釋為什麼選了某種材料。",
+   "en": "The decision documentation for material selection must reflect this priority order; otherwise it is hard to explain during an inspection why a given material was chosen."
+  },
+  {
+   "zh": "重點提示：銅管在GxP環境的使用限制",
+   "en": "Key Note: Limits on Using Copper Pipe in a GxP Environment"
+  },
+  {
+   "zh": "銅管是醫療氣體系統的傳統材料，但在藥廠GMP環境中有兩個重要限制：",
+   "en": "Copper pipe is the traditional material for medical gas systems, but in a pharmaceutical GMP environment it has two important limitations:"
+  },
+  {
+   "zh": "<strong>產品區域不適用：</strong>銅在含氯或強鹼清潔劑環境中會氧化，氧化物可能脫落成顆粒污染——生產區域清潔頻率高、清潔劑更強，故銅管通常止步於服務廊道，不進入生產區。",
+   "en": "<strong>Not suitable for product areas:</strong> Copper oxidizes in the presence of chlorine-containing or strongly alkaline cleaning agents, and the oxide can flake off as particulate contamination. Production areas are cleaned frequently with stronger agents, so copper pipe usually stops at the service corridor and does not enter the production area."
+  },
+  {
+   "zh": "<strong>氮氣系統慎用：</strong>若氮氣品質不夠乾燥（含水份），銅管內表面會腐蝕。ISPE特別提出這個警告——尤其對於低露點要求的高純氮氣系統，銅管是不適合的材料。",
+   "en": "<strong>Use with caution in nitrogen systems:</strong> If the nitrogen is not dry enough (contains moisture), the inner surface of copper pipe will corrode. ISPE specifically raises this warning: especially for high-purity nitrogen systems with a low dew point requirement, copper pipe is not a suitable material."
+  },
+  {
+   "zh": "不鏽鋼等級選擇指南",
+   "en": "Stainless Steel Grade Selection Guide"
+  },
+  {
+   "zh": "區域              建議等級      原因\n─────────────────────────────────────────────\n非無菌生產區       ASTM 304     一般腐蝕性低\n無菌生產區         ASTM 316L    耐氯化物、耐強鹼\n                              （含Mo，抗點蝕性更強）\n直接產品接觸氣體   316L + 電拋光  表面粗糙度Ra ≤ 0.5 µm\n                  (electropolished)  降低微粒附著、易於清潔\n\n電拋光（Electropolishing）：\n  用電化學法去除表面微凸起，\n  使表面光滑均勻（\"passive layer\"更完整）\n  → 微粒產生風險最低\n  → 產品接觸氣體的黃金標準\n\n軌道焊接（Orbital Welding）：\n  自動化焊接，確保焊縫品質一致\n  配合惰性保護氣（purge gas）防止內表面氧化\n  → 無菌系統管路焊接的標準做法",
+   "en": "Area              Recommended grade   Reason\n─────────────────────────────────────────────\nNon-sterile production   ASTM 304     Generally low corrosivity\nSterile production       ASTM 316L    Chloride-resistant, alkali-resistant\n                                      (contains Mo, better pitting resistance)\nDirect product-contact gas   316L + electropolished   Surface roughness Ra ≤ 0.5 µm\n                  (electropolished)  reduces particle adhesion, easier to clean\n\nElectropolishing:\n  Removes surface micro-protrusions electrochemically,\n  leaving a smooth, uniform surface (more complete \"passive layer\")\n  → lowest risk of particle generation\n  → the gold standard for product-contact gas\n\nOrbital Welding:\n  Automated welding that ensures consistent weld quality\n  with inert purge gas to prevent oxidation of the inner surface\n  → the standard practice for welding sterile system piping"
+  },
+  {
+   "zh": "材質選擇就像裝修廚房選水槽——一般家用可以選不鏽鋼普通款；如果你開的是米其林餐廳，你可能要選衛生級（sanitary grade）拋光不鏽鋼，縫隙設計要能完全清潔到位。銅管就像漂亮的銅製水龍頭——外觀好看，但在強力洗碗機的環境中（高頻強力清洗）不是最佳選擇。材質選擇的最終測試是：這個材料在你廠的清潔和使用條件下，能在整個系統壽命周期內保持品質一致嗎？",
+   "en": "Material selection is like choosing a sink when renovating a kitchen. For an ordinary home, a standard stainless steel sink is fine; if you run a Michelin-starred restaurant, you may need sanitary-grade polished stainless steel with crevice-free design that can be cleaned completely. Copper pipe is like a beautiful copper faucet: it looks good, but it is not the best choice in a heavy-duty dishwasher environment (frequent, intensive cleaning). The final test of material selection is: under your plant's cleaning and operating conditions, can this material keep its quality consistent over the whole life of the system?"
+  },
+  {
+   "zh": "實務應用：FDA查廠氣體系統材質檢查清單",
+   "en": "Practical Application: FDA Inspection Checklist for Gas System Materials"
+  },
+  {
+   "zh": "查察官在審查氣體配送系統材質時通常會查：",
+   "en": "When reviewing the materials of a gas distribution system, inspectors typically check:"
+  },
+  {
+   "zh": "<strong>材質選擇依據文件：</strong>為什麼選這種材料？是否有書面的決策理由？",
+   "en": "<strong>Material selection basis documents:</strong> Why was this material chosen? Is there a written rationale for the decision?"
+  },
+  {
+   "zh": "<strong>材質證明書（Material Certificate）：</strong>符合ASTM 316L/304等規格的測試報告",
+   "en": "<strong>Material certificates:</strong> Test reports showing conformance to specifications such as ASTM 316L/304"
+  },
+  {
+   "zh": "<strong>電拋光/表面處理記錄：</strong>直接產品接觸管路的表面粗糙度測試結果",
+   "en": "<strong>Electropolishing/surface treatment records:</strong> Surface roughness test results for direct product-contact piping"
+  },
+  {
+   "zh": "<strong>焊接記錄：</strong>軌道焊接的焊工資格、保護氣紀錄、焊縫檢驗記錄（視覺/內視鏡）",
+   "en": "<strong>Welding records:</strong> Orbital welding welder qualification, purge gas records, and weld inspection records (visual/borescope)"
+  },
+  {
+   "zh": "<strong>系統驗收測試（SAT）：</strong>竣工後的吹掃記錄、微粒測試、露點確認",
+   "en": "<strong>System acceptance testing (SAT):</strong> Post-completion purge records, particle testing and dew point confirmation"
+  },
+  {
+   "zh": "<strong>P&amp;ID：</strong>配送系統的管路儀表圖是否與現場一致（As-built document）",
+   "en": "<strong>P&amp;ID:</strong> Does the piping and instrumentation diagram of the distribution system match the field (as-built document)?"
+  },
+  {
+   "zh": "同一棟廠房，走廊段用銅管、進入無菌生產區改用316L不鏽鋼——這種混合設計在哪個節點需要特別的品質控制措施？",
+   "en": "In one building, the corridor section uses copper pipe and the sterile production area uses 316L stainless steel. At which transition point does this mixed design need special quality control measures?"
+  },
+  {
+   "zh": "HDPE管路用於惰性氣體配送（如氮氣），它的蒸汽屏障（vapor barrier）性能不如金屬管。在什麼條件下這個缺點會變成實際問題？",
+   "en": "HDPE piping used for inert gas distribution (such as nitrogen) has poorer vapor barrier performance than metal pipe. Under what conditions would this drawback become a real problem?"
+  },
+  {
+   "zh": "建設期間的「清潔施工協議（GMP protocol during construction）」的目的是什麼？如果施工期間發生污染，如何確保最終系統品質？",
+   "en": "What is the purpose of a \"GMP protocol during construction\"? If contamination occurs during construction, how do you ensure the quality of the final system?"
+  },
+  {
+   "zh": "本章重點回顧 Chapter Summary",
+   "en": "Chapter Summary"
+  },
+  {
+   "zh": "<strong>配送架構：</strong>Ring main（環形主管）是GMP藥廠的首選——雙向供氣自平衡、可分段維護、支援多壓縮機冗餘，特別適合有未來擴廠計畫的CDMO。",
+   "en": "<strong>Distribution architecture:</strong> Ring main is the first choice for GMP pharmaceutical plants: two-way supply is self-balancing, sections can be maintained separately, and it supports multi-compressor redundancy. It is especially suitable for CDMOs with future expansion plans."
+  },
+  {
+   "zh": "<strong>非回流閥：</strong>是防止逆流污染的實體屏障，必須盡量靠近POU安裝，高風險製程需要冗餘設計和定期功能測試（測試口設計是關鍵）。",
+   "en": "<strong>Non-return valves:</strong> They are the physical barrier against backflow contamination and must be installed as close to the POU as possible. High-risk processes need redundancy and regular function testing (test port design is the key)."
+  },
+  {
+   "zh": "<strong>減壓閥：</strong>入口壓力 ≥ 200 psi 或減壓比 &gt; 4:1 時必須採用兩段串聯設計；並聯PRV可在不停機狀態下輪換維護。",
+   "en": "<strong>Pressure reducing valves:</strong> Two-stage serial reduction must be used when inlet pressure is ≥ 200 psi or the reduction ratio is &gt; 4:1; parallel PRVs can be rotated for maintenance without shutdown."
+  },
+  {
+   "zh": "<strong>過濾系統：</strong>「最後防線」是POU的 0.2 µm 疏水性滅菌級濾器（PTFE或PVDF膜）；三種完整性測試（泡點、前向流、水侵入）各有適用時機，Water Intrusion Test最適合原位滅菌後測試。",
+   "en": "<strong>Filtration system:</strong> The \"last line of defense\" is the 0.2 µm hydrophobic sterilizing-grade filter (PTFE or PVDF membrane) at the POU. The three integrity tests (bubble point, forward flow, water intrusion) each have their own suitable timing; the Water Intrusion Test is best after in-situ sterilization."
+  },
+  {
+   "zh": "<strong>壓縮空氣過濾層次：</strong>從源頭預過濾 → 出口聚結過濾 → 乾燥前除油 → 乾燥後去粒子 → 進入配送前最終過濾，層層設防、並聯設計支援不停機更換。",
+   "en": "<strong>Compressed air filtration layers:</strong> Source pre-filtration → outlet coalescing filtration → pre-dryer oil removal → post-dryer particle removal → final filtration before distribution. Defense is layered, and parallel design supports changes without shutdown."
+  },
+  {
+   "zh": "<strong>材質選擇：</strong>無菌生產區選316L不鏽鋼（需電拋光+軌道焊接），直接產品接觸管路更需文件化決策依據；銅管不進生產區、不用於氮氣系統；塑膠管不用於可燃/氧化性氣體。",
+   "en": "<strong>Material selection:</strong> Choose 316L stainless steel for sterile production areas (with electropolishing + orbital welding), and document the decision basis even more thoroughly for direct product-contact piping. Copper pipe does not go into production areas or nitrogen systems; plastic pipe is not used for flammable/oxidizing gases."
+  },
+  {
+   "zh": "<strong>查廠準備：</strong>材質證明書、焊接記錄、完整性測試記錄、P&amp;ID As-built文件、過濾器更換日誌——這六類文件在FDA查廠時必須隨時能取出。",
+   "en": "<strong>Inspection readiness:</strong> Material certificates, welding records, integrity test records, as-built P&amp;ID documents and filter change logs: these six types of documents must be retrievable at any time during an FDA inspection."
+  }
+ ]
+}

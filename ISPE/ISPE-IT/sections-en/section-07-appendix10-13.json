@@ -1,0 +1,585 @@
+{
+ "source": "section-07-appendix10-13.html",
+ "blocks": [
+  {
+   "zh": "附錄十至十三：用戶端管理、網路管理、術語表與參考文獻",
+   "en": "Appendices 10 to 13: Client Management, Network Management, Glossary and References"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "區分三種用戶端類型（非限制／限制／受控），理解 GxP 環境為何需要「受控 PC」",
+   "en": "Distinguish the three client types (unrestricted / restricted / controlled) and understand why a GxP environment needs a \"controlled PC\""
+  },
+  {
+   "zh": "了解標準化映像檔部署如何降低資格確認負擔，同時確保一致性",
+   "en": "Understand how standardized image deployment reduces the qualification burden while ensuring consistency"
+  },
+  {
+   "zh": "掌握網路運作中心（NOC）的職責與 SLA 監控機制",
+   "en": "Grasp the responsibilities of the Network Operations Center (NOC) and how SLAs are monitored"
+  },
+  {
+   "zh": "認識 SNMP、Syslog、RMON 三種網路協議的功能及 GxP 合規應用",
+   "en": "Know the functions of the SNMP, Syslog and RMON network protocols and how they apply to GxP compliance"
+  },
+  {
+   "zh": "熟悉 App. 12 術語表中的關鍵概念區分：評估 vs. 稽核、資格確認 vs. 驗證",
+   "en": "Be familiar with the key distinctions in the App. 12 glossary: assessment vs. audit, qualification vs. validation"
+  },
+  {
+   "zh": "了解本指南核心參考文獻的層次：GAMP 4 為基礎，PIC/S 與 ISO 17799 為安全基準",
+   "en": "Understand the tiers of core references in this guide: GAMP 4 as the foundation, with PIC/S and ISO 17799 as security baselines"
+  },
+  {
+   "zh": "Appendix 10 — Client Management（用戶端管理）",
+   "en": "Appendix 10 — Client Management"
+  },
+  {
+   "zh": "原文內容 Original Text — App. 10 §1 Client Types",
+   "en": "Original Text — App. 10 §1 Client Types"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念：三種用戶端類型",
+   "en": "Core Concept: The Three Client Types"
+  },
+  {
+   "zh": "<strong>Unrestricted PC（非限制型）：</strong>使用者可自由安裝軟體、修改設定。適用於一般行政辦公場景，風險較低。",
+   "en": "<strong>Unrestricted PC:</strong> Users can freely install software and change settings. Suitable for general office use, with lower risk."
+  },
+  {
+   "zh": "<strong>Restricted PC（限制型）：</strong>限制部分操作，例如不允許安裝未核准軟體。適用於非直接 GxP 環境。",
+   "en": "<strong>Restricted PC:</strong> Some actions are limited, for example installing unapproved software is not allowed. Suitable for environments not directly involved in GxP."
+  },
+  {
+   "zh": "<strong>Controlled PC（受控型）：</strong>完全鎖定——使用者無法修改設定、安裝任何軟體。GxP 應用通常要求此類型，因為必須保證資料完整性，符合 21 CFR Part 11 的電子記錄要求。",
+   "en": "<strong>Controlled PC:</strong> Fully locked down: users cannot change settings or install any software. GxP applications generally require this type, because data integrity must be assured and the electronic record requirements of 21 CFR Part 11 must be met."
+  },
+  {
+   "zh": "重點提示 — 為何 GxP 要求受控 PC？",
+   "en": "Key Point — Why Does GxP Require a Controlled PC?"
+  },
+  {
+   "zh": "21 CFR Part 11 要求電子記錄不能被未授權方式修改。若使用者能自行更改 PC 設定或安裝非核准軟體，就無法保證資料的準確性與可追溯性。「受控 PC」等同於在電子記錄鏈中插入了一道防火牆。",
+   "en": "21 CFR Part 11 requires that electronic records cannot be altered by unauthorized means. If users can change PC settings or install unapproved software themselves, the accuracy and traceability of the data cannot be guaranteed. A \"controlled PC\" is effectively a firewall inserted into the chain of electronic records."
+  },
+  {
+   "zh": "比喻說明",
+   "en": "Analogy"
+  },
+  {
+   "zh": "想像醫院手術室（受控）vs. 護理站（限制）vs. 行政辦公室（非限制）。進入手術室的設備必須完全符合規範，任何未經授權的器械都不得帶入——GxP PC 也一樣。",
+   "en": "Think of a hospital operating room (controlled) vs. a nursing station (restricted) vs. an administrative office (unrestricted). Equipment entering the operating room must fully comply with requirements, and no unauthorized instrument may be brought in. A GxP PC is the same."
+  },
+  {
+   "zh": "原文內容 Original Text — App. 10 §2 Client Management",
+   "en": "Original Text — App. 10 §2 Client Management"
+  },
+  {
+   "zh": "核心概念：用戶端管理群組的雙重職責",
+   "en": "Core Concept: The Dual Responsibilities of the Client Management Group"
+  },
+  {
+   "zh": "Client Management Group 同時扮演兩個角色：",
+   "en": "The Client Management Group plays two roles at once:"
+  },
+  {
+   "zh": "<strong>技術維運角色</strong>：安裝、測試、修補漏洞、防毒掃描",
+   "en": "<strong>Technical operations role</strong>: installation, testing, patching vulnerabilities, antivirus scanning"
+  },
+  {
+   "zh": "<strong>合規角色</strong>：取得 QA 核准、執行變更控制、維護文件",
+   "en": "<strong>Compliance role</strong>: obtaining QA approval, performing change control, maintaining documentation"
+  },
+  {
+   "zh": "這兩個職責的結合，使其成為 IT GxP 合規架構中的關鍵節點。",
+   "en": "The combination of these two responsibilities makes it a key node in the IT GxP compliance architecture."
+  },
+  {
+   "zh": "重點提示 — 系統時間管理",
+   "en": "Key Point — System Time Management"
+  },
+  {
+   "zh": "列表中看似平凡的一項——「管理系統時間」——在 GxP 環境極為重要。電子記錄的時間戳記必須準確，否則批次記錄的時序無法被稽核員信任。若 PC 時鐘偏移，可能使整批次記錄受質疑。",
+   "en": "An apparently mundane item on the list, \"managing system time\", is extremely important in a GxP environment. Timestamps on electronic records must be accurate; otherwise auditors cannot trust the sequence of events in batch records. If a PC clock drifts, an entire batch record may be called into question."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "若一台受控 PC 上的使用者自行安裝了未核准的辦公軟體，哪些 GxP 風險會被觸發？",
+   "en": "If a user installs unapproved office software on a controlled PC, which GxP risks are triggered?"
+  },
+  {
+   "zh": "Client Management Group 在執行安全性修補程式前，為何需要先取得 QA 核准？",
+   "en": "Why does the Client Management Group need QA approval before applying security patches?"
+  },
+  {
+   "zh": "原文內容 Original Text — App. 10 §3–5 Platforms &amp; User Modifications",
+   "en": "Original Text — App. 10 §3–5 Platforms &amp; User Modifications"
+  },
+  {
+   "zh": "核心概念：OS 組態的三類參數",
+   "en": "Core Concept: Three Categories of OS Configuration Parameters"
+  },
+  {
+   "zh": "這三類劃分也適用於伺服器，是 Configuration Management（組態管理）的基礎框架：",
+   "en": "This three-way division also applies to servers and is the basic framework for Configuration Management:"
+  },
+  {
+   "zh": "<strong>預設不變參數</strong>：廠商設定，維持原狀",
+   "en": "<strong>Fixed default parameters</strong>: set by the vendor and left unchanged"
+  },
+  {
+   "zh": "<strong>調整型參數</strong>：為公司需求修改，需記錄原始值與修改原因",
+   "en": "<strong>Tailored parameters</strong>: modified to meet company needs; the original value and the reason for the change must be recorded"
+  },
+  {
+   "zh": "<strong>空白待填參數</strong>：公司必須主動填入，否則系統無法運作",
+   "en": "<strong>Blank parameters to be completed</strong>: the company must actively fill these in, otherwise the system cannot operate"
+  },
+  {
+   "zh": "每次變更任何一類，都必須透過正式變更控制流程。",
+   "en": "Any change to any of the three categories must go through the formal change control process."
+  },
+  {
+   "zh": "比喻說明 — Thick vs. Thin Client",
+   "en": "Analogy — Thick vs. Thin Client"
+  },
+  {
+   "zh": "<strong>Thick Client（厚用戶端）</strong>像是自帶廚房的餐廳包廂——食材、烹調都在現場，改動容易影響整體。<strong>Thin Client（薄用戶端）</strong>像是只有桌椅的外賣取餐點——核心處理全在廚房（伺服器端），本地端幾乎沒有可動手腳的地方，GxP 風險自然較低。",
+   "en": "A <strong>thick client</strong> is like a private dining room with its own kitchen: ingredients and cooking are all on site, so changes easily affect the whole. A <strong>thin client</strong> is like a takeaway pickup counter with only tables and chairs: the core processing happens entirely in the kitchen (the server side), and there is almost nothing local to tamper with, so the GxP risk is naturally lower."
+  },
+  {
+   "zh": "重點提示 — EMC/RFI 在製藥廠的重要性",
+   "en": "Key Point — Why EMC/RFI Matters in a Pharmaceutical Plant"
+  },
+  {
+   "zh": "製藥廠的生產環境中往往有大型馬達、高頻設備，會產生電磁干擾。未符合 EMC 標準的 PC 可能出現資料錯誤或系統當機，直接影響批次記錄完整性。",
+   "en": "Production environments in pharmaceutical plants often contain large motors and high-frequency equipment that generate electromagnetic interference. A PC that does not meet EMC standards may produce data errors or crash, directly affecting the integrity of batch records."
+  },
+  {
+   "zh": "原文內容 Original Text — App. 10 §6–7 Images &amp; Patch Management",
+   "en": "Original Text — App. 10 §6–7 Images &amp; Patch Management"
+  },
+  {
+   "zh": "核心概念：映像檔部署的合規優勢",
+   "en": "Core Concept: The Compliance Advantages of Image Deployment"
+  },
+  {
+   "zh": "<strong>映像檔（Image）</strong>是一個已經通過測試的完整系統快照。部署到新 PC 時，每台電腦的起始狀態完全一致，大幅降低「每台 PC 都需要個別資格確認」的工作量。這就是「<strong>資格確認重用（Qualification Reuse）</strong>」的概念——同一份 IQ/OQ 記錄，可以涵蓋所有由同一映像檔建立的 PC。",
+   "en": "An <strong>image</strong> is a snapshot of a complete system that has already been tested. When it is deployed to a new PC, every computer starts from an identical state, greatly reducing the effort of qualifying each PC individually. This is the concept of <strong>qualification reuse</strong>: a single set of IQ/OQ records can cover all PCs built from the same image."
+  },
+  {
+   "zh": "重點提示 — 修補程式管理的 GxP 風險",
+   "en": "Key Point — GxP Risks of Patch Management"
+  },
+  {
+   "zh": "安全修補程式有時會改變系統行為，導致已驗證的 GxP 應用程式出現問題。正確的流程是：<br/>\n<strong>測試實驗室驗證</strong> → <strong>試點部署</strong> → <strong>全面推送</strong><br/>\n            跳過任何步驟都可能讓已驗證系統的狀態失效（out of validated state），需要啟動重新驗證程序。",
+   "en": "Security patches can sometimes change system behavior and cause problems for validated GxP applications. The correct process is:<br/>\n<strong>Test lab verification</strong> → <strong>Pilot deployment</strong> → <strong>Full rollout</strong><br/>\n            Skipping any step can put a validated system out of its validated state and trigger revalidation."
+  },
+  {
+   "zh": "比喻說明 — 映像檔 vs. 逐台安裝",
+   "en": "Analogy — Image vs. Installing PC by PC"
+  },
+  {
+   "zh": "映像檔部署就像連鎖餐廳的中央廚房出品——所有分店的醬汁配方完全一致，品質可預期。逐台手動安裝則像每家分店各自熬製醬汁——難以保證一致性，稽核時也說不清楚「哪台 PC 安裝了什麼」。",
+   "en": "Image deployment is like output from a restaurant chain's central kitchen: every branch has exactly the same sauce recipe, so quality is predictable. Manual installation PC by PC is like each branch simmering its own sauce: consistency is hard to guarantee, and during an audit it is hard to say clearly \"which PC has what installed\"."
+  },
+  {
+   "zh": "一個已核准的映像檔，如果加入了新軟體，需要經過哪些步驟才能再次發布使用？",
+   "en": "If new software is added to an approved image, what steps are required before it can be released for use again?"
+  },
+  {
+   "zh": "為什麼安全修補程式需要在「不影響生產的環境」中先行試點，而不能直接推送？",
+   "en": "Why do security patches need to be piloted first in an environment that does not affect production, rather than being pushed out directly?"
+  },
+  {
+   "zh": "Appendix 11 — Network Management（網路管理）",
+   "en": "Appendix 11 — Network Management"
+  },
+  {
+   "zh": "原文內容 Original Text — App. 11 §1–3 Introduction &amp; Goal",
+   "en": "Original Text — App. 11 §1–3 Introduction &amp; Goal"
+  },
+  {
+   "zh": "核心概念：網路管理的兩大階段",
+   "en": "Core Concept: The Two Phases of Network Management"
+  },
+  {
+   "zh": "本節將網路管理活動清楚分為兩個階段：",
+   "en": "This section clearly divides network management activities into two phases:"
+  },
+  {
+   "zh": "<strong>佈建與安裝（Provisioning）</strong>：一次性的規劃、設計、安裝工作",
+   "en": "<strong>Provisioning and installation</strong>: one-time planning, design and installation work"
+  },
+  {
+   "zh": "<strong>運維（Operations）</strong>：持續性的日常管理，由 NOC 主導",
+   "en": "<strong>Operations</strong>: ongoing day-to-day management, led by the NOC"
+  },
+  {
+   "zh": "從 GxP 合規角度，「運維」階段是最關鍵的——因為它關係到系統是否持續處於受控狀態（maintained in a controlled state）。",
+   "en": "From a GxP compliance perspective, the operations phase is the most critical, because it determines whether the system is continuously maintained in a controlled state."
+  },
+  {
+   "zh": "重點提示 — 量化指標僅供參考",
+   "en": "Key Point — Quantitative Metrics Are for Guidance Only"
+  },
+  {
+   "zh": "本附錄特別聲明：所提供的數值來自實際案例，僅作指導，並非強制標準。公司應依據自身業務規模、網路架構與 GxP 風險評估，制定適合自己的 SLA 指標。",
+   "en": "This appendix expressly states that the values provided come from real cases and are for guidance only, not mandatory standards. Companies should set SLA metrics suited to themselves, based on their own business scale, network architecture and GxP risk assessment."
+  },
+  {
+   "zh": "比喻說明 — NOC 的角色",
+   "en": "Analogy — The Role of the NOC"
+  },
+  {
+   "zh": "NOC（網路運作中心）就像機場的塔台管制中心——所有飛機（資料封包）的起降（傳輸）都在監控範圍內，任何異常立即通報，確保飛行安全（系統可用性）不中斷。",
+   "en": "The NOC (Network Operations Center) is like an airport control tower: the takeoff and landing (transmission) of every aircraft (data packet) is within its field of monitoring, and any anomaly is reported immediately so that flight safety (system availability) is never interrupted."
+  },
+  {
+   "zh": "原文內容 Original Text — App. 11 §4–5 Provisioning &amp; NOC",
+   "en": "Original Text — App. 11 §4–5 Provisioning &amp; NOC"
+  },
+  {
+   "zh": "核心概念：NOC 的六大核心職能",
+   "en": "Core Concept: The Six Core Functions of the NOC"
+  },
+  {
+   "zh": "<strong>監控（Monitoring）</strong>：即時掌握網路狀態",
+   "en": "<strong>Monitoring</strong>: real-time awareness of network status"
+  },
+  {
+   "zh": "<strong>記錄分析（Log Analysis）</strong>：Syslog 匯集，追蹤異常",
+   "en": "<strong>Log Analysis</strong>: Syslog aggregation to track anomalies"
+  },
+  {
+   "zh": "<strong>組態備份（Config Backup）</strong>：所有設備設定均有備份與變更紀錄",
+   "en": "<strong>Config Backup</strong>: all device configurations are backed up, with change records"
+  },
+  {
+   "zh": "<strong>KPI 報告（Reporting）</strong>：定期提供 SLA 達成率給管理層",
+   "en": "<strong>KPI Reporting</strong>: regular reporting of SLA achievement to management"
+  },
+  {
+   "zh": "<strong>安全存取控制（Access Control）</strong>：追蹤所有網路存取",
+   "en": "<strong>Access Control</strong>: tracking of all network access"
+  },
+  {
+   "zh": "<strong>故障恢復（Fault Recovery）</strong>：快速復原服務，降低停機時間",
+   "en": "<strong>Fault Recovery</strong>: rapid restoration of service to reduce downtime"
+  },
+  {
+   "zh": "重點提示 — GxP 角度下的組態備份",
+   "en": "Key Point — Configuration Backup from a GxP Perspective"
+  },
+  {
+   "zh": "「具備所有網路設備的最新組態備份，以及所有組態變更的文件化追蹤」——這句話直接對應 GxP 的組態管理要求。稽核員可能會要求查看：某台路由器去年何時做了什麼設定變更、由誰核准、備份在哪裡。NOC 若無法回答，即視為合規缺陷。",
+   "en": "\"Having up-to-date configuration backups of all network devices, and documented tracking of all configuration changes\": this statement maps directly to GxP configuration management requirements. An auditor may ask to see what configuration change was made to a particular router last year, who approved it, and where the backup is stored. If the NOC cannot answer, it is treated as a compliance deficiency."
+  },
+  {
+   "zh": "NOC 的 SLA 報告應包含哪些關鍵指標才能讓 QA 滿意？",
+   "en": "What key metrics should the NOC's SLA report contain to satisfy QA?"
+  },
+  {
+   "zh": "若一台核心網路交換機的組態遭到未授權修改，NOC 應如何察覺並回應？",
+   "en": "If the configuration of a core network switch is changed without authorization, how should the NOC detect it and respond?"
+  },
+  {
+   "zh": "原文內容 Original Text — App. 11 §6 Common Network Protocols",
+   "en": "Original Text — App. 11 §6 Common Network Protocols"
+  },
+  {
+   "zh": "核心概念：三大網路協議速覽",
+   "en": "Core Concept: The Three Main Network Protocols at a Glance"
+  },
+  {
+   "zh": "<strong>SNMP（簡單網路管理協議）</strong>：主動查詢設備狀態。Manager 向 Agents 發出查詢，取得路由器、交換機等設備的運行參數（CPU 使用率、錯誤計數等）。設備異常時，Agent 主動發出「Trap（警報）」通知 Manager。",
+   "en": "<strong>SNMP (Simple Network Management Protocol)</strong>: actively queries device status. The Manager sends queries to Agents to obtain operating parameters (CPU utilization, error counts, etc.) from routers, switches and other devices. When a device is abnormal, the Agent proactively sends a \"Trap\" (alert) to notify the Manager."
+  },
+  {
+   "zh": "<strong>Syslog（系統日誌協議）</strong>：被動收集事件訊息。各設備將自身的事件日誌傳送至中央 Syslog 伺服器，管理員可一站式查閱所有設備的異常記錄。",
+   "en": "<strong>Syslog (system log protocol)</strong>: passively collects event messages. Each device sends its own event log to a central Syslog server, so administrators can review the anomaly records of all devices in one place."
+  },
+  {
+   "zh": "<strong>RMON（遠端監控）</strong>：針對網路流量本身的深度分析。可部署至每個網路區段，長期收集封包層級的統計資料，用於趨勢分析與問題排查。",
+   "en": "<strong>RMON (Remote Monitoring)</strong>: in-depth analysis of the network traffic itself. It can be deployed on every network segment to collect packet-level statistics over the long term, for trend analysis and troubleshooting."
+  },
+  {
+   "zh": "三種協議的功能比較",
+   "en": "Functional Comparison of the Three Protocols"
+  },
+  {
+   "zh": "SNMP   → 設備狀態管理（Manager ↔ Agent）\n         主動查詢 + Trap 警報\n         RFC 1157\n\nSyslog → 事件日誌傳輸（設備 → Syslog Server）\n         被動彙集，集中儲存\n         RFC 3164\n\nRMON   → 網路流量分析（Probe → 分析平台）\n         每段網路一個探針\n         RFC 1757",
+   "en": "SNMP   → Device status management (Manager ↔ Agent)\n         Active polling + Trap alerts\n         RFC 1157\n\nSyslog → Event log transport (device → Syslog Server)\n         Passive aggregation, centralized storage\n         RFC 3164\n\nRMON   → Network traffic analysis (Probe → analysis platform)\n         One probe per network segment\n         RFC 1757"
+  },
+  {
+   "zh": "重點提示 — GxP 合規中的協議選擇",
+   "en": "Key Point — Choosing Protocols for GxP Compliance"
+  },
+  {
+   "zh": "在 GxP 網路環境中，Syslog 最直接支援審計追蹤（Audit Trail）需求——所有網路事件均有時間戳記並集中儲存，供稽核員查閱。SNMP 則支援 SLA 監控所需的即時效能資料。RMON 適合在懷疑有網路效能問題時進行深度調查。",
+   "en": "In a GxP network environment, Syslog most directly supports the audit trail requirement: all network events are timestamped and stored centrally for auditors to review. SNMP supports the real-time performance data needed for SLA monitoring. RMON is suited to in-depth investigation when a network performance problem is suspected."
+  },
+  {
+   "zh": "SNMP 像是護士定時量血壓（主動檢查設備）；Syslog 像是病房的事件記錄本（任何異常自動寫入）；RMON 像是心電圖機（持續記錄細部波形，供需要時回放分析）。",
+   "en": "SNMP is like a nurse taking blood pressure at regular intervals (actively checking devices); Syslog is like the ward's event logbook (any anomaly is written in automatically); RMON is like an ECG machine (continuously recording fine waveform detail for playback and analysis when needed)."
+  },
+  {
+   "zh": "原文內容 Original Text — App. 11 §7 Network Performance Metrics",
+   "en": "Original Text — App. 11 §7 Network Performance Metrics"
+  },
+  {
+   "zh": "核心概念：Alert vs. Action 雙層門檻",
+   "en": "Core Concept: The Two-Tier Alert vs. Action Threshold"
+  },
+  {
+   "zh": "表格採用兩層門檻設計：",
+   "en": "The table uses a two-tier threshold design:"
+  },
+  {
+   "zh": "<strong>Alert Limit（警示限）</strong>：超過此值需記錄並持續觀察，但不一定立即介入",
+   "en": "<strong>Alert Limit</strong>: when exceeded, record it and keep observing, but intervention is not necessarily immediate"
+  },
+  {
+   "zh": "<strong>Action Limit（行動限）</strong>：超過此值必須立即採取矯正措施",
+   "en": "<strong>Action Limit</strong>: when exceeded, corrective action must be taken immediately"
+  },
+  {
+   "zh": "這與 GxP 製程監控中的「警戒限／行動限」概念完全一致，是品質管理思維在 IT 基礎設施層面的延伸。",
+   "en": "This is entirely consistent with the alert limit / action limit concept in GxP process monitoring, and extends quality management thinking to the IT infrastructure level."
+  },
+  {
+   "zh": "重點提示 — 遺失封包（Discards）在 GxP 的意涵",
+   "en": "Key Point — What Packet Discards Mean in GxP"
+  },
+  {
+   "zh": "網路封包遺失不只是效能問題——在 GxP 環境中，若資料傳輸過程中有封包遺失，可能導致電子記錄不完整或時序錯亂。行動限 &gt;0.5% 看起來很小，但在高頻資料採集的場景（如批次製程監控）中，0.5% 的遺失率已可能導致資料缺口。",
+   "en": "Packet loss is not just a performance issue. In a GxP environment, if packets are lost during data transmission, electronic records may be incomplete or out of sequence. An action limit of &gt;0.5% looks small, but in high-frequency data acquisition scenarios (such as batch process monitoring), a 0.5% loss rate can already create data gaps."
+  },
+  {
+   "zh": "監控頻率建議",
+   "en": "Recommended Monitoring Frequency"
+  },
+  {
+   "zh": "小型組織：每月 1–4 次人工檢查\n大型組織：自動化持續監控（接近即時）\n\n建議配置：\n  SNMP polling  → 每 5 分鐘\n  Syslog        → 即時收集\n  RMON 報告     → 每日/每週彙總\n  SLA 報告      → 每月提交管理層",
+   "en": "Small organizations: 1–4 manual checks per month\nLarge organizations: automated continuous monitoring (near real time)\n\nSuggested configuration:\n  SNMP polling  → every 5 minutes\n  Syslog        → real-time collection\n  RMON reports  → daily/weekly summary\n  SLA report    → monthly submission to management"
+  },
+  {
+   "zh": "若 Switch CPU-load 連續三天超過 Alert Limit（&gt;50%），你應採取哪些步驟？",
+   "en": "If a switch's CPU load exceeds the Alert Limit (&gt;50%) for three consecutive days, what steps should you take?"
+  },
+  {
+   "zh": "如何向非技術背景的 QA 主管解釋「封包遺失率」與資料完整性的關聯？",
+   "en": "How would you explain the relationship between \"packet loss rate\" and data integrity to a QA manager without a technical background?"
+  },
+  {
+   "zh": "Appendix 12 — Glossary（術語表）",
+   "en": "Appendix 12 — Glossary"
+  },
+  {
+   "zh": "原文內容 Original Text — App. 12 §1 Definitions",
+   "en": "Original Text — App. 12 §1 Definitions"
+  },
+  {
+   "zh": "核心概念：三組容易混淆的術語",
+   "en": "Core Concept: Three Pairs of Easily Confused Terms"
+  },
+  {
+   "zh": "<strong>Assessment（評估）vs. Audit（稽核）</strong><br/>\n            最關鍵的差異在於「獨立性」：評估可由內部主題專家執行（不要求獨立）；稽核必須是系統性、獨立且有文件的。一個部門不能稽核自己——但可以自我評估。",
+   "en": "<strong>Assessment vs. Audit</strong><br/>\n            The key difference is independence: an assessment can be performed by internal subject matter experts (independence is not required); an audit must be systematic, independent and documented. A department cannot audit itself, but it can self-assess."
+  },
+  {
+   "zh": "<strong>Qualification（資格確認）vs. Validation（驗證）</strong><br/>\n            資格確認針對「設備/系統能否達到預期功能」；驗證針對「製程能否持續生產符合規格的產品」。資格確認（IQ/OQ/PQ）通常是驗證的前提條件。",
+   "en": "<strong>Qualification vs. Validation</strong><br/>\n            Qualification addresses whether equipment/a system can achieve its intended function; validation addresses whether a process can consistently produce product that meets specifications. Qualification (IQ/OQ/PQ) is usually a prerequisite for validation."
+  },
+  {
+   "zh": "<strong>Building Block（建構組件）vs. Computerized System（電腦化系統）</strong><br/>\n            Building Block 是以「最大化重用」為目的設計的標準化組件群；Computerized System 是滿足特定使用者需求的整體系統。路由器、交換機等標準基礎設施組件不被視為 Computerized System，因此其合規要求較輕。",
+   "en": "<strong>Building Block vs. Computerized System</strong><br/>\n            A building block is a group of standardized components designed for maximum reuse; a computerized system is a complete system that meets specific user requirements. Standard infrastructure components such as routers and switches are not regarded as computerized systems, so their compliance requirements are lighter."
+  },
+  {
+   "zh": "重點提示 — Periodic Review（定期審查）",
+   "en": "Key Point — Periodic Review"
+  },
+  {
+   "zh": "定期審查的頻率取決於三個因素：複雜性、關鍵性、變更率。GxP 應用系統通常每年執行一次；基礎設施系統可能每兩年一次。審查的目的是確認系統仍處於「已驗證狀態（validated state）」，若發現偏離，必須啟動再驗證。",
+   "en": "The frequency of periodic review depends on three factors: complexity, criticality and rate of change. GxP application systems are usually reviewed annually; infrastructure systems may be reviewed every two years. The purpose of the review is to confirm that the system remains in its validated state; if a deviation is found, revalidation must be initiated."
+  },
+  {
+   "zh": "重點提示 — Privileged Access（特權存取）",
+   "en": "Key Point — Privileged Access"
+  },
+  {
+   "zh": "特權存取（系統管理員帳號）在 GxP 系統中屬於高風險控制點。任何特權存取操作都應被記錄、核准，並納入定期審查。21 CFR Part 11 要求審計追蹤包括「誰」在「何時」做了「什麼」——特權帳號的操作記錄尤為重要。",
+   "en": "Privileged access (system administrator accounts) is a high-risk control point in GxP systems. Every privileged access action should be recorded and approved, and included in periodic review. 21 CFR Part 11 requires audit trails to capture who did what and when, so the activity records of privileged accounts are especially important."
+  },
+  {
+   "zh": "比喻說明 — Assessment vs. Audit",
+   "en": "Analogy — Assessment vs. Audit"
+  },
+  {
+   "zh": "評估（Assessment）就像主廚試吃自己餐廳的菜色後記錄改善點；稽核（Audit）就像米其林評審匿名前來，依據標準作客觀評判——前者可以自己做，後者必須來自外部或獨立的人。",
+   "en": "An assessment is like a head chef tasting the dishes in their own restaurant and noting improvements; an audit is like a Michelin inspector arriving anonymously and judging objectively against standards. The former can be done by yourself; the latter must come from an external or independent person."
+  },
+  {
+   "zh": "原文內容 Original Text — App. 12 §2 Acronyms and Abbreviations",
+   "en": "Original Text — App. 12 §2 Acronyms and Abbreviations"
+  },
+  {
+   "zh": "核心概念：縮寫背後的重要性分層",
+   "en": "Core Concept: The Tiers of Importance Behind the Abbreviations"
+  },
+  {
+   "zh": "這份縮寫表反映了本指南所涉及的多個合規層面，幾個值得特別注意的縮寫：",
+   "en": "This list of abbreviations reflects the many compliance dimensions covered by this guide. Several are worth special attention:"
+  },
+  {
+   "zh": "<strong>CSV（電腦化系統驗證）</strong>：整份指南存在的根本原因，確保電腦化系統符合 GxP 要求",
+   "en": "<strong>CSV (Computerized System Validation)</strong>: the fundamental reason the whole guide exists; ensures computerized systems meet GxP requirements"
+  },
+  {
+   "zh": "<strong>IQ / OQ / PQ</strong>：資格確認三階段，任何 GxP 系統上線前的必經程序",
+   "en": "<strong>IQ / OQ / PQ</strong>: the three qualification stages, a mandatory step before any GxP system goes live"
+  },
+  {
+   "zh": "<strong>CAPA</strong>：矯正預防措施，偏差發生後的正式回應機制",
+   "en": "<strong>CAPA</strong>: corrective and preventive action, the formal response mechanism once a deviation has occurred"
+  },
+  {
+   "zh": "<strong>IDS</strong>：入侵偵測系統，資安控制的重要組件",
+   "en": "<strong>IDS</strong>: intrusion detection system, an important component of information security controls"
+  },
+  {
+   "zh": "<strong>UPS</strong>：不斷電系統，GxP 系統可用性保障的硬體基礎",
+   "en": "<strong>UPS</strong>: uninterruptible power supply, the hardware foundation for GxP system availability"
+  },
+  {
+   "zh": "重點提示 — GxP 中的 x",
+   "en": "Key Point — The x in GxP"
+  },
+  {
+   "zh": "GxP 中的「x」代表 Clinical（臨床）、Distribution（配銷）、Laboratory（實驗室）、Manufacturing（製造）四個領域。作為 CDMO，你的作業橫跨 GMP（製造）與 GLP（實驗室），因此 IT 系統必須同時符合兩者的要求。",
+   "en": "The \"x\" in GxP stands for four areas: Clinical, Distribution, Laboratory and Manufacturing. As a CDMO, your operations span GMP (manufacturing) and GLP (laboratory), so IT systems must meet the requirements of both."
+  },
+  {
+   "zh": "一個 LIMS 系統同時屬於哪幾個縮寫所代表的範疇（CSV、GxP Application、Computerized System）？",
+   "en": "Which of the categories represented by the abbreviations (CSV, GxP Application, Computerized System) does a LIMS fall into at the same time?"
+  },
+  {
+   "zh": "UPS 在 GxP 資料完整性框架中扮演什麼角色？",
+   "en": "What role does a UPS play in the GxP data integrity framework?"
+  },
+  {
+   "zh": "Appendix 13 — References（參考文獻）",
+   "en": "Appendix 13 — References"
+  },
+  {
+   "zh": "原文內容 Original Text — App. 13 References",
+   "en": "Original Text — App. 13 References"
+  },
+  {
+   "zh": "核心概念：文獻層次架構",
+   "en": "Core Concept: The Tiered Structure of the References"
+  },
+  {
+   "zh": "這17份參考文獻可以依重要性分為三層：",
+   "en": "These 17 references can be divided into three tiers by importance:"
+  },
+  {
+   "zh": "<strong>第一層：製藥行業 GxP 核心文件</strong>",
+   "en": "<strong>Tier 1: Core pharmaceutical GxP documents</strong>"
+  },
+  {
+   "zh": "<strong>GAMP 4（文獻1）</strong>：整份 ISPE GAMP IT 指南的基礎。所有 IT 系統驗證策略均源於此。即使 GAMP 5 已發布，GAMP 4 仍是本指南寫作時的規範性引用。",
+   "en": "<strong>GAMP 4 (Ref. 1)</strong>: the foundation of the entire ISPE GAMP IT guide. All IT system validation strategies derive from it. Even though GAMP 5 has since been published, GAMP 4 was the normative reference when this guide was written."
+  },
+  {
+   "zh": "<strong>PIC/S PI011-2（文獻4）</strong>：製藥監管機構（如 FDA、EU、TGA）接受的電腦化系統 GxP 最佳實務指引，對 CDMO 出口客戶市場的合規尤為重要。",
+   "en": "<strong>PIC/S PI011-2 (Ref. 4)</strong>: best-practice guidance on GxP computerized systems accepted by pharmaceutical regulators (such as FDA, EU, TGA); especially important for a CDMO's compliance in export customer markets."
+  },
+  {
+   "zh": "<strong>GAMP 電子記錄指南（文獻2）</strong>：21 CFR Part 11 合規的具體操作指引。",
+   "en": "<strong>GAMP guide on electronic records (Ref. 2)</strong>: practical guidance on complying with 21 CFR Part 11."
+  },
+  {
+   "zh": "<strong>第二層：資安與組態管理標準</strong>",
+   "en": "<strong>Tier 2: Information security and configuration management standards</strong>"
+  },
+  {
+   "zh": "<strong>ISO/IEC 17799:2000（文獻6）</strong>：資訊安全管理的國際基準（現已升版為 ISO/IEC 27002）。GxP 系統的資安控制措施通常參照此標準。",
+   "en": "<strong>ISO/IEC 17799:2000 (Ref. 6)</strong>: the international baseline for information security management (now superseded by ISO/IEC 27002). Security controls for GxP systems usually refer to this standard."
+  },
+  {
+   "zh": "<strong>ISO 10007:2003（文獻5）</strong>：組態管理指引，本指南多次提及的 Configuration Management 實踐依據。",
+   "en": "<strong>ISO 10007:2003 (Ref. 5)</strong>: guidance on configuration management, the basis for the Configuration Management practices mentioned repeatedly in this guide."
+  },
+  {
+   "zh": "<strong>NIST SP 800-30（文獻12）</strong>：IT 風險管理的量化框架，提供風險評估方法論。",
+   "en": "<strong>NIST SP 800-30 (Ref. 12)</strong>: a quantitative framework for IT risk management, providing a risk assessment methodology."
+  },
+  {
+   "zh": "<strong>第三層：基礎設施技術標準</strong>",
+   "en": "<strong>Tier 3: Infrastructure technical standards</strong>"
+  },
+  {
+   "zh": "<strong>ISO/IEC 11801（文獻9）</strong>：網路佈線標準，附錄10提到的網路認證依據。",
+   "en": "<strong>ISO/IEC 11801 (Ref. 9)</strong>: the cabling standard, the basis for the network certification mentioned in Appendix 10."
+  },
+  {
+   "zh": "<strong>ITIL（文獻13）</strong>：IT 服務管理的最佳實務框架，NOC 運作模式的參考。",
+   "en": "<strong>ITIL (Ref. 13)</strong>: a best-practice framework for IT service management, a reference for how a NOC operates."
+  },
+  {
+   "zh": "重點提示 — GAMP 4 vs. GAMP 5",
+   "en": "Key Point — GAMP 4 vs. GAMP 5"
+  },
+  {
+   "zh": "本指南（ISPE GAMP IT Infrastructure）出版時引用 GAMP 4。GAMP 5 於 2008 年發布，引入了更強的風險評估導向。若今日在 CDMO 執行 IT 系統驗證，應同時參考 GAMP 5 的方法論，但本指南的框架仍然適用——兩者並不衝突。",
+   "en": "This guide (ISPE GAMP IT Infrastructure) cited GAMP 4 when it was published. GAMP 5 was released in 2008 and introduced a stronger risk-based orientation. If you perform IT system validation at a CDMO today, you should also refer to the GAMP 5 methodology, but this guide's framework still applies, and the two do not conflict."
+  },
+  {
+   "zh": "比喻說明 — 參考文獻的層次",
+   "en": "Analogy — The Tiers of References"
+  },
+  {
+   "zh": "GAMP 4 就像無菌製造的基礎法規（Annex 1）；PIC/S PI011-2 就像官方查廠指引；ISO 17799 就像資安版的 ISO 9000——它們共同構成一個互相支撐的合規框架，缺少任一層都會讓整體架構不完整。",
+   "en": "GAMP 4 is like the foundational regulation for sterile manufacturing (Annex 1); PIC/S PI011-2 is like the official inspection guidance; ISO 17799 is like the information security counterpart of ISO 9000. Together they form a mutually supporting compliance framework, and missing any one tier leaves the whole structure incomplete."
+  },
+  {
+   "zh": "若你的 CDMO 正接受 FDA 查廠，稽核員問及電腦化系統的安全控制依據，你應引用哪幾份文獻？",
+   "en": "If your CDMO is undergoing an FDA inspection and the inspector asks about the basis for the security controls of your computerized systems, which references should you cite?"
+  },
+  {
+   "zh": "ISO/IEC 17799 與 NIST SP 800-30 在 IT 風險管理中各負責哪個面向？",
+   "en": "What aspect of IT risk management is each of ISO/IEC 17799 and NIST SP 800-30 responsible for?"
+  },
+  {
+   "zh": "本節重點回顧 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "<strong>附錄 10</strong>：三種 PC 類型（非限制／限制／受控）決定合規控制程度；GxP 應用需要受控 PC；映像檔部署是降低資格確認負擔的關鍵策略；修補程式必須先在測試環境驗證再推送。",
+   "en": "<strong>Appendix 10</strong>: The three PC types (unrestricted / restricted / controlled) determine the level of compliance control; GxP applications require controlled PCs; image deployment is the key strategy for reducing the qualification burden; patches must be verified in a test environment before rollout."
+  },
+  {
+   "zh": "<strong>附錄 11</strong>：NOC 是網路 GxP 合規的運維核心，負責 SLA 監控、安全存取控制、組態備份與故障恢復；SNMP 管理設備狀態、Syslog 彙集事件日誌、RMON 分析流量深度資料。",
+   "en": "<strong>Appendix 11</strong>: The NOC is the operational core of network GxP compliance, responsible for SLA monitoring, access control, configuration backup and fault recovery; SNMP manages device status, Syslog aggregates event logs, and RMON analyzes in-depth traffic data."
+  },
+  {
+   "zh": "<strong>附錄 12</strong>：關鍵術語區分——評估（可由內部執行）vs. 稽核（必須獨立）；資格確認（IQ/OQ/PQ，針對設備能力）vs. 驗證（針對製程一致性）；Building Block 的設計目標是最大化重用。",
+   "en": "<strong>Appendix 12</strong>: Key terminology distinctions: assessment (can be performed internally) vs. audit (must be independent); qualification (IQ/OQ/PQ, addressing equipment capability) vs. validation (addressing process consistency); the design goal of a building block is maximum reuse."
+  },
+  {
+   "zh": "<strong>附錄 13</strong>：GAMP 4 是整份指南的基礎性文件；PIC/S PI011-2 是監管機構認可的電腦化系統 GxP 指引；ISO/IEC 17799 是資訊安全管理基準；NIST SP 800-30 提供 IT 風險評估方法論。",
+   "en": "<strong>Appendix 13</strong>: GAMP 4 is the foundational document of the whole guide; PIC/S PI011-2 is the GxP guidance on computerized systems recognized by regulators; ISO/IEC 17799 is the information security management baseline; NIST SP 800-30 provides the IT risk assessment methodology."
+  }
+ ]
+}

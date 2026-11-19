@@ -1,0 +1,993 @@
+{
+ "source": "section-02b-design-aseptic-labs.html",
+ "blocks": [
+  {
+   "zh": "設計考量（下）— OSD、無菌、包裝、實驗室、倉庫",
+   "en": "Design Considerations (Part 2): OSD, Aseptic, Packaging, Laboratories and Warehouse"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解口服固體劑型（OSD）設施中非強效與強效化合物的 HVAC 設計差異，特別是交叉污染控制策略",
+   "en": "Understand how HVAC design differs between non-potent and potent compounds in oral solid dosage (OSD) facilities, especially cross-contamination control strategies"
+  },
+  {
+   "zh": "掌握無菌製程（Aseptic Processing）設施的 HVAC 關鍵設計要素：HEPA 過濾、壓差串聯、單向氣流（Unidirectional Airflow）",
+   "en": "Master the key HVAC design elements of aseptic processing facilities: HEPA filtration, pressure cascades and unidirectional airflow"
+  },
+  {
+   "zh": "了解實驗室（Laboratory）VAV 系統設計、排煙櫃整合策略，以及不同類型實驗室的空氣處理要求",
+   "en": "Understand laboratory VAV system design, fume hood integration strategies and the air handling requirements of different types of laboratories"
+  },
+  {
+   "zh": "認識包裝/標籤、倉庫、取樣/秤量等輔助區域的 HVAC 基本需求",
+   "en": "Recognize the basic HVAC needs of ancillary areas such as packaging/labeling, warehouses and sampling/dispensing"
+  },
+  {
+   "zh": "理解隔離器（Isolator）與 RABS 對背景環境分級的影響，以及製程設備整合（去熱原隧道、凍乾機、壓蓋）的特殊考量",
+   "en": "Understand how isolators and RABS affect the classification of the background environment, and the special considerations for integrating process equipment (depyrogenation tunnels, lyophilizers, capping)"
+  },
+  {
+   "zh": "認識醫療器材（Medical Device）製造設施的 HVAC 要求如何隨患者風險等級調整",
+   "en": "Recognize how HVAC requirements for medical device manufacturing facilities scale with the level of patient risk"
+  },
+  {
+   "zh": "3.7 Oral Solid Dosage — Non-Potent Compounds（口服固體劑型——非強效化合物）",
+   "en": "3.7 Oral Solid Dosage - Non-Potent Compounds"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念：OSD（口服固體劑型）的 HVAC 特性",
+   "en": "Core Concept: HVAC Characteristics of OSD (Oral Solid Dosage)"
+  },
+  {
+   "zh": "<strong>OSD (Oral Solid Dosage，口服固體劑型)</strong>：指錠劑、膠囊、粉劑等口服固體藥品。HVAC 設計的核心挑戰不是無菌，而是<strong>粉塵控制</strong>與<strong>交叉污染預防</strong>。",
+   "en": "<strong>OSD (Oral Solid Dosage)</strong>: oral solid drug products such as tablets, capsules and powders. The core HVAC challenge is not sterility but <strong>dust control</strong> and <strong>cross-contamination prevention</strong>."
+  },
+  {
+   "zh": "<strong>CNC (Controlled Not Classified，受控非分級)</strong>：房間的環境參數（溫濕度、氣流方向）受控管，但不需要正式的潔淨度分級認證。這是 OSD 設施最常見的設計基準。",
+   "en": "<strong>CNC (Controlled Not Classified)</strong>: the room's environmental parameters (temperature, humidity, airflow direction) are controlled, but no formal cleanliness classification certification is required. This is the most common design basis for OSD facilities."
+  },
+  {
+   "zh": "<strong>CVD (Constant Volume Device，定風量裝置)</strong>：安裝在回風管路上，確保即使過濾器逐漸阻塞，房間的風量仍維持恆定，從而穩定壓差關係。",
+   "en": "<strong>CVD (Constant Volume Device)</strong>: installed in the return air duct to keep room airflow constant even as filters gradually load, thereby stabilizing the pressure differential relationships."
+  },
+  {
+   "zh": "比喻說明：OSD 粉塵控制就像廚房抽油煙",
+   "en": "Analogy: OSD dust control is like a kitchen extractor hood"
+  },
+  {
+   "zh": "想像一個開放式廚房（OSD 製程區）。你不需要手術室等級的潔淨度，但你一定不希望油煙（粉塵）飄到餐廳（走廊）去。解決方案是：",
+   "en": "Imagine an open kitchen (the OSD processing area). You do not need operating-theater cleanliness, but you certainly do not want cooking fumes (dust) drifting into the dining room (the corridor). The solutions are:"
+  },
+  {
+   "zh": "<strong>抽油煙機（LEV 局部排氣）</strong>：在粉塵源頭直接抽走",
+   "en": "<strong>Extractor hood (LEV, local exhaust ventilation)</strong>: captures dust directly at the source"
+  },
+  {
+   "zh": "<strong>門簾/隔間（氣閘/前室）</strong>：阻隔廚房與餐廳之間的空氣流通",
+   "en": "<strong>Curtain/partition (airlock/vestibule)</strong>: blocks air exchange between kitchen and dining room"
+  },
+  {
+   "zh": "<strong>保持廚房微負壓</strong>：讓空氣永遠從餐廳流向廚房，不反向飄散",
+   "en": "<strong>Keep the kitchen slightly negative</strong>: air always flows from the dining room into the kitchen, never the other way"
+  },
+  {
+   "zh": "ISPE 建議的「氣流從操作員呼吸帶流向粉塵源」就是「讓空氣從乾淨處吹向油煙處」的原理。",
+   "en": "ISPE's recommendation that \"airflow should move from the operator's breathing zone toward the dust source\" follows the same principle as \"blowing air from the clean side toward the fumes.\""
+  },
+  {
+   "zh": "重點提示：多產品併行 vs 單產品輪換",
+   "en": "Key Point: Concurrent multi-product vs single-product campaign"
+  },
+  {
+   "zh": "<strong>多產品併行（Concurrent）</strong>製造是 CDMO 的商業核心——同時生產不同客戶的產品。但它要求更高規格的 HVAC：",
+   "en": "<strong>Concurrent multi-product</strong> manufacturing is the commercial core of a CDMO: making different clients' products at the same time. But it demands a higher HVAC specification:"
+  },
+  {
+   "zh": "每個產品套間需獨立 AHU 或雙重 HEPA 過濾",
+   "en": "Each product suite needs its own AHU or double HEPA filtration"
+  },
+  {
+   "zh": "走廊必須使用壓力泡（Pressure Bubble）或壓力沉（Pressure Sink）氣閘",
+   "en": "Corridors must use pressure bubble or pressure sink airlocks"
+  },
+  {
+   "zh": "LEV 排氣絕對不可回流到其他房間",
+   "en": "LEV exhaust must never be recirculated to other rooms"
+  },
+  {
+   "zh": "<strong>單產品輪換（Campaign）</strong>製造較簡單，可用加壓走廊作為共用氣閘，但需要完整的換線清潔驗證。",
+   "en": "<strong>Single-product campaign</strong> manufacturing is simpler and can use a pressurized corridor as a shared airlock, but it requires full changeover cleaning validation."
+  },
+  {
+   "zh": "實務應用：CDMO 的 OSD 設施投資決策",
+   "en": "Practical Application: OSD facility investment decisions for a CDMO"
+  },
+  {
+   "zh": "如果你的 CDMO 只做單一客戶的 OSD 產品，CNC 環境 + MERV 13/14 過濾就足夠了。但如果要承接多客戶併行生產（商業價值更高），你需要投資：",
+   "en": "If your CDMO only makes OSD products for a single client, a CNC environment plus MERV 13/14 filtration is sufficient. But to take on concurrent multi-client production (higher commercial value), you need to invest in:"
+  },
+  {
+   "zh": "獨立產品套間（各有專屬 AHU）",
+   "en": "Separate product suites (each with a dedicated AHU)"
+  },
+  {
+   "zh": "終端 HEPA 過濾（交叉污染防線）",
+   "en": "Terminal HEPA filtration (the cross-contamination line of defense)"
+  },
+  {
+   "zh": "壓力氣閘系統（物理隔離屏障）",
+   "en": "Pressure airlock systems (a physical isolation barrier)"
+  },
+  {
+   "zh": "額外投資約 30-50%，但產能利用率和營收可能翻倍。這是典型的「商業與彈性 &gt; 短期成本」決策。",
+   "en": "The extra investment is roughly 30-50%, but capacity utilization and revenue may double. This is a classic \"commercial value and flexibility &gt; short-term cost\" decision."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "為什麼 OSD 設施的 LEV 排氣不可以回流到 AHU？如果回流會產生什麼風險？",
+   "en": "Why must LEV exhaust in an OSD facility not be recirculated to the AHU? What risks would recirculation create?"
+  },
+  {
+   "zh": "一個同時生產三種不同 OSD 產品的 CDMO 設施，走廊應該使用「壓力泡」還是「壓力沉」氣閘？為什麼？",
+   "en": "For a CDMO facility making three different OSD products concurrently, should the corridor use a \"pressure bubble\" or a \"pressure sink\" airlock? Why?"
+  },
+  {
+   "zh": "MERV 7 + MERV 13/14 的兩段式過濾為什麼比直接使用單一 HEPA 過濾更實際？",
+   "en": "Why is two-stage filtration (MERV 7 + MERV 13/14) more practical than using a single HEPA filter directly?"
+  },
+  {
+   "zh": "3.8 Oral Solid Dosage — Potent Compounds（口服固體劑型——強效化合物）",
+   "en": "3.8 Oral Solid Dosage - Potent Compounds"
+  },
+  {
+   "zh": "核心概念：強效化合物的 HVAC 設計原則",
+   "en": "Core Concept: HVAC Design Principles for Potent Compounds"
+  },
+  {
+   "zh": "<strong>Potent Compound（強效化合物）</strong>：指在極低劑量即產生藥理作用的藥物活性成分，如荷爾蒙、細胞毒性藥物等。OEL（Occupational Exposure Limit，職業暴露限值）通常 &lt;10 μg/m³。",
+   "en": "<strong>Potent Compound</strong>: an active pharmaceutical ingredient that produces a pharmacological effect at very low doses, such as hormones and cytotoxic drugs. The OEL (Occupational Exposure Limit) is typically &lt;10 μg/m³."
+  },
+  {
+   "zh": "HVAC 設計從「保護產品」升級為<strong>同時保護產品與操作人員</strong>。核心策略轉變：",
+   "en": "HVAC design moves from \"protecting the product\" to <strong>protecting both the product and the operators</strong>. The core strategy shifts to:"
+  },
+  {
+   "zh": "<strong>首選</strong>：密閉容器（Closed Containment）——從源頭杜絕暴露",
+   "en": "<strong>First choice</strong>: closed containment, eliminating exposure at the source"
+  },
+  {
+   "zh": "<strong>次選</strong>：100% 直排（Once-through）——不讓污染空氣有任何回流機會",
+   "en": "<strong>Second choice</strong>: 100% once-through air, so contaminated air has no chance of recirculating"
+  },
+  {
+   "zh": "<strong>底線</strong>：雙重 HEPA 過濾——即使空氣回流，也確保安全",
+   "en": "<strong>Bottom line</strong>: double HEPA filtration, which keeps things safe even if air is recirculated"
+  },
+  {
+   "zh": "<strong>Bag-In/Bag-Out (BIBO) 過濾器</strong>：一種安全更換型 HEPA 過濾器外殼，讓維護人員在不接觸濾芯表面的情況下完成更換，避免二次暴露。",
+   "en": "<strong>Bag-In/Bag-Out (BIBO) filter</strong>: a safe-change HEPA filter housing that lets maintenance staff replace the filter without touching the filter surface, avoiding secondary exposure."
+  },
+  {
+   "zh": "比喻說明：強效化合物處理如同核電廠的放射性物質管控",
+   "en": "Analogy: Handling potent compounds is like radioactive material control in a nuclear power plant"
+  },
+  {
+   "zh": "強效化合物的 HVAC 設計邏輯跟核電廠管理放射性物質很類似：",
+   "en": "The HVAC design logic for potent compounds closely resembles how a nuclear plant manages radioactive material:"
+  },
+  {
+   "zh": "<strong>密閉操作</strong>（Closed Containment）= 密封反應爐——最好永遠不要打開",
+   "en": "<strong>Closed operation</strong> (closed containment) = sealed reactor: ideally never opened"
+  },
+  {
+   "zh": "<strong>負壓控制</strong>（Pressure Sink）= 放射性區域永遠維持負壓——萬一有洩漏，空氣只會往裡流",
+   "en": "<strong>Negative pressure control</strong> (pressure sink) = radioactive areas always held negative: if there is a leak, air only flows inward"
+  },
+  {
+   "zh": "<strong>BIBO 過濾器</strong> = 更換放射性廢棄物時使用的密封袋——保護維護人員",
+   "en": "<strong>BIBO filter</strong> = the sealed bag used when changing out radioactive waste: protects maintenance staff"
+  },
+  {
+   "zh": "<strong>聲光警報</strong> = 輻射洩漏警報——立即通知人員撤離或穿戴防護",
+   "en": "<strong>Audible/visual alarm</strong> = radiation leak alarm: immediately tells personnel to evacuate or put on protection"
+  },
+  {
+   "zh": "重點提示：穿脫衣區的壓差設計常被忽略",
+   "en": "Key Point: Pressure design of gowning/de-gowning areas is often overlooked"
+  },
+  {
+   "zh": "本節有一個常被忽略但非常關鍵的設計要求：<strong>脫衣區（De-gowning Area）必須維持負壓</strong>。",
+   "en": "This section contains an often overlooked but critical design requirement: the <strong>de-gowning area must be kept under negative pressure</strong>."
+  },
+  {
+   "zh": "為什麼？操作人員離開製程區時，衣物上附著的強效化合物粉塵會在脫衣過程中釋放。如果脫衣區是正壓，這些粉塵會飄向走廊，造成人員二次暴露。",
+   "en": "Why? When operators leave the processing area, potent compound dust on their garments is released during de-gowning. If the de-gowning area is positive, this dust drifts into the corridor and causes secondary exposure of personnel."
+  },
+  {
+   "zh": "壓差設計應為：走廊（正壓）→ 穿衣區（中壓）→ 製程區（負壓）→ 脫衣區（最負壓）",
+   "en": "The pressure design should be: corridor (positive) → gowning area (intermediate) → processing area (negative) → de-gowning area (most negative)"
+  },
+  {
+   "zh": "氣流方向設計原則",
+   "en": "Airflow Direction Design Principle"
+  },
+  {
+   "zh": "【房間內氣流方向】\n    供氣口（靠近入口/操作人員呼吸帶）\n         ↓  乾淨空氣向下吹\n    操作人員呼吸帶\n         ↓  跨過\n    粉塵產生源\n         ↓  帶走粉塵\n    低位回風口（遠端牆壁底部）\n\n原則：人 → 塵 → 排，永遠保護操作人員！",
+   "en": "[Airflow direction in the room]\n    Supply air (near entrance / operator's breathing zone)\n         ↓  clean air flows downward\n    Operator's breathing zone\n         ↓  passes across\n    Dust generation source\n         ↓  carries dust away\n    Low-level return (bottom of far wall)\n\nPrinciple: person → dust → exhaust, always protect the operator!"
+  },
+  {
+   "zh": "如果一個強效化合物的製程已被驗證為「密閉」（proven closed），是否還需要 100% 直排系統？根據本節內容，可以採取什麼替代方案？",
+   "en": "If a potent compound process has been proven closed, is a 100% once-through system still needed? Based on this section, what alternatives can be adopted?"
+  },
+  {
+   "zh": "為什麼 HEPA 過濾器要安裝在「盡可能靠近製程區」的位置？如果安裝在遠端的 AHU 機組裡有什麼風險？",
+   "en": "Why should the HEPA filter be installed \"as close to the processing area as possible\"? What are the risks if it is installed in a remote AHU?"
+  },
+  {
+   "zh": "3.9 Aseptic Processing Facility（無菌製程設施）",
+   "en": "3.9 Aseptic Processing Facility"
+  },
+  {
+   "zh": "核心概念：無菌製程 HVAC 的三大設計支柱",
+   "en": "Core Concept: The Three Design Pillars of Aseptic Processing HVAC"
+  },
+  {
+   "zh": "無菌製程（Aseptic Processing，無菌製程）的 HVAC 是整本 ISPE HVAC 指引中最關鍵、最複雜的應用場景。三大設計支柱：",
+   "en": "HVAC for aseptic processing is the most critical and most complex application in the entire ISPE HVAC Guide. The three design pillars are:"
+  },
+  {
+   "zh": "<strong>終端 HEPA 過濾</strong>：天花板安裝的 HEPA 過濾器是無菌屏障（Aseptic Boundary）的一部分——不是可選項，是必要條件",
+   "en": "<strong>Terminal HEPA filtration</strong>: ceiling-mounted HEPA filters are part of the aseptic boundary; they are not optional but a necessary condition"
+  },
+  {
+   "zh": "<strong>壓差串聯（Pressure Cascade）</strong>：從最潔淨區（Grade A）逐級遞減到一般建築環境，形成「空氣只從乾淨處流向不潔淨處」的物理屏障",
+   "en": "<strong>Pressure cascade</strong>: pressure steps down from the cleanest area (Grade A) to the general building environment, creating a physical barrier so that \"air only flows from clean to less clean\""
+  },
+  {
+   "zh": "<strong>單向氣流（Unidirectional Airflow，單向氣流）</strong>：在 Grade A 區域提供 0.45 m/s 的均勻向下氣流，將微粒和微生物「沖刷」離開暴露產品",
+   "en": "<strong>Unidirectional airflow</strong>: provides uniform downward airflow of 0.45 m/s in the Grade A area to \"sweep\" particles and microorganisms away from exposed product"
+  },
+  {
+   "zh": "重點提示：24/7 運行是法規剛性需求",
+   "en": "Key Point: 24/7 operation is a firm regulatory expectation"
+  },
+  {
+   "zh": "本節明確指出無菌區的 HVAC <strong>必須 24 小時、7 天運行</strong>。為什麼？",
+   "en": "This section states clearly that aseptic area HVAC <strong>must run 24 hours a day, 7 days a week</strong>. Why?"
+  },
+  {
+   "zh": "停機後壓差立即消失，未受控空氣可能滲入無菌區",
+   "en": "When the system is shut down, the pressure differentials disappear immediately and uncontrolled air may infiltrate the aseptic area"
+  },
+  {
+   "zh": "重新啟動後需要執行「恢復協議」（Recovery Protocol），與 QA 共同確認房間已回到規格範圍內",
+   "en": "After restart, a recovery protocol must be executed, working with QA to confirm the rooms are back within specification"
+  },
+  {
+   "zh": "可以在非生產時段降低風量（Reduced Airflow），但不可以完全停機",
+   "en": "Airflow may be reduced outside production periods (reduced airflow), but the system must not be shut down completely"
+  },
+  {
+   "zh": "這意味著無菌設施的 HVAC <strong>能源成本是其他區域的 3-5 倍</strong>——這是影響 CDMO 運營成本的重要因素。",
+   "en": "This means that the <strong>HVAC energy cost of an aseptic facility is 3-5 times that of other areas</strong>, an important factor in CDMO operating cost."
+  },
+  {
+   "zh": "比喻說明：壓差串聯如同水壩的多級閘門",
+   "en": "Analogy: A pressure cascade is like the multi-stage gates of a dam"
+  },
+  {
+   "zh": "無菌製程的壓差設計就像水壩的多級閘門系統：",
+   "en": "The pressure design of aseptic processing works like the multi-stage gate system of a dam:"
+  },
+  {
+   "zh": "<strong>Grade A（最高水位）</strong>：充填區，壓力最高，水（空氣）只會往外流",
+   "en": "<strong>Grade A (highest water level)</strong>: the filling zone, highest pressure; water (air) only flows outward"
+  },
+  {
+   "zh": "<strong>Grade B（次高水位）</strong>：背景環境，接住 Grade A 外溢的水",
+   "en": "<strong>Grade B (next highest level)</strong>: the background environment, catching the overflow from Grade A"
+  },
+  {
+   "zh": "<strong>穿衣區/氣閘（中間水位）</strong>：過渡閘門，防止外界水倒灌",
+   "en": "<strong>Gowning area/airlock (intermediate level)</strong>: transition gate that stops outside water flowing back in"
+  },
+  {
+   "zh": "<strong>一般建築（最低水位）</strong>：所有的水最終流到這裡",
+   "en": "<strong>General building (lowest level)</strong>: where all the water ends up"
+  },
+  {
+   "zh": "任何時候如果閘門漏水（壓差失控），上游的潔淨水就可能被下游的污水回灌——這就是為什麼需要連續監控和警報。",
+   "en": "If a gate ever leaks (pressure differential out of control), clean upstream water can be contaminated by dirty downstream water flowing back, which is why continuous monitoring and alarms are needed."
+  },
+  {
+   "zh": "UFH 單向氣流關鍵參數",
+   "en": "Key Parameters for UFH Unidirectional Airflow"
+  },
+  {
+   "zh": "目標風速：0.45 m/s (90 fpm)\n均勻度要求：± 20%\n量測位置：HEPA 過濾器面下方 15-30 cm（6-12 inches）\n確效方法：氣流可視化測試（Smoke Testing）\n\nGrade A 區域 = ISO 5\n  ≤ 3,520 particles/m³ (≥0.5μm)\nGrade B 區域 = ISO 7 (at rest)\n  ≤ 352,000 particles/m³ (≥0.5μm)",
+   "en": "Target velocity: 0.45 m/s (90 fpm)\nUniformity requirement: ± 20%\nMeasurement location: 15-30 cm (6-12 inches) below the HEPA filter face\nValidation method: airflow visualization (smoke testing)\n\nGrade A area = ISO 5\n  ≤ 3,520 particles/m³ (≥0.5μm)\nGrade B area = ISO 7 (at rest)\n  ≤ 352,000 particles/m³ (≥0.5μm)"
+  },
+  {
+   "zh": "重點提示：風管材質與施工標準",
+   "en": "Key Point: Ductwork materials and construction standards"
+  },
+  {
+   "zh": "本節特別規範：",
+   "en": "This section specifically stipulates:"
+  },
+  {
+   "zh": "一般風管：鍍鋅鋼板，按 SMACNA 標準施工，最低 4 英寸水柱靜壓等級",
+   "en": "General ductwork: galvanized steel, built to SMACNA standards, minimum 4 inches w.g. static pressure class"
+  },
+  {
+   "zh": "暴露在生產區域或潮濕環境的風管：最低 304 不鏽鋼，可清洗表面",
+   "en": "Ductwork exposed in production areas or damp environments: minimum 304 stainless steel, with cleanable surfaces"
+  },
+  {
+   "zh": "密封等級：SMACNA Class \"A\"（最高等級）",
+   "en": "Sealing class: SMACNA Class \"A\" (the highest class)"
+  },
+  {
+   "zh": "這些要求直接影響工程造價。不鏽鋼風管的成本是鍍鋅鋼板的 3-5 倍，但在無菌區是必要投資。",
+   "en": "These requirements directly affect construction cost. Stainless steel ductwork costs 3-5 times as much as galvanized steel, but it is a necessary investment in aseptic areas."
+  },
+  {
+   "zh": "實務應用：CDMO 無菌設施的 HVAC 架構選擇",
+   "en": "Practical Application: Choosing the HVAC architecture for a CDMO aseptic facility"
+  },
+  {
+   "zh": "設計無菌充填線的 HVAC 時，你面對兩個基本架構選擇：",
+   "en": "When designing HVAC for an aseptic filling line, you face two basic architecture choices:"
+  },
+  {
+   "zh": "<strong>Grade A UFH + Grade B 背景房</strong>（傳統方案）：UFH 提供 Grade A 單向氣流，背景環境維持 Grade B。適用於 RABS（限制進出屏障系統）或開放式充填線",
+   "en": "<strong>Grade A UFH + Grade B background room</strong> (conventional approach): the UFH provides Grade A unidirectional airflow while the background environment is maintained at Grade B. Suitable for RABS (restricted access barrier system) or open filling lines"
+  },
+  {
+   "zh": "<strong>隔離器（Isolator，隔離器）+ 降級背景環境</strong>（進階方案）：密閉隔離器內部 Grade A，背景環境可降至 Grade C 甚至 Grade D。HVAC 需求大幅降低，但隔離器本身投資較高",
+   "en": "<strong>Isolator + downgraded background environment</strong> (advanced approach): the sealed isolator interior is Grade A, and the background environment can be lowered to Grade C or even Grade D. HVAC requirements drop substantially, but the isolator itself requires higher investment"
+  },
+  {
+   "zh": "本節稍後 3.15.4 將詳細討論隔離器系統——它是「綠色技術」（Green Technology），能源消耗顯著低於傳統製程。",
+   "en": "Isolator systems are discussed in detail later in this chapter in 3.15.4. They are a \"green technology\" with energy consumption significantly lower than conventional processing."
+  },
+  {
+   "zh": "為什麼 ISPE 不建議在無菌區內使用天花板下方安裝的循環 HEPA/風扇單元？（提示：思考維護和氣流方向）",
+   "en": "Why does ISPE not recommend recirculating HEPA/fan units mounted below the ceiling inside the aseptic area? (Hint: think about maintenance and airflow direction.)"
+  },
+  {
+   "zh": "無菌區的低位回風口建議設置在至少兩面牆上，這是為什麼？如果只設在一面牆上會有什麼問題？",
+   "en": "Low-level returns in an aseptic area are recommended on at least two walls. Why? What problems would arise if they were on only one wall?"
+  },
+  {
+   "zh": "如果你的無菌充填線同時處理強效產品（Potent Product），壓差設計會變成什麼樣？（提示：保護產品的正壓 vs 保護人員的負壓之間的衝突）",
+   "en": "If your aseptic filling line also handles a potent product, how does the pressure design change? (Hint: the conflict between positive pressure to protect the product and negative pressure to protect personnel.)"
+  },
+  {
+   "zh": "3.9.2 Aseptic Powder Potent Compounds（無菌粉末——強效化合物）",
+   "en": "3.9.2 Aseptic Powder Potent Compounds"
+  },
+  {
+   "zh": "核心概念：無菌 + 強效 = 最高等級 HVAC 挑戰",
+   "en": "Core Concept: Aseptic + Potent = the highest-level HVAC challenge"
+  },
+  {
+   "zh": "這是 HVAC 設計中最具挑戰性的場景：同時要求<strong>無菌保證（Sterility Assurance，保護產品）</strong>和<strong>人員防護（Containment，保護操作員）</strong>。兩個需求在壓差方向上是矛盾的：",
+   "en": "This is the most challenging scenario in HVAC design: it requires both <strong>sterility assurance (protecting the product)</strong> and <strong>containment (protecting the operator)</strong>. The two needs conflict in pressure direction:"
+  },
+  {
+   "zh": "無菌要求：充填區正壓 → 空氣向外流（保護產品不被污染）",
+   "en": "Sterility requirement: filling area positive, air flows outward (protects the product from contamination)"
+  },
+  {
+   "zh": "密閉要求：操作區負壓 → 空氣向內流（防止毒性粉塵外洩）",
+   "en": "Containment requirement: operating area negative, air flows inward (prevents toxic dust escaping)"
+  },
+  {
+   "zh": "解決方案：使用<strong>隔離器（Isolator）+ 專屬 HVAC</strong>，讓隔離器內部保持無菌正壓，而隔離器周圍的房間可以維持負壓。",
+   "en": "Solution: use an <strong>isolator + dedicated HVAC</strong>, so the isolator interior stays sterile and positive while the room around the isolator can be kept negative."
+  },
+  {
+   "zh": "比喻說明：進出動線如同太空站的氣閘艙",
+   "en": "Analogy: Personnel and material flow is like a space station airlock"
+  },
+  {
+   "zh": "無菌強效製程的人員與物料進出設計就像太空站的氣閘系統：",
+   "en": "The personnel and material entry/exit design for aseptic potent processing resembles a space station airlock system:"
+  },
+  {
+   "zh": "<strong>穿衣區（高壓氣閘）</strong>= 太空人穿上太空衣的準備室——從「地球」（走廊）過渡到「太空」（無菌區）",
+   "en": "<strong>Gowning area (high-pressure airlock)</strong> = the preparation room where astronauts put on spacesuits: the transition from \"Earth\" (the corridor) to \"space\" (the aseptic area)"
+  },
+  {
+   "zh": "<strong>脫衣區（低壓氣閘）</strong>= 太空人回來時的減壓艙——確保太空（製程區）的「毒物」不會帶回地球",
+   "en": "<strong>De-gowning area (low-pressure airlock)</strong> = the decompression chamber on return: ensures the \"toxins\" of space (the processing area) are not brought back to Earth"
+  },
+  {
+   "zh": "<strong>物料進入隧道（高壓 HEPA 過濾）</strong>= 貨物進入太空站的加壓通道",
+   "en": "<strong>Material entry tunnel (high-pressure HEPA-filtered)</strong> = the pressurized passage by which cargo enters the station"
+  },
+  {
+   "zh": "<strong>廢棄物移出（低壓隧道）</strong>= 垃圾彈射艙——只出不進",
+   "en": "<strong>Waste removal (low-pressure tunnel)</strong> = the trash ejection hatch: out only, never in"
+  },
+  {
+   "zh": "重點提示：乾粉無菌充填的特殊濕度需求",
+   "en": "Key Point: Special humidity needs of dry powder aseptic filling"
+  },
+  {
+   "zh": "無菌粉末產品（如凍乾粉注射劑）需要極低的相對濕度（RH），否則粉末會吸濕結塊。ISPE 建議：",
+   "en": "Aseptic powder products (such as lyophilized powder injectables) need very low relative humidity (RH), otherwise the powder absorbs moisture and cakes. ISPE recommends:"
+  },
+  {
+   "zh": "使用 <strong>Blow-through AHU</strong>（鼓風式空調機組）——風扇在冷卻盤管之前，減少除濕後的管路漏濕",
+   "en": "Use a <strong>blow-through AHU</strong>, with the fan upstream of the cooling coil, to reduce moisture leakage in the ductwork after dehumidification"
+  },
+  {
+   "zh": "這與液態無菌充填的 Draw-through AHU（抽風式）設計完全相反",
+   "en": "This is the exact opposite of the draw-through AHU design used for liquid aseptic filling"
+  },
+  {
+   "zh": "如果你的 CDMO 同時承接液態和粉末無菌產品，HVAC 系統必須有兩種不同的配置能力——這是設施彈性的重要考量。",
+   "en": "If your CDMO takes on both liquid and powder aseptic products, the HVAC system must be capable of two different configurations; this is an important facility flexibility consideration."
+  },
+  {
+   "zh": "為什麼隔離器是解決「無菌 vs 密閉」壓差矛盾的最佳方案？如果不使用隔離器，你如何設計壓差系統？",
+   "en": "Why is an isolator the best solution to the pressure conflict between \"sterility\" and \"containment\"? If an isolator is not used, how would you design the pressure system?"
+  },
+  {
+   "zh": "物料進入無菌充填室使用「高壓隧道」，離開時使用「低壓隧道」——請解釋壓差設計背後的邏輯。",
+   "en": "Materials enter the aseptic filling room through a \"high-pressure tunnel\" and leave through a \"low-pressure tunnel\". Explain the logic behind this pressure design."
+  },
+  {
+   "zh": "3.10 Packaging/Labeling（包裝/標籤）",
+   "en": "3.10 Packaging/Labeling"
+  },
+  {
+   "zh": "核心概念：初級包裝 vs 二級包裝的 HVAC 差異",
+   "en": "Core Concept: HVAC differences between primary and secondary packaging"
+  },
+  {
+   "zh": "<strong>Primary Packaging（初級包裝）</strong>：直接接觸產品的容器（如藥瓶、注射器），HVAC 要求等同製造區。",
+   "en": "<strong>Primary Packaging</strong>: containers in direct contact with the product (such as vials and syringes); HVAC requirements are equivalent to the manufacturing area."
+  },
+  {
+   "zh": "<strong>Secondary Packaging（二級包裝）</strong>：將已密封的產品放入紙盒/箱子，通常只需 CNC 環境 + 人員舒適條件。",
+   "en": "<strong>Secondary Packaging</strong>: placing sealed product into cartons/boxes; usually only a CNC environment plus personnel comfort conditions are needed."
+  },
+  {
+   "zh": "關鍵決策原則：<strong>HVAC 需求跟隨「產品暴露風險」</strong>——產品還是暴露的？用製造區標準。產品已密封？舒適條件即可。",
+   "en": "Key decision principle: <strong>HVAC requirements follow \"product exposure risk\"</strong>. Is the product still exposed? Use manufacturing area standards. Is the product sealed? Comfort conditions are enough."
+  },
+  {
+   "zh": "比喻說明：包裝就像食品裝盒",
+   "en": "Analogy: Packaging is like boxing food"
+  },
+  {
+   "zh": "壽司師傅把壽司放進餐盒（Primary Packaging）——必須在乾淨的廚房裡完成。但把餐盒放進外帶袋（Secondary Packaging）——在櫃檯就可以了，不需要回到廚房。HVAC 設計的邏輯一模一樣。",
+   "en": "A sushi chef putting sushi into a takeaway box (primary packaging) must do it in a clean kitchen. But putting that box into a carry-out bag (secondary packaging) can be done at the counter, with no need to go back to the kitchen. HVAC design follows exactly the same logic."
+  },
+  {
+   "zh": "重點提示：成本效益導向的 HVAC 升級",
+   "en": "Key Point: Cost-benefit driven HVAC upgrades"
+  },
+  {
+   "zh": "本節最後一點特別有商業智慧：「更精細的 HVAC 通常由商業需求驅動，當較高的 HVAC 生命週期成本可以被昂貴產品損失的風險所抵消時。」",
+   "en": "The last point in this section shows real commercial sense: \"More sophisticated HVAC is usually driven by business needs, when higher HVAC life-cycle cost can be offset by the risk of expensive product loss.\""
+  },
+  {
+   "zh": "換句話說：存放便宜的原料？最低限度的 HVAC 即可。存放每批價值百萬美元的生物製劑？值得投資更好的溫濕度控制。",
+   "en": "In other words: storing cheap raw materials? Minimal HVAC will do. Storing a biologic worth a million dollars per batch? Better temperature and humidity control is worth the investment."
+  },
+  {
+   "zh": "如果你的 CDMO 的包裝區同時處理強效化合物產品的初級包裝，HVAC 設計需要增加哪些額外要求？",
+   "en": "If your CDMO's packaging area also handles primary packaging of potent compound products, what additional HVAC requirements are needed?"
+  },
+  {
+   "zh": "標籤作業為什麼可能需要嚴格的濕度控制？（提示：想想標籤黏膠和印刷品質）",
+   "en": "Why might labeling operations require tight humidity control? (Hint: think about label adhesive and print quality.)"
+  },
+  {
+   "zh": "3.11 Laboratories（實驗室）",
+   "en": "3.11 Laboratories"
+  },
+  {
+   "zh": "核心概念：實驗室 HVAC 的核心挑戰——排煙櫃整合",
+   "en": "Core Concept: The core challenge of laboratory HVAC is fume hood integration"
+  },
+  {
+   "zh": "<strong>Fume Hood（排煙櫃）</strong>：實驗室的核心安全設備，透過向內的氣流防止化學蒸氣逸出。排煙櫃的排氣需求直接決定了整個實驗室 HVAC 的設計。",
+   "en": "<strong>Fume Hood</strong>: the core safety equipment in a laboratory, which prevents chemical vapors escaping by means of inward airflow. The exhaust requirement of the fume hoods directly determines the design of the whole laboratory HVAC."
+  },
+  {
+   "zh": "<strong>VAV (Variable Air Volume，變風量) 系統</strong>：根據排煙櫃的實際使用狀態自動調節風量的智慧控制系統。核心優勢：",
+   "en": "<strong>VAV (Variable Air Volume) system</strong>: an intelligent control system that automatically adjusts airflow according to actual fume hood use. Core advantages:"
+  },
+  {
+   "zh": "<strong>安全性</strong>：透過氣流追蹤（Airflow Tracking）確保房間壓差始終符合要求",
+   "en": "<strong>Safety</strong>: airflow tracking ensures the room pressure differential always meets requirements"
+  },
+  {
+   "zh": "<strong>節能性</strong>：只有在排煙櫃打開時才提供全風量，其餘時間降低風量",
+   "en": "<strong>Energy saving</strong>: full airflow is provided only when a fume hood is open, and airflow is reduced the rest of the time"
+  },
+  {
+   "zh": "<strong>Diversity Factor（多樣性因子）</strong>：不是所有排煙櫃會同時全開，因此系統可按 70% 容量設計中央設備",
+   "en": "<strong>Diversity factor</strong>: not all fume hoods are fully open at once, so central equipment can be sized at 70% capacity"
+  },
+  {
+   "zh": "比喻說明：實驗室壓差設計的「兩種人格」",
+   "en": "Analogy: The \"two personalities\" of laboratory pressure design"
+  },
+  {
+   "zh": "實驗室的壓差設計有兩種完全相反的邏輯，像是同一棟建築裡住著兩種性格的人：",
+   "en": "Laboratory pressure design follows two completely opposite logics, as if two people of different temperament lived in the same building:"
+  },
+  {
+   "zh": "<strong>化學實驗室（「向內吸」型）</strong>：使用揮發性溶劑或放射性同位素——維持負壓，讓有害蒸氣不會飄到走廊（保護外部人員）",
+   "en": "<strong>Chemical laboratory (\"pull inward\" type)</strong>: uses volatile solvents or radioactive isotopes; kept negative so that hazardous vapors do not drift into the corridor (protecting people outside)"
+  },
+  {
+   "zh": "<strong>潔淨實驗室（「向外推」型）</strong>：微生物檢測或製程中控制——維持正壓，讓走廊的污染不會進入實驗室（保護測試樣品）",
+   "en": "<strong>Clean laboratory (\"push outward\" type)</strong>: microbiological testing or in-process control; kept positive so that corridor contamination does not enter the laboratory (protecting the test samples)"
+  },
+  {
+   "zh": "如果你的 QC 實驗室同時有化學分析和微生物檢測，就必須做好分區設計，讓這兩種「人格」互不干擾。",
+   "en": "If your QC laboratory has both chemical analysis and microbiological testing, you must zone the design carefully so the two \"personalities\" do not interfere with each other."
+  },
+  {
+   "zh": "重點提示：排煙櫃前方的氣流干擾",
+   "en": "Key Point: Airflow disturbance in front of the fume hood"
+  },
+  {
+   "zh": "一個經常被忽略的設計細節：排煙櫃開口前方 24 英寸（60 cm）範圍內的<strong>橫向氣流不得超過 30 FPM（0.15 m/s）</strong>。",
+   "en": "A frequently overlooked design detail: within 24 inches (60 cm) in front of the fume hood opening, <strong>cross-draft must not exceed 30 FPM (0.15 m/s)</strong>."
+  },
+  {
+   "zh": "為什麼？如果供氣出風口產生的氣流經過排煙櫃前方，會擾亂排煙櫃的向內氣流，導致有害蒸氣逸出。這就是為什麼 ISPE 推薦<strong>非吸入式出風口（Non-aspirating Diffusers）</strong>——它們產生的氣流更柔和、更均勻。",
+   "en": "Why? If airflow from a supply diffuser passes in front of the fume hood, it disturbs the hood's inward airflow and lets hazardous vapors escape. This is why ISPE recommends <strong>non-aspirating diffusers</strong>, which produce gentler, more uniform airflow."
+  },
+  {
+   "zh": "實驗室 HVAC 設計參數速查",
+   "en": "Quick Reference: Laboratory HVAC Design Parameters"
+  },
+  {
+   "zh": "最低換氣次數（已佔用實驗室）：6 AC/hr\n建議換氣次數：8-12 AC/hr\nVAV 多樣性因子：70%（常用值）\n排煙櫃面前橫向風速限制：≤ 30 FPM (0.15 m/s)\n排氣煙囪最低高度：10 ft (3 m) 或建築高度的 30%\n過高酸排氣管：304SS 或 Hastelloy/FRP\n夜間模式：佔用感測器 + 降載（Night Setback）",
+   "en": "Minimum air changes (occupied laboratory): 6 AC/hr\nRecommended air changes: 8-12 AC/hr\nVAV diversity factor: 70% (commonly used value)\nCross-draft limit in front of fume hood: ≤ 30 FPM (0.15 m/s)\nMinimum exhaust stack height: 10 ft (3 m) or 30% of building height\nHigh-level acid exhaust ductwork: 304SS or Hastelloy/FRP\nNight mode: occupancy sensor + setback (Night Setback)"
+  },
+  {
+   "zh": "實務應用：CDMO QC 實驗室的 HVAC 投資優化",
+   "en": "Practical Application: Optimizing HVAC investment for a CDMO QC laboratory"
+  },
+  {
+   "zh": "對 CDMO 而言，QC 實驗室是必要但非營收直接產生的區域。HVAC 優化策略：",
+   "en": "For a CDMO, the QC laboratory is a necessary area that does not directly generate revenue. HVAC optimization strategies:"
+  },
+  {
+   "zh": "<strong>VAV 系統</strong>：初期投資較高，但能源節省 30-50%，2-3 年即可回收",
+   "en": "<strong>VAV system</strong>: higher initial investment, but saves 30-50% of energy and pays back within 2-3 years"
+  },
+  {
+   "zh": "<strong>佔用感測器 + 夜間降載</strong>：QC 實驗室通常只有日班使用，夜間降低風量可節省大量能源",
+   "en": "<strong>Occupancy sensors + night setback</strong>: a QC laboratory is usually used only on the day shift, so reducing airflow at night saves a great deal of energy"
+  },
+  {
+   "zh": "<strong>排煙櫃自動關閉系統</strong>：防止人員離開後忘記降下窗框，避免不必要的排氣",
+   "en": "<strong>Automatic fume hood sash closing system</strong>: prevents sashes being left open after people leave, avoiding unnecessary exhaust"
+  },
+  {
+   "zh": "<strong>熱回收</strong>：從排煙櫃排出的空氣中回收熱量（但需注意化學品相容性）",
+   "en": "<strong>Heat recovery</strong>: recovering heat from fume hood exhaust air (but watch chemical compatibility)"
+  },
+  {
+   "zh": "為什麼過氯酸（Perchloric Acid）的排煙櫃必須使用專用排氣系統，不能與其他排煙櫃共用？",
+   "en": "Why must a perchloric acid fume hood use a dedicated exhaust system and not share it with other fume hoods?"
+  },
+  {
+   "zh": "一個 CDMO 的 QC 實驗室有 12 個排煙櫃，如果使用 70% 多樣性因子，中央排氣設備應按多少個排煙櫃的容量設計？",
+   "en": "A CDMO's QC laboratory has 12 fume hoods. With a 70% diversity factor, for how many fume hoods should the central exhaust equipment be sized?"
+  },
+  {
+   "zh": "無管道型實驗室排煙櫃（Ductless Laboratory Hood）為什麼「不常見」且維護至關重要？活性碳飽和後會發生什麼？",
+   "en": "Why are ductless laboratory hoods \"not common\" and why is maintenance critical? What happens once the activated carbon is saturated?"
+  },
+  {
+   "zh": "3.12 Sampling/Dispensing（取樣/秤量）",
+   "en": "3.12 Sampling/Dispensing"
+  },
+  {
+   "zh": "核心概念：取樣/秤量區的「雙重身份」",
+   "en": "Core Concept: The \"dual identity\" of sampling/dispensing areas"
+  },
+  {
+   "zh": "取樣和秤量區是<strong>倉庫與製程之間的橋樑</strong>。HVAC 設計必須反映「下游製程」的要求：",
+   "en": "Sampling and dispensing areas are the <strong>bridge between the warehouse and the process</strong>. The HVAC design must reflect the requirements of the \"downstream process\":"
+  },
+  {
+   "zh": "如果材料進入無菌製程：取樣區可能需要 Grade C 或 D 環境",
+   "en": "If the material goes into an aseptic process: the sampling area may need a Grade C or D environment"
+  },
+  {
+   "zh": "如果材料進入 OSD 製程：CNC 環境通常足夠",
+   "en": "If the material goes into an OSD process: a CNC environment is usually sufficient"
+  },
+  {
+   "zh": "如果處理危險材料：需要 LEV 和操作員防護",
+   "en": "If hazardous materials are handled: LEV and operator protection are needed"
+  },
+  {
+   "zh": "<strong>Downflow Booth（下吹式工作台）</strong>：一種整合型 HVAC 設備，從天花板向下吹出均勻的 HEPA 過濾空氣，在工作台前方利用 10% 的排氣量產生向內的氣流，形成「看不見的空氣門」保護操作人員。",
+   "en": "<strong>Downflow Booth</strong>: an integrated HVAC device that blows uniform HEPA-filtered air downward from the ceiling and uses 10% of the exhaust air volume to create inward airflow at the front of the booth, forming an \"invisible air door\" that protects the operator."
+  },
+  {
+   "zh": "比喻說明：下吹式工作台就像「空氣瀑布」",
+   "en": "Analogy: A downflow booth is like an \"air waterfall\""
+  },
+  {
+   "zh": "想像站在一道小瀑布後面：水從上方均勻落下（HEPA 過濾空氣），你站在裡面（操作區），粉塵無法穿過水幕到達你的呼吸帶。瀑布底部有排水口（低位回風），帶走所有被水沖下的雜質。前方的水簾（乙烯基帘幕 + 10% 排氣）阻止外部的風吹散水幕。",
+   "en": "Imagine standing behind a small waterfall: water falls evenly from above (HEPA-filtered air), you stand inside (the working area), and dust cannot pass through the water curtain to reach your breathing zone. There is a drain at the bottom (low-level return) that carries away everything the water has washed down. The water curtain at the front (vinyl curtain + 10% exhaust) stops outside wind from scattering the falling water."
+  },
+  {
+   "zh": "重點提示：取樣區與倉庫之間必須設氣閘",
+   "en": "Key Point: An airlock is required between the sampling area and the warehouse"
+  },
+  {
+   "zh": "ISPE 明確要求倉庫和取樣空間之間必須使用<strong>氣閘（Airlock）</strong>分隔。原因：",
+   "en": "ISPE explicitly requires that the warehouse and sampling space be separated by an <strong>airlock</strong>. The reasons:"
+  },
+  {
+   "zh": "倉庫通常是非受控環境（CNC 或更低）",
+   "en": "The warehouse is usually an uncontrolled environment (CNC or lower)"
+  },
+  {
+   "zh": "取樣區的潔淨度必須匹配下游製程要求",
+   "en": "The cleanliness of the sampling area must match the requirements of the downstream process"
+  },
+  {
+   "zh": "打開容器取樣時，產品暴露在環境中——此時環境條件直接影響產品品質",
+   "en": "When containers are opened for sampling, the product is exposed to the environment, so environmental conditions directly affect product quality at that moment"
+  },
+  {
+   "zh": "為什麼 ISPE 說取樣站的排氣「不應回流」，但房間一般空氣可以回流？兩者的風險差異是什麼？",
+   "en": "Why does ISPE say that sampling station exhaust \"should not be recirculated\" while general room air may be? What is the difference in risk between the two?"
+  },
+  {
+   "zh": "一個同時服務 OSD 和無菌產品線的 CDMO，取樣區應該按什麼等級設計？如何平衡成本與合規？",
+   "en": "For a CDMO serving both OSD and aseptic product lines, to what grade should the sampling area be designed? How do you balance cost and compliance?"
+  },
+  {
+   "zh": "3.13 – 3.14 Administrative, General Building &amp; Warehouse（行政區、一般建築與倉庫）",
+   "en": "3.13 - 3.14 Administrative, General Building &amp; Warehouse"
+  },
+  {
+   "zh": "核心概念：倉庫 HVAC 的關鍵——溫度分佈圖（Temperature Mapping）",
+   "en": "Core Concept: The key to warehouse HVAC is temperature mapping"
+  },
+  {
+   "zh": "<strong>Temperature Mapping（溫度分佈圖）</strong>：在倉庫的多個位置安裝溫度感測器，連續記錄至少一年的溫度數據（覆蓋所有季節），以識別「熱點」和「冷點」。",
+   "en": "<strong>Temperature Mapping</strong>: installing temperature sensors at multiple locations in the warehouse and recording temperature continuously for at least one year (covering all seasons) to identify \"hot spots\" and \"cold spots\"."
+  },
+  {
+   "zh": "<strong>Mean Kinetic Temperature (MKT，平均動力學溫度)</strong>：一個加權平均溫度，反映溫度波動對產品穩定性的實際影響。USP 要求 MKT &lt; 25°C。",
+   "en": "<strong>Mean Kinetic Temperature (MKT)</strong>: a weighted average temperature that reflects the actual effect of temperature fluctuations on product stability. USP requires MKT &lt; 25°C."
+  },
+  {
+   "zh": "這意味著即使偶爾超過 30°C，只要 MKT 控制在 25°C 以下，仍然合規——但你必須有數據證明。",
+   "en": "This means that even if the temperature occasionally exceeds 30°C, the warehouse remains compliant as long as MKT stays below 25°C, but you must have data to prove it."
+  },
+  {
+   "zh": "比喻說明：溫度分佈圖就像「倉庫的健康檢查報告」",
+   "en": "Analogy: Temperature mapping is the \"warehouse health check report\""
+  },
+  {
+   "zh": "就像人體需要定期健康檢查，了解哪些器官有潛在風險一樣，倉庫也需要「體檢」來了解哪些區域的溫度容易偏高或偏低。靠近天花板的高架區就像「容易發燒的額頭」，靠近大門的進出口就像「容易著涼的鼻子」。",
+   "en": "Just as the human body needs regular health checks to find out which organs are at potential risk, a warehouse needs a \"check-up\" to learn which areas tend to run too warm or too cold. High racking near the ceiling is like a \"forehead prone to fever\", and loading doors near the entrance are like a \"nose prone to catching cold\"."
+  },
+  {
+   "zh": "重點提示：行政區 VAV 系統對製程區壓差的干擾",
+   "en": "Key Point: Office-area VAV systems can disturb process area pressure differentials"
+  },
+  {
+   "zh": "這是一個被低估的設計風險：辦公室的 VAV 系統會根據佔用人數和熱負荷自動調節風量，造成辦公區的壓力波動。如果辦公區<strong>緊鄰受控製程區</strong>，這些壓力波動可能干擾製程區的壓差控制。",
+   "en": "This is an underestimated design risk: office VAV systems automatically adjust airflow according to occupancy and heat load, causing pressure fluctuations in the office area. If the office area is <strong>directly adjacent to a controlled process area</strong>, these fluctuations can interfere with the process area's pressure differential control."
+  },
+  {
+   "zh": "解決方案：在辦公區與製程區之間設置緩衝走廊或氣閘，或使用定風量（CAV）系統供應辦公區中鄰近製程區的區域。",
+   "en": "Solution: place a buffer corridor or airlock between the office and process areas, or use a constant air volume (CAV) system for the part of the office area adjoining the process area."
+  },
+  {
+   "zh": "重點提示：生物製劑的冷鏈（Cold Chain）需求",
+   "en": "Key Point: Cold chain needs for biologics"
+  },
+  {
+   "zh": "生物製劑（如單株抗體、mRNA 疫苗）通常需要 2-8°C 甚至 -20°C 或 -80°C 的儲存條件。這遠超過 USP 的「受控室溫」標準，需要：",
+   "en": "Biologics (such as monoclonal antibodies and mRNA vaccines) usually require storage at 2-8°C or even -20°C or -80°C. This goes far beyond the USP \"controlled room temperature\" standard and requires:"
+  },
+  {
+   "zh": "專用冷藏/冷凍庫",
+   "en": "Dedicated refrigerators/freezers"
+  },
+  {
+   "zh": "連續溫度監控 + 警報系統",
+   "en": "Continuous temperature monitoring + alarm system"
+  },
+  {
+   "zh": "備用電力供應（不可中斷）",
+   "en": "Backup power supply (uninterruptible)"
+  },
+  {
+   "zh": "冷鏈驗證文件",
+   "en": "Cold chain validation documentation"
+  },
+  {
+   "zh": "對 CDMO 而言，提供完整冷鏈能力是承接高價值生物製劑合同的先決條件。",
+   "en": "For a CDMO, offering full cold chain capability is a prerequisite for winning high-value biologics contracts."
+  },
+  {
+   "zh": "你的倉庫在夏季最熱的一天，某個區域溫度達到 35°C 持續 4 小時，但年度 MKT 仍為 24°C。這個區域是否仍符合 USP「受控室溫」要求？你需要什麼文件來支持這個結論？",
+   "en": "On the hottest day of summer, one area of your warehouse reaches 35°C for 4 hours, but the annual MKT is still 24°C. Does this area still meet the USP \"controlled room temperature\" requirement? What documentation do you need to support this conclusion?"
+  },
+  {
+   "zh": "為什麼電池充電區需要專用排氣？如果不設排氣會有什麼安全風險？",
+   "en": "Why does a battery charging area need dedicated exhaust? What safety risks arise if there is none?"
+  },
+  {
+   "zh": "3.15 Process Equipment Integration（製程設備整合）",
+   "en": "3.15 Process Equipment Integration"
+  },
+  {
+   "zh": "核心概念：製程設備與 HVAC 的「共舞」",
+   "en": "Core Concept: Process equipment and HVAC \"dance together\""
+  },
+  {
+   "zh": "製程設備不是孤立運作的——每一台設備都會影響房間的壓差、溫度、濕度和氣流模式。本節涵蓋五類關鍵設備整合挑戰：",
+   "en": "Process equipment does not operate in isolation: every piece of equipment affects room pressure differential, temperature, humidity and airflow pattern. This section covers five key categories of equipment integration challenges:"
+  },
+  {
+   "zh": "<strong>除塵系統（Dust Extract）</strong>：故障時的交叉污染風險、脈衝清潔時的氣流反向",
+   "en": "<strong>Dust Extract</strong>: cross-contamination risk on failure, and airflow reversal during pulse cleaning"
+  },
+  {
+   "zh": "<strong>造粒/包衣/流化床（Granulators/Coaters/FBD）</strong>：獨立 AHU、非運作期的防潮、CIP 需求",
+   "en": "<strong>Granulators/Coaters/FBD (fluid bed dryers)</strong>: separate AHU, moisture protection during non-operating periods, CIP requirements"
+  },
+  {
+   "zh": "<strong>去熱原隧道（Depyrogenation Tunnel）</strong>：跨分級區域、啟動動態期、325°C 高溫 HEPA 測試",
+   "en": "<strong>Depyrogenation Tunnel</strong>: spans classified areas, start-up dynamic period, 325°C high-temperature HEPA testing"
+  },
+  {
+   "zh": "<strong>隔離器（Isolator）</strong>：多操作模式對房間壓差的影響、VPHP 洩漏監控",
+   "en": "<strong>Isolator</strong>: effect of multiple operating modes on room pressure differential, VPHP leak monitoring"
+  },
+  {
+   "zh": "<strong>壓蓋/凍乾機（Capping/Lyophilizer）</strong>：Grade A 保護需求、鋁屑排氣",
+   "en": "<strong>Capping/Lyophilizer</strong>: Grade A protection needs, aluminum particle exhaust"
+  },
+  {
+   "zh": "比喻說明：隔離器是「太空站」，RABS 是「無塵室」",
+   "en": "Analogy: The isolator is the \"space station\", RABS is the \"clean room\""
+  },
+  {
+   "zh": "回到我們的經典比喻：",
+   "en": "Back to our familiar analogy:"
+  },
+  {
+   "zh": "<strong>隔離器（Isolator，隔離器）</strong>= 太空站：完全密閉的微環境，內部自給自足，與外部物理隔離。即使外面是「太空」（低等級環境），內部仍然安全",
+   "en": "<strong>Isolator</strong> = space station: a fully enclosed micro-environment, self-sufficient inside and physically separated from the outside. Even if the outside is \"space\" (a lower-grade environment), the inside stays safe"
+  },
+  {
+   "zh": "<strong>RABS（限制進出屏障系統）</strong>= 無塵室：開放式屏障，依賴周圍環境（Grade B 背景）的氣流品質來維持無菌性",
+   "en": "<strong>RABS (Restricted Access Barrier System)</strong> = clean room: an open barrier that relies on the airflow quality of the surrounding environment (Grade B background) to maintain sterility"
+  },
+  {
+   "zh": "ISPE 稱隔離器為<strong>「綠色技術」</strong>——因為背景環境可以降級，HVAC 風量和能耗大幅減少。這是未來 CDMO 設施的趨勢方向。",
+   "en": "ISPE calls the isolator a <strong>\"green technology\"</strong> because the background environment can be downgraded, greatly reducing HVAC airflow and energy use. This is the direction future CDMO facilities are heading."
+  },
+  {
+   "zh": "重點提示：去熱原隧道的 HVAC 設計陷阱",
+   "en": "Key Point: HVAC design traps of the depyrogenation tunnel"
+  },
+  {
+   "zh": "去熱原隧道是無菌充填線上最容易被忽略的 HVAC 挑戰：",
+   "en": "The depyrogenation tunnel is the HVAC challenge most easily overlooked on an aseptic filling line:"
+  },
+  {
+   "zh": "<strong>位置特殊</strong>：橫跨兩個不同潔淨等級的房間（洗瓶區 vs 充填區）",
+   "en": "<strong>Unusual location</strong>: it spans two rooms of different cleanliness grades (the vial washing area vs the filling area)"
+  },
+  {
+   "zh": "<strong>間歇運行</strong>：啟動和穩定期間的氣流動態變化會擾亂壓差",
+   "en": "<strong>Intermittent operation</strong>: airflow dynamics during start-up and stabilization disturb the pressure differentials"
+  },
+  {
+   "zh": "<strong>沒有加壓冷進料區</strong>：高溫空氣（可達 350°C）會從隧道前端溢出",
+   "en": "<strong>No pressurized cold infeed zone</strong>: hot air (up to 350°C) can spill out of the tunnel entrance"
+  },
+  {
+   "zh": "<strong>高溫 HEPA 測試</strong>：在 325°C 以上的環境中驗證 HEPA 完整性是極大技術挑戰",
+   "en": "<strong>High-temperature HEPA testing</strong>: verifying HEPA integrity in an environment above 325°C is a major technical challenge"
+  },
+  {
+   "zh": "解決方案的關鍵：設置<strong>與充填線同壓的加壓冷進料區</strong>，並使用<strong>主動壓差控制</strong>來應對隧道啟動期的動態變化。",
+   "en": "The key to the solution: provide a <strong>pressurized cold infeed zone at the same pressure as the filling line</strong>, and use <strong>active pressure differential control</strong> to handle the dynamic changes during tunnel start-up."
+  },
+  {
+   "zh": "重點提示：隔離器操作模式切換對房間壓差的影響",
+   "en": "Key Point: Effect of isolator operating mode changes on room pressure differential"
+  },
+  {
+   "zh": "隔離器有多個操作模式：開放設定（Unidirectional Flow）、CIP、密閉操作、VPHP 去污染、通風吹掃。每次模式切換都可能改變隔離器與房間之間的氣流關係。",
+   "en": "An isolator has several operating modes: open setup (unidirectional flow), CIP, closed operation, VPHP decontamination and aeration purge. Each mode change may alter the airflow relationship between the isolator and the room."
+  },
+  {
+   "zh": "特別注意 <strong>VPHP 通風吹掃階段</strong>：隔離器排出的空氣不再回到房間（因為含有殘餘 H2O2），這會導致房間壓力下降。HVAC 控制必須預先考慮這些過渡狀態。",
+   "en": "Pay particular attention to the <strong>VPHP aeration purge phase</strong>: air exhausted from the isolator is no longer returned to the room (because it contains residual H2O2), which causes the room pressure to drop. HVAC controls must anticipate these transitional states."
+  },
+  {
+   "zh": "實務應用：CDMO 的壓蓋策略決策",
+   "en": "Practical Application: Capping strategy decisions for a CDMO"
+  },
+  {
+   "zh": "EU Annex 1 對壓蓋提供了兩種合規路徑：",
+   "en": "EU Annex 1 provides two compliant routes for capping:"
+  },
+  {
+   "zh": "<strong>方案 A：無菌壓蓋</strong>——使用已滅菌的鋁蓋，在無菌核心區內完成。優點：簡化流程。缺點：設備成本高、鋁屑污染管理困難",
+   "en": "<strong>Option A: Aseptic capping</strong>: sterilized aluminum caps are applied within the aseptic core. Advantage: simpler process. Disadvantages: high equipment cost and difficult management of aluminum particle contamination"
+  },
+  {
+   "zh": "<strong>方案 B：潔淨壓蓋</strong>——在無菌核心區外完成，但必須用 Grade A 氣流保護已加塞的藥瓶，直到鋁蓋壓緊。優點：設備相對簡單。缺點：需要額外的 UFH 和排氣系統",
+   "en": "<strong>Option B: Clean capping</strong>: done outside the aseptic core, but stoppered vials must be protected by Grade A airflow until the cap is crimped. Advantage: relatively simple equipment. Disadvantage: requires an additional UFH and exhaust system"
+  },
+  {
+   "zh": "多數 CDMO 選擇方案 B + UFH 保護，因為它更容易在現有設施中改造實施。",
+   "en": "Most CDMOs choose Option B with UFH protection because it is easier to retrofit into an existing facility."
+  },
+  {
+   "zh": "除塵系統使用壓縮空氣脈衝清潔時，氣流可能短暫反向——這對多房間共用除塵系統有什麼交叉污染風險？如何降低這個風險？",
+   "en": "When a dust extract system uses compressed air pulse cleaning, airflow may briefly reverse. What cross-contamination risk does this create for a dust extract system shared by multiple rooms? How can the risk be reduced?"
+  },
+  {
+   "zh": "隔離器使用「房間空氣」和「專屬 AHU」作為進氣來源，各有什麼優缺點？CDMO 應該如何選擇？",
+   "en": "What are the advantages and disadvantages of an isolator using \"room air\" versus a \"dedicated AHU\" as its air supply? How should a CDMO choose?"
+  },
+  {
+   "zh": "為什麼凍乾機門前方的 UFH 需要做「有操作人員」和「無操作人員」兩種條件下的煙霧測試？",
+   "en": "Why does the UFH in front of a lyophilizer door need smoke testing under both \"with operators\" and \"without operators\" conditions?"
+  },
+  {
+   "zh": "3.16 Medical Devices（醫療器材）",
+   "en": "3.16 Medical Devices"
+  },
+  {
+   "zh": "核心概念：醫療器材 HVAC 遵循「患者風險分級」原則",
+   "en": "Core Concept: Medical device HVAC follows the principle of \"patient risk classification\""
+  },
+  {
+   "zh": "<strong>Medical Device（醫療器材）</strong>：涵蓋範圍極廣，從外用繃帶到植入式心臟瓣膜。HVAC 需求完全取決於器材的<strong>患者風險等級</strong>：",
+   "en": "<strong>Medical Device</strong>: an extremely broad scope, from external bandages to implantable heart valves. HVAC requirements depend entirely on the device's <strong>patient risk level</strong>:"
+  },
+  {
+   "zh": "<strong>不接觸患者 / 僅外部接觸</strong>：HVAC 需求等同包裝區——基本控制即可",
+   "en": "<strong>No patient contact / external contact only</strong>: HVAC requirements equivalent to a packaging area; basic controls are enough"
+  },
+  {
+   "zh": "<strong>內部使用但有終端滅菌</strong>：需要分級環境（如 Grade C/D），因為終端滅菌是最後的安全網",
+   "en": "<strong>Internal use with terminal sterilization</strong>: a classified environment is needed (such as Grade C/D), because terminal sterilization is the final safety net"
+  },
+  {
+   "zh": "<strong>內部使用且無終端滅菌</strong>：必須使用無菌製程標準——等同注射劑充填的 HVAC 要求",
+   "en": "<strong>Internal use without terminal sterilization</strong>: aseptic processing standards must be used, equivalent to the HVAC requirements for injectable filling"
+  },
+  {
+   "zh": "這個分級邏輯完全符合決策層級：<strong>無菌保證（患者安全）永遠是第一優先</strong>。",
+   "en": "This classification logic fully matches the decision hierarchy: <strong>sterility assurance (patient safety) is always the first priority</strong>."
+  },
+  {
+   "zh": "比喻說明：醫療器材的 HVAC 就像餐具的衛生標準",
+   "en": "Analogy: Medical device HVAC is like hygiene standards for tableware"
+  },
+  {
+   "zh": "不同類型的餐具需要不同等級的清潔：",
+   "en": "Different types of tableware need different levels of cleanliness:"
+  },
+  {
+   "zh": "<strong>外帶紙盒（不接觸食物的外包裝）</strong>= 基本衛生即可",
+   "en": "<strong>Takeaway carton (outer packaging that does not touch food)</strong> = basic hygiene is enough"
+  },
+  {
+   "zh": "<strong>盤子（接觸食物但會再洗一次）</strong>= 需要乾淨環境存放，但最後有清洗步驟",
+   "en": "<strong>Plate (touches food but will be washed again)</strong> = needs a clean storage environment, but there is a final washing step"
+  },
+  {
+   "zh": "<strong>手術刀（直接進入人體）</strong>= 必須在無菌條件下處理，容錯率為零",
+   "en": "<strong>Scalpel (goes directly into the body)</strong> = must be handled under sterile conditions, with zero tolerance for error"
+  },
+  {
+   "zh": "重點提示：醫療器材製造的獨特挑戰——金屬/塑料加工",
+   "en": "Key Point: A unique challenge of medical device manufacturing: metal/plastic machining"
+  },
+  {
+   "zh": "與製藥設施不同，醫療器材製造可能涉及金屬切削、塑料焊接等工業加工。這帶來獨特的 HVAC 需求：",
+   "en": "Unlike pharmaceutical facilities, medical device manufacturing may involve industrial processing such as metal cutting and plastic welding. This creates unique HVAC needs:"
+  },
+  {
+   "zh": "<strong>高速除塵</strong>：金屬/塑料碎屑需要 3000-5000 fpm（15-25 m/s）的高傳輸速度才能有效輸送",
+   "en": "<strong>High-velocity dust extraction</strong>: metal/plastic debris needs a high conveying velocity of 3000-5000 fpm (15-25 m/s) to be transported effectively"
+  },
+  {
+   "zh": "<strong>溶劑蒸氣排除</strong>：塑料焊接產生的溶劑蒸氣需要 LEV 排除，且不可回流",
+   "en": "<strong>Solvent vapor removal</strong>: solvent vapors from plastic welding need to be removed by LEV and must not be recirculated"
+  },
+  {
+   "zh": "<strong>壓力泡氣閘</strong>：使用溶劑的區域建議採用壓力泡氣閘，防止易燃蒸氣擴散到建築其他區域",
+   "en": "<strong>Pressure bubble airlock</strong>: pressure bubble airlocks are recommended for areas using solvents, to prevent flammable vapors spreading to other parts of the building"
+  },
+  {
+   "zh": "一個植入式骨科器材（如人工關節）的組裝線應該用什麼等級的 HVAC？如果該器材會在下游進行伽馬射線滅菌呢？",
+   "en": "What grade of HVAC should an assembly line for an implantable orthopedic device (such as an artificial joint) use? What if the device will undergo downstream gamma sterilization?"
+  },
+  {
+   "zh": "為什麼醫療器材製造中 LEV 的排氣不可以回流到 AHU？這與 OSD 設施的規定有什麼相似之處？",
+   "en": "Why must LEV exhaust in medical device manufacturing not be recirculated to the AHU? How is this similar to the rule for OSD facilities?"
+  },
+  {
+   "zh": "本節重點回顧 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "<strong>OSD 非強效</strong>：CNC 環境、MERV 7+13/14 過濾、氣閘隔離、LEV 粉塵控制。多產品併行需雙重 HEPA 和壓力氣閘",
+   "en": "<strong>OSD non-potent</strong>: CNC environment, MERV 7+13/14 filtration, airlock isolation, LEV dust control. Concurrent multi-product needs double HEPA and pressure airlocks"
+  },
+  {
+   "zh": "<strong>OSD 強效</strong>：密閉容器為首選，100% 直排或雙重 HEPA，BIBO 過濾器，聲光警報。操作員保護與產品保護同等重要",
+   "en": "<strong>OSD potent</strong>: closed containment is the first choice, 100% once-through air or double HEPA, BIBO filters, audible/visual alarms. Operator protection is as important as product protection"
+  },
+  {
+   "zh": "<strong>無菌製程</strong>：終端 HEPA（天花板安裝）、壓差串聯、單向氣流 0.45 m/s、24/7 運行、304SS 風管。ISPE 的最高等級 HVAC 要求",
+   "en": "<strong>Aseptic processing</strong>: terminal HEPA (ceiling-mounted), pressure cascade, unidirectional airflow at 0.45 m/s, 24/7 operation, 304SS ductwork. The highest-level HVAC requirements in ISPE"
+  },
+  {
+   "zh": "<strong>無菌強效粉末</strong>：隔離器 + 專屬 HVAC 解決「正壓 vs 負壓」矛盾。Blow-through AHU 用於低濕控制",
+   "en": "<strong>Aseptic potent powder</strong>: isolator + dedicated HVAC resolves the \"positive vs negative pressure\" conflict. Blow-through AHU is used for low-humidity control"
+  },
+  {
+   "zh": "<strong>包裝/標籤</strong>：初級包裝等同製造區標準；二級包裝僅需 CNC + 舒適條件",
+   "en": "<strong>Packaging/labeling</strong>: primary packaging is equivalent to the manufacturing area standard; secondary packaging needs only CNC + comfort conditions"
+  },
+  {
+   "zh": "<strong>實驗室</strong>：VAV 系統 + 排煙櫃整合是核心。化學實驗室負壓、潔淨實驗室正壓。最低 6 AC/hr，建議 8-12 AC/hr",
+   "en": "<strong>Laboratories</strong>: VAV system + fume hood integration is the core. Chemical laboratories negative, clean laboratories positive. Minimum 6 AC/hr, recommended 8-12 AC/hr"
+  },
+  {
+   "zh": "<strong>取樣/秤量</strong>：HVAC 等級應匹配下游製程需求。下吹式工作台提供操作員防護",
+   "en": "<strong>Sampling/dispensing</strong>: HVAC grade should match the downstream process needs. Downflow booths provide operator protection"
+  },
+  {
+   "zh": "<strong>倉庫</strong>：USP 受控室溫 15-30°C / MKT &lt; 25°C。溫度分佈圖是基本要求。生物製劑需要冷鏈",
+   "en": "<strong>Warehouse</strong>: USP controlled room temperature 15-30°C / MKT &lt; 25°C. Temperature mapping is a basic requirement. Biologics need a cold chain"
+  },
+  {
+   "zh": "<strong>製程設備整合</strong>：隔離器是「綠色技術」，可降低背景環境等級。去熱原隧道、壓蓋、凍乾機都有特殊 HVAC 考量",
+   "en": "<strong>Process equipment integration</strong>: the isolator is a \"green technology\" that allows the background environment grade to be lowered. Depyrogenation tunnels, capping and lyophilizers all have special HVAC considerations"
+  },
+  {
+   "zh": "<strong>醫療器材</strong>：HVAC 跟隨患者風險等級——從包裝區標準到無菌製程標準，取決於器材的預期用途和下游滅菌方式",
+   "en": "<strong>Medical devices</strong>: HVAC follows patient risk level, from packaging area standards to aseptic processing standards, depending on the device's intended use and downstream sterilization method"
+  }
+ ]
+}

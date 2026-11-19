@@ -1,0 +1,645 @@
+{
+ "source": "section-02-spec-design-iq.html",
+ "blocks": [
+  {
+   "zh": "規格書、設計與安裝確效 | Section 02",
+   "en": "Specifications, Design and Installation Qualification | Section 02"
+  },
+  {
+   "zh": "Table of Contents  /  本節目錄",
+   "en": "Table of Contents"
+  },
+  {
+   "zh": "<a href=\"#obj\">Learning Objectives 學習目標</a>\n<a href=\"#spec-hier\">Specification Hierarchy 規格書層級</a>\n<a href=\"#sec54-net\">5.4.1 Networks 網路</a>\n<a href=\"#sec54-server\">5.4.2 Servers &amp; OS 伺服器</a>\n<a href=\"#sec54-client\">5.4.3 Clients 客戶端</a>\n<a href=\"#sec54-dc\">5.4.5 Data Centers 資料中心</a>\n<a href=\"#sec55-risk\">5.5 Risk &amp; Test Planning 風險與測試規劃</a>\n<a href=\"#gamp-cat-table\">GAMP Category Table 測試類別表</a>\n<a href=\"#sec56-supplier\">5.6.1 Supplier Evaluation 供應商評估</a>\n<a href=\"#sec56-iq\">5.6.2 Installation &amp; IQ 安裝與IQ</a>\n<a href=\"#iq-activities\">IQ Activities Table IQ活動表</a>\n<a href=\"#iq-checklist\">IQ Checklist IQ查核表</a>",
+   "en": "<a href=\"#obj\">Learning Objectives</a>\n<a href=\"#spec-hier\">Specification Hierarchy</a>\n<a href=\"#sec54-net\">5.4.1 Networks</a>\n<a href=\"#sec54-server\">5.4.2 Servers &amp; OS</a>\n<a href=\"#sec54-client\">5.4.3 Clients</a>\n<a href=\"#sec54-dc\">5.4.5 Data Centers</a>\n<a href=\"#sec55-risk\">5.5 Risk &amp; Test Planning</a>\n<a href=\"#gamp-cat-table\">GAMP Category Table</a>\n<a href=\"#sec56-supplier\">5.6.1 Supplier Evaluation</a>\n<a href=\"#sec56-iq\">5.6.2 Installation &amp; IQ</a>\n<a href=\"#iq-activities\">IQ Activities Table</a>\n<a href=\"#iq-checklist\">IQ Checklist</a>"
+  },
+  {
+   "zh": "Learning Objectives  /  學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "完成本節後，您將能夠：",
+   "en": "After completing this section, you will be able to:"
+  },
+  {
+   "zh": "說明 IT 基礎設施的規格書層級（URS → FS → DS）",
+   "en": "Explain the specification hierarchy for IT infrastructure (URS → FS → DS)"
+  },
+  {
+   "zh": "描述網路、伺服器、作業系統、儲存與客戶端的設計考量",
+   "en": "Describe design considerations for networks, servers, operating systems, storage and clients"
+  },
+  {
+   "zh": "運用 GAMP 類別決定所需的確效測試程度",
+   "en": "Apply GAMP categories to determine the required level of qualification testing"
+  },
+  {
+   "zh": "根據風險規劃 IT 平台組件的確效測試策略",
+   "en": "Plan a risk-based qualification testing strategy for IT platform components"
+  },
+  {
+   "zh": "針對製藥 IT 基礎設施執行安裝確效（IQ）",
+   "en": "Perform installation qualification (IQ) for pharmaceutical IT infrastructure"
+  },
+  {
+   "zh": "使用「核准 / 有條件核准 / 未核准」框架評估供應商",
+   "en": "Evaluate suppliers using the \"Approved / Conditionally Approved / Not Approved\" framework"
+  },
+  {
+   "zh": "準備 IQ 文件：組態項目清單、拓樸圖、環境記錄",
+   "en": "Prepare IQ documentation: configuration items list, topology diagrams and environmental records"
+  },
+  {
+   "zh": "IT 基礎設施規格書層級 — From User Needs to Design",
+   "en": "IT Infrastructure Specification Hierarchy — From User Needs to Design"
+  },
+  {
+   "zh": "Specification Hierarchy Diagram  /  規格書層級圖",
+   "en": "Specification Hierarchy Diagram"
+  },
+  {
+   "zh": "User Requirement Specification (URS)\n                <span class=\"hier-sub\">使用者需求規格書｜WHAT the system must do</span>",
+   "en": "User Requirement Specification (URS)\n                <span class=\"hier-sub\">WHAT the system must do</span>"
+  },
+  {
+   "zh": "Functional Specification (FS)\n                <span class=\"hier-sub\">功能規格書｜HOW the system behaves</span>",
+   "en": "Functional Specification (FS)\n                <span class=\"hier-sub\">HOW the system behaves</span>"
+  },
+  {
+   "zh": "Design Specification (DS)\n                <span class=\"hier-sub\">設計規格書｜HOW the system is built</span>",
+   "en": "Design Specification (DS)\n                <span class=\"hier-sub\">HOW the system is built</span>"
+  },
+  {
+   "zh": "Configuration Items List (CIL)\n                <span class=\"hier-sub\">組態項目清單｜Verified parameters &amp; versions</span>",
+   "en": "Configuration Items List (CIL)\n                <span class=\"hier-sub\">Verified parameters &amp; versions</span>"
+  },
+  {
+   "zh": "⚠ Key Principle — 核心原則",
+   "en": "⚠ Key Principle"
+  },
+  {
+   "zh": "設計規格書必須依據已核准的需求產出，並在確效過程中加以驗證。從 URS 到 IQ/OQ 記錄的可追溯性是強制性的。",
+   "en": "The design specification must be derived from approved requirements and verified during qualification. Traceability from the URS through to the IQ/OQ records is mandatory."
+  },
+  {
+   "zh": "Pharma IT — Why Specifications Matter  /  規格書的製藥意義",
+   "en": "Pharma IT — Why Specifications Matter"
+  },
+  {
+   "zh": "URS — User Requirement Specification  /  使用者需求規格書",
+   "en": "URS — User Requirement Specification"
+  },
+  {
+   "zh": "以業務、法規和 GxP 需求為核心，可重複使用於同類平台元件",
+   "en": "Centered on business, regulatory and GxP requirements; can be reused across similar platform components"
+  },
+  {
+   "zh": "DS — Design Specification  /  設計規格書",
+   "en": "DS — Design Specification"
+  },
+  {
+   "zh": "依核准 FS/URS 產出，描述實際技術實施方式，作為採購與 IQ 依據",
+   "en": "Derived from the approved FS/URS; describes the actual technical implementation and serves as the basis for procurement and IQ"
+  },
+  {
+   "zh": "💡 Real-World Analogy  /  生活比喻",
+   "en": "💡 Real-World Analogy"
+  },
+  {
+   "zh": "把 URS 想成建築師的需求書（「我們需要 ISO 5 潔淨室」），FS 是建築平面圖，DS 則是工程詳圖，包含精確的管徑與風速參數。",
+   "en": "Think of the URS as the architect's brief (\"we need an ISO 5 cleanroom\"), the FS as the floor plan, and the DS as the detailed engineering drawings, including exact pipe diameters and airflow parameters."
+  },
+  {
+   "zh": "Template Recommendation  /  建議使用模板",
+   "en": "Template Recommendation"
+  },
+  {
+   "zh": "GAMP 建議使用模板收集平台需求，包含來自應用規格的 GxP 相關操作設定，以確保類似基礎設施元件文件的一致性。",
+   "en": "GAMP recommends using a template to collect platform requirements, including GxP-relevant operational settings taken from the application specification, to ensure consistent documentation of similar infrastructure components."
+  },
+  {
+   "zh": "✍ Practice Questions  /  練習思考",
+   "en": "✍ Practice Questions"
+  },
+  {
+   "zh": "Your company is deploying a new Oracle database server for a validated LIMS. Which document should come first — URS or DS? What content belongs in each?<br/><span style=\"color:#4a5568;font-size:0.88rem;\">您的公司正在為已驗證的 LIMS 部署新的 Oracle 資料庫伺服器。應先產出 URS 還是 DS？各文件應包含哪些內容？</span>",
+   "en": "Your company is deploying a new Oracle database server for a validated LIMS. Which document should come first — URS or DS? What content belongs in each?<br/><span style=\"color:#4a5568;font-size:0.88rem;\"></span>"
+  },
+  {
+   "zh": "An application team wants to add custom OS registry settings not found in the generic platform DS. What process must be followed?<br/><span style=\"color:#4a5568;font-size:0.88rem;\">應用程式團隊想新增通用平台 DS 中未記載的自訂 OS 登錄設定，必須遵循什麼程序？</span>",
+   "en": "An application team wants to add custom OS registry settings not found in the generic platform DS. What process must be followed?<br/><span style=\"color:#4a5568;font-size:0.88rem;\"></span>"
+  },
+  {
+   "zh": "Why is traceability from URS to IQ records important during a regulatory inspection?<br/><span style=\"color:#4a5568;font-size:0.88rem;\">為什麼在法規稽查中，從 URS 到 IQ 記錄的可追溯性很重要？</span>",
+   "en": "Why is traceability from URS to IQ records important during a regulatory inspection?<br/><span style=\"color:#4a5568;font-size:0.88rem;\"></span>"
+  },
+  {
+   "zh": "網路規格書與設計 | Topology, Layers, and Segmentation",
+   "en": "Network Specification and Design | Topology, Layers, and Segmentation"
+  },
+  {
+   "zh": "Network Design Specification Objectives  /  網路設計規格書目的",
+   "en": "Network Design Specification Objectives"
+  },
+  {
+   "zh": "OSI Model — Four-Layer Qualification Framework  /  四層確效框架",
+   "en": "OSI Model — Four-Layer Qualification Framework"
+  },
+  {
+   "zh": "Topology Design Considerations  /  拓樸設計考量",
+   "en": "Topology Design Considerations"
+  },
+  {
+   "zh": "Network IQ Focus Areas  /  網路 IQ 重點領域",
+   "en": "Network IQ Focus Areas"
+  },
+  {
+   "zh": "GxP Network Segmentation  /  GxP 網路分段",
+   "en": "GxP Network Segmentation"
+  },
+  {
+   "zh": "GxP 法規要求：受 GxP 管制的網路必須與行政網路分隔，以防止未授權存取、保護受管制數據，並確保稽查軌跡完整性。",
+   "en": "GxP regulatory requirement: GxP-regulated networks must be segregated from administrative networks to prevent unauthorized access, protect regulated data and ensure audit trail integrity."
+  },
+  {
+   "zh": "Topology Diagram Contents  /  拓樸圖應包含",
+   "en": "Topology Diagram Contents"
+  },
+  {
+   "zh": "網路拓樸圖就像潔淨室分類圖：標示哪些區域是 ISO Class 5（GxP 關鍵）與 Class 8，以及它們之間的物理邊界。就像訪客不能自由進入灌裝室一樣，行政流量也不能自由進入 GxP 網路區段。",
+   "en": "A network topology diagram is like a cleanroom classification plan: it shows which areas are ISO Class 5 (GxP-critical) and which are Class 8, and the physical boundaries between them. Just as visitors cannot walk freely into the filling room, administrative traffic must not pass freely into the GxP network segment."
+  },
+  {
+   "zh": "SNMP &amp; Managed Networks  /  SNMP 與受管理網路",
+   "en": "SNMP &amp; Managed Networks"
+  },
+  {
+   "zh": "SNMP 讓網路成為「受管理網路」，支援對網路設備特性、安裝狀態及設定的電腦輔助追蹤，是長期維護 IQ 記錄的關鍵。",
+   "en": "SNMP makes the network a \"managed network\", supporting computer-assisted tracking of network device characteristics, installation status and configuration, which is key to maintaining IQ records over the long term."
+  },
+  {
+   "zh": "A manufacturing site connects its MES (Manufacturing Execution System) to both the plant floor network and the corporate IT network. What network design controls should be in place, and what must be documented in the topology diagram?<br/><span style=\"color:#4a5568;font-size:0.88rem;\">製造現場的 MES 連接廠區網路和企業 IT 網路，應有哪些網路設計控制措施，且拓樸圖中必須記錄哪些內容？</span>",
+   "en": "A manufacturing site connects its MES (Manufacturing Execution System) to both the plant floor network and the corporate IT network. What network design controls should be in place, and what must be documented in the topology diagram?<br/><span style=\"color:#4a5568;font-size:0.88rem;\"></span>"
+  },
+  {
+   "zh": "During a regulatory inspection, an investigator asks to see your network topology diagram. What should it show, and what level of detail is appropriate?<br/><span style=\"color:#4a5568;font-size:0.88rem;\">法規稽查員要求查看您的網路拓樸圖，應顯示什麼，哪種詳細程度是合適的？</span>",
+   "en": "During a regulatory inspection, an investigator asks to see your network topology diagram. What should it show, and what level of detail is appropriate?<br/><span style=\"color:#4a5568;font-size:0.88rem;\"></span>"
+  },
+  {
+   "zh": "Your company leases a WAN line from a carrier for inter-site LIMS data replication. What additional assessment is required beyond the internal topology design?<br/><span style=\"color:#4a5568;font-size:0.88rem;\">您的公司租用電信業者的廣域網路線路進行跨站點 LIMS 數據複製，除內部拓樸設計之外還需要哪些額外評估？</span>",
+   "en": "Your company leases a WAN line from a carrier for inter-site LIMS data replication. What additional assessment is required beyond the internal topology design?<br/><span style=\"color:#4a5568;font-size:0.88rem;\"></span>"
+  },
+  {
+   "zh": "伺服器、作業系統與儲存系統 | Hardware Specifications and OS Parameters",
+   "en": "Servers, Operating Systems and Storage Systems | Hardware Specifications and OS Parameters"
+  },
+  {
+   "zh": "Server Hardware Specification  /  伺服器硬體規格",
+   "en": "Server Hardware Specification"
+  },
+  {
+   "zh": "Operating System Parameter Categories  /  OS 參數類別",
+   "en": "Operating System Parameter Categories"
+  },
+  {
+   "zh": "System Time Management  /  系統時間管理",
+   "en": "System Time Management"
+  },
+  {
+   "zh": "Storage Systems — SAN vs. NAS  /  儲存系統",
+   "en": "Storage Systems — SAN vs. NAS"
+  },
+  {
+   "zh": "Pharma IT Commentary  /  製藥實務解析",
+   "en": "Pharma IT Commentary"
+  },
+  {
+   "zh": "Why System Time Is a GxP Critical Parameter  /  系統時間為何是 GxP 關鍵參數",
+   "en": "Why System Time Is a GxP Critical Parameter"
+  },
+  {
+   "zh": "21 CFR Part 11 與 EU Annex 11 要求電子記錄包含準確可靠的日期/時間戳記。時間錯誤的伺服器可能使批次記錄、稽查軌跡和電子簽名失效。FDA 稽查員會定期檢查 NTP 設定和時間同步記錄。",
+   "en": "21 CFR Part 11 and EU Annex 11 require electronic records to contain accurate and reliable date/time stamps. A server with the wrong time can invalidate batch records, audit trails and electronic signatures. FDA inspectors routinely check NTP settings and time synchronization records."
+  },
+  {
+   "zh": "Configuration Items List (CIL)  /  組態項目清單",
+   "en": "Configuration Items List (CIL)"
+  },
+  {
+   "zh": "💡 The \"Drug Master File\" of IT  /  IT 的藥物主檔案",
+   "en": "💡 The \"Drug Master File\" of IT"
+  },
+  {
+   "zh": "伺服器的 CIL 就像製藥原料的藥物主檔案（DMF）——精確記錄伺服器的所有「組成」，使其可以完全相同地重建。CIL 讓您的團隊能夠將伺服器重建或複製到完全相同的驗證過組態。",
+   "en": "A server's CIL is like a Drug Master File (DMF) for a pharmaceutical raw material: it records everything the server is \"made of\" precisely enough that it can be rebuilt identically. The CIL lets your team rebuild or replicate a server to exactly the same validated configuration."
+  },
+  {
+   "zh": "Peripheral Equipment  /  周邊設備",
+   "en": "Peripheral Equipment"
+  },
+  {
+   "zh": "周邊設備通常是具有嵌入式韌體的標準化商業現成品，應用規格不應偏離預設設定，除非有具體要求、理由與文件記錄。",
+   "en": "Peripheral equipment is typically standardized commercial off-the-shelf product with embedded firmware. The application specification should not deviate from default settings unless there is a specific requirement, a justification and documentation."
+  },
+  {
+   "zh": "Your validated Windows Server 2022 hosts a GxP batch record application. The OS was installed with the manufacturer default time zone (UTC). The local site operates in UTC+8 (Taiwan). What specification and IQ actions are required?<br/><span style=\"color:#4a5568;font-size:0.88rem;\">您的已驗證 Windows Server 2022 主機執行 GxP 批次記錄應用程式，OS 安裝時預設時區為 UTC，但現場在 UTC+8（台灣）。需要哪些規格書和 IQ 行動？</span>",
+   "en": "Your validated Windows Server 2022 hosts a GxP batch record application. The OS was installed with the manufacturer default time zone (UTC). The local site operates in UTC+8 (Taiwan). What specification and IQ actions are required?<br/><span style=\"color:#4a5568;font-size:0.88rem;\"></span>"
+  },
+  {
+   "zh": "A site wants to add a second identical Oracle DB server for high availability. What documentation approach can maximize efficiency while maintaining compliance?<br/><span style=\"color:#4a5568;font-size:0.88rem;\">現場想要新增第二台相同的 Oracle DB 伺服器以實現高可用性，哪種文件方式可以在維持合規的同時最大化效率？</span>",
+   "en": "A site wants to add a second identical Oracle DB server for high availability. What documentation approach can maximize efficiency while maintaining compliance?<br/><span style=\"color:#4a5568;font-size:0.88rem;\"></span>"
+  },
+  {
+   "zh": "During IQ, you discover the server's BIOS version differs from the design specification. What is the correct procedure?<br/><span style=\"color:#4a5568;font-size:0.88rem;\">IQ 期間您發現伺服器的 BIOS 版本與設計規格書不符，正確的處理程序是什麼？</span>",
+   "en": "During IQ, you discover the server's BIOS version differs from the design specification. What is the correct procedure?<br/><span style=\"color:#4a5568;font-size:0.88rem;\"></span>"
+  },
+  {
+   "zh": "客戶端、支援工具與資料中心 | Classification and Physical Infrastructure",
+   "en": "Clients, Support Tools and Data Centers | Classification and Physical Infrastructure"
+  },
+  {
+   "zh": "Client Classification Framework  /  客戶端分類框架",
+   "en": "Client Classification Framework"
+  },
+  {
+   "zh": "5.4.4 Support and Diagnostic Tools  /  支援與診斷工具",
+   "en": "5.4.4 Support and Diagnostic Tools"
+  },
+  {
+   "zh": "5.4.5 Data Centers / Server Rooms  /  資料中心",
+   "en": "5.4.5 Data Centers / Server Rooms"
+  },
+  {
+   "zh": "Practical Commentary  /  實務解析",
+   "en": "Practical Commentary"
+  },
+  {
+   "zh": "Image-Based Deployment  /  映像部署策略",
+   "en": "Image-Based Deployment"
+  },
+  {
+   "zh": "為了最大化控制和效率，GAMP 建議準備並維護已驗證的客戶端映像或安裝腳本，在透過集中式分發進行大規模部署前，先在單一標準客戶端實例上測試。",
+   "en": "To maximize control and efficiency, GAMP recommends preparing and maintaining a validated client image or installation script, and testing it on a single standard client instance before large-scale deployment through centralized distribution."
+  },
+  {
+   "zh": "GxP Client — Special Controls  /  GxP 客戶端特殊控制",
+   "en": "GxP Client — Special Controls"
+  },
+  {
+   "zh": "💡 Data Center as a \"GMP Suite\"  /  資料中心是「GMP 套間」",
+   "en": "💡 Data Center as a \"GMP Suite\""
+  },
+  {
+   "zh": "把資料中心想成無菌製造套間：兩者都需要受控存取（穿衣間 = 門禁 + 生物辨識）、環境監控（溫度/濕度 = 冷卻 + UPS）、與外部污染的隔離（氣閘 = 防火牆），以及記錄進出和操作的稽查軌跡。",
+   "en": "Think of a data center as a sterile manufacturing suite: both need controlled access (gowning room = access control + biometrics), environmental monitoring (temperature/humidity = cooling + UPS), isolation from external contamination (airlock = firewall), and an audit trail recording entry and operations."
+  },
+  {
+   "zh": "Dual/Triple Data Centers  /  雙/三重資料中心",
+   "en": "Dual/Triple Data Centers"
+  },
+  {
+   "zh": "部分公司選擇建立雙重或三重資料中心以確保可用性，支援業務持續計畫（BCP）和災難恢復（DR）需求，對於數據損失可能影響產品品質和患者安全的 GxP 系統尤為重要。",
+   "en": "Some companies choose dual or triple data centers to ensure availability and to support business continuity planning (BCP) and disaster recovery (DR) needs. This is especially important for GxP systems where data loss could affect product quality and patient safety."
+  },
+  {
+   "zh": "A QC analyst's workstation runs both a validated chromatography data system (CDS) and an unrestricted web browser. What client classification should apply, and how should the workstation be managed?<br/><span style=\"color:#4a5568;font-size:0.88rem;\">QC 分析師的工作站同時執行已驗證的色譜數據系統（CDS）和不受限制的網頁瀏覽器，應適用哪種客戶端分類？應如何管理？</span>",
+   "en": "A QC analyst's workstation runs both a validated chromatography data system (CDS) and an unrestricted web browser. What client classification should apply, and how should the workstation be managed?<br/><span style=\"color:#4a5568;font-size:0.88rem;\"></span>"
+  },
+  {
+   "zh": "Your data center uses a network vulnerability scanning tool. What three things must be verified before using this tool on GxP infrastructure?<br/><span style=\"color:#4a5568;font-size:0.88rem;\">您的資料中心使用網路漏洞掃描工具，在 GxP 基礎設施上使用此工具之前必須驗證哪三件事？</span>",
+   "en": "Your data center uses a network vulnerability scanning tool. What three things must be verified before using this tool on GxP infrastructure?<br/><span style=\"color:#4a5568;font-size:0.88rem;\"></span>"
+  },
+  {
+   "zh": "What UPS capacity documentation would an FDA inspector expect to see for a data center hosting a validated batch record system?<br/><span style=\"color:#4a5568;font-size:0.88rem;\">對於託管已驗證批次記錄系統的資料中心，FDA 稽查員期望看到哪些 UPS 容量文件？</span>",
+   "en": "What UPS capacity documentation would an FDA inspector expect to see for a data center hosting a validated batch record system?<br/><span style=\"color:#4a5568;font-size:0.88rem;\"></span>"
+  },
+  {
+   "zh": "風險評估與確效測試規劃 | GAMP-Based Approach to Qualification Scope",
+   "en": "Risk Assessment and Qualification Test Planning | GAMP-Based Approach to Qualification Scope"
+  },
+  {
+   "zh": "Risk Assessment Process  /  風險評估流程",
+   "en": "Risk Assessment Process"
+  },
+  {
+   "zh": "\"A benefit of using pre-qualified building blocks with standard qualification packages is that following the initial qualification only subsequent <strong>changes</strong> need be assessed for impact and risk.\"\n            <br/><br/>\n            「使用具有標準確效套件的預先確效建構模塊的好處是，初始確效完成後，只需評估後續<strong>變更</strong>的影響和風險。」",
+   "en": "\"A benefit of using pre-qualified building blocks with standard qualification packages is that following the initial qualification only subsequent <strong>changes</strong> need be assessed for impact and risk.\"\n            <br/><br/>\n            \"A benefit of using pre-qualified building blocks with standard qualification packages is that, following the initial qualification, only subsequent <strong>changes</strong> need to be assessed for impact and risk.\""
+  },
+  {
+   "zh": "GAMP Category-Based Test Planning  /  GAMP 類別測試規劃",
+   "en": "GAMP Category-Based Test Planning"
+  },
+  {
+   "zh": "Building Block Qualification Strategy  /  建構模塊確效策略",
+   "en": "Building Block Qualification Strategy"
+  },
+  {
+   "zh": "一旦建構模塊（如標準 Windows Server 2022 映像）完成確效，後續複製品的確效重點僅在於驗證複製是否正確產生，大幅降低相同後續部署的測試負擔。",
+   "en": "Once a building block (such as a standard Windows Server 2022 image) has been qualified, qualification of subsequent copies focuses only on verifying that the copy was produced correctly, greatly reducing the testing burden for identical later deployments."
+  },
+  {
+   "zh": "Risk Assessment Outputs  /  風險評估產出",
+   "en": "Risk Assessment Outputs"
+  },
+  {
+   "zh": "💡 Risk = Probability × Impact  /  風險 = 機率 × 影響",
+   "en": "💡 Risk = Probability × Impact"
+  },
+  {
+   "zh": "在製程驗證中，我們不會平等測試所有參數，而是將測試工作集中在最直接影響關鍵品質屬性（CQA）的關鍵製程參數（CPP）上。IT 基礎設施同理：風險評估識別最需要嚴格確效測試的「IT CPP」（如 NTP 同步、存取控制、稽查軌跡設定）。",
+   "en": "In process validation, we do not test all parameters equally; we concentrate testing effort on the critical process parameters (CPPs) that most directly affect critical quality attributes (CQAs). The same applies to IT infrastructure: the risk assessment identifies the \"IT CPPs\" that need the most rigorous qualification testing (such as NTP synchronization, access control and audit trail settings)."
+  },
+  {
+   "zh": "You are installing 50 identical network switches across a production facility. All are the same model, firmware version, and configuration template. How does the building block concept change your qualification approach?<br/><span style=\"color:#4a5568;font-size:0.88rem;\">您在生產設施中安裝 50 台相同的網路交換器，型號、韌體版本和設定模板均相同。建構模塊概念如何改變您的確效方法？</span>",
+   "en": "You are installing 50 identical network switches across a production facility. All are the same model, firmware version, and configuration template. How does the building block concept change your qualification approach?<br/><span style=\"color:#4a5568;font-size:0.88rem;\"></span>"
+  },
+  {
+   "zh": "What documentation must be produced as an output of the risk assessment phase before proceeding to test scripting?<br/><span style=\"color:#4a5568;font-size:0.88rem;\">在進入測試腳本編寫之前，風險評估階段必須產出哪些文件？</span>",
+   "en": "What documentation must be produced as an output of the risk assessment phase before proceeding to test scripting?<br/><span style=\"color:#4a5568;font-size:0.88rem;\"></span>"
+  },
+  {
+   "zh": "A monitoring tool automatically checks server performance every 5 minutes and logs to a database. Does this tool need to be qualified? What risk factors should guide your decision?<br/><span style=\"color:#4a5568;font-size:0.88rem;\">一個監控工具每 5 分鐘自動檢查伺服器效能並記錄到資料庫，此工具是否需要被確效？哪些風險因素應指導您的決定？</span>",
+   "en": "A monitoring tool automatically checks server performance every 5 minutes and logs to a database. Does this tool need to be qualified? What risk factors should guide your decision?<br/><span style=\"color:#4a5568;font-size:0.88rem;\"></span>"
+  },
+  {
+   "zh": "GAMP Testing Category Decision Table  /  GAMP 測試類別決策表",
+   "en": "GAMP Testing Category Decision Table"
+  },
+  {
+   "zh": "⚠ How to Use This Table  /  如何使用本表",
+   "en": "⚠ How to Use This Table"
+  },
+  {
+   "zh": "本決策表僅為指導方針，實際分類必須由您現場的風險評估決定。單一元件的不同參數可能需要不同的測試等級（如路由器的實體安裝 = 確認測試；其 GxP 網路分段設定 = 信心測試或完整測試）。務必記錄選擇測試等級的理由。",
+   "en": "This decision table is guidance only; the actual classification must be determined by the risk assessment at your site. Different parameters of a single component may need different test levels (for example, the physical installation of a router = verification testing; its GxP network segmentation settings = confidence testing or full testing). Always document the rationale for the test level selected."
+  },
+  {
+   "zh": "採購與供應商評估 | Approved / Conditionally Approved / Not Approved",
+   "en": "Procurement and Supplier Evaluation | Approved / Conditionally Approved / Not Approved"
+  },
+  {
+   "zh": "Procurement Principles  /  採購原則",
+   "en": "Procurement Principles"
+  },
+  {
+   "zh": "Supplier Classification  /  供應商分類",
+   "en": "Supplier Classification"
+  },
+  {
+   "zh": "✅ Approved  /  核准",
+   "en": "✅ Approved"
+  },
+  {
+   "zh": "交貨記錄或收集的資訊令人滿意。注意：初次稽查後不一定立即給予此分類，因為往往有需要糾正的問題，視問題情況而定，這種情況不一定是問題。",
+   "en": "Delivery records or the information collected are satisfactory. Note: this classification is not necessarily given immediately after the first audit, because there are often issues to be corrected; depending on the circumstances, this is not necessarily a problem."
+  },
+  {
+   "zh": "⚠ Conditionally Approved  /  有條件核准",
+   "en": "⚠ Conditionally Approved"
+  },
+  {
+   "zh": "交貨記錄或收集的資訊未完全令人滿意，緩解措施可能包括更密切的後續追蹤、更密集的測試和見證。",
+   "en": "Delivery records or the information collected are not fully satisfactory. Mitigation may include closer follow-up, more intensive testing and witnessing."
+  },
+  {
+   "zh": "❌ Not Approved  /  未核准",
+   "en": "❌ Not Approved"
+  },
+  {
+   "zh": "資訊或交貨記錄不足或不令人滿意，在解決問題之前不允許從此供應商採購 GxP 相關物品。",
+   "en": "Information or delivery records are insufficient or unsatisfactory. Procurement of GxP-relevant items from this supplier is not permitted until the issues are resolved."
+  },
+  {
+   "zh": "Supplier Assessment in Pharma IT Practice  /  製藥 IT 供應商評估實務",
+   "en": "Supplier Assessment in Pharma IT Practice"
+  },
+  {
+   "zh": "COTS vs. Custom Procurement Strategy  /  COTS 與訂製採購策略",
+   "en": "COTS vs. Custom Procurement Strategy"
+  },
+  {
+   "zh": "<strong>COTS（商業現成品）：</strong>標準基礎設施元件的首選。由於供應商認證、測試證據和市場歷史均可取得，供應商評估負擔較低。",
+   "en": "<strong>COTS (commercial off-the-shelf):</strong> The preferred choice for standard infrastructure components. The supplier assessment burden is lower because supplier certifications, test evidence and market history are available."
+  },
+  {
+   "zh": "<strong>訂製品：</strong>需要更高的供應商評估要求，強烈建議進行出廠驗收測試（FAT）。",
+   "en": "<strong>Custom products:</strong> Require more demanding supplier assessment, and a factory acceptance test (FAT) is strongly recommended."
+  },
+  {
+   "zh": "Supplier Assessment Criteria  /  供應商評估標準",
+   "en": "Supplier Assessment Criteria"
+  },
+  {
+   "zh": "認定 GxP IT 供應商類似於認定 API 製造商：不只是購買使用，而是稽查其設施、審查品質系統、檢查批次記錄（等同於測試報告），並在首次使用前核准。對 IT 供應商而言，「設施」= 其開發和支援流程；「批次記錄」= 軟體開發文件和測試證據。",
+   "en": "Qualifying a GxP IT supplier is similar to qualifying an API manufacturer: you do not simply buy and use; you audit their facilities, review their quality system, examine their batch records (equivalent to test reports) and approve them before first use. For an IT supplier, the \"facility\" = their development and support processes, and the \"batch record\" = software development documentation and test evidence."
+  },
+  {
+   "zh": "Factory Acceptance Test (FAT)  /  出廠驗收測試",
+   "en": "Factory Acceptance Test (FAT)"
+  },
+  {
+   "zh": "Your site is procuring a new Electronic Batch Record (EBR) system from a small software vendor. What supplier assessment steps should be completed before signing the purchase contract?<br/><span style=\"color:#4a5568;font-size:0.88rem;\">您的現場正在從一家小型軟體供應商採購新的電子批次記錄（EBR）系統，在簽署採購合約之前應完成哪些供應商評估步驟？</span>",
+   "en": "Your site is procuring a new Electronic Batch Record (EBR) system from a small software vendor. What supplier assessment steps should be completed before signing the purchase contract?<br/><span style=\"color:#4a5568;font-size:0.88rem;\"></span>"
+  },
+  {
+   "zh": "A hardware vendor is classified as \"Conditionally Approved.\" What additional controls must be implemented during the procurement and installation process?<br/><span style=\"color:#4a5568;font-size:0.88rem;\">一家硬體供應商被分類為「有條件核准」，在採購和安裝過程中必須實施哪些額外控制措施？</span>",
+   "en": "A hardware vendor is classified as \"Conditionally Approved.\" What additional controls must be implemented during the procurement and installation process?<br/><span style=\"color:#4a5568;font-size:0.88rem;\"></span>"
+  },
+  {
+   "zh": "Why might a first audit of a supplier result in something other than \"Approved\" status, and why is this not necessarily a problem?<br/><span style=\"color:#4a5568;font-size:0.88rem;\">為什麼供應商的首次稽查結果可能不是「核准」狀態，為什麼這不一定是問題？</span>",
+   "en": "Why might a first audit of a supplier result in something other than \"Approved\" status, and why is this not necessarily a problem?<br/><span style=\"color:#4a5568;font-size:0.88rem;\"></span>"
+  },
+  {
+   "zh": "安裝與安裝確效 | Documentation, Environmental, Servers, Networks",
+   "en": "Installation and Installation Qualification | Documentation, Environmental, Servers, Networks"
+  },
+  {
+   "zh": "IQ Scope and Principles  /  IQ 範圍與原則",
+   "en": "IQ Scope and Principles"
+  },
+  {
+   "zh": "5.6.2.1 Documentation Verification  /  文件驗證",
+   "en": "5.6.2.1 Documentation Verification"
+  },
+  {
+   "zh": "5.6.2.2 Environmental Conditions  /  環境條件",
+   "en": "5.6.2.2 Environmental Conditions"
+  },
+  {
+   "zh": "5.6.2.5 Network IQ — Physical Layer  /  網路 IQ",
+   "en": "5.6.2.5 Network IQ — Physical Layer"
+  },
+  {
+   "zh": "IQ Execution Commentary  /  IQ 執行解析",
+   "en": "IQ Execution Commentary"
+  },
+  {
+   "zh": "Building Block IQ Efficiency  /  建構模塊 IQ 效率",
+   "en": "Building Block IQ Efficiency"
+  },
+  {
+   "zh": "建構模塊概念最大化確效效率。一旦建構模塊完成確效，後續部署的 IQ 重點僅是驗證複製品是否正確產生。",
+   "en": "The building block concept maximizes qualification efficiency. Once a building block has been qualified, the IQ focus for subsequent deployments is only to verify that the copy was produced correctly."
+  },
+  {
+   "zh": "IQ Documentation Package  /  IQ 文件套件",
+   "en": "IQ Documentation Package"
+  },
+  {
+   "zh": "Application Connectivity Testing — OUT OF SCOPE at IQ  /  應用程式連線測試不在 IQ 範圍內",
+   "en": "Application Connectivity Testing — OUT OF SCOPE at IQ"
+  },
+  {
+   "zh": "應用程式連線測試不在基礎設施 IQ 的範圍內，在系統驗證工作（OQ/PQ）中驗證。在基礎設施正式移交完成之前，不得開始應用程式測試。",
+   "en": "Application connectivity testing is outside the scope of infrastructure IQ and is verified in the system validation work (OQ/PQ). Application testing must not begin until the formal handover of the infrastructure is complete."
+  },
+  {
+   "zh": "💡 IQ = \"New Cleanroom Commissioning\"  /  IQ = 「新潔淨室試運行」",
+   "en": "💡 IQ = \"New Cleanroom Commissioning\""
+  },
+  {
+   "zh": "伺服器的 IQ 就像潔淨室試運行：驗證物理結構是否按照規格建造（尺寸、材料）、環境系統是否安裝並正常運行（HVAC、排水），以及所有必要文件是否到位 — 在引入產品或執行任何製程之前。您正在根據「設計狀態」驗證「建造狀態」。",
+   "en": "A server IQ is like cleanroom commissioning: you verify that the physical structure was built to specification (dimensions, materials), that environmental systems are installed and functioning (HVAC, drainage), and that all required documentation is in place, before any product is introduced or any process is run. You are verifying the \"as-built state\" against the \"design state\"."
+  },
+  {
+   "zh": "During an IQ for a new VMware ESXi cluster, you find that the server room temperature sensor shows 28°C (design spec: max 24°C). The equipment is not yet powered on. What is your immediate action and what IQ documentation is required?<br/><span style=\"color:#4a5568;font-size:0.88rem;\">新 VMware ESXi 叢集的 IQ 期間，您發現伺服器機房溫度感測器顯示 28°C（設計規格：最高 24°C），設備尚未上電。您的即時行動是什麼，需要哪些 IQ 文件？</span>",
+   "en": "During an IQ for a new VMware ESXi cluster, you find that the server room temperature sensor shows 28°C (design spec: max 24°C). The equipment is not yet powered on. What is your immediate action and what IQ documentation is required?<br/><span style=\"color:#4a5568;font-size:0.88rem;\"></span>"
+  },
+  {
+   "zh": "The application team wants to start user acceptance testing (UAT) immediately after hardware installation is complete, while IQ documentation is still being finalized. Is this acceptable? What is the correct sequence?<br/><span style=\"color:#4a5568;font-size:0.88rem;\">應用程式團隊想在硬體安裝完成後立即開始使用者驗收測試（UAT），而 IQ 文件仍在最終確認中。這可以接受嗎？正確順序是什麼？</span>",
+   "en": "The application team wants to start user acceptance testing (UAT) immediately after hardware installation is complete, while IQ documentation is still being finalized. Is this acceptable? What is the correct sequence?<br/><span style=\"color:#4a5568;font-size:0.88rem;\"></span>"
+  },
+  {
+   "zh": "Your IQ protocol requires verification of the logical address list. A network engineer says this information changes frequently and \"documenting it is impractical.\" How do you respond from a GxP compliance perspective?<br/><span style=\"color:#4a5568;font-size:0.88rem;\">您的 IQ 協議要求驗證邏輯地址清單，網路工程師說此資訊頻繁變更且「記錄不切實際」，您從 GxP 合規角度如何回應？</span>",
+   "en": "Your IQ protocol requires verification of the logical address list. A network engineer says this information changes frequently and \"documenting it is impractical.\" How do you respond from a GxP compliance perspective?<br/><span style=\"color:#4a5568;font-size:0.88rem;\"></span>"
+  },
+  {
+   "zh": "IQ Activities by Component Type  /  各元件類型的 IQ 活動表",
+   "en": "IQ Activities by Component Type"
+  },
+  {
+   "zh": "常見製藥 IT 元件 IQ 查核表 | Windows Server / Oracle DB / VMware / Network Switch",
+   "en": "IQ Checklists for Common Pharma IT Components | Windows Server / Oracle DB / VMware / Network Switch"
+  },
+  {
+   "zh": "Windows Server IQ Checklist  /  Windows Server IQ 查核表",
+   "en": "Windows Server IQ Checklist"
+  },
+  {
+   "zh": "Oracle Database IQ Checklist  /  Oracle 資料庫 IQ 查核表",
+   "en": "Oracle Database IQ Checklist"
+  },
+  {
+   "zh": "VMware ESXi IQ Checklist  /  VMware ESXi IQ 查核表",
+   "en": "VMware ESXi IQ Checklist"
+  },
+  {
+   "zh": "Network Switch IQ Checklist  /  網路交換器 IQ 查核表",
+   "en": "Network Switch IQ Checklist"
+  },
+  {
+   "zh": "A GxP network switch fails during production and is replaced with an identical spare. The spare has the same firmware but was never formally IQ'd. What is the minimum required documentation before returning the network to GxP production use?<br/><span style=\"color:#4a5568;font-size:0.88rem;\">一台 GxP 網路交換器在生產期間故障，被替換為相同的備用品。備用品具有相同韌體但從未正式完成 IQ。在將網路恢復到 GxP 生產使用之前，最低限度需要哪些文件？</span>",
+   "en": "A GxP network switch fails during production and is replaced with an identical spare. The spare has the same firmware but was never formally IQ'd. What is the minimum required documentation before returning the network to GxP production use?<br/><span style=\"color:#4a5568;font-size:0.88rem;\"></span>"
+  },
+  {
+   "zh": "Your site's IQ protocol requires verification that Telnet is disabled on all GxP network switches. The network team says they need Telnet for some legacy equipment. How should this discrepancy be handled?<br/><span style=\"color:#4a5568;font-size:0.88rem;\">您現場的 IQ 協議要求驗證所有 GxP 網路交換器上 Telnet 已禁用，但網路團隊表示他們需要 Telnet 用於某些舊設備，應如何處理此差異？</span>",
+   "en": "Your site's IQ protocol requires verification that Telnet is disabled on all GxP network switches. The network team says they need Telnet for some legacy equipment. How should this discrepancy be handled?<br/><span style=\"color:#4a5568;font-size:0.88rem;\"></span>"
+  },
+  {
+   "zh": "Describe the correct procedure if, during VMware ESXi IQ, you discover that the vCenter version deployed is different from what is specified in the CIL.<br/><span style=\"color:#4a5568;font-size:0.88rem;\">如果在 VMware ESXi IQ 期間，您發現部署的 vCenter 版本與 CIL 中指定的不同，描述正確的處理程序。</span>",
+   "en": "Describe the correct procedure if, during VMware ESXi IQ, you discover that the vCenter version deployed is different from what is specified in the CIL.<br/><span style=\"color:#4a5568;font-size:0.88rem;\"></span>"
+  },
+  {
+   "zh": "本節摘要與關鍵要點 | Chapters 5.4–5.6",
+   "en": "Section Summary and Key Takeaways | Chapters 5.4–5.6"
+  },
+  {
+   "zh": "核心要點 — 中文摘要",
+   "en": "Key Points — Commentary Summary"
+  },
+  {
+   "zh": "5.4 規格書與設計",
+   "en": "5.4 Specifications and Design"
+  },
+  {
+   "zh": "規格書層級：URS → FS → DS → CIL，全程可追溯至 IQ/OQ 記錄",
+   "en": "Specification hierarchy: URS → FS → DS → CIL, with full traceability to the IQ/OQ records"
+  },
+  {
+   "zh": "網路：拓樸圖為必要文件；GxP 網路分段是強制要求；SNMP 用於受管理網路",
+   "en": "Networks: the topology diagram is a required document; GxP network segmentation is mandatory; SNMP is used for managed networks"
+  },
+  {
+   "zh": "伺服器：硬體 CIL + 軟體 CIL 為必要；OS 參數類別 1/2/3 決定文件範圍",
+   "en": "Servers: hardware CIL + software CIL are required; OS parameter categories 1/2/3 determine the scope of documentation"
+  },
+  {
+   "zh": "系統時間：可追溯至 UTC；於 IQ 和 OQ 驗證；責任人必須文件化",
+   "en": "System time: traceable to UTC; verified at IQ and OQ; the responsible person must be documented"
+  },
+  {
+   "zh": "儲存：SAN vs. NAS 依負載和拓樸決定；OQ 必須透過連接的伺服器進行",
+   "en": "Storage: SAN vs. NAS is chosen according to workload and topology; OQ must be performed through the connected servers"
+  },
+  {
+   "zh": "客戶端：三層分類（非限制/限制/受控）；GxP 客戶端採用映像式部署",
+   "en": "Clients: three-tier classification (unrestricted / restricted / controlled); image-based deployment for GxP clients"
+  },
+  {
+   "zh": "資料中心：UPS、冷卻、實體安全、消防保護均須規格書規定並驗證",
+   "en": "Data centers: UPS, cooling, physical security and fire protection must all be specified and verified"
+  },
+  {
+   "zh": "5.5 風險評估與測試規劃",
+   "en": "5.5 Risk Assessment and Test Planning"
+  },
+  {
+   "zh": "迭代流程：從規劃開始，隨設計完成而細化",
+   "en": "Iterative process: starts with planning and is refined as the design is completed"
+  },
+  {
+   "zh": "GAMP 類別決定測試等級：不需測試 → 確認測試 → 信心測試 → 完整測試",
+   "en": "GAMP category determines the test level: no testing → verification testing → confidence testing → full testing"
+  },
+  {
+   "zh": "建構模塊：一次確效，後續驗證複製 — 最大化效率",
+   "en": "Building blocks: qualify once, then verify the copies afterwards, to maximize efficiency"
+  },
+  {
+   "zh": "風險評估產出：關鍵元件清單、供應商評估等級、測試範圍、QA 參與、培訓需求、SOP 變更",
+   "en": "Risk assessment outputs: critical component list, supplier assessment rating, test scope, QA involvement, training needs, SOP changes"
+  },
+  {
+   "zh": "5.6 採購、安裝與 IQ",
+   "en": "5.6 Procurement, Installation and IQ"
+  },
+  {
+   "zh": "供應商分類：核准 / 有條件核准 / 未核准；GxP 物品僅從核准供應商採購",
+   "en": "Supplier classification: Approved / Conditionally Approved / Not Approved; GxP items are purchased only from approved suppliers"
+  },
+  {
+   "zh": "FAT 選項：在供應商廠房驗證後再運送，在工廠修復問題更便宜",
+   "en": "FAT option: verify at the supplier's site before shipment, since fixing problems at the factory is cheaper"
+  },
+  {
+   "zh": "IQ 範圍：文件驗證 + 環境條件 + 伺服器/OS/網路設定驗證",
+   "en": "IQ scope: documentation verification + environmental conditions + server/OS/network configuration verification"
+  },
+  {
+   "zh": "IQ 文件：CIL、拓樸圖、纜線測試報告、環境記錄、供應商證書",
+   "en": "IQ documentation: CIL, topology diagram, cable test reports, environmental records, supplier certificates"
+  },
+  {
+   "zh": "應用程式測試：在正式基礎設施移交前不得進行；必須等待 IQ 簽署完成",
+   "en": "Application testing: must not take place before formal infrastructure handover; it must wait until IQ sign-off is complete"
+  },
+  {
+   "zh": "CIL 支援後續已驗證部署的高效伺服器/客戶端複製",
+   "en": "The CIL supports efficient replication of servers/clients for later validated deployments"
+  },
+  {
+   "zh": "IT 確效就像拼圖：URS 定義完成後的圖像（患者安全 + 產品品質）；FS 和 DS 定義拼圖片的形狀；風險評估決定哪些片需要單獨驗證；IQ 確認每片都在正確位置；OQ 和 PQ 確認完成的圖像真的有效。沒有完整的 IQ 層，就無法可靠地在其上建立 OQ 和 PQ 層。",
+   "en": "IT qualification is like a jigsaw puzzle: the URS defines the finished picture (patient safety + product quality); the FS and DS define the shape of the pieces; the risk assessment decides which pieces need to be verified individually; IQ confirms that every piece is in the right place; OQ and PQ confirm that the completed picture actually works. Without a complete IQ layer, the OQ and PQ layers cannot be built on it reliably."
+  }
+ ]
+}

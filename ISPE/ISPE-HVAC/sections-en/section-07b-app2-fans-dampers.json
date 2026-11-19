@@ -1,0 +1,1289 @@
+{
+ "source": "section-07b-app2-fans-dampers.html",
+ "blocks": [
+  {
+   "zh": "附錄2：HVAC 應用（下）— 風機、風門、風管與控制系統",
+   "en": "Appendix 2: HVAC Applications (Part 2) - Fans, Dampers, Ductwork and Control Systems"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解送風分配策略（Room Air Supply Distribution）在 GMP 空間與潔淨室中的設計原則，特別是氣流方向從潔淨側流向較不潔淨側的關鍵概念",
+   "en": "Understand the design principles of room air supply distribution in GMP spaces and cleanrooms, especially the key concept that air flows from the cleaner side to the less clean side"
+  },
+  {
+   "zh": "掌握三種排氣/回風策略（Release &amp; Dilution、Capture at Source、Containment &amp; Exhaust）的適用場景與選擇邏輯",
+   "en": "Master the application and selection logic of the three extract/return strategies (Release &amp; Dilution, Capture at Source, Containment &amp; Exhaust)"
+  },
+  {
+   "zh": "了解風管設計（Ductwork Design）的基本原則，以及風門（Damper）類型（單葉片、平行葉片、對向葉片、氣囊式、文丘里式）的特性與選用",
+   "en": "Understand the basic principles of ductwork design and the characteristics and selection of damper types (single blade, parallel blade, opposed blade, pneumatic bladder, venturi)"
+  },
+  {
+   "zh": "熟悉 HVAC 控制系統架構：單迴路控制、DDC/BMS、DCS 智慧現場設備，及其成本與複雜度的權衡",
+   "en": "Become familiar with HVAC control system architectures: single loop control, DDC/BMS, DCS with smart field devices, and the trade-off between cost and complexity"
+  },
+  {
+   "zh": "掌握關鍵環境參數（風量、壓差、溫度、相對濕度）的量測技術、感測器選址原則、警報設計與記錄要求",
+   "en": "Master the measurement techniques, sensor location principles, alarm design and record requirements for key environmental parameters (airflow, differential pressure, temperature, relative humidity)"
+  },
+  {
+   "zh": "理解微粒連續監測系統（Manifold System vs. Individual Counters）的設計考量與法規期望",
+   "en": "Understand the design considerations and regulatory expectations for continuous particle monitoring systems (manifold system vs. individual counters)"
+  },
+  {
+   "zh": "本節目錄 Table of Contents",
+   "en": "Table of Contents"
+  },
+  {
+   "zh": "8.4.1.3 Room Air Supply Distribution Options（房間送風分配方式）",
+   "en": "8.4.1.3 Room Air Supply Distribution Options"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念：GMP 送風的黃金法則",
+   "en": "Key Concept: The Golden Rule of GMP Air Supply"
+  },
+  {
+   "zh": "<strong>送風從天花板，回風靠地面</strong>——這是潔淨室氣流設計最基本的原則。背後的物理邏輯很簡單：",
+   "en": "<strong>Supply air from the ceiling, return air at low level</strong>: this is the most basic principle of cleanroom airflow design. The physics behind it is simple:"
+  },
+  {
+   "zh": "潔淨空氣從上方送入，利用重力讓微粒向下沉降",
+   "en": "Clean air is supplied from above, and gravity lets particles settle downward"
+  },
+  {
+   "zh": "回風口（Return）設在低處，將含微粒的空氣帶走",
+   "en": "Return air grilles are placed low to carry particle-laden air away"
+  },
+  {
+   "zh": "製程排氣（Process Exhaust）要盡可能靠近排放源",
+   "en": "Process exhaust should be located as close to the emission source as possible"
+  },
+  {
+   "zh": "<strong>Aspirating Diffuser（吸引式散流器）</strong>：利用引射效應將周圍室內空氣混入送風氣流中，增加混合均勻性。適合一般區域，但 GMP 潔淨室可能需要非吸引式散流器（Non-Aspirating Diffuser）來維持更清潔的定向氣流。",
+   "en": "<strong>Aspirating Diffuser</strong>: uses the induction effect to draw surrounding room air into the supply air stream, improving mixing uniformity. It is suitable for general areas, but GMP cleanrooms may need non-aspirating diffusers to maintain cleaner, directional airflow."
+  },
+  {
+   "zh": "比喻說明：氣流方向如同水流",
+   "en": "Analogy: Airflow Is Like Water Flow"
+  },
+  {
+   "zh": "想像潔淨室就像一個有坡度的廚房地板——水（空氣）永遠從高處（乾淨側）流向低處（較不乾淨側）。如果你在 ISO 5 區域旁放了一個 ISO 7 背景區，空氣就像水一樣，從 ISO 5「流下」到 ISO 7。",
+   "en": "Imagine a cleanroom as a kitchen floor with a slope: water (air) always flows from the high side (clean side) to the low side (less clean side). If you place an ISO 7 background area next to an ISO 5 area, the air, like water, \"flows down\" from ISO 5 to ISO 7."
+  },
+  {
+   "zh": "低壁回風口就像地板排水孔——位置太高就接不到地面的髒水，位置太靠近門就會把走廊的水也吸進來。所以 ISPE 建議距地面 30 cm，且距門口至少 60 cm。",
+   "en": "A low-level return grille is like a floor drain: if it is too high, it cannot catch the dirty water on the floor, and if it is too close to the door, it also draws in water from the corridor. This is why ISPE recommends 30 cm above the floor and at least 60 cm from the door."
+  },
+  {
+   "zh": "重點提示：氣鎖室的氣流方向設計",
+   "en": "Key Point: Airflow Direction in Airlocks"
+  },
+  {
+   "zh": "氣鎖室（Airlock）和更衣室的氣流設計是稽查重點：",
+   "en": "The airflow design of airlocks and gowning rooms is an inspection focus:"
+  },
+  {
+   "zh": "HEPA 送風口必須設在「乾淨側」",
+   "en": "HEPA supply outlets must be located on the \"clean side\""
+  },
+  {
+   "zh": "低壁回風口設在「非乾淨側」",
+   "en": "Low-level return grilles are located on the \"non-clean side\""
+  },
+  {
+   "zh": "兩段式更衣（預更衣 + 最終更衣）也適用同樣原則",
+   "en": "The same principle applies to two-stage gowning (pre-gowning + final gowning)"
+  },
+  {
+   "zh": "目的：當門打開時，氣流方向確保微粒往外走，不會進入潔淨區",
+   "en": "Purpose: when a door is opened, the airflow direction ensures particles move outward and do not enter the clean area"
+  },
+  {
+   "zh": "EU GMP Annex 1 (2022) 對氣鎖室壓差與氣流方向的要求更為嚴格，這裡的設計原則直接支持法規合規。",
+   "en": "EU GMP Annex 1 (2022) sets stricter requirements for airlock differential pressure and airflow direction, and these design principles directly support regulatory compliance."
+  },
+  {
+   "zh": "重點提示：低壁回風口的細節設計",
+   "en": "Key Point: Detailed Design of Low-Level Return Grilles"
+  },
+  {
+   "zh": "看似簡單的回風口，實際有許多魔鬼細節：",
+   "en": "A return grille looks simple, but there are many devilish details in practice:"
+  },
+  {
+   "zh": "風速要低——避免噪音問題",
+   "en": "Keep air velocity low to avoid noise problems"
+  },
+  {
+   "zh": "彎頭要大圓弧——方便清潔",
+   "en": "Use large-radius bends for ease of cleaning"
+  },
+  {
+   "zh": "需要清洗的區域，第一段風管用 316L 不鏽鋼——防腐蝕",
+   "en": "In areas that require washdown, use 316L stainless steel for the first section of duct for corrosion resistance"
+  },
+  {
+   "zh": "可拆卸穿孔格柵——方便清潔且防止物品被吸入",
+   "en": "Use removable perforated grilles for easy cleaning and to prevent items from being drawn in"
+  },
+  {
+   "zh": "在 CDMO 環境中，不同客戶產品可能對清潔度有不同要求，選擇可清潔的 316L 風管比事後改裝便宜得多。",
+   "en": "In a CDMO environment, different customers' products may have different cleanliness requirements, and choosing cleanable 316L ductwork is much cheaper than retrofitting later."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "一間 ISO 7 壓片間（tableting room），回風口應該設在哪裡？為什麼不能設在門旁？",
+   "en": "Where should the return grille be located in an ISO 7 tableting room? Why should it not be placed next to the door?"
+  },
+  {
+   "zh": "如果潔淨室使用面板系統（cleanroom panel system），回風口設計會受到什麼限制？這對 CDMO 多產品切換有什麼影響？",
+   "en": "If a cleanroom uses a cleanroom panel system, what limitations apply to the return grille design? What does this mean for multi-product changeover in a CDMO?"
+  },
+  {
+   "zh": "8.4.1.4 Air Walls（氣牆）",
+   "en": "8.4.1.4 Air Walls"
+  },
+  {
+   "zh": "核心概念：Air Wall 的功能",
+   "en": "Key Concept: Function of an Air Wall"
+  },
+  {
+   "zh": "<strong>Air Wall（氣牆）</strong>是一種在房間內壁旁建造的垂直風管通道，利用假牆形成的空腔來輸送大量回風。常見於需要高換氣量的潔淨室。",
+   "en": "An <strong>Air Wall</strong> is a vertical duct passage built along the inner wall of a room, using the cavity formed by a false wall to carry large volumes of return air. It is commonly found in cleanrooms that need high air change rates."
+  },
+  {
+   "zh": "典型深度：12 吋（30 cm）",
+   "en": "Typical depth: 12 in (30 cm)"
+  },
+  {
+   "zh": "開口高度：距地面 12-20 吋（30-51 cm）",
+   "en": "Opening height: 12-20 in (30-51 cm) above the floor"
+  },
+  {
+   "zh": "保護：大開口面積的鐵絲網",
+   "en": "Protection: wire mesh over the large opening area"
+  },
+  {
+   "zh": "重點提示：單側氣牆的風險",
+   "en": "Key Point: Risk of a Single-Sided Air Wall"
+  },
+  {
+   "zh": "ISPE 明確警告：<strong>只在潔淨室一側設置氣牆是不建議的</strong>——這會嚴重影響向下氣流的均勻性。在 ISO 5 單向流（Unidirectional Airflow）環境中，不均勻的回風會導致氣流偏轉，可能在產品暴露區域形成渦流，直接影響微粒控制。",
+   "en": "ISPE explicitly warns that <strong>providing an air wall on only one side of a cleanroom is not recommended</strong>, because it seriously affects the uniformity of the downward airflow. In an ISO 5 unidirectional airflow environment, uneven return air deflects the airflow and may create eddies in the product exposure area, directly affecting particle control."
+  },
+  {
+   "zh": "設計時應確保氣牆對稱配置，或至少在多面牆上分布回風路徑。",
+   "en": "In the design, ensure that air walls are arranged symmetrically, or at least distribute the return air paths over multiple walls."
+  },
+  {
+   "zh": "8.4.2 Extract (Exhaust/Return) Strategies（排氣/回風策略）",
+   "en": "8.4.2 Extract (Exhaust/Return) Strategies"
+  },
+  {
+   "zh": "比喻說明：廚房排油煙的三種方式",
+   "en": "Analogy: Three Ways to Handle Kitchen Fumes"
+  },
+  {
+   "zh": "想像三種處理廚房油煙的方式：",
+   "en": "Imagine three ways of dealing with kitchen fumes:"
+  },
+  {
+   "zh": "<strong>開窗通風（Release &amp; Dilution）</strong>：炒青菜的小油煙，開窗讓空氣對流稀釋就好",
+   "en": "<strong>Opening a window (Release &amp; Dilution)</strong>: for the light fumes from stir-frying vegetables, opening a window to let air circulate and dilute them is enough"
+  },
+  {
+   "zh": "<strong>抽油煙機（Capture at Source）</strong>：煎牛排產生的大量油煙，需要在爐灶上方直接抽走",
+   "en": "<strong>Range hood (Capture at Source)</strong>: for the heavy fumes from pan-searing steak, the fumes must be drawn off directly above the stove"
+  },
+  {
+   "zh": "<strong>密閉烤箱排氣（Containment &amp; Exhaust）</strong>：處理高溫可能產生有毒氣體的食材，在密閉空間內處理並排出",
+   "en": "<strong>Sealed oven exhaust (Containment &amp; Exhaust)</strong>: for ingredients that are hot and may release toxic gases, the work is done in an enclosed space and the exhaust is vented out"
+  },
+  {
+   "zh": "藥廠的邏輯完全一樣——根據物質的危害等級選擇對應的排氣策略。",
+   "en": "The logic in a pharmaceutical plant is exactly the same: choose the extract strategy that matches the hazard level of the substance."
+  },
+  {
+   "zh": "重點提示：排氣後處理不可忽略",
+   "en": "Key Point: Do Not Overlook Exhaust Treatment"
+  },
+  {
+   "zh": "捕捉到的危害物質不能直接排到大氣中，必須經過適當處理：",
+   "en": "Captured hazardous substances cannot be discharged directly to the atmosphere and must be properly treated:"
+  },
+  {
+   "zh": "<strong>Scrubbing（洗滌）</strong>：溶解水溶性有害氣體",
+   "en": "<strong>Scrubbing</strong>: dissolves water-soluble hazardous gases"
+  },
+  {
+   "zh": "<strong>Dust Collection（集塵）</strong>：攔截固體微粒",
+   "en": "<strong>Dust Collection</strong>: intercepts solid particles"
+  },
+  {
+   "zh": "<strong>HEPA Filtration</strong>：過濾微細顆粒",
+   "en": "<strong>HEPA Filtration</strong>: filters fine particles"
+  },
+  {
+   "zh": "<strong>Carbon Adsorption（活性碳吸附）</strong>：去除有機溶劑蒸氣",
+   "en": "<strong>Carbon Adsorption</strong>: removes organic solvent vapors"
+  },
+  {
+   "zh": "在 CDMO 接受高活性 API 客戶時，排氣後處理系統的能力直接決定你能接什麼等級的產品。",
+   "en": "When a CDMO accepts highly potent API customers, the capability of the exhaust treatment system directly determines what level of product you can take on."
+  },
+  {
+   "zh": "實務應用 Practical Application",
+   "en": "Practical Application"
+  },
+  {
+   "zh": "一家 CDMO 正評估是否接受一個 OEL &lt; 1 μg/m3 的高活性 API 客戶。HVAC 排氣系統目前只有 Release &amp; Dilution 能力。升級到 Containment &amp; Exhaust 需要：密閉操作設備 + HEPA 排氣過濾 + 活性碳吸附。這不只是 HVAC 的變更，更涉及整個 Contamination Control Strategy (CCS) 的重新評估。",
+   "en": "A CDMO is evaluating whether to accept a highly potent API customer with an OEL &lt; 1 μg/m3. The HVAC extract system currently has only Release &amp; Dilution capability. Upgrading to Containment &amp; Exhaust requires closed-operation equipment + HEPA exhaust filtration + carbon adsorption. This is not just an HVAC change; it involves re-evaluating the entire Contamination Control Strategy (CCS)."
+  },
+  {
+   "zh": "一間開放式造粒機（open granulator）使用乙醇作為黏合劑，應選擇哪種排氣策略？為什麼不能只靠 Release &amp; Dilution？",
+   "en": "An open granulator uses ethanol as the binder. Which extract strategy should be chosen? Why is Release &amp; Dilution alone not enough?"
+  },
+  {
+   "zh": "為什麼 ISPE 建議排氣口位置要分「高位」和「低位」？這與物質的物理特性有什麼關係？",
+   "en": "Why does ISPE recommend separating extract locations into \"high-level\" and \"low-level\"? How does this relate to the physical properties of the substance?"
+  },
+  {
+   "zh": "核心概念：三種排氣策略的選擇邏輯",
+   "en": "Key Concept: Selection Logic for the Three Extract Strategies"
+  },
+  {
+   "zh": "這是 HVAC 設計中最重要的風險分級決策之一：",
+   "en": "This is one of the most important risk-tiering decisions in HVAC design:"
+  },
+  {
+   "zh": "<strong>LEV（Local Exhaust Ventilation，局部排氣通風）</strong>是源頭捕捉的核心設備，通常以高風速運作來增強捕捉效率。",
+   "en": "<strong>LEV (Local Exhaust Ventilation)</strong> is the core equipment for source capture and usually operates at high air velocity to enhance capture efficiency."
+  },
+  {
+   "zh": "8.4.3 Ductwork Design（風管設計）",
+   "en": "8.4.3 Ductwork Design"
+  },
+  {
+   "zh": "核心概念：風管設計五大原則",
+   "en": "Key Concept: Five Principles of Ductwork Design"
+  },
+  {
+   "zh": "<strong>Ductwork（風管）</strong>是 HVAC 系統的「動脈」，將調節後的空氣輸送到各個房間。好的風管設計（Good Ductwork Design）遵循五條原則：",
+   "en": "<strong>Ductwork</strong> is the \"artery\" of the HVAC system, delivering conditioned air to each room. Good ductwork design follows five principles:"
+  },
+  {
+   "zh": "<strong>合理對稱</strong>：左右分支平衡，避免一邊壓力高、一邊壓力低",
+   "en": "<strong>Reasonable symmetry</strong>: balance the left and right branches to avoid high pressure on one side and low pressure on the other"
+  },
+  {
+   "zh": "<strong>最少彎折</strong>：每個彎頭都增加壓損和噪音",
+   "en": "<strong>Minimum bends</strong>: every elbow adds pressure loss and noise"
+  },
+  {
+   "zh": "<strong>漸縮管徑</strong>：隨風量減少而縮小，維持適當風速",
+   "en": "<strong>Tapering duct size</strong>: reduce the size as airflow decreases, to maintain suitable air velocity"
+  },
+  {
+   "zh": "<strong>配備平衡風門（Balancing Damper）</strong>：用於微調各分支的風量分配",
+   "en": "<strong>Provide balancing dampers</strong>: used to fine-tune the airflow distribution of each branch"
+  },
+  {
+   "zh": "<strong>不能只靠風門調節</strong>：風管設計本身就要接近平衡，風門只做微調",
+   "en": "<strong>Do not rely on dampers alone</strong>: the duct design itself should be close to balanced, and dampers are used only for fine adjustment"
+  },
+  {
+   "zh": "比喻說明：風管設計如同自來水配管",
+   "en": "Analogy: Ductwork Design Is Like Water Piping"
+  },
+  {
+   "zh": "想像大樓的自來水管——如果主管一路到底不變細，末端水壓會很弱；如果管路彎來彎去，水壓損失更多。好的配管設計是：主管漸漸變細、分支盡量對稱、每個出口有獨立閥門微調水量，但不能全靠閥門硬擠——那樣既浪費能源又容易產生水錘。",
+   "en": "Think of the water pipes in a building: if the main pipe does not narrow all the way to the end, water pressure at the far end will be weak, and if the piping twists and turns, even more pressure is lost. Good piping design means the main pipe narrows gradually, branches are as symmetrical as possible, and each outlet has its own valve for fine adjustment, but you cannot rely entirely on valves to force the balance, because that wastes energy and easily causes water hammer."
+  },
+  {
+   "zh": "HVAC 風管也是同理——<strong>Balancing Damper（平衡風門）</strong>就像水管的調節閥，但好的設計在安裝風門之前就已經大致平衡了。",
+   "en": "HVAC ductwork works the same way: the <strong>Balancing Damper</strong> is like the regulating valve on a water pipe, but a good design is already roughly balanced before any damper is installed."
+  },
+  {
+   "zh": "重點提示：三種風管設計方法",
+   "en": "Key Point: Three Duct Design Methods"
+  },
+  {
+   "zh": "ASHRAE 教科書提供三種經典設計方法：",
+   "en": "ASHRAE textbooks provide three classic design methods:"
+  },
+  {
+   "zh": "<strong>Equal Velocity（等速法）</strong>：所有風管段維持相同風速，最簡單但壓損最大",
+   "en": "<strong>Equal Velocity</strong>: keeps the same air velocity in all duct sections; simplest but with the highest pressure loss"
+  },
+  {
+   "zh": "<strong>Equal Friction（等摩擦法）</strong>：每段風管的摩擦損失相同，最常用",
+   "en": "<strong>Equal Friction</strong>: keeps the same friction loss in every duct section; the most commonly used"
+  },
+  {
+   "zh": "<strong>Static Regain（靜壓恢復法）</strong>：利用風速降低時的壓力恢復來平衡分支壓力，最節能但計算最複雜",
+   "en": "<strong>Static Regain</strong>: uses the pressure recovered as velocity falls to balance branch pressures; the most energy-efficient but the most complex to calculate"
+  },
+  {
+   "zh": "這些計算應由合格的 HVAC 專業人員執行——ISPE 在這裡強調「appropriately qualified」，意味著 HVAC 風管設計不是隨便畫畫就行的。",
+   "en": "These calculations should be performed by suitably qualified HVAC professionals. ISPE stresses \"appropriately qualified\" here, which means HVAC ductwork design is not something to be sketched casually."
+  },
+  {
+   "zh": "為什麼 ISPE 強調風管設計「不能只靠風門調節風量」？如果完全依賴風門會有什麼後果？",
+   "en": "Why does ISPE stress that ductwork design must not rely on dampers alone to regulate airflow? What are the consequences of relying entirely on dampers?"
+  },
+  {
+   "zh": "在一個有 10 間潔淨室的 CDMO 設施中，如果風管設計不對稱，最遠的房間會面臨什麼問題？",
+   "en": "In a CDMO facility with 10 cleanrooms, what problems will the farthest room face if the ductwork design is not symmetrical?"
+  },
+  {
+   "zh": "8.5 HVAC Controls and Monitoring（HVAC 控制與監測）",
+   "en": "8.5 HVAC Controls and Monitoring"
+  },
+  {
+   "zh": "核心概念：BMS 的雙重角色抉擇",
+   "en": "Key Concept: The BMS Dual-Role Decision"
+  },
+  {
+   "zh": "HVAC 控制系統設計的第一個關鍵決策是：<strong>BMS（Building Management System，樓宇管理系統）是否同時擔任品質記錄系統？</strong>",
+   "en": "The first key decision in HVAC control system design is: <strong>does the BMS (Building Management System) also serve as the quality record system?</strong>"
+  },
+  {
+   "zh": "兩種主要架構：",
+   "en": "Two main architectures:"
+  },
+  {
+   "zh": "<strong>方案 A：BMS 兼任品質記錄系統</strong>——控制 + 記錄 + 警報全在一個系統中。優點是資料一致，缺點是整個 BMS 都需要依 GAMP 進行確效（Validation）",
+   "en": "<strong>Option A: BMS also serves as the quality record system</strong>: control + recording + alarms all in one system. The advantage is consistent data; the disadvantage is that the entire BMS must be validated according to GAMP"
+  },
+  {
+   "zh": "<strong>方案 B：BMS 只做控制，獨立系統做品質記錄</strong>——使用獨立的 DCS、PLC 或 Data Logger 記錄關鍵參數。BMS 只需 Commissioning（試車），不需要全面確效",
+   "en": "<strong>Option B: BMS for control only, with a separate system for quality records</strong>: a separate DCS, PLC or data logger records the critical parameters. The BMS needs only commissioning, not full validation"
+  },
+  {
+   "zh": "ISPE 建議使用<strong>共用感測器（Common Device）</strong>同時輸出到兩個系統，避免兩套平行感測器因校正差異產生不同讀數。",
+   "en": "ISPE recommends using a <strong>common device</strong> (shared sensor) that outputs to both systems at once, to avoid two parallel sets of sensors giving different readings because of calibration differences."
+  },
+  {
+   "zh": "比喻說明：BMS 如同大樓的神經中樞",
+   "en": "Analogy: The BMS Is the Nervous System of the Building"
+  },
+  {
+   "zh": "BMS 就像一棟智慧大樓的中央神經系統——它同時管理空調、照明、保全、消防。問題是：如果你讓這個系統同時兼任「藥品品質的證明記錄」，那整棟大樓的燈光控制軟體也得一起做確效驗證——這就像因為銀行保險庫在這棟大樓裡，就要求連咖啡廳的門鎖也要金庫級別的安全認證。",
+   "en": "The BMS is like the central nervous system of a smart building: it manages air conditioning, lighting, security and fire protection at the same time. The problem is that if you let this system also serve as the \"proof record of drug product quality\", the lighting control software for the entire building must be validated too. It is like requiring a coffee shop door lock to have vault-level security certification just because a bank vault is in the same building."
+  },
+  {
+   "zh": "所以 ISPE 建議：<strong>將關鍵（Critical）與非關鍵（Non-Critical）功能分層</strong>，只對影響產品品質的功能做高標準驗證。",
+   "en": "This is why ISPE recommends: <strong>separate critical and non-critical functions into tiers</strong>, and apply a high standard of validation only to the functions that affect product quality."
+  },
+  {
+   "zh": "重點提示：Data Integrity 的影響",
+   "en": "Key Point: Data Integrity Implications"
+  },
+  {
+   "zh": "無論選擇哪種架構，只要涉及關鍵環境參數的記錄，<strong>Data Integrity（資料完整性）</strong>就是不可迴避的要求：",
+   "en": "Whichever architecture is chosen, as long as the recording of critical environmental parameters is involved, <strong>data integrity</strong> is an unavoidable requirement:"
+  },
+  {
+   "zh": "ALCOA+ 原則：Attributable, Legible, Contemporaneous, Original, Accurate",
+   "en": "ALCOA+ principles: Attributable, Legible, Contemporaneous, Original, Accurate"
+  },
+  {
+   "zh": "電子記錄需符合 21 CFR Part 11 或 EU GMP Annex 11",
+   "en": "Electronic records must comply with 21 CFR Part 11 or EU GMP Annex 11"
+  },
+  {
+   "zh": "即使 BMS 只做控制，如果它提供的數據被用於品質決策，該數據路徑仍需驗證",
+   "en": "Even if the BMS only performs control, if the data it provides is used for quality decisions, that data path still needs to be validated"
+  },
+  {
+   "zh": "這是近年 FDA 和 EMA 稽查的高頻發現項目——環境監測資料的完整性問題。",
+   "en": "In recent years this has been a frequent finding in FDA and EMA inspections: data integrity problems with environmental monitoring data."
+  },
+  {
+   "zh": "系統架構比較",
+   "en": "System Architecture Comparison"
+  },
+  {
+   "zh": "方案 A：全整合 BMS\n  BMS → 控制 + 記錄 + 警報 → 全系統需 GAMP 確效\n  優點：資料統一、維護單一系統\n  缺點：確效範圍大、變更控制複雜\n\n方案 B：分離式架構\n  BMS → 控制 + 非關鍵數據（GEP 管理）\n  DCS/PLC → 關鍵參數記錄 + 警報（GMP 確效）\n  優點：確效範圍小、變更靈活\n  缺點：兩套系統維護成本較高\n\n方案 C：混合式（ISPE 推薦）\n  共用感測器 → 同時輸出至 BMS + DCS\n  BMS：控制功能 + 非關鍵監測\n  DCS：關鍵參數記錄 + 品質警報\n  一個感測器、一次校正、兩套系統",
+   "en": "Option A: Fully integrated BMS\n  BMS → control + recording + alarms → entire system needs GAMP validation\n  Advantages: unified data, single system to maintain\n  Disadvantages: large validation scope, complex change control\n\nOption B: Separated architecture\n  BMS → control + non-critical data (managed under GEP)\n  DCS/PLC → critical parameter recording + alarms (GMP validation)\n  Advantages: small validation scope, flexible changes\n  Disadvantages: higher maintenance cost for two systems\n\nOption C: Hybrid (recommended by ISPE)\n  Common sensor → outputs to both BMS + DCS\n  BMS: control functions + non-critical monitoring\n  DCS: critical parameter recording + quality alarms\n  One sensor, one calibration, two systems"
+  },
+  {
+   "zh": "一家中型 CDMO 正在建置新廠，有 15 間潔淨室需要環境監測。如果選擇方案 A（BMS 全整合），整個 BMS 含照明、門禁、空調都需要完整的 CSV（Computer System Validation），預估驗證費用增加 30-40%。選擇方案 C（混合式），只需要驗證 DCS 部分的關鍵控制迴路，BMS 用 GEP 管理即可。節省的驗證成本可能達數十萬美元。",
+   "en": "A mid-sized CDMO is building a new plant with 15 cleanrooms that need environmental monitoring. If Option A (fully integrated BMS) is chosen, the entire BMS, including lighting, access control and HVAC, needs full CSV (Computer System Validation), and the estimated validation cost increases by 30-40%. With Option C (hybrid), only the critical control loops in the DCS need to be validated, and the BMS can be managed under GEP. The validation cost saved could reach several hundred thousand US dollars."
+  },
+  {
+   "zh": "如果一個 BMS 系統同時控制 HVAC 和照明，但只有 HVAC 是 GMP 相關的，你如何劃分驗證範圍？",
+   "en": "If a BMS controls both HVAC and lighting but only the HVAC is GMP-relevant, how would you define the validation scope?"
+  },
+  {
+   "zh": "使用「兩套平行感測器」（一套給 BMS、一套給 DCS）有什麼風險？ISPE 為什麼不推薦這種做法？",
+   "en": "What are the risks of using \"two parallel sets of sensors\" (one for the BMS, one for the DCS)? Why does ISPE not recommend this approach?"
+  },
+  {
+   "zh": "8.5.2 Controls（控制系統類型）",
+   "en": "8.5.2 Controls (Types of Control System)"
+  },
+  {
+   "zh": "比喻說明：三種控制層級如同車輛控制",
+   "en": "Analogy: Three Control Levels Are Like Vehicle Controls"
+  },
+  {
+   "zh": "<strong>Single Loop Control</strong> = 傳統手排車——每個功能獨立操作，司機自己看溫度表、自己開冷氣。便宜可靠，但什麼都要人盯。",
+   "en": "<strong>Single Loop Control</strong> = a traditional manual-transmission car: each function is operated independently, and the driver reads the temperature gauge and turns on the air conditioning personally. Cheap and reliable, but everything needs someone watching it."
+  },
+  {
+   "zh": "<strong>DDC/BMS</strong> = 現代自排車帶智慧巡航——一個中控螢幕管理所有系統，可以遠端設定目標速度（設定點），系統自動調節。",
+   "en": "<strong>DDC/BMS</strong> = a modern automatic car with smart cruise control: one central screen manages all systems, the target speed (setpoint) can be set remotely, and the system adjusts automatically."
+  },
+  {
+   "zh": "<strong>DCS + 智慧設備</strong> = 特斯拉全自動駕駛——每個感測器都有自己的「大腦」，能自我診斷、自我校正，透過網路彙報給中央系統。最貴但最聰明。",
+   "en": "<strong>DCS + smart devices</strong> = Tesla full self-driving: every sensor has its own \"brain\" that can self-diagnose and self-calibrate and report to the central system over a network. The most expensive but the smartest."
+  },
+  {
+   "zh": "重點提示：DDC/BMS 是藥廠主流選擇",
+   "en": "Key Point: DDC/BMS Is the Mainstream Choice in Pharmaceutical Plants"
+  },
+  {
+   "zh": "對大多數製藥設施而言，DDC/BMS 是最具性價比的選擇：",
+   "en": "For most pharmaceutical facilities, DDC/BMS is the most cost-effective choice:"
+  },
+  {
+   "zh": "大規模應用已顯著降低成本",
+   "en": "Large-scale adoption has significantly reduced costs"
+  },
+  {
+   "zh": "預設的 HVAC 控制軟體減少客製開發",
+   "en": "Default HVAC control software reduces custom development"
+  },
+  {
+   "zh": "製造商已開發藥廠適用的確效方法",
+   "en": "Manufacturers have developed validation approaches suited to pharmaceutical plants"
+  },
+  {
+   "zh": "支援集中監控、分級警報、趨勢記錄",
+   "en": "Supports centralized monitoring, tiered alarms and trend recording"
+  },
+  {
+   "zh": "<strong>PID 控制</strong>是 HVAC 中最常用的控制演算法——Proportional（比例）處理當前誤差、Integral（積分）消除穩態誤差、Derivative（微分）預測未來趨勢。溫度和濕度控制通常用 PI 就足夠，壓差控制可能需要完整的 PID。",
+   "en": "<strong>PID control</strong> is the most commonly used control algorithm in HVAC: Proportional handles the current error, Integral eliminates steady-state error, and Derivative predicts future trends. PI is usually enough for temperature and humidity control, while differential pressure control may need full PID."
+  },
+  {
+   "zh": "一家位於東南亞的小型 CDMO（5 間潔淨室），當地技術支援有限。你會推薦哪種控制系統？為什麼？",
+   "en": "A small CDMO in Southeast Asia (5 cleanrooms) has limited local technical support. Which control system would you recommend? Why?"
+  },
+  {
+   "zh": "DCS 的「智慧現場設備」能自我診斷和自我校正，這對校正管理（Calibration Management）有什麼影響？是否能減少校正頻率？",
+   "en": "The \"smart field devices\" of a DCS can self-diagnose and self-calibrate. What impact does this have on calibration management? Can it reduce calibration frequency?"
+  },
+  {
+   "zh": "8.5.3 Actuation Methods（致動方式）",
+   "en": "8.5.3 Actuation Methods"
+  },
+  {
+   "zh": "比喻說明：電動 vs. 氣動如同電動窗 vs. 液壓門",
+   "en": "Analogy: Electric vs. Pneumatic Is Like a Power Window vs. a Hydraulic Door"
+  },
+  {
+   "zh": "<strong>電動致動器</strong>就像汽車的電動車窗——慢慢升降，精度不錯，但需要時間到位。日常用夠了。",
+   "en": "An <strong>electric actuator</strong> is like a car's power window: it moves up and down slowly, with good accuracy, but takes time to reach position. It is adequate for everyday use."
+  },
+  {
+   "zh": "<strong>氣動致動器</strong>就像公車的氣壓門——「嘶」一聲就開關到位，反應極快。適合需要快速動作的場景。",
+   "en": "A <strong>pneumatic actuator</strong> is like the air-operated door of a bus: with a \"hiss\" it opens or closes into position, and the response is very fast. It suits situations that need fast action."
+  },
+  {
+   "zh": "壓差控制為什麼需要快速反應？因為門一開，壓差立刻歸零——如果致動器反應慢，等它調好風門，門都關上了，根本來不及補償。",
+   "en": "Why does differential pressure control need fast response? Because the moment a door opens, the differential pressure drops to zero immediately. If the actuator is slow, by the time it has adjusted the damper the door is already closed, and there is no chance to compensate."
+  },
+  {
+   "zh": "重點提示：壓差動態控制的反應時間",
+   "en": "Key Point: Response Time in Dynamic Differential Pressure Control"
+  },
+  {
+   "zh": "ISPE 指出一個重要但常被忽略的設計考量：",
+   "en": "ISPE points out an important but often overlooked design consideration:"
+  },
+  {
+   "zh": "溫度、濕度變化慢——反應時間不是關鍵",
+   "en": "Temperature and humidity change slowly, so response time is not critical"
+  },
+  {
+   "zh": "<strong>壓差（DP）變化極快</strong>——門一開就歸零",
+   "en": "<strong>Differential pressure (DP) changes extremely quickly</strong>: it drops to zero the moment a door opens"
+  },
+  {
+   "zh": "動態壓差控制需要<strong>秒級反應時間</strong>",
+   "en": "Dynamic differential pressure control needs a <strong>response time of seconds</strong>"
+  },
+  {
+   "zh": "所有控制器都必須快速回應才行——一個慢的就拖累全部",
+   "en": "All controllers must respond quickly: one slow component drags down the whole loop"
+  },
+  {
+   "zh": "這就是為什麼高等級潔淨室的壓差控制迴路通常使用氣動致動器，而溫濕度控制可以用較便宜的電動致動器。",
+   "en": "This is why the differential pressure control loops of high-grade cleanrooms usually use pneumatic actuators, while temperature and humidity control can use cheaper electric actuators."
+  },
+  {
+   "zh": "一個處理有機溶劑的房間需要主動壓差控制，你會選擇電動還是氣動致動器？考慮哪些因素？",
+   "en": "A room that handles organic solvents needs active differential pressure control. Would you choose an electric or pneumatic actuator? What factors would you consider?"
+  },
+  {
+   "zh": "VFD（Variable Frequency Drive，變頻器）控制風機轉速也是一種「致動」方式，它與風門控制相比有什麼優勢？",
+   "en": "VFD (Variable Frequency Drive) control of fan speed is also a form of \"actuation\". What advantages does it have compared with damper control?"
+  },
+  {
+   "zh": "核心概念：電動 vs. 氣動致動器",
+   "en": "Key Concept: Electric vs. Pneumatic Actuators"
+  },
+  {
+   "zh": "<strong>Actuator（致動器）</strong>是將控制信號轉化為物理動作的元件——打開/關閉風門（Damper）或控制閥（Control Valve）。",
+   "en": "An <strong>Actuator</strong> is a component that converts a control signal into physical action: opening/closing a damper or controlling a control valve."
+  },
+  {
+   "zh": "8.5.4 Critical Parameter Control（關鍵參數控制）",
+   "en": "8.5.4 Critical Parameter Control"
+  },
+  {
+   "zh": "核心概念：四大關鍵環境參數",
+   "en": "Key Concept: The Four Key Environmental Parameters"
+  },
+  {
+   "zh": "HVAC 系統需監測的四大關鍵環境參數：",
+   "en": "The four key environmental parameters that an HVAC system needs to monitor:"
+  },
+  {
+   "zh": "<strong>Airflow（風量）</strong>：影響微粒稀釋和房間從「使用中」到「靜態」的恢復速度",
+   "en": "<strong>Airflow</strong>: affects particle dilution and the speed of room recovery from \"in operation\" to \"at rest\""
+  },
+  {
+   "zh": "<strong>DP（壓差）</strong>：影響相鄰房間之間的微粒遷移方向",
+   "en": "<strong>DP (differential pressure)</strong>: affects the direction of particle migration between adjacent rooms"
+  },
+  {
+   "zh": "<strong>Temperature（溫度）</strong>：可能影響暴露產品的品質",
+   "en": "<strong>Temperature</strong>: may affect the quality of exposed product"
+  },
+  {
+   "zh": "<strong>RH（相對濕度）</strong>：可能影響暴露產品的品質（吸濕性藥品尤其敏感）",
+   "en": "<strong>RH (relative humidity)</strong>: may affect the quality of exposed product (hygroscopic drugs are especially sensitive)"
+  },
+  {
+   "zh": "注意 ISPE 的用詞：溫度和濕度「may affect」——這取決於具體產品和製程。不是所有場景都需要嚴格控制溫濕度。",
+   "en": "Note ISPE's wording: temperature and humidity \"may affect\" product, which depends on the specific product and process. Not every situation needs tight temperature and humidity control."
+  },
+  {
+   "zh": "核心概念：精度 vs. 重複性",
+   "en": "Key Concept: Accuracy vs. Repeatability"
+  },
+  {
+   "zh": "ISPE 提出一個非常重要的區分：",
+   "en": "ISPE makes a very important distinction:"
+  },
+  {
+   "zh": "<strong>Accuracy（精度）</strong>：量測值與真實值的接近程度——量房間溫度時很重要",
+   "en": "<strong>Accuracy</strong>: how close a measured value is to the true value, which matters when measuring room temperature"
+  },
+  {
+   "zh": "<strong>Repeatability（重複性）</strong>：多次量測同一對象得到相同結果的能力——用變頻器（VFD）維持恒定風量時，重複性比精度更重要",
+   "en": "<strong>Repeatability</strong>: the ability to obtain the same result when measuring the same object several times; when a VFD is used to maintain constant airflow, repeatability matters more than accuracy"
+  },
+  {
+   "zh": "這影響校正策略：需要高精度的感測器可能需要三點校正（Three Point Calibration），而只需重複性的可能單點校正（Single Point Calibration）就足夠了。",
+   "en": "This affects the calibration strategy: a sensor that needs high accuracy may need a three-point calibration, while one that needs only repeatability may be adequately served by a single-point calibration."
+  },
+  {
+   "zh": "重點提示：風門（Damper）類型與選擇",
+   "en": "Key Point: Damper Types and Selection"
+  },
+  {
+   "zh": "風門（Damper）是最常見的風量控制元件：",
+   "en": "Dampers are the most common airflow control elements:"
+  },
+  {
+   "zh": "<strong>Single Blade（單葉片）</strong>：最簡單，適合開/關控制",
+   "en": "<strong>Single Blade</strong>: the simplest, suitable for on/off control"
+  },
+  {
+   "zh": "<strong>Parallel Blade（平行葉片）</strong>：葉片同方向旋轉，適合混合氣流",
+   "en": "<strong>Parallel Blade</strong>: blades rotate in the same direction, suitable for mixing airstreams"
+  },
+  {
+   "zh": "<strong>Opposed Blade（對向葉片）</strong>：葉片反方向旋轉，適合流量調節",
+   "en": "<strong>Opposed Blade</strong>: blades rotate in opposite directions, suitable for flow modulation"
+  },
+  {
+   "zh": "<strong>Pneumatic Bladder Damper（氣囊式風門）</strong>：用低壓壓縮空氣膨脹氣囊來開啟空氣動力學外型的葉片，控制更線性",
+   "en": "<strong>Pneumatic Bladder Damper</strong>: uses low-pressure compressed air to inflate a bladder that opens aerodynamically shaped blades, giving more linear control"
+  },
+  {
+   "zh": "<strong>Venturi Damper（文丘里風門）</strong>：可變孔口設計，最佳控制精度，常用於實驗室通風櫃和房間壓差控制",
+   "en": "<strong>Venturi Damper</strong>: a variable-orifice design with the best control accuracy, often used for laboratory fume hoods and room differential pressure control"
+  },
+  {
+   "zh": "ISPE 明確指出：<strong>風機出口風門（Discharge Damper）浪費能源，不建議使用。</strong>應改用 VFD（Variable Frequency Drive，變頻器）控制風機轉速。",
+   "en": "ISPE states explicitly: <strong>discharge dampers on fans waste energy and are not recommended.</strong> A VFD (Variable Frequency Drive) should be used to control fan speed instead."
+  },
+  {
+   "zh": "比喻說明：風門 vs. VFD 如同水龍頭 vs. 水泵",
+   "en": "Analogy: Damper vs. VFD Is Like a Faucet vs. a Water Pump"
+  },
+  {
+   "zh": "控制水流量有兩種方式：",
+   "en": "There are two ways to control water flow:"
+  },
+  {
+   "zh": "<strong>關小水龍頭（風門控制）</strong>：水泵全力運轉，但在出水口用閥門擋住——能量白白浪費在摩擦上",
+   "en": "<strong>Turning down the faucet (damper control)</strong>: the pump runs at full power but a valve at the outlet blocks the flow, so energy is wasted on friction"
+  },
+  {
+   "zh": "<strong>調低水泵轉速（VFD 控制）</strong>：直接降低水泵的功率，用多少就產多少——節能省電",
+   "en": "<strong>Slowing down the pump (VFD control)</strong>: directly reduces the pump power, producing only what is used and saving energy"
+  },
+  {
+   "zh": "VFD 的節能效果是驚人的——風機能耗與轉速的三次方成正比（Fan Affinity Law），轉速降 20% 可以節省約 50% 的能耗！",
+   "en": "The energy saving from a VFD is striking: fan power is proportional to the cube of speed (Fan Affinity Law), so reducing speed by 20% saves about 50% of the energy!"
+  },
+  {
+   "zh": "公式：風機親和定律 Fan Affinity Laws",
+   "en": "Formula: Fan Affinity Laws"
+  },
+  {
+   "zh": "風量 Q ∝ N        （轉速的一次方）\n壓力 P ∝ N²       （轉速的二次方）\n功率 W ∝ N³       （轉速的三次方）\n\n範例：\n  轉速從 100% 降到 80%\n  風量 = 80%\n  功率 = 0.8³ = 51.2%（節省近 49% 能耗！）",
+   "en": "Airflow Q ∝ N        (first power of speed)\nPressure P ∝ N²      (second power of speed)\nPower W ∝ N³         (third power of speed)\n\nExample:\n  Speed reduced from 100% to 80%\n  Airflow = 80%\n  Power = 0.8³ = 51.2% (saves nearly 49% of energy!)"
+  },
+  {
+   "zh": "核心概念：壓差量測設備",
+   "en": "Key Concept: Differential Pressure Measurement Devices"
+  },
+  {
+   "zh": "壓差（DP）量測有多種工具，精度和成本差異很大：",
+   "en": "There are many tools for measuring differential pressure (DP), with large differences in accuracy and cost:"
+  },
+  {
+   "zh": "<strong>Inclined Manometer（傾斜壓力計）</strong>：適合本地讀數，如過濾器壓降",
+   "en": "<strong>Inclined Manometer</strong>: suitable for local readout, such as filter pressure drop"
+  },
+  {
+   "zh": "<strong>Magnehelic Gauge</strong>：堅固耐用的機械式壓差計，是業界標準。但只能單點校正（調零不調跨距），精度有限",
+   "en": "<strong>Magnehelic Gauge</strong>: a rugged mechanical differential pressure gauge and the industry standard. However, it can only be single-point calibrated (zero adjusted but not span), so accuracy is limited"
+  },
+  {
+   "zh": "<strong>Colored Ball Indicator（色球指示器）</strong>：最簡單，不需校正，但只指示方向不顯示數值",
+   "en": "<strong>Colored Ball Indicator</strong>: the simplest, needs no calibration, but indicates direction only and shows no numerical value"
+  },
+  {
+   "zh": "<strong>Electronic Pressure Transducer（電子壓力變送器）</strong>：最高精度（+/- 1.25 Pa），4-20 mA 輸出可接入控制系統",
+   "en": "<strong>Electronic Pressure Transducer</strong>: the highest accuracy (+/- 1.25 Pa), and the 4-20 mA output can be connected to the control system"
+  },
+  {
+   "zh": "關鍵提醒：壓力變送器安裝在可校正的位置，用管路連接到被量測的房間。管路穿入房間處的外表面必須可清潔。",
+   "en": "Key reminder: the pressure transducer is installed in a location where it can be calibrated and is connected by tubing to the room being measured. The external surface where the tubing enters the room must be cleanable."
+  },
+  {
+   "zh": "為什麼 ISPE 說風量量測陣列的主要功能是「維持試車時確定的條件」而不是「獲得精確讀數」？這對日常操作有什麼啟示？",
+   "en": "Why does ISPE say the main function of an airflow measurement array is to \"maintain the conditions established at commissioning\" rather than to \"obtain an exact reading\"? What does this imply for routine operation?"
+  },
+  {
+   "zh": "一間無菌充填室（Grade A/B）的壓差監測，你會選擇 Magnehelic Gauge 還是 Electronic Pressure Transducer？為什麼？",
+   "en": "For differential pressure monitoring in an aseptic filling room (Grade A/B), would you choose a Magnehelic Gauge or an Electronic Pressure Transducer? Why?"
+  },
+  {
+   "zh": "安裝風管內風量監測器時，為什麼需要上游 5 倍管徑、下游 3 倍管徑的直管段？",
+   "en": "When installing an in-duct airflow monitor, why are straight duct runs of 5 duct diameters upstream and 3 duct diameters downstream needed?"
+  },
+  {
+   "zh": "8.5.4.5-8.5.4.6 Temperature &amp; Humidity Sensors（溫度與濕度感測器）",
+   "en": "8.5.4.5-8.5.4.6 Temperature &amp; Humidity Sensors"
+  },
+  {
+   "zh": "核心概念：溫度感測器選擇",
+   "en": "Key Concept: Temperature Sensor Selection"
+  },
+  {
+   "zh": "<strong>RTD（Resistance Temperature Device，電阻溫度偵測器）</strong>是製藥 HVAC 最常用的溫度感測器：",
+   "en": "The <strong>RTD (Resistance Temperature Device)</strong> is the most commonly used temperature sensor in pharmaceutical HVAC:"
+  },
+  {
+   "zh": "<strong>100-Ohm RTD（Pt100）</strong>：標準工業規格，精度可達 +/- 0.1°C，但需要變送器（Transmitter）來補償線路電阻",
+   "en": "<strong>100-Ohm RTD (Pt100)</strong>: standard industrial specification, with accuracy up to +/- 0.1°C, but it needs a transmitter to compensate for lead wire resistance"
+  },
+  {
+   "zh": "<strong>1000-Ohm RTD（Pt1000）</strong>：高電阻值使線路電阻影響可忽略，不需變送器，適合 HVAC 應用",
+   "en": "<strong>1000-Ohm RTD (Pt1000)</strong>: the high resistance value makes the effect of lead wire resistance negligible, so no transmitter is needed, which suits HVAC applications"
+  },
+  {
+   "zh": "<strong>Thermocouple（熱電偶）</strong>：較便宜但精度較低，適合非關鍵量測",
+   "en": "<strong>Thermocouple</strong>: cheaper but less accurate, suitable for non-critical measurements"
+  },
+  {
+   "zh": "關鍵注意：許多溫度感測器<strong>無法現場校正</strong>——超出規格時只能更換。這對備品管理和校正計畫有直接影響。",
+   "en": "Key note: many temperature sensors <strong>cannot be calibrated in the field</strong>; when out of specification they can only be replaced. This has a direct impact on spare parts management and the calibration program."
+  },
+  {
+   "zh": "重點提示：RH 控制的「露點策略」",
+   "en": "Key Point: The \"Dew Point Strategy\" for RH Control"
+  },
+  {
+   "zh": "ISPE 揭示了一個進階的濕度控制技巧：",
+   "en": "ISPE reveals an advanced humidity control technique:"
+  },
+  {
+   "zh": "多個房間共用一台 AHU 時，各房間有獨立的再加熱器（Re-heater）調溫",
+   "en": "When several rooms share one AHU, each room has its own re-heater to adjust temperature"
+  },
+  {
+   "zh": "如果用 RH 控制 AHU 的除濕量，改變送風溫度會連帶改變 RH——造成連鎖反應",
+   "en": "If RH is used to control the dehumidification of the AHU, changing the supply air temperature also changes the RH, causing a chain reaction"
+  },
+  {
+   "zh": "<strong>解決方案：在 AHU 出口控制露點（Dew Point / Absolute Humidity）</strong>，而非 RH",
+   "en": "<strong>Solution: control the dew point (Dew Point / Absolute Humidity) at the AHU outlet</strong> instead of RH"
+  },
+  {
+   "zh": "各房間的溫度變化不會影響送風的含水量",
+   "en": "Temperature changes in each room then do not affect the moisture content of the supply air"
+  },
+  {
+   "zh": "這對 CDMO 特別重要——不同客戶產品可能有不同的溫濕度要求，使用露點控制可以讓同一 AHU 更靈活地服務多個房間。",
+   "en": "This is especially important for CDMOs: different customers' products may have different temperature and humidity requirements, and dew point control lets the same AHU serve several rooms more flexibly."
+  },
+  {
+   "zh": "比喻說明：RH vs. 露點如同體感溫度 vs. 實際溫度",
+   "en": "Analogy: RH vs. Dew Point Is Like Perceived Temperature vs. Actual Temperature"
+  },
+  {
+   "zh": "<strong>相對濕度（RH）</strong>就像「體感溫度」——同樣的水汽含量，溫度高時 RH 低，溫度低時 RH 高。它會隨溫度波動。",
+   "en": "<strong>Relative humidity (RH)</strong> is like \"perceived temperature\": for the same water vapor content, RH is low when the temperature is high and high when the temperature is low. It fluctuates with temperature."
+  },
+  {
+   "zh": "<strong>露點（Dew Point）</strong>就像「實際氣溫」——不管你穿多少衣服，溫度就是溫度。它只反映空氣中的實際含水量，不受溫度影響。",
+   "en": "<strong>Dew point</strong> is like the \"actual air temperature\": no matter how many layers of clothes you wear, the temperature is the temperature. It reflects only the actual moisture content of the air and is not affected by temperature."
+  },
+  {
+   "zh": "控制 AHU 出口的「露點」而非「RH」，就像根據實際氣溫穿衣而非根據體感溫度——更穩定、更可靠。",
+   "en": "Controlling the \"dew point\" at the AHU outlet instead of \"RH\" is like dressing according to the actual air temperature rather than the perceived temperature: more stable and more reliable."
+  },
+  {
+   "zh": "RH 感測器精度通常只有 +/- 2%，這對設定 RH 規格範圍（如 30-65% RH）有什麼影響？控制設定點應該怎麼設？",
+   "en": "RH sensor accuracy is usually only +/- 2%. What effect does this have on setting the RH specification range (for example 30-65% RH)? How should the control setpoint be set?"
+  },
+  {
+   "zh": "為什麼 ISPE 建議濕度感測器的校正頻率可能需要半年或更頻繁？與溫度感測器相比有何不同？",
+   "en": "Why does ISPE suggest that the calibration frequency of humidity sensors may need to be six months or more frequent? How does this differ from temperature sensors?"
+  },
+  {
+   "zh": "8.5.5 Setpoints（控制設定點）",
+   "en": "8.5.5 Setpoints"
+  },
+  {
+   "zh": "核心概念：設定點的安全餘裕",
+   "en": "Key Concept: Safety Margin in Setpoints"
+  },
+  {
+   "zh": "設定點（Setpoint）不是簡單地設在規格範圍的中心。必須考慮<strong>所有誤差的疊加效應</strong>：",
+   "en": "A setpoint is not simply set at the center of the specification range. The <strong>cumulative effect of all errors</strong> must be considered:"
+  },
+  {
+   "zh": "<strong>Drift（漂移）</strong>：感測器隨時間偏離校正值",
+   "en": "<strong>Drift</strong>: the sensor deviates from its calibrated value over time"
+  },
+  {
+   "zh": "<strong>Hysteresis（遲滯）</strong>：上升和下降時讀數不同",
+   "en": "<strong>Hysteresis</strong>: the reading differs on the way up and on the way down"
+  },
+  {
+   "zh": "<strong>Accuracy（精度）</strong>：量測值與真值的偏差",
+   "en": "<strong>Accuracy</strong>: the deviation of the measured value from the true value"
+  },
+  {
+   "zh": "當多個儀表信號組合計算時（如風量追蹤、多點壓差控制），誤差會疊加——設定點必須留足餘裕。",
+   "en": "When several instrument signals are combined in a calculation (such as airflow tracking or multi-point differential pressure control), the errors add up, so the setpoint must leave sufficient margin."
+  },
+  {
+   "zh": "設定點餘裕計算示例",
+   "en": "Worked Example: Setpoint Margin Calculation"
+  },
+  {
+   "zh": "溫度規格範圍：18-25°C\n感測器精度：+/- 0.5°C\n感測器漂移：+/- 0.3°C\n總不確定度：+/- 0.8°C\n\n安全操作範圍：18.8 - 24.2°C\n建議設定點：21.5°C（中心值）\n警報設定：19.0°C（低）/ 24.0°C（高）",
+   "en": "Temperature specification range: 18-25°C\nSensor accuracy: +/- 0.5°C\nSensor drift: +/- 0.3°C\nTotal uncertainty: +/- 0.8°C\n\nSafe operating range: 18.8 - 24.2°C\nRecommended setpoint: 21.5°C (center value)\nAlarm settings: 19.0°C (low) / 24.0°C (high)"
+  },
+  {
+   "zh": "8.5.6 Monitoring of Critical HVAC Parameters（關鍵 HVAC 參數監測）",
+   "en": "8.5.6 Monitoring of Critical HVAC Parameters"
+  },
+  {
+   "zh": "核心概念：關鍵參數的定義是產品導向的",
+   "en": "Key Concept: The Definition of Critical Parameters Is Product-Driven"
+  },
+  {
+   "zh": "ISPE 在這裡傳達一個重要訊息：<strong>HVAC 關鍵參數不是固定的清單，而是取決於具體產品和製程。</strong>",
+   "en": "ISPE conveys an important message here: <strong>critical HVAC parameters are not a fixed list but depend on the specific product and process.</strong>"
+  },
+  {
+   "zh": "密閉製程（Closed Process）：HVAC 參數可能完全不是關鍵的",
+   "en": "Closed process: HVAC parameters may not be critical at all"
+  },
+  {
+   "zh": "開放製程（Open Process）：溫度、濕度、壓差都可能是關鍵參數",
+   "en": "Open process: temperature, humidity and differential pressure may all be critical parameters"
+  },
+  {
+   "zh": "判斷依據：HVAC 參數是否對產品品質有實際影響",
+   "en": "Basis for judgment: whether the HVAC parameter has an actual impact on product quality"
+  },
+  {
+   "zh": "這與 ICH Q9 Quality Risk Management（品質風險管理）的原則完全一致——基於風險評估來決定監測範圍和程度。",
+   "en": "This is fully consistent with the principles of ICH Q9 Quality Risk Management: the scope and extent of monitoring are determined by risk assessment."
+  },
+  {
+   "zh": "感測器精度對操作範圍的影響",
+   "en": "Effect of Sensor Accuracy on the Operating Range"
+  },
+  {
+   "zh": "ISPE 範例（溫度）：\n  接受標準：18-25°C（規格範圍 = 7°C）\n\n  高精度感測器（+/- 0.5°C）：\n    行動限值 = 18.5 - 24.5°C\n    可用操作窗口 = 6°C（86% 利用率）\n\n  低精度感測器（+/- 2°C）：\n    行動限值 = 20 - 23°C\n    可用操作窗口 = 3°C（43% 利用率）\n\n結論：高精度感測器雖然貴，但讓控制系統\n有更大的操作空間，反而更經濟！",
+   "en": "ISPE example (temperature):\n  Acceptance criterion: 18-25°C (specification range = 7°C)\n\n  High-accuracy sensor (+/- 0.5°C):\n    Action limits = 18.5 - 24.5°C\n    Usable operating window = 6°C (86% utilization)\n\n  Low-accuracy sensor (+/- 2°C):\n    Action limits = 20 - 23°C\n    Usable operating window = 3°C (43% utilization)\n\nConclusion: although a high-accuracy sensor is more expensive, it gives\nthe control system a larger operating space and is actually more economical!"
+  },
+  {
+   "zh": "重點提示：失效模式設計——產品安全優先",
+   "en": "Key Point: Failure Mode Design - Product Safety First"
+  },
+  {
+   "zh": "ISPE 要求設計師回答兩個關鍵問題：",
+   "en": "ISPE requires designers to answer two key questions:"
+  },
+  {
+   "zh": "<strong>感測器失效時</strong>：應產生異常讀數觸發警報（Fail-to-Alarm）",
+   "en": "<strong>When a sensor fails</strong>: it should produce an abnormal reading that triggers an alarm (Fail-to-Alarm)"
+  },
+  {
+   "zh": "致動器失效時",
+   "en": "When an actuator fails"
+  },
+  {
+   "zh": "：應選擇對產品和人員最安全的失效模式",
+   "en": ": choose the failure mode that is safest for product and personnel"
+  },
+  {
+   "zh": "Fail Open（失效開啟）：如排氣風門——確保危害物持續排出",
+   "en": "Fail Open: for example an exhaust damper, to ensure hazardous substances continue to be exhausted"
+  },
+  {
+   "zh": "Fail Closed（失效關閉）：如送風風門在高活性區域——防止交叉污染",
+   "en": "Fail Closed: for example a supply damper in a high-potency area, to prevent cross-contamination"
+  },
+  {
+   "zh": "Fail in Last Position（維持最後位置）：適合緩慢變化的參數",
+   "en": "Fail in Last Position: suitable for slowly changing parameters"
+  },
+  {
+   "zh": "這直接呼應本指引的決策層級：<strong>無菌保證 &gt; 產品 CQA &gt; 商業彈性</strong>。",
+   "en": "This directly echoes the decision hierarchy of this guide: <strong>sterility assurance &gt; product CQAs &gt; commercial flexibility</strong>."
+  },
+  {
+   "zh": "比喻說明：感測器選址如同安裝監視器",
+   "en": "Analogy: Sensor Location Is Like Installing Surveillance Cameras"
+  },
+  {
+   "zh": "感測器選址就像在商店安裝監視器：",
+   "en": "Choosing a sensor location is like installing cameras in a shop:"
+  },
+  {
+   "zh": "要裝在<strong>看得清楚</strong>的位置（well-mixed air，不能裝在死角）",
+   "en": "Mount it where it can <strong>see clearly</strong> (well-mixed air, not in a dead corner)"
+  },
+  {
+   "zh": "要<strong>容易維護</strong>（accessible for calibration，不能藏在天花板深處）",
+   "en": "It must be <strong>easy to maintain</strong> (accessible for calibration, not hidden deep in the ceiling)"
+  },
+  {
+   "zh": "不能被電器<strong>干擾</strong>（electromagnetic interference，遠離大馬達）",
+   "en": "It must not be subject to electrical <strong>interference</strong> (electromagnetic interference, so keep away from large motors)"
+  },
+  {
+   "zh": "負壓風管中的感測器要<strong>密封好</strong>——就像防止外面的人偷偷從後門溜進來（unconditioned air ingress）",
+   "en": "A sensor in a negative pressure duct must be <strong>well sealed</strong>, like stopping outsiders from sneaking in through the back door (unconditioned air ingress)"
+  },
+  {
+   "zh": "重點提示：壓片室的感測器選位案例",
+   "en": "Key Point: Sensor Location Case Study in a Tablet Compression Room"
+  },
+  {
+   "zh": "ISPE 用壓片室（Tablet Compression Room）做了一個非常實用的案例分析：",
+   "en": "ISPE uses a tablet compression room for a very practical case study:"
+  },
+  {
+   "zh": "設備產生大量熱和粉塵——房間內溫度不均勻",
+   "en": "The equipment generates a lot of heat and dust, so the temperature in the room is not uniform"
+  },
+  {
+   "zh": "產品最關鍵位置是進料斗（Feed Hopper）——被送風空氣沖洗",
+   "en": "The most critical product location is the feed hopper, which is flushed by supply air"
+  },
+  {
+   "zh": "收集箱（Collection Bin）附近因局部熱量導致 RH 較低",
+   "en": "RH is lower near the collection bin because of local heat"
+  },
+  {
+   "zh": "解決方案：在方便的位置監測，但在 Commissioning 時驗證該位置與關鍵位置的溫度偏差（Offset Mapping）",
+   "en": "Solution: monitor at a convenient location, but verify the temperature offset between that location and the critical location during commissioning (offset mapping)"
+  },
+  {
+   "zh": "這就是「實用主義」的典範——不一定要把感測器裝在最理想但最難維護的位置，而是裝在方便的位置並驗證其代表性。",
+   "en": "This is a model of \"pragmatism\": the sensor does not have to be installed at the ideal but hard-to-maintain position; it can be installed at a convenient position whose representativeness is verified."
+  },
+  {
+   "zh": "一個使用隔離器（Isolator）進行無菌充填的製程，HVAC 的溫度是否為關鍵參數？為什麼？",
+   "en": "For an aseptic filling process that uses an isolator, is HVAC temperature a critical parameter? Why?"
+  },
+  {
+   "zh": "一台排氣風門（Exhaust Damper）服務含有機溶劑的房間，它的失效模式應該是 Fail Open 還是 Fail Closed？為什麼？",
+   "en": "An exhaust damper serves a room containing organic solvents. Should its failure mode be Fail Open or Fail Closed? Why?"
+  },
+  {
+   "zh": "在 Commissioning 時進行 Offset Mapping 的目的是什麼？如果不做，會有什麼風險？",
+   "en": "What is the purpose of offset mapping during commissioning? What are the risks if it is not done?"
+  },
+  {
+   "zh": "8.5.6.6-8.5.6.8 Alarm &amp; Record Requirements（警報與記錄要求）",
+   "en": "8.5.6.6-8.5.6.8 Alarm &amp; Record Requirements"
+  },
+  {
+   "zh": "比喻說明：兩層警報如同車速警示",
+   "en": "Analogy: Two-Tier Alarms Are Like Speed Warnings"
+  },
+  {
+   "zh": "<strong>Alert Alarm</strong> = 導航提醒你「前方有測速照相」——你還沒超速，但再不注意就要超速了。工程師收到通知，趕緊檢查冷凍水系統。",
+   "en": "<strong>Alert Alarm</strong> = the navigation tells you \"speed camera ahead\": you are not speeding yet, but you will be if you do not pay attention. The engineer receives the notification and hurries to check the chilled water system."
+  },
+  {
+   "zh": "<strong>Action Alarm</strong> = 你已經被照到超速——罰單已開。品質部門介入，啟動偏差調查，評估產品影響。",
+   "en": "<strong>Action Alarm</strong> = you have already been photographed speeding: the ticket is issued. The quality unit steps in, starts a deviation investigation and evaluates the product impact."
+  },
+  {
+   "zh": "ISPE 的智慧在於：<strong>如果某個 Action Alarm 觸發後不需要任何行動，那這個 Action Alarm 的存在本身就值得質疑</strong>——為什麼設定一個不需要回應的警報？",
+   "en": "The wisdom of ISPE is this: <strong>if no action is required after an Action Alarm is triggered, the very existence of that Action Alarm is questionable</strong>. Why set an alarm that needs no response?"
+  },
+  {
+   "zh": "重點提示：壓差警報的時間延遲設計",
+   "en": "Key Point: Time Delay Design for Differential Pressure Alarms"
+  },
+  {
+   "zh": "壓差（DP）警報設計是最容易出錯的環節之一：",
+   "en": "Differential pressure (DP) alarm design is one of the areas most prone to error:"
+  },
+  {
+   "zh": "門一開，壓差立刻降到零——如果沒有延遲，每次開門都會觸發「假警報」（Nuisance Alarm）",
+   "en": "When a door opens, the differential pressure drops to zero immediately. Without a delay, every door opening triggers a \"nuisance alarm\""
+  },
+  {
+   "zh": "<strong>有氣鎖的區域</strong>：DP 設定點應在「門開時的正常壓差」略下方（仍 &gt; 0）。當兩道門同時開（DP = 0）時，無延遲立即警報",
+   "en": "<strong>Areas with an airlock</strong>: the DP setpoint should be slightly below the \"normal differential pressure with the door open\" (still &gt; 0). When both doors are open at the same time (DP = 0), an alarm is raised immediately with no delay"
+  },
+  {
+   "zh": "<strong>無氣鎖的區域</strong>：DP 設定點 = 0，加上合理的時間延遲，允許正常通行",
+   "en": "<strong>Areas without an airlock</strong>: the DP setpoint = 0, with a reasonable time delay to allow normal passage"
+  },
+  {
+   "zh": "延遲時間必須在 Commissioning 時用微粒計數驗證——確認延遲期間潔淨空間不受污染",
+   "en": "The delay time must be verified with particle counts during commissioning, to confirm that the clean space is not contaminated during the delay period"
+  },
+  {
+   "zh": "核心概念：Action Alarm 的五個 W",
+   "en": "Key Concept: The Five Ws of an Action Alarm"
+  },
+  {
+   "zh": "每個 Action Alarm 必須有書面的回應計畫，回答五個問題：",
+   "en": "Every Action Alarm must have a written response plan that answers five questions:"
+  },
+  {
+   "zh": "<strong>Who sees it?</strong>——誰看到警報？（操作員、值班工程師？）",
+   "en": "<strong>Who sees it?</strong>: who sees the alarm? (operator, engineer on duty?)"
+  },
+  {
+   "zh": "<strong>Who responds to it?</strong>——誰負責回應？（是否需要 QA 介入？）",
+   "en": "<strong>Who responds to it?</strong>: who is responsible for responding? (is QA involvement needed?)"
+  },
+  {
+   "zh": "<strong>Where is it recorded?</strong>——記錄在哪裡？（BMS 日誌、偏差系統？）",
+   "en": "<strong>Where is it recorded?</strong>: where is it recorded? (BMS log, deviation system?)"
+  },
+  {
+   "zh": "<strong>What action will be taken?</strong>——採取什麼行動？（停機、調整、通知？）",
+   "en": "<strong>What action will be taken?</strong>: what action is taken? (shutdown, adjustment, notification?)"
+  },
+  {
+   "zh": "<strong>Where is the information stored?</strong>——行動記錄存在哪裡？（CAPA 系統？）",
+   "en": "<strong>Where is the information stored?</strong>: where is the record of the action stored? (CAPA system?)"
+  },
+  {
+   "zh": "這五個 W 是 FDA 稽查時最常問的問題——如果你的 SOP 沒有清楚回答，就是 483 觀察項的候選。",
+   "en": "These five Ws are the questions most often asked in FDA inspections. If your SOP does not answer them clearly, it is a candidate for a Form 483 observation."
+  },
+  {
+   "zh": "一間 Grade B 潔淨室沒有氣鎖，壓差警報延遲設為 30 秒。如何在 Commissioning 時驗證這個延遲是否足夠？",
+   "en": "A Grade B cleanroom has no airlock and the differential pressure alarm delay is set to 30 seconds. How would you verify during commissioning that this delay is sufficient?"
+  },
+  {
+   "zh": "風量量測信號「noisy」時使用 Rolling Time Weighted Average 來過濾——為什麼平均窗口建議 4-10 秒而非更長？太長會有什麼風險？",
+   "en": "When an airflow measurement signal is \"noisy\", a Rolling Time Weighted Average is used to filter it. Why is an averaging window of 4-10 seconds recommended rather than a longer one? What are the risks of too long a window?"
+  },
+  {
+   "zh": "核心概念：Alert Alarm vs. Action Alarm",
+   "en": "Key Concept: Alert Alarm vs. Action Alarm"
+  },
+  {
+   "zh": "ISPE 定義了兩層警報架構，這是 HVAC 監測設計的核心：",
+   "en": "ISPE defines a two-tier alarm architecture, which is the core of HVAC monitoring design:"
+  },
+  {
+   "zh": "這是「預防性維護」思維的體現——在出事前先預警，而非出事後才反應。",
+   "en": "This reflects a \"preventive maintenance\" mindset: warn before something goes wrong, rather than react after it has."
+  },
+  {
+   "zh": "重點提示：數據記錄頻率的合理性",
+   "en": "Key Point: Reasonable Data Recording Frequency"
+  },
+  {
+   "zh": "ISPE 提供了一個非常實用的資料記錄頻率指引：",
+   "en": "ISPE provides very practical guidance on data recording frequency:"
+  },
+  {
+   "zh": "記錄方式可以是連續圖表、或日報表（每日最小值、最大值、平均值、標準差）。",
+   "en": "Recording can be by continuous chart or by a daily report (daily minimum, maximum, average and standard deviation)."
+  },
+  {
+   "zh": "8.5.6.9 Airborne Particle Monitoring（懸浮微粒監測）",
+   "en": "8.5.6.9 Airborne Particle Monitoring"
+  },
+  {
+   "zh": "比喻說明：微粒監測如同保全監控",
+   "en": "Analogy: Particle Monitoring Is Like Security Surveillance"
+  },
+  {
+   "zh": "<strong>Manifold System</strong> = 一台監視器接多個攝影機，輪流切換畫面。便宜但你永遠只能看到一個畫面——如果小偷在你沒看的那個角落行動，你就錯過了。",
+   "en": "<strong>Manifold System</strong> = one monitor connected to several cameras, switching between views in turn. Cheap, but you can only ever see one view, and if a thief acts in the corner you are not watching, you miss it."
+  },
+  {
+   "zh": "<strong>Individual Counters</strong> = 每個角落都有獨立的監視器和錄影機，24/7 不間斷。最貴但最安全——任何異常都逃不過。",
+   "en": "<strong>Individual Counters</strong> = every corner has its own monitor and recorder, running 24/7. The most expensive but the safest: no anomaly escapes notice."
+  },
+  {
+   "zh": "<strong>Combination</strong> = 在金庫門口裝獨立監視器（Grade A），走廊用輪切系統（Grade C/D）。這是大多數藥廠的實際選擇。",
+   "en": "<strong>Combination</strong> = an individual monitor at the vault door (Grade A) and a sequential switching system for the corridors (Grade C/D). This is the actual choice of most pharmaceutical plants."
+  },
+  {
+   "zh": "重點提示：取樣管路的「隱形殺手」",
+   "en": "Key Point: The \"Hidden Killer\" of Sampling Tubing"
+  },
+  {
+   "zh": "微粒監測系統最容易被忽視的風險在取樣管路：",
+   "en": "The risk most easily overlooked in a particle monitoring system is the sampling tubing:"
+  },
+  {
+   "zh": "<strong>Particle Loss（微粒損失）</strong>：管路越長，大粒子沉降越嚴重——5 μm 粒子在長管路中損失率可能超過 50%",
+   "en": "<strong>Particle Loss</strong>: the longer the tubing, the worse the settling of large particles; losses of 5 μm particles in long tubing can exceed 50%"
+  },
+  {
+   "zh": "<strong>Static Charge（靜電荷）</strong>：塑膠管路容易累積靜電，微粒「黏」在管壁上，偶爾「叢釋放」造成假高讀數",
+   "en": "<strong>Static Charge</strong>: plastic tubing readily accumulates static charge, particles \"stick\" to the tube wall and are occasionally released in a burst, causing falsely high readings"
+  },
+  {
+   "zh": "<strong>No-Flow Condition（無流動狀態）</strong>：歧管系統在切換取樣點時，非活動管路中的微粒會沉降",
+   "en": "<strong>No-Flow Condition</strong>: when a manifold system switches sampling points, particles in the inactive tubing settle"
+  },
+  {
+   "zh": "<strong>解決方案</strong>：使用不鏽鋼或抗靜電塑膠管路、保持適當湍流傳輸速度、管路彎頭要圓滑且大半徑",
+   "en": "<strong>Solution</strong>: use stainless steel or anti-static plastic tubing, maintain a suitable turbulent transport velocity, and use smooth, large-radius bends"
+  },
+  {
+   "zh": "EU GMP Annex 1 明確要求分級測試使用短管路可攜式計數器——就是因為長管路會導致大粒子損失。",
+   "en": "EU GMP Annex 1 explicitly requires portable counters with short tubing for classification testing, precisely because long tubing causes loss of large particles."
+  },
+  {
+   "zh": "一家 CDMO 正在為新的無菌充填線設計微粒監測系統。Grade A 區域有 4 個關鍵取樣點（靠近充填針、瓶口、膠塞放置、軋蓋）。選擇方案：",
+   "en": "A CDMO is designing the particle monitoring system for a new aseptic filling line. The Grade A area has 4 critical sampling points (near the filling needles, the vial opening, stopper placement and capping). The options are:"
+  },
+  {
+   "zh": "<strong>方案 A</strong>：4 台獨立計數器 —— 成本約 $200K，真正連續監測",
+   "en": "<strong>Option A</strong>: 4 individual counters, cost about $200K, truly continuous monitoring"
+  },
+  {
+   "zh": "<strong>方案 B</strong>：1 台歧管系統 —— 成本約 $80K，但 EU Annex 1 可能挑戰 Grade A 的歧管監測可靠性",
+   "en": "<strong>Option B</strong>: 1 manifold system, cost about $80K, but under EU Annex 1 the reliability of manifold monitoring in Grade A may be challenged"
+  },
+  {
+   "zh": "<strong>推薦</strong>：Grade A 用獨立計數器（符合 EU GMP 連續監測要求），Grade B 可用歧管系統",
+   "en": "<strong>Recommendation</strong>: use individual counters for Grade A (meeting the EU GMP continuous monitoring requirement); a manifold system may be used for Grade B"
+  },
+  {
+   "zh": "EU GMP Annex 1 要求 Grade A 微粒監測「覆蓋整個關鍵製程期間」，但允許例外——在什麼情況下可以不監測？",
+   "en": "EU GMP Annex 1 requires Grade A particle monitoring to \"cover the full duration of critical processing\", but allows exceptions. Under what circumstances is monitoring not required?"
+  },
+  {
+   "zh": "ISO 14644 允許有連續監測的 ISO 5 環境每 24 個月再確效。這比沒有連續監測的環境（6 個月）長 4 倍。這對你的監測系統投資決策有什麼影響？",
+   "en": "ISO 14644 allows ISO 5 environments with continuous monitoring to be requalified every 24 months, which is 4 times longer than for environments without continuous monitoring (6 months). What impact does this have on your investment decision for the monitoring system?"
+  },
+  {
+   "zh": "核心概念：微粒監測的法規要求演進",
+   "en": "Key Concept: Evolution of Regulatory Requirements for Particle Monitoring"
+  },
+  {
+   "zh": "ISPE 彙整了三大法規對微粒監測的要求：",
+   "en": "ISPE has compiled the particle monitoring requirements of three major regulations:"
+  },
+  {
+   "zh": "趨勢非常明確：<strong>連續監測已成為 Grade A/B 區域的業界標準</strong>。安裝連續監測系統可以：(1) 更深入了解製程，(2) 支持降低分類測試頻率（如 ISO 14644 允許有連續監測的 ISO 5 環境每 24 個月再確效）。",
+   "en": "The trend is very clear: <strong>continuous monitoring has become the industry standard for Grade A/B areas</strong>. Installing a continuous monitoring system can: (1) give deeper insight into the process, and (2) support a reduced frequency of classification testing (for example, ISO 14644 allows ISO 5 environments with continuous monitoring to be requalified every 24 months)."
+  },
+  {
+   "zh": "8.5.7 Equipment Monitoring/Maintenance（設備監測/維護）",
+   "en": "8.5.7 Equipment Monitoring/Maintenance"
+  },
+  {
+   "zh": "比喻說明：風機監測如同汽車健康診斷",
+   "en": "Analogy: Fan Monitoring Is Like a Car Health Check"
+  },
+  {
+   "zh": "<strong>過載警報</strong> = 引擎過熱紅燈——壞了才亮，為時已晚",
+   "en": "<strong>Overload alarm</strong> = the engine overheating warning light: it lights only after the breakage, which is too late"
+  },
+  {
+   "zh": "<strong>電流監測</strong> = 定期檢查油耗——如果油耗突然增加，可能是某個零件開始退化",
+   "en": "<strong>Current monitoring</strong> = regularly checking fuel consumption: if consumption suddenly increases, some part may be starting to degrade"
+  },
+  {
+   "zh": "<strong>振動監測</strong> = 聽引擎異音——老師傅能從聲音判斷哪個零件快壞了",
+   "en": "<strong>Vibration monitoring</strong> = listening for unusual engine noise: an experienced mechanic can tell from the sound which part is about to fail"
+  },
+  {
+   "zh": "<strong>風量監測</strong> = 加速測試——最靈敏地反映整體性能，但不告訴你哪裡壞",
+   "en": "<strong>Airflow monitoring</strong> = an acceleration test: it reflects overall performance most sensitively, but does not tell you what is broken"
+  },
+  {
+   "zh": "最佳策略是組合監測：風量確保即時偵測，電流+振動提供預測性維護資訊。",
+   "en": "The best strategy is combined monitoring: airflow ensures immediate detection, and current + vibration provide predictive maintenance information."
+  },
+  {
+   "zh": "重點提示：GEP 驅動的預防性維護監測清單",
+   "en": "Key Point: GEP-Driven Preventive Maintenance Monitoring List"
+  },
+  {
+   "zh": "ISPE 列出了 14 項可監測的設備參數，這些不是 GMP 強制要求，而是 <strong>GEP（Good Engineering Practice）</strong>的建議，目的是確保最低生命週期成本（Lowest Life Cycle Cost）。重點項目包括：",
+   "en": "ISPE lists 14 equipment parameters that can be monitored. These are not GMP mandatory requirements but recommendations of <strong>GEP (Good Engineering Practice)</strong>, with the aim of ensuring the Lowest Life Cycle Cost. Key items include:"
+  },
+  {
+   "zh": "<strong>風門致動器位置（Damper Actuator Position）</strong>：如果風門越來越開到極限，可能代表濾器需要更換或系統需要再平衡",
+   "en": "<strong>Damper Actuator Position</strong>: if a damper keeps opening toward its limit, it may mean a filter needs replacing or the system needs rebalancing"
+  },
+  {
+   "zh": "<strong>濾器壓降（Filter Pressure Drop）</strong>：最基本的維護指標，至少要安裝壓力計提供目視讀數",
+   "en": "<strong>Filter Pressure Drop</strong>: the most basic maintenance indicator; at least a pressure gauge should be installed to provide a visual reading"
+  },
+  {
+   "zh": "<strong>外氣濾器壓降上升速率（Rate of Rise）</strong>：可識別異常情況如積雪堵塞",
+   "en": "<strong>Rate of rise of outside air filter pressure drop</strong>: can identify abnormal situations such as blockage by snow"
+  },
+  {
+   "zh": "<strong>冷卻盤管出口溫度</strong>：當濕度已滿足時，可調高設定溫度節省能源（Energy Setback）",
+   "en": "<strong>Cooling coil outlet temperature</strong>: when the humidity requirement has been met, the setpoint temperature can be raised to save energy (Energy Setback)"
+  },
+  {
+   "zh": "一家 CDMO 正在建立預防性維護（Preventive Maintenance）程式。利用 BMS 監測風機電流趨勢和振動數據，可以：",
+   "en": "A CDMO is establishing a Preventive Maintenance program. Using the BMS to monitor fan current trends and vibration data makes it possible to:"
+  },
+  {
+   "zh": "在軸承失效前 2-4 週預測更換需求，避免計劃外停機",
+   "en": "Predict the need for replacement 2-4 weeks before a bearing fails, avoiding unplanned downtime"
+  },
+  {
+   "zh": "追蹤濾器壓降趨勢，優化更換時間（不必提前更換浪費，也不會太晚影響品質）",
+   "en": "Track filter pressure drop trends to optimize replacement timing (no wasteful early replacement, and not so late that quality is affected)"
+  },
+  {
+   "zh": "每年可能節省 $50K-$100K 的緊急維修和停產損失",
+   "en": "Potentially save $50K-$100K per year in emergency repairs and production stoppage losses"
+  },
+  {
+   "zh": "無線振動感測器（Wireless Accelerometer）的成本已大幅降低，適合 retrofit 到既有設備上。",
+   "en": "The cost of wireless accelerometers has fallen significantly, making them suitable for retrofitting to existing equipment."
+  },
+  {
+   "zh": "為什麼 ISPE 說「風量監測是最靈敏的，但不能提供預測資訊」？預測性維護需要什麼額外的監測手段？",
+   "en": "Why does ISPE say \"airflow monitoring is the most sensitive but cannot provide predictive information\"? What additional monitoring means does predictive maintenance require?"
+  },
+  {
+   "zh": "風門致動器位置（Damper Actuator Position）如何預測系統需要再平衡？請舉一個具體場景說明。",
+   "en": "How can the damper actuator position predict that the system needs rebalancing? Please explain with a specific scenario."
+  },
+  {
+   "zh": "核心概念：風機監測五種方法比較",
+   "en": "Key Concept: Comparison of Five Fan Monitoring Methods"
+  },
+  {
+   "zh": "ISPE 的結論非常清楚：<strong>風量監測是最靈敏的，能偵測所有風機失效模式</strong>。但它只能告訴你「出問題了」，不能預測「即將出問題」。電流監測和振動監測則能提供預測性資訊。",
+   "en": "ISPE's conclusion is very clear: <strong>airflow monitoring is the most sensitive and can detect all fan failure modes</strong>. But it can only tell you that \"something has gone wrong\", not predict that \"something is about to go wrong\". Current monitoring and vibration monitoring can provide predictive information."
+  },
+  {
+   "zh": "本節重點回顧 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "<strong>送風分配</strong>：GMP 空間送風從天花板，回風靠地面；氣流從潔淨側流向非潔淨側；氣鎖室 HEPA 在乾淨側，回風在非乾淨側",
+   "en": "<strong>Supply air distribution</strong>: in GMP spaces, supply air comes from the ceiling and return air is at low level; air flows from the clean side to the non-clean side; in airlocks the HEPA outlet is on the clean side and the return is on the non-clean side"
+  },
+  {
+   "zh": "<strong>排氣策略三級</strong>：Release &amp; Dilution（低危害）→ Capture at Source（中危害，LEV）→ Containment &amp; Exhaust（高危害，密閉排氣）",
+   "en": "<strong>Three tiers of extract strategy</strong>: Release &amp; Dilution (low hazard) → Capture at Source (medium hazard, LEV) → Containment &amp; Exhaust (high hazard, enclosed exhaust)"
+  },
+  {
+   "zh": "<strong>風管設計</strong>：對稱、最少彎折、漸縮管徑、配備平衡風門但不完全依賴風門",
+   "en": "<strong>Ductwork design</strong>: symmetrical, minimum bends, tapering duct size, with balancing dampers provided but without relying entirely on dampers"
+  },
+  {
+   "zh": "<strong>控制系統</strong>：BMS 決策（是否兼任品質記錄）是首要設計決定；DDC/BMS 是藥廠主流；關鍵與非關鍵功能應分層管理",
+   "en": "<strong>Control systems</strong>: the BMS decision (whether it also serves as the quality record system) is the primary design decision; DDC/BMS is the mainstream in pharmaceutical plants; critical and non-critical functions should be managed in tiers"
+  },
+  {
+   "zh": "<strong>致動器</strong>：電動適合慢變參數（溫濕度），氣動適合快變參數（壓差）；VFD 控制風機轉速是節能首選（功率與轉速三次方成正比）",
+   "en": "<strong>Actuators</strong>: electric for slowly changing parameters (temperature and humidity), pneumatic for fast-changing parameters (differential pressure); VFD control of fan speed is the first choice for energy saving (power is proportional to the cube of speed)"
+  },
+  {
+   "zh": "<strong>風量量測</strong>：Pitot Tube（低成本）、Hot Wire Anemometer（低風量精度佳）、Fan Venturi Meter（AHU 最準確）",
+   "en": "<strong>Airflow measurement</strong>: Pitot Tube (low cost), Hot Wire Anemometer (good accuracy at low airflow), Fan Venturi Meter (most accurate for AHUs)"
+  },
+  {
+   "zh": "<strong>風門類型</strong>：Opposed Blade 用於流量調節、Venturi Damper 精度最佳、Discharge Damper 浪費能源不建議使用",
+   "en": "<strong>Damper types</strong>: Opposed Blade for flow modulation, Venturi Damper with the best accuracy, Discharge Damper wastes energy and is not recommended"
+  },
+  {
+   "zh": "<strong>壓差量測</strong>：Magnehelic 適合方向指示但精度有限；電子壓力變送器（+/- 1.25 Pa）適合精確控制",
+   "en": "<strong>Differential pressure measurement</strong>: Magnehelic suits direction indication but has limited accuracy; electronic pressure transducers (+/- 1.25 Pa) suit precise control"
+  },
+  {
+   "zh": "<strong>警報設計</strong>：Alert Alarm（預警給工程師）+ Action Alarm（行動警報給品質部）雙層架構；壓差警報需時間延遲；每個 Action Alarm 必須有五 W 回應計畫",
+   "en": "<strong>Alarm design</strong>: two-tier architecture of Alert Alarm (early warning to engineers) + Action Alarm (action alarm to the quality unit); differential pressure alarms need a time delay; every Action Alarm must have a five-W response plan"
+  },
+  {
+   "zh": "<strong>微粒監測</strong>：連續監測已成 Grade A/B 標準；Grade A 用獨立計數器；取樣管路的靜電、沉降、無流動狀態是隱形風險",
+   "en": "<strong>Particle monitoring</strong>: continuous monitoring has become the Grade A/B standard; use individual counters for Grade A; static charge, settling and no-flow conditions in sampling tubing are hidden risks"
+  },
+  {
+   "zh": "<strong>設備監測</strong>：風量監測偵測所有失效但無預測力；電流+振動監測提供預測性維護能力；GEP 驅動的 14 項監測清單確保最低生命週期成本",
+   "en": "<strong>Equipment monitoring</strong>: airflow monitoring detects all failures but has no predictive power; current + vibration monitoring provide predictive maintenance capability; the GEP-driven list of 14 monitored items ensures the lowest life cycle cost"
+  }
+ ]
+}

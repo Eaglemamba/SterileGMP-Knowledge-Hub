@@ -1,0 +1,1177 @@
+{
+ "source": "section-06-app1-fundamentals.html",
+ "blocks": [
+  {
+   "zh": "附錄1：HVAC 基礎原理",
+   "en": "Appendix 1: HVAC Fundamentals"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解 HVAC 系統的三大基本任務：人員舒適、產品保護、環境安全，以及它們在 GMP 環境中的優先順序",
+   "en": "Understand the three basic tasks of an HVAC system (personnel comfort, product protection, environmental protection) and how they are prioritized in a GMP environment"
+  },
+  {
+   "zh": "掌握影響產品品質的三個主要環境變數（溫度、濕度、空氣污染）與次要 HVAC 因素（壓差、換氣次數、氣流方向）之間的因果關係",
+   "en": "Understand the cause-and-effect relationship between the three primary environmental variables that affect product quality (temperature, humidity, air contamination) and the secondary HVAC factors (differential pressure, air change rate, airflow direction)"
+  },
+  {
+   "zh": "了解 Classified Space（潔淨分級空間）的國際分類體系差異（EU Grade A-D vs. FDA ISO 5/7/8），以及 ISPE 的統一 \"Grade\" 命名方式",
+   "en": "Understand the differences between international classification systems for classified space (EU Grade A-D vs. FDA ISO 5/7/8) and ISPE's unified \"Grade\" nomenclature"
+  },
+  {
+   "zh": "學會區分 Air Change Rate（換氣次數）與 Air Flow Rate（送風量）的本質差異，理解為何任意換氣次數可能不足或過量",
+   "en": "Learn to distinguish between Air Change Rate and Air Flow Rate, and understand why an arbitrary air change rate can be either insufficient or excessive"
+  },
+  {
+   "zh": "認識 Psychrometrics（空氣調節學）的基本概念：Sensible Heat（顯熱）、Latent Heat（潛熱）、Dry Bulb（乾球溫度）、Wet Bulb（濕球溫度）、Dew Point（露點）及其在 HVAC 設計中的應用",
+   "en": "Become familiar with the basic concepts of psychrometrics: sensible heat, latent heat, dry bulb, wet bulb, dew point, and their application in HVAC design"
+  },
+  {
+   "zh": "理解 Differential Pressure（壓差）如何控制氣流方向，以及計算裂縫氣流速度的基本公式",
+   "en": "Understand how differential pressure controls airflow direction, and the basic formula for calculating crack airflow velocity"
+  },
+  {
+   "zh": "7.1 Introduction（導論）",
+   "en": "7.1 Introduction"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念：HVAC 的三層變數架構",
+   "en": "Key Concept: The Three-Tier Variable Structure of HVAC"
+  },
+  {
+   "zh": "ISPE 將 HVAC 變數分為三個層級，這種層級思維對系統設計非常重要：",
+   "en": "ISPE divides HVAC variables into three tiers. This tiered thinking is very important for system design:"
+  },
+  {
+   "zh": "<strong>Primary Variables（一級變數）</strong>：溫度、濕度、空氣污染 — 這些直接影響產品品質，也是 GMP 法規關注的核心",
+   "en": "<strong>Primary Variables</strong>: temperature, humidity, air contamination. These directly affect product quality and are the core focus of GMP regulations"
+  },
+  {
+   "zh": "<strong>Secondary Variables（二級變數）</strong>：壓差、換氣次數、氣流方向等 — 這些是達成一級變數控制的「手段」",
+   "en": "<strong>Secondary Variables</strong>: differential pressure, air change rate, airflow direction, etc. These are the \"means\" of achieving control of the primary variables"
+  },
+  {
+   "zh": "<strong>Tertiary Variables（三級變數）</strong>：風機轉速、風管壓力等 — 這些是工程執行層面的操作參數",
+   "en": "<strong>Tertiary Variables</strong>: fan speed, duct pressure, etc. These are operating parameters at the engineering execution level"
+  },
+  {
+   "zh": "在 CDMO 日常營運中，品保人員關注一級變數，設施工程師調控二級變數，而維護技師監控三級變數。三者之間的因果鏈若斷裂，就會出現 OOS（Out of Specification）事件。",
+   "en": "In day-to-day CDMO operations, QA personnel focus on the primary variables, facility engineers regulate the secondary variables, and maintenance technicians monitor the tertiary variables. If the cause-and-effect chain between the three is broken, OOS (Out of Specification) events will occur."
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "把 HVAC 系統想像成一家餐廳的廚房通風系統：",
+   "en": "Think of an HVAC system as the ventilation system of a restaurant kitchen:"
+  },
+  {
+   "zh": "<strong>一級目標</strong>：讓客人（產品）不被油煙（污染）影響、保持舒適溫度",
+   "en": "<strong>Primary goal</strong>: keep the guests (the product) unaffected by cooking fumes (contamination) and at a comfortable temperature"
+  },
+  {
+   "zh": "<strong>二級手段</strong>：抽油煙機的位置、排風量、廚房與用餐區的氣壓差",
+   "en": "<strong>Secondary means</strong>: the position of the exhaust hood, the exhaust airflow, and the pressure difference between the kitchen and the dining area"
+  },
+  {
+   "zh": "<strong>三級執行</strong>：馬達轉速、風管尺寸、風閥開度",
+   "en": "<strong>Tertiary execution</strong>: motor speed, duct size, damper position"
+  },
+  {
+   "zh": "你不會直接對客人說「我們的馬達是 3000 RPM」，你會說「廚房油煙不會飄到用餐區」— 這就是為什麼法規聚焦在一級變數上。",
+   "en": "You would never tell a guest \"our motor runs at 3000 RPM\"; you would say \"the cooking fumes will not drift into the dining area.\" This is why regulations focus on the primary variables."
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "<strong>Critical Locations（關鍵位置）</strong>是本節最重要的概念之一。指的是產品暴露在環境中、或已清潔的產品接觸面暴露的位置。在無菌充填（Aseptic Filling）中，這就是灌裝針頭到瓶口之間的區域。HVAC 系統的設計必須優先保護這些位置。",
+   "en": "<strong>Critical Locations</strong> is one of the most important concepts in this section. It refers to locations where the product is exposed to the environment, or where cleaned product-contact surfaces are exposed. In aseptic filling, this is the area between the filling needle and the container opening. The HVAC system design must give priority to protecting these locations."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "在你的工廠中，哪些位置屬於 \"critical locations\"？這些位置的環境控制是否都已經被 HVAC 系統涵蓋？",
+   "en": "Which locations in your facility are \"critical locations\"? Is the environmental control of all these locations covered by the HVAC system?"
+  },
+  {
+   "zh": "如果空調系統的風機轉速下降（三級變數），這會如何影響換氣次數（二級）和最終的微粒控制（一級）？",
+   "en": "If the fan speed of the air-conditioning system drops (a tertiary variable), how will this affect the air change rate (secondary) and ultimately particle control (primary)?"
+  },
+  {
+   "zh": "7.2 What Is Heating, Ventilation, and Air Conditioning?（什麼是暖通空調？）",
+   "en": "7.2 What Is Heating, Ventilation, and Air Conditioning?"
+  },
+  {
+   "zh": "核心概念：HVAC 的四大功能",
+   "en": "Key Concept: The Four Functions of HVAC"
+  },
+  {
+   "zh": "HVAC 的名稱本身就揭示了三大功能：<strong>Heating（加熱）</strong>、<strong>Ventilation（通風）</strong>、<strong>Air Conditioning（空氣調節）</strong>。但在製藥環境中，我們需要加上第四個隱性功能：",
+   "en": "The name HVAC itself reveals three functions: <strong>Heating</strong>, <strong>Ventilation</strong> and <strong>Air Conditioning</strong>. In a pharmaceutical environment, however, we need to add a fourth, implicit function:"
+  },
+  {
+   "zh": "<strong>溫度控制</strong>（升溫/降溫）",
+   "en": "<strong>Temperature control</strong> (heating/cooling)"
+  },
+  {
+   "zh": "<strong>濕度控制</strong>（加濕/除濕）",
+   "en": "<strong>Humidity control</strong> (humidification/dehumidification)"
+  },
+  {
+   "zh": "<strong>空氣品質控制</strong>（過濾微粒/氣態污染物）",
+   "en": "<strong>Air quality control</strong> (filtering particles/gaseous contaminants)"
+  },
+  {
+   "zh": "<strong>環境保護</strong>（防止有害物質排放到外部環境）",
+   "en": "<strong>Environmental protection</strong> (preventing harmful substances from being discharged to the outside environment)"
+  },
+  {
+   "zh": "最後一點容易被忽略，但在處理高效能活性藥物成分（HPAPI）的 CDMO 設施中，排氣處理是法規審查的重點。",
+   "en": "The last point is easily overlooked, but in CDMO facilities handling highly potent active pharmaceutical ingredients (HPAPI), exhaust treatment is a focus of regulatory review."
+  },
+  {
+   "zh": "注意原文提到 HVAC 可以「保護外部環境」。這在處理高活性化合物、荷爾蒙類或抗癌藥物時特別重要。排氣系統必須配備適當的過濾裝置（通常是 HEPA 過濾器），確保有害粉塵不會排放到大氣中。這也是環保法規（如 COSHH）要求的一部分。",
+   "en": "Note that the original text says HVAC can \"protect the external environment.\" This is especially important when handling highly potent compounds, hormones or anticancer drugs. The exhaust system must be fitted with suitable filtration (usually HEPA filters) to ensure that hazardous dust is not discharged into the atmosphere. This is also part of what environmental regulations (such as COSHH) require."
+  },
+  {
+   "zh": "7.2.1 Personnel Comfort（人員舒適）",
+   "en": "7.2.1 Personnel Comfort"
+  },
+  {
+   "zh": "核心概念：GMP 環境 vs. 辦公室環境",
+   "en": "Key Concept: GMP Environment vs. Office Environment"
+  },
+  {
+   "zh": "這一節的關鍵洞見是：<strong>製藥潔淨室的「舒適」標準與一般辦公室不同</strong>。穿著完整無塵衣的操作人員需要更低的溫度（20-21°C）和更低的濕度（&lt;60%）。",
+   "en": "The key insight of this section is that <strong>the \"comfort\" standard of a pharmaceutical cleanroom is different from that of an ordinary office</strong>. Operators wearing full cleanroom garments need a lower temperature (20-21°C) and lower humidity (&lt;60%)."
+  },
+  {
+   "zh": "<strong>ASHRAE Comfort Zone（舒適區）</strong>是美國暖通空調學會定義的人體感覺舒適的溫濕度範圍。但在製藥環境中，因為穿戴防護衣物，操作員的代謝熱散失受阻，需要額外降溫。",
+   "en": "<strong>The ASHRAE Comfort Zone</strong> is the range of temperature and humidity that the American Society of Heating, Refrigerating and Air-Conditioning Engineers defines as comfortable for people. In a pharmaceutical environment, however, because protective garments hinder the dissipation of the operator's metabolic heat, additional cooling is needed."
+  },
+  {
+   "zh": "想像你穿著冬天的羽絨衣在 25°C 的辦公室裡工作 8 小時 — 你一定會覺得非常悶熱。GMP 潔淨室裡的操作員穿著無塵衣（甚至雙層手套、面罩），就跟穿羽絨衣一樣。所以潔淨室溫度要比一般辦公室低 2-4°C 才能達到同等的舒適感。",
+   "en": "Imagine working for 8 hours in an office at 25°C wearing a winter down jacket. You would feel stiflingly hot. Operators in a GMP cleanroom wearing cleanroom garments (even double gloves and a face mask) are in the same situation as someone wearing a down jacket. This is why cleanroom temperatures must be 2-4°C lower than in an ordinary office to achieve the same level of comfort."
+  },
+  {
+   "zh": "<strong>濕度下限 30% 的設計考量</strong>：",
+   "en": "<strong>Design considerations for the 30% lower humidity limit</strong>:"
+  },
+  {
+   "zh": "<strong>靜電風險</strong>：低於 30% RH 時，靜電積累加劇。在粉末充填或含有易燃溶劑的區域，靜電可能引發安全事故",
+   "en": "<strong>Static electricity risk</strong>: below 30% RH, static charge build-up increases. In powder filling or areas with flammable solvents, static electricity can cause safety incidents"
+  },
+  {
+   "zh": "<strong>人員健康</strong>：過於乾燥的空氣會刺激喉嚨黏膜，增加呼吸道疾病風險，而生病的操作員是潔淨室的污染源",
+   "en": "<strong>Personnel health</strong>: air that is too dry irritates the mucous membranes of the throat and increases the risk of respiratory illness, and a sick operator is a source of contamination in the cleanroom"
+  },
+  {
+   "zh": "<strong>微粒產生</strong>：不舒適的操作員會產生更多微粒（從每分鐘 100,000 顆增加到數百萬顆）",
+   "en": "<strong>Particle generation</strong>: uncomfortable operators generate more particles (rising from 100,000 per minute to several million)"
+  },
+  {
+   "zh": "公式與計算 Formula",
+   "en": "Formula and Calculation"
+  },
+  {
+   "zh": "<strong>新鮮空氣需求量（ASHRAE 62 標準）</strong>：",
+   "en": "<strong>Fresh air requirement (ASHRAE 62 standard)</strong>:"
+  },
+  {
+   "zh": "每人需要新鮮空氣量 = 15-20 CFM (24-32 m³/hr)\n\n範例：若潔淨室同時有 10 名操作員\n最低新鮮空氣需求 = 10 × 20 CFM = 200 CFM\n                   = 10 × 32 m³/hr = 320 m³/hr\n\n注意：這只是最低 IAQ 需求，\n實際送風量通常遠大於此（因為還需要滿足潔淨度要求）",
+   "en": "Fresh air required per person = 15-20 CFM (24-32 m³/hr)\n\nExample: if there are 10 operators in the cleanroom at the same time\nMinimum fresh air requirement = 10 × 20 CFM = 200 CFM\n                              = 10 × 32 m³/hr = 320 m³/hr\n\nNote: this is only the minimum IAQ requirement.\nThe actual supply airflow is usually much greater\n(because the cleanliness requirements must also be met)"
+  },
+  {
+   "zh": "實務應用 Practical Application",
+   "en": "Practical Application"
+  },
+  {
+   "zh": "<strong>CDMO 場景</strong>：某 CDMO 的 Grade B 區域操作員抱怨太熱。工程師發現房間溫度設定為 22°C（辦公室標準），但操作員穿著二級無塵衣。將溫度調降至 20°C 後，操作員的環境微粒監測數據明顯改善 — 因為舒適的人員會產生更少的微粒。這個案例說明：<strong>人員舒適不只是福利問題，更是產品品質問題</strong>。",
+   "en": "<strong>CDMO scenario</strong>: Operators in a CDMO's Grade B area complained of being too hot. Engineers found that the room temperature was set to 22°C (the office standard), but the operators were wearing level 2 cleanroom garments. After the temperature was lowered to 20°C, the operators' environmental particle monitoring data improved markedly, because comfortable personnel generate fewer particles. This case shows that <strong>personnel comfort is not just a welfare issue but a product quality issue</strong>."
+  },
+  {
+   "zh": "你的潔淨室溫度設定是多少？是否有考慮操作員的穿衣等級？",
+   "en": "What is the temperature setpoint of your cleanroom? Has the gowning level of the operators been taken into account?"
+  },
+  {
+   "zh": "為什麼 ISPE 說「不舒適的操作員每分鐘可能散發數百萬顆微粒」？這對你的環境監測（EM）數據會有什麼影響？",
+   "en": "Why does ISPE say that \"an uncomfortable operator may shed millions of particles per minute\"? What does this mean for your environmental monitoring (EM) data?"
+  },
+  {
+   "zh": "在辦公室環境中空氣流速 0.1 m/s 就足夠，但產品保護需要 1 m/s — 這兩者之間的平衡在你的設施中是如何處理的？",
+   "en": "In an office environment an air velocity of 0.1 m/s is sufficient, but product protection requires 1 m/s. How is the balance between the two handled in your facility?"
+  },
+  {
+   "zh": "7.2.2 Product and Process Considerations（產品與製程考量）",
+   "en": "7.2.2 Product and Process Considerations"
+  },
+  {
+   "zh": "核心概念：環境條件與產品品質的雙向關係",
+   "en": "Key Concept: The Two-Way Relationship Between Environmental Conditions and Product Quality"
+  },
+  {
+   "zh": "這一節揭示了 HVAC 設計中一個關鍵的「雙向邏輯」：",
+   "en": "This section reveals a key \"two-way logic\" in HVAC design:"
+  },
+  {
+   "zh": "<strong>環境 → 產品</strong>：溫度、濕度、微粒直接影響產品品質",
+   "en": "<strong>Environment → Product</strong>: temperature, humidity and particles directly affect product quality"
+  },
+  {
+   "zh": "<strong>人員 → 環境</strong>：不舒適的操作員會產生更多微粒，間接影響產品",
+   "en": "<strong>Personnel → Environment</strong>: uncomfortable operators generate more particles, which indirectly affects the product"
+  },
+  {
+   "zh": "<strong>Cross-contamination（交叉污染）</strong>在 CDMO 尤其重要，因為同一設施可能同時生產多種產品。壓差（DP）控制是防止交叉污染的主要 HVAC 手段。",
+   "en": "<strong>Cross-contamination</strong> is especially important in a CDMO, because the same facility may produce multiple products at the same time. Differential pressure (DP) control is the main HVAC means of preventing cross-contamination."
+  },
+  {
+   "zh": "想像醫院的隔離病房：如果病房內的氣壓比走廊低（負壓），打開門時空氣會從走廊流向病房，防止病菌擴散到走廊。HVAC 的壓差控制原理完全相同 — 讓空氣永遠從「乾淨」流向「較不乾淨」的區域。在 CDMO 處理多產品時，每個產品區域就像一間「隔離病房」。",
+   "en": "Think of an isolation ward in a hospital: if the air pressure inside the ward is lower than in the corridor (negative pressure), air flows from the corridor into the ward when the door is opened, preventing pathogens from spreading into the corridor. HVAC pressure differential control works on exactly the same principle: air always flows from the \"cleaner\" area to the \"less clean\" area. When a CDMO handles multiple products, each product area is like an \"isolation ward.\""
+  },
+  {
+   "zh": "<strong>人體微粒釋放量的驚人數據</strong>：",
+   "en": "<strong>Striking figures on human particle emission</strong>:"
+  },
+  {
+   "zh": "安靜坐姿：約 <strong>100,000 顆/分鐘</strong>（0.3 μm 以上）",
+   "en": "Sitting quietly: about <strong>100,000 particles/minute</strong> (≥0.3 µm)"
+  },
+  {
+   "zh": "悶熱不適時：<strong>數百萬顆/分鐘</strong>",
+   "en": "When hot and uncomfortable: <strong>millions of particles/minute</strong>"
+  },
+  {
+   "zh": "這意味著不適的操作員會讓微粒產生量增加 10-50 倍！這就是為什麼人員舒適度不僅是人力資源議題，更是品質管理議題。CDMO 的環境監測（EM）異常事件中，有相當比例可以追溯到溫度控制不當。",
+   "en": "This means that an uncomfortable operator can increase particle generation by 10-50 times! This is why personnel comfort is not only a human resources issue but also a quality management issue. A considerable proportion of the environmental monitoring (EM) excursions in a CDMO can be traced back to improper temperature control."
+  },
+  {
+   "zh": "重點提示：建築物結露風險",
+   "en": "Key Note: Risk of Condensation in the Building"
+  },
+  {
+   "zh": "原文提到一個容易忽略的問題：<strong>Interstitial Condensation（牆體內結露）</strong>。當室內外溫差大、且建築密封性不足時，水蒸氣會在牆壁、天花板夾層內凝結。這不僅造成建築物損壞，更會成為黴菌和微生物的溫床。在台灣這樣的高濕度氣候下，這個問題尤其嚴重。CDMO 設施的建築維護檢查應包含牆體結露評估。",
+   "en": "The original text mentions an easily overlooked problem: <strong>interstitial condensation</strong>. When the temperature difference between indoors and outdoors is large and the building is not sufficiently sealed, water vapor condenses inside wall and ceiling cavities. This not only damages the building but also becomes a breeding ground for mold and microorganisms. In a high-humidity climate such as Taiwan's, this problem is especially serious. Building maintenance inspections of a CDMO facility should include an assessment of condensation within walls."
+  },
+  {
+   "zh": "你的設施中，NDA 文件有沒有明確規定產品的環境溫濕度範圍？如果沒有，你是如何決定潔淨室的溫濕度設定點的？",
+   "en": "Do your NDA documents (or quality agreements) clearly specify the environmental temperature and humidity ranges for the product? If not, how did you decide the temperature and humidity setpoints for your cleanrooms?"
+  },
+  {
+   "zh": "在多產品 CDMO 設施中，如果兩個相鄰房間都有產品暴露，壓差應該如何設定才能防止交叉污染？",
+   "en": "In a multi-product CDMO facility, if two adjacent rooms both have exposed product, how should the differential pressure be set to prevent cross-contamination?"
+  },
+  {
+   "zh": "7.2.3 Control of Parameters by HVAC Systems（HVAC 系統的參數控制）",
+   "en": "7.2.3 Control of Parameters by HVAC Systems"
+  },
+  {
+   "zh": "核心概念：三種熱傳遞方式",
+   "en": "Key Concept: The Three Modes of Heat Transfer"
+  },
+  {
+   "zh": "<strong>Thermodynamics（熱力學）</strong>的基礎知識：",
+   "en": "The basics of <strong>thermodynamics</strong>:"
+  },
+  {
+   "zh": "<strong>Radiant（輻射）</strong>：太陽光透過窗戶加熱房間，或設備表面散發的紅外線熱輻射",
+   "en": "<strong>Radiant</strong>: sunlight heating a room through a window, or infrared radiation emitted from equipment surfaces"
+  },
+  {
+   "zh": "<strong>Conductive（傳導）</strong>：熱量通過牆壁、地板等固體材料傳遞",
+   "en": "<strong>Conductive</strong>: heat transferred through solid materials such as walls and floors"
+  },
+  {
+   "zh": "<strong>Convective（對流）</strong>：空氣流動帶走或帶來熱量 — 這正是 HVAC 系統的主要工作方式",
+   "en": "<strong>Convective</strong>: air movement carrying heat away or bringing it in. This is exactly how an HVAC system mainly works"
+  },
+  {
+   "zh": "HVAC 設計師必須計算所有熱源（日照、設備、照明、人員），才能正確選配冷卻能力。",
+   "en": "HVAC designers must calculate all heat sources (solar gain, equipment, lighting, people) in order to size the cooling capacity correctly."
+  },
+  {
+   "zh": "重點提示：水蒸氣 vs. 空氣壓差",
+   "en": "Key Note: Water Vapor vs. Air Pressure Difference"
+  },
+  {
+   "zh": "原文中一個非常重要但容易被忽略的觀點：<strong>水蒸氣可以逆著空氣壓差遷移</strong>。這是因為水蒸氣的遷移遵循 <strong>Dalton's Law（道爾頓定律）</strong>，由蒸氣壓差驅動，而非空氣壓差。",
+   "en": "A very important but easily overlooked point in the original text: <strong>water vapor can migrate against the air pressure differential</strong>. This is because water vapor migration follows <strong>Dalton's Law</strong> and is driven by vapor pressure difference, not air pressure difference."
+  },
+  {
+   "zh": "實務意涵：即使你的潔淨室維持正壓，水分仍可能從高濕度的外部環境滲透進來。這就是為什麼在高濕度氣候（如台灣）中，除了壓差控制外，還需要良好的建築密封性和除濕系統。",
+   "en": "Practical implication: even if your cleanroom is maintained at positive pressure, moisture can still infiltrate from a high-humidity outside environment. This is why, in high-humidity climates (such as Taiwan), good building sealing and a dehumidification system are needed in addition to differential pressure control."
+  },
+  {
+   "zh": "核心概念：HEPA vs. ULPA 過濾器",
+   "en": "Key Concept: HEPA vs. ULPA Filters"
+  },
+  {
+   "zh": "<strong>HEPA（High Efficiency Particulate Air，高效微粒空氣過濾器）</strong>：效率 ≥ 99.97%（對 0.3 μm 微粒）",
+   "en": "<strong>HEPA (High Efficiency Particulate Air filter)</strong>: efficiency ≥ 99.97% (for 0.3 µm particles)"
+  },
+  {
+   "zh": "<strong>ULPA（Ultra Low Particulate Air，超低微粒空氣過濾器）</strong>：效率 ≥ 99.999%（對 0.12 μm 微粒）",
+   "en": "<strong>ULPA (Ultra Low Particulate Air filter)</strong>: efficiency ≥ 99.999% (for 0.12 µm particles)"
+  },
+  {
+   "zh": "關鍵洞見：低效過濾器可能去除了大部分微粒的「重量」（質量），但只去除了 20-30% 的微粒「數量」。這是因為大量微小微粒雖然總質量輕，但數量極多。而 GMP 法規關注的是微粒數量，不是質量。",
+   "en": "Key insight: a low-efficiency filter may remove most of the particle \"weight\" (mass) but only 20-30% of the particle \"count.\" This is because large numbers of tiny particles have a low total mass but are extremely numerous. GMP regulations are concerned with particle count, not mass."
+  },
+  {
+   "zh": "想像你用一般的廚房濾網過濾沙子和水的混合物。濾網會擋住大顆的砂石（佔了大部分重量），但細小的泥沙（數量多但重量輕）全部通過了。HEPA 過濾器就像是用極細密的濾紙，連最小的泥沙都能攔截。這就是為什麼潔淨室必須使用 HEPA 而非一般過濾器。",
+   "en": "Imagine using an ordinary kitchen strainer to filter a mixture of sand and water. The strainer stops the large grit (most of the weight), but the fine silt (large in number but light in weight) all passes through. A HEPA filter is like an extremely fine filter paper that catches even the smallest silt. This is why cleanrooms must use HEPA rather than ordinary filters."
+  },
+  {
+   "zh": "重點提示：Viable = Non-viable 的搭便車者",
+   "en": "Key Note: Viable Particles Hitch a Ride on Non-viable Particles"
+  },
+  {
+   "zh": "原文的一個關鍵聲明：<strong>活性微粒（細菌、病毒）附著在非活性微粒上一起移動</strong>。因此，控制總微粒數量就等於控制活性微粒數量。這就是為什麼 GMP 法規同時要求監測 viable（活性）和 non-viable（非活性）微粒 — 它們是「一對搭便車的旅伴」。",
+   "en": "A key statement in the original text: <strong>viable particles (bacteria, viruses) attach to non-viable particles and travel with them</strong>. Therefore, controlling the total particle count is equivalent to controlling the viable particle count. This is why GMP regulations require monitoring both viable and non-viable particles; they are \"travel companions hitching a ride together.\""
+  },
+  {
+   "zh": "在你的設施中，主要的熱源有哪些？是否有進行過熱負荷計算？",
+   "en": "What are the main heat sources in your facility? Has a heat load calculation been performed?"
+  },
+  {
+   "zh": "為什麼過高的空氣流速反而可能增加操作員接觸有害物質的風險（提示：eddies and vortices）？",
+   "en": "Why might an excessively high air velocity actually increase the risk of operator exposure to hazardous substances (hint: eddies and vortices)?"
+  },
+  {
+   "zh": "如果低效過濾器去除了 90% 的微粒質量但只去除了 25% 的微粒數量，這對 GMP 環境監測意味著什麼？",
+   "en": "If a low-efficiency filter removes 90% of the particle mass but only 25% of the particle count, what does this mean for GMP environmental monitoring?"
+  },
+  {
+   "zh": "7.2.4 Limitations of HVAC Systems（HVAC 系統的局限性）",
+   "en": "7.2.4 Limitations of HVAC Systems"
+  },
+  {
+   "zh": "核心概念：HVAC 不是萬靈丹",
+   "en": "Key Concept: HVAC Is Not a Cure-All"
+  },
+  {
+   "zh": "這一節非常重要，ISPE 明確劃清了 HVAC 系統的能力邊界：",
+   "en": "This section is very important; ISPE clearly draws the boundary of what an HVAC system can do:"
+  },
+  {
+   "zh": "HVAC <strong>不能</strong>清潔已經受污染的表面 — 這是清潔程序（CIP/SIP）的工作",
+   "en": "HVAC <strong>cannot</strong> clean surfaces that are already contaminated. That is the job of cleaning procedures (CIP/SIP)"
+  },
+  {
+   "zh": "HVAC <strong>不能</strong>補償設計不良的設施 — 如果門沒有自動關閉、牆面有裂縫，再好的 HVAC 也無法維持潔淨度",
+   "en": "HVAC <strong>cannot</strong> compensate for a poorly designed facility. If doors do not close automatically or walls have cracks, even the best HVAC cannot maintain cleanliness"
+  },
+  {
+   "zh": "HVAC <strong>不能</strong>控制產生過量污染物的製程 — 需要從源頭控制（如密閉操作）",
+   "en": "HVAC <strong>cannot</strong> control a process that generates excessive contaminants. Control is needed at the source (for example, closed operations)"
+  },
+  {
+   "zh": "HVAC 就像家裡的空氣清淨機。如果你不打掃地板、不清理垃圾，光靠空氣清淨機是不可能讓房間乾淨的。空氣清淨機只能處理空氣中的微粒，它沒辦法擦桌子或拖地板。同樣，HVAC 只能控制空氣品質，不能取代適當的設施設計和操作程序。",
+   "en": "HVAC is like an air purifier at home. If you do not sweep the floor or take out the garbage, an air purifier alone cannot make the room clean. An air purifier can only deal with particles in the air; it cannot wipe the table or mop the floor. Likewise, HVAC can only control air quality; it cannot replace proper facility design and operating procedures."
+  },
+  {
+   "zh": "原文最後一句話暗含了一個重要的調查邏輯：<strong>如果 HVAC 系統設計、建造和維護都正確，那麼持續性的污染問題不太可能是 HVAC 造成的，也不太可能靠 HVAC 來解決</strong>。",
+   "en": "The last sentence of the original text implies an important investigation logic: <strong>if the HVAC system is correctly designed, built and maintained, then persistent contamination problems are unlikely to be caused by HVAC, and are unlikely to be solved by HVAC</strong>."
+  },
+  {
+   "zh": "在 CDMO 的偏差調查中，人們經常第一反應就是質疑 HVAC 系統。但如果 HVAC 維護記錄和性能數據都正常，調查方向應該轉向：操作人員行為、清潔程序、設備設計或建築完整性。",
+   "en": "In CDMO deviation investigations, people often question the HVAC system as a first reaction. But if the HVAC maintenance records and performance data are all normal, the investigation should turn to operator behavior, cleaning procedures, equipment design or building integrity."
+  },
+  {
+   "zh": "在你的設施中，過去一年的環境監測（EM）偏差中，有多少最終追溯到 HVAC 系統？有多少其實是操作或清潔問題？",
+   "en": "In your facility, of the environmental monitoring (EM) deviations over the past year, how many were ultimately traced to the HVAC system? How many were actually operational or cleaning problems?"
+  },
+  {
+   "zh": "如果一個房間頻繁出現微粒超標，而 HVAC 系統運作正常，你會從哪些方向進行調查？",
+   "en": "If a room frequently exceeds particle limits while the HVAC system is operating normally, which directions would you investigate?"
+  },
+  {
+   "zh": "7.3 Air Quality Fundamentals（空氣品質基礎）",
+   "en": "7.3 Air Quality Fundamentals"
+  },
+  {
+   "zh": "核心概念：Ventilation 的雙重含義",
+   "en": "Key Concept: The Two Meanings of Ventilation"
+  },
+  {
+   "zh": "<strong>Ventilation（通風）</strong>在製藥語境中有兩個含義：",
+   "en": "<strong>Ventilation</strong> has two meanings in the pharmaceutical context:"
+  },
+  {
+   "zh": "<strong>空氣交換</strong>：移動和替換房間內的空氣以控制污染物（本指引的主要定義）",
+   "en": "<strong>Air exchange</strong>: moving and replacing the air in a room to control contaminants (the main definition used in this guide)"
+  },
+  {
+   "zh": "<strong>新鮮空氣供給</strong>：提供含氧的新鮮空氣",
+   "en": "<strong>Fresh air supply</strong>: providing oxygenated fresh air"
+  },
+  {
+   "zh": "<strong>Effective Ventilation Rate（有效通風率）</strong>是衡量通風效率的關鍵指標，表示實際稀釋效果佔理論完美稀釋的百分比。一個 60% 的有效通風率意味著 40% 的送風被「浪費」在短路循環或死角區域。",
+   "en": "<strong>Effective Ventilation Rate</strong> is a key indicator of ventilation efficiency. It expresses the actual dilution effect as a percentage of theoretically perfect dilution. An effective ventilation rate of 60% means that 40% of the supply air is \"wasted\" on short-circuiting or in dead zones."
+  },
+  {
+   "zh": "想像你在一個充滿煙霧的房間裡開窗通風。如果窗戶在房間的同一側（進風口和出風口太近），大部分新鮮空氣會直接從一個窗戶流到另一個窗戶，房間角落的煙霧幾乎不受影響 — 這就是低效通風。但如果窗戶在對角線位置，新鮮空氣會穿過整個房間才離開 — 這就是高效通風。HVAC 的進風口和回風口佈局原理完全相同。",
+   "en": "Imagine opening a window to ventilate a smoke-filled room. If the windows are on the same side of the room (supply and exhaust too close together), most of the fresh air flows straight from one window to the other and the smoke in the corners of the room is barely affected. This is inefficient ventilation. If the windows are at diagonal positions, the fresh air passes through the whole room before leaving. This is efficient ventilation. The layout principle for HVAC supply and return grilles is exactly the same."
+  },
+  {
+   "zh": "重點提示：CFD 模擬的價值",
+   "en": "Key Note: The Value of CFD Simulation"
+  },
+  {
+   "zh": "<strong>Computational Fluid Dynamics（CFD，計算流體力學）</strong>已成為現代 HVAC 設計的重要工具。通過電腦模擬，工程師可以在施工前預測：",
+   "en": "<strong>Computational Fluid Dynamics (CFD)</strong> has become an important tool in modern HVAC design. Through computer simulation, engineers can predict the following before construction:"
+  },
+  {
+   "zh": "房間內的氣流路徑和速度分佈",
+   "en": "Airflow paths and velocity distribution within the room"
+  },
+  {
+   "zh": "微粒濃度的分佈圖（識別「熱點」）",
+   "en": "Distribution maps of particle concentration (identifying \"hot spots\")"
+  },
+  {
+   "zh": "不同進風/回風佈局的效果比較",
+   "en": "Comparison of the effects of different supply/return layouts"
+  },
+  {
+   "zh": "操作員和設備對氣流的干擾影響",
+   "en": "The disturbance of airflow caused by operators and equipment"
+  },
+  {
+   "zh": "對 CDMO 而言，CFD 可以在設計階段就優化 HVAC 系統，避免施工後才發現問題需要昂貴的改造。",
+   "en": "For a CDMO, CFD can optimize the HVAC system at the design stage and avoid discovering problems after construction that require costly modifications."
+  },
+  {
+   "zh": "你的設施在 HVAC 設計階段是否使用過 CFD 模擬？如果沒有，有沒有在試車時進行煙霧測試（smoke study）來驗證氣流模式？",
+   "en": "Did your facility use CFD simulation at the HVAC design stage? If not, was a smoke study performed during commissioning to verify the airflow patterns?"
+  },
+  {
+   "zh": "21 CFR Part 211 要求確保產品的 \"purity, identity and quality\"。你能說明 HVAC 是如何分別支撐這三個要求的嗎？",
+   "en": "21 CFR Part 211 requires that the \"purity, identity and quality\" of the product be ensured. Can you explain how HVAC supports each of these three requirements?"
+  },
+  {
+   "zh": "7.3.3 Contamination Control（污染控制）",
+   "en": "7.3.3 Contamination Control"
+  },
+  {
+   "zh": "核心概念：稀釋 vs. 置換",
+   "en": "Key Concept: Dilution vs. Displacement"
+  },
+  {
+   "zh": "HVAC 控制微粒有兩種基本策略：",
+   "en": "HVAC has two basic strategies for controlling particles:"
+  },
+  {
+   "zh": "<strong>Dilution Ventilation（稀釋通風）</strong>：送入乾淨空氣，與房間內的污染空氣混合，降低整體污染物濃度。就像往一杯墨水裡不斷加清水。",
+   "en": "<strong>Dilution Ventilation</strong>: clean air is supplied and mixes with the contaminated air in the room, lowering the overall contaminant concentration. It is like continuously adding clean water to a glass of ink."
+  },
+  {
+   "zh": "<strong>Displacement Airflow（置換氣流）</strong>：用乾淨空氣從一端「推」走污染空氣，就像用乾淨水把墨水「沖」出去。效率更高，但需要更精確的氣流設計。",
+   "en": "<strong>Displacement Airflow</strong>: clean air \"pushes\" the contaminated air out from one end, like flushing the ink out with clean water. It is more efficient but requires more precise airflow design."
+  },
+  {
+   "zh": "UFH（Unidirectional Flow Hood，單向氣流工作台）就是置換氣流的典型應用，空氣從 HEPA 過濾器垂直向下或水平吹過工作區域，把微粒「沖」離關鍵位置。",
+   "en": "A UFH (Unidirectional Flow Hood) is a typical application of displacement airflow. Air flows vertically downward or horizontally from a HEPA filter across the work area, \"flushing\" particles away from the critical location."
+  },
+  {
+   "zh": "重點提示：HVAC 的四重保護",
+   "en": "Key Note: The Four Areas of HVAC Protection"
+  },
+  {
+   "zh": "注意原文列出 HVAC 需要同時保護的四個面向：",
+   "en": "Note that the original text lists four aspects that HVAC must protect at the same time:"
+  },
+  {
+   "zh": "<strong>產品免受環境污染</strong>（主要責任）",
+   "en": "<strong>Protecting the product from environmental contamination</strong> (the primary responsibility)"
+  },
+  {
+   "zh": "<strong>產品之間的交叉污染預防</strong>（CDMO 的核心挑戰）",
+   "en": "<strong>Preventing cross-contamination between products</strong> (the core challenge for a CDMO)"
+  },
+  {
+   "zh": "<strong>操作人員免受有害物質暴露</strong>（職業安全）",
+   "en": "<strong>Protecting operators from exposure to hazardous substances</strong> (occupational safety)"
+  },
+  {
+   "zh": "<strong>外部環境免受有害物質排放</strong>（環境保護）",
+   "en": "<strong>Protecting the external environment from discharge of hazardous substances</strong> (environmental protection)"
+  },
+  {
+   "zh": "在設計 HVAC 系統時，這四個需求有時會互相衝突。例如：保護產品需要正壓，但保護操作員免受高活性藥物暴露則需要負壓。如何平衡？— 這就是 Containment HVAC 設計的核心挑戰。",
+   "en": "When designing an HVAC system, these four needs sometimes conflict. For example, protecting the product requires positive pressure, but protecting operators from exposure to highly potent drugs requires negative pressure. How do you balance them? This is the core challenge of containment HVAC design."
+  },
+  {
+   "zh": "<strong>CDMO 場景</strong>：你的 CDMO 同時為客戶 A 生產青黴素類抗生素，為客戶 B 生產注射用蛋白質藥物。這兩個產品絕對不能交叉污染（青黴素過敏可致命）。HVAC 設計必須確保：(1) 兩個區域完全獨立的空調系統，(2) 走廊對兩個區域都保持正壓，(3) Airlock 作為物理屏障。這就是原文說的 \"physical architectural features\" 配合 HVAC 的典型案例。",
+   "en": "<strong>CDMO scenario</strong>: Your CDMO manufactures a penicillin-class antibiotic for Client A and an injectable protein drug for Client B. These two products must never cross-contaminate (penicillin allergy can be fatal). The HVAC design must ensure: (1) completely independent air-handling systems for the two areas, (2) the corridor is kept at positive pressure relative to both areas, (3) an airlock acts as a physical barrier. This is a typical case of the \"physical architectural features\" mentioned in the original text working together with HVAC."
+  },
+  {
+   "zh": "在你的設施中，哪些區域使用置換氣流（displacement），哪些使用稀釋通風（dilution）？為什麼？",
+   "en": "In your facility, which areas use displacement airflow and which use dilution ventilation? Why?"
+  },
+  {
+   "zh": "你能列出至少三個「汙染源應在局部排風口附近」的例子嗎？",
+   "en": "Can you list at least three examples where \"the contamination source should be near the local exhaust point\"?"
+  },
+  {
+   "zh": "7.3.4 Classified Space（潔淨分級空間）",
+   "en": "7.3.4 Classified Space"
+  },
+  {
+   "zh": "核心概念：國際潔淨度分類體系",
+   "en": "Key Concept: International Cleanliness Classification Systems"
+  },
+  {
+   "zh": "製藥界的潔淨度分類系統是一個常見的混亂來源。ISPE 嘗試用「Grade + ISO 數字」來簡化：",
+   "en": "Cleanliness classification systems in the pharmaceutical industry are a common source of confusion. ISPE attempts to simplify them with \"Grade + ISO number\":"
+  },
+  {
+   "zh": "<strong>Grade 5</strong> = ISO 5 in-use = EU Grade A = 舊制 Class 100",
+   "en": "<strong>Grade 5</strong> = ISO 5 in-use = EU Grade A = old Class 100"
+  },
+  {
+   "zh": "<strong>Grade 7</strong> = ISO 7 in-use = 類似 EU Grade B = 舊制 Class 10,000",
+   "en": "<strong>Grade 7</strong> = ISO 7 in-use = similar to EU Grade B = old Class 10,000"
+  },
+  {
+   "zh": "<strong>Grade 8</strong> = ISO 8 in-use = 類似 EU Grade C = 舊制 Class 100,000",
+   "en": "<strong>Grade 8</strong> = ISO 8 in-use = similar to EU Grade C = old Class 100,000"
+  },
+  {
+   "zh": "<strong>CNC</strong> = Controlled Not Classified = 類似 EU Grade D",
+   "en": "<strong>CNC</strong> = Controlled Not Classified = similar to EU Grade D"
+  },
+  {
+   "zh": "重點提示：EU vs. FDA 的關鍵差異",
+   "en": "Key Note: Key Differences Between EU and FDA"
+  },
+  {
+   "zh": "對 CDMO 的實務影響非常大：",
+   "en": "The practical impact on a CDMO is very large:"
+  },
+  {
+   "zh": "<strong>EU 有 \"at-rest\"（靜態）和 \"in-operation\"（動態）兩組限值</strong>，FDA 只有 \"in-operation\"",
+   "en": "<strong>The EU has two sets of limits, \"at-rest\" and \"in-operation\"</strong>, while the FDA has only \"in-operation\""
+  },
+  {
+   "zh": "<strong>EU 有 Grade D</strong>（最低等級的分級空間），FDA 沒有對應等級",
+   "en": "<strong>The EU has Grade D</strong> (the lowest grade of classified space), for which the FDA has no equivalent"
+  },
+  {
+   "zh": "<strong>CDMO 如果同時為歐美客戶生產</strong>，必須滿足兩邊的要求 — 通常意味著需要同時滿足 at-rest 和 in-operation 的微粒限值",
+   "en": "<strong>If a CDMO manufactures for both European and US clients</strong>, it must meet the requirements of both sides, which usually means meeting both the at-rest and in-operation particle limits"
+  },
+  {
+   "zh": "建議：CDMO 設施設計時應以較嚴格的標準為基準，才能同時滿足歐美法規要求。",
+   "en": "Recommendation: when designing a CDMO facility, use the stricter standard as the baseline so that both EU and US regulatory requirements can be met."
+  },
+  {
+   "zh": "把潔淨室分級想像成飯店星級。EU 就像一個同時評估「打掃後」（at-rest）和「住客入住時」（in-operation）的評鑑系統。FDA 只評估「住客入住時」— 他們認為實際使用狀態才是真正重要的。ISPE 則說：「我們用 ISO 星級數字，但加上 FDA 的微生物限值」，試圖建立一個統一的語言。",
+   "en": "Think of cleanroom classification as hotel star ratings. The EU is like a rating system that evaluates both \"after cleaning\" (at-rest) and \"with guests checked in\" (in-operation). The FDA evaluates only \"with guests checked in,\" believing that the actual state of use is what really matters. ISPE says, \"We use ISO star numbers, but add the FDA's microbial limits,\" trying to establish a common language."
+  },
+  {
+   "zh": "圖表解讀 Table Analysis",
+   "en": "Table Analysis"
+  },
+  {
+   "zh": "<strong>Table 7.2</strong> 是一張非常重要的速查表，建議你列印出來放在辦公桌上。重點觀察：",
+   "en": "<strong>Table 7.2</strong> is a very important quick-reference table, and we recommend printing it and keeping it on your desk. Key observations:"
+  },
+  {
+   "zh": "Grade A/ISO 5 的 0.5 μm 微粒限值在 at-rest 和 in-operation 都是 3,520/m³ — 意味著這個等級幾乎不允許人員活動帶來的微粒增加",
+   "en": "The 0.5 µm particle limit for Grade A/ISO 5 is 3,520/m³ in both at-rest and in-operation, meaning that this grade allows almost no increase in particles from personnel activity"
+  },
+  {
+   "zh": "Grade B 在 at-rest 時微粒限值與 Grade A 相同（3,520），但 in-operation 允許高達 352,000 — 差了 100 倍！這就是為什麼 \"recovery time\"（恢復時間）這個概念如此重要",
+   "en": "At rest, the Grade B particle limit is the same as Grade A (3,520), but in operation it allows up to 352,000, a 100-fold difference! This is why the concept of \"recovery time\" is so important"
+  },
+  {
+   "zh": "活性微生物限值：Grade A 要求 &lt;1 cfu/m³，幾乎是零容忍",
+   "en": "Viable microbial limit: Grade A requires &lt;1 cfu/m³, which is almost zero tolerance"
+  },
+  {
+   "zh": "你的設施目前使用哪套分類系統（EU Grade 或 ISO Class）？如果需要轉換到另一套系統，有哪些差異需要注意？",
+   "en": "Which classification system does your facility currently use (EU Grade or ISO Class)? If you needed to convert to the other system, which differences would you need to watch for?"
+  },
+  {
+   "zh": "你的 CNC 區域（如果有）是否定期進行微粒監測？它的性能與 EU Grade D 相比如何？",
+   "en": "Are the particle levels in your CNC areas (if any) monitored regularly? How does their performance compare with EU Grade D?"
+  },
+  {
+   "zh": "如果你的 CDMO 要同時為 EU 和 US 客戶生產無菌產品，HVAC 系統應該設計到什麼等級才能同時滿足兩邊的要求？",
+   "en": "If your CDMO needs to manufacture sterile products for both EU and US clients, to what grade should the HVAC system be designed to meet both sets of requirements?"
+  },
+  {
+   "zh": "7.3.5 Total Airflow Volume and Ventilation Rate（總送風量與換氣率）",
+   "en": "7.3.5 Total Airflow Volume and Ventilation Rate"
+  },
+  {
+   "zh": "核心概念：換氣次數 vs. 送風量 — 關鍵區分",
+   "en": "Key Concept: Air Change Rate vs. Air Flow Rate, a Critical Distinction"
+  },
+  {
+   "zh": "這是本附錄最重要的概念之一。ISPE 用一個精彩的數學例子說明：",
+   "en": "This is one of the most important concepts in this appendix. ISPE uses an elegant mathematical example to illustrate it:"
+  },
+  {
+   "zh": "<strong>Air Change Rate（換氣次數）</strong> = 送風量 ÷ 房間體積。它取決於房間大小，但不直接決定微粒濃度",
+   "en": "<strong>Air Change Rate</strong> = supply airflow ÷ room volume. It depends on the size of the room but does not directly determine particle concentration"
+  },
+  {
+   "zh": "<strong>Air Flow Rate（送風量）</strong> = 實際的清潔空氣供應量。這才是真正決定穩態微粒濃度的因素",
+   "en": "<strong>Air Flow Rate</strong> = the actual amount of clean air supplied. This is what truly determines the steady-state particle concentration"
+  },
+  {
+   "zh": "結論：<strong>相同的送風量，放在大房間裡換氣次數低，放在小房間裡換氣次數高 — 但穩態微粒濃度完全相同！</strong>",
+   "en": "Conclusion: <strong>the same airflow gives a low air change rate in a large room and a high air change rate in a small room, but the steady-state particle concentration is exactly the same!</strong>"
+  },
+  {
+   "zh": "<strong>穩態微粒濃度公式（假設完美混合）</strong>：",
+   "en": "<strong>Steady-state particle concentration formula (assuming perfect mixing)</strong>:"
+  },
+  {
+   "zh": "穩態微粒濃度 = PGR / Q\n\n其中：\n  PGR = Particle Generation Rate（微粒產生率，顆/分鐘）\n  Q   = Air Flow Rate（送風量，CFM 或 m³/min）\n\n範例一（1 ft³ 房間）：\n  PGR = 10,000 顆/min，Q = 1 CFM\n  濃度 = 10,000 / 1 = 10,000 PCF\n  換氣次數 = 1 CFM / 1 ft³ = 60 次/hr\n\n範例二（100 ft³ 房間）：\n  PGR = 10,000 顆/min，Q = 1 CFM\n  濃度 = 10,000 / 1 = 10,000 PCF（完全相同！）\n  換氣次數 = 1 CFM / 100 ft³ = 0.67 次/hr\n\n結論：換氣次數差了 90 倍，但微粒濃度完全一樣。\n送風量（Q）才是控制穩態濃度的關鍵。",
+   "en": "Steady-state particle concentration = PGR / Q\n\nWhere:\n  PGR = Particle Generation Rate (particles/minute)\n  Q   = Air Flow Rate (CFM or m³/min)\n\nExample 1 (1 ft³ room):\n  PGR = 10,000 particles/min, Q = 1 CFM\n  Concentration = 10,000 / 1 = 10,000 PCF\n  Air change rate = 1 CFM / 1 ft³ = 60 changes/hr\n\nExample 2 (100 ft³ room):\n  PGR = 10,000 particles/min, Q = 1 CFM\n  Concentration = 10,000 / 1 = 10,000 PCF (exactly the same!)\n  Air change rate = 1 CFM / 100 ft³ = 0.67 changes/hr\n\nConclusion: the air change rates differ by 90 times, but the particle concentration is exactly the same.\nThe airflow (Q) is the key to controlling steady-state concentration."
+  },
+  {
+   "zh": "想像你在浴缸和游泳池裡分別滴入一滴墨水，然後以相同的流量（例如每分鐘 1 公升）注入清水。浴缸的「換水次數」很高（因為體積小），游泳池的「換水次數」很低（因為體積大）。但最終，如果你持續以相同速率滴入墨水、注入清水，兩者的平衡墨水濃度是一樣的。差別在於：浴缸恢復到透明的速度比游泳池快得多 — 這就是為什麼 recovery time（恢復時間）才跟換氣次數相關。",
+   "en": "Imagine dripping one drop of ink into a bathtub and into a swimming pool, then pouring in clean water at the same flow rate (for example, 1 liter per minute). The bathtub's \"water change rate\" is very high (because the volume is small) and the pool's is very low (because the volume is large). But in the end, if you keep dripping ink and pouring in clean water at the same rates, the equilibrium ink concentration is the same in both. The difference is that the bathtub returns to clear much faster than the pool. This is why recovery time is what relates to the air change rate."
+  },
+  {
+   "zh": "重點提示：換氣次數的迷思",
+   "en": "Key Note: The Myth of Air Change Rates"
+  },
+  {
+   "zh": "製藥業長期存在一個迷思：「換氣次數越高越好」。ISPE 明確指出這是一個<strong>昂貴的誤解</strong>：",
+   "en": "The pharmaceutical industry has long held a myth: \"the higher the air change rate, the better.\" ISPE clearly states that this is an <strong>expensive misunderstanding</strong>:"
+  },
+  {
+   "zh": "過高的換氣次數意味著更大的空調設備、更高的能耗、更多的 HEPA 過濾器更換成本",
+   "en": "An excessively high air change rate means larger air-handling equipment, higher energy consumption, and higher HEPA filter replacement costs"
+  },
+  {
+   "zh": "換氣次數主要影響 <strong>recovery time</strong>（恢復時間），而非穩態微粒濃度",
+   "en": "The air change rate mainly affects <strong>recovery time</strong>, not the steady-state particle concentration"
+  },
+  {
+   "zh": "20 次/hr 是分級空間的常見最低值，可在 20 分鐘內實現 100 倍的微粒下降",
+   "en": "20 changes/hr is a common minimum for classified space and can achieve a 100-fold particle reduction in 20 minutes"
+  },
+  {
+   "zh": "正確的方法是：先確定 PGR 和目標濃度，再計算所需送風量，最後才知道換氣次數",
+   "en": "The correct approach is to first determine the PGR and the target concentration, then calculate the required airflow, and only then know the air change rate"
+  },
+  {
+   "zh": "<strong>成本影響</strong>：某 CDMO 的 Grade 7 房間（50 m³）設計換氣次數為 40 次/hr（送風量 2000 m³/hr）。試車後發現 at-rest 微粒遠低於限值，recovery 只需 8 分鐘。將換氣次數降至 25 次/hr（1250 m³/hr），recovery 時間增加到 14 分鐘（仍在 20 分鐘要求內），但空調能耗降低約 35%。年節省電費和過濾器成本約數十萬台幣。",
+   "en": "<strong>Cost impact</strong>: A CDMO's Grade 7 room (50 m³) was designed with an air change rate of 40 changes/hr (airflow of 2000 m³/hr). After commissioning, it was found that at-rest particle levels were far below the limit and recovery took only 8 minutes. When the air change rate was reduced to 25 changes/hr (1250 m³/hr), the recovery time increased to 14 minutes (still within the 20-minute requirement), but air-conditioning energy consumption fell by about 35%. The annual savings in electricity and filter costs were several hundred thousand NT dollars."
+  },
+  {
+   "zh": "你的分級空間的換氣次數是多少？是根據計算得出的還是「行業慣例」？",
+   "en": "What is the air change rate of your classified spaces? Was it derived from calculation or from \"industry convention\"?"
+  },
+  {
+   "zh": "如果將換氣次數降低 25%，recovery time 會增加多少？是否仍能滿足法規要求？",
+   "en": "If the air change rate is reduced by 25%, by how much will the recovery time increase? Can the regulatory requirement still be met?"
+  },
+  {
+   "zh": "你是否知道你的潔淨室的 PGR（微粒產生率）？如果不知道，是否有方法估算？",
+   "en": "Do you know the PGR (particle generation rate) of your cleanroom? If not, is there a way to estimate it?"
+  },
+  {
+   "zh": "7.3.5.2 Particle Generation Rate（微粒產生率）",
+   "en": "7.3.5.2 Particle Generation Rate"
+  },
+  {
+   "zh": "核心概念：PGR 的實務意義",
+   "en": "Key Concept: The Practical Significance of PGR"
+  },
+  {
+   "zh": "<strong>Particle Generation Rate（PGR，微粒產生率）</strong>是 HVAC 設計的關鍵輸入參數。如果你知道 PGR，就能精確計算所需的送風量。但現實中：",
+   "en": "<strong>Particle Generation Rate (PGR)</strong> is a key input parameter for HVAC design. If you know the PGR, you can calculate the required airflow precisely. In reality, however:"
+  },
+  {
+   "zh": "設備廠商通常不提供 PGR 數據",
+   "en": "Equipment vendors usually do not provide PGR data"
+  },
+  {
+   "zh": "HVAC 設計師被迫做保守估計，導致過度設計（over-design）",
+   "en": "HVAC designers are forced to make conservative estimates, leading to over-design"
+  },
+  {
+   "zh": "過度設計 = 更大的設備 + 更高的能耗 + 更多的成本",
+   "en": "Over-design = larger equipment + higher energy consumption + higher cost"
+  },
+  {
+   "zh": "好消息是：在 water batching（水模擬批次）階段可以實測 PGR，如果發現比估計低，有機會降低送風量來節省成本。",
+   "en": "The good news is that PGR can be measured during water batching (a simulated batch with water), and if it turns out to be lower than estimated, there is an opportunity to reduce the airflow and save cost."
+  },
+  {
+   "zh": "重點提示：產品粉塵不是污染物",
+   "en": "Key Note: Product Dust Is Not a Contaminant"
+  },
+  {
+   "zh": "這是一個非常重要但容易混淆的概念。在<strong>無菌粉末充填（Aseptic Powder Filling）</strong>操作中，微粒計數器可能顯示非常高的讀數，但這些微粒是產品本身的粉末，不是環境污染物。",
+   "en": "This is a very important but easily confused concept. In <strong>aseptic powder filling</strong> operations, a particle counter may show very high readings, but these particles are the product powder itself, not environmental contaminants."
+  },
+  {
+   "zh": "這不代表潔淨室設計失敗。但要注意：即使產品粉塵本身不是污染物，高濃度的粉塵仍可能干擾環境監測的判讀。CDMO 需要建立明確的數據解讀標準，區分「產品相關微粒」和「環境污染微粒」。",
+   "en": "This does not mean the cleanroom design has failed. But note that even though product dust itself is not a contaminant, high dust concentrations can still interfere with the interpretation of environmental monitoring. A CDMO needs to establish clear data interpretation criteria that distinguish \"product-related particles\" from \"environmental contaminant particles.\""
+  },
+  {
+   "zh": "PGR 就像一個水龍頭漏水的速率。如果你知道漏水速率（PGR），你就能計算需要多大的排水管（送風量）來防止積水（微粒超標）。但如果你不知道漏水速率，你只能裝一根「應該夠大」的排水管 — 這就是過度設計。試車階段就像第一次開水龍頭測試：你終於知道實際漏水速率，可以決定是否可以換一根較小（較省錢）的排水管。",
+   "en": "PGR is like the rate at which a faucet leaks. If you know the leak rate (PGR), you can calculate how large a drain pipe (airflow) you need to prevent water from accumulating (particle excursions). If you do not know the leak rate, you can only install a drain pipe that is \"supposed to be big enough,\" which is over-design. The commissioning phase is like turning on the faucet for the first time to test it: you finally know the actual leak rate and can decide whether a smaller (cheaper) drain pipe will do."
+  },
+  {
+   "zh": "你的設施在試車或 APS（無菌製程模擬）階段是否有收集 PGR 數據？這些數據是否被用來優化 HVAC 設計？",
+   "en": "Does your facility collect PGR data during commissioning or APS (aseptic process simulation)? Are these data used to optimize the HVAC design?"
+  },
+  {
+   "zh": "如果你的粉末充填線的微粒計數在操作中遠超 ISO 7 限值，但全部是產品粉塵，你會如何處理這個環境監測數據？",
+   "en": "If the particle counts on your powder filling line far exceed the ISO 7 limit during operation but are all product dust, how would you handle these environmental monitoring data?"
+  },
+  {
+   "zh": "7.3.5.3 Impact of Unidirectional Airflow Hoods on Air Change Rates（單向氣流罩對換氣次數的影響）",
+   "en": "7.3.5.3 Impact of Unidirectional Airflow Hoods on Air Change Rates"
+  },
+  {
+   "zh": "核心概念：UFH/FFU 的換氣次數貢獻",
+   "en": "Key Concept: The Contribution of UFH/FFU to Air Change Rates"
+  },
+  {
+   "zh": "<strong>Unidirectional Flow Hood（UFH，單向氣流罩）</strong>和 <strong>Fan Filter Unit（FFU，風機過濾單元）</strong>會在房間內產生額外的清潔氣流。但是，不能簡單地把這些氣流加到房間的換氣次數計算中。原因有三：",
+   "en": "<strong>Unidirectional Flow Hoods (UFH)</strong> and <strong>Fan Filter Units (FFU)</strong> create additional clean airflow within a room. However, this airflow cannot simply be added to the room's air change rate calculation, for three reasons:"
+  },
+  {
+   "zh": "<strong>Short-circuiting（短路循環）</strong>：UFH 排出的空氣可能直接被自己的進風口吸回，沒有真正稀釋整個房間的空氣",
+   "en": "<strong>Short-circuiting</strong>: air discharged from a UFH may be drawn straight back into its own intake without actually diluting the air in the whole room"
+  },
+  {
+   "zh": "<strong>污染物積累</strong>：離開 Grade 5 工作區的空氣已經收集了設備和人員的微粒，不再是「乾淨」的",
+   "en": "<strong>Contaminant accumulation</strong>: air leaving the Grade 5 work area has already collected particles from equipment and personnel and is no longer \"clean\""
+  },
+  {
+   "zh": "<strong>局部效應</strong>：FFU 可能只在其正下方創造一個「超潔淨」區域，而非均勻改善整個房間",
+   "en": "<strong>Local effect</strong>: an FFU may create an \"ultra-clean\" zone only directly beneath it rather than improving the whole room uniformly"
+  },
+  {
+   "zh": "想像你在一個充滿灰塵的房間裡放了一台桌上型空氣清淨機。清淨機會讓它附近的空氣變得很乾淨，但如果出風口和進風口太近，乾淨空氣會在清淨機周圍循環，房間的另一端還是很髒。你不能說「清淨機的風量 + 中央空調的風量 = 房間的總換氣量」，因為清淨機的風量只在局部有效。",
+   "en": "Imagine placing a desktop air purifier in a dusty room. The purifier makes the air near it very clean, but if its outlet and inlet are too close together, the clean air circulates around the purifier and the other end of the room stays dirty. You cannot say \"purifier airflow + central air-conditioning airflow = total air change of the room,\" because the purifier's airflow is effective only locally."
+  },
+  {
+   "zh": "在 HVAC 確效（Qualification）時，需要驗證 UFH/FFU 對整個房間的實際影響：",
+   "en": "During HVAC qualification, the actual effect of the UFH/FFU on the whole room needs to be verified:"
+  },
+  {
+   "zh": "在 UFH 運作和關閉兩種狀態下分別測量房間微粒",
+   "en": "Measure room particles with the UFH operating and with it switched off"
+  },
+  {
+   "zh": "測量 UFH 出風口不同距離處的微粒濃度，繪製衰減曲線",
+   "en": "Measure particle concentrations at different distances from the UFH outlet and plot a decay curve"
+  },
+  {
+   "zh": "進行煙霧測試確認是否存在短路循環",
+   "en": "Perform a smoke study to confirm whether short-circuiting exists"
+  },
+  {
+   "zh": "你的潔淨室中有 UFH 或 FFU 嗎？在計算換氣次數時，你是否把它們的風量包含在內？",
+   "en": "Does your cleanroom have UFHs or FFUs? When calculating the air change rate, do you include their airflow?"
+  },
+  {
+   "zh": "你有沒有做過煙霧測試來確認 UFH 的氣流是否存在短路循環？",
+   "en": "Have you performed a smoke study to confirm whether the UFH airflow has short-circuiting?"
+  },
+  {
+   "zh": "7.3.6 Room Air Distribution and Quality of Incoming Air（房間空氣分佈與進氣品質）",
+   "en": "7.3.6 Room Air Distribution and Quality of Incoming Air"
+  },
+  {
+   "zh": "核心概念：Plug Flow vs. Laminar Flow",
+   "en": "Key Concept: Plug Flow vs. Laminar Flow"
+  },
+  {
+   "zh": "ISPE 提出了一個重要的設計理念：你不需要建造昂貴的「層流天花板」（laminar flow ceiling）來獲得良好的空氣分佈。",
+   "en": "ISPE presents an important design philosophy: you do not need to build an expensive \"laminar flow ceiling\" to achieve good air distribution."
+  },
+  {
+   "zh": "<strong>Laminar Flow（層流）</strong>：所有空氣以均勻、恆定的速度向同一方向移動。昂貴，需要整個天花板都是 HEPA 過濾器",
+   "en": "<strong>Laminar Flow</strong>: all air moves in the same direction at a uniform, constant velocity. It is expensive and requires the entire ceiling to be HEPA filters"
+  },
+  {
+   "zh": "<strong>Plug Flow（柱塞流）</strong>：空氣大致從天花板向地面移動，但速度不恆定。通過均勻分佈的多個出風口實現，成本更低",
+   "en": "<strong>Plug Flow</strong>: air moves roughly from the ceiling toward the floor, but at a non-constant velocity. It is achieved through multiple evenly distributed supply outlets and costs less"
+  },
+  {
+   "zh": "<strong>Non-aspirating Diffuser（非引射式散流器）</strong>是實現 plug flow 的關鍵設備，它將空氣以低速垂直向下送出，不會捲入周圍的空氣。",
+   "en": "<strong>Non-aspirating Diffusers</strong> are the key devices for achieving plug flow. They discharge air vertically downward at low velocity without entraining the surrounding air."
+  },
+  {
+   "zh": "重點提示：Dead Zones 的風險",
+   "en": "Key Note: The Risk of Dead Zones"
+  },
+  {
+   "zh": "<strong>Dead Zones（死角區域）</strong>是指房間中空氣幾乎不流動的區域，通常在角落和地板附近。微粒會在這些區域積累，成為潛在的污染源。解決方案：",
+   "en": "<strong>Dead Zones</strong> are areas of a room where the air barely moves, usually in corners and near the floor. Particles accumulate in these areas and become a potential source of contamination. Solutions:"
+  },
+  {
+   "zh": "在低牆位置設置多個回風口",
+   "en": "Install multiple return grilles at low wall positions"
+  },
+  {
+   "zh": "避免在角落堆放物品阻擋氣流",
+   "en": "Avoid stacking items in corners that block airflow"
+  },
+  {
+   "zh": "在試車時使用煙霧測試識別死角",
+   "en": "Use smoke studies during commissioning to identify dead zones"
+  },
+  {
+   "zh": "注意：製藥設施通常<strong>不使用穿孔地板</strong>作為回風口（與半導體晶圓廠不同），因為清潔和維護困難。",
+   "en": "Note: pharmaceutical facilities generally <strong>do not use perforated floors</strong> as returns (unlike semiconductor fabs) because they are difficult to clean and maintain."
+  },
+  {
+   "zh": "你的潔淨室使用什麼類型的送風散流器？是傳統的方形散流器還是非引射式散流器？",
+   "en": "What type of supply diffuser does your cleanroom use? Conventional square diffusers or non-aspirating diffusers?"
+  },
+  {
+   "zh": "你的設施在試車時是否進行過煙霧測試來識別 dead zones？",
+   "en": "Did your facility perform smoke studies during commissioning to identify dead zones?"
+  },
+  {
+   "zh": "7.3.7 Airflow Direction and Pressurization（氣流方向與壓力控制）",
+   "en": "7.3.7 Airflow Direction and Pressurization"
+  },
+  {
+   "zh": "核心概念：Differential Pressure（壓差，DP）控制",
+   "en": "Key Concept: Differential Pressure (DP) Control"
+  },
+  {
+   "zh": "<strong>Differential Pressure（壓差）</strong>是製藥 HVAC 中最重要的控制參數之一。核心原理：",
+   "en": "<strong>Differential Pressure</strong> is one of the most important control parameters in pharmaceutical HVAC. The core principles:"
+  },
+  {
+   "zh": "完全氣密的房間不可能用一般建築工法實現",
+   "en": "A completely airtight room cannot be achieved with ordinary building methods"
+  },
+  {
+   "zh": "門縫、管路穿牆處、電線管路等都會有「裂縫」",
+   "en": "Door gaps, pipe penetrations through walls, conduit runs and so on all create \"cracks\""
+  },
+  {
+   "zh": "通過維持房間之間的壓差，讓空氣永遠從高壓（潔淨）側流向低壓（較不潔淨）側",
+   "en": "By maintaining a pressure differential between rooms, air always flows from the high-pressure (clean) side to the low-pressure (less clean) side"
+  },
+  {
+   "zh": "裂縫處的空氣流速需達到 100-200 FPM（0.5-1.0 m/s）才能有效阻擋微粒和微生物遷移",
+   "en": "The air velocity through cracks must reach 100-200 FPM (0.5-1.0 m/s) to effectively block the migration of particles and microorganisms"
+  },
+  {
+   "zh": "<strong>壓差-流速-風量關係公式</strong>：",
+   "en": "<strong>Formula relating pressure differential, velocity and airflow</strong>:"
+  },
+  {
+   "zh": "Imperial:  V = 4005 × sqrt(VP)\n           VP = (Q / (4005 × A))²\n\nMetric:    VP(Pa) = (Q / (110 × A))²\n           Q = m³/hr, A = m²\n\n實例計算：\n假設門縫面積 A = 0.1 m²（約 1 ft²）\n目標壓差 VP = 12.5 Pa (0.05 inch wg)\n\nQ = 110 × A × sqrt(VP)\nQ = 110 × 0.1 × sqrt(12.5)\nQ = 110 × 0.1 × 3.54\nQ ≈ 39 m³/min ≈ 1500 m³/hr\n\n即：僅一個門縫就需要約 1500 m³/hr 的\n「額外」送風來維持 12.5 Pa 的壓差！",
+   "en": "Imperial:  V = 4005 × sqrt(VP)\n           VP = (Q / (4005 × A))²\n\nMetric:    VP(Pa) = (Q / (110 × A))²\n           Q = m³/hr, A = m²\n\nWorked example:\nAssume a door gap area A = 0.1 m² (about 1 ft²)\nTarget pressure differential VP = 12.5 Pa (0.05 inch wg)\n\nQ = 110 × A × sqrt(VP)\nQ = 110 × 0.1 × sqrt(12.5)\nQ = 110 × 0.1 × 3.54\nQ ≈ 39 m³/min ≈ 1500 m³/hr\n\nThat is, a single door gap alone requires about 1500 m³/hr of\n\"extra\" supply air to maintain a 12.5 Pa pressure differential!"
+  },
+  {
+   "zh": "壓差控制就像氣球：如果氣球有小孔，你需要不斷充氣來維持氣球的膨脹狀態（正壓）。小孔越多或越大，需要充氣的速率就越高。房間的門縫、管路穿牆孔就是「小孔」，送風系統就是「打氣筒」。建築施工越密封，需要的「充氣量」就越少，也就越省能源。",
+   "en": "Pressure differential control is like a balloon: if the balloon has a small hole, you must keep inflating it to keep it inflated (positive pressure). The more or larger the holes, the higher the rate of inflation required. The door gaps and pipe penetrations of a room are the \"small holes,\" and the supply air system is the \"pump.\" The more tightly the building is constructed, the less \"inflation\" is needed and the more energy is saved."
+  },
+  {
+   "zh": "重點提示：隱藏的成本因素",
+   "en": "Key Note: A Hidden Cost Factor"
+  },
+  {
+   "zh": "壓差維持所需的「滲漏補償風量」是 HVAC 能耗的一個重要但經常被低估的來源：",
+   "en": "The \"leakage make-up airflow\" needed to maintain pressure differentials is an important but often underestimated source of HVAC energy consumption:"
+  },
+  {
+   "zh": "常見的估算方法：每平方英尺房間表面分配 0.05-0.5 CFM 的滲漏補償風量",
+   "en": "A common estimating method: allow 0.05-0.5 CFM of leakage make-up airflow per square foot of room surface area"
+  },
+  {
+   "zh": "建築密封性越差，所需補償風量越大，能耗越高",
+   "en": "The poorer the building's sealing, the greater the make-up airflow required and the higher the energy consumption"
+  },
+  {
+   "zh": "在試車期間測試並修補滲漏點是降低長期營運成本的最佳時機",
+   "en": "Commissioning is the best time to test for and repair leaks to reduce long-term operating costs"
+  },
+  {
+   "zh": "CDMO 在評估廠房租賃或新建時，建築的氣密性品質直接影響 HVAC 營運成本。",
+   "en": "When a CDMO evaluates a building lease or new construction, the airtightness quality of the building directly affects HVAC operating costs."
+  },
+  {
+   "zh": "你的設施中，各潔淨室之間的壓差設定值是多少 Pa？這些值是如何決定的？",
+   "en": "What are the pressure differential setpoints (in Pa) between the cleanrooms in your facility? How were these values determined?"
+  },
+  {
+   "zh": "你是否知道你的潔淨室門縫的大致面積？這對維持壓差所需的送風量有什麼影響？",
+   "en": "Do you know the approximate area of the door gaps in your cleanrooms? What effect does this have on the airflow needed to maintain pressure differentials?"
+  },
+  {
+   "zh": "在試車階段，你的設施是否進行過氣密性測試並修補滲漏點？",
+   "en": "During commissioning, did your facility perform airtightness tests and repair leaks?"
+  },
+  {
+   "zh": "7.3.8 Control of Operator Exposure to Potent and Hazardous Compounds（操作員暴露控制）",
+   "en": "7.3.8 Control of Operator Exposure to Potent and Hazardous Compounds"
+  },
+  {
+   "zh": "核心概念：操作員暴露控制的層級",
+   "en": "Key Concept: The Hierarchy of Operator Exposure Control"
+  },
+  {
+   "zh": "處理高活性藥物成分（HPAPI）時，ISPE 強調一個控制層級（Hierarchy of Control）：",
+   "en": "When handling highly potent active pharmaceutical ingredients (HPAPI), ISPE emphasizes a Hierarchy of Control:"
+  },
+  {
+   "zh": "<strong>Substitution（替代）</strong>：能否使用較不危險的替代物質？",
+   "en": "<strong>Substitution</strong>: can a less hazardous substance be used instead?"
+  },
+  {
+   "zh": "<strong>Source Control（源頭控制）</strong>：密閉容器、隔離器、封閉式轉料系統",
+   "en": "<strong>Source Control</strong>: closed vessels, isolators, closed transfer systems"
+  },
+  {
+   "zh": "<strong>LEV（Local Exhaust Ventilation，局部排風）</strong>：在產塵點設置排風口",
+   "en": "<strong>LEV (Local Exhaust Ventilation)</strong>: exhaust points at dust-generating locations"
+  },
+  {
+   "zh": "<strong>HVAC 方法</strong>：整體房間的壓差和換氣控制",
+   "en": "<strong>HVAC approach</strong>: pressure differential and air change control for the room as a whole"
+  },
+  {
+   "zh": "<strong>PPE（Personal Protective Equipment，個人防護裝備）</strong>：面罩、呼吸器等",
+   "en": "<strong>PPE (Personal Protective Equipment)</strong>: face masks, respirators, etc."
+  },
+  {
+   "zh": "<strong>Administrative Controls（行政管控）</strong>：輪班制度、暴露時間限制",
+   "en": "<strong>Administrative Controls</strong>: shift systems, limits on exposure time"
+  },
+  {
+   "zh": "重點：PPE 是<strong>最後一道防線</strong>，不應該是第一選擇。",
+   "en": "Key point: PPE is the <strong>last line of defense</strong> and should not be the first choice."
+  },
+  {
+   "zh": "重點提示：OEL 與 HVAC 設計的關係",
+   "en": "Key Note: The Relationship Between OEL and HVAC Design"
+  },
+  {
+   "zh": "<strong>Operator Exposure Limit（OEL，操作員暴露限值）</strong>直接影響 HVAC 設計。OEL 越低（藥物越強效），HVAC 系統需要提供的保護就越高：",
+   "en": "The <strong>Operator Exposure Limit (OEL)</strong> directly affects HVAC design. The lower the OEL (the more potent the drug), the higher the level of protection the HVAC system must provide:"
+  },
+  {
+   "zh": "OEL &gt; 100 μg/m³：一般通風 + 基本 PPE 可能就足夠",
+   "en": "OEL &gt; 100 µg/m³: general ventilation + basic PPE may be sufficient"
+  },
+  {
+   "zh": "OEL 10-100 μg/m³：需要 LEV + 負壓控制",
+   "en": "OEL 10-100 µg/m³: LEV + negative pressure control required"
+  },
+  {
+   "zh": "OEL &lt; 10 μg/m³：需要隔離器或密閉系統",
+   "en": "OEL &lt; 10 µg/m³: isolators or closed systems required"
+  },
+  {
+   "zh": "OEL &lt; 1 μg/m³：需要完全密閉的隔離器系統",
+   "en": "OEL &lt; 1 µg/m³: fully enclosed isolator systems required"
+  },
+  {
+   "zh": "對 CDMO 而言，接受高活性藥物訂單前，必須評估現有 HVAC 系統是否能提供足夠的保護。",
+   "en": "For a CDMO, before accepting an order for a highly potent drug, it must assess whether the existing HVAC system can provide sufficient protection."
+  },
+  {
+   "zh": "<strong>CDMO 商業決策</strong>：某 CDMO 收到一個 HPAPI 產品的生產詢價，OEL 為 0.5 μg/m³。現有設施沒有隔離器，只有開放式操作台和 LEV。投標前需要評估：(1) 改造 HVAC 系統的成本，(2) 購買隔離器的投資，(3) 操作員健康監測的額外成本。這些成本必須反映在報價中，否則會虧錢或違反職業安全法規。",
+   "en": "<strong>CDMO business decision</strong>: A CDMO received a manufacturing inquiry for an HPAPI product with an OEL of 0.5 µg/m³. The existing facility has no isolators, only open workstations and LEV. Before bidding, it needs to assess: (1) the cost of modifying the HVAC system, (2) the investment in purchasing isolators, (3) the additional cost of operator health monitoring. These costs must be reflected in the quotation; otherwise the company will lose money or violate occupational safety regulations."
+  },
+  {
+   "zh": "你的設施目前能處理的最低 OEL 等級是多少？如果客戶要求更低的 OEL，你需要什麼升級？",
+   "en": "What is the lowest OEL band that your facility can currently handle? If a client requires a lower OEL, what upgrades would you need?"
+  },
+  {
+   "zh": "控制層級中，你的設施目前主要依賴哪一層？是否過度依賴 PPE 而不是工程控制？",
+   "en": "In the hierarchy of controls, which level does your facility mainly rely on? Does it rely too heavily on PPE instead of engineering controls?"
+  },
+  {
+   "zh": "7.4 Psychrometrics（空氣調節學）",
+   "en": "7.4 Psychrometrics"
+  },
+  {
+   "zh": "核心概念：Psychrometrics 空氣調節學",
+   "en": "Key Concept: Psychrometrics"
+  },
+  {
+   "zh": "<strong>Psychrometrics（空氣調節學）</strong>是研究濕空氣（乾空氣 + 水蒸氣）性質的科學。對 HVAC 工程師來說，這是設計空調系統的數學基礎。核心概念：",
+   "en": "<strong>Psychrometrics</strong> is the science of the properties of moist air (dry air + water vapor). For HVAC engineers, it is the mathematical foundation for designing air-conditioning systems. Core concepts:"
+  },
+  {
+   "zh": "<strong>Dry Bulb Temperature（乾球溫度）</strong>：普通溫度計測量的溫度，反映 Sensible Heat（顯熱）",
+   "en": "<strong>Dry Bulb Temperature</strong>: the temperature measured by an ordinary thermometer, reflecting sensible heat"
+  },
+  {
+   "zh": "<strong>Wet Bulb Temperature（濕球溫度）</strong>：包裹濕布的溫度計測量的溫度，反映蒸發冷卻效果",
+   "en": "<strong>Wet Bulb Temperature</strong>: the temperature measured by a thermometer wrapped in a wet cloth, reflecting the effect of evaporative cooling"
+  },
+  {
+   "zh": "<strong>Dew Point（露點）</strong>：空氣冷卻到開始凝結水滴的溫度",
+   "en": "<strong>Dew Point</strong>: the temperature at which air, when cooled, begins to condense water droplets"
+  },
+  {
+   "zh": "<strong>Specific Humidity / Humidity Ratio（含濕量）</strong>：每公斤乾空氣含有多少克水蒸氣",
+   "en": "<strong>Specific Humidity / Humidity Ratio</strong>: how many grams of water vapor are contained per kilogram of dry air"
+  },
+  {
+   "zh": "<strong>Enthalpy（焓）</strong>：空氣中的總能量（顯熱 + 潛熱）",
+   "en": "<strong>Enthalpy</strong>: the total energy in the air (sensible heat + latent heat)"
+  },
+  {
+   "zh": "<strong>Relative Humidity, RH（相對濕度）</strong>：目前含水量與飽和含水量的比值",
+   "en": "<strong>Relative Humidity (RH)</strong>: the ratio of the current water content to the saturated water content"
+  },
+  {
+   "zh": "關鍵工具：<strong>Psychrometric Chart（焓濕圖）</strong>— 只要知道任意兩個參數，就能從圖上讀出所有其他參數。",
+   "en": "Key tool: the <strong>Psychrometric Chart</strong>. If you know any two parameters, you can read off all the others from the chart."
+  },
+  {
+   "zh": "核心概念：Sensible Heat 顯熱 vs. Latent Heat 潛熱",
+   "en": "Key Concept: Sensible Heat vs. Latent Heat"
+  },
+  {
+   "zh": "這是 HVAC 設計中最基礎也最重要的區分：",
+   "en": "This is the most fundamental and most important distinction in HVAC design:"
+  },
+  {
+   "zh": "<strong>Sensible Heat（顯熱）</strong>：改變溫度但不改變含水量的熱量。你「感覺」得到溫度變化。在焓濕圖上是水平移動。",
+   "en": "<strong>Sensible Heat</strong>: heat that changes the temperature without changing the water content. You can \"feel\" the temperature change. It is a horizontal movement on the psychrometric chart."
+  },
+  {
+   "zh": "<strong>Latent Heat（潛熱）</strong>：改變含水量（相態變化）但不改變溫度的熱量。你「感覺」不到，只有濕度計能測到。在焓濕圖上是垂直移動。",
+   "en": "<strong>Latent Heat</strong>: heat that changes the water content (a phase change) without changing the temperature. You cannot \"feel\" it; only a hygrometer can detect it. It is a vertical movement on the psychrometric chart."
+  },
+  {
+   "zh": "潛熱的四種形態：",
+   "en": "The four forms of latent heat:"
+  },
+  {
+   "zh": "<strong>Latent Heat of Vaporization（蒸發潛熱）</strong>：液態 → 氣態",
+   "en": "<strong>Latent Heat of Vaporization</strong>: liquid → gas"
+  },
+  {
+   "zh": "<strong>Latent Heat of Condensation（凝結潛熱）</strong>：氣態 → 液態",
+   "en": "<strong>Latent Heat of Condensation</strong>: gas → liquid"
+  },
+  {
+   "zh": "<strong>Latent Heat of Fusion（融化潛熱）</strong>：液態 → 固態",
+   "en": "<strong>Latent Heat of Fusion</strong>: liquid → solid"
+  },
+  {
+   "zh": "<strong>Latent Heat of Melting（熔化潛熱）</strong>：固態 → 液態",
+   "en": "<strong>Latent Heat of Melting</strong>: solid → liquid"
+  },
+  {
+   "zh": "<strong>顯熱 vs. 潛熱</strong>的最佳比喻：",
+   "en": "The best analogy for <strong>sensible heat vs. latent heat</strong>:"
+  },
+  {
+   "zh": "想像你在煮一鍋水。從冷水加熱到 100°C 的過程中，你可以看到溫度計一直上升 — 這就是<strong>顯熱</strong>。但水到了 100°C 後，你繼續加熱，溫度計不動了！所有的熱量都用來把水變成蒸氣 — 這就是<strong>潛熱</strong>。在 HVAC 中，空調的冷卻盤管需要同時處理顯熱（降溫）和潛熱（除濕），這就是為什麼 HVAC 設計需要分別計算這兩種熱負荷。",
+   "en": "Imagine boiling a pot of water. As it heats from cold water to 100°C, you can see the thermometer rising continuously. That is <strong>sensible heat</strong>. But once the water reaches 100°C and you keep heating, the thermometer stops moving! All the heat goes into turning the water into steam. That is <strong>latent heat</strong>. In HVAC, the cooling coil of an air-conditioning system must handle both sensible heat (cooling) and latent heat (dehumidification), which is why HVAC design requires separate calculations of these two heat loads."
+  },
+  {
+   "zh": "<strong>溫度-相對濕度近似關係</strong>：",
+   "en": "<strong>Approximate relationship between temperature and relative humidity</strong>:"
+  },
+  {
+   "zh": "經驗法則（室溫範圍）：\n  溫度每升高 1°F → RH 下降約 2%\n  溫度每下降 1°F → RH 上升約 2%\n\n範例：\n  房間初始條件：72°F, 50% RH\n  加熱至 77°F（升高 5°F）\n  新的 RH ≈ 50% - (5 × 2%) = 40%\n\n這就是為什麼冬天暖氣開得越大，\n空氣越乾燥 — 溫度上升，RH 自動下降。\n\n含濕量範例：\n  75°F (24°C), 60% RH 的空氣\n  Specific Humidity = 78 grains/lb = 11 g/kg\n  （7,000 grains = 1 pound）",
+   "en": "Rule of thumb (room temperature range):\n  Each 1°F rise in temperature → RH drops by about 2%\n  Each 1°F drop in temperature → RH rises by about 2%\n\nExample:\n  Initial room conditions: 72°F, 50% RH\n  Heated to 77°F (a 5°F rise)\n  New RH ≈ 50% - (5 × 2%) = 40%\n\nThis is why the more the heating is turned up in winter,\nthe drier the air gets: as temperature rises, RH falls automatically.\n\nHumidity ratio example:\n  Air at 75°F (24°C), 60% RH\n  Specific Humidity = 78 grains/lb = 11 g/kg\n  (7,000 grains = 1 pound)"
+  },
+  {
+   "zh": "重點提示：高海拔的影響",
+   "en": "Key Note: The Effect of High Altitude"
+  },
+  {
+   "zh": "原文提到焓濕圖的數值假設在海平面氣壓下。在<strong>高海拔地區</strong>（如墨西哥城 2,240m、昆明 1,890m），氣壓較低，空氣密度較小：",
+   "en": "The original text mentions that the values on the psychrometric chart assume sea-level pressure. At <strong>high altitudes</strong> (such as Mexico City at 2,240 m or Kunming at 1,890 m), the air pressure is lower and the air density is smaller:"
+  },
+  {
+   "zh": "相同體積的空氣含有較少的氧氣和較少的水蒸氣容量",
+   "en": "The same volume of air contains less oxygen and has less water vapor capacity"
+  },
+  {
+   "zh": "風機需要更大的體積流量來達到相同的質量流量",
+   "en": "Fans need a larger volumetric flow to achieve the same mass flow"
+  },
+  {
+   "zh": "標準焓濕圖的數值需要修正",
+   "en": "The values on a standard psychrometric chart need to be corrected"
+  },
+  {
+   "zh": "對在不同海拔地區設有工廠的 CDMO 而言，HVAC 設計不能直接複製 — 需要根據當地氣壓重新計算。",
+   "en": "For a CDMO with plants at different altitudes, an HVAC design cannot simply be copied; it must be recalculated for the local air pressure."
+  },
+  {
+   "zh": "<strong>CDMO 場景 — 除濕設計</strong>：你的潔淨室需要維持 20°C / 45% RH。外部空氣是 35°C / 80% RH（台灣夏天）。空調必須：(1) 先大幅冷卻空氣到露點以下，讓水蒸氣凝結（處理潛熱），(2) 再加熱到 20°C（處理顯熱）。這個「先冷後熱」的過程消耗大量能源，是台灣 CDMO 能耗的一大來源。了解 Psychrometrics 可以幫助你評估不同除濕策略（轉輪除濕 vs. 冷卻除濕）的能效差異。",
+   "en": "<strong>CDMO scenario: dehumidification design</strong>: Your cleanroom must maintain 20°C / 45% RH. The outside air is 35°C / 80% RH (a Taiwan summer). The air-conditioning system must: (1) first cool the air well below the dew point so that the water vapor condenses (handling latent heat), (2) then reheat it to 20°C (handling sensible heat). This \"cool first, then reheat\" process consumes a great deal of energy and is a major source of energy consumption for CDMOs in Taiwan. Understanding psychrometrics helps you evaluate the energy efficiency differences between dehumidification strategies (desiccant wheel vs. cooling dehumidification)."
+  },
+  {
+   "zh": "你能從焓濕圖上讀出 20°C / 50% RH 空氣的露點溫度嗎？這對冷卻盤管的設計溫度有什麼意義？",
+   "en": "Can you read the dew point temperature of 20°C / 50% RH air from the psychrometric chart? What does this mean for the design temperature of the cooling coil?"
+  },
+  {
+   "zh": "為什麼人體的舒適感更接近 RH 而非含濕量（Specific Humidity）？",
+   "en": "Why is human comfort more closely related to RH than to specific humidity?"
+  },
+  {
+   "zh": "在你的設施中，HVAC 的能耗中，顯熱和潛熱處理各佔大約多少比例？",
+   "en": "In your facility's HVAC energy consumption, roughly what proportion goes to sensible heat handling and what proportion to latent heat handling?"
+  },
+  {
+   "zh": "本節重點回顧 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "<strong>HVAC 三層變數架構</strong>：一級（溫度、濕度、微粒）直接影響產品，二級（壓差、換氣次數、氣流方向）是控制手段，三級（風機轉速、風管壓力）是操作參數。三者之間存在明確的因果鏈。",
+   "en": "<strong>The three-tier variable structure of HVAC</strong>: primary variables (temperature, humidity, particles) directly affect the product, secondary variables (differential pressure, air change rate, airflow direction) are the means of control, and tertiary variables (fan speed, duct pressure) are operating parameters. There is a clear cause-and-effect chain between the three."
+  },
+  {
+   "zh": "<strong>HVAC 的局限性</strong>：HVAC 不能清潔已受污染的表面、不能補償不良的設施設計、也不能控制產生過量污染物的製程。HVAC 只是污染控制策略（CCS）的一部分。",
+   "en": "<strong>The limitations of HVAC</strong>: HVAC cannot clean already contaminated surfaces, cannot compensate for poor facility design, and cannot control a process that generates excessive contaminants. HVAC is only one part of the contamination control strategy (CCS)."
+  },
+  {
+   "zh": "<strong>換氣次數 vs. 送風量</strong>：穩態微粒濃度由 PGR（微粒產生率）和送風量（Q）決定，與換氣次數無直接關係。換氣次數主要影響 recovery time（恢復時間）。任意設定的換氣次數可能導致過度設計和不必要的成本。",
+   "en": "<strong>Air change rate vs. air flow rate</strong>: steady-state particle concentration is determined by the PGR (particle generation rate) and the airflow (Q), and is not directly related to the air change rate. The air change rate mainly affects recovery time. An arbitrarily set air change rate can lead to over-design and unnecessary cost."
+  },
+  {
+   "zh": "<strong>潔淨分級差異</strong>：EU 使用 Grade A-D（含 at-rest 和 in-operation 限值），FDA 使用 ISO 5/7/8（僅 in-operation）。CDMO 同時服務歐美客戶時，應以較嚴格標準為設計基準。",
+   "en": "<strong>Differences in cleanliness classification</strong>: the EU uses Grade A-D (with at-rest and in-operation limits) and the FDA uses ISO 5/7/8 (in-operation only). A CDMO serving both European and US clients should use the stricter standard as the design baseline."
+  },
+  {
+   "zh": "<strong>壓差控制</strong>：通過維持房間間的壓差（DP），迫使空氣從潔淨區流向較不潔淨區。建築密封性直接影響維持壓差所需的額外送風量和能耗。",
+   "en": "<strong>Differential pressure control</strong>: by maintaining pressure differentials (DP) between rooms, air is forced to flow from clean areas to less clean areas. Building tightness directly affects the extra airflow and energy needed to maintain the pressure differential."
+  },
+  {
+   "zh": "<strong>Psychrometrics 空氣調節學</strong>：Sensible Heat（顯熱）改變溫度，Latent Heat（潛熱）改變含水量。Psychrometric Chart（焓濕圖）是 HVAC 設計的核心工具，只需知道任意兩個參數即可確定空氣的所有性質。",
+   "en": "<strong>Psychrometrics</strong>: sensible heat changes temperature and latent heat changes water content. The psychrometric chart is the core tool of HVAC design; knowing any two parameters is enough to determine all the properties of the air."
+  },
+  {
+   "zh": "<strong>操作員暴露控制層級</strong>：從源頭控制（替代、密閉）到工程控制（LEV、HVAC）再到 PPE，層級越高越優先。PPE 永遠是最後一道防線，不應作為第一選擇。",
+   "en": "<strong>Hierarchy of operator exposure control</strong>: from source control (substitution, containment) to engineering controls (LEV, HVAC) and then PPE; the higher in the hierarchy, the higher the priority. PPE is always the last line of defense and should not be the first choice."
+  }
+ ]
+}

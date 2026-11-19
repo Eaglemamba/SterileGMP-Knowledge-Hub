@@ -1,0 +1,561 @@
+{
+ "source": "section-04-control-monitoring.html",
+ "blocks": [
+  {
+   "zh": "第六章：管控與監測系統設計選項",
+   "en": "Chapter 6: Control and Monitoring System Design Options"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解製程氣體管控系統的三大類別：壓縮空氣系統、鋼瓶系統、現場產氣與槽儲系統，及各自的控制邏輯",
+   "en": "Understand the three categories of process gas control systems (compressed air systems, cylinder systems, and on-site generation and bulk tank systems) and the control logic of each"
+  },
+  {
+   "zh": "掌握品質監測的核心參數：壓力、露點（水分）、微生物、微粒、碳氫化合物，並了解每項參數為何對藥廠製程至關重要",
+   "en": "Master the core quality monitoring parameters (pressure, dewpoint (moisture), microorganisms, particulates, and hydrocarbons) and understand why each matters for pharmaceutical processes"
+  },
+  {
+   "zh": "了解取樣策略設計原則：POU取樣位置、過濾器前後的選擇依據，以及樣品代表性的確認方法",
+   "en": "Understand the design principles of a sampling strategy: POU sampling locations, how to choose between upstream and downstream of the filter, and how to confirm sample representativeness"
+  },
+  {
+   "zh": "熟悉各種水分監測技術（冷鏡、電解、阻抗、高分子薄膜）的原理與適用場合",
+   "en": "Become familiar with the principles and suitable applications of the various moisture monitoring technologies (chilled mirror, electrolytic, impedance, polymer film)"
+  },
+  {
+   "zh": "連結CDMO實務：製程氣體OOS事件如何觸發批次偏差調查，並影響放行決策",
+   "en": "Link to CDMO practice: how a process gas OOS event triggers a batch deviation investigation and affects the release decision"
+  },
+  {
+   "zh": "6.1 Introduction — 導論",
+   "en": "6.1 Introduction"
+  },
+  {
+   "zh": "原文內容 Original Text <span class=\"source-badge\">ISPE</span>",
+   "en": "Original Text <span class=\"source-badge\">ISPE</span>"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念解析 Key Concepts",
+   "en": "Key Concepts"
+  },
+  {
+   "zh": "<strong>管控與監測系統 (Control and Monitoring Systems):</strong> 這章的核心主張是：監測系統本身就是風險緩解工具。換言之，即便氣體品質偶爾波動，只要能即時偵測並觸發響應（自動關閥、發出警報、啟動備用設備），就能防止不合規氣體流入製程。",
+   "en": "<strong>Control and Monitoring Systems:</strong> The core position of this chapter is that the monitoring system is itself a risk mitigation tool. In other words, even if gas quality fluctuates occasionally, as long as the deviation is detected in real time and triggers a response (automatic valve closure, an alarm, start-up of backup equipment), non-conforming gas can be prevented from reaching the process."
+  },
+  {
+   "zh": "<strong>所有權差異的重要性：</strong> 壓縮空氣系統由工廠自有，儀器校正、維護、文件都在廠內GMP體系下管理。製程氣體（N₂、CO₂、Ar）通常租自氣體供應商——他們有自己的控制系統，但廠方仍須確保這些系統的告警信號能接入廠內監控。",
+   "en": "<strong>Why the difference in ownership matters:</strong> A compressed air system is owned by the site, so instrument calibration, maintenance, and documentation are all managed within the on-site GMP system. Process gases (N₂, CO₂, Ar) are usually leased from a gas supplier. The supplier has its own control system, but the site must still ensure that the alarm signals from these systems are fed into on-site monitoring."
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "這個所有權區分就像大樓的電力系統（工廠自有、自管）vs 外租的備用發電機（廠商維護，但你需要知道它的電量與故障信號）。兩者都要能接入你的中央控制室，才能完整掌握廠務安全。",
+   "en": "This ownership distinction is like a building's own power system (owned and managed by the site) versus a rented backup generator (maintained by the vendor, but you still need to know its fuel level and fault signals). Both must be connected to your central control room to give a complete picture of utility safety."
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "當製程氣體由外部供應商提供時，廠方可能需要<strong>複製安裝監測儀表</strong>（duplicate monitoring instruments），目的是：(1) 讓氣體供應商用他自己的標準儀器；(2) 廠方用自己管理校正的儀器，確保數據符合GMP文件要求。兩套儀器並行，不互相依賴。",
+   "en": "When process gas is supplied by an external supplier, the site may need to <strong>duplicate the monitoring instruments</strong> (duplicate monitoring instruments), so that: (1) the gas supplier uses its own standard instruments; and (2) the site uses instruments whose calibration it manages itself, ensuring the data meet GMP documentation requirements. The two sets of instruments run in parallel and do not depend on each other."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "如果氣體供應商的控制系統發出警報，但廠方BMS沒有接收到信號，可能的後果是什麼？",
+   "en": "If the gas supplier's control system raises an alarm but the site BMS does not receive the signal, what could be the consequences?"
+  },
+  {
+   "zh": "為什麼廠方要自行管理監測儀表的校正，而不完全依賴氣體供應商的數據？",
+   "en": "Why should the site manage the calibration of monitoring instruments itself rather than rely entirely on the gas supplier's data?"
+  },
+  {
+   "zh": "6.2 Control Systems — 管控系統",
+   "en": "6.2 Control Systems"
+  },
+  {
+   "zh": "<strong>三類系統的管控邏輯差異：</strong>",
+   "en": "<strong>Differences in control logic across the three types of system:</strong>"
+  },
+  {
+   "zh": "<strong>壓縮空氣系統：</strong> 廠方完整擁有，從壓縮機到乾燥機到配管都需納入GMP體系。控制邏輯以「維持最低出口壓力」為核心。",
+   "en": "<strong>Compressed air systems:</strong> Fully owned by the site; everything from the compressor to the dryer to the piping must be brought into the GMP system. The control logic centers on \"maintaining a minimum outlet pressure\"."
+  },
+  {
+   "zh": "<strong>鋼瓶系統：</strong> 最簡單——人工切換或自動切換。管理重點是確保備用鋼瓶在位、壓力低點告警能傳遞到值班人員或BMS。",
+   "en": "<strong>Cylinder systems:</strong> The simplest, with manual or automatic changeover. The management focus is to ensure that a standby cylinder is in place and that a low-pressure alarm is passed to the on-duty personnel or the BMS."
+  },
+  {
+   "zh": "<strong>現場產氣/大型槽儲：</strong> 複雜度最高，通常由氣體公司遠程監控，廠方需整合其告警信號到自己的BMS或DCS。",
+   "en": "<strong>On-site generation / large bulk tanks:</strong> The most complex; usually monitored remotely by the gas company, and the site must integrate its alarm signals into its own BMS or DCS."
+  },
+  {
+   "zh": "露點控制換向 vs 計時換向",
+   "en": "Dewpoint-Controlled vs Timer-Based Switching"
+  },
+  {
+   "zh": "乾燥機雙塔切換有兩種邏輯：",
+   "en": "There are two switching logics for twin-tower dryers:"
+  },
+  {
+   "zh": "<strong>計時換向（Timer-based）：</strong> 固定時間切換，簡單但不考慮實際乾燥效果，可能提前切換（浪費能源）或延遲切換（露點惡化）。",
+   "en": "<strong>Timer-based switching:</strong> Switches at a fixed time. It is simple but ignores the actual drying performance, so it may switch too early (wasting energy) or too late (dewpoint deteriorates)."
+  },
+  {
+   "zh": "<strong>露點換向（Dewpoint-controlled）：</strong> 偵測出口露點，只在實際需要時才切換，更節能、更穩定。ISPE明確指出此方式更佳。",
+   "en": "<strong>Dewpoint-controlled switching:</strong> Detects the outlet dewpoint and switches only when actually needed, which is more energy-efficient and more stable. ISPE explicitly states that this approach is preferable."
+  },
+  {
+   "zh": "關鍵安全邏輯：若露點監測器發出警報，應自動關閉下游閥門，防止潮濕空氣進入配管。",
+   "en": "Key safety logic: if the dewpoint monitor raises an alarm, the downstream valve should close automatically to prevent moist air from entering the piping."
+  },
+  {
+   "zh": "手動換鋼瓶就像手動加油站——你要自己去確認油量低了再換。自動切換系統則像現代汽車油箱：油位低自動亮燈，且在舊桶用完前就已切換到備用桶，不間斷供應。對於藥廠的連續製程，自動切換是基本要求，否則氣體中斷可能直接造成批次失敗。",
+   "en": "Changing cylinders manually is like a manual fuel station: you have to check for yourself that the level is low before swapping. An automatic changeover system is like a modern car fuel tank: a light comes on when the level is low, and the system has already switched to the backup bank before the old one runs out, so supply is uninterrupted. For a pharmaceutical continuous process, automatic changeover is a basic requirement; otherwise an interruption in gas supply can directly cause batch failure."
+  },
+  {
+   "zh": "重點提示 Key Notes — LEL 爆炸下限",
+   "en": "Key Notes - LEL (Lower Explosive Limit)"
+  },
+  {
+   "zh": "<strong>Lower Explosive Limit (LEL，爆炸下限)：</strong> 可燃性氣體（如氫氣）在空氣中達到某濃度時才會爆炸，LEL是最低引爆濃度。例如氫氣LEL約4%（v/v）。",
+   "en": "<strong>Lower Explosive Limit (LEL):</strong> A flammable gas (such as hydrogen) can explode only once it reaches a certain concentration in air, and the LEL is the lowest concentration that can ignite. For example, the LEL of hydrogen is about 4% (v/v)."
+  },
+  {
+   "zh": "N₂和CO₂本身不可燃，但高濃度會造成<strong>缺氧窒息</strong>危害，需要氧氣不足警報（O₂ deficiency alarm）而非LEL警報。這是CDMO安全管理上的常見誤解——必須根據氣體特性選擇正確的安全監測類型。",
+   "en": "N₂ and CO₂ are not flammable themselves, but at high concentrations they create an <strong>asphyxiation (oxygen deficiency)</strong> hazard, so an oxygen deficiency alarm (O₂ deficiency alarm) is needed rather than an LEL alarm. This is a common misunderstanding in CDMO safety management: the correct type of safety monitoring must be chosen according to the properties of the gas."
+  },
+  {
+   "zh": "實務應用 CDMO Application",
+   "en": "CDMO Application"
+  },
+  {
+   "zh": "在CDMO的無菌充填廠，N₂覆蓋（nitrogen blanketing）用於防止配方氧化。若N₂鋼瓶採用手動切換且未及時更換，導致N₂供應中斷，充填腔體可能進入空氣，造成O₂濃度上升、產品氧化降解——這是一個直接影響批次品質的OOS事件，需要完整偏差調查。",
+   "en": "In a CDMO aseptic filling facility, nitrogen blanketing is used to prevent oxidation of the formulation. If the N₂ cylinders use manual changeover and are not replaced in time, the N₂ supply is interrupted, air may enter the filling chamber, the O₂ concentration rises, and the product undergoes oxidative degradation. This is an OOS event that directly affects batch quality and requires a full deviation investigation."
+  },
+  {
+   "zh": "在設計階段未考慮BMS整合，日後要補接氣體系統告警信號，會面臨哪些驗證文件上的挑戰？",
+   "en": "If BMS integration was not considered at the design stage, what documentation challenges for validation will arise when the gas system alarm signals have to be connected later?"
+  },
+  {
+   "zh": "露點換向乾燥機（dewpoint-controlled）和計時換向乾燥機在GMP文件記錄上有何差異？哪種更容易舉證合規？",
+   "en": "What differences are there in GMP documentation between a dewpoint-controlled dryer and a timer-based dryer? Which is easier to demonstrate compliance for?"
+  },
+  {
+   "zh": "6.3.1 Operational Parameter Monitoring — 操作參數監測",
+   "en": "6.3.1 Operational Parameter Monitoring"
+  },
+  {
+   "zh": "<strong>壓力：是CPP還是工程參數？</strong> 這是ISPE提出的一個重要觀點。傳統上許多廠房把供氣幹管壓力列為CPP，配上嚴格的校正計畫。但ISPE認為，幹管壓力只是「大方向」指標，真正重要的是<strong>每個使用點（POU, Point of Use）</strong>的入口壓力。",
+   "en": "<strong>Pressure: a CPP or an engineering parameter?</strong> This is an important point raised by ISPE. Traditionally, many sites list the main supply header pressure as a CPP, backed by a strict calibration program. ISPE, however, takes the view that the header pressure is only a \"general direction\" indicator, and what really matters is the inlet pressure at <strong>each point of use (POU)</strong>."
+  },
+  {
+   "zh": "<strong>邏輯推論：</strong> 幹管壓力正常，不代表最遠端POU的壓力足夠（因為有壓降）。因此，真正的關鍵是在設備入口安裝壓力開關，直接監測設備可用的氣體壓力。",
+   "en": "<strong>Logical inference:</strong> A normal header pressure does not mean that the pressure at the farthest POU is sufficient (because of pressure drop). The real key is therefore to install a pressure switch at the equipment inlet to directly monitor the gas pressure available to the equipment."
+  },
+  {
+   "zh": "公式與計算 Formula",
+   "en": "Formula and Calculation"
+  },
+  {
+   "zh": "壓力分配設計邏輯：\n\n幹管設計壓力 = 最遠端POU需求壓力\n             + 管路壓降（由流量、管徑計算）\n             + 安全裕度\n\nPeak usage 壓降需以最大同時使用量計算\n（diversity factor 多樣性係數）",
+   "en": "Pressure distribution design logic:\n\nHeader design pressure = pressure required at the farthest POU\n             + pipe pressure drop (calculated from flow and pipe diameter)\n             + safety margin\n\nPressure drop at peak usage must be calculated for the maximum simultaneous usage\n(diversity factor)"
+  },
+  {
+   "zh": "幹管壓力就像城市自來水主幹管的水壓——市政局知道主幹壓力正常，但你家頂層浴室的水壓夠不夠，要看你家的供水設計。製程氣體也一樣：關鍵在於每個設備「入口」的壓力，而非系統層面的幹管壓力。",
+   "en": "Header pressure is like the water pressure in a city's main water pipe: the water authority knows the main pressure is normal, but whether the pressure in the top-floor bathroom of your home is sufficient depends on your own supply design. Process gas is the same: what matters is the pressure at the inlet of each piece of equipment, not the system-level header pressure."
+  },
+  {
+   "zh": "ISPE這個建議具有實質的成本含義：把幹管壓力降級為「工程參數」，可以減少校正負擔（calibration burden）和文件要求。但這需要在URS（用戶需求規格）中明確說明，並在DQ/IQ/OQ文件中留下完整的風險評估理由。若監管機構在查廠時提問，廠方需能清楚說明為何不將幹管壓力視為CPP。",
+   "en": "This ISPE recommendation has real cost implications: downgrading the header pressure to an \"engineering parameter\" can reduce the calibration burden and documentation requirements. But this must be stated explicitly in the URS (user requirements specification), and the full risk assessment rationale must be recorded in the DQ/IQ/OQ documents. If a regulatory authority asks during an inspection, the site must be able to explain clearly why the header pressure is not treated as a CPP."
+  },
+  {
+   "zh": "如果你的無菌充填機需要最低5 bar N₂入口壓力，你會在哪個位置安裝壓力開關？警報下限設在幾bar比較合理？",
+   "en": "If your aseptic filling machine needs a minimum N₂ inlet pressure of 5 bar, where would you install the pressure switch? What alarm lower limit (in bar) would be reasonable?"
+  },
+  {
+   "zh": "在peak usage期間（多台設備同時用氣），如何確認幹管壓力不會因壓降過大而影響最遠端設備？",
+   "en": "During peak usage (multiple pieces of equipment drawing gas at the same time), how do you confirm that the header pressure will not affect the farthest equipment because of excessive pressure drop?"
+  },
+  {
+   "zh": "6.3.2 Quality Monitoring — 品質監測",
+   "en": "6.3.2 Quality Monitoring"
+  },
+  {
+   "zh": "<strong>品質等同原則（Quality Equivalence Principle）：</strong> 製程氣體進入潔淨室時，其微粒與微生物品質必須<strong>等於或優於</strong>所在潔淨室的靜態等級。例如在ISO 5 / EU Grade A環境下操作，送入的N₂品質也必須達到ISO 5等級。這是Annex 1和21 CFR Part 210的明確要求。",
+   "en": "<strong>Quality Equivalence Principle:</strong> When process gas enters the cleanroom, its particulate and microbial quality must be <strong>equal to or better than</strong> the at-rest classification of the cleanroom it enters. For example, when operating in an ISO 5 / EU Grade A environment, the N₂ delivered must also meet ISO 5. This is an explicit requirement of Annex 1 and 21 CFR Part 210."
+  },
+  {
+   "zh": "<strong>Water Activity (水活性, aw):</strong> 表示系統中可供微生物利用的「自由水」量。aw = 1 為純水，aw &lt; 0.6 幾乎沒有生物能存活。乾燥氣體（低露點）的aw接近0，理論上不利於微生物生長——但這不等於無菌！",
+   "en": "<strong>Water Activity (aw):</strong> Indicates the amount of \"free water\" in a system that is available to microorganisms. aw = 1 is pure water, and below aw &lt; 0.6 almost no organism can survive. Dry gas (low dewpoint) has an aw close to 0 and is in theory unfavorable to microbial growth, but this does not mean it is sterile!"
+  },
+  {
+   "zh": "重點提示 Key Notes — 內孢子的威脅",
+   "en": "Key Notes - The Threat of Endospores"
+  },
+  {
+   "zh": "<strong>Endospores (內孢子/芽孢)：</strong> 這是理解乾燥氣體微生物風險的關鍵。芽孢桿菌（Bacillus）等細菌在惡劣環境下形成芽孢，可在極端乾燥、高溫、輻射條件下存活數十年。",
+   "en": "<strong>Endospores:</strong> This is the key to understanding the microbial risk of dry gas. Bacteria such as Bacillus form endospores under harsh conditions, and these can survive for decades under extreme dryness, high temperature, and radiation."
+  },
+  {
+   "zh": "換言之：乾燥氣體可以<strong>抑制微生物生長</strong>，但無法<strong>殺滅</strong>芽孢。一旦氣體到達有水分、有營養的環境（如產品），芽孢可能復活。這就是為何產品接觸型氣體必須使用0.2 µm滅菌級過濾器，而不能僅靠低露點來保證微生物安全。",
+   "en": "In other words, dry gas can <strong>inhibit microbial growth</strong> but cannot <strong>kill</strong> endospores. Once the gas reaches an environment with moisture and nutrients (such as the product), the endospores may revive. This is why product-contact gas must use a 0.2 µm sterilizing-grade filter and cannot rely on a low dewpoint alone to ensure microbial safety."
+  },
+  {
+   "zh": "芽孢就像植物的種子：在沙漠裡（乾燥氣體中）靜止不動，一旦遇水（產品中的水分）就會發芽生長。乾燥的管路好比沙漠，種子在裡面不生長，但並未消失。0.2 µm過濾器才是真正的「擋種子」屏障。",
+   "en": "Endospores are like plant seeds: in a desert (dry gas) they stay dormant, and as soon as they meet water (moisture in the product) they germinate and grow. A dry pipe is like a desert: the seeds do not grow there, but they have not disappeared. The 0.2 µm filter is the real barrier that \"stops the seeds\"."
+  },
+  {
+   "zh": "微生物生長界限 Water Activity Thresholds",
+   "en": "Water Activity Thresholds for Microbial Growth"
+  },
+  {
+   "zh": "aw &lt; 0.60  →  黴菌、酵母菌無法生長（Molds &amp; Yeasts）\naw &lt; 0.85  →  一般細菌無法生長（Most Bacteria）\naw &lt; 0.91  →  大部分致病菌無法生長\n\n關係換算：\nRH (%) = aw × 100\naw = 0.6 約等於 RH 60%\n極低露點（如 -40°C dp）→ RH &lt;1% → aw &lt;&lt; 0.01",
+   "en": "aw &lt; 0.60  →  molds and yeasts cannot grow (Molds &amp; Yeasts)\naw &lt; 0.85  →  most bacteria cannot grow (Most Bacteria)\naw &lt; 0.91  →  most pathogenic bacteria cannot grow\n\nConversion:\nRH (%) = aw × 100\naw = 0.6 is approximately RH 60%\nVery low dewpoint (e.g. -40°C dp) → RH &lt;1% → aw &lt;&lt; 0.01"
+  },
+  {
+   "zh": "在無菌充填線（aseptic filling line）的N₂覆蓋設計中：最終使用點（POU）應安裝0.2 µm滅菌過濾器，並定期進行完整性測試（integrity test）。微生物監測取樣點應設在過濾器上游（pre-filter），因為過濾器後取樣可能因取樣行為本身引入污染風險（暴露了已滅菌的流路）。這與ISPE 6.3.2的取樣策略討論直接對應。",
+   "en": "In the N₂ blanketing design of an aseptic filling line, a 0.2 µm sterilizing filter should be installed at the final point of use (POU) and integrity tested periodically. The microbial monitoring sampling point should be located upstream of the filter (pre-filter), because sampling downstream of the filter may introduce a contamination risk through the act of sampling itself (exposing the sterilized flow path). This corresponds directly to the sampling strategy discussion in ISPE 6.3.2."
+  },
+  {
+   "zh": "你的廠使用N₂進行無菌充填的氣體覆蓋，且依賴低露點（-60°C）控制微生物風險。FDA查廠官員問你「你如何確保芽孢不會污染產品？」你如何回答？",
+   "en": "Your site uses N₂ for gas blanketing in aseptic filling and relies on a low dewpoint (-60°C) to control microbial risk. An FDA inspector asks, \"How do you ensure endospores do not contaminate the product?\" How do you answer?"
+  },
+  {
+   "zh": "非無菌口服液製程中的CO₂充填用氣，需要監測微生物嗎？如果需要，監測哪類微生物？",
+   "en": "Does CO₂ used for filling in a non-sterile oral liquid process need microbial monitoring? If so, which type of microorganisms should be monitored?"
+  },
+  {
+   "zh": "6.3.2.1 Test Method Considerations — 測試方法考量",
+   "en": "6.3.2.1 Test Method Considerations"
+  },
+  {
+   "zh": "<strong>取樣位置策略（Sampling Location Strategy）：</strong> ISPE的關鍵建議是將取樣點設在最終滅菌過濾器「上游」（before the final sterile filter）。原因有二：",
+   "en": "<strong>Sampling Location Strategy:</strong> ISPE's key recommendation is to place the sampling point \"upstream\" of the final sterile filter (before the final sterile filter). There are two reasons:"
+  },
+  {
+   "zh": "過濾器上游的氣體品質 = 過濾器下游的品質（因為0.2 µm過濾器截留所有微粒和微生物）",
+   "en": "The gas quality upstream of the filter = the quality downstream of the filter (because the 0.2 µm filter retains all particles and microorganisms)"
+  },
+  {
+   "zh": "在過濾器下游取樣，每次取樣都會打開已滅菌流路，引入外部污染風險——這是重複性的製程風險，不可接受。",
+   "en": "Sampling downstream of the filter opens the sterilized flow path every time, introducing a risk of external contamination. This is a recurring process risk and is not acceptable."
+  },
+  {
+   "zh": "<strong>最長管路（Longest Pipe Run）：</strong> 封閉管路系統的污染主要來自管路內部（管材、焊接點、滯留液體），因此最長管路的終端最可能累積問題，是最具挑戰性的取樣點。",
+   "en": "<strong>Longest Pipe Run:</strong> Contamination in a closed piping system mainly comes from inside the pipework (piping material, weld joints, retained liquid), so the end of the longest pipe run is the most likely place for problems to accumulate and is the most challenging sampling point."
+  },
+  {
+   "zh": "好氧 vs 厭氧微生物監測",
+   "en": "Aerobic vs Anaerobic Microbial Monitoring"
+  },
+  {
+   "zh": "這是容易忽視的細節：",
+   "en": "This is an easily overlooked detail:"
+  },
+  {
+   "zh": "<strong>壓縮空氣、O₂供應：</strong> 環境含氧，監測<strong>好氧菌（aerobic microorganisms）</strong>",
+   "en": "<strong>Compressed air, O₂ supply:</strong> The environment contains oxygen, so monitor for <strong>aerobic microorganisms</strong>"
+  },
+  {
+   "zh": "<strong>N₂、CO₂、Ar供應：</strong> 低氧環境，監測<strong>厭氧菌（anaerobic microorganisms）</strong>",
+   "en": "<strong>N₂, CO₂, Ar supply:</strong> A low-oxygen environment, so monitor for <strong>anaerobic microorganisms</strong>"
+  },
+  {
+   "zh": "ISPE特別指出：性能測試期間若確認無好氧菌，常規監測可只看厭氧菌（低氧氣體系統）。這是科學化的降負荷設計，但需要文件支持。",
+   "en": "ISPE specifically notes that if no aerobic organisms are confirmed during performance testing, routine monitoring may look only for anaerobes (low-oxygen gas systems). This is a science-based way to reduce the monitoring burden, but it needs documented support."
+  },
+  {
+   "zh": "重點提示 Key Notes — 取樣體積",
+   "en": "Key Notes - Sample Volume"
+  },
+  {
+   "zh": "ISO 14644-1規定ISO 5環境的微粒取樣體積為0.7 m³。製程氣體品質需達到ISO 5等級的系統，應以相同體積取樣，確保統計可信度。",
+   "en": "ISO 14644-1 specifies a particle sampling volume of 0.7 m³ for an ISO 5 environment. A system whose process gas quality must reach ISO 5 should be sampled with the same volume to ensure statistical confidence."
+  },
+  {
+   "zh": "注意：ISO 8573-7（壓縮空氣微生物標準）建議用1 m³，但業界實際採用並不廣泛。對於日常監測，較小體積（如1立方英尺）也被接受，但初始驗證測試應使用較大體積。",
+   "en": "Note: ISO 8573-7 (the microbial standard for compressed air) recommends 1 m³, but this is not widely adopted in industry practice. For routine monitoring, a smaller volume (such as 1 cubic foot) is also accepted, but the initial validation testing should use a larger volume."
+  },
+  {
+   "zh": "在最終過濾器後取樣就像：醫護人員剛完成手術器械滅菌，然後打開包裝來「檢驗」是否無菌——每次開包就是一次污染機會。正確做法是在滅菌前確認品質，以及定期對過濾器本身做完整性測試，而非在使用中反覆取樣。",
+   "en": "Sampling after the final filter is like this: a medical staff member has just finished sterilizing surgical instruments, then opens the package to \"check\" whether they are sterile; every opening of a package is a chance for contamination. The correct approach is to confirm quality before sterilization and to periodically integrity test the filter itself, rather than repeatedly sampling during use."
+  },
+  {
+   "zh": "實務應用 CDMO Application — OOS事件處理",
+   "en": "CDMO Application - OOS Event Handling"
+  },
+  {
+   "zh": "假設你的N₂微生物監測在最長管路取樣點偵測到厭氧菌超出行動限（Action Limit），CDMO的標準響應流程：",
+   "en": "Suppose your N₂ microbial monitoring detects anaerobes above the Action Limit at the longest pipe run sampling point. The CDMO's standard response process is:"
+  },
+  {
+   "zh": "<strong>立即隔離：</strong> 停止使用該管路氣體，評估批次衝擊",
+   "en": "<strong>Immediate isolation:</strong> Stop using gas from that pipe run and assess the batch impact"
+  },
+  {
+   "zh": "<strong>根本原因調查：</strong> 檢查過濾器完整性、管路死角、最近維護記錄",
+   "en": "<strong>Root cause investigation:</strong> Check filter integrity, pipe dead legs, and recent maintenance records"
+  },
+  {
+   "zh": "<strong>批次衝擊評估：</strong> 問「是否有產品接觸到此氣體？」、「過濾器是否在位且完好？」",
+   "en": "<strong>Batch impact assessment:</strong> Ask \"Did any product contact this gas?\" and \"Was the filter in place and intact?\""
+  },
+  {
+   "zh": "<strong>整改：</strong> 管路消毒/清洗、過濾器更換，並重新取樣確認",
+   "en": "<strong>Corrective action:</strong> Sanitize/clean the pipe run, replace the filter, and resample to confirm"
+  },
+  {
+   "zh": "<strong>文件：</strong> 完整偏差報告、CAPA，必要時報告給客戶和監管機構",
+   "en": "<strong>Documentation:</strong> A complete deviation report and CAPA, with reporting to the customer and regulatory authorities where necessary"
+  },
+  {
+   "zh": "你廠有三條N₂使用點管路，長度分別為10m、50m、120m。常規微生物監測應重點監測哪條管路？為什麼？",
+   "en": "Your site has three N₂ point-of-use pipe runs, with lengths of 10 m, 50 m, and 120 m. Which pipe run should routine microbial monitoring focus on? Why?"
+  },
+  {
+   "zh": "製程氣體配管系統「未進行環境等級分類」這句話的實際意涵是什麼？代表可以放寬監測要求嗎？",
+   "en": "What is the practical meaning of the statement that process gas piping is \"not classified for environmental grade\"? Does it mean the monitoring requirements can be relaxed?"
+  },
+  {
+   "zh": "6.3.2.2 Microbial Monitoring — 微生物監測方法",
+   "en": "6.3.2.2 Microbial Monitoring Methods"
+  },
+  {
+   "zh": "<strong>明膠膜（Gelatin membrane filter）不適用壓縮氣體：</strong> 明膠遇到乾燥高壓氣流會脆化甚至破裂，造成取樣失敗或假陰性，這是一個必須避免的選材錯誤。在驗證取樣方法時，應明確確認所用濾材對目標菌種無抑制作用（菌回收率驗證, recovery validation）。",
+   "en": "<strong>Gelatin membrane filters are not suitable for compressed gas:</strong> Gelatin becomes brittle or even ruptures under a dry, high-pressure gas flow, causing sampling failure or false negatives, so this is a material selection error that must be avoided. When validating the sampling method, you should explicitly confirm that the filter material used does not inhibit the target microorganisms (recovery validation)."
+  },
+  {
+   "zh": "<strong>0.45 µm vs 0.2 µm：</strong> 環境微生物監測用0.45 µm（截留細菌），而不是0.2 µm——因為0.2 µm流阻大，取樣流量低，取樣時間過長。",
+   "en": "<strong>0.45 µm vs 0.2 µm:</strong> Environmental microbial monitoring uses 0.45 µm (which retains bacteria) rather than 0.2 µm, because 0.2 µm has high flow resistance, giving a low sampling flow rate and an overly long sampling time."
+  },
+  {
+   "zh": "四種方法就像四種捕魚方式：衝擊法（撒大網）效率高但設備笨重；離心法（捕魚桶）輕巧靈活；過濾法（魚網）便宜可批量部署；液體衝擊法（魚缸過濾）可捕捉最脆弱的魚（vegetative cells），但玻璃設備易破。選擇哪種，取決於你要捕的「魚」種類和取樣點數量。",
+   "en": "The four methods are like four ways of fishing: impaction (casting a big net) is highly efficient but the equipment is bulky; centrifugal (a fishing bucket) is light and flexible; filtration (a fishing net) is cheap and can be deployed in quantity; liquid impingement (a fish-tank filter) can capture the most fragile fish (vegetative cells), but the glass equipment breaks easily. Which one to choose depends on the type of \"fish\" you want to catch and the number of sampling points."
+  },
+  {
+   "zh": "對CDMO來說，過濾法（filtration method）通常最實際：多客戶產品、多取樣點、需要靈活部署。但在無菌充填廠（aseptic filling facility）的N₂取樣，可能需要能蒸汽滅菌的衝擊取樣器——因為取樣本身不能污染系統，設備必須能完全滅菌，且取樣操作必須在RABS或隔離器環境中執行。",
+   "en": "For a CDMO, the filtration method is usually the most practical: multiple customer products, multiple sampling points, and a need for flexible deployment. But for N₂ sampling in an aseptic filling facility, a steam-sterilizable impaction sampler may be needed, because the sampling itself must not contaminate the system, the equipment must be fully sterilizable, and the sampling operation must be performed in a RABS or isolator environment."
+  },
+  {
+   "zh": "你要同時監測工廠的10個N₂使用點，預算有限。你會選擇哪種取樣方法？理由是什麼？",
+   "en": "You need to monitor 10 N₂ points of use in the plant at the same time, with a limited budget. Which sampling method would you choose, and why?"
+  },
+  {
+   "zh": "取樣方法驗證（method validation）中，「回收率」測試的目的是什麼？如何設計此測試？",
+   "en": "In sampling method validation, what is the purpose of the \"recovery\" test? How would you design this test?"
+  },
+  {
+   "zh": "6.3.2.3 Particulate Monitoring — 微粒監測",
+   "en": "6.3.2.3 Particulate Monitoring"
+  },
+  {
+   "zh": "<strong>雷射微粒計數器（Laser Particle Counter, LPC）：</strong> 製程氣體微粒監測的主流技術。原理是讓氣體流過雷射光束，微粒散射光被偵測並計數/分級（通常為≥0.5 µm 和 ≥5.0 µm）。藥廠常用，符合ISO 8573-4和ISO 14644標準。",
+   "en": "<strong>Laser Particle Counter (LPC):</strong> The mainstream technology for process gas particulate monitoring. The principle is that gas flows through a laser beam, and the light scattered by particles is detected and counted/sized (usually ≥0.5 µm and ≥5.0 µm). It is commonly used in pharmaceutical plants and complies with the ISO 8573-4 and ISO 14644 standards."
+  },
+  {
+   "zh": "<strong>高壓取樣的挑戰：</strong> 製程氣體通常在6-8 bar以上輸送，但LPC的感測器設計在大氣壓附近，高壓氣體直接進入會損壞儀器。必須使用流量限制器（flow restrictor）或稀釋裝置（diluter），讓超量氣體安全排放。",
+   "en": "<strong>The challenge of high-pressure sampling:</strong> Process gas is usually delivered at 6-8 bar or above, but the LPC sensor is designed to operate near atmospheric pressure, and high-pressure gas entering directly will damage the instrument. A flow restrictor or a diluter must be used so that the excess gas is safely vented."
+  },
+  {
+   "zh": "重點提示 Key Notes — 水霧干擾計數",
+   "en": "Key Notes - Moisture Interference with Counts"
+  },
+  {
+   "zh": "液態水滴（moisture droplets）在LPC中會被計為「微粒」，造成假性計數升高。這是一個系統性誤差來源，必須通過：",
+   "en": "Liquid moisture droplets are counted as \"particles\" in an LPC, causing falsely elevated counts. This is a source of systematic error, and it must be addressed by:"
+  },
+  {
+   "zh": "確保氣體露點遠低於取樣環境溫度（避免凝結）",
+   "en": "Ensuring the gas dewpoint is well below the sampling environment temperature (to avoid condensation)"
+  },
+  {
+   "zh": "取樣管線保溫或加熱",
+   "en": "Insulating or heating the sampling line"
+  },
+  {
+   "zh": "使用疏水性材料的取樣管",
+   "en": "Using sampling tubing made of hydrophobic material"
+  },
+  {
+   "zh": "低壓側的反向問題是：若氣體流量不足，環境空氣可能透過取樣孔進入（文氏效應），造成環境微粒污染取樣讀值——即「負壓引入外氣」現象。",
+   "en": "The converse problem on the low-pressure side: if the gas flow is insufficient, ambient air may enter through the sampling port (Venturi effect), so that ambient particles contaminate the sampling reading, which is the phenomenon of \"negative pressure drawing in outside air\"."
+  },
+  {
+   "zh": "對LPC進行高壓製程氣體監測就像用一般血壓計量液壓機的壓力——你需要先用减壓閥把壓力降到儀器可接受範圍，讓超量壓力安全排出，儀器才能正確測量。取樣管線就像血壓計的充氣管，必須不脫落材質（non-shedding），否則管線自身的微粒會污染讀值。",
+   "en": "Using an LPC to monitor high-pressure process gas is like using an ordinary blood pressure monitor to measure the pressure of a hydraulic press: you first need a pressure-reducing valve to bring the pressure down to a range the instrument can accept and let the excess pressure vent safely before the instrument can measure correctly. The sampling line is like the cuff tube of a blood pressure monitor and must be made of non-shedding material, otherwise the particles from the line itself will contaminate the reading."
+  },
+  {
+   "zh": "你的N₂供氣壓力為7 bar，環境溫度20°C，露點-40°C。在取樣時，你是否需要擔心水霧干擾微粒計數？為什麼？",
+   "en": "Your N₂ supply pressure is 7 bar, the ambient temperature is 20°C, and the dewpoint is -40°C. During sampling, do you need to worry about moisture droplets interfering with the particle count? Why?"
+  },
+  {
+   "zh": "取樣管線的材質選用有何要求？為什麼要「盡可能短」？",
+   "en": "What are the requirements for the material of the sampling line? Why should it be \"as short as possible\"?"
+  },
+  {
+   "zh": "6.3.2.4 Moisture Monitoring — 水分監測",
+   "en": "6.3.2.4 Moisture Monitoring"
+  },
+  {
+   "zh": "<strong>露點（Dewpoint）vs 壓力露點（Pressure Dewpoint）：</strong>",
+   "en": "<strong>Dewpoint vs Pressure Dewpoint:</strong>"
+  },
+  {
+   "zh": "<strong>露點：</strong> 氣體在大氣壓下降溫至凝露的溫度，例如 -40°C dp",
+   "en": "<strong>Dewpoint:</strong> The temperature at which gas condenses when cooled at atmospheric pressure, for example -40°C dp"
+  },
+  {
+   "zh": "<strong>壓力露點：</strong> 氣體在管線實際壓力（如7 bar）下的露點。同一批氣體，在高壓管線中的壓力露點比大氣露點高約20-25°C（因為壓縮使水分相對濃度升高）",
+   "en": "<strong>Pressure dewpoint:</strong> The dewpoint of the gas at the actual line pressure (for example 7 bar). For the same gas, the pressure dewpoint in a high-pressure line is about 20-25°C higher than the atmospheric dewpoint (because compression increases the relative concentration of moisture)."
+  },
+  {
+   "zh": "比對規格書時必須注意：供應商通常標示大氣露點，但你的設備可能需要的是大氣壓下使用（降壓後），應正確換算。",
+   "en": "When comparing against specifications, note that suppliers usually state the atmospheric dewpoint, but your equipment may need the gas as used at atmospheric pressure (after pressure reduction), so convert correctly."
+  },
+  {
+   "zh": "<strong>露點監測的雙重意義：</strong>",
+   "en": "<strong>The dual significance of dewpoint monitoring:</strong>"
+  },
+  {
+   "zh": "<strong>產品保護：</strong> 許多藥品（粉末、凍乾品）對水分敏感，氣體帶入水分會影響產品穩定性和CQA。",
+   "en": "<strong>Product protection:</strong> Many drug products (powders, lyophilized products) are moisture-sensitive, and moisture carried in by the gas affects product stability and CQAs."
+  },
+  {
+   "zh": "<strong>系統保護：</strong> 高水分會造成配管腐蝕、過濾器堵塞、微生物繁殖。乾燥機失效→露點升高→下游問題連鎖。",
+   "en": "<strong>System protection:</strong> High moisture causes pipe corrosion, filter blockage, and microbial proliferation. Dryer failure → rising dewpoint → a chain of downstream problems."
+  },
+  {
+   "zh": "電解法（P₂O₅法）被PhEur和USP收載為官方方法，代表在監管文件中具有最強的公信力，但操作技術要求高，廠方人員需培訓。",
+   "en": "The electrolytic method (P₂O₅ method) is listed as an official method by PhEur and USP, which means it carries the strongest credibility in regulatory documents, but it demands high operating skill and site personnel need to be trained."
+  },
+  {
+   "zh": "冷鏡式露點計就像黃金標準的精密天秤——精確但昂貴且嬌貴。高分子薄膜傳感器就像電子秤——便宜、耐用、精度夠用，適合日常在線監測。選擇哪種，就像選擇計量工具：關鍵應用用天秤，日常監控用電子秤。",
+   "en": "A chilled mirror dewpoint meter is like the gold-standard precision balance: accurate but expensive and delicate. A polymer film sensor is like an electronic scale: cheap, durable, and accurate enough for everyday online monitoring. Choosing between them is like choosing a measuring tool: use the balance for critical applications and the electronic scale for routine monitoring."
+  },
+  {
+   "zh": "在CDMO的凍乾製程（lyophilization）中，腔體充填N₂前必須確認N₂露點達到規格（例如≤-40°C dp）。推薦策略：在N₂進入腔體的POU安裝在線阻抗式或高分子薄膜傳感器做連續監測，並定期用可攜式冷鏡式露點計進行比對校驗（calibration check）。若在線傳感器偏離，立即觸發OOS調查，並評估近期批次是否受影響。",
+   "en": "In a CDMO lyophilization process, the N₂ dewpoint must be confirmed to meet specification (for example ≤-40°C dp) before the chamber is backfilled with N₂. Recommended strategy: install an online impedance or polymer film sensor at the POU where the N₂ enters the chamber for continuous monitoring, and periodically check it against a portable chilled mirror dewpoint meter (calibration check). If the online sensor drifts out of range, trigger an OOS investigation immediately and assess whether recent batches are affected."
+  },
+  {
+   "zh": "你的N₂乾燥機在6 bar壓力下的壓力露點規格為 -20°C pp dp。降壓到大氣壓後，理論大氣露點大約是多少？（提示：壓縮比約7倍，需換算）",
+   "en": "Your N₂ dryer has a pressure dewpoint specification of -20°C pp dp at 6 bar. After reducing the pressure to atmospheric, what is the approximate theoretical atmospheric dewpoint? (Hint: the compression ratio is about 7, so a conversion is needed.)"
+  },
+  {
+   "zh": "為什麼電解式露點計「操作要求比其他方法更高」？你認為在校正計畫中需要特別注意什麼？",
+   "en": "Why does the electrolytic dewpoint meter have \"higher operating requirements than other methods\"? What do you think needs special attention in the calibration program?"
+  },
+  {
+   "zh": "6.3.2.5 Hydrocarbons Monitoring — 碳氫化合物監測",
+   "en": "6.3.2.5 Hydrocarbons Monitoring"
+  },
+  {
+   "zh": "<strong>THC vs TVHC：兩種不同的碳氫污染：</strong>",
+   "en": "<strong>THC vs TVHC: two different kinds of hydrocarbon contamination:</strong>"
+  },
+  {
+   "zh": "<strong>THC（Total Hydrocarbons / Oil Mist）：</strong> 液態油霧，來自壓縮機潤滑油、軸封洩漏等。即便使用無油壓縮機，進氣端的油霧污染也可能殘留。用指示管（indicator tubes）即時偵測。",
+   "en": "<strong>THC (Total Hydrocarbons / Oil Mist):</strong> Liquid oil mist, coming from compressor lubricating oil, shaft seal leakage, and so on. Even with an oil-free compressor, oil mist contamination on the intake side may remain. It is detected in real time with indicator tubes."
+  },
+  {
+   "zh": "<strong>TVHC（Total Volatile Hydrocarbons）：</strong> 揮發性氣態碳氫化合物，如汽油蒸氣、溶劑蒸氣，來自壓縮機進氣口周圍的環境空氣（停車場、鍋爐房、實驗室廢氣）。用ppb/ppm儀器偵測，以甲烷當量表達。",
+   "en": "<strong>TVHC (Total Volatile Hydrocarbons):</strong> Volatile gaseous hydrocarbons such as gasoline vapor and solvent vapor, coming from the ambient air around the compressor intake (parking lots, boiler rooms, laboratory exhaust). They are detected with ppb/ppm instruments and expressed as methane equivalent."
+  },
+  {
+   "zh": "<strong>指示管（Indicator tubes）：</strong> 單次使用的比色試管，成本低、現場快速測定，但精度有限，適合定性/半定量用途。",
+   "en": "<strong>Indicator tubes:</strong> Single-use colorimetric tubes, low cost and giving a quick on-site measurement, but with limited accuracy, suitable for qualitative/semi-quantitative use."
+  },
+  {
+   "zh": "重點提示 Key Notes — 進氣口設計",
+   "en": "Key Notes - Intake Design"
+  },
+  {
+   "zh": "壓縮機進氣口位置是系統設計中最常被忽視的安全細節之一。正確選址原則：",
+   "en": "The location of the compressor intake is one of the most commonly overlooked safety details in system design. The correct siting principles are:"
+  },
+  {
+   "zh": "遠離停車場、裝卸區、發電機排氣管",
+   "en": "Keep away from parking lots, loading areas, and generator exhaust pipes"
+  },
+  {
+   "zh": "高度應高於地面（減少地面塵埃和廢氣吸入）",
+   "en": "Place it above ground level (to reduce intake of ground dust and exhaust fumes)"
+  },
+  {
+   "zh": "設置空氣過濾器（空氣品質差的地區考慮活性炭前處理）",
+   "en": "Install an air filter (consider activated carbon pretreatment in areas with poor air quality)"
+  },
+  {
+   "zh": "定期採樣確認進氣口空氣品質",
+   "en": "Sample periodically to confirm the intake air quality"
+  },
+  {
+   "zh": "若廠址附近有新開幕的停車場或施工工地，需重新評估是否需要增加TVHC例行監測頻率。",
+   "en": "If a new parking lot or construction site opens near the plant, reassess whether the routine TVHC monitoring frequency needs to be increased."
+  },
+  {
+   "zh": "油霧（THC）就像肉眼幾乎看不到的廚房油煙，直接來自設備本身；揮發性碳氫化合物（TVHC）就像鄰居燒烤的煙——來自外部環境，從窗戶（進氣口）飄入。前者靠選用無油壓縮機預防，後者靠選對進氣口位置和持續環境監測。",
+   "en": "Oil mist (THC) is like kitchen oil fumes that are almost invisible to the eye and come directly from the equipment itself; volatile hydrocarbons (TVHC) are like the smoke from a neighbor's barbecue, coming from the external environment and drifting in through the window (the intake). The former is prevented by choosing an oil-free compressor, and the latter by choosing the right intake location and continuous environmental monitoring."
+  },
+  {
+   "zh": "在CDMO資格確認（qualification）流程中，壓縮空氣的碳氫化合物測試通常在IQ/OQ階段執行，目的是確認系統安裝時未引入油污。但ISPE指出：若廠房附近環境空氣品質差（如位於工業區、鄰近停車場），需要納入<strong>常規監測</strong>計畫，而非僅做一次性資格確認。這是CDMO在廠房選址或改建時需要預先評估的風險。",
+   "en": "In a CDMO qualification process, hydrocarbon testing of compressed air is usually performed at the IQ/OQ stage, to confirm that no oil contamination was introduced during installation. But ISPE points out that if the ambient air quality near the plant is poor (for example in an industrial area or next to a parking lot), it needs to be included in a <strong>routine monitoring</strong> program rather than a one-time qualification only. This is a risk that a CDMO must evaluate in advance when selecting a site or renovating a facility."
+  },
+  {
+   "zh": "你的廠剛完成壓縮空氣系統安裝，驗收測試顯示THC（油霧）讀值高於規格。可能的根本原因有哪些？如何逐一排除？",
+   "en": "Your site has just completed installing a compressed air system, and acceptance testing shows THC (oil mist) readings above specification. What are the possible root causes? How would you rule them out one by one?"
+  },
+  {
+   "zh": "TVHCs監測結果以「ppm calculated as methane」表達，這種表達方式有何意涵？當監測對象是複合有機溶劑蒸氣時，此方法有什麼局限性？",
+   "en": "TVHC monitoring results are expressed as \"ppm calculated as methane\". What does this way of expression imply? When the target is a mixed organic solvent vapor, what are the limitations of this method?"
+  },
+  {
+   "zh": "本章重點回顧 Chapter Summary",
+   "en": "Chapter Summary"
+  },
+  {
+   "zh": "<strong>管控系統三類：</strong> 壓縮空氣（廠方自有，露點控制切換）、鋼瓶（自動切換+BMS整合）、現場產氣（供應商控制，廠方需複製儀表管理校正）。設計階段即需規劃整合。",
+   "en": "<strong>Three types of control system:</strong> Compressed air (site-owned, dewpoint-controlled switching), cylinders (automatic changeover + BMS integration), and on-site generation (supplier-controlled, with the site duplicating instruments and managing calibration). Integration must be planned at the design stage."
+  },
+  {
+   "zh": "<strong>壓力非CPP的ISPE立場：</strong> 幹管壓力是工程參數，真正的關鍵監測點在各POU入口，設備自帶的壓力開關才是關鍵儀表。",
+   "en": "<strong>ISPE's position that pressure is not a CPP:</strong> Header pressure is an engineering parameter; the real critical monitoring points are at each POU inlet, and the pressure switch built into the equipment is the key instrument."
+  },
+  {
+   "zh": "<strong>品質等同原則：</strong> 製程氣體進入潔淨室，微粒和微生物品質必須≥所在室的靜態等級（Annex 1 / 21 CFR Part 210要求）。",
+   "en": "<strong>Quality equivalence principle:</strong> When process gas enters the cleanroom, its particulate and microbial quality must be ≥ the at-rest classification of that room (Annex 1 / 21 CFR Part 210 requirement)."
+  },
+  {
+   "zh": "<strong>低露點不等於無菌：</strong> 乾燥可抑制微生物生長，但芽孢（endospores）在極乾環境下仍可長期存活。唯一可靠的屏障是0.2 µm滅菌級POU過濾器。",
+   "en": "<strong>A low dewpoint does not mean sterile:</strong> Drying can inhibit microbial growth, but endospores can still survive for a long time in an extremely dry environment. The only reliable barrier is a 0.2 µm sterilizing-grade POU filter."
+  },
+  {
+   "zh": "<strong>取樣位置策略：</strong> 取樣應在最終過濾器上游進行，最長管路末端是最具代表性的風險點；過濾器下游取樣風險大，每次取樣都可能污染已滅菌流路。",
+   "en": "<strong>Sampling location strategy:</strong> Sampling should be done upstream of the final filter, and the end of the longest pipe run is the most representative risk point; sampling downstream of the filter is high-risk, since every sampling may contaminate the sterilized flow path."
+  },
+  {
+   "zh": "<strong>水分監測選型：</strong> 冷鏡（最精準但貴）、電解（PhEur/USP認可）、阻抗（穩定在線）、高分子薄膜（低成本、耐微粒）——根據應用精度和預算選擇；露點vs壓力露點需正確換算。",
+   "en": "<strong>Choosing a moisture monitoring technology:</strong> Chilled mirror (most accurate but costly), electrolytic (accepted by PhEur/USP), impedance (stable online), polymer film (low cost, particle tolerant). Choose according to the required accuracy and budget; dewpoint vs pressure dewpoint must be converted correctly."
+  },
+  {
+   "zh": "<strong>碳氫化合物雙重風險：</strong> THC（油霧，來自設備）靠無油壓縮機和指示管監測；TVHC（揮發性碳氫，來自外部環境）靠進氣口選址和持續環境監測管控。",
+   "en": "<strong>The dual hydrocarbon risk:</strong> THC (oil mist, from the equipment) is controlled by oil-free compressors and indicator tubes; TVHC (volatile hydrocarbons, from the external environment) is controlled by intake siting and continuous environmental monitoring."
+  },
+  {
+   "zh": "<strong>CDMO OOS連接：</strong> 任何製程氣體品質OOS事件都必須觸發偏差調查，評估批次衝擊，並決定放行、隔離或報廢——氣體品質數據是批次記錄的一部分。",
+   "en": "<strong>The CDMO OOS link:</strong> Any process gas quality OOS event must trigger a deviation investigation, assess the batch impact, and decide on release, quarantine, or rejection. Gas quality data are part of the batch record."
+  }
+ ]
+}

@@ -1,0 +1,549 @@
+{
+ "source": "section-05-operations.html",
+ "blocks": [
+  {
+   "zh": "第五章：操作運營",
+   "en": "Chapter 5: Operations"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解多產品 (Multi-product) 廠房的分時與分空間策略，說明分批次連續生產 (Campaign manufacturing) 與並行生產 (Concurrent production) 的差異及清潔驗證要求。",
+   "en": "Understand the time-based and space-based segregation strategies in multi-product facilities, and explain the differences between campaign manufacturing and concurrent production, including their cleaning validation requirements."
+  },
+  {
+   "zh": "掌握一次性使用系統 (Single-Use Systems, SUS) 的設計優勢（免 CIP/SIP、較小廠房足跡）與風險（供應鏈依賴、可萃取物與可滲出物 E&amp;L）。",
+   "en": "Understand the design advantages of single-use systems (SUS) (no CIP/SIP, smaller facility footprint) and their risks (supply chain dependency, extractables and leachables, E&amp;L)."
+  },
+  {
+   "zh": "分析密閉系統 (Closed systems) 與開放系統 (Open systems) 對環境分類、著裝要求、清潔計畫及人員編制的影響。",
+   "en": "Analyze how closed systems and open systems affect environmental classification, gowning requirements, cleaning programs, and staffing levels."
+  },
+  {
+   "zh": "了解自動化 (Automation)、製造執行系統 (MES)、程序標準化與操作員訓練如何提升生物製藥廠的一致性與合規性。",
+   "en": "Understand how automation, manufacturing execution systems (MES), procedural standardization, and operator training improve consistency and compliance in biopharmaceutical facilities."
+  },
+  {
+   "zh": "評估產能 (Capacity)、排程 (Scheduling)、可維護性及供應鏈策略對生物製藥設施整體績效的影響。",
+   "en": "Evaluate how capacity, scheduling, maintainability, and supply chain strategy affect the overall performance of a biopharmaceutical facility."
+  },
+  {
+   "zh": "5.1 Introduction｜導言",
+   "en": "5.1 Introduction"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念解析 Key Concepts",
+   "en": "Key Concepts"
+  },
+  {
+   "zh": "<strong>Operability（可操作性）</strong>：設備與廠房是否能讓操作員安全、有效率地執行日常製造工作。",
+   "en": "<strong>Operability</strong>: whether the equipment and facility allow operators to carry out routine manufacturing work safely and efficiently."
+  },
+  {
+   "zh": "<strong>Maintainability（可維護性）</strong>：設備是否容易進行預防性保養、校正與零件更換，而不需要長時間停機。",
+   "en": "<strong>Maintainability</strong>: whether the equipment can readily undergo preventive maintenance, calibration, and parts replacement without long periods of downtime."
+  },
+  {
+   "zh": "本章的核心命題是「雙向影響」：設計影響操作，操作需求也應在設計階段反映。這是 ISPE 強調「早期介入 (Early Involvement)」的具體體現。",
+   "en": "The central proposition of this chapter is \"two-way influence\": design affects operations, and operational needs should in turn be reflected at the design stage. This is a concrete expression of the early involvement that ISPE emphasizes."
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "廠房設計就像蓋廚房——如果設計時沒考慮廚師的動線和設備維修需求，廚師每天工作都會卡關。本章就是要確保「蓋廚房時，廚師有參與設計討論」。",
+   "en": "Designing a facility is like building a kitchen. If the chefs' workflow and the equipment maintenance needs are not considered during design, the chefs will be stuck every day they work. This chapter exists to ensure that \"when the kitchen is built, the chefs take part in the design discussions.\""
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "更高效價 (Higher titers) 意味著同樣的藥量可以用更小的生物反應器生產，這是一次性使用系統 (SUS) 擴大應用的關鍵驅動力。小批量製程更適合 SUS，大批量製程仍以傳統不鏽鋼設備為主。",
+   "en": "Higher titers mean the same quantity of drug can be produced in a smaller bioreactor, which is a key driver for the wider adoption of single-use systems (SUS). Small-batch processes suit SUS better, while large-batch processes still rely mainly on conventional stainless steel equipment."
+  },
+  {
+   "zh": "5.2 Multiple Product Operations｜多產品操作",
+   "en": "5.2 Multiple Product Operations"
+  },
+  {
+   "zh": "<strong>Campaign Manufacturing（分批次連續生產）</strong>：在同一空間，不同時間生產不同產品。換產前須完成清潔驗證 (Cleaning Validation) 並確認殘留物符合可接受限度。",
+   "en": "<strong>Campaign Manufacturing</strong>: different products are made in the same space at different times. Before changeover, cleaning validation must be completed and residues confirmed to be within acceptable limits."
+  },
+  {
+   "zh": "<strong>Concurrent Production（並行生產）</strong>：在同一時間，不同空間（或密閉系統內）同時生產不同產品。依賴物理隔離 (Physical Segregation) 或程序管控 (Procedural Control)。",
+   "en": "<strong>Concurrent Production</strong>: different products are made at the same time in different spaces (or within closed systems). This relies on physical segregation or procedural control."
+  },
+  {
+   "zh": "<strong>BSC（Biological Safety Cabinet，生物安全櫃）</strong>：開放製程中保護產品與操作員的局部隔離設備，常用於種源培養 (Seed Preparation) 等開放步驟。",
+   "en": "<strong>BSC (Biological Safety Cabinet)</strong>: a local containment device that protects both product and operator during open processing, commonly used for open steps such as seed preparation."
+  },
+  {
+   "zh": "<strong>Campaign 製造 = 餐廳預訂制（一次只做一批）</strong>：早上做法式料理，下午打掃廚房、換餐具，晚上做日式料理——每次切換都需要徹底清潔，否則前一批的殘留（交叉污染）會影響下一批。",
+   "en": "<strong>Campaign manufacturing = a restaurant that takes one booking at a time</strong>: French cuisine in the morning, then the kitchen is cleaned and the tableware changed in the afternoon, then Japanese cuisine in the evening. Every switch requires thorough cleaning, otherwise residues from the previous batch (cross-contamination) will affect the next one."
+  },
+  {
+   "zh": "<strong>Concurrent 生產 = 用不同鍋子同時煮多道菜</strong>：不同產品在物理隔離的密閉容器裡同時運行，互不干擾——前提是密封性要足夠好。",
+   "en": "<strong>Concurrent production = cooking several dishes at once in separate pots</strong>: different products run at the same time in physically separate closed vessels without interfering with each other, provided the sealing is good enough."
+  },
+  {
+   "zh": "<strong>清潔驗證 (Cleaning Validation) 是 Campaign 製造的核心合規要求：</strong>需科學建立清潔終點 (Cleaning Endpoint)，並驗證殘留物（前產品、清潔劑、微生物）均低於可接受限度。彈性體（橡膠墊圈 Gaskets、軟管 Hoses、隔膜 Diaphragms）需特別關注，因為它們可能吸附並釋放殘留物。",
+   "en": "<strong>Cleaning validation is the core compliance requirement of campaign manufacturing:</strong> the cleaning endpoint must be established scientifically, and residues (previous product, cleaning agents, microorganisms) must be verified to be below acceptable limits. Elastomers (rubber gaskets, hoses, diaphragms) need particular attention because they can absorb and then release residues."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "您的 CDMO 廠房同時承接三個客戶的生物製藥產品，您會建議採用 Campaign 模式還是 Concurrent 模式？請說明理由和所需的技術條件。",
+   "en": "Your CDMO facility is taking on biopharmaceutical products from three clients at the same time. Would you recommend campaign mode or concurrent mode? Explain your reasoning and the technical conditions required."
+  },
+  {
+   "zh": "Campaign 製造中，「Clearance（殘留清除）」的法規要求具體包含哪些面向？只檢測不鏽鋼表面殘留是否足夠？",
+   "en": "In campaign manufacturing, what specifically do the regulatory requirements for \"clearance\" cover? Is testing only stainless steel surface residues sufficient?"
+  },
+  {
+   "zh": "原文內容 Original Text (continued)",
+   "en": "Original Text (continued)"
+  },
+  {
+   "zh": "核心概念：三層彈性策略",
+   "en": "Core Concept: Three Levels of Flexibility"
+  },
+  {
+   "zh": "ISPE 將廠房彈性由低到高分為三層：",
+   "en": "ISPE classifies facility flexibility into three levels, from low to high:"
+  },
+  {
+   "zh": "<strong>Expandability（擴充性）</strong>：現在省錢，預留未來擴建空間。最便宜。",
+   "en": "<strong>Expandability</strong>: saves money now by reserving space for future expansion. The cheapest option."
+  },
+  {
+   "zh": "<strong>Adaptability（調適性）</strong>：預留 shell space（空殼空間）與公用設施接口，改建時影響較小。",
+   "en": "<strong>Adaptability</strong>: reserves shell space and utility connections, so later modifications have less impact."
+  },
+  {
+   "zh": "<strong>Flexibility（靈活性）</strong>：已佈設好公用管線到每個預計位置，可即插即用。最貴，但換產最快。",
+   "en": "<strong>Flexibility</strong>: utility lines are already routed to every anticipated location, ready for plug-and-play use. The most expensive option, but the fastest changeover."
+  },
+  {
+   "zh": "CDMO 因需頻繁換產，通常傾向採用 Flexibility 設計；新創 Biotech 早期臨床廠則可先採 Expandability，節省資本支出。",
+   "en": "Because CDMOs change products frequently, they generally favor a Flexibility design, while a start-up biotech with an early clinical facility may adopt Expandability first to save capital expenditure."
+  },
+  {
+   "zh": "Platform Process（平台製程）的商業價值",
+   "en": "The Commercial Value of a Platform Process"
+  },
+  {
+   "zh": "生物製藥企業（尤其 mAb 廠商）建立標準化 Platform Process，讓新產品能快速套用既有的上游培養條件、下游純化步驟和清潔驗證方法。這大幅縮短換產時間與驗證成本，是 CDMO 接案效率的關鍵競爭優勢。",
+   "en": "Biopharmaceutical companies (especially mAb manufacturers) establish a standardized platform process so that new products can quickly reuse existing upstream culture conditions, downstream purification steps, and cleaning validation methods. This greatly shortens changeover time and validation cost, and is a key competitive advantage in the efficiency with which a CDMO takes on projects."
+  },
+  {
+   "zh": "<strong>Recipe Management = 餐廳的菜單系統</strong>：自動化系統只需「換一份食譜」就能切換產品，不需要重新寫整套程式——大幅降低換產的軟體確效 (Qualification) 工作量。",
+   "en": "<strong>Recipe management = a restaurant's menu system</strong>: the automation system only needs to \"switch to a different recipe\" to change products, without rewriting the whole program, which greatly reduces the software qualification workload at changeover."
+  },
+  {
+   "zh": "臨床試驗製造的特殊考量",
+   "en": "Special Considerations for Clinical Trial Manufacturing"
+  },
+  {
+   "zh": "臨床階段廠房設計面臨「先有雞還是先有蛋」的困境：製程知識尚不完整，但 FDA/EMA 要求必須在 GMP 條件下生產臨床用樣品。解法是採用「分階段 GMP 合規 (Step-wise GMP compliance)」——早期臨床允許較多人工操作和彈性，隨製程知識累積逐步強化管控。",
+   "en": "Clinical-stage facility design faces a chicken-and-egg dilemma: process knowledge is still incomplete, yet FDA and EMA require clinical supplies to be made under GMP conditions. The solution is step-wise GMP compliance: early clinical phases allow more manual operation and flexibility, and controls are progressively strengthened as process knowledge accumulates."
+  },
+  {
+   "zh": "實務應用 Practical Application",
+   "en": "Practical Application"
+  },
+  {
+   "zh": "一家 CDMO 正在評估是否接受一個新的 mAb 臨床一期案子。客戶的製程資料尚未完整確立，但希望 6 個月後就開始生產。ISPE 的建議是：在廠房設計上採用 Adaptability 策略，在 GMP 合規上採用 Step-wise 方法，同時建立嚴格的 Change Management 系統以追蹤製程變更對產品品質的影響。",
+   "en": "A CDMO is evaluating whether to accept a new phase 1 mAb project. The client's process data is not yet fully established, but they want production to start in 6 months. ISPE's recommendation is to adopt an Adaptability strategy for facility design and a step-wise approach for GMP compliance, while also putting in place a rigorous change management system to track the impact of process changes on product quality."
+  },
+  {
+   "zh": "5.3 Single Use Systems｜一次性使用系統",
+   "en": "5.3 Single Use Systems"
+  },
+  {
+   "zh": "<strong>Single-Use System, SUS（一次性使用系統）</strong>：由一次性塑膠材料（袋子、管路、接頭、生物反應器內膽等）組成的製程系統。每批次使用後即拋棄，不需要清洗 (CIP) 或滅菌 (SIP)。",
+   "en": "<strong>Single-Use System (SUS)</strong>: a process system made up of disposable plastic materials (bags, tubing, connectors, bioreactor liners, and so on). It is discarded after each batch, so no cleaning (CIP) or sterilization (SIP) is needed."
+  },
+  {
+   "zh": "<strong>Extractables &amp; Leachables, E&amp;L（可萃取物與可滲出物）</strong>：塑膠材料中的化學物質可能在特定條件下（高溫、有機溶劑）遷移（Extractables）或在正常製程條件下逐漸滲出（Leachables）到藥品中，影響安全性。需根據 USP &lt;661&gt;、ISO 10993 等標準進行測試。",
+   "en": "<strong>Extractables &amp; Leachables (E&amp;L)</strong>: chemicals in plastic materials may migrate into the drug product under certain conditions (high temperature, organic solvents), which are extractables, or gradually leach into it under normal process conditions, which are leachables, affecting safety. Testing should follow standards such as USP &lt;661&gt; and ISO 10993."
+  },
+  {
+   "zh": "<strong>SUS = 免洗餐具 vs. 瓷器</strong>：傳統不鏽鋼設備像高檔瓷器——每次用完要徹底清洗消毒，耗時費力；一次性使用系統像免洗餐具——用完即丟，省去清洗步驟，但有塑膠材料安全性（E&amp;L）和廢棄物處理的顧慮。",
+   "en": "<strong>SUS = disposable tableware vs. porcelain</strong>: conventional stainless steel equipment is like fine porcelain, which must be thoroughly washed and disinfected after every use, a time-consuming effort. A single-use system is like disposable tableware: use it and throw it away, with no washing step, but with concerns about the safety of plastic materials (E&amp;L) and waste disposal."
+  },
+  {
+   "zh": "<strong>SUS 的供應鏈風險是最被低估的風險之一：</strong>許多關鍵 SUS 組件（尤其是特定尺寸的生物反應器袋）僅有 1-2 家供應商，一旦供應中斷（如 COVID-19 期間發生的情況）可能導致整個生產線停頓。ISPE 和 FDA 均建議製造商建立供應鏈風險評估 (Supply Chain Risk Assessment) 和備用供應商認證計畫。",
+   "en": "<strong>SUS supply chain risk is one of the most underestimated risks:</strong> many critical SUS components (especially bioreactor bags of specific sizes) have only one or two suppliers, and a supply interruption (as occurred during COVID-19) can bring an entire production line to a halt. ISPE and FDA both recommend that manufacturers establish a supply chain risk assessment and a qualification program for backup suppliers."
+  },
+  {
+   "zh": "<strong>廢棄物處理的法規面：</strong>接觸過生物製品（尤其是含活性病毒的疫苗製程）的 SUS 廢棄物屬生物危害廢棄物 (Biohazardous Waste)，必須經過高壓滅菌或焚化處理，不能直接進入一般廢棄物流。",
+   "en": "<strong>The regulatory aspect of waste disposal:</strong> SUS waste that has contacted biological products (especially vaccine processes involving live virus) is biohazardous waste. It must be autoclaved or incinerated and must not enter the general waste stream."
+  },
+  {
+   "zh": "SUS vs. 傳統設備 TCO 比較框架",
+   "en": "Framework for Comparing the TCO of SUS vs. Conventional Equipment"
+  },
+  {
+   "zh": "傳統不鏽鋼設備成本 =\n  資本支出 (CapEx)\n  + CIP/SIP 系統建置與驗證\n  + 純化水 / WFI 用量\n  + 清潔驗證（跨批次）\n  + 定期更換密封件\n\n一次性使用系統成本 =\n  每批 SUS 耗材採購價\n  + 儲存空間與庫存管理\n  + 生物危害廢棄物處理費\n  + E&amp;L 測試費用\n  + 供應鏈風險備用金\n\n關鍵：批次規模越小，SUS TCO 優勢越明顯\n      批次規模越大（&gt;2000L），傳統設備 TCO 反而較低",
+   "en": "Conventional stainless steel equipment cost =\n  Capital expenditure (CapEx)\n  + CIP/SIP system installation and validation\n  + Purified water / WFI consumption\n  + Cleaning validation (across batches)\n  + Periodic replacement of seals\n\nSingle-use system cost =\n  Purchase price of SUS consumables per batch\n  + Storage space and inventory management\n  + Biohazardous waste disposal fees\n  + E&amp;L testing costs\n  + Supply chain risk contingency\n\nKey point: the smaller the batch size, the greater the SUS TCO advantage\n      At larger batch sizes (&gt;2000 L), conventional equipment actually has the lower TCO"
+  },
+  {
+   "zh": "E&amp;L（可萃取物與可滲出物）測試的重點是什麼？製造商應在哪個開發階段開始評估 SUS 的 E&amp;L 風險？",
+   "en": "What are the key points of E&amp;L (extractables and leachables) testing? At what development stage should a manufacturer begin assessing the E&amp;L risk of SUS?"
+  },
+  {
+   "zh": "如果您的 SUS 袋唯一供應商突然宣布停產，您的 CDMO 應如何應對？有哪些預防措施可以在設計階段就納入？",
+   "en": "If the sole supplier of your SUS bags suddenly announces it is discontinuing production, how should your CDMO respond? What preventive measures could be built in at the design stage?"
+  },
+  {
+   "zh": "5.4 Impact of Closed and Open Systems on Operations｜密閉與開放系統對操作的影響",
+   "en": "5.4 Impact of Closed and Open Systems on Operations"
+  },
+  {
+   "zh": "<strong>Closed System（密閉系統）</strong>：製程液體與外部環境完全隔絕，不需要依賴房間分類 (Room Classification) 提供保護。密閉系統是自身的一級圍堵 (Primary Containment)。",
+   "en": "<strong>Closed System</strong>: the process fluid is completely isolated from the external environment, so protection does not depend on room classification. A closed system is its own primary containment."
+  },
+  {
+   "zh": "<strong>CNC（Controlled but Not Classified，受控非分類區）</strong>：相較於 ISO 5/7/8 潔淨室，CNC 只需基本環境管控（如 HEPA 過濾、正壓），無嚴格微粒和微生物限度要求，建設和運行成本顯著較低。",
+   "en": "<strong>CNC (Controlled but Not Classified)</strong>: compared with ISO 5/7/8 cleanrooms, CNC areas need only basic environmental control (such as HEPA filtration and positive pressure), with no strict particle or microbial limits, so construction and operating costs are significantly lower."
+  },
+  {
+   "zh": "<strong>Plastic Weldable Connections（塑膠焊接接口）</strong>：透過熱焊接方式連接 SUS 管路，避免開放性連接操作，是將原本開放的製程步驟轉為密閉的關鍵技術。",
+   "en": "<strong>Plastic Weldable Connections</strong>: SUS tubing is joined by thermal welding, avoiding open connection operations. This is the key technology for converting an originally open process step into a closed one."
+  },
+  {
+   "zh": "<strong>密閉系統帶來的「50% 人員節省」是驚人的商業影響：</strong>密閉系統 + 自動化允許上下游操作員在同一空間作業，搭配適當的交叉培訓 (Cross-training)，人員需求可降低高達 50%。這對 CDMO 而言直接影響報價競爭力和運營成本。",
+   "en": "<strong>The \"50% staffing saving\" from closed systems is a striking commercial impact:</strong> closed systems plus automation allow upstream and downstream operators to work in the same space, and with appropriate cross-training, staffing requirements can fall by up to 50%. For a CDMO this directly affects quotation competitiveness and operating costs."
+  },
+  {
+   "zh": "<strong>下游 (Downstream) 密閉化是當前的技術趨勢：</strong>傳統層析 (Chromatography) 操作有許多開放連接點，但在線分析儀器 (On-line analytical devices) 和自動收集閥 (Automated fraction collection) 的進步正在使下游製程逐步走向密閉化。",
+   "en": "<strong>Closing the downstream process is the current technology trend:</strong> conventional chromatography operations have many open connection points, but advances in on-line analytical devices and automated fraction collection are gradually moving downstream processing toward closed operation."
+  },
+  {
+   "zh": "<strong>密閉系統 = 完全密封的食品加工線</strong>：牛奶從牧場到利樂包，全程密封管路輸送——不需要「潔淨廠房」，因為產品本身就被密封保護著。但如果某個環節需要打開（如取樣），就必須立刻在嚴格環境下操作。",
+   "en": "<strong>Closed system = a fully sealed food processing line</strong>: milk travels from the farm to the carton through sealed piping all the way, so no \"cleanroom\" is needed because the product itself is protected by sealing. But if any step requires opening the system (such as sampling), that operation must immediately be carried out in a strictly controlled environment."
+  },
+  {
+   "zh": "CDMO 廠房設計評估：一個新的 mAb 製造設施，若採用全密閉系統設計，可以將潔淨室面積從 2000 m² 降至 800 m²（其餘使用 CNC），同時減少環境監測點位約 60%，人員配置降低 40%。這些節省在 20 年 TCO 中可達數千萬美元，是 ISPE 密閉化設計的核心商業論據。",
+   "en": "CDMO facility design evaluation: if a new mAb manufacturing facility adopts a fully closed system design, the cleanroom area can be reduced from 2000 m² to 800 m² (with the remainder as CNC), while environmental monitoring locations fall by about 60% and staffing by 40%. These savings can reach tens of millions of dollars over a 20-year TCO, which is the core business case for ISPE's closed-system design."
+  },
+  {
+   "zh": "5.4.1 Closure｜密閉性",
+   "en": "5.4.1 Closure"
+  },
+  {
+   "zh": "核心概念：雙重失效保護",
+   "en": "Core Concept: Protection Against Dual Failure"
+  },
+  {
+   "zh": "密閉系統的安全邏輯：要發生污染，需要<strong>兩個</strong>密閉系統同時失效。這與 EU GMP Annex 1 的「污染控制策略 (CCS)」哲學一致——多重屏障 (Multiple Barriers) 提供冗餘保護。",
+   "en": "The safety logic of closed systems: contamination requires <strong>two</strong> closures to fail at the same time. This is consistent with the philosophy of the contamination control strategy (CCS) in EU GMP Annex 1, where multiple barriers provide redundant protection."
+  },
+  {
+   "zh": "<strong>Breach of Closure（密閉失效）</strong>：任何導致密閉系統完整性被破壞的事件（如管路脫落、接頭漏液）。必須有書面 SOP 規範：如何識別、如何上報、如何評估影響、如何重新建立密閉性。",
+   "en": "<strong>Breach of Closure</strong>: any event that compromises the integrity of a closed system (such as a detached line or a leaking connector). A written SOP must define how to identify it, how to escalate it, how to assess the impact, and how to re-establish closure."
+  },
+  {
+   "zh": "「Breach of Closure SOP」是 FDA 和 EMA 查廠時的常見查核項目。若廠房宣稱使用密閉系統來降低房間分類要求（如採用 CNC），則必須能夠證明密閉失效的應對程序是充分的且已被演練過。",
+   "en": "A \"Breach of Closure SOP\" is a common inspection item during FDA and EMA inspections. If a facility claims to use closed systems to lower its room classification requirements (for example by adopting CNC), it must be able to show that the response procedure for a breach of closure is adequate and has been practiced."
+  },
+  {
+   "zh": "5.4.2 Cleaning and Housekeeping｜清潔與環境整潔",
+   "en": "5.4.2 Cleaning and Housekeeping"
+  },
+  {
+   "zh": "<strong>Risk-MaPP（Risk-based Manufacture of Pharmaceutical Products）</strong>：ISPE 指南，提供基於風險評估的多產品設施設計和操作框架，特別針對高活性藥物 (Highly Potent APIs) 的清潔驗證和人員保護。",
+   "en": "<strong>Risk-MaPP (Risk-based Manufacture of Pharmaceutical Products)</strong>: an ISPE guide that provides a risk-based framework for the design and operation of multi-product facilities, with particular attention to cleaning validation and personnel protection for highly potent APIs."
+  },
+  {
+   "zh": "清潔計畫的強度應與<strong>產品風險</strong>和<strong>空間分類</strong>相稱。CNC 空間的清潔要求顯著低於 ISO 7/8 潔淨室，這是密閉系統設計節省成本的重要來源之一。",
+   "en": "The intensity of the cleaning program should be commensurate with <strong>product risk</strong> and <strong>area classification</strong>. Cleaning requirements for CNC spaces are significantly lower than for ISO 7/8 cleanrooms, which is one important source of the cost savings from closed system design."
+  },
+  {
+   "zh": "<strong>生物製藥廠的病蟲害管制 (Pest Control) 常被忽視，但實際上是法規要求。</strong>培養基成分（糖類、胺基酸）本身就是害蟲吸引物。FDA 483 觀察報告中，廠房曾因在生產區發現昆蟲而被發出 483 不合格項。",
+   "en": "<strong>Pest control in biopharmaceutical facilities is often overlooked, but it is in fact a regulatory requirement.</strong> Culture media components (sugars, amino acids) are themselves pest attractants. In FDA 483 observations, facilities have received 483 citations for finding insects in production areas."
+  },
+  {
+   "zh": "材料兼容性 (Material Compatibility)：廠房表面材料（牆面、地板、設備外殼）必須與常用清潔劑（如次氯酸鈉、過氧化氫）相容，不得在清潔過程中腐蝕或產生顆粒。",
+   "en": "Material compatibility: facility surface materials (walls, floors, equipment housings) must be compatible with commonly used cleaning agents (such as sodium hypochlorite and hydrogen peroxide) and must not corrode or shed particles during cleaning."
+  },
+  {
+   "zh": "<strong>整潔度 = 廠房品質文化的鏡子</strong>：FDA 查廠員在正式檢查前，往往先觀察廠房的整體整潔程度。一個雜亂的走廊或標識不清的廢棄物桶，可能比任何文件問題更早引起查廠員的注意。「Housekeeping is considered an indicator of the quality of an operation」——這句話是法規查廠的潛台詞。",
+   "en": "<strong>Housekeeping = a mirror of the facility's quality culture</strong>: before the formal inspection begins, FDA investigators often first observe the overall tidiness of the facility. A cluttered corridor or an unlabeled waste bin may catch the investigator's attention sooner than any documentation problem. \"Housekeeping is considered an indicator of the quality of an operation\" is the subtext of regulatory inspections."
+  },
+  {
+   "zh": "5.4.3 Gowning｜著裝要求",
+   "en": "5.4.3 Gowning"
+  },
+  {
+   "zh": "<strong>著裝 = 手術衣 vs. 廚師服</strong>：在全密閉製程中，操作員穿著廚師服（實驗室外套）即可安全工作；但在開放製程中（如無菌充填），必須穿戴全套「手術衣」——舒適度差，疲勞感高，長期下來對工作品質和人員健康均有影響。",
+   "en": "<strong>Gowning = surgical gown vs. chef's uniform</strong>: in a fully closed process, operators can work safely in a chef's uniform (a lab coat), but in an open process (such as aseptic filling) they must wear a full \"surgical gown\". This is uncomfortable and tiring, and over the long term affects both work quality and personnel health."
+  },
+  {
+   "zh": "<strong>HMI 移至隔壁行政區 = 有倒車雷達的車</strong>：司機不必下車就能了解後方狀況——操作員不必進入潔淨室就能監控製程狀態，大幅減少著裝/卸裝的時間成本。",
+   "en": "<strong>Moving the HMI to the adjacent administrative area = a car with a parking sensor</strong>: the driver can understand what is happening behind without getting out, and operators can monitor process status without entering the cleanroom, greatly reducing the time cost of gowning and de-gowning."
+  },
+  {
+   "zh": "<strong>著裝要求的隱性成本常被低估：</strong>一個操作員每天著裝/卸裝可能消耗 30-60 分鐘，在多班制運作的生物製藥廠，每年累積的人時成本相當可觀。此外，高溫潔淨室環境下的疲勞效應也是 FDA 觀察到的人為錯誤 (Human Error) 重要來源之一。",
+   "en": "<strong>The hidden cost of gowning requirements is often underestimated:</strong> an operator may spend 30-60 minutes a day gowning and de-gowning, and in a multi-shift biopharmaceutical facility the accumulated labor hours per year are considerable. In addition, fatigue in hot cleanroom environments is one of the important sources of human error that FDA has observed."
+  },
+  {
+   "zh": "<strong>亞太地區的特殊著裝文化：</strong>中國和日本部分地區要求設置獨立的脫鞋室 (Shoe removal room) 和風淋室 (Air shower)，這些設施需要在廠房設計時提前規劃，否則事後改裝成本極高。",
+   "en": "<strong>Special gowning culture in the Asia-Pacific region:</strong> some parts of China and Japan require a separate shoe removal room and an air shower. These facilities must be planned early in facility design, otherwise retrofitting later is extremely costly."
+  },
+  {
+   "zh": "圖表解讀 Figure Analysis",
+   "en": "Figure Analysis"
+  },
+  {
+   "zh": "<strong>Figure 5.1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=ISPE-Vol6&amp;file=fig-p56-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> &amp; 5.2（Novo Nordisk / NNE Pharmaplan 案例）</strong>：這兩張圖展示了現代生物製藥廠的最佳實踐設計——在生產區外側配置非分類的行政支持空間（配備 HMI 終端機），操作員可透過大型觀察窗監視製程，只在需要時才進入生產區。這種設計將潔淨室暴露時間降至最低，同時透過充足採光和視野改善操作員的工作環境品質。",
+   "en": "<strong>Figure 5.1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=ISPE-Vol6&amp;file=fig-p56-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> &amp; 5.2 (Novo Nordisk / NNE Pharmaplan case)</strong>: these two figures show best-practice design for a modern biopharmaceutical facility. Unclassified administrative support space (equipped with HMI terminals) is placed outside the production area, and operators can monitor the process through large viewing windows, entering the production area only when necessary. This design minimizes cleanroom exposure time, and the ample daylight and views improve the quality of the operators' working environment."
+  },
+  {
+   "zh": "如果廠房設計選擇將 HMI 終端機移至非分類行政區，需要對哪些 GMP 系統進行額外的設計考量（如 21 CFR Part 11 電子記錄、網路安全等）？",
+   "en": "If the facility design moves HMI terminals to an unclassified administrative area, which GMP systems need additional design consideration (such as 21 CFR Part 11 electronic records and cybersecurity)?"
+  },
+  {
+   "zh": "著裝等級對環境監測 (Environmental Monitoring) 計畫有何影響？CNC 空間和 ISO 7 空間的採樣頻率和限度設定有何不同？",
+   "en": "How does the gowning level affect the environmental monitoring program? How do the sampling frequency and limit settings differ between CNC spaces and ISO 7 spaces?"
+  },
+  {
+   "zh": "5.5 Automation, Procedures, and Training｜自動化、程序與訓練",
+   "en": "5.5 Automation, Procedures, and Training"
+  },
+  {
+   "zh": "<strong>DCS/SCADA（分散式控制系統／監控與數據採集系統）</strong>：負責設備層級的即時製程控制（溫度、壓力、流量）。",
+   "en": "<strong>DCS/SCADA (Distributed Control System / Supervisory Control and Data Acquisition)</strong>: responsible for real-time process control at the equipment level (temperature, pressure, flow)."
+  },
+  {
+   "zh": "<strong>MES（Manufacturing Execution System，製造執行系統）</strong>：負責批次層級的操作管理，包含電子批次記錄 (EBR)、物料追蹤、人員培訓核查、設備狀態確認。",
+   "en": "<strong>MES (Manufacturing Execution System)</strong>: responsible for operations management at the batch level, including electronic batch records (EBR), material tracking, personnel training verification, and equipment status verification."
+  },
+  {
+   "zh": "<strong>PAT（Process Analytical Technology，製程分析技術）</strong>：即時監測關鍵製程屬性（如細胞濃度、溶氧、pH），使製程決策從「事後檢驗」轉為「即時調整」，符合 FDA PAT Guidance (2004) 和 ICH Q8 的 QbD 精神。",
+   "en": "<strong>PAT (Process Analytical Technology)</strong>: real-time monitoring of critical process attributes (such as cell density, dissolved oxygen, and pH), moving process decisions from \"after-the-fact testing\" to \"real-time adjustment\", in line with the QbD spirit of the FDA PAT Guidance (2004) and ICH Q8."
+  },
+  {
+   "zh": "<strong>21 CFR Part 11</strong>：美國 FDA 法規，規範電子記錄與電子簽名的合規要求。MES 和 EBR 系統必須符合 Part 11 要求，包括稽核軌跡 (Audit Trail)、版本控制和存取權限管理。",
+   "en": "<strong>21 CFR Part 11</strong>: a US FDA regulation governing compliance requirements for electronic records and electronic signatures. MES and EBR systems must meet Part 11 requirements, including audit trails, version control, and access rights management."
+  },
+  {
+   "zh": "<strong>MES = 餐廳的 POS 系統（訂單管理系統）</strong>：服務員掃描食材條碼確認庫存，廚房按標準流程出餐，系統自動記錄每道菜的製作時間和用料——電子批次記錄 (EBR) 就是生物製藥廠的「數位出菜單」，取代傳統的紙本記錄，讓品保 (QA) 審核從逐行核對變成「例外審查 (Review by Exception)」。",
+   "en": "<strong>MES = a restaurant's POS system (order management system)</strong>: the waiter scans ingredient barcodes to confirm stock, the kitchen serves dishes following a standard process, and the system automatically records the preparation time and ingredients for each dish. The electronic batch record (EBR) is the biopharmaceutical facility's \"digital order ticket\", replacing traditional paper records and turning QA review from line-by-line checking into review by exception."
+  },
+  {
+   "zh": "<strong>Interlocks（連鎖機制）= 汽車的安全帶感知器</strong>：沒繫安全帶車就不能發動——製程中若某個前置條件未滿足（如清潔窗口過期），系統自動阻止下一步操作，防止人為疏失。",
+   "en": "<strong>Interlocks = a car's seat belt sensor</strong>: the car will not start without the seat belt fastened. In the process, if a precondition is not met (such as an expired cleaning hold time), the system automatically blocks the next step and prevents human error."
+  },
+  {
+   "zh": "<strong>「Review by Exception（例外審查）」是 MES/EBR 帶來的最重要 QA 效率提升：</strong>傳統紙本批次記錄需要 QA 人員逐行核對每一筆數據；EBR 系統在製程中即時驗證，只有超出範圍的數據才需要人工審查。這可將批次記錄審核時間縮短 50-70%，對 CDMO 的批次放行週期 (Lot Release Cycle Time) 有顯著影響。",
+   "en": "<strong>\"Review by Exception\" is the most important QA efficiency gain from MES/EBR:</strong> with traditional paper batch records, QA personnel must check every data entry line by line; an EBR system verifies data in real time during the process, and only out-of-range data needs manual review. This can shorten batch record review time by 50-70%, with a significant effect on a CDMO's lot release cycle time."
+  },
+  {
+   "zh": "<strong>密閉系統的 Interlock 設計是合規關鍵：</strong>宣稱密閉系統的廠房，必須通過自動化連鎖確保密閉性——例如，清潔系統同時連接兩個生產系統的情境必須被物理或邏輯性阻止，否則可能造成批次間交叉污染。",
+   "en": "<strong>Interlock design for closed systems is the key to compliance:</strong> a facility that claims closed systems must ensure closure through automated interlocks. For example, a scenario in which a cleaning system is connected to two production systems at the same time must be prevented physically or logically, otherwise batch-to-batch cross-contamination could result."
+  },
+  {
+   "zh": "自動化系統層次結構",
+   "en": "Automation System Hierarchy"
+  },
+  {
+   "zh": "Level 4: ERP（企業資源規劃）\n         ↕ 物料/訂單整合\nLevel 3: MES（製造執行系統）\n         批次管理、EBR、人員/物料/設備確認\n         ↕ 配方下發/批次記錄上傳\nLevel 2: SCADA/DCS（監控與控制）\n         製程數據採集、報警管理、趨勢記錄\n         ↕ 設定點/控制命令\nLevel 1: PLC/現場設備（現場控制器）\n         閥門、泵浦、感測器的直接控制\n\nPAT 工具通常整合於 Level 1-2，\n數據流向 Level 2-3 進行決策支持",
+   "en": "Level 4: ERP (Enterprise Resource Planning)\n         ↕ Material/order integration\nLevel 3: MES (Manufacturing Execution System)\n         Batch management, EBR, personnel/material/equipment verification\n         ↕ Recipe download / batch record upload\nLevel 2: SCADA/DCS (Supervisory and Control)\n         Process data acquisition, alarm management, trend recording\n         ↕ Setpoints / control commands\nLevel 1: PLC / field devices (field controllers)\n         Direct control of valves, pumps, sensors\n\nPAT tools are usually integrated at Level 1-2,\nwith data flowing to Level 2-3 for decision support"
+  },
+  {
+   "zh": "21 CFR Part 11 對電子批次記錄 (EBR) 有哪些具體要求？如果稽核軌跡 (Audit Trail) 功能未被啟用，會有什麼合規風險？",
+   "en": "What specific requirements does 21 CFR Part 11 place on electronic batch records (EBR)? What compliance risks arise if the audit trail function is not enabled?"
+  },
+  {
+   "zh": "PAT 工具（如在線 pH 探針、近紅外光譜儀）的數據若顯示製程超出正常範圍，MES 系統應如何自動回應？操作員的職責又是什麼？",
+   "en": "If data from a PAT tool (such as an on-line pH probe or a near-infrared spectrometer) shows the process is outside its normal range, how should the MES respond automatically? What is the operator's responsibility?"
+  },
+  {
+   "zh": "5.5.2 Procedures｜程序標準化",
+   "en": "5.5.2 Procedures"
+  },
+  {
+   "zh": "核心概念：防呆設計 (Error-Proofing / Poka-Yoke)",
+   "en": "Core Concept: Error-Proofing (Poka-Yoke)"
+  },
+  {
+   "zh": "來自日本製造業的品質工具 (Poka-Yoke)，目標是讓錯誤在發生之前就被阻止。在生物製藥廠中：",
+   "en": "A quality tool from Japanese manufacturing (Poka-Yoke) whose aim is to prevent errors before they occur. In a biopharmaceutical facility this includes:"
+  },
+  {
+   "zh": "<strong>色碼 (Color Coding)</strong>：不同產品或流體路徑使用不同顏色管路，減少混淆",
+   "en": "<strong>Color coding</strong>: different colors of tubing for different products or fluid paths, to reduce mix-ups"
+  },
+  {
+   "zh": "<strong>物理配對接頭</strong>：只有正確的管路才能連接到正確的接口（防止管路接錯）",
+   "en": "<strong>Physically keyed connectors</strong>: only the correct line can connect to the correct port (preventing misconnection of lines)"
+  },
+  {
+   "zh": "<strong>RFID</strong>：設備、物料、人員均有唯一識別，系統自動確認組合是否合法",
+   "en": "<strong>RFID</strong>: equipment, materials, and personnel all carry unique identification, and the system automatically confirms whether a combination is permitted"
+  },
+  {
+   "zh": "轉接板 (Transfer Panel) 是生物製藥廠最常見的人為錯誤來源之一：操作員在複雜的管路面板前連接錯誤的閥門是實際發生過的偏差事件。MES 結合 RFID 的系統可以在操作員連接前就驗證每個接頭的合法性，大幅降低此類風險。",
+   "en": "The transfer panel is one of the most common sources of human error in biopharmaceutical facilities: operators connecting the wrong valve at a complex piping panel is a deviation event that has actually occurred. A system that combines MES with RFID can verify the validity of each connection before the operator makes it, greatly reducing this risk."
+  },
+  {
+   "zh": "5.5.3 Training｜操作員訓練",
+   "en": "5.5.3 Training"
+  },
+  {
+   "zh": "核心概念：多層次訓練體系",
+   "en": "Core Concept: A Multi-Level Training System"
+  },
+  {
+   "zh": "生物製藥廠的操作員不像小分子製藥廠那樣只需操作固定設備——他們需要理解細胞培養生物學、密閉系統的密封完整性概念、自動化系統的警報邏輯，以及偏差報告的文化。訓練不是一次性事件，而是持續性的能力維持計畫。",
+   "en": "Operators in a biopharmaceutical facility are not like those in a small-molecule facility who only need to run fixed equipment. They need to understand cell culture biology, the concept of seal integrity in closed systems, the alarm logic of automation systems, and a culture of deviation reporting. Training is not a one-off event but an ongoing competence maintenance program."
+  },
+  {
+   "zh": "<strong>「舒適地報告錯誤 (Comfortable reporting errors)」是 GMP 文化的核心：</strong>FDA 和 ICH Q10 均強調製造企業應建立「無懲罰性報告文化 (Just Culture)」，讓操作員敢於立即報告偏差和錯誤，而不是掩蓋。隱瞞偏差是 FDA 483 和警告信 (Warning Letter) 中反覆出現的嚴重問題。",
+   "en": "<strong>\"Comfortable reporting of errors\" is the core of GMP culture:</strong> FDA and ICH Q10 both stress that manufacturers should build a \"Just Culture\" of non-punitive reporting, so that operators dare to report deviations and errors immediately instead of concealing them. Concealing deviations is a serious problem that recurs in FDA 483s and Warning Letters."
+  },
+  {
+   "zh": "<strong>模擬訓練 (Simulation Training)</strong>：特別重要於密閉系統的 Breach of Closure 應對演練——讓操作員在不影響真實批次的情況下學習如何快速識別和回應密閉失效事件。",
+   "en": "<strong>Simulation training</strong>: especially important for breach of closure response drills in closed systems, letting operators learn how to quickly recognize and respond to a loss of closure without affecting a real batch."
+  },
+  {
+   "zh": "一家 CDMO 剛建立了一個使用密閉系統的新廠房，大幅減少了潔淨室面積。然而，這也意味著操作員現在需要同時管理上游（細胞培養）和下游（純化）製程。建議的訓練計畫應包含：(1) 跨領域技術培訓；(2) 密閉系統完整性測試的實作演練；(3) 使用模擬製程進行偏差情境演練；(4) 定期技能評估 (Skills Qualification)，確保交叉訓練的持續有效。",
+   "en": "A CDMO has just built a new facility using closed systems, greatly reducing cleanroom area. However, this also means operators now have to manage both upstream (cell culture) and downstream (purification) processes. The recommended training program should include: (1) cross-disciplinary technical training; (2) hands-on drills in closed system integrity testing; (3) deviation scenario drills using simulated processes; (4) periodic skills qualification to ensure that cross-training remains effective."
+  },
+  {
+   "zh": "5.6 Capacity, Scheduling, and Maintenance｜產能、排程與維護",
+   "en": "5.6 Capacity, Scheduling, and Maintenance"
+  },
+  {
+   "zh": "<strong>Downstream Bottleneck（下游瓶頸）</strong>：隨著上游製程效價 (Titer) 大幅提升，下游純化系統（層析柱、過濾膜）若未同步升級，將成為整廠產能的限制瓶頸。這是目前許多舊廠擴能的核心挑戰。",
+   "en": "<strong>Downstream Bottleneck</strong>: as upstream process titers rise sharply, downstream purification systems (chromatography columns, filtration membranes) become the limiting bottleneck on whole-facility capacity if they are not upgraded in step. This is the core challenge in capacity expansion at many older facilities today."
+  },
+  {
+   "zh": "<strong>Performance-based Maintenance（基於績效的維護）</strong>：相較於「按時間固定更換零件」的傳統方式，基於設備實際狀態（如振動頻率、壓差趨勢）決定維護時機，可避免不必要的停機和零件浪費。",
+   "en": "<strong>Performance-based Maintenance</strong>: compared with the traditional approach of replacing parts at fixed time intervals, deciding when to maintain based on the actual condition of the equipment (such as vibration frequency and differential pressure trends) avoids unnecessary downtime and wasted parts."
+  },
+  {
+   "zh": "<strong>Autonomous Maintenance（自主維護）</strong>：源自 TPM（全面生產性維護）理念，讓操作員承擔基礎的日常維護工作（如清潔、潤滑、目視檢查），使工程維修人員能專注於更複雜的預防性和預測性維護任務。",
+   "en": "<strong>Autonomous Maintenance</strong>: derived from the TPM (Total Productive Maintenance) concept, it has operators take on basic daily maintenance work (such as cleaning, lubrication, and visual inspection) so that engineering and maintenance staff can concentrate on more complex preventive and predictive maintenance tasks."
+  },
+  {
+   "zh": "<strong>排程挑戰 = 用同一個廚房同時做多道菜</strong>：細胞培養批次就像正在爐上燉煮的湯——不能中途停火（細胞會死亡）。排程必須圍繞這些「不可中斷的批次」來安排其他所有活動，包括設備維護窗口、清潔驗證和換產。",
+   "en": "<strong>The scheduling challenge = making several dishes at once in a single kitchen</strong>: a cell culture batch is like soup simmering on the stove, which cannot be taken off the heat midway (the cells would die). Scheduling must arrange all other activities around these \"uninterruptible batches\", including equipment maintenance windows, cleaning validation, and changeovers."
+  },
+  {
+   "zh": "<strong>備用 WFI 系統 = 醫院的備用發電機</strong>：WFI 是生物製藥廠的「命脈」，任何時間中斷都可能導致數個批次報廢。冗餘設計 (Redundant design) 雖增加資本支出，但對連續生產的商業設施而言是必要投資。",
+   "en": "<strong>Backup WFI system = a hospital's backup generator</strong>: WFI is the \"lifeline\" of a biopharmaceutical facility, and any interruption can cause several batches to be scrapped. Redundant design raises capital expenditure but is a necessary investment for a commercial facility with continuous production."
+  },
+  {
+   "zh": "<strong>「鏡像設計 (Mirror Image Design) 應被避免」</strong>——這是 ISPE 的明確警告。當兩個相鄰房間或廠房使用鏡像對稱的設備佈局時，操作員在不同空間工作時容易產生空間方向感混淆，可能導致閥門操作錯誤。模組化標準設計（所有空間方向一致）是更安全的選擇。",
+   "en": "<strong>\"Mirror image design should be avoided\"</strong> is an explicit ISPE warning. When two adjacent rooms or facilities use mirror-symmetric equipment layouts, operators working in different spaces can easily become spatially disoriented, which can lead to valve operation errors. A modular standard design (with the same orientation in all spaces) is the safer choice."
+  },
+  {
+   "zh": "<strong>「Cold Start（冷啟動）」的成本極高：</strong>生物製藥廠若完全關閉（如設施大整修），重新建立種源細胞庫、驗證潔淨室和重新認證設備可能需要數個月——期間零產出，損失數千萬美元。因此滾動式 (Rolling) 分段停機維護比全廠停機要好得多。",
+   "en": "<strong>The cost of a \"cold start\" is very high:</strong> if a biopharmaceutical facility is shut down completely (for example for a major refurbishment), re-establishing seed cell banks, validating cleanrooms, and requalifying equipment can take several months, with zero output in the meantime and losses of tens of millions of dollars. Rolling, staged shutdown for maintenance is therefore far better than shutting down the whole facility."
+  },
+  {
+   "zh": "產能計算關鍵概念",
+   "en": "Key Concepts for Capacity Calculation"
+  },
+  {
+   "zh": "年產能 (Annual Output) =\n  批次數 × 每批產量\n\n批次數 =\n  (365天 × 有效工作天比例)\n  ÷ (批次週期時間 + 換產停機時間)\n\n換產停機時間 ↓ → 年批次數 ↑\n\n例：\n  批次週期 = 14天\n  換產停機 = 3天\n  年批次數 = 365 ÷ 17 ≈ 21批\n\n若將換產停機縮短至 1天：\n  年批次數 = 365 ÷ 15 ≈ 24批\n  增加約 14% 產能，無需增加任何設備",
+   "en": "Annual output =\n  Number of batches × output per batch\n\nNumber of batches =\n  (365 days × proportion of effective working days)\n  ÷ (batch cycle time + changeover downtime)\n\nChangeover downtime ↓ → annual batches ↑\n\nExample:\n  Batch cycle = 14 days\n  Changeover downtime = 3 days\n  Annual batches = 365 ÷ 17 ≈ 21 batches\n\nIf changeover downtime is shortened to 1 day:\n  Annual batches = 365 ÷ 15 ≈ 24 batches\n  About 14% more capacity without adding any equipment"
+  },
+  {
+   "zh": "一個生物製藥廠計畫從生產 3 個產品擴展到 5 個產品（Campaign 模式）。若每次換產停機 4 天，每批次週期 12 天，年度可用工作天 340 天，請計算最大年批次數，並討論縮短換產時間至 2 天的產能影響。",
+   "en": "A biopharmaceutical facility plans to expand from 3 products to 5 products (campaign mode). If each changeover takes 4 days of downtime, each batch cycle is 12 days, and 340 working days are available per year, calculate the maximum number of batches per year, and discuss the capacity impact of shortening changeover time to 2 days."
+  },
+  {
+   "zh": "振動監測 (Vibration Monitoring) 用於預測設備故障，屬於哪種維護策略（預防性/預測性/糾正性）？在 GMP 環境下，如何確保基於振動數據的設備更換決策是有書面依據的？",
+   "en": "Vibration monitoring is used to predict equipment failure. Which maintenance strategy does it belong to (preventive, predictive, or corrective)? In a GMP environment, how can you ensure that equipment replacement decisions based on vibration data are documented?"
+  },
+  {
+   "zh": "5.7 Supply Chain｜供應鏈",
+   "en": "5.7 Supply Chain"
+  },
+  {
+   "zh": "<strong>Cold Chain（冷鏈）</strong>：生物製藥產品（原液 DS 和成品 DP）通常需要在 -20°C 或 -80°C 下運輸和儲存，任何溫度超出範圍的事件都可能導致批次報廢。冷鏈管理是生物製藥供應鏈的核心挑戰。",
+   "en": "<strong>Cold Chain</strong>: biopharmaceutical products (drug substance, DS, and drug product, DP) generally need to be transported and stored at -20°C or -80°C, and any temperature excursion can lead to batch rejection. Cold chain management is a core challenge of the biopharmaceutical supply chain."
+  },
+  {
+   "zh": "<strong>Business Continuity Risk（業務連續性風險）</strong>：單一廠址生產雖然成本效益較高，但任何停產事件（如病毒污染 (Viral Contamination)、自然災害）都可能導致整個市場供應中斷，後果極為嚴重。知名案例如 Genzyme 2009 年的 Aldurazyme 病毒污染事件。",
+   "en": "<strong>Business Continuity Risk</strong>: single-site production is more cost-effective, but any shutdown event (such as viral contamination or a natural disaster) can interrupt supply to the whole market, with extremely serious consequences. A well-known case is the 2009 viral contamination event for Aldurazyme at Genzyme."
+  },
+  {
+   "zh": "<strong>DS（Drug Substance，原液）vs. DP（Drug Product，成品）</strong>：生物製藥廠通常分為原液廠（DSP）和成品充填廠（DP Fill-Finish）兩個設施，可能位於不同地點，需要完整的冷鏈物流連接。",
+   "en": "<strong>DS (Drug Substance) vs. DP (Drug Product)</strong>: biopharmaceutical manufacturing is usually divided into a drug substance facility (DSP) and a drug product fill-finish facility (DP fill-finish), which may be in different locations and need a complete cold chain logistics link."
+  },
+  {
+   "zh": "<strong>單一廠址 vs. 多廠址 = 把雞蛋放在同一個籃子裡 vs. 分散投資</strong>：單一廠址降低管理複雜度和成本，但任何意外都是全損；多廠址增加成本但提供業務連續性。對於救命藥品（如罕見疾病治療），市場供應中斷可能危及病人生命，FDA 會以最嚴肅態度看待業務連續性計畫的缺失。",
+   "en": "<strong>Single site vs. multiple sites = putting all your eggs in one basket vs. diversifying</strong>: a single site reduces management complexity and cost, but any accident means a total loss; multiple sites add cost but provide business continuity. For life-saving drugs (such as rare disease therapies), an interruption of market supply can endanger patients' lives, and FDA treats the absence of a business continuity plan with the utmost seriousness."
+  },
+  {
+   "zh": "<strong>廠房投資提前 4-6 年 = 預訂明日餐廳的食材</strong>：生物製藥廠的建設週期長達數年，當廠房建好時，市場需求可能已改變——這是生物製藥行業資本配置最困難的挑戰之一。CDMO 模式透過承接多客戶的方式分散了這個風險。",
+   "en": "<strong>Investing in a facility 4-6 years ahead = ordering tomorrow's restaurant ingredients in advance</strong>: biopharmaceutical facilities take several years to build, and by the time one is finished, market demand may have changed. This is one of the hardest capital allocation challenges in the biopharmaceutical industry. The CDMO model spreads this risk by serving multiple clients."
+  },
+  {
+   "zh": "<strong>病毒污染 (Viral Contamination) 是生物製藥廠最嚴重的停產風險：</strong>生物製程使用活體細胞，一旦生產設施受到外源性病毒污染（如鼠細小病毒 MVM），整個廠區可能需要停產數個月進行徹底的去污染和驗證，損失往往超過數億美元。這使得病毒安全控制策略 (Viral Control Strategy) 成為生物製藥廠設計的最高優先考量之一。",
+   "en": "<strong>Viral contamination is the most serious shutdown risk for a biopharmaceutical facility:</strong> biological processes use living cells, and once the production facility is contaminated with an adventitious virus (such as minute virus of mice, MVM), the entire site may be shut down for several months for thorough decontamination and validation, with losses often exceeding hundreds of millions of dollars. This makes the viral control strategy one of the highest design priorities for a biopharmaceutical facility."
+  },
+  {
+   "zh": "<strong>模組化設計 (Modular Design) 的供應鏈價值：</strong>模組化廠房可以快速複製到新地點，為藥品供應提供冗餘能力。當主廠出現問題時，可迅速激活備用廠址，這是監管機構（如 FDA、EMA）在審查生物製藥廠許可申請時越來越重視的考量因素。",
+   "en": "<strong>The supply chain value of modular design:</strong> a modular facility can be quickly replicated at a new location, providing redundant capacity for drug supply. When the main facility has a problem, a backup site can be activated quickly. Regulators (such as FDA and EMA) increasingly weigh this when reviewing licensing applications for biopharmaceutical facilities."
+  },
+  {
+   "zh": "一家 CDMO 正在評估是否接受一個大型 mAb 商業製造合約，客戶要求確保 12 個月的連續供應保障。ISPE 的建議框架：(1) 建立冷鏈庫存緩衝（凍存的原液庫存）；(2) 確保備用廠址能力（或識別有資質的備用 CDMO）；(3) 建立病毒污染快速響應 SOP；(4) 在合約中明確業務連續性條款。",
+   "en": "A CDMO is evaluating whether to accept a large commercial mAb manufacturing contract, and the client requires a guarantee of 12 months of continuous supply. ISPE's recommended framework is: (1) build a cold chain inventory buffer (frozen drug substance stock); (2) ensure backup site capability (or identify a qualified backup CDMO); (3) establish a rapid-response SOP for viral contamination; (4) specify business continuity terms explicitly in the contract."
+  },
+  {
+   "zh": "生物製藥公司通常如何在「單一廠址的成本效益」和「多廠址的供應安全性」之間取得平衡？CDMO 模式如何改變了這個等式？",
+   "en": "How do biopharmaceutical companies typically balance the cost-effectiveness of a single site against the supply security of multiple sites? How does the CDMO model change this equation?"
+  },
+  {
+   "zh": "冷鏈偏差 (Cold Chain Excursion) 發生時（如運輸中溫度超標），製造商應如何評估批次的可接受性？哪些科學數據可以支持偏差評估？",
+   "en": "When a cold chain excursion occurs (such as a temperature excursion during transport), how should the manufacturer assess the acceptability of the batch? What scientific data can support the deviation assessment?"
+  },
+  {
+   "zh": "本章重點回顧 Chapter Summary",
+   "en": "Chapter Summary"
+  },
+  {
+   "zh": "<strong>多產品操作策略：</strong>Campaign 製造（分時隔離）需清潔驗證；Concurrent 生產（分空間隔離）需密閉系統或物理隔離。快速換產能力是多產品廠房的核心競爭力。",
+   "en": "<strong>Multi-product operating strategies:</strong> campaign manufacturing (segregation in time) requires cleaning validation; concurrent production (segregation in space) requires closed systems or physical segregation. The ability to change over quickly is the core competitive strength of a multi-product facility."
+  },
+  {
+   "zh": "<strong>一次性使用系統 (SUS) 的雙面影響：</strong>優點是消除 CIP/SIP 需求、縮小廠房面積、降低換產風險；挑戰是供應鏈依賴（單一供應商風險）和 E&amp;L（可萃取物與可滲出物）安全性評估。",
+   "en": "<strong>The two-sided impact of single-use systems (SUS):</strong> the advantages are eliminating the need for CIP/SIP, reducing facility footprint, and lowering changeover risk; the challenges are supply chain dependency (single-supplier risk) and the safety assessment of E&amp;L (extractables and leachables)."
+  },
+  {
+   "zh": "<strong>密閉系統帶來的運營革命：</strong>密閉製程允許使用 CNC（非分類區），可降低潔淨室面積高達 60%、減少著裝要求、人員配置節省高達 50%，並加速換產（無需房間清空）。",
+   "en": "<strong>The operational revolution brought by closed systems:</strong> closed processing allows the use of CNC (unclassified areas), which can reduce cleanroom area by up to 60%, lessen gowning requirements, save up to 50% of staffing, and speed up changeover (no room clearance needed)."
+  },
+  {
+   "zh": "<strong>自動化與 MES 的品質價值：</strong>自動化確保製程一致性；MES + EBR 實現電子批次記錄和例外審查 (Review by Exception)，縮短批次放行週期；Interlock 系統確保密閉完整性。",
+   "en": "<strong>The quality value of automation and MES:</strong> automation ensures process consistency; MES + EBR enable electronic batch records and review by exception, shortening the lot release cycle; interlock systems ensure closure integrity."
+  },
+  {
+   "zh": "<strong>排程必須圍繞「不可中斷的生物批次」設計：</strong>細胞培養批次與小分子化學合成不同，不能隨意中斷，所有維護窗口和換產排程必須與生物製程週期協調。",
+   "en": "<strong>Scheduling must be designed around \"uninterruptible biological batches\":</strong> unlike small-molecule chemical synthesis, a cell culture batch cannot be interrupted at will, so all maintenance windows and changeover schedules must be coordinated with the biological process cycle."
+  },
+  {
+   "zh": "<strong>供應鏈彈性是生物製藥廠的戰略資產：</strong>冷鏈管理、病毒污染風險、單一廠址 vs. 多廠址的業務連續性決策，均需在設施規劃階段就納入考量。",
+   "en": "<strong>Supply chain resilience is a strategic asset of a biopharmaceutical facility:</strong> cold chain management, viral contamination risk, and the business continuity decision between a single site and multiple sites must all be considered at the facility planning stage."
+  }
+ ]
+}

@@ -1,0 +1,765 @@
+{
+ "source": "section-01b-design-process-risk.html",
+ "blocks": [
+  {
+   "zh": "設計流程（下）：風險評估、設施規劃與 AFD/AF&amp;ID",
+   "en": "Design Process (Part 2): Risk Assessment, Facility Planning and AFD/AF&amp;ID"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解 HVAC System Risk Assessment（HVAC 系統風險評估）的流程：如何將系統拆解為元件，評估各元件對 CPP/CQA 的影響",
+   "en": "Understand the HVAC System Risk Assessment process: how to break the system down into components and assess each component's impact on CPPs/CQAs"
+  },
+  {
+   "zh": "掌握 Impact Assessment（影響性評估）方法：使用參數風險評估表（Parameter Risk Assessment Table）區分 Critical 與 Non-Critical HVAC 參數",
+   "en": "Master the Impact Assessment method: use the Parameter Risk Assessment Table to distinguish Critical from Non-Critical HVAC parameters"
+  },
+  {
+   "zh": "學會四步驟風險評估法：定義 CPP → 定義系統邊界 → 定義監控方式 → 定義達成方式與偵測能力",
+   "en": "Learn the four-step risk assessment approach: define the CPPs, define the system boundary, define how they are monitored, and define how they are achieved and how failures are detected"
+  },
+  {
+   "zh": "理解 Programming for Detail Design（細部設計規劃）中的設施佈局、維護策略與製程考量",
+   "en": "Understand Programming for Detail Design: facility layout, maintenance strategy and process considerations"
+  },
+  {
+   "zh": "掌握 AFD（Air Flow Diagram，氣流圖）與 AF&amp;ID（Air Flow &amp; Instrumentation Diagram，氣流儀控圖）的差異、內容與應用",
+   "en": "Master the differences, content and applications of the AFD (Air Flow Diagram) and the AF&amp;ID (Air Flow &amp; Instrumentation Diagram)"
+  },
+  {
+   "zh": "了解模組化施工（Modular Construction）對 HVAC 設計的限制與注意事項",
+   "en": "Understand the limitations and points of attention that Modular Construction places on HVAC design"
+  },
+  {
+   "zh": "2.3 HVAC System Risk Assessment（HVAC 系統風險評估）",
+   "en": "2.3 HVAC System Risk Assessment"
+  },
+  {
+   "zh": "教學解析",
+   "en": "Teaching Notes"
+  },
+  {
+   "zh": "核心概念：HVAC 風險評估的邏輯",
+   "en": "Core Concept: The Logic of HVAC Risk Assessment"
+  },
+  {
+   "zh": "HVAC 風險評估的本質是一個「拆解 → 評估 → 分級」的過程：",
+   "en": "HVAC risk assessment is essentially a \"break down, assess, classify\" process:"
+  },
+  {
+   "zh": "<strong>拆解</strong>：將整套 HVAC 系統拆成個別元件（風機、過濾器、冷卻盤管、感測器等）",
+   "en": "<strong>Break down</strong>: split the whole HVAC system into individual components (fans, filters, cooling coils, sensors, etc.)"
+  },
+  {
+   "zh": "<strong>評估</strong>：每個元件故障時，是否會影響 Critical Process Parameters（CPPs）？",
+   "en": "<strong>Assess</strong>: if each component fails, will it affect the Critical Process Parameters (CPPs)?"
+  },
+  {
+   "zh": "<strong>分級</strong>：影響大的元件 → GMP Change Control（品質變更管制）；影響小的 → GEP Change Control（工程變更管制）",
+   "en": "<strong>Classify</strong>: components with major impact go under GMP Change Control (quality change control); those with minor impact go under GEP Change Control (engineering change control)"
+  },
+  {
+   "zh": "關鍵術語：<strong>CQA（Critical Quality Attribute，關鍵品質屬性）</strong>是最終產品必須符合的品質標準；<strong>CPP</strong> 是為了達到 CQA 必須控制的製程參數。HVAC 系統的任務就是維持 CPP 在可接受範圍內。",
+   "en": "Key terms: <strong>CQA (Critical Quality Attribute)</strong> is a quality standard the final product must meet; a <strong>CPP</strong> is a process parameter that must be controlled to achieve the CQA. The job of the HVAC system is to keep CPPs within acceptable ranges."
+  },
+  {
+   "zh": "比喻說明：汽車安全檢查",
+   "en": "Analogy: A Car Safety Inspection"
+  },
+  {
+   "zh": "HVAC 風險評估就像對一輛車做安全檢查：",
+   "en": "HVAC risk assessment is like a safety inspection of a car:"
+  },
+  {
+   "zh": "<strong>煞車系統</strong>（Critical）→ 故障會直接危及生命 → 必須定期嚴格檢驗",
+   "en": "<strong>Braking system</strong> (Critical) → a failure directly endangers life → it must be inspected regularly and rigorously"
+  },
+  {
+   "zh": "<strong>冷氣系統</strong>（Non-Critical）→ 故障不影響行車安全 → 壞了修就好",
+   "en": "<strong>Air conditioning</strong> (Non-Critical) → a failure does not affect driving safety → just repair it when it breaks"
+  },
+  {
+   "zh": "<strong>System Boundary</strong>（系統邊界）→ 檢查煞車時，要把煞車油管、來令片、ABS 感測器都包含進去，缺一不可",
+   "en": "<strong>System Boundary</strong> → when checking the brakes, you must include the brake lines, brake pads and ABS sensors; none can be left out"
+  },
+  {
+   "zh": "同理，HVAC 風險評估不是只看 AHU 本身，而是要看整個「從 AHU 到房間末端」的完整鏈條。",
+   "en": "Likewise, an HVAC risk assessment does not look only at the AHU itself; it must cover the complete chain \"from the AHU to the room terminal\"."
+  },
+  {
+   "zh": "重要觀念：品質風險 vs. 商業風險",
+   "en": "Important Concept: Quality Risk vs. Business Risk"
+  },
+  {
+   "zh": "原文特別指出一個重要區分：",
+   "en": "The source text draws an important distinction:"
+  },
+  {
+   "zh": "<strong>品質/病患風險</strong>：如果監控系統能即時偵測到異常，QA 會立刻介入，產品不會放行 → 病患沒有風險",
+   "en": "<strong>Quality/patient risk</strong>: if the monitoring system detects an abnormality immediately, QA intervenes at once and the product is not released → no risk to patients"
+  },
+  {
+   "zh": "<strong>商業風險</strong>：但系統故障期間的產品可能全部報廢，停機損失可能極為可觀",
+   "en": "<strong>Business risk</strong>: but all product made during the system failure may have to be scrapped, and the downtime losses can be considerable"
+  },
+  {
+   "zh": "在 CDMO 環境中，這個區分特別重要——客戶產品報廢的賠償責任是巨大的商業風險。",
+   "en": "In a CDMO environment this distinction is especially important, because liability for a client's scrapped product is a major business risk."
+  },
+  {
+   "zh": "教學解析：影響 CPP 的 HVAC 參數",
+   "en": "Teaching Notes: HVAC Parameters That Affect CPPs"
+  },
+  {
+   "zh": "關鍵參數分類",
+   "en": "Classifying the Key Parameters"
+  },
+  {
+   "zh": "這份清單可以按「控制目的」分為三大類：",
+   "en": "The list can be grouped by \"control purpose\" into three categories:"
+  },
+  {
+   "zh": "<strong>微粒/微生物控制</strong>：粒子計數（靜態/動態）、Recovery Time（回復時間）、HEPA 過濾器效能、換氣次數、氣流型態",
+   "en": "<strong>Particulate/microbial control</strong>: particle counts (at rest/in operation), recovery time, HEPA filter performance, air change rate, airflow pattern"
+  },
+  {
+   "zh": "<strong>環境條件控制</strong>：溫度、相對濕度（RH, Relative Humidity）",
+   "en": "<strong>Environmental condition control</strong>: temperature, relative humidity (RH)"
+  },
+  {
+   "zh": "<strong>交叉污染防護</strong>：壓差（DP, Differential Pressure）、氣流方向",
+   "en": "<strong>Cross-contamination protection</strong>: differential pressure (DP), airflow direction"
+  },
+  {
+   "zh": "CDMO 實務應用",
+   "en": "CDMO Practical Application"
+  },
+  {
+   "zh": "在無菌充填 CDMO 中，最關鍵的 HVAC 參數通常是：",
+   "en": "In a sterile filling CDMO, the most critical HVAC parameters are usually:"
+  },
+  {
+   "zh": "<strong>壓差（DP）</strong>— 防止低等級空氣侵入高等級區域，是交叉污染防護的第一道防線",
+   "en": "<strong>Differential pressure (DP)</strong> — prevents lower-grade air from entering higher-grade areas; it is the first line of defense against cross-contamination"
+  },
+  {
+   "zh": "<strong>HEPA 過濾器完整性</strong>— Grade A/B 區域的 HEPA 如果洩漏，整個潔淨等級失效",
+   "en": "<strong>HEPA filter integrity</strong> — if a HEPA filter in a Grade A/B area leaks, the cleanliness classification of the whole area fails"
+  },
+  {
+   "zh": "<strong>Recovery Time</strong>— 人員活動後，房間能否在規定時間內回到 at-rest 標準（通常 15-20 分鐘）",
+   "en": "<strong>Recovery time</strong> — after personnel activity, can the room return to the at-rest standard within the specified time (typically 15-20 minutes)?"
+  },
+  {
+   "zh": "<strong>氣流型態</strong>— 特別是 Grade A 層流區域的單向氣流（Unidirectional Airflow），直接保護暴露的產品",
+   "en": "<strong>Airflow pattern</strong> — especially the unidirectional airflow of Grade A laminar flow areas, which directly protects exposed product"
+  },
+  {
+   "zh": "注意：微生物擦拭與 HVAC 的間接關係",
+   "en": "Note: The Indirect Relationship Between Microbial Swabs and HVAC"
+  },
+  {
+   "zh": "原文提到表面微生物（swab tests）是「indirectly affected by HVAC」。這意味著：表面微生物主要來自人員和物料接觸，但 HVAC 系統的氣流設計影響微粒沉降的位置和數量，因此是間接影響因子。不要因為是「間接」就忽略——在法規查核時，表面微生物超標常常會追溯到 HVAC 設計不當。",
+   "en": "The source text describes surface microbiology (swab tests) as \"indirectly affected by HVAC\". This means that surface microorganisms come mainly from personnel and material contact, but the airflow design of the HVAC system influences where and how many particles settle, so it is an indirect influencing factor. Do not ignore it just because it is \"indirect\": in regulatory inspections, surface microbial excursions are often traced back to poor HVAC design."
+  },
+  {
+   "zh": "2.3.2 Impact Assessment（影響性評估）",
+   "en": "2.3.2 Impact Assessment"
+  },
+  {
+   "zh": "教學解析：影響性評估實務",
+   "en": "Teaching Notes: Impact Assessment in Practice"
+  },
+  {
+   "zh": "核心概念：參數風險評估表的使用方法",
+   "en": "Core Concept: How to Use the Parameter Risk Assessment Table"
+  },
+  {
+   "zh": "Table 2.2 是一個非常實用的模板工具。使用方式：",
+   "en": "Table 2.2 is a very practical template. How to use it:"
+  },
+  {
+   "zh": "<strong>列出所有監控點</strong>：每個 AHU 和每個房間的所有 HVAC 監控參數",
+   "en": "<strong>List all monitoring points</strong>: every HVAC monitoring parameter for each AHU and each room"
+  },
+  {
+   "zh": "<strong>逐一判定 Critical Y/N</strong>：該參數失控是否直接影響產品品質？",
+   "en": "<strong>Decide Critical Y/N one by one</strong>: does loss of control of this parameter directly affect product quality?"
+  },
+  {
+   "zh": "<strong>設定 Alert/Alarm</strong>：Critical = Y 的參數，必須設定警報限值和延遲時間",
+   "en": "<strong>Set Alert/Alarm</strong>: for parameters with Critical = Y, alarm limits and delay times must be set"
+  },
+  {
+   "zh": "這張表的重點不在於「填完」，而在於<strong>促使品質、製程、工程三方對話</strong>，達成共識。",
+   "en": "The point of this table is not to \"get it filled in\" but to <strong>get Quality, Process and Engineering talking</strong> and reach consensus."
+  },
+  {
+   "zh": "關鍵提醒：AHU 內部參數通常不是 Critical",
+   "en": "Key Reminder: AHU Internal Parameters Are Usually Not Critical"
+  },
+  {
+   "zh": "原文明確指出：AHU 內部參數（如回風溫度、回風濕度、靜壓等）<strong>通常不被視為 Critical</strong>，因為它們是「手段」而非「目的」——真正的目的是房間端的溫濕度和潔淨度。",
+   "en": "The source text states clearly that AHU internal parameters (such as return air temperature, return air humidity and static pressure) are <strong>usually not considered Critical</strong>, because they are a \"means\" rather than an \"end\"; the real objective is the temperature, humidity and cleanliness at the room."
+  },
+  {
+   "zh": "常見錯誤：把 AHU 內部所有參數都標為 Critical → 導致過度監控、過多警報、確效範圍膨脹。",
+   "en": "Common mistake: marking every AHU internal parameter as Critical → this leads to over-monitoring, excessive alarms and an inflated validation scope."
+  },
+  {
+   "zh": "<strong>正確做法</strong>：只有 AHU 的 Supply Airflow（送風量）可能是 Critical，因為它直接決定房間的換氣次數。",
+   "en": "<strong>Correct approach</strong>: only the AHU supply airflow may be Critical, because it directly determines the room's air change rate."
+  },
+  {
+   "zh": "比喻說明：餐廳的品質管理",
+   "en": "Analogy: Quality Management in a Restaurant"
+  },
+  {
+   "zh": "想像你是一間餐廳的品管經理：",
+   "en": "Imagine you are the quality manager of a restaurant:"
+  },
+  {
+   "zh": "<strong>客人吃到的菜（房間參數）</strong>= Critical，必須嚴格控制味道、溫度、衛生",
+   "en": "<strong>The dishes the customer eats (room parameters)</strong> = Critical; taste, temperature and hygiene must be tightly controlled"
+  },
+  {
+   "zh": "<strong>廚房爐火的火力大小（AHU 內部參數）</strong>= Non-Critical，只要最終出菜合格就好",
+   "en": "<strong>The flame level on the kitchen stove (AHU internal parameters)</strong> = Non-Critical; as long as the final dish is acceptable, that is enough"
+  },
+  {
+   "zh": "如果你連廚師翻鍋幾下都要管（過度控制 AHU 內部），廚師會崩潰，效率會大降",
+   "en": "If you try to control even how many times the chef flips the pan (over-controlling AHU internals), the chef will break down and efficiency will drop sharply"
+  },
+  {
+   "zh": "CDMO 實務：不同產品類型的 Critical 參數差異",
+   "en": "CDMO Practice: Critical Parameters Differ by Product Type"
+  },
+  {
+   "zh": "原文列出的六種分類，在 CDMO 中的應用：",
+   "en": "The six categories listed in the source text apply in a CDMO as follows:"
+  },
+  {
+   "zh": "<strong>Product Driven（產品驅動）</strong>：凍乾製品對溫濕度極敏感 → 溫度和 RH 都是 Critical",
+   "en": "<strong>Product Driven</strong>: lyophilized products are very sensitive to temperature and humidity → both temperature and RH are Critical"
+  },
+  {
+   "zh": "<strong>Open/Closed processes（開放/封閉製程）</strong>：使用 RABS 或隔離器的封閉製程 → 房間環境要求可降低",
+   "en": "<strong>Open/Closed processes</strong>: closed processes using RABS or isolators → room environmental requirements can be lower"
+  },
+  {
+   "zh": "<strong>Terminally Sterilized（最終滅菌）</strong>：因為有最終滅菌步驟 → 環境微粒/微生物控制要求較低",
+   "en": "<strong>Terminally Sterilized</strong>: because there is a terminal sterilization step → requirements for environmental particulate/microbial control are lower"
+  },
+  {
+   "zh": "<strong>Flammability（易燃性）</strong>：使用乙醇等溶劑 → 需額外考慮防爆通風和排氣設計",
+   "en": "<strong>Flammability</strong>: use of solvents such as ethanol → explosion-proof ventilation and exhaust design need additional consideration"
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "在你的無菌充填廠房中，Grade B 區域的「Room Humidity」應該標記為 Critical 還是 Non-Critical？理由是什麼？",
+   "en": "In your sterile filling facility, should \"Room Humidity\" in a Grade B area be marked Critical or Non-Critical? What is your rationale?"
+  },
+  {
+   "zh": "如果一個 AHU 同時服務 Grade B 和 Grade C 區域，風險評估時應該如何處理系統邊界？",
+   "en": "If one AHU serves both Grade B and Grade C areas, how should the system boundary be handled in the risk assessment?"
+  },
+  {
+   "zh": "2.3.3 Risk and Components（風險與元件）",
+   "en": "2.3.3 Risk and Components"
+  },
+  {
+   "zh": "教學解析：四步驟風險評估法",
+   "en": "Teaching Notes: The Four-Step Risk Assessment Approach"
+  },
+  {
+   "zh": "核心概念：四步驟法的邏輯鏈",
+   "en": "Core Concept: The Logic Chain of the Four Steps"
+  },
+  {
+   "zh": "這四個步驟形成了一個完整的風險評估邏輯：",
+   "en": "These four steps form a complete risk assessment logic:"
+  },
+  {
+   "zh": "<strong>Step 1 — 定義 CPP</strong>：先搞清楚「什麼重要」，並提供理由（Rationale）",
+   "en": "<strong>Step 1 — Define the CPPs</strong>: first be clear about \"what matters\", and provide the rationale"
+  },
+  {
+   "zh": "<strong>Step 2 — 定義系統邊界</strong>：決定評估的範圍——按元件類型、地理位置、還是連接系統？",
+   "en": "<strong>Step 2 — Define the system boundary</strong>: decide the scope of the assessment: by component type, by geographic location, or by connected systems?"
+  },
+  {
+   "zh": "<strong>Step 3 — 定義監控方式</strong>：CPP 是如何被偵測的？連續監控還是定期檢測？",
+   "en": "<strong>Step 3 — Define how they are monitored</strong>: how is the CPP detected? Continuous monitoring or periodic testing?"
+  },
+  {
+   "zh": "<strong>Step 4 — 定義達成方式與偵測能力</strong>：CPP 靠什麼設備達成？如果設備故障，能多快被發現？",
+   "en": "<strong>Step 4 — Define how they are achieved and how failures are detected</strong>: what equipment achieves the CPP? If the equipment fails, how quickly can the failure be found?"
+  },
+  {
+   "zh": "最後的關鍵判斷：<strong>如果故障能被連續監控即時偵測 → Engineering Change Control 即可；如果無法即時偵測 → 需要 Quality Change Control + 定期驗證</strong>。",
+   "en": "The final key judgment: <strong>if a failure can be detected immediately by continuous monitoring → Engineering Change Control is sufficient; if it cannot be detected immediately → Quality Change Control plus periodic verification is required</strong>."
+  },
+  {
+   "zh": "關鍵洞察：HEPA 過濾器為什麼是最高風險元件",
+   "en": "Key Insight: Why HEPA Filters Are the Highest-Risk Component"
+  },
+  {
+   "zh": "從 Step 4 的範例可以看出，四個 CPP 中，只有 HEPA 過濾器需要 Quality Change Control，原因是：",
+   "en": "The Step 4 example shows that, of the four CPPs, only the HEPA filter requires Quality Change Control, because:"
+  },
+  {
+   "zh": "溫度、濕度、壓差 → 都有<strong>連續監控（SCADA）</strong>，故障可即時偵測",
+   "en": "Temperature, humidity and differential pressure all have <strong>continuous monitoring (SCADA)</strong>, so failures are detected immediately"
+  },
+  {
+   "zh": "HEPA 過濾器完整性 → <strong>沒有連續監控</strong>，只能透過年度洩漏測試和定期粒子計數來驗證",
+   "en": "HEPA filter integrity has <strong>no continuous monitoring</strong> and can only be verified through annual leak testing and periodic particle counts"
+  },
+  {
+   "zh": "這就是為什麼 HEPA 過濾器在 Figure 2.4 中被標記為 Critical Device（以陰影框表示）。",
+   "en": "This is why the HEPA filter is marked as a Critical Device (shown with a shaded box) in Figure 2.4."
+  },
+  {
+   "zh": "比喻說明：偵測能力決定管制等級",
+   "en": "Analogy: Detection Capability Determines the Level of Control"
+  },
+  {
+   "zh": "想像兩種水管破裂情境：",
+   "en": "Imagine two burst-pipe scenarios:"
+  },
+  {
+   "zh": "<strong>浴室水管</strong>：裝了漏水感測器，破裂立刻警報 → 只要確保感測器有效（Engineering Control）",
+   "en": "<strong>Bathroom pipe</strong>: a leak sensor is installed and gives an alarm the moment the pipe bursts → you only need to make sure the sensor works (Engineering Control)"
+  },
+  {
+   "zh": "<strong>牆壁內的暗管</strong>：沒有感測器，可能漏水幾個月才發現 → 必須定期檢查、嚴格記錄（Quality Control）",
+   "en": "<strong>Hidden pipe inside the wall</strong>: no sensor, so it may leak for months before anyone notices → it must be inspected regularly and recorded rigorously (Quality Control)"
+  },
+  {
+   "zh": "HEPA 就像「牆壁內的暗管」——它的失效不會立刻被發現，所以需要最嚴格的管制。",
+   "en": "A HEPA filter is like the \"hidden pipe inside the wall\": its failure is not noticed immediately, so it needs the strictest control."
+  },
+  {
+   "zh": "CDMO 實務：系統邊界的定義策略",
+   "en": "CDMO Practice: Strategies for Defining the System Boundary"
+  },
+  {
+   "zh": "Step 2 提出三種系統邊界定義方式，在 CDMO 中的建議：",
+   "en": "Step 2 offers three ways to define the system boundary; recommendations for a CDMO:"
+  },
+  {
+   "zh": "<strong>按 AHU 系統定義</strong>（最常用）：一台 AHU + 其服務的所有管道和末端設備 = 一個系統。適合大多數情況。",
+   "en": "<strong>Define by AHU system</strong> (most common): one AHU plus all the ducts and terminal equipment it serves = one system. Suitable for most situations."
+  },
+  {
+   "zh": "<strong>按房間定義</strong>：當一個房間被多台 AHU 服務時（如 Grade A 層流 + Grade B 背景），需要按房間來定義邊界。",
+   "en": "<strong>Define by room</strong>: when a room is served by several AHUs (for example, Grade A laminar flow plus Grade B background), the boundary needs to be defined by room."
+  },
+  {
+   "zh": "<strong>按元件類型定義</strong>：例如把所有 HEPA 過濾器作為一個「系統」來管理——適合統一排程洩漏測試。",
+   "en": "<strong>Define by component type</strong>: for example, manage all HEPA filters as one \"system\", which suits scheduling leak tests together."
+  },
+  {
+   "zh": "實務建議：同時使用 AHU 系統邊界（用於確效）+ 元件類型邊界（用於維護排程），兩者互補。",
+   "en": "Practical recommendation: use both the AHU system boundary (for validation) and the component-type boundary (for maintenance scheduling); the two complement each other."
+  },
+  {
+   "zh": "如果你的 CDMO 新增了一台 PAT（Process Analytical Technology）即時粒子監控系統，能連續監測 HEPA 下游的粒子數，這會改變 HEPA 的風險分級嗎？為什麼？",
+   "en": "If your CDMO adds a PAT (Process Analytical Technology) real-time particle monitoring system that continuously measures particle counts downstream of the HEPA filters, would this change the risk classification of the HEPA filters? Why?"
+  },
+  {
+   "zh": "Step 1 的範例中，「溫度不是 Critical 因為產品在溫控容器中」。如果換成凍乾充填線，這個結論會改變嗎？",
+   "en": "In the Step 1 example, \"temperature is not Critical because the product is in a temperature-controlled container\". Would this conclusion change for a lyophilized product filling line?"
+  },
+  {
+   "zh": "2.4 Programming for Detail Design（細部設計規劃）",
+   "en": "2.4 Programming for Detail Design"
+  },
+  {
+   "zh": "教學解析：設施規劃與 HVAC 佈局",
+   "en": "Teaching Notes: Facility Planning and HVAC Layout"
+  },
+  {
+   "zh": "核心概念：HVAC 複雜度與成本的金字塔",
+   "en": "Core Concept: The Pyramid of HVAC Complexity and Cost"
+  },
+  {
+   "zh": "設施類型從簡單到複雜，HVAC 成本呈指數成長：",
+   "en": "From simple to complex facility types, HVAC cost grows exponentially:"
+  },
+  {
+   "zh": "<strong>一般辦公室</strong> → 基本空調（最低成本）",
+   "en": "<strong>General office</strong> → basic air conditioning (lowest cost)"
+  },
+  {
+   "zh": "<strong>OSD（口服固體劑型）</strong> → 控溫控濕 + 除塵（中等成本）",
+   "en": "<strong>OSD (oral solid dosage)</strong> → temperature and humidity control plus dust control (medium cost)"
+  },
+  {
+   "zh": "<strong>無菌充填</strong> → 多級潔淨室 + HEPA + 壓差控制（高成本）",
+   "en": "<strong>Sterile filling</strong> → multiple cleanroom grades, HEPA filtration and differential pressure control (high cost)"
+  },
+  {
+   "zh": "<strong>高效力/高活性藥物</strong> → 上述全部 + 負壓隔離 + 專用排氣（最高成本）",
+   "en": "<strong>Highly potent/highly active drugs</strong> → all of the above plus negative-pressure containment and dedicated exhaust (highest cost)"
+  },
+  {
+   "zh": "關鍵原則：<strong>潔淨區域越大、等級越高，HVAC 建置成本和運轉成本都越高</strong>。這就是為什麼 URS 階段要精確定義需求，避免過度設計。",
+   "en": "Key principle: <strong>the larger the cleanroom area and the higher its grade, the higher both the HVAC construction cost and the operating cost</strong>. This is why requirements must be defined precisely at the URS stage, to avoid over-design."
+  },
+  {
+   "zh": "重要提醒：佈局決定一切",
+   "en": "Important Reminder: Layout Determines Everything"
+  },
+  {
+   "zh": "原文提到的幾個關鍵佈局考量：",
+   "en": "Several key layout considerations raised in the source text:"
+  },
+  {
+   "zh": "<strong>電梯不能設在潔淨區內</strong>：電梯的活塞效應（piston effect）會嚴重擾亂壓差控制",
+   "en": "<strong>No elevators inside the cleanroom area</strong>: the piston effect of an elevator seriously disturbs differential pressure control"
+  },
+  {
+   "zh": "<strong>AHU 不要靠近精密儀器實驗室</strong>：大型風機的振動會影響分析天平等精密設備",
+   "en": "<strong>Keep AHUs away from precision instrument laboratories</strong>: vibration from large fans affects precision equipment such as analytical balances"
+  },
+  {
+   "zh": "<strong>外氣進氣口位置</strong>：要避開排氣口、貨車卸貨區（柴油廢氣）、實驗室排風",
+   "en": "<strong>Location of the outside air intake</strong>: it must avoid exhaust outlets, truck loading docks (diesel exhaust) and laboratory exhaust"
+  },
+  {
+   "zh": "這些在設計初期（Schematic Design）就必須決定，後期修改代價極大。",
+   "en": "These must be decided early in design (Schematic Design); changes later are extremely costly."
+  },
+  {
+   "zh": "比喻說明：蓋房子的順序",
+   "en": "Analogy: The Order of Building a House"
+  },
+  {
+   "zh": "HVAC 設施規劃就像蓋房子：",
+   "en": "HVAC facility planning is like building a house:"
+  },
+  {
+   "zh": "<strong>格局（Layout）</strong>先確定 → 客廳、臥室、廚房的位置和大小",
+   "en": "<strong>Layout</strong> is decided first → the positions and sizes of the living room, bedroom and kitchen"
+  },
+  {
+   "zh": "<strong>動線（Flow）</strong>次確定 → 乾淨衣物和髒衣物的路線不能交叉",
+   "en": "<strong>Flow</strong> is decided next → the routes for clean and dirty laundry must not cross"
+  },
+  {
+   "zh": "<strong>水電管線（HVAC Routing）</strong>配合格局 → 不是先拉管線再決定格局",
+   "en": "<strong>Utilities (HVAC routing)</strong> follow the layout → you do not run the pipes first and then decide the layout"
+  },
+  {
+   "zh": "在藥廠中，「格局」就是各等級潔淨室的配置，「動線」就是人流物流，「水電管線」就是 HVAC 管道。三者的決定順序不能顛倒。",
+   "en": "In a pharmaceutical plant, the \"layout\" is the arrangement of the cleanroom grades, the \"flow\" is the movement of personnel and materials, and the \"utilities\" are the HVAC ducts. The order of these three decisions must not be reversed."
+  },
+  {
+   "zh": "教學解析：維護與製程考量",
+   "en": "Teaching Notes: Maintenance and Process Considerations"
+  },
+  {
+   "zh": "維護策略的兩大哲學",
+   "en": "Two Philosophies of Maintenance Strategy"
+  },
+  {
+   "zh": "原文提到「maintain from inside or outside of room」，這在潔淨室設計中是一個根本性的決策：",
+   "en": "The source text mentions \"maintain from inside or outside of room\", which is a fundamental decision in cleanroom design:"
+  },
+  {
+   "zh": "<strong>從室內維護（Inside-out）</strong>：維護人員進入潔淨室操作 → 更衣程序、潔淨紀律要求高，但設備佈局較簡單",
+   "en": "<strong>Maintenance from inside the room (inside-out)</strong>: maintenance personnel enter the cleanroom to work → gowning procedures and cleanroom discipline demands are high, but the equipment layout is simpler"
+  },
+  {
+   "zh": "<strong>從室外維護（Outside-in）</strong>：將可維護元件（過濾器、馬達、閥門）設置在技術走廊（service corridor）→ 不影響潔淨室運作，但建築成本較高",
+   "en": "<strong>Maintenance from outside the room (outside-in)</strong>: maintainable components (filters, motors, valves) are placed in a service corridor → cleanroom operations are not affected, but building cost is higher"
+  },
+  {
+   "zh": "在無菌 CDMO 中，Grade A/B 區域幾乎一定採用「從室外維護」策略。",
+   "en": "In a sterile CDMO, Grade A/B areas almost always use the \"maintain from outside\" strategy."
+  },
+  {
+   "zh": "CDMO 關鍵應用：微環境技術的影響",
+   "en": "Key CDMO Application: The Impact of Microenvironment Technology"
+  },
+  {
+   "zh": "原文提到的 RABS（Restricted Access Barrier System，限制進入屏障系統）和 Isolator（隔離器）對 HVAC 設計影響巨大：",
+   "en": "RABS (Restricted Access Barrier System) and isolators, mentioned in the source text, have a major impact on HVAC design:"
+  },
+  {
+   "zh": "<strong>傳統開放式製程</strong>：整個房間需要 Grade A → HVAC 必須對整個房間提供層流",
+   "en": "<strong>Traditional open process</strong>: the whole room needs Grade A → the HVAC must provide laminar flow over the whole room"
+  },
+  {
+   "zh": "<strong>RABS</strong>：屏障內 Grade A，背景 Grade B → 房間 HVAC 只需維持 Grade B",
+   "en": "<strong>RABS</strong>: Grade A inside the barrier, Grade B background → the room HVAC only needs to maintain Grade B"
+  },
+  {
+   "zh": "<strong>Isolator</strong>：隔離器內 Grade A，背景可降至 Grade C/D → HVAC 複雜度和成本大幅降低",
+   "en": "<strong>Isolator</strong>: Grade A inside the isolator, background can drop to Grade C/D → HVAC complexity and cost are greatly reduced"
+  },
+  {
+   "zh": "結論：微環境技術不只是無菌保證的升級，更是 HVAC 成本優化的重要策略。",
+   "en": "Conclusion: microenvironment technology is not only an upgrade in sterility assurance but also an important strategy for optimizing HVAC cost."
+  },
+  {
+   "zh": "注意：模組化施工的法規風險",
+   "en": "Note: Regulatory Risks of Modular Construction"
+  },
+  {
+   "zh": "原文特別提醒：如果模組（module）在不同國家/地區預製，必須注意當地法規差異。例如：",
+   "en": "The source text specifically warns that if modules are prefabricated in different countries/regions, differences in local regulations must be taken into account. For example:"
+  },
+  {
+   "zh": "在中國預製的模組運到台灣安裝 → 必須同時符合兩地的消防、電氣、建築法規",
+   "en": "A module prefabricated in China and installed in Taiwan → must comply with the fire, electrical and building codes of both places"
+  },
+  {
+   "zh": "歐洲 ATEX 防爆標準 vs. 美國 NEC Class/Division 分類 → 兩套體系不完全對應",
+   "en": "European ATEX explosion-protection standards vs. the US NEC Class/Division classification → the two systems do not correspond exactly"
+  },
+  {
+   "zh": "這些要在設計初期就確認，否則模組到場後發現不合規，改裝成本極高。",
+   "en": "These must be confirmed early in design; otherwise, if non-compliance is found after the modules arrive on site, the cost of retrofitting is extremely high."
+  },
+  {
+   "zh": "2.4.2 Architectural Considerations（建築考量）",
+   "en": "2.4.2 Architectural Considerations"
+  },
+  {
+   "zh": "教學解析：建築與 HVAC 的協調",
+   "en": "Teaching Notes: Coordination Between Architecture and HVAC"
+  },
+  {
+   "zh": "核心概念：房間氣密性（Room Tightness）",
+   "en": "Core Concept: Room Tightness"
+  },
+  {
+   "zh": "房間氣密性是壓差控制的物理基礎。如果房間「漏」，再大的送風量也維持不了壓差。關鍵要點：",
+   "en": "Room tightness is the physical basis of differential pressure control. If the room \"leaks\", no amount of supply air can maintain the pressure differential. Key points:"
+  },
+  {
+   "zh": "<strong>牆面</strong>：必須從地板到天花板完整封閉，天花板上方的空間也要隔離",
+   "en": "<strong>Walls</strong>: must be fully sealed from floor to ceiling, and the space above the ceiling must also be isolated"
+  },
+  {
+   "zh": "<strong>門縫</strong>：底部間隙 3-14 mm，要均勻一致",
+   "en": "<strong>Door gaps</strong>: the gap at the bottom should be 3-14 mm and uniform"
+  },
+  {
+   "zh": "<strong>不建議使用門底掃條（Door Sweeps）</strong>：會積灰、刮地板、增加維護負擔",
+   "en": "<strong>Door sweeps are not recommended</strong>: they collect dust, scrape the floor and add to the maintenance burden"
+  },
+  {
+   "zh": "<strong>所有貫穿件（penetrations）</strong>：管道、電線穿牆處必須密封",
+   "en": "<strong>All penetrations</strong>: places where ducts and cables pass through walls must be sealed"
+  },
+  {
+   "zh": "比喻說明：給輪胎充氣",
+   "en": "Analogy: Inflating a Tire"
+  },
+  {
+   "zh": "維持房間壓差就像給輪胎充氣：",
+   "en": "Maintaining room differential pressure is like inflating a tire:"
+  },
+  {
+   "zh": "如果輪胎有破洞（房間漏風），你打再多氣（送再多風）也維持不了壓力",
+   "en": "If the tire has a hole (the room leaks), no matter how much air you pump in (how much supply air you provide), you cannot maintain the pressure"
+  },
+  {
+   "zh": "先補好破洞（確保房間氣密），再充適量的氣（設計合適的送風量）",
+   "en": "Fix the hole first (make sure the room is airtight), then add the right amount of air (design a suitable supply airflow)"
+  },
+  {
+   "zh": "ISO 14644-3 的 Room Leakage Test 就是在「檢查輪胎有沒有破洞」",
+   "en": "The ISO 14644-3 room leakage test is \"checking the tire for holes\""
+  },
+  {
+   "zh": "重要提醒：地板品質影響空氣品質",
+   "en": "Important Reminder: Floor Quality Affects Air Quality"
+  },
+  {
+   "zh": "原文提到一個容易被忽略的重點：<strong>Poor flooring can add to airborne particle levels</strong>（不良地板會增加空氣中的微粒數）。",
+   "en": "The source text raises an easily overlooked point: <strong>Poor flooring can add to airborne particle levels</strong>."
+  },
+  {
+   "zh": "原因：環氧樹脂地板如果施工不良（氣泡、裂縫、剝落），使用中會持續產生微粒。建議在正式施工前先做「test patch」驗證施工品質。在 CDMO 中，地板品質問題常常在運轉後才浮現，但修復需要停產，代價極高。",
+   "en": "Reason: if an epoxy floor is poorly applied (bubbles, cracks, peeling), it continues to generate particles in use. It is advisable to do a \"test patch\" to verify workmanship before full installation. In a CDMO, floor problems often only emerge after operation begins, and repairing them requires stopping production, which is very costly."
+  },
+  {
+   "zh": "CDMO 實務：模組化施工的 HVAC 限制",
+   "en": "CDMO Practice: HVAC Limitations of Modular Construction"
+  },
+  {
+   "zh": "模組化施工（Modular Construction）在近年 CDMO 快速擴產中越來越常見，但 HVAC 設計必須注意：",
+   "en": "Modular construction has become increasingly common in recent years as CDMOs expand rapidly, but HVAC design must take note of the following:"
+  },
+  {
+   "zh": "<strong>AHU 尺寸限制</strong>：受限於標準模組的運輸尺寸，可能需要拆分為多台小型 AHU",
+   "en": "<strong>AHU size limits</strong>: constrained by the transport dimensions of standard modules, the AHU may need to be split into several smaller units"
+  },
+  {
+   "zh": "<strong>模組介面</strong>：兩個模組連接處的管道接頭是最大的洩漏風險點",
+   "en": "<strong>Module interfaces</strong>: duct connections where two modules join are the biggest leakage risk points"
+  },
+  {
+   "zh": "<strong>維護空間</strong>：模組內的機械空間通常很狹窄，大型元件更換困難",
+   "en": "<strong>Maintenance space</strong>: mechanical spaces within modules are usually cramped, making it difficult to replace large components"
+  },
+  {
+   "zh": "<strong>管道路由</strong>：模組化設計對管道走向的彈性遠低於傳統施工",
+   "en": "<strong>Duct routing</strong>: modular design offers far less flexibility in duct routing than conventional construction"
+  },
+  {
+   "zh": "2.4.3 AFD and AF&amp;ID（氣流圖與氣流儀控圖）",
+   "en": "2.4.3 AFD and AF&amp;ID"
+  },
+  {
+   "zh": "教學解析：AFD 與 AF&amp;ID 的差異與應用",
+   "en": "Teaching Notes: Differences and Applications of AFD and AF&amp;ID"
+  },
+  {
+   "zh": "比喻說明：Google Maps 的不同檢視",
+   "en": "Analogy: Different Views in Google Maps"
+  },
+  {
+   "zh": "AFD 和 AF&amp;ID 的關係就像 Google Maps 的不同縮放等級：",
+   "en": "The relationship between AFD and AF&amp;ID is like different zoom levels in Google Maps:"
+  },
+  {
+   "zh": "<strong>AFD = 縮小檢視</strong>：看得到主要道路（管道）、交流道（AHU）、城市（房間），但看不到紅綠燈和路標",
+   "en": "<strong>AFD = zoomed-out view</strong>: you can see the main roads (ducts), interchanges (AHUs) and cities (rooms), but not the traffic lights and road signs"
+  },
+  {
+   "zh": "<strong>AF&amp;ID = 放大檢視</strong>：每個紅綠燈（感測器）、路標（標示牌）、車道標線（閥門/風門）都清楚標示",
+   "en": "<strong>AF&amp;ID = zoomed-in view</strong>: every traffic light (sensor), road sign (label) and lane marking (valve/damper) is clearly shown"
+  },
+  {
+   "zh": "開長途只需要縮小檢視（AFD），但市區導航需要放大檢視（AF&amp;ID）。",
+   "en": "For a long-distance drive the zoomed-out view (AFD) is enough, but city navigation needs the zoomed-in view (AF&amp;ID)."
+  },
+  {
+   "zh": "重要：AF&amp;ID 作為法規主紀錄（Master Record）",
+   "en": "Important: The AF&amp;ID as the Regulatory Master Record"
+  },
+  {
+   "zh": "原文強調 AF&amp;ID 可作為持續維護的法規主紀錄。這意味著：",
+   "en": "The source text emphasizes that the AF&amp;ID can serve as the regulatory master record for ongoing maintenance. This means:"
+  },
+  {
+   "zh": "任何 HVAC 系統變更都必須更新 AF&amp;ID",
+   "en": "Any change to the HVAC system must be reflected in an update to the AF&amp;ID"
+  },
+  {
+   "zh": "法規查核（Regulatory Inspection）時，查核員會要求看 AF&amp;ID 來理解系統設計",
+   "en": "During a regulatory inspection, inspectors will ask to see the AF&amp;ID to understand the system design"
+  },
+  {
+   "zh": "Master Record AF&amp;ID 必須包含：風量、溫濕度限值、區域分級、壓差方向、關鍵儀器",
+   "en": "The Master Record AF&amp;ID must include: airflows, temperature and humidity limits, area classification, differential pressure directions and critical instruments"
+  },
+  {
+   "zh": "注意：管道路由圖（routing drawings）不被視為 HVAC 應用的 critical 文件，可在需要時更新即可。",
+   "en": "Note: routing drawings for ducts are not considered critical documents for HVAC applications and can be updated when needed."
+  },
+  {
+   "zh": "ISA 標籤命名規範（Tag Nomenclature）",
+   "en": "ISA Tag Nomenclature"
+  },
+  {
+   "zh": "原文舉例 ISA 標籤系統：<strong>TE-209</strong> = Temperature Sensing Element，位於迴路 209 或房間 209。",
+   "en": "The source text gives an example from the ISA tagging system: <strong>TE-209</strong> = Temperature Sensing Element, located in loop 209 or room 209."
+  },
+  {
+   "zh": "常見 HVAC 相關 ISA 標籤前綴：",
+   "en": "Common ISA tag prefixes for HVAC:"
+  },
+  {
+   "zh": "<strong>TE</strong> = Temperature Element（溫度感測元件）",
+   "en": "<strong>TE</strong> = Temperature Element"
+  },
+  {
+   "zh": "<strong>TT</strong> = Temperature Transmitter（溫度傳送器）",
+   "en": "<strong>TT</strong> = Temperature Transmitter"
+  },
+  {
+   "zh": "<strong>PT</strong> = Pressure Transmitter（壓力傳送器）",
+   "en": "<strong>PT</strong> = Pressure Transmitter"
+  },
+  {
+   "zh": "<strong>PDT</strong> = Pressure Differential Transmitter（壓差傳送器）",
+   "en": "<strong>PDT</strong> = Pressure Differential Transmitter"
+  },
+  {
+   "zh": "<strong>FT</strong> = Flow Transmitter（流量傳送器）",
+   "en": "<strong>FT</strong> = Flow Transmitter"
+  },
+  {
+   "zh": "<strong>ME</strong> = Moisture Element（濕度感測元件）",
+   "en": "<strong>ME</strong> = Moisture Element"
+  },
+  {
+   "zh": "統一的命名規範讓設計師、施工方、操作人員能「說同一種語言」。",
+   "en": "A uniform naming convention lets designers, contractors and operators \"speak the same language\"."
+  },
+  {
+   "zh": "你的工廠即將接受 FDA 查核。查核員要求看「HVAC 系統的控制策略文件」。你會提供 AFD 還是 AF&amp;ID？為什麼？",
+   "en": "Your plant is about to be inspected by the FDA. The inspector asks to see the \"HVAC system control strategy document\". Would you provide the AFD or the AF&amp;ID? Why?"
+  },
+  {
+   "zh": "如果你要新增一個壓差感測器到現有的 Grade B 走廊，需要更新哪些文件？變更管制流程應該走 GMP 還是 GEP？",
+   "en": "If you need to add a differential pressure sensor to an existing Grade B corridor, which documents need to be updated? Should the change control follow the GMP or the GEP route?"
+  },
+  {
+   "zh": "原文提到 AF&amp;ID 不包含「equipment capacity」和「pressure temperature and flow data」。這些資訊應該記錄在哪些文件中？",
+   "en": "The source text states that the AF&amp;ID does not include \"equipment capacity\" and \"pressure temperature and flow data\". In which documents should this information be recorded?"
+  },
+  {
+   "zh": "核心概念：AFD vs. AF&amp;ID",
+   "en": "Core Concept: AFD vs. AF&amp;ID"
+  },
+  {
+   "zh": "簡單區分這兩種圖面：",
+   "en": "A simple way to tell the two drawings apart:"
+  },
+  {
+   "zh": "AF&amp;ID 就是 HVAC 版本的 P&amp;ID，是整個系統最重要的工程文件之一。",
+   "en": "The AF&amp;ID is the HVAC version of the P&amp;ID and is one of the most important engineering documents of the whole system."
+  },
+  {
+   "zh": "本節重點回顧 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "<strong>HVAC 風險評估的本質</strong>：將系統拆解為元件，逐一評估對 CPP/CQA 的影響。關鍵判斷標準是「故障能否被即時偵測」——能即時偵測的用 Engineering Change Control，無法即時偵測的（如 HEPA）用 Quality Change Control。",
+   "en": "<strong>The essence of HVAC risk assessment</strong>: break the system down into components and assess each one's impact on CPPs/CQAs. The key criterion is \"whether a failure can be detected immediately\": failures that can be detected immediately fall under Engineering Change Control, and those that cannot (such as HEPA filters) fall under Quality Change Control."
+  },
+  {
+   "zh": "<strong>四步驟風險評估法</strong>：定義 CPP → 定義系統邊界 → 定義監控方式 → 定義達成方式與偵測能力。每一步都需要 Quality、Process、Engineering 三方參與討論。",
+   "en": "<strong>The four-step risk assessment approach</strong>: define the CPPs → define the system boundary → define how they are monitored → define how they are achieved and how failures are detected. Each step needs input from Quality, Process and Engineering together."
+  },
+  {
+   "zh": "<strong>影響性評估表（Table 2.2）的應用</strong>：逐房間、逐參數填寫 Critical Y/N，核心價值在於促進跨部門對話。AHU 內部參數通常 Non-Critical（除了 Supply Airflow）。",
+   "en": "<strong>Application of the impact assessment table (Table 2.2)</strong>: fill in Critical Y/N room by room and parameter by parameter; its core value is promoting cross-functional dialogue. AHU internal parameters are usually Non-Critical (except supply airflow)."
+  },
+  {
+   "zh": "<strong>設施規劃三原則</strong>：潔淨區域越小越好（成本效益）、動線不能交叉（人流物流分離）、維護從室外操作（避免污染潔淨室）。微環境技術（RABS/Isolator）可大幅降低 HVAC 複雜度和成本。",
+   "en": "<strong>Three principles of facility planning</strong>: keep the cleanroom area as small as possible (cost-effectiveness), do not let flows cross (separate personnel and material flows), and maintain from outside the room (avoid contaminating the cleanroom). Microenvironment technology (RABS/isolator) can greatly reduce HVAC complexity and cost."
+  },
+  {
+   "zh": "<strong>建築與 HVAC 協調</strong>：房間氣密性是壓差控制的基礎。地板品質影響空氣品質。模組化施工對 HVAC 設計有多項限制，需在設計初期就確認。",
+   "en": "<strong>Coordination of architecture and HVAC</strong>: room tightness is the basis of differential pressure control. Floor quality affects air quality. Modular construction places several limitations on HVAC design, which must be confirmed early in design."
+  },
+  {
+   "zh": "<strong>AFD vs. AF&amp;ID</strong>：AFD 是概要氣流圖（類似 PFD），AF&amp;ID 是詳細氣流儀控圖（類似 P&amp;ID）。AF&amp;ID 可作為法規主紀錄（Master Record），任何系統變更必須同步更新。ISA 標籤命名規範確保各方溝通一致。",
+   "en": "<strong>AFD vs. AF&amp;ID</strong>: the AFD is the overview air flow diagram (similar to a PFD) and the AF&amp;ID is the detailed air flow and instrumentation diagram (similar to a P&amp;ID). The AF&amp;ID can serve as the regulatory Master Record, and any system change must be reflected in it. The ISA tag nomenclature ensures consistent communication among all parties."
+  }
+ ]
+}
