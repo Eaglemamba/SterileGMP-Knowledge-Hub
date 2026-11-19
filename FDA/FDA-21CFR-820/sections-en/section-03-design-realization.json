@@ -1,0 +1,637 @@
+{
+ "source": "section-03-design-realization.html",
+ "blocks": [
+  {
+   "zh": "設計管控與產品實現（FDA 強制要求）",
+   "en": "Design Controls and Product Realization (FDA Mandatory Requirements)"
+  },
+  {
+   "zh": "<strong>QMSR 說明 / QMSR Note:</strong> Under the 2024 QMSR Final Rule (effective February 2, 2026), FDA incorporates ISO 13485:2016 by reference into 21 CFR Part 820. Section 7 of ISO 13485:2016 — Product Realization — maps directly to the former §820.20–§820.86 controls. FDA Appendix A to Part 820 lists <em>additional</em> US-only requirements that go beyond ISO 13485, including mandatory design controls for all Class II/III devices and specific UDI/traceability requirements.",
+   "en": "<strong>QMSR Note:</strong> Under the 2024 QMSR Final Rule (effective February 2, 2026), FDA incorporates ISO 13485:2016 by reference into 21 CFR Part 820. Section 7 of ISO 13485:2016 — Product Realization — maps directly to the former §820.20–§820.86 controls. FDA Appendix A to Part 820 lists <em>additional</em> US-only requirements that go beyond ISO 13485, including mandatory design controls for all Class II/III devices and specific UDI/traceability requirements."
+  },
+  {
+   "zh": "本章學習目標 Learning Objectives",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "掌握 FDA QMSR 設計管控瀑布模型（Design Controls Waterfall）：設計輸入 → 設計輸出 → 設計驗證 → 設計確認，並理解各階段的法規要求與文件義務",
+   "en": "Master the FDA QMSR Design Controls Waterfall model: design inputs → design outputs → design verification → design validation, and understand the regulatory requirements and documentation obligations of each stage"
+  },
+  {
+   "zh": "清楚辨別「設計驗證（Design Verification）」與「設計確認（Design Validation）」的本質差異，以及 FDA 483 最常見的混淆觀察項目",
+   "en": "Clearly distinguish the essential difference between \"Design Verification\" and \"Design Validation,\" and the most common FDA 483 observations arising from confusing the two"
+  },
+  {
+   "zh": "理解採購管制（§7.4）的三層要求：供應商評估 → 採購資訊 → 進貨查驗，並掌握關鍵供應商（合約滅菌商）的特殊義務",
+   "en": "Understand the three tiers of purchasing controls (§7.4): supplier evaluation → purchasing information → verification of purchased product, and the special obligations for critical suppliers (contract sterilizers)"
+  },
+  {
+   "zh": "掌握生產過程管制（§7.5）中「特殊製程（Special Processes）」的過程確效（Process Validation）邏輯：IQ → OQ → PQ",
+   "en": "Master the process validation logic for \"special processes\" in production control (§7.5): IQ → OQ → PQ"
+  },
+  {
+   "zh": "理解無菌醫療器材的滅菌保證要求、跨法規標準（ISO 11135/11137/17665）的交叉適用，以及藥械組合產品的雙重合規義務",
+   "en": "Understand the sterilization assurance requirements for sterile medical devices, the cross-application of standards from other regulatory domains (ISO 11135/11137/17665), and the dual compliance obligations for drug-device combination products"
+  },
+  {
+   "zh": "掌握唯一器材識別（UDI）與可追溯性要求，並能區分 DHF、DHR、DMR 在設計管控與生產管制中的各自角色",
+   "en": "Master Unique Device Identification (UDI) and traceability requirements, and be able to distinguish the respective roles of the DHF, DHR, and DMR in design control and production control"
+  },
+  {
+   "zh": "本章節內容 Section Contents",
+   "en": "Section Contents"
+  },
+  {
+   "zh": "3.1 Design Controls — ISO 13485 §7.3 + FDA Appendix A（設計管控）",
+   "en": "3.1 Design Controls — ISO 13485 §7.3 + FDA Appendix A"
+  },
+  {
+   "zh": "原文內容 Regulatory Text",
+   "en": "Regulatory Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "為何 FDA 強制設計管控，但 ISO 13485 允許豁免？",
+   "en": "Why Does FDA Mandate Design Controls While ISO 13485 Allows an Exemption?"
+  },
+  {
+   "zh": "ISO 13485:2016 §7.3 在規範設計管制時，允許製造商在有合理理由的情況下<strong>排除（exclude）</strong>設計管制要求，前提是在品質手冊中記錄排除理由並證明不影響品質。常見排除情境：完全按照客戶規格製造（Customer-specified design）的 OEM 廠商。",
+   "en": "When ISO 13485:2016 §7.3 governs design control, it allows a manufacturer, with justifiable reasons, to <strong>exclude</strong> the design control requirements, provided the rationale for the exclusion is documented in the quality manual and shown not to affect quality. A common exclusion scenario: OEM manufacturers that build strictly to customer specifications (customer-specified design)."
+  },
+  {
+   "zh": "FDA 的立場截然不同：<strong>凡是製造 Class II 或 Class III 器材（以及特定 Class I 器材），設計管控必須執行，沒有豁免空間。</strong> 這正是 FDA Appendix A 存在的理由——它明確列出 ISO 13485 的某些可選條款在美國法規框架下是強制的。",
+   "en": "FDA's position is completely different: <strong>anyone who manufactures a Class II or Class III device (and certain Class I devices) must implement design controls, with no room for exemption.</strong> This is exactly why FDA Appendix A exists: it explicitly lists the optional clauses of ISO 13485 that are mandatory under the US regulatory framework."
+  },
+  {
+   "zh": "<strong>實務意義：</strong> 一家同時持有 ISO 13485 認證和 FDA 510(k) 許可的公司，不能僅靠 ISO 13485 的排除條款來迴避 FDA 的設計管控查廠。",
+   "en": "<strong>Practical significance:</strong> A company that holds both ISO 13485 certification and an FDA 510(k) clearance cannot rely on the ISO 13485 exclusion clause alone to avoid an FDA inspection of design controls."
+  },
+  {
+   "zh": "設計管控瀑布模型 Design Controls Waterfall",
+   "en": "Design Controls Waterfall"
+  },
+  {
+   "zh": "User Needs / 使用者需求",
+   "en": "User Needs"
+  },
+  {
+   "zh": "Design Inputs / 設計輸入 §7.3.3",
+   "en": "Design Inputs §7.3.3"
+  },
+  {
+   "zh": "Design Process / 設計過程 §7.3.4",
+   "en": "Design Process §7.3.4"
+  },
+  {
+   "zh": "Design Outputs / 設計輸出 §7.3.4",
+   "en": "Design Outputs §7.3.4"
+  },
+  {
+   "zh": "↓ 驗證 Verification (§7.3.6)",
+   "en": "↓ Verification (§7.3.6)"
+  },
+  {
+   "zh": "↓ 確認 Validation (§7.3.7)",
+   "en": "↓ Validation (§7.3.7)"
+  },
+  {
+   "zh": "每個下箭頭代表一個查核點（Design Review），必須有文件紀錄並存入 DHF。",
+   "en": "Each downward arrow represents a checkpoint (Design Review), which must be documented and filed in the DHF."
+  },
+  {
+   "zh": "比喻：蓋房子 Building a House",
+   "en": "Analogy: Building a House"
+  },
+  {
+   "zh": "設計管控就像建築設計流程，用生活化的類比理解各階段：",
+   "en": "Design controls are like the architectural design process; an everyday analogy helps in understanding each stage:"
+  },
+  {
+   "zh": "<strong>User Needs（使用者需求）：</strong> 屋主說「我要一棟可以住四個人、有兩間浴室的房子，預算 500 萬」——這是需求，還不是規格。",
+   "en": "<strong>User Needs:</strong> The homeowner says, \"I want a house for four people with two bathrooms, on a budget of NT$5 million.\" This is a need, not yet a specification."
+  },
+  {
+   "zh": "<strong>Design Inputs（設計輸入）：</strong> 建築師將需求轉化為技術規格——「地板面積 ≥ 35 坪、耐震係數 0.3g、建材符合消防法規」。這是可測量的要求。",
+   "en": "<strong>Design Inputs:</strong> The architect translates the needs into technical specifications: \"floor area ≥ 35 ping, seismic coefficient 0.3g, building materials compliant with fire codes.\" These are measurable requirements."
+  },
+  {
+   "zh": "<strong>Design Outputs（設計輸出）：</strong> 完整的建築圖紙、結構計算書、施工規範——這是施工依據。",
+   "en": "<strong>Design Outputs:</strong> Complete architectural drawings, structural calculations, and construction specifications. These are the basis for construction."
+  },
+  {
+   "zh": "<strong>Design Verification（設計驗證）：</strong> 結構工程師審查圖紙——「圖紙上的樑柱尺寸是否符合耐震規格？」驗證輸出符合輸入（圖紙 vs 規格）。",
+   "en": "<strong>Design Verification:</strong> The structural engineer reviews the drawings: \"Do the beam and column dimensions on the drawings meet the seismic specification?\" Verification confirms that the outputs meet the inputs (drawings vs. specifications)."
+  },
+  {
+   "zh": "<strong>Design Validation（設計確認）：</strong> 完工後的居住測試——「四個人實際住進去，房子是否符合當初的使用需求？」在實際使用條件下確認。",
+   "en": "<strong>Design Validation:</strong> A live-in test after completion: \"When four people actually move in, does the house meet the original needs of use?\" Confirmation under actual conditions of use."
+  },
+  {
+   "zh": "<strong>Design Transfer（設計轉移）：</strong> 將建築圖紙和施工規範移交給施工隊（製造部門），確保按圖施工。",
+   "en": "<strong>Design Transfer:</strong> The drawings and construction specifications are handed over to the construction crew (the manufacturing department) to ensure the house is built as drawn."
+  },
+  {
+   "zh": "關鍵陷阱：Verification ≠ Validation（FDA 483 高頻觀察項）",
+   "en": "Key Pitfall: Verification ≠ Validation (A Frequent FDA 483 Observation)"
+  },
+  {
+   "zh": "這是 FDA 483 最常見的設計管控觀察項之一：",
+   "en": "This is one of the most common design control observations in FDA 483s:"
+  },
+  {
+   "zh": "<strong>Design Verification（驗證）：</strong> 確認「我們做出了正確的東西（Did we build it right?）」——測試輸出是否符合輸入規格。例：測量導管外徑是否符合圖紙規格 3.5±0.1mm。",
+   "en": "<strong>Design Verification:</strong> Confirms \"Did we build it right?\" by testing whether the outputs meet the input specifications. Example: measuring whether the catheter outer diameter meets the drawing specification of 3.5±0.1mm."
+  },
+  {
+   "zh": "<strong>Design Validation（確認）：</strong> 確認「我們做的是正確的東西（Did we build the right thing?）」——測試器材在實際或模擬使用條件下是否符合使用者需求。例：讓護士實際操作導管插管，驗證臨床可用性。",
+   "en": "<strong>Design Validation:</strong> Confirms \"Did we build the right thing?\" by testing whether the device meets user needs under actual or simulated conditions of use. Example: having nurses actually perform catheter insertion to verify clinical usability."
+  },
+  {
+   "zh": "<strong>最常犯的錯誤：</strong> 在 Validation 中只重複 Verification 的測試（純技術規格測試），而未使用初始量產品（initial production units），且未在<strong>模擬實際使用條件</strong>下測試。FDA §820.30(g) 明確要求使用「initial production units or equivalents」。",
+   "en": "<strong>The most common mistake:</strong> In Validation, only repeating the Verification tests (purely technical specification testing), without using initial production units and without testing under <strong>simulated actual use conditions</strong>. FDA §820.30(g) explicitly requires the use of \"initial production units or equivalents.\""
+  },
+  {
+   "zh": "<strong>補充陷阱：</strong> 設計確認（Design Validation）≠ 製程確效（Process Validation）——前者確認器材設計符合使用需求，後者確認製造製程能穩定生產符合規格的產品。兩者均需執行。",
+   "en": "<strong>Additional pitfall:</strong> Design Validation ≠ Process Validation. The former confirms that the device design meets user needs, while the latter confirms that the manufacturing process can consistently produce product that meets specifications. Both must be performed."
+  },
+  {
+   "zh": "DHF 必須包含的內容",
+   "en": "What the DHF Must Contain"
+  },
+  {
+   "zh": "Design History File（設計歷程檔案）是設計管控的「完整記錄」，必須包含或引用：",
+   "en": "The Design History File is the \"complete record\" of design controls and must contain or reference:"
+  },
+  {
+   "zh": "設計計畫（Design and Development Plan）",
+   "en": "Design and Development Plan"
+  },
+  {
+   "zh": "設計輸入記錄（Design Input documents）",
+   "en": "Design Input documents"
+  },
+  {
+   "zh": "設計輸出記錄（Design Output documents，含圖紙、規格書）",
+   "en": "Design Output documents (including drawings and specifications)"
+  },
+  {
+   "zh": "所有設計審查記錄（Design Review records，含日期、參與者、結論）",
+   "en": "All Design Review records (including dates, participants, and conclusions)"
+  },
+  {
+   "zh": "設計驗證記錄（Verification records，含測試方法、結果、核准）",
+   "en": "Verification records (including test methods, results, and approval)"
+  },
+  {
+   "zh": "設計確認記錄（Validation records，含使用條件、受測樣品批次、統計分析）",
+   "en": "Validation records (including conditions of use, lots of test samples, and statistical analysis)"
+  },
+  {
+   "zh": "設計變更記錄（Design Changes with impact assessment）",
+   "en": "Design Changes with impact assessment"
+  },
+  {
+   "zh": "風險管理文件（Risk Management File，ISO 14971）",
+   "en": "Risk Management File (ISO 14971)"
+  },
+  {
+   "zh": "設計轉移確認記錄（Design Transfer confirmation）",
+   "en": "Design Transfer confirmation"
+  },
+  {
+   "zh": "<strong>注意：</strong> DHF 不需要包含所有文件本身，只需「包含或引用（contain or reference）」。但引用的文件必須可隨時取得供查驗。",
+   "en": "<strong>Note:</strong> The DHF does not need to contain every document itself, only to \"contain or reference\" them. However, the referenced documents must be available for inspection at any time."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "某公司開發一款可植入式心律調整器（Class III）。公司的 ISO 13485 認證範圍排除了 §7.3（因為歷史上產品一直依客戶規格生產）。在申請 FDA 上市許可時，這個排除條款是否可以被接受？理由為何？",
+   "en": "A company develops an implantable cardiac pacemaker (Class III). The scope of the company's ISO 13485 certification excludes §7.3 (because, historically, products have always been built to customer specifications). When applying for FDA marketing authorization, can this exclusion be accepted? Why or why not?"
+  },
+  {
+   "zh": "設計團隊完成了全部的 Verification 測試，結果都符合設計輸入規格。他們認為 Validation 已不必要。FDA 查廠官員對此有何看法？",
+   "en": "The design team has completed all Verification tests, and all results meet the design input specifications. They believe Validation is therefore unnecessary. What would an FDA investigator think of this?"
+  },
+  {
+   "zh": "DHF 中必須記錄「設計審查（Design Review）」的參與者要求是什麼？為何必須有不直接負責該設計階段的人員參與？",
+   "en": "What are the requirements for participants in a Design Review recorded in the DHF? Why must someone who is not directly responsible for that design stage take part?"
+  },
+  {
+   "zh": "3.2 Purchasing Controls — ISO 13485 §7.4（採購管制）",
+   "en": "3.2 Purchasing Controls — ISO 13485 §7.4"
+  },
+  {
+   "zh": "採購管制三層架構",
+   "en": "The Three-Tier Structure of Purchasing Controls"
+  },
+  {
+   "zh": "採購管制由三個互相連結的要求組成，缺一不可：",
+   "en": "Purchasing controls consist of three interlinked requirements, none of which can be omitted:"
+  },
+  {
+   "zh": "<strong>§7.4.1 供應商評估與資格：</strong> 建立核准供應商清單（Approved Supplier List, ASL）。評估方式可以是問卷、稽核、測試樣品或查驗認證文件（例：ISO 13485 認證書）。評估準則必須書面化。",
+   "en": "<strong>§7.4.1 Supplier evaluation and qualification:</strong> Establish an Approved Supplier List (ASL). Evaluation methods may be questionnaires, audits, test samples, or review of certification documents (e.g., an ISO 13485 certificate). The evaluation criteria must be documented."
+  },
+  {
+   "zh": "<strong>§7.4.2 採購資訊：</strong> 每張採購單（PO）或供應協議（Supply Agreement）必須包含足夠的技術要求，讓供應商知道「你需要什麼」。僅寫「依合約」不足夠——必須能溯回具體規格。",
+   "en": "<strong>§7.4.2 Purchasing information:</strong> Each purchase order (PO) or supply agreement must contain enough technical requirements for the supplier to know \"what you need.\" Merely writing \"per contract\" is not sufficient; it must be traceable to specific specifications."
+  },
+  {
+   "zh": "<strong>§7.4.3 進貨查驗：</strong> 收到產品後必須驗證符合採購要求。查驗程度取決於對器材品質的風險影響——風險越高，查驗越嚴格。",
+   "en": "<strong>§7.4.3 Verification of purchased product:</strong> Upon receipt, the product must be verified to meet the purchasing requirements. The extent of verification depends on the risk to device quality: the higher the risk, the stricter the verification."
+  },
+  {
+   "zh": "關鍵供應商：合約滅菌商（Contract Sterilizer）",
+   "en": "Critical Supplier: Contract Sterilizer"
+  },
+  {
+   "zh": "對無菌醫療器材製造商而言，合約滅菌商是最關鍵的供應商之一。以下是特殊要求：",
+   "en": "For sterile medical device manufacturers, the contract sterilizer is one of the most critical suppliers. The special requirements are as follows:"
+  },
+  {
+   "zh": "<strong>製造商責任不可轉移：</strong> 即使委外滅菌，器材製造商仍對滅菌結果負全責。FDA 將合約滅菌商視為「製造商」的一部分（見 §820.3(o) 定義）。",
+   "en": "<strong>The manufacturer's responsibility cannot be transferred:</strong> Even if sterilization is outsourced, the device manufacturer remains fully responsible for the sterilization result. FDA treats the contract sterilizer as part of the \"manufacturer\" (see the definition in §820.3(o))."
+  },
+  {
+   "zh": "<strong>滅菌確效記錄：</strong> 製造商必須在 DHR 中保存每批次的滅菌過程記錄（滅菌溫度、壓力、時間、生物指示劑結果等）。這些記錄通常由合約滅菌商提供，製造商必須納入自己的記錄系統。",
+   "en": "<strong>Sterilization validation records:</strong> The manufacturer must keep the sterilization process records for each lot (sterilization temperature, pressure, time, biological indicator results, etc.) in the DHR. These records are usually provided by the contract sterilizer, and the manufacturer must incorporate them into its own record system."
+  },
+  {
+   "zh": "<strong>定期供應商稽核：</strong> 對關鍵供應商（尤其是對最終滅菌有直接影響者），定期現場稽核是最佳實務，也是 FDA 查廠官員關注的重點。",
+   "en": "<strong>Periodic supplier audits:</strong> For critical suppliers (especially those with a direct impact on terminal sterilization), periodic on-site audits are best practice and a focus of FDA investigators."
+  },
+  {
+   "zh": "<strong>變更管控：</strong> 若合約滅菌商改變滅菌設備、製程參數或設施，製造商必須被通知，且可能需要重新執行製程確效。",
+   "en": "<strong>Change control:</strong> If the contract sterilizer changes its sterilization equipment, process parameters, or facility, the manufacturer must be notified, and process revalidation may be required."
+  },
+  {
+   "zh": "FDA 483 高頻觀察：供應商管制不足",
+   "en": "Frequent FDA 483 Observations: Inadequate Supplier Control"
+  },
+  {
+   "zh": "以下是與採購管制相關的常見 FDA 483 觀察項目：",
+   "en": "The following are common FDA 483 observations related to purchasing controls:"
+  },
+  {
+   "zh": "核准供應商清單（ASL）未包含所有關鍵供應商，或清單未定期審查更新",
+   "en": "The Approved Supplier List (ASL) does not include all critical suppliers, or the list is not reviewed and updated periodically"
+  },
+  {
+   "zh": "採購文件（PO）缺乏具體技術規格，僅引用「一般品質要求」",
+   "en": "Purchasing documents (POs) lack specific technical specifications and only refer to \"general quality requirements\""
+  },
+  {
+   "zh": "進貨查驗記錄不完整或未符合批准的程序",
+   "en": "Incoming inspection records are incomplete or do not follow the approved procedure"
+  },
+  {
+   "zh": "對合約滅菌商未進行定期稽核，僅依賴供應商提供的認證書",
+   "en": "No periodic audits of the contract sterilizer; reliance only on certificates provided by the supplier"
+  },
+  {
+   "zh": "供應商再評估（Re-evaluation）程序存在但未按既定週期執行",
+   "en": "A supplier re-evaluation procedure exists but is not executed at the established frequency"
+  },
+  {
+   "zh": "某無菌注射器製造商委託一家 EO（環氧乙烷）滅菌公司處理最終滅菌。該滅菌公司的 ISO 11135 認證在三個月前到期但尚未更新。製造商的採購管制程序中有何義務？應如何處理？",
+   "en": "A sterile syringe manufacturer has outsourced terminal sterilization to an EO (ethylene oxide) sterilization company. That company's ISO 11135 certification expired three months ago and has not been renewed. What are the manufacturer's obligations under its purchasing control procedure? How should it respond?"
+  },
+  {
+   "zh": "製造商購買用於器材包裝的特殊塑膠膜。供應商更換了膜的原料配方（不影響外觀，但改變了熱封性能）。供應商認為這是「小改變」，未通知製造商。從 §7.4.2 和設計管控的角度，這個情況存在哪些合規風險？",
+   "en": "A manufacturer purchases a special plastic film used in device packaging. The supplier changed the raw material formulation of the film (no change in appearance, but heat-seal performance changed). The supplier considered this a \"minor change\" and did not notify the manufacturer. From the perspective of §7.4.2 and design controls, what compliance risks does this situation present?"
+  },
+  {
+   "zh": "3.3 Production &amp; Process Controls — ISO 13485 §7.5（生產與製程管制）",
+   "en": "3.3 Production &amp; Process Controls — ISO 13485 §7.5"
+  },
+  {
+   "zh": "受控生產條件的七個要素",
+   "en": "The Seven Elements of Controlled Production Conditions"
+  },
+  {
+   "zh": "§7.5.1 要求在「受控條件（Controlled Conditions）」下生產，這七個要素各有對應的文件要求：",
+   "en": "§7.5.1 requires production under \"controlled conditions.\" Each of these seven elements has corresponding documentation requirements:"
+  },
+  {
+   "zh": "<strong>(a) 產品規格文件：</strong> 器材主記錄（DMR）中的圖紙和規格書",
+   "en": "<strong>(a) Product specification documents:</strong> The drawings and specifications in the Device Master Record (DMR)"
+  },
+  {
+   "zh": "<strong>(b) 作業指示（WI）：</strong> 每個製造步驟的詳細書面程序",
+   "en": "<strong>(b) Work instructions (WI):</strong> Detailed written procedures for each manufacturing step"
+  },
+  {
+   "zh": "<strong>(c) 設施與環境：</strong> 潔淨室等級、溫濕度控制、HEPA 過濾系統",
+   "en": "<strong>(c) Facilities and environment:</strong> Cleanroom classification, temperature and humidity control, HEPA filtration system"
+  },
+  {
+   "zh": "<strong>(d) 監測活動：</strong> 環境監控計畫（EM Program）、在線品管",
+   "en": "<strong>(d) Monitoring activities:</strong> Environmental monitoring (EM) program, in-process quality control"
+  },
+  {
+   "zh": "<strong>(e) 放行程序：</strong> 批次放行判准標準",
+   "en": "<strong>(e) Release procedures:</strong> Lot release acceptance criteria"
+  },
+  {
+   "zh": "<strong>(f) 標示與包裝：</strong> 標示管控程序（防止混批、錯誤標示）",
+   "en": "<strong>(f) Labeling and packaging:</strong> Labeling control procedures (to prevent lot mix-ups and mislabeling)"
+  },
+  {
+   "zh": "<strong>(g) 人員資格：</strong> 訓練記錄、資格確認",
+   "en": "<strong>(g) Personnel qualification:</strong> Training records, confirmation of qualification"
+  },
+  {
+   "zh": "製程確效邏輯：IQ → OQ → PQ",
+   "en": "Process Validation Logic: IQ → OQ → PQ"
+  },
+  {
+   "zh": "§7.5.6 要求對「無法透過後續監測或測量驗證其結果的製程」進行確效（Validation）。最典型的就是滅菌製程。標準的確效三階段：",
+   "en": "§7.5.6 requires validation of \"processes whose results cannot be verified by subsequent monitoring or measurement.\" The most typical example is the sterilization process. The standard three stages of validation:"
+  },
+  {
+   "zh": "Installation Qualification (IQ) — 安裝確效\n┌─────────────────────────────────────────────────────┐\n│ 問：設備是否按設計正確安裝並符合規格？              │\n│ 做：確認設備型號/序號、公用程式連接（電/氣/水）、  │\n│     儀器校正狀態、安全聯鎖功能測試                   │\n│ 文件：IQ 報告、設備清單、校正證書                    │\n└─────────────────────────────────────────────────────┘\n              ↓ IQ 通過後進行\n\nOperational Qualification (OQ) — 操作確效\n┌─────────────────────────────────────────────────────┐\n│ 問：設備在規格範圍內是否穩定運行？                  │\n│ 做：最差案例（Worst Case）條件下測試，              │\n│     溫度分佈研究（Temperature Distribution Study）  │\n│     循環重現性（Cycle Reproducibility）測試          │\n│ 文件：OQ 報告、空載測試記錄、最差案例依據           │\n└─────────────────────────────────────────────────────┘\n              ↓ OQ 通過後進行\n\nPerformance Qualification (PQ) — 性能確效\n┌─────────────────────────────────────────────────────┐\n│ 問：在實際生產條件下，製程是否能持續生產符合要求的產品？│\n│ 做：使用實際產品在實際負載條件下執行，              │\n│     通常需要 3 次連續成功確效批次（3 consecutive runs）│\n│     生物指示劑結果、化學指示劑、無菌測試            │\n│ 文件：PQ 報告、批次記錄、統計分析                    │\n└─────────────────────────────────────────────────────┘\n              ↓ PQ 通過後方可量產放行\n\n驗收標準邏輯：IQ Pass AND OQ Pass AND PQ Pass → Process Validated",
+   "en": "Installation Qualification (IQ)\n┌─────────────────────────────────────────────────────┐\n│ Ask: Is the equipment installed correctly per design and to specification? │\n│ Do: Confirm equipment model/serial number, utility connections (power/gas/water), │\n│     instrument calibration status, safety interlock function tests │\n│ Documents: IQ report, equipment list, calibration certificates │\n└─────────────────────────────────────────────────────┘\n              ↓ Proceed after IQ passes\n\nOperational Qualification (OQ)\n┌─────────────────────────────────────────────────────┐\n│ Ask: Does the equipment operate consistently within the specified ranges? │\n│ Do: Test under worst-case conditions, │\n│     Temperature Distribution Study, │\n│     Cycle Reproducibility testing │\n│ Documents: OQ report, empty-chamber test records, worst-case rationale │\n└─────────────────────────────────────────────────────┘\n              ↓ Proceed after OQ passes\n\nPerformance Qualification (PQ)\n┌─────────────────────────────────────────────────────┐\n│ Ask: Under actual production conditions, can the process consistently produce product that meets requirements? │\n│ Do: Run with actual product under actual load conditions, │\n│     usually requiring 3 consecutive successful validation lots (3 consecutive runs), │\n│     biological indicator results, chemical indicators, sterility testing │\n│ Documents: PQ report, batch records, statistical analysis │\n└─────────────────────────────────────────────────────┘\n              ↓ Commercial release permitted only after PQ passes\n\nAcceptance logic: IQ Pass AND OQ Pass AND PQ Pass → Process Validated"
+  },
+  {
+   "zh": "重要陷阱：設計確認 ≠ 製程確效",
+   "en": "Key Pitfall: Design Validation ≠ Process Validation"
+  },
+  {
+   "zh": "兩個「確效/確認」概念必須嚴格區分，是 FDA 查廠中製造商最常混淆的概念：",
+   "en": "These two \"validation\" concepts must be strictly distinguished; they are the concepts manufacturers most often confuse in FDA inspections:"
+  },
+  {
+   "zh": "<strong>Design Validation（設計確認，§7.3.7）：</strong> 確認器材設計（產品本身）符合使用者需求。是<em>一次性</em>活動，在產品開發階段執行，結果存入 DHF。",
+   "en": "<strong>Design Validation (§7.3.7):</strong> Confirms that the device design (the product itself) meets user needs. It is a <em>one-time</em> activity, performed during product development, with results filed in the DHF."
+  },
+  {
+   "zh": "<strong>Process Validation（製程確效，§7.5.6）：</strong> 確認製造製程能持續、穩定地生產符合規格的產品。需要重複驗證（通常 3 批），且當製程發生重大變更時需要重新確效（Revalidation），結果存入 DMR/DHR。",
+   "en": "<strong>Process Validation (§7.5.6):</strong> Confirms that the manufacturing process can consistently and reliably produce product that meets specifications. It requires repeated demonstration (usually 3 lots) and revalidation when the process undergoes significant change, with results filed in the DMR/DHR."
+  },
+  {
+   "zh": "FDA 483 觀察項範例：「滅菌製程確效報告顯示僅執行一次確效批次，未符合三批連續成功的既定標準」、「製程確效報告中的接受標準（Acceptance Criteria）設定晚於確效執行，屬於事後設定（retrospective acceptance）」。",
+   "en": "Examples of FDA 483 observations: \"The sterilization process validation report shows that only one validation lot was executed, which does not meet the established criterion of three consecutive successful lots\" and \"The acceptance criteria in the process validation report were set after the validation was executed (retrospective acceptance).\""
+  },
+  {
+   "zh": "應用情境：CDMO 預充式注射劑組合產品",
+   "en": "Application Scenario: CDMO Prefilled Injectable Combination Product"
+  },
+  {
+   "zh": "<strong>情境：</strong> 一家合約製造組織（CDMO）承接一個預充式注射劑（Pre-filled Syringe, PFS）的填充-完成（Fill-Finish）服務。該 PFS 是藥械組合產品（combination product）：注射器是 Class II 醫療器材，藥物是生物製劑。器材製造商持有 510(k) 許可，藥物由另一家 Sponsor 持有 BLA。CDMO 僅負責無菌填充和最終包裝。",
+   "en": "<strong>Scenario:</strong> A contract development and manufacturing organization (CDMO) takes on fill-finish services for a prefilled syringe (PFS). The PFS is a combination product: the syringe is a Class II medical device and the drug is a biologic. The device manufacturer holds a 510(k) clearance, and the drug is held under a BLA by a separate Sponsor. The CDMO is responsible only for aseptic filling and final packaging."
+  },
+  {
+   "zh": "<strong>問題：哪些設計管控要求適用於 CDMO？</strong>",
+   "en": "<strong>Question: Which design control requirements apply to the CDMO?</strong>"
+  },
+  {
+   "zh": "<strong>設計管控（§7.3 / §820.30）：</strong> CDMO <em>不承擔器材設計管控責任</em>，因為 CDMO 不是器材設計的 Specification Developer。器材設計的 DHF 由器材製造商（或 Sponsor）保存。但 CDMO 有義務瞭解並實施設計輸出的規格（填充體積、密封完整性等）。",
+   "en": "<strong>Design controls (§7.3 / §820.30):</strong> The CDMO <em>does not bear device design control responsibility</em>, because the CDMO is not the Specification Developer of the device design. The DHF for the device design is held by the device manufacturer (or the Sponsor). However, the CDMO is obliged to understand and implement the specifications of the design outputs (fill volume, seal integrity, etc.)."
+  },
+  {
+   "zh": "<strong>製程確效（§7.5.6）：</strong> CDMO <strong>必須</strong>對無菌填充製程執行製程確效。根據 21 CFR Part 820（器材面）+ 21 CFR Part 211（藥品面），雙重要求均適用。確效協議（Protocol）必須事先獲得 Sponsor 核准。",
+   "en": "<strong>Process validation (§7.5.6):</strong> The CDMO <strong>must</strong> perform process validation of the aseptic filling process. Under 21 CFR Part 820 (device side) + 21 CFR Part 211 (drug side), both sets of requirements apply. The validation protocol must be approved by the Sponsor in advance."
+  },
+  {
+   "zh": "<strong>採購管制（§7.4）：</strong> CDMO 對其使用的一次性系統（single-use assemblies）、過濾器等關鍵耗材負有採購管制義務。",
+   "en": "<strong>Purchasing controls (§7.4):</strong> The CDMO has purchasing control obligations for the critical consumables it uses, such as single-use assemblies and filters."
+  },
+  {
+   "zh": "<strong>滅菌保證：</strong> 若最終滅菌由 CDMO 執行（例如：末端輻射滅菌），CDMO 依 FDA §820.3(o) 可被視為製造商，需符合完整的滅菌管控要求。若為無菌填充（Aseptic Processing），需有無菌工藝模擬（Media Fill）確效記錄，符合 PDA TR-22 及 FDA Aseptic Processing Guidance。",
+   "en": "<strong>Sterilization assurance:</strong> If terminal sterilization is performed by the CDMO (for example, terminal radiation sterilization), the CDMO may be regarded as a manufacturer under FDA §820.3(o) and must meet the full sterilization control requirements. For aseptic processing, there must be aseptic process simulation (media fill) validation records, consistent with PDA TR-22 and the FDA Aseptic Processing Guidance."
+  },
+  {
+   "zh": "<strong>雙重合規路徑：</strong> 對藥品成分，需符合 21 CFR Part 211；對器材成分，需符合 21 CFR Part 820。FDA 對組合產品的管轄依「主要作用模式（PMOA）」決定主管中心（CDER 或 CDRH），但兩套 GMP 均需滿足。",
+   "en": "<strong>Dual compliance pathway:</strong> The drug component must comply with 21 CFR Part 211, and the device component with 21 CFR Part 820. FDA determines the lead center (CDER or CDRH) for a combination product based on its primary mode of action (PMOA), but both sets of GMPs must be satisfied."
+  },
+  {
+   "zh": "<strong>結論：</strong> CDMO 在此情境中的主要義務集中在製程確效（§7.5.6）、採購管制（§7.4）、生產管制（§7.5.1）和滅菌記錄可追溯性（§7.5.5），而非器材設計管控。但 CDMO 必須充分理解器材設計輸出規格，並確保其製程不會破壞設計所建立的器材特性。",
+   "en": "<strong>Conclusion:</strong> The CDMO's main obligations in this scenario center on process validation (§7.5.6), purchasing controls (§7.4), production controls (§7.5.1), and traceability of sterilization records (§7.5.5), rather than device design controls. However, the CDMO must fully understand the device design output specifications and ensure that its process does not compromise the device characteristics established by the design."
+  },
+  {
+   "zh": "某 EO 滅菌設備完成安裝後，需要更換一個新品牌的 EO 氣罐供應商（不同純度規格）。這個變更需要觸發哪些確效活動？依據哪個 IQ/OQ/PQ 階段？",
+   "en": "After installation of an EO sterilization system is complete, the supplier of EO gas cylinders needs to be changed to a new brand (with a different purity specification). What validation activities does this change trigger? Under which IQ/OQ/PQ stage?"
+  },
+  {
+   "zh": "製程確效完成後，生產批次的生物指示劑（BI）測試結果偶發一次陽性（1/20 個 BI 陽性）。依據 §7.5.6 的再確效條款，應採取哪些行動？",
+   "en": "After process validation is complete, a production lot's biological indicator (BI) test shows a sporadic positive result (1 of 20 BIs positive). Under the revalidation provisions of §7.5.6, what actions should be taken?"
+  },
+  {
+   "zh": "填充-完成 CDMO 的無菌操作人員（Aseptic Operator）的培訓要求在 §7.5.1(g) 和 FDA 無菌操作規範下各有哪些？列舉至少三項。",
+   "en": "What are the training requirements for aseptic operators at a fill-finish CDMO under §7.5.1(g) and under FDA aseptic processing practice? List at least three."
+  },
+  {
+   "zh": "無菌醫療器材特殊要求",
+   "en": "Special Requirements for Sterile Medical Devices"
+  },
+  {
+   "zh": "對於無菌器材（Sterile Medical Devices），除一般生產管制外，§7.5.5 增加了以下特殊義務：",
+   "en": "For sterile medical devices, in addition to general production controls, §7.5.5 adds the following special obligations:"
+  },
+  {
+   "zh": "<strong>批次滅菌記錄可追溯性：</strong> 每個滅菌批次的參數記錄，必須可追溯回對應的器材生產批次（DHR）。這是 FDA 查廠的重點查驗項目。",
+   "en": "<strong>Traceability of lot sterilization records:</strong> The parameter records of each sterilization lot must be traceable back to the corresponding device production lot (DHR). This is a key item FDA inspectors verify."
+  },
+  {
+   "zh": "<strong>SAL 文件化：</strong> 無菌保證水準（Sterility Assurance Level, SAL ≤ 10⁻⁶）的達成依據必須文件化，包括生物負荷（Bioburden）數據和滅菌週期驗證。",
+   "en": "<strong>SAL documentation:</strong> The basis for achieving the Sterility Assurance Level (SAL ≤ 10⁻⁶) must be documented, including bioburden data and sterilization cycle validation."
+  },
+  {
+   "zh": "<strong>無菌標示（Sterile Label）：</strong> 器材標示上的「STERILE」或「STERILE EO」等標示，必須有對應的滅菌確效文件支撐。若器材在搬運或儲存過程中包裝破損，無菌狀態即受損，必須有明確的再處理或棄置程序。",
+   "en": "<strong>Sterile label:</strong> Labeling such as \"STERILE\" or \"STERILE EO\" on the device must be supported by corresponding sterilization validation documents. If the packaging is damaged during handling or storage, the sterile state is compromised, and there must be a clear reprocessing or disposal procedure."
+  },
+  {
+   "zh": "3.4 Identification &amp; Traceability — §7.5.3 / §7.5.4 + UDI（識別與可追溯性）",
+   "en": "3.4 Identification &amp; Traceability — §7.5.3 / §7.5.4 + UDI"
+  },
+  {
+   "zh": "識別 vs 可追溯性：關鍵差異",
+   "en": "Identification vs. Traceability: Key Differences"
+  },
+  {
+   "zh": "這兩個概念經常被混用，但在法規層面有明確分工：",
+   "en": "These two concepts are often used interchangeably, but there is a clear division between them at the regulatory level:"
+  },
+  {
+   "zh": "<strong>識別（Identification, §7.5.3）：</strong> 確保在生產各個階段，產品都有清楚的身份標識——「這個是什麼產品、處於哪個生產狀態（合格/待驗/隔離）」。這是實時管控，防止混批和誤用。",
+   "en": "<strong>Identification (§7.5.3):</strong> Ensures that at every stage of production the product carries a clear identity: \"what product this is and what production status it is in (accepted/quarantine/segregated).\" This is real-time control to prevent lot mix-ups and misuse."
+  },
+  {
+   "zh": "<strong>可追溯性（Traceability, §7.5.4）：</strong> 建立記錄系統，使得任何成品都可以<em>向後追溯</em>至所使用的原料批次、生產設備、操作人員；也可以<em>向前追蹤</em>至哪些客戶收到了這批器材。這是事後調查和召回管理的基礎。",
+   "en": "<strong>Traceability (§7.5.4):</strong> Establishes a record system so that any finished device can be <em>traced backward</em> to the raw material lots, production equipment, and operators used, and <em>tracked forward</em> to the customers who received that lot of devices. This is the basis for after-the-fact investigation and recall management."
+  },
+  {
+   "zh": "<strong>可植入器材（Implantable Devices）的最高標準：</strong> §820.65 和 §7.5.4 對可植入器材有最嚴格的可追溯性要求——每一個單品（unit-level）都必須有控制號碼，且可追溯至所有零件和供應商。",
+   "en": "<strong>The highest standard for implantable devices:</strong> §820.65 and §7.5.4 impose the strictest traceability requirements on implantable devices: every single unit (unit-level) must have a control number and be traceable to all components and suppliers."
+  },
+  {
+   "zh": "UDI 與召回管理的連結",
+   "en": "The Link Between UDI and Recall Management"
+  },
+  {
+   "zh": "UDI 系統的最終目的是提升器材安全，核心應用場景是<strong>精準召回（Targeted Recall）</strong>：",
+   "en": "The ultimate purpose of the UDI system is to improve device safety, and its core use case is the <strong>Targeted Recall</strong>:"
+  },
+  {
+   "zh": "在 UDI 普及前，若某批次器材存在安全問題，製造商可能需要召回所有同型號的所有批次——即使只有特定幾批有問題。有了 UDI 的 PI（批號/序號），可以精確識別並僅召回受影響批次，大幅降低召回範圍和成本，同時減少對患者的干擾。",
+   "en": "Before UDI was widespread, if a lot of devices had a safety problem, the manufacturer might have to recall every lot of the same model, even if only a few specific lots were affected. With the UDI PI (lot number/serial number), the affected lots can be precisely identified and recalled alone, greatly reducing the scope and cost of the recall and also lessening the disruption to patients."
+  },
+  {
+   "zh": "<strong>醫院資產管理的連動：</strong> FDA 同時要求醫院等醫療機構在患者記錄中記錄可植入器材的 UDI，形成「器材—患者」的雙向追蹤鏈。製造商的可追溯性系統必須能支援這個要求。",
+   "en": "<strong>Link to hospital asset management:</strong> FDA also expects hospitals and other healthcare facilities to record the UDI of implantable devices in patient records, forming a two-way \"device-patient\" tracking chain. The manufacturer's traceability system must be able to support this."
+  },
+  {
+   "zh": "一個可植入式膝關節假體（Class III）的某批次在客戶使用後發現潛在材料問題。製造商的可追溯性系統需要能夠查詢哪些信息才算符合 §820.65 的要求？",
+   "en": "A lot of an implantable knee prosthesis (Class III) is found to have a potential material problem after customer use. What information must the manufacturer's traceability system be able to retrieve in order to meet the requirements of §820.65?"
+  },
+  {
+   "zh": "某器材公司需要更新其 UDI 標示（因為更改了型號名稱）。這個標示變更是否屬於 §7.3.9 的設計變更（Design Change）？需要哪些程序批准步驟？",
+   "en": "A device company needs to update its UDI labeling (because the model name was changed). Is this labeling change a design change under §7.3.9? What approval steps are required?"
+  },
+  {
+   "zh": "UDI 系統：三個核心義務",
+   "en": "The UDI System: Three Core Obligations"
+  },
+  {
+   "zh": "UDI 系統是 FDA 近年推動的重大改革，對器材製造商有三個核心義務：",
+   "en": "The UDI system is a major reform FDA has pushed in recent years, and it places three core obligations on device manufacturers:"
+  },
+  {
+   "zh": "<strong>標示（Labeling）：</strong> 器材標示必須包含 UDI，格式為人眼可讀（HRI）+機器可讀（AIDC：條碼或 RFID）兩種。條碼格式通常使用 GS1 DataMatrix（2D條碼）或 GS1-128（線性條碼）。",
+   "en": "<strong>Labeling:</strong> The device label must include the UDI, in both a human-readable (HRI) form and a machine-readable (AIDC: barcode or RFID) form. The barcode format is usually GS1 DataMatrix (2D barcode) or GS1-128 (linear barcode)."
+  },
+  {
+   "zh": "<strong>資料庫申報（GUDID）：</strong> 製造商必須將器材的基本信息（DI 資訊、器材說明、是否含乳膠、是否無菌等）申報至 FDA GUDID（Global UDI Database）。這是公開可查詢的資料庫。",
+   "en": "<strong>Database submission (GUDID):</strong> The manufacturer must submit the device's basic information (DI information, device description, whether it contains latex, whether it is sterile, etc.) to the FDA GUDID (Global UDI Database). This is a publicly searchable database."
+  },
+  {
+   "zh": "<strong>記錄保存：</strong> DHR 必須包含每批次的 UDI 信息（DI + PI）。這將識別和可追溯性系統與 UDI 整合，形成完整的生命週期追蹤。",
+   "en": "<strong>Record keeping:</strong> The DHR must include the UDI information (DI + PI) for each lot. This integrates the identification and traceability system with UDI, forming complete lifecycle tracking."
+  },
+  {
+   "zh": "3.5 ISO 13485 §7 vs FDA QMSR Additions — Comparison Table（對照表）",
+   "en": "3.5 ISO 13485 §7 vs FDA QMSR Additions — Comparison Table"
+  },
+  {
+   "zh": "以下表格對比 ISO 13485:2016 §7（產品實現）各條款與 FDA QMSR（Appendix A）的額外要求。標記為 <span class=\"badge green\">ISO = FDA</span> 表示 FDA 完全採納 ISO 要求；<span class=\"badge red\">FDA adds</span> 表示 FDA 在 ISO 基礎上有額外強制要求；<span class=\"badge yellow\">ISO Optional</span> 表示 ISO 允許排除但 FDA 強制適用。",
+   "en": "The table below compares each clause of ISO 13485:2016 §7 (Product Realization) with the additional requirements of the FDA QMSR (Appendix A). A <span class=\"badge green\">ISO = FDA</span> marking means FDA fully adopts the ISO requirement; <span class=\"badge red\">FDA adds</span> means FDA has additional mandatory requirements on top of ISO; <span class=\"badge yellow\">ISO Optional</span> means ISO allows exclusion but FDA mandates application."
+  },
+  {
+   "zh": "本章摘要 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "Section 3 核心學習要點 Key Takeaways",
+   "en": "Section 3 Key Takeaways"
+  },
+  {
+   "zh": "<strong>3.1 設計管控（Design Controls）</strong>",
+   "en": "<strong>3.1 Design Controls</strong>"
+  },
+  {
+   "zh": "FDA QMSR 對 Class II/III 器材<strong>強制適用</strong>設計管控，ISO 13485 的排除條款在 FDA 框架下無效",
+   "en": "The FDA QMSR <strong>mandates</strong> design controls for Class II/III devices; the ISO 13485 exclusion clause is not valid under the FDA framework"
+  },
+  {
+   "zh": "瀑布模型：User Needs → Design Inputs → Design Outputs → Verification → Validation → Transfer → DMR",
+   "en": "Waterfall model: User Needs → Design Inputs → Design Outputs → Verification → Validation → Transfer → DMR"
+  },
+  {
+   "zh": "Verification（驗輸出符合輸入）≠ Validation（驗器材符合使用者需求），兩者均為強制要求",
+   "en": "Verification (confirming outputs meet inputs) ≠ Validation (confirming the device meets user needs); both are mandatory requirements"
+  },
+  {
+   "zh": "DHF 必須涵蓋完整設計歷程，包含或引用所有設計管控記錄",
+   "en": "The DHF must cover the complete design history, containing or referencing all design control records"
+  },
+  {
+   "zh": "<strong>3.2 採購管制（Purchasing Controls）</strong>",
+   "en": "<strong>3.2 Purchasing Controls</strong>"
+  },
+  {
+   "zh": "三層架構：供應商評估（ASL）→ 採購文件（PO/技術規格）→ 進貨查驗",
+   "en": "Three-tier structure: supplier evaluation (ASL) → purchasing documents (PO/technical specifications) → verification of purchased product"
+  },
+  {
+   "zh": "合約滅菌商屬於 FDA 定義下的「製造商」，滅菌確效記錄必須進入 DHR",
+   "en": "The contract sterilizer is a \"manufacturer\" as defined by FDA, and sterilization validation records must enter the DHR"
+  },
+  {
+   "zh": "供應商變更必須透過採購變更管控流程，可能觸發重新確效",
+   "en": "Supplier changes must go through the purchasing change control process and may trigger revalidation"
+  },
+  {
+   "zh": "<strong>3.3 生產與製程管制（Production &amp; Process Controls）</strong>",
+   "en": "<strong>3.3 Production &amp; Process Controls</strong>"
+  },
+  {
+   "zh": "製程確效（IQ → OQ → PQ）適用於所有「特殊製程」，尤其是滅菌、無菌填充",
+   "en": "Process validation (IQ → OQ → PQ) applies to all \"special processes,\" especially sterilization and aseptic filling"
+  },
+  {
+   "zh": "設計確認 ≠ 製程確效：前者存 DHF，後者存 DMR/DHR，各有不同目的和時機",
+   "en": "Design Validation ≠ Process Validation: the former is filed in the DHF and the latter in the DMR/DHR, each with a different purpose and timing"
+  },
+  {
+   "zh": "藥械組合產品：同時適用 Part 820（器材）+ Part 211（藥品），雙重合規缺一不可",
+   "en": "Drug-device combination products: Part 820 (device) + Part 211 (drug) both apply, and dual compliance is indispensable"
+  },
+  {
+   "zh": "無菌器材：每批滅菌記錄必須可追溯至產品批次，標示的「STERILE」必須有確效文件支撐",
+   "en": "Sterile devices: each lot's sterilization records must be traceable to the product lot, and the \"STERILE\" label must be supported by validation documents"
+  },
+  {
+   "zh": "<strong>3.4 識別與可追溯性（Identification &amp; Traceability）</strong>",
+   "en": "<strong>3.4 Identification &amp; Traceability</strong>"
+  },
+  {
+   "zh": "識別（§7.5.3）= 即時狀態標記；可追溯性（§7.5.4）= 事後記錄追查",
+   "en": "Identification (§7.5.3) = real-time status marking; traceability (§7.5.4) = after-the-fact record tracing"
+  },
+  {
+   "zh": "UDI（21 CFR Part 830）是 FDA 對 ISO 13485 的重大增補：DI（固定）+ PI（可變）",
+   "en": "UDI (21 CFR Part 830) is a major FDA addition to ISO 13485: DI (fixed) + PI (variable)"
+  },
+  {
+   "zh": "可植入器材需達到單品（unit）層級的可追溯性，直至患者病歷 UDI 記錄",
+   "en": "Implantable devices must achieve unit-level traceability, all the way to the UDI record in the patient's medical record"
+  },
+  {
+   "zh": "FDA 查廠重點提示",
+   "en": "FDA Inspection Focus Points"
+  },
+  {
+   "zh": "在與設計管控和產品實現相關的 FDA 查廠中，最常見的 483 觀察項包括：",
+   "en": "In FDA inspections related to design controls and product realization, the most common 483 observations include:"
+  },
+  {
+   "zh": "設計確認（Design Validation）未使用初始量產品，而是用工程樣品（Engineering Samples）",
+   "en": "Design Validation did not use initial production units but instead used Engineering Samples"
+  },
+  {
+   "zh": "設計驗證與確認混淆——僅執行技術規格測試，未在模擬使用條件下確認",
+   "en": "Confusion between design verification and validation: only technical specification tests were performed, with no confirmation under simulated use conditions"
+  },
+  {
+   "zh": "DHF 不完整——缺少設計審查記錄、設計變更記錄或風險管理文件",
+   "en": "Incomplete DHF: missing design review records, design change records, or risk management documents"
+  },
+  {
+   "zh": "供應商資格清單（ASL）過期未更新，或未涵蓋所有關鍵供應商",
+   "en": "The Approved Supplier List (ASL) is out of date or does not cover all critical suppliers"
+  },
+  {
+   "zh": "製程確效報告的接受標準「事後設定」（在確效數據出來後才決定標準）",
+   "en": "Acceptance criteria in process validation reports were set \"retrospectively\" (the criteria were decided only after the validation data were available)"
+  },
+  {
+   "zh": "UDI 未申報 GUDID，或 DHR 未記錄 UDI 批次信息",
+   "en": "UDI was not submitted to GUDID, or the DHR does not record UDI lot information"
+  }
+ ]
+}

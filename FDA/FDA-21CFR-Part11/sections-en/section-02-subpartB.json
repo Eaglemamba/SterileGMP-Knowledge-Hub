@@ -1,0 +1,449 @@
+{
+ "source": "section-02-subpartB.html",
+ "blocks": [
+  {
+   "zh": "Subpart B：電子記錄（封閉與開放系統）",
+   "en": "Subpart B: Electronic Records (Closed and Open Systems)"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "能夠逐一說明 §11.10 封閉系統 11 項控制要求，並解釋每項控制的合規實施方式",
+   "en": "Be able to explain each of the 11 closed-system controls in §11.10 and how to implement each one in a compliant way"
+  },
+  {
+   "zh": "深入理解 §11.10(e) 稽核追蹤的 8 個關鍵要素，識別常見 FDA 483 觀察缺失",
+   "en": "Gain an in-depth understanding of the 8 key elements of the §11.10(e) audit trail and recognize common FDA 483 observations"
+  },
+  {
+   "zh": "掌握 §11.10(a) 系統驗證（CSV）要求及 GAMP 5 框架的對應關係",
+   "en": "Master the §11.10(a) system validation (CSV) requirement and how it maps to the GAMP 5 framework"
+  },
+  {
+   "zh": "解釋 §11.30 開放系統的額外控制要求（加密、數位簽名）及其技術實施邏輯",
+   "en": "Explain the additional controls required for open systems under §11.30 (encryption, digital signatures) and the technical logic behind their implementation"
+  },
+  {
+   "zh": "<strong>2.1 §11.10 — Controls for Closed Systems: Overview of 11 Requirements 2.1 §11.10 — 封閉系統管制：11 項要求概覽</strong>",
+   "en": "<strong>2.1 §11.10 — Controls for Closed Systems: Overview of 11 Requirements</strong>"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念解析 Key Concepts",
+   "en": "Key Concepts"
+  },
+  {
+   "zh": "<strong>三個核心目標 (Authenticity + Integrity + Confidentiality)：</strong>",
+   "en": "<strong>Three core objectives (authenticity + integrity + confidentiality):</strong>"
+  },
+  {
+   "zh": "<strong>真實性 (Authenticity)：</strong> 確認記錄確實是聲稱建立者所建立的。電子簽名的身份驗證保障。",
+   "en": "<strong>Authenticity:</strong> Confirming that the record was in fact created by the person who claims to have created it. Assured by identity verification for electronic signatures."
+  },
+  {
+   "zh": "<strong>完整性 (Integrity)：</strong> 確認記錄自建立後未被竄改。稽核追蹤（§11.10e）和簽名連結（§11.70）保障。",
+   "en": "<strong>Integrity:</strong> Confirming that the record has not been tampered with since it was created. Assured by the audit trail (§11.10(e)) and signature/record linking (§11.70)."
+  },
+  {
+   "zh": "<strong>機密性 (Confidentiality)：</strong> 「適當時」才需要——並非所有記錄都需要保密。GMP 記錄通常不需要加密（封閉系統內），但含有商業機密或個人資料的記錄可能需要。",
+   "en": "<strong>Confidentiality:</strong> Required only \"when appropriate\"; not every record needs to be kept confidential. GMP records usually do not need encryption (within a closed system), but records containing trade secrets or personal data may."
+  },
+  {
+   "zh": "FDA 483 高風險控制項目",
+   "en": "High-Risk Controls for FDA 483 Observations"
+  },
+  {
+   "zh": "11 項控制中，FDA 查廠時最常觀察到缺失的（排名）：",
+   "en": "Of the 11 controls, the ones where FDA inspectors most often observe deficiencies (ranked):"
+  },
+  {
+   "zh": "1st: <strong>(e) 稽核追蹤</strong>——未啟用、不完整、可被修改",
+   "en": "1st: <strong>(e) Audit trail</strong>: not enabled, incomplete, or modifiable"
+  },
+  {
+   "zh": "2nd: <strong>(d) 存取控制</strong>——共用帳號、離職員工帳號未停用",
+   "en": "2nd: <strong>(d) Access control</strong>: shared accounts, accounts of departed employees not disabled"
+  },
+  {
+   "zh": "3rd: <strong>(a) 驗證</strong>——系統未驗證或驗證不足",
+   "en": "3rd: <strong>(a) Validation</strong>: system not validated or inadequately validated"
+  },
+  {
+   "zh": "4th: <strong>(j) 書面政策</strong>——無 SOP 定義電子簽名問責制",
+   "en": "4th: <strong>(j) Written policies</strong>: no SOP defining accountability for electronic signatures"
+  },
+  {
+   "zh": "5th: <strong>(i) 訓練</strong>——系統訓練記錄缺失或不完整",
+   "en": "5th: <strong>(i) Training</strong>: system training records missing or incomplete"
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "把 §11.10 的 11 項控制比作一棟安全建築的防護層：",
+   "en": "Think of the 11 controls in §11.10 as the layers of protection in a secure building:"
+  },
+  {
+   "zh": "(a) 驗證 = 建築結構安全檢驗（基礎）；(d) 存取 = 門禁卡系統；(e) 稽核追蹤 = 24 小時 CCTV 監控；(f) 操作順序 = 工作流程鎖定（不能跳步驟）；(g) 權限 = 不同區域不同授權；(j) 政策 = 員工行為準則手冊",
+   "en": "(a) Validation = structural safety inspection of the building (the foundation); (d) Access = the badge/door access system; (e) Audit trail = 24-hour CCTV monitoring; (f) Operational checks = workflow lock-in (steps cannot be skipped); (g) Authority checks = different authorizations for different areas; (j) Policies = the employee code-of-conduct handbook"
+  },
+  {
+   "zh": "<strong>2.2 §11.10(a) — Validation: Computer System Validation (CSV) 2.2 §11.10(a) — 驗證：電腦系統驗證（CSV）</strong>",
+   "en": "<strong>2.2 §11.10(a) — Validation: Computer System Validation (CSV)</strong>"
+  },
+  {
+   "zh": "<strong>為什麼需要驗證？</strong> §11.10(a) 要求系統能「辨識無效或被更改的記錄 (discern invalid or altered records)」——這意味著系統本身必須有足夠的可靠性，才能保證其中的記錄是可信的。一個未驗證的系統可能：(1) 計算錯誤而不報錯；(2) 允許記錄被修改而不留痕跡；(3) 在特定條件下失效，產生錯誤資料。",
+   "en": "<strong>Why is validation needed?</strong> §11.10(a) requires that the system be able to \"discern invalid or altered records\". This means the system itself must be reliable enough to ensure that the records in it can be trusted. An unvalidated system may: (1) calculate incorrectly without raising an error; (2) allow records to be modified without leaving a trace; (3) fail under certain conditions and produce erroneous data."
+  },
+  {
+   "zh": "<strong>Part 11 驗證重點：</strong> Part 11 特定的驗證測試腳本必須測試：",
+   "en": "<strong>Validation focus for Part 11:</strong> Part 11-specific validation test scripts must test whether:"
+  },
+  {
+   "zh": "稽核追蹤功能是否啟用且不可關閉",
+   "en": "The audit trail function is enabled and cannot be switched off"
+  },
+  {
+   "zh": "存取控制是否按角色正確限制",
+   "en": "Access control restricts users correctly by role"
+  },
+  {
+   "zh": "電子簽名顯示姓名、時間、意義",
+   "en": "Electronic signatures display name, date/time and meaning"
+  },
+  {
+   "zh": "記錄匯出是否完整、準確",
+   "en": "Record export is complete and accurate"
+  },
+  {
+   "zh": "備份恢復功能是否正常",
+   "en": "Backup and restore functions work properly"
+  },
+  {
+   "zh": "FDA 2003 指引：遺留系統驗證例外",
+   "en": "FDA 2003 Guidance: Validation Exception for Legacy Systems"
+  },
+  {
+   "zh": "FDA 在 2003 年指引中指出，對於 1997 年 8 月前已在使用、且以紙本為官方記錄的遺留系統，FDA 對 §11.10(a) 驗證要求行使「執法裁量 (enforcement discretion)」。但這個例外適用範圍非常窄——現代 CDMO 系統幾乎不可能符合這兩個條件。",
+   "en": "In its 2003 guidance, FDA stated that for legacy systems already in use before August 1997 and with paper as the official record, it exercises \"enforcement discretion\" regarding the §11.10(a) validation requirement. However, this exception is very narrow: a modern CDMO system will almost never meet both conditions."
+  },
+  {
+   "zh": "實務應用 Practical Application (CDMO Focus)",
+   "en": "Practical Application (CDMO Focus)"
+  },
+  {
+   "zh": "<strong>Amaran Biotech LIMS 驗證策略（GAMP 4 類系統）：</strong>",
+   "en": "<strong>Amaran Biotech LIMS validation strategy (GAMP Category 4 system):</strong>"
+  },
+  {
+   "zh": "1. URS 撰寫：列出所有 Part 11 要求（稽核追蹤、存取控制、電子簽名等）作為使用者需求",
+   "en": "1. URS: write up all Part 11 requirements (audit trail, access control, electronic signatures, etc.) as user requirements"
+  },
+  {
+   "zh": "2. 供應商評估：審查 LIMS 供應商的 GAMP 文件套件（DQ、IQ/OQ 協議模板）",
+   "en": "2. Vendor assessment: review the LIMS vendor's GAMP documentation package (DQ, IQ/OQ protocol templates)"
+  },
+  {
+   "zh": "3. IQ：確認安裝正確、版本符合規格、授權文件完整",
+   "en": "3. IQ: confirm correct installation, that the version meets specification, and that licensing documents are complete"
+  },
+  {
+   "zh": "4. OQ：測試所有 Part 11 功能（稽核追蹤、存取控制、電子簽名、匯出功能）",
+   "en": "4. OQ: test all Part 11 functions (audit trail, access control, electronic signatures, export function)"
+  },
+  {
+   "zh": "5. PQ：在實際工作流程中驗證系統效能（用真實 QC 測試流程執行）",
+   "en": "5. PQ: verify system performance in the actual workflow (run real QC testing processes)"
+  },
+  {
+   "zh": "6. 發布系統使用（System Release）並建立持續監控計畫",
+   "en": "6. Release the system for use (System Release) and establish a continuous monitoring plan"
+  },
+  {
+   "zh": "<strong>2.3 §11.10(e) — Audit Trails: The Most Critical Part 11 Requirement 2.3 §11.10(e) — 稽核軌跡：Part 11 最關鍵的要求</strong>",
+   "en": "<strong>2.3 §11.10(e) — Audit Trails: The Most Critical Part 11 Requirement</strong>"
+  },
+  {
+   "zh": "稽核追蹤最常見 FDA 483 缺失",
+   "en": "Most Common FDA 483 Deficiencies on Audit Trails"
+  },
+  {
+   "zh": "<strong>1. 稽核追蹤未啟用：</strong> 「Audit trail functionality was not enabled on [system].」系統有稽核追蹤功能，但被管理員或廠商預設關閉。",
+   "en": "<strong>1. Audit trail not enabled:</strong> \"Audit trail functionality was not enabled on [system].\" The system has an audit trail function, but it was switched off by default by the administrator or the vendor."
+  },
+  {
+   "zh": "<strong>2. 只記錄新值，不記錄舊值：</strong> 「The audit trail does not capture the original value prior to change.」系統只顯示修改後的值，無法追蹤原始數據。",
+   "en": "<strong>2. Only new values recorded, not old values:</strong> \"The audit trail does not capture the original value prior to change.\" The system shows only the modified value and the original data cannot be traced."
+  },
+  {
+   "zh": "<strong>3. 未記錄刪除操作：</strong> 「Deleted records are not captured in the audit trail.」有人刪除了記錄，但稽核追蹤沒有記錄。",
+   "en": "<strong>3. Deletions not recorded:</strong> \"Deleted records are not captured in the audit trail.\" Someone deleted a record, but the audit trail does not show it."
+  },
+  {
+   "zh": "<strong>4. 缺少修改原因：</strong> 「Reason for change not required when modifying electronic records.」系統允許無理由修改。",
+   "en": "<strong>4. Reason for change missing:</strong> \"Reason for change not required when modifying electronic records.\" The system allows changes without a reason."
+  },
+  {
+   "zh": "<strong>5. 稽核追蹤可被使用者修改：</strong> 「Non-administrative users have the ability to modify audit trail entries.」",
+   "en": "<strong>5. Audit trail can be modified by users:</strong> \"Non-administrative users have the ability to modify audit trail entries.\""
+  },
+  {
+   "zh": "<strong>6. 稽核追蹤未定期審查：</strong> 「No procedure for periodic review of audit trail records as part of quality oversight.」",
+   "en": "<strong>6. Audit trail not reviewed periodically:</strong> \"No procedure for periodic review of audit trail records as part of quality oversight.\""
+  },
+  {
+   "zh": "稽核追蹤就像銀行的「交易歷史記錄」。你的銀行帳戶每一筆存款、提款、轉帳都有自動記錄（computer-generated）、時間戳記（time-stamped），你無法修改或刪除這些記錄（secure）。如果有爭議，銀行可以提供完整的交易歷史（available for review）。GMP 電子記錄的稽核追蹤就是這個邏輯——只不過管的是製藥操作，而非金融交易。",
+   "en": "An audit trail is like a bank's \"transaction history\". Every deposit, withdrawal and transfer in your bank account is recorded automatically (computer-generated) and time-stamped, and you cannot modify or delete these records (secure). In a dispute, the bank can provide the complete transaction history (available for review). The audit trail of a GMP electronic record follows the same logic, except that it governs pharmaceutical operations rather than financial transactions."
+  },
+  {
+   "zh": "稽核追蹤查廠演練",
+   "en": "Audit Trail Inspection Drill"
+  },
+  {
+   "zh": "<strong>場景：</strong> FDA 查廠官員要求查看批次 #AMB-2026-0411 的 eBR 稽核追蹤。",
+   "en": "<strong>Scenario:</strong> An FDA investigator asks to see the eBR audit trail for batch #AMB-2026-0411."
+  },
+  {
+   "zh": "<strong>你應該能展示：</strong>",
+   "en": "<strong>You should be able to show:</strong>"
+  },
+  {
+   "zh": "每個輸入欄位的原始值（由誰輸入，何時輸入）",
+   "en": "The original value of each input field (who entered it and when)"
+  },
+  {
+   "zh": "所有修改記錄（舊值、新值、修改者、修改時間、修改原因）",
+   "en": "All modification records (old value, new value, who changed it, when, and the reason for change)"
+  },
+  {
+   "zh": "所有電子簽名記錄（簽名者姓名、時間、簽名意義）",
+   "en": "All electronic signature records (signer's name, date/time, meaning of the signature)"
+  },
+  {
+   "zh": "任何嘗試但失敗的操作（拒絕訪問記錄）",
+   "en": "Any attempted but failed operations (access denied records)"
+  },
+  {
+   "zh": "管理員操作記錄（系統設定變更）",
+   "en": "Administrator action records (system configuration changes)"
+  },
+  {
+   "zh": "<strong>你應該能匯出這些記錄為 PDF 或 CSV，供查廠官員帶走複製。</strong>",
+   "en": "<strong>You should be able to export these records as PDF or CSV so the investigator can take a copy away.</strong>"
+  },
+  {
+   "zh": "<strong>2.4 §11.10(d) &amp; (g) — Access Controls and Authority Checks 2.4 §11.10(d) &amp; (g) — 存取管制與權限查核</strong>",
+   "en": "<strong>2.4 §11.10(d) &amp; (g) — Access Controls and Authority Checks</strong>"
+  },
+  {
+   "zh": "共用帳號（Shared Account）是系統性問題",
+   "en": "Shared Accounts Are a Systemic Problem"
+  },
+  {
+   "zh": "當 FDA 查廠發現共用帳號時，這不只是 Part 11 §11.10(d) 問題，而是觸發多個合規問題的多米諾骨牌：",
+   "en": "When an FDA inspection finds shared accounts, it is not just a Part 11 §11.10(d) problem but a domino effect that triggers multiple compliance issues:"
+  },
+  {
+   "zh": "→ §11.100(a)：電子簽名不是個人唯一的",
+   "en": "→ §11.100(a): the electronic signature is not unique to one individual"
+  },
+  {
+   "zh": "→ §11.50：簽名無法識別真實簽名者（違反「印刷姓名」要求）",
+   "en": "→ §11.50: the signature cannot identify the actual signer (violating the \"printed name\" requirement)"
+  },
+  {
+   "zh": "→ ALCOA Attributable：記錄無法歸屬到個人",
+   "en": "→ ALCOA Attributable: the record cannot be attributed to an individual"
+  },
+  {
+   "zh": "→ 21 CFR 211.68：操作人員責任不明",
+   "en": "→ 21 CFR 211.68: responsibility of the operator is unclear"
+  },
+  {
+   "zh": "FDA 通常將共用帳號觀察提升為「資料完整性缺陷」，可能導致 Warning Letter。",
+   "en": "FDA usually elevates a shared account observation to a \"data integrity deficiency\", which may lead to a Warning Letter."
+  },
+  {
+   "zh": "存取控制 vs 權限控制的差別",
+   "en": "The Difference Between Access Control and Authority Control"
+  },
+  {
+   "zh": "<strong>§11.10(d) 存取控制：</strong> 「你能不能進入這個系統？」的問題。就像大樓門禁——你有沒有門卡。",
+   "en": "<strong>§11.10(d) access control:</strong> The question of \"Can you get into this system?\" Like building access: do you have a badge?"
+  },
+  {
+   "zh": "<strong>§11.10(g) 權限控制：</strong> 「進入系統後，你被允許做哪些操作？」的問題。就像大樓裡不同樓層需要不同的授權等級——普通員工可以去辦公室，但不能進伺服器機房、不能進財務室。",
+   "en": "<strong>§11.10(g) authority checks:</strong> The question of \"Once inside the system, which operations are you allowed to perform?\" Like the different floors in a building requiring different levels of authorization: ordinary employees can go to the offices, but cannot enter the server room or the finance office."
+  },
+  {
+   "zh": "GMP 系統中的典型權限分層：",
+   "en": "Typical Authority Tiers in a GMP System:"
+  },
+  {
+   "zh": "<strong>2.5 §11.10(b)(c)(f)(h)(i)(j)(k) — Remaining Controls 2.5 §11.10(b)(c)(f)(h)(i)(j)(k) — 其餘管制要求</strong>",
+   "en": "<strong>2.5 §11.10(b)(c)(f)(h)(i)(j)(k) — Remaining Controls</strong>"
+  },
+  {
+   "zh": "§11.10(b) 可讀副本的查廠意涵",
+   "en": "Inspection Implications of §11.10(b) Readable Copies"
+  },
+  {
+   "zh": "FDA 查廠時，查廠官員有權要求「一份批次記錄的完整、準確副本」帶走。§11.10(b) 要求你的系統能夠：",
+   "en": "During an FDA inspection, the investigator is entitled to ask for \"accurate and complete copies\" of a batch record to take away. §11.10(b) requires your system to be able to:"
+  },
+  {
+   "zh": "即時匯出完整批次記錄（包含所有欄位、圖表、附件）",
+   "en": "Immediately export the complete batch record (including all fields, charts and attachments)"
+  },
+  {
+   "zh": "以 FDA 能閱讀的格式（PDF、紙本列印）提供",
+   "en": "Provide it in a format FDA can read (PDF, paper printout)"
+  },
+  {
+   "zh": "確保匯出副本與系統內原始記錄完全一致（不遺漏任何稽核追蹤條目）",
+   "en": "Ensure the exported copy is fully consistent with the original record in the system (without omitting any audit trail entry)"
+  },
+  {
+   "zh": "常見問題：系統匯出的 PDF 缺少稽核追蹤頁，或格式無法完整顯示所有欄位。這些都會被 FDA 標記為 §11.10(b) 缺失。",
+   "en": "Common problem: the PDF exported by the system lacks the audit trail pages, or the format cannot display all fields completely. FDA will flag all of these as §11.10(b) deficiencies."
+  },
+  {
+   "zh": "§11.10(c) 記錄保護與備份策略",
+   "en": "§11.10(c) Record Protection and Backup Strategy"
+  },
+  {
+   "zh": "記錄保護需要涵蓋整個「保留期間 (retention period)」。保留期限由 predicate rule 設定：",
+   "en": "Record protection must cover the entire \"retention period\". The retention period is set by the predicate rule:"
+  },
+  {
+   "zh": "藥品批次記錄（§211.180）：效期後至少 1 年，最低 3 年",
+   "en": "Drug product batch records (§211.180): at least 1 year after the expiration date, with a minimum of 3 years"
+  },
+  {
+   "zh": "生物製品批次記錄：效期後 10 年或更長",
+   "en": "Biologics batch records: 10 years or longer after the expiration date"
+  },
+  {
+   "zh": "驗證文件：系統使用期間 + 退役後若干年",
+   "en": "Validation documents: the period the system is in use + a number of years after retirement"
+  },
+  {
+   "zh": "保護措施：定期備份（每日增量 + 每週完整）、異地備份（災難恢復）、備份測試（每季驗證恢復能力）、儲存媒介管理（預防磁碟老化）。",
+   "en": "Protective measures: regular backups (daily incremental + weekly full), offsite backup (disaster recovery), backup testing (quarterly verification of restore capability), and storage media management (preventing media degradation)."
+  },
+  {
+   "zh": "§11.10(f) 操作順序控制 — eBR 的關鍵功能",
+   "en": "§11.10(f) Operational System Checks: A Key eBR Function"
+  },
+  {
+   "zh": "在電子批次記錄中，操作順序控制確保製程步驟按正確順序執行。這是電子系統相比紙本的重要優勢：紙本批次記錄可以被操作員提前簽名，但 eBR 系統可以技術上強制「步驟 A 完成且簽名，才能開啟步驟 B」。這直接防止了回填簽名（backdating）問題。",
+   "en": "In an electronic batch record, operational system checks ensure that process steps are executed in the correct sequence. This is an important advantage of electronic systems over paper: on a paper batch record, an operator can sign ahead of time, whereas an eBR system can technically enforce \"step B can be opened only after step A is completed and signed\". This directly prevents the problem of backdating signatures."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "§11.10(h) 裝置檢查對儀器需要做到什麼程度？這與儀器校驗（Calibration）有何關係？",
+   "en": "How far must the §11.10(h) device checks go for instruments? How does this relate to instrument calibration?"
+  },
+  {
+   "zh": "§11.10(j) 書面政策 SOP 中，應該包含哪些關於電子簽名的具體條款？",
+   "en": "What specific clauses on electronic signatures should the §11.10(j) written policy SOP contain?"
+  },
+  {
+   "zh": "<strong>2.6 §11.30 — Controls for Open Systems 2.6 §11.30 — 開放系統管制</strong>",
+   "en": "<strong>2.6 §11.30 — Controls for Open Systems</strong>"
+  },
+  {
+   "zh": "開放系統額外控制的技術實施",
+   "en": "Technical Implementation of the Additional Open System Controls"
+  },
+  {
+   "zh": "<strong>文件加密 (Document Encryption)：</strong>",
+   "en": "<strong>Document encryption:</strong>"
+  },
+  {
+   "zh": "傳輸中加密（in transit）：TLS 1.2+ / HTTPS。瀏覽器的「掛鎖圖示」即表示 TLS 加密。所有 SaaS GMP 系統應強制使用 HTTPS。",
+   "en": "Encryption in transit: TLS 1.2+ / HTTPS. The browser's \"padlock icon\" indicates TLS encryption. All SaaS GMP systems should enforce HTTPS."
+  },
+  {
+   "zh": "靜態加密（at rest）：AES-256 對儲存的記錄加密。當資料庫被未授權存取時，無法讀取加密內容。",
+   "en": "Encryption at rest: AES-256 encryption of stored records. If the database is accessed without authorization, the encrypted content cannot be read."
+  },
+  {
+   "zh": "<strong>數位簽名標準 (Digital Signature Standards)：</strong>",
+   "en": "<strong>Digital signature standards:</strong>"
+  },
+  {
+   "zh": "FDA 認可的標準包括 FIPS 140-2 驗證的密碼模組、RSA/ECDSA 簽名算法。數位簽名將特定的簽名者公鑰和文件內容綁定——任何對文件的修改都會使簽名驗證失敗，提供技術上的完整性保障。",
+   "en": "FDA-recognized standards include FIPS 140-2 validated cryptographic modules and RSA/ECDSA signature algorithms. A digital signature binds the signer's specific public key to the content of the document: any modification to the document causes signature verification to fail, providing a technical assurance of integrity."
+  },
+  {
+   "zh": "§11.30 vs §11.10：不是替代，是疊加",
+   "en": "§11.30 vs §11.10: Cumulative, Not a Replacement"
+  },
+  {
+   "zh": "許多人誤以為開放系統只需要「加密和數位簽名」而不需要 §11.10 的其他控制。這是錯誤的。§11.30 的原文是：「shall include those identified in §11.10, as appropriate, and <strong>additional</strong> measures」——即 §11.10 的 11 項控制仍然適用，§11.30 再加上加密和數位簽名。",
+   "en": "Many people mistakenly think an open system needs only \"encryption and digital signatures\" and not the other §11.10 controls. This is wrong. The text of §11.30 reads: \"shall include those identified in §11.10, as appropriate, and <strong>additional</strong> measures\". That is, the 11 controls in §11.10 still apply, and §11.30 adds encryption and digital signatures on top."
+  },
+  {
+   "zh": "<strong>雲端 LIMS（開放系統）合規策略：</strong>",
+   "en": "<strong>Compliance strategy for a cloud LIMS (open system):</strong>"
+  },
+  {
+   "zh": "1. 確認 SaaS 供應商提供 TLS 加密傳輸（HTTPS）",
+   "en": "1. Confirm the SaaS vendor provides TLS-encrypted transmission (HTTPS)"
+  },
+  {
+   "zh": "2. 確認靜態資料加密（at-rest encryption，通常 AES-256）",
+   "en": "2. Confirm encryption of data at rest (at-rest encryption, usually AES-256)"
+  },
+  {
+   "zh": "3. 確認供應商的 SOC 2 Type II 報告涵蓋存取控制、加密和稽核追蹤",
+   "en": "3. Confirm the vendor's SOC 2 Type II report covers access control, encryption and audit trails"
+  },
+  {
+   "zh": "4. 評估系統分類（是否為開放系統）並在 URS 和風險評估中記錄",
+   "en": "4. Assess the system classification (whether it is an open system) and document it in the URS and risk assessment"
+  },
+  {
+   "zh": "5. 在 SLA/合約中明確供應商的 Part 11 相關責任",
+   "en": "5. Define the vendor's Part 11-related responsibilities explicitly in the SLA/contract"
+  },
+  {
+   "zh": "6. 補充 OQ/PQ 測試開放系統特定功能（加密連線、簽名完整性驗證）",
+   "en": "6. Supplement OQ/PQ with tests of open system-specific functions (encrypted connection, signature integrity verification)"
+  },
+  {
+   "zh": "本章重點總結",
+   "en": "Chapter Summary"
+  },
+  {
+   "zh": "<strong>§11.10(e) 稽核追蹤是 Part 11 最核心要求：</strong> 必須電腦產生、時間戳記、安全不可竄改、記錄建立/修改/刪除操作、保留舊值與新值、保留期間同主記錄、可供 FDA 審查複製。任何缺失都是高風險 FDA 483 觀察。",
+   "en": "<strong>The §11.10(e) audit trail is the core Part 11 requirement:</strong> It must be computer-generated, time-stamped, secure and tamper-proof, record create/modify/delete operations, retain old and new values, be retained for as long as the subject record, and be available for FDA review and copying. Any gap is a high-risk FDA 483 observation."
+  },
+  {
+   "zh": "<strong>§11.10(a) 驗證是合規基礎：</strong> 未驗證的系統無法確保記錄的準確性和可靠性。使用 GAMP 5 框架，LIMS/eBR/SCADA 等 CDMO 核心系統均屬 Category 4，需完整 IQ/OQ/PQ。",
+   "en": "<strong>§11.10(a) validation is the foundation of compliance:</strong> An unvalidated system cannot ensure the accuracy and reliability of its records. Under the GAMP 5 framework, core CDMO systems such as LIMS/eBR/SCADA are all Category 4 and require full IQ/OQ/PQ."
+  },
+  {
+   "zh": "<strong>共用帳號是根本性違規：</strong> 違反 §11.10(d) 存取控制 + §11.100(a) 簽名唯一性，同時是 ALCOA Attributable 的嚴重缺失，可能升級為 Warning Letter 層級。",
+   "en": "<strong>Shared accounts are a fundamental violation:</strong> They violate §11.10(d) access control + §11.100(a) signature uniqueness, and are also a serious ALCOA Attributable failure that may escalate to Warning Letter level."
+  },
+  {
+   "zh": "<strong>開放系統需要疊加控制：</strong> §11.30 = §11.10 的全部 11 項控制 + 加密 + 數位簽名。保護記錄在公共網路傳輸過程中的機密性和完整性。",
+   "en": "<strong>Open systems need cumulative controls:</strong> §11.30 = all 11 controls of §11.10 + encryption + digital signatures. This protects the confidentiality and integrity of records transmitted over public networks."
+  }
+ ]
+}
