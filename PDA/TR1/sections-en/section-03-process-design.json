@@ -1,0 +1,425 @@
+{
+ "source": "section-03-process-design.html",
+ "blocks": [
+  {
+   "zh": "製程開發：設計方法與負載類型",
+   "en": "Process Development: Design Approaches and Load Types"
+  },
+  {
+   "zh": "Learning Objectives / 學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "Distinguish between overkill and product-specific design approaches and know when to apply each. / 區別過度殺滅與產品特定設計方法，並了解各自的適用時機。",
+   "en": "Distinguish between overkill and product-specific design approaches and know when to apply each."
+  },
+  {
+   "zh": "Classify a sterilization load as porous/hard goods or liquid and explain the implications for process selection. / 將滅菌負載分類為多孔/硬質器具或液體，並解釋對製程選擇的影響。",
+   "en": "Classify a sterilization load as porous/hard goods or liquid and explain the implications for process selection."
+  },
+  {
+   "zh": "Compare gravity displacement and pre-vacuum (SFPP) saturated steam cycles. / 比較重力置換與前真空飽和蒸汽週期。",
+   "en": "Compare gravity displacement and pre-vacuum (SFPP) saturated steam cycles."
+  },
+  {
+   "zh": "Explain the role of air overpressure in liquid-container sterilization and contrast SAM vs. superheated water processes. / 說明空氣過壓在液體容器滅菌中的作用，比較蒸汽-空氣混合法與過熱水法。",
+   "en": "Explain the role of air overpressure in liquid-container sterilization and contrast SAM vs. superheated water processes."
+  },
+  {
+   "zh": "Apply the semilogarithmic survivor curve equation to calculate minimum F<sub>0</sub> for both design approaches. / 應用半對數存活曲線方程式計算兩種設計方法的最低 F₀。",
+   "en": "Apply the semilogarithmic survivor curve equation to calculate minimum F<sub>0</sub> for both design approaches."
+  },
+  {
+   "zh": "Section Contents / 本節目錄",
+   "en": "Section Contents"
+  },
+  {
+   "zh": "Sterilization Process Development / 滅菌製程開發",
+   "en": "Sterilization Process Development"
+  },
+  {
+   "zh": "中文解說：製程開發框架",
+   "en": "Commentary: Process Development Framework"
+  },
+  {
+   "zh": "製程開發的核心目標是建立符合<strong>設計需求</strong>的滅菌製程。PDA TR1 提供了一個決策樹（Figure 4.0-1），幫助使用者依產品特性系統性地選擇適合的設計方法與製程類型。",
+   "en": "The core goal of process development is to establish a sterilization process that meets the <strong>design requirements</strong>. PDA TR1 provides a decision tree (Figure 4.0-1) that helps users systematically select the appropriate design approach and process type based on product characteristics."
+  },
+  {
+   "zh": "決策樹三個核心問題",
+   "en": "Three Key Questions in the Decision Tree"
+  },
+  {
+   "zh": "<strong>產品是否熱敏感？</strong>決定設計方法（過度殺滅 vs. 產品特定）",
+   "en": "<strong>Is the product heat sensitive?</strong> This determines the design approach (overkill vs. product-specific)."
+  },
+  {
+   "zh": "<strong>負載類型是什麼？</strong>多孔/硬質器具 vs. 密封液體容器",
+   "en": "<strong>What is the load type?</strong> Porous/hard goods vs. sealed liquid containers."
+  },
+  {
+   "zh": "<strong>容器是否需要空氣過壓？</strong>決定使用飽和蒸汽 vs. 空氣過壓製程",
+   "en": "<strong>Do the containers need air overpressure?</strong> This determines whether a saturated steam or an air overpressure process is used."
+  },
+  {
+   "zh": "實際情境比喻",
+   "en": "Real-Life Analogy"
+  },
+  {
+   "zh": "就像在點餐前先問「你吃素嗎？」一樣——TR1 的決策樹先問「產品耐熱嗎？」，才能決定後續的所有製程參數選擇。跳過這個問題，後面的設計全部白費。",
+   "en": "It is like asking \"Are you vegetarian?\" before taking a food order. The TR1 decision tree first asks \"Can the product tolerate heat?\", because every later choice of process parameters depends on the answer. Skip this question and all the downstream design work is wasted."
+  },
+  {
+   "zh": "Design Approaches / 設計方法",
+   "en": "Design Approaches"
+  },
+  {
+   "zh": "中文解說：兩大設計方法比較",
+   "en": "Commentary: Comparing the Two Design Approaches"
+  },
+  {
+   "zh": "生活比喻",
+   "en": "Analogy"
+  },
+  {
+   "zh": "過度殺滅法像「全部用最高溫洗碗機洗」——簡單省事，但玻璃杯可能碎裂。產品特定法像「依材質選溫度」——需要更多資訊，但能保護精細物品。",
+   "en": "The overkill approach is like washing everything in the dishwasher at the highest temperature: simple and easy, but glassware may crack. The product-specific approach is like choosing the temperature by material: it needs more information, but it protects delicate items."
+  },
+  {
+   "zh": "Survivor Curve in Cycle Design / 存活曲線應用",
+   "en": "Survivor Curve in Cycle Design"
+  },
+  {
+   "zh": "中文解說：存活曲線與 F₀ 計算",
+   "en": "Commentary: Survivor Curve and F₀ Calculation"
+  },
+  {
+   "zh": "半對數存活曲線方程式是 TR1 滅菌設計的數學核心。兩種設計方法均使用同一條方程式，差異僅在於 N₀ 和 D<sub>T</sub> 的假設值。",
+   "en": "The semilogarithmic survivor curve equation is the mathematical core of TR1 sterilization design. Both design approaches use the same equation; they differ only in the assumed values of N₀ and D<sub>T</sub>."
+  },
+  {
+   "zh": "關鍵參數說明",
+   "en": "Key Parameters"
+  },
+  {
+   "zh": "<strong>N₀（初始菌數）</strong>：過度殺滅法假設 10⁶；產品特定法用實測值",
+   "en": "<strong>N₀ (initial microbial count):</strong> The overkill approach assumes 10⁶; the product-specific approach uses measured values."
+  },
+  {
+   "zh": "<strong>N<sub>F</sub>（目標菌數）</strong>：兩種方法均以 10⁻⁶ 為目標（PNSU ≤ 10⁻⁶）",
+   "en": "<strong>N<sub>F</sub> (target microbial count):</strong> Both approaches target 10⁻⁶ (PNSU ≤ 10⁻⁶)."
+  },
+  {
+   "zh": "<strong>D<sub>T</sub>（十進制殺滅時間）</strong>：在指定溫度下殺滅 90% 微生物所需時間",
+   "en": "<strong>D<sub>T</sub> (decimal reduction time):</strong> The time required at a given temperature to kill 90% of the microorganisms."
+  },
+  {
+   "zh": "<strong>F₀（121°C 等效殺菌分鐘數）</strong>：綜合殺菌效力指標",
+   "en": "<strong>F₀ (equivalent sterilization minutes at 121°C):</strong> A composite measure of lethality."
+  },
+  {
+   "zh": "PNSU 的意義",
+   "en": "Meaning of PNSU"
+  },
+  {
+   "zh": "PNSU（Probability of a Non-Sterile Unit，非無菌單位機率）= 10⁻⁶ 意謂每百萬件產品中，預期不超過一件非無菌品。這是全球公認的無菌保證標準。",
+   "en": "PNSU (Probability of a Non-Sterile Unit) = 10⁻⁶ means that no more than one non-sterile unit is expected per million units of product. This is the globally accepted standard of sterility assurance."
+  },
+  {
+   "zh": "Overkill Design Approach / 過度殺滅設計方法",
+   "en": "Overkill Design Approach"
+  },
+  {
+   "zh": "中文解說：過度殺滅方法詳解",
+   "en": "Commentary: The Overkill Approach in Detail"
+  },
+  {
+   "zh": "過度殺滅法採用「最壞情況假設」——假設初始菌數高達 10⁶ 個，且 D 值高達 1 分鐘（遠超過大多數自然環境微生物的實際 D 值 &lt;0.5 分鐘）。",
+   "en": "The overkill approach applies \"worst-case assumptions\": an initial microbial count as high as 10⁶ and a D-value as high as 1 minute (well above the actual D-values of most environmental microorganisms, which are &lt;0.5 minutes)."
+  },
+  {
+   "zh": "過度殺滅法核心特點",
+   "en": "Key Features of the Overkill Approach"
+  },
+  {
+   "zh": "<strong>最低 F₀ 要求：12 分鐘</strong>（PDA 計算值）",
+   "en": "<strong>Minimum F₀ requirement: 12 minutes</strong> (PDA calculated value)"
+  },
+  {
+   "zh": "<strong>EU 法規定義：121°C × 15 分鐘</strong>（更保守）",
+   "en": "<strong>EU regulatory definition: 121°C × 15 minutes</strong> (more conservative)"
+  },
+  {
+   "zh": "無需例行生物負載監測（worst-case assumptions 已內建）",
+   "en": "No routine bioburden monitoring is needed (worst-case assumptions are built in)."
+  },
+  {
+   "zh": "適用：耐熱器具、硬質材料、多孔負載",
+   "en": "Suitable for: heat-resistant instruments, hard goods, porous loads."
+  },
+  {
+   "zh": "不適用：熱敏感藥品（會造成降解）",
+   "en": "Not suitable for: heat-sensitive drug products (degradation would result)."
+  },
+  {
+   "zh": "PDA vs. EU 標準差異",
+   "en": "PDA vs. EU Standard Differences"
+  },
+  {
+   "zh": "PDA 計算最低 F₀ 為 12 分鐘，EU 法規要求 121°C/15 分鐘。實務上多數設施採用 121°C/15 分鐘以同時符合兩個標準，並留有安全餘裕。",
+   "en": "PDA calculates a minimum F₀ of 12 minutes, while EU regulations require 121°C/15 minutes. In practice, most facilities adopt 121°C/15 minutes to satisfy both standards while retaining a safety margin."
+  },
+  {
+   "zh": "比喻說明",
+   "en": "Analogy"
+  },
+  {
+   "zh": "過度殺滅法就像「不管衣服多髒，統一用 95°C 洗」——假設最髒的情況來設計程序，洗完必定乾淨，但棉質衣物可能縮水。",
+   "en": "The overkill approach is like \"washing every garment at 95°C no matter how dirty it is\": the procedure is designed for the dirtiest case, so the wash will always get the clothes clean, but cotton garments may shrink."
+  },
+  {
+   "zh": "Product-Specific Design Approach / 產品特定設計方法",
+   "en": "Product-Specific Design Approach"
+  },
+  {
+   "zh": "中文解說：產品特定方法詳解",
+   "en": "Commentary: The Product-Specific Approach in Detail"
+  },
+  {
+   "zh": "產品特定法是熱敏感藥品（如蛋白質製劑、某些小分子藥物）唯一可行的滅菌設計路徑。核心原則：用<strong>實測生物負載數據</strong>取代最壞情況假設，以降低熱輸入。",
+   "en": "The product-specific approach is the only workable sterilization design path for heat-sensitive drug products (such as protein formulations and certain small-molecule drugs). The core principle is to replace worst-case assumptions with <strong>measured bioburden data</strong> in order to reduce heat input."
+  },
+  {
+   "zh": "產品特定法開發步驟",
+   "en": "Steps in Developing a Product-Specific Process"
+  },
+  {
+   "zh": "測定產品實際生物負載（N₀，每容器 cfu 數）",
+   "en": "Determine the actual bioburden of the product (N₀, cfu per container)."
+  },
+  {
+   "zh": "以熱休克（80–100°C，10–15 min）篩選孢子型微生物",
+   "en": "Use heat shock (80–100°C, 10–15 min) to screen for spore-forming organisms."
+  },
+  {
+   "zh": "測定最耐熱菌株的 D 值（D<sub>T</sub>）",
+   "en": "Determine the D-value of the most heat-resistant isolate (D<sub>T</sub>)."
+  },
+  {
+   "zh": "加入安全餘裕後設定設計用 N₀ 和 D<sub>T</sub>",
+   "en": "Set the design N₀ and D<sub>T</sub> after adding a safety margin."
+  },
+  {
+   "zh": "計算最低 F₀ = (Log N₀ − Log N<sub>F</sub>) × D<sub>T</sub>",
+   "en": "Calculate the minimum F₀ = (Log N₀ − Log N<sub>F</sub>) × D<sub>T</sub>."
+  },
+  {
+   "zh": "建立持續生物負載監測計畫",
+   "en": "Establish an ongoing bioburden monitoring program."
+  },
+  {
+   "zh": "安全餘裕與監測頻率的反比關係",
+   "en": "Inverse Relationship Between Safety Margin and Monitoring Frequency"
+  },
+  {
+   "zh": "設計用 D<sub>T</sub> 越接近實測值 → 安全餘裕越小 → 需要越頻繁的持續監測。",
+   "en": "The closer the design D<sub>T</sub> is to the measured value, the smaller the safety margin and the more frequent the ongoing monitoring that is needed."
+  },
+  {
+   "zh": "設計用 D<sub>T</sub> 遠大於實測值（如選用 1.0 min，但實測僅 0.25 min）→ 安全餘裕大 → 監測頻率可降低。",
+   "en": "If the design D<sub>T</sub> is much greater than the measured value (for example, 1.0 min is selected but only 0.25 min is measured), the safety margin is large and the monitoring frequency can be reduced."
+  },
+  {
+   "zh": "這是法規文件審查的重點：D 值選取依據是否合理？",
+   "en": "This is a focus of regulatory document review: is the rationale for the D-value selection justified?"
+  },
+  {
+   "zh": "Load Types / 負載類型",
+   "en": "Load Types"
+  },
+  {
+   "zh": "中文解說：負載分類的重要性",
+   "en": "Commentary: Why Load Classification Matters"
+  },
+  {
+   "zh": "負載類型（Load Type）是選擇滅菌製程的關鍵分支。不同物理特性的物品對蒸汽穿透、熱傳遞方式完全不同，必須先分類才能選擇正確的製程。",
+   "en": "Load type is the key branching point in selecting a sterilization process. Items with different physical characteristics differ completely in steam penetration and heat transfer, so the load must be classified first in order to choose the correct process."
+  },
+  {
+   "zh": "分類邏輯",
+   "en": "Classification Logic"
+  },
+  {
+   "zh": "蒸汽能直接接觸物品表面？→ 多孔/硬質器具負載<br/>\n                        液體填充於密封容器中？→ 液體負載（熱傳靠傳導/對流）",
+   "en": "Can steam directly contact the surface of the items? → Porous/hard goods load<br/>\n                        Is liquid filled in sealed containers? → Liquid load (heat transfer by conduction/convection)"
+  },
+  {
+   "zh": "Porous/Hard Goods Loads / 多孔負載與硬質器具",
+   "en": "Porous/Hard Goods Loads"
+  },
+  {
+   "zh": "中文解說：多孔/硬質器具負載",
+   "en": "Commentary: Porous/Hard Goods Loads"
+  },
+  {
+   "zh": "最冷點（Cold Spot）概念",
+   "en": "The Cold Spot Concept"
+  },
+  {
+   "zh": "在多孔/硬質器具負載中，<strong>最冷點</strong>（Cold Spot）是整個負載中溫度最慢達到設定值的位置。驗證時溫度感測器必須放置在冷點，確保即使最冷處也能達到所需 F₀。",
+   "en": "In a porous/hard goods load, the <strong>cold spot</strong> is the location in the load that is slowest to reach the set temperature. During validation, temperature sensors must be placed at the cold spot to ensure that even the coolest location achieves the required F₀."
+  },
+  {
+   "zh": "常見冷點位置：濾芯中心、密堆積的布料內層、管路彎曲末端。",
+   "en": "Common cold spot locations: the center of a filter cartridge, the inner layers of tightly packed fabric, and the far end of a bend in tubing."
+  },
+  {
+   "zh": "比喻",
+   "en": "Analogy"
+  },
+  {
+   "zh": "多孔負載就像「蒸籠裡的包子」——蒸汽要穿透到每一層每一個角落，外面熟了不代表裡面也熟了。",
+   "en": "A porous load is like \"buns in a bamboo steamer\": the steam has to penetrate every layer and every corner, and a cooked outside does not mean the inside is cooked too."
+  },
+  {
+   "zh": "Liquid Loads / 液體負載",
+   "en": "Liquid Loads"
+  },
+  {
+   "zh": "中文解說：液體負載特性",
+   "en": "Commentary: Characteristics of Liquid Loads"
+  },
+  {
+   "zh": "液體負載（Liquid Load）最常見於注射劑最終產品的終端滅菌（Terminal Sterilization）。熱傳遞方式不同於多孔負載，主要靠<strong>傳導與對流</strong>，而非蒸汽直接接觸。",
+   "en": "Liquid loads are most commonly encountered in the terminal sterilization of final injectable products. Heat transfer differs from that of porous loads: it relies mainly on <strong>conduction and convection</strong> rather than direct steam contact."
+  },
+  {
+   "zh": "液體負載設計要點",
+   "en": "Key Points for Liquid Load Design"
+  },
+  {
+   "zh": "通常採用<strong>產品特定設計方法</strong>（因多數液體製劑有熱穩定性限制）",
+   "en": "The <strong>product-specific design approach</strong> is usually used (because most liquid formulations have heat stability limits)."
+  },
+  {
+   "zh": "容器類型影響熱傳效率：玻璃瓶 vs. 塑膠袋 vs. 預填充注射器",
+   "en": "Container type affects heat transfer efficiency: glass vials vs. plastic bags vs. prefilled syringes."
+  },
+  {
+   "zh": "非水溶液（如油性製劑）需特別評估是否適合濕熱滅菌",
+   "en": "Non-aqueous solutions (such as oil-based formulations) require special evaluation of their suitability for moist heat sterilization."
+  },
+  {
+   "zh": "密封容器內的頭頂空間氣體（headspace gas）會隨加熱膨脹，產生內部壓力",
+   "en": "Headspace gas inside a sealed container expands on heating and generates internal pressure."
+  },
+  {
+   "zh": "為何液體負載需要空氣過壓？",
+   "en": "Why Do Liquid Loads Need Air Overpressure?"
+  },
+  {
+   "zh": "密封容器（如預填充注射器、塑膠袋）在加熱時，容器內部壓力會升高。若腔室壓力不足，容器可能變形甚至破裂（注射器活塞可能被頂出）。因此需要空氣過壓（Air Overpressure）來平衡內外壓差。",
+   "en": "When sealed containers (such as prefilled syringes and plastic bags) are heated, the pressure inside the container rises. If the chamber pressure is insufficient, the container may deform or even burst (syringe plungers may be pushed out). Air overpressure is therefore needed to balance the pressure difference between the inside and outside of the container."
+  },
+  {
+   "zh": "Sterilization Processes / 滅菌製程類型",
+   "en": "Sterilization Processes"
+  },
+  {
+   "zh": "中文解說：製程類型總覽",
+   "en": "Commentary: Overview of Process Types"
+  },
+  {
+   "zh": "Saturated Steam Processes / 飽和蒸汽製程",
+   "en": "Saturated Steam Processes"
+  },
+  {
+   "zh": "中文解說：飽和蒸汽製程比較",
+   "en": "Commentary: Comparing Saturated Steam Processes"
+  },
+  {
+   "zh": "前真空週期的脈衝邏輯",
+   "en": "Pulse Logic of the Pre-Vacuum Cycle"
+  },
+  {
+   "zh": "每次真空抽至 0.1 atm → 去除 90% 空氣（1 log）<br/>\n                        3 次脈衝 = 3 log 減少 = 去除 99.9% 空氣<br/>\n                        正壓脈衝（Positive Pulse）：蒸汽充壓後再抽真空，進一步調理負載，縮短平衡時間。",
+   "en": "Each vacuum pulse down to 0.1 atm removes 90% of the air (1 log).<br/>\n                        3 pulses = 3 log reduction = 99.9% of the air removed.<br/>\n                        Positive pulse: after the vacuum, steam is introduced to pressurize the chamber and the vacuum is drawn again, which further conditions the load and shortens the equilibration time."
+  },
+  {
+   "zh": "重力置換的失效風險",
+   "en": "Failure Risks of Gravity Displacement"
+  },
+  {
+   "zh": "重力置換失效的兩種情境：<br/>\n                        1. 蒸汽進入過快 → 頂部形成空氣袋（air pocket），導致冷點<br/>\n                        2. 蒸汽進入過慢 → 空氣被加熱後擴散，更難排除",
+   "en": "Gravity displacement can fail in two scenarios:<br/>\n                        1. Steam enters too quickly: an air pocket forms at the top, causing a cold spot.<br/>\n                        2. Steam enters too slowly: the air is heated and diffuses, making it harder to remove."
+  },
+  {
+   "zh": "因此重力置換對蒸汽進量速率的控制要求非常嚴格。",
+   "en": "Gravity displacement therefore requires very tight control of the steam admission rate."
+  },
+  {
+   "zh": "前真空 = 「先用吸塵器把空氣抽走，再充蒸汽」。重力置換 = 「開門讓熱氣把冷氣推出去」——後者取決於物理密度差，效果受很多因素影響。",
+   "en": "Pre-vacuum is like \"using a vacuum cleaner to remove the air first, then filling with steam.\" Gravity displacement is like \"opening the door and letting hot air push out the cold air\": the latter depends on the physical density difference, and many factors affect its performance."
+  },
+  {
+   "zh": "Air Overpressure Processes / 空氣過壓製程",
+   "en": "Air Overpressure Processes"
+  },
+  {
+   "zh": "中文解說：空氣過壓製程詳解",
+   "en": "Commentary: Air Overpressure Processes in Detail"
+  },
+  {
+   "zh": "空氣過壓製程是液體負載（密封容器）的標準選擇。核心挑戰是：加熱時容器內部壓力升高，若不補充外部壓力，容器可能變形或破損。",
+   "en": "Air overpressure processes are the standard choice for liquid loads (sealed containers). The core challenge is that the pressure inside the container rises during heating, and if external pressure is not supplied to compensate, the container may deform or be damaged."
+  },
+  {
+   "zh": "SAM 製程的冷點風險",
+   "en": "Cold Spot Risk in SAM Processes"
+  },
+  {
+   "zh": "空氣的存在使熱傳率低於純飽和蒸汽。若循環不均，容器周圍會形成<strong>冷點</strong>（Cold Spot）——溫度低於設定值的區域。驗證時必須確認風扇循環能消除分層（stratification）現象。",
+   "en": "The presence of air makes the heat transfer rate lower than that of pure saturated steam. If circulation is uneven, <strong>cold spots</strong> can form around the containers: regions where the temperature is below the set point. Validation must confirm that fan circulation eliminates stratification."
+  },
+  {
+   "zh": "過熱水製程的水質要求",
+   "en": "Water Quality Requirements for Superheated Water Processes"
+  },
+  {
+   "zh": "直接與密封容器接觸的循環水必須具備低微生物含量。常見方法：<br/>\n                        1. 與產品一起在腔室內滅菌<br/>\n                        2. 在獨立容器中預先滅菌<br/>\n                        3. 維持在高溫（抑制微生物生長）<br/>\n                        4. 化學處理維持低生物負載",
+   "en": "The circulating water in direct contact with sealed containers must have a low microbial content. Common methods:<br/>\n                        1. Sterilize it in the chamber together with the product.<br/>\n                        2. Pre-sterilize it in a separate vessel.<br/>\n                        3. Maintain it at high temperature (to inhibit microbial growth).<br/>\n                        4. Use chemical treatment to maintain low bioburden."
+  },
+  {
+   "zh": "間接冷卻（透過熱交換器）優於直接注入冷水，因為間接法不引入新的微生物風險。",
+   "en": "Indirect cooling (through a heat exchanger) is preferred over direct injection of cold water because the indirect method does not introduce new microbial risk."
+  },
+  {
+   "zh": "過熱水製程就像「高壓電鍋加水煮罐頭」——水浴式加熱均勻、升降溫速率穩定，特別適合對溫度衝擊敏感的塑膠容器或生物製劑。",
+   "en": "A superheated water process is like \"cooking canned food in a pressure cooker with water\": water-bath heating is uniform and heating and cooling rates are stable, which makes it especially suitable for plastic containers or biological products that are sensitive to thermal shock."
+  },
+  {
+   "zh": "Practice Questions / 練習思考題",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "<strong>Q1：</strong>A formulated protein drug product (heat-labile) in prefilled syringes requires terminal sterilization. Using the TR1 decision tree, which design approach and sterilization process would you recommend? Justify your answer.\n                        <br/><em>一種熱敏感蛋白質藥品填充於預填充注射器中需進行終端滅菌。依據 TR1 決策樹，您會推薦哪種設計方法和製程？請說明理由。</em>",
+   "en": "<strong>Q1:</strong> A formulated protein drug product (heat-labile) in prefilled syringes requires terminal sterilization. Using the TR1 decision tree, which design approach and sterilization process would you recommend? Justify your answer.\n                        <br/><em></em>"
+  },
+  {
+   "zh": "<strong>Q2：</strong>Your bioburden data shows: N₀ = 10² organisms/container, worst-case D₁₂₁°C = 0.3 min. You select a design D-value of 1.0 min for the product-specific approach. Calculate the minimum F₀ required and explain how this D-value selection affects your ongoing monitoring obligation.\n                        <br/><em>生物負載數據顯示：N₀ = 10²，最差 D₁₂₁°C = 0.3 分鐘。您選擇設計 D 值為 1.0 分鐘。請計算所需最低 F₀，並說明此 D 值選擇如何影響持續監測義務。</em>",
+   "en": "<strong>Q2:</strong> Your bioburden data shows: N₀ = 10² organisms/container, worst-case D₁₂₁°C = 0.3 min. You select a design D-value of 1.0 min for the product-specific approach. Calculate the minimum F₀ required and explain how this D-value selection affects your ongoing monitoring obligation.\n                        <br/><em></em>"
+  },
+  {
+   "zh": "<strong>Q3：</strong>A filling machine assembly including tubing, filters, and stainless-steel components needs sterilization. Should you use a gravity displacement or pre-vacuum (SFPP) cycle? What is the primary concern driving this decision?\n                        <br/><em>一個包含管路、濾器和不鏽鋼零件的填充機組件需要滅菌。您應選擇重力置換還是前真空（SFPP）週期？驅動此決策的主要考量是什麼？</em>",
+   "en": "<strong>Q3:</strong> A filling machine assembly including tubing, filters, and stainless-steel components needs sterilization. Should you use a gravity displacement or pre-vacuum (SFPP) cycle? What is the primary concern driving this decision?\n                        <br/><em></em>"
+  },
+  {
+   "zh": "<strong>Q4：</strong>During SAM (steam-air mixture) cycle development, thermocouple data shows a temperature differential of 3°C between the chamber and one container position. What is the likely root cause, and what corrective action would you investigate?\n                        <br/><em>在 SAM 週期開發中，熱電偶數據顯示腔室與某容器位置之間有 3°C 溫差。可能的根本原因是什麼？您會調查哪些矯正措施？</em>",
+   "en": "<strong>Q4:</strong> During SAM (steam-air mixture) cycle development, thermocouple data shows a temperature differential of 3°C between the chamber and one container position. What is the likely root cause, and what corrective action would you investigate?\n                        <br/><em></em>"
+  },
+  {
+   "zh": "<strong>Q5：</strong>Why is indirect cooling preferred over direct water injection in a superheated water sterilization process? Name two potential risks of using direct cooling water injection.\n                        <br/><em>在過熱水滅菌製程中，為什麼間接冷卻優於直接注入冷水？請列舉直接冷卻水注入的兩種潛在風險。</em>",
+   "en": "<strong>Q5:</strong> Why is indirect cooling preferred over direct water injection in a superheated water sterilization process? Name two potential risks of using direct cooling water injection.\n                        <br/><em></em>"
+  }
+ ]
+}

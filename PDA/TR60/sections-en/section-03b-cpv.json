@@ -1,0 +1,613 @@
+{
+ "source": "section-03b-cpv.html",
+ "blocks": [
+  {
+   "zh": "持續製程確認 第二部分 — 回應 CPV 數據信號、變更管理與報告",
+   "en": "Continued Process Verification Part 2: Responding to CPV Data Signals, Change Management and Reporting"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解 CPV 數據信號 (Data Signals) 的分類方式，以及如何區分可歸因變異、共同原因變異與特殊原因變異",
+   "en": "Understand how CPV data signals are classified and how to distinguish assignable-cause, common-cause and special-cause variation"
+  },
+  {
+   "zh": "掌握 CPV 決策樹 (Decision Tree) 的運作邏輯，避免對個別事件過度反應或反應不足",
+   "en": "Master the logic of the CPV decision tree so that you neither overreact nor underreact to individual events"
+  },
+  {
+   "zh": "了解 CPV 如何整合品質系統以支持生命週期變更管理，包括 Established Conditions (ECs) 與 ICH Q12 框架",
+   "en": "Understand how CPV integrates with the quality system to support lifecycle change management, including Established Conditions (ECs) and the ICH Q12 framework"
+  },
+  {
+   "zh": "學習 Stage 3a 與 Stage 3b 報告的核心內容，以及 CPV 數據如何支援年度產品回顧 (APQR/YBPR)",
+   "en": "Learn the core content of Stage 3a and Stage 3b reports and how CPV data support the annual product review (APQR/YBPR)"
+  },
+  {
+   "zh": "認識即時與批次間回饋機制在持續製程改進中的角色",
+   "en": "Recognize the role of real-time and batch-to-batch feedback mechanisms in continual process improvement"
+  },
+  {
+   "zh": "本節目錄 Section Contents",
+   "en": "Section Contents"
+  },
+  {
+   "zh": "<strong>5.3 Reacting to Continued Process Verification Data Signals 5.3 回應持續製程驗證數據訊號</strong>",
+   "en": "<strong>5.3 Reacting to Continued Process Verification Data Signals</strong>"
+  },
+  {
+   "zh": "<strong>CPV Data Signals (CPV 數據信號):</strong> CPV 信號並非 OOS（超出規格）或 OOT（超出趨勢）的偏差事件。它們是統計製程管制圖上出現的「黃旗」(yellow flags)，代表製程正在發生變異或漂移。信號的嚴重程度需要進一步評估，而非立即採取糾正措施。",
+   "en": "<strong>CPV Data Signals:</strong> A CPV signal is not an OOS (out of specification) or OOT (out of trend) deviation event. It is a \"yellow flag\" on a statistical process control chart, indicating that the process is varying or drifting. The significance of a signal must be evaluated further; it does not call for immediate corrective action."
+  },
+  {
+   "zh": "<strong>Process Drift (製程漂移):</strong> 指製程隨時間緩慢偏離原設計中心值的現象。若不及時偵測，漂移最終可能導致 OOS 或品質失敗。",
+   "en": "<strong>Process Drift:</strong> The slow movement of a process away from its original design center over time. If it is not detected in time, drift can eventually lead to OOS results or quality failures."
+  },
+  {
+   "zh": "想像你開車在高速公路上。<strong>CPV 信號就像車道偏離警示系統</strong>：車子稍微偏向車道邊緣時，系統會發出「嗶嗶」聲提醒你（黃旗）。這不代表你已經出了車禍（OOS），而是提醒你注意方向盤。如果你每次聽到「嗶」就猛打方向盤（overreaction），反而會造成危險；但如果完全忽視警示（under-detection），最終可能衝出車道。CPV 的精髓就在於「適度反應」。",
+   "en": "Imagine driving on a highway. <strong>A CPV signal is like a lane departure warning system</strong>: when the car drifts slightly toward the edge of the lane, the system beeps to alert you (a yellow flag). This does not mean you have already had an accident (OOS); it is a reminder to watch the steering wheel. If you yank the wheel every time you hear a beep (overreaction), you create a hazard; but if you ignore the warning entirely (under-detection), you may eventually leave the lane. The essence of CPV is \"proportionate response.\""
+  },
+  {
+   "zh": "<strong>FDA 明確要求：</strong>趨勢分析方法必須能夠防止對個別事件過度反應 (overreaction to individual events)。這意味著企業需要建立系統性的決策流程，而非讓個人判斷決定行動方案。",
+   "en": "<strong>FDA expectation:</strong> Trending methods must prevent overreaction to individual events. This means companies need to establish a systematic decision-making process rather than letting individual judgment determine the course of action."
+  },
+  {
+   "zh": "<strong>CPV 的四大效益：</strong>",
+   "en": "<strong>Four benefits of CPV:</strong>"
+  },
+  {
+   "zh": "降低品質成本 (cost of quality)",
+   "en": "Reduced cost of quality"
+  },
+  {
+   "zh": "提供產品品質改進機會",
+   "en": "Opportunities for product quality improvement"
+  },
+  {
+   "zh": "增加產品與製程知識",
+   "en": "Increased product and process knowledge"
+  },
+  {
+   "zh": "降低法規合規風險",
+   "en": "Reduced regulatory compliance risk"
+  },
+  {
+   "zh": "<strong>5.3.1 Continued Process Verification Decision-Making 5.3.1 持續製程驗證決策</strong>",
+   "en": "<strong>5.3.1 Continued Process Verification Decision-Making</strong>"
+  },
+  {
+   "zh": "<strong>Assignable Cause Variation (可歸因變異):</strong> 變異源自可辨識的特定原因，例如某批原料品質異常、設備校正偏差、新人員操作。這類變異可以追溯根因並加以消除。",
+   "en": "<strong>Assignable Cause Variation:</strong> Variation arising from a specific, identifiable cause, such as an abnormal raw material lot, an equipment calibration deviation or a newly assigned operator. The root cause of this type of variation can be traced and eliminated."
+  },
+  {
+   "zh": "<strong>Common Cause Variation (共同原因變異):</strong> 製程固有的隨機波動，在統計管制範圍內屬正常現象。例如環境溫溼度的自然波動、不同批次原料間的微小差異。",
+   "en": "<strong>Common Cause Variation:</strong> Random fluctuation inherent to the process, which is normal within statistical control limits. Examples include natural fluctuations in environmental temperature and humidity, or small differences between raw material lots."
+  },
+  {
+   "zh": "<strong>Special-Cause Variation (特殊原因變異):</strong> 超出正常統計範圍的非隨機變異，通常指向系統性問題。需要立即調查並可能需要修改控制策略。",
+   "en": "<strong>Special-Cause Variation:</strong> Non-random variation outside the normal statistical range, which usually points to a systemic problem. It requires immediate investigation and may require modification of the control strategy."
+  },
+  {
+   "zh": "決策樹的核心邏輯包含三條路徑：",
+   "en": "The core logic of the decision tree comprises three paths:"
+  },
+  {
+   "zh": "<strong>Path 1 (繼續監控):</strong> 信號來自可歸因的外部孤立事件（如一次性設備異常），不需要變更控制策略，繼續正常 CPV 監控即可",
+   "en": "<strong>Path 1 (continue monitoring):</strong> The signal comes from an assignable, external, isolated event (such as a one-time equipment anomaly). No change to the control strategy is needed, and routine CPV monitoring continues"
+  },
+  {
+   "zh": "<strong>Path 2 (評估控制策略):</strong> 信號顯示統計顯著性，需要深入分析控制策略是否仍然適當",
+   "en": "<strong>Path 2 (evaluate the control strategy):</strong> The signal is statistically significant, and a deeper analysis is needed to determine whether the control strategy is still appropriate"
+  },
+  {
+   "zh": "<strong>Path 3 (要求變更):</strong> 信號強烈且持續，表明現有控制策略已不足，必須執行變更",
+   "en": "<strong>Path 3 (request a change):</strong> The signal is strong and persistent, indicating that the current control strategy is no longer adequate and a change must be made"
+  },
+  {
+   "zh": "關鍵步驟：CPV 信號 → 排除 OOS/OOT → 統計顯著性評估 → Change Review（變更審查）→ 判定變異類型 → 選擇路徑",
+   "en": "Key steps: CPV signal → rule out OOS/OOT → statistical significance assessment → change review → determine the type of variation → select the path"
+  },
+  {
+   "zh": "CPV 決策樹就像醫院的<strong>分級檢傷制度 (triage system)</strong>。急診室不會對所有病人採取相同的處理方式：",
+   "en": "The CPV decision tree works like a hospital <strong>triage system</strong>. An emergency room does not treat every patient in the same way:"
+  },
+  {
+   "zh": "<strong>綠色（輕微）:</strong> 小感冒 = Path 1，觀察追蹤即可",
+   "en": "<strong>Green (minor):</strong> A mild cold = Path 1; observe and follow up"
+  },
+  {
+   "zh": "<strong>黃色（需注意）:</strong> 持續發燒 = Path 2，需要進一步檢查診斷",
+   "en": "<strong>Yellow (needs attention):</strong> A persistent fever = Path 2; further examination and diagnosis are needed"
+  },
+  {
+   "zh": "<strong>紅色（緊急）:</strong> 心臟驟停 = Path 3，立即介入治療",
+   "en": "<strong>Red (urgent):</strong> Cardiac arrest = Path 3; intervene immediately"
+  },
+  {
+   "zh": "同樣地，並非所有 CPV 信號都同等重要——CQA 相關信號的風險等級通常高於 KPI 相關信號。",
+   "en": "Likewise, not all CPV signals are equally important; signals related to CQAs generally carry a higher risk level than signals related to KPIs."
+  },
+  {
+   "zh": "本文特別指出 Stage 3a 和 3b 需要不同的 CPV 方法：",
+   "en": "The document specifically points out that Stage 3a and Stage 3b require different CPV approaches:"
+  },
+  {
+   "zh": "<strong>Stage 3a:</strong> 數據量有限（剛上市的前幾批），統計信心不足，需要更保守謹慎的科學分析",
+   "en": "<strong>Stage 3a:</strong> Data are limited (the first few batches after launch) and statistical confidence is low, so a more conservative and cautious scientific analysis is needed"
+  },
+  {
+   "zh": "<strong>Stage 3b:</strong> 數據量充足，可以建立穩健的統計基線與管制圖，適用完整的決策樹流程",
+   "en": "<strong>Stage 3b:</strong> Sufficient data are available to establish a robust statistical baseline and control charts, so the full decision tree process applies"
+  },
+  {
+   "zh": "這就像天氣預報：只有3天的數據做預測（Stage 3a）與用30年歷史數據建模（Stage 3b），所需的方法論完全不同。",
+   "en": "It is like weather forecasting: predicting from only 3 days of data (Stage 3a) and modeling from 30 years of historical data (Stage 3b) require completely different methodologies."
+  },
+  {
+   "zh": "你的 CPV 管制圖顯示某 CQA 連續 7 個批次呈上升趨勢但仍在規格內。這屬於哪種變異？應選擇 Decision Tree 的哪條路徑？",
+   "en": "Your CPV control chart shows a CQA trending upward over 7 consecutive batches while remaining within specification. What type of variation is this, and which path of the decision tree should you select?"
+  },
+  {
+   "zh": "為什麼 FDA 強調要防止「對個別事件過度反應」？在實務中，過度反應可能造成什麼後果？",
+   "en": "Why does FDA emphasize preventing \"overreaction to individual events\"? In practice, what consequences can overreaction have?"
+  },
+  {
+   "zh": "Stage 3a 數據有限時，你會如何調整 CPV 信號的回應策略？",
+   "en": "When Stage 3a data are limited, how would you adjust your response strategy for CPV signals?"
+  },
+  {
+   "zh": "<strong>5.4 Applying Continued Process Verification for Lifecycle Change Management 5.4 運用持續製程驗證進行生命週期變更控制</strong>",
+   "en": "<strong>5.4 Applying Continued Process Verification for Lifecycle Change Management</strong>"
+  },
+  {
+   "zh": "<strong>Lifecycle Change Management (生命週期變更管理):</strong> 在產品的整個商業化生命週期中，原料、設備、製程、法規等各方面的變更是不可避免的。CPV 的角色是確保這些變更不會對產品品質、安全性或法規合規性產生負面影響。",
+   "en": "<strong>Lifecycle Change Management:</strong> Throughout a product’s commercial lifecycle, changes in raw materials, equipment, processes and regulations are unavoidable. The role of CPV is to ensure that these changes do not adversely affect product quality, safety or regulatory compliance."
+  },
+  {
+   "zh": "CPV 不是一個靜態的「確認完畢就結束」的活動，而是一個動態的、持續性的監控框架，與企業的變更控制系統 (Change Control System) 緊密整合。",
+   "en": "CPV is not a static, \"verified and done\" activity. It is a dynamic, ongoing monitoring framework that is closely integrated with the company’s change control system."
+  },
+  {
+   "zh": "將 CPV 比作汽車的<strong>行車電腦 (ECU) 監控系統</strong>。當你更換了新品牌的輪胎（原料變更）、升級了引擎零件（設備升級）、或調整了駕駛模式（製程優化），行車電腦會持續監測各項性能指標（油耗、排放、引擎溫度），確保這些變更不會影響整車的安全與性能。CPV 就是製藥業的「行車電腦」。",
+   "en": "Think of CPV as a car’s <strong>engine control unit (ECU) monitoring system</strong>. When you fit a new brand of tires (raw material change), upgrade engine parts (equipment upgrade) or adjust the driving mode (process optimization), the ECU keeps monitoring performance indicators (fuel consumption, emissions, engine temperature) to ensure that these changes do not affect the safety and performance of the whole vehicle. CPV is the pharmaceutical industry’s \"ECU.\""
+  },
+  {
+   "zh": "<strong>5.4.1 Quality Systems and Continued Process Verification 5.4.1 品質系統與持續製程驗證</strong>",
+   "en": "<strong>5.4.1 Quality Systems and Continued Process Verification</strong>"
+  },
+  {
+   "zh": "TR60 描述了四個層級的回饋機制，由即時到長期：",
+   "en": "TR60 describes four levels of feedback mechanisms, ranging from real-time to long-term:"
+  },
+  {
+   "zh": "<strong>即時 / 批內回饋 (Intra-batch / Real-time):</strong> 如 PAT（製程分析技術）即時監控，在製造過程中即可調整參數",
+   "en": "<strong>Intra-batch / Real-time:</strong> For example, real-time PAT (process analytical technology) monitoring allows parameters to be adjusted during manufacturing"
+  },
+  {
+   "zh": "<strong>批次後回饋 (After each batch):</strong> 每批完成後檢視 CPV 數據，判斷是否需要在下一批調整",
+   "en": "<strong>After each batch:</strong> CPV data are reviewed after each batch is completed to decide whether adjustments are needed for the next batch"
+  },
+  {
+   "zh": "<strong>系列批次後回饋 (After a series of batches):</strong> 累積數批數據進行趨勢分析，偵測中期漂移",
+   "en": "<strong>After a series of batches:</strong> Data from several batches are accumulated for trend analysis to detect medium-term drift"
+  },
+  {
+   "zh": "<strong>定期回饋 (After a defined period):</strong> 如年度回顧 (APQR)，進行全面性製程健康評估",
+   "en": "<strong>After a defined period:</strong> For example, the annual review (APQR), which provides a comprehensive assessment of process health"
+  },
+  {
+   "zh": "CPV 信號的溝通對象包括三大部門：",
+   "en": "CPV signals are communicated to three main functions:"
+  },
+  {
+   "zh": "<strong>製造部門 (Manufacturing):</strong> 負責執行實際的製程調整",
+   "en": "<strong>Manufacturing:</strong> Responsible for carrying out the actual process adjustments"
+  },
+  {
+   "zh": "<strong>品質部門 (Quality):</strong> 評估信號對產品品質的影響，決定是否需要偏差調查",
+   "en": "<strong>Quality:</strong> Evaluates the impact of the signal on product quality and decides whether a deviation investigation is needed"
+  },
+  {
+   "zh": "<strong>法規部門 (Regulatory):</strong> 評估變更是否涉及 Established Conditions，是否需要向法規機構申報",
+   "en": "<strong>Regulatory:</strong> Evaluates whether the change involves Established Conditions and whether it must be filed with the regulatory authority"
+  },
+  {
+   "zh": "三個部門的協作是一個<strong>迭代過程 (iterative process)</strong>——不是一次性通知就結束。",
+   "en": "Collaboration among the three functions is an <strong>iterative process</strong>; it does not end with a one-time notification."
+  },
+  {
+   "zh": "作為 CDMO，你同時為多個客戶生產不同產品。某條產線的 CPV 監控發現充填體積的標準差在過去 20 批中逐漸增加。你的回饋策略應該是：",
+   "en": "As a CDMO, you manufacture different products for multiple clients at the same time. CPV monitoring on one line finds that the standard deviation of fill volume has gradually increased over the past 20 batches. Your feedback strategy should be:"
+  },
+  {
+   "zh": "<strong>即時：</strong>通知製造團隊加強該產線的設備檢查",
+   "en": "<strong>Real-time:</strong> Notify the manufacturing team to intensify equipment checks on that line"
+  },
+  {
+   "zh": "<strong>批次後：</strong>每批後比對充填泵的校正數據",
+   "en": "<strong>After each batch:</strong> Compare the filling pump calibration data after every batch"
+  },
+  {
+   "zh": "<strong>系列批次後：</strong>進行設備磨損分析，評估是否需要預防性維護排程",
+   "en": "<strong>After a series of batches:</strong> Perform an equipment wear analysis and assess whether a preventive maintenance schedule is needed"
+  },
+  {
+   "zh": "<strong>定期：</strong>在下次 APQR 中納入此趨勢分析結果",
+   "en": "<strong>Periodic:</strong> Include the results of this trend analysis in the next APQR"
+  },
+  {
+   "zh": "<strong>5.4.2 Regulatory Commitments and Established Conditions 5.4.2 法規承諾與確立條件</strong>",
+   "en": "<strong>5.4.2 Regulatory Commitments and Established Conditions</strong>"
+  },
+  {
+   "zh": "<strong>Established Conditions (ECs, 已建立條件):</strong> 指法規核准文件中具有法律約束力的資訊，被視為確保產品品質所必要的條件。任何對 ECs 的變更都必須向法規機構提交申請。ECs 概念是 ICH Q12 的核心，目的在於明確界定哪些資訊具有法規約束力。",
+   "en": "<strong>Established Conditions (ECs):</strong> Legally binding information in regulatory approval documents that is considered necessary to assure product quality. Any change to an EC must be submitted to the regulatory authority. The EC concept is central to ICH Q12, whose purpose is to define clearly which information is regulatory-binding."
+  },
+  {
+   "zh": "<strong>ICH Q12:</strong> 全名為「Technical and Regulatory Considerations for Pharmaceutical Product Lifecycle Management」，提供上市後 CMC 變更管理的框架，使變更流程更可預測、更有效率。",
+   "en": "<strong>ICH Q12:</strong> Its full title is \"Technical and Regulatory Considerations for Pharmaceutical Product Lifecycle Management.\" It provides a framework for managing post-approval CMC changes, making the change process more predictable and more efficient."
+  },
+  {
+   "zh": "TR60 直接點出一個產業痛點：<strong>一項上市後變更可能需要 3-5 年才能在全球各地區實施。</strong>這是因為：",
+   "en": "TR60 points directly to an industry pain point: <strong>a single post-approval change can take 3-5 years to implement across all regions worldwide.</strong> This is because:"
+  },
+  {
+   "zh": "各國法規對變更分類和申報要求不一致",
+   "en": "Regulations in different countries are inconsistent in how changes are classified and filed"
+  },
+  {
+   "zh": "需要同時維持多個版本的庫存（變更前後的產品）",
+   "en": "Multiple versions of inventory (pre-change and post-change product) must be maintained at the same time"
+  },
+  {
+   "zh": "ICH Q8-Q11 提供的「操作彈性」(operational flexibility) 尚未被充分利用",
+   "en": "The \"operational flexibility\" offered by ICH Q8-Q11 has not yet been fully used"
+  },
+  {
+   "zh": "這個問題對 CDMO 尤其嚴重，因為客戶的產品可能在數十個國家上市，每個國家都有不同的法規時程。",
+   "en": "This problem is especially serious for CDMOs, because a client’s product may be marketed in dozens of countries, each with a different regulatory timeline."
+  },
+  {
+   "zh": "Established Conditions 就像<strong>房屋所有權狀 (property deed)</strong> 上的資訊。如果你要改變房屋的結構（如拆除承重牆），必須向建管單位申請許可。但如果只是重新粉刷牆壁或更換家具，通常不需要申報。ICH Q12 的目的就是幫助產業和法規機構明確劃分哪些變更是「拆承重牆」（需要申報），哪些是「換家具」（不需要申報）。",
+   "en": "Established Conditions are like the information on a <strong>property deed</strong>. If you want to change the structure of a house (for example, removing a load-bearing wall), you must apply to the building authority for a permit. But if you are only repainting the walls or changing the furniture, you usually do not need to file anything. The purpose of ICH Q12 is to help industry and regulators clearly separate the changes that are \"removing a load-bearing wall\" (filing required) from those that are \"changing the furniture\" (no filing required)."
+  },
+  {
+   "zh": "為什麼「缺乏統一的生命週期管理要求」會成為製造商改善製程穩健性的阻礙？",
+   "en": "Why does the \"lack of harmonized lifecycle management requirements\" hinder manufacturers from improving process robustness?"
+  },
+  {
+   "zh": "假設你的 CDMO 客戶想要將某一關鍵製程參數的操作範圍擴大 10%。請說明這是否可能涉及 Established Conditions 的變更，以及你會建議什麼樣的 CPV 策略來支持此變更。",
+   "en": "Suppose a CDMO client wants to widen the operating range of a critical process parameter by 10%. Explain whether this could involve a change to an Established Condition, and what CPV strategy you would recommend to support the change."
+  },
+  {
+   "zh": "ICH Q12 如何幫助解決上市後變更需要 3-5 年實施的問題？",
+   "en": "How does ICH Q12 help address the problem of post-approval changes taking 3-5 years to implement?"
+  },
+  {
+   "zh": "<strong>5.5 Continued Process Verification Data Review and Reporting 5.5 持續製程驗證數據審查與報告</strong>",
+   "en": "<strong>5.5 Continued Process Verification Data Review and Reporting</strong>"
+  },
+  {
+   "zh": "<strong>Stage 3a（初始持續製程確認）</strong>是新產品上市後的第一階段強化監控。其核心特徵：",
+   "en": "<strong>Stage 3a (initial continued process verification)</strong> is the first phase of enhanced monitoring after a new product is launched. Its core characteristics are:"
+  },
+  {
+   "zh": "<strong>依循協議 (Protocol-driven):</strong> 有明確的取樣計畫、統計分析方法和完成標準",
+   "en": "<strong>Protocol-driven:</strong> There is a defined sampling plan, statistical analysis method and completion criteria"
+  },
+  {
+   "zh": "<strong>強化取樣：</strong> 取樣和測試要求可能維持在 Stage 2b（PPQ）的水準",
+   "en": "<strong>Enhanced sampling:</strong> Sampling and testing requirements may remain at the Stage 2b (PPQ) level"
+  },
+  {
+   "zh": "<strong>目的：</strong> 建立 Stage 3b 常規監控的統計基線和管制限",
+   "en": "<strong>Purpose:</strong> To establish the statistical baseline and control limits for routine Stage 3b monitoring"
+  },
+  {
+   "zh": "<strong>啟動時機：</strong> Stage 2b（PPQ）完成後即可開始",
+   "en": "<strong>Start:</strong> Can begin once Stage 2b (PPQ) is complete"
+  },
+  {
+   "zh": "Stage 3a 的批次數量必須具有統計意義，足以理解製程變異並建立 Stage 3b 的管制限。",
+   "en": "The number of batches in Stage 3a must be statistically meaningful, sufficient to understand process variability and to establish the Stage 3b control limits."
+  },
+  {
+   "zh": "Stage 3a 就像新員工的<strong>試用期 (probation period)</strong>。在試用期間，主管會更密切地觀察新員工的表現（強化取樣），設定明確的評估標準（protocol），並在試用期結束時決定是否轉正以及未來的績效考核方式（Stage 3b 計畫）。試用期不是要找碴，而是要深入了解這位員工的能力和潛在風險。",
+   "en": "Stage 3a is like a new employee’s <strong>probation period</strong>. During probation, the supervisor observes the new employee’s performance more closely (enhanced sampling), sets clear evaluation criteria (the protocol), and at the end decides whether to confirm the employee and how future performance will be assessed (the Stage 3b plan). The purpose of probation is not to find fault but to understand the employee’s capabilities and potential risks in depth."
+  },
+  {
+   "zh": "<strong>5.5.1 Stage 3a Reporting 5.5.1 第三階段 a 報告</strong>",
+   "en": "<strong>5.5.1 Stage 3a Reporting</strong>"
+  },
+  {
+   "zh": "Stage 3a 報告是一份全面性的統計評估文件，涵蓋 13 個核心要素。以下將其歸納為四大類別：",
+   "en": "The Stage 3a report is a comprehensive statistical evaluation document covering 13 core elements. They are grouped below into four categories:"
+  },
+  {
+   "zh": "<strong>1. 變異性分析：</strong>",
+   "en": "<strong>1. Variability analysis:</strong>"
+  },
+  {
+   "zh": "物料屬性影響評估",
+   "en": "Assessment of the impact of material attributes"
+  },
+  {
+   "zh": "製程參數影響評估",
+   "en": "Assessment of the impact of process parameters"
+  },
+  {
+   "zh": "品質屬性統計評估",
+   "en": "Statistical evaluation of quality attributes"
+  },
+  {
+   "zh": "批間 (inter-batch) 與批內 (intra-batch) 變異性",
+   "en": "Inter-batch and intra-batch variability"
+  },
+  {
+   "zh": "固有製程與方法變異性估計",
+   "en": "Estimates of inherent process and method variability"
+  },
+  {
+   "zh": "<strong>2. 相關性與能力分析：</strong>",
+   "en": "<strong>2. Correlation and capability analysis:</strong>"
+  },
+  {
+   "zh": "多變量相關性分析 (Multivariate correlation)",
+   "en": "Multivariate correlation analysis"
+  },
+  {
+   "zh": "製程能力與穩健性指數",
+   "en": "Process capability and robustness indices"
+  },
+  {
+   "zh": "QbD 設計空間驗證",
+   "en": "Verification of the QbD design space"
+  },
+  {
+   "zh": "<strong>3. 歷史數據回顧：</strong>",
+   "en": "<strong>3. Historical data review:</strong>"
+  },
+  {
+   "zh": "變更影響評估",
+   "en": "Assessment of the impact of changes"
+  },
+  {
+   "zh": "穩定性數據分析",
+   "en": "Stability data analysis"
+  },
+  {
+   "zh": "OOS、偏差、客訴、field alert 回顧",
+   "en": "Review of OOS results, deviations, complaints and field alerts"
+  },
+  {
+   "zh": "<strong>4. 前瞻性建議：</strong>",
+   "en": "<strong>4. Forward-looking recommendations:</strong>"
+  },
+  {
+   "zh": "控制策略強化建議",
+   "en": "Recommendations for strengthening the control strategy"
+  },
+  {
+   "zh": "Stage 3b 監控標準與理由",
+   "en": "Stage 3b monitoring criteria and rationale"
+  },
+  {
+   "zh": "TR60 建議使用<strong>產品品質儀表板 (Quality Dashboard)</strong>作為 Stage 3a 評估的一部分。此儀表板可以整合 FDA 品質指標報告計畫 (Quality Metrics Reporting Program) 的要素，包括：",
+   "en": "TR60 recommends using a <strong>product Quality Dashboard</strong> as part of the Stage 3a evaluation. The dashboard can incorporate elements of the FDA Quality Metrics Reporting Program, including:"
+  },
+  {
+   "zh": "批次合格率 (Lot Acceptance Rate)",
+   "en": "Lot Acceptance Rate"
+  },
+  {
+   "zh": "客訴率 (Complaint Rate)",
+   "en": "Complaint Rate"
+  },
+  {
+   "zh": "產品品質偏差率 (Product Quality Deviation Rate)",
+   "en": "Product Quality Deviation Rate"
+  },
+  {
+   "zh": "透過儀表板呈現的數據，可以向 FDA 證明製造場址和製程屬於<strong>低風險 (low risk)</strong>等級。",
+   "en": "Data presented through the dashboard can demonstrate to FDA that the manufacturing site and process are <strong>low risk</strong>."
+  },
+  {
+   "zh": "TR60 特別提醒：由於 Stage 3a 的批次數量較少，初步的<strong>製程能力評估 (process capability assessment)</strong> 需要謹慎解讀。統計指標如 Ppk 在小樣本下的信賴區間會很寬，不宜過度依賴單一數值。",
+   "en": "TR60 specifically cautions that, because the number of batches in Stage 3a is small, the preliminary <strong>process capability assessment</strong> must be interpreted carefully. Statistical indices such as Ppk have wide confidence intervals with small samples, so a single value should not be relied on too heavily."
+  },
+  {
+   "zh": "此外，TR60 強調 Stage 3a 的統計工具選擇應由<strong>受過訓練的統計學家 (trained statistician)</strong> 負責——這不是一般品質人員可以自行決定的事項。",
+   "en": "In addition, TR60 stresses that the selection of statistical tools for Stage 3a should be the responsibility of a <strong>trained statistician</strong>; this is not something general quality staff should decide on their own."
+  },
+  {
+   "zh": "TR60 指出 Stage 3a 評估的知識可以應用於新的、類似的製程或產品開發。對 CDMO 而言，這是一個重要的<strong>知識資產 (knowledge asset)</strong>：",
+   "en": "TR60 notes that the knowledge gained from the Stage 3a evaluation can be applied to the development of new, similar processes or products. For a CDMO, this is an important <strong>knowledge asset</strong>:"
+  },
+  {
+   "zh": "客戶 A 的單株抗體產品 Stage 3a 數據可以作為客戶 B 類似產品開發的參考",
+   "en": "Stage 3a data from Client A’s monoclonal antibody product can serve as a reference for developing a similar product for Client B"
+  },
+  {
+   "zh": "某平台製程的 Stage 3a 報告可以加速新產品的 Stage 1 風險評估",
+   "en": "A platform process’s Stage 3a report can accelerate the Stage 1 risk assessment of a new product"
+  },
+  {
+   "zh": "跨產品的趨勢比較可以識別場址層級的系統性問題",
+   "en": "Cross-product trend comparison can identify systemic site-level problems"
+  },
+  {
+   "zh": "為什麼 Stage 3a 報告需要包含「QbD 設計空間驗證」？這與 Stage 1 的設計空間有什麼關係？",
+   "en": "Why does the Stage 3a report need to include \"verification of the QbD design space\"? How does this relate to the design space from Stage 1?"
+  },
+  {
+   "zh": "如果你的 Stage 3a 評估發現某個 CPP 的實際操作範圍比 Stage 1 設計空間窄很多，這代表什麼？你會採取什麼行動？",
+   "en": "If your Stage 3a evaluation finds that the actual operating range of a CPP is much narrower than the Stage 1 design space, what does this mean? What action would you take?"
+  },
+  {
+   "zh": "Quality Dashboard 如何幫助 CDMO 在 FDA 檢查時展示製程的穩健性？",
+   "en": "How can a Quality Dashboard help a CDMO demonstrate process robustness during an FDA inspection?"
+  },
+  {
+   "zh": "<strong>5.5.2 Stage 3b Reporting 5.5.2 第三階段 b 報告</strong>",
+   "en": "<strong>5.5.2 Stage 3b Reporting</strong>"
+  },
+  {
+   "zh": "Stage 3b 報告與 Stage 3a 有根本性的不同：",
+   "en": "Stage 3b reporting differs fundamentally from Stage 3a:"
+  },
+  {
+   "zh": "<strong>Stage 3a:</strong> 一次性的總結報告，在完成強化取樣後撰寫",
+   "en": "<strong>Stage 3a:</strong> A one-time summary report written after the enhanced sampling is complete"
+  },
+  {
+   "zh": "<strong>Stage 3b:</strong> 持續性的監控報告，融入日常批次生產作業中",
+   "en": "<strong>Stage 3b:</strong> An ongoing monitoring report built into routine batch production operations"
+  },
+  {
+   "zh": "Stage 3b 的取樣和測試要求可以直接納入<strong>主批次紀錄 (Master Batch Record)</strong>，這意味著 CPV 監控不是一個獨立的額外活動，而是日常生產流程的一部分。",
+   "en": "The sampling and testing requirements for Stage 3b can be incorporated directly into the <strong>Master Batch Record</strong>, which means that CPV monitoring is not a separate, additional activity but part of the routine production process."
+  },
+  {
+   "zh": "TR60 提出一個重要的時效性要求：<strong>Stage 3b 信號必須在開始處理下一批產品之前得到處理。</strong>這意味著：",
+   "en": "TR60 sets out an important timeliness requirement: <strong>Stage 3b signals must be addressed before the next batch of product is started.</strong> This means:"
+  },
+  {
+   "zh": "CPV 數據回顧不能等到月底或季度才進行",
+   "en": "CPV data review cannot wait until the end of the month or quarter"
+  },
+  {
+   "zh": "需要即時或近即時的數據趨勢系統",
+   "en": "A real-time or near-real-time data trending system is needed"
+  },
+  {
+   "zh": "決策流程必須足夠簡潔，不會造成生產延誤",
+   "en": "The decision-making process must be streamlined enough not to cause production delays"
+  },
+  {
+   "zh": "對於高頻率生產的產品（如每天多批），這對數據系統和人員效率都是很大的挑戰。",
+   "en": "For high-frequency products (for example, several batches per day), this is a major challenge for both data systems and staff efficiency."
+  },
+  {
+   "zh": "Stage 3b 監控就像航空公司的<strong>飛航安全檢查制度</strong>。每次飛行後，機組人員都會回報任何異常（批次後數據回顧）。如果發現任何信號（如引擎振動異常），必須在下一次起飛前解決——你不能讓有潛在問題的飛機繼續載客。同樣地，CPV 信號必須在下一批產品開始之前被處理。",
+   "en": "Stage 3b monitoring is like an airline’s <strong>flight safety inspection system</strong>. After every flight, the crew reports any abnormality (post-batch data review). If any signal is found (such as abnormal engine vibration), it must be resolved before the next takeoff; you cannot let an aircraft with a potential problem keep carrying passengers. Likewise, CPV signals must be addressed before the next batch of product is started."
+  },
+  {
+   "zh": "為什麼 TR60 建議將 Stage 3b 取樣要求納入主批次紀錄，而非獨立的 CPV 協議？",
+   "en": "Why does TR60 recommend incorporating Stage 3b sampling requirements into the Master Batch Record rather than into a separate CPV protocol?"
+  },
+  {
+   "zh": "在一個每天生產 3 批的高速產線上，如何確保 CPV 信號在下一批開始前被處理？需要什麼樣的系統支援？",
+   "en": "On a high-speed line producing 3 batches per day, how can you ensure that CPV signals are addressed before the next batch starts? What system support is needed?"
+  },
+  {
+   "zh": "<strong>5.5.3 Utilizing Continued Process Verification for Annual Product Review / Yearly Biologic Product Report 5.5.3 運用持續製程驗證於年度產品審查 / 年度生物製品報告</strong>",
+   "en": "<strong>5.5.3 Utilizing Continued Process Verification for Annual Product Review / Yearly Biologic Product Report</strong>"
+  },
+  {
+   "zh": "<strong>APQR (Annual Product Quality Review, 年度產品品質回顧):</strong> 又稱 APR，是法規要求的年度性綜合品質評估，涵蓋製造、品質、合規等多面向。",
+   "en": "<strong>APQR (Annual Product Quality Review):</strong> Also called APR, this is a regulatory-required annual comprehensive quality assessment covering manufacturing, quality, compliance and other aspects."
+  },
+  {
+   "zh": "<strong>YBPR (Yearly Biologic Product Report, 年度生物製品報告):</strong> 生物製品特有的年度報告要求。",
+   "en": "<strong>YBPR (Yearly Biologic Product Report):</strong> An annual reporting requirement specific to biological products."
+  },
+  {
+   "zh": "TR60 明確指出兩個關鍵原則：",
+   "en": "TR60 clearly states two key principles:"
+  },
+  {
+   "zh": "<strong>CPV 不能取代 APQR</strong>（在 Section 5.1.3 中已提及）",
+   "en": "<strong>CPV cannot replace the APQR</strong> (already mentioned in Section 5.1.3)"
+  },
+  {
+   "zh": "<strong>CAPA 不應等到 APQR 季節才執行</strong>——應該在每批生產時就處理",
+   "en": "<strong>CAPA should not wait for APQR season</strong>; it should be handled as each batch is produced"
+  },
+  {
+   "zh": "CPV 提供的是持續性、即時性的數據分析，而 APQR 是一個定期的全面性回顧。兩者互補但不可互相替代。",
+   "en": "CPV provides continuous, real-time data analysis, while the APQR is a periodic, comprehensive review. The two are complementary but not interchangeable."
+  },
+  {
+   "zh": "從表 5.5.3-1 可以觀察到一個清晰的模式：",
+   "en": "A clear pattern can be seen in Table 5.5.3-1:"
+  },
+  {
+   "zh": "<strong>CPV 支持的要素（10 項）：</strong>主要是與製程數據、趨勢分析直接相關的項目——批次回顧、原料屬性、環境監控、收率趨勢、CPP/CQA 趨勢等。",
+   "en": "<strong>Elements supported by CPV (10 items):</strong> Mainly items directly related to process data and trend analysis, such as batch review, raw material attributes, environmental monitoring, yield trends and CPP/CQA trends."
+  },
+  {
+   "zh": "<strong>CPV 不支持的要素（8 項）：</strong>主要是品質管理系統層面的項目——訓練、客訴、召回、品質協議等。這些需要 QMS 其他模組的數據支持。",
+   "en": "<strong>Elements not supported by CPV (8 items):</strong> Mainly items at the quality management system level, such as training, complaints, recalls and quality agreements. These need data from other QMS modules."
+  },
+  {
+   "zh": "這說明 CPV 是 APQR 的<strong>重要數據來源</strong>，但 APQR 的範圍比 CPV 更廣，需要整合多個品質系統的資訊。",
+   "en": "This shows that CPV is an <strong>important data source</strong> for the APQR, but the scope of the APQR is broader than CPV and requires information integrated from multiple quality systems."
+  },
+  {
+   "zh": "CPV 與 APQR 的關係就像<strong>月報與年報</strong>的關係。公司的財務月報（CPV）提供即時的營運數據，讓管理層能及時發現問題並採取行動。年度財報（APQR）則是更全面的檢視，包含策略評估、公司治理、社會責任等月報不會涵蓋的內容。你不會等到年底才處理現金流問題（不應等到 APQR 才執行 CAPA），但年報仍然需要整合所有月報的數據。",
+   "en": "The relationship between CPV and the APQR is like that between a <strong>monthly report and an annual report</strong>. A company’s monthly financial report (CPV) provides real-time operating data so that management can spot problems and act in time. The annual financial report (APQR) is a more comprehensive review that includes strategy assessment, corporate governance, social responsibility and other content the monthly reports do not cover. You would not wait until year-end to deal with a cash flow problem (CAPA should not wait for the APQR), but the annual report still needs to consolidate the data from all the monthly reports."
+  },
+  {
+   "zh": "一個成熟的 CPV 計畫可以大幅提升 APQR 的效率：",
+   "en": "A mature CPV program can greatly improve the efficiency of the APQR:"
+  },
+  {
+   "zh": "<strong>數據就緒：</strong>表中 10 個「Yes」的要素，CPV 系統已經持續收集和分析數據，APQR 時只需彙整引用",
+   "en": "<strong>Data readiness:</strong> For the 10 elements marked \"Yes\" in the table, the CPV system is already collecting and analyzing data on an ongoing basis, so the APQR only needs to compile and cite them"
+  },
+  {
+   "zh": "<strong>減少重工：</strong>無需在 APQR 季節重新趨勢分析已經在 CPV 中完成的數據",
+   "en": "<strong>Less rework:</strong> There is no need to re-trend, during APQR season, data that have already been trended in CPV"
+  },
+  {
+   "zh": "<strong>前瞻性管理：</strong>CPV 信號已在日常中處理，APQR 只需確認所有信號都已被適當回應",
+   "en": "<strong>Proactive management:</strong> CPV signals are already handled day to day, so the APQR only needs to confirm that all signals were appropriately addressed"
+  },
+  {
+   "zh": "對 CDMO 而言，管理數十個產品的 APQR 是巨大的工作量。良好的 CPV 計畫可以從根本上降低 APQR 的執行負擔。",
+   "en": "For a CDMO, managing the APQRs of dozens of products is an enormous workload. A good CPV program can fundamentally reduce the burden of executing the APQR."
+  },
+  {
+   "zh": "為什麼「PM/Cal Review」和「Training Review」不被視為 CPV 支持的 APQR 要素？這些項目的數據來源是什麼？",
+   "en": "Why are \"PM/Cal Review\" and \"Training Review\" not considered APQR elements supported by CPV? What are the data sources for these items?"
+  },
+  {
+   "zh": "如果你的 CPV 系統在第 6 個月偵測到某 CQA 的顯著漂移並已完成 CAPA，在年度 APQR 中你應該如何呈現這個事件？",
+   "en": "If your CPV system detects a significant drift in a CQA in month 6 and the CAPA has been completed, how should you present this event in the annual APQR?"
+  },
+  {
+   "zh": "請解釋為什麼「CAPA 不應等到 APQR 季節才執行」對患者安全至關重要。",
+   "en": "Explain why \"CAPA should not wait for APQR season\" is critical to patient safety."
+  },
+  {
+   "zh": "<strong>CPV 信號是「黃旗」而非「紅旗」：</strong>CPV 數據信號代表製程變異和漂移，需要系統性評估其嚴重程度，而非立即觸發糾正行動。FDA 明確要求防止對個別事件過度反應。",
+   "en": "<strong>CPV signals are \"yellow flags,\" not \"red flags\":</strong> CPV data signals represent process variation and drift, and their significance must be evaluated systematically rather than triggering immediate corrective action. FDA explicitly requires preventing overreaction to individual events."
+  },
+  {
+   "zh": "<strong>Decision Tree 三路徑模型：</strong>CPV 信號經過 OOS/OOT 排除、統計顯著性評估和變更審查後，根據變異類型（可歸因/共同原因/特殊原因）分別導向繼續監控、評估控制策略或要求變更三條路徑。Stage 3a 和 Stage 3b 因數據量不同需要不同的決策方法。",
+   "en": "<strong>The three-path decision tree model:</strong> After OOS/OOT exclusion, statistical significance assessment and change review, a CPV signal is directed, according to the type of variation (assignable / common cause / special cause), to one of three paths: continue monitoring, evaluate the control strategy or request a change. Stage 3a and Stage 3b need different decision-making approaches because of the different amounts of data."
+  },
+  {
+   "zh": "<strong>CPV 是生命週期變更管理的核心工具：</strong>透過品質系統的整合，CPV 提供即時到長期的多層級回饋機制（批內即時、批次後、系列批次後、定期），確保變更不會負面影響產品品質。",
+   "en": "<strong>CPV is a core tool for lifecycle change management:</strong> Through integration with the quality system, CPV provides multi-level feedback mechanisms from real-time to long-term (intra-batch real-time, after each batch, after a series of batches, periodic), ensuring that changes do not adversely affect product quality."
+  },
+  {
+   "zh": "<strong>Established Conditions (ECs) 與 ICH Q12：</strong>法規核准文件中具有約束力的資訊變更需要申報。目前各國法規不一致導致一項變更可能需要 3-5 年才能全球實施，ICH Q12 旨在解決此問題。",
+   "en": "<strong>Established Conditions (ECs) and ICH Q12:</strong> Changes to binding information in regulatory approval documents must be filed. Inconsistent regulations across countries currently mean that a single change can take 3-5 years to implement worldwide; ICH Q12 aims to address this problem."
+  },
+  {
+   "zh": "<strong>Stage 3a 報告是全面性統計評估：</strong>涵蓋 13 個核心要素，包括變異性分析、相關性分析、歷史數據回顧和前瞻性建議。注意初步製程能力評估在小樣本下需謹慎解讀。",
+   "en": "<strong>The Stage 3a report is a comprehensive statistical evaluation:</strong> It covers 13 core elements, including variability analysis, correlation analysis, historical data review and forward-looking recommendations. Note that the preliminary process capability assessment must be interpreted carefully with small samples."
+  },
+  {
+   "zh": "<strong>Stage 3b 融入日常生產：</strong>取樣要求可納入主批次紀錄，信號必須在下一批開始前處理，需要即時或近即時的數據系統支援。",
+   "en": "<strong>Stage 3b is built into routine production:</strong> Sampling requirements can be incorporated into the Master Batch Record, signals must be addressed before the next batch starts, and a real-time or near-real-time data system is needed to support this."
+  },
+  {
+   "zh": "<strong>CPV 支持但不取代 APQR：</strong>CPV 可支持 APQR 中 10 個核心要素的數據需求，但 APQR 仍需整合 QMS 其他模組的資訊。CAPA 不應延遲至 APQR 季節才執行。",
+   "en": "<strong>CPV supports but does not replace the APQR:</strong> CPV can supply the data needs of 10 core APQR elements, but the APQR still needs to integrate information from other QMS modules. CAPA should not be delayed until APQR season."
+  }
+ ]
+}

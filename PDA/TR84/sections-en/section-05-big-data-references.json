@@ -1,0 +1,569 @@
+{
+ "source": "section-05-big-data-references.html",
+ "blocks": [
+  {
+   "zh": "Section 5: Big Data &amp; References / 大數據管控與參考資料",
+   "en": "Section 5: Big Data &amp; References"
+  },
+  {
+   "zh": "學習目標 Learning Objectives",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解大數據 (Big Data) 對製藥製造資料完整性管控的挑戰，並說明為何傳統人工稽核軌跡審查方法無法因應大量資料的監管需求。",
+   "en": "Understand the data integrity challenges that big data poses for pharmaceutical manufacturing, and explain why traditional manual audit trail review cannot meet regulatory expectations at this data volume."
+  },
+  {
+   "zh": "辨識 TR84 第 6.0 節對大數據治理框架的定位，以及後續 PDA 技術報告將涵蓋的核心議題（資料分類、資料所有權、存取管理、變更管理）。",
+   "en": "Identify how TR84 Section 6.0 positions big data governance, and the core topics that later PDA technical reports will cover (data classification, data ownership, access management, change management)."
+  },
+  {
+   "zh": "掌握 TR84 參考文獻體系的結構：識別 FDA、MHRA、WHO、PIC/S、ICH、EMA、ISPE 等各主管機關 / 組織的核心資料完整性指引文件，及其在 CDMO 法規遵循中的應用優先順序。",
+   "en": "Understand the structure of the TR84 reference system: identify the core data integrity guidance documents from FDA, MHRA, WHO, PIC/S, ICH, EMA, ISPE and other authorities and organizations, and their order of priority for regulatory compliance at a CDMO."
+  },
+  {
+   "zh": "在 CDMO 無菌充填環境中，能夠運用本節知識評估現有資料管控措施是否具備因應未來大數據時代的擴充能力，並識別需要強化治理架構的關鍵領域。",
+   "en": "In a CDMO sterile filling environment, use this section to assess whether current data controls can scale to the big data era, and identify the key areas where the governance framework needs strengthening."
+  },
+  {
+   "zh": "本節內容 Contents",
+   "en": "Contents"
+  },
+  {
+   "zh": "<a href=\"#sec-6\">6.0 大數據管控</a>\n<a href=\"#sec-7\">7.0 參考文獻</a>\n<a href=\"#ref-regulatory\">法規指引類</a>\n<a href=\"#ref-ich\">ICH 品質指引</a>\n<a href=\"#ref-industry\">業界指南類</a>\n<a href=\"#summary\">章節總結</a>",
+   "en": "<a href=\"#sec-6\">6.0 Big Data Management</a>\n<a href=\"#sec-7\">7.0 References</a>\n<a href=\"#ref-regulatory\">Regulatory Guidance</a>\n<a href=\"#ref-ich\">ICH Quality Guidelines</a>\n<a href=\"#ref-industry\">Industry Guidance</a>\n<a href=\"#summary\">Section Summary</a>"
+  },
+  {
+   "zh": "大數據管控與資料完整性 | p38",
+   "en": "Big Data Management and Data Integrity | p38"
+  },
+  {
+   "zh": "解說與應用（繁體中文）",
+   "en": "Commentary and Application"
+  },
+  {
+   "zh": "核心概念：什麼是大數據 (Big Data) 的挑戰？",
+   "en": "Core Concept: What Is the Big Data Challenge?"
+  },
+  {
+   "zh": "TR84 第 6.0 節是全份文件的<strong>前瞻性節點</strong>。PDA 在此承認：傳統資料完整性管控框架（人工審查、紙本稽核軌跡、二次見證）已無法因應製藥製造數位化後產生的資料量。",
+   "en": "TR84 Section 6.0 is the <strong>forward-looking point</strong> of the whole document. Here PDA acknowledges that the traditional data integrity control framework (manual review, paper audit trails, second-person verification) cannot cope with the volume of data generated once pharmaceutical manufacturing goes digital."
+  },
+  {
+   "zh": "大數據 (Big Data) 在製藥製造中的典型來源包括：",
+   "en": "Typical sources of big data in pharmaceutical manufacturing include:"
+  },
+  {
+   "zh": "物聯網 (IoT) 感測器連續監測（溫度、壓力、濕度、粒子計數）",
+   "en": "Continuous monitoring by Internet of Things (IoT) sensors (temperature, pressure, humidity, particle counts)"
+  },
+  {
+   "zh": "連續製造 (Continuous Manufacturing) 設備每秒生成的製程參數紀錄",
+   "en": "Process parameter records generated every second by continuous manufacturing equipment"
+  },
+  {
+   "zh": "即時放行測試 (Real-Time Release Testing, RTRT) 的光譜與近紅外線資料流",
+   "en": "Spectral and near-infrared data streams from Real-Time Release Testing (RTRT)"
+  },
+  {
+   "zh": "環境監測系統 (EMS) 的長期趨勢資料",
+   "en": "Long-term trending data from the environmental monitoring system (EMS)"
+  },
+  {
+   "zh": "比喻：傳統 DI 方法遇上大數據，像什麼情況？",
+   "en": "Analogy: What Happens When Traditional DI Methods Meet Big Data?"
+  },
+  {
+   "zh": "想像你的倉庫每天進出 100 筆記錄，品管人員可以逐筆核對。現在同一個倉庫安裝了 IoT 感測器，每分鐘自動產生 2,000 筆溫度讀值——每天就是 288 萬筆。",
+   "en": "Imagine your warehouse handles 100 records a day, and a QC reviewer can check each one. Now the same warehouse is fitted with IoT sensors that automatically generate 2,000 temperature readings every minute, or 2.88 million a day."
+  },
+  {
+   "zh": "要求 QA 人員「逐筆人工審查稽核軌跡」等於要求一個人在 8 小時內讀完一本 10,000 頁的書。物理上不可能；監管要求卻未因此消失。",
+   "en": "Asking QA staff to \"manually review the audit trail record by record\" is like asking one person to read a 10,000-page book in 8 hours. It is physically impossible, yet the regulatory expectation does not go away."
+  },
+  {
+   "zh": "這就是為什麼 Big Data 需要一套全新的治理框架，而不只是「更多人力」。",
+   "en": "This is why big data needs a new governance framework, not simply \"more people\"."
+  },
+  {
+   "zh": "法規現況的空白：21 CFR 第11部分的時代侷限",
+   "en": "The Regulatory Gap: The Limits of 21 CFR Part 11 in Its Era"
+  },
+  {
+   "zh": "21 CFR Part 11（21 CFR 第11部分）制定於 1997 年，歐盟附件11 (EU Annex 11) 最後修訂於 2011 年——兩者均早於 IoT、連續製造、大規模光譜資料的普及。",
+   "en": "21 CFR Part 11 was issued in 1997 and EU Annex 11 was last revised in 2011. Both predate the widespread use of IoT, continuous manufacturing and large-scale spectral data."
+  },
+  {
+   "zh": "這些法規對「電子記錄的稽核軌跡」、「資料備份」有明確要求，但對<strong>如何管理每秒千筆以上的資料流</strong>幾乎沒有具體操作指引。",
+   "en": "These regulations set clear requirements for \"audit trails of electronic records\" and \"data backup\", but give almost no practical guidance on <strong>how to manage data streams of thousands of data points per second</strong>."
+  },
+  {
+   "zh": "TR84 的誠實態度：明確指出這個空白，並宣告「後續 PDA 技術報告將提供進一步指引」，而非虛假地套用現有框架。",
+   "en": "TR84's candid approach: it states this gap openly and announces that \"subsequent PDA technical reports will provide further guidance\", rather than falsely stretching the existing framework to fit."
+  },
+  {
+   "zh": "後續 PDA 技術報告將涵蓋的大數據治理核心議題",
+   "en": "Core Big Data Governance Topics for Subsequent PDA Technical Reports"
+  },
+  {
+   "zh": "<strong>資料分類 (Data Classification)</strong>：哪些大數據屬於 GMP 關鍵資料，哪些屬於監測/趨勢用途？",
+   "en": "<strong>Data Classification</strong>: Which big data is GMP-critical, and which is for monitoring or trending purposes?"
+  },
+  {
+   "zh": "<strong>資料所有權 (Data Ownership)</strong>：誰對資料的完整性負最終責任？",
+   "en": "<strong>Data Ownership</strong>: Who is ultimately accountable for data integrity?"
+  },
+  {
+   "zh": "<strong>存取管理 (Access Management)</strong>：大規模資料湖 (Data Lake) 的權限架構如何設計？",
+   "en": "<strong>Access Management</strong>: How should the permission architecture of a large-scale data lake be designed?"
+  },
+  {
+   "zh": "<strong>原始資料 (Source Data)</strong>：感測器原始讀值如何被保護不受竄改？",
+   "en": "<strong>Source Data</strong>: How are raw sensor readings protected from tampering?"
+  },
+  {
+   "zh": "<strong>變更管理 (Change Management)</strong>：大數據系統升級時如何維護資料連續性與合規性？",
+   "en": "<strong>Change Management</strong>: How are data continuity and compliance maintained when a big data system is upgraded?"
+  },
+  {
+   "zh": "CDMO 應用場景：你的工廠準備好了嗎？",
+   "en": "CDMO Scenario: Is Your Site Ready?"
+  },
+  {
+   "zh": "以一個典型的無菌充填 CDMO 為例，評估大數據準備度：",
+   "en": "Take a typical sterile filling CDMO and assess big data readiness:"
+  },
+  {
+   "zh": "<strong>隔離器 (Isolator) 監測資料</strong>：過氧化氫濃度、壓差、粒子計數每分鐘記錄一次，批次生產期間產生約 50,000 筆——現有 QA 審查流程如何處理？",
+   "en": "<strong>Isolator monitoring data</strong>: Hydrogen peroxide concentration, differential pressure and particle counts are recorded every minute, generating about 50,000 data points during a batch. How does the current QA review process handle this?"
+  },
+  {
+   "zh": "<strong>凍乾機 (Lyophilizer) 製程資料</strong>：溫度、真空度、冷凍速率每 30 秒採樣，一個 5 天凍乾週期產生約 14,400 筆——誰審查，審查什麼？",
+   "en": "<strong>Lyophilizer process data</strong>: Temperature, vacuum and freezing rate are sampled every 30 seconds, and a 5-day lyophilization cycle generates about 14,400 data points. Who reviews them, and what is reviewed?"
+  },
+  {
+   "zh": "<strong>自動化警報管理 (Automated Alarm Management)</strong>：現有 EBR 系統是否能設定例外事件報告 (Exception-Based Reporting)，讓 QA 只審查超出趨勢的異常點？",
+   "en": "<strong>Automated Alarm Management</strong>: Can the current EBR system be configured for Exception-Based Reporting, so that QA reviews only the points that fall outside the trend?"
+  },
+  {
+   "zh": "思考問題",
+   "en": "Questions for Reflection"
+  },
+  {
+   "zh": "TR84 第 6.0 節的正文只有三段，但意義重大。思考以下問題：",
+   "en": "The text of TR84 Section 6.0 has only three paragraphs, but its significance is considerable. Consider the following questions:"
+  },
+  {
+   "zh": "為什麼 PDA 選擇在「資料完整性」技術報告中單獨列出「大數據管控」章節，而不是整合到現有的管控框架？",
+   "en": "Why did PDA choose to give \"big data management\" its own section in a data integrity technical report rather than fold it into the existing control framework?"
+  },
+  {
+   "zh": "「資料所有權」在跨系統、跨部門的大數據環境中為什麼特別重要？以 CDMO 的製程開發 (PD) 與 QA 部門為例說明。",
+   "en": "Why is \"data ownership\" especially important in a big data environment that spans systems and departments? Use a CDMO's process development (PD) and QA departments as an example."
+  },
+  {
+   "zh": "如果稽查員問你「貴公司如何確保 IoT 感測器資料的完整性？」，你的標準答案應包含哪些要素？",
+   "en": "If an inspector asks, \"How do you ensure the integrity of IoT sensor data?\", what elements should your standard answer include?"
+  },
+  {
+   "zh": "參考文獻 | p39 – p40",
+   "en": "References | p39 – p40"
+  },
+  {
+   "zh": "參考文獻體系解說",
+   "en": "Guide to the Reference System"
+  },
+  {
+   "zh": "TR84 參考文獻的四個層次",
+   "en": "The Four Tiers of TR84 References"
+  },
+  {
+   "zh": "<strong>法規指引層</strong>：FDA、MHRA、WHO、PIC/S 的 DI 指引——稽查標準的直接依據",
+   "en": "<strong>Regulatory guidance tier</strong>: DI guidance from FDA, MHRA, WHO and PIC/S, the direct basis for inspection standards"
+  },
+  {
+   "zh": "<strong>GMP 法規層</strong>：21 CFR Part 11、21 CFR Part 211、EU Annex 11——電子記錄與 GMP 紀錄要求",
+   "en": "<strong>GMP regulation tier</strong>: 21 CFR Part 11, 21 CFR Part 211 and EU Annex 11, covering requirements for electronic records and GMP records"
+  },
+  {
+   "zh": "<strong>ICH 品質指引層</strong>：Q8、Q9、Q10、Q12——品質系統、風險管理、產品生命週期",
+   "en": "<strong>ICH quality guideline tier</strong>: Q8, Q9, Q10 and Q12, covering quality systems, risk management and the product lifecycle"
+  },
+  {
+   "zh": "<strong>業界標準層</strong>：ISPE、APIC、PDA 自身技術報告——最佳實務指引",
+   "en": "<strong>Industry standards tier</strong>: ISPE, APIC and PDA's own technical reports, covering best-practice guidance"
+  },
+  {
+   "zh": "法規參考文獻解說",
+   "en": "Regulatory References Explained"
+  },
+  {
+   "zh": "文獻 1：PDA TR80 — 實驗室 DI 管理系統",
+   "en": "Reference 1: PDA TR80 - Data Integrity Management System for Laboratories"
+  },
+  {
+   "zh": "TR84（製造 &amp; 包裝的 DI）與 TR80（實驗室的 DI）是 PDA 的「DI 雙塔」。TR80 聚焦於分析儀器（HPLC、GC、溶離度測試）的電子資料管控；TR84 則涵蓋製造製程的 DI 風險。兩份報告合併閱讀，才能建立完整的製藥設施 DI 框架。",
+   "en": "TR84 (DI in manufacturing &amp; packaging) and TR80 (DI in the laboratory) are PDA's \"twin towers\" of DI. TR80 focuses on the control of electronic data from analytical instruments (HPLC, GC, dissolution testing); TR84 covers DI risks in manufacturing processes. The two reports must be read together to build a complete DI framework for a pharmaceutical facility."
+  },
+  {
+   "zh": "文獻 2：FDA 2018 DI Q&amp;A — 稽查最高優先文件",
+   "en": "Reference 2: FDA 2018 DI Q&amp;A - The Highest-Priority Document for Inspections"
+  },
+  {
+   "zh": "FDA 的《Data Integrity and Compliance with cGMP: Questions and Answers》(2018) 是目前 FDA 稽查員現場引用頻率最高的 DI 文件。它以 Q&amp;A 形式澄清了許多實務爭議，包括：",
+   "en": "FDA's Data Integrity and Compliance with cGMP: Questions and Answers (2018) is currently the DI document most frequently cited by FDA investigators on site. In Q&amp;A format it clarifies many practical points of contention, including:"
+  },
+  {
+   "zh": "「原始資料」的定義是否包含電子元數據？（答：是）",
+   "en": "Does the definition of \"raw data\" include electronic metadata? (Answer: yes)"
+  },
+  {
+   "zh": "稽核軌跡的審查是否必須在放行前完成？（答：視情況而定，但需有 SOP）",
+   "en": "Must audit trail review be completed before release? (Answer: it depends, but there must be an SOP)"
+  },
+  {
+   "zh": "Excel 試算表是否符合 21 CFR Part 11？（答：通常不符合）",
+   "en": "Do Excel spreadsheets comply with 21 CFR Part 11? (Answer: usually not)"
+  },
+  {
+   "zh": "CDMO 建議：將此文件作為內部 DI SOP 的首要參考，確保語言與 FDA 一致。",
+   "en": "CDMO recommendation: use this document as the primary reference for your internal DI SOPs, so that the wording is consistent with FDA's."
+  },
+  {
+   "zh": "文獻 3：MHRA GXP DI 指引 — 歐洲 DI 的定義標準",
+   "en": "Reference 3: MHRA GXP DI Guidance - The European Standard for Defining DI"
+  },
+  {
+   "zh": "英國 MHRA 的《'GXP' Data Integrity Guidance and Definitions》是 ALCOA+ 原則中文版教材最常引用的英文原典。MHRA 於 2015 年首版、2018 年更新，首次清晰定義：",
+   "en": "The UK MHRA's 'GXP' Data Integrity Guidance and Definitions is the English-language source most often cited in teaching materials on the ALCOA+ principles. First issued by MHRA in 2015 and updated in 2018, it was the first to clearly define:"
+  },
+  {
+   "zh": "<strong>ALCOA+</strong>：Attributable（可歸屬）、Legible（可讀）、Contemporaneous（即時）、Original（原始）、Accurate（準確）+ Complete（完整）、Consistent（一致）、Enduring（持久）、Available（可取得）",
+   "en": "<strong>ALCOA+</strong>: Attributable, Legible, Contemporaneous, Original, Accurate + Complete, Consistent, Enduring, Available"
+  },
+  {
+   "zh": "<strong>Audit Trail</strong> 的最低要求",
+   "en": "The minimum requirements for an <strong>Audit Trail</strong>"
+  },
+  {
+   "zh": "<strong>Static vs. Dynamic data</strong> 的區分方式",
+   "en": "How to distinguish <strong>static vs. dynamic data</strong>"
+  },
+  {
+   "zh": "文獻 5：PIC/S DI 指引 — GDP 環境的擴展",
+   "en": "Reference 5: PIC/S DI Guidance - Extension to the GDP Environment"
+  },
+  {
+   "zh": "PIC/S（藥物稽查合作計畫）的 DI 指引特別重要，因為它同時涵蓋 <strong>GMP 與 GDP（優良配銷規範）環境</strong>，對 CDMO 的倉儲、冷鏈管理、物流分包商管理均有規範意義。台灣 PIC/S 會員身份使此文件對台灣 CDMO 具直接法規效力。",
+   "en": "The PIC/S (Pharmaceutical Inspection Co-operation Scheme) DI guidance is especially important because it covers <strong>both GMP and GDP (Good Distribution Practice) environments</strong>, and so is relevant to a CDMO's warehousing, cold chain management and oversight of logistics subcontractors. Taiwan's PIC/S membership gives this document direct regulatory force for Taiwan CDMOs."
+  },
+  {
+   "zh": "文獻 13：21 CFR Part 11 — 電子記錄法規的原點",
+   "en": "Reference 13: 21 CFR Part 11 - The Origin of Electronic Records Regulation"
+  },
+  {
+   "zh": "21 CFR Part 11 是「電子記錄與電子簽章」的核心法規，制定於 1997 年。它規定了：",
+   "en": "21 CFR Part 11 is the core regulation on \"electronic records and electronic signatures\" and was issued in 1997. It specifies:"
+  },
+  {
+   "zh": "電子記錄何時可等同於紙本記錄",
+   "en": "When an electronic record can be considered equivalent to a paper record"
+  },
+  {
+   "zh": "電子簽章的法律效力條件",
+   "en": "The conditions under which an electronic signature has legal effect"
+  },
+  {
+   "zh": "稽核軌跡的最低要求（可讀、只能新增不可修改）",
+   "en": "The minimum requirements for audit trails (readable, append-only and not modifiable)"
+  },
+  {
+   "zh": "重要注意：21 CFR Part 11 本身並不要求「所有製程必須電子化」，而是規定「若使用電子記錄，必須符合這些最低標準」。這個區別在稽查應答中很重要。",
+   "en": "Important note: 21 CFR Part 11 does not itself require that \"all processes must be electronic\"; it requires that \"if electronic records are used, they must meet these minimum standards\". This distinction matters when responding to inspections."
+  },
+  {
+   "zh": "文獻 15–16：FDA 警告信 — 真實 DI 違規案例",
+   "en": "References 15-16: FDA Warning Letters - Real DI Violation Cases"
+  },
+  {
+   "zh": "TR84 引用了真實的 FDA 警告信作為佐證。這反映了 PDA 的務實態度：資料完整性不只是理論框架，而是有真實的法規後果。",
+   "en": "TR84 cites actual FDA warning letters as supporting evidence. This reflects PDA's practical approach: data integrity is not just a theoretical framework but carries real regulatory consequences."
+  },
+  {
+   "zh": "對 CDMO 的啟示：建議建立一份「DI 警告信資料庫」，定期追蹤 FDA 對競業或同類設施的執法行動，作為內部風險評估的預警訊號。",
+   "en": "Implication for CDMOs: build a \"DI warning letter database\" and regularly track FDA enforcement actions against competitors or similar facilities, as an early warning signal for internal risk assessment."
+  },
+  {
+   "zh": "比喻：國際 DI 法規的多邊地圖",
+   "en": "Analogy: A Multilateral Map of International DI Regulation"
+  },
+  {
+   "zh": "TR84 引用了 FDA（美國）、MHRA（英國）、WHO（全球）、PIC/S（國際互認）、NMPA（中國）、TGA（澳洲）、俄羅斯 SID&amp;GP 七個主管機關的 DI 文件。",
+   "en": "TR84 cites DI documents from seven authorities: FDA (US), MHRA (UK), WHO (global), PIC/S (international mutual recognition), NMPA (China), TGA (Australia) and Russia's SID&amp;GP."
+  },
+  {
+   "zh": "對一個服務全球客戶的 CDMO 而言，這張「多邊法規地圖」意味著：你的 DI 系統必須同時滿足不同市場的要求，或者清楚知道你的主要目標市場以設定優先順序。FDA + EU + 台灣 TFDA 通常是無菌充填 CDMO 最優先需要對齊的三個法規體系。",
+   "en": "For a CDMO serving global customers, this \"multilateral regulatory map\" means your DI system must satisfy the requirements of different markets at the same time, or you must be clear about your main target markets so that you can set priorities. FDA + EU + Taiwan TFDA are usually the three regulatory systems a sterile filling CDMO most needs to align with first."
+  },
+  {
+   "zh": "FDA (文獻2)、MHRA (文獻3)、WHO (文獻4)、PIC/S (文獻5) 都發布了各自的 DI 指引，且内容有部分重疊。在你的 CDMO 中：",
+   "en": "FDA (Reference 2), MHRA (Reference 3), WHO (Reference 4) and PIC/S (Reference 5) have each issued their own DI guidance, and the content partly overlaps. In your CDMO:"
+  },
+  {
+   "zh": "你的 DI SOP 主要參考哪個機構的定義？為什麼？",
+   "en": "Whose definitions does your DI SOP mainly follow, and why?"
+  },
+  {
+   "zh": "如果 FDA 和 MHRA 的定義有細微差異（例如「原始記錄」的範圍），你會如何在 SOP 中處理？",
+   "en": "If the FDA and MHRA definitions differ subtly (for example, in the scope of \"original record\"), how would you handle this in the SOP?"
+  },
+  {
+   "zh": "ICH 指引與 EU Annex 11 解說",
+   "en": "ICH Guidelines and EU Annex 11 Explained"
+  },
+  {
+   "zh": "文獻 8：ICH Q9 — TR84 風險分析框架的理論基礎",
+   "en": "Reference 8: ICH Q9 - The Theoretical Basis of TR84's Risk Analysis Framework"
+  },
+  {
+   "zh": "ICH Q9（品質風險管理）是 TR84 整個「9-Box 脆弱性網格」方法論的根基。TR84 的核心貢獻是將 ICH Q9 的風險管理原則具體應用到資料完整性領域：",
+   "en": "ICH Q9 (Quality Risk Management) is the foundation of TR84's whole \"9-box vulnerability grid\" methodology. TR84's core contribution is to apply the risk management principles of ICH Q9 specifically to data integrity:"
+  },
+  {
+   "zh": "風險辨識 → 識別資料脆弱性因素",
+   "en": "Risk identification → identify data vulnerability factors"
+  },
+  {
+   "zh": "風險評估 → 資料重要性 × 管控水準 = 脆弱性等級",
+   "en": "Risk assessment → data criticality × level of control = vulnerability level"
+  },
+  {
+   "zh": "風險控制 → 選擇適當的 DI 管控措施",
+   "en": "Risk control → select appropriate DI controls"
+  },
+  {
+   "zh": "風險回顧 → 定期重新評估脆弱性狀態",
+   "en": "Risk review → periodically reassess the vulnerability status"
+  },
+  {
+   "zh": "理解 ICH Q9 是正確應用 TR84 框架的先決條件。",
+   "en": "Understanding ICH Q9 is a prerequisite for applying the TR84 framework correctly."
+  },
+  {
+   "zh": "文獻 7：ICH Q10 — 製藥品質系統對 DI 的要求",
+   "en": "Reference 7: ICH Q10 - What the Pharmaceutical Quality System Requires for DI"
+  },
+  {
+   "zh": "ICH Q10 確立了製藥品質系統 (PQS) 的四大要素，其中<strong>「知識管理」</strong>與<strong>「品質風險管理」</strong>兩項直接關聯資料完整性：",
+   "en": "ICH Q10 establishes the four key elements of the Pharmaceutical Quality System (PQS), of which <strong>\"knowledge management\"</strong> and <strong>\"quality risk management\"</strong> relate directly to data integrity:"
+  },
+  {
+   "zh": "知識管理要求資料在整個生命週期中被妥善捕獲、儲存、分析",
+   "en": "Knowledge management requires that data be properly captured, stored and analyzed throughout its lifecycle"
+  },
+  {
+   "zh": "偏差管理流程要求完整、即時、可歸屬的記錄",
+   "en": "The deviation management process requires complete, contemporaneous and attributable records"
+  },
+  {
+   "zh": "CAPA 系統的有效性依賴於準確的原始資料",
+   "en": "The effectiveness of the CAPA system depends on accurate raw data"
+  },
+  {
+   "zh": "文獻 27–28：ICH Q8 &amp; Q12 — DI 在產品生命週期中的延伸",
+   "en": "References 27-28: ICH Q8 &amp; Q12 - Extending DI Across the Product Lifecycle"
+  },
+  {
+   "zh": "<strong>ICH Q8(R2)</strong>（藥品開發）引入了設計空間 (Design Space) 概念，要求開發資料的完整可追溯性——這正是 DI 原則的延伸應用。",
+   "en": "<strong>ICH Q8(R2)</strong> (Pharmaceutical Development) introduced the concept of Design Space and requires complete traceability of development data, which is an extension of DI principles."
+  },
+  {
+   "zh": "<strong>ICH Q12</strong>（產品生命週期管理）涉及上市後變更管理，而變更的支持數據必須符合 DI 要求。在 CDMO 中，協助客戶進行技術轉移時，歷史製程資料的 DI 合規性直接影響 NDA/MAA 補件審查結果。",
+   "en": "<strong>ICH Q12</strong> (Product Lifecycle Management) deals with post-approval change management, and the data supporting a change must meet DI requirements. When a CDMO supports a customer in technology transfer, the DI compliance of historical process data directly affects the outcome of NDA/MAA supplement reviews."
+  },
+  {
+   "zh": "文獻 29：EU Annex 11 — 電腦化系統的歐盟標準",
+   "en": "Reference 29: EU Annex 11 - The EU Standard for Computerised Systems"
+  },
+  {
+   "zh": "EU Annex 11（歐盟附件11）是對應美國 21 CFR Part 11 的歐盟法規，但在某些方面要求更嚴格：",
+   "en": "EU Annex 11 is the EU counterpart of US 21 CFR Part 11, but is stricter in some respects:"
+  },
+  {
+   "zh": "明確要求對電腦化系統進行<strong>驗證 (Validation)</strong>，包括供應商評估",
+   "en": "It explicitly requires <strong>validation</strong> of computerised systems, including supplier assessment"
+  },
+  {
+   "zh": "要求稽核軌跡的可讀性與回溯性",
+   "en": "It requires audit trails to be readable and retrospectively reviewable"
+  },
+  {
+   "zh": "涵蓋雲端服務與外包系統的管控要求（在 2011 年版本中已有前瞻性規定）",
+   "en": "It covers control requirements for cloud services and outsourced systems (a forward-looking provision already in the 2011 version)"
+  },
+  {
+   "zh": "要求<strong>數據備份與災難復原</strong>計畫的文件化驗證",
+   "en": "It requires documented validation of <strong>data backup and disaster recovery</strong> plans"
+  },
+  {
+   "zh": "對同時服務 FDA 與 EMA 市場的 CDMO：EU Annex 11 + 21 CFR Part 11 的對比分析是 CSV (Computer System Validation) 專案的必要前置作業。",
+   "en": "For a CDMO serving both the FDA and EMA markets, a comparative analysis of EU Annex 11 and 21 CFR Part 11 is a necessary preliminary step in any CSV (Computer System Validation) project."
+  },
+  {
+   "zh": "CDMO 應用場景：ICH Q9 × TR84 的實務整合",
+   "en": "CDMO Scenario: Practical Integration of ICH Q9 × TR84"
+  },
+  {
+   "zh": "在你的年度品質系統審查 (Annual Product Review / PQR) 中，如何將 ICH Q9 的風險管理工具應用於資料完整性監控？",
+   "en": "In your Annual Product Review / PQR, how can the risk management tools of ICH Q9 be applied to data integrity monitoring?"
+  },
+  {
+   "zh": "<strong>定期重新評估</strong>：每年對所有製程的 9-Box 定位進行一次正式審查，確認是否因系統升級或新設備引進而改變脆弱性等級",
+   "en": "<strong>Periodic reassessment</strong>: Formally review the 9-box position of every process once a year, to confirm whether a system upgrade or new equipment has changed the vulnerability level"
+  },
+  {
+   "zh": "<strong>趨勢分析觸發</strong>：稽核軌跡異常頻率若超過預設閾值，應自動觸發 CAPA",
+   "en": "<strong>Trend analysis trigger</strong>: If the frequency of audit trail anomalies exceeds a preset threshold, a CAPA should be triggered automatically"
+  },
+  {
+   "zh": "<strong>供應商 DI 評估</strong>：將 ICH Q9 的供應商風險評估整合進 DI 稽查清單，特別針對提供電子批次記錄軟體的供應商",
+   "en": "<strong>Supplier DI assessment</strong>: Integrate the supplier risk assessment from ICH Q9 into the DI audit checklist, especially for suppliers of electronic batch record software"
+  },
+  {
+   "zh": "業界標準與 PDA 自身文件解說",
+   "en": "Industry Standards and PDA's Own Documents Explained"
+  },
+  {
+   "zh": "文獻 23：ISPE GAMP Guide: Records &amp; Data Integrity — 技術實作的橋樑",
+   "en": "Reference 23: ISPE GAMP Guide: Records &amp; Data Integrity - The Bridge to Technical Implementation"
+  },
+  {
+   "zh": "ISPE GAMP（電腦化系統驗證優良自動化製造實務）的資料完整性指南是「法規要求」與「IT 系統實作」之間最重要的橋樑文件。它具體說明了：",
+   "en": "The data integrity guide from ISPE GAMP (Good Automated Manufacturing Practice) is the most important bridging document between \"regulatory requirements\" and \"IT system implementation\". It specifically explains:"
+  },
+  {
+   "zh": "各類電腦化系統（Category 1–5）的 DI 控制要求差異",
+   "en": "How DI control requirements differ across categories of computerised systems (Category 1-5)"
+  },
+  {
+   "zh": "稽核軌跡的技術設計規範",
+   "en": "Technical design specifications for audit trails"
+  },
+  {
+   "zh": "電子記錄的元數據管理要求",
+   "en": "Metadata management requirements for electronic records"
+  },
+  {
+   "zh": "雲端與 SaaS 系統的特殊 DI 考量",
+   "en": "Special DI considerations for cloud and SaaS systems"
+  },
+  {
+   "zh": "對負責 CSV 的工程師和 IT 人員，此文件的優先級高於 TR84。",
+   "en": "For engineers and IT staff responsible for CSV, this document takes priority over TR84."
+  },
+  {
+   "zh": "文獻 24：ISPE GPG: Data Integrity Key Concepts — 入門學習首選",
+   "en": "Reference 24: ISPE GPG: Data Integrity Key Concepts - The Best Starting Point for Learning"
+  },
+  {
+   "zh": "ISPE《Data Integrity Key Concepts》是寫給管理層和非 IT 專業人員的 DI 教育文件。它清晰定義了業界最常混淆的概念：",
+   "en": "ISPE's Data Integrity Key Concepts is a DI educational document written for management and non-IT professionals. It clearly defines the concepts the industry most often confuses:"
+  },
+  {
+   "zh": "Data vs. Record（資料 vs. 記錄）的區分",
+   "en": "The distinction between Data and Record"
+  },
+  {
+   "zh": "Dynamic vs. Static data（動態 vs. 靜態資料）",
+   "en": "Dynamic vs. static data"
+  },
+  {
+   "zh": "Critical data elements（關鍵資料要素）的識別方法",
+   "en": "How to identify critical data elements"
+  },
+  {
+   "zh": "建議作為新進 QA/QC 人員的 DI 訓練教材的補充讀物。",
+   "en": "Recommended as supplementary reading in DI training for new QA/QC staff."
+  },
+  {
+   "zh": "文獻 26：PDA TR54 — QRM 應用於製造作業",
+   "en": "Reference 26: PDA TR54 - QRM Applied to Manufacturing Operations"
+  },
+  {
+   "zh": "PDA TR54 是品質風險管理 (QRM) 在製藥製造的應用指南。TR84 引用它是為了確立方法論一致性：TR84 的資料脆弱性評估方法是 TR54 QRM 工具的具體應用實例。",
+   "en": "PDA TR54 is a guide to applying quality risk management (QRM) in pharmaceutical manufacturing. TR84 cites it to establish methodological consistency: TR84's data vulnerability assessment method is a specific application of the QRM tools in TR54."
+  },
+  {
+   "zh": "若你的設施已導入 TR54 的 QRM 框架，將 DI 脆弱性評估整合進現有的風險評估 SOP 是最有效率的合規路徑。",
+   "en": "If your facility has already adopted the TR54 QRM framework, integrating the DI vulnerability assessment into your existing risk assessment SOP is the most efficient path to compliance."
+  },
+  {
+   "zh": "文獻 22：PDA DI 行為準則 — 企業文化層面",
+   "en": "Reference 22: PDA DI Code of Conduct - The Corporate Culture Dimension"
+  },
+  {
+   "zh": "PDA 的《Elements of a Code of Conduct for Data Integrity》是業界少見從<strong>企業文化與倫理</strong>角度探討 DI 的文件。它強調：",
+   "en": "PDA's Elements of a Code of Conduct for Data Integrity is one of the few industry documents that examines DI from the perspective of <strong>corporate culture and ethics</strong>. It emphasizes:"
+  },
+  {
+   "zh": "DI 不只是技術問題，更是組織文化問題",
+   "en": "DI is not only a technical problem but an organizational culture problem"
+  },
+  {
+   "zh": "管理層的承諾與示範效應對 DI 文化的決定性影響",
+   "en": "Management commitment and role modelling are decisive for DI culture"
+  },
+  {
+   "zh": "「心理安全感」（員工願意回報 DI 問題而不受懲罰）是持久 DI 合規的基礎",
+   "en": "\"Psychological safety\" (employees being willing to report DI problems without punishment) is the foundation of sustained DI compliance"
+  },
+  {
+   "zh": "許多 DI 違規的根本原因不是技術失敗，而是文化壓力（趕工、隱瞞偏差、目標壓力）。這份文件是提升組織 DI 文化的起點。",
+   "en": "The root cause of many DI violations is not technical failure but cultural pressure (rushing, concealing deviations, target pressure). This document is a starting point for improving an organization's DI culture."
+  },
+  {
+   "zh": "比喻：APIC 文獻25 的實用價值",
+   "en": "Analogy: The Practical Value of APIC Reference 25"
+  },
+  {
+   "zh": "APIC（活性藥物成份委員會）的《Practical Risk-Based Guide for Managing Data Integrity》特別針對 API 製造環境，語言務實，案例豐富。",
+   "en": "APIC's (Active Pharmaceutical Ingredients Committee) Practical Risk-Based Guide for Managing Data Integrity targets API manufacturing environments, with practical language and plentiful examples."
+  },
+  {
+   "zh": "如果說 FDA Q&amp;A 是「法條解釋」，MHRA 指引是「監管哲學」，那麼 APIC 指南就是「工廠操作手冊」——更接近 CDMO 現場實際需要解決的問題。",
+   "en": "If the FDA Q&amp;A is the \"interpretation of the law\" and the MHRA guidance is the \"regulatory philosophy\", then the APIC guide is the \"factory operating manual\", closer to the problems a CDMO actually has to solve on the shop floor."
+  },
+  {
+   "zh": "CDMO 應用場景：建立你的 DI 文獻優先閱讀清單",
+   "en": "CDMO Scenario: Build Your Priority Reading List for DI References"
+  },
+  {
+   "zh": "針對無菌充填 CDMO 的不同角色，以下是基於 TR84 參考文獻體系的建議閱讀優先順序：",
+   "en": "For the different roles in a sterile filling CDMO, the following is a recommended reading order based on the TR84 reference system:"
+  },
+  {
+   "zh": "章節總結：Section 5 大數據管控與參考文獻",
+   "en": "Section Summary: Section 5 Big Data Management and References"
+  },
+  {
+   "zh": "<strong>大數據的挑戰已是現在進行式：</strong>TR84 第 6.0 節明確承認傳統 DI 管控機制無法因應製藥製造數位化後的大數據量，並宣告後續 PDA 技術報告將提供大數據治理框架（涵蓋資料分類、資料所有權、存取管理、變更管理）。",
+   "en": "<strong>The big data challenge is already here:</strong> TR84 Section 6.0 explicitly acknowledges that traditional DI controls cannot cope with the data volumes of digitalized pharmaceutical manufacturing, and announces that subsequent PDA technical reports will provide a big data governance framework (covering data classification, data ownership, access management and change management)."
+  },
+  {
+   "zh": "<strong>IoT 與連續製造正在重新定義 DI 的邊界：</strong>每秒數千筆的感測器資料、光譜資料、RTRT 資料流，使傳統的「逐筆稽核軌跡審查」在物理上不可能完成，需要以例外事件報告 (Exception-Based Reporting) 和統計抽樣方法取代全面人工審查。",
+   "en": "<strong>IoT and continuous manufacturing are redefining the boundaries of DI:</strong> Sensor data at thousands of points per second, spectral data and RTRT data streams make traditional \"record-by-record audit trail review\" physically impossible, so Exception-Based Reporting and statistical sampling methods must replace full manual review."
+  },
+  {
+   "zh": "<strong>21 CFR Part 11 與 EU Annex 11 是必要但不充分的：</strong>兩者均制定於大數據時代之前，對海量資料流的管控沒有具體操作指引；CDMO 需要結合 ISPE GAMP DI 指南等業界標準進行落地設計。",
+   "en": "<strong>21 CFR Part 11 and EU Annex 11 are necessary but not sufficient:</strong> Both predate the big data era and give no practical guidance on controlling massive data streams; a CDMO needs to combine them with industry standards such as the ISPE GAMP DI guide to design practical implementation."
+  },
+  {
+   "zh": "<strong>TR84 的 29 份參考文獻構成完整的 DI 知識地圖：</strong>從法規指引（FDA、MHRA、WHO、PIC/S）、GMP 法規（21 CFR Part 11/211、EU Annex 11）、ICH 品質指引（Q8/Q9/Q10/Q12），到業界實務指南（ISPE GAMP、APIC），每份文件在不同層次支撐 TR84 的框架。",
+   "en": "<strong>TR84's 29 references form a complete DI knowledge map:</strong> From regulatory guidance (FDA, MHRA, WHO, PIC/S) and GMP regulations (21 CFR Part 11/211, EU Annex 11) to ICH quality guidelines (Q8/Q9/Q10/Q12) and industry practice guides (ISPE GAMP, APIC), each document supports the TR84 framework at a different level."
+  },
+  {
+   "zh": "<strong>CDMO 的行動重點：</strong>建立以 FDA Q&amp;A (文獻2) 為核心、MHRA 指引 (文獻3) 為補充的 DI SOP 語言體系；對照 ISPE GAMP DI 指南 (文獻23) 審查電腦化系統的稽核軌跡設計；以 ICH Q9 (文獻8) 為方法論基礎，定期重新評估 9-Box 脆弱性定位。",
+   "en": "<strong>Action priorities for a CDMO:</strong> Build DI SOP language centered on the FDA Q&amp;A (Reference 2), supplemented by the MHRA guidance (Reference 3); review the audit trail design of computerised systems against the ISPE GAMP DI guide (Reference 23); and, using ICH Q9 (Reference 8) as the methodological basis, periodically reassess the 9-box vulnerability positions."
+  }
+ ]
+}

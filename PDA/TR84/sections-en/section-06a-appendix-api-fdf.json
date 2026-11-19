@@ -1,0 +1,653 @@
+{
+ "source": "section-06a-appendix-api-fdf.html",
+ "blocks": [
+  {
+   "zh": "附錄一：原料藥與製劑案例（前段）",
+   "en": "Appendix I: API and Finished Dosage Form Case Examples (Part 1)"
+  },
+  {
+   "zh": "學習目標 Learning Objectives",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解如何依據資料關鍵性（高／中／低）與現有管控層級，將製程資料定位於 9-Box 脆弱性矩陣的正確位置。",
+   "en": "Understand how to place process data in the correct cell of the 9-Box vulnerability matrix based on data criticality (high/medium/low) and the existing level of control."
+  },
+  {
+   "zh": "能分析 API（原料藥）製造中反應器控制、烘乾及批次間清潔等操作的資料完整性風險，並識別對應的控制措施。",
+   "en": "Be able to analyze the data integrity risks of API (active pharmaceutical ingredient) manufacturing operations such as reactor control, drying and between-batch cleaning, and identify the corresponding controls."
+  },
+  {
+   "zh": "能分析 FDF（最終劑型）製造中篩分操作濕度監測資料的完整性風險，並比較不同技術解決方案對脆弱性等級的影響。",
+   "en": "Be able to analyze the data integrity risks of humidity monitoring during sieving in FDF (finished dosage form) manufacturing, and compare how different technical solutions affect the vulnerability rating."
+  },
+  {
+   "zh": "掌握從紙本記錄 → PLC 列印輸出 → 電子批次記錄（EBR）的數位化升級路徑，以及各階段對 CDMO 現場稽核就緒程度的實務意義。",
+   "en": "Understand the digital upgrade path from paper records → PLC printout → electronic batch record (EBR), and what each stage means in practice for a CDMO's readiness for on-site audits."
+  },
+  {
+   "zh": "本節內容 Contents",
+   "en": "Contents"
+  },
+  {
+   "zh": "<a href=\"#ex1\">Example 1: API Reaction (High)</a>\n<a href=\"#ex2\">Example 2: API Drying (Medium)</a>\n<a href=\"#ex3\">Example 3: API Cleaning (Low)</a>\n<a href=\"#ex4\">Example 4: FDF Sieving Humidity (High)</a>\n<a href=\"#ex5\">Example 5: FDF Sieving Humidity (Medium)</a>\n<a href=\"#ex6\">Example 6: FDF Sieving Humidity (Low)</a>\n<a href=\"#summary\">Section Summary 總結</a>",
+   "en": "<a href=\"#ex1\">Example 1: API Reaction (High)</a>\n<a href=\"#ex2\">Example 2: API Drying (Medium)</a>\n<a href=\"#ex3\">Example 3: API Cleaning (Low)</a>\n<a href=\"#ex4\">Example 4: FDF Sieving Humidity (High)</a>\n<a href=\"#ex5\">Example 5: FDF Sieving Humidity (Medium)</a>\n<a href=\"#ex6\">Example 6: FDF Sieving Humidity (Low)</a>\n<a href=\"#summary\">Section Summary</a>"
+  },
+  {
+   "zh": "原料藥 (Active Pharmaceutical Ingredient) 案例 | Examples 1–3",
+   "en": "Active Pharmaceutical Ingredient Examples | Examples 1–3"
+  },
+  {
+   "zh": "API 案例概述",
+   "en": "API Examples Overview"
+  },
+  {
+   "zh": "第 8.1 節提供三組 API 製造案例，每組各含三個子案例（a/b/c），代表相同製程操作在不同資料完整性控制水準下的脆弱性評估結果。三組分別對應 9-Box 矩陣的高（High）、中（Medium）、低（Low）資料關鍵性行列。",
+   "en": "Section 8.1 provides three sets of API manufacturing examples, each with three sub-examples (a/b/c) representing the vulnerability assessment of the same process operation at different levels of data integrity control. The three sets correspond to the High, Medium and Low data criticality rows of the 9-Box matrix."
+  },
+  {
+   "zh": "高關鍵性：原料藥反應器操作控制雜質生成 | Table 8.1-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR84&amp;file=tbl-p47-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> | p42",
+   "en": "High criticality: API reactor operation controlling impurity formation | Table 8.1-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR84&amp;file=tbl-p47-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> | p42"
+  },
+  {
+   "zh": "中文解析",
+   "en": "Commentary"
+  },
+  {
+   "zh": "核心情境",
+   "en": "Core Scenario"
+  },
+  {
+   "zh": "反應器操作直接控制雜質生成，屬於 CPP（關鍵製程參數, Critical Process Parameter），影響 CQA（關鍵品質屬性, Critical Quality Attribute）。這是 API 製造中最高風險的資料類型，位於 9-Box 矩陣頂列。",
+   "en": "Reactor operation directly controls impurity formation, so it is a CPP (critical process parameter) that affects a CQA (critical quality attribute). This is the highest-risk type of data in API manufacturing and sits in the top row of the 9-Box matrix."
+  },
+  {
+   "zh": "三個子案例展示同一操作在不同數位化程度下的資料脆弱性結果，是理解「技術升級如何降低風險」的最佳範本。",
+   "en": "The three sub-examples show the data vulnerability outcome for the same operation at different levels of digitalization, making them an ideal template for understanding how technology upgrades reduce risk."
+  },
+  {
+   "zh": "DI 問題核心：手動抄錄的斷鏈風險",
+   "en": "The Core DI Problem: The Broken Chain of Manual Transcription"
+  },
+  {
+   "zh": "<strong>1a 問題：</strong>操作員從儀表板讀取數值後手寫到紙本批次記錄（BPR, Batch Production Record）。這個「人工轉錄」步驟是資料完整性的最大漏洞——數值可能被錯誤抄寫、事後補填、甚至刻意竄改，而無法追溯原始來源。",
+   "en": "<strong>Problem in 1a:</strong> The operator reads a value from the instrument panel and writes it by hand into the paper batch production record (BPR). This manual transcription step is the biggest data integrity weakness: values can be copied incorrectly, filled in after the fact, or even deliberately falsified, with no way to trace back to the original source."
+  },
+  {
+   "zh": "<strong>1b 改善：</strong>加入 PLC（可程式邏輯控制器）後，設備本身已有電子記錄，但數據仍需人工從 HMI（人機介面）抄錄到紙本 BPR。問題縮小但未消除，且 PLC 本身若無稽核軌跡設定，電子資料仍可能被覆寫。",
+   "en": "<strong>Improvement in 1b:</strong> With a PLC (programmable logic controller) added, the equipment itself holds an electronic record, but the data still has to be copied manually from the HMI (human-machine interface) to the paper BPR. The problem is reduced but not eliminated, and if the PLC has no audit trail configured, the electronic data can still be overwritten."
+  },
+  {
+   "zh": "<strong>1c 最佳：</strong>EBR（電子批次記錄, Electronic Batch Record）直接與 PLC 整合，數據自動寫入，人工介入降至殘餘水準。稽核軌跡完整，任何修改均有記錄。",
+   "en": "<strong>Best case, 1c:</strong> The EBR (electronic batch record) is integrated directly with the PLC and data is written automatically, reducing human intervention to a residual level. The audit trail is complete and every change is recorded."
+  },
+  {
+   "zh": "比喻：溫度計讀數的三種記錄方式",
+   "en": "Analogy: Three Ways to Record a Thermometer Reading"
+  },
+  {
+   "zh": "想像病房護理師每小時量體溫：",
+   "en": "Imagine a ward nurse taking a patient's temperature every hour:"
+  },
+  {
+   "zh": "<strong>1a：</strong>看著水銀溫度計，憑記憶一小時後補寫在紙上。",
+   "en": "<strong>1a:</strong> Reads a mercury thermometer and writes the value on paper from memory an hour later."
+  },
+  {
+   "zh": "<strong>1b：</strong>有電子體溫計顯示數值，但護理師仍需手抄到護理記錄。",
+   "en": "<strong>1b:</strong> Uses an electronic thermometer that displays the value, but still copies it by hand into the nursing record."
+  },
+  {
+   "zh": "<strong>1c：</strong>電子體溫計直接藍牙傳輸到電子病歷，護理師確認即可。",
+   "en": "<strong>1c:</strong> The electronic thermometer transmits the value over Bluetooth straight into the electronic medical record, and the nurse simply confirms it."
+  },
+  {
+   "zh": "製藥界要求的就是 1c 的可靠程度——尤其當這個「體溫」直接關係到病人用藥安全（= 產品 CQA）時。",
+   "en": "The pharmaceutical industry expects the reliability of 1c, especially when that \"temperature\" bears directly on patient medication safety (= the product CQA)."
+  },
+  {
+   "zh": "稽核警示：1b 的常見陷阱",
+   "en": "Audit Alert: The Common Trap in 1b"
+  },
+  {
+   "zh": "許多 CDMO 處於 1b 狀態：有 PLC 但沒有設定稽核軌跡，或稽核軌跡功能被關閉「以節省儲存空間」。FDA 483 觀察項目中，這是高頻缺失之一。關鍵提醒：PLC 有記錄能力不等於 DI 合規——必須啟用、驗證、並確保記錄不可被刪除。",
+   "en": "Many CDMOs are at the 1b stage: they have a PLC but have not configured the audit trail, or the audit trail function has been switched off \"to save storage space\". This is one of the most frequent deficiencies in FDA 483 observations. Key reminder: a PLC being capable of recording does not mean it is DI compliant. The audit trail must be enabled, validated, and the records must be protected from deletion."
+  },
+  {
+   "zh": "9-Box 定位：Example 1",
+   "en": "9-Box Placement: Example 1"
+  },
+  {
+   "zh": "資料關鍵性（縱軸）× 管控水準（橫軸）\n─────────────────────────────────────\n1a: High × Low   → Significant（紅）\n1b: High × Medium → Moderate（橙）\n1c: High × High  → Acceptable（綠）\n\n注意：高關鍵性資料在任何管控水準下，\n最高只能達到 Acceptable（無法達到 Negligible）",
+   "en": "Data criticality (vertical axis) × level of control (horizontal axis)\n─────────────────────────────────────\n1a: High × Low   → Significant (red)\n1b: High × Medium → Moderate (orange)\n1c: High × High  → Acceptable (green)\n\nNote: for high criticality data, the best achievable\nresult at any level of control is Acceptable (Negligible cannot be reached)"
+  },
+  {
+   "zh": "思考問題",
+   "en": "Questions to Consider"
+  },
+  {
+   "zh": "你的 CDMO 現有 API 反應器屬於 1a、1b 還是 1c？若是 1b，PLC 的稽核軌跡是否已驗證並啟用？",
+   "en": "Is your CDMO's current API reactor a 1a, 1b or 1c? If it is 1b, has the PLC audit trail been validated and enabled?"
+  },
+  {
+   "zh": "若客戶要求你提供反應溫度的原始電子記錄（raw data），你能提供嗎？從哪個系統匯出？",
+   "en": "If a client asks you for the original electronic record (raw data) of the reaction temperature, can you provide it? Which system would you export it from?"
+  },
+  {
+   "zh": "CDMO 應用：如何從 1b 升級到 1c",
+   "en": "CDMO Application: How to Upgrade from 1b to 1c"
+  },
+  {
+   "zh": "盤點現有 PLC 系統是否支援 21 CFR Part 11 或 Annex 11 稽核軌跡功能",
+   "en": "Inventory whether existing PLC systems support 21 CFR Part 11 or Annex 11 audit trail functionality"
+  },
+  {
+   "zh": "若支援但未啟用，立即安排 CSV（電腦化系統驗證）變更評估",
+   "en": "If supported but not enabled, immediately arrange a CSV (computerized system validation) change assessment"
+  },
+  {
+   "zh": "評估 EBR 系統（如 Syncade、MasterControl、Tulip）的整合可行性與投資報酬率",
+   "en": "Evaluate the integration feasibility and return on investment of an EBR system (e.g., Syncade, MasterControl, Tulip)"
+  },
+  {
+   "zh": "短期過渡方案：為 HMI 列印輸出設計受控的「黏貼驗證」程序，確保列印品即時、完整、不可竄改",
+   "en": "Short-term interim solution: design a controlled \"attach and verify\" procedure for HMI printouts to ensure the printout is contemporaneous, complete and tamper-proof"
+  },
+  {
+   "zh": "中關鍵性：原料藥烘乾操作（乾燥失重非 CQA）| Table 8.1-2<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR84&amp;file=tbl-p48-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> | p42–43",
+   "en": "Medium criticality: API drying operation (loss on drying is not a CQA) | Table 8.1-2<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR84&amp;file=tbl-p48-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> | p42–43"
+  },
+  {
+   "zh": "中關鍵性的定義邏輯",
+   "en": "The Logic of Medium Criticality"
+  },
+  {
+   "zh": "LOD（乾燥失重, Loss on Drying）不直接是 CQA，但影響 API 的流動性，進而影響後續製劑製程（混合、壓片）。這種「間接影響品質」的資料屬於中關鍵性，位於 9-Box 矩陣中列。",
+   "en": "LOD (loss on drying) is not directly a CQA, but it affects the flowability of the API and thereby the downstream drug product processes (blending, tableting). Data that affects quality indirectly in this way is classed as medium criticality and sits in the middle row of the 9-Box matrix."
+  },
+  {
+   "zh": "<strong>關鍵洞察：</strong>中關鍵性資料在低管控時仍會達到 Moderate（橙色）——代表即使不是 CQA，忽視 DI 管控仍有顯著風險。",
+   "en": "<strong>Key insight:</strong> Medium criticality data still reaches Moderate (orange) at low control, which means that even when the data is not a CQA, neglecting DI controls carries significant risk."
+  },
+  {
+   "zh": "2c 的重要啟示：超過要求的控制",
+   "en": "The Lesson of 2c: Controls Beyond What Is Required"
+  },
+  {
+   "zh": "2c 的控制水準（EBR + 稽核軌跡 + 自動存檔）超過中關鍵性資料的最低要求。結果達到 Negligible（藍色）。TR84 特別指出：這並非「必要」，而是展示技術能力上限。對於 CDMO，這意味著若已有整合式 EBR 系統，中低關鍵性資料可「順帶」達到最高合規水準，無需額外成本。",
+   "en": "The control level of 2c (EBR + audit trail + automatic archiving) exceeds the minimum requirement for medium criticality data, and the result reaches Negligible (blue). TR84 points out specifically that this is not \"necessary\" but demonstrates the upper limit of what the technology can do. For a CDMO, this means that if an integrated EBR system is already in place, medium and low criticality data can reach the highest level of compliance \"along the way\" at no additional cost."
+  },
+  {
+   "zh": "比喻：廚房麵粉的濕度管理",
+   "en": "Analogy: Moisture Management for Kitchen Flour"
+  },
+  {
+   "zh": "LOD 對 API 流動性的影響，就像麵粉含水量對揉麵的影響：麵粉本身的品質（CQA）沒問題，但太潮濕的麵粉在後段製程會結塊、難以定量——影響的是製程一致性，而非最終成品的直接安全性。這就是「中關鍵性」的核心含義。",
+   "en": "The effect of LOD on API flowability is like the effect of flour moisture on kneading dough: the quality of the flour itself (CQA) is fine, but flour that is too damp will clump and be hard to portion in later steps. It affects process consistency rather than the direct safety of the final product. That is the essence of \"medium criticality\"."
+  },
+  {
+   "zh": "9-Box 定位：Example 2",
+   "en": "9-Box Placement: Example 2"
+  },
+  {
+   "zh": "資料關鍵性（縱軸）× 管控水準（橫軸）\n─────────────────────────────────────\n2a: Medium × Low    → Moderate（橙）\n2b: Medium × Medium → Acceptable（綠）\n2c: Medium × High   → Negligible（藍）\n\n中關鍵性資料在高管控下可達 Negligible，\n優於高關鍵性（最高只到 Acceptable）",
+   "en": "Data criticality (vertical axis) × level of control (horizontal axis)\n─────────────────────────────────────\n2a: Medium × Low    → Moderate (orange)\n2b: Medium × Medium → Acceptable (green)\n2c: Medium × High   → Negligible (blue)\n\nMedium criticality data can reach Negligible under high control,\nbetter than high criticality (which tops out at Acceptable)"
+  },
+  {
+   "zh": "LOD 管控的 DI 重點",
+   "en": "Key DI Points for LOD Control"
+  },
+  {
+   "zh": "<strong>溫度記錄：</strong>烘乾溫度與時間是主要記錄對象，需確保儀器校驗狀態有效",
+   "en": "<strong>Temperature records:</strong> Drying temperature and time are the main items recorded, and the calibration status of the instruments must be valid"
+  },
+  {
+   "zh": "<strong>取樣測試記錄：</strong>LOD 測試結果本身也需完整稽核軌跡，特別是重測（retest）情形",
+   "en": "<strong>Sampling and test records:</strong> The LOD test results themselves also need a complete audit trail, especially in the case of retests"
+  },
+  {
+   "zh": "<strong>批次間一致性：</strong>趨勢分析（trending）在 2c 的 EBR 環境中自動可行，是預防性品質管理的基礎",
+   "en": "<strong>Batch-to-batch consistency:</strong> Trending is automatically feasible in the 2c EBR environment and is the basis of preventive quality management"
+  },
+  {
+   "zh": "你的 LOD 測試儀（如水分分析儀）是否有電子記錄功能？測試結果是直接匯入系統還是手抄？",
+   "en": "Does your LOD tester (e.g., moisture analyzer) have electronic recording capability? Are test results imported directly into a system or copied by hand?"
+  },
+  {
+   "zh": "若客戶審計要求提供某批次 API 烘乾的完整製程數據趨勢圖，你能在 24 小時內提供嗎？",
+   "en": "If a client audit asks for the complete process data trend chart of an API drying run for a given batch, can you provide it within 24 hours?"
+  },
+  {
+   "zh": "CDMO 應用：中關鍵性資料的合理投資策略",
+   "en": "CDMO Application: A Sensible Investment Strategy for Medium Criticality Data"
+  },
+  {
+   "zh": "對於中關鍵性資料，2b（PLC + 列印輸出）通常是最具成本效益的合規解決方案。升級到 2c 的 EBR 整合是好的，但應以系統整合的整體效益為決策依據，而非單純為了提升 DI 等級。",
+   "en": "For medium criticality data, 2b (PLC + printout) is usually the most cost-effective compliance solution. Upgrading to 2c with EBR integration is a good thing, but the decision should rest on the overall benefits of system integration, not simply on raising the DI rating."
+  },
+  {
+   "zh": "低關鍵性：小分子原料藥批次間設備清潔 | Table 8.1-3<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR84&amp;file=tbl-p50-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> | p44–45",
+   "en": "Low criticality: between-batch equipment cleaning for a small-molecule API | Table 8.1-3<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR84&amp;file=tbl-p50-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> | p44–45"
+  },
+  {
+   "zh": "低關鍵性的定義重點：「驗證活動期間內」",
+   "en": "Key Point of Low Criticality: \"Within the Validated Campaign\""
+  },
+  {
+   "zh": "此案例的低關鍵性前提是：清潔操作在<strong>已驗證的活動期間（campaign length）內</strong>執行。這個限制條件至關重要——若超出驗證的連續批次數，殘留物的累積可能影響 API 品質，資料關鍵性就會提升。",
+   "en": "The premise for low criticality in this example is that the cleaning operation is performed <strong>within the validated campaign length</strong>. This condition is essential: if the validated number of consecutive batches is exceeded, residue accumulation could affect API quality and the data criticality would increase."
+  },
+  {
+   "zh": "這提醒我們：DI 風險評估不能只看操作類型，還必須考慮操作的邊界條件是否仍在驗證範圍內。",
+   "en": "This is a reminder that a DI risk assessment cannot look only at the type of operation; it must also consider whether the operation's boundary conditions are still within the validated range."
+  },
+  {
+   "zh": "3a 的重要洞察：低 × 低 = 可接受（非問題）",
+   "en": "Insight from 3a: Low × Low = Acceptable (Not a Problem)"
+  },
+  {
+   "zh": "TR84 明確指出：低關鍵性資料搭配低管控水準，結果是 Acceptable（綠色），不是問題。這挑戰了「所有 GMP 記錄都需要電子化」的誤解。監管者關注的是<strong>風險相稱性</strong>——過度控制低風險資料是浪費資源，甚至可能引入新的系統複雜性風險。",
+   "en": "TR84 states clearly that low criticality data combined with a low level of control results in Acceptable (green), which is not a problem. This challenges the misconception that \"all GMP records need to be electronic\". Regulators care about <strong>proportionality to risk</strong>: over-controlling low-risk data wastes resources and can even introduce new risks from system complexity."
+  },
+  {
+   "zh": "比喻：餐廳廚具的班次間清洗",
+   "en": "Analogy: Washing Restaurant Kitchenware Between Shifts"
+  },
+  {
+   "zh": "同一間餐廳同一天烹調同一道菜，廚具班次間的沖洗記錄屬於「例行清潔」，不需要和跨菜品或跨天的深層清潔（相當於「活動結束清潔」）一樣嚴格的記錄體系。TR84 的低關鍵性邏輯正是如此：在已驗證的使用週期內，簡單記錄已足夠。",
+   "en": "When the same restaurant cooks the same dish on the same day, the record of rinsing kitchenware between shifts is \"routine cleaning\" and does not need a record-keeping system as strict as cleaning across different dishes or days (the equivalent of end-of-campaign cleaning). This is exactly the low criticality logic of TR84: within a validated period of use, simple records are sufficient."
+  },
+  {
+   "zh": "3b 與 3c 的差異：Negligible 已是頂點",
+   "en": "The Difference Between 3b and 3c: Negligible Is Already the Ceiling"
+  },
+  {
+   "zh": "3b（CIP + PLC 列印）和 3c（EBR 整合）都達到 Negligible（藍色）。這說明對低關鍵性資料，從 3b 升級到 3c 在 DI 脆弱性上不帶來額外效益——只有在系統整合或效率提升上才有意義。TR84 的訊息是：<strong>不要為了升色塊而過度投資。</strong>",
+   "en": "Both 3b (CIP + PLC printout) and 3c (EBR integration) reach Negligible (blue). This shows that for low criticality data, upgrading from 3b to 3c brings no additional benefit in DI vulnerability; it only makes sense for system integration or efficiency gains. The message of TR84 is: <strong>do not over-invest just to change the color of a cell.</strong>"
+  },
+  {
+   "zh": "9-Box 定位：Example 3",
+   "en": "9-Box Placement: Example 3"
+  },
+  {
+   "zh": "資料關鍵性（縱軸）× 管控水準（橫軸）\n─────────────────────────────────────\n3a: Low × Low    → Acceptable（綠）✓ 已合規\n3b: Low × Medium → Negligible（藍）超過要求\n3c: Low × High   → Negligible（藍）超過要求\n\n低關鍵性 + 低管控 = 已合規。\n紙本 BPR 對此類資料是完全可接受的解決方案。",
+   "en": "Data criticality (vertical axis) × level of control (horizontal axis)\n─────────────────────────────────────\n3a: Low × Low    → Acceptable (green) ✓ Compliant\n3b: Low × Medium → Negligible (blue) Exceeds requirement\n3c: Low × High   → Negligible (blue) Exceeds requirement\n\nLow criticality + low control = compliant.\nA paper BPR is a fully acceptable solution for this type of data."
+  },
+  {
+   "zh": "你的 CIP 系統是否已驗證？驗證報告中是否明確定義了活動期間（campaign length）的上限？",
+   "en": "Is your CIP system validated? Does the validation report clearly define the upper limit of the campaign length?"
+  },
+  {
+   "zh": "若你的設備清潔記錄目前是紙本，是否有必要升級為電子系統？依據 TR84，答案應如何論證？",
+   "en": "If your equipment cleaning records are currently on paper, is it necessary to upgrade to an electronic system? According to TR84, how would you justify the answer?"
+  },
+  {
+   "zh": "CDMO 應用：清潔記錄的風險分類管理",
+   "en": "CDMO Application: Risk-Based Classification of Cleaning Records"
+  },
+  {
+   "zh": "建立清潔記錄的風險分類清單：區分「活動期間內批次間清潔」vs「產品切換清潔」vs「定期深層清潔」",
+   "en": "Build a risk classification list for cleaning records that distinguishes \"between-batch cleaning within a campaign\" from \"product changeover cleaning\" and \"periodic deep cleaning\""
+  },
+  {
+   "zh": "對批次間清潔維持紙本記錄是合理的；對產品切換清潔需考量是否有 CQA 影響（可能升為中關鍵性）",
+   "en": "Keeping paper records for between-batch cleaning is reasonable; for product changeover cleaning, consider whether there is a CQA impact (it may rise to medium criticality)"
+  },
+  {
+   "zh": "確保每份清潔記錄都有「清潔類型」和「活動批次序號」，以利追溯是否仍在驗證範圍內",
+   "en": "Make sure every cleaning record carries the \"cleaning type\" and the \"campaign batch sequence number\" so you can trace whether you are still within the validated range"
+  },
+  {
+   "zh": "最終劑型 (Finished Dosage Form) 案例 | Examples 4–6 | p46–49",
+   "en": "Finished Dosage Form Examples | Examples 4–6 | p46–49"
+  },
+  {
+   "zh": "FDF 案例概述",
+   "en": "FDF Examples Overview"
+  },
+  {
+   "zh": "第 8.2 節使用相同製程（篩分操作中的濕度監測）作為跨三組案例的統一背景，藉此清晰呈現「資料關鍵性改變」（而非操作改變）對 9-Box 定位的影響。Examples 4、5、6 分別對應高、中、低關鍵性，每組同樣含三個控制水準子案例（a/b/c）。",
+   "en": "Section 8.2 uses the same process (humidity monitoring during sieving) as a common background across the three sets of examples, so that the effect of a change in data criticality (rather than a change in operation) on the 9-Box placement is shown clearly. Examples 4, 5 and 6 correspond to high, medium and low criticality respectively, and each set again contains three control-level sub-examples (a/b/c)."
+  },
+  {
+   "zh": "藥物的吸濕性（hygroscopicity）決定了濕度是否為 CPP，進而決定資料關鍵性——這是 FDF 案例組的核心設計邏輯。",
+   "en": "Whether a drug is hygroscopic determines whether humidity is a CPP, which in turn determines data criticality. This is the core design logic of the FDF example sets."
+  },
+  {
+   "zh": "高關鍵性：篩分操作濕度監測（吸濕性藥物）| Table 8.2-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR84&amp;file=tbl-p52-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> | p46–47",
+   "en": "High criticality: humidity monitoring during sieving (hygroscopic drug) | Table 8.2-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR84&amp;file=tbl-p52-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> | p46–47"
+  },
+  {
+   "zh": "吸濕性 = CPP 的判定邏輯",
+   "en": "The Logic of Hygroscopicity = CPP"
+  },
+  {
+   "zh": "藥物具有吸濕性（hygroscopic）時，製程環境中的相對濕度直接影響降解速率，因此濕度成為 CPP，其監測資料屬於高關鍵性。這與同樣的濕度監測在非吸濕性藥物（Example 6）中只屬低關鍵性形成鮮明對比。",
+   "en": "When a drug is hygroscopic, the relative humidity of the process environment directly affects the degradation rate, so humidity becomes a CPP and its monitoring data is high criticality. This contrasts sharply with the same humidity monitoring for a non-hygroscopic drug (Example 6), where it is only low criticality."
+  },
+  {
+   "zh": "<strong>設計重點：</strong>TR84 刻意用「同一操作、不同藥物屬性」的設計，強調關鍵性評估必須以產品特性為基礎，而非操作類型。",
+   "en": "<strong>Design point:</strong> TR84 deliberately uses \"same operation, different drug attributes\" to stress that the criticality assessment must be based on product characteristics, not on the type of operation."
+  },
+  {
+   "zh": "4a 的 Red 警示：最需立即行動",
+   "en": "The Red Warning of 4a: The Most Urgent Action Needed"
+  },
+  {
+   "zh": "Significant（紅色）是 9-Box 中最高風險等級，代表需要立即採取 CAPA（矯正與預防措施）。若你的 CDMO 正在處理吸濕性藥物，且濕度監測仍依賴紙本圖表記錄，這個案例就是你現在的處境——需要優先升級。",
+   "en": "Significant (red) is the highest risk level in the 9-Box and calls for immediate CAPA (corrective and preventive action). If your CDMO handles hygroscopic drugs and still relies on paper chart records for humidity monitoring, this example describes your current situation, and upgrading should be a priority."
+  },
+  {
+   "zh": "比喻：博物館文物的濕度管控",
+   "en": "Analogy: Humidity Control for Museum Artifacts"
+  },
+  {
+   "zh": "吸濕性藥物對濕度的敏感程度，如同博物館中的古代羊皮紙文件——濕度一旦超標，損害立即且不可逆。這種情況下，監控記錄不只是行政要求，而是保存完整性的直接保障。類比到製藥：不只是監管合規，而是產品品質的最後防線。",
+   "en": "The sensitivity of a hygroscopic drug to humidity is like that of ancient parchment documents in a museum: once humidity goes out of range, the damage is immediate and irreversible. In this situation the monitoring record is not just an administrative requirement but a direct safeguard of integrity. In pharmaceutical terms, it is not only regulatory compliance but the last line of defense for product quality."
+  },
+  {
+   "zh": "BMS（樓宇管理系統）的 DI 關鍵要素",
+   "en": "Key DI Elements of a BMS (Building Management System)"
+  },
+  {
+   "zh": "4b 和 4c 都使用了 BMS（Building Management System，樓宇管理系統）。BMS 的 DI 合規要求包括：",
+   "en": "Both 4b and 4c use a BMS (Building Management System). DI compliance requirements for a BMS include:"
+  },
+  {
+   "zh": "系統需經過 CSV（電腦化系統驗證）",
+   "en": "The system must undergo CSV (computerized system validation)"
+  },
+  {
+   "zh": "稽核軌跡必須啟用且不可關閉",
+   "en": "The audit trail must be enabled and must not be possible to switch off"
+  },
+  {
+   "zh": "存取控制需基於使用者角色（role-based access）",
+   "en": "Access control must be role-based"
+  },
+  {
+   "zh": "電子簽名功能若使用，須符合 21 CFR Part 11",
+   "en": "If electronic signatures are used, they must comply with 21 CFR Part 11"
+  },
+  {
+   "zh": "資料備份與還原程序需驗證",
+   "en": "Data backup and restore procedures must be validated"
+  },
+  {
+   "zh": "4b 中，BMS 有這些功能但製造記錄仍是紙本，因此停留在 Moderate；4c 連製造記錄也電子化，才達到 Acceptable。",
+   "en": "In 4b, the BMS has these functions but the manufacturing record is still on paper, so it stays at Moderate; only in 4c, where the manufacturing record is also electronic, is Acceptable reached."
+  },
+  {
+   "zh": "9-Box 定位：Example 4",
+   "en": "9-Box Placement: Example 4"
+  },
+  {
+   "zh": "資料關鍵性（縱軸）× 管控水準（橫軸）\n─────────────────────────────────────\n4a: High × Low    → Significant（紅）⚠ 需立即 CAPA\n4b: High × Medium → Moderate（橙）需改善計畫\n4c: High × High   → Acceptable（綠）✓ 合規目標\n\n高關鍵性資料的合規路徑：\nBMS 驗證 + 電子製造記錄 + Part 11 管理",
+   "en": "Data criticality (vertical axis) × level of control (horizontal axis)\n─────────────────────────────────────\n4a: High × Low    → Significant (red) ⚠ Immediate CAPA needed\n4b: High × Medium → Moderate (orange) Improvement plan needed\n4c: High × High   → Acceptable (green) ✓ Target for compliance\n\nCompliance path for high criticality data:\nvalidated BMS + electronic manufacturing record + Part 11 management"
+  },
+  {
+   "zh": "4c 的 Part 11 要求提醒",
+   "en": "Reminder on the Part 11 Requirement in 4c"
+  },
+  {
+   "zh": "4c 明確提到「managed per Part 11 requirements」。這代表除了技術控制，還需要相對應的程序文件：電子簽名 SOP、稽核軌跡審查程序、系統存取管理程序、以及定期的記錄完整性自我稽核。技術實施與程序文件缺一不可。",
+   "en": "4c explicitly mentions \"managed per Part 11 requirements\". This means that in addition to technical controls, corresponding procedural documents are needed: an electronic signature SOP, an audit trail review procedure, a system access management procedure, and periodic self-inspection of record integrity. Technical implementation and procedural documentation are both indispensable."
+  },
+  {
+   "zh": "你的 CDMO 廠房 BMS 是否已完成 CSV？最後一次 BMS 稽核軌跡審查是什麼時候？",
+   "en": "Has CSV been completed for the BMS at your CDMO site? When was the last BMS audit trail review?"
+  },
+  {
+   "zh": "對於吸濕性原料，你的製造現場是否有即時濕度警報系統？警報記錄如何歸檔？",
+   "en": "For hygroscopic materials, does your manufacturing area have a real-time humidity alarm system? How are alarm records archived?"
+  },
+  {
+   "zh": "若 BMS 數據與紙本手抄記錄出現差異，SOP 中的調查程序是什麼？",
+   "en": "If the BMS data and the hand-copied paper records differ, what is the investigation procedure in your SOP?"
+  },
+  {
+   "zh": "CDMO 應用：從 4a 升級的優先行動",
+   "en": "CDMO Application: Priority Actions for Upgrading from 4a"
+  },
+  {
+   "zh": "<strong>第一步：</strong>立即盤點哪些客戶產品具有吸濕性，對應製程環境的濕度記錄方式",
+   "en": "<strong>Step 1:</strong> Immediately inventory which client products are hygroscopic and how humidity is recorded in the corresponding process environments"
+  },
+  {
+   "zh": "<strong>第二步：</strong>若目前為 4a 狀態，評估 BMS 升級或感測器直接串接的技術可行性",
+   "en": "<strong>Step 2:</strong> If you are currently at 4a, assess the technical feasibility of a BMS upgrade or direct sensor integration"
+  },
+  {
+   "zh": "<strong>第三步：</strong>向客戶揭露目前 DI 管控狀態，討論改善時程（客戶稽核前主動溝通優於被動發現）",
+   "en": "<strong>Step 3:</strong> Disclose the current DI control status to the client and discuss an improvement timeline (proactive communication before a client audit is better than being found out)"
+  },
+  {
+   "zh": "<strong>第四步：</strong>製訂 CAPA，以達到 4b（BMS）為短期目標，4c（EBR 整合）為長期目標",
+   "en": "<strong>Step 4:</strong> Draw up a CAPA with 4b (BMS) as the short-term target and 4c (EBR integration) as the long-term target"
+  },
+  {
+   "zh": "中關鍵性：篩分操作濕度監測（影響流動性但非 CPP）| Table 8.2-2<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR84&amp;file=tbl-p53-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> | p48",
+   "en": "Medium criticality: humidity monitoring during sieving (affects flowability but is not a CPP) | Table 8.2-2<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR84&amp;file=tbl-p53-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> | p48"
+  },
+  {
+   "zh": "Example 4 vs 5：唯一差異在於藥物屬性",
+   "en": "Example 4 vs 5: The Only Difference Is the Drug Attribute"
+  },
+  {
+   "zh": "5a/5b/5c 的操作、脆弱性因素、管控措施與 4a/4b/4c 完全相同——唯一差異是藥物不具吸濕性降解風險，濕度只影響流動性而非 CQA。因此整組下移一行：Moderate → Acceptable → Negligible（相較 Example 4 的 Significant → Moderate → Acceptable）。",
+   "en": "The operation, vulnerability factors and controls of 5a/5b/5c are exactly the same as 4a/4b/4c. The only difference is that the drug has no degradation risk from hygroscopicity, so humidity affects only flowability and not a CQA. The whole set therefore moves down one row: Moderate → Acceptable → Negligible (compared with Significant → Moderate → Acceptable in Example 4)."
+  },
+  {
+   "zh": "這種設計讓讀者清晰看見：<strong>產品知識（product knowledge）是 DI 風險評估的基礎，不是形式。</strong>",
+   "en": "This design lets the reader see clearly that <strong>product knowledge is the foundation of a DI risk assessment, not a formality.</strong>"
+  },
+  {
+   "zh": "5a 仍是 Moderate：勿輕視",
+   "en": "5a Is Still Moderate: Do Not Underestimate It"
+  },
+  {
+   "zh": "雖然濕度不是 CPP，但 Moderate（橙色）仍代表需要改善計畫。若客戶或稽查員詢問，「濕度不是 CPP 所以我們用紙本就好」是不完整的答案——還需要說明管控水準為何在低層級，以及何時計畫升級。",
+   "en": "Although humidity is not a CPP, Moderate (orange) still means an improvement plan is needed. If a client or inspector asks, \"humidity is not a CPP so paper is fine for us\" is an incomplete answer; you also need to explain why the control level is low and when an upgrade is planned."
+  },
+  {
+   "zh": "9-Box 定位：Example 5",
+   "en": "9-Box Placement: Example 5"
+  },
+  {
+   "zh": "資料關鍵性（縱軸）× 管控水準（橫軸）\n─────────────────────────────────────\n5a: Medium × Low    → Moderate（橙）需改善計畫\n5b: Medium × Medium → Acceptable（綠）✓ 合規目標\n5c: Medium × High   → Negligible（藍）超過最低要求\n\n對中關鍵性資料，5b（BMS + 列印輸出）\n是最具成本效益的合規終點。",
+   "en": "Data criticality (vertical axis) × level of control (horizontal axis)\n─────────────────────────────────────\n5a: Medium × Low    → Moderate (orange) Improvement plan needed\n5b: Medium × Medium → Acceptable (green) ✓ Target for compliance\n5c: Medium × High   → Negligible (blue) Exceeds minimum requirement\n\nFor medium criticality data, 5b (BMS + printout)\nis the most cost-effective compliance end point."
+  },
+  {
+   "zh": "比喻：5a 與 4a 的關鍵比較",
+   "en": "Analogy: Comparing 5a and 4a"
+  },
+  {
+   "zh": "同樣是手抄濕度記錄、同樣是低管控——但 5a 只有 Moderate（橙色），而 4a 是 Significant（紅色）。差別只在藥物的吸濕性。就像同樣的「不鎖門」行為，在一般住宅是低風險，在核電廠控制室就是重大危機。風險等級來自於資產的關鍵程度，而不只是行為本身。",
+   "en": "Same hand-copied humidity records, same low control, yet 5a is only Moderate (orange) while 4a is Significant (red). The only difference is the drug's hygroscopicity. It is like \"leaving the door unlocked\": low risk in an ordinary home, but a major crisis in a nuclear power plant control room. The risk level comes from how critical the asset is, not just from the behavior itself."
+  },
+  {
+   "zh": "5b 的「合理管控」原則",
+   "en": "The \"Reasonable Control\" Principle of 5b"
+  },
+  {
+   "zh": "TR84 認可 5b 狀態（BMS 數位記錄 + 列印輸出附於紙本記錄）對中關鍵性資料已達 Acceptable。這是一個重要的監管立場：不要求所有設備都與 EBR 整合。對於資源有限的 CDMO，這提供了清晰的合規路徑：優先確保 BMS 已驗證、稽核軌跡已啟用、列印輸出程序受控。",
+   "en": "TR84 recognizes that the 5b state (BMS digital records + printouts attached to the paper record) is already Acceptable for medium criticality data. This is an important regulatory position: not all equipment is required to be integrated with the EBR. For a CDMO with limited resources, this gives a clear compliance path: first make sure the BMS is validated, the audit trail is enabled and the printout procedure is controlled."
+  },
+  {
+   "zh": "你如何確定某個藥物的濕度影響屬於 CQA（如降解）還是製程一致性（如流動性）？這個判斷在哪份文件中記載？",
+   "en": "How do you determine whether the effect of humidity on a drug is a CQA matter (such as degradation) or a process consistency matter (such as flowability)? In which document is this judgment recorded?"
+  },
+  {
+   "zh": "若同一製程用於不同客戶的藥物，一個吸濕一個不吸濕，你的製程記錄系統是否分別設定了不同的 DI 管控要求？",
+   "en": "If the same process is used for different clients' drugs, one hygroscopic and one not, has your process record system set different DI control requirements for each?"
+  },
+  {
+   "zh": "CDMO 應用：多客戶 FDF 製程的 DI 差異化管理",
+   "en": "CDMO Application: Differentiated DI Management for Multi-Client FDF Processes"
+  },
+  {
+   "zh": "建立產品 DI 關鍵性矩陣，以藥物屬性（吸濕性、光敏性、氧敏性等）為行，以製程步驟為列，系統性填入資料關鍵性等級",
+   "en": "Build a product DI criticality matrix with drug attributes (hygroscopicity, light sensitivity, oxygen sensitivity, etc.) as columns and process steps as rows, and systematically fill in the data criticality level"
+  },
+  {
+   "zh": "同一製程步驟若服務多個客戶，以最高關鍵性等級設定管控基準（向上取齊原則）",
+   "en": "If one process step serves multiple clients, set the control baseline at the highest criticality level (the principle of leveling up)"
+  },
+  {
+   "zh": "每年更新此矩陣，納入新上線客戶的產品特性評估",
+   "en": "Update this matrix every year to include the product characteristic assessments of newly onboarded clients"
+  },
+  {
+   "zh": "低關鍵性：篩分操作濕度監測（非吸濕性、穩定藥物）| Table 8.2-3<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR84&amp;file=tbl-p54-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> | p49",
+   "en": "Low criticality: humidity monitoring during sieving (non-hygroscopic, stable drug) | Table 8.2-3<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR84&amp;file=tbl-p54-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> | p49"
+  },
+  {
+   "zh": "低關鍵性的判定：寬容濕度範圍",
+   "en": "Determining Low Criticality: A Wide Tolerable Humidity Range"
+  },
+  {
+   "zh": "藥物非吸濕性且在寬廣濕度範圍內穩定，濕度既不影響 CQA 也不影響關鍵製程一致性，因此屬於低關鍵性例行 GMP 數據。這是 9-Box 最底列的典型場景。",
+   "en": "The drug is non-hygroscopic and stable over a wide humidity range, so humidity affects neither a CQA nor critical process consistency, and the data is low criticality routine GMP data. This is the typical scenario for the bottom row of the 9-Box."
+  },
+  {
+   "zh": "<strong>對 CDMO 的啟示：</strong>在藥物開發早期就明確記錄此類穩定性數據，有助於為 DI 風險評估提供科學依據，而非憑直覺判斷。",
+   "en": "<strong>Takeaway for CDMOs:</strong> Documenting this kind of stability data clearly in early drug development gives the DI risk assessment a scientific basis rather than relying on intuition."
+  },
+  {
+   "zh": "6c 的警示：超額投資的反面教材",
+   "en": "The Warning of 6c: A Cautionary Example of Over-Investment"
+  },
+  {
+   "zh": "TR84 在描述 6c 時特別說明：「significantly more controls are in place than are required」。EBR + 稽核軌跡對低關鍵性資料是過度設計。這句話的監管含義是：若審計員發現你對低風險資料投入了大量資源，卻對高風險資料管控不足，這本身就是一個風險管理判斷失誤的訊號。",
+   "en": "In describing 6c, TR84 specifically notes that \"significantly more controls are in place than are required\". EBR plus audit trail is over-engineering for low criticality data. The regulatory implication is that if an auditor finds you have invested heavily in low-risk data while under-controlling high-risk data, that in itself signals a lapse in risk management judgment."
+  },
+  {
+   "zh": "9-Box 定位：Example 6",
+   "en": "9-Box Placement: Example 6"
+  },
+  {
+   "zh": "資料關鍵性（縱軸）× 管控水準（橫軸）\n─────────────────────────────────────\n6a: Low × Low    → Acceptable（綠）✓ 已合規\n6b: Low × Medium → Negligible（藍）超過最低要求\n6c: Low × High   → Negligible（藍）顯著超過要求\n\n對低關鍵性資料，紙本記錄是完全合規的選擇。\n投資 EBR 整合應以整體效率為依據，而非 DI 合規壓力。",
+   "en": "Data criticality (vertical axis) × level of control (horizontal axis)\n─────────────────────────────────────\n6a: Low × Low    → Acceptable (green) ✓ Compliant\n6b: Low × Medium → Negligible (blue) Exceeds minimum requirement\n6c: Low × High   → Negligible (blue) Significantly exceeds requirement\n\nFor low criticality data, paper records are a fully compliant choice.\nInvestment in EBR integration should be justified by overall efficiency, not by DI compliance pressure."
+  },
+  {
+   "zh": "三組案例的整體比較",
+   "en": "Overall Comparison of the Three Sets of Examples"
+  },
+  {
+   "zh": "把 Examples 4、5、6 放在一起，就像同一間倉庫存放三種貨物：",
+   "en": "Putting Examples 4, 5 and 6 together is like one warehouse storing three kinds of goods:"
+  },
+  {
+   "zh": "<strong>Example 4（高）：</strong>易燃化學品——必須有完整的電子監控、即時警報、稽核軌跡",
+   "en": "<strong>Example 4 (high):</strong> Flammable chemicals: these need full electronic monitoring, real-time alarms and an audit trail"
+  },
+  {
+   "zh": "<strong>Example 5（中）：</strong>一般化工原料——需要基本電子記錄，紙本備份可接受",
+   "en": "<strong>Example 5 (medium):</strong> General chemical raw materials: basic electronic records are needed, and a paper backup is acceptable"
+  },
+  {
+   "zh": "<strong>Example 6（低）：</strong>穩定的金屬零件——紙本入庫記錄完全足夠，不需要溫濕度監控系統",
+   "en": "<strong>Example 6 (low):</strong> Stable metal parts: paper goods-in records are entirely sufficient, with no need for a temperature and humidity monitoring system"
+  },
+  {
+   "zh": "倉庫管理的原則是：根據貨物特性決定管控等級，而不是用同一套最高標準管理所有東西。",
+   "en": "The principle of warehouse management is to set the level of control according to the characteristics of the goods, rather than managing everything to the same highest standard."
+  },
+  {
+   "zh": "你的 CDMO 是否有一份文件，明確列出每個客戶產品對應的製程資料關鍵性等級？若無，如何開始建立？",
+   "en": "Does your CDMO have a document that explicitly lists the process data criticality level for each client product? If not, how would you start building one?"
+  },
+  {
+   "zh": "若現有製程中有些資料是 Significant（紅色），你有 CAPA 計畫嗎？時程是否合理？",
+   "en": "If some data in your existing processes is Significant (red), do you have a CAPA plan? Is the timeline reasonable?"
+  },
+  {
+   "zh": "你認為在你的 CDMO，哪一個製程步驟的 DI 管控最薄弱？它在 9-Box 的位置在哪裡？",
+   "en": "In your CDMO, which process step has the weakest DI control? Where does it sit in the 9-Box?"
+  },
+  {
+   "zh": "CDMO 應用：建立 DI 風險優先順序清單",
+   "en": "CDMO Application: Building a DI Risk Priority List"
+  },
+  {
+   "zh": "<strong>第一優先：</strong>識別所有 Significant（紅色）資料——這些需要立即 CAPA，應在下次客戶稽核前完成改善",
+   "en": "<strong>First priority:</strong> Identify all Significant (red) data. These need immediate CAPA, with improvements completed before the next client audit"
+  },
+  {
+   "zh": "<strong>第二優先：</strong>Moderate（橙色）資料——制訂 12-18 個月的改善計畫，與客戶溝通時程",
+   "en": "<strong>Second priority:</strong> Moderate (orange) data: draw up a 12-18 month improvement plan and agree the timeline with the client"
+  },
+  {
+   "zh": "<strong>長期規劃：</strong>評估 EBR 平台整合的 ROI，優先整合高關鍵性製程步驟",
+   "en": "<strong>Long-term planning:</strong> Evaluate the ROI of EBR platform integration, and integrate high criticality process steps first"
+  },
+  {
+   "zh": "<strong>維持現狀：</strong>Acceptable + 低關鍵性的紙本記錄，確保程序受控即可，無需強制升級",
+   "en": "<strong>Maintain the status quo:</strong> For Acceptable low criticality paper records, just make sure the procedures are controlled; no mandatory upgrade is needed"
+  },
+  {
+   "zh": "三組 FDF 案例的横向比較總結",
+   "en": "Side-by-Side Summary of the Three FDF Example Sets"
+  },
+  {
+   "zh": "右移（升級技術）和上移（藥物更敏感）對風險等級的影響完全對稱。",
+   "en": "Moving right (upgrading the technology) and moving up (a more sensitive drug) affect the risk level in exactly symmetrical ways."
+  },
+  {
+   "zh": "總結",
+   "en": "Summary"
+  },
+  {
+   "zh": "Section Summary — 本節重點總結",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "Appendix I: API &amp; FDF Worked Examples 案例學習總結",
+   "en": "Appendix I: API &amp; FDF Worked Examples: Case Study Summary"
+  },
+  {
+   "zh": "核心學習：9-Box 矩陣的實務應用邏輯",
+   "en": "Core Learning: The Practical Logic of the 9-Box Matrix"
+  },
+  {
+   "zh": "六組案例共同展示了 TR84 的核心訊息：<strong>資料完整性管控應與資料關鍵性相稱</strong>。高關鍵性資料需要高管控（EBR + 稽核軌跡），而低關鍵性資料以紙本加人工審查就足夠。",
+   "en": "The six sets of examples together illustrate the core message of TR84: <strong>data integrity controls should be commensurate with data criticality</strong>. High criticality data needs high control (EBR + audit trail), while for low criticality data, paper plus manual review is sufficient."
+  },
+  {
+   "zh": "<strong>API 案例（Ex1-3）：</strong>從反應控制（高）→ 烘乾（中）→ 批次間清潔（低），展示相同技術路徑（紙本 → PLC → EBR）在不同關鍵性下產生不同的脆弱性結果。",
+   "en": "<strong>API examples (Ex1-3):</strong> From reaction control (high) → drying (medium) → between-batch cleaning (low), they show how the same technology path (paper → PLC → EBR) yields different vulnerability outcomes at different criticality levels."
+  },
+  {
+   "zh": "<strong>FDF 案例（Ex4-6）：</strong>從吸濕性藥物（高）→ 影響流動性（中）→ 穩定藥物（低），展示相同製程在不同產品屬性下的風險差異。",
+   "en": "<strong>FDF examples (Ex4-6):</strong> From a hygroscopic drug (high) → effect on flowability (medium) → stable drug (low), they show how the risk differs for the same process under different product attributes."
+  },
+  {
+   "zh": "<strong>關鍵洞察：</strong>高關鍵性資料無法達到 Negligible；低關鍵性資料無需達到 Negligible。這是「合理合規」而非「最高標準」的體現。",
+   "en": "<strong>Key insight:</strong> High criticality data cannot reach Negligible; low criticality data does not need to reach Negligible. This reflects \"reasonable compliance\" rather than \"the highest possible standard\"."
+  },
+  {
+   "zh": "CDMO 稽核就緒的三個關鍵問題",
+   "en": "Three Key Questions for CDMO Audit Readiness"
+  },
+  {
+   "zh": "<strong>你的每個製程步驟，資料關鍵性等級是否已書面評估？</strong>（有依據的科學判斷，而非假設）",
+   "en": "<strong>Has the data criticality level of each of your process steps been assessed in writing?</strong> (A scientifically justified judgment, not an assumption)"
+  },
+  {
+   "zh": "<strong>現有管控水準是否與關鍵性相稱？</strong>（不能只有最低管控卻有高關鍵性資料）",
+   "en": "<strong>Is the current level of control commensurate with criticality?</strong> (You cannot have only minimal control over high criticality data)"
+  },
+  {
+   "zh": "<strong>若存在 Significant 或 Moderate 風險，CAPA 計畫是否有時程和負責人？</strong>（有問題不可怕，無行動才是問題）",
+   "en": "<strong>Where Significant or Moderate risks exist, does the CAPA plan have a timeline and an owner?</strong> (Having problems is not the worst thing; having no action is)"
+  },
+  {
+   "zh": "最終比喻：DI 管控是安全帶，不是防彈玻璃",
+   "en": "Closing Analogy: DI Controls Are a Seat Belt, Not Bulletproof Glass"
+  },
+  {
+   "zh": "TR84 Appendix I 的案例告訴我們：數據完整性管控不是「越多越好」，而是「恰到好處」。開車時繫安全帶是必要的；但要求每輛家用車都安裝賽車防滾架，既不現實也不必要。製藥 DI 管控的藝術，在於準確識別哪些是「高速賽車」（高關鍵性資料），為它們配備完整防護；並認識到哪些是「市區代步車」（低關鍵性資料），維持基本安全即可。",
+   "en": "The Appendix I examples of TR84 tell us that data integrity controls are not about \"the more the better\" but about \"just right\". Wearing a seat belt when driving is necessary, but requiring a race-car roll cage in every family car is neither realistic nor necessary. The art of pharmaceutical DI control lies in identifying accurately which are the \"race cars\" (high criticality data) and equipping them with full protection, while recognizing which are the \"city commuter cars\" (low criticality data) that need only basic safety."
+  }
+ ]
+}

@@ -1,0 +1,953 @@
+{
+ "source": "section-04-di-controls-areas.html",
+ "blocks": [
+  {
+   "zh": "DI 控制：具體管控領域詳解",
+   "en": "DI Controls: Control Areas in Detail"
+  },
+  {
+   "zh": "學習目標 Learning Objectives",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解紙本轉電子的 True Copy（真實副本）要求，包括 High / Medium / Low 三級關鍵性下的審查標準、原件銷毀條件，以及品質單位的監督職責。",
+   "en": "Understand the True Copy requirements for converting paper records to electronic form, including the review standards at High / Medium / Low criticality, the conditions for destroying originals, and the oversight responsibilities of the quality unit."
+  },
+  {
+   "zh": "掌握電子系統 Access Control（使用者存取控制）的分級策略，包括密碼政策、帳戶鎖定、週期性審查頻率等差異化管控措施，並理解 CDMO 多客戶環境下的特殊挑戰。",
+   "en": "Master the tiered strategy for electronic system Access Control, including differentiated controls such as password policy, account lockout and periodic review frequency, and understand the particular challenges of a multi-client CDMO environment."
+  },
+  {
+   "zh": "學會運用 Audit Trail Review Assessment (ATRA) 工具，透過 Detectability / Severity / Probability 三維度評分，判定 Audit Trail（稽核軌跡）的審查頻率與範圍。",
+   "en": "Learn to use the Audit Trail Review Assessment (ATRA) tool, scoring Detectability / Severity / Probability to determine the frequency and scope of audit trail review."
+  },
+  {
+   "zh": "理解 Data Backup（資料備份）、Data Export（資料匯出）、Data Transfer/Migration（資料傳輸與遷移）等電子資料管控的風險分級邏輯及實務應用。",
+   "en": "Understand the risk-tiering logic and practical application of electronic data controls such as Data Backup, Data Export, and Data Transfer/Migration."
+  },
+  {
+   "zh": "本節子目錄 Contents",
+   "en": "Contents of This Section"
+  },
+  {
+   "zh": "真實副本（紙本轉電子）：掃描、審查與原件銷毀",
+   "en": "True Copy (Paper to Electronic): Scanning, Review and Destruction of Originals"
+  },
+  {
+   "zh": "解析與導讀（繁體中文）",
+   "en": "Commentary"
+  },
+  {
+   "zh": "核心概念：True Copy（真實副本）",
+   "en": "Core Concept: True Copy"
+  },
+  {
+   "zh": "<strong>True Copy（真實副本）</strong>是指能夠完整保留原始記錄所有資訊的副本，其管控等級必須等同於原件。TR84 在此聚焦「紙本轉電子」的情境，即透過掃描將紙本記錄數位化。",
+   "en": "A <strong>True Copy</strong> is a copy that retains all the information of the original record, and it must be controlled to the same level as the original. TR84 focuses here on the paper-to-electronic scenario, in which paper records are digitized by scanning."
+  },
+  {
+   "zh": "關鍵判斷要素：",
+   "en": "Key points to judge:"
+  },
+  {
+   "zh": "<strong>可讀性 (Legibility)</strong>：掃描後文字與數據清晰可辨",
+   "en": "<strong>Legibility</strong>: text and data are clearly readable after scanning"
+  },
+  {
+   "zh": "<strong>準確性 (Accuracy)</strong>：內容與原件完全一致，包括色碼、螢光標記等",
+   "en": "<strong>Accuracy</strong>: content is identical to the original, including color coding, highlighter marks, etc."
+  },
+  {
+   "zh": "<strong>完整性 (Completeness)</strong>：所有頁面、所有欄位均已掃描",
+   "en": "<strong>Completeness</strong>: all pages and all fields have been scanned"
+  },
+  {
+   "zh": "生活化比喻：掃描就像翻拍古籍",
+   "en": "Analogy: Scanning Is Like Photographing an Ancient Book"
+  },
+  {
+   "zh": "想像你要將一本珍貴的古籍翻拍成數位檔案：",
+   "en": "Imagine you need to photograph a precious ancient book into digital files:"
+  },
+  {
+   "zh": "<strong>High</strong>：博物館級古籍 → 專業攝影師翻拍，館長親自逐頁核對，若原件有浮水印或鋼印則必須保留原件",
+   "en": "<strong>High</strong>: museum-grade rare book → photographed by a professional photographer, checked page by page by the curator personally; if the original has a watermark or embossed seal, the original must be retained"
+  },
+  {
+   "zh": "<strong>Medium</strong>：圖書館藏書 → 訓練過的工作人員翻拍，另一位同事覆核",
+   "en": "<strong>Medium</strong>: library collection → photographed by trained staff, with a second colleague checking"
+  },
+  {
+   "zh": "<strong>Low</strong>：一般借閱登記表 → 自行翻拍並確認清晰即可",
+   "en": "<strong>Low</strong>: an ordinary borrowing register → photograph it yourself and confirm it is legible"
+  },
+  {
+   "zh": "法規重點：原件銷毀的三大前提",
+   "en": "Regulatory Focus: Three Prerequisites for Destroying Originals"
+  },
+  {
+   "zh": "TR84 明確指出，即便是 High 級別的記錄，只要滿足以下條件，原件可以銷毀：",
+   "en": "TR84 states clearly that even for High criticality records, the original may be destroyed provided the following conditions are met:"
+  },
+  {
+   "zh": "True Copy 經品質單位 (Quality Unit) 審查確認通過",
+   "en": "The True Copy has been reviewed and approved by the Quality Unit"
+  },
+  {
+   "zh": "原件無法以電子方式準確重現的特徵（印章、浮水印等）不存在",
+   "en": "The original has no features that cannot be accurately reproduced electronically (stamps, watermarks, etc.)"
+  },
+  {
+   "zh": "銷毀過程有記錄（何時、何人銷毀）",
+   "en": "The destruction is documented (when and by whom)"
+  },
+  {
+   "zh": "但若原件帶有印章、浮水印或其他無法電子化的識別標記，則<strong>不得銷毀原件</strong>。",
+   "en": "However, if the original bears a stamp, watermark or other identifying mark that cannot be reproduced electronically, the <strong>original must not be destroyed</strong>."
+  },
+  {
+   "zh": "CDMO 實務應用",
+   "en": "CDMO Practical Application"
+  },
+  {
+   "zh": "在 CDMO 環境中，True Copy 管理尤其重要：",
+   "en": "True Copy management is especially important in a CDMO environment:"
+  },
+  {
+   "zh": "<strong>客戶批次記錄</strong>：客戶提供的紙本 Master Batch Record 掃描後，屬 High 級別，需品質單位逐頁覆核",
+   "en": "<strong>Client batch records</strong>: a client-supplied paper Master Batch Record, once scanned, is High criticality and requires page-by-page review by the quality unit"
+  },
+  {
+   "zh": "<strong>技術移轉文件</strong>：來自客戶的驗證方案書 (Validation Protocol) 屬 Medium 級別，需第二人覆核",
+   "en": "<strong>Technology transfer documents</strong>: a Validation Protocol from the client is Medium criticality and requires second-person review"
+  },
+  {
+   "zh": "<strong>多客戶管理</strong>：確保不同客戶的 True Copy 檔案有明確的存取權限區隔，避免交叉存取",
+   "en": "<strong>Multi-client management</strong>: ensure True Copy files of different clients have clearly separated access rights to avoid cross-access"
+  },
+  {
+   "zh": "思考題",
+   "en": "Discussion Question"
+  },
+  {
+   "zh": "你的工廠有一份客戶提供的紙本批次記錄，上面蓋有該公司的鋼印。掃描後，品質單位覆核通過。請問：可以銷毀原件嗎？為什麼？",
+   "en": "Your site has a paper batch record supplied by a client, bearing the company's embossed seal. After scanning, the quality unit reviewed and approved the copy. Can the original be destroyed? Why?"
+  },
+  {
+   "zh": "電子系統使用者存取控制：帳號、密碼與權限分級",
+   "en": "Electronic System User Access Control: Accounts, Passwords and Privilege Tiers"
+  },
+  {
+   "zh": "核心概念：User Access Control（使用者存取控制）",
+   "en": "Core Concept: User Access Control"
+  },
+  {
+   "zh": "<strong>Access Control（存取控制）</strong>是 Data Integrity 的第一道防線。TR84 將其定義為「預防性管控」(Prevention Control)，核心目的是確保：",
+   "en": "<strong>Access Control</strong> is the first line of defense for Data Integrity. TR84 defines it as a \"Prevention Control\", whose core purpose is to ensure:"
+  },
+  {
+   "zh": "<strong>身分識別 (Identification)</strong>：每個使用者有唯一帳號",
+   "en": "<strong>Identification</strong>: each user has a unique account"
+  },
+  {
+   "zh": "<strong>身分驗證 (Authentication)</strong>：透過密碼確認為本人操作",
+   "en": "<strong>Authentication</strong>: a password confirms that the person operating is the actual user"
+  },
+  {
+   "zh": "<strong>職責分離 (Segregation of Duties)</strong>：不同角色有不同權限",
+   "en": "<strong>Segregation of Duties</strong>: different roles have different privileges"
+  },
+  {
+   "zh": "High 與 Medium 級別均要求個人帳號 (User ID + Password)；Low 級別允許群組帳號 (Group Account)，但仍需區分操作者與管理者權限。",
+   "en": "Both High and Medium levels require individual accounts (User ID + Password); the Low level permits Group Accounts, but operator and administrator privileges must still be distinguished."
+  },
+  {
+   "zh": "生活化比喻：門禁卡與鑰匙",
+   "en": "Analogy: Access Cards and Keys"
+  },
+  {
+   "zh": "把電子系統的存取控制想像成大樓門禁：",
+   "en": "Think of electronic system access control as building security:"
+  },
+  {
+   "zh": "<strong>High</strong>（如 MES、製程歷史資料庫）：指紋+感應卡雙重認證，90 天換一次密碼，輸錯 5 次鎖定",
+   "en": "<strong>High</strong> (e.g., MES, process historian): fingerprint + proximity card two-factor authentication, password changed every 90 days, locked after 5 failed attempts"
+  },
+  {
+   "zh": "<strong>Medium</strong>（如洗瓶機參數設定）：感應卡認證，180 天換密碼，輸錯 10 次鎖定",
+   "en": "<strong>Medium</strong> (e.g., washer parameter settings): proximity card authentication, password changed every 180 days, locked after 10 failed attempts"
+  },
+  {
+   "zh": "<strong>Low</strong>（如包裝線 HMI 速度控制）：共用門禁密碼即可，一年換一次",
+   "en": "<strong>Low</strong> (e.g., packaging line HMI speed control): a shared door code is sufficient, changed once a year"
+  },
+  {
+   "zh": "法規重點：自動登出 (Automatic Log-out)",
+   "en": "Regulatory Focus: Automatic Log-out"
+  },
+  {
+   "zh": "TR84 特別強調，雖然自動登出不屬於差異化管控項目，但它是一項<strong>整體性的管控要素</strong>。閒置多久後自動登出應與風險相稱。",
+   "en": "TR84 stresses that although automatic log-out is not a differentiated control item, it is a <strong>holistic control element</strong>. The idle time before automatic log-out should be commensurate with the risk."
+  },
+  {
+   "zh": "實務上，無菌充填區的 MES 終端通常設定 5-10 分鐘自動登出；而辦公區域的系統可以設定 15-30 分鐘。",
+   "en": "In practice, MES terminals in the aseptic filling area are typically set to log out automatically after 5-10 minutes, while systems in office areas can be set to 15-30 minutes."
+  },
+  {
+   "zh": "CDMO 實務應用：多客戶環境的存取控制挑戰",
+   "en": "CDMO Practical Application: Access Control Challenges in a Multi-Client Environment"
+  },
+  {
+   "zh": "CDMO 的最大挑戰在於：<strong>同一套電子系統上可能儲存多個客戶的製程資料</strong>。這帶來額外的管控需求：",
+   "en": "The biggest challenge for a CDMO is that <strong>one electronic system may store process data of multiple clients</strong>. This creates additional control needs:"
+  },
+  {
+   "zh": "<strong>專案隔離</strong>：不同客戶的操作人員只能存取該客戶的批次資料，不得跨客戶查看",
+   "en": "<strong>Project segregation</strong>: operators for one client may only access that client's batch data and must not view data across clients"
+  },
+  {
+   "zh": "<strong>權限矩陣</strong>：需建立「客戶 x 角色 x 系統」的三維權限矩陣",
+   "en": "<strong>Access matrix</strong>: build a three-dimensional access matrix of \"client x role x system\""
+  },
+  {
+   "zh": "<strong>帳號審查</strong>：人員輪調頻繁，年度帳號審查需特別確認離職或轉調人員的權限是否已移除",
+   "en": "<strong>Account review</strong>: with frequent staff rotation, the annual account review must specifically confirm that access of departed or transferred personnel has been removed"
+  },
+  {
+   "zh": "<strong>保密協定</strong>：存取控制是履行客戶保密協定 (CDA) 的技術手段之一",
+   "en": "<strong>Confidentiality agreements</strong>: access control is one of the technical means of fulfilling client confidentiality agreements (CDAs)"
+  },
+  {
+   "zh": "你的工廠的濾膜完整性測試儀 (Filter Integrity Tester) 用於無菌充填線。該設備同時儲存多個客戶的批次測試資料。請問：",
+   "en": "Your site's Filter Integrity Tester is used on the aseptic filling line. The instrument stores batch test data for several clients at the same time. Please answer:"
+  },
+  {
+   "zh": "此設備的資料屬於哪一個關鍵性等級？",
+   "en": "What criticality level does the data from this instrument fall under?"
+  },
+  {
+   "zh": "密碼變更頻率應設定為多少天？",
+   "en": "How many days should the password change interval be set to?"
+  },
+  {
+   "zh": "除了 TR84 列出的標準管控外，CDMO 還需要增加哪些額外管控？",
+   "en": "Beyond the standard controls listed in TR84, what additional controls does a CDMO need to add?"
+  },
+  {
+   "zh": "電子稽核軌跡審查：基本概念與審查範圍",
+   "en": "Electronic Audit Trail Review: Basic Concepts and Scope of Review"
+  },
+  {
+   "zh": "核心概念：Audit Trail（稽核軌跡）",
+   "en": "Core Concept: Audit Trail"
+  },
+  {
+   "zh": "<strong>Audit Trail（稽核軌跡）</strong>是一種 metadata（元資料），自動記錄資料生命週期中的所有關鍵事件：建立、新增、刪除、修改。其核心要求是 <strong>\"Who, What, When, Why\"</strong>（何人、何事、何時、為何）。",
+   "en": "An <strong>Audit Trail</strong> is metadata that automatically records all critical events in the data life cycle: creation, addition, deletion and modification. Its core requirement is <strong>\"Who, What, When, Why\"</strong>."
+  },
+  {
+   "zh": "TR84 特別強調：",
+   "en": "TR84 particularly emphasizes:"
+  },
+  {
+   "zh": "Audit Trail 不一定叫做 \"Audit Trail\"，可能以 Event Log、Alarm Log、System Log 等名稱存在",
+   "en": "An audit trail is not necessarily named \"Audit Trail\"; it may exist as an Event Log, Alarm Log, System Log, etc."
+  },
+  {
+   "zh": "需在作業系統 (OS) 層級與應用程式 (Application) 層級分別理解 Audit Trail 的存放位置",
+   "en": "The location of the audit trail must be understood separately at the operating system (OS) level and the application level"
+  },
+  {
+   "zh": "並非每批都要審查所有 Audit Trail，而是採取<strong>風險導向方法</strong>",
+   "en": "Not every audit trail needs to be reviewed for every batch; instead, a <strong>risk-based approach</strong> is taken"
+  },
+  {
+   "zh": "三類 Audit Trail 資料",
+   "en": "Three Categories of Audit Trail Data"
+  },
+  {
+   "zh": "TR84 將 Audit Trail 涵蓋的資料分為三大類：",
+   "en": "TR84 divides the data covered by audit trails into three categories:"
+  },
+  {
+   "zh": "<strong>Batch Setup Data（批次設定資料）</strong>：配方 (Recipe)、設定值 (Set-points)、計畫時間等",
+   "en": "<strong>Batch Setup Data</strong>: recipe, set-points, planned times, etc."
+  },
+  {
+   "zh": "<strong>Batch Run Data（批次執行資料）</strong>：溫度、操作時間、操作者身分等製程數據",
+   "en": "<strong>Batch Run Data</strong>: process data such as temperature, operation times and operator identity"
+  },
+  {
+   "zh": "<strong>System Configuration Data（系統組態資料）</strong>：帳號管理、權限設定、資料儲存位置等",
+   "en": "<strong>System Configuration Data</strong>: account management, privilege settings, data storage locations, etc."
+  },
+  {
+   "zh": "這三類資料的審查方式與頻率各不相同，需透過 ATRA 工具分別評估。",
+   "en": "The review method and frequency differ for each of these categories and must be assessed separately using the ATRA tool."
+  },
+  {
+   "zh": "法規重點：審查者的獨立性",
+   "en": "Regulatory Focus: Independence of the Reviewer"
+  },
+  {
+   "zh": "執行 Audit Trail Review 的人員必須具備兩個條件：",
+   "en": "The person performing Audit Trail Review must meet two conditions:"
+  },
+  {
+   "zh": "<strong>獨立性</strong>：不得參與該批資料的建立或驗證",
+   "en": "<strong>Independence</strong>: must not have been involved in creating or verifying the batch data"
+  },
+  {
+   "zh": "<strong>技術能力</strong>：能理解 Audit Trail 的內容與意義",
+   "en": "<strong>Technical competence</strong>: must be able to understand the content and meaning of the audit trail"
+  },
+  {
+   "zh": "這意味著不能由操作者自己審查自己的操作紀錄，也不能由完全不懂系統的人來審查。",
+   "en": "This means operators cannot review their own operation records, nor can someone with no understanding of the system do the review."
+  },
+  {
+   "zh": "生活化比喻：銀行交易明細",
+   "en": "Analogy: Bank Transaction Statements"
+  },
+  {
+   "zh": "Audit Trail 就像你的銀行帳戶交易明細：",
+   "en": "An audit trail is like the transaction history of your bank account:"
+  },
+  {
+   "zh": "每筆交易都記錄了<strong>誰</strong>（帳戶持有人）、<strong>做了什麼</strong>（存款/提款/轉帳）、<strong>何時</strong>（時間戳記）、<strong>為何</strong>（備註用途）",
+   "en": "Each transaction records <strong>who</strong> (the account holder), <strong>what</strong> (deposit / withdrawal / transfer), <strong>when</strong> (timestamp) and <strong>why</strong> (remarks on purpose)"
+  },
+  {
+   "zh": "你不需要每天逐筆核對，但可以定期抽查異常交易",
+   "en": "You do not need to check every entry every day, but you can periodically spot-check unusual transactions"
+  },
+  {
+   "zh": "核對的人不應該是你自己，而是獨立的稽核人員",
+   "en": "The person checking should not be yourself, but an independent auditor"
+  },
+  {
+   "zh": "稽核軌跡審查評估：ATRA 三維度評分工具",
+   "en": "Audit Trail Review Assessment: The ATRA Three-Dimension Scoring Tool"
+  },
+  {
+   "zh": "核心概念：ATRA 三維度評分",
+   "en": "Core Concept: ATRA Three-Dimension Scoring"
+  },
+  {
+   "zh": "<strong>Audit Trail Review Assessment (ATRA)</strong> 是 TR84 提出的風險評估工具，用於決定 Audit Trail 中每個元素的審查頻率。其邏輯類似 FMEA 的風險優先數 (RPN)，以三個維度相乘：",
+   "en": "The <strong>Audit Trail Review Assessment (ATRA)</strong> is a risk assessment tool proposed in TR84 to determine the review frequency for each element in an audit trail. Its logic resembles the FMEA Risk Priority Number (RPN), multiplying three dimensions:"
+  },
+  {
+   "zh": "<strong>Detectability（可偵測性）</strong>：修改或刪除是否會被其他現有審查流程發現？<br/>分數：0（已有審查涵蓋）或 1（尚未被審查涵蓋）",
+   "en": "<strong>Detectability</strong>: would a modification or deletion be detected by other existing review processes?<br/>Score: 0 (already covered by a review) or 1 (not yet covered by a review)"
+  },
+  {
+   "zh": "<strong>Severity（嚴重度）</strong>：若資料被修改或刪除，對病人安全/產品品質的影響？<br/>分數：10（直接影響）、4（間接影響）、1（可忽略影響）",
+   "en": "<strong>Severity</strong>: if the data were modified or deleted, what is the impact on patient safety / product quality?<br/>Score: 10 (direct impact), 4 (indirect impact), 1 (negligible impact)"
+  },
+  {
+   "zh": "<strong>Probability（發生機率）</strong>：資料被修改或刪除的可能性？<br/>分數：10（一般使用者可修改）、2（僅獨立管理員可修改）、1（無人可修改）",
+   "en": "<strong>Probability</strong>: how likely is it that the data could be modified or deleted?<br/>Score: 10 (can be modified by a general user), 2 (can be modified only by an independent administrator), 1 (cannot be modified by anyone)"
+  },
+  {
+   "zh": "ATRA 計算公式",
+   "en": "ATRA Calculation Formula"
+  },
+  {
+   "zh": "ATRA Final Score = Detectability x Severity x Probability\n\n分數範圍：0（最低風險）~ 100（最高風險）\n\n常見結果：\n  0 = 已有審查涵蓋 → 無需額外 Audit Trail 審查\n  1-10 = 低風險 → Event-based（事件觸發時審查）\n  11-20 = 中風險 → 每半年至每年\n  40 = 高風險 → 每週至每月\n  100 = 最高風險 → 每批審查 (Batch-wise)",
+   "en": "ATRA Final Score = Detectability x Severity x Probability\n\nScore range: 0 (lowest risk) ~ 100 (highest risk)\n\nTypical results:\n  0 = already covered by a review → no additional Audit Trail review needed\n  1-10 = low risk → Event-based (review when an event is triggered)\n  11-20 = medium risk → every six months to annually\n  40 = high risk → weekly to monthly\n  100 = highest risk → review every batch (Batch-wise)"
+  },
+  {
+   "zh": "生活化比喻：居家保全系統",
+   "en": "Analogy: Home Security System"
+  },
+  {
+   "zh": "ATRA 就像決定「多久巡邏一次」的邏輯：",
+   "en": "ATRA works like deciding \"how often to patrol\":"
+  },
+  {
+   "zh": "<strong>Detectability</strong>：有沒有監視器已經在拍？（有 = 0，沒有 = 1）",
+   "en": "<strong>Detectability</strong>: is a camera already recording? (yes = 0, no = 1)"
+  },
+  {
+   "zh": "<strong>Severity</strong>：這個區域放的是金庫 (10)、辦公設備 (4)、還是花園雜物 (1)？",
+   "en": "<strong>Severity</strong>: does this area hold a vault (10), office equipment (4), or garden clutter (1)?"
+  },
+  {
+   "zh": "<strong>Probability</strong>：外人容易進入 (10)、只有管理員有鑰匙 (2)、還是密封區域 (1)？",
+   "en": "<strong>Probability</strong>: can outsiders easily enter (10), do only administrators have keys (2), or is it a sealed area (1)?"
+  },
+  {
+   "zh": "金庫 + 無監視器 + 外人可進入 = 1 x 10 x 10 = 100 → 每次都要巡邏（每批審查）",
+   "en": "Vault + no camera + accessible to outsiders = 1 x 10 x 10 = 100 → patrol every time (review every batch)"
+  },
+  {
+   "zh": "法規重點：ATRA 不是一勞永逸",
+   "en": "Regulatory Focus: ATRA Is Not a One-Time Exercise"
+  },
+  {
+   "zh": "TR84 明確指出：若在 Periodic Review（定期審查）中發現多起 DI 違規事件，必須重新評估：",
+   "en": "TR84 states clearly that if multiple DI violations are found during Periodic Review, the following must be reassessed:"
+  },
+  {
+   "zh": "現有管控措施是否足夠？",
+   "en": "Are the existing controls sufficient?"
+  },
+  {
+   "zh": "審查頻率是否需要提高？",
+   "en": "Does the review frequency need to be increased?"
+  },
+  {
+   "zh": "這代表 ATRA 是一個<strong>動態工具</strong>，需隨系統風險狀態持續更新。",
+   "en": "This means ATRA is a <strong>dynamic tool</strong> that must be continually updated as the system's risk status changes."
+  },
+  {
+   "zh": "CDMO 實務應用：跨功能 ATRA 團隊",
+   "en": "CDMO Practical Application: Cross-Functional ATRA Team"
+  },
+  {
+   "zh": "TR84 建議組建跨功能團隊執行 ATRA。在 CDMO 環境中，團隊應包含：",
+   "en": "TR84 recommends forming a cross-functional team to perform ATRA. In a CDMO environment, the team should include:"
+  },
+  {
+   "zh": "<strong>IT/自動化</strong>：了解系統技術限制與 Audit Trail 儲存架構",
+   "en": "<strong>IT/Automation</strong>: understands system technical limitations and the audit trail storage architecture"
+  },
+  {
+   "zh": "<strong>品保 (QA)</strong>：定義資料關鍵性等級",
+   "en": "<strong>Quality Assurance (QA)</strong>: defines the data criticality level"
+  },
+  {
+   "zh": "<strong>製造</strong>：了解日常操作流程與潛在風險",
+   "en": "<strong>Manufacturing</strong>: understands daily operating procedures and potential risks"
+  },
+  {
+   "zh": "<strong>CSV 專員</strong>：確保 ATRA 與電腦系統驗證 (CSV) 文件一致",
+   "en": "<strong>CSV specialist</strong>: ensures the ATRA is consistent with the computerized system validation (CSV) documents"
+  },
+  {
+   "zh": "ATRA 實務案例：濾膜完整性測試儀的評分範例",
+   "en": "ATRA Case Study: Scoring Example for a Filter Integrity Tester"
+  },
+  {
+   "zh": "核心概念：ATRA 審查問題清單",
+   "en": "Core Concept: ATRA Review Question List"
+  },
+  {
+   "zh": "TR84 列出了 Audit Trail 審查時應關注的具體問題，可分為兩大類：",
+   "en": "TR84 lists specific questions to focus on during audit trail review, which fall into two categories:"
+  },
+  {
+   "zh": "<strong>批次相關（Batch Setup + Run Data）：</strong>",
+   "en": "<strong>Batch-related (Batch Setup + Run Data):</strong>"
+  },
+  {
+   "zh": "配方參數是否在批次執行中被修改至驗證範圍外？",
+   "en": "Were recipe parameters modified during batch execution to values outside the validated range?"
+  },
+  {
+   "zh": "CPP（關鍵製程參數）的設定值或容許範圍是否被變更？",
+   "en": "Were the set-points or allowable ranges of CPPs (critical process parameters) changed?"
+  },
+  {
+   "zh": "計算參數是否被編輯或修改？",
+   "en": "Were calculated parameters edited or modified?"
+  },
+  {
+   "zh": "時間修改是否影響時間敏感製程的持續時間？",
+   "en": "Did time modifications affect the duration of time-sensitive processes?"
+  },
+  {
+   "zh": "職責分離是否落實？操作者是否有授權？",
+   "en": "Is segregation of duties enforced? Was the operator authorized?"
+  },
+  {
+   "zh": "<strong>系統組態（System Configuration）：</strong>",
+   "en": "<strong>System Configuration:</strong>"
+  },
+  {
+   "zh": "系統日期或時間是否被變更？",
+   "en": "Was the system date or time changed?"
+  },
+  {
+   "zh": "報告範本是否被修改、刪除或更名？",
+   "en": "Were report templates modified, deleted or renamed?"
+  },
+  {
+   "zh": "使用者帳號或權限是否有異動？",
+   "en": "Were there any changes to user accounts or privileges?"
+  },
+  {
+   "zh": "是否有 Audit Trail 本身被修改或刪除的紀錄？",
+   "en": "Is there any record of the audit trail itself being modified or deleted?"
+  },
+  {
+   "zh": "法規重點：濾膜完整性測試儀的 ATRA 關鍵發現",
+   "en": "Regulatory Focus: Key ATRA Findings for the Filter Integrity Tester"
+  },
+  {
+   "zh": "TR84 透過 Filter Integrity Tester 的範例，展現了 ATRA 的威力：",
+   "en": "Through the Filter Integrity Tester example, TR84 demonstrates the power of ATRA:"
+  },
+  {
+   "zh": "<strong>重複/中止測試 (Score=100)</strong>：操作員可能隱藏不合格的列印報告，這是最高風險，<strong>每批都要審查</strong>",
+   "en": "<strong>Repeated/aborted test (Score=100)</strong>: an operator could hide a failing printed report; this is the highest risk, and <strong>it must be reviewed every batch</strong>"
+  },
+  {
+   "zh": "<strong>配方變更 (Score=20)</strong>：操作員無法變更配方（僅管理員可），但無其他審查涵蓋，<strong>每半年審查一次</strong>",
+   "en": "<strong>Recipe change (Score=20)</strong>: operators cannot change the recipe (administrators only), but no other review covers it, so it is <strong>reviewed every six months</strong>"
+  },
+  {
+   "zh": "<strong>測試結果 (Score=0)</strong>：結果自動生成且不可修改，已在批次報告中審查，<strong>無需額外 Audit Trail 審查</strong>",
+   "en": "<strong>Test result (Score=0)</strong>: the result is generated automatically and cannot be modified, and it is already reviewed in the batch report, so <strong>no additional Audit Trail review is needed</strong>"
+  },
+  {
+   "zh": "核心啟示：<strong>技術管控越強的系統，Audit Trail 審查頻率越低。</strong>",
+   "en": "Key takeaway: <strong>the stronger the technical controls of a system, the lower the audit trail review frequency.</strong>"
+  },
+  {
+   "zh": "生活化比喻：考試防弊系統",
+   "en": "Analogy: Exam Anti-Cheating System"
+  },
+  {
+   "zh": "ATRA 的邏輯就像評估「考場需要多少監考人員」：",
+   "en": "The logic of ATRA is like assessing \"how many invigilators an exam hall needs\":"
+  },
+  {
+   "zh": "<strong>重複/中止測試</strong>就像學生可以偷偷重新考一次 → 必須每場都監考（每批審查）",
+   "en": "A <strong>repeated/aborted test</strong> is like a student secretly retaking the exam → every session must be proctored (review every batch)"
+  },
+  {
+   "zh": "<strong>配方變更</strong>就像修改考題答案 → 只有老師能改，但仍需定期檢查（每半年）",
+   "en": "A <strong>recipe change</strong> is like altering the answer key → only the teacher can change it, but periodic checks are still needed (every six months)"
+  },
+  {
+   "zh": "<strong>測試結果</strong>就像電腦自動閱卷，不可竄改 → 無需額外監督",
+   "en": "A <strong>test result</strong> is like computer-graded marking that cannot be tampered with → no additional supervision needed"
+  },
+  {
+   "zh": "CDMO 實務應用：建立 ATRA 標準模板",
+   "en": "CDMO Practical Application: Building Standard ATRA Templates"
+  },
+  {
+   "zh": "建議 CDMO 為常見設備建立 ATRA 標準模板：",
+   "en": "It is recommended that a CDMO build standard ATRA templates for common equipment:"
+  },
+  {
+   "zh": "<strong>Filter Integrity Tester</strong>：如上述範例，重點關注重複測試與配方變更",
+   "en": "<strong>Filter Integrity Tester</strong>: as in the example above, focus on repeated tests and recipe changes"
+  },
+  {
+   "zh": "<strong>MES / Historian</strong>：重點關注批次參數修改、使用者權限異動",
+   "en": "<strong>MES / Historian</strong>: focus on batch parameter modifications and changes to user privileges"
+  },
+  {
+   "zh": "<strong>BMS（建築管理系統）</strong>：重點關注溫濕度數據修改、警報確認紀錄",
+   "en": "<strong>BMS (Building Management System)</strong>: focus on temperature and humidity data modifications and alarm acknowledgement records"
+  },
+  {
+   "zh": "<strong>秤重系統</strong>：重點關注校正參數修改、Tare 值變更",
+   "en": "<strong>Weighing systems</strong>: focus on calibration parameter modifications and Tare value changes"
+  },
+  {
+   "zh": "模板化可大幅減少每個客戶專案的 ATRA 工作量。",
+   "en": "Templates can greatly reduce the ATRA workload for each client project."
+  },
+  {
+   "zh": "你的無菌充填線使用某品牌的 Filter Integrity Tester。該設備的 Audit Trail 中記錄了「操作員 A 在 14:30 開始測試，14:32 中止測試，14:35 重新開始測試並於 14:40 通過」。",
+   "en": "Your aseptic filling line uses a Filter Integrity Tester of a particular brand. The instrument's Audit Trail records: \"Operator A started a test at 14:30, aborted it at 14:32, restarted the test at 14:35 and passed at 14:40.\""
+  },
+  {
+   "zh": "這筆紀錄屬於 ATRA 的哪一個元素？其 Final Score 為何？",
+   "en": "Which ATRA element does this record belong to? What is its Final Score?"
+  },
+  {
+   "zh": "若 Batch Review 流程中未包含此 Audit Trail 的審查，可能有什麼風險？",
+   "en": "If the Batch Review process does not include review of this Audit Trail, what risks might arise?"
+  },
+  {
+   "zh": "你會建議將此項的審查頻率定為多少？",
+   "en": "What review frequency would you recommend for this item?"
+  },
+  {
+   "zh": "電子資料備份：頻率策略與迴圈記憶體管控",
+   "en": "Electronic Data Backup: Frequency Strategy and Looped Memory Control"
+  },
+  {
+   "zh": "核心概念：Data Backup（資料備份）策略",
+   "en": "Core Concept: Data Backup Strategy"
+  },
+  {
+   "zh": "TR84 將 Data Backup（資料備份）的管控分為兩個情境：",
+   "en": "TR84 divides Data Backup controls into two scenarios:"
+  },
+  {
+   "zh": "<strong>備份頻率策略</strong>：根據「若資料遺失，製造活動能否透過其他方式重建？」來決定備份頻率",
+   "en": "<strong>Backup frequency strategy</strong>: backup frequency is determined by asking \"if the data were lost, could the manufacturing activity be reconstructed by other means?\""
+  },
+  {
+   "zh": "<strong>迴圈記憶體 (Looped Memory) 管控</strong>：針對儲存容量有限、新資料自動覆蓋舊資料的設備",
+   "en": "<strong>Looped Memory control</strong>: for equipment with limited storage capacity where new data automatically overwrites old data"
+  },
+  {
+   "zh": "核心原則：<strong>備份頻率應與資料生成頻率相稱</strong>。若設備每天產生新資料（如 MES），則需每日備份。",
+   "en": "Core principle: <strong>backup frequency should be commensurate with the frequency of data generation</strong>. If a system generates new data every day (such as MES), it must be backed up daily."
+  },
+  {
+   "zh": "生活化比喻：行車紀錄器",
+   "en": "Analogy: Dashcam"
+  },
+  {
+   "zh": "Looped Memory（迴圈記憶體）就像行車紀錄器的記憶卡：",
+   "en": "Looped Memory is like a dashcam's memory card:"
+  },
+  {
+   "zh": "記憶卡滿了之後，新的影像會自動覆蓋最舊的影像",
+   "en": "Once the card is full, new footage automatically overwrites the oldest footage"
+  },
+  {
+   "zh": "如果你發生交通事故但忘了備份，關鍵證據可能已被覆蓋",
+   "en": "If you have an accident but forgot to back up, the key evidence may already have been overwritten"
+  },
+  {
+   "zh": "<strong>High</strong>：像計程車的行車紀錄器，每天下班前必須備份（因為是營業用途的法律證據）",
+   "en": "<strong>High</strong>: like a taxi's dashcam, which must be backed up before the end of every shift (because it is legal evidence for a commercial operation)"
+  },
+  {
+   "zh": "<strong>Low</strong>：像自家轎車的行車紀錄器，只要在需要調閱前不被覆蓋即可",
+   "en": "<strong>Low</strong>: like the dashcam in a private car, where it is enough that footage is not overwritten before it is needed"
+  },
+  {
+   "zh": "法規重點：資料遺失 = 批次拒放",
+   "en": "Regulatory Focus: Data Loss = Batch Rejection"
+  },
+  {
+   "zh": "TR84 提出一個非常實際的警告：",
+   "en": "TR84 gives a very practical warning:"
+  },
+  {
+   "zh": "<strong>若影響產品安全/品質的活動唯一證據是電子資料，而該資料因未備份而遺失，企業必須準備拒放該批次。</strong>",
+   "en": "<strong>If the only evidence of an activity affecting product safety/quality is electronic data, and that data is lost because it was not backed up, the company must be prepared to reject the batch.</strong>"
+  },
+  {
+   "zh": "這是備份策略的最佳風險論述：「不備份的成本 = 整批產品報廢的損失」。",
+   "en": "This is the best risk argument for a backup strategy: \"the cost of not backing up = the loss of an entire scrapped batch\"."
+  },
+  {
+   "zh": "CDMO 實務應用：常見迴圈記憶體設備",
+   "en": "CDMO Practical Application: Common Looped Memory Equipment"
+  },
+  {
+   "zh": "CDMO 環境中常見的迴圈記憶體設備：",
+   "en": "Common looped memory equipment in a CDMO environment:"
+  },
+  {
+   "zh": "<strong>Filter Integrity Tester</strong>（High）：某些型號僅能儲存 10-50 組測試結果，必須在覆蓋前備份",
+   "en": "<strong>Filter Integrity Tester</strong> (High): some models can store only 10-50 test results and must be backed up before being overwritten"
+  },
+  {
+   "zh": "<strong>pH Meter / 導電度計</strong>（Medium）：生產現場使用的手持式設備，儲存容量有限",
+   "en": "<strong>pH Meter / conductivity meter</strong> (Medium): handheld instruments used on the production floor, with limited storage capacity"
+  },
+  {
+   "zh": "<strong>壓錠機 (Compression Machine)</strong>：可能僅儲存固定批次數的資料",
+   "en": "<strong>Compression machine</strong>: may store data for only a fixed number of batches"
+  },
+  {
+   "zh": "<strong>自動秤重系統</strong>：某些型號的內部記憶體有限",
+   "en": "<strong>Automatic weighing systems</strong>: some models have limited internal memory"
+  },
+  {
+   "zh": "建議：建立「設備儲存容量清單」，標註各設備的最大儲存批次數及建議備份週期。",
+   "en": "Recommendation: build an \"equipment storage capacity list\" noting each instrument's maximum number of stored batches and recommended backup interval."
+  },
+  {
+   "zh": "你的無菌充填線有一台 Filter Integrity Tester，最多可儲存 20 組測試結果。該充填線每天執行 2-3 批，每批測試 2 個濾膜。請問：",
+   "en": "Your aseptic filling line has a Filter Integrity Tester that can store up to 20 test results. The line runs 2-3 batches per day, with 2 filters tested per batch. Please answer:"
+  },
+  {
+   "zh": "大約幾天後舊資料會開始被覆蓋？",
+   "en": "After roughly how many days will old data begin to be overwritten?"
+  },
+  {
+   "zh": "你會建議什麼樣的備份頻率？",
+   "en": "What backup frequency would you recommend?"
+  },
+  {
+   "zh": "若某批測試資料因未及時備份而遺失，對批次放行有何影響？",
+   "en": "If the test data for a batch were lost because it was not backed up in time, what is the impact on batch release?"
+  },
+  {
+   "zh": "電子資料的使用：報告產出與資料傳輸",
+   "en": "Use of Electronic Data: Report Generation and Data Transfer"
+  },
+  {
+   "zh": "核心概念：電子資料的後端處理",
+   "en": "Core Concept: Back-End Processing of Electronic Data"
+  },
+  {
+   "zh": "電子資料生成後，後續處理可能帶來 DI 風險。TR84 在此聚焦兩個關鍵場景：",
+   "en": "After electronic data is generated, subsequent processing can introduce DI risk. TR84 focuses here on two key scenarios:"
+  },
+  {
+   "zh": "<strong>資料匯出產生報告/記錄</strong>（Section 5.3.7.1）：如從 MES 匯出批次記錄",
+   "en": "<strong>Data export to generate reports/records</strong> (Section 5.3.7.1): e.g., exporting batch records from the MES"
+  },
+  {
+   "zh": "<strong>系統間資料傳輸或遷移</strong>（Section 5.3.7.2）：如從獨立設備傳輸至中央系統",
+   "en": "<strong>Data transfer or migration between systems</strong> (Section 5.3.7.2): e.g., transferring from a standalone instrument to a central system"
+  },
+  {
+   "zh": "兩者的管控核心都在於：確保資料在處理過程中<strong>不被改變、不會遺失</strong>。",
+   "en": "The core of control for both is to ensure that data is <strong>not altered and not lost</strong> during processing."
+  },
+  {
+   "zh": "資料匯出與報告產出：驗證、變更管控與範本管理",
+   "en": "Data Export and Report Generation: Validation, Change Control and Template Management"
+  },
+  {
+   "zh": "核心概念：報告範本管控的三級差異",
+   "en": "Core Concept: Three-Level Differences in Report Template Control"
+  },
+  {
+   "zh": "TR84 將報告/記錄產出的管控從四個面向分級：",
+   "en": "TR84 tiers the control of report/record generation along four aspects:"
+  },
+  {
+   "zh": "<strong>驗證層級</strong>：High 需要完整驗證 + 變更後重新驗證；Medium 僅需初始驗證；Low 僅需確認 (Verification)",
+   "en": "<strong>Validation level</strong>: High requires full validation + revalidation after changes; Medium requires only initial validation; Low requires only verification"
+  },
+  {
+   "zh": "<strong>變更管控</strong>：High 需要 Change Control + Test Plan；Medium 需要程序管控；Low 僅需作業指導書",
+   "en": "<strong>Change control</strong>: High requires Change Control + Test Plan; Medium requires procedural control; Low requires only a work instruction"
+  },
+  {
+   "zh": "<strong>修改權限</strong>：High 與 Medium 由 IT/自動化單位執行；Low 可由業務單位自行執行",
+   "en": "<strong>Modification authority</strong>: for High and Medium, changes are made by IT/Automation; for Low, they can be made by the business unit itself"
+  },
+  {
+   "zh": "<strong>內容彈性</strong>：High 為靜態固定；Medium 有限彈性（下拉選單）；Low 可彈性調整",
+   "en": "<strong>Content flexibility</strong>: High is static and fixed; Medium has limited flexibility (drop-down menus); Low can be adjusted flexibly"
+  },
+  {
+   "zh": "生活化比喻：Excel 報表模板管理",
+   "en": "Analogy: Managing Excel Report Templates"
+  },
+  {
+   "zh": "想像你的工廠有三類 Excel 報表模板：",
+   "en": "Imagine your site has three types of Excel report templates:"
+  },
+  {
+   "zh": "<strong>High</strong>（批次放行報告）：像銀行對帳單模板 → IT 鎖定格式，任何修改需要完整驗證 + 變更管控",
+   "en": "<strong>High</strong> (batch release report): like a bank statement template → IT locks the format, and any modification requires full validation + change control"
+  },
+  {
+   "zh": "<strong>Medium</strong>（環境監測報告）：像預設的月報模板 → 有固定的篩選條件，使用者可選擇日期範圍",
+   "en": "<strong>Medium</strong> (environmental monitoring report): like a preset monthly report template → fixed filter criteria, with users able to choose the date range"
+  },
+  {
+   "zh": "<strong>Low</strong>（趨勢分析匯出）：像分析用的 Pivot Table → 使用者可自由調整欄位和篩選",
+   "en": "<strong>Low</strong> (trend analysis export): like a Pivot Table used for analysis → users can freely adjust fields and filters"
+  },
+  {
+   "zh": "法規重點：品質單位的跨級監督",
+   "en": "Regulatory Focus: Quality Unit Oversight Across All Levels"
+  },
+  {
+   "zh": "TR84 強調一個重要原則：<strong>無論資料關鍵性等級高低，品質單位 (Quality Unit) 都應審查和核准報告範本的變更</strong>，特別是可能影響資訊呈現方式的變更。",
+   "en": "TR84 stresses an important principle: <strong>regardless of data criticality level, the Quality Unit should review and approve changes to report templates</strong>, especially changes that could affect how information is presented."
+  },
+  {
+   "zh": "這代表即使是 Low 級別的報告，若範本變更會改變所顯示的資訊內容，品質單位仍需介入。",
+   "en": "This means that even for a Low-level report, if a template change alters the information displayed, the quality unit must still be involved."
+  },
+  {
+   "zh": "CDMO 實務應用：多客戶報告範本管理",
+   "en": "CDMO Practical Application: Managing Report Templates for Multiple Clients"
+  },
+  {
+   "zh": "CDMO 面臨的報告管理挑戰：",
+   "en": "Report management challenges faced by a CDMO:"
+  },
+  {
+   "zh": "<strong>客戶專屬報告格式</strong>：不同客戶可能要求不同的批次報告格式，每個格式都需獨立驗證",
+   "en": "<strong>Client-specific report formats</strong>: different clients may require different batch report formats, and each format must be validated independently"
+  },
+  {
+   "zh": "<strong>範本版本控制</strong>：同一系統上可能有 5-10 個客戶的報告範本，版本管控複雜度倍增",
+   "en": "<strong>Template version control</strong>: one system may hold report templates for 5-10 clients, multiplying the complexity of version control"
+  },
+  {
+   "zh": "<strong>Raw Data 不可變原則</strong>：報告範本的修改僅影響呈現方式，底層原始資料 (Raw Data) 不得因範本變更而被改變",
+   "en": "<strong>Raw Data immutability principle</strong>: modifying a report template affects only presentation; the underlying raw data must not be changed by a template change"
+  },
+  {
+   "zh": "電子系統間資料傳輸與遷移：確保資料完整傳遞",
+   "en": "Electronic Data Transfer and Migration Between Systems: Ensuring Complete Data Transfer"
+  },
+  {
+   "zh": "核心概念：Data Transfer vs. Data Migration",
+   "en": "Core Concept: Data Transfer vs. Data Migration"
+  },
+  {
+   "zh": "TR84 討論了兩種電子資料傳輸情境：",
+   "en": "TR84 discusses two electronic data transfer scenarios:"
+  },
+  {
+   "zh": "<strong>Data Migration（資料遷移）</strong>：一次性的平台轉換，如軟體升級、伺服器更換、上雲端。通常伴隨 CSV（電腦系統驗證）活動。",
+   "en": "<strong>Data Migration</strong>: a one-time platform change, such as a software upgrade, server replacement or move to the cloud. It is usually accompanied by CSV (computerized system validation) activities."
+  },
+  {
+   "zh": "<strong>Data Transfer（資料傳輸）</strong>：週期性的資料傳送，如從獨立設備定期將批次資料上傳至 MES 或 Historian。",
+   "en": "<strong>Data Transfer</strong>: periodic sending of data, such as a standalone instrument regularly uploading batch data to the MES or Historian."
+  },
+  {
+   "zh": "兩者的共同管控要求（High/Medium）：<strong>Change Control + Test Plan + Checksum 驗證</strong>",
+   "en": "Common control requirements for both (High/Medium): <strong>Change Control + Test Plan + Checksum verification</strong>"
+  },
+  {
+   "zh": "關鍵術語：Checksum（校驗碼）",
+   "en": "Key Term: Checksum"
+  },
+  {
+   "zh": "<strong>Checksum（校驗碼）</strong>是一種資料完整性驗證工具，透過數學演算法計算出一個固定長度的代碼。若傳輸前後的 Checksum 相同，代表資料完整無誤。",
+   "en": "A <strong>Checksum</strong> is a data integrity verification tool that uses a mathematical algorithm to calculate a fixed-length code. If the Checksum is the same before and after transfer, the data is complete and intact."
+  },
+  {
+   "zh": "常見類型：MD5、SHA-256 等。在 GMP 環境中，Checksum 是確認「所有發出的資料都已被接收」的技術手段。",
+   "en": "Common types include MD5 and SHA-256. In a GMP environment, a Checksum is the technical means of confirming that \"all data sent has been received\"."
+  },
+  {
+   "zh": "生活化比喻：搬家時的物品清單",
+   "en": "Analogy: The Inventory List When Moving House"
+  },
+  {
+   "zh": "資料傳輸就像搬家：",
+   "en": "Data transfer is like moving house:"
+  },
+  {
+   "zh": "<strong>High/Medium</strong>（重要物品搬遷）：搬家前列清單 (Test Plan)，搬家公司簽約 (Change Control)，搬到新家後逐一核對清單 (Checksum)",
+   "en": "<strong>High/Medium</strong> (moving important items): make a list before the move (Test Plan), sign a contract with the moving company (Change Control), and check items one by one against the list at the new home (Checksum)"
+  },
+  {
+   "zh": "<strong>Low</strong>（雜物轉移到儲藏室）：按照步驟搬過去即可 (Procedural Control)，不需要逐件核對",
+   "en": "<strong>Low</strong> (moving clutter to a storage room): simply follow the steps (Procedural Control), with no need to check item by item"
+  },
+  {
+   "zh": "法規重點：High 與 Medium 的管控一致性",
+   "en": "Regulatory Focus: Consistency of High and Medium Controls"
+  },
+  {
+   "zh": "值得注意的是，在資料傳輸/遷移的管控上，<strong>High 與 Medium 的要求完全相同</strong>。這反映了 TR84 的立場：即使是間接影響產品品質的資料（Medium），在系統間傳輸時也不容許任何遺失或變更。",
+   "en": "Notably, for data transfer/migration controls, <strong>the requirements for High and Medium are identical</strong>. This reflects TR84's position that even data that only indirectly affects product quality (Medium) must not be lost or altered when transferred between systems."
+  },
+  {
+   "zh": "唯有 Low 級別（如傳輸至 Data Lake 做趨勢分析）可以採用較簡化的程序管控。",
+   "en": "Only the Low level (such as transfer to a Data Lake for trend analysis) may use simplified procedural control."
+  },
+  {
+   "zh": "CDMO 實務應用：資料傳輸的常見場景",
+   "en": "CDMO Practical Application: Common Data Transfer Scenarios"
+  },
+  {
+   "zh": "CDMO 中常見的資料傳輸/遷移場景：",
+   "en": "Common data transfer/migration scenarios in a CDMO:"
+  },
+  {
+   "zh": "<strong>Filter Integrity Tester → MES</strong>（High）：每批測試資料上傳至 MES，需 Checksum 驗證",
+   "en": "<strong>Filter Integrity Tester → MES</strong> (High): each batch's test data is uploaded to the MES and requires Checksum verification"
+  },
+  {
+   "zh": "<strong>EM 系統 → LIMS</strong>（Medium）：環境監測資料定期傳輸至 LIMS，需 Change Control",
+   "en": "<strong>EM system → LIMS</strong> (Medium): environmental monitoring data is transferred to the LIMS periodically and requires Change Control"
+  },
+  {
+   "zh": "<strong>MES 升級</strong>（High）：從舊版 MES 遷移至新版，屬一次性活動，需完整驗證計畫",
+   "en": "<strong>MES upgrade</strong> (High): migration from the old MES version to the new one is a one-time activity and requires a full validation plan"
+  },
+  {
+   "zh": "<strong>製程數據 → Data Lake</strong>（Low）：用於 CPV（持續製程確效）分析，程序管控即可",
+   "en": "<strong>Process data → Data Lake</strong> (Low): used for CPV (continued process verification) analysis; procedural control is sufficient"
+  },
+  {
+   "zh": "特別注意：CDMO 在系統升級時，需確認所有客戶的歷史批次資料均完整遷移。",
+   "en": "Special note: when upgrading systems, a CDMO must confirm that the historical batch data of all clients has been completely migrated."
+  },
+  {
+   "zh": "你的工廠正在將 MES 從 Version 3.0 升級至 Version 4.0。系統中儲存了 5 個客戶、共 200 批的歷史批次記錄。請問：",
+   "en": "Your site is upgrading its MES from Version 3.0 to Version 4.0. The system holds historical batch records for 5 clients, 200 batches in total. Please answer:"
+  },
+  {
+   "zh": "此次資料遷移屬於哪一個關鍵性等級？",
+   "en": "What criticality level does this data migration fall under?"
+  },
+  {
+   "zh": "你會使用什麼驗證工具確認資料完整遷移？",
+   "en": "What verification tool would you use to confirm complete data migration?"
+  },
+  {
+   "zh": "遷移完成後，需要通知客戶嗎？為什麼？",
+   "en": "After the migration is complete, do clients need to be notified? Why?"
+  },
+  {
+   "zh": "本節重點總結",
+   "en": "Key Takeaways of This Section"
+  },
+  {
+   "zh": "Section 4 核心要點回顧",
+   "en": "Section 4 Core Points Review"
+  },
+  {
+   "zh": "本節涵蓋 TR84 第 5.3.3.3 至 5.3.7.2 的具體管控領域，為 Data Integrity 管控體系的實務操作核心。以下為各領域的關鍵管控摘要：",
+   "en": "This section covers the specific control areas in TR84 Sections 5.3.3.3 to 5.3.7.2, the practical core of the Data Integrity control framework. The key controls for each area are summarized below:"
+  },
+  {
+   "zh": "CDMO 從業者的三大行動重點",
+   "en": "Three Action Priorities for CDMO Practitioners"
+  },
+  {
+   "zh": "<strong>建立跨客戶的 Access Control 矩陣</strong>：確保同一系統上不同客戶的資料隔離，每年審查帳號權限",
+   "en": "<strong>Establish a cross-client Access Control matrix</strong>: ensure data segregation between clients on the same system, and review account privileges annually"
+  },
+  {
+   "zh": "<strong>為關鍵設備完成 ATRA 評估</strong>：優先針對 Filter Integrity Tester、MES、Historian 等設備，建立 Audit Trail 審查 SOP",
+   "en": "<strong>Complete ATRA for critical equipment</strong>: prioritize equipment such as Filter Integrity Testers, MES and Historians, and establish Audit Trail review SOPs"
+  },
+  {
+   "zh": "<strong>建立迴圈記憶體設備清單</strong>：盤點所有具有限儲存容量的設備，制定預防性備份計畫，避免資料覆蓋導致批次拒放",
+   "en": "<strong>Build a list of looped memory equipment</strong>: inventory all equipment with limited storage capacity and set up a preventive backup plan to avoid data overwriting that leads to batch rejection"
+  },
+  {
+   "zh": "綜合思考題",
+   "en": "Comprehensive Discussion Questions"
+  },
+  {
+   "zh": "假設你是一家 CDMO 的品保經理，即將接受客戶的 Data Integrity Audit。稽核員要求你展示以下內容：",
+   "en": "Suppose you are a QA manager at a CDMO about to undergo a client's Data Integrity Audit. The auditor asks you to demonstrate the following:"
+  },
+  {
+   "zh": "你的工廠如何管理紙本記錄轉電子化 (True Copy) 的流程？",
+   "en": "How does your site manage the process of converting paper records to electronic form (True Copy)?"
+  },
+  {
+   "zh": "你的 MES 系統的存取控制策略為何？如何確保不同客戶的資料隔離？",
+   "en": "What is the access control strategy for your MES? How do you ensure data segregation between clients?"
+  },
+  {
+   "zh": "你的 Filter Integrity Tester 的 Audit Trail Review 頻率是如何決定的？請出示 ATRA 文件。",
+   "en": "How was the Audit Trail Review frequency for your Filter Integrity Tester determined? Please show the ATRA documentation."
+  },
+  {
+   "zh": "你的備份策略如何確保迴圈記憶體設備的資料不會遺失？",
+   "en": "How does your backup strategy ensure that data on looped memory equipment is not lost?"
+  },
+  {
+   "zh": "你的批次報告範本的變更管控流程為何？",
+   "en": "What is the change control process for your batch report templates?"
+  },
+  {
+   "zh": "針對上述每一點，你能否清楚說明現有管控措施？若有不足之處，你的改善計畫是什麼？",
+   "en": "For each point above, can you clearly explain the existing controls? If there are gaps, what is your improvement plan?"
+  }
+ ]
+}

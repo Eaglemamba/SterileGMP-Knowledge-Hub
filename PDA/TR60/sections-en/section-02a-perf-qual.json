@@ -1,0 +1,629 @@
+{
+ "source": "section-02a-perf-qual.html",
+ "blocks": [
+  {
+   "zh": "績效確認（第二階段）第一部分 — 系統設計與確認、PQ、PPQ、PPQ 就緒性",
+   "en": "Performance Qualification (Stage 2) Part 1: System Design and Qualification, PQ, PPQ, and PPQ Readiness"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解 Stage 2 績效確認 (Performance Qualification) 的兩大核心組成要素：系統確認與 PPQ",
+   "en": "Understand the two core components of Stage 2 Performance Qualification: system qualification and PPQ"
+  },
+  {
+   "zh": "掌握設施、設備、公用設施的設計、安裝與確認 (DQ/IQ/OQ/PQ) 流程與風險導向方法",
+   "en": "Master the design, installation, and qualification (DQ/IQ/OQ/PQ) of facilities, equipment, and utilities, and the risk-based approach behind it"
+  },
+  {
+   "zh": "認識維持系統受控狀態 (State of Control) 的週期性評估與事件驅動再確認機制",
+   "en": "Recognize the periodic assessment and event-driven requalification mechanisms that keep systems in a State of Control"
+  },
+  {
+   "zh": "瞭解 Performance Qualification (PQ) 與 Process Performance Qualification (PPQ) 的區別與關聯",
+   "en": "Understand the difference and relationship between Performance Qualification (PQ) and Process Performance Qualification (PPQ)"
+  },
+  {
+   "zh": "掌握 PPQ Readiness Assessment（就緒性評估）所需的完整交付項目清單",
+   "en": "Master the complete list of deliverables required for the PPQ Readiness Assessment"
+  },
+  {
+   "zh": "<strong>4.0 Performance Qualification (Stage 2) 4.0 性能確效（第二階段）</strong>",
+   "en": "<strong>4.0 Performance Qualification (Stage 2)</strong>"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念解析 Key Concepts",
+   "en": "Key Concepts"
+  },
+  {
+   "zh": "<strong>Performance Qualification, PQ（績效確認）：</strong>Stage 2 的核心目標是證明「設計好的製程在商業規模下確實能如預期運作」。這不只是跑幾批成功而已，而是要系統性地展示製程的可重複性 (reproducibility)。",
+   "en": "<strong>Performance Qualification, PQ:</strong> The core goal of Stage 2 is to demonstrate that \"the designed process actually performs as intended at commercial scale.\" This is not just a matter of running a few successful batches; it means systematically demonstrating the reproducibility of the process."
+  },
+  {
+   "zh": "<strong>Stage 2 的兩大支柱：</strong>",
+   "en": "<strong>The two pillars of Stage 2:</strong>"
+  },
+  {
+   "zh": "<strong>系統確認 (System Qualification)：</strong>設施、設備、公用設施必須先被確認適合用途 — 這是地基",
+   "en": "<strong>System Qualification:</strong> Facilities, equipment, and utilities must first be qualified as fit for purpose. This is the foundation."
+  },
+  {
+   "zh": "<strong>PPQ (Process Performance Qualification)：</strong>在已確認的系統上，用商業製程實際生產 — 這是蓋房子",
+   "en": "<strong>PPQ (Process Performance Qualification):</strong> Manufacturing with the commercial process on the qualified systems. This is building the house."
+  },
+  {
+   "zh": "兩者有嚴格的先後順序：系統確認必須在 PPQ 之前完成。",
+   "en": "The sequence is strict: system qualification must be completed before PPQ."
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "想像你要開一家新餐廳。Stage 2 就像是「試營運」階段：",
+   "en": "Imagine opening a new restaurant. Stage 2 is like the soft-opening phase:"
+  },
+  {
+   "zh": "<strong>系統確認</strong> = 確認廚房設備（烤箱、冰箱、排油煙機）都安裝正確且運作正常",
+   "en": "<strong>System qualification</strong> = confirming that the kitchen equipment (ovens, refrigerators, exhaust hoods) is correctly installed and working properly"
+  },
+  {
+   "zh": "<strong>PPQ</strong> = 實際用這些設備按照菜單做出完整的餐點，確認品質穩定",
+   "en": "<strong>PPQ</strong> = actually using that equipment to produce complete meals from the menu and confirming that quality is consistent"
+  },
+  {
+   "zh": "你不會在烤箱還沒通過驗收時就開始烤蛋糕賣給客人 — 同理，設備未確認就不該做 PPQ。",
+   "en": "You would not start baking cakes to sell to customers before the oven has passed acceptance. In the same way, PPQ should not start before the equipment is qualified."
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "PQ 必須在商業產品放行之前成功完成 — 這是監管機構的底線要求。FDA 2011 年 Process Validation Guidance 和 EU GMP Annex 15 都明確要求這一點。任何在 PQ 完成前放行的批次，都可能面臨監管風險。",
+   "en": "PQ must be successfully completed before commercial product is released. This is the regulators' bottom line. Both the FDA 2011 Process Validation Guidance and EU GMP Annex 15 state this explicitly. Any batch released before PQ is complete may face regulatory risk."
+  },
+  {
+   "zh": "<strong>4.1 Strategies for System Design and Qualification 4.1 系統設計與確效策略</strong>",
+   "en": "<strong>4.1 Strategies for System Design and Qualification</strong>"
+  },
+  {
+   "zh": "<strong>Systems（系統）：</strong>TR60 將設施 (facilities)、設備 (equipment)、公用設施 (utilities) 和儀器 (instruments) 統稱為「系統」。這個統一用語強調的是：這些硬體不是孤立的個體，而是一個整合的製造平台。",
+   "en": "<strong>Systems:</strong> TR60 refers to facilities, equipment, utilities, and instruments collectively as \"systems.\" This common term emphasizes that this hardware is not a set of isolated items but one integrated manufacturing platform."
+  },
+  {
+   "zh": "<strong>為什麼要確認系統？</strong>確認的目的是「消除設備性能作為製程變數」。換句話說，當你的設備性能穩定可靠，製程中觀察到的變異就可以歸因於真正的製程參數，而不是設備的不穩定。",
+   "en": "<strong>Why qualify systems?</strong> The purpose of qualification is to \"eliminate equipment performance as a process variable.\" In other words, when equipment performance is stable and reliable, the variation observed in the process can be attributed to real process parameters rather than equipment instability."
+  },
+  {
+   "zh": "<strong>關鍵時序要求：</strong>",
+   "en": "<strong>Key timing requirements:</strong>"
+  },
+  {
+   "zh": "系統確認必須按照預先定義的專案計畫 (project plan) 執行",
+   "en": "System qualification must be executed according to a predefined project plan"
+  },
+  {
+   "zh": "確認研究必須完成、審查、核准，且所有偏差已解決 — <strong>全部在 PPQ 開始之前</strong>",
+   "en": "Qualification studies must be completed, reviewed, and approved, and all deviations resolved, <strong>all before PPQ begins</strong>"
+  },
+  {
+   "zh": "這是一個「門檻條件」(gate criterion)：未完成確認就不能進入 PPQ",
+   "en": "This is a gate criterion: PPQ cannot start until qualification is complete"
+  },
+  {
+   "zh": "這就像蓋房子的邏輯：你必須先完成地基驗收（系統確認），才能開始砌牆和裝修（PPQ）。如果地基有裂縫（偏差未解決），你不會急著蓋上去 — 因為那只會讓問題更難修復、成本更高。",
+   "en": "This follows the same logic as building a house: you must complete the foundation inspection (system qualification) before starting the walls and finishing (PPQ). If the foundation has cracks (unresolved deviations), you would not rush to build on top of it, because that only makes the problem harder and more expensive to fix."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "為什麼 TR60 強調系統確認中的「偏差必須在 PPQ 之前全部解決」？如果帶著未關閉的偏差進入 PPQ，可能產生什麼後果？",
+   "en": "Why does TR60 stress that all deviations in system qualification must be resolved before PPQ? What could happen if you enter PPQ with open deviations?"
+  },
+  {
+   "zh": "在 CDMO 場景中，如果客戶要求縮短時程，系統確認與 PPQ 是否可以平行進行？風險為何？",
+   "en": "In a CDMO setting, if the client asks for a shorter timeline, can system qualification and PPQ run in parallel? What are the risks?"
+  },
+  {
+   "zh": "<strong>4.1.1 Engineering and Design 4.1.1 工程與設計</strong>",
+   "en": "<strong>4.1.1 Engineering and Design</strong>"
+  },
+  {
+   "zh": "<strong>Design Qualification, DQ（設計確認）：</strong>DQ 是確認流程的第一步 — 審查系統設計是否與製程控制策略和績效要求一致。DQ 不是在設備到貨後才做，而是在設計階段就要完成。",
+   "en": "<strong>Design Qualification, DQ:</strong> DQ is the first step of the qualification process: reviewing whether the system design is consistent with the process control strategy and performance requirements. DQ is not done after the equipment arrives; it must be completed at the design stage."
+  },
+  {
+   "zh": "<strong>User Requirements Specifications, URS（使用者需求規格）：</strong>URS 是整個確認生命週期的參考基準點。它定義了設備/設施/公用設施必須滿足的功能需求，是從 Stage 1 的製程知識轉化而來。",
+   "en": "<strong>User Requirements Specifications, URS:</strong> The URS is the reference baseline for the entire qualification lifecycle. It defines the functional requirements that the equipment, facility, or utility must meet, and is derived from the process knowledge gained in Stage 1."
+  },
+  {
+   "zh": "<strong>Good Engineering Practices（良好工程實務）：</strong>試運轉 (commissioning) 活動應遵循良好工程實務，並以良好文件管理規範記錄 — Quality Unit 必須有監督角色。",
+   "en": "<strong>Good Engineering Practices:</strong> Commissioning activities should follow good engineering practices and be documented under good documentation practices, with the Quality Unit in an oversight role."
+  },
+  {
+   "zh": "URS 就像你裝修新家時寫給設計師的「需求清單」：「廚房需要雙槽洗碗台、抽油煙機排風量至少 X CFM、瓦斯爐要四口」。這份清單是後續驗收（確認）的依據 — 如果交屋時發現只有兩口瓦斯爐，那就是「偏差」需要處理。",
+   "en": "The URS is like the \"requirements list\" you give a designer when renovating a new home: \"the kitchen needs a double-bowl sink, a range hood with an exhaust rate of at least X CFM, and a four-burner gas stove.\" This list is the basis for later acceptance (qualification). If you find only two burners at handover, that is a \"deviation\" that must be addressed."
+  },
+  {
+   "zh": "<strong>技術轉移場景的特殊考量：</strong>當製程轉移到已有合格設備的營運設施時，不代表可以跳過確認。TR60 明確要求執行風險評估以找出「設備控制缺口」(equipment control gaps)。缺口可透過設備修改（可能需要再確認）或操作控制來彌補。",
+   "en": "<strong>Special considerations for technology transfer:</strong> When a process is transferred to an operating facility that already has qualified equipment, this does not mean qualification can be skipped. TR60 explicitly requires a risk assessment to identify \"equipment control gaps.\" Gaps can be closed through equipment modifications (which may require requalification) or operational controls."
+  },
+  {
+   "zh": "這對 CDMO 特別重要 — 因為 CDMO 經常將不同客戶的製程轉移到現有產線上。",
+   "en": "This is especially important for CDMOs, because they frequently transfer different clients' processes onto existing lines."
+  },
+  {
+   "zh": "實務應用 Practical Application",
+   "en": "Practical Application"
+  },
+  {
+   "zh": "<strong>CDMO 情境：</strong>某 CDMO 接到新客戶的蛋白質藥物充填專案，需要使用現有的隔離器充填線。雖然該充填線已通過確認，但新產品的黏度明顯高於先前產品。此時應：",
+   "en": "<strong>CDMO scenario:</strong> A CDMO takes on a new client's protein drug filling project that must use an existing isolator filling line. Although the line is already qualified, the new product's viscosity is significantly higher than that of previous products. The CDMO should:"
+  },
+  {
+   "zh": "執行風險評估，評估高黏度對充填泵性能、充填精度的影響",
+   "en": "Conduct a risk assessment of the impact of high viscosity on filling pump performance and fill accuracy"
+  },
+  {
+   "zh": "確認現有 URS 是否涵蓋新的製程需求",
+   "en": "Confirm whether the existing URS covers the new process requirements"
+  },
+  {
+   "zh": "如需修改設備（如更換泵頭），則需要部分再確認",
+   "en": "If equipment modifications are needed (for example, replacing the pump head), perform partial requalification"
+  },
+  {
+   "zh": "所有評估結果記錄於技術轉移文件中",
+   "en": "Document all assessment results in the technology transfer documentation"
+  },
+  {
+   "zh": "DQ 在確認序列中扮演什麼角色？為什麼它必須在 IQ/OQ/PQ 之前完成？",
+   "en": "What role does DQ play in the qualification sequence? Why must it be completed before IQ/OQ/PQ?"
+  },
+  {
+   "zh": "如果 URS 在 commissioning 過程中發現需要修改，應該如何處理？這會影響後續哪些步驟？",
+   "en": "If it is found during commissioning that the URS needs to be revised, how should this be handled? Which later steps would be affected?"
+  },
+  {
+   "zh": "<strong>4.1.2 Installation 4.1.2 安裝</strong>",
+   "en": "<strong>4.1.2 Installation</strong>"
+  },
+  {
+   "zh": "<strong>Commissioning（試運轉）：</strong>確認系統處於良好工作狀態並按設計運作。試運轉的數據可以被「借用」(leveraged) 來支持正式確認測試 — 這是一個提高效率的重要機會。",
+   "en": "<strong>Commissioning:</strong> Confirms that the system is in good working order and operates as designed. Commissioning data can be \"leveraged\" to support formal qualification testing, which is an important opportunity to improve efficiency."
+  },
+  {
+   "zh": "<strong>Installation（安裝）：</strong>驗證系統已按照工程和製程規格正確製造、建造和安裝。重點是資訊必須準確、可靠、有用。",
+   "en": "<strong>Installation:</strong> Verifies that the system has been correctly fabricated, built, and installed according to engineering and process specifications. The key is that the information must be accurate, reliable, and useful."
+  },
+  {
+   "zh": "<strong>季節性變異的考量：</strong>TR60 特別提到工程研究應確認系統在不同季節條件下都能正常運作。例如，夏季的高溫高濕可能影響 HVAC 系統的除濕能力，冬季的低溫可能影響注射用水 (WFI) 迴路的溫度維持。這些必須在 commissioning 階段就被評估。",
+   "en": "<strong>Seasonal variation:</strong> TR60 specifically notes that engineering studies should confirm that the system performs properly under different seasonal conditions. For example, high summer temperature and humidity may affect the dehumidification capacity of the HVAC system, and low winter temperatures may affect temperature maintenance in the Water for Injection (WFI) loop. These must be evaluated at the commissioning stage."
+  },
+  {
+   "zh": "<strong>資訊傳遞：</strong>任何在試運轉中所做的修改或調整，都必須記錄並傳遞給準備確認計畫和方案的團隊。這確保了確認測試反映系統的真實狀態。",
+   "en": "<strong>Information transfer:</strong> Any modification or adjustment made during commissioning must be documented and communicated to the team preparing the qualification plan and protocols. This ensures that qualification testing reflects the true state of the system."
+  },
+  {
+   "zh": "Commissioning 就像新車交車前的路試 (test drive)：業務員帶你開一圈確認車子可以正常啟動、轉向、煞車。如果路試中發現方向盤偏了一點（需要調整），這個資訊必須記錄在交車報告裡，而不是口頭說「已經調好了」就算數。",
+   "en": "Commissioning is like a test drive before a new car is delivered: the salesperson takes you around the block to confirm that the car starts, steers, and brakes properly. If the steering wheel is found to be slightly off (and needs adjustment), that information must be recorded in the delivery report, not just communicated verbally with \"it has been fixed.\""
+  },
+  {
+   "zh": "<strong>4.1.3 Qualification Plan 4.1.3 確效計畫</strong>",
+   "en": "<strong>4.1.3 Qualification Plan</strong>"
+  },
+  {
+   "zh": "<strong>Qualification Plan（確認計畫）：</strong>確認計畫是連結「製程需求」與「系統能力」的橋樑文件。TR60 提出一個務實的觀點：雖然早期制定確認計畫對設計和安裝有指導價值，但最終版本最好在 commissioning 完成後才定稿 — 因為 commissioning 過程中的調整和變更都需要反映在確認計畫中。",
+   "en": "<strong>Qualification Plan:</strong> The qualification plan is the bridge document linking \"process requirements\" to \"system capability.\" TR60 takes a pragmatic view: although drafting the qualification plan early provides guidance for design and installation, the final version is best finalized after commissioning is complete, because adjustments and changes made during commissioning need to be reflected in the plan."
+  },
+  {
+   "zh": "<strong>Acceptance Criteria（接受標準）：</strong>必須基於合理的科學基礎，且要：",
+   "en": "<strong>Acceptance Criteria:</strong> These must be based on sound scientific rationale and should be:"
+  },
+  {
+   "zh": "<strong>Useful（有用的）：</strong>能真正衡量系統的適用性",
+   "en": "<strong>Useful:</strong> Truly measure the suitability of the system"
+  },
+  {
+   "zh": "<strong>Attainable（可達到的）：</strong>不是不切實際的理想值",
+   "en": "<strong>Attainable:</strong> Not unrealistic ideal values"
+  },
+  {
+   "zh": "<strong>Quantifiable（可量化的）：</strong>盡量用數字表達",
+   "en": "<strong>Quantifiable:</strong> Expressed numerically wherever possible"
+  },
+  {
+   "zh": "<strong>Stage 1 與 Stage 2 的重疊：</strong>TR60 在此明確指出 Stage 2 活動可能在 Stage 1 完成之前就已經開始。這不是「跳過步驟」，而是合理的平行作業。關鍵是要確保必要的 Stage 1 資訊（如製程參數、控制策略）已經到位。",
+   "en": "<strong>Overlap of Stage 1 and Stage 2:</strong> TR60 states explicitly that Stage 2 activities may begin before Stage 1 is complete. This is not \"skipping steps\" but reasonable parallel work. The key is to ensure that the necessary Stage 1 information (such as process parameters and control strategy) is in place."
+  },
+  {
+   "zh": "<strong>安慰劑在 PQ 中的應用：</strong>使用配方安慰劑 (formulated placebos) 進行系統 PQ 研究，可以在不使用實際產品的情況下獲得製程理解。安慰劑應具備產品的主要或關鍵特性（如黏度、密度）。",
+   "en": "<strong>Use of placebos in PQ:</strong> Using formulated placebos for system PQ studies makes it possible to gain process understanding without using actual product. The placebo should have the main or critical characteristics of the product (such as viscosity and density)."
+  },
+  {
+   "zh": "確認計畫就像考試大綱 — 你需要先知道要考什麼（製程需求），才能設計考題（測試項目）和評分標準（接受標準）。如果大綱出得太早，後來教材有修改（commissioning 調整），考題就可能與實際內容脫節。所以最好等教材定稿後，再最終確定考試大綱。",
+   "en": "The qualification plan is like an exam syllabus: you first need to know what will be tested (process requirements) before you can design the questions (test items) and the grading standard (acceptance criteria). If the syllabus is issued too early and the teaching material is later revised (commissioning adjustments), the questions may no longer match the actual content. It is therefore best to finalize the syllabus after the teaching material is final."
+  },
+  {
+   "zh": "TR60 為什麼建議在 commissioning 完成後才定稿確認計畫？這對專案時程管理有什麼影響？",
+   "en": "Why does TR60 recommend finalizing the qualification plan after commissioning is complete? What does this mean for project timeline management?"
+  },
+  {
+   "zh": "在設計 PQ 測試時使用安慰劑有什麼優點和限制？什麼情況下必須使用實際產品？",
+   "en": "What are the advantages and limitations of using placebos when designing PQ tests? In what situations must actual product be used?"
+  },
+  {
+   "zh": "接受標準要求「可達到的」— 這是否意味著標準可以設得很寬鬆？請討論合理設定接受標準的原則。",
+   "en": "Acceptance criteria are required to be \"attainable.\" Does this mean the criteria can be set loosely? Discuss the principles for setting acceptance criteria sensibly."
+  },
+  {
+   "zh": "<strong>4.1.4 Maintaining Systems in a State of Control 4.1.4 維持系統於受控狀態</strong>",
+   "en": "<strong>4.1.4 Maintaining Systems in a State of Control</strong>"
+  },
+  {
+   "zh": "<strong>State of Control（受控狀態）：</strong>確認不是一次性活動 — 系統必須在產品生命週期的整個期間持續維持在受控狀態。這需要兩種機制的配合：",
+   "en": "<strong>State of Control:</strong> Qualification is not a one-time activity. Systems must be kept in a State of Control throughout the product lifecycle. This requires two mechanisms working together:"
+  },
+  {
+   "zh": "<strong>週期性評估 (Periodic Assessment)：</strong>定期審查各項記錄和數據，確認系統仍在確認範圍內運作",
+   "en": "<strong>Periodic Assessment:</strong> Regularly review records and data to confirm that the system continues to operate within its qualified range"
+  },
+  {
+   "zh": "<strong>事件驅動評估 (Event-Driven Assessment)：</strong>當發生變更、OOS 結果或調查時，觸發再確認評估",
+   "en": "<strong>Event-Driven Assessment:</strong> Trigger a requalification assessment when changes, OOS results, or investigations occur"
+  },
+  {
+   "zh": "<strong>維護趨勢的品質審議：</strong>TR60 特別要求維護趨勢應在品質委員會 (quality council) 論壇上定期審議 — 這不只是工程部門的事，品質部門必須參與。這種跨部門審議有助於從設備/公用設施/設施角度判斷 PPQ 就緒性。",
+   "en": "<strong>Quality review of maintenance trends:</strong> TR60 specifically requires that maintenance trends be reviewed regularly in a quality council forum. This is not solely an engineering matter; Quality must participate. This cross-functional review helps judge PPQ readiness from the equipment, utility, and facility perspective."
+  },
+  {
+   "zh": "<strong>緊急情況的考量：</strong>在突發的新型疾病爆發等緊急情況下，提交製造設備確認證明以及關鍵設備清單特別重要 — 這呼應了 COVID-19 疫情期間的實際經驗。",
+   "en": "<strong>Emergency situations:</strong> In emergencies such as a sudden novel disease outbreak, submitting evidence of manufacturing equipment qualification together with a list of critical equipment is especially important. This reflects practical experience during the COVID-19 pandemic."
+  },
+  {
+   "zh": "維持受控狀態就像保養汽車：你不能只在買車時做檢查（初始確認），然後就再也不管了。你需要：",
+   "en": "Maintaining a State of Control is like maintaining a car: you cannot inspect it only when you buy it (initial qualification) and then ignore it afterwards. You need:"
+  },
+  {
+   "zh": "<strong>定期保養</strong>（週期性評估）：每 10,000 公里換機油、檢查煞車",
+   "en": "<strong>Scheduled servicing</strong> (periodic assessment): change the oil and check the brakes every 10,000 km"
+  },
+  {
+   "zh": "<strong>事件驅動維修</strong>（事件驅動再確認）：引擎燈亮了、異常噪音出現時，立即檢修",
+   "en": "<strong>Event-driven repair</strong> (event-driven requalification): when the engine light comes on or an unusual noise appears, have it inspected immediately"
+  },
+  {
+   "zh": "更關鍵的是，這些保養紀錄不只是技師看 — 車廠的品質部門也要定期審查趨勢（類似品質委員會審議）。",
+   "en": "More importantly, these maintenance records are not just for the technician. The manufacturer's quality department also reviews the trends regularly (similar to a quality council review)."
+  },
+  {
+   "zh": "<strong>CDMO 實務：</strong>建立設備確認狀態的數位儀表板 (dashboard)，整合以下資訊：",
+   "en": "<strong>CDMO practice:</strong> Build a digital dashboard of equipment qualification status that integrates the following information:"
+  },
+  {
+   "zh": "校驗到期日和完成率",
+   "en": "Calibration due dates and completion rate"
+  },
+  {
+   "zh": "預防性維護完成率與逾期項目",
+   "en": "Preventive maintenance completion rate and overdue items"
+  },
+  {
+   "zh": "偏差和 OOS 事件的趨勢",
+   "en": "Trends in deviations and OOS events"
+  },
+  {
+   "zh": "變更請求的影響評估狀態",
+   "en": "Impact assessment status of change requests"
+  },
+  {
+   "zh": "這個儀表板可以在品質委員會會議上作為「設備就緒性」的即時報告工具，加速 PPQ 就緒性決策。",
+   "en": "This dashboard can serve as a real-time \"equipment readiness\" reporting tool at quality council meetings, speeding up PPQ readiness decisions."
+  },
+  {
+   "zh": "週期性評估和事件驅動評估有什麼區別？請各舉一個觸發再確認的具體場景。",
+   "en": "What is the difference between periodic assessment and event-driven assessment? Give one specific scenario for each that would trigger requalification."
+  },
+  {
+   "zh": "為什麼維護趨勢需要在品質委員會層級審議，而不只是工程部門內部管理？",
+   "en": "Why do maintenance trends need to be reviewed at the quality council level rather than managed solely within the engineering department?"
+  },
+  {
+   "zh": "<strong>4.2 Performance Qualification 4.2 性能確效</strong>",
+   "en": "<strong>4.2 Performance Qualification</strong>"
+  },
+  {
+   "zh": "<strong>PQ vs PPQ — 關鍵區別：</strong>",
+   "en": "<strong>PQ vs PPQ: the key difference:</strong>"
+  },
+  {
+   "zh": "<strong>PQ (Performance Qualification)：</strong>驗證個別系統或系統組件的性能 — 可使用安慰劑、替代品或模擬產品。重點是「設備/系統能不能做到」。",
+   "en": "<strong>PQ (Performance Qualification):</strong> Verifies the performance of an individual system or system component, and may use placebos, surrogates, or simulated product. The focus is \"can the equipment/system do it?\""
+  },
+  {
+   "zh": "<strong>PPQ (Process Performance Qualification)：</strong>驗證整個製程在商業規模下的一致性 — 使用實際商業製程和物料。重點是「整個製程能不能穩定產出合格產品」。",
+   "en": "<strong>PPQ (Process Performance Qualification):</strong> Verifies the consistency of the entire process at commercial scale, using the actual commercial process and materials. The focus is \"can the whole process consistently produce acceptable product?\""
+  },
+  {
+   "zh": "<strong>Line PQ（產線 PQ）：</strong>一個重要但常被忽略的概念。當個別系統都通過 PQ 後，還需要確認這些系統「組合在一起」能否順利運作。這就像音樂會中每個樂器都調音完畢，但還需要全體合奏一次才知道是否協調。",
+   "en": "<strong>Line PQ:</strong> An important but often overlooked concept. After the individual systems have each passed PQ, you still need to confirm that these systems work smoothly \"when combined.\" It is like a concert where every instrument has been tuned, but you only know whether they are in harmony once the whole orchestra plays together."
+  },
+  {
+   "zh": "<strong>注射劑 PQ 的多元面向：</strong>TR60 列出了注射劑 PQ 涵蓋的廣泛領域 — 從清潔、滅菌、除熱原、充填到環境監測。這凸顯了無菌製造的複雜性：不只是「充填」這一步，而是整個無菌製造系統都需要確認。",
+   "en": "<strong>The many facets of PQ for injectables:</strong> TR60 lists the broad areas covered by PQ for injectables, from cleaning, sterilization, and depyrogenation to filling and environmental monitoring. This highlights the complexity of sterile manufacturing: it is not only the \"filling\" step, but the entire aseptic manufacturing system that must be qualified."
+  },
+  {
+   "zh": "<strong>Demo/Engineering Lots 的價值：</strong>在正式 PPQ 之前製造示範批或工程批，可以：",
+   "en": "<strong>Value of Demo/Engineering Lots:</strong> Manufacturing demonstration or engineering lots before formal PPQ makes it possible to:"
+  },
+  {
+   "zh": "在不影響 PPQ 數據完整性的情況下發現問題",
+   "en": "Find problems without compromising the integrity of PPQ data"
+  },
+  {
+   "zh": "訓練操作人員",
+   "en": "Train operators"
+  },
+  {
+   "zh": "驗證批次紀錄的可操作性",
+   "en": "Verify that the batch record can be executed in practice"
+  },
+  {
+   "zh": "可使用不合格 DS 或非商業 DS，降低成本",
+   "en": "Use rejected or non-commercial DS to reduce cost"
+  },
+  {
+   "zh": "<strong>PQ vs PPQ 的餐廳比喻：</strong>",
+   "en": "<strong>The restaurant analogy for PQ vs PPQ:</strong>"
+  },
+  {
+   "zh": "<strong>PQ</strong> = 分別測試每台廚房設備：烤箱能不能達到指定溫度、冰箱能不能維持冷藏溫度、洗碗機能不能洗乾淨",
+   "en": "<strong>PQ</strong> = testing each piece of kitchen equipment separately: can the oven reach the specified temperature, can the refrigerator hold cold-storage temperature, can the dishwasher get dishes clean"
+  },
+  {
+   "zh": "<strong>Line PQ</strong> = 讓整個廚房團隊用這些設備完成一整套模擬出餐流程",
+   "en": "<strong>Line PQ</strong> = having the whole kitchen team use this equipment to run a complete simulated meal service"
+  },
+  {
+   "zh": "<strong>PPQ</strong> = 正式試營運，用真正的食材、按真正的菜單、服務真正的客人",
+   "en": "<strong>PPQ</strong> = the formal soft opening, with real ingredients, the real menu, and real customers"
+  },
+  {
+   "zh": "<strong>Demo lots</strong> = 在試營運前，先用便宜的食材練習整個流程",
+   "en": "<strong>Demo lots</strong> = practicing the whole process with inexpensive ingredients before the soft opening"
+  },
+  {
+   "zh": "EU GMP Annex 15 要求 PQ 測試應涵蓋「worst-case batch sizes」。為什麼最差情況批量很重要？請舉例說明。",
+   "en": "EU GMP Annex 15 requires PQ tests to cover \"worst-case batch sizes.\" Why do worst-case batch sizes matter? Give an example."
+  },
+  {
+   "zh": "Line PQ 與 APS (Aseptic Process Simulation) 有什麼關聯？APS 的結果是否可以替代 Line PQ？",
+   "en": "How is Line PQ related to APS (Aseptic Process Simulation)? Can APS results replace Line PQ?"
+  },
+  {
+   "zh": "工程批 (engineering lots) 使用不合格 DS 的做法，在法規上有什麼注意事項？",
+   "en": "What regulatory points need attention when engineering lots use rejected DS?"
+  },
+  {
+   "zh": "<strong>4.3 Process Performance Qualification 4.3 製程性能確效</strong>",
+   "en": "<strong>4.3 Process Performance Qualification</strong>"
+  },
+  {
+   "zh": "<strong>PPQ — Process Performance Qualification（製程績效確認）：</strong>PPQ 是從開發/臨床製造到例行商業生產的轉折點。它的本質是將所有已確認的元素整合在一起：",
+   "en": "<strong>PPQ (Process Performance Qualification):</strong> PPQ is the turning point from development/clinical manufacturing to routine commercial production. In essence, it brings all of the qualified elements together:"
+  },
+  {
+   "zh": "已確認的設施、公用設施、設備",
+   "en": "Qualified facilities, utilities, and equipment"
+  },
+  {
+   "zh": "經訓練的人員",
+   "en": "Trained personnel"
+  },
+  {
+   "zh": "商業製程、控制程序和組件",
+   "en": "The commercial process, control procedures, and components"
+  },
+  {
+   "zh": "目的是證明製程控制策略在商業規模下有效，並能偵測和補償製程變異性。",
+   "en": "The aim is to demonstrate that the process control strategy is effective at commercial scale and can detect and compensate for process variability."
+  },
+  {
+   "zh": "<strong>PPQ 不只是「跑幾批成功」：</strong>TR60 明確指出，PPQ 的主要目標<strong>不是</strong>成功生產的批次數量。成功的批次是收集數據的「手段」，真正的目標是證明製程控制策略的有效性。這個觀念的轉變非常重要 — 過去業界常把「三批成功」當成 PPQ 的終極目標，但現代生命週期方法強調的是數據驅動的信心。",
+   "en": "<strong>PPQ is not just \"running a few successful batches\":</strong> TR60 states explicitly that the primary goal of PPQ is <strong>not</strong> the number of successfully manufactured batches. Successful batches are the \"means\" of collecting data; the real goal is to demonstrate the effectiveness of the process control strategy. This shift in thinking is very important. In the past, industry often treated \"three successful batches\" as the ultimate goal of PPQ, but the modern lifecycle approach emphasizes data-driven confidence."
+  },
+  {
+   "zh": "<strong>緊急情況的彈性：</strong>TR60 也承認在緊急情況（如疫情）下，加速開發和驗證時，數據要求可以有所不同，但至少要包括：",
+   "en": "<strong>Flexibility in emergencies:</strong> TR60 also recognizes that when development and validation are accelerated in emergencies (such as a pandemic), data requirements may differ, but should at least include:"
+  },
+  {
+   "zh": "產品表徵的關鍵面向",
+   "en": "Key aspects of product characterization"
+  },
+  {
+   "zh": "效力分析 (potency assay)",
+   "en": "Potency assay"
+  },
+  {
+   "zh": "穩定性數據",
+   "en": "Stability data"
+  },
+  {
+   "zh": "製造設備的確認狀態",
+   "en": "Qualification status of manufacturing equipment"
+  },
+  {
+   "zh": "PPQ 就像正式的駕照路考：",
+   "en": "PPQ is like the formal driving road test:"
+  },
+  {
+   "zh": "車輛已通過驗車（設備確認）",
+   "en": "The vehicle has passed inspection (equipment qualification)"
+  },
+  {
+   "zh": "你已在駕訓班受訓（人員訓練）",
+   "en": "You have been trained at driving school (personnel training)"
+  },
+  {
+   "zh": "路考路線已規劃好（製程和控制程序）",
+   "en": "The test route has been planned (process and control procedures)"
+  },
+  {
+   "zh": "路考的目的不只是「到達終點」（成功批次），而是要展示你在整個過程中都遵守交通規則、處理突發狀況的能力（製程控制策略的有效性）",
+   "en": "The purpose of the road test is not just to \"reach the destination\" (successful batches), but to show that throughout the drive you follow traffic rules and can handle unexpected situations (effectiveness of the process control strategy)"
+  },
+  {
+   "zh": "PPQ 數據需求決策邏輯",
+   "en": "PPQ Data Requirement Decision Logic"
+  },
+  {
+   "zh": "PPQ 批次數量的決定因素：\n  ├─ 製程理解程度（Stage 1 知識）\n  ├─ 製程變數對品質的影響\n  ├─ 製程控制策略的完整性\n  ├─ 先前知識的可用性\n  └─ 統計抽樣計畫（支持所需的信心水準）\n\n變異性評估維度：\n  ├─ Within-batch variability（批內變異）\n  └─ Batch-to-batch variability（批間變異）",
+   "en": "Factors that determine the number of PPQ batches:\n  ├─ Level of process understanding (Stage 1 knowledge)\n  ├─ Impact of process variables on quality\n  ├─ Completeness of the process control strategy\n  ├─ Availability of prior knowledge\n  └─ Statistical sampling plan (supporting the required confidence level)\n\nDimensions of variability assessment:\n  ├─ Within-batch variability\n  └─ Batch-to-batch variability"
+  },
+  {
+   "zh": "為什麼 TR60 強調 PPQ 的主要目標「不是成功批次數量」？這與傳統「三批驗證」的方法有什麼根本差異？",
+   "en": "Why does TR60 stress that the primary goal of PPQ is \"not the number of successful batches\"? How does this fundamentally differ from the traditional \"three-batch validation\" approach?"
+  },
+  {
+   "zh": "在緊急情況下的 PPQ，最低限度要包含哪些數據？為什麼效力分析 (potency assay) 是不可或缺的？",
+   "en": "In an emergency, what is the minimum data a PPQ should include? Why is the potency assay indispensable?"
+  },
+  {
+   "zh": "<strong>4.3.1 Process Performance Qualification Readiness 4.3.1 製程性能確效整備度</strong>",
+   "en": "<strong>4.3.1 Process Performance Qualification Readiness</strong>"
+  },
+  {
+   "zh": "<strong>PPQ Readiness Assessment（PPQ 就緒性評估）：</strong>這是 Stage 1 到 Stage 2 的關鍵「閘門」(gate)。就緒性評估不要求所有 Stage 1 活動都已完成 — 而是要確認「足夠的資訊和活動已完成」以支持開始 PPQ 批次製造。",
+   "en": "<strong>PPQ Readiness Assessment:</strong> This is the key \"gate\" between Stage 1 and Stage 2. The readiness assessment does not require all Stage 1 activities to be complete; it confirms that \"sufficient information and activities have been completed\" to support starting PPQ batch manufacture."
+  },
+  {
+   "zh": "TR60 列出的就緒性檢查項目構成了一份完整的交付項目清單，涵蓋了從產品定義到人員訓練的方方面面。",
+   "en": "The readiness checklist items listed in TR60 form a complete list of deliverables, covering everything from product definition to personnel training."
+  },
+  {
+   "zh": "<strong>PPQ 就緒性的 11 項關鍵交付項目：</strong>",
+   "en": "<strong>The 11 key deliverables for PPQ readiness:</strong>"
+  },
+  {
+   "zh": "<strong>QTPP</strong> — 必須更新以反映 Stage 1 的知識",
+   "en": "<strong>QTPP:</strong> must be updated to reflect Stage 1 knowledge"
+  },
+  {
+   "zh": "<strong>CQAs + 關鍵性評估</strong> — 基於偵測性和發生率更新",
+   "en": "<strong>CQAs + criticality assessment:</strong> updated based on detectability and occurrence"
+  },
+  {
+   "zh": "<strong>物料屬性 + 關鍵性評估</strong> — 同上邏輯",
+   "en": "<strong>Material attributes + criticality assessment:</strong> same logic as above"
+  },
+  {
+   "zh": "<strong>商業製程描述</strong> — 反映最終的商業製程",
+   "en": "<strong>Commercial process description:</strong> reflects the final commercial process"
+  },
+  {
+   "zh": "<strong>分析方法</strong> — 放行和穩定性方法必須完全驗證",
+   "en": "<strong>Analytical methods:</strong> release and stability methods must be fully validated"
+  },
+  {
+   "zh": "<strong>核准的批次紀錄</strong> — 反映最終商業製程",
+   "en": "<strong>Approved batch records:</strong> reflect the final commercial process"
+  },
+  {
+   "zh": "<strong>製程設計與開發報告</strong> — 提供 PPQ 接受標準的科學支持",
+   "en": "<strong>Process design and development report:</strong> provides scientific support for the PPQ acceptance criteria"
+  },
+  {
+   "zh": "<strong>PPQ 風險評估報告</strong> — 跨部門團隊執行",
+   "en": "<strong>PPQ risk assessment report:</strong> performed by a cross-functional team"
+  },
+  {
+   "zh": "<strong>PVMP</strong> — 在 PPQ 開始前定稿",
+   "en": "<strong>PVMP:</strong> finalized before PPQ begins"
+  },
+  {
+   "zh": "<strong>品質系統和訓練</strong> — PPQ 專屬的詳細訓練",
+   "en": "<strong>Quality systems and training:</strong> detailed PPQ-specific training"
+  },
+  {
+   "zh": "<strong>核准的 PPQ 方案</strong> — Quality Unit 核准",
+   "en": "<strong>Approved PPQ protocol:</strong> approved by the Quality Unit"
+  },
+  {
+   "zh": "PPQ Readiness 就像一架飛機起飛前的 preflight checklist（起飛前檢查表）：",
+   "en": "PPQ readiness is like an aircraft's preflight checklist:"
+  },
+  {
+   "zh": "燃油量充足？（QTPP 和 CQAs 已更新）",
+   "en": "Enough fuel? (QTPP and CQAs updated)"
+  },
+  {
+   "zh": "儀表板正常？（分析方法已驗證）",
+   "en": "Instruments working? (analytical methods validated)"
+  },
+  {
+   "zh": "飛行計畫已提交？（PVMP 已定稿）",
+   "en": "Flight plan filed? (PVMP finalized)"
+  },
+  {
+   "zh": "機組人員已就位且完成簡報？（人員訓練完成）",
+   "en": "Crew in place and briefed? (personnel training complete)"
+  },
+  {
+   "zh": "塔台已許可？（Quality Unit 已核准方案）",
+   "en": "Tower clearance given? (Quality Unit has approved the protocol)"
+  },
+  {
+   "zh": "少了任何一項就不該起飛 — 即使天氣很好、乘客已經上機。",
+   "en": "If any one item is missing, the aircraft should not take off, even if the weather is fine and the passengers are already on board."
+  },
+  {
+   "zh": "<strong>分析方法的就緒要求：</strong>TR60 對分析方法有明確的層次要求：",
+   "en": "<strong>Readiness requirements for analytical methods:</strong> TR60 sets out clear tiered requirements for analytical methods:"
+  },
+  {
+   "zh": "<strong>放行和穩定性方法：</strong>必須按 ICH 要求「完全驗證」(fully validated)",
+   "en": "<strong>Release and stability methods:</strong> must be \"fully validated\" in accordance with ICH requirements"
+  },
+  {
+   "zh": "<strong>PPQ 額外測試方法：</strong>至少需要「適當確認/驗證」(suitably qualified/validated)",
+   "en": "<strong>Additional PPQ test methods:</strong> must at least be \"suitably qualified/validated\""
+  },
+  {
+   "zh": "每個分析方法的確認/驗證狀態和使用理由都必須完整記錄",
+   "en": "The qualification/validation status and the rationale for use of each analytical method must be fully documented"
+  },
+  {
+   "zh": "這對 CDMO 來說是常見的挑戰，因為新產品的分析方法轉移和驗證往往是 PPQ 就緒性的瓶頸。",
+   "en": "This is a common challenge for CDMOs, because analytical method transfer and validation for a new product are often the bottleneck for PPQ readiness."
+  },
+  {
+   "zh": "為什麼 PPQ 就緒性評估不要求所有 Stage 1 活動都已完成？這在實務中如何平衡效率與風險？",
+   "en": "Why does the PPQ readiness assessment not require all Stage 1 activities to be complete? In practice, how is efficiency balanced against risk?"
+  },
+  {
+   "zh": "PPQ 風險評估報告要求跨部門團隊（製程工程、工業藥學、分析化學、微生物學、統計學、製造和品質保證）參與。為什麼每個專業領域的參與都很重要？",
+   "en": "The PPQ risk assessment report requires participation from a cross-functional team (process engineering, industrial pharmacy, analytical chemistry, microbiology, statistics, manufacturing, and quality assurance). Why is the involvement of each discipline important?"
+  },
+  {
+   "zh": "在 CDMO 場景中，如果客戶提供的 Stage 1 數據不完整，應該如何處理 PPQ 就緒性評估？",
+   "en": "In a CDMO setting, if the Stage 1 data provided by the client are incomplete, how should the PPQ readiness assessment be handled?"
+  },
+  {
+   "zh": "<strong>CDMO PPQ 就緒性評估實務：</strong>建議使用結構化的就緒性檢查矩陣 (readiness matrix)，包含以下欄位：",
+   "en": "<strong>CDMO practice for PPQ readiness assessment:</strong> It is recommended to use a structured readiness matrix with the following columns:"
+  },
+  {
+   "zh": "此矩陣應由跨部門團隊定期審議（建議每週），並在所有項目為「Complete」時才正式開始 PPQ。",
+   "en": "This matrix should be reviewed regularly by the cross-functional team (weekly is suggested), and PPQ should formally start only when all items are marked \"Complete.\""
+  }
+ ]
+}

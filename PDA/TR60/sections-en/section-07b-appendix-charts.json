@@ -1,0 +1,377 @@
+{
+ "source": "section-07b-appendix-charts.html",
+ "blocks": [
+  {
+   "zh": "附錄 II：管制圖類型 + 附錄參考文獻",
+   "en": "Appendix II: Types of Control Charts + Appendix References"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "了解製程驗證中常用的計量型（Variables）管制圖種類及其適用場景",
+   "en": "Understand the main types of variables control charts used in process validation and where each applies"
+  },
+  {
+   "zh": "了解計數型（Attributes）管制圖種類及特殊大樣本情況的替代方案",
+   "en": "Understand the main types of attributes control charts and the alternatives for very large sample sizes"
+  },
+  {
+   "zh": "理解 Average Run Length (ARL) 的概念及其在管制圖效能評估中的意義",
+   "en": "Understand the concept of Average Run Length (ARL) and its significance in evaluating control chart performance"
+  },
+  {
+   "zh": "掌握 Laney p-chart / u-chart 處理過度分散（Over-Dispersion）資料的原理",
+   "en": "Grasp the principle behind the Laney p' chart / u' chart for handling over-dispersed data"
+  },
+  {
+   "zh": "熟悉附錄參考文獻清單，了解進階統計方法的學術出處",
+   "en": "Become familiar with the appendix reference list and the academic sources of the advanced statistical methods"
+  },
+  {
+   "zh": "本節內容導覽",
+   "en": "Section Overview"
+  },
+  {
+   "zh": "<a href=\"#sec10-0\">10.0 附錄 II 概述</a>\n<a href=\"#sec10-1\">10.1 計量型管制圖</a>\n<a href=\"#sec10-2\">10.2 計數型管制圖</a>\n<a href=\"#sec-arl\">管制圖效能：ARL</a>\n<a href=\"#sec11-0\">11.0 附錄參考文獻</a>",
+   "en": "<a href=\"#sec10-0\">10.0 Appendix II Overview</a>\n<a href=\"#sec10-1\">10.1 Control Charts for Variables Data</a>\n<a href=\"#sec10-2\">10.2 Control Charts for Attributes Data</a>\n<a href=\"#sec-arl\">Control Chart Performance: ARL</a>\n<a href=\"#sec11-0\">11.0 Appendix References</a>"
+  },
+  {
+   "zh": "<strong>10.0 Appendix II: Types of Control Charts 10.0 附錄 II：管制圖類型</strong>",
+   "en": "<strong>10.0 Appendix II: Types of Control Charts</strong>"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念解析 Key Concepts",
+   "en": "Key Concepts"
+  },
+  {
+   "zh": "<strong>Control Chart (管制圖)：</strong>管制圖是 Statistical Process Control (SPC，統計製程管制) 的核心工具。它以時間序列的方式繪製製程數據，並設定管制上限 (UCL) 與管制下限 (LCL)，通常為中心線 ±3 個標準差。當數據點落在管制界限之外或出現非隨機模式時，即表示製程可能已發生偏移。",
+   "en": "<strong>Control Chart:</strong> The control chart is the core tool of Statistical Process Control (SPC). It plots process data as a time series and sets an upper control limit (UCL) and a lower control limit (LCL), usually at the center line ±3 standard deviations. When a data point falls outside the control limits or a non-random pattern appears, the process may have shifted."
+  },
+  {
+   "zh": "<strong>TR 59 (PDA 技術報告第 59 號)：</strong>專門探討「生產監控中統計方法的利用」，是 TR 60 管制圖議題的延伸閱讀重要資源。兩份報告應搭配使用。",
+   "en": "<strong>TR 59 (PDA Technical Report No. 59):</strong> This report addresses the \"utilization of statistical methods for production monitoring\" and is an important further-reading resource for the control chart topics in TR 60. The two reports should be used together."
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "管制圖就像汽車儀表板上的速度表和引擎溫度表。正常行駛時，指針在安全範圍內波動；一旦超出紅線區域，就表示有問題需要處理。關鍵是：你不是等到引擎冒煙才發現問題，而是透過持續監控，在小異常階段就能即時發現。",
+   "en": "A control chart is like the speedometer and engine temperature gauge on a car dashboard. In normal driving the needle moves within the safe range; once it enters the red zone, something needs attention. The point is that you do not wait until the engine smokes to find the problem; through continuous monitoring, you catch it while the abnormality is still small."
+  },
+  {
+   "zh": "<strong>10.1 Control Charts for Variables Data 10.1 計量數據管制圖</strong>",
+   "en": "<strong>10.1 Control Charts for Variables Data</strong>"
+  },
+  {
+   "zh": "<strong>Variables Data (計量型數據)：</strong>指可以在連續尺度上量測的數據，例如充填重量 (mg)、pH 值、含量 (%)、溶離度 (%) 等。這類數據包含的資訊量較計數型數據更豐富，能更靈敏地偵測製程偏移。",
+   "en": "<strong>Variables Data:</strong> Data that can be measured on a continuous scale, such as fill weight (mg), pH, assay (%), and dissolution (%). This type of data carries more information than attributes data and can detect process shifts more sensitively."
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "<strong>Shewhart 圖 vs EWMA/CUSUM 的選擇邏輯：</strong>",
+   "en": "<strong>How to choose between Shewhart charts and EWMA/CUSUM:</strong>"
+  },
+  {
+   "zh": "Shewhart 圖對<strong>大偏移</strong>（≥2σ）偵測快速，但對小偏移不敏感",
+   "en": "Shewhart charts detect <strong>large shifts</strong> (≥2σ) quickly but are not sensitive to small shifts"
+  },
+  {
+   "zh": "EWMA 和 CUSUM 則對<strong>小偏移</strong>（0.5σ~1.5σ）有卓越的偵測能力",
+   "en": "EWMA and CUSUM have excellent ability to detect <strong>small shifts</strong> (0.5σ to 1.5σ)"
+  },
+  {
+   "zh": "在 Continued Process Verification (CPV，持續製程確認) 階段，製程通常已穩定，因此<strong>偵測小偏移</strong>的能力更為關鍵 — 此時 EWMA/CUSUM 是更佳選擇",
+   "en": "In the Continued Process Verification (CPV) stage the process is usually stable, so the ability to <strong>detect small shifts</strong> matters more; EWMA/CUSUM are then the better choice"
+  },
+  {
+   "zh": "想像你在監控一個水塔的水位：",
+   "en": "Imagine you are monitoring the water level of a water tower:"
+  },
+  {
+   "zh": "<strong>Shewhart 圖</strong>像是每隔一段時間看一眼水位表 — 如果水位突然大幅下降你會發現，但慢慢滲漏就不容易察覺",
+   "en": "A <strong>Shewhart chart</strong> is like glancing at the level gauge at intervals: you will notice a sudden large drop, but a slow leak is easy to miss"
+  },
+  {
+   "zh": "<strong>EWMA 圖</strong>像是一個智慧型感測器，會加權考慮最近的水位變化趨勢，即使每次只滲漏一點點也能發出預警",
+   "en": "An <strong>EWMA chart</strong> is like a smart sensor that gives weight to the recent trend in water level, so it can warn you even when only a little is leaking each time"
+  },
+  {
+   "zh": "<strong>CUSUM 圖</strong>則像是記帳本，持續累積偏差 — 即使每次偏差很小，累積起來就會觸發警報",
+   "en": "A <strong>CUSUM chart</strong> is like a ledger that keeps accumulating deviations: even if each deviation is small, the running total will eventually trigger an alarm"
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "你的工廠每批充填後取 5 支安瓿測量充填體積，應該選用哪種管制圖？為什麼？",
+   "en": "Your plant takes 5 ampoules after each batch is filled to measure fill volume. Which type of control chart should you use, and why?"
+  },
+  {
+   "zh": "在 CPV 階段，如果你擔心製程的平均值緩慢漂移（例如每批偏移 0.5σ），Shewhart 圖能否有效偵測？你會推薦什麼替代方案？",
+   "en": "In the CPV stage, if you are concerned that the process mean is slowly drifting (for example, 0.5σ per batch), can a Shewhart chart detect it effectively? What alternative would you recommend?"
+  },
+  {
+   "zh": "Levey-Jennings 圖主要用於什麼場景？它與 I/MR 圖的主要差異為何？",
+   "en": "What is the Levey-Jennings chart mainly used for? How does it differ from the I/MR chart?"
+  },
+  {
+   "zh": "<strong>10.2 Control Charts for Attributes Data 10.2 計數數據管制圖</strong>",
+   "en": "<strong>10.2 Control Charts for Attributes Data</strong>"
+  },
+  {
+   "zh": "<strong>Attributes Data (計數型數據)：</strong>指只能以離散數值（合格/不合格、缺陷數）表示的數據。例如：外觀檢查的不合格數、微粒計數、容器完整性測試的通過/不通過。",
+   "en": "<strong>Attributes Data:</strong> Data that can only be expressed as discrete values (conforming/nonconforming, number of defects). Examples: the number of rejects in visual inspection, particle counts, and pass/fail results of container closure integrity testing."
+  },
+  {
+   "zh": "<strong>Binomial (二項分布) vs Poisson (卜瓦松分布)：</strong>",
+   "en": "<strong>Binomial vs Poisson distribution:</strong>"
+  },
+  {
+   "zh": "<strong>Binomial：</strong>每個樣品只有「合格」或「不合格」兩種結果。p-chart 和 np-chart 基於此分布",
+   "en": "<strong>Binomial:</strong> Each unit has only two outcomes, \"conforming\" or \"nonconforming\". The p-chart and np-chart are based on this distribution"
+  },
+  {
+   "zh": "<strong>Poisson：</strong>計算的是單位面積/體積/時間內的缺陷「次數」，每個樣品可以有 0 個或多個缺陷。c-chart 和 u-chart 基於此分布",
+   "en": "<strong>Poisson:</strong> Counts the number of defects per unit area, volume or time; each unit can have zero or more defects. The c-chart and u-chart are based on this distribution"
+  },
+  {
+   "zh": "<strong>大樣本量的陷阱 — Over-Dispersion (過度分散)：</strong>",
+   "en": "<strong>The large-sample trap: over-dispersion:</strong>"
+  },
+  {
+   "zh": "這是一個非常實務且容易被忽略的問題。當樣本量非常大（例如 n &gt; 500 或 1,000）時，傳統 p-chart 和 u-chart 的管制界限會變得極窄（因為標準差與 √n 成反比）。這導致：",
+   "en": "This is a very practical problem that is easily overlooked. When the sample size is very large (for example n &gt; 500 or 1,000), the control limits of the traditional p-chart and u-chart become extremely narrow (because the standard deviation is inversely proportional to √n). This leads to:"
+  },
+  {
+   "zh": "大量數據點落在管制界限之外，產生過多<strong>假警報 (False Alarms)</strong>",
+   "en": "Many data points falling outside the control limits, producing excessive <strong>false alarms</strong>"
+  },
+  {
+   "zh": "這些「超限點」並非真正的製程偏移，而是因為實際數據的變異比 Binomial/Poisson 模型假設的更大（即<strong>過度分散</strong>）",
+   "en": "These out-of-limit points do not represent real process shifts; the actual data variation is larger than the Binomial/Poisson model assumes (that is, <strong>over-dispersion</strong>)"
+  },
+  {
+   "zh": "<strong>Laney's p'/u' chart</strong> 透過引入 sigma(Z) 因子來修正管制界限寬度，解決此問題",
+   "en": "<strong>Laney's p'/u' chart</strong> corrects the width of the control limits by introducing a sigma(Z) factor, which solves this problem"
+  },
+  {
+   "zh": "想像你在一個大城市的十字路口統計交通違規次數。如果你只觀察 10 分鐘（小樣本），偶爾多幾次違規是正常波動；但如果你觀察整整一個月、每秒都在記錄（超大樣本），「每天違規率」的微小波動在傳統管制圖上都會顯示為「異常」。Laney 的方法就是在計算管制界限時，考慮了這種「大規模觀察自然帶來的額外變異」，讓管制界限回歸合理範圍。",
+   "en": "Imagine you are counting traffic violations at a busy intersection in a big city. If you observe for only 10 minutes (a small sample), a few extra violations now and then are normal fluctuation. But if you observe for a whole month, recording every second (a very large sample), tiny fluctuations in the \"daily violation rate\" will all show up as \"abnormal\" on a traditional control chart. Laney's method takes into account, when calculating the control limits, the extra variation that naturally comes with such large-scale observation, bringing the limits back to a reasonable range."
+  },
+  {
+   "zh": "實務應用 Practical Application",
+   "en": "Practical Application"
+  },
+  {
+   "zh": "<strong>案例：自動金屬偵測器的錠劑剔除率監控</strong>",
+   "en": "<strong>Case: monitoring the tablet rejection rate of an automatic metal detector</strong>"
+  },
+  {
+   "zh": "假設你的工廠每批檢查 5,000 顆錠劑，記錄被金屬偵測器剔除的數量。如果使用傳統 p-chart：",
+   "en": "Suppose your plant checks 5,000 tablets per batch and records the number rejected by the metal detector. If a traditional p-chart is used:"
+  },
+  {
+   "zh": "管制界限極窄（因 n=5,000 很大），UCL 可能只有 0.3%",
+   "en": "The control limits are extremely narrow (because n=5,000 is large); the UCL may be only 0.3%"
+  },
+  {
+   "zh": "批間的正常波動（例如 0.1% ~ 0.5%）會導致許多批次被標記為 OOC (Out of Control)",
+   "en": "Normal batch-to-batch variation (for example 0.1% to 0.5%) causes many batches to be flagged as OOC (Out of Control)"
+  },
+  {
+   "zh": "工廠調查團隊會疲於調查這些「假警報」，浪費大量資源",
+   "en": "The plant's investigation team will be worn out investigating these \"false alarms\", wasting a great deal of resources"
+  },
+  {
+   "zh": "改用 <strong>Laney's p'-chart</strong> 或 <strong>I/MR chart</strong>（以每批剔除率為個別值），管制界限會更合理，真正的製程偏移才會被正確識別。",
+   "en": "By switching to a <strong>Laney's p'-chart</strong> or an <strong>I/MR chart</strong> (using the rejection rate of each batch as an individual value), the control limits become more reasonable and real process shifts will be correctly identified."
+  },
+  {
+   "zh": "你的外觀檢查站每批抽 200 支安瓿（固定數量），記錄不合格支數。應選用 p-chart 還是 np-chart？理由為何？",
+   "en": "Your visual inspection station samples 200 ampoules per batch (a fixed number) and records the number of rejects. Should you use a p-chart or an np-chart? Why?"
+  },
+  {
+   "zh": "如果每批抽樣數不固定（有時 100 支、有時 300 支），此時 np-chart 還適用嗎？應改用什麼？",
+   "en": "If the sample size varies from batch to batch (sometimes 100 ampoules, sometimes 300), is the np-chart still applicable? What should be used instead?"
+  },
+  {
+   "zh": "為什麼 TR 60 建議對大樣本量的計數型數據考慮使用 I/MR 圖？其前提條件是什麼？",
+   "en": "Why does TR 60 recommend considering an I/MR chart for attributes data with large sample sizes? What are the prerequisites?"
+  },
+  {
+   "zh": "<strong>Performance of Control Charts: Average Run Length (ARL) 管制圖性能：平均連串長度（ARL）</strong>",
+   "en": "<strong>Performance of Control Charts: Average Run Length (ARL)</strong>"
+  },
+  {
+   "zh": "<strong>Average Run Length, ARL (平均運行長度)：</strong>指管制圖在製程偏移發生後，平均需要觀察幾個取樣點才能偵測到偏移（即第一個點落在管制界限之外）。",
+   "en": "<strong>Average Run Length, ARL:</strong> The average number of sampling points that must be observed after a process shift occurs before the control chart detects it (that is, before the first point falls outside the control limits)."
+  },
+  {
+   "zh": "<strong>ARL<sub>0</sub>（製程在管制狀態）：</strong>希望此值越大越好，代表不會頻繁產生假警報。Shewhart 圖的 ARL<sub>0</sub> = 370（即平均每 370 個取樣點才會有一次假警報）",
+   "en": "<strong>ARL<sub>0</sub> (process in control):</strong> The larger this value, the better, as it means false alarms are not frequent. The ARL<sub>0</sub> of a Shewhart chart is 370 (on average, one false alarm every 370 sampling points)"
+  },
+  {
+   "zh": "<strong>ARL<sub>1</sub>（製程已偏移）：</strong>希望此值越小越好，代表能快速偵測到問題。例如偏移 1σ 時，Shewhart 圖的 ARL<sub>1</sub> ≈ 44，EWMA 的 ARL<sub>1</sub> ≈ 10",
+   "en": "<strong>ARL<sub>1</sub> (process has shifted):</strong> The smaller this value, the better, as it means problems are detected quickly. For example, for a 1σ shift the ARL<sub>1</sub> of a Shewhart chart is ≈ 44, while the ARL<sub>1</sub> of an EWMA chart is ≈ 10"
+  },
+  {
+   "zh": "公式與計算 Formula",
+   "en": "Formula"
+  },
+  {
+   "zh": "<strong>Shewhart 管制圖的 ARL 計算概念：</strong>",
+   "en": "<strong>Concept of ARL calculation for a Shewhart control chart:</strong>"
+  },
+  {
+   "zh": "ARL = 1 / P(點落在管制界限外)\n\n製程在管制狀態（±3σ limits）：\n  P(超限) = 0.0027 (即 ±3σ 外的常態分布面積)\n  ARL_0 = 1 / 0.0027 ≈ 370\n\n製程偏移 1σ：\n  P(超限) ≈ 0.0228\n  ARL_1 = 1 / 0.0228 ≈ 44\n\n製程偏移 2σ：\n  P(超限) ≈ 0.1587\n  ARL_1 = 1 / 0.1587 ≈ 6.3",
+   "en": "ARL = 1 / P(point falls outside the control limits)\n\nProcess in control (±3σ limits):\n  P(out of limits) = 0.0027 (the normal distribution area beyond ±3σ)\n  ARL_0 = 1 / 0.0027 ≈ 370\n\nProcess shifted by 1σ:\n  P(out of limits) ≈ 0.0228\n  ARL_1 = 1 / 0.0228 ≈ 44\n\nProcess shifted by 2σ:\n  P(out of limits) ≈ 0.1587\n  ARL_1 = 1 / 0.1587 ≈ 6.3"
+  },
+  {
+   "zh": "<strong>ARL 與取樣策略的關聯：</strong>",
+   "en": "<strong>The link between ARL and sampling strategy:</strong>"
+  },
+  {
+   "zh": "ARL 直接影響你的<strong>取樣頻率</strong>決策。如果 ARL<sub>1</sub> = 44，表示平均要等 44 個取樣點才能偵測到 1σ 的偏移。若每月取樣一次，可能需要近 4 年才能發現！",
+   "en": "ARL directly affects your decision on <strong>sampling frequency</strong>. If ARL<sub>1</sub> = 44, you have to wait an average of 44 sampling points to detect a 1σ shift. With one sample per month, it could take nearly 4 years to find it!"
+  },
+  {
+   "zh": "這也是為什麼 TR 60 特別指出 ARL 在 <strong>CPV 階段</strong>最為重要 — CPV 的目標是及時發現製程變化，而非等到大量不合格品產出後才處理",
+   "en": "This is also why TR 60 points out that ARL is most important in the <strong>CPV stage</strong>: the goal of CPV is to detect process changes in time, not to deal with them only after large quantities of nonconforming product have been produced"
+  },
+  {
+   "zh": "實務上，可使用 ARL 比較表來選擇最適合的管制圖類型和取樣方案",
+   "en": "In practice, an ARL comparison table can be used to select the most suitable control chart type and sampling scheme"
+  },
+  {
+   "zh": "ARL 就像一個煙霧偵測器的靈敏度設定：",
+   "en": "ARL is like the sensitivity setting of a smoke detector:"
+  },
+  {
+   "zh": "你希望在沒有火災時不要亂響（<strong>ARL<sub>0</sub> 越大越好</strong> = 不要太敏感而頻繁假警報）",
+   "en": "You do not want it to sound when there is no fire (<strong>the larger ARL<sub>0</sub>, the better</strong> = not so sensitive that it gives frequent false alarms)"
+  },
+  {
+   "zh": "但你也希望在真正有火災時能迅速響起（<strong>ARL<sub>1</sub> 越小越好</strong> = 快速偵測到真正的問題）",
+   "en": "But you also want it to sound quickly when there is a real fire (<strong>the smaller ARL<sub>1</sub>, the better</strong> = real problems are detected quickly)"
+  },
+  {
+   "zh": "不同種類的管制圖就像不同品牌的偵測器 — 有些對大火反應快但對陰燃不敏感（Shewhart），有些對小火苗就能偵測到（EWMA/CUSUM）",
+   "en": "Different control charts are like different brands of detector: some react quickly to a big fire but are insensitive to smoldering (Shewhart), while others can detect even a small flame (EWMA/CUSUM)"
+  },
+  {
+   "zh": "如果你的 CPV 取樣頻率是每週一次，而你使用 Shewhart 圖監控一個 CQA，當製程偏移 1σ 時，大約需要多少週（ARL<sub>1</sub> ≈ 44）才能偵測到？這樣的延遲在實務上是否可接受？",
+   "en": "If your CPV sampling frequency is once a week and you monitor a CQA with a Shewhart chart, about how many weeks (ARL<sub>1</sub> ≈ 44) would it take to detect a 1σ process shift? Is such a delay acceptable in practice?"
+  },
+  {
+   "zh": "如何透過管制圖類型的選擇（例如改用 EWMA）來降低 ARL<sub>1</sub>，又不至於讓 ARL<sub>0</sub> 過低而產生太多假警報？",
+   "en": "How can the choice of control chart type (for example, switching to EWMA) reduce ARL<sub>1</sub> without lowering ARL<sub>0</sub> so much that too many false alarms occur?"
+  },
+  {
+   "zh": "為什麼 TR 60 說 ARL 可以幫助決定取樣大小和取樣頻率？請用自己的話解釋其中的邏輯。",
+   "en": "Why does TR 60 say that ARL can help determine sample size and sampling frequency? Explain the logic in your own words."
+  },
+  {
+   "zh": "<strong>11.0 Appendix References 11.0 附錄參考文獻</strong>",
+   "en": "<strong>11.0 Appendix References</strong>"
+  },
+  {
+   "zh": "<strong>參考文獻分類導讀：</strong>這 17 篇參考文獻可依主題分為以下幾個類別，方便讀者依需求查閱：",
+   "en": "<strong>Guide to the reference categories:</strong> The 17 references can be grouped by topic into the following categories to make them easier to look up:"
+  },
+  {
+   "zh": "<strong>必讀文獻推薦：</strong>",
+   "en": "<strong>Recommended must-read references:</strong>"
+  },
+  {
+   "zh": "<strong>Ref 8 (Montgomery)：</strong>SPC 入門最佳教科書，涵蓋所有管制圖的數學基礎和應用案例。若你是統計製程管制的初學者，建議從此書開始",
+   "en": "<strong>Ref 8 (Montgomery):</strong> The best introductory SPC textbook, covering the mathematical basis and application examples of all control charts. If you are new to statistical process control, start with this book"
+  },
+  {
+   "zh": "<strong>Ref 16 (TR 59)：</strong>PDA 的姊妹報告，專門探討生產監控中的統計方法，是 TR 60 附錄內容的最佳補充",
+   "en": "<strong>Ref 16 (TR 59):</strong> PDA's sister report, devoted to statistical methods in production monitoring and the best supplement to the TR 60 appendix content"
+  },
+  {
+   "zh": "<strong>Ref 17 (Laney)：</strong>Laney 的原始論文，若你的工廠處理大樣本量的計數型數據，務必了解其 p'/u' chart 方法",
+   "en": "<strong>Ref 17 (Laney):</strong> Laney's original paper. If your plant handles attributes data with large sample sizes, be sure to understand his p'/u' chart method"
+  },
+  {
+   "zh": "<strong>Ref 1 (Meeker)：</strong>統計區間的權威參考書，涵蓋信賴區間、預測區間、容許區間的理論與實務",
+   "en": "<strong>Ref 1 (Meeker):</strong> The authoritative reference on statistical intervals, covering the theory and practice of confidence, prediction and tolerance intervals"
+  },
+  {
+   "zh": "這份參考文獻清單就像一間製藥統計師的「工具箱目錄」。不是每個工具你都需要隨時使用，但你要知道：",
+   "en": "This reference list is like a pharmaceutical statistician's \"toolbox catalog\". You do not need every tool at all times, but you should know:"
+  },
+  {
+   "zh": "需要設定規格限的容許區間時，去找 Meeker (Ref 1)",
+   "en": "When you need a tolerance interval to set specification limits, go to Meeker (Ref 1)"
+  },
+  {
+   "zh": "需要建立管制圖時，查 Montgomery (Ref 8) 或 Wheeler (Ref 9)",
+   "en": "When you need to set up control charts, look at Montgomery (Ref 8) or Wheeler (Ref 9)"
+  },
+  {
+   "zh": "需要決定取樣數量時，參考 Ref 5, 13, 14",
+   "en": "When you need to decide sample sizes, refer to Ref 5, 13 and 14"
+  },
+  {
+   "zh": "大樣本計數型數據出問題時，翻 Laney (Ref 17)",
+   "en": "When large-sample attributes data cause problems, turn to Laney (Ref 17)"
+  },
+  {
+   "zh": "好的工程師不需要記住所有公式，但一定要知道遇到問題時去哪裡找答案。",
+   "en": "A good engineer does not need to memorize every formula but must know where to look for answers when problems arise."
+  },
+  {
+   "zh": "如果你需要為 CPV 方案制定管制圖策略，你會優先閱讀上述哪些參考文獻？請列出前 3 名並說明原因。",
+   "en": "If you had to develop a control chart strategy for a CPV program, which of the references above would you read first? List your top 3 and explain why."
+  },
+  {
+   "zh": "FDA PAT 指引 (Ref 2) 發布於 2004 年，其核心理念如何與 TR 60 的 Lifecycle Approach 相呼應？",
+   "en": "The FDA PAT guidance (Ref 2) was issued in 2004. How do its core ideas echo the Lifecycle Approach of TR 60?"
+  },
+  {
+   "zh": "你注意到 Ref 17 (Laney, 2002) 提出的改良方法至今已有 20 多年歷史，為什麼在最新版 TR 60 (2026) 中仍被推薦？這說明了什麼？",
+   "en": "You notice that the improved method proposed in Ref 17 (Laney, 2002) is more than 20 years old. Why is it still recommended in the latest edition of TR 60 (2026)? What does this tell you?"
+  },
+  {
+   "zh": "本節重點回顧 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "<strong>管制圖分類：</strong>計量型數據（Variables）使用 x̄/R、I/MR、Levey-Jennings、Moving Average、EWMA、CUSUM 等管制圖；計數型數據（Attributes）使用 p、np、c、u 管制圖",
+   "en": "<strong>Control chart classification:</strong> Variables data use x̄/R, I/MR, Levey-Jennings, Moving Average, EWMA and CUSUM charts, among others; attributes data use p, np, c and u charts"
+  },
+  {
+   "zh": "<strong>管制圖選擇邏輯：</strong>Shewhart 圖適合偵測大偏移；EWMA 和 CUSUM 適合偵測持續性小偏移，在 CPV 階段特別有價值",
+   "en": "<strong>Logic for choosing a control chart:</strong> Shewhart charts are suited to detecting large shifts; EWMA and CUSUM are suited to detecting sustained small shifts and are especially valuable in the CPV stage"
+  },
+  {
+   "zh": "<strong>大樣本量陷阱：</strong>當樣本量很大（n &gt; 500~1,000）時，傳統計數型管制圖的分布假設可能被違反，導致過多假警報。Laney's p'/u' chart 或 I/MR 圖是有效的替代方案",
+   "en": "<strong>The large-sample trap:</strong> When the sample size is large (n &gt; 500 to 1,000), the distributional assumptions of traditional attributes control charts may be violated, leading to excessive false alarms. Laney's p'/u' chart or the I/MR chart are effective alternatives"
+  },
+  {
+   "zh": "<strong>ARL 的決策意義：</strong>Average Run Length 衡量管制圖偵測偏移的速度。ARL<sub>0</sub> 要大（避免假警報），ARL<sub>1</sub> 要小（快速偵測真實偏移）。ARL 可作為選擇管制圖類型和取樣策略的定量依據",
+   "en": "<strong>Decision significance of ARL:</strong> Average Run Length measures how fast a control chart detects a shift. ARL<sub>0</sub> should be large (to avoid false alarms) and ARL<sub>1</sub> should be small (to detect real shifts quickly). ARL can serve as a quantitative basis for choosing the control chart type and sampling strategy"
+  },
+  {
+   "zh": "<strong>參考文獻活用：</strong>17 篇附錄參考文獻涵蓋統計區間、SPC 管制圖、樣本量設計、製程能力指標、風險評估等主題，是深入學習的關鍵資源。Montgomery (Ref 8)、TR 59 (Ref 16) 和 Laney (Ref 17) 為最高優先閱讀項",
+   "en": "<strong>Making use of the references:</strong> The 17 appendix references cover statistical intervals, SPC control charts, sample size design, process capability indices, risk assessment and other topics, and are key resources for deeper study. Montgomery (Ref 8), TR 59 (Ref 16) and Laney (Ref 17) are the highest-priority reading"
+  }
+ ]
+}

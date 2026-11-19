@@ -1,0 +1,613 @@
+{
+ "source": "section-06-data-knowledge.html",
+ "blocks": [
+  {
+   "zh": "數據與知識管理 — 文件規範、序列化、新興技術與績效管理",
+   "en": "Data and Knowledge Management: Documentation, Serialization, Emerging Technologies and Performance Management"
+  },
+  {
+   "zh": "本章學習目標 Learning Objectives",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "掌握ALCOA+原則在GDP文件管理中的應用，特別是溫度記錄的數據完整性要求。",
+   "en": "Understand how the ALCOA+ principles apply to GDP documentation, especially the data integrity requirements for temperature records."
+  },
+  {
+   "zh": "理解EU FMD與US DSCSA序列化體系的架構差異與共同目標（防偽/追蹤）。",
+   "en": "Understand the architectural differences and shared goals (anti-counterfeiting/traceability) of the EU FMD and US DSCSA serialization systems."
+  },
+  {
+   "zh": "了解RFID、IoT、區塊鏈、機器學習在製藥供應鏈中的實際應用與局限性。",
+   "en": "Understand the practical applications and limitations of RFID, IoT, blockchain and machine learning in the pharmaceutical supply chain."
+  },
+  {
+   "zh": "掌握最後一哩績效管理KPI設計：OTIF、溫度偏差率、客訴處理時效。",
+   "en": "Understand how to design last mile performance management KPIs: OTIF, temperature excursion rate and complaint handling time."
+  },
+  {
+   "zh": "本節目錄 Contents",
+   "en": "Contents"
+  },
+  {
+   "zh": "中文解析：數據是最後一哩品質保證的核心",
+   "en": "Commentary: Data Is the Core of Last Mile Quality Assurance"
+  },
+  {
+   "zh": "Section 6 的核心主題是：<strong>如何確保貫穿整個最後一哩配送鏈的數據品質與完整性</strong>。TR46 把資料管理放在配送操作之後、獨立成章，強調其對合規性和持續改善的基礎性地位。",
+   "en": "The central theme of Section 6 is <strong>how to ensure data quality and integrity across the entire last mile distribution chain</strong>. TR46 places data management in its own chapter after distribution operations, underlining its foundational role in compliance and continual improvement."
+  },
+  {
+   "zh": "靜態數據 vs. 動態數據",
+   "en": "Static Data vs. Dynamic Data"
+  },
+  {
+   "zh": "<strong>靜態數據（Static Data）</strong>：記錄後不再更改——批號、產品代碼、序列號、製造日期、有效期限。",
+   "en": "<strong>Static data</strong>: not changed once recorded - batch number, product code, serial number, manufacturing date, expiry date."
+  },
+  {
+   "zh": "<strong>動態數據（Dynamic Data）</strong>：持續更新——溫度記錄（每10分鐘一筆）、GPS位置、庫存水平、配送狀態。",
+   "en": "<strong>Dynamic data</strong>: continuously updated - temperature records (one reading every 10 minutes), GPS location, inventory levels, delivery status."
+  },
+  {
+   "zh": "配送鏈中兩種數據都必須符合 ALCOA+ 要求，但動態數據（尤其是溫度記錄）面臨更高的數據完整性挑戰，因為數據量龐大且跨越多個系統與組織邊界。",
+   "en": "Both types of data in the distribution chain must meet ALCOA+ requirements, but dynamic data (especially temperature records) poses greater data integrity challenges because of its volume and because it crosses multiple systems and organizational boundaries."
+  },
+  {
+   "zh": "中文解析：數據治理與文件規範",
+   "en": "Commentary: Data Governance and Documentation Practices"
+  },
+  {
+   "zh": "2015年以來，FDA、EMA、WHO、MHRA相繼發布數據完整性指南，將範圍從實驗室/製造擴展至<strong>配送鏈</strong>。這意味著批發商、3PL、藥局的溫度記錄、交貨收據、偏差紀錄都受同等監管。",
+   "en": "Since 2015, the FDA, EMA, WHO and MHRA have successively issued data integrity guidance, extending its scope from laboratories/manufacturing to the <strong>distribution chain</strong>. This means that temperature records, delivery receipts and deviation records kept by wholesalers, 3PLs and pharmacies are subject to the same regulatory scrutiny."
+  },
+  {
+   "zh": "數據治理三要素",
+   "en": "Three Elements of Data Governance"
+  },
+  {
+   "zh": "在配送環境中，數據治理的三個角色分工明確：",
+   "en": "In a distribution environment, the three data governance roles are clearly divided:"
+  },
+  {
+   "zh": "<strong>數據擁有者（Data Owner）</strong>：對數據品質負最終責任——批發商對其WH溫度記錄為Owner",
+   "en": "<strong>Data Owner</strong>: bears ultimate responsibility for data quality - the wholesaler is the Owner of its warehouse (WH) temperature records"
+  },
+  {
+   "zh": "<strong>數據管理員（Data Steward）</strong>：日常維護與管理數據系統——3PL（第三方物流）是Steward，確保記錄按時生成、儲存",
+   "en": "<strong>Data Steward</strong>: maintains and manages the data systems day to day - the 3PL (third-party logistics provider) is the Steward, ensuring records are generated and stored on time"
+  },
+  {
+   "zh": "<strong>數據使用者（Data User）</strong>：依據數據做決策——藥局收到配送後查閱溫度記錄，決定是否接收",
+   "en": "<strong>Data User</strong>: makes decisions based on the data - after receiving a delivery, the pharmacy reviews the temperature records and decides whether to accept it"
+  },
+  {
+   "zh": "三個角色的職責必須在合約（Quality Agreement）中明確定義，避免責任模糊。",
+   "en": "The responsibilities of the three roles must be clearly defined in the contract (Quality Agreement) to avoid ambiguity over accountability."
+  },
+  {
+   "zh": "GDPR與配送數據：隱私與合規的交叉點",
+   "en": "GDPR and Distribution Data: Where Privacy Meets Compliance"
+  },
+  {
+   "zh": "在歐盟，配送數據（尤其患者層面的配送記錄）受<strong>GDPR</strong>約束。患者姓名、地址、用藥資訊屬於特別敏感個人數據（Special Category Data），必須符合最小化收集、存取控制、保留期限等要求。這在居家配送（Direct-to-Patient）場景尤為重要。",
+   "en": "In the EU, distribution data (especially patient-level delivery records) is subject to the <strong>GDPR</strong>. Patient names, addresses and medication information are special category data and must meet requirements such as data minimization, access control and retention periods. This is particularly important in Direct-to-Patient home delivery scenarios."
+  },
+  {
+   "zh": "中文解析：ALCOA+ 在配送記錄中的實踐",
+   "en": "Commentary: ALCOA+ in Distribution Records in Practice"
+  },
+  {
+   "zh": "電子vs.紙本記錄：法規適用",
+   "en": "Electronic vs. Paper Records: Regulatory Applicability"
+  },
+  {
+   "zh": "<strong>FDA 21 CFR Part 11</strong>（電子記錄/電子簽名）和<strong>EU GMP Annex 11</strong>（電腦化系統）的電子記錄要求同樣適用於配送鏈的數據系統——包括3PL的WMS（倉儲管理系統）和溫度監控平台。",
+   "en": "The electronic record requirements of <strong>FDA 21 CFR Part 11</strong> (electronic records/electronic signatures) and <strong>EU GMP Annex 11</strong> (computerised systems) apply equally to data systems in the distribution chain, including the 3PL's WMS (warehouse management system) and temperature monitoring platform."
+  },
+  {
+   "zh": "特別提醒：儲存為PDF的溫度報告若允許編輯（未鎖定），則違反電子記錄完整性要求。必須完成可編輯性風險評估並鎖定PDF格式。",
+   "en": "Special reminder: a temperature report saved as a PDF that can still be edited (not locked) violates electronic record integrity requirements. An editability risk assessment must be completed and the PDF format locked."
+  },
+  {
+   "zh": "雲端儲存的合規管理",
+   "en": "Compliance Management of Cloud Storage"
+  },
+  {
+   "zh": "3PL使用雲端溫度監控平台時，雲端服務商須被視為<strong>外包服務（Contracted Service）</strong>，需要：簽訂Quality Agreement、進行供應商資格評估、定義各方數據責任、確保災難復原計畫。「數據在雲端」不等於「不需要管理數據完整性」。",
+   "en": "When a 3PL uses a cloud-based temperature monitoring platform, the cloud service provider must be treated as a <strong>Contracted Service</strong>, which requires: a Quality Agreement, supplier qualification assessment, defined data responsibilities for each party, and a disaster recovery plan. \"Data in the cloud\" does not mean \"no need to manage data integrity\"."
+  },
+  {
+   "zh": "中文解析：數據完整性違規的配送場景",
+   "en": "Commentary: Data Integrity Violations in Distribution Scenarios"
+  },
+  {
+   "zh": "TR46 明列12項數據完整性違規例子，其中多項在配送鏈中具有高發性：",
+   "en": "TR46 lists 12 examples of data integrity violations, several of which are highly prevalent in the distribution chain:"
+  },
+  {
+   "zh": "高風險違規場景分析",
+   "en": "Analysis of High-Risk Violation Scenarios"
+  },
+  {
+   "zh": "<strong>缺少溫度記錄器（Missing Data Logger）</strong>：是配送鏈最常見的違規之一。冷鏈貨物未附帶記錄器即出庫，若發生偏差則無法舉證。",
+   "en": "<strong>Missing Data Logger</strong>: one of the most common violations in the distribution chain. If cold chain goods leave the warehouse without a logger, there is no evidence to rely on when an excursion occurs."
+  },
+  {
+   "zh": "<strong>缺少交貨確認文件（Missing Proof of Delivery）</strong>：在 Direct-to-Patient 場景，收件確認是藥品實際送達的唯一證據。",
+   "en": "<strong>Missing Proof of Delivery</strong>: in a Direct-to-Patient scenario, the delivery confirmation is the only evidence that the medicine was actually delivered."
+  },
+  {
+   "zh": "<strong>數據回填（Backdating）</strong>：手動記錄溫度時補填數據，是最嚴重的數據操縱行為，可能導致合規警告或刑事調查。",
+   "en": "<strong>Backdating</strong>: filling in temperature data after the fact when records are made manually is the most serious form of data manipulation and can lead to compliance warnings or criminal investigation."
+  },
+  {
+   "zh": "<strong>共用帳號/密碼（Shared Accounts）</strong>：在小型藥局常見，導致無法追溯是誰審核了溫度偏差報告，違反ALCOA中的Attributable原則。",
+   "en": "<strong>Shared Accounts</strong>: common in small pharmacies; they make it impossible to trace who reviewed the temperature excursion report, violating the Attributable principle of ALCOA."
+  },
+  {
+   "zh": "思考：違規升級判斷標準",
+   "en": "Consider: Criteria for Escalating a Violation"
+  },
+  {
+   "zh": "TR46 指出：若數據完整性違規可能影響<strong>產品品質或患者安全</strong>，必須：",
+   "en": "TR46 states that if a data integrity violation could affect <strong>product quality or patient safety</strong>, it is necessary to:"
+  },
+  {
+   "zh": "升報管理層（Escalate to Management）",
+   "en": "Escalate to Management"
+  },
+  {
+   "zh": "通知客戶（如適用）",
+   "en": "Notify customers (where applicable)"
+  },
+  {
+   "zh": "評估是否需向監管機構報告",
+   "en": "Assess whether it must be reported to the regulatory authority"
+  },
+  {
+   "zh": "實務問題：溫度記錄器電池耗盡導致3小時數據缺口，是否需要監管報告？答：需進行產品影響評估，若涉及冷鏈敏感品，可能需要製造商評估並向主管機關報告偏差。",
+   "en": "Practical question: if a data logger battery runs out and causes a 3-hour data gap, is a regulatory report required? Answer: a product impact assessment is needed; if cold chain-sensitive products are involved, the manufacturer may need to evaluate the event and report the deviation to the competent authority."
+  },
+  {
+   "zh": "中文解析：溫度管理五原則與偏差處理",
+   "en": "Commentary: The Five Principles of Temperature Management and Excursion Handling"
+  },
+  {
+   "zh": "溫度偏差處理三步驟",
+   "en": "Three Steps for Handling Temperature Excursions"
+  },
+  {
+   "zh": "<strong>即時評估（Immediate Assessment）</strong>：超標發生時，是否繼續配送？若偏差輕微且時間短暫，可在記錄後繼續；若嚴重偏差，應隔離貨物待評估。",
+   "en": "<strong>Immediate Assessment</strong>: when a limit is exceeded, should delivery continue? If the excursion is minor and brief, delivery can continue after it is recorded; if it is serious, the goods should be quarantined pending assessment."
+  },
+  {
+   "zh": "<strong>MKT計算（Mean Kinetic Temperature）</strong>：計算整個配送鏈的累積熱暴露量，評估對產品穩定性的實際影響——而非僅看超標時間長短。",
+   "en": "<strong>MKT calculation (Mean Kinetic Temperature)</strong>: calculate the cumulative thermal exposure across the whole distribution chain to assess the actual impact on product stability, rather than looking only at how long the limit was exceeded."
+  },
+  {
+   "zh": "<strong>製造商諮詢（Manufacturer Consultation）</strong>：依據MKT計算結果和產品穩定性數據，向製造商/MAH諮詢是否可用（Accept）、隔離（Quarantine）或銷毀（Destroy）。",
+   "en": "<strong>Manufacturer Consultation</strong>: based on the MKT result and product stability data, consult the manufacturer/MAH on whether the product can be used (Accept), quarantined (Quarantine) or destroyed (Destroy)."
+  },
+  {
+   "zh": "Metadata在偏差調查中的角色",
+   "en": "The Role of Metadata in Deviation Investigations"
+  },
+  {
+   "zh": "GxP數據（溫度記錄、偏差報告）是主要法規依據，但<strong>非GxP的元數據（Metadata）</strong>——如GPS軌跡、交通狀況、司機日誌——可輔助確認偏差原因並制定有效CAPA。例如：反覆在同一路段發生溫度偏差，元數據揭示是夏季停車場長時間停留所致。",
+   "en": "GxP data (temperature records, deviation reports) is the primary regulatory basis, but <strong>non-GxP metadata</strong> - such as GPS tracks, traffic conditions and driver logs - can help confirm the cause of a deviation and develop effective CAPA. For example, when temperature excursions recur on the same route segment, the metadata may reveal that long stops in a parking lot during summer are the cause."
+  },
+  {
+   "zh": "溫度偏差決策樹（Decision Tree）",
+   "en": "Temperature Excursion Decision Tree"
+  },
+  {
+   "zh": "注：以上為通則參考，實際決策依產品特定穩定性數據為準。",
+   "en": "Note: the above is a general reference; actual decisions depend on product-specific stability data."
+  },
+  {
+   "zh": "中文解析：溫度以外的關鍵製程參數",
+   "en": "Commentary: Critical Process Parameters Other Than Temperature"
+  },
+  {
+   "zh": "除溫度外，配送鏈中另有三類關鍵環境參數需要關注：",
+   "en": "Besides temperature, three other types of critical environmental parameters need attention in the distribution chain:"
+  },
+  {
+   "zh": "濕度、光照、震動/衝擊",
+   "en": "Humidity, Light, Shock/Vibration"
+  },
+  {
+   "zh": "<strong>濕度（Humidity）</strong>：初級包裝通常提供防潮保護，但移除二次包裝後暴露時間過長，或在溫差大的環境中冷凝水可能損壞批號/效期標籤，影響可追溯性。",
+   "en": "<strong>Humidity</strong>: primary packaging usually provides moisture protection, but if the secondary packaging is removed and exposure lasts too long, or in environments with large temperature differences, condensation may damage batch/expiry labels and affect traceability."
+  },
+  {
+   "zh": "<strong>光照（Light）</strong>：光敏藥品（如某些生物製劑、硝苯地平）若移除外包裝則直接暴露於光照，可能加速降解。最後一哩配送中，應維持完整的外包裝直到患者用藥前。",
+   "en": "<strong>Light</strong>: light-sensitive medicines (such as some biologics and nifedipine) are directly exposed to light if the outer packaging is removed, which may accelerate degradation. In last mile delivery, the outer packaging should be kept intact until just before the patient uses the medicine."
+  },
+  {
+   "zh": "<strong>震動/衝擊（Shock/Vibration）</strong>：冷凍保護劑（冰排、冰磚）若受衝擊破損，大量液體滲入包裝，可能損壞標籤並造成交叉污染。",
+   "en": "<strong>Shock/Vibration</strong>: if coolant packs (ice packs, ice bricks) are broken by impact, a large amount of liquid can leak into the packaging, which may damage labels and cause cross-contamination."
+  },
+  {
+   "zh": "郵購藥局的包裝特殊注意",
+   "en": "Special Packaging Considerations for Mail-Order Pharmacies"
+  },
+  {
+   "zh": "水基冷卻包（Water-based Cool Packs）在低溫環境下體積縮減，若用氣柱（Air Pillows）做緩衝，同樣會在低溫下體積縮減而失去防護效果。建議使用<strong>dunnage（填充緩衝材料）</strong>——如緩衝紙、發泡緩衝墊——防止包裝內藥品移動與撞擊。地理圍欄（Geofence）技術可在貨物偏離預定路線時發出警示，是溫度監控的有效補充。",
+   "en": "Water-based cool packs shrink in volume in low-temperature environments, and air pillows used as cushioning shrink in the same way and lose their protective effect. It is recommended to use <strong>dunnage (void-fill cushioning material)</strong> - such as cushioning paper or foam cushioning - to prevent the medicines from moving and knocking against each other inside the package. Geofence technology can issue an alert when goods deviate from the planned route and is an effective complement to temperature monitoring."
+  },
+  {
+   "zh": "中文解析：序列化體系架構",
+   "en": "Commentary: Serialization Architecture"
+  },
+  {
+   "zh": "序列化4層架構",
+   "en": "Four-Level Serialization Architecture"
+  },
+  {
+   "zh": "<span class=\"hierarchy-box level-1\">包裝層（Pack）<br/><small>唯一序列號 + 2D Data Matrix</small></span>",
+   "en": "<span class=\"hierarchy-box level-1\">Pack level<br/><small>Unique serial number + 2D Data Matrix</small></span>"
+  },
+  {
+   "zh": "<span class=\"hierarchy-box level-2\">案箱層（Case）<br/><small>包含多個Pack的彙整序號</small></span>",
+   "en": "<span class=\"hierarchy-box level-2\">Case level<br/><small>Aggregated serial number covering multiple packs</small></span>"
+  },
+  {
+   "zh": "<span class=\"hierarchy-box level-2\">棧板層（Pallet）<br/><small>包含多個Case的彙整序號</small></span>",
+   "en": "<span class=\"hierarchy-box level-2\">Pallet level<br/><small>Aggregated serial number covering multiple cases</small></span>"
+  },
+  {
+   "zh": "<span class=\"hierarchy-box level-3\">裝運層（Shipment）<br/><small>完整交易鏈記錄（EPCIS事件）</small></span>",
+   "en": "<span class=\"hierarchy-box level-3\">Shipment level<br/><small>Complete transaction chain record (EPCIS events)</small></span>"
+  },
+  {
+   "zh": "每一層級都有唯一識別碼，且上下層之間的<strong>聚合關係（Aggregation）</strong>必須完整記錄，才能實現從患者手中的單盒藥品追溯至製造批次。",
+   "en": "Every level has a unique identifier, and the <strong>aggregation</strong> relationships between levels must be completely recorded in order to trace a single pack in the patient's hands back to the manufacturing batch."
+  },
+  {
+   "zh": "EU FMD架構關鍵要素",
+   "en": "Key Elements of the EU FMD Architecture"
+  },
+  {
+   "zh": "<strong>FMD（Falsified Medicines Directive）</strong>：指令2011/62/EU + 委託法規2016/161，2019年2月起在EU強制執行",
+   "en": "<strong>FMD (Falsified Medicines Directive)</strong>: Directive 2011/62/EU + Delegated Regulation 2016/161, mandatory in the EU since February 2019"
+  },
+  {
+   "zh": "<strong>2D Data Matrix</strong>：包含序列號、產品代碼、批號、效期（及國家報銷碼）",
+   "en": "<strong>2D Data Matrix</strong>: contains the serial number, product code, batch number and expiry date (and the national reimbursement number)"
+  },
+  {
+   "zh": "<strong>EMVS（European Medicines Verification System）</strong>：EU hub中央數據庫 + 各成員國本地系統（NMVS）的分散式架構",
+   "en": "<strong>EMVS (European Medicines Verification System)</strong>: a distributed architecture consisting of the central EU hub database plus the local systems of each Member State (NMVS)"
+  },
+  {
+   "zh": "<strong>MAH（Marketing Authorisation Holder）</strong>：上傳序列號至EU hub的責任方",
+   "en": "<strong>MAH (Marketing Authorisation Holder)</strong>: the party responsible for uploading serial numbers to the EU hub"
+  },
+  {
+   "zh": "<strong>藥局（Dispenser）</strong>：配藥前掃描2D碼，在EMVS中執行「除役（Decommission）」動作",
+   "en": "<strong>Dispenser (pharmacy)</strong>: scans the 2D code before dispensing and performs the \"Decommission\" action in the EMVS"
+  },
+  {
+   "zh": "<strong>跨市場交易（Intermarket Transaction）</strong>：藥品轉至不同EU成員國時觸發，需重新分配序列號至目標國家系統",
+   "en": "<strong>Intermarket Transaction</strong>: triggered when a medicine is moved to a different EU Member State; serial numbers must be reassigned to the destination country's system"
+  },
+  {
+   "zh": "中文解析：EU FMD vs. US DSCSA 對照",
+   "en": "Commentary: EU FMD vs. US DSCSA Comparison"
+  },
+  {
+   "zh": "DSCSA 2023完整實施重點",
+   "en": "Key Points of Full DSCSA Implementation in 2023"
+  },
+  {
+   "zh": "2023年11月起，DSCSA要求所有供應鏈成員必須能在<strong>24小時內</strong>提供完整的Transaction History（交易歷史），實現<strong>電子化、可互通（Interoperable）</strong>的追蹤系統。這意味著：",
+   "en": "From November 2023, the DSCSA requires all supply chain members to be able to provide the complete Transaction History <strong>within 24 hours</strong>, enabling an <strong>electronic, interoperable</strong> tracing system. This means:"
+  },
+  {
+   "zh": "紙本交易記錄不再被接受",
+   "en": "Paper transaction records are no longer accepted"
+  },
+  {
+   "zh": "所有批發商和藥局須建立電子化EPCIS（Electronic Product Code Information Services）能力",
+   "en": "All wholesalers and pharmacies must establish electronic EPCIS (Electronic Product Code Information Services) capability"
+  },
+  {
+   "zh": "System Interoperability（系統互通性）是核心挑戰——不同廠商的系統必須能交換GS1標準格式數據",
+   "en": "System interoperability is the core challenge - systems from different vendors must be able to exchange data in GS1 standard formats"
+  },
+  {
+   "zh": "中文解析：RFID在最後一哩的實際應用",
+   "en": "Commentary: Practical Applications of RFID in the Last Mile"
+  },
+  {
+   "zh": "RFID vs. 條碼：倉儲盤點效率差異",
+   "en": "RFID vs. Barcodes: Difference in Warehouse Stock-Taking Efficiency"
+  },
+  {
+   "zh": "傳統條碼掃描需要<strong>逐件對準（line-of-sight）</strong>掃描，一個含100盒藥品的棧板需要100次掃描。RFID讀取器可以在貨物通過天線時<strong>自動批量讀取所有標籤</strong>，無需拆箱、無需對準，大幅提升收貨速度。冷鏈貨架盤點是最具代表性的RFID應用場景之一。",
+   "en": "Traditional barcode scanning requires <strong>line-of-sight</strong> scanning item by item, so a pallet of 100 packs needs 100 scans. An RFID reader can <strong>automatically read all tags in bulk</strong> as the goods pass the antenna, with no need to unpack or align, greatly speeding up goods receipt. Cold chain shelf stock-taking is one of the most representative RFID use cases."
+  },
+  {
+   "zh": "注意：RFID在含金屬和液體的環境中讀取效率會降低，冷鏈藥品的水性包裝可能干擾訊號。",
+   "en": "Note: RFID read efficiency drops in environments containing metal and liquids, and the water-based packaging of cold chain medicines may interfere with the signal."
+  },
+  {
+   "zh": "中文解析：IoT在冷鏈監控的架構",
+   "en": "Commentary: IoT Architecture for Cold Chain Monitoring"
+  },
+  {
+   "zh": "IoT冷鏈監控四層架構",
+   "en": "Four-Layer IoT Cold Chain Monitoring Architecture"
+  },
+  {
+   "zh": "<span class=\"hierarchy-box level-1\">感應器層（Sensor）<br/><small>溫度/濕度/震動感測器</small></span>",
+   "en": "<span class=\"hierarchy-box level-1\">Sensor layer<br/><small>Temperature/humidity/vibration sensors</small></span>"
+  },
+  {
+   "zh": "<span class=\"hierarchy-box level-2\">閘道層（Gateway）<br/><small>Bluetooth/4G/Wi-Fi聚合</small></span>",
+   "en": "<span class=\"hierarchy-box level-2\">Gateway layer<br/><small>Bluetooth/4G/Wi-Fi aggregation</small></span>"
+  },
+  {
+   "zh": "<span class=\"hierarchy-box level-2\">雲端平台（Cloud Platform）<br/><small>數據儲存、分析、儀表板</small></span>",
+   "en": "<span class=\"hierarchy-box level-2\">Cloud platform<br/><small>Data storage, analytics, dashboards</small></span>"
+  },
+  {
+   "zh": "<span class=\"hierarchy-box level-3\">警報/行動層（Alert &amp; Action）<br/><small>SMS/Email警示、自動工單</small></span>",
+   "en": "<span class=\"hierarchy-box level-3\">Alert &amp; Action layer<br/><small>SMS/email alerts, automatic work orders</small></span>"
+  },
+  {
+   "zh": "即時監控 vs. 端點下載數據記錄器",
+   "en": "Real-Time Monitoring vs. Endpoint-Download Data Loggers"
+  },
+  {
+   "zh": "<strong>IoT即時監控</strong>：數據持續傳送至雲端，可在偏差發生時立即介入（如調度備用冷藏車），但需要網路覆蓋。<strong>端點下載Data Logger</strong>：全程記錄但只在交貨後才下載審查，偏差只能事後處理。最後一哩面向患者家庭配送時，IoT監控覆蓋率仍受限於偏遠地區網路品質。",
+   "en": "<strong>IoT real-time monitoring</strong>: data is transmitted to the cloud continuously, allowing immediate intervention when an excursion occurs (for example, dispatching a backup refrigerated vehicle), but network coverage is required. <strong>Endpoint-download data loggers</strong>: record throughout the journey but are downloaded and reviewed only after delivery, so excursions can only be handled after the fact. For last mile delivery to patients' homes, IoT monitoring coverage is still limited by network quality in remote areas."
+  },
+  {
+   "zh": "中文解析：區塊鏈在製藥冷鏈的應用與挑戰",
+   "en": "Commentary: Blockchain in the Pharmaceutical Cold Chain: Applications and Challenges"
+  },
+  {
+   "zh": "區塊鏈核心特性",
+   "en": "Core Characteristics of Blockchain"
+  },
+  {
+   "zh": "<strong>不可篡改性（Immutability）</strong>：每筆溫度記錄一旦寫入區塊，無法被修改或刪除，天然滿足ALCOA+ 中的Original和Enduring要求。",
+   "en": "<strong>Immutability</strong>: once each temperature record is written to a block, it cannot be modified or deleted, which inherently satisfies the Original and Enduring requirements of ALCOA+."
+  },
+  {
+   "zh": "<strong>去中心化（Decentralization）</strong>：多個節點各持一份帳本副本，無需中央驗證機構——解決了跨組織（製造商、3PL、批發商、藥局）之間的信任問題。",
+   "en": "<strong>Decentralization</strong>: multiple nodes each hold a copy of the ledger, with no need for a central validating authority - this solves the trust problem between organizations (manufacturers, 3PLs, wholesalers, pharmacies)."
+  },
+  {
+   "zh": "<strong>智能合約（Smart Contract）</strong>：預設的自動執行規則，例如：「溫度超過8°C持續30分鐘，自動向製造商和物流商發送警報，並在帳本上記錄責任方」。",
+   "en": "<strong>Smart Contract</strong>: predefined, automatically executed rules, for example: \"if the temperature exceeds 8°C for 30 minutes, automatically send an alert to the manufacturer and the logistics provider and record the responsible party on the ledger\"."
+  },
+  {
+   "zh": "現實挑戰：數據品質決定一切",
+   "en": "Practical Challenge: Data Quality Determines Everything"
+  },
+  {
+   "zh": "區塊鏈最核心的局限性在於：<strong>Garbage in = Garbage out（垃圾進、垃圾出）</strong>。",
+   "en": "The core limitation of blockchain is <strong>Garbage in = Garbage out</strong>."
+  },
+  {
+   "zh": "區塊鏈只能保證鏈上數據不被篡改，但無法保證IoT感測器本身的讀數正確。若感測器未校準、放置位置不當（如靠近包裝牆壁而非產品旁邊），即使數據被完美保存在不可篡改的區塊鏈上，也是錯誤的溫度記錄。",
+   "en": "Blockchain can only guarantee that data on the chain has not been tampered with; it cannot guarantee that the readings of the IoT sensor itself are correct. If a sensor is not calibrated or is placed poorly (for example, next to the package wall rather than beside the product), the temperature record is still wrong even if the data is perfectly preserved on an immutable blockchain."
+  },
+  {
+   "zh": "因此，區塊鏈與IoT的整合需要建立在<strong>感測器校準、放置規範、數據驗證</strong>的基礎上，技術本身不能取代基礎的GMP/GDP實踐。",
+   "en": "Therefore, integrating blockchain with IoT must be built on <strong>sensor calibration, placement specifications and data verification</strong>; the technology cannot replace basic GMP/GDP practice."
+  },
+  {
+   "zh": "區塊鏈與序列化的協同",
+   "en": "Synergy Between Blockchain and Serialization"
+  },
+  {
+   "zh": "DSCSA要求的EPCIS系統本質上是一個中心化的交易記錄系統，而區塊鏈提供了實現<strong>去中心化、可信、不可篡改</strong>EPCIS記錄的技術路徑。未來，區塊鏈有望成為美國DSCSA和歐盟FMD體系下，多方供應鏈成員共享追溯數據的底層基礎設施。",
+   "en": "The EPCIS system required by the DSCSA is essentially a centralized transaction record system, while blockchain offers a technical path to <strong>decentralized, trusted, immutable</strong> EPCIS records. In the future, blockchain may become the underlying infrastructure through which multiple supply chain parties share traceability data under both the US DSCSA and the EU FMD."
+  },
+  {
+   "zh": "中文解析：機器學習在冷鏈的應用場景",
+   "en": "Commentary: Machine Learning Use Cases in the Cold Chain"
+  },
+  {
+   "zh": "ML在最後一哩的三大應用",
+   "en": "Three Major ML Applications in the Last Mile"
+  },
+  {
+   "zh": "<strong>預測溫度偏差（Predictive Excursion Detection）</strong>：根據歷史路線數據、季節溫度模式、包材性能數據，在偏差發生前預測風險路線並提前調整配送方案。",
+   "en": "<strong>Predictive Excursion Detection</strong>: based on historical route data, seasonal temperature patterns and packaging performance data, predict high-risk routes before excursions occur and adjust the delivery plan in advance."
+  },
+  {
+   "zh": "<strong>需求預測（Demand Forecasting）</strong>：利用歷史出貨量、處方趨勢、季節性疫苗需求等數據，優化冷鏈庫存配置，減少廢棄損耗。",
+   "en": "<strong>Demand Forecasting</strong>: use historical shipment volumes, prescription trends and seasonal vaccine demand to optimize cold chain inventory allocation and reduce waste and losses."
+  },
+  {
+   "zh": "<strong>異常溫度模式識別（Anomaly Detection）</strong>：識別溫度曲線中的異常模式，區分真實偏差與感測器誤讀——例如在正常波動中發現特定時段的系統性異常，可能提示冷藏設備老化。",
+   "en": "<strong>Anomaly Detection</strong>: identify abnormal patterns in temperature profiles and distinguish real excursions from sensor misreadings - for example, finding a systematic anomaly at a particular time of day within normal fluctuations may indicate that refrigeration equipment is aging."
+  },
+  {
+   "zh": "ML的局限性與監管展望",
+   "en": "Limitations of ML and Regulatory Outlook"
+  },
+  {
+   "zh": "目前ML在製藥供應鏈的應用仍處於探索階段，監管框架（FDA、EMA）尚未明確AI/ML在GDP決策中的合規要求。關鍵挑戰包括：模型可解釋性（Explainability）、訓練數據品質、演算法驗證（Algorithm Validation）——與軟體驗證（CSV/CSA）不同，ML模型是動態演化的，傳統V模型驗證方法需要調整。",
+   "en": "At present, the application of ML in the pharmaceutical supply chain is still at an exploratory stage, and regulatory frameworks (FDA, EMA) have not yet clarified the compliance requirements for AI/ML in GDP decision-making. Key challenges include model explainability, training data quality and algorithm validation - unlike software validation (CSV/CSA), ML models evolve dynamically, so the traditional V-model validation approach needs to be adapted."
+  },
+  {
+   "zh": "中文解析：偏差與投訴管理的系統整合",
+   "en": "Commentary: System Integration of Deviation and Complaint Management"
+  },
+  {
+   "zh": "最後一哩偏差常見類型",
+   "en": "Common Types of Last Mile Deviations"
+  },
+  {
+   "zh": "<strong>溫度偏差（Temperature Excursion）</strong>：最高頻偏差，需立即評估並啟動產品影響評估流程",
+   "en": "<strong>Temperature Excursion</strong>: the most frequent deviation; requires immediate assessment and initiation of the product impact assessment process"
+  },
+  {
+   "zh": "<strong>配送失敗（Delivery Failure）</strong>：包括患者不在家、地址錯誤、拒收等，可能導致藥品在未受控環境中滯留",
+   "en": "<strong>Delivery Failure</strong>: includes the patient not being at home, wrong address and refusal of delivery, which may leave the medicine in an uncontrolled environment"
+  },
+  {
+   "zh": "<strong>包裝損壞（Packaging Damage）</strong>：可能影響防偽特徵（篡改封條）的完整性",
+   "en": "<strong>Packaging Damage</strong>: may compromise the integrity of anti-counterfeiting features (tamper-evident seals)"
+  },
+  {
+   "zh": "<strong>序列化驗證失敗（Serialization Failure）</strong>：掃描結果顯示序列號不存在或已被除役，需立即隔離並向主管機關報告",
+   "en": "<strong>Serialization Failure</strong>: a scan shows that the serial number does not exist or has already been decommissioned; the product must be quarantined immediately and reported to the competent authority"
+  },
+  {
+   "zh": "偏差管理的時效要求",
+   "en": "Time Requirements for Deviation Management"
+  },
+  {
+   "zh": "DSCSA要求對序列化相關的可疑產品（Suspect Product）在<strong>24小時內</strong>作出回應並隔離。EU GDP對溫度偏差的客訴回應並未設定統一時效，但業界最佳實踐建議<strong>嚴重偏差24小時內確認收件、5個工作日內提供初步調查報告</strong>。",
+   "en": "The DSCSA requires a response to, and quarantine of, serialization-related Suspect Product <strong>within 24 hours</strong>. EU GDP sets no uniform time limit for responding to temperature excursion complaints, but industry best practice recommends <strong>acknowledging serious deviations within 24 hours and providing a preliminary investigation report within 5 working days</strong>."
+  },
+  {
+   "zh": "中文解析：最後一哩KPI設計框架",
+   "en": "Commentary: Last Mile KPI Design Framework"
+  },
+  {
+   "zh": "最後一哩核心KPI表",
+   "en": "Core Last Mile KPI Table"
+  },
+  {
+   "zh": "KPI目標值應依產品類型、法規要求和組織能力個別設定，以上為業界參考基準。",
+   "en": "KPI targets should be set individually according to product type, regulatory requirements and organizational capability; the above are industry reference benchmarks."
+  },
+  {
+   "zh": "中文解析：最後一哩培訓要求",
+   "en": "Commentary: Last Mile Training Requirements"
+  },
+  {
+   "zh": "培訓有效性驗證",
+   "en": "Verifying Training Effectiveness"
+  },
+  {
+   "zh": "培訓記錄和評估結果是GDP稽查的常見查核重點。培訓計畫應包括：初始培訓（Onboarding）、定期複訓（通常每年一次）、觸發條件培訓（如發生偏差後的針對性培訓）。僅有「培訓完成簽到表」不足夠，還需要<strong>實際操作能力評估（Competency Assessment）</strong>，確認人員能正確執行程序。",
+   "en": "Training records and assessment results are common focus areas in GDP inspections. A training program should include initial training (Onboarding), periodic refresher training (usually annual) and trigger-based training (such as targeted training after a deviation). A \"training completed\" sign-in sheet alone is not sufficient; a <strong>Competency Assessment</strong> of actual operating ability is also needed to confirm that personnel can execute procedures correctly."
+  },
+  {
+   "zh": "中文解析：醫療機構的GDP職責",
+   "en": "Commentary: GDP Responsibilities of Healthcare Institutions"
+  },
+  {
+   "zh": "HCP收貨查核清單",
+   "en": "HCP Goods Receipt Checklist"
+  },
+  {
+   "zh": "確認溫度記錄（Data Logger報告或IoT監控數據）顯示全程符合儲存條件",
+   "en": "Confirm that the temperature records (data logger report or IoT monitoring data) show compliance with storage conditions throughout the journey"
+  },
+  {
+   "zh": "檢查防篡改封條（Anti-tampering Seal）完整性",
+   "en": "Check the integrity of the anti-tampering seal"
+  },
+  {
+   "zh": "掃描2D碼確認序列化狀態（FMD合規市場）",
+   "en": "Scan the 2D code to confirm serialization status (FMD-compliant markets)"
+  },
+  {
+   "zh": "確認批號、有效期限與交貨單一致",
+   "en": "Confirm that the batch number and expiry date match the delivery note"
+  },
+  {
+   "zh": "若發現異常，立即啟動機構偏差程序並通知供應商",
+   "en": "If any abnormality is found, immediately start the institution's deviation procedure and notify the supplier"
+  },
+  {
+   "zh": "醫療機構是冷鏈的最後防線",
+   "en": "The Healthcare Institution Is the Last Line of Defense in the Cold Chain"
+  },
+  {
+   "zh": "製造商和批發商對溫度管理的投資，最終在HCP收貨時被一個錯誤的儲存動作所摧毀並不少見。例如：將2°C–8°C冷藏品放入冰箱冷凍格（0°C以下），或室溫儲存超過規定時間。HCP教育是最後一哩品質保障的最後也是最脆弱的一環。",
+   "en": "It is not uncommon for the manufacturer's and wholesaler's investment in temperature management to be undone at HCP goods receipt by a single wrong storage action. For example: placing 2°C–8°C refrigerated products in the freezer compartment of a refrigerator (below 0°C), or storing them at room temperature beyond the permitted time. HCP education is the last and most fragile link in last mile quality assurance."
+  },
+  {
+   "zh": "中文解析：患者端的藥品保存教育",
+   "en": "Commentary: Medicine Storage Education for Patients"
+  },
+  {
+   "zh": "患者冷鏈藥品保存要點",
+   "en": "Key Points on Storing Cold Chain Medicines for Patients"
+  },
+  {
+   "zh": "<strong>冰箱（非冷凍）</strong>：大多數冷藏藥品（如胰島素筆、生物製劑）應儲存於2°C–8°C冰箱層架，切勿放入冷凍格（凍結可能不可逆地破壞蛋白質結構）。",
+   "en": "<strong>Refrigerator (not freezer)</strong>: most refrigerated medicines (such as insulin pens and biologics) should be stored on a shelf of a 2°C–8°C refrigerator and never placed in the freezer compartment (freezing may irreversibly destroy protein structure)."
+  },
+  {
+   "zh": "<strong>保持原包裝</strong>：外包裝提供避光保護，使用前不應提前拆除。",
+   "en": "<strong>Keep in the original packaging</strong>: the outer packaging provides protection from light and should not be removed before use."
+  },
+  {
+   "zh": "<strong>避免溫差劇變</strong>：從冰箱取出後，胰島素等產品通常需在室溫回溫後使用，但不應在高溫環境（如車內）長時間放置。",
+   "en": "<strong>Avoid sudden temperature changes</strong>: after removal from the refrigerator, products such as insulin usually need to warm to room temperature before use, but they should not be left for a long time in hot environments (such as inside a car)."
+  },
+  {
+   "zh": "<strong>開封後效期</strong>：多數多劑量冷藏品（如胰島素瓶）開封後可在室溫儲存有限時間（通常28天），需依仿單指示。",
+   "en": "<strong>In-use shelf life</strong>: after opening, most multi-dose refrigerated products (such as insulin vials) can be stored at room temperature for a limited time (usually 28 days); follow the package insert instructions."
+  },
+  {
+   "zh": "<strong>可疑狀況處理</strong>：若藥品曾在炎熱郵箱中長時間滯留，應聯絡藥局確認是否可用，切勿自行判斷使用。",
+   "en": "<strong>Handling suspicious conditions</strong>: if a medicine has been left for a long time in a hot mailbox, contact the pharmacy to confirm whether it can be used; never decide on your own to use it."
+  },
+  {
+   "zh": "Direct-to-Patient配送的品質挑戰",
+   "en": "Quality Challenges of Direct-to-Patient Delivery"
+  },
+  {
+   "zh": "DtP配送將品質責任延伸至患者家中，而患者既無GMP訓練、也無溫度監控設備。這要求製造商、藥局和3PL在系統設計上就考慮患者能力的局限性——例如設計傻瓜式溫度指示標籤（顏色變化即可判斷是否超標），而非依賴患者讀懂Data Logger報告。患者教育材料的語言無障礙性（Plain Language）和本地化，是合規與患者安全的雙重要求。",
+   "en": "DtP delivery extends quality responsibility into the patient's home, and patients have neither GMP training nor temperature monitoring equipment. Manufacturers, pharmacies and 3PLs must therefore design their systems with the patient's limited capabilities in mind - for example, foolproof temperature indicator labels (a color change shows whether a limit was exceeded) rather than relying on patients to understand a data logger report. Plain language and localization of patient education materials are both a compliance requirement and a patient safety requirement."
+  },
+  {
+   "zh": "Section 6 Summary — 數據與知識管理核心要點",
+   "en": "Section 6 Summary: Key Points on Data and Knowledge Management"
+  },
+  {
+   "zh": "法規合規要點",
+   "en": "Regulatory Compliance Points"
+  },
+  {
+   "zh": "ALCOA+九原則適用於所有配送鏈記錄，包括溫度數據、交貨確認和偏差報告",
+   "en": "The nine ALCOA+ principles apply to all distribution chain records, including temperature data, delivery confirmations and deviation reports"
+  },
+  {
+   "zh": "EU FMD（2019）要求MAH上傳序列號至EMVS，藥局在配藥前除役2D碼",
+   "en": "The EU FMD (2019) requires MAHs to upload serial numbers to the EMVS and pharmacies to decommission the 2D code before dispensing"
+  },
+  {
+   "zh": "US DSCSA（2023完整實施）要求所有貿易夥伴建立電子化、可互通的EPCIS追蹤系統",
+   "en": "The US DSCSA (fully implemented in 2023) requires all trading partners to establish an electronic, interoperable EPCIS tracing system"
+  },
+  {
+   "zh": "數據完整性違規（如缺少溫度記錄器、帳號共用）必須作為偏差處理並啟動CAPA",
+   "en": "Data integrity violations (such as a missing data logger or shared accounts) must be handled as deviations and trigger CAPA"
+  },
+  {
+   "zh": "技術與績效要點",
+   "en": "Technology and Performance Points"
+  },
+  {
+   "zh": "IoT實現實時溫度監控，但覆蓋率受網路限制；Data Logger在端點下載，僅事後審查",
+   "en": "IoT enables real-time temperature monitoring, but coverage is limited by network availability; data loggers are downloaded at the endpoint and allow only after-the-fact review"
+  },
+  {
+   "zh": "區塊鏈確保鏈上數據不可篡改，但鏈上數據品質取決於IoT感測器準確性",
+   "en": "Blockchain ensures that data on the chain cannot be tampered with, but the quality of that data depends on the accuracy of the IoT sensors"
+  },
+  {
+   "zh": "ML可預測溫度偏差和識別異常模式，但需要模型驗證和監管框架支撐",
+   "en": "ML can predict temperature excursions and identify abnormal patterns, but requires model validation and a supporting regulatory framework"
+  },
+  {
+   "zh": "KPI設計應涵蓋OTIF率、溫度偏差率、序列化失敗率和投訴回應時效",
+   "en": "KPI design should cover OTIF rate, temperature excursion rate, serialization failure rate and complaint response time"
+  }
+ ]
+}

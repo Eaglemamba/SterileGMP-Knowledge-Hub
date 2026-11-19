@@ -1,0 +1,1153 @@
+{
+ "source": "section-02-qrm-di.html",
+ "blocks": [
+  {
+   "zh": "Section 2: Quality Risk Management Applied to Data Integrity / 品質風險管理應用於資料完整性",
+   "en": "Section 2: Quality Risk Management Applied to Data Integrity"
+  },
+  {
+   "zh": "學習目標 Learning Objectives",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解 ICH Q9 品質風險管理（QRM）原則如何應用於資料完整性的全生命週期管理，掌握資料擷取、記錄、轉抄、歸檔各階段的風險控制策略。",
+   "en": "Understand how ICH Q9 quality risk management (QRM) principles apply across the entire data lifecycle, and master the risk control strategies for each stage: data capture, recording, transcription and archiving."
+  },
+  {
+   "zh": "熟練運用 9-Box 脆弱性評估矩陣（Vulnerability Grid），根據資料關鍵性（Data Criticality）與資料管控等級（Data Control Level）評估資料脆弱程度，並擬定對應的緩解措施。",
+   "en": "Apply the 9-box Vulnerability Grid with confidence: assess data vulnerability from Data Criticality and Data Control Level, and define the matching mitigation measures."
+  },
+  {
+   "zh": "掌握資料流程圖（Data Process Flow Map, DPFM）的建構方法，能針對特定製程單元操作識別資料完整性的高風險節點。",
+   "en": "Master how to build a Data Process Flow Map (DPFM) and use it to identify high-risk data integrity nodes in a specific process unit operation."
+  },
+  {
+   "zh": "區分三大資料完整性風險類別——技術面（Data Management Technology）、人為因素（Human Factors）、GMP 製程（GMP Process）——並能將其對應至無菌充填廠的實際場景。",
+   "en": "Distinguish the three main categories of data integrity risk (Data Management Technology, Human Factors and GMP Process) and map them to real scenarios in a sterile fill-finish facility."
+  },
+  {
+   "zh": "本節結構 Section Structure",
+   "en": "Section Structure"
+  },
+  {
+   "zh": "Quality Risk Management Applied to Data Integrity / 品質風險管理應用於資料完整性",
+   "en": "Quality Risk Management Applied to Data Integrity"
+  },
+  {
+   "zh": "解析與應用（繁體中文）",
+   "en": "Analysis and Application (Commentary)"
+  },
+  {
+   "zh": "核心概念：QRM 與資料生命週期",
+   "en": "Core Concept: QRM and the Data Lifecycle"
+  },
+  {
+   "zh": "Quality Risk Management（品質風險管理）並非獨立於資料完整性（Data Integrity, DI）之外的體系，而是貫穿資料生命週期（Data Lifecycle）的管理框架。資料從產生、記錄、轉抄、傳輸到歸檔，每一環節都有潛在風險。",
+   "en": "Quality Risk Management is not a system separate from data integrity (DI). It is a management framework that runs through the entire data lifecycle. From generation, recording, transcription and transfer to archiving, every step carries potential risk."
+  },
+  {
+   "zh": "<strong>資料生命週期的關鍵階段：</strong>",
+   "en": "<strong>Key stages of the data lifecycle:</strong>"
+  },
+  {
+   "zh": "<strong>Capture（擷取）</strong>：原始數據產生點，如感測器讀值、秤重結果",
+   "en": "<strong>Capture</strong>: the point where raw data are generated, such as sensor readings or weighing results"
+  },
+  {
+   "zh": "<strong>Recording（記錄）</strong>：將數據寫入正式文件或系統",
+   "en": "<strong>Recording</strong>: writing the data into an official document or system"
+  },
+  {
+   "zh": "<strong>Transcription（轉抄）</strong>：數據從一個系統或格式轉移到另一個",
+   "en": "<strong>Transcription</strong>: moving data from one system or format to another"
+  },
+  {
+   "zh": "<strong>Archiving（歸檔）</strong>：長期保存與可檢索性",
+   "en": "<strong>Archiving</strong>: long-term retention and retrievability"
+  },
+  {
+   "zh": "比喻：「快遞包裹的完整性」",
+   "en": "Analogy: \"The integrity of a courier parcel\""
+  },
+  {
+   "zh": "把資料想成一個珍貴包裹。從寄件人（資料產生）到收件人（最終使用），途經攬收、分揀、轉運、配送等環節。任何一個環節出問題——包裹遺失（deletion）、內容被掉包（alteration）、寄錯地址（transfer error）——都破壞了包裹的完整性。QRM 就是在每個轉運點設置品質檢查站。",
+   "en": "Think of data as a valuable parcel. From sender (data generation) to recipient (final use), it passes through pickup, sorting, transshipment and delivery. If anything goes wrong at any step (the parcel is lost (deletion), the contents are swapped (alteration), or it is sent to the wrong address (transfer error)), the integrity of the parcel is broken. QRM places a quality checkpoint at every transfer point."
+  },
+  {
+   "zh": "監管重點：紙本到電子的過渡期風險",
+   "en": "Regulatory Focus: Risk During the Transition from Paper to Electronic"
+  },
+  {
+   "zh": "TR84 特別強調產業從紙本 → 混合式（Hybrid）→ 全電子化的過渡期間，資料完整性風險尤其高。許多 CDMO 目前處於混合式系統階段，既有手寫批次記錄又有電子系統，數據在兩者之間轉抄時最容易出錯。",
+   "en": "TR84 stresses that DI risk is especially high while industry moves from paper to hybrid to fully electronic systems. Many CDMOs are currently at the hybrid stage, with handwritten batch records alongside electronic systems, and errors are most likely when data are transcribed between the two."
+  },
+  {
+   "zh": "<strong>注意：</strong>ICH Q9（品質風險管理指南）與 PDA TR54 系列是本節的上位參考文件。",
+   "en": "<strong>Note:</strong> ICH Q9 (the quality risk management guideline) and the PDA TR54 series are the higher-level reference documents for this section."
+  },
+  {
+   "zh": "CDMO 實務場景",
+   "en": "CDMO Practical Scenarios"
+  },
+  {
+   "zh": "在無菌充填廠，常見的混合式資料流程包括：",
+   "en": "Typical hybrid data flows in a sterile fill-finish facility include:"
+  },
+  {
+   "zh": "充填機 PLC 自動記錄充填重量 → 操作員手抄至批次記錄",
+   "en": "The filling machine PLC records fill weight automatically, then the operator copies it by hand into the batch record"
+  },
+  {
+   "zh": "環境監控系統（EM）自動採樣 → 實驗室手動記錄結果至 LIMS",
+   "en": "The environmental monitoring (EM) system samples automatically, then the laboratory manually records the results in the LIMS"
+  },
+  {
+   "zh": "溫度記錄器電子數據 → 列印後附於批次記錄",
+   "en": "Electronic data from a temperature logger are printed and attached to the batch record"
+  },
+  {
+   "zh": "每一個「系統間轉抄」節點都是資料完整性的高風險區域。",
+   "en": "Every \"transcription between systems\" node is a high-risk area for data integrity."
+  },
+  {
+   "zh": "Considerations in Assessing Risk / 風險評估的考量因素",
+   "en": "Considerations in Assessing Risk"
+  },
+  {
+   "zh": "核心概念：風險評估的三大時機",
+   "en": "Core Concept: Three Occasions for Risk Assessment"
+  },
+  {
+   "zh": "TR84 明確指出風險評估不是一次性動作，而是在三個關鍵時機執行：",
+   "en": "TR84 states clearly that risk assessment is not a one-time activity. It is performed on three key occasions:"
+  },
+  {
+   "zh": "<strong>預防性（Proactive）</strong>：新系統導入時，透過變更管制（Change Control）同步進行",
+   "en": "<strong>Proactive</strong>: when a new system is introduced, performed in parallel through change control"
+  },
+  {
+   "zh": "<strong>反應性（Reactive）</strong>：偏差或事件發生後，識別資料管理系統中的潛在缺口",
+   "en": "<strong>Reactive</strong>: after a deviation or event, to identify potential gaps in the data management system"
+  },
+  {
+   "zh": "<strong>變更連動（Change-Linked）</strong>：資料管理系統變更時，避免引入新風險",
+   "en": "<strong>Change-linked</strong>: when the data management system changes, to avoid introducing new risks"
+  },
+  {
+   "zh": "比喻：「房屋檢查的時機」",
+   "en": "Analogy: \"When to inspect a house\""
+  },
+  {
+   "zh": "想像買房子：你會在交屋前做房屋檢查（預防性）、水管漏水後請水電師傅來查（反應性）、裝修改建時重新評估結構安全（變更連動）。資料管理系統的風險評估遵循完全相同的邏輯。",
+   "en": "Imagine buying a house. You have a home inspection before handover (proactive), call a plumber after a pipe leaks (reactive), and reassess structural safety when you renovate (change-linked). Risk assessment of a data management system follows exactly the same logic."
+  },
+  {
+   "zh": "監管重點：行為面與技術面的雙軌管控",
+   "en": "Regulatory Focus: Dual-Track Control of Behavioral and Technical Aspects"
+  },
+  {
+   "zh": "TR84 強調資料完整性管控必須同時涵蓋兩個面向：",
+   "en": "TR84 emphasizes that data integrity controls must cover two aspects at the same time:"
+  },
+  {
+   "zh": "<strong>技術面（Technical）</strong>：系統驗證、存取控制、稽核軌跡等硬體/軟體管控",
+   "en": "<strong>Technical</strong>: hardware and software controls such as system validation, access control and audit trails"
+  },
+  {
+   "zh": "<strong>行為面（Behavioral）</strong>：品質文化、溝通、教育訓練等人為管控",
+   "en": "<strong>Behavioral</strong>: human-related controls such as quality culture, communication and training"
+  },
+  {
+   "zh": "僅依賴技術手段而忽略品質文化，終將無法有效防範資料完整性問題。這也是為什麼 FDA 近年在查廠時越來越重視對品質文化的評估。",
+   "en": "Relying on technical measures alone while neglecting quality culture will ultimately fail to prevent data integrity problems. This is also why FDA has put growing weight on assessing quality culture during inspections in recent years."
+  },
+  {
+   "zh": "思考練習",
+   "en": "Exercise"
+  },
+  {
+   "zh": "你的工廠最近將環境監控系統從紙本記錄升級為電子系統。請問：",
+   "en": "Your site has just upgraded its environmental monitoring system from paper records to an electronic system. Consider:"
+  },
+  {
+   "zh": "在系統切換的變更管制中，應進行哪些資料完整性風險評估？",
+   "en": "What data integrity risk assessments should be performed in the change control for the system changeover?"
+  },
+  {
+   "zh": "過渡期間，紙本與電子數據並存時，最大的 DI 風險點在哪裡？",
+   "en": "While paper and electronic data coexist during the transition, where is the greatest DI risk?"
+  },
+  {
+   "zh": "如何確保舊系統的歷史資料在遷移後仍保持完整性？",
+   "en": "How do you ensure that historical data from the old system retain their integrity after migration?"
+  },
+  {
+   "zh": "Considering Human Factors in Assessing Risk / 風險評估中的人為因素",
+   "en": "Considering Human Factors in Assessing Risk"
+  },
+  {
+   "zh": "比喻：「交通事故的分類」",
+   "en": "Analogy: \"Classifying traffic accidents\""
+  },
+  {
+   "zh": "非故意行為就像交通事故：",
+   "en": "Unintentional behavior is like a traffic accident:"
+  },
+  {
+   "zh": "<strong>注意力失誤（Slip）</strong>= 開車分心滑手機，不小心闖紅燈",
+   "en": "<strong>Slip</strong> = being distracted by the phone while driving and running a red light by accident"
+  },
+  {
+   "zh": "<strong>記憶失誤（Lapse）</strong>= 忘記打方向燈就轉彎",
+   "en": "<strong>Lapse</strong> = forgetting to signal before turning"
+  },
+  {
+   "zh": "<strong>程序缺口</strong>= 路口沒有交通號誌，駕駛不知該讓誰先行",
+   "en": "<strong>Procedural gap</strong> = an intersection with no traffic signal, so drivers do not know who yields"
+  },
+  {
+   "zh": "<strong>知識缺口</strong>= 新手駕駛不熟悉圓環規則",
+   "en": "<strong>Knowledge gap</strong> = a new driver unfamiliar with the rules of a roundabout"
+  },
+  {
+   "zh": "故意行為則像酒駕（明知違法但心存僥倖）或蓄意衝撞（惡意破壞）。",
+   "en": "Intentional behavior is like drunk driving (knowing it is illegal but gambling on not being caught) or deliberate ramming (malicious damage)."
+  },
+  {
+   "zh": "監管警示：「人為錯誤」不能成為萬用藉口",
+   "en": "Regulatory Warning: \"Human error\" must not become a catch-all excuse"
+  },
+  {
+   "zh": "TR84 特別強調：當調查將根本原因歸結為「人為錯誤（Human Error）」時，必須先確認沒有遺漏製程、程序或系統面的根本原因。FDA 查廠員對於過度使用「human error」作為根因深感不滿——這往往意味著企業未深入挖掘系統性問題。",
+   "en": "TR84 stresses that when an investigation attributes the root cause to \"human error\", it must first be confirmed that no process, procedural or system root cause has been overlooked. FDA investigators are unhappy with the overuse of \"human error\" as a root cause, because it often means the company has not dug into systemic problems."
+  },
+  {
+   "zh": "<strong>正確做法：</strong>先排除系統性原因（SOP 不清、設備缺陷、系統漏洞），才能將根因歸於人為因素。",
+   "en": "<strong>Correct approach:</strong> rule out systemic causes first (unclear SOPs, equipment defects, system loopholes) before attributing the root cause to human factors."
+  },
+  {
+   "zh": "DI 事件調查的 6W1H 框架",
+   "en": "The 6W1H Framework for DI Event Investigation"
+  },
+  {
+   "zh": "TR84 提出調查 DI 事件時必須回答的核心問題：",
+   "en": "TR84 sets out the core questions that must be answered when investigating a DI event:"
+  },
+  {
+   "zh": "<strong>What（什麼）</strong>：事件內容與受影響的系統",
+   "en": "<strong>What</strong>: the nature of the event and the systems affected"
+  },
+  {
+   "zh": "<strong>When（何時）</strong>：時間線與持續期間",
+   "en": "<strong>When</strong>: the timeline and duration"
+  },
+  {
+   "zh": "<strong>Who（誰）</strong>：涉及人員",
+   "en": "<strong>Who</strong>: the people involved"
+  },
+  {
+   "zh": "<strong>Why（為何）</strong>：導致事件發生的管理缺口",
+   "en": "<strong>Why</strong>: the management gaps that allowed the event to happen"
+  },
+  {
+   "zh": "<strong>How（如何）</strong>：逐步說明事件發生經過",
+   "en": "<strong>How</strong>: a step-by-step account of how the event occurred"
+  },
+  {
+   "zh": "<strong>Where（哪裡）</strong>：受影響的系統範圍",
+   "en": "<strong>Where</strong>: the scope of the systems affected"
+  },
+  {
+   "zh": "<strong>Impact（影響）</strong>：對產品品質與病患安全的影響",
+   "en": "<strong>Impact</strong>: the effect on product quality and patient safety"
+  },
+  {
+   "zh": "<strong>情境一：非故意行為</strong>",
+   "en": "<strong>Scenario 1: Unintentional behavior</strong>"
+  },
+  {
+   "zh": "無菌充填線操作員在記錄充填重量時，將「5.02 mL」誤寫為「5.20 mL」（注意力失誤/Slip）。第二人確認時未發現，因為兩個數值都在可接受範圍內。",
+   "en": "While recording the fill weight, an aseptic filling line operator writes \"5.02 mL\" as \"5.20 mL\" (a slip). The second person does not notice it during verification, because both values are within the acceptable range."
+  },
+  {
+   "zh": "<strong>情境二：故意行為（Misconduct）</strong>",
+   "en": "<strong>Scenario 2: Intentional behavior (misconduct)</strong>"
+  },
+  {
+   "zh": "夜班操作員在充填作業中發現粒子數超標，但因為排程壓力且主管不在場，選擇重新取樣直到結果合格，並只記錄合格的結果。這不是 Fraud（無個人獲利動機），而是 Misconduct（因為不當的優先排序而故意忽略管控）。",
+   "en": "A night-shift operator finds that the particle count exceeds the limit during filling. Under scheduling pressure and with the supervisor absent, the operator resamples until the result passes and records only the passing result. This is not fraud (there is no personal gain motive) but misconduct (controls are knowingly ignored because of improper prioritization)."
+  },
+  {
+   "zh": "故意行為的偵測挑戰",
+   "en": "The Challenge of Detecting Intentional Behavior"
+  },
+  {
+   "zh": "TR84 坦承：故意的資料操縱（Intentional Manipulation）極難偵測，可能需要使用數位鑑識技術（Forensic Detection Techniques），例如：",
+   "en": "TR84 admits that intentional data manipulation is very difficult to detect and may require forensic detection techniques, for example:"
+  },
+  {
+   "zh": "比對 Audit Trail 時間戳記與操作員上班記錄",
+   "en": "Comparing audit trail timestamps with operator attendance records"
+  },
+  {
+   "zh": "分析重複登入/登出模式",
+   "en": "Analyzing repeated login/logout patterns"
+  },
+  {
+   "zh": "追蹤已刪除或覆蓋的電子記錄",
+   "en": "Tracing deleted or overwritten electronic records"
+  },
+  {
+   "zh": "風險評估過程中也需要建立信任環境，讓參與者願意坦白分享可能的漏洞，而不擔心遭受懲罰。",
+   "en": "The risk assessment process also needs a climate of trust, so that participants are willing to share possible vulnerabilities openly without fear of punishment."
+  },
+  {
+   "zh": "核心概念：人為因素矩陣（Human Factors Matrix）",
+   "en": "Core Concept: The Human Factors Matrix"
+  },
+  {
+   "zh": "TR84 將人為因素造成的資料完整性風險分為兩大類、四小類：",
+   "en": "TR84 divides data integrity risks caused by human factors into two main categories and four subcategories:"
+  },
+  {
+   "zh": "Risk Control Strategies / 風險管控策略",
+   "en": "Risk Control Strategies"
+  },
+  {
+   "zh": "核心概念：風險管控的三層策略",
+   "en": "Core Concept: Three Layers of Risk Control Strategy"
+  },
+  {
+   "zh": "TR84 的風險管控策略可歸納為三個層次：",
+   "en": "The risk control strategies in TR84 can be summarized in three layers:"
+  },
+  {
+   "zh": "<strong>自動化管控（Automation）</strong>：透過系統設計消除人為介入點，如智慧條碼（Intelligent Barcode）強制核對物料身分",
+   "en": "<strong>Automation</strong>: remove human intervention points through system design, for example an intelligent barcode that forces verification of material identity"
+  },
+  {
+   "zh": "<strong>程序性管控（Procedural）</strong>：第二人確認（Second Person Checking）、主管審核",
+   "en": "<strong>Procedural</strong>: second person checking and supervisory review"
+  },
+  {
+   "zh": "<strong>文化性管控（Cultural）</strong>：品質文化建設、教育訓練、開放報告環境",
+   "en": "<strong>Cultural</strong>: building a quality culture, training and an open reporting environment"
+  },
+  {
+   "zh": "最有效的策略是從上而下——優先消除風險源（自動化），其次偵測風險（程序），最後依賴人的行為（文化）。",
+   "en": "The most effective strategy works from the top down: first eliminate the source of risk (automation), then detect risk (procedures), and only last rely on human behavior (culture)."
+  },
+  {
+   "zh": "監管警示：「事後審核」的時效性問題",
+   "en": "Regulatory Warning: The Timeliness Problem of \"After-the-Fact Review\""
+  },
+  {
+   "zh": "TR84 特別點出一個常見問題：主管審核（Supervisory Review）往往發生在事件之後太久，已經無法有效確認記錄的真實性。",
+   "en": "TR84 points out a common problem: supervisory review often takes place so long after the event that the authenticity of the record can no longer be confirmed effectively."
+  },
+  {
+   "zh": "例如：批次記錄的 QA 審核在生產完成後兩週才進行，此時即使發現異常，也很難追溯當時的實際狀況。",
+   "en": "For example, if QA review of a batch record takes place two weeks after production is complete, it is hard to reconstruct what actually happened at the time, even if an abnormality is found."
+  },
+  {
+   "zh": "<strong>最佳實踐：</strong>審核應盡可能即時（Real-time），或至少在同一班次內完成。",
+   "en": "<strong>Best practice:</strong> review should be as close to real time as possible, or at least completed within the same shift."
+  },
+  {
+   "zh": "<strong>智慧條碼在無菌充填線的應用：</strong>",
+   "en": "<strong>Application of intelligent barcodes on an aseptic filling line:</strong>"
+  },
+  {
+   "zh": "每個藥液容器貼有唯一 2D 條碼，充填機在開始作業前必須掃描確認",
+   "en": "Each drug solution container carries a unique 2D barcode, which must be scanned and confirmed before the filling machine starts"
+  },
+  {
+   "zh": "如果條碼不符合批次配方，系統自動鎖定、無法啟動充填",
+   "en": "If the barcode does not match the batch formula, the system locks automatically and filling cannot start"
+  },
+  {
+   "zh": "這個「防呆機制（Poka-yoke）」消除了操作員拿錯藥液的可能性",
+   "en": "This poka-yoke (error-proofing) mechanism removes the possibility of the operator picking up the wrong drug solution"
+  },
+  {
+   "zh": "這比傳統的「第二人目視確認物料標籤」可靠度高出許多數量級。",
+   "en": "This is orders of magnitude more reliable than the traditional \"second person visually checks the material label\"."
+  },
+  {
+   "zh": "比喻：「飛機駕駛艙的演化」",
+   "en": "Analogy: \"The evolution of the aircraft cockpit\""
+  },
+  {
+   "zh": "早期飛機完全依賴飛行員手動操控（=手動記錄）。後來加入副駕駛覆核（=第二人確認）。現代客機有自動駕駛、地面警告系統、自動防撞系統（=自動化管控）。TR84 鼓勵的方向就是：讓系統替人把關，而非依賴人永遠不犯錯。",
+   "en": "Early aircraft relied entirely on manual control by the pilot (= manual recording). Later a co-pilot cross-check was added (= second person checking). Modern airliners have autopilot, ground proximity warning and automatic collision avoidance (= automated controls). The direction TR84 encourages is the same: let the system act as the gatekeeper instead of relying on people never making mistakes."
+  },
+  {
+   "zh": "Data Integrity Risk Management Model / 資料完整性風險管理模型",
+   "en": "Data Integrity Risk Management Model"
+  },
+  {
+   "zh": "核心概念：DI 風險管理模型的三要素",
+   "en": "Core Concept: Three Elements of the DI Risk Management Model"
+  },
+  {
+   "zh": "TR84 的核心模型建立在三個要素的交互評估上：",
+   "en": "The core TR84 model is built on the interaction of three elements:"
+  },
+  {
+   "zh": "<strong>資料關鍵性（Data Criticality）</strong>：該資料對產品品質的重要程度",
+   "en": "<strong>Data Criticality</strong>: how important the data are to product quality"
+  },
+  {
+   "zh": "<strong>資料管控等級（Data Control Level）</strong>：現有的管控措施強度",
+   "en": "<strong>Data Control Level</strong>: the strength of the existing controls"
+  },
+  {
+   "zh": "<strong>資料脆弱性（Data Vulnerability）</strong>：前兩者結合後的風險暴露程度",
+   "en": "<strong>Data Vulnerability</strong>: the degree of risk exposure resulting from the combination of the first two"
+  },
+  {
+   "zh": "資料管控等級又細分為三個子面向：資料管理技術（Data Management）、人為因素（Human Factors）、GMP 製程（GMP Process）。",
+   "en": "Data Control Level is further divided into three sub-aspects: Data Management Technology, Human Factors and GMP Process."
+  },
+  {
+   "zh": "模型邏輯公式",
+   "en": "Model Logic Formula"
+  },
+  {
+   "zh": "資料脆弱性 = f（資料關鍵性, 資料管控等級）\n\n其中：\n  資料管控等級 = g（資料管理技術, 人為因素, GMP 製程）\n\n評估結果 → 9-Box 脆弱性矩陣定位\n  → 紅/橘區 → 必須制定風險管控策略\n  → 綠/藍區 → 管控等級與資料關鍵性相稱",
+   "en": "Data Vulnerability = f(Data Criticality, Data Control Level)\n\nwhere:\n  Data Control Level = g(Data Management Technology, Human Factors, GMP Process)\n\nAssessment result → position in the 9-box vulnerability grid\n  → Red/orange zone → a risk control strategy must be defined\n  → Green/blue zone → control level is commensurate with data criticality"
+  },
+  {
+   "zh": "比喻：「保險評估」",
+   "en": "Analogy: \"Insurance underwriting\""
+  },
+  {
+   "zh": "把資料完整性風險想像成保險公司評估理賠風險：",
+   "en": "Think of data integrity risk as an insurer assessing claim risk:"
+  },
+  {
+   "zh": "<strong>資料關鍵性</strong> = 保險標的的價值（一棟豪宅 vs. 一台腳踏車）",
+   "en": "<strong>Data Criticality</strong> = the value of the insured asset (a mansion vs. a bicycle)"
+  },
+  {
+   "zh": "<strong>資料管控等級</strong> = 現有防護措施（保全系統、消防設備、鄰里守望）",
+   "en": "<strong>Data Control Level</strong> = the existing protections (security system, fire equipment, neighborhood watch)"
+  },
+  {
+   "zh": "<strong>資料脆弱性</strong> = 綜合評估後的風險等級（保費高低）",
+   "en": "<strong>Data Vulnerability</strong> = the overall risk level after assessment (the size of the premium)"
+  },
+  {
+   "zh": "價值越高、防護越弱 → 風險越大（紅區）；價值一般、防護完善 → 風險低（藍區）。",
+   "en": "The higher the value and the weaker the protection, the greater the risk (red zone); average value with solid protection means low risk (blue zone)."
+  },
+  {
+   "zh": "監管重點：GEMBA Walk 的重要性",
+   "en": "Regulatory Focus: The Importance of the GEMBA Walk"
+  },
+  {
+   "zh": "Figure 4.2-1 流程圖的第一步提到 GEMBA Walk（現場走訪）。GEMBA 是日文「現場」的意思，強調必須實地觀察製造流程，而非僅靠文件和會議室討論來進行風險評估。",
+   "en": "The first step of the Figure 4.2-1 flow chart is a GEMBA Walk. GEMBA is Japanese for \"the actual place\", and it stresses that risk assessment must be based on direct observation of the manufacturing process, not just on documents and meeting-room discussion."
+  },
+  {
+   "zh": "在 CDMO 環境中，GEMBA Walk 意味著走到充填線旁，親眼觀察操作員如何記錄數據、系統如何擷取參數、紙本與電子系統如何銜接。",
+   "en": "In a CDMO setting, a GEMBA Walk means going to the filling line and seeing for yourself how operators record data, how the system captures parameters, and how paper and electronic systems connect."
+  },
+  {
+   "zh": "Classification of Data Criticality / 資料關鍵性分類",
+   "en": "Classification of Data Criticality"
+  },
+  {
+   "zh": "核心概念：資料關鍵性（Data Criticality）三級分類",
+   "en": "Core Concept: Three Levels of Data Criticality"
+  },
+  {
+   "zh": "資料關鍵性是衡量某一筆資料對產品安全性、品質、純度、效力的支撐程度。TR84 將其分為三級：",
+   "en": "Data criticality measures how much a piece of data supports the safety, quality, purity and potency of the product. TR84 divides it into three levels:"
+  },
+  {
+   "zh": "<strong>High（高）</strong>：直接影響 CQA/CPP 與產品安全決策的資料",
+   "en": "<strong>High</strong>: data that directly affect CQAs/CPPs and product safety decisions"
+  },
+  {
+   "zh": "<strong>Medium（中）</strong>：影響製程穩健性但非 CQA/CPP 的資料",
+   "en": "<strong>Medium</strong>: data that affect process robustness but are not CQAs/CPPs"
+  },
+  {
+   "zh": "<strong>Low（低）</strong>：一般 GMP 合規性證據",
+   "en": "<strong>Low</strong>: general evidence of GMP compliance"
+  },
+  {
+   "zh": "<strong>重要原則：</strong>所有 GMP 資料都是「關鍵的（Critical）」，差別只在關鍵程度。即使是 Low 級資料，也不代表可以不管控。",
+   "en": "<strong>Key principle:</strong> all GMP data are \"critical\"; they differ only in degree. Even Low-level data do not go uncontrolled."
+  },
+  {
+   "zh": "監管警示：臨床試驗製造也適用",
+   "en": "Regulatory Warning: Clinical Trial Manufacturing Is Also Covered"
+  },
+  {
+   "zh": "TR84 明確指出，資料關鍵性分類同樣適用於臨床試驗製造。雖然在臨床階段 CQA 和 CPP 可能尚未完全確立，但已有的初始資訊仍應用於識別製程的關鍵面向。",
+   "en": "TR84 states clearly that the data criticality classification also applies to clinical trial manufacturing. Although CQAs and CPPs may not be fully established at the clinical stage, the initial information available should still be used to identify the critical aspects of the process."
+  },
+  {
+   "zh": "對 CDMO 而言，這意味著即使是 Phase I/II 的小規模試製批，也需要進行資料關鍵性評估，不能以「尚在開發中」為由省略。",
+   "en": "For a CDMO, this means that even small-scale Phase I/II trial batches need a data criticality assessment; \"still in development\" is not a valid reason to skip it."
+  },
+  {
+   "zh": "判斷資料關鍵性的決策邏輯",
+   "en": "Decision Logic for Determining Data Criticality"
+  },
+  {
+   "zh": "問題 1：該資料是否直接影響 CQA/CPP？\n  → 是 → High\n\n問題 2：該資料是否與製程穩健性/一致性相關？\n  → 是 → Medium\n\n問題 3：該資料僅為 GMP 合規性記錄？\n  → 是 → Low\n\n注意：企業可自訂更細的分級（如5級），但不可\n削弱本框架的核心精神。",
+   "en": "Question 1: Do the data directly affect a CQA/CPP?\n  → Yes → High\n\nQuestion 2: Are the data related to process robustness/consistency?\n  → Yes → Medium\n\nQuestion 3: Are the data merely a record of GMP compliance?\n  → Yes → Low\n\nNote: a company may define finer grading (for example 5 levels), but must not\ndilute the core intent of this framework."
+  },
+  {
+   "zh": "Data Control Levels / 資料管控等級",
+   "en": "Data Control Levels"
+  },
+  {
+   "zh": "核心概念：資料管控等級（Data Control Level）",
+   "en": "Core Concept: Data Control Level"
+  },
+  {
+   "zh": "資料管控等級是衡量現有管控措施「強度」的指標，核心維度是<strong>自動化程度</strong>與<strong>人為介入程度</strong>的對比：",
+   "en": "Data Control Level measures the \"strength\" of the existing controls. The core dimension is the contrast between the <strong>degree of automation</strong> and the <strong>degree of human intervention</strong>:"
+  },
+  {
+   "zh": "<strong>High（高）</strong>：經驗證的自動化流程，人為介入最少",
+   "en": "<strong>High</strong>: validated automated processes with minimal human intervention"
+  },
+  {
+   "zh": "<strong>Medium（中）</strong>：混合式系統，部分自動化、部分手動",
+   "en": "<strong>Medium</strong>: hybrid systems, partly automated and partly manual"
+  },
+  {
+   "zh": "<strong>Low（低）</strong>：全手動的資料生命週期，高度依賴人為操作",
+   "en": "<strong>Low</strong>: a fully manual data lifecycle that relies heavily on human operation"
+  },
+  {
+   "zh": "比喻：「考試監考的三種方式」",
+   "en": "Analogy: \"Three ways of proctoring an exam\""
+  },
+  {
+   "zh": "<strong>High 管控</strong> = 線上考試系統：自動計時、防切換視窗、AI 偵測作弊 → 人為作弊機會極低",
+   "en": "<strong>High control</strong> = an online exam system: automatic timing, window-switch lockout and AI cheating detection, so the chance of human cheating is very low"
+  },
+  {
+   "zh": "<strong>Medium 管控</strong> = 教室考試 + 監考老師：有人監督，但監考員可能分心、覆蓋範圍有限",
+   "en": "<strong>Medium control</strong> = a classroom exam with a proctor: someone is watching, but the proctor may be distracted and coverage is limited"
+  },
+  {
+   "zh": "<strong>Low 管控</strong> = 帶回家的開書考試：完全信任學生自律 → 風險最高",
+   "en": "<strong>Low control</strong> = a take-home open-book exam: complete trust in student self-discipline, so the highest risk"
+  },
+  {
+   "zh": "Data Vulnerability (9-Box) / 資料脆弱性（九宮格矩陣）",
+   "en": "Data Vulnerability (9-Box)"
+  },
+  {
+   "zh": "監管警示：三個面向需分別評估",
+   "en": "Regulatory Warning: The Three Aspects Must Be Assessed Separately"
+  },
+  {
+   "zh": "Table 4.3-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR84&amp;file=tbl-p21-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> 僅針對資料管理技術（Data Management Technology）一個面向。TR84 要求對<strong>三個面向</strong>分別進行 9-Box 評估：",
+   "en": "Table 4.3-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR84&amp;file=tbl-p21-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> addresses only one aspect, Data Management Technology. TR84 requires a separate 9-box assessment for each of the <strong>three aspects</strong>:"
+  },
+  {
+   "zh": "資料管理技術（自動化程度）",
+   "en": "Data Management Technology (degree of automation)"
+  },
+  {
+   "zh": "人為因素（人為介入程度）",
+   "en": "Human Factors (degree of human intervention)"
+  },
+  {
+   "zh": "GMP 製程（製程複雜度與穩健性）",
+   "en": "GMP Process (process complexity and robustness)"
+  },
+  {
+   "zh": "三個 9-Box 的綜合結果才能提供完整的脆弱性評估。",
+   "en": "Only the combined result of the three 9-boxes gives a complete vulnerability assessment."
+  },
+  {
+   "zh": "9-Box 定位邏輯",
+   "en": "9-Box Positioning Logic"
+  },
+  {
+   "zh": "Y 軸（列）= 資料關鍵性 → High / Medium / Low\nX 軸（欄）= 資料管控等級 → High / Medium / Low\n\n紅區（1格）：H/L → 必須立即補救\n橘區（2格）：H/M, M/L → 應優先改善\n綠區（3格）：H/H, M/M, L/L → 管控適當\n藍區（3格）：M/H, L/H, L/M → 可能過度管控\n\n改善方向：從右向左移動（提升管控等級）\n  例：H/L（紅）→ H/M（橘）→ H/H（綠）",
+   "en": "Y axis (rows) = Data Criticality → High / Medium / Low\nX axis (columns) = Data Control Level → High / Medium / Low\n\nRed zone (1 cell): H/L → must be remediated immediately\nOrange zone (2 cells): H/M, M/L → should be improved as a priority\nGreen zone (3 cells): H/H, M/M, L/L → control is appropriate\nBlue zone (3 cells): M/H, L/H, L/M → possibly over-controlled\n\nDirection of improvement: move from right to left (raise the control level)\n  Example: H/L (red) → H/M (orange) → H/H (green)"
+  },
+  {
+   "zh": "比喻：「安全帶等級搭配車速」",
+   "en": "Analogy: \"Seat belt grade matched to speed\""
+  },
+  {
+   "zh": "<strong>紅區（H/L）</strong>= 高速公路上不繫安全帶 → 極度危險",
+   "en": "<strong>Red zone (H/L)</strong> = no seat belt on the highway: extremely dangerous"
+  },
+  {
+   "zh": "<strong>橘區（H/M）</strong>= 高速公路上只有腰帶沒有肩帶 → 不夠安全",
+   "en": "<strong>Orange zone (H/M)</strong> = only a lap belt and no shoulder belt on the highway: not safe enough"
+  },
+  {
+   "zh": "<strong>綠區（H/H）</strong>= 高速公路上有三點式安全帶+氣囊 → 適當",
+   "en": "<strong>Green zone (H/H)</strong> = a three-point belt plus airbag on the highway: appropriate"
+  },
+  {
+   "zh": "<strong>藍區（L/H）</strong>= 停車場低速行駛卻穿全套賽車安全帶 → 過度但無害",
+   "en": "<strong>Blue zone (L/H)</strong> = a full racing harness while driving slowly in a car park: excessive but harmless"
+  },
+  {
+   "zh": "重要限制：9-Box 無法防偽造",
+   "en": "Important Limitation: The 9-Box Does Not Protect Against Falsification"
+  },
+  {
+   "zh": "TR84 明確指出：9-Box 矩陣<strong>不能</strong>為資料偽造提供任何機會或掩護。即使某資料被歸類為「低關鍵性/低管控」（綠區），仍然不允許偽造。9-Box 是風險分級工具，不是放寬合規要求的藉口。",
+   "en": "TR84 states clearly that the 9-box matrix <strong>must not</strong> provide any opportunity or cover for data falsification. Even if data are classified as \"low criticality/low control\" (green zone), falsification is still not permitted. The 9-box is a risk grading tool, not an excuse to relax compliance requirements."
+  },
+  {
+   "zh": "在你的無菌充填廠中，以下資料各落在 9-Box 的哪個區域？",
+   "en": "In your sterile fill-finish facility, which 9-box zone does each of the following data fall into?"
+  },
+  {
+   "zh": "滅菌釜溫度記錄（CQA），由經驗證的溫度探針自動記錄並傳至 SCADA",
+   "en": "Autoclave temperature record (CQA), recorded automatically by a validated temperature probe and transmitted to SCADA"
+  },
+  {
+   "zh": "充填重量（CPP），操作員手動秤重並手寫於批次記錄",
+   "en": "Fill weight (CPP), weighed manually by the operator and handwritten in the batch record"
+  },
+  {
+   "zh": "更衣室壓差日誌，每班人工抄錄壓差計讀數",
+   "en": "Changing room differential pressure log, with the gauge reading copied by hand every shift"
+  },
+  {
+   "zh": "設備維護記錄，技術員手寫於維護日誌本",
+   "en": "Equipment maintenance record, handwritten by the technician in a maintenance logbook"
+  },
+  {
+   "zh": "核心概念：9-Box 脆弱性評估矩陣（Vulnerability Grid）",
+   "en": "Core Concept: The 9-Box Vulnerability Grid"
+  },
+  {
+   "zh": "9-Box 是 TR84 最核心的風險評估工具。它將<strong>資料關鍵性</strong>（Y 軸，3 級）與<strong>資料管控等級</strong>（X 軸，3 級）交叉配對，產生 9 種組合，歸入 4 種顏色類別：",
+   "en": "The 9-box is the most central risk assessment tool in TR84. It cross-pairs <strong>Data Criticality</strong> (Y axis, 3 levels) with <strong>Data Control Level</strong> (X axis, 3 levels) to give 9 combinations, grouped into 4 color categories:"
+  },
+  {
+   "zh": "Using the Data Vulnerability Grid / 如何使用資料脆弱性矩陣",
+   "en": "Using the Data Vulnerability Grid"
+  },
+  {
+   "zh": "核心概念：9-Box 的正確使用方式",
+   "en": "Core Concept: Using the 9-Box Correctly"
+  },
+  {
+   "zh": "TR84 強調幾個關鍵原則：",
+   "en": "TR84 emphasizes several key principles:"
+  },
+  {
+   "zh": "9-Box 不是給「整家公司」一個整體評級，而是針對<strong>每個製程/子製程</strong>個別評估",
+   "en": "The 9-box does not give the \"whole company\" one overall rating; it is applied to <strong>each process/sub-process</strong> individually"
+  },
+  {
+   "zh": "評估結果的品質取決於內部評估的<strong>完整性與客觀性</strong>",
+   "en": "The quality of the result depends on the <strong>completeness and objectivity</strong> of the internal assessment"
+  },
+  {
+   "zh": "低估風險因子或高估現有管控 → 評估結果失真",
+   "en": "Underestimating risk factors or overestimating existing controls distorts the result"
+  },
+  {
+   "zh": "三個面向（技術、人為、GMP 製程）需<strong>分別評估</strong>",
+   "en": "The three aspects (technology, human, GMP process) must be <strong>assessed separately</strong>"
+  },
+  {
+   "zh": "三步驟評估流程",
+   "en": "Three-Step Assessment Process"
+  },
+  {
+   "zh": "<strong>Step 1：選擇產品，識別關鍵資料</strong>",
+   "en": "<strong>Step 1: Select the product and identify the critical data</strong>"
+  },
+  {
+   "zh": "從產品開發文件中找出 CQA 和 CPP 對應的關鍵資料。",
+   "en": "Identify the critical data corresponding to the CQAs and CPPs from the product development documents."
+  },
+  {
+   "zh": "<strong>Step 2：評估三個面向的管控等級</strong>",
+   "en": "<strong>Step 2: Assess the control level for the three aspects</strong>"
+  },
+  {
+   "zh": "資料管理技術：擷取方式、收集頻率、系統驗證狀態、資料遷移與歸檔",
+   "en": "Data Management Technology: capture method, collection frequency, system validation status, data migration and archiving"
+  },
+  {
+   "zh": "人為因素：人為介入點、轉抄錯誤趨勢、GDP 實踐品質",
+   "en": "Human Factors: points of human intervention, trends in transcription errors, quality of GDP practice"
+  },
+  {
+   "zh": "GMP 製程：製程複雜度、驗證歷史、OOS/偏差/校正失效趨勢",
+   "en": "GMP Process: process complexity, validation history, trends in OOS/deviations/calibration failures"
+  },
+  {
+   "zh": "<strong>Step 3：9-Box 定位 → 擬定行動方案</strong>",
+   "en": "<strong>Step 3: Position in the 9-box, then define the action plan</strong>"
+  },
+  {
+   "zh": "監管重點：跨產品資訊的借用",
+   "en": "Regulatory Focus: Leveraging Information Across Products"
+  },
+  {
+   "zh": "TR84 允許將某一產品/製程的評估結果「借用」到使用相同製程的另一產品，但必須審慎考量潛在差異。這對 CDMO 特別有利——當多個客戶產品使用相同的充填線和相同的資料管理系統時，可以建立一次基礎評估，再針對各產品的特殊要求做差異分析。",
+   "en": "TR84 allows the assessment result for one product/process to be \"leveraged\" for another product that uses the same process, provided that potential differences are carefully considered. This is particularly helpful for a CDMO: when several client products use the same filling line and the same data management system, a baseline assessment can be built once and then supplemented with a gap analysis for the specific requirements of each product."
+  },
+  {
+   "zh": "比喻：「健康檢查不能只看一個指標」",
+   "en": "Analogy: \"A health check cannot look at just one indicator\""
+  },
+  {
+   "zh": "9-Box 對三個面向的分別評估，就像健康檢查不能只看血壓。即使血壓正常（GMP 製程 = 綠區），如果血糖偏高（人為因素 = 紅區）、膽固醇偏高（技術面 = 橘區），整體健康狀況仍有風險。三個指標必須都「過關」，才能說健康。",
+   "en": "Assessing the three aspects separately in the 9-box is like a health check that cannot look at blood pressure alone. Even with normal blood pressure (GMP Process = green zone), if blood sugar is high (Human Factors = red zone) and cholesterol is high (technology = orange zone), overall health is still at risk. All three indicators must \"pass\" before you can call it healthy."
+  },
+  {
+   "zh": "CDMO 實務場景：無菌充填線的三面向評估",
+   "en": "CDMO Practical Scenario: Three-Aspect Assessment of a Sterile Filling Line"
+  },
+  {
+   "zh": "<strong>目標製程：</strong>西林瓶無菌充填作業",
+   "en": "<strong>Target process:</strong> aseptic vial filling"
+  },
+  {
+   "zh": "→ 資料關鍵性為 High（充填重量是 CPP），三個面向的 9-Box 定位分別為：",
+   "en": "→ Data criticality is High (fill weight is a CPP), and the 9-box positions for the three aspects are:"
+  },
+  {
+   "zh": "技術面：H/M（橘區）→ 優先改善",
+   "en": "Technology: H/M (orange zone) → improve as a priority"
+  },
+  {
+   "zh": "人為面：H/L（紅區）→ 立即改善",
+   "en": "Human: H/L (red zone) → improve immediately"
+  },
+  {
+   "zh": "GMP 面：H/H（綠區）→ 維持",
+   "en": "GMP process: H/H (green zone) → maintain"
+  },
+  {
+   "zh": "Table 4.4-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR84&amp;file=tbl-p23-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>: Potential Areas of Data Integrity Vulnerability / 資料完整性脆弱性的潛在領域",
+   "en": "Table 4.4-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR84&amp;file=tbl-p23-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>: Potential Areas of Data Integrity Vulnerability"
+  },
+  {
+   "zh": "三大脆弱性領域的完整清單",
+   "en": "Complete List of the Three Vulnerability Areas"
+  },
+  {
+   "zh": "Table 4.4-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR84&amp;file=tbl-p23-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> 是一份極具實用價值的「自我檢查清單」。以下將每個領域的重點項目以 CDMO 語言重新詮釋：",
+   "en": "Table 4.4-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR84&amp;file=tbl-p23-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> is a very practical \"self-inspection checklist\". The key items in each area are reinterpreted below in CDMO terms:"
+  },
+  {
+   "zh": "<strong>一、資料管理技術面</strong>",
+   "en": "<strong>1. Data Management Technology</strong>"
+  },
+  {
+   "zh": "資料轉抄（從電子到紙本、從系統 A 到系統 B）",
+   "en": "Data transcription (from electronic to paper, from system A to system B)"
+  },
+  {
+   "zh": "混合式系統的不一致性（列印值 ≠ 電子原始值）",
+   "en": "Inconsistency in hybrid systems (printed value ≠ original electronic value)"
+  },
+  {
+   "zh": "Excel 試算表缺乏 Audit Trail 的問題",
+   "en": "Excel spreadsheets without an audit trail"
+  },
+  {
+   "zh": "系統驗證的「年齡」（驗證太久未更新）",
+   "en": "The \"age\" of system validation (validation not updated for too long)"
+  },
+  {
+   "zh": "存取權限管理不當",
+   "en": "Inadequate access rights management"
+  },
+  {
+   "zh": "<strong>二、人為因素面</strong>",
+   "en": "<strong>2. Human Factors</strong>"
+  },
+  {
+   "zh": "缺乏主管即時審核",
+   "en": "Lack of real-time supervisory review"
+  },
+  {
+   "zh": "重複性人為錯誤（高流動率、訓練不足、時間壓力）",
+   "en": "Repeated human errors (high turnover, inadequate training, time pressure)"
+  },
+  {
+   "zh": "SOP 過長/過複雜/難以取用",
+   "en": "SOPs that are too long, too complex or hard to access"
+  },
+  {
+   "zh": "文化問題（恐懼、挫折、不當的文件實踐）",
+   "en": "Cultural issues (fear, frustration, improper documentation practices)"
+  },
+  {
+   "zh": "<strong>三、GMP 製程面</strong>",
+   "en": "<strong>3. GMP Process</strong>"
+  },
+  {
+   "zh": "中止批次（Aborted Runs）的頻率",
+   "en": "Frequency of aborted runs"
+  },
+  {
+   "zh": "資料流向與歸屬定義不清",
+   "en": "Unclear definition of data flow and ownership"
+  },
+  {
+   "zh": "OOS、偏差、校正失效的負面趨勢",
+   "en": "Negative trends in OOS, deviations and calibration failures"
+  },
+  {
+   "zh": "GMP 與非 GMP 作業切換",
+   "en": "Switching between GMP and non-GMP operations"
+  },
+  {
+   "zh": "監管警示：藍區不代表「可以降級管控」",
+   "en": "Regulatory Warning: Blue Zone Does Not Mean \"Downgrade the Controls\""
+  },
+  {
+   "zh": "TR84 特別澄清：落在藍區（如 M/H、L/H）不代表應該降低該製程的管控等級。而是意味著企業可以考慮<strong>重新分配資源</strong>——將過度管控區域的資源轉移到紅區/橘區的製程上。",
+   "en": "TR84 clarifies that falling in the blue zone (for example M/H, L/H) does not mean the controls on that process should be lowered. It means the company can consider <strong>reallocating resources</strong>, shifting resources from over-controlled areas to processes in the red/orange zones."
+  },
+  {
+   "zh": "這是一個很務實的觀點：合規資源是有限的，應該投注在風險最高的地方。",
+   "en": "This is a very pragmatic view: compliance resources are limited and should be invested where the risk is highest."
+  },
+  {
+   "zh": "CDMO 實務場景：資源重新分配",
+   "en": "CDMO Practical Scenario: Resource Reallocation"
+  },
+  {
+   "zh": "假設貴公司的設備維護記錄（Low 關鍵性）已全面導入 CMMS 電子系統（High 管控等級），落在 L/H 藍區。同時，無菌測試結果（High 關鍵性）仍由實驗室人員手動登錄於紙本 worksheet（Low 管控等級），落在 H/L 紅區。",
+   "en": "Suppose your equipment maintenance records (Low criticality) have been fully moved into an electronic CMMS (High control level), placing them in the L/H blue zone. Meanwhile, sterility test results (High criticality) are still entered by laboratory staff by hand on a paper worksheet (Low control level), placing them in the H/L red zone."
+  },
+  {
+   "zh": "<strong>合理的資源重新分配：</strong>將用於維護 CMMS 系統額外功能開發的預算，轉而優先投資實驗室 LIMS 系統，讓無菌測試結果實現電子化擷取與 Audit Trail 管控。",
+   "en": "<strong>A reasonable reallocation of resources:</strong> redirect the budget for developing additional CMMS functions to the laboratory LIMS first, so that sterility test results are captured electronically and controlled by an audit trail."
+  },
+  {
+   "zh": "9-Box 結果對應的行動矩陣",
+   "en": "Action Matrix for 9-Box Results"
+  },
+  {
+   "zh": "紅區（H/L）→ 管控嚴重不足\n  行動：立即制定補救計畫，提升至 H/M 或 H/H\n\n橘區（H/M, M/L）→ 管控可改善\n  行動：列入改善優先清單，排定時程\n\n綠區（H/H, M/M, L/L）→ 管控適當\n  行動：維持現有管控，定期複審\n\n藍區（M/H, L/H, L/M）→ 可能過度管控\n  行動：不需降級，但可將多餘資源\n        轉移至紅/橘區製程",
+   "en": "Red zone (H/L) → seriously inadequate control\n  Action: define a remediation plan immediately, raising to H/M or H/H\n\nOrange zone (H/M, M/L) → control can be improved\n  Action: add to the improvement priority list and schedule it\n\nGreen zone (H/H, M/M, L/L) → control is appropriate\n  Action: maintain existing controls and review periodically\n\nBlue zone (M/H, L/H, L/M) → possibly over-controlled\n  Action: no need to downgrade, but surplus resources\n          can be shifted to red/orange zone processes"
+  },
+  {
+   "zh": "Data Process Flow Maps / 資料流程圖（DPFM）",
+   "en": "Data Process Flow Maps (DPFM)"
+  },
+  {
+   "zh": "核心概念：資料流程圖（Data Process Flow Map, DPFM）",
+   "en": "Core Concept: The Data Process Flow Map (DPFM)"
+  },
+  {
+   "zh": "DPFM 是將資料從產生到歸檔的完整旅程「視覺化」的工具。對每個步驟，DPFM 必須記錄：",
+   "en": "The DPFM is a tool for visualizing the complete journey of data from generation to archiving. For each step, the DPFM must record:"
+  },
+  {
+   "zh": "<strong>活動內容</strong>（Activity）：做了什麼",
+   "en": "<strong>Activity</strong>: what is done"
+  },
+  {
+   "zh": "<strong>執行方式</strong>（How）：手動/自動/混合",
+   "en": "<strong>How</strong>: manual, automated or hybrid"
+  },
+  {
+   "zh": "<strong>使用系統</strong>（Systems）：設備、裝置、應用程式",
+   "en": "<strong>Systems</strong>: equipment, devices and applications used"
+  },
+  {
+   "zh": "<strong>產生的資料</strong>（Data Created）：哪些數據被產生",
+   "en": "<strong>Data Created</strong>: which data are generated"
+  },
+  {
+   "zh": "<strong>記錄方式</strong>（Recording Method）：紙本/電子",
+   "en": "<strong>Recording Method</strong>: paper or electronic"
+  },
+  {
+   "zh": "<strong>資料決策</strong>（Decisions）：基於此資料做出什麼決定",
+   "en": "<strong>Decisions</strong>: what decisions are made based on these data"
+  },
+  {
+   "zh": "<strong>系統間傳輸</strong>（Transfer）：資料如何從 A 系統流到 B 系統",
+   "en": "<strong>Transfer</strong>: how data flow from system A to system B"
+  },
+  {
+   "zh": "比喻：「物流追蹤系統」",
+   "en": "Analogy: \"A logistics tracking system\""
+  },
+  {
+   "zh": "DPFM 就像網購包裹的物流追蹤：",
+   "en": "A DPFM is like the tracking of an online-shopping parcel:"
+  },
+  {
+   "zh": "出貨倉庫（資料產生點）→ 攬收站（初始記錄）→ 分揀中心（資料轉換/計算）→ 配送站（資料審核）→ 收件人（最終使用/歸檔）",
+   "en": "Dispatch warehouse (data generation point) → pickup station (initial record) → sorting center (data conversion/calculation) → delivery station (data review) → recipient (final use/archiving)"
+  },
+  {
+   "zh": "每個節點都有時間戳記、經手人、狀態更新",
+   "en": "Every node has a timestamp, a handler and a status update"
+  },
+  {
+   "zh": "如果某個節點「斷鏈」（沒有追蹤資訊），就是資料完整性的風險點",
+   "en": "If a node is \"broken\" (no tracking information), that is a data integrity risk point"
+  },
+  {
+   "zh": "監管重點：關鍵提問清單",
+   "en": "Regulatory Focus: Checklist of Key Questions"
+  },
+  {
+   "zh": "TR84 建議在 DPFM 的每個節點提出以下問題：",
+   "en": "TR84 recommends asking the following questions at every node of the DPFM:"
+  },
+  {
+   "zh": "是否每位使用者都有唯一帳號？（存取控制）",
+   "en": "Does every user have a unique account? (access control)"
+  },
+  {
+   "zh": "是否有 Audit Trail 記錄資料的任何操作？（可追溯性）",
+   "en": "Is there an audit trail recording any operation on the data? (traceability)"
+  },
+  {
+   "zh": "資料是否暫存在揮發性記憶體中？斷電後會怎樣？（資料持久性）",
+   "en": "Are the data held temporarily in volatile memory? What happens after a power failure? (data persistence)"
+  },
+  {
+   "zh": "這些問題看似簡單，卻是 FDA 查廠時最常追問的方向。",
+   "en": "These questions look simple, yet they are the lines of inquiry most often pursued during FDA inspections."
+  },
+  {
+   "zh": "CDMO 實務場景：無菌充填線的 DPFM 範例",
+   "en": "CDMO Practical Scenario: Example DPFM for a Sterile Filling Line"
+  },
+  {
+   "zh": "<strong>從藥液配製到成品放行的資料流程：</strong>",
+   "en": "<strong>Data flow from solution preparation to product release:</strong>"
+  },
+  {
+   "zh": "<strong>配製室</strong>：秤重系統自動記錄原料重量 → 資料傳至 MES",
+   "en": "<strong>Preparation room</strong>: the weighing system records raw material weight automatically → data are sent to the MES"
+  },
+  {
+   "zh": "<strong>混合槽</strong>：PLC 自動記錄攪拌速度/時間 → 操作員確認螢幕數值並簽名於批次記錄",
+   "en": "<strong>Mixing tank</strong>: the PLC records mixing speed/time automatically → the operator confirms the on-screen values and signs the batch record"
+  },
+  {
+   "zh": "<strong>充填機</strong>：自動擷取充填重量/速度 → 列印即時報表 → 操作員比對後附於 BPR",
+   "en": "<strong>Filling machine</strong>: fill weight/speed are captured automatically → a real-time report is printed → the operator compares and attaches it to the BPR"
+  },
+  {
+   "zh": "<strong>環境監控</strong>：粒子計數器自動記錄 → 資料手動匯出至 Excel → 手動轉抄至 EM 報告",
+   "en": "<strong>Environmental monitoring</strong>: the particle counter records automatically → data are exported manually to Excel → manually transcribed into the EM report"
+  },
+  {
+   "zh": "<strong>QC 實驗室</strong>：分析儀器自動產生結果 → 分析師手動登錄 LIMS → QA 審核",
+   "en": "<strong>QC laboratory</strong>: the analytical instrument generates results automatically → the analyst enters them manually into the LIMS → QA review"
+  },
+  {
+   "zh": "<strong>QA 放行</strong>：彙整所有資料 → 審核批次記錄 → 放行決定",
+   "en": "<strong>QA release</strong>: all data are compiled → batch record review → release decision"
+  },
+  {
+   "zh": "<strong>高風險節點識別：</strong>Step 4 的「手動匯出至 Excel」與「手動轉抄」是最脆弱的環節——Excel 無 Audit Trail、手動轉抄易出錯。",
+   "en": "<strong>High-risk nodes identified:</strong> the \"manual export to Excel\" and \"manual transcription\" in Step 4 are the most vulnerable links: Excel has no audit trail, and manual transcription is error-prone."
+  },
+  {
+   "zh": "重要提醒：DPFM 在部分地區已是法規要求",
+   "en": "Important Reminder: The DPFM Is Already a Regulatory Expectation in Some Regions"
+  },
+  {
+   "zh": "TR84 提到 DPFM 在「某些地區」已經是 GMP 要求。例如 MHRA 的 Data Integrity Guidance（英國）和 WHO 的 Data Integrity Guidance 都建議企業建立資料流程圖。這意味著 DPFM 不僅是「最佳實踐」，在某些市場已具有法規強制性。",
+   "en": "TR84 mentions that the DPFM is already a GMP requirement in \"certain regions\". For example, the MHRA Data Integrity Guidance (UK) and the WHO Data Integrity Guidance both recommend that companies establish data flow maps. This means the DPFM is not just \"best practice\"; in some markets it is mandatory."
+  },
+  {
+   "zh": "Examples of Process and Data Flow Mapping / 製程與資料流程圖範例",
+   "en": "Examples of Process and Data Flow Mapping"
+  },
+  {
+   "zh": "核心概念：建立 DPFM 的三步驟方法",
+   "en": "Core Concept: A Three-Step Method for Building a DPFM"
+  },
+  {
+   "zh": "<strong>利害關係人訪談</strong>：與操作員、QA、工程師等關鍵人員進行簡短訪談，了解製程概況",
+   "en": "<strong>Stakeholder interviews</strong>: hold short interviews with key people such as operators, QA and engineers to understand an overview of the process"
+  },
+  {
+   "zh": "<strong>繪製資料流程圖</strong>：標註資料格式（紙本/電子）、即時/延遲流動、自動警報、程序性管控",
+   "en": "<strong>Draw the data flow map</strong>: mark the data format (paper/electronic), real-time or delayed flow, automatic alarms and procedural controls"
+  },
+  {
+   "zh": "<strong>識別脆弱點</strong>：在流程圖上標出 DI 風險區域，作為補救計畫的輸入",
+   "en": "<strong>Identify vulnerabilities</strong>: mark the DI risk areas on the flow map as input to the remediation plan"
+  },
+  {
+   "zh": "比喻：「手動溫度計 vs. 智慧溫控系統」",
+   "en": "Analogy: \"A manual thermometer vs. a smart temperature control system\""
+  },
+  {
+   "zh": "Case 1 就像用傳統水銀溫度計量體溫：你得自己讀數、自己記錄、自己判斷是否發燒。Case 2 則像智慧體溫貼片：自動量測、自動記錄、體溫異常時自動推播警報到手機。後者不僅更準確，還消除了「讀錯數字」或「忘記記錄」的風險。",
+   "en": "Case 1 is like taking your temperature with a traditional mercury thermometer: you read the value, record it and decide whether you have a fever yourself. Case 2 is like a smart temperature patch: it measures automatically, records automatically, and pushes an alert to your phone when your temperature is abnormal. The latter is not only more accurate but also removes the risk of \"misreading the number\" or \"forgetting to record\"."
+  },
+  {
+   "zh": "監管重點：自動化如何降低程序負擔",
+   "en": "Regulatory Focus: How Automation Reduces Procedural Burden"
+  },
+  {
+   "zh": "TR84 通過 Case 1 vs. Case 2 的對比，直觀展示自動化帶來的雙重效益：",
+   "en": "By contrasting Case 1 with Case 2, TR84 shows intuitively the dual benefit that automation brings:"
+  },
+  {
+   "zh": "<strong>降低程序負擔</strong>：不再需要每批次的第二人確認（Peer Review），釋放人力",
+   "en": "<strong>Lower procedural burden</strong>: second person verification (peer review) is no longer needed for every batch, freeing up staff"
+  },
+  {
+   "zh": "<strong>提升 DI 保障</strong>：PLC 鎖定資料，操作員無法修改已記錄的造粒時間",
+   "en": "<strong>Stronger DI assurance</strong>: the PLC locks the data, so the operator cannot change the recorded granulation time"
+  },
+  {
+   "zh": "這正是 9-Box 從「紅區到綠區」的典型改善路徑。",
+   "en": "This is exactly the typical improvement path of the 9-box from \"red zone to green zone\"."
+  },
+  {
+   "zh": "CDMO 實務場景：從 Case 1 到 Case 2 的升級路線圖",
+   "en": "CDMO Practical Scenario: Upgrade Roadmap from Case 1 to Case 2"
+  },
+  {
+   "zh": "在無菌充填廠，類似的升級場景可能是：",
+   "en": "In a sterile fill-finish facility, a similar upgrade scenario might look like this:"
+  },
+  {
+   "zh": "<strong>現狀（Case 1 等級）：</strong>操作員目視讀取充填機顯示值 → 手寫於批次記錄 → 第二人確認簽名 → QA 事後審核",
+   "en": "<strong>Current state (Case 1 level):</strong> the operator reads the value on the filling machine display → writes it by hand in the batch record → a second person verifies and signs → QA reviews after the fact"
+  },
+  {
+   "zh": "<strong>目標（Case 2 等級）：</strong>充填機自動擷取每瓶重量 → 資料直接寫入 MES → 超範圍自動停機警報 → QA 電子審核 → Audit Trail 完整追蹤",
+   "en": "<strong>Target state (Case 2 level):</strong> the filling machine captures the weight of each vial automatically → data are written directly to the MES → automatic stop and alarm when out of range → QA electronic review → complete audit trail"
+  },
+  {
+   "zh": "<strong>過渡階段（Medium 管控）：</strong>充填機自動擷取 → 列印報表附於 BPR → 操作員仍需手動比對/簽名。此階段 9-Box 定位為 H/M（橘區），雖然已有改善但仍有提升空間。",
+   "en": "<strong>Transition stage (Medium control):</strong> the filling machine captures data automatically → a printed report is attached to the BPR → the operator still compares and signs manually. At this stage the 9-box position is H/M (orange zone); there is improvement, but still room to go further."
+  },
+  {
+   "zh": "請為你工廠的一個關鍵製程單元操作繪製 DPFM：",
+   "en": "Draw a DPFM for a critical process unit operation at your site:"
+  },
+  {
+   "zh": "選擇一個單元操作（如：滅菌、充填、目視檢查）",
+   "en": "Choose a unit operation (for example sterilization, filling, visual inspection)"
+  },
+  {
+   "zh": "列出該操作中所有產生資料的步驟",
+   "en": "List all steps in that operation that generate data"
+  },
+  {
+   "zh": "標註每個步驟的資料擷取方式（手動/自動/混合）",
+   "en": "Mark the data capture method of each step (manual/automated/hybrid)"
+  },
+  {
+   "zh": "識別資料在系統間轉移的節點",
+   "en": "Identify the nodes where data are transferred between systems"
+  },
+  {
+   "zh": "在每個節點標註：有無 Audit Trail？有無唯一帳號？有無斷電風險？",
+   "en": "At each node, mark: is there an audit trail? Is there a unique account? Is there a power-loss risk?"
+  },
+  {
+   "zh": "圈出最脆弱的 2-3 個節點，提出改善建議",
+   "en": "Circle the 2-3 most vulnerable nodes and propose improvements"
+  },
+  {
+   "zh": "本節重點摘要",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "<strong>一、QRM 應用於資料完整性的核心原則</strong>",
+   "en": "<strong>1. Core principles of applying QRM to data integrity</strong>"
+  },
+  {
+   "zh": "ICH Q9 品質風險管理原則貫穿資料生命週期的每個環節（擷取、記錄、轉抄、傳輸、歸檔）",
+   "en": "ICH Q9 quality risk management principles run through every stage of the data lifecycle (capture, recording, transcription, transfer, archiving)"
+  },
+  {
+   "zh": "風險評估必須在三個時機執行：新系統導入時（預防性）、偏差/事件後（反應性）、系統變更時（連動性）",
+   "en": "Risk assessment must be performed on three occasions: when a new system is introduced (proactive), after a deviation/event (reactive), and when the system changes (change-linked)"
+  },
+  {
+   "zh": "管控策略必須同時涵蓋技術面與行為面",
+   "en": "Control strategies must cover both technical and behavioral aspects"
+  },
+  {
+   "zh": "<strong>二、人為因素矩陣</strong>",
+   "en": "<strong>2. The Human Factors Matrix</strong>"
+  },
+  {
+   "zh": "非故意行為分為思考錯誤（程序/知識缺口）與行動錯誤（注意力/記憶失誤）",
+   "en": "Unintentional behavior divides into thinking errors (procedural/knowledge gaps) and action errors (slips/lapses)"
+  },
+  {
+   "zh": "故意行為分為行為不端（Misconduct, 因不當優先排序而跳過管控）與詐欺（Fraud, 惡意偽造）",
+   "en": "Intentional behavior divides into misconduct (skipping controls because of improper prioritization) and fraud (malicious falsification)"
+  },
+  {
+   "zh": "「人為錯誤」不能成為萬用根因——必須先排除系統性原因",
+   "en": "\"Human error\" must not become a catch-all root cause; systemic causes must be ruled out first"
+  },
+  {
+   "zh": "<strong>三、DI 風險管理模型與 9-Box 矩陣</strong>",
+   "en": "<strong>3. The DI risk management model and the 9-box matrix</strong>"
+  },
+  {
+   "zh": "資料關鍵性（Data Criticality）= 資料對產品品質的重要程度（High/Medium/Low）",
+   "en": "Data Criticality = how important the data are to product quality (High/Medium/Low)"
+  },
+  {
+   "zh": "資料管控等級（Data Control Level）= 現有管控措施的強度（High/Medium/Low）",
+   "en": "Data Control Level = the strength of the existing controls (High/Medium/Low)"
+  },
+  {
+   "zh": "9-Box 將兩者交叉配對，分為紅（顯著脆弱）、橘（中度脆弱）、綠（可接受）、藍（可忽略）四區",
+   "en": "The 9-box cross-pairs the two and divides the result into four zones: red (significant vulnerability), orange (moderate vulnerability), green (acceptable) and blue (negligible)"
+  },
+  {
+   "zh": "三個面向（技術、人為、GMP 製程）需分別進行 9-Box 評估",
+   "en": "The three aspects (technology, human, GMP process) must each be assessed with a 9-box"
+  },
+  {
+   "zh": "改善方向：從右到左，提升管控等級",
+   "en": "Direction of improvement: from right to left, raising the control level"
+  },
+  {
+   "zh": "<strong>四、資料流程圖（DPFM）</strong>",
+   "en": "<strong>4. The Data Process Flow Map (DPFM)</strong>"
+  },
+  {
+   "zh": "DPFM 是將資料完整旅程視覺化的工具，在部分地區已是 GMP 法規要求",
+   "en": "The DPFM is a tool for visualizing the complete journey of data, and is already a GMP regulatory requirement in some regions"
+  },
+  {
+   "zh": "每個節點需記錄活動、執行方式、使用系統、產生資料、記錄方式、決策內容",
+   "en": "Each node must record the activity, how it is performed, the systems used, the data generated, the recording method and the decisions made"
+  },
+  {
+   "zh": "關鍵提問：唯一帳號？Audit Trail？暫存記憶體斷電風險？",
+   "en": "Key questions: unique account? Audit trail? Volatile-memory power-loss risk?"
+  },
+  {
+   "zh": "Case 1（紙本手動）vs. Case 2（PLC 自動化）：從 H/L 紅區升級為 H/H 綠區的標準範例",
+   "en": "Case 1 (manual paper) vs. Case 2 (PLC automation): the standard example of an upgrade from the H/L red zone to the H/H green zone"
+  },
+  {
+   "zh": "<strong>核心結論：</strong>資料完整性風險管理不是一次性專案，而是持續性的、基於風險的、涵蓋技術與行為雙面向的管理體系。9-Box 矩陣與 DPFM 是兩個最實用的工具——前者幫助「定位風險」，後者幫助「發現風險」。",
+   "en": "<strong>Core conclusion:</strong> data integrity risk management is not a one-off project but a continuous, risk-based management system that covers both technical and behavioral aspects. The 9-box matrix and the DPFM are the two most practical tools: the former helps you \"locate risk\" and the latter helps you \"discover risk\"."
+  }
+ ]
+}

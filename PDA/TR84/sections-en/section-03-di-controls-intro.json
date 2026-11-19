@@ -1,0 +1,669 @@
+{
+ "source": "section-03-di-controls-intro.html",
+ "blocks": [
+  {
+   "zh": "DI 控制框架與方法論",
+   "en": "DI Control Framework and Methodology"
+  },
+  {
+   "zh": "學習目標 Learning Objectives",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解 Data Integrity (數據完整性) 管控的核心目的：為何需要同時防範人為錯誤、系統失效與蓄意造假，以及 PDA 如何建立以品質文化為基礎的 DI 框架。",
+   "en": "Understand the core purpose of Data Integrity (DI) controls: why they must guard against human error, system failure and deliberate falsification at the same time, and how PDA builds a DI framework on a foundation of quality culture."
+  },
+  {
+   "zh": "區分哪些 DI 管控要求是「全面一致」適用（不分重要性等級），哪些可依資料關鍵性高低進行「差異化管控」（Differentiated Controls），並說明兩者的判斷依據。",
+   "en": "Distinguish which DI control requirements apply uniformly (regardless of criticality) and which can be differentiated according to data criticality (Differentiated Controls), and explain the basis for each judgment."
+  },
+  {
+   "zh": "掌握 Section 5.2 方法論中七大差異化管控類別（紙本、混合、電子系統各自涵蓋的類別），以及如何以 High / Medium / Low 三級關鍵性評估決定管控強度。",
+   "en": "Master the seven differentiated control categories in the Section 5.2 methodology (which categories cover paper, hybrid and electronic systems), and how a High / Medium / Low criticality assessment determines the strength of controls."
+  },
+  {
+   "zh": "理解 Preventive Control (預防性管控) 與 Detective Control (偵測性管控) 的功能差異，並能舉例說明兩者在製造批次記錄管理中的具體應用。",
+   "en": "Understand the functional difference between Preventive Controls and Detective Controls, and give examples of how each applies in manufacturing batch record management."
+  },
+  {
+   "zh": "本節子目錄 Contents",
+   "en": "Contents"
+  },
+  {
+   "zh": "DI 管控總覽：成因、文化與核心要求",
+   "en": "DI Controls Overview: Causes, Culture and Core Requirements"
+  },
+  {
+   "zh": "解析與導讀（繁體中文）",
+   "en": "Commentary"
+  },
+  {
+   "zh": "核心概念：DI 違規的三大成因光譜",
+   "en": "Core Concept: The Three Causes of DI Failures"
+  },
+  {
+   "zh": "TR84 開宗明義點出數據完整性 (Data Integrity, DI) 違規的三個層次：",
+   "en": "TR84 opens by identifying three levels at which data integrity (DI) failures occur:"
+  },
+  {
+   "zh": "<strong>系統錯誤</strong>（System Error）：設備或軟體本身的缺失",
+   "en": "<strong>System error</strong>: defects in the equipment or software itself"
+  },
+  {
+   "zh": "<strong>個人錯誤</strong>（Individual Error）：人為疏失、訓練不足",
+   "en": "<strong>Individual error</strong>: human mistakes, inadequate training"
+  },
+  {
+   "zh": "<strong>蓄意造假</strong>（Malfeasance / Falsification）：個人或機構層面的數據竄改",
+   "en": "<strong>Malfeasance / falsification</strong>: data manipulation by individuals or at the organizational level"
+  },
+  {
+   "zh": "三種成因需要不同的管控策略，但本報告的框架設計涵蓋全光譜。",
+   "en": "The three causes call for different control strategies, but the framework in this report is designed to cover the full spectrum."
+  },
+  {
+   "zh": "比喻：「What」vs.「How」的區別",
+   "en": "Analogy: \"What\" vs. \"How\""
+  },
+  {
+   "zh": "法規（WHO、FDA、MHRA、PIC/S）告訴我們數據必須符合 ALCOA+——這是「<strong>What</strong>」（要達到什麼）。",
+   "en": "Regulators (WHO, FDA, MHRA, PIC/S) tell us that data must meet ALCOA+. This is the \"<strong>What</strong>\" (what has to be achieved)."
+  },
+  {
+   "zh": "TR84 的 DI 管控體系則是「<strong>How</strong>」——如何在日常作業中落實這些要求。",
+   "en": "The TR84 DI control system is the \"<strong>How</strong>\": how to put these requirements into practice in daily operations."
+  },
+  {
+   "zh": "就像餐廳衛生法規規定食物必須保持一定溫度（What），但冰箱保養 SOP、溫度記錄表、定期校驗才是 How。",
+   "en": "It is like restaurant hygiene rules that require food to be held at a set temperature (What), while the refrigerator maintenance SOP, temperature log and periodic calibration are the How."
+  },
+  {
+   "zh": "ALCOA+ 快速複習",
+   "en": "ALCOA+ Quick Review"
+  },
+  {
+   "zh": "<strong>A</strong>ttributable — 可歸屬（誰做的）",
+   "en": "<strong>A</strong>ttributable: who performed the action"
+  },
+  {
+   "zh": "<strong>L</strong>egible — 清晰可讀",
+   "en": "<strong>L</strong>egible: clear and readable"
+  },
+  {
+   "zh": "<strong>C</strong>ontemporaneous — 同步記錄",
+   "en": "<strong>C</strong>ontemporaneous: recorded at the time of the activity"
+  },
+  {
+   "zh": "<strong>O</strong>riginal — 原始記錄",
+   "en": "<strong>O</strong>riginal: the original record"
+  },
+  {
+   "zh": "<strong>A</strong>ccurate — 正確",
+   "en": "<strong>A</strong>ccurate: correct"
+  },
+  {
+   "zh": "監管重點：文化 + 技術雙軌並行",
+   "en": "Regulatory Focus: Culture and Technology in Parallel"
+  },
+  {
+   "zh": "PDA 特別強調：蓄意造假在任何情況下都不可接受，無論資料的關鍵性高低或現有管控強度如何。",
+   "en": "PDA stresses that deliberate falsification is never acceptable, regardless of how critical the data are or how strong the existing controls are."
+  },
+  {
+   "zh": "技術管控（系統驗證、存取限制）可以降低機會，但品質文化（Quality Culture）才是根本防線。因此 PDA 另有《Code of Conduct for Data Integrity》專門處理行為層面。",
+   "en": "Technical controls (system validation, access restrictions) can reduce opportunity, but quality culture is the fundamental line of defense. For this reason PDA has a separate \"Code of Conduct for Data Integrity\" that addresses behavioral aspects."
+  },
+  {
+   "zh": "法規要求的 QMS 核心要素（12 項）",
+   "en": "Core QMS Elements Required by Regulators (12 Items)"
+  },
+  {
+   "zh": "文中列舉的 12 項要求，可歸納為四個維度：",
+   "en": "The 12 requirements listed in the text can be grouped into four dimensions:"
+  },
+  {
+   "zh": "<strong>程序面</strong>：SOP 完整、變更管理",
+   "en": "<strong>Procedures</strong>: complete SOPs, change management"
+  },
+  {
+   "zh": "<strong>人員面</strong>：訓練、存取授權、匿名通報",
+   "en": "<strong>People</strong>: training, access authorization, anonymous reporting"
+  },
+  {
+   "zh": "<strong>系統面</strong>：系統驗證、電子簽名、資料備份",
+   "en": "<strong>Systems</strong>: system validation, electronic signatures, data backup"
+  },
+  {
+   "zh": "<strong>稽核面</strong>：定期數據驗證、自我查核、管理審查",
+   "en": "<strong>Audit</strong>: periodic data verification, self-inspection, management review"
+  },
+  {
+   "zh": "CDMO 實務應用情境",
+   "en": "CDMO Practical Scenarios"
+  },
+  {
+   "zh": "在無菌充填 CDMO 環境中，DI 管控需跨越多個客戶委託案（多品項、多系統、多 SOP 版本），挑戰遠超過單一品牌藥廠。例如：",
+   "en": "In an aseptic filling CDMO, DI controls must span multiple client projects (many products, systems and SOP versions), a challenge far greater than that of a single brand-owner site. For example:"
+  },
+  {
+   "zh": "A 客戶要求紙本批次記錄，B 客戶要求 MES 電子記錄——兩套管控並行",
+   "en": "Client A requires paper batch records and Client B requires MES electronic records, so two sets of controls run in parallel"
+  },
+  {
+   "zh": "同一條灌裝線在不同班次、不同產品之間的 Access Control (存取控制) 如何區隔",
+   "en": "How Access Control is segregated on the same filling line across different shifts and different products"
+  },
+  {
+   "zh": "當發現某批次 Audit Trail (稽核軌跡) 異常時，是系統問題還是操作員行為？",
+   "en": "When an anomaly is found in the Audit Trail of a batch, is it a system problem or operator behavior?"
+  },
+  {
+   "zh": "TR84 的框架幫助 CDMO 系統性地回答這些問題。",
+   "en": "The TR84 framework helps a CDMO answer these questions systematically."
+  },
+  {
+   "zh": "理解測驗",
+   "en": "Comprehension Check"
+  },
+  {
+   "zh": "思考以下問題：",
+   "en": "Consider the following questions:"
+  },
+  {
+   "zh": "為什麼 PDA 說「品質文化」雖重要，但 TR84 仍涵蓋所有 DI 違規類型（包括蓄意造假）？",
+   "en": "Why does PDA say that \"quality culture\" is important, yet TR84 still covers all types of DI failure (including deliberate falsification)?"
+  },
+  {
+   "zh": "DI 管控被嵌入 SOP 與嵌入 CSV 之間，有何實務上的差異？哪種更難稽核？",
+   "en": "What is the practical difference between embedding DI controls in SOPs and embedding them in CSV? Which is harder to audit?"
+  },
+  {
+   "zh": "管控差異化的概念：何時可以、何時不行",
+   "en": "The Concept of Differentiated Controls: When It Is Allowed and When It Is Not"
+  },
+  {
+   "zh": "核心概念：「可差異化」vs.「不可差異化」管控",
+   "en": "Core Concept: \"Differentiable\" vs. \"Non-differentiable\" Controls"
+  },
+  {
+   "zh": "TR84 的核心框架區分兩類 DI 管控：",
+   "en": "The core TR84 framework distinguishes two types of DI controls:"
+  },
+  {
+   "zh": "<strong>固定管控</strong>（Non-Differentiable）：無論資料關鍵性高低，所有 GMP 數據都必須一視同仁遵守。例如：記錄需清晰、更正需劃線保留原文並簽名日期。",
+   "en": "<strong>Fixed controls</strong> (Non-Differentiable): all GMP data must be treated alike, regardless of criticality. For example, records must be legible, and corrections must be made with a single line-through that keeps the original entry readable, signed and dated."
+  },
+  {
+   "zh": "<strong>差異化管控</strong>（Differentiated Controls）：可依資料關鍵性高低調整管控強度、頻率、執行者。TR84 的重點就在這裡。",
+   "en": "<strong>Differentiated controls</strong> (Differentiated Controls): the strength, frequency and performer of controls can be adjusted according to data criticality. This is the main focus of TR84."
+  },
+  {
+   "zh": "比喻：速限 vs. 車道管制",
+   "en": "Analogy: Speed Limits vs. Lane Restrictions"
+  },
+  {
+   "zh": "「不管你開貨車還是轎車，都必須在線內行駛」——這是固定要求，相當於「記錄更正必須劃線」。",
+   "en": "\"Whether you drive a truck or a sedan, you must stay within the lane.\" This is a fixed requirement, equivalent to \"record corrections must use a line-through.\""
+  },
+  {
+   "zh": "「載危險物品的貨車必須走指定路線，但一般轎車可以自由選擇」——這是差異化管控，相當於「高關鍵性批次記錄需要 QU 二次審核，低關鍵性只需作業員自查」。",
+   "en": "\"A truck carrying hazardous goods must take a designated route, while an ordinary car can choose freely.\" This is a differentiated control, equivalent to \"high-criticality batch records need a second review by QU, while low-criticality ones only need operator self-checking.\""
+  },
+  {
+   "zh": "重點：兩個具體案例說明「不可差異化」",
+   "en": "Key Point: Two Examples of \"Non-differentiable\" Controls"
+  },
+  {
+   "zh": "<strong>案例一：記錄更正</strong><br/>\n                        不論是無菌充填的 CPP（Critical Process Parameter）記錄，還是一般訓練記錄，更正方式完全相同——劃線、保留原文可讀、簽名加日期並說明原因。關鍵性不影響這個要求。",
+   "en": "<strong>Example 1: Record corrections</strong><br/>\n                        Whether it is an aseptic filling CPP (Critical Process Parameter) record or a general training record, the correction method is exactly the same: line-through, original entry kept legible, signature and date, with a reason. Criticality does not affect this requirement."
+  },
+  {
+   "zh": "<strong>案例二：系統時間更改權限</strong><br/>\n                        不論系統用於高關鍵性（造粒製程）或低關鍵性（無品質屬性數據的二次包裝），更改系統時間的 Access Control (存取控制) 都必須限制在極少數獨立管理員手中。",
+   "en": "<strong>Example 2: Permission to change the system time</strong><br/>\n                        Whether the system is used for high-criticality data (granulation process) or low-criticality data (secondary packaging with no quality-attribute data), Access Control over changing the system time must be restricted to a very small number of independent administrators."
+  },
+  {
+   "zh": "ICH Q9 風險管理原則的延伸",
+   "en": "Extension of ICH Q9 Risk Management Principles"
+  },
+  {
+   "zh": "TR84 明確對齊 ICH Q9（品質風險管理）的基礎：",
+   "en": "TR84 is explicitly aligned with the foundation of ICH Q9 (Quality Risk Management):"
+  },
+  {
+   "zh": "高關鍵性 = 更多管控、更高頻率、更嚴格審核",
+   "en": "High criticality = more controls, higher frequency, stricter review"
+  },
+  {
+   "zh": "低關鍵性 = 管控仍存在，但可適度降低強度",
+   "en": "Low criticality = controls still exist, but their intensity can be reduced appropriately"
+  },
+  {
+   "zh": "關鍵性由組織自行評估（非法規直接規定）",
+   "en": "Criticality is assessed by the organization itself (not directly prescribed by regulation)"
+  },
+  {
+   "zh": "這使 TR84 成為 ICH Q9 在 DI 領域的具體實踐指南。",
+   "en": "This makes TR84 a practical guide to applying ICH Q9 in the DI field."
+  },
+  {
+   "zh": "在 CDMO 的日常稽核中，這個區分非常實用：",
+   "en": "In day-to-day CDMO audits, this distinction is very useful:"
+  },
+  {
+   "zh": "當客戶或 FDA 查核員問「你們為何高低關鍵性批次記錄的審查頻率不同？」——可以引用 TR84 Section 5.1 和 ICH Q9 為依據",
+   "en": "When a client or an FDA inspector asks \"Why is the review frequency different for high- and low-criticality batch records?\", you can cite TR84 Section 5.1 and ICH Q9 as the basis"
+  },
+  {
+   "zh": "當你想降低某些低關鍵性文件的管控頻率以節省資源時，必須先確認它屬於「可差異化」類別，而非固定要求類別",
+   "en": "When you want to reduce the control frequency for some low-criticality documents to save resources, you must first confirm that they fall in a \"differentiable\" category and not in a fixed-requirement category"
+  },
+  {
+   "zh": "系統時間更改權限是常見的 Warning Letter 來源，無論系統關鍵性高低都必須嚴格管控",
+   "en": "Permission to change the system time is a common source of Warning Letters and must be strictly controlled regardless of system criticality"
+  },
+  {
+   "zh": "判斷以下管控屬於「固定」或「可差異化」：",
+   "en": "Decide whether each of the following controls is \"fixed\" or \"differentiable\":"
+  },
+  {
+   "zh": "批次記錄更正的劃線規則",
+   "en": "The line-through rule for batch record corrections"
+  },
+  {
+   "zh": "Audit Trail (稽核軌跡) 審查的頻率（每日 vs. 每月）",
+   "en": "The frequency of Audit Trail review (daily vs. monthly)"
+  },
+  {
+   "zh": "電子簽名的個人歸屬要求",
+   "en": "The requirement that an electronic signature be attributable to an individual"
+  },
+  {
+   "zh": "紙本記錄保存的環境條件（是否需要空調房）",
+   "en": "The environmental conditions for storing paper records (whether an air-conditioned room is needed)"
+  },
+  {
+   "zh": "差異化管控的判斷方法論：七大類別框架",
+   "en": "Methodology for Determining Differentiated Controls: The Seven-Category Framework"
+  },
+  {
+   "zh": "核心概念：三種系統類型 × 七大管控類別",
+   "en": "Core Concept: Three System Types × Seven Control Categories"
+  },
+  {
+   "zh": "TR84 的方法論建立在一個清晰的分類架構上：先按<strong>系統類型</strong>區分，再按<strong>關鍵性</strong>調整管控強度。",
+   "en": "The TR84 methodology rests on a clear classification structure: first by <strong>system type</strong>, then adjust control strength by <strong>criticality</strong>."
+  },
+  {
+   "zh": "<strong>Paper-based System (紙本系統)</strong>：Category 1–2",
+   "en": "<strong>Paper-based System</strong>: Categories 1-2"
+  },
+  {
+   "zh": "<strong>Hybrid System (混合系統)</strong>：Category 3（電子記錄 + 紙本並存）",
+   "en": "<strong>Hybrid System</strong>: Category 3 (electronic and paper records coexisting)"
+  },
+  {
+   "zh": "<strong>Electronic System (電子系統)</strong>：Category 4–7",
+   "en": "<strong>Electronic System</strong>: Categories 4-7"
+  },
+  {
+   "zh": "七大差異化管控類別速覽",
+   "en": "The Seven Differentiated Control Categories at a Glance"
+  },
+  {
+   "zh": "<strong>Cat. 1</strong>：紙本記錄的實體儲存與存取管控（保存位置、門禁、logbook）",
+   "en": "<strong>Cat. 1</strong>: physical storage of and access control to paper records (storage location, door access, logbooks)"
+  },
+  {
+   "zh": "<strong>Cat. 2</strong>：紙本表單的發放與核對（受控列印、reconciliation、空白表單銷毀）",
+   "en": "<strong>Cat. 2</strong>: issuance and reconciliation of paper forms (controlled printing, reconciliation, destruction of blank forms)"
+  },
+  {
+   "zh": "<strong>Cat. 3</strong>：手動記錄與數據轉錄的準確性（four-eye check、真本副本）",
+   "en": "<strong>Cat. 3</strong>: accuracy of manual records and data transcription (four-eye check, true copies)"
+  },
+  {
+   "zh": "<strong>Cat. 4</strong>：電子系統的 Access Control (存取控制)（帳號權限、分級管理）",
+   "en": "<strong>Cat. 4</strong>: Access Control for electronic systems (account privileges, tiered management)"
+  },
+  {
+   "zh": "<strong>Cat. 5</strong>：Audit Trail (稽核軌跡) 審查（審查頻率、審查內容、執行者）",
+   "en": "<strong>Cat. 5</strong>: Audit Trail review (review frequency, review content, reviewer)"
+  },
+  {
+   "zh": "<strong>Cat. 6</strong>：電子數據備份（備份頻率、備份驗證、還原測試）",
+   "en": "<strong>Cat. 6</strong>: electronic data backup (backup frequency, backup verification, restore testing)"
+  },
+  {
+   "zh": "<strong>Cat. 7</strong>：電子數據使用（報表生成、數據遷移管控）",
+   "en": "<strong>Cat. 7</strong>: use of electronic data (report generation, data migration controls)"
+  },
+  {
+   "zh": "差異化管控的三個維度",
+   "en": "Three Dimensions of Differentiated Controls"
+  },
+  {
+   "zh": "TR84 用三個維度來描述管控如何因關鍵性而不同：",
+   "en": "TR84 uses three dimensions to describe how controls vary with criticality:"
+  },
+  {
+   "zh": "差異化維度：\n  頻率 (Frequency)：每日 vs. 每月\n  執行者 (Who)：製造部門 vs. 品保單位 (QU)\n  內容深度 (What)：詳細審查 vs. 一般確認",
+   "en": "Differentiation dimensions:\n  Frequency: daily vs. monthly\n  Who (performer): manufacturing vs. Quality Unit (QU)\n  What (depth of content): detailed review vs. general confirmation"
+  },
+  {
+   "zh": "例如：Audit Trail 審查，高關鍵性可能要求 QU 每批次審查，低關鍵性則每季由製造部門抽查即可。",
+   "en": "For example, for Audit Trail review, high criticality may require QU review of every batch, while low criticality may only need a quarterly spot check by the manufacturing department."
+  },
+  {
+   "zh": "比喻：醫院病歷 vs. 行政表單",
+   "en": "Analogy: Hospital Medical Records vs. Administrative Forms"
+  },
+  {
+   "zh": "醫院的<strong>手術紀錄</strong>（高關鍵性）：需鎖在專用檔案室、有存取記錄、每年審查誰有存取權。",
+   "en": "A hospital's <strong>surgical records</strong> (high criticality): locked in a dedicated records room, with access logs and an annual review of who has access."
+  },
+  {
+   "zh": "同醫院的<strong>員工休假申請表</strong>（低關鍵性）：放在辦公室普通抽屜即可，每兩年確認一次鑰匙管理就夠。",
+   "en": "The same hospital's <strong>staff leave request forms</strong> (low criticality): an ordinary office drawer is enough, and checking key management once every two years is sufficient."
+  },
+  {
+   "zh": "這正是 Category 1 的差異化邏輯。",
+   "en": "This is exactly the differentiation logic of Category 1."
+  },
+  {
+   "zh": "重要提醒：管控層級的適用對象",
+   "en": "Important Reminder: The Level at Which Controls Apply"
+  },
+  {
+   "zh": "七大類別的管控可能作用於不同層級：",
+   "en": "Controls in the seven categories may act at different levels:"
+  },
+  {
+   "zh": "<strong>Data level（數據點層級）</strong>：例如單筆測量值的二次確認",
+   "en": "<strong>Data level</strong>: for example, second-person verification of a single measured value"
+  },
+  {
+   "zh": "<strong>Record level（記錄層級）</strong>：例如整份批次記錄的審查",
+   "en": "<strong>Record level</strong>: for example, review of an entire batch record"
+  },
+  {
+   "zh": "<strong>System level（系統層級）</strong>：例如整個 LIMS 的存取控制政策",
+   "en": "<strong>System level</strong>: for example, the access control policy for an entire LIMS"
+  },
+  {
+   "zh": "Section 5.3 中每個子節都會明確標示該管控作用於哪個層級，這對 SOP 撰寫非常重要。",
+   "en": "Each subsection of Section 5.3 states clearly the level at which the control acts, which is very important when writing SOPs."
+  },
+  {
+   "zh": "CDMO 通常同時運作 Paper-based System (紙本系統)、Hybrid System (混合系統) 和 Electronic System (電子系統)——有時甚至在同一條生產線上：",
+   "en": "A CDMO usually operates Paper-based, Hybrid and Electronic Systems at the same time, sometimes even on the same production line:"
+  },
+  {
+   "zh": "環境監測數據：手動記錄到紙本（Cat. 3） + 後續輸入 EM 系統（Cat. 3.2 轉錄）",
+   "en": "Environmental monitoring data: recorded manually on paper (Cat. 3) and later entered into the EM system (Cat. 3.2 transcription)"
+  },
+  {
+   "zh": "灌裝機 PLC：電子紀錄（Cat. 5 Audit Trail review）",
+   "en": "Filling machine PLC: electronic records (Cat. 5 Audit Trail review)"
+  },
+  {
+   "zh": "滅菌爐記錄：電子打印 + 紙本批次記錄簽核（Hybrid，Cat. 3）",
+   "en": "Sterilizer records: electronic printout plus paper batch record sign-off (Hybrid, Cat. 3)"
+  },
+  {
+   "zh": "掌握七大類別，就能系統性地評估每個數據流的管控缺口。",
+   "en": "Once you master the seven categories, you can systematically assess the control gaps in each data flow."
+  },
+  {
+   "zh": "你的 CDMO 使用 MES 記錄充填數據，但有些補充資訊仍手寫後掃描存入 MES。這屬於哪個 Category？",
+   "en": "Your CDMO uses an MES to record filling data, but some supplementary information is still handwritten, then scanned and stored in the MES. Which Category does this fall under?"
+  },
+  {
+   "zh": "如果你要設計一個「稽核軌跡審查 SOP」，依據 TR84，你需要區分哪三個維度？",
+   "en": "If you were to design an \"Audit Trail Review SOP\", which three dimensions would you need to distinguish according to TR84?"
+  },
+  {
+   "zh": "差異化 DI 管控的適用範圍、框架邏輯與整體原則",
+   "en": "Scope, Framework Logic and Overall Principles of Differentiated DI Controls"
+  },
+  {
+   "zh": "Preventive Control (預防性管控) vs. Detective Control (偵測性管控)",
+   "en": "Preventive Control vs. Detective Control"
+  },
+  {
+   "zh": "TR84 Section 5.3 明確區分兩種管控類型，這在設計 DI 管控體系時非常重要：",
+   "en": "TR84 Section 5.3 clearly distinguishes two types of control, which is very important when designing a DI control system:"
+  },
+  {
+   "zh": "<strong>Preventive Control (預防性管控)</strong>：在 DI 問題發生之前就阻止它。例如：限制誰能修改 Audit Trail 設定（防止篡改機會）、受控列印文件（防止空白表單遭濫用）。",
+   "en": "<strong>Preventive Control</strong>: stops a DI problem before it occurs. Examples: restricting who can modify Audit Trail settings (removing the opportunity for tampering), controlled printing of documents (preventing misuse of blank forms)."
+  },
+  {
+   "zh": "<strong>Detective Control (偵測性管控)</strong>：DI 問題發生後能夠被發現。例如：定期 Audit Trail (稽核軌跡) 審查（發現異常操作）、批次記錄的 QU 審查。",
+   "en": "<strong>Detective Control</strong>: allows a DI problem to be discovered after it has occurred. Examples: periodic Audit Trail review (finding abnormal operations), QU review of batch records."
+  },
+  {
+   "zh": "Section 5.3 以預防性管控為主，但也包含部分偵測性管控。",
+   "en": "Section 5.3 is mainly about preventive controls, but also includes some detective controls."
+  },
+  {
+   "zh": "比喻：保險箱 vs. 保全錄影",
+   "en": "Analogy: Safe vs. Security Camera"
+  },
+  {
+   "zh": "<strong>預防性管控</strong>像保險箱——鎖住機密，未經授權根本無法接觸。",
+   "en": "<strong>Preventive controls</strong> are like a safe: they lock up confidential material so that it cannot be reached without authorization."
+  },
+  {
+   "zh": "<strong>偵測性管控</strong>像保全錄影——事後可以回溯查看誰在何時做了什麼，但無法阻止當下的行為。",
+   "en": "<strong>Detective controls</strong> are like security cameras: you can look back afterwards to see who did what and when, but they cannot stop the action at the time."
+  },
+  {
+   "zh": "最理想的 Defense in Depth (縱深防禦) 是兩者並用：先預防，再偵測，最後還有矯正（CAPA）。",
+   "en": "The ideal Defense in Depth uses both: prevent first, then detect, and finally correct (CAPA)."
+  },
+  {
+   "zh": "9-Box Grid 概念回顧",
+   "en": "Review of the 9-Box Grid Concept"
+  },
+  {
+   "zh": "TR84 提到的 9-Box Grid（九宮格）是評估數據脆弱性的核心工具（Section 4.3）：",
+   "en": "The 9-Box Grid mentioned in TR84 is the core tool for assessing data vulnerability (Section 4.3):"
+  },
+  {
+   "zh": "X 軸：資料關鍵性（High / Medium / Low）",
+   "en": "X axis: data criticality (High / Medium / Low)"
+  },
+  {
+   "zh": "Y 軸：風險因子（High / Medium / Low）",
+   "en": "Y axis: risk factors (High / Medium / Low)"
+  },
+  {
+   "zh": "目標：管控措施足夠，使數據落在對角線「綠格」（H/H、M/M、L/L）",
+   "en": "Goal: controls are sufficient so that data fall in the diagonal \"green boxes\" (H/H, M/M, L/L)"
+  },
+  {
+   "zh": "若管控不足：數據落在「紅格」，代表管控強度低於關鍵性要求",
+   "en": "If controls are insufficient: data fall in a \"red box\", meaning control strength is lower than the criticality requires"
+  },
+  {
+   "zh": "Section 5.3 提供的管控建議，就是讓數據停留在綠格的具體操作指引。",
+   "en": "The control recommendations in Section 5.3 are the practical guidance for keeping data in the green boxes."
+  },
+  {
+   "zh": "關鍵提醒：示例非強制規定",
+   "en": "Key Reminder: Examples Are Not Mandatory"
+  },
+  {
+   "zh": "TR84 明確指出：Section 5.3 中所有 High/Medium/Low 的活動分類<strong>僅為示例</strong>，不具規範性，不能直接套用。",
+   "en": "TR84 states explicitly that all High/Medium/Low activity classifications in Section 5.3 are <strong>examples only</strong>, are not normative, and cannot be applied directly."
+  },
+  {
+   "zh": "每個組織必須：",
+   "en": "Each organization must:"
+  },
+  {
+   "zh": "根據自身業務特性評估資料關鍵性",
+   "en": "Assess data criticality according to its own business characteristics"
+  },
+  {
+   "zh": "以風險為基礎決定管控頻率",
+   "en": "Determine control frequency on a risk basis"
+  },
+  {
+   "zh": "將所有管控（無論是否差異化）都寫入 SOP",
+   "en": "Write all controls (whether differentiated or not) into SOPs"
+  },
+  {
+   "zh": "這是法規稽核時的重要依據——你的 SOP 必須反映你的風險評估結論。",
+   "en": "This is an important basis in regulatory inspections: your SOPs must reflect the conclusions of your risk assessment."
+  },
+  {
+   "zh": "Defense in Depth (縱深防禦) 概念",
+   "en": "The Concept of Defense in Depth"
+  },
+  {
+   "zh": "TR84 Section 5.3 隱含的「縱深防禦」理念：",
+   "en": "The \"Defense in Depth\" philosophy implicit in TR84 Section 5.3:"
+  },
+  {
+   "zh": "<strong>第一層</strong>：技術預防（系統設計阻止問題發生）",
+   "en": "<strong>Layer 1</strong>: technical prevention (system design stops problems from occurring)"
+  },
+  {
+   "zh": "<strong>第二層</strong>：程序預防（SOP 規範正確行為）",
+   "en": "<strong>Layer 2</strong>: procedural prevention (SOPs prescribe correct behavior)"
+  },
+  {
+   "zh": "<strong>第三層</strong>：偵測機制（Audit Trail、審查、自我查核）",
+   "en": "<strong>Layer 3</strong>: detection mechanisms (Audit Trail, review, self-inspection)"
+  },
+  {
+   "zh": "<strong>第四層</strong>：矯正回應（CAPA、偏差管理）",
+   "en": "<strong>Layer 4</strong>: corrective response (CAPA, deviation management)"
+  },
+  {
+   "zh": "在 CDMO 環境中，多客戶、多系統的複雜性更需要每一層都嚴密設計。",
+   "en": "In a CDMO environment, the complexity of multiple clients and multiple systems calls for every layer to be carefully designed."
+  },
+  {
+   "zh": "在進行 DI 差距分析（Gap Analysis）時，可以用以下架構評估每個數據流：",
+   "en": "When performing a DI Gap Analysis, you can assess each data flow with the following structure:"
+  },
+  {
+   "zh": "確認此數據屬於七大類別中的哪一類",
+   "en": "Confirm which of the seven categories the data belong to"
+  },
+  {
+   "zh": "評估資料關鍵性（High / Medium / Low），並記錄依據",
+   "en": "Assess data criticality (High / Medium / Low) and document the rationale"
+  },
+  {
+   "zh": "對照 TR84 Table 5.3.X-1，確認現有管控是否與關鍵性等級相稱",
+   "en": "Compare against TR84 Table 5.3.X-1 to confirm whether existing controls are commensurate with the criticality level"
+  },
+  {
+   "zh": "確認現有管控是否已記載於 SOP 中",
+   "en": "Confirm that existing controls are documented in SOPs"
+  },
+  {
+   "zh": "若管控不足，啟動 CAPA；若管控過度，評估是否可合理降低（節省資源）",
+   "en": "If controls are insufficient, initiate CAPA; if controls are excessive, evaluate whether they can reasonably be reduced (to save resources)"
+  },
+  {
+   "zh": "這個框架可作為年度 DI 內部稽核的結構性工具。",
+   "en": "This framework can serve as a structured tool for the annual DI internal audit."
+  },
+  {
+   "zh": "若你的 QU 要求所有批次記錄（包括低關鍵性的訓練記錄）都進行相同頻率的審查，根據 TR84，這屬於合理的謹慎做法，還是資源浪費？如何判斷？",
+   "en": "If your QU requires all batch records (including low-criticality training records) to be reviewed at the same frequency, is this, according to TR84, reasonable caution or a waste of resources? How would you decide?"
+  },
+  {
+   "zh": "「Audit Trail 審查」屬於 Preventive Control (預防性管控) 還是 Detective Control (偵測性管控)？請說明理由。",
+   "en": "Is \"Audit Trail review\" a Preventive Control or a Detective Control? Explain your reasoning."
+  },
+  {
+   "zh": "TR84 說「所有管控都必須寫入 SOP」，這對你的 CDMO 意味著什麼具體行動？",
+   "en": "TR84 says \"all controls must be written into SOPs\". What specific actions does this imply for your CDMO?"
+  },
+  {
+   "zh": "總結",
+   "en": "Summary"
+  },
+  {
+   "zh": "Section Summary — 本節重點整理",
+   "en": "Section Summary: Key Points"
+  },
+  {
+   "zh": "Section 3 核心概念回顧（TR84 p21–p25）",
+   "en": "Section 3 Core Concepts Review (TR84 p21-p25)"
+  },
+  {
+   "zh": "本節三大主題整合",
+   "en": "Integration of the Three Main Topics"
+  },
+  {
+   "zh": "TR84 Section 3（對應原文 Section 5.0–5.3 框架部分）建立了一個完整的 DI 管控思維架構：",
+   "en": "TR84 Section 3 (corresponding to the framework portion of Sections 5.0-5.3 in the source text) establishes a complete way of thinking about DI controls:"
+  },
+  {
+   "zh": "<strong>5.0 DI 管控總覽</strong>：為什麼需要管控？成因多元（人為、系統、蓄意），品質文化是基礎，但技術管控不可或缺。法規說明「What」，TR84 說明「How」。",
+   "en": "<strong>5.0 DI controls overview</strong>: why are controls needed? The causes are varied (human, system, deliberate); quality culture is the foundation, but technical controls are indispensable. Regulations state the \"What\" and TR84 explains the \"How\"."
+  },
+  {
+   "zh": "<strong>5.1 差異化的概念</strong>：並非所有 DI 管控都可以因關鍵性而不同——有「固定管控」（如記錄更正規則、系統時間存取限制），也有「可差異化管控」（頻率、審查者、審查深度）。",
+   "en": "<strong>5.1 The concept of differentiation</strong>: not all DI controls can vary with criticality. There are \"fixed controls\" (such as record correction rules and restrictions on system time access) and \"differentiated controls\" (frequency, reviewer, depth of review)."
+  },
+  {
+   "zh": "<strong>5.2 方法論與七大類別</strong>：依系統類型（Paper-based / Hybrid / Electronic）分為七大差異化管控類別，管控作用對象可在數據點、記錄或系統層級。",
+   "en": "<strong>5.2 Methodology and the seven categories</strong>: by system type (Paper-based / Hybrid / Electronic), there are seven differentiated control categories, and controls can act at the data, record or system level."
+  },
+  {
+   "zh": "<strong>5.3 差異化管控適用原則</strong>：High/Medium/Low 三級關鍵性對應不同管控強度；預防性為主、偵測性為輔；所有管控必須入 SOP；9-Box Grid 確保管控與風險相稱。",
+   "en": "<strong>5.3 Principles for applying differentiated controls</strong>: High/Medium/Low criticality maps to different control strength; preventive controls predominate, with detective controls in support; all controls must be in SOPs; the 9-Box Grid ensures that controls are commensurate with risk."
+  },
+  {
+   "zh": "給 CDMO 專業人員的核心提醒",
+   "en": "Key Reminders for CDMO Professionals"
+  },
+  {
+   "zh": "TR84 的差異化管控框架不是「鬆綁」，而是幫助合理分配有限的 QA 資源——把最嚴格的管控留給真正高關鍵性的數據。",
+   "en": "The TR84 differentiated control framework is not about \"loosening\" controls; it helps allocate limited QA resources sensibly, reserving the strictest controls for the data that are truly high-criticality."
+  },
+  {
+   "zh": "蓄意造假永遠不可接受，無論關鍵性高低；Defense in Depth (縱深防禦) 是應對各種 DI 風險的最佳策略。",
+   "en": "Deliberate falsification is never acceptable, regardless of criticality; Defense in Depth is the best strategy for addressing all kinds of DI risk."
+  },
+  {
+   "zh": "CDMO 同時管理多個客戶的數據系統，更需要這個框架來進行系統性的差距分析（Gap Analysis）和年度 DI 稽核。",
+   "en": "A CDMO manages the data systems of multiple clients at once, so it needs this framework even more for systematic Gap Analysis and the annual DI audit."
+  },
+  {
+   "zh": "Section 5.3.1–5.3.7 提供具體的管控建議表格——在與客戶討論 DI 控制方案或回應 FDA Warning Letter 時，可直接引用作為依據。",
+   "en": "Sections 5.3.1-5.3.7 provide specific control recommendation tables, which can be cited directly as a basis when discussing DI control schemes with clients or responding to an FDA Warning Letter."
+  },
+  {
+   "zh": "下一節預告：Section 5.3.1–5.3.7 具體管控表格",
+   "en": "Next Section Preview: Sections 5.3.1-5.3.7 Specific Control Tables"
+  },
+  {
+   "zh": "本節建立了 DI 管控的整體框架與思維。下一節將逐一展開七大差異化管控類別的具體規範表格，包括：",
+   "en": "This section established the overall framework and mindset for DI controls. The next section works through the specific requirement tables for each of the seven differentiated control categories, including:"
+  },
+  {
+   "zh": "紙本記錄的實體儲存（Category 1）與文件發放管控（Category 2）",
+   "en": "Physical storage of paper records (Category 1) and document issuance controls (Category 2)"
+  },
+  {
+   "zh": "混合系統中手動記錄、轉錄與真本副本的管控（Category 3）",
+   "en": "Controls for manual records, transcription and true copies in hybrid systems (Category 3)"
+  },
+  {
+   "zh": "電子系統的 Access Control、Audit Trail 審查、備份與數據使用（Categories 4–7）",
+   "en": "Access Control, Audit Trail review, backup and data use in electronic systems (Categories 4-7)"
+  },
+  {
+   "zh": "每個類別都有 High / Medium / Low 三欄對照表，是 SOP 設計與差距分析的最直接參考工具。",
+   "en": "Each category has a High / Medium / Low three-column comparison table, which is the most direct reference tool for SOP design and gap analysis."
+  }
+ ]
+}

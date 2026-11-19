@@ -1,0 +1,593 @@
+{
+ "source": "section-05a-alerts-data-trending.html",
+ "blocks": [
+  {
+   "zh": "Learning Objectives / 學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解警戒水準 (Alert Level) 與行動限度 (Action Limit) 的差異，以及 USP &lt;1116&gt; 從 CFU 計數轉向汙染回收率 (CRR) 的典範轉移",
+   "en": "Understand the difference between an Alert Level and an Action Limit, and the paradigm shift in USP &lt;1116&gt; from CFU counts to the contamination recovery rate (CRR)"
+  },
+  {
+   "zh": "掌握三種非參數統計方法（百分位數法、容忍限法、截斷值法）在設定環境監測限度中的應用與適用條件",
+   "en": "Master the application and suitability conditions of the three nonparametric statistical methods (percentile, tolerance limit, and cutoff value) for setting environmental monitoring limits"
+  },
+  {
+   "zh": "學習即時、短期與長期趨勢分析規則，以及 CCC 圖表 (Cumulative Conforming Count) 在偵測漂移中的價值",
+   "en": "Learn the rules for immediate, short-term, and long-term trend analysis, and the value of the CCC (Cumulative Conforming Count) chart in detecting drift"
+  },
+  {
+   "zh": "瞭解 ALCOA 數據完整性原則及環境監測數據管理的最低記錄要求",
+   "en": "Understand the ALCOA data integrity principles and the minimum record requirements for environmental monitoring data management"
+  },
+  {
+   "zh": "能夠解讀 USP &lt;1116&gt; 汙染回收率 (CRR) 表格，並將其應用於實際潔淨室環境評估",
+   "en": "Be able to interpret the USP &lt;1116&gt; contamination recovery rate (CRR) table and apply it to real-world cleanroom environmental assessments"
+  },
+  {
+   "zh": "Section Contents / 本節目錄",
+   "en": "Section Contents"
+  },
+  {
+   "zh": "<strong>5.3 Alert Levels and Action Limits 5.3 警示標準與行動限値</strong>",
+   "en": "<strong>5.3 Alert Levels and Action Limits</strong>"
+  },
+  {
+   "zh": "中文解析：警戒水準與行動限度",
+   "en": "Commentary: Alert Levels and Action Limits"
+  },
+  {
+   "zh": "生活比喻：駕駛速度警示",
+   "en": "Real-Life Analogy: Driving Speed Warnings"
+  },
+  {
+   "zh": "想像開車時儀表板上的速度表：",
+   "en": "Picture the speedometer on a car dashboard:"
+  },
+  {
+   "zh": "<strong>警戒水準 (Alert Level)</strong> = 接近速限的黃燈提醒（例如速限 100，開到 90 時亮黃燈）。這表示「注意，你正在接近邊界」，需要關注但不必立刻停車。",
+   "en": "<strong>Alert Level</strong> = the yellow warning light as you approach the speed limit (for example, with a limit of 100, the light comes on at 90). It means \"be careful, you are approaching the boundary\": it needs attention, but you do not have to stop immediately."
+  },
+  {
+   "zh": "<strong>行動限度 (Action Limit)</strong> = 超速紅燈警報（超過 100 就亮紅燈）。這表示「你已超標」，必須立刻採取糾正措施，並且要記錄和調查原因。",
+   "en": "<strong>Action Limit</strong> = the red speeding alarm (the light turns red above 100). It means \"you have exceeded the limit\": corrective action must be taken immediately, and the cause must be documented and investigated."
+  },
+  {
+   "zh": "在環境監測中，Alert 是「早期預警」，Action 是「強制處理」。",
+   "en": "In environmental monitoring, an Alert is an \"early warning\" and an Action is \"mandatory response\"."
+  },
+  {
+   "zh": "<strong>USP &lt;1116&gt; 的典範轉移 (Paradigm Shift)：</strong>傳統上，環境監測關注每個樣品的 CFU 計數是否超過特定數值。但 USP &lt;1116&gt; 現在推動使用<strong>汙染回收率 (Contamination Recovery Rate, CRR)</strong>，也就是「在所有採樣中，有多少比例檢出微生物」。這個改變的意義在於：",
+   "en": "<strong>The USP &lt;1116&gt; paradigm shift:</strong> Traditionally, environmental monitoring focused on whether the CFU count of each sample exceeded a specific value. USP &lt;1116&gt; now promotes the use of the <strong>Contamination Recovery Rate (CRR)</strong>, that is, \"the percentage of all samples taken in which microorganisms are detected\". This change matters because:"
+  },
+  {
+   "zh": "CRR 不依賴於 CFU 計數，因此適用於不基於 CFU 的新興快速微生物檢測技術",
+   "en": "CRR does not depend on CFU counts, so it is applicable to emerging rapid microbial detection technologies that are not CFU-based"
+  },
+  {
+   "zh": "CRR 提供了環境整體汙染「頻率」的宏觀視角，而非單一事件的「嚴重程度」",
+   "en": "CRR gives a macro view of the overall \"frequency\" of contamination in the environment, rather than the \"severity\" of a single event"
+  },
+  {
+   "zh": "目前 EU GMP Annex 1 和 FDA 仍要求設定 Alert/Action 限度，因此 CRR 可作為額外的趨勢分析工具併用",
+   "en": "EU GMP Annex 1 and the FDA still require Alert/Action limits to be set, so CRR can be used alongside them as an additional trending tool"
+  },
+  {
+   "zh": "重點提示：EM 限度 vs 產品規格",
+   "en": "Key Point: EM Limits vs Product Specifications"
+  },
+  {
+   "zh": "TR13 明確指出：Alert/Action 限度<strong>不是</strong>產品規格 (product specifications)，不定義無菌性 (sterility)。它們是環境控制的「體溫計」——用來偵測環境漂移，以便在影響產品品質之前採取預防措施。",
+   "en": "TR13 states explicitly that Alert/Action limits are <strong>not</strong> product specifications and do not define sterility. They are the \"thermometer\" of environmental control, used to detect environmental drift so that preventive action can be taken before product quality is affected."
+  },
+  {
+   "zh": "但當行動限度在<strong>關鍵無菌操作步驟</strong>區域被超過時，調查必須在批次放行前完成，並評估對產品的潛在影響。",
+   "en": "However, when an action limit is exceeded in an area of <strong>critical aseptic operations</strong>, the investigation must be completed before batch release, and the potential impact on the product must be assessed."
+  },
+  {
+   "zh": "Warning: EM Data Is NOT Normally Distributed / 警告：環境監測數據並非常態分佈",
+   "en": "Warning: EM Data Is NOT Normally Distributed"
+  },
+  {
+   "zh": "<strong>實務含義：</strong>環境監測數據大量集中在 0 或低 CFU，呈現高度右偏態分佈。傳統 Mean ± 2SD / 3SD 的方法假設常態分佈，套用在 EM 數據上會產生誤導性的限度。因此 TR13 推薦以下三種非參數方法。",
+   "en": "<strong>Practical implication:</strong> Environmental monitoring data is heavily concentrated at 0 or low CFU, producing a highly right-skewed distribution. The traditional Mean ± 2SD / 3SD approach assumes a normal distribution, and applying it to EM data yields misleading limits. TR13 therefore recommends the following three nonparametric methods."
+  },
+  {
+   "zh": "<strong>5.3.1 Nonparametric Approach 5.3.1 無母數方法</strong>",
+   "en": "<strong>5.3.1 Nonparametric Approach</strong>"
+  },
+  {
+   "zh": "中文解析：非參數百分位數法",
+   "en": "Commentary: Nonparametric Percentile Method"
+  },
+  {
+   "zh": "Nonparametric Percentile Method / 非參數百分位數法",
+   "en": "Nonparametric Percentile Method"
+  },
+  {
+   "zh": "<strong>方法解析：</strong>此方法將所有歷史數據由小到大排列，直接取第 99.9 和 99.99 百分位數的值作為 Alert 和 Action 限度。由於不假設任何特定分佈，因此叫「非參數」。",
+   "en": "<strong>How the method works:</strong> All historical data are ranked from smallest to largest, and the values at the 99.9th and 99.99th percentiles are taken directly as the Alert and Action limits. Because no particular distribution is assumed, it is called \"nonparametric\"."
+  },
+  {
+   "zh": "<strong>實務舉例：</strong>假設某 ISO 7 房間收集了 1,200 筆主動空氣採樣數據，將數據從小到大排列：",
+   "en": "<strong>Practical example:</strong> Suppose 1,200 active air sampling results have been collected in an ISO 7 room. Ranked from smallest to largest:"
+  },
+  {
+   "zh": "第 99.9 百分位數 = 第 1,199 個值 = 8 CFU → Alert Level = 8 CFU",
+   "en": "99.9th percentile = the 1,199th value = 8 CFU → Alert Level = 8 CFU"
+  },
+  {
+   "zh": "第 99.99 百分位數 = 最大值附近 = 12 CFU → Action Limit = 12 CFU",
+   "en": "99.99th percentile = near the maximum value = 12 CFU → Action Limit = 12 CFU"
+  },
+  {
+   "zh": "<strong>關鍵注意事項：</strong>此方法需要大量數據 (N≈1000)。若數據量不足，極端值（可能來自失控事件的異常值）會被選為限度，導致限度被不當抬高。",
+   "en": "<strong>Key caution:</strong> This method requires a large amount of data (N≈1000). If the data set is too small, extreme values (possibly outliers from out-of-control events) will be selected as the limits, inappropriately inflating them."
+  },
+  {
+   "zh": "<strong>5.3.2 Nonparametric Tolerance Limit Approach 5.3.2 無母數容忍限値方法</strong>",
+   "en": "<strong>5.3.2 Nonparametric Tolerance Limit Approach</strong>"
+  },
+  {
+   "zh": "中文解析：非參數容忍限法",
+   "en": "Commentary: Nonparametric Tolerance Limit Method"
+  },
+  {
+   "zh": "Tolerance Limit Notation / 容忍限符號說明",
+   "en": "Tolerance Limit Notation"
+  },
+  {
+   "zh": "<strong>與百分位數法的差異：</strong>百分位數法只給出數據的某個位置值，而容忍限法多了一層「信心水準」(confidence level)。95/95 表示「我有 95% 的信心保證，95% 的未來數據都會低於這個值」。",
+   "en": "<strong>Difference from the percentile method:</strong> The percentile method simply gives the value at a certain position in the data, whereas the tolerance limit method adds a \"confidence level\". A 95/95 limit means \"I am 95% confident that 95% of future data will fall below this value\"."
+  },
+  {
+   "zh": "<strong>優勢：</strong>",
+   "en": "<strong>Advantages:</strong>"
+  },
+  {
+   "zh": "所需數據量遠低於百分位數法（60 vs 1000）",
+   "en": "Requires far less data than the percentile method (60 vs 1000)"
+  },
+  {
+   "zh": "不假設特定分佈（distribution-free）",
+   "en": "Makes no assumption about the distribution (distribution-free)"
+  },
+  {
+   "zh": "提供明確的統計信心保證",
+   "en": "Provides an explicit statistical confidence guarantee"
+  },
+  {
+   "zh": "<strong>適用情境：</strong>新建潔淨室或新導入 EM 程序、尚未累積大量歷史數據時，此方法比百分位數法更實用。",
+   "en": "<strong>Suitable situations:</strong> For a newly built cleanroom or a newly introduced EM program where a large body of historical data has not yet accumulated, this method is more practical than the percentile method."
+  },
+  {
+   "zh": "<strong>5.3.3 Cutoff Value Approach 5.3.3 截止値方法</strong>",
+   "en": "<strong>5.3.3 Cutoff Value Approach</strong>"
+  },
+  {
+   "zh": "中文解析：截斷值法與 CCC 圖表",
+   "en": "Commentary: Cutoff Value Method and CCC Charts"
+  },
+  {
+   "zh": "Cutoff Value Method / 截斷值法",
+   "en": "Cutoff Value Method"
+  },
+  {
+   "zh": "<strong>三種方法比較總結：</strong>",
+   "en": "<strong>Summary comparison of the three methods:</strong>"
+  },
+  {
+   "zh": "<strong>CCC 圖表 (Cumulative Conforming Count)：</strong>CCC 是一種特殊的控制圖，用於監控連續「合格」樣品的間隔。原理如下：",
+   "en": "<strong>CCC chart (Cumulative Conforming Count):</strong> The CCC chart is a special type of control chart used to monitor the interval between excursions in terms of consecutive \"conforming\" samples. The principle is as follows:"
+  },
+  {
+   "zh": "X 軸：每次超標事件的序號",
+   "en": "X axis: the sequence number of each excursion event"
+  },
+  {
+   "zh": "Y 軸：兩次超標事件之間的合格樣品數量",
+   "en": "Y axis: the number of conforming samples between two excursion events"
+  },
+  {
+   "zh": "如果環境控制穩定，兩次超標之間的合格數應該相對穩定",
+   "en": "If environmental control is stable, the number of conforming samples between excursions should remain relatively steady"
+  },
+  {
+   "zh": "如果合格間隔突然縮短，代表環境正在惡化",
+   "en": "If the conforming interval suddenly shortens, the environment is deteriorating"
+  },
+  {
+   "zh": "<strong>CCC 的實務價值：</strong>",
+   "en": "<strong>Practical value of CCC:</strong>"
+  },
+  {
+   "zh": "比傳統 SPC 圖更敏感於短期漂移",
+   "en": "More sensitive to short-term drift than traditional SPC charts"
+  },
+  {
+   "zh": "可用於評估更衣培訓效果（操作員更衣合格/不合格的間隔）",
+   "en": "Can be used to evaluate the effectiveness of gowning training (the interval between passing and failing gowning assessments by operators)"
+  },
+  {
+   "zh": "可用於評估操作員資格的維持和重新資格確認",
+   "en": "Can be used to evaluate the maintenance of operator qualification and requalification"
+  },
+  {
+   "zh": "Alert Level 調整的陷阱",
+   "en": "The Pitfall of Adjusting Alert Levels"
+  },
+  {
+   "zh": "TR13 特別警告：如果定期重新評估後 Alert Level 需要上調，這應被視為環境控制可能正在惡化的警訊，而非「正常調整」。不要在不了解根本原因的情況下隨意提高 Alert Level —— 這等於自欺欺人地掩蓋問題。",
+   "en": "TR13 specifically warns that if periodic reassessment shows that an Alert Level needs to be raised, this should be treated as a warning sign that environmental control may be deteriorating, not as a \"normal adjustment\". Do not raise an Alert Level arbitrarily without understanding the root cause, as that amounts to deceiving yourself by masking the problem."
+  },
+  {
+   "zh": "低於 Action Limit 的 Alert Level 應被視為微生物控制良好的<strong>正面確認</strong>，而非不適當的設定。",
+   "en": "An Alert Level that sits below the Action Limit should be viewed as a <strong>positive confirmation</strong> of good microbial control, not as an inappropriate setting."
+  },
+  {
+   "zh": "<strong>5.3.4 Quantitative and Qualitative Trending Rules 5.3.4 定量與定性趨勢規則</strong>",
+   "en": "<strong>5.3.4 Quantitative and Qualitative Trending Rules</strong>"
+  },
+  {
+   "zh": "中文解析：趨勢分析三層結構",
+   "en": "Commentary: The Three-Tier Structure of Trend Analysis"
+  },
+  {
+   "zh": "趨勢分析是 EM 程式中的「預防性監控機制」。TR13 將其分為三個層次：",
+   "en": "Trend analysis is the \"preventive monitoring mechanism\" of an EM program. TR13 divides it into three tiers:"
+  },
+  {
+   "zh": "<strong>即時趨勢規則（實務範例）：</strong>",
+   "en": "<strong>Immediate trending rules (practical examples):</strong>"
+  },
+  {
+   "zh": "同一地點在一週內出現 2 次 Alert 超標 → 觸發調查",
+   "en": "2 Alert excursions at the same location within one week → trigger an investigation"
+  },
+  {
+   "zh": "同一房間在同一天出現 3 個以上不同測試點的 Alert → 可能系統性問題",
+   "en": "Alerts at 3 or more different test points in the same room on the same day → possible systemic problem"
+  },
+  {
+   "zh": "<strong>短期報告應包含的元素：</strong>",
+   "en": "<strong>Elements a short-term report should include:</strong>"
+  },
+  {
+   "zh": "是否有同一地點重複超過 Action Limit",
+   "en": "Whether the same location has repeatedly exceeded the Action Limit"
+  },
+  {
+   "zh": "Alert 超標頻率是否在增加",
+   "en": "Whether the frequency of Alert excursions is increasing"
+  },
+  {
+   "zh": "同一區域的回收率是否在上升",
+   "en": "Whether the recovery rate in the same area is rising"
+  },
+  {
+   "zh": "明確的結論聲明：設施是否處於受控狀態",
+   "en": "A clear concluding statement: whether the facility is in a state of control"
+  },
+  {
+   "zh": "<strong>強烈建議使用圖表</strong>（趨勢圖、控制圖）來視覺化呈現",
+   "en": "<strong>The use of charts (trend charts, control charts) for visual presentation is strongly recommended</strong>"
+  },
+  {
+   "zh": "<strong>年度報告應涵蓋：</strong>",
+   "en": "<strong>The annual report should cover:</strong>"
+  },
+  {
+   "zh": "各等級偏差數量、涉及的房間和測試類型",
+   "en": "The number of deviations at each grade, and the rooms and test types involved"
+  },
+  {
+   "zh": "非典型微生物出現分析及根本原因",
+   "en": "Analysis of the occurrence of atypical microorganisms and their root causes"
+  },
+  {
+   "zh": "微生物菌群分析 → 驗證消毒程序有效性",
+   "en": "Microbial flora analysis → verification of the effectiveness of the disinfection program"
+  },
+  {
+   "zh": "與前期數據的比較分析",
+   "en": "Comparative analysis against data from previous periods"
+  },
+  {
+   "zh": "產品汙染與環境微生物的關聯性分析",
+   "en": "Analysis of the correlation between product contamination and environmental microorganisms"
+  },
+  {
+   "zh": "<strong>5.4 Data Management 5.4 資料管理</strong>",
+   "en": "<strong>5.4 Data Management</strong>"
+  },
+  {
+   "zh": "中文解析：數據管理概論",
+   "en": "Commentary: Overview of Data Management"
+  },
+  {
+   "zh": "EM 程式產生的數據量龐大（一個設施每月可能有數千筆採樣結果），因此需要電腦化的數據追蹤系統。TR13 強調：",
+   "en": "An EM program generates a large volume of data (a single facility may produce thousands of sampling results per month), so a computerized data tracking system is needed. TR13 emphasizes that:"
+  },
+  {
+   "zh": "必須定期審查和分析數據以評估趨勢",
+   "en": "Data must be reviewed and analyzed regularly to assess trends"
+  },
+  {
+   "zh": "管理層必須掌握設施的環境控制狀態",
+   "en": "Management must be aware of the state of environmental control in the facility"
+  },
+  {
+   "zh": "所有數據庫應用程式必須經過<strong>驗證 (validated)</strong> 或<strong>確認 (qualified)</strong>",
+   "en": "All database applications must be <strong>validated</strong> or <strong>qualified</strong>"
+  },
+  {
+   "zh": "這與 EU GMP Annex 11 (Computerized Systems) 和 FDA 21 CFR Part 11 (Electronic Records) 的要求一致。",
+   "en": "This is consistent with the requirements of EU GMP Annex 11 (Computerised Systems) and FDA 21 CFR Part 11 (Electronic Records)."
+  },
+  {
+   "zh": "<strong>5.4.1 Data Integrity (ALCOA) 5.4.1 資料完整性（ALCOA）</strong>",
+   "en": "<strong>5.4.1 Data Integrity (ALCOA)</strong>"
+  },
+  {
+   "zh": "中文解析：數據完整性與 ALCOA 原則",
+   "en": "Commentary: Data Integrity and the ALCOA Principles"
+  },
+  {
+   "zh": "<strong>EM 數據完整性的常見風險點：</strong>",
+   "en": "<strong>Common data integrity risk points in EM:</strong>"
+  },
+  {
+   "zh": "<strong>採樣與培養的全程追溯：</strong>必須有正式機制確保每個樣品從採集、培養到讀盤結果都可追溯，不能「漏」樣品",
+   "en": "<strong>End-to-end traceability of sampling and incubation:</strong> A formal mechanism must ensure that every sample is traceable from collection through incubation to plate reading, so that no sample can be \"lost\""
+  },
+  {
+   "zh": "<strong>禁止非受控介質：</strong>不可在便利貼、筆記本上先記錄再謄抄到正式表格",
+   "en": "<strong>No uncontrolled media:</strong> Results must not first be recorded on sticky notes or in notebooks and then transcribed onto the official form"
+  },
+  {
+   "zh": "<strong>禁止銷毀原始記錄：</strong>只有在規定的保存期限屆滿後才能銷毀",
+   "en": "<strong>No destruction of original records:</strong> Records may be destroyed only after the specified retention period has expired"
+  },
+  {
+   "zh": "<strong>二人覆核 (Second-person Verification)：</strong>",
+   "en": "<strong>Second-person verification:</strong>"
+  },
+  {
+   "zh": "應考慮是否需要第二人覆核 CFU 計數",
+   "en": "Consider whether a second person is needed to verify CFU counts"
+  },
+  {
+   "zh": "更重要的是建立穩健的讀盤程序：適當照明、放大鏡、人員培訓",
+   "en": "More importantly, establish a robust plate-reading procedure: appropriate lighting, magnifiers, and personnel training"
+  },
+  {
+   "zh": "可用 QRM 原則決定是否需要（如 Grade A 的 EM 可能需要）",
+   "en": "QRM principles can be used to decide whether it is needed (for example, Grade A EM may require it)"
+  },
+  {
+   "zh": "自動化系統可消除偏差並取代二人覆核",
+   "en": "Automated systems can eliminate bias and replace second-person verification"
+  },
+  {
+   "zh": "EM 記錄的最低要素 (Minimum Record Elements)",
+   "en": "Minimum Record Elements for EM Records"
+  },
+  {
+   "zh": "每筆 EM 數據記錄至少應包含以下 10 項資訊：操作員/分析員身分、監測日期與時間、使用設備、具體採樣位置、採樣方法含培養基、培養條件、CFU 或粒子計數結果、執行的鑑定、批次資訊（如適用）、現行 Alert/Action 限度。",
+   "en": "Each EM data record should contain at least the following 10 items of information: operator/analyst identity, date and time of monitoring, equipment used, specific sampling location, sampling method including culture medium, incubation conditions, CFU or particle count result, identifications performed, batch information (if applicable), and current Alert/Action limits."
+  },
+  {
+   "zh": "<strong>5.4.2 Data Trending Analysis 5.4.2 資料趨勢分析</strong>",
+   "en": "<strong>5.4.2 Data Trending Analysis</strong>"
+  },
+  {
+   "zh": "中文解析：數據趨勢分析工具",
+   "en": "Commentary: Data Trending Analysis Tools"
+  },
+  {
+   "zh": "<strong>直方圖 (Histograms)：</strong>將 CFU 計數按頻率分佈呈現。不同等級的潔淨室會產生不同形態的直方圖：",
+   "en": "<strong>Histograms:</strong> These present CFU counts as a frequency distribution. Cleanrooms of different grades produce histograms of different shapes:"
+  },
+  {
+   "zh": "<strong>ISO 5：</strong>絕大多數為 0 CFU，極少有非零值",
+   "en": "<strong>ISO 5:</strong> The vast majority of results are 0 CFU, with very few non-zero values"
+  },
+  {
+   "zh": "<strong>ISO 7：</strong>偏態分佈，集中在 0–5 CFU",
+   "en": "<strong>ISO 7:</strong> A skewed distribution, concentrated at 0-5 CFU"
+  },
+  {
+   "zh": "<strong>ISO 8：</strong>分佈較寬，可能達到 20+ CFU",
+   "en": "<strong>ISO 8:</strong> A wider distribution, which may reach 20+ CFU"
+  },
+  {
+   "zh": "<strong>關鍵原則：</strong>每個區域或區域類型必須視為獨立的數據集進行分析，不可混合不同等級的數據。",
+   "en": "<strong>Key principle:</strong> Each area or area type must be analyzed as a separate data set; data from different grades must not be mixed."
+  },
+  {
+   "zh": "<strong>趨勢分析的三個維度：</strong>",
+   "en": "<strong>Three dimensions of trend analysis:</strong>"
+  },
+  {
+   "zh": "<strong>計數趨勢 (Counts)</strong> — CFU 數值隨時間的變化",
+   "en": "<strong>Counts</strong> — changes in CFU values over time"
+  },
+  {
+   "zh": "<strong>發生次數趨勢 (Occurrences)</strong> — 超標事件的頻率",
+   "en": "<strong>Occurrences</strong> — the frequency of excursion events"
+  },
+  {
+   "zh": "<strong>菌種趨勢 (Organism Types)</strong> — 回收微生物種類的變化",
+   "en": "<strong>Organism Types</strong> — changes in the types of microorganisms recovered"
+  },
+  {
+   "zh": "<strong>潔淨室地圖 (Cleanroom Maps)：</strong>將超標事件標示在平面圖上，可視覺化呈現不同等級之間的連通性和潛在的微生物侵入路徑（通過設備流和人員流）。",
+   "en": "<strong>Cleanroom Maps:</strong> Plotting excursion events on a floor plan gives a visual picture of the connectivity between different grades and the potential routes of microbial ingress (through equipment flow and personnel flow)."
+  },
+  {
+   "zh": "更多統計方法和控制圖的範例可參考 <strong>PDA TR59</strong>: Utilization of Statistical Methods for Production Monitoring。",
+   "en": "For more examples of statistical methods and control charts, see <strong>PDA TR59</strong>: Utilization of Statistical Methods for Production Monitoring."
+  },
+  {
+   "zh": "<strong>5.4.3 Interpretation &amp; Contamination Recovery Rates 5.4.3 結果判讀與污染回收率</strong>",
+   "en": "<strong>5.4.3 Interpretation &amp; Contamination Recovery Rates</strong>"
+  },
+  {
+   "zh": "中文解析：數據解讀 — 超標率 vs 回收率",
+   "en": "Commentary: Interpreting Data: Excursion Rate vs Recovery Rate"
+  },
+  {
+   "zh": "<strong>超標率 (Excursion Rate)：</strong>",
+   "en": "<strong>Excursion Rate:</strong>"
+  },
+  {
+   "zh": "= 超過 Alert/Action 限度的樣品數 ÷ 總採樣數 × 100%",
+   "en": "= number of samples exceeding the Alert/Action limit ÷ total number of samples taken × 100%"
+  },
+  {
+   "zh": "關注的是「超過設定限度」的比例",
+   "en": "Focuses on the proportion of samples that \"exceed the set limit\""
+  },
+  {
+   "zh": "<strong>汙染回收率 (Contamination Recovery Rate, CRR)：</strong>",
+   "en": "<strong>Contamination Recovery Rate (CRR):</strong>"
+  },
+  {
+   "zh": "= 檢出任何微生物的樣品數 ÷ 總採樣數 × 100%",
+   "en": "= number of samples in which any microorganism is detected ÷ total number of samples taken × 100%"
+  },
+  {
+   "zh": "關注的是「有微生物生長」的比例，不論是否超過限度",
+   "en": "Focuses on the proportion of samples with \"microbial growth\", whether or not a limit is exceeded"
+  },
+  {
+   "zh": "<strong>兩者不同！</strong>一個樣品可能有 1 CFU（陽性回收但未超標），則計入 CRR 但不計入 Excursion Rate。",
+   "en": "<strong>The two are different!</strong> A sample with 1 CFU (a positive recovery that does not exceed a limit) counts toward the CRR but not toward the Excursion Rate."
+  },
+  {
+   "zh": "<strong>EM 的固有局限性：</strong>TR13 特別提醒，合規的 EM 結果<strong>不保證</strong>製程的無菌保證 (sterility assurance)。EM 有多重限制：",
+   "en": "<strong>Inherent limitations of EM:</strong> TR13 specifically reminds us that compliant EM results do <strong>not</strong> guarantee sterility assurance of the process. EM has multiple limitations:"
+  },
+  {
+   "zh": "採樣方法的回收效率有限",
+   "en": "The recovery efficiency of sampling methods is limited"
+  },
+  {
+   "zh": "採樣位置只涵蓋空間的極小部分",
+   "en": "Sampling locations cover only a very small fraction of the space"
+  },
+  {
+   "zh": "EM 只能在一定程度上確認設計和流程的穩健性",
+   "en": "EM can confirm the robustness of the design and processes only to a certain extent"
+  },
+  {
+   "zh": "<strong>Grade A/ISO 5 的特殊要求：</strong>在 Grade A 區域，<strong>任何</strong>微生物回收都必須調查，因為預期該區域不應有任何微生物回收 (no viable recoveries)。",
+   "en": "<strong>Special requirements for Grade A/ISO 5:</strong> In Grade A areas, <strong>any</strong> microbial recovery must be investigated, because no viable recoveries are expected in this area."
+  },
+  {
+   "zh": "<strong>CRR 的應用建議：</strong>",
+   "en": "<strong>Recommendations for applying CRR:</strong>"
+  },
+  {
+   "zh": "應為每個監測屬性（表面、空氣、更衣服）分別建立 CRR",
+   "en": "Establish a CRR separately for each monitoring attribute (surfaces, air, gowning)"
+  },
+  {
+   "zh": "至少每月評估一次（USP &lt;1116&gt; 建議）",
+   "en": "Evaluate at least monthly (as recommended by USP &lt;1116&gt;)"
+  },
+  {
+   "zh": "CRR 的任何變化都應調查並糾正",
+   "en": "Any change in CRR should be investigated and corrected"
+  },
+  {
+   "zh": "<strong>Table 5.4.4-1: Contamination Recovery Rates Suggested by USP Chapter &lt;1116&gt; Table 5.4.4-1：USP Chapter &lt;1116&gt; 建議之污染回收率</strong>",
+   "en": "<strong>Table 5.4.4-1: Contamination Recovery Rates Suggested by USP Chapter &lt;1116&gt;</strong>"
+  },
+  {
+   "zh": "Table Note / 表格附註",
+   "en": "Table Note"
+  },
+  {
+   "zh": "<strong>中文說明：</strong>此表假設所有人員均穿著無菌更衣。對於非無菌產品生產區域或未穿著完整無菌更衣的分類環境，可使用其他經適當論證的回收率標準。",
+   "en": "<strong>Commentary:</strong> This table assumes that all personnel wear sterile gowning. For non-sterile product manufacturing areas, or classified environments where full sterile gowning is not worn, other appropriately justified recovery rate criteria may be used."
+  },
+  {
+   "zh": "中文解析：CRR 表格的實務應用",
+   "en": "Commentary: Practical Application of the CRR Table"
+  },
+  {
+   "zh": "<strong>如何使用此表：</strong>",
+   "en": "<strong>How to use this table:</strong>"
+  },
+  {
+   "zh": "<strong>Isolator/cRABS/ISO 5 (最嚴)：</strong>CRR &lt;0.1%，意味著每 1,000 個樣品中不超過 1 個陽性",
+   "en": "<strong>Isolator/cRABS/ISO 5 (strictest):</strong> CRR &lt;0.1%, meaning no more than 1 positive in every 1,000 samples"
+  },
+  {
+   "zh": "<strong>ISO 5 (open)：</strong>CRR &lt;1%，每 100 個樣品中不超過 1 個陽性",
+   "en": "<strong>ISO 5 (open):</strong> CRR &lt;1%, no more than 1 positive in every 100 samples"
+  },
+  {
+   "zh": "<strong>ISO 7：</strong>CRR &lt;5%，每 100 個樣品中不超過 5 個陽性",
+   "en": "<strong>ISO 7:</strong> CRR &lt;5%, no more than 5 positives in every 100 samples"
+  },
+  {
+   "zh": "<strong>ISO 8：</strong>CRR &lt;10%，每 100 個樣品中不超過 10 個陽性",
+   "en": "<strong>ISO 8:</strong> CRR &lt;10%, no more than 10 positives in every 100 samples"
+  },
+  {
+   "zh": "<strong>評估頻率：</strong>USP &lt;1116&gt; 建議至少<strong>每月</strong>評估 CRR。",
+   "en": "<strong>Evaluation frequency:</strong> USP &lt;1116&gt; recommends evaluating the CRR at least <strong>monthly</strong>."
+  },
+  {
+   "zh": "<strong>趨勢解讀需注意的情境：</strong>",
+   "en": "<strong>Situations requiring attention when interpreting trends:</strong>"
+  },
+  {
+   "zh": "短時間內多次超標 → 可能形成群集 (cluster)，需要調查",
+   "en": "Multiple excursions within a short period → a possible cluster, which requires investigation"
+  },
+  {
+   "zh": "數據波動突然增加 → 可能因施工活動、設施條件變化、季節因素等",
+   "en": "A sudden increase in data variability → possibly due to construction activity, changes in facility conditions, seasonal factors, and so on"
+  },
+  {
+   "zh": "菌群 (flora) 突然改變 → 可能有新的汙染源或消毒劑效力下降",
+   "en": "A sudden change in flora → possibly a new contamination source or reduced disinfectant efficacy"
+  },
+  {
+   "zh": "<strong>微生物學家的角色：</strong>TR13 強調，重大計數波動或菌群變化的影響評估，應基於<strong>有經驗的合格微生物學家</strong>的專業判斷。這不是可以純粹自動化的工作。",
+   "en": "<strong>The role of the microbiologist:</strong> TR13 stresses that the impact assessment of significant count fluctuations or flora changes should be based on the professional judgment of an <strong>experienced, qualified microbiologist</strong>. This work cannot be purely automated."
+  },
+  {
+   "zh": "Practice Questions / 練習思考題",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "你的 ISO 7 房間有 500 筆歷史數據，你會選用哪種統計方法來設定 Alert/Action 限度？為什麼？（提示：考慮三種方法各自的最低數據量要求）",
+   "en": "Your ISO 7 room has 500 historical data points. Which statistical method would you choose to set the Alert/Action limits, and why? (Hint: consider the minimum data requirement of each of the three methods.)"
+  },
+  {
+   "zh": "某 ISO 5 填充線在一週內同一地點出現 2 次 Active Air Alert 超標（各 1 CFU），你會如何處理？需要升級為偏差調查嗎？",
+   "en": "In an ISO 5 filling line, 2 Active Air Alert excursions (1 CFU each) occur at the same location within one week. How would you handle this? Does it need to be escalated to a deviation investigation?"
+  },
+  {
+   "zh": "年度趨勢報告中，某 ISO 7 更衣區的 CRR 從去年的 3.2% 上升到今年的 4.8%（仍低於 USP &lt;1116&gt; 建議的 &lt;5%），你是否應該調查？為什麼？",
+   "en": "In the annual trend report, the CRR for an ISO 7 gowning area rose from 3.2% last year to 4.8% this year (still below the &lt;5% suggested by USP &lt;1116&gt;). Should you investigate? Why?"
+  },
+  {
+   "zh": "一位技術員在便利貼上先記錄了 CFU 計數結果，然後再謄抄到正式工作表上。這違反了 ALCOA 的哪些原則？應如何改善？",
+   "en": "A technician first recorded the CFU count on a sticky note and then transcribed it onto the official worksheet. Which ALCOA principles does this violate? How should it be improved?"
+  },
+  {
+   "zh": "你的公司正在導入一套即時微生物偵測系統（不基於 CFU），傳統的 CFU-based Alert/Action 限度不適用。根據 TR13 Section 5.3 的指引，CRR 如何幫助解決這個問題？",
+   "en": "Your company is introducing a real-time microbial detection system (not CFU-based), so traditional CFU-based Alert/Action limits do not apply. According to the guidance in TR13 Section 5.3, how can CRR help solve this problem?"
+  },
+  {
+   "zh": "Section Summary / 本節摘要",
+   "en": "Section Summary"
+  }
+ ]
+}

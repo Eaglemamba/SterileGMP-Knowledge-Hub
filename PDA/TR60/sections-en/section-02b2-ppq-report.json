@@ -1,0 +1,801 @@
+{
+ "source": "section-02b2-ppq-report.html",
+ "blocks": [
+  {
+   "zh": "PPQ 方案與報告 — 加強取樣計畫、批次數量論證與研究設計",
+   "en": "PPQ Protocol and Report — Enhanced Sampling Plans, Batch Number Justification and Study Design"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解 PPQ 加強取樣計畫 (Enhanced Sampling Plan) 的設計邏輯，包括三大統計工具：Individual Value Plots、Tolerance Intervals、Variance Components",
+   "en": "Understand the design logic of the PPQ Enhanced Sampling Plan, including its three statistical tools: Individual Value Plots, Tolerance Intervals and Variance Components"
+  },
+  {
+   "zh": "掌握取樣數量如何依據 CQA 關鍵性等級 (criticality) 進行風險分層設定",
+   "en": "Learn how sample numbers are set through risk-based tiering according to CQA criticality"
+  },
+  {
+   "zh": "學習 PPQ 批次數量的風險評估決策樹方法，以及 N=3 基線的科學依據",
+   "en": "Learn the risk-assessment decision tree approach for the number of PPQ batches, and the scientific basis for the N=3 baseline"
+  },
+  {
+   "zh": "了解 PPQ 在正常操作條件下執行的原則，以及個別單元操作研究與分組 (bracketing/matrix/family) 策略",
+   "en": "Understand the principle that PPQ is run under normal operating conditions, and the strategies for individual unit operation studies and grouping (bracketing/matrix/family)"
+  },
+  {
+   "zh": "認識 PPQ 數據分析報告的結構化呈現方式，以及無法執行統計分析時的替代策略",
+   "en": "Learn how PPQ data analysis reports are structured, and the alternative strategies when statistical analysis cannot be performed"
+  },
+  {
+   "zh": "本節目錄 Section Contents",
+   "en": "Section Contents"
+  },
+  {
+   "zh": "<strong>4.4.2.1 Enhanced Sampling Plans &amp; Statistical Tools for PPQ 4.4.2.1 PPQ 之強化取樣計畫與統計工具</strong>",
+   "en": "<strong>4.4.2.1 Enhanced Sampling Plans &amp; Statistical Tools for PPQ</strong>"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念：加強取樣計畫 Enhanced Sampling Plan",
+   "en": "Core Concept: Enhanced Sampling Plan"
+  },
+  {
+   "zh": "<strong>Enhanced Sampling Plan (加強取樣計畫)</strong> 是 PPQ 階段的核心設計要素。與日常生產的常規取樣不同，PPQ 階段需要收集更多樣本，目的是建立對製程變異性的統計信心。",
+   "en": "The <strong>Enhanced Sampling Plan</strong> is a core design element of the PPQ stage. Unlike routine sampling in day-to-day production, PPQ collects more samples in order to build statistical confidence in process variability."
+  },
+  {
+   "zh": "PPQ 使用三大統計工具來分析數據：",
+   "en": "PPQ uses three main statistical tools to analyze the data:"
+  },
+  {
+   "zh": "<strong>Individual Value Plots (個別值圖)：</strong>最直覺的視覺化工具，將每個數據點繪製在圖上，同時展示批內和批間的變異分布",
+   "en": "<strong>Individual Value Plots:</strong> the most intuitive visualization tool; every data point is plotted, showing the distribution of both within-batch and between-batch variation"
+  },
+  {
+   "zh": "<strong>Tolerance Intervals (容許區間)：</strong>PPQ 中最常用的統計工具，用來衡量製程的管控能力和能力指標，將觀察到的變異與規格進行客觀比較",
+   "en": "<strong>Tolerance Intervals:</strong> the statistical tool most commonly used in PPQ; it measures process control and capability by comparing the observed variation with the specification objectively"
+  },
+  {
+   "zh": "<strong>Variance Components (變異成分分析)：</strong>將總變異拆解為「批內變異」和「批間變異」，幫助理解變異的來源",
+   "en": "<strong>Variance Components:</strong> breaks total variation down into \"within-batch variation\" and \"between-batch variation\" to help you understand where the variation comes from"
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "想像你是一位餐廳品管經理，要確認新廚師團隊的出品是否穩定。你不會只在開業當天嚐一道菜就下結論（常規取樣），而是會在開業前幾天，每天的早、中、晚各多嚐幾道菜（加強取樣），這樣才能判斷：",
+   "en": "Imagine you are the quality manager of a restaurant and need to confirm that a new kitchen team produces consistent food. You would not taste a single dish on opening day and draw a conclusion (routine sampling). Instead, in the days before opening, you would taste several dishes in the morning, at midday and in the evening each day (enhanced sampling), so that you can judge:"
+  },
+  {
+   "zh": "<strong>個別值圖</strong> = 把每道菜的評分畫在圖上，一眼看出整體分布",
+   "en": "<strong>Individual value plot</strong> = plotting the score of every dish on a chart to see the overall distribution at a glance"
+  },
+  {
+   "zh": "<strong>容許區間</strong> = 計算「95% 的菜品評分會落在哪個範圍」，看是否都在及格線以上",
+   "en": "<strong>Tolerance interval</strong> = calculating \"the range in which 95% of dish scores will fall\" and checking whether it is entirely above the pass mark"
+  },
+  {
+   "zh": "<strong>變異成分</strong> = 分析評分差異是來自「同一天不同時段」還是「不同天之間」",
+   "en": "<strong>Variance components</strong> = analyzing whether score differences come from \"different times on the same day\" or \"different days\""
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "<strong>B/M/E 取樣策略：</strong>無菌充填產品的取樣必須對齊充填過程的三個時間點 — 開始 (Beginning)、中間 (Middle)、結束 (End)。這不是隨意設計的，而是為了捕捉充填過程中可能的時間相關變異（例如：設備磨損、溫度漂移、操作員疲勞等）。",
+   "en": "<strong>B/M/E sampling strategy:</strong> for aseptically filled products, sampling must be aligned with three points in the filling run: Beginning, Middle and End. This is not arbitrary; it is designed to capture time-related variation that may occur during filling (for example equipment wear, temperature drift and operator fatigue)."
+  },
+  {
+   "zh": "<strong>最低取樣量：</strong>每個時間點最少 n=2（共 6 個樣本），才能進行變異成分計算。根據屬性的關鍵性，可增加到 n=5（共 15 個樣本）。",
+   "en": "<strong>Minimum sample size:</strong> at least n=2 per time point (6 samples in total) is needed to calculate variance components. Depending on the criticality of the attribute, this can be increased to n=5 (15 samples in total)."
+  },
+  {
+   "zh": "風險分層取樣邏輯",
+   "en": "Risk-Tiered Sampling Logic"
+  },
+  {
+   "zh": "CQA 關鍵性     嚴重度     信心/涵蓋度     取樣需求\n─────────────────────────────────────────────\nPotency        High       95/99          +++（最多樣本）\nOsmolality     Medium     95/95          ++\npH             Low        95/90          +（最少樣本）\n\n「95/99」意義：\n  95% 信心度下，至少 99% 的未來量測值\n  將落在規格範圍內\n\n最低取樣量公式：\n  n_min = 2 per timepoint × 3 timepoints = 6\n  n_max = 5 per timepoint × 3 timepoints = 15",
+   "en": "CQA criticality   Severity   Confidence/coverage   Sampling need\n─────────────────────────────────────────────\nPotency        High       95/99          +++ (most samples)\nOsmolality     Medium     95/95          ++\npH             Low        95/90          + (fewest samples)\n\nMeaning of \"95/99\":\n  With 95% confidence, at least 99% of future\n  measured values will fall within the specification range\n\nMinimum and maximum sample size:\n  n_min = 2 per timepoint × 3 timepoints = 6\n  n_max = 5 per timepoint × 3 timepoints = 15"
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "為什麼加強取樣計畫要求每個時間點至少 n=2 的重複？如果只取 n=1 會有什麼統計限制？",
+   "en": "Why does the Enhanced Sampling Plan require at least n=2 replicates at each time point? What statistical limitation would there be if only n=1 were taken?"
+  },
+  {
+   "zh": "如果某個 CQA 被評為高關鍵性但歷史變異極小，你會如何調整取樣策略？",
+   "en": "If a CQA is rated high criticality but its historical variability is very small, how would you adjust the sampling strategy?"
+  },
+  {
+   "zh": "95/99 與 95/90 容許區間在實務中的差異是什麼？對取樣數量有何影響？",
+   "en": "What is the practical difference between 95/99 and 95/90 tolerance intervals, and how does it affect the number of samples?"
+  },
+  {
+   "zh": "<strong>4.4.2.1.1 Sample-Size Selection Considerations 4.4.2.1.1 樣本量選擇考量</strong>",
+   "en": "<strong>4.4.2.1.1 Sample-Size Selection Considerations</strong>"
+  },
+  {
+   "zh": "核心概念：取樣數量決定邏輯",
+   "en": "Core Concept: Logic for Deciding the Sample Size"
+  },
+  {
+   "zh": "取樣數量的決定不是拍腦袋，而是基於兩個輸入：",
+   "en": "The sample size is not decided by guesswork; it is based on two inputs:"
+  },
+  {
+   "zh": "<strong>Prior Knowledge (先驗知識)：</strong>來自 Stage 1 的開發數據，包括臨床批次、特性化研究或工程批次的歷史數據",
+   "en": "<strong>Prior Knowledge:</strong> development data from Stage 1, including historical data from clinical batches, characterization studies or engineering batches"
+  },
+  {
+   "zh": "<strong>CQA Criticality (CQA 關鍵性)：</strong>在 Stage 1 的風險評估中已確定的屬性關鍵性等級",
+   "en": "<strong>CQA Criticality:</strong> the criticality level of the attribute, already determined in the Stage 1 risk assessment"
+  },
+  {
+   "zh": "核心方法是用 Stage 1 的數據來預估所需取樣量，使用與 PPQ 分析相同的工具 — Tolerance Interval (容許區間) — 來反推需要多少樣本才能達到目標信心水準。",
+   "en": "The core method is to use Stage 1 data to estimate the required sample size, using the same tool as the PPQ analysis, the Tolerance Interval, to work backwards to the number of samples needed to reach the target confidence level."
+  },
+  {
+   "zh": "重點提示：緊急情境下的最低取樣策略",
+   "en": "Key Notes: Minimum Sampling Strategy in Emergency Situations"
+  },
+  {
+   "zh": "TR60 特別提到<strong>疫情緊急應變 (pandemic response)</strong> 等特殊情境。當沒有足夠的先驗知識時，可以採用統一的最低取樣策略：",
+   "en": "TR60 specifically mentions special situations such as <strong>pandemic response</strong>. When there is not enough prior knowledge, a uniform minimum sampling strategy can be adopted:"
+  },
+  {
+   "zh": "每個屬性均取 n=6（B/M/E 各 2 個）",
+   "en": "n=6 for every attribute (2 each at B/M/E)"
+  },
+  {
+   "zh": "統一使用 95/95 信心/涵蓋度水準",
+   "en": "A uniform 95/95 confidence/coverage level"
+  },
+  {
+   "zh": "雖然取樣量最少，但仍足以進行變異成分分析和信心度聲明",
+   "en": "Although the sample size is the minimum, it is still sufficient for variance components analysis and confidence statements"
+  },
+  {
+   "zh": "這是一種「安全底線」設計 — 確保即使在最緊急的情況下，仍能獲得有意義的統計結論。",
+   "en": "This is a \"safety floor\" design: it ensures that meaningful statistical conclusions can still be obtained even in the most urgent circumstances."
+  },
+  {
+   "zh": "就像醫生的體檢方案：如果你有完整的病歷（先驗知識），醫生可以針對你的風險因素設計客製化檢查項目（風險分層取樣）。但如果你是第一次來看診、沒有任何病歷（無先驗知識），醫生會安排一套標準的基本檢查套餐（95/95 統一最低取樣），確保至少能發現主要問題。",
+   "en": "It is like a medical check-up plan. If you have a full medical history (prior knowledge), the doctor can design customized tests around your risk factors (risk-tiered sampling). But if it is your first visit and you have no records (no prior knowledge), the doctor will arrange a standard basic check-up package (uniform 95/95 minimum sampling) to make sure the main problems are at least detected."
+  },
+  {
+   "zh": "<strong>4.4.2.1.2 Sample Size Methods 4.4.2.1.2 樣本量方法</strong>",
+   "en": "<strong>4.4.2.1.2 Sample Size Methods</strong>"
+  },
+  {
+   "zh": "核心概念：容許區間法的三個輸入",
+   "en": "Core Concept: Three Inputs of the Tolerance Interval Method"
+  },
+  {
+   "zh": "使用 <strong>Tolerance Interval Method (容許區間法)</strong> 決定取樣量需要三個來自 Stage 1 的資訊：",
+   "en": "Using the <strong>Tolerance Interval Method</strong> to decide the sample size requires three pieces of information from Stage 1:"
+  },
+  {
+   "zh": "<strong>CQA 關鍵性等級</strong> — 決定目標信心/涵蓋度（如 95/99 vs 95/90）",
+   "en": "<strong>CQA criticality level</strong> — determines the target confidence/coverage (for example 95/99 vs 95/90)"
+  },
+  {
+   "zh": "<strong>Stage 1 開發數據</strong> — 提供平均值和標準差的點估計和信賴區間，這些數據可來自臨床批、特性化研究或工程批次",
+   "en": "<strong>Stage 1 development data</strong> — provides point estimates and confidence intervals for the mean and standard deviation; these data can come from clinical batches, characterization studies or engineering batches"
+  },
+  {
+   "zh": "<strong>CQA 關鍵性與風險等級的對應程序</strong> — 一份正式的程序文件，將關鍵性分級對應到具體的取樣需求",
+   "en": "<strong>A procedure mapping CQA criticality to risk level</strong> — a formal procedure document that maps the criticality tiers to specific sampling requirements"
+  },
+  {
+   "zh": "重點提示：技術轉移也是 Stage 1",
+   "en": "Key Notes: Technology Transfer Is Also Stage 1"
+  },
+  {
+   "zh": "TR60 明確指出：Stage 1 不限於新產品。對於 Technology Transfer (技術轉移, TT)，歷史商業批次的回顧性評估同樣可以作為 Stage 1 的數據基礎。這意味著接收 CDMO 可以利用原廠的歷史數據來設計 PPQ 取樣計畫，而不需要從零開始。",
+   "en": "TR60 states explicitly that Stage 1 is not limited to new products. For Technology Transfer (TT), a retrospective evaluation of historical commercial batches can equally serve as the Stage 1 data basis. This means a receiving CDMO can use the originator's historical data to design the PPQ sampling plan instead of starting from scratch."
+  },
+  {
+   "zh": "取樣計畫表就像一份「體檢套餐菜單」：",
+   "en": "A sampling plan table is like a \"check-up package menu\":"
+  },
+  {
+   "zh": "<strong>CCI</strong> 像心電圖 — 需要較多量測點 (n=12) 才能確認完整性",
+   "en": "<strong>CCI</strong> is like an electrocardiogram — more measurement points (n=12) are needed to confirm integrity"
+  },
+  {
+   "zh": "<strong>pH/Osmolality</strong> 像血壓 — B/M/E 各 3 次足以反映穩定性",
+   "en": "<strong>pH/Osmolality</strong> are like blood pressure — 3 readings each at B/M/E are enough to reflect stability"
+  },
+  {
+   "zh": "<strong>Bioassay</strong> 像基因檢測 — 一次即可，因為方法本身已有高靈敏度且檢測成本高",
+   "en": "<strong>Bioassay</strong> is like genetic testing — once is enough, because the method itself is highly sensitive and the test is costly"
+  },
+  {
+   "zh": "每項檢查的次數不是越多越好，而是要根據該項目的臨床重要性和方法特性來合理設定。",
+   "en": "More tests for each item is not always better; the number should be set reasonably according to the clinical importance of the item and the characteristics of the method."
+  },
+  {
+   "zh": "實務應用 Practical Application",
+   "en": "Practical Application"
+  },
+  {
+   "zh": "<strong>CDMO 情境：</strong>當你的公司承接一個生物製劑的技術轉移專案時，應該：",
+   "en": "<strong>CDMO scenario:</strong> when your company takes on a technology transfer project for a biologic, you should:"
+  },
+  {
+   "zh": "向原廠索取完整的 Stage 1 數據包（臨床批/商業批的分析結果）",
+   "en": "Ask the originator for the complete Stage 1 data package (analytical results from clinical/commercial batches)"
+  },
+  {
+   "zh": "利用原廠數據的平均值和標準差，反推每個 CQA 在目標信心水準下所需的最低取樣量",
+   "en": "Use the originator's means and standard deviations to work backwards to the minimum sample size needed for each CQA at the target confidence level"
+  },
+  {
+   "zh": "如果原廠數據不足以計算，則採用 n=6 的最低標準",
+   "en": "If the originator's data are insufficient for the calculation, adopt the minimum standard of n=6"
+  },
+  {
+   "zh": "將這些決策和依據記錄在 PVMP 中",
+   "en": "Record these decisions and their rationale in the PVMP"
+  },
+  {
+   "zh": "<strong>4.4.2.1.3 Drug Product PPQ Analysis of Enhanced Samples 4.4.2.1.3 藥品 PPQ 強化樣品分析</strong>",
+   "en": "<strong>4.4.2.1.3 Drug Product PPQ Analysis of Enhanced Samples</strong>"
+  },
+  {
+   "zh": "核心概念：PPQ 報告的結構化分析架構",
+   "en": "Core Concept: Structured Analysis Framework for the PPQ Report"
+  },
+  {
+   "zh": "TR60 建議 PPQ 報告應包含層次分明的分析結構：",
+   "en": "TR60 recommends that the PPQ report contain a clearly layered analysis structure:"
+  },
+  {
+   "zh": "<strong>總覽摘要表：</strong>所有屬性的摘要統計量、容許區間和變異成分，按批次呈現",
+   "en": "<strong>Overview summary table:</strong> summary statistics, tolerance intervals and variance components for all attributes, presented by batch"
+  },
+  {
+   "zh": "逐屬性詳細分析：",
+   "en": "Detailed analysis for each attribute:"
+  },
+  {
+   "zh": "個別值圖（所有批次繪製在同一圖上）",
+   "en": "Individual value plot (all batches on the same plot)"
+  },
+  {
+   "zh": "容許區間圖表",
+   "en": "Tolerance interval chart"
+  },
+  {
+   "zh": "變異成分分析表",
+   "en": "Variance components analysis table"
+  },
+  {
+   "zh": "每個屬性的管控與能力總結聲明",
+   "en": "Control and capability summary statement for each attribute"
+  },
+  {
+   "zh": "這種結構化方法確保審查者能快速掌握整體狀況，同時也能深入檢視個別屬性。",
+   "en": "This structured approach lets reviewers quickly grasp the overall picture while still being able to examine individual attributes in depth."
+  },
+  {
+   "zh": "重點提示：無法執行統計分析的情境",
+   "en": "Key Notes: Situations Where Statistical Analysis Cannot Be Performed"
+  },
+  {
+   "zh": "實務上有兩種常見情況會導致無法執行統計分析：",
+   "en": "In practice there are two common situations in which statistical analysis cannot be performed:"
+  },
+  {
+   "zh": "<strong>低於偵測極限 (LOD)：</strong>所有數值都是「&lt;LOD」，沒有可報告的數值 — 此時圖形和統計分析都無法進行",
+   "en": "<strong>Below the limit of detection (LOD):</strong> all values are \"&lt;LOD\" and there is no reportable value, so neither graphical nor statistical analysis can be carried out"
+  },
+  {
+   "zh": "<strong>不夠多的獨特值：</strong>由於數據四捨五入、方法精密度限制或製程變異極小，導致大多數結果相同 — 此時容許區間和變異成分無法計算，但圖形分析仍可提供有力的視覺證據",
+   "en": "<strong>Not enough unique values:</strong> because of data rounding, limits of method precision or very small process variation, most results are identical; tolerance intervals and variance components cannot then be calculated, but graphical analysis can still provide strong visual evidence"
+  },
+  {
+   "zh": "<strong>實務建議：</strong>向分析實驗室索取未經截斷的原始分析數據 (raw analytical data)，而非四捨五入後的報告數據，可以大幅減少「不夠多獨特值」的問題。",
+   "en": "<strong>Practical recommendation:</strong> ask the analytical laboratory for the untruncated raw analytical data rather than the rounded reported data; this can greatly reduce the \"not enough unique values\" problem."
+  },
+  {
+   "zh": "PPQ 報告的結構就像一份投資分析報告：",
+   "en": "The structure of a PPQ report is like an investment analysis report:"
+  },
+  {
+   "zh": "<strong>摘要表</strong> = 投資組合總覽頁，快速看到所有持股的績效",
+   "en": "<strong>Summary table</strong> = the portfolio overview page, showing the performance of all holdings at a glance"
+  },
+  {
+   "zh": "<strong>個別值圖</strong> = 各支股票的走勢圖",
+   "en": "<strong>Individual value plots</strong> = the price chart of each stock"
+  },
+  {
+   "zh": "<strong>容許區間</strong> = 各股票的風險評估（波動率分析）",
+   "en": "<strong>Tolerance intervals</strong> = the risk assessment of each stock (volatility analysis)"
+  },
+  {
+   "zh": "<strong>管控聲明</strong> = 各股票的投資建議總結",
+   "en": "<strong>Control statements</strong> = the summary investment recommendation for each stock"
+  },
+  {
+   "zh": "審查者（如同投資委員會）需要同時看到全局和個別細節才能做出決策。",
+   "en": "Reviewers (like an investment committee) need to see both the big picture and the individual details to make a decision."
+  },
+  {
+   "zh": "在 PPQ 報告中，為什麼建議將所有批次的數據繪製在同一張個別值圖上？這對審查者的判斷有什麼幫助？",
+   "en": "In a PPQ report, why is it recommended to plot the data from all batches on the same individual value plot? How does this help the reviewer's judgment?"
+  },
+  {
+   "zh": "如果某個 CQA 的測試結果全部為「&lt;LOD」，你會在 PPQ 報告中如何處理和說明？",
+   "en": "If the test results for a CQA are all \"&lt;LOD\", how would you handle and explain this in the PPQ report?"
+  },
+  {
+   "zh": "「管控與能力總結聲明」應該包含哪些要素？如何區分「受控」和「具能力」？",
+   "en": "What elements should the \"control and capability summary statement\" include? How do you distinguish \"in control\" from \"capable\"?"
+  },
+  {
+   "zh": "<strong>4.4.2.2 Risk-Based Justification for Number of PPQ Batches 4.4.2.2 PPQ 批次數量之風險論證</strong>",
+   "en": "<strong>4.4.2.2 Risk-Based Justification for Number of PPQ Batches</strong>"
+  },
+  {
+   "zh": "核心概念：PPQ 批次數量決定的三步驟法",
+   "en": "Core Concept: The Three-Step Method for Deciding the Number of PPQ Batches"
+  },
+  {
+   "zh": "PPQ 需要幾批？這是每個驗證專案最常被問到的問題。TR60 提供了一個系統化的三步驟決策框架：",
+   "en": "How many PPQ batches are needed? This is the question asked most often in every validation project. TR60 provides a systematic three-step decision framework:"
+  },
+  {
+   "zh": "<strong>Step 1 - 確定基線批次數：</strong>根據產品和製程知識水準，確定最低批次數（基線 N）。知識越多，起始批次數越少。",
+   "en": "<strong>Step 1 - Determine the baseline number of batches:</strong> based on the level of product and process knowledge, determine the minimum number of batches (baseline N). The more knowledge, the fewer batches to start with."
+  },
+  {
+   "zh": "<strong>Step 2 - 評估是否需要追加：</strong>確認現場特定知識和控制措施，判斷是否需要追加研究或批次。",
+   "en": "<strong>Step 2 - Assess whether additional work is needed:</strong> confirm site-specific knowledge and controls to decide whether additional studies or batches are needed."
+  },
+  {
+   "zh": "<strong>Step 3 - 考量非 GMP 因素：</strong>商業、技術和策略性的考量，可能增加或減少批次數。",
+   "en": "<strong>Step 3 - Consider non-GMP factors:</strong> commercial, technical and strategic considerations may increase or decrease the number of batches."
+  },
+  {
+   "zh": "關鍵原則：<strong>知識與風險反向相關</strong> — 掌握的知識越多，風險越低，所需的 PPQ 批次數越少。",
+   "en": "Key principle: <strong>knowledge and risk are inversely related</strong> — the more knowledge you have, the lower the risk and the fewer PPQ batches are required."
+  },
+  {
+   "zh": "PPQ 批次數的決策就像駕照考試：",
+   "en": "Deciding the number of PPQ batches is like a driving test:"
+  },
+  {
+   "zh": "<strong>低知識/高風險</strong> = 第一次學開車的新手，需要更多路考練習（更多 PPQ 批次），甚至需要先去駕訓班（追加開發活動）",
+   "en": "<strong>Low knowledge/high risk</strong> = a new driver learning for the first time, who needs more road-test practice (more PPQ batches) and may even need to attend driving school first (additional development activities)"
+  },
+  {
+   "zh": "<strong>中等知識/中等風險</strong> = 有其他車款駕照的駕駛人，基本路考次數即可（N = Baseline）",
+   "en": "<strong>Medium knowledge/medium risk</strong> = a driver licensed for other vehicle types, for whom the basic number of road tests is enough (N = Baseline)"
+  },
+  {
+   "zh": "<strong>高知識/低風險</strong> = 經驗豐富的職業駕駛，可能只需一次路考就能通過（N ≤ Baseline）",
+   "en": "<strong>High knowledge/low risk</strong> = an experienced professional driver, who may pass with a single road test (N ≤ Baseline)"
+  },
+  {
+   "zh": "重點提示：孤兒藥與昂貴產品的特殊考量",
+   "en": "Key Notes: Special Considerations for Orphan Drugs and High-Cost Products"
+  },
+  {
+   "zh": "TR60 明確承認統計方法並非萬能。對於以下情境，傳統統計方法可能不可行：",
+   "en": "TR60 explicitly acknowledges that statistical methods are not a cure-all. In the following situations, traditional statistical methods may not be feasible:"
+  },
+  {
+   "zh": "<strong>Orphan Drug (孤兒藥)：</strong>生產頻率極低，無法累積足夠的統計數據",
+   "en": "<strong>Orphan Drug:</strong> production is so infrequent that enough data for statistics cannot be accumulated"
+  },
+  {
+   "zh": "<strong>蛋白質 DS 製程：</strong>製程流的取樣增加對統計樣本量的貢獻有限",
+   "en": "<strong>Protein DS process:</strong> additional sampling of the process stream contributes little to the statistical sample size"
+  },
+  {
+   "zh": "<strong>昂貴產品：</strong>需考慮產品獲批概率與效期之間的商業風險（晚批准可能浪費 PPQ 批次）",
+   "en": "<strong>High-cost products:</strong> the commercial risk between the probability of approval and shelf life must be considered (late approval may waste PPQ batches)"
+  },
+  {
+   "zh": "此時可採用<strong>整體性科學方法 (holistic approach)</strong>，結合先驗知識、風險分析、Stage 1 數據和延伸到 CPV 的加強取樣，來支持批次數的選擇。",
+   "en": "In such cases, a <strong>holistic approach</strong> can be used, combining prior knowledge, risk analysis, Stage 1 data and enhanced sampling extended into CPV, to support the choice of the number of batches."
+  },
+  {
+   "zh": "知識-風險-批次數對應矩陣",
+   "en": "Knowledge-Risk-Number of Batches Matrix"
+  },
+  {
+   "zh": "知識水準         風險等級      PPQ 批次數策略\n──────────────────────────────────────────\n低知識           高風險        N &gt; Baseline\n                              + 追加開發/準備活動\n                              + 高層核准才可啟動 PPQ\n\n中等知識         中等風險      N = Baseline (通常 N=3)\n                              + 需提供 Baseline 論證\n\n高/極高知識      低風險        N ≤ Baseline\n                              可使用平台知識簡化\n\n決策樹方法特點：\n  - 使用 Yes/No 問題引導\n  - 降低主觀偏差\n  - 三步驟依序執行\n  - 最終 N 為暫定值",
+   "en": "Knowledge level    Risk level    PPQ batch number strategy\n──────────────────────────────────────────\nLow knowledge      High risk     N > Baseline\n                                 + additional development/preparation activities\n                                 + senior management approval before PPQ can start\n\nMedium knowledge   Medium risk   N = Baseline (usually N=3)\n                                 + Baseline justification required\n\nHigh/very high     Low risk      N ≤ Baseline\nknowledge                        platform knowledge can be used to simplify\n\nCharacteristics of the decision tree approach:\n  - Guided by Yes/No questions\n  - Reduces subjective bias\n  - Three steps performed in sequence\n  - The final N is provisional"
+  },
+  {
+   "zh": "<strong>CDMO 情境：</strong>一家 CDMO 同時承接兩個技術轉移專案：",
+   "en": "<strong>CDMO scenario:</strong> a CDMO takes on two technology transfer projects at the same time:"
+  },
+  {
+   "zh": "<strong>專案 A：</strong>已知平台技術的單株抗體，原廠提供了 50 批商業數據 → 高知識/低風險 → 可考慮 N ≤ 3",
+   "en": "<strong>Project A:</strong> a monoclonal antibody on a known platform technology, with 50 commercial batches of data from the originator → high knowledge/low risk → N ≤ 3 can be considered"
+  },
+  {
+   "zh": "<strong>專案 B：</strong>新型 mRNA 疫苗，僅有 3 批臨床數據 → 低知識/高風險 → N &gt; 3，且需追加工程研究",
+   "en": "<strong>Project B:</strong> a new mRNA vaccine with only 3 clinical batches of data → low knowledge/high risk → N > 3, plus additional engineering studies"
+  },
+  {
+   "zh": "兩個專案的 PPQ 策略可以完全不同，但都必須在 PVMP 中清楚記錄決策依據和支持數據來源。",
+   "en": "The PPQ strategies of the two projects can be completely different, but both must clearly document the rationale for the decision and the sources of supporting data in the PVMP."
+  },
+  {
+   "zh": "為什麼 TR60 建議使用決策樹/檢查表方法而非開放式討論來決定 PPQ 批次數？",
+   "en": "Why does TR60 recommend using a decision tree/checklist approach rather than open-ended discussion to decide the number of PPQ batches?"
+  },
+  {
+   "zh": "Step 3 提到「非 GMP 相關風險」，請舉出三個可能導致增加或減少 PPQ 批次數的商業考量。",
+   "en": "Step 3 mentions \"non-GMP-related risks\". Give three commercial considerations that could increase or decrease the number of PPQ batches."
+  },
+  {
+   "zh": "如果你的 CDMO 同時為三個不同客戶生產相同的平台產品，這些知識如何影響後續客戶的 PPQ 設計？",
+   "en": "If your CDMO manufactures the same platform product for three different clients, how does that knowledge affect the PPQ design for subsequent clients?"
+  },
+  {
+   "zh": "<strong>4.4.2.2.1 Justification of Baseline 4.4.2.2.1 基準論證</strong>",
+   "en": "<strong>4.4.2.2.1 Justification of Baseline</strong>"
+  },
+  {
+   "zh": "核心概念：N=3 的法規依據",
+   "en": "Core Concept: Regulatory Basis for N=3"
+  },
+  {
+   "zh": "<strong>N=3 基線</strong>是業界最常使用的 PPQ 批次數量起點。TR60 引用 EU GMP Annex 15 來提供科學與法規依據：",
+   "en": "The <strong>N=3 baseline</strong> is the starting point for the number of PPQ batches most commonly used in industry. TR60 cites EU GMP Annex 15 to provide the scientific and regulatory basis:"
+  },
+  {
+   "zh": "「一般認為，在例行條件下連續製造至少三批，可構成製程驗證」",
+   "en": "\"It is generally considered acceptable that a minimum of three consecutive batches manufactured under routine conditions could constitute a validation of the process\""
+  },
+  {
+   "zh": "但 N=3 不是固定答案 — 可以根據標準方法的使用和現場類似產品/製程的經驗來調整",
+   "en": "But N=3 is not a fixed answer — it can be adjusted based on the use of standard methods and on experience with similar products/processes at the site."
+  },
+  {
+   "zh": "關鍵訊息：N=3 是<strong>起點</strong>而非<strong>答案</strong>。你必須透過風險評估和知識累積來論證你的選擇是否合理。",
+   "en": "Key message: N=3 is a <strong>starting point</strong>, not the <strong>answer</strong>. You must justify through risk assessment and accumulated knowledge that your choice is reasonable."
+  },
+  {
+   "zh": "重點提示：法規機構的期望",
+   "en": "Key Notes: Regulatory Expectations"
+  },
+  {
+   "zh": "FDA 和 EU 的法規指引都要求使用風險方法。但要注意：",
+   "en": "Both FDA and EU regulatory guidance require a risk-based approach. Note, however:"
+  },
+  {
+   "zh": "FDA 2011 Process Validation Guidance 未明確規定批次數量，強調的是「足夠的統計信心」",
+   "en": "The FDA 2011 Process Validation Guidance does not specify a number of batches; it emphasizes \"sufficient statistical confidence\""
+  },
+  {
+   "zh": "EU GMP Annex 15 明確提到 N=3 為起點，但也允許替代方案",
+   "en": "EU GMP Annex 15 explicitly names N=3 as a starting point but also allows alternatives"
+  },
+  {
+   "zh": "無論選擇幾批，<strong>論證依據 (justification)</strong> 的品質比批次數量本身更重要",
+   "en": "Whatever number of batches is chosen, the quality of the <strong>justification</strong> matters more than the number itself"
+  },
+  {
+   "zh": "查核員會問的不是「為什麼做三批」，而是「你的論證是否完整、科學、可追溯」。",
+   "en": "Inspectors will not ask \"why did you do three batches?\" but \"is your justification complete, scientific and traceable?\""
+  },
+  {
+   "zh": "N=3 就像學校的「及格分數 60 分」— 它是一個被廣泛接受的最低標準，但：",
+   "en": "N=3 is like a \"passing grade of 60\" at school — a widely accepted minimum standard, but:"
+  },
+  {
+   "zh": "對於高風險科目（高關鍵性產品），老師可能要求 80 分才通過（N &gt; 3）",
+   "en": "For a high-risk subject (a high-criticality product), the teacher may require 80 to pass (N > 3)"
+  },
+  {
+   "zh": "對於已經有相關免修資格的學生（平台知識豐富），可以申請部分免考（N &lt; 3）",
+   "en": "A student who already holds relevant exemption credit (rich platform knowledge) can apply for a partial exemption from the exam (N < 3)"
+  },
+  {
+   "zh": "無論如何，你都需要提供成績單和學習記錄（論證文件）",
+   "en": "Either way, you need to provide the transcript and learning records (justification documents)"
+  },
+  {
+   "zh": "<strong>4.4.2.2.2 High-Level Approach (Decision Tree) 4.4.2.2.2 高階方法（決策樹）</strong>",
+   "en": "<strong>4.4.2.2.2 High-Level Approach (Decision Tree)</strong>"
+  },
+  {
+   "zh": "核心概念：決策樹的結構",
+   "en": "Core Concept: Structure of the Decision Tree"
+  },
+  {
+   "zh": "TR60 建議的決策樹 (Decision Tree) 是一個結構化的問答流程，用 Yes/No 問題引導使用者逐步確定 PPQ 批次數。其核心設計理念是：",
+   "en": "The Decision Tree recommended by TR60 is a structured question-and-answer flow that uses Yes/No questions to guide users step by step to the number of PPQ batches. Its core design principles are:"
+  },
+  {
+   "zh": "<strong>消除主觀性：</strong>透過預定義的問題和答案選項，避免「拍腦袋」式決策",
+   "en": "<strong>Eliminating subjectivity:</strong> predefined questions and answer options avoid decisions made by guesswork"
+  },
+  {
+   "zh": "<strong>可追溯性：</strong>每個決策節點都有明確的輸入和輸出，方便審查和追蹤",
+   "en": "<strong>Traceability:</strong> each decision node has clear inputs and outputs, which makes review and tracking easy"
+  },
+  {
+   "zh": "<strong>靈活性：</strong>高層次的決策樹可以細化為多頁的風險檢查表，適應不同產品和製程的需求",
+   "en": "<strong>Flexibility:</strong> the high-level decision tree can be elaborated into a multi-page risk checklist to suit different products and processes"
+  },
+  {
+   "zh": "重點提示：決策樹的實施建議",
+   "en": "Key Notes: Recommendations for Implementing the Decision Tree"
+  },
+  {
+   "zh": "在建立公司內部的 PPQ 批次數決策樹時，建議：",
+   "en": "When building a company's internal decision tree for the number of PPQ batches, it is recommended to:"
+  },
+  {
+   "zh": "將決策樹嵌入公司的 PVMP 模板或 SOP 中，確保一致性",
+   "en": "Embed the decision tree in the company's PVMP template or SOP to ensure consistency"
+  },
+  {
+   "zh": "每個決策節點應有明確的評估標準和證據要求",
+   "en": "Give each decision node clear evaluation criteria and evidence requirements"
+  },
+  {
+   "zh": "決策結果應經過跨功能團隊（品質、製造、法規）審查",
+   "en": "Have the decision outcome reviewed by a cross-functional team (quality, manufacturing, regulatory)"
+  },
+  {
+   "zh": "定期回顧和更新決策樹，納入新的平台知識和經驗教訓",
+   "en": "Review and update the decision tree periodically to incorporate new platform knowledge and lessons learned"
+  },
+  {
+   "zh": "設計一個簡化的 3 題決策樹，幫助判斷某個產品的 PPQ 批次數應該是 N=2、N=3 還是 N&gt;3。",
+   "en": "Design a simplified 3-question decision tree to help decide whether the number of PPQ batches for a product should be N=2, N=3 or N>3."
+  },
+  {
+   "zh": "決策樹方法與開放式風險評估（如 FMEA）相比，各有什麼優缺點？",
+   "en": "What are the advantages and disadvantages of the decision tree approach compared with open-ended risk assessment (such as FMEA)?"
+  },
+  {
+   "zh": "<strong>4.4.2.3 PPQ at Normal Operating Conditions 4.4.2.3 正常操作條件下之 PPQ</strong>",
+   "en": "<strong>4.4.2.3 PPQ at Normal Operating Conditions</strong>"
+  },
+  {
+   "zh": "核心概念：PPQ 在正常操作條件下執行",
+   "en": "Core Concept: PPQ Is Run Under Normal Operating Conditions"
+  },
+  {
+   "zh": "PPQ 通常在<strong>正常操作條件 (Normal Operating Conditions)</strong> 下執行，而非在極端條件下。這是因為：",
+   "en": "PPQ is normally run under <strong>Normal Operating Conditions</strong>, not under extreme conditions. This is because:"
+  },
+  {
+   "zh": "<strong>NOR (Normal Operating Range, 正常操作範圍)：</strong>日常生產實際使用的參數範圍",
+   "en": "<strong>NOR (Normal Operating Range):</strong> the parameter range actually used in day-to-day production"
+  },
+  {
+   "zh": "<strong>PAR (Proven Acceptable Range, 已證可接受範圍)：</strong>在 Stage 1 已證明可接受的更寬範圍",
+   "en": "<strong>PAR (Proven Acceptable Range):</strong> the wider range already demonstrated as acceptable in Stage 1"
+  },
+  {
+   "zh": "<strong>Design Space (設計空間)：</strong>ICH Q8 定義的多維度參數組合範圍",
+   "en": "<strong>Design Space:</strong> the multidimensional combination of parameters defined in ICH Q8"
+  },
+  {
+   "zh": "Stage 1 的製程特性化/穩健性研究已經探索了參數的極端值，因此 PPQ 不需要重複這些工作。",
+   "en": "Process characterization/robustness studies in Stage 1 have already explored the extremes of the parameters, so PPQ does not need to repeat that work."
+  },
+  {
+   "zh": "重點提示：何時需要補充工程研究",
+   "en": "Key Notes: When Supplemental Engineering Studies Are Needed"
+  },
+  {
+   "zh": "雖然 PPQ 在正常條件下執行，但在某些情況下可能需要<strong>補充性的工程研究 (supplemental engineering studies)</strong> 來評估 NOR 的極端值：",
+   "en": "Although PPQ is run under normal conditions, in some cases <strong>supplemental engineering studies</strong> may be needed to evaluate the extremes of the NOR:"
+  },
+  {
+   "zh": "充填線速度的最快和最慢設定",
+   "en": "The fastest and slowest filling line speed settings"
+  },
+  {
+   "zh": "壓錠速度的極端值",
+   "en": "Extreme tablet press speeds"
+  },
+  {
+   "zh": "規模效應的評估（如果縮小模型已適當確認）",
+   "en": "Evaluation of scale effects (if the scale-down model has been appropriately confirmed)"
+  },
+  {
+   "zh": "這些工程研究可以在 PPQ 之前或同時進行，但不需要作為正式 PPQ 的一部分。",
+   "en": "These engineering studies can be performed before or in parallel with PPQ, but they need not be part of the formal PPQ."
+  },
+  {
+   "zh": "PPQ 就像新飛機的認證試飛：試飛員在<strong>正常飛行條件</strong>下測試飛機的性能，而不是在颱風中試飛。極端條件的測試（失速、極端高度等）已經在之前的地面模擬和工程測試中完成了（Stage 1）。但如果有些地面模擬無法完全代表實際情況，可能需要在正式試飛前補充一些邊界條件的飛行測試（補充工程研究）。",
+   "en": "PPQ is like the certification test flight of a new aircraft: the test pilot tests the aircraft's performance under <strong>normal flight conditions</strong>, not in a typhoon. Tests of extreme conditions (stalls, extreme altitudes and so on) have already been completed in earlier ground simulations and engineering tests (Stage 1). But if some ground simulations cannot fully represent real conditions, some boundary-condition flight tests (supplemental engineering studies) may be needed before the formal test flight."
+  },
+  {
+   "zh": "<strong>4.4.2.4 PPQ Using Individual Operation Studies 4.4.2.4 使用個別操作研究之 PPQ</strong>",
+   "en": "<strong>4.4.2.4 PPQ Using Individual Operation Studies</strong>"
+  },
+  {
+   "zh": "核心概念：逐單元操作 PPQ",
+   "en": "Core Concept: Unit-Operation-by-Unit-Operation PPQ"
+  },
+  {
+   "zh": "<strong>Individual Unit Operation PPQ (逐單元操作 PPQ)</strong> 是將整個製造流程拆分為個別的單元操作，分別撰寫 PPQ 方案並執行驗證。",
+   "en": "<strong>Individual Unit Operation PPQ</strong> splits the whole manufacturing process into individual unit operations, with a separate PPQ protocol written and executed for each."
+  },
+  {
+   "zh": "這種方法的優勢：",
+   "en": "Advantages of this approach:"
+  },
+  {
+   "zh": "每個單元操作有獨立的測試和接受標準",
+   "en": "Each unit operation has its own tests and acceptance criteria"
+  },
+  {
+   "zh": "可以針對中間體 (intermediate) 設定 GMP 規定的品質標準",
+   "en": "GMP quality standards can be set for the intermediate"
+  },
+  {
+   "zh": "出現偏差時更容易定位問題來源",
+   "en": "When a deviation occurs, it is easier to locate the source of the problem"
+  },
+  {
+   "zh": "特別適合長流程或複雜的生物製劑 DS 製程",
+   "en": "It is particularly suitable for long or complex biologic DS processes"
+  },
+  {
+   "zh": "使用逐單元操作 PPQ 時，不要忽略<strong>整體製程</strong>的驗證。個別單元操作的 PPQ 通過，不代表整個製程一定符合要求。最終的 DS 或 DP 仍然必須符合所有規格和預定義的接受標準。",
+   "en": "When using unit-operation-by-unit-operation PPQ, do not neglect validation of the <strong>overall process</strong>. Passing PPQ for the individual unit operations does not mean the whole process necessarily meets requirements. The final DS or DP must still comply with all specifications and predefined acceptance criteria."
+  },
+  {
+   "zh": "這種方法常見於蛋白質藥物原料藥 (protein DS) 的製程，因為其製程步驟多且各有獨特的關鍵參數。",
+   "en": "This approach is common for protein drug substance (protein DS) processes, because they have many process steps, each with its own distinct critical parameters."
+  },
+  {
+   "zh": "逐單元操作 PPQ 就像組裝一輛汽車：你可以分別測試引擎、變速箱、煞車系統各自的性能（單元操作 PPQ），但最終還是要做一次完整的路測（最終 DS/DP 規格確認），確保所有零件組裝在一起後的整體表現符合標準。",
+   "en": "Unit-operation-by-unit-operation PPQ is like assembling a car: you can test the performance of the engine, gearbox and braking system separately (unit operation PPQ), but you still have to do a complete road test in the end (confirming the final DS/DP specifications) to make sure the overall performance meets the standard once all the parts are assembled."
+  },
+  {
+   "zh": "<strong>4.4.2.5 PPQ Using Bracketing, Matrix, and Family Approaches 4.4.2.5 使用括弧法、矩陣法及系列法之 PPQ</strong>",
+   "en": "<strong>4.4.2.5 PPQ Using Bracketing, Matrix, and Family Approaches</strong>"
+  },
+  {
+   "zh": "核心概念：分組驗證策略",
+   "en": "Core Concept: Grouping Validation Strategies"
+  },
+  {
+   "zh": "當多個產品或配置共用相似的製程和設備時，可以使用分組策略來減少 PPQ 的總工作量：",
+   "en": "When multiple products or configurations share similar processes and equipment, grouping strategies can be used to reduce the total PPQ workload:"
+  },
+  {
+   "zh": "<strong>Bracketing (括弧法)：</strong>只驗證極端值（如最小和最大批量），假設中間值的表現也可接受。適用於連續變數（批量、線速度、充填量）。",
+   "en": "<strong>Bracketing:</strong> validate only the extremes (such as the smallest and largest batch sizes), assuming that intermediate values will also perform acceptably. Suitable for continuous variables (batch size, line speed, fill volume)."
+  },
+  {
+   "zh": "<strong>Matrix (矩陣法)：</strong>在多個因子的所有組合中選擇代表性的子集進行驗證。適用於有多個獨立變數的情況。",
+   "en": "<strong>Matrix:</strong> select a representative subset from all combinations of multiple factors for validation. Suitable where there are several independent variables."
+  },
+  {
+   "zh": "<strong>Family Grouping (家族分組)：</strong>將使用相同製程/設備的產品歸為一族，選擇代表性成員進行驗證。適用於相同平台的多個產品。",
+   "en": "<strong>Family Grouping:</strong> group products that use the same process/equipment into a family and select representative members for validation. Suitable for multiple products on the same platform."
+  },
+  {
+   "zh": "分組驗證就像買鞋試穿：",
+   "en": "Grouped validation is like trying on shoes:"
+  },
+  {
+   "zh": "<strong>Bracketing</strong> = 你只試穿最大號和最小號，確認都合腳後，就相信中間尺碼也沒問題",
+   "en": "<strong>Bracketing</strong> = you try on only the largest and smallest sizes, and once both fit you trust that the sizes in between will be fine"
+  },
+  {
+   "zh": "<strong>Matrix</strong> = 你有三種顏色和三種尺碼共九雙，但只挑幾雙有代表性的組合來試穿",
+   "en": "<strong>Matrix</strong> = you have three colors and three sizes, nine pairs in all, but try on only a few representative combinations"
+  },
+  {
+   "zh": "<strong>Family</strong> = 同品牌同系列的不同款式，你知道它們的楦型一樣，只需試穿一款就能預測其他款的合腳程度",
+   "en": "<strong>Family</strong> = different styles from the same brand and series; you know they share the same last, so trying on one style predicts how the others will fit"
+  },
+  {
+   "zh": "使用分組策略時必須注意：",
+   "en": "When using a grouping strategy, note the following:"
+  },
+  {
+   "zh": "必須有科學論證支持為什麼這些產品/條件可以被歸為同一組",
+   "en": "There must be a scientific justification for why these products/conditions can be placed in the same group"
+  },
+  {
+   "zh": "如果組內某個條件的結果不符合預期，可能需要擴大驗證範圍",
+   "en": "If the result for one condition in the group is not as expected, the scope of validation may need to be expanded"
+  },
+  {
+   "zh": "分組策略特別適合 CDMO，因為 CDMO 通常在相同設備上生產多個客戶的產品",
+   "en": "Grouping strategies are particularly suitable for CDMOs, because a CDMO usually manufactures products for multiple clients on the same equipment"
+  },
+  {
+   "zh": "運輸驗證 (transport validation) 也可使用分組策略，特別適合有多條運輸路線的生物製品",
+   "en": "Transport validation can also use grouping strategies, especially for biological products with multiple transport routes"
+  },
+  {
+   "zh": "<strong>CDMO 情境：</strong>你的充填線可以處理 2R 到 50R 的西林瓶。與其對每種瓶型都做完整 PPQ，你可以：",
+   "en": "<strong>CDMO scenario:</strong> your filling line can handle 2R to 50R vials. Rather than running a full PPQ for every vial type, you can:"
+  },
+  {
+   "zh": "使用 <strong>Bracketing</strong>：只對最小 (2R) 和最大 (50R) 瓶型做完整 PPQ",
+   "en": "Use <strong>Bracketing</strong>: run a full PPQ only on the smallest (2R) and largest (50R) vial types"
+  },
+  {
+   "zh": "使用 <strong>Matrix</strong>：結合瓶型和充填量，選擇代表性組合",
+   "en": "Use <strong>Matrix</strong>: combine vial type and fill volume and select representative combinations"
+  },
+  {
+   "zh": "論證中間瓶型的行為可以從極端值結果推斷",
+   "en": "Justify that the behavior of intermediate vial types can be inferred from the results at the extremes"
+  },
+  {
+   "zh": "在 PVMP 中記錄分組策略的科學依據",
+   "en": "Document the scientific basis for the grouping strategy in the PVMP"
+  },
+  {
+   "zh": "這可以將 PPQ 工作量從十幾批減少到數批，同時保持科學嚴謹性。",
+   "en": "This can reduce the PPQ workload from a dozen or so batches to a few batches while maintaining scientific rigor."
+  },
+  {
+   "zh": "在哪些情況下，Bracketing 策略不適用？請舉出至少兩個例子。",
+   "en": "In which situations is a Bracketing strategy not applicable? Give at least two examples."
+  },
+  {
+   "zh": "如果你使用 Family Grouping 來驗證三個不同劑量強度的產品，但最低劑量強度的結果不符合預期，你會如何處理？",
+   "en": "If you use Family Grouping to validate a product in three dose strengths and the result for the lowest strength is not as expected, how would you handle it?"
+  },
+  {
+   "zh": "Transport Validation 使用 Bracketing 時，「極端值」應該包含哪些因素？",
+   "en": "When Transport Validation uses Bracketing, what factors should the \"extremes\" include?"
+  },
+  {
+   "zh": "本節重點回顧 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "<strong>加強取樣計畫 (Enhanced Sampling Plan)：</strong>PPQ 階段的取樣必須比日常生產更廣泛，使用三大統計工具 — Individual Value Plots（視覺化）、Tolerance Intervals（能力衡量）、Variance Components（變異來源分析）— 來提供批內和批間品質的統計信心。",
+   "en": "<strong>Enhanced Sampling Plan:</strong> sampling in the PPQ stage must be broader than in routine production, using three statistical tools — Individual Value Plots (visualization), Tolerance Intervals (capability measurement) and Variance Components (analysis of variation sources) — to provide statistical confidence in within-batch and between-batch quality."
+  },
+  {
+   "zh": "<strong>風險分層取樣：</strong>取樣數量依 CQA 關鍵性分級（高/中/低），對應不同的信心/涵蓋度要求（95/99、95/95、95/90）。無菌充填產品使用 B/M/E 時間點取樣，最低 n=6（各 2），最高可達 n=15（各 5）。",
+   "en": "<strong>Risk-tiered sampling:</strong> the number of samples is tiered by CQA criticality (high/medium/low), corresponding to different confidence/coverage requirements (95/99, 95/95, 95/90). Aseptically filled products are sampled at B/M/E time points, with a minimum of n=6 (2 each) and a maximum of n=15 (5 each)."
+  },
+  {
+   "zh": "<strong>取樣數量決定邏輯：</strong>基於先驗知識（Stage 1 數據）和 CQA 關鍵性的組合，使用容許區間法反推所需取樣量。無先驗知識時（如疫情緊急應變），可採用統一的 95/95 最低取樣標準。",
+   "en": "<strong>Logic for deciding the sample size:</strong> based on the combination of prior knowledge (Stage 1 data) and CQA criticality, using the tolerance interval method to work backwards to the required sample size. Where there is no prior knowledge (for example pandemic response), a uniform 95/95 minimum sampling standard can be adopted."
+  },
+  {
+   "zh": "<strong>PPQ 批次數的三步驟決策法：</strong>Step 1 確定基線批次數（知識越多，起始批次越少）；Step 2 評估是否需要追加控制或研究；Step 3 考量非 GMP 商業因素。N=3 依據 EU GMP Annex 15 為常用起點，但必須有完整的風險評估論證。",
+   "en": "<strong>Three-step method for the number of PPQ batches:</strong> Step 1 determines the baseline number of batches (the more knowledge, the fewer batches to start with); Step 2 assesses whether additional controls or studies are needed; Step 3 considers non-GMP commercial factors. N=3, based on EU GMP Annex 15, is the commonly used starting point, but it must be supported by a complete risk-assessment justification."
+  },
+  {
+   "zh": "<strong>PPQ 報告結構：</strong>應包含所有屬性的摘要統計表、逐屬性的圖形分析（個別值圖）、容許區間圖表、變異成分表，以及每個屬性的管控與能力總結聲明。無法執行統計分析時（如低於 LOD 或獨特值不足），應說明原因並使用替代方法。",
+   "en": "<strong>PPQ report structure:</strong> should include summary statistics tables for all attributes, graphical analysis for each attribute (individual value plots), tolerance interval charts, variance components tables, and a control and capability summary statement for each attribute. Where statistical analysis cannot be performed (for example below LOD or insufficient unique values), the reason should be explained and alternative methods used."
+  },
+  {
+   "zh": "<strong>PPQ 執行策略的靈活性：</strong>PPQ 通常在正常操作條件下執行（極端條件已在 Stage 1 探索）；可按個別單元操作分別執行 PPQ；多產品/多配置可使用 Bracketing、Matrix 或 Family Grouping 策略來提升效率。",
+   "en": "<strong>Flexibility in PPQ execution strategy:</strong> PPQ is normally run under normal operating conditions (extremes were explored in Stage 1); PPQ can be run separately for individual unit operations; for multiple products/configurations, Bracketing, Matrix or Family Grouping strategies can be used to improve efficiency."
+  },
+  {
+   "zh": "<strong>所有決策和論證必須記錄在 PVMP 中，</strong>包括取樣策略、批次數選擇依據、分組策略的科學依據，以及所有支持數據來源的引用。",
+   "en": "<strong>All decisions and justifications must be documented in the PVMP,</strong> including the sampling strategy, the rationale for the number of batches, the scientific basis for grouping strategies, and references to all sources of supporting data."
+  }
+ ]
+}

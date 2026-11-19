@@ -1,0 +1,565 @@
+{
+ "source": "section-04a-enabling.html",
+ "blocks": [
+  {
+   "zh": "製程確效賦能系統與技術（第一部分）：風險管理與統計分析工具",
+   "en": "Process Validation Enabling Systems and Technology (Part 1): Risk Management and Statistical Analysis Tools"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "瞭解 Quality Risk Management (QRM) 如何在製程確效三階段中作為「賦能流程」發揮作用",
+   "en": "Understand how Quality Risk Management (QRM) works as an enabling process across the three stages of process validation"
+  },
+  {
+   "zh": "掌握 Stage 1 關鍵性分析（Criticality Analysis）中 Severity 與 Likelihood 的評估邏輯",
+   "en": "Master the logic of assessing Severity and Likelihood in the Stage 1 Criticality Analysis"
+  },
+  {
+   "zh": "理解 Stage 2 風險評估如何驅動取樣策略、設備驗證優先級與統計信心水準的決定",
+   "en": "Understand how the Stage 2 risk assessment drives the sampling strategy, equipment qualification priorities, and statistical confidence levels"
+  },
+  {
+   "zh": "認識 Stage 3 CPV 中製程能力與增強取樣的關聯性",
+   "en": "Recognize how process capability relates to enhanced sampling in Stage 3 CPV"
+  },
+  {
+   "zh": "掌握 Design of Experiments (DoE) 的基本步驟、篩選設計與反應曲面方法",
+   "en": "Master the basic steps of Design of Experiments (DoE), screening designs, and response surface methods"
+  },
+  {
+   "zh": "瞭解各種統計工具在確效生命週期中的典型應用階段",
+   "en": "Understand the typical lifecycle stages in which each statistical tool is applied"
+  },
+  {
+   "zh": "本節目錄 Section Contents",
+   "en": "Section Contents"
+  },
+  {
+   "zh": "<strong>6.0 Process Validation Enabling Systems and Technology 6.0 製程驗證支持系統與技術</strong>",
+   "en": "<strong>6.0 Process Validation Enabling Systems and Technology</strong>"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念解析 Key Concepts",
+   "en": "Key Concepts"
+  },
+  {
+   "zh": "<strong>Enabling Systems（賦能系統）：</strong>TR60 將風險管理、知識管理（Knowledge Management, KM）、統計方法、製程分析技術（Process Analytical Technology, PAT）以及技術移轉（Technology Transfer, TT）定位為「賦能系統」——它們本身不是確效的步驟，而是讓確效能做得更好的工具與方法論。",
+   "en": "<strong>Enabling Systems:</strong> TR60 positions risk management, Knowledge Management (KM), statistical methods, Process Analytical Technology (PAT), and Technology Transfer (TT) as \"enabling systems\". They are not validation steps in themselves; they are tools and methodologies that let validation be done better."
+  },
+  {
+   "zh": "這四大支柱貫穿 Stage 1-3 的整個生命週期，幫助團隊做出有科學基礎的決策。",
+   "en": "These four pillars run through the entire lifecycle, Stages 1-3, and help the team make scientifically based decisions."
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "如果確效生命週期是一場登山之旅，那麼賦能系統就像你的裝備：地圖（風險管理）、指南針（統計方法）、通訊設備（知識管理）、高度計（PAT）。沒有這些裝備你也許能走完，但行程會更危險、更沒有效率。",
+   "en": "If the validation lifecycle is a mountain climb, the enabling systems are your gear: the map (risk management), the compass (statistical methods), the communication equipment (knowledge management), and the altimeter (PAT). You might finish the climb without them, but the trip would be more dangerous and less efficient."
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "注意原文強調這些工具服務的三個功能：<strong>識別（identify）</strong>、<strong>擷取（capture）</strong>和<strong>溝通（communicate）</strong>資訊。這反映了 ICH Q10 品質體系對知識流動的重視——資訊不僅要產出，還要能被組織有效使用。",
+   "en": "Note the three functions the source emphasizes for these tools: to <strong>identify</strong>, <strong>capture</strong>, and <strong>communicate</strong> information. This reflects the ICH Q10 pharmaceutical quality system's emphasis on knowledge flow: information must not only be generated but also be used effectively by the organization."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "在你的組織中，風險管理、統計分析、PAT 和技術移轉這四項賦能工具的成熟度如何？哪一項最弱？",
+   "en": "In your organization, how mature are the four enabling tools: risk management, statistical analysis, PAT, and technology transfer? Which is the weakest?"
+  },
+  {
+   "zh": "為什麼 TR60 將這些工具稱為「enabling」而不是「mandatory」？這對實務應用有何啟示？",
+   "en": "Why does TR60 call these tools \"enabling\" rather than \"mandatory\"? What does this imply for practical application?"
+  },
+  {
+   "zh": "<strong>6.1 Application of Risk Management 6.1 風險管理之應用</strong>",
+   "en": "<strong>6.1 Application of Risk Management</strong>"
+  },
+  {
+   "zh": "<strong>Quality Risk Management, QRM（品質風險管理）：</strong>這不僅是一個工具，而是一個「賦能流程」。TR60 明確引用 ICH Q9(R1) 和 PDA TR 54 作為 QRM 的詳細參考資源。",
+   "en": "<strong>Quality Risk Management (QRM):</strong> This is not just a tool but an \"enabling process\". TR60 explicitly cites ICH Q9(R1) and PDA TR 54 as detailed reference resources for QRM."
+  },
+  {
+   "zh": "<strong>變異性管理（Variability Management）：</strong>風險管理最核心的應用就是管理變異性。原文清楚指出三個必須理解的面向：",
+   "en": "<strong>Variability Management:</strong> The most central application of risk management is managing variability. The source clearly identifies three aspects that must be understood:"
+  },
+  {
+   "zh": "<strong>來源（Origin）</strong>——變異從哪裡來？",
+   "en": "<strong>Origin</strong>: where does the variability come from?"
+  },
+  {
+   "zh": "<strong>範圍（Range）</strong>——變異可能多大？",
+   "en": "<strong>Range</strong>: how large can the variability be?"
+  },
+  {
+   "zh": "<strong>影響（Impact）</strong>——對製程、產品、病患的影響為何？",
+   "en": "<strong>Impact</strong>: what is the effect on the process, the product, and the patient?"
+  },
+  {
+   "zh": "品質風險管理就像醫院的感染管控計畫（Contamination Control Strategy）：你不可能消除所有感染風險，但你必須知道風險在哪裡（識別）、用什麼措施控制（緩解）、以及何時需要升級處理（監控）。變異管理也是同樣邏輯——不是追求零變異，而是將變異控制在不影響病患安全的水準。",
+   "en": "Quality risk management is like a hospital's infection control program (the Contamination Control Strategy): you cannot eliminate every infection risk, but you must know where the risks are (identification), what measures control them (mitigation), and when escalation is needed (monitoring). Variability management follows the same logic: the goal is not zero variability but keeping variability at a level that does not affect patient safety."
+  },
+  {
+   "zh": "注意 QRM 在三階段中的角色漸變：",
+   "en": "Note how the role of QRM evolves across the three stages:"
+  },
+  {
+   "zh": "<strong>Stage 1</strong>：策略性——識別「什麼是重要的」（CQA、CPP 識別）",
+   "en": "<strong>Stage 1</strong>: strategic. Identifying \"what matters\" (identification of CQAs and CPPs)"
+  },
+  {
+   "zh": "<strong>Stage 1-2 過渡</strong>：控制策略定義——「怎麼控制」",
+   "en": "<strong>Stage 1-2 transition</strong>: control strategy definition. \"How to control it\""
+  },
+  {
+   "zh": "<strong>Stage 2</strong>：戰術性——「要測什麼、取多少樣」",
+   "en": "<strong>Stage 2</strong>: tactical. \"What to test and how many samples to take\""
+  },
+  {
+   "zh": "<strong>Stage 3</strong>：持續性——「要監控什麼、監控多久」",
+   "en": "<strong>Stage 3</strong>: ongoing. \"What to monitor and for how long\""
+  },
+  {
+   "zh": "這體現了風險管理從「廣泛篩選」到「精確控制」再到「持續驗證」的演進。",
+   "en": "This reflects the evolution of risk management from \"broad screening\" to \"precise control\" to \"continued verification\"."
+  },
+  {
+   "zh": "圖表解讀 Figure Analysis",
+   "en": "Figure Analysis"
+  },
+  {
+   "zh": "<strong>Figure 6.1-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR60&amp;file=fig-p95-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a></strong> 描繪了 QRM 生命週期方法在製程開發與確效中的應用流程。此圖為概念性的風險管理流程圖，展示風險如何在整個產品生命週期中被反覆評估和更新。由於原文未提供圖片檔案，請參閱 TR60 原文第 86 頁。",
+   "en": "<strong>Figure 6.1-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR60&amp;file=fig-p95-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a></strong> depicts the application of the QRM lifecycle approach in process development and validation. It is a conceptual risk management flowchart showing how risk is repeatedly assessed and updated throughout the product lifecycle. Because the source did not provide an image file, please refer to page 86 of the TR60 original."
+  },
+  {
+   "zh": "實務應用 Practical Application",
+   "en": "Practical Application"
+  },
+  {
+   "zh": "<strong>CDMO 實務場景：</strong>當接受新客戶的技術移轉時，Stage 1-2 過渡期的 risk-based gap assessment 特別關鍵。CDMO 必須評估客戶提供的製程知識是否足以定義控制策略，缺失的知識代表殘餘風險（residual risk），可能需要額外的製程特性研究才能進入 PPQ。",
+   "en": "<strong>CDMO scenario:</strong> When accepting a technology transfer from a new client, the risk-based gap assessment during the Stage 1-2 transition is especially critical. The CDMO must assess whether the process knowledge provided by the client is sufficient to define the control strategy. Missing knowledge represents residual risk and may require additional process characterization studies before moving into PPQ."
+  },
+  {
+   "zh": "原文說 QRM 是「enabler」而非「requirement」。如果沒有做風險評估就直接進行 PPQ，可能產生什麼問題？",
+   "en": "The source says QRM is an \"enabler\" rather than a \"requirement\". What problems could arise if PPQ is carried out without a risk assessment?"
+  },
+  {
+   "zh": "在 Stage 1-2 過渡期，殘餘風險（residual risk）如何影響 PPQ 方案設計？",
+   "en": "During the Stage 1-2 transition, how does residual risk affect the design of the PPQ protocol?"
+  },
+  {
+   "zh": "為什麼原文強調風險評估應該「early in the lifecycle」開始？延遲評估的代價是什麼？",
+   "en": "Why does the source stress that risk assessment should begin \"early in the lifecycle\"? What is the cost of delaying it?"
+  },
+  {
+   "zh": "<strong>6.1.1 Risk Management in Stage 1 – Process Design 6.1.1 第一階段之風險管理 — 製程設計</strong>",
+   "en": "<strong>6.1.1 Risk Management in Stage 1 – Process Design</strong>"
+  },
+  {
+   "zh": "<strong>Criticality Analysis（關鍵性分析）：</strong>這是 Stage 1 風險管理的核心工作。注意它使用的是 <strong>Severity x Likelihood</strong> 矩陣，而非傳統 FMEA 的 Severity x Occurrence x Detectability。",
+   "en": "<strong>Criticality Analysis:</strong> This is the core risk management work in Stage 1. Note that it uses a <strong>Severity x Likelihood</strong> matrix, not the Severity x Occurrence x Detectability of traditional FMEA."
+  },
+  {
+   "zh": "為什麼不同？因為在 Stage 1 階段，你還沒有製造數據來評估 Occurrence（發生頻率），也還沒建立檢測方法來評估 Detectability。你只有兩個維度可用：",
+   "en": "Why the difference? Because in Stage 1 you do not yet have manufacturing data to assess Occurrence, nor have you established detection methods to assess Detectability. You have only two dimensions available:"
+  },
+  {
+   "zh": "<strong>Severity（嚴重度）</strong>：基於病患影響——這不太可能改變",
+   "en": "<strong>Severity</strong>: based on patient impact. This is unlikely to change."
+  },
+  {
+   "zh": "<strong>Likelihood（可能性）</strong>：基於知識充足度——這可以透過研究降低",
+   "en": "<strong>Likelihood</strong>: based on the adequacy of knowledge. This can be reduced through studies."
+  },
+  {
+   "zh": "想像你是新手外科醫生正在規劃一台手術。Severity 就像「如果這一步出錯會怎樣」——切到動脈 vs 表皮傷口，嚴重度固定不變。Likelihood 則像「你對這一步了解多少」——做過 100 次 vs 只讀過教科書。當嚴重度高且經驗少時，你需要更多的準備和練習（科學研究），這就是表格中 High Severity + High Likelihood = Critical 的邏輯。",
+   "en": "Imagine you are a novice surgeon planning an operation. Severity is like \"what happens if this step goes wrong\": cutting an artery versus a superficial skin wound; the severity stays fixed. Likelihood is like \"how well do you know this step\": having done it 100 times versus having only read about it in a textbook. When severity is high and experience is low, you need more preparation and practice (scientific studies). This is the logic behind High Severity + High Likelihood = Critical in the table."
+  },
+  {
+   "zh": "<strong>量化評估而非二元判斷：</strong>原文特別強調關鍵性必須在「quantitative scale」上評估，不能只用 yes/no。這意味著 CQA 不是「是或不是」的標籤，而是有相對嚴重度排序的連續光譜。",
+   "en": "<strong>Quantitative assessment, not a binary judgment:</strong> The source specifically stresses that criticality must be assessed on a \"quantitative scale\", not just yes/no. This means a CQA is not a \"yes or no\" label but a continuous spectrum with a relative severity ranking."
+  },
+  {
+   "zh": "<strong>QTPP 為起點：</strong>關鍵性分析的輸入是 QTPP（Quality Target Product Profile）和先前知識。這再次確認 QbD 的核心邏輯——從目標產品需求出發，倒推所有設計決策。",
+   "en": "<strong>QTPP as the starting point:</strong> The inputs to criticality analysis are the QTPP (Quality Target Product Profile) and prior knowledge. This again confirms the core logic of QbD: start from the target product requirements and work backward to all design decisions."
+  },
+  {
+   "zh": "圖表解讀 Table Analysis",
+   "en": "Table Analysis"
+  },
+  {
+   "zh": "<strong>Table 6.1.1-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR60&amp;file=tbl-p96-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> 解讀關鍵：</strong>",
+   "en": "<strong>Table 6.1.1-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR60&amp;file=tbl-p96-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> Key to interpretation:</strong>"
+  },
+  {
+   "zh": "<strong>High Severity（全列為 Critical）：</strong>無論知識多充足，對病患有災難性影響的屬性永遠是關鍵的。這體現了「病患安全優先」原則。",
+   "en": "<strong>High Severity (all rows Critical):</strong> Regardless of how complete the knowledge is, attributes with a catastrophic impact on the patient are always critical. This reflects the \"patient safety first\" principle."
+  },
+  {
+   "zh": "<strong>Low Severity + Low/Medium Likelihood = Non-Critical：</strong>影響低且知識充足的屬性不需要密集管控。",
+   "en": "<strong>Low Severity + Low/Medium Likelihood = Non-Critical:</strong> Attributes with low impact and sufficient knowledge do not need intensive control."
+  },
+  {
+   "zh": "<strong>Medium 行全為 Potential：</strong>這個分類意味著需要更多數據才能最終判定——是可以透過進一步研究改變分類的「灰色地帶」。",
+   "en": "<strong>The Medium row is all Potential:</strong> This category means more data are needed for a final determination. It is a \"gray area\" whose classification can change through further study."
+  },
+  {
+   "zh": "<strong>迭代性：</strong>隨著知識積累，Likelihood 會降低，Potential 可能被重新分類為 Non-Critical。",
+   "en": "<strong>Iterative:</strong> As knowledge accumulates, Likelihood decreases, and Potential attributes may be reclassified as Non-Critical."
+  },
+  {
+   "zh": "在表 6.1.1-1 中，為什麼 High Severity 不管 Likelihood 高低都是 Critical？這與 ICH Q9 的什麼原則一致？",
+   "en": "In Table 6.1.1-1, why is High Severity Critical regardless of whether Likelihood is high or low? Which ICH Q9 principle is this consistent with?"
+  },
+  {
+   "zh": "如果某屬性目前被歸類為 Potential，組織可以採取什麼行動來改變其分類？",
+   "en": "If an attribute is currently classified as Potential, what actions can the organization take to change its classification?"
+  },
+  {
+   "zh": "QTPP 作為 Criticality Analysis 的輸入，如果 QTPP 定義不完整會如何影響後續整個確效計畫？",
+   "en": "If the QTPP is used as the input to Criticality Analysis, how would an incomplete QTPP affect the entire downstream validation plan?"
+  },
+  {
+   "zh": "<strong>6.1.2 Risk Management in Stage 2 – Process Qualification 6.1.2 第二階段之風險管理 — 製程確效</strong>",
+   "en": "<strong>6.1.2 Risk Management in Stage 2 – Process Qualification</strong>"
+  },
+  {
+   "zh": "<strong>Stage 2 風險管理 = 戰術性（Tactical）：</strong>Stage 1 的風險管理是策略性的（決定方向），Stage 2 的風險管理則是戰術性的（決定執行細節）。具體來說，Stage 2 的風險評估直接驅動：",
+   "en": "<strong>Stage 2 risk management = Tactical:</strong> Risk management in Stage 1 is strategic (setting the direction), while in Stage 2 it is tactical (deciding the execution details). Specifically, the Stage 2 risk assessment directly drives:"
+  },
+  {
+   "zh": "確效方案中的測試項目",
+   "en": "The tests included in the validation protocol"
+  },
+  {
+   "zh": "取樣位置與取樣數量",
+   "en": "Sampling locations and the number of samples"
+  },
+  {
+   "zh": "設備驗證的優先順序",
+   "en": "The priority of equipment qualification"
+  },
+  {
+   "zh": "接受標準的嚴格程度",
+   "en": "The stringency of acceptance criteria"
+  },
+  {
+   "zh": "<strong>SOD 三因子模型：</strong>此時已有足夠的數據使用完整的 FMEA 三因子評估——Severity（嚴重度）、Occurrence（發生率）、Detectability（可偵測性）。相較 Stage 1 的 Severity x Likelihood 二因子模型，這代表製程知識已大幅增加。",
+   "en": "<strong>The three-factor SOD model:</strong> By this point there are enough data to use the full three-factor FMEA assessment: Severity, Occurrence, and Detectability. Compared with the two-factor Severity x Likelihood model of Stage 1, this indicates that process knowledge has grown substantially."
+  },
+  {
+   "zh": "Stage 2 的風險管理就像機場安檢系統的設計。<strong>Severity</strong> 決定需要多嚴格的檢查（爆裂物 vs 一般違禁品），<strong>Occurrence</strong> 決定你期望多常遇到問題（高發路線 vs 低風險路線），<strong>Detectability</strong> 決定檢查設備的靈敏度和檢查員的訓練程度。三者共同決定了每個安檢口的資源配置。",
+   "en": "Stage 2 risk management is like designing an airport security system. <strong>Severity</strong> determines how strict the screening needs to be (explosives versus ordinary prohibited items), <strong>Occurrence</strong> determines how often you expect to encounter problems (high-incidence routes versus low-risk routes), and <strong>Detectability</strong> determines the sensitivity of the screening equipment and the training level of the screeners. Together the three determine the resource allocation at each security checkpoint."
+  },
+  {
+   "zh": "<strong>Commissioning vs Qualification 的風險分級：</strong>Table 6.1.2-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR60&amp;file=tbl-p97-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> 明確展示了一個重要的成本效益原則——不是所有設備功能都需要完整驗證（Qualification），低風險項目可以透過調試（Commissioning）活動加上適當的風險審查來滿足。這是 ASTM E2500 和 ISPE Baseline Guide 倡導的方法。",
+   "en": "<strong>Risk-based grading of Commissioning vs Qualification:</strong> Table 6.1.2-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR60&amp;file=tbl-p97-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> clearly shows an important cost-effectiveness principle: not every equipment function needs full qualification. Low-risk items can be satisfied through Commissioning activities plus an appropriate risk review. This is the approach advocated by ASTM E2500 and the ISPE Baseline Guide."
+  },
+  {
+   "zh": "<strong>信心水準與風險的關聯：</strong>Table 6.1.2-2<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR60&amp;file=tbl-p97-2.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> 直接將 Severity 對應到統計信心水準——99%、95%、90%。這為取樣計畫的設計提供了明確的量化依據，避免了「所有項目都用 95% 信心水準」的一刀切做法。",
+   "en": "<strong>Link between confidence level and risk:</strong> Table 6.1.2-2<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR60&amp;file=tbl-p97-2.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> maps Severity directly to statistical confidence levels: 99%, 95%, and 90%. This gives the design of the sampling plan a clear quantitative basis and avoids the one-size-fits-all practice of \"a 95% confidence level for everything\"."
+  },
+  {
+   "zh": "公式與計算 Formula",
+   "en": "Formula"
+  },
+  {
+   "zh": "<strong>信心水準與取樣數量的關係：</strong>",
+   "en": "<strong>Relationship between confidence level and sample size:</strong>"
+  },
+  {
+   "zh": "若使用屬性取樣（attribute sampling），\n零不良品時達到特定信心水準所需最小取樣數：\n\nn = ln(1 - C) / ln(1 - p)\n\n其中：\nC = 信心水準 (confidence level)\np = 可接受不良率\n\n例如：\n99% 信心、1% 不良率 → n = ln(0.01)/ln(0.99) ≈ 459\n95% 信心、1% 不良率 → n = ln(0.05)/ln(0.99) ≈ 299\n90% 信心、1% 不良率 → n = ln(0.10)/ln(0.99) ≈ 229\n\n嚴重度越高，所需取樣數越多！",
+   "en": "When using attribute sampling,\nthe minimum sample size needed to reach a given confidence level with zero defects:\n\nn = ln(1 - C) / ln(1 - p)\n\nwhere:\nC = confidence level\np = acceptable defect rate\n\nFor example:\n99% confidence, 1% defect rate → n = ln(0.01)/ln(0.99) ≈ 459\n95% confidence, 1% defect rate → n = ln(0.05)/ln(0.99) ≈ 299\n90% confidence, 1% defect rate → n = ln(0.10)/ln(0.99) ≈ 229\n\nThe higher the severity, the larger the sample size required!"
+  },
+  {
+   "zh": "<strong>CDMO 場景：</strong>在設備驗證（Equipment Qualification）階段，使用 Table 6.1.2-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR60&amp;file=tbl-p97-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> 的風險分級可以顯著節省驗證成本。例如，充填線的充填精度（High Risk）需要完整的 OQ/PQ 驗證，而輔助設備的壓力指示器（Low Risk）可以在調試階段完成功能確認加上適當的校正紀錄即可。這在多產品 CDMO 環境中效益特別顯著。",
+   "en": "<strong>CDMO scenario:</strong> In the Equipment Qualification phase, using the risk grading in Table 6.1.2-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR60&amp;file=tbl-p97-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> can save substantial qualification cost. For example, the filling accuracy of a filling line (High Risk) needs full OQ/PQ qualification, whereas a pressure indicator on auxiliary equipment (Low Risk) can be handled by functional confirmation during commissioning plus appropriate calibration records. The benefit is especially significant in a multi-product CDMO environment."
+  },
+  {
+   "zh": "原文說 Stage 2 的風險管理是「tactical」，而 Stage 1 是「strategic」。請舉一個實例說明兩者在同一個製程參數上的差異。",
+   "en": "The source says Stage 2 risk management is \"tactical\" while Stage 1 is \"strategic\". Give a practical example showing how the two differ for the same process parameter."
+  },
+  {
+   "zh": "HACCP 被提到是增加 Detectability 的工具之一。在製藥確效中，HACCP 可以在哪些環節發揮作用？",
+   "en": "HACCP is mentioned as one of the tools that increase Detectability. At which points in pharmaceutical validation can HACCP play a role?"
+  },
+  {
+   "zh": "如果某屬性的 Occurrence 未知，原文建議怎麼處理？這對確效時程有什麼影響？",
+   "en": "If the Occurrence of an attribute is unknown, what does the source recommend? What effect does this have on the validation timeline?"
+  },
+  {
+   "zh": "<strong>6.1.3 Risk Management in Stage 3 – Continued Process Verification 6.1.3 第三階段之風險管理 — 持續製程驗證</strong>",
+   "en": "<strong>6.1.3 Risk Management in Stage 3 – Continued Process Verification</strong>"
+  },
+  {
+   "zh": "<strong>Enhanced Sampling（增強取樣）：</strong>CPV 的起始階段通常會實施比例行監控更密集的取樣，這就是增強取樣。它的強度和持續時間取決於 PPQ 數據顯示的製程能力（Process Capability）。",
+   "en": "<strong>Enhanced Sampling:</strong> The start of CPV usually involves more intensive sampling than routine monitoring; this is enhanced sampling. Its intensity and duration depend on the process capability shown by the PPQ data."
+  },
+  {
+   "zh": "<strong>製程能力與風險的反比關係：</strong>原文明確指出，製程能力高（即製程穩健）→ Occurrence 低 → 風險低 → 增強取樣期可以較短。反之，製程能力低則需要更長的增強取樣期來確認製程穩定性。",
+   "en": "<strong>Inverse relationship between process capability and risk:</strong> The source states clearly that high process capability (that is, a robust process) → low Occurrence → low risk → a shorter enhanced sampling period is acceptable. Conversely, low process capability calls for a longer enhanced sampling period to confirm process stability."
+  },
+  {
+   "zh": "增強取樣就像新手駕駛的陪練期。剛拿到駕照（PPQ 通過）時，副駕座可能還需要教練（增強取樣）。如果你在路考中表現優異（Cpk 很高），陪練期可以較短；如果路考勉強通過（Cpk 剛好達標），陪練期就需要更長，直到你的駕駛穩定性得到充分驗證。",
+   "en": "Enhanced sampling is like the supervised-driving period for a new driver. Just after getting your license (passing PPQ), you may still need an instructor in the passenger seat (enhanced sampling). If you did very well on the road test (very high Cpk), the supervised period can be shorter; if you only barely passed (Cpk just meeting the target), the supervised period needs to be longer, until your driving stability has been adequately verified."
+  },
+  {
+   "zh": "<strong>CPV 是確效生命週期中最長的階段。</strong>這經常被忽視——許多組織把精力集中在 PPQ 上，CPV 卻成了被動的例行公事。TR60 提醒我們，CPV 才是確保製程「持續」處於控制狀態的關鍵，且其取樣策略應由 PPQ 數據和風險評估共同驅動。",
+   "en": "<strong>CPV is the longest stage of the validation lifecycle.</strong> This is often overlooked: many organizations focus their effort on PPQ, and CPV becomes a passive routine. TR60 reminds us that CPV is what ensures the process remains in a state of control \"continuously\", and that its sampling strategy should be driven jointly by PPQ data and risk assessment."
+  },
+  {
+   "zh": "<strong>Review Period（審查週期）</strong>也受風險水準影響——高風險屬性可能需要月度審查，低風險屬性可能季度或年度審查即可。",
+   "en": "<strong>The Review Period</strong> is also influenced by risk level: high-risk attributes may need monthly review, while low-risk attributes may only need quarterly or annual review."
+  },
+  {
+   "zh": "如果 PPQ 數據顯示某參數的 Cpk = 2.5（非常好），增強取樣期的設計應與 Cpk = 1.1 的參數有何不同？",
+   "en": "If PPQ data show a Cpk of 2.5 (very good) for a parameter, how should the design of the enhanced sampling period differ from that for a parameter with a Cpk of 1.1?"
+  },
+  {
+   "zh": "原文提到「the level of risk can also determine the review period」。請設計一個簡單的風險等級 vs 審查頻率對照表。",
+   "en": "The source states that \"the level of risk can also determine the review period\". Design a simple table matching risk level to review frequency."
+  },
+  {
+   "zh": "<strong>6.1.4 Material Risk Management Considerations 6.1.4 物料風險管理考量</strong>",
+   "en": "<strong>6.1.4 Material Risk Management Considerations</strong>"
+  },
+  {
+   "zh": "<strong>Critical Material Attributes, CMAs（關鍵物料屬性）：</strong>不僅製程參數需要管控，原物料的品質屬性同樣是變異的重要來源。原文舉的例子非常經典——層析樹脂的粒徑分佈（particle size distribution）批次間差異導致沖提曲線（elution profile）改變。",
+   "en": "<strong>Critical Material Attributes (CMAs):</strong> Not only process parameters need control; the quality attributes of raw materials are also an important source of variability. The example given in the source is a classic: batch-to-batch differences in the particle size distribution of a chromatography resin change the elution profile."
+  },
+  {
+   "zh": "<strong>NIR（近紅外光譜）</strong>和 <strong>NMR（核磁共振）</strong>是 PAT 工具的一部分，可以在原物料進料時快速檢測是否符合 CMA 規格。",
+   "en": "<strong>NIR (near-infrared spectroscopy)</strong> and <strong>NMR (nuclear magnetic resonance)</strong> are among the PAT tools that can rapidly check, at raw material receipt, whether the material meets the CMA specification."
+  },
+  {
+   "zh": "原物料風險管理就像餐廳的食材供應鏈管理。即使你的廚師（製程）水準很高，如果食材（原物料）品質批次間波動很大——例如同一品種的番茄今天酸度高、明天酸度低——成品味道就無法穩定。解方是與供應商建立緊密合作，確保雙方都理解品質要求，就像高級餐廳會直接與農場合作一樣。",
+   "en": "Raw material risk management is like managing a restaurant's ingredient supply chain. Even if your chef (the process) is highly skilled, if ingredient (raw material) quality fluctuates widely from batch to batch (for example, tomatoes of the same variety are very acidic today and less acidic tomorrow), the taste of the finished dish cannot be stable. The solution is to build a close partnership with suppliers so that both sides understand the quality requirements, just as a high-end restaurant works directly with farms."
+  },
+  {
+   "zh": "<strong>供應商管理是風險緩解策略：</strong>原文最後一句特別重要——風險緩解不僅是在自家工廠內部做的事，還包括與供應商的合作。這與 ICH Q10 品質體系中對供應鏈管理的要求一致，也是現代 GMP 法規（如 EU GMP Part II 和 FDA 21 CFR 211.84）的核心要求之一。",
+   "en": "<strong>Supplier management as a risk mitigation strategy:</strong> The last sentence of the source is especially important: risk mitigation is not just something done inside your own plant but also includes collaboration with suppliers. This is consistent with the supply chain management requirements of the ICH Q10 pharmaceutical quality system and is one of the core requirements of modern GMP regulations (such as EU GMP Part II and FDA 21 CFR 211.84)."
+  },
+  {
+   "zh": "除了層析樹脂粒徑分佈外，你還能想到哪些原物料的微妙變化可能對製程產生重大影響？",
+   "en": "Besides the particle size distribution of chromatography resin, what other subtle raw material changes can you think of that could significantly affect a process?"
+  },
+  {
+   "zh": "CDMO 如何在技術移轉過程中管理原物料變異的風險？客戶指定供應商 vs 自主供應商各有什麼挑戰？",
+   "en": "How does a CDMO manage the risk of raw material variability during technology transfer? What challenges does each present: client-designated suppliers versus self-selected suppliers?"
+  },
+  {
+   "zh": "<strong>6.2 Statistical Analysis Tools 6.2 統計分析工具</strong>",
+   "en": "<strong>6.2 Statistical Analysis Tools</strong>"
+  },
+  {
+   "zh": "Table 6.2-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR60&amp;file=tbl-p99-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> 是整個統計方法論的「地圖」。它清楚展示了哪些統計工具用在哪個階段，有幾個關鍵觀察：",
+   "en": "Table 6.2-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR60&amp;file=tbl-p99-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> is the \"map\" of the whole statistical methodology. It clearly shows which statistical tools are used at which stage, with several key observations:"
+  },
+  {
+   "zh": "<strong>全階段通用工具（X-X-X）</strong>：描述統計、SPC、檢定力與樣本數、製程能力、ANOVA、變異性檢定、假設檢定。這些是「基本功」。",
+   "en": "<strong>Tools common to all stages (X-X-X):</strong> descriptive statistics, SPC, power and sample size, process capability, ANOVA, tests of variability, hypothesis testing. These are the \"fundamentals\"."
+  },
+  {
+   "zh": "<strong>Stage 1 專用工具</strong>：DoE、Gage R&amp;R、Taguchi、Multi-Vari、回歸分析。這些是「探索性」工具，用於理解製程。",
+   "en": "<strong>Stage 1-specific tools:</strong> DoE, Gage R&amp;R, Taguchi, Multi-Vari, regression analysis. These are \"exploratory\" tools used to understand the process."
+  },
+  {
+   "zh": "<strong>Stage 2-3 專用工具</strong>：驗收抽樣計畫、容許區間（Tolerance Intervals）。這些是「確認性」工具，用於證明製程能力。",
+   "en": "<strong>Stage 2-3-specific tools:</strong> acceptance sampling plans and Tolerance Intervals. These are \"confirmatory\" tools used to demonstrate process capability."
+  },
+  {
+   "zh": "TR 59 是 PDA 專門討論統計方法在製程確效中應用的技術報告，是本節的重要延伸閱讀。",
+   "en": "TR 59 is the PDA technical report that specifically addresses the application of statistical methods in process validation and is important further reading for this section."
+  },
+  {
+   "zh": "統計工具就像醫生的診斷工具箱。Stage 1 用的是 CT、MRI（DoE、回歸分析——深度探索），Stage 2 用的是標準檢驗報告（驗收抽樣、容許區間——確認結論），Stage 3 用的是定期健檢（SPC、製程能力——持續監控）。不同階段的問題需要不同的「診斷精度」。",
+   "en": "Statistical tools are like a doctor's diagnostic toolbox. Stage 1 uses CT and MRI (DoE, regression analysis: deep exploration), Stage 2 uses standard test reports (acceptance sampling, tolerance intervals: confirming conclusions), and Stage 3 uses periodic health checkups (SPC, process capability: ongoing monitoring). Questions at different stages call for different \"diagnostic precision\"."
+  },
+  {
+   "zh": "<strong>Pareto Analysis 的特殊性：</strong>注意腳註——Pareto 分析在 PPQ 階段通常不可行，因為 PPQ 批次數不足以進行有意義的排序分析。如果要在 PPQ 階段使用 Pareto，應納入 Stage 1 數據。這是一個常見的統計陷阱。",
+   "en": "<strong>The special nature of Pareto Analysis:</strong> Note the footnote: Pareto analysis is generally not feasible at the PPQ stage because the number of PPQ batches is insufficient for a meaningful ranking analysis. If Pareto is to be used at the PPQ stage, Stage 1 data should be included. This is a common statistical pitfall."
+  },
+  {
+   "zh": "<strong>DoE 僅在 Stage 1：</strong>DoE 原則上在 Stage 1 進行，因為它涉及刻意改變製程參數的實驗——這在已經進入確效階段的商業製造環境中是不被允許的。",
+   "en": "<strong>DoE only in Stage 1:</strong> In principle DoE is performed in Stage 1 because it involves experiments that deliberately change process parameters, which is not permitted in a commercial manufacturing environment that has already entered the validation stage."
+  },
+  {
+   "zh": "為什麼 DoE 不在 Stage 2 和 Stage 3 使用？如果在 CPV 期間發現需要重新做 DoE，這意味著什麼？",
+   "en": "Why is DoE not used in Stage 2 and Stage 3? If a need to repeat DoE is identified during CPV, what does that imply?"
+  },
+  {
+   "zh": "Gage R&amp;R（量測系統分析）僅列在 Stage 1，但有人主張 Stage 2 也應該做。你怎麼看？",
+   "en": "Gage R&amp;R (measurement system analysis) is listed only in Stage 1, but some argue it should also be done in Stage 2. What is your view?"
+  },
+  {
+   "zh": "Table 6.2-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR60&amp;file=tbl-p99-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> 中哪些工具是你的組織目前已經使用的？哪些尚未使用？缺失可能帶來什麼風險？",
+   "en": "Which of the tools in Table 6.2-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR60&amp;file=tbl-p99-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> does your organization already use, and which not yet? What risks might the gaps bring?"
+  },
+  {
+   "zh": "<strong>6.2.1 Design of Experiments (DoE) 6.2.1 實驗設計（DoE）</strong>",
+   "en": "<strong>6.2.1 Design of Experiments (DoE)</strong>"
+  },
+  {
+   "zh": "<strong>Design of Experiments, DoE（實驗設計）：</strong>DoE 是 Stage 1 製程設計中最強大的統計工具。它與傳統的「一次一因子」（OFAT, One Factor At a Time）實驗法根本不同——DoE 可以同時改變多個參數，從而揭示參數間的<strong>交互作用（interactions）</strong>。",
+   "en": "<strong>Design of Experiments (DoE):</strong> DoE is the most powerful statistical tool in Stage 1 process design. It is fundamentally different from the traditional \"one factor at a time\" (OFAT) approach: DoE can change several parameters simultaneously and thereby reveal <strong>interactions</strong> between parameters."
+  },
+  {
+   "zh": "DoE 的四大功能：",
+   "en": "The four functions of DoE:"
+  },
+  {
+   "zh": "<strong>篩選（Screen）</strong>：找出哪些參數真正重要",
+   "en": "<strong>Screen</strong>: identify which parameters really matter"
+  },
+  {
+   "zh": "<strong>建模（Model）</strong>：建立輸入-輸出的數學關係",
+   "en": "<strong>Model</strong>: build the mathematical relationship between inputs and outputs"
+  },
+  {
+   "zh": "<strong>最佳化（Optimize）</strong>：找到最佳操作條件",
+   "en": "<strong>Optimize</strong>: find the best operating conditions"
+  },
+  {
+   "zh": "<strong>穩健設計（Robustness）</strong>：確保製程對變異不敏感",
+   "en": "<strong>Robustness</strong>: make sure the process is insensitive to variation"
+  },
+  {
+   "zh": "<strong>OFAT vs DoE 的差別：</strong>想像你要調出完美的咖啡。OFAT 方法是先只調水溫（其他固定），找到最佳溫度後，再只調研磨粗細，再調水粉比⋯⋯但問題是：最佳溫度可能取決於研磨粗細！兩者有交互作用。DoE 方法則是同時測試不同溫度 x 研磨 x 水粉比的組合，一次實驗就能揭示所有主效應和交互作用。實驗次數其實更少，結論更可靠。",
+   "en": "<strong>OFAT vs DoE:</strong> Imagine you want to brew the perfect cup of coffee. With OFAT you first adjust only the water temperature (everything else fixed), and once you find the best temperature you adjust only the grind size, then the water-to-coffee ratio... But the problem is that the best temperature may depend on the grind size! The two interact. With DoE you test combinations of temperature x grind x ratio at the same time, and a single experiment reveals all the main effects and interactions. It actually needs fewer runs and gives more reliable conclusions."
+  },
+  {
+   "zh": "<strong>DoE 的四步法：</strong>",
+   "en": "<strong>The four-step DoE approach:</strong>"
+  },
+  {
+   "zh": "<strong>Step 1 — 決定要研究的參數與品質屬性</strong>：先做篩選（Screening Design），如果參數太多（&gt;4個），使用 Fractional Factorial 或 Plackett-Burman 設計先縮減清單。",
+   "en": "<strong>Step 1 — Decide the parameters and quality attributes to study</strong>: Start with screening (Screening Design). If there are too many parameters (&gt;4), use a Fractional Factorial or Plackett-Burman design first to shorten the list."
+  },
+  {
+   "zh": "<strong>Step 2 — 因子實驗（Factorial Design）</strong>：2-4 個參數用全因子設計（Full Factorial），&gt;4 個用部分因子設計。務必包含中心點（center points）作為控制運行。",
+   "en": "<strong>Step 2 — Factorial experiments (Factorial Design)</strong>: Use a Full Factorial design for 2-4 parameters and a fractional factorial design for &gt;4. Be sure to include center points as control runs."
+  },
+  {
+   "zh": "<strong>Step 3 — 反應曲面設計（Response Surface）</strong>：對重要參數做 3-5 個水準的實驗，建立數學模型，確定設計空間（Design Space）。",
+   "en": "<strong>Step 3 — Response Surface design</strong>: For the important parameters, run experiments at 3-5 levels, build a mathematical model, and define the Design Space."
+  },
+  {
+   "zh": "<strong>Step 4 — 確認結果</strong>：驗證實驗確認模型預測與實際結果一致。",
+   "en": "<strong>Step 4 — Confirm the results</strong>: Confirmation experiments verify that the model predictions agree with the actual results."
+  },
+  {
+   "zh": "<strong>全因子設計實驗次數：</strong>",
+   "en": "<strong>Number of runs in a full factorial design:</strong>"
+  },
+  {
+   "zh": "全因子設計實驗次數 = L^k\n\n其中：\nL = 水準數 (levels)\nk = 因子數 (factors)\n\n兩水準全因子設計：\n2 因子：2² = 4 次實驗\n3 因子：2³ = 8 次實驗\n4 因子：2⁴ = 16 次實驗\n5 因子：2⁵ = 32 次實驗（通常改用半因子 = 16）\n\n三水準反應曲面設計（中心複合設計）：\n3 因子：約 15-20 次實驗\n4 因子：約 24-30 次實驗\n\n常用設計類型：\n- Box-Behnken：三因子以上，不含邊角實驗\n- Central Composite (CCD)：最常用，含星點\n- D-Optimal：電腦生成最佳設計\n- OMARS：正交最小混淆反應曲面",
+   "en": "Number of runs in a full factorial design = L^k\n\nwhere:\nL = number of levels\nk = number of factors\n\nTwo-level full factorial designs:\n2 factors: 2² = 4 runs\n3 factors: 2³ = 8 runs\n4 factors: 2⁴ = 16 runs\n5 factors: 2⁵ = 32 runs (a half fraction = 16 is usually used instead)\n\nThree-level response surface design (central composite design):\n3 factors: about 15-20 runs\n4 factors: about 24-30 runs\n\nCommon design types:\n- Box-Behnken: three or more factors, no corner runs\n- Central Composite (CCD): the most commonly used, includes star points\n- D-Optimal: computer-generated optimal design\n- OMARS: orthogonal minimally aliased response surface"
+  },
+  {
+   "zh": "核心概念深入 Advanced Concepts",
+   "en": "Advanced Concepts"
+  },
+  {
+   "zh": "<strong>Control Runs（控制運行）</strong>的重要性：",
+   "en": "The importance of <strong>Control Runs</strong>:"
+  },
+  {
+   "zh": "放在實驗開始和結束時，可以偵測製程漂移（process drift）",
+   "en": "Placed at the start and end of the experiment, they can detect process drift"
+  },
+  {
+   "zh": "如果首尾的控制運行結果不一致，表示有「潛伏變數（lurking variables）」存在",
+   "en": "If the control runs at the start and end give inconsistent results, \"lurking variables\" are present"
+  },
+  {
+   "zh": "重複的控制運行提供真正的固有製程變異估計（experimental error）",
+   "en": "Repeated control runs provide an estimate of the true inherent process variability (experimental error)"
+  },
+  {
+   "zh": "<strong>穩健設計（Robust Design）</strong>的核心思想：找到「forgiving」的操作點——即使輸入參數有波動，輸出品質屬性也不會顯著偏離。這通過遠離設計空間的邊界來實現，利用二次項（quadratic）和交互作用項來定位變異最小的區域。",
+   "en": "The core idea of <strong>Robust Design</strong>: find a \"forgiving\" operating point, one where the output quality attributes do not deviate significantly even when input parameters fluctuate. This is achieved by staying away from the edges of the design space and using quadratic and interaction terms to locate the region of minimum variability."
+  },
+  {
+   "zh": "<strong>Multi-Vari Chart 的三層變異分解：</strong>原文特別提到 Multi-Vari Chart 可以區分三種變異來源：",
+   "en": "<strong>Three-level variability decomposition in the Multi-Vari Chart:</strong> The source specifically notes that a Multi-Vari Chart can distinguish three sources of variability:"
+  },
+  {
+   "zh": "<strong>Within-batch（批內變異）</strong>：同一批次內的差異",
+   "en": "<strong>Within-batch</strong>: differences within the same batch"
+  },
+  {
+   "zh": "<strong>Between-batch（批間變異）</strong>：不同批次間的差異",
+   "en": "<strong>Between-batch</strong>: differences between different batches"
+  },
+  {
+   "zh": "<strong>Positional（位置變異）</strong>：如多頭充填機不同充填頭之間的差異",
+   "en": "<strong>Positional</strong>: for example, differences between the filling heads of a multi-head filling machine"
+  },
+  {
+   "zh": "這在決定「該控制什麼」時非常關鍵——如果主要變異來源是位置變異，加強充填頭間的均勻性比調整製程參數更有效。",
+   "en": "This is critical when deciding \"what to control\": if the main source of variability is positional, improving uniformity between filling heads is more effective than adjusting process parameters."
+  },
+  {
+   "zh": "<strong>CDMO 實務場景 — DoE 在充填製程中的應用：</strong>",
+   "en": "<strong>CDMO scenario: application of DoE in the filling process:</strong>"
+  },
+  {
+   "zh": "假設你正在為一個高黏度生物製劑（viscous biologic）開發充填製程。懷疑影響充填精度的關鍵參數包括：充填速度（filling speed）、管路溫度（tubing temperature）、泵壓力（pump pressure）和藥液黏度（product viscosity）。",
+   "en": "Suppose you are developing a filling process for a viscous biologic. The parameters suspected of affecting filling accuracy include filling speed, tubing temperature, pump pressure, and product viscosity."
+  },
+  {
+   "zh": "<strong>策略：</strong>",
+   "en": "<strong>Strategy:</strong>"
+  },
+  {
+   "zh": "先用 2<sup>4-1</sup> 半因子篩選設計（8 次實驗 + 3 次中心點 = 11 次）篩選 4 個參數",
+   "en": "First screen the 4 parameters with a 2<sup>4-1</sup> half-fraction screening design (8 runs + 3 center points = 11 runs)"
+  },
+  {
+   "zh": "結果可能顯示充填速度和藥液黏度有顯著交互作用",
+   "en": "The results may show a significant interaction between filling speed and product viscosity"
+  },
+  {
+   "zh": "再用 CCD 反應曲面設計（約 13 次實驗）深入研究這 2 個關鍵參數",
+   "en": "Then study these 2 key parameters in depth with a CCD response surface design (about 13 runs)"
+  },
+  {
+   "zh": "建立充填精度 = f(速度, 黏度) 的回歸方程式",
+   "en": "Build a regression equation: filling accuracy = f(speed, viscosity)"
+  },
+  {
+   "zh": "確定設計空間，選擇穩健的操作點",
+   "en": "Define the design space and select a robust operating point"
+  },
+  {
+   "zh": "為什麼「一次一因子」（OFAT）實驗法無法偵測交互作用？試舉一個製程中參數交互作用的實際例子。",
+   "en": "Why can the \"one factor at a time\" (OFAT) approach not detect interactions? Give a practical example of a parameter interaction in a process."
+  },
+  {
+   "zh": "原文提到在做 DoE 前應先用 SPC chart 確認製程是否在統計管控中。如果不在管控中就做 DoE，結果會如何受影響？",
+   "en": "The source states that before a DoE, an SPC chart should be used to confirm that the process is in statistical control. If DoE is run when the process is not in control, how are the results affected?"
+  },
+  {
+   "zh": "在 Step 3 中，原文提到要尋找「forgiving」的操作設定。這與 ICH Q8 的 Design Space 概念有什麼關係？",
+   "en": "In Step 3, the source mentions looking for \"forgiving\" operating settings. How does this relate to the ICH Q8 concept of Design Space?"
+  },
+  {
+   "zh": "Taguchi 方法與標準 DoE 方法有什麼不同？各自適用什麼場景？",
+   "en": "How does the Taguchi method differ from standard DoE methods? In what scenarios is each applicable?"
+  }
+ ]
+}

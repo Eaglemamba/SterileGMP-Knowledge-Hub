@@ -1,0 +1,577 @@
+{
+ "source": "section-05a-implementation.html",
+ "blocks": [
+  {
+   "zh": "一次性使用系統之實施框架 (階段 S1-S3)",
+   "en": "Implementation Framework for Single-Use Systems (Stages S1-S3)"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解 SUS 實施路線圖 (Implementation Road Map) 的階段-閘門 (Stage-Gate) 架構，掌握 S1 至 S7、G1 至 G8 的邏輯流程",
+   "en": "Understand the stage-gate architecture of the SUS Implementation Road Map, and the logical flow of S1 to S7 and G1 to G8"
+  },
+  {
+   "zh": "掌握三大實施主題 (Implementation Themes)：利害關係人管理、風險管理、製程確效與驗證 (PVV)",
+   "en": "Master the three Implementation Themes: stakeholder management, risk management, and process validation and verification (PVV)"
+  },
+  {
+   "zh": "學會應用 Quality Risk Management (QRM) 工具（FMEA、魚骨圖、風險概況）於 SUS 導入決策",
+   "en": "Learn to apply Quality Risk Management (QRM) tools (FMEA, fishbone diagram, risk profile) to SUS implementation decisions"
+  },
+  {
+   "zh": "理解 SUS 實施如何與 FDA 製程確效生命週期 (Process Validation Lifecycle) 及 ICH Q8/Q9/Q10 對接",
+   "en": "Understand how SUS implementation connects to the FDA Process Validation Lifecycle and ICH Q8/Q9/Q10"
+  },
+  {
+   "zh": "<strong>7.0 Implementation of a Single-Use System 7.0 一次性使用系統之實施</strong>",
+   "en": "<strong>7.0 Implementation of a Single-Use System</strong>"
+  },
+  {
+   "zh": "核心概念解析 Key Concepts",
+   "en": "Key Concepts"
+  },
+  {
+   "zh": "<strong>Stage-Gate Approach (階段-閘門法)：</strong>這是一種結構化的專案管理方法，將整個實施過程分為多個「階段」(Stage)，每個階段之間設有「閘門」(Gateway)。只有當某一階段的目標全部達成，並通過評審後，專案才能進入下一個階段。",
+   "en": "<strong>Stage-Gate Approach:</strong> A structured project management method that divides the whole implementation into multiple \"stages\", with a \"gateway\" between each stage. The project can move to the next stage only after all objectives of the current stage have been met and reviewed."
+  },
+  {
+   "zh": "這種方法的核心價值在於：在每個閘門處提供「暫停、評估、決策」的機會，避免在錯誤的方向上投入過多資源。",
+   "en": "The core value of this approach is that each gateway provides an opportunity to \"pause, assess, and decide\", so that resources are not over-invested in the wrong direction."
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "想像你正在蓋一棟房子。你不會在地基還沒打好時就開始裝潢。Stage-Gate 就像建築工程的各個檢查點：地基驗收通過 (G1) 才進入結構施工 (S2)；結構通過檢驗 (G2) 才進入水電配管 (S3)。每個閘門就是「監工來驗收」的時刻，確保前一步做對了再往下走。",
+   "en": "Imagine building a house. You would not start the interior fit-out before the foundation is laid. Stage-Gate works like the inspection points of a construction project: only after the foundation is accepted (G1) do you move on to the structural work (S2); only after the structure passes inspection (G2) do you move on to plumbing and electrical (S3). Each gateway is the moment the site supervisor comes to sign off, making sure the previous step was done right before moving on."
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "TR66 在此強調 SUS 實施<strong>不是簡單的設備採購</strong>，而是一個需要跨部門協調、多階段驗證的系統工程。即使是經驗豐富的工程師，忽略結構化流程也可能導致關鍵步驟遺漏。",
+   "en": "TR66 stresses here that SUS implementation is <strong>not a simple equipment purchase</strong> but a systems engineering effort that requires cross-functional coordination and multi-stage verification. Even experienced engineers can miss critical steps if they ignore a structured process."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "為什麼 SUS 實施特別適合使用 Stage-Gate 方法，而不是傳統的線性專案管理？",
+   "en": "Why is the Stage-Gate approach particularly suitable for SUS implementation, rather than traditional linear project management?"
+  },
+  {
+   "zh": "如果你的公司是一家小型 CDMO，你認為哪些階段可以合併？哪些絕對不能省略？",
+   "en": "If your company is a small CDMO, which stages do you think could be combined? Which can absolutely not be omitted?"
+  },
+  {
+   "zh": "<strong>7.1 Implementation Road Map 7.1 實施路線圖</strong>",
+   "en": "<strong>7.1 Implementation Road Map</strong>"
+  },
+  {
+   "zh": "<strong>Implementation Road Map (實施路線圖)：</strong>這是 TR66 的核心框架，由 8 個閘門 (G1-G8) 和 7 個階段 (S1-S7) 組成：",
+   "en": "<strong>Implementation Road Map:</strong> This is the core framework of TR66, made up of 8 gateways (G1-G8) and 7 stages (S1-S7):"
+  },
+  {
+   "zh": "<strong>S1：</strong>技術調查與商業目標對齊 (Manufacturing Strategy Part 1)",
+   "en": "<strong>S1:</strong> Technology investigation and alignment with business objectives (Manufacturing Strategy Part 1)"
+  },
+  {
+   "zh": "<strong>S2：</strong>影響評估與實施方法 (Manufacturing Strategy Part 2)",
+   "en": "<strong>S2:</strong> Impact assessment and implementation approach (Manufacturing Strategy Part 2)"
+  },
+  {
+   "zh": "<strong>S3：</strong>範疇界定 (Scoping) - 制定 SUS 策略文件",
+   "en": "<strong>S3:</strong> Scoping - develop the SUS strategy document"
+  },
+  {
+   "zh": "<strong>S4：</strong>商業論證 (Business Case) - 啟動專案執行計畫 (PEP)",
+   "en": "<strong>S4:</strong> Business Case - initiate the Project Execution Plan (PEP)"
+  },
+  {
+   "zh": "<strong>S5：</strong>開發 (Development) - 使用者需求與採購",
+   "en": "<strong>S5:</strong> Development - user requirements and procurement"
+  },
+  {
+   "zh": "<strong>S6：</strong>測試與確效 (Testing &amp; Validation) - C&amp;Q、PV、人員訓練",
+   "en": "<strong>S6:</strong> Testing &amp; Validation - C&amp;Q, PV, personnel training"
+  },
+  {
+   "zh": "<strong>S7：</strong>啟動 (Launch) - 物料管理與日常運營",
+   "en": "<strong>S7:</strong> Launch - materials management and routine operations"
+  },
+  {
+   "zh": "<strong>非線性彈性：</strong>TR66 特別指出這個路線圖<strong>不一定是線性的</strong>。如果在 S1/S2 做了更深入的技術評估，可以直接從 G4 切入，跳過 S3 的部分工作。S3 和 S4 也可以平行推進。",
+   "en": "<strong>Non-linear flexibility:</strong> TR66 specifically notes that this road map is <strong>not necessarily linear</strong>. If a more in-depth technical assessment was done in S1/S2, you can enter directly at G4 and skip part of the S3 work. S3 and S4 can also run in parallel."
+  },
+  {
+   "zh": "但 TR66 也警告：如果修改了路線圖的順序，必須確保不會遺失結構性，所有必要元素仍然需要被完整處理。",
+   "en": "However, TR66 also warns that if the sequence of the road map is modified, you must make sure the structure is not lost: all necessary elements still need to be fully addressed."
+  },
+  {
+   "zh": "這個路線圖就像是導航 GPS 的「建議路線」。GPS 會建議你走高速公路 (標準線性流程)，但如果你對當地路況很熟悉 (S1/S2 做得很深入)，你可以走捷徑 (直接從 G4 進入)。但無論你走哪條路，目的地 (成功實施 SUS) 和必經的關鍵路口 (閘門檢查) 都不能跳過。",
+   "en": "The road map is like the \"suggested route\" on a GPS. The GPS suggests the highway (the standard linear process), but if you know the local roads well (S1/S2 done in depth), you can take a shortcut (enter directly at G4). Whichever route you take, the destination (successful SUS implementation) and the key intersections you must pass (gateway checks) cannot be skipped."
+  },
+  {
+   "zh": "實務應用 Practical Application",
+   "en": "Practical Application"
+  },
+  {
+   "zh": "<strong>CDMO 場景：</strong>假設你的 CDMO 已經有多年使用 SU bioreactor 的經驗，現在要導入新的 SU 混合系統。由於你已經有成熟的供應商審核流程和品質系統，S1/S2 的許多工作已經在組織層面完成，你可以直接從 G4 進入，專注於這個特定設備的商業論證和技術開發。",
+   "en": "<strong>CDMO scenario:</strong> Suppose your CDMO has years of experience with SU bioreactors and now wants to introduce a new SU mixing system. Because you already have a mature supplier audit process and quality system, much of the S1/S2 work has already been done at the organizational level. You can enter directly at G4 and focus on the business case and technical development for this specific piece of equipment."
+  },
+  {
+   "zh": "在什麼情況下，S3 和 S4 的平行推進是合理的？在什麼情況下應該嚴格按順序執行？",
+   "en": "Under what circumstances is running S3 and S4 in parallel reasonable? When should they be executed strictly in sequence?"
+  },
+  {
+   "zh": "對於一個從未使用過 SUS 的新設廠專案，你認為哪個閘門 (G1-G8) 是最關鍵的「不可回頭」決策點？為什麼？",
+   "en": "For a new-build facility project that has never used SUS, which gateway (G1-G8) do you think is the most critical \"point of no return\" decision? Why?"
+  },
+  {
+   "zh": "<strong>Table 7.1-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR66&amp;file=tbl-p87-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>: Focus and Output for Each SUS Implementation Stage Table 7.1-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR66&amp;file=tbl-p87-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>: 各 SUS 實施階段之重點與產出</strong>",
+   "en": "<strong>Table 7.1-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR66&amp;file=tbl-p87-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>: Focus and Output for Each SUS Implementation Stage <a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR66&amp;file=tbl-p87-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a></strong>"
+  },
+  {
+   "zh": "<strong>Table 7.1-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR66&amp;file=tbl-p87-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> 的核心價值：</strong>這張表是整個 SUS 實施的「文件清單總覽」。它回答了一個關鍵問題：<strong>在每個階段，我需要產出哪些文件？</strong>",
+   "en": "<strong>Core value of Table 7.1-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR66&amp;file=tbl-p87-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>:</strong> This table is the \"document checklist overview\" for the whole SUS implementation. It answers a key question: <strong>at each stage, which documents do I need to produce?</strong>"
+  },
+  {
+   "zh": "注意幾個重要觀察：",
+   "en": "A few important observations:"
+  },
+  {
+   "zh": "<strong>CDA/NDA</strong> 在 S1、S2、S4、S7 都出現 - 反映供應商保密管理是貫穿整個生命週期的",
+   "en": "<strong>CDA/NDA</strong> appears in S1, S2, S4 and S7 - reflecting that confidentiality management with suppliers runs through the whole lifecycle"
+  },
+  {
+   "zh": "<strong>PVV 文件</strong>從 S4 開始出現並延續到 S7 - 確效不是一次性事件，而是持續活動",
+   "en": "<strong>PVV documents</strong> start to appear from S4 and continue to S7 - validation is not a one-time event but an ongoing activity"
+  },
+  {
+   "zh": "<strong>S4 (Business Case)</strong> 的產出文件最多 - 這是從策略轉向執行的關鍵轉折點",
+   "en": "<strong>S4 (Business Case)</strong> has the most output documents - this is the key turning point from strategy to execution"
+  },
+  {
+   "zh": "<strong>規模適當原則：</strong>TR66 明確指出，SME 可以實施簡化版的 SUS 專案計畫，而大型企業可能需要完整的專案實施。關鍵是：<strong>無論規模大小，都有一個最低限度的專案組織和文件要求</strong>，否則實施過程可能會失敗。",
+   "en": "<strong>Principle of appropriate scale:</strong> TR66 states explicitly that an SME can implement a simplified SUS project plan, while a large enterprise may need a full project implementation. The key point: <strong>regardless of size, there is a minimum level of project organization and documentation required</strong>, otherwise the implementation may fail."
+  },
+  {
+   "zh": "這與 ICH Q9 的「與風險等級相稱 (commensurate with risk)」原則一致。",
+   "en": "This is consistent with the ICH Q9 principle of being \"commensurate with risk\"."
+  },
+  {
+   "zh": "這張表就像是一本旅行指南的「行李清單」。如果你是背包客 (小型公司/SME)，你只需要帶基本裝備；如果你是帶著全家出國度假 (大型藥廠)，你的清單會更長更詳細。但無論如何，護照 (核心文件)、機票 (專案計畫)、和保險 (風險管理) 是所有人都不能少的。",
+   "en": "This table is like the \"packing list\" in a travel guide. If you are a backpacker (small company/SME), you only need the basic gear; if you are taking the whole family abroad on vacation (large pharma company), your list will be longer and more detailed. But either way, the passport (core documents), the plane ticket (project plan), and the insurance (risk management) are things nobody can leave out."
+  },
+  {
+   "zh": "如果你是一家 CDMO 的專案經理，在 S4 階段需要產出的 16 份文件中，你會如何排列優先順序？哪些文件可以合併？",
+   "en": "If you are a project manager at a CDMO, how would you prioritize the 16 documents to be produced in stage S4? Which documents could be combined?"
+  },
+  {
+   "zh": "為什麼 CDA/NDA 需要在多個階段反覆出現？這反映了供應商關係管理的什麼特點？",
+   "en": "Why do CDA/NDAs need to appear repeatedly across multiple stages? What does this reflect about supplier relationship management?"
+  },
+  {
+   "zh": "<strong>7.2 Implementation Themes 7.2 實施主題</strong>",
+   "en": "<strong>7.2 Implementation Themes</strong>"
+  },
+  {
+   "zh": "<strong>三大實施主題 (Implementation Themes)：</strong>這三個主題不是階段性的活動，而是<strong>貫穿整個實施過程的橫向支柱</strong>：",
+   "en": "<strong>Three Implementation Themes:</strong> These three themes are not stage-specific activities but <strong>horizontal pillars that run through the entire implementation</strong>:"
+  },
+  {
+   "zh": "<strong>Stakeholder Management (利害關係人管理)</strong> - 確保所有相關方的期望被理解和管理",
+   "en": "<strong>Stakeholder Management</strong> - ensuring the expectations of all relevant parties are understood and managed"
+  },
+  {
+   "zh": "<strong>Risk Management (風險管理)</strong> - 識別、評估、減緩風險",
+   "en": "<strong>Risk Management</strong> - identifying, assessing, and mitigating risks"
+  },
+  {
+   "zh": "<strong>Process Validation and Verification, PVV (製程確效與驗證)</strong> - 確保製程持續符合要求",
+   "en": "<strong>Process Validation and Verification, PVV</strong> - ensuring the process continues to meet requirements"
+  },
+  {
+   "zh": "這三個主題就像建築物的三根柱子，支撐著每一個階段的工作。",
+   "en": "These three themes are like the three pillars of a building, supporting the work of every stage."
+  },
+  {
+   "zh": "<strong>7.2.1 Stakeholder Management 7.2.1 利害關係人管理</strong>",
+   "en": "<strong>7.2.1 Stakeholder Management</strong>"
+  },
+  {
+   "zh": "<strong>Stakeholder Power Grid (利害關係人權力格)：</strong>這是一個 2x2 矩陣，根據「影響力/權力」和「興趣/動機」兩個維度來分類利害關係人：",
+   "en": "<strong>Stakeholder Power Grid:</strong> This is a 2x2 matrix that classifies stakeholders along two dimensions, \"influence/power\" and \"interest/motivation\":"
+  },
+  {
+   "zh": "<strong>高權力 + 高興趣 = Manage Carefully (謹慎管理)</strong>：股東、母公司、法規單位、HSE 人員。這些人既有決策權又很關心結果，是最需要主動溝通和管理的群體。",
+   "en": "<strong>High power + high interest = Manage Carefully:</strong> shareholders, parent company, regulatory authorities, HSE staff. These people have both decision-making power and a strong interest in the outcome, so they are the group that most needs proactive communication and management."
+  },
+  {
+   "zh": "<strong>高權力 + 低興趣 = Manage Satisfaction (管理滿意度)</strong>：管理層、品質部門。他們有權否決決策但可能不深入參與日常細節，所以要確保他們對整體方向滿意。",
+   "en": "<strong>High power + low interest = Manage Satisfaction:</strong> senior management, the quality unit. They have the authority to veto decisions but may not be deeply involved in day-to-day details, so you need to make sure they are satisfied with the overall direction."
+  },
+  {
+   "zh": "<strong>低權力 + 高興趣 = Keep Informed (保持知情)</strong>：專案團隊、供應商、客戶。他們很關心但影響力有限，要定期更新資訊。",
+   "en": "<strong>Low power + high interest = Keep Informed:</strong> the project team, suppliers, customers. They care a great deal but have limited influence, so they should receive regular updates."
+  },
+  {
+   "zh": "<strong>低權力 + 低興趣 = Be Informed (被動知會)</strong>：透過內部備忘錄、產業活動等管道即可。",
+   "en": "<strong>Low power + low interest = Be Informed:</strong> internal memos, industry events, and similar channels are sufficient."
+  },
+  {
+   "zh": "<strong>缺乏利害關係人管理的後果：</strong>TR66 特別提到一個常見陷阱 - 當多個 SUS 技術或供應商同時被導入時，如果缺乏協調，不同部門可能會各自選擇不同類型的無菌連接器或儲存袋，導致標準化失敗和流程碎片化。",
+   "en": "<strong>Consequences of a lack of stakeholder management:</strong> TR66 mentions a common pitfall - when multiple SUS technologies or suppliers are introduced at the same time without coordination, different departments may each choose different types of sterile connectors or storage bags, leading to failed standardization and a fragmented process."
+  },
+  {
+   "zh": "這在 CDMO 尤其常見，因為不同客戶的產品可能推動不同的技術選擇。",
+   "en": "This is especially common in a CDMO, because the products of different clients may drive different technology choices."
+  },
+  {
+   "zh": "利害關係人管理就像籌備一場大型婚禮。新人的父母 (高權力 + 高興趣) 需要「謹慎管理」，充分溝通每一個決定；公司老闆 (高權力 + 低興趣) 只需要知道你什麼時候要請假就好；朋友們 (低權力 + 高興趣) 需要被告知日期和地點；而其他同事 (低權力 + 低興趣) 只需要收到一封通知信即可。",
+   "en": "Stakeholder management is like planning a big wedding. The couple's parents (high power + high interest) need to be \"managed carefully\", with every decision fully communicated; the company boss (high power + low interest) only needs to know when you will be taking leave; friends (low power + high interest) need to be told the date and venue; and the other colleagues (low power + low interest) only need to receive a notice email."
+  },
+  {
+   "zh": "RACI 矩陣解析",
+   "en": "Understanding the RACI Matrix"
+  },
+  {
+   "zh": "<strong>RACI Template (RACI 矩陣)：</strong>是一個定義角色與責任的工具：",
+   "en": "<strong>RACI Template:</strong> A tool for defining roles and responsibilities:"
+  },
+  {
+   "zh": "<strong>R (Responsible / 負責執行)：</strong>實際做這件事的人",
+   "en": "<strong>R (Responsible):</strong> the person who actually does the work"
+  },
+  {
+   "zh": "<strong>A (Accountable / 當責)：</strong>最終為結果負責的人（每個任務只能有一個 A）",
+   "en": "<strong>A (Accountable):</strong> the person ultimately answerable for the result (only one A per task)"
+  },
+  {
+   "zh": "<strong>C (Consulted / 諮詢)：</strong>提供意見的專家",
+   "en": "<strong>C (Consulted):</strong> experts who provide input"
+  },
+  {
+   "zh": "<strong>I (Informed / 知會)：</strong>需要被告知結果的人",
+   "en": "<strong>I (Informed):</strong> people who need to be told the outcome"
+  },
+  {
+   "zh": "在你的組織中，SUS 導入專案的「Manage Carefully」象限中會有哪些利害關係人？法規部門是否應該在這個象限？",
+   "en": "In your organization, which stakeholders would fall in the \"Manage Carefully\" quadrant of an SUS implementation project? Should the regulatory affairs department be in this quadrant?"
+  },
+  {
+   "zh": "如果供應商（如 Sartorius、Pall）在你的 Power Grid 中從「Keep Informed」移到「Manage Carefully」，這意味著什麼？",
+   "en": "If a supplier (such as Sartorius or Pall) moves from \"Keep Informed\" to \"Manage Carefully\" in your Power Grid, what does that mean?"
+  },
+  {
+   "zh": "<strong>7.2.2 Risk Management 7.2.2 風險管理</strong>",
+   "en": "<strong>7.2.2 Risk Management</strong>"
+  },
+  {
+   "zh": "<strong>Quality Risk Management, QRM (品質風險管理)：</strong>根據 ICH Q9 的框架，QRM 是一個系統化的過程，包含：",
+   "en": "<strong>Quality Risk Management, QRM:</strong> Based on the ICH Q9 framework, QRM is a systematic process that includes:"
+  },
+  {
+   "zh": "<strong>風險識別 (Risk Identification)：</strong>找出可能出錯的事情",
+   "en": "<strong>Risk Identification:</strong> finding what could go wrong"
+  },
+  {
+   "zh": "<strong>風險分析 (Risk Analysis)：</strong>評估發生機率和影響程度",
+   "en": "<strong>Risk Analysis:</strong> estimating the probability of occurrence and the degree of impact"
+  },
+  {
+   "zh": "<strong>風險評價 (Risk Evaluation)：</strong>決定是否可接受",
+   "en": "<strong>Risk Evaluation:</strong> deciding whether the risk is acceptable"
+  },
+  {
+   "zh": "<strong>風險控制 (Risk Control)：</strong>減緩或接受",
+   "en": "<strong>Risk Control:</strong> mitigating or accepting the risk"
+  },
+  {
+   "zh": "<strong>風險溝通 (Risk Communication)：</strong>與利害關係人分享結果",
+   "en": "<strong>Risk Communication:</strong> sharing the results with stakeholders"
+  },
+  {
+   "zh": "<strong>風險審查 (Risk Review)：</strong>定期回顧和更新",
+   "en": "<strong>Risk Review:</strong> reviewing and updating periodically"
+  },
+  {
+   "zh": "風險評估工具層級",
+   "en": "Hierarchy of Risk Assessment Tools"
+  },
+  {
+   "zh": "TR66 列出的工具從簡單到複雜，形成一個<strong>漸進式工具包</strong>：",
+   "en": "The tools listed in TR66 run from simple to complex, forming a <strong>progressive toolkit</strong>:"
+  },
+  {
+   "zh": "<strong>最簡單：</strong>資料蒐集 (Data Mining) - 收集歷史數據和供應商資訊",
+   "en": "<strong>Simplest:</strong> Data Mining - collecting historical data and supplier information"
+  },
+  {
+   "zh": "<strong>簡易：</strong>Ad Hoc 風險表 - 用簡單表格列出預定情境的風險",
+   "en": "<strong>Simple:</strong> Ad Hoc risk tables - using a simple table to list the risks of predefined scenarios"
+  },
+  {
+   "zh": "<strong>中等：</strong>方向性風險概況 (Directional Risk Profile) - 用矩陣排列風險優先順序",
+   "en": "<strong>Intermediate:</strong> Directional Risk Profile - using a matrix to rank risk priorities"
+  },
+  {
+   "zh": "<strong>中等：</strong>魚骨圖 (Fishbone / Ishikawa) - 找出根本原因",
+   "en": "<strong>Intermediate:</strong> Fishbone (Ishikawa) diagram - finding root causes"
+  },
+  {
+   "zh": "<strong>最嚴謹：</strong>FMEA - 系統性評估影響、嚴重度、發生機率和可偵測性",
+   "en": "<strong>Most rigorous:</strong> FMEA - systematically assessing impact, severity, probability of occurrence, and detectability"
+  },
+  {
+   "zh": "選擇哪個工具取決於風險的嚴重程度和專案的複雜度 - 這就是「與目標相稱 (commensurate)」的原則。",
+   "en": "Which tool to choose depends on the severity of the risk and the complexity of the project - this is the principle of being \"commensurate\"."
+  },
+  {
+   "zh": "風險評估工具的選擇就像看病就醫。如果只是小感冒 (低風險)，你量個體溫吃個藥就好 (data mining + ad hoc)；如果是反覆頭痛 (中等風險)，你需要做 X 光或 CT (fishbone analysis)；如果懷疑是嚴重疾病 (高風險、影響產品品質)，你需要做完整的健康檢查包括 MRI、血液分析等全套檢查 (FMEA)。",
+   "en": "Choosing a risk assessment tool is like seeing a doctor. For a minor cold (low risk), taking your temperature and some medicine is enough (data mining + ad hoc); for recurring headaches (medium risk), you need an X-ray or CT (fishbone analysis); if a serious illness is suspected (high risk, impact on product quality), you need a full health check including MRI and blood analysis (FMEA)."
+  },
+  {
+   "zh": "<strong>團隊協作是關鍵：</strong>TR66 特別強調 QRM 必須是「team effort」，需要定期召開利害關係人參與的審查會議。在實務上，許多 SUS 風險評估失敗的原因不是工具選錯，而是沒有納入正確的人。例如，如果風險評估會議沒有邀請供應商技術代表，可能會遺漏重要的材料相容性風險。",
+   "en": "<strong>Teamwork is key:</strong> TR66 specifically emphasizes that QRM must be a \"team effort\", with regular review meetings that involve stakeholders. In practice, many SUS risk assessments fail not because the wrong tool was chosen, but because the right people were not included. For example, if the supplier's technical representative is not invited to the risk assessment meeting, important material compatibility risks may be missed."
+  },
+  {
+   "zh": "在 SUS 導入專案中，什麼類型的風險適合用簡單的 ad hoc 風險表？什麼類型需要完整的 FMEA？",
+   "en": "In an SUS implementation project, what types of risk are suited to a simple ad hoc risk table? What types require a full FMEA?"
+  },
+  {
+   "zh": "TR66 提到「risk-review period commensurate with the risk」- 對於 extractables/leachables 風險，你認為多久應該審查一次？為什麼？",
+   "en": "TR66 mentions a \"risk-review period commensurate with the risk\". For extractables/leachables risk, how often do you think it should be reviewed? Why?"
+  },
+  {
+   "zh": "<strong>Risk Management Tables (7.2.3-1 to 7.2.3-3) 風險管理表格（7.2.3-1 至 7.2.3-3）</strong>",
+   "en": "<strong>Risk Management Tables (7.2.3-1 to 7.2.3-3)</strong>"
+  },
+  {
+   "zh": "Table 7.2.3-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR66&amp;file=tbl-p90-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> 解析：風險等級與工具選擇",
+   "en": "Table 7.2.3-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR66&amp;file=tbl-p90-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> Explained: Risk Level and Tool Selection"
+  },
+  {
+   "zh": "這張表建立了一個清晰的決策邏輯：",
+   "en": "This table establishes a clear decision logic:"
+  },
+  {
+   "zh": "<strong>紅色區域（影響產品品質）：</strong>無論是否可偵測，都必須使用 FMEA。這是最嚴格的要求，因為涉及病人安全。",
+   "en": "<strong>Red zone (impact on product quality):</strong> FMEA must be used, whether or not the risk is detectable. This is the strictest requirement because patient safety is involved."
+  },
+  {
+   "zh": "<strong>橙色區域（可能影響品質/良率）：</strong>使用中等複雜度的工具組合（data mining + fishbone + risk profiling）。",
+   "en": "<strong>Orange zone (possible impact on quality/yield):</strong> use a combination of tools of intermediate complexity (data mining + fishbone + risk profiling)."
+  },
+  {
+   "zh": "<strong>綠色區域（無影響）：</strong>只需要持續驗證 (continuous verification) 即可。",
+   "en": "<strong>Green zone (no impact):</strong> continuous verification is all that is needed."
+  },
+  {
+   "zh": "注意：<strong>可偵測性 (Detectability)</strong> 是決定工具選擇的另一個關鍵維度。即使風險嚴重度相同，如果不容易被偵測到，就需要更嚴謹的工具。",
+   "en": "Note: <strong>Detectability</strong> is another key dimension in choosing the tool. Even where severity is the same, a risk that is not easily detected calls for a more rigorous tool."
+  },
+  {
+   "zh": "Table 7.2.3-2<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR66&amp;file=tbl-p91-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> 解析：方向性風險概況",
+   "en": "Table 7.2.3-2<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR66&amp;file=tbl-p91-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> Explained: Directional Risk Profile"
+  },
+  {
+   "zh": "這張矩陣是 SUS 供應商資格審查 (Supplier Qualification) 的實用決策工具：",
+   "en": "This matrix is a practical decision tool for SUS supplier qualification:"
+  },
+  {
+   "zh": "<strong>最高風險 (紅色)：</strong>Cell &amp; virus culture（細胞與病毒培養）、Drug product formulation（藥品配方）、Sterile connectors（無菌連接器）。這些直接接觸產品或涉及無菌操作。",
+   "en": "<strong>Highest risk (red):</strong> Cell &amp; virus culture, Drug product formulation, Sterile connectors. These come into direct contact with the product or involve aseptic operations."
+  },
+  {
+   "zh": "<strong>最低風險 (綠色)：</strong>Tubing &amp; connectors（管路與連接件）、外部採購的 manifolds。這些相對簡單且標準化程度高。",
+   "en": "<strong>Lowest risk (green):</strong> Tubing &amp; connectors, and externally sourced manifolds. These are relatively simple and highly standardized."
+  },
+  {
+   "zh": "<strong>值得注意：</strong>自行組裝的 manifolds 比外部採購的風險更高，因為組裝品質取決於操作人員的技能和內部 QC 系統。",
+   "en": "<strong>Worth noting:</strong> in-house assembled manifolds carry a higher risk than externally sourced ones, because assembly quality depends on operator skill and the internal QC system."
+  },
+  {
+   "zh": "Table 7.2.3-3<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR66&amp;file=tbl-p91-2.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> 解析：從現狀到目標的風險演進",
+   "en": "Table 7.2.3-3<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR66&amp;file=tbl-p91-2.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> Explained: Risk Evolution from Current State to Future State"
+  },
+  {
+   "zh": "這張表描繪了 SUS 實施過程中風險管理的「成熟度演進」：",
+   "en": "This table depicts the \"maturity evolution\" of risk management during SUS implementation:"
+  },
+  {
+   "zh": "<strong>Current State (現狀)：</strong>一切都是「不存在」或「未知」- 這是專案啟動前的典型狀態。",
+   "en": "<strong>Current State:</strong> everything is \"does not exist\" or \"unknown\" - the typical state before a project starts."
+  },
+  {
+   "zh": "<strong>Future State (目標狀態)：</strong>所有系統都已建立並持續運作 - 這是 S7 (Launch) 之後的理想狀態。",
+   "en": "<strong>Future State:</strong> all systems are established and operating continuously - the ideal state after S7 (Launch)."
+  },
+  {
+   "zh": "從 Current 到 Future 的轉變，正是透過 S1-S7 各階段的工作來實現的。",
+   "en": "The transition from Current to Future is achieved through the work of stages S1-S7."
+  },
+  {
+   "zh": "Table 7.2.3-3<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR66&amp;file=tbl-p91-2.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> 描述的演進過程就像一家新餐廳開業：開業前，你的食材供應商 (unknown)、食品安全計畫 (does not exist)、衛生檢查流程 (does not exist) 都是空白的。隨著你一步步建立供應鏈、制定 HACCP 計畫、接受衛生局檢查，你逐漸從「什麼都沒有」進化到「一切就緒且持續改進」。SUS 實施也是同樣的邏輯。",
+   "en": "The evolution described in Table 7.2.3-3<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR66&amp;file=tbl-p91-2.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> is like opening a new restaurant: before opening, your ingredient suppliers (unknown), food safety plan (does not exist), and hygiene inspection process (does not exist) are all blank. As you build the supply chain step by step, draw up the HACCP plan, and pass the health department inspection, you gradually evolve from \"nothing in place\" to \"everything ready and continuously improving\". SUS implementation follows the same logic."
+  },
+  {
+   "zh": "<strong>CDMO 場景：</strong>假設你的 CDMO 要導入 SU bioreactor 用於細胞培養 (Cell culture)。根據 Table 7.2.3-2<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR66&amp;file=tbl-p91-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>，這屬於「High Complexity + High Risk of Application」= 最高風險等級（紅色）。這意味著：",
+   "en": "<strong>CDMO scenario:</strong> Suppose your CDMO is introducing an SU bioreactor for cell culture. According to Table 7.2.3-2<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR66&amp;file=tbl-p91-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>, this falls under \"High Complexity + High Risk of Application\" = the highest risk level (red). This means:"
+  },
+  {
+   "zh": "必須使用 FMEA 進行完整風險評估",
+   "en": "A full risk assessment using FMEA is required"
+  },
+  {
+   "zh": "供應商資格審查必須是最嚴格等級",
+   "en": "Supplier qualification must be at the strictest level"
+  },
+  {
+   "zh": "需要完整的 extractables/leachables 測試",
+   "en": "Full extractables/leachables testing is needed"
+  },
+  {
+   "zh": "不能跳過任何 Stage-Gate",
+   "en": "No Stage-Gate can be skipped"
+  },
+  {
+   "zh": "在 Table 7.2.3-2<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR66&amp;file=tbl-p91-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> 中，為什麼「自行組裝的 manifolds」比「外部採購的 manifolds」風險更高？這對 CDMO 的「自製 vs 外購」決策有什麼啟示？",
+   "en": "In Table 7.2.3-2<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR66&amp;file=tbl-p91-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>, why are \"in-house assembled manifolds\" riskier than \"externally sourced manifolds\"? What does this imply for a CDMO's make-vs-buy decision?"
+  },
+  {
+   "zh": "如果一家公司的 Table 7.2.3-3<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR66&amp;file=tbl-p91-2.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> 現狀顯示大部分項目仍在「Current」狀態但已經開始了 S6 (Testing &amp; Validation)，這代表什麼問題？",
+   "en": "If a company's Table 7.2.3-3<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR66&amp;file=tbl-p91-2.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> current state shows most items still at \"Current\" but S6 (Testing &amp; Validation) has already started, what problem does this indicate?"
+  },
+  {
+   "zh": "<strong>7.2.3 Process Validation and Verification (PVV) 7.2.3 製程驗證與確認（PVV）</strong>",
+   "en": "<strong>7.2.3 Process Validation and Verification (PVV)</strong>"
+  },
+  {
+   "zh": "<strong>Process Validation (製程確效) vs Verification (驗證)：</strong>理解這兩個術語的差異至關重要：",
+   "en": "<strong>Process Validation vs Verification:</strong> It is essential to understand the difference between these two terms:"
+  },
+  {
+   "zh": "<strong>Process Validation (PV)：</strong>收集和評估從製程設計到商業生產的數據，建立科學證據證明製程能夠「持續」(consistently) 交付品質合格的產品。這是 FDA/EMA 的 GMP 要求。",
+   "en": "<strong>Process Validation (PV):</strong> the collection and evaluation of data, from process design through commercial production, to establish scientific evidence that the process is capable of \"consistently\" delivering a quality product. This is an FDA/EMA GMP requirement."
+  },
+  {
+   "zh": "<strong>Verification (驗證)：</strong>一個更廣泛的傘式術語 (umbrella term)，涵蓋所有確保製造系統適合其預期用途的活動。包括：qualification、commissioning、system validation 等。",
+   "en": "<strong>Verification:</strong> a broader umbrella term covering all activities that ensure a manufacturing system is fit for its intended use. It includes qualification, commissioning, system validation, and so on."
+  },
+  {
+   "zh": "在 SUS 的脈絡下，<strong>Verification 特別重要</strong>，因為它是控制供應商品質的主要策略 (primary control strategy)。你無法在供應商工廠進行完整的 PV，但你可以透過驗證活動確認供應商交付的 SUS 符合要求。",
+   "en": "In the SUS context, <strong>verification is especially important</strong> because it is the primary control strategy for supplier quality. You cannot perform a full PV at the supplier's site, but you can confirm through verification activities that the SUS delivered by the supplier meets requirements."
+  },
+  {
+   "zh": "FDA 製程確效生命週期模型",
+   "en": "The FDA Process Validation Lifecycle Model"
+  },
+  {
+   "zh": "FDA 2011 年製程確效指引將 PV 分為三個階段，TR66 將 SUS 實施對應到這個模型中：",
+   "en": "The FDA 2011 process validation guidance divides PV into three stages, and TR66 maps SUS implementation onto this model:"
+  },
+  {
+   "zh": "<strong>Stage 1 - Process Design (製程設計)：</strong>對應 SUS 實施的前期工作 - 確定製程參數、CQA、設計空間",
+   "en": "<strong>Stage 1 - Process Design:</strong> corresponds to the early work of SUS implementation - defining process parameters, CQAs, and the design space"
+  },
+  {
+   "zh": "<strong>Stage 2 - Process Qualification (製程資格確認)：</strong>對應 SUS 的 validation prerequisites + conformance batches - 證明製程在商業規模下能夠重現",
+   "en": "<strong>Stage 2 - Process Qualification:</strong> corresponds to the SUS validation prerequisites + conformance batches - demonstrating that the process is reproducible at commercial scale"
+  },
+  {
+   "zh": "<strong>Stage 3 - Continued Process Verification (持續製程驗證)：</strong>對應 SUS 的日常生產運營 - 持續監控確保製程維持在驗證過的狀態",
+   "en": "<strong>Stage 3 - Continued Process Verification:</strong> corresponds to routine SUS production operations - ongoing monitoring to ensure the process remains in a validated state"
+  },
+  {
+   "zh": "PV 和 Verification 的關係就像「考駕照」和「日常車檢」的關係。Process Validation 就像通過駕照考試 - 你需要證明你有能力安全駕駛 (consistently deliver quality)。Verification 則像每次上路前檢查輪胎氣壓、機油和剎車 - 確保車子 (系統) 仍然適合使用。對於 SUS，因為每次使用的都是「新車零件」(一次性組件)，所以每次使用前的 Verification 格外重要。",
+   "en": "The relationship between PV and verification is like that between \"taking a driving test\" and \"routine vehicle checks\". Process Validation is like passing the driving test - you must prove you are able to drive safely (consistently deliver quality). Verification is like checking tire pressure, oil, and brakes before every trip - making sure the car (the system) is still fit for use. For SUS, because \"new car parts\" (single-use components) are used every time, verification before each use is especially important."
+  },
+  {
+   "zh": "<strong>Continuous Quality Verification (持續品質驗證)：</strong>TR66 提到這是一個進階概念，隨著產品生命週期的推進，累積的知識可以用來：",
+   "en": "<strong>Continuous Quality Verification:</strong> TR66 describes this as an advanced concept in which, as the product lifecycle progresses, the accumulated knowledge can be used to:"
+  },
+  {
+   "zh": "降低風險 (mitigation of risks)",
+   "en": "mitigate risks"
+  },
+  {
+   "zh": "減少製程變異 (reduction of process variability)",
+   "en": "reduce process variability"
+  },
+  {
+   "zh": "提升製程能力 (enhancement of process capability)",
+   "en": "enhance process capability"
+  },
+  {
+   "zh": "定義/擴展設計空間 (design space)",
+   "en": "define/expand the design space"
+  },
+  {
+   "zh": "提升產品品質",
+   "en": "improve product quality"
+  },
+  {
+   "zh": "這與 ICH Q10 的「持續改善」(continual improvement) 理念完全一致。",
+   "en": "This is fully consistent with the ICH Q10 concept of continual improvement."
+  },
+  {
+   "zh": "法規對接 Regulatory Alignment",
+   "en": "Regulatory Alignment"
+  },
+  {
+   "zh": "<strong>ICH Q8/Q9/Q10 與 SUS 實施的關係：</strong>",
+   "en": "<strong>The relationship between ICH Q8/Q9/Q10 and SUS implementation:</strong>"
+  },
+  {
+   "zh": "<strong>ICH Q8 (Pharmaceutical Development)：</strong>提供 QbD 框架，定義設計空間和 CQA",
+   "en": "<strong>ICH Q8 (Pharmaceutical Development):</strong> provides the QbD framework and defines the design space and CQAs"
+  },
+  {
+   "zh": "<strong>ICH Q9 (Quality Risk Management)：</strong>提供風險管理方法論",
+   "en": "<strong>ICH Q9 (Quality Risk Management):</strong> provides the risk management methodology"
+  },
+  {
+   "zh": "<strong>ICH Q10 (Pharmaceutical Quality System)：</strong>提供品質系統和持續改善的框架",
+   "en": "<strong>ICH Q10 (Pharmaceutical Quality System):</strong> provides the framework for the quality system and continual improvement"
+  },
+  {
+   "zh": "TR66 的 S3-S7 階段可以直接對應到這三個 ICH 指引的要求，這使得 SUS 實施與法規期望之間有了清晰的橋梁。",
+   "en": "Stages S3-S7 of TR66 can be mapped directly to the requirements of these three ICH guidelines, giving a clear bridge between SUS implementation and regulatory expectations."
+  },
+  {
+   "zh": "<strong>CDMO 場景：</strong>當你在準備向客戶交付的 PV 文件包 (validation package) 時，需要清楚區分 SUS 相關的驗證活動屬於 FDA PV 的哪個階段。例如：",
+   "en": "<strong>CDMO scenario:</strong> When preparing the PV documentation package (validation package) for delivery to a client, you need to be clear about which FDA PV stage each SUS-related validation activity belongs to. For example:"
+  },
+  {
+   "zh": "<strong>PV Stage 1：</strong>SU bioreactor 的材料相容性研究、extractables 評估、製程參數範圍確認",
+   "en": "<strong>PV Stage 1:</strong> material compatibility studies, extractables assessment, and confirmation of process parameter ranges for the SU bioreactor"
+  },
+  {
+   "zh": "<strong>PV Stage 2：</strong>使用 SU bioreactor 進行的 conformance batches (通常 3 批)，包括 leachables 分析",
+   "en": "<strong>PV Stage 2:</strong> conformance batches run with the SU bioreactor (usually 3 batches), including leachables analysis"
+  },
+  {
+   "zh": "<strong>PV Stage 3：</strong>日常生產中的 SUS 來料檢驗、供應商審核、持續監控趨勢",
+   "en": "<strong>PV Stage 3:</strong> incoming inspection of SUS materials, supplier audits, and ongoing trend monitoring in routine production"
+  },
+  {
+   "zh": "為什麼 TR66 說 Verification 是 SUS 供應商管理的「primary control strategy」？這與傳統不鏽鋼設備 (MUS) 的控制策略有什麼不同？",
+   "en": "Why does TR66 say that verification is the \"primary control strategy\" for SUS supplier management? How does this differ from the control strategy for traditional stainless steel equipment (MUS)?"
+  },
+  {
+   "zh": "如果你的 SUS 供應商突然宣布要更換 SU bag 的薄膜材料，這會觸發 FDA PV 生命週期模型的哪個階段的活動？你需要重新做哪些工作？",
+   "en": "If your SUS supplier suddenly announces a change in the film material of the SU bag, which stage of the FDA PV lifecycle model would this trigger activities in? What would you need to redo?"
+  },
+  {
+   "zh": "Continuous Quality Verification 如何幫助一家 CDMO 在合約到期時向客戶展示其 SUS 製程的成熟度？",
+   "en": "How can Continuous Quality Verification help a CDMO demonstrate the maturity of its SUS process to the client when the contract comes up for renewal?"
+  }
+ ]
+}
