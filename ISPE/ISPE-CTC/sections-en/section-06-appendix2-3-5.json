@@ -1,0 +1,1021 @@
+{
+ "source": "section-06-appendix2-3-5.html",
+ "blocks": [
+  {
+   "zh": "感測器位置規劃、量測不確定度應用與風險導向測試設計",
+   "en": "Sensor Placement Planning, Application of Measurement Uncertainty, and Risk-Based Test Design"
+  },
+  {
+   "zh": "量測不確定度不是失敗的藉口——它是設計可實現且有意義的驗收標準的工具。",
+   "en": "Measurement uncertainty is not an excuse for failure; it is a tool for designing acceptance criteria that are achievable and meaningful."
+  },
+  {
+   "zh": "目錄 / Table of Contents",
+   "en": "Table of Contents"
+  },
+  {
+   "zh": "<a href=\"#learning\">Learning Objectives 學習目標</a>\n<a href=\"#app2-intro\">App. 2: Overview 附錄2概述</a>\n<a href=\"#app2-approach\">Heat Gain Analysis 熱得/熱損分析</a>\n<a href=\"#app2-placement\">Sensor Placement 感測器位置</a>\n<a href=\"#app2-load\">Load Testing 負載測試</a>\n<a href=\"#app2-seasonal\">Seasonal Conditions 季節性條件</a>\n<a href=\"#app2-table\">Sensor Count Table 感測器數量表</a>\n<a href=\"#app3-intro\">App. 3: Overview 附錄3概述</a>\n<a href=\"#app3-concepts\">MU Concepts 量測不確定度概念</a>\n<a href=\"#app3-formula\">Guard-Band Formula 保護帶公式</a>\n<a href=\"#app3-exA\">Example A 範例A</a>\n<a href=\"#app3-exB\">Example B 範例B</a>\n<a href=\"#app3-exC\">Example C 範例C</a>\n<a href=\"#app3-protocol\">Example Protocol 範例程序</a>\n<a href=\"#app5-intro\">App. 5: Overview 附錄5概述</a>\n<a href=\"#app5-scope\">Risk Assessment Scope 風險評估範圍</a>\n<a href=\"#app5-scoring\">Risk Scoring 風險評分</a>\n<a href=\"#app5-tables\">Risk Tables 風險矩陣表</a>\n<a href=\"#app5-cdmo\">CDMO Application CDMO應用</a>\n<a href=\"#summary\">Summary 總結</a>",
+   "en": "<a href=\"#learning\">Learning Objectives</a>\n<a href=\"#app2-intro\">App. 2: Overview</a>\n<a href=\"#app2-approach\">Heat Gain Analysis</a>\n<a href=\"#app2-placement\">Sensor Placement</a>\n<a href=\"#app2-load\">Load Testing</a>\n<a href=\"#app2-seasonal\">Seasonal Conditions</a>\n<a href=\"#app2-table\">Sensor Count Table</a>\n<a href=\"#app3-intro\">App. 3: Overview</a>\n<a href=\"#app3-concepts\">MU Concepts</a>\n<a href=\"#app3-formula\">Guard-Band Formula</a>\n<a href=\"#app3-exA\">Example A</a>\n<a href=\"#app3-exB\">Example B</a>\n<a href=\"#app3-exC\">Example C</a>\n<a href=\"#app3-protocol\">Example Protocol</a>\n<a href=\"#app5-intro\">App. 5: Overview</a>\n<a href=\"#app5-scope\">Risk Assessment Scope</a>\n<a href=\"#app5-scoring\">Risk Scoring</a>\n<a href=\"#app5-tables\">Risk Tables</a>\n<a href=\"#app5-cdmo\">CDMO Application</a>\n<a href=\"#summary\">Summary</a>"
+  },
+  {
+   "zh": "Learning Objectives  /  學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "完成本節學習後，您將能夠：",
+   "en": "After completing this section, you will be able to:"
+  },
+  {
+   "zh": "說明溫度標圖中感測器數量與位置選擇的科學依據",
+   "en": "Explain the scientific basis for choosing the number and location of sensors in a temperature mapping study"
+  },
+  {
+   "zh": "辨識關鍵放置區域：角落、門口、蒸發器盤管、外牆",
+   "en": "Identify critical placement areas: corners, doorways, evaporator coils, and exterior walls"
+  },
+  {
+   "zh": "理解空倉 vs. 滿倉負載測試策略及季節性驗證需求",
+   "en": "Understand the empty vs. full-load testing strategy and the need for seasonal verification"
+  },
+  {
+   "zh": "定義量測不確定度（MU）及其在低溫腔體系統中的組成",
+   "en": "Define measurement uncertainty (MU) and its components in a cold-temperature chamber system"
+  },
+  {
+   "zh": "應用保護帶（GB）公式從 PAR 推導決策限值",
+   "en": "Apply the guard-band (GB) formula to derive decision limits from the PAR"
+  },
+  {
+   "zh": "以數值方式演算附錄3的範例 A、B、C",
+   "en": "Work through Examples A, B, and C of Appendix 3 numerically"
+  },
+  {
+   "zh": "解釋感測器重新定位 vs. 偏差調整對警報限值的影響",
+   "en": "Explain how sensor relocation vs. offset adjustment affects alarm limits"
+  },
+  {
+   "zh": "應用 ICH Q9 風險原則決定 CTC 確效範圍與頻率",
+   "en": "Apply ICH Q9 risk principles to determine the scope and frequency of CTC validation"
+  },
+  {
+   "zh": "使用嚴重性 × 發生率 × 可偵測性矩陣進行風險分類",
+   "en": "Use the severity × occurrence × detectability matrix for risk classification"
+  },
+  {
+   "zh": "在確效草案中撰寫具科學依據的風險評估文件",
+   "en": "Write a scientifically justified risk assessment in a validation protocol"
+  },
+  {
+   "zh": "附錄2：標圖感測器的數量與位置  |  §14 · Source pp. 74–78",
+   "en": "Appendix 2: Number and Location of Mapping Sensors  |  §14 · Source pp. 74–78"
+  },
+  {
+   "zh": "概述與目的",
+   "en": "Overview and Purpose"
+  },
+  {
+   "zh": "附錄2以倉庫標圖為範例，說明如何理性選擇感測器數量與位置。核心邏輯是：<strong>標圖（mapping）為後續永久監測（monitoring）服務</strong>——先用密集標圖找出最差位置，再據此決定常設感測器的安裝點。",
+   "en": "Appendix 2 uses warehouse mapping as an example to show how to select the number and location of sensors rationally. The core logic is that <strong>mapping serves the permanent monitoring that follows</strong>: first use dense mapping to find the worst-case locations, then use those results to decide where to install the permanent sensors."
+  },
+  {
+   "zh": "核心概念：標圖 vs. 監測",
+   "en": "Core Concept: Mapping vs. Monitoring"
+  },
+  {
+   "zh": "<strong>Temperature Mapping（溫度標圖）</strong>：確效活動，一次性或定期。目的是找出最高溫點與最低溫點",
+   "en": "<strong>Temperature Mapping</strong>: a validation activity, performed once or periodically. Its purpose is to find the hottest and coldest points"
+  },
+  {
+   "zh": "<strong>Temperature Monitoring（溫度監測）</strong>：常態運作，持續運行。監測感測器位置由標圖結果決定",
+   "en": "<strong>Temperature Monitoring</strong>: routine operation, running continuously. Monitoring sensor locations are determined by the mapping results"
+  },
+  {
+   "zh": "兩者共同構成 CTC 的完整溫度控制策略",
+   "en": "Together they form the complete temperature control strategy of a CTC"
+  },
+  {
+   "zh": "比喻：都市氣象站",
+   "en": "Analogy: A City Weather Station"
+  },
+  {
+   "zh": "城市建設前會密集部署暫時氣象感應器（標圖），找出最熱/最冷的地點，然後將固定氣象站（監測）設在這些代表性位置。CTC 標圖的邏輯完全相同。",
+   "en": "Before a city is built, temporary weather sensors are deployed densely (mapping) to find the hottest and coldest spots, and permanent weather stations (monitoring) are then set up at those representative locations. CTC mapping follows exactly the same logic."
+  },
+  {
+   "zh": "熱得/熱損分析：外部與內部熱源識別",
+   "en": "Heat Gain/Loss Analysis: Identifying External and Internal Heat Sources"
+  },
+  {
+   "zh": "熱源分析：感測器佈點的科學前提",
+   "en": "Heat Source Analysis: The Scientific Premise for Sensor Placement"
+  },
+  {
+   "zh": "感測器不能隨意放置——必須先理解哪些位置會出現溫度極端值，才能在這些位置重點佈點。熱源分析是這個推理鏈的起點。",
+   "en": "Sensors cannot be placed arbitrarily. You must first understand which locations are likely to show temperature extremes so that sensors can be concentrated there. Heat source analysis is the starting point of this chain of reasoning."
+  },
+  {
+   "zh": "關鍵原則：熱源 = 潛在標圖熱點",
+   "en": "Key Principle: Heat Source = Potential Mapping Hot Spot"
+  },
+  {
+   "zh": "外牆（尤其北牆/屋頂）→ 夏季熱點、冬季冷點",
+   "en": "Exterior walls (especially north walls/roof) → summer hot spots, winter cold spots"
+  },
+  {
+   "zh": "裝卸門附近 → 開門時溫度衝擊最大區域",
+   "en": "Near loading dock doors → the area with the greatest temperature impact when the door is opened"
+  },
+  {
+   "zh": "送風口附近 → 可能最冷區域（冷氣出口直吹）",
+   "en": "Near air supply outlets → potentially the coldest area (direct blast from the cooling outlet)"
+  },
+  {
+   "zh": "設備熱源（forklift 充電站、照明等）→ 局部熱點",
+   "en": "Equipment heat sources (forklift charging stations, lighting, etc.) → local hot spots"
+  },
+  {
+   "zh": "比喻：在辦公室找最熱/最冷位置",
+   "en": "Analogy: Finding the Hottest/Coldest Spot in an Office"
+  },
+  {
+   "zh": "在辦公室選座位前，先觀察：窗戶旁（夏天熱）、冷氣口下方（最冷）、影印機旁（有熱）。標圖佈點邏輯完全一樣——根據熱源分析決定哪裡放感測器，而不是均勻撒佈。",
+   "en": "Before choosing a seat in an office, observe first: next to the window (hot in summer), under the air-conditioning vent (coldest), beside the copier (warm). The logic of mapping sensor placement is exactly the same: decide where to put sensors based on heat source analysis, not by spreading them evenly."
+  },
+  {
+   "zh": "CDMO 無菌製劑倉庫應用",
+   "en": "CDMO Sterile Drug Product Warehouse Applications"
+  },
+  {
+   "zh": "WFI 儲槽房間 → 保溫管路散熱是內部熱源",
+   "en": "WFI tank room → heat dissipation from insulated piping is an internal heat source"
+  },
+  {
+   "zh": "冷凍乾燥機室 → 冷凝器散熱為主要熱源",
+   "en": "Freeze dryer room → condenser heat dissipation is the main heat source"
+  },
+  {
+   "zh": "2–8°C 藥品冷藏室 → 走廊側壁溫差影響需評估",
+   "en": "2–8°C drug product cold room → the effect of the temperature difference at the corridor-side wall must be evaluated"
+  },
+  {
+   "zh": "出入口門封完整性 → 每次標圖前需確認",
+   "en": "Door seal integrity at entrances and exits → must be confirmed before each mapping study"
+  },
+  {
+   "zh": "思考練習 1",
+   "en": "Thinking Exercise 1"
+  },
+  {
+   "zh": "一個 2–8°C 藥品冷藏室的東牆緊鄰洗手間（非空調區），這對標圖佈點有何影響？",
+   "en": "The east wall of a 2–8°C drug product cold room adjoins a restroom (a non-air-conditioned area). How does this affect mapping sensor placement?"
+  },
+  {
+   "zh": "同一冷藏室的蒸發器盤管在左上角，你如何預測最低溫區域？",
+   "en": "The evaporator coil of the same cold room is in the upper left corner. How would you predict the lowest-temperature area?"
+  },
+  {
+   "zh": "倉庫日常使用叉車（內燃機型）時，熱源分析應新增哪項考量？",
+   "en": "If the warehouse routinely uses forklifts (internal combustion type), what new consideration should be added to the heat source analysis?"
+  },
+  {
+   "zh": "感測器位置選擇原則：角落、中心、高低點、門口",
+   "en": "Sensor Placement Principles: Corners, Center, High/Low Points, Doorways"
+  },
+  {
+   "zh": "感測器位置選擇原則詳解",
+   "en": "Sensor Placement Principles in Detail"
+  },
+  {
+   "zh": "標準感測器佈點邏輯（NF X15-140 原則）",
+   "en": "Standard Sensor Placement Logic (NF X15-140 Principles)"
+  },
+  {
+   "zh": "<strong>分區（Zone）</strong>：以送風口為分界，每個區域獨立考量",
+   "en": "<strong>Zone</strong>: use the air supply outlets as dividing lines and consider each zone independently"
+  },
+  {
+   "zh": "<strong>高低點</strong>：每個區域最高與最低產品儲存位置各一個感測器",
+   "en": "<strong>High and low points</strong>: one sensor each at the highest and lowest product storage position in each zone"
+  },
+  {
+   "zh": "<strong>角落</strong>：空間四角各一個（邊角效應最顯著）",
+   "en": "<strong>Corners</strong>: one sensor at each of the four corners of the space (the corner effect is most pronounced)"
+  },
+  {
+   "zh": "<strong>中心</strong>：空間中點中層高度一個（對照基準）",
+   "en": "<strong>Center</strong>: one sensor at the midpoint of the space at mid-height (reference baseline)"
+  },
+  {
+   "zh": "<strong>門口附近</strong>：暖空氣滲入最直接路徑",
+   "en": "<strong>Near doorways</strong>: the most direct path for warm air infiltration"
+  },
+  {
+   "zh": "<strong>外牆側</strong>：熱傳導影響最大",
+   "en": "<strong>Exterior wall side</strong>: where heat conduction has the greatest effect"
+  },
+  {
+   "zh": "<strong>蒸發器盤管附近</strong>：通常最低溫區域",
+   "en": "<strong>Near the evaporator coil</strong>: usually the coldest area"
+  },
+  {
+   "zh": "感測器數量的核心原則：<strong>夠用即可，多於設計有浪費，少於需求有風險</strong>。對稱結構可合理減少感測器數量，但端區（靠近門）不可減少。",
+   "en": "The core principle for sensor count: <strong>enough is enough; more than the design needs is wasteful, and fewer than required is risky</strong>. A symmetrical layout can justify reducing the number of sensors, but the end zones (near the door) must not be reduced."
+  },
+  {
+   "zh": "重點提示：為何不能只放一個感測器？",
+   "en": "Key Point: Why Not Use Just One Sensor?"
+  },
+  {
+   "zh": "單一感測器只能告訴你它所在位置的溫度。若產品儲存在角落而感測器在中心，角落的實際最高溫度可能超出 PAR 而警報從未觸發。這是患者安全風險，不是技術討論。",
+   "en": "A single sensor can only tell you the temperature at its own location. If product is stored in a corner while the sensor is in the center, the actual maximum temperature in the corner may exceed the PAR without the alarm ever being triggered. This is a patient safety risk, not a technical debate."
+  },
+  {
+   "zh": "感測器數量建議表（體積導向）",
+   "en": "Recommended Sensor Count Table (Volume-Based)"
+  },
+  {
+   "zh": "Note: Numbers are guidance, not regulatory mandates. Final count must be justified in the mapping protocol. / 以上數字僅供參考，最終數量須在標圖草案中科學論證。",
+   "en": "Note: Numbers are guidance, not regulatory mandates. Final count must be justified in the mapping protocol."
+  },
+  {
+   "zh": "思考練習 2",
+   "en": "Thinking Exercise 2"
+  },
+  {
+   "zh": "一個 15 m³ 的 2–8°C 冷藏室，您計劃部署幾個感測器？列出每個感測器的理由。",
+   "en": "For a 15 m³ 2–8°C cold room, how many sensors would you plan to deploy? List the rationale for each sensor."
+  },
+  {
+   "zh": "如果冷藏室中間有一個大型移動推車固定停放，這對感測器佈點有何影響？",
+   "en": "If a large mobile cart is permanently parked in the middle of the cold room, how does this affect sensor placement?"
+  },
+  {
+   "zh": "當標圖完成後，永久監測感測器應放在哪裡？為什麼？",
+   "en": "Once mapping is complete, where should the permanent monitoring sensors be placed, and why?"
+  },
+  {
+   "zh": "負載測試策略與季節性條件覆蓋",
+   "en": "Load Testing Strategy and Seasonal Condition Coverage"
+  },
+  {
+   "zh": "負載測試與季節性條件詳解",
+   "en": "Load Testing and Seasonal Conditions in Detail"
+  },
+  {
+   "zh": "比喻：為何用空箱而非真品？",
+   "en": "Analogy: Why Use Empty Boxes Instead of Real Product?"
+  },
+  {
+   "zh": "真實產品有大量熱質（thermal mass），能緩衝溫度衝擊——使最差情況下的溫度衝擊看起來更小。空箱有體積（阻礙氣流）但幾乎沒有熱質，迫使系統在最不利條件下暴露。這是主動尋找最壞情況，而非掩蓋它。",
+   "en": "Real product has substantial thermal mass, which buffers temperature shocks and makes worst-case temperature excursions look smaller. Empty boxes have volume (obstructing airflow) but almost no thermal mass, forcing the system to be exposed under the least favorable conditions. This means actively looking for the worst case rather than masking it."
+  },
+  {
+   "zh": "兩種負載條件的邏輯",
+   "en": "The Logic of the Two Load Conditions"
+  },
+  {
+   "zh": "空倉（Empty）",
+   "en": "Empty"
+  },
+  {
+   "zh": "氣流最暢通 → 顯示設備本身的溫度分布能力",
+   "en": "Airflow is least obstructed → shows the temperature distribution capability of the equipment itself"
+  },
+  {
+   "zh": "通常較均勻，但仍能找出死角",
+   "en": "Usually more uniform, but dead spots can still be found"
+  },
+  {
+   "zh": "模擬滿倉（Simulated Full）",
+   "en": "Simulated Full"
+  },
+  {
+   "zh": "空箱阻斷氣流 → 可能產生局部熱點/冷點",
+   "en": "Empty boxes block airflow → may create local hot/cold spots"
+  },
+  {
+   "zh": "最小熱質 → 溫度衝擊快速傳播，最差情況清晰可見",
+   "en": "Minimal thermal mass → temperature shocks propagate quickly and the worst case is clearly visible"
+  },
+  {
+   "zh": "季節性驗證：不能只做一次",
+   "en": "Seasonal Verification: It Cannot Be Done Only Once"
+  },
+  {
+   "zh": "一次夏季標圖無法代表全年最差情況。冬季時外牆/屋頂散熱可能導致低溫角落——這在夏季標圖中看不到。<strong>完整的標圖研究必須涵蓋夏冬兩個極端季節。</strong>",
+   "en": "A single summer mapping cannot represent the worst case across the whole year. In winter, heat loss through exterior walls/roof may cause cold corners, which would not be seen in a summer study. <strong>A complete mapping study must cover both the summer and winter extremes.</strong>"
+  },
+  {
+   "zh": "監管機構（包括 WHO GDP 和 EU GDP）日益要求季節性標圖作為完整文件的一部分。",
+   "en": "Regulators (including WHO GDP and EU GDP) increasingly expect seasonal mapping as part of complete documentation."
+  },
+  {
+   "zh": "CDMO 季節性標圖實務",
+   "en": "Seasonal Mapping Practice at a CDMO"
+  },
+  {
+   "zh": "台灣廠：夏季（6–9月）高溫高濕是最差外部熱負載",
+   "en": "Taiwan sites: summer (June–September) heat and humidity is the worst-case external heat load"
+  },
+  {
+   "zh": "冬季（1–2月）東北季風可能加大北牆冷損",
+   "en": "In winter (January–February), the northeast monsoon may increase cold loss through the north wall"
+  },
+  {
+   "zh": "計畫標圖時間點：夏季竣工後立即進行初次標圖；隔年1–2月進行冬季複驗",
+   "en": "Planned mapping timing: perform the initial mapping immediately after completion in summer; perform the winter confirmation in January–February of the following year"
+  },
+  {
+   "zh": "如有客戶要求年度再驗（annual requalification），可對齊夏季高峰",
+   "en": "If a customer requires annual requalification, it can be aligned with the summer peak"
+  },
+  {
+   "zh": "思考練習 3",
+   "en": "Thinking Exercise 3"
+  },
+  {
+   "zh": "您的工廠在10月完成新建冷藏室，應如何安排標圖計劃以符合季節性要求？",
+   "en": "Your site completes a new cold room in October. How should you arrange the mapping plan to meet the seasonal requirement?"
+  },
+  {
+   "zh": "夏季標圖顯示北牆角落有 +0.8°C 偏差，冬季應重點觀察哪些區域？",
+   "en": "The summer mapping shows a +0.8°C deviation in the north wall corner. Which areas should you focus on observing in winter?"
+  },
+  {
+   "zh": "為何使用「空箱」而非直接用真實產品進行負載測試？",
+   "en": "Why use \"empty boxes\" rather than real product directly for load testing?"
+  },
+  {
+   "zh": "附錄3：量測不確定度概述與核心概念  |  §15 · Source pp. 77–84",
+   "en": "Appendix 3: Measurement Uncertainty Overview and Core Concepts  |  §15 · Source pp. 77–84"
+  },
+  {
+   "zh": "量測不確定度為何重要",
+   "en": "Why Measurement Uncertainty Matters"
+  },
+  {
+   "zh": "任何溫度測量儀器都存在誤差。問題不是誤差存不存在（它一定存在），而是誤差有多大，以及如何在設計驗收標準時<strong>將誤差納入考量</strong>，而不是忽視它。",
+   "en": "Every temperature measuring instrument has error. The question is not whether error exists (it always does), but how large it is and how to <strong>take it into account</strong> when designing acceptance criteria rather than ignoring it."
+  },
+  {
+   "zh": "量測不確定度的三個來源",
+   "en": "Three Sources of Measurement Uncertainty"
+  },
+  {
+   "zh": "<strong>感測器校正不確定度</strong>：即使剛校正完畢，也有±X°C 的準確度範圍",
+   "en": "<strong>Sensor calibration uncertainty</strong>: even immediately after calibration, there is an accuracy range of ±X°C"
+  },
+  {
+   "zh": "<strong>數據記錄器不確定度</strong>：訊號轉換（類比→數位）過程的誤差",
+   "en": "<strong>Data logger uncertainty</strong>: error from the signal conversion (analog → digital) process"
+  },
+  {
+   "zh": "<strong>位置效應</strong>：感測器與實際最差溫度位置的空間偏差造成的系統性誤差",
+   "en": "<strong>Location effect</strong>: systematic error caused by the spatial offset between the sensor and the actual worst-case temperature location"
+  },
+  {
+   "zh": "比喻：體溫計的不確定度",
+   "en": "Analogy: Thermometer Uncertainty"
+  },
+  {
+   "zh": "一支體溫計顯示 37.2°C，但製造商說準確度是 ±0.2°C，所以「真實」體溫可能是 37.0–37.4°C。如果您用這支體溫計判斷患者是否發燒（閾值37.5°C），顯示37.4°C 時您不能確定患者是否真的發燒。量測不確定度讓我們<strong>誠實面對測量的極限</strong>，並在決策標準中留出保護空間。",
+   "en": "A thermometer reads 37.2°C, but the manufacturer states an accuracy of ±0.2°C, so the \"true\" body temperature may be 37.0–37.4°C. If you use this thermometer to decide whether a patient has a fever (threshold 37.5°C), then at a reading of 37.4°C you cannot be sure whether the patient truly has a fever. Measurement uncertainty lets us <strong>be honest about the limits of measurement</strong> and leave a margin of protection in the decision criteria."
+  },
+  {
+   "zh": "兩種監測感測器位置的不同計算",
+   "en": "Different Calculations for Two Monitoring Sensor Locations"
+  },
+  {
+   "zh": "<strong>放在最差位置（理想）</strong>：只需考慮自己這個感測器的 MU",
+   "en": "<strong>Placed at the worst-case location (ideal)</strong>: only the MU of this one sensor needs to be considered"
+  },
+  {
+   "zh": "<strong>放在其他位置（常見）</strong>：需要加入<em>位置偏差</em>（offset）+ 兩個感測器的複合 MU",
+   "en": "<strong>Placed at another location (common)</strong>: a <em>location offset</em> must be added, plus the combined MU of the two sensors"
+  },
+  {
+   "zh": "位置偏差越大，允許的警報範圍就越窄——有時會窄到讓監測方案在實務上不可行，此時最佳解是<strong>重新選擇感測器位置</strong>。",
+   "en": "The larger the offset, the narrower the permitted alarm range, sometimes so narrow that the monitoring scheme becomes impractical. In that case, the best solution is to <strong>reselect the sensor location</strong>."
+  },
+  {
+   "zh": "保護帶公式與決策限值推導",
+   "en": "Guard-Band Formula and Derivation of Decision Limits"
+  },
+  {
+   "zh": "保護帶公式詳解",
+   "en": "The Guard-Band Formula in Detail"
+  },
+  {
+   "zh": "核心術語解釋",
+   "en": "Explanation of Core Terms"
+  },
+  {
+   "zh": "<strong>PAR（Proven Acceptable Range）</strong>：產品安全儲存的溫度範圍，例如 2–8°C。來自穩定性研究。",
+   "en": "<strong>PAR (Proven Acceptable Range)</strong>: the temperature range within which the product can be stored safely, for example 2–8°C. It is derived from stability studies."
+  },
+  {
+   "zh": "<strong>Guard Band（GB，保護帶）</strong>：從 PAR 邊界向內縮的安全緩衝，大小等於 k × 系統量測不確定度",
+   "en": "<strong>Guard Band (GB)</strong>: a safety buffer moved inward from the PAR boundary, equal to k × the system measurement uncertainty"
+  },
+  {
+   "zh": "<strong>Decision Limit（DL，決策限值）</strong>：警報實際觸發的數值。DL 比 PAR 更嚴格，為 MU 留出空間",
+   "en": "<strong>Decision Limit (DL)</strong>: the value at which the alarm actually triggers. The DL is tighter than the PAR, leaving room for MU"
+  },
+  {
+   "zh": "<strong>k = 2</strong>：對應 97.7%（單側）信心水準，意即真實值超出 PAR 的機率僅有 2.3%",
+   "en": "<strong>k = 2</strong>: corresponds to a 97.7% (one-sided) confidence level, meaning the probability that the true value exceeds the PAR is only 2.3%"
+  },
+  {
+   "zh": "Guard-Band 視覺說明（以 2–8°C 為例）",
+   "en": "Guard-Band Visual Illustration (Using 2–8°C as an Example)"
+  },
+  {
+   "zh": "關鍵訊息",
+   "en": "Key Message"
+  },
+  {
+   "zh": "保護帶使驗收標準比 PAR 更嚴格。這不是故意刁難——而是承認測量本身有誤差，並在設計上預先彌補，確保當警報觸發時，產品<strong>真實溫度</strong>仍在 PAR 內。",
+   "en": "The guard band makes the acceptance criteria tighter than the PAR. This is not deliberate obstruction; it acknowledges that measurement itself has error and compensates for it in the design, so that when an alarm is triggered, the <strong>true temperature</strong> of the product is still within the PAR."
+  },
+  {
+   "zh": "含偏差的複合不確定度計算",
+   "en": "Combined Uncertainty Calculation with Offset"
+  },
+  {
+   "zh": "當監測感測器不在最差位置時：",
+   "en": "When the monitoring sensor is not at the worst-case location:"
+  },
+  {
+   "zh": "範例：offset = 0.5°C, k = 2, u = 0.125°C each",
+   "en": "Example: offset = 0.5°C, k = 2, u = 0.125°C each"
+  },
+  {
+   "zh": "範例演算：感測器位置與警報限值設定",
+   "en": "Worked Examples: Sensor Location and Alarm Limit Setting"
+  },
+  {
+   "zh": "Shared Given Conditions for All Examples / 所有範例的共同前提條件",
+   "en": "Shared Given Conditions for All Examples"
+  },
+  {
+   "zh": "範例 A 解析",
+   "en": "Example A Analysis"
+  },
+  {
+   "zh": "範例 A 的重要啟示",
+   "en": "Key Takeaway from Example A"
+  },
+  {
+   "zh": "當所有感測器讀數差異 ≤ GB（即差異可由量測不確定度完全解釋），空間溫度分布被認為「均勻」，監測感測器可放在任意位置。此時警報限值僅縮減一個 GB：",
+   "en": "When the differences among all sensor readings are ≤ GB (that is, the differences can be fully explained by measurement uncertainty), the spatial temperature distribution is considered \"uniform\" and the monitoring sensor can be placed anywhere. The alarm limits are then reduced by only one GB:"
+  },
+  {
+   "zh": "接受區間：2.25°C 至 7.75°C（各縮 0.25°C）",
+   "en": "Acceptance interval: 2.25°C to 7.75°C (each side narrowed by 0.25°C)"
+  },
+  {
+   "zh": "這是最簡單的情況，實際上許多小型冷藏室可能達到此條件。",
+   "en": "This is the simplest case, and in practice many small cold rooms may meet this condition."
+  },
+  {
+   "zh": "範例 B 解析",
+   "en": "Example B Analysis"
+  },
+  {
+   "zh": "直覺理解：感測器位置選擇的取捨",
+   "en": "Intuitive Understanding: The Trade-Off in Sensor Location Selection"
+  },
+  {
+   "zh": "想像您在一個不均勻加熱的房間裡，有一個最熱角落（7.0°C）和一個您坐的位置（6.5°C）。",
+   "en": "Imagine you are in an unevenly heated room, with a hottest corner (7.0°C) and the spot where you are sitting (6.5°C)."
+  },
+  {
+   "zh": "<strong>選項 B(a) 留在現位</strong>：您感受到 6.5°C，但最熱角落是 7.0°C。您的警報系統要在更早（7.15°C 而非 7.75°C）就響，因為需要補償您看不到的 0.5°C 差距",
+   "en": "<strong>Option B(a) stay where you are</strong>: you feel 6.5°C, but the hottest corner is 7.0°C. Your alarm system has to sound earlier (at 7.15°C instead of 7.75°C), because it must compensate for the 0.5°C gap you cannot see"
+  },
+  {
+   "zh": "<strong>選項 B(b) 移去熱點</strong>：您直接在最熱位置監測，高溫警報回到寬鬆的 7.75°C，但現在您需要對低溫警報更敏感（2.85°C 而非 2.25°C）",
+   "en": "<strong>Option B(b) move to the hot spot</strong>: you monitor directly at the hottest location, and the high-temperature alarm returns to the looser 7.75°C, but you now need to be more sensitive on the low-temperature alarm (2.85°C instead of 2.25°C)"
+  },
+  {
+   "zh": "工程決策原則",
+   "en": "Engineering Decision Principle"
+  },
+  {
+   "zh": "若偏差（offset）較大（如 &gt;0.5°C），留在非最差位置會使 DL 大幅收窄，實務上警報過於頻繁。此時<strong>重新定位感測器</strong>是更好的工程解決方案。",
+   "en": "If the offset is large (for example &gt;0.5°C), staying at a non-worst-case location will narrow the DL greatly, and alarms will be too frequent in practice. In that case, <strong>relocating the sensor</strong> is the better engineering solution."
+  },
+  {
+   "zh": "思考練習 4：範例 B 數值驗算",
+   "en": "Thinking Exercise 4: Numerical Check of Example B"
+  },
+  {
+   "zh": "自行計算：若 offset = 1.0°C（而非 0.5°C），選項 B(a) 的 DL_high 是多少？",
+   "en": "Calculate it yourself: if the offset = 1.0°C (instead of 0.5°C), what is the DL_high for Option B(a)?"
+  },
+  {
+   "zh": "此時 DL_high 是否還在合理範圍？若 PAR = 2–8°C，您會建議客戶如何處理？",
+   "en": "Is that DL_high still within a reasonable range? If the PAR = 2–8°C, how would you advise the customer to proceed?"
+  },
+  {
+   "zh": "為何 DL_low 在選項 B(a) 中維持不變（2.25°C）？",
+   "en": "Why does DL_low remain unchanged (2.25°C) in Option B(a)?"
+  },
+  {
+   "zh": "範例 C 解析與策略選擇",
+   "en": "Example C Analysis and Strategy Selection"
+  },
+  {
+   "zh": "選項 C(d) 的工程意義",
+   "en": "Engineering Significance of Option C(d)"
+  },
+  {
+   "zh": "當高低溫點之間的偏差大（本例 1.0°C）時，任何單一感測器都必須承擔「看不見」的那一側的全部不確定度負擔，導致警報限值大幅收窄。",
+   "en": "When the offset between the high and low temperature points is large (1.0°C in this example), any single sensor must bear the entire uncertainty burden of the side it \"cannot see\", which narrows the alarm limits greatly."
+  },
+  {
+   "zh": "<strong>最佳解</strong>：在最高溫點和最低溫點各安裝一個監測感測器。高溫感測器只負責高溫警報，低溫感測器只負責低溫警報。偏差歸零，保護帶僅等於單一 GB（0.25°C），警報範圍最寬。",
+   "en": "<strong>Best solution</strong>: install one monitoring sensor each at the hottest point and the coldest point. The high-temperature sensor handles only the high-temperature alarm, and the low-temperature sensor handles only the low-temperature alarm. The offset drops to zero, the guard band equals a single GB (0.25°C), and the alarm range is widest."
+  },
+  {
+   "zh": "監管審查觀點",
+   "en": "Regulatory Review Perspective"
+  },
+  {
+   "zh": "選項 C(c) 的 DL_high = 6.65°C 對一個 2–8°C 腔體來說異常嚴格——任何短暫的溫度波動都可能觸發警報。審查員會問：「您的警報系統是否導致過多假警報，反而使操作員忽視警報？」這是 ISPE 風險管理的核心問題。",
+   "en": "A DL_high of 6.65°C in Option C(c) is exceptionally tight for a 2–8°C chamber, and any brief temperature fluctuation could trigger an alarm. A reviewer will ask: \"Does your alarm system generate so many false alarms that operators end up ignoring alarms?\" This is a core question in ISPE risk management."
+  },
+  {
+   "zh": "思考練習 5：範例 C 策略選擇",
+   "en": "Thinking Exercise 5: Strategy Selection in Example C"
+  },
+  {
+   "zh": "您的客戶要求在不增加任何感測器的情況下設計監測策略，您如何在 C(a)、C(b)、C(c) 中選擇，並說明理由？",
+   "en": "Your customer asks you to design the monitoring strategy without adding any sensors. How do you choose among C(a), C(b), and C(c), and what is your rationale?"
+  },
+  {
+   "zh": "選項 C(d) 最佳，但需要兩個感測器。如果客戶的監測系統只有一個通道可用，您如何與客戶溝通這個限制的風險含義？",
+   "en": "Option C(d) is the best, but it requires two sensors. If the customer's monitoring system has only one channel available, how would you communicate the risk implications of this limitation to the customer?"
+  },
+  {
+   "zh": "若 DL_high 計算結果低於實際設定點（如冷藏室設定在 5°C），這代表什麼問題？",
+   "en": "If the calculated DL_high is lower than the actual setpoint (for example, the cold room is set at 5°C), what problem does this indicate?"
+  },
+  {
+   "zh": "範例程序：-20°C 冷凍庫的完整量測不確定度應用",
+   "en": "Example Protocol: Complete Application of Measurement Uncertainty to a -20°C Freezer"
+  },
+  {
+   "zh": "範例程序解析",
+   "en": "Example Protocol Analysis"
+  },
+  {
+   "zh": "為何需要 32 個感測器？",
+   "en": "Why Are 32 Sensors Needed?"
+  },
+  {
+   "zh": "Guide 明確指出這是「示範性過多」的範例，目的是展示各種位置選擇的理由。實際操作中，可依規模和複雜度合理減少，但<strong>每個感測器都需要文件化的位置理由</strong>。",
+   "en": "The Guide explicitly states that this is an \"excessive for demonstration purposes\" example, intended to show the rationale for various location choices. In actual practice, the number can reasonably be reduced according to scale and complexity, but <strong>every sensor needs a documented rationale for its location</strong>."
+  },
+  {
+   "zh": "-20°C 凍庫計算總結",
+   "en": "-20°C Freezer Calculation Summary"
+  },
+  {
+   "zh": "PAR:     –17°C 至 –3°C\nu_sys:   0.125°C\nk:       2\nGB:      0.25°C\nDL_high: –3.25°C（比 PAR 上限嚴格 0.25°C）\nDL_low:  –16.75°C（比 PAR 下限嚴格 0.25°C）",
+   "en": "PAR:     –17°C to –3°C\nu_sys:   0.125°C\nk:       2\nGB:      0.25°C\nDL_high: –3.25°C (0.25°C tighter than the PAR upper limit)\nDL_low:  –16.75°C (0.25°C tighter than the PAR lower limit)"
+  },
+  {
+   "zh": "為何最少要測試 24 小時？",
+   "en": "Why Test for at Least 24 Hours?"
+  },
+  {
+   "zh": "冷凍庫有<strong>除霜循環（defrost cycle）</strong>——系統定期暫停製冷以融化蒸發器上的霜。除霜期間腔體溫度會短暫升高。若只測試幾小時而未涵蓋除霜周期，標圖數據不能代表正常運作的最差情況。同樣，若有冗餘系統（Cooling System A/B 交替），必須涵蓋切換事件。",
+   "en": "Freezers have a <strong>defrost cycle</strong>: the system periodically stops cooling to melt the frost on the evaporator. During defrost, the chamber temperature rises briefly. If testing lasts only a few hours and does not cover a defrost cycle, the mapping data cannot represent the worst case of normal operation. Likewise, if there is a redundant system (Cooling System A/B alternating), the changeover event must be covered."
+  },
+  {
+   "zh": "CDMO -80°C 超低溫冷凍庫應用",
+   "en": "CDMO -80°C Ultra-Low Temperature Freezer Applications"
+  },
+  {
+   "zh": "超低溫凍庫的除霜事件可能更劇烈，需確認標圖時長足夠捕捉",
+   "en": "Defrost events in ultra-low temperature freezers may be more pronounced; confirm that the mapping duration is long enough to capture them"
+  },
+  {
+   "zh": "感測器校正範圍需覆蓋 -80°C 至少 -90°C（足夠餘量）",
+   "en": "Sensor calibration range must cover -80°C down to at least -90°C (sufficient margin)"
+  },
+  {
+   "zh": "凍庫通常不允許開門標圖——需要特殊進線設計（密封穿線孔）",
+   "en": "Freezers usually do not allow the door to be opened during mapping; a special cable entry design (sealed feed-through port) is required"
+  },
+  {
+   "zh": "停電模擬測試：確認 UPS 備電或備用機組切換時的溫度響應",
+   "en": "Power failure simulation test: confirm the temperature response when the UPS backup power or standby generator switches over"
+  },
+  {
+   "zh": "思考練習 6",
+   "en": "Thinking Exercise 6"
+  },
+  {
+   "zh": "若 -20°C 凍庫除霜期間溫度上升至 -2°C（超過 DL_high = -3.25°C），這代表什麼？需要採取什麼行動？",
+   "en": "If the temperature of a -20°C freezer rises to -2°C during defrost (exceeding DL_high = -3.25°C), what does this mean? What action is needed?"
+  },
+  {
+   "zh": "Sensor 31（外部條件，僅供資訊）不設驗收標準，但為何仍要放？這對報告有什麼貢獻？",
+   "en": "Sensor 31 (external conditions, for information only) has no acceptance criteria, so why is it still placed? What does it contribute to the report?"
+  },
+  {
+   "zh": "若校正不確定度從 ±0.125°C 增加到 ±0.25°C（更差的設備），DL 如何改變？接受範圍縮小多少？",
+   "en": "If the calibration uncertainty increases from ±0.125°C to ±0.25°C (poorer equipment), how do the DLs change? By how much does the acceptance range shrink?"
+  },
+  {
+   "zh": "附錄5：科學與風險導向的測試設計  |  §17 · Source pp. 87–91",
+   "en": "Appendix 5: Science- and Risk-Based Test Design  |  §17 · Source pp. 87–91"
+  },
+  {
+   "zh": "風險導向測試設計框架",
+   "en": "Risk-Based Test Design Framework"
+  },
+  {
+   "zh": "並非所有 CTC 都需要同樣程度的確效測試。ICH Q9 的核心原則是：<strong>測試的深度與頻率應與風險水準成比例</strong>。低風險設備做基礎確效；高風險設備（儲存高價值、高敏感產品）做更嚴格、更頻繁的確效。",
+   "en": "Not every CTC requires the same degree of validation testing. The core principle of ICH Q9 is that <strong>the depth and frequency of testing should be proportionate to the level of risk</strong>. Low-risk equipment receives basic validation; high-risk equipment (storing high-value, highly sensitive products) receives more rigorous and more frequent validation."
+  },
+  {
+   "zh": "ICH Q9 在 CTC 確效中的應用",
+   "en": "Application of ICH Q9 in CTC Validation"
+  },
+  {
+   "zh": "<strong>Q9 原則</strong>：品質風險管理應基於科學知識，以患者安全為最高考量",
+   "en": "<strong>Q9 principle</strong>: quality risk management should be based on scientific knowledge, with patient safety as the highest consideration"
+  },
+  {
+   "zh": "<strong>CQA 識別</strong>：例如生物製劑的蛋白質活性（溫度敏感），決定 PAR 的嚴格程度",
+   "en": "<strong>CQA identification</strong>: for example, protein activity of a biologic (temperature-sensitive) determines how strict the PAR is"
+  },
+  {
+   "zh": "<strong>CPP 識別</strong>：腔體溫度（最關鍵的控制參數）",
+   "en": "<strong>CPP identification</strong>: chamber temperature (the most critical control parameter)"
+  },
+  {
+   "zh": "<strong>風險控制工具</strong>：警報系統、備用製冷、UPS、SOP（開門頻率/時長限制）",
+   "en": "<strong>Risk control tools</strong>: alarm systems, backup refrigeration, UPS, SOPs (limits on door-opening frequency/duration)"
+  },
+  {
+   "zh": "比喻：保險費率定價",
+   "en": "Analogy: Insurance Premium Pricing"
+  },
+  {
+   "zh": "保險公司對高風險駕駛收取較高保費，對低風險駕駛收較低保費。CTC 風險評估的邏輯類似：高風險腔體（儲存昂貴生物製劑的 -80°C 凍庫）需要「更貴」的確效方案（更多感測器、更多場景、更頻繁再驗）；低風險腔體（儲存一般耗材的 CRT 倉庫）可用更精簡的方案。",
+   "en": "An insurance company charges higher premiums to high-risk drivers and lower premiums to low-risk drivers. CTC risk assessment follows a similar logic: a high-risk chamber (a -80°C freezer storing expensive biologics) needs a \"more expensive\" validation program (more sensors, more scenarios, more frequent requalification); a low-risk chamber (a CRT warehouse storing general consumables) can use a leaner program."
+  },
+  {
+   "zh": "與 IQ/OQ 的關係",
+   "en": "Relationship to IQ/OQ"
+  },
+  {
+   "zh": "本附錄的風險評估範圍與傳統的 IQ/OQ 或 IOQ 對齊。風險評估不是替代確效，而是<strong>決定確效應該做什麼、做多深、做多久</strong>的理性依據。這讓確效活動有目的性，而非機械式執行清單。",
+   "en": "The scope of the risk assessment in this appendix is aligned with traditional IQ/OQ or IOQ. Risk assessment does not replace validation; it is the rational basis for <strong>deciding what the validation should do, how deeply, and for how long</strong>. This gives validation activities a purpose, rather than being a mechanical execution of a checklist."
+  },
+  {
+   "zh": "風險評估流程與範圍定義",
+   "en": "Risk Assessment Process and Scope Definition"
+  },
+  {
+   "zh": "風險評估流程解析",
+   "en": "Risk Assessment Process Analysis"
+  },
+  {
+   "zh": "兩階段流程的實務智慧",
+   "en": "Practical Wisdom of the Two-Stage Process"
+  },
+  {
+   "zh": "<strong>第一階段（小組起草）</strong>：速度快，避免大型會議陷入細節泥淖。SME 先形成風險清單框架",
+   "en": "<strong>Stage 1 (drafting by a small team)</strong>: fast, avoiding large meetings getting bogged down in detail. SMEs first form the framework of the risk list"
+  },
+  {
+   "zh": "<strong>第二階段（跨部門審查評分）</strong>：引入現場操作知識，避免「工程師設計、操作員執行」的斷層。",
+   "en": "<strong>Stage 2 (cross-functional review and scoring)</strong>: brings in shop-floor operating knowledge and avoids the gap of \"engineers design, operators execute\"."
+  },
+  {
+   "zh": "這個結構也符合 ICH Q9 關於「多元視角」的要求——風險評估不能只由一個人完成。",
+   "en": "This structure also meets the ICH Q9 expectation of \"diverse perspectives\": a risk assessment cannot be completed by one person alone."
+  },
+  {
+   "zh": "FMEA vs. 本指南的輕量版",
+   "en": "FMEA vs. the Lightweight Version in This Guide"
+  },
+  {
+   "zh": "完整 FMEA（Failure Mode and Effects Analysis）會分析每一個可能的失效模式，可能產生數百行分析。本指南刻意將維護和校正品質系統視為「已到位且有效」，以避免過度詳細化——這讓風險評估聚焦在<strong>系統設計層面的本質風險</strong>，而非程序執行層面的細節。",
+   "en": "A full FMEA (Failure Mode and Effects Analysis) analyzes every possible failure mode and may generate hundreds of lines of analysis. This Guide deliberately treats the maintenance and calibration quality systems as \"in place and effective\" to avoid excessive detail. This keeps the risk assessment focused on the <strong>inherent risks at the system design level</strong> rather than the details at the procedural execution level."
+  },
+  {
+   "zh": "CTC 常見風險因子清單（CDMO 視角）",
+   "en": "List of Common CTC Risk Factors (CDMO Perspective)"
+  },
+  {
+   "zh": "產品溫度敏感性（蛋白質製劑 &gt; 小分子化藥 &gt; 耗材）",
+   "en": "Product temperature sensitivity (protein formulations &gt; small-molecule drugs &gt; consumables)"
+  },
+  {
+   "zh": "腔體設備年齡與可靠性歷史",
+   "en": "Chamber equipment age and reliability history"
+  },
+  {
+   "zh": "載量臨界性（滿倉 vs. 部分載量的溫度均勻性差異）",
+   "en": "Load criticality (difference in temperature uniformity between full and partial loads)"
+  },
+  {
+   "zh": "產品價值（批次失敗的財務影響）",
+   "en": "Product value (financial impact of a batch failure)"
+  },
+  {
+   "zh": "季節性環境條件極端程度",
+   "en": "Severity of seasonal environmental extremes"
+  },
+  {
+   "zh": "單點故障風險（無冗餘製冷系統）",
+   "en": "Single point of failure risk (no redundant refrigeration system)"
+  },
+  {
+   "zh": "停電事件頻率與 UPS/備用機組覆蓋",
+   "en": "Frequency of power outages and coverage by UPS/standby generator"
+  },
+  {
+   "zh": "每日開門頻率（物流操作強度）",
+   "en": "Daily door-opening frequency (intensity of logistics operations)"
+  },
+  {
+   "zh": "思考練習 7",
+   "en": "Thinking Exercise 7"
+  },
+  {
+   "zh": "您正在對一台儲存 mRNA 疫苗（-80°C，極高敏感度）的超低溫凍庫進行風險評估。相比儲存塑料包裝材料的 CRT 倉庫，哪些風險因子的嚴重性評分應顯著提高？",
+   "en": "You are conducting a risk assessment for an ultra-low temperature freezer storing mRNA vaccines (-80°C, extremely high sensitivity). Compared with a CRT warehouse storing plastic packaging materials, which risk factors should have significantly higher severity scores?"
+  },
+  {
+   "zh": "「維護和校正品質系統被假設為到位且有效」——如果這個假設不成立（如工廠校正管理不善），風險評估結論是否仍有效？",
+   "en": "\"The maintenance and calibration quality systems are assumed to be in place and effective.\" If this assumption does not hold (for example, the site manages calibration poorly), are the risk assessment conclusions still valid?"
+  },
+  {
+   "zh": "一個多產品 CDMO 在同一冷藏室同時儲存三家客戶的產品，這會如何影響風險評估範圍？",
+   "en": "A multi-product CDMO stores products from three customers in the same cold room at the same time. How does this affect the scope of the risk assessment?"
+  },
+  {
+   "zh": "風險評分：嚴重性、發生率與可偵測性",
+   "en": "Risk Scoring: Severity, Occurrence, and Detectability"
+  },
+  {
+   "zh": "風險評分表解析",
+   "en": "Risk Scoring Table Analysis"
+  },
+  {
+   "zh": "三維評分的邏輯",
+   "en": "The Logic of Three-Dimensional Scoring"
+  },
+  {
+   "zh": "ISPE 使用三個維度評分，但不是簡單相乘（RPN = S×O×D）。而是先用<strong>嚴重性×發生率</strong>得出初步風險水準（Table 17.2），再用這個中間結果與<strong>可偵測性</strong>得出最終風險分類（Table 17.3）。",
+   "en": "ISPE scores three dimensions, but not by simple multiplication (RPN = S×O×D). Instead, <strong>severity × occurrence</strong> is first used to obtain a preliminary risk level (Table 17.2), and this intermediate result is then combined with <strong>detectability</strong> to obtain the final risk classification (Table 17.3)."
+  },
+  {
+   "zh": "各維度的評分考量",
+   "en": "Scoring Considerations for Each Dimension"
+  },
+  {
+   "zh": "<strong>Severity（嚴重性）</strong>：關鍵問題是「失效是否直接影響最終產品 CQA？」儲存溫度超出 PAR 直接影響藥品有效性 → Severe (9)",
+   "en": "<strong>Severity</strong>: the key question is \"Does the failure directly affect the CQAs of the final product?\" Storage temperature outside the PAR directly affects drug efficacy → Severe (9)"
+  },
+  {
+   "zh": "<strong>Occurrence（發生率）</strong>：基於歷史數據或工程判斷。設備年齡老化、無預防性維護 → 評分較高",
+   "en": "<strong>Occurrence</strong>: based on historical data or engineering judgment. Aging equipment and no preventive maintenance → higher score"
+  },
+  {
+   "zh": "<strong>Detection（可偵測性）</strong>：「Almost certain」通常指自動化警報系統；「Absolutely uncertain」指完全沒有監控。注意：Guide 強調<strong>偵測必須在系統內部完成才有效</strong>（detection must be accomplished internally to be valid）",
+   "en": "<strong>Detection</strong>: \"Almost certain\" usually refers to an automated alarm system; \"Absolutely uncertain\" refers to no monitoring at all. Note: the Guide stresses that <strong>detection must be accomplished internally to be valid</strong> (detection must be accomplished internally to be valid)"
+  },
+  {
+   "zh": "比喻：汽車安全評估",
+   "en": "Analogy: Car Safety Assessment"
+  },
+  {
+   "zh": "煞車失靈（高嚴重性）+ 老車常發生（高發生率）+ 沒有警示燈（低可偵測性）= 高風險，必須立刻修理。對應 CTC：溫控失效（高嚴重性）+ 老舊壓縮機（高發生率）+ 無備用警報（低可偵測性）= 必須增加冗餘控制。",
+   "en": "Brake failure (high severity) + frequent in old cars (high occurrence) + no warning light (low detectability) = high risk, must be repaired immediately. The CTC equivalent: temperature control failure (high severity) + aging compressor (high occurrence) + no backup alarm (low detectability) = redundant controls must be added."
+  },
+  {
+   "zh": "思考練習 8",
+   "en": "Thinking Exercise 8"
+  },
+  {
+   "zh": "一台無 UPS 的 -20°C 凍庫（停電時無法繼續製冷），儲存患者用生物製劑。請為「停電事件」分別評分 S、O、D，並說明理由。",
+   "en": "A -20°C freezer without a UPS (cooling cannot continue during a power outage) stores biologics for patient use. Score S, O, and D separately for the \"power outage event\" and explain your reasoning."
+  },
+  {
+   "zh": "「偵測必須在系統內部完成才有效」——若倉庫管理員每天早上目視檢查溫度記錄，這算「高可偵測性」嗎？",
+   "en": "\"Detection must be accomplished internally to be valid.\" If the warehouse keeper visually checks the temperature records every morning, does this count as \"high detectability\"?"
+  },
+  {
+   "zh": "若您加裝了連接到 24h 監控中心的自動溫度警報系統，Detection 評分如何改變？這對最終風險分類有何影響？",
+   "en": "If you install an automated temperature alarm system connected to a 24-hour monitoring center, how does the Detection score change? What is the effect on the final risk classification?"
+  },
+  {
+   "zh": "風險分類矩陣：嚴重性×發生率 → 可偵測性修正 → 最終風險等級",
+   "en": "Risk Classification Matrix: Severity × Occurrence → Detectability Adjustment → Final Risk Level"
+  },
+  {
+   "zh": "風險矩陣解析與應用",
+   "en": "Risk Matrix Analysis and Application"
+  },
+  {
+   "zh": "兩步驟評分的設計意圖",
+   "en": "Design Intent of the Two-Step Scoring"
+  },
+  {
+   "zh": "先排除偵測因素評估「本質風險」（嚴重性×發生率），再用偵測能力做修正。這個設計防止「因為有警報所以假裝沒風險」的思維——高嚴重性+高發生率的失效，即使有好的偵測系統，也只能降到 Medium，不能直接降至 Low。",
+   "en": "First assess the \"inherent risk\" (severity × occurrence) without the detection factor, then adjust using detection capability. This design prevents the mindset of \"we have an alarm, so pretend there is no risk\": a failure with high severity and high occurrence can be reduced only to Medium even with a good detection system, and cannot be reduced directly to Low."
+  },
+  {
+   "zh": "實際案例演算：冷藏室壓縮機失效",
+   "en": "Worked Case: Cold Room Compressor Failure"
+  },
+  {
+   "zh": "情境：2–8°C 冷藏室儲存胰島素（高度溫度敏感）",
+   "en": "Scenario: a 2–8°C cold room storing insulin (highly temperature-sensitive)"
+  },
+  {
+   "zh": "<strong>Severity</strong>：溫度超出 PAR 直接影響產品效能 → S = 9（Severe）",
+   "en": "<strong>Severity</strong>: temperature outside the PAR directly affects product efficacy → S = 9 (Severe)"
+  },
+  {
+   "zh": "<strong>Occurrence</strong>：壓縮機 5 年齡，每 2 年需維修一次 → O = 5（Occasional）",
+   "en": "<strong>Occurrence</strong>: the compressor is 5 years old and needs repair every 2 years → O = 5 (Occasional)"
+  },
+  {
+   "zh": "<strong>Detection</strong>：有 24h 自動溫度警報並連接監控中心 → D = 1（Almost Certain）",
+   "en": "<strong>Detection</strong>: a 24-hour automated temperature alarm connected to a monitoring center → D = 1 (Almost Certain)"
+  },
+  {
+   "zh": "結論：高品質的即時偵測系統是此情境的關鍵風險控制。移除警報系統後風險立即回到 High。",
+   "en": "Conclusion: a high-quality real-time detection system is the key risk control in this scenario. If the alarm system is removed, the risk immediately returns to High."
+  },
+  {
+   "zh": "風險評估的動態性",
+   "en": "The Dynamic Nature of Risk Assessment"
+  },
+  {
+   "zh": "初始風險評估（設計階段）可在概念設計完成後進行，提供初步風險輪廓。若不接受，則修改設計後再評估。最終風險評估在建設設計規格完成後定稿，附上簡要摘要報告。風險評估不是一次性文件——<strong>設備重大變更、異常事件、再確效後都應更新</strong>。",
+   "en": "The initial risk assessment (design stage) can be performed once the conceptual design is complete, giving a preliminary risk profile. If it is not acceptable, modify the design and then reassess. The final risk assessment is finalized once the construction design specifications are complete, with a brief summary report attached. A risk assessment is not a one-time document: <strong>it should be updated after major equipment changes, abnormal events, and requalification</strong>."
+  },
+  {
+   "zh": "風險導向測試範圍決策表",
+   "en": "Risk-Based Test Scope Decision Table"
+  },
+  {
+   "zh": "Note: This table is illustrative; actual scope must be justified in the risk assessment. / 此表僅供說明，實際範圍需在風險評估中科學論證。",
+   "en": "Note: This table is illustrative; actual scope must be justified in the risk assessment."
+  },
+  {
+   "zh": "CDMO 多產品儲存風險分析與實務應用",
+   "en": "CDMO Multi-Product Storage Risk Analysis and Practical Application"
+  },
+  {
+   "zh": "CDMO 多產品儲存風險分析",
+   "en": "CDMO Multi-Product Storage Risk Analysis"
+  },
+  {
+   "zh": "最嚴格 PAR 原則",
+   "en": "The Most Stringent PAR Principle"
+  },
+  {
+   "zh": "當一個冷藏室同時儲存多個客戶的產品，且各客戶的 PAR 不同時，應採用<strong>最嚴格的 PAR 作為整個腔體的驗收標準</strong>。這保護了最敏感的產品，但也意味著整個房間的溫度控制精度必須滿足最高要求的客戶規格。",
+   "en": "When a cold room stores products from several customers at the same time and the customers' PARs differ, <strong>the most stringent PAR should be used as the acceptance criterion for the whole chamber</strong>. This protects the most sensitive product, but it also means that the temperature control accuracy of the entire room must meet the specification of the most demanding customer."
+  },
+  {
+   "zh": "實務案例：CDMO 無菌填充廠",
+   "en": "Practical Case: CDMO Sterile Filling Site"
+  },
+  {
+   "zh": "情境：一個 2–8°C 冷藏室同時儲存：",
+   "en": "Scenario: a 2–8°C cold room simultaneously stores:"
+  },
+  {
+   "zh": "客戶 A：胰島素原液（PAR 2–8°C，極度溫度敏感）",
+   "en": "Customer A: insulin bulk solution (PAR 2–8°C, extremely temperature-sensitive)"
+  },
+  {
+   "zh": "客戶 B：小分子 API（PAR 5–25°C，容忍度高）",
+   "en": "Customer B: small-molecule API (PAR 5–25°C, high tolerance)"
+  },
+  {
+   "zh": "客戶 C：空白填充管（無溫度要求，只是習慣放這裡）",
+   "en": "Customer C: empty filling tubes (no temperature requirement; they are just habitually stored here)"
+  },
+  {
+   "zh": "<strong>風險評估結論：</strong>",
+   "en": "<strong>Risk assessment conclusion:</strong>"
+  },
+  {
+   "zh": "客戶 A 的 PAR 最嚴格 → 整個腔體按客戶 A 的標準管理",
+   "en": "Customer A's PAR is the most stringent → manage the whole chamber to Customer A's standard"
+  },
+  {
+   "zh": "客戶 C 的物品儲存應移出或有明確隔離，避免影響整體風險評估的邏輯",
+   "en": "Customer C's items should be moved out or clearly segregated, to avoid affecting the logic of the overall risk assessment"
+  },
+  {
+   "zh": "標圖必須在最不利的混合載量條件下進行",
+   "en": "Mapping must be performed under the least favorable mixed-load condition"
+  },
+  {
+   "zh": "比喻：多租戶辦公大樓的消防標準",
+   "en": "Analogy: Fire Standards in a Multi-Tenant Office Building"
+  },
+  {
+   "zh": "辦公大樓若有一個租戶是化學實驗室（高危），整棟大樓的消防標準就必須按化學實驗室的最高要求設計，而不是按一般辦公室。冷藏室的多客戶管理邏輯完全相同。",
+   "en": "If one tenant of an office building is a chemical laboratory (high hazard), the fire standards for the whole building must be designed to the laboratory's highest requirements, not to those of an ordinary office. The multi-customer management logic for a cold room is exactly the same."
+  },
+  {
+   "zh": "思考練習 9（CDMO 情境）",
+   "en": "Thinking Exercise 9 (CDMO Scenario)"
+  },
+  {
+   "zh": "您的 2–8°C 冷藏室目前儲存客戶 A（mRNA 疫苗，極高敏感）和客戶 B（IV 輸液袋，容忍度較高）。如何設計標圖計劃以同時滿足兩個客戶的要求，同時避免過度測試？",
+   "en": "Your 2–8°C cold room currently stores products of Customer A (mRNA vaccine, extremely high sensitivity) and Customer B (IV infusion bags, higher tolerance). How would you design the mapping plan to satisfy both customers while avoiding excessive testing?"
+  },
+  {
+   "zh": "客戶 A 的品保部門要求您在其每批產品儲存前出示「最近一次標圖報告」（要求不超過6個月）。您如何在資源有限的情況下設計再確效頻率，使其同時滿足合規要求和操作效率？",
+   "en": "Customer A's quality assurance department requires you to present the \"most recent mapping report\" (no older than 6 months) before each of its batches is stored. With limited resources, how would you design the requalification frequency to meet both compliance requirements and operational efficiency?"
+  },
+  {
+   "zh": "客戶 C 突然新增了一批需要 -20°C 儲存的產品，要求暫時放在您的 2–8°C 冷藏室過渡（\"只有幾天\"）。您如何從風險評估角度回應這個請求？",
+   "en": "Customer C suddenly adds a batch of product that requires -20°C storage and asks to place it temporarily in your 2–8°C cold room as a transition (\"only a few days\"). How would you respond to this request from a risk assessment perspective?"
+  },
+  {
+   "zh": "總結：三個附錄的核心學習要點",
+   "en": "Summary: Key Learning Points from the Three Appendices"
+  },
+  {
+   "zh": "中文要點總結",
+   "en": "Summary of Key Points"
+  },
+  {
+   "zh": "附錄 2 — 感測器位置",
+   "en": "Appendix 2 — Sensor Locations"
+  },
+  {
+   "zh": "位置選擇必須有科學依據：先分析熱源，再決定佈點",
+   "en": "Location selection must have a scientific basis: analyze heat sources first, then decide on placement"
+  },
+  {
+   "zh": "關鍵區域不可省略：角落、門口、蒸發器盤管、外牆側",
+   "en": "Critical areas must not be omitted: corners, doorways, evaporator coils, exterior wall side"
+  },
+  {
+   "zh": "空倉+模擬滿倉兩種情境，覆蓋不同失效模式",
+   "en": "Two scenarios, empty + simulated full, cover different failure modes"
+  },
+  {
+   "zh": "夏冬兩季都要標圖，標圖才算完整",
+   "en": "Mapping must be done in both summer and winter to be complete"
+  },
+  {
+   "zh": "永久監測感測器位置由標圖最差點決定",
+   "en": "Permanent monitoring sensor locations are determined by the worst-case points from mapping"
+  },
+  {
+   "zh": "附錄 3 — 量測不確定度核心公式",
+   "en": "Appendix 3 — Core Formulas for Measurement Uncertainty"
+  },
+  {
+   "zh": "GB = k × u_sys         (k ≥ 2)\nDL_high = PAR_high – GB\nDL_low  = PAR_low  + GB\n\n若有位置偏差：\nGB = offset + k × √(u₁² + u₂²)\n\n範例（u=0.125°C, k=2, PAR=2-8°C）：\nGB = 0.25°C\nDL_high = 7.75°C | DL_low = 2.25°C",
+   "en": "GB = k × u_sys         (k ≥ 2)\nDL_high = PAR_high – GB\nDL_low  = PAR_low  + GB\n\nWith location offset:\nGB = offset + k × √(u₁² + u₂²)\n\nExample (u=0.125°C, k=2, PAR=2-8°C):\nGB = 0.25°C\nDL_high = 7.75°C | DL_low = 2.25°C"
+  },
+  {
+   "zh": "附錄 5 — 風險導向測試",
+   "en": "Appendix 5 — Risk-Based Testing"
+  },
+  {
+   "zh": "嚴重性 × 發生率 → 中間風險水準（Table 17.2）",
+   "en": "Severity × Occurrence → intermediate risk level (Table 17.2)"
+  },
+  {
+   "zh": "中間風險 × 可偵測性 → 最終風險等級（Table 17.3）",
+   "en": "Intermediate risk × Detectability → final risk level (Table 17.3)"
+  },
+  {
+   "zh": "High risk → 必須增加控制措施，不得直接接受",
+   "en": "High risk → additional control measures must be added; it cannot be accepted as is"
+  },
+  {
+   "zh": "確效範圍（感測器數、場景數、測試時長）應與風險水準成比例",
+   "en": "Validation scope (number of sensors, number of scenarios, test duration) should be proportionate to the risk level"
+  },
+  {
+   "zh": "CDMO：採用最嚴格的客戶 PAR 作為腔體標準",
+   "en": "CDMO: use the most stringent customer PAR as the chamber standard"
+  },
+  {
+   "zh": "量測不確定度不是失敗的藉口——它是設計可實現且有意義驗收標準的工具。在接受這個觀點之前，許多工廠要嘛忽視 MU（導致不切實際的標準），要嘛把 MU 當成超標的藉口。正確做法是：<strong>事先將 MU 納入 DL 設計，然後嚴格遵守 DL。</strong>",
+   "en": "Measurement uncertainty is not an excuse for failure; it is a tool for designing acceptance criteria that are achievable and meaningful. Before accepting this view, many sites either ignore MU (leading to unrealistic criteria) or use MU as an excuse for exceeding limits. The correct approach is: <strong>build MU into the DL design in advance, and then strictly adhere to the DL.</strong>"
+  }
+ ]
+}

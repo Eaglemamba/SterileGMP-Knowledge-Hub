@@ -1,0 +1,777 @@
+{
+ "source": "section-03-program-mgmt.html",
+ "blocks": [
+  {
+   "zh": "專案管理",
+   "en": "Project Management"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "掌握 SUT 導入計畫的完整生命週期——從供應商評估、供應安全確認，到系統正式投入生產運作",
+   "en": "Master the full lifecycle of a SUT implementation plan, from supplier assessment and supply security confirmation through to putting the system into production"
+  },
+  {
+   "zh": "理解 SUT 風險管理的五步驟框架，並能運用風險評分公式（A × B × C × D）對製程接觸材料 (PCM) 進行量化風險評估",
+   "en": "Understand the five-step SUT risk management framework and use the risk score formula (A × B × C × D) to perform a quantitative risk assessment of process contact materials (PCM)"
+  },
+  {
+   "zh": "熟悉 15 項關鍵資格確認屬性，以及在低、中、高風險等級下各需執行的內部確效測試項目",
+   "en": "Become familiar with the 15 key qualification attributes and the in-house validation tests required at low, medium and high risk levels"
+  },
+  {
+   "zh": "了解 SUT 變更管理的典型類型（維護改善型 vs. 重大破壞型）及其應對方法，建立供應鏈變更溝通的標準機制",
+   "en": "Understand the typical types of SUT change (maintenance/improvement vs. major disruptive) and how to respond to them, and establish a standard mechanism for communicating supply chain changes"
+  },
+  {
+   "zh": "理解 SUT 實施專案排程的結構與邏輯，包括甘特圖運用、關鍵路徑識別，以及並行作業如何壓縮整體導入時程",
+   "en": "Understand the structure and logic of a SUT implementation project schedule, including the use of Gantt charts, critical path identification, and how parallel tasks compress the overall implementation timeline"
+  },
+  {
+   "zh": "4.1 Implementation of Single-Use Technology（SUT 導入實施）",
+   "en": "4.1 Implementation of Single-Use Technology"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念：SUT 導入與不鏽鋼系統的關鍵差異",
+   "en": "Core concept: key differences between SUT and stainless steel system implementation"
+  },
+  {
+   "zh": "SUT 導入與傳統不鏽鋼系統雖然框架相似，但有四個特殊關注點：",
+   "en": "The framework for implementing SUT is similar to that for conventional stainless steel systems, but there are four special areas of focus:"
+  },
+  {
+   "zh": "<strong>強化供應商協作</strong>：SUT 的客製化程度高，設計需要供應商深度配合",
+   "en": "<strong>Stronger supplier collaboration</strong>: SUT is highly customized, so the design requires close cooperation from the supplier"
+  },
+  {
+   "zh": "<strong>全程風險與變更管理</strong>：材料、設計、製程任一環節的變動都可能影響合規性",
+   "en": "<strong>Risk and change management throughout</strong>: a change in any link of material, design or process can affect compliance"
+  },
+  {
+   "zh": "<strong>彈性排程</strong>：一次性組件的開發週期難以精準預測，計畫需保留緩衝",
+   "en": "<strong>Flexible scheduling</strong>: development lead times for single-use components are hard to predict precisely, so the plan must include buffers"
+  },
+  {
+   "zh": "<strong>介面整合挑戰</strong>：SUT 與不鏽鋼設備的連接點是洩漏風險和合規稽核的高關注區域",
+   "en": "<strong>Interface integration challenges</strong>: the connection points between SUT and stainless steel equipment are areas of high leakage risk and high audit attention"
+  },
+  {
+   "zh": "供應商評估要素解析",
+   "en": "Key elements of supplier assessment"
+  },
+  {
+   "zh": "評估供應商時，不能只看「現在能不能供貨」，還要評估：",
+   "en": "When assessing a supplier, do not look only at \"can they supply now\"; also assess:"
+  },
+  {
+   "zh": "<strong>財務穩健性</strong>：供應商若財務出問題，整條供應鏈會中斷",
+   "en": "<strong>Financial stability</strong>: if the supplier runs into financial trouble, the whole supply chain is interrupted"
+  },
+  {
+   "zh": "<strong>技術支援能力</strong>：SUT 問題排查往往需要供應商工程師現場支援",
+   "en": "<strong>Technical support capability</strong>: troubleshooting SUT problems often requires the supplier's engineers on site"
+  },
+  {
+   "zh": "<strong>自身供應鏈確效</strong>：供應商的原料供應商（如薄膜製造商）也需被管控",
+   "en": "<strong>Validation of its own supply chain</strong>: the supplier's raw material suppliers (such as the film manufacturer) must also be controlled"
+  },
+  {
+   "zh": "<strong>變更管理系統</strong>：供應商對材料或製程的任何變更，必須能及時通知終端使用者",
+   "en": "<strong>Change management system</strong>: any change the supplier makes to materials or processes must be notified to the end user in good time"
+  },
+  {
+   "zh": "比喻說明：雙重來源策略",
+   "en": "Analogy: dual sourcing"
+  },
+  {
+   "zh": "雙重來源 (Dual Sourcing) 就像飛機的雙引擎設計——平時可能只用一台，但另一台的存在確保了飛行安全。在無菌充填 CDMO 中，若關鍵一次性袋子只有單一供應商，一旦對方斷貨（颱風、原料短缺、品質問題），整條生產線就得停擺。雙重來源是供應安全的核心保險機制。",
+   "en": "Dual sourcing is like the twin-engine design of an aircraft: you may normally use only one engine, but the presence of the other ensures flight safety. At an aseptic filling CDMO, if a critical single-use bag has only one supplier, then once that supplier cannot deliver (typhoon, raw material shortage, quality problem), the whole production line stops. Dual sourcing is the core insurance mechanism for supply security."
+  },
+  {
+   "zh": "重點提示：供應安全的責任共擔",
+   "en": "Key point: shared responsibility for supply security"
+  },
+  {
+   "zh": "原文強調供應安全是「所有利害關係人共同管理」。這意味著：",
+   "en": "The source text stresses that supply security is \"managed jointly by all stakeholders.\" This means:"
+  },
+  {
+   "zh": "供應商需要<strong>預測需求、備存原料、保留產能</strong>",
+   "en": "Suppliers need to <strong>forecast demand, stock raw materials and reserve capacity</strong>"
+  },
+  {
+   "zh": "終端使用者需要<strong>定期稽核供應商設施、管理訂單計畫</strong>",
+   "en": "End users need to <strong>audit supplier facilities regularly and manage order planning</strong>"
+  },
+  {
+   "zh": "雙方都需要<strong>預先定義溝通管道和通知機制</strong>",
+   "en": "Both sides need to <strong>define communication channels and notification mechanisms in advance</strong>"
+  },
+  {
+   "zh": "供應安全不是「出問題才處理」，而是要系統性地建立韌性。",
+   "en": "Supply security is not about \"dealing with problems when they occur\" but about building resilience systematically."
+  },
+  {
+   "zh": "CDMO 應用場景",
+   "en": "CDMO application"
+  },
+  {
+   "zh": "在無菌充填 CDMO，一次性生物反應袋、充填管路、過濾組件通常由 2-3 家供應商競標。採購部門在選商時，除了價格，更需要確認：",
+   "en": "At an aseptic filling CDMO, single-use bioreactor bags, filling tubing and filter assemblies are usually put out to bid among 2-3 suppliers. Besides price, the purchasing department should confirm when selecting a supplier:"
+  },
+  {
+   "zh": "供應商是否有台灣/亞太區在地技術支援（縮短問題回應時間）",
+   "en": "Whether the supplier has local technical support in Taiwan/Asia-Pacific (to shorten problem response time)"
+  },
+  {
+   "zh": "關鍵薄膜原料是否來自單一礦源（地緣政治風險）",
+   "en": "Whether the key film raw material comes from a single source (geopolitical risk)"
+  },
+  {
+   "zh": "供應商變更管理 SOP 是否符合客戶（製藥廠）的通知要求（通常需要提前 6-12 個月通知）",
+   "en": "Whether the supplier's change management SOP meets the notification requirements of the client (the pharmaceutical company), which usually call for 6-12 months' advance notice"
+  },
+  {
+   "zh": "練習思考",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "你的工廠目前有哪些關鍵一次性組件仍是單一來源？若該供應商斷供，最長可撐幾週？",
+   "en": "Which critical single-use components at your site are still single-sourced? If that supplier stopped delivering, how many weeks could you last at most?"
+  },
+  {
+   "zh": "你的供應商稽核計畫是否包含對「供應商的變更管理系統」進行評估？上次發現問題是什麼時候？",
+   "en": "Does your supplier audit program include an assessment of the \"supplier's change management system\"? When was the last time a problem was found?"
+  },
+  {
+   "zh": "4.2 Risk Management（風險管理）",
+   "en": "4.2 Risk Management"
+  },
+  {
+   "zh": "核心概念：SUT 風險管理的五大來源",
+   "en": "Core concept: the five sources of SUT risk"
+  },
+  {
+   "zh": "SUT 的風險比傳統不鏽鋼設備更多元，主要來自：",
+   "en": "SUT risks are more varied than those of conventional stainless steel equipment, and arise mainly from:"
+  },
+  {
+   "zh": "<strong>材料相容性</strong>：聚合物材料可能與藥品、溶劑、清潔劑發生反應",
+   "en": "<strong>Material compatibility</strong>: polymer materials may react with the drug product, solvents or cleaning agents"
+  },
+  {
+   "zh": "<strong>產品可用性</strong>：供應商停產或型號更換都會造成斷貨風險",
+   "en": "<strong>Product availability</strong>: a supplier discontinuing a product or changing a model creates a risk of supply interruption"
+  },
+  {
+   "zh": "<strong>原料變更</strong>：薄膜配方變更可能改變萃取物（Extractables）特性",
+   "en": "<strong>Raw material changes</strong>: a change in film formulation may alter the extractables profile"
+  },
+  {
+   "zh": "<strong>洩漏/性能問題</strong>：焊接點、接頭是一次性組件最容易失效的位置",
+   "en": "<strong>Leakage/performance problems</strong>: welds and connectors are where single-use components fail most easily"
+  },
+  {
+   "zh": "<strong>庫存波動</strong>：一次性組件有有效期限，過多囤貨或過少備貨都是風險",
+   "en": "<strong>Inventory fluctuation</strong>: single-use components have expiry dates, so both overstocking and understocking are risks"
+  },
+  {
+   "zh": "關鍵術語：PCM 製程接觸材料",
+   "en": "Key term: PCM (process contact material)"
+  },
+  {
+   "zh": "<strong>Process Contact Material (PCM)</strong> 指所有與藥品直接接觸的一次性材料，包括袋體薄膜、管路、過濾膜、連接件等。PCM 的資格確認是 SUT 合規的核心工作——必須證明這些材料在預期使用條件下不會影響產品品質或病患安全。",
+   "en": "<strong>Process Contact Material (PCM)</strong> refers to all single-use materials in direct contact with the drug product, including bag film, tubing, filter membranes and connectors. Qualification of PCM is the core work of SUT compliance: you must demonstrate that these materials will not affect product quality or patient safety under the intended conditions of use."
+  },
+  {
+   "zh": "風險評估五步驟解析",
+   "en": "The five risk assessment steps explained"
+  },
+  {
+   "zh": "這五個步驟形成一個閉環：",
+   "en": "These five steps form a closed loop:"
+  },
+  {
+   "zh": "<strong>Step 1（使用者需求）</strong>：確認藥品種類、接觸條件、滅菌方式",
+   "en": "<strong>Step 1 (User requirements)</strong>: confirm the type of drug product, contact conditions and sterilization method"
+  },
+  {
+   "zh": "<strong>Step 2（供應商資料）</strong>：收集供應商的萃取物、相容性、生物相容性測試報告",
+   "en": "<strong>Step 2 (Supplier data)</strong>: collect the supplier's extractables, compatibility and biocompatibility test reports"
+  },
+  {
+   "zh": "<strong>Step 3（風險評估）</strong>：計算風險分數，決定是否需要內部額外確效",
+   "en": "<strong>Step 3 (Risk assessment)</strong>: calculate the risk score and decide whether additional in-house validation is needed"
+  },
+  {
+   "zh": "<strong>Step 4（內部確效）</strong>：根據風險等級執行對應測試",
+   "en": "<strong>Step 4 (In-house validation)</strong>: perform the tests that correspond to the risk level"
+  },
+  {
+   "zh": "<strong>Step 5（風險緩解）</strong>：制定進料管控、使用限制等緩解措施",
+   "en": "<strong>Step 5 (Risk mitigation)</strong>: define mitigation measures such as incoming controls and usage restrictions"
+  },
+  {
+   "zh": "重點提示：15 項資格確認屬性的優先順序",
+   "en": "Key point: priority among the 15 qualification attributes"
+  },
+  {
+   "zh": "15 項屬性不是全部都要做——風險評分會決定需要哪些項目。最核心的三項幾乎所有高風險應用都需要：",
+   "en": "Not all 15 attributes have to be done; the risk score determines which are needed. Almost every high-risk application needs the three most important ones:"
+  },
+  {
+   "zh": "<strong>Attribute 8 (E&amp;L)</strong>：萃取物與可溶出物——最受法規關注",
+   "en": "<strong>Attribute 8 (E&amp;L)</strong>: extractables and leachables, which receive the most regulatory attention"
+  },
+  {
+   "zh": "<strong>Attribute 1 (Biocompatibility)</strong>：生物相容性——病患安全底線",
+   "en": "<strong>Attribute 1 (Biocompatibility)</strong>: biocompatibility, the bottom line for patient safety"
+  },
+  {
+   "zh": "<strong>Attribute 13 (Container Closure Integrity)</strong>：容器密封完整性——無菌保證核心",
+   "en": "<strong>Attribute 13 (Container Closure Integrity)</strong>: container closure integrity, the core of sterility assurance"
+  },
+  {
+   "zh": "CDMO 應用場景：PCM 確效如何規劃",
+   "en": "CDMO application: how to plan PCM validation"
+  },
+  {
+   "zh": "在 CDMO 中，由於同時服務多個客戶，PCM 確效策略需要特別設計：",
+   "en": "Because a CDMO serves multiple clients at once, the PCM validation strategy needs to be designed with care:"
+  },
+  {
+   "zh": "建立 PCM 元件庫（Component Library），已確效的元件可跨專案重用",
+   "en": "Build a PCM Component Library so that validated components can be reused across projects"
+  },
+  {
+   "zh": "優先對高風險、高使用頻率的元件（如 BioProcess 袋）完成完整確效",
+   "en": "Complete full validation first for high-risk, high-usage components (such as BioProcess bags)"
+  },
+  {
+   "zh": "利用 QbD 括量法，以高風險條件下的資料涵蓋低風險應用，減少重複測試",
+   "en": "Use a QbD bracketing approach, with data from high-risk conditions covering lower-risk applications, to reduce repeated testing"
+  },
+  {
+   "zh": "你的工廠是否有 PCM 元件庫？目前庫中有多少已確效的一次性元件？哪些最常用的元件尚未完成確效？",
+   "en": "Does your site have a PCM component library? How many validated single-use components does it currently hold? Which of the most commonly used components have not yet been validated?"
+  },
+  {
+   "zh": "針對 E&amp;L 測試，你的工廠是依賴供應商資料還是自行執行內部測試？依據什麼標準做這個決定？",
+   "en": "For E&amp;L testing, does your site rely on supplier data or run its own in-house tests? What criteria do you base that decision on?"
+  },
+  {
+   "zh": "4.2.2 Risk Assessment – Calculation of Risk Score（風險評分計算）",
+   "en": "4.2.2 Risk Assessment – Calculation of Risk Score"
+  },
+  {
+   "zh": "公式解析：Risk Score = A × B × C × D",
+   "en": "The formula explained: Risk Score = A × B × C × D"
+  },
+  {
+   "zh": "這個乘積公式意味著四個因子是相乘關係（不是相加），任何一個因子為 1（低風險）都能顯著降低總分：",
+   "en": "Because this is a product formula, the four factors are multiplied (not added), so any single factor equal to 1 (low risk) lowers the total score significantly:"
+  },
+  {
+   "zh": "最高分：10 × 10 × 10 × 10 = 10,000（遠高於高風險門檻 5,000）\n最低分：1 × 1 × 1 × 1 = 1（極低風險）\n典型無菌充填例：10 × 10 × 1 × 5 = 500（低風險）\n    A=注射劑(10)，B=最終充填(10)，\n    C=接觸時間&lt;48hr(1)，D=中等SA/V(5)",
+   "en": "Maximum score: 10 × 10 × 10 × 10 = 10,000 (far above the high-risk threshold of 5,000)\nMinimum score: 1 × 1 × 1 × 1 = 1 (very low risk)\nTypical aseptic filling example: 10 × 10 × 1 × 5 = 500 (low risk)\n    A = injectable (10), B = final filling (10),\n    C = contact time &lt;48 hr (1), D = medium SA/V (5)"
+  },
+  {
+   "zh": "注意：即使藥品是注射劑（A=10）且在最終充填步驟（B=10），若接觸時間短（C=1）且 SA/V 小（D=1），最終得分 = 100，屬於低風險。",
+   "en": "Note: even if the drug product is an injectable (A = 10) and the step is final filling (B = 10), if the contact time is short (C = 1) and SA/V is small (D = 1), the final score = 100, which is low risk."
+  },
+  {
+   "zh": "四個風險因子的直觀理解",
+   "en": "An intuitive understanding of the four risk factors"
+  },
+  {
+   "zh": "<strong>A（給藥途徑）</strong>：注射劑直接進入血液，任何雜質都無法被身體代謝消除，所以風險最高",
+   "en": "<strong>A (route of administration)</strong>: an injectable goes straight into the bloodstream and any impurity cannot be metabolized away by the body, so the risk is highest"
+  },
+  {
+   "zh": "<strong>B（接近最終產品程度）</strong>：越靠近最後充填步驟，後段製程消除污染的機會越少",
+   "en": "<strong>B (proximity to final product)</strong>: the closer to the final filling step, the fewer opportunities downstream processing has to remove contamination"
+  },
+  {
+   "zh": "<strong>C（接觸時間）</strong>：靜態長時間接觸（如長達數天的儲存袋）比短暫流過管路的風險高得多",
+   "en": "<strong>C (contact time)</strong>: static contact over a long period (such as a storage bag held for several days) carries much higher risk than a brief flow through tubing"
+  },
+  {
+   "zh": "<strong>D（表面積/體積比）</strong>：小批量使用大型袋子，可溶出物濃度會被稀釋；批量越小，相對風險越高",
+   "en": "<strong>D (surface area/volume ratio)</strong>: using a large bag for a small batch dilutes the leachable concentration, so the smaller the batch, the higher the relative risk"
+  },
+  {
+   "zh": "比喻說明：風險計算的直覺",
+   "en": "Analogy: the intuition behind risk calculation"
+  },
+  {
+   "zh": "想像你要評估一杯咖啡被塑膠杯影響的風險：",
+   "en": "Imagine assessing the risk of a plastic cup affecting a cup of coffee:"
+  },
+  {
+   "zh": "<strong>A</strong>（你是直接喝還是外敷？）→ 直接喝 = 高風險",
+   "en": "<strong>A</strong> (do you drink it or apply it to your skin?) → drink it = high risk"
+  },
+  {
+   "zh": "<strong>B</strong>（裝的是最終飲品還是原料？）→ 裝好喝的咖啡 = 高風險",
+   "en": "<strong>B</strong> (is it the final drink or a raw ingredient?) → ready-to-drink coffee = high risk"
+  },
+  {
+   "zh": "<strong>C</strong>（咖啡放在杯子多久？）→ 泡幾天 = 高風險；喝完馬上扔 = 低風險",
+   "en": "<strong>C</strong> (how long does the coffee sit in the cup?) → several days = high risk; throw the cup away right after drinking = low risk"
+  },
+  {
+   "zh": "<strong>D</strong>（杯子大小 vs 咖啡量？）→ 用大杯裝一口咖啡 = 高風險",
+   "en": "<strong>D</strong> (cup size vs. amount of coffee?) → a large cup holding one sip of coffee = high risk"
+  },
+  {
+   "zh": "SUT 的風險評估邏輯完全相同——四個維度相乘，得出綜合風險等級。",
+   "en": "The risk assessment logic for SUT is exactly the same: multiply the four dimensions to obtain the overall risk level."
+  },
+  {
+   "zh": "重點提示：風險評分門檻的意義",
+   "en": "Key point: what the risk score thresholds mean"
+  },
+  {
+   "zh": "三個門檻（低≤1,000；中1,001-4,999；高≥5,000）看起來任意，但背後有工程意義：",
+   "en": "The three thresholds (low ≤1,000; medium 1,001-4,999; high ≥5,000) look arbitrary, but they have an engineering rationale:"
+  },
+  {
+   "zh": "低風險（≤1,000）：只需基礎確效（洩漏、撕裂、無菌、內毒素、完整性測試）",
+   "en": "Low risk (≤1,000): only basic validation (leak, tear, sterility, endotoxin, integrity tests) is needed"
+  },
+  {
+   "zh": "中風險（1,001-4,999）：額外需要吸附測試和碎屑測試",
+   "en": "Medium risk (1,001-4,999): adsorption testing and particulate (shedding) testing are additionally needed"
+  },
+  {
+   "zh": "高風險（≥5,000）：額外需要 pH 變化、可溶出物測試、微粒評估",
+   "en": "High risk (≥5,000): pH change, leachables testing and particulate assessment are additionally needed"
+  },
+  {
+   "zh": "門檻設計的目的是讓資源集中用在真正高風險的材料上，而非對所有材料做同等程度的測試。",
+   "en": "The thresholds are designed to concentrate resources on the materials that are truly high risk, rather than testing all materials to the same degree."
+  },
+  {
+   "zh": "CDMO 應用：無菌充填的典型風險評估",
+   "en": "CDMO application: typical risk assessments for aseptic filling"
+  },
+  {
+   "zh": "在無菌充填 CDMO 中，常見場景的風險計算：",
+   "en": "Risk calculations for common scenarios at an aseptic filling CDMO:"
+  },
+  {
+   "zh": "<strong>充填前暫存袋（24hr）</strong>：A=10，B=10，C=1，D=5 → 分數=500（低）",
+   "en": "<strong>Pre-filling holding bag (24 hr)</strong>: A = 10, B = 10, C = 1, D = 5 → score = 500 (low)"
+  },
+  {
+   "zh": "<strong>Buffer 配製袋（72hr）</strong>：A=10，B=1，C=5，D=5 → 分數=250（低）",
+   "en": "<strong>Buffer preparation bag (72 hr)</strong>: A = 10, B = 1, C = 5, D = 5 → score = 250 (low)"
+  },
+  {
+   "zh": "<strong>生物製劑中間體長期儲存袋（10天）</strong>：A=10，B=5，C=10，D=10 → 分數=5,000（高！）",
+   "en": "<strong>Long-term storage bag for biologic intermediate (10 days)</strong>: A = 10, B = 5, C = 10, D = 10 → score = 5,000 (high!)"
+  },
+  {
+   "zh": "長期儲存袋是高風險情境，必須執行完整的內部確效，包括 E&amp;L 測試。",
+   "en": "A long-term storage bag is a high-risk scenario and requires full in-house validation, including E&amp;L testing."
+  },
+  {
+   "zh": "請針對你工廠中一個實際使用的一次性袋子，套用 A×B×C×D 公式計算風險分數，並決定需要哪些額外的內部確效測試。",
+   "en": "Take a single-use bag actually used at your site, apply the A × B × C × D formula to calculate its risk score, and decide which additional in-house validation tests are needed."
+  },
+  {
+   "zh": "若一個中風險（分數1,500）的材料，你會優先從哪個因子著手降低風險分數？為什麼？",
+   "en": "For a medium-risk material (score 1,500), which factor would you work on first to lower the risk score, and why?"
+  },
+  {
+   "zh": "4.2.3–4.2.4 In-House Qualification &amp; Risk Mitigation（內部確效與風險緩解）",
+   "en": "4.2.3–4.2.4 In-House Qualification &amp; Risk Mitigation"
+  },
+  {
+   "zh": "內部確效的三層結構",
+   "en": "The three-tier structure of in-house validation"
+  },
+  {
+   "zh": "ISPE SUT 建立了一個清晰的確效層次：",
+   "en": "ISPE SUT establishes a clear hierarchy of validation:"
+  },
+  {
+   "zh": "<strong>基礎層（所有風險等級必做）</strong>：洩漏、撕裂、無菌性、內毒素、過濾器完整性——這些是無菌製造的絕對底線",
+   "en": "<strong>Base tier (required at all risk levels)</strong>: leak, tear, sterility, endotoxin and filter integrity. These are the absolute bottom line for sterile manufacturing."
+  },
+  {
+   "zh": "<strong>中風險附加層</strong>：吸附測試（藥物成分被材料吸附）＋碎屑測試（蠕動泵管路磨損產生微粒）",
+   "en": "<strong>Medium-risk additional tier</strong>: adsorption testing (drug components adsorbed by the material) plus particulate (shedding) testing (particles generated by wear of peristaltic pump tubing)"
+  },
+  {
+   "zh": "<strong>高風險附加層</strong>：pH 變化＋可溶出物＋微粒——這是與法規直接掛鉤的核心測試",
+   "en": "<strong>High-risk additional tier</strong>: pH change, leachables and particulates. These are the core tests directly tied to regulatory expectations."
+  },
+  {
+   "zh": "三種減少測試量的策略",
+   "en": "Three strategies to reduce the amount of testing"
+  },
+  {
+   "zh": "並非每個 PCM 都需要「從頭做所有測試」，三種策略可大幅減少重複工作：",
+   "en": "Not every PCM needs \"all tests from scratch\"; three strategies can greatly reduce repeated work:"
+  },
+  {
+   "zh": "<strong>引用供應商既有資料</strong>：最省時，但需嚴格確認資料適用性（同製程、同條件、正式官方文件）",
+   "en": "<strong>Reference existing supplier data</strong>: the most time-saving, but you must strictly confirm the data's applicability (same process, same conditions, formal official documents)"
+  },
+  {
+   "zh": "<strong>QbD 括量法</strong>：用最嚴苛條件的資料涵蓋較寬鬆的應用場景——類似於「測過最難的考試，就不需要再考簡單的」",
+   "en": "<strong>QbD bracketing approach</strong>: use data from the harshest conditions to cover milder application scenarios, similar to \"if you have passed the hardest exam, you do not need to take the easy one\""
+  },
+  {
+   "zh": "<strong>文件審查（Paper Exercise）</strong>：低風險材料可能只需要文件層面的合理性論證，無需實際測試",
+   "en": "<strong>Paper exercise</strong>: for low-risk materials, a documented rationale may be enough, with no actual testing"
+  },
+  {
+   "zh": "比喻說明：進料管控是最後一道防線",
+   "en": "Analogy: incoming control is the last line of defense"
+  },
+  {
+   "zh": "PCM 的進料管控（Incoming Control）就像機場安檢——不管飛機在出發地有多嚴格的行李檢查，到達目的地時還是要再過一次安檢。即使供應商確效資料完整，每批到貨時仍需確認：材料正確（CoA 核對）、包裝完整（無破損汙染）、無菌狀態維持（批號、效期）。這是風險緩解的最後關卡，不能省略。",
+   "en": "Incoming control of PCM is like airport security. However strict the baggage check was at the departure airport, you still go through security again on arrival. Even when the supplier's validation data are complete, each delivery must still be checked for correct material (CoA check), intact packaging (no damage or contamination), and maintained sterility (lot number, expiry). This is the last gate of risk mitigation and cannot be skipped."
+  },
+  {
+   "zh": "重點提示：CoA 不等於確效",
+   "en": "Key point: a CoA is not validation"
+  },
+  {
+   "zh": "供應商提供的 CoA（分析證書）只證明「這批產品符合供應商的出廠規格」，並不代表它適合你的特定製程應用。進料管控的 CoA 審查應確認：",
+   "en": "The CoA (certificate of analysis) provided by the supplier only proves that \"this lot meets the supplier's release specifications\"; it does not mean the product is suitable for your particular process application. The CoA review in incoming control should confirm that:"
+  },
+  {
+   "zh": "所有指定測試項目均有結果且符合標準",
+   "en": "Every specified test item has a result and meets the criteria"
+  },
+  {
+   "zh": "CoA 上的料號、批號、製造地點與採購訂單一致",
+   "en": "The part number, lot number and manufacturing site on the CoA match the purchase order"
+  },
+  {
+   "zh": "若有已知的批次差異（如薄膜批次）需特別追蹤",
+   "en": "Any known lot-to-lot variation (such as film lots) is specifically tracked"
+  },
+  {
+   "zh": "CDMO 應用：當材料不符合要求時",
+   "en": "CDMO application: when a material does not meet requirements"
+  },
+  {
+   "zh": "在 CDMO 實務中，若 PCM 確效失敗或進料不合格，四個補救選項的實際優先順序：",
+   "en": "In CDMO practice, when PCM validation fails or an incoming lot is rejected, the four remedial options in their actual order of priority are:"
+  },
+  {
+   "zh": "<strong>要求供應商補測</strong>（最常見）：供應商提供缺失的測試資料",
+   "en": "<strong>Ask the supplier to supply the missing tests</strong> (most common): the supplier provides the missing test data"
+  },
+  {
+   "zh": "<strong>內部執行確效</strong>：成本高但速度快，適合緊急批次需求",
+   "en": "<strong>Perform validation in-house</strong>: high cost but fast, suitable for urgent batch needs"
+  },
+  {
+   "zh": "<strong>製程中加入緩解步驟</strong>：如加入額外過濾步驟降低可溶出物風險",
+   "en": "<strong>Add a mitigation step to the process</strong>: for example, an additional filtration step to reduce the leachables risk"
+  },
+  {
+   "zh": "<strong>更換供應商</strong>（最後手段）：時間最長，但若材料本身有根本缺陷，這是唯一解",
+   "en": "<strong>Change supplier</strong> (last resort): takes the longest, but if the material has a fundamental flaw this is the only solution"
+  },
+  {
+   "zh": "你的工廠目前對一次性組件的進料管控標準是什麼？CoA 審查清單包含哪些項目？",
+   "en": "What are the current incoming control standards for single-use components at your site? Which items does your CoA review checklist include?"
+  },
+  {
+   "zh": "如果供應商宣稱使用「QbD 括量法」以高風險資料涵蓋你的低風險應用，你會如何評估這個宣稱的合理性？",
+   "en": "If a supplier claims to use the \"QbD bracketing approach\" to cover your low-risk application with high-risk data, how would you evaluate whether that claim is reasonable?"
+  },
+  {
+   "zh": "4.3 Change Management（變更管理）",
+   "en": "4.3 Change Management"
+  },
+  {
+   "zh": "核心概念：SUT 變更管理的複雜性",
+   "en": "Core concept: the complexity of SUT change management"
+  },
+  {
+   "zh": "SUT 的變更管理比不鏽鋼設備更複雜，原因在於供應鏈層次多：",
+   "en": "SUT change management is more complex than for stainless steel equipment because the supply chain has many layers:"
+  },
+  {
+   "zh": "終端使用者 → 一次性組件供應商 → 薄膜製造商 → 樹脂供應商 → 原料礦場",
+   "en": "End user → single-use component supplier → film manufacturer → resin supplier → raw material source"
+  },
+  {
+   "zh": "每一層的變更都可能影響最終產品接觸材料的特性。供應商的「小改變」對終端使用者可能意味著需要重新確效，甚至重新提交法規申請。",
+   "en": "A change at any layer may affect the properties of the final product-contact material. A \"small change\" by the supplier can mean the end user needs to revalidate, or even resubmit a regulatory filing."
+  },
+  {
+   "zh": "關鍵術語：材料變更通知 (Change Notification)",
+   "en": "Key term: Change Notification"
+  },
+  {
+   "zh": "<strong>Change Notification</strong> 是供應商告知終端使用者即將進行的材料或製程變更的正式機制。在品質協議中，通常規定：",
+   "en": "<strong>Change Notification</strong> is the formal mechanism by which a supplier informs the end user of an upcoming change to materials or processes. A quality agreement usually specifies:"
+  },
+  {
+   "zh": "<strong>重大變更</strong>（如薄膜材質、滅菌供應商）：至少提前 6-12 個月通知",
+   "en": "<strong>Major changes</strong> (such as film material or sterilization provider): at least 6-12 months' advance notice"
+  },
+  {
+   "zh": "<strong>輕微變更</strong>（如文件格式、倉儲地點）：提前 30-90 天通知即可",
+   "en": "<strong>Minor changes</strong> (such as document format or warehouse location): 30-90 days' advance notice is sufficient"
+  },
+  {
+   "zh": "沒有足夠提前期的通知會讓終端使用者陷入緊迫的再確效壓力，甚至影響商業批生產。",
+   "en": "Notice without enough lead time puts the end user under urgent revalidation pressure and can even affect commercial batch production."
+  },
+  {
+   "zh": "比喻說明：維護型 vs. 破壞型變更",
+   "en": "Analogy: maintenance vs. disruptive changes"
+  },
+  {
+   "zh": "想像你是一家餐廳老闆（終端使用者）：",
+   "en": "Imagine you are a restaurant owner (the end user):"
+  },
+  {
+   "zh": "<strong>維護型變更</strong>：供貨商改了外包裝顏色、換了倉庫地址——你可能需要更新進貨文件，但不影響食材品質",
+   "en": "<strong>Maintenance change</strong>: the supplier changes the color of the outer packaging or moves to a new warehouse address. You may need to update your receiving documents, but food quality is unaffected."
+  },
+  {
+   "zh": "<strong>重大破壞型變更</strong>：供貨商把蔬菜的品種從有機換成慣行農法——這直接影響到你菜單上「有機蔬菜」的聲稱，你必須重新評估、可能需要更換供應商",
+   "en": "<strong>Major disruptive change</strong>: the supplier switches its vegetables from organic to conventional farming. This directly affects the \"organic vegetables\" claim on your menu, so you must reassess and may need to change supplier."
+  },
+  {
+   "zh": "SUT 的「材料配方變更」等同於後者，必須觸發完整的變更控制流程。",
+   "en": "A SUT \"material formulation change\" is equivalent to the latter and must trigger the full change control process."
+  },
+  {
+   "zh": "重點提示：品質協議是變更管理的基礎",
+   "en": "Key point: the quality agreement is the foundation of change management"
+  },
+  {
+   "zh": "有效的 SUT 變更管理依賴三個機制共同運作：",
+   "en": "Effective SUT change management depends on three mechanisms working together:"
+  },
+  {
+   "zh": "<strong>品質協議 (Quality Agreement)</strong>：明確定義哪些變更需要通知、通知時間要求、雙方責任",
+   "en": "<strong>Quality Agreement</strong>: clearly defines which changes require notification, the notification timing, and the responsibilities of both parties"
+  },
+  {
+   "zh": "<strong>定期稽核</strong>：驗證供應商確實遵守通知義務，及早發現未申報的變更",
+   "en": "<strong>Periodic audits</strong>: verify that the supplier actually complies with its notification obligations, and detect unreported changes early"
+  },
+  {
+   "zh": "<strong>預定義溝通管道</strong>：當變更發生時，誰通知誰、用什麼格式——不能靠「打個電話」處理",
+   "en": "<strong>Predefined communication channels</strong>: when a change occurs, who notifies whom and in what format; this cannot be handled with \"just a phone call\""
+  },
+  {
+   "zh": "沒有品質協議的供應商關係，等同於在沒有安全帶的情況下開車——也許大部分時候沒事，但一旦出問題就是大事。",
+   "en": "A supplier relationship without a quality agreement is like driving without a seat belt: most of the time nothing happens, but when something goes wrong it is serious."
+  },
+  {
+   "zh": "CDMO 應用：變更管理的特殊挑戰",
+   "en": "CDMO application: special challenges in change management"
+  },
+  {
+   "zh": "CDMO 面對的變更管理挑戰更複雜，因為同一個一次性組件可能同時用於多個客戶的不同藥品專案。供應商的一個「材料變更通知」可能需要：",
+   "en": "Change management is even more complex for a CDMO, because the same single-use component may be used in different drug projects for several clients at once. A single \"material change notification\" from a supplier may require you to:"
+  },
+  {
+   "zh": "評估對每個客戶的影響（不同藥品、不同法規申請）",
+   "en": "Assess the impact on each client (different drug products, different regulatory filings)"
+  },
+  {
+   "zh": "觸發多份變更控制紀錄",
+   "en": "Trigger multiple change control records"
+  },
+  {
+   "zh": "可能需要通知每個客戶（取決於客戶的法規申請狀態）",
+   "en": "Possibly notify each client (depending on the client's regulatory filing status)"
+  },
+  {
+   "zh": "協調不同客戶的測試與放行時程",
+   "en": "Coordinate the testing and release schedules of different clients"
+  },
+  {
+   "zh": "這就是為什麼 CDMO 的 PCM 元件庫和標準化確效程序特別重要——一次確效，多個專案共用。",
+   "en": "This is why a CDMO's PCM component library and standardized validation procedures are especially important: validate once, share across multiple projects."
+  },
+  {
+   "zh": "你的工廠與主要一次性組件供應商是否簽有品質協議？協議中對「變更通知」的要求是否足夠詳細？",
+   "en": "Has your site signed a quality agreement with its main single-use component suppliers? Are the \"change notification\" requirements in the agreement detailed enough?"
+  },
+  {
+   "zh": "過去三年中，你的工廠是否遭遇供應商未提前通知的重大變更？如果有，後果是什麼？如何預防？",
+   "en": "In the past three years, has your site encountered a major supplier change without advance notice? If so, what were the consequences, and how can it be prevented?"
+  },
+  {
+   "zh": "4.4 Project Schedules（專案排程）",
+   "en": "4.4 Project Schedules"
+  },
+  {
+   "zh": "核心概念：SUT 排程的五種場景",
+   "en": "Core concept: the five SUT scheduling scenarios"
+  },
+  {
+   "zh": "ISPE SUT 的排程模板涵蓋五種不同起始條件，反映了現實中專案的多樣性：",
+   "en": "The ISPE SUT scheduling templates cover five different starting conditions, reflecting the diversity of real projects:"
+  },
+  {
+   "zh": "<strong>4.4.1（元件已全部確效）</strong>：最快的路徑，適合成熟操作中換型或擴產",
+   "en": "<strong>4.4.1 (all components already validated)</strong>: the fastest path, suitable for changeover or scale-up in a mature operation"
+  },
+  {
+   "zh": "<strong>4.4.2（部分元件需確效）</strong>：最常見的情況——有新元件需要測試",
+   "en": "<strong>4.4.2 (some components need validation)</strong>: the most common case, where new components need testing"
+  },
+  {
+   "zh": "<strong>4.4.3（元件資格確認專項）</strong>：聚焦在新供應商元件的系統性確效",
+   "en": "<strong>4.4.3 (component qualification focus)</strong>: focuses on systematic validation of components from a new supplier"
+  },
+  {
+   "zh": "<strong>4.4.4（全新導入 SUT）</strong>：從頭建立 SUT 操作的完整時程",
+   "en": "<strong>4.4.4 (brand-new SUT implementation)</strong>: the complete timeline for establishing SUT operations from scratch"
+  },
+  {
+   "zh": "<strong>4.4.5（技術轉移）</strong>：從一個場地轉移到另一個場地的特殊考量",
+   "en": "<strong>4.4.5 (technology transfer)</strong>: special considerations for transferring from one site to another"
+  },
+  {
+   "zh": "關鍵術語：甘特圖與關鍵路徑",
+   "en": "Key terms: Gantt chart and critical path"
+  },
+  {
+   "zh": "<strong>甘特圖 (Gantt Chart)</strong>：以橫條圖顯示各任務的時間跨度與相互關係。ISPE 的排程模板就是甘特圖形式。",
+   "en": "<strong>Gantt chart</strong>: shows the duration of each task and their interrelationships as horizontal bars. The ISPE scheduling templates are in Gantt chart form."
+  },
+  {
+   "zh": "<strong>關鍵路徑 (Critical Path)</strong>：從專案開始到結束，最長的一條依存關係鏈。關鍵路徑上的任何延誤都會直接推遲整個專案的完成日期。在 SUT 導入中，E&amp;L 萃取物測試通常位於關鍵路徑上（測試週期長，無法壓縮）。",
+   "en": "<strong>Critical path</strong>: the longest chain of dependencies from project start to finish. Any delay on the critical path directly pushes back the completion date of the whole project. In SUT implementation, E&amp;L extractables testing is usually on the critical path (the test cycle is long and cannot be compressed)."
+  },
+  {
+   "zh": "<strong>階段閘門法 (Phase-Gate Approach)</strong>：將專案劃分為多個階段，每個階段結束時設置評審關卡，確認達標後才進入下一階段。這在 SUT 實施中可以避免在確效失敗前投入過多後續資源。",
+   "en": "<strong>Phase-gate approach</strong>: divides a project into several phases, with a review gate at the end of each phase, and moves to the next phase only after the criteria are met. In SUT implementation, this avoids committing too many downstream resources before validation has succeeded."
+  },
+  {
+   "zh": "比喻說明：並行作業的代價",
+   "en": "Analogy: the cost of parallel tasks"
+  },
+  {
+   "zh": "並行作業（Parallel Tasks）就像同時煮幾道菜——可以縮短晚餐上桌的時間，但需要多個爐頭（資源）同時運作。如果你只有一個廚師（資源有限），並行太多反而造成顧此失彼。SUT 專案中，啟動過多並行任務（如同時執行確效、自動化整合、驗證）可能造成關鍵人員過載，反而拖慢總體進度。",
+   "en": "Parallel tasks are like cooking several dishes at once: they shorten the time until dinner is served, but need several burners (resources) running at the same time. If you have only one cook (limited resources), too much parallel work causes things to fall through the cracks. In a SUT project, starting too many parallel tasks (such as running validation, automation integration and verification at the same time) can overload key personnel and actually slow overall progress."
+  },
+  {
+   "zh": "排程中的隱形時間殺手：E&amp;L 測試",
+   "en": "The hidden time killer in scheduling: E&amp;L testing"
+  },
+  {
+   "zh": "E&amp;L（萃取物與可溶出物）測試是 SUT 排程中最需要提前規劃的活動：",
+   "en": "E&amp;L (extractables and leachables) testing is the activity in a SUT schedule that most needs advance planning:"
+  },
+  {
+   "zh": "測試週期通常需要 3-6 個月（包括萃取、分析、報告）",
+   "en": "The test cycle usually takes 3-6 months (including extraction, analysis and reporting)"
+  },
+  {
+   "zh": "必須在其他確效活動結束前完成，才能做最終風險評估",
+   "en": "It must be completed before the other validation activities end, so that the final risk assessment can be done"
+  },
+  {
+   "zh": "若結果不合格，需要換材料並重測，時間代價極高",
+   "en": "If the results fail, the material must be changed and testing repeated, at a very high time cost"
+  },
+  {
+   "zh": "ISPE 的建議：E&amp;L 測試必須盡早啟動，與其他任務並行，不能等到其他工作完成後才開始。",
+   "en": "ISPE's recommendation: E&amp;L testing must start as early as possible and run in parallel with other tasks; do not wait until other work is finished before starting it."
+  },
+  {
+   "zh": "重點提示：技術轉移排程的特殊考量",
+   "en": "Key point: special scheduling considerations for technology transfer"
+  },
+  {
+   "zh": "技術轉移（4.4.5）的 SUT 排程需要額外考慮：",
+   "en": "The SUT schedule for a technology transfer (4.4.5) needs to take the following into account:"
+  },
+  {
+   "zh": "<strong>規模變化</strong>：放大或縮小批量會改變 SA/V 比，可能需要重新進行風險評估",
+   "en": "<strong>Scale changes</strong>: scaling up or down changes the SA/V ratio, which may require the risk assessment to be redone"
+  },
+  {
+   "zh": "<strong>法規提交</strong>：若轉移至不同國家/地區，可能需要向新的法規機關通報 SUT 的設計更改",
+   "en": "<strong>Regulatory submissions</strong>: when transferring to a different country/region, design changes to the SUT may have to be notified to the new regulatory authority"
+  },
+  {
+   "zh": "<strong>重新確效</strong>：即使元件相同，組件在新場地的安裝、操作條件可能不同，需重新執行部分確效",
+   "en": "<strong>Revalidation</strong>: even with identical components, installation and operating conditions at the new site may differ, so part of the validation must be repeated"
+  },
+  {
+   "zh": "CDMO 應用：從計畫排程到現實",
+   "en": "CDMO application: from project plan to reality"
+  },
+  {
+   "zh": "CDMO 承接新客戶藥品的 SUT 導入時，常見的排程陷阱：",
+   "en": "Common scheduling pitfalls when a CDMO takes on SUT implementation for a new client's drug product:"
+  },
+  {
+   "zh": "<strong>供應商樣品遲交</strong>：供應商承諾的樣品交期往往比實際晚 2-4 週，需在排程中加入緩衝",
+   "en": "<strong>Late supplier samples</strong>: supplier-promised sample delivery dates are often 2-4 weeks later than actual, so buffers must be built into the schedule"
+  },
+  {
+   "zh": "<strong>客戶審查延誤</strong>：確效報告需要客戶批准，跨時區溝通可能造成數週延誤",
+   "en": "<strong>Client review delays</strong>: validation reports need client approval, and cross-time-zone communication can cause delays of several weeks"
+  },
+  {
+   "zh": "<strong>原型測試失敗</strong>：即使所有元件已確效，組裝後的原型仍可能在連接尺寸或壓力測試中失敗，需要重新設計",
+   "en": "<strong>Prototype test failures</strong>: even when all components are validated, the assembled prototype can still fail on connection dimensions or pressure testing and need redesign"
+  },
+  {
+   "zh": "建議：在 SUT 導入 Master Timeline 中，對 E&amp;L 測試、原型評估、客戶審查各預留至少 20% 緩衝時間。",
+   "en": "Recommendation: in the SUT implementation Master Timeline, reserve at least 20% buffer time each for E&amp;L testing, prototype evaluation and client review."
+  },
+  {
+   "zh": "你最近一次 SUT 導入專案中，哪個任務是在關鍵路徑上？實際進度與計畫相比，最大的偏差來源是什麼？",
+   "en": "In your most recent SUT implementation project, which tasks were on the critical path? Compared with the plan, what was the largest source of deviation in actual progress?"
+  },
+  {
+   "zh": "如果客戶要求你在 6 個月內完成一個全新 SUT 系統的導入（包括元件確效），你會選擇 4.4.4 的排程策略中哪些任務安排為並行？哪些必須序列執行？",
+   "en": "If a client asks you to complete implementation of a brand-new SUT system (including component validation) within 6 months, which tasks in the 4.4.4 scheduling strategy would you run in parallel, and which must be run in sequence?"
+  },
+  {
+   "zh": "本章總結 Chapter Summary",
+   "en": "Chapter Summary"
+  },
+  {
+   "zh": "<strong>SUT 導入的四大特殊考量</strong>：強化供應商協作、全程風險與變更管理、彈性排程、SUT 與不鏽鋼系統的介面整合。雙重來源策略是供應安全的核心保障，應納入採購政策。",
+   "en": "<strong>Four special considerations for SUT implementation</strong>: stronger supplier collaboration, risk and change management throughout, flexible scheduling, and integration of the interface between SUT and stainless steel systems. A dual sourcing strategy is the core safeguard of supply security and should be built into purchasing policy."
+  },
+  {
+   "zh": "<strong>風險評分公式 A × B × C × D</strong>：四個因子（給藥途徑、接近終產品程度、接觸時間、表面積/體積比）相乘得出量化風險分數。分數 ≤1,000 為低風險，1,001-4,999 為中風險，≥5,000 為高風險，直接決定所需內部確效測試的範圍。",
+   "en": "<strong>The A × B × C × D risk score formula</strong>: the four factors (route of administration, proximity to final product, contact time, surface area/volume ratio) are multiplied to give a quantitative risk score. A score ≤1,000 is low risk, 1,001-4,999 is medium risk and ≥5,000 is high risk, which directly determines the scope of in-house validation tests required."
+  },
+  {
+   "zh": "<strong>15 項 PCM 資格確認屬性</strong>：E&amp;L（屬性 8）、生物相容性（屬性 1）與容器密封完整性（屬性 13）是最關鍵的三項。可透過引用供應商既有資料、QbD 括量法、文件審查等策略減少重複測試。",
+   "en": "<strong>The 15 PCM qualification attributes</strong>: E&amp;L (attribute 8), biocompatibility (attribute 1) and container closure integrity (attribute 13) are the three most critical. Repeated testing can be reduced through strategies such as referencing existing supplier data, the QbD bracketing approach and paper exercises."
+  },
+  {
+   "zh": "<strong>變更管理的雙軌分類</strong>：維護/改善型變更（低衝擊）vs. 重大破壞型變更（材料、製程、供應商、尺寸的實質改變）。品質協議中必須明確規定「重大材料變更」的提前通知期限（通常 6-12 個月），並透過定期稽核驗證執行情況。",
+   "en": "<strong>The two-track classification of change management</strong>: maintenance/improvement changes (low impact) vs. major disruptive changes (substantive changes in material, process, supplier or dimensions). The quality agreement must clearly specify the advance notice period for \"major material changes\" (usually 6-12 months), and implementation must be verified through periodic audits."
+  },
+  {
+   "zh": "<strong>SUT 排程的關鍵路徑意識</strong>：E&amp;L 萃取物測試週期長（3-6 個月），必須在專案早期啟動並並行推進。甘特圖模板（五種場景）是起點，應根據實際供應商能力、客戶要求和可用資源進行客製化調整，並為 E&amp;L 測試、原型評估、客戶審查各預留緩衝時間。",
+   "en": "<strong>Critical path awareness in SUT scheduling</strong>: E&amp;L extractables testing has a long cycle (3-6 months) and must be started early in the project and run in parallel. The Gantt chart templates (five scenarios) are a starting point and should be customized to actual supplier capability, client requirements and available resources, with buffer time reserved for E&amp;L testing, prototype evaluation and client review."
+  }
+ ]
+}

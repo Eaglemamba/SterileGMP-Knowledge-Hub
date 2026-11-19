@@ -1,0 +1,317 @@
+{
+ "source": "section-07-appendix6-7.html",
+ "blocks": [
+  {
+   "zh": "測試策略範例與文件範本 | Chapters 18–19",
+   "en": "Testing Strategy Examples and Document Templates | Chapters 18–19"
+  },
+  {
+   "zh": "Contents 目錄",
+   "en": "Contents"
+  },
+  {
+   "zh": "<a href=\"#learning-obj\">Learning Objectives 學習目標</a>\n<a href=\"#ex1-walk-in\">App 6.1 — Walk-in CRT Space</a>\n<a href=\"#ex2-fridge\">App 6.2 — Refrigerator Mapping</a>\n<a href=\"#ex3-warehouse\">App 6.3 — Warehouse</a>\n<a href=\"#ex4-protocol\">App 6.4 — Test Protocol Elements</a>\n<a href=\"#app7-periodic\">App 7.1 — Periodic Review</a>\n<a href=\"#app7-jha\">App 7.2 — Job Hazard Analysis</a>\n<a href=\"#ich-table\">ICH Stability Conditions</a>",
+   "en": "<a href=\"#learning-obj\">Learning Objectives</a>\n<a href=\"#ex1-walk-in\">App 6.1 — Walk-in CRT Space</a>\n<a href=\"#ex2-fridge\">App 6.2 — Refrigerator Mapping</a>\n<a href=\"#ex3-warehouse\">App 6.3 — Warehouse</a>\n<a href=\"#ex4-protocol\">App 6.4 — Test Protocol Elements</a>\n<a href=\"#app7-periodic\">App 7.1 — Periodic Review</a>\n<a href=\"#app7-jha\">App 7.2 — Job Hazard Analysis</a>\n<a href=\"#ich-table\">ICH Stability Conditions</a>"
+  },
+  {
+   "zh": "Learning Objectives | 學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "中文學習目標",
+   "en": "Commentary"
+  },
+  {
+   "zh": "能逐步套用探針佈點邏輯，適用步入式空間、冰箱及倉庫。",
+   "en": "Apply the probe placement logic step by step to walk-in spaces, refrigerators, and warehouses."
+  },
+  {
+   "zh": "依體積門檻（70 / 700 ft³）與氣流障礙合理化探針密度決策。",
+   "en": "Rationalize probe density decisions based on volume thresholds (70 / 700 ft³) and airflow obstructions."
+  },
+  {
+   "zh": "判斷何時需要夏/冬季節性建圖，何時可依風險評估豁免。",
+   "en": "Determine when summer/winter seasonal mapping is required and when it can be waived based on a risk assessment."
+  },
+  {
+   "zh": "架構完整的建圖測試協議，涵蓋儀器選擇、負荷測試與合格標準。",
+   "en": "Structure a complete mapping test protocol covering instrument selection, load testing, and acceptance criteria."
+  },
+  {
+   "zh": "運用定期審查分類（1–3 類）排程再確效，理解方法一與方法二的差異。",
+   "en": "Use the periodic review categories (Categories 1–3) to schedule requalification, and understand the difference between Method 1 and Method 2."
+  },
+  {
+   "zh": "App 6, §18.1 | 步入式常溫儲存空間建圖策略",
+   "en": "App 6, §18.1 | Mapping Strategy for a Walk-in Controlled Room Temperature Storage Space"
+  },
+  {
+   "zh": "中文說明 &amp; CDMO 脈絡",
+   "en": "Commentary &amp; CDMO Context"
+  },
+  {
+   "zh": "核心概念",
+   "en": "Core Concept"
+  },
+  {
+   "zh": "三段體積門檻決定基礎探針數",
+   "en": "Three Volume Thresholds Determine the Base Probe Count"
+  },
+  {
+   "zh": "<strong>≤ 70 ft³：</strong>9 支（上下各4角 + 中心）",
+   "en": "<strong>≤ 70 ft³:</strong> 9 probes (4 corners top and bottom + center)"
+  },
+  {
+   "zh": "<strong>≤ 700 ft³：</strong>再加各面中心點",
+   "en": "<strong>≤ 700 ft³:</strong> add the center point of each face"
+  },
+  {
+   "zh": "<strong>&gt; 700 ft³：</strong>以上述為基礎，間距不超過 30 ft (9 m) 為原則",
+   "en": "<strong>&gt; 700 ft³:</strong> build on the above, with spacing not exceeding 30 ft (9 m) as a rule"
+  },
+  {
+   "zh": "類比：建圖如盲人摸象",
+   "en": "Analogy: Mapping Is Like the Blind Men and the Elephant"
+  },
+  {
+   "zh": "空間越大、障礙越多，需要更多「感知點」才能確認整體溫度均勻。30 ft 間距規則是行業共識，非法規硬性要求，但偏離需要書面理由。",
+   "en": "The larger the space and the more obstructions, the more \"sensing points\" are needed to confirm overall temperature uniformity. The 30 ft spacing rule is an industry consensus, not a hard regulatory requirement, but any deviation needs a documented rationale."
+  },
+  {
+   "zh": "CDMO 實務重點",
+   "en": "CDMO Practical Points"
+  },
+  {
+   "zh": "CDMO 的 CRT 原料倉常見問題：叉車動線熱負荷、收貨區門口溫度波動。本例單純儲存無特殊負荷，是最佳情境；真實環境應評估第 6–9 步是否有例外。",
+   "en": "Common issues in a CDMO CRT raw material warehouse: heat load from forklift traffic routes and temperature fluctuations at the receiving area door. This example involves simple storage with no special loads, which is the best-case scenario; in a real environment, evaluate whether steps 6–9 have any exceptions."
+  },
+  {
+   "zh": "Practice Questions 練習思考",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "若同一空間增設一台工業除濕機（有散熱），步驟 8 的結論會改變嗎？為什麼？",
+   "en": "If an industrial dehumidifier (which gives off heat) is added to the same space, would the conclusion of step 8 change? Why?"
+  },
+  {
+   "zh": "若倉庫外牆暴露在日曬面，應在哪個步驟加入額外探針的考量？",
+   "en": "If the exterior wall of the warehouse is exposed to direct sunlight, at which step should you consider adding extra probes?"
+  },
+  {
+   "zh": "本例 HVAC 失效後室溫不受影響——若改在無外部溫控的廠房，你的測試策略如何調整？",
+   "en": "In this example the room temperature is unaffected after HVAC failure. If this were a building with no external temperature control, how would you adjust your testing strategy?"
+  },
+  {
+   "zh": "App 6, §18.2 | 冰箱建圖策略",
+   "en": "App 6, §18.2 | Refrigerator Mapping Strategy"
+  },
+  {
+   "zh": "與步入式空間的關鍵差異",
+   "en": "Key Differences from a Walk-in Space"
+  },
+  {
+   "zh": "分層 = 分區 (Each Shelf = Zone)",
+   "en": "Layers = Zones (Each Shelf = Zone)"
+  },
+  {
+   "zh": "冰箱層架阻斷垂直氣流，每層視為獨立映射區。探針密度由貨架類型與裝載密度決定——這是與開放倉庫最大的不同點。",
+   "en": "Refrigerator shelves block vertical airflow, so each shelf is treated as an independent mapping zone. Probe density is determined by shelf type and loading density; this is the biggest difference from an open warehouse."
+  },
+  {
+   "zh": "除霜週期的影響",
+   "en": "Effect of the Defrost Cycle"
+  },
+  {
+   "zh": "冰箱除霜期間空氣溫度短暫上升（可能超出設定範圍），但實體藥品因熱質（thermal mass）不會立即升溫。ISPE 允許監測探針置於產品或熱緩衝液中，而非測量空氣，但需要書面理由與驗證。",
+   "en": "During a refrigerator defrost, the air temperature rises briefly (possibly beyond the set range), but the physical drug product does not heat up immediately because of its thermal mass. ISPE allows monitoring probes to be placed in the product or in a thermal buffer solution rather than measuring the air, but this requires a documented rationale and validation."
+  },
+  {
+   "zh": "比喻：冰箱如多層停車場",
+   "en": "Analogy: A Refrigerator Is Like a Multi-Level Parking Garage"
+  },
+  {
+   "zh": "每層獨立，上層暖空氣不自動流入下層。「加裝通風格柵層架」等同打通層間通道，探針密度可降低，但需要再評估。",
+   "en": "Each level is independent, and warm air from an upper level does not automatically flow into the lower level. \"Adding vented grille shelves\" is equivalent to opening up passages between levels, so probe density can be reduced, but this needs reassessment."
+  },
+  {
+   "zh": "一台冰箱有4層實心架，你選擇每層5支探針。若Layer 2換成網架且稀疏裝載，你需要重新建圖嗎？",
+   "en": "A refrigerator has 4 solid shelves and you chose 5 probes per shelf. If Layer 2 is replaced with a wire rack and loaded sparsely, do you need to remap?"
+  },
+  {
+   "zh": "為什麼「空態 + 滿態」兩個狀態都要建圖，而不只選最差情況？",
+   "en": "Why should mapping be done in both the \"empty + full\" states rather than just choosing the worst case?"
+  },
+  {
+   "zh": "App 6, §18.3 | 倉庫建圖佈局與理由",
+   "en": "App 6, §18.3 | Warehouse Mapping Layout and Rationale"
+  },
+  {
+   "zh": "倉庫建圖與冰箱的關鍵差別",
+   "en": "Key Differences Between Warehouse and Refrigerator Mapping"
+  },
+  {
+   "zh": "體積 vs. 質量的影響",
+   "en": "Effect of Volume vs. Mass"
+  },
+  {
+   "zh": "倉庫中，貨架/箱體的<strong>體積</strong>（阻礙氣流）比<strong>質量</strong>（熱緩衝）更重要。因此空紙箱可充當 simulated load，降低成本。但若 HVAC 依賴牆側貨架隔熱，熱質就變重要。",
+   "en": "In a warehouse, the <strong>volume</strong> of racks/boxes (obstructing airflow) matters more than their <strong>mass</strong> (thermal buffering). Empty cartons can therefore serve as a simulated load, reducing cost. But if the HVAC relies on the insulation of wall-side racking, thermal mass becomes important."
+  },
+  {
+   "zh": "季節性建圖判斷",
+   "en": "Seasonal Mapping Judgment"
+  },
+  {
+   "zh": "台灣夏季高溫（&gt;35°C）、冬季低溫（北部可達 10°C 以下）差距顯著，超出 ±6°C / 3小時的門檻。CDMO 在台灣通常需要夏冬兩季建圖，除非廠房 100% 在全年控溫建築內。",
+   "en": "Taiwan has a significant gap between summer heat (&gt;35°C) and winter cold (below 10°C in the north), exceeding the ±6°C / 3-hour threshold. A CDMO in Taiwan usually needs mapping in both summer and winter, unless the facility is 100% within a temperature-controlled building year-round."
+  },
+  {
+   "zh": "比喻：「連續建圖」效果",
+   "en": "Analogy: The \"Continuous Mapping\" Effect"
+  },
+  {
+   "zh": "若永久監測感測器密度夠高，日常監測數據等同於持續建圖。異常會被即時發現，無需單獨季節性建圖。這是在足夠監測密度下的風險豁免依據。",
+   "en": "If the density of permanent monitoring sensors is high enough, routine monitoring data is equivalent to continuous mapping. Anomalies are detected immediately, with no need for separate seasonal mapping. This is the basis for a risk-based waiver given sufficient monitoring density."
+  },
+  {
+   "zh": "你的 CDMO 倉庫位於有冷暖空調的廠房內，外牆無直接日曬暴露——你如何在 IQ/OQ 協議中論證僅需進行一次季節性建圖？需要哪些文件？",
+   "en": "Your CDMO warehouse is located inside a heated and air-conditioned building, and the exterior walls have no direct sun exposure. How would you justify in the IQ/OQ protocol that only one seasonal mapping is needed? What documents are required?"
+  },
+  {
+   "zh": "空倉庫滿載空紙箱與實際滿載藥品原料，哪個代表更嚴苛的「最差情況」？理由為何？",
+   "en": "Which represents the more severe \"worst case\": an empty warehouse fully loaded with empty cartons, or one actually fully loaded with drug product raw materials? Why?"
+  },
+  {
+   "zh": "如果建圖後發現監測點位的數據顯示其中一角持續接近高溫警報限，你的第一個行動是什麼？",
+   "en": "If, after mapping, the data from a monitoring point shows that one corner is consistently close to the high-temperature alarm limit, what is your first action?"
+  },
+  {
+   "zh": "App 6, §18.4 | 測試協議必備要素",
+   "en": "App 6, §18.4 | Essential Elements of a Test Protocol"
+  },
+  {
+   "zh": "協議架構解析",
+   "en": "Protocol Structure Analysis"
+  },
+  {
+   "zh": "為何 11 個要素缺一不可",
+   "en": "Why All 11 Elements Are Indispensable"
+  },
+  {
+   "zh": "建圖協議是 IQ/OQ 文件的核心。稽核時最常被問到：<br/>\n                    • A：儀器校正紀錄是否涵蓋建圖期間？<br/>\n                    • D：探針位置的選擇理由是否有書面記載？<br/>\n                    • F：測試偏差如何處理？是否有 CAPA？",
+   "en": "The mapping protocol is the core of the IQ/OQ documentation. The questions most often asked during audits are:<br/>\n                    • A: Do the instrument calibration records cover the mapping period?<br/>\n                    • D: Is the rationale for probe location selection documented?<br/>\n                    • F: How are test deviations handled? Is there a CAPA?"
+  },
+  {
+   "zh": "電子數據完整性要求：建圖數據若以電子方式記錄，必須符合稽核追蹤、原始數據不可刪改的要求。CDMO 常見的系統如 DeltaTRAK、Ellab、Sensitech — 需確認系統已驗證。",
+   "en": "Electronic data integrity requirement: if mapping data is recorded electronically, it must meet the requirements for an audit trail and for original data that cannot be deleted or altered. Systems commonly used at CDMOs, such as DeltaTRAK, Ellab, and Sensitech, must be confirmed as validated."
+  },
+  {
+   "zh": "比喻：協議如劇本",
+   "en": "Analogy: A Protocol Is Like a Script"
+  },
+  {
+   "zh": "A-G = 前期準備，H = 演出過程，I/J = 舞台記錄，K = 演後檢討。任何一環缺失，稽核就會問「這個場景沒有記錄，你怎麼知道當時發生了什麼？」",
+   "en": "A-G = preparation, H = the performance, I/J = stage records, K = post-show review. If any piece is missing, the auditor will ask, \"There is no record of this scene, so how do you know what happened at the time?\""
+  },
+  {
+   "zh": "你的建圖感測器 T₆₃.₂% = 25 秒，超出建議值。你如何在協議中處理這個偏差——接受還是替換？",
+   "en": "Your mapping sensor has a T₆₃.₂% of 25 seconds, exceeding the recommended value. How do you handle this deviation in the protocol: accept it or replace the sensor?"
+  },
+  {
+   "zh": "建圖過程中 HVAC 意外停機 30 分鐘後恢復，你的協議要素 F 應如何記錄，以及這段數據是否納入分析？",
+   "en": "During mapping, the HVAC unexpectedly shuts down for 30 minutes and then recovers. How should element F of your protocol record this, and should this data be included in the analysis?"
+  },
+  {
+   "zh": "App 7, §19.1 | 受控溫度腔體定期審查",
+   "en": "App 7, §19.1 | Periodic Review of Controlled Temperature Chambers"
+  },
+  {
+   "zh": "分類邏輯解讀",
+   "en": "Interpreting the Classification Logic"
+  },
+  {
+   "zh": "分類決定審查負擔",
+   "en": "Classification Determines the Review Burden"
+  },
+  {
+   "zh": "CDMO 中大多數冰箱（2–8°C）存放 API 或藥品屬 Type A + Precision Unit = <strong>Category 1</strong>，最嚴格，每3年必須審查一次。CRT 原料倉存放 WIP 屬 Type B + CRT = <strong>Category 3</strong>，無需定期審查。正確分類可大幅節省合規資源。",
+   "en": "Most refrigerators (2–8°C) at a CDMO storing APIs or drug products are Type A + Precision Unit = <strong>Category 1</strong>, the most stringent, and must be reviewed every 3 years. A CRT raw material warehouse storing WIP is Type B + CRT = <strong>Category 3</strong>, with no periodic review required. Correct classification can save substantial compliance resources."
+  },
+  {
+   "zh": "方法一 vs. 方法二的選擇",
+   "en": "Choosing Between Method 1 and Method 2"
+  },
+  {
+   "zh": "<strong>方法一（風險評估報告）</strong>：適合系統穩定、無重大變更、監測數據趨勢正常的情況。成本低、時間短。<br/>\n<strong>方法二（重新建圖）</strong>：適合有重大變更（如層架重排、新增負荷類型）或方法一無法排除疑慮時。數據最全，但成本高。",
+   "en": "<strong>Method 1 (risk assessment report)</strong>: suited to cases where the system is stable, there are no major changes, and monitoring data trends are normal. Low cost and short time.<br/>\n<strong>Method 2 (remapping)</strong>: suited to cases with major changes (such as shelf rearrangement or a new load type) or where Method 1 cannot rule out concerns. The most complete data, but high cost."
+  },
+  {
+   "zh": "比喻：健康檢查模式",
+   "en": "Analogy: Health Check Models"
+  },
+  {
+   "zh": "Category 1 = 每年全身健康檢查（含復雜项目），Category 2 = 定期體重血壓自測，Category 3 = 自覺健康即可。分類後按對應頻率執行，不過度、不漏失。",
+   "en": "Category 1 = annual full-body health check (including complex items), Category 2 = periodic self-checks of weight and blood pressure, Category 3 = simply feeling healthy. Classify first, then carry out the corresponding frequency, with neither excess nor omission."
+  },
+  {
+   "zh": "你的 CDMO 有一台 -20°C 冰箱存放 EM 培養基（Type C）。它屬於哪個 Category？需要定期重新建圖嗎？",
+   "en": "Your CDMO has a -20°C refrigerator storing EM media (Type C). Which Category does it belong to? Does it need periodic remapping?"
+  },
+  {
+   "zh": "方法一審查時，你發現過去 3 年內有 4 次 Quality Alarm（超出溫度限值）。這如何影響審查結論，以及後續行動？",
+   "en": "During a Method 1 review, you find 4 Quality Alarms (temperature limit excursions) within the past 3 years. How does this affect the review conclusion, and what follow-up actions are needed?"
+  },
+  {
+   "zh": "一台冰箱的層架位置在 3 年間被操作人員移動了兩次（非 Change Control）。你的定期審查報告應如何記錄，並建議什麼行動？",
+   "en": "The shelf positions of a refrigerator were moved twice by operators over 3 years (outside Change Control). How should your periodic review report document this, and what action would you recommend?"
+  },
+  {
+   "zh": "App 7, §19.2 | 工作危害分析範例（甲醛消毒）",
+   "en": "App 7, §19.2 | Job Hazard Analysis Example (Formaldehyde Disinfection)"
+  },
+  {
+   "zh": "為什麼附錄包含 JHA？",
+   "en": "Why Does the Appendix Include a JHA?"
+  },
+  {
+   "zh": "GMP 中的安全文件要求",
+   "en": "Safety Documentation Requirements in GMP"
+  },
+  {
+   "zh": "CTC 設備的建圖/消毒作業涉及受控物質（甲醛）。監管機構在廠房稽核時會查看：作業前是否有危害評估、操作人員是否接受特定任務訓練、緊急應變程序是否形成文件。",
+   "en": "Mapping/disinfection work on CTC equipment involves a controlled substance (formaldehyde). During facility inspections, regulators will check whether a hazard assessment was performed before the work, whether operators received task-specific training, and whether emergency response procedures are documented."
+  },
+  {
+   "zh": "CDMO 實務：甲醛消毒的替代方案",
+   "en": "CDMO Practice: Alternatives to Formaldehyde Disinfection"
+  },
+  {
+   "zh": "現代 CDMO 多改用 VHP（汽化過氧化氫）取代甲醛消毒，因 VHP 殘留風險低、分解為水和氧氣、監管接受度更高。JHA 架構（危害 → 控制）相同，僅物質和 PPE 不同。",
+   "en": "Modern CDMOs have mostly switched to VHP (vaporized hydrogen peroxide) in place of formaldehyde disinfection, because VHP has low residue risk, decomposes into water and oxygen, and has higher regulatory acceptance. The JHA structure (hazard → control) is the same; only the substance and PPE differ."
+  },
+  {
+   "zh": "比喻：JHA 如飛機前置檢查表",
+   "en": "Analogy: A JHA Is Like an Aircraft Pre-Flight Checklist"
+  },
+  {
+   "zh": "不是因為每次都有意外，而是系統性確保每個步驟的危害都被辨識並有對應控制措施。形成文件後，即使原作業員離職，接班人員也能安全執行。",
+   "en": "It exists not because accidents happen every time, but to systematically ensure that the hazards of every step are identified and have corresponding controls. Once documented, even if the original operator leaves, the successor can carry out the work safely."
+  },
+  {
+   "zh": "ICH Q1A(R2) 穩定性試驗條件摘要 | 與 CTC 對應關係",
+   "en": "ICH Q1A(R2) Stability Testing Conditions Summary | Correspondence to CTC"
+  },
+  {
+   "zh": "Context 為何此表與 CTC 相關",
+   "en": "Context: Why This Table Is Relevant to CTC"
+  },
+  {
+   "zh": "穩定性樣品是 CTC 中最常見的 Type A 儲存物料，也是 Category 1 的主要驅動因素。CTC 的溫濕度設定點和允差必須確保能夠維持 ICH 規定的穩定性儲存條件。建圖結果必須證明整個空間能在以下條件內均勻運行。",
+   "en": "Stability samples are the most common Type A stored material in a CTC and the main driver of Category 1. The temperature and humidity setpoints and tolerances of a CTC must ensure that the ICH-specified stability storage conditions can be maintained. The mapping results must demonstrate that the entire space operates uniformly within the following conditions."
+  },
+  {
+   "zh": "<em>來源：ICH Q1A(R2)。±2°C 與 ±5%RH 的精度要求直接決定 CTC 建圖合格標準的設定。</em>",
+   "en": "<em>Source: ICH Q1A(R2). The accuracy requirements of ±2°C and ±5%RH directly determine how the mapping acceptance criteria of a CTC are set.</em>"
+  }
+ ]
+}

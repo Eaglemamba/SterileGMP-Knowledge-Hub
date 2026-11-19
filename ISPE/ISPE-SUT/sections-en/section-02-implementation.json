@@ -1,0 +1,797 @@
+{
+ "source": "section-02-implementation.html",
+ "blocks": [
+  {
+   "zh": "實施與使用",
+   "en": "Implementation and Use"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "掌握單次使用技術（SUT）的<strong>技術轉移</strong>流程，理解差距評估（Gap Assessment）、計畫排程、設施限制和法規合規的核心考量",
+   "en": "Master the <strong>technology transfer</strong> process for single-use technology (SUT), and understand the core considerations of gap assessment, planning and scheduling, facility constraints and regulatory compliance"
+  },
+  {
+   "zh": "理解<strong>法規合規</strong>在 SUT 實施中的角色，熟悉主要監管機構（EMA、FDA、WHO）及標準（USP、ISO）對單次使用材料的數據要求",
+   "en": "Understand the role of <strong>regulatory compliance</strong> in SUT implementation, and become familiar with the data requirements that the main regulators (EMA, FDA, WHO) and standards (USP, ISO) place on single-use materials"
+  },
+  {
+   "zh": "深入認識<strong>可浸出物（Leachables）</strong>的定義、來源、評估方法與安全閾值，以及其對患者安全和產品品質的潛在影響",
+   "en": "Gain an in-depth understanding of the definition, sources, assessment methods and safety thresholds of <strong>leachables</strong>, and their potential impact on patient safety and product quality"
+  },
+  {
+   "zh": "系統理解 SUT 的<strong>確效（Validation）</strong>架構，包含供應商資料審查、安裝確效（IQ）、操作確效（OQ）、性能確效（PQ）及各類現場測試要求",
+   "en": "Systematically understand the <strong>validation</strong> framework for SUT, including supplier documentation review, installation qualification (IQ), operational qualification (OQ), performance qualification (PQ) and the various in-house testing requirements"
+  },
+  {
+   "zh": "建立強健的<strong>供應鏈（Supply Chain）</strong>管理能力，涵蓋品質協議、交期管理、投訴管理與供應安全",
+   "en": "Build a robust <strong>supply chain</strong> management capability, covering quality agreements, lead time management, complaint management and security of supply"
+  },
+  {
+   "zh": "規劃有效的<strong>單次使用技術培訓（SUT Training）</strong>計畫，理解手動操作步驟增加帶來的風險，以及如何透過系統性培訓降低失敗風險",
+   "en": "Plan an effective <strong>single-use technology (SUT) training</strong> program, understand the risk introduced by the increase in manual operating steps, and learn how systematic training reduces the risk of failure"
+  },
+  {
+   "zh": "3.1 Technology Transfer（技術轉移）",
+   "en": "3.1 Technology Transfer"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念：SUT 導入的雙重性質",
+   "en": "Core Concept: The Dual Nature of SUT Implementation"
+  },
+  {
+   "zh": "<strong>技術轉移（Technology Transfer）</strong>到 SUT 有兩種形式：",
+   "en": "<strong>Technology transfer</strong> to SUT takes two forms:"
+  },
+  {
+   "zh": "<strong>混合系統（Hybrid）</strong>：在既有不鏽鋼設施中局部引入 SUT，例如只換掉儲液袋或過濾器——這是最常見的情形，約佔 SUT 導入的大多數。",
+   "en": "<strong>Hybrid systems</strong>: SUT is introduced into only part of an existing stainless steel facility, for example by replacing only the buffer bags or filters. This is the most common scenario and accounts for the majority of SUT implementations."
+  },
+  {
+   "zh": "<strong>端對端單次使用（End-to-End SUS）</strong>：整條製程從上游到下游全部使用一次性耗材，靈活性最高，但供應鏈管理複雜度也最高。",
+   "en": "<strong>End-to-end single-use (End-to-End SUS)</strong>: the entire process from upstream to downstream uses single-use consumables. It offers the greatest flexibility, but also the greatest supply chain management complexity."
+  },
+  {
+   "zh": "選擇何種形式取決於製程需求、設施現況、法規策略與長期商業目標的綜合評估，沒有單一正確答案。",
+   "en": "The choice depends on a combined assessment of process requirements, current facility status, regulatory strategy and long-term business goals. There is no single right answer."
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "把 SUT 技術轉移比喻為餐廳廚房改裝：<strong>混合系統</strong>就像只換掉爐具，保留其他設備——成本低、風險小，但效益有限。<strong>端對端方案</strong>則像重新設計整個廚房動線——一次性投資高，但長期效率最佳。大多數餐廳會先換一台烤箱試水，確認好用再逐步擴大。SUT 導入的邏輯完全相同。",
+   "en": "Think of SUT technology transfer as a restaurant kitchen renovation: a <strong>hybrid system</strong> is like replacing only the stove and keeping the rest of the equipment, which is low cost and low risk but of limited benefit. An <strong>end-to-end approach</strong> is like redesigning the whole kitchen workflow, which needs a high one-time investment but gives the best long-term efficiency. Most restaurants first try out one new oven, and expand step by step once it proves useful. The logic of SUT implementation is exactly the same."
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "原文列出了 SUT 導入的七大目標，其中有兩個特別值得關注：",
+   "en": "The original text lists seven objectives for SUT implementation, two of which deserve particular attention:"
+  },
+  {
+   "zh": "<strong>消除清洗與滅菌</strong>：這是 SUT 最核心的優勢之一——不需要 CIP/SIP，大幅縮短批次週轉時間。",
+   "en": "<strong>Eliminating cleaning and sterilization</strong>: this is one of the core advantages of SUT. Without CIP/SIP, batch turnaround time is greatly shortened."
+  },
+  {
+   "zh": "<strong>提升製程保證</strong>：使用完全密閉的取樣和流體傳輸解決方案，可降低污染風險，符合無菌製造的 GMP 期望。",
+   "en": "<strong>Improving process assurance</strong>: using fully closed sampling and fluid transfer solutions reduces contamination risk and meets GMP expectations for sterile manufacturing."
+  },
+  {
+   "zh": "評估時別只看「導入成本」——要算入長期的清洗驗證成本節省、人力節省和週轉效益。",
+   "en": "When evaluating, do not look only at the \"implementation cost\". Include the long-term savings in cleaning validation, labor savings and turnaround benefits."
+  },
+  {
+   "zh": "CDMO 應用場景",
+   "en": "CDMO Application Scenario"
+  },
+  {
+   "zh": "在合約開發製造（CDMO）環境中，技術轉移評估格外複雜——因為每個客戶的製程都不同，且法規策略（申請人是客戶，不是 CDMO）需要雙方對齊。CDMO 導入 SUT 時，必須確認：",
+   "en": "In a contract development and manufacturing (CDMO) environment, technology transfer assessment is especially complex, because every client's process is different and the regulatory strategy (the applicant is the client, not the CDMO) must be aligned between both parties. When a CDMO implements SUT, it must confirm:"
+  },
+  {
+   "zh": "客戶的原始 IND/BLA/NDA 申請中是否已包含 SUT 使用的聲明",
+   "en": "Whether the client's original IND/BLA/NDA filing already includes a statement on the use of SUT"
+  },
+  {
+   "zh": "若從不鏽鋼切換至 SUT，是否需要提交補充申請（Supplement）",
+   "en": "Whether a supplement must be submitted if the process is switched from stainless steel to SUT"
+  },
+  {
+   "zh": "供應商是否能支援台灣/亞太地區的法規文件要求（如 TW-FDA 查廠）",
+   "en": "Whether the supplier can support the regulatory documentation required in Taiwan and the Asia-Pacific region (such as TW-FDA inspections)"
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "你目前的設施是純不鏽鋼系統還是混合系統？如果要引入 SUT，哪個製程步驟最適合作為試點？",
+   "en": "Is your facility currently a pure stainless steel system or a hybrid system? If you were to introduce SUT, which process step would be the best pilot?"
+  },
+  {
+   "zh": "原文提到 SUT 的「Regional Support（區域支援）」是評估因素之一——你的主要 SUT 供應商在台灣有本地技術支援嗎？",
+   "en": "The original text lists \"Regional Support\" as one of the evaluation factors for SUT. Does your main SUT supplier have local technical support in Taiwan?"
+  },
+  {
+   "zh": "3.1.1 Gap Assessment（差距評估）",
+   "en": "3.1.1 Gap Assessment"
+  },
+  {
+   "zh": "核心概念：差距評估的本質",
+   "en": "Core Concept: The Essence of Gap Assessment"
+  },
+  {
+   "zh": "<strong>差距評估（Gap Assessment）</strong>是一個結構化工具，用來回答「我現有的製程能力 vs. SUT 所能提供的能力之間，有哪些落差？」每個落差都需要：",
+   "en": "<strong>Gap assessment</strong> is a structured tool for answering the question: \"What are the gaps between my current process capability and what SUT can provide?\" Each gap requires:"
+  },
+  {
+   "zh": "評估其對產品品質或製程安全的<strong>潛在影響</strong>",
+   "en": "An assessment of its <strong>potential impact</strong> on product quality or process safety"
+  },
+  {
+   "zh": "提出具體的<strong>緩解策略</strong>（例如：更換感測器、增加測試點、重新驗證緩衝液配方）",
+   "en": "A specific <strong>mitigation strategy</strong> (for example: replace a sensor, add test points, revalidate the buffer formulation)"
+  },
+  {
+   "zh": "這個工具同時服務兩個目的：工程決策（選哪種 SUT）和法規策略（需要提交哪些補充數據）。",
+   "en": "This tool serves two purposes at once: engineering decisions (which SUT to choose) and regulatory strategy (which supplementary data must be submitted)."
+  },
+  {
+   "zh": "差距評估就像搬新家前的「裝潢需求對照表」——你有一份舊家的家具清單（現有製程能力），也有一份新家的房間規格（SUT 能力），兩者對照就能發現哪些家具尺寸不合（Gap），是要買新的（重新開發）還是修改（調整製程參數）。不做這份清單就搬家，等於盲目導入 SUT。",
+   "en": "A gap assessment is like a \"renovation requirements checklist\" before moving house. You have a furniture list for the old home (your current process capability) and a room specification for the new home (SUT capability). Comparing the two shows which pieces of furniture do not fit (gaps), and whether to buy new ones (redevelopment) or modify them (adjust process parameters). Moving without this checklist means implementing SUT blindly."
+  },
+  {
+   "zh": "表格中「可提取物評估（Extractable Assessment）」出現在差距評估項目中，這強調了一個重要概念：<strong>換材料就是換接觸面</strong>。即使製程參數完全相同，從不鏽鋼換到聚合物接觸面就會引入全新的 E&amp;L 風險，必須在技術轉移初期就開始評估，而非等到確效階段才意識到。",
+   "en": "The appearance of \"Extractable Assessment\" among the gap assessment items in the table emphasizes an important concept: <strong>changing the material means changing the contact surface</strong>. Even if the process parameters are identical, moving from stainless steel to a polymer contact surface introduces entirely new E&amp;L risks, which must be assessed at the start of technology transfer and not only realized at the validation stage."
+  },
+  {
+   "zh": "如果你要將一個生物反應器步驟從不鏽鋼換成單次使用生物反應器（SUBR），差距評估中哪些 CPP 可能受影響最大（提示：攪拌、DO 控制、取樣方式）？",
+   "en": "If you replace a stainless steel bioreactor step with a single-use bioreactor (SUBR), which CPPs in the gap assessment are likely to be most affected (hint: agitation, DO control, sampling method)?"
+  },
+  {
+   "zh": "緩衝液儲存從不鏽鋼槽換成生物處理袋（Bioprocess Bag），需要評估哪些新的穩定性風險？",
+   "en": "When buffer storage moves from stainless steel tanks to bioprocess bags, which new stability risks need to be assessed?"
+  },
+  {
+   "zh": "3.1.2 Planning and Scheduling（計畫與排程）",
+   "en": "3.1.2 Planning and Scheduling"
+  },
+  {
+   "zh": "核心概念：SUT 時程的關鍵數字",
+   "en": "Core Concept: Key Numbers in the SUT Timeline"
+  },
+  {
+   "zh": "原文給出了具體的交期參考：",
+   "en": "The original text gives specific lead time references:"
+  },
+  {
+   "zh": "<strong>現貨（Off-the-Shelf）</strong>：可立即取得，但多數 SUT 需要客製化，無法直接套用",
+   "en": "<strong>Off-the-shelf</strong>: available immediately, but most SUT requires customization and cannot be used as is"
+  },
+  {
+   "zh": "<strong>客製化已訂購產品</strong>：約 12 週（3 個月）",
+   "en": "<strong>Customized, previously ordered products</strong>: about 12 weeks (3 months)"
+  },
+  {
+   "zh": "<strong>全新設計</strong>：最長 20 週（近 5 個月）",
+   "en": "<strong>New design</strong>: up to 20 weeks (nearly 5 months)"
+  },
+  {
+   "zh": "<strong>完整導入（含整合、確效）</strong>：6–8 個月",
+   "en": "<strong>Full implementation (including integration and validation)</strong>: 6-8 months"
+  },
+  {
+   "zh": "這些數字意味著：SUT 採購必須在製程開發早期就啟動，不能等到驗證計畫開始後才下訂單。",
+   "en": "These numbers mean that SUT procurement must start early in process development. Orders cannot wait until the validation plan has begun."
+  },
+  {
+   "zh": "SUT 的導入排程就像蓋房子——你可以讓水電、泥作、木工平行施工（技術活動並行），但基礎打好之前，裝修無從開始（供應商審計要在設備選定後進行）。而且，如果你在蓋牆時才想起要裝客製化門框，交期一定來不及。",
+   "en": "An SUT implementation schedule is like building a house. Plumbing and electrical, masonry and carpentry can run in parallel (parallel technical activities), but the finishing cannot start before the foundation is laid (the supplier audit takes place after the equipment is selected). And if you only remember the custom door frames when you are building the walls, the lead time will certainly be too long."
+  },
+  {
+   "zh": "原文提到「大型設備可能需要拆牆才能進入生產區」——這是 SUT 導入常被忽略的施工風險。在計畫早期就要確認：",
+   "en": "The original text mentions that \"large equipment may require wall removal to enter the production area\". This is an often overlooked construction risk in SUT implementation. Confirm the following early in the plan:"
+  },
+  {
+   "zh": "設備的外包裝尺寸 vs. 廠房門寬和走廊寬度",
+   "en": "Equipment crate dimensions vs. plant door widths and corridor widths"
+  },
+  {
+   "zh": "清潔室等級維護（拆牆施工期間的污染控制）",
+   "en": "Cleanroom classification maintenance (contamination control during wall removal work)"
+  },
+  {
+   "zh": "是否需要暫停其他生產批次",
+   "en": "Whether other production batches must be suspended"
+  },
+  {
+   "zh": "CDMO 為客戶導入 SUT 時，時程規劃面臨額外壓力：客戶通常有 IND enabling studies 的時間節點。建議的排程策略：",
+   "en": "When a CDMO implements SUT for a client, scheduling faces extra pressure: the client usually has timelines for IND-enabling studies. The recommended scheduling strategy is:"
+  },
+  {
+   "zh": "在 Phase I 製程開發完成後即啟動 SUT 選型，而非等到 GMP 製造計畫確定",
+   "en": "Start SUT selection once Phase I process development is complete, instead of waiting until the GMP manufacturing plan is confirmed"
+  },
+  {
+   "zh": "與供應商建立預訂（Forecast Order）機制，保留產能，縮短正式訂單後的交期",
+   "en": "Establish a forecast order mechanism with the supplier to reserve capacity and shorten the lead time after the formal order"
+  },
+  {
+   "zh": "將供應商確效套件（Validation Package）審查列入 IQ/OQ 前置作業",
+   "en": "Include review of the supplier validation package as a prerequisite activity for IQ/OQ"
+  },
+  {
+   "zh": "你上一次導入新的 SUT 耗材，從選定到首批生產實際花了多少時間？和本節的參考時程相比如何？",
+   "en": "The last time you introduced a new SUT consumable, how long did it actually take from selection to the first production batch? How does it compare with the reference timeline in this section?"
+  },
+  {
+   "zh": "SUT 消除了 CIP/SIP，但省下的時間有多少被新增的「組裝確認」步驟所消耗？如何量化這個 trade-off？",
+   "en": "SUT eliminates CIP/SIP, but how much of the time saved is consumed by the new \"assembly verification\" steps? How can this trade-off be quantified?"
+  },
+  {
+   "zh": "3.2 Regulatory Compliance（法規合規）",
+   "en": "3.2 Regulatory Compliance"
+  },
+  {
+   "zh": "核心概念：SUT 法規的「借用」策略",
+   "en": "Core Concept: The \"Borrowing\" Strategy for SUT Regulation"
+  },
+  {
+   "zh": "原文坦率地指出：截至本指引出版，<strong>沒有專門針對 SUT 的法規指引</strong>。產業界因此借用了三類現有法規框架：",
+   "en": "The original text states candidly that, as of the publication of this guide, <strong>there is no regulatory guidance specific to SUT</strong>. The industry has therefore borrowed three existing regulatory frameworks:"
+  },
+  {
+   "zh": "<strong>醫療器材法規</strong>（ISO 10993-1）：評估與人體接觸材料的生物相容性",
+   "en": "<strong>Medical device regulations</strong> (ISO 10993-1): assess the biocompatibility of materials that contact the human body"
+  },
+  {
+   "zh": "<strong>藥品包裝法規</strong>（USP &lt;661&gt;、EMA 指引）：評估接觸藥品的塑膠材料",
+   "en": "<strong>Pharmaceutical packaging regulations</strong> (USP &lt;661&gt;, EMA guidelines): assess plastic materials that contact drug products"
+  },
+  {
+   "zh": "<strong>製藥製造控制法規</strong>（GMP 通則）：確保製造過程材料控制的完整性",
+   "en": "<strong>Pharmaceutical manufacturing control regulations</strong> (general GMP): ensure the integrity of material control in the manufacturing process"
+  },
+  {
+   "zh": "這種「拼湊」做法要求藥品製造商具備高度的科學判斷力——必須自行評估哪些法規最適用於特定的 SUT 應用場景。",
+   "en": "This \"patchwork\" approach requires drug manufacturers to exercise a high degree of scientific judgment. They must decide for themselves which regulations best apply to a specific SUT application."
+  },
+  {
+   "zh": "SUT 的法規合規就像開一家融合了餐廳和醫療診所的「養生飲食店」——沒有專屬的餐飲法規，你必須同時遵守衛生局的食品安全規定（藥品製造 GMP）和醫療主管機關的要求（醫療器材標準），然後自己判斷哪些條文適用於你的特定服務項目。風險評估能力是核心關鍵。",
+   "en": "SUT regulatory compliance is like running a \"health food restaurant\" that combines a restaurant and a medical clinic. There are no dedicated regulations, so you must comply with both the health department's food safety rules (drug manufacturing GMP) and the requirements of the medical regulator (medical device standards), and then decide yourself which provisions apply to your particular service. Risk assessment capability is the key."
+  },
+  {
+   "zh": "重點提示：風險分層是關鍵",
+   "en": "Key Notes: Risk Tiering Is the Key"
+  },
+  {
+   "zh": "原文建立了一個非常重要的風險分層邏輯：",
+   "en": "The original text establishes a very important risk tiering logic:"
+  },
+  {
+   "zh": "<strong>低風險</strong>：緩衝液過濾（在純化步驟上游）",
+   "en": "<strong>Low risk</strong>: buffer filtration (upstream of the purification step)"
+  },
+  {
+   "zh": "<strong>中等風險</strong>：中間步驟的產品傳輸",
+   "en": "<strong>Medium risk</strong>: product transfer in intermediate steps"
+  },
+  {
+   "zh": "<strong>高風險</strong>：腸外藥品（Parenteral Drug）的最終充填",
+   "en": "<strong>High risk</strong>: final filling of a parenteral drug"
+  },
+  {
+   "zh": "風險等級直接決定所需的法規數據量。越接近最終產品、接觸時間越長、接觸面積越大，要求的數據就越多。這是<strong>科學和風險導向（Science and Risk-Based）</strong>法規策略的核心邏輯。",
+   "en": "The risk level directly determines the amount of regulatory data required. The closer to the final product, the longer the contact time and the larger the contact area, the more data is required. This is the core logic of a <strong>science and risk-based</strong> regulatory strategy."
+  },
+  {
+   "zh": "在無菌充填 CDMO 中，最高風險的應用場景是直接充填注射劑——此時 SUT（如充填管線、袋子）必須符合最嚴格的生物相容性、顆粒物、內毒素和可浸出物要求。實務建議：",
+   "en": "In an aseptic filling CDMO, the highest-risk application is direct filling of injectables. In that case the SUT (such as filling lines and bags) must meet the strictest requirements for biocompatibility, particulates, endotoxin and leachables. Practical recommendations:"
+  },
+  {
+   "zh": "建立 SUT 材料的<strong>風險分級矩陣</strong>，依接觸類型、時間、劑型分類管理",
+   "en": "Establish a <strong>risk classification matrix</strong> for SUT materials, managed by contact type, duration and dosage form"
+  },
+  {
+   "zh": "要求供應商提供完整的 USP &lt;87&gt;/&lt;88&gt; 和 USP &lt;661&gt; 合規證明",
+   "en": "Require suppliers to provide complete evidence of compliance with USP &lt;87&gt;/&lt;88&gt; and USP &lt;661&gt;"
+  },
+  {
+   "zh": "對高風險應用，保留獨立的內部測試數據，不完全依賴供應商提供的資料",
+   "en": "For high-risk applications, retain independent in-house test data and do not rely entirely on supplier-provided data"
+  },
+  {
+   "zh": "在你的設施中，哪些 SUT 應用屬於高風險（直接接觸最終注射劑）？這些耗材目前有哪些法規文件支持？",
+   "en": "In your facility, which SUT applications are high risk (direct contact with the final injectable)? What regulatory documentation currently supports these consumables?"
+  },
+  {
+   "zh": "USP &lt;665&gt; 和 USP &lt;661&gt; 都涉及塑膠材料的評估，兩者的主要區別是什麼？哪一個更適用於生物製程用的單次使用袋？",
+   "en": "USP &lt;665&gt; and USP &lt;661&gt; both address the assessment of plastic materials. What is the main difference between them? Which is more applicable to single-use bags used in bioprocessing?"
+  },
+  {
+   "zh": "3.3 Leachables（可浸出物）",
+   "en": "3.3 Leachables"
+  },
+  {
+   "zh": "關鍵名詞辨析：E&amp;L 的本質區別",
+   "en": "Key Terminology: The Essential Difference Between E&amp;L"
+  },
+  {
+   "zh": "<strong>可萃取物（Extractables）</strong>：在極端或非代表性的溶劑條件下，從材料中人為「萃取」出的化學物質——由<strong>供應商</strong>執行，作為最壞情況（Worst Case）的參考數據。",
+   "en": "<strong>Extractables</strong>: chemicals deliberately \"extracted\" from a material under extreme or non-representative solvent conditions. They are generated by the <strong>supplier</strong> as worst-case reference data."
+  },
+  {
+   "zh": "<strong>可浸出物（Leachables）</strong>：在<strong>正常使用條件</strong>下（包括儲存、生產），從材料中自然「遷移」到製程流體或藥品中的化學物質——由<strong>終端使用者</strong>評估，反映真實風險。",
+   "en": "<strong>Leachables</strong>: chemicals that naturally \"migrate\" from a material into the process fluid or drug product under <strong>normal conditions of use</strong> (including storage and production). They are assessed by the <strong>end user</strong> and reflect the real risk."
+  },
+  {
+   "zh": "關鍵邏輯：Extractables 是「可能浸出的最大清單」，Leachables 是「實際會浸出的物質」。後者才決定患者安全風險。",
+   "en": "Key logic: extractables are the \"maximum list of what could leach\", while leachables are \"what actually leaches\". The latter determines the patient safety risk."
+  },
+  {
+   "zh": "核心概念：安全顧慮閾值（Safety Concern Threshold）",
+   "en": "Core Concept: Safety Concern Threshold"
+  },
+  {
+   "zh": "可浸出物評估的核心是判斷：某種化學物質的濃度是否超過<strong>安全顧慮閾值（Safety Concern Threshold, SCT）</strong>。SCT 是毒理學評估的底線——低於此值通常無需進一步的安全測試。主要參考框架：",
+   "en": "The core of leachables assessment is to determine whether the concentration of a chemical exceeds the <strong>Safety Concern Threshold (SCT)</strong>. The SCT is the toxicological floor: below this value, no further safety testing is usually required. The main reference frameworks are:"
+  },
+  {
+   "zh": "<strong>BPOG 指引</strong>：提供生物製程用 SUS 的 Leachables 風險評估最佳實務",
+   "en": "<strong>BPOG guidance</strong>: provides best practice for leachables risk assessment of SUS used in bioprocessing"
+  },
+  {
+   "zh": "<strong>ICH Q3E（草案）</strong>：藥品中元素雜質的安全閾值（部分可類比應用）",
+   "en": "<strong>ICH Q3E (draft)</strong>: safety thresholds for elemental impurities in drug products (partly applicable by analogy)"
+  },
+  {
+   "zh": "<strong>毒理學關注閾值（TTC）</strong>：基於每日攝入量估算安全性",
+   "en": "<strong>Threshold of Toxicological Concern (TTC)</strong>: estimates safety based on daily intake"
+  },
+  {
+   "zh": "把 E&amp;L 想成「水龍頭鉛污染問題」：<strong>Extractables</strong> 是水管材質分析報告（告訴你水管含有多少鉛）；<strong>Leachables</strong> 是從水龍頭接出來的水樣分析（告訴你實際喝到的水裡有多少鉛）。材料含鉛不代表水中鉛含量超標，但材料含鉛是風險因子，需要進一步評估實際滲出量。",
+   "en": "Think of E&amp;L as the \"lead in tap water problem\". <strong>Extractables</strong> are the pipe material analysis report (it tells you how much lead the pipe contains). <strong>Leachables</strong> are the analysis of a water sample taken from the tap (it tells you how much lead is actually in the water you drink). A material containing lead does not mean the lead in the water exceeds the limit, but it is a risk factor and the actual amount leached needs further assessment."
+  },
+  {
+   "zh": "重點提示：Irgafos 168® 案例的警示",
+   "en": "Key Notes: Lessons from the Irgafos 168® Case"
+  },
+  {
+   "zh": "這個著名案例有三個核心教訓：",
+   "en": "This well-known case has three core lessons:"
+  },
+  {
+   "zh": "<strong>伽瑪照射會改變化學物質的特性</strong>：滅菌方式（gamma irradiation）可能將無毒物質轉化為有毒的衍生物（bDtBPP）。E&amp;L 測試必須在<strong>終態（final state）材料</strong>上進行，包含所有後處理步驟。",
+   "en": "<strong>Gamma irradiation can change the properties of chemicals</strong>: the sterilization method (gamma irradiation) can convert a non-toxic substance into a toxic derivative (bDtBPP). E&amp;L testing must be performed on the <strong>final state material</strong>, including all post-processing steps."
+  },
+  {
+   "zh": "<strong>細胞株的敏感性不同</strong>：同一物質對不同 CHO 細胞株的毒性可能不同——供應商資料不一定適用於你的特定細胞株。",
+   "en": "<strong>Cell lines differ in sensitivity</strong>: the same substance can have different toxicity to different CHO cell lines, so supplier data may not apply to your specific cell line."
+  },
+  {
+   "zh": "<strong>供應商必須主動改良配方</strong>：這個案例最終促使供應商降低 Irgafos® 168 的用量，說明端用戶的反饋能推動材料改進。",
+   "en": "<strong>Suppliers must actively improve their formulations</strong>: the case eventually led suppliers to reduce the amount of Irgafos® 168, showing that end-user feedback can drive material improvement."
+  },
+  {
+   "zh": "在承接客戶的生物製程時，CDMO 的 Leachables 評估責任分工通常是：",
+   "en": "When taking over a client's bioprocess, the division of leachables assessment responsibility for a CDMO is typically as follows:"
+  },
+  {
+   "zh": "<strong>供應商</strong>：提供 Extractables 數據和初步毒理學評估",
+   "en": "<strong>Supplier</strong>: provides extractables data and a preliminary toxicological assessment"
+  },
+  {
+   "zh": "<strong>CDMO</strong>：根據客戶製程條件（pH、溫度、接觸時間、藥品特性）評估實際 Leachables 風險",
+   "en": "<strong>CDMO</strong>: assesses the actual leachables risk based on the client's process conditions (pH, temperature, contact time, drug product characteristics)"
+  },
+  {
+   "zh": "<strong>客戶</strong>：負責最終的法規申請和患者安全承擔",
+   "en": "<strong>Client</strong>: responsible for the final regulatory filing and for patient safety"
+  },
+  {
+   "zh": "在合約中明確定義這三方的責任邊界，是避免法規爭議的關鍵。",
+   "en": "Clearly defining the responsibility boundaries of these three parties in the contract is the key to avoiding regulatory disputes."
+  },
+  {
+   "zh": "你的設施目前如何管理 SUT 供應商提供的 Extractables 資料？是否有內部程序評估其與實際製程條件的相關性？",
+   "en": "How does your facility currently manage the extractables data provided by SUT suppliers? Is there an internal procedure to assess its relevance to actual process conditions?"
+  },
+  {
+   "zh": "如果一個新客戶的蛋白質製程對氧化特別敏感，你在選擇 SUT 材料時會額外關注哪些 Leachables 指標？",
+   "en": "If a new client's protein process is particularly sensitive to oxidation, which additional leachables indicators would you pay attention to when selecting SUT materials?"
+  },
+  {
+   "zh": "3.4 Validation（確效）",
+   "en": "3.4 Validation"
+  },
+  {
+   "zh": "核心概念：SUT 確效的三層架構",
+   "en": "Core Concept: The Three-Layer Framework of SUT Validation"
+  },
+  {
+   "zh": "SUT 的確效不同於傳統設備確效，它結合了材料科學、製程確效和包裝完整性測試。可以分三層理解：",
+   "en": "SUT validation differs from conventional equipment validation: it combines materials science, process validation and packaging integrity testing. It can be understood in three layers:"
+  },
+  {
+   "zh": "<strong>第一層：供應商資料審查</strong>（IQ 前置作業）——確認供應商文件的充分性和適用性",
+   "en": "<strong>Layer 1: Supplier documentation review</strong> (a prerequisite to IQ): confirm the adequacy and applicability of supplier documents"
+  },
+  {
+   "zh": "<strong>第二層：現場測試（In-House Testing）</strong>——針對特定製程條件的現場驗證（溶液穩定性、容器完整性、過濾確效）",
+   "en": "<strong>Layer 2: In-house testing</strong>: on-site verification for specific process conditions (solution stability, container integrity, filtration validation)"
+  },
+  {
+   "zh": "<strong>第三層：製程可比性（Process Comparability）</strong>——從不鏽鋼轉換到 SUT 時，證明製程結果無顯著差異",
+   "en": "<strong>Layer 3: Process comparability</strong>: when converting from stainless steel to SUT, demonstrate that process results show no significant difference"
+  },
+  {
+   "zh": "確效活動框架 Validation Framework",
+   "en": "Validation Framework"
+  },
+  {
+   "zh": "SUT 確效活動流程：\n\n1. 設計確認（Design Qualification）\n   → URS 撰寫 → 供應商選型 → 規格凍結\n\n2. 安裝確效（IQ, Installation Qualification）\n   → 設備正確安裝確認\n   → 供應商資料審查（文件 IQ）\n\n3. 操作確效（OQ, Operational Qualification）\n   → 功能測試（壓力、流量、感測器）\n   → 過濾完整性測試\n\n4. 性能確效（PQ, Performance Qualification）\n   → 溶液穩定性研究\n   → 容器完整性測試（媒體充填）\n   → 製程可比性研究\n\n5. 持續驗證\n   → 定期批次數據監測\n   → 定期供應商審計",
+   "en": "SUT validation activity flow:\n\n1. Design Qualification (DQ)\n   → Write URS → Select supplier → Freeze specifications\n\n2. Installation Qualification (IQ)\n   → Confirm correct installation of equipment\n   → Supplier documentation review (documentation IQ)\n\n3. Operational Qualification (OQ)\n   → Functional testing (pressure, flow, sensors)\n   → Filter integrity testing\n\n4. Performance Qualification (PQ)\n   → Solution stability studies\n   → Container integrity testing (media fill)\n   → Process comparability studies\n\n5. Ongoing verification\n   → Periodic monitoring of batch data\n   → Periodic supplier audits"
+  },
+  {
+   "zh": "重點提示：50% 充填量的黃金法則",
+   "en": "Key Notes: The Golden Rule of 50% Fill Volume"
+  },
+  {
+   "zh": "原文強調了一個實務上常被忽略的細節：<strong>穩定性和 E&amp;L 研究通常在 50% 充填量下進行（最壞情況——表面積/體積比最高）</strong>。",
+   "en": "The original text stresses a practical detail that is often overlooked: <strong>stability and E&amp;L studies are usually performed at 50% fill volume (worst case, with the highest surface area to volume ratio)</strong>."
+  },
+  {
+   "zh": "這意味著：如果你的生產批次的充填量低於 50%，就超出了驗證研究的範圍，必須重新進行風險評估，甚至追加測試。在商業生產中，<strong>禁止以低於 50% 的充填量使用已驗證的袋子</strong>，除非有額外的數據支撐。",
+   "en": "This means that if the fill volume of your production batch is below 50%, it falls outside the scope of the validation studies, and the risk assessment must be redone, or even additional testing performed. In commercial production, <strong>using a validated bag at below 50% fill volume is prohibited</strong> unless supported by additional data."
+  },
+  {
+   "zh": "SUT 的供應商資料審查就像購車前的「車輛歷史報告」——供應商提供各項測試數據相當於車輛製造商提供的安全測試報告。但你自己還是要試駕（In-House Testing），特別是如果你要開這輛車去非常特殊的地方（高風險應用，如直接充填注射劑）。供應商的數據是起點，不是終點。",
+   "en": "Supplier documentation review for SUT is like the \"vehicle history report\" before buying a car: the test data provided by the supplier is equivalent to the safety test reports from the car manufacturer. But you still need to take a test drive yourself (in-house testing), especially if you will drive this car somewhere very unusual (a high-risk application such as direct filling of injectables). Supplier data is the starting point, not the end point."
+  },
+  {
+   "zh": "在 CDMO 環境中，SUT 確效面臨一個特殊挑戰：<strong>同一套 SUT 可能服務多個不同客戶的製程</strong>。建議做法：",
+   "en": "In a CDMO environment, SUT validation faces a special challenge: <strong>the same SUT may serve the processes of several different clients</strong>. The recommended approach is:"
+  },
+  {
+   "zh": "建立「平台確效（Platform Validation）」——對同一型號 SUT 一次性完成基礎確效，覆蓋所有相似應用",
+   "en": "Establish a \"platform validation\" approach: complete the basic validation of a given SUT model once, covering all similar applications"
+  },
+  {
+   "zh": "針對每個客戶製程的特殊條件（特殊 pH、蛋白質濃度、有機溶劑），進行差異化的風險評估",
+   "en": "Perform a differentiated risk assessment for the special conditions of each client process (special pH, protein concentration, organic solvents)"
+  },
+  {
+   "zh": "過濾確效（特別是滅菌級過濾器）必須由終端使用者自行執行，不能完全委由客戶或供應商",
+   "en": "Filtration validation (especially for sterilizing-grade filters) must be performed by the end user and cannot be left entirely to the client or the supplier"
+  },
+  {
+   "zh": "你的 SUT 確效方案中，IQ/OQ/PQ 的分工是否清楚定義？供應商資料審查是在 IQ 之前還是作為 IQ 的一部分？",
+   "en": "In your SUT validation program, are the roles of IQ/OQ/PQ clearly defined? Is supplier documentation review done before IQ or as part of IQ?"
+  },
+  {
+   "zh": "如果一個生產批次的實際充填量只有袋子容量的 40%，依據本章的準則，你應該採取哪些風險管理措施？",
+   "en": "If the actual fill volume of a production batch is only 40% of the bag capacity, which risk management measures should you take according to the criteria in this chapter?"
+  },
+  {
+   "zh": "3.5 Supply Chain（供應鏈）",
+   "en": "3.5 Supply Chain"
+  },
+  {
+   "zh": "核心概念：SUT 供應鏈的特殊性",
+   "en": "Core Concept: The Special Nature of the SUT Supply Chain"
+  },
+  {
+   "zh": "SUT 的供應鏈管理比傳統設備更複雜，原因在於：",
+   "en": "SUT supply chain management is more complex than that for conventional equipment, for the following reasons:"
+  },
+  {
+   "zh": "<strong>消耗品屬性</strong>：SUT 是持續消耗品，不是一次性資本投資——斷貨直接導致生產停線",
+   "en": "<strong>Consumable nature</strong>: SUT is a continuously consumed item, not a one-time capital investment. A stock-out directly stops production."
+  },
+  {
+   "zh": "<strong>客製化特性</strong>：大多數 SUT 組件是為特定應用客製的，無法隨時從市場上緊急採購替代品",
+   "en": "<strong>Customization</strong>: most SUT components are customized for a specific application, so replacements cannot be bought urgently on the market at any time."
+  },
+  {
+   "zh": "<strong>子供應商複雜性</strong>：SUT 供應商本身也依賴多層原材料供應商（聚合物、連接器、感測器），任何層級的中斷都會向下傳遞",
+   "en": "<strong>Sub-supplier complexity</strong>: SUT suppliers themselves depend on multiple tiers of raw material suppliers (polymers, connectors, sensors), and a disruption at any tier passes downstream."
+  },
+  {
+   "zh": "<strong>設計變更通知（Change Notification）</strong>：供應商的材料配方或製程改變，可能要求終端使用者重新確效——這直接影響法規合規",
+   "en": "<strong>Change notification</strong>: a change in the supplier's material formulation or process may require the end user to revalidate, which directly affects regulatory compliance."
+  },
+  {
+   "zh": "SUT 供應鏈管理就像管理一家醫院手術室的一次性耗材採購——手術刀片、縫合線、手術衣都是一次性的，缺一不可，且客製規格很多。醫院不能等到最後一盒手術刀片用完才訂貨，必須：設立安全庫存、建立備用供應商、和供應商簽訂服務水準協議（SLA）、預先定義斷貨時的緊急程序。SUT 的供應鏈邏輯完全相同。",
+   "en": "SUT supply chain management is like managing the purchase of disposable supplies for a hospital operating room. Scalpel blades, sutures and surgical gowns are all single-use, none can be missing, and many have custom specifications. The hospital cannot wait until the last box of blades is used before ordering. It must set safety stock, establish backup suppliers, sign service level agreements (SLAs) with suppliers and predefine emergency procedures for stock-outs. The supply chain logic for SUT is exactly the same."
+  },
+  {
+   "zh": "重點提示：品質協議 vs. 採購合約",
+   "en": "Key Notes: Quality Agreement vs. Purchase Contract"
+  },
+  {
+   "zh": "原文強調品質協議（Quality Agreement）應在<strong>原型評估階段</strong>就開始談判——不是在正式採購後才開始。這是因為品質協議涉及多個部門（品保、法務、財務），談判週期長。常見的錯誤：等到生產計畫確定後才開始談，導致沒有品質協議就開始生產。",
+   "en": "The original text stresses that the quality agreement should start to be negotiated at the <strong>prototype evaluation stage</strong>, not after formal procurement. This is because a quality agreement involves several departments (QA, legal, finance) and the negotiation cycle is long. A common mistake is to wait until the production plan is confirmed before starting, which leads to production starting without a quality agreement."
+  },
+  {
+   "zh": "品質協議應涵蓋：<strong>批次放行標準、變更控制要求、偏差通知時限、CAPA 時程期望、稽核頻率</strong>。",
+   "en": "The quality agreement should cover: <strong>batch release criteria, change control requirements, deviation notification timelines, CAPA timeline expectations and audit frequency</strong>."
+  },
+  {
+   "zh": "安全庫存計算邏輯 Safety Stock Calculation",
+   "en": "Safety Stock Calculation"
+  },
+  {
+   "zh": "基本安全庫存公式：\n\n安全庫存 = (最大用量/天 - 平均用量/天) × 最長交期(天)\n\n範例：\n  平均用量：10 袋/天\n  最大用量（高峰）：15 袋/天\n  供應商最長交期：60 天（客製品）\n\n  安全庫存 = (15 - 10) × 60 = 300 袋\n\n訂購點（Reorder Point）=\n  平均用量 × 交期 + 安全庫存\n  = 10 × 60 + 300 = 900 袋",
+   "en": "Basic safety stock formula:\n\nSafety stock = (maximum usage/day - average usage/day) × longest lead time (days)\n\nExample:\n  Average usage: 10 bags/day\n  Maximum usage (peak): 15 bags/day\n  Supplier's longest lead time: 60 days (custom product)\n\n  Safety stock = (15 - 10) × 60 = 300 bags\n\nReorder point =\n  average usage × lead time + safety stock\n  = 10 × 60 + 300 = 900 bags"
+  },
+  {
+   "zh": "對於承接多客戶製程的 CDMO，供應鏈管理有額外的考量：",
+   "en": "For a CDMO that takes on the processes of multiple clients, supply chain management has additional considerations:"
+  },
+  {
+   "zh": "<strong>庫存分配</strong>：不同客戶使用相同型號的 SUT，但批次記錄（Lot Number）必須嚴格區隔，避免跨客戶混批",
+   "en": "<strong>Inventory allocation</strong>: different clients use the same SUT model, but lot numbers in batch records must be strictly segregated to avoid mixing lots across clients"
+  },
+  {
+   "zh": "<strong>變更通知管理</strong>：一旦供應商發出材料變更通知，必須通知所有受影響的客戶並協調重新確效計畫",
+   "en": "<strong>Change notification management</strong>: once a supplier issues a material change notification, all affected clients must be informed and the revalidation plan coordinated"
+  },
+  {
+   "zh": "<strong>業務連續性計畫</strong>：COVID-19 疫情揭示了 SUT 供應鏈斷鏈的真實風險——建議每年審視關鍵 SUT 的備用供應商清單",
+   "en": "<strong>Business continuity plan</strong>: the COVID-19 pandemic revealed the real risk of SUT supply chain disruption. It is recommended to review the backup supplier list for critical SUT every year"
+  },
+  {
+   "zh": "你的設施目前與關鍵 SUT 供應商是否簽有書面品質協議？協議中是否包含變更通知條款和 CAPA 時程要求？",
+   "en": "Does your facility currently have a written quality agreement with your critical SUT suppliers? Does the agreement include change notification clauses and CAPA timeline requirements?"
+  },
+  {
+   "zh": "你的關鍵 SUT 組件目前有多少天的庫存緩衝？這個數字是基於計算還是「感覺」？",
+   "en": "How many days of inventory buffer do you currently hold for your critical SUT components? Is this number based on calculation or on \"gut feeling\"?"
+  },
+  {
+   "zh": "3.6 Training（培訓）",
+   "en": "3.6 Training"
+  },
+  {
+   "zh": "核心概念：SUT 的手動化悖論",
+   "en": "Core Concept: The Manual Operation Paradox of SUT"
+  },
+  {
+   "zh": "SUT 的一個常見誤解是：「一次性耗材比不鏽鋼系統更簡單」。事實恰恰相反——<strong>SUT 大幅增加了手動操作步驟</strong>：",
+   "en": "A common misconception about SUT is that \"single-use consumables are simpler than stainless steel systems\". The reality is the opposite: <strong>SUT greatly increases manual operating steps</strong>:"
+  },
+  {
+   "zh": "不鏽鋼系統：自動化 CIP/SIP，固定管線，高度自動化",
+   "en": "Stainless steel systems: automated CIP/SIP, fixed piping, highly automated"
+  },
+  {
+   "zh": "SUT：每批次重新組裝、連接確認、拆解、廢棄——大量手動步驟",
+   "en": "SUT: reassembly for every batch, connection verification, disassembly and disposal, with a large number of manual steps"
+  },
+  {
+   "zh": "這個矛盾的意涵是：導入 SUT 雖然消除了 CIP/SIP 驗證工作，但也<strong>引入了更高的操作員培訓需求和人為錯誤風險</strong>。這是 SUT 導入評估中常被低估的隱性成本。",
+   "en": "The implication of this contradiction is that, although implementing SUT eliminates CIP/SIP validation work, it also <strong>introduces higher operator training needs and a higher risk of human error</strong>. This is a hidden cost that is often underestimated when evaluating SUT implementation."
+  },
+  {
+   "zh": "重點提示：61% 洩漏發生在袋體本身",
+   "en": "Key Notes: 61% of Leaks Occur in the Bag Itself"
+  },
+  {
+   "zh": "這個統計數字（61% 洩漏在袋體腔室）的管理意涵非常具體：",
+   "en": "The management implications of this statistic (61% of leaks in the bag chamber) are very specific:"
+  },
+  {
+   "zh": "操作員<strong>徒手處理生物處理袋</strong>是最高風險行為，需要最嚴格的培訓",
+   "en": "<strong>Handling bioprocess bags by hand</strong> is the highest-risk behavior and requires the strictest training"
+  },
+  {
+   "zh": "開箱工具（不能用美工刀！）、搬運推車規格、充填速度控制——都是可以通過 SOP 和培訓管理的可控風險",
+   "en": "Unpacking tools (no box cutters!), transport cart specifications and fill rate control are all controllable risks that can be managed through SOPs and training"
+  },
+  {
+   "zh": "洩漏根本原因分析（RCA）應首先檢視袋體處理程序的合規性，而非立即指向供應商品質問題",
+   "en": "Root cause analysis (RCA) of leaks should first examine compliance with bag handling procedures, rather than immediately pointing to supplier quality problems"
+  },
+  {
+   "zh": "關鍵名詞：換裝（Gowning）在 SUT 組裝中的特殊考量",
+   "en": "Key Terminology: Special Considerations for Gowning in SUT Assembly"
+  },
+  {
+   "zh": "<strong>SUT 組裝的換裝（Gowning for SUT Assembly）</strong>有其特殊性：",
+   "en": "<strong>Gowning for SUT assembly</strong> has its own particularities:"
+  },
+  {
+   "zh": "SUT 組裝通常在<strong>高等級潔淨室</strong>中進行（特別是無菌連接步驟），換裝程序必須符合對應潔淨室等級的要求",
+   "en": "SUT assembly is usually performed in a <strong>higher-grade cleanroom</strong> (especially the aseptic connection steps), and the gowning procedure must meet the requirements for the corresponding cleanroom grade"
+  },
+  {
+   "zh": "厚重的手套可能影響操作精確度（特別是連接器操作），培訓中必須模擬實際換裝狀態下的操作",
+   "en": "Thick gloves can affect handling precision (especially connector operation), so training must simulate operations in the actual gowned state"
+  },
+  {
+   "zh": "換裝狀態下的<strong>疲勞效應</strong>：長時間穿著全套無菌衣操作複雜的 SUT 組裝程序，人為錯誤風險顯著上升——培訓必須考慮工作時長限制",
+   "en": "<strong>Fatigue effect</strong> while gowned: when operators perform complex SUT assembly procedures for long periods in full sterile gowning, the risk of human error rises significantly, so training must consider working time limits"
+  },
+  {
+   "zh": "SUT 培訓就像飛行員訓練——飛行模擬器（hands-on training with mock-up）的價值遠大於教室課程，因為真實操作中的「肌肉記憶」和「情境反應」無法僅靠閱讀 SOP 建立。而且，如果只在模擬器裡練習完美天氣，遇到真實緊急情況（袋子意外洩漏）就會手忙腳亂。訓練必須包含<strong>異常情況模擬</strong>。",
+   "en": "SUT training is like pilot training. A flight simulator (hands-on training with a mock-up) is worth far more than classroom lessons, because the \"muscle memory\" and \"situational response\" needed in real operation cannot be built by reading SOPs alone. And if you only practice in perfect weather in the simulator, you will be flustered in a real emergency (a bag leaking unexpectedly). Training must include <strong>abnormal situation simulation</strong>."
+  },
+  {
+   "zh": "在 CDMO 環境中，SUT 培訓面臨的特殊挑戰：",
+   "en": "In a CDMO environment, SUT training faces particular challenges:"
+  },
+  {
+   "zh": "<strong>多客戶、多 SUT 型號</strong>：不同客戶使用不同供應商的 SUT，操作員需要掌握多種組裝和操作程序，培訓複雜度高",
+   "en": "<strong>Multiple clients and multiple SUT models</strong>: different clients use SUT from different suppliers, operators must master several assembly and operating procedures, and training is complex"
+  },
+  {
+   "zh": "<strong>人員流動率</strong>：CDMO 操作員流動率通常高於大型製藥廠——建立師徒制（Mentorship Program）是維持培訓知識傳承的有效機制",
+   "en": "<strong>Staff turnover</strong>: CDMO operator turnover is usually higher than in large pharmaceutical companies, and a mentorship program is an effective mechanism for preserving training knowledge"
+  },
+  {
+   "zh": "<strong>培訓資格認定（Training Qualification）</strong>：GMP 要求培訓必須可以追溯和評估——對 SUT 操作的培訓效果評估應包含實際操作演示（Demonstration），而非只有筆試",
+   "en": "<strong>Training qualification</strong>: GMP requires that training be traceable and assessed. Evaluating the effectiveness of SUT operation training should include a practical demonstration, not only a written test"
+  },
+  {
+   "zh": "在你的設施中，SUT 的操作員培訓是否包含「錯誤示範」（演示錯誤的操作方式）？這種培訓方式是否有助於提升操作員的風險意識？",
+   "en": "In your facility, does SUT operator training include \"wrong demonstrations\" (showing incorrect ways of operating)? Does this training method help raise operators' risk awareness?"
+  },
+  {
+   "zh": "如果你的設施發生了一起 SUT 洩漏偏差，你的 RCA（根本原因分析）流程中，「培訓充分性評估」是否是標準調查項目之一？",
+   "en": "If an SUT leak deviation occurred in your facility, is \"assessment of training adequacy\" a standard investigation item in your RCA (root cause analysis) process?"
+  },
+  {
+   "zh": "3.6.3 Building an Effective Training Program for SUT（建立有效的 SUT 培訓計畫）",
+   "en": "3.6.3 Building an Effective Training Program for SUT"
+  },
+  {
+   "zh": "核心概念：SUT 培訓的「三時三類」框架",
+   "en": "Core Concept: The \"Three Whens, Three Whos, Three Whys\" Framework for SUT Training"
+  },
+  {
+   "zh": "<strong>三個時機</strong>（When）：",
+   "en": "<strong>Three timings</strong> (When):"
+  },
+  {
+   "zh": "技術轉移前：建立基礎認知和感知能力",
+   "en": "Before technology transfer: build basic awareness and perception"
+  },
+  {
+   "zh": "技術轉移和確效期間：操作技能培訓",
+   "en": "During technology transfer and validation: operating skills training"
+  },
+  {
+   "zh": "確效後持續生產：故障排除和持續改進",
+   "en": "Ongoing production after validation: troubleshooting and continuous improvement"
+  },
+  {
+   "zh": "<strong>三類對象</strong>（Who）：操作員、品管人員、維護人員——每類人需要的培訓內容深度和重點不同。",
+   "en": "<strong>Three audiences</strong> (Who): operators, QC personnel and maintenance personnel. Each group needs training of different depth and emphasis."
+  },
+  {
+   "zh": "<strong>三種情境</strong>（Why）：新導入、定期更新、矯正性培訓——目的不同，培訓設計也應不同。",
+   "en": "<strong>Three situations</strong> (Why): new implementation, periodic refresher and corrective training. The purposes differ, so the training design should differ too."
+  },
+  {
+   "zh": "關鍵名詞：培訓資格認定（Training Qualification）",
+   "en": "Key Terminology: Training Qualification"
+  },
+  {
+   "zh": "<strong>培訓資格認定（Training Qualification）</strong>是 GMP 的正式要求，用於證明操作員已具備執行特定操作的能力，通常包含：",
+   "en": "<strong>Training qualification</strong> is a formal GMP requirement used to demonstrate that an operator is competent to perform a specific operation. It usually includes:"
+  },
+  {
+   "zh": "<strong>理論評估</strong>：筆試或口試，確認知識層面的掌握",
+   "en": "<strong>Theoretical assessment</strong>: a written or oral test to confirm mastery at the knowledge level"
+  },
+  {
+   "zh": "<strong>操作演示</strong>：由合格評估員觀察操作員實際操作，確認技能層面的能力",
+   "en": "<strong>Practical demonstration</strong>: a qualified assessor observes the operator performing the operation, to confirm competence at the skill level"
+  },
+  {
+   "zh": "<strong>定期重新資格認定</strong>：針對高風險 SUT 操作，建議每 1-2 年重新評估",
+   "en": "<strong>Periodic requalification</strong>: for high-risk SUT operations, reassessment every 1-2 years is recommended"
+  },
+  {
+   "zh": "在 FDA 查廠或歐盟 GMP 稽查中，「培訓記錄」是必查項目——不完整的培訓記錄可能引發 483 Observation 或警告函。",
+   "en": "In FDA inspections or EU GMP inspections, \"training records\" are always examined. Incomplete training records can lead to a 483 observation or a warning letter."
+  },
+  {
+   "zh": "重點提示：「Watch It → Do It → Evaluate」三步驟模型",
+   "en": "Key Notes: The \"Watch It → Do It → Evaluate\" Three-Step Model"
+  },
+  {
+   "zh": "原文推薦的培訓模型和心理學研究一致：",
+   "en": "The training model recommended in the original text is consistent with psychological research:"
+  },
+  {
+   "zh": "<strong>Watch It（示範觀察）</strong>：觀察正確操作示範，包括錯誤後果演示",
+   "en": "<strong>Watch It (demonstration and observation)</strong>: observe a correct demonstration, including a demonstration of the consequences of errors"
+  },
+  {
+   "zh": "<strong>Do It（實作練習）</strong>：在接近真實條件下（包括換裝狀態）練習，讓供應商配合提供培訓用耗材",
+   "en": "<strong>Do It (hands-on practice)</strong>: practice under conditions close to the real ones (including the gowned state), and ask the supplier to provide training consumables"
+  },
+  {
+   "zh": "<strong>Evaluate（技能評估）</strong>：由評估員觀察並記錄，確認操作員達到最低能力標準",
+   "en": "<strong>Evaluate (skills assessment)</strong>: an assessor observes and records, to confirm that the operator meets the minimum competence standard"
+  },
+  {
+   "zh": "「矯正性培訓」的起點是<strong>先觀察</strong>操作員的現有行為——因為問題可能出在某個特定的不良習慣，而非全面的知識缺乏。針對性地矯正比從頭重訓更有效。",
+   "en": "The starting point of \"corrective training\" is to <strong>observe first</strong> the operator's existing behavior, because the problem may be a specific bad habit rather than a general lack of knowledge. Targeted correction is more effective than retraining from scratch."
+  },
+  {
+   "zh": "SUT 培訓的分層邏輯（依受眾和複雜度）就像駕訓班的課程分類：路邊停車（簡單 SUT：轉移管組）和高速公路駕駛（複雜 SUT：3000L 生物反應器）需要完全不同的培訓深度。維護人員學「換輪胎」，操作員學「開車」，品管人員學「交通規則和驗車標準」——相同的車，不同的培訓內容。",
+   "en": "The tiered logic of SUT training (by audience and complexity) is like the course categories of a driving school. Parallel parking (simple SUT: transfer tubing sets) and highway driving (complex SUT: a 3000 L bioreactor) need completely different depths of training. Maintenance personnel learn \"changing a tire\", operators learn \"driving\", and QC personnel learn \"traffic rules and vehicle inspection standards\". It is the same car, but different training content."
+  },
+  {
+   "zh": "在 CDMO 中建立高效的 SUT 培訓計畫，建議以下做法：",
+   "en": "To build an efficient SUT training program in a CDMO, the following practices are recommended:"
+  },
+  {
+   "zh": "<strong>建立 SUT 培訓矩陣</strong>：每種 SUT 型號 × 每個操作員角色，清楚定義所需培訓模組和複訓週期",
+   "en": "<strong>Establish an SUT training matrix</strong>: for each SUT model × each operator role, clearly define the required training modules and retraining intervals"
+  },
+  {
+   "zh": "<strong>與供應商建立培訓合作協議</strong>：在供應合約中加入「定期操作員培訓支援」條款，利用供應商的專業知識作為外部培訓資源",
+   "en": "<strong>Establish a training cooperation agreement with suppliers</strong>: add a clause for \"periodic operator training support\" to the supply contract, using the supplier's expertise as an external training resource"
+  },
+  {
+   "zh": "<strong>視覺化操作輔助（Working Instructions）放置在操作現場</strong>：特別對於換裝後手勢靈活性受限的操作員，圖文並茂的現場操作卡比記憶 SOP 更有效",
+   "en": "<strong>Place visual working instructions at the point of operation</strong>: especially for operators whose hand dexterity is limited after gowning, illustrated on-site operation cards are more effective than recalling SOPs from memory"
+  },
+  {
+   "zh": "<strong>異常情況模擬演練</strong>：定期演練「袋子洩漏應急程序」，確保操作員在真實事件發生時不會恐慌",
+   "en": "<strong>Abnormal situation simulation drills</strong>: regularly rehearse the \"bag leak emergency procedure\" to ensure operators do not panic when a real event occurs"
+  },
+  {
+   "zh": "你的設施目前的 SUT 培訓計畫是否區分了「新員工首次培訓」、「定期複訓」和「矯正性培訓」？三者的評估方式是否不同？",
+   "en": "Does your facility's current SUT training program distinguish \"initial training for new employees\", \"periodic retraining\" and \"corrective training\"? Are the assessment methods different for the three?"
+  },
+  {
+   "zh": "「在技術轉移前就讓操作員參與」——你的設施在上次 SUT 導入時，操作員是在哪個階段開始參與的？早期參與帶來了哪些具體的好處或挑戰？",
+   "en": "\"Involve operators before technology transfer\": at what stage did operators in your facility start to be involved in the last SUT implementation? What specific benefits or challenges did early involvement bring?"
+  },
+  {
+   "zh": "本章重點回顧 Chapter Summary",
+   "en": "Chapter Summary"
+  },
+  {
+   "zh": "<strong>技術轉移（Technology Transfer）</strong>：SUT 導入多為混合系統；需完成差距評估、規劃排程（客製品交期 12–20 週、完整導入 6–8 個月）；供應商稽核應在選型後立即啟動。評估必須涵蓋材料相容性、製程需求、設施限制、法規要求和 Scale-up 能力。",
+   "en": "<strong>Technology transfer</strong>: SUT implementation is mostly hybrid; a gap assessment and a schedule must be completed (lead time for customized products 12-20 weeks, full implementation 6-8 months); the supplier audit should start immediately after selection. The assessment must cover material compatibility, process requirements, facility constraints, regulatory requirements and scale-up capability."
+  },
+  {
+   "zh": "<strong>法規合規（Regulatory Compliance）</strong>：目前無 SUT 專屬法規，行業借用醫療器材法規（ISO 10993-1）、藥品包裝法規（USP &lt;661&gt;/&lt;665&gt;）和 GMP 通則。風險分層是核心邏輯：低風險（上游過濾）→ 高風險（最終注射劑充填），風險越高要求的法規數據越多。USP &lt;87&gt;/&lt;88&gt; 是生物相容性的基礎門檻。",
+   "en": "<strong>Regulatory compliance</strong>: there is currently no SUT-specific regulation, and the industry borrows medical device regulations (ISO 10993-1), pharmaceutical packaging regulations (USP &lt;661&gt;/&lt;665&gt;) and general GMP. Risk tiering is the core logic: low risk (upstream filtration) → high risk (final injectable filling), and the higher the risk, the more regulatory data is required. USP &lt;87&gt;/&lt;88&gt; is the baseline threshold for biocompatibility."
+  },
+  {
+   "zh": "<strong>可浸出物（Leachables）</strong>：Leachables 是正常使用條件下從材料遷移到產品的化學物質，由終端使用者評估。必須在終態材料（包括伽瑪照射後）上測試。Irgafos 168® 案例警示：滅菌過程可能將無毒物質轉化為有毒衍生物，且不同細胞株的敏感性不同。安全顧慮閾值（SCT）是判斷是否需要進一步安全評估的關鍵標準。",
+   "en": "<strong>Leachables</strong>: leachables are chemicals that migrate from the material into the product under normal conditions of use, and are assessed by the end user. Testing must be done on final state material (including after gamma irradiation). The Irgafos 168® case warns that the sterilization process can convert a non-toxic substance into a toxic derivative, and that different cell lines differ in sensitivity. The Safety Concern Threshold (SCT) is the key criterion for deciding whether further safety assessment is needed."
+  },
+  {
+   "zh": "<strong>確效（Validation）</strong>：三層架構——供應商資料審查（IQ 前置）→ 現場測試（溶液穩定性、容器完整性、過濾確效）→ 製程可比性研究。黃金法則：穩定性和 E&amp;L 研究在 50% 充填量下進行（最壞情況），生產中不得低於此比例。過濾確效中的滅菌級過濾器測試必須由終端使用者執行。",
+   "en": "<strong>Validation</strong>: three-layer framework: supplier documentation review (prerequisite to IQ) → in-house testing (solution stability, container integrity, filtration validation) → process comparability study. Golden rule: stability and E&amp;L studies are performed at 50% fill volume (worst case), and production must not go below this ratio. Testing of sterilizing-grade filters in filtration validation must be performed by the end user."
+  },
+  {
+   "zh": "<strong>供應鏈（Supply Chain）</strong>：品質協議應在原型評估階段即開始談判；安全庫存計算必須考慮客製品的長交期（最長 60 天以上）；變更通知管理是 GMP 合規的關鍵——供應商材料配方改變可能觸發重新確效。業務連續性計畫對於無替代品的客製化組件尤為重要。",
+   "en": "<strong>Supply chain</strong>: the quality agreement should be negotiated from the prototype evaluation stage; safety stock calculation must consider the long lead time of customized products (up to 60 days or more); change notification management is key to GMP compliance, because a change in the supplier's material formulation may trigger revalidation. A business continuity plan is especially important for customized components with no alternative."
+  },
+  {
+   "zh": "<strong>培訓（Training）</strong>：SUT 增加了手動操作步驟，消除 CIP/SIP 的同時引入了更高的人為錯誤風險。61% 洩漏發生在袋體腔室，根源在操作員行為。有效的 SUT 培訓計畫：分三個時機（轉移前/中/後）、三類受眾（操作員/品管/維護）、三個目的（新導入/複訓/矯正），並採用「Watch It → Do It → Evaluate」模型。培訓資格認定（Training Qualification）必須包含實際操作演示，是 GMP 查廠的必查項目。",
+   "en": "<strong>Training</strong>: SUT increases manual operating steps, and while it eliminates CIP/SIP it introduces a higher risk of human error. 61% of leaks occur in the bag chamber, and the root cause lies in operator behavior. An effective SUT training program has three timings (before/during/after transfer), three audiences (operators/QC/maintenance) and three purposes (new implementation/refresher/corrective), and uses the \"Watch It → Do It → Evaluate\" model. Training qualification must include a practical demonstration and is always examined in GMP inspections."
+  }
+ ]
+}

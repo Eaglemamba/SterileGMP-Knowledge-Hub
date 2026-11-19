@@ -1,0 +1,753 @@
+{
+ "source": "section-01-commissioning.html",
+ "blocks": [
+  {
+   "zh": "受控溫度腔體類型與試運行",
+   "en": "Controlled Temperature Chamber Types and Commissioning"
+  },
+  {
+   "zh": "Section Contents / 本節內容",
+   "en": "Section Contents"
+  },
+  {
+   "zh": "<a href=\"#block-freezers\">4.1 Freezers 冷凍庫</a>\n<a href=\"#block-refrigerators\">4.2 Refrigerators 冷藏庫</a>\n<a href=\"#block-coldrooms\">4.3 Cold Rooms 冷藏室</a>\n<a href=\"#block-stability\">4.4 Stability / Incubators 穩定性腔體</a>\n<a href=\"#block-comm-scope\">5.1 Commissioning Scope 試運行範疇</a>\n<a href=\"#block-comm-strategy\">5.2 Commissioning Strategy 試運行策略</a>\n<a href=\"#block-design-phase\">5.3 Design Phase Activities 設計階段活動</a>\n<a href=\"#block-install-phase\">5.4 Installation Phase Activities 安裝階段活動</a>\n<a href=\"#block-handover\">5.5 Handover &amp; Safety 移交與安全</a>\n<a href=\"#block-comm-vs-qual\">Commissioning vs IQ/OQ/PQ 比較表</a>",
+   "en": "<a href=\"#block-freezers\">4.1 Freezers</a>\n<a href=\"#block-refrigerators\">4.2 Refrigerators</a>\n<a href=\"#block-coldrooms\">4.3 Cold Rooms</a>\n<a href=\"#block-stability\">4.4 Stability / Incubators</a>\n<a href=\"#block-comm-scope\">5.1 Commissioning Scope</a>\n<a href=\"#block-comm-strategy\">5.2 Commissioning Strategy</a>\n<a href=\"#block-design-phase\">5.3 Design Phase Activities</a>\n<a href=\"#block-install-phase\">5.4 Installation Phase Activities</a>\n<a href=\"#block-handover\">5.5 Handover &amp; Safety</a>\n<a href=\"#block-comm-vs-qual\">Commissioning vs IQ/OQ/PQ Comparison Table</a>"
+  },
+  {
+   "zh": "Learning Objectives / 學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "完成本節學習後，您將能夠：",
+   "en": "After completing this section, you will be able to:"
+  },
+  {
+   "zh": "依溫度範圍與設計特性區分六種主要 CTC 類型",
+   "en": "Distinguish the six main CTC types by temperature range and design characteristics"
+  },
+  {
+   "zh": "說明為何冷凍庫在 GMP 用途中需要獨立監控系統",
+   "en": "Explain why freezers used for GMP purposes need an independent monitoring system"
+  },
+  {
+   "zh": "描述冷藏室 PLC 與獨立冷藏庫控制器的差異",
+   "en": "Describe the difference between a cold room PLC and a stand-alone refrigerator controller"
+  },
+  {
+   "zh": "定義試運行，並說明其在確認生命週期中的位置",
+   "en": "Define commissioning and explain its place in the qualification lifecycle"
+  },
+  {
+   "zh": "列出安裝階段四大類試運行活動",
+   "en": "List the four main categories of commissioning activities in the installation phase"
+  },
+  {
+   "zh": "解釋「紅線圖」的目的與內容",
+   "en": "Explain the purpose and content of red-line drawings"
+  },
+  {
+   "zh": "描述 CTC 的 FAT 與 SAT 範疇及文件要求",
+   "en": "Describe the scope and documentation requirements of FAT and SAT for CTCs"
+  },
+  {
+   "zh": "識別哪些變更情境需觸發再試運行或再確認",
+   "en": "Identify which change scenarios trigger re-commissioning or requalification"
+  },
+  {
+   "zh": "區分試運行中「驗收標準」與「預期結果」的差異",
+   "en": "Distinguish between \"acceptance criteria\" and \"expected results\" in commissioning"
+  },
+  {
+   "zh": "Freezers / 冷凍庫",
+   "en": "Freezers"
+  },
+  {
+   "zh": "解析與 CDMO 情境應用",
+   "en": "Analysis and CDMO Application Scenarios"
+  },
+  {
+   "zh": "比喻：控制探針 vs. 獨立監控系統",
+   "en": "Analogy: Control Probe vs. Independent Monitoring System"
+  },
+  {
+   "zh": "冷凍庫原廠內建的<strong>控制探針</strong>就像汽車儀表板的油溫表 — 它讓引擎運作，但不能用來做法規報告。<strong>獨立監控系統</strong>才是你的品質記錄系統，相當於行車記錄器，提供可稽核的連續數據。",
+   "en": "The <strong>control probe</strong> built into the freezer by the manufacturer is like the oil temperature gauge on a car dashboard: it keeps the engine running, but it cannot be used for regulatory reporting. The <strong>independent monitoring system</strong> is your quality record system, comparable to a dashcam, providing continuous, auditable data."
+  },
+  {
+   "zh": "ISPE 明確要求：GMP 應用必須有獨立監控系統作為「品質記錄系統 (system of record)」。控制探針僅維持設定點，獨立系統才用於合規報告。",
+   "en": "ISPE explicitly requires that GMP applications have an independent monitoring system as the \"system of record\". The control probe only maintains the set point; the independent system is what is used for compliance reporting."
+  },
+  {
+   "zh": "CDMO 多客戶情境：冷凍庫獨立監控的重要性",
+   "en": "Multi-Client CDMO Scenario: Why Independent Freezer Monitoring Matters"
+  },
+  {
+   "zh": "在多客戶 CDMO 環境中，同一台 -80°C 冷凍庫可能同時存放三個不同客戶的 API 樣品。獨立監控系統的數據需能：",
+   "en": "In a multi-client CDMO environment, the same -80°C freezer may hold API samples from three different clients at the same time. The data from the independent monitoring system must be able to:"
+  },
+  {
+   "zh": "按時間戳追溯每次門開啟事件",
+   "en": "Trace every door-opening event by timestamp"
+  },
+  {
+   "zh": "顯示除霜週期期間的溫度波動是否影響儲存物",
+   "en": "Show whether temperature fluctuations during defrost cycles affected the stored material"
+  },
+  {
+   "zh": "提供客戶專屬的偏差記錄（需按客戶區隔報告）",
+   "en": "Provide client-specific deviation records (reports must be separable by client)"
+  },
+  {
+   "zh": "支援批次放行決策的溫度合規佐證",
+   "en": "Support batch release decisions with evidence of temperature compliance"
+  },
+  {
+   "zh": "獨立系統的感測器位置應設在「最差案例」位置（最可能超出限度的角落），而非幾何中心。",
+   "en": "The sensors of the independent system should be placed at the \"worst-case\" location (the corner most likely to exceed limits), not at the geometric center."
+  },
+  {
+   "zh": "除霜週期對 GMP 的影響",
+   "en": "Impact of Defrost Cycles on GMP"
+  },
+  {
+   "zh": "除霜週期（每 6-24 小時）期間，蒸發器溫度短暫升高以融化積霜。監控系統必須：",
+   "en": "During a defrost cycle (every 6-24 hours), the evaporator temperature rises briefly to melt accumulated frost. The monitoring system must:"
+  },
+  {
+   "zh": "能區分除霜引起的短暫溫升與真實的設備異常",
+   "en": "Be able to distinguish a short temperature rise caused by defrost from a genuine equipment failure"
+  },
+  {
+   "zh": "確認除霜期間產品溫度仍在可接受範圍內",
+   "en": "Confirm that product temperature stays within the acceptable range during defrost"
+  },
+  {
+   "zh": "在確認中記錄除霜週期對腔體溫度的實際影響",
+   "en": "Record the actual effect of the defrost cycle on chamber temperature during qualification"
+  },
+  {
+   "zh": "確認時需在除霜週期期間進行溫度 mapping，記錄其影響。",
+   "en": "During qualification, temperature mapping must be performed across a defrost cycle to record its effect."
+  },
+  {
+   "zh": "練習思考",
+   "en": "Discussion Questions"
+  },
+  {
+   "zh": "您的廠房有一台 -80°C 冷凍庫，客戶要求提供過去 30 天的連續溫度記錄。如果只有原廠控制探針的日誌，為何這份記錄可能不被接受？",
+   "en": "Your facility has a -80°C freezer, and a client asks for a continuous temperature record for the past 30 days. If you only have the log from the manufacturer's control probe, why might this record not be accepted?"
+  },
+  {
+   "zh": "除霜頻率設定過低可能導致哪些 GMP 風險？設定過高又會有什麼問題？",
+   "en": "What GMP risks could result from a defrost frequency set too low? What problems arise if it is set too high?"
+  },
+  {
+   "zh": "Blast Freezer（急凍庫）為何不在本指南範疇內？這對設備採購時的分類有何影響？",
+   "en": "Why is a blast freezer outside the scope of this guide? How does this affect equipment classification at procurement?"
+  },
+  {
+   "zh": "Refrigerators / 冷藏庫",
+   "en": "Refrigerators"
+  },
+  {
+   "zh": "冷藏庫核心設計要點",
+   "en": "Key Design Points for Refrigerators"
+  },
+  {
+   "zh": "<strong>設定點 vs. 確認範圍</strong>：ISPE 提醒，設定點的選擇必須考量設備達到溫度均一性的能力。若設備在 4°C 設定下邊角溫度達到 8.5°C，則確認範圍可能無法涵蓋 2-8°C 規格，需調整設定點。",
+   "en": "<strong>Set point vs. qualified range</strong>: ISPE cautions that the choice of set point must take into account the equipment's ability to achieve temperature uniformity. If the corner temperature reaches 8.5°C with a 4°C set point, the qualified range may not cover the 2-8°C specification, and the set point needs to be adjusted."
+  },
+  {
+   "zh": "<strong>強制氣流 vs. 對流</strong>：有風扇的強制氣流型溫度均一性通常較佳，但門開啟時冷空氣流失更快。對流型較溫和，但對貨物擺放方式更敏感。",
+   "en": "<strong>Forced air vs. convection</strong>: Forced-air units with fans generally give better temperature uniformity, but cold air is lost faster when the door is opened. Convection units are gentler but more sensitive to how goods are loaded."
+  },
+  {
+   "zh": "<strong>網架要求</strong>：ISPE 明確要求使用金屬網架而非實心板架，以確保空氣可在貨物之間流通，避免局部熱點。",
+   "en": "<strong>Shelving requirements</strong>: ISPE explicitly calls for wire (mesh) shelving rather than solid shelves, so that air can circulate between goods and local hot spots are avoided."
+  },
+  {
+   "zh": "比喻：設定點 ≠ 確認範圍",
+   "en": "Analogy: Set Point ≠ Qualified Range"
+  },
+  {
+   "zh": "設定點是你告訴冷藏庫「維持在這個溫度」的指令，確認範圍是你用 mapping 資料<em>證明</em>腔體各處實際達到的溫度帶。兩者之間的差距，就是你在選設定點時必須預留的「緩衝帶」。若 mapping 顯示偏差 ±1.5°C，設定點應設在 4-5°C，而非緊貼 8°C 上限。",
+   "en": "The set point is the instruction you give the refrigerator to \"hold this temperature\"; the qualified range is the temperature band that you <em>prove</em>, using mapping data, is actually achieved throughout the chamber. The gap between the two is the \"buffer\" you must leave when choosing the set point. If mapping shows a deviation of ±1.5°C, the set point should be 4-5°C, not right up against the 8°C upper limit."
+  },
+  {
+   "zh": "CDMO 多產品情境：冷藏庫分區管理",
+   "en": "Multi-Product CDMO Scenario: Zoning Within the Refrigerator"
+  },
+  {
+   "zh": "多客戶 CDMO 常見問題：不同客戶的疫苗、API 或中間體共用同一冷藏庫。建議：",
+   "en": "A common problem at multi-client CDMOs is that different clients' vaccines, APIs or intermediates share one refrigerator. Recommendations:"
+  },
+  {
+   "zh": "按客戶/產品劃定貨架區域，貼標識別",
+   "en": "Assign shelf zones by client/product and label them for identification"
+  },
+  {
+   "zh": "確認時需模擬實際最大裝載量（worst case loading）",
+   "en": "During qualification, simulate the actual maximum load (worst-case loading)"
+  },
+  {
+   "zh": "實心板架違反 ISPE 建議，會在稽查中被提出",
+   "en": "Solid shelves go against ISPE recommendations and will be raised in audits"
+  },
+  {
+   "zh": "每次新增客戶產品前確認擺放方式不會遮擋氣流",
+   "en": "Before adding any new client's product, confirm that the placement will not block airflow"
+  },
+  {
+   "zh": "一台 2-8°C 冷藏庫的溫度 mapping 顯示角落溫度為 8.3°C。這對設定點選擇有何影響？",
+   "en": "Temperature mapping of a 2-8°C refrigerator shows a corner temperature of 8.3°C. What does this mean for set point selection?"
+  },
+  {
+   "zh": "客戶要求用實心金屬板架存放其產品（擔心落塵）。你如何回應這個要求，並找到符合雙方需求的解決方案？",
+   "en": "A client asks for solid metal shelves to store their product (out of concern about particulate fallout). How would you respond, and how would you find a solution that meets both parties' needs?"
+  },
+  {
+   "zh": "強制氣流冷藏庫與對流冷藏庫在 mapping 策略上應有何不同考量？",
+   "en": "How should the mapping strategy differ between a forced-air refrigerator and a convection refrigerator?"
+  },
+  {
+   "zh": "Cold Rooms / 冷藏室（步入式）",
+   "en": "Cold Rooms (Walk-In)"
+  },
+  {
+   "zh": "PLC 控制與 CSV 要求",
+   "en": "PLC Control and CSV Requirements"
+  },
+  {
+   "zh": "冷藏室的 PLC 屬於電腦化系統，在 GMP 環境中可能觸發 21 CFR Part 11 或 Annex 11 的電腦化系統驗證 (CSV) 要求。關鍵考量：",
+   "en": "A cold room PLC is a computerized system and, in a GMP environment, may trigger computerized system validation (CSV) requirements under 21 CFR Part 11 or Annex 11. Key considerations:"
+  },
+  {
+   "zh": "PLC 軟體版本控制需納入變更管控",
+   "en": "PLC software version control must be brought under change control"
+  },
+  {
+   "zh": "存取權限管理（哪些人可修改設定點）",
+   "en": "Access rights management (who can change the set point)"
+  },
+  {
+   "zh": "審計追蹤（Audit trail）：記錄每次設定變更",
+   "en": "Audit trail: record every setting change"
+  },
+  {
+   "zh": "數據完整性：PLC 記錄的數據是否可被篡改？",
+   "en": "Data integrity: can the data recorded by the PLC be tampered with?"
+  },
+  {
+   "zh": "若 PLC 涉及 GMP 關鍵數據，即使是冷藏室也需要進行 IQ/OQ 確認和 CSV 評估。",
+   "en": "If the PLC handles GMP-critical data, even a cold room requires IQ/OQ qualification and a CSV assessment."
+  },
+  {
+   "zh": "冗餘冷凝機組的 GMP 意義",
+   "en": "GMP Significance of Redundant Condensing Units"
+  },
+  {
+   "zh": "冷藏室備有冗餘冷凝機組（各自能承擔完整負載）是高風險儲存物料的最佳實踐。試運行時必須測試：",
+   "en": "Fitting a cold room with redundant condensing units (each able to carry the full load) is best practice for high-risk stored materials. The following must be tested during commissioning:"
+  },
+  {
+   "zh": "主機組切換至備援機組的時間",
+   "en": "Time taken to switch from the primary unit to the standby unit"
+  },
+  {
+   "zh": "切換過程中腔體溫度的波動範圍",
+   "en": "Range of chamber temperature fluctuation during the changeover"
+  },
+  {
+   "zh": "備援機組長期運作的穩定性（不能只是短暫啟動測試）",
+   "en": "Stability of the standby unit during prolonged operation (not just a brief start-up test)"
+  },
+  {
+   "zh": "此數據在確認中同樣需要執行，以形成正式品質記錄。",
+   "en": "These data likewise need to be generated during qualification so that they form a formal quality record."
+  },
+  {
+   "zh": "冷藏室的屋頂冷凝機組在夏天高溫環境下對冷藏室性能有何潛在影響？試運行時如何模擬最差案例？",
+   "en": "What potential impact does a roof-mounted condensing unit have on cold room performance in hot summer conditions? How can the worst case be simulated during commissioning?"
+  },
+  {
+   "zh": "如果冷藏室 PLC 的軟體升級了，這是否需要重新進行確認？依據什麼判斷？",
+   "en": "If the cold room PLC software is upgraded, does the room need to be requalified? On what basis do you decide?"
+  },
+  {
+   "zh": "一個 200 m³ 步入式冷藏室應配置多少個監控感測器？決定感測器數量的因素有哪些？",
+   "en": "How many monitoring sensors should a 200 m³ walk-in cold room have? What factors determine the number of sensors?"
+  },
+  {
+   "zh": "Stability Chambers &amp; Incubators / 穩定性腔體與培養箱",
+   "en": "Stability Chambers &amp; Incubators"
+  },
+  {
+   "zh": "多參數控制的確認複雜度",
+   "en": "Qualification Complexity of Multi-Parameter Control"
+  },
+  {
+   "zh": "與冷凍/冷藏庫相比，穩定性腔體和培養箱涉及多個受控參數：",
+   "en": "Compared with freezers and refrigerators, stability chambers and incubators involve several controlled parameters:"
+  },
+  {
+   "zh": "<strong>溫度</strong>：通常需要 ±2°C 以內的均一性",
+   "en": "<strong>Temperature</strong>: uniformity within ±2°C is typically required"
+  },
+  {
+   "zh": "<strong>濕度</strong>：需要 ±5% RH 以內的均一性（對機械也是挑戰）",
+   "en": "<strong>Humidity</strong>: uniformity within ±5% RH is required (also a challenge for the equipment)"
+  },
+  {
+   "zh": "<strong>CO₂ 濃度</strong>：培養箱特有，影響細胞培養 pH",
+   "en": "<strong>CO₂ concentration</strong>: specific to incubators; affects the pH of cell cultures"
+  },
+  {
+   "zh": "<strong>振盪速度 (RPM)</strong>：培養振盪箱的附加參數",
+   "en": "<strong>Shaking speed (RPM)</strong>: an additional parameter of shaking incubators"
+  },
+  {
+   "zh": "每個參數都需要各自的感測器、校正記錄和確認測試。確認協議（IQ/OQ/PQ）的複雜度遠高於簡單儲存設備。",
+   "en": "Each parameter needs its own sensor, calibration records and qualification tests. The qualification protocols (IQ/OQ/PQ) are far more complex than for simple storage equipment."
+  },
+  {
+   "zh": "比喻：穩定性腔體是「人工氣候室」",
+   "en": "Analogy: A Stability Chamber Is an \"Artificial Climate Room\""
+  },
+  {
+   "zh": "穩定性腔體相當於一個精密人工氣候室，必須同時模擬全球不同地區的氣候條件。台灣的 CDMO 若要服務全球市場，通常需要配備能覆蓋所有 ICH 條件的穩定性腔體群。每個條件一旦偏離，整批穩定性數據可能需要被視為無效，對客戶申請影響巨大。",
+   "en": "A stability chamber is essentially a precision artificial climate room that must simulate the climate conditions of different regions of the world. A CDMO in Taiwan that wants to serve the global market usually needs a bank of stability chambers covering all ICH conditions. Once any condition drifts out of limits, the whole set of stability data may have to be regarded as invalid, with a major impact on the client's filing."
+  },
+  {
+   "zh": "穩定性腔體在溫度 mapping 時，是否需要同時進行濕度 mapping？這對感測器配置有何要求？",
+   "en": "When performing temperature mapping of a stability chamber, is humidity mapping also required? What does this mean for sensor configuration?"
+  },
+  {
+   "zh": "一台培養箱同時控制溫度、CO₂ 和轉速，當轉速感測器發生故障時，是否需要執行設備偏差報告？",
+   "en": "An incubator controls temperature, CO₂ and shaking speed at the same time. When the speed sensor fails, does an equipment deviation report need to be raised?"
+  },
+  {
+   "zh": "台灣市場的新藥申請需要哪些 ICH 穩定性條件？這對穩定性腔體的採購規格有何影響？",
+   "en": "Which ICH stability conditions are needed for new drug applications in the Taiwan market? How does this affect the purchase specification of stability chambers?"
+  },
+  {
+   "zh": "ICH 穩定性條件與對應腔體類型",
+   "en": "ICH Stability Conditions and Corresponding Chamber Types"
+  },
+  {
+   "zh": "穩定性腔體的 mapping 必須同時驗證溫度<strong>和</strong>濕度的均一性。",
+   "en": "Mapping of a stability chamber must verify the uniformity of both temperature <strong>and</strong> humidity."
+  },
+  {
+   "zh": "\"Commissioning is the engineering proof; qualification is the regulatory proof — both are necessary, they are not redundant.\"\n    <br/><span style=\"font-size:0.9rem; font-weight:400; opacity:0.9; margin-top:0.4rem; display:block;\">試運行是工程層面的驗證；確認是法規層面的驗證 — 兩者都是必要的，互不取代。</span>",
+   "en": "\"Commissioning is the engineering proof; qualification is the regulatory proof — both are necessary, they are not redundant.\"\n    <br/><span style=\"font-size:0.9rem; font-weight:400; opacity:0.9; margin-top:0.4rem; display:block;\">Commissioning is verification at the engineering level; qualification is verification at the regulatory level. Both are necessary, and neither replaces the other.</span>"
+  },
+  {
+   "zh": "Scope of Commissioning / 試運行範疇",
+   "en": "Scope of Commissioning"
+  },
+  {
+   "zh": "試運行的核心定義",
+   "en": "Core Definition of Commissioning"
+  },
+  {
+   "zh": "試運行（Commissioning）是在正式安裝（IQ）之前或同步進行的<strong>工程性驗證活動</strong>，目的是確認設備安全、功能正常、符合設計要求，並完成移交給最終使用者（End User）的過程。",
+   "en": "Commissioning is an <strong>engineering verification activity</strong> carried out before, or in parallel with, formal installation qualification (IQ). Its purpose is to confirm that the equipment is safe, functions correctly and meets the design requirements, and to complete the handover to the end user."
+  },
+  {
+   "zh": "ISPE 強調：試運行是「橋樑」— 連接安裝完成與正式確認啟動。沒有完善的試運行，確認活動的基礎就不穩固。",
+   "en": "ISPE stresses that commissioning is the \"bridge\" linking completed installation to the start of formal qualification. Without sound commissioning, the foundation of the qualification activities is not solid."
+  },
+  {
+   "zh": "比喻：新屋交屋驗收",
+   "en": "Analogy: Handover Inspection of a New Home"
+  },
+  {
+   "zh": "試運行就像房屋交屋前的驗收過程：建商帶你走遍每個房間，確認電燈會亮、水龍頭有水、門窗可以關緊。這不是政府驗屋（確認），但是交屋的工程前提。沒通過驗屋，建商不能交屋；沒通過試運行，GMP 確認不能開始。",
+   "en": "Commissioning is like the inspection before you take over a new home: the builder walks you through every room to confirm that the lights work, the taps run and the doors and windows close properly. It is not the government's building inspection (qualification), but it is the engineering prerequisite for handover. If the home fails the inspection, the builder cannot hand it over; if commissioning is not passed, GMP qualification cannot begin."
+  },
+  {
+   "zh": "風險基礎方式下的試運行文件",
+   "en": "Commissioning Documentation under a Risk-Based Approach"
+  },
+  {
+   "zh": "ISPE 允許以風險基礎方式使用試運行文件來<strong>支持確認活動</strong>（即「leveraging」或「bridging」策略）。這意味著：",
+   "en": "ISPE allows commissioning documentation to be used on a risk basis to <strong>support qualification activities</strong> (the \"leveraging\" or \"bridging\" strategy). This means:"
+  },
+  {
+   "zh": "廠商提供的 FAT 數據可作為 IQ 的部分證據",
+   "en": "Vendor-supplied FAT data can serve as part of the evidence for IQ"
+  },
+  {
+   "zh": "試運行中的功能測試可支持 OQ 的設計",
+   "en": "Functional tests performed during commissioning can support the design of OQ"
+  },
+  {
+   "zh": "但文件必須達到 GMP 可接受標準（可追溯、可核查、符合數據完整性要求）",
+   "en": "However, the documentation must meet GMP-acceptable standards (traceable, verifiable and compliant with data integrity requirements)"
+  },
+  {
+   "zh": "需要正式的文件審查和批准流程，不能只是工程報告",
+   "en": "A formal document review and approval process is required; an engineering report alone is not enough"
+  },
+  {
+   "zh": "一台新購入的 -80°C 冷凍庫（標準目錄設備），廠商提供完整的 FAT 報告。您如何利用這份報告減少現場 IQ 的工作量？需要確認哪些條件？",
+   "en": "You have purchased a new -80°C freezer (standard catalogue equipment) and the vendor provides a complete FAT report. How would you use this report to reduce the on-site IQ workload? What conditions must be confirmed?"
+  },
+  {
+   "zh": "如果試運行文件要達到「可接受標準」，具體指的是哪些 GMP 文件要求？（提示：數據完整性 ALCOA+）",
+   "en": "If commissioning documentation is to meet \"acceptable standards\", which GMP documentation requirements does this specifically refer to? (Hint: data integrity, ALCOA+)"
+  },
+  {
+   "zh": "現場客製建置的冷藏室，試運行調校（tuning）階段發現溫度均一性不佳。應如何記錄這個過程，以確保後續確認不受影響？",
+   "en": "During the tuning stage of a cold room built to order on site, poor temperature uniformity is found. How should this be documented so that later qualification is not affected?"
+  },
+  {
+   "zh": "Commissioning Strategy / 試運行策略",
+   "en": "Commissioning Strategy"
+  },
+  {
+   "zh": "試運行計畫（Commissioning Plan）的核心功能",
+   "en": "Core Function of the Commissioning Plan"
+  },
+  {
+   "zh": "Commissioning Plan 是試運行的「憲法」— 在任何測試執行<strong>之前</strong>必須完成並批准。它的存在確保：",
+   "en": "The Commissioning Plan is the \"constitution\" of commissioning: it must be completed and approved <strong>before</strong> any testing is executed. Its existence ensures that:"
+  },
+  {
+   "zh": "所有相關方事前同意測試範圍和驗收標準",
+   "en": "All parties agree in advance on the test scope and acceptance criteria"
+  },
+  {
+   "zh": "沒有人可以在測試後才「倒填」標準（防止數據操縱）",
+   "en": "No one can \"backfill\" criteria after testing (preventing data manipulation)"
+  },
+  {
+   "zh": "測試差異（discrepancy）的處理方式已預先定義",
+   "en": "The handling of test discrepancies is defined in advance"
+  },
+  {
+   "zh": "資料保留和移交格式已明確規定",
+   "en": "The format for data retention and handover is clearly specified"
+  },
+  {
+   "zh": "CDMO 中的角色對應",
+   "en": "Role Mapping in a CDMO"
+  },
+  {
+   "zh": "在 CDMO 環境中，試運行角色通常由以下部門承擔：",
+   "en": "In a CDMO environment, the commissioning roles are usually filled by the following departments:"
+  },
+  {
+   "zh": "<strong>Commissioning Lead</strong>：工程/設施部門主管或專案經理",
+   "en": "<strong>Commissioning Lead</strong>: head of engineering/facilities or the project manager"
+  },
+  {
+   "zh": "<strong>System Owner</strong>：QA 或生產部門代表（對法規合規負責）",
+   "en": "<strong>System Owner</strong>: representative of QA or production (accountable for regulatory compliance)"
+  },
+  {
+   "zh": "<strong>Commissioning Team Member</strong>：工程師、儀控技術員、廠商代表",
+   "en": "<strong>Commissioning Team Member</strong>: engineers, instrumentation and control technicians, vendor representatives"
+  },
+  {
+   "zh": "<strong>Validation Group</strong>：負責確認協議，可審查試運行文件作為 IQ 依據",
+   "en": "<strong>Validation Group</strong>: responsible for the qualification protocols; may review commissioning documents as a basis for IQ"
+  },
+  {
+   "zh": "System Owner 的角色特別重要：他/她在簽署試運行計畫時，正式接受對 URS 合規性的問責。",
+   "en": "The System Owner's role is particularly important: by signing the commissioning plan, he or she formally accepts accountability for compliance with the URS."
+  },
+  {
+   "zh": "試運行計畫中的「原始數據保留」條款，與 21 CFR Part 11 的數據完整性要求有何關聯？如果試運行數據只有紙本，應如何管理？",
+   "en": "How does the \"retention of raw data\" clause in the commissioning plan relate to the data integrity requirements of 21 CFR Part 11? If commissioning data exist only on paper, how should they be managed?"
+  },
+  {
+   "zh": "System Owner 在試運行中「接受 as-built 系統」這個動作，對後續確認的 IQ 階段有什麼意義？是否可以省略？",
+   "en": "What is the significance of the System Owner \"accepting the as-built system\" during commissioning for the subsequent IQ stage of qualification? Can it be omitted?"
+  },
+  {
+   "zh": "如果試運行期間測試失敗，但技術人員直接修正後重新測試，未更新試運行計畫。這在稽查中會引發什麼問題？",
+   "en": "If a test fails during commissioning and the technician simply corrects the problem and retests without updating the commissioning plan, what issues would this raise in an audit?"
+  },
+  {
+   "zh": "關鍵區別：驗收標準 vs. 預期結果",
+   "en": "Key Difference: Acceptance Criteria vs. Expected Results"
+  },
+  {
+   "zh": "理解此區別對於稽查應對至關重要：稽查員會問「你的驗收標準是測試前定義的嗎？」",
+   "en": "Understanding this difference is critical for audit readiness: the auditor will ask, \"Were your acceptance criteria defined before the test?\""
+  },
+  {
+   "zh": "Commissioning at the Design Phase / 設計階段的試運行活動",
+   "en": "Commissioning at the Design Phase"
+  },
+  {
+   "zh": "設計審查中試運行團隊的角色",
+   "en": "Role of the Commissioning Team in Design Review"
+  },
+  {
+   "zh": "試運行團隊參與設計審查的目的，不是批准設計，而是<strong>確保設計「可測試」</strong>。常見的試運行可測試性問題：",
+   "en": "The purpose of the commissioning team's participation in design review is not to approve the design, but to <strong>ensure the design is \"testable\"</strong>. Common commissioning testability issues include:"
+  },
+  {
+   "zh": "感測器安裝位置沒有足夠的接線導管，mapping 時無法佈線",
+   "en": "No adequate conduit is provided for sensor wiring, so cables cannot be routed during mapping"
+  },
+  {
+   "zh": "冷藏室牆壁沒有預留穿線孔，臨時開孔影響氣密性測試",
+   "en": "The cold room walls have no pre-installed penetrations for cables, and ad hoc openings affect airtightness testing"
+  },
+  {
+   "zh": "壓縮機組沒有壓力測試連接點，預防性維護困難",
+   "en": "The compressor unit has no pressure test connection points, which makes preventive maintenance difficult"
+  },
+  {
+   "zh": "控制閥沒有旁通管路，維修時必須停機",
+   "en": "The control valve has no bypass line, so maintenance requires a shutdown"
+  },
+  {
+   "zh": "在設計階段提出這些問題，成本遠低於施工後修改。",
+   "en": "Raising these issues at the design stage costs far less than making changes after construction."
+  },
+  {
+   "zh": "P&amp;ID 在 CTC 試運行的核心作用",
+   "en": "Core Role of the P&amp;ID in CTC Commissioning"
+  },
+  {
+   "zh": "管線儀表圖（P&amp;ID）是試運行最重要的設計文件之一，記錄：",
+   "en": "The piping and instrumentation diagram (P&amp;ID) is one of the most important design documents for commissioning. It records:"
+  },
+  {
+   "zh": "所有管線、閥件、感測器的位置和識別號",
+   "en": "The location and identification number of all piping, valves and sensors"
+  },
+  {
+   "zh": "儀控系統的連接邏輯",
+   "en": "The connection logic of the instrumentation and control system"
+  },
+  {
+   "zh": "壓力/溫度安全裝置的設定值",
+   "en": "The set values of pressure/temperature safety devices"
+  },
+  {
+   "zh": "公用設施（冷凍水、電力、壓縮空氣）的供應點",
+   "en": "The supply points of utilities (chilled water, electrical power, compressed air)"
+  },
+  {
+   "zh": "試運行完成後，P&amp;ID 必須更新為「紅線版本」（as-built），反映所有施工期間的變更。這份文件最終成為設施生命週期管理的基礎。",
+   "en": "After commissioning is complete, the P&amp;ID must be updated to a \"red-line version\" (as-built) that reflects all changes made during construction. This document ultimately becomes the foundation for facility lifecycle management."
+  },
+  {
+   "zh": "一台步入式冷藏室計畫安裝在廚房旁邊（鄰近熱源）。在設計審查中，試運行團隊應提出哪些具體問題？",
+   "en": "A walk-in cold room is planned for installation next to a kitchen (close to a heat source). What specific questions should the commissioning team raise at design review?"
+  },
+  {
+   "zh": "設計審查發現 P&amp;ID 上缺少壓力安全閥的識別號。這個發現應如何記錄和追蹤？",
+   "en": "Design review finds that the identification number of the pressure relief valve is missing from the P&amp;ID. How should this finding be recorded and tracked?"
+  },
+  {
+   "zh": "FMEA 評估後，壓縮機故障被列為高風險。如果決定用「程序控制」（定期巡檢）作為緩解措施而非增設備援，這在 GMP 合規上是否可接受？",
+   "en": "After FMEA, compressor failure is rated as high risk. If it is decided to use \"procedural control\" (periodic inspection) as the mitigation instead of adding redundancy, is this acceptable from a GMP compliance standpoint?"
+  },
+  {
+   "zh": "FMEA 在 CTC 設計階段的應用",
+   "en": "Application of FMEA in CTC Design"
+  },
+  {
+   "zh": "針對 CTC 設計的 FMEA 常見失效模式包括：",
+   "en": "Common failure modes in an FMEA for CTC design include:"
+  },
+  {
+   "zh": "FMEA 識別的關鍵功能，必須在試運行時進行測試。",
+   "en": "The critical functions identified by FMEA must be tested during commissioning."
+  },
+  {
+   "zh": "Commissioning During Installation / 安裝階段試運行活動",
+   "en": "Commissioning During Installation"
+  },
+  {
+   "zh": "「紅線圖」(Red-Line Drawings) 詳解",
+   "en": "Red-Line Drawings Explained"
+  },
+  {
+   "zh": "紅線圖是施工期間所有設計變更的<strong>即時文件記錄</strong>。名稱來自傳統上用紅筆在藍圖上標注變更的做法。其重要性在於：",
+   "en": "Red-line drawings are a <strong>real-time documentary record</strong> of all design changes made during construction. The name comes from the traditional practice of marking changes on blueprints in red pen. Their importance lies in the following:"
+  },
+  {
+   "zh": "記錄「as-built」狀態：實際安裝如何不同於設計圖",
+   "en": "They record the \"as-built\" state: how the actual installation differs from the design drawings"
+  },
+  {
+   "zh": "任何未記錄在紅線圖的變更，在稽查中都是違規（未授權變更）",
+   "en": "Any change not recorded on the red-line drawings is a violation (unauthorized change) in an audit"
+  },
+  {
+   "zh": "紅線圖由試運行團隊即時維護，不是事後補寫",
+   "en": "Red-line drawings are maintained in real time by the commissioning team, not written up after the fact"
+  },
+  {
+   "zh": "完成後需正式轉為更新版本的工程圖，不能永遠停留在「紅線」狀態",
+   "en": "Once complete, they must be formally converted into updated versions of the engineering drawings and cannot remain in \"red-line\" status indefinitely"
+  },
+  {
+   "zh": "「如果它不在紅線圖上，它等於沒發生。如果它發生了但不在紅線圖上，它就是未經授權的變更。」",
+   "en": "\"If it is not on the red-line drawings, it did not happen. If it happened but is not on the red-line drawings, it is an unauthorized change.\""
+  },
+  {
+   "zh": "FAT 在廠商工廠中完成，但設備運輸到現場後發現壓縮機有輕微損傷。哪些 FAT 測試需要在現場 SAT 中重新執行？判斷標準是什麼？",
+   "en": "FAT was completed at the vendor's factory, but after the equipment was shipped to site, minor damage to the compressor was found. Which FAT tests need to be repeated in the on-site SAT? What are the criteria for deciding?"
+  },
+  {
+   "zh": "試運行期間調校（Balancing and fine tuning）發現溫度均一性不符合設計規格。如果技術員直接調整 PLC 設定後重測通過，但沒有走工程變更流程，後續 IQ 審查時會面臨什麼問題？",
+   "en": "During balancing and fine tuning in commissioning, temperature uniformity is found not to meet the design specification. If a technician adjusts the PLC settings directly and the retest passes, but no engineering change process was followed, what problems will arise at the later IQ review?"
+  },
+  {
+   "zh": "Lock Out/Tag Out (LOTO) 程序主要針對人員安全。但若 LOTO 記錄不完整，這對 GMP 合規有何影響（提示：想想設備使用狀態記錄）？",
+   "en": "Lock Out/Tag Out (LOTO) procedures are mainly about personnel safety. But if LOTO records are incomplete, what is the impact on GMP compliance? (Hint: think about equipment usage status records.)"
+  },
+  {
+   "zh": "工程變更管理：試運行期間的實務操作",
+   "en": "Engineering Change Management: Practical Handling During Commissioning"
+  },
+  {
+   "zh": "試運行期間測試失敗是正常的 — 但處理方式決定文件的可接受性：",
+   "en": "Test failures during commissioning are normal, but how they are handled determines whether the documentation is acceptable:"
+  },
+  {
+   "zh": "Handover, System Manual &amp; Safety / 移交、系統手冊與安全",
+   "en": "Handover, System Manual &amp; Safety"
+  },
+  {
+   "zh": "移交後的責任轉移",
+   "en": "Transfer of Responsibility at Handover"
+  },
+  {
+   "zh": "移交（Handover）是一個正式的責任轉移事件：",
+   "en": "Handover is a formal event in which responsibility is transferred:"
+  },
+  {
+   "zh": "<strong>移交前</strong>：設施/工程部門對設備負責，GMP 尚未適用",
+   "en": "<strong>Before handover</strong>: facilities/engineering is responsible for the equipment, and GMP does not yet apply"
+  },
+  {
+   "zh": "<strong>移交後</strong>：生產/QA 部門接管，GMP 完全適用",
+   "en": "<strong>After handover</strong>: production/QA takes over, and GMP applies in full"
+  },
+  {
+   "zh": "操作 SOP、維護程序需在移交前建立並培訓相關人員",
+   "en": "Operating SOPs and maintenance procedures must be established, and relevant personnel trained, before handover"
+  },
+  {
+   "zh": "移交後的任何變更必須走正式 GMP 變更管控，不能再以「試運行調整」處理",
+   "en": "Any change after handover must go through formal GMP change control and can no longer be handled as a \"commissioning adjustment\""
+  },
+  {
+   "zh": "試運行的 Punch list 中有 3 個第 4 類（輕微不影響操作）項目仍 open，確認工作是否可以開始？請說明理由和需要的文件記錄。",
+   "en": "The commissioning punch list still has three open Category 4 items (minor, with no impact on operation). Can qualification work begin? Explain your reasoning and the documentation required."
+  },
+  {
+   "zh": "一台已完成確認的 -80°C 冷凍庫，因夏季空調故障導致設備間溫度升高 8°C 達 4 小時，之後恢復正常。需要執行哪些評估和記錄？是否需要重新確認？",
+   "en": "A -80°C freezer that has already been qualified is affected by an air-conditioning failure in the summer, causing the equipment room temperature to rise by 8°C for 4 hours before returning to normal. What assessments and records are needed? Is requalification required?"
+  },
+  {
+   "zh": "客戶要求在已確認的冷藏室中增加一層貨架以提高儲存量。依據變更觸發矩陣，應走什麼程序？需要的最低限度重新確認是什麼？",
+   "en": "A client asks to add a shelf to an already qualified cold room to increase storage capacity. According to the change trigger matrix, what procedure should be followed? What is the minimum requalification required?"
+  },
+  {
+   "zh": "Punch List（待辦清單）的 GMP 實務意義",
+   "en": "GMP Practical Significance of the Punch List"
+  },
+  {
+   "zh": "Punch list 是試運行移交的關鍵工具，但其分類直接決定移交是否可以進行：",
+   "en": "The punch list is a key tool for commissioning handover, but its categorization directly determines whether handover can proceed:"
+  },
+  {
+   "zh": "稽查員常關注：第 1-3 類項目是否在移交前確實完成關閉？若移交時仍有 open items 且屬 1-3 類，這是嚴重缺失。",
+   "en": "Auditors often focus on this: were Category 1-3 items actually closed out before handover? If Category 1-3 items remain open at handover, this is a serious deficiency."
+  },
+  {
+   "zh": "試運行 vs. 安裝確認 / 操作確認 / 性能確認 全面比較",
+   "en": "Commissioning vs. IQ / OQ / PQ: A Full Comparison"
+  },
+  {
+   "zh": "\"Commissioning is the engineering proof; qualification is the regulatory proof — both are necessary, they are not redundant.\"\n            <br/><span style=\"font-size:0.9rem; font-weight:400; opacity:0.9; margin-top:0.4rem; display:block;\">試運行是工程層面的驗證；確認是法規層面的驗證 — 兩者都是必要的，互不取代。</span>",
+   "en": "\"Commissioning is the engineering proof; qualification is the regulatory proof — both are necessary, they are not redundant.\"\n            <br/><span style=\"font-size:0.9rem; font-weight:400; opacity:0.9; margin-top:0.4rem; display:block;\">Commissioning is verification at the engineering level; qualification is verification at the regulatory level. Both are necessary, and neither replaces the other.</span>"
+  },
+  {
+   "zh": "下表比較試運行與三個正式確認階段。理解兩者的差異與重疊，是設計高效合規的 CTC 確認策略的基礎。",
+   "en": "The table below compares commissioning with the three formal qualification stages. Understanding where the two differ and where they overlap is the basis for designing an efficient and compliant CTC qualification strategy."
+  },
+  {
+   "zh": "校正追溯鏈說明 — Calibration Traceability Chain",
+   "en": "Calibration Traceability Chain"
+  },
+  {
+   "zh": "Mapping 前的感測器校正必須建立完整的<strong>計量追溯鏈</strong>，確保測量結果可追溯至國家/國際標準：",
+   "en": "Sensor calibration before mapping must establish a complete <strong>metrological traceability chain</strong>, ensuring that measurement results are traceable to national/international standards:"
+  },
+  {
+   "zh": "NIST / SI 國際標準",
+   "en": "NIST / SI international standards"
+  },
+  {
+   "zh": "認可校正實驗室參考標準（ISO/IEC 17025）",
+   "en": "Accredited calibration laboratory reference standards (ISO/IEC 17025)"
+  },
+  {
+   "zh": "廠內工作標準（每年校正）",
+   "en": "In-house working standards (calibrated annually)"
+  },
+  {
+   "zh": "Mapping 用溫度感測器（每次使用前校正）",
+   "en": "Temperature sensors used for mapping (calibrated before each use)"
+  },
+  {
+   "zh": "設備內建控制探針 / 獨立監控感測器",
+   "en": "Equipment built-in control probe / independent monitoring sensors"
+  },
+  {
+   "zh": "每個環節都必須有有效的校正證書，記錄：校正日期、有效期、不確定度、校正機構認可資格。校正記錄必須在 mapping 開始前完成，並包含在 mapping 報告的附件中。",
+   "en": "Every link must have a valid calibration certificate recording the calibration date, expiry date, uncertainty and the accreditation status of the calibration body. Calibration records must be completed before mapping starts and included as an appendix to the mapping report."
+  },
+  {
+   "zh": "比喻：試運行與確認的完美比喻",
+   "en": "Analogy: The Perfect Analogy for Commissioning and Qualification"
+  },
+  {
+   "zh": "<strong>試運行 = 廚師烹飪時的試味</strong><br/>主廚烹飪過程中不斷嚐味、調整鹽糖、確認火候。這是廚藝的工程驗證——確保菜可以端出去。",
+   "en": "<strong>Commissioning = the chef tasting while cooking</strong><br/>The head chef tastes continually during cooking, adjusting salt and sugar and checking the heat. This is the engineering verification of the craft: making sure the dish is fit to be served."
+  },
+  {
+   "zh": "<strong>確認 = 餐廳衛生稽查</strong><br/>政府衛生人員按照法規標準進行稽查，確認廚房設施、溫度記錄、衛生標準都符合要求。這不是在重複廚師的工作——它是獨立的法規驗證，給公眾（和監管機構）信心。",
+   "en": "<strong>Qualification = the restaurant hygiene inspection</strong><br/>Government health officers inspect against regulatory standards to confirm that the kitchen facilities, temperature records and hygiene standards all meet requirements. This is not repeating the chef's work; it is an independent regulatory verification that gives the public (and regulators) confidence."
+  },
+  {
+   "zh": "廚師的試味（試運行）讓衛生稽查（確認）更容易通過，但兩者不能互相取代：試味通過不等於衛生稽查過關，衛生稽查也不能替代廚師的烹飪技術。",
+   "en": "The chef's tasting (commissioning) makes it easier to pass the hygiene inspection (qualification), but neither can replace the other: passing the taste test does not mean passing the hygiene inspection, and the hygiene inspection cannot substitute for the chef's cooking skill."
+  },
+  {
+   "zh": "<strong>核心訊息：</strong>完善的試運行讓確認工作更順暢、更有效率，但不能被確認所取代，也不能替代確認。兩者在 GMP 生命週期中各自有其不可取代的位置。",
+   "en": "<strong>Key message:</strong> Sound commissioning makes qualification smoother and more efficient, but it cannot be replaced by qualification, nor can it replace qualification. Each has its own irreplaceable place in the GMP lifecycle."
+  },
+  {
+   "zh": "綜合練習：整合思考題",
+   "en": "Integrated Exercises: Synthesis Questions"
+  },
+  {
+   "zh": "一個新建的 CDMO 設施計畫安裝 3 台 -80°C 冷凍庫、2 台步入式冷藏室和 4 台穩定性腔體。請描述如何設計一個整合的試運行與確認策略，以最大化效率、最小化重複工作，同時符合 GMP 要求。",
+   "en": "A new CDMO facility plans to install three -80°C freezers, two walk-in cold rooms and four stability chambers. Describe how you would design an integrated commissioning and qualification strategy that maximizes efficiency, minimizes duplicated work and still meets GMP requirements."
+  },
+  {
+   "zh": "客戶審計員詢問：「您的試運行文件和 IQ 文件有什麼不同？可以給我看紅線圖嗎？」請準備一個 2 分鐘的口頭解釋，說明兩者的角色和關係。",
+   "en": "A client auditor asks: \"How do your commissioning documents differ from your IQ documents? Can you show me the red-line drawings?\" Prepare a 2-minute verbal explanation of the roles of the two and how they relate."
+  },
+  {
+   "zh": "假設您是一個新設 CDMO 的 QA 主管，試運行負責人（工程部門）告訴您：「試運行都做完了，我們可以直接進行 OQ，跳過 IQ 嗎？因為試運行報告裡已經有所有的安裝核查數據。」您如何回應？需要什麼條件才能接受這個提議？",
+   "en": "Suppose you are the QA head of a new CDMO and the commissioning lead (from engineering) tells you: \"Commissioning is all done; can we go straight to OQ and skip IQ? The commissioning report already contains all the installation verification data.\" How would you respond? What conditions would have to be met before you would accept this proposal?"
+  },
+  {
+   "zh": "Mapping 前的感測器校正需要 NIST 追溯性。您的廠內有一台未經 ISO/IEC 17025 認可的溫度校正器。這台設備能否用於 mapping 前的校正？如果不能，應如何解決？",
+   "en": "Sensor calibration before mapping requires NIST traceability. Your site has a temperature calibrator that is not ISO/IEC 17025 accredited. Can this device be used for pre-mapping calibration? If not, how should this be resolved?"
+  }
+ ]
+}

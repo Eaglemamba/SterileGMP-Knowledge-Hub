@@ -1,0 +1,537 @@
+{
+ "source": "section-05b-risk-reduction-hvac.html",
+ "blocks": [
+  {
+   "zh": "本節內容 Contents",
+   "en": "Contents"
+  },
+  {
+   "zh": "學習目標 Learning Objectives",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解單通 (Once-Through) 與循環 (Recirculation) HVAC 系統的適用情境與法規要求",
+   "en": "Understand the applicable scenarios and regulatory requirements for once-through and recirculation HVAC systems"
+  },
+  {
+   "zh": "掌握空氣傳播交叉污染風險的定量計算方法，包括粒徑、質量與過濾效率的關係",
+   "en": "Master the quantitative method for calculating airborne cross-contamination risk, including the relationship between particle size, mass, and filtration efficiency"
+  },
+  {
+   "zh": "了解定向氣流與壓力梯度設計原則：正壓、負壓、氣鎖型別的應用",
+   "en": "Understand the design principles of directional airflow and pressure gradients: the application of positive pressure, negative pressure, and airlock types"
+  },
+  {
+   "zh": "理解密閉系統選擇層級：從開放操作到 LEV、手套箱、隔離器",
+   "en": "Understand the hierarchy of containment system selection: from open operation to LEV, glovebox, and isolator"
+  },
+  {
+   "zh": "掌握 PPE / RPE 在有害化合物製造中的角色與限制",
+   "en": "Master the role and limitations of PPE / RPE in the manufacture of hazardous compounds"
+  },
+  {
+   "zh": "HVAC and Environmental Control — 概論",
+   "en": "HVAC and Environmental Control — Overview"
+  },
+  {
+   "zh": "解說：三層 HVAC 控制概念",
+   "en": "Commentary: The Three-Level HVAC Control Concept"
+  },
+  {
+   "zh": "三層控制距離原則",
+   "en": "The Three-Level Control Distance Principle"
+  },
+  {
+   "zh": "HVAC 控制效能與距離成反比。越靠近污染源，控制越有效：",
+   "en": "HVAC control effectiveness is inversely proportional to distance. The closer to the contamination source, the more effective the control:"
+  },
+  {
+   "zh": "<strong>Room Level（房間層）</strong>：靠大量換氣稀釋，效果依賴人員行為與操作技術，是最脆弱的一層。",
+   "en": "<strong>Room Level</strong>: dilution by high air change rates; effectiveness depends on personnel behavior and operating technique, making this the most fragile level."
+  },
+  {
+   "zh": "<strong>Local Ventilation（局部層）</strong>：LEV（局部排氣通風）在污染源附近直接捕集，比房間換氣更高效，捕集的是高濃度空氣。",
+   "en": "<strong>Local Ventilation</strong>: LEV (local exhaust ventilation) captures directly near the contamination source, which is more efficient than room air changes because it captures high-concentration air."
+  },
+  {
+   "zh": "<strong>Equipment Level（設備層）</strong>：隔離器、RABS 等將製程完全包覆，把「潔淨區」縮小到最小範圍，周圍環境降為支援區。",
+   "en": "<strong>Equipment Level</strong>: isolators, RABS, and similar systems fully enclose the process, shrinking the \"clean zone\" to the smallest possible area and reducing the surrounding environment to a support area."
+  },
+  {
+   "zh": "比喻：廚房油煙機",
+   "en": "Analogy: The Kitchen Range Hood"
+  },
+  {
+   "zh": "把炒鍋油煙想成 API 粉塵。<br/>\n                        房間換氣 = 開窗讓風吹散 → 效果差<br/>\n                        LEV = 油煙機抽直接在鍋上方 → 效果好<br/>\n                        密閉設備 = 在密閉蒸汽爐裡烹調 → 幾乎零逸散",
+   "en": "Think of stir-fry cooking fumes as API dust.<br/>\n                        Room air changes = opening a window to let the wind blow it away → poor result<br/>\n                        LEV = a range hood pulling directly above the wok → good result<br/>\n                        Containment equipment = cooking inside a sealed steamer → almost zero escape"
+  },
+  {
+   "zh": "生命科學 HVAC 設計就是讓每一層互補，形成縱深防禦。",
+   "en": "Life sciences HVAC design makes each level complement the others, forming defense in depth."
+  },
+  {
+   "zh": "重點提示：潔淨度 vs 密閉度的矛盾",
+   "en": "Key Point: The Conflict Between Cleanliness and Containment"
+  },
+  {
+   "zh": "高效能藥品廠常見矛盾：<br/>\n                        - 產品保護需要正壓（防外部污染進入）<br/>\n                        - 人員和環境保護需要負壓（防 API 逸出）<br/>\n                        設計時需根據產品毒性（OEL/HBEL）決定哪個優先，並採用氣鎖隔離兩種需求。",
+   "en": "A common conflict in highly potent drug facilities:<br/>\n                        - Product protection requires positive pressure (to keep external contamination out)<br/>\n                        - Personnel and environmental protection require negative pressure (to keep API in)<br/>\n                        At the design stage, decide which takes priority according to product toxicity (OEL/HBEL), and use airlocks to separate the two requirements."
+  },
+  {
+   "zh": "交叉參考",
+   "en": "Cross-Reference"
+  },
+  {
+   "zh": "詳細 HVAC 設計規範請參考：<br/>\n                        - <strong>ISPE Good Practice Guide: HVAC</strong>（專門處理 HVAC 系統設計）<br/>\n                        - <strong>ISPE Baseline® Guide Vol. 3</strong>（Sterile Manufacturing Facilities）",
+   "en": "For detailed HVAC design requirements, see:<br/>\n                        - <strong>ISPE Good Practice Guide: HVAC</strong> (dedicated to HVAC system design)<br/>\n                        - <strong>ISPE Baseline® Guide Vol. 3</strong> (Sterile Manufacturing Facilities)"
+  },
+  {
+   "zh": "解說：單通 vs 循環系統的決策邏輯",
+   "en": "Commentary: Decision Logic for Once-Through vs. Recirculation Systems"
+  },
+  {
+   "zh": "核心概念",
+   "en": "Core Concepts"
+  },
+  {
+   "zh": "<strong>單通系統（Once-Through / 100% Exhaust）</strong>：供氣全部來自新鮮外氣，排氣全部排至室外（經處理）。無再循環，交叉污染風險最低，但能耗極高。",
+   "en": "<strong>Once-Through system (100% Exhaust)</strong>: all supply air is fresh outside air and all exhaust air is discharged outdoors (after treatment). There is no recirculation, so the cross-contamination risk is lowest, but energy consumption is very high."
+  },
+  {
+   "zh": "<strong>循環系統（Recirculation）</strong>：部分或全部回風再使用，節能，但需要過濾處理以移除 API 粒子。",
+   "en": "<strong>Recirculation system</strong>: part or all of the return air is reused, which saves energy, but filtration is needed to remove API particles."
+  },
+  {
+   "zh": "法規核心要求",
+   "en": "Core Regulatory Requirements"
+  },
+  {
+   "zh": "EU GMP Annex 15 及多國 GMP 規定：多品種共用設施中，若空氣循環使用，必須「充分處理」（adequately treated）。「充分」的定義由風險評估決定（見 9.6.2）。",
+   "en": "EU GMP Annex 15 and the GMP rules of many countries: in multi-product facilities, if air is recirculated it must be \"adequately treated\". What counts as \"adequate\" is determined by risk assessment (see 9.6.2)."
+  },
+  {
+   "zh": "對於高毒性化合物（低 OEL / HBEL），「充分處理」通常意味著：<br/>\n                        → 雙重 HEPA 過濾，或<br/>\n                        → 100% 排氣（完全不循環）",
+   "en": "For highly toxic compounds (low OEL / HBEL), \"adequately treated\" usually means:<br/>\n                        → double HEPA filtration, or<br/>\n                        → 100% exhaust (no recirculation at all)"
+  },
+  {
+   "zh": "比喻：辦公室空調 vs 化學實驗室抽風",
+   "en": "Analogy: Office Air Conditioning vs. Chemical Laboratory Exhaust"
+  },
+  {
+   "zh": "一般辦公室空調把排氣循環再用是合理的（無毒性氣體）。但化學實驗室通風櫃的排氣一定要 100% 排到室外，不能循環回辦公室。API 粉塵處理邏輯相同：毒性越高，越傾向 100% 排氣。",
+   "en": "It is reasonable for ordinary office air conditioning to recirculate and reuse its air (no toxic gases). But the exhaust from a chemical laboratory fume hood must be 100% discharged outdoors and must never be recirculated back into the office. The logic for handling API dust is the same: the higher the toxicity, the more strongly 100% exhaust is favored."
+  },
+  {
+   "zh": "解說：空氣傳播交叉污染量化方法",
+   "en": "Commentary: Quantification Method for Airborne Cross-Contamination"
+  },
+  {
+   "zh": "核心計算公式：空氣傳播污染質量評估",
+   "en": "Core Calculation: Assessment of Airborne Contamination Mass"
+  },
+  {
+   "zh": "量化方法的核心邏輯分三步：",
+   "en": "The core logic of the quantification method has three steps:"
+  },
+  {
+   "zh": "步驟 1：確定污染源的空氣中 API 濃度\n  來源：EHS 監測數據，單位 µg/m³\n  → 代入粒徑分布（各粒徑質量佔比）\n\n步驟 2：計算過濾效率的保護因子\n  各粒徑殘留質量 = 總質量 × (1 - 過濾效率%)\n  → 參考 ANSI/ASHRAE 52.2 或 EN 1822 分效率數據\n  → 對 12 個粒徑區間逐一計算\n  → 加總得到過濾後空氣總殘留質量\n\n步驟 3：驗證殘留濃度 ≤ 可接受限度\n  接受限度 = HBEL / ADE（基於健康的暴露限值）\n  → 若超標：升級過濾或改為 100% 排氣",
+   "en": "Step 1: Determine the airborne API concentration at the contamination source\n  Source: EHS monitoring data, in µg/m³\n  → Apply the particle size distribution (mass fraction at each particle size)\n\nStep 2: Calculate the protection factor from filtration efficiency\n  Residual mass at each particle size = total mass × (1 - filtration efficiency %)\n  → Refer to ANSI/ASHRAE 52.2 or EN 1822 fractional efficiency data\n  → Calculate for each of the 12 particle size bins\n  → Sum to obtain the total residual mass in the filtered air\n\nStep 3: Verify that the residual concentration is ≤ the acceptable limit\n  Acceptance limit = HBEL / ADE (health-based exposure limit)\n  → If exceeded: upgrade the filtration or switch to 100% exhaust"
+  },
+  {
+   "zh": "<strong>關鍵公式（粒子質量）：</strong>",
+   "en": "<strong>Key formula (particle mass):</strong>"
+  },
+  {
+   "zh": "粒子體積 = (4/3) × π × r³\n粒子質量 = 粒子體積 × 比重 (density)\n  （常用比重：0.6–1.0 g/cm³）\n\n粒徑效應：\n  10 µm 粒子質量 ≈ 5.2×10⁻⁴ µg\n  0.5 µm 粒子質量 ≈ 6.5×10⁻⁸ µg\n  質量比 = 10µm / 0.5µm ≈ 8,000倍",
+   "en": "Particle volume = (4/3) × π × r³\nParticle mass = particle volume × density\n  (typical density: 0.6–1.0 g/cm³)\n\nEffect of particle size:\n  10 µm particle mass ≈ 5.2×10⁻⁴ µg\n  0.5 µm particle mass ≈ 6.5×10⁻⁸ µg\n  Mass ratio = 10 µm / 0.5 µm ≈ 8,000 times"
+  },
+  {
+   "zh": "關鍵變數說明",
+   "en": "Explanation of Key Variables"
+  },
+  {
+   "zh": "<strong>Total Mass（各粒徑總質量）</strong>：來自 EHS 監測，單位 µg/m³",
+   "en": "<strong>Total Mass (total mass at each particle size)</strong>: from EHS monitoring, in µg/m³"
+  },
+  {
+   "zh": "<strong>Fractional Filter Efficiency（分效率）</strong>：各粒徑的過濾效率，來自 MERV 或 EN 標準測試",
+   "en": "<strong>Fractional Filter Efficiency</strong>: the filtration efficiency at each particle size, from MERV or EN standard testing"
+  },
+  {
+   "zh": "<strong>MERV（Minimum Efficiency Reporting Value）</strong>：美國 ASHRAE 過濾器分級標準",
+   "en": "<strong>MERV (Minimum Efficiency Reporting Value)</strong>: the US ASHRAE filter rating standard"
+  },
+  {
+   "zh": "<strong>EN 1822</strong>：歐洲 HEPA/ULPA 過濾器標準（對應 H13/H14）",
+   "en": "<strong>EN 1822</strong>: the European HEPA/ULPA filter standard (corresponding to H13/H14)"
+  },
+  {
+   "zh": "重要洞察：大粒子是交叉污染主要威脅",
+   "en": "Key Insight: Large Particles Are the Main Cross-Contamination Threat"
+  },
+  {
+   "zh": "直覺上可能以為小粒子（可飄浮更遠）風險更高，但實際上：",
+   "en": "Intuitively one might assume that small particles (which can drift farther) carry higher risk, but in fact:"
+  },
+  {
+   "zh": "大粒子（&gt;10 µm）含有的<strong>質量遠遠大於小粒子</strong>（體積與半徑三次方成正比）",
+   "en": "Large particles (&gt;10 µm) carry <strong>far more mass than small particles</strong> (volume is proportional to the cube of the radius)"
+  },
+  {
+   "zh": "大粒子沉降速度快，更容易落入開放容器或製程中",
+   "en": "Large particles settle quickly and are more likely to fall into open containers or the process"
+  },
+  {
+   "zh": "中等效率過濾器（MERV 11-13）對大粒子已有很好的捕集效果",
+   "en": "Medium-efficiency filters (MERV 11-13) already capture large particles very well"
+  },
+  {
+   "zh": "這意味著：<strong>交叉污染風險控制靠中等效率過濾即可有效管理，無需全部裝 HEPA</strong>（除非 API 毒性極高）。",
+   "en": "This means: <strong>cross-contamination risk can be managed effectively with medium-efficiency filtration, without fitting HEPA everywhere</strong> (unless the API is extremely toxic)."
+  },
+  {
+   "zh": "比喻：沙塵 vs 花粉",
+   "en": "Analogy: Sand Dust vs. Pollen"
+  },
+  {
+   "zh": "沙塵粒子大但重，飄不遠就落地，但一旦落在食物上就帶來大量質量（污染）。花粉雖細小但質量輕，飄很遠但每顆攜帶的污染量極少。API 粉塵的邏輯與此相同：大粒子才是交叉污染的主要質量來源。",
+   "en": "Sand dust particles are large but heavy; they do not drift far before landing, but once they land on food they bring a large mass of contamination. Pollen is fine but light; it drifts far, but each grain carries very little contamination. The logic for API dust is the same: large particles are the main source of mass in cross-contamination."
+  },
+  {
+   "zh": "與工業衛生學方法的連結",
+   "en": "Link to the Industrial Hygiene Method"
+  },
+  {
+   "zh": "本方法源自工業衛生師（Industrial Hygienist）用於工人安全的評估方法，差別在於：",
+   "en": "This method derives from the assessment approach industrial hygienists use for worker safety, with the following differences:"
+  },
+  {
+   "zh": "工業衛生：保護工人，關注吸入小粒子（&lt;10 µm）",
+   "en": "Industrial hygiene: protects workers, focusing on inhalation of small particles (&lt;10 µm)"
+  },
+  {
+   "zh": "交叉污染控制：保護產品，關注大粒子（&gt;10 µm）質量轉移",
+   "en": "Cross-contamination control: protects the product, focusing on mass transfer of large particles (&gt;10 µm)"
+  },
+  {
+   "zh": "兩者均用 µg/m³ 表達，數據可共用",
+   "en": "Both express results in µg/m³, so the data can be shared"
+  },
+  {
+   "zh": "思考練習",
+   "en": "Reflection Exercise"
+  },
+  {
+   "zh": "假設 EHS 監測數據顯示某粉塵處理間空氣中 API 濃度為 50 µg/m³，產品 HBEL = 0.5 µg/day，員工每日吸入量假設 10 m³：",
+   "en": "Suppose EHS monitoring data show an airborne API concentration of 50 µg/m³ in a powder handling room, the product HBEL = 0.5 µg/day, and the daily inhaled air volume of an employee is assumed to be 10 m³:"
+  },
+  {
+   "zh": "每日吸入 API 質量 = 50 × 10 = 500 µg/day → 超過 HBEL 1000 倍",
+   "en": "Daily inhaled API mass = 50 × 10 = 500 µg/day → exceeds the HBEL by 1000 times"
+  },
+  {
+   "zh": "需要過濾效率達到 99.9%（3 log）以上才能降至可接受水準",
+   "en": "A filtration efficiency of 99.9% (3 log) or higher is needed to bring it down to an acceptable level"
+  },
+  {
+   "zh": "→ 建議：MERV 15 或 HEPA，或 100% 排氣",
+   "en": "→ Recommendation: MERV 15 or HEPA, or 100% exhaust"
+  },
+  {
+   "zh": "解說：定向氣流與壓力梯度設計",
+   "en": "Commentary: Directional Airflow and Pressure Gradient Design"
+  },
+  {
+   "zh": "壓力梯度基本原則",
+   "en": "Basic Principles of Pressure Gradients"
+  },
+  {
+   "zh": "氣流從高壓流向低壓。壓力梯度設計的目標：讓「乾淨空氣」永遠往「可能被污染的區域」流，污染源區域維持負壓以防逸散。",
+   "en": "Air flows from high pressure to low pressure. The goal of pressure gradient design is to make \"clean air\" always flow toward \"areas that may be contaminated\", with the contamination source area kept at negative pressure to prevent escape."
+  },
+  {
+   "zh": "<strong>正壓（Positive Pressure）</strong>：防外部污染進入（保護產品）",
+   "en": "<strong>Positive Pressure</strong>: prevents external contamination from entering (protects the product)"
+  },
+  {
+   "zh": "<strong>負壓（Negative Pressure）</strong>：防 API 逸出（保護人員和其他產品）",
+   "en": "<strong>Negative Pressure</strong>: prevents API from escaping (protects personnel and other products)"
+  },
+  {
+   "zh": "對於高毒性 API 製造，通常以<strong>負壓為主</strong>，防止有害物質向外擴散。",
+   "en": "For the manufacture of highly toxic API, <strong>negative pressure is usually the main approach</strong> to prevent hazardous substances from spreading outward."
+  },
+  {
+   "zh": "壓力差設計數值",
+   "en": "Pressure Differential Design Values"
+  },
+  {
+   "zh": "建議壓差（相鄰房間）：10–15 Pa\n最低可接受壓差：5 Pa（低於此值難以維持方向性氣流）\n\n門縫氣流速度（在壓差作用下）：\n  3.0–3.5 m/s (600–700 fpm)\n  → 足以攜帶並阻止粒子逆向移動\n\n空氣流速（大面積掃流）：\n  ≥ 0.2 m/s (40 fpm)：用於降流罩\n  0.5–1.0 m/s (100–200 fpm)：用於定向控制",
+   "en": "Recommended pressure differential (adjacent rooms): 10–15 Pa\nMinimum acceptable pressure differential: 5 Pa (below this it is difficult to maintain directional airflow)\n\nAirflow velocity through door gaps (under the pressure differential):\n  3.0–3.5 m/s (600–700 fpm)\n  → sufficient to carry and stop particles from moving in the reverse direction\n\nAir velocity (sweeping a large area):\n  ≥ 0.2 m/s (40 fpm): for downflow booths\n  0.5–1.0 m/s (100–200 fpm): for directional control"
+  },
+  {
+   "zh": "矛盾困境：正壓 vs 負壓",
+   "en": "The Dilemma: Positive vs. Negative Pressure"
+  },
+  {
+   "zh": "製造廠常遇到的設計矛盾：",
+   "en": "A design conflict manufacturers often face:"
+  },
+  {
+   "zh": "產品保護 → 製造間正壓（防外部微生物污染）",
+   "en": "Product protection → positive pressure in the manufacturing room (to keep out external microbial contamination)"
+  },
+  {
+   "zh": "人員 / 環境保護 → 製造間負壓（防 API 粉塵外洩）",
+   "en": "Personnel / environmental protection → negative pressure in the manufacturing room (to prevent API dust leakage)"
+  },
+  {
+   "zh": "<strong>解決方案</strong>：在製造間與走廊之間插入氣鎖（Airlock），形成壓力緩衝區，走廊保持正壓，製造間保持負壓，兩者不直接相通。",
+   "en": "<strong>Solution</strong>: insert an airlock between the manufacturing room and the corridor to form a pressure buffer zone; the corridor stays at positive pressure and the manufacturing room at negative pressure, with the two not directly connected."
+  },
+  {
+   "zh": "比喻：病房隔離室",
+   "en": "Analogy: The Hospital Isolation Room"
+  },
+  {
+   "zh": "傳染病隔離室採用<strong>負壓</strong>（防止病毒外洩）；無塵室採用<strong>正壓</strong>（防止外部粒子進入）。API 製造間兼具兩種需求，氣鎖就是讓兩種需求共存的「緩衝帶」。",
+   "en": "An infectious disease isolation room uses <strong>negative pressure</strong> (to prevent the virus from leaking out); a cleanroom uses <strong>positive pressure</strong> (to prevent external particles from entering). An API manufacturing room has both needs, and the airlock is the \"buffer zone\" that lets the two needs coexist."
+  },
+  {
+   "zh": "氣鎖設計詳見：<strong>ISPE Good Practice Guide: HVAC</strong> 及 <strong>ISPE Baseline® Vol. 3 (Sterile Manufacturing Facilities)</strong>。具體壓差監控與驗證方法參考 ISPE C&amp;Q 指引。",
+   "en": "For airlock design details, see: <strong>ISPE Good Practice Guide: HVAC</strong> and <strong>ISPE Baseline® Vol. 3 (Sterile Manufacturing Facilities)</strong>. For specific pressure differential monitoring and validation methods, refer to the ISPE C&amp;Q guide."
+  },
+  {
+   "zh": "解說：密閉系統選擇層級",
+   "en": "Commentary: Hierarchy of Containment System Selection"
+  },
+  {
+   "zh": "密閉系統選擇層級（依 OEL/HBEL 分級）",
+   "en": "Hierarchy of Containment System Selection (graded by OEL/HBEL)"
+  },
+  {
+   "zh": "密閉技術的選擇遵循「能量控制層級」原則：先考慮工程控制（密閉）而非依賴行政控制（SOP）或 PPE。以下為從低到高的密閉層級：",
+   "en": "The choice of containment technology follows the principle of the hierarchy of controls: consider engineering controls (containment) first, rather than relying on administrative controls (SOPs) or PPE. The containment levels from low to high are as follows:"
+  },
+  {
+   "zh": "開放作業（Open Processing）<br/>\n<small>OEL &gt; 100 µg/m³ | 適合低毒性化合物</small>",
+   "en": "Open Processing<br/>\n<small>OEL &gt; 100 µg/m³ | suitable for low-toxicity compounds</small>"
+  },
+  {
+   "zh": "↓ 毒性增加",
+   "en": "↓ Increasing toxicity"
+  },
+  {
+   "zh": "局部排氣通風（LEV / Downflow Booth）<br/>\n<small>OEL 10–100 µg/m³ | 近場捕集，半開放</small>",
+   "en": "Local Exhaust Ventilation (LEV / Downflow Booth)<br/>\n<small>OEL 10–100 µg/m³ | near-field capture, semi-open</small>"
+  },
+  {
+   "zh": "密閉容器 / 密封設備（Closed Vessels / Systems）<br/>\n<small>OEL 1–10 µg/m³ | 降低逸散，人工干預點受控</small>",
+   "en": "Closed Vessels / Systems<br/>\n<small>OEL 1–10 µg/m³ | reduced escape, manual intervention points controlled</small>"
+  },
+  {
+   "zh": "手套箱 / 隔離器（Glovebox / Isolator）<br/>\n<small>OEL &lt; 1 µg/m³ | 完全物理隔離，最高等級</small>",
+   "en": "Glovebox / Isolator<br/>\n<small>OEL &lt; 1 µg/m³ | complete physical separation, highest level</small>"
+  },
+  {
+   "zh": "人員行為對不同密閉技術的影響",
+   "en": "Effect of Personnel Behavior on Different Containment Technologies"
+  },
+  {
+   "zh": "關鍵洞察：密閉程度越低，操作人員行為對實際密閉效果的影響越大。",
+   "en": "Key insight: the lower the degree of containment, the greater the influence of operator behavior on the actual containment achieved."
+  },
+  {
+   "zh": "<strong>開放操作 / LEV</strong>：操作技術、站位、移動速度對密閉效能影響最大",
+   "en": "<strong>Open operation / LEV</strong>: operating technique, standing position, and movement speed have the greatest effect on containment performance"
+  },
+  {
+   "zh": "<strong>半密閉（手套箱外接）</strong>：中等依賴人員行為",
+   "en": "<strong>Semi-closed (glovebox attached externally)</strong>: moderate dependence on personnel behavior"
+  },
+  {
+   "zh": "<strong>隔離器 / 完全密閉</strong>：人員行為影響最小，設備本身提供保障",
+   "en": "<strong>Isolator / fully closed</strong>: personnel behavior has the least effect; the equipment itself provides the assurance"
+  },
+  {
+   "zh": "→ 高毒性化合物不應依賴人員行為作為主要控制手段",
+   "en": "→ Highly toxic compounds should not rely on personnel behavior as the main means of control"
+  },
+  {
+   "zh": "比喻：口罩 vs 防護艙",
+   "en": "Analogy: Face Mask vs. Protective Cabin"
+  },
+  {
+   "zh": "開放作業 + PPE 就像戴口罩防病毒，效果取決於佩戴方法。隔離器就像把病毒放在完全密封的防護艙裡處理，效果幾乎不依賴人員技術。API 越毒，越需要靠近「防護艙」端的解決方案。",
+   "en": "Open operation + PPE is like wearing a face mask against a virus: the result depends on how it is worn. An isolator is like handling the virus inside a completely sealed protective cabin: the result barely depends on personnel skill. The more toxic the API, the more a solution toward the \"protective cabin\" end is needed."
+  },
+  {
+   "zh": "爆炸風險：常被忽略的設計考量",
+   "en": "Explosion Risk: A Commonly Overlooked Design Consideration"
+  },
+  {
+   "zh": "密閉系統的副作用：體積小、換氣率低，可能形成爆炸性粉塵濃度（Dust Explosion Limit）。設計時必須：",
+   "en": "A side effect of containment systems: small volume and low air change rate may create explosive dust concentrations (Dust Explosion Limit). The design must:"
+  },
+  {
+   "zh": "評估 API 粉塵的爆炸風險（MEC：Minimum Explosive Concentration）",
+   "en": "Evaluate the explosion risk of the API dust (MEC: Minimum Explosive Concentration)"
+  },
+  {
+   "zh": "若有風險：通入氮氣（Nitrogen Inerting）降低氧氣濃度",
+   "en": "If there is a risk: use nitrogen inerting (Nitrogen Inerting) to lower the oxygen concentration"
+  },
+  {
+   "zh": "所有金屬部件需接地，防止靜電火花引燃",
+   "en": "Ground all metal parts to prevent static sparks from igniting dust"
+  },
+  {
+   "zh": "採樣設計挑戰",
+   "en": "Sampling Design Challenge"
+  },
+  {
+   "zh": "密閉系統設計中最困難的環節之一是「採樣」（Sampling）。文件強調應主動質疑採樣是否必要——有時採樣的暴露風險遠大於獲得的品質資訊價值，應在工廠設計初期即納入討論，而非事後補救。",
+   "en": "One of the most difficult aspects of containment system design is sampling. The document stresses actively questioning whether sampling is necessary: sometimes the exposure risk of sampling far outweighs the value of the quality information obtained, and this should be discussed at the start of plant design rather than remedied afterwards."
+  },
+  {
+   "zh": "解說：PPE / RPE 的角色與限制",
+   "en": "Commentary: The Role and Limitations of PPE / RPE"
+  },
+  {
+   "zh": "RPE 的隱藏風險：機械轉移",
+   "en": "The Hidden Risk of RPE: Mechanical Transfer"
+  },
+  {
+   "zh": "RPE 本身可能成為交叉污染載體！",
+   "en": "RPE itself can become a cross-contamination carrier!"
+  },
+  {
+   "zh": "若 RPE 在高 API 濃度環境中使用後，未妥善儲存/去污就帶到其他區域，RPE 表面殘留的 API 會造成機械轉移。因此：",
+   "en": "If RPE used in a high API concentration environment is taken to other areas without being properly stored/decontaminated, the API residue on the RPE surface causes mechanical transfer. Therefore:"
+  },
+  {
+   "zh": "RPE 的使用、儲存、維護、去污程序必須文件化",
+   "en": "The use, storage, maintenance, and decontamination procedures for RPE must be documented"
+  },
+  {
+   "zh": "高毒性環境的 RPE 應視為危險廢棄物，不可帶出",
+   "en": "RPE used in highly toxic environments should be treated as hazardous waste and must not be taken out"
+  },
+  {
+   "zh": "建議在更衣間/氣鎖區域脫除 RPE，而非帶至走廊",
+   "en": "It is recommended to remove RPE in the change room / airlock area rather than taking it into the corridor"
+  },
+  {
+   "zh": "PPE 的四個功能（按重要性）",
+   "en": "Four Functions of PPE (in order of importance)"
+  },
+  {
+   "zh": "<strong>限制機械轉移</strong>：防止人員將 API 粉塵帶到其他區域（保護其他產品）",
+   "en": "<strong>Limiting mechanical transfer</strong>: preventing personnel from carrying API dust to other areas (protects other products)"
+  },
+  {
+   "zh": "<strong>保護產品</strong>：不脫屑材質的防護衣防止人員粒子污染產品（雙向保護）",
+   "en": "<strong>Protecting the product</strong>: non-shedding protective garments prevent personnel-generated particles from contaminating the product (two-way protection)"
+  },
+  {
+   "zh": "<strong>心理 / 行為標誌</strong>：穿上特定防護衣代表進入 GxP 環境，強化人員的合規意識",
+   "en": "<strong>Psychological / behavioral marker</strong>: putting on specific protective garments signals entry into a GxP environment, reinforcing personnel compliance awareness"
+  },
+  {
+   "zh": "<strong>皮膚化學防護</strong>：防止 API 的皮膚吸收（dermal exposure），對潛在毒性化合物尤為重要",
+   "en": "<strong>Chemical protection of the skin</strong>: preventing dermal exposure to the API, especially important for potentially toxic compounds"
+  },
+  {
+   "zh": "比喻：廚師帽的雙重意義",
+   "en": "Analogy: The Dual Meaning of a Chef's Hat"
+  },
+  {
+   "zh": "餐廳廚師的帽子（防脫髮）：<br/>\n                        - 保護食物不被頭髮污染（保護產品）<br/>\n                        - 防止廚師吸入食物蒸汽（保護人員）<br/>\n                        API 製造的 PPE 同樣具有雙向保護功能，但在有毒藥品環境中，人員保護的需求更為迫切，RPE 的選擇必須基於定量風險評估。",
+   "en": "A restaurant chef's hat (to keep hair from falling out):<br/>\n                        - protects the food from contamination by hair (protects the product)<br/>\n                        - prevents the chef from inhaling food steam (protects personnel)<br/>\n                        PPE in API manufacturing likewise provides two-way protection, but in a toxic drug environment the need for personnel protection is more urgent, and the selection of RPE must be based on quantitative risk assessment."
+  },
+  {
+   "zh": "PPE 是最後一道防線，不是第一道",
+   "en": "PPE Is the Last Line of Defense, Not the First"
+  },
+  {
+   "zh": "依照 ISPE Vol.7 的風險降低層級邏輯（第 9 章整體框架）：",
+   "en": "According to the risk reduction hierarchy logic of ISPE Vol.7 (the overall framework of Chapter 9):"
+  },
+  {
+   "zh": "優先：<strong>工程控制</strong>（密閉設備、隔離器、LEV）",
+   "en": "First priority: <strong>engineering controls</strong> (containment equipment, isolators, LEV)"
+  },
+  {
+   "zh": "其次：<strong>行政控制</strong>（SOP、人員限制、更衣程序）",
+   "en": "Second: <strong>administrative controls</strong> (SOPs, personnel restrictions, gowning procedures)"
+  },
+  {
+   "zh": "最後：<strong>PPE / RPE</strong>（個人防護）",
+   "en": "Last: <strong>PPE / RPE</strong> (personal protection)"
+  },
+  {
+   "zh": "過度依賴 PPE 而不解決工程層面的問題，是 GMP 稽查常見缺失。",
+   "en": "Over-reliance on PPE without solving the problem at the engineering level is a common finding in GMP inspections."
+  },
+  {
+   "zh": "與其他章節的整合：風險接受",
+   "en": "Integration with Other Chapters: Risk Acceptance"
+  },
+  {
+   "zh": "第 9 章（風險降低）的所有措施——HVAC 設計、密閉系統、PPE——最終都要回到第 10 章（Risk Acceptance）：製造商需向所有利害相關人<strong>證明</strong>這些措施有效地將：",
+   "en": "All the measures in Chapter 9 (Risk Reduction) — HVAC design, containment systems, PPE — ultimately lead to Chapter 10 (Risk Acceptance): the manufacturer must <strong>demonstrate</strong> to all stakeholders that these measures effectively:"
+  },
+  {
+   "zh": "交叉污染維持在健康基礎限值以下（HBEL/ADE）",
+   "en": "Keep cross-contamination below the health-based limit (HBEL/ADE)"
+  },
+  {
+   "zh": "工人暴露維持在 OEL 以下",
+   "en": "Keep worker exposure below the OEL"
+  },
+  {
+   "zh": "這需要監控數據、驗證記錄，以及偏差調查機制的整體配合。",
+   "en": "This requires monitoring data, validation records, and a deviation investigation mechanism working together as a whole."
+  },
+  {
+   "zh": "總結",
+   "en": "Summary"
+  },
+  {
+   "zh": "Chapter 9 (Part B) 綜合總結",
+   "en": "Chapter 9 (Part B) Consolidated Summary"
+  },
+  {
+   "zh": "HVAC、密閉技術、PPE 三者的整合應用邏輯",
+   "en": "Integrated application logic of HVAC, containment technology, and PPE"
+  },
+  {
+   "zh": "實務應用矩陣",
+   "en": "Practical Application Matrix"
+  },
+  {
+   "zh": "章節間連結",
+   "en": "Links Between Sections"
+  },
+  {
+   "zh": "本節（第 9 章後半）的技術選擇，均需對應回：",
+   "en": "The technical choices in this section (the second half of Chapter 9) must all map back to:"
+  },
+  {
+   "zh": "<strong>第 5 章</strong>：OEL / HBEL / ADE 的設定（選擇依據）",
+   "en": "<strong>Chapter 5</strong>: setting of OEL / HBEL / ADE (the basis for selection)"
+  },
+  {
+   "zh": "<strong>第 8 章</strong>：設施與設備設計（含 GMP 區域規劃）",
+   "en": "<strong>Chapter 8</strong>: facility and equipment design (including GMP area planning)"
+  },
+  {
+   "zh": "<strong>第 10 章</strong>：風險接受的文件化與驗證要求",
+   "en": "<strong>Chapter 10</strong>: documentation and verification requirements for risk acceptance"
+  },
+  {
+   "zh": "<strong>第 11 章</strong>：FMEA 等工具對失效情境的量化分析",
+   "en": "<strong>Chapter 11</strong>: quantitative analysis of failure scenarios with tools such as FMEA"
+  }
+ ]
+}

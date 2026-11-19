@@ -1,0 +1,785 @@
+{
+ "source": "section-01b-equipment-quality.html",
+ "blocks": [
+  {
+   "zh": "設備設計與品質要求",
+   "en": "Equipment Design and Quality Requirements"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives for This Chapter"
+  },
+  {
+   "zh": "掌握 SUT <strong>感測器、閥門、泵浦、生物反應器</strong>等製程設備的設計考量，理解各類設備的選型邏輯與限制",
+   "en": "Understand the design considerations for SUT process equipment, including <strong>sensors, valves, pumps and bioreactors</strong>, and the selection logic and limitations of each type"
+  },
+  {
+   "zh": "理解單次使用系統的<strong>環境需求分類</strong>——開放式、封閉式、功能性封閉製程的差異，以及對潔淨室等級要求的影響",
+   "en": "Understand the <strong>environmental classification</strong> of single-use systems (open, closed and functionally closed processes), and how it affects cleanroom grade requirements"
+  },
+  {
+   "zh": "掌握 SUT <strong>品質要求的三個層次</strong>：單次使用組件、組合件、系統，各層次的品質要求重點與差異",
+   "en": "Understand the <strong>three levels of SUT quality requirements</strong> (single-use components, assemblies and systems), and the key focus and differences at each level"
+  },
+  {
+   "zh": "理解<strong>濕面 (wetted) / 非濕面 (non-wetted) 組件</strong>的分類概念，以及對應的品質要求差異（生物負荷、內毒素、微粒、完整性測試等）",
+   "en": "Understand the classification of <strong>wetted / non-wetted components</strong> and the corresponding differences in quality requirements (bioburden, endotoxin, particulates, integrity testing, etc.)"
+  },
+  {
+   "zh": "熟悉<strong>供應商評估矩陣</strong>的應用——從組件供應商到組合件供應商到系統供應商的多層次管理架構",
+   "en": "Become familiar with applying the <strong>supplier assessment matrix</strong>: a multi-level management structure that runs from component suppliers to assembly suppliers to system suppliers"
+  },
+  {
+   "zh": "掌握<strong>品質管理系統方法</strong>：QbD (ICH Q8)、QRM (ICH Q9)、CoC / CoQ 文件要求，以及終端使用者的進料檢驗實務",
+   "en": "Understand the <strong>quality management system approach</strong>: QbD (ICH Q8), QRM (ICH Q9), CoC / CoQ documentation requirements, and incoming inspection practice for end users"
+  },
+  {
+   "zh": "2.3 Process Equipment Design （製程設備設計）— 概述",
+   "en": "2.3 Process Equipment Design - Overview"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念：製程設備設計的挑戰",
+   "en": "Key Concept: The Challenge of Process Equipment Design"
+  },
+  {
+   "zh": "從傳統不鏽鋼設備轉向 SUT，最難的地方不是技術，而是<strong>選擇適合的組件</strong>。傳統系統幾十年來已有標準規格，但 SUT 市場仍在快速演進，沒有「一套通吃」的標準。",
+   "en": "In moving from conventional stainless steel equipment to SUT, the hardest part is not the technology but <strong>choosing suitable components</strong>. Conventional systems have had standard specifications for decades, but the SUT market is still evolving quickly and there is no \"one size fits all\" standard."
+  },
+  {
+   "zh": "這一節的邏輯是：先有 <strong>User Requirements（使用者需求）</strong>，再根據需求評估哪些 SU 組件「適配」製程。適配性 (Process Suitability) 是第一優先，而非品牌或成本。",
+   "en": "The logic of this section is: start with the <strong>User Requirements</strong>, then evaluate which SU components \"fit\" the process. Process Suitability comes first, ahead of brand or cost."
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "就像裝修新廚房——你不是直接去建材行買最貴的設備，而是先想清楚「我每天要煮幾個人的飯、用什麼烹飪方式、廚房有多大空間」。SUT 選型也一樣：先寫 URS（使用者需求規格書），再去找能滿足需求的供應商。",
+   "en": "It is like fitting out a new kitchen. You do not simply go to the supplier and buy the most expensive equipment; you first work out how many people you cook for each day, which cooking methods you use and how much space you have. SUT selection works the same way: write the URS (User Requirements Specification) first, then look for suppliers who can meet it."
+  },
+  {
+   "zh": "CDMO 應用情境",
+   "en": "CDMO Application Scenario"
+  },
+  {
+   "zh": "在 CDMO 環境下，同一設施可能服務不同客戶的製程。選擇 SUT 組件時要特別考慮<strong>彈性</strong>——能否適用於不同製程流體？能否支援不同批量規模？這直接影響設備投資的回收效率。",
+   "en": "In a CDMO, the same facility may serve the processes of different clients. When selecting SUT components, pay special attention to <strong>flexibility</strong>: can the component be used with different process fluids? Can it support different batch scales? This directly affects how quickly the equipment investment pays back."
+  },
+  {
+   "zh": "2.3.1 Sensors （感測器）",
+   "en": "2.3.1 Sensors"
+  },
+  {
+   "zh": "核心概念：感測器選型的黃金原則",
+   "en": "Key Concept: Golden Rules for Sensor Selection"
+  },
+  {
+   "zh": "單次使用感測器不是把傳統感測器直接換成拋棄式這麼簡單——<strong>感測技術的根本原理</strong>決定了它在特定應用中是否可靠。",
+   "en": "Single-use sensors are not simply conventional sensors swapped for disposable ones. The <strong>underlying principle of the sensing technology</strong> determines whether it is reliable in a given application."
+  },
+  {
+   "zh": "最容易忽略的陷阱：<strong>供應商鎖定 (Supplier Lock-in)</strong>。選擇使用專屬接頭的感測器，就等於把未來的採購選擇綁定在單一供應商。ISPE 明確建議優先選擇標準化接頭設計。",
+   "en": "The trap most easily overlooked is <strong>supplier lock-in</strong>. Choosing sensors with proprietary connectors ties your future purchasing options to a single supplier. ISPE explicitly recommends giving preference to standardized connector designs."
+  },
+  {
+   "zh": "紅外線旋轉流量計用有色培養基就會失準——就像用可見光測量深色玻璃後面的物體，顏色本身就會干擾讀值。這個例子提醒我們：感測器的物理原理決定了應用限制，不能只看規格表，要理解背後的量測機制。",
+   "en": "An infrared rotary flow meter will read inaccurately with a colored culture medium, much like trying to measure an object behind dark glass with visible light, where the color itself interferes with the reading. The lesson is that the physical principle of a sensor determines its application limits. Do not rely on the datasheet alone; understand the measurement mechanism behind it."
+  },
+  {
+   "zh": "流量計精度與成本比較框架",
+   "en": "Framework for Comparing Flow Meter Accuracy and Cost"
+  },
+  {
+   "zh": "精度高低：Coriolis (±1%) &gt; Ultrasonic &gt; Magnetic &gt; Rotary (±5%)\n成本高低：Coriolis &gt; Ultrasonic &gt; Magnetic &gt; Rotary\n可移動性：Ultrasonic 最佳（夾管式，不需切斷管路）\n限制注意：Magnetic 無法用於去離子水（無導電性）",
+   "en": "Accuracy: Coriolis (±1%) &gt; Ultrasonic &gt; Magnetic &gt; Rotary (±5%)\nCost: Coriolis &gt; Ultrasonic &gt; Magnetic &gt; Rotary\nPortability: Ultrasonic is best (clamp-on type, no need to cut into the line)\nLimitation: Magnetic cannot be used with deionized water (no conductivity)"
+  },
+  {
+   "zh": "重點提示：pH 感測器的實務陷阱",
+   "en": "Key Point: Practical Pitfalls of pH Sensors"
+  },
+  {
+   "zh": "Sensor Spots（光學感測貼片）操作方便，但<strong>特定細胞培養基成分會影響讀值準確性</strong>。ISPE 特別提醒：正式導入前，終端使用者必須用自己的培養基、饋料液和緩衝液進行驗證，不能光靠供應商規格書。",
+   "en": "Sensor Spots (optical sensor patches) are convenient to use, but <strong>certain cell culture medium components can affect reading accuracy</strong>. ISPE specifically cautions that before formal adoption, end users must verify performance with their own media, feed solutions and buffers, and cannot rely on supplier specifications alone."
+  },
+  {
+   "zh": "在 GMP 生產環境，感測器的<strong>校正策略</strong>必須在驗證計畫中記載清楚——包括使用前校正、使用後確認，以及可接受的漂移範圍。",
+   "en": "In a GMP production environment, the <strong>calibration strategy</strong> for sensors must be clearly documented in the validation plan, including pre-use calibration, post-use verification and the acceptable drift range."
+  },
+  {
+   "zh": "CDMO 應用情境：生物製程感測",
+   "en": "CDMO Application Scenario: Bioprocess Sensing"
+  },
+  {
+   "zh": "在無菌充填的 CDMO 製程中，pH 和 DO 是上游生物反應器的關鍵參數。選擇 Single-use pH probe（可 gamma 照射）搭配 Single-use DO probe，可在不破壞無菌屏障的前提下完成 pre-use 安裝——對縮短批次切換時間（Changeover Time）非常關鍵。",
+   "en": "In a CDMO aseptic filling process, pH and DO are key parameters of the upstream bioreactor. Pairing a single-use pH probe (gamma-irradiable) with a single-use DO probe allows pre-use installation without breaching the sterile barrier, which is critical for shortening changeover time between batches."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "你的設施目前使用哪類 pH 量測方案？如果要切換為 Single-use probe，需要完成哪些驗證工作？",
+   "en": "What type of pH measurement solution does your facility currently use? If you were to switch to a single-use probe, what validation work would be needed?"
+  },
+  {
+   "zh": "當 Sensor Spots 的準確度不符合製程要求時，你的風險評估應涵蓋哪些面向？",
+   "en": "When the accuracy of Sensor Spots does not meet process requirements, what aspects should your risk assessment cover?"
+  },
+  {
+   "zh": "2.3.2 Single-Use Valves （單次使用閥門）",
+   "en": "2.3.2 Single-Use Valves"
+  },
+  {
+   "zh": "核心概念：流路控制的設計邏輯",
+   "en": "Key Concept: The Design Logic of Flow Path Control"
+  },
+  {
+   "zh": "SUT 的閥門設計圍繞一個核心原則：<strong>管路就是閥門</strong>。透過夾壓柔性管路來實現流路開關，無需任何接觸製程流體的金屬零件。",
+   "en": "SUT valve design centers on one core principle: <strong>the tubing is the valve</strong>. The flow path is opened and closed by pinching flexible tubing, with no metal parts in contact with the process fluid."
+  },
+  {
+   "zh": "<strong>氣動夾管閥 (Pneumatic pinch valve)</strong>：適合大管徑、高壓差，需要廠務提供壓縮空氣（90–100 psi）",
+   "en": "<strong>Pneumatic pinch valve</strong>: suited to large tubing diameters and high differential pressure; requires the facility to supply compressed air (90–100 psi)"
+  },
+  {
+   "zh": "<strong>電磁夾管閥 (Solenoid valve)</strong>：體積小，不需壓縮空氣，但承壓能力較低",
+   "en": "<strong>Solenoid valve</strong>: compact and needs no compressed air, but has lower pressure capability"
+  },
+  {
+   "zh": "<strong>步進馬達壓力控制閥</strong>：千段位置控制，可做精細流量調節，比氣動閥更靈活",
+   "en": "<strong>Stepper motor pressure control valve</strong>: position control in thousands of steps allows fine flow regulation and is more flexible than a pneumatic valve"
+  },
+  {
+   "zh": "重點提示",
+   "en": "Key Point"
+  },
+  {
+   "zh": "SUT 系統通常<strong>沒有真正的壓力額定值</strong>（與不鏽鋼管路不同），這意味著管路及閥門的壓力承受能力必須在設計階段仔細評估。若壓力超過管路承受極限，可能導致破袋或管路爆裂，是 SUT 實施的重要安全考量。",
+   "en": "SUT systems generally <strong>have no true pressure rating</strong> (unlike stainless steel piping), which means the pressure tolerance of the tubing and valves must be carefully evaluated at the design stage. If pressure exceeds the tubing limit, bags may rupture or tubing may burst, which is an important safety consideration in SUT implementation."
+  },
+  {
+   "zh": "在 aseptic fill-finish 前處理（如配製、過濾）流路中，電磁夾管閥因不需壓縮空氣管路配置，可讓整個 SU 配製系統更容易「模組化移動」，搭配輪式支架可靈活配置在不同生產套房內。",
+   "en": "In pre-aseptic fill-finish flow paths (such as compounding and filtration), solenoid pinch valves need no compressed air lines, so the whole SU compounding system can be more easily \"moved as a module\" and, with wheeled carts, flexibly set up in different production suites."
+  },
+  {
+   "zh": "2.3.3 Pumps （泵浦）",
+   "en": "2.3.3 Pumps"
+  },
+  {
+   "zh": "核心概念：泵浦類型選擇邏輯",
+   "en": "Key Concept: The Logic of Pump Type Selection"
+  },
+  {
+   "zh": "生物技術流體（特別是含活細胞或蛋白質的流體）對<strong>剪切力 (Shear Stress)</strong> 高度敏感。正排量泵（Positive Displacement Pump）以容積推動流體，對流體的剪切傷害遠低於離心泵。",
+   "en": "Biotechnology fluids (especially those containing living cells or proteins) are highly sensitive to <strong>shear stress</strong>. Positive displacement pumps move the fluid by volumetric displacement and cause far less shear damage to the fluid than centrifugal pumps."
+  },
+  {
+   "zh": "<strong>蠕動泵 (Peristaltic)</strong>：最常用、最靈活，管路是唯一接觸流體的部分，更換簡單",
+   "en": "<strong>Peristaltic</strong>: the most commonly used and most flexible; the tubing is the only part in contact with the fluid, and replacement is simple"
+  },
+  {
+   "zh": "<strong>隔膜泵 (Diaphragm)</strong>：高流量、長時間連續操作，適合大批量轉移",
+   "en": "<strong>Diaphragm</strong>: high flow rate and long continuous operation, suited to large-volume transfers"
+  },
+  {
+   "zh": "<strong>離心泵 (Centrifugal)</strong>：適合灌流系統，不會累積壓力至導致破袋",
+   "en": "<strong>Centrifugal</strong>: suited to perfusion systems and does not build up pressure to the point of bag rupture"
+  },
+  {
+   "zh": "比喻說明：Spallation（材料碎裂）",
+   "en": "Analogy: Spallation (Material Fragmentation)"
+  },
+  {
+   "zh": "就像橡皮筋用久了表面開始掉橡膠屑——蠕動泵管路長時間被滾輪反覆擠壓，材料疲勞後可能產生微小碎片進入製程流體。在生物製藥無菌製造中，這是嚴重的污染風險，必須用製程條件（而非純水）來評估 spallation 特性。",
+   "en": "It is like a rubber band that, after long use, starts to shed rubber crumbs from its surface. Peristaltic pump tubing is repeatedly squeezed by the rollers over a long period, and once the material fatigues it may release tiny fragments into the process fluid. In biopharmaceutical aseptic manufacturing this is a serious contamination risk, and spallation characteristics must be evaluated under process conditions (not with pure water)."
+  },
+  {
+   "zh": "重點提示：Gamma 照射對泵管的影響",
+   "en": "Key Point: Effect of Gamma Irradiation on Pump Tubing"
+  },
+  {
+   "zh": "Gamma 照射滅菌會讓多種塑料（特別是 PVC、EPDM 等彈性體）<strong>硬化 (Stiffening)</strong>。硬化後的管路在相同 RPM 下流量與原先不同——<strong>出廠前建立的流量–轉速校正曲線可能失效</strong>。ISPE 建議在照射後重新評估流量特性，並在工藝確認中納入此考量。",
+   "en": "Gamma irradiation sterilization causes many plastics (especially elastomers such as PVC and EPDM) to <strong>stiffen</strong>. Stiffened tubing delivers a different flow rate at the same RPM, so <strong>a flow-versus-speed calibration curve established before shipment may no longer be valid</strong>. ISPE recommends re-evaluating flow characteristics after irradiation and including this consideration in process qualification."
+  },
+  {
+   "zh": "泵浦脈衝控制框架",
+   "en": "Framework for Pump Pulsation Control"
+  },
+  {
+   "zh": "蠕動泵脈衝控制策略：\n  ↑ 管徑 → ↓ RPM → ↓ 脈衝頻率 → ↓ 剪切力\n              但 → ↓ 流速 → 空氣滯留風險↑\n  多通道泵頭 → 脈衝互相抵消 → 更平滑流量\n\n隔膜泵脈衝控制策略：\n  多個小隔膜交替動作 → 脈衝相位分散 → 流量更平穩",
+   "en": "Peristaltic pump pulsation control strategy:\n  ↑ Tubing diameter → ↓ RPM → ↓ Pulse frequency → ↓ Shear stress\n              but → ↓ Flow velocity → ↑ Risk of air entrapment\n  Multi-channel pump head → Pulses cancel each other → Smoother flow\n\nDiaphragm pump pulsation control strategy:\n  Multiple small diaphragms act alternately → Pulse phases dispersed → More stable flow"
+  },
+  {
+   "zh": "CDMO 應用情境：批次切換",
+   "en": "CDMO Application Scenario: Batch Changeover"
+  },
+  {
+   "zh": "SUT 蠕動泵最大優勢：管路更換不需要 CIP/SIP——直接換新管路即完成批次切換。但要注意每批更換管路後，必須重新確認泵速–流量關聯性（新管路的尺寸有批間差異）。在 GMP 環境中，這個確認步驟應記錄於 BPR 中。",
+   "en": "The biggest advantage of SUT peristaltic pumps is that changing the tubing requires no CIP/SIP: swapping in new tubing completes the batch changeover. However, after each tubing change the pump speed-flow relationship must be re-verified (tubing dimensions vary from lot to lot). In a GMP environment, this verification step should be recorded in the BPR."
+  },
+  {
+   "zh": "2.3.4 Bioreactors （生物反應器）",
+   "en": "2.3.4 Bioreactors"
+  },
+  {
+   "zh": "核心概念：為何 SU 生物反應器主要用於哺乳類細胞",
+   "en": "Key Concept: Why SU Bioreactors Are Mainly Used for Mammalian Cells"
+  },
+  {
+   "zh": "哺乳類細胞培養（如 CHO 細胞生產單株抗體）對壓力容忍度低、剪切敏感，需要低速攪拌和溫和的氣液傳質——這正是 SU 生物反應器的設計「甜蜜點」。",
+   "en": "Mammalian cell culture (for example, CHO cells producing monoclonal antibodies) has low pressure tolerance and is shear-sensitive, requiring low-speed agitation and gentle gas-liquid mass transfer. This is exactly the design \"sweet spot\" of SU bioreactors."
+  },
+  {
+   "zh": "微生物發酵（大腸桿菌、酵母菌）則相反：需要高溶氧傳遞效率（OTR）、高攪拌速度、大量排熱，這些都需要堅固的金屬容器，SU 袋體很難滿足。",
+   "en": "Microbial fermentation (E. coli, yeast) is the opposite: it needs high oxygen transfer rate (OTR), high agitation speed and large heat removal, all of which call for robust metal vessels that SU bags can hardly meet."
+  },
+  {
+   "zh": "比喻說明：Vent Filter 冷凝水堵塞",
+   "en": "Analogy: Vent Filter Blocked by Condensate"
+  },
+  {
+   "zh": "Vent filter 排氣過濾器被冷凝水堵住，就像排水管被油脂堵塞——系統內壓力無處宣洩，最終可能導致袋體破裂。Filter heater 的作用就像給排水管加熱保溫，讓水蒸氣保持氣態而不凝結成液態。這是 SU 生物反應器設計中容易忽略但非常重要的細節。",
+   "en": "A vent filter blocked by condensate is like a drain pipe clogged with grease: the pressure inside the system has nowhere to go and may eventually rupture the bag. A filter heater works like heating and insulating the drain pipe, keeping water vapor in the gas phase so it does not condense into liquid. This is an easily overlooked but very important detail in SU bioreactor design."
+  },
+  {
+   "zh": "放大關鍵參數（Scale-Up Parameters）",
+   "en": "Scale-Up Parameters"
+  },
+  {
+   "zh": "kLa（體積氧傳遞係數）= 最核心的放大基準\n  → 保持 kLa 不變，確保相同的溶氧供給能力\n\nP/V（單位體積功率輸入，kW/m³）\n  → 代表攪拌強度，影響混合均勻性與剪切力\n\nVVM（每分鐘氣體體積/液體體積）\n  → 控制通氣量，影響 kLa 和 CO₂ 移除\n\nMixing Time（混合時間）\n  → pH 調整時的鹼液混合效率，\n     避免局部 pH 過高損傷細胞",
+   "en": "kLa (volumetric oxygen transfer coefficient) = the core scale-up criterion\n  → Keeping kLa constant ensures the same dissolved oxygen supply capability\n\nP/V (power input per unit volume, kW/m³)\n  → Represents agitation intensity and affects mixing homogeneity and shear stress\n\nVVM (gas volume per liquid volume per minute)\n  → Controls aeration rate and affects kLa and CO₂ removal\n\nMixing Time\n  → Efficiency of base mixing during pH adjustment,\n     to avoid locally high pH that damages cells"
+  },
+  {
+   "zh": "重點提示：SU 生物反應器的放大限制",
+   "en": "Key Point: Scale-Up Limitations of SU Bioreactors"
+  },
+  {
+   "zh": "相比傳統不鏽鋼反應器，SU 生物反應器的攪拌器設計、葉輪尺寸和分氣器類型選項非常有限。這意味著放大時可能需要<strong>接受工藝參數的妥協</strong>（例如無法完全維持相同的 kLa），而不是把傳統系統的參數直接移植過來。",
+   "en": "Compared with conventional stainless steel reactors, SU bioreactors offer very limited options for agitator design, impeller size and sparger type. This means scale-up may require <strong>accepting compromises in process parameters</strong> (for example, not being able to fully maintain the same kLa), rather than transplanting the parameters of a conventional system directly."
+  },
+  {
+   "zh": "在 CDMO 接受新客戶工藝時，如果客戶原本使用不鏽鋼生物反應器，轉換到 SU 生物反應器需要進行<strong>小規模等效性研究</strong>。ISPE 建議的方法是：先用特性化的小規模 SU 模型驗證放大規則，再在商業規模執行。這個研究結果必須記錄並納入工藝驗證計畫。",
+   "en": "When a CDMO takes on a new client process that originally used a stainless steel bioreactor, moving to an SU bioreactor requires a <strong>small-scale equivalence study</strong>. The approach ISPE recommends is to first verify the scale-up rules with a characterized small-scale SU model, and then execute at commercial scale. The results of this study must be documented and incorporated into the process validation plan."
+  },
+  {
+   "zh": "2.3.5–2.3.6 Chromatography &amp; Ultrafiltration （色層分析與超過濾）",
+   "en": "2.3.5–2.3.6 Chromatography &amp; Ultrafiltration"
+  },
+  {
+   "zh": "核心概念：色層分析 SUT 化的限制",
+   "en": "Key Concept: Limitations of Single-Use Chromatography"
+  },
+  {
+   "zh": "色層分析是目前 SUT 化程度最低的下游純化單元操作之一。原因：",
+   "en": "Chromatography is currently one of the downstream purification unit operations with the lowest degree of SUT adoption. The reasons are:"
+  },
+  {
+   "zh": "<strong>梯度洗脫 (Gradient Elution)</strong> 需要精準的多路緩衝液混合，蠕動泵的脈衝特性難以勝任",
+   "en": "<strong>Gradient elution</strong> requires precise multi-channel buffer mixing, which the pulsation characteristics of peristaltic pumps struggle to deliver"
+  },
+  {
+   "zh": "<strong>大規模操作</strong>（管柱直徑 &gt; 80 cm）所需流量遠超 SU 管路承壓和流量限制",
+   "en": "<strong>Large-scale operation</strong> (column diameter &gt; 80 cm) requires flow rates far beyond the pressure and flow limits of SU tubing"
+  },
+  {
+   "zh": "<strong>重複使用 vs 拋棄</strong>：色層管柱填料非常昂貴，一次性使用的經濟賬算不過來",
+   "en": "<strong>Reuse vs. disposal</strong>: chromatography resin is very expensive, and the economics of single-use do not add up"
+  },
+  {
+   "zh": "重點提示：高濃度溶液的相容性",
+   "en": "Key Point: Compatibility of High-Concentration Solutions"
+  },
+  {
+   "zh": "連續製程和 in-line 稀釋技術降低了流量要求，讓更多步驟有機會 SUT 化。但 ISPE 特別提醒：<strong>高濃度溶液（高濃度鹽、有機溶劑）可能與 SU 材料不相容</strong>，終端使用者在採用前必須先與供應商確認相容性。",
+   "en": "Continuous processing and in-line dilution technologies reduce flow requirements and give more steps the opportunity to adopt SUT. However, ISPE specifically cautions that <strong>high-concentration solutions (high-concentration salts, organic solvents) may be incompatible with SU materials</strong>, and end users must confirm compatibility with the supplier before adoption."
+  },
+  {
+   "zh": "超過濾 SUT 化的困境",
+   "en": "The Predicament of Single-Use Ultrafiltration"
+  },
+  {
+   "zh": "超過濾膜很昂貴，每次用完就丟——就像每次做義大利麵都換一個新的義大利麵機，完全不符合經濟邏輯。大規模 UF 系統仍以多次使用為主。SU 超過濾只有在小規模或特殊場景（如高活性物質防交叉污染）才具有經濟合理性。",
+   "en": "Ultrafiltration membranes are expensive, and throwing them away after each use is like buying a new pasta machine every time you cook spaghetti: it makes no economic sense. Large-scale UF systems are still mainly multi-use. SU ultrafiltration is economically justified only at small scale or in special scenarios (such as preventing cross-contamination with highly potent substances)."
+  },
+  {
+   "zh": "2.3.7 Environmental Requirements （環境需求）",
+   "en": "2.3.7 Environmental Requirements"
+  },
+  {
+   "zh": "核心概念：製程封閉性決定潔淨室等級需求",
+   "en": "Key Concept: Process Closure Determines Cleanroom Grade Requirements"
+  },
+  {
+   "zh": "這是 SUT 最重要的成本節約機制之一：<strong>封閉製程可以在較低等級的潔淨室中操作</strong>。",
+   "en": "This is one of the most important cost-saving mechanisms of SUT: <strong>closed processes can be operated in lower-grade cleanrooms</strong>."
+  },
+  {
+   "zh": "<strong>開放製程</strong>：產品暴露於環境 → 需要高等級潔淨室（ISO 5 / Grade A）",
+   "en": "<strong>Open process</strong>: product is exposed to the environment → requires a high-grade cleanroom (ISO 5 / Grade A)"
+  },
+  {
+   "zh": "<strong>封閉製程</strong>：完全不暴露 → 可降至 ISO 8 甚至 CNC（Controlled Not Classified）",
+   "en": "<strong>Closed process</strong>: no exposure at all → can be lowered to ISO 8 or even CNC (Controlled Not Classified)"
+  },
+  {
+   "zh": "<strong>功能性封閉</strong>：中間狀態 → 視製程性質，通常 ISO 7 或 ISO 8",
+   "en": "<strong>Functionally closed</strong>: an intermediate state → depending on the nature of the process, usually ISO 7 or ISO 8"
+  },
+  {
+   "zh": "關鍵工具：<strong>製程封閉性風險評估 (Process Closure Risk Assessment)</strong> 必須為每個製程步驟分別評估，不能一刀切。",
+   "en": "Key tool: a <strong>Process Closure Risk Assessment</strong> must be performed separately for each process step; a blanket approach is not acceptable."
+  },
+  {
+   "zh": "想像水在管道中傳輸（封閉製程）vs. 在開放容器中傳遞（開放製程）。管道裡的水不在乎外面的空氣多髒；但一旦要倒入開放容器，就需要乾淨的操作環境。SUT 的「封閉性」讓你把很多步驟的操作環境從「手術室」降級到「一般醫院走廊」——省下大量設施成本。",
+   "en": "Picture water moving through a pipe (closed process) versus being passed around in an open container (open process). Water in a pipe does not care how dirty the outside air is, but once it is poured into an open container, a clean working environment is needed. The \"closure\" of SUT lets you downgrade the working environment for many steps from an \"operating theater\" to an \"ordinary hospital corridor\", saving a great deal of facility cost."
+  },
+  {
+   "zh": "重點提示：Hybrid System 的管理原則",
+   "en": "Key Point: Management Principles for Hybrid Systems"
+  },
+  {
+   "zh": "不鏽鋼容器 + 單次使用流路的混合系統很常見，但要特別注意：<strong>不鏽鋼部分需要按照傳統多次使用設備管理（CIP/SIP）</strong>，完成 SIP 後才能連接到 SU 流路，整個系統才構成「功能性封閉」。兩個世界的管理規則不能混用，必須在 SOP 中明確區分。",
+   "en": "Hybrid systems combining stainless steel vessels with single-use flow paths are common, but note that <strong>the stainless steel portion must be managed as conventional multi-use equipment (CIP/SIP)</strong>, and only after SIP is complete can it be connected to the SU flow path so that the whole system constitutes a \"functionally closed\" system. The management rules of the two worlds must not be mixed and must be clearly distinguished in SOPs."
+  },
+  {
+   "zh": "CDMO 應用情境：廠房設計節省",
+   "en": "CDMO Application Scenario: Facility Design Savings"
+  },
+  {
+   "zh": "封閉製程讓相當多的上游步驟（培養基配製、緩衝液製備）可在較低等級區域完成，大幅降低潔淨室建設和維護成本。這是新建生物製藥 CDMO 幾乎都以 SUT 為核心的原因——不是因為 SU 耗材便宜，而是因為它讓整個廠房設計成本更低。",
+   "en": "Closed processes allow a considerable number of upstream steps (media preparation, buffer preparation) to be performed in lower-grade areas, greatly reducing cleanroom construction and maintenance costs. This is why almost all new biopharmaceutical CDMOs are built around SUT: not because SU consumables are cheap, but because SUT lowers the cost of the whole facility design."
+  },
+  {
+   "zh": "2.3.8–2.3.10 Control Systems, Utilities, Maintenance, Safety &amp; Cleaning （控制系統、廠務、維護、安全與清潔）",
+   "en": "2.3.8–2.3.10 Control Systems, Utilities, Maintenance, Safety &amp; Cleaning"
+  },
+  {
+   "zh": "核心概念：控制系統的開放性原則",
+   "en": "Key Concept: The Open Principle for Control Systems"
+  },
+  {
+   "zh": "ISPE 明確要求 SUT 設備的控制系統必須遵循<strong>開放標準 (Open Standards)</strong>——使用 OPC 通訊協定，允許整合到廠房的 DCS/SCADA 系統。封閉式的專屬系統會阻礙 GMP 合規（無法整合到廠房的批次記錄系統）。",
+   "en": "ISPE explicitly requires that the control systems of SUT equipment follow <strong>Open Standards</strong>: using the OPC communication protocol to allow integration into the plant's DCS/SCADA systems. Closed proprietary systems hinder GMP compliance (they cannot be integrated into the plant's batch record systems)."
+  },
+  {
+   "zh": "在 CDMO 中尤為重要：不同客戶可能要求將批次數據整合到不同的工廠資訊系統，封閉式控制系統會成為合規和商業上的阻礙。",
+   "en": "This is especially important in a CDMO: different clients may require batch data to be integrated into different plant information systems, and a closed control system becomes a compliance and commercial obstacle."
+  },
+  {
+   "zh": "重點提示：移動式設備的數據管理",
+   "en": "Key Point: Data Management for Mobile Equipment"
+  },
+  {
+   "zh": "SUT 設備因重量輕可在廠區內移動——但<strong>批次數據必須完整記錄</strong>（21 CFR Part 11 要求）。在設備移動路徑上的每個操作地點都需要有數據接口（有線或無線），不能因「設備移位」就有數據斷點。廠房設計階段就要規劃好數據網絡覆蓋。",
+   "en": "SUT equipment is lightweight and can be moved around the site, but <strong>batch data must be completely recorded</strong> (21 CFR Part 11 requirement). Every operating location along the equipment's movement path needs a data interface (wired or wireless), and there must be no data gaps simply because the equipment has been moved. The data network coverage must be planned at the facility design stage."
+  },
+  {
+   "zh": "重點提示：清潔驗證的轉變",
+   "en": "Key Point: The Shift in Cleaning Validation"
+  },
+  {
+   "zh": "<strong>傳統系統</strong>：CIP/SIP 驗證是合規核心工作（大量文件、取樣、分析）。",
+   "en": "<strong>Conventional systems</strong>: CIP/SIP validation is core compliance work (extensive documentation, sampling and analysis)."
+  },
+  {
+   "zh": "<strong>SUT</strong>：製程管路清潔驗證幾乎歸零——但<em>不代表沒有清潔工作</em>。非接觸產品表面仍需清潔消毒。同時，SU 組件進入潔淨區的脫包程序（逐層去除外包裝）本身就是一種污染管控措施，必須有書面程序。",
+   "en": "<strong>SUT</strong>: cleaning validation of process tubing almost disappears, but <em>this does not mean there is no cleaning work</em>. Non-product-contact surfaces still need to be cleaned and disinfected. In addition, the unpacking procedure for SU components entering the cleanroom (removing the outer packaging layer by layer) is itself a contamination control measure and must have a written procedure."
+  },
+  {
+   "zh": "比喻說明：VHP 對塑料的影響",
+   "en": "Analogy: The Effect of VHP on Plastics"
+  },
+  {
+   "zh": "VHP（汽化過氧化氫）是無菌充填廠房常用的環境去污方法，但對某些塑料（特別是矽膠和聚碳酸酯）有氧化攻擊作用——就像用強力漂白水清洗衣物，棉布沒問題但彩色化纖可能褪色。使用 VHP 環境消毒前，必須確認所有 SU 組件材質的相容性，並通知供應商。",
+   "en": "VHP (vaporized hydrogen peroxide) is a commonly used environmental decontamination method in aseptic filling facilities, but it has an oxidative effect on certain plastics (especially silicone and polycarbonate), much like washing clothes with strong bleach: cotton is fine, but colored synthetic fabrics may fade. Before using VHP for environmental decontamination, the material compatibility of all SU components must be confirmed and the supplier notified."
+  },
+  {
+   "zh": "CDMO 應用情境：廠務設計優化",
+   "en": "CDMO Application Scenario: Utilities Design Optimization"
+  },
+  {
+   "zh": "SUT 對廠務的最大改變：<strong>純水系統 (WFI/PW) 的使用點大幅減少</strong>。傳統不鏽鋼廠每個 CIP 站都需要純水接點，SUT 廠可能只在幾個固定位置保留接點，其餘改用預填充袋裝水溶液。這讓廠房設計更簡潔，也降低了純水系統的維護成本——是 CDMO 新廠規劃的重要 ROI 計算項目。",
+   "en": "The biggest change SUT brings to utilities is a <strong>substantial reduction in points of use for purified water systems (WFI/PW)</strong>. In a conventional stainless steel plant every CIP station needs a purified water connection, whereas an SUT plant may retain connections at only a few fixed locations and use prefilled bagged aqueous solutions elsewhere. This makes facility design simpler and also lowers the maintenance cost of the purified water system, making it an important ROI calculation item in planning a new CDMO facility."
+  },
+  {
+   "zh": "2.4 Quality Requirements for Single-Use Products （單次使用產品的品質要求）",
+   "en": "2.4 Quality Requirements for Single-Use Products"
+  },
+  {
+   "zh": "核心概念：品質要求的法規框架",
+   "en": "Key Concept: The Regulatory Framework for Quality Requirements"
+  },
+  {
+   "zh": "SUT 品質要求建立在現有的法規和科學框架上：",
+   "en": "SUT quality requirements are built on existing regulatory and scientific frameworks:"
+  },
+  {
+   "zh": "<strong>ASTM E2500</strong>：設備驗證的科學和風險基礎方法",
+   "en": "<strong>ASTM E2500</strong>: science- and risk-based approach to equipment verification"
+  },
+  {
+   "zh": "<strong>ICH Q8</strong>：藥品開發（Quality by Design, QbD）",
+   "en": "<strong>ICH Q8</strong>: pharmaceutical development (Quality by Design, QbD)"
+  },
+  {
+   "zh": "<strong>ICH Q9</strong>：品質風險管理（QRM）",
+   "en": "<strong>ICH Q9</strong>: quality risk management (QRM)"
+  },
+  {
+   "zh": "<strong>ICH Q10</strong>：藥品品質體系（PQS）",
+   "en": "<strong>ICH Q10</strong>: pharmaceutical quality system (PQS)"
+  },
+  {
+   "zh": "ISPE 的邏輯是：SUT 不需要創造新的法規，而是把現有框架正確地應用於單次使用的特殊情境。",
+   "en": "ISPE's logic is that SUT does not need new regulations; it needs the existing frameworks applied correctly to the particular context of single use."
+  },
+  {
+   "zh": "重點提示：關鍵決策點的風險評估",
+   "en": "Key Point: Risk Assessment at Critical Decision Points"
+  },
+  {
+   "zh": "「每個關鍵決策點都應完成風險評估」在實務上意味著 SUT 實施計畫需要有清楚的<strong>決策閘 (Decision Gates)</strong>，每個閘口對應一份書面的風險評估記錄。這是稽核員在 PAI（Pre-Approval Inspection）時會查看的重要文件。",
+   "en": "\"A risk assessment should be completed at each critical decision point\" means, in practice, that an SUT implementation plan needs clear <strong>Decision Gates</strong>, with each gate corresponding to a documented risk assessment record. This is an important document that auditors will look at during a PAI (Pre-Approval Inspection)."
+  },
+  {
+   "zh": "2.4.1.1 Quality Requirements for Single-Use Components （組件品質要求）",
+   "en": "2.4.1.1 Quality Requirements for Single-Use Components"
+  },
+  {
+   "zh": "核心概念：濕面 vs 非濕面的分類管理",
+   "en": "Key Concept: Classified Management of Wetted vs. Non-Wetted Components"
+  },
+  {
+   "zh": "<strong>濕面組件 (Wetted Components)</strong>：任何直接接觸製程流體或產品的部件。這是品質控制的重心——Extractables、生物相容性、生物負荷、內毒素、微粒，一樣都不能少。",
+   "en": "<strong>Wetted components</strong>: any part in direct contact with the process fluid or product. This is the focus of quality control: extractables, biocompatibility, bioburden, endotoxin and particulates are all required."
+  },
+  {
+   "zh": "<strong>非濕面組件 (Non-wetted Components)</strong>：不直接接觸流體，但可能間接影響（如外包裝影響輻射劑量分佈、夾具接觸袋體外壁影響袋體完整性）。要求較少，但不是完全不管。",
+   "en": "<strong>Non-wetted components</strong>: parts that do not directly contact the fluid but may have an indirect effect (for example, outer packaging affecting radiation dose distribution, or clamps touching the outer wall of the bag and affecting bag integrity). The requirements are fewer, but they are not ignored altogether."
+  },
+  {
+   "zh": "這種分類管理讓品質體系更有效率——把資源集中在最關鍵的風險點。",
+   "en": "This classified approach makes the quality system more efficient by concentrating resources on the most critical risk points."
+  },
+  {
+   "zh": "就像飯店房間清潔標準：<strong>直接接觸客人的物品</strong>（床單、浴巾、餐具）需要最高清潔標準（類比濕面組件），而<strong>不直接接觸客人的物品</strong>（地板、牆壁、家具）採用較低但仍足夠的標準（類比非濕面組件）。你不會要求地板用餐具消毒等級的方法清洗，但也不能不管它。",
+   "en": "It is like cleaning standards in a hotel room: <strong>items that directly touch the guest</strong> (sheets, bath towels, tableware) need the highest cleaning standard (analogous to wetted components), while <strong>items that do not directly touch the guest</strong> (floor, walls, furniture) use a lower but still adequate standard (analogous to non-wetted components). You would not demand that the floor be cleaned to tableware disinfection standards, but you cannot ignore it either."
+  },
+  {
+   "zh": "重點提示：包裝材料的製造環境要求",
+   "en": "Key Point: Manufacturing Environment Requirements for Packaging Materials"
+  },
+  {
+   "zh": "Table 2.5 中容易忽略的點：<strong>泡棉、外包裝盒等非濕面包材，其製造環境仍被列為 A（Required）</strong>。原因是：包材本身在惡劣環境中製造，可能污染組件的外表面，進而在安裝過程中污染潔淨環境。這是 SU 供應商稽核時必查的項目。",
+   "en": "A point in Table 2.5 that is easily overlooked: <strong>for non-wetted packaging materials such as foam and outer cartons, the manufacturing environment is still rated A (Required)</strong>. The reason is that packaging materials manufactured in a poor environment may contaminate the outer surface of the component and in turn contaminate the clean environment during installation. This is an item that must be checked in SU supplier audits."
+  },
+  {
+   "zh": "CDMO 應用情境：進料品質管理",
+   "en": "CDMO Application Scenario: Incoming Quality Management"
+  },
+  {
+   "zh": "採購 SU 組件時，常見問題：「供應商的 CoC 說 <span class=\"key-term\">bioburden</span> &lt; 1 CFU/100 cm²，這是否足夠？」答案取決於<strong>你的製程性質</strong>（生物負荷控制 vs 無菌）和<strong>後續是否滅菌</strong>（gamma 照射後 bioburden 要求降為零）。進料檢驗的取樣計畫和接受標準必須基於整個製程的風險評估，而不是照抄供應商規格。",
+   "en": "When purchasing SU components, a common question is: \"The supplier's CoC says <span class=\"key-term\">bioburden</span> &lt; 1 CFU/100 cm². Is that sufficient?\" The answer depends on <strong>the nature of your process</strong> (bioburden control vs. sterile) and <strong>whether sterilization follows</strong> (after gamma irradiation the bioburden requirement drops to zero). The sampling plan and acceptance criteria for incoming inspection must be based on a risk assessment of the whole process, not copied from the supplier's specification."
+  },
+  {
+   "zh": "在你的製程中，哪些 SU 組件屬於「濕面」？你的進料檢驗程序是否涵蓋了 Table 2.5 中所有「A (Required)」的項目？",
+   "en": "In your process, which SU components are \"wetted\"? Does your incoming inspection procedure cover all the \"A (Required)\" items in Table 2.5?"
+  },
+  {
+   "zh": "如果供應商無法提供某個品質要求（如 endotoxin 測試結果），你的替代控制策略是什麼？",
+   "en": "If a supplier cannot provide a certain quality requirement (such as endotoxin test results), what is your alternative control strategy?"
+  },
+  {
+   "zh": "2.4.1.2–2.4.1.3 Quality Requirements for Assemblies &amp; Systems （組合件與系統品質要求）",
+   "en": "2.4.1.2–2.4.1.3 Quality Requirements for Assemblies &amp; Systems"
+  },
+  {
+   "zh": "核心概念：三層品質要求架構",
+   "en": "Key Concept: The Three-Level Quality Requirement Structure"
+  },
+  {
+   "zh": "ISPE 把 SUT 品質要求分成三個層次，每個層次都有獨特的附加要求：",
+   "en": "ISPE divides SUT quality requirements into three levels, each with its own additional requirements:"
+  },
+  {
+   "zh": "<strong>組件層 (Component)</strong>：基礎品質——材料相容性、生物指標、微粒",
+   "en": "<strong>Component level</strong>: basic quality (material compatibility, biological indicators, particulates)"
+  },
+  {
+   "zh": "<strong>組合件層 (Assembly)</strong>：製造控制——潔淨室環境、組裝完整性、無菌屏障、滅菌確認、運輸",
+   "en": "<strong>Assembly level</strong>: manufacturing control (cleanroom environment, assembly integrity, sterile barrier, sterilization qualification, transportation)"
+  },
+  {
+   "zh": "<strong>系統層 (System)</strong>：整合確認——機械強度、軟體合規（21 CFR Part 11）、微粒產生潛力",
+   "en": "<strong>System level</strong>: integration verification (mechanical strength, software compliance (21 CFR Part 11), particulate generation potential)"
+  },
+  {
+   "zh": "每個層次繼承上一層的要求，再疊加額外考量。",
+   "en": "Each level inherits the requirements of the level below and adds further considerations."
+  },
+  {
+   "zh": "重點提示：Packaging Integrity 的重要性",
+   "en": "Key Point: The Importance of Packaging Integrity"
+  },
+  {
+   "zh": "無菌屏障 (Sterile Barrier) 的完整性是 SU 組合件品質最關鍵的指標之一。組合件通常以真空密封袋出貨——<strong>收貨時檢查真空是否保持完好，是終端使用者的第一道品質關卡</strong>。破真空或包裝破損的組合件，無論其他指標多好，都應立即隔離並通知供應商。",
+   "en": "The integrity of the sterile barrier is one of the most critical indicators of SU assembly quality. Assemblies are usually shipped in vacuum-sealed bags, so <strong>checking on receipt that the vacuum is intact is the end user's first quality gate</strong>. An assembly with a broken vacuum or damaged packaging, however good its other indicators, should be quarantined immediately and the supplier notified."
+  },
+  {
+   "zh": "重點提示：移動部件的微粒產生",
+   "en": "Key Point: Particulate Generation from Moving Parts"
+  },
+  {
+   "zh": "SUT 系統中的馬達、風扇、泵浦都是<strong>微粒產生源 (Particulate Generation Sources)</strong>。在高等級潔淨區（ISO 5 / Grade A）使用時，這些設備的微粒散發特性必須被確認，供應商應提供測試數據，確效中應包含靜態和動態微粒監測。",
+   "en": "Motors, fans and pumps in SUT systems are all <strong>particulate generation sources</strong>. When used in high-grade cleanrooms (ISO 5 / Grade A), the particulate emission characteristics of this equipment must be confirmed, suppliers should provide test data, and validation should include both at-rest and in-operation particulate monitoring."
+  },
+  {
+   "zh": "比喻說明：運輸確認的重要性",
+   "en": "Analogy: The Importance of Transportation Qualification"
+  },
+  {
+   "zh": "ASTM D4169 運輸測試就像模擬 SU 組合件從工廠到你手上的「最差情況旅程」——顛簸的卡車、機場貨艙的振動、倉庫的疊壓。如果組合件通過這個測試後完整性仍良好，才能說明包裝設計足夠可靠。",
+   "en": "ASTM D4169 transportation testing is like simulating the \"worst-case journey\" of an SU assembly from the factory to your hands: bumpy trucks, vibration in airport cargo holds, stacking pressure in warehouses. Only if the assembly still has good integrity after passing this test can the packaging design be considered sufficiently reliable."
+  },
+  {
+   "zh": "CDMO 應用情境：21 CFR Part 11 合規",
+   "en": "CDMO Application Scenario: 21 CFR Part 11 Compliance"
+  },
+  {
+   "zh": "SUT 設備的軟體（批次管理、過程歷史記錄）必須符合 21 CFR Part 11 對電子記錄和電子簽名的要求。在 CDMO 接受美國 FDA 監管的客戶項目時，供應商評估階段就應確認其軟體是否經過 Part 11 審查，並取得相關驗證文件。",
+   "en": "The software of SUT equipment (batch management, process history records) must comply with 21 CFR Part 11 requirements for electronic records and electronic signatures. When a CDMO takes on client projects under US FDA oversight, the supplier assessment stage should confirm whether the supplier's software has undergone Part 11 review, and obtain the related validation documents."
+  },
+  {
+   "zh": "2.4.1.4 Supplier Assessment Matrix （供應商評估矩陣）",
+   "en": "2.4.1.4 Supplier Assessment Matrix"
+  },
+  {
+   "zh": "核心概念：三層供應商矩陣的管理邏輯",
+   "en": "Key Concept: The Management Logic of the Three-Level Supplier Matrix"
+  },
+  {
+   "zh": "供應商評估矩陣是一個<strong>分層的系統性評估工具</strong>：",
+   "en": "The supplier assessment matrix is a <strong>tiered, systematic assessment tool</strong>:"
+  },
+  {
+   "zh": "<strong>組件矩陣</strong>：評估「零件供應商」——他們提供袋膜、管路、接頭等原材料",
+   "en": "<strong>Component matrix</strong>: assesses \"parts suppliers\", who provide raw materials such as film, tubing and connectors"
+  },
+  {
+   "zh": "<strong>組合件矩陣</strong>：評估「系統整合商」——他們把組件組裝成客製化流路組合件",
+   "en": "<strong>Assembly matrix</strong>: assesses \"system integrators\", who assemble components into customized flow path assemblies"
+  },
+  {
+   "zh": "<strong>系統矩陣</strong>：評估「設備供應商」——他們提供完整 SU 生物工藝系統（硬體、軟體和服務）",
+   "en": "<strong>System matrix</strong>: assesses \"equipment suppliers\", who provide complete SU bioprocess systems (hardware, software and services)"
+  },
+  {
+   "zh": "同一家供應商可能跨越多個層次（如 Sartorius 或 Cytiva），矩陣讓你從不同角度評估其能力。",
+   "en": "The same supplier may span several levels (such as Sartorius or Cytiva), and the matrix lets you assess its capabilities from different angles."
+  },
+  {
+   "zh": "就像買一輛定製跑車：<strong>組件矩陣</strong> = 評估輪胎、引擎零件供應商；<strong>組合件矩陣</strong> = 評估車廠（把零件組裝成可用的汽車）；<strong>系統矩陣</strong> = 評估交車服務（工廠驗收、交車培訓、售後支援）。每個層次的評估重點不同，不能用同一套標準一概而論。",
+   "en": "It is like buying a custom sports car: the <strong>component matrix</strong> = assessing the suppliers of tires and engine parts; the <strong>assembly matrix</strong> = assessing the car maker (who assembles the parts into a working car); the <strong>system matrix</strong> = assessing the delivery service (factory acceptance, handover training, after-sales support). The assessment focus differs at each level, and one standard cannot be applied across the board."
+  },
+  {
+   "zh": "重點提示：供應商多元化 vs 標準化",
+   "en": "Key Point: Supplier Diversification vs. Standardization"
+  },
+  {
+   "zh": "矩陣中特別提到：<strong>可從多個來源取得的組件，供應風險較低</strong>。這是對 SUT 供應商鎖定 (Lock-in) 風險的直接回應。應優先選擇已有多個競爭供應商的組件（標準管路、標準接頭）；對不可避免的專屬設計（特定供應商的生物反應器袋），需要更強的供應商關係管理和備份計畫。",
+   "en": "The matrix specifically notes that <strong>components available from multiple sources carry lower supply risk</strong>. This is a direct response to the risk of SUT supplier lock-in. Give preference to components that already have several competing suppliers (standard tubing, standard connectors); for unavoidable proprietary designs (a particular supplier's bioreactor bag), stronger supplier relationship management and a backup plan are needed."
+  },
+  {
+   "zh": "你目前使用的 SU 組件中，哪些有「供應商唯一」的風險？你的備份供應商計畫是什麼？",
+   "en": "Which of the SU components you currently use carry a \"sole supplier\" risk? What is your backup supplier plan?"
+  },
+  {
+   "zh": "如果某個關鍵供應商無法滿足你的品質要求（如 particulate limit），你的應對流程是什麼？矩陣如何幫助你系統性識別替代方案？",
+   "en": "If a critical supplier cannot meet your quality requirements (such as a particulate limit), what is your response process? How does the matrix help you systematically identify alternatives?"
+  },
+  {
+   "zh": "2.4.2 Checking Single-Use Product Quality （單次使用產品品質查核）",
+   "en": "2.4.2 Checking Single-Use Product Quality"
+  },
+  {
+   "zh": "核心概念：供應鏈品質責任分工",
+   "en": "Key Concept: Division of Quality Responsibility Along the Supply Chain"
+  },
+  {
+   "zh": "SUT 品質保證是<strong>供應鏈上每個環節共同的責任</strong>，不是只靠終端使用者的進料檢驗。ISPE 明確劃分三個查核節點：",
+   "en": "SUT quality assurance is a <strong>shared responsibility of every link in the supply chain</strong>, not something that relies only on the end user's incoming inspection. ISPE explicitly defines three checking points:"
+  },
+  {
+   "zh": "<strong>組件供應商</strong>：進料 → 製造中 → 出貨前（三個查核點）",
+   "en": "<strong>Component supplier</strong>: incoming → in-process → pre-shipment (three checkpoints)"
+  },
+  {
+   "zh": "<strong>組合件供應商</strong>：對組件的查核 + 組裝過程控制",
+   "en": "<strong>Assembly supplier</strong>: checks on the components + assembly process control"
+  },
+  {
+   "zh": "<strong>終端使用者（你）</strong>：收貨時 → 使用前（兩個查核點）",
+   "en": "<strong>End user (you)</strong>: on receipt → before use (two checkpoints)"
+  },
+  {
+   "zh": "這種分層查核結構意味著：問題在供應鏈越早被發現，損失越小。",
+   "en": "This tiered checking structure means that the earlier a problem is found in the supply chain, the smaller the loss."
+  },
+  {
+   "zh": "重點提示：CoC 和 CoQ 的區別",
+   "en": "Key Point: The Difference Between CoC and CoQ"
+  },
+  {
+   "zh": "收貨時不能只看有沒有證書，還要看<strong>證書內容</strong>：",
+   "en": "On receipt, do not just check whether a certificate exists; check <strong>what the certificate says</strong>:"
+  },
+  {
+   "zh": "<strong><span class=\"key-term\">Certificate of Compliance</span> (CoC)</strong>：供應商聲明產品符合特定規格——應核對規格版本是否與採購訂單一致",
+   "en": "<strong><span class=\"key-term\">Certificate of Compliance</span> (CoC)</strong>: the supplier's declaration that the product meets a specific specification; verify that the specification version matches the purchase order"
+  },
+  {
+   "zh": "<strong><span class=\"key-term\">Certificate of Quality</span> (CoQ)</strong>：附帶實際測試數據（如 bioburden CFU 數值、endotoxin EU/mL 數值）——數值是否在規格範圍內，不能只靠供應商自稱「合格」",
+   "en": "<strong><span class=\"key-term\">Certificate of Quality</span> (CoQ)</strong>: accompanied by actual test data (such as bioburden CFU values and endotoxin EU/mL values); check whether the values are within specification, and do not rely solely on the supplier's own claim of \"conforming\""
+  },
+  {
+   "zh": "在 GMP 環境，CoC/CoQ 副本應保存於批次記錄中。",
+   "en": "In a GMP environment, copies of the CoC/CoQ should be kept in the batch record."
+  },
+  {
+   "zh": "比喻說明：真空確認 = 無菌屏障的第一道關卡",
+   "en": "Analogy: Vacuum Check = The First Gate of the Sterile Barrier"
+  },
+  {
+   "zh": "收到 SU 組合件時檢查真空是否完好，就像打開真空包裝食品前先按壓確認是否「嘭嘭作響」。食品漏氣了你不會吃；SU 組合件真空破了，也不應在無菌製造中使用——無菌屏障已遭破壞，組合件可能已被環境污染。",
+   "en": "Checking that the vacuum is intact when you receive an SU assembly is like pressing on vacuum-packed food before opening it to check that it still feels firm. You would not eat food whose pack has leaked air; an SU assembly with a broken vacuum should likewise not be used in aseptic manufacturing, because the sterile barrier has been breached and the assembly may have been contaminated by the environment."
+  },
+  {
+   "zh": "你目前的 SU 組合件進料檢驗 SOP 是否涵蓋「使用前確認（At Use）」的所有項目（assembly drawings、connection types、inlet/outlet 確認）？誰負責執行？",
+   "en": "Does your incoming inspection SOP for SU assemblies cover all the \"At Use\" verification items (assembly drawings, connection types, inlet/outlet confirmation)? Who is responsible for carrying them out?"
+  },
+  {
+   "zh": "如果發現一批 SU 組合件的真空包裝已破損，你的不符合規定品 (Non-Conformance) 處理流程是什麼？需要通知哪些部門？",
+   "en": "If you find that the vacuum packaging of a batch of SU assemblies is damaged, what is your non-conformance handling process? Which departments need to be notified?"
+  },
+  {
+   "zh": "2.4.3 Methods Applied to Meet Single-Use Product Quality Requirements （品質要求實現方法）",
+   "en": "2.4.3 Methods Applied to Meet Single-Use Product Quality Requirements"
+  },
+  {
+   "zh": "核心概念：URS 是一切的起點",
+   "en": "Key Concept: The URS Is the Starting Point for Everything"
+  },
+  {
+   "zh": "使用者需求規格書 (User Requirement Specification, URS) 在 SUT 實施中就像建築的藍圖——所有後續的設計、採購、確認活動都以它為基礎。一份寫得不清楚的 URS 會導致：",
+   "en": "In SUT implementation the User Requirement Specification (URS) is like the blueprint of a building: all subsequent design, procurement and qualification activities are based on it. An unclear URS leads to:"
+  },
+  {
+   "zh": "供應商誤解需求 → 交付不符合要求的產品",
+   "en": "The supplier misunderstanding the requirements → delivery of a product that does not meet them"
+  },
+  {
+   "zh": "確效時沒有清晰的驗收標準 → 稽核時說不清楚",
+   "en": "No clear acceptance criteria at validation → inability to explain the position at audit"
+  },
+  {
+   "zh": "設計變更頻繁 → 延誤進度、增加成本",
+   "en": "Frequent design changes → schedule delays and higher costs"
+  },
+  {
+   "zh": "ISPE 強調：溝通流 (Communication Flow) 必須<strong>雙向</strong>——終端使用者寫 URS，供應商確認理解並提供設計反饋，終端使用者審核批准圖面。",
+   "en": "ISPE stresses that the communication flow must be <strong>two-way</strong>: the end user writes the URS, the supplier confirms understanding and provides design feedback, and the end user reviews and approves the drawings."
+  },
+  {
+   "zh": "核心概念：QbD 在 SUT 中的應用",
+   "en": "Key Concept: Applying QbD in SUT"
+  },
+  {
+   "zh": "Quality by Design (QbD) 不只用於藥品開發——ISPE 把它延伸應用於 SUT 選型和實施。核心思想是：<strong>在設計階段就把品質要求「建入」系統，而不是靠事後測試「檢出」</strong>。",
+   "en": "Quality by Design (QbD) is not used only in drug development; ISPE extends it to SUT selection and implementation. The core idea is: <strong>\"build\" the quality requirements into the system at the design stage, rather than \"test\" quality in afterwards</strong>."
+  },
+  {
+   "zh": "對 SUT 的實際意義：在寫 URS 時就明確定義 Critical Quality Attributes (CQAs) 和 Critical Process Parameters (CPPs)，並在 SU 組件選型中確保這些要求被滿足。",
+   "en": "The practical meaning for SUT: when writing the URS, clearly define the Critical Quality Attributes (CQAs) and Critical Process Parameters (CPPs), and ensure that these requirements are met in the selection of SU components."
+  },
+  {
+   "zh": "比喻說明：QRM 的實際應用",
+   "en": "Analogy: Practical Application of QRM"
+  },
+  {
+   "zh": "ICH Q9 的風險管理工具（FMEA、HACCP、風險矩陣）在 SUT 中的典型應用：評估「如果這個 SU 袋子破了」的風險——發生機率有多高？對產品品質影響有多嚴重？目前的控制措施（壓力感測器、次要圍堵）能將風險降低到可接受水準嗎？這個思考框架幫助你決定哪些地方需要額外的控制措施。",
+   "en": "A typical application of the ICH Q9 risk management tools (FMEA, HACCP, risk matrix) in SUT is to assess the risk of \"what if this SU bag fails\": how likely is it? How severe is the impact on product quality? Can the current controls (pressure sensors, secondary containment) reduce the risk to an acceptable level? This way of thinking helps you decide where additional controls are needed."
+  },
+  {
+   "zh": "重點提示：確效測試方法參考 Chapter 8",
+   "en": "Key Point: Validation Test Methods Refer to Chapter 8"
+  },
+  {
+   "zh": "本節在確效方法上只提供框架，具體的測試方法（integrity testing、extractables testing、bioburden testing 的詳細程序）在 ISPE SUT 指引的 <strong>Chapter 8 (Appendix 4)</strong> 中有詳細規定。建立 SU 組件確效計畫時，應一併參閱該附錄，確保測試方法符合 ISPE 推薦的最佳實踐。",
+   "en": "This section provides only a framework for the validation approach. The specific test methods (detailed procedures for integrity testing, extractables testing and bioburden testing) are set out in <strong>Chapter 8 (Appendix 4)</strong> of the ISPE SUT guide. When establishing a validation plan for SU components, refer to that appendix as well, to ensure that the test methods conform to the best practices recommended by ISPE."
+  },
+  {
+   "zh": "CDMO 應用情境：客戶稽核準備",
+   "en": "CDMO Application Scenario: Preparing for Client Audits"
+  },
+  {
+   "zh": "當客戶或 FDA 稽核員來稽核你的 SUT 系統時，最常問的問題是：「你的 URS 在哪裡？」「你如何確認供應商的品質系統符合 GMP？」「你的進料檢驗標準是如何制定的？」如果這三個問題都有清楚的書面答案，且與本節描述的方法一致，稽核就能順利通過。SUT 的品質管理不是「多做一堆文件」，而是把現有的 GMP 框架正確地應用到 SU 特有的情境。",
+   "en": "When a client or FDA auditor audits your SUT system, the questions most often asked are: \"Where is your URS?\" \"How do you confirm that the supplier's quality system meets GMP?\" \"How were your incoming inspection standards established?\" If all three questions have clear written answers that are consistent with the approach described in this section, the audit will go smoothly. SUT quality management is not about \"producing a pile of extra documents\"; it is about applying the existing GMP framework correctly to the situations specific to SU."
+  },
+  {
+   "zh": "你的 SUT 系統目前有完整的 URS 文件嗎？URS 是否明確定義了 Critical Quality Attributes 和驗收標準？",
+   "en": "Does your SUT system currently have a complete URS document? Does the URS clearly define the Critical Quality Attributes and acceptance criteria?"
+  },
+  {
+   "zh": "在你最近一次 SU 供應商選型中，你使用了哪些品質風險管理工具？結果如何影響了你的最終選擇？",
+   "en": "In your most recent SU supplier selection, which quality risk management tools did you use? How did the results influence your final choice?"
+  },
+  {
+   "zh": "你的 SU 組件確效計畫是否已更新為參考 ISPE SUT Chapter 8 (Appendix 4) 的測試方法要求？",
+   "en": "Has your SU component validation plan been updated to reference the test method requirements of ISPE SUT Chapter 8 (Appendix 4)?"
+  },
+  {
+   "zh": "本節重點回顧 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "<strong>感測器選型原則</strong>：理解量測技術的物理機制，優先選擇標準化接頭（避免供應商鎖定）。所有 SU 感測器在正式使用前必須進行廠內準確度和精密度驗證。pH 5.5–8.5 可用 Single-use probe 或 Sensor spots，但需以實際培養基驗證。",
+   "en": "<strong>Sensor selection principles</strong>: understand the physical mechanism of the measurement technology and give preference to standardized connectors (to avoid supplier lock-in). All SU sensors must undergo in-house accuracy and precision verification before formal use. For pH 5.5–8.5, a single-use probe or Sensor spots can be used, but must be verified with the actual culture medium."
+  },
+  {
+   "zh": "<strong>泵浦選型邏輯</strong>：生物技術流體優先使用正排量泵（蠕動泵最靈活、隔膜泵高流量）。Gamma 照射會讓管路硬化，影響流量–轉速關係，必須在照射後重新評估。Spallation（材料碎裂）須在製程條件下評估，不能只用純水。",
+   "en": "<strong>Pump selection logic</strong>: for biotechnology fluids, give preference to positive displacement pumps (peristaltic is the most flexible, diaphragm gives high flow). Gamma irradiation stiffens tubing and affects the flow-speed relationship, so it must be re-evaluated after irradiation. Spallation (material fragmentation) must be evaluated under process conditions, not with pure water alone."
+  },
+  {
+   "zh": "<strong>生物反應器限制</strong>：SU 生物反應器主要適用於哺乳類細胞培養；微生物發酵因高 OTR、高散熱需求而受限。放大時需以 kLa、P/V、VVM、Mixing Time 為關鍵參數。Vent filter 冷凝水管理是易被忽略的設計細節。",
+   "en": "<strong>Bioreactor limitations</strong>: SU bioreactors are mainly suited to mammalian cell culture; microbial fermentation is limited by high OTR and high heat removal demands. Scale-up should use kLa, P/V, VVM and mixing time as key parameters. Vent filter condensate management is an easily overlooked design detail."
+  },
+  {
+   "zh": "<strong>製程封閉性決定環境等級</strong>：封閉製程可在較低潔淨室等級操作，是 SUT 的核心成本優勢。必須為每個製程步驟進行封閉性風險評估。Hybrid 系統（不鏽鋼 + SU 流路）需明確區分兩套管理規則。",
+   "en": "<strong>Process closure determines environmental grade</strong>: closed processes can be operated at a lower cleanroom grade, which is the core cost advantage of SUT. A closure risk assessment must be performed for each process step. Hybrid systems (stainless steel + SU flow path) need the two sets of management rules to be clearly distinguished."
+  },
+  {
+   "zh": "<strong>濕面 vs 非濕面品質要求</strong>：濕面組件 (Wetted) 需要 Extractables、生物相容性、Bioburden、Endotoxin、Particulate 等全套品質要求；非濕面組件 (Non-wetted) 要求較少，但製造環境仍為 A（Required）。",
+   "en": "<strong>Wetted vs. non-wetted quality requirements</strong>: wetted components need the full set of quality requirements (extractables, biocompatibility, bioburden, endotoxin, particulates); non-wetted components have fewer requirements, but the manufacturing environment is still A (Required)."
+  },
+  {
+   "zh": "<strong>三層品質要求架構</strong>：組件層（基礎材料品質）→ 組合件層（製造控制 + 無菌屏障 + 滅菌 + 運輸確認）→ 系統層（機械強度 + 軟體 21 CFR Part 11 + 微粒產生控制）。每層繼承並疊加上一層的要求。",
+   "en": "<strong>Three-level quality requirement structure</strong>: component level (basic material quality) → assembly level (manufacturing control + sterile barrier + sterilization + transportation qualification) → system level (mechanical strength + software 21 CFR Part 11 + particulate generation control). Each level inherits and adds to the requirements of the one below."
+  },
+  {
+   "zh": "<strong>供應鏈品質分工</strong>：組件供應商（進料→製造中→出貨前）、組合件供應商（製造控制 + CoC/CoQ）、終端使用者（收貨查核：真空完整性、標籤、證書；使用前查核：圖面符合性、連接點確認）。缺一不可。",
+   "en": "<strong>Division of quality responsibility along the supply chain</strong>: component suppliers (incoming → in-process → pre-shipment), assembly suppliers (manufacturing control + CoC/CoQ), end users (checks on receipt: vacuum integrity, labels, certificates; checks before use: drawing conformance, connection point verification). None can be omitted."
+  },
+  {
+   "zh": "<strong>品質管理系統方法</strong>：URS 是一切的起點（端到端溝通）；QbD（ICH Q8）將品質建入設計；QRM（ICH Q9）識別和控制風險；進料檢驗的接受/拒絕標準必須書面化，不符合規定品需隔離處理。",
+   "en": "<strong>Quality management system approach</strong>: the URS is the starting point for everything (end-to-end communication); QbD (ICH Q8) builds quality into the design; QRM (ICH Q9) identifies and controls risk; accept/reject criteria for incoming inspection must be documented, and non-conforming material must be quarantined."
+  }
+ ]
+}

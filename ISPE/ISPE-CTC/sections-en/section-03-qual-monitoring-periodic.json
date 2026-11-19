@@ -1,0 +1,657 @@
+{
+ "source": "section-03-qual-monitoring-periodic.html",
+ "blocks": [
+  {
+   "zh": "確效、系統監測與週期性評估",
+   "en": "Qualification, System Monitoring and Periodic Evaluation"
+  },
+  {
+   "zh": "Table of Contents  /  本節目錄",
+   "en": "Table of Contents"
+  },
+  {
+   "zh": "<a href=\"#learning-obj\">Learning Objectives 學習目標</a>\n<a href=\"#ch7-overview\">Ch 7 Overview 確效概述</a>\n<a href=\"#iq\">7.1 IQ 安裝確效</a>\n<a href=\"#oq\">7.2 OQ 運行確效</a>\n<a href=\"#pq\">7.3 PQ 性能確效</a>\n<a href=\"#risk-based\">7.4 Risk-Based Approach 風險導向</a>\n<a href=\"#ch8-overview\">Ch 8 System Monitoring 系統監測</a>\n<a href=\"#sensor-types\">8.1 Sensor Types 感測器類型</a>\n<a href=\"#sensor-placement\">8.2–8.3 Probe Placement 探針佈置</a>\n<a href=\"#dampening\">8.4 Thermal Dampening 熱阻尼液</a>\n<a href=\"#alarm-setpoints\">8.5 Alarm Set Points 警報設定值</a>\n<a href=\"#ch9-overview\">Ch 9 Periodic Evaluation 週期性評估</a>\n<a href=\"#remapping-triggers\">9.1 Re-mapping Triggers 重新測繪觸發條件</a>\n<a href=\"#frequency\">9.2 Frequency &amp; Risk 頻率與風險</a>\n<a href=\"#continuous-verif\">9.3 Continuous Verification 持續驗證</a>\n<a href=\"#excursion\">9.4 Excursion Documentation 偏差文件</a>\n<a href=\"#key-message\">Key Message 核心訊息</a>",
+   "en": "<a href=\"#learning-obj\">Learning Objectives</a>\n<a href=\"#ch7-overview\">Ch 7 Overview: Qualification</a>\n<a href=\"#iq\">7.1 IQ: Installation Qualification</a>\n<a href=\"#oq\">7.2 OQ: Operational Qualification</a>\n<a href=\"#pq\">7.3 PQ: Performance Qualification</a>\n<a href=\"#risk-based\">7.4 Risk-Based Approach</a>\n<a href=\"#ch8-overview\">Ch 8 System Monitoring</a>\n<a href=\"#sensor-types\">8.1 Sensor Types</a>\n<a href=\"#sensor-placement\">8.2–8.3 Probe Placement</a>\n<a href=\"#dampening\">8.4 Thermal Dampening</a>\n<a href=\"#alarm-setpoints\">8.5 Alarm Set Points</a>\n<a href=\"#ch9-overview\">Ch 9 Periodic Evaluation</a>\n<a href=\"#remapping-triggers\">9.1 Re-mapping Triggers</a>\n<a href=\"#frequency\">9.2 Frequency &amp; Risk</a>\n<a href=\"#continuous-verif\">9.3 Continuous Verification</a>\n<a href=\"#excursion\">9.4 Excursion Documentation</a>\n<a href=\"#key-message\">Key Message</a>"
+  },
+  {
+   "zh": "Learning Objectives / 學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "After studying this section, you should be able to… / 完成本節後，您應能夠…",
+   "en": "After studying this section, you should be able to…"
+  },
+  {
+   "zh": "中文學習目標",
+   "en": "Commentary"
+  },
+  {
+   "zh": "區分受控溫度腔體（CTC）之 IQ、OQ、PQ 的範疇與交付成果。",
+   "en": "Distinguish the scope and deliverables of IQ, OQ and PQ for a controlled temperature chamber (CTC)."
+  },
+  {
+   "zh": "說明試車（Commissioning）、FAT/SAT 與正式確效在 ISPE 風險導向方法中的關係。",
+   "en": "Explain how commissioning, FAT/SAT and formal qualification relate to one another in the ISPE risk-based approach."
+  },
+  {
+   "zh": "辨識溫度感測器類型（熱電偶、RTD、熱敏電阻、化學型）及其精準度特性。",
+   "en": "Identify the types of temperature sensor (thermocouple, RTD, thermistor, chemical) and their accuracy characteristics."
+  },
+  {
+   "zh": "描述最差情況測繪結果如何指導永久監測探針的選擇與安裝位置。",
+   "en": "Describe how worst-case mapping results guide the selection and placement of permanent monitoring probes."
+  },
+  {
+   "zh": "區分工程警報與品質警報，並為 2–8°C 冷藏機設定警示（Alert）與行動（Alarm）警報值。",
+   "en": "Distinguish engineering alarms from quality alarms, and set Alert and Alarm (action) values for a 2–8°C refrigerator."
+  },
+  {
+   "zh": "應用熱阻尼液原理，包括論證文件要求與液體選擇標準。",
+   "en": "Apply the principles of thermal dampening, including the documented justification required and the criteria for selecting a fluid."
+  },
+  {
+   "zh": "列出需要規劃重新測繪的強制性及風險導向觸發條件。",
+   "en": "List the mandatory and risk-based triggers that require re-mapping to be planned."
+  },
+  {
+   "zh": "說明持續監測感測器策略如何替代週期性再確效測繪。",
+   "en": "Explain how a continuous monitoring sensor strategy can replace periodic requalification mapping."
+  },
+  {
+   "zh": "運用 ICH Q9/ISPE 風險原則，針對不同 CTC 類別（獨立冰箱、步入式冷房、CRT 倉庫）決定重新測繪頻率。",
+   "en": "Apply ICH Q9/ISPE risk principles to decide the re-mapping frequency for different CTC categories (stand-alone refrigerators, walk-in cold rooms, CRT warehouses)."
+  },
+  {
+   "zh": "Chapter 7: Qualification / 第七章：確效",
+   "en": "Chapter 7: Qualification"
+  },
+  {
+   "zh": "IQ · OQ · PQ  |  Commissioning relationship · Risk-based approach / 確效架構 · 試車關係 · 風險導向",
+   "en": "IQ · OQ · PQ  |  Commissioning relationship · Risk-based approach"
+  },
+  {
+   "zh": "7.0 When Is Qualification Required? / 何時需要確效？",
+   "en": "7.0 When Is Qualification Required?"
+  },
+  {
+   "zh": "中文解說：確效的觸發條件",
+   "en": "Commentary: What Triggers Qualification"
+  },
+  {
+   "zh": "GMP 系統分類原則",
+   "en": "GMP System Classification Principle"
+  },
+  {
+   "zh": "ISPE 將受控溫度設備分為兩類：",
+   "en": "ISPE divides temperature-controlled equipment into two categories:"
+  },
+  {
+   "zh": "<strong>工程系統（Commissioned）</strong>：對產品品質影響間接，例如用於調節凝膠包溫度的冷房。試車（Commissioning）即可，不強制執行 IQ/OQ。",
+   "en": "<strong>Commissioned systems (engineering systems):</strong> Systems with only an indirect impact on product quality, for example a cold room used to condition gel packs. Commissioning is sufficient; IQ/OQ is not mandatory."
+  },
+  {
+   "zh": "<strong>確效系統（Qualified）</strong>：直接存放 GMP 原料、中間體或成品者。必須完成 IQ + OQ（PQ 視風險決定）。",
+   "en": "<strong>Qualified systems:</strong> Systems that directly store GMP raw materials, intermediates or finished products. IQ + OQ must be completed (PQ is decided on risk)."
+  },
+  {
+   "zh": "類比：汽車出廠驗收 vs 年度保養",
+   "en": "Analogy: Factory Acceptance vs Annual Service"
+  },
+  {
+   "zh": "IQ = 新車交付時驗收（硬體規格符合訂單）；OQ = 試駕測試（操控在規格範圍內）；PQ = 實際載貨測試（滿載後性能達標）。試車（Commissioning）= 工廠組裝後的內部品管，為 IQ 提供基礎文件。",
+   "en": "IQ = accepting a new car at delivery (the hardware matches the order); OQ = the test drive (handling is within specification); PQ = a real load test (performance is met when fully loaded). Commissioning = the factory's internal quality control after assembly, which provides the foundation documents for IQ."
+  },
+  {
+   "zh": "CDMO 現場提示",
+   "en": "CDMO Site Tip"
+  },
+  {
+   "zh": "多產品 CDMO 中，同一台 2–8°C 冷藏箱可能同時存放生物製劑原液與成品。此類設備必須確效，且應在 PQ 中涵蓋代表性裝載配置，避免因產品切換導致溫度分布改變。",
+   "en": "In a multi-product CDMO, the same 2–8°C refrigerator may hold both biologic drug substance and finished product. Such equipment must be qualified, and the PQ should cover representative load configurations so that a change of product does not alter the temperature distribution unnoticed."
+  },
+  {
+   "zh": "7.1 Installation Qualification (IQ) / 安裝確效",
+   "en": "7.1 Installation Qualification (IQ)"
+  },
+  {
+   "zh": "IQ 活動表：CTC 安裝確效核心項目",
+   "en": "IQ Activity Table: Core Items of CTC Installation Qualification"
+  },
+  {
+   "zh": "重點提示",
+   "en": "Key Point"
+  },
+  {
+   "zh": "ISPE 允許 IQ 直接引用試車文件，但必須在 IQ 協議中明確交叉參考（cross-reference），並確認文件版本受控。不可僅口頭聲明「試車已完成」。",
+   "en": "ISPE allows the IQ to refer directly to commissioning documents, but the IQ protocol must make an explicit cross-reference and confirm that the document version is controlled. A verbal statement that \"commissioning is complete\" is not acceptable."
+  },
+  {
+   "zh": "7.2 Operational Qualification (OQ) / 運行確效",
+   "en": "7.2 Operational Qualification (OQ)"
+  },
+  {
+   "zh": "OQ 活動表：CTC 運行確效核心測試",
+   "en": "OQ Activity Table: Core Tests of CTC Operational Qualification"
+  },
+  {
+   "zh": "最差情況括號法 (Worst-Case Bracket Approach)",
+   "en": "Worst-Case Bracket Approach"
+  },
+  {
+   "zh": "在 OQ 中，選取最不利的操作條件組合（例如：空腔 + 夏季環境 + 最高預期開門頻率），若在此條件下仍符合規格，則可覆蓋一般操作情境，無需逐一測試每種組合。",
+   "en": "In the OQ, select the least favourable combination of operating conditions (for example: empty chamber + summer ambient + highest expected door-opening frequency). If the chamber meets specification under these conditions, it covers normal operating scenarios, and every combination does not need to be tested individually."
+  },
+  {
+   "zh": "7.3 Performance Qualification (PQ) / 性能確效",
+   "en": "7.3 Performance Qualification (PQ)"
+  },
+  {
+   "zh": "IQ / OQ / PQ 比較總表",
+   "en": "IQ / OQ / PQ Comparison Table"
+  },
+  {
+   "zh": "7.4 Science and Risk-Based Approach / 科學與風險導向方法",
+   "en": "7.4 Science and Risk-Based Approach"
+  },
+  {
+   "zh": "Commissioning → Qualification 文件流程",
+   "en": "Commissioning → Qualification Document Flow"
+  },
+  {
+   "zh": "Commissioning (試車)",
+   "en": "Commissioning"
+  },
+  {
+   "zh": "↓ leveraged / 引用",
+   "en": "↓ leveraged"
+  },
+  {
+   "zh": "↓ (risk-based / 視風險)",
+   "en": "↓ (risk-based)"
+  },
+  {
+   "zh": "CDMO 多產品應用要點",
+   "en": "Key Points for Multi-Product CDMO Applications"
+  },
+  {
+   "zh": "FAT/SAT 在設備供應商廠內完成，所有文件應以 CDMO 品質系統格式控制",
+   "en": "FAT/SAT is performed at the equipment supplier's site; all documents should be controlled in the CDMO quality system format."
+  },
+  {
+   "zh": "試車文件引用需在 IQ/OQ 協議中建立交叉參考索引（cross-reference index）",
+   "en": "References to commissioning documents must be set up in a cross-reference index in the IQ/OQ protocols."
+  },
+  {
+   "zh": "多產品環境下，OQ 的裝載條件需涵蓋「最小裝載 + 最大裝載」兩種極端情況",
+   "en": "In a multi-product environment, the OQ load conditions must cover both extremes: minimum load and maximum load."
+  },
+  {
+   "zh": "📝 Practice Questions — Chapter 7 / 練習題",
+   "en": "📝 Practice Questions — Chapter 7"
+  },
+  {
+   "zh": "A CDMO installs a new -20°C freezer for API storage. The vendor provides FAT records showing the unit maintained -20°C ± 3°C over 48 hours. Can these records directly serve as OQ evidence? What additional steps are needed?<br/><span style=\"color:#4a5568;font-size:0.85rem;\">某 CDMO 安裝新的 -20°C API 冷凍庫，供應商提供 FAT 記錄顯示設備在 48 小時內維持 -20°C ± 3°C。這些記錄能否直接作為 OQ 依據？還需要哪些步驟？</span>",
+   "en": "A CDMO installs a new -20°C freezer for API storage. The vendor provides FAT records showing the unit maintained -20°C ± 3°C over 48 hours. Can these records directly serve as OQ evidence? What additional steps are needed?<br/><span style=\"color:#4a5568;font-size:0.85rem;\"></span>"
+  },
+  {
+   "zh": "Why does the ISPE CTC Guide state that PQ is \"typically not required\" for temperature chambers, yet recommend it for high-value biologics storage?<br/><span style=\"color:#4a5568;font-size:0.85rem;\">為何 ISPE CTC 指南表示冷藏設備「通常不需要 PQ」，卻又建議高價值生物製劑儲存應考慮 PQ？</span>",
+   "en": "Why does the ISPE CTC Guide state that PQ is \"typically not required\" for temperature chambers, yet recommend it for high-value biologics storage?<br/><span style=\"color:#4a5568;font-size:0.85rem;\"></span>"
+  },
+  {
+   "zh": "During OQ door-open testing, the chamber temperature exceeds the upper alarm limit within 4 minutes and recovers in 12 minutes. How should this result influence the alarm delay setting? Is this result a pass or fail?<br/><span style=\"color:#4a5568;font-size:0.85rem;\">OQ 開門測試中，腔體溫度在 4 分鐘內超過警報上限，12 分鐘後恢復。此結果如何影響警報延遲設定？這算通過還是未通過？</span>",
+   "en": "During OQ door-open testing, the chamber temperature exceeds the upper alarm limit within 4 minutes and recovers in 12 minutes. How should this result influence the alarm delay setting? Is this result a pass or fail?<br/><span style=\"color:#4a5568;font-size:0.85rem;\"></span>"
+  },
+  {
+   "zh": "Chapter 8: System Monitoring / 第八章：系統監測",
+   "en": "Chapter 8: System Monitoring"
+  },
+  {
+   "zh": "Sensor types · Probe placement · Thermal dampening · Alert/Alarm strategy · 21 CFR Part 11 / 感測器類型 · 探針佈置 · 熱阻尼 · 警報策略 · 電子記錄要求",
+   "en": "Sensor types · Probe placement · Thermal dampening · Alert/Alarm strategy · 21 CFR Part 11"
+  },
+  {
+   "zh": "8.0 Independent Monitoring Principle / 獨立監測原則",
+   "en": "8.0 Independent Monitoring Principle"
+  },
+  {
+   "zh": "監測系統選型比較 &amp; 21 CFR Part 11 適用性",
+   "en": "Comparison of Monitoring System Options &amp; 21 CFR Part 11 Applicability"
+  },
+  {
+   "zh": "21 CFR Part 11 BMS 最低要求 (FDA 電子記錄)",
+   "en": "Minimum 21 CFR Part 11 Requirements for a BMS (FDA Electronic Records)"
+  },
+  {
+   "zh": "<strong>Audit trail：</strong>所有記錄的建立、修改、刪除均需留下追蹤記錄，含時間戳與操作者身份",
+   "en": "<strong>Audit trail:</strong> Every creation, modification and deletion of a record must leave a trail, including the time stamp and the identity of the operator."
+  },
+  {
+   "zh": "<strong>Access control：</strong>依職能限制讀取與修改權限，具備唯一用戶ID",
+   "en": "<strong>Access control:</strong> Restrict read and modify permissions by job function, with unique user IDs."
+  },
+  {
+   "zh": "<strong>Data integrity：</strong>電子記錄不可被輕易刪改；需具備備份與災難復原機制",
+   "en": "<strong>Data integrity:</strong> Electronic records must not be easily altered or deleted; backup and disaster recovery mechanisms are required."
+  },
+  {
+   "zh": "<strong>Electronic signatures：</strong>若用於正式 QC 記錄簽核，需符合電子簽名要求",
+   "en": "<strong>Electronic signatures:</strong> If used to sign off formal QC records, they must meet the electronic signature requirements."
+  },
+  {
+   "zh": "<strong>Validation：</strong>BMS/SCADA 軟體需要 CSV（電腦化系統驗證）",
+   "en": "<strong>Validation:</strong> BMS/SCADA software requires CSV (computerized system validation)."
+  },
+  {
+   "zh": "8.1 Temperature Sensor Types / 溫度感測器類型",
+   "en": "8.1 Temperature Sensor Types"
+  },
+  {
+   "zh": "<strong>1. Thermocouples (熱電偶)</strong><br/>\n                    Operate via the Seebeck effect — a temperature gradient across a conductor generates a voltage. Two dissimilar metals form a circuit where the voltage difference is measurable (1–70 µV/°C for standard combinations). Cables and joints can be prone to damage. A common protocol allowance is up to <strong>1% sensor failure</strong> without invalidating the test run, provided failed sensors are not in critical regions.",
+   "en": "<strong>1. Thermocouples</strong><br/>\n                    Operate via the Seebeck effect — a temperature gradient across a conductor generates a voltage. Two dissimilar metals form a circuit where the voltage difference is measurable (1–70 µV/°C for standard combinations). Cables and joints can be prone to damage. A common protocol allowance is up to <strong>1% sensor failure</strong> without invalidating the test run, provided failed sensors are not in critical regions."
+  },
+  {
+   "zh": "<strong>2. Resistance Temperature Detectors (RTDs) and Thermistors (熱電阻)</strong><br/>\n                    Based on resistance change with temperature. RTDs use metal (resistance increases with temperature); thermistors use ceramic material (resistance decreases with temperature). Measured using a Wheatstone bridge with a small current. High-quality RTDs may last &gt;8 years in accelerated life tests. Wiring configurations (3-wire, 4-wire) minimise cable resistance effects.",
+   "en": "<strong>2. Resistance Temperature Detectors (RTDs) and Thermistors</strong><br/>\n                    Based on resistance change with temperature. RTDs use metal (resistance increases with temperature); thermistors use ceramic material (resistance decreases with temperature). Measured using a Wheatstone bridge with a small current. High-quality RTDs may last &gt;8 years in accelerated life tests. Wiring configurations (3-wire, 4-wire) minimise cable resistance effects."
+  },
+  {
+   "zh": "<strong>3. Chemical Indicators (化學型指示劑)</strong><br/>\n                    Chemicals that change colour with temperature. Used only to record minimum/maximum temperatures. Not considered accurate; no time record associated with temperature change. Not suitable for continuous GMP monitoring.",
+   "en": "<strong>3. Chemical Indicators</strong><br/>\n                    Chemicals that change colour with temperature. Used only to record minimum/maximum temperatures. Not considered accurate; no time record associated with temperature change. Not suitable for continuous GMP monitoring."
+  },
+  {
+   "zh": "感測器精準度與選型指引",
+   "en": "Sensor Accuracy and Selection Guide"
+  },
+  {
+   "zh": "選型決策原則",
+   "en": "Selection Decision Principles"
+  },
+  {
+   "zh": "對於 2–8°C 冷藏設備：",
+   "en": "For 2–8°C refrigerated equipment:"
+  },
+  {
+   "zh": "接受範圍窄（僅 6°C 跨度），應選用 <strong>RTD Class A</strong>（±0.15°C），確保感測器精準度不佔用過多接受範圍餘裕",
+   "en": "The acceptance range is narrow (a span of only 6°C), so an <strong>RTD Class A</strong> (±0.15°C) should be used to ensure that sensor accuracy does not consume too much of the acceptance range margin."
+  },
+  {
+   "zh": "熱電偶適合廣域測繪（±1.5°C 精度對 2–8°C 範圍仍屬偏大），需搭配高精度的參考傳感器進行現場校準",
+   "en": "Thermocouples suit wide-area mapping (an accuracy of ±1.5°C is still relatively large for the 2–8°C range) and need to be field-calibrated against a high-accuracy reference sensor."
+  },
+  {
+   "zh": "化學型指示劑僅適用於貨物隨附的最低/最高溫度確認，不可用於設備確效或持續監測",
+   "en": "Chemical indicators are suitable only for confirming the minimum/maximum temperature accompanying a consignment; they must not be used for equipment qualification or continuous monitoring."
+  },
+  {
+   "zh": "8.2–8.3 Number and Location of Monitoring Probes / 探針數量與位置",
+   "en": "8.2–8.3 Number and Location of Monitoring Probes"
+  },
+  {
+   "zh": "探針佈置實務：CDMO 步入式冷房決策矩陣",
+   "en": "Probe Placement in Practice: Decision Matrix for a CDMO Walk-In Cold Room"
+  },
+  {
+   "zh": "比喻：監測探針就像保全攝影機",
+   "en": "Analogy: Monitoring Probes Are Like Security Cameras"
+  },
+  {
+   "zh": "保全攝影機不是每個角落都裝一台，而是裝在「最有可能出問題」的位置：出入口、盲角、貴重物品旁。CTC 的監測探針邏輯相同——根據測繪找出風險位置，針對性佈置，而非均勻分布。",
+   "en": "Security cameras are not installed in every corner, but at the places where problems are \"most likely\": entrances and exits, blind spots, next to valuable items. The logic for CTC monitoring probes is the same: use the mapping to identify the risk locations and place probes there deliberately, rather than distributing them evenly."
+  },
+  {
+   "zh": "8.4 Thermal Dampening Fluids / 熱阻尼液",
+   "en": "8.4 Thermal Dampening Fluids"
+  },
+  {
+   "zh": "熱阻尼液 vs 時間延遲決策指引",
+   "en": "Decision Guide: Thermal Dampening Fluid vs Time Delay"
+  },
+  {
+   "zh": "15分鐘延遲設定的科學依據",
+   "en": "Scientific Basis for the 15-Minute Delay Setting"
+  },
+  {
+   "zh": "ISPE 解釋 15 分鐘標準延遲的合理性：",
+   "en": "ISPE explains why the standard 15-minute delay is justified:"
+  },
+  {
+   "zh": "低溫設備開門後，密度較高的冷空氣會從腔體底部流出，被溫暖環境空氣取代，降溫需要時間",
+   "en": "After the door of a low-temperature unit is opened, denser cold air flows out from the bottom of the chamber and is replaced by warmer ambient air, and it takes time for the chamber to cool down again."
+  },
+  {
+   "zh": "統一延遲設定（15 min）可降低因設備個別設定不一致而導致的錯誤風險",
+   "en": "A uniform delay setting (15 min) reduces the risk of errors caused by inconsistent settings between individual units."
+  },
+  {
+   "zh": "15 分鐘內的短暫溫升通常不代表系統異常，超過 15 分鐘則可能指向設備問題或人員忘關門",
+   "en": "A short temperature rise within 15 minutes does not usually indicate a system abnormality; beyond 15 minutes it may point to an equipment problem or a door left open by personnel."
+  },
+  {
+   "zh": "<strong>警示</strong>：若產品穩定性限制（stability limit）接受時間 &lt; 15 分鐘，此標準設定不適用，需客製化評估",
+   "en": "<strong>Warning:</strong> If the product stability limit allows an acceptance time of &lt; 15 minutes, this standard setting does not apply and a customised evaluation is required."
+  },
+  {
+   "zh": "8.5 Alarm Set Points / 警報設定值",
+   "en": "8.5 Alarm Set Points"
+  },
+  {
+   "zh": "<strong>8.5.1 Engineering Alarms (工程警報)</strong>",
+   "en": "<strong>8.5.1 Engineering Alarms</strong>"
+  },
+  {
+   "zh": "<strong>8.5.2 Quality Alarms (品質警報)</strong>",
+   "en": "<strong>8.5.2 Quality Alarms</strong>"
+  },
+  {
+   "zh": "<strong>Alert (警示)：</strong>Tighter than the specification; triggers investigation. Typically ±1°C inside the specification band.",
+   "en": "<strong>Alert:</strong> Tighter than the specification; triggers investigation. Typically ±1°C inside the specification band."
+  },
+  {
+   "zh": "<strong>Action/Alarm (行動警報)：</strong>At or just inside the specification limits; triggers immediate action and investigation.",
+   "en": "<strong>Action/Alarm:</strong> At or just inside the specification limits; triggers immediate action and investigation."
+  },
+  {
+   "zh": "Alert vs Alarm 設定值範例：2–8°C 冷藏機",
+   "en": "Alert vs Alarm Set Point Example: 2–8°C Refrigerator"
+  },
+  {
+   "zh": "Engineering Alarm Set Point Calculation / 工程警報計算",
+   "en": "Engineering Alarm Set Point Calculation"
+  },
+  {
+   "zh": "📝 Practice Questions — Chapter 8 / 練習題",
+   "en": "📝 Practice Questions — Chapter 8"
+  },
+  {
+   "zh": "A BMS monitoring system for a 2–8°C refrigerator has a 15-minute sampling interval. A product's stability data shows it can tolerate only a 20-minute excursion above 8°C. Is the 15-minute alarm delay still appropriate? Explain the risk and what should be done.<br/><span style=\"color:#4a5568;font-size:0.85rem;\">BMS 系統每 15 分鐘採樣一次，但產品穩定性只允許 8°C 以上偏差不超過 20 分鐘。15 分鐘警報延遲是否仍適用？請說明風險並提出對策。</span>",
+   "en": "A BMS monitoring system for a 2–8°C refrigerator has a 15-minute sampling interval. A product's stability data shows it can tolerate only a 20-minute excursion above 8°C. Is the 15-minute alarm delay still appropriate? Explain the risk and what should be done.<br/><span style=\"color:#4a5568;font-size:0.85rem;\"></span>"
+  },
+  {
+   "zh": "Your walk-in cold room has a steady-state mean of 4.2°C and a standard deviation of 0.4°C. Calculate the engineering alarm set points and explain why they differ from the quality alert limits (3°C / 7°C).<br/><span style=\"color:#4a5568;font-size:0.85rem;\">步入式冷房穩態平均為 4.2°C，標準差 0.4°C。請計算工程警報設定值，並說明為何與品質警示值（3°C / 7°C）不同。</span>",
+   "en": "Your walk-in cold room has a steady-state mean of 4.2°C and a standard deviation of 0.4°C. Calculate the engineering alarm set points and explain why they differ from the quality alert limits (3°C / 7°C).<br/><span style=\"color:#4a5568;font-size:0.85rem;\"></span>"
+  },
+  {
+   "zh": "A probe is placed in a container of glycerin to simulate the thermal mass of a 10 mL vial. When is this approach appropriate, and what documentation must be generated?<br/><span style=\"color:#4a5568;font-size:0.85rem;\">探針浸入甘油容器以模擬 10 mL 小瓶的熱質量。何種情況適合此方法？需要產生哪些文件？</span>",
+   "en": "A probe is placed in a container of glycerin to simulate the thermal mass of a 10 mL vial. When is this approach appropriate, and what documentation must be generated?<br/><span style=\"color:#4a5568;font-size:0.85rem;\"></span>"
+  },
+  {
+   "zh": "During an FDA inspection, the inspector asks why the BMS does not have an audit trail for temperature data modifications. What is the regulatory basis for this requirement, and what is the immediate corrective action?<br/><span style=\"color:#4a5568;font-size:0.85rem;\">FDA 查廠時，查察員詢問為何 BMS 對溫度數據修改沒有審計追蹤記錄。此要求的法規依據是什麼？應立即採取哪些糾正措施？</span>",
+   "en": "During an FDA inspection, the inspector asks why the BMS does not have an audit trail for temperature data modifications. What is the regulatory basis for this requirement, and what is the immediate corrective action?<br/><span style=\"color:#4a5568;font-size:0.85rem;\"></span>"
+  },
+  {
+   "zh": "Chapter 9: Periodic Evaluation &amp; Frequency of Thermal Mapping Studies / 第九章：週期性評估與熱測繪頻率",
+   "en": "Chapter 9: Periodic Evaluation &amp; Frequency of Thermal Mapping Studies"
+  },
+  {
+   "zh": "Re-mapping triggers · Risk-based frequency · Continuous verification · Excursion documentation / 重新測繪觸發條件 · 風險導向頻率 · 持續驗證 · 偏差文件",
+   "en": "Re-mapping triggers · Risk-based frequency · Continuous verification · Excursion documentation"
+  },
+  {
+   "zh": "9.0 Periodic Assessment Framework / 週期性評估框架",
+   "en": "9.0 Periodic Assessment Framework"
+  },
+  {
+   "zh": "週期性評估 vs 重新測繪的決策邏輯",
+   "en": "Decision Logic: Periodic Assessment vs Re-mapping"
+  },
+  {
+   "zh": "兩種不同的評估行動",
+   "en": "Two Different Evaluation Actions"
+  },
+  {
+   "zh": "<strong>Periodic assessment（週期性評估）</strong>：文件審查型——回顧校準記錄、警報歷史、SOP 變更、偏差、維護記錄。是每次週期性評估的最低要求，不一定觸發重新測繪。",
+   "en": "<strong>Periodic assessment:</strong> A document-review activity that looks back over calibration records, alarm history, SOP changes, deviations and maintenance records. It is the minimum requirement of every periodic assessment and does not necessarily trigger re-mapping."
+  },
+  {
+   "zh": "<strong>Re-mapping（重新測繪）</strong>：實地測量型——重新在腔體中佈置溫度探針，運行 ≥24 小時，產生新的溫度分布數據。由 risk assessment 或觸發事件決定是否需要。",
+   "en": "<strong>Re-mapping:</strong> A field-measurement activity in which temperature probes are placed in the chamber again and run for ≥24 hours to produce new temperature distribution data. Whether it is needed is decided by a risk assessment or a trigger event."
+  },
+  {
+   "zh": "類比：健康檢查 vs 手術",
+   "en": "Analogy: Health Check vs Surgery"
+  },
+  {
+   "zh": "週期性評估如同每年的健康檢查（血液報告、X 光），是例行性的。重新測繪如同精密外科手術前的術前評估——只有在有臨床指徵（觸發條件）時才執行，但頻率和指徵應提前在書面中定義清楚。",
+   "en": "A periodic assessment is like an annual health check (blood tests, X-rays): it is routine. Re-mapping is like the pre-operative assessment before precision surgery: it is carried out only when there is a clinical indication (a trigger), but the frequency and the indications should be clearly defined in writing in advance."
+  },
+  {
+   "zh": "持續監測數據替代重新測繪的前提條件",
+   "en": "Prerequisites for Using Continuous Monitoring Data to Replace Re-mapping"
+  },
+  {
+   "zh": "探針已安裝於測繪確定的最差情況位置",
+   "en": "The probes are installed at the worst-case locations identified by mapping."
+  },
+  {
+   "zh": "探針具有完整的校準歷史（持續無 OOT / OOS）",
+   "en": "The probes have a complete calibration history (consistently no OOT / OOS)."
+  },
+  {
+   "zh": "維護記錄完整，無未解釋的數據缺口",
+   "en": "Maintenance records are complete, with no unexplained data gaps."
+  },
+  {
+   "zh": "監測系統本身已通過 CSV（電腦化系統驗證）",
+   "en": "The monitoring system itself has passed CSV (computerized system validation)."
+  },
+  {
+   "zh": "替代方案需在 VMP（驗證主計畫）中明確定義",
+   "en": "The alternative approach is clearly defined in the VMP (validation master plan)."
+  },
+  {
+   "zh": "9.1 Re-mapping Triggers / 重新測繪觸發條件",
+   "en": "9.1 Re-mapping Triggers"
+  },
+  {
+   "zh": "重新測繪觸發條件查核清單 (Re-mapping Trigger Checklist)",
+   "en": "Re-mapping Trigger Checklist"
+  },
+  {
+   "zh": "9.2 Risk-Based Frequency / 風險導向頻率",
+   "en": "9.2 Risk-Based Frequency"
+  },
+  {
+   "zh": "CDMO 多產品週期性評估決策矩陣",
+   "en": "Periodic Assessment Decision Matrix for a Multi-Product CDMO"
+  },
+  {
+   "zh": "CRT 倉庫週期性維護 — 具體檢查內容 (ISPE 建議)",
+   "en": "Periodic Maintenance of a CRT Warehouse: Specific Checks (ISPE Recommendation)"
+  },
+  {
+   "zh": "建築外殼（牆體、門封、遮風簾）目視檢查，確認無明顯劣化",
+   "en": "Visually inspect the building envelope (walls, door seals, wind curtains) to confirm there is no obvious deterioration."
+  },
+  {
+   "zh": "回顧監測系統、HVAC 系統警報歷史，識別負面性能趨勢",
+   "en": "Review the alarm history of the monitoring system and the HVAC system to identify negative performance trends."
+  },
+  {
+   "zh": "確認 HVAC 平衡風門仍在試車時的設定位置",
+   "en": "Confirm that the HVAC balancing dampers are still at the positions set during commissioning."
+  },
+  {
+   "zh": "冷熱盤管清潔（如需要）",
+   "en": "Clean the heating and cooling coils (if needed)."
+  },
+  {
+   "zh": "確認控制閥非在 100% 開度運行（若是則代表系統正達到性能極限）",
+   "en": "Confirm that control valves are not operating at 100% open (if they are, the system is reaching its performance limit)."
+  },
+  {
+   "zh": "9.3 Continuous Performance Verification / 持續性能驗證",
+   "en": "9.3 Continuous Performance Verification"
+  },
+  {
+   "zh": "持續驗證策略 vs 週期性重新測繪比較",
+   "en": "Comparison: Continuous Verification Strategy vs Periodic Re-mapping"
+  },
+  {
+   "zh": "CDMO 持續驗證設計要點",
+   "en": "Key Design Points for CDMO Continuous Verification"
+  },
+  {
+   "zh": "對於多產品 CDMO 冷藏倉庫，持續驗證策略特別有價值：",
+   "en": "A continuous verification strategy is particularly valuable for a multi-product CDMO cold store:"
+  },
+  {
+   "zh": "不同客戶產品的裝載模式各異，若每次換產品都要重新測繪，成本極高",
+   "en": "Loading patterns differ between clients' products; re-mapping at every product change would be extremely costly."
+  },
+  {
+   "zh": "透過在最差情況位置安裝足夠密度的永久感測器，可覆蓋各種裝載場景",
+   "en": "By installing permanent sensors in sufficient density at worst-case locations, a variety of loading scenarios can be covered."
+  },
+  {
+   "zh": "每次裝載變化通過變更管制評估——若新裝載模式不改變最差情況位置，現有監測即可繼續",
+   "en": "Each change in loading is assessed through change control; if the new loading pattern does not change the worst-case locations, the existing monitoring can continue."
+  },
+  {
+   "zh": "關鍵：感測器陣列設計必須包含「能偵測到製冷機組性能下降」的位置",
+   "en": "Key: the sensor array design must include a location that can detect degradation in the performance of the refrigeration unit."
+  },
+  {
+   "zh": "9.4 Handling Excursion Documentation / 偏差文件處理",
+   "en": "9.4 Handling Excursion Documentation"
+  },
+  {
+   "zh": "溫度偏差回應流程（GMP 要求）",
+   "en": "Temperature Excursion Response Flow (GMP Requirement)"
+  },
+  {
+   "zh": "1. 即時遏制 (Immediate Containment)",
+   "en": "1. Immediate Containment"
+  },
+  {
+   "zh": "確認警報真實性 → 隔離受影響產品 → 通知 QA 與倉庫負責人",
+   "en": "Confirm the alarm is genuine → isolate the affected product → notify QA and the warehouse manager"
+  },
+  {
+   "zh": "2. 根本原因調查 (Root Cause Investigation)",
+   "en": "2. Root Cause Investigation"
+  },
+  {
+   "zh": "設備故障 / 人員操作 / 環境因素 / 系統性問題",
+   "en": "Equipment failure / operator action / environmental factors / systemic problems"
+  },
+  {
+   "zh": "3. 產品影響評估 (Product Impact Assessment)",
+   "en": "3. Product Impact Assessment"
+  },
+  {
+   "zh": "偏差持續時間 × 偏差幅度 vs. 產品穩定性預算（stability budget）",
+   "en": "Excursion duration × excursion magnitude vs. the product stability budget"
+  },
+  {
+   "zh": "4. 偏差報告 (Deviation Report)",
+   "en": "4. Deviation Report"
+  },
+  {
+   "zh": "正式 GMP 文件紀錄事件、調查結果、產品處置決定",
+   "en": "Formally record the event, the investigation findings and the product disposition decision in GMP documents"
+  },
+  {
+   "zh": "5. CAPA 預防再發 (Corrective &amp; Preventive Action)",
+   "en": "5. CAPA (Corrective &amp; Preventive Action) to Prevent Recurrence"
+  },
+  {
+   "zh": "設備維修 / 程序修訂 / 人員培訓 / 監測升級",
+   "en": "Equipment repair / procedure revision / personnel training / monitoring upgrade"
+  },
+  {
+   "zh": "6. 趨勢分析 → 週期性評估 (Trend → Periodic Evaluation)",
+   "en": "6. Trend Analysis → Periodic Evaluation"
+  },
+  {
+   "zh": "偏差數據納入下次週期性評估，決定是否需要重新測繪",
+   "en": "Include the excursion data in the next periodic evaluation to decide whether re-mapping is needed"
+  },
+  {
+   "zh": "📝 Practice Questions — Chapter 9 / 練習題",
+   "en": "📝 Practice Questions — Chapter 9"
+  },
+  {
+   "zh": "Your CDMO has a 2–8°C walk-in cold room storing three different client biologics. Client A requires annual re-mapping in their quality agreement; Client B and C have no specific requirement. How do you determine the overall re-mapping frequency? What document governs this decision?<br/><span style=\"color:#4a5568;font-size:0.85rem;\">您的 CDMO 有一座 2–8°C 步入式冷房存放三個客戶的生物製劑。客戶 A 在品質協議中要求每年重新測繪；客戶 B 和 C 沒有特定要求。如何決定整體重新測繪頻率？哪份文件管理此決策？</span>",
+   "en": "Your CDMO has a 2–8°C walk-in cold room storing three different client biologics. Client A requires annual re-mapping in their quality agreement; Client B and C have no specific requirement. How do you determine the overall re-mapping frequency? What document governs this decision?<br/><span style=\"color:#4a5568;font-size:0.85rem;\"></span>"
+  },
+  {
+   "zh": "A walk-in cold room had its evaporator fan replaced six months after the last mapping study. Does this trigger a mandatory re-mapping? If not, what risk assessment questions must be answered?<br/><span style=\"color:#4a5568;font-size:0.85rem;\">步入式冷房在最後一次測繪後六個月更換了蒸發風機。這是否觸發強制重新測繪？若否，需要回答哪些風險評估問題？</span>",
+   "en": "A walk-in cold room had its evaporator fan replaced six months after the last mapping study. Does this trigger a mandatory re-mapping? If not, what risk assessment questions must be answered?<br/><span style=\"color:#4a5568;font-size:0.85rem;\"></span>"
+  },
+  {
+   "zh": "A facility wants to adopt continuous monitoring (10 permanent sensors) as a substitute for periodic re-mapping of a -80°C ultra-low freezer storing cell therapy products. What are the minimum requirements for this approach to be accepted by FDA?<br/><span style=\"color:#4a5568;font-size:0.85rem;\">某設施希望用 10 個永久感測器的持續監測方案替代 -80°C 超低溫冷凍庫的週期性重新測繪。此方法要獲得 FDA 接受，最低要求是什麼？</span>",
+   "en": "A facility wants to adopt continuous monitoring (10 permanent sensors) as a substitute for periodic re-mapping of a -80°C ultra-low freezer storing cell therapy products. What are the minimum requirements for this approach to be accepted by FDA?<br/><span style=\"color:#4a5568;font-size:0.85rem;\"></span>"
+  },
+  {
+   "zh": "During annual periodic review, you notice the cold room has had 12 temperature alerts in the past 12 months vs. 2 in the previous year. What actions does ISPE guidance recommend?<br/><span style=\"color:#4a5568;font-size:0.85rem;\">年度週期性評估中，您發現冷房過去 12 個月有 12 次溫度警示，相較前一年僅 2 次。ISPE 指導建議採取哪些行動？</span>",
+   "en": "During annual periodic review, you notice the cold room has had 12 temperature alerts in the past 12 months vs. 2 in the previous year. What actions does ISPE guidance recommend?<br/><span style=\"color:#4a5568;font-size:0.85rem;\"></span>"
+  },
+  {
+   "zh": "Core Message / 核心訊息",
+   "en": "Core Message"
+  },
+  {
+   "zh": "Integrating Chapters 7, 8, and 9 / 整合第七、八、九章",
+   "en": "Integrating Chapters 7, 8, and 9"
+  },
+  {
+   "zh": "「確效證明的是某一時刻的快照；監測證明的是隨時間的持續狀態——兩者都是展示持續控制的必要條件。」",
+   "en": "\"Qualification proves a snapshot at one point in time; monitoring proves the state over time. Both are necessary to demonstrate continued control.\""
+  },
+  {
+   "zh": "Why Both Are Required / 為何兩者缺一不可",
+   "en": "Why Both Are Required"
+  },
+  {
+   "zh": "三要素整合框架 / Three-Element Integration",
+   "en": "Three-Element Integration Framework"
+  },
+  {
+   "zh": "CTC State of Control<br/><span style=\"font-size:0.85rem; font-weight:400;\">受控溫度腔體之控制狀態</span>",
+   "en": "CTC State of Control<br/><span style=\"font-size:0.85rem; font-weight:400;\">State of control of the controlled temperature chamber</span>"
+  },
+  {
+   "zh": "IQ + OQ<br/>\"Was it capable?\"<br/>確效文件",
+   "en": "IQ + OQ<br/>\"Was it capable?\"<br/>Qualification documents"
+  },
+  {
+   "zh": "Probes + Alarms<br/>\"Is it in control now?\"<br/>持續監測",
+   "en": "Probes + Alarms<br/>\"Is it in control now?\"<br/>Continuous monitoring"
+  },
+  {
+   "zh": "Risk assessment<br/>\"Is requalification needed?\"<br/>週期性評估",
+   "en": "Risk assessment<br/>\"Is requalification needed?\"<br/>Periodic evaluation"
+  },
+  {
+   "zh": "CDMO 視角總結",
+   "en": "CDMO Perspective Summary"
+  },
+  {
+   "zh": "對於承接多客戶、多產品的 CDMO，這三要素構成了「溫控設備生命週期管理」的核心：",
+   "en": "For a CDMO taking on multiple clients and multiple products, these three elements form the core of \"lifecycle management of temperature-controlled equipment\":"
+  },
+  {
+   "zh": "<strong>確效</strong>：在設備安裝、重大變更後，用受控測試證明設備有能力達到規格",
+   "en": "<strong>Qualification:</strong> After equipment installation and after major changes, demonstrate through controlled testing that the equipment is capable of meeting its specification."
+  },
+  {
+   "zh": "<strong>監測</strong>：每天 24 小時、每週 7 天，持續確認設備仍在控制狀態，保護所有客戶的產品",
+   "en": "<strong>Monitoring:</strong> 24 hours a day, 7 days a week, continuously confirm that the equipment remains in a state of control, protecting the products of all clients."
+  },
+  {
+   "zh": "<strong>週期性評估</strong>：每年（或依 VMP 頻率）系統性回顧，識別性能劣化趨勢，決定是否需要重新測繪",
+   "en": "<strong>Periodic evaluation:</strong> A systematic review each year (or at the frequency set in the VMP) to identify trends of performance degradation and decide whether re-mapping is needed."
+  },
+  {
+   "zh": "缺少任何一環，GMP 合規性就不完整。",
+   "en": "If any one element is missing, GMP compliance is incomplete."
+  },
+  {
+   "zh": "Chapter Summary / 章節摘要",
+   "en": "Chapter Summary"
+  },
+  {
+   "zh": "Key Terms Glossary / 關鍵術語表",
+   "en": "Key Terms Glossary"
+  }
+ ]
+}

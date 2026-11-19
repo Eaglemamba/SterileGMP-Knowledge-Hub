@@ -1,0 +1,685 @@
+{
+ "source": "section-02-testing-strategy.html",
+ "blocks": [
+  {
+   "zh": "Chapter 6: Testing Strategy | 測試策略",
+   "en": "Chapter 6: Testing Strategy"
+  },
+  {
+   "zh": "<strong>Chapter Key Message / 章節核心訊息</strong>\n        A mapping study that only tests ideal conditions gives you a false sense of security — the risk lives in the extremes you haven't tested.<br/>\n<span style=\"font-size:0.92rem;opacity:0.9;\">只在理想條件下進行的溫度分佈研究，只會帶給你虛假的安全感。真正的風險，藏在那些你從未測試過的極端條件裡。</span>",
+   "en": "<strong>Chapter Key Message</strong>\n        A mapping study that only tests ideal conditions gives you a false sense of security — the risk lives in the extremes you haven't tested.<br/>\n<span style=\"font-size:0.92rem;opacity:0.9;\">A temperature mapping study performed only under ideal conditions gives you nothing but a false sense of security. The real risk lies in the extreme conditions you have never tested.</span>"
+  },
+  {
+   "zh": "Chapter 6 Contents | 本章目錄",
+   "en": "Chapter 6 Contents"
+  },
+  {
+   "zh": "<a href=\"#objectives\">Learning Objectives | 學習目標</a>\n<a href=\"#sec61\">6.1 Outcomes | 測試目標</a>\n<a href=\"#sec62\">6.2 Risk Assessment | 風險評估</a>\n<a href=\"#sec621\">6.2.1 Risk-based Approach | 風險導向</a>\n<a href=\"#sec63\">6.3 When to Map | 何時執行</a>\n<a href=\"#sec631\">6.3.1 Pre-mapping Requirements | 前置要求</a>\n<a href=\"#sec64\">6.4 Mapping Strategy Factors | 影響因素</a>\n<a href=\"#sec641\">6.4.1 Equipment Selection | 設備選擇</a>\n<a href=\"#sec642\">6.4.2 Sensor Number &amp; Location | 感測器數量與位置</a>\n<a href=\"#sensor-table\">Sensor Placement Table | 感測器位置表</a>\n<a href=\"#test-matrix\">Test Condition Matrix | 測試條件矩陣</a>\n<a href=\"#risk-matrix\">Risk Assessment Matrix | 風險評估矩陣</a>",
+   "en": "<a href=\"#objectives\">Learning Objectives</a>\n<a href=\"#sec61\">6.1 Outcomes</a>\n<a href=\"#sec62\">6.2 Risk Assessment</a>\n<a href=\"#sec621\">6.2.1 Risk-based Approach</a>\n<a href=\"#sec63\">6.3 When to Map</a>\n<a href=\"#sec631\">6.3.1 Pre-mapping Requirements</a>\n<a href=\"#sec64\">6.4 Mapping Strategy Factors</a>\n<a href=\"#sec641\">6.4.1 Equipment Selection</a>\n<a href=\"#sec642\">6.4.2 Sensor Number &amp; Location</a>\n<a href=\"#sensor-table\">Sensor Placement Table</a>\n<a href=\"#test-matrix\">Test Condition Matrix</a>\n<a href=\"#risk-matrix\">Risk Assessment Matrix</a>"
+  },
+  {
+   "zh": "Learning Objectives | 學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "讀完本章後，你將能夠：",
+   "en": "After reading this chapter, you will be able to:"
+  },
+  {
+   "zh": "說明溫度分佈研究必須確認的兩大主要目標",
+   "en": "State the two main objectives that a temperature mapping study must confirm"
+  },
+  {
+   "zh": "列舉制定測試策略前需評估的五大風險因素",
+   "en": "List the five risk factors to be assessed before developing a testing strategy"
+  },
+  {
+   "zh": "解釋為何CFD模擬只能補充、不能取代實際測試",
+   "en": "Explain why CFD simulation can only supplement, and never replace, actual testing"
+  },
+  {
+   "zh": "描述感測器應放置於角落、門口、風口及障礙物旁的原因",
+   "en": "Describe why sensors should be placed at corners, doors, air vents and next to obstructions"
+  },
+  {
+   "zh": "依據腔體體積（&lt;2 m³ 及 &lt;20 m³）應用感測器數量指引",
+   "en": "Apply the sensor number guidance by chamber volume (&lt;2 m³ and &lt;20 m³)"
+  },
+  {
+   "zh": "比較空載與滿載測試條件，說明哪種情境代表最壞情況",
+   "en": "Compare empty and fully loaded test conditions and explain which represents the worst case"
+  },
+  {
+   "zh": "定義量測不確定度，並解釋校準精度如何影響接受標準",
+   "en": "Define measurement uncertainty and explain how calibration accuracy affects acceptance criteria"
+  },
+  {
+   "zh": "說明季節變化（夏季）為何是關鍵的映射時機",
+   "en": "Explain why seasonal variation (summer) is a critical timing for mapping"
+  },
+  {
+   "zh": "描述啟動溫度分佈研究前的最低文件要求",
+   "en": "Describe the minimum documentation required before starting a temperature mapping study"
+  },
+  {
+   "zh": "應用分區概念於多機組HVAC系統",
+   "en": "Apply the zoning concept to multi-unit HVAC systems"
+  },
+  {
+   "zh": "Outcomes | 測試目標",
+   "en": "Outcomes"
+  },
+  {
+   "zh": "中文解析 | Commentary",
+   "en": "Commentary"
+  },
+  {
+   "zh": "ISPE將溫度分佈研究的目的簡化為兩個核心問題：",
+   "en": "ISPE reduces the purpose of a temperature mapping study to two core questions:"
+  },
+  {
+   "zh": "目標一：溫度均一性確認",
+   "en": "Outcome 1: Confirmation of Temperature Uniformity"
+  },
+  {
+   "zh": "確認整個可用儲存空間在整個使用期間，溫度維持在定義限度內。這是最基本的合規門檻。若某角落長期偏高2°C，但監測探針卻設在中央，你對偏差毫無預警。",
+   "en": "Confirm that the temperature throughout the entire usable storage space stays within the defined limits for the whole period of use. This is the most basic compliance threshold. If one corner is consistently 2°C high but the monitoring probe sits in the center, you get no warning of the deviation."
+  },
+  {
+   "zh": "目標二：確定極端位置 → 決定監測點",
+   "en": "Outcome 2: Identify the Extreme Locations → Determine the Monitoring Points"
+  },
+  {
+   "zh": "這是常被忽略但更具戰略意義的目標。分佈研究的最終產出，是一份科學化的監測點位選擇依據——最高點、最低點、最難維持溫度的位置，就是永久監測探針應該放的地方。",
+   "en": "This is the objective that is often overlooked but is more strategically significant. The final output of a mapping study is a scientific basis for selecting monitoring locations: the hottest point, the coldest point and the location where temperature is hardest to maintain are where the permanent monitoring probes should go."
+  },
+  {
+   "zh": "比喻：天氣觀測站的選點邏輯",
+   "en": "Analogy: The Logic of Choosing a Weather Station Site"
+  },
+  {
+   "zh": "你不會把氣象站設在最舒適的平地；你應該設在最容易出現極端天氣的山頂或海岸。溫度分佈研究的邏輯完全相同——找出極端，監測極端。",
+   "en": "You would not put a weather station on the most comfortable flat ground; you would put it on the mountaintop or coast where extreme weather is most likely to occur. Temperature mapping follows exactly the same logic: find the extremes, and monitor the extremes."
+  },
+  {
+   "zh": "CDMO多客戶環境的意涵",
+   "en": "Implications for a Multi-Client CDMO Environment"
+  },
+  {
+   "zh": "在合約生產組織（CDMO）環境中，同一冷藏庫可能同時儲存多家客戶的產品，各自有不同的溫度規格（如2–8°C vs. 15–25°C）。Outcome 2的重要性更高：若監測點位選擇不當，無法保護最嚴格規格的客戶產品。",
+   "en": "In a contract development and manufacturing organization (CDMO), the same cold store may hold products from several clients at once, each with a different temperature specification (for example 2–8°C vs. 15–25°C). Outcome 2 becomes even more important: if the monitoring locations are poorly chosen, the product of the client with the strictest specification cannot be protected."
+  },
+  {
+   "zh": "思考練習 1",
+   "en": "Discussion Exercise 1"
+  },
+  {
+   "zh": "<strong>問：</strong> 一間冷藏室的溫度分佈研究顯示，中央位置2–7°C，但東南角落持續9–10°C。這間冷藏室通過Outcome 1的測試了嗎？通過Outcome 2了嗎？",
+   "en": "<strong>Question:</strong> The mapping study of a cold room shows 2–7°C in the center but a consistent 9–10°C in the southeast corner. Has this cold room passed the Outcome 1 test? Has it passed Outcome 2?"
+  },
+  {
+   "zh": "<strong>引導：</strong> 兩個目標各自獨立評估。未通過Outcome 1的設施，是否仍能使用？需要什麼條件？",
+   "en": "<strong>Guidance:</strong> The two outcomes are assessed independently. Can a facility that fails Outcome 1 still be used? Under what conditions?"
+  },
+  {
+   "zh": "思考練習 2",
+   "en": "Discussion Exercise 2"
+  },
+  {
+   "zh": "<strong>問：</strong> 你的永久監測探針放在腔體中央（最穩定的位置）。它能同時滿足Outcome 1和Outcome 2的要求嗎？為什麼？",
+   "en": "<strong>Question:</strong> Your permanent monitoring probe is placed at the center of the chamber (the most stable location). Can it satisfy both Outcome 1 and Outcome 2? Why or why not?"
+  },
+  {
+   "zh": "Risk Assessment | 風險評估",
+   "en": "Risk Assessment"
+  },
+  {
+   "zh": "ISPE要求在設計測試策略<strong>之前</strong>，先完成風險評估。這不是形式上的文件動作，而是決定你需要多少感測器、測試什麼條件的根本依據。",
+   "en": "ISPE requires that a risk assessment be completed <strong>before</strong> the testing strategy is designed. This is not a paperwork formality; it is the fundamental basis for deciding how many sensors you need and which conditions to test."
+  },
+  {
+   "zh": "五大風險因素的實務意義",
+   "en": "Practical Meaning of the Five Risk Factors"
+  },
+  {
+   "zh": "<strong>用途（Purpose）：</strong> 純儲存 vs. 調溫（conditioning）的測試要求截然不同。調溫設備需要確認物品能在規定時間內達到目標溫度。",
+   "en": "<strong>Purpose:</strong> The testing requirements for pure storage and for conditioning are quite different. Conditioning equipment must be shown to bring items to the target temperature within a specified time."
+  },
+  {
+   "zh": "<strong>尺寸（Size）：</strong> 15英尺（457公分）是溫度分層的警戒高度。超過此高度的倉庫，上下溫差可達3–5°C，必須在高低兩層各設感測器。",
+   "en": "<strong>Size:</strong> 15 feet (457 cm) is the alert height for temperature stratification. In a warehouse taller than this, the top-to-bottom temperature difference can reach 3–5°C, so sensors must be placed at both upper and lower levels."
+  },
+  {
+   "zh": "<strong>佈局（Layout）：</strong> 固定貨架 vs. 移動棧板，直接影響氣流路徑。每次貨架配置改變，理論上都應評估是否需要重新分佈研究。",
+   "en": "<strong>Layout:</strong> Fixed racking vs. movable pallets directly affects the airflow path. In theory, every change to the racking configuration should be assessed for whether a new mapping study is needed."
+  },
+  {
+   "zh": "<strong>地理位置（Location）：</strong> 面西的外牆在台灣夏季下午可能讓室內升溫超過1°C。",
+   "en": "<strong>Location:</strong> A west-facing exterior wall can raise the indoor temperature by more than 1°C on a summer afternoon in Taiwan."
+  },
+  {
+   "zh": "<strong>HVAC特性：</strong> 除霜週期（defrost cycle）是最常見的短暫溫度偏差來源，必須在測試設計中明確說明如何處理。",
+   "en": "<strong>HVAC characteristics:</strong> The defrost cycle is the most common source of short-term temperature excursions, and the test design must state explicitly how it is handled."
+  },
+  {
+   "zh": "比喻：CFD就像天氣預報",
+   "en": "Analogy: CFD Is Like a Weather Forecast"
+  },
+  {
+   "zh": "天氣預報能告訴你明天可能下雨，但它不能取代實際的降雨量測量。CFD模擬能預測哪裡可能有熱點，但它不能取代真實的溫度分佈研究——因為真實世界總有模擬無法捕捉的變數。",
+   "en": "A weather forecast can tell you it may rain tomorrow, but it cannot replace measuring actual rainfall. CFD simulation can predict where hot spots may occur, but it cannot replace a real temperature mapping study, because the real world always has variables that a simulation cannot capture."
+  },
+  {
+   "zh": "風險評估矩陣：何時需要觸發分佈研究",
+   "en": "Risk Assessment Matrix: When a Mapping Study Is Triggered"
+  },
+  {
+   "zh": "思考練習 3",
+   "en": "Discussion Exercise 3"
+  },
+  {
+   "zh": "<strong>問：</strong> 你的CDMO設施新增一個大型冷凍乾燥機（lyophilizer），機器本身產生大量廢熱。這是否觸發相鄰冷藏室的重新分佈研究需求？依據ISPE的哪個風險因素判斷？",
+   "en": "<strong>Question:</strong> Your CDMO facility adds a large lyophilizer, and the machine itself generates a lot of waste heat. Does this trigger a requirement to re-map the adjacent cold room? Which ISPE risk factor do you base your judgment on?"
+  },
+  {
+   "zh": "Risk-based Approach | 風險導向方法",
+   "en": "Risk-based Approach"
+  },
+  {
+   "zh": "ASTM-E2500 與風險導向驗證",
+   "en": "ASTM E2500 and Risk-Based Validation"
+  },
+  {
+   "zh": "ASTM-E2500將傳統的IQ/OQ/PQ驗證框架轉向「規格、設計、確認」的科學導向方法。關鍵轉變：不再強制要求固定格式的文件，而是要求有科學理由支持每個決策。對溫度分佈研究的實際影響是：你必須在協議書中解釋「為什麼選這些位置」，而不只是「我選了這些位置」。",
+   "en": "ASTM E2500 moves the traditional IQ/OQ/PQ validation framework toward a science-based approach of \"specification, design, verification\". The key shift: a fixed documentation format is no longer mandated; instead, every decision must be supported by a scientific rationale. The practical impact on temperature mapping is that your protocol must explain \"why these locations were chosen\", not merely \"I chose these locations\"."
+  },
+  {
+   "zh": "獨立監測系統（Independent System）的三大優勢",
+   "en": "Three Advantages of an Independent Monitoring System"
+  },
+  {
+   "zh": "<strong>可獨立校準：</strong> 不影響系統正常運作即可校準監測探針。（試想：若監測系統與控制系統共用同一探針，校準時怎麼辦？）",
+   "en": "<strong>Independent calibration:</strong> Monitoring probes can be calibrated without disturbing normal operation of the system. (Consider: if the monitoring system and the control system shared the same probe, what would you do during calibration?)"
+  },
+  {
+   "zh": "<strong>品質記錄系統（System of Record）：</strong> 監測系統的數據是官方記錄，不受設備控制系統的數據格式限制。",
+   "en": "<strong>System of record:</strong> The monitoring system's data are the official record and are not restricted by the data format of the equipment control system."
+  },
+  {
+   "zh": "<strong>持續驗證：</strong> 每一筆監測數據都是對「系統仍在規格內運作」的確認，形成連續的合規證據。",
+   "en": "<strong>Continuous verification:</strong> Every monitored data point is a confirmation that \"the system is still operating within specification\", forming continuous evidence of compliance."
+  },
+  {
+   "zh": "CDMO環境下的獨立監測系統設計重點",
+   "en": "Design Points for an Independent Monitoring System in a CDMO Environment"
+  },
+  {
+   "zh": "在多客戶CDMO設施中，獨立監測系統還必須滿足：",
+   "en": "In a multi-client CDMO facility, the independent monitoring system must also meet the following:"
+  },
+  {
+   "zh": "數據存取控制（不同客戶只能看到自己的溫度記錄）",
+   "en": "Data access control (each client can see only its own temperature records)"
+  },
+  {
+   "zh": "21 CFR Part 11電子記錄合規（稽核軌跡、電子簽名）",
+   "en": "21 CFR Part 11 electronic records compliance (audit trail, electronic signatures)"
+  },
+  {
+   "zh": "警報接收人分配（誰在哪間倉庫的偏差時收到警報）",
+   "en": "Alarm recipient assignment (who receives the alarm when a given warehouse has a deviation)"
+  },
+  {
+   "zh": "多套校準週期管理（不同設備可能有不同校準頻率要求）",
+   "en": "Management of multiple calibration cycles (different equipment may have different calibration frequency requirements)"
+  },
+  {
+   "zh": "思考練習 4",
+   "en": "Discussion Exercise 4"
+  },
+  {
+   "zh": "<strong>問：</strong> 你的冷藏設備控制系統（BMS）自帶溫度監測和警報功能。為什麼ISPE仍建議使用獨立的監測系統？這個建議在稽核時如何向查廠員解釋？",
+   "en": "<strong>Question:</strong> The control system (BMS) of your refrigeration equipment has its own temperature monitoring and alarm functions. Why does ISPE still recommend an independent monitoring system? How would you explain this recommendation to an inspector during an audit?"
+  },
+  {
+   "zh": "When to Perform Temperature Mapping | 何時執行溫度分佈研究",
+   "en": "When to Perform Temperature Mapping"
+  },
+  {
+   "zh": "「盡早開始」的戰略意義",
+   "en": "Strategic Significance of \"Start Early\""
+  },
+  {
+   "zh": "溫度分佈研究越早做，越容易在設計階段修正問題（成本低、影響小）。若等到設施完工後才發現一個角落有持續的熱點，此時可能需要大幅修改HVAC管路——工程代價遠超過一個早期測試的成本。",
+   "en": "The earlier the temperature mapping study is done, the easier it is to correct problems at the design stage (low cost, small impact). If a persistent hot spot in one corner is found only after the facility is complete, large changes to the HVAC ductwork may be needed, and the engineering cost far exceeds the cost of an early test."
+  },
+  {
+   "zh": "在台灣的CDMO環境，夏季的高溫高濕是最嚴苛的試驗條件。如果新設施在冬季完工並通過測試，應明確要求在夏季進行重複（seasonal）測試。",
+   "en": "In a CDMO environment in Taiwan, summer heat and humidity are the harshest test conditions. If a new facility is completed and tested in winter, repeat (seasonal) testing in summer should be explicitly required."
+  },
+  {
+   "zh": "「前置系統就緒」的判斷基準",
+   "en": "Criteria for Judging \"Prerequisite System Readiness\""
+  },
+  {
+   "zh": "溫度分佈研究的結果，只代表「測試當時的系統狀態」。若測試時冷凍水系統處於非穩定狀態，測試數據可能無法代表正常操作條件。ISPE允許的例外條件很嚴格：",
+   "en": "The results of a mapping study represent only \"the state of the system at the time of the test\". If the chilled water system was in an unstable state during testing, the test data may not represent normal operating conditions. The exceptions ISPE allows are strict:"
+  },
+  {
+   "zh": "冷凍水必須已知可提供穩定供應",
+   "en": "The chilled water must be known to provide a stable supply"
+  },
+  {
+   "zh": "必須有BMS數據証明冷凍水溫度在範圍內",
+   "en": "There must be BMS data demonstrating that the chilled water temperature is within range"
+  },
+  {
+   "zh": "控制閥未全開（証明冷凍水供應充足）",
+   "en": "The control valve is not fully open (demonstrating that the chilled water supply is sufficient)"
+  },
+  {
+   "zh": "若這三個條件無法同時滿足，則分佈研究的測試數據不具代表性，必須在前置系統穩定後重新執行。",
+   "en": "If these three conditions cannot be met at the same time, the mapping test data are not representative and the study must be repeated once the prerequisite systems are stable."
+  },
+  {
+   "zh": "比喻：季節測試的重要性（台灣觀點）",
+   "en": "Analogy: The Importance of Seasonal Testing (Taiwan Perspective)"
+  },
+  {
+   "zh": "台灣的夏季（7–9月）平均室外溫度35°C+，且濕度超過80%。冷藏設備的壓縮機效率在高溫環境下會下降（因為散熱條件變差）。一間在3月通過測試的冷藏室，到了8月可能出現以前從未出現過的溫度異常。這就是「季節最壞情況（summer worst-case）」測試的必要性。",
+   "en": "Summer in Taiwan (July–September) has average outdoor temperatures of 35°C+ and humidity above 80%. The compressor efficiency of refrigeration equipment drops in hot environments (because heat rejection conditions worsen). A cold room that passed testing in March may show temperature anomalies in August that never appeared before. This is why \"summer worst-case\" testing is necessary."
+  },
+  {
+   "zh": "思考練習 5",
+   "en": "Discussion Exercise 5"
+  },
+  {
+   "zh": "<strong>問：</strong> 你的新冷藏倉庫在1月完工，同月完成溫度分佈研究並通過。客戶問你：「這份分佈研究報告足以支持全年的產品儲存嗎？」你如何回答？需要增加什麼測試計畫？",
+   "en": "<strong>Question:</strong> Your new cold storage warehouse was completed in January, and the mapping study was completed and passed in the same month. A client asks: \"Is this mapping report enough to support product storage for the whole year?\" How would you answer? What additional test plan is needed?"
+  },
+  {
+   "zh": "Prior to Temperature Mapping | 分佈研究前置要求",
+   "en": "Prior to Temperature Mapping"
+  },
+  {
+   "zh": "「品質部門核准」為何是前置條件",
+   "en": "Why \"Quality Unit Approval\" Is a Prerequisite"
+  },
+  {
+   "zh": "溫度分佈研究是一個正式的驗證活動（validation/qualification activity）。依照GMP規範，所有驗證協議必須在執行前獲得品質部門（QA）核准。原因：",
+   "en": "A temperature mapping study is a formal validation/qualification activity. Under GMP, every validation protocol must be approved by the quality unit (QA) before execution. The reasons:"
+  },
+  {
+   "zh": "確保測試設計符合法規期望",
+   "en": "To ensure the test design meets regulatory expectations"
+  },
+  {
+   "zh": "確保接受標準已預先定義（不是測完才決定要不要過）",
+   "en": "To ensure the acceptance criteria are defined in advance (not decided after the test whether it passes)"
+  },
+  {
+   "zh": "若測試失敗，有明確的偏差處理程序",
+   "en": "To ensure there is a clear deviation handling procedure if the test fails"
+  },
+  {
+   "zh": "若先執行測試、再補核准，這在FDA稽查中屬於重大發現（Major Observation）。",
+   "en": "If the test is executed first and approval is added afterwards, this is a Major Observation in an FDA inspection."
+  },
+  {
+   "zh": "設備校準的量測不確定度實務指引",
+   "en": "Practical Guidance on Measurement Uncertainty of Calibrated Equipment"
+  },
+  {
+   "zh": "ISPE特別提到：溫度分佈研究設備必須校準。這不只是「有校準證書」就可以，關鍵是理解校準的不確定度（measurement uncertainty）如何影響接受標準：",
+   "en": "ISPE specifically notes that the equipment used for temperature mapping must be calibrated. Having a calibration certificate is not enough; the key is to understand how the measurement uncertainty of the calibration affects the acceptance criteria:"
+  },
+  {
+   "zh": "若接受標準是2–8°C（範圍6°C）",
+   "en": "If the acceptance criterion is 2–8°C (a range of 6°C)"
+  },
+  {
+   "zh": "若感測器準確度為 ±0.5°C",
+   "en": "If the sensor accuracy is ±0.5°C"
+  },
+  {
+   "zh": "則實際可被感測器可靠偵測的範圍是 2.5–7.5°C",
+   "en": "Then the range that the sensor can reliably detect is 2.5–7.5°C"
+  },
+  {
+   "zh": "廉價資料記錄器若準確度只有 ±2°C，則6°C的範圍根本無法可靠評估",
+   "en": "A cheap data logger with an accuracy of only ±2°C cannot reliably evaluate a 6°C range at all"
+  },
+  {
+   "zh": "<strong>規則：</strong> 感測器準確度 ≤ 接受標準範圍的 1/6（工業常規）。",
+   "en": "<strong>Rule:</strong> Sensor accuracy ≤ 1/6 of the acceptance criterion range (industry convention)."
+  },
+  {
+   "zh": "量測不確定度計算框架",
+   "en": "Measurement Uncertainty Calculation Framework"
+  },
+  {
+   "zh": "接受標準範圍 = 上限 - 下限\n            = 8°C - 2°C = 6°C\n\n感測器準確度要求（建議）:\n  ≤ 接受範圍 / 6\n  = 6°C / 6 = ±1.0°C（最大允許）\n\n較嚴格建議（ISPE範例）:\n  ±0.5°C（可得出 3–7°C 的有效判斷範圍）\n\n廉價資料記錄器（±2°C）:\n  -&gt; 不適用於此接受標準\n  -&gt; 若要使用，須重新定義接受標準\n     或取得設備豁免的科學依據",
+   "en": "Acceptance criterion range = upper limit - lower limit\n            = 8°C - 2°C = 6°C\n\nRequired sensor accuracy (recommended):\n  ≤ acceptance range / 6\n  = 6°C / 6 = ±1.0°C (maximum allowed)\n\nStricter recommendation (ISPE example):\n  ±0.5°C (gives an effective evaluation range of 3–7°C)\n\nCheap data logger (±2°C):\n  -&gt; Not suitable for this acceptance criterion\n  -&gt; If it is to be used, the acceptance criterion must be redefined\n     or a scientific justification for an equipment waiver obtained"
+  },
+  {
+   "zh": "思考練習 6",
+   "en": "Discussion Exercise 6"
+  },
+  {
+   "zh": "<strong>問：</strong> 你的供應商提供了一批分佈研究記錄器，規格書顯示準確度為 ±1.5°C。你的產品儲存規格是15–25°C（範圍10°C）。這批記錄器適用嗎？請用數字計算並說明判斷依據。",
+   "en": "<strong>Question:</strong> Your supplier offers a batch of mapping data loggers whose specification sheet shows an accuracy of ±1.5°C. Your product storage specification is 15–25°C (a range of 10°C). Are these loggers suitable? Show your calculation and explain the basis for your decision."
+  },
+  {
+   "zh": "Factors Influencing the Mapping Strategy | 影響測試策略的因素",
+   "en": "Factors Influencing the Mapping Strategy"
+  },
+  {
+   "zh": "空載 vs. 滿載 vs. 部分負載：測試情境比較",
+   "en": "Empty vs. Fully Loaded vs. Partially Loaded: Comparison of Test Scenarios"
+  },
+  {
+   "zh": "緩衝探針（Buffered Probe）的用途限制",
+   "en": "Limits on the Use of Buffered Probes"
+  },
+  {
+   "zh": "緩衝探針（通常是包裹在甘油或沙粒中的探針）用來模擬產品感受到的溫度，而不是空氣溫度。ISPE明確區分三種使用情境：",
+   "en": "A buffered probe (usually a probe encased in glycerol or sand) is used to simulate the temperature the product experiences rather than the air temperature. ISPE clearly distinguishes three usage scenarios:"
+  },
+  {
+   "zh": "<strong>可以用（OK）：</strong> 作為永久監測點，前提是已確認緩衝探針讀值與產品溫度的對應關係",
+   "en": "<strong>Acceptable (OK):</strong> As a permanent monitoring point, provided the relationship between the buffered probe reading and the product temperature has been confirmed"
+  },
+  {
+   "zh": "<strong>不可以用（No）：</strong> 作為設備控制探針（緩衝延遲會造成控制失準）",
+   "en": "<strong>Not acceptable (No):</strong> As the equipment control probe (the buffering delay would cause poor control)"
+  },
+  {
+   "zh": "<strong>不可以用（No）：</strong> 作為分佈研究探針（因為目標是量測真實空氣溫度，而非產品溫度）",
+   "en": "<strong>Not acceptable (No):</strong> As a mapping probe (because the goal is to measure the true air temperature, not the product temperature)"
+  },
+  {
+   "zh": "採樣頻率的選擇邏輯",
+   "en": "Logic for Selecting the Sampling Frequency"
+  },
+  {
+   "zh": "ISPE最低要求：每5分鐘一次。但對以下情境需提高頻率：",
+   "en": "ISPE's minimum requirement is one reading every 5 minutes. For the following scenarios, a higher frequency is needed:"
+  },
+  {
+   "zh": "除霜週期（defrost cycle）：每次除霜可能使溫度在2–5分鐘內上升3–10°C，5分鐘間隔可能漏掉峰值",
+   "en": "Defrost cycle: each defrost may raise the temperature by 3–10°C within 2–5 minutes, and a 5-minute interval may miss the peak"
+  },
+  {
+   "zh": "頻繁開門（如物流分類區）：每次開門可能造成短暫溫度偏差",
+   "en": "Frequent door opening (for example, logistics sorting areas): each door opening may cause a brief temperature excursion"
+  },
+  {
+   "zh": "調溫腔體（conditioning chambers）：需要追蹤物品升降溫曲線",
+   "en": "Conditioning chambers: the heating and cooling curves of the items must be tracked"
+  },
+  {
+   "zh": "<strong>建議：</strong> 對2–8°C冷藏庫，採用每1–2分鐘一次的採樣頻率，以確保能捕捉除霜事件的完整溫度曲線。",
+   "en": "<strong>Recommendation:</strong> For 2–8°C refrigerators, use a sampling frequency of one reading every 1–2 minutes to ensure the full temperature profile of defrost events is captured."
+  },
+  {
+   "zh": "思考練習 7",
+   "en": "Discussion Exercise 7"
+  },
+  {
+   "zh": "<strong>問：</strong> 你的5°C冷藏室設有自動除霜功能，每4小時觸發一次，持續約8分鐘。你的分佈研究採用5分鐘採樣間隔。這個設計有什麼潛在問題？你會如何修改測試協議？",
+   "en": "<strong>Question:</strong> Your 5°C cold room has automatic defrost that triggers every 4 hours and lasts about 8 minutes. Your mapping study uses a 5-minute sampling interval. What is the potential problem with this design? How would you modify the test protocol?"
+  },
+  {
+   "zh": "思考練習 8",
+   "en": "Discussion Exercise 8"
+  },
+  {
+   "zh": "<strong>問：</strong> 一個CDMO客戶要求你在「貨架滿載（其他客戶產品佔據80%空間）但該客戶產品佔最後20%」的條件下，特別執行一次分佈研究。根據ISPE的邏輯，這個要求合理嗎？如何用「部分負載通常不必要」的原則來回應？",
+   "en": "<strong>Question:</strong> A CDMO client asks you to perform a special mapping study under the condition that \"the shelves are fully loaded (other clients' products occupy 80% of the space) but this client's product occupies the last 20%\". According to ISPE's logic, is this request reasonable? How would you respond using the principle that \"partial loading is generally not necessary\"?"
+  },
+  {
+   "zh": "Selection of Mapping Equipment | 量測設備的選擇",
+   "en": "Selection of Mapping Equipment"
+  },
+  {
+   "zh": "量測不確定度對接受標準的影響（實例）",
+   "en": "Effect of Measurement Uncertainty on Acceptance Criteria (Examples)"
+  },
+  {
+   "zh": "情境一：標準冷藏（2–8°C）\n  接受標準範圍 = 6°C\n  感測器 ±0.5°C → 適用\n  感測器 ±2.0°C → 不適用（±2°C超過範圍的1/3）\n\n情境二：室溫儲存（15–25°C）\n  接受標準範圍 = 10°C\n  感測器 ±0.5°C → 非常適用\n  感測器 ±2.0°C → 邊緣適用（需要額外評估）\n  感測器 ±3.0°C → 不適用\n\n情境三：超低溫（-80°C ± 10°C）\n  接受標準範圍 = 20°C\n  感測器 ±1.0°C → 適用\n  感測器 ±3.0°C → 邊緣（需要評估）\n\n結論：感測器準確度選擇標準\n  感測器準確度 ≤ 接受標準範圍 × 1/4\n  （保守：×1/6，非常嚴格：×1/10）",
+   "en": "Scenario 1: Standard refrigeration (2–8°C)\n  Acceptance criterion range = 6°C\n  Sensor ±0.5°C → suitable\n  Sensor ±2.0°C → not suitable (±2°C exceeds 1/3 of the range)\n\nScenario 2: Room temperature storage (15–25°C)\n  Acceptance criterion range = 10°C\n  Sensor ±0.5°C → very suitable\n  Sensor ±2.0°C → marginal (additional assessment needed)\n  Sensor ±3.0°C → not suitable\n\nScenario 3: Ultra-low temperature (-80°C ± 10°C)\n  Acceptance criterion range = 20°C\n  Sensor ±1.0°C → suitable\n  Sensor ±3.0°C → marginal (assessment needed)\n\nConclusion: criterion for selecting sensor accuracy\n  Sensor accuracy ≤ acceptance criterion range × 1/4\n  (conservative: × 1/6; very strict: × 1/10)"
+  },
+  {
+   "zh": "台灣CDMO設施的濕度管理考量",
+   "en": "Humidity Management Considerations for Taiwan CDMO Facilities"
+  },
+  {
+   "zh": "台灣夏季室外相對濕度常超過85%。對以下空間，濕度分佈研究尤其重要：",
+   "en": "Outdoor relative humidity in Taiwan in summer often exceeds 85%. Humidity mapping is especially important for the following spaces:"
+  },
+  {
+   "zh": "<strong>CRT倉庫（15–25°C）：</strong> 台灣夏季不開空調可能導致相對濕度超過60%，影響吸濕性藥品的穩定性",
+   "en": "<strong>CRT warehouses (15–25°C):</strong> Without air conditioning in a Taiwan summer, relative humidity may exceed 60%, affecting the stability of hygroscopic drug products"
+  },
+  {
+   "zh": "<strong>冷凍/冷藏倉庫：</strong> 頻繁開門導致濕空氣進入，長期累積可能造成結霜，影響HVAC效能",
+   "en": "<strong>Freezer/refrigerated warehouses:</strong> Frequent door opening lets in humid air, and long-term accumulation may cause frost build-up that affects HVAC performance"
+  },
+  {
+   "zh": "<strong>穩定性試驗箱（Stability chambers）：</strong> 同時監控溫度和濕度是基本要求（ICH Q1A）",
+   "en": "<strong>Stability chambers:</strong> Monitoring temperature and humidity together is a basic requirement (ICH Q1A)"
+  },
+  {
+   "zh": "比喻：快速響應探針 vs. 緩慢探針",
+   "en": "Analogy: Fast-Response Probe vs. Slow Probe"
+  },
+  {
+   "zh": "用秒錶計時跑步，和用日曆計時跑步，你會選哪個？快速響應探針就像秒錶——能捕捉除霜事件、開門衝擊等短暫溫度變化。緩慢探針（或緩衝探針）就像日曆——只能告訴你大致趨勢，看不到關鍵的短暫偏差。",
+   "en": "If you were timing a run, would you use a stopwatch or a calendar? A fast-response probe is like a stopwatch: it captures brief temperature changes such as defrost events and door-opening impacts. A slow probe (or buffered probe) is like a calendar: it only tells you the general trend and cannot see the critical short-lived excursions."
+  },
+  {
+   "zh": "思考練習 9",
+   "en": "Discussion Exercise 9"
+  },
+  {
+   "zh": "<strong>問：</strong> 你正在為一個新的冷凍倉庫（-20°C ± 5°C）選擇分佈研究設備。供應商提供以下兩個選項：A款（准確度 ±0.3°C，$500/支），B款（準確度 ±1.5°C，$80/支）。你需要20個感測器。哪款符合ISPE要求？從成本效益角度如何說服管理層選擇合適的設備？",
+   "en": "<strong>Question:</strong> You are selecting mapping equipment for a new freezer warehouse (-20°C ± 5°C). The supplier offers two options: Model A (accuracy ±0.3°C, $500 each) and Model B (accuracy ±1.5°C, $80 each). You need 20 sensors. Which one meets ISPE requirements? From a cost-effectiveness standpoint, how would you persuade management to choose the appropriate equipment?"
+  },
+  {
+   "zh": "Sensor Number &amp; Location | 感測器數量與位置",
+   "en": "Sensor Number &amp; Location"
+  },
+  {
+   "zh": "感測器位置決策流程",
+   "en": "Decision Process for Sensor Locations"
+  },
+  {
+   "zh": "步驟1：確認腔體體積",
+   "en": "Step 1: Confirm the chamber volume"
+  },
+  {
+   "zh": "&lt;2 m³：最少感測器（角、中央）約8–10個",
+   "en": "&lt;2 m³: minimum sensors (corners, center), about 8–10"
+  },
+  {
+   "zh": "&lt;20 m³：最少感測器，增加高低層及每個角 約12–16個",
+   "en": "&lt;20 m³: minimum sensors, adding upper and lower levels and every corner, about 12–16"
+  },
+  {
+   "zh": "&gt;20 m³ / 倉庫：依分區邏輯設計，每區最少代表性點位",
+   "en": "&gt;20 m³ / warehouse: design according to zoning logic, with a minimum number of representative points per zone"
+  },
+  {
+   "zh": "步驟2：識別所有潛在影響因素",
+   "en": "Step 2: Identify all potential influencing factors"
+  },
+  {
+   "zh": "有門 → 在門口兩側各加1個",
+   "en": "Doors → add 1 on each side of the door"
+  },
+  {
+   "zh": "有固定貨架 → 在最遠角落各加1個",
+   "en": "Fixed racking → add 1 at each farthest corner"
+  },
+  {
+   "zh": "高度&gt;457cm → 在最高點額外加感測器",
+   "en": "Height &gt;457 cm → add extra sensors at the highest point"
+  },
+  {
+   "zh": "有障礙物 → 在死角區域各加1個",
+   "en": "Obstructions → add 1 in each dead-air area"
+  },
+  {
+   "zh": "有HVAC出風口 → 在出風口附近加1個",
+   "en": "HVAC air outlets → add 1 near each outlet"
+  },
+  {
+   "zh": "步驟3：確認是否有控制探針 → 旁邊加mapping探針",
+   "en": "Step 3: Check whether there is a control probe → add a mapping probe next to it"
+  },
+  {
+   "zh": "步驟4：撰寫位置選擇科學理由（QA核准）",
+   "en": "Step 4: Write the scientific rationale for the location selection (QA approval)"
+  },
+  {
+   "zh": "步驟5：文件化座標圖，確保可重複執行",
+   "en": "Step 5: Document the coordinate map to ensure the study can be repeated"
+  },
+  {
+   "zh": "CDMO多客戶環境的分區（Zoning）策略",
+   "en": "Zoning Strategy for a Multi-Client CDMO Environment"
+  },
+  {
+   "zh": "當CDMO設施有多個HVAC機組各自控制一個區域時，ISPE的分區概念特別實用：",
+   "en": "When a CDMO facility has several HVAC units each controlling one zone, ISPE's zoning concept is especially useful:"
+  },
+  {
+   "zh": "<strong>每個HVAC分區獨立評估：</strong> 兩個HVAC機組的交界處，是最可能出現溫度異常的位置（兩個控制系統的「無人管轄區域」）",
+   "en": "<strong>Assess each HVAC zone independently:</strong> The boundary between two HVAC units is the location most likely to show temperature anomalies (the \"no man's land\" of the two control systems)"
+  },
+  {
+   "zh": "<strong>代表性區域可外推：</strong> 若西區和東區的佈局、負載完全相同，對西區的詳細分佈測試可以代表東區——但需要有充分的科學依據",
+   "en": "<strong>Representative areas can be extrapolated:</strong> If the layout and load of the west and east zones are identical, a detailed mapping study of the west zone can represent the east zone, but there must be sufficient scientific justification"
+  },
+  {
+   "zh": "<strong>變動負載重新評估：</strong> 多客戶環境中，負載的組成和分佈可能每週都不同。需要評估「最不利的負載情境」並以此作為測試基準",
+   "en": "<strong>Reassess for load changes:</strong> In a multi-client environment, the composition and distribution of the load may differ every week. The \"worst-case load scenario\" needs to be assessed and used as the test baseline"
+  },
+  {
+   "zh": "Table 6.1 — Recommended Placement of Measuring Devices | 建議的量測設備放置位置",
+   "en": "Table 6.1 — Recommended Placement of Measuring Devices"
+  },
+  {
+   "zh": "Test Condition Matrix | 測試條件矩陣",
+   "en": "Test Condition Matrix"
+  },
+  {
+   "zh": "This matrix maps the intersection of load state, seasonal condition, and door scenario to clarify which combinations require testing. | 此矩陣說明負載狀態、季節條件與開門情境的組合，以釐清哪些組合需要測試。",
+   "en": "This matrix maps the intersection of load state, seasonal condition, and door scenario to clarify which combinations require testing."
+  },
+  {
+   "zh": "季節測試的台灣CDMO操作建議",
+   "en": "Practical Recommendations for Seasonal Testing at Taiwan CDMOs"
+  },
+  {
+   "zh": "根據ISPE的夏季最壞情況（summer worst-case）原則，台灣CDMO的建議做法：",
+   "en": "Based on ISPE's summer worst-case principle, the recommended practice for Taiwan CDMOs is:"
+  },
+  {
+   "zh": "<strong>初始分佈研究（Initial Mapping）：</strong> 在7–9月（最熱季節）執行，以確保最惡劣環境條件下的合規性",
+   "en": "<strong>Initial mapping:</strong> Perform it in July–September (the hottest season) to ensure compliance under the harshest environmental conditions"
+  },
+  {
+   "zh": "<strong>定期再驗證（Periodic Re-mapping）：</strong> 若初始研究在非夏季進行，應在設施首個夏季再執行一次",
+   "en": "<strong>Periodic re-mapping:</strong> If the initial study was done outside summer, repeat it in the facility's first summer"
+  },
+  {
+   "zh": "<strong>台灣特殊挑戰：</strong> 颱風季節（7–10月）的氣壓變化可能影響密閉空間的換氣效率，是額外的環境因素",
+   "en": "<strong>Specific challenge in Taiwan:</strong> Air pressure changes during typhoon season (July–October) may affect the ventilation efficiency of enclosed spaces, an additional environmental factor"
+  },
+  {
+   "zh": "<strong>記錄外部條件：</strong> 所有分佈研究報告應記錄測試當時的室外溫濕度（來自BMS或中央氣象局數據）",
+   "en": "<strong>Record external conditions:</strong> All mapping reports should record the outdoor temperature and humidity at the time of the test (from the BMS or Central Weather Administration data)"
+  },
+  {
+   "zh": "思考練習 10",
+   "en": "Discussion Exercise 10"
+  },
+  {
+   "zh": "<strong>問：</strong> 你的CDMO設施有三個2–8°C冷藏室，由三組獨立HVAC機組分別控制，佈局完全相同。你能否只對一個房間做完整分佈研究，然後以此代表另外兩間？根據ISPE的分區（zoning）原則，需要什麼前提條件？",
+   "en": "<strong>Question:</strong> Your CDMO facility has three 2–8°C cold rooms, each controlled by its own independent HVAC unit, with identical layouts. Can you perform a full mapping study on just one room and use it to represent the other two? Under ISPE's zoning principle, what preconditions are required?"
+  },
+  {
+   "zh": "思考練習 11",
+   "en": "Discussion Exercise 11"
+  },
+  {
+   "zh": "<strong>問：</strong> 一個FDA稽查員問你：「你的冷藏室感測器位置是如何決定的？」以下哪個回答最符合ISPE的科學化理由要求：",
+   "en": "<strong>Question:</strong> An FDA inspector asks you: \"How did you decide the sensor locations in your cold room?\" Which of the following answers best meets ISPE's requirement for a scientific rationale?"
+  },
+  {
+   "zh": "「我們依照行業慣例，每4平方公尺放一個。」",
+   "en": "\"We followed industry practice of one sensor for every 4 square meters.\""
+  },
+  {
+   "zh": "「我們參考了ISO 17025標準的最低感測器密度要求。」",
+   "en": "\"We referred to the minimum sensor density requirement in the ISO 17025 standard.\""
+  },
+  {
+   "zh": "「我們首先識別了所有可能影響溫度的因素（HVAC位置、門口、障礙物、高度差），然後在每個高風險位置放置感測器，並在協議書中逐一說明每個位置的選擇理由，由QA核准後執行。」",
+   "en": "\"We first identified all factors that could affect temperature (HVAC locations, doors, obstructions, height differences), then placed sensors at each high-risk location, explained the reason for each location in the protocol, and executed it after QA approval.\""
+  },
+  {
+   "zh": "思考練習 12",
+   "en": "Discussion Exercise 12"
+  },
+  {
+   "zh": "<strong>問：</strong> 你的分佈研究報告顯示，冷藏室的最高溫點位於東北角（靠近外牆的上層貨架），測量值為7.8°C（接受標準上限8°C）。測試是在3月執行的，室外溫度22°C。這份報告是否足夠？如何向QA解釋夏季季節性風險？你會建議什麼後續行動？",
+   "en": "<strong>Question:</strong> Your mapping report shows that the highest temperature point in the cold room is in the northeast corner (upper shelf near the exterior wall), measured at 7.8°C (acceptance upper limit 8°C). The test was performed in March, with an outdoor temperature of 22°C. Is this report sufficient? How would you explain the summer seasonal risk to QA? What follow-up action would you recommend?"
+  },
+  {
+   "zh": "Chapter 6 Summary &amp; Key Takeaways | 章節總結與核心要點",
+   "en": "Chapter 6 Summary &amp; Key Takeaways"
+  },
+  {
+   "zh": "<strong>Chapter Key Message | 章節核心訊息</strong>\n                A mapping study that only tests ideal conditions gives you a false sense of security — the risk lives in the extremes you haven't tested.<br/>\n<span style=\"font-size:0.9rem;opacity:0.85;\">只在理想條件下進行的溫度分佈研究，只會帶給你虛假的安全感。真正的風險，藏在那些你從未測試過的極端條件裡。</span>",
+   "en": "<strong>Chapter Key Message</strong>\n                A mapping study that only tests ideal conditions gives you a false sense of security — the risk lives in the extremes you haven't tested.<br/>\n<span style=\"font-size:0.9rem;opacity:0.85;\">A temperature mapping study performed only under ideal conditions gives you nothing but a false sense of security. The real risk lies in the extreme conditions you have never tested.</span>"
+  },
+  {
+   "zh": "CDMO多客戶環境核心要點",
+   "en": "Key Takeaways for Multi-Client CDMO Environments"
+  },
+  {
+   "zh": "<strong>目標二優先：</strong> 在多客戶環境中，永久監測點位的選擇尤為關鍵——必須能保護規格最嚴格的客戶產品。",
+   "en": "<strong>Outcome 2 comes first:</strong> In a multi-client environment, the choice of permanent monitoring locations is especially critical: they must protect the product of the client with the strictest specification."
+  },
+  {
+   "zh": "<strong>負載變化是持續性風險：</strong> 不同客戶產品的進出，使負載狀態持續變動。需定義「最不利負載情境」作為測試基準，並評估日常負載變動的影響。",
+   "en": "<strong>Load variation is a continuing risk:</strong> The movement of different clients' products in and out keeps the load state changing. Define a \"worst-case load scenario\" as the test baseline and assess the effect of routine load variation."
+  },
+  {
+   "zh": "<strong>台灣夏季測試不可省略：</strong> 7–9月的夏季是最苛刻的測試條件。初始分佈研究若在低溫季節執行，必須規劃補充的夏季測試。",
+   "en": "<strong>Summer testing in Taiwan cannot be skipped:</strong> Summer (July–September) is the most demanding test condition. If the initial mapping study is performed in a cool season, supplementary summer testing must be planned."
+  },
+  {
+   "zh": "<strong>獨立監測系統的多客戶設計：</strong> 數據存取控制、稽查軌跡、客戶隔離——這些是CDMO獨立監測系統的額外要求，超出ISPE基本要求。",
+   "en": "<strong>Multi-client design of the independent monitoring system:</strong> Data access control, audit trail and client segregation are additional requirements for a CDMO independent monitoring system, beyond the basic ISPE requirements."
+  },
+  {
+   "zh": "<strong>分區策略降低重新驗證成本：</strong> 合理的分區設計，讓局部改變只觸發受影響區域的重新評估，而非全場重新分佈研究。",
+   "en": "<strong>A zoning strategy reduces requalification cost:</strong> A sound zoning design means that a local change triggers reassessment only of the affected area, rather than a full-site mapping study."
+  },
+  {
+   "zh": "<strong>除霜週期文件化：</strong> CDMO設施的除霜事件必須在分佈研究中被完整捕捉和記錄，以向客戶和監管機構展示這些事件不構成產品風險。",
+   "en": "<strong>Document the defrost cycle:</strong> Defrost events at a CDMO facility must be fully captured and documented in the mapping study, to show clients and regulators that these events do not pose a product risk."
+  },
+  {
+   "zh": "<strong>量測不確定度傳播：</strong> 校準不確定度 + 感測器準確度 + 數據採集系統誤差 = 整體系統不確定度。這必須在接受標準的設計中被考慮進去。",
+   "en": "<strong>Propagation of measurement uncertainty:</strong> Calibration uncertainty + sensor accuracy + data acquisition system error = overall system uncertainty. This must be taken into account in the design of the acceptance criteria."
+  },
+  {
+   "zh": "Chapter 6 Quick-Reference Summary Table | 快速參考總結表",
+   "en": "Chapter 6 Quick-Reference Summary Table"
+  }
+ ]
+}
