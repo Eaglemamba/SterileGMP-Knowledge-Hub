@@ -1,0 +1,493 @@
+{
+ "source": "section-01-control-strategy.html",
+ "blocks": [
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解藥物原料（Drug Substance）製造中的微生物控制策略 — 化學合成與生物製程的差異",
+   "en": "Understand microbial control strategies in drug substance manufacturing, and how chemical synthesis differs from biological processes"
+  },
+  {
+   "zh": "掌握設備衛生設計（Sanitary Design）原則與清潔驗證要求，特別是殘留水的風險",
+   "en": "Master the principles of sanitary design and the cleaning validation requirements for equipment, especially the risk posed by residual water"
+  },
+  {
+   "zh": "了解非無菌產品製造區域的人員著裝要求（Gowning Requirements）",
+   "en": "Understand gowning requirements for personnel in nonsterile manufacturing areas"
+  },
+  {
+   "zh": "認識非無菌製造環境的設計要素與設施控制 — 與無菌環境要求的差異",
+   "en": "Recognize the design elements and facility controls of nonsterile manufacturing environments, and how they differ from sterile environment requirements"
+  },
+  {
+   "zh": "掌握非無菌產品環境監測（Environmental Monitoring）的方法、頻率與評估標準",
+   "en": "Master the methods, frequency, and evaluation criteria for environmental monitoring of nonsterile products"
+  },
+  {
+   "zh": "理解主動微生物控制措施（Active Measures）的應用場景",
+   "en": "Understand when active measures for microbial control apply"
+  },
+  {
+   "zh": "Microbial Control of Drug Substance Manufacturing — 原料藥製造的微生物控制",
+   "en": "Microbial Control of Drug Substance Manufacturing"
+  },
+  {
+   "zh": "導師解析",
+   "en": "Trainer's Analysis"
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "<strong>烹飪的清潔邏輯：</strong>",
+   "en": "<strong>The cleaning logic of cooking:</strong>"
+  },
+  {
+   "zh": "做菜時，前面的步驟（高溫炒、油炸）本身就能殺菌，你不需要額外消毒。但最後的步驟（裝盤、上桌前的擺飾）才是最需要注意衛生的 — 因為食物已經冷卻，直接接觸手和工具，沒有高溫保護了。",
+   "en": "When you cook, the early steps (stir-frying at high heat, deep-frying) already kill microbes, so no extra disinfection is needed. The final steps (plating and garnishing before serving) are where hygiene matters most, because the food has cooled and now touches hands and tools with no heat to protect it."
+  },
+  {
+   "zh": "API 合成也是同樣道理：前面用有機溶劑的步驟不用擔心微生物，但最後的水洗、結晶、分裝步驟才是微生物控制的關鍵戰場。",
+   "en": "API synthesis follows the same logic: the early steps that use organic solvents are not a microbial concern, but the final water wash, crystallization, and packaging steps are where microbial control is won or lost."
+  },
+  {
+   "zh": "重點提示 CDMO Context",
+   "en": "CDMO Context"
+  },
+  {
+   "zh": "<strong>CDMO 的 Pre-sterilization Bioburden：</strong>如果你的 CDMO 生產的原料藥最終用於無菌產品，那麼 API 最終步驟使用的水必須是 WFI。而且你需要在「滅菌前」設定 bioburden 限度 — 這就是 pre-sterilization bioburden monitoring 的概念。API 的微生物品質直接影響下游無菌製程的安全性。",
+   "en": "<strong>Pre-sterilization bioburden at a CDMO:</strong> If your CDMO makes a drug substance that will ultimately be used in a sterile product, the water used in the final API step must be WFI. You also need to set a bioburden limit \"before sterilization\", which is the concept of pre-sterilization bioburden monitoring. The microbial quality of the API directly affects the safety of the downstream sterile process."
+  },
+  {
+   "zh": "<strong>封閉系統的優勢：</strong>大部分化學合成在封閉容器中進行，這大幅降低了環境污染的風險。但 CIP（Clean-in-Place）系統本身也需要驗證 — 確保清潔劑能有效去除化學殘留和微生物。",
+   "en": "<strong>Advantage of closed systems:</strong> Most chemical synthesis takes place in closed vessels, which greatly reduces the risk of environmental contamination. However, the CIP (Clean-in-Place) system itself must also be validated to confirm that the cleaning agent effectively removes both chemical residues and microorganisms."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "你的 CDMO 的 API 合成最後一步是用純化水進行結晶洗滌。洗滌後的 API 會用於無菌注射劑。你認為這一步應該用純化水還是 WFI？為什麼？",
+   "en": "The last step of your CDMO's API synthesis is a crystallization wash with purified water, and the washed API will be used in a sterile injectable. Should this step use purified water or WFI? Why?"
+  },
+  {
+   "zh": "一個封閉的 CIP 系統在驗證時發現某個死角（dead leg）的微生物計數偏高。這對 API 品質有什麼潛在影響？你會建議什麼改善措施？",
+   "en": "During validation of a closed CIP system, the microbial count at one dead leg was found to be high. What is the potential impact on API quality, and what improvements would you recommend?"
+  },
+  {
+   "zh": "核心概念解析 API Manufacturing",
+   "en": "Key Concepts: API Manufacturing"
+  },
+  {
+   "zh": "<strong>化學合成的天然微生物屏障：</strong>有機合成過程中使用的極端條件 — 高溫、高壓、強酸/強鹼、有機溶劑 — 本身就是強效的微生物殺滅手段。這意味著合成的早期和中期步驟通常不需要額外的微生物控制。",
+   "en": "<strong>The natural microbial barrier of chemical synthesis:</strong> The extreme conditions used in organic synthesis (high temperature, high pressure, strong acids/bases, organic solvents) are themselves powerful microbial kill mechanisms. This means the early and middle steps of synthesis generally need no additional microbial control."
+  },
+  {
+   "zh": "<strong>但最後步驟是關鍵：</strong>當 API 的合成接近尾聲，特別是最終純化、結晶、乾燥等步驟，極端條件通常已不再適用，此時水系統的微生物風險就成為主要關注點。",
+   "en": "<strong>But the final steps are critical:</strong> As API synthesis nears completion, particularly during final purification, crystallization, and drying, those extreme conditions typically no longer apply, and the microbial risk from the water system becomes the main concern."
+  },
+  {
+   "zh": "<strong>水的等級梯度：</strong>",
+   "en": "<strong>Water grade gradient:</strong>"
+  },
+  {
+   "zh": "Equipment Design and Use — 設備設計與使用",
+   "en": "Equipment Design and Use"
+  },
+  {
+   "zh": "核心概念解析 Sanitary Design",
+   "en": "Key Concepts: Sanitary Design"
+  },
+  {
+   "zh": "<strong>衛生設計（Sanitary Design）的四大原則：</strong>",
+   "en": "<strong>The four principles of sanitary design:</strong>"
+  },
+  {
+   "zh": "<strong>可清潔性（Cleanability）</strong> — 設備表面必須能可靠地清除污染物和殘留產品",
+   "en": "<strong>Cleanability</strong> - equipment surfaces must be able to reliably remove contaminants and residual product"
+  },
+  {
+   "zh": "<strong>完全排水（Complete Drainage）</strong> — 管路應有坡度，設備應能完全排除殘留水",
+   "en": "<strong>Complete drainage</strong> - piping should be sloped and equipment should drain completely so that no residual water remains"
+  },
+  {
+   "zh": "<strong>衛生連接件（Sanitary Fittings）</strong> — 使用平齊墊片（flush gaskets）防止物料堆積",
+   "en": "<strong>Sanitary fittings</strong> - use flush gaskets to prevent material buildup"
+  },
+  {
+   "zh": "<strong>材質要求</strong> — 產品接觸面優先使用奧氏體不鏽鋼，表面粗糙度 RA 15–20 µm",
+   "en": "<strong>Material requirements</strong> - austenitic stainless steel is preferred for product-contact surfaces, with a surface roughness Ra of 15–20 µm"
+  },
+  {
+   "zh": "<strong>RA（Roughness Average）：</strong>表面粗糙度的量化指標。RA 值越小，表面越光滑，微生物越難附著。15–20 µm 是非無菌產品的「合理經驗值」。注意：無菌製程的 RA 要求通常更嚴格（≤ 0.8 µm）。",
+   "en": "<strong>Ra (Roughness Average):</strong> A quantitative measure of surface roughness. The lower the Ra value, the smoother the surface and the harder it is for microorganisms to adhere. 15–20 µm is a \"reasonable rule of thumb\" for nonsterile products. Note that Ra requirements for sterile processes are usually stricter (≤ 0.8 µm)."
+  },
+  {
+   "zh": "<strong>廚房排水的道理：</strong>",
+   "en": "<strong>Kitchen drainage:</strong>"
+  },
+  {
+   "zh": "你家廚房洗完碗後，如果水槽裡留了一攤積水，隔天就會發現水變得黏滑、有異味 — 那就是微生物在增殖。工業製藥設備也是一樣的道理：任何殘留水都是微生物的溫床。",
+   "en": "If you leave a puddle in the sink after washing dishes, by the next day the water has turned slimy and smelly, which is microbial growth. The same applies to industrial pharmaceutical equipment: any residual water is a breeding ground for microorganisms."
+  },
+  {
+   "zh": "USP 反覆強調「dry after cleaning」就像你媽媽反覆提醒你「碗洗完要擦乾」— 看似簡單的道理，卻是防止微生物問題的最有效方法。",
+   "en": "USP repeatedly stresses \"dry after cleaning\", just as your mother kept reminding you to dry the dishes after washing them. It sounds simple, but it is the most effective way to prevent microbial problems."
+  },
+  {
+   "zh": "重點提示 Hold Time Validation",
+   "en": "Hold Time Validation"
+  },
+  {
+   "zh": "<strong>Hold Time（保持時間）驗證 — CDMO 的核心議題：</strong>",
+   "en": "<strong>Hold time validation, a core issue for CDMOs:</strong>"
+  },
+  {
+   "zh": "USP 明確要求評估設備在使用條件下是否可能促進微生物生長。這直接關聯兩種 hold time：",
+   "en": "USP explicitly requires an evaluation of whether equipment under conditions of use could promote microbial growth. This relates directly to two kinds of hold time:"
+  },
+  {
+   "zh": "<strong>Clean Hold Time（清潔保持時間）</strong> — 設備清潔完成到下次使用之間的最長允許時間。清潔後的設備如果放置太久，即使乾燥也可能被環境微生物二次污染",
+   "en": "<strong>Clean hold time</strong> - the maximum permitted time between completion of equipment cleaning and its next use. Even dry, cleaned equipment left standing too long can be recontaminated by environmental microorganisms"
+  },
+  {
+   "zh": "<strong>Dirty Hold Time（污染保持時間）</strong> — 生產結束到開始清潔之間的最長允許時間。含有產品殘留的設備如果不及時清潔，微生物可能在殘留物中增殖",
+   "en": "<strong>Dirty hold time</strong> - the maximum permitted time between the end of production and the start of cleaning. If equipment containing product residue is not cleaned promptly, microorganisms may proliferate in the residue"
+  },
+  {
+   "zh": "CDMO 因為頻繁換產品（product changeover），hold time 驗證特別重要 — 你需要確保在排程允許的時間內，微生物不會增殖到不可接受的水準。",
+   "en": "Because CDMOs change over products frequently, hold time validation is especially important. You need to make sure microorganisms will not grow to an unacceptable level within the time the schedule allows."
+  },
+  {
+   "zh": "你的 CDMO 的配料槽在週五下午完成清潔，但因為排程原因要到週一才使用。這段 Clean Hold Time 約 65 小時。你需要做什麼驗證來證明這是可接受的？",
+   "en": "Your CDMO's compounding tank is cleaned on Friday afternoon but, because of scheduling, will not be used until Monday. The clean hold time is about 65 hours. What validation would you need to perform to show this is acceptable?"
+  },
+  {
+   "zh": "一台混合設備的管路中發現有一段無法完全排水的「死角」（dead leg）。根據 USP ⟨1115⟩ 的原則，你會建議什麼改善方案？",
+   "en": "A section of piping on a mixing unit has a dead leg that cannot drain completely. Based on the principles of USP ⟨1115⟩, what corrective approach would you recommend?"
+  },
+  {
+   "zh": "USP 提到非無菌設備的 RA 值為 15–20 µm。如果你的客戶要求 RA ≤ 0.8 µm（無菌等級），對於非無菌產品這樣做有必要嗎？成本效益如何？",
+   "en": "USP cites an Ra of 15–20 µm for nonsterile equipment. If your client requires Ra ≤ 0.8 µm (sterile grade), is that necessary for a nonsterile product? What is the cost-benefit?"
+  },
+  {
+   "zh": "Personnel &amp; Gowning — 人員與著裝",
+   "en": "Personnel &amp; Gowning"
+  },
+  {
+   "zh": "<strong>下廚 vs 手術室：</strong>",
+   "en": "<strong>Home cooking vs the operating room:</strong>"
+  },
+  {
+   "zh": "在家下廚時，你會穿圍裙、綁好頭髮，如果直接用手揉麵團才戴手套。但外科醫生進手術室，必須全副武裝 — 無菌手套、口罩、帽子、無菌衣，一個都不能少。",
+   "en": "At home you put on an apron and tie back your hair, and you wear gloves only if you knead the dough by hand. A surgeon entering the operating room must be fully covered: sterile gloves, mask, cap, and sterile gown, with no exceptions."
+  },
+  {
+   "zh": "非無菌製造就像下廚：基本的衛生防護，合理的著裝，根據接觸程度調整。無菌製造就像手術室：全面防護，沒有例外。",
+   "en": "Nonsterile manufacturing is like home cooking: basic hygiene protection, reasonable gowning, adjusted to the degree of contact. Sterile manufacturing is like the operating room: full protection with no exceptions."
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "<strong>「高風險產品與環境」的升級要求：</strong>表格中提到對於高風險產品和環境，可能需要「plant uniform with overall」（廠服加連身衣）。這指的是風險層級較高的劑型，如吸入劑或鼻噴劑的生產。CDMO 應根據產品風險等級調整著裝標準。",
+   "en": "<strong>Escalated requirements for \"higher-risk products and environments\":</strong> The table mentions that for higher-risk products and environments, a \"plant uniform with overall\" may be needed. This refers to higher-risk dosage forms, such as the production of inhalation or nasal spray products. A CDMO should adjust gowning standards to the product risk level."
+  },
+  {
+   "zh": "你的 CDMO 有一條口服錠劑產線和一條鼻噴劑產線。根據 USP ⟨1115⟩ 的著裝指引，兩條產線的人員著裝要求應該有什麼差異？",
+   "en": "Your CDMO has an oral tablet line and a nasal spray line. Based on the gowning guidance in USP ⟨1115⟩, how should the personnel gowning requirements differ between the two lines?"
+  },
+  {
+   "zh": "環境監測發現非無菌製造區的微生物回收量以人體來源微生物為主。除了著裝之外，你還會建議什麼人員管控措施？",
+   "en": "Environmental monitoring shows that the microbial recovery in a nonsterile manufacturing area is mainly of human origin. Besides gowning, what other personnel control measures would you recommend?"
+  },
+  {
+   "zh": "核心概念解析 Gowning Requirements",
+   "en": "Key Concepts: Gowning Requirements"
+  },
+  {
+   "zh": "<strong>非無菌 vs 無菌的著裝差異：</strong>非無菌產品的著裝要求比無菌製程簡化得多。關鍵差異：",
+   "en": "<strong>Gowning differences, nonsterile vs sterile:</strong> Gowning requirements for nonsterile products are much simpler than for sterile processes. The key differences:"
+  },
+  {
+   "zh": "注意「if in direct product contact」這個條件 — 不是所有非無菌製造人員都需要手套和口罩，只有直接接觸產品的人員才需要。",
+   "en": "Note the condition \"if in direct product contact\". Not all nonsterile manufacturing personnel need gloves and masks; only those in direct contact with the product do."
+  },
+  {
+   "zh": "The Manufacturing Environment — 製造環境",
+   "en": "The Manufacturing Environment"
+  },
+  {
+   "zh": "核心概念解析 Environment Design",
+   "en": "Key Concepts: Environment Design"
+  },
+  {
+   "zh": "<strong>非無菌環境設計的核心原則 — 「足夠但不過度」：</strong>",
+   "en": "<strong>The core principle of nonsterile environment design: \"adequate but not excessive\":</strong>"
+  },
+  {
+   "zh": "最重要的一句話：<strong>分級環境（Classified Environments）不是非無菌製造的要求。</strong>這代表你不需要像無菌製程那樣建造 ISO 5/7/8 的潔淨室。但你仍然需要：",
+   "en": "The most important statement: <strong>classified environments are not a requirement for nonsterile manufacturing.</strong> This means you do not need to build ISO 5/7/8 cleanrooms as you would for a sterile process. You still need:"
+  },
+  {
+   "zh": "<strong>可清潔的建材</strong> — 非多孔材料，耐清潔劑和消毒劑",
+   "en": "<strong>Cleanable construction materials</strong> - nonporous and resistant to cleaning agents and disinfectants"
+  },
+  {
+   "zh": "<strong>地板排水管控</strong> — 加工期間可關閉或有適當的空氣斷路（air break）",
+   "en": "<strong>Floor drain control</strong> - closable during processing, or fitted with a suitable air break"
+  },
+  {
+   "zh": "<strong>人流/物流分離</strong> — 避免交叉污染",
+   "en": "<strong>Separation of personnel and material flows</strong> - to avoid cross-contamination"
+  },
+  {
+   "zh": "<strong>適當的通風和空氣過濾</strong> — 維持指定的清潔度",
+   "en": "<strong>Appropriate ventilation and air filtration</strong> - to maintain the specified level of cleanliness"
+  },
+  {
+   "zh": "<strong>食品工廠 vs 無塵室：</strong>",
+   "en": "<strong>Food plant vs cleanroom:</strong>"
+  },
+  {
+   "zh": "非無菌製造環境就像一個管理良好的食品加工廠 — 地板可以用水沖洗、牆壁光滑可清潔、人員穿適當工作服、有基本的通風系統。但它不是半導體廠的無塵室，不需要 HEPA 天花板、氣鎖門、或微粒計數。",
+   "en": "A nonsterile manufacturing environment is like a well-run food processing plant: floors can be washed down with water, walls are smooth and cleanable, personnel wear appropriate work clothing, and there is a basic ventilation system. It is not a semiconductor cleanroom, and it does not need HEPA ceilings, airlocks, or particle counting."
+  },
+  {
+   "zh": "關鍵是「控制良好的一般環境」而非「無菌環境」。",
+   "en": "The key is a \"well-controlled general environment\", not a \"sterile environment\"."
+  },
+  {
+   "zh": "重點提示 Floor Drains",
+   "en": "Floor Drains"
+  },
+  {
+   "zh": "<strong>地板排水管 — 一個經常被忽略的風險點：</strong>",
+   "en": "<strong>Floor drains, a frequently overlooked risk point:</strong>"
+  },
+  {
+   "zh": "USP 允許非無菌製造區有地板排水管，但附帶條件：加工期間必須能關閉，或裝有空氣斷路裝置（air break）。原因是排水管是微生物（特別是革蘭氏陰性菌和黴菌）的主要棲息地。如果排水管在生產期間開放且沒有保護，管內的微生物可能通過氣溶膠（aerosol）進入生產環境。",
+   "en": "USP allows floor drains in nonsterile manufacturing areas, with a condition: they must be closable during processing or fitted with an air break. The reason is that drains are a major habitat for microorganisms (especially Gram-negative bacteria and molds). If a drain is open and unprotected during production, the microorganisms inside can enter the production environment as aerosols."
+  },
+  {
+   "zh": "<strong>對比無菌製造：</strong>在無菌製造區（Grade A/B），地板排水管通常是被完全禁止的。",
+   "en": "<strong>Contrast with sterile manufacturing:</strong> In sterile manufacturing areas (Grade A/B), floor drains are generally prohibited outright."
+  },
+  {
+   "zh": "你的 CDMO 正在規劃一個新的非無菌口服液體製劑生產區。根據 USP ⟨1115⟩，你需要哪些環境設計元素？需要建造分級潔淨室嗎？",
+   "en": "Your CDMO is planning a new production area for nonsterile oral liquids. Based on USP ⟨1115⟩, which environmental design elements do you need? Do you need to build a classified cleanroom?"
+  },
+  {
+   "zh": "生產區的地板排水管在清潔期間使用，但沒有安裝空氣斷路裝置。稽查員指出這是一個風險。你如何引用 USP ⟨1115⟩ 來說明改善方案？",
+   "en": "A floor drain in the production area is used during cleaning but has no air break installed, and the auditor has flagged it as a risk. How would you cite USP ⟨1115⟩ to justify your corrective approach?"
+  },
+  {
+   "zh": "Microbial Assessment of Nonsterile Manufacturing Environments — 非無菌製造環境的微生物評估",
+   "en": "Microbial Assessment of Nonsterile Manufacturing Environments"
+  },
+  {
+   "zh": "核心概念解析 Environmental Monitoring",
+   "en": "Key Concepts: Environmental Monitoring"
+  },
+  {
+   "zh": "<strong>非無菌環境監測的根本定位 — 「資訊性調查」而非「品質決策依據」：</strong>",
+   "en": "<strong>The fundamental role of nonsterile environmental monitoring: an \"informational survey\", not a \"basis for quality decisions\":</strong>"
+  },
+  {
+   "zh": "這是本節最重要的概念。USP 明確表示：",
+   "en": "This is the most important concept in this section. USP states explicitly that:"
+  },
+  {
+   "zh": "環境監測是<strong>輔助工具（adjunct）</strong>，不是主要的污染控制手段",
+   "en": "Environmental monitoring is an <strong>adjunct</strong>, not the primary means of contamination control"
+  },
+  {
+   "zh": "它是<strong>定性評估（qualitative assessment）</strong>，不是定量判斷",
+   "en": "It is a <strong>qualitative assessment</strong>, not a quantitative judgment"
+  },
+  {
+   "zh": "它<strong>不應用於產品放行決策（product-release decisions）</strong>",
+   "en": "It <strong>should not be used for product-release decisions</strong>"
+  },
+  {
+   "zh": "對大多數非無菌環境，<strong>警戒/行動限度（alert/action levels）可能不需要</strong>",
+   "en": "For most nonsterile environments, <strong>alert/action levels may not be needed</strong>"
+  },
+  {
+   "zh": "未分級環境<strong>不需要監測</strong>",
+   "en": "<strong>Unclassified environments need no monitoring</strong>"
+  },
+  {
+   "zh": "這與無菌製程的環境監測完全不同 — 在無菌製程中，環境監測數據是產品放行的必要條件之一。",
+   "en": "This is completely different from environmental monitoring in sterile processes, where monitoring data are one of the prerequisites for product release."
+  },
+  {
+   "zh": "<strong>天氣預報 vs 飛行管制：</strong>",
+   "en": "<strong>Weather forecast vs air traffic control:</strong>"
+  },
+  {
+   "zh": "非無菌環境監測就像「天氣預報」— 它告訴你目前的狀況和趨勢，幫你做參考，但不會因為今天多雲就禁止你出門。無菌環境監測就像「飛行管制」— 數據直接決定飛機（產品）能不能起飛（放行）。",
+   "en": "Nonsterile environmental monitoring is like a \"weather forecast\": it tells you current conditions and trends as a reference, but it will not stop you from going out because today is cloudy. Sterile environmental monitoring is like \"air traffic control\": the data directly decide whether the aircraft (the product) can take off (be released)."
+  },
+  {
+   "zh": "理解這個差異非常重要，因為很多 CDMO 會犯「過度監測」的錯誤 — 把無菌環境的監測邏輯套用到非無菌產線，增加了不必要的成本和複雜性。",
+   "en": "Understanding this difference is very important, because many CDMOs make the mistake of \"over-monitoring\", applying the monitoring logic of sterile environments to nonsterile lines and adding unnecessary cost and complexity."
+  },
+  {
+   "zh": "重點提示 Sampling Methods",
+   "en": "Sampling Methods"
+  },
+  {
+   "zh": "<strong>採樣方法的選擇：</strong>",
+   "en": "<strong>Choosing a sampling method:</strong>"
+  },
+  {
+   "zh": "<strong>主動空氣採樣（Active）</strong> — 使用空氣採樣器，結果以 CFU/m³ 表示",
+   "en": "<strong>Active air sampling</strong> - uses an air sampler, with results expressed in CFU/m³"
+  },
+  {
+   "zh": "<strong>被動空氣採樣（Passive）</strong> — 沉降平板（settling plates），可替代主動採樣",
+   "en": "<strong>Passive air sampling</strong> - settling plates, which can replace active sampling"
+  },
+  {
+   "zh": "<strong>人員監測</strong> — 一般不需要，除非使用接近無菌等級的著裝",
+   "en": "<strong>Personnel monitoring</strong> - generally not needed, unless gowning close to sterile grade is used"
+  },
+  {
+   "zh": "<strong>替代方法：</strong>USP 允許使用非生長基方法（nongrowth-based methods）替代傳統培養法，且<strong>不需要方法比對研究</strong> — 只需少量平行樣品建立比較基線。",
+   "en": "<strong>Alternative methods:</strong> USP allows nongrowth-based methods to replace traditional culture methods, and <strong>no method comparability study is required</strong>; only a small number of parallel samples is needed to establish a comparative baseline."
+  },
+  {
+   "zh": "你的 CDMO 的非無菌口服錠劑產線目前每月進行一次環境監測，設有 alert 和 action levels。根據 USP ⟨1115⟩，這個監測程式是否過度？你會建議什麼調整？",
+   "en": "Your CDMO's nonsterile oral tablet line currently performs environmental monitoring once a month, with alert and action levels. Based on USP ⟨1115⟩, is this monitoring program excessive? What adjustments would you recommend?"
+  },
+  {
+   "zh": "一位客戶要求你提供非無菌製造區的環境監測數據作為批次放行的條件之一。根據 USP ⟨1115⟩，這個要求合理嗎？你會如何與客戶溝通？",
+   "en": "A client asks you to provide environmental monitoring data for the nonsterile manufacturing area as one of the conditions for batch release. Based on USP ⟨1115⟩, is this request reasonable? How would you communicate with the client?"
+  },
+  {
+   "zh": "USP 提到「人員監測一般不需要」。但如果你的環境監測趨勢顯示人體來源微生物偏高，你是否應該增加人員監測？為什麼？",
+   "en": "USP says \"personnel monitoring is generally not needed\". But if your environmental monitoring trend shows elevated human-origin microorganisms, should you add personnel monitoring? Why?"
+  },
+  {
+   "zh": "重點提示 Monitoring Frequency by Risk",
+   "en": "Monitoring Frequency by Risk"
+  },
+  {
+   "zh": "<strong>監測頻率的風險導向原則：</strong>",
+   "en": "<strong>The risk-based principle for monitoring frequency:</strong>"
+  },
+  {
+   "zh": "<strong>具有抗菌特性的產品（如抗生素錠劑）：</strong>USP 明確表示「require little or no microbiological monitoring」— 因為產品本身就能抑制微生物生長。",
+   "en": "<strong>Products with antimicrobial properties (such as antibiotic tablets):</strong> USP states explicitly that they \"require little or no microbiological monitoring\", because the product itself inhibits microbial growth."
+  },
+  {
+   "zh": "Active Measures for Microbial Control — 主動微生物控制措施",
+   "en": "Active Measures for Microbial Control"
+  },
+  {
+   "zh": "核心概念解析 Active Control Measures",
+   "en": "Key Concepts: Active Control Measures"
+  },
+  {
+   "zh": "<strong>從被動設計到主動控制：</strong>前面討論的設備衛生設計、環境控制、清潔程序都是「被動」的防禦措施 — 它們透過設計和流程來最小化風險。但有時候，你需要「主動」出擊：",
+   "en": "<strong>From passive design to active control:</strong> The sanitary equipment design, environmental controls, and cleaning procedures discussed so far are all \"passive\" defenses that minimize risk through design and process. At times, however, you need to take \"active\" measures:"
+  },
+  {
+   "zh": "<strong>去污處理（Decontamination）</strong> — 加熱處理產品接觸面，最嚴格時可滅菌",
+   "en": "<strong>Decontamination</strong> - heat treatment of product-contact surfaces, up to sterilization at the most stringent level"
+  },
+  {
+   "zh": "<strong>原料 Bioburden 降低</strong> — 對高風險原料進行乾熱/濕熱前處理",
+   "en": "<strong>Raw material bioburden reduction</strong> - dry-heat or moist-heat pretreatment of high-risk raw materials"
+  },
+  {
+   "zh": "<strong>封閉系統（Closed Systems）</strong> — 物料轉移在封閉管路中進行",
+   "en": "<strong>Closed systems</strong> - material transfers take place in closed piping"
+  },
+  {
+   "zh": "<strong>拋棄式元件（Disposable/Single-Use）</strong> — 免除清潔驗證的需求",
+   "en": "<strong>Disposable/single-use components</strong> - remove the need for cleaning validation"
+  },
+  {
+   "zh": "<strong>分級環境</strong> — 僅在高風險操作時才需要（如吸入劑生產）",
+   "en": "<strong>Classified environments</strong> - needed only for high-risk operations (such as inhalation product manufacturing)"
+  },
+  {
+   "zh": "<strong>預防醫學 vs 緊急醫療：</strong>",
+   "en": "<strong>Preventive medicine vs emergency care:</strong>"
+  },
+  {
+   "zh": "被動控制就像預防醫學 — 均衡飲食、規律運動、維持良好衛生習慣。主動控制就像在高風險時期的緊急措施 — 接種疫苗（bioburden reduction）、戴口罩（improved gowning）、居家隔離（classified environments）。",
+   "en": "Passive control is like preventive medicine: a balanced diet, regular exercise, and good hygiene habits. Active control is like emergency measures in a high-risk period: getting vaccinated (bioburden reduction), wearing a mask (improved gowning), and isolating at home (classified environments)."
+  },
+  {
+   "zh": "你不需要時時刻刻都採取緊急措施，但在風險升高時，必須有這些手段可以部署。",
+   "en": "You do not need to take emergency measures all the time, but when risk rises, these tools must be available to deploy."
+  },
+  {
+   "zh": "重點提示 CDMO Single-Use",
+   "en": "CDMO Single-Use"
+  },
+  {
+   "zh": "<strong>CDMO 的拋棄式策略：</strong>對於頻繁換產品的 CDMO，拋棄式元件（如一次性管路、容器袋、過濾器殼體）有巨大優勢：",
+   "en": "<strong>Single-use strategy for CDMOs:</strong> For a CDMO that changes products frequently, disposable components (such as single-use tubing, container bags, and filter housings) offer major advantages:"
+  },
+  {
+   "zh": "免除清潔驗證（Cleaning Validation）的繁重工作",
+   "en": "Removes the heavy workload of cleaning validation"
+  },
+  {
+   "zh": "消除交叉污染（Cross-Contamination）風險",
+   "en": "Eliminates the risk of cross-contamination"
+  },
+  {
+   "zh": "縮短批次之間的轉換時間（Changeover Time）",
+   "en": "Shortens changeover time between batches"
+  },
+  {
+   "zh": "但要注意：拋棄式元件的萃取物/浸出物（Extractables/Leachables）評估仍然是必要的。",
+   "en": "Note, however, that evaluation of extractables/leachables for single-use components is still required."
+  },
+  {
+   "zh": "你的 CDMO 正在考慮將非無菌口服液體產線的某些元件改為拋棄式。哪些元件最適合改為拋棄式？需要考慮什麼潛在風險？",
+   "en": "Your CDMO is considering converting some components of a nonsterile oral liquid line to single-use. Which components are best suited to conversion? What potential risks need to be considered?"
+  },
+  {
+   "zh": "一款非無菌鼻噴劑的原料中含有一種天然來源的多醣類賦形劑，微生物計數經常接近規格上限。你會建議什麼「主動控制措施」來降低進料 bioburden？",
+   "en": "The raw materials for a nonsterile nasal spray include a naturally sourced polysaccharide excipient whose microbial count is often close to the specification limit. What \"active control measures\" would you recommend to reduce incoming bioburden?"
+  },
+  {
+   "zh": "本節重點回顧 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "<strong>API 微生物控制：</strong>化學合成的極端條件是天然屏障，但最終步驟（特別是水洗和結晶）是微生物風險的關鍵節點；用於無菌產品的 API 最終步驟應使用 WFI",
+   "en": "<strong>API microbial control:</strong> The extreme conditions of chemical synthesis are a natural barrier, but the final steps (especially water washing and crystallization) are the key points of microbial risk; the final API step for sterile products should use WFI"
+  },
+  {
+   "zh": "<strong>設備衛生設計：</strong>四大原則 — 可清潔性、完全排水、衛生連接件、適當材質（不鏽鋼，RA 15–20 µm）。「清潔後乾燥」是最簡單也最有效的微生物控制手段",
+   "en": "<strong>Sanitary equipment design:</strong> four principles: cleanability, complete drainage, sanitary fittings, and appropriate materials (stainless steel, Ra 15–20 µm). \"Dry after cleaning\" is the simplest and most effective means of microbial control"
+  },
+  {
+   "zh": "<strong>Hold Time 驗證：</strong>Clean Hold Time 和 Dirty Hold Time 都需要驗證，對 CDMO 的頻繁換產品排程尤為關鍵",
+   "en": "<strong>Hold time validation:</strong> Both clean hold time and dirty hold time must be validated, which is especially critical for a CDMO's frequent product changeover schedule"
+  },
+  {
+   "zh": "<strong>人員著裝：</strong>非無菌製造的著裝要求遠低於無菌製程，手套和口罩僅在直接接觸產品時需要",
+   "en": "<strong>Personnel gowning:</strong> Gowning requirements for nonsterile manufacturing are far lower than for sterile processes, and gloves and masks are needed only for direct product contact"
+  },
+  {
+   "zh": "<strong>環境監測：</strong>定位為「資訊性調查」，不用於產品放行決策；大多數非無菌環境不需要 alert/action levels；監測頻率應與劑型風險匹配",
+   "en": "<strong>Environmental monitoring:</strong> positioned as an \"informational survey\" and not used for product-release decisions; most nonsterile environments do not need alert/action levels; monitoring frequency should match the risk of the dosage form"
+  },
+  {
+   "zh": "<strong>主動控制：</strong>加熱去污、原料 bioburden 降低、封閉系統、拋棄式元件、分級環境 — 根據風險評估「按需部署」",
+   "en": "<strong>Active control:</strong> heat decontamination, raw material bioburden reduction, closed systems, single-use components, and classified environments, \"deployed as needed\" based on risk assessment"
+  }
+ ]
+}
